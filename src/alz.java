@@ -1,132 +1,72 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.Stack;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Optional;
+import java.util.function.Predicate;
 
 public class alz {
-   private static final Logger b = LogUtils.getLogger();
-   private static final String c = "localhost";
-   private static final String d = "0.0.0.0";
-   private static final int e = 10000;
-   private static final int f = 100;
-   public static BiMap<String, akm<daz>> a = ImmutableBiMap.of("o", daz.h, "n", daz.i, "e", daz.j);
-   @Nullable
-   private static alr g;
-   @Nullable
-   private static alq h;
+   private static final int a = 2;
 
-   public static void a(CommandDispatcher<ee> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("chase")
-                  .then(
-                     ((LiteralArgumentBuilder)ef.a("follow")
-                           .then(
-                              ((RequiredArgumentBuilder)ef.a("host", StringArgumentType.string())
-                                    .executes($$0x -> b((ee)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), 10000)))
-                                 .then(
-                                    ef.a("port", IntegerArgumentType.integer(1, 65535))
-                                       .executes(
-                                          $$0x -> b(
-                                                (ee)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), IntegerArgumentType.getInteger($$0x, "port")
-                                             )
-                                       )
-                                 )
-                           ))
-                        .executes($$0x -> b((ee)$$0x.getSource(), "localhost", 10000))
-                  ))
-               .then(
-                  ((LiteralArgumentBuilder)ef.a("lead")
-                        .then(
-                           ((RequiredArgumentBuilder)ef.a("bind_address", StringArgumentType.string())
-                                 .executes($$0x -> a((ee)$$0x.getSource(), StringArgumentType.getString($$0x, "bind_address"), 10000)))
-                              .then(
-                                 ef.a("port", IntegerArgumentType.integer(1024, 65535))
-                                    .executes(
-                                       $$0x -> a(
-                                             (ee)$$0x.getSource(),
-                                             StringArgumentType.getString($$0x, "bind_address"),
-                                             IntegerArgumentType.getInteger($$0x, "port")
-                                          )
-                                    )
-                              )
-                        ))
-                     .executes($$0x -> a((ee)$$0x.getSource(), "0.0.0.0", 10000))
-               ))
-            .then(ef.a("stop").executes($$0x -> a((ee)$$0x.getSource())))
-      );
-   }
-
-   private static int a(ee $$0) {
-      if (h != null) {
-         h.b();
-         $$0.a(() -> wx.b("You have now stopped chasing"), false);
-         h = null;
-      }
-
-      if (g != null) {
-         g.b();
-         $$0.a(() -> wx.b("You are no longer being chased"), false);
-         g = null;
-      }
-
-      return 0;
-   }
-
-   private static boolean b(ee $$0) {
-      if (g != null) {
-         $$0.b(wx.b("Chase server is already running. Stop it using /chase stop"));
-         return true;
-      } else if (h != null) {
-         $$0.b(wx.b("You are already chasing someone. Stop it using /chase stop"));
-         return true;
+   private static alz.b a(ae $$0, boolean $$1) {
+      Optional<ar> $$2 = $$0.c();
+      if ($$2.isEmpty()) {
+         return alz.b.b;
+      } else if ($$1) {
+         return alz.b.a;
       } else {
-         return false;
+         return $$2.get().j() ? alz.b.b : alz.b.c;
       }
    }
 
-   private static int a(ee $$0, String $$1, int $$2) {
-      if (b($$0)) {
-         return 0;
-      } else {
-         g = new alr($$1, $$2, $$0.l().ah(), 100);
-
-         try {
-            g.a();
-            $$0.a(() -> wx.b("Chase server is now running on port " + $$2 + ". Clients can follow you using /chase follow <ip> <port>"), false);
-         } catch (IOException var4) {
-            b.error("Failed to start chase server", var4);
-            $$0.b(wx.b("Failed to start chase server on port " + $$2));
-            g = null;
+   private static boolean a(Stack<alz.b> $$0) {
+      for (int $$1 = 0; $$1 <= 2; $$1++) {
+         alz.b $$2 = (alz.b)$$0.peek($$1);
+         if ($$2 == alz.b.a) {
+            return true;
          }
 
-         return 0;
+         if ($$2 == alz.b.b) {
+            return false;
+         }
       }
+
+      return false;
    }
 
-   private static int b(ee $$0, String $$1, int $$2) {
-      if (b($$0)) {
-         return 0;
-      } else {
-         h = new alq($$1, $$2, $$0.l());
-         h.a();
-         $$0.a(
-            () -> wx.b(
-                  "You are now chasing "
-                     + $$1
-                     + ":"
-                     + $$2
-                     + ". If that server does '/chase lead' then you will automatically go to the same position. Use '/chase stop' to stop chasing."
-               ),
-            false
-         );
-         return 0;
+   private static boolean a(ag $$0, Stack<alz.b> $$1, Predicate<ag> $$2, alz.a $$3) {
+      boolean $$4 = $$2.test($$0);
+      alz.b $$5 = a($$0.a(), $$4);
+      boolean $$6 = $$4;
+      $$1.push($$5);
+
+      for (ag $$7 : $$0.e()) {
+         $$6 |= a($$7, $$1, $$2, $$3);
       }
+
+      boolean $$8 = $$6 || a($$1);
+      $$1.pop();
+      $$3.accept($$0, $$8);
+      return $$6;
+   }
+
+   public static void a(ag $$0, Predicate<ag> $$1, alz.a $$2) {
+      ag $$3 = $$0.d();
+      Stack<alz.b> $$4 = new ObjectArrayList();
+
+      for (int $$5 = 0; $$5 <= 2; $$5++) {
+         $$4.push(alz.b.c);
+      }
+
+      a($$3, $$4, $$1, $$2);
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void accept(ag var1, boolean var2);
+   }
+
+   static enum b {
+      a,
+      b,
+      c;
    }
 }

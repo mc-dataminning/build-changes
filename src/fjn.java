@@ -1,130 +1,110 @@
-import java.util.function.Consumer;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.Arrays;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public class fjn implements fjo {
-   public static final int a = 33;
-   private static final int b = 30;
-   private final fjl c = new fjl();
-   private final fjl d = new fjl();
-   private final fjl e = new fjl();
-   private final flz f;
-   private int g;
-   private int h;
+public class fjn<T> {
+   private static final int a = 8;
+   private static final int b = 256;
+   private static final int c = 255;
+   private static final int d = 4351;
+   private static final int e = 4352;
+   private final T[] f;
+   private final T[][] g;
+   private final IntFunction<T[]> h;
 
-   public fjn(flz $$0) {
-      this($$0, 33);
-   }
-
-   public fjn(flz $$0, int $$1) {
-      this($$0, $$1, $$1);
-   }
-
-   public fjn(flz $$0, int $$1, int $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.c.c().a(0.5F, 0.5F);
-      this.d.c().a(0.5F, 0.5F);
-   }
-
-   @Override
-   public void m(int $$0) {
-   }
-
-   @Override
-   public void n(int $$0) {
-   }
-
-   @Override
-   public int C() {
-      return 0;
-   }
-
-   @Override
-   public int D() {
-      return 0;
-   }
-
-   @Override
-   public int x() {
-      return this.f.n;
-   }
-
-   @Override
-   public int v() {
-      return this.f.o;
-   }
-
-   public int b() {
-      return this.h;
-   }
-
-   public void a(int $$0) {
+   public fjn(IntFunction<T[]> $$0, IntFunction<T[][]> $$1) {
+      this.f = (T[])((Object[])$$0.apply(256));
+      this.g = (T[][])((Object[][])$$1.apply(4352));
+      Arrays.fill(this.g, this.f);
       this.h = $$0;
    }
 
-   public void b(int $$0) {
-      this.g = $$0;
-   }
-
-   public int c() {
-      return this.g;
-   }
-
-   public int d() {
-      return this.f.o - this.c() - this.b();
-   }
-
-   @Override
-   public void b(Consumer<fjp> $$0) {
-      this.c.b($$0);
-      this.e.b($$0);
-      this.d.b($$0);
-   }
-
-   @Override
    public void a() {
-      int $$0 = this.c();
-      int $$1 = this.b();
-      this.c.b(this.f.n);
-      this.c.a($$0);
-      this.c.c(0, 0);
-      this.c.a();
-      this.d.b(this.f.n);
-      this.d.a($$1);
-      this.d.a();
-      this.d.n(this.f.o - $$1);
-      this.e.b(this.f.n);
-      this.e.a();
-      int $$2 = $$0 + 30;
-      int $$3 = this.f.o - $$1 - this.e.v();
-      this.e.c(0, Math.min($$2, $$3));
+      Arrays.fill(this.g, this.f);
    }
 
-   public <T extends fjp> T a(T $$0) {
-      return this.c.a($$0);
+   @Nullable
+   public T a(int $$0) {
+      int $$1 = $$0 >> 8;
+      int $$2 = $$0 & 0xFF;
+      return this.g[$$1][$$2];
    }
 
-   public <T extends fjp> T a(T $$0, Consumer<fjq> $$1) {
-      return this.c.a($$0, $$1);
+   @Nullable
+   public T a(int $$0, T $$1) {
+      int $$2 = $$0 >> 8;
+      int $$3 = $$0 & 0xFF;
+      T[] $$4 = this.g[$$2];
+      if ($$4 == this.f) {
+         $$4 = (T[])((Object[])this.h.apply(256));
+         this.g[$$2] = $$4;
+         $$4[$$3] = $$1;
+         return null;
+      } else {
+         T $$5 = $$4[$$3];
+         $$4[$$3] = $$1;
+         return $$5;
+      }
    }
 
-   public void a(wx $$0, ffl $$1) {
-      this.c.a(new fhh($$0, $$1));
+   public T a(int $$0, IntFunction<T> $$1) {
+      int $$2 = $$0 >> 8;
+      int $$3 = $$0 & 0xFF;
+      T[] $$4 = this.g[$$2];
+      T $$5 = $$4[$$3];
+      if ($$5 != null) {
+         return $$5;
+      } else {
+         if ($$4 == this.f) {
+            $$4 = (T[])((Object[])this.h.apply(256));
+            this.g[$$2] = $$4;
+         }
+
+         T $$6 = $$1.apply($$0);
+         $$4[$$3] = $$6;
+         return $$6;
+      }
    }
 
-   public <T extends fjp> T b(T $$0) {
-      return this.d.a($$0);
+   @Nullable
+   public T b(int $$0) {
+      int $$1 = $$0 >> 8;
+      int $$2 = $$0 & 0xFF;
+      T[] $$3 = this.g[$$1];
+      if ($$3 == this.f) {
+         return null;
+      } else {
+         T $$4 = $$3[$$2];
+         $$3[$$2] = null;
+         return $$4;
+      }
    }
 
-   public <T extends fjp> T b(T $$0, Consumer<fjq> $$1) {
-      return this.d.a($$0, $$1);
+   public void a(fjn.a<T> $$0) {
+      for (int $$1 = 0; $$1 < this.g.length; $$1++) {
+         T[] $$2 = this.g[$$1];
+         if ($$2 != this.f) {
+            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+               T $$4 = $$2[$$3];
+               if ($$4 != null) {
+                  int $$5 = $$1 << 8 | $$3;
+                  $$0.accept($$5, $$4);
+               }
+            }
+         }
+      }
    }
 
-   public <T extends fjp> T c(T $$0) {
-      return this.e.a($$0);
+   public IntSet b() {
+      IntOpenHashSet $$0 = new IntOpenHashSet();
+      this.a(($$1, $$2) -> $$0.add($$1));
+      return $$0;
    }
 
-   public <T extends fjp> T c(T $$0, Consumer<fjq> $$1) {
-      return this.e.a($$0, $$1);
+   @FunctionalInterface
+   public interface a<T> {
+      void accept(int var1, T var2);
    }
 }

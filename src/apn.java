@@ -1,205 +1,120 @@
-import com.google.common.base.MoreObjects;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.Writer;
-import java.nio.charset.CharacterCodingException;
-import java.nio.charset.CharsetDecoder;
-import java.nio.charset.CodingErrorAction;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Objects;
-import java.util.Properties;
-import java.util.function.Function;
-import java.util.function.IntFunction;
-import java.util.function.Supplier;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.authlib.GameProfile;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
 
-public abstract class apn<T extends apn<T>> {
-   private static final Logger a = LogUtils.getLogger();
-   protected final Properties ab;
+public class apn {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xl.c("commands.whitelist.alreadyOn"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xl.c("commands.whitelist.alreadyOff"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xl.c("commands.whitelist.add.failed"));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(xl.c("commands.whitelist.remove.failed"));
 
-   public apn(Properties $$0) {
-      this.ab = $$0;
+   public static void a(CommandDispatcher<ep> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a(
+                                 "whitelist"
+                              )
+                              .requires($$0x -> $$0x.c(3)))
+                           .then(eq.a("on").executes($$0x -> b((ep)$$0x.getSource()))))
+                        .then(eq.a("off").executes($$0x -> c((ep)$$0x.getSource()))))
+                     .then(eq.a("list").executes($$0x -> d((ep)$$0x.getSource()))))
+                  .then(eq.a("add").then(eq.a("targets", fe.a()).suggests(($$0x, $$1) -> {
+                     auz $$2 = ((ep)$$0x.getSource()).l().ah();
+                     return eu.b($$2.t().stream().filter($$1x -> !$$2.i().a($$1x.gb())).map($$0xx -> $$0xx.gb().getName()), $$1);
+                  }).executes($$0x -> a((ep)$$0x.getSource(), fe.a($$0x, "targets"))))))
+               .then(
+                  eq.a("remove")
+                     .then(
+                        eq.a("targets", fe.a())
+                           .suggests(($$0x, $$1) -> eu.a(((ep)$$0x.getSource()).l().ah().j(), $$1))
+                           .executes($$0x -> b((ep)$$0x.getSource(), fe.a($$0x, "targets")))
+                     )
+               ))
+            .then(eq.a("reload").executes($$0x -> a((ep)$$0x.getSource())))
+      );
    }
 
-   public static Properties b(Path $$0) {
-      try {
-         try {
-            Properties var13;
-            try (InputStream $$1 = Files.newInputStream($$0)) {
-               CharsetDecoder $$2 = StandardCharsets.UTF_8
-                  .newDecoder()
-                  .onMalformedInput(CodingErrorAction.REPORT)
-                  .onUnmappableCharacter(CodingErrorAction.REPORT);
-               Properties $$3 = new Properties();
-               $$3.load(new InputStreamReader($$1, $$2));
-               var13 = $$3;
-            }
+   private static int a(ep $$0) {
+      $$0.l().ah().a();
+      $$0.a(() -> xl.c("commands.whitelist.reloaded"), true);
+      $$0.l().a($$0);
+      return 1;
+   }
 
-            return var13;
-         } catch (CharacterCodingException var9) {
-            a.info("Failed to load properties as UTF-8 from file {}, trying ISO_8859_1", $$0);
+   private static int a(ep $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      avh $$2 = $$0.l().ah().i();
+      int $$3 = 0;
 
-            Properties var4;
-            try (Reader $$5 = Files.newBufferedReader($$0, StandardCharsets.ISO_8859_1)) {
-               Properties $$6 = new Properties();
-               $$6.load($$5);
-               var4 = $$6;
-            }
-
-            return var4;
+      for (GameProfile $$4 : $$1) {
+         if (!$$2.a($$4)) {
+            avi $$5 = new avi($$4);
+            $$2.a($$5);
+            $$0.a(() -> xl.a("commands.whitelist.add.success", xl.b($$4.getName())), true);
+            $$3++;
          }
-      } catch (IOException var10) {
-         a.error("Failed to load properties from file: {}", $$0, var10);
-         return new Properties();
       }
-   }
 
-   public void c(Path $$0) {
-      try (Writer $$1 = Files.newBufferedWriter($$0, StandardCharsets.UTF_8)) {
-         this.ab.store($$1, "Minecraft server properties");
-      } catch (IOException var7) {
-         a.error("Failed to store properties to file: {}", $$0);
-      }
-   }
-
-   private static <V extends Number> Function<String, V> a(Function<String, V> $$0) {
-      return $$1 -> {
-         try {
-            return $$0.apply($$1);
-         } catch (NumberFormatException var3) {
-            return null;
-         }
-      };
-   }
-
-   protected static <V> Function<String, V> a(IntFunction<V> $$0, Function<String, V> $$1) {
-      return $$2 -> {
-         try {
-            return $$0.apply(Integer.parseInt($$2));
-         } catch (NumberFormatException var4) {
-            return $$1.apply($$2);
-         }
-      };
-   }
-
-   @Nullable
-   private String c(String $$0) {
-      return (String)this.ab.get($$0);
-   }
-
-   @Nullable
-   protected <V> V a(String $$0, Function<String, V> $$1) {
-      String $$2 = this.c($$0);
-      if ($$2 == null) {
-         return null;
+      if ($$3 == 0) {
+         throw c.create();
       } else {
-         this.ab.remove($$0);
-         return $$1.apply($$2);
+         return $$3;
       }
    }
 
-   protected <V> V a(String $$0, Function<String, V> $$1, Function<V, String> $$2, V $$3) {
-      String $$4 = this.c($$0);
-      V $$5 = (V)MoreObjects.firstNonNull($$4 != null ? $$1.apply($$4) : null, $$3);
-      this.ab.put($$0, $$2.apply($$5));
-      return $$5;
-   }
+   private static int b(ep $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      avh $$2 = $$0.l().ah().i();
+      int $$3 = 0;
 
-   protected <V> apn<T>.a<V> b(String $$0, Function<String, V> $$1, Function<V, String> $$2, V $$3) {
-      String $$4 = this.c($$0);
-      V $$5 = (V)MoreObjects.firstNonNull($$4 != null ? $$1.apply($$4) : null, $$3);
-      this.ab.put($$0, $$2.apply($$5));
-      return new apn.a<>($$0, $$5, $$2);
-   }
-
-   protected <V> V a(String $$0, Function<String, V> $$1, UnaryOperator<V> $$2, Function<V, String> $$3, V $$4) {
-      return this.a($$0, $$2x -> {
-         V $$3x = $$1.apply($$2x);
-         return $$3x != null ? $$2.apply($$3x) : null;
-      }, $$3, $$4);
-   }
-
-   protected <V> V a(String $$0, Function<String, V> $$1, V $$2) {
-      return this.a($$0, $$1, Objects::toString, $$2);
-   }
-
-   protected <V> apn<T>.a<V> b(String $$0, Function<String, V> $$1, V $$2) {
-      return this.b($$0, $$1, Objects::toString, $$2);
-   }
-
-   protected String a(String $$0, String $$1) {
-      return this.a($$0, Function.identity(), Function.identity(), $$1);
-   }
-
-   @Nullable
-   protected String a(String $$0) {
-      return this.a($$0, Function.identity());
-   }
-
-   protected int a(String $$0, int $$1) {
-      return this.a($$0, a(Integer::parseInt), Integer.valueOf($$1));
-   }
-
-   protected apn<T>.a<Integer> b(String $$0, int $$1) {
-      return this.b($$0, a(Integer::parseInt), $$1);
-   }
-
-   protected int a(String $$0, UnaryOperator<Integer> $$1, int $$2) {
-      return this.a($$0, a(Integer::parseInt), $$1, Objects::toString, $$2);
-   }
-
-   protected long a(String $$0, long $$1) {
-      return this.a($$0, a(Long::parseLong), $$1);
-   }
-
-   protected boolean a(String $$0, boolean $$1) {
-      return this.a($$0, Boolean::valueOf, $$1);
-   }
-
-   protected apn<T>.a<Boolean> b(String $$0, boolean $$1) {
-      return this.b($$0, Boolean::valueOf, $$1);
-   }
-
-   @Nullable
-   protected Boolean b(String $$0) {
-      return this.a($$0, Boolean::valueOf);
-   }
-
-   protected Properties a() {
-      Properties $$0 = new Properties();
-      $$0.putAll(this.ab);
-      return $$0;
-   }
-
-   protected abstract T b(jl var1, Properties var2);
-
-   public class a<V> implements Supplier<V> {
-      private final String b;
-      private final V c;
-      private final Function<V, String> d;
-
-      a(String $$1, V $$2, Function<V, String> $$3) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+      for (GameProfile $$4 : $$1) {
+         if ($$2.a($$4)) {
+            avi $$5 = new avi($$4);
+            $$2.b($$5);
+            $$0.a(() -> xl.a("commands.whitelist.remove.success", xl.b($$4.getName())), true);
+            $$3++;
+         }
       }
 
-      @Override
-      public V get() {
-         return this.c;
+      if ($$3 == 0) {
+         throw d.create();
+      } else {
+         $$0.l().a($$0);
+         return $$3;
+      }
+   }
+
+   private static int b(ep $$0) throws CommandSyntaxException {
+      auz $$1 = $$0.l().ah();
+      if ($$1.o()) {
+         throw a.create();
+      } else {
+         $$1.a(true);
+         $$0.a(() -> xl.c("commands.whitelist.enabled"), true);
+         $$0.l().a($$0);
+         return 1;
+      }
+   }
+
+   private static int c(ep $$0) throws CommandSyntaxException {
+      auz $$1 = $$0.l().ah();
+      if (!$$1.o()) {
+         throw b.create();
+      } else {
+         $$1.a(false);
+         $$0.a(() -> xl.c("commands.whitelist.disabled"), true);
+         return 1;
+      }
+   }
+
+   private static int d(ep $$0) {
+      String[] $$1 = $$0.l().ah().j();
+      if ($$1.length == 0) {
+         $$0.a(() -> xl.c("commands.whitelist.none"), false);
+      } else {
+         $$0.a(() -> xl.a("commands.whitelist.list", $$1.length, String.join(", ", $$1)), false);
       }
 
-      public T a(jl $$0, V $$1) {
-         Properties $$2 = apn.this.a();
-         $$2.put(this.b, this.d.apply($$1));
-         return apn.this.b($$0, $$2);
-      }
+      return $$1.length;
    }
 }

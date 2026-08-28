@@ -1,15 +1,73 @@
-import java.util.Locale;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.UnaryOperator;
 
-public class yj extends IllegalArgumentException {
-   public yj(yi $$0, String $$1) {
-      super(String.format(Locale.ROOT, "Error parsing: %s: %s", $$0, $$1));
+public class yj {
+   private final String a;
+   private final List<yi> b;
+   private final Int2IntFunction c;
+
+   private yj(String $$0, List<yi> $$1, Int2IntFunction $$2) {
+      this.a = $$0;
+      this.b = ImmutableList.copyOf($$1);
+      this.c = $$2;
    }
 
-   public yj(yi $$0, int $$1) {
-      super(String.format(Locale.ROOT, "Invalid index %d requested for %s", $$1, $$0));
+   public String a() {
+      return this.a;
    }
 
-   public yj(yi $$0, Throwable $$1) {
-      super(String.format(Locale.ROOT, "Error while parsing: %s", $$0), $$1);
+   public List<ayg> a(int $$0, int $$1, boolean $$2) {
+      if ($$1 == 0) {
+         return ImmutableList.of();
+      } else {
+         List<ayg> $$3 = Lists.newArrayList();
+         yi $$4 = this.b.get($$0);
+         int $$5 = $$0;
+
+         for (int $$6 = 1; $$6 < $$1; $$6++) {
+            int $$7 = $$0 + $$6;
+            yi $$8 = this.b.get($$7);
+            if (!$$8.equals($$4)) {
+               String $$9 = this.a.substring($$5, $$7);
+               $$3.add($$2 ? ayg.backward($$9, $$4, this.c) : ayg.forward($$9, $$4));
+               $$4 = $$8;
+               $$5 = $$7;
+            }
+         }
+
+         if ($$5 < $$0 + $$1) {
+            String $$10 = this.a.substring($$5, $$0 + $$1);
+            $$3.add($$2 ? ayg.backward($$10, $$4, this.c) : ayg.forward($$10, $$4));
+         }
+
+         return $$2 ? Lists.reverse($$3) : $$3;
+      }
+   }
+
+   public static yj a(xq $$0) {
+      return a($$0, $$0x -> $$0x, $$0x -> $$0x);
+   }
+
+   public static yj a(xq $$0, Int2IntFunction $$1, UnaryOperator<String> $$2) {
+      StringBuilder $$3 = new StringBuilder();
+      List<yi> $$4 = Lists.newArrayList();
+      $$0.a(($$2x, $$3x) -> {
+         azo.c($$3x, $$2x, ($$2xx, $$3xx, $$4x) -> {
+            $$3.appendCodePoint($$4x);
+            int $$5 = Character.charCount($$4x);
+
+            for (int $$6 = 0; $$6 < $$5; $$6++) {
+               $$4.add($$3xx);
+            }
+
+            return true;
+         });
+         return Optional.empty();
+      }, yi.a);
+      return new yj($$2.apply($$3.toString()), $$4, $$1);
    }
 }

@@ -1,18 +1,50 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public class fct {
-   private static final Long2ObjectMap<String> a = new Long2ObjectOpenHashMap();
+public class fct extends gvb {
+   private static final xl a = xl.c("mco.account.privacy.information");
+   private static final int b = 15;
+   private final fkq c = fkq.d();
+   private final fmy B;
+   @Nullable
+   private fht C;
 
-   public static String a(long $$0) {
-      return (String)a.get($$0);
+   public fct(fmy $$0) {
+      super(fes.a);
+      this.B = $$0;
    }
 
-   public static void b(long $$0) {
-      a.remove($$0);
+   @Override
+   public void aN_() {
+      this.c.a(15).c().b();
+      this.C = new fht(a, this.p).b(true);
+      this.c.a(this.C);
+      fkq $$0 = this.c.a(fkq.e().a(8));
+      xl $$1 = xl.c("mco.account.privacy.info.button");
+      $$0.a(fgz.a($$1, flp.b(this, "https://aka.ms/MinecraftGDPR")).a());
+      $$0.a(fgz.a(xk.k, $$0x -> this.d()).a());
+      this.c.a($$1x -> {
+         fgx var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
-   public static void a(long $$0, String $$1) {
-      a.put($$0, $$1);
+   @Override
+   public void d() {
+      this.m.a(this.B);
+   }
+
+   @Override
+   protected void c() {
+      if (this.C != null) {
+         this.C.d(this.n - 15);
+      }
+
+      this.c.a();
+      fkk.a(this.c, this.G());
+   }
+
+   @Override
+   public xl i() {
+      return a;
    }
 }

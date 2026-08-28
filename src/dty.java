@@ -1,159 +1,141 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.Collections;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.util.Arrays;
 import javax.annotation.Nullable;
 
 public class dty {
-   public static final int a = 8;
-   private static final EnumSet<dwv.a> o = EnumSet.of(dwv.a.c, dwv.a.a);
-   public static final EnumSet<dwv.a> b = EnumSet.of(dwv.a.d, dwv.a.b, dwv.a.e, dwv.a.f);
-   public static final dty c = a("empty", null, -1, false, o, dua.a, dtz::a, dtz::a);
-   public static final dty d = a("structure_starts", c, 0, false, o, dua.a, dtz::b, dtz::b);
-   public static final dty e = a("structure_references", d, 8, false, o, dua.a, dtz::c, dtz::a);
-   public static final dty f = a("biomes", e, 8, false, o, dua.a, dtz::d, dtz::a);
-   public static final dty g = a("noise", f, 8, false, o, dua.a, dtz::e, dtz::a);
-   public static final dty h = a("surface", g, 8, false, o, dua.a, dtz::f, dtz::a);
-   public static final dty i = a("carvers", h, 8, false, b, dua.a, dtz::g, dtz::a);
-   public static final dty j = a("features", i, 8, false, b, dua.a, dtz::h, dtz::a);
-   public static final dty k = a("initialize_light", j, 0, false, b, dua.a, dtz::i, dtz::c);
-   public static final dty l = a("light", k, 1, true, b, dua.a, dtz::j, dtz::d);
-   public static final dty m = a("spawn", l, 1, false, b, dua.a, dtz::k, dtz::a);
-   public static final dty n = a("full", m, 0, false, b, dua.b, dtz::l, dtz::e);
-   private static final List<dty> p = ImmutableList.of(n, k, i, f, d, d, d, d, d, d, d, d, new dty[0]);
-   private static final IntList q = ac.a(new IntArrayList(a().size()), $$0 -> {
-      int $$1 = 0;
+   public static final int a = 16;
+   public static final int b = 128;
+   public static final int c = 2048;
+   private static final int e = 4;
+   @Nullable
+   protected byte[] d;
+   private int f;
 
-      for (int $$2 = a().size() - 1; $$2 >= 0; $$2--) {
-         while ($$1 + 1 < p.size() && $$2 <= p.get($$1 + 1).c()) {
-            $$1++;
-         }
-
-         $$0.add(0, $$1);
-      }
-   });
-   private final int r;
-   private final dty s;
-   private final dty.a t;
-   private final dty.b u;
-   private final int v;
-   private final boolean w;
-   private final dua x;
-   private final EnumSet<dwv.a> y;
-
-   private static dty a(String $$0, @Nullable dty $$1, int $$2, boolean $$3, EnumSet<dwv.a> $$4, dua $$5, dty.a $$6, dty.b $$7) {
-      return jk.a(le.n, $$0, new dty($$1, $$2, $$3, $$4, $$5, $$6, $$7));
+   public dty() {
+      this(0);
    }
 
-   public static List<dty> a() {
-      List<dty> $$0 = Lists.newArrayList();
-
-      dty $$1;
-      for ($$1 = n; $$1.d() != $$1; $$1 = $$1.d()) {
-         $$0.add($$1);
-      }
-
-      $$0.add($$1);
-      Collections.reverse($$0);
-      return $$0;
+   public dty(int $$0) {
+      this.f = $$0;
    }
 
-   public static dty a(int $$0) {
-      if ($$0 >= p.size()) {
-         return c;
+   public dty(byte[] $$0) {
+      this.d = $$0;
+      this.f = 0;
+      if ($$0.length != 2048) {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("DataLayer should be 2048 bytes not: " + $$0.length));
+      }
+   }
+
+   public int a(int $$0, int $$1, int $$2) {
+      return this.d(b($$0, $$1, $$2));
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.a(b($$0, $$1, $$2), $$3);
+   }
+
+   private static int b(int $$0, int $$1, int $$2) {
+      return $$1 << 8 | $$2 << 4 | $$0;
+   }
+
+   private int d(int $$0) {
+      if (this.d == null) {
+         return this.f;
       } else {
-         return $$0 < 0 ? n : p.get($$0);
+         int $$1 = f($$0);
+         int $$2 = e($$0);
+         return this.d[$$1] >> 4 * $$2 & 15;
       }
    }
 
-   public static int b() {
-      return p.size();
+   private void a(int $$0, int $$1) {
+      byte[] $$2 = this.a();
+      int $$3 = f($$0);
+      int $$4 = e($$0);
+      int $$5 = ~(15 << 4 * $$4);
+      int $$6 = ($$1 & 15) << 4 * $$4;
+      $$2[$$3] = (byte)($$2[$$3] & $$5 | $$6);
    }
 
-   public static int a(dty $$0) {
-      return q.getInt($$0.c());
+   private static int e(int $$0) {
+      return $$0 & 1;
    }
 
-   dty(@Nullable dty $$0, int $$1, boolean $$2, EnumSet<dwv.a> $$3, dua $$4, dty.a $$5, dty.b $$6) {
-      this.s = $$0 == null ? this : $$0;
-      this.t = $$5;
-      this.u = $$6;
-      this.v = $$1;
-      this.w = $$2;
-      this.x = $$4;
-      this.y = $$3;
-      this.r = $$0 == null ? 0 : $$0.c() + 1;
+   private static int f(int $$0) {
+      return $$0 >> 1;
    }
 
-   public int c() {
-      return this.r;
+   public void a(int $$0) {
+      this.f = $$0;
+      this.d = null;
    }
 
-   public dty d() {
-      return this.s;
+   private static byte g(int $$0) {
+      byte $$1 = (byte)$$0;
+
+      for (int $$2 = 4; $$2 < 8; $$2 += 4) {
+         $$1 = (byte)($$1 | $$0 << $$2);
+      }
+
+      return $$1;
    }
 
-   public CompletableFuture<dsz> a(duc $$0, Executor $$1, dub $$2, List<dsz> $$3) {
-      dsz $$4 = $$3.get($$3.size() / 2);
-      bmt $$5 = bmq.f.a($$4.f(), $$0.a().ae(), this.toString());
-      return this.t.doWork($$0, this, $$1, $$2, $$3, $$4).thenApply($$1x -> {
-         if ($$1x instanceof dtt $$2x && !$$2x.j().b(this)) {
-            $$2x.a(this);
+   public byte[] a() {
+      if (this.d == null) {
+         this.d = new byte[2048];
+         if (this.f != 0) {
+            Arrays.fill(this.d, g(this.f));
          }
+      }
 
-         if ($$5 != null) {
-            $$5.finish();
-         }
-
-         return $$1x;
-      });
+      return this.d;
    }
 
-   public CompletableFuture<dsz> a(duc $$0, dub $$1, dsz $$2) {
-      return this.u.doWork($$0, this, $$1, $$2);
-   }
-
-   public int e() {
-      return this.v;
-   }
-
-   public boolean f() {
-      return this.w;
-   }
-
-   public dua g() {
-      return this.x;
-   }
-
-   public static dty a(String $$0) {
-      return le.n.a(akn.a($$0));
-   }
-
-   public EnumSet<dwv.a> h() {
-      return this.y;
-   }
-
-   public boolean b(dty $$0) {
-      return this.c() >= $$0.c();
+   public dty b() {
+      return this.d == null ? new dty(this.f) : new dty((byte[])this.d.clone());
    }
 
    @Override
    public String toString() {
-      return le.n.b(this).toString();
+      StringBuilder $$0 = new StringBuilder();
+
+      for (int $$1 = 0; $$1 < 4096; $$1++) {
+         $$0.append(Integer.toHexString(this.d($$1)));
+         if (($$1 & 15) == 15) {
+            $$0.append("\n");
+         }
+
+         if (($$1 & 0xFF) == 255) {
+            $$0.append("\n");
+         }
+      }
+
+      return $$0.toString();
    }
 
-   @FunctionalInterface
-   protected interface a {
-      CompletableFuture<dsz> doWork(duc var1, dty var2, Executor var3, dub var4, List<dsz> var5, dsz var6);
+   @azy
+   public String b(int $$0) {
+      StringBuilder $$1 = new StringBuilder();
+
+      for (int $$2 = 0; $$2 < 256; $$2++) {
+         $$1.append(Integer.toHexString(this.d($$2)));
+         if (($$2 & 15) == 15) {
+            $$1.append("\n");
+         }
+      }
+
+      return $$1.toString();
    }
 
-   @FunctionalInterface
-   protected interface b {
-      CompletableFuture<dsz> doWork(duc var1, dty var2, dub var3, dsz var4);
+   public boolean c() {
+      return this.d == null;
+   }
+
+   public boolean c(int $$0) {
+      return this.d == null && this.f == $$0;
+   }
+
+   public boolean d() {
+      return this.d == null && this.f == 0;
    }
 }

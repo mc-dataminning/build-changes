@@ -1,21 +1,17 @@
-public enum oe {
-   a("building_blocks"),
-   b("decorations"),
-   c("redstone"),
-   d("transportation"),
-   e("tools"),
-   f("combat"),
-   g("food"),
-   h("brewing"),
-   i("misc");
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.function.Supplier;
 
-   private final String j;
+public class oe implements Supplier<JsonElement> {
+   private final alb a;
 
-   private oe(String $$0) {
-      this.j = $$0;
+   public oe(alb $$0) {
+      this.a = $$0;
    }
 
-   public String a() {
-      return this.j;
+   public JsonElement a() {
+      JsonObject $$0 = new JsonObject();
+      $$0.addProperty("parent", this.a.toString());
+      return $$0;
    }
 }

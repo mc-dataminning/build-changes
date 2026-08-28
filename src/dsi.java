@@ -1,25 +1,16 @@
-public enum dsi implements ayz {
-   a("up"),
-   b("side"),
-   c("none");
+public enum dsi implements azp {
+   a("floor"),
+   b("wall"),
+   c("ceiling");
 
    private final String d;
 
-   private dsi(String $$0) {
+   private dsi(final String $$0) {
       this.d = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.c();
    }
 
    @Override
    public String c() {
       return this.d;
-   }
-
-   public boolean a() {
-      return this != c;
    }
 }

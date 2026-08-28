@@ -1,66 +1,30 @@
-public class fzj extends gag {
-   fzj(fwr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
+
+public class fzj {
+   public static final fzj a = new fzj(fzi.b, fzk.createDnsSrvRedirectHandler(), fzf.a());
+   private final fzi b;
+   private final fzk c;
+   private final fzf d;
+
+   @VisibleForTesting
+   fzj(fzi $$0, fzk $$1, fzf $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public gac b() {
-      return gac.b;
-   }
+   public Optional<fzg> a(fzh $$0) {
+      Optional<fzg> $$1 = this.b.resolve($$0);
+      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
+         Optional<fzh> $$2 = this.c.lookupRedirect($$0);
+         if ($$2.isPresent()) {
+            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
+         }
 
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
-   }
-
-   @Override
-   public float b(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      return this.D * (1.0F - $$1 * $$1 * 0.5F);
-   }
-
-   @Override
-   public int a(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      $$1 = ayf.a($$1, 0.0F, 1.0F);
-      int $$2 = super.a($$0);
-      int $$3 = $$2 & 0xFF;
-      int $$4 = $$2 >> 16 & 0xFF;
-      $$3 += (int)($$1 * 15.0F * 16.0F);
-      if ($$3 > 240) {
-         $$3 = 240;
-      }
-
-      return $$3 | $$4 << 16;
-   }
-
-   public static class a implements gab<lb> {
-      private final gat a;
-
-      public a(gat $$0) {
-         this.a = $$0;
-      }
-
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fzj $$8 = new fzj($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
-
-   public static class b implements gab<lb> {
-      private final gat a;
-
-      public b(gat $$0) {
-         this.a = $$0;
-      }
-
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fzj $$8 = new fzj($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         $$8.d(0.5F);
-         return $$8;
+         return $$1;
+      } else {
+         return Optional.empty();
       }
    }
 }

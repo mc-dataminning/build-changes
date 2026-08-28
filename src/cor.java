@@ -1,117 +1,192 @@
-public class cor {
-   private int a = 20;
-   private float b;
-   private float c;
-   private int d;
-   private int e = 20;
+import javax.annotation.Nullable;
 
-   public cor() {
-      this.b = 5.0F;
+public class cor extends coq implements btd, cos {
+   private static final int i = 27;
+   private jr<cuk> j = jr.a(27, cuk.l);
+   @Nullable
+   private ala<eqi> k;
+   private long l;
+
+   public cor(bsv<? extends coq> $$0, dbt $$1) {
+      super($$0, $$1);
    }
 
-   public void a(int $$0, float $$1) {
-      this.a = Math.min($$0 + this.a, 20);
-      this.b = Math.min(this.b + (float)$$0 * $$1 * 2.0F, (float)this.a);
+   public cor(dbt $$0, double $$1, double $$2, double $$3) {
+      super(bsv.r, $$0);
+      this.a_($$1, $$2, $$3);
+      this.L = $$1;
+      this.M = $$2;
+      this.N = $$3;
    }
 
-   public void a(ctq $$0) {
-      cos $$1 = $$0.a(kb.u);
-      if ($$1 != null) {
-         this.a($$1.b(), $$1.c());
+   @Override
+   protected float w() {
+      return 0.15F;
+   }
+
+   @Override
+   protected int y() {
+      return 1;
+   }
+
+   @Override
+   protected void b(ur $$0) {
+      super.b($$0);
+      this.a($$0, this.dR());
+   }
+
+   @Override
+   protected void a(ur $$0) {
+      super.a($$0);
+      this.b($$0, this.dR());
+   }
+
+   @Override
+   public void a(bri $$0) {
+      this.b(this.ah_());
+      this.a($$0, this.dP(), this);
+   }
+
+   @Override
+   public void a(bsp.c $$0) {
+      if (!this.dP().B && $$0.a()) {
+         bql.a(this.dP(), this, this);
       }
+
+      super.a($$0);
    }
 
-   public void a(cly $$0) {
-      bpt $$1 = $$0.dP().ak();
-      this.e = this.a;
-      if (this.c > 4.0F) {
-         this.c -= 4.0F;
-         if (this.b > 0.0F) {
-            this.b = Math.max(this.b - 1.0F, 0.0F);
-         } else if ($$1 != bpt.a) {
-            this.a = Math.max(this.a - 1, 0);
-         }
-      }
-
-      boolean $$2 = $$0.dP().aa().b(dav.k);
-      if ($$2 && this.b > 0.0F && $$0.gn() && this.a >= 20) {
-         this.d++;
-         if (this.d >= 10) {
-            float $$3 = Math.min(this.b, 6.0F);
-            $$0.c($$3 / 6.0F);
-            this.a($$3);
-            this.d = 0;
-         }
-      } else if ($$2 && this.a >= 18 && $$0.gn()) {
-         this.d++;
-         if (this.d >= 80) {
-            $$0.c(1.0F);
-            this.a(6.0F);
-            this.d = 0;
-         }
-      } else if (this.a <= 0) {
-         this.d++;
-         if (this.d >= 80) {
-            if ($$0.eA() > 10.0F || $$1 == bpt.d || $$0.eA() > 1.0F && $$1 == bpt.c) {
-               $$0.a($$0.dQ().i(), 1.0F);
-            }
-
-            this.d = 0;
-         }
+   @Override
+   public bqp a(cms $$0, bqo $$1) {
+      if (this.r($$0) && !$$0.fR()) {
+         return super.a($$0, $$1);
       } else {
-         this.d = 0;
+         bqp $$2 = this.c_($$0);
+         if ($$2.a()) {
+            this.a(dwq.k, $$0);
+            clj.a($$0, true);
+         }
+
+         return $$2;
       }
    }
 
-   public void a(ud $$0) {
-      if ($$0.b("foodLevel", 99)) {
-         this.a = $$0.h("foodLevel");
-         this.d = $$0.h("foodTickTimer");
-         this.b = $$0.j("foodSaturationLevel");
-         this.c = $$0.j("foodExhaustionLevel");
+   @Override
+   public void b(cms $$0) {
+      $$0.a(this);
+      if (!$$0.dP().B) {
+         this.a(dwq.k, $$0);
+         clj.a($$0, true);
       }
    }
 
-   public void b(ud $$0) {
-      $$0.a("foodLevel", this.a);
-      $$0.a("foodTickTimer", this.d);
-      $$0.a("foodSaturationLevel", this.b);
-      $$0.a("foodExhaustionLevel", this.c);
+   @Override
+   public cuf ah_() {
+      return switch (this.x()) {
+         case b -> cun.nX;
+         case c -> cun.nZ;
+         case d -> cun.ob;
+         case e -> cun.od;
+         case f -> cun.of;
+         case g -> cun.oh;
+         case h -> cun.oj;
+         case i -> cun.ol;
+         default -> cun.nV;
+      };
    }
 
-   public int a() {
-      return this.a;
+   @Override
+   public void a() {
+      this.f();
    }
 
+   @Override
    public int b() {
-      return this.e;
+      return 27;
    }
 
-   public boolean c() {
-      return this.a < 20;
+   @Override
+   public cuk a(int $$0) {
+      return this.f_($$0);
    }
 
-   public void a(float $$0) {
-      this.c = Math.min(this.c + $$0, 40.0F);
+   @Override
+   public cuk a(int $$0, int $$1) {
+      return this.b($$0, $$1);
    }
 
-   public float d() {
-      return this.c;
+   @Override
+   public cuk b(int $$0) {
+      return this.e_($$0);
    }
 
-   public float e() {
-      return this.b;
+   @Override
+   public void a(int $$0, cuk $$1) {
+      this.c($$0, $$1);
    }
 
-   public void a(int $$0) {
-      this.a = $$0;
+   @Override
+   public buc a_(int $$0) {
+      return this.g_($$0);
    }
 
-   public void b(float $$0) {
-      this.b = $$0;
+   @Override
+   public void e() {
    }
 
-   public void c(float $$0) {
-      this.c = $$0;
+   @Override
+   public boolean a(cms $$0) {
+      return this.g($$0);
+   }
+
+   @Nullable
+   @Override
+   public cpp createMenu(int $$0, cmr $$1, cms $$2) {
+      if (this.k != null && $$2.N_()) {
+         return null;
+      } else {
+         this.e($$1.l);
+         return cpw.a($$0, $$1, this);
+      }
+   }
+
+   public void e(@Nullable cms $$0) {
+      this.f($$0);
+   }
+
+   @Nullable
+   @Override
+   public ala<eqi> B() {
+      return this.k;
+   }
+
+   @Override
+   public void a(@Nullable ala<eqi> $$0) {
+      this.k = $$0;
+   }
+
+   @Override
+   public long C() {
+      return this.l;
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.l = $$0;
+   }
+
+   @Override
+   public jr<cuk> D() {
+      return this.j;
+   }
+
+   @Override
+   public void E() {
+      this.j = jr.a(this.b(), cuk.l);
+   }
+
+   @Override
+   public void c(cms $$0) {
+      this.dP().a(dwq.j, this.dn(), dwq.a.a($$0));
    }
 }

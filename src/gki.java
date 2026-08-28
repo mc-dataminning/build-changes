@@ -1,33 +1,41 @@
-public class gki extends giy<cof> {
-   private final gde f;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-   public gki(ght.a $$0) {
-      super($$0, fvv.bG);
-      this.f = $$0.c();
+public class gki extends gjj<btm, fuz<btm>> {
+   private static final Map<bsv<?>, alb> a = ImmutableMap.of(
+      bsv.aA,
+      new alb("textures/entity/piglin/piglin.png"),
+      bsv.bx,
+      new alb("textures/entity/piglin/zombified_piglin.png"),
+      bsv.aB,
+      new alb("textures/entity/piglin/piglin_brute.png")
+   );
+   private static final float i = 1.0019531F;
+
+   public gki(gis.a $$0, fwt $$1, fwt $$2, fwt $$3, boolean $$4) {
+      super($$0, a($$0.f(), $$1, $$4), 0.5F, 1.0019531F, 1.0F, 1.0019531F);
+      this.a(new gmu<>(this, new fuh($$0.a($$2)), new fuh($$0.a($$3)), $$0.g()));
    }
 
-   protected void a(cof $$0, float $$1, drd $$2, eyu $$3, gck $$4, int $$5) {
-      int $$6 = $$0.C();
-      if ($$6 > -1 && (float)$$6 - $$1 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$1 + 1.0F) / 10.0F;
-         $$7 = ayf.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
+   private static fuz<btm> a(fwr $$0, fwt $$1, boolean $$2) {
+      fuz<btm> $$3 = new fuz<>($$0.a($$1));
+      if ($$2) {
+         $$3.a.k = false;
       }
 
-      a(this.f, $$2, $$3, $$4, $$5, $$6 > -1 && $$6 / 5 % 2 == 0);
+      return $$3;
    }
 
-   public static void a(gde $$0, drd $$1, eyu $$2, gck $$3, int $$4, boolean $$5) {
-      int $$6;
-      if ($$5) {
-         $$6 = gnm.a(gnm.a(1.0F), 10);
+   public alb c(btm $$0) {
+      alb $$1 = a.get($$0.ak());
+      if ($$1 == null) {
+         throw new IllegalArgumentException("I don't know what texture to use for " + $$0.ak());
       } else {
-         $$6 = gnm.d;
+         return $$1;
       }
+   }
 
-      $$0.a($$1, $$2, $$3, $$4, $$6);
+   protected boolean d(btm $$0) {
+      return super.a($$0) || $$0 instanceof clh && ((clh)$$0).gq();
    }
 }

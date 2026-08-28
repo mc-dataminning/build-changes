@@ -1,38 +1,37 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.BooleanSupplier;
+import org.joml.Vector3f;
 
-public class ffp {
-   public static final float a = 200.0F;
-   private final List<ffp.a> b = new ArrayList<>();
-
-   public ffp a(ffp.a $$0) {
-      this.b.add($$0);
-      return this;
-   }
-
-   public ffp a(ffp $$0, BooleanSupplier $$1) {
-      return this.a(($$2, $$3) -> {
-         if ($$1.getAsBoolean()) {
-            $$0.b($$2, $$3);
-         }
-      });
-   }
-
-   public void a(ffn $$0, float $$1) {
-      $$0.c().a();
-      this.b($$0, $$1);
-      $$0.c().b();
-   }
-
-   private void b(ffn $$0, float $$1) {
-      for (ffp.a $$2 : this.b) {
-         $$2.render($$0, $$1);
-         $$0.c().a(0.0F, 0.0F, 200.0F);
-      }
-   }
-
+public record ffp(ffp.c a, ffr... b) {
    public interface a {
-      void render(ffn var1, float var2);
+      Vector3f apply(Vector3f var1, float var2, ffr[] var3, int var4, int var5, float var6);
+   }
+
+   public static class b {
+      public static final ffp.a a = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         Vector3f $$6 = $$2[$$3].b();
+         Vector3f $$7 = $$2[$$4].b();
+         return $$6.lerp($$7, $$1, $$0).mul($$5);
+      };
+      public static final ffp.a b = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         Vector3f $$6 = $$2[Math.max(0, $$3 - 1)].b();
+         Vector3f $$7 = $$2[$$3].b();
+         Vector3f $$8 = $$2[$$4].b();
+         Vector3f $$9 = $$2[Math.min($$2.length - 1, $$4 + 1)].b();
+         $$0.set(
+            ayu.a($$1, $$6.x(), $$7.x(), $$8.x(), $$9.x()) * $$5,
+            ayu.a($$1, $$6.y(), $$7.y(), $$8.y(), $$9.y()) * $$5,
+            ayu.a($$1, $$6.z(), $$7.z(), $$8.z(), $$9.z()) * $$5
+         );
+         return $$0;
+      };
+   }
+
+   public interface c {
+      void apply(fwv var1, Vector3f var2);
+   }
+
+   public static class d {
+      public static final ffp.c a = fwv::a;
+      public static final ffp.c b = fwv::b;
+      public static final ffp.c c = fwv::c;
    }
 }

@@ -1,41 +1,28 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.io.File;
+import java.util.Objects;
 
-public class avf {
-   public static final Codec<avf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               avh.b.fieldOf("sound").forGetter($$0x -> $$0x.b),
-               Codec.INT.fieldOf("min_delay").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("max_delay").forGetter($$0x -> $$0x.d),
-               Codec.BOOL.fieldOf("replace_current_music").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, avf::new)
-   );
-   private final ix<avh> b;
-   private final int c;
-   private final int d;
-   private final boolean e;
-
-   public avf(ix<avh> $$0, int $$1, int $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+public class avf extends ave<GameProfile, avg> {
+   public avf(File $$0) {
+      super($$0);
    }
 
-   public ix<avh> a() {
-      return this.b;
+   @Override
+   protected avd<GameProfile> a(JsonObject $$0) {
+      return new avg($$0);
    }
 
-   public int b() {
-      return this.c;
+   public boolean a(GameProfile $$0) {
+      return this.d($$0);
    }
 
-   public int c() {
-      return this.d;
+   @Override
+   public String[] a() {
+      return this.d().stream().map(avd::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
    }
 
-   public boolean d() {
-      return this.e;
+   protected String b(GameProfile $$0) {
+      return $$0.getId().toString();
    }
 }

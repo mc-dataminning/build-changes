@@ -1,154 +1,73 @@
-import com.google.gson.JsonObject;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.SocketAddress;
+import java.util.Comparator;
+import java.util.List;
+import org.apache.commons.io.IOUtils;
 
-public class fai extends faq {
-   public final boolean a;
-   public final boolean b;
-   public final boolean c;
-   public final boolean d;
-   public final int e;
-   public final boolean f;
-   public final boolean g;
-   public final int h;
-   public final int i;
-   private final String o;
-   public final String j;
-   public final fab.a k;
-   public long l;
-   @Nullable
-   public String m;
-   public boolean n;
-   private static final boolean p = false;
-   private static final boolean q = true;
-   private static final boolean r = true;
-   private static final boolean s = true;
-   private static final boolean t = true;
-   private static final int u = 0;
-   private static final boolean v = false;
-   private static final int w = 2;
-   private static final int x = 0;
-   private static final String y = "";
-   private static final String z = "";
-   private static final fab.a A = fab.a.a;
-   private static final long B = -1L;
-   private static final String C = null;
+public class fai {
+   public static List<fbk> a(fai.a... $$0) {
+      for (fai.a $$1 : $$0) {
+         a($$1.j);
+      }
 
-   public fai(boolean $$0, boolean $$1, boolean $$2, boolean $$3, int $$4, boolean $$5, int $$6, int $$7, boolean $$8, String $$9, String $$10, fab.a $$11) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.g = $$8;
-      this.o = $$9;
-      this.j = $$10;
-      this.k = $$11;
+      List<fbk> $$2 = Lists.newArrayList();
+
+      for (fai.a $$3 : $$0) {
+         $$2.add(new fbk($$3.i, a($$3.j)));
+      }
+
+      $$2.sort(Comparator.comparingInt(fbk::a));
+      return $$2;
    }
 
-   public static fai a() {
-      return new fai(true, true, true, true, 0, false, 2, 0, false, "", "", A);
+   private static int a(String $$0) {
+      int $$1 = 700;
+      long $$2 = 0L;
+      Socket $$3 = null;
+
+      for (int $$4 = 0; $$4 < 5; $$4++) {
+         try {
+            SocketAddress $$5 = new InetSocketAddress($$0, 80);
+            $$3 = new Socket();
+            long $$6 = b();
+            $$3.connect($$5, 700);
+            $$2 += b() - $$6;
+         } catch (Exception var12) {
+            $$2 += 700L;
+         } finally {
+            IOUtils.closeQuietly($$3);
+         }
+      }
+
+      return (int)((double)$$2 / 5.0);
    }
 
-   public static fai b() {
-      fai $$0 = a();
-      $$0.a(true);
-      return $$0;
+   private static long b() {
+      return ac.c();
    }
 
-   public void a(boolean $$0) {
-      this.n = $$0;
+   public static List<fbk> a() {
+      return a(fai.a.values());
    }
 
-   public static fai a(JsonObject $$0) {
-      fai $$1 = new fai(
-         fcn.a("pvp", $$0, true),
-         fcn.a("spawnAnimals", $$0, true),
-         fcn.a("spawnMonsters", $$0, true),
-         fcn.a("spawnNPCs", $$0, true),
-         fcn.a("spawnProtection", $$0, 0),
-         fcn.a("commandBlocks", $$0, false),
-         fcn.a("difficulty", $$0, 2),
-         fcn.a("gameMode", $$0, 0),
-         fcn.a("forceGameMode", $$0, false),
-         fcn.a("slotName", $$0, ""),
-         fcn.a("version", $$0, ""),
-         fab.d(fcn.a("compatibility", $$0, fab.a.a.name()))
-      );
-      $$1.l = fcn.a("worldTemplateId", $$0, -1L);
-      $$1.m = fcn.b("worldTemplateImage", $$0, C);
-      return $$1;
-   }
+   static enum a {
+      a("us-east-1", "ec2.us-east-1.amazonaws.com"),
+      b("us-west-2", "ec2.us-west-2.amazonaws.com"),
+      c("us-west-1", "ec2.us-west-1.amazonaws.com"),
+      d("eu-west-1", "ec2.eu-west-1.amazonaws.com"),
+      e("ap-southeast-1", "ec2.ap-southeast-1.amazonaws.com"),
+      f("ap-southeast-2", "ec2.ap-southeast-2.amazonaws.com"),
+      g("ap-northeast-1", "ec2.ap-northeast-1.amazonaws.com"),
+      h("sa-east-1", "ec2.sa-east-1.amazonaws.com");
 
-   public String a(int $$0) {
-      if (aza.h(this.o)) {
-         return this.n ? gpb.a("mco.configure.world.slot.empty") : this.b($$0);
-      } else {
-         return this.o;
+      final String i;
+      final String j;
+
+      private a(final String $$0, final String $$1) {
+         this.i = $$0;
+         this.j = $$1;
       }
-   }
-
-   public String b(int $$0) {
-      return gpb.a("mco.configure.world.slot", $$0);
-   }
-
-   public String c() {
-      JsonObject $$0 = new JsonObject();
-      if (!this.a) {
-         $$0.addProperty("pvp", this.a);
-      }
-
-      if (!this.b) {
-         $$0.addProperty("spawnAnimals", this.b);
-      }
-
-      if (!this.c) {
-         $$0.addProperty("spawnMonsters", this.c);
-      }
-
-      if (!this.d) {
-         $$0.addProperty("spawnNPCs", this.d);
-      }
-
-      if (this.e != 0) {
-         $$0.addProperty("spawnProtection", this.e);
-      }
-
-      if (this.f) {
-         $$0.addProperty("commandBlocks", this.f);
-      }
-
-      if (this.h != 2) {
-         $$0.addProperty("difficulty", this.h);
-      }
-
-      if (this.i != 0) {
-         $$0.addProperty("gameMode", this.i);
-      }
-
-      if (this.g) {
-         $$0.addProperty("forceGameMode", this.g);
-      }
-
-      if (!Objects.equals(this.o, "")) {
-         $$0.addProperty("slotName", this.o);
-      }
-
-      if (!Objects.equals(this.j, "")) {
-         $$0.addProperty("version", this.j);
-      }
-
-      if (this.k != A) {
-         $$0.addProperty("compatibility", this.k.name());
-      }
-
-      return $$0.toString();
-   }
-
-   public fai d() {
-      return new fai(this.a, this.b, this.c, this.d, this.e, this.f, this.h, this.i, this.g, this.o, this.j, this.k);
    }
 }

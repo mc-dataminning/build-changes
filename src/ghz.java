@@ -1,27 +1,11 @@
-public class ghz extends ghs<cml> {
-   private final gir a;
+public class ghz extends gjy<cgr, ftf<cgr>> {
+   private static final alb a = new alb("textures/entity/camel/camel.png");
 
-   public ghz(ght.a $$0) {
-      super($$0);
-      this.a = $$0.b();
+   public ghz(gis.a $$0, fwt $$1) {
+      super($$0, new ftf<>($$0.a($$1)), 0.7F);
    }
 
-   public void a(cml $$0, float $$1, float $$2, eyu $$3, gck $$4, int $$5) {
-      $$3.a();
-      $$3.a(this.c.b());
-      $$3.a(a.d.rotationDegrees(180.0F));
-      if ($$0.u()) {
-         $$3.a(a.f.rotationDegrees(180.0F));
-         $$3.a(a.d.rotationDegrees(180.0F));
-         $$3.a(a.b.rotationDegrees(90.0F));
-      }
-
-      this.a.a($$0.p(), ctn.h, $$5, gnm.d, $$3, $$4, $$0.dP(), $$0.al());
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public akn a(cml $$0) {
-      return gnu.e;
+   public alb a(cgr $$0) {
+      return a;
    }
 }

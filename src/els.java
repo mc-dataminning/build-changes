@@ -1,18 +1,9 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public class els implements elt {
-   public static final els a = new els();
-   public static final MapCodec<els> b = MapCodec.unit(a);
+public abstract class els {
+   public static final Codec<els> c = lp.q.q().dispatch("predicate_type", els::a, elt::codec);
 
-   @Nullable
-   @Override
-   public ud a(aym $$0, @Nullable ud $$1) {
-      return $$1;
-   }
+   public abstract boolean a(iz var1, iz var2, iz var3, azc var4);
 
-   @Override
-   public elu<?> a() {
-      return elu.b;
-   }
+   protected abstract elt<?> a();
 }

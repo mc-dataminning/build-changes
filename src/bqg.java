@@ -1,19 +1,11 @@
-public final class bqg implements bqa {
-   private final wx a;
-   private final cqb b;
+import javax.annotation.Nullable;
 
-   public bqg(cqb $$0, wx $$1) {
-      this.b = $$0;
-      this.a = $$1;
-   }
+public interface bqg {
+   void a();
 
-   @Override
-   public wx O_() {
-      return this.a;
-   }
-
-   @Override
-   public cov createMenu(int $$0, clx $$1, cly $$2) {
-      return this.b.createMenu($$0, $$1, $$2);
+   static void a_(@Nullable Object $$0) {
+      if ($$0 instanceof bqg) {
+         ((bqg)$$0).a();
+      }
    }
 }

@@ -1,27 +1,78 @@
-import com.mojang.datafixers.kinds.App;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
 import java.util.List;
-import java.util.function.Function;
+import java.util.Set;
 
 public class ckv {
-   public static bvu<cko> a() {
-      return bxw.a(
-         (Function<bxw.b<cko>, ? extends App<bxw.c<cko>, bxz<cko>>>)($$0 -> $$0.group($$0.b(cbu.ak), $$0.c(cbu.ab), $$0.c(cbu.ah), $$0.a(cbu.ao))
-               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
-                     if (!$$4x.p_() && !$$0.<List>a($$4).map($$0xxx -> $$0xxx.stream().anyMatch(ckv::a)).isPresent()) {
-                        cki $$6 = $$0.b($$1);
-                        ckp.c($$4x, $$6);
-                        ckp.c((ckn)$$4x);
-                        ckp.b($$4x, $$6);
-                        $$0.<List>a($$4).ifPresent($$0xxx -> $$0xxx.forEach(ckp::c));
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
+   public static final float a = 0.6F;
+   public static final float b = 4.0F;
+   public static final float c = 8.0F;
+   public static final float d = 20.0F;
+   static final List<cdv<? extends cdu<? super cku>>> e = ImmutableList.of(cdv.c, cdv.f, cdv.d, cdv.z);
+   static final List<cco<?>> f = ImmutableList.of(
+      cco.n, cco.h, cco.B, cco.E, cco.o, cco.m, cco.aU, cco.aZ, cco.aV, cco.aW, cco.aX, cco.aY, new cco[]{cco.ba, cco.bb, cco.x, cco.y, cco.t}
+   );
+
+   protected static bum<?> a(bum<cku> $$0) {
+      b($$0);
+      c($$0);
+      d($$0);
+      $$0.a(Set.of(coh.a));
+      $$0.b(coh.k);
+      $$0.f();
+      return $$0;
+   }
+
+   private static void b(bum<cku> $$0) {
+      $$0.a(coh.a, 0, ImmutableList.of(new bxx(0.8F), new bwj(45, 90)));
+   }
+
+   private static void c(bum<cku> $$0) {
+      $$0.a(
+         coh.b,
+         ImmutableList.of(
+            Pair.of(0, bxp.a($$0x -> $$0x.dS().c(cco.B))),
+            Pair.of(1, bxp.a(cku::gr)),
+            Pair.of(2, new ckv.a(20, 40)),
+            Pair.of(3, new bxa(ImmutableList.of(Pair.of(new bvn(20, 100), 1), Pair.of(bwv.a(0.6F), 2))))
+         )
       );
    }
 
-   private static boolean a(ckn $$0) {
-      return $$0.dS().a(cbu.ah);
+   private static void d(bum<cku> $$0) {
+      $$0.a(
+         coh.k,
+         ImmutableList.of(Pair.of(0, bxs.a()), Pair.of(1, new cky()), Pair.of(2, new ckx()), Pair.of(3, new ckz()), Pair.of(4, new cla())),
+         ImmutableSet.of(Pair.of(cco.o, ccp.a), Pair.of(cco.m, ccp.b))
+      );
+   }
+
+   static void a(cku $$0) {
+      $$0.dS().a(ImmutableList.of(coh.k, coh.b));
+   }
+
+   public static class a extends bwn {
+      @VisibleForTesting
+      public a(int $$0, int $$1) {
+         super($$0, $$1);
+      }
+
+      @Override
+      protected void c(arb $$0, btm $$1, long $$2) {
+         super.c($$0, $$1, $$2);
+         $$1.a(avw.cM);
+         $$1.b(btw.p);
+      }
+
+      @Override
+      protected void b(arb $$0, btm $$1, long $$2) {
+         super.b($$0, $$1, $$2);
+         $$1.b(btw.a);
+         if ($$1.dS().a(cco.o)) {
+            $$1.dS().a(cco.aV, azx.a, 60L);
+         }
+      }
    }
 }

@@ -1,18 +1,54 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.util.Unit;
+import com.mojang.serialization.Dynamic;
 
 public class bbq extends DataFix {
-   private static final String a = "minecraft:decorated_pot";
-
    public bbq(Schema $$0) {
-      super($$0, true);
+      super($$0, false);
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getChoiceType(bga.s, "minecraft:decorated_pot");
-      Type<?> $$1 = this.getOutputSchema().getChoiceType(bga.s, "minecraft:decorated_pot");
-      return this.convertUnchecked("DecoratedPotFieldRenameFix", $$0, $$1);
+      OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> $$0 = DSL.typeFinder(
+         this.getInputSchema().getType(bgs.t)
+      );
+      Type<?> $$1 = this.getInputSchema().getType(bgs.B);
+      return TypeRewriteRule.seq(
+         this.a($$0, $$1, "minecraft:llama"), new TypeRewriteRule[]{this.a($$0, $$1, "minecraft:mule"), this.a($$0, $$1, "minecraft:donkey")}
+      );
+   }
+
+   private TypeRewriteRule a(
+      OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> $$0, Type<?> $$1, String $$2
+   ) {
+      Type<?> $$3 = this.getInputSchema().getChoiceType(bgs.B, $$2);
+      OpticFinder<?> $$4 = DSL.namedChoice($$2, $$3);
+      OpticFinder<?> $$5 = $$3.findField("Items");
+      return this.fixTypeEverywhereTyped(
+         "Fix non-zero indexing in chest horse type " + $$2,
+         $$1,
+         $$3x -> $$3x.updateTyped(
+               $$4,
+               $$2xx -> $$2xx.updateTyped(
+                     $$5,
+                     $$1xxx -> $$1xxx.update(
+                           $$0,
+                           $$0xxxx -> $$0xxxx.mapSecond(
+                                 $$0xxxxx -> $$0xxxxx.mapSecond(
+                                       $$0xxxxxx -> $$0xxxxxx.mapSecond(
+                                             $$0xxxxxxx -> $$0xxxxxxx.update("Slot", $$0xxxxxxxx -> $$0xxxxxxxx.createByte((byte)($$0xxxxxxxx.asInt(2) - 2)))
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
+      );
    }
 }

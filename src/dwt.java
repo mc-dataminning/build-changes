@@ -1,22 +1,34 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface dwt {
+   dwt a = new dwt() {
+      @Override
+      public boolean a() {
+         return true;
+      }
 
-public class dwt {
-   public static final Codec<dwt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ece.a.fieldOf("generate_crack_chance").orElse(1.0).forGetter($$0x -> $$0x.b),
-               Codec.doubleRange(0.0, 5.0).fieldOf("base_crack_size").orElse(2.0).forGetter($$0x -> $$0x.c),
-               Codec.intRange(0, 10).fieldOf("crack_point_offset").orElse(2).forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, dwt::new)
-   );
-   public final double b;
-   public final double c;
-   public final int d;
+      @Override
+      public void a(dws $$0) {
+      }
 
-   public dwt(double $$0, double $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+      @Override
+      public void b(dws $$0) {
+      }
+
+      @Override
+      public boolean a(ji<dwq> $$0, evm $$1, dwq.a $$2, dwt.a $$3) {
+         return false;
+      }
+   };
+
+   boolean a();
+
+   void a(dws var1);
+
+   void b(dws var1);
+
+   boolean a(ji<dwq> var1, evm var2, dwq.a var3, dwt.a var4);
+
+   @FunctionalInterface
+   public interface a {
+      void visit(dws var1, evm var2);
    }
 }

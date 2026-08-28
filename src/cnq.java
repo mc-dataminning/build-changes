@@ -1,45 +1,49 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
+public class cnq extends cmy {
+   private int f = 200;
 
-public class cnq {
-   private final cnp a;
-   private final List<cnq.a> b = Lists.newArrayList();
-
-   public cnq(cnp $$0) {
-      this.a = $$0;
+   public cnq(bsv<? extends cnq> $$0, dbt $$1) {
+      super($$0, $$1);
    }
 
-   public cnq a(int $$0, cnn $$1) {
-      this.b.add(new cnq.a($$0, $$1));
-      return this;
+   public cnq(dbt $$0, btk $$1, cuk $$2) {
+      super(bsv.aV, $$1, $$0, $$2);
    }
 
-   public cnp a() {
-      this.b.stream().map(cnq.a::b).collect(Collectors.toSet()).forEach(this.a::a);
-      this.b.forEach($$0 -> {
-         cnn $$1 = $$0.b();
-         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
-         this.a.b($$1).a($$0.a(), 1.0F);
-      });
-      return this.a;
+   public cnq(dbt $$0, double $$1, double $$2, double $$3, cuk $$4) {
+      super(bsv.aV, $$1, $$2, $$3, $$0, $$4);
    }
 
-   static class a {
-      private final int a;
-      private final cnn b;
-
-      public a(int $$0, cnn $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   public void l() {
+      super.l();
+      if (this.dP().B && !this.b) {
+         this.dP().a(lj.R, this.du(), this.dw(), this.dA(), 0.0, 0.0, 0.0);
       }
+   }
 
-      public int a() {
-         return this.a;
-      }
+   @Override
+   protected void a(btk $$0) {
+      super.a($$0);
+      brx $$1 = new brx(brz.x, this.f, 0);
+      $$0.b($$1, this.I());
+   }
 
-      public cnn b() {
-         return this.b;
+   @Override
+   public void a(ur $$0) {
+      super.a($$0);
+      if ($$0.e("Duration")) {
+         this.f = $$0.h("Duration");
       }
+   }
+
+   @Override
+   public void b(ur $$0) {
+      super.b($$0);
+      $$0.a("Duration", this.f);
+   }
+
+   @Override
+   protected cuk x() {
+      return new cuk(cun.vp);
    }
 }

@@ -1,15 +1,20 @@
-public class gju extends giz<cjl, fuq<cjl>> {
-   private static final akn a = new akn("textures/entity/silverfish.png");
+public class gju extends gjy<chh, fuo<chh>> {
+   private static final alb a = new alb("textures/entity/llama/creamy.png");
+   private static final alb i = new alb("textures/entity/llama/white.png");
+   private static final alb j = new alb("textures/entity/llama/brown.png");
+   private static final alb k = new alb("textures/entity/llama/gray.png");
 
-   public gju(ght.a $$0) {
-      super($$0, new fuq<>($$0.a(fvv.bm)), 0.3F);
+   public gju(gis.a $$0, fwt $$1) {
+      super($$0, new fuo<>($$0.a($$1)), 0.7F);
+      this.a(new gmy(this, $$0.f()));
    }
 
-   protected float a(cjl $$0) {
-      return 180.0F;
-   }
-
-   public akn b(cjl $$0) {
-      return a;
+   public alb a(chh $$0) {
+      return switch ($$0.gC()) {
+         case a -> a;
+         case b -> i;
+         case c -> j;
+         case d -> k;
+      };
    }
 }

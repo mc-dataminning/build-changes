@@ -1,57 +1,41 @@
+import com.mojang.logging.LogUtils;
 import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.ByteToMessageDecoder;
-import io.netty.handler.codec.CorruptedFrameException;
-import java.util.List;
-import javax.annotation.Nullable;
+import io.netty.handler.codec.MessageToByteEncoder;
+import org.slf4j.Logger;
 
-public class wq extends ByteToMessageDecoder {
-   private static final int a = 3;
-   private final ByteBuf b = Unpooled.directBuffer(3);
-   @Nullable
-   private final vo c;
+public class wq<T extends wr> extends MessageToByteEncoder<zs<T>> {
+   private static final Logger a = LogUtils.getLogger();
+   private final wt<T> b;
 
-   public wq(@Nullable vo $$0) {
-      this.c = $$0;
+   public wq(wt<T> $$0) {
+      this.b = $$0;
    }
 
-   protected void handlerRemoved0(ChannelHandlerContext $$0) {
-      this.b.release();
-   }
-
-   private static boolean a(ByteBuf $$0, ByteBuf $$1) {
-      for (int $$2 = 0; $$2 < 3; $$2++) {
-         if (!$$0.isReadable()) {
-            return false;
-         }
-
-         byte $$3 = $$0.readByte();
-         $$1.writeByte($$3);
-         if (!wo.a($$3)) {
-            return true;
-         }
+   protected void a(ChannelHandlerContext $$0, zs<T> $$1, ByteBuf $$2) throws Exception {
+      zu<? extends zs<? super T>> $$3 = $$1.a();
+      if (a.isDebugEnabled()) {
+         a.debug(wj.d, "OUT: [{}:{}] {}", new Object[]{this.b.a().a(), $$3, $$1.getClass().getName()});
       }
 
-      throw new CorruptedFrameException("length wider than 21-bit");
-   }
-
-   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) {
-      $$1.markReaderIndex();
-      this.b.clear();
-      if (!a($$1, this.b)) {
-         $$1.resetReaderIndex();
-      } else {
-         int $$3 = wo.a(this.b);
-         if ($$1.readableBytes() < $$3) {
-            $$1.resetReaderIndex();
-         } else {
-            if (this.c != null) {
-               this.c.a($$3 + wo.a($$3));
-            }
-
-            $$2.add($$1.readBytes($$3));
+      try {
+         int $$4 = $$2.writerIndex();
+         this.b.c().encode($$2, $$1);
+         int $$5 = $$2.writerIndex() - $$4;
+         if ($$5 > 8388608) {
+            throw new IllegalArgumentException("Packet too big (is " + $$5 + ", should be less than 8388608): " + $$1);
          }
+
+         bnj.f.b(this.b.a(), $$3, $$0.channel().remoteAddress(), $$5);
+      } catch (Throwable var10) {
+         a.error("Error sending packet {}", $$3, var10);
+         if ($$1.c()) {
+            throw new wy(var10);
+         }
+
+         throw var10;
+      } finally {
+         wu.b($$0, $$1);
       }
    }
 }

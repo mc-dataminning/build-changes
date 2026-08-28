@@ -1,163 +1,84 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.Consumer;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-public class fjk extends fji {
-   private final fjk.b c;
-   private final List<fjk.a> d = new ArrayList<>();
-   private final fjq e = fjq.i();
+public class fjk implements fji {
+   private static final alb g = new alb("toast/tutorial");
+   public static final int a = 154;
+   public static final int d = 1;
+   public static final int e = 3;
+   public static final int f = 28;
+   private final fjk.a h;
+   private final xl i;
+   @Nullable
+   private final xl j;
+   private fji.a k = fji.a.a;
+   private long l;
+   private float m;
+   private float n;
+   private final boolean o;
 
-   public fjk(int $$0, int $$1, fjk.b $$2) {
-      this(0, 0, $$0, $$1, $$2);
-   }
-
-   public fjk(int $$0, int $$1, int $$2, int $$3, fjk.b $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.c = $$4;
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      if (!this.d.isEmpty()) {
-         int $$0 = 0;
-         int $$1 = this.c.b(this);
-
-         for (fjk.a $$2 : this.d) {
-            $$0 += this.c.a($$2);
-            $$1 = Math.max($$1, this.c.b($$2));
-         }
-
-         int $$3 = this.c.a(this) - $$0;
-         int $$4 = this.c.c(this);
-         Iterator<fjk.a> $$5 = this.d.iterator();
-         fjk.a $$6 = $$5.next();
-         this.c.a($$6, $$4);
-         $$4 += this.c.a($$6);
-         if (this.d.size() >= 2) {
-            c $$7 = new c($$3, this.d.size() - 1);
-
-            while ($$7.hasNext()) {
-               $$4 += $$7.nextInt();
-               fjk.a $$8 = $$5.next();
-               this.c.a($$8, $$4);
-               $$4 += this.c.a($$8);
-            }
-         }
-
-         int $$9 = this.c.d(this);
-
-         for (fjk.a $$10 : this.d) {
-            this.c.a($$10, $$9, $$1);
-         }
-
-         switch (this.c) {
-            case a:
-               this.b = $$1;
-               break;
-            case b:
-               this.a = $$1;
-         }
-      }
+   public fjk(fjk.a $$0, xl $$1, @Nullable xl $$2, boolean $$3) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
+      this.o = $$3;
    }
 
    @Override
-   public void b(Consumer<fjp> $$0) {
-      this.d.forEach($$1 -> $$0.accept($$1.a));
-   }
-
-   public fjq b() {
-      return this.e.g();
-   }
-
-   public fjq c() {
-      return this.e;
-   }
-
-   public <T extends fjp> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
-
-   public <T extends fjp> T a(T $$0, fjq $$1) {
-      this.d.add(new fjk.a($$0, $$1));
-      return $$0;
-   }
-
-   public <T extends fjp> T a(T $$0, Consumer<fjq> $$1) {
-      return this.a($$0, ac.a(this.b(), $$1));
-   }
-
-   static class a extends fji.a {
-      protected a(fjp $$0, fjq $$1) {
-         super($$0, $$1);
-      }
-   }
-
-   public static enum b {
-      a,
-      b;
-
-      int a(fjp $$0) {
-         return switch (this) {
-            case a -> $$0.x();
-            case b -> $$0.v();
-         };
+   public fji.a a(fgm $$0, fjj $$1, long $$2) {
+      $$0.a(g, 0, 0, this.a(), this.b());
+      this.h.a($$0, 6, 6);
+      if (this.j == null) {
+         $$0.a($$1.b().h, this.i, 30, 12, -11534256, false);
+      } else {
+         $$0.a($$1.b().h, this.i, 30, 7, -11534256, false);
+         $$0.a($$1.b().h, this.j, 30, 18, -16777216, false);
       }
 
-      int a(fjk.a $$0) {
-         return switch (this) {
-            case a -> $$0.b();
-            case b -> $$0.a();
-         };
-      }
-
-      int b(fjp $$0) {
-         return switch (this) {
-            case a -> $$0.v();
-            case b -> $$0.x();
-         };
-      }
-
-      int b(fjk.a $$0) {
-         return switch (this) {
-            case a -> $$0.a();
-            case b -> $$0.b();
-         };
-      }
-
-      void a(fjk.a $$0, int $$1) {
-         switch (this) {
-            case a:
-               $$0.a($$1, $$0.b());
-               break;
-            case b:
-               $$0.b($$1, $$0.a());
+      if (this.o) {
+         $$0.a(3, 28, 157, 29, -1);
+         float $$3 = ayu.b(this.m, this.n, (float)($$2 - this.l) / 100.0F);
+         int $$4;
+         if (this.n >= this.m) {
+            $$4 = -16755456;
+         } else {
+            $$4 = -11206656;
          }
+
+         $$0.a(3, 28, (int)(3.0F + 154.0F * $$3), 29, $$4);
+         this.m = $$3;
+         this.l = $$2;
       }
 
-      void a(fjk.a $$0, int $$1, int $$2) {
-         switch (this) {
-            case a:
-               $$0.b($$1, $$2);
-               break;
-            case b:
-               $$0.a($$1, $$2);
-         }
+      return this.k;
+   }
+
+   public void c() {
+      this.k = fji.a.b;
+   }
+
+   public void a(float $$0) {
+      this.n = $$0;
+   }
+
+   public static enum a {
+      a(new alb("toast/movement_keys")),
+      b(new alb("toast/mouse")),
+      c(new alb("toast/tree")),
+      d(new alb("toast/recipe_book")),
+      e(new alb("toast/wooden_planks")),
+      f(new alb("toast/social_interactions")),
+      g(new alb("toast/right_click"));
+
+      private final alb h;
+
+      private a(final alb $$0) {
+         this.h = $$0;
       }
 
-      int c(fjp $$0) {
-         return switch (this) {
-            case a -> $$0.C();
-            case b -> $$0.D();
-         };
-      }
-
-      int d(fjp $$0) {
-         return switch (this) {
-            case a -> $$0.D();
-            case b -> $$0.C();
-         };
+      public void a(fgm $$0, int $$1, int $$2) {
+         RenderSystem.enableBlend();
+         $$0.a(this.h, $$1, $$2, 20, 20);
       }
    }
 }

@@ -1,198 +1,359 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.annotation.Nullable;
 
-public class yi implements wy {
-   public static final Object[] a = new Object[0];
-   private static final Codec<Object> d = axn.b.validate(yi::b);
-   private static final Codec<Object> e = Codec.either(d, wz.a)
-      .xmap(
-         $$0 -> $$0.map($$0x -> $$0x, $$0x -> Objects.requireNonNullElse($$0x.d(), $$0x)), $$0 -> $$0 instanceof wx $$1 ? Either.right($$1) : Either.left($$0)
+public class yi {
+   public static final yi a = new yi(null, null, null, null, null, null, null, null, null, null);
+   public static final alb b = new alb("minecraft", "default");
+   @Nullable
+   final yk c;
+   @Nullable
+   final Boolean d;
+   @Nullable
+   final Boolean e;
+   @Nullable
+   final Boolean f;
+   @Nullable
+   final Boolean g;
+   @Nullable
+   final Boolean h;
+   @Nullable
+   final xj i;
+   @Nullable
+   final xr j;
+   @Nullable
+   final String k;
+   @Nullable
+   final alb l;
+
+   private static yi a(
+      Optional<yk> $$0,
+      Optional<Boolean> $$1,
+      Optional<Boolean> $$2,
+      Optional<Boolean> $$3,
+      Optional<Boolean> $$4,
+      Optional<Boolean> $$5,
+      Optional<xj> $$6,
+      Optional<xr> $$7,
+      Optional<String> $$8,
+      Optional<alb> $$9
+   ) {
+      yi $$10 = new yi(
+         $$0.orElse(null),
+         $$1.orElse(null),
+         $$2.orElse(null),
+         $$3.orElse(null),
+         $$4.orElse(null),
+         $$5.orElse(null),
+         $$6.orElse(null),
+         $$7.orElse(null),
+         $$8.orElse(null),
+         $$9.orElse(null)
       );
-   public static final MapCodec<yi> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("translate").forGetter($$0x -> $$0x.h),
-               Codec.STRING.lenientOptionalFieldOf("fallback").forGetter($$0x -> Optional.ofNullable($$0x.i)),
-               e.listOf().optionalFieldOf("with").forGetter($$0x -> a($$0x.j))
-            )
-            .apply($$0, yi::a)
-   );
-   public static final wy.a<yi> c = new wy.a<>(b, "translatable");
-   private static final xc f = xc.e("%");
-   private static final xc g = xc.e("null");
-   private final String h;
+      return $$10.equals(a) ? a : $$10;
+   }
+
+   private yi(
+      @Nullable yk $$0,
+      @Nullable Boolean $$1,
+      @Nullable Boolean $$2,
+      @Nullable Boolean $$3,
+      @Nullable Boolean $$4,
+      @Nullable Boolean $$5,
+      @Nullable xj $$6,
+      @Nullable xr $$7,
+      @Nullable String $$8,
+      @Nullable alb $$9
+   ) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
+      this.k = $$8;
+      this.l = $$9;
+   }
+
    @Nullable
-   private final String i;
-   private final Object[] j;
+   public yk a() {
+      return this.c;
+   }
+
+   public boolean b() {
+      return this.d == Boolean.TRUE;
+   }
+
+   public boolean c() {
+      return this.e == Boolean.TRUE;
+   }
+
+   public boolean d() {
+      return this.g == Boolean.TRUE;
+   }
+
+   public boolean e() {
+      return this.f == Boolean.TRUE;
+   }
+
+   public boolean f() {
+      return this.h == Boolean.TRUE;
+   }
+
+   public boolean g() {
+      return this == a;
+   }
+
    @Nullable
-   private ty k;
-   private List<xc> l = ImmutableList.of();
-   private static final Pattern m = Pattern.compile("%(?:(\\d+)\\$)?([A-Za-z%]|$)");
-
-   private static DataResult<Object> b(@Nullable Object $$0) {
-      return !a($$0) ? DataResult.error(() -> "This value needs to be parsed as component") : DataResult.success($$0);
+   public xj h() {
+      return this.i;
    }
 
-   public static boolean a(@Nullable Object $$0) {
-      return $$0 instanceof Number || $$0 instanceof Boolean || $$0 instanceof String;
+   @Nullable
+   public xr i() {
+      return this.j;
    }
 
-   private static Optional<List<Object>> a(Object[] $$0) {
-      return $$0.length == 0 ? Optional.empty() : Optional.of(Arrays.asList($$0));
+   @Nullable
+   public String j() {
+      return this.k;
    }
 
-   private static Object[] a(Optional<List<Object>> $$0) {
-      return $$0.<Object[]>map($$0x -> $$0x.isEmpty() ? a : $$0x.toArray()).orElse(a);
+   public alb k() {
+      return this.l != null ? this.l : b;
    }
 
-   private static yi a(String $$0, Optional<String> $$1, Optional<List<Object>> $$2) {
-      return new yi($$0, $$1.orElse(null), a($$2));
+   private static <T> yi a(yi $$0, @Nullable T $$1, @Nullable T $$2) {
+      return $$1 != null && $$2 == null && $$0.equals(a) ? a : $$0;
    }
 
-   public yi(String $$0, @Nullable String $$1, Object[] $$2) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
+   public yi a(@Nullable yk $$0) {
+      return Objects.equals(this.c, $$0) ? this : a(new yi($$0, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l), this.c, $$0);
    }
 
-   @Override
-   public wy.a<?> a() {
-      return c;
+   public yi a(@Nullable n $$0) {
+      return this.a($$0 != null ? yk.a($$0) : null);
    }
 
-   private void e() {
-      ty $$0 = ty.a();
-      if ($$0 != this.k) {
-         this.k = $$0;
-         String $$1 = this.i != null ? $$0.a(this.h, this.i) : $$0.a(this.h);
+   public yi a(int $$0) {
+      return this.a(yk.a($$0));
+   }
 
-         try {
-            Builder<xc> $$2 = ImmutableList.builder();
-            this.a($$1, $$2::add);
-            this.l = $$2.build();
-         } catch (yj var4) {
-            this.l = ImmutableList.of(xc.e($$1));
+   public yi a(@Nullable Boolean $$0) {
+      return Objects.equals(this.d, $$0) ? this : a(new yi(this.c, $$0, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l), this.d, $$0);
+   }
+
+   public yi b(@Nullable Boolean $$0) {
+      return Objects.equals(this.e, $$0) ? this : a(new yi(this.c, this.d, $$0, this.f, this.g, this.h, this.i, this.j, this.k, this.l), this.e, $$0);
+   }
+
+   public yi c(@Nullable Boolean $$0) {
+      return Objects.equals(this.f, $$0) ? this : a(new yi(this.c, this.d, this.e, $$0, this.g, this.h, this.i, this.j, this.k, this.l), this.f, $$0);
+   }
+
+   public yi d(@Nullable Boolean $$0) {
+      return Objects.equals(this.g, $$0) ? this : a(new yi(this.c, this.d, this.e, this.f, $$0, this.h, this.i, this.j, this.k, this.l), this.g, $$0);
+   }
+
+   public yi e(@Nullable Boolean $$0) {
+      return Objects.equals(this.h, $$0) ? this : a(new yi(this.c, this.d, this.e, this.f, this.g, $$0, this.i, this.j, this.k, this.l), this.h, $$0);
+   }
+
+   public yi a(@Nullable xj $$0) {
+      return Objects.equals(this.i, $$0) ? this : a(new yi(this.c, this.d, this.e, this.f, this.g, this.h, $$0, this.j, this.k, this.l), this.i, $$0);
+   }
+
+   public yi a(@Nullable xr $$0) {
+      return Objects.equals(this.j, $$0) ? this : a(new yi(this.c, this.d, this.e, this.f, this.g, this.h, this.i, $$0, this.k, this.l), this.j, $$0);
+   }
+
+   public yi a(@Nullable String $$0) {
+      return Objects.equals(this.k, $$0) ? this : a(new yi(this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, $$0, this.l), this.k, $$0);
+   }
+
+   public yi a(@Nullable alb $$0) {
+      return Objects.equals(this.l, $$0) ? this : a(new yi(this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, $$0), this.l, $$0);
+   }
+
+   public yi b(n $$0) {
+      yk $$1 = this.c;
+      Boolean $$2 = this.d;
+      Boolean $$3 = this.e;
+      Boolean $$4 = this.g;
+      Boolean $$5 = this.f;
+      Boolean $$6 = this.h;
+      switch ($$0) {
+         case q:
+            $$6 = true;
+            break;
+         case r:
+            $$2 = true;
+            break;
+         case s:
+            $$4 = true;
+            break;
+         case t:
+            $$5 = true;
+            break;
+         case u:
+            $$3 = true;
+            break;
+         case v:
+            return a;
+         default:
+            $$1 = yk.a($$0);
+      }
+
+      return new yi($$1, $$2, $$3, $$5, $$4, $$6, this.i, this.j, this.k, this.l);
+   }
+
+   public yi c(n $$0) {
+      yk $$1 = this.c;
+      Boolean $$2 = this.d;
+      Boolean $$3 = this.e;
+      Boolean $$4 = this.g;
+      Boolean $$5 = this.f;
+      Boolean $$6 = this.h;
+      switch ($$0) {
+         case q:
+            $$6 = true;
+            break;
+         case r:
+            $$2 = true;
+            break;
+         case s:
+            $$4 = true;
+            break;
+         case t:
+            $$5 = true;
+            break;
+         case u:
+            $$3 = true;
+            break;
+         case v:
+            return a;
+         default:
+            $$6 = false;
+            $$2 = false;
+            $$4 = false;
+            $$5 = false;
+            $$3 = false;
+            $$1 = yk.a($$0);
+      }
+
+      return new yi($$1, $$2, $$3, $$5, $$4, $$6, this.i, this.j, this.k, this.l);
+   }
+
+   public yi a(n... $$0) {
+      yk $$1 = this.c;
+      Boolean $$2 = this.d;
+      Boolean $$3 = this.e;
+      Boolean $$4 = this.g;
+      Boolean $$5 = this.f;
+      Boolean $$6 = this.h;
+
+      for (n $$7 : $$0) {
+         switch ($$7) {
+            case q:
+               $$6 = true;
+               break;
+            case r:
+               $$2 = true;
+               break;
+            case s:
+               $$4 = true;
+               break;
+            case t:
+               $$5 = true;
+               break;
+            case u:
+               $$3 = true;
+               break;
+            case v:
+               return a;
+            default:
+               $$1 = yk.a($$7);
          }
       }
+
+      return new yi($$1, $$2, $$3, $$5, $$4, $$6, this.i, this.j, this.k, this.l);
    }
 
-   private void a(String $$0, Consumer<xc> $$1) {
-      Matcher $$2 = m.matcher($$0);
-
-      try {
-         int $$3 = 0;
-         int $$4 = 0;
-
-         while ($$2.find($$4)) {
-            int $$5 = $$2.start();
-            int $$6 = $$2.end();
-            if ($$5 > $$4) {
-               String $$7 = $$0.substring($$4, $$5);
-               if ($$7.indexOf(37) != -1) {
-                  throw new IllegalArgumentException();
-               }
-
-               $$1.accept(xc.e($$7));
-            }
-
-            String $$8 = $$2.group(2);
-            String $$9 = $$0.substring($$5, $$6);
-            if ("%".equals($$8) && "%%".equals($$9)) {
-               $$1.accept(f);
-            } else {
-               if (!"s".equals($$8)) {
-                  throw new yj(this, "Unsupported format: '" + $$9 + "'");
-               }
-
-               String $$10 = $$2.group(1);
-               int $$11 = $$10 != null ? Integer.parseInt($$10) - 1 : $$3++;
-               $$1.accept(this.a($$11));
-            }
-
-            $$4 = $$6;
-         }
-
-         if ($$4 < $$0.length()) {
-            String $$12 = $$0.substring($$4);
-            if ($$12.indexOf(37) != -1) {
-               throw new IllegalArgumentException();
-            }
-
-            $$1.accept(xc.e($$12));
-         }
-      } catch (IllegalArgumentException var12) {
-         throw new yj(this, var12);
-      }
-   }
-
-   private xc a(int $$0) {
-      if ($$0 >= 0 && $$0 < this.j.length) {
-         Object $$1 = this.j[$$0];
-         if ($$1 instanceof wx) {
-            return (wx)$$1;
-         } else {
-            return $$1 == null ? g : xc.e($$1.toString());
-         }
+   public yi a(yi $$0) {
+      if (this == a) {
+         return $$0;
       } else {
-         throw new yj(this, $$0);
+         return $$0 == a
+            ? this
+            : new yi(
+               this.c != null ? this.c : $$0.c,
+               this.d != null ? this.d : $$0.d,
+               this.e != null ? this.e : $$0.e,
+               this.f != null ? this.f : $$0.f,
+               this.g != null ? this.g : $$0.g,
+               this.h != null ? this.h : $$0.h,
+               this.i != null ? this.i : $$0.i,
+               this.j != null ? this.j : $$0.j,
+               this.k != null ? this.k : $$0.k,
+               this.l != null ? this.l : $$0.l
+            );
       }
    }
 
    @Override
-   public <T> Optional<T> a(xc.b<T> $$0, xu $$1) {
-      this.e();
+   public String toString() {
+      final StringBuilder $$0 = new StringBuilder("{");
 
-      for (xc $$2 : this.l) {
-         Optional<T> $$3 = $$2.a($$0, $$1);
-         if ($$3.isPresent()) {
-            return $$3;
+      class a {
+         private boolean b;
+
+         private void a() {
+            if (this.b) {
+               $$0.append(',');
+            }
+
+            this.b = true;
+         }
+
+         void a(String $$0x, @Nullable Boolean $$1) {
+            if ($$1 != null) {
+               this.a();
+               if (!$$1) {
+                  $$0.append('!');
+               }
+
+               $$0.append($$0);
+            }
+         }
+
+         void a(String $$0x, @Nullable Object $$1) {
+            if ($$1 != null) {
+               this.a();
+               $$0.append($$0);
+               $$0.append('=');
+               $$0.append($$1);
+            }
          }
       }
 
-      return Optional.empty();
-   }
-
-   @Override
-   public <T> Optional<T> a(xc.a<T> $$0) {
-      this.e();
-
-      for (xc $$1 : this.l) {
-         Optional<T> $$2 = $$1.a($$0);
-         if ($$2.isPresent()) {
-            return $$2;
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   @Override
-   public xl a(@Nullable ee $$0, @Nullable brw $$1, int $$2) throws CommandSyntaxException {
-      Object[] $$3 = new Object[this.j.length];
-
-      for (int $$4 = 0; $$4 < $$3.length; $$4++) {
-         Object $$5 = this.j[$$4];
-         if ($$5 instanceof wx $$6) {
-            $$3[$$4] = xa.a($$0, $$6, $$1, $$2);
-         } else {
-            $$3[$$4] = $$5;
-         }
-      }
-
-      return xl.a(new yi(this.h, this.i, $$3));
+      a $$1 = new a();
+      $$1.a("color", this.c);
+      $$1.a("bold", this.d);
+      $$1.a("italic", this.e);
+      $$1.a("underlined", this.f);
+      $$1.a("strikethrough", this.g);
+      $$1.a("obfuscated", this.h);
+      $$1.a("clickEvent", this.i);
+      $$1.a("hoverEvent", this.j);
+      $$1.a("insertion", this.k);
+      $$1.a("font", this.l);
+      $$0.append("}");
+      return $$0.toString();
    }
 
    @Override
@@ -200,36 +361,43 @@ public class yi implements wy {
       if (this == $$0) {
          return true;
       } else {
-         if ($$0 instanceof yi $$1 && Objects.equals(this.h, $$1.h) && Objects.equals(this.i, $$1.i) && Arrays.equals(this.j, $$1.j)) {
-            return true;
-         }
-
-         return false;
+         return !($$0 instanceof yi $$1)
+            ? false
+            : this.d == $$1.d
+               && Objects.equals(this.a(), $$1.a())
+               && this.e == $$1.e
+               && this.h == $$1.h
+               && this.g == $$1.g
+               && this.f == $$1.f
+               && Objects.equals(this.i, $$1.i)
+               && Objects.equals(this.j, $$1.j)
+               && Objects.equals(this.k, $$1.k)
+               && Objects.equals(this.l, $$1.l);
       }
    }
 
    @Override
    public int hashCode() {
-      int $$0 = Objects.hashCode(this.h);
-      $$0 = 31 * $$0 + Objects.hashCode(this.i);
-      return 31 * $$0 + Arrays.hashCode(this.j);
+      return Objects.hash(this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k);
    }
 
-   @Override
-   public String toString() {
-      return "translation{key='" + this.h + "'" + (this.i != null ? ", fallback='" + this.i + "'" : "") + ", args=" + Arrays.toString(this.j) + "}";
-   }
-
-   public String b() {
-      return this.h;
-   }
-
-   @Nullable
-   public String c() {
-      return this.i;
-   }
-
-   public Object[] d() {
-      return this.j;
+   public static class b {
+      public static final MapCodec<yi> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  yk.a.optionalFieldOf("color").forGetter($$0x -> Optional.ofNullable($$0x.c)),
+                  Codec.BOOL.optionalFieldOf("bold").forGetter($$0x -> Optional.ofNullable($$0x.d)),
+                  Codec.BOOL.optionalFieldOf("italic").forGetter($$0x -> Optional.ofNullable($$0x.e)),
+                  Codec.BOOL.optionalFieldOf("underlined").forGetter($$0x -> Optional.ofNullable($$0x.f)),
+                  Codec.BOOL.optionalFieldOf("strikethrough").forGetter($$0x -> Optional.ofNullable($$0x.g)),
+                  Codec.BOOL.optionalFieldOf("obfuscated").forGetter($$0x -> Optional.ofNullable($$0x.h)),
+                  xj.a.optionalFieldOf("clickEvent").forGetter($$0x -> Optional.ofNullable($$0x.i)),
+                  xr.a.optionalFieldOf("hoverEvent").forGetter($$0x -> Optional.ofNullable($$0x.j)),
+                  Codec.STRING.optionalFieldOf("insertion").forGetter($$0x -> Optional.ofNullable($$0x.k)),
+                  alb.a.optionalFieldOf("font").forGetter($$0x -> Optional.ofNullable($$0x.l))
+               )
+               .apply($$0, yi::a)
+      );
+      public static final Codec<yi> b = a.codec();
+      public static final zj<ww, yi> c = zh.c(b);
    }
 }

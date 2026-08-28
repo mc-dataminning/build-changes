@@ -1,89 +1,89 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class ddg extends ddm {
-   public static final MapCodec<ddg> a = b(ddg::new);
-   public static final drx b = drt.P;
-   public static final dru c = drt.u;
+public class ddg {
+   public static final Codec<ddg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ddg.a.c.fieldOf("preset").forGetter($$0x -> $$0x.c), akz.c(lq.az)).apply($$0, ddg::new)
+   );
+   public static final Codec<ji<ddg>> b = akx.a(lq.aR, a);
+   private final ddg.a c;
+   private final ddb.c<ji<dcs>> d;
 
-   @Override
-   public MapCodec<ddg> a() {
-      return a;
+   public ddg(ddg.a $$0, jj<dcs> $$1) {
+      this.c = $$0;
+      this.d = $$0.e.apply($$1::b);
    }
 
-   public ddg(drc.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, it.c).a(c, Boolean.valueOf(false)));
+   public ddb.c<ji<dcs>> a() {
+      return this.d;
    }
 
-   @Override
-   protected bpw a(drd $$0, daz $$1, io $$2, cly $$3, eui $$4) {
-      if ($$1.B) {
-         return bpw.a;
-      } else {
-         doi $$5 = $$1.c_($$2);
-         if ($$5 instanceof dob) {
-            $$3.a((dob)$$5);
-            $$3.a(avs.ar);
-            ckp.a($$3, true);
+   public static Map<ddg.a, ddb.c<ala<dcs>>> b() {
+      return ddg.a.f.values().stream().collect(Collectors.toMap($$0 -> (ddg.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
+   }
+
+   public static record a(alb d, ddg.a.a e) {
+      public static final ddg.a a = new ddg.a(
+         new alb("nether"),
+         new ddg.a.a() {
+            @Override
+            public <T> ddb.c<T> apply(Function<ala<dcs>, T> $$0) {
+               return new ddb.c<>(
+                  List.of(
+                     Pair.of(ddb.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dcz.ac)),
+                     Pair.of(ddb.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dcz.af)),
+                     Pair.of(ddb.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dcz.ae)),
+                     Pair.of(ddb.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(dcz.ad)),
+                     Pair.of(ddb.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(dcz.ag))
+                  )
+               );
+            }
          }
+      );
+      public static final ddg.a b = new ddg.a(new alb("overworld"), new ddg.a.a() {
+         @Override
+         public <T> ddb.c<T> apply(Function<ala<dcs>, T> $$0) {
+            return ddg.a.a($$0);
+         }
+      });
+      static final Map<alb, ddg.a> f = Stream.of(a, b).collect(Collectors.toMap(ddg.a::b, $$0 -> (ddg.a)$$0));
+      public static final Codec<ddg.a> c = alb.a
+         .flatXmap(
+            $$0 -> Optional.ofNullable(f.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
+            $$0 -> DataResult.success($$0.d)
+         );
 
-         return bpw.b;
+      static <T> ddb.c<T> a(Function<ala<dcs>, T> $$0) {
+         Builder<Pair<ddb.d, T>> $$1 = ImmutableList.builder();
+         new ddi().a($$2 -> $$1.add($$2.mapSecond($$0)));
+         return new ddb.c<>($$1.build());
       }
-   }
 
-   @Override
-   protected void a(drd $$0, daz $$1, io $$2, drd $$3, boolean $$4) {
-      bps.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   protected void a(drd $$0, aqn $$1, io $$2, aym $$3) {
-      doi $$4 = $$1.c_($$2);
-      if ($$4 instanceof dob) {
-         ((dob)$$4).l();
+      public Stream<ala<dcs>> a() {
+         return this.e.apply($$0 -> $$0).a().stream().<ala<dcs>>map(Pair::getSecond).distinct();
       }
-   }
 
-   @Nullable
-   @Override
-   public doi a(io $$0, drd $$1) {
-      return new dob($$0, $$1);
-   }
+      public alb b() {
+         return this.d;
+      }
 
-   @Override
-   protected dkg a_(drd $$0) {
-      return dkg.c;
-   }
+      public ddg.a.a c() {
+         return this.e;
+      }
 
-   @Override
-   protected boolean c_(drd $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(drd $$0, daz $$1, io $$2) {
-      return cov.a($$1.c_($$2));
-   }
-
-   @Override
-   protected drd a(drd $$0, dkn $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected drd a(drd $$0, dix $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dre.a<dea, drd> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public drd a(cxb $$0) {
-      return this.n().a(b, $$0.d().g());
+      @FunctionalInterface
+      interface a {
+         <T> ddb.c<T> apply(Function<ala<dcs>, T> var1);
+      }
    }
 }

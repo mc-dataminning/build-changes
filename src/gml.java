@@ -1,36 +1,25 @@
-public class gml extends gmf<cfe, fuw<cfe>> {
-   private final gde a;
-   private final gir b;
+public class gml extends gne<cfi, ftq<cfi>> {
+   private final gdf a;
 
-   public gml(gjp<cfe, fuw<cfe>> $$0, gde $$1, gir $$2) {
+   public gml(gko<cfi, ftq<cfi>> $$0, gdf $$1) {
       super($$0);
       this.a = $$1;
-      this.b = $$2;
    }
 
-   public void a(eyu $$0, gck $$1, int $$2, cfe $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.u()) {
-         boolean $$10 = feb.Q().b($$3) && $$3.ch();
-         if (!$$3.ch() || $$10) {
-            $$0.a();
-            this.c().c().a($$0);
-            float $$11 = 0.625F;
-            $$0.a(0.0F, -0.34375F, 0.0F);
-            $$0.a(a.d.rotationDegrees(180.0F));
-            $$0.b(0.625F, -0.625F, -0.625F);
-            ctq $$12 = new ctq(dec.ee);
-            if ($$10) {
-               drd $$13 = dec.ee.n();
-               gpw $$14 = this.a.a($$13);
-               int $$15 = giu.c($$3, 0.0F);
-               $$0.a(-0.5F, -0.5F, -0.5F);
-               this.a.b().a($$0.c(), $$1.getBuffer(gcs.r(gnu.e)), $$13, $$14, 0.0F, 0.0F, 0.0F, $$2, $$15);
-            } else {
-               this.b.a($$3, $$12, ctn.f, false, $$0, $$1, $$3.dP(), $$2, giu.c($$3, 0.0F), $$3.al());
-            }
-
-            $$0.b();
-         }
+   public void a(ezt $$0, gdj $$1, int $$2, cfi $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fu() == bte.b;
+      $$0.a();
+      float $$11 = 1.0F;
+      float $$12 = -1.0F;
+      float $$13 = ayu.e($$3.dH()) / 60.0F;
+      if ($$3.dH() < 0.0F) {
+         $$0.a(0.0F, 1.0F - $$13 * 0.5F, -1.0F + $$13 * 0.5F);
+      } else {
+         $$0.a(0.0F, 1.0F + $$13 * 0.8F, -1.0F + $$13 * 0.2F);
       }
+
+      cuk $$14 = $$10 ? $$3.eX() : $$3.eY();
+      this.a.a($$3, $$14, cuh.h, false, $$0, $$1, $$2);
+      $$0.b();
    }
 }

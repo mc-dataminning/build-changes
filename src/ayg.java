@@ -1,159 +1,80 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import com.sun.jna.Memory;
-import com.sun.jna.Native;
-import com.sun.jna.Platform;
-import com.sun.jna.Pointer;
-import com.sun.jna.platform.win32.Kernel32;
-import com.sun.jna.platform.win32.Kernel32Util;
-import com.sun.jna.platform.win32.Version;
-import com.sun.jna.platform.win32.Win32Exception;
-import com.sun.jna.platform.win32.Tlhelp32.MODULEENTRY32W;
-import com.sun.jna.ptr.IntByReference;
-import com.sun.jna.ptr.PointerByReference;
-import java.nio.charset.StandardCharsets;
-import java.util.Comparator;
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
 
-public class ayg {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 65535;
-   private static final int c = 1033;
-   private static final int d = -65536;
-   private static final int e = 78643200;
+@FunctionalInterface
+public interface ayg {
+   ayg a = $$0 -> true;
 
-   public static List<ayg.a> a() {
-      if (!Platform.isWindows()) {
-         return ImmutableList.of();
-      } else {
-         int $$0 = Kernel32.INSTANCE.GetCurrentProcessId();
-         Builder<ayg.a> $$1 = ImmutableList.builder();
+   boolean accept(ayh var1);
 
-         for (MODULEENTRY32W $$3 : Kernel32Util.getModules($$0)) {
-            String $$4 = $$3.szModule();
-            Optional<ayg.b> $$5 = a($$3.szExePath());
-            $$1.add(new ayg.a($$4, $$5));
-         }
+   static ayg codepoint(int $$0, yi $$1) {
+      return $$2 -> $$2.accept(0, $$1, $$0);
+   }
 
-         return $$1.build();
+   static ayg forward(String $$0, yi $$1) {
+      return $$0.isEmpty() ? a : $$2 -> azo.a($$0, $$1, $$2);
+   }
+
+   static ayg forward(String $$0, yi $$1, Int2IntFunction $$2) {
+      return $$0.isEmpty() ? a : $$3 -> azo.a($$0, $$1, decorateOutput($$3, $$2));
+   }
+
+   static ayg backward(String $$0, yi $$1) {
+      return $$0.isEmpty() ? a : $$2 -> azo.b($$0, $$1, $$2);
+   }
+
+   static ayg backward(String $$0, yi $$1, Int2IntFunction $$2) {
+      return $$0.isEmpty() ? a : $$3 -> azo.b($$0, $$1, decorateOutput($$3, $$2));
+   }
+
+   static ayh decorateOutput(ayh $$0, Int2IntFunction $$1) {
+      return ($$2, $$3, $$4) -> $$0.accept($$2, $$3, (Integer)$$1.apply($$4));
+   }
+
+   static ayg composite() {
+      return a;
+   }
+
+   static ayg composite(ayg $$0) {
+      return $$0;
+   }
+
+   static ayg composite(ayg $$0, ayg $$1) {
+      return fromPair($$0, $$1);
+   }
+
+   static ayg composite(ayg... $$0) {
+      return fromList(ImmutableList.copyOf($$0));
+   }
+
+   static ayg composite(List<ayg> $$0) {
+      int $$1 = $$0.size();
+      switch ($$1) {
+         case 0:
+            return a;
+         case 1:
+            return $$0.get(0);
+         case 2:
+            return fromPair($$0.get(0), $$0.get(1));
+         default:
+            return fromList(ImmutableList.copyOf($$0));
       }
    }
 
-   private static Optional<ayg.b> a(String $$0) {
-      try {
-         IntByReference $$1 = new IntByReference();
-         int $$2 = Version.INSTANCE.GetFileVersionInfoSize($$0, $$1);
-         if ($$2 == 0) {
-            int $$3 = Native.getLastError();
-            if ($$3 != 1813 && $$3 != 1812) {
-               throw new Win32Exception($$3);
-            } else {
-               return Optional.empty();
+   static ayg fromPair(ayg $$0, ayg $$1) {
+      return $$2 -> $$0.accept($$2) && $$1.accept($$2);
+   }
+
+   static ayg fromList(List<ayg> $$0) {
+      return $$1 -> {
+         for (ayg $$2 : $$0) {
+            if (!$$2.accept($$1)) {
+               return false;
             }
-         } else {
-            Pointer $$4 = new Memory((long)$$2);
-            if (!Version.INSTANCE.GetFileVersionInfo($$0, 0, $$2, $$4)) {
-               throw new Win32Exception(Native.getLastError());
-            } else {
-               IntByReference $$5 = new IntByReference();
-               Pointer $$6 = a($$4, "\\VarFileInfo\\Translation", $$5);
-               int[] $$7 = $$6.getIntArray(0L, $$5.getValue() / 4);
-               OptionalInt $$8 = a($$7);
-               if ($$8.isEmpty()) {
-                  return Optional.empty();
-               } else {
-                  int $$9 = $$8.getAsInt();
-                  int $$10 = $$9 & 65535;
-                  int $$11 = ($$9 & -65536) >> 16;
-                  String $$12 = b($$4, a("FileDescription", $$10, $$11), $$5);
-                  String $$13 = b($$4, a("CompanyName", $$10, $$11), $$5);
-                  String $$14 = b($$4, a("FileVersion", $$10, $$11), $$5);
-                  return Optional.of(new ayg.b($$12, $$14, $$13));
-               }
-            }
-         }
-      } catch (Exception var14) {
-         a.info("Failed to find module info for {}", $$0, var14);
-         return Optional.empty();
-      }
-   }
-
-   private static String a(String $$0, int $$1, int $$2) {
-      return String.format(Locale.ROOT, "\\StringFileInfo\\%04x%04x\\%s", $$1, $$2, $$0);
-   }
-
-   private static OptionalInt a(int[] $$0) {
-      OptionalInt $$1 = OptionalInt.empty();
-
-      for (int $$2 : $$0) {
-         if (($$2 & -65536) == 78643200 && ($$2 & 65535) == 1033) {
-            return OptionalInt.of($$2);
          }
 
-         $$1 = OptionalInt.of($$2);
-      }
-
-      return $$1;
-   }
-
-   private static Pointer a(Pointer $$0, String $$1, IntByReference $$2) {
-      PointerByReference $$3 = new PointerByReference();
-      if (!Version.INSTANCE.VerQueryValue($$0, $$1, $$3, $$2)) {
-         throw new UnsupportedOperationException("Can't get version value " + $$1);
-      } else {
-         return $$3.getValue();
-      }
-   }
-
-   private static String b(Pointer $$0, String $$1, IntByReference $$2) {
-      try {
-         Pointer $$3 = a($$0, $$1, $$2);
-         byte[] $$4 = $$3.getByteArray(0L, ($$2.getValue() - 1) * 2);
-         return new String($$4, StandardCharsets.UTF_16LE);
-      } catch (Exception var5) {
-         return "";
-      }
-   }
-
-   public static void a(p $$0) {
-      $$0.a("Modules", () -> a().stream().sorted(Comparator.comparing($$0x -> $$0x.a)).map($$0x -> "\n\t\t" + $$0x).collect(Collectors.joining()));
-   }
-
-   public static class a {
-      public final String a;
-      public final Optional<ayg.b> b;
-
-      public a(String $$0, Optional<ayg.b> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public String toString() {
-         return this.b.<String>map($$0 -> this.a + ":" + $$0).orElse(this.a);
-      }
-   }
-
-   public static class b {
-      public final String a;
-      public final String b;
-      public final String c;
-
-      public b(String $$0, String $$1, String $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      @Override
-      public String toString() {
-         return this.a + ":" + this.b + ":" + this.c;
-      }
+         return true;
+      };
    }
 }

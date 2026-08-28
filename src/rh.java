@@ -1,26 +1,42 @@
-import java.util.List;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 
 public class rh {
-   public static final akm<elj> a = akm.a(lf.aK, new akn("trial_chambers_copper_bulb_degradation"));
+   public static final ala<ejo> a = rj.a("pillager_outpost/base_plates");
 
-   public static void a(qo<elj> $$0) {
-      a(
+   public static void a(rc<ejo> $$0) {
+      jj<emd> $$1 = $$0.a(lq.aK);
+      ji<emd> $$2 = $$1.b(rk.q);
+      jj<ejo> $$3 = $$0.a(lq.aM);
+      ji<ejo> $$4 = $$3.b(rj.a);
+      $$0.a(a, new ejo($$4, ImmutableList.of(Pair.of(ejm.a("pillager_outpost/base_plate"), 1)), ejo.a.b));
+      rj.a(
          $$0,
-         a,
-         List.of(
-            new ele(
-               List.of(
-                  new ela(new elc(dec.so, 0.1F), ekj.b, dec.sr.n().a(dfo.c, Boolean.valueOf(true))),
-                  new ela(new elc(dec.so, 0.33333334F), ekj.b, dec.sq.n().a(dfo.c, Boolean.valueOf(true))),
-                  new ela(new elc(dec.so, 0.5F), ekj.b, dec.sp.n().a(dfo.c, Boolean.valueOf(true)))
-               )
-            ),
-            new elb(avx.bO)
+         "pillager_outpost/towers",
+         new ejo(
+            $$4,
+            ImmutableList.of(Pair.of(ejm.b(ImmutableList.of(ejm.a("pillager_outpost/watchtower"), ejm.a("pillager_outpost/watchtower_overgrown", $$2))), 1)),
+            ejo.a.b
          )
       );
-   }
-
-   private static void a(qo<elj> $$0, akm<elj> $$1, List<eli> $$2) {
-      $$0.a($$1, new elj($$2));
+      rj.a($$0, "pillager_outpost/feature_plates", new ejo($$4, ImmutableList.of(Pair.of(ejm.a("pillager_outpost/feature_plate"), 1)), ejo.a.a));
+      rj.a(
+         $$0,
+         "pillager_outpost/features",
+         new ejo(
+            $$4,
+            ImmutableList.of(
+               Pair.of(ejm.a("pillager_outpost/feature_cage1"), 1),
+               Pair.of(ejm.a("pillager_outpost/feature_cage2"), 1),
+               Pair.of(ejm.a("pillager_outpost/feature_cage_with_allays"), 1),
+               Pair.of(ejm.a("pillager_outpost/feature_logs"), 1),
+               Pair.of(ejm.a("pillager_outpost/feature_tent1"), 1),
+               Pair.of(ejm.a("pillager_outpost/feature_tent2"), 1),
+               Pair.of(ejm.a("pillager_outpost/feature_targets"), 1),
+               Pair.of(ejm.g(), 6)
+            ),
+            ejo.a.b
+         )
+      );
    }
 }

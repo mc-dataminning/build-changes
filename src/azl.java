@@ -1,76 +1,25 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Set;
+public class azl {
+   private double a;
+   private double b;
+   private double c;
 
-public enum azl {
-   a(bga.a),
-   b(bga.b),
-   c(bga.c),
-   d(bga.d),
-   e(bga.e),
-   f(bga.f),
-   g(bga.g),
-   h(bga.h),
-   i(bga.i),
-   j(bga.j),
-   k(bga.k),
-   l(bga.l),
-   m(bga.m),
-   n(bga.o),
-   o(bga.n),
-   p(bga.p),
-   q(bga.q),
-   r(bga.K),
-   s(bga.r);
+   public double a(double $$0, double $$1) {
+      this.a += $$0;
+      double $$2 = this.a - this.b;
+      double $$3 = ayu.d(0.5, this.c, $$2);
+      double $$4 = Math.signum($$2);
+      if ($$4 * $$2 > $$4 * this.c) {
+         $$2 = $$3;
+      }
 
-   public static final Set<TypeReference> t;
-   private final TypeReference u;
-
-   private azl(TypeReference $$0) {
-      this.u = $$0;
+      this.c = $$3;
+      this.b += $$2 * $$1;
+      return $$2 * $$1;
    }
 
-   static int a() {
-      return aa.b().d().c();
-   }
-
-   public <A> Codec<A> a(final Codec<A> $$0, final DataFixer $$1, final int $$2) {
-      return new Codec<A>() {
-         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1x, T $$2x) {
-            return $$0.encode($$0, $$1, $$2).flatMap($$1xxx -> $$1.mergeToMap($$1xxx, $$1.createString("DataVersion"), $$1.createInt(azl.a())));
-         }
-
-         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1x) {
-            int $$2 = $$0.get($$1, "DataVersion").flatMap($$0::getNumberValue).map(Number::intValue).result().orElse($$2);
-            Dynamic<T> $$3 = new Dynamic($$0, $$0.remove($$1, "DataVersion"));
-            Dynamic<T> $$4 = azl.this.a($$1, $$3, $$2);
-            return $$0.decode($$4);
-         }
-      };
-   }
-
-   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2, int $$3) {
-      return $$0.update(this.u, $$1, $$2, $$3);
-   }
-
-   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2) {
-      return this.a($$0, $$1, $$2, a());
-   }
-
-   public ud a(DataFixer $$0, ud $$1, int $$2, int $$3) {
-      return (ud)this.a($$0, new Dynamic(ur.a, $$1), $$2, $$3).getValue();
-   }
-
-   public ud a(DataFixer $$0, ud $$1, int $$2) {
-      return this.a($$0, $$1, $$2, a());
-   }
-
-   static {
-      t = Set.of(a.u);
+   public void a() {
+      this.a = 0.0;
+      this.b = 0.0;
+      this.c = 0.0;
    }
 }

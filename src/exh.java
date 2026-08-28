@@ -1,9 +1,29 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+public enum exh {
+   a(-3),
+   b(-2),
+   c(-1),
+   d(0),
+   e(1),
+   f(2),
+   g(3);
 
-public class exh extends exg {
-   public exh(int $$0, int $$1, boolean $$2, boolean $$3) {
-      super($$2);
-      RenderSystem.assertOnRenderThreadOrInit();
-      this.a($$0, $$1, $$3);
+   private final int h;
+
+   private exh(final int $$0) {
+      this.h = $$0;
+   }
+
+   public static exh a(int $$0) {
+      for (exh $$1 : values()) {
+         if ($$1.h == $$0) {
+            return $$1;
+         }
+      }
+
+      return $$0 < a.h ? a : g;
+   }
+
+   public int a() {
+      return this.h;
    }
 }

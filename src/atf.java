@@ -1,180 +1,393 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.base.Joiner;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.file.LinkOption;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.ProviderMismatchException;
+import java.nio.file.ReadOnlyFileSystemException;
+import java.nio.file.WatchKey;
+import java.nio.file.WatchService;
+import java.nio.file.WatchEvent.Kind;
+import java.nio.file.WatchEvent.Modifier;
+import java.nio.file.attribute.BasicFileAttributeView;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.attribute.FileTime;
+import java.util.Comparator;
 import java.util.List;
-import java.util.function.Function;
+import java.util.Objects;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class atf {
-   private static final Logger a = LogUtils.getLogger();
-   private final asi b;
-   private final atf.c c;
-   private final atf.a d;
-   private final ask e;
-
-   @Nullable
-   public static atf a(asi $$0, atf.c $$1, asl $$2, ask $$3) {
-      int $$4 = aa.b().a($$2);
-      atf.a $$5 = a($$0, $$1, $$4);
-      return $$5 != null ? new atf($$0, $$1, $$5, $$3) : null;
-   }
-
-   public atf(asi $$0, atf.c $$1, atf.a $$2, ask $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-   }
-
-   @Nullable
-   public static atf.a a(asi $$0, atf.c $$1, int $$2) {
-      try {
-         atf.a var11;
-         try (asj $$3 = $$1.a($$0)) {
-            asy $$4 = $$3.a(asy.b);
-            if ($$4 == null) {
-               a.warn("Missing metadata in pack {}", $$0.a());
-               return null;
-            }
-
-            asf $$5 = $$3.a(asf.a);
-            col $$6 = $$5 != null ? $$5.a() : col.a();
-            axx<Integer> $$7 = a($$0.a(), $$4);
-            atg $$8 = atg.a($$7, $$2);
-            ash $$9 = $$3.a(ash.a);
-            List<String> $$10 = $$9 != null ? $$9.a($$2) : List.of();
-            var11 = new atf.a($$4.a(), $$8, $$6, $$10);
-         }
-
-         return var11;
-      } catch (Exception var14) {
-         a.warn("Failed to read pack {} metadata", $$0.a(), var14);
-         return null;
+class atf implements Path {
+   private static final BasicFileAttributes a = new atd() {
+      @Override
+      public boolean isRegularFile() {
+         return false;
       }
-   }
 
-   private static axx<Integer> a(String $$0, asy $$1) {
-      int $$2 = $$1.b();
-      if ($$1.c().isEmpty()) {
-         return new axx<>($$2);
-      } else {
-         axx<Integer> $$3 = $$1.c().get();
-         if (!$$3.a($$2)) {
-            a.warn("Pack {} declared support for versions {} but declared main format is {}, defaulting to {}", new Object[]{$$0, $$3, $$2, $$2});
-            return new axx<>($$2);
-         } else {
-            return $$3;
-         }
+      @Override
+      public boolean isDirectory() {
+         return true;
       }
+   };
+   private static final BasicFileAttributes b = new atd() {
+      @Override
+      public boolean isRegularFile() {
+         return true;
+      }
+
+      @Override
+      public boolean isDirectory() {
+         return false;
+      }
+   };
+   private static final Comparator<atf> c = Comparator.comparing(atf::n);
+   private final String d;
+   private final ath e;
+   @Nullable
+   private final atf f;
+   @Nullable
+   private List<String> g;
+   @Nullable
+   private String h;
+   private final ati i;
+
+   public atf(ath $$0, String $$1, @Nullable atf $$2, ati $$3) {
+      this.e = $$0;
+      this.d = $$1;
+      this.f = $$2;
+      this.i = $$3;
    }
 
-   public asi a() {
-      return this.b;
+   private atf a(@Nullable atf $$0, String $$1) {
+      return new atf(this.e, $$1, $$0, ati.b);
    }
 
-   public wx b() {
-      return this.b.b();
-   }
-
-   public wx c() {
-      return this.d.a();
-   }
-
-   public wx a(boolean $$0) {
-      return this.b.a($$0, this.d.a);
-   }
-
-   public atg d() {
-      return this.d.b();
-   }
-
-   public col e() {
-      return this.d.c();
-   }
-
-   public asj f() {
-      return this.c.a(this.b, this.d);
-   }
-
-   public String g() {
-      return this.b.a();
-   }
-
-   public ask h() {
+   public ath a() {
       return this.e;
    }
 
-   public boolean i() {
-      return this.e.a();
+   @Override
+   public boolean isAbsolute() {
+      return this.i != ati.b;
    }
 
-   public boolean j() {
-      return this.e.c();
+   @Override
+   public File toFile() {
+      if (this.i instanceof ati.b $$0) {
+         return $$0.a().toFile();
+      } else {
+         throw new UnsupportedOperationException("Path " + this.n() + " does not represent file");
+      }
    }
 
-   public atf.b k() {
-      return this.e.b();
+   @Nullable
+   public atf b() {
+      return this.isAbsolute() ? this.e.b() : null;
    }
 
-   public atj l() {
-      return this.b.c();
+   public atf c() {
+      return this.a(null, this.d);
+   }
+
+   @Nullable
+   public atf d() {
+      return this.f;
+   }
+
+   @Override
+   public int getNameCount() {
+      return this.l().size();
+   }
+
+   private List<String> l() {
+      if (this.d.isEmpty()) {
+         return List.of();
+      } else {
+         if (this.g == null) {
+            Builder<String> $$0 = ImmutableList.builder();
+            if (this.f != null) {
+               $$0.addAll(this.f.l());
+            }
+
+            $$0.add(this.d);
+            this.g = $$0.build();
+         }
+
+         return this.g;
+      }
+   }
+
+   public atf a(int $$0) {
+      List<String> $$1 = this.l();
+      if ($$0 >= 0 && $$0 < $$1.size()) {
+         return this.a(null, $$1.get($$0));
+      } else {
+         throw new IllegalArgumentException("Invalid index: " + $$0);
+      }
+   }
+
+   public atf a(int $$0, int $$1) {
+      List<String> $$2 = this.l();
+      if ($$0 >= 0 && $$1 <= $$2.size() && $$0 < $$1) {
+         atf $$3 = null;
+
+         for (int $$4 = $$0; $$4 < $$1; $$4++) {
+            $$3 = this.a($$3, $$2.get($$4));
+         }
+
+         return $$3;
+      } else {
+         throw new IllegalArgumentException();
+      }
+   }
+
+   @Override
+   public boolean startsWith(Path $$0) {
+      if ($$0.isAbsolute() != this.isAbsolute()) {
+         return false;
+      } else if ($$0 instanceof atf $$1) {
+         if ($$1.e != this.e) {
+            return false;
+         } else {
+            List<String> $$2 = this.l();
+            List<String> $$3 = $$1.l();
+            int $$4 = $$3.size();
+            if ($$4 > $$2.size()) {
+               return false;
+            } else {
+               for (int $$5 = 0; $$5 < $$4; $$5++) {
+                  if (!$$3.get($$5).equals($$2.get($$5))) {
+                     return false;
+                  }
+               }
+
+               return true;
+            }
+         }
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean endsWith(Path $$0) {
+      if ($$0.isAbsolute() && !this.isAbsolute()) {
+         return false;
+      } else if ($$0 instanceof atf $$1) {
+         if ($$1.e != this.e) {
+            return false;
+         } else {
+            List<String> $$2 = this.l();
+            List<String> $$3 = $$1.l();
+            int $$4 = $$3.size();
+            int $$5 = $$2.size() - $$4;
+            if ($$5 < 0) {
+               return false;
+            } else {
+               for (int $$6 = $$4 - 1; $$6 >= 0; $$6--) {
+                  if (!$$3.get($$6).equals($$2.get($$5 + $$6))) {
+                     return false;
+                  }
+               }
+
+               return true;
+            }
+         }
+      } else {
+         return false;
+      }
+   }
+
+   public atf e() {
+      return this;
+   }
+
+   public atf a(Path $$0) {
+      atf $$1 = this.c($$0);
+      return $$0.isAbsolute() ? $$1 : this.a($$1.l());
+   }
+
+   private atf a(List<String> $$0) {
+      atf $$1 = this;
+
+      for (String $$2 : $$0) {
+         $$1 = $$1.a($$2);
+      }
+
+      return $$1;
+   }
+
+   atf a(String $$0) {
+      if (a(this.i)) {
+         return new atf(this.e, $$0, this, this.i);
+      } else if (this.i instanceof ati.a $$1) {
+         atf $$2 = $$1.a().get($$0);
+         return $$2 != null ? $$2 : new atf(this.e, $$0, this, ati.a);
+      } else if (this.i instanceof ati.b) {
+         return new atf(this.e, $$0, this, ati.a);
+      } else {
+         throw new AssertionError("All content types should be already handled");
+      }
+   }
+
+   private static boolean a(ati $$0) {
+      return $$0 == ati.a || $$0 == ati.b;
+   }
+
+   public atf b(Path $$0) {
+      atf $$1 = this.c($$0);
+      if (this.isAbsolute() != $$1.isAbsolute()) {
+         throw new IllegalArgumentException("absolute mismatch");
+      } else {
+         List<String> $$2 = this.l();
+         List<String> $$3 = $$1.l();
+         if ($$2.size() >= $$3.size()) {
+            throw new IllegalArgumentException();
+         } else {
+            for (int $$4 = 0; $$4 < $$2.size(); $$4++) {
+               if (!$$2.get($$4).equals($$3.get($$4))) {
+                  throw new IllegalArgumentException();
+               }
+            }
+
+            return $$1.a($$2.size(), $$3.size());
+         }
+      }
+   }
+
+   @Override
+   public URI toUri() {
+      try {
+         return new URI("x-mc-link", this.e.a().name(), this.n(), null);
+      } catch (URISyntaxException var2) {
+         throw new AssertionError("Failed to create URI", var2);
+      }
+   }
+
+   public atf f() {
+      return this.isAbsolute() ? this : this.e.b().a(this);
+   }
+
+   public atf a(LinkOption... $$0) {
+      return this.f();
+   }
+
+   @Override
+   public WatchKey register(WatchService $$0, Kind<?>[] $$1, Modifier... $$2) {
+      throw new UnsupportedOperationException();
+   }
+
+   @Override
+   public int compareTo(Path $$0) {
+      atf $$1 = this.c($$0);
+      return c.compare(this, $$1);
    }
 
    @Override
    public boolean equals(Object $$0) {
-      if (this == $$0) {
+      if ($$0 == this) {
          return true;
+      } else if ($$0 instanceof atf $$1) {
+         if (this.e != $$1.e) {
+            return false;
+         } else {
+            boolean $$2 = this.m();
+            if ($$2 != $$1.m()) {
+               return false;
+            } else {
+               return $$2 ? this.i == $$1.i : Objects.equals(this.f, $$1.f) && Objects.equals(this.d, $$1.d);
+            }
+         }
       } else {
-         return !($$0 instanceof atf $$1) ? false : this.b.equals($$1.b);
+         return false;
       }
+   }
+
+   private boolean m() {
+      return !a(this.i);
    }
 
    @Override
    public int hashCode() {
-      return this.b.hashCode();
+      return this.m() ? this.i.hashCode() : this.d.hashCode();
    }
 
-   public static record a(wx a, atg b, col c, List<String> d) {
+   @Override
+   public String toString() {
+      return this.n();
    }
 
-   public static enum b {
-      a,
-      b;
-
-      public <T> int a(List<T> $$0, T $$1, Function<T, ask> $$2, boolean $$3) {
-         atf.b $$4 = $$3 ? this.a() : this;
-         if ($$4 == b) {
-            int $$5;
-            for ($$5 = 0; $$5 < $$0.size(); $$5++) {
-               ask $$6 = $$2.apply($$0.get($$5));
-               if (!$$6.c() || $$6.b() != this) {
-                  break;
-               }
-            }
-
-            $$0.add($$5, $$1);
-            return $$5;
-         } else {
-            int $$7;
-            for ($$7 = $$0.size() - 1; $$7 >= 0; $$7--) {
-               ask $$8 = $$2.apply($$0.get($$7));
-               if (!$$8.c() || $$8.b() != this) {
-                  break;
-               }
-            }
-
-            $$0.add($$7 + 1, $$1);
-            return $$7 + 1;
+   private String n() {
+      if (this.h == null) {
+         StringBuilder $$0 = new StringBuilder();
+         if (this.isAbsolute()) {
+            $$0.append("/");
          }
+
+         Joiner.on("/").appendTo($$0, this.l());
+         this.h = $$0.toString();
       }
 
-      public atf.b a() {
-         return this == a ? b : a;
+      return this.h;
+   }
+
+   private atf c(@Nullable Path $$0) {
+      if ($$0 == null) {
+         throw new NullPointerException();
+      } else {
+         if ($$0 instanceof atf $$1 && $$1.e == this.e) {
+            return $$1;
+         }
+
+         throw new ProviderMismatchException();
       }
    }
 
-   public interface c {
-      asj a(asi var1);
+   public boolean g() {
+      return this.m();
+   }
 
-      asj a(asi var1, atf.a var2);
+   @Nullable
+   public Path h() {
+      return this.i instanceof ati.b $$0 ? $$0.a() : null;
+   }
+
+   @Nullable
+   public ati.a i() {
+      return this.i instanceof ati.a $$0 ? $$0 : null;
+   }
+
+   public BasicFileAttributeView j() {
+      return new BasicFileAttributeView() {
+         @Override
+         public String name() {
+            return "basic";
+         }
+
+         @Override
+         public BasicFileAttributes readAttributes() throws IOException {
+            return atf.this.k();
+         }
+
+         @Override
+         public void setTimes(FileTime $$0, FileTime $$1, FileTime $$2) {
+            throw new ReadOnlyFileSystemException();
+         }
+      };
+   }
+
+   public BasicFileAttributes k() throws IOException {
+      if (this.i instanceof ati.a) {
+         return a;
+      } else if (this.i instanceof ati.b) {
+         return b;
+      } else {
+         throw new NoSuchFileException(this.n());
+      }
    }
 }

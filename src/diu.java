@@ -1,34 +1,31 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class diu extends dik implements ded {
-   public static final MapCodec<diu> a = b(diu::new);
+public class diu extends dit {
+   public static final MapCodec<diu> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(lp.e.q().fieldOf("host").forGetter(dit::b), u()).apply($$0, diu::new));
 
    @Override
    public MapCodec<diu> a() {
-      return a;
+      return b;
    }
 
-   public diu(drc.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean b(dbc $$0, io $$1, drd $$2) {
-      return $$0.a_($$1.d()).i();
+   public diu(deu $$0, drw.d $$1) {
+      super($$0, $$1);
+      this.k(this.n().a(dlg.i, je.a.b));
    }
 
    @Override
-   public boolean a(daz $$0, aym $$1, io $$2, drd $$3) {
-      return true;
+   protected drx a(drx $$0, dlh $$1) {
+      return dlg.b($$0, $$1);
    }
 
    @Override
-   public void a(aqn $$0, aym $$1, io $$2, drd $$3) {
-      $$0.a($$2.d(), div.c(), 2);
+   protected void a(dry.a<deu, drx> $$0) {
+      $$0.a(dlg.i);
    }
 
    @Override
-   public io a(io $$0) {
-      return $$0.d();
+   public drx a(cxv $$0) {
+      return this.n().a(dlg.i, $$0.k().o());
    }
 }

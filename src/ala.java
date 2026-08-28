@@ -1,79 +1,64 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import java.util.Collection;
-import java.util.Map;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.MapMaker;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.concurrent.ConcurrentMap;
 
-public class ala extends aub {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Gson b = new GsonBuilder().create();
-   private Map<akn, af> c = Map.of();
-   private ak d = new ak();
-   private final iz.a e;
+public class ala<T> {
+   private static final ConcurrentMap<ala.a, ala<?>> a = new MapMaker().weakValues().makeMap();
+   private final alb b;
+   private final alb c;
 
-   public ala(iz.a $$0) {
-      super(b, "advancements");
-      this.e = $$0;
+   public static <T> Codec<ala<T>> a(ala<? extends jv<T>> $$0) {
+      return alb.a.xmap($$1 -> a($$0, $$1), ala::a);
    }
 
-   protected void a(Map<akn, JsonElement> $$0, atx $$1, bmk $$2) {
-      akl<JsonElement> $$3 = this.e.a(JsonOps.INSTANCE);
-      Builder<akn, af> $$4 = ImmutableMap.builder();
-      $$0.forEach(($$2x, $$3x) -> {
-         try {
-            ae $$4x = (ae)ae.a.parse($$3, $$3x).getOrThrow(JsonParseException::new);
-            this.a($$2x, $$4x);
-            $$4.put($$2x, new af($$2x, $$4x));
-         } catch (Exception var6x) {
-            a.error("Parsing error loading custom advancement {}: {}", $$2x, var6x.getMessage());
-         }
-      });
-      this.c = $$4.buildOrThrow();
-      ak $$5 = new ak();
-      $$5.a(this.c.values());
-
-      for (ag $$6 : $$5.b()) {
-         if ($$6.b().b().c().isPresent()) {
-            as.a($$6);
-         }
-      }
-
-      this.d = $$5;
+   public static <T> zj<ByteBuf, ala<T>> b(ala<? extends jv<T>> $$0) {
+      return alb.b.a($$1 -> a($$0, $$1), ala::a);
    }
 
-   private void a(akn $$0, ae $$1) {
-      ayk.a $$2 = new ayk.a();
-      $$1.a($$2, this.e.b());
-      Multimap<String, String> $$3 = $$2.a();
-      if (!$$3.isEmpty()) {
-         String $$4 = $$3.asMap()
-            .entrySet()
-            .stream()
-            .map($$0x -> "  at " + (String)$$0x.getKey() + ": " + String.join("; ", (Iterable<? extends CharSequence>)$$0x.getValue()))
-            .collect(Collectors.joining("\n"));
-         a.warn("Found validation problems in advancement {}: \n{}", $$0, $$4);
-      }
+   public static <T> ala<T> a(ala<? extends jv<T>> $$0, alb $$1) {
+      return a($$0.c, $$1);
    }
 
-   @Nullable
-   public af a(akn $$0) {
-      return this.c.get($$0);
+   public static <T> ala<jv<T>> a(alb $$0) {
+      return a(lq.a, $$0);
    }
 
-   public ak a() {
-      return this.d;
+   private static <T> ala<T> a(alb $$0, alb $$1) {
+      return (ala<T>)a.computeIfAbsent(new ala.a($$0, $$1), $$0x -> new ala($$0x.a, $$0x.b));
    }
 
-   public Collection<af> b() {
-      return this.c.values();
+   private ala(alb $$0, alb $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   @Override
+   public String toString() {
+      return "ResourceKey[" + this.b + " / " + this.c + "]";
+   }
+
+   public boolean c(ala<? extends jv<?>> $$0) {
+      return this.b.equals($$0.a());
+   }
+
+   public <E> Optional<ala<E>> d(ala<? extends jv<E>> $$0) {
+      return this.c($$0) ? Optional.of((ala<E>)this) : Optional.empty();
+   }
+
+   public alb a() {
+      return this.c;
+   }
+
+   public alb b() {
+      return this.b;
+   }
+
+   public ala<jv<T>> c() {
+      return a(this.b);
+   }
+
+   static record a(alb a, alb b) {
    }
 }

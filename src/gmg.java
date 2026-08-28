@@ -1,21 +1,16 @@
-public class gmg<T extends brw & btg, M extends fsw<T>> extends gmf<T, M> {
-   private final akn a;
-   private final M b;
+public class gmg extends gne<cfd, ftg<cfd>> {
+   private static final alb a = new alb("textures/entity/cat/cat_collar.png");
+   private final ftg<cfd> b;
 
-   public gmg(gjp<T, M> $$0, M $$1, akn $$2) {
+   public gmg(gko<cfd, ftg<cfd>> $$0, fwr $$1) {
       super($$0);
-      this.b = $$1;
-      this.a = $$2;
+      this.b = new ftg<>($$1.a(fwu.u));
    }
 
-   @Override
-   public void a(eyu $$0, gck $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.i()) {
-         this.c().a(this.b);
-         this.b.a($$3, $$4, $$5, $$6);
-         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-         eyy $$10 = $$1.getBuffer(gcs.e(this.a));
-         this.b.a($$0, $$10, $$2, gnm.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   public void a(ezt $$0, gdj $$1, int $$2, cfd $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.s()) {
+         float[] $$10 = $$3.gz().d();
+         a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$10[0], $$10[1], $$10[2]);
       }
    }
 }

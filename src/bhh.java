@@ -1,19 +1,19 @@
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.DSL.TypeReference;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
 
-public class bhh extends DataFix {
-   private final String a;
-   private final TypeReference b;
-
-   public bhh(Schema $$0, String $$1, TypeReference $$2) {
-      super($$0, true);
-      this.a = $$1;
-      this.b = $$2;
+public class bhh extends bfq {
+   public bhh(Schema $$0, boolean $$1) {
+      super($$0, $$1, "StriderGravityFix", bgs.B, "minecraft:strider");
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.writeAndRead(this.a, this.getInputSchema().getType(this.b), this.getOutputSchema().getType(this.b));
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.get("NoGravity").asBoolean(false) ? $$0.set("NoGravity", $$0.createBoolean(false)) : $$0;
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

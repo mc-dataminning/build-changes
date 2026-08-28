@@ -1,68 +1,44 @@
-import java.util.Set;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
 
-public class fv implements Predicate<drh> {
-   private final drd a;
-   private final Set<dsg<?>> b;
-   @Nullable
-   private final ud c;
+public class fv implements ArgumentType<ewh> {
+   private static final Collection<String> b = Arrays.asList("sidebar", "foo.bar");
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xl.b("argument.scoreboardDisplaySlot.invalid", $$0));
 
-   public fv(drd $$0, Set<dsg<?>> $$1, @Nullable ud $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   private fv() {
    }
 
-   public drd a() {
-      return this.a;
+   public static fv a() {
+      return new fv();
    }
 
-   public Set<dsg<?>> b() {
-      return this.b;
+   public static ewh a(CommandContext<ep> $$0, String $$1) {
+      return (ewh)$$0.getArgument($$1, ewh.class);
    }
 
-   public boolean a(drh $$0) {
-      drd $$1 = $$0.a();
-      if (!$$1.a(this.a.b())) {
-         return false;
+   public ewh a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = $$0.readUnquotedString();
+      ewh $$2 = ewh.t.a($$1);
+      if ($$2 == null) {
+         throw a.createWithContext($$0, $$1);
       } else {
-         for (dsg<?> $$2 : this.b) {
-            if ($$1.c($$2) != this.a.c($$2)) {
-               return false;
-            }
-         }
-
-         if (this.c == null) {
-            return true;
-         } else {
-            doi $$3 = $$0.b();
-            return $$3 != null && us.a(this.c, $$3.b($$0.c().H_()), true);
-         }
+         return $$2;
       }
    }
 
-   public boolean a(aqn $$0, io $$1) {
-      return this.a(new drh($$0, $$1, false));
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return eu.b(Arrays.stream(ewh.values()).map(ewh::c), $$1);
    }
 
-   public boolean a(aqn $$0, io $$1, int $$2) {
-      drd $$3 = dea.b(this.a, $$0, $$1);
-      if ($$3.i()) {
-         $$3 = this.a;
-      }
-
-      if (!$$0.a($$1, $$3, $$2)) {
-         return false;
-      } else {
-         if (this.c != null) {
-            doi $$4 = $$0.c_($$1);
-            if ($$4 != null) {
-               $$4.c(this.c, $$0.H_());
-            }
-         }
-
-         return true;
-      }
+   public Collection<String> getExamples() {
+      return b;
    }
 }

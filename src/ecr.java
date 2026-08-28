@@ -1,19 +1,23 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class ecr implements ecd {
+public class ecr implements ecx {
    public static final Codec<ecr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.list(ecl.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, ecr::new)
+      $$0 -> $$0.group(bpu.b(0, 3).fieldOf("reach").forGetter($$0x -> $$0x.b), bpu.b(1, 10).fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, ecr::new)
    );
-   public final List<ecl.a> b;
+   private final bpu b;
+   private final bpu c;
 
-   public ecr(drd $$0, drd $$1) {
-      this(ImmutableList.of(ecl.a(new ekq($$0), $$1)));
+   public ecr(bpu $$0, bpu $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public ecr(List<ecl.a> $$0) {
-      this.b = $$0;
+   public bpu a() {
+      return this.b;
+   }
+
+   public bpu b() {
+      return this.c;
    }
 }

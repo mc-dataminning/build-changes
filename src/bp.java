@@ -1,95 +1,46 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 import java.util.Optional;
 
-public record bp(Optional<Boolean> b, Optional<Boolean> c, Optional<Boolean> d, Optional<Boolean> e, Optional<Boolean> f) {
+public record bp(Optional<ji<czv>> b, de.d c) {
    public static final Codec<bp> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.BOOL.optionalFieldOf("is_on_fire").forGetter(bp::a),
-               Codec.BOOL.optionalFieldOf("is_sneaking").forGetter(bp::b),
-               Codec.BOOL.optionalFieldOf("is_sprinting").forGetter(bp::c),
-               Codec.BOOL.optionalFieldOf("is_swimming").forGetter(bp::d),
-               Codec.BOOL.optionalFieldOf("is_baby").forGetter(bp::e)
-            )
-            .apply($$0, bp::new)
+      $$0 -> $$0.group(lp.f.r().optionalFieldOf("enchantment").forGetter(bp::a), de.d.d.optionalFieldOf("levels", de.d.c).forGetter(bp::b)).apply($$0, bp::new)
    );
 
-   public boolean a(brw $$0) {
-      if (this.b.isPresent() && $$0.bQ() != this.b.get()) {
-         return false;
-      } else if (this.c.isPresent() && $$0.ca() != this.c.get()) {
-         return false;
-      } else if (this.d.isPresent() && $$0.cb() != this.d.get()) {
-         return false;
-      } else if (this.e.isPresent() && $$0.cc() != this.e.get()) {
-         return false;
-      } else {
-         if (this.f.isPresent() && $$0 instanceof bsq $$1 && $$1.p_() != this.f.get()) {
+   public bp(czv $$0, de.d $$1) {
+      this(Optional.of($$0.m()), $$1);
+   }
+
+   public boolean a(daa $$0) {
+      if (this.b.isPresent()) {
+         czv $$1 = this.b.get().a();
+         int $$2 = $$0.a($$1);
+         if ($$2 == 0) {
             return false;
          }
 
-         return true;
+         if (this.c != de.d.c && !this.c.d($$2)) {
+            return false;
+         }
+      } else if (this.c != de.d.c) {
+         for (Entry<ji<czv>> $$3 : $$0.b()) {
+            if (this.c.d($$3.getIntValue())) {
+               return true;
+            }
+         }
+
+         return false;
       }
+
+      return true;
    }
 
-   public Optional<Boolean> a() {
+   public Optional<ji<czv>> a() {
       return this.b;
    }
 
-   public Optional<Boolean> b() {
+   public de.d b() {
       return this.c;
-   }
-
-   public Optional<Boolean> c() {
-      return this.d;
-   }
-
-   public Optional<Boolean> d() {
-      return this.e;
-   }
-
-   public Optional<Boolean> e() {
-      return this.f;
-   }
-
-   public static class a {
-      private Optional<Boolean> a = Optional.empty();
-      private Optional<Boolean> b = Optional.empty();
-      private Optional<Boolean> c = Optional.empty();
-      private Optional<Boolean> d = Optional.empty();
-      private Optional<Boolean> e = Optional.empty();
-
-      public static bp.a a() {
-         return new bp.a();
-      }
-
-      public bp.a a(Boolean $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public bp.a b(Boolean $$0) {
-         this.b = Optional.of($$0);
-         return this;
-      }
-
-      public bp.a c(Boolean $$0) {
-         this.c = Optional.of($$0);
-         return this;
-      }
-
-      public bp.a d(Boolean $$0) {
-         this.d = Optional.of($$0);
-         return this;
-      }
-
-      public bp.a e(Boolean $$0) {
-         this.e = Optional.of($$0);
-         return this;
-      }
-
-      public bp b() {
-         return new bp(this.a, this.b, this.c, this.d, this.e);
-      }
    }
 }

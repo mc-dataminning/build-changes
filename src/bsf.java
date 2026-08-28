@@ -1,51 +1,39 @@
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.google.common.collect.Sets;
+import java.util.Set;
+import java.util.function.ToIntFunction;
 
-public interface bsf {
-   void a(bsd var1, ctq var2);
+class bsf extends brv {
+   private final ToIntFunction<azc> a;
 
-   ctq a(bsd var1);
-
-   void a(bsd var1, float var2);
-
-   default void a(akn $$0, epk $$1) {
-      this.a($$0, $$1, 0L);
+   protected bsf(brw $$0, int $$1, ToIntFunction<azc> $$2) {
+      super($$0, $$1, lj.V);
+      this.a = $$2;
    }
 
-   default void a(akn $$0, epk $$1, long $$2) {
-      akm<epm> $$3 = akm.a(lf.aU, $$0);
-      if (!$$3.equals(epf.a)) {
-         epm $$4 = $$1.a().o().be().b($$3);
-         if ($$4 != epm.a) {
-            List<ctq> $$5 = $$4.a($$1, $$2);
-            List<bsd> $$6 = new ArrayList<>();
+   @Override
+   public void a(btk $$0, int $$1, bsp.c $$2) {
+      if ($$2 == bsp.c.a && ($$0 instanceof cms || $$0.dP().ab().b(dbp.c))) {
+         this.a($$0.dP(), $$0.el(), $$0.aL());
+      }
+   }
 
-            for (ctq $$7 : $$5) {
-               bsd $$8 = this.a($$7, $$6);
-               if ($$8 != null) {
-                  ctq $$9 = $$8.f() ? $$7.c(1) : $$7;
-                  this.a($$8, $$9);
-                  this.a($$8, 0.085F);
-                  $$6.add($$8);
-               }
+   private void a(dbt $$0, azc $$1, iz $$2) {
+      Set<iz> $$3 = Sets.newHashSet();
+      int $$4 = this.a.applyAsInt($$1);
+
+      for (iz $$5 : iz.a($$1, 15, $$2, 1)) {
+         iz $$6 = $$5.d();
+         if (!$$3.contains($$5) && $$0.a_($$5).r() && $$0.a_($$6).d($$0, $$6, je.b)) {
+            $$3.add($$5.i());
+            if ($$3.size() >= $$4) {
+               break;
             }
          }
       }
-   }
 
-   @Nullable
-   default bsd a(ctq $$0, List<bsd> $$1) {
-      css $$2 = css.c_($$0);
-      if ($$2 != null) {
-         bsd $$3 = $$2.m();
-         if (!$$1.contains($$3)) {
-            return $$3;
-         }
-      } else if (!$$1.contains(bsd.a)) {
-         return bsd.a;
+      for (iz $$7 : $$3) {
+         $$0.a($$7, dew.bs.n(), 3);
+         $$0.c(3018, $$7, 0);
       }
-
-      return null;
    }
 }

@@ -1,29 +1,20 @@
-public class ahb implements ze<age> {
-   public static final yv<vx, ahb> a = ze.a(ahb::a, ahb::new);
-   private final boolean b;
+public record ahb(yc.a b) implements zs<ags> {
+   public static final zj<wl, ahb> a = zs.a(ahb::a, ahb::new);
 
-   public ahb(boolean $$0) {
-      this.b = $$0;
+   private ahb(wl $$0) {
+      this(yc.a.a($$0));
    }
 
-   private ahb(vx $$0) {
-      this.b = $$0.readBoolean();
-   }
-
-   private void a(vx $$0) {
-      $$0.a(this.b);
+   private void a(wl $$0) {
+      yc.a.a($$0, this.b);
    }
 
    @Override
-   public zg<ahb> a() {
-      return agc.bA;
+   public zu<ahb> a() {
+      return agq.bm;
    }
 
-   public void a(age $$0) {
+   public void a(ags $$0) {
       $$0.a(this);
-   }
-
-   public boolean b() {
-      return this.b;
    }
 }

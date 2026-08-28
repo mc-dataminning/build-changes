@@ -1,16 +1,22 @@
-public class crj extends ctl implements cui {
-   public crj(ctl.a $$0) {
-      super($$0);
-   }
+public class crj implements cpz {
+   private final int[] a;
 
-   public cme a(daz $$0, ctq $$1, bsq $$2) {
-      return new cmg($$0, $$2, $$1.c(1));
+   public crj(int $$0) {
+      this.a = new int[$$0];
    }
 
    @Override
-   public cmq a(daz $$0, jh $$1, ctq $$2, it $$3) {
-      cmg $$4 = new cmg($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1));
-      $$4.d = cme.a.b;
-      return $$4;
+   public int a(int $$0) {
+      return this.a[$$0];
+   }
+
+   @Override
+   public void a(int $$0, int $$1) {
+      this.a[$$0] = $$1;
+   }
+
+   @Override
+   public int a() {
+      return this.a.length;
    }
 }

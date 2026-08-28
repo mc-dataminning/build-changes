@@ -1,20 +1,15 @@
 public interface dvy {
-   dwa a();
+   dvy a = new dvy() {
+      @Override
+      public void a() {
+      }
 
-   int b();
+      @Override
+      public void a(bsp.c $$0) {
+      }
+   };
 
-   boolean a(aqn var1, ix<dvw> var2, dvw.a var3, eum var4);
+   void a();
 
-   default dvy.a c() {
-      return dvy.a.a;
-   }
-
-   public static enum a {
-      a,
-      b;
-   }
-
-   public interface b<T extends dvy> {
-      T c();
-   }
+   void a(bsp.c var1);
 }

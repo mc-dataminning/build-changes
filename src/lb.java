@@ -1,35 +1,49 @@
-import com.mojang.brigadier.StringReader;
 import com.mojang.serialization.MapCodec;
+import io.netty.buffer.ByteBuf;
 
-public class lb extends kx<lb> implements kw {
-   private static final kw.a<lb> a = new kw.a<lb>() {
-      public lb a(kx<lb> $$0, StringReader $$1, iz.a $$2) {
-         return (lb)$$0;
-      }
-   };
-   private final MapCodec<lb> b = MapCodec.unit(this::f);
-   private final yv<wi, lb> c = yv.a(this);
+public class lb implements lh {
+   private final li<lb> a;
+   private final int b;
 
-   protected lb(boolean $$0) {
-      super($$0, a);
+   public static MapCodec<lb> a(li<lb> $$0) {
+      return ayc.i.xmap($$1 -> new lb($$0, $$1), $$0x -> $$0x.b).fieldOf("color");
    }
 
-   public lb f() {
-      return this;
+   public static zj<? super ByteBuf, lb> b(li<lb> $$0) {
+      return zh.f.a($$1 -> new lb($$0, $$1), $$0x -> $$0x.b);
    }
 
-   @Override
-   public MapCodec<lb> d() {
-      return this.b;
+   private lb(li<lb> $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
    @Override
-   public yv<wi, lb> e() {
-      return this.c;
+   public li<lb> a() {
+      return this.a;
    }
 
-   @Override
-   public String a(iz.a $$0) {
-      return le.j.b(this).toString();
+   public float b() {
+      return (float)aye.b.b(this.b) / 255.0F;
+   }
+
+   public float c() {
+      return (float)aye.b.c(this.b) / 255.0F;
+   }
+
+   public float d() {
+      return (float)aye.b.d(this.b) / 255.0F;
+   }
+
+   public float e() {
+      return (float)aye.b.a(this.b) / 255.0F;
+   }
+
+   public static lb a(li<lb> $$0, int $$1) {
+      return new lb($$0, $$1);
+   }
+
+   public static lb a(li<lb> $$0, float $$1, float $$2, float $$3) {
+      return a($$0, aye.b.a(1.0F, $$1, $$2, $$3));
    }
 }

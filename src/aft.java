@@ -1,29 +1,20 @@
-public record aft(float b, boolean c) implements ze<abq> {
-   public static final yv<vx, aft> a = ze.a(aft::a, aft::new);
+public record aft(int b) implements zs<ace> {
+   public static final zj<wl, aft> a = zs.a(aft::a, aft::new);
 
-   private aft(vx $$0) {
-      this($$0.readFloat(), $$0.readBoolean());
+   private aft(wl $$0) {
+      this($$0.l());
    }
 
-   public static aft a(bqh $$0) {
-      return new aft($$0.f(), $$0.l());
-   }
-
-   private void a(vx $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(wl $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zg<aft> a() {
-      return agc.cf;
+   public zu<aft> a() {
+      return agq.aM;
    }
 
-   public void a(abq $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
-   }
-
-   public boolean e() {
-      return this.c;
    }
 }

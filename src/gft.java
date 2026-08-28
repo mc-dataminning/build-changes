@@ -1,90 +1,111 @@
-import org.joml.Matrix4f;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public class gft implements gfw.a {
-   private final feb a;
-   private static final int b = axp.b.a(255, 0, 155, 155);
-   private static final int c = axp.b.a(255, 255, 255, 0);
+public class gft extends gfx {
+   private static final String a = "plank";
+   private static final String b = "vChains";
+   private static final String c = "normalChains";
+   private static final String d = "chainL1";
+   private static final String e = "chainL2";
+   private static final String f = "chainR1";
+   private static final String g = "chainR2";
+   private static final String h = "board";
+   private static final float i = 1.0F;
+   private static final float j = 0.9F;
+   private static final evm k = new evm(0.0, -0.32F, 0.073F);
+   private final Map<dtk, gft.a> l;
 
-   public gft(feb $$0) {
-      this.a = $$0;
+   public gft(gfk.a $$0) {
+      super($$0);
+      this.l = dtk.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new gft.a($$0.a(fwu.b($$1)))));
    }
 
    @Override
-   public void a(eyu $$0, gck $$1, double $$2, double $$3, double $$4) {
-      brw $$5 = this.a.j.m().g();
-      float $$6 = (float)((double)this.a.r.I_() - $$3);
-      float $$7 = (float)((double)this.a.r.al() - $$3);
-      dag $$8 = $$5.dr();
-      float $$9 = (float)((double)$$8.d() - $$2);
-      float $$10 = (float)((double)$$8.e() - $$4);
-      eyy $$11 = $$1.getBuffer(gcs.a(1.0));
-      Matrix4f $$12 = $$0.c().a();
+   public float b() {
+      return 1.0F;
+   }
 
-      for (int $$13 = -16; $$13 <= 32; $$13 += 16) {
-         for (int $$14 = -16; $$14 <= 32; $$14 += 16) {
-            $$11.a($$12, $$9 + (float)$$13, $$6, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.0F).e();
-            $$11.a($$12, $$9 + (float)$$13, $$6, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-            $$11.a($$12, $$9 + (float)$$13, $$7, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-            $$11.a($$12, $$9 + (float)$$13, $$7, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.0F).e();
+   @Override
+   public float c() {
+      return 0.9F;
+   }
+
+   @Override
+   public void a(dqm $$0, float $$1, ezt $$2, gdj $$3, int $$4, int $$5) {
+      drx $$6 = $$0.n();
+      dlu $$7 = (dlu)$$6.b();
+      dtk $$8 = dlu.a($$7);
+      gft.a $$9 = this.l.get($$8);
+      $$9.a($$6);
+      this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+   }
+
+   @Override
+   void a(ezt $$0, float $$1, drx $$2) {
+      $$0.a(0.5, 0.9375, 0.5);
+      $$0.a(a.d.rotationDegrees($$1));
+      $$0.a(0.0F, -0.3125F, 0.0F);
+   }
+
+   @Override
+   void a(ezt $$0, int $$1, int $$2, fur $$3, ezx $$4) {
+      gft.a $$5 = (gft.a)$$3;
+      $$5.a.a($$0, $$4, $$1, $$2);
+   }
+
+   @Override
+   gqy a(dtk $$0) {
+      return gdy.b($$0);
+   }
+
+   @Override
+   evm d() {
+      return k;
+   }
+
+   public static fxb e() {
+      fxd $$0 = new fxd();
+      fxe $$1 = $$0.a();
+      $$1.a("board", fxa.c().a(0, 12).a(-7.0F, 0.0F, -1.0F, 14.0F, 10.0F, 2.0F), fwx.a);
+      $$1.a("plank", fxa.c().a(0, 0).a(-8.0F, -6.0F, -2.0F, 16.0F, 2.0F, 4.0F), fwx.a);
+      fxe $$2 = $$1.a("normalChains", fxa.c(), fwx.a);
+      $$2.a("chainL1", fxa.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fwx.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$2.a("chainL2", fxa.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fwx.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$2.a("chainR1", fxa.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fwx.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$2.a("chainR2", fxa.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fwx.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("vChains", fxa.c().a(14, 6).a(-6.0F, -6.0F, 0.0F, 12.0F, 6.0F, 0.0F), fwx.a);
+      return fxb.a($$0, 64, 32);
+   }
+
+   public static final class a extends fur {
+      public final fwv a;
+      public final fwv b;
+      public final fwv c;
+      public final fwv d;
+
+      public a(fwv $$0) {
+         super(gdr::e);
+         this.a = $$0;
+         this.b = $$0.b("plank");
+         this.d = $$0.b("normalChains");
+         this.c = $$0.b("vChains");
+      }
+
+      public void a(drx $$0) {
+         boolean $$1 = !($$0.b() instanceof dft);
+         this.b.k = $$1;
+         this.c.k = false;
+         this.d.k = true;
+         if (!$$1) {
+            boolean $$2 = $$0.c(dsn.a);
+            this.d.k = !$$2;
+            this.c.k = $$2;
          }
       }
 
-      for (int $$15 = 2; $$15 < 16; $$15 += 2) {
-         int $$16 = $$15 % 4 == 0 ? b : c;
-         $$11.a($$12, $$9 + (float)$$15, $$6, $$10).a(1.0F, 1.0F, 0.0F, 0.0F).e();
-         $$11.a($$12, $$9 + (float)$$15, $$6, $$10).a($$16).e();
-         $$11.a($$12, $$9 + (float)$$15, $$7, $$10).a($$16).e();
-         $$11.a($$12, $$9 + (float)$$15, $$7, $$10).a(1.0F, 1.0F, 0.0F, 0.0F).e();
-         $$11.a($$12, $$9 + (float)$$15, $$6, $$10 + 16.0F).a(1.0F, 1.0F, 0.0F, 0.0F).e();
-         $$11.a($$12, $$9 + (float)$$15, $$6, $$10 + 16.0F).a($$16).e();
-         $$11.a($$12, $$9 + (float)$$15, $$7, $$10 + 16.0F).a($$16).e();
-         $$11.a($$12, $$9 + (float)$$15, $$7, $$10 + 16.0F).a(1.0F, 1.0F, 0.0F, 0.0F).e();
-      }
-
-      for (int $$17 = 2; $$17 < 16; $$17 += 2) {
-         int $$18 = $$17 % 4 == 0 ? b : c;
-         $$11.a($$12, $$9, $$6, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F).e();
-         $$11.a($$12, $$9, $$6, $$10 + (float)$$17).a($$18).e();
-         $$11.a($$12, $$9, $$7, $$10 + (float)$$17).a($$18).e();
-         $$11.a($$12, $$9, $$7, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F).e();
-         $$11.a($$12, $$9 + 16.0F, $$6, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F).e();
-         $$11.a($$12, $$9 + 16.0F, $$6, $$10 + (float)$$17).a($$18).e();
-         $$11.a($$12, $$9 + 16.0F, $$7, $$10 + (float)$$17).a($$18).e();
-         $$11.a($$12, $$9 + 16.0F, $$7, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F).e();
-      }
-
-      for (int $$19 = this.a.r.I_(); $$19 <= this.a.r.al(); $$19 += 2) {
-         float $$20 = (float)((double)$$19 - $$3);
-         int $$21 = $$19 % 8 == 0 ? b : c;
-         $$11.a($$12, $$9, $$20, $$10).a(1.0F, 1.0F, 0.0F, 0.0F).e();
-         $$11.a($$12, $$9, $$20, $$10).a($$21).e();
-         $$11.a($$12, $$9, $$20, $$10 + 16.0F).a($$21).e();
-         $$11.a($$12, $$9 + 16.0F, $$20, $$10 + 16.0F).a($$21).e();
-         $$11.a($$12, $$9 + 16.0F, $$20, $$10).a($$21).e();
-         $$11.a($$12, $$9, $$20, $$10).a($$21).e();
-         $$11.a($$12, $$9, $$20, $$10).a(1.0F, 1.0F, 0.0F, 0.0F).e();
-      }
-
-      $$11 = $$1.getBuffer(gcs.a(2.0));
-
-      for (int $$22 = 0; $$22 <= 16; $$22 += 16) {
-         for (int $$23 = 0; $$23 <= 16; $$23 += 16) {
-            $$11.a($$12, $$9 + (float)$$22, $$6, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 0.0F).e();
-            $$11.a($$12, $$9 + (float)$$22, $$6, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 1.0F).e();
-            $$11.a($$12, $$9 + (float)$$22, $$7, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 1.0F).e();
-            $$11.a($$12, $$9 + (float)$$22, $$7, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 0.0F).e();
-         }
-      }
-
-      for (int $$24 = this.a.r.I_(); $$24 <= this.a.r.al(); $$24 += 16) {
-         float $$25 = (float)((double)$$24 - $$3);
-         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 0.0F).e();
-         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F).e();
-         $$11.a($$12, $$9, $$25, $$10 + 16.0F).a(0.25F, 0.25F, 1.0F, 1.0F).e();
-         $$11.a($$12, $$9 + 16.0F, $$25, $$10 + 16.0F).a(0.25F, 0.25F, 1.0F, 1.0F).e();
-         $$11.a($$12, $$9 + 16.0F, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F).e();
-         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F).e();
-         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 0.0F).e();
+      @Override
+      public void a(ezt $$0, ezx $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       }
    }
 }

@@ -1,26 +1,29 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bwu {
-   private static final float a = 0.3F;
+public class bwu extends bvd<btm> {
+   private final bpu c;
+   private final float d;
+   private final float e;
+   private final float f;
 
-   public static bvu<bsq> a() {
-      return bxw.a(
-         (Function<bxw.b<bsq>, ? extends App<bxw.c<bsq>, bxz<bsq>>>)($$0 -> $$0.group($$0.a(cbu.m), $$0.a(cbu.n), $$0.b(cbu.e), $$0.b(cbu.h), $$0.c(cbu.q))
-               .apply($$0, ($$1, $$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     iw $$9 = $$0.b($$3);
-                     cbw $$10 = $$0.b($$4);
-                     if ($$6.E_().a(100) == 0 && $$6.ae() == $$9.a() && $$9.b().a($$7.dn(), 4.0) && $$10.d($$0xxx -> bsc.bj.equals($$0xxx.ak()))) {
-                        $$10.a($$1xx -> bsc.bj.equals($$1xx.ak()) && $$1xx.g((brw)$$7) <= 32.0).ifPresent($$3xx -> {
-                           $$5.a($$3xx);
-                           $$2.a(new buu($$3xx, true));
-                           $$1.a(new cbx(new buu($$3xx, false), 0.3F, 1));
-                        });
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+   public bwu(bpu $$0, float $$1, float $$2, float $$3) {
+      super(ImmutableMap.of(cco.n, ccp.b, cco.Q, ccp.b));
+      if ($$2 > $$3) {
+         throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + $$2 + " > " + $$3);
+      } else {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3 - $$2;
+      }
+   }
+
+   protected void a(arb $$0, btm $$1, long $$2) {
+      azc $$3 = $$1.el();
+      float $$4 = ayu.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
+      float $$5 = ayu.g($$1.dF() + 2.0F * $$3.i() * this.d - this.d);
+      evm $$6 = evm.a($$4, $$5);
+      $$1.dS().a(cco.n, new bvg($$1.bx().e($$6)));
+      $$1.dS().a(cco.Q, this.c.a($$3));
    }
 }

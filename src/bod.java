@@ -1,13 +1,7 @@
-import java.time.Instant;
+import jdk.jfr.consumer.RecordedEvent;
 
-public final class bod {
-   public final Instant a;
-   public final int b;
-   public final bmj c;
-
-   public bod(Instant $$0, int $$1, bmj $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public record bod(String a, String b, String c) {
+   public static bod a(RecordedEvent $$0) {
+      return new bod($$0.getString("packetDirection"), $$0.getString("protocolId"), $$0.getString("packetId"));
    }
 }

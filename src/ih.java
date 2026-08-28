@@ -1,57 +1,71 @@
-import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.LongArgumentType;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.List;
 
-public class ih implements hy<LongArgumentType, ih.a> {
-   public void a(ih.a $$0, vx $$1) {
-      boolean $$2 = $$0.b != Long.MIN_VALUE;
-      boolean $$3 = $$0.c != Long.MAX_VALUE;
-      $$1.k(ia.a($$2, $$3));
-      if ($$2) {
-         $$1.b($$0.b);
+public record ih(List<String> a, List<String> b) {
+   public static ih a(String $$0, int $$1) {
+      Builder<String> $$2 = ImmutableList.builder();
+      Builder<String> $$3 = ImmutableList.builder();
+      int $$4 = $$0.length();
+      int $$5 = 0;
+      int $$6 = $$0.indexOf(36);
+
+      while ($$6 != -1) {
+         if ($$6 != $$4 - 1 && $$0.charAt($$6 + 1) == '(') {
+            $$2.add($$0.substring($$5, $$6));
+            int $$7 = $$0.indexOf(41, $$6 + 1);
+            if ($$7 == -1) {
+               throw new IllegalArgumentException("Unterminated macro variable in macro '" + $$0 + "' on line " + $$1);
+            }
+
+            String $$8 = $$0.substring($$6 + 2, $$7);
+            if (!a($$8)) {
+               throw new IllegalArgumentException("Invalid macro variable name '" + $$8 + "' on line " + $$1);
+            }
+
+            $$3.add($$8);
+            $$5 = $$7 + 1;
+            $$6 = $$0.indexOf(36, $$5);
+         } else {
+            $$6 = $$0.indexOf(36, $$6 + 1);
+         }
       }
 
-      if ($$3) {
-         $$1.b($$0.c);
+      if ($$5 == 0) {
+         throw new IllegalArgumentException("Macro without variables on line " + $$1);
+      } else {
+         if ($$5 != $$4) {
+            $$2.add($$0.substring($$5));
+         }
+
+         return new ih($$2.build(), $$3.build());
       }
    }
 
-   public ih.a a(vx $$0) {
-      byte $$1 = $$0.readByte();
-      long $$2 = ia.a($$1) ? $$0.readLong() : Long.MIN_VALUE;
-      long $$3 = ia.b($$1) ? $$0.readLong() : Long.MAX_VALUE;
-      return new ih.a($$2, $$3);
+   private static boolean a(String $$0) {
+      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
+         char $$2 = $$0.charAt($$1);
+         if (!Character.isLetterOrDigit($$2) && $$2 != '_') {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   public void a(ih.a $$0, JsonObject $$1) {
-      if ($$0.b != Long.MIN_VALUE) {
-         $$1.addProperty("min", $$0.b);
+   public String a(List<String> $$0) {
+      StringBuilder $$1 = new StringBuilder();
+
+      for (int $$2 = 0; $$2 < this.b.size(); $$2++) {
+         $$1.append(this.a.get($$2)).append($$0.get($$2));
+         ib.a($$1);
       }
 
-      if ($$0.c != Long.MAX_VALUE) {
-         $$1.addProperty("max", $$0.c);
-      }
-   }
-
-   public ih.a a(LongArgumentType $$0) {
-      return new ih.a($$0.getMinimum(), $$0.getMaximum());
-   }
-
-   public final class a implements hy.a<LongArgumentType> {
-      final long b;
-      final long c;
-
-      a(long $$1, long $$2) {
-         this.b = $$1;
-         this.c = $$2;
+      if (this.a.size() > this.b.size()) {
+         $$1.append(this.a.get(this.a.size() - 1));
       }
 
-      public LongArgumentType a(ea $$0) {
-         return LongArgumentType.longArg(this.b, this.c);
-      }
-
-      @Override
-      public hy<LongArgumentType, ?> a() {
-         return ih.this;
-      }
+      ib.a($$1);
+      return $$1.toString();
    }
 }

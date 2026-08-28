@@ -1,247 +1,58 @@
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Map;
+import com.mojang.datafixers.util.Unit;
+import com.mojang.serialization.Codec;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class fmo extends flz implements fwm.a {
-   private static final akn w = new akn("textures/gui/advancements/window.png");
-   public static final int a = 252;
-   public static final int b = 140;
-   private static final int x = 9;
-   private static final int y = 18;
-   public static final int c = 234;
-   public static final int d = 113;
-   private static final int z = 8;
-   private static final int A = 6;
-   public static final int r = 16;
-   public static final int s = 16;
-   public static final int u = 14;
-   public static final int v = 7;
-   private static final double B = 16.0;
-   private static final wx C = wx.c("advancements.sad_label");
-   private static final wx D = wx.c("advancements.empty");
-   private static final wx E = wx.c("gui.advancements");
-   private final fjn F = new fjn(this);
+public class fmo extends fna {
+   private static final xl a = xl.c("options.online.title");
    @Nullable
-   private final flz G;
-   private final fwm H;
-   private final Map<af, fmk> I = Maps.newLinkedHashMap();
-   @Nullable
-   private fmk J;
-   private boolean K;
+   private final ffd<Unit> u;
 
-   public fmo(fwm $$0) {
-      this($$0, null);
+   public static fmo a(ffa $$0, fmy $$1, ffe $$2) {
+      List<ffd<?>> $$3 = new ArrayList<>();
+      $$3.add($$2.T());
+      $$3.add($$2.U());
+      ffd<Unit> $$4 = x.a(
+         $$0.r,
+         $$0x -> {
+            bqm $$1x = $$0x.al();
+            return new ffd<>(
+               "options.difficulty.online",
+               ffd.a(),
+               ($$1xx, $$2x) -> $$1x.b(),
+               new ffd.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
+               Unit.INSTANCE,
+               $$0xx -> {
+               }
+            );
+         }
+      );
+      if ($$4 != null) {
+         $$3.add($$4);
+      }
+
+      return new fmo($$1, $$2, $$3.toArray(new ffd[0]), $$4);
    }
 
-   public fmo(fwm $$0, @Nullable flz $$1) {
-      super(E);
-      this.H = $$0;
-      this.G = $$1;
+   private fmo(fmy $$0, ffe $$1, ffd<?>[] $$2, @Nullable ffd<Unit> $$3) {
+      super($$0, $$1, a, $$2);
+      this.u = $$3;
    }
 
    @Override
    protected void aN_() {
-      this.F.a(E, this.p);
-      this.I.clear();
-      this.J = null;
-      this.H.a(this);
-      if (this.J == null && !this.I.isEmpty()) {
-         fmk $$0 = this.I.values().iterator().next();
-         this.H.a($$0.c().b(), true);
-      } else {
-         this.H.a(this.J == null ? null : this.J.c().b(), true);
-      }
-
-      this.F.b(fga.a(ww.d, $$0x -> this.d()).a(200).a());
-      this.F.a($$1 -> {
-         ffy var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.F.a();
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.G);
-   }
-
-   @Override
-   public void j() {
-      this.H.a(null);
-      fws $$0 = this.m.L();
-      if ($$0 != null) {
-         $$0.b(aho.b());
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if ($$2 == 0) {
-         int $$3 = (this.n - 252) / 2;
-         int $$4 = (this.o - 140) / 2;
-
-         for (fmk $$5 : this.I.values()) {
-            if ($$5.a($$3, $$4, $$0, $$1)) {
-               this.H.a($$5.c().b(), true);
-               break;
-            }
+      super.aN_();
+      if (this.u != null) {
+         fgx $$0 = this.s.b(this.u);
+         if ($$0 != null) {
+            $$0.j = false;
          }
       }
 
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.m.m.S.a($$0, $$1)) {
-         this.m.a(null);
-         this.m.n.i();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void a(ffn $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      int $$4 = (this.n - 252) / 2;
-      int $$5 = (this.o - 140) / 2;
-      this.b($$0, $$1, $$2, $$4, $$5);
-      this.a($$0, $$4, $$5);
-      this.c($$0, $$1, $$2, $$4, $$5);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if ($$2 != 0) {
-         this.K = false;
-         return false;
-      } else {
-         if (!this.K) {
-            this.K = true;
-         } else if (this.J != null) {
-            this.J.a($$3, $$4);
-         }
-
-         return true;
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if (this.J != null) {
-         this.J.a($$2 * 16.0, $$3 * 16.0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private void b(ffn $$0, int $$1, int $$2, int $$3, int $$4) {
-      fmk $$5 = this.J;
-      if ($$5 == null) {
-         $$0.a($$3 + 9, $$4 + 18, $$3 + 9 + 234, $$4 + 18 + 113, -16777216);
-         int $$6 = $$3 + 9 + 117;
-         $$0.a(this.p, D, $$6, $$4 + 18 + 56 - 9 / 2, -1);
-         $$0.a(this.p, C, $$6, $$4 + 18 + 113 - 9, -1);
-      } else {
-         $$5.b($$0, $$3 + 9, $$4 + 18);
-      }
-   }
-
-   public void a(ffn $$0, int $$1, int $$2) {
-      RenderSystem.enableBlend();
-      $$0.a(w, $$1, $$2, 0, 0, 252, 140);
-      if (this.I.size() > 1) {
-         for (fmk $$3 : this.I.values()) {
-            $$3.a($$0, $$1, $$2, $$3 == this.J);
-         }
-
-         for (fmk $$4 : this.I.values()) {
-            $$4.a($$0, $$1, $$2);
-         }
-      }
-
-      $$0.a(this.p, this.J != null ? this.J.d() : E, $$1 + 8, $$2 + 6, 4210752, false);
-   }
-
-   private void c(ffn $$0, int $$1, int $$2, int $$3, int $$4) {
-      if (this.J != null) {
-         $$0.c().a();
-         $$0.c().a((float)($$3 + 9), (float)($$4 + 18), 400.0F);
-         RenderSystem.enableDepthTest();
-         this.J.a($$0, $$1 - $$3 - 9, $$2 - $$4 - 18, $$3, $$4);
-         RenderSystem.disableDepthTest();
-         $$0.c().b();
-      }
-
-      if (this.I.size() > 1) {
-         for (fmk $$5 : this.I.values()) {
-            if ($$5.a($$3, $$4, (double)$$1, (double)$$2)) {
-               $$0.a(this.p, $$5.d(), $$1, $$2);
-            }
-         }
-      }
-   }
-
-   @Override
-   public void a(ag $$0) {
-      fmk $$1 = fmk.a(this.m, this, this.I.size(), $$0);
+      fgx $$1 = this.s.b(this.c.ai());
       if ($$1 != null) {
-         this.I.put($$0.b(), $$1);
+         $$1.j = this.m.D();
       }
-   }
-
-   @Override
-   public void b(ag $$0) {
-   }
-
-   @Override
-   public void c(ag $$0) {
-      fmk $$1 = this.f($$0);
-      if ($$1 != null) {
-         $$1.a($$0);
-      }
-   }
-
-   @Override
-   public void d(ag $$0) {
-   }
-
-   @Override
-   public void a(ag $$0, ah $$1) {
-      fmm $$2 = this.e($$0);
-      if ($$2 != null) {
-         $$2.a($$1);
-      }
-   }
-
-   @Override
-   public void a(@Nullable af $$0) {
-      this.J = this.I.get($$0);
-   }
-
-   @Override
-   public void a() {
-      this.I.clear();
-      this.J = null;
-   }
-
-   @Nullable
-   public fmm e(ag $$0) {
-      fmk $$1 = this.f($$0);
-      return $$1 == null ? null : $$1.a($$0.b());
-   }
-
-   @Nullable
-   private fmk f(ag $$0) {
-      ag $$1 = $$0.d();
-      return this.I.get($$1.b());
    }
 }

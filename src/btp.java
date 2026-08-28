@@ -1,6 +1,7 @@
-import javax.annotation.Nullable;
-
-public interface btp {
-   @Nullable
-   brw s();
+public enum btp {
+   a,
+   b,
+   c,
+   d,
+   e;
 }

@@ -1,42 +1,40 @@
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record adi(eoj b, byte c, boolean d, Optional<List<eof>> e, Optional<eol.b> f) implements ze<abq> {
-   public static final yv<wi, adi> a = yv.a(eoj.b, adi::b, yt.c, adi::e, yt.b, adi::f, eof.a.a(yt.a()).a(yt::a), adi::g, eol.b.a, adi::h, adi::new);
+public class adi implements zs<ace> {
+   public static final zj<wl, adi> a = zs.a(adi::a, adi::new);
+   private final int b;
+   private final byte c;
 
-   public adi(eoj $$0, byte $$1, boolean $$2, @Nullable Collection<eof> $$3, @Nullable eol.b $$4) {
-      this($$0, $$1, $$2, $$3 != null ? Optional.of(List.copyOf($$3)) : Optional.empty(), Optional.ofNullable($$4));
+   public adi(bsp $$0, byte $$1) {
+      this.b = $$0.al();
+      this.c = $$1;
+   }
+
+   private adi(wl $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readByte();
+   }
+
+   private void a(wl $$0) {
+      $$0.p(this.b);
+      $$0.k(this.c);
    }
 
    @Override
-   public zg<adi> a() {
-      return agc.P;
+   public zu<adi> a() {
+      return agq.D;
    }
 
-   public void a(abq $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public void a(eol $$0) {
-      this.e.ifPresent($$0::a);
-      this.f.ifPresent($$1 -> $$1.a($$0));
+   @Nullable
+   public bsp a(dbt $$0) {
+      return $$0.a(this.b);
    }
 
-   public byte e() {
+   public byte b() {
       return this.c;
-   }
-
-   public boolean f() {
-      return this.d;
-   }
-
-   public Optional<List<eof>> g() {
-      return this.e;
-   }
-
-   public Optional<eol.b> h() {
-      return this.f;
    }
 }

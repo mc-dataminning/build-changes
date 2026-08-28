@@ -1,61 +1,40 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.Optional;
-import java.util.function.BiConsumer;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.OptionalInt;
 
-public abstract class eeb {
-   public static final Codec<eeb> d = le.Y.q().dispatch(eeb::a, eec::a);
-   protected final bpb e;
-   protected final eee f;
-   protected final Optional<edy> g;
+public class eeb extends edy {
+   public static final MapCodec<eeb> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.f),
+               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.g),
+               a()
+            )
+            .apply($$0, eeb::new)
+   );
+   private final int e;
+   private final int f;
+   private final int g;
 
-   protected static <P extends eeb> P3<Mu<P>, bpb, eee, Optional<edy>> a(Instance<P> $$0) {
-      return $$0.group(
-         bpb.c.fieldOf("trunk_offset_y").forGetter($$0x -> $$0x.e),
-         eee.a.fieldOf("root_provider").forGetter($$0x -> $$0x.f),
-         edy.a.optionalFieldOf("above_root_placement").forGetter($$0x -> $$0x.g)
-      );
+   public eeb(int $$0, int $$1, int $$2) {
+      this($$0, $$1, $$2, OptionalInt.empty());
    }
 
-   public eeb(bpb $$0, eee $$1, Optional<edy> $$2) {
+   public eeb(int $$0, int $$1, int $$2, OptionalInt $$3) {
+      super($$3);
       this.e = $$0;
       this.f = $$1;
       this.g = $$2;
    }
 
-   protected abstract eec<?> a();
-
-   public abstract boolean a(dbf var1, BiConsumer<io, drd> var2, aym var3, io var4, io var5, ecz var6);
-
-   protected boolean a(dbf $$0, io $$1) {
-      return ebl.c($$0, $$1);
+   @Override
+   protected edz<?> b() {
+      return edz.a;
    }
 
-   protected void a(dbf $$0, BiConsumer<io, drd> $$1, aym $$2, io $$3, ecz $$4) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, this.a($$0, $$3, this.f.a($$2, $$3)));
-         if (this.g.isPresent()) {
-            edy $$5 = this.g.get();
-            io $$6 = $$3.c();
-            if ($$2.i() < $$5.b() && $$0.a($$6, drc.a::i)) {
-               $$1.accept($$6, this.a($$0, $$6, $$5.a().a($$2, $$6)));
-            }
-         }
-      }
-   }
-
-   protected drd a(dbf $$0, io $$1, drd $$2) {
-      if ($$2.b(drt.C)) {
-         boolean $$3 = $$0.b($$1, $$0x -> $$0x.a(awc.a));
-         return $$2.a(drt.C, Boolean.valueOf($$3));
-      } else {
-         return $$2;
-      }
-   }
-
-   public io a(io $$0, aym $$1) {
-      return $$0.b(this.e.a($$1));
+   @Override
+   public int a(int $$0, int $$1) {
+      return $$1 < this.e ? this.f : this.g;
    }
 }

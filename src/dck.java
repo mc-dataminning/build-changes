@@ -1,129 +1,76 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Optional;
 
-public class dck {
-   private static final Logger d = LogUtils.getLogger();
-   private static final float e = 0.1F;
-   public static final bok<dck.c> a = bok.c();
-   public static final dck b = new dck.a().a();
-   public static final MapCodec<dck> c = RecordCodecBuilder.mapCodec(
+public record dck(ur d, Optional<dck.a> e, Optional<bsy> f) {
+   public static final String a = "entity";
+   public static final Codec<dck> b = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 0.9999999F).optionalFieldOf("creature_spawn_probability", 0.1F).forGetter($$0x -> $$0x.f),
-               Codec.simpleMap(bst.i, bok.c(dck.c.a).promotePartial(ac.a("Spawn data: ", d::error)), ayz.a(bst.values()))
-                  .fieldOf("spawners")
-                  .forGetter($$0x -> $$0x.g),
-               Codec.simpleMap(le.g.q(), dck.b.a, le.g).fieldOf("spawn_costs").forGetter($$0x -> $$0x.h)
+               ur.a.fieldOf("entity").forGetter($$0x -> $$0x.d),
+               dck.a.a.optionalFieldOf("custom_spawn_rules").forGetter($$0x -> $$0x.e),
+               bsy.b.optionalFieldOf("equipment").forGetter($$0x -> $$0x.f)
             )
             .apply($$0, dck::new)
    );
-   private final float f;
-   private final Map<bst, bok<dck.c>> g;
-   private final Map<bsc<?>, dck.b> h;
+   public static final Codec<boz<dck>> c = boz.a(b);
 
-   dck(float $$0, Map<bst, bok<dck.c>> $$1, Map<bsc<?>, dck.b> $$2) {
-      this.f = $$0;
-      this.g = ImmutableMap.copyOf($$1);
-      this.h = ImmutableMap.copyOf($$2);
+   public dck() {
+      this(new ur(), Optional.empty(), Optional.empty());
    }
 
-   public bok<dck.c> a(bst $$0) {
-      return this.g.getOrDefault($$0, a);
+   public dck(ur d, Optional<dck.a> e, Optional<bsy> f) {
+      if (d.e("id")) {
+         alb $$3 = alb.a(d.l("id"));
+         if ($$3 != null) {
+            d.a("id", $$3.toString());
+         } else {
+            d.r("id");
+         }
+      }
+
+      this.d = d;
+      this.e = e;
+      this.f = f;
    }
 
-   @Nullable
-   public dck.b a(bsc<?> $$0) {
-      return this.h.get($$0);
+   public ur a() {
+      return this.d;
    }
 
-   public float a() {
+   public Optional<dck.a> b() {
+      return this.e;
+   }
+
+   public Optional<bsy> c() {
       return this.f;
    }
 
-   public static class a {
-      private final Map<bst, List<dck.c>> a = Stream.of(bst.values()).collect(ImmutableMap.toImmutableMap($$0 -> $$0, $$0 -> Lists.newArrayList()));
-      private final Map<bsc<?>, dck.b> b = Maps.newLinkedHashMap();
-      private float c = 0.1F;
-
-      public dck.a a(bst $$0, dck.c $$1) {
-         this.a.get($$0).add($$1);
-         return this;
-      }
-
-      public dck.a a(bsc<?> $$0, double $$1, double $$2) {
-         this.b.put($$0, new dck.b($$2, $$1));
-         return this;
-      }
-
-      public dck.a a(float $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public dck a() {
-         return new dck(
-            this.c,
-            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> bok.a((List)$$0.getValue()))),
-            ImmutableMap.copyOf(this.b)
-         );
-      }
-   }
-
-   public static record b(double b, double c) {
-      public static final Codec<dck.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.DOUBLE.fieldOf("energy_budget").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("charge").forGetter($$0x -> $$0x.c))
-               .apply($$0, dck.b::new)
+   public static record a(aym<Integer> b, aym<Integer> c) {
+      private static final aym<Integer> d = new aym<>(0, 15);
+      public static final Codec<dck.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(a("block_light_limit").forGetter($$0x -> $$0x.b), a("sky_light_limit").forGetter($$0x -> $$0x.c)).apply($$0, dck.a::new)
       );
 
-      public double a() {
+      private static DataResult<aym<Integer>> a(aym<Integer> $$0) {
+         return !d.a($$0) ? DataResult.error(() -> "Light values must be withing range " + d) : DataResult.success($$0);
+      }
+
+      private static MapCodec<aym<Integer>> a(String $$0) {
+         return aym.a.lenientOptionalFieldOf($$0, d).validate(dck.a::a);
+      }
+
+      public boolean a(iz $$0, arb $$1) {
+         return this.b.a($$1.a(dcc.b, $$0)) && this.c.a($$1.a(dcc.a, $$0));
+      }
+
+      public aym<Integer> a() {
          return this.b;
       }
 
-      public double b() {
+      public aym<Integer> b() {
          return this.c;
-      }
-   }
-
-   public static class c extends boi.a {
-      public static final Codec<dck.c> a = RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     le.g.q().fieldOf("type").forGetter($$0x -> $$0x.b),
-                     boh.a.fieldOf("weight").forGetter(boi.a::a),
-                     axn.j.fieldOf("minCount").forGetter($$0x -> $$0x.c),
-                     axn.j.fieldOf("maxCount").forGetter($$0x -> $$0x.d)
-                  )
-                  .apply($$0, dck.c::new)
-         )
-         .validate($$0 -> $$0.c > $$0.d ? DataResult.error(() -> "minCount needs to be smaller or equal to maxCount") : DataResult.success($$0));
-      public final bsc<?> b;
-      public final int c;
-      public final int d;
-
-      public c(bsc<?> $$0, int $$1, int $$2, int $$3) {
-         this($$0, boh.a($$1), $$2, $$3);
-      }
-
-      public c(bsc<?> $$0, boh $$1, int $$2, int $$3) {
-         super($$1);
-         this.b = $$0.f() == bst.h ? bsc.az : $$0;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      @Override
-      public String toString() {
-         return bsc.a(this.b) + "*(" + this.c + "-" + this.d + "):" + this.a();
       }
    }
 }

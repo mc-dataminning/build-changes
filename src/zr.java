@@ -1,33 +1,56 @@
-import io.netty.buffer.ByteBuf;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public record zr(akn c, byte[] d) implements ze<zk> {
-   public static final yv<vx, zr> a = ze.a(zr::a, zr::new);
-   private static final int e = 5120;
-   public static final yv<ByteBuf, byte[]> b = yt.a(5120);
+public interface zr {
+   int a = 4096;
 
-   private zr(vx $$0) {
-      this($$0.q(), b.decode($$0));
+   static <T extends wr, P extends zq<? super T>> zr a(final zu<P> $$0, final Function<Iterable<zs<? super T>>, P> $$1, final zp<? super T> $$2) {
+      return new zr() {
+         @Override
+         public void a(zs<?> $$0x, Consumer<zs<?>> $$1x) {
+            if ($$0.a() == $$0) {
+               P $$2 = (P)$$0;
+               $$1.accept($$2);
+               $$2.b().forEach($$1);
+               $$1.accept($$2);
+            } else {
+               $$1.accept($$0);
+            }
+         }
+
+         @Nullable
+         @Override
+         public zr.a a(zs<?> $$0x) {
+            return $$0 == $$2 ? new zr.a() {
+               private final List<zs<? super T>> b = new ArrayList<>();
+
+               @Nullable
+               @Override
+               public zs<?> a(zs<?> $$0x) {
+                  if ($$0 == $$2) {
+                     return $$1.apply(this.b);
+                  } else if (this.b.size() >= 4096) {
+                     throw new IllegalStateException("Too many packets in a bundle");
+                  } else {
+                     this.b.add((zs<? super T>)$$0);
+                     return null;
+                  }
+               }
+            } : null;
+         }
+      };
    }
 
-   private void a(vx $$0) {
-      $$0.a(this.c);
-      b.encode($$0, this.d);
-   }
+   void a(zs<?> var1, Consumer<zs<?>> var2);
 
-   @Override
-   public zg<zr> a() {
-      return zu.g;
-   }
+   @Nullable
+   zr.a a(zs<?> var1);
 
-   public void a(zk $$0) {
-      $$0.a(this);
-   }
-
-   public akn b() {
-      return this.c;
-   }
-
-   public byte[] e() {
-      return this.d;
+   public interface a {
+      @Nullable
+      zs<?> a(zs<?> var1);
    }
 }

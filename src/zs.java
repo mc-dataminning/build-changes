@@ -1,25 +1,19 @@
-public record zs(String b, int c) implements ze<zk> {
-   public static final yv<vx, zs> a = ze.a(zs::a, zs::new);
+import io.netty.buffer.ByteBuf;
 
-   private zs(vx $$0) {
-      this($$0.p(), $$0.l());
+public interface zs<T extends wr> {
+   zu<? extends zs<T>> a();
+
+   void a(T var1);
+
+   default boolean c() {
+      return false;
    }
 
-   private void a(vx $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
+   default boolean d() {
+      return false;
    }
 
-   @Override
-   public zg<zs> a() {
-      return zu.h;
-   }
-
-   public void a(zk $$0) {
-      $$0.a(this);
-   }
-
-   public int e() {
-      return this.c;
+   static <B extends ByteBuf, T extends zs<?>> zj<B, T> a(zm<B, T> $$0, zk<B, T> $$1) {
+      return zj.a($$0, $$1);
    }
 }

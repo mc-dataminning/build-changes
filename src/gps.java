@@ -1,20 +1,16 @@
-public class gps {
-   public static final gpt a = new gpt();
-   public static final boolean b = false;
-   public static final boolean c = false;
-   private final boolean d;
-   private final boolean e;
-
-   public gps(boolean $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
+public class gps extends gpx {
+   public gps(gov $$0) {
+      super($$0, new alb("textures/atlas/mob_effects.png"), new alb("mob_effects"));
    }
 
-   public boolean a() {
-      return this.d;
-   }
+   public gou a(ji<brv> $$0) {
+      if ($$0 == brz.E) {
+         fxq $$1 = ffa.Q().r;
+         if ($$1 != null && $$1.J().b(cpi.c)) {
+            return this.a(new alb("bad_omen_121"));
+         }
+      }
 
-   public boolean b() {
-      return this.e;
+      return this.a($$0.e().map(ala::a).orElseGet(gok::b));
    }
 }

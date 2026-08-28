@@ -1,20 +1,29 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalInt;
 
-public record edy(eee b, float c) {
-   public static final Codec<edy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eee.a.fieldOf("above_root_provider").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("above_root_placement_chance").forGetter($$0x -> $$0x.c)
-            )
-            .apply($$0, edy::new)
-   );
+public abstract class edy {
+   public static final Codec<edy> a = lp.aa.q().dispatch(edy::b, edz::a);
+   protected static final int b = 16;
+   protected final OptionalInt c;
 
-   public eee a() {
-      return this.b;
+   protected static <S extends edy> RecordCodecBuilder<S, OptionalInt> a() {
+      return Codec.intRange(0, 80)
+         .optionalFieldOf("min_clipped_height")
+         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
+         .forGetter($$0 -> $$0.c);
    }
 
-   public float b() {
+   public edy(OptionalInt $$0) {
+      this.c = $$0;
+   }
+
+   protected abstract edz<?> b();
+
+   public abstract int a(int var1, int var2);
+
+   public OptionalInt c() {
       return this.c;
    }
 }

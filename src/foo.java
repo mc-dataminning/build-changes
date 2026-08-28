@@ -1,90 +1,108 @@
-import org.apache.commons.lang3.math.Fraction;
+import com.google.common.collect.Ordering;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
-public class foo implements foq {
-   private static final akn a = new akn("container/bundle/background");
-   private static final int b = 4;
-   private static final int c = 1;
-   private static final int d = 18;
-   private static final int e = 20;
-   private final cwd f;
+public abstract class foo<T extends cpp> extends fnw<T> {
+   private static final alb D = new alb("container/inventory/effect_background_large");
+   private static final alb E = new alb("container/inventory/effect_background_small");
 
-   public foo(cwd $$0) {
-      this.f = $$0;
+   public foo(T $$0, cmr $$1, xl $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public int a() {
-      return this.c() + 4;
+   public void a(fgm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.c($$0, $$1, $$2);
    }
 
-   @Override
-   public int a(ffl $$0) {
-      return this.b();
+   public boolean I() {
+      int $$0 = this.z + this.c + 2;
+      int $$1 = this.n - $$0;
+      return $$1 >= 32;
    }
 
-   private int b() {
-      return this.d() * 18 + 2;
-   }
+   private void c(fgm $$0, int $$1, int $$2) {
+      int $$3 = this.z + this.c + 2;
+      int $$4 = this.n - $$3;
+      Collection<brx> $$5 = this.m.s.ex();
+      if (!$$5.isEmpty() && $$4 >= 32) {
+         boolean $$6 = $$4 >= 120;
+         int $$7 = 33;
+         if ($$5.size() > 5) {
+            $$7 = 132 / ($$5.size() - 1);
+         }
 
-   private int c() {
-      return this.e() * 20 + 2;
-   }
+         Iterable<brx> $$8 = Ordering.natural().sortedCopy($$5);
+         this.a($$0, $$3, $$7, $$8, $$6);
+         this.b($$0, $$3, $$7, $$8, $$6);
+         if ($$6) {
+            this.a($$0, $$3, $$7, $$8);
+         } else if ($$1 >= $$3 && $$1 <= $$3 + 33) {
+            int $$9 = this.A;
+            brx $$10 = null;
 
-   @Override
-   public void a(ffl $$0, int $$1, int $$2, ffn $$3) {
-      int $$4 = this.d();
-      int $$5 = this.e();
-      $$3.a(a, $$1, $$2, this.b(), this.c());
-      boolean $$6 = this.f.c().compareTo(Fraction.ONE) >= 0;
-      int $$7 = 0;
+            for (brx $$11 : $$8) {
+               if ($$2 >= $$9 && $$2 <= $$9 + $$7) {
+                  $$10 = $$11;
+               }
 
-      for (int $$8 = 0; $$8 < $$5; $$8++) {
-         for (int $$9 = 0; $$9 < $$4; $$9++) {
-            int $$10 = $$1 + $$9 * 18 + 1;
-            int $$11 = $$2 + $$8 * 20 + 1;
-            this.a($$10, $$11, $$7++, $$6, $$3, $$0);
+               $$9 += $$7;
+            }
+
+            if ($$10 != null) {
+               List<xl> $$12 = List.of(this.a($$10), bry.a($$10, 1.0F, this.m.r.s().f()));
+               $$0.a(this.p, $$12, Optional.empty(), $$1, $$2);
+            }
          }
       }
    }
 
-   private void a(int $$0, int $$1, int $$2, boolean $$3, ffn $$4, ffl $$5) {
-      if ($$2 >= this.f.b()) {
-         this.a($$4, $$0, $$1, $$3 ? foo.a.a : foo.a.b);
-      } else {
-         ctq $$6 = this.f.a($$2);
-         this.a($$4, $$0, $$1, foo.a.b);
-         $$4.a($$6, $$0 + 1, $$1 + 1, $$2);
-         $$4.a($$5, $$6, $$0 + 1, $$1 + 1);
-         if ($$2 == 0) {
-            fmx.a($$4, $$0 + 1, $$1 + 1, 0);
+   private void a(fgm $$0, int $$1, int $$2, Iterable<brx> $$3, boolean $$4) {
+      int $$5 = this.A;
+
+      for (brx $$6 : $$3) {
+         if ($$4) {
+            $$0.a(D, $$1, $$5, 120, 32);
+         } else {
+            $$0.a(E, $$1, $$5, 32, 32);
          }
+
+         $$5 += $$2;
       }
    }
 
-   private void a(ffn $$0, int $$1, int $$2, foo.a $$3) {
-      $$0.a($$3.c, $$1, $$2, 0, $$3.d, $$3.e);
-   }
+   private void b(fgm $$0, int $$1, int $$2, Iterable<brx> $$3, boolean $$4) {
+      gps $$5 = this.m.aF();
+      int $$6 = this.A;
 
-   private int d() {
-      return Math.max(2, (int)Math.ceil(Math.sqrt((double)this.f.b() + 1.0)));
-   }
-
-   private int e() {
-      return (int)Math.ceil(((double)this.f.b() + 1.0) / (double)this.d());
-   }
-
-   static enum a {
-      a(new akn("container/bundle/blocked_slot"), 18, 20),
-      b(new akn("container/bundle/slot"), 18, 20);
-
-      public final akn c;
-      public final int d;
-      public final int e;
-
-      private a(akn $$0, int $$1, int $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
+      for (brx $$7 : $$3) {
+         ji<brv> $$8 = $$7.c();
+         gou $$9 = $$5.a($$8);
+         $$0.a($$1 + ($$4 ? 6 : 7), $$6 + 7, 0, 18, 18, $$9);
+         $$6 += $$2;
       }
+   }
+
+   private void a(fgm $$0, int $$1, int $$2, Iterable<brx> $$3) {
+      int $$4 = this.A;
+
+      for (brx $$5 : $$3) {
+         xl $$6 = this.a($$5);
+         $$0.b(this.p, $$6, $$1 + 10 + 18, $$4 + 6, 16777215);
+         xl $$7 = bry.a($$5, 1.0F, this.m.r.s().f());
+         $$0.b(this.p, $$7, $$1 + 10 + 18, $$4 + 6 + 10, 8355711);
+         $$4 += $$2;
+      }
+   }
+
+   private xl a(brx $$0) {
+      xz $$1 = $$0.c().a().e().f();
+      if ($$0.e() >= 1 && $$0.e() <= 9) {
+         $$1.b(xk.v).b(xl.c("enchantment.level." + ($$0.e() + 1)));
+      }
+
+      return $$1;
    }
 }

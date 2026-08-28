@@ -1,34 +1,34 @@
 import com.google.common.collect.ImmutableMap;
 
-public class bvk extends buj<bss> {
-   public static final int c = 100;
-   private final bph d;
-   private final avh e;
+public class bvk extends bvd<cgu> {
+   private static final int c = 60;
+   private static final int d = 100;
+   private int e;
 
-   public bvk(bph $$0, avh $$1) {
-      super(ImmutableMap.of(cbu.n, cbv.c, cbu.T, cbv.a), 100);
-      this.d = $$0;
-      this.e = $$1;
+   public bvk() {
+      super(ImmutableMap.of(cco.m, ccp.b), 100);
    }
 
-   protected boolean a(aqn $$0, bss $$1, long $$2) {
-      return !$$1.aE();
+   protected boolean a(arb $$0, cgu $$1) {
+      return $$1.ar() == btw.a;
    }
 
-   protected void b(aqn $$0, bss $$1, long $$2) {
-      $$1.q(true);
-      $$1.b(btc.g);
+   protected boolean a(arb $$0, cgu $$1, long $$2) {
+      return this.e < 60;
    }
 
-   protected void c(aqn $$0, bss $$1, long $$2) {
-      if ($$1.aE()) {
-         $$1.g($$1.ds().d(0.1F, 1.0, 0.1F));
-         $$0.a(null, $$1, this.e, avj.g, 2.0F, 1.0F);
+   protected void b(arb $$0, cgu $$1, long $$2) {
+      if (!$$1.bi()) {
+         $$1.b(btw.i);
+         this.e = 0;
       }
+   }
 
-      $$1.q(false);
-      $$1.b(btc.a);
-      $$1.dS().b(cbu.T);
-      $$1.dS().a(cbu.S, this.d.a($$0.z));
+   protected void c(arb $$0, cgu $$1, long $$2) {
+      $$1.b(btw.a);
+   }
+
+   protected void d(arb $$0, cgu $$1, long $$2) {
+      this.e++;
    }
 }

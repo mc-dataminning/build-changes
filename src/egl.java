@@ -1,31 +1,34 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class egl extends egs {
-   public static final MapCodec<egl> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dwv.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c)).apply($$0, egl::new)
-   );
-   private final dwv.a c;
+public class egl extends egm {
+   public static final egl a = new egl(dyj.a(0));
+   public static final MapCodec<egl> b = dyj.a.fieldOf("value").xmap(egl::new, egl::b);
+   private final dyj d;
 
-   private egl(dwv.a $$0) {
-      this.c = $$0;
-   }
-
-   public static egl a(dwv.a $$0) {
+   public static egl a(dyj $$0) {
       return new egl($$0);
    }
 
-   @Override
-   public Stream<io> a_(egq $$0, aym $$1, io $$2) {
-      int $$3 = $$2.u();
-      int $$4 = $$2.w();
-      int $$5 = $$0.a(this.c, $$3, $$4);
-      return $$5 > $$0.c() ? Stream.of(new io($$3, $$5, $$4)) : Stream.of();
+   private egl(dyj $$0) {
+      this.d = $$0;
+   }
+
+   public dyj b() {
+      return this.d;
    }
 
    @Override
-   public egt<?> b() {
-      return egt.k;
+   public int a(azc $$0, dym $$1) {
+      return this.d.a($$1);
+   }
+
+   @Override
+   public egn<?> a() {
+      return egn.a;
+   }
+
+   @Override
+   public String toString() {
+      return this.d.toString();
    }
 }

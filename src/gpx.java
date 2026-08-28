@@ -1,63 +1,42 @@
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
-import org.joml.Quaternionf;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public enum gpx implements gqe {
-   a(0, 0),
-   b(0, 90),
-   c(0, 180),
-   d(0, 270),
-   e(90, 0),
-   f(90, 90),
-   g(90, 180),
-   h(90, 270),
-   i(180, 0),
-   j(180, 90),
-   k(180, 180),
-   l(180, 270),
-   m(270, 0),
-   n(270, 90),
-   o(270, 180),
-   p(270, 270);
+public abstract class gpx implements auf, AutoCloseable {
+   private final got a;
+   private final alb b;
+   private final Set<atk<?>> c;
 
-   private static final int q = 360;
-   private static final Map<Integer, gpx> r = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.u, $$0 -> (gpx)$$0));
-   private final j s;
-   private final h t;
-   private final int u;
-
-   private static int b(int $$0, int $$1) {
-      return $$0 * 360 + $$1;
+   public gpx(gov $$0, alb $$1, alb $$2) {
+      this($$0, $$1, $$2, gop.a);
    }
 
-   private gpx(int $$0, int $$1) {
-      this.u = b($$0, $$1);
-      Quaternionf $$2 = new Quaternionf().rotateYXZ((float)(-$$1) * (float) (Math.PI / 180.0), (float)(-$$0) * (float) (Math.PI / 180.0), 0.0F);
-      h $$3 = h.a;
+   public gpx(gov $$0, alb $$1, alb $$2, Set<atk<?>> $$3) {
+      this.b = $$2;
+      this.a = new got($$1);
+      $$0.a(this.a.g(), this.a);
+      this.c = $$3;
+   }
 
-      for (int $$4 = 0; $$4 < $$1; $$4 += 90) {
-         $$3 = $$3.a(h.u);
-      }
-
-      for (int $$5 = 0; $$5 < $$0; $$5 += 90) {
-         $$3 = $$3.a(h.s);
-      }
-
-      this.s = new j(null, $$2, null, null);
-      this.t = $$3;
+   protected gou a(alb $$0) {
+      return this.a.a($$0);
    }
 
    @Override
-   public j b() {
-      return this.s;
+   public final CompletableFuture<Void> a(auf.a $$0, aul $$1, bnd $$2, bnd $$3, Executor $$4, Executor $$5) {
+      return gop.a(this.a).a($$1, this.b, 0, $$4, this.c).thenCompose(gop.a::a).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$1x, $$3), $$5);
    }
 
-   public static gpx a(int $$0, int $$1) {
-      return r.get(b(ayf.b($$0, 360), ayf.b($$1, 360)));
+   private void a(gop.a $$0, bnd $$1) {
+      $$1.a();
+      $$1.a("upload");
+      this.a.a($$0);
+      $$1.c();
+      $$1.b();
    }
 
-   public h a() {
-      return this.t;
+   @Override
+   public void close() {
+      this.a.f();
    }
 }

@@ -1,51 +1,60 @@
-import org.jetbrains.annotations.VisibleForTesting;
+import javax.annotation.Nullable;
 
-public class aic {
-   private static final double a = 4096.0;
-   private eum b;
+public class aic implements zs<ags> {
+   public static final zj<wl, aic> a = zs.a(aic::a, aic::new);
+   private final aic.a b;
+   @Nullable
+   private final alb c;
 
-   public aic() {
-      this.b = eum.b;
+   public aic(aic.a $$0, @Nullable alb $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @VisibleForTesting
-   static long a(double $$0) {
-      return Math.round($$0 * 4096.0);
+   public static aic a(af $$0) {
+      return new aic(aic.a.a, $$0.a());
    }
 
-   @VisibleForTesting
-   static double a(long $$0) {
-      return (double)$$0 / 4096.0;
+   public static aic b() {
+      return new aic(aic.a.b, null);
    }
 
-   public eum a(long $$0, long $$1, long $$2) {
-      if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
-         return this.b;
+   private aic(wl $$0) {
+      this.b = $$0.b(aic.a.class);
+      if (this.b == aic.a.a) {
+         this.c = $$0.q();
       } else {
-         double $$3 = $$0 == 0L ? this.b.c : a(a(this.b.c) + $$0);
-         double $$4 = $$1 == 0L ? this.b.d : a(a(this.b.d) + $$1);
-         double $$5 = $$2 == 0L ? this.b.e : a(a(this.b.e) + $$2);
-         return new eum($$3, $$4, $$5);
+         this.c = null;
       }
    }
 
-   public long a(eum $$0) {
-      return a($$0.c) - a(this.b.c);
+   private void a(wl $$0) {
+      $$0.a(this.b);
+      if (this.b == aic.a.a) {
+         $$0.a(this.c);
+      }
    }
 
-   public long b(eum $$0) {
-      return a($$0.d) - a(this.b.d);
+   @Override
+   public zu<aic> a() {
+      return agq.bQ;
    }
 
-   public long c(eum $$0) {
-      return a($$0.e) - a(this.b.e);
+   public void a(ags $$0) {
+      $$0.a(this);
    }
 
-   public eum d(eum $$0) {
-      return $$0.d(this.b);
+   public aic.a e() {
+      return this.b;
    }
 
-   public void e(eum $$0) {
-      this.b = $$0;
+   @Nullable
+   public alb f() {
+      return this.c;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

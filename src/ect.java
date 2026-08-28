@@ -1,52 +1,41 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ect implements ecd {
+public class ect implements ecx {
    public static final Codec<ect> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               egp.b.fieldOf("feature").forGetter($$0x -> $$0x.b),
-               Codec.intRange(1, 64).fieldOf("required_vertical_space_for_tree").forGetter($$0x -> $$0x.c),
-               Codec.intRange(1, 64).fieldOf("root_radius").forGetter($$0x -> $$0x.d),
-               awm.b(lf.f).fieldOf("root_replaceable").forGetter($$0x -> $$0x.e),
-               eee.a.fieldOf("root_state_provider").forGetter($$0x -> $$0x.f),
-               Codec.intRange(1, 256).fieldOf("root_placement_attempts").forGetter($$0x -> $$0x.g),
-               Codec.intRange(1, 4096).fieldOf("root_column_max_height").forGetter($$0x -> $$0x.h),
-               Codec.intRange(1, 64).fieldOf("hanging_root_radius").forGetter($$0x -> $$0x.i),
-               Codec.intRange(0, 16).fieldOf("hanging_roots_vertical_span").forGetter($$0x -> $$0x.j),
-               eee.a.fieldOf("hanging_root_state_provider").forGetter($$0x -> $$0x.k),
-               Codec.intRange(1, 256).fieldOf("hanging_root_placement_attempts").forGetter($$0x -> $$0x.l),
-               Codec.intRange(1, 64).fieldOf("allowed_vertical_water_for_tree").forGetter($$0x -> $$0x.n),
-               dyc.b.fieldOf("allowed_tree_position").forGetter($$0x -> $$0x.o)
+               drx.b.fieldOf("contents").forGetter($$0x -> $$0x.b),
+               drx.b.fieldOf("rim").forGetter($$0x -> $$0x.c),
+               bpu.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
+               bpu.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
             )
             .apply($$0, ect::new)
    );
-   public final ix<egp> b;
-   public final int c;
-   public final int d;
-   public final awm<dea> e;
-   public final eee f;
-   public final int g;
-   public final int h;
-   public final int i;
-   public final int j;
-   public final eee k;
-   public final int l;
-   public final int n;
-   public final dyc o;
+   private final drx b;
+   private final drx c;
+   private final bpu d;
+   private final bpu e;
 
-   public ect(ix<egp> $$0, int $$1, int $$2, awm<dea> $$3, eee $$4, int $$5, int $$6, int $$7, int $$8, eee $$9, int $$10, int $$11, dyc $$12) {
+   public ect(drx $$0, drx $$1, bpu $$2, bpu $$3) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
       this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
-      this.n = $$11;
-      this.o = $$12;
+   }
+
+   public drx a() {
+      return this.b;
+   }
+
+   public drx b() {
+      return this.c;
+   }
+
+   public bpu c() {
+      return this.d;
+   }
+
+   public bpu d() {
+      return this.e;
    }
 }

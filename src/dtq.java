@@ -1,3 +1,5 @@
-interface dtq<T> {
-   int onResize(int var1, T var2);
+public interface dtq {
+   drx a(int var1);
+
+   void a(int var1, drx var2);
 }

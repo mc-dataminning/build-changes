@@ -1,110 +1,58 @@
 import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.BitSet;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
 
-public class gqf implements gpw {
-   private final List<Pair<Predicate<drd>, gpw>> g;
-   protected final boolean a;
-   protected final boolean b;
-   protected final boolean c;
-   protected final gnv d;
-   protected final gdt e;
-   protected final gdr f;
-   private final Map<drd, BitSet> h = new Reference2ObjectOpenHashMap();
+public class gqf {
+   public static final gqg a = new gqg();
+   public static final String b = "animation";
+   public static final int c = 1;
+   public static final int d = -1;
+   public static final gqf e = new gqf(Lists.newArrayList(), -1, -1, 1, false) {
+      @Override
+      public gqh a(int $$0, int $$1) {
+         return new gqh($$0, $$1);
+      }
+   };
+   private final List<gqe> f;
+   private final int g;
+   private final int h;
+   private final int i;
+   private final boolean j;
 
-   public gqf(List<Pair<Predicate<drd>, gpw>> $$0) {
-      this.g = $$0;
-      gpw $$1 = (gpw)$$0.iterator().next().getRight();
-      this.a = $$1.a();
-      this.b = $$1.b();
-      this.c = $$1.c();
-      this.d = $$1.e();
-      this.e = $$1.f();
-      this.f = $$1.g();
+   public gqf(List<gqe> $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.i = $$3;
+      this.j = $$4;
    }
 
-   @Override
-   public List<gdh> a(@Nullable drd $$0, @Nullable it $$1, aym $$2) {
-      if ($$0 == null) {
-         return Collections.emptyList();
+   public gqh a(int $$0, int $$1) {
+      if (this.g != -1) {
+         return this.h != -1 ? new gqh(this.g, this.h) : new gqh(this.g, $$1);
+      } else if (this.h != -1) {
+         return new gqh($$0, this.h);
       } else {
-         BitSet $$3 = this.h.get($$0);
-         if ($$3 == null) {
-            $$3 = new BitSet();
-
-            for (int $$4 = 0; $$4 < this.g.size(); $$4++) {
-               Pair<Predicate<drd>, gpw> $$5 = this.g.get($$4);
-               if (((Predicate)$$5.getLeft()).test($$0)) {
-                  $$3.set($$4);
-               }
-            }
-
-            this.h.put($$0, $$3);
-         }
-
-         List<gdh> $$6 = Lists.newArrayList();
-         long $$7 = $$2.g();
-
-         for (int $$8 = 0; $$8 < $$3.length(); $$8++) {
-            if ($$3.get($$8)) {
-               $$6.addAll(((gpw)this.g.get($$8).getRight()).a($$0, $$1, aym.a($$7)));
-            }
-         }
-
-         return $$6;
+         int $$2 = Math.min($$0, $$1);
+         return new gqh($$2, $$2);
       }
    }
 
-   @Override
-   public boolean a() {
-      return this.a;
+   public int a() {
+      return this.i;
    }
 
-   @Override
    public boolean b() {
-      return this.b;
+      return this.j;
    }
 
-   @Override
-   public boolean c() {
-      return this.c;
-   }
-
-   @Override
-   public boolean d() {
-      return false;
-   }
-
-   @Override
-   public gnv e() {
-      return this.d;
-   }
-
-   @Override
-   public gdt f() {
-      return this.e;
-   }
-
-   @Override
-   public gdr g() {
-      return this.f;
-   }
-
-   public static class a {
-      private final List<Pair<Predicate<drd>, gpw>> a = Lists.newArrayList();
-
-      public void a(Predicate<drd> $$0, gpw $$1) {
-         this.a.add(Pair.of($$0, $$1));
+   public void a(gqf.a $$0) {
+      for (gqe $$1 : this.f) {
+         $$0.accept($$1.a(), $$1.a(this.i));
       }
+   }
 
-      public gpw a() {
-         return new gqf(this.a);
-      }
+   @FunctionalInterface
+   public interface a {
+      void accept(int var1, int var2);
    }
 }

@@ -1,45 +1,44 @@
-public class aha implements ze<age> {
-   public static final yv<vx, aha> a = ze.a(aha::a, aha::new);
-   private final io b;
-   private final int c;
-   private final boolean d;
+import java.time.Instant;
+import javax.annotation.Nullable;
 
-   public aha(io $$0, int $$1, boolean $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+public record aha(String b, Instant c, long d, @Nullable xx e, xs.b f) implements zs<ags> {
+   public static final zj<wl, aha> a = zs.a(aha::a, aha::new);
+
+   private aha(wl $$0) {
+      this($$0.d(256), $$0.t(), $$0.readLong(), $$0.c(xx::a), new xs.b($$0));
    }
 
-   private aha(vx $$0) {
-      this.b = $$0.e();
-      this.c = $$0.l();
-      this.d = $$0.readBoolean();
-   }
-
-   private void a(vx $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
+   private void a(wl $$0) {
+      $$0.a(this.b, 256);
+      $$0.a(this.c);
+      $$0.b(this.d);
+      $$0.a(this.e, xx::a);
+      this.f.a($$0);
    }
 
    @Override
-   public zg<aha> a() {
-      return agc.bz;
+   public zu<aha> a() {
+      return agq.bl;
    }
 
-   public void a(age $$0) {
+   public void a(ags $$0) {
       $$0.a(this);
    }
 
-   public io b() {
-      return this.b;
-   }
-
-   public int e() {
+   public Instant e() {
       return this.c;
    }
 
-   public boolean f() {
+   public long f() {
       return this.d;
+   }
+
+   @Nullable
+   public xx g() {
+      return this.e;
+   }
+
+   public xs.b h() {
+      return this.f;
    }
 }

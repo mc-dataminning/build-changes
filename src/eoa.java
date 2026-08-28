@@ -1,44 +1,145 @@
-import java.util.Locale;
-import javax.annotation.Nullable;
+import java.util.Arrays;
 
-public interface eoa {
-   it[] a = new it[]{it.e, it.f, it.a, it.b, it.c, it.d};
+public class eoa {
+   private eoc[] a = new eoc[128];
+   private int b;
 
-   void a(it var1, drd var2, io var3, io var4, int var5, int var6);
+   public eoc a(eoc $$0) {
+      if ($$0.d >= 0) {
+         throw new IllegalStateException("OW KNOWS!");
+      } else {
+         if (this.b == this.a.length) {
+            eoc[] $$1 = new eoc[this.b << 1];
+            System.arraycopy(this.a, 0, $$1, 0, this.b);
+            this.a = $$1;
+         }
 
-   void a(io var1, dea var2, io var3);
+         this.a[this.b] = $$0;
+         $$0.d = this.b;
+         this.a(this.b++);
+         return $$0;
+      }
+   }
 
-   void a(drd var1, io var2, dea var3, io var4, boolean var5);
+   public void a() {
+      this.b = 0;
+   }
 
-   default void a(io $$0, dea $$1, @Nullable it $$2) {
-      for (it $$3 : a) {
-         if ($$3 != $$2) {
-            this.a($$0.a($$3), $$1, $$0);
+   public eoc b() {
+      return this.a[0];
+   }
+
+   public eoc c() {
+      eoc $$0 = this.a[0];
+      this.a[0] = this.a[--this.b];
+      this.a[this.b] = null;
+      if (this.b > 0) {
+         this.b(0);
+      }
+
+      $$0.d = -1;
+      return $$0;
+   }
+
+   public void b(eoc $$0) {
+      this.a[$$0.d] = this.a[--this.b];
+      this.a[this.b] = null;
+      if (this.b > $$0.d) {
+         if (this.a[$$0.d].g < $$0.g) {
+            this.a($$0.d);
+         } else {
+            this.b($$0.d);
          }
       }
+
+      $$0.d = -1;
    }
 
-   static void a(dba $$0, it $$1, drd $$2, io $$3, io $$4, int $$5, int $$6) {
-      drd $$7 = $$0.a_($$3);
-      drd $$8 = $$7.a($$1, $$2, $$0, $$3, $$4);
-      dea.a($$7, $$8, $$0, $$3, $$5, $$6);
-   }
-
-   static void a(daz $$0, drd $$1, io $$2, dea $$3, io $$4, boolean $$5) {
-      try {
-         $$1.a($$0, $$2, $$3, $$4, $$5);
-      } catch (Throwable var9) {
-         o $$7 = o.a(var9, "Exception while updating neighbours");
-         p $$8 = $$7.a("Block being updated");
-         $$8.a("Source block type", () -> {
-            try {
-               return String.format(Locale.ROOT, "ID #%s (%s // %s)", le.e.b($$3), $$3.g(), $$3.getClass().getCanonicalName());
-            } catch (Throwable var2x) {
-               return "ID #" + le.e.b($$3);
-            }
-         });
-         p.a($$8, $$0, $$2, $$1);
-         throw new y($$7);
+   public void a(eoc $$0, float $$1) {
+      float $$2 = $$0.g;
+      $$0.g = $$1;
+      if ($$1 < $$2) {
+         this.a($$0.d);
+      } else {
+         this.b($$0.d);
       }
+   }
+
+   public int d() {
+      return this.b;
+   }
+
+   private void a(int $$0) {
+      eoc $$1 = this.a[$$0];
+      float $$2 = $$1.g;
+
+      while ($$0 > 0) {
+         int $$3 = $$0 - 1 >> 1;
+         eoc $$4 = this.a[$$3];
+         if (!($$2 < $$4.g)) {
+            break;
+         }
+
+         this.a[$$0] = $$4;
+         $$4.d = $$0;
+         $$0 = $$3;
+      }
+
+      this.a[$$0] = $$1;
+      $$1.d = $$0;
+   }
+
+   private void b(int $$0) {
+      eoc $$1 = this.a[$$0];
+      float $$2 = $$1.g;
+
+      while (true) {
+         int $$3 = 1 + ($$0 << 1);
+         int $$4 = $$3 + 1;
+         if ($$3 >= this.b) {
+            break;
+         }
+
+         eoc $$5 = this.a[$$3];
+         float $$6 = $$5.g;
+         eoc $$7;
+         float $$8;
+         if ($$4 >= this.b) {
+            $$7 = null;
+            $$8 = Float.POSITIVE_INFINITY;
+         } else {
+            $$7 = this.a[$$4];
+            $$8 = $$7.g;
+         }
+
+         if ($$6 < $$8) {
+            if (!($$6 < $$2)) {
+               break;
+            }
+
+            this.a[$$0] = $$5;
+            $$5.d = $$0;
+            $$0 = $$3;
+         } else {
+            if (!($$8 < $$2)) {
+               break;
+            }
+
+            this.a[$$0] = $$7;
+            $$7.d = $$0;
+            $$0 = $$4;
+         }
+      }
+
+      this.a[$$0] = $$1;
+      $$1.d = $$0;
+   }
+
+   public boolean e() {
+      return this.b == 0;
+   }
+
+   public eoc[] f() {
+      return Arrays.copyOf(this.a, this.b);
    }
 }

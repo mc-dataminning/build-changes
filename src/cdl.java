@@ -1,38 +1,56 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2LongMap;
+import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class cdl {
-   @Nullable
-   public static eum a(bsz $$0, int $$1, int $$2) {
-      boolean $$3 = cdm.a($$0, $$1);
-      return cdp.a($$0, () -> {
-         io $$4 = cdp.a($$0.el(), $$1, $$2);
-         return a($$0, $$1, $$3, $$4);
-      });
+public class cdl extends cdu<btm> {
+   private static final int a = 40;
+   private static final int c = 5;
+   private static final int d = 20;
+   private final Long2LongMap e = new Long2LongOpenHashMap();
+   private int f;
+   private long g;
+
+   public cdl() {
+      super(20);
    }
 
-   @Nullable
-   public static eum a(bsz $$0, int $$1, int $$2, eum $$3, double $$4) {
-      eum $$5 = $$3.a($$0.du(), $$0.dw(), $$0.dA());
-      boolean $$6 = cdm.a($$0, $$1);
-      return cdp.a($$0, () -> {
-         io $$6x = cdp.a($$0.el(), $$1, $$2, 0, $$5.c, $$5.e, $$4);
-         return $$6x == null ? null : a($$0, $$1, $$6, $$6x);
-      });
+   @Override
+   public Set<cco<?>> a() {
+      return ImmutableSet.of(cco.w);
    }
 
-   @Nullable
-   public static eum a(bsz $$0, int $$1, int $$2, eum $$3) {
-      eum $$4 = $$0.dn().d($$3);
-      boolean $$5 = cdm.a($$0, $$1);
-      return cdp.a($$0, () -> {
-         io $$5x = cdp.a($$0.el(), $$1, $$2, 0, $$4.c, $$4.e, (float) (Math.PI / 2));
-         return $$5x == null ? null : a($$0, $$1, $$5, $$5x);
-      });
-   }
-
-   @Nullable
-   private static io a(bsz $$0, int $$1, boolean $$2, io $$3) {
-      io $$4 = cdp.a($$0, $$1, $$0.el(), $$3);
-      return !cdm.a($$4, $$0) && !cdm.a($$2, $$0, $$4) && !cdm.a($$0.K(), $$4) && !cdm.b($$0, $$4) ? $$4 : null;
+   protected void a(arb $$0, btm $$1) {
+      if ($$1.p_()) {
+         this.f = 0;
+         this.g = $$0.Z() + (long)$$0.E_().a(20);
+         ceo $$2 = $$0.y();
+         Predicate<iz> $$3 = $$0x -> {
+            long $$1x = $$0x.a();
+            if (this.e.containsKey($$1x)) {
+               return false;
+            } else if (++this.f >= 5) {
+               return false;
+            } else {
+               this.e.put($$1x, this.g + 40L);
+               return true;
+            }
+         };
+         Set<Pair<ji<cer>, iz>> $$4 = $$2.b($$0x -> $$0x.a(ces.n), $$3, $$1.dp(), 48, ceo.b.c).collect(Collectors.toSet());
+         eoe $$5 = buw.a($$1, $$4);
+         if ($$5 != null && $$5.j()) {
+            iz $$6 = $$5.l();
+            Optional<ji<cer>> $$7 = $$2.c($$6);
+            if ($$7.isPresent()) {
+               $$1.dS().a(cco.w, $$6);
+            }
+         } else if (this.f < 5) {
+            this.e.long2LongEntrySet().removeIf($$0x -> $$0x.getLongValue() < this.g);
+         }
+      }
    }
 }

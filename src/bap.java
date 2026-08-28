@@ -1,58 +1,44 @@
-import com.google.common.collect.Streams;
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
+import com.mojang.serialization.OptionalDynamic;
+import java.util.Map;
 
-public class bap extends bez {
-   public static final String a = "_filtered_correct";
-   private static final String b = "black";
-
-   public bap(Schema $$0, String $$1, String $$2) {
-      super($$0, false, $$1, bga.s, $$2);
+public class bap extends DataFix {
+   public bap(Schema $$0) {
+      super($$0, false);
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.set("front_text", b($$0)).set("back_text", c($$0)).set("is_waxed", $$0.createBoolean(false));
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bgs.s);
+      TaggedChoiceType<?> $$1 = this.getInputSchema().findChoiceType(bgs.s);
+      OpticFinder<?> $$2 = $$0.findField("components");
+      return this.fixTypeEverywhereTyped("Banner entity custom_name to item_name component fix", $$0, $$2x -> {
+         Object $$3 = ((Pair)$$2x.get($$1.finder())).getFirst();
+         return $$3.equals("minecraft:banner") ? this.a($$2x, $$2) : $$2x;
+      });
    }
 
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      Dynamic<T> $$1 = azk.a($$0.getOps());
-      List<Dynamic<T>> $$2 = a($$0, "Text").map($$1x -> $$1x.orElse($$1)).toList();
-      Dynamic<T> $$3 = $$0.emptyMap()
-         .set("messages", $$0.createList($$2.stream()))
-         .set("color", $$0.get("Color").result().orElse($$0.createString("black")))
-         .set("has_glowing_text", $$0.get("GlowingText").result().orElse($$0.createBoolean(false)))
-         .set("_filtered_correct", $$0.createBoolean(true));
-      List<Optional<Dynamic<T>>> $$4 = a($$0, "FilteredText").toList();
-      if ($$4.stream().anyMatch(Optional::isPresent)) {
-         $$3 = $$3.set("filtered_messages", $$0.createList(Streams.mapWithIndex($$4.stream(), ($$1x, $$2x) -> {
-            Dynamic<T> $$3x = $$2.get((int)$$2x);
-            return $$1x.orElse($$3x);
-         })));
+   private Typed<?> a(Typed<?> $$0, OpticFinder<?> $$1) {
+      Dynamic<?> $$2 = (Dynamic<?>)$$0.getOptional(DSL.remainderFinder()).orElseThrow();
+      OptionalDynamic<?> $$3 = $$2.get("CustomName");
+      boolean $$4 = $$3.asString().result().flatMap(baa::a).filter($$0x -> $$0x.equals("block.minecraft.ominous_banner")).isPresent();
+      if ($$4) {
+         Typed<?> $$5 = $$0.getOrCreateTyped($$1)
+            .update(
+               DSL.remainderFinder(),
+               $$1x -> $$1x.set("minecraft:item_name", (Dynamic)$$3.result().get()).set("minecraft:hide_additional_tooltip", $$1x.createMap(Map.of()))
+            );
+         return $$0.set($$1, $$5).set(DSL.remainderFinder(), $$2.remove("CustomName"));
+      } else {
+         return $$0;
       }
-
-      return $$3;
-   }
-
-   private static <T> Stream<Optional<Dynamic<T>>> a(Dynamic<T> $$0, String $$1) {
-      return Stream.of($$0.get($$1 + "1").result(), $$0.get($$1 + "2").result(), $$0.get($$1 + "3").result(), $$0.get($$1 + "4").result());
-   }
-
-   private static <T> Dynamic<T> c(Dynamic<T> $$0) {
-      return $$0.emptyMap().set("messages", d($$0)).set("color", $$0.createString("black")).set("has_glowing_text", $$0.createBoolean(false));
-   }
-
-   private static <T> Dynamic<T> d(Dynamic<T> $$0) {
-      Dynamic<T> $$1 = azk.a($$0.getOps());
-      return $$0.createList(Stream.of($$1, $$1, $$1, $$1));
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), bap::a);
    }
 }

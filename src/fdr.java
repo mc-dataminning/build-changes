@@ -1,29 +1,172 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Lists;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
 public class fdr {
-   private final List<xc> a = Lists.newArrayList();
-
-   public void a(xc $$0) {
-      this.a.add($$0);
+   private fdr() {
    }
 
-   @Nullable
-   public xc a() {
-      if (this.a.isEmpty()) {
-         return null;
+   @VisibleForTesting
+   protected static List<String> a(String $$0) {
+      return Arrays.asList($$0.split("\\n"));
+   }
+
+   public static List<fdr.a> a(String $$0, fdr.b... $$1) {
+      return a($$0, Arrays.asList($$1));
+   }
+
+   private static List<fdr.a> a(String $$0, List<fdr.b> $$1) {
+      List<String> $$2 = a($$0);
+      return a($$2, $$1);
+   }
+
+   private static List<fdr.a> a(List<String> $$0, List<fdr.b> $$1) {
+      int $$2 = 0;
+      List<fdr.a> $$3 = Lists.newArrayList();
+
+      for (String $$4 : $$0) {
+         List<fdr.b> $$5 = Lists.newArrayList();
+
+         for (String $$7 : a($$4, "%link")) {
+            if ("%link".equals($$7)) {
+               $$5.add($$1.get($$2++));
+            } else {
+               $$5.add(fdr.b.a($$7));
+            }
+         }
+
+         $$3.add(new fdr.a($$5));
+      }
+
+      return $$3;
+   }
+
+   public static List<String> a(String $$0, String $$1) {
+      if ($$1.isEmpty()) {
+         throw new IllegalArgumentException("Delimiter cannot be the empty string");
       } else {
-         return this.a.size() == 1 ? this.a.get(0) : xc.a(this.a);
+         List<String> $$2 = Lists.newArrayList();
+         int $$3 = 0;
+
+         int $$4;
+         while (($$4 = $$0.indexOf($$1, $$3)) != -1) {
+            if ($$4 > $$3) {
+               $$2.add($$0.substring($$3, $$4));
+            }
+
+            $$2.add($$1);
+            $$3 = $$4 + $$1.length();
+         }
+
+         if ($$3 < $$0.length()) {
+            $$2.add($$0.substring($$3));
+         }
+
+         return $$2;
       }
    }
 
-   public xc b() {
-      xc $$0 = this.a();
-      return $$0 != null ? $$0 : xc.b;
+   public static class a {
+      public final List<fdr.b> a;
+
+      a(fdr.b... $$0) {
+         this(Arrays.asList($$0));
+      }
+
+      a(List<fdr.b> $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public String toString() {
+         return "Line{segments=" + this.a + "}";
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+            fdr.a $$1 = (fdr.a)$$0;
+            return Objects.equals(this.a, $$1.a);
+         } else {
+            return false;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         return Objects.hash(this.a);
+      }
    }
 
-   public void c() {
-      this.a.clear();
+   public static class b {
+      private final String a;
+      @Nullable
+      private final String b;
+      @Nullable
+      private final String c;
+
+      private b(String $$0) {
+         this.a = $$0;
+         this.b = null;
+         this.c = null;
+      }
+
+      private b(String $$0, @Nullable String $$1, @Nullable String $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+            fdr.b $$1 = (fdr.b)$$0;
+            return Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b) && Objects.equals(this.c, $$1.c);
+         } else {
+            return false;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         return Objects.hash(this.a, this.b, this.c);
+      }
+
+      @Override
+      public String toString() {
+         return "Segment{fullText='" + this.a + "', linkTitle='" + this.b + "', linkUrl='" + this.c + "'}";
+      }
+
+      public String a() {
+         return this.b() ? this.b : this.a;
+      }
+
+      public boolean b() {
+         return this.b != null;
+      }
+
+      public String c() {
+         if (!this.b()) {
+            throw new IllegalStateException("Not a link: " + this);
+         } else {
+            return this.c;
+         }
+      }
+
+      public static fdr.b a(String $$0, String $$1) {
+         return new fdr.b(null, $$0, $$1);
+      }
+
+      @VisibleForTesting
+      protected static fdr.b a(String $$0) {
+         return new fdr.b($$0);
+      }
    }
 }

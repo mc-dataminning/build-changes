@@ -1,85 +1,63 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 
-public class eal extends dzz<eck> {
-   public eal(Codec<eck> $$0) {
+public class eal extends eat<ect> {
+   private static final ImmutableList<deu> a = ImmutableList.of(dew.F, dew.fn, dew.fo, dew.fp, dew.fq, dew.cv, dew.ct);
+   private static final je[] b = je.values();
+   private static final double c = 0.9;
+
+   public eal(Codec<ect> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eab<eck> $$0) {
-      io $$1 = $$0.e();
-      aym $$2 = $$0.d();
-      dbu $$3 = $$0.b();
+   public boolean a(eav<ect> $$0) {
+      boolean $$1 = false;
+      azc $$2 = $$0.d();
+      dco $$3 = $$0.b();
+      ect $$4 = $$0.f();
+      iz $$5 = $$0.e();
+      boolean $$6 = $$2.j() < 0.9;
+      int $$7 = $$6 ? $$4.d().a($$2) : 0;
+      int $$8 = $$6 ? $$4.d().a($$2) : 0;
+      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
+      int $$10 = $$4.c().a($$2);
+      int $$11 = $$4.c().a($$2);
+      int $$12 = Math.max($$10, $$11);
 
-      while ($$3.u($$1) && $$1.v() > $$3.I_() + 2) {
-         $$1 = $$1.d();
-      }
-
-      if (!$$3.a_($$1).a(dec.dP)) {
-         return false;
-      } else {
-         $$1 = $$1.b($$2.a(4));
-         int $$4 = $$2.a(4) + 7;
-         int $$5 = $$4 / 4 + $$2.a(2);
-         if ($$5 > 1 && $$2.a(60) == 0) {
-            $$1 = $$1.b(10 + $$2.a(30));
+      for (iz $$13 : iz.a($$5, $$10, 0, $$11)) {
+         if ($$13.k($$5) > $$12) {
+            break;
          }
 
-         for (int $$6 = 0; $$6 < $$4; $$6++) {
-            float $$7 = (1.0F - (float)$$6 / (float)$$4) * (float)$$5;
-            int $$8 = ayf.f($$7);
+         if (a($$3, $$13, $$4)) {
+            if ($$9) {
+               $$1 = true;
+               this.a($$3, $$13, $$4.b());
+            }
 
-            for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-               float $$10 = (float)ayf.a($$9) - 0.25F;
-
-               for (int $$11 = -$$8; $$11 <= $$8; $$11++) {
-                  float $$12 = (float)ayf.a($$11) - 0.25F;
-                  if (($$9 == 0 && $$11 == 0 || !($$10 * $$10 + $$12 * $$12 > $$7 * $$7))
-                     && ($$9 != -$$8 && $$9 != $$8 && $$11 != -$$8 && $$11 != $$8 || !($$2.i() > 0.75F))) {
-                     drd $$13 = $$3.a_($$1.b($$9, $$6, $$11));
-                     if ($$13.i() || b($$13) || $$13.a(dec.dP) || $$13.a(dec.dO)) {
-                        this.a($$3, $$1.b($$9, $$6, $$11), dec.iC.n());
-                     }
-
-                     if ($$6 != 0 && $$8 > 1) {
-                        $$13 = $$3.a_($$1.b($$9, -$$6, $$11));
-                        if ($$13.i() || b($$13) || $$13.a(dec.dP) || $$13.a(dec.dO)) {
-                           this.a($$3, $$1.b($$9, -$$6, $$11), dec.iC.n());
-                        }
-                     }
-                  }
-               }
+            iz $$14 = $$13.b($$7, 0, $$8);
+            if (a($$3, $$14, $$4)) {
+               $$1 = true;
+               this.a($$3, $$14, $$4.a());
             }
          }
+      }
 
-         int $$14 = $$5 - 1;
-         if ($$14 < 0) {
-            $$14 = 0;
-         } else if ($$14 > 1) {
-            $$14 = 1;
-         }
+      return $$1;
+   }
 
-         for (int $$15 = -$$14; $$15 <= $$14; $$15++) {
-            for (int $$16 = -$$14; $$16 <= $$14; $$16++) {
-               io $$17 = $$1.b($$15, -1, $$16);
-               int $$18 = 50;
-               if (Math.abs($$15) == 1 && Math.abs($$16) == 1) {
-                  $$18 = $$2.a(5);
-               }
-
-               while ($$17.v() > 50) {
-                  drd $$19 = $$3.a_($$17);
-                  if (!$$19.i() && !b($$19) && !$$19.a(dec.dP) && !$$19.a(dec.dO) && !$$19.a(dec.iC)) {
-                     break;
-                  }
-
-                  this.a($$3, $$17, dec.iC.n());
-                  $$17 = $$17.d();
-                  if (--$$18 <= 0) {
-                     $$17 = $$17.c($$2.a(5) + 1);
-                     $$18 = $$2.a(5);
-                  }
-               }
+   private static boolean a(dbu $$0, iz $$1, ect $$2) {
+      drx $$3 = $$0.a_($$1);
+      if ($$3.a($$2.a().b())) {
+         return false;
+      } else if (a.contains($$3.b())) {
+         return false;
+      } else {
+         for (je $$4 : b) {
+            boolean $$5 = $$0.a_($$1.a($$4)).i();
+            if ($$5 && $$4 != je.b || !$$5 && $$4 == je.b) {
+               return false;
             }
          }
 

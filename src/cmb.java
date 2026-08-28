@@ -1,83 +1,75 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.security.PublicKey;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Arrays;
-import java.util.UUID;
+import java.util.List;
 
-public record cmb(cmb.a d) {
-   public static final wx a = wx.c("multiplayer.disconnect.expired_public_key");
-   private static final wx e = wx.c("multiplayer.disconnect.invalid_public_key_signature.new");
-   public static final Duration b = Duration.ofHours(8L);
-   public static final Codec<cmb> c = cmb.a.a.xmap(cmb::new, cmb::b);
+public class cmb implements dbg {
+   private static final int a = 1200;
+   private int b;
 
-   public static cmb a(ayr $$0, UUID $$1, cmb.a $$2) throws cmb.b {
-      if (!$$2.a($$0, $$1)) {
-         throw new cmb.b(e);
+   @Override
+   public int a(arb $$0, boolean $$1, boolean $$2) {
+      if ($$2 && $$0.ab().b(dbp.e)) {
+         this.b--;
+         if (this.b > 0) {
+            return 0;
+         } else {
+            this.b = 1200;
+            cms $$3 = $$0.j();
+            if ($$3 == null) {
+               return 0;
+            } else {
+               azc $$4 = $$0.z;
+               int $$5 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
+               int $$6 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
+               iz $$7 = $$3.dp().b($$5, 0, $$6);
+               int $$8 = 10;
+               if (!$$0.b($$7.u() - 10, $$7.w() - 10, $$7.u() + 10, $$7.w() + 10)) {
+                  return 0;
+               } else {
+                  if (bug.a(bsv.p, $$0, $$7)) {
+                     if ($$0.a($$7, 2)) {
+                        return this.a($$0, $$7);
+                     }
+
+                     if ($$0.a().a($$7, awx.n).b()) {
+                        return this.b($$0, $$7);
+                     }
+                  }
+
+                  return 0;
+               }
+            }
+         }
       } else {
-         return new cmb($$2);
+         return 0;
       }
    }
 
-   public ayr a() {
-      return ayr.a(this.d.c, "SHA256withRSA");
+   private int a(arb $$0, iz $$1) {
+      int $$2 = 48;
+      if ($$0.y().a($$0x -> $$0x.a(ces.n), $$1, 48, ceo.b.b) > 4L) {
+         List<cfd> $$3 = $$0.a(cfd.class, new evh($$1).c(48.0, 8.0, 48.0));
+         if ($$3.size() < 5) {
+            return this.a($$1, $$0);
+         }
+      }
+
+      return 0;
    }
 
-   public cmb.a b() {
-      return this.d;
+   private int b(arb $$0, iz $$1) {
+      int $$2 = 16;
+      List<cfd> $$3 = $$0.a(cfd.class, new evh($$1).c(16.0, 8.0, 16.0));
+      return $$3.size() < 1 ? this.a($$1, $$0) : 0;
    }
 
-   public static record a(Instant b, PublicKey c, byte[] d) {
-      private static final int e = 4096;
-      public static final Codec<cmb.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  axn.m.fieldOf("expires_at").forGetter(cmb.a::b), axd.f.fieldOf("key").forGetter(cmb.a::c), axn.n.fieldOf("signature_v2").forGetter(cmb.a::d)
-               )
-               .apply($$0, cmb.a::new)
-      );
-
-      public a(vx $$0) {
-         this($$0.t(), $$0.u(), $$0.a(4096));
-      }
-
-      public void a(vx $$0) {
-         $$0.a(this.b);
-         $$0.a(this.c);
-         $$0.a(this.d);
-      }
-
-      boolean a(ayr $$0, UUID $$1) {
-         return $$0.a(this.a($$1), this.d);
-      }
-
-      private byte[] a(UUID $$0) {
-         byte[] $$1 = this.c.getEncoded();
-         byte[] $$2 = new byte[24 + $$1.length];
-         ByteBuffer $$3 = ByteBuffer.wrap($$2).order(ByteOrder.BIG_ENDIAN);
-         $$3.putLong($$0.getMostSignificantBits()).putLong($$0.getLeastSignificantBits()).putLong(this.b.toEpochMilli()).put($$1);
-         return $$2;
-      }
-
-      public boolean a() {
-         return this.b.isBefore(Instant.now());
-      }
-
-      public boolean a(Duration $$0) {
-         return this.b.plus($$0).isBefore(Instant.now());
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         return !($$0 instanceof cmb.a $$1) ? false : this.b.equals($$1.b) && this.c.equals($$1.c) && Arrays.equals(this.d, $$1.d);
-      }
-   }
-
-   public static class b extends xx {
-      public b(wx $$0) {
-         super($$0);
+   private int a(iz $$0, arb $$1) {
+      cfd $$2 = bsv.p.a((dbt)$$1);
+      if ($$2 == null) {
+         return 0;
+      } else {
+         $$2.a($$1, $$1.d_($$0), bto.a, null);
+         $$2.a($$0, 0.0F, 0.0F);
+         $$1.a_($$2);
+         return 1;
       }
    }
 }

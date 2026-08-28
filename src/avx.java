@@ -1,191 +1,22 @@
-public final class avx {
-   public static final awm<dea> a = a("wool");
-   public static final awm<dea> b = a("planks");
-   public static final awm<dea> c = a("stone_bricks");
-   public static final awm<dea> d = a("wooden_buttons");
-   public static final awm<dea> e = a("stone_buttons");
-   public static final awm<dea> f = a("buttons");
-   public static final awm<dea> g = a("wool_carpets");
-   public static final awm<dea> h = a("wooden_doors");
-   public static final awm<dea> i = a("wooden_stairs");
-   public static final awm<dea> j = a("wooden_slabs");
-   public static final awm<dea> k = a("wooden_fences");
-   public static final awm<dea> l = a("pressure_plates");
-   public static final awm<dea> m = a("wooden_pressure_plates");
-   public static final awm<dea> n = a("stone_pressure_plates");
-   public static final awm<dea> o = a("wooden_trapdoors");
-   public static final awm<dea> p = a("doors");
-   public static final awm<dea> q = a("saplings");
-   public static final awm<dea> r = a("logs_that_burn");
-   public static final awm<dea> s = a("overworld_natural_logs");
-   public static final awm<dea> t = a("logs");
-   public static final awm<dea> u = a("dark_oak_logs");
-   public static final awm<dea> v = a("oak_logs");
-   public static final awm<dea> w = a("birch_logs");
-   public static final awm<dea> x = a("acacia_logs");
-   public static final awm<dea> y = a("cherry_logs");
-   public static final awm<dea> z = a("jungle_logs");
-   public static final awm<dea> A = a("spruce_logs");
-   public static final awm<dea> B = a("mangrove_logs");
-   public static final awm<dea> C = a("crimson_stems");
-   public static final awm<dea> D = a("warped_stems");
-   public static final awm<dea> E = a("bamboo_blocks");
-   public static final awm<dea> F = a("wart_blocks");
-   public static final awm<dea> G = a("banners");
-   public static final awm<dea> H = a("sand");
-   public static final awm<dea> I = a("smelts_to_glass");
-   public static final awm<dea> J = a("stairs");
-   public static final awm<dea> K = a("slabs");
-   public static final awm<dea> L = a("walls");
-   public static final awm<dea> M = a("anvil");
-   public static final awm<dea> N = a("rails");
-   public static final awm<dea> O = a("leaves");
-   public static final awm<dea> P = a("trapdoors");
-   public static final awm<dea> Q = a("small_flowers");
-   public static final awm<dea> R = a("beds");
-   public static final awm<dea> S = a("fences");
-   public static final awm<dea> T = a("tall_flowers");
-   public static final awm<dea> U = a("flowers");
-   public static final awm<dea> V = a("piglin_repellents");
-   public static final awm<dea> W = a("gold_ores");
-   public static final awm<dea> X = a("iron_ores");
-   public static final awm<dea> Y = a("diamond_ores");
-   public static final awm<dea> Z = a("redstone_ores");
-   public static final awm<dea> aa = a("lapis_ores");
-   public static final awm<dea> ab = a("coal_ores");
-   public static final awm<dea> ac = a("emerald_ores");
-   public static final awm<dea> ad = a("copper_ores");
-   public static final awm<dea> ae = a("candles");
-   public static final awm<dea> af = a("dirt");
-   public static final awm<dea> ag = a("terracotta");
-   public static final awm<dea> ah = a("badlands_terracotta");
-   public static final awm<dea> ai = a("concrete_powder");
-   public static final awm<dea> aj = a("completes_find_tree_tutorial");
-   public static final awm<dea> ak = a("flower_pots");
-   public static final awm<dea> al = a("enderman_holdable");
-   public static final awm<dea> am = a("ice");
-   public static final awm<dea> an = a("valid_spawn");
-   public static final awm<dea> ao = a("impermeable");
-   public static final awm<dea> ap = a("underwater_bonemeals");
-   public static final awm<dea> aq = a("coral_blocks");
-   public static final awm<dea> ar = a("wall_corals");
-   public static final awm<dea> as = a("coral_plants");
-   public static final awm<dea> at = a("corals");
-   public static final awm<dea> au = a("bamboo_plantable_on");
-   public static final awm<dea> av = a("standing_signs");
-   public static final awm<dea> aw = a("wall_signs");
-   public static final awm<dea> ax = a("signs");
-   public static final awm<dea> ay = a("ceiling_hanging_signs");
-   public static final awm<dea> az = a("wall_hanging_signs");
-   public static final awm<dea> aA = a("all_hanging_signs");
-   public static final awm<dea> aB = a("all_signs");
-   public static final awm<dea> aC = a("dragon_immune");
-   public static final awm<dea> aD = a("dragon_transparent");
-   public static final awm<dea> aE = a("wither_immune");
-   public static final awm<dea> aF = a("wither_summon_base_blocks");
-   public static final awm<dea> aG = a("beehives");
-   public static final awm<dea> aH = a("crops");
-   public static final awm<dea> aI = a("bee_growables");
-   public static final awm<dea> aJ = a("portals");
-   public static final awm<dea> aK = a("fire");
-   public static final awm<dea> aL = a("nylium");
-   public static final awm<dea> aM = a("beacon_base_blocks");
-   public static final awm<dea> aN = a("soul_speed_blocks");
-   public static final awm<dea> aO = a("wall_post_override");
-   public static final awm<dea> aP = a("climbable");
-   public static final awm<dea> aQ = a("fall_damage_resetting");
-   public static final awm<dea> aR = a("shulker_boxes");
-   public static final awm<dea> aS = a("hoglin_repellents");
-   public static final awm<dea> aT = a("soul_fire_base_blocks");
-   public static final awm<dea> aU = a("strider_warm_blocks");
-   public static final awm<dea> aV = a("campfires");
-   public static final awm<dea> aW = a("guarded_by_piglins");
-   public static final awm<dea> aX = a("prevent_mob_spawning_inside");
-   public static final awm<dea> aY = a("fence_gates");
-   public static final awm<dea> aZ = a("unstable_bottom_center");
-   public static final awm<dea> ba = a("mushroom_grow_block");
-   public static final awm<dea> bb = a("infiniburn_overworld");
-   public static final awm<dea> bc = a("infiniburn_nether");
-   public static final awm<dea> bd = a("infiniburn_end");
-   public static final awm<dea> be = a("base_stone_overworld");
-   public static final awm<dea> bf = a("stone_ore_replaceables");
-   public static final awm<dea> bg = a("deepslate_ore_replaceables");
-   public static final awm<dea> bh = a("base_stone_nether");
-   public static final awm<dea> bi = a("overworld_carver_replaceables");
-   public static final awm<dea> bj = a("nether_carver_replaceables");
-   public static final awm<dea> bk = a("candle_cakes");
-   public static final awm<dea> bl = a("cauldrons");
-   public static final awm<dea> bm = a("crystal_sound_blocks");
-   public static final awm<dea> bn = a("inside_step_sound_blocks");
-   public static final awm<dea> bo = a("combination_step_sound_blocks");
-   public static final awm<dea> bp = a("camel_sand_step_sound_blocks");
-   public static final awm<dea> bq = a("occludes_vibration_signals");
-   public static final awm<dea> br = a("dampens_vibrations");
-   public static final awm<dea> bs = a("dripstone_replaceable_blocks");
-   public static final awm<dea> bt = a("cave_vines");
-   public static final awm<dea> bu = a("moss_replaceable");
-   public static final awm<dea> bv = a("lush_ground_replaceable");
-   public static final awm<dea> bw = a("azalea_root_replaceable");
-   public static final awm<dea> bx = a("small_dripleaf_placeable");
-   public static final awm<dea> by = a("big_dripleaf_placeable");
-   public static final awm<dea> bz = a("snow");
-   public static final awm<dea> bA = a("mineable/axe");
-   public static final awm<dea> bB = a("mineable/hoe");
-   public static final awm<dea> bC = a("mineable/pickaxe");
-   public static final awm<dea> bD = a("mineable/shovel");
-   public static final awm<dea> bE = a("sword_efficient");
-   public static final awm<dea> bF = a("needs_diamond_tool");
-   public static final awm<dea> bG = a("needs_iron_tool");
-   public static final awm<dea> bH = a("needs_stone_tool");
-   public static final awm<dea> bI = a("incorrect_for_netherite_tool");
-   public static final awm<dea> bJ = a("incorrect_for_diamond_tool");
-   public static final awm<dea> bK = a("incorrect_for_iron_tool");
-   public static final awm<dea> bL = a("incorrect_for_stone_tool");
-   public static final awm<dea> bM = a("incorrect_for_gold_tool");
-   public static final awm<dea> bN = a("incorrect_for_wooden_tool");
-   public static final awm<dea> bO = a("features_cannot_replace");
-   public static final awm<dea> bP = a("lava_pool_stone_cannot_replace");
-   public static final awm<dea> bQ = a("geode_invalid_blocks");
-   public static final awm<dea> bR = a("frog_prefer_jump_to");
-   public static final awm<dea> bS = a("sculk_replaceable");
-   public static final awm<dea> bT = a("sculk_replaceable_world_gen");
-   public static final awm<dea> bU = a("ancient_city_replaceable");
-   public static final awm<dea> bV = a("vibration_resonators");
-   public static final awm<dea> bW = a("animals_spawnable_on");
-   public static final awm<dea> bX = a("armadillo_spawnable_on");
-   public static final awm<dea> bY = a("axolotls_spawnable_on");
-   public static final awm<dea> bZ = a("goats_spawnable_on");
-   public static final awm<dea> ca = a("mooshrooms_spawnable_on");
-   public static final awm<dea> cb = a("parrots_spawnable_on");
-   public static final awm<dea> cc = a("polar_bears_spawnable_on_alternate");
-   public static final awm<dea> cd = a("rabbits_spawnable_on");
-   public static final awm<dea> ce = a("foxes_spawnable_on");
-   public static final awm<dea> cf = a("wolves_spawnable_on");
-   public static final awm<dea> cg = a("frogs_spawnable_on");
-   public static final awm<dea> ch = a("azalea_grows_on");
-   public static final awm<dea> ci = a("convertable_to_mud");
-   public static final awm<dea> cj = a("mangrove_logs_can_grow_through");
-   public static final awm<dea> ck = a("mangrove_roots_can_grow_through");
-   public static final awm<dea> cl = a("dead_bush_may_place_on");
-   public static final awm<dea> cm = a("snaps_goat_horn");
-   public static final awm<dea> cn = a("replaceable_by_trees");
-   public static final awm<dea> co = a("snow_layer_cannot_survive_on");
-   public static final awm<dea> cp = a("snow_layer_can_survive_on");
-   public static final awm<dea> cq = a("invalid_spawn_inside");
-   public static final awm<dea> cr = a("sniffer_diggable_block");
-   public static final awm<dea> cs = a("sniffer_egg_hatch_boost");
-   public static final awm<dea> ct = a("trail_ruins_replaceable");
-   public static final awm<dea> cu = a("replaceable");
-   public static final awm<dea> cv = a("enchantment_power_provider");
-   public static final awm<dea> cw = a("enchantment_power_transmitter");
-   public static final awm<dea> cx = a("maintains_farmland");
-   public static final awm<dea> cy = a("blocks_wind_charge_explosions");
-   public static final awm<dea> cz = a("does_not_block_hoppers");
+public enum avx {
+   a("master"),
+   b("music"),
+   c("record"),
+   d("weather"),
+   e("block"),
+   f("hostile"),
+   g("neutral"),
+   h("player"),
+   i("ambient"),
+   j("voice");
 
-   private avx() {
+   private final String k;
+
+   private avx(final String $$0) {
+      this.k = $$0;
    }
 
-   private static awm<dea> a(String $$0) {
-      return awm.a(lf.f, new akn($$0));
+   public String a() {
+      return this.k;
    }
 }

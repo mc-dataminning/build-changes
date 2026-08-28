@@ -1,62 +1,124 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import java.util.Optional;
 
 public class clm {
-   public static final int a = 1;
-   public static final int b = 5;
-   private static final int[] e = new int[]{0, 10, 70, 150, 250};
-   public static final Codec<clm> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               le.y.q().fieldOf("type").orElseGet(() -> clq.c).forGetter($$0x -> $$0x.f),
-               le.z.q().fieldOf("profession").orElseGet(() -> clo.b).forGetter($$0x -> $$0x.g),
-               Codec.INT.fieldOf("level").orElse(1).forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, clm::new)
-   );
-   public static final yv<wi, clm> d = yv.a(yt.a(lf.ar), $$0 -> $$0.f, yt.a(lf.aq), $$0 -> $$0.g, yt.f, $$0 -> $$0.h, clm::new);
-   private final clq f;
-   private final clo g;
-   private final int h;
+   private static final int a = 600;
+   private static final int b = 20;
+   private static final double c = 0.0125;
+   private static final int d = 8;
+   private static final int e = 8;
+   private static final double f = 12.0;
+   private static final float g = 0.6F;
+   private static final int h = 2;
+   private static final int i = 100;
+   private static final int j = 5;
 
-   public clm(clq $$0, clo $$1, int $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = Math.max(1, $$2);
+   protected static bum<?> a(cll $$0, bum<cll> $$1) {
+      b($$0, $$1);
+      c($$0, $$1);
+      d($$0, $$1);
+      $$1.a(ImmutableSet.of(coh.a));
+      $$1.b(coh.b);
+      $$1.f();
+      return $$1;
    }
 
-   public clq a() {
-      return this.f;
+   protected static void a(cll $$0) {
+      jh $$1 = jh.a($$0.dP().af(), $$0.dp());
+      $$0.dS().a(cco.b, $$1);
    }
 
-   public clo b() {
-      return this.g;
+   private static void b(cll $$0, bum<cll> $$1) {
+      $$1.a(coh.a, 0, ImmutableList.of(new bwj(45, 90), new bwn(), bwb.a(), bxt.a()));
    }
 
-   public int c() {
-      return this.h;
+   private static void c(cll $$0, bum<cll> $$1) {
+      $$1.a(coh.b, 10, ImmutableList.of(bxp.a(clm::a), a(), b(), bxf.a(bsv.by, 4)));
    }
 
-   public clm a(clq $$0) {
-      return new clm($$0, this.g, this.h);
+   private static void d(cll $$0, bum<cll> $$1) {
+      $$1.a(coh.k, 10, ImmutableList.of(bxs.a($$1x -> !a((clh)$$0, $$1x)), bxi.a(1.0F), bwk.a(20)), cco.o);
    }
 
-   public clm a(clo $$0) {
-      return new clm(this.f, $$0, this.h);
+   private static bxa<cll> a() {
+      return new bxa<>(
+         ImmutableList.of(
+            Pair.of(bxc.a(bsv.by, 8.0F), 1),
+            Pair.of(bxc.a(bsv.aA, 8.0F), 1),
+            Pair.of(bxc.a(bsv.aB, 8.0F), 1),
+            Pair.of(bxc.a(8.0F), 1),
+            Pair.of(new bvn(30, 60), 1)
+         )
+      );
    }
 
-   public clm a(int $$0) {
-      return new clm(this.f, this.g, $$0);
+   private static bxa<cll> b() {
+      return new bxa<>(
+         ImmutableList.of(
+            Pair.of(bwv.a(0.6F), 2),
+            Pair.of(bwa.a(bsv.aA, 8, cco.q, 0.6F, 2), 2),
+            Pair.of(bwa.a(bsv.aB, 8, cco.q, 0.6F, 2), 2),
+            Pair.of(bxv.a(cco.b, 0.6F, 2, 100), 2),
+            Pair.of(bxu.a(cco.b, 0.6F, 5), 2),
+            Pair.of(new bvn(30, 60), 1)
+         )
+      );
    }
 
-   public static int b(int $$0) {
-      return d($$0) ? e[$$0 - 1] : 0;
+   protected static void b(cll $$0) {
+      bum<cll> $$1 = $$0.dS();
+      coh $$2 = $$1.g().orElse(null);
+      $$1.a(ImmutableList.of(coh.k, coh.b));
+      coh $$3 = $$1.g().orElse(null);
+      if ($$2 != $$3) {
+         d($$0);
+      }
+
+      $$0.v($$1.a(cco.o));
    }
 
-   public static int c(int $$0) {
-      return d($$0) ? e[$$0] : 0;
+   private static boolean a(clh $$0, btk $$1) {
+      return a($$0).filter($$1x -> $$1x == $$1).isPresent();
    }
 
-   public static boolean d(int $$0) {
-      return $$0 >= 1 && $$0 < 5;
+   private static Optional<? extends btk> a(clh $$0) {
+      Optional<btk> $$1 = bvf.a($$0, cco.ab);
+      if ($$1.isPresent() && cdu.d($$0, $$1.get())) {
+         return $$1;
+      } else {
+         Optional<? extends btk> $$2 = a($$0, cco.l);
+         return $$2.isPresent() ? $$2 : $$0.dS().c(cco.M);
+      }
+   }
+
+   private static Optional<? extends btk> a(clh $$0, cco<? extends btk> $$1) {
+      return $$0.dS().c($$1).filter($$1x -> $$1x.a($$0, 12.0));
+   }
+
+   protected static void a(cll $$0, btk $$1) {
+      if (!($$1 instanceof clh)) {
+         clj.a($$0, $$1);
+      }
+   }
+
+   protected static void b(cll $$0, btk $$1) {
+      $$0.dS().b(cco.E);
+      $$0.dS().a(cco.ab, $$1.cz(), 600L);
+   }
+
+   protected static void c(cll $$0) {
+      if ((double)$$0.dP().z.i() < 0.0125) {
+         d($$0);
+      }
+   }
+
+   private static void d(cll $$0) {
+      $$0.dS().g().ifPresent($$1 -> {
+         if ($$1 == coh.k) {
+            $$0.gx();
+         }
+      });
    }
 }

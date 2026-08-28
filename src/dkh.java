@@ -1,81 +1,89 @@
 import com.mojang.serialization.MapCodec;
+import java.util.function.BiFunction;
 
-public class dkh extends dgc {
+public class dkh extends dfd implements dex {
    public static final MapCodec<dkh> a = b(dkh::new);
-   public static final dru b = drt.s;
-   public static final dsd e = drt.aA;
+   public static final int b = 1;
+   public static final int c = 4;
+   public static final dsr d = dsn.R;
+   public static final dsx e = dsn.S;
+   private static final BiFunction<je, Integer, ewf> f = ac.a(
+      ($$0, $$1) -> {
+         ewf[] $$2 = new ewf[]{
+            deu.a(8.0, 0.0, 8.0, 16.0, 3.0, 16.0),
+            deu.a(8.0, 0.0, 0.0, 16.0, 3.0, 8.0),
+            deu.a(0.0, 0.0, 0.0, 8.0, 3.0, 8.0),
+            deu.a(0.0, 0.0, 8.0, 8.0, 3.0, 16.0)
+         };
+         ewf $$3 = ewc.a();
+
+         for (int $$4 = 0; $$4 < $$1; $$4++) {
+            int $$5 = Math.floorMod($$4 - $$0.e(), 4);
+            $$3 = ewc.a($$3, $$2[$$5]);
+         }
+
+         return $$3.b();
+      }
+   );
 
    @Override
    public MapCodec<dkh> a() {
       return a;
    }
 
-   protected dkh(drc.d $$0) {
+   protected dkh(drw.d $$0) {
       super($$0);
-      this.k(this.E.b().a(aE, it.c).a(e, Integer.valueOf(1)).a(b, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
+      this.k(this.E.b().a(d, je.c).a(e, Integer.valueOf(1)));
    }
 
    @Override
-   protected bpw a(drd $$0, daz $$1, io $$2, cly $$3, eui $$4) {
-      if (!$$3.gd().e) {
-         return bpw.d;
-      } else {
-         $$1.a($$2, $$0.a(e), 3);
-         return bpw.a($$1.B);
-      }
+   public drx a(drx $$0, dlh $$1) {
+      return $$0.a(d, $$1.a($$0.c(d)));
    }
 
    @Override
-   protected int g(drd $$0) {
-      return $$0.c(e) * 2;
+   public drx a(drx $$0, djr $$1) {
+      return $$0.a($$1.a($$0.c(d)));
    }
 
    @Override
-   public drd a(cxb $$0) {
-      drd $$1 = super.a($$0);
-      return $$1.a(b, Boolean.valueOf(this.c($$0.q(), $$0.a(), $$1)));
+   public boolean a(drx $$0, cxv $$1) {
+      return !$$1.h() && $$1.n().a(this.r()) && $$0.c(e) < 4 ? true : super.a($$0, $$1);
    }
 
    @Override
-   protected drd a(drd $$0, it $$1, drd $$2, dba $$3, io $$4, io $$5) {
-      if ($$1 == it.a && !this.b($$3, $$5, $$2)) {
-         return dec.a.n();
-      } else {
-         return !$$3.x_() && $$1.o() != $$0.c(aE).o() ? $$0.a(b, Boolean.valueOf(this.c($$3, $$4, $$0))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
+   public ewf a(drx $$0, daz $$1, iz $$2, evr $$3) {
+      return f.apply($$0.c(d), $$0.c(e));
    }
 
    @Override
-   public boolean c(dbc $$0, io $$1, drd $$2) {
-      return this.a((dbp)$$0, $$1, $$2) > 0;
+   public drx a(cxv $$0) {
+      drx $$1 = $$0.q().a_($$0.a());
+      return $$1.a(this) ? $$1.a(e, Integer.valueOf(Math.min(4, $$1.c(e) + 1))) : this.n().a(d, $$0.g().g());
    }
 
    @Override
-   protected boolean b() {
+   protected void a(dry.a<deu, drx> $$0) {
+      $$0.a(d, e);
+   }
+
+   @Override
+   public boolean b(dbw $$0, iz $$1, drx $$2) {
       return true;
    }
 
    @Override
-   public void a(drd $$0, daz $$1, io $$2, aym $$3) {
-      if ($$0.c(d)) {
-         it $$4 = $$0.c(aE);
-         double $$5 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
-         double $$6 = (double)$$2.v() + 0.4 + ($$3.j() - 0.5) * 0.2;
-         double $$7 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
-         float $$8 = -5.0F;
-         if ($$3.h()) {
-            $$8 = (float)($$0.c(e) * 2 - 1);
-         }
-
-         $$8 /= 16.0F;
-         double $$9 = (double)($$8 * (float)$$4.j());
-         double $$10 = (double)($$8 * (float)$$4.l());
-         $$1.a(ks.b, $$5 + $$9, $$6, $$7 + $$10, 0.0, 0.0, 0.0);
-      }
+   public boolean a(dbt $$0, azc $$1, iz $$2, drx $$3) {
+      return true;
    }
 
    @Override
-   protected void a(dre.a<dea, drd> $$0) {
-      $$0.a(aE, e, b, d);
+   public void a(arb $$0, azc $$1, iz $$2, drx $$3) {
+      int $$4 = $$3.c(e);
+      if ($$4 < 4) {
+         $$0.a($$2, $$3.a(e, Integer.valueOf($$4 + 1)), 2);
+      } else {
+         a($$0, $$2, new cuk(this));
+      }
    }
 }

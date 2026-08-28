@@ -1,10 +1,18 @@
-public class cyv extends czb {
-   public cyv(czb.b $$0) {
-      super($$0);
-   }
+public interface cyv<T extends cyq<?>> {
+   cyv<cyh> a = a("crafting");
+   cyv<czf> b = a("smelting");
+   cyv<cyc> c = a("blasting");
+   cyv<czj> d = a("smoking");
+   cyv<cye> e = a("campfire_cooking");
+   cyv<czk> f = a("stonecutting");
+   cyv<czg> g = a("smithing");
 
-   @Override
-   public boolean a(czb $$0) {
-      return super.a($$0) && $$0 != cze.I;
+   static <T extends cyq<?>> cyv<T> a(final String $$0) {
+      return jv.a(lp.s, new alb($$0), new cyv<T>() {
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      });
    }
 }

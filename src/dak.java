@@ -1,4 +1,15 @@
-@FunctionalInterface
-public interface dak {
-   int getColor(dby var1, double var2, double var4);
+public class dak extends czv {
+   public dak(czv.b $$0) {
+      super($$0);
+   }
+
+   @Override
+   public boolean a() {
+      return true;
+   }
+
+   @Override
+   public boolean b() {
+      return true;
+   }
 }

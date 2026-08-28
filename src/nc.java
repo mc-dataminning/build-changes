@@ -1,8 +1,14 @@
-import java.util.function.BiConsumer;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 
-public class nc implements mj {
-   @Override
-   public void generate(iz.a $$0, BiConsumer<akm<epm>, epm.a> $$1) {
-      $$1.accept(epf.ba, epm.b());
+public class nc {
+   public static mt a(ly $$0, CompletableFuture<jk.a> $$1) {
+      return new mt(
+         $$0,
+         Set.of(),
+         List.of(new mt.a(my::new, esy.r), new mt.a(mz::new, esy.c), new mt.a(na::new, esy.g), new mt.a(nd::new, esy.s), new mt.a(nb::new, esy.h)),
+         $$1
+      );
    }
 }

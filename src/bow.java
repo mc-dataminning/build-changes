@@ -1,61 +1,13 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.time.Instant;
 
-public class bow extends bpb {
-   public static final MapCodec<bow> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.f),
-                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.g),
-                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.h)
-               )
-               .apply($$0, bow::new)
-      )
-      .validate($$0 -> $$0.h < $$0.g ? DataResult.error(() -> "Max must be larger than min: [" + $$0.g + ", " + $$0.h + "]") : DataResult.success($$0));
-   private final float b;
-   private final float f;
-   private final int g;
-   private final int h;
+public final class bow {
+   public final Instant a;
+   public final int b;
+   public final bnc c;
 
-   public static bow a(float $$0, float $$1, int $$2, int $$3) {
-      return new bow($$0, $$1, $$2, $$3);
-   }
-
-   private bow(float $$0, float $$1, int $$2, int $$3) {
-      this.b = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-   }
-
-   @Override
-   public int a(aym $$0) {
-      return a($$0, this.b, this.f, (float)this.g, (float)this.h);
-   }
-
-   public static int a(aym $$0, float $$1, float $$2, float $$3, float $$4) {
-      return (int)ayf.a(ayf.c($$0, $$1, $$2), $$3, $$4);
-   }
-
-   @Override
-   public int a() {
-      return this.g;
-   }
-
-   @Override
-   public int b() {
-      return this.h;
-   }
-
-   @Override
-   public bpc<?> c() {
-      return bpc.f;
-   }
-
-   @Override
-   public String toString() {
-      return "normal(" + this.b + ", " + this.f + ") in [" + this.g + "-" + this.h + "]";
+   public bow(Instant $$0, int $$1, bnc $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 }

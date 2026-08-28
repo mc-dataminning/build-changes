@@ -1,124 +1,79 @@
-import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.Function;
 
-public class bvt extends buj<bss> {
-   private static final int c = 40;
-   private int d;
-   @Nullable
-   private enk e;
-   @Nullable
-   private io f;
-   private float g;
+public class bvt<E extends btk & cmd> extends bvd<E> {
+   private static final int c = 3;
+   private static final int d = 60;
+   private final Function<btk, Optional<bwr>> e;
+   private final float f;
 
-   public bvt() {
-      this(150, 250);
+   public bvt(Function<btk, Optional<bwr>> $$0, float $$1, int $$2) {
+      super(Map.of(cco.n, ccp.c, cco.m, ccp.c, cco.aP, ccp.c), $$2);
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public bvt(int $$0, int $$1) {
-      super(ImmutableMap.of(cbu.E, cbv.c, cbu.t, cbv.b, cbu.m, cbv.a), $$0, $$1);
+   @Override
+   protected boolean a(arb $$0, E $$1) {
+      return this.b($$1);
    }
 
-   protected boolean a(aqn $$0, bss $$1) {
-      if (this.d > 0) {
-         this.d--;
-         return false;
-      } else {
-         bts<?> $$2 = $$1.dS();
-         cbx $$3 = $$2.c(cbu.m).get();
-         boolean $$4 = this.a($$1, $$3);
-         if (!$$4 && this.a($$1, $$3, $$0.Y())) {
-            this.f = $$3.a().b();
-            return true;
-         } else {
-            $$2.b(cbu.m);
-            if ($$4) {
-               $$2.b(cbu.E);
+   @Override
+   protected boolean a(arb $$0, E $$1, long $$2) {
+      return this.b($$1);
+   }
+
+   @Override
+   protected void d(arb $$0, E $$1, long $$2) {
+      this.e.apply($$1).ifPresent($$1x -> bvf.a($$1, $$1x, this.f, 3));
+   }
+
+   @Override
+   protected void c(arb $$0, E $$1, long $$2) {
+      Optional<bwr> $$3 = this.e.apply($$1);
+      if (!$$3.isEmpty()) {
+         bwr $$4 = $$3.get();
+         double $$5 = $$4.a().f($$1.bx());
+         if ($$5 < 3.0) {
+            cuk $$6 = $$1.y().a(0, 1);
+            if (!$$6.e()) {
+               a($$1, $$6, a($$4));
+               if ($$1 instanceof cgg $$7) {
+                  cgh.a((btk)$$7).ifPresent($$2x -> this.a($$4, $$6, $$2x));
+               }
+
+               $$1.dS().a(cco.aP, 60);
             }
-
-            return false;
          }
       }
    }
 
-   protected boolean a(aqn $$0, bss $$1, long $$2) {
-      if (this.e != null && this.f != null) {
-         Optional<cbx> $$3 = $$1.dS().c(cbu.m);
-         boolean $$4 = $$3.<Boolean>map(bvt::a).orElse(false);
-         ccc $$5 = $$1.K();
-         return !$$5.l() && $$3.isPresent() && !this.a($$1, $$3.get()) && !$$4;
-      } else {
+   private void a(bwr $$0, cuk $$1, arc $$2) {
+      iz $$3 = $$0.b().d();
+      am.aa.a($$2, $$3, $$1);
+   }
+
+   private boolean b(E $$0) {
+      if ($$0.y().c()) {
          return false;
-      }
-   }
-
-   protected void b(aqn $$0, bss $$1, long $$2) {
-      if ($$1.dS().a(cbu.m) && !this.a($$1, $$1.dS().c(cbu.m).get()) && $$1.K().r()) {
-         this.d = $$0.E_().a(40);
-      }
-
-      $$1.K().n();
-      $$1.dS().b(cbu.m);
-      $$1.dS().b(cbu.t);
-      this.e = null;
-   }
-
-   protected void c(aqn $$0, bss $$1, long $$2) {
-      $$1.dS().a(cbu.t, this.e);
-      $$1.K().a(this.e, (double)this.g);
-   }
-
-   protected void d(aqn $$0, bss $$1, long $$2) {
-      enk $$3 = $$1.K().j();
-      bts<?> $$4 = $$1.dS();
-      if (this.e != $$3) {
-         this.e = $$3;
-         $$4.a(cbu.t, $$3);
-      }
-
-      if ($$3 != null && this.f != null) {
-         cbx $$5 = $$4.c(cbu.m).get();
-         if ($$5.a().b().j(this.f) > 4.0 && this.a($$1, $$5, $$0.Y())) {
-            this.f = $$5.a().b();
-            this.c($$0, $$1, $$2);
-         }
-      }
-   }
-
-   private boolean a(bss $$0, cbx $$1, long $$2) {
-      io $$3 = $$1.a().b();
-      this.e = $$0.K().a($$3, 0);
-      this.g = $$1.b();
-      bts<?> $$4 = $$0.dS();
-      if (this.a($$0, $$1)) {
-         $$4.b(cbu.E);
       } else {
-         boolean $$5 = this.e != null && this.e.j();
-         if ($$5) {
-            $$4.b(cbu.E);
-         } else if (!$$4.a(cbu.E)) {
-            $$4.a(cbu.E, $$2);
-         }
-
-         if (this.e != null) {
-            return true;
-         }
-
-         eum $$6 = cdl.a((bsz)$$0, 10, 7, eum.c($$3), (float) (Math.PI / 2));
-         if ($$6 != null) {
-            this.e = $$0.K().a($$6.c, $$6.d, $$6.e, 0);
-            return this.e != null;
-         }
+         Optional<bwr> $$1 = this.e.apply($$0);
+         return $$1.isPresent();
       }
-
-      return false;
    }
 
-   private boolean a(bss $$0, cbx $$1) {
-      return $$1.a().b().k($$0.dp()) <= $$1.c();
+   private static evm a(bwr $$0) {
+      return $$0.a().b(0.0, 1.0, 0.0);
    }
 
-   private static boolean a(cbx $$0) {
-      return $$0.a() instanceof buu $$2 ? $$2.c().N_() : false;
+   public static void a(btk $$0, cuk $$1, evm $$2) {
+      evm $$3 = new evm(0.2F, 0.3F, 0.2F);
+      bvf.a($$0, $$1, $$2, $$3, 0.2F);
+      dbt $$4 = $$0.dP();
+      if ($$4.Z() % 7L == 0L && $$4.z.j() < 0.9) {
+         float $$5 = ac.<Float>a(cgg.d, $$4.E_());
+         $$4.a(null, $$0, avw.g, avx.g, 1.0F, $$5);
+      }
    }
 }

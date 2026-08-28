@@ -1,15 +1,15 @@
-public interface gc {
-   eum a(ee var1);
+import com.mojang.brigadier.context.CommandContext;
 
-   eul b(ee var1);
-
-   default io c(ee $$0) {
-      return io.a(this.a($$0));
+public class gc extends fz<djr> {
+   private gc() {
+      super(djr.d, djr::values);
    }
 
-   boolean a();
+   public static fz<djr> a() {
+      return new gc();
+   }
 
-   boolean b();
-
-   boolean c();
+   public static djr a(CommandContext<ep> $$0, String $$1) {
+      return (djr)$$0.getArgument($$1, djr.class);
+   }
 }

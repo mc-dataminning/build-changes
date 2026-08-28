@@ -1,32 +1,36 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-public class aep implements ze<abq> {
-   public static final yv<vx, aep> a = ze.a(aep::a, aep::new);
-   private final int b;
+public class aep implements zs<ace> {
+   public static final zj<wl, aep> a = zs.a(aep::a, aep::new);
+   private final IntList b;
 
-   public aep(brw $$0) {
-      this.b = $$0.al();
+   public aep(IntList $$0) {
+      this.b = new IntArrayList($$0);
    }
 
-   private aep(vx $$0) {
-      this.b = $$0.l();
+   public aep(int... $$0) {
+      this.b = new IntArrayList($$0);
    }
 
-   private void a(vx $$0) {
-      $$0.c(this.b);
+   private aep(wl $$0) {
+      this.b = $$0.a();
+   }
+
+   private void a(wl $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zg<aep> a() {
-      return agc.aw;
+   public zu<aep> a() {
+      return agq.aj;
    }
 
-   public void a(abq $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public brw a(daz $$0) {
-      return $$0.a(this.b);
+   public IntList b() {
+      return this.b;
    }
 }

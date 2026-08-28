@@ -1,26 +1,34 @@
-public interface ehe {
-   akm<ehr> a = a("villages");
-   akm<ehr> b = a("desert_pyramids");
-   akm<ehr> c = a("igloos");
-   akm<ehr> d = a("jungle_temples");
-   akm<ehr> e = a("swamp_huts");
-   akm<ehr> f = a("pillager_outposts");
-   akm<ehr> g = a("ocean_monuments");
-   akm<ehr> h = a("woodland_mansions");
-   akm<ehr> i = a("buried_treasures");
-   akm<ehr> j = a("mineshafts");
-   akm<ehr> k = a("ruined_portals");
-   akm<ehr> l = a("shipwrecks");
-   akm<ehr> m = a("ocean_ruins");
-   akm<ehr> n = a("nether_complexes");
-   akm<ehr> o = a("nether_fossils");
-   akm<ehr> p = a("end_cities");
-   akm<ehr> q = a("ancient_cities");
-   akm<ehr> r = a("strongholds");
-   akm<ehr> s = a("trail_ruins");
-   akm<ehr> t = a("trial_chambers");
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-   private static akm<ehr> a(String $$0) {
-      return akm.a(lf.aL, new akn($$0));
+public class ehe extends ehm {
+   public static final MapCodec<ehe> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(egm.c.fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, ehe::new));
+   private final egm c;
+
+   private ehe(egm $$0) {
+      this.c = $$0;
+   }
+
+   public static ehe a(egm $$0) {
+      return new ehe($$0);
+   }
+
+   public static ehe a(dyj $$0, dyj $$1) {
+      return a(egp.a($$0, $$1));
+   }
+
+   public static ehe b(dyj $$0, dyj $$1) {
+      return a(ego.a($$0, $$1));
+   }
+
+   @Override
+   public Stream<iz> a_(ehk $$0, azc $$1, iz $$2) {
+      return Stream.of($$2.h(this.c.a($$1, $$0)));
+   }
+
+   @Override
+   public ehn<?> b() {
+      return ehn.l;
    }
 }

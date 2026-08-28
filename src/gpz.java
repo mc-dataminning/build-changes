@@ -1,67 +1,31 @@
-import java.util.Comparator;
-import java.util.Objects;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import com.ibm.icu.lang.UCharacter;
+import com.ibm.icu.text.ArabicShaping;
+import com.ibm.icu.text.Bidi;
+import com.ibm.icu.text.BidiRun;
+import java.util.List;
 
 public class gpz {
-   public static final Comparator<gpz> a = Comparator.<gpz, akn>comparing(gpz::a).thenComparing(gpz::b);
-   private final akn b;
-   private final akn c;
-   @Nullable
-   private gcs d;
+   public static ayg a(xq $$0, boolean $$1) {
+      yj $$2 = yj.a($$0, UCharacter::getMirror, gpz::a);
+      Bidi $$3 = new Bidi($$2.a(), $$1 ? 127 : 126);
+      $$3.setReorderingMode(0);
+      List<ayg> $$4 = Lists.newArrayList();
+      int $$5 = $$3.countRuns();
 
-   public gpz(akn $$0, akn $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public akn a() {
-      return this.b;
-   }
-
-   public akn b() {
-      return this.c;
-   }
-
-   public gnv c() {
-      return feb.Q().a(this.a()).apply(this.b());
-   }
-
-   public gcs a(Function<akn, gcs> $$0) {
-      if (this.d == null) {
-         this.d = $$0.apply(this.b);
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         BidiRun $$7 = $$3.getVisualRun($$6);
+         $$4.addAll($$2.a($$7.getStart(), $$7.getLength(), $$7.isOddRun()));
       }
 
-      return this.d;
+      return ayg.composite($$4);
    }
 
-   public eyy a(gck $$0, Function<akn, gcs> $$1) {
-      return this.c().a($$0.getBuffer(this.a($$1)));
-   }
-
-   public eyy a(gck $$0, Function<akn, gcs> $$1, boolean $$2) {
-      return this.c().a(gir.c($$0, this.a($$1), true, $$2));
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         gpz $$1 = (gpz)$$0;
-         return this.b.equals($$1.b) && this.c.equals($$1.c);
-      } else {
-         return false;
+   private static String a(String $$0) {
+      try {
+         return new ArabicShaping(8).shape($$0);
+      } catch (Exception var2) {
+         return $$0;
       }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.b, this.c);
-   }
-
-   @Override
-   public String toString() {
-      return "Material{atlasLocation=" + this.b + ", texture=" + this.c + "}";
    }
 }

@@ -1,33 +1,43 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Iterator;
-import java.util.List;
-import org.slf4j.Logger;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-public class ezv extends faq {
-   private static final Logger b = LogUtils.getLogger();
-   public List<ezu> a = Lists.newArrayList();
+public class ezv {
+   private static final int a = 786432;
+   private final ezo b;
+   @Nullable
+   private static ezv c;
 
-   public static ezv a(String $$0) {
-      ezv $$1 = new ezv();
-
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("invites").isJsonArray()) {
-            Iterator<JsonElement> $$4 = $$3.get("invites").getAsJsonArray().iterator();
-
-            while ($$4.hasNext()) {
-               $$1.a.add(ezu.a($$4.next().getAsJsonObject()));
-            }
-         }
-      } catch (Exception var5) {
-         b.error("Could not parse PendingInvitesList: {}", var5.getMessage());
+   public static void a() {
+      RenderSystem.assertOnGameThreadOrInit();
+      if (c != null) {
+         throw new IllegalStateException("Tesselator has already been initialized");
+      } else {
+         c = new ezv();
       }
+   }
 
-      return $$1;
+   public static ezv b() {
+      RenderSystem.assertOnGameThreadOrInit();
+      if (c == null) {
+         throw new IllegalStateException("Tesselator has not been initialized");
+      } else {
+         return c;
+      }
+   }
+
+   public ezv(int $$0) {
+      this.b = new ezo($$0);
+   }
+
+   public ezv() {
+      this(786432);
+   }
+
+   public void c() {
+      ezp.a(this.b.d());
+   }
+
+   public ezo d() {
+      return this.b;
    }
 }

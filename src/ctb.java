@@ -1,15 +1,8 @@
-public class ctb extends ctl implements cus {
-   public ctb(ctl.a $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public interface ctb {
+   default void a(@Nullable cms $$0, dbt $$1, cuk $$2, iz $$3) {
    }
 
-   @Override
-   public boolean a(daz $$0, dps $$1, boolean $$2, cly $$3) {
-      if ($$1.a($$0x -> $$0x.a(true), $$2)) {
-         $$0.a(null, $$1.aA_(), avi.kA, avj.e, 1.0F, 1.0F);
-         return true;
-      } else {
-         return false;
-      }
-   }
+   boolean a(@Nullable cms var1, dbt var2, iz var3, @Nullable evi var4);
 }

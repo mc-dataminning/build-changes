@@ -1,99 +1,133 @@
-public class fnk extends fmx<cpm> implements fps {
-   private static final akn D = new akn("textures/gui/container/crafting_table.png");
-   private final fpm E = new fpm();
-   private boolean F;
+enum fnk {
+   a(
+      new fnk.a(
+         new alb("advancements/tab_above_left_selected"), new alb("advancements/tab_above_middle_selected"), new alb("advancements/tab_above_right_selected")
+      ),
+      new fnk.a(new alb("advancements/tab_above_left"), new alb("advancements/tab_above_middle"), new alb("advancements/tab_above_right")),
+      28,
+      32,
+      8
+   ),
+   b(
+      new fnk.a(
+         new alb("advancements/tab_below_left_selected"), new alb("advancements/tab_below_middle_selected"), new alb("advancements/tab_below_right_selected")
+      ),
+      new fnk.a(new alb("advancements/tab_below_left"), new alb("advancements/tab_below_middle"), new alb("advancements/tab_below_right")),
+      28,
+      32,
+      8
+   ),
+   c(
+      new fnk.a(
+         new alb("advancements/tab_left_top_selected"), new alb("advancements/tab_left_middle_selected"), new alb("advancements/tab_left_bottom_selected")
+      ),
+      new fnk.a(new alb("advancements/tab_left_top"), new alb("advancements/tab_left_middle"), new alb("advancements/tab_left_bottom")),
+      32,
+      28,
+      5
+   ),
+   d(
+      new fnk.a(
+         new alb("advancements/tab_right_top_selected"), new alb("advancements/tab_right_middle_selected"), new alb("advancements/tab_right_bottom_selected")
+      ),
+      new fnk.a(new alb("advancements/tab_right_top"), new alb("advancements/tab_right_middle"), new alb("advancements/tab_right_bottom")),
+      32,
+      28,
+      5
+   );
 
-   public fnk(cpm $$0, clx $$1, wx $$2) {
-      super($$0, $$1, $$2);
+   private final fnk.a e;
+   private final fnk.a f;
+   private final int g;
+   private final int h;
+   private final int i;
+
+   private fnk(final fnk.a $$0, final fnk.a $$1, final int $$2, final int $$3, final int $$4) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.i = $$4;
    }
 
-   @Override
-   protected void aN_() {
-      super.aN_();
-      this.F = this.n < 379;
-      this.E.a(this.n, this.o, this.m, this.F, this.w);
-      this.z = this.E.a(this.n, this.c);
-      this.c(new fgm(this.z + 5, this.o / 2 - 49, 20, 18, fpm.a, $$0 -> {
-         this.E.e();
-         this.z = this.E.a(this.n, this.c);
-         $$0.c(this.z + 5, this.o / 2 - 49);
-      }));
-      this.d(this.E);
-      this.r = 29;
+   public int a() {
+      return this.i;
    }
 
-   @Override
-   public void C() {
-      super.C();
-      this.E.h();
-   }
-
-   @Override
-   public void a(ffn $$0, int $$1, int $$2, float $$3) {
-      if (this.E.f() && this.F) {
-         this.b($$0, $$1, $$2, $$3);
-         this.E.a($$0, $$1, $$2, $$3);
+   public void a(fgm $$0, int $$1, int $$2, boolean $$3, int $$4) {
+      fnk.a $$5 = $$3 ? this.e : this.f;
+      alb $$6;
+      if ($$4 == 0) {
+         $$6 = $$5.a();
+      } else if ($$4 == this.i - 1) {
+         $$6 = $$5.c();
       } else {
-         super.a($$0, $$1, $$2, $$3);
-         this.E.a($$0, $$1, $$2, $$3);
-         this.E.a($$0, this.z, this.A, true, $$3);
+         $$6 = $$5.b();
       }
 
-      this.a($$0, $$1, $$2);
-      this.E.a($$0, this.z, this.A, $$1, $$2);
+      $$0.a($$6, $$1 + this.a($$4), $$2 + this.b($$4), this.g, this.h);
    }
 
-   @Override
-   protected void a(ffn $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.z;
-      int $$5 = (this.o - this.d) / 2;
-      $$0.a(D, $$4, $$5, 0, 0, this.c, this.d);
+   public void a(fgm $$0, int $$1, int $$2, int $$3, cuk $$4) {
+      int $$5 = $$1 + this.a($$3);
+      int $$6 = $$2 + this.b($$3);
+      switch (this) {
+         case a:
+            $$5 += 6;
+            $$6 += 9;
+            break;
+         case b:
+            $$5 += 6;
+            $$6 += 6;
+            break;
+         case c:
+            $$5 += 10;
+            $$6 += 5;
+            break;
+         case d:
+            $$5 += 6;
+            $$6 += 5;
+      }
+
+      $$0.b($$4, $$5, $$6);
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      return this.E.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return this.E.a($$0, $$1) ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   protected boolean a(int $$0, int $$1, int $$2, int $$3, double $$4, double $$5) {
-      return (!this.F || !this.E.f()) && super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.E.a($$0, $$1, $$2)) {
-         this.a(this.E);
-         return true;
-      } else {
-         return this.F && this.E.f() ? true : super.a($$0, $$1, $$2);
+   public int a(int $$0) {
+      switch (this) {
+         case a:
+            return (this.g + 4) * $$0;
+         case b:
+            return (this.g + 4) * $$0;
+         case c:
+            return -this.g + 4;
+         case d:
+            return 248;
+         default:
+            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
       }
    }
 
-   @Override
-   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
-      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.d);
-      return this.E.a($$0, $$1, this.z, this.A, this.c, this.d, $$4) && $$5;
+   public int b(int $$0) {
+      switch (this) {
+         case a:
+            return -this.h + 4;
+         case b:
+            return 136;
+         case c:
+            return this.h * $$0;
+         case d:
+            return this.h * $$0;
+         default:
+            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+      }
    }
 
-   @Override
-   protected void a(cqq $$0, int $$1, int $$2, cpe $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.E.a($$0);
+   public boolean a(int $$0, int $$1, int $$2, double $$3, double $$4) {
+      int $$5 = $$0 + this.a($$2);
+      int $$6 = $$1 + this.b($$2);
+      return $$3 > (double)$$5 && $$3 < (double)($$5 + this.g) && $$4 > (double)$$6 && $$4 < (double)($$6 + this.h);
    }
 
-   @Override
-   public void E() {
-      this.E.i();
-   }
-
-   @Override
-   public fpm F() {
-      return this.E;
+   static record a(alb a, alb b, alb c) {
    }
 }

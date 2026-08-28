@@ -1,132 +1,56 @@
-import com.google.common.collect.Iterators;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Stream;
+public class cwm {
+   public static final ji<cwj> a = a("water", new cwj());
+   public static final ji<cwj> b = a("mundane", new cwj());
+   public static final ji<cwj> c = a("thick", new cwj());
+   public static final ji<cwj> d = a("awkward", new cwj());
+   public static final ji<cwj> e = a("night_vision", new cwj(new brx(brz.p, 3600)));
+   public static final ji<cwj> f = a("long_night_vision", new cwj("night_vision", new brx(brz.p, 9600)));
+   public static final ji<cwj> g = a("invisibility", new cwj(new brx(brz.n, 3600)));
+   public static final ji<cwj> h = a("long_invisibility", new cwj("invisibility", new brx(brz.n, 9600)));
+   public static final ji<cwj> i = a("leaping", new cwj(new brx(brz.h, 3600)));
+   public static final ji<cwj> j = a("long_leaping", new cwj("leaping", new brx(brz.h, 9600)));
+   public static final ji<cwj> k = a("strong_leaping", new cwj("leaping", new brx(brz.h, 1800, 1)));
+   public static final ji<cwj> l = a("fire_resistance", new cwj(new brx(brz.l, 3600)));
+   public static final ji<cwj> m = a("long_fire_resistance", new cwj("fire_resistance", new brx(brz.l, 9600)));
+   public static final ji<cwj> n = a("swiftness", new cwj(new brx(brz.a, 3600)));
+   public static final ji<cwj> o = a("long_swiftness", new cwj("swiftness", new brx(brz.a, 9600)));
+   public static final ji<cwj> p = a("strong_swiftness", new cwj("swiftness", new brx(brz.a, 1800, 1)));
+   public static final ji<cwj> q = a("slowness", new cwj(new brx(brz.b, 1800)));
+   public static final ji<cwj> r = a("long_slowness", new cwj("slowness", new brx(brz.b, 4800)));
+   public static final ji<cwj> s = a("strong_slowness", new cwj("slowness", new brx(brz.b, 400, 3)));
+   public static final ji<cwj> t = a("turtle_master", new cwj("turtle_master", new brx(brz.b, 400, 3), new brx(brz.k, 400, 2)));
+   public static final ji<cwj> u = a("long_turtle_master", new cwj("turtle_master", new brx(brz.b, 800, 3), new brx(brz.k, 800, 2)));
+   public static final ji<cwj> v = a("strong_turtle_master", new cwj("turtle_master", new brx(brz.b, 400, 5), new brx(brz.k, 400, 3)));
+   public static final ji<cwj> w = a("water_breathing", new cwj(new brx(brz.m, 3600)));
+   public static final ji<cwj> x = a("long_water_breathing", new cwj("water_breathing", new brx(brz.m, 9600)));
+   public static final ji<cwj> y = a("healing", new cwj(new brx(brz.f, 1)));
+   public static final ji<cwj> z = a("strong_healing", new cwj("healing", new brx(brz.f, 1, 1)));
+   public static final ji<cwj> A = a("harming", new cwj(new brx(brz.g, 1)));
+   public static final ji<cwj> B = a("strong_harming", new cwj("harming", new brx(brz.g, 1, 1)));
+   public static final ji<cwj> C = a("poison", new cwj(new brx(brz.s, 900)));
+   public static final ji<cwj> D = a("long_poison", new cwj("poison", new brx(brz.s, 1800)));
+   public static final ji<cwj> E = a("strong_poison", new cwj("poison", new brx(brz.s, 432, 1)));
+   public static final ji<cwj> F = a("regeneration", new cwj(new brx(brz.j, 900)));
+   public static final ji<cwj> G = a("long_regeneration", new cwj("regeneration", new brx(brz.j, 1800)));
+   public static final ji<cwj> H = a("strong_regeneration", new cwj("regeneration", new brx(brz.j, 450, 1)));
+   public static final ji<cwj> I = a("strength", new cwj(new brx(brz.e, 3600)));
+   public static final ji<cwj> J = a("long_strength", new cwj("strength", new brx(brz.e, 9600)));
+   public static final ji<cwj> K = a("strong_strength", new cwj("strength", new brx(brz.e, 1800, 1)));
+   public static final ji<cwj> L = a("weakness", new cwj(new brx(brz.r, 1800)));
+   public static final ji<cwj> M = a("long_weakness", new cwj("weakness", new brx(brz.r, 4800)));
+   public static final ji<cwj> N = a("luck", new cwj("luck", new brx(brz.z, 6000)));
+   public static final ji<cwj> O = a("slow_falling", new cwj(new brx(brz.B, 1800)));
+   public static final ji<cwj> P = a("long_slow_falling", new cwj("slow_falling", new brx(brz.B, 4800)));
+   public static final ji<cwj> Q = a("wind_charged", new cwj("wind_charged", new brx(brz.J, 3600)).a(cpi.c));
+   public static final ji<cwj> R = a("weaving", new cwj("weaving", new brx(brz.K, 3600)).a(cpi.c));
+   public static final ji<cwj> S = a("oozing", new cwj("oozing", new brx(brz.L, 3600)).a(cpi.c));
+   public static final ji<cwj> T = a("infested", new cwj("infested", new brx(brz.M, 3600)).a(cpi.c));
 
-public final class cwm implements Iterable<ctq> {
-   private static final int d = 256;
-   public static final cwm a = new cwm(jg.a());
-   public static final Codec<cwm> b = cwm.a.a.sizeLimitedListOf(256).xmap(cwm::b, cwm::c);
-   public static final yv<wi, cwm> c = ctq.e.a(yt.c(256)).a(cwm::new, $$0 -> $$0.e);
-   private final jg<ctq> e;
-
-   private cwm(jg<ctq> $$0) {
-      this.e = $$0;
+   private static ji<cwj> a(String $$0, cwj $$1) {
+      return jv.b(lp.i, new alb($$0), $$1);
    }
 
-   private cwm(int $$0) {
-      this(jg.a($$0, ctq.i));
-   }
-
-   private cwm(List<ctq> $$0) {
-      this($$0.size());
-
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         this.e.set($$1, $$0.get($$1));
-      }
-   }
-
-   private static cwm b(List<cwm.a> $$0) {
-      int $$1 = $$0.stream().mapToInt(cwm.a::a).max().orElse(-1);
-      cwm $$2 = new cwm($$1 + 1);
-
-      for (cwm.a $$3 : $$0) {
-         $$2.e.set($$3.a(), $$3.b());
-      }
-
-      return $$2;
-   }
-
-   public static cwm a(List<ctq> $$0) {
-      int $$1 = c($$0);
-      if ($$1 == 0) {
-         return a;
-      } else {
-         cwm $$2 = new cwm($$1);
-
-         for (int $$3 = 0; $$3 < $$1; $$3++) {
-            $$2.e.set($$3, $$0.get($$3).s());
-         }
-
-         return $$2;
-      }
-   }
-
-   private static int c(List<ctq> $$0) {
-      for (int $$1 = $$0.size() - 1; $$1 >= 0; $$1--) {
-         if (!$$0.get($$1).e()) {
-            return $$1 + 1;
-         }
-      }
-
-      return 0;
-   }
-
-   private List<cwm.a> c() {
-      List<cwm.a> $$0 = new ArrayList<>();
-
-      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
-         ctq $$2 = this.e.get($$1);
-         if (!$$2.e()) {
-            $$0.add(new cwm.a($$1, $$2));
-         }
-      }
-
-      return $$0;
-   }
-
-   public void a(jg<ctq> $$0) {
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         ctq $$2 = $$1 < this.e.size() ? this.e.get($$1) : ctq.i;
-         $$0.set($$1, $$2.s());
-      }
-   }
-
-   public ctq a() {
-      return this.e.isEmpty() ? ctq.i : this.e.get(0).s();
-   }
-
-   public Stream<ctq> b() {
-      return this.e.stream().filter($$0 -> !$$0.e()).map(ctq::s);
-   }
-
-   @Override
-   public Iterator<ctq> iterator() {
-      return Iterators.transform(Iterators.filter(this.e.iterator(), $$0 -> !$$0.e()), ctq::s);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof cwm $$1 && ctq.a(this.e, $$1.e)) {
-            return true;
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return ctq.a(this.e);
-   }
-
-   static record a(int b, ctq c) {
-      public static final Codec<cwm.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.intRange(0, 255).fieldOf("slot").forGetter(cwm.a::a), ctq.a.fieldOf("item").forGetter(cwm.a::b)).apply($$0, cwm.a::new)
-      );
-
-      public int a() {
-         return this.b;
-      }
-
-      public ctq b() {
-         return this.c;
-      }
+   public static ji<cwj> a(jv<cwj> $$0) {
+      return a;
    }
 }

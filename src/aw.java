@@ -3,26 +3,26 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class aw extends df<aw.a> {
+public class aw extends dr<aw.a> {
    @Override
    public Codec<aw.a> a() {
       return aw.a.a;
    }
 
-   public void a(aqo $$0, ceg $$1, ceg $$2, @Nullable brq $$3) {
-      eph $$4 = br.b($$0, $$1);
-      eph $$5 = br.b($$0, $$2);
-      eph $$6 = $$3 != null ? br.b($$0, $$3) : null;
+   public void a(arc $$0, cfa $$1, cfa $$2, @Nullable bsj $$3) {
+      eqd $$4 = bu.b($$0, $$1);
+      eqd $$5 = bu.b($$0, $$2);
+      eqd $$6 = $$3 != null ? bu.b($$0, $$3) : null;
       this.a($$0, $$3x -> $$3x.a($$4, $$5, $$6));
    }
 
-   public static record a(Optional<bc> b, Optional<bc> c, Optional<bc> d, Optional<bc> e) implements df.a {
+   public static record a(Optional<bf> b, Optional<bf> c, Optional<bf> d, Optional<bf> e) implements dr.a {
       public static final Codec<aw.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  br.b.optionalFieldOf("player").forGetter(aw.a::a),
-                  br.b.optionalFieldOf("parent").forGetter(aw.a::c),
-                  br.b.optionalFieldOf("partner").forGetter(aw.a::d),
-                  br.b.optionalFieldOf("child").forGetter(aw.a::e)
+                  bu.b.optionalFieldOf("player").forGetter(aw.a::a),
+                  bu.b.optionalFieldOf("parent").forGetter(aw.a::c),
+                  bu.b.optionalFieldOf("partner").forGetter(aw.a::d),
+                  bu.b.optionalFieldOf("child").forGetter(aw.a::e)
                )
                .apply($$0, aw.a::new)
       );
@@ -31,32 +31,32 @@ public class aw extends df<aw.a> {
          return am.p.a(new aw.a(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty()));
       }
 
-      public static an<aw.a> a(br.a $$0) {
-         return am.p.a(new aw.a(Optional.empty(), Optional.empty(), Optional.empty(), Optional.of(br.a($$0))));
+      public static an<aw.a> a(bu.a $$0) {
+         return am.p.a(new aw.a(Optional.empty(), Optional.empty(), Optional.empty(), Optional.of(bu.a($$0))));
       }
 
-      public static an<aw.a> a(Optional<br> $$0, Optional<br> $$1, Optional<br> $$2) {
-         return am.p.a(new aw.a(Optional.empty(), br.a($$0), br.a($$1), br.a($$2)));
+      public static an<aw.a> a(Optional<bu> $$0, Optional<bu> $$1, Optional<bu> $$2) {
+         return am.p.a(new aw.a(Optional.empty(), bu.a($$0), bu.a($$1), bu.a($$2)));
       }
 
-      public boolean a(eph $$0, eph $$1, @Nullable eph $$2) {
+      public boolean a(eqd $$0, eqd $$1, @Nullable eqd $$2) {
          return !this.e.isPresent() || $$2 != null && this.e.get().a($$2) ? a(this.c, $$0) && a(this.d, $$1) || a(this.c, $$1) && a(this.d, $$0) : false;
       }
 
-      private static boolean a(Optional<bc> $$0, eph $$1) {
+      private static boolean a(Optional<bf> $$0, eqd $$1) {
          return $$0.isEmpty() || $$0.get().a($$1);
       }
 
       @Override
-      public void a(bd $$0) {
-         df.a.super.a($$0);
+      public void a(bg $$0) {
+         dr.a.super.a($$0);
          $$0.a(this.c, ".parent");
          $$0.a(this.d, ".partner");
          $$0.a(this.e, ".child");
       }
 
       @Override
-      public Optional<bc> a() {
+      public Optional<bf> a() {
          return this.b;
       }
    }

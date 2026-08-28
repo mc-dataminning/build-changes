@@ -1,34 +1,31 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class dzp extends dzo {
-   public dzp(Codec<eck> $$0) {
-      super($$0);
+public class dzp extends dym {
+   private final jw a;
+   private final dxt b;
+   private final dyd c;
+   private final dyg.o d;
+
+   public dzp(dxs $$0, jw $$1, dbv $$2, dxt $$3, dyd $$4, dyg.o $$5) {
+      super($$0, $$2);
+      this.a = $$1;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = $$5;
    }
 
-   @Override
-   protected boolean a(dba $$0, aym $$1, io $$2, drd $$3) {
-      int $$4 = $$1.a(3) + 3;
-      int $$5 = $$1.a(3) + 3;
-      int $$6 = $$1.a(3) + 3;
-      int $$7 = $$1.a(3) + 1;
-      io.a $$8 = $$2.j();
+   @Deprecated
+   public Optional<drx> a(Function<iz, ji<dcs>> $$0, dtt $$1, iz $$2, boolean $$3) {
+      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
+   }
 
-      for (int $$9 = 0; $$9 <= $$5; $$9++) {
-         for (int $$10 = 0; $$10 <= $$4; $$10++) {
-            for (int $$11 = 0; $$11 <= $$6; $$11++) {
-               $$8.d($$9 + $$2.u(), $$10 + $$2.v(), $$11 + $$2.w());
-               $$8.c(it.a, $$7);
-               if (($$9 != 0 && $$9 != $$5 || $$10 != 0 && $$10 != $$4)
-                  && ($$11 != 0 && $$11 != $$6 || $$10 != 0 && $$10 != $$4)
-                  && ($$9 != 0 && $$9 != $$5 || $$11 != 0 && $$11 != $$6)
-                  && ($$9 == 0 || $$9 == $$5 || $$10 == 0 || $$10 == $$4 || $$11 == 0 || $$11 == $$6)
-                  && !($$1.i() < 0.1F)
-                  && !this.b($$0, $$1, $$8, $$3)) {
-               }
-            }
-         }
-      }
+   @Deprecated
+   public jw c() {
+      return this.a;
+   }
 
-      return true;
+   public dyd d() {
+      return this.c;
    }
 }

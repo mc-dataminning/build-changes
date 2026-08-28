@@ -1,65 +1,158 @@
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.function.Predicate;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
 
 public class aod {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.c("commands.setblock.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xl.c("commands.random.error.range_too_large"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xl.c("commands.random.error.range_too_small"));
 
-   public static void a(CommandDispatcher<ee> $$0, ea $$1) {
+   public static void a(CommandDispatcher<ep> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("setblock").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("random").then(a("value", false))).then(a("roll", true)))
             .then(
-               ef.a("pos", ga.a())
-                  .then(
-                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ef.a("block", fx.a($$1))
-                                 .executes($$0x -> a((ee)$$0x.getSource(), ga.a($$0x, "pos"), fx.a($$0x, "block"), aod.b.a, null)))
-                              .then(ef.a("destroy").executes($$0x -> a((ee)$$0x.getSource(), ga.a($$0x, "pos"), fx.a($$0x, "block"), aod.b.b, null))))
+               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("reset").requires($$0x -> $$0x.c(2)))
+                     .then(
+                        ((LiteralArgumentBuilder)eq.a("*").executes($$0x -> a((ep)$$0x.getSource())))
                            .then(
-                              ef.a("keep")
-                                 .executes($$0x -> a((ee)$$0x.getSource(), ga.a($$0x, "pos"), fx.a($$0x, "block"), aod.b.a, $$0xx -> $$0xx.c().u($$0xx.d())))
-                           ))
-                        .then(ef.a("replace").executes($$0x -> a((ee)$$0x.getSource(), ga.a($$0x, "pos"), fx.a($$0x, "block"), aod.b.a, null)))
+                              ((RequiredArgumentBuilder)eq.a("seed", IntegerArgumentType.integer())
+                                    .executes($$0x -> a((ep)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "seed"), true, true)))
+                                 .then(
+                                    ((RequiredArgumentBuilder)eq.a("includeWorldSeed", BoolArgumentType.bool())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (ep)$$0x.getSource(),
+                                                   IntegerArgumentType.getInteger($$0x, "seed"),
+                                                   BoolArgumentType.getBool($$0x, "includeWorldSeed"),
+                                                   true
+                                                )
+                                          ))
+                                       .then(
+                                          eq.a("includeSequenceId", BoolArgumentType.bool())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ep)$$0x.getSource(),
+                                                      IntegerArgumentType.getInteger($$0x, "seed"),
+                                                      BoolArgumentType.getBool($$0x, "includeWorldSeed"),
+                                                      BoolArgumentType.getBool($$0x, "includeSequenceId")
+                                                   )
+                                             )
+                                       )
+                                 )
+                           )
+                     ))
+                  .then(
+                     ((RequiredArgumentBuilder)eq.a("sequence", fq.a()).suggests(aod::a).executes($$0x -> a((ep)$$0x.getSource(), fq.c($$0x, "sequence"))))
+                        .then(
+                           ((RequiredArgumentBuilder)eq.a("seed", IntegerArgumentType.integer())
+                                 .executes($$0x -> a((ep)$$0x.getSource(), fq.c($$0x, "sequence"), IntegerArgumentType.getInteger($$0x, "seed"), true, true)))
+                              .then(
+                                 ((RequiredArgumentBuilder)eq.a("includeWorldSeed", BoolArgumentType.bool())
+                                       .executes(
+                                          $$0x -> a(
+                                                (ep)$$0x.getSource(),
+                                                fq.c($$0x, "sequence"),
+                                                IntegerArgumentType.getInteger($$0x, "seed"),
+                                                BoolArgumentType.getBool($$0x, "includeWorldSeed"),
+                                                true
+                                             )
+                                       ))
+                                    .then(
+                                       eq.a("includeSequenceId", BoolArgumentType.bool())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (ep)$$0x.getSource(),
+                                                   fq.c($$0x, "sequence"),
+                                                   IntegerArgumentType.getInteger($$0x, "seed"),
+                                                   BoolArgumentType.getBool($$0x, "includeWorldSeed"),
+                                                   BoolArgumentType.getBool($$0x, "includeSequenceId")
+                                                )
+                                          )
+                                    )
+                              )
+                        )
                   )
             )
       );
    }
 
-   private static int a(ee $$0, io $$1, fv $$2, aod.b $$3, @Nullable Predicate<drh> $$4) throws CommandSyntaxException {
-      aqn $$5 = $$0.e();
-      if ($$4 != null && !$$4.test(new drh($$5, $$1, true))) {
+   private static LiteralArgumentBuilder<ep> a(String $$0, boolean $$1) {
+      return (LiteralArgumentBuilder<ep>)eq.a($$0)
+         .then(
+            ((RequiredArgumentBuilder)eq.a("range", fn.a()).executes($$1x -> a((ep)$$1x.getSource(), fn.b.a($$1x, "range"), null, $$1)))
+               .then(
+                  ((RequiredArgumentBuilder)eq.a("sequence", fq.a()).suggests(aod::a).requires($$0x -> $$0x.c(2)))
+                     .executes($$1x -> a((ep)$$1x.getSource(), fn.b.a($$1x, "range"), fq.c($$1x, "sequence"), $$1))
+               )
+         );
+   }
+
+   private static CompletableFuture<Suggestions> a(CommandContext<ep> $$0, SuggestionsBuilder $$1) {
+      List<String> $$2 = Lists.newArrayList();
+      ((ep)$$0.getSource()).e().L().a(($$1x, $$2x) -> $$2.add($$1x.toString()));
+      return eu.b($$2, $$1);
+   }
+
+   private static int a(ep $$0, de.d $$1, @Nullable alb $$2, boolean $$3) throws CommandSyntaxException {
+      azc $$4;
+      if ($$2 != null) {
+         $$4 = $$0.e().a($$2);
+      } else {
+         $$4 = $$0.e().E_();
+      }
+
+      int $$6 = $$1.a().orElse(Integer.MIN_VALUE);
+      int $$7 = $$1.b().orElse(Integer.MAX_VALUE);
+      long $$8 = (long)$$7 - (long)$$6;
+      if ($$8 == 0L) {
+         throw b.create();
+      } else if ($$8 >= 2147483647L) {
          throw a.create();
       } else {
-         boolean $$6;
-         if ($$3 == aod.b.b) {
-            $$5.b($$1, true);
-            $$6 = !$$2.a().i() || !$$5.a_($$1).i();
+         int $$9 = ayu.b($$4, $$6, $$7);
+         if ($$3) {
+            $$0.l().ah().a(xl.a("commands.random.roll", $$0.b(), $$9, $$6, $$7), false);
          } else {
-            doi $$7 = $$5.c_($$1);
-            bpn.a_($$7);
-            $$6 = true;
+            $$0.a(() -> xl.a("commands.random.sample.success", $$9), false);
          }
 
-         if ($$6 && !$$2.a($$5, $$1, 2)) {
-            throw a.create();
-         } else {
-            $$5.b($$1, $$2.a().b());
-            $$0.a(() -> wx.a("commands.setblock.success", $$1.u(), $$1.v(), $$1.w()), true);
-            return 1;
-         }
+         return $$9;
       }
    }
 
-   public interface a {
-      @Nullable
-      fv filter(ehd var1, io var2, fv var3, aqn var4);
+   private static int a(ep $$0, alb $$1) throws CommandSyntaxException {
+      $$0.e().L().b($$1);
+      $$0.a(() -> xl.a("commands.random.reset.success", xl.a($$1)), false);
+      return 1;
    }
 
-   public static enum b {
-      a,
-      b;
+   private static int a(ep $$0, alb $$1, int $$2, boolean $$3, boolean $$4) throws CommandSyntaxException {
+      $$0.e().L().a($$1, $$2, $$3, $$4);
+      $$0.a(() -> xl.a("commands.random.reset.success", xl.a($$1)), false);
+      return 1;
+   }
+
+   private static int a(ep $$0) {
+      int $$1 = $$0.e().L().a();
+      $$0.a(() -> xl.a("commands.random.reset.all.success", $$1), false);
+      return $$1;
+   }
+
+   private static int a(ep $$0, int $$1, boolean $$2, boolean $$3) {
+      bqw $$4 = $$0.e().L();
+      $$4.a($$1, $$2, $$3);
+      int $$5 = $$4.a();
+      $$0.a(() -> xl.a("commands.random.reset.all.success", $$5), false);
+      return $$5;
    }
 }

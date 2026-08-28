@@ -1,25 +1,11 @@
-public class azg<A, B> {
-   private A a;
-   private B b;
+import java.security.SignatureException;
 
-   public azg(A $$0, B $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+@FunctionalInterface
+public interface azg {
+   void update(azg.a var1) throws SignatureException;
 
-   public A a() {
-      return this.a;
-   }
-
-   public void a(A $$0) {
-      this.a = $$0;
-   }
-
-   public B b() {
-      return this.b;
-   }
-
-   public void b(B $$0) {
-      this.b = $$0;
+   @FunctionalInterface
+   public interface a {
+      void update(byte[] var1) throws SignatureException;
    }
 }

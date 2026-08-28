@@ -1,130 +1,258 @@
 import com.google.common.collect.Lists;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
+import com.google.gson.stream.JsonReader;
+import com.mojang.brigadier.Message;
+import com.mojang.serialization.JsonOps;
+import java.io.StringReader;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
-import java.util.Objects;
-import java.util.function.UnaryOperator;
+import java.util.Optional;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class xl implements wx {
-   private final wy c;
-   private final List<wx> d;
-   private xu e;
-   private axr f = axr.a;
+public interface xl extends Message, xq {
+   yi a();
+
+   xm b();
+
+   @Override
+   default String getString() {
+      return xq.super.getString();
+   }
+
+   default String a(int $$0) {
+      StringBuilder $$1 = new StringBuilder();
+      this.a((xq.a)($$2 -> {
+         int $$3 = $$0 - $$1.length();
+         if ($$3 <= 0) {
+            return a;
+         } else {
+            $$1.append($$2.length() <= $$3 ? $$2 : $$2.substring(0, $$3));
+            return Optional.empty();
+         }
+      }));
+      return $$1.toString();
+   }
+
+   List<xl> c();
+
    @Nullable
-   private ty g;
-
-   xl(wy $$0, List<wx> $$1, xu $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   public static xl a(wy $$0) {
-      return new xl($$0, Lists.newArrayList(), xu.a);
-   }
-
-   @Override
-   public wy b() {
-      return this.c;
-   }
-
-   @Override
-   public List<wx> c() {
-      return this.d;
-   }
-
-   public xl b(xu $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   @Override
-   public xu a() {
-      return this.e;
-   }
-
-   public xl f(String $$0) {
-      return this.b(wx.b($$0));
-   }
-
-   public xl b(wx $$0) {
-      this.d.add($$0);
-      return this;
-   }
-
-   public xl a(UnaryOperator<xu> $$0) {
-      this.b($$0.apply(this.a()));
-      return this;
-   }
-
-   public xl c(xu $$0) {
-      this.b($$0.a(this.a()));
-      return this;
-   }
-
-   public xl a(n... $$0) {
-      this.b(this.a().a($$0));
-      return this;
-   }
-
-   public xl a(n $$0) {
-      this.b(this.a().b($$0));
-      return this;
-   }
-
-   public xl b(int $$0) {
-      this.b(this.a().a($$0));
-      return this;
-   }
-
-   @Override
-   public axr g() {
-      ty $$0 = ty.a();
-      if (this.g != $$0) {
-         this.f = $$0.a(this);
-         this.g = $$0;
+   default String d() {
+      if (this.b() instanceof ys $$0 && this.c().isEmpty() && this.a().g()) {
+         return $$0.b();
       }
 
-      return this.f;
+      return null;
+   }
+
+   default xz e() {
+      return xz.a(this.b());
+   }
+
+   default xz f() {
+      return new xz(this.b(), new ArrayList<>(this.c()), this.a());
+   }
+
+   ayg g();
+
+   @Override
+   default <T> Optional<T> a(xq.b<T> $$0, yi $$1) {
+      yi $$2 = this.a().a($$1);
+      Optional<T> $$3 = this.b().a($$0, $$2);
+      if ($$3.isPresent()) {
+         return $$3;
+      } else {
+         for (xl $$4 : this.c()) {
+            Optional<T> $$5 = $$4.a($$0, $$2);
+            if ($$5.isPresent()) {
+               return $$5;
+            }
+         }
+
+         return Optional.empty();
+      }
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
+   default <T> Optional<T> a(xq.a<T> $$0) {
+      Optional<T> $$1 = this.b().a($$0);
+      if ($$1.isPresent()) {
+         return $$1;
+      } else {
+         for (xl $$2 : this.c()) {
+            Optional<T> $$3 = $$2.a($$0);
+            if ($$3.isPresent()) {
+               return $$3;
+            }
+         }
+
+         return Optional.empty();
+      }
+   }
+
+   default List<xl> h() {
+      return this.a(yi.a);
+   }
+
+   default List<xl> a(yi $$0) {
+      List<xl> $$1 = Lists.newArrayList();
+      this.a(($$1x, $$2) -> {
+         if (!$$2.isEmpty()) {
+            $$1.add(b($$2).c($$1x));
+         }
+
+         return Optional.empty();
+      }, $$0);
+      return $$1;
+   }
+
+   default boolean a(xl $$0) {
+      if (this.equals($$0)) {
          return true;
       } else {
-         return !($$0 instanceof xl $$1) ? false : this.c.equals($$1.c) && this.e.equals($$1.e) && this.d.equals($$1.d);
+         List<xl> $$1 = this.h();
+         List<xl> $$2 = $$0.a(this.a());
+         return Collections.indexOfSubList($$1, $$2) != -1;
       }
    }
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.c, this.e, this.d);
+   static xl a(@Nullable String $$0) {
+      return (xl)($$0 != null ? b($$0) : xk.a);
    }
 
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder(this.c.toString());
-      boolean $$1 = !this.e.g();
-      boolean $$2 = !this.d.isEmpty();
-      if ($$1 || $$2) {
-         $$0.append('[');
-         if ($$1) {
-            $$0.append("style=");
-            $$0.append(this.e);
-         }
+   static xz b(String $$0) {
+      return xz.a(ys.a($$0));
+   }
 
-         if ($$1 && $$2) {
-            $$0.append(", ");
-         }
+   static xz c(String $$0) {
+      return xz.a(new yw($$0, null, yw.a));
+   }
 
-         if ($$2) {
-            $$0.append("siblings=");
-            $$0.append(this.d);
-         }
+   static xz a(String $$0, Object... $$1) {
+      return xz.a(new yw($$0, null, $$1));
+   }
 
-         $$0.append(']');
+   static xz b(String $$0, Object... $$1) {
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         Object $$3 = $$1[$$2];
+         if (!yw.a($$3) && !($$3 instanceof xl)) {
+            $$1[$$2] = String.valueOf($$3);
+         }
       }
 
-      return $$0.toString();
+      return a($$0, $$1);
+   }
+
+   static xz a(String $$0, @Nullable String $$1) {
+      return xz.a(new yw($$0, $$1, yw.a));
+   }
+
+   static xz a(String $$0, @Nullable String $$1, Object... $$2) {
+      return xz.a(new yw($$0, $$1, $$2));
+   }
+
+   static xz i() {
+      return xz.a(ys.c);
+   }
+
+   static xz d(String $$0) {
+      return xz.a(new yp($$0));
+   }
+
+   static xz a(String $$0, boolean $$1, Optional<xl> $$2, yn $$3) {
+      return xz.a(new yr($$0, $$1, $$2, $$3));
+   }
+
+   static xz b(String $$0, String $$1) {
+      return xz.a(new yt($$0, $$1));
+   }
+
+   static xz a(String $$0, Optional<xl> $$1) {
+      return xz.a(new yu($$0, $$1));
+   }
+
+   static xl a(Date $$0) {
+      return b($$0.toString());
+   }
+
+   static xl a(Message $$0) {
+      return (xl)($$0 instanceof xl $$1 ? $$1 : b($$0.getString()));
+   }
+
+   static xl a(UUID $$0) {
+      return b($$0.toString());
+   }
+
+   static xl a(alb $$0) {
+      return b($$0.toString());
+   }
+
+   static xl a(dba $$0) {
+      return b($$0.toString());
+   }
+
+   public static class a {
+      private static final Gson a = new GsonBuilder().disableHtmlEscaping().create();
+
+      private a() {
+      }
+
+      static xz b(JsonElement $$0, jk.a $$1) {
+         return (xz)xn.a.parse($$1.a(JsonOps.INSTANCE), $$0).getOrThrow(JsonParseException::new);
+      }
+
+      static JsonElement b(xl $$0, jk.a $$1) {
+         return (JsonElement)xn.a.encodeStart($$1.a(JsonOps.INSTANCE), $$0).getOrThrow(JsonParseException::new);
+      }
+
+      public static String a(xl $$0, jk.a $$1) {
+         return a.toJson(b($$0, $$1));
+      }
+
+      @Nullable
+      public static xz a(String $$0, jk.a $$1) {
+         JsonElement $$2 = JsonParser.parseString($$0);
+         return $$2 == null ? null : b($$2, $$1);
+      }
+
+      @Nullable
+      public static xz a(@Nullable JsonElement $$0, jk.a $$1) {
+         return $$0 == null ? null : b($$0, $$1);
+      }
+
+      @Nullable
+      public static xz b(String $$0, jk.a $$1) {
+         JsonReader $$2 = new JsonReader(new StringReader($$0));
+         $$2.setLenient(true);
+         JsonElement $$3 = JsonParser.parseReader($$2);
+         return $$3 == null ? null : b($$3, $$1);
+      }
+   }
+
+   public static class b implements JsonDeserializer<xz>, JsonSerializer<xl> {
+      private final jk.a a;
+
+      public b(jk.a $$0) {
+         this.a = $$0;
+      }
+
+      public xz a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         return xl.a.b($$0, this.a);
+      }
+
+      public JsonElement a(xl $$0, Type $$1, JsonSerializationContext $$2) {
+         return xl.a.b($$0, this.a);
+      }
    }
 }

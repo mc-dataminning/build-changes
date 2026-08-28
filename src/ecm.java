@@ -1,25 +1,96 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ecm implements ecd {
-   public static final Codec<ecm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_taller_dripstone").orElse(0.2F).forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_directional_spread").orElse(0.7F).forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius2").orElse(0.5F).forGetter($$0x -> $$0x.d),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius3").orElse(0.5F).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, ecm::new)
-   );
-   public final float b;
-   public final float c;
-   public final float d;
-   public final float e;
+public class ecm extends eat<ede> {
+   private static final je[] a = je.values();
 
-   public ecm(float $$0, float $$1, float $$2, float $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   public ecm(Codec<ede> $$0) {
+      super($$0);
+   }
+
+   @Override
+   public boolean a(eav<ede> $$0) {
+      dco $$1 = $$0.b();
+      iz $$2 = $$0.e();
+      azc $$3 = $$0.d();
+      if (!$$1.u($$2)) {
+         return false;
+      } else {
+         drx $$4 = $$1.a_($$2.c());
+         if (!$$4.a(dew.dV) && !$$4.a(dew.kK)) {
+            return false;
+         } else {
+            this.a($$1, $$3, $$2);
+            this.b($$1, $$3, $$2);
+            return true;
+         }
+      }
+   }
+
+   private void a(dbu $$0, azc $$1, iz $$2) {
+      $$0.a($$2, dew.kK.n(), 2);
+      iz.a $$3 = new iz.a();
+      iz.a $$4 = new iz.a();
+
+      for (int $$5 = 0; $$5 < 200; $$5++) {
+         $$3.a($$2, $$1.a(6) - $$1.a(6), $$1.a(2) - $$1.a(5), $$1.a(6) - $$1.a(6));
+         if ($$0.u($$3)) {
+            int $$6 = 0;
+
+            for (je $$7 : a) {
+               drx $$8 = $$0.a_($$4.a($$3, $$7));
+               if ($$8.a(dew.dV) || $$8.a(dew.kK)) {
+                  $$6++;
+               }
+
+               if ($$6 > 1) {
+                  break;
+               }
+            }
+
+            if ($$6 == 1) {
+               $$0.a($$3, dew.kK.n(), 2);
+            }
+         }
+      }
+   }
+
+   private void b(dbu $$0, azc $$1, iz $$2) {
+      iz.a $$3 = new iz.a();
+
+      for (int $$4 = 0; $$4 < 100; $$4++) {
+         $$3.a($$2, $$1.a(8) - $$1.a(8), $$1.a(2) - $$1.a(7), $$1.a(8) - $$1.a(8));
+         if ($$0.u($$3)) {
+            drx $$5 = $$0.a_($$3.c());
+            if ($$5.a(dew.dV) || $$5.a(dew.kK)) {
+               int $$6 = ayu.a($$1, 1, 8);
+               if ($$1.a(6) == 0) {
+                  $$6 *= 2;
+               }
+
+               if ($$1.a(5) == 0) {
+                  $$6 = 1;
+               }
+
+               int $$7 = 17;
+               int $$8 = 25;
+               a($$0, $$1, $$3, $$6, 17, 25);
+            }
+         }
+      }
+   }
+
+   public static void a(dbu $$0, azc $$1, iz.a $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = 0; $$6 <= $$3; $$6++) {
+         if ($$0.u($$2)) {
+            if ($$6 == $$3 || !$$0.u($$2.d())) {
+               $$0.a($$2, dew.oz.n().a(dij.e, Integer.valueOf(ayu.a($$1, $$4, $$5))), 2);
+               break;
+            }
+
+            $$0.a($$2, dew.oA.n(), 2);
+         }
+
+         $$2.c(je.a);
+      }
    }
 }

@@ -1,23 +1,25 @@
-public class fhe {
-   public static final fhe a = new fhe("Merry X-mas!");
-   public static final fhe b = new fhe("Happy new year!");
-   public static final fhe c = new fhe("OOoooOOOoooo! Spooky!");
-   private static final int d = 123;
-   private static final int e = 69;
-   private final String f;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-   public fhe(String $$0) {
-      this.f = $$0;
+public class fhe {
+   private static final ayg a = ayg.codepoint(32, yi.a);
+
+   private static String a(String $$0) {
+      return ffa.Q().m.K().c() ? $$0 : n.a($$0);
    }
 
-   public void a(ffn $$0, int $$1, ffl $$2, int $$3) {
-      $$0.c().a();
-      $$0.c().a((float)$$1 / 2.0F + 123.0F, 69.0F, 0.0F);
-      $$0.c().a(a.f.rotationDegrees(-20.0F));
-      float $$4 = 1.8F - ayf.e(ayf.a((float)(ac.c() % 1000L) / 1000.0F * (float) (Math.PI * 2)) * 0.1F);
-      $$4 = $$4 * 100.0F / (float)($$2.b(this.f) + 32);
-      $$0.c().b($$4, $$4, $$4);
-      $$0.a($$2, this.f, 0, -8, 16776960 | $$3);
-      $$0.c().b();
+   public static List<ayg> a(xq $$0, int $$1, fgk $$2) {
+      feq $$3 = new feq();
+      $$0.a(($$1x, $$2x) -> {
+         $$3.a(xq.a(a($$2x), $$1x));
+         return Optional.empty();
+      }, yi.a);
+      List<ayg> $$4 = Lists.newArrayList();
+      $$2.b().a($$3.b(), $$1, yi.a, ($$1x, $$2x) -> {
+         ayg $$3x = um.a().a($$1x);
+         $$4.add($$2x ? ayg.composite(a, $$3x) : $$3x);
+      });
+      return (List<ayg>)($$4.isEmpty() ? Lists.newArrayList(new ayg[]{ayg.a}) : $$4);
    }
 }

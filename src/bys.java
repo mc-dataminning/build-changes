@@ -1,32 +1,53 @@
-public class bys extends byq {
-   private final int h;
-   private static final int i = 10;
-   private static final int j = 20;
+import com.mojang.datafixers.kinds.Const;
+import com.mojang.datafixers.kinds.IdF;
+import com.mojang.datafixers.kinds.K1;
+import com.mojang.datafixers.kinds.OptionalBox;
+import com.mojang.datafixers.kinds.Const.Mu;
+import com.mojang.datafixers.util.Unit;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public bys(bss $$0, int $$1) {
-      super($$0);
-      this.h = $$1;
-   }
+public interface bys<F extends K1, Value> {
+   cco<Value> a();
 
-   @Override
-   public void a() {
-      if (this.d > 0) {
-         this.d--;
-         this.i().ifPresent($$0x -> this.a.ba = this.a(this.a.ba, $$0x + 20.0F, this.b));
-         this.h().ifPresent($$0x -> this.a.s(this.a(this.a.dH(), $$0x + 10.0F, this.c)));
-      } else {
-         if (this.a.K().l()) {
-            this.a.s(this.a(this.a.dH(), 0.0F, 5.0F));
-         }
+   ccp b();
 
-         this.a.ba = this.a(this.a.ba, this.a.aY, this.b);
+   @Nullable
+   byr<F, Value> a(bum<?> var1, Optional<Value> var2);
+
+   public static record a<Value>(cco<Value> a) implements bys<Mu<Unit>, Value> {
+      @Override
+      public ccp b() {
+         return ccp.b;
       }
 
-      float $$0 = ayf.g(this.a.ba - this.a.aY);
-      if ($$0 < (float)(-this.h)) {
-         this.a.aY -= 4.0F;
-      } else if ($$0 > (float)this.h) {
-         this.a.aY += 4.0F;
+      @Override
+      public byr<Mu<Unit>, Value> a(bum<?> $$0, Optional<Value> $$1) {
+         return $$1.isPresent() ? null : new byr<>($$0, this.a, Const.create(Unit.INSTANCE));
+      }
+   }
+
+   public static record b<Value>(cco<Value> a) implements bys<com.mojang.datafixers.kinds.IdF.Mu, Value> {
+      @Override
+      public ccp b() {
+         return ccp.a;
+      }
+
+      @Override
+      public byr<com.mojang.datafixers.kinds.IdF.Mu, Value> a(bum<?> $$0, Optional<Value> $$1) {
+         return $$1.isEmpty() ? null : new byr<>($$0, this.a, IdF.create($$1.get()));
+      }
+   }
+
+   public static record c<Value>(cco<Value> a) implements bys<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
+      @Override
+      public ccp b() {
+         return ccp.c;
+      }
+
+      @Override
+      public byr<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> a(bum<?> $$0, Optional<Value> $$1) {
+         return new byr<>($$0, this.a, OptionalBox.create($$1));
       }
    }
 }

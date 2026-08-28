@@ -1,71 +1,277 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.UnaryOperator;
+import it.unimi.dsi.fastutil.longs.LongConsumer;
+import java.util.Spliterators.AbstractSpliterator;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
-public class kb {
-   public static final ka<cwf> a = a("custom_data", $$0 -> $$0.a(cwf.b));
-   public static final ka<Integer> b = a("max_stack_size", $$0 -> $$0.a(axn.a(1, 99)).a(yt.f));
-   public static final ka<Integer> c = a("max_damage", $$0 -> $$0.a(axn.j).a(yt.f));
-   public static final ka<Integer> d = a("damage", $$0 -> $$0.a(axn.i).a(yt.f));
-   public static final ka<cwx> e = a("unbreakable", $$0 -> $$0.a(cwx.a).a(cwx.b));
-   public static final ka<wx> f = a("custom_name", $$0 -> $$0.a(wz.g).a(wz.b));
-   public static final ka<wx> g = a("item_name", $$0 -> $$0.a(wz.g).a(wz.b));
-   public static final ka<cwn> h = a("lore", $$0 -> $$0.a(cwn.c).a(cwn.d));
-   public static final ka<cuk> i = a("rarity", $$0 -> $$0.a(cuk.e).a(cuk.g));
-   public static final ka<czg> j = a("enchantments", $$0 -> $$0.a(czg.c).a(czg.d));
-   public static final ka<crc> k = a("can_place_on", $$0 -> $$0.a(crc.a).a(crc.b));
-   public static final ka<crc> l = a("can_break", $$0 -> $$0.a(crc.a).a(crc.b));
-   public static final ka<cwl> m = a("attribute_modifiers", $$0 -> $$0.a(cwl.b).a(cwl.c));
-   public static final ka<cwg> n = a("custom_model_data", $$0 -> $$0.a(cwg.b).a(cwg.c));
-   public static final ka<azh> o = a("hide_additional_tooltip", $$0 -> $$0.a(Codec.unit(azh.a)).a(yv.a(azh.a)));
-   public static final ka<azh> p = a("hide_tooltip", $$0 -> $$0.a(Codec.unit(azh.a)).a(yv.a(azh.a)));
-   public static final ka<Integer> q = a("repair_cost", $$0 -> $$0.a(axn.i).a(yt.f));
-   public static final ka<azh> r = a("creative_slot_lock", $$0 -> $$0.a(yv.a(azh.a)));
-   public static final ka<Boolean> s = a("enchantment_glint_override", $$0 -> $$0.a(Codec.BOOL).a(yt.b));
-   public static final ka<azh> t = a("intangible_projectile", $$0 -> $$0.a(Codec.unit(azh.a)));
-   public static final ka<cos> u = a("food", $$0 -> $$0.a(cos.a).a(cos.b));
-   public static final ka<azh> v = a("fire_resistant", $$0 -> $$0.a(Codec.unit(azh.a)).a(yv.a(azh.a)));
-   public static final ka<cwv> w = a("tool", $$0 -> $$0.a(cwv.a).a(cwv.b));
-   public static final ka<czg> x = a("stored_enchantments", $$0 -> $$0.a(czg.c).a(czg.d));
-   public static final ka<cwi> y = a("dyed_color", $$0 -> $$0.a(cwi.a).a(cwi.b));
-   public static final ka<cwq> z = a("map_color", $$0 -> $$0.a(cwq.a).a(cwq.b));
-   public static final ka<eoj> A = a("map_id", $$0 -> $$0.a(eoj.a).a(eoj.b));
-   public static final ka<cwp> B = a("map_decorations", $$0 -> $$0.a(cwp.b));
-   public static final ka<cwr> C = a("map_post_processing", $$0 -> $$0.a(cwr.d));
-   public static final ka<cwe> D = a("charged_projectiles", $$0 -> $$0.a(cwe.b).a(cwe.c));
-   public static final ka<cwd> E = a("bundle_contents", $$0 -> $$0.a(cwd.b).a(cwd.c));
-   public static final ka<cvr> F = a("potion_contents", $$0 -> $$0.a(cvr.b).a(cvr.c));
-   public static final ka<cwu> G = a("suspicious_stew_effects", $$0 -> $$0.a(cwu.b).a(cwu.c));
-   public static final ka<cwy> H = a("writable_book_content", $$0 -> $$0.a(cwy.d).a(cwy.e));
-   public static final ka<cwz> I = a("written_book_content", $$0 -> $$0.a(cwz.j).a(cwz.k));
-   public static final ka<cvu> J = a("trim", $$0 -> $$0.a(cvu.a).a(cvu.b));
-   public static final ka<cwh> K = a("debug_stick_state", $$0 -> $$0.a(cwh.b));
-   public static final ka<cwf> L = a("entity_data", $$0 -> $$0.a(cwf.c).a(cwf.d));
-   public static final ka<cwf> M = a("bucket_entity_data", $$0 -> $$0.a(cwf.b).a(cwf.d));
-   public static final ka<cwf> N = a("block_entity_data", $$0 -> $$0.a(cwf.c).a(cwf.d));
-   public static final ka<ix<cti>> O = a("instrument", $$0 -> $$0.a(cti.c).a(cti.d));
-   public static final ka<Integer> P = a("ominous_bottle_amplifier", $$0 -> $$0.a(axn.a(0, 4)).a(yt.f));
-   public static final ka<List<akn>> Q = a("recipes", $$0 -> $$0.a(akn.a.listOf()));
-   public static final ka<cwo> R = a("lodestone_tracker", $$0 -> $$0.a(cwo.a).a(cwo.b));
-   public static final ka<cwj> S = a("firework_explosion", $$0 -> $$0.a(cwj.c).a(cwj.d));
-   public static final ka<cwk> T = a("fireworks", $$0 -> $$0.a(cwk.b).a(cwk.c));
-   public static final ka<cws> U = a("profile", $$0 -> $$0.a(cws.a).a(cws.b));
-   public static final ka<akn> V = a("note_block_sound", $$0 -> $$0.a(akn.a).a(akn.b));
-   public static final ka<dnz> W = a("banner_patterns", $$0 -> $$0.a(dnz.b).a(dnz.c));
-   public static final ka<csj> X = a("base_color", $$0 -> $$0.a(csj.q).a(csj.r));
-   public static final ka<dpm> Y = a("pot_decorations", $$0 -> $$0.a(dpm.b).a(dpm.c));
-   public static final ka<cwm> Z = a("container", $$0 -> $$0.a(cwm.b).a(cwm.c));
-   public static final ka<cwb> aa = a("block_state", $$0 -> $$0.a(cwb.b).a(cwb.c));
-   public static final ka<List<dof.c>> ab = a("bees", $$0 -> $$0.a(dof.c.b).a(dof.c.c.a(yt.a())));
-   public static final ka<bpz> ac = a("lock", $$0 -> $$0.a(bpz.b));
-   public static final ka<cwt> ad = a("container_loot", $$0 -> $$0.a(cwt.a));
-   public static final jx ae = jx.a().a(b, 64).a(h, cwn.a).a(j, czg.a).a(q, 0).a(m, cwl.a).a(i, cuk.a).a();
+public class kb extends kd {
+   public static final int a = 4;
+   public static final int b = 16;
+   public static final int c = 15;
+   public static final int d = 8;
+   public static final int e = 15;
+   private static final int h = 22;
+   private static final int i = 20;
+   private static final int j = 22;
+   private static final long k = 4194303L;
+   private static final long l = 1048575L;
+   private static final long m = 4194303L;
+   private static final int n = 0;
+   private static final int o = 20;
+   private static final int p = 42;
+   private static final int q = 8;
+   private static final int r = 0;
+   private static final int s = 4;
 
-   public static ka<?> a(jk<ka<?>> $$0) {
-      return a;
+   kb(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private static <T> ka<T> a(String $$0, UnaryOperator<ka.a<T>> $$1) {
-      return jk.a(le.as, $$0, $$1.apply(ka.a()).a());
+   public static kb a(int $$0, int $$1, int $$2) {
+      return new kb($$0, $$1, $$2);
+   }
+
+   public static kb a(iz $$0) {
+      return new kb(a($$0.u()), a($$0.v()), a($$0.w()));
+   }
+
+   public static kb a(dba $$0, int $$1) {
+      return new kb($$0.e, $$1, $$0.f);
+   }
+
+   public static kb a(dvx $$0) {
+      return a($$0.dp());
+   }
+
+   public static kb a(js $$0) {
+      return new kb(b($$0.a()), b($$0.b()), b($$0.c()));
+   }
+
+   public static kb a(long $$0) {
+      return new kb(b($$0), c($$0), d($$0));
+   }
+
+   public static kb a(dtt $$0) {
+      return a($$0.f(), $$0.ao());
+   }
+
+   public static long a(long $$0, je $$1) {
+      return a($$0, $$1.j(), $$1.k(), $$1.l());
+   }
+
+   public static long a(long $$0, int $$1, int $$2, int $$3) {
+      return b(b($$0) + $$1, c($$0) + $$2, d($$0) + $$3);
+   }
+
+   public static int a(double $$0) {
+      return a(ayu.a($$0));
+   }
+
+   public static int a(int $$0) {
+      return $$0 >> 4;
+   }
+
+   public static int b(double $$0) {
+      return ayu.a($$0) >> 4;
+   }
+
+   public static int b(int $$0) {
+      return $$0 & 15;
+   }
+
+   public static short b(iz $$0) {
+      int $$1 = b($$0.u());
+      int $$2 = b($$0.v());
+      int $$3 = b($$0.w());
+      return (short)($$1 << 8 | $$3 << 4 | $$2 << 0);
+   }
+
+   public static int a(short $$0) {
+      return $$0 >>> 8 & 15;
+   }
+
+   public static int b(short $$0) {
+      return $$0 >>> 0 & 15;
+   }
+
+   public static int c(short $$0) {
+      return $$0 >>> 4 & 15;
+   }
+
+   public int d(short $$0) {
+      return this.d() + a($$0);
+   }
+
+   public int e(short $$0) {
+      return this.e() + b($$0);
+   }
+
+   public int f(short $$0) {
+      return this.f() + c($$0);
+   }
+
+   public iz g(short $$0) {
+      return new iz(this.d($$0), this.e($$0), this.f($$0));
+   }
+
+   public static int c(int $$0) {
+      return $$0 << 4;
+   }
+
+   public static int a(int $$0, int $$1) {
+      return c($$0) + $$1;
+   }
+
+   public static int b(long $$0) {
+      return (int)($$0 << 0 >> 42);
+   }
+
+   public static int c(long $$0) {
+      return (int)($$0 << 44 >> 44);
+   }
+
+   public static int d(long $$0) {
+      return (int)($$0 << 22 >> 42);
+   }
+
+   public int a() {
+      return this.u();
+   }
+
+   public int b() {
+      return this.v();
+   }
+
+   public int c() {
+      return this.w();
+   }
+
+   public int d() {
+      return c(this.a());
+   }
+
+   public int e() {
+      return c(this.b());
+   }
+
+   public int f() {
+      return c(this.c());
+   }
+
+   public int g() {
+      return a(this.a(), 15);
+   }
+
+   public int h() {
+      return a(this.b(), 15);
+   }
+
+   public int i() {
+      return a(this.c(), 15);
+   }
+
+   public static long e(long $$0) {
+      return b(a(iz.a($$0)), a(iz.b($$0)), a(iz.c($$0)));
+   }
+
+   public static long b(int $$0, int $$1) {
+      return f(b($$0, 0, $$1));
+   }
+
+   public static long f(long $$0) {
+      return $$0 & -1048576L;
+   }
+
+   public iz j() {
+      return new iz(c(this.a()), c(this.b()), c(this.c()));
+   }
+
+   public iz q() {
+      int $$0 = 8;
+      return this.j().b(8, 8, 8);
+   }
+
+   public dba r() {
+      return new dba(this.a(), this.c());
+   }
+
+   public static long c(iz $$0) {
+      return b(a($$0.u()), a($$0.v()), a($$0.w()));
+   }
+
+   public static long b(int $$0, int $$1, int $$2) {
+      long $$3 = 0L;
+      $$3 |= ((long)$$0 & 4194303L) << 42;
+      $$3 |= ((long)$$1 & 1048575L) << 0;
+      return $$3 | ((long)$$2 & 4194303L) << 20;
+   }
+
+   public long s() {
+      return b(this.a(), this.b(), this.c());
+   }
+
+   public kb d(int $$0, int $$1, int $$2) {
+      return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new kb(this.a() + $$0, this.b() + $$1, this.c() + $$2);
+   }
+
+   public Stream<iz> t() {
+      return iz.a(this.d(), this.e(), this.f(), this.g(), this.h(), this.i());
+   }
+
+   public static Stream<kb> a(kb $$0, int $$1) {
+      int $$2 = $$0.a();
+      int $$3 = $$0.b();
+      int $$4 = $$0.c();
+      return a($$2 - $$1, $$3 - $$1, $$4 - $$1, $$2 + $$1, $$3 + $$1, $$4 + $$1);
+   }
+
+   public static Stream<kb> a(dba $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$0.e;
+      int $$5 = $$0.f;
+      return a($$4 - $$1, $$2, $$5 - $$1, $$4 + $$1, $$3 - 1, $$5 + $$1);
+   }
+
+   public static Stream<kb> a(final int $$0, final int $$1, final int $$2, final int $$3, final int $$4, final int $$5) {
+      return StreamSupport.stream(new AbstractSpliterator<kb>((long)(($$3 - $$0 + 1) * ($$4 - $$1 + 1) * ($$5 - $$2 + 1)), 64) {
+         final jb a = new jb($$0, $$1, $$2, $$3, $$4, $$5);
+
+         @Override
+         public boolean tryAdvance(Consumer<? super kb> $$0x) {
+            if (this.a.a()) {
+               $$0.accept(new kb(this.a.b(), this.a.c(), this.a.d()));
+               return true;
+            } else {
+               return false;
+            }
+         }
+      }, false);
+   }
+
+   public static void a(iz $$0, LongConsumer $$1) {
+      a($$0.u(), $$0.v(), $$0.w(), $$1);
+   }
+
+   public static void a(long $$0, LongConsumer $$1) {
+      a(iz.a($$0), iz.b($$0), iz.c($$0), $$1);
+   }
+
+   public static void a(int $$0, int $$1, int $$2, LongConsumer $$3) {
+      int $$4 = a($$0 - 1);
+      int $$5 = a($$0 + 1);
+      int $$6 = a($$1 - 1);
+      int $$7 = a($$1 + 1);
+      int $$8 = a($$2 - 1);
+      int $$9 = a($$2 + 1);
+      if ($$4 == $$5 && $$6 == $$7 && $$8 == $$9) {
+         $$3.accept(b($$4, $$6, $$8));
+      } else {
+         for (int $$10 = $$4; $$10 <= $$5; $$10++) {
+            for (int $$11 = $$6; $$11 <= $$7; $$11++) {
+               for (int $$12 = $$8; $$12 <= $$9; $$12++) {
+                  $$3.accept(b($$10, $$11, $$12));
+               }
+            }
+         }
+      }
    }
 }

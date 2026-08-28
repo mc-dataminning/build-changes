@@ -1,40 +1,40 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class diz extends dea {
-   public static final MapCodec<diz> a = b(diz::new);
-   protected static final evf b = dea.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
+public class diz extends dii implements djl {
+   public static final MapCodec<diz> c = b(diz::new);
 
    @Override
    public MapCodec<diz> a() {
-      return a;
+      return c;
    }
 
-   public diz(drc.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected evf b(drd $$0, daf $$1, io $$2, eur $$3) {
-      return b;
+   protected diz(drw.d $$0) {
+      super($$0, je.b, ewc.b(), true);
    }
 
    @Override
-   protected evf b_(drd $$0, daf $$1, io $$2) {
-      return evc.b();
+   protected dij c() {
+      return (dij)dew.mc;
    }
 
    @Override
-   protected evf c(drd $$0, daf $$1, io $$2, eur $$3) {
-      return evc.b();
+   protected enq b_(drx $$0) {
+      return enr.c.a(false);
    }
 
    @Override
-   protected boolean a(drd $$0, enl $$1) {
+   protected boolean m(drx $$0) {
+      return this.c().m($$0);
+   }
+
+   @Override
+   public boolean a(@Nullable cms $$0, daz $$1, iz $$2, drx $$3, enp $$4) {
       return false;
    }
 
    @Override
-   protected float d(drd $$0, daf $$1, io $$2) {
-      return 0.2F;
+   public boolean a(dbu $$0, iz $$1, drx $$2, enq $$3) {
+      return false;
    }
 }

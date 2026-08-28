@@ -1,11 +1,28 @@
-public class gig extends giz<cgg, ftc<cgg>> {
-   private static final akn a = new akn("textures/entity/goat/goat.png");
+public class gig extends gjy<cjk, ftp<cjk>> {
+   private static final alb a = new alb("textures/entity/creeper/creeper.png");
 
-   public gig(ght.a $$0) {
-      super($$0, new ftc<>($$0.a(fvv.al)), 0.7F);
+   public gig(gis.a $$0) {
+      super($$0, new ftp<>($$0.a(fwu.H)), 0.5F);
+      this.a(new gmh(this, $$0.f()));
    }
 
-   public akn a(cgg $$0) {
+   protected void a(cjk $$0, ezt $$1, float $$2) {
+      float $$3 = $$0.G($$2);
+      float $$4 = 1.0F + ayu.a($$3 * 100.0F) * $$3 * 0.01F;
+      $$3 = ayu.a($$3, 0.0F, 1.0F);
+      $$3 *= $$3;
+      $$3 *= $$3;
+      float $$5 = (1.0F + $$3 * 0.4F) * $$4;
+      float $$6 = (1.0F + $$3 * 0.1F) / $$4;
+      $$1.b($$5, $$6, $$5);
+   }
+
+   protected float a(cjk $$0, float $$1) {
+      float $$2 = $$0.G($$1);
+      return (int)($$2 * 10.0F) % 2 == 0 ? 0.0F : ayu.a($$2, 0.5F, 1.0F);
+   }
+
+   public alb a(cjk $$0) {
       return a;
    }
 }

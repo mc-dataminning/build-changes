@@ -1,23 +1,13 @@
-import com.mojang.serialization.MapCodec;
-import java.util.stream.Stream;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 
-public class egm extends egs {
-   private static final egm c = new egm();
-   public static final MapCodec<egm> a = MapCodec.unit(() -> c);
+public abstract class egm {
+   private static final Codec<Either<dyj, egm>> a = Codec.either(dyj.a, lp.N.q().dispatch(egm::a, egn::codec));
+   public static final Codec<egm> c = a.xmap(
+      $$0 -> (egm)$$0.map(egl::a, $$0x -> $$0x), $$0 -> $$0.a() == egn.a ? Either.left(((egl)$$0).b()) : Either.right($$0)
+   );
 
-   public static egm a() {
-      return c;
-   }
+   public abstract int a(azc var1, dym var2);
 
-   @Override
-   public Stream<io> a_(egq $$0, aym $$1, io $$2) {
-      int $$3 = $$1.a(16) + $$2.u();
-      int $$4 = $$1.a(16) + $$2.w();
-      return Stream.of(new io($$3, $$2.v(), $$4));
-   }
-
-   @Override
-   public egt<?> b() {
-      return egt.m;
-   }
+   public abstract egn<?> a();
 }

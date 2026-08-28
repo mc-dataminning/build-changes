@@ -1,10 +1,8 @@
-public enum aqg {
-   a,
-   b,
-   c,
-   d;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public boolean a(aqg $$0) {
-      return this.ordinal() >= $$0.ordinal();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aqg {
 }

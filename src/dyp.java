@@ -1,25 +1,32 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Codec;
+import java.util.stream.LongStream;
 
-public class dyp implements dyc {
-   public static final MapCodec<dyp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(js.v(16).optionalFieldOf("offset", js.g).forGetter($$0x -> $$0x.e), drd.b.fieldOf("state").forGetter($$0x -> $$0x.f))
-            .apply($$0, dyp::new)
-   );
-   private final js e;
-   private final drd f;
+public class dyp {
+   private long b;
+   private long c;
+   public static final Codec<dyp> a = Codec.LONG_STREAM
+      .comapFlatMap($$0 -> ac.a($$0, 2).map($$0x -> new dyp($$0x[0], $$0x[1])), $$0 -> LongStream.of($$0.b, $$0.c));
 
-   protected dyp(js $$0, drd $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public dyp(dye.a $$0) {
+      this($$0.b(), $$0.c());
    }
 
-   public boolean a(dbu $$0, io $$1) {
-      return this.f.a($$0, $$1.a(this.e));
+   public dyp(long $$0, long $$1) {
+      this.b = $$0;
+      this.c = $$1;
+      if ((this.b | this.c) == 0L) {
+         this.b = -7046029254386353131L;
+         this.c = 7640891576956012809L;
+      }
    }
 
-   @Override
-   public dyd<?> a() {
-      return dyd.g;
+   public long a() {
+      long $$0 = this.b;
+      long $$1 = this.c;
+      long $$2 = Long.rotateLeft($$0 + $$1, 17) + $$0;
+      $$1 ^= $$0;
+      this.b = Long.rotateLeft($$0, 49) ^ $$1 ^ $$1 << 21;
+      this.c = Long.rotateLeft($$1, 28);
+      return $$2;
    }
 }

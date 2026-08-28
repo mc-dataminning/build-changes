@@ -1,21 +1,37 @@
-import javax.annotation.Nullable;
+public class cut extends cuf {
+   private static final int a = 32;
 
-public class cut extends cvb {
-   public cut(ctl.a $$0, dea $$1, dea $$2) {
-      super($$1, $$2, $$0, it.a);
-   }
-
-   public cut(ctl.a $$0, dea $$1, dea $$2, it $$3) {
-      super($$1, $$2, $$0, $$3);
+   public cut(cuf.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(io $$0, daz $$1, @Nullable cly $$2, ctq $$3, drd $$4) {
-      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
-      if (!$$1.B && !$$5 && $$2 != null && $$1.c_($$0) instanceof dps $$6 && $$1.a_($$0).b() instanceof dla $$7) {
-         $$7.a($$2, $$6, true);
+   public cuk a(cuk $$0, dbt $$1, btk $$2) {
+      if ($$2 instanceof arc $$3) {
+         am.A.a($$3, $$0);
+         $$3.b(awg.c.b(this));
       }
 
-      return $$5;
+      $$0.a(1, $$2);
+      if (!$$1.B) {
+         $$2.ew();
+      }
+
+      return $$0.e() ? new cuk(cun.qy) : $$0;
+   }
+
+   @Override
+   public int b(cuk $$0) {
+      return 32;
+   }
+
+   @Override
+   public cwf c(cuk $$0) {
+      return cwf.c;
+   }
+
+   @Override
+   public bqq<cuk> a(dbt $$0, cms $$1, bqo $$2) {
+      return cum.a($$0, $$1, $$2);
    }
 }

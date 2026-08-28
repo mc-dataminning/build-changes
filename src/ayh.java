@@ -1,9 +1,4 @@
+@FunctionalInterface
 public interface ayh {
-   int a();
-
-   String b();
-
-   default wx d() {
-      return wx.c(this.b());
-   }
+   boolean accept(int var1, yi var2, int var3);
 }

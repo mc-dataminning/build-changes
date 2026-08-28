@@ -1,136 +1,68 @@
-import java.util.UUID;
+import com.google.common.collect.ImmutableSet;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cmi extends brw implements btp {
-   public static final int b = 20;
-   public static final int c = 2;
-   public static final int d = 14;
-   private int e;
-   private boolean f;
-   private int g = 22;
-   private boolean h;
+public record cmi(String q, Predicate<ji<cer>> r, Predicate<ji<cer>> s, ImmutableSet<cuf> t, ImmutableSet<deu> u, @Nullable avv v) {
+   public static final Predicate<ji<cer>> a = $$0 -> $$0.a(aww.a);
+   public static final cmi b = a("none", cer.a, a, null);
+   public static final cmi c = a("armorer", ces.a, avw.AV);
+   public static final cmi d = a("butcher", ces.b, avw.AW);
+   public static final cmi e = a("cartographer", ces.c, avw.AX);
+   public static final cmi f = a("cleric", ces.d, avw.AY);
+   public static final cmi g = a("farmer", ces.e, ImmutableSet.of(cun.pw, cun.pv, cun.vl, cun.ry), ImmutableSet.of(dew.cC), avw.AZ);
+   public static final cmi h = a("fisherman", ces.f, avw.Ba);
+   public static final cmi i = a("fletcher", ces.g, avw.Bb);
+   public static final cmi j = a("leatherworker", ces.h, avw.Bc);
+   public static final cmi k = a("librarian", ces.i, avw.Bd);
+   public static final cmi l = a("mason", ces.j, avw.Be);
+   public static final cmi m = a("nitwit", cer.a, cer.a, null);
+   public static final cmi n = a("shepherd", ces.k, avw.Bf);
+   public static final cmi o = a("toolsmith", ces.l, avw.Bg);
+   public static final cmi p = a("weaponsmith", ces.m, avw.Bh);
+
+   @Override
+   public String toString() {
+      return this.q;
+   }
+
+   private static cmi a(String $$0, ala<cer> $$1, @Nullable avv $$2) {
+      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2);
+   }
+
+   private static cmi a(String $$0, Predicate<ji<cer>> $$1, Predicate<ji<cer>> $$2, @Nullable avv $$3) {
+      return a($$0, $$1, $$2, ImmutableSet.of(), ImmutableSet.of(), $$3);
+   }
+
+   private static cmi a(String $$0, ala<cer> $$1, ImmutableSet<cuf> $$2, ImmutableSet<deu> $$3, @Nullable avv $$4) {
+      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2, $$3, $$4);
+   }
+
+   private static cmi a(String $$0, Predicate<ji<cer>> $$1, Predicate<ji<cer>> $$2, ImmutableSet<cuf> $$3, ImmutableSet<deu> $$4, @Nullable avv $$5) {
+      return jv.a(lp.z, new alb($$0), new cmi($$0, $$1, $$2, $$3, $$4, $$5));
+   }
+
+   public String a() {
+      return this.q;
+   }
+
+   public Predicate<ji<cer>> b() {
+      return this.r;
+   }
+
+   public Predicate<ji<cer>> c() {
+      return this.s;
+   }
+
+   public ImmutableSet<cuf> d() {
+      return this.t;
+   }
+
+   public ImmutableSet<deu> e() {
+      return this.u;
+   }
+
    @Nullable
-   private bsq i;
-   @Nullable
-   private UUID j;
-
-   public cmi(bsc<? extends cmi> $$0, daz $$1) {
-      super($$0, $$1);
-   }
-
-   public cmi(daz $$0, double $$1, double $$2, double $$3, float $$4, int $$5, bsq $$6) {
-      this(bsc.K, $$0);
-      this.e = $$5;
-      this.a($$6);
-      this.r($$4 * (180.0F / (float)Math.PI));
-      this.a_($$1, $$2, $$3);
-   }
-
-   @Override
-   protected void a(ajw.a $$0) {
-   }
-
-   public void a(@Nullable bsq $$0) {
-      this.i = $$0;
-      this.j = $$0 == null ? null : $$0.cz();
-   }
-
-   @Nullable
-   public bsq p() {
-      if (this.i == null && this.j != null && this.dP() instanceof aqn) {
-         brw $$0 = ((aqn)this.dP()).a(this.j);
-         if ($$0 instanceof bsq) {
-            this.i = (bsq)$$0;
-         }
-      }
-
-      return this.i;
-   }
-
-   @Override
-   protected void a(ud $$0) {
-      this.e = $$0.h("Warmup");
-      if ($$0.b("Owner")) {
-         this.j = $$0.a("Owner");
-      }
-   }
-
-   @Override
-   protected void b(ud $$0) {
-      $$0.a("Warmup", this.e);
-      if (this.j != null) {
-         $$0.a("Owner", this.j);
-      }
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (this.dP().B) {
-         if (this.h) {
-            this.g--;
-            if (this.g == 14) {
-               for (int $$0 = 0; $$0 < 12; $$0++) {
-                  double $$1 = this.du() + (this.ah.j() * 2.0 - 1.0) * (double)this.dj() * 0.5;
-                  double $$2 = this.dw() + 0.05 + this.ah.j();
-                  double $$3 = this.dA() + (this.ah.j() * 2.0 - 1.0) * (double)this.dj() * 0.5;
-                  double $$4 = (this.ah.j() * 2.0 - 1.0) * 0.3;
-                  double $$5 = 0.3 + this.ah.j() * 0.3;
-                  double $$6 = (this.ah.j() * 2.0 - 1.0) * 0.3;
-                  this.dP().a(ky.f, $$1, $$2 + 1.0, $$3, $$4, $$5, $$6);
-               }
-            }
-         }
-      } else if (--this.e < 0) {
-         if (this.e == -8) {
-            for (bsq $$8 : this.dP().a(bsq.class, this.cK().c(0.2, 0.0, 0.2))) {
-               this.c($$8);
-            }
-         }
-
-         if (!this.f) {
-            this.dP().a(this, (byte)4);
-            this.f = true;
-         }
-
-         if (--this.g < 0) {
-            this.ao();
-         }
-      }
-   }
-
-   private void c(bsq $$0) {
-      bsq $$1 = this.p();
-      if ($$0.bD() && !$$0.cu() && $$0 != $$1) {
-         if ($$1 == null) {
-            $$0.a(this.dQ().o(), 6.0F);
-         } else {
-            if ($$1.s($$0)) {
-               return;
-            }
-
-            $$0.a(this.dQ().c(this, (brw)$$1), 6.0F);
-         }
-      }
-   }
-
-   @Override
-   public void b(byte $$0) {
-      super.b($$0);
-      if ($$0 == 4) {
-         this.h = true;
-         if (!this.aW()) {
-            this.dP().a(this.du(), this.dw(), this.dA(), avi.iB, this.de(), 1.0F, this.ah.i() * 0.2F + 0.85F, false);
-         }
-      }
-   }
-
-   public float a(float $$0) {
-      if (!this.h) {
-         return 0.0F;
-      } else {
-         int $$1 = this.g - 2;
-         return $$1 <= 0 ? 1.0F : 1.0F - ((float)$$1 - $$0) / 20.0F;
-      }
+   public avv f() {
+      return this.v;
    }
 }

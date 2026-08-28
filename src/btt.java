@@ -1,32 +1,83 @@
-public class btt {
-   public static final int a = 64;
-   private final double b;
-   private boolean c;
-   private final String d;
+public abstract class btt extends btm {
+   protected static final float bX = 0.0F;
 
-   protected btt(String $$0, double $$1) {
-      this.b = $$1;
-      this.d = $$0;
+   protected btt(bsv<? extends btt> $$0, dbt $$1) {
+      super($$0, $$1);
    }
 
-   public double a() {
-      return this.b;
+   public float d(iz $$0) {
+      return this.a($$0, this.dP());
    }
 
-   public boolean b() {
-      return this.c;
+   public float a(iz $$0, dbw $$1) {
+      return 0.0F;
    }
 
-   public btt a(boolean $$0) {
-      this.c = $$0;
-      return this;
+   @Override
+   public boolean a(dbu $$0, bto $$1) {
+      return this.a(this.dp(), $$0) >= 0.0F;
    }
 
-   public double a(double $$0) {
-      return $$0;
+   public boolean gm() {
+      return !this.K().l();
    }
 
-   public String c() {
-      return this.d;
+   public boolean gn() {
+      if (this.bD.a(cco.Z)) {
+         return this.bD.c(cco.Z).isPresent();
+      } else {
+         for (cbw $$0 : this.bS.b()) {
+            if ($$0.h() && $$0.k() instanceof cbb) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   protected void gc() {
+      super.gc();
+      bsp $$0 = this.gf();
+      if ($$0 != null && $$0.dP() == this.dP()) {
+         this.a($$0.dp(), 5);
+         float $$1 = this.f($$0);
+         if (this instanceof buh && ((buh)this).y()) {
+            if ($$1 > 10.0F) {
+               this.a(true, true);
+            }
+
+            return;
+         }
+
+         this.F($$1);
+         if ($$1 > 10.0F) {
+            this.a(true, true);
+            this.bS.a(cai.a.a);
+         } else if ($$1 > 6.0F) {
+            double $$2 = ($$0.du() - this.du()) / (double)$$1;
+            double $$3 = ($$0.dw() - this.dw()) / (double)$$1;
+            double $$4 = ($$0.dA() - this.dA()) / (double)$$1;
+            this.h(this.ds().b(Math.copySign($$2 * $$2 * 0.4, $$2), Math.copySign($$3 * $$3 * 0.4, $$3), Math.copySign($$4 * $$4 * 0.4, $$4)));
+            this.cq();
+         } else if (this.go() && !this.gn()) {
+            this.bS.b(cai.a.a);
+            float $$5 = 2.0F;
+            evm $$6 = new evm($$0.du() - this.du(), $$0.dw() - this.dw(), $$0.dA() - this.dA()).d().a((double)Math.max($$1 - 2.0F, 0.0F));
+            this.K().a(this.du() + $$6.c, this.dw() + $$6.d, this.dA() + $$6.e, this.gp());
+         }
+      }
+   }
+
+   protected boolean go() {
+      return true;
+   }
+
+   protected double gp() {
+      return 1.0;
+   }
+
+   protected void F(float $$0) {
    }
 }

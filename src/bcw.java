@@ -1,33 +1,35 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
 import java.util.Optional;
-import java.util.UUID;
 
-public class bcw extends DataFix {
+public class bcw extends bfq {
    public bcw(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+      super($$0, $$1, "EntityHorseSaddleFix", bgs.B, "EntityHorse");
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "EntityStringUuidFix",
-         this.getInputSchema().getType(bga.z),
-         $$0 -> $$0.update(
-               DSL.remainderFinder(),
-               $$0x -> {
-                  Optional<String> $$1 = $$0x.get("UUID").asString().result();
-                  if ($$1.isPresent()) {
-                     UUID $$2 = UUID.fromString($$1.get());
-                     return $$0x.remove("UUID")
-                        .set("UUIDMost", $$0x.createLong($$2.getMostSignificantBits()))
-                        .set("UUIDLeast", $$0x.createLong($$2.getLeastSignificantBits()));
-                  } else {
-                     return $$0x;
-                  }
-               }
-            )
-      );
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bgs.D.typeName(), bid.a()));
+      Type<?> $$2 = this.getInputSchema().getTypeRaw(bgs.t);
+      OpticFinder<?> $$3 = DSL.fieldFinder("SaddleItem", $$2);
+      Optional<? extends Typed<?>> $$4 = $$0.getOptionalTyped($$3);
+      Dynamic<?> $$5 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
+      if ($$4.isEmpty() && $$5.get("Saddle").asBoolean(false)) {
+         Typed<?> $$6 = (Typed<?>)$$2.pointTyped($$0.getOps()).orElseThrow(IllegalStateException::new);
+         $$6 = $$6.set($$1, Pair.of(bgs.D.typeName(), "minecraft:saddle"));
+         Dynamic<?> $$7 = $$5.emptyMap();
+         $$7 = $$7.set("Count", $$7.createByte((byte)1));
+         $$7 = $$7.set("Damage", $$7.createShort((short)0));
+         $$6 = $$6.set(DSL.remainderFinder(), $$7);
+         $$5.remove("Saddle");
+         return $$0.set($$3, $$6).set(DSL.remainderFinder(), $$5);
+      } else {
+         return $$0;
+      }
    }
 }

@@ -1,31 +1,60 @@
-import java.util.function.ToIntFunction;
+public class bra {
+   public static final float a = 1.0F;
+   protected float b = 20.0F;
+   protected long c = azu.a / 20L;
+   protected int d = 0;
+   protected boolean e = true;
+   protected boolean f = false;
 
-class bra extends brc {
-   private final float a;
-   private final ToIntFunction<aym> b;
-
-   protected bra(brd $$0, int $$1, float $$2, ToIntFunction<aym> $$3) {
-      super($$0, $$1, ky.G);
-      this.a = $$2;
-      this.b = $$3;
+   public void a(float $$0) {
+      this.b = Math.max($$0, 1.0F);
+      this.c = (long)((double)azu.a / (double)this.b);
    }
 
-   @Override
-   public void a(bsq $$0, int $$1, bqp $$2, float $$3) {
-      if ($$0.el().i() <= this.a) {
-         int $$4 = this.b.applyAsInt($$0.el());
+   public float f() {
+      return this.b;
+   }
 
-         for (int $$5 = 0; $$5 < $$4; $$5++) {
-            this.a($$0.dP(), $$0.du(), $$0.dw() + 0.5, $$0.dA());
-         }
+   public float g() {
+      return (float)this.c / (float)azu.b;
+   }
+
+   public long h() {
+      return this.c;
+   }
+
+   public boolean i() {
+      return this.e;
+   }
+
+   public boolean j() {
+      return this.d > 0;
+   }
+
+   public void c(int $$0) {
+      this.d = $$0;
+   }
+
+   public int k() {
+      return this.d;
+   }
+
+   public void a(boolean $$0) {
+      this.f = $$0;
+   }
+
+   public boolean l() {
+      return this.f;
+   }
+
+   public void m() {
+      this.e = !this.f || this.d > 0;
+      if (this.d > 0) {
+         this.d--;
       }
    }
 
-   private void a(daz $$0, double $$1, double $$2, double $$3) {
-      cjl $$4 = bsc.aM.a($$0);
-      if ($$4 != null) {
-         $$4.b($$1, $$2, $$3, $$0.E_().i() * 360.0F, 0.0F);
-         $$0.b($$4);
-      }
+   public boolean a(bsp $$0) {
+      return !this.i() && !($$0 instanceof cms) && $$0.cX() <= 0;
    }
 }

@@ -1,73 +1,125 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class buw extends buj<bsz> {
-   public static final int c = 100;
-   public static final double d = 2.5;
-   public static final double e = 3.5;
-   private final Function<bsq, Float> f;
-   private final Function<bsq, Double> g;
+public class buw {
+   public static final int a = 48;
 
-   public buw(Function<bsq, Float> $$0) {
-      this($$0, $$0x -> 2.5);
+   public static bve<btt> a(Predicate<ji<cer>> $$0, cco<jh> $$1, boolean $$2, Optional<Byte> $$3) {
+      return a($$0, $$1, $$1, $$2, $$3);
    }
 
-   public buw(Function<bsq, Float> $$0, Function<bsq, Double> $$1) {
-      super(ac.a(() -> {
-         Builder<cbu<?>, cbv> $$0x = ImmutableMap.builder();
-         $$0x.put(cbu.n, cbv.c);
-         $$0x.put(cbu.m, cbv.c);
-         $$0x.put(cbu.P, cbv.b);
-         $$0x.put(cbu.R, cbv.c);
-         $$0x.put(cbu.O, cbv.a);
-         $$0x.put(cbu.r, cbv.b);
-         $$0x.put(cbu.Z, cbv.b);
-         return $$0x.build();
-      }));
-      this.f = $$0;
-      this.g = $$1;
+   public static bve<btt> a(Predicate<ji<cer>> $$0, cco<jh> $$1, cco<jh> $$2, boolean $$3, Optional<Byte> $$4) {
+      int $$5 = 5;
+      int $$6 = 20;
+      MutableLong $$7 = new MutableLong(0L);
+      Long2ObjectMap<buw.a> $$8 = new Long2ObjectOpenHashMap();
+      bwo<btt> $$9 = byq.a(
+         (Function<byq.b<btt>, ? extends App<byq.c<btt>, byt<btt>>>)($$6x -> $$6x.group($$6x.c($$2)).apply($$6x, $$5xx -> ($$6xx, $$7x, $$8x) -> {
+                  if ($$3 && $$7x.p_()) {
+                     return false;
+                  } else if ($$7.getValue() == 0L) {
+                     $$7.setValue($$6xx.Z() + (long)$$6xx.z.a(20));
+                     return false;
+                  } else if ($$6xx.Z() < $$7.getValue()) {
+                     return false;
+                  } else {
+                     $$7.setValue($$8x + 20L + (long)$$6xx.E_().a(20));
+                     ceo $$9x = $$6xx.y();
+                     $$8.long2ObjectEntrySet().removeIf($$1xxxx -> !((buw.a)$$1xxxx.getValue()).b($$8x));
+                     Predicate<iz> $$10 = $$2xxxx -> {
+                        buw.a $$3xxxx = (buw.a)$$8.get($$2xxxx.a());
+                        if ($$3xxxx == null) {
+                           return true;
+                        } else if (!$$3xxxx.c($$8x)) {
+                           return false;
+                        } else {
+                           $$3xxxx.a($$8x);
+                           return true;
+                        }
+                     };
+                     Set<Pair<ji<cer>, iz>> $$11 = $$9x.c($$0, $$10, $$7x.dp(), 48, ceo.b.a).limit(5L).collect(Collectors.toSet());
+                     eoe $$12 = a($$7x, $$11);
+                     if ($$12 != null && $$12.j()) {
+                        iz $$13 = $$12.l();
+                        $$9x.c($$13).ifPresent($$8xx -> {
+                           $$9x.a($$0, ($$1xxxxx, $$2xxxxx) -> $$2xxxxx.equals($$13), $$13, 1);
+                           $$5xx.a(jh.a($$6xx.af(), $$13));
+                           $$4.ifPresent($$2xxxxx -> $$6xx.a($$7x, $$2xxxxx));
+                           $$8.clear();
+                           agp.c($$6xx, $$13);
+                        });
+                     } else {
+                        for (Pair<ji<cer>, iz> $$14 : $$11) {
+                           $$8.computeIfAbsent(((iz)$$14.getSecond()).a(), $$2xxxx -> new buw.a($$6xx.z, $$8x));
+                        }
+                     }
+
+                     return true;
+                  }
+               }))
+      );
+      return $$2 == $$1 ? $$9 : byq.a((Function<byq.b<btt>, ? extends App<byq.c<btt>, byt<btt>>>)($$2x -> $$2x.group($$2x.c($$1)).apply($$2x, $$1xx -> $$9)));
    }
 
-   protected float a(bsz $$0) {
-      return this.f.apply($$0);
-   }
-
-   private Optional<cly> b(bsz $$0) {
-      return $$0.dS().c(cbu.O);
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   protected boolean a(aqn $$0, bsz $$1, long $$2) {
-      return this.b($$1).isPresent() && !$$1.dS().a(cbu.r) && !$$1.dS().a(cbu.Z);
-   }
-
-   protected void b(aqn $$0, bsz $$1, long $$2) {
-      $$1.dS().a(cbu.R, true);
-   }
-
-   protected void c(aqn $$0, bsz $$1, long $$2) {
-      bts<?> $$3 = $$1.dS();
-      $$3.a(cbu.P, 100);
-      $$3.a(cbu.R, false);
-      $$3.b(cbu.m);
-      $$3.b(cbu.n);
-   }
-
-   protected void d(aqn $$0, bsz $$1, long $$2) {
-      cly $$3 = this.b($$1).get();
-      bts<?> $$4 = $$1.dS();
-      $$4.a(cbu.n, new buu($$3, true));
-      double $$5 = this.g.apply($$1);
-      if ($$1.g($$3) < ayf.k($$5)) {
-         $$4.b(cbu.m);
+   @Nullable
+   public static eoe a(btm $$0, Set<Pair<ji<cer>, iz>> $$1) {
+      if ($$1.isEmpty()) {
+         return null;
       } else {
-         $$4.a(cbu.m, new cbx(new buu($$3, false), this.a($$1), 2));
+         Set<iz> $$2 = new HashSet<>();
+         int $$3 = 1;
+
+         for (Pair<ji<cer>, iz> $$4 : $$1) {
+            $$3 = Math.max($$3, ((cer)((ji)$$4.getFirst()).a()).c());
+            $$2.add((iz)$$4.getSecond());
+         }
+
+         return $$0.K().a($$2, $$3);
+      }
+   }
+
+   static class a {
+      private static final int a = 40;
+      private static final int b = 80;
+      private static final int c = 400;
+      private final azc d;
+      private long e;
+      private long f;
+      private int g;
+
+      a(azc $$0, long $$1) {
+         this.d = $$0;
+         this.a($$1);
+      }
+
+      public void a(long $$0) {
+         this.e = $$0;
+         int $$1 = this.g + this.d.a(40) + 40;
+         this.g = Math.min($$1, 400);
+         this.f = $$0 + (long)this.g;
+      }
+
+      public boolean b(long $$0) {
+         return $$0 - this.e < 400L;
+      }
+
+      public boolean c(long $$0) {
+         return $$0 >= this.f;
+      }
+
+      @Override
+      public String toString() {
+         return "RetryMarker{, previousAttemptAt=" + this.e + ", nextScheduledAttemptAt=" + this.f + ", currentDelay=" + this.g + "}";
       }
    }
 }

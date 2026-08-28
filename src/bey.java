@@ -1,57 +1,35 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import java.util.stream.Stream;
 
-public class bey extends DataFix {
-   public bey(Schema $$0, boolean $$1) {
-      super($$0, $$1);
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      if (!"MobSpawner".equals($$0.get("id").asString(""))) {
-         return $$0;
-      } else {
-         Optional<String> $$1 = $$0.get("EntityId").asString().result();
-         if ($$1.isPresent()) {
-            Dynamic<?> $$2 = (Dynamic<?>)DataFixUtils.orElse($$0.get("SpawnData").result(), $$0.emptyMap());
-            $$2 = $$2.set("id", $$2.createString($$1.get().isEmpty() ? "Pig" : $$1.get()));
-            $$0 = $$0.set("SpawnData", $$2);
-            $$0 = $$0.remove("EntityId");
-         }
-
-         Optional<? extends Stream<? extends Dynamic<?>>> $$3 = $$0.get("SpawnPotentials").asStreamOpt().result();
-         if ($$3.isPresent()) {
-            $$0 = $$0.set("SpawnPotentials", $$0.createList($$3.get().map($$0x -> {
-               Optional<String> $$1x = $$0x.get("Type").asString().result();
-               if ($$1x.isPresent()) {
-                  Dynamic<?> $$2 = ((Dynamic)DataFixUtils.orElse($$0x.get("Properties").result(), $$0x.emptyMap())).set("id", $$0x.createString($$1x.get()));
-                  return $$0x.set("Entity", $$2).remove("Type").remove("Properties");
-               } else {
-                  return $$0x;
-               }
-            })));
-         }
-
-         return $$0;
-      }
+public class bey extends bai {
+   public bey(Schema $$0) {
+      super($$0, bgs.t);
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getOutputSchema().getType(bga.D);
-      return this.fixTypeEverywhereTyped("MobSpawnerEntityIdentifiersFix", this.getInputSchema().getType(bga.D), $$0, $$1 -> {
-         Dynamic<?> $$2 = (Dynamic<?>)$$1.get(DSL.remainderFinder());
-         $$2 = $$2.set("id", $$2.createString("MobSpawner"));
-         DataResult<? extends Pair<? extends Typed<?>, ?>> $$3 = $$0.readTyped(this.a($$2));
-         return $$3.result().isEmpty() ? $$1 : (Typed)((Pair)$$3.result().get()).getFirst();
+      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(bgs.D.typeName(), bid.a()));
+      return this.fixTypeEverywhereTyped("ItemStackUUIDFix", this.getInputSchema().getType(this.a), $$1 -> {
+         OpticFinder<?> $$2 = $$1.getType().findField("tag");
+         return $$1.updateTyped($$2, $$2x -> $$2x.update(DSL.remainderFinder(), $$2xx -> {
+               $$2xx = this.b($$2xx);
+               if ($$1.getOptional($$0).map($$0xxxx -> "minecraft:player_head".equals($$0xxxx.getSecond())).orElse(false)) {
+                  $$2xx = this.c($$2xx);
+               }
+
+               return $$2xx;
+            }));
       });
+   }
+
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      return $$0.update("AttributeModifiers", $$1 -> $$0.createList($$1.asStream().map($$0xx -> (Dynamic)c($$0xx, "UUID", "UUID").orElse($$0xx))));
+   }
+
+   private Dynamic<?> c(Dynamic<?> $$0) {
+      return $$0.update("SkullOwner", $$0x -> a($$0x, "Id", "Id").orElse($$0x));
    }
 }

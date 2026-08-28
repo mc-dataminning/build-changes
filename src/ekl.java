@@ -1,65 +1,42 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class ekl extends eli {
-   public static final MapCodec<ekl> a = MapCodec.unit(() -> ekl.b);
-   public static final ekl b = new ekl();
-   private final Map<dea, dea> c = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(dec.m, dec.pr);
-      $$0.put(dec.cn, dec.pr);
-      $$0.put(dec.b, dec.pv);
-      $$0.put(dec.eH, dec.pw);
-      $$0.put(dec.eI, dec.pw);
-      $$0.put(dec.cQ, dec.ps);
-      $$0.put(dec.ni, dec.ps);
-      $$0.put(dec.nk, dec.pD);
-      $$0.put(dec.fj, dec.pA);
-      $$0.put(dec.ng, dec.pA);
-      $$0.put(dec.jI, dec.pu);
-      $$0.put(dec.nw, dec.pu);
-      $$0.put(dec.jE, dec.pE);
-      $$0.put(dec.jD, dec.pE);
-      $$0.put(dec.jK, dec.pz);
-      $$0.put(dec.nu, dec.pz);
-      $$0.put(dec.nK, dec.pB);
-      $$0.put(dec.nI, dec.pB);
-      $$0.put(dec.fP, dec.pt);
-      $$0.put(dec.fQ, dec.pt);
-      $$0.put(dec.eK, dec.py);
-      $$0.put(dec.eJ, dec.px);
-      $$0.put(dec.eW, dec.eX);
-   });
+public class ekl extends eif {
+   public static final bpd<dde.c> d = bpd.a(
+      new dde.c(bsv.i, 10, 2, 3), new dde.c(bsv.bx, 5, 4, 4), new dde.c(bsv.bq, 8, 5, 5), new dde.c(bsv.aN, 2, 5, 5), new dde.c(bsv.ap, 3, 4, 4)
+   );
+   public static final MapCodec<ekl> e = a(ekl::new);
 
-   private ekl() {
+   public ekl(eif.c $$0) {
+      super($$0);
    }
 
    @Override
-   public ell.c a(dbc $$0, io $$1, io $$2, ell.c $$3, ell.c $$4, elh $$5) {
-      dea $$6 = this.c.get($$4.b().b());
-      if ($$6 == null) {
-         return $$4;
-      } else {
-         drd $$7 = $$4.b();
-         drd $$8 = $$6.n();
-         if ($$7.b(dlu.b)) {
-            $$8 = $$8.a(dlu.b, $$7.c(dlu.b));
-         }
+   public Optional<eif.b> a(eif.a $$0) {
+      dba $$1 = $$0.h();
+      iz $$2 = new iz($$1.d(), 64, $$1.e());
+      return Optional.of(new eif.b($$2, (Consumer<eix>)($$1x -> a($$1x, $$0))));
+   }
 
-         if ($$7.b(dlu.c)) {
-            $$8 = $$8.a(dlu.c, $$7.c(dlu.c));
-         }
+   private static void a(eix $$0, eif.a $$1) {
+      ekk.q $$2 = new ekk.q($$1.f(), $$1.h().a(2), $$1.h().b(2));
+      $$0.a($$2);
+      $$2.a($$2, $$0, $$1.f());
+      List<eij> $$3 = $$2.d;
 
-         if ($$7.b(dld.b)) {
-            $$8 = $$8.a(dld.b, $$7.c(dld.b));
-         }
-
-         return new ell.c($$4.a(), $$8, $$4.c());
+      while (!$$3.isEmpty()) {
+         int $$4 = $$1.f().a($$3.size());
+         eij $$5 = $$3.remove($$4);
+         $$5.a($$2, $$0, $$1.f());
       }
+
+      $$0.a($$1.f(), 48, 70);
    }
 
    @Override
-   protected elk<?> a() {
-      return elk.l;
+   public eio<?> e() {
+      return eio.d;
    }
 }

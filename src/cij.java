@@ -1,121 +1,61 @@
-import javax.annotation.Nullable;
+public class cij extends chz {
+   private static final int b = 100;
+   private static final int c = 10;
+   private static final int d = 20;
+   private static final int e = 150;
+   private static final ceb f = ceb.a().a(150.0);
+   private final ceb g;
+   private int h;
 
-public class cij extends brw implements btp {
-   private static final ajs<Integer> c = ajw.a(cij.class, aju.b);
-   private static final ajs<drd> d = ajw.a(cij.class, aju.i);
-   private static final int e = 80;
-   private static final String f = "block_state";
-   public static final String b = "fuse";
-   @Nullable
-   private bsq g;
-
-   public cij(bsc<? extends cij> $$0, daz $$1) {
-      super($$0, $$1);
-      this.J = true;
-   }
-
-   public cij(daz $$0, double $$1, double $$2, double $$3, @Nullable bsq $$4) {
-      this(bsc.bc, $$0);
-      this.a_($$1, $$2, $$3);
-      double $$5 = $$0.z.j() * (float) (Math.PI * 2);
-      this.o(-Math.sin($$5) * 0.02, 0.2F, -Math.cos($$5) * 0.02);
-      this.b(80);
-      this.L = $$1;
-      this.M = $$2;
-      this.N = $$3;
-      this.g = $$4;
+   public cij(chw $$0) {
+      super($$0);
+      this.g = ceb.a().a(20.0).a($$1 -> Math.abs($$1.dw() - $$0.dw()) <= 10.0);
    }
 
    @Override
-   protected void a(ajw.a $$0) {
-      $$0.a(c, 80);
-      $$0.a(d, dec.ck.n());
-   }
+   public void c() {
+      this.h++;
+      btk $$0 = this.a.dP().a(this.g, this.a, this.a.du(), this.a.dw(), this.a.dA());
+      if ($$0 != null) {
+         if (this.h > 25) {
+            this.a.gn().a(cim.h);
+         } else {
+            evm $$1 = new evm($$0.du() - this.a.du(), 0.0, $$0.dA() - this.a.dA()).d();
+            evm $$2 = new evm((double)ayu.a(this.a.dF() * (float) (Math.PI / 180.0)), 0.0, (double)(-ayu.b(this.a.dF() * (float) (Math.PI / 180.0)))).d();
+            float $$3 = (float)$$2.b($$1);
+            float $$4 = (float)(Math.acos((double)$$3) * 180.0F / (float)Math.PI) + 0.5F;
+            if ($$4 < 0.0F || $$4 > 10.0F) {
+               double $$5 = $$0.du() - this.a.e.du();
+               double $$6 = $$0.dA() - this.a.e.dA();
+               double $$7 = ayu.a(ayu.d(180.0 - ayu.d($$5, $$6) * 180.0F / (float)Math.PI - (double)this.a.dF()), -100.0, 100.0);
+               this.a.cb *= 0.8F;
+               float $$8 = (float)Math.sqrt($$5 * $$5 + $$6 * $$6) + 1.0F;
+               float $$9 = $$8;
+               if ($$8 > 40.0F) {
+                  $$8 = 40.0F;
+               }
 
-   @Override
-   protected brw.b bb() {
-      return brw.b.a;
-   }
-
-   @Override
-   public boolean bz() {
-      return !this.dK();
-   }
-
-   @Override
-   protected double aY() {
-      return 0.04;
-   }
-
-   @Override
-   public void l() {
-      this.ba();
-      this.a(bsv.a, this.ds());
-      this.g(this.ds().a(0.98));
-      if (this.aE()) {
-         this.g(this.ds().d(0.7, -0.5, 0.7));
-      }
-
-      int $$0 = this.u() - 1;
-      this.b($$0);
-      if ($$0 <= 0) {
-         this.ao();
-         if (!this.dP().B) {
-            this.w();
+               this.a.cb += (float)$$7 * (0.7F / $$8 / $$9);
+               this.a.r(this.a.dF() + this.a.cb);
+            }
          }
-      } else {
-         this.bl();
-         if (this.dP().B) {
-            this.dP().a(ky.ae, this.du(), this.dw() + 0.5, this.dA(), 0.0, 0.0, 0.0);
+      } else if (this.h >= 100) {
+         $$0 = this.a.dP().a(f, this.a, this.a.du(), this.a.dw(), this.a.dA());
+         this.a.gn().a(cim.e);
+         if ($$0 != null) {
+            this.a.gn().a(cim.i);
+            this.a.gn().b(cim.i).a(new evm($$0.du(), $$0.dw(), $$0.dA()));
          }
       }
    }
 
-   private void w() {
-      float $$0 = 4.0F;
-      this.dP().a(this, this.du(), this.e(0.0625), this.dA(), 4.0F, daz.a.d);
+   @Override
+   public void d() {
+      this.h = 0;
    }
 
    @Override
-   protected void b(ud $$0) {
-      $$0.a("fuse", (short)this.u());
-      $$0.a("block_state", us.a(this.v()));
-   }
-
-   @Override
-   protected void a(ud $$0) {
-      this.b($$0.g("fuse"));
-      if ($$0.b("block_state", 10)) {
-         this.c(us.a(this.dP().a(lf.f), $$0.p("block_state")));
-      }
-   }
-
-   @Nullable
-   public bsq p() {
-      return this.g;
-   }
-
-   @Override
-   public void w(brw $$0) {
-      super.w($$0);
-      if ($$0 instanceof cij $$1) {
-         this.g = $$1.g;
-      }
-   }
-
-   public void b(int $$0) {
-      this.ao.a(c, $$0);
-   }
-
-   public int u() {
-      return this.ao.a(c);
-   }
-
-   public void c(drd $$0) {
-      this.ao.a(d, $$0);
-   }
-
-   public drd v() {
-      return this.ao.a(d);
+   public cim<cij> i() {
+      return cim.g;
    }
 }

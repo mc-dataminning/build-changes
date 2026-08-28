@@ -1,107 +1,40 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
 public class aow {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.c("commands.trigger.failed.unprimed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wx.c("commands.trigger.failed.invalid"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xl.c("commands.spectate.self"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xl.b("commands.spectate.not_spectator", $$0));
 
-   public static void a(CommandDispatcher<ee> $$0) {
+   public static void a(CommandDispatcher<ep> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)ef.a("trigger")
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("spectate").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((ep)$$0x.getSource(), null, ((ep)$$0x.getSource()).h())))
             .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ef.a("objective", ey.a())
-                        .suggests(($$0x, $$1) -> a((ee)$$0x.getSource(), $$1))
-                        .executes($$0x -> a((ee)$$0x.getSource(), ((ee)$$0x.getSource()).h(), ey.a($$0x, "objective"))))
-                     .then(
-                        ef.a("add")
-                           .then(
-                              ef.a("value", IntegerArgumentType.integer())
-                                 .executes(
-                                    $$0x -> a(
-                                          (ee)$$0x.getSource(),
-                                          ((ee)$$0x.getSource()).h(),
-                                          ey.a($$0x, "objective"),
-                                          IntegerArgumentType.getInteger($$0x, "value")
-                                       )
-                                 )
-                           )
-                     ))
-                  .then(
-                     ef.a("set")
-                        .then(
-                           ef.a("value", IntegerArgumentType.integer())
-                              .executes(
-                                 $$0x -> b(
-                                       (ee)$$0x.getSource(), ((ee)$$0x.getSource()).h(), ey.a($$0x, "objective"), IntegerArgumentType.getInteger($$0x, "value")
-                                    )
-                              )
-                        )
-                  )
+               ((RequiredArgumentBuilder)eq.a("target", fc.a()).executes($$0x -> a((ep)$$0x.getSource(), fc.a($$0x, "target"), ((ep)$$0x.getSource()).h())))
+                  .then(eq.a("player", fc.c()).executes($$0x -> a((ep)$$0x.getSource(), fc.a($$0x, "target"), fc.e($$0x, "player"))))
             )
       );
    }
 
-   public static CompletableFuture<Suggestions> a(ee $$0, SuggestionsBuilder $$1) {
-      evp $$2 = $$0.f();
-      List<String> $$3 = Lists.newArrayList();
-      if ($$2 != null) {
-         evq $$4 = $$0.l().aK();
-
-         for (evi $$5 : $$4.c()) {
-            if ($$5.c() == evt.c) {
-               evm $$6 = $$4.d($$2, $$5);
-               if ($$6 != null && !$$6.b()) {
-                  $$3.add($$5.b());
-               }
-            }
-         }
-      }
-
-      return ej.b($$3, $$1);
-   }
-
-   private static int a(ee $$0, aqo $$1, evi $$2, int $$3) throws CommandSyntaxException {
-      evo $$4 = a($$0.l().aK(), $$1, $$2);
-      int $$5 = $$4.b($$3);
-      $$0.a(() -> wx.a("commands.trigger.add.success", $$2.g(), $$3), true);
-      return $$5;
-   }
-
-   private static int b(ee $$0, aqo $$1, evi $$2, int $$3) throws CommandSyntaxException {
-      evo $$4 = a($$0.l().aK(), $$1, $$2);
-      $$4.a($$3);
-      $$0.a(() -> wx.a("commands.trigger.set.success", $$2.g(), $$3), true);
-      return $$3;
-   }
-
-   private static int a(ee $$0, aqo $$1, evi $$2) throws CommandSyntaxException {
-      evo $$3 = a($$0.l().aK(), $$1, $$2);
-      int $$4 = $$3.b(1);
-      $$0.a(() -> wx.a("commands.trigger.simple.success", $$2.g()), true);
-      return $$4;
-   }
-
-   private static evo a(evq $$0, evp $$1, evi $$2) throws CommandSyntaxException {
-      if ($$2.c() != evt.c) {
-         throw b.create();
+   private static int a(ep $$0, @Nullable bsp $$1, arc $$2) throws CommandSyntaxException {
+      if ($$2 == $$1) {
+         throw a.create();
+      } else if ($$2.e.b() != dbq.d) {
+         throw b.create($$2.O_());
       } else {
-         evm $$3 = $$0.d($$1, $$2);
-         if ($$3 != null && !$$3.b()) {
-            evo $$4 = $$0.c($$1, $$2);
-            $$4.f();
-            return $$4;
+         $$2.d($$1);
+         if ($$1 != null) {
+            $$0.a(() -> xl.a("commands.spectate.success.started", $$1.O_()), false);
          } else {
-            throw a.create();
+            $$0.a(() -> xl.c("commands.spectate.success.stopped"), false);
          }
+
+         return 1;
       }
    }
 }

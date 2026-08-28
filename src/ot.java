@@ -1,46 +1,86 @@
-import com.google.gson.JsonElement;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Encoder;
-import com.mojang.serialization.JsonOps;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import org.slf4j.Logger;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class ot implements ll {
-   private static final Logger d = LogUtils.getLogger();
-   private final ln e;
-   private final CompletableFuture<iz.a> f;
+public class ot implements oo {
+   private final op b;
+   private final cuf c;
+   private final int d;
+   private final jr<cyn> e = jr.a();
+   private final Map<String, an<?>> f = new LinkedHashMap<>();
+   @Nullable
+   private String g;
 
-   public ot(ln $$0, CompletableFuture<iz.a> $$1) {
-      this.f = $$1;
-      this.e = $$0;
+   public ot(op $$0, dbs $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1.r();
+      this.d = $$2;
+   }
+
+   public static ot a(op $$0, dbs $$1) {
+      return new ot($$0, $$1, 1);
+   }
+
+   public static ot a(op $$0, dbs $$1, int $$2) {
+      return new ot($$0, $$1, $$2);
+   }
+
+   public ot a(axb<cuf> $$0) {
+      return this.a(cyn.a($$0));
+   }
+
+   public ot b(dbs $$0) {
+      return this.a($$0, 1);
+   }
+
+   public ot a(dbs $$0, int $$1) {
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         this.a(cyn.a($$0));
+      }
+
+      return this;
+   }
+
+   public ot a(cyn $$0) {
+      return this.a($$0, 1);
+   }
+
+   public ot a(cyn $$0, int $$1) {
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         this.e.add($$0);
+      }
+
+      return this;
+   }
+
+   public ot b(String $$0, an<?> $$1) {
+      this.f.put($$0, $$1);
+      return this;
+   }
+
+   public ot b(@Nullable String $$0) {
+      this.g = $$0;
+      return this;
    }
 
    @Override
-   public CompletableFuture<?> a(lj $$0) {
-      return this.f.thenCompose($$1 -> {
-         DynamicOps<JsonElement> $$2 = $$1.a(JsonOps.INSTANCE);
-         return CompletableFuture.allOf(aki.a.stream().flatMap($$3 -> this.a($$0, $$1, $$2, (aki.c<?>)$$3).stream()).toArray(CompletableFuture[]::new));
-      });
-   }
-
-   private <T> Optional<CompletableFuture<?>> a(lj $$0, iz.a $$1, DynamicOps<JsonElement> $$2, aki.c<T> $$3) {
-      akm<? extends jk<T>> $$4 = $$3.a();
-      return $$1.a($$4).map($$4x -> {
-         ln.a $$5 = this.e.a(ln.b.a, $$4.a().a());
-         return CompletableFuture.allOf($$4x.b().map($$4xx -> a($$5.a($$4xx.h().a()), $$0, $$2, $$3.b(), $$4xx.a())).toArray(CompletableFuture[]::new));
-      });
-   }
-
-   private static <E> CompletableFuture<?> a(Path $$0, lj $$1, DynamicOps<JsonElement> $$2, Encoder<E> $$3, E $$4) {
-      Optional<JsonElement> $$5 = $$3.encodeStart($$2, $$4).resultOrPartial($$1x -> d.error("Couldn't serialize element {}: {}", $$0, $$1x));
-      return $$5.isPresent() ? ll.a($$1, $$5.get(), $$0) : CompletableFuture.completedFuture(null);
+   public cuf a() {
+      return this.c;
    }
 
    @Override
-   public final String a() {
-      return "Registries";
+   public void a(oq $$0, alb $$1) {
+      this.a($$1);
+      ae.a $$2 = $$0.a().a("has_the_recipe", dp.a($$1)).a(aj.a.a($$1)).a(ai.a.b);
+      this.f.forEach($$2::a);
+      cyz $$3 = new cyz(Objects.requireNonNullElse(this.g, ""), oo.a(this.b), new cuk(this.c, this.d), this.e);
+      $$0.a($$1, $$3, $$2.b($$1.d("recipes/" + this.b.a() + "/")));
+   }
+
+   private void a(alb $$0) {
+      if (this.f.isEmpty()) {
+         throw new IllegalStateException("No way of obtaining recipe " + $$0);
+      }
    }
 }

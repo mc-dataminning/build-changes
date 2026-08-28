@@ -1,30 +1,65 @@
-public class cay extends bzo {
-   private final bsz a;
+import java.util.EnumSet;
 
-   public cay(bsz $$0) {
+public class cay extends cai {
+   private final btm a;
+   private btk b;
+   private int c;
+
+   public cay(btm $$0) {
       this.a = $$0;
+      this.a(EnumSet.of(cai.a.a, cai.a.b));
    }
 
    @Override
    public boolean a() {
-      return this.a.aE() && !this.a.dP().b_(this.a.dp()).a(awc.a);
+      btk $$0 = this.a.p();
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.b = $$0;
+         return true;
+      }
    }
 
    @Override
-   public void c() {
-      io $$0 = null;
+   public boolean b() {
+      if (!this.b.bD()) {
+         return false;
+      } else {
+         return this.a.g(this.b) > 225.0 ? false : !this.a.K().l() || this.a();
+      }
+   }
 
-      for (io $$2 : io.b(
-         ayf.a(this.a.du() - 2.0), ayf.a(this.a.dw() - 2.0), ayf.a(this.a.dA() - 2.0), ayf.a(this.a.du() + 2.0), this.a.dv(), ayf.a(this.a.dA() + 2.0)
-      )) {
-         if (this.a.dP().b_($$2).a(awc.a)) {
-            $$0 = $$2;
-            break;
-         }
+   @Override
+   public void d() {
+      this.b = null;
+      this.a.K().n();
+   }
+
+   @Override
+   public boolean R_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      this.a.G().a(this.b, 30.0F, 30.0F);
+      double $$0 = (double)(this.a.dj() * 2.0F * this.a.dj() * 2.0F);
+      double $$1 = this.a.i(this.b.du(), this.b.dw(), this.b.dA());
+      double $$2 = 0.8;
+      if ($$1 > $$0 && $$1 < 16.0) {
+         $$2 = 1.33;
+      } else if ($$1 < 225.0) {
+         $$2 = 0.6;
       }
 
-      if ($$0 != null) {
-         this.a.H().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
+      this.a.K().a(this.b, $$2);
+      this.c = Math.max(this.c - 1, 0);
+      if (!($$1 > $$0)) {
+         if (this.c <= 0) {
+            this.c = 20;
+            this.a.C(this.b);
+         }
       }
    }
 }

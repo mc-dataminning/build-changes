@@ -1,72 +1,82 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class fmf extends flz {
-   private static final int a = 20;
-   private static final int b = 5;
-   private static final int c = 20;
-   private final wx d;
-   private final xc r;
-   private final ImmutableList<fmf.a> s;
-   private fgt u = fgt.a;
-   private int v;
+public class fmf extends fmy {
+   private static final int a = 80;
+   private static final int b = 120;
+   private static final int c = 360;
+   @Nullable
+   private final xl d;
+   private final xl r;
+   private final Runnable s;
+   @Nullable
+   private fhs u;
+   private fgz v;
    private int w;
 
-   protected fmf(wx $$0, List<wx> $$1, ImmutableList<fmf.a> $$2) {
+   public static fmf a(xl $$0, xl $$1, Runnable $$2) {
+      return new fmf($$0, null, $$1, $$2, 0);
+   }
+
+   public static fmf a(xl $$0, xl $$1, xl $$2, Runnable $$3) {
+      return new fmf($$0, $$1, $$2, $$3, 20);
+   }
+
+   protected fmf(xl $$0, @Nullable xl $$1, xl $$2, Runnable $$3, int $$4) {
       super($$0);
-      this.r = xc.a($$1);
-      this.d = ww.a($$0, xa.a($$1, ww.a));
-      this.s = $$2;
+      this.d = $$1;
+      this.r = $$2;
+      this.s = $$3;
+      this.w = $$4;
    }
 
    @Override
-   public wx i() {
-      return this.d;
-   }
-
-   @Override
-   public void aN_() {
-      UnmodifiableIterator $$1 = this.s.iterator();
-
-      while ($$1.hasNext()) {
-         fmf.a $$0 = (fmf.a)$$1.next();
-         this.w = Math.max(this.w, 20 + this.p.a($$0.a) + 20);
+   protected void aN_() {
+      super.aN_();
+      if (this.d != null) {
+         this.u = fhs.a(this.p, this.d, 360);
       }
 
-      int $$1x = 5 + this.w + 5;
-      int $$2 = $$1x * this.s.size();
-      this.u = fgt.a(this.p, this.r, $$2);
-      int $$3 = this.u.a() * 9;
-      this.v = (int)((double)this.o / 2.0 - (double)$$3 / 2.0);
-      int $$4 = this.v + $$3 + 9 * 2;
-      int $$5 = (int)((double)this.n / 2.0 - (double)$$2 / 2.0);
-
-      for (UnmodifiableIterator var6 = this.s.iterator(); var6.hasNext(); $$5 += $$1x) {
-         fmf.a $$6 = (fmf.a)var6.next();
-         this.c(fga.a($$6.a, $$6.b).a($$5, $$4, this.w, 20).a());
-      }
+      int $$0 = 150;
+      int $$1 = 20;
+      int $$2 = this.u != null ? this.u.a() : 1;
+      int $$3 = Math.max($$2, 5) * 9;
+      int $$4 = Math.min(120 + $$3, this.o - 40);
+      this.v = this.c(fgz.a(this.r, $$0x -> this.d()).a((this.n - 150) / 2, $$4, 150, 20).a());
    }
 
    @Override
-   public void a(ffn $$0, int $$1, int $$2, float $$3) {
+   public void e() {
+      if (this.w > 0) {
+         this.w--;
+      }
+
+      this.v.j = this.w == 0;
+   }
+
+   @Override
+   public void a(fgm $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, this.v - 9 * 2, -1);
-      this.u.a($$0, this.n / 2, this.v);
+      $$0.a(this.p, this.l, this.n / 2, 80, 16777215);
+      if (this.u == null) {
+         String $$4 = fmj.a(ac.c());
+         $$0.a(this.p, $$4, this.n / 2, 120, 10526880);
+      } else {
+         this.u.a($$0, this.n / 2, 120);
+      }
    }
 
    @Override
    public boolean aE_() {
-      return false;
+      return this.u != null && this.v.j;
    }
 
-   public static final class a {
-      final wx a;
-      final fga.c b;
+   @Override
+   public void d() {
+      this.s.run();
+   }
 
-      public a(wx $$0, fga.c $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   @Override
+   public xl i() {
+      return xk.a(this.l, this.d != null ? this.d : xk.a);
    }
 }

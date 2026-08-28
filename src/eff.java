@@ -1,41 +1,21 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
 
-public class eff extends efe {
-   public static final MapCodec<eff> b = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eff::new));
+public class eff extends eey {
+   public static final MapCodec<eff> b = drx.b.fieldOf("state").xmap(drw.a::b, deu::n).xmap(eff::new, $$0 -> $$0.c);
+   private final deu c;
 
-   public eff(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public eff(deu $$0) {
+      this.c = $$0;
    }
 
    @Override
-   protected efi<?> a() {
-      return efi.d;
+   protected eez<?> a() {
+      return eez.f;
    }
 
    @Override
-   public List<edp.a> a(dbf $$0, BiConsumer<io, drd> $$1, aym $$2, int $$3, io $$4, ecz $$5) {
-      List<edp.a> $$6 = Lists.newArrayList();
-      $$6.addAll(super.a($$0, $$1, $$2, $$3, $$4, $$5));
-
-      for (int $$7 = $$3 - 2 - $$2.a(4); $$7 > $$3 / 2; $$7 -= 2 + $$2.a(4)) {
-         float $$8 = $$2.i() * (float) (Math.PI * 2);
-         int $$9 = 0;
-         int $$10 = 0;
-
-         for (int $$11 = 0; $$11 < 5; $$11++) {
-            $$9 = (int)(1.5F + ayf.b($$8) * (float)$$11);
-            $$10 = (int)(1.5F + ayf.a($$8) * (float)$$11);
-            io $$12 = $$4.b($$9, $$7 - 3 + $$11 / 2, $$10);
-            this.b($$0, $$1, $$2, $$12, $$5);
-         }
-
-         $$6.add(new edp.a($$4.b($$9, $$7, $$10), -2, false));
-      }
-
-      return $$6;
+   public drx a(azc $$0, iz $$1) {
+      je.a $$2 = je.a.a($$0);
+      return this.c.n().a(dlg.i, $$2);
    }
 }

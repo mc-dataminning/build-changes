@@ -1,26 +1,21 @@
-public record aar(io c, int d) implements aaf {
-   public static final yv<vx, aar> a = aaf.a(aar::a, aar::new);
-   public static final aaf.b<aar> b = aaf.a("debug/poi_ticket_count");
+public record aar(String c) implements aat {
+   public static final zj<wl, aar> a = aat.a(aar::a, aar::new);
+   public static final aat.b<aar> b = aat.a("brand");
 
-   private aar(vx $$0) {
-      this($$0.e(), $$0.readInt());
+   private aar(wl $$0) {
+      this($$0.p());
    }
 
-   private void a(vx $$0) {
+   private void a(wl $$0) {
       $$0.a(this.c);
-      $$0.p(this.d);
    }
 
    @Override
-   public aaf.b<aar> a() {
+   public aat.b<aar> a() {
       return b;
    }
 
-   public io b() {
+   public String b() {
       return this.c;
-   }
-
-   public int c() {
-      return this.d;
    }
 }

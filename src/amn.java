@@ -1,78 +1,132 @@
+import com.google.common.collect.BiMap;
+import com.google.common.collect.ImmutableBiMap;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class amn {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wx.b("commands.enchant.failed.entity", $$0));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wx.b("commands.enchant.failed.itemless", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wx.b("commands.enchant.failed.incompatible", $$0));
-   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> wx.b("commands.enchant.failed.level", $$0, $$1));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wx.c("commands.enchant.failed"));
+   private static final Logger b = LogUtils.getLogger();
+   private static final String c = "localhost";
+   private static final String d = "0.0.0.0";
+   private static final int e = 10000;
+   private static final int f = 100;
+   public static BiMap<String, ala<dbt>> a = ImmutableBiMap.of("o", dbt.h, "n", dbt.i, "e", dbt.j);
+   @Nullable
+   private static amf g;
+   @Nullable
+   private static ame h;
 
-   public static void a(CommandDispatcher<ee> $$0, ea $$1) {
+   public static void a(CommandDispatcher<ep> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("enchant").requires($$0x -> $$0x.c(2)))
-            .then(
-               ef.a("targets", er.b())
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("chase")
                   .then(
-                     ((RequiredArgumentBuilder)ef.a("enchantment", fd.a($$1, lf.u))
-                           .executes($$0x -> a((ee)$$0x.getSource(), er.b($$0x, "targets"), fd.g($$0x, "enchantment"), 1)))
+                     ((LiteralArgumentBuilder)eq.a("follow")
+                           .then(
+                              ((RequiredArgumentBuilder)eq.a("host", StringArgumentType.string())
+                                    .executes($$0x -> b((ep)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), 10000)))
+                                 .then(
+                                    eq.a("port", IntegerArgumentType.integer(1, 65535))
+                                       .executes(
+                                          $$0x -> b(
+                                                (ep)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), IntegerArgumentType.getInteger($$0x, "port")
+                                             )
+                                       )
+                                 )
+                           ))
+                        .executes($$0x -> b((ep)$$0x.getSource(), "localhost", 10000))
+                  ))
+               .then(
+                  ((LiteralArgumentBuilder)eq.a("lead")
                         .then(
-                           ef.a("level", IntegerArgumentType.integer(0))
-                              .executes(
-                                 $$0x -> a(
-                                       (ee)$$0x.getSource(), er.b($$0x, "targets"), fd.g($$0x, "enchantment"), IntegerArgumentType.getInteger($$0x, "level")
+                           ((RequiredArgumentBuilder)eq.a("bind_address", StringArgumentType.string())
+                                 .executes($$0x -> a((ep)$$0x.getSource(), StringArgumentType.getString($$0x, "bind_address"), 10000)))
+                              .then(
+                                 eq.a("port", IntegerArgumentType.integer(1024, 65535))
+                                    .executes(
+                                       $$0x -> a(
+                                             (ep)$$0x.getSource(),
+                                             StringArgumentType.getString($$0x, "bind_address"),
+                                             IntegerArgumentType.getInteger($$0x, "port")
+                                          )
                                     )
                               )
-                        )
-                  )
-            )
+                        ))
+                     .executes($$0x -> a((ep)$$0x.getSource(), "0.0.0.0", 10000))
+               ))
+            .then(eq.a("stop").executes($$0x -> a((ep)$$0x.getSource())))
       );
    }
 
-   private static int a(ee $$0, Collection<? extends brw> $$1, ix<czb> $$2, int $$3) throws CommandSyntaxException {
-      czb $$4 = $$2.a();
-      if ($$3 > $$4.g()) {
-         throw d.create($$3, $$4.g());
+   private static int a(ep $$0) {
+      if (h != null) {
+         h.b();
+         $$0.a(() -> xl.b("You have now stopped chasing"), false);
+         h = null;
+      }
+
+      if (g != null) {
+         g.b();
+         $$0.a(() -> xl.b("You are no longer being chased"), false);
+         g = null;
+      }
+
+      return 0;
+   }
+
+   private static boolean b(ep $$0) {
+      if (g != null) {
+         $$0.b(xl.b("Chase server is already running. Stop it using /chase stop"));
+         return true;
+      } else if (h != null) {
+         $$0.b(xl.b("You are already chasing someone. Stop it using /chase stop"));
+         return true;
       } else {
-         int $$5 = 0;
+         return false;
+      }
+   }
 
-         for (brw $$6 : $$1) {
-            if ($$6 instanceof bsq) {
-               bsq $$7 = (bsq)$$6;
-               ctq $$8 = $$7.eX();
-               if (!$$8.e()) {
-                  if ($$4.b($$8) && czc.a(czc.b($$8).a(), $$4)) {
-                     $$8.a($$4, $$3);
-                     $$5++;
-                  } else if ($$1.size() == 1) {
-                     throw c.create($$8.g().o($$8).getString());
-                  }
-               } else if ($$1.size() == 1) {
-                  throw b.create($$7.af().getString());
-               }
-            } else if ($$1.size() == 1) {
-               throw a.create($$6.af().getString());
-            }
+   private static int a(ep $$0, String $$1, int $$2) {
+      if (b($$0)) {
+         return 0;
+      } else {
+         g = new amf($$1, $$2, $$0.l().ah(), 100);
+
+         try {
+            g.a();
+            $$0.a(() -> xl.b("Chase server is now running on port " + $$2 + ". Clients can follow you using /chase follow <ip> <port>"), false);
+         } catch (IOException var4) {
+            b.error("Failed to start chase server", var4);
+            $$0.b(xl.b("Failed to start chase server on port " + $$2));
+            g = null;
          }
 
-         if ($$5 == 0) {
-            throw e.create();
-         } else {
-            if ($$1.size() == 1) {
-               $$0.a(() -> wx.a("commands.enchant.success.single", $$4.e($$3), $$1.iterator().next().O_()), true);
-            } else {
-               $$0.a(() -> wx.a("commands.enchant.success.multiple", $$4.e($$3), $$1.size()), true);
-            }
+         return 0;
+      }
+   }
 
-            return $$5;
-         }
+   private static int b(ep $$0, String $$1, int $$2) {
+      if (b($$0)) {
+         return 0;
+      } else {
+         h = new ame($$1, $$2, $$0.l());
+         h.a();
+         $$0.a(
+            () -> xl.b(
+                  "You are now chasing "
+                     + $$1
+                     + ":"
+                     + $$2
+                     + ". If that server does '/chase lead' then you will automatically go to the same position. Use '/chase stop' to stop chasing."
+               ),
+            false
+         );
+         return 0;
       }
    }
 }

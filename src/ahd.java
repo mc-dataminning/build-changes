@@ -1,61 +1,34 @@
-public class ahd implements ze<age> {
-   public static final yv<vx, ahd> a = ze.a(ahd::a, ahd::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final float e;
-   private final float f;
+public class ahd implements zs<ags> {
+   public static final zj<wl, ahd> a = zs.a(ahd::a, ahd::new);
+   private final ahd.a b;
 
-   public ahd(brw $$0) {
-      this.b = $$0.du();
-      this.c = $$0.dw();
-      this.d = $$0.dA();
-      this.e = $$0.dF();
-      this.f = $$0.dH();
+   public ahd(ahd.a $$0) {
+      this.b = $$0;
    }
 
-   private ahd(vx $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
+   private ahd(wl $$0) {
+      this.b = $$0.b(ahd.a.class);
    }
 
-   private void a(vx $$0) {
+   private void a(wl $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
    }
 
    @Override
-   public zg<ahd> a() {
-      return agc.bF;
+   public zu<ahd> a() {
+      return agq.bo;
    }
 
-   public void a(age $$0) {
+   public void a(ags $$0) {
       $$0.a(this);
    }
 
-   public double b() {
+   public ahd.a b() {
       return this.b;
    }
 
-   public double e() {
-      return this.c;
-   }
-
-   public double f() {
-      return this.d;
-   }
-
-   public float g() {
-      return this.e;
-   }
-
-   public float h() {
-      return this.f;
+   public static enum a {
+      a,
+      b;
    }
 }

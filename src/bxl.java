@@ -1,104 +1,124 @@
 import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class bxl extends buj<cll> {
-   private static final int c = 80;
-   private long d;
-   private long e;
-   private int f;
-   private Optional<io> g = Optional.empty();
+public class bxl extends bvd<cmf> {
+   private static final int c = 900;
+   private static final int d = 40;
+   @Nullable
+   private cuk e;
+   private final List<cuk> f = Lists.newArrayList();
+   private int g;
+   private int h;
+   private int i;
 
-   public bxl() {
-      super(ImmutableMap.of(cbu.n, cbv.b, cbu.m, cbv.b));
+   public bxl(int $$0, int $$1) {
+      super(ImmutableMap.of(cco.q, ccp.a), $$0, $$1);
    }
 
-   protected boolean a(aqn $$0, cll $$1) {
-      if ($$1.ai % 10 == 0 && (this.e == 0L || this.e + 160L <= (long)$$1.ai)) {
-         if ($$1.y().a_(ctt.ry) <= 0) {
-            return false;
-         } else {
-            this.g = this.b($$0, $$1);
-            return this.g.isPresent();
-         }
-      } else {
+   public boolean a(arb $$0, cmf $$1) {
+      bum<?> $$2 = $$1.dS();
+      if ($$2.c(cco.q).isEmpty()) {
          return false;
+      } else {
+         btk $$3 = $$2.c(cco.q).get();
+         return $$3.ak() == bsv.by && $$1.bD() && $$3.bD() && !$$1.p_() && $$1.g($$3) <= 17.0;
       }
    }
 
-   protected boolean a(aqn $$0, cll $$1, long $$2) {
-      return this.f < 80 && this.g.isPresent();
+   public boolean a(arb $$0, cmf $$1, long $$2) {
+      return this.a($$0, $$1) && this.i > 0 && $$1.dS().c(cco.q).isPresent();
    }
 
-   private Optional<io> b(aqn $$0, cll $$1) {
-      io.a $$2 = new io.a();
-      Optional<io> $$3 = Optional.empty();
-      int $$4 = 0;
+   public void b(arb $$0, cmf $$1, long $$2) {
+      super.d($$0, $$1, $$2);
+      this.d($$1);
+      this.g = 0;
+      this.h = 0;
+      this.i = 40;
+   }
 
-      for (int $$5 = -1; $$5 <= 1; $$5++) {
-         for (int $$6 = -1; $$6 <= 1; $$6++) {
-            for (int $$7 = -1; $$7 <= 1; $$7++) {
-               $$2.a($$1.dp(), $$5, $$6, $$7);
-               if (this.a($$2, $$0)) {
-                  if ($$0.z.a(++$$4) == 0) {
-                     $$3 = Optional.of($$2.i());
-                  }
-               }
-            }
-         }
+   public void c(arb $$0, cmf $$1, long $$2) {
+      btk $$3 = this.d($$1);
+      this.a($$3, $$1);
+      if (!this.f.isEmpty()) {
+         this.e($$1);
+      } else {
+         c($$1);
+         this.i = Math.min(this.i, 40);
       }
 
-      return $$3;
+      this.i--;
    }
 
-   private boolean a(io $$0, aqn $$1) {
-      drd $$2 = $$1.a_($$0);
-      dea $$3 = $$2.b();
-      return $$3 instanceof dfv && !((dfv)$$3).h($$2);
+   public void d(arb $$0, cmf $$1, long $$2) {
+      super.b($$0, $$1, $$2);
+      $$1.dS().b(cco.q);
+      c($$1);
+      this.e = null;
    }
 
-   protected void b(aqn $$0, cll $$1, long $$2) {
-      this.a($$1);
-      $$1.a(bsd.a, new ctq(ctt.ry));
-      this.d = $$2;
-      this.f = 0;
-   }
+   private void a(btk $$0, cmf $$1) {
+      boolean $$2 = false;
+      cuk $$3 = $$0.eX();
+      if (this.e == null || !cuk.b(this.e, $$3)) {
+         this.e = $$3;
+         $$2 = true;
+         this.f.clear();
+      }
 
-   private void a(cll $$0) {
-      this.g.ifPresent($$1 -> {
-         bum $$2 = new bum($$1);
-         $$0.dS().a(cbu.n, $$2);
-         $$0.dS().a(cbu.m, new cbx($$2, 0.5F, 1));
-      });
-   }
-
-   protected void c(aqn $$0, cll $$1, long $$2) {
-      $$1.a(bsd.a, ctq.i);
-      this.e = (long)$$1.ai;
-   }
-
-   protected void d(aqn $$0, cll $$1, long $$2) {
-      io $$3 = this.g.get();
-      if ($$2 >= this.d && $$3.a($$1.dn(), 1.0)) {
-         ctq $$4 = ctq.i;
-         bqf $$5 = $$1.y();
-         int $$6 = $$5.b();
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            ctq $$8 = $$5.a($$7);
-            if ($$8.a(ctt.ry)) {
-               $$4 = $$8;
-               break;
-            }
-         }
-
-         if (!$$4.e() && crq.a($$4, $$0, $$3)) {
-            $$0.c(1505, $$3, 15);
-            this.g = this.b($$0, $$1);
+      if ($$2 && !this.e.e()) {
+         this.b($$1);
+         if (!this.f.isEmpty()) {
+            this.i = 900;
             this.a($$1);
-            this.d = $$2 + 40L;
+         }
+      }
+   }
+
+   private void a(cmf $$0) {
+      a($$0, this.f.get(0));
+   }
+
+   private void b(cmf $$0) {
+      for (dar $$1 : $$0.gs()) {
+         if (!$$1.r() && this.a($$1)) {
+            this.f.add($$1.h());
+         }
+      }
+   }
+
+   private boolean a(dar $$0) {
+      return cuk.b(this.e, $$0.b()) || cuk.b(this.e, $$0.c());
+   }
+
+   private static void c(cmf $$0) {
+      $$0.a(bsw.a, cuk.l);
+      $$0.a(bsw.a, 0.085F);
+   }
+
+   private static void a(cmf $$0, cuk $$1) {
+      $$0.a(bsw.a, $$1);
+      $$0.a(bsw.a, 0.0F);
+   }
+
+   private btk d(cmf $$0) {
+      bum<?> $$1 = $$0.dS();
+      btk $$2 = $$1.c(cco.q).get();
+      $$1.a(cco.n, new bvo($$2, true));
+      return $$2;
+   }
+
+   private void e(cmf $$0) {
+      if (this.f.size() >= 2 && ++this.g >= 40) {
+         this.h++;
+         this.g = 0;
+         if (this.h > this.f.size() - 1) {
+            this.h = 0;
          }
 
-         this.f++;
+         a($$0, this.f.get(this.h));
       }
    }
 }

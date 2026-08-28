@@ -1,459 +1,219 @@
-import com.google.common.collect.ImmutableMap;
 import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.BiConsumer;
+import javax.annotation.Nullable;
 
-public class dha extends ddn {
-   public static final MapCodec<dha> c = b(dha::new);
-   public static final int d = 15;
-   public static final dsd e = drt.aw;
-   public static final dru f = djo.b;
-   public static final dru g = djo.c;
-   public static final dru h = djo.d;
-   public static final dru i = djo.e;
-   public static final dru j = djo.f;
-   private static final Map<it, dru> k = djo.h.entrySet().stream().filter($$0 -> $$0.getKey() != it.a).collect(ac.a());
-   private static final evf l = dea.a(0.0, 15.0, 0.0, 16.0, 16.0, 16.0);
-   private static final evf m = dea.a(0.0, 0.0, 0.0, 1.0, 16.0, 16.0);
-   private static final evf n = dea.a(15.0, 0.0, 0.0, 16.0, 16.0, 16.0);
-   private static final evf o = dea.a(0.0, 0.0, 0.0, 16.0, 16.0, 1.0);
-   private static final evf F = dea.a(0.0, 0.0, 15.0, 16.0, 16.0, 16.0);
-   private final Map<drd, evf> G;
-   private static final int H = 60;
-   private static final int I = 30;
-   private static final int J = 15;
-   private static final int K = 5;
-   private static final int L = 100;
-   private static final int M = 60;
-   private static final int N = 20;
-   private static final int O = 5;
-   private final Object2IntMap<dea> P = new Object2IntOpenHashMap();
-   private final Object2IntMap<dea> Q = new Object2IntOpenHashMap();
+public class dha extends deu {
+   public static final MapCodec<dha> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dsm.a.fieldOf("block_set_type").forGetter(dha::b), u()).apply($$0, dha::new)
+   );
+   public static final dsr b = diq.aE;
+   public static final dso c = dsn.u;
+   public static final dsv<dss> d = dsn.be;
+   public static final dso e = dsn.w;
+   public static final dsv<dst> f = dsn.ae;
+   protected static final float g = 3.0F;
+   protected static final ewf h = deu.a(0.0, 0.0, 0.0, 16.0, 16.0, 3.0);
+   protected static final ewf i = deu.a(0.0, 0.0, 13.0, 16.0, 16.0, 16.0);
+   protected static final ewf j = deu.a(13.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final ewf k = deu.a(0.0, 0.0, 0.0, 3.0, 16.0, 16.0);
+   private final dsm l;
 
    @Override
-   public MapCodec<dha> a() {
-      return c;
+   public MapCodec<? extends dha> a() {
+      return a;
    }
 
-   public dha(drc.d $$0) {
-      super($$0, 1.0F);
-      this.k(
-         this.E
-            .b()
-            .a(e, Integer.valueOf(0))
-            .a(f, Boolean.valueOf(false))
-            .a(g, Boolean.valueOf(false))
-            .a(h, Boolean.valueOf(false))
-            .a(i, Boolean.valueOf(false))
-            .a(j, Boolean.valueOf(false))
-      );
-      this.G = ImmutableMap.copyOf(this.E.a().stream().filter($$0x -> $$0x.c(e) == 0).collect(Collectors.toMap(Function.identity(), dha::m)));
+   protected dha(dsm $$0, drw.d $$1) {
+      super($$1.a($$0.g()));
+      this.l = $$0;
+      this.k(this.E.b().a(b, je.c).a(c, Boolean.valueOf(false)).a(d, dss.a).a(e, Boolean.valueOf(false)).a(f, dst.b));
    }
 
-   private static evf m(drd $$0) {
-      evf $$1 = evc.a();
-      if ($$0.c(j)) {
-         $$1 = l;
-      }
-
-      if ($$0.c(f)) {
-         $$1 = evc.a($$1, o);
-      }
-
-      if ($$0.c(h)) {
-         $$1 = evc.a($$1, F);
-      }
-
-      if ($$0.c(g)) {
-         $$1 = evc.a($$1, n);
-      }
-
-      if ($$0.c(i)) {
-         $$1 = evc.a($$1, m);
-      }
-
-      return $$1.c() ? b : $$1;
+   public dsm b() {
+      return this.l;
    }
 
    @Override
-   protected drd a(drd $$0, it $$1, drd $$2, dba $$3, io $$4, io $$5) {
-      return this.a($$0, $$3, $$4) ? this.a($$3, $$4, $$0.c(e)) : dec.a.n();
+   protected ewf a(drx $$0, daz $$1, iz $$2, evr $$3) {
+      je $$4 = $$0.c(b);
+      boolean $$5 = !$$0.c(c);
+      boolean $$6 = $$0.c(d) == dss.b;
+
+      return switch ($$4) {
+         case d -> $$5 ? h : ($$6 ? k : j);
+         case e -> $$5 ? j : ($$6 ? h : i);
+         case c -> $$5 ? i : ($$6 ? j : k);
+         default -> $$5 ? k : ($$6 ? i : h);
+      };
    }
 
    @Override
-   protected evf a(drd $$0, daf $$1, io $$2, eur $$3) {
-      return this.G.get($$0.a(e, Integer.valueOf(0)));
-   }
-
-   @Override
-   public drd a(cxb $$0) {
-      return this.b($$0.q(), $$0.a());
-   }
-
-   protected drd b(daf $$0, io $$1) {
-      io $$2 = $$1.d();
-      drd $$3 = $$0.a_($$2);
-      if (!this.f($$3) && !$$3.d($$0, $$2, it.b)) {
-         drd $$4 = this.n();
-
-         for (it $$5 : it.values()) {
-            dru $$6 = k.get($$5);
-            if ($$6 != null) {
-               $$4 = $$4.a($$6, Boolean.valueOf(this.f($$0.a_($$1.a($$5)))));
-            }
-         }
-
-         return $$4;
+   protected drx a(drx $$0, je $$1, drx $$2, dbu $$3, iz $$4, iz $$5) {
+      dst $$6 = $$0.c(f);
+      if ($$1.o() != je.a.b || $$6 == dst.b != ($$1 == je.b)) {
+         return $$6 == dst.b && $$1 == je.a && !$$0.a($$3, $$4) ? dew.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
       } else {
-         return this.n();
+         return $$2.b() instanceof dha && $$2.c(f) != $$6 ? $$2.a(f, $$6) : dew.a.n();
       }
    }
 
    @Override
-   protected boolean a(drd $$0, dbc $$1, io $$2) {
-      io $$3 = $$2.d();
-      return $$1.a_($$3).d($$1, $$3, it.b) || this.d($$1, $$2);
+   protected void a(drx $$0, dbt $$1, iz $$2, dbl $$3, BiConsumer<cuk, iz> $$4) {
+      if ($$3.j() == dbl.a.d && $$0.c(f) == dst.b && !$$1.x_() && this.l.d() && !$$0.c(e)) {
+         this.a(null, $$1, $$0, $$2, !this.m($$0));
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   protected void a(drd $$0, aqn $$1, io $$2, aym $$3) {
-      $$1.a($$2, this, a($$1.z));
-      if ($$1.aa().b(dav.b)) {
-         if (!$$0.a($$1, $$2)) {
-            $$1.a($$2, false);
-         }
+   public drx a(dbt $$0, iz $$1, drx $$2, cms $$3) {
+      if (!$$0.B && ($$3.f() || !$$3.e($$2))) {
+         dhc.b($$0, $$1, $$2, $$3);
+      }
 
-         drd $$4 = $$1.a_($$2.d());
-         boolean $$5 = $$4.a($$1.D_().q());
-         int $$6 = $$0.c(e);
-         if (!$$5 && $$1.ac() && this.a((daz)$$1, $$2) && $$3.i() < 0.2F + (float)$$6 * 0.03F) {
-            $$1.a($$2, false);
-         } else {
-            int $$7 = Math.min(15, $$6 + $$3.a(3) / 2);
-            if ($$6 != $$7) {
-               $$0 = $$0.a(e, Integer.valueOf($$7));
-               $$1.a($$2, $$0, 4);
-            }
+      return super.a($$0, $$1, $$2, $$3);
+   }
 
-            if (!$$5) {
-               if (!this.d($$1, $$2)) {
-                  io $$8 = $$2.d();
-                  if (!$$1.a_($$8).d($$1, $$8, it.b) || $$6 > 3) {
-                     $$1.a($$2, false);
-                  }
+   @Override
+   protected boolean a(drx $$0, eof $$1) {
+      return switch ($$1) {
+         case a, c -> $$0.c(c);
+         case b -> false;
+      };
+   }
 
-                  return;
-               }
-
-               if ($$6 == 15 && $$3.a(4) == 0 && !this.f($$1.a_($$2.d()))) {
-                  $$1.a($$2, false);
-                  return;
-               }
-            }
-
-            boolean $$9 = $$1.t($$2).a(avw.ad);
-            int $$10 = $$9 ? -50 : 0;
-            this.a($$1, $$2.h(), 300 + $$10, $$3, $$6);
-            this.a($$1, $$2.g(), 300 + $$10, $$3, $$6);
-            this.a($$1, $$2.d(), 250 + $$10, $$3, $$6);
-            this.a($$1, $$2.c(), 250 + $$10, $$3, $$6);
-            this.a($$1, $$2.e(), 300 + $$10, $$3, $$6);
-            this.a($$1, $$2.f(), 300 + $$10, $$3, $$6);
-            io.a $$11 = new io.a();
-
-            for (int $$12 = -1; $$12 <= 1; $$12++) {
-               for (int $$13 = -1; $$13 <= 1; $$13++) {
-                  for (int $$14 = -1; $$14 <= 4; $$14++) {
-                     if ($$12 != 0 || $$14 != 0 || $$13 != 0) {
-                        int $$15 = 100;
-                        if ($$14 > 1) {
-                           $$15 += ($$14 - 1) * 100;
-                        }
-
-                        $$11.a($$2, $$12, $$14, $$13);
-                        int $$16 = this.a((dbc)$$1, $$11);
-                        if ($$16 > 0) {
-                           int $$17 = ($$16 + 40 + $$1.ak().a() * 7) / ($$6 + 30);
-                           if ($$9) {
-                              $$17 /= 2;
-                           }
-
-                           if ($$17 > 0 && $$3.a($$15) <= $$17 && (!$$1.ac() || !this.a((daz)$$1, $$11))) {
-                              int $$18 = Math.min(15, $$6 + $$3.a(5) / 4);
-                              $$1.a($$11, this.a($$1, $$11, $$18), 3);
-                           }
-                        }
-                     }
-                  }
-               }
-            }
-         }
+   @Nullable
+   @Override
+   public drx a(cxv $$0) {
+      iz $$1 = $$0.a();
+      dbt $$2 = $$0.q();
+      if ($$1.v() < $$2.am() - 1 && $$2.a_($$1.c()).a($$0)) {
+         boolean $$3 = $$2.C($$1) || $$2.C($$1.c());
+         return this.n().a(b, $$0.g()).a(d, this.b($$0)).a(e, Boolean.valueOf($$3)).a(c, Boolean.valueOf($$3)).a(f, dst.b);
+      } else {
+         return null;
       }
    }
 
-   protected boolean a(daz $$0, io $$1) {
-      return $$0.r($$1) || $$0.r($$1.g()) || $$0.r($$1.h()) || $$0.r($$1.e()) || $$0.r($$1.f());
+   @Override
+   public void a(dbt $$0, iz $$1, drx $$2, btk $$3, cuk $$4) {
+      $$0.a($$1.c(), $$2.a(f, dst.a), 3);
    }
 
-   private int n(drd $$0) {
-      return $$0.b(drt.C) && $$0.c(drt.C) ? 0 : this.Q.getInt($$0.b());
-   }
-
-   private int o(drd $$0) {
-      return $$0.b(drt.C) && $$0.c(drt.C) ? 0 : this.P.getInt($$0.b());
-   }
-
-   private void a(daz $$0, io $$1, int $$2, aym $$3, int $$4) {
-      int $$5 = this.n($$0.a_($$1));
-      if ($$3.a($$2) < $$5) {
-         drd $$6 = $$0.a_($$1);
-         if ($$3.a($$4 + 10) < 5 && !$$0.r($$1)) {
-            int $$7 = Math.min($$4 + $$3.a(5) / 4, 15);
-            $$0.a($$1, this.a($$0, $$1, $$7), 3);
+   private dss b(cxv $$0) {
+      daz $$1 = $$0.q();
+      iz $$2 = $$0.a();
+      je $$3 = $$0.g();
+      iz $$4 = $$2.c();
+      je $$5 = $$3.i();
+      iz $$6 = $$2.a($$5);
+      drx $$7 = $$1.a_($$6);
+      iz $$8 = $$4.a($$5);
+      drx $$9 = $$1.a_($$8);
+      je $$10 = $$3.h();
+      iz $$11 = $$2.a($$10);
+      drx $$12 = $$1.a_($$11);
+      iz $$13 = $$4.a($$10);
+      drx $$14 = $$1.a_($$13);
+      int $$15 = ($$7.r($$1, $$6) ? -1 : 0) + ($$9.r($$1, $$8) ? -1 : 0) + ($$12.r($$1, $$11) ? 1 : 0) + ($$14.r($$1, $$13) ? 1 : 0);
+      boolean $$16 = $$7.a(this) && $$7.c(f) == dst.b;
+      boolean $$17 = $$12.a(this) && $$12.c(f) == dst.b;
+      if ((!$$16 || $$17) && $$15 <= 0) {
+         if ((!$$17 || $$16) && $$15 >= 0) {
+            int $$18 = $$3.j();
+            int $$19 = $$3.l();
+            evm $$20 = $$0.l();
+            double $$21 = $$20.c - (double)$$2.u();
+            double $$22 = $$20.e - (double)$$2.w();
+            return ($$18 >= 0 || !($$22 < 0.5)) && ($$18 <= 0 || !($$22 > 0.5)) && ($$19 >= 0 || !($$21 > 0.5)) && ($$19 <= 0 || !($$21 < 0.5)) ? dss.a : dss.b;
          } else {
-            $$0.a($$1, false);
+            return dss.a;
          }
-
-         dea $$8 = $$6.b();
-         if ($$8 instanceof dmj) {
-            dmj.a($$0, $$1);
-         }
+      } else {
+         return dss.b;
       }
    }
 
-   private drd a(dba $$0, io $$1, int $$2) {
-      drd $$3 = a($$0, $$1);
-      return $$3.a(dec.cr) ? $$3.a(e, Integer.valueOf($$2)) : $$3;
+   @Override
+   protected bqp a(drx $$0, dbt $$1, iz $$2, cms $$3, evi $$4) {
+      if (!this.l.c()) {
+         return bqp.e;
+      } else {
+         $$0 = $$0.a(c);
+         $$1.a($$2, $$0, 10);
+         this.a($$3, $$1, $$2, $$0.c(c));
+         $$1.a($$3, this.m($$0) ? dwq.h : dwq.d, $$2);
+         return bqp.a($$1.B);
+      }
    }
 
-   private boolean d(daf $$0, io $$1) {
-      for (it $$2 : it.values()) {
-         if (this.f($$0.a_($$1.a($$2)))) {
-            return true;
+   public boolean m(drx $$0) {
+      return $$0.c(c);
+   }
+
+   public void a(@Nullable bsp $$0, dbt $$1, drx $$2, iz $$3, boolean $$4) {
+      if ($$2.a(this) && $$2.c(c) != $$4) {
+         $$1.a($$3, $$2.a(c, Boolean.valueOf($$4)), 10);
+         this.a($$0, $$1, $$3, $$4);
+         $$1.a($$0, $$4 ? dwq.h : dwq.d, $$3);
+      }
+   }
+
+   @Override
+   protected void a(drx $$0, dbt $$1, iz $$2, deu $$3, iz $$4, boolean $$5) {
+      boolean $$6 = $$1.C($$2) || $$1.C($$2.a($$0.c(f) == dst.b ? je.b : je.a));
+      if (!this.n().a($$3) && $$6 != $$0.c(e)) {
+         if ($$6 != $$0.c(c)) {
+            this.a(null, $$1, $$2, $$6);
+            $$1.a(null, $$6 ? dwq.h : dwq.d, $$2);
          }
+
+         $$1.a($$2, $$0.a(e, Boolean.valueOf($$6)).a(c, Boolean.valueOf($$6)), 2);
+      }
+   }
+
+   @Override
+   protected boolean a(drx $$0, dbw $$1, iz $$2) {
+      iz $$3 = $$2.d();
+      drx $$4 = $$1.a_($$3);
+      return $$0.c(f) == dst.b ? $$4.d($$1, $$3, je.b) : $$4.a(this);
+   }
+
+   private void a(@Nullable bsp $$0, dbt $$1, iz $$2, boolean $$3) {
+      $$1.a($$0, $$2, $$3 ? this.l.i() : this.l.h(), avx.e, 1.0F, $$1.E_().i() * 0.1F + 0.9F);
+   }
+
+   @Override
+   protected drx a(drx $$0, dlh $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected drx a(drx $$0, djr $$1) {
+      return $$1 == djr.a ? $$0 : $$0.a($$1.a($$0.c(b))).a(d);
+   }
+
+   @Override
+   protected long a(drx $$0, iz $$1) {
+      return ayu.b($$1.u(), $$1.c($$0.c(f) == dst.b ? 0 : 1).v(), $$1.w());
+   }
+
+   @Override
+   protected void a(dry.a<deu, drx> $$0) {
+      $$0.a(f, b, c, d, e);
+   }
+
+   public static boolean a(dbt $$0, iz $$1) {
+      return n($$0.a_($$1));
+   }
+
+   public static boolean n(drx $$0) {
+      if ($$0.b() instanceof dha $$1 && $$1.b().c()) {
+         return true;
       }
 
       return false;
-   }
-
-   private int a(dbc $$0, io $$1) {
-      if (!$$0.u($$1)) {
-         return 0;
-      } else {
-         int $$2 = 0;
-
-         for (it $$3 : it.values()) {
-            drd $$4 = $$0.a_($$1.a($$3));
-            $$2 = Math.max(this.o($$4), $$2);
-         }
-
-         return $$2;
-      }
-   }
-
-   @Override
-   protected boolean f(drd $$0) {
-      return this.o($$0) > 0;
-   }
-
-   @Override
-   protected void b(drd $$0, daz $$1, io $$2, drd $$3, boolean $$4) {
-      super.b($$0, $$1, $$2, $$3, $$4);
-      $$1.a($$2, this, a($$1.z));
-   }
-
-   private static int a(aym $$0) {
-      return 30 + $$0.a(10);
-   }
-
-   @Override
-   protected void a(dre.a<dea, drd> $$0) {
-      $$0.a(e, f, g, h, i, j);
-   }
-
-   public void a(dea $$0, int $$1, int $$2) {
-      this.P.put($$0, $$1);
-      this.Q.put($$0, $$2);
-   }
-
-   public static void b() {
-      dha $$0 = (dha)dec.cr;
-      $$0.a(dec.n, 5, 20);
-      $$0.a(dec.o, 5, 20);
-      $$0.a(dec.p, 5, 20);
-      $$0.a(dec.q, 5, 20);
-      $$0.a(dec.r, 5, 20);
-      $$0.a(dec.s, 5, 20);
-      $$0.a(dec.t, 5, 20);
-      $$0.a(dec.u, 5, 20);
-      $$0.a(dec.v, 5, 20);
-      $$0.a(dec.w, 5, 20);
-      $$0.a(dec.jt, 5, 20);
-      $$0.a(dec.ju, 5, 20);
-      $$0.a(dec.jv, 5, 20);
-      $$0.a(dec.jw, 5, 20);
-      $$0.a(dec.jx, 5, 20);
-      $$0.a(dec.jy, 5, 20);
-      $$0.a(dec.jz, 5, 20);
-      $$0.a(dec.jA, 5, 20);
-      $$0.a(dec.jB, 5, 20);
-      $$0.a(dec.jC, 5, 20);
-      $$0.a(dec.fh, 5, 20);
-      $$0.a(dec.jV, 5, 20);
-      $$0.a(dec.jW, 5, 20);
-      $$0.a(dec.jX, 5, 20);
-      $$0.a(dec.jY, 5, 20);
-      $$0.a(dec.jZ, 5, 20);
-      $$0.a(dec.ka, 5, 20);
-      $$0.a(dec.kb, 5, 20);
-      $$0.a(dec.kc, 5, 20);
-      $$0.a(dec.dU, 5, 20);
-      $$0.a(dec.kd, 5, 20);
-      $$0.a(dec.ke, 5, 20);
-      $$0.a(dec.kf, 5, 20);
-      $$0.a(dec.kg, 5, 20);
-      $$0.a(dec.kh, 5, 20);
-      $$0.a(dec.ki, 5, 20);
-      $$0.a(dec.kj, 5, 20);
-      $$0.a(dec.kk, 5, 20);
-      $$0.a(dec.cu, 5, 20);
-      $$0.a(dec.fL, 5, 20);
-      $$0.a(dec.fK, 5, 20);
-      $$0.a(dec.fM, 5, 20);
-      $$0.a(dec.hP, 5, 20);
-      $$0.a(dec.hQ, 5, 20);
-      $$0.a(dec.hR, 5, 20);
-      $$0.a(dec.hS, 5, 20);
-      $$0.a(dec.hT, 5, 20);
-      $$0.a(dec.hU, 5, 20);
-      $$0.a(dec.U, 5, 5);
-      $$0.a(dec.V, 5, 5);
-      $$0.a(dec.W, 5, 5);
-      $$0.a(dec.X, 5, 5);
-      $$0.a(dec.Y, 5, 5);
-      $$0.a(dec.Z, 5, 5);
-      $$0.a(dec.aa, 5, 5);
-      $$0.a(dec.ab, 5, 5);
-      $$0.a(dec.ae, 5, 5);
-      $$0.a(dec.al, 5, 5);
-      $$0.a(dec.af, 5, 5);
-      $$0.a(dec.ag, 5, 5);
-      $$0.a(dec.ah, 5, 5);
-      $$0.a(dec.ai, 5, 5);
-      $$0.a(dec.aj, 5, 5);
-      $$0.a(dec.ak, 5, 5);
-      $$0.a(dec.am, 5, 5);
-      $$0.a(dec.an, 5, 5);
-      $$0.a(dec.aw, 5, 5);
-      $$0.a(dec.ax, 5, 5);
-      $$0.a(dec.ay, 5, 5);
-      $$0.a(dec.az, 5, 5);
-      $$0.a(dec.aA, 5, 5);
-      $$0.a(dec.aB, 5, 5);
-      $$0.a(dec.aC, 5, 5);
-      $$0.a(dec.aD, 5, 5);
-      $$0.a(dec.ao, 5, 5);
-      $$0.a(dec.ap, 5, 5);
-      $$0.a(dec.aq, 5, 5);
-      $$0.a(dec.ar, 5, 5);
-      $$0.a(dec.as, 5, 5);
-      $$0.a(dec.at, 5, 5);
-      $$0.a(dec.au, 5, 5);
-      $$0.a(dec.av, 5, 5);
-      $$0.a(dec.ac, 5, 20);
-      $$0.a(dec.aE, 30, 60);
-      $$0.a(dec.aF, 30, 60);
-      $$0.a(dec.aG, 30, 60);
-      $$0.a(dec.aH, 30, 60);
-      $$0.a(dec.aI, 30, 60);
-      $$0.a(dec.aJ, 30, 60);
-      $$0.a(dec.aK, 30, 60);
-      $$0.a(dec.aL, 30, 60);
-      $$0.a(dec.cl, 30, 20);
-      $$0.a(dec.ck, 15, 100);
-      $$0.a(dec.bt, 60, 100);
-      $$0.a(dec.bu, 60, 100);
-      $$0.a(dec.bv, 60, 100);
-      $$0.a(dec.iD, 60, 100);
-      $$0.a(dec.iE, 60, 100);
-      $$0.a(dec.iF, 60, 100);
-      $$0.a(dec.iG, 60, 100);
-      $$0.a(dec.iH, 60, 100);
-      $$0.a(dec.iI, 60, 100);
-      $$0.a(dec.bR, 60, 100);
-      $$0.a(dec.bT, 60, 100);
-      $$0.a(dec.bU, 60, 100);
-      $$0.a(dec.bV, 60, 100);
-      $$0.a(dec.bW, 60, 100);
-      $$0.a(dec.bX, 60, 100);
-      $$0.a(dec.bY, 60, 100);
-      $$0.a(dec.bZ, 60, 100);
-      $$0.a(dec.ca, 60, 100);
-      $$0.a(dec.cb, 60, 100);
-      $$0.a(dec.cc, 60, 100);
-      $$0.a(dec.ce, 60, 100);
-      $$0.a(dec.bS, 60, 100);
-      $$0.a(dec.kC, 60, 100);
-      $$0.a(dec.cd, 60, 100);
-      $$0.a(dec.sB, 60, 100);
-      $$0.a(dec.bA, 30, 60);
-      $$0.a(dec.bB, 30, 60);
-      $$0.a(dec.bC, 30, 60);
-      $$0.a(dec.bD, 30, 60);
-      $$0.a(dec.bE, 30, 60);
-      $$0.a(dec.bF, 30, 60);
-      $$0.a(dec.bG, 30, 60);
-      $$0.a(dec.bH, 30, 60);
-      $$0.a(dec.bI, 30, 60);
-      $$0.a(dec.bJ, 30, 60);
-      $$0.a(dec.bK, 30, 60);
-      $$0.a(dec.bL, 30, 60);
-      $$0.a(dec.bM, 30, 60);
-      $$0.a(dec.bN, 30, 60);
-      $$0.a(dec.bO, 30, 60);
-      $$0.a(dec.bP, 30, 60);
-      $$0.a(dec.ff, 15, 100);
-      $$0.a(dec.iB, 5, 5);
-      $$0.a(dec.ij, 60, 20);
-      $$0.a(dec.pd, 15, 20);
-      $$0.a(dec.ik, 60, 20);
-      $$0.a(dec.il, 60, 20);
-      $$0.a(dec.im, 60, 20);
-      $$0.a(dec.in, 60, 20);
-      $$0.a(dec.io, 60, 20);
-      $$0.a(dec.ip, 60, 20);
-      $$0.a(dec.iq, 60, 20);
-      $$0.a(dec.ir, 60, 20);
-      $$0.a(dec.is, 60, 20);
-      $$0.a(dec.it, 60, 20);
-      $$0.a(dec.iu, 60, 20);
-      $$0.a(dec.iv, 60, 20);
-      $$0.a(dec.iw, 60, 20);
-      $$0.a(dec.ix, 60, 20);
-      $$0.a(dec.iy, 60, 20);
-      $$0.a(dec.iz, 60, 20);
-      $$0.a(dec.me, 30, 60);
-      $$0.a(dec.mZ, 60, 60);
-      $$0.a(dec.nS, 60, 60);
-      $$0.a(dec.oa, 30, 20);
-      $$0.a(dec.pc, 5, 20);
-      $$0.a(dec.oi, 60, 100);
-      $$0.a(dec.pf, 5, 20);
-      $$0.a(dec.pe, 30, 20);
-      $$0.a(dec.aM, 30, 60);
-      $$0.a(dec.aN, 30, 60);
-      $$0.a(dec.sv, 15, 60);
-      $$0.a(dec.sw, 15, 60);
-      $$0.a(dec.sx, 60, 100);
-      $$0.a(dec.sy, 30, 60);
-      $$0.a(dec.sz, 30, 60);
-      $$0.a(dec.sD, 60, 100);
-      $$0.a(dec.sE, 60, 100);
-      $$0.a(dec.sF, 60, 100);
-      $$0.a(dec.sG, 30, 60);
-      $$0.a(dec.fg, 15, 100);
    }
 }

@@ -1,84 +1,72 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Locale;
-import java.util.function.Consumer;
-import net.minecraft.server.MinecraftServer;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
+import java.util.Collection;
 
 public class ank {
-   private static final Logger a = LogUtils.getLogger();
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wx.c("commands.perf.notRunning"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wx.c("commands.perf.alreadyRunning"));
+   public static final int a = 100;
 
-   public static void a(CommandDispatcher<ee> $$0) {
+   public static void a(CommandDispatcher<ep> $$0, el $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("perf").requires($$0x -> $$0x.c(4)))
-               .then(ef.a("start").executes($$0x -> a((ee)$$0x.getSource()))))
-            .then(ef.a("stop").executes($$0x -> b((ee)$$0x.getSource())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("give").requires($$0x -> $$0x.c(2)))
+            .then(
+               eq.a("targets", fc.d())
+                  .then(
+                     ((RequiredArgumentBuilder)eq.a("item", gy.a($$1)).executes($$0x -> a((ep)$$0x.getSource(), gy.a($$0x, "item"), fc.f($$0x, "targets"), 1)))
+                        .then(
+                           eq.a("count", IntegerArgumentType.integer(1))
+                              .executes(
+                                 $$0x -> a((ep)$$0x.getSource(), gy.a($$0x, "item"), fc.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "count"))
+                              )
+                        )
+                  )
+            )
       );
    }
 
-   private static int a(ee $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if ($$1.aV()) {
-         throw c.create();
-      } else {
-         Consumer<bmj> $$2 = $$1x -> a($$0, $$1x);
-         Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
-         $$1.a($$2, $$3);
-         $$0.a(() -> wx.c("commands.perf.started"), false);
+   private static int a(ep $$0, gz $$1, Collection<arc> $$2, int $$3) throws CommandSyntaxException {
+      cuk $$4 = $$1.a(1, false);
+      int $$5 = $$4.j();
+      int $$6 = $$5 * 100;
+      if ($$3 > $$6) {
+         $$0.b(xl.a("commands.give.failed.toomanyitems", $$6, $$4.G()));
          return 0;
-      }
-   }
-
-   private static int b(ee $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if (!$$1.aV()) {
-         throw b.create();
       } else {
-         $$1.aX();
-         return 0;
-      }
-   }
+         for (arc $$7 : $$2) {
+            int $$8 = $$3;
 
-   private static void a(ee $$0, Path $$1, MinecraftServer $$2) {
-      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ac.f(), $$2.bb().e(), aa.b().b());
+            while ($$8 > 0) {
+               int $$9 = Math.min($$5, $$8);
+               $$8 -= $$9;
+               cuk $$10 = $$1.a($$9, false);
+               boolean $$11 = $$7.gc().f($$10);
+               if ($$11 && $$10.e()) {
+                  cjc $$13 = $$7.a($$4, false);
+                  if ($$13 != null) {
+                     $$13.B();
+                  }
 
-      String $$4;
-      try {
-         $$4 = v.a(boc.a, $$3, ".zip");
-      } catch (IOException var11) {
-         $$0.b(wx.c("commands.perf.reportFailed"));
-         a.error("Failed to create report name", var11);
-         return;
-      }
+                  $$7.dP().a(null, $$7.du(), $$7.dw(), $$7.dA(), avw.nC, avx.h, 0.2F, (($$7.el().i() - $$7.el().i()) * 0.7F + 1.0F) * 2.0F);
+                  $$7.cb.d();
+               } else {
+                  cjc $$12 = $$7.a($$10, false);
+                  if ($$12 != null) {
+                     $$12.w();
+                     $$12.b($$7.cz());
+                  }
+               }
+            }
+         }
 
-      try (axq $$7 = new axq(boc.a.resolve($$4))) {
-         $$7.a(Paths.get("system.txt"), $$2.b(new ab()).a());
-         $$7.a($$1);
-      }
+         if ($$2.size() == 1) {
+            $$0.a(() -> xl.a("commands.give.success.single", $$3, $$4.G(), $$2.iterator().next().O_()), true);
+         } else {
+            $$0.a(() -> xl.a("commands.give.success.single", $$3, $$4.G(), $$2.size()), true);
+         }
 
-      try {
-         FileUtils.forceDelete($$1.toFile());
-      } catch (IOException var9) {
-         a.warn("Failed to delete temporary profiling file {}", $$1, var9);
-      }
-
-      $$0.a(() -> wx.a("commands.perf.reportSaved", $$4), false);
-   }
-
-   private static void a(ee $$0, bmj $$1) {
-      if ($$1 != bmf.a) {
-         int $$2 = $$1.f();
-         double $$3 = (double)$$1.g() / (double)aze.a;
-         $$0.a(() -> wx.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);
+         return $$2.size();
       }
    }
 }

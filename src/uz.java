@@ -1,138 +1,145 @@
-import com.google.common.collect.Lists;
-import java.util.Collections;
-import java.util.List;
-import java.util.regex.Pattern;
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
 
-public class uz implements ve {
-   private static final Pattern a = Pattern.compile("[A-Za-z0-9._+-]+");
-   private final StringBuilder b = new StringBuilder();
+public class uz extends vh {
+   private static final int b = 16;
+   public static final vq<uz> a = new vq.a<uz>() {
+      public uz a(DataInput $$0, va $$1) throws IOException {
+         return uz.a(d($$0, $$1));
+      }
 
-   public String a(va $$0) {
+      @Override
+      public vl.b a(DataInput $$0, vl $$1, va $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
+      }
+
+      private static long d(DataInput $$0, va $$1) throws IOException {
+         $$1.b(16L);
+         return $$0.readLong();
+      }
+
+      @Override
+      public int c() {
+         return 8;
+      }
+
+      @Override
+      public String a() {
+         return "LONG";
+      }
+
+      @Override
+      public String b() {
+         return "TAG_Long";
+      }
+
+      @Override
+      public boolean d() {
+         return true;
+      }
+   };
+   private final long c;
+
+   uz(long $$0) {
+      this.c = $$0;
+   }
+
+   public static uz a(long $$0) {
+      return $$0 >= -128L && $$0 <= 1024L ? uz.a.a[(int)$$0 - -128] : new uz($$0);
+   }
+
+   @Override
+   public void a(DataOutput $$0) throws IOException {
+      $$0.writeLong(this.c);
+   }
+
+   @Override
+   public int a() {
+      return 16;
+   }
+
+   @Override
+   public byte b() {
+      return 4;
+   }
+
+   @Override
+   public vq<uz> c() {
+      return a;
+   }
+
+   public uz e() {
+      return this;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof uz && this.c == ((uz)$$0).c;
+   }
+
+   @Override
+   public int hashCode() {
+      return (int)(this.c ^ this.c >>> 32);
+   }
+
+   @Override
+   public void a(vs $$0) {
       $$0.a(this);
-      return this.b.toString();
    }
 
    @Override
-   public void a(uy $$0) {
-      this.b.append(uy.b($$0.s_()));
+   public long f() {
+      return this.c;
    }
 
    @Override
-   public void a(ub $$0) {
-      this.b.append($$0.l()).append('b');
+   public int g() {
+      return (int)(this.c & -1L);
    }
 
    @Override
-   public void a(uv $$0) {
-      this.b.append($$0.l()).append('s');
+   public short h() {
+      return (short)((int)(this.c & 65535L));
    }
 
    @Override
-   public void a(ui $$0) {
-      this.b.append($$0.l());
+   public byte i() {
+      return (byte)((int)(this.c & 255L));
    }
 
    @Override
-   public void a(ul $$0) {
-      this.b.append($$0.l()).append('L');
+   public double j() {
+      return (double)this.c;
    }
 
    @Override
-   public void a(ug $$0) {
-      this.b.append($$0.k()).append('f');
+   public float k() {
+      return (float)this.c;
    }
 
    @Override
-   public void a(ue $$0) {
-      this.b.append($$0.j()).append('d');
+   public Number l() {
+      return this.c;
    }
 
    @Override
-   public void a(ua $$0) {
-      this.b.append("[B;");
-      byte[] $$1 = $$0.e();
+   public vl.b a(vl $$0) {
+      return $$0.a(this.c);
+   }
 
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         if ($$2 != 0) {
-            this.b.append(',');
-         }
+   static class a {
+      private static final int b = 1024;
+      private static final int c = -128;
+      static final uz[] a = new uz[1153];
 
-         this.b.append($$1[$$2]).append('B');
+      private a() {
       }
 
-      this.b.append(']');
-   }
-
-   @Override
-   public void a(uh $$0) {
-      this.b.append("[I;");
-      int[] $$1 = $$0.g();
-
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         if ($$2 != 0) {
-            this.b.append(',');
+      static {
+         for (int $$0 = 0; $$0 < a.length; $$0++) {
+            a[$$0] = new uz((long)(-128 + $$0));
          }
-
-         this.b.append($$1[$$2]);
       }
-
-      this.b.append(']');
-   }
-
-   @Override
-   public void a(uk $$0) {
-      this.b.append("[L;");
-      long[] $$1 = $$0.g();
-
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         if ($$2 != 0) {
-            this.b.append(',');
-         }
-
-         this.b.append($$1[$$2]).append('L');
-      }
-
-      this.b.append(']');
-   }
-
-   @Override
-   public void a(uj $$0) {
-      this.b.append('[');
-
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         if ($$1 != 0) {
-            this.b.append(',');
-         }
-
-         this.b.append(new uz().a($$0.k($$1)));
-      }
-
-      this.b.append(']');
-   }
-
-   @Override
-   public void a(ud $$0) {
-      this.b.append('{');
-      List<String> $$1 = Lists.newArrayList($$0.e());
-      Collections.sort($$1);
-
-      for (String $$2 : $$1) {
-         if (this.b.length() != 1) {
-            this.b.append(',');
-         }
-
-         this.b.append(a($$2)).append(':').append(new uz().a($$0.c($$2)));
-      }
-
-      this.b.append('}');
-   }
-
-   protected static String a(String $$0) {
-      return a.matcher($$0).matches() ? $$0 : uy.b($$0);
-   }
-
-   @Override
-   public void a(uf $$0) {
-      this.b.append("END");
    }
 }

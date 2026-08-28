@@ -1,44 +1,38 @@
-import java.util.Arrays;
+import java.util.Map;
 
-public enum cla {
-   a(0, avi.BD, avi.BL),
-   b(40, avi.BC, avi.BM),
-   c(80, avi.BE, avi.BM);
-
-   private static final cla[] d = ac.a(values(), $$0 -> Arrays.sort($$0, ($$0x, $$1) -> Integer.compare($$1.e, $$0x.e)));
-   private final int e;
-   private final avh f;
-   private final avh g;
-
-   private cla(int $$0, avh $$1, avh $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+public class cla extends bvd<cku> {
+   public cla() {
+      super(Map.of(cco.o, ccp.a, cco.m, ccp.b, cco.aU, ccp.b, cco.aV, ccp.b));
    }
 
-   public int a() {
-      return this.e;
+   protected boolean a(arb $$0, cku $$1) {
+      return $$1.aE() && !$$1.be() && $$1.ar() == btw.a;
    }
 
-   public avh b() {
-      return this.f;
-   }
-
-   public avh c() {
-      return this.g;
-   }
-
-   public static cla a(int $$0) {
-      for (cla $$1 : d) {
-         if ($$0 >= $$1.e) {
-            return $$1;
+   protected void a(arb $$0, cku $$1, long $$2) {
+      btk $$3 = $$1.dS().c(cco.o).orElse(null);
+      if ($$3 != null) {
+         boolean $$4 = $$1.k($$3.dn());
+         evm $$5 = null;
+         if ($$4) {
+            evm $$6 = cef.a($$1, 5, 5, $$3.dn());
+            if ($$6 != null && ckw.a($$1, $$6) && $$3.i($$6.c, $$6.d, $$6.e) > $$3.g($$1)) {
+               $$5 = $$6;
+            }
          }
-      }
 
-      return a;
+         if ($$5 == null) {
+            $$5 = $$1.el().h() ? ckw.a($$3, $$1.el()) : a($$1, $$3);
+         }
+
+         $$1.dS().a(cco.m, new ccr(iz.a($$5), 0.6F, 1));
+      }
    }
 
-   public boolean d() {
-      return this == c;
+   private static evm a(cku $$0, btk $$1) {
+      evm $$2 = $$1.dn().d($$0.dn());
+      double $$3 = $$2.f() - ayu.d($$0.el().j(), 8.0, 4.0);
+      evm $$4 = $$2.d().d($$3, $$3, $$3);
+      return $$0.dn().e($$4);
    }
 }

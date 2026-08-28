@@ -1,54 +1,37 @@
-public class gau extends gak {
-   gau(fwr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, gat $$8) {
-      super($$0, $$1, $$2, $$3, $$8, 0.0F);
-      this.B = 0.92F;
-      this.D = 0.5F;
-      this.e(1.0F);
-      this.a((float)axp.b.b($$7), (float)axp.b.c($$7), (float)axp.b.d($$7));
-      this.t = (int)((double)(this.D * 12.0F) / (Math.random() * 0.8F + 0.2F));
-      this.b($$8);
-      this.n = false;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
+public class gau extends gax {
+   private final fur a;
+   private final gdr b = gdr.i(gil.a);
+
+   gau(fxq $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a = new fuc(ffa.Q().aR().a(fwu.V));
+      this.u = 0.0F;
+      this.t = 30;
    }
 
    @Override
-   public void a() {
-      super.a();
-      if (!this.o) {
-         this.b(this.a);
-         if (this.s > this.t / 2) {
-            this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
-         }
-
-         if (this.c.a_(io.a(this.g, this.h, this.i)).i()) {
-            this.k -= 0.0074F;
-         }
-      }
+   public gbb b() {
+      return gbb.e;
    }
 
-   public static class a implements gab<lb> {
-      private final gat a;
-
-      public a(gat $$0) {
-         this.a = $$0;
-      }
-
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gau($$1, $$2, $$3, $$4, $$5, $$6, $$7, axp.b.a(255, 204, 31, 102), this.a);
-      }
+   @Override
+   public void a(ezx $$0, fel $$1, float $$2) {
+      float $$3 = ((float)this.s + $$2) / (float)this.t;
+      float $$4 = 0.05F + 0.5F * ayu.a($$3 * (float) Math.PI);
+      ezt $$5 = new ezt();
+      $$5.a($$1.f());
+      $$5.a(a.b.rotationDegrees(150.0F * $$3 - 60.0F));
+      $$5.b(-1.0F, -1.0F, 1.0F);
+      $$5.a(0.0F, -1.101F, 1.5F);
+      gdj.a $$6 = ffa.Q().aQ().c();
+      ezx $$7 = $$6.getBuffer(this.b);
+      this.a.a($$5, $$7, 15728880, gol.d, 1.0F, 1.0F, 1.0F, $$4);
+      $$6.b();
    }
 
-   public static class b implements gab<lb> {
-      private final gat a;
-
-      public b(gat $$0) {
-         this.a = $$0;
-      }
-
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gau($$1, $$2, $$3, $$4, $$5, $$6, $$7, axp.b.a(255, 255, 255, 255), this.a);
+   public static class a implements gba<lm> {
+      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gau($$1, $$2, $$3, $$4);
       }
    }
 }

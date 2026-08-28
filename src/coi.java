@@ -1,11 +1,17 @@
-import java.util.Set;
+public class coi {
+   private final int a;
+   private final float b;
 
-public interface coi {
-   Set<akm<? extends jk<? extends coi>>> bA = Set.of(lf.G, lf.f, lf.v, lf.Q, lf.u, lf.Y, lf.R);
+   public coi(int $$0, float $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   col i();
+   public int a() {
+      return this.a;
+   }
 
-   default boolean a(col $$0) {
-      return this.i().a($$0);
+   public float b() {
+      return this.b;
    }
 }

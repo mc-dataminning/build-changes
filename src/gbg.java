@@ -1,26 +1,40 @@
-public class gbg extends fyq {
-   private static final int a = 12235202;
+public class gbg extends gbx {
+   private final gbs a;
 
-   protected gbg(fwr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gat $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
-      this.v = (float)axp.b.b(12235202) / 255.0F;
-      this.w = (float)axp.b.c(12235202) / 255.0F;
-      this.x = (float)axp.b.d(12235202) / 255.0F;
+   gbg(fxq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gbs $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.a = $$7;
+      this.d(1.5F);
+      this.n = false;
+      this.b($$7);
    }
 
-   public static class a implements gab<lb> {
-      private final gat a;
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
 
-      public a(gat $$0) {
-         this.a = $$0;
-      }
+   @Override
+   public gbb b() {
+      return gbb.c;
+   }
 
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         aym $$8 = $$1.z;
-         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
-         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         return new gbg($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+   }
+
+   public static record a(gbs a) implements gba<lk> {
+      public gax a(lk $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gbg $$8 = new gbg($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.A = $$0.b();
+         $$8.z = $$0.b();
+         $$8.a($$1.z.a(12) + 8);
+         return $$8;
       }
    }
 }

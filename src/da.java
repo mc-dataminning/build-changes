@@ -1,55 +1,33 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class da extends df<da.a> {
+public record da(de.d c, Optional<bu> d) implements bv {
+   public static final MapCodec<da> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(de.d.d.optionalFieldOf("blocks_set_on_fire", de.d.c).forGetter(da::b), bu.a.optionalFieldOf("entity_struck").forGetter(da::c))
+            .apply($$0, da::new)
+   );
+
+   public static da a(de.d $$0) {
+      return new da($$0, Optional.empty());
+   }
+
    @Override
-   public Codec<da.a> a() {
-      return da.a.a;
+   public MapCodec<da> a() {
+      return bw.a;
    }
 
-   public void a(aqo $$0) {
-      this.a($$0, $$0x -> true);
+   @Override
+   public boolean a(bsp $$0, arb $$1, @Nullable evm $$2) {
+      return !($$0 instanceof btj $$3) ? false : this.c.d($$3.s()) && (this.d.isEmpty() || $$3.u().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
    }
 
-   public static record a(Optional<bc> b) implements df.a {
-      public static final Codec<da.a> a = RecordCodecBuilder.create($$0 -> $$0.group(br.b.optionalFieldOf("player").forGetter(da.a::a)).apply($$0, da.a::new));
+   public de.d b() {
+      return this.c;
+   }
 
-      public static an<da.a> a(cr.a $$0) {
-         return am.q.a(new da.a(Optional.of(br.a(br.a.a().a($$0)))));
-      }
-
-      public static an<da.a> a(br.a $$0) {
-         return am.q.a(new da.a(Optional.of(br.a($$0.b()))));
-      }
-
-      public static an<da.a> a(Optional<br> $$0) {
-         return am.q.a(new da.a(br.a($$0)));
-      }
-
-      public static an<da.a> b() {
-         return am.r.a(new da.a(Optional.empty()));
-      }
-
-      public static an<da.a> c() {
-         return am.I.a(new da.a(Optional.empty()));
-      }
-
-      public static an<da.a> d() {
-         return am.ab.a(new da.a(Optional.empty()));
-      }
-
-      public static an<da.a> e() {
-         return am.x.a(new da.a(Optional.empty()));
-      }
-
-      public static an<da.a> a(dea $$0, ctl $$1) {
-         return a(br.a.a().a(bo.a.a().d(ch.a.a().a($$1))).b(cr.a.a().a(av.a.a().a($$0))));
-      }
-
-      @Override
-      public Optional<bc> a() {
-         return this.b;
-      }
+   public Optional<bu> c() {
+      return this.d;
    }
 }

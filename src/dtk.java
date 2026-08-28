@@ -1,181 +1,57 @@
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
+import java.util.stream.Stream;
 
-public class dtk {
-   public static final int a = 16;
-   public static final int b = 16;
-   public static final int c = 4096;
-   public static final int d = 2;
-   private short e;
-   private short f;
-   private short g;
-   private final dtr<drd> h;
-   private dts<ix<dby>> i;
+public record dtk(String m, dsm n, dmh o, dmh p, avv q, avv r) {
+   private static final Map<String, dtk> s = new Object2ObjectArrayMap();
+   public static final Codec<dtk> a = Codec.stringResolver(dtk::b, s::get);
+   public static final dtk b = a(new dtk("oak", dsm.g));
+   public static final dtk c = a(new dtk("spruce", dsm.h));
+   public static final dtk d = a(new dtk("birch", dsm.i));
+   public static final dtk e = a(new dtk("acacia", dsm.j));
+   public static final dtk f = a(new dtk("cherry", dsm.k, dmh.aU, dmh.aX, avw.eM, avw.eN));
+   public static final dtk g = a(new dtk("jungle", dsm.l));
+   public static final dtk h = a(new dtk("dark_oak", dsm.m));
+   public static final dtk i = a(new dtk("crimson", dsm.n, dmh.aT, dmh.aQ, avw.qT, avw.qU));
+   public static final dtk j = a(new dtk("warped", dsm.o, dmh.aT, dmh.aQ, avw.qT, avw.qU));
+   public static final dtk k = a(new dtk("mangrove", dsm.p));
+   public static final dtk l = a(new dtk("bamboo", dsm.q, dmh.aS, dmh.aR, avw.bw, avw.bx));
 
-   public dtk(dtr<drd> $$0, dts<ix<dby>> $$1) {
-      this.h = $$0;
-      this.i = $$1;
-      this.g();
+   public dtk(String $$0, dsm $$1) {
+      this($$0, $$1, dmh.b, dmh.aP, avw.iI, avw.iJ);
    }
 
-   public dtk(jk<dby> $$0) {
-      this.h = new dtr<>(dea.q, dec.a.n(), dtr.d.d);
-      this.i = new dtr<>($$0.t(), $$0.g(dcf.b), dtr.d.e);
+   private static dtk a(dtk $$0) {
+      s.put($$0.b(), $$0);
+      return $$0;
    }
 
-   public drd a(int $$0, int $$1, int $$2) {
-      return this.h.a($$0, $$1, $$2);
+   public static Stream<dtk> a() {
+      return s.values().stream();
    }
 
-   public emw b(int $$0, int $$1, int $$2) {
-      return this.h.a($$0, $$1, $$2).u();
+   public String b() {
+      return this.m;
    }
 
-   public void a() {
-      this.h.a();
+   public dsm c() {
+      return this.n;
    }
 
-   public void b() {
-      this.h.b();
+   public dmh d() {
+      return this.o;
    }
 
-   public drd a(int $$0, int $$1, int $$2, drd $$3) {
-      return this.a($$0, $$1, $$2, $$3, true);
+   public dmh e() {
+      return this.p;
    }
 
-   public drd a(int $$0, int $$1, int $$2, drd $$3, boolean $$4) {
-      drd $$5;
-      if ($$4) {
-         $$5 = this.h.a($$0, $$1, $$2, $$3);
-      } else {
-         $$5 = this.h.b($$0, $$1, $$2, $$3);
-      }
-
-      emw $$7 = $$5.u();
-      emw $$8 = $$3.u();
-      if (!$$5.i()) {
-         this.e--;
-         if ($$5.v()) {
-            this.f--;
-         }
-      }
-
-      if (!$$7.c()) {
-         this.g--;
-      }
-
-      if (!$$3.i()) {
-         this.e++;
-         if ($$3.v()) {
-            this.f++;
-         }
-      }
-
-      if (!$$8.c()) {
-         this.g++;
-      }
-
-      return $$5;
+   public avv f() {
+      return this.q;
    }
 
-   public boolean c() {
-      return this.e == 0;
-   }
-
-   public boolean d() {
-      return this.e() || this.f();
-   }
-
-   public boolean e() {
-      return this.f > 0;
-   }
-
-   public boolean f() {
-      return this.g > 0;
-   }
-
-   public void g() {
-      class a implements dtr.b<drd> {
-         public int a;
-         public int b;
-         public int c;
-
-         public void a(drd $$0, int $$1) {
-            emw $$2 = $$0.u();
-            if (!$$0.i()) {
-               this.a += $$1;
-               if ($$0.v()) {
-                  this.b += $$1;
-               }
-            }
-
-            if (!$$2.c()) {
-               this.a += $$1;
-               if ($$2.f()) {
-                  this.c += $$1;
-               }
-            }
-         }
-      }
-
-      a $$0 = new a();
-      this.h.a($$0);
-      this.e = (short)$$0.a;
-      this.f = (short)$$0.b;
-      this.g = (short)$$0.c;
-   }
-
-   public dtr<drd> h() {
-      return this.h;
-   }
-
-   public dts<ix<dby>> i() {
-      return this.i;
-   }
-
-   public void a(vx $$0) {
-      this.e = $$0.readShort();
-      this.h.a($$0);
-      dtr<ix<dby>> $$1 = this.i.e();
-      $$1.a($$0);
-      this.i = $$1;
-   }
-
-   public void b(vx $$0) {
-      dtr<ix<dby>> $$1 = this.i.e();
-      $$1.a($$0);
-      this.i = $$1;
-   }
-
-   public void c(vx $$0) {
-      $$0.l(this.e);
-      this.h.b($$0);
-      this.i.b($$0);
-   }
-
-   public int j() {
-      return 2 + this.h.c() + this.i.c();
-   }
-
-   public boolean a(Predicate<drd> $$0) {
-      return this.h.a($$0);
-   }
-
-   public ix<dby> c(int $$0, int $$1, int $$2) {
-      return this.i.a($$0, $$1, $$2);
-   }
-
-   public void a(dcb $$0, dch.f $$1, int $$2, int $$3, int $$4) {
-      dtr<ix<dby>> $$5 = this.i.e();
-      int $$6 = 4;
-
-      for (int $$7 = 0; $$7 < 4; $$7++) {
-         for (int $$8 = 0; $$8 < 4; $$8++) {
-            for (int $$9 = 0; $$9 < 4; $$9++) {
-               $$5.b($$7, $$8, $$9, $$0.getNoiseBiome($$2 + $$7, $$3 + $$8, $$4 + $$9, $$1));
-            }
-         }
-      }
-
-      this.i = $$5;
+   public avv g() {
+      return this.r;
    }
 }

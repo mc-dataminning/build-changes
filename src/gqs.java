@@ -1,17 +1,14 @@
-public abstract class gqs extends gqr implements grk {
-   private boolean n;
+import com.google.gson.JsonObject;
 
-   protected gqs(avh $$0, avj $$1, aym $$2) {
-      super($$0, $$1, $$2);
+public class gqs implements atk<gqr> {
+   public gqr b(JsonObject $$0) {
+      boolean $$1 = ayk.a($$0, "blur", false);
+      boolean $$2 = ayk.a($$0, "clamp", false);
+      return new gqr($$1, $$2);
    }
 
    @Override
-   public boolean m() {
-      return this.n;
-   }
-
-   protected final void n() {
-      this.n = true;
-      this.i = false;
+   public String a() {
+      return "texture";
    }
 }

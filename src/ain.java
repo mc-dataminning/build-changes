@@ -1,55 +1,33 @@
-import java.security.PublicKey;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class ain implements ze<aik> {
-   public static final yv<vx, ain> a = ze.a(ain::a, ain::new);
-   private final String b;
-   private final byte[] c;
-   private final byte[] d;
-   private final boolean e;
+public class ain implements zs<ags> {
+   public static final zj<wl, ain> a = zs.a(ain::a, ain::new);
+   private final UUID b;
 
-   public ain(String $$0, byte[] $$1, byte[] $$2, boolean $$3) {
+   public ain(UUID $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
    }
 
-   private ain(vx $$0) {
-      this.b = $$0.d(20);
-      this.c = $$0.b();
-      this.d = $$0.b();
-      this.e = $$0.readBoolean();
+   private ain(wl $$0) {
+      this.b = $$0.n();
    }
 
-   private void a(vx $$0) {
+   private void a(wl $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
    }
 
    @Override
-   public zg<ain> a() {
-      return aiq.c;
+   public zu<ain> a() {
+      return agq.cb;
    }
 
-   public void a(aik $$0) {
+   public void a(ags $$0) {
       $$0.a(this);
    }
 
-   public String b() {
-      return this.b;
-   }
-
-   public PublicKey e() throws axe {
-      return axd.a(this.c);
-   }
-
-   public byte[] f() {
-      return this.d;
-   }
-
-   public boolean g() {
-      return this.e;
+   @Nullable
+   public bsp a(arb $$0) {
+      return $$0.a(this.b);
    }
 }

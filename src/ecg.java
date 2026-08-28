@@ -1,40 +1,79 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ecg implements ecd {
-   public static final Codec<ecg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").orElse(30).forGetter($$0x -> $$0x.b),
-               bpb.b(1, 60).fieldOf("column_radius").forGetter($$0x -> $$0x.c),
-               boz.a(0.0F, 20.0F).fieldOf("height_scale").forGetter($$0x -> $$0x.d),
-               Codec.floatRange(0.1F, 1.0F).fieldOf("max_column_radius_to_cave_height_ratio").forGetter($$0x -> $$0x.e),
-               boz.a(0.1F, 10.0F).fieldOf("stalactite_bluntness").forGetter($$0x -> $$0x.f),
-               boz.a(0.1F, 10.0F).fieldOf("stalagmite_bluntness").forGetter($$0x -> $$0x.g),
-               boz.a(0.0F, 2.0F).fieldOf("wind_speed").forGetter($$0x -> $$0x.h),
-               Codec.intRange(0, 100).fieldOf("min_radius_for_wind").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 5.0F).fieldOf("min_bluntness_for_wind").forGetter($$0x -> $$0x.j)
-            )
-            .apply($$0, ecg::new)
-   );
-   public final int b;
-   public final bpb c;
-   public final boz d;
-   public final float e;
-   public final boz f;
-   public final boz g;
-   public final boz h;
-   public final int i;
-   public final float j;
+public class ecg extends eat<edu> {
+   public ecg(Codec<edu> $$0) {
+      super($$0);
+   }
 
-   public ecg(int $$0, bpb $$1, boz $$2, float $$3, boz $$4, boz $$5, boz $$6, int $$7, float $$8) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
+   @Override
+   public boolean a(eav<edu> $$0) {
+      dco $$1 = $$0.b();
+      iz $$2 = $$0.e();
+      if (a($$1, $$2)) {
+         return false;
+      } else {
+         azc $$3 = $$0.d();
+         edu $$4 = $$0.f();
+         int $$5 = $$4.a();
+         int $$6 = $$4.b();
+         int $$7 = $$4.c();
+         iz.a $$8 = new iz.a();
+
+         for (int $$9 = 0; $$9 < $$5 * $$5; $$9++) {
+            $$8.g($$2).e(ayu.a($$3, -$$5, $$5), ayu.a($$3, -$$6, $$6), ayu.a($$3, -$$5, $$5));
+            if (a($$1, $$8) && !a($$1, (iz)$$8)) {
+               int $$10 = ayu.a($$3, 1, $$7);
+               if ($$3.a(6) == 0) {
+                  $$10 *= 2;
+               }
+
+               if ($$3.a(5) == 0) {
+                  $$10 = 1;
+               }
+
+               int $$11 = 17;
+               int $$12 = 25;
+               a($$1, $$3, $$8, $$10, 17, 25);
+            }
+         }
+
+         return true;
+      }
+   }
+
+   private static boolean a(dbu $$0, iz.a $$1) {
+      do {
+         $$1.e(0, -1, 0);
+         if ($$0.s($$1)) {
+            return false;
+         }
+      } while ($$0.a_($$1).i());
+
+      $$1.e(0, 1, 0);
+      return true;
+   }
+
+   public static void a(dbu $$0, azc $$1, iz.a $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = 1; $$6 <= $$3; $$6++) {
+         if ($$0.u($$2)) {
+            if ($$6 == $$3 || !$$0.u($$2.c())) {
+               $$0.a($$2, dew.oB.n().a(dij.e, Integer.valueOf(ayu.a($$1, $$4, $$5))), 2);
+               break;
+            }
+
+            $$0.a($$2, dew.oC.n(), 2);
+         }
+
+         $$2.c(je.b);
+      }
+   }
+
+   private static boolean a(dbu $$0, iz $$1) {
+      if (!$$0.u($$1)) {
+         return true;
+      } else {
+         drx $$2 = $$0.a_($$1.d());
+         return !$$2.a(dew.dV) && !$$2.a(dew.on) && !$$2.a(dew.op);
+      }
    }
 }

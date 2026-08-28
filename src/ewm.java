@@ -1,11 +1,19 @@
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import javax.annotation.Nonnull;
-import javax.annotation.meta.TypeQualifierDefault;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-@Nonnull
-@TypeQualifierDefault({ElementType.FIELD})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface ewm {
+public interface ewm {
+   int a();
+
+   boolean b();
+
+   @Nullable
+   zb c();
+
+   default xz a(zb $$0) {
+      return Objects.requireNonNullElse(this.c(), $$0).a(this.a());
+   }
+
+   static xz a(@Nullable ewm $$0, zb $$1) {
+      return $$0 != null ? $$0.a($$1) : $$1.a(0);
+   }
 }

@@ -1,82 +1,112 @@
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Lifecycle;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
 
-public class mi implements ll {
-   private static final Logger d = LogUtils.getLogger();
-   private final ln.a e;
-   private final Set<akm<epm>> f;
-   private final List<mi.a> g;
-   private final CompletableFuture<iz.a> h;
-
-   public mi(ln $$0, Set<akm<epm>> $$1, List<mi.a> $$2, CompletableFuture<iz.a> $$3) {
-      this.e = $$0.a(ln.b.a, "loot_tables");
-      this.g = $$2;
-      this.f = $$1;
-      this.h = $$3;
-   }
-
+public class mi implements ma {
    @Override
-   public CompletableFuture<?> a(lj $$0) {
-      return this.h.thenCompose($$1 -> this.a($$0, $$1));
-   }
-
-   private CompletableFuture<?> a(lj $$0, iz.a $$1) {
-      jt<epm> $$2 = new jf<>(lf.aU, Lifecycle.experimental());
-      Map<dxk.a, akn> $$3 = new Object2ObjectOpenHashMap();
-      this.g.forEach($$3x -> $$3x.a().get().generate($$1, ($$3xx, $$4x) -> {
-            akn $$5x = a($$3xx);
-            akn $$6x = $$3.put(bqc.a($$5x), $$5x);
-            if ($$6x != null) {
-               ac.a("Loot table random sequence seed collision on " + $$6x + " and " + $$3xx.a());
-            }
-
-            $$4x.a($$5x);
-            epm $$7 = $$4x.a($$3x.b).b();
-            $$2.a($$3xx, $$7, jj.a);
-         }));
-      $$2.l();
-      ayk.a $$4 = new ayk.a();
-      iy.a $$5 = new jl.c(List.of($$2)).d().b();
-      epn $$6 = new epn($$4, ery.q, $$5);
-
-      for (akm<epm> $$8 : Sets.difference(this.f, $$2.f())) {
-         $$4.b("Missing built-in table: " + $$8.a());
-      }
-
-      $$2.h().forEach($$1x -> ((epm)$$1x.a()).a($$6.a(((epm)$$1x.a()).a()).a("{" + $$1x.h().a() + "}", $$1x.h())));
-      Multimap<String, String> $$9 = $$4.a();
-      if (!$$9.isEmpty()) {
-         $$9.forEach(($$0x, $$1x) -> d.warn("Found validation problem in {}: {}", $$0x, $$1x));
-         throw new IllegalStateException("Failed to validate loot tables, see logs");
-      } else {
-         return CompletableFuture.allOf($$2.g().stream().map($$2x -> {
-            akm<epm> $$3x = (akm<epm>)$$2x.getKey();
-            epm $$4x = (epm)$$2x.getValue();
-            Path $$5x = this.e.a($$3x.a());
-            return ll.a($$0, $$1, epm.d, $$4x, $$5x);
-         }).toArray(CompletableFuture[]::new));
-      }
-   }
-
-   private static akn a(akm<epm> $$0) {
-      return $$0.a();
-   }
-
-   @Override
-   public final String a() {
-      return "Loot Tables";
-   }
-
-   public static record a(Supplier<mj> a, erx b) {
+   public void a(jk.a $$0, Consumer<af> $$1) {
+      af $$2 = ae.a.a()
+         .a(
+            dew.i,
+            xl.c("advancements.story.root.title"),
+            xl.c("advancements.story.root.description"),
+            new alb("textures/gui/advancements/backgrounds/stone.png"),
+            al.a,
+            false,
+            false,
+            false
+         )
+         .a("crafting_table", ce.a.a(dew.cA))
+         .a($$1, "story/root");
+      af $$3 = ae.a.a()
+         .a($$2)
+         .a(cun.oN, xl.c("advancements.story.mine_stone.title"), xl.c("advancements.story.mine_stone.description"), null, al.a, true, true, false)
+         .a("get_stone", ce.a.a(cp.a.a().a(awu.aY)))
+         .a($$1, "story/mine_stone");
+      af $$4 = ae.a.a()
+         .a($$3)
+         .a(cun.oS, xl.c("advancements.story.upgrade_tools.title"), xl.c("advancements.story.upgrade_tools.description"), null, al.a, true, true, false)
+         .a("stone_pickaxe", ce.a.a(cun.oS))
+         .a($$1, "story/upgrade_tools");
+      af $$5 = ae.a.a()
+         .a($$4)
+         .a(cun.oE, xl.c("advancements.story.smelt_iron.title"), xl.c("advancements.story.smelt_iron.description"), null, al.a, true, true, false)
+         .a("iron", ce.a.a(cun.oE))
+         .a($$1, "story/smelt_iron");
+      af $$6 = ae.a.a()
+         .a($$5)
+         .a(cun.pc, xl.c("advancements.story.iron_tools.title"), xl.c("advancements.story.iron_tools.description"), null, al.a, true, true, false)
+         .a("iron_pickaxe", ce.a.a(cun.pc))
+         .a($$1, "story/iron_tools");
+      af $$7 = ae.a.a()
+         .a($$6)
+         .a(cun.oy, xl.c("advancements.story.mine_diamond.title"), xl.c("advancements.story.mine_diamond.description"), null, al.a, true, true, false)
+         .a("diamond", ce.a.a(cun.oy))
+         .a($$1, "story/mine_diamond");
+      af $$8 = ae.a.a()
+         .a($$5)
+         .a(cun.qA, xl.c("advancements.story.lava_bucket.title"), xl.c("advancements.story.lava_bucket.description"), null, al.a, true, true, false)
+         .a("lava_bucket", ce.a.a(cun.qA))
+         .a($$1, "story/lava_bucket");
+      af $$9 = ae.a.a()
+         .a($$5)
+         .a(cun.pH, xl.c("advancements.story.obtain_armor.title"), xl.c("advancements.story.obtain_armor.description"), null, al.a, true, true, false)
+         .a(ai.a.b)
+         .a("iron_helmet", ce.a.a(cun.pG))
+         .a("iron_chestplate", ce.a.a(cun.pH))
+         .a("iron_leggings", ce.a.a(cun.pI))
+         .a("iron_boots", ce.a.a(cun.pJ))
+         .a($$1, "story/obtain_armor");
+      ae.a.a()
+         .a($$7)
+         .a(cun.uw, xl.c("advancements.story.enchant_item.title"), xl.c("advancements.story.enchant_item.description"), null, al.a, true, true, false)
+         .a("enchanted_item", bo.a.b())
+         .a($$1, "story/enchant_item");
+      af $$10 = ae.a.a()
+         .a($$8)
+         .a(dew.co, xl.c("advancements.story.form_obsidian.title"), xl.c("advancements.story.form_obsidian.description"), null, al.a, true, true, false)
+         .a("obsidian", ce.a.a(dew.co))
+         .a($$1, "story/form_obsidian");
+      ae.a.a()
+         .a($$9)
+         .a(cun.vs, xl.c("advancements.story.deflect_arrow.title"), xl.c("advancements.story.deflect_arrow.description"), null, al.a, true, true, false)
+         .a("deflected_projectile", bt.a.a(bi.a.a().a(bj.a.a().a(dz.a(awn.k))).a(true)))
+         .a($$1, "story/deflect_arrow");
+      ae.a.a()
+         .a($$7)
+         .a(cun.pL, xl.c("advancements.story.shiny_gear.title"), xl.c("advancements.story.shiny_gear.description"), null, al.a, true, true, false)
+         .a(ai.a.b)
+         .a("diamond_helmet", ce.a.a(cun.pK))
+         .a("diamond_chestplate", ce.a.a(cun.pL))
+         .a("diamond_leggings", ce.a.a(cun.pM))
+         .a("diamond_boots", ce.a.a(cun.pN))
+         .a($$1, "story/shiny_gear");
+      af $$11 = ae.a.a()
+         .a($$10)
+         .a(cun.os, xl.c("advancements.story.enter_the_nether.title"), xl.c("advancements.story.enter_the_nether.description"), null, al.a, true, true, false)
+         .a("entered_nether", ay.a.a(dbt.i))
+         .a($$1, "story/enter_the_nether");
+      ae.a.a()
+         .a($$11)
+         .a(
+            cun.qa,
+            xl.c("advancements.story.cure_zombie_villager.title"),
+            xl.c("advancements.story.cure_zombie_villager.description"),
+            null,
+            al.c,
+            true,
+            true,
+            false
+         )
+         .a("cured_zombie", bh.a.b())
+         .a($$1, "story/cure_zombie_villager");
+      af $$12 = ae.a.a()
+         .a($$11)
+         .a(cun.ss, xl.c("advancements.story.follow_ender_eye.title"), xl.c("advancements.story.follow_ender_eye.description"), null, al.a, true, true, false)
+         .a("in_stronghold", dl.a.a(dc.a.b($$0.b(lq.aJ).b(ehz.k))))
+         .a($$1, "story/follow_ender_eye");
+      ae.a.a()
+         .a($$12)
+         .a(dew.fz, xl.c("advancements.story.enter_the_end.title"), xl.c("advancements.story.enter_the_end.description"), null, al.a, true, true, false)
+         .a("entered_end", ay.a.a(dbt.j))
+         .a($$1, "story/enter_the_end");
    }
 }

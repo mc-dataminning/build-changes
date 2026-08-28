@@ -1,30 +1,42 @@
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class elp implements elt {
-   private static final Logger b = LogUtils.getLogger();
+public class elp extends els {
    public static final MapCodec<elp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(akm.a(lf.aU).fieldOf("loot_table").forGetter($$0x -> $$0x.d)).apply($$0, elp::new)
+      $$0 -> $$0.group(
+               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
+               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
+               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, elp::new)
    );
-   private final akm<epm> d;
+   private final float b;
+   private final float d;
+   private final int e;
+   private final int f;
 
-   public elp(akm<epm> $$0) {
-      this.d = $$0;
+   public elp(float $$0, float $$1, int $$2, int $$3) {
+      if ($$2 >= $$3) {
+         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
+      } else {
+         this.b = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+      }
    }
 
    @Override
-   public ud a(aym $$0, @Nullable ud $$1) {
-      ud $$2 = $$1 == null ? new ud() : $$1.h();
-      akm.a(lf.aU).encodeStart(ur.a, this.d).resultOrPartial(b::error).ifPresent($$1x -> $$2.a("LootTable", $$1x));
-      $$2.a("LootTableSeed", $$0.g());
-      return $$2;
+   public boolean a(iz $$0, iz $$1, iz $$2, azc $$3) {
+      int $$4 = $$1.k($$2);
+      float $$5 = $$3.i();
+      return $$5 <= ayu.b(this.b, this.d, ayu.g((float)$$4, (float)this.e, (float)this.f));
    }
 
    @Override
-   public elu<?> a() {
-      return elu.d;
+   protected elt<?> a() {
+      return elt.b;
    }
 }

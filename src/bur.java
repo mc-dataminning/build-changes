@@ -1,81 +1,96 @@
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class bur<E extends bss & cir, T extends bsq> extends buj<E> {
-   private static final int c = 1200;
-   private int d;
-   private bur.a e = bur.a.a;
+public class bur {
+   private final Map<ji<bun>, buo> a;
 
-   public bur() {
-      super(ImmutableMap.of(cbu.n, cbv.c, cbu.o, cbv.a), 1200);
+   bur(Map<ji<bun>, buo> $$0) {
+      this.a = $$0;
    }
 
-   protected boolean a(aqn $$0, E $$1) {
-      bsq $$2 = b($$1);
-      return $$1.b(ctt.vT) && bul.b($$1, $$2) && bul.a($$1, $$2, 0);
-   }
-
-   protected boolean a(aqn $$0, E $$1, long $$2) {
-      return $$1.dS().a(cbu.o) && this.a($$0, $$1);
-   }
-
-   protected void b(aqn $$0, E $$1, long $$2) {
-      bsq $$3 = b($$1);
-      this.b($$1, $$3);
-      this.a($$1, $$3);
-   }
-
-   protected void c(aqn $$0, E $$1, long $$2) {
-      if ($$1.fv()) {
-         $$1.fB();
-      }
-
-      if ($$1.b(ctt.vT)) {
-         $$1.b(false);
-         $$1.fx().b(kb.D, cwe.a);
+   private buo d(ji<bun> $$0) {
+      buo $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("Can't find attribute " + $$0.g());
+      } else {
+         return $$1;
       }
    }
 
-   private void a(E $$0, bsq $$1) {
-      if (this.e == bur.a.a) {
-         $$0.c(cms.a($$0, ctt.vT));
-         this.e = bur.a.b;
-         $$0.b(true);
-      } else if (this.e == bur.a.b) {
-         if (!$$0.fv()) {
-            this.e = bur.a.a;
-         }
+   public double a(ji<bun> $$0) {
+      return this.d($$0).f();
+   }
 
-         int $$2 = $$0.fz();
-         ctq $$3 = $$0.fx();
-         if ($$2 >= csd.l($$3)) {
-            $$0.fA();
-            this.e = bur.a.c;
-            this.d = 20 + $$0.el().a(20);
-            $$0.b(false);
-         }
-      } else if (this.e == bur.a.c) {
-         this.d--;
-         if (this.d == 0) {
-            this.e = bur.a.d;
-         }
-      } else if (this.e == bur.a.d) {
-         $$0.a($$1, 1.0F);
-         this.e = bur.a.a;
+   public double b(ji<bun> $$0) {
+      return this.d($$0).b();
+   }
+
+   public double a(ji<bun> $$0, UUID $$1) {
+      buq $$2 = this.d($$0).a($$1);
+      if ($$2 == null) {
+         throw new IllegalArgumentException("Can't find modifier " + $$1 + " on attribute " + $$0.g());
+      } else {
+         return $$2.d();
       }
    }
 
-   private void b(bss $$0, bsq $$1) {
-      $$0.dS().a(cbu.n, new buu($$1, true));
+   @Nullable
+   public buo a(Consumer<buo> $$0, ji<bun> $$1) {
+      buo $$2 = this.a.get($$1);
+      if ($$2 == null) {
+         return null;
+      } else {
+         buo $$3 = new buo($$1, $$0);
+         $$3.a($$2);
+         return $$3;
+      }
    }
 
-   private static bsq b(bsq $$0) {
-      return $$0.dS().c(cbu.o).get();
+   public static bur.a a() {
+      return new bur.a();
    }
 
-   static enum a {
-      a,
-      b,
-      c,
-      d;
+   public boolean c(ji<bun> $$0) {
+      return this.a.containsKey($$0);
+   }
+
+   public boolean b(ji<bun> $$0, UUID $$1) {
+      buo $$2 = this.a.get($$0);
+      return $$2 != null && $$2.a($$1) != null;
+   }
+
+   public static class a {
+      private final Builder<ji<bun>, buo> a = ImmutableMap.builder();
+      private boolean b;
+
+      private buo b(ji<bun> $$0) {
+         buo $$1 = new buo($$0, $$1x -> {
+            if (this.b) {
+               throw new UnsupportedOperationException("Tried to change value for default attribute instance: " + $$0.g());
+            }
+         });
+         this.a.put($$0, $$1);
+         return $$1;
+      }
+
+      public bur.a a(ji<bun> $$0) {
+         this.b($$0);
+         return this;
+      }
+
+      public bur.a a(ji<bun> $$0, double $$1) {
+         buo $$2 = this.b($$0);
+         $$2.a($$1);
+         return this;
+      }
+
+      public bur a() {
+         this.b = true;
+         return new bur(this.a.buildKeepingLast());
+      }
    }
 }

@@ -1,8 +1,38 @@
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-@FunctionalInterface
 public interface ws {
-   ws a = ($$0, $$1) -> $$1;
+   static ws a(final Runnable $$0) {
+      return new ws() {
+         @Override
+         public void a() {
+            $$0.run();
+         }
 
-   wx decorate(@Nullable aqo var1, wx var2);
+         @Nullable
+         @Override
+         public zs<?> b() {
+            $$0.run();
+            return null;
+         }
+      };
+   }
+
+   static ws a(final Supplier<zs<?>> $$0) {
+      return new ws() {
+         @Nullable
+         @Override
+         public zs<?> b() {
+            return $$0.get();
+         }
+      };
+   }
+
+   default void a() {
+   }
+
+   @Nullable
+   default zs<?> b() {
+      return null;
+   }
 }

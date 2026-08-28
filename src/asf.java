@@ -1,11 +1,36 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class asf implements akb {
+   private static final xl a = xl.c("multiplayer.status.request_handled");
+   private final aka b;
+   private final wj c;
+   private boolean d;
 
-public record asf(col b) {
-   private static final Codec<asf> c = RecordCodecBuilder.create($$0 -> $$0.group(coo.f.fieldOf("enabled").forGetter(asf::a)).apply($$0, asf::new));
-   public static final asx<asf> a = asx.a("features", c);
+   public asf(aka $$0, wj $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
 
-   public col a() {
-      return this.b;
+   @Override
+   public void a(xl $$0) {
+   }
+
+   @Override
+   public boolean c() {
+      return this.c.i();
+   }
+
+   @Override
+   public void a(akc $$0) {
+      if (this.d) {
+         this.c.a(a);
+      } else {
+         this.d = true;
+         this.c.a(new ajz(this.b));
+      }
+   }
+
+   @Override
+   public void a(ajw $$0) {
+      this.c.a(new ajt($$0.b()));
+      this.c.a(a);
    }
 }

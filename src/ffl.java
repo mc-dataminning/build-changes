@@ -1,289 +1,450 @@
 import com.google.common.collect.Lists;
-import com.ibm.icu.text.ArabicShaping;
-import com.ibm.icu.text.ArabicShapingException;
-import com.ibm.icu.text.Bidi;
 import java.util.List;
-import java.util.function.Function;
+import java.util.ListIterator;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
+import org.apache.commons.lang3.mutable.MutableFloat;
+import org.apache.commons.lang3.mutable.MutableInt;
+import org.apache.commons.lang3.mutable.MutableObject;
 
 public class ffl {
-   private static final float d = 0.01F;
-   private static final Vector3f e = new Vector3f(0.0F, 0.0F, 0.03F);
-   public static final int a = 8;
-   public final int b = 9;
-   public final aym c = aym.a();
-   private final Function<akn, fir> f;
-   final boolean g;
-   private final fem h;
+   final ffl.f a;
 
-   public ffl(Function<akn, fir> $$0, boolean $$1) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = new fem(($$0x, $$1x) -> this.a($$1x.k()).a($$0x, this.g).a($$1x.b()));
+   public ffl(ffl.f $$0) {
+      this.a = $$0;
    }
 
-   fir a(akn $$0) {
-      return this.f.apply($$0);
-   }
-
-   public String a(String $$0) {
-      try {
-         Bidi $$1 = new Bidi(new ArabicShaping(8).shape($$0), 127);
-         $$1.setReorderingMode(0);
-         return $$1.writeReordered(2);
-      } catch (ArabicShapingException var3) {
-         return $$0;
+   public float a(@Nullable String $$0) {
+      if ($$0 == null) {
+         return 0.0F;
+      } else {
+         MutableFloat $$1 = new MutableFloat();
+         azo.c($$0, yi.a, ($$1x, $$2, $$3) -> {
+            $$1.add(this.a.getWidth($$3, $$2));
+            return true;
+         });
+         return $$1.floatValue();
       }
    }
 
-   public int a(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, gck $$6, ffl.a $$7, int $$8, int $$9) {
-      return this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, this.a());
+   public float a(xq $$0) {
+      MutableFloat $$1 = new MutableFloat();
+      azo.a($$0, yi.a, ($$1x, $$2, $$3) -> {
+         $$1.add(this.a.getWidth($$3, $$2));
+         return true;
+      });
+      return $$1.floatValue();
    }
 
-   public int a(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, gck $$6, ffl.a $$7, int $$8, int $$9, boolean $$10) {
-      return this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
+   public float a(ayg $$0) {
+      MutableFloat $$1 = new MutableFloat();
+      $$0.accept(($$1x, $$2, $$3) -> {
+         $$1.add(this.a.getWidth($$3, $$2));
+         return true;
+      });
+      return $$1.floatValue();
    }
 
-   public int a(wx $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, gck $$6, ffl.a $$7, int $$8, int $$9) {
-      return this.a($$0.g(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+   public int a(String $$0, int $$1, yi $$2) {
+      ffl.e $$3 = new ffl.e((float)$$1);
+      azo.a($$0, $$2, $$3);
+      return $$3.a();
    }
 
-   public int a(axr $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, gck $$6, ffl.a $$7, int $$8, int $$9) {
-      return this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+   public String b(String $$0, int $$1, yi $$2) {
+      return $$0.substring(0, this.a($$0, $$1, $$2));
    }
 
-   public void a(axr $$0, float $$1, float $$2, int $$3, int $$4, Matrix4f $$5, gck $$6, int $$7) {
-      int $$8 = a($$4);
-      ffl.b $$9 = new ffl.b($$6, 0.0F, 0.0F, $$8, false, $$5, ffl.a.a, $$7);
+   public String c(String $$0, int $$1, yi $$2) {
+      MutableFloat $$3 = new MutableFloat();
+      MutableInt $$4 = new MutableInt($$0.length());
+      azo.b($$0, $$2, ($$3x, $$4x, $$5) -> {
+         float $$6 = $$3.addAndGet(this.a.getWidth($$5, $$4x));
+         if ($$6 > (float)$$1) {
+            return false;
+         } else {
+            $$4.setValue($$3x);
+            return true;
+         }
+      });
+      return $$0.substring($$4.intValue());
+   }
 
-      for (int $$10 = -1; $$10 <= 1; $$10++) {
-         for (int $$11 = -1; $$11 <= 1; $$11++) {
-            if ($$10 != 0 || $$11 != 0) {
-               float[] $$12 = new float[]{$$1};
-               int $$13 = $$10;
-               int $$14 = $$11;
-               $$0.accept(($$6x, $$7x, $$8x) -> {
-                  boolean $$9x = $$7x.b();
-                  fir $$10x = this.a($$7x.k());
-                  eww $$11x = $$10x.a($$8x, this.g);
-                  $$9.l = $$12[0] + (float)$$13 * $$11x.b();
-                  $$9.m = $$2 + (float)$$14 * $$11x.b();
-                  $$12[0] += $$11x.a($$9x);
-                  return $$9.accept($$6x, $$7x.a($$8), $$8x);
-               });
+   public int d(String $$0, int $$1, yi $$2) {
+      ffl.e $$3 = new ffl.e((float)$$1);
+      azo.c($$0, $$2, $$3);
+      return $$3.a();
+   }
+
+   @Nullable
+   public yi a(xq $$0, int $$1) {
+      ffl.e $$2 = new ffl.e((float)$$1);
+      return $$0.<yi>a(($$1x, $$2x) -> azo.c($$2x, $$1x, $$2) ? Optional.empty() : Optional.of($$1x), yi.a).orElse(null);
+   }
+
+   @Nullable
+   public yi a(ayg $$0, int $$1) {
+      ffl.e $$2 = new ffl.e((float)$$1);
+      MutableObject<yi> $$3 = new MutableObject();
+      $$0.accept(($$2x, $$3x, $$4) -> {
+         if (!$$2.accept($$2x, $$3x, $$4)) {
+            $$3.setValue($$3x);
+            return false;
+         } else {
+            return true;
+         }
+      });
+      return (yi)$$3.getValue();
+   }
+
+   public String e(String $$0, int $$1, yi $$2) {
+      return $$0.substring(0, this.d($$0, $$1, $$2));
+   }
+
+   public xq a(xq $$0, int $$1, yi $$2) {
+      final ffl.e $$3 = new ffl.e((float)$$1);
+      return $$0.a(new xq.b<xq>() {
+         private final feq b = new feq();
+
+         @Override
+         public Optional<xq> accept(yi $$0, String $$1) {
+            $$3.b();
+            if (!azo.c($$1, $$0, $$3)) {
+               String $$2 = $$1.substring(0, $$3.a());
+               if (!$$2.isEmpty()) {
+                  this.b.a(xq.a($$2, $$0));
+               }
+
+               return Optional.of(this.b.b());
+            } else {
+               if (!$$1.isEmpty()) {
+                  this.b.a(xq.a($$1, $$0));
+               }
+
+               return Optional.empty();
+            }
+         }
+      }, $$2).orElse($$0);
+   }
+
+   public int f(String $$0, int $$1, yi $$2) {
+      ffl.b $$3 = new ffl.b((float)$$1);
+      azo.c($$0, $$2, $$3);
+      return $$3.a();
+   }
+
+   public static int a(String $$0, int $$1, int $$2, boolean $$3) {
+      int $$4 = $$2;
+      boolean $$5 = $$1 < 0;
+      int $$6 = Math.abs($$1);
+
+      for (int $$7 = 0; $$7 < $$6; $$7++) {
+         if ($$5) {
+            while ($$3 && $$4 > 0 && ($$0.charAt($$4 - 1) == ' ' || $$0.charAt($$4 - 1) == '\n')) {
+               $$4--;
+            }
+
+            while ($$4 > 0 && $$0.charAt($$4 - 1) != ' ' && $$0.charAt($$4 - 1) != '\n') {
+               $$4--;
+            }
+         } else {
+            int $$8 = $$0.length();
+            int $$9 = $$0.indexOf(32, $$4);
+            int $$10 = $$0.indexOf(10, $$4);
+            if ($$9 == -1 && $$10 == -1) {
+               $$4 = -1;
+            } else if ($$9 != -1 && $$10 != -1) {
+               $$4 = Math.min($$9, $$10);
+            } else if ($$9 != -1) {
+               $$4 = $$9;
+            } else {
+               $$4 = $$10;
+            }
+
+            if ($$4 == -1) {
+               $$4 = $$8;
+            } else {
+               while ($$3 && $$4 < $$8 && ($$0.charAt($$4) == ' ' || $$0.charAt($$4) == '\n')) {
+                  $$4++;
+               }
             }
          }
       }
 
-      ffl.b $$15 = new ffl.b($$6, $$1, $$2, a($$3), false, $$5, ffl.a.c, $$7);
-      $$0.accept($$15);
-      $$15.a(0, $$1);
+      return $$4;
    }
 
-   private static int a(int $$0) {
-      return ($$0 & -67108864) == 0 ? $$0 | 0xFF000000 : $$0;
-   }
+   public void a(String $$0, int $$1, yi $$2, boolean $$3, ffl.d $$4) {
+      int $$5 = 0;
+      int $$6 = $$0.length();
+      yi $$7 = $$2;
 
-   private int b(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, gck $$6, ffl.a $$7, int $$8, int $$9, boolean $$10) {
-      if ($$10) {
-         $$0 = this.a($$0);
-      }
-
-      $$3 = a($$3);
-      Matrix4f $$11 = new Matrix4f($$5);
-      if ($$4) {
-         this.b($$0, $$1, $$2, $$3, true, $$5, $$6, $$7, $$8, $$9);
-         $$11.translate(e);
-      }
-
-      $$1 = this.b($$0, $$1, $$2, $$3, false, $$11, $$6, $$7, $$8, $$9);
-      return (int)$$1 + ($$4 ? 1 : 0);
-   }
-
-   private int b(axr $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, gck $$6, ffl.a $$7, int $$8, int $$9) {
-      $$3 = a($$3);
-      Matrix4f $$10 = new Matrix4f($$5);
-      if ($$4) {
-         this.c($$0, $$1, $$2, $$3, true, $$5, $$6, $$7, $$8, $$9);
-         $$10.translate(e);
-      }
-
-      $$1 = this.c($$0, $$1, $$2, $$3, false, $$10, $$6, $$7, $$8, $$9);
-      return (int)$$1 + ($$4 ? 1 : 0);
-   }
-
-   private float b(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, gck $$6, ffl.a $$7, int $$8, int $$9) {
-      ffl.b $$10 = new ffl.b($$6, $$1, $$2, $$3, $$4, $$5, $$7, $$9);
-      ayy.c($$0, xu.a, $$10);
-      return $$10.a($$8, $$1);
-   }
-
-   private float c(axr $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, gck $$6, ffl.a $$7, int $$8, int $$9) {
-      ffl.b $$10 = new ffl.b($$6, $$1, $$2, $$3, $$4, $$5, $$7, $$9);
-      $$0.accept($$10);
-      return $$10.a($$8, $$1);
-   }
-
-   void a(fiv $$0, boolean $$1, boolean $$2, float $$3, float $$4, float $$5, Matrix4f $$6, eyy $$7, float $$8, float $$9, float $$10, float $$11, int $$12) {
-      $$0.a($$2, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12);
-      if ($$1) {
-         $$0.a($$2, $$4 + $$3, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12);
-      }
-   }
-
-   public int b(String $$0) {
-      return ayf.f(this.h.a($$0));
-   }
-
-   public int a(xc $$0) {
-      return ayf.f(this.h.a($$0));
-   }
-
-   public int a(axr $$0) {
-      return ayf.f(this.h.a($$0));
-   }
-
-   public String a(String $$0, int $$1, boolean $$2) {
-      return $$2 ? this.h.c($$0, $$1, xu.a) : this.h.b($$0, $$1, xu.a);
-   }
-
-   public String a(String $$0, int $$1) {
-      return this.h.b($$0, $$1, xu.a);
-   }
-
-   public xc a(xc $$0, int $$1) {
-      return this.h.a($$0, $$1, xu.a);
-   }
-
-   public int b(String $$0, int $$1) {
-      return 9 * this.h.g($$0, $$1, xu.a).size();
-   }
-
-   public int b(xc $$0, int $$1) {
-      return 9 * this.h.b($$0, $$1, xu.a).size();
-   }
-
-   public List<axr> c(xc $$0, int $$1) {
-      return ty.a().a(this.h.b($$0, $$1, xu.a));
-   }
-
-   public boolean a() {
-      return ty.a().b();
-   }
-
-   public fem b() {
-      return this.h;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
-   }
-
-   class b implements axs {
-      final gck a;
-      private final boolean c;
-      private final float d;
-      private final float e;
-      private final float f;
-      private final float g;
-      private final float h;
-      private final Matrix4f i;
-      private final ffl.a j;
-      private final int k;
-      float l;
-      float m;
-      @Nullable
-      private List<fiv.a> n;
-
-      private void a(fiv.a $$0) {
-         if (this.n == null) {
-            this.n = Lists.newArrayList();
+      while ($$5 < $$6) {
+         ffl.b $$8 = new ffl.b((float)$$1);
+         boolean $$9 = azo.a($$0, $$5, $$7, $$2, $$8);
+         if ($$9) {
+            $$4.accept($$7, $$5, $$6);
+            break;
          }
 
-         this.n.add($$0);
+         int $$10 = $$8.a();
+         char $$11 = $$0.charAt($$10);
+         int $$12 = $$11 != '\n' && $$11 != ' ' ? $$10 : $$10 + 1;
+         $$4.accept($$7, $$5, $$3 ? $$12 : $$10);
+         $$5 = $$12;
+         $$7 = $$8.b();
+      }
+   }
+
+   public List<xq> g(String $$0, int $$1, yi $$2) {
+      List<xq> $$3 = Lists.newArrayList();
+      this.a($$0, $$1, $$2, false, ($$2x, $$3x, $$4) -> $$3.add(xq.a($$0.substring($$3x, $$4), $$2x)));
+      return $$3;
+   }
+
+   public List<xq> b(xq $$0, int $$1, yi $$2) {
+      List<xq> $$3 = Lists.newArrayList();
+      this.a($$0, $$1, $$2, ($$1x, $$2x) -> $$3.add($$1x));
+      return $$3;
+   }
+
+   public List<xq> a(xq $$0, int $$1, yi $$2, xq $$3) {
+      List<xq> $$4 = Lists.newArrayList();
+      this.a($$0, $$1, $$2, ($$2x, $$3x) -> $$4.add($$3x ? xq.a($$3, $$2x) : $$2x));
+      return $$4;
+   }
+
+   public void a(xq $$0, int $$1, yi $$2, BiConsumer<xq, Boolean> $$3) {
+      List<ffl.c> $$4 = Lists.newArrayList();
+      $$0.a(($$1x, $$2x) -> {
+         if (!$$2x.isEmpty()) {
+            $$4.add(new ffl.c($$2x, $$1x));
+         }
+
+         return Optional.empty();
+      }, $$2);
+      ffl.a $$5 = new ffl.a($$4);
+      boolean $$6 = true;
+      boolean $$7 = false;
+      boolean $$8 = false;
+
+      while ($$6) {
+         $$6 = false;
+         ffl.b $$9 = new ffl.b((float)$$1);
+
+         for (ffl.c $$10 : $$5.a) {
+            boolean $$11 = azo.a($$10.c, 0, $$10.d, $$2, $$9);
+            if (!$$11) {
+               int $$12 = $$9.a();
+               yi $$13 = $$9.b();
+               char $$14 = $$5.a($$12);
+               boolean $$15 = $$14 == '\n';
+               boolean $$16 = $$15 || $$14 == ' ';
+               $$7 = $$15;
+               xq $$17 = $$5.a($$12, $$16 ? 1 : 0, $$13);
+               $$3.accept($$17, $$8);
+               $$8 = !$$15;
+               $$6 = true;
+               break;
+            }
+
+            $$9.a($$10.c.length());
+         }
       }
 
-      public b(gck $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, ffl.a $$6, int $$7) {
+      xq $$18 = $$5.a();
+      if ($$18 != null) {
+         $$3.accept($$18, $$8);
+      } else if ($$7) {
+         $$3.accept(xq.b, false);
+      }
+   }
+
+   static class a {
+      final List<ffl.c> a;
+      private String b;
+
+      public a(List<ffl.c> $$0) {
          this.a = $$0;
-         this.l = $$1;
-         this.m = $$2;
-         this.c = $$4;
-         this.d = $$4 ? 0.25F : 1.0F;
-         this.e = (float)($$3 >> 16 & 0xFF) / 255.0F * this.d;
-         this.f = (float)($$3 >> 8 & 0xFF) / 255.0F * this.d;
-         this.g = (float)($$3 & 0xFF) / 255.0F * this.d;
-         this.h = (float)($$3 >> 24 & 0xFF) / 255.0F;
-         this.i = $$5;
-         this.j = $$6;
-         this.k = $$7;
+         this.b = $$0.stream().map($$0x -> $$0x.c).collect(Collectors.joining());
+      }
+
+      public char a(int $$0) {
+         return this.b.charAt($$0);
+      }
+
+      public xq a(int $$0, int $$1, yi $$2) {
+         feq $$3 = new feq();
+         ListIterator<ffl.c> $$4 = this.a.listIterator();
+         int $$5 = $$0;
+         boolean $$6 = false;
+
+         while ($$4.hasNext()) {
+            ffl.c $$7 = $$4.next();
+            String $$8 = $$7.c;
+            int $$9 = $$8.length();
+            if (!$$6) {
+               if ($$5 > $$9) {
+                  $$3.a($$7);
+                  $$4.remove();
+                  $$5 -= $$9;
+               } else {
+                  String $$10 = $$8.substring(0, $$5);
+                  if (!$$10.isEmpty()) {
+                     $$3.a(xq.a($$10, $$7.d));
+                  }
+
+                  $$5 += $$1;
+                  $$6 = true;
+               }
+            }
+
+            if ($$6) {
+               if ($$5 <= $$9) {
+                  String $$11 = $$8.substring($$5);
+                  if ($$11.isEmpty()) {
+                     $$4.remove();
+                  } else {
+                     $$4.set(new ffl.c($$11, $$2));
+                  }
+                  break;
+               }
+
+               $$4.remove();
+               $$5 -= $$9;
+            }
+         }
+
+         this.b = this.b.substring($$0 + $$1);
+         return $$3.b();
+      }
+
+      @Nullable
+      public xq a() {
+         feq $$0 = new feq();
+         this.a.forEach($$0::a);
+         this.a.clear();
+         return $$0.a();
+      }
+   }
+
+   class b implements ayh {
+      private final float b;
+      private int c = -1;
+      private yi d = yi.a;
+      private boolean e;
+      private float f;
+      private int g = -1;
+      private yi h = yi.a;
+      private int i;
+      private int j;
+
+      public b(final float $$0) {
+         this.b = Math.max($$0, 1.0F);
       }
 
       @Override
-      public boolean accept(int $$0, xu $$1, int $$2) {
-         fir $$3 = ffl.this.a($$1.k());
-         eww $$4 = $$3.a($$2, ffl.this.g);
-         fiv $$5 = $$1.f() && $$2 != 32 ? $$3.a($$4) : $$3.a($$2);
-         boolean $$6 = $$1.b();
-         float $$7 = this.h;
-         xw $$8 = $$1.a();
-         float $$10;
-         float $$11;
-         float $$12;
-         if ($$8 != null) {
-            int $$9 = $$8.a();
-            $$10 = (float)($$9 >> 16 & 0xFF) / 255.0F * this.d;
-            $$11 = (float)($$9 >> 8 & 0xFF) / 255.0F * this.d;
-            $$12 = (float)($$9 & 0xFF) / 255.0F * this.d;
+      public boolean accept(int $$0, yi $$1, int $$2) {
+         int $$3 = $$0 + this.j;
+         switch ($$2) {
+            case 10:
+               return this.a($$3, $$1);
+            case 32:
+               this.g = $$3;
+               this.h = $$1;
+            default:
+               float $$4 = ffl.this.a.getWidth($$2, $$1);
+               this.f += $$4;
+               if (!this.e || !(this.f > this.b)) {
+                  this.e |= $$4 != 0.0F;
+                  this.i = $$3 + Character.charCount($$2);
+                  return true;
+               } else {
+                  return this.g != -1 ? this.a(this.g, this.h) : this.a($$3, $$1);
+               }
+         }
+      }
+
+      private boolean a(int $$0, yi $$1) {
+         this.c = $$0;
+         this.d = $$1;
+         return false;
+      }
+
+      private boolean c() {
+         return this.c != -1;
+      }
+
+      public int a() {
+         return this.c() ? this.c : this.i;
+      }
+
+      public yi b() {
+         return this.d;
+      }
+
+      public void a(int $$0) {
+         this.j += $$0;
+      }
+   }
+
+   static class c implements xq {
+      final String c;
+      final yi d;
+
+      public c(String $$0, yi $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
+
+      @Override
+      public <T> Optional<T> a(xq.a<T> $$0) {
+         return $$0.accept(this.c);
+      }
+
+      @Override
+      public <T> Optional<T> a(xq.b<T> $$0, yi $$1) {
+         return $$0.accept(this.d.a($$1), this.c);
+      }
+   }
+
+   @FunctionalInterface
+   public interface d {
+      void accept(yi var1, int var2, int var3);
+   }
+
+   class e implements ayh {
+      private float b;
+      private int c;
+
+      public e(final float $$0) {
+         this.b = $$0;
+      }
+
+      @Override
+      public boolean accept(int $$0, yi $$1, int $$2) {
+         this.b = this.b - ffl.this.a.getWidth($$2, $$1);
+         if (this.b >= 0.0F) {
+            this.c = $$0 + Character.charCount($$2);
+            return true;
          } else {
-            $$10 = this.e;
-            $$11 = this.f;
-            $$12 = this.g;
+            return false;
          }
-
-         if (!($$5 instanceof fiw)) {
-            float $$16 = $$6 ? $$4.a() : 0.0F;
-            float $$17 = this.c ? $$4.b() : 0.0F;
-            eyy $$18 = this.a.getBuffer($$5.a(this.j));
-            ffl.this.a($$5, $$6, $$1.c(), $$16, this.l + $$17, this.m + $$17, this.i, $$18, $$10, $$11, $$12, $$7, this.k);
-         }
-
-         float $$19 = $$4.a($$6);
-         float $$20 = this.c ? 1.0F : 0.0F;
-         if ($$1.d()) {
-            this.a(new fiv.a(this.l + $$20 - 1.0F, this.m + $$20 + 4.5F, this.l + $$20 + $$19, this.m + $$20 + 4.5F - 1.0F, 0.01F, $$10, $$11, $$12, $$7));
-         }
-
-         if ($$1.e()) {
-            this.a(new fiv.a(this.l + $$20 - 1.0F, this.m + $$20 + 9.0F, this.l + $$20 + $$19, this.m + $$20 + 9.0F - 1.0F, 0.01F, $$10, $$11, $$12, $$7));
-         }
-
-         this.l += $$19;
-         return true;
       }
 
-      public float a(int $$0, float $$1) {
-         if ($$0 != 0) {
-            float $$2 = (float)($$0 >> 24 & 0xFF) / 255.0F;
-            float $$3 = (float)($$0 >> 16 & 0xFF) / 255.0F;
-            float $$4 = (float)($$0 >> 8 & 0xFF) / 255.0F;
-            float $$5 = (float)($$0 & 0xFF) / 255.0F;
-            this.a(new fiv.a($$1 - 1.0F, this.m + 9.0F, this.l + 1.0F, this.m - 1.0F, 0.01F, $$3, $$4, $$5, $$2));
-         }
-
-         if (this.n != null) {
-            fiv $$6 = ffl.this.a(xu.b).b();
-            eyy $$7 = this.a.getBuffer($$6.a(this.j));
-
-            for (fiv.a $$8 : this.n) {
-               $$6.a($$8, this.i, $$7, this.k);
-            }
-         }
-
-         return this.l;
+      public int a() {
+         return this.c;
       }
+
+      public void b() {
+         this.c = 0;
+      }
+   }
+
+   @FunctionalInterface
+   public interface f {
+      float getWidth(int var1, yi var2);
    }
 }

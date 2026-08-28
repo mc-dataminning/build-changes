@@ -1,87 +1,49 @@
-import com.google.gson.JsonElement;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class nz {
-   public static final nz.a a = a(nx::a, nw.c);
-   public static final nz.a b = a(nx::a, nw.d);
-   public static final nz.a c = a(nx::a, nw.e);
-   public static final nz.a d = a(nx::k, nw.j);
-   public static final nz.a e = a(nx::k, nw.k);
-   public static final nz.a f = a(nx::q, nw.n);
-   public static final nz.a g = a(nx::l, nw.m);
-   public static final nz.a h = a(nx::B, nw.p);
-   public static final nz.a i = a(nx::A, nw.q);
-   public static final nz.a j = a(nx::f, nw.aw);
-   public static final nz.a k = a(nx::g, nw.ax);
-   public static final nz.a l = a(nx::g, nw.ay);
-   public static final nz.a m = a(nx::g, nw.az);
-   public static final nz.a n = a(nx::g, nw.aA);
-   public static final nz.a o = a(nx::i, nw.aD);
-   public static final nz.a p = a(nx::j, nw.aB);
-   public static final nz.a q = a(nx::u, nw.aa);
-   public static final nz.a r = a(nx::D, nw.aS);
-   public static final nz.a s = a(nx::a, nw.ad);
-   public static final nz.a t = a(nx::x, nw.bd);
-   public static final nz.a u = a(nx::x, nw.be);
-   public static final nz.a v = a(nx::b, nw.bk);
-   public static final nz.a w = a(nx::n, nw.j);
-   public static final nz.a x = a(nx::n, nw.k);
-   public static final nz.a y = a(nx::r, nw.n);
-   public static final nz.a z = a(nx::s, nw.j);
-   private final nx A;
-   private final nv B;
+public final class nz {
+   private static final nz a = new nz(ImmutableList.of());
+   private static final Comparator<dta.a<?>> b = Comparator.comparing($$0 -> $$0.a().f());
+   private final List<dta.a<?>> c;
 
-   private nz(nx $$0, nv $$1) {
-      this.A = $$0;
-      this.B = $$1;
+   public nz a(dta.a<?> $$0) {
+      return new nz(ImmutableList.builder().addAll(this.c).add($$0).build());
    }
 
-   public nv a() {
-      return this.B;
+   public nz a(nz $$0) {
+      return new nz(ImmutableList.builder().addAll(this.c).addAll($$0.c).build());
    }
 
-   public nx b() {
-      return this.A;
+   private nz(List<dta.a<?>> $$0) {
+      this.c = $$0;
    }
 
-   public nz a(Consumer<nx> $$0) {
-      $$0.accept(this.A);
-      return this;
+   public static nz a() {
+      return a;
    }
 
-   public akn a(dea $$0, BiConsumer<akn, Supplier<JsonElement>> $$1) {
-      return this.B.a($$0, this.A, $$1);
+   public static nz a(dta.a<?>... $$0) {
+      return new nz(ImmutableList.copyOf($$0));
    }
 
-   public akn a(dea $$0, String $$1, BiConsumer<akn, Supplier<JsonElement>> $$2) {
-      return this.B.a($$0, $$1, this.A, $$2);
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof nz && this.c.equals(((nz)$$0).c);
    }
 
-   private static nz.a a(Function<dea, nx> $$0, nv $$1) {
-      return $$2 -> new nz($$0.apply($$2), $$1);
+   @Override
+   public int hashCode() {
+      return this.c.hashCode();
    }
 
-   public static nz a(akn $$0) {
-      return new nz(nx.b($$0), nw.c);
+   public String b() {
+      return this.c.stream().sorted(b).map(dta.a::toString).collect(Collectors.joining(","));
    }
 
-   @FunctionalInterface
-   public interface a {
-      nz get(dea var1);
-
-      default akn create(dea $$0, BiConsumer<akn, Supplier<JsonElement>> $$1) {
-         return this.get($$0).a($$0, $$1);
-      }
-
-      default akn createWithSuffix(dea $$0, String $$1, BiConsumer<akn, Supplier<JsonElement>> $$2) {
-         return this.get($$0).a($$0, $$1, $$2);
-      }
-
-      default nz.a updateTexture(Consumer<nx> $$0) {
-         return $$1 -> this.get($$1).a($$0);
-      }
+   @Override
+   public String toString() {
+      return this.b();
    }
 }

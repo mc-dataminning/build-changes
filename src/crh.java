@@ -1,81 +1,69 @@
-import java.util.EnumMap;
-import java.util.List;
-import java.util.function.Supplier;
+public class crh extends cpp {
+   private static final int k = 27;
+   private final bqi l;
 
-public class crh {
-   public static final ix<crg> a = a("leather", ac.a(new EnumMap<>(crf.a.class), $$0 -> {
-      $$0.put(crf.a.d, 1);
-      $$0.put(crf.a.c, 2);
-      $$0.put(crf.a.b, 3);
-      $$0.put(crf.a.a, 1);
-      $$0.put(crf.a.e, 3);
-   }), 15, avi.av, 0.0F, 0.0F, () -> cxt.a(ctt.qD), List.of(new crg.a(new akn("leather"), "", true), new crg.a(new akn("leather"), "_overlay", false)));
-   public static final ix<crg> b = a("chainmail", ac.a(new EnumMap<>(crf.a.class), $$0 -> {
-      $$0.put(crf.a.d, 1);
-      $$0.put(crf.a.c, 4);
-      $$0.put(crf.a.b, 5);
-      $$0.put(crf.a.a, 2);
-      $$0.put(crf.a.e, 4);
-   }), 12, avi.ap, 0.0F, 0.0F, () -> cxt.a(ctt.oE));
-   public static final ix<crg> c = a("iron", ac.a(new EnumMap<>(crf.a.class), $$0 -> {
-      $$0.put(crf.a.d, 2);
-      $$0.put(crf.a.c, 5);
-      $$0.put(crf.a.b, 6);
-      $$0.put(crf.a.a, 2);
-      $$0.put(crf.a.e, 5);
-   }), 9, avi.au, 0.0F, 0.0F, () -> cxt.a(ctt.oE));
-   public static final ix<crg> d = a("gold", ac.a(new EnumMap<>(crf.a.class), $$0 -> {
-      $$0.put(crf.a.d, 1);
-      $$0.put(crf.a.c, 3);
-      $$0.put(crf.a.b, 5);
-      $$0.put(crf.a.a, 2);
-      $$0.put(crf.a.e, 7);
-   }), 25, avi.at, 0.0F, 0.0F, () -> cxt.a(ctt.oI));
-   public static final ix<crg> e = a("diamond", ac.a(new EnumMap<>(crf.a.class), $$0 -> {
-      $$0.put(crf.a.d, 3);
-      $$0.put(crf.a.c, 6);
-      $$0.put(crf.a.b, 8);
-      $$0.put(crf.a.a, 3);
-      $$0.put(crf.a.e, 11);
-   }), 10, avi.aq, 2.0F, 0.0F, () -> cxt.a(ctt.oy));
-   public static final ix<crg> f = a("turtle", ac.a(new EnumMap<>(crf.a.class), $$0 -> {
-      $$0.put(crf.a.d, 2);
-      $$0.put(crf.a.c, 5);
-      $$0.put(crf.a.b, 6);
-      $$0.put(crf.a.a, 2);
-      $$0.put(crf.a.e, 5);
-   }), 9, avi.ax, 0.0F, 0.0F, () -> cxt.a(ctt.op));
-   public static final ix<crg> g = a("netherite", ac.a(new EnumMap<>(crf.a.class), $$0 -> {
-      $$0.put(crf.a.d, 3);
-      $$0.put(crf.a.c, 6);
-      $$0.put(crf.a.b, 8);
-      $$0.put(crf.a.a, 3);
-      $$0.put(crf.a.e, 11);
-   }), 15, avi.aw, 3.0F, 0.1F, () -> cxt.a(ctt.oJ));
-   public static final ix<crg> h = a("armadillo", ac.a(new EnumMap<>(crf.a.class), $$0 -> {
-      $$0.put(crf.a.d, 3);
-      $$0.put(crf.a.c, 6);
-      $$0.put(crf.a.b, 8);
-      $$0.put(crf.a.a, 3);
-      $$0.put(crf.a.e, 11);
-   }), 10, avi.ay, 0.0F, 0.0F, () -> cxt.a(ctt.oq));
-
-   public static ix<crg> a(jk<crg> $$0) {
-      return a;
+   public crh(int $$0, cmr $$1) {
+      this($$0, $$1, new bqy(27));
    }
 
-   private static ix<crg> a(String $$0, EnumMap<crf.a, Integer> $$1, int $$2, ix<avh> $$3, float $$4, float $$5, Supplier<cxt> $$6) {
-      List<crg.a> $$7 = List.of(new crg.a(new akn($$0)));
-      return a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
+   public crh(int $$0, cmr $$1, bqi $$2) {
+      super(cqw.u, $$0);
+      a($$2, 27);
+      this.l = $$2;
+      $$2.d_($$1.l);
+      int $$3 = 3;
+      int $$4 = 9;
 
-   private static ix<crg> a(String $$0, EnumMap<crf.a, Integer> $$1, int $$2, ix<avh> $$3, float $$4, float $$5, Supplier<cxt> $$6, List<crg.a> $$7) {
-      EnumMap<crf.a, Integer> $$8 = new EnumMap<>(crf.a.class);
-
-      for (crf.a $$9 : crf.a.values()) {
-         $$8.put($$9, $$1.get($$9));
+      for (int $$5 = 0; $$5 < 3; $$5++) {
+         for (int $$6 = 0; $$6 < 9; $$6++) {
+            this.a(new cri($$2, $$6 + $$5 * 9, 8 + $$6 * 18, 18 + $$5 * 18));
+         }
       }
 
-      return jk.b(le.ar, new akn($$0), new crg($$8, $$2, $$3, $$6, $$7, $$4, $$5));
+      for (int $$7 = 0; $$7 < 3; $$7++) {
+         for (int $$8 = 0; $$8 < 9; $$8++) {
+            this.a(new crk($$1, $$8 + $$7 * 9 + 9, 8 + $$8 * 18, 84 + $$7 * 18));
+         }
+      }
+
+      for (int $$9 = 0; $$9 < 9; $$9++) {
+         this.a(new crk($$1, $$9, 8 + $$9 * 18, 142));
+      }
+   }
+
+   @Override
+   public boolean a(cms $$0) {
+      return this.l.a($$0);
+   }
+
+   @Override
+   public cuk a(cms $$0, int $$1) {
+      cuk $$2 = cuk.l;
+      crk $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cuk $$4 = $$3.g();
+         $$2 = $$4.s();
+         if ($$1 < this.l.b()) {
+            if (!this.a($$4, this.l.b(), this.i.size(), true)) {
+               return cuk.l;
+            }
+         } else if (!this.a($$4, 0, this.l.b(), false)) {
+            return cuk.l;
+         }
+
+         if ($$4.e()) {
+            $$3.e(cuk.l);
+         } else {
+            $$3.b();
+         }
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public void b(cms $$0) {
+      super.b($$0);
+      this.l.c($$0);
    }
 }

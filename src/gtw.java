@@ -1,22 +1,33 @@
-public class gtw implements fhd {
-   private final wx a;
-   private final int b;
-   private final int c;
-   private final int d;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
+import java.util.concurrent.Executor;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
-   public gtw(wx $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+public class gtw implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final blw<gtv> b;
+   private final bpi<Runnable> c;
+
+   public gtw(FileChannel $$0, Executor $$1) {
+      this.b = new blw<>(gtv.a, $$0);
+      this.c = bpi.a($$1, "telemetry-event-log");
+   }
+
+   public gtx a() {
+      return $$0 -> this.c.a(() -> {
+            try {
+               this.b.a($$0);
+            } catch (IOException var3) {
+               a.error("Failed to write telemetry event to log", var3);
+            }
+         });
    }
 
    @Override
-   public void a(ffn $$0, int $$1, int $$2, float $$3) {
-      $$0.a(feb.Q().h, this.a, this.b, this.c, this.d);
-   }
-
-   public wx a() {
-      return this.a;
+   public void close() {
+      this.c.a(() -> IOUtils.closeQuietly(this.b));
+      this.c.close();
    }
 }

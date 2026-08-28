@@ -1,71 +1,96 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.Optional;
-import java.util.Set;
+import com.google.common.base.Joiner;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.lang.reflect.Array;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 
-public class dsd extends dsg<Integer> {
-   private final ImmutableSet<Integer> a;
-   private final int b;
-   private final int c;
+public class dsd {
+   private static final Joiner a = Joiner.on(",");
+   private final List<String[]> b = Lists.newArrayList();
+   private final Map<Character, Predicate<dsb>> c = Maps.newHashMap();
+   private int d;
+   private int e;
 
-   protected dsd(String $$0, int $$1, int $$2) {
-      super($$0, Integer.class);
-      if ($$1 < 0) {
-         throw new IllegalArgumentException("Min value of " + $$0 + " must be 0 or greater");
-      } else if ($$2 <= $$1) {
-         throw new IllegalArgumentException("Max value of " + $$0 + " must be greater than min (" + $$1 + ")");
-      } else {
-         this.b = $$1;
-         this.c = $$2;
-         Set<Integer> $$3 = Sets.newHashSet();
+   private dsd() {
+      this.c.put(' ', $$0 -> true);
+   }
 
-         for (int $$4 = $$1; $$4 <= $$2; $$4++) {
-            $$3.add($$4);
+   public dsd a(String... $$0) {
+      if (!ArrayUtils.isEmpty($$0) && !StringUtils.isEmpty($$0[0])) {
+         if (this.b.isEmpty()) {
+            this.d = $$0.length;
+            this.e = $$0[0].length();
          }
 
-         this.a = ImmutableSet.copyOf($$3);
-      }
-   }
+         if ($$0.length != this.d) {
+            throw new IllegalArgumentException("Expected aisle with height of " + this.d + ", but was given one with a height of " + $$0.length + ")");
+         } else {
+            for (String $$1 : $$0) {
+               if ($$1.length() != this.e) {
+                  throw new IllegalArgumentException(
+                     "Not all rows in the given aisle are the correct width (expected " + this.e + ", found one with " + $$1.length() + ")"
+                  );
+               }
 
-   @Override
-   public Collection<Integer> a() {
-      return this.a;
-   }
+               for (char $$2 : $$1.toCharArray()) {
+                  if (!this.c.containsKey($$2)) {
+                     this.c.put($$2, null);
+                  }
+               }
+            }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof dsd $$1 && super.equals($$0)) {
-            return this.a.equals($$1.a);
+            this.b.add($$0);
+            return this;
          }
-
-         return false;
+      } else {
+         throw new IllegalArgumentException("Empty pattern for aisle");
       }
    }
 
-   @Override
-   public int b() {
-      return 31 * super.b() + this.a.hashCode();
+   public static dsd a() {
+      return new dsd();
    }
 
-   public static dsd a(String $$0, int $$1, int $$2) {
-      return new dsd($$0, $$1, $$2);
+   public dsd a(char $$0, Predicate<dsb> $$1) {
+      this.c.put($$0, $$1);
+      return this;
    }
 
-   @Override
-   public Optional<Integer> b(String $$0) {
-      try {
-         Integer $$1 = Integer.valueOf($$0);
-         return $$1 >= this.b && $$1 <= this.c ? Optional.of($$1) : Optional.empty();
-      } catch (NumberFormatException var3) {
-         return Optional.empty();
+   public dsc b() {
+      return new dsc(this.c());
+   }
+
+   private Predicate<dsb>[][][] c() {
+      this.d();
+      Predicate<dsb>[][][] $$0 = (Predicate<dsb>[][][])Array.newInstance(Predicate.class, this.b.size(), this.d, this.e);
+
+      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
+         for (int $$2 = 0; $$2 < this.d; $$2++) {
+            for (int $$3 = 0; $$3 < this.e; $$3++) {
+               $$0[$$1][$$2][$$3] = this.c.get(this.b.get($$1)[$$2].charAt($$3));
+            }
+         }
       }
+
+      return $$0;
    }
 
-   public String a(Integer $$0) {
-      return $$0.toString();
+   private void d() {
+      List<Character> $$0 = Lists.newArrayList();
+
+      for (Entry<Character, Predicate<dsb>> $$1 : this.c.entrySet()) {
+         if ($$1.getValue() == null) {
+            $$0.add($$1.getKey());
+         }
+      }
+
+      if (!$$0.isEmpty()) {
+         throw new IllegalStateException("Predicates for character(s) " + a.join($$0) + " are missing");
+      }
    }
 }

@@ -1,24 +1,24 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.Dynamic;
 
-public class bbg extends DataFix {
+public class bbg extends bfq {
    public bbg(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+      super($$0, $$1, "BlockEntitySignTextStrictJsonFix", bgs.s, "Sign");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bga.c);
-      Type<?> $$1 = $$0.findFieldType("Level");
-      OpticFinder<?> $$2 = DSL.fieldFinder("Level", $$1);
-      return this.fixTypeEverywhereTyped(
-         "ChunkLightRemoveFix",
-         $$0,
-         this.getOutputSchema().getType(bga.c),
-         $$1x -> $$1x.updateTyped($$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.remove("isLightOn")))
-      );
+   private Dynamic<?> a(Dynamic<?> $$0, String $$1) {
+      return $$0.update($$1, baa::b);
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), $$0x -> {
+         $$0x = this.a($$0x, "Text1");
+         $$0x = this.a($$0x, "Text2");
+         $$0x = this.a($$0x, "Text3");
+         return this.a($$0x, "Text4");
+      });
    }
 }

@@ -1,69 +1,75 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.JsonOps;
+import java.io.BufferedReader;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import org.slf4j.Logger;
 
-public class goz extends ty {
-   private static final Logger b = LogUtils.getLogger();
-   private final Map<String, String> c;
-   private final boolean d;
+public class goz {
+   private static final Logger a = LogUtils.getLogger();
+   private static final aku b = new aku("atlases", ".json");
+   private final List<goy> c;
 
-   private goz(Map<String, String> $$0, boolean $$1) {
+   private goz(List<goy> $$0) {
       this.c = $$0;
-      this.d = $$1;
    }
 
-   public static goz a(atx $$0, List<String> $$1, boolean $$2) {
-      Map<String, String> $$3 = Maps.newHashMap();
-
-      for (String $$4 : $$1) {
-         String $$5 = String.format(Locale.ROOT, "lang/%s.json", $$4);
-
-         for (String $$6 : $$0.a()) {
-            try {
-               akn $$7 = new akn($$6, $$5);
-               a($$4, $$0.a($$7), $$3);
-            } catch (Exception var10) {
-               b.warn("Skipped language file: {}:{} ({})", new Object[]{$$6, $$5, var10.toString()});
+   public List<Function<gox, goo>> a(aul $$0) {
+      final Map<alb, goy.b> $$1 = new HashMap<>();
+      goy.a $$2 = new goy.a() {
+         @Override
+         public void a(alb $$0, goy.b $$1x) {
+            goy.b $$2 = $$1.put($$0, $$1);
+            if ($$2 != null) {
+               $$2.a();
             }
          }
-      }
 
-      return new goz(ImmutableMap.copyOf($$3), $$2);
+         @Override
+         public void a(Predicate<alb> $$0) {
+            Iterator<Entry<alb, goy.b>> $$1 = $$1.entrySet().iterator();
+
+            while ($$1.hasNext()) {
+               Entry<alb, goy.b> $$2 = $$1.next();
+               if ($$0.test($$2.getKey())) {
+                  $$2.getValue().a();
+                  $$1.remove();
+               }
+            }
+         }
+      };
+      this.c.forEach($$2x -> $$2x.a($$0, $$2));
+      Builder<Function<gox, goo>> $$3 = ImmutableList.builder();
+      $$3.add((Function<gox, goo>)$$0x -> gok.a());
+      $$3.addAll($$1.values());
+      return $$3.build();
    }
 
-   private static void a(String $$0, List<atv> $$1, Map<String, String> $$2) {
-      for (atv $$3 : $$1) {
-         try (InputStream $$4 = $$3.d()) {
-            ty.a($$4, $$2::put);
-         } catch (IOException var10) {
-            b.warn("Failed to load translations for {} from pack {}", new Object[]{$$0, $$3.b(), var10});
+   public static goz a(aul $$0, alb $$1) {
+      alb $$2 = b.a($$1);
+      List<goy> $$3 = new ArrayList<>();
+
+      for (auj $$4 : $$0.a($$2)) {
+         try (BufferedReader $$5 = $$4.e()) {
+            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
+            $$3.addAll((Collection<? extends goy>)gpb.h.parse($$6).getOrThrow());
+         } catch (Exception var11) {
+            a.error("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
          }
       }
-   }
 
-   @Override
-   public String a(String $$0, String $$1) {
-      return this.c.getOrDefault($$0, $$1);
-   }
-
-   @Override
-   public boolean b(String $$0) {
-      return this.c.containsKey($$0);
-   }
-
-   @Override
-   public boolean b() {
-      return this.d;
-   }
-
-   @Override
-   public axr a(xc $$0) {
-      return gpa.a($$0, this.d);
+      return new goz($$3);
    }
 }

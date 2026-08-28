@@ -1,7 +1,17 @@
-import io.netty.handler.codec.EncoderException;
+public enum wk {
+   a("handshake"),
+   b("play"),
+   c("status"),
+   d("login"),
+   e("configuration");
 
-public class wk extends EncoderException {
-   public wk(Throwable $$0) {
-      super($$0);
+   private final String f;
+
+   private wk(final String $$0) {
+      this.f = $$0;
+   }
+
+   public String a() {
+      return this.f;
    }
 }

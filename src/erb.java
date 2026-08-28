@@ -2,29 +2,40 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class erb extends eqs {
-   public static final MapCodec<erb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(jy.b.fieldOf("components").forGetter($$0x -> $$0x.b)).apply($$0, erb::new)
-   );
-   private final jy b;
+public class erb extends erp {
+   public static final MapCodec<erb> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, erb::new));
 
-   private erb(List<esn> $$0, jy $$1) {
+   private erb(List<etn> $$0) {
       super($$0);
-      this.b = $$1;
    }
 
    @Override
-   public equ b() {
-      return eqv.j;
+   public err<erb> b() {
+      return ers.z;
    }
 
    @Override
-   public ctq a(ctq $$0, eph $$1) {
-      $$0.a(this.b);
+   public cuk a(cuk $$0, eqd $$1) {
+      Float $$2 = $$1.c(esz.j);
+      if ($$2 != null) {
+         azc $$3 = $$1.b();
+         float $$4 = 1.0F / $$2;
+         int $$5 = $$0.I();
+         int $$6 = 0;
+
+         for (int $$7 = 0; $$7 < $$5; $$7++) {
+            if ($$3.i() <= $$4) {
+               $$6++;
+            }
+         }
+
+         $$0.e($$6);
+      }
+
       return $$0;
    }
 
-   public static <T> eqs.a<?> a(ka<T> $$0, T $$1) {
-      return a($$2 -> new erb($$2, jy.a().a($$0, $$1).a()));
+   public static erp.a<?> c() {
+      return a(erb::new);
    }
 }

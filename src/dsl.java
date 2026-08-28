@@ -1,21 +1,17 @@
-public enum dsl implements ayz {
-   a("top"),
-   b("bottom"),
-   c("double");
+public enum dsl implements azp {
+   a("floor"),
+   b("ceiling"),
+   c("single_wall"),
+   d("double_wall");
 
-   private final String d;
+   private final String e;
 
-   private dsl(String $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.d;
+   private dsl(final String $$0) {
+      this.e = $$0;
    }
 
    @Override
    public String c() {
-      return this.d;
+      return this.e;
    }
 }

@@ -1,14 +1,15 @@
-import com.google.gson.JsonObject;
+public class gpt extends gpx {
+   private static final alb a = new alb("back");
 
-public class gpt implements asw<gps> {
-   public gps b(JsonObject $$0) {
-      boolean $$1 = axv.a($$0, "blur", false);
-      boolean $$2 = axv.a($$0, "clamp", false);
-      return new gps($$1, $$2);
+   public gpt(gov $$0) {
+      super($$0, new alb("textures/atlas/paintings.png"), new alb("paintings"));
    }
 
-   @Override
-   public String a() {
-      return "texture";
+   public gou a(ciy $$0) {
+      return this.a(lp.l.b($$0));
+   }
+
+   public gou a() {
+      return this.a(a);
    }
 }

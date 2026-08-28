@@ -1,53 +1,30 @@
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
+import java.util.Collections;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class cre extends crf {
-   private final akn j;
-   @Nullable
-   private final akn k;
-   private final cre.a l;
+public interface cre {
+   void a(@Nullable cys<?> var1);
 
-   public cre(ix<crg> $$0, cre.a $$1, boolean $$2, ctl.a $$3) {
-      super($$0, crf.a.e, $$3);
-      this.l = $$1;
-      akn $$4 = $$1.c.apply($$0.e().orElseThrow().a());
-      this.j = $$4.e(".png");
-      if ($$2) {
-         this.k = $$4.e("_overlay.png");
-      } else {
-         this.k = null;
+   @Nullable
+   cys<?> d();
+
+   default void a(cms $$0, List<cuk> $$1) {
+      cys<?> $$2 = this.d();
+      if ($$2 != null) {
+         $$0.a($$2, $$1);
+         if (!$$2.b().ao_()) {
+            $$0.a(Collections.singleton($$2));
+            this.a(null);
+         }
       }
    }
 
-   public akn b() {
-      return this.j;
-   }
-
-   @Nullable
-   public akn c() {
-      return this.k;
-   }
-
-   public cre.a d() {
-      return this.l;
-   }
-
-   @Override
-   public avh e() {
-      return this.l.d;
-   }
-
-   public static enum a {
-      a($$0 -> $$0.a((UnaryOperator<String>)($$0x -> "textures/entity/horse/armor/horse_armor_" + $$0x)), avi.nB),
-      b($$0 -> $$0.c("textures/entity/wolf/wolf_armor"), avi.CE);
-
-      final Function<akn, akn> c;
-      final avh d;
-
-      private a(Function<akn, akn> $$0, avh $$1) {
-         this.c = $$0;
-         this.d = $$1;
+   default boolean a(dbt $$0, arc $$1, cys<?> $$2) {
+      if (!$$2.b().ao_() && $$0.ab().b(dbp.w) && !$$1.I().b($$2)) {
+         return false;
+      } else {
+         this.a($$2);
+         return true;
       }
    }
 }

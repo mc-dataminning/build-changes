@@ -1,46 +1,17 @@
-public abstract class bsh extends bss {
-   protected bsh(bsc<? extends bsh> $$0, daz $$1) {
+class bsh extends brv {
+   protected bsh(brw $$0, int $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected void a(double $$0, boolean $$1, drd $$2, io $$3) {
+   public boolean a(btk $$0, int $$1) {
+      $$0.a($$0.dQ().p(), 1.0F);
+      return true;
    }
 
    @Override
-   public void a(eum $$0) {
-      if (this.da()) {
-         if (this.be()) {
-            this.a(0.02F, $$0);
-            this.a(bsv.a, this.ds());
-            this.g(this.ds().a(0.8F));
-         } else if (this.bs()) {
-            this.a(0.02F, $$0);
-            this.a(bsv.a, this.ds());
-            this.g(this.ds().a(0.5));
-         } else {
-            float $$1 = 0.91F;
-            if (this.aE()) {
-               $$1 = this.dP().a_(this.aK()).b().h() * 0.91F;
-            }
-
-            float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
-            $$1 = 0.91F;
-            if (this.aE()) {
-               $$1 = this.dP().a_(this.aK()).b().h() * 0.91F;
-            }
-
-            this.a(this.aE() ? 0.1F * $$2 : 0.02F, $$0);
-            this.a(bsv.a, this.ds());
-            this.g(this.ds().a((double)$$1));
-         }
-      }
-
-      this.r(false);
-   }
-
-   @Override
-   public boolean q_() {
-      return false;
+   public boolean a(int $$0, int $$1) {
+      int $$2 = 40 >> $$1;
+      return $$2 > 0 ? $$0 % $$2 == 0 : true;
    }
 }

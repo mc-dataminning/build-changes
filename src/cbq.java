@@ -1,235 +1,103 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-import java.util.function.DoublePredicate;
+import java.util.EnumSet;
 import java.util.function.Predicate;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class cbq {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 2;
-   private final Map<UUID, cbq.a> c = Maps.newHashMap();
+public class cbq extends cai {
+   private static final ceb c = ceb.b().a(10.0).d();
+   private final ceb d;
+   protected final btt a;
+   private final double e;
+   private double f;
+   private double g;
+   private double h;
+   private double i;
+   private double j;
+   @Nullable
+   protected cms b;
+   private int k;
+   private boolean l;
+   private final Predicate<cuk> m;
+   private final boolean n;
 
-   @azi
-   public Map<UUID, Object2IntMap<cbr>> a() {
-      Map<UUID, Object2IntMap<cbr>> $$0 = Maps.newHashMap();
-      this.c.keySet().forEach($$1 -> {
-         cbq.a $$2 = this.c.get($$1);
-         $$0.put($$1, $$2.a);
-      });
-      return $$0;
+   public cbq(btt $$0, double $$1, Predicate<cuk> $$2, boolean $$3) {
+      this.a = $$0;
+      this.e = $$1;
+      this.m = $$2;
+      this.n = $$3;
+      this.a(EnumSet.of(cai.a.a, cai.a.b));
+      this.d = c.c().a(this::a);
    }
 
-   public void b() {
-      Iterator<cbq.a> $$0 = this.c.values().iterator();
-
-      while ($$0.hasNext()) {
-         cbq.a $$1 = $$0.next();
-         $$1.a();
-         if ($$1.b()) {
-            $$0.remove();
-         }
-      }
-   }
-
-   private Stream<cbq.b> c() {
-      return this.c.entrySet().stream().flatMap($$0 -> $$0.getValue().a($$0.getKey()));
-   }
-
-   private Collection<cbq.b> a(aym $$0, int $$1) {
-      List<cbq.b> $$2 = this.c().toList();
-      if ($$2.isEmpty()) {
-         return Collections.emptyList();
+   @Override
+   public boolean a() {
+      if (this.k > 0) {
+         this.k--;
+         return false;
       } else {
-         int[] $$3 = new int[$$2.size()];
-         int $$4 = 0;
-
-         for (int $$5 = 0; $$5 < $$2.size(); $$5++) {
-            cbq.b $$6 = $$2.get($$5);
-            $$4 += Math.abs($$6.a());
-            $$3[$$5] = $$4 - 1;
-         }
-
-         Set<cbq.b> $$7 = Sets.newIdentityHashSet();
-
-         for (int $$8 = 0; $$8 < $$1; $$8++) {
-            int $$9 = $$0.a($$4);
-            int $$10 = Arrays.binarySearch($$3, $$9);
-            $$7.add($$2.get($$10 < 0 ? -$$10 - 1 : $$10));
-         }
-
-         return $$7;
+         this.b = this.a.dP().a(this.d, this.a);
+         return this.b != null;
       }
    }
 
-   private cbq.a a(UUID $$0) {
-      return this.c.computeIfAbsent($$0, $$0x -> new cbq.a());
+   private boolean a(btk $$0) {
+      return this.m.test($$0.eX()) || this.m.test($$0.eY());
    }
 
-   public void a(cbq $$0, aym $$1, int $$2) {
-      Collection<cbq.b> $$3 = $$0.a($$1, $$2);
-      $$3.forEach($$0x -> {
-         int $$1x = $$0x.e - $$0x.d.m;
-         if ($$1x >= 2) {
-            this.a($$0x.c).a.mergeInt($$0x.d, $$1x, cbq::a);
-         }
-      });
-   }
-
-   public int a(UUID $$0, Predicate<cbr> $$1) {
-      cbq.a $$2 = this.c.get($$0);
-      return $$2 != null ? $$2.a($$1) : 0;
-   }
-
-   public long a(cbr $$0, DoublePredicate $$1) {
-      return this.c.values().stream().filter($$2 -> $$1.test((double)($$2.a.getOrDefault($$0, 0) * $$0.j))).count();
-   }
-
-   public void a(UUID $$0, cbr $$1, int $$2) {
-      cbq.a $$3 = this.a($$0);
-      $$3.a.mergeInt($$1, $$2, ($$1x, $$2x) -> this.a($$1, $$1x, $$2x));
-      $$3.a($$1);
-      if ($$3.b()) {
-         this.c.remove($$0);
-      }
-   }
-
-   public void b(UUID $$0, cbr $$1, int $$2) {
-      this.a($$0, $$1, -$$2);
-   }
-
-   public void a(UUID $$0, cbr $$1) {
-      cbq.a $$2 = this.c.get($$0);
-      if ($$2 != null) {
-         $$2.b($$1);
-         if ($$2.b()) {
-            this.c.remove($$0);
-         }
-      }
-   }
-
-   public void a(cbr $$0) {
-      Iterator<cbq.a> $$1 = this.c.values().iterator();
-
-      while ($$1.hasNext()) {
-         cbq.a $$2 = $$1.next();
-         $$2.b($$0);
-         if ($$2.b()) {
-            $$1.remove();
-         }
-      }
-   }
-
-   public <T> T a(DynamicOps<T> $$0) {
-      return (T)cbq.b.b.encodeStart($$0, this.c().toList()).resultOrPartial($$0x -> b.warn("Failed to serialize gossips: {}", $$0x)).orElseGet($$0::emptyList);
-   }
-
-   public void a(Dynamic<?> $$0) {
-      cbq.b.b
-         .decode($$0)
-         .resultOrPartial($$0x -> b.warn("Failed to deserialize gossips: {}", $$0x))
-         .stream()
-         .flatMap($$0x -> ((List)$$0x.getFirst()).stream())
-         .forEach($$0x -> this.a($$0x.c).a.put($$0x.d, $$0x.e));
-   }
-
-   private static int a(int $$0, int $$1) {
-      return Math.max($$0, $$1);
-   }
-
-   private int a(cbr $$0, int $$1, int $$2) {
-      int $$3 = $$1 + $$2;
-      return $$3 > $$0.k ? Math.max($$0.k, $$1) : $$3;
-   }
-
-   static class a {
-      final Object2IntMap<cbr> a = new Object2IntOpenHashMap();
-
-      public int a(Predicate<cbr> $$0) {
-         return this.a
-            .object2IntEntrySet()
-            .stream()
-            .filter($$1 -> $$0.test((cbr)$$1.getKey()))
-            .mapToInt($$0x -> $$0x.getIntValue() * ((cbr)$$0x.getKey()).j)
-            .sum();
-      }
-
-      public Stream<cbq.b> a(UUID $$0) {
-         return this.a.object2IntEntrySet().stream().map($$1 -> new cbq.b($$0, (cbr)$$1.getKey(), $$1.getIntValue()));
-      }
-
-      public void a() {
-         ObjectIterator<Entry<cbr>> $$0 = this.a.object2IntEntrySet().iterator();
-
-         while ($$0.hasNext()) {
-            Entry<cbr> $$1 = (Entry<cbr>)$$0.next();
-            int $$2 = $$1.getIntValue() - ((cbr)$$1.getKey()).l;
-            if ($$2 < 2) {
-               $$0.remove();
-            } else {
-               $$1.setValue($$2);
+   @Override
+   public boolean b() {
+      if (this.h()) {
+         if (this.a.g(this.b) < 36.0) {
+            if (this.b.i(this.f, this.g, this.h) > 0.010000000000000002) {
+               return false;
             }
-         }
-      }
 
-      public boolean b() {
-         return this.a.isEmpty();
-      }
-
-      public void a(cbr $$0) {
-         int $$1 = this.a.getInt($$0);
-         if ($$1 > $$0.k) {
-            this.a.put($$0, $$0.k);
+            if (Math.abs((double)this.b.dH() - this.i) > 5.0 || Math.abs((double)this.b.dF() - this.j) > 5.0) {
+               return false;
+            }
+         } else {
+            this.f = this.b.du();
+            this.g = this.b.dw();
+            this.h = this.b.dA();
          }
 
-         if ($$1 < 2) {
-            this.b($$0);
-         }
+         this.i = (double)this.b.dH();
+         this.j = (double)this.b.dF();
       }
 
-      public void b(cbr $$0) {
-         this.a.removeInt($$0);
+      return this.a();
+   }
+
+   protected boolean h() {
+      return this.n;
+   }
+
+   @Override
+   public void c() {
+      this.f = this.b.du();
+      this.g = this.b.dw();
+      this.h = this.b.dA();
+      this.l = true;
+   }
+
+   @Override
+   public void d() {
+      this.b = null;
+      this.a.K().n();
+      this.k = b(100);
+      this.l = false;
+   }
+
+   @Override
+   public void e() {
+      this.a.G().a(this.b, (float)(this.a.ab() + 20), (float)this.a.aa());
+      if (this.a.g(this.b) < 6.25) {
+         this.a.K().n();
+      } else {
+         this.a.K().a(this.b, this.e);
       }
    }
 
-   static record b(UUID c, cbr d, int e) {
-      public static final Codec<cbq.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(jr.a.fieldOf("Target").forGetter(cbq.b::b), cbr.n.fieldOf("Type").forGetter(cbq.b::c), axn.j.fieldOf("Value").forGetter(cbq.b::d))
-               .apply($$0, cbq.b::new)
-      );
-      public static final Codec<List<cbq.b>> b = a.listOf();
-
-      public int a() {
-         return this.e * this.d.j;
-      }
-
-      public UUID b() {
-         return this.c;
-      }
-
-      public cbr c() {
-         return this.d;
-      }
-
-      public int d() {
-         return this.e;
-      }
+   public boolean i() {
+      return this.l;
    }
 }

@@ -1,40 +1,55 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cax extends bzo {
-   private final clg a;
+public class cax extends cai {
+   private final btt a;
+   @Nullable
+   private btk b;
+   private double c;
+   private double d;
+   private double e;
+   private final double f;
+   private final float g;
 
-   public cax(clg $$0) {
+   public cax(btt $$0, double $$1, float $$2) {
       this.a = $$0;
-      this.a(EnumSet.of(bzo.a.c, bzo.a.a));
+      this.f = $$1;
+      this.g = $$2;
+      this.a(EnumSet.of(cai.a.a));
    }
 
    @Override
    public boolean a() {
-      if (!this.a.bD()) {
+      this.b = this.a.p();
+      if (this.b == null) {
          return false;
-      } else if (this.a.be()) {
-         return false;
-      } else if (!this.a.aE()) {
-         return false;
-      } else if (this.a.U) {
+      } else if (this.b.g(this.a) > (double)(this.g * this.g)) {
          return false;
       } else {
-         cly $$0 = this.a.gp();
+         evm $$0 = cef.a(this.a, 16, 7, this.b.dn(), (float) (Math.PI / 2));
          if ($$0 == null) {
             return false;
          } else {
-            return this.a.g($$0) > 16.0 ? false : $$0.cb != null;
+            this.c = $$0.c;
+            this.d = $$0.d;
+            this.e = $$0.e;
+            return true;
          }
       }
    }
 
    @Override
-   public void c() {
-      this.a.K().n();
+   public boolean b() {
+      return !this.a.K().l() && this.b.bD() && this.b.g(this.a) < (double)(this.g * this.g);
    }
 
    @Override
    public void d() {
-      this.a.f(null);
+      this.b = null;
+   }
+
+   @Override
+   public void c() {
+      this.a.K().a(this.c, this.d, this.e, this.f);
    }
 }

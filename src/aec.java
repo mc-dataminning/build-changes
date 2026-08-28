@@ -1,23 +1,37 @@
-import javax.annotation.Nullable;
+public class aec implements zs<ace> {
+   public static final zj<wl, aec> a = zs.a(aec::a, aec::new);
+   private final iz b;
+   private final boolean c;
 
-public record aec(int b, ix<brc> c) implements ze<abq> {
-   public static final yv<wi, aec> a = yv.a(yt.f, $$0 -> $$0.b, yt.b(lf.R), aec::e, aec::new);
-
-   @Override
-   public zg<aec> a() {
-      return agc.ak;
+   public aec(iz $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public void a(abq $$0) {
+   private aec(wl $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readBoolean();
+   }
+
+   private void a(wl $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+   }
+
+   @Override
+   public zu<aec> a() {
+      return agq.X;
+   }
+
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public brw a(daz $$0) {
-      return $$0.a(this.b);
+   public iz b() {
+      return this.b;
    }
 
-   public ix<brc> e() {
+   public boolean e() {
       return this.c;
    }
 }

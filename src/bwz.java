@@ -1,22 +1,26 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
 
 public class bwz {
-   public static buk<bsq> a() {
-      return bxw.a(
-         (Function<bxw.b<bsq>, ? extends App<bxw.c<bsq>, bxz<bsq>>>)($$0 -> $$0.group($$0.b(cbu.ab))
-               .apply(
-                  $$0,
-                  $$1 -> ($$2, $$3, $$4) -> {
-                        Optional.ofNullable($$2.a($$0.b($$1)))
-                           .map($$0xxx -> $$0xxx instanceof bsq $$1xx ? $$1xx : null)
-                           .filter(bsq::eB)
-                           .filter($$1xx -> $$1xx.ak() != bsc.by || $$2.aa().b(dav.N))
-                           .ifPresent($$1xx -> $$1.b());
-                        return true;
+   private static final float b = 0.95F;
+   public static final int a = 3;
+
+   public static bve<btk> a() {
+      return byq.a((Function<byq.b<btk>, ? extends App<byq.c<btk>, byt<btk>>>)($$0 -> $$0.group($$0.b(cco.e)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
+               if ($$2.z.i() <= 0.95F) {
+                  return false;
+               } else {
+                  iz $$5 = $$0.<jh>b($$1).b();
+                  if ($$5.a($$3.dp(), 3.0)) {
+                     drx $$6 = $$2.a_($$5);
+                     if ($$6.a(dew.od)) {
+                        deq $$7 = (deq)$$6.b();
+                        $$7.a($$3, $$2, $$5, null);
                      }
-               ))
-      );
+                  }
+
+                  return true;
+               }
+            })));
    }
 }

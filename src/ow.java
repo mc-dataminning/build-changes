@@ -1,58 +1,46 @@
-import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class ow {
-   private static final jn a = new jn()
-      .a(lf.aE, qr::a)
-      .a(lf.aB, qp::a)
-      .a(lf.aC, rt::a)
-      .a(lf.aI, si::a)
-      .a(lf.aJ, ra::a)
-      .a(lf.aL, qz::a)
-      .a(lf.aK, qw::a)
-      .a(lf.aM, qv::a)
-      .a(lf.az, rl::a)
-      .a(lf.aR, dcn::a)
-      .a(lf.aH, qs::a)
-      .a(lf.aD, dxc::a)
-      .a(lf.aG, dxa::a)
-      .a(lf.aQ, ehb::a)
-      .a(lf.aF, efn::a)
-      .a(lf.aA, wt::a)
-      .a(lf.aP, cvy::a)
-      .a(lf.aO, cvw::a)
-      .a(lf.m, cfl::a)
-      .a(lf.s, bqs::a)
-      .a(lf.d, doa::a);
+   private final cyn a;
+   private final cyn b;
+   private final cyn c;
+   private final op d;
+   private final cuf e;
+   private final Map<String, an<?>> f = new LinkedHashMap<>();
 
-   private static void a(iz.a $$0) {
-      a($$0.b(lf.aI), $$0.b(lf.az));
+   public ow(cyn $$0, cyn $$1, cyn $$2, op $$3, cuf $$4) {
+      this.d = $$3;
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.e = $$4;
    }
 
-   public static void a(iy<egp> $$0, iz<dby> $$1) {
-      $$1.b().forEach($$1x -> {
-         akn $$2 = $$1x.h().a();
-         List<jb<egp>> $$3 = ((dby)$$1x.a()).d().b();
-         $$3.stream().flatMap(jb::a).forEach($$3x -> $$3x.d().ifLeft($$2xx -> {
-               ix.c<egp> $$3xx = $$0.b($$2xx);
-               if (!a($$3xx.a())) {
-                  ac.a("Placed feature " + $$2xx.a() + " in biome " + $$2 + " is missing BiomeFilter.biome()");
-               }
-            }).ifRight($$1xxx -> {
-               if (!a($$1xxx)) {
-                  ac.a("Placed inline feature in biome " + $$1x + " is missing BiomeFilter.biome()");
-               }
-            }));
-      });
+   public static ow a(cyn $$0, cyn $$1, cyn $$2, op $$3, cuf $$4) {
+      return new ow($$0, $$1, $$2, $$3, $$4);
    }
 
-   private static boolean a(egp $$0) {
-      return $$0.c().contains(egd.a());
+   public ow a(String $$0, an<?> $$1) {
+      this.f.put($$0, $$1);
+      return this;
    }
 
-   public static iz.a a() {
-      jl.b $$0 = jl.a(le.aw);
-      iz.a $$1 = a.a($$0);
-      a($$1);
-      return $$1;
+   public void a(oq $$0, String $$1) {
+      this.a($$0, new alb($$1));
+   }
+
+   public void a(oq $$0, alb $$1) {
+      this.a($$1);
+      ae.a $$2 = $$0.a().a("has_the_recipe", dp.a($$1)).a(aj.a.a($$1)).a(ai.a.b);
+      this.f.forEach($$2::a);
+      czh $$3 = new czh(this.a, this.b, this.c, new cuk(this.e));
+      $$0.a($$1, $$3, $$2.b($$1.d("recipes/" + this.d.a() + "/")));
+   }
+
+   private void a(alb $$0) {
+      if (this.f.isEmpty()) {
+         throw new IllegalStateException("No way of obtaining recipe " + $$0);
+      }
    }
 }

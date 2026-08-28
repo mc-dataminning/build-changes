@@ -1,90 +1,103 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.EncoderException;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Function;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class yu<B extends ByteBuf, V, T> implements yv<B, V> {
-   private static final int a = -1;
-   private final Function<V, ? extends T> b;
-   private final List<yu.b<B, V, T>> c;
-   private final Object2IntMap<T> d;
+public class yu implements xm {
+   private static final Logger d = LogUtils.getLogger();
+   public static final MapCodec<yu> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.STRING.fieldOf("selector").forGetter(yu::b), xn.a.optionalFieldOf("separator").forGetter(yu::d)).apply($$0, yu::new)
+   );
+   public static final xm.a<yu> b = new xm.a<>(a, "selector");
+   private final String e;
+   @Nullable
+   private final he f;
+   protected final Optional<xl> c;
 
-   yu(Function<V, ? extends T> $$0, List<yu.b<B, V, T>> $$1, Object2IntMap<T> $$2) {
-      this.b = $$0;
+   public yu(String $$0, Optional<xl> $$1) {
+      this.e = $$0;
       this.c = $$1;
-      this.d = $$2;
+      this.f = a($$0);
    }
 
-   public V a(B $$0) {
-      int $$1 = wo.a($$0);
-      if ($$1 >= 0 && $$1 < this.c.size()) {
-         yu.b<B, V, T> $$2 = this.c.get($$1);
+   @Nullable
+   private static he a(String $$0) {
+      he $$1 = null;
 
-         try {
-            return (V)$$2.a.decode($$0);
-         } catch (Exception var5) {
-            throw new DecoderException("Failed to decode packet '" + $$2.b + "'", var5);
-         }
+      try {
+         hf $$2 = new hf(new StringReader($$0));
+         $$1 = $$2.t();
+      } catch (CommandSyntaxException var3) {
+         d.warn("Invalid selector component: {}: {}", $$0, var3.getMessage());
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public xm.a<?> a() {
+      return b;
+   }
+
+   public String b() {
+      return this.e;
+   }
+
+   @Nullable
+   public he c() {
+      return this.f;
+   }
+
+   public Optional<xl> d() {
+      return this.c;
+   }
+
+   @Override
+   public xz a(@Nullable ep $$0, @Nullable bsp $$1, int $$2) throws CommandSyntaxException {
+      if ($$0 != null && this.f != null) {
+         Optional<? extends xl> $$3 = xo.a($$0, this.c, $$1, $$2);
+         return xo.a(this.f.b($$0), $$3, bsp::O_);
       } else {
-         throw new DecoderException("Received unknown packet id " + $$1);
+         return xl.i();
       }
    }
 
-   public void a(B $$0, V $$1) {
-      T $$2 = (T)this.b.apply($$1);
-      int $$3 = this.d.getOrDefault($$2, -1);
-      if ($$3 == -1) {
-         throw new EncoderException("Sending unknown packet '" + $$2 + "'");
+   @Override
+   public <T> Optional<T> a(xq.b<T> $$0, yi $$1) {
+      return $$0.accept($$1, this.e);
+   }
+
+   @Override
+   public <T> Optional<T> a(xq.a<T> $$0) {
+      return $$0.accept(this.e);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         wo.a($$0, $$3);
-         yu.b<B, V, T> $$4 = this.c.get($$3);
-
-         try {
-            yv<? super B, V> $$5 = (yv<? super B, V>)$$4.a;
-            $$5.encode($$0, $$1);
-         } catch (Exception var7) {
-            throw new EncoderException("Failed to encode packet '" + $$2 + "'", var7);
-         }
-      }
-   }
-
-   public static <B extends ByteBuf, V, T> yu.a<B, V, T> a(Function<V, ? extends T> $$0) {
-      return new yu.a<>($$0);
-   }
-
-   public static class a<B extends ByteBuf, V, T> {
-      private final List<yu.b<B, V, T>> a = new ArrayList<>();
-      private final Function<V, ? extends T> b;
-
-      a(Function<V, ? extends T> $$0) {
-         this.b = $$0;
-      }
-
-      public yu.a<B, V, T> a(T $$0, yv<? super B, ? extends V> $$1) {
-         this.a.add(new yu.b<>($$1, $$0));
-         return this;
-      }
-
-      public yu<B, V, T> a() {
-         Object2IntOpenHashMap<T> $$0 = new Object2IntOpenHashMap();
-         $$0.defaultReturnValue(-2);
-
-         for (yu.b<B, V, T> $$1 : this.a) {
-            int $$2 = $$0.size();
-            int $$3 = $$0.putIfAbsent($$1.b, $$2);
-            if ($$3 != -2) {
-               throw new IllegalStateException("Duplicate registration for type " + $$1.b);
-            }
+         if ($$0 instanceof yu $$1 && this.e.equals($$1.e) && this.c.equals($$1.c)) {
+            return true;
          }
 
-         return new yu<>(this.b, List.copyOf(this.a), $$0);
+         return false;
       }
    }
 
-   static record b<B, V, T>(yv<? super B, ? extends V> a, T b) {
+   @Override
+   public int hashCode() {
+      int $$0 = this.e.hashCode();
+      return 31 * $$0 + this.c.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "pattern{" + this.e + "}";
    }
 }

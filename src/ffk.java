@@ -1,54 +1,136 @@
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface ffk {
-   static ffk a(fhw $$0) {
-      return new ffk.a($$0);
+public class ffk {
+   private static final Logger b = LogUtils.getLogger();
+   public static final String a = "screenshots";
+   private int c;
+   private final DataOutputStream d;
+   private final byte[] e;
+   private final int f;
+   private final int g;
+   private File h;
+
+   public static void a(File $$0, eyf $$1, Consumer<xl> $$2) {
+      a($$0, null, $$1, $$2);
    }
 
-   @Nullable
-   static ffk a(fhv $$0, @Nullable ffk $$1) {
-      return $$1 == null ? null : new ffk.b($$0, $$1);
-   }
-
-   static ffk a(fhw $$0, fhv... $$1) {
-      ffk $$2 = a($$0);
-
-      for (fhv $$3 : $$1) {
-         $$2 = a($$3, $$2);
-      }
-
-      return $$2;
-   }
-
-   fhw a();
-
-   void a(boolean var1);
-
-   public static record a(fhw a) implements ffk {
-      @Override
-      public void a(boolean $$0) {
-         this.a.a($$0);
+   public static void a(File $$0, @Nullable String $$1, eyf $$2, Consumer<xl> $$3) {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> b($$0, $$1, $$2, $$3));
+      } else {
+         b($$0, $$1, $$2, $$3);
       }
    }
 
-   public static record b(fhv a, ffk b) implements ffk {
-      @Override
-      public void a(boolean $$0) {
-         if (!$$0) {
-            this.a.a(null);
-         } else {
-            this.a.a(this.b.a());
+   private static void b(File $$0, @Nullable String $$1, eyf $$2, Consumer<xl> $$3) {
+      eyu $$4 = a($$2);
+      File $$5 = new File($$0, "screenshots");
+      $$5.mkdir();
+      File $$6;
+      if ($$1 == null) {
+         $$6 = a($$5);
+      } else {
+         $$6 = new File($$5, $$1);
+      }
+
+      ac.h().execute(() -> {
+         try {
+            $$4.a($$6);
+            xl $$3x = xl.b($$6.getName()).a(n.t).a($$1xx -> $$1xx.a(new xj(xj.a.b, $$6.getAbsolutePath())));
+            $$3.accept(xl.a("screenshot.success", $$3x));
+         } catch (Exception var7) {
+            b.warn("Couldn't save screenshot", var7);
+            $$3.accept(xl.a("screenshot.failure", var7.getMessage()));
+         } finally {
+            $$4.close();
+         }
+      });
+   }
+
+   public static eyu a(eyf $$0) {
+      int $$1 = $$0.c;
+      int $$2 = $$0.d;
+      eyu $$3 = new eyu($$1, $$2, false);
+      RenderSystem.bindTexture($$0.f());
+      $$3.a(0, true);
+      $$3.h();
+      return $$3;
+   }
+
+   private static File a(File $$0) {
+      String $$1 = ac.f();
+      int $$2 = 1;
+
+      while (true) {
+         File $$3 = new File($$0, $$1 + ($$2 == 1 ? "" : "_" + $$2) + ".png");
+         if (!$$3.exists()) {
+            return $$3;
          }
 
-         this.b.a($$0);
+         $$2++;
+      }
+   }
+
+   public ffk(File $$0, int $$1, int $$2, int $$3) throws IOException {
+      this.f = $$1;
+      this.g = $$2;
+      this.c = $$3;
+      File $$4 = new File($$0, "screenshots");
+      $$4.mkdir();
+      String $$5 = "huge_" + ac.f();
+      int $$6 = 1;
+
+      while ((this.h = new File($$4, $$5 + ($$6 == 1 ? "" : "_" + $$6) + ".tga")).exists()) {
+         $$6++;
       }
 
-      public fhv b() {
-         return this.a;
+      byte[] $$7 = new byte[18];
+      $$7[2] = 2;
+      $$7[12] = (byte)($$1 % 256);
+      $$7[13] = (byte)($$1 / 256);
+      $$7[14] = (byte)($$2 % 256);
+      $$7[15] = (byte)($$2 / 256);
+      $$7[16] = 24;
+      this.e = new byte[$$1 * $$3 * 3];
+      this.d = new DataOutputStream(new FileOutputStream(this.h));
+      this.d.write($$7);
+   }
+
+   public void a(ByteBuffer $$0, int $$1, int $$2, int $$3, int $$4) {
+      int $$5 = $$3;
+      int $$6 = $$4;
+      if ($$3 > this.f - $$1) {
+         $$5 = this.f - $$1;
       }
 
-      public ffk c() {
-         return this.b;
+      if ($$4 > this.g - $$2) {
+         $$6 = this.g - $$2;
       }
+
+      this.c = $$6;
+
+      for (int $$7 = 0; $$7 < $$6; $$7++) {
+         $$0.position(($$4 - $$6) * $$3 * 3 + $$7 * $$3 * 3);
+         int $$8 = ($$1 + $$7 * this.f) * 3;
+         $$0.get(this.e, $$8, $$5 * 3);
+      }
+   }
+
+   public void a() throws IOException {
+      this.d.write(this.e, 0, this.f * 3 * this.c);
+   }
+
+   public File b() throws IOException {
+      this.d.close();
+      return this.h;
    }
 }

@@ -1,26 +1,29 @@
-import com.mojang.serialization.MapCodec;
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class egf extends egs {
-   public static final MapCodec<egf> a = dwr.a.c.fieldOf("step").xmap(egf::new, $$0 -> $$0.c);
-   private final dwr.a c;
+public class egf {
+   public static final Codec<egf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.intRange(0, dvp.c).fieldOf("height").forGetter(egf::a), lp.e.q().fieldOf("block").orElse(dew.a).forGetter($$0x -> $$0x.b().b()))
+            .apply($$0, egf::new)
+   );
+   private final deu b;
+   private final int c;
 
-   private egf(dwr.a $$0) {
+   public egf(int $$0, deu $$1) {
       this.c = $$0;
+      this.b = $$1;
    }
 
-   public static egf a(dwr.a $$0) {
-      return new egf($$0);
+   public int a() {
+      return this.c;
+   }
+
+   public drx b() {
+      return this.b.n();
    }
 
    @Override
-   public Stream<io> a_(egq $$0, aym $$1, io $$2) {
-      dag $$3 = new dag($$2);
-      return $$0.a($$3, this.c).a($$3);
-   }
-
-   @Override
-   public egt<?> b() {
-      return egt.o;
+   public String toString() {
+      return (this.c != 1 ? this.c + "*" : "") + lp.e.b(this.b);
    }
 }

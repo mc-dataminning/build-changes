@@ -1,19 +1,16 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bvp extends buj<bss> {
-   public bvp(int $$0, int $$1) {
-      super(ImmutableMap.of(cbu.n, cbv.a), $$0, $$1);
-   }
-
-   protected boolean a(aqn $$0, bss $$1, long $$2) {
-      return $$1.dS().c(cbu.n).filter($$1x -> $$1x.a($$1)).isPresent();
-   }
-
-   protected void b(aqn $$0, bss $$1, long $$2) {
-      $$1.dS().b(cbu.n);
-   }
-
-   protected void c(aqn $$0, bss $$1, long $$2) {
-      $$1.dS().c(cbu.n).ifPresent($$1x -> $$1.G().a($$1x.a()));
+public class bvp {
+   public static <E extends btk> bve<E> a(Predicate<E> $$0, cco<?> $$1) {
+      return byq.a((Function<byq.b<E>, ? extends App<byq.c<E>, byt<E>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$1xx -> ($$2x, $$3, $$4) -> {
+               if ($$0.test((E)$$3)) {
+                  $$1xx.b();
+                  return true;
+               } else {
+                  return false;
+               }
+            })));
    }
 }

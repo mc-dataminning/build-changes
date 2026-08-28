@@ -1,57 +1,98 @@
-public class bsr extends brw {
-   private static final String b = "data";
-   private ud c = new ud();
+import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-   public bsr(bsc<?> $$0, daz $$1) {
-      super($$0, $$1);
-      this.ag = true;
+public class bsr {
+   private final Map<bsq, List<evm>> a;
+
+   bsr(Map<bsq, List<evm>> $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public void l() {
+   public static bsr a(float $$0, float $$1) {
+      return a().a($$0, $$1);
    }
 
-   @Override
-   protected void a(ajw.a $$0) {
+   public static bsr.a a() {
+      return new bsr.a();
    }
 
-   @Override
-   protected void a(ud $$0) {
-      this.c = $$0.p("data");
+   public bsr a(float $$0, float $$1, float $$2) {
+      Map<bsq, List<evm>> $$3 = new EnumMap<>(bsq.class);
+
+      for (Entry<bsq, List<evm>> $$4 : this.a.entrySet()) {
+         $$3.put($$4.getKey(), a($$4.getValue(), $$0, $$1, $$2));
+      }
+
+      return new bsr($$3);
    }
 
-   @Override
-   protected void b(ud $$0) {
-      $$0.a("data", this.c.h());
+   private static List<evm> a(List<evm> $$0, float $$1, float $$2, float $$3) {
+      List<evm> $$4 = new ArrayList<>($$0.size());
+
+      for (evm $$5 : $$0) {
+         $$4.add($$5.d((double)$$1, (double)$$2, (double)$$3));
+      }
+
+      return $$4;
    }
 
-   @Override
-   public ze<abq> dl() {
-      throw new IllegalStateException("Markers should never be sent");
+   @Nullable
+   public evm a(bsq $$0, int $$1, float $$2) {
+      List<evm> $$3 = this.a.get($$0);
+      return $$1 >= 0 && $$1 < $$3.size() ? a($$3.get($$1), $$2) : null;
    }
 
-   @Override
-   protected boolean r(brw $$0) {
-      return false;
+   public evm b(bsq $$0, int $$1, float $$2) {
+      evm $$3 = this.a($$0, $$1, $$2);
+      if ($$3 == null) {
+         throw new IllegalStateException("Had no attachment point of type: " + $$0 + " for index: " + $$1);
+      } else {
+         return $$3;
+      }
    }
 
-   @Override
-   protected boolean bJ() {
-      return false;
+   public evm c(bsq $$0, int $$1, float $$2) {
+      List<evm> $$3 = this.a.get($$0);
+      if ($$3.isEmpty()) {
+         throw new IllegalStateException("Had no attachment points of type: " + $$0);
+      } else {
+         evm $$4 = $$3.get(ayu.a($$1, 0, $$3.size() - 1));
+         return a($$4, $$2);
+      }
    }
 
-   @Override
-   protected void p(brw $$0) {
-      throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
+   private static evm a(evm $$0, float $$1) {
+      return $$0.b(-$$1 * (float) (Math.PI / 180.0));
    }
 
-   @Override
-   public enb k_() {
-      return enb.d;
-   }
+   public static class a {
+      private final Map<bsq, List<evm>> a = new EnumMap<>(bsq.class);
 
-   @Override
-   public boolean r_() {
-      return true;
+      a() {
+      }
+
+      public bsr.a a(bsq $$0, float $$1, float $$2, float $$3) {
+         return this.a($$0, new evm((double)$$1, (double)$$2, (double)$$3));
+      }
+
+      public bsr.a a(bsq $$0, evm $$1) {
+         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>(1)).add($$1);
+         return this;
+      }
+
+      public bsr a(float $$0, float $$1) {
+         Map<bsq, List<evm>> $$2 = new EnumMap<>(bsq.class);
+
+         for (bsq $$3 : bsq.values()) {
+            List<evm> $$4 = this.a.get($$3);
+            $$2.put($$3, $$4 != null ? List.copyOf($$4) : $$3.a($$0, $$1));
+         }
+
+         return new bsr($$2);
+      }
    }
 }

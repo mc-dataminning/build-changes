@@ -1,67 +1,38 @@
-import java.util.function.Consumer;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+public class gaj extends gbx {
+   private final double a;
+   private final double b;
+   private final double F;
+   private final int G;
+   private final int H;
 
-public class gaj extends gay {
-   private static final Vector3f a = new Vector3f(0.5F, 0.5F, 0.5F).normalize();
-   private static final Vector3f b = new Vector3f(-1.0F, -1.0F, 0.0F);
-   private static final float F = 1.0472F;
-   private int G;
-
-   gaj(fwr $$0, double $$1, double $$2, double $$3, int $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.D = 0.85F;
-      this.G = $$4;
-      this.t = 30;
-      this.u = 0.0F;
-      this.j = 0.0;
-      this.k = 0.1;
-      this.l = 0.0;
+   gaj(fxq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, int $$8) {
+      super($$0, $$1, $$2, $$3);
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.a = $$1;
+      this.b = $$2;
+      this.F = $$3;
+      this.d = $$1 + $$4;
+      this.e = $$2 + $$5;
+      this.f = $$3 + $$6;
+      this.g = this.d;
+      this.h = this.e;
+      this.i = this.f;
+      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
+      this.n = false;
+      this.t = (int)(Math.random() * 5.0) + 25;
+      this.G = $$7;
+      this.H = $$8;
    }
 
    @Override
-   public float b(float $$0) {
-      return this.D * ayf.a(((float)this.s + $$0) / (float)this.t * 0.75F, 0.0F, 1.0F);
+   public gbb b() {
+      return gbb.b;
    }
 
    @Override
-   public void a(eyy $$0, fdm $$1, float $$2) {
-      if (this.G <= 0) {
-         this.y = 1.0F - ayf.a(((float)this.s + $$2) / (float)this.t, 0.0F, 1.0F);
-         this.a($$0, $$1, $$2, $$0x -> $$0x.mul(new Quaternionf().rotationX(-1.0472F)));
-         this.a($$0, $$1, $$2, $$0x -> $$0x.mul(new Quaternionf().rotationYXZ((float) -Math.PI, 1.0472F, 0.0F)));
-      }
-   }
-
-   private void a(eyy $$0, fdm $$1, float $$2, Consumer<Quaternionf> $$3) {
-      eum $$4 = $$1.b();
-      float $$5 = (float)(ayf.d((double)$$2, this.d, this.g) - $$4.a());
-      float $$6 = (float)(ayf.d((double)$$2, this.e, this.h) - $$4.b());
-      float $$7 = (float)(ayf.d((double)$$2, this.f, this.i) - $$4.c());
-      Quaternionf $$8 = new Quaternionf().setAngleAxis(0.0F, a.x(), a.y(), a.z());
-      $$3.accept($$8);
-      $$8.transform(b);
-      Vector3f[] $$9 = new Vector3f[]{
-         new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
-      };
-      float $$10 = this.b($$2);
-
-      for (int $$11 = 0; $$11 < 4; $$11++) {
-         Vector3f $$12 = $$9[$$11];
-         $$12.rotate($$8);
-         $$12.mul($$10);
-         $$12.add($$5, $$6, $$7);
-      }
-
-      int $$13 = this.a($$2);
-      this.a($$0, $$9[0], this.d(), this.f(), $$13);
-      this.a($$0, $$9[1], this.d(), this.e(), $$13);
-      this.a($$0, $$9[2], this.c(), this.e(), $$13);
-      this.a($$0, $$9[3], this.c(), this.f(), $$13);
-   }
-
-   private void a(eyy $$0, Vector3f $$1, float $$2, float $$3, int $$4) {
-      $$0.a((double)$$1.x(), (double)$$1.y(), (double)$$1.z()).a($$2, $$3).a(this.v, this.w, this.x, this.y).b($$4).e();
+   public void a(double $$0, double $$1, double $$2) {
    }
 
    @Override
@@ -70,30 +41,35 @@ public class gaj extends gay {
    }
 
    @Override
-   public gac b() {
-      return gac.c;
-   }
-
-   @Override
    public void a() {
-      if (this.G > 0) {
-         this.G--;
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
       } else {
-         super.a();
+         float $$0 = (float)this.s / (float)this.t;
+         float $$1 = 1.0F - $$0;
+         this.g = this.a + this.j * (double)$$1;
+         this.h = this.b + this.k * (double)$$1;
+         this.i = this.F + this.l * (double)$$1;
+         int $$2 = aye.b.a($$0, this.G, this.H);
+         this.a((float)aye.b.b($$2) / 255.0F, (float)aye.b.c($$2) / 255.0F, (float)aye.b.d($$2) / 255.0F);
+         this.e((float)aye.b.a($$2) / 255.0F);
       }
    }
 
-   public static class a implements gab<la> {
-      private final gat a;
+   public static class a implements gba<lm> {
+      private final gbs a;
 
-      public a(gat $$0) {
+      public a(gbs $$0) {
          this.a = $$0;
       }
 
-      public fzy a(la $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gaj $$8 = new gaj($$1, $$2, $$3, $$4, $$0.b());
+      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gaj $$8 = new gaj($$1, $$2, $$3, $$4, $$5, $$6, $$7, -12210434, -1);
+         $$8.d(ayu.b($$1.E_(), 3.0F, 5.0F));
          $$8.a(this.a);
-         $$8.e(1.0F);
          return $$8;
       }
    }

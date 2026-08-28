@@ -1,89 +1,49 @@
-public abstract class fhp {
-   protected static final int a = 14737632;
-   protected static final int b = 60;
-   protected static final int c = 1;
-   protected final ffl d;
-   protected final bla e;
+public class fhp extends fgz {
+   private boolean a;
 
-   protected fhp(ffl $$0, bla $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public fhp(int $$0, int $$1, fgz.c $$2) {
+      super($$0, $$1, 20, 20, xl.c("narrator.button.difficulty_lock"), $$2, q);
    }
 
-   public int a(int $$0) {
-      return Math.min(this.e.c() + 2, $$0);
+   @Override
+   protected xz aL_() {
+      return xk.a(super.aL_(), this.a() ? xl.c("narrator.button.difficulty_lock.locked") : xl.c("narrator.button.difficulty_lock.unlocked"));
    }
 
-   public void a(ffn $$0, int $$1, int $$2) {
-      int $$3 = $$0.b();
-      $$0.a(gcs.E(), $$1, $$3 - 60, $$1 + $$2, $$3, -1873784752);
-      long $$4 = 0L;
-      long $$5 = 2147483647L;
-      long $$6 = -2147483648L;
-      int $$7 = Math.max(0, this.e.c() - ($$2 - 2));
-      int $$8 = this.e.d() - $$7;
+   public boolean a() {
+      return this.a;
+   }
 
-      for (int $$9 = 0; $$9 < $$8; $$9++) {
-         int $$10 = $$1 + $$9 + 1;
-         int $$11 = $$7 + $$9;
-         long $$12 = this.b($$11);
-         $$5 = Math.min($$5, $$12);
-         $$6 = Math.max($$6, $$12);
-         $$4 += $$12;
-         this.a($$0, $$3, $$10, $$11);
+   public void b(boolean $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public void b(fgm $$0, int $$1, int $$2, float $$3) {
+      fhp.a $$4;
+      if (!this.j) {
+         $$4 = this.a ? fhp.a.c : fhp.a.f;
+      } else if (this.A()) {
+         $$4 = this.a ? fhp.a.b : fhp.a.e;
+      } else {
+         $$4 = this.a ? fhp.a.a : fhp.a.d;
       }
 
-      $$0.a(gcs.E(), $$1, $$1 + $$2 - 1, $$3 - 60, -1);
-      $$0.a(gcs.E(), $$1, $$1 + $$2 - 1, $$3 - 1, -1);
-      $$0.b(gcs.E(), $$1, $$3 - 60, $$3, -1);
-      $$0.b(gcs.E(), $$1 + $$2 - 1, $$3 - 60, $$3, -1);
-      if ($$8 > 0) {
-         String $$13 = this.a((double)$$5) + " min";
-         String $$14 = this.a((double)$$4 / (double)$$8) + " avg";
-         String $$15 = this.a((double)$$6) + " max";
-         $$0.b(this.d, $$13, $$1 + 2, $$3 - 60 - 9, 14737632);
-         $$0.a(this.d, $$14, $$1 + $$2 / 2, $$3 - 60 - 9, 14737632);
-         $$0.b(this.d, $$15, $$1 + $$2 - this.d.b($$15) - 2, $$3 - 60 - 9, 14737632);
+      $$0.a($$4.g, this.C(), this.D(), this.g, this.h);
+   }
+
+   static enum a {
+      a(new alb("widget/locked_button")),
+      b(new alb("widget/locked_button_highlighted")),
+      c(new alb("widget/locked_button_disabled")),
+      d(new alb("widget/unlocked_button")),
+      e(new alb("widget/unlocked_button_highlighted")),
+      f(new alb("widget/unlocked_button_disabled"));
+
+      final alb g;
+
+      private a(final alb $$0) {
+         this.g = $$0;
       }
-
-      this.d($$0, $$1, $$2, $$3);
-   }
-
-   protected void a(ffn $$0, int $$1, int $$2, int $$3) {
-      this.b($$0, $$1, $$2, $$3);
-      this.c($$0, $$1, $$2, $$3);
-   }
-
-   protected void b(ffn $$0, int $$1, int $$2, int $$3) {
-      long $$4 = this.e.a($$3);
-      int $$5 = this.b((double)$$4);
-      int $$6 = this.a($$4);
-      $$0.a(gcs.E(), $$2, $$1 - $$5, $$2 + 1, $$1, $$6);
-   }
-
-   protected void c(ffn $$0, int $$1, int $$2, int $$3) {
-   }
-
-   protected long b(int $$0) {
-      return this.e.a($$0);
-   }
-
-   protected void d(ffn $$0, int $$1, int $$2, int $$3) {
-   }
-
-   protected void a(ffn $$0, String $$1, int $$2, int $$3) {
-      $$0.a(gcs.E(), $$2, $$3, $$2 + this.d.b($$1) + 1, $$3 + 9, -1873784752);
-      $$0.a(this.d, $$1, $$2 + 1, $$3 + 1, 14737632, false);
-   }
-
-   protected abstract String a(double var1);
-
-   protected abstract int b(double var1);
-
-   protected abstract int a(long var1);
-
-   protected int a(double $$0, double $$1, int $$2, double $$3, int $$4, double $$5, int $$6) {
-      $$0 = ayf.a($$0, $$1, $$5);
-      return $$0 < $$3 ? axp.b.a((float)(($$0 - $$1) / ($$3 - $$1)), $$2, $$4) : axp.b.a((float)(($$0 - $$3) / ($$5 - $$3)), $$4, $$6);
    }
 }

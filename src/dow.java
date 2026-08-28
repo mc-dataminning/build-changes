@@ -1,138 +1,71 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import javax.annotation.Nullable;
 
-public class dow extends dpn implements cpl {
-   public static final int d = 3;
-   public static final int e = 3;
-   public static final int f = 9;
-   public static final int g = 1;
-   public static final int h = 0;
-   public static final int i = 9;
-   public static final int j = 10;
-   private jg<ctq> q = jg.a(9, ctq.i);
-   private int r = 0;
-   protected final cpf k = new cpf() {
-      private final int[] a = new int[9];
-      private int b = 0;
+public abstract class dow extends dpc implements bqi, bqt, bqu {
+   private bqs d = bqs.a;
+   @Nullable
+   private xl e;
 
-      @Override
-      public int a(int $$0) {
-         return $$0 == 9 ? this.b : this.a[$$0];
-      }
-
-      @Override
-      public void a(int $$0, int $$1) {
-         if ($$0 == 9) {
-            this.b = $$1;
-         } else {
-            this.a[$$0] = $$1;
-         }
-      }
-
-      @Override
-      public int a() {
-         return 10;
-      }
-   };
-
-   public dow(io $$0, drd $$1) {
-      super(dok.P, $$0, $$1);
+   protected dow(dpe<?> $$0, iz $$1, drx $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected wx k() {
-      return wx.c("container.crafter");
-   }
-
-   @Override
-   protected cov a(int $$0, clx $$1) {
-      return new cpj($$0, $$1, this, this.k);
-   }
-
-   public void a(int $$0, boolean $$1) {
-      if (this.e($$0)) {
-         this.k.a($$0, $$1 ? 0 : 1);
-         this.e();
+   protected void a(ur $$0, jk.a $$1) {
+      super.a($$0, $$1);
+      this.d = bqs.b($$0);
+      if ($$0.b("CustomName", 8)) {
+         this.e = xl.a.a($$0.l("CustomName"), $$1);
       }
    }
 
-   public boolean c(int $$0) {
-      return $$0 >= 0 && $$0 < 9 ? this.k.a($$0) == 1 : false;
+   @Override
+   protected void b(ur $$0, jk.a $$1) {
+      super.b($$0, $$1);
+      this.d.a($$0);
+      if (this.e != null) {
+         $$0.a("CustomName", xl.a.a(this.e, $$1));
+      }
    }
 
    @Override
-   public boolean b(int $$0, ctq $$1) {
-      if (this.k.a($$0) == 1) {
+   public xl af() {
+      return this.e != null ? this.e : this.k();
+   }
+
+   @Override
+   public xl O_() {
+      return this.af();
+   }
+
+   @Nullable
+   @Override
+   public xl ah() {
+      return this.e;
+   }
+
+   protected abstract xl k();
+
+   public boolean d(cms $$0) {
+      return a($$0, this.d, this.O_());
+   }
+
+   public static boolean a(cms $$0, bqs $$1, xl $$2) {
+      if (!$$0.N_() && !$$1.a($$0.eX())) {
+         $$0.a(xl.a("container.isLocked", $$2), true);
+         $$0.a(avw.eP, avx.e, 1.0F, 1.0F);
          return false;
       } else {
-         ctq $$2 = this.q.get($$0);
-         int $$3 = $$2.I();
-         if ($$3 >= $$2.j()) {
-            return false;
-         } else {
-            return $$2.e() ? true : !this.a($$3, $$2, $$0);
-         }
+         return true;
       }
    }
 
-   private boolean a(int $$0, ctq $$1, int $$2) {
-      for (int $$3 = $$2 + 1; $$3 < 9; $$3++) {
-         if (!this.c($$3)) {
-            ctq $$4 = this.a($$3);
-            if ($$4.e() || $$4.I() < $$0 && ctq.c($$4, $$1)) {
-               return true;
-            }
-         }
-      }
+   protected abstract jr<cuk> j();
 
-      return false;
-   }
-
-   @Override
-   protected void a(ud $$0, iz.a $$1) {
-      super.a($$0, $$1);
-      this.r = $$0.h("crafting_ticks_remaining");
-      this.q = jg.a(this.b(), ctq.i);
-      if (!this.a_($$0)) {
-         bpq.b($$0, this.q, $$1);
-      }
-
-      int[] $$2 = $$0.n("disabled_slots");
-
-      for (int $$3 = 0; $$3 < 9; $$3++) {
-         this.k.a($$3, 0);
-      }
-
-      for (int $$4 : $$2) {
-         if (this.e($$4)) {
-            this.k.a($$4, 1);
-         }
-      }
-
-      this.k.a(9, $$0.h("triggered"));
-   }
-
-   @Override
-   protected void b(ud $$0, iz.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("crafting_ticks_remaining", this.r);
-      if (!this.b_($$0)) {
-         bpq.a($$0, this.q, $$1);
-      }
-
-      this.c($$0);
-      this.d($$0);
-   }
-
-   @Override
-   public int b() {
-      return 9;
-   }
+   protected abstract void a(jr<cuk> var1);
 
    @Override
    public boolean c() {
-      for (ctq $$0 : this.q) {
+      for (cuk $$0 : this.j()) {
          if (!$$0.e()) {
             return false;
          }
@@ -142,104 +75,73 @@ public class dow extends dpn implements cpl {
    }
 
    @Override
-   public ctq a(int $$0) {
-      return this.q.get($$0);
+   public cuk a(int $$0) {
+      return this.j().get($$0);
    }
 
    @Override
-   public void a(int $$0, ctq $$1) {
-      if (this.c($$0)) {
-         this.a($$0, true);
+   public cuk a(int $$0, int $$1) {
+      cuk $$2 = bqj.a(this.j(), $$0, $$1);
+      if (!$$2.e()) {
+         this.e();
       }
 
-      super.a($$0, $$1);
+      return $$2;
    }
 
    @Override
-   public boolean a(cly $$0) {
-      return bpp.a(this, $$0);
+   public cuk b(int $$0) {
+      return bqj.a(this.j(), $$0);
    }
 
    @Override
-   public jg<ctq> j() {
-      return this.q;
+   public void a(int $$0, cuk $$1) {
+      this.j().set($$0, $$1);
+      $$1.f(this.e_($$1));
+      this.e();
    }
 
    @Override
-   protected void a(jg<ctq> $$0) {
-      this.q = $$0;
+   public boolean a(cms $$0) {
+      return bqi.a(this, $$0);
    }
 
    @Override
-   public int f() {
-      return 3;
+   public void a() {
+      this.j().clear();
+   }
+
+   @Nullable
+   @Override
+   public cpp createMenu(int $$0, cmr $$1, cms $$2) {
+      return this.d($$2) ? this.a($$0, $$1) : null;
+   }
+
+   protected abstract cpp a(int var1, cmr var2);
+
+   @Override
+   protected void a(dpc.b $$0) {
+      super.a($$0);
+      this.e = $$0.a(km.f);
+      this.d = $$0.a(km.ac, bqs.a);
+      $$0.a(km.Z, cxg.a).a(this.j());
    }
 
    @Override
-   public int g() {
-      return 3;
-   }
-
-   @Override
-   public void a(cmc $$0) {
-      for (ctq $$1 : this.q) {
-         $$0.a($$1);
-      }
-   }
-
-   private void c(ud $$0) {
-      IntList $$1 = new IntArrayList();
-
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         if (this.c($$2)) {
-            $$1.add($$2);
-         }
-      }
-
-      $$0.b("disabled_slots", $$1);
-   }
-
-   private void d(ud $$0) {
-      $$0.a("triggered", this.k.a(9));
-   }
-
-   public void a(boolean $$0) {
-      this.k.a(9, $$0 ? 1 : 0);
-   }
-
-   @VisibleForTesting
-   public boolean l() {
-      return this.k.a(9) == 1;
-   }
-
-   public static void a(daz $$0, io $$1, drd $$2, dow $$3) {
-      int $$4 = $$3.r - 1;
-      if ($$4 >= 0) {
-         $$3.r = $$4;
-         if ($$4 == 0) {
-            $$0.a($$1, $$2.a(dft.b, Boolean.valueOf(false)), 3);
-         }
-      }
-   }
-
-   public void d(int $$0) {
-      this.r = $$0;
-   }
-
-   public int u() {
-      int $$0 = 0;
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         ctq $$2 = this.a($$1);
-         if (!$$2.e() || this.c($$1)) {
-            $$0++;
-         }
+   protected void a(ki.a $$0) {
+      super.a($$0);
+      $$0.a(km.f, this.e);
+      if (!this.d.equals(bqs.a)) {
+         $$0.a(km.ac, this.d);
       }
 
-      return $$0;
+      $$0.a(km.Z, cxg.a(this.j()));
    }
 
-   private boolean e(int $$0) {
-      return $$0 > -1 && $$0 < 9 && this.q.get($$0).e();
+   @Override
+   public void a(ur $$0) {
+      $$0.r("CustomName");
+      $$0.r("Lock");
+      $$0.r("Items");
    }
 }

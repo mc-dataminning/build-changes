@@ -1,29 +1,26 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ecu(int b, int c, int d, int e, int f, bpb g, float h) implements ecd {
+public record ecu(efg b, dyw c, bpu d, int e) implements ecx {
    public static final Codec<ecu> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(ecu::a),
-               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(ecu::b),
-               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(ecu::c),
-               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(ecu::d),
-               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(ecu::f),
-               bpb.c.fieldOf("extra_rare_growths").forGetter(ecu::g),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(ecu::h)
+               efg.a.fieldOf("state_provider").forGetter(ecu::a),
+               dyw.b.fieldOf("target").forGetter(ecu::b),
+               bpu.b(0, 8).fieldOf("radius").forGetter(ecu::c),
+               Codec.intRange(0, 4).fieldOf("half_height").forGetter(ecu::d)
             )
             .apply($$0, ecu::new)
    );
 
-   public int a() {
+   public efg a() {
       return this.b;
    }
 
-   public int b() {
+   public dyw b() {
       return this.c;
    }
 
-   public int c() {
+   public bpu c() {
       return this.d;
    }
 

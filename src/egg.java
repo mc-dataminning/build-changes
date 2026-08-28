@@ -1,30 +1,17 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public enum egg implements ayz {
-   a(it.b, 1, "ceiling"),
-   b(it.a, -1, "floor");
+public record egg(ji<cuf> c, egi d) {
+   public static final Codec<egg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aky.a(lq.G).fieldOf("display").forGetter($$0x -> $$0x.c), egi.a.fieldOf("settings").forGetter($$0x -> $$0x.d)).apply($$0, egg::new)
+   );
+   public static final Codec<ji<egg>> b = akx.a(lq.aF, a);
 
-   public static final Codec<egg> c = ayz.a(egg::values);
-   private final it d;
-   private final int e;
-   private final String f;
-
-   private egg(it $$0, int $$1, String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public ji<cuf> a() {
+      return this.c;
    }
 
-   public it a() {
+   public egi b() {
       return this.d;
-   }
-
-   public int b() {
-      return this.e;
-   }
-
-   @Override
-   public String c() {
-      return this.f;
    }
 }

@@ -1,68 +1,103 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public record dqh(int c, float d, float e, float f, float g, int h, bog<dbq> i, bog<akm<epm>> j, akm<epm> k) {
-   public static final dqh a = new dqh(4, 6.0F, 2.0F, 2.0F, 1.0F, 40, bog.b(), bog.<akm<epm>>a().a(epf.aW).a(epf.aV).a(), epf.aZ);
-   public static final Codec<dqh> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 128).lenientOptionalFieldOf("spawn_range", a.c).forGetter(dqh::b),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).lenientOptionalFieldOf("total_mobs", a.d).forGetter(dqh::c),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).lenientOptionalFieldOf("simultaneous_mobs", a.e).forGetter(dqh::d),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).lenientOptionalFieldOf("total_mobs_added_per_player", a.f).forGetter(dqh::e),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).lenientOptionalFieldOf("simultaneous_mobs_added_per_player", a.g).forGetter(dqh::f),
-               Codec.intRange(0, Integer.MAX_VALUE).lenientOptionalFieldOf("ticks_between_spawn", a.h).forGetter(dqh::g),
-               dbq.c.lenientOptionalFieldOf("spawn_potentials", bog.b()).forGetter(dqh::h),
-               bog.a(akm.a(lf.aU)).lenientOptionalFieldOf("loot_tables_to_eject", a.j).forGetter(dqh::i),
-               akm.a(lf.aU).lenientOptionalFieldOf("items_to_drop_when_ominous", a.k).forGetter(dqh::j)
-            )
-            .apply($$0, dqh::new)
-   );
+public abstract class dqh extends dow implements bqx {
+   @Nullable
+   protected ala<eqi> l;
+   protected long m = 0L;
 
-   public int a(int $$0) {
-      return (int)Math.floor((double)(this.d + this.f * (float)$$0));
+   protected dqh(dpe<?> $$0, iz $$1, drx $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public int b(int $$0) {
-      return (int)Math.floor((double)(this.e + this.g * (float)$$0));
+   @Nullable
+   @Override
+   public ala<eqi> ay_() {
+      return this.l;
    }
 
-   public long a() {
-      return 160L;
+   @Override
+   public void a(@Nullable ala<eqi> $$0) {
+      this.l = $$0;
    }
 
-   public int b() {
-      return this.c;
+   @Override
+   public long az_() {
+      return this.m;
    }
 
-   public float c() {
-      return this.d;
+   @Override
+   public void a(long $$0) {
+      this.m = $$0;
    }
 
-   public float d() {
-      return this.e;
+   @Override
+   public boolean c() {
+      this.e_(null);
+      return super.c();
    }
 
-   public float e() {
-      return this.f;
+   @Override
+   public cuk a(int $$0) {
+      this.e_(null);
+      return super.a($$0);
    }
 
-   public float f() {
-      return this.g;
+   @Override
+   public cuk a(int $$0, int $$1) {
+      this.e_(null);
+      return super.a($$0, $$1);
    }
 
-   public int g() {
-      return this.h;
+   @Override
+   public cuk b(int $$0) {
+      this.e_(null);
+      return super.b($$0);
    }
 
-   public bog<dbq> h() {
-      return this.i;
+   @Override
+   public void a(int $$0, cuk $$1) {
+      this.e_(null);
+      super.a($$0, $$1);
    }
 
-   public bog<akm<epm>> i() {
-      return this.j;
+   @Override
+   public boolean d(cms $$0) {
+      return super.d($$0) && (this.l == null || !$$0.N_());
    }
 
-   public akm<epm> j() {
-      return this.k;
+   @Nullable
+   @Override
+   public cpp createMenu(int $$0, cmr $$1, cms $$2) {
+      if (this.d($$2)) {
+         this.e_($$1.l);
+         return this.a($$0, $$1);
+      } else {
+         return null;
+      }
+   }
+
+   @Override
+   protected void a(dpc.b $$0) {
+      super.a($$0);
+      cxn $$1 = $$0.a(km.ad);
+      if ($$1 != null) {
+         this.l = $$1.a();
+         this.m = $$1.b();
+      }
+   }
+
+   @Override
+   protected void a(ki.a $$0) {
+      super.a($$0);
+      if (this.l != null) {
+         $$0.a(km.ad, new cxn(this.l, this.m));
+      }
+   }
+
+   @Override
+   public void a(ur $$0) {
+      super.a($$0);
+      $$0.r("LootTable");
+      $$0.r("LootTableSeed");
    }
 }

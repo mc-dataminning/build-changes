@@ -1,25 +1,17 @@
-public class gas extends gbf {
-   gas(fwr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.u = 0.04F;
-      if ($$5 == 0.0 && ($$4 != 0.0 || $$6 != 0.0)) {
-         this.j = $$4;
-         this.k = 0.1;
-         this.l = $$6;
-      }
+public class gas extends gbl {
+   protected gas(fxq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gbs $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, 2.5F, $$7);
    }
 
-   public static class a implements gab<lb> {
-      private final gat a;
+   public static class a implements gba<lm> {
+      private final gbs a;
 
-      public a(gat $$0) {
+      public a(gbs $$0) {
          this.a = $$0;
       }
 
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gas $$8 = new gas($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gas($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

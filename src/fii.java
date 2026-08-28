@@ -1,180 +1,70 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public class fii implements fij {
-   private static final akn a = new akn("toast/system");
-   private static final int d = 200;
-   private static final int e = 12;
-   private static final int f = 10;
-   private final fii.a g;
-   private wx h;
-   private List<axr> i;
-   private long j;
-   private boolean k;
-   private final int l;
-   private boolean m;
+public class fii extends fgx {
+   private static final fim a = new fim(
+      new alb("widget/tab_selected"), new alb("widget/tab"), new alb("widget/tab_selected_highlighted"), new alb("widget/tab_highlighted")
+   );
+   private static final int b = 3;
+   private static final int c = 1;
+   private static final int d = 1;
+   private static final int e = 4;
+   private static final int f = 2;
+   private final fjc m;
+   private final fjb n;
 
-   public fii(fii.a $$0, wx $$1, @Nullable wx $$2) {
-      this($$0, $$1, a($$2), Math.max(160, 30 + Math.max(feb.Q().h.a($$1), $$2 == null ? 0 : feb.Q().h.a($$2))));
-   }
-
-   public static fii a(feb $$0, fii.a $$1, wx $$2, wx $$3) {
-      ffl $$4 = $$0.h;
-      List<axr> $$5 = $$4.c($$3, 200);
-      int $$6 = Math.max(200, $$5.stream().mapToInt($$4::a).max().orElse(200));
-      return new fii($$1, $$2, $$5, $$6 + 30);
-   }
-
-   private fii(fii.a $$0, wx $$1, List<axr> $$2, int $$3) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.l = $$3;
-   }
-
-   private static ImmutableList<axr> a(@Nullable wx $$0) {
-      return $$0 == null ? ImmutableList.of() : ImmutableList.of($$0.g());
+   public fii(fjc $$0, fjb $$1, int $$2, int $$3) {
+      super(0, 0, $$2, $$3, $$1.a());
+      this.m = $$0;
+      this.n = $$1;
    }
 
    @Override
-   public int a() {
-      return this.l;
+   public void b(fgm $$0, int $$1, int $$2, float $$3) {
+      RenderSystem.enableBlend();
+      $$0.a(a.a(this.b(), this.A()), this.C(), this.D(), this.g, this.h);
+      RenderSystem.disableBlend();
+      fgk $$4 = ffa.Q().h;
+      int $$5 = this.j ? -1 : -6250336;
+      this.a($$0, $$4, $$5);
+      if (this.b()) {
+         this.a($$0, this.C() + 2, this.D() + 2, this.E() - 2, this.F());
+         this.b($$0, $$4, $$5);
+      }
+   }
+
+   protected void a(fgm $$0, int $$1, int $$2, int $$3, int $$4) {
+      fmy.a($$0, fmy.g, $$1, $$2, 0.0F, 0.0F, $$3 - $$1, $$4 - $$2);
+   }
+
+   public void a(fgm $$0, fgk $$1, int $$2) {
+      int $$3 = this.C() + 1;
+      int $$4 = this.D() + (this.b() ? 0 : 3);
+      int $$5 = this.C() + this.x() - 1;
+      int $$6 = this.D() + this.v();
+      a($$0, $$1, this.y(), $$3, $$4, $$5, $$6, $$2);
+   }
+
+   private void b(fgm $$0, fgk $$1, int $$2) {
+      int $$3 = Math.min($$1.a(this.y()), this.x() - 4);
+      int $$4 = this.C() + (this.x() - $$3) / 2;
+      int $$5 = this.D() + this.v() - 2;
+      $$0.a($$4, $$5, $$4 + $$3, $$5 + 1, $$2);
    }
 
    @Override
-   public int b() {
-      return 20 + Math.max(this.i.size(), 1) * 12;
-   }
-
-   public void c() {
-      this.m = true;
+   protected void a(fkv $$0) {
+      $$0.a(fku.a, xl.a("gui.narrate.tab", this.n.a()));
    }
 
    @Override
-   public fij.a a(ffn $$0, fik $$1, long $$2) {
-      if (this.k) {
-         this.j = $$2;
-         this.k = false;
-      }
-
-      int $$3 = this.a();
-      if ($$3 == 160 && this.i.size() <= 1) {
-         $$0.a(a, 0, 0, $$3, this.b());
-      } else {
-         int $$4 = this.b();
-         int $$5 = 28;
-         int $$6 = Math.min(4, $$4 - 28);
-         this.a($$0, $$3, 0, 0, 28);
-
-         for (int $$7 = 28; $$7 < $$4 - $$6; $$7 += 10) {
-            this.a($$0, $$3, 16, $$7, Math.min(16, $$4 - $$7 - $$6));
-         }
-
-         this.a($$0, $$3, 32 - $$6, $$4 - $$6, $$6);
-      }
-
-      if (this.i.isEmpty()) {
-         $$0.a($$1.b().h, this.h, 18, 12, -256, false);
-      } else {
-         $$0.a($$1.b().h, this.h, 18, 7, -256, false);
-
-         for (int $$8 = 0; $$8 < this.i.size(); $$8++) {
-            $$0.a($$1.b().h, this.i.get($$8), 18, 18 + $$8 * 12, -1, false);
-         }
-      }
-
-      double $$9 = (double)this.g.k * $$1.c();
-      long $$10 = $$2 - this.j;
-      return !this.m && (double)$$10 < $$9 ? fij.a.a : fij.a.b;
+   public void a(gtq $$0) {
    }
 
-   private void a(ffn $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$2 == 0 ? 20 : 5;
-      int $$6 = Math.min(60, $$1 - $$5);
-      akn $$7 = a;
-      $$0.a($$7, 160, 32, 0, $$2, 0, $$3, $$5, $$4);
-
-      for (int $$8 = $$5; $$8 < $$1 - $$6; $$8 += 64) {
-         $$0.a($$7, 160, 32, 32, $$2, $$8, $$3, Math.min(64, $$1 - $$8 - $$6), $$4);
-      }
-
-      $$0.a($$7, 160, 32, 160 - $$6, $$2, $$1 - $$6, $$3, $$6, $$4);
+   public fjb a() {
+      return this.n;
    }
 
-   public void a(wx $$0, @Nullable wx $$1) {
-      this.h = $$0;
-      this.i = a($$1);
-      this.k = true;
-   }
-
-   public fii.a d() {
-      return this.g;
-   }
-
-   public static void a(fik $$0, fii.a $$1, wx $$2, @Nullable wx $$3) {
-      $$0.a(new fii($$1, $$2, $$3));
-   }
-
-   public static void b(fik $$0, fii.a $$1, wx $$2, @Nullable wx $$3) {
-      fii $$4 = $$0.a(fii.class, $$1);
-      if ($$4 == null) {
-         a($$0, $$1, $$2, $$3);
-      } else {
-         $$4.a($$2, $$3);
-      }
-   }
-
-   public static void a(fik $$0, fii.a $$1) {
-      fii $$2 = $$0.a(fii.class, $$1);
-      if ($$2 != null) {
-         $$2.c();
-      }
-   }
-
-   public static void a(feb $$0, String $$1) {
-      a($$0.ax(), fii.a.d, wx.c("selectWorld.access_failure"), wx.b($$1));
-   }
-
-   public static void b(feb $$0, String $$1) {
-      a($$0.ax(), fii.a.d, wx.c("selectWorld.delete_failure"), wx.b($$1));
-   }
-
-   public static void c(feb $$0, String $$1) {
-      a($$0.ax(), fii.a.e, wx.c("pack.copyFailure"), wx.b($$1));
-   }
-
-   public static void a(feb $$0) {
-      b($$0.ax(), fii.a.g, wx.c("chunk.toast.lowDiskSpace"), wx.c("chunk.toast.lowDiskSpace.description"));
-   }
-
-   public static void a(feb $$0, dag $$1) {
-      b($$0.ax(), fii.a.h, wx.a("chunk.toast.loadFailure", $$1).a(n.m), wx.c("chunk.toast.checkLog"));
-   }
-
-   public static void b(feb $$0, dag $$1) {
-      b($$0.ax(), fii.a.i, wx.a("chunk.toast.saveFailure", $$1).a(n.m), wx.c("chunk.toast.checkLog"));
-   }
-
-   public static class a {
-      public static final fii.a a = new fii.a();
-      public static final fii.a b = new fii.a();
-      public static final fii.a c = new fii.a();
-      public static final fii.a d = new fii.a();
-      public static final fii.a e = new fii.a();
-      public static final fii.a f = new fii.a();
-      public static final fii.a g = new fii.a(10000L);
-      public static final fii.a h = new fii.a();
-      public static final fii.a i = new fii.a();
-      public static final fii.a j = new fii.a(10000L);
-      final long k;
-
-      public a(long $$0) {
-         this.k = $$0;
-      }
-
-      public a() {
-         this(5000L);
-      }
+   public boolean b() {
+      return this.m.a() == this.n;
    }
 }

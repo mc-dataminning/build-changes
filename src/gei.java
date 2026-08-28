@@ -1,41 +1,49 @@
-public class gei implements gek<dog> {
-   public static final gpz a = new gpz(gnu.e, new akn("entity/bell/bell_body"));
-   private static final String b = "bell_body";
-   private final fvw c;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import javax.annotation.Nullable;
 
-   public gei(gel.a $$0) {
-      fvw $$1 = $$0.a(fvv.l);
-      this.c = $$1.b("bell_body");
+public class gei {
+   public static final int a = -1;
+   public final je b;
+   public final int c;
+   public final String d;
+   public final gek e;
+
+   public gei(@Nullable je $$0, int $$1, String $$2, gek $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   public static fwc b() {
-      fwe $$0 = new fwe();
-      fwf $$1 = $$0.a();
-      fwf $$2 = $$1.a("bell_body", fwb.c().a(0, 0).a(-3.0F, -6.0F, -3.0F, 6.0F, 7.0F, 6.0F), fvy.a(8.0F, 12.0F, 8.0F));
-      $$2.a("bell_base", fwb.c().a(0, 13).a(4.0F, 4.0F, 4.0F, 8.0F, 2.0F, 8.0F), fvy.a(-8.0F, -12.0F, -8.0F));
-      return fwc.a($$0, 32, 32);
-   }
+   protected static class a implements JsonDeserializer<gei> {
+      private static final int a = -1;
 
-   public void a(dog $$0, float $$1, eyu $$2, gck $$3, int $$4, int $$5) {
-      float $$6 = (float)$$0.a + $$1;
-      float $$7 = 0.0F;
-      float $$8 = 0.0F;
-      if ($$0.b) {
-         float $$9 = ayf.a($$6 / (float) Math.PI) / (4.0F + $$6 / 3.0F);
-         if ($$0.c == it.c) {
-            $$7 = -$$9;
-         } else if ($$0.c == it.d) {
-            $$7 = $$9;
-         } else if ($$0.c == it.f) {
-            $$8 = -$$9;
-         } else if ($$0.c == it.e) {
-            $$8 = $$9;
-         }
+      public gei a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         je $$4 = this.c($$3);
+         int $$5 = this.a($$3);
+         String $$6 = this.b($$3);
+         gek $$7 = (gek)$$2.deserialize($$3, gek.class);
+         return new gei($$4, $$5, $$6, $$7);
       }
 
-      this.c.e = $$7;
-      this.c.g = $$8;
-      eyy $$10 = a.a($$3, gcs::c);
-      this.c.a($$2, $$10, $$4, $$5);
+      protected int a(JsonObject $$0) {
+         return ayk.a($$0, "tintindex", -1);
+      }
+
+      private String b(JsonObject $$0) {
+         return ayk.i($$0, "texture");
+      }
+
+      @Nullable
+      private je c(JsonObject $$0) {
+         String $$1 = ayk.a($$0, "cullface", "");
+         return je.a($$1);
+      }
    }
 }

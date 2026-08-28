@@ -1,75 +1,100 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class goa {
-   private static final Logger a = LogUtils.getLogger();
-   private static final akg b = new akg("atlases", ".json");
-   private final List<gnz> c;
+public class goa implements gnz {
+   public static final int a = 0;
+   private final goa.b c = new goa.b();
+   private final goa.b d = new goa.b();
+   public final goa.a b;
 
-   private goa(List<gnz> $$0) {
-      this.c = $$0;
+   public goa(goa.a $$0) {
+      this.b = $$0;
    }
 
-   public List<Function<gny, gnp>> a(atx $$0) {
-      final Map<akn, gnz.b> $$1 = new HashMap<>();
-      gnz.a $$2 = new gnz.a() {
-         @Override
-         public void a(akn $$0, gnz.b $$1x) {
-            gnz.b $$2 = $$1.put($$0, $$1);
-            if ($$2 != null) {
-               $$2.a();
-            }
-         }
-
-         @Override
-         public void a(Predicate<akn> $$0) {
-            Iterator<Entry<akn, gnz.b>> $$1 = $$1.entrySet().iterator();
-
-            while ($$1.hasNext()) {
-               Entry<akn, gnz.b> $$2 = $$1.next();
-               if ($$0.test($$2.getKey())) {
-                  $$2.getValue().a();
-                  $$1.remove();
-               }
-            }
-         }
-      };
-      this.c.forEach($$2x -> $$2x.a($$0, $$2));
-      Builder<Function<gny, gnp>> $$3 = ImmutableList.builder();
-      $$3.add((Function<gny, gnp>)$$0x -> gnl.a());
-      $$3.addAll($$1.values());
-      return $$3.build();
+   @Override
+   public float unclampedCall(cuk $$0, @Nullable fxq $$1, @Nullable btk $$2, int $$3) {
+      bsp $$4 = (bsp)($$2 != null ? $$2 : $$0.F());
+      if ($$4 == null) {
+         return 0.0F;
+      } else {
+         $$1 = this.a($$4, $$1);
+         return $$1 == null ? 0.0F : this.a($$0, $$1, $$3, $$4);
+      }
    }
 
-   public static goa a(atx $$0, akn $$1) {
-      akn $$2 = b.a($$1);
-      List<gnz> $$3 = new ArrayList<>();
+   private float a(cuk $$0, fxq $$1, int $$2, bsp $$3) {
+      jh $$4 = this.b.getPos($$1, $$0, $$3);
+      long $$5 = $$1.Z();
+      return !this.a($$3, $$4) ? this.a($$2, $$5) : this.a($$3, $$5, $$4.b());
+   }
 
-      for (atv $$4 : $$0.a($$2)) {
-         try (BufferedReader $$5 = $$4.e()) {
-            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
-            $$3.addAll((Collection<? extends gnz>)goc.h.parse($$6).getOrThrow());
-         } catch (Exception var11) {
-            a.error("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
-         }
+   private float a(int $$0, long $$1) {
+      if (this.d.a($$1)) {
+         this.d.a($$1, Math.random());
       }
 
-      return new goa($$3);
+      double $$2 = this.d.a + (double)((float)this.a($$0) / 2.1474836E9F);
+      return ayu.b((float)$$2, 1.0F);
+   }
+
+   private float a(bsp $$0, long $$1, iz $$2) {
+      double $$3 = this.a($$0, $$2);
+      double $$4 = this.a($$0);
+      if ($$0 instanceof cms $$5 && $$5.g() && $$5.dP().s().i()) {
+         if (this.c.a($$1)) {
+            this.c.a($$1, 0.5 - ($$4 - 0.25));
+         }
+
+         double $$6 = $$3 + this.c.a;
+         return ayu.b((float)$$6, 1.0F);
+      }
+
+      double $$7 = 0.5 - ($$4 - 0.25 - $$3);
+      return ayu.b((float)$$7, 1.0F);
+   }
+
+   @Nullable
+   private fxq a(bsp $$0, @Nullable fxq $$1) {
+      return $$1 == null && $$0.dP() instanceof fxq ? (fxq)$$0.dP() : $$1;
+   }
+
+   private boolean a(bsp $$0, @Nullable jh $$1) {
+      return $$1 != null && $$1.a() == $$0.dP().af() && !($$1.b().b($$0.dn()) < 1.0E-5F);
+   }
+
+   private double a(bsp $$0, iz $$1) {
+      evm $$2 = evm.b($$1);
+      return Math.atan2($$2.c() - $$0.dA(), $$2.a() - $$0.du()) / (float) (Math.PI * 2);
+   }
+
+   private double a(bsp $$0) {
+      return ayu.c((double)($$0.dG() / 360.0F), 1.0);
+   }
+
+   private int a(int $$0) {
+      return $$0 * 1327217883;
+   }
+
+   public interface a {
+      @Nullable
+      jh getPos(fxq var1, cuk var2, bsp var3);
+   }
+
+   static class b {
+      double a;
+      private double b;
+      private long c;
+
+      boolean a(long $$0) {
+         return this.c != $$0;
+      }
+
+      void a(long $$0, double $$1) {
+         this.c = $$0;
+         double $$2 = $$1 - this.a;
+         $$2 = ayu.c($$2 + 0.5, 1.0) - 0.5;
+         this.b += $$2 * 0.1;
+         this.b *= 0.8;
+         this.a = ayu.c(this.a + this.b, 1.0);
+      }
    }
 }

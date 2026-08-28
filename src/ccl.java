@@ -1,22 +1,32 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import com.mojang.serialization.Codec;
 
-public class ccl extends ccu {
-   public static final float a = 10.0F;
+public enum ccl implements azp {
+   a("major_negative", -5, 100, 10, 10),
+   b("minor_negative", -1, 200, 20, 20),
+   c("minor_positive", 1, 25, 1, 5),
+   d("major_positive", 5, 20, 0, 20),
+   e("trading", 1, 25, 2, 20);
 
-   @Override
-   protected boolean a(bsq $$0, bsq $$1) {
-      return !$$0.dS().a(cbu.U) && cda.c($$0, $$1) && cga.j($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
+   public static final int f = 25;
+   public static final int g = 20;
+   public static final int h = 2;
+   public final String i;
+   public final int j;
+   public final int k;
+   public final int l;
+   public final int m;
+   public static final Codec<ccl> n = azp.a(ccl::values);
+
+   private ccl(final String $$0, final int $$1, final int $$2, final int $$3, final int $$4) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.m = $$4;
    }
 
-   private boolean e(bsq $$0, bsq $$1) {
-      List<UUID> $$2 = $$0.dS().c(cbu.aa).orElseGet(ArrayList::new);
-      return $$2.contains($$1.cz());
-   }
-
    @Override
-   protected cbu<bsq> b() {
-      return cbu.B;
+   public String c() {
+      return this.i;
    }
 }

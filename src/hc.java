@@ -1,4 +1,8 @@
-@FunctionalInterface
-public interface hc<T> {
-   void execute(hd<T> var1, hf var2);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface hc {
 }

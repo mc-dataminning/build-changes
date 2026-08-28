@@ -1,45 +1,29 @@
-public class acy implements ze<abq> {
-   public static final yv<vx, acy> a = ze.a(acy::a, acy::new);
+public class acy implements zs<ace> {
+   public static final zj<wl, acy> a = zs.a(acy::a, acy::new);
    private final int b;
-   private final int c;
-   private final int d;
 
-   public acy(int $$0, int $$1, int $$2) {
+   public acy(int $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
    }
 
-   private acy(vx $$0) {
+   private acy(wl $$0) {
       this.b = $$0.readUnsignedByte();
-      this.c = $$0.l();
-      this.d = $$0.readInt();
    }
 
-   private void a(vx $$0) {
+   private void a(wl $$0) {
       $$0.k(this.b);
-      $$0.c(this.c);
-      $$0.p(this.d);
    }
 
    @Override
-   public zg<acy> a() {
-      return agc.H;
+   public zu<acy> a() {
+      return agq.t;
    }
 
-   public void a(abq $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
    public int b() {
       return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
    }
 }

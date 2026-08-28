@@ -1,110 +1,420 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import java.util.Arrays;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableDouble;
 
-public record dxb(dwo b, dwo c, dwo d, dwo e, dwo f, dwo g, dwo h, dwo i, dwo j, dwo k, dwo l, dwo m, dwo n, dwo o, dwo p) {
-   public static final Codec<dxb> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               a("barrier", dxb::a),
-               a("fluid_level_floodedness", dxb::b),
-               a("fluid_level_spread", dxb::c),
-               a("lava", dxb::d),
-               a("temperature", dxb::e),
-               a("vegetation", dxb::f),
-               a("continents", dxb::g),
-               a("erosion", dxb::h),
-               a("depth", dxb::i),
-               a("ridges", dxb::j),
-               a("initial_density_without_jaggedness", dxb::k),
-               a("final_density", dxb::l),
-               a("vein_toggle", dxb::m),
-               a("vein_ridged", dxb::n),
-               a("vein_gap", dxb::o)
-            )
-            .apply($$0, dxb::new)
-   );
-
-   private static RecordCodecBuilder<dxb, dwo> a(String $$0, Function<dxb, dwo> $$1) {
-      return dwo.d.fieldOf($$0).forGetter($$1);
+public interface dxb {
+   static dxb a(dxt $$0, dba $$1, dxv $$2, dyc $$3, int $$4, int $$5, dxb.a $$6) {
+      return new dxb.c($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   public dxb a(dwo.f $$0) {
-      return new dxb(
-         this.b.a($$0),
-         this.c.a($$0),
-         this.d.a($$0),
-         this.e.a($$0),
-         this.f.a($$0),
-         this.g.a($$0),
-         this.h.a($$0),
-         this.i.a($$0),
-         this.j.a($$0),
-         this.k.a($$0),
-         this.l.a($$0),
-         this.m.a($$0),
-         this.n.a($$0),
-         this.o.a($$0),
-         this.p.a($$0)
-      );
+   static dxb a(final dxb.a $$0) {
+      return new dxb() {
+         @Nullable
+         @Override
+         public drx a(dxi.b $$0x, double $$1) {
+            return $$1 > 0.0 ? null : $$0.computeFluid($$0.a(), $$0.b(), $$0.c()).a($$0.b());
+         }
+
+         @Override
+         public boolean a() {
+            return false;
+         }
+      };
    }
 
-   public dwo a() {
-      return this.b;
+   @Nullable
+   drx a(dxi.b var1, double var2);
+
+   boolean a();
+
+   public interface a {
+      dxb.b computeFluid(int var1, int var2, int var3);
    }
 
-   public dwo b() {
-      return this.c;
+   public static final class b {
+      final int a;
+      final drx b;
+
+      public b(int $$0, drx $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public drx a(int $$0) {
+         return $$0 < this.a ? this.b : dew.a.n();
+      }
    }
 
-   public dwo c() {
-      return this.d;
-   }
+   public static class c implements dxb {
+      private static final int a = 10;
+      private static final int b = 9;
+      private static final int c = 10;
+      private static final int d = 6;
+      private static final int e = 3;
+      private static final int f = 6;
+      private static final int g = 16;
+      private static final int h = 12;
+      private static final int i = 16;
+      private static final int j = 11;
+      private static final double k = a(ayu.h(10), ayu.h(12));
+      private final dxt l;
+      private final dxi m;
+      private final dxi n;
+      private final dxi o;
+      private final dxi p;
+      private final dyc q;
+      private final dxb.b[] r;
+      private final long[] s;
+      private final dxb.a t;
+      private final dxi u;
+      private final dxi v;
+      private boolean w;
+      private final int x;
+      private final int y;
+      private final int z;
+      private final int A;
+      private final int B;
+      private static final int[][] C = new int[][]{
+         {0, 0}, {-2, -1}, {-1, -1}, {0, -1}, {1, -1}, {-3, 0}, {-2, 0}, {-1, 0}, {1, 0}, {-2, 1}, {-1, 1}, {0, 1}, {1, 1}
+      };
 
-   public dwo d() {
-      return this.e;
-   }
+      c(dxt $$0, dba $$1, dxv $$2, dyc $$3, int $$4, int $$5, dxb.a $$6) {
+         this.l = $$0;
+         this.m = $$2.a();
+         this.n = $$2.b();
+         this.o = $$2.c();
+         this.p = $$2.d();
+         this.u = $$2.h();
+         this.v = $$2.i();
+         this.q = $$3;
+         this.x = this.a($$1.d()) - 1;
+         this.t = $$6;
+         int $$7 = this.a($$1.f()) + 1;
+         this.A = $$7 - this.x + 1;
+         this.y = this.b($$4) - 1;
+         int $$8 = this.b($$4 + $$5) + 1;
+         int $$9 = $$8 - this.y + 1;
+         this.z = this.c($$1.e()) - 1;
+         int $$10 = this.c($$1.g()) + 1;
+         this.B = $$10 - this.z + 1;
+         int $$11 = this.A * $$9 * this.B;
+         this.r = new dxb.b[$$11];
+         this.s = new long[$$11];
+         Arrays.fill(this.s, Long.MAX_VALUE);
+      }
 
-   public dwo e() {
-      return this.f;
-   }
+      private int a(int $$0, int $$1, int $$2) {
+         int $$3 = $$0 - this.x;
+         int $$4 = $$1 - this.y;
+         int $$5 = $$2 - this.z;
+         return ($$4 * this.B + $$5) * this.A + $$3;
+      }
 
-   public dwo f() {
-      return this.g;
-   }
+      @Nullable
+      @Override
+      public drx a(dxi.b $$0, double $$1) {
+         int $$2 = $$0.a();
+         int $$3 = $$0.b();
+         int $$4 = $$0.c();
+         if ($$1 > 0.0) {
+            this.w = false;
+            return null;
+         } else {
+            dxb.b $$5 = this.t.computeFluid($$2, $$3, $$4);
+            if ($$5.a($$3).a(dew.H)) {
+               this.w = false;
+               return dew.H.n();
+            } else {
+               int $$6 = Math.floorDiv($$2 - 5, 16);
+               int $$7 = Math.floorDiv($$3 + 1, 12);
+               int $$8 = Math.floorDiv($$4 - 5, 16);
+               int $$9 = Integer.MAX_VALUE;
+               int $$10 = Integer.MAX_VALUE;
+               int $$11 = Integer.MAX_VALUE;
+               long $$12 = 0L;
+               long $$13 = 0L;
+               long $$14 = 0L;
 
-   public dwo g() {
-      return this.h;
-   }
+               for (int $$15 = 0; $$15 <= 1; $$15++) {
+                  for (int $$16 = -1; $$16 <= 1; $$16++) {
+                     for (int $$17 = 0; $$17 <= 1; $$17++) {
+                        int $$18 = $$6 + $$15;
+                        int $$19 = $$7 + $$16;
+                        int $$20 = $$8 + $$17;
+                        int $$21 = this.a($$18, $$19, $$20);
+                        long $$22 = this.s[$$21];
+                        long $$23;
+                        if ($$22 != Long.MAX_VALUE) {
+                           $$23 = $$22;
+                        } else {
+                           azc $$24 = this.q.a($$18, $$19, $$20);
+                           $$23 = iz.a($$18 * 16 + $$24.a(10), $$19 * 12 + $$24.a(9), $$20 * 16 + $$24.a(10));
+                           this.s[$$21] = $$23;
+                        }
 
-   public dwo h() {
-      return this.i;
-   }
+                        int $$26 = iz.a($$23) - $$2;
+                        int $$27 = iz.b($$23) - $$3;
+                        int $$28 = iz.c($$23) - $$4;
+                        int $$29 = $$26 * $$26 + $$27 * $$27 + $$28 * $$28;
+                        if ($$9 >= $$29) {
+                           $$14 = $$13;
+                           $$13 = $$12;
+                           $$12 = $$23;
+                           $$11 = $$10;
+                           $$10 = $$9;
+                           $$9 = $$29;
+                        } else if ($$10 >= $$29) {
+                           $$14 = $$13;
+                           $$13 = $$23;
+                           $$11 = $$10;
+                           $$10 = $$29;
+                        } else if ($$11 >= $$29) {
+                           $$14 = $$23;
+                           $$11 = $$29;
+                        }
+                     }
+                  }
+               }
 
-   public dwo i() {
-      return this.j;
-   }
+               dxb.b $$30 = this.a($$12);
+               double $$31 = a($$9, $$10);
+               drx $$32 = $$30.a($$3);
+               if ($$31 <= 0.0) {
+                  this.w = $$31 >= k;
+                  return $$32;
+               } else if ($$32.a(dew.G) && this.t.computeFluid($$2, $$3 - 1, $$4).a($$3 - 1).a(dew.H)) {
+                  this.w = true;
+                  return $$32;
+               } else {
+                  MutableDouble $$34 = new MutableDouble(Double.NaN);
+                  dxb.b $$35 = this.a($$13);
+                  double $$36 = $$31 * this.a($$0, $$34, $$30, $$35);
+                  if ($$1 + $$36 > 0.0) {
+                     this.w = false;
+                     return null;
+                  } else {
+                     dxb.b $$37 = this.a($$14);
+                     double $$38 = a($$9, $$11);
+                     if ($$38 > 0.0) {
+                        double $$39 = $$31 * $$38 * this.a($$0, $$34, $$30, $$37);
+                        if ($$1 + $$39 > 0.0) {
+                           this.w = false;
+                           return null;
+                        }
+                     }
 
-   public dwo j() {
-      return this.k;
-   }
+                     double $$40 = a($$10, $$11);
+                     if ($$40 > 0.0) {
+                        double $$41 = $$31 * $$40 * this.a($$0, $$34, $$35, $$37);
+                        if ($$1 + $$41 > 0.0) {
+                           this.w = false;
+                           return null;
+                        }
+                     }
 
-   public dwo k() {
-      return this.l;
-   }
+                     this.w = true;
+                     return $$32;
+                  }
+               }
+            }
+         }
+      }
 
-   public dwo l() {
-      return this.m;
-   }
+      @Override
+      public boolean a() {
+         return this.w;
+      }
 
-   public dwo m() {
-      return this.n;
-   }
+      private static double a(int $$0, int $$1) {
+         double $$2 = 25.0;
+         return 1.0 - (double)Math.abs($$1 - $$0) / 25.0;
+      }
 
-   public dwo n() {
-      return this.o;
-   }
+      private double a(dxi.b $$0, MutableDouble $$1, dxb.b $$2, dxb.b $$3) {
+         int $$4 = $$0.b();
+         drx $$5 = $$2.a($$4);
+         drx $$6 = $$3.a($$4);
+         if ((!$$5.a(dew.H) || !$$6.a(dew.G)) && (!$$5.a(dew.G) || !$$6.a(dew.H))) {
+            int $$7 = Math.abs($$2.a - $$3.a);
+            if ($$7 == 0) {
+               return 0.0;
+            } else {
+               double $$8 = 0.5 * (double)($$2.a + $$3.a);
+               double $$9 = (double)$$4 + 0.5 - $$8;
+               double $$10 = (double)$$7 / 2.0;
+               double $$11 = 0.0;
+               double $$12 = 2.5;
+               double $$13 = 1.5;
+               double $$14 = 3.0;
+               double $$15 = 10.0;
+               double $$16 = 3.0;
+               double $$17 = $$10 - Math.abs($$9);
+               double $$19;
+               if ($$9 > 0.0) {
+                  double $$18 = 0.0 + $$17;
+                  if ($$18 > 0.0) {
+                     $$19 = $$18 / 1.5;
+                  } else {
+                     $$19 = $$18 / 2.5;
+                  }
+               } else {
+                  double $$21 = 3.0 + $$17;
+                  if ($$21 > 0.0) {
+                     $$19 = $$21 / 3.0;
+                  } else {
+                     $$19 = $$21 / 10.0;
+                  }
+               }
 
-   public dwo o() {
-      return this.p;
+               double $$24 = 2.0;
+               double $$28;
+               if (!($$19 < -2.0) && !($$19 > 2.0)) {
+                  double $$26 = $$1.getValue();
+                  if (Double.isNaN($$26)) {
+                     double $$27 = this.m.a($$0);
+                     $$1.setValue($$27);
+                     $$28 = $$27;
+                  } else {
+                     $$28 = $$26;
+                  }
+               } else {
+                  $$28 = 0.0;
+               }
+
+               return 2.0 * ($$28 + $$19);
+            }
+         } else {
+            return 2.0;
+         }
+      }
+
+      private int a(int $$0) {
+         return Math.floorDiv($$0, 16);
+      }
+
+      private int b(int $$0) {
+         return Math.floorDiv($$0, 12);
+      }
+
+      private int c(int $$0) {
+         return Math.floorDiv($$0, 16);
+      }
+
+      private dxb.b a(long $$0) {
+         int $$1 = iz.a($$0);
+         int $$2 = iz.b($$0);
+         int $$3 = iz.c($$0);
+         int $$4 = this.a($$1);
+         int $$5 = this.b($$2);
+         int $$6 = this.c($$3);
+         int $$7 = this.a($$4, $$5, $$6);
+         dxb.b $$8 = this.r[$$7];
+         if ($$8 != null) {
+            return $$8;
+         } else {
+            dxb.b $$9 = this.b($$1, $$2, $$3);
+            this.r[$$7] = $$9;
+            return $$9;
+         }
+      }
+
+      private dxb.b b(int $$0, int $$1, int $$2) {
+         dxb.b $$3 = this.t.computeFluid($$0, $$1, $$2);
+         int $$4 = Integer.MAX_VALUE;
+         int $$5 = $$1 + 12;
+         int $$6 = $$1 - 12;
+         boolean $$7 = false;
+
+         for (int[] $$8 : C) {
+            int $$9 = $$0 + kb.c($$8[0]);
+            int $$10 = $$2 + kb.c($$8[1]);
+            int $$11 = this.l.a($$9, $$10);
+            int $$12 = $$11 + 8;
+            boolean $$13 = $$8[0] == 0 && $$8[1] == 0;
+            if ($$13 && $$6 > $$12) {
+               return $$3;
+            }
+
+            boolean $$14 = $$5 > $$12;
+            if ($$14 || $$13) {
+               dxb.b $$15 = this.t.computeFluid($$9, $$12, $$10);
+               if (!$$15.a($$12).i()) {
+                  if ($$13) {
+                     $$7 = true;
+                  }
+
+                  if ($$14) {
+                     return $$15;
+                  }
+               }
+            }
+
+            $$4 = Math.min($$4, $$11);
+         }
+
+         int $$16 = this.a($$0, $$1, $$2, $$3, $$4, $$7);
+         return new dxb.b($$16, this.a($$0, $$1, $$2, $$3, $$16));
+      }
+
+      private int a(int $$0, int $$1, int $$2, dxb.b $$3, int $$4, boolean $$5) {
+         dxi.e $$6 = new dxi.e($$0, $$1, $$2);
+         double $$7;
+         double $$8;
+         if (ddi.a(this.u, this.v, $$6)) {
+            $$7 = -1.0;
+            $$8 = -1.0;
+         } else {
+            int $$9 = $$4 + 8 - $$1;
+            int $$10 = 64;
+            double $$11 = $$5 ? ayu.a((double)$$9, 0.0, 64.0, 1.0, 0.0) : 0.0;
+            double $$12 = ayu.a(this.n.a($$6), -1.0, 1.0);
+            double $$13 = ayu.b($$11, 1.0, 0.0, -0.3, 0.8);
+            double $$14 = ayu.b($$11, 1.0, 0.0, -0.8, 0.4);
+            $$7 = $$12 - $$14;
+            $$8 = $$12 - $$13;
+         }
+
+         int $$17;
+         if ($$8 > 0.0) {
+            $$17 = $$3.a;
+         } else if ($$7 > 0.0) {
+            $$17 = this.a($$0, $$1, $$2, $$4);
+         } else {
+            $$17 = dvp.g;
+         }
+
+         return $$17;
+      }
+
+      private int a(int $$0, int $$1, int $$2, int $$3) {
+         int $$4 = 16;
+         int $$5 = 40;
+         int $$6 = Math.floorDiv($$0, 16);
+         int $$7 = Math.floorDiv($$1, 40);
+         int $$8 = Math.floorDiv($$2, 16);
+         int $$9 = $$7 * 40 + 20;
+         int $$10 = 10;
+         double $$11 = this.o.a(new dxi.e($$6, $$7, $$8)) * 10.0;
+         int $$12 = ayu.a($$11, 3);
+         int $$13 = $$9 + $$12;
+         return Math.min($$3, $$13);
+      }
+
+      private drx a(int $$0, int $$1, int $$2, dxb.b $$3, int $$4) {
+         drx $$5 = $$3.b;
+         if ($$4 <= -10 && $$4 != dvp.g && $$3.b != dew.H.n()) {
+            int $$6 = 64;
+            int $$7 = 40;
+            int $$8 = Math.floorDiv($$0, 64);
+            int $$9 = Math.floorDiv($$1, 40);
+            int $$10 = Math.floorDiv($$2, 64);
+            double $$11 = this.p.a(new dxi.e($$8, $$9, $$10));
+            if (Math.abs($$11) > 0.3) {
+               $$5 = dew.H.n();
+            }
+         }
+
+         return $$5;
+      }
    }
 }

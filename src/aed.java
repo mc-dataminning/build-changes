@@ -1,28 +1,37 @@
-import javax.annotation.Nullable;
+public class aed implements zs<ace> {
+   public static final zj<wl, aed> a = zs.a(aed::a, aed::new);
+   private final int b;
+   private final alb c;
 
-public record aed(String b, @Nullable String c) implements ze<abq> {
-   public static final yv<vx, aed> a = ze.a(aed::a, aed::new);
-
-   private aed(vx $$0) {
-      this($$0.p(), $$0.c(vx::p));
+   public aed(int $$0, cys<?> $$1) {
+      this.b = $$0;
+      this.c = $$1.a();
    }
 
-   private void a(vx $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, vx::a);
+   private aed(wl $$0) {
+      this.b = $$0.readByte();
+      this.c = $$0.q();
+   }
+
+   private void a(wl $$0) {
+      $$0.k(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zg<aed> a() {
-      return agc.ce;
+   public zu<aed> a() {
+      return agq.Y;
    }
 
-   public void a(abq $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public String e() {
+   public alb b() {
       return this.c;
+   }
+
+   public int e() {
+      return this.b;
    }
 }

@@ -1,37 +1,65 @@
-public class gai extends gay {
-   private final gat a;
-
-   gai(fwr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gat $$7) {
+public class gai extends gbf {
+   gai(fxq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.a = $$7;
-      this.d(1.0F);
-      this.n = false;
-      this.b($$7);
+   }
+
+   @Override
+   public gbb b() {
+      return gbb.b;
+   }
+
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
+   }
+
+   @Override
+   public float b(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      return this.D * (1.0F - $$1 * $$1 * 0.5F);
    }
 
    @Override
    public int a(float $$0) {
-      return 240;
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      $$1 = ayu.a($$1, 0.0F, 1.0F);
+      int $$2 = super.a($$0);
+      int $$3 = $$2 & 0xFF;
+      int $$4 = $$2 >> 16 & 0xFF;
+      $$3 += (int)($$1 * 15.0F * 16.0F);
+      if ($$3 > 240) {
+         $$3 = 240;
+      }
+
+      return $$3 | $$4 << 16;
    }
 
-   @Override
-   public gac b() {
-      return gac.c;
+   public static class a implements gba<lm> {
+      private final gbs a;
+
+      public a(gbs $$0) {
+         this.a = $$0;
+      }
+
+      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gai $$8 = new gai($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
-   }
+   public static class b implements gba<lm> {
+      private final gbs a;
 
-   public static record a(gat a) implements gab<lb> {
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gai $$8 = new gai($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.b($$5, $$6, $$7);
-         $$8.a($$1.z.a(4) + 6);
+      public b(gbs $$0) {
+         this.a = $$0;
+      }
+
+      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gai $$8 = new gai($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.d(0.5F);
          return $$8;
       }
    }

@@ -1,65 +1,93 @@
-import io.netty.buffer.ByteBuf;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Stream;
 
-public class jp {
-   public static final yv<ByteBuf, jp> a = new yv<ByteBuf, jp>() {
-      public jp a(ByteBuf $$0) {
-         return new jp($$0.readFloat(), $$0.readFloat(), $$0.readFloat());
+public class jp<T> {
+   private final List<T> a;
+   private final List<jw.b> b;
+   private final jw.b c;
+
+   public jp(List<T> $$0) {
+      this($$0, ac.a(() -> {
+         jw.b[] $$1 = new jw.b[$$0.size()];
+         Arrays.fill($$1, jw.b);
+         return Arrays.asList($$1);
+      }));
+   }
+
+   private jp(List<T> $$0, List<jw.b> $$1) {
+      this.a = List.copyOf($$0);
+      this.b = List.copyOf($$1);
+      this.c = new jw.c(a($$1.stream())).d();
+   }
+
+   private int d(T $$0) {
+      int $$1 = this.a.indexOf($$0);
+      if ($$1 == -1) {
+         throw new IllegalStateException("Can't find " + $$0 + " inside " + this.a);
+      } else {
+         return $$1;
       }
+   }
 
-      public void a(ByteBuf $$0, jp $$1) {
-         $$0.writeFloat($$1.b);
-         $$0.writeFloat($$1.c);
-         $$0.writeFloat($$1.d);
+   public jw.b a(T $$0) {
+      int $$1 = this.d($$0);
+      return this.b.get($$1);
+   }
+
+   public jw.b b(T $$0) {
+      int $$1 = this.d($$0);
+      return this.a(0, $$1);
+   }
+
+   public jw.b c(T $$0) {
+      int $$1 = this.d($$0);
+      return this.a($$1, this.b.size());
+   }
+
+   private jw.b a(int $$0, int $$1) {
+      return new jw.c(a(this.b.subList($$0, $$1).stream())).d();
+   }
+
+   public jp<T> a(T $$0, jw.b... $$1) {
+      return this.a($$0, Arrays.asList($$1));
+   }
+
+   public jp<T> a(T $$0, List<jw.b> $$1) {
+      int $$2 = this.d($$0);
+      if ($$1.size() > this.b.size() - $$2) {
+         throw new IllegalStateException("Too many values to replace");
+      } else {
+         List<jw.b> $$3 = new ArrayList<>();
+
+         for (int $$4 = 0; $$4 < $$2; $$4++) {
+            $$3.add(this.b.get($$4));
+         }
+
+         $$3.addAll($$1);
+
+         while ($$3.size() < this.b.size()) {
+            $$3.add(jw.b);
+         }
+
+         return new jp<>(this.a, $$3);
       }
-   };
-   protected final float b;
-   protected final float c;
-   protected final float d;
-
-   public jp(float $$0, float $$1, float $$2) {
-      this.b = !Float.isInfinite($$0) && !Float.isNaN($$0) ? $$0 % 360.0F : 0.0F;
-      this.c = !Float.isInfinite($$1) && !Float.isNaN($$1) ? $$1 % 360.0F : 0.0F;
-      this.d = !Float.isInfinite($$2) && !Float.isNaN($$2) ? $$2 % 360.0F : 0.0F;
    }
 
-   public jp(uj $$0) {
-      this($$0.i(0), $$0.i(1), $$0.i(2));
-   }
-
-   public uj a() {
-      uj $$0 = new uj();
-      $$0.add(ug.a(this.b));
-      $$0.add(ug.a(this.c));
-      $$0.add(ug.a(this.d));
-      return $$0;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return !($$0 instanceof jp $$1) ? false : this.b == $$1.b && this.c == $$1.c && this.d == $$1.d;
-   }
-
-   public float b() {
-      return this.b;
-   }
-
-   public float c() {
+   public jw.b a() {
       return this.c;
    }
 
-   public float d() {
-      return this.d;
-   }
-
-   public float e() {
-      return ayf.g(this.b);
-   }
-
-   public float f() {
-      return ayf.g(this.c);
-   }
-
-   public float g() {
-      return ayf.g(this.d);
+   private static Map<ala<? extends jv<?>>, jv<?>> a(Stream<? extends jw> $$0) {
+      Map<ala<? extends jv<?>>, jv<?>> $$1 = new HashMap<>();
+      $$0.forEach($$1x -> $$1x.c().forEach($$1xx -> {
+            if ($$1.put($$1xx.a(), $$1xx.b()) != null) {
+               throw new IllegalStateException("Duplicated registry " + $$1xx.a());
+            }
+         }));
+      return $$1;
    }
 }

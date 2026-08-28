@@ -1,83 +1,36 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Set;
+public class fwb<T extends bsp> extends ftn<T> {
+   private final fwv a;
+   private final fwv b;
 
-public class fwb {
-   private static final Set<it> a = EnumSet.allOf(it.class);
-   private final List<fvz> b = Lists.newArrayList();
-   private int c;
-   private int d;
-   private boolean e;
-
-   public fwb a(int $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      return this;
+   public fwb(fwv $$0) {
+      this.a = $$0;
+      this.b = $$0.b("tail");
    }
 
-   public fwb a() {
-      return this.a(true);
+   public static fxb a(fwz $$0) {
+      fxd $$1 = new fxd();
+      fxe $$2 = $$1.a();
+      int $$3 = 22;
+      $$2.a("body", fxa.c().a(0, 0).a(-1.0F, -1.5F, -3.0F, 2.0F, 3.0F, 6.0F, $$0), fwx.a(0.0F, 22.0F, 0.0F));
+      $$2.a("tail", fxa.c().a(22, -6).a(0.0F, -1.5F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), fwx.a(0.0F, 22.0F, 3.0F));
+      $$2.a("right_fin", fxa.c().a(2, 16).a(-2.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fwx.a(-1.0F, 22.5F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$2.a("left_fin", fxa.c().a(2, 12).a(0.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fwx.a(1.0F, 22.5F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$2.a("top_fin", fxa.c().a(10, -5).a(0.0F, -3.0F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), fwx.a(0.0F, 20.5F, -3.0F));
+      return fxb.a($$1, 32, 32);
    }
 
-   public fwb a(boolean $$0) {
-      this.e = $$0;
-      return this;
+   @Override
+   public fwv a() {
+      return this.a;
    }
 
-   public fwb a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, fwa $$7, int $$8, int $$9) {
-      this.a($$8, $$9);
-      this.b.add(new fvz($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, $$7, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = 1.0F;
+      if (!$$0.be()) {
+         $$6 = 1.5F;
+      }
 
-   public fwb a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
-      this.a($$7, $$8);
-      this.b.add(new fvz($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, fwa.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fwb a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.add(new fvz(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fwa.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fwb a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, Set<it> $$6) {
-      this.b.add(new fvz(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fwa.a, this.e, 1.0F, 1.0F, $$6));
-      return this;
-   }
-
-   public fwb a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
-      this.b.add(new fvz($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, fwa.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fwb a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, fwa $$7) {
-      this.b.add(new fvz($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fwb a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, boolean $$6) {
-      this.b.add(new fvz(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fwa.a, $$6, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fwb a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, fwa $$6, float $$7, float $$8) {
-      this.b.add(new fvz(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, $$7, $$8, a));
-      return this;
-   }
-
-   public fwb a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, fwa $$6) {
-      this.b.add(new fvz(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public List<fvz> b() {
-      return ImmutableList.copyOf(this.b);
-   }
-
-   public static fwb c() {
-      return new fwb();
+      this.b.f = -$$6 * 0.45F * ayu.a(0.6F * $$3);
    }
 }

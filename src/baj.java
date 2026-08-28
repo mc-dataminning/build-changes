@@ -1,23 +1,35 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Objects;
-import java.util.Optional;
+import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.Dynamic;
 
 public class baj extends DataFix {
-   public baj(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   private final String a;
+   private final boolean b;
+   private final String c;
+   private final TypeReference d;
+
+   public baj(Schema $$0, TypeReference $$1, String $$2, boolean $$3) {
+      super($$0, true);
+      this.b = $$3;
+      this.c = $$2;
+      this.a = "AddFlagIfNotPresentFix_" + this.c + "=" + this.b + " for " + $$0.getVersionKey();
+      this.d = $$1;
    }
 
-   public TypeRewriteRule makeRule() {
-      OpticFinder<String> $$0 = DSL.fieldFinder("id", bhl.a());
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(this.d);
       return this.fixTypeEverywhereTyped(
-         "BlockEntityCustomNameToComponentFix", this.getInputSchema().getType(bga.s), $$1 -> $$1.update(DSL.remainderFinder(), $$2 -> {
-               Optional<String> $$3 = $$1.getOptional($$0);
-               return $$3.isPresent() && Objects.equals($$3.get(), "minecraft:command_block") ? $$2 : bca.a($$2);
-            })
+         this.a,
+         $$0,
+         $$0x -> $$0x.update(
+               DSL.remainderFinder(),
+               $$0xx -> $$0xx.set(this.c, (Dynamic)DataFixUtils.orElseGet($$0xx.get(this.c).result(), () -> $$0xx.createBoolean(this.b)))
+            )
       );
    }
 }

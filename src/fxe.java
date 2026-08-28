@@ -1,58 +1,44 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 public class fxe {
-   @Nullable
-   private fxe.a a;
-   @Nullable
-   private fxi b;
+   private final List<fwy> a;
+   private final fwx b;
+   private final Map<String, fxe> c = Maps.newHashMap();
 
-   public void a(akm<? extends jk<?>> $$0, List<jo.a> $$1) {
-      if (this.a == null) {
-         this.a = new fxe.a();
-      }
-
-      this.a.a($$0, $$1);
+   fxe(List<fwy> $$0, fwx $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(Map<akm<? extends jk<?>>, awp.a> $$0) {
-      if (this.b == null) {
-         this.b = new fxi();
+   public fxe a(String $$0, fxa $$1, fwx $$2) {
+      fxe $$3 = new fxe($$1.b(), $$2);
+      fxe $$4 = this.c.put($$0, $$3);
+      if ($$4 != null) {
+         $$3.c.putAll($$4.c);
       }
 
-      $$0.forEach(this.b::a);
+      return $$3;
    }
 
-   public jl.b a(aua $$0, jl $$1, boolean $$2) {
-      je<fwt> $$3 = fwt.a();
-      jl $$6;
-      if (this.a != null) {
-         jl.b $$4 = $$3.b(fwt.b);
-         jl.b $$5 = this.a.a($$0, $$4).d();
-         $$6 = $$3.a(fwt.b, $$5).a();
-      } else {
-         $$6 = $$1;
-      }
-
-      if (this.b != null) {
-         this.b.a($$6, $$2);
-      }
-
-      return $$6.d();
+   public fwv a(int $$0, int $$1) {
+      Object2ObjectArrayMap<String, fwv> $$2 = this.c
+         .entrySet()
+         .stream()
+         .collect(Collectors.toMap(Entry::getKey, $$2x -> ((fxe)$$2x.getValue()).a($$0, $$1), ($$0x, $$1x) -> $$0x, Object2ObjectArrayMap::new));
+      List<fwv.a> $$3 = this.a.stream().map($$2x -> $$2x.a($$0, $$1)).collect(ImmutableList.toImmutableList());
+      fwv $$4 = new fwv($$3, $$2);
+      $$4.a(this.b);
+      $$4.b(this.b);
+      return $$4;
    }
 
-   static class a {
-      private final Map<akm<? extends jk<?>>, List<jo.a>> a = new HashMap<>();
-
-      public void a(akm<? extends jk<?>> $$0, List<jo.a> $$1) {
-         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>()).addAll($$1);
-      }
-
-      public jl a(aua $$0, jl $$1) {
-         return aki.a(this.a, $$0, $$1, aki.c);
-      }
+   public fxe a(String $$0) {
+      return this.c.get($$0);
    }
 }

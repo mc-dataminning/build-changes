@@ -1,45 +1,66 @@
-import javax.annotation.Nullable;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import org.joml.Matrix4f;
 
-public class ggr extends giu<chy, frw> {
-   public static final akn a = new akn("textures/entity/armorstand/wood.png");
+public class ggr {
+   private static final int a = aye.b.a(255, 255, 100, 255);
+   private static final int b = aye.b.a(255, 100, 255, 255);
+   private static final int c = aye.b.a(255, 0, 255, 0);
+   private static final int d = aye.b.a(255, 255, 165, 0);
+   private static final int e = aye.b.a(255, 255, 0, 0);
+   private static final int f = 20;
+   private static final float g = (float) (Math.PI / 10);
+   private final ffa h;
+   private final Map<Integer, aas.a> i = new HashMap<>();
 
-   public ggr(ght.a $$0) {
-      super($$0, new frx($$0.a(fvv.c)), 0.0F);
-      this.a(new glv<>(this, new frw($$0.a(fvv.d)), new frw($$0.a(fvv.e)), $$0.g()));
-      this.a(new gly<>(this, $$0.d()));
-      this.a(new glo<>(this, $$0.f()));
-      this.a(new glk<>(this, $$0.f(), $$0.d()));
+   public ggr(ffa $$0) {
+      this.h = $$0;
    }
 
-   public akn a(chy $$0) {
-      return a;
+   public void a(ezt $$0, gdj $$1, double $$2, double $$3, double $$4) {
+      gcl $$5 = this.h.s;
+      $$5.dP().a(bsv.m, $$5.cK().g(100.0), $$0x -> true).forEach($$6 -> {
+         Optional<aas.a> $$7 = Optional.ofNullable(this.i.get($$6.al()));
+         $$7.map(aas.a::d).map($$1xx -> $$5.dP().a($$1xx)).map($$0xx -> $$0xx.l(this.h.at())).ifPresent($$6x -> {
+            a($$0, $$1, $$2, $$3, $$4, $$6.dn(), $$6x, b);
+            evm $$7x = $$6x.b(0.0, 0.01F, 0.0);
+            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(gdr.a(2.0)), $$7x, 4.0F, c);
+            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(gdr.a(2.0)), $$7x, 8.0F, d);
+            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(gdr.a(2.0)), $$7x, 20.0F, e);
+         });
+         $$7.map(aas.a::e).ifPresent($$6x -> {
+            a($$0, $$1, $$2, $$3, $$4, $$6.dn(), $$6x.b(), a);
+            ggv.a($$0, $$1, evh.a(evm.a($$6x)).d(-$$2, -$$3, -$$4), 1.0F, 0.0F, 0.0F, 1.0F);
+         });
+      });
    }
 
-   protected void a(chy $$0, eyu $$1, float $$2, float $$3, float $$4, float $$5) {
-      $$1.a(a.d.rotationDegrees(180.0F - $$3));
-      float $$6 = (float)($$0.dP().Y() - $$0.bN) + $$4;
-      if ($$6 < 5.0F) {
-         $$1.a(a.d.rotationDegrees(ayf.a($$6 / 1.5F * (float) Math.PI) * 3.0F));
+   private static void a(ezt $$0, gdj $$1, double $$2, double $$3, double $$4, evm $$5, evm $$6, int $$7) {
+      ezx $$8 = $$1.getBuffer(gdr.a(2.0));
+      $$8.a($$0.c(), (float)($$5.c - $$2), (float)($$5.d - $$3), (float)($$5.e - $$4)).a($$7).e();
+      $$8.a($$0.c(), (float)($$6.c - $$2), (float)($$6.d - $$3), (float)($$6.e - $$4)).a($$7).e();
+   }
+
+   private static void a(Matrix4f $$0, double $$1, double $$2, double $$3, ezx $$4, evm $$5, float $$6, int $$7) {
+      for (int $$8 = 0; $$8 < 20; $$8++) {
+         a($$8, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       }
+
+      a(0, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   protected boolean b(chy $$0) {
-      double $$1 = this.c.b($$0);
-      float $$2 = $$0.ca() ? 32.0F : 64.0F;
-      return $$1 >= (double)($$2 * $$2) ? false : $$0.cE();
+   private static void a(int $$0, Matrix4f $$1, double $$2, double $$3, double $$4, ezx $$5, evm $$6, float $$7, int $$8) {
+      float $$9 = (float)$$0 * (float) (Math.PI / 10);
+      evm $$10 = $$6.b((double)$$7 * Math.cos((double)$$9), 0.0, (double)$$7 * Math.sin((double)$$9));
+      $$5.a($$1, (float)($$10.c - $$2), (float)($$10.d - $$3), (float)($$10.e - $$4)).a($$8).e();
    }
 
-   @Nullable
-   protected gcs a(chy $$0, boolean $$1, boolean $$2, boolean $$3) {
-      if (!$$0.z()) {
-         return super.a($$0, $$1, $$2, $$3);
-      } else {
-         akn $$4 = this.a($$0);
-         if ($$2) {
-            return gcs.c($$4, false);
-         } else {
-            return $$1 ? gcs.a($$4, false) : null;
-         }
-      }
+   public void a() {
+      this.i.clear();
+   }
+
+   public void a(aas.a $$0) {
+      this.i.put($$0.c(), $$0);
    }
 }

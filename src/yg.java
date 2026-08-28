@@ -1,103 +1,36 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
+import com.google.common.primitives.Ints;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.security.SignatureException;
+import java.util.UUID;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class yg implements wy {
-   private static final Logger d = LogUtils.getLogger();
-   public static final MapCodec<yg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("selector").forGetter(yg::b), wz.a.optionalFieldOf("separator").forGetter(yg::d)).apply($$0, yg::new)
+public record yg(int b, UUID c, UUID d) {
+   public static final Codec<yg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ayc.k.fieldOf("index").forGetter(yg::b), kc.a.fieldOf("sender").forGetter(yg::c), kc.a.fieldOf("session_id").forGetter(yg::d))
+            .apply($$0, yg::new)
    );
-   public static final wy.a<yg> b = new wy.a<>(a, "selector");
-   private final String e;
-   @Nullable
-   private final gt f;
-   protected final Optional<wx> c;
 
-   public yg(String $$0, Optional<wx> $$1) {
-      this.e = $$0;
-      this.c = $$1;
-      this.f = a($$0);
+   public static yg a(UUID $$0) {
+      return a($$0, ac.e);
+   }
+
+   public static yg a(UUID $$0, UUID $$1) {
+      return new yg(0, $$0, $$1);
+   }
+
+   public void a(azg.a $$0) throws SignatureException {
+      $$0.update(kc.b(this.c));
+      $$0.update(kc.b(this.d));
+      $$0.update(Ints.toByteArray(this.b));
+   }
+
+   public boolean a(yg $$0) {
+      return this.b > $$0.b() && this.c.equals($$0.c()) && this.d.equals($$0.d());
    }
 
    @Nullable
-   private static gt a(String $$0) {
-      gt $$1 = null;
-
-      try {
-         gu $$2 = new gu(new StringReader($$0));
-         $$1 = $$2.t();
-      } catch (CommandSyntaxException var3) {
-         d.warn("Invalid selector component: {}: {}", $$0, var3.getMessage());
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public wy.a<?> a() {
-      return b;
-   }
-
-   public String b() {
-      return this.e;
-   }
-
-   @Nullable
-   public gt c() {
-      return this.f;
-   }
-
-   public Optional<wx> d() {
-      return this.c;
-   }
-
-   @Override
-   public xl a(@Nullable ee $$0, @Nullable brw $$1, int $$2) throws CommandSyntaxException {
-      if ($$0 != null && this.f != null) {
-         Optional<? extends wx> $$3 = xa.a($$0, this.c, $$1, $$2);
-         return xa.a(this.f.b($$0), $$3, brw::O_);
-      } else {
-         return wx.i();
-      }
-   }
-
-   @Override
-   public <T> Optional<T> a(xc.b<T> $$0, xu $$1) {
-      return $$0.accept($$1, this.e);
-   }
-
-   @Override
-   public <T> Optional<T> a(xc.a<T> $$0) {
-      return $$0.accept(this.e);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof yg $$1 && this.e.equals($$1.e) && this.c.equals($$1.c)) {
-            return true;
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.e.hashCode();
-      return 31 * $$0 + this.c.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "pattern{" + this.e + "}";
+   public yg a() {
+      return this.b == Integer.MAX_VALUE ? null : new yg(this.b + 1, this.c, this.d);
    }
 }

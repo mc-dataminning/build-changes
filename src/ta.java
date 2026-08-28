@@ -1,9 +1,8 @@
-public interface ta {
-   void a(sz var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(sz var1, tc var2);
-
-   void b(sz var1, tc var2);
-
-   void a(sz var1, sz var2, tc var3);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ta {
 }

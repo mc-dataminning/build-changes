@@ -1,59 +1,19 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Ordering;
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+public class ggd implements gfj<dqw> {
+   private final giq a;
 
-public class ggd implements gfw.a {
-   private final feb a;
-   private final Map<Long, Map<io, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
-
-   ggd(feb $$0) {
-      this.a = $$0;
+   public ggd(gfk.a $$0) {
+      this.a = $$0.c();
    }
 
-   public void a(long $$0, io $$1) {
-      Map<io, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
-      int $$3 = $$2.getOrDefault($$1, 0);
-      $$2.put($$1, $$3 + 1);
-   }
-
-   @Override
-   public void a(eyu $$0, gck $$1, double $$2, double $$3, double $$4) {
-      long $$5 = this.a.r.Y();
-      int $$6 = 200;
-      double $$7 = 0.0025;
-      Set<io> $$8 = Sets.newHashSet();
-      Map<io, Integer> $$9 = Maps.newHashMap();
-      eyy $$10 = $$1.getBuffer(gcs.y());
-      Iterator<Entry<Long, Map<io, Integer>>> $$11 = this.b.entrySet().iterator();
-
-      while ($$11.hasNext()) {
-         Entry<Long, Map<io, Integer>> $$12 = $$11.next();
-         Long $$13 = $$12.getKey();
-         Map<io, Integer> $$14 = $$12.getValue();
-         long $$15 = $$5 - $$13;
-         if ($$15 > 200L) {
-            $$11.remove();
-         } else {
-            for (Entry<io, Integer> $$16 : $$14.entrySet()) {
-               io $$17 = $$16.getKey();
-               Integer $$18 = $$16.getValue();
-               if ($$8.add($$17)) {
-                  euh $$19 = new euh(io.c).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
-                  gci.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
-                  $$9.put($$17, $$18);
-               }
-            }
+   public void a(dqw $$0, float $$1, ezt $$2, gdj $$3, int $$4, int $$5) {
+      dbt $$6 = $$0.i();
+      if ($$6 != null) {
+         dra $$7 = $$0.c();
+         drc $$8 = $$7.f();
+         bsp $$9 = $$8.a($$7, $$6, $$7.i());
+         if ($$9 != null) {
+            gfz.a($$1, $$2, $$3, $$4, $$9, this.a, $$8.d(), $$8.c());
          }
-      }
-
-      for (Entry<io, Integer> $$20 : $$9.entrySet()) {
-         io $$21 = $$20.getKey();
-         Integer $$22 = $$20.getValue();
-         gfw.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
       }
    }
 }

@@ -1,127 +1,126 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import org.slf4j.Logger;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.Collection;
+import java.util.function.Function;
 
-public class api extends auk {
-   private static final Logger h = LogUtils.getLogger();
+public class api {
+   public static void a(CommandDispatcher<ep> $$0, el $$1) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("title").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)eq.a(
+                                    "targets", fc.d()
+                                 )
+                                 .then(eq.a("clear").executes($$0x -> a((ep)$$0x.getSource(), fc.f($$0x, "targets")))))
+                              .then(eq.a("reset").executes($$0x -> b((ep)$$0x.getSource(), fc.f($$0x, "targets")))))
+                           .then(
+                              eq.a("title")
+                                 .then(
+                                    eq.a("title", ey.a($$1))
+                                       .executes($$0x -> a((ep)$$0x.getSource(), fc.f($$0x, "targets"), ey.a($$0x, "title"), "title", afw::new))
+                                 )
+                           ))
+                        .then(
+                           eq.a("subtitle")
+                              .then(
+                                 eq.a("title", ey.a($$1))
+                                    .executes($$0x -> a((ep)$$0x.getSource(), fc.f($$0x, "targets"), ey.a($$0x, "title"), "subtitle", afu::new))
+                              )
+                        ))
+                     .then(
+                        eq.a("actionbar")
+                           .then(
+                              eq.a("title", ey.a($$1))
+                                 .executes($$0x -> a((ep)$$0x.getSource(), fc.f($$0x, "targets"), ey.a($$0x, "title"), "actionbar", aex::new))
+                           )
+                     ))
+                  .then(
+                     eq.a("times")
+                        .then(
+                           eq.a("fadeIn", ge.a())
+                              .then(
+                                 eq.a("stay", ge.a())
+                                    .then(
+                                       eq.a("fadeOut", ge.a())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (ep)$$0x.getSource(),
+                                                   fc.f($$0x, "targets"),
+                                                   IntegerArgumentType.getInteger($$0x, "fadeIn"),
+                                                   IntegerArgumentType.getInteger($$0x, "stay"),
+                                                   IntegerArgumentType.getInteger($$0x, "fadeOut")
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
+      );
+   }
 
-   public api(apj $$0, je<akw> $$1, epa $$2) {
-      super($$0, $$1, $$2, $$0.a().H);
-      apk $$3 = $$0.a();
-      this.a($$3.F);
-      this.b($$3.G);
-      super.a($$3.W.get());
-      this.z();
-      this.x();
-      this.y();
-      this.w();
-      this.A();
-      this.C();
-      this.B();
-      if (!this.i().b().exists()) {
-         this.D();
+   private static int a(ep $$0, Collection<arc> $$1) {
+      acv $$2 = new acv(false);
+
+      for (arc $$3 : $$1) {
+         $$3.c.b($$2);
       }
-   }
 
-   @Override
-   public void a(boolean $$0) {
-      super.a($$0);
-      this.b().i($$0);
-   }
-
-   @Override
-   public void a(GameProfile $$0) {
-      super.a($$0);
-      this.B();
-   }
-
-   @Override
-   public void b(GameProfile $$0) {
-      super.b($$0);
-      this.B();
-   }
-
-   @Override
-   public void a() {
-      this.C();
-   }
-
-   private void w() {
-      try {
-         this.g().e();
-      } catch (IOException var2) {
-         h.warn("Failed to save ip banlist: ", var2);
+      if ($$1.size() == 1) {
+         $$0.a(() -> xl.a("commands.title.cleared.single", $$1.iterator().next().O_()), true);
+      } else {
+         $$0.a(() -> xl.a("commands.title.cleared.multiple", $$1.size()), true);
       }
+
+      return $$1.size();
    }
 
-   private void x() {
-      try {
-         this.f().e();
-      } catch (IOException var2) {
-         h.warn("Failed to save user banlist: ", var2);
+   private static int b(ep $$0, Collection<arc> $$1) {
+      acv $$2 = new acv(true);
+
+      for (arc $$3 : $$1) {
+         $$3.c.b($$2);
       }
-   }
 
-   private void y() {
-      try {
-         this.g().f();
-      } catch (IOException var2) {
-         h.warn("Failed to load ip banlist: ", var2);
+      if ($$1.size() == 1) {
+         $$0.a(() -> xl.a("commands.title.reset.single", $$1.iterator().next().O_()), true);
+      } else {
+         $$0.a(() -> xl.a("commands.title.reset.multiple", $$1.size()), true);
       }
+
+      return $$1.size();
    }
 
-   private void z() {
-      try {
-         this.f().f();
-      } catch (IOException var2) {
-         h.warn("Failed to load user banlist: ", var2);
+   private static int a(ep $$0, Collection<arc> $$1, xl $$2, String $$3, Function<xl, zs<?>> $$4) throws CommandSyntaxException {
+      for (arc $$5 : $$1) {
+         $$5.c.b($$4.apply(xo.a($$0, $$2, $$5, 0)));
       }
-   }
 
-   private void A() {
-      try {
-         this.k().f();
-      } catch (Exception var2) {
-         h.warn("Failed to load operators list: ", var2);
+      if ($$1.size() == 1) {
+         $$0.a(() -> xl.a("commands.title.show." + $$3 + ".single", $$1.iterator().next().O_()), true);
+      } else {
+         $$0.a(() -> xl.a("commands.title.show." + $$3 + ".multiple", $$1.size()), true);
       }
+
+      return $$1.size();
    }
 
-   private void B() {
-      try {
-         this.k().e();
-      } catch (Exception var2) {
-         h.warn("Failed to save operators list: ", var2);
+   private static int a(ep $$0, Collection<arc> $$1, int $$2, int $$3, int $$4) {
+      afx $$5 = new afx($$2, $$3, $$4);
+
+      for (arc $$6 : $$1) {
+         $$6.c.b($$5);
       }
-   }
 
-   private void C() {
-      try {
-         this.i().f();
-      } catch (Exception var2) {
-         h.warn("Failed to load white-list: ", var2);
+      if ($$1.size() == 1) {
+         $$0.a(() -> xl.a("commands.title.times.single", $$1.iterator().next().O_()), true);
+      } else {
+         $$0.a(() -> xl.a("commands.title.times.multiple", $$1.size()), true);
       }
-   }
 
-   private void D() {
-      try {
-         this.i().e();
-      } catch (Exception var2) {
-         h.warn("Failed to save white-list: ", var2);
-      }
-   }
-
-   @Override
-   public boolean c(GameProfile $$0) {
-      return !this.o() || this.f($$0) || this.i().a($$0);
-   }
-
-   public apj b() {
-      return (apj)super.c();
-   }
-
-   @Override
-   public boolean d(GameProfile $$0) {
-      return this.k().a($$0);
+      return $$1.size();
    }
 }

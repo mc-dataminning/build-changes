@@ -1,65 +1,62 @@
-public class gtl implements gtr {
-   private static final int a = 1200;
-   private static final wx b = wx.c("tutorial.craft_planks.title");
-   private static final wx c = wx.c("tutorial.craft_planks.description");
-   private final gtq d;
-   private fil e;
-   private int f;
+import javax.annotation.Nullable;
 
-   public gtl(gtq $$0) {
-      this.d = $$0;
+public class gtl {
+   private static final int a = 100;
+   private final azc b = azc.a();
+   private final ffa c;
+   @Nullable
+   private gsi d;
+   private int e = 100;
+
+   public gtl(ffa $$0) {
+      this.c = $$0;
    }
 
-   @Override
    public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(gts.f);
-      } else {
-         if (this.f == 1) {
-            gbm $$0 = this.d.e().s;
-            if ($$0 != null) {
-               if ($$0.gc().a(awf.b)) {
-                  this.d.a(gts.f);
-                  return;
-               }
-
-               if (a($$0, awf.b)) {
-                  this.d.a(gts.f);
-                  return;
-               }
-            }
+      avt $$0 = this.c.ak();
+      if (this.d != null) {
+         if (!$$0.a().a().a().equals(this.d.a()) && $$0.d()) {
+            this.c.aj().b(this.d);
+            this.e = ayu.a(this.b, 0, $$0.b() / 2);
          }
 
-         if (this.f >= 1200 && this.e == null) {
-            this.e = new fil(fil.a.e, b, c, false);
-            this.d.e().ax().a(this.e);
+         if (!this.c.aj().c(this.d)) {
+            this.d = null;
+            this.e = Math.min(this.e, ayu.a(this.b, $$0.b(), $$0.c()));
          }
+      }
+
+      this.e = Math.min(this.e, $$0.c());
+      if (this.d == null && this.e-- <= 0) {
+         this.a($$0);
       }
    }
 
-   @Override
+   public void a(avt $$0) {
+      this.d = gsd.a($$0.a().a());
+      if (this.d.b() != gtq.a) {
+         this.c.aj().a(this.d);
+      }
+
+      this.e = Integer.MAX_VALUE;
+   }
+
+   public void b(avt $$0) {
+      if (this.c($$0)) {
+         this.b();
+      }
+   }
+
    public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
+      if (this.d != null) {
+         this.c.aj().b(this.d);
+         this.d = null;
       }
+
+      this.e += 100;
    }
 
-   @Override
-   public void a(ctq $$0) {
-      if ($$0.a(awf.b)) {
-         this.d.a(gts.f);
-      }
-   }
-
-   public static boolean a(gbm $$0, awm<ctl> $$1) {
-      for (ix<ctl> $$2 : le.h.c($$1)) {
-         if ($$0.j().a(avs.b.b($$2.a())) > 0) {
-            return true;
-         }
-      }
-
-      return false;
+   public boolean c(avt $$0) {
+      return this.d == null ? false : $$0.a().a().a().equals(this.d.a());
    }
 }

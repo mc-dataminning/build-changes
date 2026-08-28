@@ -1,199 +1,76 @@
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public interface dbc extends dac, daj, dbp, dca.a {
-   @Nullable
-   dsz a(int var1, int var2, dty var3, boolean var4);
+public class dbc {
+   private final evm a;
+   private final evm b;
+   private final dbc.a c;
+   private final dbc.b d;
+   private final evr e;
 
-   @Deprecated
-   boolean b(int var1, int var2);
-
-   int a(dwv.a var1, int var2, int var3);
-
-   int B_();
-
-   dca F_();
-
-   default ix<dby> t(io $$0) {
-      return this.F_().a($$0);
+   public dbc(evm $$0, evm $$1, dbc.a $$2, dbc.b $$3, bsp $$4) {
+      this($$0, $$1, $$2, $$3, evr.a($$4));
    }
 
-   default Stream<drd> c(euh $$0) {
-      int $$1 = ayf.a($$0.a);
-      int $$2 = ayf.a($$0.d);
-      int $$3 = ayf.a($$0.b);
-      int $$4 = ayf.a($$0.e);
-      int $$5 = ayf.a($$0.c);
-      int $$6 = ayf.a($$0.f);
-      return this.a($$1, $$3, $$5, $$2, $$4, $$6) ? this.a($$0) : Stream.empty();
+   public dbc(evm $$0, evm $$1, dbc.a $$2, dbc.b $$3, evr $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   @Override
-   default int a(io $$0, dak $$1) {
-      return $$1.getColor(this.t($$0).a(), (double)$$0.u(), (double)$$0.w());
+   public evm a() {
+      return this.b;
    }
 
-   @Override
-   default ix<dby> getNoiseBiome(int $$0, int $$1, int $$2) {
-      dsz $$3 = this.a(ji.e($$0), ji.e($$2), dty.f, false);
-      return $$3 != null ? $$3.getNoiseBiome($$0, $$1, $$2) : this.a($$0, $$1, $$2);
+   public evm b() {
+      return this.a;
    }
 
-   ix<dby> a(int var1, int var2, int var3);
-
-   boolean x_();
-
-   @Deprecated
-   int z_();
-
-   duv D_();
-
-   @Override
-   default int I_() {
-      return this.D_().n();
+   public ewf a(drx $$0, daz $$1, iz $$2) {
+      return this.c.get($$0, $$1, $$2, this.e);
    }
 
-   @Override
-   default int J_() {
-      return this.D_().o();
+   public ewf a(enq $$0, daz $$1, iz $$2) {
+      return this.d.a($$0) ? $$0.d($$1, $$2) : ewc.a();
    }
 
-   default io a(dwv.a $$0, io $$1) {
-      return new io($$1.u(), this.a($$0, $$1.u(), $$1.w()), $$1.w());
-   }
+   public static enum a implements dbc.c {
+      a(drw.a::b),
+      b(drw.a::a),
+      c(drw.a::c),
+      d(($$0, $$1, $$2, $$3) -> $$0.a(awl.aQ) ? ewc.b() : ewc.a());
 
-   default boolean u(io $$0) {
-      return this.a_($$0).i();
-   }
+      private final dbc.c e;
 
-   default boolean v(io $$0) {
-      if ($$0.v() >= this.z_()) {
-         return this.h($$0);
-      } else {
-         io $$1 = new io($$0.u(), this.z_(), $$0.w());
-         if (!this.h($$1)) {
-            return false;
-         } else {
-            for (io var4 = $$1.d(); var4.v() > $$0.v(); var4 = var4.d()) {
-               drd $$2 = this.a_(var4);
-               if ($$2.b(this, var4) > 0 && !$$2.k()) {
-                  return false;
-               }
-            }
+      private a(final dbc.c $$0) {
+         this.e = $$0;
+      }
 
-            return true;
-         }
+      @Override
+      public ewf get(drx $$0, daz $$1, iz $$2, evr $$3) {
+         return this.e.get($$0, $$1, $$2, $$3);
       }
    }
 
-   default float w(io $$0) {
-      return this.x($$0) - 0.5F;
-   }
+   public static enum b {
+      a($$0 -> false),
+      b(enq::b),
+      c($$0 -> !$$0.c()),
+      d($$0 -> $$0.a(awr.a));
 
-   @Deprecated
-   default float x(io $$0) {
-      float $$1 = (float)this.A($$0) / 15.0F;
-      float $$2 = $$1 / (4.0F - 3.0F * $$1);
-      return ayf.i(this.D_().s(), $$2, 1.0F);
-   }
+      private final Predicate<enq> e;
 
-   default dsz y(io $$0) {
-      return this.a(jq.a($$0.u()), jq.a($$0.w()));
-   }
-
-   default dsz a(int $$0, int $$1) {
-      return this.a($$0, $$1, dty.n, true);
-   }
-
-   default dsz a(int $$0, int $$1, dty $$2) {
-      return this.a($$0, $$1, $$2, true);
-   }
-
-   @Nullable
-   @Override
-   default daf c(int $$0, int $$1) {
-      return this.a($$0, $$1, dty.c, false);
-   }
-
-   default boolean z(io $$0) {
-      return this.b_($$0).a(awc.a);
-   }
-
-   default boolean d(euh $$0) {
-      int $$1 = ayf.a($$0.a);
-      int $$2 = ayf.c($$0.d);
-      int $$3 = ayf.a($$0.b);
-      int $$4 = ayf.c($$0.e);
-      int $$5 = ayf.a($$0.c);
-      int $$6 = ayf.c($$0.f);
-      io.a $$7 = new io.a();
-
-      for (int $$8 = $$1; $$8 < $$2; $$8++) {
-         for (int $$9 = $$3; $$9 < $$4; $$9++) {
-            for (int $$10 = $$5; $$10 < $$6; $$10++) {
-               drd $$11 = this.a_($$7.d($$8, $$9, $$10));
-               if (!$$11.u().c()) {
-                  return true;
-               }
-            }
-         }
+      private b(final Predicate<enq> $$0) {
+         this.e = $$0;
       }
 
-      return false;
-   }
-
-   default int A(io $$0) {
-      return this.c($$0, this.B_());
-   }
-
-   default int c(io $$0, int $$1) {
-      return $$0.u() >= -30000000 && $$0.w() >= -30000000 && $$0.u() < 30000000 && $$0.w() < 30000000 ? this.b($$0, $$1) : 15;
-   }
-
-   @Deprecated
-   default boolean f(int $$0, int $$1) {
-      return this.b(jq.a($$0), jq.a($$1));
-   }
-
-   @Deprecated
-   default boolean B(io $$0) {
-      return this.f($$0.u(), $$0.w());
-   }
-
-   @Deprecated
-   default boolean a(io $$0, io $$1) {
-      return this.a($$0.u(), $$0.v(), $$0.w(), $$1.u(), $$1.v(), $$1.w());
-   }
-
-   @Deprecated
-   default boolean a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      return $$4 >= this.I_() && $$1 < this.al() ? this.b($$0, $$2, $$3, $$5) : false;
-   }
-
-   @Deprecated
-   default boolean b(int $$0, int $$1, int $$2, int $$3) {
-      int $$4 = jq.a($$0);
-      int $$5 = jq.a($$2);
-      int $$6 = jq.a($$1);
-      int $$7 = jq.a($$3);
-
-      for (int $$8 = $$4; $$8 <= $$5; $$8++) {
-         for (int $$9 = $$6; $$9 <= $$7; $$9++) {
-            if (!this.b($$8, $$9)) {
-               return false;
-            }
-         }
+      public boolean a(enq $$0) {
+         return this.e.test($$0);
       }
-
-      return true;
    }
 
-   jl H_();
-
-   col J();
-
-   default <T> iz<T> a(akm<? extends jk<? extends T>> $$0) {
-      jk<T> $$1 = this.H_().d($$0);
-      return $$1.p().a(this.J());
+   public interface c {
+      ewf get(drx var1, daz var2, iz var3, evr var4);
    }
 }

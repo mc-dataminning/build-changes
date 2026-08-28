@@ -1,35 +1,18 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class awj {
-   private final List<awk> a = new ArrayList<>();
+   public static final axb<dos> a = a("no_item_required");
+   public static final axb<dos> b = a("pattern_item/flower");
+   public static final axb<dos> c = a("pattern_item/creeper");
+   public static final axb<dos> d = a("pattern_item/skull");
+   public static final axb<dos> e = a("pattern_item/mojang");
+   public static final axb<dos> f = a("pattern_item/globe");
+   public static final axb<dos> g = a("pattern_item/piglin");
+   public static final axb<dos> h = a("pattern_item/flow");
+   public static final axb<dos> i = a("pattern_item/guster");
 
-   public static awj a() {
-      return new awj();
+   private awj() {
    }
 
-   public List<awk> b() {
-      return List.copyOf(this.a);
-   }
-
-   public awj a(awk $$0) {
-      this.a.add($$0);
-      return this;
-   }
-
-   public awj a(akn $$0) {
-      return this.a(awk.a($$0));
-   }
-
-   public awj b(akn $$0) {
-      return this.a(awk.b($$0));
-   }
-
-   public awj c(akn $$0) {
-      return this.a(awk.c($$0));
-   }
-
-   public awj d(akn $$0) {
-      return this.a(awk.d($$0));
+   private static axb<dos> a(String $$0) {
+      return axb.a(lq.d, new alb($$0));
    }
 }

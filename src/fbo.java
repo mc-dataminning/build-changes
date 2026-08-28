@@ -1,62 +1,99 @@
-public class fbo extends gty {
-   private final flz a;
-   private final fbo.a b;
-   private fgt c = fgt.a;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public fbo(fax $$0, flz $$1) {
-      super(fdt.a);
-      this.a = $$1;
-      this.b = a($$0);
+public class fbo extends fbp {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "http://";
+   private static final int c = 8080;
+   private static final Pattern d = Pattern.compile("^[a-zA-Z][-a-zA-Z0-9+.]+:");
+   private final boolean e;
+   @Nullable
+   private final String f;
+   private final URI g;
+
+   private fbo(boolean $$0, @Nullable String $$1, URI $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public fbo(wx $$0, flz $$1) {
-      super(fdt.a);
-      this.a = $$1;
-      this.b = a($$0);
+   @Nullable
+   public static fbo a(String $$0) {
+      try {
+         JsonParser $$1 = new JsonParser();
+         JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
+         String $$3 = fdm.b("uploadEndpoint", $$2, null);
+         if ($$3 != null) {
+            int $$4 = fdm.a("port", $$2, -1);
+            URI $$5 = a($$3, $$4);
+            if ($$5 != null) {
+               boolean $$6 = fdm.a("worldClosed", $$2, false);
+               String $$7 = fdm.b("token", $$2, null);
+               return new fbo($$6, $$7, $$5);
+            }
+         }
+      } catch (Exception var8) {
+         a.error("Could not parse UploadInfo: {}", var8.getMessage());
+      }
+
+      return null;
    }
 
-   public fbo(wx $$0, wx $$1, flz $$2) {
-      super(fdt.a);
-      this.a = $$2;
-      this.b = a($$0, $$1);
+   @Nullable
+   @VisibleForTesting
+   public static URI a(String $$0, int $$1) {
+      Matcher $$2 = d.matcher($$0);
+      String $$3 = a($$0, $$2);
+
+      try {
+         URI $$4 = new URI($$3);
+         int $$5 = a($$1, $$4.getPort());
+         return $$5 != $$4.getPort() ? new URI($$4.getScheme(), $$4.getUserInfo(), $$4.getHost(), $$5, $$4.getPath(), $$4.getQuery(), $$4.getFragment()) : $$4;
+      } catch (URISyntaxException var6) {
+         a.warn("Failed to parse URI {}", $$3, var6);
+         return null;
+      }
    }
 
-   private static fbo.a a(fax $$0) {
-      ezm $$1 = $$0.a;
-      return a(wx.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
+   private static int a(int $$0, int $$1) {
+      if ($$0 != -1) {
+         return $$0;
+      } else {
+         return $$1 != -1 ? $$1 : 8080;
+      }
    }
 
-   private static fbo.a a(wx $$0) {
-      return a(wx.c("mco.errorMessage.generic"), $$0);
+   private static String a(String $$0, Matcher $$1) {
+      return $$1.find() ? $$0 : "http://" + $$0;
    }
 
-   private static fbo.a a(wx $$0, wx $$1) {
-      return new fbo.a($$0, $$1);
+   public static String b(@Nullable String $$0) {
+      JsonObject $$1 = new JsonObject();
+      if ($$0 != null) {
+         $$1.addProperty("token", $$0);
+      }
+
+      return $$1.toString();
    }
 
-   @Override
-   public void aN_() {
-      this.c(fga.a(ww.h, $$0 -> this.d()).a(this.n / 2 - 100, this.o - 52, 200, 20).a());
-      this.c = fgt.a(this.p, this.b.b, this.n * 3 / 4);
+   @Nullable
+   public String a() {
+      return this.f;
    }
 
-   @Override
-   public void d() {
-      this.m.a(this.a);
+   public URI b() {
+      return this.g;
    }
 
-   @Override
-   public wx i() {
-      return wx.i().b(this.b.a).f(": ").b(this.b.b);
-   }
-
-   @Override
-   public void a(ffn $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.b.a, this.n / 2, 80, -1);
-      this.c.a($$0, this.n / 2, 100, 9, -2142128);
-   }
-
-   static record a(wx a, wx b) {
+   public boolean c() {
+      return this.e;
    }
 }

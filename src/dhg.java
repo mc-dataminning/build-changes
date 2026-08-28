@@ -1,55 +1,94 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class dhg extends dej implements ded {
-   public static final MapCodec<dhg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(akm.a(lf.aC).fieldOf("feature").forGetter($$0x -> $$0x.e), le.e.q().fieldOf("grows_on").forGetter($$0x -> $$0x.d), u())
-            .apply($$0, dhg::new)
-   );
-   protected static final evf b = dea.a(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
-   private static final double c = 0.4;
-   private final dea d;
-   private final akm<dzm<?, ?>> e;
+public class dhg extends deg {
+   public static final MapCodec<dhg> a = b(dhg::new);
+   protected static final ewf b = deu.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0);
+   public static final List<iz> c = iz.a(-2, 0, -2, 2, 1, 2).filter($$0 -> Math.abs($$0.u()) == 2 || Math.abs($$0.w()) == 2).map(iz::i).toList();
 
    @Override
    public MapCodec<dhg> a() {
       return a;
    }
 
-   protected dhg(akm<dzm<?, ?>> $$0, dea $$1, drc.d $$2) {
-      super($$2);
-      this.e = $$0;
-      this.d = $$1;
+   protected dhg(drw.d $$0) {
+      super($$0);
+   }
+
+   public static boolean a(dbt $$0, iz $$1, iz $$2) {
+      return $$0.a_($$1.a((kd)$$2)).a(awl.cv) && $$0.a_($$1.b($$2.u() / 2, $$2.v(), $$2.w() / 2)).a(awl.cw);
    }
 
    @Override
-   protected evf a(drd $$0, daf $$1, io $$2, eur $$3) {
+   protected boolean f_(drx $$0) {
+      return true;
+   }
+
+   @Override
+   protected ewf a(drx $$0, daz $$1, iz $$2, evr $$3) {
       return b;
    }
 
    @Override
-   protected boolean b(drd $$0, daf $$1, io $$2) {
-      return $$0.a(avx.aL) || $$0.a(dec.fl) || $$0.a(dec.dX) || super.b($$0, $$1, $$2);
-   }
+   public void a(drx $$0, dbt $$1, iz $$2, azc $$3) {
+      super.a($$0, $$1, $$2, $$3);
 
-   private Optional<? extends ix<dzm<?, ?>>> a(dbc $$0) {
-      return $$0.H_().d(lf.aC).b(this.e);
+      for (iz $$4 : c) {
+         if ($$3.a(16) == 0 && a($$1, $$2, $$4)) {
+            $$1.a(
+               lj.s,
+               (double)$$2.u() + 0.5,
+               (double)$$2.v() + 2.0,
+               (double)$$2.w() + 0.5,
+               (double)((float)$$4.u() + $$3.i()) - 0.5,
+               (double)((float)$$4.v() - $$3.i() - 1.0F),
+               (double)((float)$$4.w() + $$3.i()) - 0.5
+            );
+         }
+      }
    }
 
    @Override
-   public boolean b(dbc $$0, io $$1, drd $$2) {
-      drd $$3 = $$0.a_($$1.d());
-      return $$3.a(this.d);
+   protected dla a_(drx $$0) {
+      return dla.c;
    }
 
    @Override
-   public boolean a(daz $$0, aym $$1, io $$2, drd $$3) {
-      return (double)$$1.i() < 0.4;
+   public dpc a(iz $$0, drx $$1) {
+      return new dpw($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dpc> dpd<T> a(dbt $$0, drx $$1, dpe<T> $$2) {
+      return $$0.B ? a($$2, dpe.m, dpw::a) : null;
    }
 
    @Override
-   public void a(aqn $$0, aym $$1, io $$2, drd $$3) {
-      this.a($$0).ifPresent($$3x -> ((dzm)$$3x.a()).a($$0, $$0.l().g(), $$1, $$2));
+   protected bqp a(drx $$0, dbt $$1, iz $$2, cms $$3, evi $$4) {
+      if ($$1.B) {
+         return bqp.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         return bqp.c;
+      }
+   }
+
+   @Nullable
+   @Override
+   protected bqt b(drx $$0, dbt $$1, iz $$2) {
+      dpc $$3 = $$1.c_($$2);
+      if ($$3 instanceof dpw) {
+         xl $$4 = ((bqu)$$3).O_();
+         return new bqz(($$2x, $$3x, $$4x) -> new cqj($$2x, $$3x, cqa.a($$1, $$2)), $$4);
+      } else {
+         return null;
+      }
+   }
+
+   @Override
+   protected boolean a(drx $$0, eof $$1) {
+      return false;
    }
 }

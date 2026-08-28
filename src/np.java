@@ -1,47 +1,41 @@
-import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;
 
-public class np implements Supplier<JsonElement> {
-   private final Map<nr<?>, nr<?>.a> a = Maps.newLinkedHashMap();
+public class np implements lw {
+   private final ly d;
+   private final Map<String, Supplier<JsonElement>> e = new HashMap<>();
 
-   public <T> np a(nr<T> $$0, T $$1) {
-      nr<?>.a $$2 = this.a.put($$0, $$0.a($$1));
-      if ($$2 != null) {
-         throw new IllegalStateException("Replacing value of " + $$2 + " with " + $$1);
-      } else {
-         return this;
-      }
+   public np(ly $$0) {
+      this.d = $$0;
    }
 
-   public static np a() {
-      return new np();
+   public <T> np a(atl<T> $$0, T $$1) {
+      this.e.put($$0.a(), () -> $$0.a($$1));
+      return this;
    }
 
-   public static np a(np $$0, np $$1) {
-      np $$2 = new np();
-      $$2.a.putAll($$0.a);
-      $$2.a.putAll($$1.a);
-      return $$2;
+   @Override
+   public CompletableFuture<?> a(lu $$0) {
+      JsonObject $$1 = new JsonObject();
+      this.e.forEach(($$1x, $$2) -> $$1.add($$1x, $$2.get()));
+      return lw.a($$0, $$1, this.d.a().resolve("pack.mcmeta"));
    }
 
-   public JsonElement b() {
-      JsonObject $$0 = new JsonObject();
-      this.a.values().forEach($$1 -> $$1.a($$0));
-      return $$0;
+   @Override
+   public final String a() {
+      return "Pack Metadata";
    }
 
-   public static JsonElement a(List<np> $$0) {
-      if ($$0.size() == 1) {
-         return $$0.get(0).b();
-      } else {
-         JsonArray $$1 = new JsonArray();
-         $$0.forEach($$1x -> $$1.add($$1x.b()));
-         return $$1;
-      }
+   public static np a(ly $$0, xl $$1) {
+      return new np($$0).a(atm.b, new atm($$1, t.a.a(asz.b), Optional.empty()));
+   }
+
+   public static np a(ly $$0, xl $$1, cpg $$2) {
+      return a($$0, $$1).a(ast.a, new ast($$2));
    }
 }

@@ -1,121 +1,71 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.List;
-import java.util.Map;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
 
-public class gqg implements gpw {
-   protected final List<gdh> a;
-   protected final Map<it, List<gdh>> b;
-   protected final boolean c;
-   protected final boolean d;
-   protected final boolean e;
-   protected final gnv f;
-   protected final gdt g;
-   protected final gdr h;
-
-   public gqg(List<gdh> $$0, Map<it, List<gdh>> $$1, boolean $$2, boolean $$3, boolean $$4, gnv $$5, gdt $$6, gdr $$7) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$4;
-      this.e = $$3;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
-   }
-
-   @Override
-   public List<gdh> a(@Nullable drd $$0, @Nullable it $$1, aym $$2) {
-      return $$1 == null ? this.a : this.b.get($$1);
-   }
-
-   @Override
-   public boolean a() {
-      return this.c;
-   }
-
-   @Override
-   public boolean b() {
-      return this.d;
-   }
-
-   @Override
-   public boolean c() {
-      return this.e;
-   }
-
-   @Override
-   public boolean d() {
-      return false;
-   }
-
-   @Override
-   public gnv e() {
-      return this.f;
-   }
-
-   @Override
-   public gdt f() {
-      return this.g;
-   }
-
-   @Override
-   public gdr g() {
-      return this.h;
-   }
-
-   public static class a {
-      private final List<gdh> a = Lists.newArrayList();
-      private final Map<it, List<gdh>> b = Maps.newEnumMap(it.class);
-      private final gdr c;
-      private final boolean d;
-      private gnv e;
-      private final boolean f;
-      private final boolean g;
-      private final gdt h;
-
-      public a(gdm $$0, gdr $$1, boolean $$2) {
-         this($$0.b(), $$0.c().a(), $$2, $$0.h(), $$1);
+public class gqg implements atk<gqf> {
+   public gqf b(JsonObject $$0) {
+      Builder<gqe> $$1 = ImmutableList.builder();
+      int $$2 = ayk.a($$0, "frametime", 1);
+      if ($$2 != 1) {
+         Validate.inclusiveBetween(1L, 2147483647L, (long)$$2, "Invalid default frame time");
       }
 
-      private a(boolean $$0, boolean $$1, boolean $$2, gdt $$3, gdr $$4) {
-         for (it $$5 : it.values()) {
-            this.b.put($$5, Lists.newArrayList());
-         }
+      if ($$0.has("frames")) {
+         try {
+            JsonArray $$3 = ayk.v($$0, "frames");
 
-         this.c = $$4;
-         this.d = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.h = $$3;
-      }
-
-      public gqg.a a(it $$0, gdh $$1) {
-         this.b.get($$0).add($$1);
-         return this;
-      }
-
-      public gqg.a a(gdh $$0) {
-         this.a.add($$0);
-         return this;
-      }
-
-      public gqg.a a(gnv $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public gqg.a a() {
-         return this;
-      }
-
-      public gpw b() {
-         if (this.e == null) {
-            throw new RuntimeException("Missing particle!");
-         } else {
-            return new gqg(this.a, this.b, this.d, this.f, this.g, this.e, this.h, this.c);
+            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
+               JsonElement $$5 = $$3.get($$4);
+               gqe $$6 = this.a($$4, $$5);
+               if ($$6 != null) {
+                  $$1.add($$6);
+               }
+            }
+         } catch (ClassCastException var8) {
+            throw new JsonParseException("Invalid animation->frames: expected array, was " + $$0.get("frames"), var8);
          }
       }
+
+      int $$8 = ayk.a($$0, "width", -1);
+      int $$9 = ayk.a($$0, "height", -1);
+      if ($$8 != -1) {
+         Validate.inclusiveBetween(1L, 2147483647L, (long)$$8, "Invalid width");
+      }
+
+      if ($$9 != -1) {
+         Validate.inclusiveBetween(1L, 2147483647L, (long)$$9, "Invalid height");
+      }
+
+      boolean $$10 = ayk.a($$0, "interpolate", false);
+      return new gqf($$1.build(), $$8, $$9, $$2, $$10);
+   }
+
+   @Nullable
+   private gqe a(int $$0, JsonElement $$1) {
+      if ($$1.isJsonPrimitive()) {
+         return new gqe(ayk.g($$1, "frames[" + $$0 + "]"));
+      } else if ($$1.isJsonObject()) {
+         JsonObject $$2 = ayk.m($$1, "frames[" + $$0 + "]");
+         int $$3 = ayk.a($$2, "time", -1);
+         if ($$2.has("time")) {
+            Validate.inclusiveBetween(1L, 2147483647L, (long)$$3, "Invalid frame time");
+         }
+
+         int $$4 = ayk.o($$2, "index");
+         Validate.inclusiveBetween(0L, 2147483647L, (long)$$4, "Invalid frame index");
+         return new gqe($$4, $$3);
+      } else {
+         return null;
+      }
+   }
+
+   @Override
+   public String a() {
+      return "animation";
    }
 }

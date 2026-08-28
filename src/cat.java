@@ -1,44 +1,27 @@
-import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cat extends bzo {
-   private final btn a;
+public class cat extends cbf {
+   private static final int i = 10;
+   private static final int j = 7;
 
-   public cat(btn $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(bzo.a.c, bzo.a.a));
-   }
-
-   @Override
-   public boolean b() {
-      return this.a.gp();
+   public cat(btt $$0, double $$1, boolean $$2) {
+      super($$0, $$1, 10, $$2);
    }
 
    @Override
    public boolean a() {
-      if (!this.a.s()) {
-         return false;
-      } else if (this.a.bh()) {
-         return false;
-      } else if (!this.a.aE()) {
-         return false;
-      } else {
-         bsq $$0 = this.a.P_();
-         if ($$0 == null) {
-            return true;
-         } else {
-            return this.a.g((brw)$$0) < 144.0 && $$0.em() != null ? false : this.a.gp();
-         }
-      }
+      arb $$0 = (arb)this.b.dP();
+      iz $$1 = this.b.dp();
+      return $$0.c($$1) ? false : super.a();
    }
 
+   @Nullable
    @Override
-   public void c() {
-      this.a.K().n();
-      this.a.x(true);
-   }
-
-   @Override
-   public void d() {
-      this.a.x(false);
+   protected evm h() {
+      arb $$0 = (arb)this.b.dP();
+      iz $$1 = this.b.dp();
+      kb $$2 = kb.a($$1);
+      kb $$3 = bvf.a($$0, $$2, 2);
+      return $$3 != $$2 ? cef.a(this.b, 10, 7, evm.c($$3.q()), (float) (Math.PI / 2)) : null;
    }
 }

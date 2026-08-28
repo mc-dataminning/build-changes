@@ -1,43 +1,83 @@
-public class kl extends kj {
-   @Override
-   protected ctq a(kf $$0, ctq $$1) {
-      aqn $$2 = $$0.b();
-      if (!$$2.x_()) {
-         io $$3 = $$0.c().a($$0.d().c(dgf.b));
-         this.a(a($$2, $$3) || b($$2, $$3));
-         if (this.b()) {
-            $$1.a(1, $$2.E_(), null, () -> $$1.e(0));
-         }
-      }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Map;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-      return $$1;
+public interface kl<T> {
+   Codec<kl<?>> a = Codec.lazyInitialized(() -> lp.as.q());
+   zj<ww, kl<?>> b = zj.a($$0 -> zh.a(lq.av));
+   Codec<kl<?>> c = a.validate($$0 -> $$0.d() ? DataResult.error(() -> "Encountered transient component " + lp.as.b($$0)) : DataResult.success($$0));
+   Codec<Map<kl<?>, Object>> d = Codec.dispatchedMap(c, kl::c);
+
+   static <T> kl.a<T> a() {
+      return new kl.a<>();
    }
 
-   private static boolean a(aqn $$0, io $$1) {
-      drd $$2 = $$0.a_($$1);
-      if ($$2.a(avx.aG, $$0x -> $$0x.b(ddu.c) && $$0x.b() instanceof ddu)) {
-         int $$3 = $$2.c(ddu.c);
-         if ($$3 >= 5) {
-            $$0.a(null, $$1, avi.bX, avj.e, 1.0F, 1.0F);
-            ddu.a($$0, $$1);
-            ((ddu)$$2.b()).a($$0, $$2, $$1, null, dof.b.b);
-            $$0.a(null, dvw.M, $$1);
-            return true;
-         }
-      }
+   @Nullable
+   Codec<T> b();
 
-      return false;
+   default Codec<T> c() {
+      Codec<T> $$0 = this.b();
+      if ($$0 == null) {
+         throw new IllegalStateException(this + " is not a persistent component");
+      } else {
+         return $$0;
+      }
    }
 
-   private static boolean b(aqn $$0, io $$1) {
-      for (bsq $$3 : $$0.a(bsq.class, new euh($$1), bsb.f)) {
-         if ($$3 instanceof bth $$4 && $$4.a()) {
-            $$4.a(avj.e);
-            $$0.a(null, dvw.M, $$1);
-            return true;
-         }
+   default boolean d() {
+      return this.b() == null;
+   }
+
+   zj<? super ww, T> e();
+
+   public static class a<T> {
+      @Nullable
+      private Codec<T> a;
+      @Nullable
+      private zj<? super ww, T> b;
+
+      public kl.a<T> a(Codec<T> $$0) {
+         this.a = $$0;
+         return this;
       }
 
-      return false;
+      public kl.a<T> a(zj<? super ww, T> $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public kl<T> a() {
+         zj<? super ww, T> $$0 = Objects.requireNonNullElseGet(this.b, () -> zh.d(Objects.requireNonNull(this.a, "Missing Codec for component")));
+         return new kl.a.a<>(this.a, $$0);
+      }
+
+      static class a<T> implements kl<T> {
+         @Nullable
+         private final Codec<T> e;
+         private final zj<? super ww, T> f;
+
+         a(@Nullable Codec<T> $$0, zj<? super ww, T> $$1) {
+            this.e = $$0;
+            this.f = $$1;
+         }
+
+         @Nullable
+         @Override
+         public Codec<T> b() {
+            return this.e;
+         }
+
+         @Override
+         public zj<? super ww, T> e() {
+            return this.f;
+         }
+
+         @Override
+         public String toString() {
+            return ac.a((jv<kl.a.a<T>>)lp.as, this);
+         }
+      }
    }
 }

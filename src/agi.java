@@ -1,29 +1,24 @@
-public class agi implements ze<age> {
-   public static final yv<vx, agi> a = ze.a(agi::a, agi::new);
-   private final bpt b;
+public record agi(int b) implements zs<ace> {
+   public static final zj<wl, agi> a = zs.a(agi::a, agi::new);
 
-   public agi(bpt $$0) {
-      this.b = $$0;
+   private agi(wl $$0) {
+      this($$0.l());
    }
 
-   private agi(vx $$0) {
-      this.b = bpt.a($$0.readUnsignedByte());
+   public static agi a(bra $$0) {
+      return new agi($$0.k());
    }
 
-   private void a(vx $$0) {
-      $$0.k(this.b.a());
+   private void a(wl $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zg<agi> a() {
-      return agc.bh;
+   public zu<agi> a() {
+      return agq.cg;
    }
 
-   public void a(age $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
-   }
-
-   public bpt b() {
-      return this.b;
    }
 }

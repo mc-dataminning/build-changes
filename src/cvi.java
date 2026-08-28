@@ -1,27 +1,19 @@
-import java.util.List;
+public class cvi extends cug {
+   private final arc a;
 
-public class cvi extends crj {
-   public cvi(ctl.a $$0) {
-      super($$0);
+   public cvi(arc $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public ctq w() {
-      ctq $$0 = super.w();
-      $$0.b(kb.F, new cvr(cvs.C));
-      return $$0;
+   protected void b(cuf $$0, int $$1) {
+      super.b($$0, $$1);
+      this.a.c.b(new adc($$0, $$1));
    }
 
    @Override
-   public void a(ctq $$0, ctl.b $$1, List<wx> $$2, cvj $$3) {
-      cvr $$4 = $$0.a(kb.F);
-      if ($$4 != null) {
-         $$4.a($$2::add, 0.125F, $$1.b());
-      }
-   }
-
-   @Override
-   public String i(ctq $$0) {
-      return cvp.a($$0.a(kb.F, cvr.a).f(), this.a() + ".effect.");
+   protected void c(cuf $$0) {
+      super.c($$0);
+      this.a.c.b(new adc($$0, 0));
    }
 }

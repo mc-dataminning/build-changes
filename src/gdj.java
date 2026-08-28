@@ -1,49 +1,94 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Sets;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
 
-public class gdj {
-   public static final int a = -1;
-   public final it b;
-   public final int c;
-   public final String d;
-   public final gdl e;
-
-   public gdj(@Nullable it $$0, int $$1, String $$2, gdl $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+public interface gdj {
+   static gdj.a a(ezo $$0) {
+      return a(ImmutableMap.of(), $$0);
    }
 
-   protected static class a implements JsonDeserializer<gdj> {
-      private static final int a = -1;
+   static gdj.a a(Map<gdr, ezo> $$0, ezo $$1) {
+      return new gdj.a($$1, $$0);
+   }
 
-      public gdj a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         it $$4 = this.c($$3);
-         int $$5 = this.a($$3);
-         String $$6 = this.b($$3);
-         gdl $$7 = (gdl)$$2.deserialize($$3, gdl.class);
-         return new gdj($$4, $$5, $$6, $$7);
+   ezx getBuffer(gdr var1);
+
+   public static class a implements gdj {
+      protected final ezo a;
+      protected final Map<gdr, ezo> b;
+      protected Optional<gdr> c = Optional.empty();
+      protected final Set<ezo> d = Sets.newHashSet();
+
+      protected a(ezo $$0, Map<gdr, ezo> $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      protected int a(JsonObject $$0) {
-         return axv.a($$0, "tintindex", -1);
+      @Override
+      public ezx getBuffer(gdr $$0) {
+         Optional<gdr> $$1 = $$0.P();
+         ezo $$2 = this.b($$0);
+         if (!Objects.equals(this.c, $$1) || !$$0.O()) {
+            if (this.c.isPresent()) {
+               gdr $$3 = this.c.get();
+               if (!this.b.containsKey($$3)) {
+                  this.a($$3);
+               }
+            }
+
+            if (this.d.add($$2)) {
+               $$2.a($$0.K(), $$0.J());
+            }
+
+            this.c = $$1;
+         }
+
+         return $$2;
       }
 
-      private String b(JsonObject $$0) {
-         return axv.i($$0, "texture");
+      private ezo b(gdr $$0) {
+         return this.b.getOrDefault($$0, this.a);
       }
 
-      @Nullable
-      private it c(JsonObject $$0) {
-         String $$1 = axv.a($$0, "cullface", "");
-         return it.a($$1);
+      public void a() {
+         if (this.c.isPresent()) {
+            gdr $$0 = this.c.get();
+            if (!this.b.containsKey($$0)) {
+               this.a($$0);
+            }
+
+            this.c = Optional.empty();
+         }
+      }
+
+      public void b() {
+         this.c.ifPresent($$0x -> {
+            ezx $$1 = this.getBuffer($$0x);
+            if ($$1 == this.a) {
+               this.a($$0x);
+            }
+         });
+
+         for (gdr $$0 : this.b.keySet()) {
+            this.a($$0);
+         }
+      }
+
+      public void a(gdr $$0) {
+         ezo $$1 = this.b($$0);
+         boolean $$2 = Objects.equals(this.c, $$0.P());
+         if ($$2 || $$1 != this.a) {
+            if (this.d.remove($$1)) {
+               $$0.a($$1, RenderSystem.getVertexSorting());
+               if ($$2) {
+                  this.c = Optional.empty();
+               }
+            }
+         }
       }
    }
 }

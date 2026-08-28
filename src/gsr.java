@@ -1,94 +1,67 @@
-import com.google.common.base.Suppliers;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.authlib.minecraft.UserApiService;
-import java.nio.file.Path;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionStage;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Locale;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class gsr implements AutoCloseable {
-   private static final AtomicInteger a = new AtomicInteger(1);
-   private static final Executor b = Executors.newSingleThreadExecutor($$0 -> {
-      Thread $$1 = new Thread($$0);
-      $$1.setName("Telemetry-Sender-#" + a.getAndIncrement());
-      return $$1;
-   });
-   private final feb c;
-   private final UserApiService d;
-   private final gsz e;
-   private final Path f;
-   private final CompletableFuture<Optional<gsx>> g;
-   private final Supplier<gsv> h = Suppliers.memoize(this::c);
-
-   public gsr(feb $$0, UserApiService $$1, fep $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      gsz.a $$3 = gsz.a();
-      $$2.f().ifPresent($$1x -> $$3.a(gsy.a, $$1x));
-      $$2.e().ifPresent($$1x -> $$3.a(gsy.b, $$1x));
-      $$3.a(gsy.c, UUID.randomUUID());
-      $$3.a(gsy.d, aa.b().b());
-      $$3.a(gsy.e, ac.k().a());
-      $$3.a(gsy.f, System.getProperty("os.name"));
-      $$3.a(gsy.g, feb.e().a());
-      $$3.b(gsy.h, feb.be());
-      this.e = $$3.a();
-      this.f = $$0.p.toPath().resolve("logs/telemetry");
-      this.g = gsx.a(this.f);
+public interface gsr<T> {
+   static <T> gsr<T> a() {
+      return $$0 -> List.of();
    }
 
-   public gta a(boolean $$0, @Nullable Duration $$1, @Nullable String $$2) {
-      return new gta(this.c(), $$0, $$1, $$2);
+   static <T> gsr<T> a(List<T> $$0, Function<T, Stream<String>> $$1) {
+      // $VF: Couldn't be decompiled
+      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+      // java.lang.NullPointerException: Cannot invoke "org.jetbrains.java.decompiler.struct.gen.VarType.equals(Object)" because "curType" is null
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.setLambdaGenericTypes(NewExprent.java:668)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.toJava(NewExprent.java:401)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.getCastedExprent(ExprProcessor.java:1018)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.ExitExprent.toJava(ExitExprent.java:86)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.listToJava(ExprProcessor.java:895)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.BasicBlockStatement.toJava(BasicBlockStatement.java:90)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.SequenceStatement.toJava(SequenceStatement.java:107)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.IfStatement.toJava(IfStatement.java:261)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.RootStatement.toJava(RootStatement.java:36)
+      //   at org.jetbrains.java.decompiler.main.ClassWriter.writeMethod(ClassWriter.java:1283)
+      //
+      // Bytecode:
+      // 00: aload 0
+      // 01: invokeinterface java/util/List.isEmpty ()Z 1
+      // 06: ifeq 0d
+      // 09: invokestatic gsr.a ()Lgsr;
+      // 0c: areturn
+      // 0d: new gsw
+      // 10: dup
+      // 11: invokespecial gsw.<init> ()V
+      // 14: astore 2
+      // 15: aload 0
+      // 16: invokeinterface java/util/List.iterator ()Ljava/util/Iterator; 1
+      // 1b: astore 3
+      // 1c: aload 3
+      // 1d: invokeinterface java/util/Iterator.hasNext ()Z 1
+      // 22: ifeq 48
+      // 25: aload 3
+      // 26: invokeinterface java/util/Iterator.next ()Ljava/lang/Object; 1
+      // 2b: astore 4
+      // 2d: aload 1
+      // 2e: aload 4
+      // 30: invokeinterface java/util/function/Function.apply (Ljava/lang/Object;)Ljava/lang/Object; 2
+      // 35: checkcast java/util/stream/Stream
+      // 38: aload 2
+      // 39: aload 4
+      // 3b: invokedynamic accept (Lgsw;Ljava/lang/Object;)Ljava/util/function/Consumer; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)V, gsr.a (Lgsw;Ljava/lang/Object;Ljava/lang/String;)V, (Ljava/lang/String;)V ]
+      // 40: invokeinterface java/util/stream/Stream.forEach (Ljava/util/function/Consumer;)V 2
+      // 45: goto 1c
+      // 48: aload 2
+      // 49: invokevirtual gsw.a ()V
+      // 4c: aload 2
+      // 4d: dup
+      // 4e: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
+      // 51: pop
+      // 52: invokedynamic search (Lgsw;)Lgsr; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/String;)Ljava/util/List;, gsw.a (Ljava/lang/String;)Ljava/util/List;, (Ljava/lang/String;)Ljava/util/List; ]
+      // 57: areturn
    }
 
-   public gsv a() {
-      return this.h.get();
-   }
-
-   private gsv c() {
-      if (!this.c.E()) {
-         return gsv.a;
-      } else {
-         TelemetrySession $$0 = this.d.newTelemetrySession(b);
-         if (!$$0.isEnabled()) {
-            return gsv.a;
-         } else {
-            CompletableFuture<Optional<gsu>> $$1 = this.g
-               .thenCompose($$0x -> $$0x.<CompletionStage<Optional<gsu>>>map(gsx::a).orElseGet(() -> CompletableFuture.completedFuture(Optional.empty())));
-            return ($$2, $$3) -> {
-               if (!$$2.d() || feb.Q().C()) {
-                  gsz.a $$4 = gsz.a();
-                  $$4.a(this.e);
-                  $$4.a(gsy.m, Instant.now());
-                  $$4.a(gsy.l, $$2.d());
-                  $$3.accept($$4);
-                  gss $$5 = new gss($$2, $$4.a());
-                  $$1.thenAccept($$2x -> {
-                     if (!$$2x.isEmpty()) {
-                        ((gsu)$$2x.get()).log($$5);
-                        $$5.a($$0).send();
-                     }
-                  });
-               }
-            };
-         }
-      }
-   }
-
-   public Path b() {
-      return this.f;
-   }
-
-   @Override
-   public void close() {
-      this.g.thenAccept($$0 -> $$0.ifPresent(gsx::close));
-   }
+   List<T> search(String var1);
 }

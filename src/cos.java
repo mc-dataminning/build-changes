@@ -1,97 +1,147 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public record cos(int c, float d, boolean e, float f, List<cos.b> g) {
-   private static final float h = 1.6F;
-   public static final Codec<cos> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               axn.i.fieldOf("nutrition").forGetter(cos::b),
-               Codec.FLOAT.fieldOf("saturation_modifier").forGetter(cos::c),
-               Codec.BOOL.optionalFieldOf("can_always_eat", false).forGetter(cos::d),
-               axn.k.optionalFieldOf("eat_seconds", 1.6F).forGetter(cos::e),
-               cos.b.a.listOf().optionalFieldOf("effects", List.of()).forGetter(cos::f)
-            )
-            .apply($$0, cos::new)
-   );
-   public static final yv<wi, cos> b = yv.a(yt.f, cos::b, yt.h, cos::c, yt.b, cos::d, yt.h, cos::e, cos.b.b.a(yt.a()), cos::f, cos::new);
+public interface cos extends bqi, bqt {
+   evm dn();
 
-   public int a() {
-      return (int)(this.f * 20.0F);
+   evh cK();
+
+   @Nullable
+   ala<eqi> B();
+
+   void a(@Nullable ala<eqi> var1);
+
+   long C();
+
+   void a(long var1);
+
+   jr<cuk> D();
+
+   void E();
+
+   dbt dP();
+
+   boolean dK();
+
+   @Override
+   default boolean c() {
+      return this.g();
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public float c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public float e() {
-      return this.f;
-   }
-
-   public List<cos.b> f() {
-      return this.g;
-   }
-
-   public static class a {
-      private int a;
-      private float b;
-      private boolean c;
-      private float d = 1.6F;
-      private final Builder<cos.b> e = ImmutableList.builder();
-
-      public cos.a a(int $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public cos.a a(float $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public cos.a a() {
-         this.c = true;
-         return this;
-      }
-
-      public cos.a b() {
-         this.d = 0.8F;
-         return this;
-      }
-
-      public cos.a a(bre $$0, float $$1) {
-         this.e.add(new cos.b($$0, $$1));
-         return this;
-      }
-
-      public cos c() {
-         return new cos(this.a, this.b, this.c, this.d, this.e.build());
+   default void a(ur $$0, jk.a $$1) {
+      if (this.B() != null) {
+         $$0.a("LootTable", this.B().a().toString());
+         if (this.C() != 0L) {
+            $$0.a("LootTableSeed", this.C());
+         }
+      } else {
+         bqj.a($$0, this.D(), $$1);
       }
    }
 
-   public static record b(bre c, float d) {
-      public static final Codec<cos.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bre.d.fieldOf("effect").forGetter(cos.b::a), Codec.floatRange(0.0F, 1.0F).optionalFieldOf("probability", 1.0F).forGetter(cos.b::b))
-               .apply($$0, cos.b::new)
-      );
-      public static final yv<wi, cos.b> b = yv.a(bre.e, cos.b::a, yt.h, cos.b::b, cos.b::new);
+   default void b(ur $$0, jk.a $$1) {
+      this.E();
+      if ($$0.b("LootTable", 8)) {
+         this.a(ala.a(lq.aU, new alb($$0.l("LootTable"))));
+         this.a($$0.i("LootTableSeed"));
+      } else {
+         bqj.b($$0, this.D(), $$1);
+      }
+   }
 
-      public bre a() {
-         return new bre(this.c);
+   default void a(bri $$0, dbt $$1, bsp $$2) {
+      if ($$1.ab().b(dbp.i)) {
+         bql.a($$1, $$2, this);
+         if (!$$1.B) {
+            bsp $$3 = $$0.c();
+            if ($$3 != null && $$3.ak() == bsv.by) {
+               clj.a((cms)$$3, true);
+            }
+         }
+      }
+   }
+
+   default bqp c_(cms $$0) {
+      $$0.a(this);
+      return !$$0.dP().B ? bqp.c : bqp.a;
+   }
+
+   default void f(@Nullable cms $$0) {
+      MinecraftServer $$1 = this.dP().o();
+      if (this.B() != null && $$1 != null) {
+         eqi $$2 = $$1.be().b(this.B());
+         if ($$0 != null) {
+            am.Q.a((arc)$$0, this.B());
+         }
+
+         this.a(null);
+         eqg.a $$3 = new eqg.a((arb)this.dP()).a(esz.f, this.dn());
+         if ($$0 != null) {
+            $$3.a($$0.gy()).a(esz.a, $$0);
+         }
+
+         $$2.a(this, $$3.a(esy.c), this.C());
+      }
+   }
+
+   default void f() {
+      this.f(null);
+      this.D().clear();
+   }
+
+   default boolean g() {
+      for (cuk $$0 : this.D()) {
+         if (!$$0.e()) {
+            return false;
+         }
       }
 
-      public float b() {
-         return this.d;
+      return true;
+   }
+
+   default cuk e_(int $$0) {
+      this.f(null);
+      cuk $$1 = this.D().get($$0);
+      if ($$1.e()) {
+         return cuk.l;
+      } else {
+         this.D().set($$0, cuk.l);
+         return $$1;
       }
+   }
+
+   default cuk f_(int $$0) {
+      this.f(null);
+      return this.D().get($$0);
+   }
+
+   default cuk b(int $$0, int $$1) {
+      this.f(null);
+      return bqj.a(this.D(), $$0, $$1);
+   }
+
+   default void c(int $$0, cuk $$1) {
+      this.f(null);
+      this.D().set($$0, $$1);
+      $$1.f(this.e_($$1));
+   }
+
+   default buc g_(final int $$0) {
+      return $$0 >= 0 && $$0 < this.b() ? new buc() {
+         @Override
+         public cuk a() {
+            return cos.this.f_($$0);
+         }
+
+         @Override
+         public boolean a(cuk $$0x) {
+            cos.this.c($$0, $$0);
+            return true;
+         }
+      } : buc.a;
+   }
+
+   default boolean g(cms $$0) {
+      return !this.dK() && $$0.a(this.cK(), 4.0);
    }
 }

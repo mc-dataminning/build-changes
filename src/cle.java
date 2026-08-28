@@ -1,117 +1,41 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
+public interface cle {
+   int n_ = 10;
 
-public class cle {
-   public static final Codec<cle> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               axn.i.fieldOf("ticks_since_last_warning").orElse(0).forGetter($$0x -> $$0x.g),
-               axn.i.fieldOf("warning_level").orElse(0).forGetter($$0x -> $$0x.h),
-               axn.i.fieldOf("cooldown_ticks").orElse(0).forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, cle::new)
-   );
-   public static final int b = 4;
-   private static final double c = 16.0;
-   private static final int d = 48;
-   private static final int e = 12000;
-   private static final int f = 200;
-   private int g;
-   private int h;
-   private int i;
+   int gq();
 
-   public cle(int $$0, int $$1, int $$2) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-   }
-
-   public void a() {
-      if (this.g >= 12000) {
-         this.f();
-         this.g = 0;
+   static boolean a(btk $$0, btk $$1) {
+      float $$2 = (float)$$0.g(bus.c);
+      float $$3;
+      if (!$$0.p_() && (int)$$2 > 0) {
+         $$3 = $$2 / 2.0F + (float)$$0.dP().z.a((int)$$2);
       } else {
-         this.g++;
+         $$3 = $$2;
       }
 
-      if (this.i > 0) {
-         this.i--;
-      }
-   }
-
-   public void b() {
-      this.g = 0;
-      this.h = 0;
-      this.i = 0;
-   }
-
-   public static OptionalInt a(aqn $$0, io $$1, aqo $$2) {
-      if (a($$0, $$1)) {
-         return OptionalInt.empty();
-      } else {
-         List<aqo> $$3 = b($$0, $$1);
-         if (!$$3.contains($$2)) {
-            $$3.add($$2);
-         }
-
-         if ($$3.stream().anyMatch($$0x -> $$0x.aa().map(cle::d).orElse(false))) {
-            return OptionalInt.empty();
-         } else {
-            Optional<cle> $$4 = $$3.stream().flatMap($$0x -> $$0x.aa().stream()).max(Comparator.comparingInt(cle::c));
-            if ($$4.isPresent()) {
-               cle $$5 = $$4.get();
-               $$5.e();
-               $$3.forEach($$1x -> $$1x.aa().ifPresent($$1xx -> $$1xx.a($$5)));
-               return OptionalInt.of($$5.h);
-            } else {
-               return OptionalInt.empty();
-            }
+      boolean $$5 = $$1.a($$0.dQ().b($$0), $$3);
+      if ($$5) {
+         $$0.a($$0, $$1);
+         if (!$$0.p_()) {
+            b($$0, $$1);
          }
       }
+
+      return $$5;
    }
 
-   private boolean d() {
-      return this.i > 0;
-   }
-
-   private static boolean a(aqn $$0, io $$1) {
-      euh $$2 = euh.a(eum.b($$1), 48.0, 48.0, 48.0);
-      return !$$0.a(clc.class, $$2).isEmpty();
-   }
-
-   private static List<aqo> b(aqn $$0, io $$1) {
-      eum $$2 = eum.b($$1);
-      Predicate<aqo> $$3 = $$1x -> $$1x.dn().a((jh)$$2, 16.0);
-      return $$0.a($$3.and(bsq::bD).and(bsb.f));
-   }
-
-   private void e() {
-      if (!this.d()) {
-         this.g = 0;
-         this.i = 200;
-         this.a(this.c() + 1);
+   static void b(btk $$0, btk $$1) {
+      double $$2 = $$0.g(bus.d);
+      double $$3 = $$1.g(bus.n);
+      double $$4 = $$2 - $$3;
+      if (!($$4 <= 0.0)) {
+         double $$5 = $$1.du() - $$0.du();
+         double $$6 = $$1.dA() - $$0.dA();
+         float $$7 = (float)($$0.dP().z.a(21) - 10);
+         double $$8 = $$4 * (double)($$0.dP().z.i() * 0.5F + 0.2F);
+         evm $$9 = new evm($$5, 0.0, $$6).d().a($$8).b($$7);
+         double $$10 = $$4 * (double)$$0.dP().z.i() * 0.5;
+         $$1.j($$9.c, $$10, $$9.e);
+         $$1.U = true;
       }
-   }
-
-   private void f() {
-      this.a(this.c() - 1);
-   }
-
-   public void a(int $$0) {
-      this.h = ayf.a($$0, 0, 4);
-   }
-
-   public int c() {
-      return this.h;
-   }
-
-   private void a(cle $$0) {
-      this.h = $$0.h;
-      this.i = $$0.i;
-      this.g = $$0.g;
    }
 }

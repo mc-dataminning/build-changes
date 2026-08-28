@@ -1,28 +1,11 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import org.slf4j.Logger;
-
-@FunctionalInterface
 public interface azb {
-   Logger a = LogUtils.getLogger();
+   void a(xl var1);
 
-   static azb immediate(final Executor $$0) {
-      return new azb() {
-         @Override
-         public <T> void append(CompletableFuture<T> $$0x, Consumer<T> $$1) {
-            $$0.thenAcceptAsync($$1, $$0).exceptionally($$0xx -> {
-               a.error("Task failed", $$0xx);
-               return null;
-            });
-         }
-      };
-   }
+   void b(xl var1);
 
-   default void append(Runnable $$0) {
-      this.append(CompletableFuture.completedFuture(null), $$1 -> $$0.run());
-   }
+   void c(xl var1);
 
-   <T> void append(CompletableFuture<T> var1, Consumer<T> var2);
+   void a(int var1);
+
+   void a();
 }

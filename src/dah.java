@@ -1,25 +1,32 @@
-import java.util.function.Predicate;
+import java.util.Map.Entry;
 
-public class dah {
-   private final eum a;
-   private final eum b;
-   private final Predicate<drd> c;
+public class dah extends czv {
+   private static final float b = 0.15F;
 
-   public dah(eum $$0, eum $$1, Predicate<drd> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public dah(czv.b $$0) {
+      super($$0);
    }
 
-   public eum a() {
-      return this.b;
+   @Override
+   public void b(btk $$0, bsp $$1, int $$2) {
+      azc $$3 = $$0.el();
+      Entry<bsw, cuk> $$4 = czw.b(czy.h, $$0);
+      if (a($$2, $$3)) {
+         if ($$1 != null) {
+            $$1.a($$0.dQ().d($$0), (float)b($$2, $$3));
+         }
+
+         if ($$4 != null) {
+            $$4.getValue().a(2, $$0, $$4.getKey());
+         }
+      }
    }
 
-   public eum b() {
-      return this.a;
+   public static boolean a(int $$0, azc $$1) {
+      return $$0 <= 0 ? false : $$1.i() < 0.15F * (float)$$0;
    }
 
-   public Predicate<drd> c() {
-      return this.c;
+   public static int b(int $$0, azc $$1) {
+      return $$0 > 10 ? $$0 - 10 : 1 + $$1.a(4);
    }
 }

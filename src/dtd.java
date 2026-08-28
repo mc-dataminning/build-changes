@@ -1,46 +1,37 @@
-import java.io.IOException;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public abstract class dtd implements dtm, AutoCloseable {
-   @Nullable
-   public dtj a(int $$0, int $$1, boolean $$2) {
-      return (dtj)this.a($$0, $$1, dty.n, $$2);
+public class dtd {
+   private static final aze a = new aze(4);
+   private static final int b = a.a();
+   private static final int c = 0;
+   private static final int d = 4;
+   private static final int e = 8;
+   private static final int f = 12;
+
+   public static int a() {
+      return b;
    }
 
-   @Nullable
-   public dtj a(int $$0, int $$1) {
-      return this.a($$0, $$1, false);
+   public static int a(je $$0) {
+      return a.a($$0);
    }
 
-   @Nullable
-   @Override
-   public dtl c(int $$0, int $$1) {
-      return this.a($$0, $$1, dty.c, false);
+   public static int a(float $$0) {
+      return a.b($$0);
    }
 
-   public boolean b(int $$0, int $$1) {
-      return this.a($$0, $$1, dty.n, false) != null;
+   public static Optional<je> a(int $$0) {
+      je $$1 = switch ($$0) {
+         case 0 -> je.c;
+         case 4 -> je.f;
+         case 8 -> je.d;
+         case 12 -> je.e;
+         default -> null;
+      };
+      return Optional.ofNullable($$1);
    }
 
-   @Nullable
-   public abstract dsz a(int var1, int var2, dty var3, boolean var4);
-
-   public abstract void a(BooleanSupplier var1, boolean var2);
-
-   public abstract String e();
-
-   public abstract int j();
-
-   @Override
-   public void close() throws IOException {
-   }
-
-   public abstract eml p();
-
-   public void a(boolean $$0, boolean $$1) {
-   }
-
-   public void a(dag $$0, boolean $$1) {
+   public static float b(int $$0) {
+      return a.b($$0);
    }
 }

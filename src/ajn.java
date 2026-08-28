@@ -1,8 +1,7 @@
-public interface ajn extends agf, ajh {
-   @Override
-   default vw b() {
-      return vw.c;
-   }
+public record ajn() implements ajl {
+   public static final ajn a = new ajn();
 
-   void a(ajo var1);
+   @Override
+   public void a(wl $$0) {
+   }
 }

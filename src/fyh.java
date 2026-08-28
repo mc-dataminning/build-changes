@@ -1,35 +1,40 @@
-import java.net.InetSocketAddress;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Predicate;
 
-public interface fyh {
-   String a();
+public class fyh {
+   private final Map<ala<? extends jv<?>>, axe.a> a = new HashMap<>();
 
-   String b();
+   public void a(ala<? extends jv<?>> $$0, axe.a $$1) {
+      this.a.put($$0, $$1);
+   }
 
-   int c();
+   private static void a() {
+      csw.e().n();
+   }
 
-   InetSocketAddress d();
+   private static void b() {
+      doq.f();
+      dew.a();
+   }
 
-   static fyh a(final InetSocketAddress $$0) {
-      return new fyh() {
-         @Override
-         public String a() {
-            return $$0.getAddress().getHostName();
+   private void a(jw $$0, Predicate<ala<? extends jv<?>>> $$1) {
+      this.a.forEach(($$2, $$3) -> {
+         if ($$1.test((ala<? extends jv<?>>)$$2)) {
+            $$3.a($$0.d((ala<? extends jv<?>>)$$2));
          }
+      });
+   }
 
-         @Override
-         public String b() {
-            return $$0.getAddress().getHostAddress();
-         }
+   public void a(jw $$0, boolean $$1) {
+      if ($$1) {
+         this.a($$0, jz.a::contains);
+      } else {
+         $$0.c().filter($$0x -> !jz.a.contains($$0x.a())).forEach($$0x -> $$0x.b().m());
+         this.a($$0, $$0x -> true);
+         b();
+      }
 
-         @Override
-         public int c() {
-            return $$0.getPort();
-         }
-
-         @Override
-         public InetSocketAddress d() {
-            return $$0;
-         }
-      };
+      a();
    }
 }

@@ -1,29 +1,45 @@
-public class adm implements ze<abq> {
-   public static final yv<vx, adm> a = ze.a(adm::a, adm::new);
-   private final bpv b;
+public class adm implements zs<ace> {
+   public static final zj<wl, adm> a = zs.a(adm::a, adm::new);
+   private final int b;
+   private final int c;
+   private final int d;
 
-   public adm(bpv $$0) {
+   public adm(int $$0, int $$1, int $$2) {
       this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private adm(vx $$0) {
-      this.b = $$0.b(bpv.class);
+   private adm(wl $$0) {
+      this.b = $$0.readUnsignedByte();
+      this.c = $$0.l();
+      this.d = $$0.readInt();
    }
 
-   private void a(vx $$0) {
-      $$0.a(this.b);
+   private void a(wl $$0) {
+      $$0.k(this.b);
+      $$0.c(this.c);
+      $$0.p(this.d);
    }
 
    @Override
-   public zg<adm> a() {
-      return agc.V;
+   public zu<adm> a() {
+      return agq.H;
    }
 
-   public void a(abq $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public bpv b() {
+   public int b() {
       return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

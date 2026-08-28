@@ -1,166 +1,127 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Supplier;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.UUID;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeoutException;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
-public class fdz implements Comparable<fdz> {
-   private static final Map<String, fdz> h = Maps.newHashMap();
-   private static final Map<exp.a, fdz> i = Maps.newHashMap();
-   private static final Set<String> j = Sets.newHashSet();
-   public static final String a = "key.categories.movement";
-   public static final String b = "key.categories.misc";
-   public static final String c = "key.categories.multiplayer";
-   public static final String d = "key.categories.gameplay";
-   public static final String e = "key.categories.inventory";
-   public static final String f = "key.categories.ui";
-   public static final String g = "key.categories.creative";
-   private static final Map<String, Integer> k = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put("key.categories.movement", 1);
-      $$0.put("key.categories.gameplay", 2);
-      $$0.put("key.categories.inventory", 3);
-      $$0.put("key.categories.creative", 4);
-      $$0.put("key.categories.multiplayer", 5);
-      $$0.put("key.categories.ui", 6);
-      $$0.put("key.categories.misc", 7);
-   });
-   private final String l;
-   private final exp.a m;
-   private final String n;
-   private exp.a o;
-   private boolean p;
-   private int q;
+public class fdz extends fea {
+   private static final xl b = xl.c("multiplayer.applyingPack");
+   private static final Logger c = LogUtils.getLogger();
+   private static final xl d = xl.c("mco.connect.connecting");
+   private final fba e;
+   private final fmy f;
 
-   public static void a(exp.a $$0) {
-      fdz $$1 = i.get($$0);
-      if ($$1 != null) {
-         $$1.q++;
-      }
+   public fdz(fmy $$0, fba $$1) {
+      this.f = $$0;
+      this.e = $$1;
    }
 
-   public static void a(exp.a $$0, boolean $$1) {
-      fdz $$2 = i.get($$0);
-      if ($$2 != null) {
-         $$2.a($$1);
+   @Override
+   public void run() {
+      fbb $$0;
+      try {
+         $$0 = this.f();
+      } catch (CancellationException var4) {
+         c.info("User aborted connecting to realms");
+         return;
+      } catch (fbw var5) {
+         switch (var5.a.a()) {
+            case 6002:
+               a(new fde(this.f, this.e));
+               return;
+            case 6006:
+               boolean $$3 = ffa.Q().b(this.e.g);
+               a(
+                  (fmy)($$3
+                     ? new fch(this.f, this.e.a, this.e.m == fba.d.b)
+                     : new fcn(xl.c("mco.brokenworld.nonowner.title"), xl.c("mco.brokenworld.nonowner.error"), this.f))
+               );
+               return;
+            default:
+               this.a(var5);
+               c.error("Couldn't connect to world", var5);
+               return;
+         }
+      } catch (TimeoutException var6) {
+         this.a(xl.c("mco.errorMessage.connectionFailure"));
+         return;
+      } catch (Exception var7) {
+         c.error("Couldn't connect to world", var7);
+         this.a(var7);
+         return;
       }
+
+      boolean $$7 = $$0.b != null && $$0.c != null;
+      fmy $$8 = (fmy)($$7 ? this.a($$0, a(this.e), this::a) : this.a($$0));
+      a($$8);
    }
 
-   public static void a() {
-      for (fdz $$0 : h.values()) {
-         if ($$0.o.a() == exp.b.a && $$0.o.b() != exp.bv.b()) {
-            $$0.a(exp.a(feb.Q().aO().i(), $$0.o.b()));
+   private static UUID a(fba $$0) {
+      return $$0.o != null
+         ? UUID.nameUUIDFromBytes(("minigame:" + $$0.o).getBytes(StandardCharsets.UTF_8))
+         : UUID.nameUUIDFromBytes(("realms:" + $$0.c + ":" + $$0.n).getBytes(StandardCharsets.UTF_8));
+   }
+
+   @Override
+   public xl a() {
+      return d;
+   }
+
+   private fbb f() throws fbw, TimeoutException, CancellationException {
+      faj $$0 = faj.a();
+
+      for (int $$1 = 0; $$1 < 40; $$1++) {
+         if (this.d()) {
+            throw new CancellationException();
+         }
+
+         try {
+            return $$0.c(this.e.a);
+         } catch (fbx var4) {
+            a((long)var4.c);
          }
       }
+
+      throw new TimeoutException();
    }
 
-   public static void b() {
-      for (fdz $$0 : h.values()) {
-         $$0.n();
-      }
+   public fcq a(fbb $$0) {
+      return new fcr(this.f, new fdw(this.f, this.e, $$0));
    }
 
-   public static void c() {
-      for (fdz $$0 : h.values()) {
-         if ($$0 instanceof feo $$1) {
-            $$1.n();
+   private fcp a(fbb $$0, UUID $$1, Function<fbb, fmy> $$2) {
+      BooleanConsumer $$3 = $$3x -> {
+         if (!$$3x) {
+            a(this.f);
+         } else {
+            a(new fme(b));
+            this.a($$0, $$1).thenRun(() -> a($$2.apply($$0))).exceptionally($$1xx -> {
+               ffa.Q().ae().i();
+               c.error("Failed to download resource pack from {}", $$0, $$1xx);
+               a(new fcn(xl.c("mco.download.resourcePack.fail"), this.f));
+               return null;
+            });
          }
+      };
+      return new fcp($$3, fcp.a.b, xl.c("mco.configure.world.resourcepack.question.line1"), xl.c("mco.configure.world.resourcepack.question.line2"), true);
+   }
+
+   private CompletableFuture<?> a(fbb $$0, UUID $$1) {
+      try {
+         grk $$2 = ffa.Q().ae();
+         CompletableFuture<Void> $$3 = $$2.b($$1);
+         $$2.g();
+         $$2.a($$1, new URL($$0.b), $$0.c);
+         return $$3;
+      } catch (Exception var5) {
+         CompletableFuture<Void> $$5 = new CompletableFuture<>();
+         $$5.completeExceptionally(var5);
+         return $$5;
       }
-   }
-
-   public static void d() {
-      i.clear();
-
-      for (fdz $$0 : h.values()) {
-         i.put($$0.o, $$0);
-      }
-   }
-
-   public fdz(String $$0, int $$1, String $$2) {
-      this($$0, exp.b.a, $$1, $$2);
-   }
-
-   public fdz(String $$0, exp.b $$1, int $$2, String $$3) {
-      this.l = $$0;
-      this.o = $$1.a($$2);
-      this.m = this.o;
-      this.n = $$3;
-      h.put($$0, this);
-      i.put(this.o, this);
-      j.add($$3);
-   }
-
-   public boolean e() {
-      return this.p;
-   }
-
-   public String f() {
-      return this.n;
-   }
-
-   public boolean g() {
-      if (this.q == 0) {
-         return false;
-      } else {
-         this.q--;
-         return true;
-      }
-   }
-
-   private void n() {
-      this.q = 0;
-      this.a(false);
-   }
-
-   public String h() {
-      return this.l;
-   }
-
-   public exp.a i() {
-      return this.m;
-   }
-
-   public void b(exp.a $$0) {
-      this.o = $$0;
-   }
-
-   public int a(fdz $$0) {
-      return this.n.equals($$0.n) ? gpb.a(this.l).compareTo(gpb.a($$0.l)) : k.get(this.n).compareTo(k.get($$0.n));
-   }
-
-   public static Supplier<wx> a(String $$0) {
-      fdz $$1 = h.get($$0);
-      return $$1 == null ? () -> wx.c($$0) : $$1::k;
-   }
-
-   public boolean b(fdz $$0) {
-      return this.o.equals($$0.o);
-   }
-
-   public boolean j() {
-      return this.o.equals(exp.bv);
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return $$0 == exp.bv.b() ? this.o.a() == exp.b.b && this.o.b() == $$1 : this.o.a() == exp.b.a && this.o.b() == $$0;
-   }
-
-   public boolean a(int $$0) {
-      return this.o.a() == exp.b.c && this.o.b() == $$0;
-   }
-
-   public wx k() {
-      return this.o.d();
-   }
-
-   public boolean l() {
-      return this.o.equals(this.m);
-   }
-
-   public String m() {
-      return this.o.c();
-   }
-
-   public void a(boolean $$0) {
-      this.p = $$0;
    }
 }

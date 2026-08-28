@@ -1,21 +1,53 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import java.util.List;
 
-public class eco implements ecd {
+public record eco(List<eco.a> b, je c, dyw d, boolean e) implements ecx {
    public static final Codec<eco> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(egp.b.fieldOf("feature_true").forGetter($$0x -> $$0x.b), egp.b.fieldOf("feature_false").forGetter($$0x -> $$0x.c)).apply($$0, eco::new)
+      $$0 -> $$0.group(
+               eco.a.a.listOf().fieldOf("layers").forGetter(eco::a),
+               je.g.fieldOf("direction").forGetter(eco::b),
+               dyw.b.fieldOf("allowed_placement").forGetter(eco::c),
+               Codec.BOOL.fieldOf("prioritize_tip").forGetter(eco::d)
+            )
+            .apply($$0, eco::new)
    );
-   public final ix<egp> b;
-   public final ix<egp> c;
 
-   public eco(ix<egp> $$0, ix<egp> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public static eco.a a(bpu $$0, eey $$1) {
+      return new eco.a($$0, $$1);
    }
 
-   @Override
-   public Stream<dzm<?, ?>> e() {
-      return Stream.concat(this.b.a().a(), this.c.a().a());
+   public static eco b(bpu $$0, eey $$1) {
+      return new eco(List.of(a($$0, $$1)), je.b, dyw.c, false);
+   }
+
+   public List<eco.a> a() {
+      return this.b;
+   }
+
+   public je b() {
+      return this.c;
+   }
+
+   public dyw c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public static record a(bpu b, eey c) {
+      public static final Codec<eco.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bpu.d.fieldOf("height").forGetter(eco.a::a), eey.a.fieldOf("provider").forGetter(eco.a::b)).apply($$0, eco.a::new)
+      );
+
+      public bpu a() {
+         return this.b;
+      }
+
+      public eey b() {
+         return this.c;
+      }
    }
 }

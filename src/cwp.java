@@ -1,44 +1,46 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import java.util.Map;
 
-public record cwp(Map<String, cwp.a> c) {
-   public static final cwp a = new cwp(Map.of());
-   public static final Codec<cwp> b = Codec.unboundedMap(Codec.STRING, cwp.a.a).xmap(cwp::new, cwp::a);
+public record cwp(String e, ji<cuf> f, float g, Map<ji<csa>, String> h, xl i) {
+   public static final Codec<cwp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayc.A.fieldOf("asset_name").forGetter(cwp::a),
+               aky.a(lq.G).fieldOf("ingredient").forGetter(cwp::b),
+               Codec.FLOAT.fieldOf("item_model_index").forGetter(cwp::c),
+               Codec.unboundedMap(csa.a, Codec.STRING).optionalFieldOf("override_armor_materials", Map.of()).forGetter(cwp::d),
+               xn.a.fieldOf("description").forGetter(cwp::e)
+            )
+            .apply($$0, cwp::new)
+   );
+   public static final zj<ww, cwp> b = zj.a(
+      zh.l, cwp::a, zh.b(lq.G), cwp::b, zh.i, cwp::c, zh.a(Object2ObjectOpenHashMap::new, zh.b(lq.au), zh.l), cwp::d, xn.b, cwp::e, cwp::new
+   );
+   public static final Codec<ji<cwp>> c = akx.a(lq.aO, a);
+   public static final zj<ww, ji<cwp>> d = zh.a(lq.aO, b);
 
-   public cwp a(String $$0, cwp.a $$1) {
-      return new cwp(ac.a(this.c, $$0, $$1));
+   public static cwp a(String $$0, cuf $$1, float $$2, xl $$3, Map<ji<csa>, String> $$4) {
+      return new cwp($$0, lp.h.e($$1), $$2, $$4, $$3);
    }
 
-   public Map<String, cwp.a> a() {
-      return this.c;
+   public String a() {
+      return this.e;
    }
 
-   public static record a(ix<eog> b, double c, double d, float e) {
-      public static final Codec<cwp.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  eog.b.fieldOf("type").forGetter(cwp.a::a),
-                  Codec.DOUBLE.fieldOf("x").forGetter(cwp.a::b),
-                  Codec.DOUBLE.fieldOf("z").forGetter(cwp.a::c),
-                  Codec.FLOAT.fieldOf("rotation").forGetter(cwp.a::d)
-               )
-               .apply($$0, cwp.a::new)
-      );
+   public ji<cuf> b() {
+      return this.f;
+   }
 
-      public ix<eog> a() {
-         return this.b;
-      }
+   public float c() {
+      return this.g;
+   }
 
-      public double b() {
-         return this.c;
-      }
+   public Map<ji<csa>, String> d() {
+      return this.h;
+   }
 
-      public double c() {
-         return this.d;
-      }
-
-      public float d() {
-         return this.e;
-      }
+   public xl e() {
+      return this.i;
    }
 }

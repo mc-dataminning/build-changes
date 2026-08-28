@@ -1,32 +1,36 @@
-import net.minecraft.server.MinecraftServer;
+import com.google.common.collect.Sets;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class etw implements etx<MinecraftServer> {
-   final akn a;
+public record etw(eui b, eqc c) implements etn {
+   public static final MapCodec<etw> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(euj.a.fieldOf("value").forGetter(etw::c), eqc.a.fieldOf("range").forGetter(etw::d)).apply($$0, etw::new)
+   );
 
-   public etw(akn $$0) {
-      this.a = $$0;
+   @Override
+   public eto b() {
+      return etp.t;
    }
 
-   public void a(MinecraftServer $$0, etz<MinecraftServer> $$1, long $$2) {
-      alc $$3 = $$0.aF();
-
-      for (hq<ee> $$5 : $$3.b(this.a)) {
-         $$3.a($$5, $$3.c());
-      }
+   @Override
+   public Set<esw<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
    }
 
-   public static class a extends etx.a<MinecraftServer, etw> {
-      public a() {
-         super(new akn("function_tag"), etw.class);
-      }
+   public boolean a(eqd $$0) {
+      return this.c.b($$0, this.b.a($$0));
+   }
 
-      public void a(ud $$0, etw $$1) {
-         $$0.a("Name", $$1.a.toString());
-      }
+   public static etn.a a(eui $$0, eqc $$1) {
+      return () -> new etw($$0, $$1);
+   }
 
-      public etw a(ud $$0) {
-         akn $$1 = new akn($$0.l("Name"));
-         return new etw($$1);
-      }
+   public eui c() {
+      return this.b;
+   }
+
+   public eqc d() {
+      return this.c;
    }
 }

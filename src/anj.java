@@ -1,130 +1,35 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import com.mojang.brigadier.context.CommandContext;
 
 public class anj {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.c("commands.particle.failed"));
-
-   public static void a(CommandDispatcher<ee> $$0, ea $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("particle").requires($$0x -> $$0x.c(2)))
-            .then(
-               ((RequiredArgumentBuilder)ef.a("name", fb.a($$1))
-                     .executes(
-                        $$0x -> a(
-                              (ee)$$0x.getSource(), fb.a($$0x, "name"), ((ee)$$0x.getSource()).d(), eum.b, 0.0F, 0, false, ((ee)$$0x.getSource()).l().ah().t()
-                           )
-                     ))
-                  .then(
-                     ((RequiredArgumentBuilder)ef.a("pos", gh.a())
-                           .executes(
-                              $$0x -> a((ee)$$0x.getSource(), fb.a($$0x, "name"), gh.a($$0x, "pos"), eum.b, 0.0F, 0, false, ((ee)$$0x.getSource()).l().ah().t())
-                           ))
-                        .then(
-                           ef.a("delta", gh.a(false))
-                              .then(
-                                 ef.a("speed", FloatArgumentType.floatArg(0.0F))
-                                    .then(
-                                       ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ef.a("count", IntegerArgumentType.integer(0))
-                                                .executes(
-                                                   $$0x -> a(
-                                                         (ee)$$0x.getSource(),
-                                                         fb.a($$0x, "name"),
-                                                         gh.a($$0x, "pos"),
-                                                         gh.a($$0x, "delta"),
-                                                         FloatArgumentType.getFloat($$0x, "speed"),
-                                                         IntegerArgumentType.getInteger($$0x, "count"),
-                                                         false,
-                                                         ((ee)$$0x.getSource()).l().ah().t()
-                                                      )
-                                                ))
-                                             .then(
-                                                ((LiteralArgumentBuilder)ef.a("force")
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (ee)$$0x.getSource(),
-                                                               fb.a($$0x, "name"),
-                                                               gh.a($$0x, "pos"),
-                                                               gh.a($$0x, "delta"),
-                                                               FloatArgumentType.getFloat($$0x, "speed"),
-                                                               IntegerArgumentType.getInteger($$0x, "count"),
-                                                               true,
-                                                               ((ee)$$0x.getSource()).l().ah().t()
-                                                            )
-                                                      ))
-                                                   .then(
-                                                      ef.a("viewers", er.d())
-                                                         .executes(
-                                                            $$0x -> a(
-                                                                  (ee)$$0x.getSource(),
-                                                                  fb.a($$0x, "name"),
-                                                                  gh.a($$0x, "pos"),
-                                                                  gh.a($$0x, "delta"),
-                                                                  FloatArgumentType.getFloat($$0x, "speed"),
-                                                                  IntegerArgumentType.getInteger($$0x, "count"),
-                                                                  true,
-                                                                  er.f($$0x, "viewers")
-                                                               )
-                                                         )
-                                                   )
-                                             ))
-                                          .then(
-                                             ((LiteralArgumentBuilder)ef.a("normal")
-                                                   .executes(
-                                                      $$0x -> a(
-                                                            (ee)$$0x.getSource(),
-                                                            fb.a($$0x, "name"),
-                                                            gh.a($$0x, "pos"),
-                                                            gh.a($$0x, "delta"),
-                                                            FloatArgumentType.getFloat($$0x, "speed"),
-                                                            IntegerArgumentType.getInteger($$0x, "count"),
-                                                            false,
-                                                            ((ee)$$0x.getSource()).l().ah().t()
-                                                         )
-                                                   ))
-                                                .then(
-                                                   ef.a("viewers", er.d())
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (ee)$$0x.getSource(),
-                                                               fb.a($$0x, "name"),
-                                                               gh.a($$0x, "pos"),
-                                                               gh.a($$0x, "delta"),
-                                                               FloatArgumentType.getFloat($$0x, "speed"),
-                                                               IntegerArgumentType.getInteger($$0x, "count"),
-                                                               false,
-                                                               er.f($$0x, "viewers")
-                                                            )
-                                                      )
-                                                )
-                                          )
-                                    )
-                              )
-                        )
-                  )
-            )
+   public static void a(CommandDispatcher<ep> $$0) {
+      final LiteralArgumentBuilder<ep> $$1 = (LiteralArgumentBuilder<ep>)eq.a("gamerule").requires($$0x -> $$0x.c(2));
+      dbp.a(
+         new dbp.c() {
+            @Override
+            public <T extends dbp.g<T>> void a(dbp.e<T> $$0, dbp.f<T> $$1x) {
+               $$1.then(
+                  ((LiteralArgumentBuilder)eq.a($$0.a()).executes($$1xxx -> anj.a((ep)$$1xxx.getSource(), $$0)))
+                     .then($$1.a("value").executes($$1xxx -> anj.a($$1xxx, $$0)))
+               );
+            }
+         }
       );
+      $$0.register($$1);
    }
 
-   private static int a(ee $$0, kw $$1, eum $$2, eum $$3, float $$4, int $$5, boolean $$6, Collection<aqo> $$7) throws CommandSyntaxException {
-      int $$8 = 0;
+   static <T extends dbp.g<T>> int a(CommandContext<ep> $$0, dbp.e<T> $$1) {
+      ep $$2 = (ep)$$0.getSource();
+      T $$3 = $$2.l().aM().a($$1);
+      $$3.b($$0, "value");
+      $$2.a(() -> xl.a("commands.gamerule.set", $$1.a(), $$3.toString()), true);
+      return $$3.c();
+   }
 
-      for (aqo $$9 : $$7) {
-         if ($$0.e().a($$9, $$1, $$6, $$2.c, $$2.d, $$2.e, $$5, $$3.c, $$3.d, $$3.e, (double)$$4)) {
-            $$8++;
-         }
-      }
-
-      if ($$8 == 0) {
-         throw a.create();
-      } else {
-         $$0.a(() -> wx.a("commands.particle.success", le.j.b($$1.a()).toString()), true);
-         return $$8;
-      }
+   static <T extends dbp.g<T>> int a(ep $$0, dbp.e<T> $$1) {
+      T $$2 = $$0.l().aM().a($$1);
+      $$0.a(() -> xl.a("commands.gamerule.query", $$1.a(), $$2.toString()), false);
+      return $$2.c();
    }
 }

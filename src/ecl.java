@@ -1,53 +1,52 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class ecl implements ecd {
-   public static final Codec<ecl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.list(ecl.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 64).fieldOf("size").forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("discard_chance_on_air_exposure").forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, ecl::new)
-   );
-   public final List<ecl.a> b;
-   public final int c;
-   public final float d;
-
-   public ecl(List<ecl.a> $$0, int $$1, float $$2) {
-      this.c = $$1;
-      this.b = $$0;
-      this.d = $$2;
+public class ecl extends eci {
+   public ecl(Codec<edw> $$0) {
+      super($$0);
    }
 
-   public ecl(List<ecl.a> $$0, int $$1) {
-      this($$0, $$1, 0.0F);
+   @Override
+   protected Set<iz> a(dco $$0, edw $$1, azc $$2, iz $$3, Predicate<drx> $$4, int $$5, int $$6) {
+      Set<iz> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      Set<iz> $$8 = new HashSet<>();
+      iz.a $$9 = new iz.a();
+
+      for (iz $$10 : $$7) {
+         if (!a($$0, $$7, $$10, $$9)) {
+            $$8.add($$10);
+         }
+      }
+
+      for (iz $$11 : $$8) {
+         $$0.a($$11, dew.G.n(), 2);
+      }
+
+      return $$8;
    }
 
-   public ecl(elf $$0, drd $$1, int $$2, float $$3) {
-      this(ImmutableList.of(new ecl.a($$0, $$1)), $$2, $$3);
+   private static boolean a(dco $$0, Set<iz> $$1, iz $$2, iz.a $$3) {
+      return a($$0, $$2, $$3, je.c) || a($$0, $$2, $$3, je.f) || a($$0, $$2, $$3, je.d) || a($$0, $$2, $$3, je.e) || a($$0, $$2, $$3, je.a);
    }
 
-   public ecl(elf $$0, drd $$1, int $$2) {
-      this(ImmutableList.of(new ecl.a($$0, $$1)), $$2, 0.0F);
+   private static boolean a(dco $$0, iz $$1, iz.a $$2, je $$3) {
+      $$2.a($$1, $$3);
+      return !$$0.a_($$2).d($$0, $$2, $$3.g());
    }
 
-   public static ecl.a a(elf $$0, drd $$1) {
-      return new ecl.a($$0, $$1);
-   }
+   @Override
+   protected boolean a(dco $$0, edw $$1, dtu $$2, azc $$3, iz $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4.d())) {
+         drx $$5 = $$0.a_($$4);
+         if ($$5.b(dsn.C) && !$$5.c(dsn.C)) {
+            $$0.a($$4, $$5.a(dsn.C, Boolean.valueOf(true)), 2);
+         }
 
-   public static class a {
-      public static final Codec<ecl.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(elf.c.fieldOf("target").forGetter($$0x -> $$0x.b), drd.b.fieldOf("state").forGetter($$0x -> $$0x.c)).apply($$0, ecl.a::new)
-      );
-      public final elf b;
-      public final drd c;
-
-      a(elf $$0, drd $$1) {
-         this.b = $$0;
-         this.c = $$1;
+         return true;
+      } else {
+         return false;
       }
    }
 }

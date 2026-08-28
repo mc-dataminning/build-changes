@@ -1,20 +1,38 @@
-public class gkr extends giz<clc, fvi<clc>> {
-   private static final akn a = new akn("textures/entity/warden/warden.png");
-   private static final akn i = new akn("textures/entity/warden/warden_bioluminescent_layer.png");
-   private static final akn j = new akn("textures/entity/warden/warden_heart.png");
-   private static final akn k = new akn("textures/entity/warden/warden_pulsating_spots_1.png");
-   private static final akn l = new akn("textures/entity/warden/warden_pulsating_spots_2.png");
+public class gkr extends gir<cnn> {
+   private static final alb a = new alb("textures/entity/shulker/spark.png");
+   private static final gdr f = gdr.i(a);
+   private final fvn<cnn> g;
 
-   public gkr(ght.a $$0) {
-      super($$0, new fvi<>($$0.a(fvv.bR)), 0.9F);
-      this.a(new gmr<>(this, i, ($$0x, $$1, $$2) -> 1.0F, fvi::e));
-      this.a(new gmr<>(this, k, ($$0x, $$1, $$2) -> Math.max(0.0F, ayf.b($$2 * 0.045F) * 0.25F), fvi::f));
-      this.a(new gmr<>(this, l, ($$0x, $$1, $$2) -> Math.max(0.0F, ayf.b($$2 * 0.045F + (float) Math.PI) * 0.25F), fvi::f));
-      this.a(new gmr<>(this, a, ($$0x, $$1, $$2) -> $$0x.G($$1), fvi::c));
-      this.a(new gmr<>(this, j, ($$0x, $$1, $$2) -> $$0x.H($$1), fvi::d));
+   public gkr(gis.a $$0) {
+      super($$0);
+      this.g = new fvn<>($$0.a(fwu.bl));
    }
 
-   public akn a(clc $$0) {
+   protected int a(cnn $$0, iz $$1) {
+      return 15;
+   }
+
+   public void a(cnn $$0, float $$1, float $$2, ezt $$3, gdj $$4, int $$5) {
+      $$3.a();
+      float $$6 = ayu.j($$2, $$0.O, $$0.dF());
+      float $$7 = ayu.i($$2, $$0.P, $$0.dH());
+      float $$8 = (float)$$0.ai + $$2;
+      $$3.a(0.0F, 0.15F, 0.0F);
+      $$3.a(a.d.rotationDegrees(ayu.a($$8 * 0.1F) * 180.0F));
+      $$3.a(a.b.rotationDegrees(ayu.b($$8 * 0.1F) * 180.0F));
+      $$3.a(a.f.rotationDegrees(ayu.a($$8 * 0.15F) * 360.0F));
+      $$3.b(-0.5F, -0.5F, 0.5F);
+      this.g.a($$0, 0.0F, 0.0F, 0.0F, $$6, $$7);
+      ezx $$9 = $$4.getBuffer(this.g.a(a));
+      this.g.a($$3, $$9, $$5, gol.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b(1.5F, 1.5F, 1.5F);
+      ezx $$10 = $$4.getBuffer(f);
+      this.g.a($$3, $$10, $$5, gol.d, 1.0F, 1.0F, 1.0F, 0.15F);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public alb a(cnn $$0) {
       return a;
    }
 }

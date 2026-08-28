@@ -1,15 +1,9 @@
-public class brb extends brc {
-   public brb(brd $$0, int $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.Nullable;
 
-   @Override
-   public boolean a() {
-      return true;
-   }
+public interface brb extends bqi {
+   int[] a(je var1);
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 1;
-   }
+   boolean a(int var1, cuk var2, @Nullable je var3);
+
+   boolean b(int var1, cuk var2, je var3);
 }

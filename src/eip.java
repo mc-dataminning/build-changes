@@ -1,29 +1,101 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
-public class eip extends eir {
-   public static final MapCodec<eip> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c(), b(), d()).apply($$0, eip::new));
+public abstract class eip extends eij {
+   private static final Logger h = LogUtils.getLogger();
+   protected final String a;
+   protected emf b;
+   protected emb c;
+   protected iz d;
 
-   protected eip(Either<akn, ell> $$0, ix<elj> $$1, eiu.a $$2) {
-      super($$0, $$1, $$2);
+   public eip(eiw $$0, int $$1, emg $$2, alb $$3, String $$4, emb $$5, iz $$6) {
+      super($$0, $$1, $$2.a($$3).b($$5, $$6));
+      this.a(je.c);
+      this.a = $$4;
+      this.d = $$6;
+      this.b = $$2.a($$3);
+      this.c = $$5;
+   }
+
+   public eip(eiw $$0, ur $$1, emg $$2, Function<alb, emb> $$3) {
+      super($$0, $$1);
+      this.a(je.c);
+      this.a = $$1.l("Template");
+      this.d = new iz($$1.h("TPX"), $$1.h("TPY"), $$1.h("TPZ"));
+      alb $$4 = this.b();
+      this.b = $$2.a($$4);
+      this.c = $$3.apply($$4);
+      this.f = this.b.b(this.c, this.d);
+   }
+
+   protected alb b() {
+      return new alb(this.a);
    }
 
    @Override
-   protected elh a(dkn $$0, ehd $$1, boolean $$2) {
-      elh $$3 = super.a($$0, $$1, $$2);
-      $$3.b(ekn.b);
-      $$3.a(ekn.d);
-      return $$3;
+   protected void a(eiv $$0, ur $$1) {
+      $$1.a("TPX", this.d.u());
+      $$1.a("TPY", this.d.v());
+      $$1.a("TPZ", this.d.w());
+      $$1.a("Template", this.a);
    }
 
    @Override
-   public eit<?> a() {
-      return eit.e;
+   public void a(dco $$0, dcm $$1, dtu $$2, azc $$3, ehx $$4, dba $$5, iz $$6) {
+      this.c.a($$4);
+      this.f = this.b.b(this.c, this.d);
+      if (this.b.a($$0, this.d, $$6, this.c, $$3, 2)) {
+         for (emf.c $$8 : this.b.a(this.d, this.c, dew.pa)) {
+            if ($$8.c() != null) {
+               dth $$9 = dth.valueOf($$8.c().l("mode"));
+               if ($$9 == dth.d) {
+                  this.a($$8.c().l("metadata"), $$8.a(), $$0, $$3, $$4);
+               }
+            }
+         }
+
+         for (emf.c $$11 : this.b.a(this.d, this.c, dew.pb)) {
+            if ($$11.c() != null) {
+               String $$12 = $$11.c().l("final_state");
+               drx $$13 = dew.a.n();
+
+               try {
+                  $$13 = gj.a($$0.a(lq.f), $$12, true).a();
+               } catch (CommandSyntaxException var15) {
+                  h.error("Error while parsing blockstate {} in jigsaw block @ {}", $$12, $$11.a());
+               }
+
+               $$0.a($$11.a(), $$13, 3);
+            }
+         }
+      }
+   }
+
+   protected abstract void a(String var1, iz var2, dci var3, azc var4, ehx var5);
+
+   @Deprecated
+   @Override
+   public void a(int $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.d = this.d.b($$0, $$1, $$2);
    }
 
    @Override
-   public String toString() {
-      return "LegacySingle[" + this.c + "]";
+   public dlh a() {
+      return this.c.d();
+   }
+
+   public emf c() {
+      return this.b;
+   }
+
+   public iz d() {
+      return this.d;
+   }
+
+   public emb e() {
+      return this.c;
    }
 }

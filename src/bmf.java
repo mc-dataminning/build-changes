@@ -1,45 +1,27 @@
-import java.nio.file.Path;
-import java.util.Collections;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class bmf implements bmj {
-   public static final bmf a = new bmf();
+public class bmf<S> {
+   private final Map<bmd<?>, bmj<S, ?>> a = new HashMap<>();
 
-   private bmf() {
+   public <T> void a(bmd<T> $$0, bmj<S, T> $$1) {
+      bmj<S, ?> $$2 = this.a.putIfAbsent($$0, $$1);
+      if ($$2 != null) {
+         throw new IllegalArgumentException("Trying to override rule: " + $$0);
+      }
    }
 
-   @Override
-   public List<bmm> a(String $$0) {
-      return Collections.emptyList();
+   public <T> void a(bmd<T> $$0, bmm<S> $$1, bmj.a<S, T> $$2) {
+      this.a($$0, bmj.a($$1, $$2));
    }
 
-   @Override
-   public boolean a(Path $$0) {
-      return false;
+   public <T> void a(bmd<T> $$0, bmm<S> $$1, bmj.b<T> $$2) {
+      this.a($$0, bmj.a($$1, $$2));
    }
 
-   @Override
-   public long a() {
-      return 0L;
-   }
-
-   @Override
-   public int b() {
-      return 0;
-   }
-
-   @Override
-   public long c() {
-      return 0L;
-   }
-
-   @Override
-   public int d() {
-      return 0;
-   }
-
-   @Override
-   public String e() {
-      return "";
+   @Nullable
+   public <T> bmj<S, T> a(bmd<T> $$0) {
+      return (bmj<S, T>)this.a.get($$0);
    }
 }

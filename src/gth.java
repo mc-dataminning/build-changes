@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.io.IOException;
+import java.nio.ByteBuffer;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gth {
+public interface gth extends gte {
+   ByteBuffer b() throws IOException;
 }

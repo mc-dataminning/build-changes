@@ -1,36 +1,32 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import org.lwjgl.openal.AL10;
 
 public class exq {
-   private static final Vector3f a = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
-   private static final Vector3f b = new Vector3f(-0.2F, 1.0F, 0.7F).normalize();
-   private static final Vector3f c = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
-   private static final Vector3f d = new Vector3f(-0.2F, -1.0F, 0.7F).normalize();
-   private static final Vector3f e = new Vector3f(0.2F, -1.0F, 1.0F).normalize();
-   private static final Vector3f f = new Vector3f(-0.2F, -1.0F, 0.0F).normalize();
+   private float a = 1.0F;
+   private exr b = exr.a;
 
-   public static void a() {
-      RenderSystem.setupLevelDiffuseLighting(c, d);
+   public void a(exr $$0) {
+      this.b = $$0;
+      evm $$1 = $$0.b();
+      evm $$2 = $$0.c();
+      evm $$3 = $$0.d();
+      AL10.alListener3f(4100, (float)$$1.c, (float)$$1.d, (float)$$1.e);
+      AL10.alListenerfv(4111, new float[]{(float)$$2.c, (float)$$2.d, (float)$$2.e, (float)$$3.a(), (float)$$3.b(), (float)$$3.c()});
    }
 
-   public static void b() {
-      RenderSystem.setupLevelDiffuseLighting(a, b);
+   public void a(float $$0) {
+      AL10.alListenerf(4106, $$0);
+      this.a = $$0;
    }
 
-   public static void c() {
-      RenderSystem.setupGuiFlatDiffuseLighting(a, b);
+   public float a() {
+      return this.a;
    }
 
-   public static void d() {
-      RenderSystem.setupGui3DDiffuseLighting(a, b);
+   public void b() {
+      this.a(exr.a);
    }
 
-   public static void e() {
-      RenderSystem.setShaderLights(e, f);
-   }
-
-   public static void a(Quaternionf $$0) {
-      RenderSystem.setShaderLights($$0.transform(e, new Vector3f()), $$0.transform(f, new Vector3f()));
+   public exr c() {
+      return this.b;
    }
 }

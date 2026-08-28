@@ -1,75 +1,85 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
 
-public class dhx extends dea {
-   public static final MapCodec<dhx> a = b(dhx::new);
-   public static final dru b = djo.b;
-   public static final dru c = djo.c;
-   public static final dru d = djo.d;
-   public static final dru e = djo.e;
-   public static final dru f = djo.f;
-   public static final dru g = djo.g;
-   private static final Map<it, dru> h = djo.h;
+public class dhx extends deu {
+   public static final MapCodec<dhx> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(lp.e.q().fieldOf("potted").forGetter($$0x -> $$0x.e), u()).apply($$0, dhx::new)
+   );
+   private static final Map<deu, deu> d = Maps.newHashMap();
+   public static final float b = 3.0F;
+   protected static final ewf c = deu.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
+   private final deu e;
 
    @Override
    public MapCodec<dhx> a() {
       return a;
    }
 
-   public dhx(drc.d $$0) {
-      super($$0);
-      this.k(
-         this.E
-            .b()
-            .a(b, Boolean.valueOf(true))
-            .a(c, Boolean.valueOf(true))
-            .a(d, Boolean.valueOf(true))
-            .a(e, Boolean.valueOf(true))
-            .a(f, Boolean.valueOf(true))
-            .a(g, Boolean.valueOf(true))
-      );
+   public dhx(deu $$0, drw.d $$1) {
+      super($$1);
+      this.e = $$0;
+      d.put($$0, this);
    }
 
    @Override
-   public drd a(cxb $$0) {
-      daf $$1 = $$0.q();
-      io $$2 = $$0.a();
-      return this.n()
-         .a(g, Boolean.valueOf(!$$1.a_($$2.d()).a(this)))
-         .a(f, Boolean.valueOf(!$$1.a_($$2.c()).a(this)))
-         .a(b, Boolean.valueOf(!$$1.a_($$2.e()).a(this)))
-         .a(c, Boolean.valueOf(!$$1.a_($$2.h()).a(this)))
-         .a(d, Boolean.valueOf(!$$1.a_($$2.f()).a(this)))
-         .a(e, Boolean.valueOf(!$$1.a_($$2.g()).a(this)));
+   protected ewf a(drx $$0, daz $$1, iz $$2, evr $$3) {
+      return c;
    }
 
    @Override
-   protected drd a(drd $$0, it $$1, drd $$2, dba $$3, io $$4, io $$5) {
-      return $$2.a(this) ? $$0.a(h.get($$1), Boolean.valueOf(false)) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected bqr a(cuk $$0, drx $$1, dbt $$2, iz $$3, cms $$4, bqo $$5, evi $$6) {
+      drx $$8 = ($$0.g() instanceof csi $$7 ? d.getOrDefault($$7.d(), dew.a) : dew.a).n();
+      if ($$8.i()) {
+         return bqr.d;
+      } else if (!this.m()) {
+         return bqr.b;
+      } else {
+         $$2.a($$3, $$8, 3);
+         $$2.a($$4, dwq.c, $$3);
+         $$4.a(awg.ah);
+         $$0.a(1, $$4);
+         return bqr.a($$2.B);
+      }
    }
 
    @Override
-   protected drd a(drd $$0, dkn $$1) {
-      return $$0.a(h.get($$1.a(it.c)), $$0.c(b))
-         .a(h.get($$1.a(it.d)), $$0.c(d))
-         .a(h.get($$1.a(it.f)), $$0.c(c))
-         .a(h.get($$1.a(it.e)), $$0.c(e))
-         .a(h.get($$1.a(it.b)), $$0.c(f))
-         .a(h.get($$1.a(it.a)), $$0.c(g));
+   protected bqp a(drx $$0, dbt $$1, iz $$2, cms $$3, evi $$4) {
+      if (this.m()) {
+         return bqp.c;
+      } else {
+         cuk $$5 = new cuk(this.e);
+         if (!$$3.i($$5)) {
+            $$3.a($$5, false);
+         }
+
+         $$1.a($$2, dew.fR.n(), 3);
+         $$1.a($$3, dwq.c, $$2);
+         return bqp.a($$1.B);
+      }
    }
 
    @Override
-   protected drd a(drd $$0, dix $$1) {
-      return $$0.a(h.get($$1.b(it.c)), $$0.c(b))
-         .a(h.get($$1.b(it.d)), $$0.c(d))
-         .a(h.get($$1.b(it.f)), $$0.c(c))
-         .a(h.get($$1.b(it.e)), $$0.c(e))
-         .a(h.get($$1.b(it.b)), $$0.c(f))
-         .a(h.get($$1.b(it.a)), $$0.c(g));
+   public cuk a(dbw $$0, iz $$1, drx $$2) {
+      return this.m() ? super.a($$0, $$1, $$2) : new cuk(this.e);
+   }
+
+   private boolean m() {
+      return this.e == dew.a;
    }
 
    @Override
-   protected void a(dre.a<dea, drd> $$0) {
-      $$0.a(f, g, b, c, d, e);
+   protected drx a(drx $$0, je $$1, drx $$2, dbu $$3, iz $$4, iz $$5) {
+      return $$1 == je.a && !$$0.a($$3, $$4) ? dew.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public deu b() {
+      return this.e;
+   }
+
+   @Override
+   protected boolean a(drx $$0, eof $$1) {
+      return false;
    }
 }

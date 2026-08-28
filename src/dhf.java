@@ -1,87 +1,62 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
+import org.slf4j.Logger;
 
-public class dhf extends dhy {
-   public static final MapCodec<dhf> a = b(dhf::new);
-   public static final int b = 3;
-   public static final dsd c = drt.as;
-   private static final int f = 4;
-   private static final int g = 2;
+public class dhf extends dgz {
+   private static final Logger f = LogUtils.getLogger();
+   public static final MapCodec<dhf> e = b(dhf::new);
+   private static final kt g = new ks();
 
    @Override
    public MapCodec<dhf> a() {
-      return a;
+      return e;
    }
 
-   public dhf(drc.d $$0) {
+   public dhf(drw.d $$0) {
       super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected void b(drd $$0, aqn $$1, io $$2, aym $$3) {
-      this.a($$0, $$1, $$2, $$3);
+   protected kt a(dbt $$0, cuk $$1) {
+      return g;
    }
 
    @Override
-   protected void a(drd $$0, aqn $$1, io $$2, aym $$3) {
-      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.A($$2) > 11 - $$0.c(c) - $$0.b($$1, $$2) && this.e($$0, $$1, $$2)) {
-         io.a $$4 = new io.a();
+   public dpc a(iz $$0, drx $$1) {
+      return new dpv($$0, $$1);
+   }
 
-         for (it $$5 : it.values()) {
-            $$4.a($$2, $$5);
-            drd $$6 = $$1.a_($$4);
-            if ($$6.a(this) && !this.e($$6, $$1, $$4)) {
-               $$1.a($$4, this, ayf.a($$3, 20, 40));
-            }
-         }
+   @Override
+   protected void a(arb $$0, drx $$1, iz $$2) {
+      dpu $$3 = $$0.a($$2, dpe.g).orElse(null);
+      if ($$3 == null) {
+         f.warn("Ignoring dispensing attempt for Dropper without matching block entity at {}", $$2);
       } else {
-         $$1.a($$2, this, ayf.a($$3, 20, 40));
-      }
-   }
+         kq $$4 = new kq($$0, $$2, $$1, $$3);
+         int $$5 = $$3.a($$0.z);
+         if ($$5 < 0) {
+            $$0.c(1001, $$2, 0);
+         } else {
+            cuk $$6 = $$3.a($$5);
+            if (!$$6.e()) {
+               je $$7 = $$0.a_($$2).c(b);
+               bqi $$8 = dqb.a($$0, $$2.a($$7));
+               cuk $$9;
+               if ($$8 == null) {
+                  $$9 = g.dispense($$4, $$6);
+               } else {
+                  $$9 = dqb.a($$3, $$8, $$6.s().a(1), $$7.g());
+                  if ($$9.e()) {
+                     $$9 = $$6.s();
+                     $$9.h(1);
+                  } else {
+                     $$9 = $$6.s();
+                  }
+               }
 
-   private boolean e(drd $$0, daz $$1, io $$2) {
-      int $$3 = $$0.c(c);
-      if ($$3 < 3) {
-         $$1.a($$2, $$0.a(c, Integer.valueOf($$3 + 1)), 2);
-         return false;
-      } else {
-         this.d($$0, $$1, $$2);
-         return true;
-      }
-   }
-
-   @Override
-   protected void a(drd $$0, daz $$1, io $$2, dea $$3, io $$4, boolean $$5) {
-      if ($$3.n().a(this) && this.a($$1, $$2, 2)) {
-         this.d($$0, $$1, $$2);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   private boolean a(daf $$0, io $$1, int $$2) {
-      int $$3 = 0;
-      io.a $$4 = new io.a();
-
-      for (it $$5 : it.values()) {
-         $$4.a($$1, $$5);
-         if ($$0.a_($$4).a(this)) {
-            if (++$$3 >= $$2) {
-               return false;
+               $$3.a($$5, $$9);
             }
          }
       }
-
-      return true;
-   }
-
-   @Override
-   protected void a(dre.a<dea, drd> $$0) {
-      $$0.a(c);
-   }
-
-   @Override
-   public ctq a(dbc $$0, io $$1, drd $$2) {
-      return ctq.i;
    }
 }

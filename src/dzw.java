@@ -1,42 +1,73 @@
 import com.mojang.serialization.Codec;
 
-public class dzw extends dzz<ecc> {
-   public dzw(Codec<ecc> $$0) {
+public abstract class dzw extends eat<ecz> {
+   public dzw(Codec<ecz> $$0) {
       super($$0);
    }
 
-   @Override
-   public boolean a(eab<ecc> $$0) {
-      io $$1 = $$0.e();
-      dbu $$2 = $$0.b();
-      ecc $$3 = $$0.f();
-
-      for (io $$4 : io.c($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
-         boolean $$5 = $$4.u() == $$1.u();
-         boolean $$6 = $$4.v() == $$1.v();
-         boolean $$7 = $$4.w() == $$1.w();
-         boolean $$8 = Math.abs($$4.v() - $$1.v()) == 2;
-         if ($$5 && $$6 && $$7) {
-            io $$9 = $$4.i();
-            this.a($$2, $$9, dec.kF.n());
-            $$3.b().ifPresent($$3x -> {
-               doi $$4x = $$2.c_($$9);
-               if ($$4x instanceof dpy $$5x) {
-                  $$5x.a($$3x, $$3.c());
-                  $$4x.e();
-               }
-            });
-         } else if ($$6) {
-            this.a($$2, $$4, dec.a.n());
-         } else if ($$8 && $$5 && $$7) {
-            this.a($$2, $$4, dec.F.n());
-         } else if (($$5 || $$7) && !$$8) {
-            this.a($$2, $$4, dec.F.n());
-         } else {
-            this.a($$2, $$4, dec.a.n());
+   protected void a(dbu $$0, azc $$1, iz $$2, ecz $$3, int $$4, iz.a $$5) {
+      for (int $$6 = 0; $$6 < $$4; $$6++) {
+         $$5.g($$2).c(je.b, $$6);
+         if (!$$0.a_($$5).i($$0, $$5)) {
+            this.a($$0, $$5, $$3.c.a($$1, $$2));
          }
       }
-
-      return true;
    }
+
+   protected int a(azc $$0) {
+      int $$1 = $$0.a(3) + 4;
+      if ($$0.a(12) == 0) {
+         $$1 *= 2;
+      }
+
+      return $$1;
+   }
+
+   protected boolean a(dbu $$0, iz $$1, int $$2, iz.a $$3, ecz $$4) {
+      int $$5 = $$1.v();
+      if ($$5 >= $$0.I_() + 1 && $$5 + $$2 + 1 < $$0.am()) {
+         drx $$6 = $$0.a_($$1.d());
+         if (!b($$6) && !$$6.a(awl.ba)) {
+            return false;
+         } else {
+            for (int $$7 = 0; $$7 <= $$2; $$7++) {
+               int $$8 = this.a(-1, -1, $$4.d, $$7);
+
+               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
+                     drx $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
+                     if (!$$11.i() && !$$11.a(awl.O)) {
+                        return false;
+                     }
+                  }
+               }
+            }
+
+            return true;
+         }
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean a(eav<ecz> $$0) {
+      dco $$1 = $$0.b();
+      iz $$2 = $$0.e();
+      azc $$3 = $$0.d();
+      ecz $$4 = $$0.f();
+      int $$5 = this.a($$3);
+      iz.a $$6 = new iz.a();
+      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
+         return false;
+      } else {
+         this.a($$1, $$3, $$2, $$5, $$6, $$4);
+         this.a($$1, $$3, $$2, $$4, $$5, $$6);
+         return true;
+      }
+   }
+
+   protected abstract int a(int var1, int var2, int var3, int var4);
+
+   protected abstract void a(dbu var1, azc var2, iz var3, int var4, iz.a var5, ecz var6);
 }

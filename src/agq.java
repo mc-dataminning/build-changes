@@ -1,37 +1,173 @@
-public class agq implements ze<age> {
-   public static final yv<vx, agq> a = ze.a(agq::a, agq::new);
-   private final int b;
-   private final String c;
+public class agq {
+   public static final zu<acq> a = a("bundle");
+   public static final zu<acp> b = a("bundle_delimiter");
+   public static final zu<acf> c = a("add_entity");
+   public static final zu<acg> d = a("add_experience_orb");
+   public static final zu<ach> e = a("animate");
+   public static final zu<aci> f = a("award_stats");
+   public static final zu<acj> g = a("block_changed_ack");
+   public static final zu<ack> h = a("block_destruction");
+   public static final zu<acl> i = a("block_entity_data");
+   public static final zu<acm> j = a("block_event");
+   public static final zu<acn> k = a("block_update");
+   public static final zu<aco> l = a("boss_event");
+   public static final zu<acr> m = a("change_difficulty");
+   public static final zu<acs> n = a("chunk_batch_finished");
+   public static final zu<act> o = a("chunk_batch_start");
+   public static final zu<acu> p = a("chunks_biomes");
+   public static final zu<acv> q = a("clear_titles");
+   public static final zu<acw> r = a("command_suggestions");
+   public static final zu<acx> s = a("commands");
+   public static final zu<acy> t = a("container_close");
+   public static final zu<acz> u = a("container_set_content");
+   public static final zu<ada> v = a("container_set_data");
+   public static final zu<adb> w = a("container_set_slot");
+   public static final zu<adc> x = a("cooldown");
+   public static final zu<add> y = a("custom_chat_completions");
+   public static final zu<ade> z = a("damage_event");
+   public static final zu<adf> A = a("debug_sample");
+   public static final zu<adg> B = a("delete_chat");
+   public static final zu<adh> C = a("disguised_chat");
+   public static final zu<adi> D = a("entity_event");
+   public static final zu<adj> E = a("explode");
+   public static final zu<adk> F = a("forget_level_chunk");
+   public static final zu<adl> G = a("game_event");
+   public static final zu<adm> H = a("horse_screen_open");
+   public static final zu<adn> I = a("hurt_animation");
+   public static final zu<ado> J = a("initialize_border");
+   public static final zu<adq> K = a("level_chunk_with_light");
+   public static final zu<adr> L = a("level_event");
+   public static final zu<ads> M = a("level_particles");
+   public static final zu<adt> N = a("light_update");
+   public static final zu<adv> O = a("login");
+   public static final zu<adw> P = a("map_item_data");
+   public static final zu<adx> Q = a("merchant_offers");
+   public static final zu<ady.a> R = a("move_entity_pos");
+   public static final zu<ady.b> S = a("move_entity_pos_rot");
+   public static final zu<ady.c> T = a("move_entity_rot");
+   public static final zu<adz> U = a("move_vehicle");
+   public static final zu<aea> V = a("open_book");
+   public static final zu<aeb> W = a("open_screen");
+   public static final zu<aec> X = a("open_sign_editor");
+   public static final zu<aed> Y = a("place_ghost_recipe");
+   public static final zu<aee> Z = a("player_abilities");
+   public static final zu<aef> aa = a("player_chat");
+   public static final zu<aeg> ab = a("player_combat_end");
+   public static final zu<aeh> ac = a("player_combat_enter");
+   public static final zu<aei> ad = a("player_combat_kill");
+   public static final zu<aej> ae = a("player_info_remove");
+   public static final zu<aek> af = a("player_info_update");
+   public static final zu<ael> ag = a("player_look_at");
+   public static final zu<aem> ah = a("player_position");
+   public static final zu<aeo> ai = a("recipe");
+   public static final zu<aep> aj = a("remove_entities");
+   public static final zu<aeq> ak = a("remove_mob_effect");
+   public static final zu<aes> al = a("respawn");
+   public static final zu<aet> am = a("rotate_head");
+   public static final zu<aeu> an = a("section_blocks_update");
+   public static final zu<aev> ao = a("select_advancements_tab");
+   public static final zu<aew> ap = a("server_data");
+   public static final zu<aex> aq = a("set_action_bar_text");
+   public static final zu<aey> ar = a("set_border_center");
+   public static final zu<aez> as = a("set_border_lerp_size");
+   public static final zu<afa> at = a("set_border_size");
+   public static final zu<afb> au = a("set_border_warning_delay");
+   public static final zu<afc> av = a("set_border_warning_distance");
+   public static final zu<afd> aw = a("set_camera");
+   public static final zu<afe> ax = a("set_carried_item");
+   public static final zu<aff> ay = a("set_chunk_cache_center");
+   public static final zu<afg> az = a("set_chunk_cache_radius");
+   public static final zu<afh> aA = a("set_default_spawn_position");
+   public static final zu<afi> aB = a("set_display_objective");
+   public static final zu<afj> aC = a("set_entity_data");
+   public static final zu<afk> aD = a("set_entity_link");
+   public static final zu<afl> aE = a("set_entity_motion");
+   public static final zu<afm> aF = a("set_equipment");
+   public static final zu<afn> aG = a("set_experience");
+   public static final zu<afo> aH = a("set_health");
+   public static final zu<afp> aI = a("set_objective");
+   public static final zu<afq> aJ = a("set_passengers");
+   public static final zu<afr> aK = a("set_player_team");
+   public static final zu<afs> aL = a("set_score");
+   public static final zu<aft> aM = a("set_simulation_distance");
+   public static final zu<afu> aN = a("set_subtitle_text");
+   public static final zu<afv> aO = a("set_time");
+   public static final zu<afw> aP = a("set_title_text");
+   public static final zu<afx> aQ = a("set_titles_animation");
+   public static final zu<afy> aR = a("sound_entity");
+   public static final zu<afz> aS = a("sound");
+   public static final zu<aga> aT = a("start_configuration");
+   public static final zu<agb> aU = a("stop_sound");
+   public static final zu<agc> aV = a("system_chat");
+   public static final zu<agd> aW = a("tab_list");
+   public static final zu<age> aX = a("tag_query");
+   public static final zu<agf> aY = a("take_item_entity");
+   public static final zu<agg> aZ = a("teleport_entity");
+   public static final zu<agj> ba = a("update_advancements");
+   public static final zu<agk> bb = a("update_attributes");
+   public static final zu<agl> bc = a("update_mob_effect");
+   public static final zu<agm> bd = a("update_recipes");
+   public static final zu<aen> be = a("projectile_power");
+   public static final zu<agu> bf = b("accept_teleportation");
+   public static final zu<agv> bg = b("block_entity_tag_query");
+   public static final zu<agw> bh = b("change_difficulty");
+   public static final zu<agx> bi = b("chat_ack");
+   public static final zu<agy> bj = b("chat_command");
+   public static final zu<agz> bk = b("chat_command_signed");
+   public static final zu<aha> bl = b("chat");
+   public static final zu<ahb> bm = b("chat_session_update");
+   public static final zu<ahc> bn = b("chunk_batch_received");
+   public static final zu<ahd> bo = b("client_command");
+   public static final zu<ahe> bp = b("command_suggestion");
+   public static final zu<ahf> bq = b("configuration_acknowledged");
+   public static final zu<ahg> br = b("container_button_click");
+   public static final zu<ahh> bs = b("container_click");
+   public static final zu<ahi> bt = b("container_close");
+   public static final zu<ahj> bu = b("container_slot_state_changed");
+   public static final zu<ahk> bv = b("debug_sample_subscription");
+   public static final zu<ahl> bw = b("edit_book");
+   public static final zu<ahm> bx = b("entity_tag_query");
+   public static final zu<ahn> by = b("interact");
+   public static final zu<aho> bz = b("jigsaw_generate");
+   public static final zu<ahp> bA = b("lock_difficulty");
+   public static final zu<ahq.a> bB = b("move_player_pos");
+   public static final zu<ahq.b> bC = b("move_player_pos_rot");
+   public static final zu<ahq.c> bD = b("move_player_rot");
+   public static final zu<ahq.d> bE = b("move_player_status_only");
+   public static final zu<ahr> bF = b("move_vehicle");
+   public static final zu<ahs> bG = b("paddle_boat");
+   public static final zu<aht> bH = b("pick_item");
+   public static final zu<ahu> bI = b("place_recipe");
+   public static final zu<ahv> bJ = b("player_abilities");
+   public static final zu<ahw> bK = b("player_action");
+   public static final zu<ahx> bL = b("player_command");
+   public static final zu<ahy> bM = b("player_input");
+   public static final zu<ahz> bN = b("recipe_book_change_settings");
+   public static final zu<aia> bO = b("recipe_book_seen_recipe");
+   public static final zu<aib> bP = b("rename_item");
+   public static final zu<aic> bQ = b("seen_advancements");
+   public static final zu<aid> bR = b("select_trade");
+   public static final zu<aie> bS = b("set_beacon");
+   public static final zu<aif> bT = b("set_carried_item");
+   public static final zu<aig> bU = b("set_command_block");
+   public static final zu<aih> bV = b("set_command_minecart");
+   public static final zu<aii> bW = b("set_creative_mode_slot");
+   public static final zu<aij> bX = b("set_jigsaw_block");
+   public static final zu<aik> bY = b("set_structure_block");
+   public static final zu<ail> bZ = b("sign_update");
+   public static final zu<aim> ca = b("swing");
+   public static final zu<ain> cb = b("teleport_to_entity");
+   public static final zu<aio> cc = b("use_item_on");
+   public static final zu<aip> cd = b("use_item");
+   public static final zu<aer> ce = a("reset_score");
+   public static final zu<agh> cf = a("ticking_state");
+   public static final zu<agi> cg = a("ticking_step");
 
-   public agq(int $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private static <T extends zs<ace>> zu<T> a(String $$0) {
+      return new zu<>(zt.b, new alb($$0));
    }
 
-   private agq(vx $$0) {
-      this.b = $$0.l();
-      this.c = $$0.d(32500);
-   }
-
-   private void a(vx $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c, 32500);
-   }
-
-   @Override
-   public zg<agq> a() {
-      return agc.bp;
-   }
-
-   public void a(age $$0) {
-      $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public String e() {
-      return this.c;
+   private static <T extends zs<ags>> zu<T> b(String $$0) {
+      return new zu<>(zt.a, new alb($$0));
    }
 }

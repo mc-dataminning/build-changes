@@ -1,31 +1,42 @@
-public record aao(int c, enk d, float e) implements aaf {
-   public static final yv<vx, aao> a = aaf.a(aao::a, aao::new);
-   public static final aaf.b<aao> b = aaf.a("debug/path");
+import java.util.UUID;
 
-   private aao(vx $$0) {
-      this($$0.readInt(), enk.b($$0), $$0.readFloat());
+public record aao(UUID b, aao.a c) implements zs<aaj> {
+   public static final zj<wl, aao> a = zs.a(aao::a, aao::new);
+
+   private aao(wl $$0) {
+      this($$0.n(), $$0.b(aao.a.class));
    }
 
-   private void a(vx $$0) {
-      $$0.p(this.c);
-      this.d.a($$0);
-      $$0.a(this.e);
+   private void a(wl $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public aaf.b<aao> a() {
-      return b;
+   public zu<aao> a() {
+      return aai.n;
    }
 
-   public int b() {
+   public void a(aaj $$0) {
+      $$0.a(this);
+   }
+
+   public aao.a e() {
       return this.c;
    }
 
-   public enk c() {
-      return this.d;
-   }
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h;
 
-   public float d() {
-      return this.e;
+      public boolean a() {
+         return this != d && this != e;
+      }
    }
 }

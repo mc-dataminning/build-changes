@@ -1,61 +1,45 @@
-public abstract class aqj extends emi {
-   protected aqj(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+public class aqj {
+   private static final int b = 33;
+   private static final int c = 32;
+   private static final int d = 31;
+   public static final int a = 33 + dus.b();
+
+   public static dus a(int $$0) {
+      return $$0 < 33 ? dus.n : dus.a($$0 - 33);
    }
 
-   @Override
-   protected void a(long $$0, int $$1, boolean $$2) {
-      if (!$$2 || $$1 < this.f - 2) {
-         for (int $$3 = -1; $$3 <= 1; $$3++) {
-            for (int $$4 = -1; $$4 <= 1; $$4++) {
-               for (int $$5 = -1; $$5 <= 1; $$5++) {
-                  long $$6 = jq.a($$0, $$3, $$4, $$5);
-                  if ($$6 != $$0) {
-                     this.b($$0, $$6, $$1, $$2);
-                  }
-               }
-            }
-         }
+   public static int a(dus $$0) {
+      return 33 + dus.a($$0);
+   }
+
+   public static aqu b(int $$0) {
+      if ($$0 <= 31) {
+         return aqu.d;
+      } else if ($$0 <= 32) {
+         return aqu.c;
+      } else {
+         return $$0 <= 33 ? aqu.b : aqu.a;
       }
    }
 
-   @Override
-   protected int a(long $$0, long $$1, int $$2) {
-      int $$3 = $$2;
-
-      for (int $$4 = -1; $$4 <= 1; $$4++) {
-         for (int $$5 = -1; $$5 <= 1; $$5++) {
-            for (int $$6 = -1; $$6 <= 1; $$6++) {
-               long $$7 = jq.a($$0, $$4, $$5, $$6);
-               if ($$7 == $$0) {
-                  $$7 = Long.MAX_VALUE;
-               }
-
-               if ($$7 != $$1) {
-                  int $$8 = this.b($$7, $$0, this.c($$7));
-                  if ($$3 > $$8) {
-                     $$3 = $$8;
-                  }
-
-                  if ($$3 == 0) {
-                     return $$3;
-                  }
-               }
-            }
-         }
-      }
-
-      return $$3;
+   public static int a(aqu $$0) {
+      return switch ($$0) {
+         case a -> a;
+         case b -> 33;
+         case c -> 32;
+         case d -> 31;
+      };
    }
 
-   @Override
-   protected int b(long $$0, long $$1, int $$2) {
-      return this.a($$0) ? this.b($$1) : $$2 + 1;
+   public static boolean c(int $$0) {
+      return $$0 <= 31;
    }
 
-   protected abstract int b(long var1);
+   public static boolean d(int $$0) {
+      return $$0 <= 32;
+   }
 
-   public void b(long $$0, int $$1, boolean $$2) {
-      this.a(Long.MAX_VALUE, $$0, $$1, $$2);
+   public static boolean e(int $$0) {
+      return $$0 <= a;
    }
 }

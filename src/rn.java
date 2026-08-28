@@ -1,203 +1,47 @@
-public class rn {
-   public static dby a(iy<egp> $$0, iy<dyy<?>> $$1) {
-      dck $$2 = new dck.a()
-         .a(bst.a, new dck.c(bsc.T, 50, 4, 4))
-         .a(bst.a, new dck.c(bsc.bx, 100, 4, 4))
-         .a(bst.a, new dck.c(bsc.ap, 2, 4, 4))
-         .a(bst.a, new dck.c(bsc.H, 1, 4, 4))
-         .a(bst.a, new dck.c(bsc.aA, 15, 4, 4))
-         .a(bst.b, new dck.c(bsc.aZ, 60, 1, 2))
-         .a();
-      dbz.a $$3 = new dbz.a($$0, $$1).a(dwr.a.a, qp.d).a(dwr.b.j, sf.p);
-      qn.ac($$3);
-      $$3.a(dwr.b.h, sg.r)
-         .a(dwr.b.h, sg.t)
-         .a(dwr.b.h, sg.s)
-         .a(dwr.b.h, sg.f)
-         .a(dwr.b.h, sg.g)
-         .a(dwr.b.h, sk.F)
-         .a(dwr.b.h, sk.G)
-         .a(dwr.b.h, sh.a)
-         .a(dwr.b.h, sg.p);
-      qn.au($$3);
-      return new dby.a()
-         .a(false)
-         .a(2.0F)
-         .b(0.0F)
-         .a(new dce.a().b(4159204).c(329011).a(3344392).d(ro.a(2.0F)).a(avi.p).a(new dbw(avi.q, 6000, 8, 2.0)).a(new dbv(avi.o, 0.0111)).a(avg.a(avi.qm)).a())
-         .a($$2)
-         .a($$3.a())
-         .a();
-   }
+import java.util.List;
+import java.util.Optional;
 
-   public static dby b(iy<egp> $$0, iy<dyy<?>> $$1) {
-      double $$2 = 0.7;
-      double $$3 = 0.15;
-      dck $$4 = new dck.a()
-         .a(bst.a, new dck.c(bsc.aN, 20, 5, 5))
-         .a(bst.a, new dck.c(bsc.T, 50, 4, 4))
-         .a(bst.a, new dck.c(bsc.H, 1, 4, 4))
-         .a(bst.b, new dck.c(bsc.aZ, 60, 1, 2))
-         .a(bsc.aN, 0.7, 0.15)
-         .a(bsc.T, 0.7, 0.15)
-         .a(bsc.H, 0.7, 0.15)
-         .a(bsc.aZ, 0.7, 0.15)
-         .a();
-      dbz.a $$5 = new dbz.a($$0, $$1)
-         .a(dwr.a.a, qp.d)
-         .a(dwr.b.j, sf.p)
-         .a(dwr.b.c, sg.n)
-         .a(dwr.b.h, sg.r)
-         .a(dwr.b.h, sg.t)
-         .a(dwr.b.h, sg.s)
-         .a(dwr.b.h, sg.f)
-         .a(dwr.b.h, sg.g)
-         .a(dwr.b.h, sg.m)
-         .a(dwr.b.h, sh.a)
-         .a(dwr.b.h, sg.p)
-         .a(dwr.b.h, sh.b);
-      qn.au($$5);
-      return new dby.a()
-         .a(false)
-         .a(2.0F)
-         .b(0.0F)
-         .a(
-            new dce.a()
-               .b(4159204)
-               .c(329011)
-               .a(1787717)
-               .d(ro.a(2.0F))
-               .a(new dbx(ky.aA, 0.00625F))
-               .a(avi.s)
-               .a(new dbw(avi.t, 6000, 8, 2.0))
-               .a(new dbv(avi.r, 0.0111))
-               .a(avg.a(avi.qp))
-               .a()
+public interface rn {
+   static void a(rc<eil> $$0) {
+      jj<eif> $$1 = $$0.a(lq.aJ);
+      jj<dcs> $$2 = $$0.a(lq.az);
+      ji.c<eil> $$3 = $$0.a(
+         ehy.a,
+         new eil(
+            List.of(eil.a($$1.b(ehz.t)), eil.a($$1.b(ehz.u)), eil.a($$1.b(ehz.v)), eil.a($$1.b(ehz.w)), eil.a($$1.b(ehz.x))), new eja(34, 8, ejb.a, 10387312)
          )
-         .a($$4)
-         .a($$5.a())
-         .a();
-   }
-
-   public static dby c(iy<egp> $$0, iy<dyy<?>> $$1) {
-      dck $$2 = new dck.a().a(bst.a, new dck.c(bsc.T, 40, 1, 1)).a(bst.a, new dck.c(bsc.ap, 100, 2, 5)).a(bst.b, new dck.c(bsc.aZ, 60, 1, 2)).a();
-      dbz.a $$3 = new dbz.a($$0, $$1)
-         .a(dwr.a.a, qp.d)
-         .a(dwr.b.e, sg.a)
-         .a(dwr.b.e, sg.b)
-         .a(dwr.b.e, sg.c)
-         .a(dwr.b.h, sg.d)
-         .a(dwr.b.h, sg.e)
-         .a(dwr.b.h, sg.o)
-         .a(dwr.b.h, sg.t)
-         .a(dwr.b.h, sg.s)
-         .a(dwr.b.h, sg.f)
-         .a(dwr.b.h, sg.g)
-         .a(dwr.b.h, sk.F)
-         .a(dwr.b.h, sk.G)
-         .a(dwr.b.h, sh.a)
-         .a(dwr.b.h, sg.q)
-         .a(dwr.b.h, sh.c)
-         .a(dwr.b.h, sh.d);
-      qn.av($$3);
-      return new dby.a()
-         .a(false)
-         .a(2.0F)
-         .b(0.0F)
-         .a(
-            new dce.a()
-               .b(4159204)
-               .c(329011)
-               .a(6840176)
-               .d(ro.a(2.0F))
-               .a(new dbx(ky.aI, 0.118093334F))
-               .a(avi.j)
-               .a(new dbw(avi.k, 6000, 8, 2.0))
-               .a(new dbv(avi.i, 0.0111))
-               .a(avg.a(avi.qa))
-               .a()
+      );
+      $$0.a(ehy.b, new eil($$1.b(ehz.f), new eja(32, 8, ejb.a, 14357617)));
+      $$0.a(ehy.c, new eil($$1.b(ehz.g), new eja(32, 8, ejb.a, 14357618)));
+      $$0.a(ehy.d, new eil($$1.b(ehz.e), new eja(32, 8, ejb.a, 14357619)));
+      $$0.a(ehy.e, new eil($$1.b(ehz.j), new eja(32, 8, ejb.a, 14357620)));
+      $$0.a(ehy.f, new eil($$1.b(ehz.a), new eja(kd.g, ejc.c.b, 0.2F, 165745296, Optional.of(new ejc.a($$3, 10)), 32, 8, ejb.a)));
+      $$0.a(ehy.q, new eil($$1.b(ehz.F), new eja(24, 8, ejb.a, 20083232)));
+      $$0.a(ehy.g, new eil($$1.b(ehz.l), new eja(32, 5, ejb.b, 10387313)));
+      $$0.a(ehy.h, new eil($$1.b(ehz.d), new eja(80, 20, ejb.b, 10387319)));
+      $$0.a(ehy.i, new eil($$1.b(ehz.r), new eja(new kd(9, 0, 9), ejc.c.c, 0.01F, 0, Optional.empty(), 1, 0, ejb.a)));
+      $$0.a(ehy.j, new eil(List.of(eil.a($$1.b(ehz.b)), eil.a($$1.b(ehz.c))), new eja(kd.g, ejc.c.d, 0.004F, 0, Optional.empty(), 1, 0, ejb.a)));
+      $$0.a(
+         ehy.k,
+         new eil(
+            List.of(
+               eil.a($$1.b(ehz.y)),
+               eil.a($$1.b(ehz.z)),
+               eil.a($$1.b(ehz.A)),
+               eil.a($$1.b(ehz.B)),
+               eil.a($$1.b(ehz.C)),
+               eil.a($$1.b(ehz.D)),
+               eil.a($$1.b(ehz.E))
+            ),
+            new eja(40, 15, ejb.a, 34222645)
          )
-         .a($$2)
-         .a($$3.a())
-         .a();
-   }
-
-   public static dby d(iy<egp> $$0, iy<dyy<?>> $$1) {
-      dck $$2 = new dck.a()
-         .a(bst.a, new dck.c(bsc.bx, 1, 2, 4))
-         .a(bst.a, new dck.c(bsc.Z, 9, 3, 4))
-         .a(bst.a, new dck.c(bsc.aA, 5, 3, 4))
-         .a(bst.b, new dck.c(bsc.aZ, 60, 1, 2))
-         .a();
-      dbz.a $$3 = new dbz.a($$0, $$1).a(dwr.a.a, qp.d).a(dwr.b.j, sf.p);
-      qn.ac($$3);
-      $$3.a(dwr.b.h, sg.r)
-         .a(dwr.b.h, sg.t)
-         .a(dwr.b.h, sg.f)
-         .a(dwr.b.h, sg.g)
-         .a(dwr.b.h, sh.a)
-         .a(dwr.b.h, sg.p)
-         .a(dwr.b.j, sg.l)
-         .a(dwr.b.j, sj.a)
-         .a(dwr.b.j, sg.h);
-      qn.au($$3);
-      return new dby.a()
-         .a(false)
-         .a(2.0F)
-         .b(0.0F)
-         .a(
-            new dce.a()
-               .b(4159204)
-               .c(329011)
-               .a(3343107)
-               .d(ro.a(2.0F))
-               .a(new dbx(ky.aB, 0.025F))
-               .a(avi.m)
-               .a(new dbw(avi.n, 6000, 8, 2.0))
-               .a(new dbv(avi.l, 0.0111))
-               .a(avg.a(avi.qb))
-               .a()
-         )
-         .a($$2)
-         .a($$3.a())
-         .a();
-   }
-
-   public static dby e(iy<egp> $$0, iy<dyy<?>> $$1) {
-      dck $$2 = new dck.a().a(bst.a, new dck.c(bsc.H, 1, 4, 4)).a(bst.b, new dck.c(bsc.aZ, 60, 1, 2)).a(bsc.H, 1.0, 0.12).a();
-      dbz.a $$3 = new dbz.a($$0, $$1).a(dwr.a.a, qp.d).a(dwr.b.j, sf.p);
-      qn.ac($$3);
-      $$3.a(dwr.b.h, sg.r)
-         .a(dwr.b.h, sg.t)
-         .a(dwr.b.h, sg.s)
-         .a(dwr.b.h, sg.f)
-         .a(dwr.b.h, sg.g)
-         .a(dwr.b.h, sh.a)
-         .a(dwr.b.h, sg.p)
-         .a(dwr.b.j, sj.b)
-         .a(dwr.b.j, sg.i)
-         .a(dwr.b.j, sg.j)
-         .a(dwr.b.j, sg.k);
-      qn.au($$3);
-      return new dby.a()
-         .a(false)
-         .a(2.0F)
-         .b(0.0F)
-         .a(
-            new dce.a()
-               .b(4159204)
-               .c(329011)
-               .a(1705242)
-               .d(ro.a(2.0F))
-               .a(new dbx(ky.aC, 0.01428F))
-               .a(avi.v)
-               .a(new dbw(avi.w, 6000, 8, 2.0))
-               .a(new dbv(avi.u, 0.0111))
-               .a(avg.a(avi.qr))
-               .a()
-         )
-         .a($$2)
-         .a($$3.a())
-         .a();
+      );
+      $$0.a(ehy.l, new eil(List.of(eil.a($$1.b(ehz.h)), eil.a($$1.b(ehz.i))), new eja(24, 4, ejb.a, 165745295)));
+      $$0.a(ehy.m, new eil(List.of(eil.a($$1.b(ehz.m)), eil.a($$1.b(ehz.n))), new eja(20, 8, ejb.a, 14357621)));
+      $$0.a(ehy.n, new eil(List.of(eil.a($$1.b(ehz.o), 2), eil.a($$1.b(ehz.s), 3)), new eja(27, 4, ejb.a, 30084232)));
+      $$0.a(ehy.o, new eil($$1.b(ehz.p), new eja(2, 1, ejb.a, 14357921)));
+      $$0.a(ehy.p, new eil($$1.b(ehz.q), new eja(20, 11, ejb.b, 10387313)));
+      $$0.a(ehy.r, new eil($$1.b(ehz.k), new eiz(32, 3, 128, $$2.b(awk.o))));
+      $$0.a(ehy.s, new eil($$1.b(ehz.G), new eja(34, 8, ejb.a, 83469867)));
    }
 }

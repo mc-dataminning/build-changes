@@ -1,29 +1,101 @@
-public class ads implements ze<abq> {
-   public static final yv<vx, ads> a = ze.a(ads::a, ads::new);
-   private final int b;
+public class ads implements zs<ace> {
+   public static final zj<ww, ads> a = zs.a(ads::a, ads::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final float f;
+   private final float g;
+   private final float h;
+   private final int i;
+   private final boolean j;
+   private final lh k;
 
-   public ads(bqm $$0) {
-      this($$0.b());
+   public <T extends lh> ads(T $$0, boolean $$1, double $$2, double $$3, double $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
+      this.k = $$0;
+      this.j = $$1;
+      this.b = $$2;
+      this.c = $$3;
+      this.d = $$4;
+      this.e = $$5;
+      this.f = $$6;
+      this.g = $$7;
+      this.h = $$8;
+      this.i = $$9;
    }
 
-   public ads(int $$0) {
-      this.b = $$0;
+   private ads(ww $$0) {
+      this.j = $$0.readBoolean();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+      this.g = $$0.readFloat();
+      this.h = $$0.readFloat();
+      this.i = $$0.readInt();
+      this.k = lj.bg.decode($$0);
    }
 
-   private ads(vx $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(vx $$0) {
-      $$0.c(this.b);
+   private void a(ww $$0) {
+      $$0.a(this.j);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+      $$0.p(this.i);
+      lj.bg.encode($$0, this.k);
    }
 
    @Override
-   public zg<ads> a() {
-      return agc.ab;
+   public zu<ads> a() {
+      return agq.M;
    }
 
-   public void a(abq $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
+   }
+
+   public boolean b() {
+      return this.j;
+   }
+
+   public double e() {
+      return this.b;
+   }
+
+   public double f() {
+      return this.c;
+   }
+
+   public double g() {
+      return this.d;
+   }
+
+   public float h() {
+      return this.e;
+   }
+
+   public float i() {
+      return this.f;
+   }
+
+   public float j() {
+      return this.g;
+   }
+
+   public float k() {
+      return this.h;
+   }
+
+   public int l() {
+      return this.i;
+   }
+
+   public lh m() {
+      return this.k;
    }
 }

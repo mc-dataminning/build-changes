@@ -1,68 +1,82 @@
 import com.mojang.serialization.MapCodec;
+import java.util.function.ToIntFunction;
 
-public class dji extends dea implements ded {
+public class dji extends deu implements dlv {
    public static final MapCodec<dji> a = b(dji::new);
+   public static final int b = 15;
+   public static final dsx c = dsn.aP;
+   public static final dso d = dsn.C;
+   public static final ToIntFunction<drx> e = $$0 -> $$0.c(c);
 
    @Override
    public MapCodec<dji> a() {
       return a;
    }
 
-   public dji(drc.d $$0) {
+   public dji(drw.d $$0) {
       super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(15)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean b(dbc $$0, io $$1, drd $$2) {
-      if (!$$0.a_($$1.c()).a((daf)$$0, $$1)) {
-         return false;
-      } else {
-         for (io $$3 : io.c($$1.b(-1, -1, -1), $$1.b(1, 1, 1))) {
-            if ($$0.a_($$3).a(avx.aL)) {
-               return true;
-            }
-         }
+   protected void a(dry.a<deu, drx> $$0) {
+      $$0.a(c, d);
+   }
 
-         return false;
+   @Override
+   protected bqp a(drx $$0, dbt $$1, iz $$2, cms $$3, evi $$4) {
+      if (!$$1.B && $$3.gz()) {
+         $$1.a($$2, $$0.a(c), 2);
+         return bqp.a;
+      } else {
+         return bqp.c;
       }
    }
 
    @Override
-   public boolean a(daz $$0, aym $$1, io $$2, drd $$3) {
+   protected ewf a(drx $$0, daz $$1, iz $$2, evr $$3) {
+      return $$3.a(cun.hC) ? ewc.b() : ewc.a();
+   }
+
+   @Override
+   protected boolean a_(drx $$0, daz $$1, iz $$2) {
       return true;
    }
 
    @Override
-   public void a(aqn $$0, aym $$1, io $$2, drd $$3) {
-      boolean $$4 = false;
-      boolean $$5 = false;
-
-      for (io $$6 : io.c($$2.b(-1, -1, -1), $$2.b(1, 1, 1))) {
-         drd $$7 = $$0.a_($$6);
-         if ($$7.a(dec.on)) {
-            $$5 = true;
-         }
-
-         if ($$7.a(dec.ow)) {
-            $$4 = true;
-         }
-
-         if ($$5 && $$4) {
-            break;
-         }
-      }
-
-      if ($$5 && $$4) {
-         $$0.a($$2, $$1.h() ? dec.on.n() : dec.ow.n(), 3);
-      } else if ($$5) {
-         $$0.a($$2, dec.on.n(), 3);
-      } else if ($$4) {
-         $$0.a($$2, dec.ow.n(), 3);
-      }
+   protected dla a_(drx $$0) {
+      return dla.a;
    }
 
    @Override
-   public ded.a ar_() {
-      return ded.a.a;
+   protected float d(drx $$0, daz $$1, iz $$2) {
+      return 1.0F;
+   }
+
+   @Override
+   protected drx a(drx $$0, je $$1, drx $$2, dbu $$3, iz $$4, iz $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, enr.c, enr.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected enq b_(drx $$0) {
+      return $$0.c(d) ? enr.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   public cuk a(dbw $$0, iz $$1, drx $$2) {
+      return a(super.a($$0, $$1, $$2), $$2.c(c));
+   }
+
+   public static cuk a(cuk $$0, int $$1) {
+      if ($$1 != 15) {
+         $$0.b(km.aa, cwv.a.a(c, $$1));
+      }
+
+      return $$0;
    }
 }

@@ -1,33 +1,45 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class ahz implements zs<ags> {
+   public static final zj<wl, ahz> a = zs.a(ahz::a, ahz::new);
+   private final crd b;
+   private final boolean c;
+   private final boolean d;
 
-public class ahz implements ze<age> {
-   public static final yv<vx, ahz> a = ze.a(ahz::a, ahz::new);
-   private final UUID b;
-
-   public ahz(UUID $$0) {
+   public ahz(crd $$0, boolean $$1, boolean $$2) {
       this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private ahz(vx $$0) {
-      this.b = $$0.n();
+   private ahz(wl $$0) {
+      this.b = $$0.b(crd.class);
+      this.c = $$0.readBoolean();
+      this.d = $$0.readBoolean();
    }
 
-   private void a(vx $$0) {
+   private void a(wl $$0) {
       $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zg<ahz> a() {
-      return agc.cb;
+   public zu<ahz> a() {
+      return agq.bN;
    }
 
-   public void a(age $$0) {
+   public void a(ags $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public brw a(aqn $$0) {
-      return $$0.a(this.b);
+   public crd b() {
+      return this.b;
+   }
+
+   public boolean e() {
+      return this.c;
+   }
+
+   public boolean f() {
+      return this.d;
    }
 }

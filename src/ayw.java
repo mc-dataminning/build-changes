@@ -1,220 +1,192 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrays;
-import java.util.AbstractSet;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import com.mojang.serialization.RecordBuilder.AbstractUniversalBuilder;
+import java.nio.ByteBuffer;
+import java.util.List;
+import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
-public class ayw<T> extends AbstractSet<T> {
-   private static final int a = 10;
-   private final Comparator<T> b;
-   T[] c;
-   int d;
+public class ayw implements DynamicOps<azx> {
+   public static final ayw a = new ayw();
 
-   private ayw(int $$0, Comparator<T> $$1) {
-      this.b = $$1;
-      if ($$0 < 0) {
-         throw new IllegalArgumentException("Initial capacity (" + $$0 + ") is negative");
-      } else {
-         this.c = (T[])a(new Object[$$0]);
-      }
+   private ayw() {
    }
 
-   public static <T extends Comparable<T>> ayw<T> a() {
-      return a(10);
+   public <U> U a(DynamicOps<U> $$0, azx $$1) {
+      return (U)$$0.empty();
    }
 
-   public static <T extends Comparable<T>> ayw<T> a(int $$0) {
-      return new ayw<>($$0, Comparator.naturalOrder());
+   public azx a() {
+      return azx.a;
    }
 
-   public static <T> ayw<T> a(Comparator<T> $$0) {
-      return a($$0, 10);
+   public azx b() {
+      return azx.a;
    }
 
-   public static <T> ayw<T> a(Comparator<T> $$0, int $$1) {
-      return new ayw<>($$1, $$0);
+   public azx c() {
+      return azx.a;
    }
 
-   private static <T> T[] a(Object[] $$0) {
-      return (T[])$$0;
+   public azx a(Number $$0) {
+      return azx.a;
    }
 
-   private int c(T $$0) {
-      return Arrays.binarySearch(this.c, 0, this.d, $$0, this.b);
+   public azx a(byte $$0) {
+      return azx.a;
    }
 
-   private static int b(int $$0) {
-      return -$$0 - 1;
+   public azx a(short $$0) {
+      return azx.a;
    }
 
-   @Override
-   public boolean add(T $$0) {
-      int $$1 = this.c($$0);
-      if ($$1 >= 0) {
-         return false;
-      } else {
-         int $$2 = b($$1);
-         this.a($$0, $$2);
-         return true;
-      }
+   public azx a(int $$0) {
+      return azx.a;
    }
 
-   private void c(int $$0) {
-      if ($$0 > this.c.length) {
-         if (this.c != ObjectArrays.DEFAULT_EMPTY_ARRAY) {
-            $$0 = (int)Math.max(Math.min((long)this.c.length + (long)(this.c.length >> 1), 2147483639L), (long)$$0);
-         } else if ($$0 < 10) {
-            $$0 = 10;
-         }
-
-         Object[] $$1 = new Object[$$0];
-         System.arraycopy(this.c, 0, $$1, 0, this.d);
-         this.c = (T[])a($$1);
-      }
+   public azx a(long $$0) {
+      return azx.a;
    }
 
-   private void a(T $$0, int $$1) {
-      this.c(this.d + 1);
-      if ($$1 != this.d) {
-         System.arraycopy(this.c, $$1, this.c, $$1 + 1, this.d - $$1);
-      }
-
-      this.c[$$1] = $$0;
-      this.d++;
+   public azx a(float $$0) {
+      return azx.a;
    }
 
-   void d(int $$0) {
-      this.d--;
-      if ($$0 != this.d) {
-         System.arraycopy(this.c, $$0 + 1, this.c, $$0, this.d - $$0);
-      }
-
-      this.c[this.d] = null;
+   public azx a(double $$0) {
+      return azx.a;
    }
 
-   private T e(int $$0) {
-      return this.c[$$0];
+   public azx a(boolean $$0) {
+      return azx.a;
    }
 
-   public T a(T $$0) {
-      int $$1 = this.c($$0);
-      if ($$1 >= 0) {
-         return this.e($$1);
-      } else {
-         this.a($$0, b($$1));
-         return $$0;
-      }
+   public azx a(String $$0) {
+      return azx.a;
    }
 
-   @Override
-   public boolean remove(Object $$0) {
-      int $$1 = this.c((T)$$0);
-      if ($$1 >= 0) {
-         this.d($$1);
-         return true;
-      } else {
-         return false;
-      }
+   public DataResult<Number> a(azx $$0) {
+      return DataResult.error(() -> "Not a number");
    }
 
-   @Nullable
-   public T b(T $$0) {
-      int $$1 = this.c($$0);
-      return $$1 >= 0 ? this.e($$1) : null;
+   public DataResult<Boolean> b(azx $$0) {
+      return DataResult.error(() -> "Not a boolean");
    }
 
-   public T b() {
-      return this.e(0);
+   public DataResult<String> c(azx $$0) {
+      return DataResult.error(() -> "Not a string");
    }
 
-   public T c() {
-      return this.e(this.d - 1);
+   public DataResult<azx> a(azx $$0, azx $$1) {
+      return DataResult.success(azx.a);
    }
 
-   @Override
-   public boolean contains(Object $$0) {
-      int $$1 = this.c((T)$$0);
-      return $$1 >= 0;
+   public DataResult<azx> a(azx $$0, List<azx> $$1) {
+      return DataResult.success(azx.a);
    }
 
-   @Override
-   public Iterator<T> iterator() {
-      return new ayw.a();
+   public DataResult<azx> a(azx $$0, azx $$1, azx $$2) {
+      return DataResult.success(azx.a);
    }
 
-   @Override
-   public int size() {
-      return this.d;
+   public DataResult<azx> a(azx $$0, Map<azx, azx> $$1) {
+      return DataResult.success(azx.a);
    }
 
-   @Override
-   public Object[] toArray() {
-      return Arrays.copyOf(this.c, this.d, Object[].class);
+   public DataResult<azx> a(azx $$0, MapLike<azx> $$1) {
+      return DataResult.success(azx.a);
    }
 
-   @Override
-   public <U> U[] toArray(U[] $$0) {
-      if ($$0.length < this.d) {
-         return (U[])Arrays.copyOf(this.c, this.d, (Class<? extends T[]>)$$0.getClass());
-      } else {
-         System.arraycopy(this.c, 0, $$0, 0, this.d);
-         if ($$0.length > this.d) {
-            $$0[this.d] = null;
-         }
-
-         return $$0;
-      }
+   public DataResult<Stream<Pair<azx, azx>>> d(azx $$0) {
+      return DataResult.error(() -> "Not a map");
    }
 
-   @Override
-   public void clear() {
-      Arrays.fill(this.c, 0, this.d, null);
-      this.d = 0;
+   public DataResult<Consumer<BiConsumer<azx, azx>>> e(azx $$0) {
+      return DataResult.error(() -> "Not a map");
+   }
+
+   public DataResult<MapLike<azx>> f(azx $$0) {
+      return DataResult.error(() -> "Not a map");
+   }
+
+   public DataResult<Stream<azx>> g(azx $$0) {
+      return DataResult.error(() -> "Not a list");
+   }
+
+   public DataResult<Consumer<Consumer<azx>>> h(azx $$0) {
+      return DataResult.error(() -> "Not a list");
+   }
+
+   public DataResult<ByteBuffer> i(azx $$0) {
+      return DataResult.error(() -> "Not a byte list");
+   }
+
+   public DataResult<IntStream> j(azx $$0) {
+      return DataResult.error(() -> "Not an int list");
+   }
+
+   public DataResult<LongStream> k(azx $$0) {
+      return DataResult.error(() -> "Not a long list");
+   }
+
+   public azx a(Stream<Pair<azx, azx>> $$0) {
+      return azx.a;
+   }
+
+   public azx a(Map<azx, azx> $$0) {
+      return azx.a;
+   }
+
+   public azx b(Stream<azx> $$0) {
+      return azx.a;
+   }
+
+   public azx a(ByteBuffer $$0) {
+      return azx.a;
+   }
+
+   public azx a(IntStream $$0) {
+      return azx.a;
+   }
+
+   public azx a(LongStream $$0) {
+      return azx.a;
+   }
+
+   public azx a(azx $$0, String $$1) {
+      return $$0;
+   }
+
+   public RecordBuilder<azx> mapBuilder() {
+      return new ayw.a(this);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof ayw<?> $$1 && this.b.equals($$1.b)) {
-            return this.d == $$1.d && Arrays.equals(this.c, $$1.c);
-         }
-
-         return super.equals($$0);
-      }
+   public String toString() {
+      return "Null";
    }
 
-   class a implements Iterator<T> {
-      private int b;
-      private int c = -1;
-
-      @Override
-      public boolean hasNext() {
-         return this.b < ayw.this.d;
+   static final class a extends AbstractUniversalBuilder<azx, azx> {
+      public a(DynamicOps<azx> $$0) {
+         super($$0);
       }
 
-      @Override
-      public T next() {
-         if (this.b >= ayw.this.d) {
-            throw new NoSuchElementException();
-         } else {
-            this.c = this.b++;
-            return ayw.this.c[this.c];
-         }
+      protected azx a() {
+         return azx.a;
       }
 
-      @Override
-      public void remove() {
-         if (this.c == -1) {
-            throw new IllegalStateException();
-         } else {
-            ayw.this.d(this.c);
-            this.b--;
-            this.c = -1;
-         }
+      protected azx a(azx $$0, azx $$1, azx $$2) {
+         return $$2;
+      }
+
+      protected DataResult<azx> a(azx $$0, azx $$1) {
+         return DataResult.success($$1);
       }
    }
 }

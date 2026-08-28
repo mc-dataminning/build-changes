@@ -1,35 +1,15 @@
-public class ghv extends ghs<cmi> {
-   private static final akn a = new akn("textures/entity/illager/evoker_fangs.png");
-   private final fsx<cmi> f;
+public class ghv extends gjy<cjh, fta<cjh>> {
+   private static final alb a = new alb("textures/entity/blaze.png");
 
-   public ghv(ght.a $$0) {
-      super($$0);
-      this.f = new fsx<>($$0.a(fvv.ac));
+   public ghv(gis.a $$0) {
+      super($$0, new fta<>($$0.a(fwu.m)), 0.5F);
    }
 
-   public void a(cmi $$0, float $$1, float $$2, eyu $$3, gck $$4, int $$5) {
-      float $$6 = $$0.a($$2);
-      if ($$6 != 0.0F) {
-         float $$7 = 2.0F;
-         if ($$6 > 0.9F) {
-            $$7 *= (1.0F - $$6) / 0.1F;
-         }
-
-         $$3.a();
-         $$3.a(a.d.rotationDegrees(90.0F - $$0.dF()));
-         $$3.b(-$$7, -$$7, $$7);
-         float $$8 = 0.03125F;
-         $$3.a(0.0, -0.626, 0.0);
-         $$3.b(0.5F, 0.5F, 0.5F);
-         this.f.a($$0, $$6, 0.0F, 0.0F, $$0.dF(), $$0.dH());
-         eyy $$9 = $$4.getBuffer(this.f.a(a));
-         this.f.a($$3, $$9, $$5, gnm.d, 1.0F, 1.0F, 1.0F, 1.0F);
-         $$3.b();
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
+   protected int a(cjh $$0, iz $$1) {
+      return 15;
    }
 
-   public akn a(cmi $$0) {
+   public alb a(cjh $$0) {
       return a;
    }
 }

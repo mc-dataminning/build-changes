@@ -1,35 +1,38 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+import java.util.function.UnaryOperator;
 
-public class bcf extends bez {
-   public bcf(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityHorseSaddleFix", bga.z, "EntityHorse");
+public class bcf extends DataFix {
+   private final String a;
+   private final String b;
+   private final UnaryOperator<String> c;
+
+   public bcf(Schema $$0, String $$1, String $$2, UnaryOperator<String> $$3) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bga.B.typeName(), bhl.a()));
-      Type<?> $$2 = this.getInputSchema().getTypeRaw(bga.t);
-      OpticFinder<?> $$3 = DSL.fieldFinder("SaddleItem", $$2);
-      Optional<? extends Typed<?>> $$4 = $$0.getOptionalTyped($$3);
-      Dynamic<?> $$5 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
-      if ($$4.isEmpty() && $$5.get("Saddle").asBoolean(false)) {
-         Typed<?> $$6 = (Typed<?>)$$2.pointTyped($$0.getOps()).orElseThrow(IllegalStateException::new);
-         $$6 = $$6.set($$1, Pair.of(bga.B.typeName(), "minecraft:saddle"));
-         Dynamic<?> $$7 = $$5.emptyMap();
-         $$7 = $$7.set("Count", $$7.createByte((byte)1));
-         $$7 = $$7.set("Damage", $$7.createShort((short)0));
-         $$6 = $$6.set(DSL.remainderFinder(), $$7);
-         $$5.remove("Saddle");
-         return $$0.set($$3, $$6).set(DSL.remainderFinder(), $$5);
-      } else {
-         return $$0;
-      }
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(this.a, this.getInputSchema().getType(bgs.p), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
+   }
+
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.update(
+         this.b,
+         $$0x -> $$0x.update(
+               "criteria",
+               $$0xx -> $$0xx.updateMapValues(
+                     $$0xxx -> $$0xxx.mapFirst(
+                           $$0xxxx -> (Dynamic)DataFixUtils.orElse($$0xxxx.asString().map($$1 -> $$0xxxx.createString(this.c.apply($$1))).result(), $$0xxxx)
+                        )
+                  )
+            )
+      );
    }
 }

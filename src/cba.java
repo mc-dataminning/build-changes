@@ -1,16 +1,32 @@
-import javax.annotation.Nullable;
+public class cba extends bzz {
+   private final boolean a;
+   private int b;
 
-public class cba extends cbb {
-   public cba(bsz $$0, double $$1) {
-      super($$0, $$1);
+   public cba(btm $$0, boolean $$1) {
+      super($$0);
+      this.d = $$0;
+      this.a = $$1;
    }
 
-   @Nullable
    @Override
-   protected eum h() {
-      eum $$0 = this.b.f(0.0F);
-      int $$1 = 8;
-      eum $$2 = cdn.a(this.b, 8, 7, $$0.c, $$0.e, (float) (Math.PI / 2), 3, 1);
-      return $$2 != null ? $$2 : cdj.a(this.b, 8, 4, -2, $$0.c, $$0.e, (float) (Math.PI / 2));
+   public boolean b() {
+      return this.a && this.b > 0 && super.b();
+   }
+
+   @Override
+   public void c() {
+      this.b = 20;
+      this.a(true);
+   }
+
+   @Override
+   public void d() {
+      this.a(false);
+   }
+
+   @Override
+   public void e() {
+      this.b--;
+      super.e();
    }
 }

@@ -1,49 +1,29 @@
-public record aif(int b, String c, int d, aie e) implements ze<aii> {
-   public static final yv<vx, aif> a = ze.a(aif::a, aif::new);
-   private static final int f = 255;
+public class aif implements zs<ags> {
+   public static final zj<wl, aif> a = zs.a(aif::a, aif::new);
+   private final int b;
 
-   @Deprecated
-   public aif(int b, String c, int d, aie e) {
-      this.b = b;
-      this.c = c;
-      this.d = d;
-      this.e = e;
+   public aif(int $$0) {
+      this.b = $$0;
    }
 
-   private aif(vx $$0) {
-      this($$0.l(), $$0.d(255), $$0.readUnsignedShort(), aie.a($$0.l()));
+   private aif(wl $$0) {
+      this.b = $$0.readShort();
    }
 
-   private void a(vx $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-      $$0.l(this.d);
-      $$0.c(this.e.a());
+   private void a(wl $$0) {
+      $$0.l(this.b);
    }
 
    @Override
-   public zg<aif> a() {
-      return aig.a;
+   public zu<aif> a() {
+      return agq.bT;
    }
 
-   public void a(aii $$0) {
+   public void a(ags $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean d() {
-      return true;
-   }
-
-   public String e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public aie g() {
-      return this.e;
+   public int b() {
+      return this.b;
    }
 }

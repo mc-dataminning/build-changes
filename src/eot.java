@@ -1,30 +1,23 @@
-import java.util.Locale;
+public class eot implements eou {
+   private final dbt b;
 
-public interface eot {
-   io a();
+   public eot(dbt $$0) {
+      this.b = $$0;
+   }
 
-   float b();
+   @Override
+   public void a(je $$0, drx $$1, iz $$2, iz $$3, int $$4, int $$5) {
+      eou.a(this.b, $$0, $$1, $$2, $$3, $$4, $$5 - 1);
+   }
 
-   long c();
+   @Override
+   public void a(iz $$0, deu $$1, iz $$2) {
+      drx $$3 = this.b.a_($$0);
+      this.a($$3, $$0, $$1, $$2, false);
+   }
 
-   long d();
-
-   boolean g();
-
-   boolean i();
-
-   void b(boolean var1);
-
-   boolean l();
-
-   dav o();
-
-   bpt q();
-
-   boolean r();
-
-   default void a(p $$0, dbb $$1) {
-      $$0.a("Level spawn location", () -> p.a($$1, this.a()));
-      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.c(), this.d()));
+   @Override
+   public void a(drx $$0, iz $$1, deu $$2, iz $$3, boolean $$4) {
+      eou.a(this.b, $$0, $$1, $$2, $$3, $$4);
    }
 }

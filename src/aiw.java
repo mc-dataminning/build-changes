@@ -1,23 +1,8 @@
-import io.netty.buffer.ByteBuf;
-
-public class aiw implements ze<ais> {
-   public static final aiw a = new aiw();
-   public static final yv<ByteBuf, aiw> b = yv.a(a);
-
-   private aiw() {
-   }
-
+public interface aiw extends agt {
    @Override
-   public zg<aiw> a() {
-      return aiq.i;
+   default wk b() {
+      return wk.a;
    }
 
-   public void a(ais $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public boolean d() {
-      return true;
-   }
+   void a(ait var1);
 }

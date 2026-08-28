@@ -1,93 +1,63 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class erl extends eqs {
+public class erl extends erp {
+   private static final Logger b = LogUtils.getLogger();
    public static final MapCodec<erl> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  wz.a.sizeLimitedListOf(256).fieldOf("lore").forGetter($$0x -> $$0x.b),
-                  eqr.a(256).forGetter($$0x -> $$0x.c),
-                  eph.b.e.optionalFieldOf("entity").forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, erl::new)
+      $$0 -> a($$0).and(ala.a(lq.aV).fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, erl::new)
    );
-   private final List<wx> b;
-   private final eqr c;
-   private final Optional<eph.b> d;
+   private final ala<erq> c;
 
-   public erl(List<esn> $$0, List<wx> $$1, eqr $$2, Optional<eph.b> $$3) {
+   private erl(List<etn> $$0, ala<erq> $$1) {
       super($$0);
-      this.b = List.copyOf($$1);
-      this.c = $$2;
-      this.d = $$3;
+      this.c = $$1;
    }
 
    @Override
-   public equ b() {
-      return eqv.x;
+   public err<erl> b() {
+      return ers.H;
    }
 
    @Override
-   public Set<erw<?>> a() {
-      return this.d.<Set<erw<?>>>map($$0 -> Set.of($$0.a())).orElseGet(Set::of);
-   }
-
-   @Override
-   public ctq a(ctq $$0, eph $$1) {
-      $$0.a(kb.h, cwn.a, $$1x -> new cwn(this.a($$1x, $$1)));
-      return $$0;
-   }
-
-   private List<wx> a(@Nullable cwn $$0, eph $$1) {
-      if ($$0 == null && this.b.isEmpty()) {
-         return List.of();
+   public void a(eqj $$0) {
+      if ($$0.a(this.c)) {
+         $$0.b("Function " + this.c.a() + " is recursively called");
       } else {
-         UnaryOperator<wx> $$2 = erm.a($$1, this.d.orElse(null));
-         List<wx> $$3 = this.b.stream().map($$2).toList();
-         return this.c.a($$0.a(), $$3, 256);
+         super.a($$0);
+         $$0.a()
+            .a(lq.aV, this.c)
+            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.c.a() + "}", this.c)), () -> $$0.b("Unknown function table called " + this.c.a()));
       }
    }
 
-   public static erl.a c() {
-      return new erl.a();
+   @Override
+   protected cuk a(cuk $$0, eqd $$1) {
+      erq $$2 = $$1.a().a(lq.aV, this.c).map(ji::a).orElse(null);
+      if ($$2 == null) {
+         b.warn("Unknown function: {}", this.c.a());
+         return $$0;
+      } else {
+         eqd.c<?> $$3 = eqd.a($$2);
+         if ($$1.b($$3)) {
+            cuk var5;
+            try {
+               var5 = $$2.apply($$0, $$1);
+            } finally {
+               $$1.c($$3);
+            }
+
+            return var5;
+         } else {
+            b.warn("Detected infinite loop in loot tables");
+            return $$0;
+         }
+      }
    }
 
-   public static class a extends eqs.a<erl.a> {
-      private Optional<eph.b> a = Optional.empty();
-      private final Builder<wx> b = ImmutableList.builder();
-      private eqr c = eqr.a.a;
-
-      public erl.a a(eqr $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public erl.a a(eph.b $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public erl.a a(wx $$0) {
-         this.b.add($$0);
-         return this;
-      }
-
-      protected erl.a a() {
-         return this;
-      }
-
-      @Override
-      public eqt b() {
-         return new erl(this.g(), this.b.build(), this.c, this.a);
-      }
+   public static erp.a<?> a(ala<erq> $$0) {
+      return a($$1 -> new erl($$1, $$0));
    }
 }

@@ -1,44 +1,40 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record ehr(List<ehr.a> c, eii d) {
-   public static final Codec<ehr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ehr.a.a.listOf().fieldOf("structures").forGetter(ehr::a), eii.b.fieldOf("placement").forGetter(ehr::b)).apply($$0, ehr::new)
+public class ehr extends ehl {
+   public static final MapCodec<ehr> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               dxp.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
+               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
+               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, ehr::new)
    );
-   public static final Codec<ix<ehr>> b = akj.a(lf.aL, a);
+   private final dxp.a c;
+   private final int d;
+   private final int e;
 
-   public ehr(ix<ehl> $$0, eii $$1) {
-      this(List.of(new ehr.a($$0, 1)), $$1);
+   private ehr(dxp.a $$0, int $$1, int $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public static ehr.a a(ix<ehl> $$0, int $$1) {
-      return new ehr.a($$0, $$1);
+   public static ehr a(dxp.a $$0, int $$1, int $$2) {
+      return new ehr($$0, $$1, $$2);
    }
 
-   public static ehr.a a(ix<ehl> $$0) {
-      return new ehr.a($$0, 1);
+   @Override
+   protected boolean a(ehk $$0, azc $$1, iz $$2) {
+      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
+      long $$4 = $$3 + (long)this.d;
+      long $$5 = $$3 + (long)this.e;
+      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
    }
 
-   public List<ehr.a> a() {
-      return this.c;
-   }
-
-   public eii b() {
-      return this.d;
-   }
-
-   public static record a(ix<ehl> b, int c) {
-      public static final Codec<ehr.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(ehl.b.fieldOf("structure").forGetter(ehr.a::a), axn.j.fieldOf("weight").forGetter(ehr.a::b)).apply($$0, ehr.a::new)
-      );
-
-      public ix<ehl> a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
+   @Override
+   public ehn<?> b() {
+      return ehn.c;
    }
 }

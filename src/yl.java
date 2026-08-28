@@ -1,29 +1,17 @@
-import com.mojang.serialization.MapCodec;
+public class yl extends Exception {
+   private final xl a;
 
-public class yl implements yn {
-   public static final yl a = new yl();
-   public static final yo<yl> b = new yo<yl>() {
-      private static final MapCodec<yl> a = MapCodec.unit(yl.a);
-      private static final yv<wi, yl> b = yv.a(yl.a);
-
-      @Override
-      public MapCodec<yl> a() {
-         return a;
-      }
-
-      @Override
-      public yv<wi, yl> b() {
-         return b;
-      }
-   };
-
-   @Override
-   public xl a(int $$0) {
-      return wx.i();
+   public yl(xl $$0) {
+      super($$0.getString());
+      this.a = $$0;
    }
 
-   @Override
-   public yo<yl> a() {
-      return b;
+   public yl(xl $$0, Throwable $$1) {
+      super($$0.getString(), $$1);
+      this.a = $$0;
+   }
+
+   public xl a() {
+      return this.a;
    }
 }

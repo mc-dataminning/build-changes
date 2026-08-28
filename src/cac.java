@@ -1,42 +1,28 @@
 import java.util.EnumSet;
 
-public class cac extends bzo {
-   private final bsz a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
+public class cac extends cai {
+   private final btm a;
 
-   public cac(bsz $$0, double $$1) {
+   public cac(btm $$0) {
       this.a = $$0;
-      this.e = $$1;
-      this.a(EnumSet.of(bzo.a.a));
+      this.a(EnumSet.of(cai.a.c));
+      $$0.K().a(true);
    }
 
    @Override
    public boolean a() {
-      if (this.a.fW()) {
-         return false;
-      } else {
-         eum $$0 = cdl.a(this.a, 16, 7, eum.c(this.a.fX()), (float) (Math.PI / 2));
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.c;
-            this.c = $$0.d;
-            this.d = $$0.e;
-            return true;
-         }
+      return this.a.be() && this.a.b(awr.a) > this.a.di() || this.a.bs();
+   }
+
+   @Override
+   public boolean R_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      if (this.a.el().i() < 0.8F) {
+         this.a.I().a();
       }
-   }
-
-   @Override
-   public boolean b() {
-      return !this.a.K().l();
-   }
-
-   @Override
-   public void c() {
-      this.a.K().a(this.b, this.c, this.d, this.e);
    }
 }

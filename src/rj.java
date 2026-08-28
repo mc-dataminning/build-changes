@@ -1,24 +1,24 @@
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import com.google.common.collect.ImmutableList;
 
 public class rj {
-   public static void a(qo<ehl> $$0) {
-      iy<dby> $$1 = $$0.a(lf.az);
-      iy<eiu> $$2 = $$0.a(lf.aM);
-      $$0.a(
-         ehf.H,
-         new ejl(
-            ra.a($$1.b(avw.I), Arrays.stream(bst.values()).collect(Collectors.toMap($$0x -> $$0x, $$0x -> new ehs(ehs.a.a, bok.c()))), dwr.b.d, ehw.b),
-            $$2.b(rf.a),
-            Optional.empty(),
-            20,
-            efv.a(dxp.a(-40), dxp.a(-20)),
-            false,
-            Optional.empty(),
-            116,
-            rf.d
-         )
-      );
+   public static final ala<ejo> a = a("empty");
+
+   public static ala<ejo> a(String $$0) {
+      return ala.a(lq.aM, new alb($$0));
+   }
+
+   public static void a(rc<ejo> $$0, String $$1, ejo $$2) {
+      $$0.a(a($$1), $$2);
+   }
+
+   public static void a(rc<ejo> $$0) {
+      jj<ejo> $$1 = $$0.a(lq.aM);
+      ji<ejo> $$2 = $$1.b(a);
+      $$0.a(a, new ejo($$2, ImmutableList.of(), ejo.a.b));
+      qy.a($$0);
+      rh.a($$0);
+      ry.a($$0);
+      qt.a($$0);
+      rs.a($$0);
    }
 }

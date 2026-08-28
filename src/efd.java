@@ -1,77 +1,49 @@
-import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.OptionalInt;
-import java.util.function.BiConsumer;
 
-public class efd extends efh {
-   public static final MapCodec<efd> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, efd::new));
+public class efd extends efb {
+   public static final MapCodec<efd> b = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
+                  drx.b.fieldOf("default_state").forGetter($$0x -> $$0x.i),
+                  Codec.list(drx.b).fieldOf("low_states").forGetter($$0x -> $$0x.j),
+                  Codec.list(drx.b).fieldOf("high_states").forGetter($$0x -> $$0x.k)
+               )
+            )
+            .apply($$0, efd::new)
+   );
+   private final float g;
+   private final float h;
+   private final drx i;
+   private final List<drx> j;
+   private final List<drx> k;
 
-   public efd(int $$0, int $$1, int $$2) {
+   public efd(long $$0, emt.a $$1, float $$2, float $$3, float $$4, drx $$5, List<drx> $$6, List<drx> $$7) {
       super($$0, $$1, $$2);
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
+      this.k = $$7;
    }
 
    @Override
-   protected efi<?> a() {
-      return efi.b;
+   protected eez<?> a() {
+      return eez.c;
    }
 
    @Override
-   public List<edp.a> a(dbf $$0, BiConsumer<io, drd> $$1, aym $$2, int $$3, io $$4, ecz $$5) {
-      a($$0, $$1, $$2, $$4.d(), $$5);
-      List<edp.a> $$6 = Lists.newArrayList();
-      it $$7 = it.c.a.a($$2);
-      int $$8 = $$3 - $$2.a(4) - 1;
-      int $$9 = 3 - $$2.a(3);
-      io.a $$10 = new io.a();
-      int $$11 = $$4.u();
-      int $$12 = $$4.w();
-      OptionalInt $$13 = OptionalInt.empty();
-
-      for (int $$14 = 0; $$14 < $$3; $$14++) {
-         int $$15 = $$4.v() + $$14;
-         if ($$14 >= $$8 && $$9 > 0) {
-            $$11 += $$7.j();
-            $$12 += $$7.l();
-            $$9--;
-         }
-
-         if (this.b($$0, $$1, $$2, $$10.d($$11, $$15, $$12), $$5)) {
-            $$13 = OptionalInt.of($$15 + 1);
-         }
+   public drx a(azc $$0, iz $$1) {
+      double $$2 = this.a($$1, (double)this.e);
+      if ($$2 < (double)this.g) {
+         return ac.a(this.j, $$0);
+      } else {
+         return $$0.i() < this.h ? ac.a(this.k, $$0) : this.i;
       }
-
-      if ($$13.isPresent()) {
-         $$6.add(new edp.a(new io($$11, $$13.getAsInt(), $$12), 1, false));
-      }
-
-      $$11 = $$4.u();
-      $$12 = $$4.w();
-      it $$16 = it.c.a.a($$2);
-      if ($$16 != $$7) {
-         int $$17 = $$8 - $$2.a(2) - 1;
-         int $$18 = 1 + $$2.a(3);
-         $$13 = OptionalInt.empty();
-
-         for (int $$19 = $$17; $$19 < $$3 && $$18 > 0; $$18--) {
-            if ($$19 >= 1) {
-               int $$20 = $$4.v() + $$19;
-               $$11 += $$16.j();
-               $$12 += $$16.l();
-               if (this.b($$0, $$1, $$2, $$10.d($$11, $$20, $$12), $$5)) {
-                  $$13 = OptionalInt.of($$20 + 1);
-               }
-            }
-
-            $$19++;
-         }
-
-         if ($$13.isPresent()) {
-            $$6.add(new edp.a(new io($$11, $$13.getAsInt(), $$12), 0, false));
-         }
-      }
-
-      return $$6;
    }
 }

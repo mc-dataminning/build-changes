@@ -1,50 +1,37 @@
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class ccd extends ccb {
-   @Nullable
-   private io p;
+public class ccd<T extends btk> extends ccb<T> {
+   private static final int i = 200;
+   private int j = 0;
 
-   public ccd(bss $$0, daz $$1) {
-      super($$0, $$1);
+   public ccd(coe $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<btk> $$3) {
+      super($$0, $$1, 500, $$2, false, $$3);
+   }
+
+   public int i() {
+      return this.j;
+   }
+
+   public void k() {
+      this.j--;
    }
 
    @Override
-   public enk a(io $$0, int $$1) {
-      this.p = $$0;
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   public enk a(brw $$0, int $$1) {
-      this.p = $$0.dp();
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(brw $$0, double $$1) {
-      enk $$2 = this.a($$0, 0);
-      if ($$2 != null) {
-         return this.a($$2, $$1);
+   public boolean a() {
+      if (this.j > 0 || !this.e.el().h()) {
+         return false;
+      } else if (!((coe)this.e).gH()) {
+         return false;
       } else {
-         this.p = $$0.dp();
-         this.d = $$1;
-         return true;
+         this.h();
+         return this.c != null;
       }
    }
 
    @Override
    public void c() {
-      if (!this.l()) {
-         super.c();
-      } else {
-         if (this.p != null) {
-            if (!this.p.a(this.a.dn(), (double)this.a.dj())
-               && (!(this.a.dw() > (double)this.p.v()) || !io.a((double)this.p.u(), this.a.dw(), (double)this.p.w()).a(this.a.dn(), (double)this.a.dj()))) {
-               this.a.H().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
-            } else {
-               this.p = null;
-            }
-         }
-      }
+      this.j = b(200);
+      super.c();
    }
 }

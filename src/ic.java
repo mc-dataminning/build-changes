@@ -1,55 +1,60 @@
-import com.google.common.collect.Maps;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class ic {
-   private static final Map<akn, SuggestionProvider<ej>> e = Maps.newHashMap();
-   private static final akn f = new akn("ask_server");
-   public static final SuggestionProvider<ej> a = a(f, ($$0, $$1) -> ((ej)$$0.getSource()).a($$0));
-   public static final SuggestionProvider<ee> b = a(new akn("all_recipes"), ($$0, $$1) -> ej.a(((ej)$$0.getSource()).t(), $$1));
-   public static final SuggestionProvider<ee> c = a(new akn("available_sounds"), ($$0, $$1) -> ej.a(((ej)$$0.getSource()).s(), $$1));
-   public static final SuggestionProvider<ee> d = a(
-      new akn("summonable_entities"),
-      ($$0, $$1) -> ej.a(le.g.s().filter($$1x -> $$1x.a(((ej)$$0.getSource()).w()) && $$1x.c()), $$1, bsc::a, $$0x -> wx.c(ac.a("entity", bsc.a($$0x))))
-   );
+class ic<T extends er<T>> {
+   @Nullable
+   private List<hs<T>> a = new ArrayList<>();
+   @Nullable
+   private List<ie.a<T>> b;
+   private final List<String> c = new ArrayList<>();
 
-   public static <S extends ej> SuggestionProvider<S> a(akn $$0, SuggestionProvider<ej> $$1) {
-      if (e.containsKey($$0)) {
-         throw new IllegalArgumentException("A command suggestion provider is already registered with the name " + $$0);
+   public void a(hs<T> $$0) {
+      if (this.b != null) {
+         this.b.add(new ie.c<>($$0));
       } else {
-         e.put($$0, $$1);
-         return new ic.a($$0, $$1);
+         this.a.add($$0);
       }
    }
 
-   public static SuggestionProvider<ej> a(akn $$0) {
-      return e.getOrDefault($$0, a);
-   }
-
-   public static akn a(SuggestionProvider<ej> $$0) {
-      return $$0 instanceof ic.a ? ((ic.a)$$0).b : f;
-   }
-
-   public static SuggestionProvider<ej> b(SuggestionProvider<ej> $$0) {
-      return $$0 instanceof ic.a ? $$0 : a;
-   }
-
-   protected static class a implements SuggestionProvider<ej> {
-      private final SuggestionProvider<ej> a;
-      final akn b;
-
-      public a(akn $$0, SuggestionProvider<ej> $$1) {
-         this.a = $$1;
-         this.b = $$0;
+   private int a(String $$0) {
+      int $$1 = this.c.indexOf($$0);
+      if ($$1 == -1) {
+         $$1 = this.c.size();
+         this.c.add($$0);
       }
 
-      public CompletableFuture<Suggestions> getSuggestions(CommandContext<ej> $$0, SuggestionsBuilder $$1) throws CommandSyntaxException {
-         return this.a.getSuggestions($$0, $$1);
+      return $$1;
+   }
+
+   private IntList a(List<String> $$0) {
+      IntArrayList $$1 = new IntArrayList($$0.size());
+
+      for (String $$2 : $$0) {
+         $$1.add(this.a($$2));
       }
+
+      return $$1;
+   }
+
+   public void a(String $$0, int $$1, T $$2) {
+      ih $$3 = ih.a($$0, $$1);
+      if (this.a != null) {
+         this.b = new ArrayList<>(this.a.size() + 1);
+
+         for (hs<T> $$4 : this.a) {
+            this.b.add(new ie.c<>($$4));
+         }
+
+         this.a = null;
+      }
+
+      this.b.add(new ie.b<>($$3, this.a($$3.b()), $$2));
+   }
+
+   public ib<T> a(alb $$0) {
+      return (ib<T>)(this.b != null ? new ie<>($$0, this.b, this.c) : new ig<>($$0, this.a));
    }
 }

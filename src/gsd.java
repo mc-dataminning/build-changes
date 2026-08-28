@@ -1,91 +1,58 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.nio.charset.StandardCharsets;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.slf4j.Logger;
-
-public class gsd extends Thread {
-   private static final AtomicInteger c = new AtomicInteger(0);
-   private static final Logger d = LogUtils.getLogger();
-   public static final String a = "224.0.2.60";
-   public static final int b = 4445;
-   private static final long e = 1500L;
-   private final String f;
-   private final DatagramSocket g;
-   private boolean h = true;
-   private final String i;
-
-   public gsd(String $$0, String $$1) throws IOException {
-      super("LanServerPinger #" + c.incrementAndGet());
-      this.f = $$0;
-      this.i = $$1;
-      this.setDaemon(true);
-      this.setUncaughtExceptionHandler(new r(d));
-      this.g = new DatagramSocket();
+public class gsd extends grq {
+   public gsd(avv $$0, avx $$1, float $$2, float $$3, azc $$4, iz $$5) {
+      this($$0, $$1, $$2, $$3, $$4, (double)$$5.u() + 0.5, (double)$$5.v() + 0.5, (double)$$5.w() + 0.5);
    }
 
-   @Override
-   public void run() {
-      String $$0 = a(this.f, this.i);
-      byte[] $$1 = $$0.getBytes(StandardCharsets.UTF_8);
-
-      while (!this.isInterrupted() && this.h) {
-         try {
-            InetAddress $$2 = InetAddress.getByName("224.0.2.60");
-            DatagramPacket $$3 = new DatagramPacket($$1, $$1.length, $$2, 4445);
-            this.g.send($$3);
-         } catch (IOException var6) {
-            d.warn("LanServerPinger: {}", var6.getMessage());
-            break;
-         }
-
-         try {
-            sleep(1500L);
-         } catch (InterruptedException var5) {
-         }
-      }
+   public static gsd a(avv $$0, float $$1) {
+      return a($$0, $$1, 0.25F);
    }
 
-   @Override
-   public void interrupt() {
-      super.interrupt();
-      this.h = false;
+   public static gsd a(ji<avv> $$0, float $$1) {
+      return a($$0.a(), $$1);
    }
 
-   public static String a(String $$0, String $$1) {
-      return "[MOTD]" + $$0 + "[/MOTD][AD]" + $$1 + "[/AD]";
+   public static gsd a(avv $$0, float $$1, float $$2) {
+      return new gsd($$0.a(), avx.a, $$2, $$1, gsi.t(), false, 0, gsi.a.a, 0.0, 0.0, 0.0, true);
    }
 
-   public static String a(String $$0) {
-      int $$1 = $$0.indexOf("[MOTD]");
-      if ($$1 < 0) {
-         return "missing no";
-      } else {
-         int $$2 = $$0.indexOf("[/MOTD]", $$1 + "[MOTD]".length());
-         return $$2 < $$1 ? "missing no" : $$0.substring($$1 + "[MOTD]".length(), $$2);
-      }
+   public static gsd a(avv $$0) {
+      return new gsd($$0.a(), avx.b, 1.0F, 1.0F, gsi.t(), false, 0, gsi.a.a, 0.0, 0.0, 0.0, true);
    }
 
-   public static String b(String $$0) {
-      int $$1 = $$0.indexOf("[/MOTD]");
-      if ($$1 < 0) {
-         return null;
-      } else {
-         int $$2 = $$0.indexOf("[/MOTD]", $$1 + "[/MOTD]".length());
-         if ($$2 >= 0) {
-            return null;
-         } else {
-            int $$3 = $$0.indexOf("[AD]", $$1 + "[/MOTD]".length());
-            if ($$3 < 0) {
-               return null;
-            } else {
-               int $$4 = $$0.indexOf("[/AD]", $$3 + "[AD]".length());
-               return $$4 < $$3 ? null : $$0.substring($$3 + "[AD]".length(), $$4);
-            }
-         }
-      }
+   public static gsd a(avv $$0, evm $$1) {
+      return new gsd($$0, avx.c, 4.0F, 1.0F, gsi.t(), false, 0, gsi.a.b, $$1.c, $$1.d, $$1.e);
+   }
+
+   public static gsd b(avv $$0, float $$1, float $$2) {
+      return new gsd($$0.a(), avx.i, $$2, $$1, gsi.t(), false, 0, gsi.a.a, 0.0, 0.0, 0.0, true);
+   }
+
+   public static gsd b(avv $$0) {
+      return b($$0, 1.0F, 1.0F);
+   }
+
+   public static gsd a(avv $$0, azc $$1, double $$2, double $$3, double $$4) {
+      return new gsd($$0, avx.i, 1.0F, 1.0F, $$1, false, 0, gsi.a.b, $$2, $$3, $$4);
+   }
+
+   public gsd(avv $$0, avx $$1, float $$2, float $$3, azc $$4, double $$5, double $$6, double $$7) {
+      this($$0, $$1, $$2, $$3, $$4, false, 0, gsi.a.b, $$5, $$6, $$7);
+   }
+
+   private gsd(avv $$0, avx $$1, float $$2, float $$3, azc $$4, boolean $$5, int $$6, gsi.a $$7, double $$8, double $$9, double $$10) {
+      this($$0.a(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, false);
+   }
+
+   public gsd(alb $$0, avx $$1, float $$2, float $$3, azc $$4, boolean $$5, int $$6, gsi.a $$7, double $$8, double $$9, double $$10, boolean $$11) {
+      super($$0, $$1, $$4);
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$8;
+      this.g = $$9;
+      this.h = $$10;
+      this.i = $$5;
+      this.j = $$6;
+      this.k = $$7;
+      this.l = $$11;
    }
 }

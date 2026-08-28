@@ -1,16 +1,20 @@
-public record aak() implements aaf {
-   public static final yv<vx, aak> a = aaf.a(aak::a, aak::new);
-   public static final aaf.b<aak> b = aaf.a("debug/game_test_clear");
+public record aak(aqq b) implements zs<aaj> {
+   public static final zj<wl, aak> a = zs.a(aak::a, aak::new);
 
-   private aak(vx $$0) {
-      this();
+   private aak(wl $$0) {
+      this(new aqq($$0));
    }
 
-   private void a(vx $$0) {
+   private void a(wl $$0) {
+      this.b.a($$0);
    }
 
    @Override
-   public aaf.b<aak> a() {
-      return b;
+   public zu<aak> a() {
+      return aai.j;
+   }
+
+   public void a(aaj $$0) {
+      $$0.a(this);
    }
 }

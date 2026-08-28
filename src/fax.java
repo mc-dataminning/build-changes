@@ -1,12 +1,13 @@
-public class fax extends Exception {
-   public final ezm a;
+import com.google.gson.annotations.SerializedName;
 
-   public fax(ezm $$0) {
+public class fax extends fbp implements fbj {
+   @SerializedName("name")
+   public String a;
+   @SerializedName("description")
+   public String b;
+
+   public fax(String $$0, String $$1) {
       this.a = $$0;
-   }
-
-   @Override
-   public String getMessage() {
-      return this.a.c();
+      this.b = $$1;
    }
 }

@@ -1,113 +1,131 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class dwq extends dta {
-   public static final MapCodec<dwq> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(efo.a.fieldOf("settings").forGetter(dwq::g)).apply($$0, $$0.stable(dwq::new))
-   );
-   private final efo d;
+public record dwq(int aj) {
+   public static final ji.c<dwq> a = a("block_activate");
+   public static final ji.c<dwq> b = a("block_attach");
+   public static final ji.c<dwq> c = a("block_change");
+   public static final ji.c<dwq> d = a("block_close");
+   public static final ji.c<dwq> e = a("block_deactivate");
+   public static final ji.c<dwq> f = a("block_destroy");
+   public static final ji.c<dwq> g = a("block_detach");
+   public static final ji.c<dwq> h = a("block_open");
+   public static final ji.c<dwq> i = a("block_place");
+   public static final ji.c<dwq> j = a("container_close");
+   public static final ji.c<dwq> k = a("container_open");
+   public static final ji.c<dwq> l = a("drink");
+   public static final ji.c<dwq> m = a("eat");
+   public static final ji.c<dwq> n = a("elytra_glide");
+   public static final ji.c<dwq> o = a("entity_damage");
+   public static final ji.c<dwq> p = a("entity_die");
+   public static final ji.c<dwq> q = a("entity_dismount");
+   public static final ji.c<dwq> r = a("entity_interact");
+   public static final ji.c<dwq> s = a("entity_mount");
+   public static final ji.c<dwq> t = a("entity_place");
+   public static final ji.c<dwq> u = a("entity_action");
+   public static final ji.c<dwq> v = a("equip");
+   public static final ji.c<dwq> w = a("explode");
+   public static final ji.c<dwq> x = a("flap");
+   public static final ji.c<dwq> y = a("fluid_pickup");
+   public static final ji.c<dwq> z = a("fluid_place");
+   public static final ji.c<dwq> A = a("hit_ground");
+   public static final ji.c<dwq> B = a("instrument_play");
+   public static final ji.c<dwq> C = a("item_interact_finish");
+   public static final ji.c<dwq> D = a("item_interact_start");
+   public static final ji.c<dwq> E = a("jukebox_play", 10);
+   public static final ji.c<dwq> F = a("jukebox_stop_play", 10);
+   public static final ji.c<dwq> G = a("lightning_strike");
+   public static final ji.c<dwq> H = a("note_block_play");
+   public static final ji.c<dwq> I = a("prime_fuse");
+   public static final ji.c<dwq> J = a("projectile_land");
+   public static final ji.c<dwq> K = a("projectile_shoot");
+   public static final ji.c<dwq> L = a("sculk_sensor_tendrils_clicking");
+   public static final ji.c<dwq> M = a("shear");
+   public static final ji.c<dwq> N = a("shriek", 32);
+   public static final ji.c<dwq> O = a("splash");
+   public static final ji.c<dwq> P = a("step");
+   public static final ji.c<dwq> Q = a("swim");
+   public static final ji.c<dwq> R = a("teleport");
+   public static final ji.c<dwq> S = a("unequip");
+   public static final ji.c<dwq> T = a("resonate_1");
+   public static final ji.c<dwq> U = a("resonate_2");
+   public static final ji.c<dwq> V = a("resonate_3");
+   public static final ji.c<dwq> W = a("resonate_4");
+   public static final ji.c<dwq> X = a("resonate_5");
+   public static final ji.c<dwq> Y = a("resonate_6");
+   public static final ji.c<dwq> Z = a("resonate_7");
+   public static final ji.c<dwq> aa = a("resonate_8");
+   public static final ji.c<dwq> ab = a("resonate_9");
+   public static final ji.c<dwq> ac = a("resonate_10");
+   public static final ji.c<dwq> ad = a("resonate_11");
+   public static final ji.c<dwq> ae = a("resonate_12");
+   public static final ji.c<dwq> af = a("resonate_13");
+   public static final ji.c<dwq> ag = a("resonate_14");
+   public static final ji.c<dwq> ah = a("resonate_15");
+   public static final int ai = 16;
 
-   public dwq(efo $$0) {
-      super(new dcj($$0.d()), ac.b($$0::a));
-      this.d = $$0;
+   public static ji<dwq> a(jv<dwq> $$0) {
+      return a;
    }
 
-   @Override
-   public dtb a(iz<ehr> $$0, dxj $$1, long $$2) {
-      Stream<ix<ehr>> $$3 = this.d.c().map(jb::a).orElseGet(() -> $$0.b().map($$0xx -> $$0xx));
-      return dtb.a($$1, $$2, this.b, $$3);
+   public int a() {
+      return this.aj;
    }
 
-   @Override
-   protected MapCodec<? extends dta> a() {
-      return c;
+   private static ji.c<dwq> a(String $$0) {
+      return a($$0, 16);
    }
 
-   public efo g() {
-      return this.d;
+   private static ji.c<dwq> a(String $$0, int $$1) {
+      return jv.b(lp.a, new alb($$0), new dwq($$1));
    }
 
-   @Override
-   public void a(aqu $$0, dbs $$1, dxj $$2, dsz $$3) {
-   }
-
-   @Override
-   public int a(dbb $$0) {
-      return $$0.I_() + Math.min($$0.J_(), this.d.f().size());
-   }
-
-   @Override
-   public CompletableFuture<dsz> a(Executor $$0, dxx $$1, dxj $$2, dbs $$3, dsz $$4) {
-      List<drd> $$5 = this.d.f();
-      io.a $$6 = new io.a();
-      dwv $$7 = $$4.a(dwv.a.c);
-      dwv $$8 = $$4.a(dwv.a.a);
-
-      for (int $$9 = 0; $$9 < Math.min($$4.J_(), $$5.size()); $$9++) {
-         drd $$10 = $$5.get($$9);
-         if ($$10 != null) {
-            int $$11 = $$4.I_() + $$9;
-
-            for (int $$12 = 0; $$12 < 16; $$12++) {
-               for (int $$13 = 0; $$13 < 16; $$13++) {
-                  $$4.a($$6.d($$12, $$11, $$13), $$10, false);
-                  $$7.a($$12, $$11, $$13, $$10);
-                  $$8.a($$12, $$11, $$13, $$10);
-               }
-            }
-         }
+   public static record a(@Nullable bsp a, @Nullable drx b) {
+      public static dwq.a a(@Nullable bsp $$0) {
+         return new dwq.a($$0, null);
       }
 
-      return CompletableFuture.completedFuture($$4);
-   }
-
-   @Override
-   public int a(int $$0, int $$1, dwv.a $$2, dbb $$3, dxj $$4) {
-      List<drd> $$5 = this.d.f();
-
-      for (int $$6 = Math.min($$5.size(), $$3.al()) - 1; $$6 >= 0; $$6--) {
-         drd $$7 = $$5.get($$6);
-         if ($$7 != null && $$2.e().test($$7)) {
-            return $$3.I_() + $$6 + 1;
-         }
+      public static dwq.a a(@Nullable drx $$0) {
+         return new dwq.a(null, $$0);
       }
 
-      return $$3.I_();
+      public static dwq.a a(@Nullable bsp $$0, @Nullable drx $$1) {
+         return new dwq.a($$0, $$1);
+      }
    }
 
-   @Override
-   public dbl a(int $$0, int $$1, dbb $$2, dxj $$3) {
-      return new dbl($$2.I_(), this.d.f().stream().limit((long)$$2.J_()).map($$0x -> $$0x == null ? dec.a.n() : $$0x).toArray(drd[]::new));
-   }
+   public static final class b implements Comparable<dwq.b> {
+      private final ji<dwq> a;
+      private final evm b;
+      private final dwq.a c;
+      private final dws d;
+      private final double e;
 
-   @Override
-   public void a(List<String> $$0, dxj $$1, io $$2) {
-   }
+      public b(ji<dwq> $$0, evm $$1, dwq.a $$2, dws $$3, evm $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$1.g($$4);
+      }
 
-   @Override
-   public void a(aqu $$0, long $$1, dxj $$2, dca $$3, dbs $$4, dsz $$5, dwr.a $$6) {
-   }
+      public int a(dwq.b $$0) {
+         return Double.compare(this.e, $$0.e);
+      }
 
-   @Override
-   public void a(aqu $$0) {
-   }
+      public ji<dwq> a() {
+         return this.a;
+      }
 
-   @Override
-   public int f() {
-      return 0;
-   }
+      public evm b() {
+         return this.b;
+      }
 
-   @Override
-   public int d() {
-      return 384;
-   }
+      public dwq.a c() {
+         return this.c;
+      }
 
-   @Override
-   public int e() {
-      return -63;
+      public dws d() {
+         return this.d;
+      }
    }
 }

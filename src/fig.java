@@ -1,53 +1,56 @@
-import java.util.List;
+public class fig extends fgw {
+   private float a = 0.5F;
 
-public class fig implements fij {
-   private static final akn d = new akn("toast/advancement");
-   public static final int a = 5000;
-   private final af e;
-   private boolean f;
+   public fig(xl $$0, fgk $$1) {
+      this(0, 0, $$1.a($$0.g()), 9, $$0, $$1);
+   }
 
-   public fig(af $$0) {
-      this.e = $$0;
+   public fig(int $$0, int $$1, xl $$2, fgk $$3) {
+      this(0, 0, $$0, $$1, $$2, $$3);
+   }
+
+   public fig(int $$0, int $$1, int $$2, int $$3, xl $$4, fgk $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.j = false;
+   }
+
+   public fig b(int $$0) {
+      super.a($$0);
+      return this;
+   }
+
+   private fig b(float $$0) {
+      this.a = $$0;
+      return this;
+   }
+
+   public fig d() {
+      return this.b(0.0F);
+   }
+
+   public fig e() {
+      return this.b(0.5F);
+   }
+
+   public fig f() {
+      return this.b(1.0F);
    }
 
    @Override
-   public fij.a a(ffn $$0, fik $$1, long $$2) {
-      ar $$3 = this.e.b().c().orElse(null);
-      $$0.a(d, 0, 0, this.a(), this.b());
-      if ($$3 != null) {
-         List<axr> $$4 = $$1.b().h.c($$3.a(), 125);
-         int $$5 = $$3.e() == al.b ? 16746751 : 16776960;
-         if ($$4.size() == 1) {
-            $$0.a($$1.b().h, $$3.e().b(), 30, 7, $$5 | 0xFF000000, false);
-            $$0.a($$1.b().h, $$4.get(0), 30, 18, -1, false);
-         } else {
-            int $$6 = 1500;
-            float $$7 = 300.0F;
-            if ($$2 < 1500L) {
-               int $$8 = ayf.d(ayf.a((float)(1500L - $$2) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
-               $$0.a($$1.b().h, $$3.e().b(), 30, 11, $$5 | $$8, false);
-            } else {
-               int $$9 = ayf.d(ayf.a((float)($$2 - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
-               int $$10 = this.b() / 2 - $$4.size() * 9 / 2;
+   public void b(fgm $$0, int $$1, int $$2, float $$3) {
+      xl $$4 = this.y();
+      fgk $$5 = this.a();
+      int $$6 = this.x();
+      int $$7 = $$5.a($$4);
+      int $$8 = this.C() + Math.round(this.a * (float)($$6 - $$7));
+      int $$9 = this.D() + (this.v() - 9) / 2;
+      ayg $$10 = $$7 > $$6 ? this.a($$4, $$6) : $$4.g();
+      $$0.b($$5, $$10, $$8, $$9, this.b());
+   }
 
-               for (axr $$11 : $$4) {
-                  $$0.a($$1.b().h, $$11, 30, $$10, 16777215 | $$9, false);
-                  $$10 += 9;
-               }
-            }
-         }
-
-         if (!this.f && $$2 > 0L) {
-            this.f = true;
-            if ($$3.e() == al.b) {
-               $$1.b().aj().a(gre.a(avi.Au, 1.0F, 1.0F));
-            }
-         }
-
-         $$0.b($$3.c(), 8, 8);
-         return (double)$$2 >= 5000.0 * $$1.c() ? fij.a.b : fij.a.a;
-      } else {
-         return fij.a.b;
-      }
+   private ayg a(xl $$0, int $$1) {
+      fgk $$2 = this.a();
+      xq $$3 = $$2.a($$0, $$1 - $$2.a(xk.u));
+      return um.a().a(xq.a($$3, xk.u));
    }
 }

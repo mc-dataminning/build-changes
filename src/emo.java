@@ -1,17 +1,14 @@
-public interface emo {
-   void a(io var1);
+import com.mojang.serialization.MapCodec;
 
-   boolean K_();
+public interface emo<P extends emn> {
+   emo<eml> a = a("clear", eml.a);
+   emo<emm> b = a("passthrough", emm.b);
+   emo<emk> c = a("append_static", emk.a);
+   emo<emj> d = a("append_loot", emj.a);
 
-   int a();
+   MapCodec<P> codec();
 
-   default void a(io $$0, boolean $$1) {
-      this.a(jq.a($$0), $$1);
+   private static <P extends emn> emo<P> a(String $$0, MapCodec<P> $$1) {
+      return jv.a(lp.p, $$0, () -> $$1);
    }
-
-   void a(jq var1, boolean var2);
-
-   void a(dag var1, boolean var2);
-
-   void b(dag var1);
 }

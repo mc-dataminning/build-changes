@@ -1,6 +1,6 @@
 import com.mojang.serialization.MapCodec;
 
-public class dle extends dhq {
+public class dle extends deu implements dex {
    public static final MapCodec<dle> a = b(dle::new);
 
    @Override
@@ -8,44 +8,27 @@ public class dle extends dhq {
       return a;
    }
 
-   public dle(drc.d $$0) {
+   public dle(drw.d $$0) {
       super($$0);
    }
 
    @Override
-   public void a(daz $$0, drd $$1, io $$2, brw $$3, float $$4) {
-      if ($$3.bX()) {
-         super.a($$0, $$1, $$2, $$3, $$4);
-      } else {
-         $$3.a($$4, 0.0F, $$0.ai().k());
-      }
+   public boolean b(dbw $$0, iz $$1, drx $$2) {
+      return $$0.a_($$1.d()).i();
    }
 
    @Override
-   public void a(daf $$0, brw $$1) {
-      if ($$1.bX()) {
-         super.a($$0, $$1);
-      } else {
-         this.a($$1);
-      }
-   }
-
-   private void a(brw $$0) {
-      eum $$1 = $$0.ds();
-      if ($$1.d < 0.0) {
-         double $$2 = $$0 instanceof bsq ? 1.0 : 0.8;
-         $$0.o($$1.c, -$$1.d * $$2, $$1.e);
-      }
+   public boolean a(dbt $$0, azc $$1, iz $$2, drx $$3) {
+      return true;
    }
 
    @Override
-   public void a(daz $$0, io $$1, drd $$2, brw $$3) {
-      double $$4 = Math.abs($$3.ds().d);
-      if ($$4 < 0.1 && !$$3.bW()) {
-         double $$5 = 0.4 + $$4 * 0.2;
-         $$3.g($$3.ds().d($$5, 1.0, $$5));
-      }
+   public void a(arb $$0, azc $$1, iz $$2, drx $$3) {
+      $$0.b($$2.d(), dew.sG.n());
+   }
 
-      super.a($$0, $$1, $$2, $$3);
+   @Override
+   public iz a(iz $$0) {
+      return $$0.d();
    }
 }

@@ -1,29 +1,14 @@
-public class bnx implements bny {
-   public static final bny a = new bnx();
+import java.time.Duration;
+import jdk.jfr.consumer.RecordedEvent;
 
-   @Override
-   public void a() {
-   }
-
-   @Override
-   public void b() {
-   }
-
-   @Override
-   public void c() {
-   }
-
-   @Override
-   public boolean e() {
-      return false;
-   }
-
-   @Override
-   public bmk f() {
-      return bmh.a;
-   }
-
-   @Override
-   public void d() {
+public record bnx(Duration a, dba b, aqr c, dus d, String e) implements bog {
+   public static bnx a(RecordedEvent $$0) {
+      return new bnx(
+         $$0.getDuration(),
+         new dba($$0.getInt("chunkPosX"), $$0.getInt("chunkPosX")),
+         new aqr($$0.getInt("worldPosX"), $$0.getInt("worldPosZ")),
+         dus.a($$0.getString("status")),
+         $$0.getString("level")
+      );
    }
 }

@@ -1,122 +1,102 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.List;
 
-public class flq extends flz {
-   private static final wx a = wx.c("options.title");
-   private static final wx b = wx.c("options.skinCustomisation");
-   private static final wx c = wx.c("options.sounds");
-   private static final wx d = wx.c("options.video");
-   private static final wx r = wx.c("options.controls");
-   private static final wx s = wx.c("options.language");
-   private static final wx u = wx.c("options.chat");
-   private static final wx v = wx.c("options.resourcepack");
-   private static final wx w = wx.c("options.accessibility");
-   private static final wx x = wx.c("options.telemetry");
-   private static final fhl y = fhl.a(wx.c("options.telemetry.disabled"));
-   private static final wx z = wx.c("options.credits_and_attribution");
-   private static final int A = 2;
-   private final fjn B = new fjn(this, 61, 33);
-   private final flz C;
-   private final fef D;
-   @Nullable
-   private fgh<bpt> E;
-   @Nullable
-   private fgq F;
+public class flq extends fmy {
+   private static final int d = 20;
+   private final xl r;
+   private fhs s = fhs.a;
+   protected xl a;
+   protected xl b;
+   private int u;
+   protected final BooleanConsumer c;
+   private final List<fgz> v = Lists.newArrayList();
 
-   public flq(flz $$0, fef $$1) {
-      super(a);
-      this.C = $$0;
-      this.D = $$1;
+   public flq(BooleanConsumer $$0, xl $$1, xl $$2) {
+      this($$0, $$1, $$2, xk.f, xk.g);
+   }
+
+   public flq(BooleanConsumer $$0, xl $$1, xl $$2, xl $$3, xl $$4) {
+      super($$1);
+      this.c = $$0;
+      this.r = $$2;
+      this.a = $$3;
+      this.b = $$4;
+   }
+
+   @Override
+   public xl i() {
+      return xk.a(super.i(), this.r);
    }
 
    @Override
    protected void aN_() {
-      fjr $$0 = this.B.a(fjr.d().a(8));
-      $$0.a(new fhh(a, this.p), fjq::b);
-      fjr $$1 = $$0.a(fjr.e()).a(8);
-      $$1.a(this.D.ah().a(this.m.m));
-      $$1.a(this.m());
-      fjm $$2 = new fjm();
-      $$2.c().f(4).e(4).b();
-      fjm.b $$3 = $$2.d(2);
-      $$3.a(this.a(b, () -> new fmc(this, this.D)));
-      $$3.a(this.a(c, () -> new fmd(this, this.D)));
-      $$3.a(this.a(d, () -> new fmg(this, this.D)));
-      $$3.a(this.a(r, () -> new fmq(this, this.D)));
-      $$3.a(this.a(s, () -> new fli(this, this.D, this.m.ag())));
-      $$3.a(this.a(u, () -> new fko(this, this.D)));
-      $$3.a(this.a(v, () -> new fpf(this.m.ac(), this::a, this.m.af(), wx.c("resourcePack.title"))));
-      $$3.a(this.a(w, () -> new fkk(this, this.D)));
-      fga $$4 = $$3.a(this.a(x, () -> new fql(this, this.D)));
-      if (!this.m.E()) {
-         $$4.j = false;
-         $$4.a(y);
+      super.aN_();
+      this.s = fhs.a(this.p, this.r, this.n - 50);
+      int $$0 = ayu.a(this.C() + this.D() + 20, this.o / 6 + 96, this.o - 24);
+      this.v.clear();
+      this.a($$0);
+   }
+
+   protected void a(int $$0) {
+      this.a(fgz.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 155, $$0, 150, 20).a());
+      this.a(fgz.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 155 + 160, $$0, 150, 20).a());
+   }
+
+   protected void a(fgz $$0) {
+      this.v.add(this.c($$0));
+   }
+
+   @Override
+   public void a(fgm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, this.m(), 16777215);
+      this.s.a($$0, this.n / 2, this.C());
+   }
+
+   private int m() {
+      int $$0 = (this.o - this.D()) / 2;
+      return ayu.a($$0 - 20 - 9, 10, 80);
+   }
+
+   private int C() {
+      return this.m() + 20;
+   }
+
+   private int D() {
+      return this.s.a() * 9;
+   }
+
+   public void b(int $$0) {
+      this.u = $$0;
+
+      for (fgz $$1 : this.v) {
+         $$1.j = false;
       }
-
-      $$3.a(this.a(z, () -> new fkv(this)));
-      this.B.c($$2);
-      this.B.b(fga.a(ww.d, $$0x -> this.d()).a(200).a());
-      this.B.a(this::c);
-      this.c();
    }
 
    @Override
-   protected void c() {
-      this.B.a();
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.C);
-   }
-
-   private void a(ati $$0) {
-      this.D.a($$0);
-      this.m.a(this);
-   }
-
-   private fjp m() {
-      if (this.m.r != null && this.m.U()) {
-         this.E = a(0, 0, "options.difficulty", this.m);
-         if (!this.m.r.k().l()) {
-            this.F = new fgq(0, 0, $$0x -> this.m.a(new fkr(this::c, wx.c("difficulty.lock.title"), wx.a("difficulty.lock.question", this.m.r.k().q().b()))));
-            this.E.k(this.E.x() - this.F.x());
-            this.F.b(this.m.r.k().r());
-            this.F.j = !this.F.a();
-            this.E.j = !this.F.a();
-            fjk $$0 = new fjk(150, 0, fjk.b.a);
-            $$0.a(this.E);
-            $$0.a(this.F);
-            return $$0;
-         } else {
-            this.E.j = false;
-            return this.E;
+   public void e() {
+      super.e();
+      if (--this.u == 0) {
+         for (fgz $$0 : this.v) {
+            $$0.j = true;
          }
-      } else {
-         return fga.a(wx.c("options.online"), $$0x -> this.m.a(flp.a(this.m, this, this.D))).a(this.n / 2 + 5, this.o / 6 - 12 + 24, 150, 20).a();
-      }
-   }
-
-   public static fgh<bpt> a(int $$0, int $$1, String $$2, feb $$3) {
-      return fgh.a(bpt::b).a(bpt.values()).a($$3.r.ak()).a($$0, $$1, 150, 20, wx.c($$2), ($$1x, $$2x) -> $$3.L().b(new agi($$2x)));
-   }
-
-   private void c(boolean $$0) {
-      this.m.a(this);
-      if ($$0 && this.m.r != null && this.F != null && this.E != null) {
-         this.m.L().b(new ahb(true));
-         this.F.b(true);
-         this.F.j = false;
-         this.E.j = false;
       }
    }
 
    @Override
-   public void j() {
-      this.D.av();
+   public boolean aE_() {
+      return false;
    }
 
-   private fga a(wx $$0, Supplier<flz> $$1) {
-      return fga.a($$0, $$1x -> this.m.a($$1.get())).a();
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.c.accept(false);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
    }
 }

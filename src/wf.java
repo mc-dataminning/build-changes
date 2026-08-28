@@ -1,18 +1,16 @@
 import io.netty.buffer.ByteBuf;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToByteEncoder;
+import javax.crypto.Cipher;
 
-public interface wf<T extends wd> {
-   vw a();
+public class wf extends MessageToByteEncoder<ByteBuf> {
+   private final wd a;
 
-   zf b();
+   public wf(Cipher $$0) {
+      this.a = new wd($$0);
+   }
 
-   yv<ByteBuf, ze<? super T>> c();
-
-   @Nullable
-   zd d();
-
-   public interface a<T extends wd, B extends ByteBuf> {
-      wf<T> bind(Function<ByteBuf, B> var1);
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) throws Exception {
+      this.a.a($$1, $$2);
    }
 }

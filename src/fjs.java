@@ -1,61 +1,17 @@
-import java.util.function.Consumer;
-
-public class fjs implements fjp {
-   private int a;
-   private int b;
-   private final int c;
-   private final int d;
-
-   public fjs(int $$0, int $$1) {
-      this(0, 0, $$0, $$1);
+public record fjs(gdr a, gdr b, gdr c) {
+   public static fjs a(alb $$0) {
+      return new fjs(gdr.u($$0), gdr.y($$0), gdr.w($$0));
    }
 
-   public fjs(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public static fjs b(alb $$0) {
+      return new fjs(gdr.t($$0), gdr.x($$0), gdr.v($$0));
    }
 
-   public static fjs a(int $$0) {
-      return new fjs($$0, 0);
-   }
-
-   public static fjs b(int $$0) {
-      return new fjs(0, $$0);
-   }
-
-   @Override
-   public void m(int $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public void n(int $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public int C() {
-      return this.a;
-   }
-
-   @Override
-   public int D() {
-      return this.b;
-   }
-
-   @Override
-   public int x() {
-      return this.c;
-   }
-
-   @Override
-   public int v() {
-      return this.d;
-   }
-
-   @Override
-   public void a(Consumer<ffy> $$0) {
+   public gdr a(fgk.a $$0) {
+      return switch ($$0) {
+         case a -> this.a;
+         case b -> this.b;
+         case c -> this.c;
+      };
    }
 }

@@ -1,44 +1,63 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
+import java.util.Collection;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class efe extends efh {
-   public static final MapCodec<efe> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, efe::new));
+public class efe extends eey {
+   public static final MapCodec<efe> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               eey.a.fieldOf("source").forGetter($$0x -> $$0x.c),
+               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
+               bpu.c.fieldOf("values").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, efe::new)
+   );
+   private final eey c;
+   private final String d;
+   @Nullable
+   private dsx e;
+   private final bpu f;
 
-   public efe(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
-   }
+   public efe(eey $$0, dsx $$1, bpu $$2) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = $$1.f();
+      this.f = $$2;
+      Collection<Integer> $$3 = $$1.a();
 
-   @Override
-   protected efi<?> a() {
-      return efi.c;
-   }
-
-   @Override
-   public List<edp.a> a(dbf $$0, BiConsumer<io, drd> $$1, aym $$2, int $$3, io $$4, ecz $$5) {
-      io $$6 = $$4.d();
-      a($$0, $$1, $$2, $$6, $$5);
-      a($$0, $$1, $$2, $$6.h(), $$5);
-      a($$0, $$1, $$2, $$6.f(), $$5);
-      a($$0, $$1, $$2, $$6.f().h(), $$5);
-      io.a $$7 = new io.a();
-
-      for (int $$8 = 0; $$8 < $$3; $$8++) {
-         this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 0);
-         if ($$8 < $$3 - 1) {
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 0);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 1);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 1);
+      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
+         if (!$$3.contains($$4)) {
+            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
          }
       }
-
-      return ImmutableList.of(new edp.a($$4.b($$3), 0, true));
    }
 
-   private void a(dbf $$0, BiConsumer<io, drd> $$1, aym $$2, io.a $$3, ecz $$4, io $$5, int $$6, int $$7, int $$8) {
-      $$3.a($$5, $$6, $$7, $$8);
-      this.a($$0, $$1, $$2, $$3, $$4);
+   public efe(eey $$0, String $$1, bpu $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.f = $$2;
+   }
+
+   @Override
+   protected eez<?> a() {
+      return eez.g;
+   }
+
+   @Override
+   public drx a(azc $$0, iz $$1) {
+      drx $$2 = this.c.a($$0, $$1);
+      if (this.e == null || !$$2.b(this.e)) {
+         this.e = a($$2, this.d);
+      }
+
+      return $$2.a(this.e, Integer.valueOf(this.f.a($$0)));
+   }
+
+   private static dsx a(drx $$0, String $$1) {
+      Collection<dta<?>> $$2 = $$0.B();
+      Optional<dsx> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof dsx).map($$0x -> (dsx)$$0x).findAny();
+      return $$3.orElseThrow(() -> new IllegalArgumentException("Illegal property: " + $$1));
    }
 }

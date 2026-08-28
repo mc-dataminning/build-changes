@@ -1,145 +1,49 @@
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
+import com.mojang.brigadier.Message;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 
-public class ui extends ut {
-   private static final int b = 12;
-   public static final vc<ui> a = new vc.a<ui>() {
-      public ui a(DataInput $$0, um $$1) throws IOException {
-         return ui.a(d($$0, $$1));
+public class ui implements ArgumentType<uh> {
+   private static final Collection<String> a = Arrays.asList("techtests.piston", "techtests");
+
+   public uh a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = $$0.readUnquotedString();
+      Optional<uh> $$2 = tp.e($$1);
+      if ($$2.isPresent()) {
+         return $$2.get();
+      } else {
+         Message $$3 = xl.b("No such test: " + $$1);
+         throw new CommandSyntaxException(new SimpleCommandExceptionType($$3), $$3);
       }
-
-      @Override
-      public ux.b a(DataInput $$0, ux $$1, um $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
-      }
-
-      private static int d(DataInput $$0, um $$1) throws IOException {
-         $$1.b(12L);
-         return $$0.readInt();
-      }
-
-      @Override
-      public int c() {
-         return 4;
-      }
-
-      @Override
-      public String a() {
-         return "INT";
-      }
-
-      @Override
-      public String b() {
-         return "TAG_Int";
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-   };
-   private final int c;
-
-   ui(int $$0) {
-      this.c = $$0;
    }
 
-   public static ui a(int $$0) {
-      return $$0 >= -128 && $$0 <= 1024 ? ui.a.a[$$0 - -128] : new ui($$0);
+   public static ui a() {
+      return new ui();
    }
 
-   @Override
-   public void a(DataOutput $$0) throws IOException {
-      $$0.writeInt(this.c);
+   public static uh a(CommandContext<ep> $$0, String $$1) {
+      return (uh)$$0.getArgument($$1, uh.class);
    }
 
-   @Override
-   public int a() {
-      return 12;
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return a($$0, $$1);
    }
 
-   @Override
-   public byte b() {
-      return 3;
+   public static <S> CompletableFuture<Suggestions> a(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      Stream<String> $$2 = tp.a().stream().map(uh::c);
+      return eu.b($$2, $$1);
    }
 
-   @Override
-   public vc<ui> c() {
+   public Collection<String> getExamples() {
       return a;
-   }
-
-   public ui e() {
-      return this;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof ui && this.c == ((ui)$$0).c;
-   }
-
-   @Override
-   public int hashCode() {
-      return this.c;
-   }
-
-   @Override
-   public void a(ve $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public long f() {
-      return (long)this.c;
-   }
-
-   @Override
-   public int g() {
-      return this.c;
-   }
-
-   @Override
-   public short h() {
-      return (short)(this.c & 65535);
-   }
-
-   @Override
-   public byte i() {
-      return (byte)(this.c & 0xFF);
-   }
-
-   @Override
-   public double j() {
-      return (double)this.c;
-   }
-
-   @Override
-   public float k() {
-      return (float)this.c;
-   }
-
-   @Override
-   public Number l() {
-      return this.c;
-   }
-
-   @Override
-   public ux.b a(ux $$0) {
-      return $$0.a(this.c);
-   }
-
-   static class a {
-      private static final int b = 1024;
-      private static final int c = -128;
-      static final ui[] a = new ui[1153];
-
-      private a() {
-      }
-
-      static {
-         for (int $$0 = 0; $$0 < a.length; $$0++) {
-            a[$$0] = new ui(-128 + $$0);
-         }
-      }
    }
 }

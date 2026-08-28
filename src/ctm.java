@@ -1,65 +1,48 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-public class ctm {
-   private final Map<ctl, ctm.a> a = Maps.newHashMap();
-   private int b;
+public interface ctm {
+   bsw m();
 
-   public boolean a(ctl $$0) {
-      return this.a($$0, 0.0F) > 0.0F;
+   default ji<avv> aq_() {
+      return avw.as;
    }
 
-   public float a(ctl $$0, float $$1) {
-      ctm.a $$2 = this.a.get($$0);
-      if ($$2 != null) {
-         float $$3 = (float)($$2.b - $$2.a);
-         float $$4 = (float)$$2.b - ((float)this.b + $$1);
-         return ayf.a($$4 / $$3, 0.0F, 1.0F);
+   default bqq<cuk> a(cuf $$0, dbt $$1, cms $$2, bqo $$3) {
+      cuk $$4 = $$2.b($$3);
+      bsw $$5 = btm.h($$4);
+      if (!$$2.d($$5)) {
+         return bqq.c($$4);
       } else {
-         return 0.0F;
-      }
-   }
-
-   public void a() {
-      this.b++;
-      if (!this.a.isEmpty()) {
-         Iterator<Entry<ctl, ctm.a>> $$0 = this.a.entrySet().iterator();
-
-         while ($$0.hasNext()) {
-            Entry<ctl, ctm.a> $$1 = $$0.next();
-            if ($$1.getValue().b <= this.b) {
-               $$0.remove();
-               this.c($$1.getKey());
+         cuk $$6 = $$2.a($$5);
+         if ((!czw.f($$6) || $$2.f()) && !cuk.a($$4, $$6)) {
+            if (!$$1.x_()) {
+               $$2.b(awg.c.b($$0));
             }
+
+            cuk $$7 = $$6.e() ? $$4 : $$6.f();
+            cuk $$8 = $$2.f() ? $$4.s() : $$4.f();
+            $$2.a($$5, $$8);
+            return bqq.a($$7, $$1.x_());
+         } else {
+            return bqq.d($$4);
          }
       }
    }
 
-   public void a(ctl $$0, int $$1) {
-      this.a.put($$0, new ctm.a(this.b, this.b + $$1));
-      this.b($$0, $$1);
-   }
+   @Nullable
+   static ctm c_(cuk $$0) {
+      cuf $$3 = $$0.g();
+      if ($$3 instanceof ctm) {
+         return (ctm)$$3;
+      } else {
+         if ($$0.g() instanceof csi $$2) {
+            deu var6 = $$2.d();
+            if (var6 instanceof ctm) {
+               return (ctm)var6;
+            }
+         }
 
-   public void b(ctl $$0) {
-      this.a.remove($$0);
-      this.c($$0);
-   }
-
-   protected void b(ctl $$0, int $$1) {
-   }
-
-   protected void c(ctl $$0) {
-   }
-
-   static class a {
-      final int a;
-      final int b;
-
-      a(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
+         return null;
       }
    }
 }

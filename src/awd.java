@@ -1,11 +1,51 @@
-public class awd {
-   public static final awm<dvw> a = a("vibrations");
-   public static final awm<dvw> b = a("warden_can_listen");
-   public static final awm<dvw> c = a("shrieker_can_listen");
-   public static final awm<dvw> d = a("ignore_vibrations_sneaking");
-   public static final awm<dvw> e = a("allay_can_listen");
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   private static awm<dvw> a(String $$0) {
-      return awm.a(lf.C, new akn($$0));
+public class awd<T> extends ewt {
+   public static final zj<ww, awd<?>> a = zh.a(lq.ah).b(awd::a, awf::a);
+   private final awe o;
+   private final T p;
+   private final awf<T> q;
+
+   protected awd(awf<T> $$0, T $$1, awe $$2) {
+      super(a($$0, $$1));
+      this.q = $$0;
+      this.o = $$2;
+      this.p = $$1;
+   }
+
+   public static <T> String a(awf<T> $$0, T $$1) {
+      return a(lp.x.b($$0)) + ":" + a($$0.b().b($$1));
+   }
+
+   private static <T> String a(@Nullable alb $$0) {
+      return $$0.toString().replace(':', '.');
+   }
+
+   public awf<T> a() {
+      return this.q;
+   }
+
+   public T b() {
+      return this.p;
+   }
+
+   public String a(int $$0) {
+      return this.o.format($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof awd && Objects.equals(this.d(), ((awd)$$0).d());
+   }
+
+   @Override
+   public int hashCode() {
+      return this.d().hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "Stat{name=" + this.d() + ", formatter=" + this.o + "}";
    }
 }

@@ -1,48 +1,43 @@
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+import java.util.Locale;
 
-public enum fiq implements ayz {
-   a("uniform"),
-   b("jp");
+public class fiq extends fio {
+   private static final int f = -65536;
+   private static final int g = -256;
+   private static final int h = -16711936;
+   private static final int i = 30;
+   private static final double j = 33.333333333333336;
 
-   public static final Codec<fiq> c = ayz.a(fiq::values);
-   private final String d;
-
-   private fiq(String $$0) {
-      this.d = $$0;
+   public fiq(fgk $$0, blt $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public String c() {
-      return this.d;
+   protected void d(fgm $$0, int $$1, int $$2, int $$3) {
+      this.a($$0, "30 FPS", $$1 + 1, $$3 - 60 + 1);
+      this.a($$0, "60 FPS", $$1 + 1, $$3 - 30 + 1);
+      $$0.a(gdr.E(), $$1, $$1 + $$2 - 1, $$3 - 30, -1);
+      int $$4 = ffa.Q().m.h().c();
+      if ($$4 > 0 && $$4 <= 250) {
+         $$0.a(gdr.E(), $$1, $$1 + $$2 - 1, $$3 - this.b(1.0E9 / (double)$$4) - 1, -16711681);
+      }
    }
 
-   public static class a {
-      private final Map<fiq, Boolean> c;
-      public static final Codec<fiq.a> a = Codec.unboundedMap(fiq.c, Codec.BOOL).xmap(fiq.a::new, $$0 -> $$0.c);
-      public static final fiq.a b = new fiq.a(Map.of());
+   @Override
+   protected String a(double $$0) {
+      return String.format(Locale.ROOT, "%d ms", (int)Math.round(c($$0)));
+   }
 
-      public a(Map<fiq, Boolean> $$0) {
-         this.c = $$0;
-      }
+   @Override
+   protected int b(double $$0) {
+      return (int)Math.round(c($$0) * 60.0 / 33.333333333333336);
+   }
 
-      public boolean a(Set<fiq> $$0) {
-         for (Entry<fiq, Boolean> $$1 : this.c.entrySet()) {
-            if ($$0.contains($$1.getKey()) != $$1.getValue()) {
-               return false;
-            }
-         }
+   @Override
+   protected int a(long $$0) {
+      return this.a(c((double)$$0), 0.0, -16711936, 28.0, -256, 56.0, -65536);
+   }
 
-         return true;
-      }
-
-      public fiq.a a(fiq.a $$0) {
-         Map<fiq, Boolean> $$1 = new HashMap<>($$0.c);
-         $$1.putAll(this.c);
-         return new fiq.a(Map.copyOf($$1));
-      }
+   private static double c(double $$0) {
+      return $$0 / 1000000.0;
    }
 }

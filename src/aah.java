@@ -1,26 +1,31 @@
-public record aah(akm<dvw> c, eum d) implements aaf {
-   public static final yv<vx, aah> a = aaf.a(aah::a, aah::new);
-   public static final aaf.b<aah> b = aaf.a("debug/game_event");
+import java.util.Map;
 
-   private aah(vx $$0) {
-      this($$0.a(lf.C), $$0.k());
+public class aah implements zs<zy> {
+   public static final zj<wl, aah> a = zs.a(aah::a, aah::new);
+   private final Map<ala<? extends jv<?>>, axe.a> b;
+
+   public aah(Map<ala<? extends jv<?>>, axe.a> $$0) {
+      this.b = $$0;
    }
 
-   private void a(vx $$0) {
-      $$0.b(this.c);
-      $$0.a(this.d);
+   private aah(wl $$0) {
+      this.b = $$0.a(wl::r, axe.a::b);
+   }
+
+   private void a(wl $$0) {
+      $$0.a(this.b, wl::b, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public aaf.b<aah> a() {
-      return b;
+   public zu<aah> a() {
+      return aai.i;
    }
 
-   public akm<dvw> b() {
-      return this.c;
+   public void a(zy $$0) {
+      $$0.a(this);
    }
 
-   public eum c() {
-      return this.d;
+   public Map<ala<? extends jv<?>>, axe.a> b() {
+      return this.b;
    }
 }

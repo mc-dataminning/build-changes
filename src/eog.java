@@ -1,31 +1,133 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public record eog(akn d, boolean e, int f, boolean g, boolean h) {
-   public static final int a = -1;
-   public static final Codec<ix<eog>> b = le.av.r();
-   public static final yv<wi, ix<eog>> c = yt.b(lf.ay);
+public class eog {
+   private static final float a = 1.5F;
+   private final eoc[] b = new eoc[32];
+   private final int c;
+   private final eod d;
+   private static final boolean e = false;
+   private final eoa f = new eoa();
 
-   public boolean a() {
-      return this.f != -1;
+   public eog(eod $$0, int $$1) {
+      this.d = $$0;
+      this.c = $$1;
    }
 
-   public akn b() {
-      return this.d;
+   @Nullable
+   public eoe a(dcg $$0, btm $$1, Set<iz> $$2, float $$3, int $$4, float $$5) {
+      this.f.a();
+      this.d.a($$0, $$1);
+      eoc $$6 = this.d.a();
+      if ($$6 == null) {
+         return null;
+      } else {
+         Map<eol, iz> $$7 = $$2.stream().collect(Collectors.toMap($$0x -> this.d.a((double)$$0x.u(), (double)$$0x.v(), (double)$$0x.w()), Function.identity()));
+         eoe $$8 = this.a($$0.a(), $$6, $$7, $$3, $$4, $$5);
+         this.d.b();
+         return $$8;
+      }
    }
 
-   public boolean c() {
-      return this.e;
+   @Nullable
+   private eoe a(bnd $$0, eoc $$1, Map<eol, iz> $$2, float $$3, int $$4, float $$5) {
+      $$0.a("find_path");
+      $$0.a(boj.a);
+      Set<eol> $$6 = $$2.keySet();
+      $$1.e = 0.0F;
+      $$1.f = this.a($$1, $$6);
+      $$1.g = $$1.f;
+      this.f.a();
+      this.f.a($$1);
+      Set<eoc> $$7 = ImmutableSet.of();
+      int $$8 = 0;
+      Set<eol> $$9 = Sets.newHashSetWithExpectedSize($$6.size());
+      int $$10 = (int)((float)this.c * $$5);
+
+      while (!this.f.e()) {
+         if (++$$8 >= $$10) {
+            break;
+         }
+
+         eoc $$11 = this.f.c();
+         $$11.i = true;
+
+         for (eol $$12 : $$6) {
+            if ($$11.d($$12) <= (float)$$4) {
+               $$12.e();
+               $$9.add($$12);
+            }
+         }
+
+         if (!$$9.isEmpty()) {
+            break;
+         }
+
+         if (!($$11.a($$1) >= $$3)) {
+            int $$13 = this.d.a(this.b, $$11);
+
+            for (int $$14 = 0; $$14 < $$13; $$14++) {
+               eoc $$15 = this.b[$$14];
+               float $$16 = this.a($$11, $$15);
+               $$15.j = $$11.j + $$16;
+               float $$17 = $$11.e + $$16 + $$15.k;
+               if ($$15.j < $$3 && (!$$15.c() || $$17 < $$15.e)) {
+                  $$15.h = $$11;
+                  $$15.e = $$17;
+                  $$15.f = this.a($$15, $$6) * 1.5F;
+                  if ($$15.c()) {
+                     this.f.a($$15, $$15.e + $$15.f);
+                  } else {
+                     $$15.g = $$15.e + $$15.f;
+                     this.f.a($$15);
+                  }
+               }
+            }
+         }
+      }
+
+      Optional<eoe> $$18 = !$$9.isEmpty()
+         ? $$9.stream().map($$1x -> this.a($$1x.d(), $$2.get($$1x), true)).min(Comparator.comparingInt(eoe::e))
+         : $$6.stream().map($$1x -> this.a($$1x.d(), $$2.get($$1x), false)).min(Comparator.comparingDouble(eoe::m).thenComparingInt(eoe::e));
+      $$0.c();
+      return $$18.isEmpty() ? null : $$18.get();
    }
 
-   public int d() {
-      return this.f;
+   protected float a(eoc $$0, eoc $$1) {
+      return $$0.a($$1);
    }
 
-   public boolean e() {
-      return this.g;
+   private float a(eoc $$0, Set<eol> $$1) {
+      float $$2 = Float.MAX_VALUE;
+
+      for (eol $$3 : $$1) {
+         float $$4 = $$0.a($$3);
+         $$3.a($$4, $$0);
+         $$2 = Math.min($$4, $$2);
+      }
+
+      return $$2;
    }
 
-   public boolean f() {
-      return this.h;
+   private eoe a(eoc $$0, iz $$1, boolean $$2) {
+      List<eoc> $$3 = Lists.newArrayList();
+      eoc $$4 = $$0;
+      $$3.add(0, $$0);
+
+      while ($$4.h != null) {
+         $$4 = $$4.h;
+         $$3.add(0, $$4);
+      }
+
+      return new eoe($$3, $$1, $$2);
    }
 }

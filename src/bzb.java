@@ -1,50 +1,20 @@
-import java.util.EnumSet;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class bzb extends cab {
-   private final cej g;
-
-   public bzb(cej $$0, double $$1, int $$2) {
-      super($$0, $$1, $$2, 6);
-      this.g = $$0;
-      this.f = -2;
-      this.a(EnumSet.of(bzo.a.c, bzo.a.a));
-   }
-
-   @Override
-   public boolean a() {
-      return this.g.s() && !this.g.gp() && !this.g.gx() && super.a();
-   }
-
-   @Override
-   public void c() {
-      super.c();
-      this.g.x(false);
-   }
-
-   @Override
-   protected int a(bsz $$0) {
-      return 40;
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.g.z(false);
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.g.x(false);
-      if (!this.m()) {
-         this.g.z(false);
-      } else if (!this.g.gx()) {
-         this.g.z(true);
-      }
-   }
-
-   @Override
-   protected boolean a(dbc $$0, io $$1) {
-      return $$0.u($$1.c()) && $$0.a_($$1).a(avx.R);
+public class bzb {
+   public static bve<btk> a() {
+      return byq.a(
+         (Function<byq.b<btk>, ? extends App<byq.c<btk>, byt<btk>>>)($$0 -> $$0.group($$0.a(cco.n), $$0.a(cco.az), $$0.a(cco.ay), $$0.c(cco.o))
+               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$4x, $$5, $$6) -> {
+                     Optional<iz> $$7 = $$0.<btk>a($$3).map(bsp::dp).or(() -> $$0.a($$2));
+                     if ($$7.isEmpty()) {
+                        return false;
+                     } else {
+                        $$1.a(new bvg($$7.get()));
+                        return true;
+                     }
+                  }))
+      );
    }
 }

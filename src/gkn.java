@@ -1,17 +1,11 @@
-public class gkn extends giz<cjs, fvf> {
-   private static final akn a = new akn("textures/entity/illager/vex.png");
-   private static final akn i = new akn("textures/entity/illager/vex_charging.png");
+public class gkn extends gjy<ckd, fvi> {
+   private static final alb a = new alb("textures/entity/illager/ravager.png");
 
-   public gkn(ght.a $$0) {
-      super($$0, new fvf($$0.a(fvv.bO)), 0.3F);
-      this.a(new gly<>(this, $$0.d()));
+   public gkn(gis.a $$0) {
+      super($$0, new fvi($$0.a(fwu.bf)), 1.1F);
    }
 
-   protected int a(cjs $$0, io $$1) {
-      return 15;
-   }
-
-   public akn a(cjs $$0) {
-      return $$0.gq() ? i : a;
+   public alb a(ckd $$0) {
+      return a;
    }
 }

@@ -1,49 +1,21 @@
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class cgp extends cgj {
-   public cgp(bsc<? extends cgp> $$0, daz $$1) {
-      super($$0, $$1);
-   }
+public class cgp {
+   public static bve<btk> a() {
+      return byq.a(
+         (Function<byq.b<btk>, ? extends App<byq.c<btk>, byt<btk>>>)($$0 -> $$0.group($$0.b(cco.N), $$0.a(cco.y)).apply($$0, ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                  int $$6 = $$0.<Integer>b($$1);
+                  if ($$6 <= 0) {
+                     $$1.b();
+                     $$2.b();
+                     $$4.dS().f();
+                  } else {
+                     $$1.a($$6 - 1);
+                  }
 
-   @Override
-   protected avh v() {
-      return avi.px;
-   }
-
-   @Override
-   protected avh gN() {
-      return avi.py;
-   }
-
-   @Override
-   protected avh o_() {
-      return avi.pA;
-   }
-
-   @Nullable
-   @Override
-   protected avh gw() {
-      return avi.pB;
-   }
-
-   @Override
-   protected avh d(bqp $$0) {
-      return avi.pC;
-   }
-
-   @Override
-   protected void gV() {
-      this.a(avi.pD, 0.4F, 1.0F);
-   }
-
-   @Override
-   protected void gp() {
-      this.a(avi.pz, 1.0F, (this.ah.i() - this.ah.i()) * 0.2F + 1.0F);
-   }
-
-   @Nullable
-   @Override
-   public brq a(aqn $$0, brq $$1) {
-      return bsc.at.a((daz)$$0);
+                  return true;
+               }))
+      );
    }
 }

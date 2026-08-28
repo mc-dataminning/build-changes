@@ -1,94 +1,29 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
+import java.util.function.Predicate;
 
-public record bf(ct.c b, ct.c c, Optional<br> d, Optional<Boolean> e, Optional<bg> f) {
-   public static final Codec<bf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ct.c.d.optionalFieldOf("dealt", ct.c.c).forGetter(bf::a),
-               ct.c.d.optionalFieldOf("taken", ct.c.c).forGetter(bf::b),
-               br.a.optionalFieldOf("source_entity").forGetter(bf::c),
-               Codec.BOOL.optionalFieldOf("blocked").forGetter(bf::d),
-               bg.a.optionalFieldOf("type").forGetter(bf::e)
-            )
-            .apply($$0, bf::new)
-   );
+public class bf {
+   public static final Codec<bf> a = etp.a.listOf().xmap(bf::new, $$0 -> $$0.b);
+   private final List<etn> b;
+   private final Predicate<eqd> c;
 
-   public boolean a(aqo $$0, bqp $$1, float $$2, float $$3, boolean $$4) {
-      if (!this.b.d((double)$$2)) {
-         return false;
-      } else if (!this.c.d((double)$$3)) {
-         return false;
-      } else if (this.d.isPresent() && !this.d.get().a($$0, $$1.d())) {
-         return false;
-      } else {
-         return this.e.isPresent() && this.e.get() != $$4 ? false : !this.f.isPresent() || this.f.get().a($$0, $$1);
-      }
+   bf(List<etn> $$0) {
+      this.b = $$0;
+      this.c = ac.a($$0);
    }
 
-   public ct.c a() {
-      return this.b;
+   public static bf a(etn... $$0) {
+      return new bf(List.of($$0));
    }
 
-   public ct.c b() {
-      return this.c;
+   public boolean a(eqd $$0) {
+      return this.c.test($$0);
    }
 
-   public Optional<br> c() {
-      return this.d;
-   }
-
-   public Optional<Boolean> d() {
-      return this.e;
-   }
-
-   public Optional<bg> e() {
-      return this.f;
-   }
-
-   public static class a {
-      private ct.c a = ct.c.c;
-      private ct.c b = ct.c.c;
-      private Optional<br> c = Optional.empty();
-      private Optional<Boolean> d = Optional.empty();
-      private Optional<bg> e = Optional.empty();
-
-      public static bf.a a() {
-         return new bf.a();
-      }
-
-      public bf.a a(ct.c $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public bf.a b(ct.c $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public bf.a a(br $$0) {
-         this.c = Optional.of($$0);
-         return this;
-      }
-
-      public bf.a a(Boolean $$0) {
-         this.d = Optional.of($$0);
-         return this;
-      }
-
-      public bf.a a(bg $$0) {
-         this.e = Optional.of($$0);
-         return this;
-      }
-
-      public bf.a a(bg.a $$0) {
-         this.e = Optional.of($$0.b());
-         return this;
-      }
-
-      public bf b() {
-         return new bf(this.a, this.b, this.c, this.d, this.e);
+   public void a(eqj $$0) {
+      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
+         etn $$2 = this.b.get($$1);
+         $$2.a($$0.a("[" + $$1 + "]"));
       }
    }
 }

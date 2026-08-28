@@ -1,23 +1,133 @@
-public enum dsn implements ayz {
-   a("save"),
-   b("load"),
-   c("corner"),
-   d("data");
-
-   private final String e;
-   private final wx f;
-
-   private dsn(String $$0) {
-      this.e = $$0;
-      this.f = wx.c("structure_block.mode_info." + $$0);
-   }
-
-   @Override
-   public String c() {
-      return this.e;
-   }
-
-   public wx a() {
-      return this.f;
-   }
+public class dsn {
+   public static final dso a = dso.a("attached");
+   public static final dso b = dso.a("bottom");
+   public static final dso c = dso.a("conditional");
+   public static final dso d = dso.a("disarmed");
+   public static final dso e = dso.a("drag");
+   public static final dso f = dso.a("enabled");
+   public static final dso g = dso.a("extended");
+   public static final dso h = dso.a("eye");
+   public static final dso i = dso.a("falling");
+   public static final dso j = dso.a("hanging");
+   public static final dso k = dso.a("has_bottle_0");
+   public static final dso l = dso.a("has_bottle_1");
+   public static final dso m = dso.a("has_bottle_2");
+   public static final dso n = dso.a("has_record");
+   public static final dso o = dso.a("has_book");
+   public static final dso p = dso.a("inverted");
+   public static final dso q = dso.a("in_wall");
+   public static final dso r = dso.a("lit");
+   public static final dso s = dso.a("locked");
+   public static final dso t = dso.a("occupied");
+   public static final dso u = dso.a("open");
+   public static final dso v = dso.a("persistent");
+   public static final dso w = dso.a("powered");
+   public static final dso x = dso.a("short");
+   public static final dso y = dso.a("signal_fire");
+   public static final dso z = dso.a("snowy");
+   public static final dso A = dso.a("triggered");
+   public static final dso B = dso.a("unstable");
+   public static final dso C = dso.a("waterlogged");
+   public static final dso D = dso.a("berries");
+   public static final dso E = dso.a("bloom");
+   public static final dso F = dso.a("shrieking");
+   public static final dso G = dso.a("can_summon");
+   public static final dsv<je.a> H = dsv.a("axis", je.a.class, je.a.a, je.a.c);
+   public static final dsv<je.a> I = dsv.a("axis", je.a.class);
+   public static final dso J = dso.a("up");
+   public static final dso K = dso.a("down");
+   public static final dso L = dso.a("north");
+   public static final dso M = dso.a("east");
+   public static final dso N = dso.a("south");
+   public static final dso O = dso.a("west");
+   public static final dsr P = dsr.a("facing", je.c, je.f, je.d, je.e, je.b, je.a);
+   public static final dsr Q = dsr.a("facing", $$0 -> $$0 != je.b);
+   public static final dsr R = dsr.a("facing", je.c.a);
+   public static final dsx S = dsx.a("flower_amount", 1, 4);
+   public static final dsv<jg> T = dsv.a("orientation", jg.class);
+   public static final dsv<dsi> U = dsv.a("face", dsi.class);
+   public static final dsv<dsl> V = dsv.a("attachment", dsl.class);
+   public static final dsv<dtj> W = dsv.a("east", dtj.class);
+   public static final dsv<dtj> X = dsv.a("north", dtj.class);
+   public static final dsv<dtj> Y = dsv.a("south", dtj.class);
+   public static final dsv<dtj> Z = dsv.a("west", dtj.class);
+   public static final dsv<dtc> aa = dsv.a("east", dtc.class);
+   public static final dsv<dtc> ab = dsv.a("north", dtc.class);
+   public static final dsv<dtc> ac = dsv.a("south", dtc.class);
+   public static final dsv<dtc> ad = dsv.a("west", dtc.class);
+   public static final dsv<dst> ae = dsv.a("half", dst.class);
+   public static final dsv<dsw> af = dsv.a("half", dsw.class);
+   public static final dsv<dtb> ag = dsv.a("shape", dtb.class);
+   public static final dsv<dtb> ah = dsv.a("shape", dtb.class, $$0 -> $$0 != dtb.j && $$0 != dtb.i && $$0 != dtb.g && $$0 != dtb.h);
+   public static final int ai = 1;
+   public static final int aj = 2;
+   public static final int ak = 3;
+   public static final int al = 4;
+   public static final int am = 5;
+   public static final int an = 7;
+   public static final int ao = 15;
+   public static final int ap = 25;
+   public static final dsx aq = dsx.a("age", 0, 1);
+   public static final dsx ar = dsx.a("age", 0, 2);
+   public static final dsx as = dsx.a("age", 0, 3);
+   public static final dsx at = dsx.a("age", 0, 4);
+   public static final dsx au = dsx.a("age", 0, 5);
+   public static final dsx av = dsx.a("age", 0, 7);
+   public static final dsx aw = dsx.a("age", 0, 15);
+   public static final dsx ax = dsx.a("age", 0, 25);
+   public static final dsx ay = dsx.a("bites", 0, 6);
+   public static final dsx az = dsx.a("candles", 1, 4);
+   public static final dsx aA = dsx.a("delay", 1, 4);
+   public static final int aB = 7;
+   public static final dsx aC = dsx.a("distance", 1, 7);
+   public static final dsx aD = dsx.a("eggs", 1, 4);
+   public static final dsx aE = dsx.a("hatch", 0, 2);
+   public static final dsx aF = dsx.a("layers", 1, 8);
+   public static final int aG = 0;
+   public static final int aH = 1;
+   public static final int aI = 3;
+   public static final int aJ = 8;
+   public static final dsx aK = dsx.a("level", 1, 3);
+   public static final dsx aL = dsx.a("level", 0, 8);
+   public static final dsx aM = dsx.a("level", 1, 8);
+   public static final dsx aN = dsx.a("honey_level", 0, 5);
+   public static final int aO = 15;
+   public static final dsx aP = dsx.a("level", 0, 15);
+   public static final dsx aQ = dsx.a("moisture", 0, 7);
+   public static final dsx aR = dsx.a("note", 0, 24);
+   public static final dsx aS = dsx.a("pickles", 1, 4);
+   public static final dsx aT = dsx.a("power", 0, 15);
+   public static final dsx aU = dsx.a("stage", 0, 1);
+   public static final int aV = 7;
+   public static final dsx aW = dsx.a("distance", 0, 7);
+   public static final int aX = 0;
+   public static final int aY = 4;
+   public static final dsx aZ = dsx.a("charges", 0, 4);
+   public static final dsx ba = dsx.a("rotation", 0, dtd.a());
+   public static final dsv<dsk> bb = dsv.a("part", dsk.class);
+   public static final dsv<dsp> bc = dsv.a("type", dsp.class);
+   public static final dsv<dsq> bd = dsv.a("mode", dsq.class);
+   public static final dsv<dss> be = dsv.a("hinge", dss.class);
+   public static final dsv<dsy> bf = dsv.a("instrument", dsy.class);
+   public static final dsv<dsz> bg = dsv.a("type", dsz.class);
+   public static final dsv<dtf> bh = dsv.a("type", dtf.class);
+   public static final dsv<dtg> bi = dsv.a("shape", dtg.class);
+   public static final dsv<dth> bj = dsv.a("mode", dth.class);
+   public static final dsv<dsj> bk = dsv.a("leaves", dsj.class);
+   public static final dsv<dti> bl = dsv.a("tilt", dti.class);
+   public static final dsr bm = dsr.a("vertical_direction", je.b, je.a);
+   public static final dsv<dsu> bn = dsv.a("thickness", dsu.class);
+   public static final dsv<dte> bo = dsv.a("sculk_sensor_phase", dte.class);
+   public static final dso bp = dso.a("slot_0_occupied");
+   public static final dso bq = dso.a("slot_1_occupied");
+   public static final dso br = dso.a("slot_2_occupied");
+   public static final dso bs = dso.a("slot_3_occupied");
+   public static final dso bt = dso.a("slot_4_occupied");
+   public static final dso bu = dso.a("slot_5_occupied");
+   public static final dsx bv = dsx.a("dusted", 0, 3);
+   public static final dso bw = dso.a("cracked");
+   public static final dso bx = dso.a("crafting");
+   public static final dsv<drd> by = dsv.a("trial_spawner_state", drd.class);
+   public static final dsv<drk> bz = dsv.a("vault_state", drk.class);
+   public static final dso bA = dso.a("ominous");
 }

@@ -1,20 +1,29 @@
-public record agw(bkx b) implements ze<age> {
-   public static final yv<vx, agw> a = ze.a(agw::a, agw::new);
+public class agw implements zs<ags> {
+   public static final zj<wl, agw> a = zs.a(agw::a, agw::new);
+   private final bqm b;
 
-   private agw(vx $$0) {
-      this($$0.b(bkx.class));
+   public agw(bqm $$0) {
+      this.b = $$0;
    }
 
-   private void a(vx $$0) {
-      $$0.a(this.b);
+   private agw(wl $$0) {
+      this.b = bqm.a($$0.readUnsignedByte());
+   }
+
+   private void a(wl $$0) {
+      $$0.k(this.b.a());
    }
 
    @Override
-   public zg<agw> a() {
-      return agc.bv;
+   public zu<agw> a() {
+      return agq.bh;
    }
 
-   public void a(age $$0) {
+   public void a(ags $$0) {
       $$0.a(this);
+   }
+
+   public bqm b() {
+      return this.b;
    }
 }

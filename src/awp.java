@@ -1,77 +1,40 @@
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
+public interface awp {
+   axb<bsv<?>> a = a("skeletons");
+   axb<bsv<?>> b = a("zombies");
+   axb<bsv<?>> c = a("raiders");
+   axb<bsv<?>> d = a("undead");
+   axb<bsv<?>> e = a("beehive_inhabitors");
+   axb<bsv<?>> f = a("arrows");
+   axb<bsv<?>> g = a("impact_projectiles");
+   axb<bsv<?>> h = a("powder_snow_walkable_mobs");
+   axb<bsv<?>> i = a("axolotl_always_hostiles");
+   axb<bsv<?>> j = a("axolotl_hunt_targets");
+   axb<bsv<?>> k = a("freeze_immune_entity_types");
+   axb<bsv<?>> l = a("freeze_hurts_extra_types");
+   axb<bsv<?>> m = a("can_breathe_under_water");
+   axb<bsv<?>> n = a("frog_food");
+   axb<bsv<?>> o = a("fall_damage_immune");
+   axb<bsv<?>> p = a("dismounts_underwater");
+   axb<bsv<?>> q = a("non_controlling_rider");
+   axb<bsv<?>> r = a("deflects_projectiles");
+   axb<bsv<?>> s = a("can_turn_in_boats");
+   axb<bsv<?>> t = a("illager");
+   axb<bsv<?>> u = a("aquatic");
+   axb<bsv<?>> v = a("arthropod");
+   axb<bsv<?>> w = a("ignores_poison_and_regen");
+   axb<bsv<?>> x = a("inverted_healing_and_harm");
+   axb<bsv<?>> y = a("wither_friends");
+   axb<bsv<?>> z = a("illager_friends");
+   axb<bsv<?>> A = a("not_scary_for_pufferfish");
+   axb<bsv<?>> B = a("sensitive_to_impaling");
+   axb<bsv<?>> C = a("sensitive_to_bane_of_arthropods");
+   axb<bsv<?>> D = a("sensitive_to_smite");
+   axb<bsv<?>> E = a("no_anger_from_wind_charge");
+   axb<bsv<?>> F = a("immune_to_oozing");
+   axb<bsv<?>> G = a("immune_to_infested");
+   axb<bsv<?>> H = a("punchable_projectiles");
 
-public class awp {
-   public static Map<akm<? extends jk<?>>, awp.a> a(je<akw> $$0) {
-      return jo.b($$0)
-         .map($$0x -> Pair.of($$0x.a(), a($$0x.b())))
-         .filter($$0x -> ((awp.a)$$0x.getSecond()).a() > 0)
-         .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
-   }
-
-   private static <T> awp.a a(jk<T> $$0) {
-      Map<akn, IntList> $$1 = new HashMap<>();
-      $$0.i().forEach($$2 -> {
-         jb<T> $$3 = (jb<T>)$$2.getSecond();
-         IntList $$4 = new IntArrayList($$3.b());
-
-         for (ix<T> $$5 : $$3) {
-            if ($$5.f() != ix.b.a) {
-               throw new IllegalStateException("Can't serialize unregistered value " + $$5);
-            }
-
-            $$4.add($$0.a($$5.a()));
-         }
-
-         $$1.put(((awm)$$2.getFirst()).b(), $$4);
-      });
-      return new awp.a($$1);
-   }
-
-   static <T> void a(akm<? extends jk<T>> $$0, jk<T> $$1, awp.a $$2, awp.b<T> $$3) {
-      $$2.a.forEach(($$3x, $$4) -> {
-         awm<T> $$5 = awm.a($$0, $$3x);
-         List<ix<T>> $$6 = $$4.intStream().mapToObj($$1::c).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
-         $$3.accept($$5, $$6);
-      });
-   }
-
-   public static final class a {
-      final Map<akn, IntList> a;
-
-      a(Map<akn, IntList> $$0) {
-         this.a = $$0;
-      }
-
-      public void a(vx $$0) {
-         $$0.a(this.a, vx::a, vx::a);
-      }
-
-      public static awp.a b(vx $$0) {
-         return new awp.a($$0.a(vx::q, vx::a));
-      }
-
-      public int a() {
-         return this.a.size();
-      }
-
-      public <T> void a(jk<T> $$0) {
-         if (this.a() != 0) {
-            Map<awm<T>, List<ix<T>>> $$1 = new HashMap<>(this.a());
-            awp.a($$0.c(), $$0, this, $$1::put);
-            $$0.a($$1);
-         }
-      }
-   }
-
-   @FunctionalInterface
-   public interface b<T> {
-      void accept(awm<T> var1, List<ix<T>> var2);
+   private static axb<bsv<?>> a(String $$0) {
+      return axb.a(lq.v, new alb($$0));
    }
 }

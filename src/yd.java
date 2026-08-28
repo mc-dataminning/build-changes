@@ -1,131 +1,75 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.mojang.brigadier.ParseResults;
+import com.mojang.brigadier.context.CommandContextBuilder;
+import com.mojang.brigadier.context.ParsedArgument;
+import com.mojang.brigadier.context.ParsedCommandNode;
+import com.mojang.brigadier.tree.ArgumentCommandNode;
+import com.mojang.brigadier.tree.CommandNode;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class yd implements wy {
-   private static final Logger d = LogUtils.getLogger();
-   public static final MapCodec<yd> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("nbt").forGetter(yd::b),
-               Codec.BOOL.lenientOptionalFieldOf("interpret", false).forGetter(yd::c),
-               wz.a.lenientOptionalFieldOf("separator").forGetter(yd::d),
-               xz.c.forGetter(yd::e)
-            )
-            .apply($$0, yd::new)
-   );
-   public static final wy.a<yd> b = new wy.a<>(a, "nbt");
-   private final boolean e;
-   private final Optional<wx> f;
-   private final String g;
-   private final xz h;
-   @Nullable
-   protected final ew.g c;
-
-   public yd(String $$0, boolean $$1, Optional<wx> $$2, xz $$3) {
-      this($$0, a($$0), $$1, $$2, $$3);
+public record yd<S>(List<yd.a<S>> a) {
+   public static <S> boolean a(ParseResults<S> $$0) {
+      return !b($$0).a().isEmpty();
    }
 
-   private yd(String $$0, @Nullable ew.g $$1, boolean $$2, Optional<wx> $$3, xz $$4) {
-      this.g = $$0;
-      this.c = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.h = $$4;
-   }
+   public static <S> yd<S> b(ParseResults<S> $$0) {
+      String $$1 = $$0.getReader().getString();
+      CommandContextBuilder<S> $$2 = $$0.getContext();
+      CommandContextBuilder<S> $$3 = $$2;
+      List<yd.a<S>> $$4 = a($$1, $$2);
 
-   @Nullable
-   private static ew.g a(String $$0) {
-      try {
-         return new ew().a(new StringReader($$0));
-      } catch (CommandSyntaxException var2) {
-         return null;
+      CommandContextBuilder<S> $$5;
+      while (($$5 = $$3.getChild()) != null && $$5.getRootNode() != $$2.getRootNode()) {
+         $$4.addAll(a($$1, $$5));
+         $$3 = $$5;
       }
+
+      return new yd<>($$4);
    }
 
-   public String b() {
-      return this.g;
-   }
+   private static <S> List<yd.a<S>> a(String $$0, CommandContextBuilder<S> $$1) {
+      List<yd.a<S>> $$2 = new ArrayList<>();
 
-   public boolean c() {
-      return this.e;
-   }
-
-   public Optional<wx> d() {
-      return this.f;
-   }
-
-   public xz e() {
-      return this.h;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof yd $$1 && this.h.equals($$1.h) && this.f.equals($$1.f) && this.e == $$1.e && this.g.equals($$1.g)) {
-            return true;
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.e ? 1 : 0;
-      $$0 = 31 * $$0 + this.f.hashCode();
-      $$0 = 31 * $$0 + this.g.hashCode();
-      return 31 * $$0 + this.h.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "nbt{" + this.h + ", interpreting=" + this.e + ", separator=" + this.f + "}";
-   }
-
-   @Override
-   public xl a(@Nullable ee $$0, @Nullable brw $$1, int $$2) throws CommandSyntaxException {
-      if ($$0 != null && this.c != null) {
-         Stream<String> $$3 = this.h.a($$0).flatMap($$0x -> {
-            try {
-               return this.c.a($$0x).stream();
-            } catch (CommandSyntaxException var3x) {
-               return Stream.empty();
-            }
-         }).map(va::s_);
-         if (this.e) {
-            wx $$4 = (wx)DataFixUtils.orElse(xa.a($$0, this.f, $$1, $$2), xa.c);
-            return $$3.flatMap($$3x -> {
-               try {
-                  xl $$4x = wx.a.a($$3x, $$0.v());
-                  return Stream.of(xa.a($$0, $$4x, $$1, $$2));
-               } catch (Exception var5x) {
-                  d.warn("Failed to parse component: {}", $$3x, var5x);
-                  return Stream.of();
+      for (ParsedCommandNode<S> $$3 : $$1.getNodes()) {
+         CommandNode $$5 = $$3.getNode();
+         if ($$5 instanceof ArgumentCommandNode) {
+            ArgumentCommandNode<S, ?> $$4 = (ArgumentCommandNode<S, ?>)$$5;
+            if ($$4.getType() instanceof fw) {
+               ParsedArgument<S, ?> $$5x = (ParsedArgument<S, ?>)$$1.getArguments().get($$4.getName());
+               if ($$5x != null) {
+                  String $$6 = $$5x.getRange().get($$0);
+                  $$2.add(new yd.a<>($$4, $$6));
                }
-            }).reduce(($$1x, $$2x) -> $$1x.b($$4).b($$2x)).orElseGet(wx::i);
-         } else {
-            return xa.a($$0, this.f, $$1, $$2)
-               .map($$1x -> $$3.map(wx::b).reduce(($$1xx, $$2x) -> $$1xx.b($$1x).b($$2x)).orElseGet(wx::i))
-               .orElseGet(() -> wx.b($$3.collect(Collectors.joining(", "))));
+            }
          }
-      } else {
-         return wx.i();
       }
+
+      return $$2;
    }
 
-   @Override
-   public wy.a<?> a() {
-      return b;
+   @Nullable
+   public yd.a<S> a(String $$0) {
+      for (yd.a<S> $$1 : this.a) {
+         if ($$0.equals($$1.a())) {
+            return $$1;
+         }
+      }
+
+      return null;
+   }
+
+   public static record a<S>(ArgumentCommandNode<S, ?> a, String b) {
+      public String a() {
+         return this.a.getName();
+      }
+
+      public ArgumentCommandNode<S, ?> b() {
+         return this.a;
+      }
+
+      public String c() {
+         return this.b;
+      }
    }
 }

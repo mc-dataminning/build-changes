@@ -1,4 +1,3 @@
-import com.mojang.serialization.MapCodec;
-
-public record epy(MapCodec<? extends epx> a) {
+public interface epy extends epn {
+   void a(iz var1, float var2);
 }

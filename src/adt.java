@@ -1,18 +1,48 @@
-import io.netty.buffer.ByteBuf;
+import java.util.BitSet;
+import javax.annotation.Nullable;
 
-public class adt implements ze<abq> {
-   public static final adt a = new adt();
-   public static final yv<ByteBuf, adt> b = yv.a(a);
+public class adt implements zs<ace> {
+   public static final zj<wl, adt> a = zs.a(adt::a, adt::new);
+   private final int b;
+   private final int c;
+   private final adu d;
 
-   private adt() {
+   public adt(dba $$0, enf $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      this.b = $$0.e;
+      this.c = $$0.f;
+      this.d = new adu($$0, $$1, $$2, $$3);
+   }
+
+   private adt(wl $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
+      this.d = new adu($$0, this.b, this.c);
+   }
+
+   private void a(wl $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
+      this.d.a($$0);
    }
 
    @Override
-   public zg<adt> a() {
-      return agc.ac;
+   public zu<adt> a() {
+      return agq.N;
    }
 
-   public void a(abq $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public adu f() {
+      return this.d;
    }
 }

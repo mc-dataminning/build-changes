@@ -1,70 +1,63 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import java.util.Set;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class erx {
-   private final Set<erw<?>> a;
-   private final Set<erw<?>> b;
+public class erx extends erp {
+   public static final MapCodec<erx> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and($$0.group(dot.b.fieldOf("patterns").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.c)))
+            .apply($$0, erx::new)
+   );
+   private final dot b;
+   private final boolean c;
 
-   erx(Set<erw<?>> $$0, Set<erw<?>> $$1) {
-      this.a = ImmutableSet.copyOf($$0);
-      this.b = ImmutableSet.copyOf(Sets.union($$0, $$1));
-   }
-
-   public boolean a(erw<?> $$0) {
-      return this.b.contains($$0);
-   }
-
-   public Set<erw<?>> a() {
-      return this.a;
-   }
-
-   public Set<erw<?>> b() {
-      return this.b;
+   erx(List<etn> $$0, dot $$1, boolean $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public String toString() {
-      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
-   }
-
-   public void a(epn $$0, epi $$1) {
-      Set<erw<?>> $$2 = $$1.a();
-      Set<erw<?>> $$3 = Sets.difference($$2, this.b);
-      if (!$$3.isEmpty()) {
-         $$0.b("Parameters " + $$3 + " are not provided in this context");
-      }
-   }
-
-   public static erx.a c() {
-      return new erx.a();
-   }
-
-   public static class a {
-      private final Set<erw<?>> a = Sets.newIdentityHashSet();
-      private final Set<erw<?>> b = Sets.newIdentityHashSet();
-
-      public erx.a a(erw<?> $$0) {
-         if (this.b.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
-         } else {
-            this.a.add($$0);
-            return this;
-         }
+   protected cuk a(cuk $$0, eqd $$1) {
+      if (this.c) {
+         $$0.a(km.W, dot.a, this.b, ($$0x, $$1x) -> new dot.a().a($$0x).a($$1x).a());
+      } else {
+         $$0.b(km.W, this.b);
       }
 
-      public erx.a b(erw<?> $$0) {
-         if (this.a.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
-         } else {
-            this.b.add($$0);
-            return this;
-         }
+      return $$0;
+   }
+
+   @Override
+   public err<erx> b() {
+      return ers.E;
+   }
+
+   public static erx.a a(boolean $$0) {
+      return new erx.a($$0);
+   }
+
+   public static class a extends erp.a<erx.a> {
+      private final dot.a a = new dot.a();
+      private final boolean b;
+
+      a(boolean $$0) {
+         this.b = $$0;
       }
 
-      public erx a() {
-         return new erx(this.a, this.b);
+      protected erx.a a() {
+         return this;
+      }
+
+      @Override
+      public erq b() {
+         return new erx(this.g(), this.a.a(), this.b);
+      }
+
+      public erx.a a(ji<dos> $$0, ctd $$1) {
+         this.a.a($$0, $$1);
+         return this;
       }
    }
 }

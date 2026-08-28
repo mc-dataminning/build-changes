@@ -1,43 +1,89 @@
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.MessageToMessageDecoder;
-import java.util.List;
-import javax.annotation.Nullable;
+public interface vz extends vl {
+   vz a = new vz() {
+   };
 
-public class vz extends MessageToMessageDecoder<ze<?>> {
-   private final zd a;
-   @Nullable
-   private zd.a b;
-
-   public vz(zd $$0) {
-      this.a = $$0;
+   @Override
+   default vl.b a() {
+      return vl.b.a;
    }
 
-   protected void a(ChannelHandlerContext $$0, ze<?> $$1, List<Object> $$2) throws Exception {
-      if (this.b != null) {
-         a($$1);
-         ze<?> $$3 = this.b.a($$1);
-         if ($$3 != null) {
-            this.b = null;
-            $$2.add($$3);
-         }
-      } else {
-         zd.a $$4 = this.a.a($$1);
-         if ($$4 != null) {
-            a($$1);
-            this.b = $$4;
-         } else {
-            $$2.add($$1);
-            if ($$1.d()) {
-               $$0.pipeline().remove($$0.name());
-            }
-         }
-      }
+   @Override
+   default vl.b a(String $$0) {
+      return vl.b.a;
    }
 
-   private static void a(ze<?> $$0) {
-      if ($$0.d()) {
-         throw new DecoderException("Terminal message received in bundle");
-      }
+   @Override
+   default vl.b a(byte $$0) {
+      return vl.b.a;
+   }
+
+   @Override
+   default vl.b a(short $$0) {
+      return vl.b.a;
+   }
+
+   @Override
+   default vl.b a(int $$0) {
+      return vl.b.a;
+   }
+
+   @Override
+   default vl.b a(long $$0) {
+      return vl.b.a;
+   }
+
+   @Override
+   default vl.b a(float $$0) {
+      return vl.b.a;
+   }
+
+   @Override
+   default vl.b a(double $$0) {
+      return vl.b.a;
+   }
+
+   @Override
+   default vl.b a(byte[] $$0) {
+      return vl.b.a;
+   }
+
+   @Override
+   default vl.b a(int[] $$0) {
+      return vl.b.a;
+   }
+
+   @Override
+   default vl.b a(long[] $$0) {
+      return vl.b.a;
+   }
+
+   @Override
+   default vl.b a(vq<?> $$0, int $$1) {
+      return vl.b.a;
+   }
+
+   @Override
+   default vl.a b(vq<?> $$0, int $$1) {
+      return vl.a.b;
+   }
+
+   @Override
+   default vl.a a(vq<?> $$0) {
+      return vl.a.b;
+   }
+
+   @Override
+   default vl.a a(vq<?> $$0, String $$1) {
+      return vl.a.b;
+   }
+
+   @Override
+   default vl.b b() {
+      return vl.b.a;
+   }
+
+   @Override
+   default vl.b b(vq<?> $$0) {
+      return vl.b.a;
    }
 }

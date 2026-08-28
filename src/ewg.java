@@ -1,2 +1,8 @@
-public interface ewg<T> extends ewf<T> {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ewg {
 }

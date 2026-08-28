@@ -1,56 +1,62 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
 
-public class dfp extends dea {
-   public static final MapCodec<dea> a = le.e.q().fieldOf("dead");
-   public static final MapCodec<dfp> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter($$0x -> $$0x.c), u()).apply($$0, dfp::new));
-   private final dea c;
-
-   public dfp(dea $$0, drc.d $$1) {
-      super($$1);
-      this.c = $$0;
-   }
+public class dfp extends ddn {
+   public static final MapCodec<dfp> d = b(dfp::new);
+   private static final float e = 0.05F;
+   private static final float f = 0.1F;
 
    @Override
    public MapCodec<dfp> a() {
-      return b;
+      return d;
+   }
+
+   public dfp(drw.d $$0) {
+      super($$0, kf.c);
    }
 
    @Override
-   protected void a(drd $$0, aqn $$1, io $$2, aym $$3) {
-      if (!this.a($$1, $$2)) {
-         $$1.a($$2, this.c.n(), 2);
-      }
-   }
-
-   @Override
-   protected drd a(drd $$0, it $$1, drd $$2, dba $$3, io $$4, io $$5) {
-      if (!this.a($$3, $$4)) {
-         $$3.a($$4, this, 60 + $$3.E_().a(40));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   protected boolean a(daf $$0, io $$1) {
-      for (it $$2 : it.values()) {
-         emw $$3 = $$0.b_($$1.a($$2));
-         if ($$3.a(awc.a)) {
-            return true;
-         }
-      }
-
+   public boolean d(drx $$0) {
       return false;
    }
 
-   @Nullable
-   @Override
-   public drd a(cxb $$0) {
-      if (!this.a($$0.q(), $$0.a())) {
-         $$0.q().a($$0.a(), this, 60 + $$0.q().E_().a(40));
+   protected static boolean a(dbt $$0, dcs.c $$1) {
+      if ($$1 == dcs.c.b) {
+         return $$0.E_().i() < 0.05F;
+      } else {
+         return $$1 == dcs.c.c ? $$0.E_().i() < 0.1F : false;
       }
+   }
 
-      return this.n();
+   @Override
+   public void a(drx $$0, dbt $$1, iz $$2, dcs.c $$3) {
+      if (a($$1, $$3)) {
+         if ($$3 == dcs.c.b) {
+            $$1.b($$2, dew.fu.n());
+            $$1.a(null, dwq.c, $$2);
+         } else if ($$3 == dcs.c.c) {
+            $$1.b($$2, dew.fw.n());
+            $$1.a(null, dwq.c, $$2);
+         }
+      }
+   }
+
+   @Override
+   protected boolean a(enp $$0) {
+      return true;
+   }
+
+   @Override
+   protected void a(drx $$0, dbt $$1, iz $$2, enp $$3) {
+      if ($$3 == enr.c) {
+         drx $$4 = dew.fu.n();
+         $$1.b($$2, $$4);
+         $$1.a(dwq.c, $$2, dwq.a.a($$4));
+         $$1.c(1047, $$2, 0);
+      } else if ($$3 == enr.e) {
+         drx $$5 = dew.fv.n();
+         $$1.b($$2, $$5);
+         $$1.a(dwq.c, $$2, dwq.a.a($$5));
+         $$1.c(1046, $$2, 0);
+      }
    }
 }

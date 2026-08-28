@@ -1,72 +1,35 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Optional;
 
-public record bg(List<dn<bqr>> b, Optional<br> c, Optional<br> d) {
-   public static final Codec<bg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dn.a(lf.s).listOf().optionalFieldOf("tags", List.of()).forGetter(bg::a),
-               br.a.optionalFieldOf("direct_entity").forGetter(bg::b),
-               br.a.optionalFieldOf("source_entity").forGetter(bg::c)
-            )
-            .apply($$0, bg::new)
-   );
+public class bg {
+   private final aza a;
+   private final jj.a b;
 
-   public boolean a(aqo $$0, bqp $$1) {
-      return this.a($$0.z(), $$0.dn(), $$1);
+   public bg(aza $$0, jj.a $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public boolean a(aqn $$0, eum $$1, bqp $$2) {
-      for (dn<bqr> $$3 : this.b) {
-         if (!$$3.a($$2.k())) {
-            return false;
-         }
-      }
-
-      return this.c.isPresent() && !this.c.get().a($$0, $$1, $$2.c()) ? false : !this.d.isPresent() || this.d.get().a($$0, $$1, $$2.d());
+   public void a(Optional<bf> $$0, String $$1) {
+      $$0.ifPresent($$1x -> this.a($$1x, $$1));
    }
 
-   public List<dn<bqr>> a() {
-      return this.b;
+   public void a(List<bf> $$0, String $$1) {
+      this.a($$0, esy.n, $$1);
    }
 
-   public Optional<br> b() {
-      return this.c;
+   public void a(bf $$0, String $$1) {
+      this.a($$0, esy.n, $$1);
    }
 
-   public Optional<br> c() {
-      return this.d;
+   public void a(bf $$0, esx $$1, String $$2) {
+      $$0.a(new eqj(this.a.a($$2), $$1, this.b));
    }
 
-   public static class a {
-      private final Builder<dn<bqr>> a = ImmutableList.builder();
-      private Optional<br> b = Optional.empty();
-      private Optional<br> c = Optional.empty();
-
-      public static bg.a a() {
-         return new bg.a();
-      }
-
-      public bg.a a(dn<bqr> $$0) {
-         this.a.add($$0);
-         return this;
-      }
-
-      public bg.a a(br.a $$0) {
-         this.b = Optional.of($$0.b());
-         return this;
-      }
-
-      public bg.a b(br.a $$0) {
-         this.c = Optional.of($$0.b());
-         return this;
-      }
-
-      public bg b() {
-         return new bg(this.a.build(), this.b, this.c);
+   public void a(List<bf> $$0, esx $$1, String $$2) {
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         bf $$4 = $$0.get($$3);
+         $$4.a(new eqj(this.a.a($$2 + "[" + $$3 + "]"), $$1, this.b));
       }
    }
 }

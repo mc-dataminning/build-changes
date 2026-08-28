@@ -1,110 +1,38 @@
-import java.util.List;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public abstract class cef extends ced {
+public class cef {
    @Nullable
-   private cef b;
-   private int c = 1;
-
-   public cef(bsc<? extends cef> $$0, daz $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   protected void z() {
-      super.z();
-      this.bS.a(5, new bzk(this));
-   }
-
-   @Override
-   public int ae() {
-      return this.gr();
-   }
-
-   public int gr() {
-      return super.ae();
-   }
-
-   @Override
-   protected boolean gp() {
-      return !this.gs();
-   }
-
-   public boolean gs() {
-      return this.b != null && this.b.bD();
-   }
-
-   public cef a(cef $$0) {
-      this.b = $$0;
-      $$0.gy();
-      return $$0;
-   }
-
-   public void gt() {
-      this.b.gz();
-      this.b = null;
-   }
-
-   private void gy() {
-      this.c++;
-   }
-
-   private void gz() {
-      this.c--;
-   }
-
-   public boolean gu() {
-      return this.gv() && this.c < this.gr();
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (this.gv() && this.dP().z.a(200) == 1) {
-         List<? extends ced> $$0 = this.dP().a((Class<? extends ced>)this.getClass(), this.cK().c(8.0, 8.0, 8.0));
-         if ($$0.size() <= 1) {
-            this.c = 1;
-         }
-      }
-   }
-
-   public boolean gv() {
-      return this.c > 1;
-   }
-
-   public boolean gw() {
-      return this.g(this.b) <= 121.0;
-   }
-
-   public void gx() {
-      if (this.gs()) {
-         this.K().a(this.b, 1.0);
-      }
-   }
-
-   public void a(Stream<? extends cef> $$0) {
-      $$0.limit((long)(this.gr() - this.c)).filter($$0x -> $$0x != this).forEach($$0x -> $$0x.a(this));
+   public static evm a(btt $$0, int $$1, int $$2) {
+      boolean $$3 = ceg.a($$0, $$1);
+      return cej.a($$0, () -> {
+         iz $$4 = cej.a($$0.el(), $$1, $$2);
+         return a($$0, $$1, $$3, $$4);
+      });
    }
 
    @Nullable
-   @Override
-   public btj a(dbo $$0, bpu $$1, bsu $$2, @Nullable btj $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3 == null) {
-         $$3 = new cef.a(this);
-      } else {
-         this.a(((cef.a)$$3).a);
-      }
-
-      return $$3;
+   public static evm a(btt $$0, int $$1, int $$2, evm $$3, double $$4) {
+      evm $$5 = $$3.a($$0.du(), $$0.dw(), $$0.dA());
+      boolean $$6 = ceg.a($$0, $$1);
+      return cej.a($$0, () -> {
+         iz $$6x = cej.a($$0.el(), $$1, $$2, 0, $$5.c, $$5.e, $$4);
+         return $$6x == null ? null : a($$0, $$1, $$6, $$6x);
+      });
    }
 
-   public static class a implements btj {
-      public final cef a;
+   @Nullable
+   public static evm a(btt $$0, int $$1, int $$2, evm $$3) {
+      evm $$4 = $$0.dn().d($$3);
+      boolean $$5 = ceg.a($$0, $$1);
+      return cej.a($$0, () -> {
+         iz $$5x = cej.a($$0.el(), $$1, $$2, 0, $$4.c, $$4.e, (float) (Math.PI / 2));
+         return $$5x == null ? null : a($$0, $$1, $$5, $$5x);
+      });
+   }
 
-      public a(cef $$0) {
-         this.a = $$0;
-      }
+   @Nullable
+   private static iz a(btt $$0, int $$1, boolean $$2, iz $$3) {
+      iz $$4 = cej.a($$0, $$1, $$0.el(), $$3);
+      return !ceg.a($$4, $$0) && !ceg.a($$2, $$0, $$4) && !ceg.a($$0.K(), $$4) && !ceg.b($$0, $$4) ? $$4 : null;
    }
 }

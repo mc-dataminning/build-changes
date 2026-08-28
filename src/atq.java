@@ -1,119 +1,94 @@
 import com.mojang.logging.LogUtils;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 
-public class atq implements atn {
-   private static final Logger a = LogUtils.getLogger();
-   private final Map<String, ato> c;
-   private final List<asj> d;
+public abstract class atq implements aty {
+   private static final Logger c = LogUtils.getLogger();
+   public static final String a = "vanilla";
+   public static final ats b = ats.a("core");
+   private final asz d;
+   private final atb e;
+   private final alb f;
+   private final evc g;
 
-   public atq(asl $$0, List<asj> $$1) {
-      this.d = List.copyOf($$1);
-      Map<String, ato> $$2 = new HashMap<>();
-      List<String> $$3 = $$1.stream().flatMap($$1x -> $$1x.a($$0).stream()).distinct().toList();
+   public atq(asz $$0, atb $$1, alb $$2, evc $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+   }
 
-      for (asj $$4 : $$1) {
-         atw $$5 = this.a($$4);
-         Set<String> $$6 = $$4.a($$0);
-         Predicate<akn> $$7 = $$5 != null ? $$1x -> $$5.b($$1x.a()) : null;
-
-         for (String $$8 : $$3) {
-            boolean $$9 = $$6.contains($$8);
-            boolean $$10 = $$5 != null && $$5.a($$8);
-            if ($$9 || $$10) {
-               ato $$11 = $$2.get($$8);
-               if ($$11 == null) {
-                  $$11 = new ato($$0, $$8);
-                  $$2.put($$8, $$11);
-               }
-
-               if ($$9 && $$10) {
-                  $$11.a($$4, $$7);
-               } else if ($$9) {
-                  $$11.a($$4);
-               } else {
-                  $$11.a($$4.b(), $$7);
-               }
-            }
-         }
+   @Override
+   public void loadPacks(Consumer<att> $$0) {
+      att $$1 = this.a(this.e);
+      if ($$1 != null) {
+         $$0.accept($$1);
       }
 
-      this.c = $$2;
+      this.a($$0);
    }
 
    @Nullable
-   private atw a(asj $$0) {
-      try {
-         return $$0.a(atw.a);
-      } catch (IOException var3) {
-         a.error("Failed to get filter section from pack {}", $$0.b());
-         return null;
+   protected abstract att a(asx var1);
+
+   protected abstract xl a(String var1);
+
+   public atb a() {
+      return this.e;
+   }
+
+   private void a(Consumer<att> $$0) {
+      Map<String, Function<String, att>> $$1 = new HashMap<>();
+      this.a($$1::put);
+      $$1.forEach(($$1x, $$2) -> {
+         att $$3 = $$2.apply($$1x);
+         if ($$3 != null) {
+            $$0.accept($$3);
+         }
+      });
+   }
+
+   protected void a(BiConsumer<String, Function<String, att>> $$0) {
+      this.e.a(this.d, this.f, $$1 -> this.a($$1, $$0));
+   }
+
+   protected void a(@Nullable Path $$0, BiConsumer<String, Function<String, att>> $$1) {
+      if ($$0 != null && Files.isDirectory($$0)) {
+         try {
+            atr.a($$0, this.g, ($$1x, $$2) -> $$1.accept(a($$1x), $$1xx -> this.a($$1xx, $$2, this.a($$1xx))));
+         } catch (IOException var4) {
+            c.warn("Failed to discover packs in {}", $$0, var4);
+         }
       }
    }
 
-   @Override
-   public Set<String> a() {
-      return this.c.keySet();
+   private static String a(Path $$0) {
+      return StringUtils.removeEnd($$0.getFileName().toString(), ".zip");
    }
 
-   @Override
-   public Optional<atv> getResource(akn $$0) {
-      atx $$1 = this.c.get($$0.b());
-      return $$1 != null ? $$1.getResource($$0) : Optional.empty();
-   }
+   @Nullable
+   protected abstract att a(String var1, att.c var2, xl var3);
 
-   @Override
-   public List<atv> a(akn $$0) {
-      atx $$1 = this.c.get($$0.b());
-      return $$1 != null ? $$1.a($$0) : List.of();
-   }
+   protected static att.c b(final asx $$0) {
+      return new att.c() {
+         @Override
+         public asx a(asw $$0x) {
+            return $$0;
+         }
 
-   @Override
-   public Map<akn, atv> b(String $$0, Predicate<akn> $$1) {
-      a($$0);
-      Map<akn, atv> $$2 = new TreeMap<>();
-
-      for (ato $$3 : this.c.values()) {
-         $$2.putAll($$3.b($$0, $$1));
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public Map<akn, List<atv>> c(String $$0, Predicate<akn> $$1) {
-      a($$0);
-      Map<akn, List<atv>> $$2 = new TreeMap<>();
-
-      for (ato $$3 : this.c.values()) {
-         $$2.putAll($$3.c($$0, $$1));
-      }
-
-      return $$2;
-   }
-
-   private static void a(String $$0) {
-      if ($$0.endsWith("/")) {
-         throw new IllegalArgumentException("Trailing slash in path " + $$0);
-      }
-   }
-
-   @Override
-   public Stream<asj> b() {
-      return this.d.stream();
-   }
-
-   @Override
-   public void close() {
-      this.d.forEach(asj::close);
+         @Override
+         public asx a(asw $$0x, att.a $$1) {
+            return $$0;
+         }
+      };
    }
 }

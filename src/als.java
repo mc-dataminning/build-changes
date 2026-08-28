@@ -1,8 +1,17 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface als extends alr {
+   apy a();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface als {
+   String b();
+
+   int d();
+
+   String h();
+
+   String[] O();
+
+   String s();
+
+   String u();
+
+   String a(String var1);
 }

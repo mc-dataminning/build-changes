@@ -1,49 +1,30 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
+import java.util.Locale;
 
-public class epn {
-   private final ayk a;
-   private final erx b;
-   private final iy.a c;
-   private final Set<akm<?>> d;
+public interface epn {
+   iz a();
 
-   public epn(ayk $$0, erx $$1, iy.a $$2) {
-      this($$0, $$1, $$2, Set.of());
-   }
+   float b();
 
-   private epn(ayk $$0, erx $$1, iy.a $$2, Set<akm<?>> $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
+   long c();
 
-   public epn a(String $$0) {
-      return new epn(this.a.a($$0), this.b, this.c, this.d);
-   }
+   long d();
 
-   public epn a(String $$0, akm<?> $$1) {
-      Set<akm<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
-      return new epn(this.a.a($$0), this.b, this.c, $$2);
-   }
+   boolean g();
 
-   public boolean a(akm<?> $$0) {
-      return this.d.contains($$0);
-   }
+   boolean i();
 
-   public void b(String $$0) {
-      this.a.b($$0);
-   }
+   void b(boolean var1);
 
-   public void a(epi $$0) {
-      this.b.a(this, $$0);
-   }
+   boolean l();
 
-   public iy.a a() {
-      return this.c;
-   }
+   dbp o();
 
-   public epn a(erx $$0) {
-      return new epn(this.a, $$0, this.c, this.d);
+   bqm q();
+
+   boolean r();
+
+   default void a(p $$0, dbv $$1) {
+      $$0.a("Level spawn location", () -> p.a($$1, this.a()));
+      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.c(), this.d()));
    }
 }

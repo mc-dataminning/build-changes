@@ -1,51 +1,70 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class eeg extends eei {
-   public static final MapCodec<eeg> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               axx.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
-               elz.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
-               axn.k.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
+public class eeg extends eej {
+   public static final MapCodec<eeg> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0)
+            .and(
+               $$0.group(
+                  bpu.b(4, 16).fieldOf("height").forGetter($$0x -> $$0x.b),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("wide_bottom_layer_hole_chance").forGetter($$0x -> $$0x.c),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("corner_hole_chance").forGetter($$0x -> $$0x.c),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_chance").forGetter($$0x -> $$0x.h),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_extension_chance").forGetter($$0x -> $$0x.i)
+               )
             )
-            .and(b($$0))
             .apply($$0, eeg::new)
    );
-   private final axx<Integer> i;
-   private final elz.a j;
-   private final float k;
-   private final elz l;
+   private final bpu b;
+   private final float c;
+   private final float g;
+   private final float h;
+   private final float i;
 
-   public eeg(axx<Integer> $$0, elz.a $$1, float $$2, long $$3, elz.a $$4, float $$5, List<drd> $$6) {
-      super($$3, $$4, $$5, $$6);
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = elz.b(new dxu(new dww($$3)), $$1);
+   public eeg(bpu $$0, bpu $$1, bpu $$2, float $$3, float $$4, float $$5, float $$6) {
+      super($$0, $$1);
+      this.b = $$2;
+      this.c = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
    }
 
    @Override
-   protected eef<?> a() {
-      return eef.e;
+   protected eek<?> a() {
+      return eek.k;
    }
 
    @Override
-   public drd a(aym $$0, io $$1) {
-      double $$2 = this.a($$1);
-      int $$3 = (int)ayf.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
-      List<drd> $$4 = Lists.newArrayListWithCapacity($$3);
+   protected void a(dbz $$0, eej.b $$1, azc $$2, edt $$3, int $$4, eej.a $$5, int $$6, int $$7, int $$8) {
+      boolean $$9 = $$5.c();
+      iz $$10 = $$5.a().b($$8);
+      int $$11 = $$7 + $$5.b() - 1;
+      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 2, $$6 - 3, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, $$6 - 4, $$9);
 
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
+      for (int $$12 = $$6 - 5; $$12 >= 0; $$12--) {
+         this.a($$0, $$1, $$2, $$3, $$10, $$11, $$12, $$9);
       }
 
-      return this.a($$4, $$1, (double)this.e);
+      this.a($$0, $$1, $$2, $$3, $$10, $$11, -1, $$9, this.h, this.i);
+      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, -2, $$9, this.h, this.i);
    }
 
-   protected double a(io $$0) {
-      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
+   @Override
+   public int a(azc $$0, int $$1, edt $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(azc $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      if ($$2 == -1 && ($$1 == $$4 || $$3 == $$4) && $$0.i() < this.c) {
+         return true;
+      } else {
+         boolean $$6 = $$1 == $$4 && $$3 == $$4;
+         boolean $$7 = $$4 > 2;
+         return $$7 ? $$6 || $$1 + $$3 > $$4 * 2 - 2 && $$0.i() < this.g : $$6 && $$0.i() < this.g;
+      }
    }
 }

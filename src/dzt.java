@@ -1,47 +1,42 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class dzt extends dzz<eca> {
-   public dzt(Codec<eca> $$0) {
+public class dzt extends dzr {
+   public dzt(Codec<dzq> $$0) {
       super($$0);
+      this.h = ImmutableSet.of(enr.e, enr.c);
    }
 
    @Override
-   public boolean a(eab<eca> $$0) {
-      eca $$1 = $$0.f();
-      io $$2 = $$0.e();
-      dbu $$3 = $$0.b();
-      aym $$4 = $$0.d();
-      boolean $$5 = false;
-      int $$6 = $$2.v();
-      int $$7 = $$6 + $$1.d();
-      int $$8 = $$6 - $$1.d() - 1;
-      int $$9 = $$1.c().a($$4);
-      io.a $$10 = new io.a();
-
-      for (io $$11 : io.c($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
-         int $$12 = $$11.u() - $$2.u();
-         int $$13 = $$11.w() - $$2.w();
-         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
-         }
-      }
-
-      return $$5;
+   protected int a() {
+      return 10;
    }
 
-   protected boolean a(eca $$0, dbu $$1, aym $$2, int $$3, int $$4, io.a $$5) {
-      boolean $$6 = false;
+   @Override
+   protected float a(azc $$0) {
+      return ($$0.i() * 2.0F + $$0.i()) * 2.0F;
+   }
 
-      for (int $$7 = $$3; $$7 > $$4; $$7--) {
-         $$5.q($$7);
-         if ($$0.b().test($$1, $$5)) {
-            drd $$8 = $$0.a().a($$1, $$2, $$5);
-            $$1.a($$5, $$8, 2);
-            this.a($$1, $$5);
-            $$6 = true;
+   @Override
+   protected double b() {
+      return 5.0;
+   }
+
+   protected boolean a(dzp $$0, dzq $$1, dtt $$2, Function<iz, ji<dcs>> $$3, dts $$4, iz.a $$5, iz.a $$6, dxb $$7, MutableBoolean $$8) {
+      if (this.a($$1, $$2.a_($$5))) {
+         drx $$9;
+         if ($$5.v() <= $$0.a() + 31) {
+            $$9 = g.g();
+         } else {
+            $$9 = e;
          }
-      }
 
-      return $$6;
+         $$2.a($$5, $$9, false);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

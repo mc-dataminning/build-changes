@@ -1,6 +1,3 @@
-public class acb extends zb<abq> {
-   @Override
-   public zg<acb> a() {
-      return agc.b;
-   }
+public interface acb extends agt {
+   void a(acc var1);
 }

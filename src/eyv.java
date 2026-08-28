@@ -1,93 +1,105 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import javax.annotation.Nullable;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWMonitorCallback;
+import org.slf4j.Logger;
 
-public class eyv extends eyt {
-   private final eyy f;
-   private final Matrix4f g;
-   private final Matrix3f h;
-   private final float i;
-   private float j;
-   private float k;
-   private float l;
-   private int m;
-   private int n;
-   private int o;
-   private float p;
-   private float q;
-   private float r;
+public class eyv {
+   private static final Logger a = LogUtils.getLogger();
+   private final Long2ObjectMap<eys> b = new Long2ObjectOpenHashMap();
+   private final eyt c;
 
-   public eyv(eyy $$0, eyu.a $$1, float $$2) {
-      this.f = $$0;
-      this.g = new Matrix4f($$1.a()).invert();
-      this.h = new Matrix3f($$1.b()).invert();
-      this.i = $$2;
-      this.a();
+   public eyv(eyt $$0) {
+      RenderSystem.assertInInitPhase();
+      this.c = $$0;
+      GLFW.glfwSetMonitorCallback(this::a);
+      PointerBuffer $$1 = GLFW.glfwGetMonitors();
+      if ($$1 != null) {
+         for (int $$2 = 0; $$2 < $$1.limit(); $$2++) {
+            long $$3 = $$1.get($$2);
+            this.b.put($$3, $$0.createMonitor($$3));
+         }
+      }
    }
 
-   private void a() {
-      this.j = 0.0F;
-      this.k = 0.0F;
-      this.l = 0.0F;
-      this.m = 0;
-      this.n = 10;
-      this.o = 15728880;
-      this.p = 0.0F;
-      this.q = 1.0F;
-      this.r = 0.0F;
+   private void a(long $$0, int $$1) {
+      RenderSystem.assertOnRenderThread();
+      if ($$1 == 262145) {
+         this.b.put($$0, this.c.createMonitor($$0));
+         a.debug("Monitor {} connected. Current monitors: {}", $$0, this.b);
+      } else if ($$1 == 262146) {
+         this.b.remove($$0);
+         a.debug("Monitor {} disconnected. Current monitors: {}", $$0, this.b);
+      }
    }
 
-   @Override
-   public void e() {
-      Vector3f $$0 = this.h.transform(new Vector3f(this.p, this.q, this.r));
-      it $$1 = it.a($$0.x(), $$0.y(), $$0.z());
-      Vector4f $$2 = this.g.transform(new Vector4f(this.j, this.k, this.l, 1.0F));
-      $$2.rotateY((float) Math.PI);
-      $$2.rotateX((float) (-Math.PI / 2));
-      $$2.rotate($$1.b());
-      float $$3 = -$$2.x() * this.i;
-      float $$4 = -$$2.y() * this.i;
-      this.f.a((double)this.j, (double)this.k, (double)this.l).a(1.0F, 1.0F, 1.0F, 1.0F).a($$3, $$4).a(this.m, this.n).b(this.o).a(this.p, this.q, this.r).e();
-      this.a();
+   @Nullable
+   public eys a(long $$0) {
+      RenderSystem.assertInInitPhase();
+      return (eys)this.b.get($$0);
    }
 
-   @Override
-   public eyy a(double $$0, double $$1, double $$2) {
-      this.j = (float)$$0;
-      this.k = (float)$$1;
-      this.l = (float)$$2;
-      return this;
+   @Nullable
+   public eys a(eyx $$0) {
+      long $$1 = GLFW.glfwGetWindowMonitor($$0.i());
+      if ($$1 != 0L) {
+         return this.a($$1);
+      } else {
+         int $$2 = $$0.q();
+         int $$3 = $$2 + $$0.m();
+         int $$4 = $$0.r();
+         int $$5 = $$4 + $$0.n();
+         int $$6 = -1;
+         eys $$7 = null;
+         long $$8 = GLFW.glfwGetPrimaryMonitor();
+         a.debug("Selecting monitor - primary: {}, current monitors: {}", $$8, this.b);
+         ObjectIterator var12 = this.b.values().iterator();
+
+         while (var12.hasNext()) {
+            eys $$9 = (eys)var12.next();
+            int $$10 = $$9.c();
+            int $$11 = $$10 + $$9.b().a();
+            int $$12 = $$9.d();
+            int $$13 = $$12 + $$9.b().b();
+            int $$14 = a($$2, $$10, $$11);
+            int $$15 = a($$3, $$10, $$11);
+            int $$16 = a($$4, $$12, $$13);
+            int $$17 = a($$5, $$12, $$13);
+            int $$18 = Math.max(0, $$15 - $$14);
+            int $$19 = Math.max(0, $$17 - $$16);
+            int $$20 = $$18 * $$19;
+            if ($$20 > $$6) {
+               $$7 = $$9;
+               $$6 = $$20;
+            } else if ($$20 == $$6 && $$8 == $$9.f()) {
+               a.debug("Primary monitor {} is preferred to monitor {}", $$9, $$7);
+               $$7 = $$9;
+            }
+         }
+
+         a.debug("Selected monitor: {}", $$7);
+         return $$7;
+      }
    }
 
-   @Override
-   public eyy a(int $$0, int $$1, int $$2, int $$3) {
-      return this;
+   public static int a(int $$0, int $$1, int $$2) {
+      if ($$0 < $$1) {
+         return $$1;
+      } else {
+         return $$0 > $$2 ? $$2 : $$0;
+      }
    }
 
-   @Override
-   public eyy a(float $$0, float $$1) {
-      return this;
-   }
-
-   @Override
-   public eyy a(int $$0, int $$1) {
-      this.m = $$0;
-      this.n = $$1;
-      return this;
-   }
-
-   @Override
-   public eyy b(int $$0, int $$1) {
-      this.o = $$0 | $$1 << 16;
-      return this;
-   }
-
-   @Override
-   public eyy a(float $$0, float $$1, float $$2) {
-      this.p = $$0;
-      this.q = $$1;
-      this.r = $$2;
-      return this;
+   public void a() {
+      RenderSystem.assertOnRenderThread();
+      GLFWMonitorCallback $$0 = GLFW.glfwSetMonitorCallback(null);
+      if ($$0 != null) {
+         $$0.free();
+      }
    }
 }

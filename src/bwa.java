@@ -1,29 +1,32 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bwa extends buj<bss> {
-   private final bpb c;
-   private final float d;
-   private final float e;
-   private final float f;
-
-   public bwa(bpb $$0, float $$1, float $$2, float $$3) {
-      super(ImmutableMap.of(cbu.n, cbv.b, cbu.Q, cbv.b));
-      if ($$2 > $$3) {
-         throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + $$2 + " > " + $$3);
-      } else {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3 - $$2;
-      }
+public class bwa {
+   public static <T extends btk> bve<btk> a(bsv<? extends T> $$0, int $$1, cco<T> $$2, float $$3, int $$4) {
+      return a($$0, $$1, $$0x -> true, $$0x -> true, $$2, $$3, $$4);
    }
 
-   protected void a(aqn $$0, bss $$1, long $$2) {
-      aym $$3 = $$1.el();
-      float $$4 = ayf.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
-      float $$5 = ayf.g($$1.dF() + 2.0F * $$3.i() * this.d - this.d);
-      eum $$6 = eum.a($$4, $$5);
-      $$1.dS().a(cbu.n, new bum($$1.bx().e($$6)));
-      $$1.dS().a(cbu.Q, this.c.a($$3));
+   public static <E extends btk, T extends btk> bve<E> a(bsv<? extends T> $$0, int $$1, Predicate<E> $$2, Predicate<T> $$3, cco<T> $$4, float $$5, int $$6) {
+      int $$7 = $$1 * $$1;
+      Predicate<btk> $$8 = $$2x -> $$0.equals($$2x.ak()) && $$3.test((T)$$2x);
+      return byq.a(
+         (Function<byq.b<E>, ? extends App<byq.c<E>, byt<E>>>)($$6x -> $$6x.group($$6x.a($$4), $$6x.a(cco.n), $$6x.c(cco.m), $$6x.b(cco.h))
+               .apply($$6x, ($$6xx, $$7x, $$8x, $$9) -> ($$10, $$11, $$12) -> {
+                     ccq $$13 = $$6x.b($$9);
+                     if ($$2.test((E)$$11) && $$13.d($$8)) {
+                        Optional<btk> $$14 = $$13.a($$3xxxx -> $$3xxxx.g((bsp)$$11) <= (double)$$7 && $$8.test($$3xxxx));
+                        $$14.ifPresent($$5xxxx -> {
+                           $$6xx.a($$5xxxx);
+                           $$7x.a(new bvo($$5xxxx, true));
+                           $$8x.a(new ccr(new bvo($$5xxxx, false), $$5, $$6));
+                        });
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

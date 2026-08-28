@@ -1,24 +1,15 @@
-public class gjh extends giz<cjg, ftx<cjg>> {
-   private static final akn a = new akn("textures/entity/phantom.png");
+public class gjh extends gjy<clc, fuf<clc>> {
+   private static final alb a = new alb("textures/entity/hoglin/hoglin.png");
 
-   public gjh(ght.a $$0) {
-      super($$0, new ftx<>($$0.a(fvv.aH)), 0.75F);
-      this.a(new gmd<>(this));
+   public gjh(gis.a $$0) {
+      super($$0, new fuf<>($$0.a(fwu.an)), 0.7F);
    }
 
-   public akn a(cjg $$0) {
+   public alb a(clc $$0) {
       return a;
    }
 
-   protected void a(cjg $$0, eyu $$1, float $$2) {
-      int $$3 = $$0.s();
-      float $$4 = 1.0F + 0.15F * (float)$$3;
-      $$1.b($$4, $$4, $$4);
-      $$1.a(0.0F, 1.3125F, 0.1875F);
-   }
-
-   protected void a(cjg $$0, eyu $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      $$1.a(a.b.rotationDegrees($$0.dH()));
+   protected boolean b(clc $$0) {
+      return super.a($$0) || $$0.y();
    }
 }

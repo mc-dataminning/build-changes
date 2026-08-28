@@ -1,50 +1,30 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Map;
-import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class bgd extends DataFix {
-   final String a;
-   final Map<String, String> b;
-
-   public bgd(Schema $$0, String $$1, Map<String, String> $$2) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
+   public bgd(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bga.t);
-      OpticFinder<?> $$1 = $$0.findField("tag");
-      return this.fixTypeEverywhereTyped(this.a, $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a)));
-   }
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "OptionsKeyTranslationFix",
+         this.getInputSchema().getType(bgs.e),
+         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.getMapValues().map($$1 -> $$0x.createMap($$1.entrySet().stream().map($$1x -> {
+                     if (((Dynamic)$$1x.getKey()).asString("").startsWith("key_")) {
+                        String $$2 = ((Dynamic)$$1x.getValue()).asString("");
+                        if (!$$2.startsWith("key.mouse") && !$$2.startsWith("scancode.")) {
+                           return Pair.of((Dynamic)$$1x.getKey(), $$0x.createString("key.keyboard." + $$2.substring("key.".length())));
+                        }
+                     }
 
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      $$0 = this.a($$0, "Enchantments");
-      return this.a($$0, "StoredEnchantments");
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0, String $$1) {
-      return $$0.update(
-         $$1,
-         $$0x -> (Dynamic)$$0x.asStreamOpt()
-               .map(
-                  $$0xx -> $$0xx.map(
-                        $$0xxx -> $$0xxx.update(
-                              "id",
-                              $$1x -> (Dynamic)$$1x.asString()
-                                    .map($$1xx -> $$0xxx.createString(this.b.getOrDefault($$1xx, $$1xx)))
-                                    .mapOrElse(Function.identity(), $$1xx -> $$1x)
-                           )
-                     )
-               )
-               .map($$0x::createList)
-               .mapOrElse(Function.identity(), $$1x -> $$0x)
+                     return Pair.of((Dynamic)$$1x.getKey(), (Dynamic)$$1x.getValue());
+                  }).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond)))).result().orElse($$0x))
       );
    }
 }

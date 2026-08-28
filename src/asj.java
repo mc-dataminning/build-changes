@@ -1,41 +1,22 @@
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
+import net.minecraft.server.MinecraftServer;
 
-public interface asj extends AutoCloseable {
-   String a = ".mcmeta";
-   String b = "pack.mcmeta";
+public class asj implements arr {
+   public static final arr.a a = new arr.a("server_resource_pack");
+   private final MinecraftServer.b b;
 
-   @Nullable
-   atp<InputStream> a(String... var1);
-
-   @Nullable
-   atp<InputStream> a(asl var1, akn var2);
-
-   void a(asl var1, String var2, String var3, asj.a var4);
-
-   Set<String> a(asl var1);
-
-   @Nullable
-   <T> T a(asw<T> var1) throws IOException;
-
-   asi a();
-
-   default String b() {
-      return this.a().a();
-   }
-
-   default Optional<ate> c() {
-      return this.a().d();
+   public asj(MinecraftServer.b $$0) {
+      this.b = $$0;
    }
 
    @Override
-   void close();
+   public void a(Consumer<zs<?>> $$0) {
+      $$0.accept(new aae(this.b.a(), this.b.b(), this.b.c(), this.b.d(), Optional.ofNullable(this.b.e())));
+   }
 
-   @FunctionalInterface
-   public interface a extends BiConsumer<akn, atp<InputStream>> {
+   @Override
+   public arr.a a() {
+      return a;
    }
 }

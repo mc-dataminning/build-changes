@@ -1,23 +1,47 @@
-public enum dso implements ayz {
-   a("none", true),
-   b("unstable", false),
-   c("partial", true),
-   d("full", true);
+import com.google.common.collect.ImmutableSet;
+import java.util.Collection;
+import java.util.Optional;
 
-   private final String e;
-   private final boolean f;
+public class dso extends dta<Boolean> {
+   private final ImmutableSet<Boolean> a = ImmutableSet.of(true, false);
 
-   private dso(String $$0, boolean $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   protected dso(String $$0) {
+      super($$0, Boolean.class);
    }
 
    @Override
-   public String c() {
-      return this.e;
+   public Collection<Boolean> a() {
+      return this.a;
    }
 
-   public boolean a() {
-      return this.f;
+   public static dso a(String $$0) {
+      return new dso($$0);
+   }
+
+   @Override
+   public Optional<Boolean> b(String $$0) {
+      return !"true".equals($$0) && !"false".equals($$0) ? Optional.empty() : Optional.of(Boolean.valueOf($$0));
+   }
+
+   public String a(Boolean $$0) {
+      return $$0.toString();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof dso $$1 && super.equals($$0)) {
+            return this.a.equals($$1.a);
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int b() {
+      return 31 * super.b() + this.a.hashCode();
    }
 }

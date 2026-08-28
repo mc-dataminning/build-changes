@@ -1,44 +1,30 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dm extends df<dm.a> {
+public record dm(boolean d, boolean e) implements bv {
+   public static final MapCodec<dm> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("has_raid", false).forGetter(dm::b), Codec.BOOL.optionalFieldOf("is_captain", false).forGetter(dm::c))
+            .apply($$0, dm::new)
+   );
+   public static final dm c = new dm(false, true);
+
    @Override
-   public Codec<dm.a> a() {
-      return dm.a.a;
+   public MapCodec<dm> a() {
+      return bw.e;
    }
 
-   public void a(aqo $$0, brw $$1) {
-      eph $$2 = br.b($$0, $$1);
-      this.a($$0, $$1x -> $$1x.a($$2));
+   @Override
+   public boolean a(bsp $$0, arb $$1, @Nullable evm $$2) {
+      return !($$0 instanceof coe $$3) ? false : $$3.gG() == this.d && $$3.gF() == this.e;
    }
 
-   public static record a(Optional<bc> b, Optional<bc> c) implements df.a {
-      public static final Codec<dm.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(br.b.optionalFieldOf("player").forGetter(dm.a::a), br.b.optionalFieldOf("entity").forGetter(dm.a::b)).apply($$0, dm.a::new)
-      );
+   public boolean b() {
+      return this.d;
+   }
 
-      public static an<dm.a> a(br.a $$0) {
-         return am.o.a(new dm.a(Optional.empty(), Optional.of(br.a($$0))));
-      }
-
-      public boolean a(eph $$0) {
-         return this.c.isEmpty() || this.c.get().a($$0);
-      }
-
-      @Override
-      public void a(bd $$0) {
-         df.a.super.a($$0);
-         $$0.a(this.c, ".entity");
-      }
-
-      @Override
-      public Optional<bc> a() {
-         return this.b;
-      }
-
-      public Optional<bc> b() {
-         return this.c;
-      }
+   public boolean c() {
+      return this.e;
    }
 }

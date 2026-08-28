@@ -1,29 +1,28 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import java.util.List;
 import java.util.Set;
-import java.util.function.Predicate;
 
-public record cdx(Set<drd> b, int c, int d) {
-   public static final Predicate<ix<cdx>> a = $$0 -> false;
-
-   public cdx(Set<drd> b, int c, int d) {
-      b = Set.copyOf(b);
-      this.b = b;
-      this.c = c;
-      this.d = d;
+public class cdx extends cdu<btk> {
+   @Override
+   public Set<cco<?>> a() {
+      return ImmutableSet.of(cco.i);
    }
 
-   public boolean a(drd $$0) {
-      return this.b.contains($$0);
+   @Override
+   protected void a(arb $$0, btk $$1) {
+      $$1.dS().a(cco.i, this.a($$1));
    }
 
-   public Set<drd> a() {
-      return this.b;
+   private List<btk> a(btk $$0) {
+      return ImmutableList.copyOf(this.c($$0).b(this::b));
    }
 
-   public int b() {
-      return this.c;
+   private boolean b(btk $$0) {
+      return $$0.ak() == bsv.bj && $$0.p_();
    }
 
-   public int c() {
-      return this.d;
+   private ccq c(btk $$0) {
+      return $$0.dS().c(cco.h).orElse(ccq.a());
    }
 }

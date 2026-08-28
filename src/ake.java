@@ -1,8 +1,4 @@
 public class ake {
-   public static final akm<ctl> a = a("pumpkin_seeds");
-   public static final akm<ctl> b = a("melon_seeds");
-
-   private static akm<ctl> a(String $$0) {
-      return akm.a(lf.G, new akn($$0));
-   }
+   public static final wt<akb> a = zx.a(wk.c, $$0 -> $$0.a(akd.b, akc.b).a(aju.b, ajw.a));
+   public static final wt<ajy> b = zx.b(wk.c, $$0 -> $$0.a(akd.a, ajz.a).a(aju.a, ajt.a));
 }

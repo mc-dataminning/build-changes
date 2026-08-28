@@ -1,60 +1,79 @@
-import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.JsonOps;
 import java.util.Collection;
 import java.util.Map;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class alo {
-   private final Map<akn, aln> a = Maps.newHashMap();
+public class alo extends aup {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Gson b = new GsonBuilder().create();
+   private Map<alb, af> c = Map.of();
+   private ak d = new ak();
+   private final jk.a e;
+
+   public alo(jk.a $$0) {
+      super(b, "advancements");
+      this.e = $$0;
+   }
+
+   protected void a(Map<alb, JsonElement> $$0, aul $$1, bnd $$2) {
+      akz<JsonElement> $$3 = this.e.a(JsonOps.INSTANCE);
+      Builder<alb, af> $$4 = ImmutableMap.builder();
+      $$0.forEach(($$2x, $$3x) -> {
+         try {
+            ae $$4x = (ae)ae.a.parse($$3, $$3x).getOrThrow(JsonParseException::new);
+            this.a($$2x, $$4x);
+            $$4.put($$2x, new af($$2x, $$4x));
+         } catch (Exception var6x) {
+            a.error("Parsing error loading custom advancement {}: {}", $$2x, var6x.getMessage());
+         }
+      });
+      this.c = $$4.buildOrThrow();
+      ak $$5 = new ak();
+      $$5.a(this.c.values());
+
+      for (ag $$6 : $$5.b()) {
+         if ($$6.b().b().c().isPresent()) {
+            as.a($$6);
+         }
+      }
+
+      this.d = $$5;
+   }
+
+   private void a(alb $$0, ae $$1) {
+      aza.a $$2 = new aza.a();
+      $$1.a($$2, this.e.b());
+      Multimap<String, String> $$3 = $$2.a();
+      if (!$$3.isEmpty()) {
+         String $$4 = $$3.asMap()
+            .entrySet()
+            .stream()
+            .map($$0x -> "  at " + (String)$$0x.getKey() + ": " + String.join("; ", (Iterable<? extends CharSequence>)$$0x.getValue()))
+            .collect(Collectors.joining("\n"));
+         a.warn("Found validation problems in advancement {}: \n{}", $$0, $$4);
+      }
+   }
 
    @Nullable
-   public aln a(akn $$0) {
-      return this.a.get($$0);
+   public af a(alb $$0) {
+      return this.c.get($$0);
    }
 
-   public aln a(akn $$0, wx $$1) {
-      aln $$2 = new aln($$0, $$1);
-      this.a.put($$0, $$2);
-      return $$2;
+   public ak a() {
+      return this.d;
    }
 
-   public void a(aln $$0) {
-      this.a.remove($$0.a());
-   }
-
-   public Collection<akn> a() {
-      return this.a.keySet();
-   }
-
-   public Collection<aln> b() {
-      return this.a.values();
-   }
-
-   public ud a(iz.a $$0) {
-      ud $$1 = new ud();
-
-      for (aln $$2 : this.a.values()) {
-         $$1.a($$2.a().toString(), $$2.a($$0));
-      }
-
-      return $$1;
-   }
-
-   public void a(ud $$0, iz.a $$1) {
-      for (String $$2 : $$0.e()) {
-         akn $$3 = new akn($$2);
-         this.a.put($$3, aln.a($$0.p($$2), $$3, $$1));
-      }
-   }
-
-   public void a(aqo $$0) {
-      for (aln $$1 : this.a.values()) {
-         $$1.c($$0);
-      }
-   }
-
-   public void b(aqo $$0) {
-      for (aln $$1 : this.a.values()) {
-         $$1.d($$0);
-      }
+   public Collection<af> b() {
+      return this.c.values();
    }
 }

@@ -1,39 +1,30 @@
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Consumer;
+import net.minecraft.server.MinecraftServer;
 
-public class arw implements ard {
-   public static final ard.a a = new ard.a("synchronize_registries");
-   private final List<ate> b;
-   private final je<akw> c;
+public class arw implements aiw {
+   private final MinecraftServer a;
+   private final wj b;
 
-   public arw(List<ate> $$0, je<akw> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public arw(MinecraftServer $$0, wj $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
    @Override
-   public void a(Consumer<ze<?>> $$0) {
-      $$0.accept(new abc(this.b));
-   }
-
-   private void a(Consumer<ze<?>> $$0, Set<ate> $$1) {
-      DynamicOps<va> $$2 = this.c.a().a(ur.a);
-      jo.a($$2, this.c.c(akw.b), $$1, ($$1x, $$2x) -> $$0.accept(new aba($$1x, $$2x)));
-      $$0.accept(new zt(awp.a(this.c)));
-   }
-
-   public void a(List<ate> $$0, Consumer<ze<?>> $$1) {
-      if ($$0.equals(this.b)) {
-         this.a($$1, Set.copyOf(this.b));
+   public void a(ait $$0) {
+      if ($$0.g() != ais.b) {
+         throw new UnsupportedOperationException("Invalid intention " + $$0.g());
       } else {
-         this.a($$1, Set.of());
+         this.b.a(ajf.a, new asd(this.a, this.b, false));
+         this.b.a(ajf.b);
       }
    }
 
    @Override
-   public ard.a a() {
-      return a;
+   public void a(xl $$0) {
+   }
+
+   @Override
+   public boolean c() {
+      return this.b.i();
    }
 }

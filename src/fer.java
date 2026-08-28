@@ -1,34 +1,38 @@
-import com.google.common.collect.Maps;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public record fer(float a, boolean b, Map<String, List<feq>> c) {
-   public static class a {
-      private final float a;
-      private final Map<String, List<feq>> b = Maps.newHashMap();
-      private boolean c;
+public class fer {
+   private final fxr a;
+   private int b = -1;
+   @Nullable
+   private Consumer<ur> c;
 
-      public static fer.a a(float $$0) {
-         return new fer.a($$0);
+   public fer(fxr $$0) {
+      this.a = $$0;
+   }
+
+   public boolean a(int $$0, @Nullable ur $$1) {
+      if (this.b == $$0 && this.c != null) {
+         this.c.accept($$1);
+         this.c = null;
+         return true;
+      } else {
+         return false;
       }
+   }
 
-      private a(float $$0) {
-         this.a = $$0;
-      }
+   private int a(Consumer<ur> $$0) {
+      this.c = $$0;
+      return ++this.b;
+   }
 
-      public fer.a a() {
-         this.c = true;
-         return this;
-      }
+   public void a(int $$0, Consumer<ur> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new ahm($$2, $$0));
+   }
 
-      public fer.a a(String $$0, feq $$1) {
-         this.b.computeIfAbsent($$0, $$0x -> new ArrayList<>()).add($$1);
-         return this;
-      }
-
-      public fer b() {
-         return new fer(this.a, this.c, this.b);
-      }
+   public void a(iz $$0, Consumer<ur> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new agv($$2, $$0));
    }
 }

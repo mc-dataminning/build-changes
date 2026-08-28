@@ -1,59 +1,43 @@
-import com.google.common.net.InetAddresses;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.List;
+import com.mojang.authlib.GameProfileRepository;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.authlib.yggdrasil.ServicesKeySet;
+import com.mojang.authlib.yggdrasil.ServicesKeyType;
+import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
+import java.io.File;
 import javax.annotation.Nullable;
 
-public class alv {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.c("commands.banip.invalid"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wx.c("commands.banip.failed"));
+public record alv(MinecraftSessionService a, ServicesKeySet b, GameProfileRepository c, auu d) {
+   private static final String e = "usercache.json";
 
-   public static void a(CommandDispatcher<ee> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("ban-ip").requires($$0x -> $$0x.c(3)))
-            .then(
-               ((RequiredArgumentBuilder)ef.a("target", StringArgumentType.word())
-                     .executes($$0x -> a((ee)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), null)))
-                  .then(ef.a("reason", ev.a()).executes($$0x -> a((ee)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), ev.a($$0x, "reason"))))
-            )
-      );
+   public static alv a(YggdrasilAuthenticationService $$0, File $$1) {
+      MinecraftSessionService $$2 = $$0.createMinecraftSessionService();
+      GameProfileRepository $$3 = $$0.createProfileRepository();
+      auu $$4 = new auu($$3, new File($$1, "usercache.json"));
+      return new alv($$2, $$0.getServicesKeySet(), $$3, $$4);
    }
 
-   private static int a(ee $$0, String $$1, @Nullable wx $$2) throws CommandSyntaxException {
-      if (InetAddresses.isInetAddress($$1)) {
-         return b($$0, $$1, $$2);
-      } else {
-         aqo $$3 = $$0.l().ah().a($$1);
-         if ($$3 != null) {
-            return b($$0, $$3.A(), $$2);
-         } else {
-            throw a.create();
-         }
-      }
+   @Nullable
+   public azh a() {
+      return azh.a(this.b, ServicesKeyType.PROFILE_KEY);
    }
 
-   private static int b(ee $$0, String $$1, @Nullable wx $$2) throws CommandSyntaxException {
-      auh $$3 = $$0.l().ah().g();
-      if ($$3.a($$1)) {
-         throw b.create();
-      } else {
-         List<aqo> $$4 = $$0.l().ah().b($$1);
-         aui $$5 = new aui($$1, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
-         $$3.a($$5);
-         $$0.a(() -> wx.a("commands.banip.success", $$1, $$5.d()), true);
-         if (!$$4.isEmpty()) {
-            $$0.a(() -> wx.a("commands.banip.info", $$4.size(), gt.a($$4)), true);
-         }
+   public boolean b() {
+      return !this.b.keys(ServicesKeyType.PROFILE_KEY).isEmpty();
+   }
 
-         for (aqo $$6 : $$4) {
-            $$6.c.b(wx.c("multiplayer.disconnect.ip_banned"));
-         }
+   public MinecraftSessionService c() {
+      return this.a;
+   }
 
-         return $$4.size();
-      }
+   public ServicesKeySet d() {
+      return this.b;
+   }
+
+   public GameProfileRepository e() {
+      return this.c;
+   }
+
+   public auu f() {
+      return this.d;
    }
 }

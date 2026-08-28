@@ -1,29 +1,34 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Arrays;
-import java.util.Collection;
+public interface eo {
+   eo a = new eo() {
+      @Override
+      public void a(xl $$0) {
+      }
 
-public class eo implements ArgumentType<ud> {
-   private static final Collection<String> a = Arrays.asList("{}", "{foo=bar}");
+      @Override
+      public boolean l_() {
+         return false;
+      }
 
-   private eo() {
-   }
+      @Override
+      public boolean w_() {
+         return false;
+      }
 
-   public static eo a() {
-      return new eo();
-   }
+      @Override
+      public boolean U_() {
+         return false;
+      }
+   };
 
-   public static <S> ud a(CommandContext<S> $$0, String $$1) {
-      return (ud)$$0.getArgument($$1, ud.class);
-   }
+   void a(xl var1);
 
-   public ud a(StringReader $$0) throws CommandSyntaxException {
-      return new vb($$0).f();
-   }
+   boolean l_();
 
-   public Collection<String> getExamples() {
-      return a;
+   boolean w_();
+
+   boolean U_();
+
+   default boolean m_() {
+      return false;
    }
 }

@@ -1,57 +1,16 @@
-import java.util.BitSet;
-import javax.annotation.Nullable;
-
-public class adc implements ze<abq> {
-   public static final yv<wi, adc> a = ze.a(adc::a, adc::new);
-   private final int b;
-   private final int c;
-   private final adb d;
-   private final adg e;
-
-   public adc(dtj $$0, eml $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      dag $$4 = $$0.f();
-      this.b = $$4.e;
-      this.c = $$4.f;
-      this.d = new adb($$0);
-      this.e = new adg($$4, $$1, $$2, $$3);
-   }
-
-   private adc(wi $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
-      this.d = new adb($$0, this.b, this.c);
-      this.e = new adg($$0, this.b, this.c);
-   }
-
-   private void a(wi $$0) {
-      $$0.p(this.b);
-      $$0.p(this.c);
-      this.d.a($$0);
-      this.e.a($$0);
-   }
+public record adc(cuf b, int c) implements zs<ace> {
+   public static final zj<ww, adc> a = zj.a(zh.a(lq.G), adc::b, zh.g, adc::e, adc::new);
 
    @Override
-   public zg<adc> a() {
-      return agc.K;
+   public zu<adc> a() {
+      return agq.x;
    }
 
-   public void a(abq $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
    }
 
    public int e() {
       return this.c;
-   }
-
-   public adb f() {
-      return this.d;
-   }
-
-   public adg g() {
-      return this.e;
    }
 }

@@ -1,23 +1,55 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface dbv {
+   int J_();
 
-public class dbv {
-   public static final Codec<dbv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(avh.b.fieldOf("sound").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("tick_chance").forGetter($$0x -> $$0x.c)).apply($$0, dbv::new)
-   );
-   private final ix<avh> b;
-   private final double c;
+   int I_();
 
-   public dbv(ix<avh> $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   default int am() {
+      return this.I_() + this.J_();
    }
 
-   public ix<avh> a() {
-      return this.b;
+   default int an() {
+      return this.ap() - this.ao();
    }
 
-   public double b() {
-      return this.c;
+   default int ao() {
+      return kb.a(this.I_());
+   }
+
+   default int ap() {
+      return kb.a(this.am() - 1) + 1;
+   }
+
+   default boolean s(iz $$0) {
+      return this.d($$0.v());
+   }
+
+   default boolean d(int $$0) {
+      return $$0 < this.I_() || $$0 >= this.am();
+   }
+
+   default int e(int $$0) {
+      return this.f(kb.a($$0));
+   }
+
+   default int f(int $$0) {
+      return $$0 - this.ao();
+   }
+
+   default int g(int $$0) {
+      return $$0 + this.ao();
+   }
+
+   static dbv e(final int $$0, final int $$1) {
+      return new dbv() {
+         @Override
+         public int J_() {
+            return $$1;
+         }
+
+         @Override
+         public int I_() {
+            return $$0;
+         }
+      };
    }
 }

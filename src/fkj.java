@@ -1,104 +1,163 @@
-import com.mojang.text2speech.Narrator;
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class fkj extends flz {
-   private static final wx a = wx.c("accessibility.onboarding.screen.title");
-   private static final wx b = wx.c("accessibility.onboarding.screen.narrator");
-   private static final int c = 4;
-   private static final int d = 16;
-   private final fgr r;
-   private final fef s;
-   private final boolean u;
-   private boolean v;
-   private float w;
-   private final Runnable x;
-   @Nullable
-   private fgl y;
-   @Nullable
-   private ffy z;
-   private final fjn A = new fjn(this, this.m(), 33);
+public class fkj extends fkh {
+   private final fkj.b c;
+   private final List<fkj.a> d = new ArrayList<>();
+   private final fkp e = fkp.i();
 
-   public fkj(fef $$0, Runnable $$1) {
-      super(a);
-      this.s = $$0;
-      this.x = $$1;
-      this.r = new fgr(true);
-      this.u = feb.Q().aX().a();
+   public fkj(int $$0, int $$1, fkj.b $$2) {
+      this(0, 0, $$0, $$1, $$2);
+   }
+
+   public fkj(int $$0, int $$1, int $$2, int $$3, fkj.b $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.c = $$4;
    }
 
    @Override
-   public void aN_() {
-      fjr $$0 = this.A.c(fjr.d());
-      $$0.c().b().a(4);
-      this.y = $$0.a(new fgl(this.n, this.l, this.p), $$0x -> $$0x.a(8));
-      this.z = this.s.as().a(this.s);
-      this.z.j = this.u;
-      $$0.a(this.z);
-      $$0.a(fge.b(150, $$0x -> this.a(new fkk(this, this.m.m)), false));
-      $$0.a(fge.a(150, $$0x -> this.a(new fli(this, this.m.m, this.m.ag())), false));
-      this.A.b(fga.a(ww.j, $$0x -> this.d()).a());
-      this.A.a(this::c);
-      this.c();
-   }
+   public void a() {
+      super.a();
+      if (!this.d.isEmpty()) {
+         int $$0 = 0;
+         int $$1 = this.c.b(this);
 
-   @Override
-   protected void c() {
-      if (this.y != null) {
-         this.y.b(this.n);
-      }
-
-      this.A.a();
-   }
-
-   @Override
-   protected void aD_() {
-      if (this.u && this.z != null) {
-         this.b(this.z);
-      } else {
-         super.aD_();
-      }
-   }
-
-   private int m() {
-      return 90;
-   }
-
-   @Override
-   public void d() {
-      this.a(this.x);
-   }
-
-   private void a(flz $$0) {
-      this.a(() -> this.m.a($$0));
-   }
-
-   private void a(Runnable $$0) {
-      this.s.ad = false;
-      this.s.av();
-      Narrator.getNarrator().clear();
-      $$0.run();
-   }
-
-   @Override
-   public void a(ffn $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.C();
-      this.r.a($$0, this.n, 1.0F);
-   }
-
-   @Override
-   protected void a(ffn $$0, float $$1) {
-      f.a($$0, this.n, this.o, 1.0F, 0.0F);
-   }
-
-   private void C() {
-      if (!this.v && this.u) {
-         if (this.w < 40.0F) {
-            this.w++;
-         } else if (this.m.aB()) {
-            Narrator.getNarrator().say(b.getString(), true);
-            this.v = true;
+         for (fkj.a $$2 : this.d) {
+            $$0 += this.c.a($$2);
+            $$1 = Math.max($$1, this.c.b($$2));
          }
+
+         int $$3 = this.c.a(this) - $$0;
+         int $$4 = this.c.c(this);
+         Iterator<fkj.a> $$5 = this.d.iterator();
+         fkj.a $$6 = $$5.next();
+         this.c.a($$6, $$4);
+         $$4 += this.c.a($$6);
+         if (this.d.size() >= 2) {
+            c $$7 = new c($$3, this.d.size() - 1);
+
+            while ($$7.hasNext()) {
+               $$4 += $$7.nextInt();
+               fkj.a $$8 = $$5.next();
+               this.c.a($$8, $$4);
+               $$4 += this.c.a($$8);
+            }
+         }
+
+         int $$9 = this.c.d(this);
+
+         for (fkj.a $$10 : this.d) {
+            this.c.a($$10, $$9, $$1);
+         }
+
+         switch (this.c) {
+            case a:
+               this.b = $$1;
+               break;
+            case b:
+               this.a = $$1;
+         }
+      }
+   }
+
+   @Override
+   public void b(Consumer<fko> $$0) {
+      this.d.forEach($$1 -> $$0.accept($$1.a));
+   }
+
+   public fkp b() {
+      return this.e.g();
+   }
+
+   public fkp c() {
+      return this.e;
+   }
+
+   public <T extends fko> T a(T $$0) {
+      return this.a($$0, this.b());
+   }
+
+   public <T extends fko> T a(T $$0, fkp $$1) {
+      this.d.add(new fkj.a($$0, $$1));
+      return $$0;
+   }
+
+   public <T extends fko> T a(T $$0, Consumer<fkp> $$1) {
+      return this.a($$0, ac.a(this.b(), $$1));
+   }
+
+   static class a extends fkh.a {
+      protected a(fko $$0, fkp $$1) {
+         super($$0, $$1);
+      }
+   }
+
+   public static enum b {
+      a,
+      b;
+
+      int a(fko $$0) {
+         return switch (this) {
+            case a -> $$0.x();
+            case b -> $$0.v();
+         };
+      }
+
+      int a(fkj.a $$0) {
+         return switch (this) {
+            case a -> $$0.b();
+            case b -> $$0.a();
+         };
+      }
+
+      int b(fko $$0) {
+         return switch (this) {
+            case a -> $$0.v();
+            case b -> $$0.x();
+         };
+      }
+
+      int b(fkj.a $$0) {
+         return switch (this) {
+            case a -> $$0.a();
+            case b -> $$0.b();
+         };
+      }
+
+      void a(fkj.a $$0, int $$1) {
+         switch (this) {
+            case a:
+               $$0.a($$1, $$0.b());
+               break;
+            case b:
+               $$0.b($$1, $$0.a());
+         }
+      }
+
+      void a(fkj.a $$0, int $$1, int $$2) {
+         switch (this) {
+            case a:
+               $$0.b($$1, $$2);
+               break;
+            case b:
+               $$0.a($$1, $$2);
+         }
+      }
+
+      int c(fko $$0) {
+         return switch (this) {
+            case a -> $$0.C();
+            case b -> $$0.D();
+         };
+      }
+
+      int d(fko $$0) {
+         return switch (this) {
+            case a -> $$0.D();
+            case b -> $$0.C();
+         };
       }
    }
 }

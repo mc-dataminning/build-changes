@@ -1,29 +1,19 @@
-public class zy implements ze<zv> {
-   public static final yv<vx, zy> a = ze.a(zy::a, zy::new);
-   private final long b;
+public interface zy extends aby, wg {
+   void a(aab var1);
 
-   public zy(long $$0) {
-      this.b = $$0;
-   }
+   void a(aac var1);
 
-   private zy(vx $$0) {
-      this.b = $$0.readLong();
-   }
+   void a(zz var1);
 
-   private void a(vx $$0) {
-      $$0.b(this.b);
-   }
+   void a(aaa var1);
 
-   @Override
-   public zg<zy> a() {
-      return zu.l;
-   }
+   void a(aae var1);
 
-   public void a(zv $$0) {
-      $$0.a(this);
-   }
+   void a(aad var1);
 
-   public long b() {
-      return this.b;
-   }
+   void a(aah var1);
+
+   void a(aaf var1);
+
+   void a(aag var1);
 }

@@ -1,30 +1,32 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
+import java.util.function.Predicate;
 
 public class bxc {
-   public static buk<cll> a(cbu<List<iw>> $$0, float $$1, int $$2, int $$3, cbu<iw> $$4) {
-      MutableLong $$5 = new MutableLong(0L);
-      return bxw.a(
-         (Function<bxw.b<cll>, ? extends App<bxw.c<cll>, bxz<cll>>>)($$6 -> $$6.group($$6.a(cbu.m), $$6.b($$0), $$6.b($$4))
-               .apply($$6, ($$5xx, $$6x, $$7) -> ($$8, $$9, $$10) -> {
-                     List<iw> $$11 = $$6.b($$6x);
-                     iw $$12 = $$6.b($$7);
-                     if ($$11.isEmpty()) {
+   public static bve<btk> a(btn $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.ak().f()), $$1);
+   }
+
+   public static bwo<btk> a(bsv<?> $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.ak()), $$1);
+   }
+
+   public static bwo<btk> a(float $$0) {
+      return a($$0x -> true, $$0);
+   }
+
+   public static bwo<btk> a(Predicate<btk> $$0, float $$1) {
+      float $$2 = $$1 * $$1;
+      return byq.a(
+         (Function<byq.b<btk>, ? extends App<byq.c<btk>, byt<btk>>>)($$2x -> $$2x.group($$2x.c(cco.n), $$2x.b(cco.h))
+               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
+                     Optional<btk> $$8 = $$2x.<ccq>b($$4).a($$0.and($$2xxxx -> $$2xxxx.g((bsp)$$6) <= (double)$$2 && !$$6.x($$2xxxx)));
+                     if ($$8.isEmpty()) {
                         return false;
                      } else {
-                        iw $$13 = $$11.get($$8.E_().a($$11.size()));
-                        if ($$13 != null && $$8.ae() == $$13.a() && $$12.b().a($$9.dn(), (double)$$3)) {
-                           if ($$10 > $$5.getValue()) {
-                              $$5xx.a(new cbx($$13.b(), $$1, $$2));
-                              $$5.setValue($$10 + 100L);
-                           }
-
-                           return true;
-                        } else {
-                           return false;
-                        }
+                        $$3.a(new bvo($$8.get(), true));
+                        return true;
                      }
                   }))
       );

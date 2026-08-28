@@ -1,51 +1,52 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
+import com.google.gson.JsonObject;
+import com.mojang.brigadier.arguments.ArgumentType;
+import java.util.function.Function;
 import java.util.function.Supplier;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-import org.slf4j.Logger;
 
-public class in {
-   private static final Logger c = LogUtils.getLogger();
-   public static final Map<it, j> a = ac.a(Maps.newEnumMap(it.class), $$0 -> {
-      $$0.put(it.d, j.a());
-      $$0.put(it.f, new j(null, new Quaternionf().rotateY((float) (Math.PI / 2)), null, null));
-      $$0.put(it.e, new j(null, new Quaternionf().rotateY((float) (-Math.PI / 2)), null, null));
-      $$0.put(it.c, new j(null, new Quaternionf().rotateY((float) Math.PI), null, null));
-      $$0.put(it.b, new j(null, new Quaternionf().rotateX((float) (-Math.PI / 2)), null, null));
-      $$0.put(it.a, new j(null, new Quaternionf().rotateX((float) (Math.PI / 2)), null, null));
-   });
-   public static final Map<it, j> b = ac.a(Maps.newEnumMap(it.class), $$0 -> {
-      for (it $$1 : it.values()) {
-         $$0.put($$1, a.get($$1).b());
+public class in<A extends ArgumentType<?>> implements ik<A, in<A>.a> {
+   private final in<A>.a a;
+
+   private in(Function<el, A> $$0) {
+      this.a = new in.a($$0);
+   }
+
+   public static <T extends ArgumentType<?>> in<T> a(Supplier<T> $$0) {
+      return new in<>($$1 -> $$0.get());
+   }
+
+   public static <T extends ArgumentType<?>> in<T> a(Function<el, T> $$0) {
+      return new in<>($$0);
+   }
+
+   public void a(in<A>.a $$0, wl $$1) {
+   }
+
+   public void a(in<A>.a $$0, JsonObject $$1) {
+   }
+
+   public in<A>.a a(wl $$0) {
+      return this.a;
+   }
+
+   public in<A>.a b(A $$0) {
+      return this.a;
+   }
+
+   public final class a implements ik.a<A> {
+      private final Function<el, A> b;
+
+      public a(final Function<el, A> $$1) {
+         this.b = $$1;
       }
-   });
 
-   public static j a(j $$0) {
-      Matrix4f $$1 = new Matrix4f().translation(0.5F, 0.5F, 0.5F);
-      $$1.mul($$0.c());
-      $$1.translate(-0.5F, -0.5F, -0.5F);
-      return new j($$1);
-   }
+      @Override
+      public A b(el $$0) {
+         return this.b.apply($$0);
+      }
 
-   public static j b(j $$0) {
-      Matrix4f $$1 = new Matrix4f().translation(-0.5F, -0.5F, -0.5F);
-      $$1.mul($$0.c());
-      $$1.translate(0.5F, 0.5F, 0.5F);
-      return new j($$1);
-   }
-
-   public static j a(j $$0, it $$1, Supplier<String> $$2) {
-      it $$3 = it.a($$0.c(), $$1);
-      j $$4 = $$0.b();
-      if ($$4 == null) {
-         c.warn($$2.get());
-         return new j(null, null, new Vector3f(0.0F, 0.0F, 0.0F), null);
-      } else {
-         j $$5 = b.get($$1).a($$4).a(a.get($$3));
-         return a($$5);
+      @Override
+      public ik<A, ?> a() {
+         return in.this;
       }
    }
 }

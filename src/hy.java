@@ -1,18 +1,13 @@
-import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.ArgumentType;
+public class hy<T extends er<T>> implements hn<T> {
+   private static final hy<? extends er<?>> a = (hy<? extends er<?>>)(new hy<>());
 
-public interface hy<A extends ArgumentType<?>, T extends hy.a<A>> {
-   void a(T var1, vx var2);
+   public static <T extends er<T>> hn<T> a() {
+      return (hn<T>)a;
+   }
 
-   T b(vx var1);
-
-   void a(T var1, JsonObject var2);
-
-   T a(A var1);
-
-   public interface a<A extends ArgumentType<?>> {
-      A b(ea var1);
-
-      hy<A, ?> a();
+   @Override
+   public void execute(ho<T> $$0, hq $$1) {
+      $$1.a();
+      $$1.b();
    }
 }

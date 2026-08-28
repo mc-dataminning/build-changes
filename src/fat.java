@@ -1,54 +1,28 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Date;
+import java.util.UUID;
 import org.slf4j.Logger;
 
-public class fat extends faq {
-   private static final Logger e = LogUtils.getLogger();
-   public List<fas> a;
-   public int b;
-   public int c;
-   public int d;
+public class fat extends fbp {
+   private static final Logger f = LogUtils.getLogger();
+   public String a;
+   public String b;
+   public String c;
+   public UUID d;
+   public Date e;
 
-   public fat() {
-   }
-
-   public fat(int $$0) {
-      this.a = Collections.emptyList();
-      this.b = 0;
-      this.c = $$0;
-      this.d = -1;
-   }
-
-   public boolean a() {
-      return this.b * this.c >= this.d && this.b > 0 && this.d > 0 && this.c > 0;
-   }
-
-   public static fat a(String $$0) {
+   public static fat a(JsonObject $$0) {
       fat $$1 = new fat();
-      $$1.a = Lists.newArrayList();
 
       try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("templates").isJsonArray()) {
-            Iterator<JsonElement> $$4 = $$3.get("templates").getAsJsonArray().iterator();
-
-            while ($$4.hasNext()) {
-               $$1.a.add(fas.a($$4.next().getAsJsonObject()));
-            }
-         }
-
-         $$1.b = fcn.a("page", $$3, 0);
-         $$1.c = fcn.a("size", $$3, 0);
-         $$1.d = fcn.a("total", $$3, 0);
-      } catch (Exception var5) {
-         e.error("Could not parse WorldTemplatePaginatedList: {}", var5.getMessage());
+         $$1.a = fdm.b("invitationId", $$0, "");
+         $$1.b = fdm.b("worldName", $$0, "");
+         $$1.c = fdm.b("worldOwnerName", $$0, "");
+         $$1.d = fdm.a("worldOwnerUuid", $$0, ac.e);
+         $$1.e = fdm.b("date", $$0);
+      } catch (Exception var3) {
+         f.error("Could not parse PendingInvite: {}", var3.getMessage());
       }
 
       return $$1;

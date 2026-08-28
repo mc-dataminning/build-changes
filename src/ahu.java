@@ -1,29 +1,33 @@
-public class ahu implements ze<age> {
-   public static final yv<wi, ahu> a = ze.a(ahu::a, ahu::new);
+public class ahu implements zs<ags> {
+   public static final zj<wl, ahu> a = zs.a(ahu::a, ahu::new);
    private final int b;
-   private final ctq c;
+   private final alb c;
+   private final boolean d;
 
-   public ahu(int $$0, ctq $$1) {
+   public ahu(int $$0, cys<?> $$1, boolean $$2) {
       this.b = $$0;
-      this.c = $$1.s();
+      this.c = $$1.a();
+      this.d = $$2;
    }
 
-   private ahu(wi $$0) {
-      this.b = $$0.readShort();
-      this.c = ctq.e.decode($$0);
+   private ahu(wl $$0) {
+      this.b = $$0.readByte();
+      this.c = $$0.q();
+      this.d = $$0.readBoolean();
    }
 
-   private void a(wi $$0) {
-      $$0.l(this.b);
-      ctq.e.encode($$0, this.c);
+   private void a(wl $$0) {
+      $$0.k(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zg<ahu> a() {
-      return agc.bW;
+   public zu<ahu> a() {
+      return agq.bI;
    }
 
-   public void a(age $$0) {
+   public void a(ags $$0) {
       $$0.a(this);
    }
 
@@ -31,7 +35,11 @@ public class ahu implements ze<age> {
       return this.b;
    }
 
-   public ctq e() {
+   public alb e() {
       return this.c;
+   }
+
+   public boolean f() {
+      return this.d;
    }
 }

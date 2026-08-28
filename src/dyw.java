@@ -1,32 +1,119 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiPredicate;
 
-public class dyw extends dyt {
-   public static final Codec<dyw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dyt.d.forGetter($$0x -> $$0x),
-               boz.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
-               boz.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
-               boz.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
-            )
-            .apply($$0, dyw::new)
-   );
-   public final boz b;
-   public final boz c;
-   final boz j;
+public interface dyw extends BiPredicate<dco, iz> {
+   Codec<dyw> b = lp.O.q().dispatch(dyw::a, dyx::codec);
+   dyw c = a(dew.a);
+   dyw d = a(dew.a, dew.G);
 
-   public dyw(float $$0, efs $$1, boz $$2, dxp $$3, dyu $$4, jb<dea> $$5, boz $$6, boz $$7, boz $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.b = $$6;
-      this.c = $$7;
-      this.j = $$8;
+   dyx<?> a();
+
+   static dyw a(List<dyw> $$0) {
+      return new dyu($$0);
    }
 
-   public dyw(float $$0, efs $$1, boz $$2, dxp $$3, jb<dea> $$4, boz $$5, boz $$6, boz $$7) {
-      this($$0, $$1, $$2, $$3, dyu.a, $$4, $$5, $$6, $$7);
+   static dyw a(dyw... $$0) {
+      return a(List.of($$0));
    }
 
-   public dyw(dyt $$0, boz $$1, boz $$2, boz $$3) {
-      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
+   static dyw a(dyw $$0, dyw $$1) {
+      return a(List.of($$0, $$1));
+   }
+
+   static dyw b(List<dyw> $$0) {
+      return new dyv($$0);
+   }
+
+   static dyw b(dyw... $$0) {
+      return b(List.of($$0));
+   }
+
+   static dyw b(dyw $$0, dyw $$1) {
+      return b(List.of($$0, $$1));
+   }
+
+   static dyw a(kd $$0, List<deu> $$1) {
+      return new dzc($$0, jm.a(deu::q, $$1));
+   }
+
+   static dyw c(List<deu> $$0) {
+      return a(kd.g, $$0);
+   }
+
+   static dyw a(kd $$0, deu... $$1) {
+      return a($$0, List.of($$1));
+   }
+
+   static dyw a(deu... $$0) {
+      return a(kd.g, $$0);
+   }
+
+   static dyw a(kd $$0, axb<deu> $$1) {
+      return new dzb($$0, $$1);
+   }
+
+   static dyw a(axb<deu> $$0) {
+      return a(kd.g, $$0);
+   }
+
+   static dyw b(kd $$0, List<enp> $$1) {
+      return new dzd($$0, jm.a(enp::k, $$1));
+   }
+
+   static dyw a(kd $$0, enp... $$1) {
+      return b($$0, List.of($$1));
+   }
+
+   static dyw a(enp... $$0) {
+      return a(kd.g, $$0);
+   }
+
+   static dyw a(dyw $$0) {
+      return new dze($$0);
+   }
+
+   static dyw a(kd $$0) {
+      return new dzf($$0);
+   }
+
+   static dyw b() {
+      return a(kd.g);
+   }
+
+   static dyw a(drx $$0, kd $$1) {
+      return new dzj($$1, $$0);
+   }
+
+   static dyw a(kd $$0, je $$1) {
+      return new dyz($$0, $$1);
+   }
+
+   static dyw a(je $$0) {
+      return a(kd.g, $$0);
+   }
+
+   static dyw b(kd $$0) {
+      return new dzg($$0);
+   }
+
+   static dyw c() {
+      return b(kd.g);
+   }
+
+   static dyw d() {
+      return c(kd.g);
+   }
+
+   static dyw c(kd $$0) {
+      return a($$0, enr.a);
+   }
+
+   static dyw d(kd $$0) {
+      return new dza($$0);
+   }
+
+   static dyw e() {
+      return dzi.a;
    }
 }

@@ -1,26 +1,22 @@
 public enum fdn {
-   a(true, false),
-   b(false, false),
-   c(false, true);
+   a(0, ehv.a),
+   b(1, ehv.b),
+   c(2, ehv.c),
+   d(3, ehv.d);
 
-   private static final fdn[] d = values();
-   private final boolean e;
-   private final boolean f;
+   private final int e;
+   private final xl f;
 
-   private fdn(boolean $$0, boolean $$1) {
+   private fdn(final int $$0, final ala<ehu> $$1) {
       this.e = $$0;
-      this.f = $$1;
+      this.f = xl.c($$1.a().f("generator"));
    }
 
-   public boolean a() {
-      return this.e;
-   }
-
-   public boolean b() {
+   public xl a() {
       return this.f;
    }
 
-   public fdn c() {
-      return d[(this.ordinal() + 1) % d.length];
+   public int b() {
+      return this.e;
    }
 }

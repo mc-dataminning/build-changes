@@ -1,57 +1,101 @@
+import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.serialization.DynamicOps;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Objects;
 
-public class go {
-   private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> wx.b("arguments.item.overstacked", $$0, $$1));
-   private final ix<ctl> b;
-   private final jx c;
+public class go implements gn {
+   public static final char a = '^';
+   private final double b;
+   private final double c;
+   private final double d;
 
-   public go(ix<ctl> $$0, jx $$1) {
+   public go(double $$0, double $$1, double $$2) {
       this.b = $$0;
       this.c = $$1;
+      this.d = $$2;
    }
 
-   public ctl a() {
-      return this.b.a();
+   @Override
+   public evm a(ep $$0) {
+      evl $$1 = $$0.k();
+      evm $$2 = $$0.m().a($$0);
+      float $$3 = ayu.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
+      float $$4 = ayu.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
+      float $$5 = ayu.b(-$$1.i * (float) (Math.PI / 180.0));
+      float $$6 = ayu.a(-$$1.i * (float) (Math.PI / 180.0));
+      float $$7 = ayu.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
+      float $$8 = ayu.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
+      evm $$9 = new evm((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
+      evm $$10 = new evm((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
+      evm $$11 = $$9.c($$10).a(-1.0);
+      double $$12 = $$9.c * this.d + $$10.c * this.c + $$11.c * this.b;
+      double $$13 = $$9.d * this.d + $$10.d * this.c + $$11.d * this.b;
+      double $$14 = $$9.e * this.d + $$10.e * this.c + $$11.e * this.b;
+      return new evm($$2.c + $$12, $$2.d + $$13, $$2.e + $$14);
    }
 
-   public ctq a(int $$0, boolean $$1) throws CommandSyntaxException {
-      ctq $$2 = new ctq(this.b, $$0);
-      $$2.a(this.c);
-      if ($$1 && $$0 > $$2.j()) {
-         throw a.create(this.b(), $$2.j());
+   @Override
+   public evl b(ep $$0) {
+      return evl.a;
+   }
+
+   @Override
+   public boolean a() {
+      return true;
+   }
+
+   @Override
+   public boolean b() {
+      return true;
+   }
+
+   @Override
+   public boolean c() {
+      return true;
+   }
+
+   public static go a(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = $$0.getCursor();
+      double $$2 = a($$0, $$1);
+      if ($$0.canRead() && $$0.peek() == ' ') {
+         $$0.skip();
+         double $$3 = a($$0, $$1);
+         if ($$0.canRead() && $$0.peek() == ' ') {
+            $$0.skip();
+            double $$4 = a($$0, $$1);
+            return new go($$2, $$3, $$4);
+         } else {
+            $$0.setCursor($$1);
+            throw gs.a.createWithContext($$0);
+         }
       } else {
-         return $$2;
+         $$0.setCursor($$1);
+         throw gs.a.createWithContext($$0);
       }
    }
 
-   public String a(iz.a $$0) {
-      StringBuilder $$1 = new StringBuilder(this.b());
-      String $$2 = this.b($$0);
-      if (!$$2.isEmpty()) {
-         $$1.append('[');
-         $$1.append($$2);
-         $$1.append(']');
+   private static double a(StringReader $$0, int $$1) throws CommandSyntaxException {
+      if (!$$0.canRead()) {
+         throw gt.a.createWithContext($$0);
+      } else if ($$0.peek() != '^') {
+         $$0.setCursor($$1);
+         throw gs.b.createWithContext($$0);
+      } else {
+         $$0.skip();
+         return $$0.canRead() && $$0.peek() != ' ' ? $$0.readDouble() : 0.0;
       }
-
-      return $$1.toString();
    }
 
-   private String b(iz.a $$0) {
-      DynamicOps<va> $$1 = $$0.a(ur.a);
-      return this.c.c().flatMap($$1x -> {
-         ka<?> $$2 = $$1x.a();
-         akn $$3 = le.as.b($$2);
-         Optional<va> $$4 = $$1x.a($$1).result();
-         return $$3 != null && !$$4.isEmpty() ? Stream.of($$3.toString() + "=" + $$4.get()) : Stream.empty();
-      }).collect(Collectors.joining(String.valueOf(',')));
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof go $$1) ? false : this.b == $$1.b && this.c == $$1.c && this.d == $$1.d;
+      }
    }
 
-   private String b() {
-      return this.b.e().map(akm::a).orElseGet(() -> "unknown[" + this.b + "]").toString();
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.b, this.c, this.d);
    }
 }

@@ -1,735 +1,365 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
-import it.unimi.dsi.fastutil.longs.Long2IntMap;
-import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
-import java.util.HashMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
+import java.util.function.ToIntFunction;
 import javax.annotation.Nullable;
 
-public class dwz implements dwo.a, dwo.b {
-   private final dxd a;
-   final int b;
-   final int c;
-   final int d;
-   private final int e;
-   private final int f;
-   final int g;
-   final int h;
-   final List<dwz.i> i;
-   final List<dwz.e> j;
-   private final Map<dwo, dwo> k = new HashMap<>();
-   private final Long2IntMap l = new Long2IntOpenHashMap();
-   private final dwh m;
-   private final dwo n;
-   private final dwz.c o;
-   private final dxx p;
-   private final dwz.g q;
-   private final dwz.g r;
-   private final dwp.c s;
-   private long t = dag.a;
-   private dxx.a u = new dxx.a(1.0, 0.0);
-   final int v;
-   final int w;
-   final int x;
-   boolean y;
-   boolean z;
-   private int A;
-   int B;
-   private int C;
-   int D;
-   int E;
-   int F;
-   long G;
-   long H;
-   int I;
-   private final dwo.a J = new dwo.a() {
-      @Override
-      public dwo.b a(int $$0) {
-         dwz.this.B = ($$0 + dwz.this.d) * dwz.this.x;
-         dwz.this.G++;
-         dwz.this.E = 0;
-         dwz.this.I = $$0;
-         return dwz.this;
+public interface dwz {
+   List<ala<dwq>> e_ = List.of(
+      dwq.T.h(),
+      dwq.U.h(),
+      dwq.V.h(),
+      dwq.W.h(),
+      dwq.X.h(),
+      dwq.Y.h(),
+      dwq.Z.h(),
+      dwq.aa.h(),
+      dwq.ab.h(),
+      dwq.ac.h(),
+      dwq.ad.h(),
+      dwq.ae.h(),
+      dwq.af.h(),
+      dwq.ag.h(),
+      dwq.ah.h()
+   );
+   int f_ = 0;
+   ToIntFunction<ala<dwq>> g_ = ac.a(new Reference2IntOpenHashMap(), $$0 -> {
+      $$0.defaultReturnValue(0);
+      $$0.put(dwq.P.h(), 1);
+      $$0.put(dwq.Q.h(), 1);
+      $$0.put(dwq.x.h(), 1);
+      $$0.put(dwq.J.h(), 2);
+      $$0.put(dwq.A.h(), 2);
+      $$0.put(dwq.O.h(), 2);
+      $$0.put(dwq.C.h(), 3);
+      $$0.put(dwq.K.h(), 3);
+      $$0.put(dwq.B.h(), 3);
+      $$0.put(dwq.u.h(), 4);
+      $$0.put(dwq.n.h(), 4);
+      $$0.put(dwq.S.h(), 4);
+      $$0.put(dwq.q.h(), 5);
+      $$0.put(dwq.v.h(), 5);
+      $$0.put(dwq.r.h(), 6);
+      $$0.put(dwq.M.h(), 6);
+      $$0.put(dwq.s.h(), 6);
+      $$0.put(dwq.o.h(), 7);
+      $$0.put(dwq.l.h(), 8);
+      $$0.put(dwq.m.h(), 8);
+      $$0.put(dwq.j.h(), 9);
+      $$0.put(dwq.d.h(), 9);
+      $$0.put(dwq.e.h(), 9);
+      $$0.put(dwq.g.h(), 9);
+      $$0.put(dwq.k.h(), 10);
+      $$0.put(dwq.h.h(), 10);
+      $$0.put(dwq.a.h(), 10);
+      $$0.put(dwq.b.h(), 10);
+      $$0.put(dwq.I.h(), 10);
+      $$0.put(dwq.H.h(), 10);
+      $$0.put(dwq.c.h(), 11);
+      $$0.put(dwq.f.h(), 12);
+      $$0.put(dwq.y.h(), 12);
+      $$0.put(dwq.i.h(), 13);
+      $$0.put(dwq.z.h(), 13);
+      $$0.put(dwq.t.h(), 14);
+      $$0.put(dwq.G.h(), 14);
+      $$0.put(dwq.R.h(), 14);
+      $$0.put(dwq.p.h(), 15);
+      $$0.put(dwq.w.h(), 15);
+
+      for (int $$1 = 1; $$1 <= 15; $$1++) {
+         $$0.put(b($$1), $$1);
       }
+   });
 
-      @Override
-      public void a(double[] $$0, dwo $$1) {
-         for (int $$2 = 0; $$2 < dwz.this.c + 1; $$2++) {
-            dwz.this.B = ($$2 + dwz.this.d) * dwz.this.x;
-            dwz.this.G++;
-            dwz.this.E = 0;
-            dwz.this.I = $$2;
-            $$0[$$2] = $$1.a(dwz.this);
-         }
-      }
-   };
+   dwz.a gs();
 
-   public static dwz a(dsz $$0, dxj $$1, dwp.c $$2, dxa $$3, dwh.a $$4, dxx $$5) {
-      dxd $$6 = $$3.f().a($$0);
-      dag $$7 = $$0.f();
-      int $$8 = 16 / $$6.b();
-      return new dwz($$8, $$1, $$7.d(), $$7.e(), $$6, $$2, $$3, $$4, $$5);
+   dwz.d gt();
+
+   static int a_(ji<dwq> $$0) {
+      return $$0.e().map(dwz::a).orElse(0);
    }
 
-   public dwz(int $$0, dxj $$1, int $$2, int $$3, dxd $$4, dwp.c $$5, dxa $$6, dwh.a $$7, dxx $$8) {
-      this.a = $$4;
-      this.w = $$4.b();
-      this.x = $$4.a();
-      this.b = $$0;
-      this.c = ayf.a($$4.d(), this.x);
-      this.d = ayf.a($$4.c(), this.x);
-      this.e = Math.floorDiv($$2, this.w);
-      this.f = Math.floorDiv($$3, this.w);
-      this.i = Lists.newArrayList();
-      this.j = Lists.newArrayList();
-      this.g = ji.a($$2);
-      this.h = ji.a($$3);
-      this.v = ji.a($$0 * this.w);
-      this.p = $$8;
-      this.s = $$5;
-      this.q = new dwz.g(new dwz.a(), false);
-      this.r = new dwz.g(new dwz.b(), false);
-
-      for (int $$9 = 0; $$9 <= this.v; $$9++) {
-         int $$10 = this.g + $$9;
-         int $$11 = ji.c($$10);
-
-         for (int $$12 = 0; $$12 <= this.v; $$12++) {
-            int $$13 = this.h + $$12;
-            int $$14 = ji.c($$13);
-            dxx.a $$15 = $$8.a($$11, $$14);
-            this.q.f[$$9][$$12] = $$15.a();
-            this.r.f[$$9][$$12] = $$15.b();
-         }
-      }
-
-      dxb $$16 = $$1.a();
-      dxb $$17 = $$16.a(this::a);
-      if (!$$6.b()) {
-         this.m = dwh.a($$7);
-      } else {
-         int $$18 = jq.a($$2);
-         int $$19 = jq.a($$3);
-         this.m = dwh.a(this, new dag($$18, $$19), $$17, $$1.d(), $$4.c(), $$4.d(), $$7);
-      }
-
-      Builder<dwz.c> $$20 = ImmutableList.builder();
-      dwo $$21 = dwp.e(dwp.a($$17.l(), dwp.b.a)).a(this::a);
-      $$20.add((dwz.c)$$1x -> this.m.a($$1x, $$21.a($$1x)));
-      if ($$6.c()) {
-         $$20.add(dxf.a($$17.m(), $$17.n(), $$17.o(), $$1.e()));
-      }
-
-      this.o = new efz($$20.build());
-      this.n = $$17.k();
+   static int a(ala<dwq> $$0) {
+      return g_.applyAsInt($$0);
    }
 
-   protected dch.f a(dxb $$0, List<dch.d> $$1) {
-      return new dch.f($$0.e().a(this::a), $$0.f().a(this::a), $$0.g().a(this::a), $$0.h().a(this::a), $$0.i().a(this::a), $$0.j().a(this::a), $$1);
+   static ala<dwq> b(int $$0) {
+      return e_.get($$0 - 1);
    }
 
-   @Nullable
-   protected drd e() {
-      return this.o.calculate(this);
+   static int a_(float $$0, int $$1) {
+      double $$2 = 15.0 / (double)$$1;
+      return Math.max(1, 15 - ayu.a($$2 * (double)$$0));
    }
 
-   @Override
-   public int a() {
-      return this.A + this.D;
-   }
-
-   @Override
-   public int b() {
-      return this.B + this.E;
-   }
-
-   @Override
-   public int c() {
-      return this.C + this.F;
-   }
-
-   public int a(int $$0, int $$1) {
-      int $$2 = ji.c(ji.a($$0));
-      int $$3 = ji.c(ji.a($$1));
-      return this.l.computeIfAbsent(aqd.a($$2, $$3), this::a);
-   }
-
-   private int a(long $$0) {
-      int $$1 = aqd.a($$0);
-      int $$2 = aqd.b($$0);
-      int $$3 = this.a.c();
-
-      for (int $$4 = $$3 + this.a.d(); $$4 >= $$3; $$4 -= this.x) {
-         if (this.n.a(new dwo.e($$1, $$4, $$2)) > 0.390625) {
-            return $$4;
-         }
-      }
-
-      return Integer.MAX_VALUE;
-   }
-
-   @Override
-   public dxx d() {
-      return this.p;
-   }
-
-   private void a(boolean $$0, int $$1) {
-      this.A = $$1 * this.w;
-      this.D = 0;
-
-      for (int $$2 = 0; $$2 < this.b + 1; $$2++) {
-         int $$3 = this.f + $$2;
-         this.C = $$3 * this.w;
-         this.F = 0;
-         this.H++;
-
-         for (dwz.i $$4 : this.i) {
-            double[] $$5 = ($$0 ? $$4.e : $$4.f)[$$2];
-            $$4.a($$5, this.J);
-         }
-      }
-
-      this.H++;
-   }
-
-   public void f() {
-      if (this.y) {
-         throw new IllegalStateException("Staring interpolation twice");
-      } else {
-         this.y = true;
-         this.G = 0L;
-         this.a(true, this.e);
-      }
-   }
-
-   public void b(int $$0) {
-      this.a(false, this.e + $$0 + 1);
-      this.A = (this.e + $$0) * this.w;
-   }
-
-   public dwz c(int $$0) {
-      int $$1 = Math.floorMod($$0, this.w);
-      int $$2 = Math.floorDiv($$0, this.w);
-      int $$3 = Math.floorMod($$2, this.w);
-      int $$4 = this.x - 1 - Math.floorDiv($$2, this.w);
-      this.D = $$3;
-      this.E = $$4;
-      this.F = $$1;
-      this.I = $$0;
-      return this;
-   }
-
-   @Override
-   public void a(double[] $$0, dwo $$1) {
-      this.I = 0;
-
-      for (int $$2 = this.x - 1; $$2 >= 0; $$2--) {
-         this.E = $$2;
-
-         for (int $$3 = 0; $$3 < this.w; $$3++) {
-            this.D = $$3;
-
-            for (int $$4 = 0; $$4 < this.w; $$4++) {
-               this.F = $$4;
-               $$0[this.I++] = $$1.a(this);
-            }
-         }
-      }
-   }
-
-   public void b(int $$0, int $$1) {
-      this.i.forEach($$2x -> $$2x.b($$0, $$1));
-      this.z = true;
-      this.B = ($$0 + this.d) * this.x;
-      this.C = (this.f + $$1) * this.w;
-      this.H++;
-
-      for (dwz.e $$2 : this.j) {
-         $$2.e.a($$2.f, this);
-      }
-
-      this.H++;
-      this.z = false;
-   }
-
-   public void a(int $$0, double $$1) {
-      this.E = $$0 - this.B;
-      this.i.forEach($$1x -> $$1x.a($$1));
-   }
-
-   public void b(int $$0, double $$1) {
-      this.D = $$0 - this.A;
-      this.i.forEach($$1x -> $$1x.b($$1));
-   }
-
-   public void c(int $$0, double $$1) {
-      this.F = $$0 - this.C;
-      this.G++;
-      this.i.forEach($$1x -> $$1x.c($$1));
-   }
-
-   public void g() {
-      if (!this.y) {
-         throw new IllegalStateException("Staring interpolation twice");
-      } else {
-         this.y = false;
-      }
-   }
-
-   public void h() {
-      this.i.forEach(dwz.i::l);
-   }
-
-   public dwh i() {
-      return this.m;
-   }
-
-   protected int j() {
-      return this.w;
-   }
-
-   protected int k() {
-      return this.x;
-   }
-
-   dxx.a c(int $$0, int $$1) {
-      long $$2 = dag.c($$0, $$1);
-      if (this.t == $$2) {
-         return this.u;
-      } else {
-         this.t = $$2;
-         dxx.a $$3 = this.p.a($$0, $$1);
-         this.u = $$3;
-         return $$3;
-      }
-   }
-
-   protected dwo a(dwo $$0) {
-      return this.k.computeIfAbsent($$0, this::b);
-   }
-
-   private dwo b(dwo $$0) {
-      if ($$0 instanceof dwp.l $$1) {
-         return (dwo)(switch ($$1.j()) {
-            case a -> new dwz.i($$1.k());
-            case b -> new dwz.g($$1.k(), true);
-            case c -> new dwz.d($$1.k());
-            case d -> new dwz.f($$1.k());
-            case e -> new dwz.e($$1.k());
-         });
-      } else {
-         if (this.p != dxx.a()) {
-            if ($$0 == dwp.d.a) {
-               return this.q;
-            }
-
-            if ($$0 == dwp.f.a) {
-               return this.r;
-            }
-         }
-
-         if ($$0 == dwp.b.a) {
-            return this.s;
-         } else {
-            return $$0 instanceof dwp.j $$2 ? $$2.j().a() : $$0;
-         }
-      }
-   }
-
-   class a implements dwz.h {
-      @Override
-      public dwo k() {
-         return dwp.d.a;
-      }
-
-      @Override
-      public dwo a(dwo.f $$0) {
-         return this.k().a($$0);
-      }
-
-      @Override
-      public double a(dwo.b $$0) {
-         return dwz.this.c($$0.a(), $$0.c()).a();
-      }
-
-      @Override
-      public void a(double[] $$0, dwo.a $$1) {
-         $$1.a($$0, this);
-      }
-
-      @Override
-      public double a() {
-         return 0.0;
-      }
-
-      @Override
-      public double b() {
-         return 1.0;
-      }
-
-      @Override
-      public axy<? extends dwo> c() {
-         return dwp.d.e;
-      }
-   }
-
-   class b implements dwz.h {
-      @Override
-      public dwo k() {
-         return dwp.f.a;
-      }
-
-      @Override
-      public dwo a(dwo.f $$0) {
-         return this.k().a($$0);
-      }
-
-      @Override
-      public double a(dwo.b $$0) {
-         return dwz.this.c($$0.a(), $$0.c()).b();
-      }
-
-      @Override
-      public void a(double[] $$0, dwo.a $$1) {
-         $$1.a($$0, this);
-      }
-
-      @Override
-      public double a() {
-         return Double.NEGATIVE_INFINITY;
-      }
-
-      @Override
-      public double b() {
-         return Double.POSITIVE_INFINITY;
-      }
-
-      @Override
-      public axy<? extends dwo> c() {
-         return dwp.f.e;
-      }
-   }
-
-   @FunctionalInterface
-   public interface c {
+   public static final class a {
+      public static Codec<dwz.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  dwx.a.lenientOptionalFieldOf("event").forGetter($$0x -> Optional.ofNullable($$0x.c)),
+                  dwy.a.fieldOf("selector").forGetter(dwz.a::a),
+                  ayc.k.fieldOf("event_delay").orElse(0).forGetter(dwz.a::c)
+               )
+               .apply($$0, ($$0x, $$1, $$2) -> new dwz.a((dwx)$$0x.orElse(null), $$1, $$2, true))
+      );
+      public static final String b = "listener";
       @Nullable
-      drd calculate(dwo.b var1);
+      dwx c;
+      private int d;
+      final dwy e;
+      private boolean f;
+
+      private a(@Nullable dwx $$0, dwy $$1, int $$2, boolean $$3) {
+         this.c = $$0;
+         this.d = $$2;
+         this.e = $$1;
+         this.f = $$3;
+      }
+
+      public a() {
+         this(null, new dwy(), 0, false);
+      }
+
+      public dwy a() {
+         return this.e;
+      }
+
+      @Nullable
+      public dwx b() {
+         return this.c;
+      }
+
+      public void a(@Nullable dwx $$0) {
+         this.c = $$0;
+      }
+
+      public int c() {
+         return this.d;
+      }
+
+      public void a(int $$0) {
+         this.d = $$0;
+      }
+
+      public void d() {
+         this.d = Math.max(0, this.d - 1);
+      }
+
+      public boolean e() {
+         return this.f;
+      }
+
+      public void a(boolean $$0) {
+         this.f = $$0;
+      }
    }
 
-   static class d implements dwp.m, dwz.h {
-      private final dwo a;
-      private long e = dag.a;
-      private double f;
+   public static class b implements dws {
+      private final dwz a;
 
-      d(dwo $$0) {
+      public b(dwz $$0) {
          this.a = $$0;
       }
 
       @Override
-      public double a(dwo.b $$0) {
-         int $$1 = $$0.a();
-         int $$2 = $$0.c();
-         long $$3 = dag.c($$1, $$2);
-         if (this.e == $$3) {
-            return this.f;
+      public dwu a() {
+         return this.a.gt().b();
+      }
+
+      @Override
+      public int b() {
+         return this.a.gt().a();
+      }
+
+      @Override
+      public boolean a(arb $$0, ji<dwq> $$1, dwq.a $$2, evm $$3) {
+         dwz.a $$4 = this.a.gs();
+         dwz.d $$5 = this.a.gt();
+         if ($$4.b() != null) {
+            return false;
+         } else if (!$$5.a($$1, $$2)) {
+            return false;
          } else {
-            this.e = $$3;
-            double $$4 = this.a.a($$0);
-            this.f = $$4;
-            return $$4;
-         }
-      }
-
-      @Override
-      public void a(double[] $$0, dwo.a $$1) {
-         this.a.a($$0, $$1);
-      }
-
-      @Override
-      public dwo k() {
-         return this.a;
-      }
-
-      @Override
-      public dwp.l.a j() {
-         return dwp.l.a.c;
-      }
-   }
-
-   class e implements dwp.m, dwz.h {
-      final dwo e;
-      final double[] f;
-
-      e(dwo $$0) {
-         this.e = $$0;
-         this.f = new double[dwz.this.w * dwz.this.w * dwz.this.x];
-         dwz.this.j.add(this);
-      }
-
-      @Override
-      public double a(dwo.b $$0) {
-         if ($$0 != dwz.this) {
-            return this.e.a($$0);
-         } else if (!dwz.this.y) {
-            throw new IllegalStateException("Trying to sample interpolator outside the interpolation loop");
-         } else {
-            int $$1 = dwz.this.D;
-            int $$2 = dwz.this.E;
-            int $$3 = dwz.this.F;
-            return $$1 >= 0 && $$2 >= 0 && $$3 >= 0 && $$1 < dwz.this.w && $$2 < dwz.this.x && $$3 < dwz.this.w
-               ? this.f[((dwz.this.x - 1 - $$2) * dwz.this.w + $$1) * dwz.this.w + $$3]
-               : this.e.a($$0);
-         }
-      }
-
-      @Override
-      public void a(double[] $$0, dwo.a $$1) {
-         $$1.a($$0, this);
-      }
-
-      @Override
-      public dwo k() {
-         return this.e;
-      }
-
-      @Override
-      public dwp.l.a j() {
-         return dwp.l.a.e;
-      }
-   }
-
-   class f implements dwp.m, dwz.h {
-      private final dwo e;
-      private long f;
-      private long g;
-      private double h;
-      @Nullable
-      private double[] i;
-
-      f(dwo $$0) {
-         this.e = $$0;
-      }
-
-      @Override
-      public double a(dwo.b $$0) {
-         if ($$0 != dwz.this) {
-            return this.e.a($$0);
-         } else if (this.i != null && this.g == dwz.this.H) {
-            return this.i[dwz.this.I];
-         } else if (this.f == dwz.this.G) {
-            return this.h;
-         } else {
-            this.f = dwz.this.G;
-            double $$1 = this.e.a($$0);
-            this.h = $$1;
-            return $$1;
-         }
-      }
-
-      @Override
-      public void a(double[] $$0, dwo.a $$1) {
-         if (this.i != null && this.g == dwz.this.H) {
-            System.arraycopy(this.i, 0, $$0, 0, $$0.length);
-         } else {
-            this.k().a($$0, $$1);
-            if (this.i != null && this.i.length == $$0.length) {
-               System.arraycopy($$0, 0, this.i, 0, $$0.length);
+            Optional<evm> $$6 = $$5.b().a($$0);
+            if ($$6.isEmpty()) {
+               return false;
             } else {
-               this.i = (double[])$$0.clone();
-            }
-
-            this.g = dwz.this.H;
-         }
-      }
-
-      @Override
-      public dwo k() {
-         return this.e;
-      }
-
-      @Override
-      public dwp.l.a j() {
-         return dwp.l.a.d;
-      }
-   }
-
-   class g implements dwp.m, dwz.h {
-      private final dwo e;
-      final double[][] f;
-
-      g(dwo $$0, boolean $$1) {
-         this.e = $$0;
-         this.f = new double[dwz.this.v + 1][dwz.this.v + 1];
-         if ($$1) {
-            for (int $$2 = 0; $$2 <= dwz.this.v; $$2++) {
-               int $$3 = dwz.this.g + $$2;
-               int $$4 = ji.c($$3);
-
-               for (int $$5 = 0; $$5 <= dwz.this.v; $$5++) {
-                  int $$6 = dwz.this.h + $$5;
-                  int $$7 = ji.c($$6);
-                  this.f[$$2][$$5] = $$0.a(new dwo.e($$4, 0, $$7));
+               evm $$7 = $$6.get();
+               if (!$$5.a($$0, iz.a($$3), $$1, $$2)) {
+                  return false;
+               } else if (a($$0, $$3, $$7)) {
+                  return false;
+               } else {
+                  this.a($$0, $$4, $$1, $$2, $$3, $$7);
+                  return true;
                }
             }
          }
       }
 
-      @Override
-      public double a(dwo.b $$0) {
-         int $$1 = ji.a($$0.a());
-         int $$2 = ji.a($$0.c());
-         int $$3 = $$1 - dwz.this.g;
-         int $$4 = $$2 - dwz.this.h;
-         int $$5 = this.f.length;
-         return $$3 >= 0 && $$4 >= 0 && $$3 < $$5 && $$4 < $$5 ? this.f[$$3][$$4] : this.e.a($$0);
+      public void b(arb $$0, ji<dwq> $$1, dwq.a $$2, evm $$3) {
+         this.a.gt().b().a($$0).ifPresent($$4 -> this.a($$0, this.a.gs(), $$1, $$2, $$3, $$4));
       }
 
-      @Override
-      public void a(double[] $$0, dwo.a $$1) {
-         $$1.a($$0, this);
+      private void a(arb $$0, dwz.a $$1, ji<dwq> $$2, dwq.a $$3, evm $$4, evm $$5) {
+         $$1.e.a(new dwx($$2, (float)$$4.f($$5), $$4, $$3.a()), $$0.Z());
       }
 
-      @Override
-      public dwo k() {
-         return this.e;
+      public static float a(iz $$0, iz $$1) {
+         return (float)Math.sqrt($$0.j($$1));
       }
 
-      @Override
-      public dwp.l.a j() {
-         return dwp.l.a.b;
+      private static boolean a(dbt $$0, evm $$1, evm $$2) {
+         evm $$3 = new evm((double)ayu.a($$1.c) + 0.5, (double)ayu.a($$1.d) + 0.5, (double)ayu.a($$1.e) + 0.5);
+         evm $$4 = new evm((double)ayu.a($$2.c) + 0.5, (double)ayu.a($$2.d) + 0.5, (double)ayu.a($$2.e) + 0.5);
+
+         for (je $$5 : je.values()) {
+            evm $$6 = $$3.a($$5, 1.0E-5F);
+            if ($$0.a(new dbb($$6, $$4, $$0x -> $$0x.a(awl.bq))).c() != evk.a.b) {
+               return false;
+            }
+         }
+
+         return true;
       }
    }
 
-   interface h extends dwo {
-      dwo k();
+   public interface c {
+      static void a(dbt $$0, dwz.a $$1, dwz.d $$2) {
+         if ($$0 instanceof arb $$3) {
+            if ($$1.c == null) {
+               a($$3, $$1, $$2);
+            }
 
-      @Override
-      default double a() {
-         return this.k().a();
+            if ($$1.c != null) {
+               boolean $$5 = $$1.c() > 0;
+               b($$3, $$1, $$2);
+               $$1.d();
+               if ($$1.c() <= 0) {
+                  $$5 = a($$3, $$1, $$2, $$1.c);
+               }
+
+               if ($$5) {
+                  $$2.e();
+               }
+            }
+         }
       }
 
-      @Override
-      default double b() {
-         return this.k().b();
+      private static void a(arb $$0, dwz.a $$1, dwz.d $$2) {
+         $$1.a().a($$0.Z()).ifPresent($$3 -> {
+            $$1.a($$3);
+            evm $$4 = $$3.c();
+            $$1.a($$2.a($$3.b()));
+            $$0.a(new ln($$2.b(), $$1.c()), $$4.c, $$4.d, $$4.e, 1, 0.0, 0.0, 0.0, 0.0);
+            $$2.e();
+            $$1.a().a();
+         });
+      }
+
+      private static void b(arb $$0, dwz.a $$1, dwz.d $$2) {
+         if ($$1.e()) {
+            if ($$1.c == null) {
+               $$1.a(false);
+            } else {
+               evm $$3 = $$1.c.c();
+               dwu $$4 = $$2.b();
+               evm $$5 = $$4.a($$0).orElse($$3);
+               int $$6 = $$1.c();
+               int $$7 = $$2.a($$1.c.b());
+               double $$8 = 1.0 - (double)$$6 / (double)$$7;
+               double $$9 = ayu.d($$8, $$3.c, $$5.c);
+               double $$10 = ayu.d($$8, $$3.d, $$5.d);
+               double $$11 = ayu.d($$8, $$3.e, $$5.e);
+               boolean $$12 = $$0.a(new ln($$4, $$6), $$9, $$10, $$11, 1, 0.0, 0.0, 0.0, 0.0) > 0;
+               if ($$12) {
+                  $$1.a(false);
+               }
+            }
+         }
+      }
+
+      private static boolean a(arb $$0, dwz.a $$1, dwz.d $$2, dwx $$3) {
+         iz $$4 = iz.a($$3.c());
+         iz $$5 = $$2.b().a($$0).map(iz::a).orElse($$4);
+         if ($$2.f() && !a($$0, $$5)) {
+            return false;
+         } else {
+            $$2.a($$0, $$4, $$3.a(), $$3.a($$0).orElse(null), $$3.b($$0).orElse(null), dwz.b.a($$4, $$5));
+            $$1.a(null);
+            return true;
+         }
+      }
+
+      private static boolean a(dbt $$0, iz $$1) {
+         dba $$2 = new dba($$1);
+
+         for (int $$3 = $$2.e - 1; $$3 <= $$2.e + 1; $$3++) {
+            for (int $$4 = $$2.f - 1; $$4 <= $$2.f + 1; $$4++) {
+               if (!$$0.a(dba.c($$3, $$4)) || $$0.N().a($$3, $$4) == null) {
+                  return false;
+               }
+            }
+         }
+
+         return true;
       }
    }
 
-   public class i implements dwp.m, dwz.h {
-      double[][] e;
-      double[][] f;
-      private final dwo g;
-      private double h;
-      private double i;
-      private double j;
-      private double k;
-      private double l;
-      private double m;
-      private double n;
-      private double o;
-      private double p;
-      private double q;
-      private double r;
-      private double s;
-      private double t;
-      private double u;
-      private double v;
+   public interface d {
+      int a();
 
-      i(dwo $$1) {
-         this.g = $$1;
-         this.e = this.a(dwz.this.c, dwz.this.b);
-         this.f = this.a(dwz.this.c, dwz.this.b);
-         dwz.this.i.add(this);
+      dwu b();
+
+      boolean a(arb var1, iz var2, ji<dwq> var3, dwq.a var4);
+
+      void a(arb var1, iz var2, ji<dwq> var3, @Nullable bsp var4, @Nullable bsp var5, float var6);
+
+      default axb<dwq> c() {
+         return aws.a;
       }
 
-      private double[][] a(int $$0, int $$1) {
-         int $$2 = $$1 + 1;
-         int $$3 = $$0 + 1;
-         double[][] $$4 = new double[$$2][$$3];
-
-         for (int $$5 = 0; $$5 < $$2; $$5++) {
-            $$4[$$5] = new double[$$3];
-         }
-
-         return $$4;
+      default boolean d() {
+         return false;
       }
 
-      void b(int $$0, int $$1) {
-         this.h = this.e[$$1][$$0];
-         this.i = this.e[$$1 + 1][$$0];
-         this.j = this.f[$$1][$$0];
-         this.k = this.f[$$1 + 1][$$0];
-         this.l = this.e[$$1][$$0 + 1];
-         this.m = this.e[$$1 + 1][$$0 + 1];
-         this.n = this.f[$$1][$$0 + 1];
-         this.o = this.f[$$1 + 1][$$0 + 1];
+      default boolean f() {
+         return false;
       }
 
-      void a(double $$0) {
-         this.p = ayf.d($$0, this.h, this.l);
-         this.q = ayf.d($$0, this.j, this.n);
-         this.r = ayf.d($$0, this.i, this.m);
-         this.s = ayf.d($$0, this.k, this.o);
+      default int a(float $$0) {
+         return ayu.d($$0);
       }
 
-      void b(double $$0) {
-         this.t = ayf.d($$0, this.p, this.q);
-         this.u = ayf.d($$0, this.r, this.s);
-      }
-
-      void c(double $$0) {
-         this.v = ayf.d($$0, this.t, this.u);
-      }
-
-      @Override
-      public double a(dwo.b $$0) {
-         if ($$0 != dwz.this) {
-            return this.g.a($$0);
-         } else if (!dwz.this.y) {
-            throw new IllegalStateException("Trying to sample interpolator outside the interpolation loop");
+      default boolean a(ji<dwq> $$0, dwq.a $$1) {
+         if (!$$0.a(this.c())) {
+            return false;
          } else {
-            return dwz.this.z
-               ? ayf.a(
-                  (double)dwz.this.D / (double)dwz.this.w,
-                  (double)dwz.this.E / (double)dwz.this.x,
-                  (double)dwz.this.F / (double)dwz.this.w,
-                  this.h,
-                  this.j,
-                  this.l,
-                  this.n,
-                  this.i,
-                  this.k,
-                  this.m,
-                  this.o
-               )
-               : this.v;
+            bsp $$2 = $$1.a();
+            if ($$2 != null) {
+               if ($$2.N_()) {
+                  return false;
+               }
+
+               if ($$2.bW() && $$0.a(aws.d)) {
+                  if (this.d() && $$2 instanceof arc $$3) {
+                     am.ab.a($$3);
+                  }
+
+                  return false;
+               }
+
+               if ($$2.bc()) {
+                  return false;
+               }
+            }
+
+            return $$1.b() != null ? !$$1.b().a(awl.br) : true;
          }
       }
 
-      @Override
-      public void a(double[] $$0, dwo.a $$1) {
-         if (dwz.this.z) {
-            $$1.a($$0, this);
-         } else {
-            this.k().a($$0, $$1);
-         }
-      }
-
-      @Override
-      public dwo k() {
-         return this.g;
-      }
-
-      private void l() {
-         double[][] $$0 = this.e;
-         this.e = this.f;
-         this.f = $$0;
-      }
-
-      @Override
-      public dwp.l.a j() {
-         return dwp.l.a.a;
+      default void e() {
       }
    }
 }

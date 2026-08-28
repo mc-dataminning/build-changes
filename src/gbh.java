@@ -1,22 +1,38 @@
-public class gbh extends fyq {
-   private static final int a = 12235202;
+public class gbh extends gbx {
+   private final gbs a;
 
-   protected gbh(fwr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gat $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
-      this.v = 0.7294118F;
-      this.w = 0.69411767F;
-      this.x = 0.7607843F;
+   gbh(fxq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gbs $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.a = $$7;
+      this.d(1.0F);
+      this.n = false;
+      this.b($$7);
    }
 
-   public static class a implements gab<lb> {
-      private final gat a;
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
 
-      public a(gat $$0) {
-         this.a = $$0;
-      }
+   @Override
+   public gbb b() {
+      return gbb.c;
+   }
 
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gbh($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+   }
+
+   public static record a(gbs a) implements gba<lm> {
+      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gbh $$8 = new gbh($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.a($$1.z.a(4) + 6);
+         return $$8;
       }
    }
 }

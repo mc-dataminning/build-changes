@@ -1,36 +1,71 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fad extends faq {
-   private static final Logger b = LogUtils.getLogger();
-   public List<fab> a;
+public class fad {
+   private static final Logger a = LogUtils.getLogger();
+   @Nullable
+   private static CompletableFuture<fad.a> b;
 
-   public static fad a(String $$0) {
-      fad $$1 = new fad();
-      $$1.a = Lists.newArrayList();
-
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("servers").isJsonArray()) {
-            JsonArray $$4 = $$3.get("servers").getAsJsonArray();
-            Iterator<JsonElement> $$5 = $$4.iterator();
-
-            while ($$5.hasNext()) {
-               $$1.a.add(fab.a($$5.next().getAsJsonObject()));
-            }
-         }
-      } catch (Exception var6) {
-         b.error("Could not parse McoServerList: {}", var6.getMessage());
+   public static CompletableFuture<fad.a> a() {
+      if (b == null || a(b)) {
+         b = b();
       }
 
-      return $$1;
+      return b;
+   }
+
+   private static boolean a(CompletableFuture<fad.a> $$0) {
+      fad.a $$1 = $$0.getNow(null);
+      return $$1 != null && $$1.b() != null;
+   }
+
+   private static CompletableFuture<fad.a> b() {
+      ffo $$0 = ffa.Q().X();
+      return $$0.g() != ffo.a.c ? CompletableFuture.completedFuture(new fad.a(fad.b.d)) : CompletableFuture.supplyAsync(() -> {
+         faj $$0x = faj.a();
+
+         try {
+            if ($$0x.g() != faj.a.a) {
+               return new fad.a(fad.b.b);
+            } else {
+               return !$$0x.f() ? new fad.a(fad.b.c) : new fad.a(fad.b.a);
+            }
+         } catch (fbw var2) {
+            a.error("Couldn't connect to realms", var2);
+            return var2.a.a() == 401 ? new fad.a(fad.b.d) : new fad.a(var2);
+         }
+      }, ac.h());
+   }
+
+   public static record a(fad.b a, @Nullable fbw b) {
+      public a(fad.b $$0) {
+         this($$0, null);
+      }
+
+      public a(fbw $$0) {
+         this(fad.b.e, $$0);
+      }
+
+      @Nullable
+      public fmy a(fmy $$0) {
+         return (fmy)(switch (this.a) {
+            case a -> null;
+            case b -> new fci($$0);
+            case c -> new fct($$0);
+            case d -> new fcn(xl.c("mco.error.invalid.session.title"), xl.c("mco.error.invalid.session.message"), $$0);
+            case e -> new fcn(Objects.requireNonNull(this.b), $$0);
+         });
+      }
+   }
+
+   public static enum b {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

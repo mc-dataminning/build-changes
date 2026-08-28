@@ -1,89 +1,152 @@
-import java.util.EnumSet;
-import java.util.List;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class bzl implements bzh {
+   public static final float a = 5.0E-4F;
+   public static final float b = 2.5000003E-7F;
+   protected static final int c = 90;
+   protected final btm d;
+   protected double e;
+   protected double f;
+   protected double g;
+   protected double h;
+   protected float i;
+   protected float j;
+   protected bzl.a k = bzl.a.a;
 
-public class bzl extends bzo {
-   private final bss a;
-   private final Predicate<bss> b;
-   @Nullable
-   private bss c;
-   private final double d;
-   private final ccc e;
-   private int f;
-   private final float g;
-   private float h;
-   private final float i;
-
-   public bzl(bss $$0, double $$1, float $$2, float $$3) {
-      this.a = $$0;
-      this.b = $$1x -> $$1x != null && $$0.getClass() != $$1x.getClass();
-      this.d = $$1;
-      this.e = $$0.K();
-      this.g = $$2;
-      this.i = $$3;
-      this.a(EnumSet.of(bzo.a.a, bzo.a.b));
-      if (!($$0.K() instanceof ccb) && !($$0.K() instanceof cca)) {
-         throw new IllegalArgumentException("Unsupported mob type for FollowMobGoal");
-      }
+   public bzl(btm $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   public boolean a() {
-      List<bss> $$0 = this.a.dP().a(bss.class, this.a.cK().g((double)this.i), this.b);
-      if (!$$0.isEmpty()) {
-         for (bss $$1 : $$0) {
-            if (!$$1.ch()) {
-               this.c = $$1;
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   @Override
    public boolean b() {
-      return this.c != null && !this.e.l() && this.a.g(this.c) > (double)(this.g * this.g);
+      return this.k == bzl.a.b;
    }
 
-   @Override
-   public void c() {
-      this.f = 0;
-      this.h = this.a.a(enn.j);
-      this.a.a(enn.j, 0.0F);
+   public double c() {
+      return this.h;
    }
 
-   @Override
-   public void d() {
-      this.c = null;
-      this.e.n();
-      this.a.a(enn.j, this.h);
+   public void a(double $$0, double $$1, double $$2, double $$3) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      if (this.k != bzl.a.d) {
+         this.k = bzl.a.b;
+      }
    }
 
-   @Override
-   public void e() {
-      if (this.c != null && !this.a.gc()) {
-         this.a.G().a(this.c, 10.0F, (float)this.a.Z());
-         if (--this.f <= 0) {
-            this.f = this.a(10);
-            double $$0 = this.a.du() - this.c.du();
-            double $$1 = this.a.dw() - this.c.dw();
-            double $$2 = this.a.dA() - this.c.dA();
-            double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
-            if (!($$3 <= (double)(this.g * this.g))) {
-               this.e.a(this.c, this.d);
-            } else {
-               this.e.n();
-               byq $$4 = this.c.G();
-               if ($$3 <= (double)this.g || $$4.e() == this.a.du() && $$4.f() == this.a.dw() && $$4.g() == this.a.dA()) {
-                  double $$5 = this.c.du() - this.a.du();
-                  double $$6 = this.c.dA() - this.a.dA();
-                  this.e.a(this.a.du() - $$5, this.a.dw(), this.a.dA() - $$6, this.d);
-               }
-            }
+   public void a(float $$0, float $$1) {
+      this.k = bzl.a.c;
+      this.i = $$0;
+      this.j = $$1;
+      this.h = 0.25;
+   }
+
+   public void a() {
+      if (this.k == bzl.a.c) {
+         float $$0 = (float)this.d.g(bus.r);
+         float $$1 = (float)this.h * $$0;
+         float $$2 = this.i;
+         float $$3 = this.j;
+         float $$4 = ayu.c($$2 * $$2 + $$3 * $$3);
+         if ($$4 < 1.0F) {
+            $$4 = 1.0F;
+         }
+
+         $$4 = $$1 / $$4;
+         $$2 *= $$4;
+         $$3 *= $$4;
+         float $$5 = ayu.a(this.d.dF() * (float) (Math.PI / 180.0));
+         float $$6 = ayu.b(this.d.dF() * (float) (Math.PI / 180.0));
+         float $$7 = $$2 * $$6 - $$3 * $$5;
+         float $$8 = $$3 * $$6 + $$2 * $$5;
+         if (!this.b($$7, $$8)) {
+            this.i = 1.0F;
+            this.j = 0.0F;
+         }
+
+         this.d.y($$1);
+         this.d.C(this.i);
+         this.d.E(this.j);
+         this.k = bzl.a.a;
+      } else if (this.k == bzl.a.b) {
+         this.k = bzl.a.a;
+         double $$9 = this.e - this.d.du();
+         double $$10 = this.g - this.d.dA();
+         double $$11 = this.f - this.d.dw();
+         double $$12 = $$9 * $$9 + $$11 * $$11 + $$10 * $$10;
+         if ($$12 < 2.5000003E-7F) {
+            this.d.C(0.0F);
+            return;
+         }
+
+         float $$13 = (float)(ayu.d($$10, $$9) * 180.0F / (float)Math.PI) - 90.0F;
+         this.d.r(this.a(this.d.dF(), $$13, 90.0F));
+         this.d.y((float)(this.h * this.d.g(bus.r)));
+         iz $$14 = this.d.dp();
+         drx $$15 = this.d.dP().a_($$14);
+         ewf $$16 = $$15.k(this.d.dP(), $$14);
+         if ($$11 > (double)this.d.dJ() && $$9 * $$9 + $$10 * $$10 < (double)Math.max(1.0F, this.d.dj())
+            || !$$16.c() && this.d.dw() < $$16.c(je.a.b) + (double)$$14.v() && !$$15.a(awl.p) && !$$15.a(awl.S)) {
+            this.d.I().a();
+            this.k = bzl.a.d;
+         }
+      } else if (this.k == bzl.a.d) {
+         this.d.y((float)(this.h * this.d.g(bus.r)));
+         if (this.d.aE()) {
+            this.k = bzl.a.a;
+         }
+      } else {
+         this.d.C(0.0F);
+      }
+   }
+
+   private boolean b(float $$0, float $$1) {
+      ccw $$2 = this.d.K();
+      if ($$2 != null) {
+         eod $$3 = $$2.o();
+         if ($$3 != null && $$3.a(this.d, iz.a(this.d.du() + (double)$$0, (double)this.d.dv(), this.d.dA() + (double)$$1)) != eoh.c) {
+            return false;
          }
       }
+
+      return true;
+   }
+
+   protected float a(float $$0, float $$1, float $$2) {
+      float $$3 = ayu.g($$1 - $$0);
+      if ($$3 > $$2) {
+         $$3 = $$2;
+      }
+
+      if ($$3 < -$$2) {
+         $$3 = -$$2;
+      }
+
+      float $$4 = $$0 + $$3;
+      if ($$4 < 0.0F) {
+         $$4 += 360.0F;
+      } else if ($$4 > 360.0F) {
+         $$4 -= 360.0F;
+      }
+
+      return $$4;
+   }
+
+   public double d() {
+      return this.e;
+   }
+
+   public double e() {
+      return this.f;
+   }
+
+   public double f() {
+      return this.g;
+   }
+
+   protected static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

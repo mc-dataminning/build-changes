@@ -1,71 +1,68 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.concurrent.CompletableFuture;
+import java.util.Set;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class gg implements ArgumentType<gc> {
-   private static final Collection<String> b = Arrays.asList("0 0", "~ ~", "0.1 -0.5", "~1 ~-2");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.c("argument.pos2d.incomplete"));
-   private final boolean c;
+public class gg implements Predicate<dsb> {
+   private final drx a;
+   private final Set<dta<?>> b;
+   @Nullable
+   private final ur c;
 
-   public gg(boolean $$0) {
-      this.c = $$0;
+   public gg(drx $$0, Set<dta<?>> $$1, @Nullable ur $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static gg a() {
-      return new gg(true);
+   public drx a() {
+      return this.a;
    }
 
-   public static gg a(boolean $$0) {
-      return new gg($$0);
+   public Set<dta<?>> b() {
+      return this.b;
    }
 
-   public static eul a(CommandContext<ee> $$0, String $$1) {
-      eum $$2 = ((gc)$$0.getArgument($$1, gc.class)).a((ee)$$0.getSource());
-      return new eul((float)$$2.c, (float)$$2.e);
-   }
-
-   public gc a(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-      if (!$$0.canRead()) {
-         throw a.createWithContext($$0);
+   public boolean a(dsb $$0) {
+      drx $$1 = $$0.a();
+      if (!$$1.a(this.a.b())) {
+         return false;
       } else {
-         gi $$2 = gi.a($$0, this.c);
-         if ($$0.canRead() && $$0.peek() == ' ') {
-            $$0.skip();
-            gi $$3 = gi.a($$0, this.c);
-            return new gj($$2, new gi(true, 0.0), $$3);
+         for (dta<?> $$2 : this.b) {
+            if ($$1.c($$2) != this.a.c($$2)) {
+               return false;
+            }
+         }
+
+         if (this.c == null) {
+            return true;
          } else {
-            $$0.setCursor($$1);
-            throw a.createWithContext($$0);
+            dpc $$3 = $$0.b();
+            return $$3 != null && vg.a(this.c, $$3.b($$0.c().H_()), true);
          }
       }
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      if (!($$0.getSource() instanceof ej)) {
-         return Suggestions.empty();
-      } else {
-         String $$2 = $$1.getRemaining();
-         Collection<ej.b> $$3;
-         if (!$$2.isEmpty() && $$2.charAt(0) == '^') {
-            $$3 = Collections.singleton(ej.b.a);
-         } else {
-            $$3 = ((ej)$$0.getSource()).C();
-         }
-
-         return ej.b($$2, $$3, $$1, ef.a(this::a));
-      }
+   public boolean a(arb $$0, iz $$1) {
+      return this.a(new dsb($$0, $$1, false));
    }
 
-   public Collection<String> getExamples() {
-      return b;
+   public boolean a(arb $$0, iz $$1, int $$2) {
+      drx $$3 = deu.b(this.a, $$0, $$1);
+      if ($$3.i()) {
+         $$3 = this.a;
+      }
+
+      if (!$$0.a($$1, $$3, $$2)) {
+         return false;
+      } else {
+         if (this.c != null) {
+            dpc $$4 = $$0.c_($$1);
+            if ($$4 != null) {
+               $$4.c(this.c, $$0.H_());
+            }
+         }
+
+         return true;
+      }
    }
 }

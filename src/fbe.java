@@ -1,59 +1,54 @@
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+import org.slf4j.Logger;
 
-public abstract class fbe {
-   public final int a;
-   public final int b;
-   public final int c;
-   public final int d;
+public class fbe extends fbp {
+   private static final Logger c = LogUtils.getLogger();
+   public long a;
+   public List<UUID> b;
 
-   public fbe(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
+   public static fbe a(JsonObject $$0) {
+      fbe $$1 = new fbe();
 
-   public void a(ffn $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$1 + this.c;
-      int $$6 = $$2 + this.d;
-      boolean $$7 = $$3 >= $$5 && $$3 <= $$5 + this.a && $$4 >= $$6 && $$4 <= $$6 + this.b;
-      this.a($$0, $$5, $$6, $$7);
-   }
-
-   protected abstract void a(ffn var1, int var2, int var3, boolean var4);
-
-   public int a() {
-      return this.c + this.a;
-   }
-
-   public int b() {
-      return this.d + this.b;
-   }
-
-   public abstract void a(int var1);
-
-   public static void a(ffn $$0, List<fbe> $$1, gtx<?> $$2, int $$3, int $$4, int $$5, int $$6) {
-      for (fbe $$7 : $$1) {
-         if ($$2.b() > $$7.a()) {
-            $$7.a($$0, $$3, $$4, $$5, $$6);
+      try {
+         $$1.a = fdm.a("serverId", $$0, -1L);
+         String $$2 = fdm.b("playerList", $$0, null);
+         if ($$2 != null) {
+            JsonElement $$3 = JsonParser.parseString($$2);
+            if ($$3.isJsonArray()) {
+               $$1.b = a($$3.getAsJsonArray());
+            } else {
+               $$1.b = Lists.newArrayList();
+            }
+         } else {
+            $$1.b = Lists.newArrayList();
          }
+      } catch (Exception var4) {
+         c.error("Could not parse RealmsServerPlayerList: {}", var4.getMessage());
       }
+
+      return $$1;
    }
 
-   public static void a(gtx<?> $$0, fgw.a<?> $$1, List<fbe> $$2, int $$3, double $$4, double $$5) {
-      int $$6 = $$0.aF_().indexOf($$1);
-      if ($$6 > -1) {
-         $$0.b($$6);
-         int $$7 = $$0.r();
-         int $$8 = $$0.g($$6);
-         int $$9 = (int)($$4 - (double)$$7);
-         int $$10 = (int)($$5 - (double)$$8);
+   private static List<UUID> a(JsonArray $$0) {
+      List<UUID> $$1 = new ArrayList<>($$0.size());
 
-         for (fbe $$11 : $$2) {
-            if ($$9 >= $$11.c && $$9 <= $$11.a() && $$10 >= $$11.d && $$10 <= $$11.b()) {
-               $$11.a($$6);
+      for (JsonElement $$2 : $$0) {
+         if ($$2.isJsonObject()) {
+            UUID $$3 = fdm.a("playerId", $$2.getAsJsonObject(), null);
+            if ($$3 != null) {
+               $$1.add($$3);
             }
          }
       }
+
+      return $$1;
    }
 }

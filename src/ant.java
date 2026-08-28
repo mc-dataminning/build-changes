@@ -1,52 +1,39 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.ContextChain;
-import java.util.List;
+import com.mojang.brigadier.tree.LiteralCommandNode;
+import java.util.Collection;
 
 public class ant {
-   public static <T extends eg<T>> void a(CommandDispatcher<T> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)LiteralArgumentBuilder.literal("return")
-                     .requires($$0x -> $$0x.c(2)))
-                  .then(RequiredArgumentBuilder.argument("value", IntegerArgumentType.integer()).executes(new ant.c())))
-               .then(LiteralArgumentBuilder.literal("fail").executes(new ant.a())))
-            .then(LiteralArgumentBuilder.literal("run").forward($$0.getRoot(), new ant.b(), false))
-      );
-   }
-
-   static class a<T extends eg<T>> implements ha.a<T> {
-      public void a(T $$0, ContextChain<T> $$1, gy $$2, he<T> $$3) {
-         $$0.p().onFailure();
-         hf $$4 = $$3.b();
-         $$4.a();
-         $$4.b();
-      }
-   }
-
-   static class b<T extends eg<T>> implements hb.a<T> {
-      public void a(T $$0, List<T> $$1, ContextChain<T> $$2, gy $$3, he<T> $$4) {
-         if ($$1.isEmpty()) {
-            if ($$3.c()) {
-               $$4.a(hn.a());
+   public static void a(CommandDispatcher<ep> $$0) {
+      LiteralCommandNode<ep> $$1 = $$0.register(
+         (LiteralArgumentBuilder)eq.a("msg").then(eq.a("targets", fc.d()).then(eq.a("message", fg.a()).executes($$0x -> {
+            Collection<arc> $$1x = fc.f($$0x, "targets");
+            if (!$$1x.isEmpty()) {
+               fg.a($$0x, "message", $$2 -> a((ep)$$0x.getSource(), $$1x, $$2));
             }
-         } else {
-            $$4.b().b();
-            ContextChain<T> $$5 = $$2.nextStage();
-            String $$6 = $$5.getTopContext().getInput();
-            $$4.a(new hj.a<>($$6, $$5, $$3.d(), $$0, $$1));
-         }
-      }
+
+            return $$1x.size();
+         })))
+      );
+      $$0.register((LiteralArgumentBuilder)eq.a("tell").redirect($$1));
+      $$0.register((LiteralArgumentBuilder)eq.a("w").redirect($$1));
    }
 
-   static class c<T extends eg<T>> implements ha.a<T> {
-      public void a(T $$0, ContextChain<T> $$1, gy $$2, he<T> $$3) {
-         int $$4 = IntegerArgumentType.getInteger($$1.getTopContext(), "value");
-         $$0.p().onSuccess($$4);
-         hf $$5 = $$3.b();
-         $$5.a($$4);
-         $$5.b();
+   private static void a(ep $$0, Collection<arc> $$1, yb $$2) {
+      xh.a $$3 = xh.a(xh.e, $$0);
+      ya $$4 = ya.a($$2);
+      boolean $$5 = false;
+
+      for (arc $$6 : $$1) {
+         xh.a $$7 = xh.a(xh.f, $$0).c($$6.O_());
+         $$0.a($$4, false, $$7);
+         boolean $$8 = $$0.a($$6);
+         $$6.a($$4, $$8, $$3);
+         $$5 |= $$8 && $$2.j();
+      }
+
+      if ($$5) {
+         $$0.a(auz.e);
       }
    }
 }

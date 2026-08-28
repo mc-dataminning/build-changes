@@ -1,54 +1,51 @@
-import com.mojang.datafixers.DSL;
+import com.google.common.collect.Maps;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import java.util.Map;
 
 public class bba extends DataFix {
-   public bba(Schema $$0) {
-      super($$0, false);
+   private static final Map<String, String> a = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
+      $$0.put("Airportal", "minecraft:end_portal");
+      $$0.put("Banner", "minecraft:banner");
+      $$0.put("Beacon", "minecraft:beacon");
+      $$0.put("Cauldron", "minecraft:brewing_stand");
+      $$0.put("Chest", "minecraft:chest");
+      $$0.put("Comparator", "minecraft:comparator");
+      $$0.put("Control", "minecraft:command_block");
+      $$0.put("DLDetector", "minecraft:daylight_detector");
+      $$0.put("Dropper", "minecraft:dropper");
+      $$0.put("EnchantTable", "minecraft:enchanting_table");
+      $$0.put("EndGateway", "minecraft:end_gateway");
+      $$0.put("EnderChest", "minecraft:ender_chest");
+      $$0.put("FlowerPot", "minecraft:flower_pot");
+      $$0.put("Furnace", "minecraft:furnace");
+      $$0.put("Hopper", "minecraft:hopper");
+      $$0.put("MobSpawner", "minecraft:mob_spawner");
+      $$0.put("Music", "minecraft:noteblock");
+      $$0.put("Piston", "minecraft:piston");
+      $$0.put("RecordPlayer", "minecraft:jukebox");
+      $$0.put("Sign", "minecraft:sign");
+      $$0.put("Skull", "minecraft:skull");
+      $$0.put("Structure", "minecraft:structure_block");
+      $$0.put("Trap", "minecraft:dispenser");
+   });
+
+   public bba(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> $$0 = DSL.typeFinder(
-         this.getInputSchema().getType(bga.t)
-      );
-      Type<?> $$1 = this.getInputSchema().getType(bga.z);
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bgs.t);
+      Type<?> $$1 = this.getOutputSchema().getType(bgs.t);
+      TaggedChoiceType<String> $$2 = this.getInputSchema().findChoiceType(bgs.s);
+      TaggedChoiceType<String> $$3 = this.getOutputSchema().findChoiceType(bgs.s);
       return TypeRewriteRule.seq(
-         this.a($$0, $$1, "minecraft:llama"), new TypeRewriteRule[]{this.a($$0, $$1, "minecraft:mule"), this.a($$0, $$1, "minecraft:donkey")}
-      );
-   }
-
-   private TypeRewriteRule a(
-      OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> $$0, Type<?> $$1, String $$2
-   ) {
-      Type<?> $$3 = this.getInputSchema().getChoiceType(bga.z, $$2);
-      OpticFinder<?> $$4 = DSL.namedChoice($$2, $$3);
-      OpticFinder<?> $$5 = $$3.findField("Items");
-      return this.fixTypeEverywhereTyped(
-         "Fix non-zero indexing in chest horse type " + $$2,
-         $$1,
-         $$3x -> $$3x.updateTyped(
-               $$4,
-               $$2xx -> $$2xx.updateTyped(
-                     $$5,
-                     $$1xxx -> $$1xxx.update(
-                           $$0,
-                           $$0xxxx -> $$0xxxx.mapSecond(
-                                 $$0xxxxx -> $$0xxxxx.mapSecond(
-                                       $$0xxxxxx -> $$0xxxxxx.mapSecond(
-                                             $$0xxxxxxx -> $$0xxxxxxx.update("Slot", $$0xxxxxxxx -> $$0xxxxxxxx.createByte((byte)($$0xxxxxxxx.asInt(2) - 2)))
-                                          )
-                                    )
-                              )
-                        )
-                  )
-            )
+         this.convertUnchecked("item stack block entity name hook converter", $$0, $$1),
+         this.fixTypeEverywhere("BlockEntityIdFix", $$2, $$3, $$0x -> $$0xx -> $$0xx.mapFirst($$0xxx -> a.getOrDefault($$0xxx, $$0xxx)))
       );
    }
 }

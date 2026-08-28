@@ -1,11 +1,17 @@
-public class axa {
-   public static final int a = -1;
-   public static final int b = -16777216;
-   public static final int c = -8355712;
-   public static final int d = -6250336;
-   public static final int e = -4539718;
-   public static final int f = -65536;
-   public static final int g = -2142128;
-   public static final int h = -256;
-   public static final int i = -171;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+
+public record axa(List<awz> b, boolean c) {
+   public static final Codec<axa> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(awz.a.listOf().fieldOf("values").forGetter(axa::a), Codec.BOOL.optionalFieldOf("replace", false).forGetter(axa::b)).apply($$0, axa::new)
+   );
+
+   public List<awz> a() {
+      return this.b;
+   }
+
+   public boolean b() {
+      return this.c;
+   }
 }

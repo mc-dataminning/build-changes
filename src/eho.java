@@ -1,54 +1,42 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class eho extends eod {
-   private static final String a = "Remaining";
-   private static final String b = "All";
-   private final LongSet c;
-   private final LongSet d;
+public class eho extends ehm {
+   public static final MapCodec<eho> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(bpu.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), bpu.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
+            .apply($$0, eho::new)
+   );
+   private final bpu c;
+   private final bpu d;
 
-   public static eod.a<eho> a() {
-      return new eod.a<>(eho::new, eho::b, azl.o);
+   public static eho a(bpu $$0, bpu $$1) {
+      return new eho($$0, $$1);
    }
 
-   private eho(LongSet $$0, LongSet $$1) {
+   public static eho a(bpu $$0) {
+      return new eho(bpr.a(0), $$0);
+   }
+
+   public static eho b(bpu $$0) {
+      return new eho($$0, bpr.a(0));
+   }
+
+   private eho(bpu $$0, bpu $$1) {
       this.c = $$0;
       this.d = $$1;
    }
 
-   public eho() {
-      this(new LongOpenHashSet(), new LongOpenHashSet());
-   }
-
-   public static eho b(ud $$0, iz.a $$1) {
-      return new eho(new LongOpenHashSet($$0.o("All")), new LongOpenHashSet($$0.o("Remaining")));
+   @Override
+   public Stream<iz> a_(ehk $$0, azc $$1, iz $$2) {
+      int $$3 = $$2.u() + this.c.a($$1);
+      int $$4 = $$2.v() + this.d.a($$1);
+      int $$5 = $$2.w() + this.c.a($$1);
+      return Stream.of(new iz($$3, $$4, $$5));
    }
 
    @Override
-   public ud a(ud $$0, iz.a $$1) {
-      $$0.a("All", this.c.toLongArray());
-      $$0.a("Remaining", this.d.toLongArray());
-      return $$0;
-   }
-
-   public void a(long $$0) {
-      this.c.add($$0);
-      this.d.add($$0);
-   }
-
-   public boolean b(long $$0) {
-      return this.c.contains($$0);
-   }
-
-   public boolean c(long $$0) {
-      return this.d.contains($$0);
-   }
-
-   public void d(long $$0) {
-      this.d.remove($$0);
-   }
-
-   public LongSet b() {
-      return this.c;
+   public ehn<?> b() {
+      return ehn.n;
    }
 }

@@ -1,25 +1,33 @@
-public class czs extends czb {
-   private static final czs.a[] b = new czs.a[]{new czs.a(0.5F), new czs.a(0.75F), new czs.a(1.0F)};
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public czs() {
-      super(czb.a(awf.bS, 2, 3, czb.a(15, 9), czb.a(65, 9), 4, col.a(coo.c), bsd.a));
+public class czs extends czv {
+   private final Optional<axb<bsv<?>>> b;
+
+   public czs(czv.b $$0, Optional<axb<bsv<?>>> $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public void c(bsq $$0, brw $$1, int $$2) {
-      $$0.dP().a(null, null, b[$$2 - 1], $$0.du(), $$0.dw(), $$0.dA(), 3.5F, false, daz.a.e, ky.A, ky.z, avi.Cm);
+   public float a(int $$0, @Nullable bsv<?> $$1) {
+      if (this.b.isEmpty()) {
+         return 1.0F + (float)Math.max(0, $$0 - 1) * 0.5F;
+      } else {
+         return $$1 != null && $$1.a(this.b.get()) ? (float)$$0 * 2.5F : 0.0F;
+      }
    }
 
-   static final class a extends cng.a {
-      private final float a;
+   @Override
+   public boolean a(czv $$0) {
+      return !($$0 instanceof czs);
+   }
 
-      public a(float $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public float a() {
-         return this.a;
+   @Override
+   public void a(btk $$0, bsp $$1, int $$2) {
+      if (this.b.isPresent() && $$1 instanceof btk $$3 && this.b.get() == awp.C && $$2 > 0 && $$3.ak().a(this.b.get())) {
+         int $$4 = 20 + $$0.el().a(10 * $$2);
+         $$3.b(new brx(brz.b, $$4, 3));
       }
    }
 }

@@ -1,37 +1,29 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public record cvx(akn e, ix<ctl> f, wx g, boolean h) {
-   public static final Codec<cvx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               akn.a.fieldOf("asset_id").forGetter(cvx::a),
-               akk.a(lf.G).fieldOf("template_item").forGetter(cvx::b),
-               wz.a.fieldOf("description").forGetter(cvx::c),
-               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(cvx::d)
-            )
-            .apply($$0, cvx::new)
-   );
-   public static final yv<wi, cvx> b = yv.a(akn.b, cvx::a, yt.b(lf.G), cvx::b, wz.b, cvx::c, yt.b, cvx::d, cvx::new);
-   public static final Codec<ix<cvx>> c = akj.a(lf.aP, a);
-   public static final yv<wi, ix<cvx>> d = yt.a(lf.aP, b);
-
-   public wx a(ix<cvv> $$0) {
-      return this.g.f().c($$0.a().e().a());
+public class cvx extends cwa {
+   public cvx(cvz $$0, cuf.a $$1) {
+      super($$0, $$1.a(km.w, k()));
    }
 
-   public akn a() {
-      return this.e;
+   private static cxp k() {
+      return new cxp(List.of(cxp.a.a(List.of(dew.bs), 15.0F), cxp.a.b(awl.bE, 1.5F)), 1.0F, 2);
    }
 
-   public ix<ctl> b() {
-      return this.f;
+   public static cxf a(cvz $$0, int $$1, float $$2) {
+      return cxf.a()
+         .a(bus.c, new buq(e, "Weapon modifier", (double)((float)$$1 + $$0.c()), buq.a.a), bsx.b)
+         .a(bus.e, new buq(f, "Weapon modifier", (double)$$2, buq.a.a), bsx.b)
+         .a();
    }
 
-   public wx c() {
-      return this.g;
+   @Override
+   public boolean a(drx $$0, dbt $$1, iz $$2, cms $$3) {
+      return !$$3.f();
    }
 
-   public boolean d() {
-      return this.h;
+   @Override
+   public boolean a(cuk $$0, btk $$1, btk $$2) {
+      $$0.a(1, $$2, bsw.a);
+      return true;
    }
 }

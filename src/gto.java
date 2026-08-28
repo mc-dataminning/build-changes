@@ -1,38 +1,59 @@
-public class gto implements gtr {
-   private static final int a = 600;
-   private static final wx b = wx.c("tutorial.open_inventory.title");
-   private static final wx c = wx.a("tutorial.open_inventory.description", gtq.a("inventory"));
-   private final gtq d;
-   private fil e;
-   private int f;
+import java.util.concurrent.locks.LockSupport;
 
-   public gto(gtq $$0) {
-      this.d = $$0;
+public class gto extends bpf<Runnable> {
+   private Thread a = this.b();
+   private volatile boolean b;
+
+   public gto() {
+      super("Sound executor");
+   }
+
+   private Thread b() {
+      Thread $$0 = new Thread(this::c);
+      $$0.setDaemon(true);
+      $$0.setName("Sound engine");
+      $$0.start();
+      return $$0;
    }
 
    @Override
+   protected Runnable f(Runnable $$0) {
+      return $$0;
+   }
+
+   @Override
+   protected boolean e(Runnable $$0) {
+      return !this.b;
+   }
+
+   @Override
+   protected Thread az() {
+      return this.a;
+   }
+
+   private void c() {
+      while (!this.b) {
+         this.c(() -> this.b);
+      }
+   }
+
+   @Override
+   protected void z() {
+      LockSupport.park("waiting for tasks");
+   }
+
    public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(gts.f);
-      } else {
-         if (this.f >= 600 && this.e == null) {
-            this.e = new fil(fil.a.d, b, c, false);
-            this.d.e().ax().a(this.e);
-         }
-      }
-   }
+      this.b = true;
+      this.a.interrupt();
 
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
+      try {
+         this.a.join();
+      } catch (InterruptedException var2) {
+         Thread.currentThread().interrupt();
       }
-   }
 
-   @Override
-   public void c() {
-      this.d.a(gts.e);
+      this.bz();
+      this.b = false;
+      this.a = this.b();
    }
 }

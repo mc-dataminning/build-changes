@@ -1,151 +1,82 @@
 import javax.annotation.Nullable;
 
-public abstract class cnu extends cnt implements cnx {
-   private jg<ctq> c = jg.a(36, ctq.i);
-   @Nullable
-   private akm<epm> d;
-   private long e;
-
-   protected cnu(bsc<?> $$0, daz $$1) {
+public class cnu extends cnr {
+   public cnu(bsv<? extends cnu> $$0, dbt $$1) {
       super($$0, $$1);
    }
 
-   protected cnu(bsc<?> $$0, double $$1, double $$2, double $$3, daz $$4) {
-      super($$0, $$4, $$1, $$2, $$3);
+   public cnu(dbt $$0, btk $$1) {
+      super(bsv.G, $$1, $$0);
    }
 
    @Override
-   public void a(bqp $$0) {
+   protected cuf u() {
+      return cun.sf;
+   }
+
+   @Override
+   protected void a(evj $$0) {
       super.a($$0);
-      this.a($$0, this.dP(), this);
+      $$0.a().a(this.dQ().b(this, this.s()), 0.0F);
    }
 
    @Override
-   public ctq a(int $$0) {
-      return this.f_($$0);
-   }
+   protected void a(evk $$0) {
+      super.a($$0);
 
-   @Override
-   public ctq a(int $$0, int $$1) {
-      return this.b($$0, $$1);
-   }
-
-   @Override
-   public ctq b(int $$0) {
-      return this.e_($$0);
-   }
-
-   @Override
-   public void a(int $$0, ctq $$1) {
-      this.c($$0, $$1);
-   }
-
-   @Override
-   public bti a_(int $$0) {
-      return this.g_($$0);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(cly $$0) {
-      return this.g($$0);
-   }
-
-   @Override
-   public void a(brw.c $$0) {
-      if (!this.dP().B && $$0.a()) {
-         bps.a(this.dP(), this, this);
+      for (int $$1 = 0; $$1 < 32; $$1++) {
+         this.dP().a(lj.ac, this.du(), this.dw() + this.ah.j() * 2.0, this.dA(), this.ah.k(), 0.0, this.ah.k());
       }
 
-      super.a($$0);
-   }
+      if (!this.dP().B && !this.dK()) {
+         bsp $$2 = this.s();
+         if ($$2 instanceof arc $$3) {
+            if ($$3.c.c() && $$3.dP() == this.dP() && !$$3.fL()) {
+               if (this.ah.i() < 0.05F && this.dP().ab().b(dbp.e)) {
+                  cjp $$4 = bsv.I.a(this.dP());
+                  if ($$4 != null) {
+                     $$4.b($$2.du(), $$2.dw(), $$2.dA(), $$2.dF(), $$2.dH());
+                     this.dP().b($$4);
+                  }
+               }
 
-   @Override
-   protected void b(ud $$0) {
-      super.b($$0);
-      this.a($$0, this.dR());
-   }
+               if ($$2.bR()) {
+                  $$3.a(this.du(), this.dw(), this.dA());
+               } else {
+                  $$2.c(this.du(), this.dw(), this.dA());
+               }
 
-   @Override
-   protected void a(ud $$0) {
-      super.a($$0);
-      this.b($$0, this.dR());
-   }
+               $$2.n();
+               $$2.a(this.dQ().k(), 5.0F);
+               this.dP().a(null, this.du(), this.dw(), this.dA(), avw.us, avx.h);
+            }
+         } else if ($$2 != null) {
+            $$2.c(this.du(), this.dw(), this.dA());
+            $$2.n();
+         }
 
-   @Override
-   public bpw a(cly $$0, bpv $$1) {
-      return this.c_($$0);
-   }
-
-   @Override
-   protected void u() {
-      float $$0 = 0.98F;
-      if (this.d == null) {
-         int $$1 = 15 - cov.b(this);
-         $$0 += (float)$$1 * 0.001F;
+         this.ao();
       }
-
-      if (this.be()) {
-         $$0 *= 0.95F;
-      }
-
-      this.g(this.ds().d((double)$$0, 0.0, (double)$$0));
    }
 
    @Override
-   public void a() {
-      this.f();
-   }
-
-   public void a(akm<epm> $$0, long $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   @Nullable
-   @Override
-   public cov createMenu(int $$0, clx $$1, cly $$2) {
-      if (this.d != null && $$2.N_()) {
-         return null;
+   public void l() {
+      bsp $$0 = this.s();
+      if ($$0 instanceof arc && !$$0.bD() && this.dP().ab().b(dbp.Y)) {
+         this.ao();
       } else {
-         this.f($$1.l);
-         return this.a($$0, $$1);
+         super.l();
       }
    }
 
-   protected abstract cov a(int var1, clx var2);
-
    @Nullable
    @Override
-   public akm<epm> B() {
-      return this.d;
-   }
+   public bsp b(arb $$0) {
+      bsp $$1 = this.s();
+      if ($$1 != null && $$1.dP().af() != $$0.af()) {
+         this.c(null);
+      }
 
-   @Override
-   public void a(@Nullable akm<epm> $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public long C() {
-      return this.e;
-   }
-
-   @Override
-   public void a(long $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public jg<ctq> D() {
-      return this.c;
-   }
-
-   @Override
-   public void E() {
-      this.c = jg.a(this.b(), ctq.i);
+      return super.b($$0);
    }
 }

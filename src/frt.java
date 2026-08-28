@@ -1,70 +1,75 @@
-public class frt {
-   public static void a(fvw $$0, fvw $$1, fvw $$2, boolean $$3) {
-      fvw $$4 = $$3 ? $$0 : $$1;
-      fvw $$5 = $$3 ? $$1 : $$0;
-      $$4.f = ($$3 ? -0.3F : 0.3F) + $$2.f;
-      $$5.f = ($$3 ? 0.6F : -0.6F) + $$2.f;
-      $$4.e = (float) (-Math.PI / 2) + $$2.e + 0.1F;
-      $$5.e = -1.5F + $$2.e;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
+
+public class frt extends fmy {
+   private static final Logger d = LogUtils.getLogger();
+   public static final dyn a = new dyn((long)"test1".hashCode(), true, false);
+   protected final fmy b;
+   private fgz r;
+   private fgz s;
+   private fgz u;
+   private fgz v;
+   protected fhi c;
+   private fry w;
+
+   public frt(fmy $$0) {
+      super(xl.c("selectWorld.title"));
+      this.b = $$0;
    }
 
-   public static void a(fvw $$0, fvw $$1, bsq $$2, boolean $$3) {
-      fvw $$4 = $$3 ? $$0 : $$1;
-      fvw $$5 = $$3 ? $$1 : $$0;
-      $$4.f = $$3 ? -0.8F : 0.8F;
-      $$4.e = -0.97079635F;
-      $$5.e = $$4.e;
-      float $$6 = (float)csd.l($$2.fx());
-      float $$7 = ayf.a((float)$$2.fz(), 0.0F, $$6);
-      float $$8 = $$7 / $$6;
-      $$5.f = ayf.i($$8, 0.4F, 0.85F) * (float)($$3 ? 1 : -1);
-      $$5.e = ayf.i($$8, $$5.e, (float) (-Math.PI / 2));
+   @Override
+   protected void aN_() {
+      this.c = new fhi(this.p, this.n / 2 - 100, 22, 200, 20, this.c, xl.c("selectWorld.search"));
+      this.c.b($$0 -> this.w.a($$0));
+      this.d(this.c);
+      this.w = this.c(new fry(this, this.m, this.n, this.o - 112, 48, 36, this.c.a(), this.w));
+      this.s = this.c(fgz.a(eps.a, $$0 -> this.w.d().ifPresent(fry.c::c)).a(this.n / 2 - 154, this.o - 52, 150, 20).a());
+      this.c(fgz.a(xl.c("selectWorld.create"), $$0 -> frn.a(this.m, this)).a(this.n / 2 + 4, this.o - 52, 150, 20).a());
+      this.u = this.c(fgz.a(xl.c("selectWorld.edit"), $$0 -> this.w.d().ifPresent(fry.c::f)).a(this.n / 2 - 154, this.o - 28, 72, 20).a());
+      this.r = this.c(fgz.a(xl.c("selectWorld.delete"), $$0 -> this.w.d().ifPresent(fry.c::d)).a(this.n / 2 - 76, this.o - 28, 72, 20).a());
+      this.v = this.c(fgz.a(xl.c("selectWorld.recreate"), $$0 -> this.w.d().ifPresent(fry.c::h)).a(this.n / 2 + 4, this.o - 28, 72, 20).a());
+      this.c(fgz.a(xk.k, $$0 -> this.m.a(this.b)).a(this.n / 2 + 82, this.o - 28, 72, 20).a());
+      this.a(null);
    }
 
-   public static <T extends bss> void a(fvw $$0, fvw $$1, T $$2, float $$3, float $$4) {
-      float $$5 = ayf.a($$3 * (float) Math.PI);
-      float $$6 = ayf.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$0.g = 0.0F;
-      $$1.g = 0.0F;
-      $$0.f = (float) (Math.PI / 20);
-      $$1.f = (float) (-Math.PI / 20);
-      if ($$2.fu() == bsk.b) {
-         $$0.e = -1.8849558F + ayf.b($$4 * 0.09F) * 0.15F;
-         $$1.e = -0.0F + ayf.b($$4 * 0.19F) * 0.5F;
-         $$0.e += $$5 * 2.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 1.2F - $$6 * 0.4F;
+   @Override
+   protected void aD_() {
+      this.b(this.c);
+   }
+
+   @Override
+   public void d() {
+      this.m.a(this.b);
+   }
+
+   @Override
+   public void a(fgm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.c.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 8, 16777215);
+   }
+
+   public void a(@Nullable eps $$0) {
+      if ($$0 == null) {
+         this.s.b(eps.a);
+         this.s.j = false;
+         this.u.j = false;
+         this.v.j = false;
+         this.r.j = false;
       } else {
-         $$0.e = -0.0F + ayf.b($$4 * 0.19F) * 0.5F;
-         $$1.e = -1.8849558F + ayf.b($$4 * 0.09F) * 0.15F;
-         $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 2.2F - $$6 * 0.4F;
+         this.s.b($$0.t());
+         this.s.j = $$0.u();
+         this.u.j = $$0.w();
+         this.v.j = $$0.x();
+         this.r.j = $$0.y();
       }
-
-      a($$0, $$1, $$4);
    }
 
-   public static void a(fvw $$0, float $$1, float $$2) {
-      $$0.g = $$0.g + $$2 * (ayf.b($$1 * 0.09F) * 0.05F + 0.05F);
-      $$0.e = $$0.e + $$2 * ayf.a($$1 * 0.067F) * 0.05F;
-   }
-
-   public static void a(fvw $$0, fvw $$1, float $$2) {
-      a($$0, $$2, 1.0F);
-      a($$1, $$2, -1.0F);
-   }
-
-   public static void a(fvw $$0, fvw $$1, boolean $$2, float $$3, float $$4) {
-      float $$5 = ayf.a($$3 * (float) Math.PI);
-      float $$6 = ayf.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$1.g = 0.0F;
-      $$0.g = 0.0F;
-      $$1.f = -(0.1F - $$5 * 0.6F);
-      $$0.f = 0.1F - $$5 * 0.6F;
-      float $$7 = (float) -Math.PI / ($$2 ? 1.5F : 2.25F);
-      $$1.e = $$7;
-      $$0.e = $$7;
-      $$1.e += $$5 * 1.2F - $$6 * 0.4F;
-      $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-      a($$1, $$0, $$4);
+   @Override
+   public void j() {
+      if (this.w != null) {
+         this.w.aF_().forEach(fry.a::close);
+      }
    }
 }

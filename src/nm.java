@@ -1,78 +1,33 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.stream.Stream;
+import java.util.function.BiConsumer;
 
-public class nm implements nj {
-   private final dea a;
-   private final List<np> b;
-   private final Set<dsg<?>> c = Sets.newHashSet();
-   private final List<nn> d = Lists.newArrayList();
-
-   private nm(dea $$0, List<np> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public nm a(nn $$0) {
-      $$0.b().forEach($$0x -> {
-         if (this.a.l().a($$0x.f()) != $$0x) {
-            throw new IllegalStateException("Property " + $$0x + " is not defined for block " + this.a);
-         } else if (!this.c.add($$0x)) {
-            throw new IllegalStateException("Values of property " + $$0x + " already defined for block " + this.a);
-         }
-      });
-      this.d.add($$0);
-      return this;
-   }
-
-   public JsonElement b() {
-      Stream<Pair<no, List<np>>> $$0 = Stream.of(Pair.of(no.a(), this.b));
-
-      for (nn $$1 : this.d) {
-         Map<no, List<np>> $$2 = $$1.a();
-         $$0 = $$0.flatMap($$1x -> $$2.entrySet().stream().map($$1xx -> {
-               no $$2x = ((no)$$1.getFirst()).a((no)$$1xx.getKey());
-               List<np> $$3 = a((List<np>)$$1.getSecond(), (List<np>)$$1xx.getValue());
-               return Pair.of($$2x, $$3);
-            }));
-      }
-
-      Map<String, JsonElement> $$3 = new TreeMap<>();
-      $$0.forEach($$1 -> $$3.put(((no)$$1.getFirst()).b(), np.a((List<np>)$$1.getSecond())));
-      JsonObject $$4 = new JsonObject();
-      $$4.add("variants", ac.a(new JsonObject(), $$1 -> $$3.forEach($$1::add)));
-      return $$4;
-   }
-
-   private static List<np> a(List<np> $$0, List<np> $$1) {
-      Builder<np> $$2 = ImmutableList.builder();
-      $$0.forEach($$2x -> $$1.forEach($$2xx -> $$2.add(np.a($$2x, $$2xx))));
-      return $$2.build();
-   }
-
+public class nm implements mu {
    @Override
-   public dea a() {
-      return this.a;
-   }
-
-   public static nm a(dea $$0) {
-      return new nm($$0, ImmutableList.of(np.a()));
-   }
-
-   public static nm a(dea $$0, np $$1) {
-      return new nm($$0, ImmutableList.of($$1));
-   }
-
-   public static nm a(dea $$0, np... $$1) {
-      return new nm($$0, ImmutableList.copyOf($$1));
+   public void generate(jk.a $$0, BiConsumer<ala<eqi>, eqi.a> $$1) {
+      $$1.accept(
+         epz.aW,
+         eqi.b()
+            .a(
+               eqh.a()
+                  .a(eug.a(1.0F))
+                  .a(eqq.a(cun.qP).a(5).a(new erg.a().a(czy.l)))
+                  .a(eqq.a(cun.pJ).a(8).a(new erg.a().a(czy.l)))
+                  .a(eqq.a(cun.sk).a(8).a(eso.a(cwm.l)))
+                  .a(eqq.a(cun.vo).a(8).a(eso.a(cwm.l)))
+                  .a(eqq.a(cun.sk).a(10).a(eso.a(cwm.a)))
+                  .a(eqq.a(cun.vv).a(10).a(esi.a(eum.a(10.0F, 36.0F))))
+                  .a(eqq.a(cun.sf).a(10).a(esi.a(eum.a(2.0F, 4.0F))))
+                  .a(eqq.a(cun.ps).a(20).a(esi.a(eum.a(3.0F, 9.0F))))
+                  .a(eqq.a(cun.oB).a(20).a(esi.a(eum.a(5.0F, 12.0F))))
+                  .a(eqq.a(cun.eE).a(40))
+                  .a(eqq.a(cun.wC).a(40).a(esi.a(eum.a(1.0F, 3.0F))))
+                  .a(eqq.a(cun.tX).a(40))
+                  .a(eqq.a(cun.qD).a(40).a(esi.a(eum.a(2.0F, 4.0F))))
+                  .a(eqq.a(cun.fo).a(40).a(esi.a(eum.a(2.0F, 8.0F))))
+                  .a(eqq.a(cun.ux).a(40).a(esi.a(eum.a(2.0F, 8.0F))))
+                  .a(eqq.a(cun.vp).a(40).a(esi.a(eum.a(6.0F, 12.0F))))
+                  .a(eqq.a(cun.aj).a(40).a(esi.a(eum.a(8.0F, 16.0F))))
+                  .a(eqq.a(cun.wD).a(40).a(esi.a(eum.a(8.0F, 16.0F))))
+            )
+      );
    }
 }

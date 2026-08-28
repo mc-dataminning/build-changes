@@ -1,30 +1,35 @@
-public class chn extends chf {
-   private static final int b = 40;
-   private int c;
+import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
 
-   public chn(chc $$0) {
-      super($$0);
+public enum chn implements azp {
+   a(0, "white"),
+   b(1, "creamy"),
+   c(2, "chestnut"),
+   d(3, "brown"),
+   e(4, "black"),
+   f(5, "gray"),
+   g(6, "dark_brown");
+
+   public static final Codec<chn> h = azp.a(chn::values);
+   private static final IntFunction<chn> i = axl.a(chn::a, values(), axl.a.b);
+   private final int j;
+   private final String k;
+
+   private chn(final int $$0, final String $$1) {
+      this.j = $$0;
+      this.k = $$1;
+   }
+
+   public int a() {
+      return this.j;
+   }
+
+   public static chn a(int $$0) {
+      return i.apply($$0);
    }
 
    @Override
-   public void b() {
-      this.a.dP().a(this.a.du(), this.a.dw(), this.a.dA(), avi.ie, this.a.de(), 2.5F, 0.8F + this.a.el().i() * 0.3F, false);
-   }
-
-   @Override
-   public void c() {
-      if (this.c++ >= 40) {
-         this.a.gm().a(chs.f);
-      }
-   }
-
-   @Override
-   public void d() {
-      this.c = 0;
-   }
-
-   @Override
-   public chs<chn> i() {
-      return chs.h;
+   public String c() {
+      return this.k;
    }
 }

@@ -1,32 +1,64 @@
-public class ggz extends giz<cka, fsf<cka>> {
-   private static final akn a = new akn("textures/entity/breeze/breeze.png");
+import java.util.Map.Entry;
+import org.joml.Vector3f;
 
-   public ggz(ght.a $$0) {
-      super($$0, new fsf<>($$0.a(fvv.s)), 0.5F);
-      this.a(new gle(this));
-      this.a(new gld(this));
+public class ggz implements ggv.a {
+   private final ffa a;
+   private static final int b = 2;
+   private static final float c = 0.09375F;
+
+   public ggz(ffa $$0) {
+      this.a = $$0;
    }
 
-   public void a(cka $$0, float $$1, float $$2, eyu $$3, gck $$4, int $$5) {
-      fsf<cka> $$6 = this.a();
-      a($$6, $$6.b(), $$6.d());
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+   @Override
+   public void a(ezt $$0, gdj $$1, double $$2, double $$3, double $$4) {
+      dbu $$5 = this.a.r;
+      ezx $$6 = $$1.getBuffer(gdr.A());
+      iz $$7 = iz.a($$2, 0.0, $$4);
 
-   public akn a(cka $$0) {
-      return a;
-   }
+      for (int $$8 = -2; $$8 <= 2; $$8++) {
+         for (int $$9 = -2; $$9 <= 2; $$9++) {
+            dtt $$10 = $$5.y($$7.b($$8 * 16, 0, $$9 * 16));
 
-   public static fsf<cka> a(fsf<cka> $$0, fvw... $$1) {
-      $$0.b().k = false;
-      $$0.c().k = false;
-      $$0.d().k = false;
-      $$0.e().k = false;
+            for (Entry<dxp.a, dxp> $$11 : $$10.e()) {
+               dxp.a $$12 = $$11.getKey();
+               dba $$13 = $$10.f();
+               Vector3f $$14 = this.a($$12);
 
-      for (fvw $$2 : $$1) {
-         $$2.k = true;
+               for (int $$15 = 0; $$15 < 16; $$15++) {
+                  for (int $$16 = 0; $$16 < 16; $$16++) {
+                     int $$17 = kb.a($$13.e, $$15);
+                     int $$18 = kb.a($$13.f, $$16);
+                     float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
+                     gdh.b(
+                        $$0,
+                        $$6,
+                        (double)((float)$$17 + 0.25F) - $$2,
+                        (double)$$19,
+                        (double)((float)$$18 + 0.25F) - $$4,
+                        (double)((float)$$17 + 0.75F) - $$2,
+                        (double)($$19 + 0.09375F),
+                        (double)((float)$$18 + 0.75F) - $$4,
+                        $$14.x(),
+                        $$14.y(),
+                        $$14.z(),
+                        1.0F
+                     );
+                  }
+               }
+            }
+         }
       }
+   }
 
-      return $$0;
+   private Vector3f a(dxp.a $$0) {
+      return switch ($$0) {
+         case a -> new Vector3f(1.0F, 1.0F, 0.0F);
+         case c -> new Vector3f(1.0F, 0.0F, 1.0F);
+         case b -> new Vector3f(0.0F, 0.7F, 0.0F);
+         case d -> new Vector3f(0.0F, 0.0F, 0.5F);
+         case e -> new Vector3f(0.0F, 0.3F, 0.3F);
+         case f -> new Vector3f(0.0F, 0.5F, 0.5F);
+      };
    }
 }

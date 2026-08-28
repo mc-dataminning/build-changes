@@ -1,3 +1,4 @@
+import com.google.common.collect.Maps;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
@@ -7,50 +8,72 @@ import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.BiFunction;
+import javax.annotation.Nullable;
 
-public class fb implements ArgumentType<kw> {
-   private static final Collection<String> b = Arrays.asList("foo", "foo:bar", "particle with options");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wx.b("particle.notFound", $$0));
-   private final iz.a c;
+public class fb implements ArgumentType<fb.a> {
+   private static final Collection<String> a = Arrays.asList("eyes", "feet");
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xl.b("argument.anchor.invalid", $$0));
 
-   public fb(ea $$0) {
-      this.c = $$0;
+   public static fb.a a(CommandContext<ep> $$0, String $$1) {
+      return (fb.a)$$0.getArgument($$1, fb.a.class);
    }
 
-   public static fb a(ea $$0) {
-      return new fb($$0);
+   public static fb a() {
+      return new fb();
    }
 
-   public static kw a(CommandContext<ee> $$0, String $$1) {
-      return (kw)$$0.getArgument($$1, kw.class);
-   }
-
-   public kw a(StringReader $$0) throws CommandSyntaxException {
-      return a($$0, this.c);
-   }
-
-   public Collection<String> getExamples() {
-      return b;
-   }
-
-   public static kw a(StringReader $$0, iz.a $$1) throws CommandSyntaxException {
-      kx<?> $$2 = a($$0, $$1.b(lf.T));
-      return a($$0, (kx<kw>)$$2, $$1);
-   }
-
-   private static kx<?> a(StringReader $$0, iz<kx<?>> $$1) throws CommandSyntaxException {
-      akn $$2 = akn.a($$0);
-      akm<kx<?>> $$3 = akm.a(lf.T, $$2);
-      return $$1.a($$3).orElseThrow(() -> a.createWithContext($$0, $$2)).a();
-   }
-
-   private static <T extends kw> T a(StringReader $$0, kx<T> $$1, iz.a $$2) throws CommandSyntaxException {
-      return $$1.c().b($$1, $$0, $$2);
+   public fb.a a(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = $$0.getCursor();
+      String $$2 = $$0.readUnquotedString();
+      fb.a $$3 = fb.a.a($$2);
+      if ($$3 == null) {
+         $$0.setCursor($$1);
+         throw b.createWithContext($$0, $$2);
+      } else {
+         return $$3;
+      }
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      iz.b<kx<?>> $$2 = this.c.b(lf.T);
-      return ej.a($$2.c().map(akm::a), $$1);
+      return eu.b(fb.a.c.keySet(), $$1);
+   }
+
+   public Collection<String> getExamples() {
+      return a;
+   }
+
+   public static enum a {
+      a("feet", ($$0, $$1) -> $$0),
+      b("eyes", ($$0, $$1) -> new evm($$0.c, $$0.d + (double)$$1.cL(), $$0.e));
+
+      static final Map<String, fb.a> c = ac.a(Maps.newHashMap(), $$0 -> {
+         for (fb.a $$1 : values()) {
+            $$0.put($$1.d, $$1);
+         }
+      });
+      private final String d;
+      private final BiFunction<evm, bsp, evm> e;
+
+      private a(final String $$0, final BiFunction<evm, bsp, evm> $$1) {
+         this.d = $$0;
+         this.e = $$1;
+      }
+
+      @Nullable
+      public static fb.a a(String $$0) {
+         return c.get($$0);
+      }
+
+      public evm a(bsp $$0) {
+         return this.e.apply($$0.dn(), $$0);
+      }
+
+      public evm a(ep $$0) {
+         bsp $$1 = $$0.f();
+         return $$1 == null ? $$0.d() : this.e.apply($$0.d(), $$1);
+      }
    }
 }

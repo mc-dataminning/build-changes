@@ -1,29 +1,66 @@
-public enum ewh {
-   a(-3),
-   b(-2),
-   c(-1),
-   d(0),
-   e(1),
-   f(2),
-   g(3);
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-   private final int h;
+public enum ewh implements azp {
+   a(0, "list"),
+   b(1, "sidebar"),
+   c(2, "below_name"),
+   d(3, "sidebar.team.black"),
+   e(4, "sidebar.team.dark_blue"),
+   f(5, "sidebar.team.dark_green"),
+   g(6, "sidebar.team.dark_aqua"),
+   h(7, "sidebar.team.dark_red"),
+   i(8, "sidebar.team.dark_purple"),
+   j(9, "sidebar.team.gold"),
+   k(10, "sidebar.team.gray"),
+   l(11, "sidebar.team.dark_gray"),
+   m(12, "sidebar.team.blue"),
+   n(13, "sidebar.team.green"),
+   o(14, "sidebar.team.aqua"),
+   p(15, "sidebar.team.red"),
+   q(16, "sidebar.team.light_purple"),
+   r(17, "sidebar.team.yellow"),
+   s(18, "sidebar.team.white");
 
-   private ewh(int $$0) {
-      this.h = $$0;
-   }
+   public static final azp.a<ewh> t = azp.a(ewh::values);
+   public static final IntFunction<ewh> u = axl.a(ewh::a, values(), axl.a.a);
+   private final int v;
+   private final String w;
 
-   public static ewh a(int $$0) {
-      for (ewh $$1 : values()) {
-         if ($$1.h == $$0) {
-            return $$1;
-         }
-      }
-
-      return $$0 < a.h ? a : g;
+   private ewh(final int $$0, final String $$1) {
+      this.v = $$0;
+      this.w = $$1;
    }
 
    public int a() {
-      return this.h;
+      return this.v;
+   }
+
+   @Override
+   public String c() {
+      return this.w;
+   }
+
+   @Nullable
+   public static ewh a(n $$0) {
+      return switch ($$0) {
+         case a -> d;
+         case b -> e;
+         case c -> f;
+         case d -> g;
+         case e -> h;
+         case f -> i;
+         case g -> j;
+         case h -> k;
+         case i -> l;
+         case j -> m;
+         case k -> n;
+         case l -> o;
+         case m -> p;
+         case n -> q;
+         case o -> r;
+         case p -> s;
+         case r, u, t, v, q, s -> null;
+      };
    }
 }

@@ -1,111 +1,203 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import com.google.common.base.Splitter;
+import com.google.common.base.Strings;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.JsonOps;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+import java.util.Properties;
+import java.util.UUID;
+import java.util.concurrent.TimeUnit;
+import java.util.regex.Pattern;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class apy<T> {
-   public static final int a = apv.a + 2;
-   private final List<Long2ObjectLinkedOpenHashMap<List<Optional<T>>>> b = IntStream.range(0, a)
-      .mapToObj($$0x -> new Long2ObjectLinkedOpenHashMap())
-      .collect(Collectors.toList());
-   private volatile int c = a;
-   private final String d;
-   private final LongSet e = new LongOpenHashSet();
-   private final int f;
+public class apy extends aqb<apy> {
+   static final Logger ac = LogUtils.getLogger();
+   private static final Pattern ad = Pattern.compile("^[a-fA-F0-9]{40}$");
+   private static final Splitter ae = Splitter.on(',').trimResults();
+   public final boolean a = this.a("online-mode", true);
+   public final boolean b = this.a("prevent-proxy-connections", false);
+   public final String c = this.a("server-ip", "");
+   public final boolean d = this.a("spawn-animals", true);
+   public final boolean e = this.a("spawn-npcs", true);
+   public final boolean f = this.a("pvp", true);
+   public final boolean g = this.a("allow-flight", false);
+   public final String h = this.a("motd", "A Minecraft Server");
+   public final boolean i = this.a("force-gamemode", false);
+   public final boolean j = this.a("enforce-whitelist", false);
+   public final bqm k = this.a("difficulty", a(bqm::a, bqm::a), bqm::e, bqm.b);
+   public final dbq l = this.a("gamemode", a(dbq::a, dbq::a), dbq::b, dbq.a);
+   public final String m = this.a("level-name", "world");
+   public final int n = this.a("server-port", 25565);
+   @Nullable
+   public final Boolean o = this.b("announce-player-achievements");
+   public final boolean p = this.a("enable-query", false);
+   public final int q = this.a("query.port", 25565);
+   public final boolean r = this.a("enable-rcon", false);
+   public final int s = this.a("rcon.port", 25575);
+   public final String t = this.a("rcon.password", "");
+   public final boolean u = this.a("hardcore", false);
+   public final boolean v = this.a("allow-nether", true);
+   public final boolean w = this.a("spawn-monsters", true);
+   public final boolean x = this.a("use-native-transport", true);
+   public final boolean y = this.a("enable-command-block", false);
+   public final int z = this.a("spawn-protection", 16);
+   public final int A = this.a("op-permission-level", 4);
+   public final int B = this.a("function-permission-level", 2);
+   public final long C = this.a("max-tick-time", TimeUnit.MINUTES.toMillis(1L));
+   public final int D = this.a("max-chained-neighbor-updates", 1000000);
+   public final int E = this.a("rate-limit", 0);
+   public final int F = this.a("view-distance", 10);
+   public final int G = this.a("simulation-distance", 10);
+   public final int H = this.a("max-players", 20);
+   public final int I = this.a("network-compression-threshold", 256);
+   public final boolean J = this.a("broadcast-rcon-to-ops", true);
+   public final boolean K = this.a("broadcast-console-to-ops", true);
+   public final int L = this.a("max-world-size", $$0x -> ayu.a($$0x, 1, 29999984), 29999984);
+   public final boolean M = this.a("sync-chunk-writes", true);
+   public final String N = this.a("region-file-compression", "deflate");
+   public final boolean O = this.a("enable-jmx-monitoring", false);
+   public final boolean P = this.a("enable-status", true);
+   public final boolean Q = this.a("hide-online-players", false);
+   public final int R = this.a("entity-broadcast-range-percentage", $$0x -> ayu.a($$0x, 10, 1000), 100);
+   public final String S = this.a("text-filtering-config", "");
+   public final Optional<MinecraftServer.b> T;
+   public final dbh U;
+   public final aqb<apy>.a<Integer> V = this.b("player-idle-timeout", 0);
+   public final aqb<apy>.a<Boolean> W = this.b("white-list", false);
+   public final boolean X = this.a("enforce-secure-profile", true);
+   public final boolean Y = this.a("log-ips", true);
+   private final apy.a af;
+   public final dyn Z;
+   public boolean aa = this.a("accepts-transfers", false);
 
-   public apy(String $$0, int $$1) {
-      this.d = $$0;
-      this.f = $$1;
+   public apy(Properties $$0) {
+      super($$0);
+      String $$1 = this.a("level-seed", "");
+      boolean $$2 = this.a("generate-structures", true);
+      long $$3 = dyn.a($$1).orElse(dyn.f());
+      this.Z = new dyn($$3, $$2, false);
+      this.af = new apy.a(
+         this.a("generator-settings", $$0x -> ayk.a(!$$0x.isEmpty() ? $$0x : "{}"), new JsonObject()),
+         this.a("level-type", $$0x -> $$0x.toLowerCase(Locale.ROOT), ehv.a.a().toString())
+      );
+      this.T = a(
+         this.a("resource-pack-id", ""),
+         this.a("resource-pack", ""),
+         this.a("resource-pack-sha1", ""),
+         this.a("resource-pack-hash"),
+         this.a("require-resource-pack", false),
+         this.a("resource-pack-prompt", "")
+      );
+      this.U = b(this.a("initial-enabled-packs", String.join(",", dcn.c.a().a())), this.a("initial-disabled-packs", String.join(",", dcn.c.a().b())));
    }
 
-   protected void a(int $$0, dag $$1, int $$2) {
-      if ($$0 < a) {
-         Long2ObjectLinkedOpenHashMap<List<Optional<T>>> $$3 = this.b.get($$0);
-         List<Optional<T>> $$4 = (List<Optional<T>>)$$3.remove($$1.a());
-         if ($$0 == this.c) {
-            while (this.b() && this.b.get(this.c).isEmpty()) {
-               this.c++;
-            }
-         }
-
-         if ($$4 != null && !$$4.isEmpty()) {
-            ((List)this.b.get($$2).computeIfAbsent($$1.a(), $$0x -> Lists.newArrayList())).addAll($$4);
-            this.c = Math.min(this.c, $$2);
-         }
-      }
+   public static apy a(Path $$0) {
+      return new apy(b($$0));
    }
 
-   protected void a(Optional<T> $$0, long $$1, int $$2) {
-      ((List)this.b.get($$2).computeIfAbsent($$1, $$0x -> Lists.newArrayList())).add($$0);
-      this.c = Math.min(this.c, $$2);
-   }
-
-   protected void a(long $$0, boolean $$1) {
-      for (Long2ObjectLinkedOpenHashMap<List<Optional<T>>> $$2 : this.b) {
-         List<Optional<T>> $$3 = (List<Optional<T>>)$$2.get($$0);
-         if ($$3 != null) {
-            if ($$1) {
-               $$3.clear();
-            } else {
-               $$3.removeIf($$0x -> $$0x.isEmpty());
-            }
-
-            if ($$3.isEmpty()) {
-               $$2.remove($$0);
-            }
-         }
-      }
-
-      while (this.b() && this.b.get(this.c).isEmpty()) {
-         this.c++;
-      }
-
-      this.e.remove($$0);
-   }
-
-   private Runnable a(long $$0) {
-      return () -> this.e.add($$0);
+   protected apy a(jw $$0, Properties $$1) {
+      return new apy($$1);
    }
 
    @Nullable
-   public Stream<Either<T, Runnable>> a() {
-      if (this.e.size() >= this.f) {
-         return null;
-      } else if (!this.b()) {
-         return null;
-      } else {
-         int $$0 = this.c;
-         Long2ObjectLinkedOpenHashMap<List<Optional<T>>> $$1 = this.b.get($$0);
-         long $$2 = $$1.firstLongKey();
-         List<Optional<T>> $$3 = (List<Optional<T>>)$$1.removeFirst();
+   private static xl c(String $$0) {
+      if (!Strings.isNullOrEmpty($$0)) {
+         try {
+            return xl.a.a($$0, jw.b);
+         } catch (Exception var2) {
+            ac.warn("Failed to parse resource pack prompt '{}'", $$0, var2);
+         }
+      }
 
-         while (this.b() && this.b.get(this.c).isEmpty()) {
-            this.c++;
+      return null;
+   }
+
+   private static Optional<MinecraftServer.b> a(String $$0, String $$1, String $$2, @Nullable String $$3, boolean $$4, String $$5) {
+      if ($$1.isEmpty()) {
+         return Optional.empty();
+      } else {
+         String $$6;
+         if (!$$2.isEmpty()) {
+            $$6 = $$2;
+            if (!Strings.isNullOrEmpty($$3)) {
+               ac.warn("resource-pack-hash is deprecated and found along side resource-pack-sha1. resource-pack-hash will be ignored.");
+            }
+         } else if (!Strings.isNullOrEmpty($$3)) {
+            ac.warn("resource-pack-hash is deprecated. Please use resource-pack-sha1 instead.");
+            $$6 = $$3;
+         } else {
+            $$6 = "";
          }
 
-         return $$3.stream().map($$1x -> $$1x.map(Either::left).orElseGet(() -> Either.right(this.a($$2))));
+         if ($$6.isEmpty()) {
+            ac.warn("You specified a resource pack without providing a sha1 hash. Pack will be updated on the client only if you change the name of the pack.");
+         } else if (!ad.matcher($$6).matches()) {
+            ac.warn("Invalid sha1 for resource-pack-sha1");
+         }
+
+         xl $$9 = c($$5);
+         UUID $$10;
+         if ($$0.isEmpty()) {
+            $$10 = UUID.nameUUIDFromBytes($$1.getBytes(StandardCharsets.UTF_8));
+            ac.warn("resource-pack-id missing, using default of {}", $$10);
+         } else {
+            try {
+               $$10 = UUID.fromString($$0);
+            } catch (IllegalArgumentException var10) {
+               ac.warn("Failed to parse '{}' into UUID", $$0);
+               return Optional.empty();
+            }
+         }
+
+         return Optional.of(new MinecraftServer.b($$10, $$1, $$6, $$4, $$9));
       }
    }
 
-   public boolean b() {
-      return this.c < a;
+   private static dbh b(String $$0, String $$1) {
+      List<String> $$2 = ae.splitToList($$0);
+      List<String> $$3 = ae.splitToList($$1);
+      return new dbh($$2, $$3);
    }
 
-   @Override
-   public String toString() {
-      return this.d + " " + this.c + "...";
+   public dyk a(jw $$0) {
+      return this.af.a($$0);
    }
 
-   @VisibleForTesting
-   LongSet c() {
-      return new LongOpenHashSet(this.e);
+   static record a(JsonObject a, String b) {
+      private static final Map<String, ala<ehu>> c = Map.of("default", ehv.a, "largebiomes", ehv.c);
+
+      public dyk a(jw $$0) {
+         jv<ehu> $$1 = $$0.d(lq.aQ);
+         ji.c<ehu> $$2 = $$1.b(ehv.a)
+            .or(() -> $$1.h().findAny())
+            .orElseThrow(() -> new IllegalStateException("Invalid datapack contents: can't find default preset"));
+         ji<ehu> $$3 = Optional.ofNullable(alb.a(this.b))
+            .map($$0x -> ala.a(lq.aQ, $$0x))
+            .or(() -> Optional.ofNullable(c.get(this.b)))
+            .flatMap($$1::b)
+            .orElseGet(() -> {
+               apy.ac.warn("Failed to parse level-type {}, defaulting to {}", this.b, $$2.h().a());
+               return $$2;
+            });
+         dyk $$4 = $$3.a().a();
+         if ($$3.a(ehv.b)) {
+            akz<JsonElement> $$5 = $$0.a(JsonOps.INSTANCE);
+            Optional<egi> $$6 = egi.a.parse(new Dynamic($$5, this.a())).resultOrPartial(apy.ac::error);
+            if ($$6.isPresent()) {
+               return $$4.a($$0, new dxk($$6.get()));
+            }
+         }
+
+         return $$4;
+      }
    }
 }

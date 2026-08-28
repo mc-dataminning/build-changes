@@ -1,52 +1,57 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
+import com.google.common.base.Suppliers;
+import java.util.function.Supplier;
 
-public record cwb(Map<String, String> d) {
-   public static final cwb a = new cwb(Map.of());
-   public static final Codec<cwb> b = Codec.unboundedMap(Codec.STRING, Codec.STRING).xmap(cwb::new, cwb::b);
-   private static final yv<ByteBuf, Map<String, String>> e = yt.a(Object2ObjectOpenHashMap::new, yt.k, yt.k);
-   public static final yv<ByteBuf, cwb> c = e.a(cwb::new, cwb::b);
+public enum cwb implements cvz {
+   a(awl.bN, 59, 2.0F, 0.0F, 15, () -> cyn.a(awu.b)),
+   b(awl.bL, 131, 4.0F, 1.0F, 5, () -> cyn.a(awu.aY)),
+   c(awl.bK, 250, 6.0F, 2.0F, 14, () -> cyn.a(cun.oE)),
+   d(awl.bJ, 1561, 8.0F, 3.0F, 10, () -> cyn.a(cun.oy)),
+   e(awl.bM, 32, 12.0F, 0.0F, 22, () -> cyn.a(cun.oI)),
+   f(awl.bI, 2031, 9.0F, 4.0F, 15, () -> cyn.a(cun.oJ));
 
-   public <T extends Comparable<T>> cwb a(dsg<T> $$0, T $$1) {
-      return new cwb(ac.a(this.d, $$0.f(), $$0.a($$1)));
+   private final axb<deu> g;
+   private final int h;
+   private final float i;
+   private final float j;
+   private final int k;
+   private final Supplier<cyn> l;
+
+   private cwb(final axb<deu> $$0, final int $$1, final float $$2, final float $$3, final int $$4, final Supplier<cyn> $$5) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.j = $$3;
+      this.k = $$4;
+      this.l = Suppliers.memoize($$5::get);
    }
 
-   public <T extends Comparable<T>> cwb a(dsg<T> $$0, drd $$1) {
-      return this.a($$0, $$1.c($$0));
+   @Override
+   public int a() {
+      return this.h;
    }
 
-   @Nullable
-   public <T extends Comparable<T>> T a(dsg<T> $$0) {
-      String $$1 = this.d.get($$0.f());
-      return $$1 == null ? null : $$0.b($$1).orElse(null);
+   @Override
+   public float b() {
+      return this.i;
    }
 
-   public drd a(drd $$0) {
-      dre<dea, drd> $$1 = $$0.b().l();
-
-      for (Entry<String, String> $$2 : this.d.entrySet()) {
-         dsg<?> $$3 = $$1.a($$2.getKey());
-         if ($$3 != null) {
-            $$0 = a($$0, $$3, $$2.getValue());
-         }
-      }
-
-      return $$0;
+   @Override
+   public float c() {
+      return this.j;
    }
 
-   private static <T extends Comparable<T>> drd a(drd $$0, dsg<T> $$1, String $$2) {
-      return $$1.b($$2).map($$2x -> $$0.a($$1, $$2x)).orElse($$0);
+   @Override
+   public axb<deu> d() {
+      return this.g;
    }
 
-   public boolean a() {
-      return this.d.isEmpty();
+   @Override
+   public int e() {
+      return this.k;
    }
 
-   public Map<String, String> b() {
-      return this.d;
+   @Override
+   public cyn f() {
+      return this.l.get();
    }
 }

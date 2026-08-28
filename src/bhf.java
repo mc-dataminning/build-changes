@@ -1,387 +1,284 @@
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Codec;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicLike;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.OptionalDynamic;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Locale;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import org.apache.commons.lang3.math.NumberUtils;
-import org.apache.commons.lang3.mutable.MutableBoolean;
-import org.apache.commons.lang3.mutable.MutableInt;
+import java.util.Set;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
 public class bhf extends DataFix {
-   private static final String a = "minecraft:village";
-   private static final String b = "minecraft:desert_pyramid";
-   private static final String c = "minecraft:igloo";
-   private static final String d = "minecraft:jungle_pyramid";
-   private static final String e = "minecraft:swamp_hut";
-   private static final String f = "minecraft:pillager_outpost";
-   private static final String g = "minecraft:endcity";
-   private static final String h = "minecraft:mansion";
-   private static final String i = "minecraft:monument";
-   private static final ImmutableMap<String, bhf.a> j = ImmutableMap.builder()
-      .put("minecraft:village", new bhf.a(32, 8, 10387312))
-      .put("minecraft:desert_pyramid", new bhf.a(32, 8, 14357617))
-      .put("minecraft:igloo", new bhf.a(32, 8, 14357618))
-      .put("minecraft:jungle_pyramid", new bhf.a(32, 8, 14357619))
-      .put("minecraft:swamp_hut", new bhf.a(32, 8, 14357620))
-      .put("minecraft:pillager_outpost", new bhf.a(32, 8, 165745296))
-      .put("minecraft:monument", new bhf.a(32, 5, 10387313))
-      .put("minecraft:endcity", new bhf.a(20, 11, 10387313))
-      .put("minecraft:mansion", new bhf.a(80, 20, 10387319))
+   private static final Set<String> a = Set.of(
+      "dummy",
+      "trigger",
+      "deathCount",
+      "playerKillCount",
+      "totalKillCount",
+      "health",
+      "food",
+      "air",
+      "armor",
+      "xp",
+      "level",
+      "killedByTeam.aqua",
+      "killedByTeam.black",
+      "killedByTeam.blue",
+      "killedByTeam.dark_aqua",
+      "killedByTeam.dark_blue",
+      "killedByTeam.dark_gray",
+      "killedByTeam.dark_green",
+      "killedByTeam.dark_purple",
+      "killedByTeam.dark_red",
+      "killedByTeam.gold",
+      "killedByTeam.gray",
+      "killedByTeam.green",
+      "killedByTeam.light_purple",
+      "killedByTeam.red",
+      "killedByTeam.white",
+      "killedByTeam.yellow",
+      "teamkill.aqua",
+      "teamkill.black",
+      "teamkill.blue",
+      "teamkill.dark_aqua",
+      "teamkill.dark_blue",
+      "teamkill.dark_gray",
+      "teamkill.dark_green",
+      "teamkill.dark_purple",
+      "teamkill.dark_red",
+      "teamkill.gold",
+      "teamkill.gray",
+      "teamkill.green",
+      "teamkill.light_purple",
+      "teamkill.red",
+      "teamkill.white",
+      "teamkill.yellow"
+   );
+   private static final Set<String> b = ImmutableSet.builder()
+      .add("stat.craftItem.minecraft.spawn_egg")
+      .add("stat.useItem.minecraft.spawn_egg")
+      .add("stat.breakItem.minecraft.spawn_egg")
+      .add("stat.pickup.minecraft.spawn_egg")
+      .add("stat.drop.minecraft.spawn_egg")
       .build();
+   private static final Map<String, String> c = ImmutableMap.builder()
+      .put("stat.leaveGame", "minecraft:leave_game")
+      .put("stat.playOneMinute", "minecraft:play_one_minute")
+      .put("stat.timeSinceDeath", "minecraft:time_since_death")
+      .put("stat.sneakTime", "minecraft:sneak_time")
+      .put("stat.walkOneCm", "minecraft:walk_one_cm")
+      .put("stat.crouchOneCm", "minecraft:crouch_one_cm")
+      .put("stat.sprintOneCm", "minecraft:sprint_one_cm")
+      .put("stat.swimOneCm", "minecraft:swim_one_cm")
+      .put("stat.fallOneCm", "minecraft:fall_one_cm")
+      .put("stat.climbOneCm", "minecraft:climb_one_cm")
+      .put("stat.flyOneCm", "minecraft:fly_one_cm")
+      .put("stat.diveOneCm", "minecraft:dive_one_cm")
+      .put("stat.minecartOneCm", "minecraft:minecart_one_cm")
+      .put("stat.boatOneCm", "minecraft:boat_one_cm")
+      .put("stat.pigOneCm", "minecraft:pig_one_cm")
+      .put("stat.horseOneCm", "minecraft:horse_one_cm")
+      .put("stat.aviateOneCm", "minecraft:aviate_one_cm")
+      .put("stat.jump", "minecraft:jump")
+      .put("stat.drop", "minecraft:drop")
+      .put("stat.damageDealt", "minecraft:damage_dealt")
+      .put("stat.damageTaken", "minecraft:damage_taken")
+      .put("stat.deaths", "minecraft:deaths")
+      .put("stat.mobKills", "minecraft:mob_kills")
+      .put("stat.animalsBred", "minecraft:animals_bred")
+      .put("stat.playerKills", "minecraft:player_kills")
+      .put("stat.fishCaught", "minecraft:fish_caught")
+      .put("stat.talkedToVillager", "minecraft:talked_to_villager")
+      .put("stat.tradedWithVillager", "minecraft:traded_with_villager")
+      .put("stat.cakeSlicesEaten", "minecraft:eat_cake_slice")
+      .put("stat.cauldronFilled", "minecraft:fill_cauldron")
+      .put("stat.cauldronUsed", "minecraft:use_cauldron")
+      .put("stat.armorCleaned", "minecraft:clean_armor")
+      .put("stat.bannerCleaned", "minecraft:clean_banner")
+      .put("stat.brewingstandInteraction", "minecraft:interact_with_brewingstand")
+      .put("stat.beaconInteraction", "minecraft:interact_with_beacon")
+      .put("stat.dropperInspected", "minecraft:inspect_dropper")
+      .put("stat.hopperInspected", "minecraft:inspect_hopper")
+      .put("stat.dispenserInspected", "minecraft:inspect_dispenser")
+      .put("stat.noteblockPlayed", "minecraft:play_noteblock")
+      .put("stat.noteblockTuned", "minecraft:tune_noteblock")
+      .put("stat.flowerPotted", "minecraft:pot_flower")
+      .put("stat.trappedChestTriggered", "minecraft:trigger_trapped_chest")
+      .put("stat.enderchestOpened", "minecraft:open_enderchest")
+      .put("stat.itemEnchanted", "minecraft:enchant_item")
+      .put("stat.recordPlayed", "minecraft:play_record")
+      .put("stat.furnaceInteraction", "minecraft:interact_with_furnace")
+      .put("stat.craftingTableInteraction", "minecraft:interact_with_crafting_table")
+      .put("stat.chestOpened", "minecraft:open_chest")
+      .put("stat.sleepInBed", "minecraft:sleep_in_bed")
+      .put("stat.shulkerBoxOpened", "minecraft:open_shulker_box")
+      .build();
+   private static final String d = "stat.mineBlock";
+   private static final String e = "minecraft:mined";
+   private static final Map<String, String> f = ImmutableMap.builder()
+      .put("stat.craftItem", "minecraft:crafted")
+      .put("stat.useItem", "minecraft:used")
+      .put("stat.breakItem", "minecraft:broken")
+      .put("stat.pickup", "minecraft:picked_up")
+      .put("stat.drop", "minecraft:dropped")
+      .build();
+   private static final Map<String, String> g = ImmutableMap.builder()
+      .put("stat.entityKilledBy", "minecraft:killed_by")
+      .put("stat.killEntity", "minecraft:killed")
+      .build();
+   private static final Map<String, String> h = ImmutableMap.builder()
+      .put("Bat", "minecraft:bat")
+      .put("Blaze", "minecraft:blaze")
+      .put("CaveSpider", "minecraft:cave_spider")
+      .put("Chicken", "minecraft:chicken")
+      .put("Cow", "minecraft:cow")
+      .put("Creeper", "minecraft:creeper")
+      .put("Donkey", "minecraft:donkey")
+      .put("ElderGuardian", "minecraft:elder_guardian")
+      .put("Enderman", "minecraft:enderman")
+      .put("Endermite", "minecraft:endermite")
+      .put("EvocationIllager", "minecraft:evocation_illager")
+      .put("Ghast", "minecraft:ghast")
+      .put("Guardian", "minecraft:guardian")
+      .put("Horse", "minecraft:horse")
+      .put("Husk", "minecraft:husk")
+      .put("Llama", "minecraft:llama")
+      .put("LavaSlime", "minecraft:magma_cube")
+      .put("MushroomCow", "minecraft:mooshroom")
+      .put("Mule", "minecraft:mule")
+      .put("Ozelot", "minecraft:ocelot")
+      .put("Parrot", "minecraft:parrot")
+      .put("Pig", "minecraft:pig")
+      .put("PolarBear", "minecraft:polar_bear")
+      .put("Rabbit", "minecraft:rabbit")
+      .put("Sheep", "minecraft:sheep")
+      .put("Shulker", "minecraft:shulker")
+      .put("Silverfish", "minecraft:silverfish")
+      .put("SkeletonHorse", "minecraft:skeleton_horse")
+      .put("Skeleton", "minecraft:skeleton")
+      .put("Slime", "minecraft:slime")
+      .put("Spider", "minecraft:spider")
+      .put("Squid", "minecraft:squid")
+      .put("Stray", "minecraft:stray")
+      .put("Vex", "minecraft:vex")
+      .put("Villager", "minecraft:villager")
+      .put("VindicationIllager", "minecraft:vindication_illager")
+      .put("Witch", "minecraft:witch")
+      .put("WitherSkeleton", "minecraft:wither_skeleton")
+      .put("Wolf", "minecraft:wolf")
+      .put("ZombieHorse", "minecraft:zombie_horse")
+      .put("PigZombie", "minecraft:zombie_pigman")
+      .put("ZombieVillager", "minecraft:zombie_villager")
+      .put("Zombie", "minecraft:zombie")
+      .build();
+   private static final String i = "minecraft:custom";
 
-   public bhf(Schema $$0) {
-      super($$0, true);
+   public bhf(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("WorldGenSettings building", this.getInputSchema().getType(bga.K), $$0 -> $$0.update(DSL.remainderFinder(), bhf::a));
-   }
-
-   private static <T> Dynamic<T> a(long $$0, DynamicLike<T> $$1, Dynamic<T> $$2, Dynamic<T> $$3) {
-      return $$1.createMap(
-         ImmutableMap.of(
-            $$1.createString("type"),
-            $$1.createString("minecraft:noise"),
-            $$1.createString("biome_source"),
-            $$3,
-            $$1.createString("seed"),
-            $$1.createLong($$0),
-            $$1.createString("settings"),
-            $$2
-         )
-      );
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0, long $$1, boolean $$2, boolean $$3) {
-      Builder<Dynamic<T>, Dynamic<T>> $$4 = ImmutableMap.builder()
-         .put($$0.createString("type"), $$0.createString("minecraft:vanilla_layered"))
-         .put($$0.createString("seed"), $$0.createLong($$1))
-         .put($$0.createString("large_biomes"), $$0.createBoolean($$3));
-      if ($$2) {
-         $$4.put($$0.createString("legacy_biome_init_layer"), $$0.createBoolean($$2));
-      }
-
-      return $$0.createMap($$4.build());
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      DynamicOps<T> $$1 = $$0.getOps();
-      long $$2 = $$0.get("RandomSeed").asLong(0L);
-      Optional<String> $$3 = $$0.get("generatorName").asString().map($$0x -> $$0x.toLowerCase(Locale.ROOT)).result();
-      Optional<String> $$4 = $$0.get("legacy_custom_options")
-         .asString()
-         .result()
-         .map(Optional::of)
-         .orElseGet(() -> $$3.equals(Optional.of("customized")) ? $$0.get("generatorOptions").asString().result() : Optional.empty());
-      boolean $$5 = false;
-      Dynamic<T> $$6;
-      if ($$3.equals(Optional.of("customized"))) {
-         $$6 = a($$0, $$2);
-      } else if ($$3.isEmpty()) {
-         $$6 = a($$0, $$2);
+   @Nullable
+   private static bhf.a a(String $$0) {
+      if (b.contains($$0)) {
+         return null;
       } else {
-         String $$28 = $$3.get();
-         switch ($$28) {
-            case "flat":
-               OptionalDynamic<T> $$8 = $$0.get("generatorOptions");
-               Map<Dynamic<T>, Dynamic<T>> $$9 = a($$1, $$8);
-               $$6 = $$0.createMap(
-                  ImmutableMap.of(
-                     $$0.createString("type"),
-                     $$0.createString("minecraft:flat"),
-                     $$0.createString("settings"),
-                     $$0.createMap(
-                        ImmutableMap.of(
-                           $$0.createString("structures"),
-                           $$0.createMap($$9),
-                           $$0.createString("layers"),
-                           $$8.get("layers")
-                              .result()
-                              .orElseGet(
-                                 () -> $$0.createList(
-                                       Stream.of(
-                                          $$0.createMap(
-                                             ImmutableMap.of(
-                                                $$0.createString("height"), $$0.createInt(1), $$0.createString("block"), $$0.createString("minecraft:bedrock")
-                                             )
-                                          ),
-                                          $$0.createMap(
-                                             ImmutableMap.of(
-                                                $$0.createString("height"), $$0.createInt(2), $$0.createString("block"), $$0.createString("minecraft:dirt")
-                                             )
-                                          ),
-                                          $$0.createMap(
-                                             ImmutableMap.of(
-                                                $$0.createString("height"),
-                                                $$0.createInt(1),
-                                                $$0.createString("block"),
-                                                $$0.createString("minecraft:grass_block")
-                                             )
-                                          )
-                                       )
-                                    )
-                              ),
-                           $$0.createString("biome"),
-                           $$0.createString($$8.get("biome").asString("minecraft:plains"))
-                        )
-                     )
-                  )
-               );
-               break;
-            case "debug_all_block_states":
-               $$6 = $$0.createMap(ImmutableMap.of($$0.createString("type"), $$0.createString("minecraft:debug")));
-               break;
-            case "buffet":
-               OptionalDynamic<T> $$12 = $$0.get("generatorOptions");
-               OptionalDynamic<?> $$13 = $$12.get("chunk_generator");
-               Optional<String> $$14 = $$13.get("type").asString().result();
-               Dynamic<T> $$15;
-               if (Objects.equals($$14, Optional.of("minecraft:caves"))) {
-                  $$15 = $$0.createString("minecraft:caves");
-                  $$5 = true;
-               } else if (Objects.equals($$14, Optional.of("minecraft:floating_islands"))) {
-                  $$15 = $$0.createString("minecraft:floating_islands");
+         String $$1 = c.get($$0);
+         if ($$1 != null) {
+            return new bhf.a("minecraft:custom", $$1);
+         } else {
+            int $$2 = StringUtils.ordinalIndexOf($$0, ".", 2);
+            if ($$2 < 0) {
+               return null;
+            } else {
+               String $$3 = $$0.substring(0, $$2);
+               if ("stat.mineBlock".equals($$3)) {
+                  String $$4 = c($$0.substring($$2 + 1).replace('.', ':'));
+                  return new bhf.a("minecraft:mined", $$4);
                } else {
-                  $$15 = $$0.createString("minecraft:overworld");
+                  String $$5 = f.get($$3);
+                  if ($$5 != null) {
+                     String $$6 = $$0.substring($$2 + 1).replace('.', ':');
+                     String $$7 = b($$6);
+                     String $$8 = $$7 == null ? $$6 : $$7;
+                     return new bhf.a($$5, $$8);
+                  } else {
+                     String $$9 = g.get($$3);
+                     if ($$9 != null) {
+                        String $$10 = $$0.substring($$2 + 1).replace('.', ':');
+                        String $$11 = h.getOrDefault($$10, $$10);
+                        return new bhf.a($$9, $$11);
+                     } else {
+                        return null;
+                     }
+                  }
                }
-
-               Dynamic<T> $$18 = $$12.get("biome_source")
-                  .result()
-                  .orElseGet(() -> $$0.createMap(ImmutableMap.of($$0.createString("type"), $$0.createString("minecraft:fixed"))));
-               Dynamic<T> $$20;
-               if ($$18.get("type").asString().result().equals(Optional.of("minecraft:fixed"))) {
-                  String $$19 = $$18.get("options").get("biomes").asStream().findFirst().flatMap($$0x -> $$0x.asString().result()).orElse("minecraft:ocean");
-                  $$20 = $$18.remove("options").set("biome", $$0.createString($$19));
-               } else {
-                  $$20 = $$18;
-               }
-
-               $$6 = a($$2, $$0, $$15, $$20);
-               break;
-            default:
-               boolean $$23 = $$3.get().equals("default");
-               boolean $$24 = $$3.get().equals("default_1_1") || $$23 && $$0.get("generatorVersion").asInt(0) == 0;
-               boolean $$25 = $$3.get().equals("amplified");
-               boolean $$26 = $$3.get().equals("largebiomes");
-               $$6 = a($$2, $$0, $$0.createString($$25 ? "minecraft:amplified" : "minecraft:overworld"), a($$0, $$2, $$24, $$26));
+            }
          }
       }
-
-      boolean $$28 = $$0.get("MapFeatures").asBoolean(true);
-      boolean $$29 = $$0.get("BonusChest").asBoolean(false);
-      Builder<T, T> $$30 = ImmutableMap.builder();
-      $$30.put($$1.createString("seed"), $$1.createLong($$2));
-      $$30.put($$1.createString("generate_features"), $$1.createBoolean($$28));
-      $$30.put($$1.createString("bonus_chest"), $$1.createBoolean($$29));
-      $$30.put($$1.createString("dimensions"), a($$0, $$2, $$6, $$5));
-      $$4.ifPresent($$2x -> $$30.put($$1.createString("legacy_custom_options"), $$1.createString($$2x)));
-      return new Dynamic($$1, $$1.createMap($$30.build()));
    }
 
-   protected static <T> Dynamic<T> a(Dynamic<T> $$0, long $$1) {
-      return a($$1, $$0, $$0.createString("minecraft:overworld"), a($$0, $$1, false, false));
+   public TypeRewriteRule makeRule() {
+      return TypeRewriteRule.seq(this.a(), this.b());
    }
 
-   protected static <T> T a(Dynamic<T> $$0, long $$1, Dynamic<T> $$2, boolean $$3) {
-      DynamicOps<T> $$4 = $$0.getOps();
-      return (T)$$4.createMap(
-         ImmutableMap.of(
-            $$4.createString("minecraft:overworld"),
-            $$4.createMap(
-               ImmutableMap.of(
-                  $$4.createString("type"), $$4.createString("minecraft:overworld" + ($$3 ? "_caves" : "")), $$4.createString("generator"), $$2.getValue()
-               )
-            ),
-            $$4.createString("minecraft:the_nether"),
-            $$4.createMap(
-               ImmutableMap.of(
-                  $$4.createString("type"),
-                  $$4.createString("minecraft:the_nether"),
-                  $$4.createString("generator"),
-                  a(
-                        $$1,
-                        $$0,
-                        $$0.createString("minecraft:nether"),
-                        $$0.createMap(
-                           ImmutableMap.of(
-                              $$0.createString("type"),
-                              $$0.createString("minecraft:multi_noise"),
-                              $$0.createString("seed"),
-                              $$0.createLong($$1),
-                              $$0.createString("preset"),
-                              $$0.createString("minecraft:nether")
-                           )
-                        )
-                     )
-                     .getValue()
-               )
-            ),
-            $$4.createString("minecraft:the_end"),
-            $$4.createMap(
-               ImmutableMap.of(
-                  $$4.createString("type"),
-                  $$4.createString("minecraft:the_end"),
-                  $$4.createString("generator"),
-                  a(
-                        $$1,
-                        $$0,
-                        $$0.createString("minecraft:end"),
-                        $$0.createMap(
-                           ImmutableMap.of($$0.createString("type"), $$0.createString("minecraft:the_end"), $$0.createString("seed"), $$0.createLong($$1))
-                        )
-                     )
-                     .getValue()
-               )
-            )
-         )
-      );
+   private TypeRewriteRule a() {
+      Type<?> $$0 = this.getInputSchema().getType(bgs.g);
+      Type<?> $$1 = this.getOutputSchema().getType(bgs.g);
+      return this.fixTypeEverywhereTyped("StatsCounterFix", $$0, $$1, $$1x -> {
+         Dynamic<?> $$2 = (Dynamic<?>)$$1x.get(DSL.remainderFinder());
+         Map<Dynamic<?>, Dynamic<?>> $$3 = Maps.newHashMap();
+         Optional<? extends Map<? extends Dynamic<?>, ? extends Dynamic<?>>> $$4 = $$2.getMapValues().result();
+         if ($$4.isPresent()) {
+            for (Entry<? extends Dynamic<?>, ? extends Dynamic<?>> $$5 : $$4.get().entrySet()) {
+               if ($$5.getValue().asNumber().result().isPresent()) {
+                  String $$6 = $$5.getKey().asString("");
+                  bhf.a $$7 = a($$6);
+                  if ($$7 != null) {
+                     Dynamic<?> $$8 = $$2.createString($$7.a());
+                     Dynamic<?> $$9 = $$3.computeIfAbsent($$8, $$1xx -> $$2.emptyMap());
+                     $$3.put($$8, $$9.set($$7.b(), $$5.getValue()));
+                  }
+               }
+            }
+         }
+
+         return ac.a($$1, $$2.emptyMap().set("stats", $$2.createMap($$3)));
+      });
    }
 
-   private static <T> Map<Dynamic<T>, Dynamic<T>> a(DynamicOps<T> $$0, OptionalDynamic<T> $$1) {
-      MutableInt $$2 = new MutableInt(32);
-      MutableInt $$3 = new MutableInt(3);
-      MutableInt $$4 = new MutableInt(128);
-      MutableBoolean $$5 = new MutableBoolean(false);
-      Map<String, bhf.a> $$6 = Maps.newHashMap();
-      if ($$1.result().isEmpty()) {
-         $$5.setTrue();
-         $$6.put("minecraft:village", (bhf.a)j.get("minecraft:village"));
-      }
-
-      $$1.get("structures")
-         .flatMap(Dynamic::getMapValues)
-         .ifSuccess($$5x -> $$5x.forEach(($$5xx, $$6x) -> $$6x.getMapValues().result().ifPresent($$6xx -> $$6xx.forEach(($$6xxx, $$7x) -> {
-                     String $$8 = $$5xx.asString("");
-                     String $$9 = $$6xxx.asString("");
-                     String $$10 = $$7x.asString("");
-                     if ("stronghold".equals($$8)) {
-                        $$5.setTrue();
-                        switch ($$9) {
-                           case "distance":
-                              $$2.setValue(a($$10, $$2.getValue(), 1));
-                              return;
-                           case "spread":
-                              $$3.setValue(a($$10, $$3.getValue(), 1));
-                              return;
-                           case "count":
-                              $$4.setValue(a($$10, $$4.getValue(), 1));
-                              return;
-                        }
-                     } else {
-                        switch ($$9) {
-                           case "distance":
-                              switch ($$8) {
-                                 case "village":
-                                    a($$6, "minecraft:village", $$10, 9);
-                                    return;
-                                 case "biome_1":
-                                    a($$6, "minecraft:desert_pyramid", $$10, 9);
-                                    a($$6, "minecraft:igloo", $$10, 9);
-                                    a($$6, "minecraft:jungle_pyramid", $$10, 9);
-                                    a($$6, "minecraft:swamp_hut", $$10, 9);
-                                    a($$6, "minecraft:pillager_outpost", $$10, 9);
-                                    return;
-                                 case "endcity":
-                                    a($$6, "minecraft:endcity", $$10, 1);
-                                    return;
-                                 case "mansion":
-                                    a($$6, "minecraft:mansion", $$10, 1);
-                                    return;
-                                 default:
-                                    return;
-                              }
-                           case "separation":
-                              if ("oceanmonument".equals($$8)) {
-                                 bhf.a $$11 = $$6.getOrDefault("minecraft:monument", (bhf.a)j.get("minecraft:monument"));
-                                 int $$12 = a($$10, $$11.c, 1);
-                                 $$6.put("minecraft:monument", new bhf.a($$12, $$11.c, $$11.d));
-                              }
-
-                              return;
-                           case "spacing":
-                              if ("oceanmonument".equals($$8)) {
-                                 a($$6, "minecraft:monument", $$10, 1);
-                              }
-
-                              return;
-                        }
-                     }
-                  }))));
-      Builder<Dynamic<T>, Dynamic<T>> $$7 = ImmutableMap.builder();
-      $$7.put(
-         $$1.createString("structures"),
-         $$1.createMap(
-            $$6.entrySet().stream().collect(Collectors.toMap($$1x -> $$1.createString((String)$$1x.getKey()), $$1x -> ((bhf.a)$$1x.getValue()).a($$0)))
-         )
-      );
-      if ($$5.isTrue()) {
-         $$7.put(
-            $$1.createString("stronghold"),
-            $$1.createMap(
-               ImmutableMap.of(
-                  $$1.createString("distance"),
-                  $$1.createInt($$2.getValue()),
-                  $$1.createString("spread"),
-                  $$1.createInt($$3.getValue()),
-                  $$1.createString("count"),
-                  $$1.createInt($$4.getValue())
-               )
-            )
-         );
-      }
-
-      return $$7.build();
+   private TypeRewriteRule b() {
+      Type<?> $$0 = this.getInputSchema().getType(bgs.H);
+      Type<?> $$1 = this.getOutputSchema().getType(bgs.H);
+      return this.fixTypeEverywhereTyped("ObjectiveStatFix", $$0, $$1, $$1x -> {
+         Dynamic<?> $$2 = (Dynamic<?>)$$1x.get(DSL.remainderFinder());
+         Dynamic<?> $$3 = $$2.update("CriteriaName", $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().result().map($$0xxx -> {
+               if (a.contains($$0xxx)) {
+                  return $$0xxx;
+               } else {
+                  bhf.a $$1xx = a($$0xxx);
+                  return $$1xx == null ? "dummy" : bis.b($$1xx.a) + ":" + bis.b($$1xx.b);
+               }
+            }).map($$0xx::createString), $$0xx));
+         return ac.a($$1, $$3);
+      });
    }
 
-   private static int a(String $$0, int $$1) {
-      return NumberUtils.toInt($$0, $$1);
+   @Nullable
+   private static String b(String $$0) {
+      return bex.a($$0, 0);
    }
 
-   private static int a(String $$0, int $$1, int $$2) {
-      return Math.max($$2, a($$0, $$1));
+   private static String c(String $$0) {
+      return bbl.a($$0);
    }
 
-   private static void a(Map<String, bhf.a> $$0, String $$1, String $$2, int $$3) {
-      bhf.a $$4 = $$0.getOrDefault($$1, (bhf.a)j.get($$1));
-      int $$5 = a($$2, $$4.b, $$3);
-      $$0.put($$1, new bhf.a($$5, $$4.c, $$4.d));
-   }
-
-   static final class a {
-      public static final Codec<bhf.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.INT.fieldOf("spacing").forGetter($$0x -> $$0x.b),
-                  Codec.INT.fieldOf("separation").forGetter($$0x -> $$0x.c),
-                  Codec.INT.fieldOf("salt").forGetter($$0x -> $$0x.d)
-               )
-               .apply($$0, bhf.a::new)
-      );
-      final int b;
-      final int c;
-      final int d;
-
-      public a(int $$0, int $$1, int $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      public <T> Dynamic<T> a(DynamicOps<T> $$0) {
-         return new Dynamic($$0, a.encodeStart($$0, this).result().orElse($$0.emptyMap()));
-      }
+   static record a(String a, String b) {
    }
 }

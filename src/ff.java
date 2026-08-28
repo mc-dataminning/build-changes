@@ -1,45 +1,29 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.serialization.Codec;
 import java.util.Arrays;
-import java.util.Collection;
+import java.util.Locale;
 
-public class ff implements ArgumentType<akn> {
-   private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wx.b("advancement.advancementNotFound", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wx.b("recipe.notFound", $$0));
+public class ff extends fz<dxp.a> {
+   private static final Codec<dxp.a> a = azp.a(ff::b, $$0 -> $$0.toLowerCase(Locale.ROOT));
+
+   private static dxp.a[] b() {
+      return Arrays.stream(dxp.a.values()).filter(dxp.a::d).toArray(dxp.a[]::new);
+   }
+
+   private ff() {
+      super(a, ff::b);
+   }
 
    public static ff a() {
       return new ff();
    }
 
-   public static af a(CommandContext<ee> $$0, String $$1) throws CommandSyntaxException {
-      akn $$2 = c($$0, $$1);
-      af $$3 = ((ee)$$0.getSource()).l().aE().a($$2);
-      if ($$3 == null) {
-         throw b.create($$2);
-      } else {
-         return $$3;
-      }
+   public static dxp.a a(CommandContext<ep> $$0, String $$1) {
+      return (dxp.a)$$0.getArgument($$1, dxp.a.class);
    }
 
-   public static cxy<?> b(CommandContext<ee> $$0, String $$1) throws CommandSyntaxException {
-      cxz $$2 = ((ee)$$0.getSource()).l().aJ();
-      akn $$3 = c($$0, $$1);
-      return $$2.a($$3).orElseThrow(() -> c.create($$3));
-   }
-
-   public static akn c(CommandContext<ee> $$0, String $$1) {
-      return (akn)$$0.getArgument($$1, akn.class);
-   }
-
-   public akn a(StringReader $$0) throws CommandSyntaxException {
-      return akn.a($$0);
-   }
-
-   public Collection<String> getExamples() {
-      return a;
+   @Override
+   protected String a(String $$0) {
+      return $$0.toLowerCase(Locale.ROOT);
    }
 }

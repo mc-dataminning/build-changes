@@ -1,37 +1,31 @@
-import javax.annotation.Nullable;
+public class fmb extends fmy {
+   private final xl a;
 
-public abstract class fmb extends flr {
-   protected final fee<?>[] r;
-   @Nullable
-   private ffy a;
-   protected fgx s;
-
-   public fmb(flz $$0, fef $$1, wx $$2, fee<?>[] $$3) {
-      super($$0, $$1, $$2);
-      this.r = $$3;
+   public fmb(xl $$0, xl $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
    @Override
    protected void aN_() {
-      this.s = this.c(new fgx(this.m, this.n, this.o, this));
-      this.s.a(this.r);
-      this.a = this.s.b(this.c.as());
-      if (this.a != null) {
-         this.a.j = this.m.aX().a();
-      }
-
       super.aN_();
+      this.c(fgz.a(xk.e, $$0 -> this.m.a(null)).a(this.n / 2 - 100, 140, 200, 20).a());
    }
 
    @Override
-   protected void c() {
-      super.c();
-      this.s.a(this.n, this.d);
+   public void a(fgm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 90, 16777215);
+      $$0.a(this.p, this.a, this.n / 2, 110, 16777215);
    }
 
-   public void C() {
-      if (this.a instanceof fgh) {
-         ((fgh)this.a).a(this.c.as().c());
-      }
+   @Override
+   public void b(fgm $$0, int $$1, int $$2, float $$3) {
+      $$0.b(0, 0, this.n, this.o, -12574688, -11530224);
+   }
+
+   @Override
+   public boolean aE_() {
+      return false;
    }
 }

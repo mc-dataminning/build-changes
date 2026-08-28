@@ -1,39 +1,153 @@
-public interface awa {
-   awm<bsc<?>> a = a("skeletons");
-   awm<bsc<?>> b = a("zombies");
-   awm<bsc<?>> c = a("raiders");
-   awm<bsc<?>> d = a("undead");
-   awm<bsc<?>> e = a("beehive_inhabitors");
-   awm<bsc<?>> f = a("arrows");
-   awm<bsc<?>> g = a("impact_projectiles");
-   awm<bsc<?>> h = a("powder_snow_walkable_mobs");
-   awm<bsc<?>> i = a("axolotl_always_hostiles");
-   awm<bsc<?>> j = a("axolotl_hunt_targets");
-   awm<bsc<?>> k = a("freeze_immune_entity_types");
-   awm<bsc<?>> l = a("freeze_hurts_extra_types");
-   awm<bsc<?>> m = a("can_breathe_under_water");
-   awm<bsc<?>> n = a("frog_food");
-   awm<bsc<?>> o = a("fall_damage_immune");
-   awm<bsc<?>> p = a("dismounts_underwater");
-   awm<bsc<?>> q = a("non_controlling_rider");
-   awm<bsc<?>> r = a("deflects_projectiles");
-   awm<bsc<?>> s = a("can_turn_in_boats");
-   awm<bsc<?>> t = a("illager");
-   awm<bsc<?>> u = a("aquatic");
-   awm<bsc<?>> v = a("arthropod");
-   awm<bsc<?>> w = a("ignores_poison_and_regen");
-   awm<bsc<?>> x = a("inverted_healing_and_harm");
-   awm<bsc<?>> y = a("wither_friends");
-   awm<bsc<?>> z = a("illager_friends");
-   awm<bsc<?>> A = a("not_scary_for_pufferfish");
-   awm<bsc<?>> B = a("sensitive_to_impaling");
-   awm<bsc<?>> C = a("sensitive_to_bane_of_arthropods");
-   awm<bsc<?>> D = a("sensitive_to_smite");
-   awm<bsc<?>> E = a("no_anger_from_wind_charge");
-   awm<bsc<?>> F = a("immune_to_oozing");
-   awm<bsc<?>> G = a("immune_to_infested");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
+import java.util.Map;
 
-   private static awm<bsc<?>> a(String $$0) {
-      return awm.a(lf.v, new akn($$0));
+public final class awa {
+   private static final Map<crd, Pair<String, String>> a = ImmutableMap.of(
+      crd.a,
+      Pair.of("isGuiOpen", "isFilteringCraftable"),
+      crd.b,
+      Pair.of("isFurnaceGuiOpen", "isFurnaceFilteringCraftable"),
+      crd.c,
+      Pair.of("isBlastingFurnaceGuiOpen", "isBlastingFurnaceFilteringCraftable"),
+      crd.d,
+      Pair.of("isSmokerGuiOpen", "isSmokerFilteringCraftable")
+   );
+   private final Map<crd, awa.a> b;
+
+   private awa(Map<crd, awa.a> $$0) {
+      this.b = $$0;
+   }
+
+   public awa() {
+      this(ac.a(Maps.newEnumMap(crd.class), $$0 -> {
+         for (crd $$1 : crd.values()) {
+            $$0.put($$1, new awa.a(false, false));
+         }
+      }));
+   }
+
+   public boolean a(crd $$0) {
+      return this.b.get($$0).a;
+   }
+
+   public void a(crd $$0, boolean $$1) {
+      this.b.get($$0).a = $$1;
+   }
+
+   public boolean b(crd $$0) {
+      return this.b.get($$0).b;
+   }
+
+   public void b(crd $$0, boolean $$1) {
+      this.b.get($$0).b = $$1;
+   }
+
+   public static awa a(wl $$0) {
+      Map<crd, awa.a> $$1 = Maps.newEnumMap(crd.class);
+
+      for (crd $$2 : crd.values()) {
+         boolean $$3 = $$0.readBoolean();
+         boolean $$4 = $$0.readBoolean();
+         $$1.put($$2, new awa.a($$3, $$4));
+      }
+
+      return new awa($$1);
+   }
+
+   public void b(wl $$0) {
+      for (crd $$1 : crd.values()) {
+         awa.a $$2 = this.b.get($$1);
+         if ($$2 == null) {
+            $$0.a(false);
+            $$0.a(false);
+         } else {
+            $$0.a($$2.a);
+            $$0.a($$2.b);
+         }
+      }
+   }
+
+   public static awa a(ur $$0) {
+      Map<crd, awa.a> $$1 = Maps.newEnumMap(crd.class);
+      a.forEach(($$2, $$3) -> {
+         boolean $$4 = $$0.q((String)$$3.getFirst());
+         boolean $$5 = $$0.q((String)$$3.getSecond());
+         $$1.put($$2, new awa.a($$4, $$5));
+      });
+      return new awa($$1);
+   }
+
+   public void b(ur $$0) {
+      a.forEach(($$1, $$2) -> {
+         awa.a $$3 = this.b.get($$1);
+         $$0.a((String)$$2.getFirst(), $$3.a);
+         $$0.a((String)$$2.getSecond(), $$3.b);
+      });
+   }
+
+   public awa a() {
+      Map<crd, awa.a> $$0 = Maps.newEnumMap(crd.class);
+
+      for (crd $$1 : crd.values()) {
+         awa.a $$2 = this.b.get($$1);
+         $$0.put($$1, $$2.a());
+      }
+
+      return new awa($$0);
+   }
+
+   public void a(awa $$0) {
+      this.b.clear();
+
+      for (crd $$1 : crd.values()) {
+         awa.a $$2 = $$0.b.get($$1);
+         this.b.put($$1, $$2.a());
+      }
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof awa && this.b.equals(((awa)$$0).b);
+   }
+
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
+   }
+
+   static final class a {
+      boolean a;
+      boolean b;
+
+      public a(boolean $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public awa.a a() {
+         return new awa.a(this.a, this.b);
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else {
+            return !($$0 instanceof awa.a $$1) ? false : this.a == $$1.a && this.b == $$1.b;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         int $$0 = this.a ? 1 : 0;
+         return 31 * $$0 + (this.b ? 1 : 0);
+      }
+
+      @Override
+      public String toString() {
+         return "[open=" + this.a + ", filtering=" + this.b + "]";
+      }
    }
 }

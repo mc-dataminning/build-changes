@@ -1,37 +1,60 @@
-public class aef implements ze<abq> {
-   public static final yv<vx, aef> a = ze.a(aef::a, aef::new);
-   private final int b;
-   private final byte c;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   public aef(brw $$0, byte $$1) {
-      this.b = $$0.al();
-      this.c = $$1;
+public record aef(UUID b, int c, @Nullable xx d, ye.a e, @Nullable xl f, xp g, xh.a h) implements zs<ace> {
+   public static final zj<ww, aef> a = zs.a(aef::a, aef::new);
+
+   private aef(ww $$0) {
+      this($$0.n(), $$0.l(), $$0.c(xx::a), new ye.a($$0), wl.a($$0, xn.d), xp.a($$0), xh.a.a.decode($$0));
    }
 
-   private aef(vx $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readByte();
-   }
-
-   private void a(vx $$0) {
-      $$0.c(this.b);
-      $$0.k(this.c);
+   private void a(ww $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d, xx::a);
+      this.e.a($$0);
+      wl.a($$0, this.f, xn.d);
+      xp.a($$0, this.g);
+      xh.a.a.encode($$0, this.h);
    }
 
    @Override
-   public zg<aef> a() {
-      return agc.am;
+   public zu<aef> a() {
+      return agq.aa;
    }
 
-   public void a(abq $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public brw a(daz $$0) {
-      return $$0.a(this.b);
+   @Override
+   public boolean c() {
+      return true;
    }
 
-   public byte b() {
+   public int e() {
       return this.c;
+   }
+
+   @Nullable
+   public xx f() {
+      return this.d;
+   }
+
+   public ye.a g() {
+      return this.e;
+   }
+
+   @Nullable
+   public xl h() {
+      return this.f;
+   }
+
+   public xp i() {
+      return this.g;
+   }
+
+   public xh.a j() {
+      return this.h;
    }
 }

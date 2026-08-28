@@ -1,38 +1,61 @@
-public enum enn {
-   a(-1.0F),
-   b(0.0F),
-   c(0.0F),
-   d(0.0F),
-   e(0.0F),
-   f(-1.0F),
-   g(0.0F),
-   h(-1.0F),
-   i(-1.0F),
-   j(8.0F),
-   k(8.0F),
-   l(0.0F),
-   m(-1.0F),
-   n(8.0F),
-   o(16.0F),
-   p(8.0F),
-   q(-1.0F),
-   r(0.0F),
-   s(-1.0F),
-   t(-1.0F),
-   u(4.0F),
-   v(-1.0F),
-   w(8.0F),
-   x(0.0F),
-   y(0.0F),
-   z(0.0F);
-
-   private final float A;
-
-   private enn(float $$0) {
-      this.A = $$0;
+public class enn extends enp {
+   @Override
+   public cuf a() {
+      return cun.a;
    }
 
-   public float a() {
-      return this.A;
+   @Override
+   public boolean a(enq $$0, daz $$1, iz $$2, enp $$3, je $$4) {
+      return true;
+   }
+
+   @Override
+   public evm a(daz $$0, iz $$1, enq $$2) {
+      return evm.b;
+   }
+
+   @Override
+   public int a(dbw $$0) {
+      return 0;
+   }
+
+   @Override
+   protected boolean b() {
+      return true;
+   }
+
+   @Override
+   protected float c() {
+      return 0.0F;
+   }
+
+   @Override
+   public float a(enq $$0, daz $$1, iz $$2) {
+      return 0.0F;
+   }
+
+   @Override
+   public float a(enq $$0) {
+      return 0.0F;
+   }
+
+   @Override
+   protected drx b(enq $$0) {
+      return dew.a.n();
+   }
+
+   @Override
+   public boolean c(enq $$0) {
+      return false;
+   }
+
+   @Override
+   public int d(enq $$0) {
+      return 0;
+   }
+
+   @Override
+   public ewf b(enq $$0, daz $$1, iz $$2) {
+      return ewc.a();
    }
 }

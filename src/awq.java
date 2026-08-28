@@ -1,11 +1,10 @@
 public class awq {
-   public static final awm<eha> a = a("normal");
-   public static final awm<eha> b = a("extended");
+   public static final axb<egg> a = a("visible");
 
    private awq() {
    }
 
-   private static awm<eha> a(String $$0) {
-      return awm.a(lf.aQ, new akn($$0));
+   private static axb<egg> a(String $$0) {
+      return axb.a(lq.aF, new alb($$0));
    }
 }

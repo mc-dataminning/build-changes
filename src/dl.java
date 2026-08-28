@@ -1,180 +1,55 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
-public record dl(List<dl.c> c) {
-   private static final Codec<List<dl.c>> d = Codec.unboundedMap(Codec.STRING, dl.e.c)
-      .xmap(
-         $$0 -> $$0.entrySet().stream().map($$0x -> new dl.c((String)$$0x.getKey(), (dl.e)$$0x.getValue())).toList(),
-         $$0 -> $$0.stream().collect(Collectors.toMap(dl.c::a, dl.c::b))
-      );
-   public static final Codec<dl> a = d.xmap(dl::new, dl::a);
-   public static final yv<ByteBuf, dl> b = dl.c.a.a(yt.a()).a(dl::new, dl::a);
-
-   public <S extends drf<?, S>> boolean a(dre<?, S> $$0, S $$1) {
-      for (dl.c $$2 : this.c) {
-         if (!$$2.a($$0, $$1)) {
-            return false;
-         }
-      }
-
-      return true;
+public class dl extends dr<dl.a> {
+   @Override
+   public Codec<dl.a> a() {
+      return dl.a.a;
    }
 
-   public boolean a(drd $$0) {
-      return this.a($$0.b().l(), $$0);
+   public void a(arc $$0) {
+      this.a($$0, $$0x -> true);
    }
 
-   public boolean a(emw $$0) {
-      return this.a($$0.a().f(), $$0);
-   }
+   public static record a(Optional<bf> b) implements dr.a {
+      public static final Codec<dl.a> a = RecordCodecBuilder.create($$0 -> $$0.group(bu.b.optionalFieldOf("player").forGetter(dl.a::a)).apply($$0, dl.a::new));
 
-   public Optional<String> a(dre<?, ?> $$0) {
-      for (dl.c $$1 : this.c) {
-         Optional<String> $$2 = $$1.a($$0);
-         if ($$2.isPresent()) {
-            return $$2;
-         }
+      public static an<dl.a> a(dc.a $$0) {
+         return am.q.a(new dl.a(Optional.of(bu.a(bu.a.a().a($$0)))));
       }
 
-      return Optional.empty();
-   }
-
-   public List<dl.c> a() {
-      return this.c;
-   }
-
-   public static class a {
-      private final Builder<dl.c> a = ImmutableList.builder();
-
-      private a() {
+      public static an<dl.a> a(bu.a $$0) {
+         return am.q.a(new dl.a(Optional.of(bu.a($$0.b()))));
       }
 
-      public static dl.a a() {
-         return new dl.a();
+      public static an<dl.a> a(Optional<bu> $$0) {
+         return am.q.a(new dl.a(bu.a($$0)));
       }
 
-      public dl.a a(dsg<?> $$0, String $$1) {
-         this.a.add(new dl.c($$0.f(), new dl.b($$1)));
-         return this;
+      public static an<dl.a> b() {
+         return am.r.a(new dl.a(Optional.empty()));
       }
 
-      public dl.a a(dsg<Integer> $$0, int $$1) {
-         return this.a($$0, Integer.toString($$1));
+      public static an<dl.a> c() {
+         return am.I.a(new dl.a(Optional.empty()));
       }
 
-      public dl.a a(dsg<Boolean> $$0, boolean $$1) {
-         return this.a($$0, Boolean.toString($$1));
+      public static an<dl.a> d() {
+         return am.ab.a(new dl.a(Optional.empty()));
       }
 
-      public <T extends Comparable<T> & ayz> dl.a a(dsg<T> $$0, T $$1) {
-         return this.a($$0, $$1.c());
+      public static an<dl.a> e() {
+         return am.x.a(new dl.a(Optional.empty()));
       }
 
-      public Optional<dl> b() {
-         return Optional.of(new dl(this.a.build()));
+      public static an<dl.a> a(deu $$0, cuf $$1) {
+         return a(bu.a.a().a(br.a.a().d(cp.a.a().a($$1))).b(dc.a.a().a(av.a.a().a($$0))));
       }
-   }
-
-   static record b(String e) implements dl.e {
-      public static final Codec<dl.b> a = Codec.STRING.xmap(dl.b::new, dl.b::a);
-      public static final yv<ByteBuf, dl.b> b = yt.k.a(dl.b::new, dl.b::a);
 
       @Override
-      public <T extends Comparable<T>> boolean a(drf<?, ?> $$0, dsg<T> $$1) {
-         T $$2 = $$0.c($$1);
-         Optional<T> $$3 = $$1.b(this.e);
-         return $$3.isPresent() && $$2.compareTo($$3.get()) == 0;
-      }
-
-      public String a() {
-         return this.e;
-      }
-   }
-
-   static record c(String b, dl.e c) {
-      public static final yv<ByteBuf, dl.c> a = yv.a(yt.k, dl.c::a, dl.e.d, dl.c::b, dl.c::new);
-
-      public <S extends drf<?, S>> boolean a(dre<?, S> $$0, S $$1) {
-         dsg<?> $$2 = $$0.a(this.b);
-         return $$2 != null && this.c.a($$1, $$2);
-      }
-
-      public Optional<String> a(dre<?, ?> $$0) {
-         dsg<?> $$1 = $$0.a(this.b);
-         return $$1 != null ? Optional.empty() : Optional.of(this.b);
-      }
-
-      public String a() {
+      public Optional<bf> a() {
          return this.b;
       }
-
-      public dl.e b() {
-         return this.c;
-      }
-   }
-
-   static record d(Optional<String> e, Optional<String> f) implements dl.e {
-      public static final Codec<dl.d> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.STRING.optionalFieldOf("min").forGetter(dl.d::a), Codec.STRING.optionalFieldOf("max").forGetter(dl.d::b)).apply($$0, dl.d::new)
-      );
-      public static final yv<ByteBuf, dl.d> b = yv.a(yt.a(yt.k), dl.d::a, yt.a(yt.k), dl.d::b, dl.d::new);
-
-      @Override
-      public <T extends Comparable<T>> boolean a(drf<?, ?> $$0, dsg<T> $$1) {
-         T $$2 = $$0.c($$1);
-         if (this.e.isPresent()) {
-            Optional<T> $$3 = $$1.b(this.e.get());
-            if ($$3.isEmpty() || $$2.compareTo($$3.get()) < 0) {
-               return false;
-            }
-         }
-
-         if (this.f.isPresent()) {
-            Optional<T> $$4 = $$1.b(this.f.get());
-            if ($$4.isEmpty() || $$2.compareTo($$4.get()) > 0) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-
-      public Optional<String> a() {
-         return this.e;
-      }
-
-      public Optional<String> b() {
-         return this.f;
-      }
-   }
-
-   interface e {
-      Codec<dl.e> c = Codec.either(dl.b.a, dl.d.a).xmap(Either::unwrap, $$0 -> {
-         if ($$0 instanceof dl.b $$1) {
-            return Either.left($$1);
-         } else if ($$0 instanceof dl.d $$2) {
-            return Either.right($$2);
-         } else {
-            throw new UnsupportedOperationException();
-         }
-      });
-      yv<ByteBuf, dl.e> d = yt.a(dl.b.b, dl.d.b).a(Either::unwrap, $$0 -> {
-         if ($$0 instanceof dl.b $$1) {
-            return Either.left($$1);
-         } else if ($$0 instanceof dl.d $$2) {
-            return Either.right($$2);
-         } else {
-            throw new UnsupportedOperationException();
-         }
-      });
-
-      <T extends Comparable<T>> boolean a(drf<?, ?> var1, dsg<T> var2);
    }
 }

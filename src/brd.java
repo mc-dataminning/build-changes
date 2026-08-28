@@ -1,15 +1,4 @@
-public enum brd {
-   a(n.j),
-   b(n.m),
-   c(n.j);
+import javax.annotation.Nullable;
 
-   private final n d;
-
-   private brd(n $$0) {
-      this.d = $$0;
-   }
-
-   public n a() {
-      return this.d;
-   }
+public record brd(bri a, float b, @Nullable brn c, float d) {
 }

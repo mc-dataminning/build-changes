@@ -1,52 +1,43 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufUtil;
+import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.EncoderException;
-import java.nio.charset.StandardCharsets;
+import io.netty.handler.codec.MessageToMessageDecoder;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class wn {
-   public static String a(ByteBuf $$0, int $$1) {
-      int $$2 = ByteBufUtil.utf8MaxBytes($$1);
-      int $$3 = wo.a($$0);
-      if ($$3 > $$2) {
-         throw new DecoderException("The received encoded string buffer length is longer than maximum allowed (" + $$3 + " > " + $$2 + ")");
-      } else if ($$3 < 0) {
-         throw new DecoderException("The received encoded string buffer length is less than zero! Weird string!");
+public class wn extends MessageToMessageDecoder<zs<?>> {
+   private final zr a;
+   @Nullable
+   private zr.a b;
+
+   public wn(zr $$0) {
+      this.a = $$0;
+   }
+
+   protected void a(ChannelHandlerContext $$0, zs<?> $$1, List<Object> $$2) throws Exception {
+      if (this.b != null) {
+         a($$1);
+         zs<?> $$3 = this.b.a($$1);
+         if ($$3 != null) {
+            this.b = null;
+            $$2.add($$3);
+         }
       } else {
-         int $$4 = $$0.readableBytes();
-         if ($$3 > $$4) {
-            throw new DecoderException("Not enough bytes in buffer, expected " + $$3 + ", but got " + $$4);
+         zr.a $$4 = this.a.a($$1);
+         if ($$4 != null) {
+            a($$1);
+            this.b = $$4;
          } else {
-            String $$5 = $$0.toString($$0.readerIndex(), $$3, StandardCharsets.UTF_8);
-            $$0.readerIndex($$0.readerIndex() + $$3);
-            if ($$5.length() > $$1) {
-               throw new DecoderException("The received string length is longer than maximum allowed (" + $$5.length() + " > " + $$1 + ")");
-            } else {
-               return $$5;
+            $$2.add($$1);
+            if ($$1.d()) {
+               $$0.pipeline().remove($$0.name());
             }
          }
       }
    }
 
-   public static void a(ByteBuf $$0, CharSequence $$1, int $$2) {
-      if ($$1.length() > $$2) {
-         throw new EncoderException("String too big (was " + $$1.length() + " characters, max " + $$2 + ")");
-      } else {
-         int $$3 = ByteBufUtil.utf8MaxBytes($$1);
-         ByteBuf $$4 = $$0.alloc().buffer($$3);
-
-         try {
-            int $$5 = ByteBufUtil.writeUtf8($$4, $$1);
-            int $$6 = ByteBufUtil.utf8MaxBytes($$2);
-            if ($$5 > $$6) {
-               throw new EncoderException("String too big (was " + $$5 + " bytes encoded, max " + $$6 + ")");
-            }
-
-            wo.a($$0, $$5);
-            $$0.writeBytes($$4);
-         } finally {
-            $$4.release();
-         }
+   private static void a(zs<?> $$0) {
+      if ($$0.d()) {
+         throw new DecoderException("Terminal message received in bundle");
       }
    }
 }

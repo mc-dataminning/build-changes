@@ -1,46 +1,43 @@
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import com.google.gson.JsonObject;
+import java.io.File;
+import java.net.SocketAddress;
+import javax.annotation.Nullable;
 
-public class auv {
-   private final ByteArrayOutputStream a;
-   private final DataOutputStream b;
-
-   public auv(int $$0) {
-      this.a = new ByteArrayOutputStream($$0);
-      this.b = new DataOutputStream(this.a);
+public class auv extends ave<String, auw> {
+   public auv(File $$0) {
+      super($$0);
    }
 
-   public void a(byte[] $$0) throws IOException {
-      this.b.write($$0, 0, $$0.length);
+   @Override
+   protected avd<String> a(JsonObject $$0) {
+      return new auw($$0);
    }
 
-   public void a(String $$0) throws IOException {
-      this.b.writeBytes($$0);
-      this.b.write(0);
+   public boolean a(SocketAddress $$0) {
+      String $$1 = this.c($$0);
+      return this.d($$1);
    }
 
-   public void a(int $$0) throws IOException {
-      this.b.write($$0);
+   public boolean a(String $$0) {
+      return this.d($$0);
    }
 
-   public void a(short $$0) throws IOException {
-      this.b.writeShort(Short.reverseBytes($$0));
+   @Nullable
+   public auw b(SocketAddress $$0) {
+      String $$1 = this.c($$0);
+      return this.b($$1);
    }
 
-   public void b(int $$0) throws IOException {
-      this.b.writeInt(Integer.reverseBytes($$0));
-   }
+   private String c(SocketAddress $$0) {
+      String $$1 = $$0.toString();
+      if ($$1.contains("/")) {
+         $$1 = $$1.substring($$1.indexOf(47) + 1);
+      }
 
-   public void a(float $$0) throws IOException {
-      this.b.writeInt(Integer.reverseBytes(Float.floatToIntBits($$0)));
-   }
+      if ($$1.contains(":")) {
+         $$1 = $$1.substring(0, $$1.indexOf(58));
+      }
 
-   public byte[] a() {
-      return this.a.toByteArray();
-   }
-
-   public void b() {
-      this.a.reset();
+      return $$1;
    }
 }

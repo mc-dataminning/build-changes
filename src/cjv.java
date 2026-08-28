@@ -1,86 +1,63 @@
-import javax.annotation.Nullable;
-
-public class cjv extends cim {
-   public cjv(bsc<? extends cjv> $$0, daz $$1) {
+public class cjv extends ckr {
+   public cjv(bsv<? extends cjv> $$0, dbt $$1) {
       super($$0, $$1);
-      this.a(enn.i, 8.0F);
+   }
+
+   public static boolean a(bsv<cjv> $$0, dci $$1, bto $$2, iz $$3, azc $$4) {
+      return b($$0, $$1, $$2, $$3, $$4) && (bto.a($$2) || $$1.h($$3));
    }
 
    @Override
-   protected void z() {
-      this.bT.a(3, new cbh<>(this, ckn.class, true));
-      super.z();
+   protected boolean ad_() {
+      return false;
    }
 
    @Override
-   protected avh v() {
-      return avi.Cz;
+   protected avv v() {
+      return avw.mZ;
    }
 
    @Override
-   protected avh d(bqp $$0) {
-      return avi.CB;
+   protected avv d(bri $$0) {
+      return avw.nc;
    }
 
    @Override
-   protected avh o_() {
-      return avi.CA;
+   protected avv o_() {
+      return avw.nb;
    }
 
    @Override
-   avh u() {
-      return avi.CC;
+   protected avv gq() {
+      return avw.nd;
    }
 
    @Override
-   protected void a(bqp $$0, int $$1, boolean $$2) {
-      super.a($$0, $$1, $$2);
-      if ($$0.d() instanceof ciq $$4 && $$4.gq()) {
-         $$4.gr();
-         this.a((day)ctt.um);
+   public boolean C(bsp $$0) {
+      boolean $$1 = super.C($$0);
+      if ($$1 && this.eX().e() && $$0 instanceof btk) {
+         float $$2 = this.dP().d_(this.dp()).b();
+         ((btk)$$0).b(new brx(brz.q, 140 * (int)$$2), this);
+      }
+
+      return $$1;
+   }
+
+   @Override
+   protected boolean gs() {
+      return true;
+   }
+
+   @Override
+   protected void ac_() {
+      this.b(bsv.bu);
+      if (!this.aW()) {
+         this.dP().a(null, 1041, this.dp(), 0);
       }
    }
 
    @Override
-   protected void a(aym $$0, bpu $$1) {
-      this.a(bsd.a, new ctq(ctt.oQ));
-   }
-
-   @Override
-   protected void b(aym $$0, bpu $$1) {
-   }
-
-   @Nullable
-   @Override
-   public btj a(dbo $$0, bpu $$1, bsu $$2, @Nullable btj $$3) {
-      btj $$4 = super.a($$0, $$1, $$2, $$3);
-      this.f(bty.c).a(4.0);
-      this.y();
-      return $$4;
-   }
-
-   @Override
-   public boolean C(brw $$0) {
-      if (!super.C($$0)) {
-         return false;
-      } else {
-         if ($$0 instanceof bsq) {
-            ((bsq)$$0).b(new bre(brg.t, 200), this);
-         }
-
-         return true;
-      }
-   }
-
-   @Override
-   protected cme b(ctq $$0, float $$1) {
-      cme $$2 = super.b($$0, $$1);
-      $$2.g(100);
-      return $$2;
-   }
-
-   @Override
-   public boolean c(bre $$0) {
-      return $$0.a(brg.t) ? false : super.c($$0);
+   protected cuk gr() {
+      return cuk.l;
    }
 }

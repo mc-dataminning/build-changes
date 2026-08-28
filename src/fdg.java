@@ -1,59 +1,31 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public abstract class fdg extends fdb {
-   private static final Logger b = LogUtils.getLogger();
-   private final long c;
-   private final wx d;
-   private final Runnable e;
+public class fdg {
+   public final int a;
+   @Nullable
+   public final String b;
 
-   public fdg(long $$0, wx $$1, Runnable $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   fdg(int $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   protected abstract void a(ezk var1, long var2) throws fax;
+   public static class a {
+      private int a = -1;
+      private String b;
 
-   @Override
-   public void run() {
-      ezk $$0 = ezk.a();
-      int $$1 = 0;
-
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            this.a($$0, this.c);
-            if (this.d()) {
-               return;
-            }
-
-            this.e.run();
-            return;
-         } catch (fay var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't reset world");
-            this.a(var5);
-            return;
-         }
+      public fdg.a a(int $$0) {
+         this.a = $$0;
+         return this;
       }
-   }
 
-   @Override
-   public wx a() {
-      return this.d;
+      public fdg.a a(@Nullable String $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public fdg a() {
+         return new fdg(this.a, this.b);
+      }
    }
 }

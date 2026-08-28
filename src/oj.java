@@ -1,101 +1,76 @@
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class oj implements od {
-   private final oe b;
-   private final cxl c;
-   private final ctl d;
-   private final cxt e;
-   private final float f;
-   private final int g;
-   private final Map<String, an<?>> h = new LinkedHashMap<>();
+public final class oj {
+   public static final oj a = a("all");
+   public static final oj b = a("texture", a);
+   public static final oj c = a("particle", b);
+   public static final oj d = a("end", a);
+   public static final oj e = a("bottom", d);
+   public static final oj f = a("top", d);
+   public static final oj g = a("front", a);
+   public static final oj h = a("back", a);
+   public static final oj i = a("side", a);
+   public static final oj j = a("north", i);
+   public static final oj k = a("south", i);
+   public static final oj l = a("east", i);
+   public static final oj m = a("west", i);
+   public static final oj n = a("up");
+   public static final oj o = a("down");
+   public static final oj p = a("cross");
+   public static final oj q = a("plant");
+   public static final oj r = a("wall", a);
+   public static final oj s = a("rail");
+   public static final oj t = a("wool");
+   public static final oj u = a("pattern");
+   public static final oj v = a("pane");
+   public static final oj w = a("edge");
+   public static final oj x = a("fan");
+   public static final oj y = a("stem");
+   public static final oj z = a("upperstem");
+   public static final oj A = a("crop");
+   public static final oj B = a("dirt");
+   public static final oj C = a("fire");
+   public static final oj D = a("lantern");
+   public static final oj E = a("platform");
+   public static final oj F = a("unsticky");
+   public static final oj G = a("torch");
+   public static final oj H = a("layer0");
+   public static final oj I = a("layer1");
+   public static final oj J = a("layer2");
+   public static final oj K = a("lit_log");
+   public static final oj L = a("candle");
+   public static final oj M = a("inside");
+   public static final oj N = a("content");
+   public static final oj O = a("inner_top");
+   public static final oj P = a("flowerbed");
+   private final String Q;
    @Nullable
-   private String i;
-   private final cxf.a<?> j;
+   private final oj R;
 
-   private oj(oe $$0, cxl $$1, day $$2, cxt $$3, float $$4, int $$5, cxf.a<?> $$6) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2.r();
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.j = $$6;
+   private static oj a(String $$0) {
+      return new oj($$0, null);
    }
 
-   public static <T extends cxf> oj a(cxt $$0, oe $$1, day $$2, float $$3, int $$4, cya<T> $$5, cxf.a<T> $$6) {
-      return new oj($$1, a($$5, $$2), $$2, $$0, $$3, $$4, $$6);
+   private static oj a(String $$0, oj $$1) {
+      return new oj($$0, $$1);
    }
 
-   public static oj a(cxt $$0, oe $$1, day $$2, float $$3, int $$4) {
-      return new oj($$1, cxl.a, $$2, $$0, $$3, $$4, cxk::new);
+   private oj(String $$0, @Nullable oj $$1) {
+      this.Q = $$0;
+      this.R = $$1;
    }
 
-   public static oj b(cxt $$0, oe $$1, day $$2, float $$3, int $$4) {
-      return new oj($$1, c($$2), $$2, $$0, $$3, $$4, cxi::new);
+   public String a() {
+      return this.Q;
    }
 
-   public static oj c(cxt $$0, oe $$1, day $$2, float $$3, int $$4) {
-      return new oj($$1, b($$2), $$2, $$0, $$3, $$4, cyl::new);
-   }
-
-   public static oj d(cxt $$0, oe $$1, day $$2, float $$3, int $$4) {
-      return new oj($$1, cxl.a, $$2, $$0, $$3, $$4, cyp::new);
-   }
-
-   public oj b(String $$0, an<?> $$1) {
-      this.h.put($$0, $$1);
-      return this;
-   }
-
-   public oj b(@Nullable String $$0) {
-      this.i = $$0;
-      return this;
+   @Nullable
+   public oj b() {
+      return this.R;
    }
 
    @Override
-   public ctl a() {
-      return this.d;
-   }
-
-   @Override
-   public void a(of $$0, akn $$1) {
-      this.a($$1);
-      ae.a $$2 = $$0.a().a("has_the_recipe", dd.a($$1)).a(aj.a.a($$1)).a(ai.a.b);
-      this.h.forEach($$2::a);
-      cxf $$3 = this.j.create(Objects.requireNonNullElse(this.i, ""), this.c, this.e, new ctq(this.d), this.f, this.g);
-      $$0.a($$1, $$3, $$2.b($$1.d("recipes/" + this.b.a() + "/")));
-   }
-
-   private static cxl b(day $$0) {
-      if ($$0.r().p().b(kb.u)) {
-         return cxl.a;
-      } else {
-         return $$0.r() instanceof cro ? cxl.b : cxl.c;
-      }
-   }
-
-   private static cxl c(day $$0) {
-      return $$0.r() instanceof cro ? cxl.b : cxl.c;
-   }
-
-   private static cxl a(cya<? extends cxf> $$0, day $$1) {
-      if ($$0 == cya.p) {
-         return b($$1);
-      } else if ($$0 == cya.q) {
-         return c($$1);
-      } else if ($$0 != cya.r && $$0 != cya.s) {
-         throw new IllegalStateException("Unknown cooking recipe type");
-      } else {
-         return cxl.a;
-      }
-   }
-
-   private void a(akn $$0) {
-      if (this.h.isEmpty()) {
-         throw new IllegalStateException("No way of obtaining recipe " + $$0);
-      }
+   public String toString() {
+      return "#" + this.Q;
    }
 }

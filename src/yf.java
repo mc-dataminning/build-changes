@@ -1,119 +1,108 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import java.time.Instant;
+import java.util.UUID;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class yf implements wy {
-   public static final MapCodec<yf> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(yf::b), Codec.STRING.fieldOf("objective").forGetter(yf::d)).apply($$0, yf::new)
-   );
-   public static final MapCodec<yf> b = a.fieldOf("score");
-   public static final wy.a<yf> c = new wy.a<>(b, "score");
-   private final String d;
+public class yf {
+   static final Logger a = LogUtils.getLogger();
    @Nullable
-   private final gt e;
-   private final String f;
+   yg b;
+   Instant c = Instant.EPOCH;
 
-   @Nullable
-   private static gt a(String $$0) {
-      try {
-         return new gu(new StringReader($$0)).t();
-      } catch (CommandSyntaxException var2) {
-         return null;
-      }
+   public yf(UUID $$0, UUID $$1) {
+      this.b = yg.a($$0, $$1);
    }
 
-   public yf(String $$0, String $$1) {
-      this.d = $$0;
-      this.e = a($$0);
-      this.f = $$1;
-   }
-
-   @Override
-   public wy.a<?> a() {
-      return c;
-   }
-
-   public String b() {
-      return this.d;
-   }
-
-   @Nullable
-   public gt c() {
-      return this.e;
-   }
-
-   public String d() {
-      return this.f;
-   }
-
-   private evp a(ee $$0) throws CommandSyntaxException {
-      if (this.e != null) {
-         List<? extends brw> $$1 = this.e.b($$0);
-         if (!$$1.isEmpty()) {
-            if ($$1.size() != 1) {
-               throw er.a.create();
-            }
-
-            return $$1.get(0);
+   public yf.c a(azi $$0) {
+      return $$1 -> {
+         yg $$2 = this.b;
+         if ($$2 == null) {
+            return null;
+         } else {
+            this.b = $$2.a();
+            return new xx($$0.sign($$2x -> yb.a($$2x, $$2, $$1)));
          }
-      }
-
-      return evp.c(this.d);
+      };
    }
 
-   private xl a(evp $$0, ee $$1) {
-      MinecraftServer $$2 = $$1.l();
-      if ($$2 != null) {
-         evq $$3 = $$2.aK();
-         evi $$4 = $$3.a(this.f);
-         if ($$4 != null) {
-            evm $$5 = $$3.d($$0, $$4);
-            if ($$5 != null) {
-               return $$5.a($$4.a(yq.b));
+   public yf.b a(final cmv $$0) {
+      final azh $$1 = $$0.a();
+      return new yf.b() {
+         @Override
+         public yb unpack(@Nullable xx $$0x, ye $$1x) throws yf.a {
+            if ($$0 == null) {
+               throw new yf.a(yf.a.a);
+            } else if ($$0.b().a()) {
+               throw new yf.a(yf.a.c);
+            } else {
+               yg $$2 = yf.this.b;
+               if ($$2 == null) {
+                  throw new yf.a(yf.a.b);
+               } else if ($$1.b().isBefore(yf.this.c)) {
+                  this.setChainBroken();
+                  throw new yf.a(yf.a.e);
+               } else {
+                  yf.this.c = $$1.b();
+                  yb $$3 = new yb($$2, $$0, $$1, null, xp.c);
+                  if (!$$3.a($$1)) {
+                     this.setChainBroken();
+                     throw new yf.a(yf.a.d);
+                  } else {
+                     if ($$3.a(Instant.now())) {
+                        yf.a.warn("Received expired chat: '{}'. Is the client/server system time unsynchronized?", $$1.a());
+                     }
+
+                     yf.this.b = $$2.a();
+                     return $$3;
+                  }
+               }
             }
          }
-      }
 
-      return wx.i();
-   }
-
-   @Override
-   public xl a(@Nullable ee $$0, @Nullable brw $$1, int $$2) throws CommandSyntaxException {
-      if ($$0 == null) {
-         return wx.i();
-      } else {
-         evp $$3 = this.a($$0);
-         evp $$4 = (evp)($$1 != null && $$3.equals(evp.cy) ? $$1 : $$3);
-         return this.a($$4, $$0);
-      }
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof yf $$1 && this.d.equals($$1.d) && this.f.equals($$1.f)) {
-            return true;
+         @Override
+         public void setChainBroken() {
+            yf.this.b = null;
          }
+      };
+   }
 
-         return false;
+   public static class a extends yl {
+      static final xl a = xl.c("chat.disabled.missingProfileKey");
+      static final xl b = xl.c("chat.disabled.chain_broken");
+      static final xl c = xl.c("chat.disabled.expiredProfileKey");
+      static final xl d = xl.c("chat.disabled.invalid_signature");
+      static final xl e = xl.c("chat.disabled.out_of_order_chat");
+
+      public a(xl $$0) {
+         super($$0);
       }
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.d.hashCode();
-      return 31 * $$0 + this.f.hashCode();
+   @FunctionalInterface
+   public interface b {
+      static yf.b unsigned(UUID $$0, BooleanSupplier $$1) {
+         return ($$2, $$3) -> {
+            if ($$1.getAsBoolean()) {
+               throw new yf.a(yf.a.a);
+            } else {
+               return yb.a($$0, $$3.a());
+            }
+         };
+      }
+
+      yb unpack(@Nullable xx var1, ye var2) throws yf.a;
+
+      default void setChainBroken() {
+      }
    }
 
-   @Override
-   public String toString() {
-      return "score{name='" + this.d + "', objective='" + this.f + "'}";
+   @FunctionalInterface
+   public interface c {
+      yf.c a = $$0 -> null;
+
+      @Nullable
+      xx pack(ye var1);
    }
 }

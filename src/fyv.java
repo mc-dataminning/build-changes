@@ -1,45 +1,67 @@
-public class fyv extends gay {
-   private final gat a;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-   fyv(fwr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gat $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.a = $$7;
-      this.t = 4;
-      this.u = 0.008F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.b($$7);
+public record fyv(String a, @Nullable fyv.a b) {
+   public static fyv a() {
+      return a(null);
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         this.b(this.a);
+   public static fyv a(String $$0) {
+      return a(new fyv.a.b($$0));
+   }
+
+   public static fyv a(fba $$0) {
+      return a(new fyv.a.a($$0));
+   }
+
+   public static fyv a(@Nullable fyv.a $$0) {
+      return new fyv(g(), $$0);
+   }
+
+   public ClientInfo b() {
+      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
+   }
+
+   @Nullable
+   public ThirdPartyServerInfo c() {
+      return this.b instanceof fyv.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
+   }
+
+   @Nullable
+   public RealmInfo d() {
+      return this.b instanceof fyv.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
+   }
+
+   private static String g() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append("1.20.5-pre1");
+      if (ffa.e().a()) {
+         $$0.append(" (modded)");
       }
+
+      return $$0.toString();
    }
 
-   @Override
-   public gac b() {
-      return gac.b;
+   public String e() {
+      return this.a;
    }
 
-   public static class a implements gab<lb> {
-      private final gat a;
+   @Nullable
+   public fyv.a f() {
+      return this.b;
+   }
 
-      public a(gat $$0) {
-         this.a = $$0;
+   public interface a {
+      public static record a(long a, int b) implements fyv.a {
+         public a(fba $$0) {
+            this($$0.a, $$0.n);
+         }
       }
 
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fyv($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public static record b(String a) implements fyv.a {
       }
    }
 }

@@ -1,24 +1,22 @@
-import java.util.function.IntFunction;
+import com.google.common.collect.ImmutableMap;
 
-public enum cgo {
-   a(0),
-   b(1),
-   c(2),
-   d(3),
-   e(4);
-
-   private static final IntFunction<cgo> f = aww.a(cgo::a, values(), aww.a.b);
-   private final int g;
-
-   private cgo(int $$0) {
-      this.g = $$0;
+public class cgo extends bvd<cgm> {
+   public cgo() {
+      super(ImmutableMap.of(cco.N, ccp.a, cco.y, ccp.a), 200);
    }
 
-   public int a() {
-      return this.g;
+   protected boolean a(arb $$0, cgm $$1) {
+      return $$1.bh();
    }
 
-   public static cgo a(int $$0) {
-      return f.apply($$0);
+   protected boolean a(arb $$0, cgm $$1, long $$2) {
+      return $$1.bh() && $$1.dS().a(cco.N);
+   }
+
+   protected void b(arb $$0, cgm $$1, long $$2) {
+      bum<cgm> $$3 = $$1.dS();
+      $$3.b(cco.m);
+      $$3.b(cco.n);
+      $$1.b(new brx(brz.j, 200, 0));
    }
 }

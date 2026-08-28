@@ -1,42 +1,87 @@
 import java.util.EnumSet;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class cbf extends cbo {
-   private final ces a;
-   @Nullable
-   private bsq b;
-   private final cdh c = cdh.a().a(64.0);
+public class cbf extends cai {
+   public static final int a = 120;
+   protected final btt b;
+   protected double c;
+   protected double d;
+   protected double e;
+   protected final double f;
+   protected int g;
+   protected boolean h;
+   private final boolean i;
 
-   public cbf(ces $$0) {
-      super($$0, false, true);
-      this.a = $$0;
-      this.a(EnumSet.of(bzo.a.d));
+   public cbf(btt $$0, double $$1) {
+      this($$0, $$1, 120);
+   }
+
+   public cbf(btt $$0, double $$1, int $$2) {
+      this($$0, $$1, $$2, true);
+   }
+
+   public cbf(btt $$0, double $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.i = $$3;
+      this.a(EnumSet.of(cai.a.a));
    }
 
    @Override
    public boolean a() {
-      euh $$0 = this.a.cK().c(10.0, 8.0, 10.0);
-      List<? extends bsq> $$1 = this.a.dP().a(cll.class, this.c, this.a, $$0);
-      List<cly> $$2 = this.a.dP().a(this.c, this.a, $$0);
+      if (this.b.cR()) {
+         return false;
+      } else {
+         if (!this.h) {
+            if (this.i && this.b.eq() >= 100) {
+               return false;
+            }
 
-      for (bsq $$3 : $$1) {
-         cll $$4 = (cll)$$3;
-
-         for (cly $$5 : $$2) {
-            int $$6 = $$4.g($$5);
-            if ($$6 <= -100) {
-               this.b = $$5;
+            if (this.b.el().a(b(this.g)) != 0) {
+               return false;
             }
          }
-      }
 
-      return this.b == null ? false : !(this.b instanceof cly) || !this.b.N_() && !((cly)this.b).f();
+         evm $$0 = this.h();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.c = $$0.c;
+            this.d = $$0.d;
+            this.e = $$0.e;
+            this.h = false;
+            return true;
+         }
+      }
+   }
+
+   @Nullable
+   protected evm h() {
+      return cef.a(this.b, 10, 7);
+   }
+
+   @Override
+   public boolean b() {
+      return !this.b.K().l() && !this.b.cR();
    }
 
    @Override
    public void c() {
-      this.a.h(this.b);
-      super.c();
+      this.b.K().a(this.c, this.d, this.e, this.f);
+   }
+
+   @Override
+   public void d() {
+      this.b.K().n();
+      super.d();
+   }
+
+   public void i() {
+      this.h = true;
+   }
+
+   public void c(int $$0) {
+      this.g = $$0;
    }
 }

@@ -1,34 +1,33 @@
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import net.minecraft.server.MinecraftServer;
+import java.util.Collection;
 
 public class amk {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wx.b("commands.difficulty.failure", $$0));
-
-   public static void a(CommandDispatcher<ee> $$0) {
-      LiteralArgumentBuilder<ee> $$1 = ef.a("difficulty");
-
-      for (bpt $$2 : bpt.values()) {
-         $$1.then(ef.a($$2.e()).executes($$1x -> a((ee)$$1x.getSource(), $$2)));
-      }
-
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)$$1.requires($$0x -> $$0x.c(2))).executes($$0x -> {
-         bpt $$1x = ((ee)$$0x.getSource()).e().ak();
-         ((ee)$$0x.getSource()).a(() -> wx.a("commands.difficulty.query", $$1x.b()), false);
-         return $$1x.a();
-      }));
+   public static void a(CommandDispatcher<ep> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("banlist").requires($$0x -> $$0x.c(3)))
+                  .executes($$0x -> {
+                     auz $$1 = ((ep)$$0x.getSource()).l().ah();
+                     return a((ep)$$0x.getSource(), Lists.newArrayList(Iterables.concat($$1.f().d(), $$1.g().d())));
+                  }))
+               .then(eq.a("ips").executes($$0x -> a((ep)$$0x.getSource(), ((ep)$$0x.getSource()).l().ah().g().d()))))
+            .then(eq.a("players").executes($$0x -> a((ep)$$0x.getSource(), ((ep)$$0x.getSource()).l().ah().f().d())))
+      );
    }
 
-   public static int a(ee $$0, bpt $$1) throws CommandSyntaxException {
-      MinecraftServer $$2 = $$0.l();
-      if ($$2.bb().q() == $$1) {
-         throw a.create($$1.e());
+   private static int a(ep $$0, Collection<? extends aut<?>> $$1) {
+      if ($$1.isEmpty()) {
+         $$0.a(() -> xl.c("commands.banlist.none"), false);
       } else {
-         $$2.a($$1, true);
-         $$0.a(() -> wx.a("commands.difficulty.success", $$1.b()), true);
-         return 0;
+         $$0.a(() -> xl.a("commands.banlist.list", $$1.size()), false);
+
+         for (aut<?> $$2 : $$1) {
+            $$0.a(() -> xl.a("commands.banlist.entry", $$2.e(), $$2.b(), $$2.d()), false);
+         }
       }
+
+      return $$1.size();
    }
 }

@@ -1,37 +1,27 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class du extends df<du.a> {
+public record du(de.d c) implements bv {
+   public static final MapCodec<du> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(de.d.d.optionalFieldOf("size", de.d.c).forGetter(du::b)).apply($$0, du::new)
+   );
+
+   public static du a(de.d $$0) {
+      return new du($$0);
+   }
+
    @Override
-   public Codec<du.a> a() {
-      return du.a.a;
+   public boolean a(bsp $$0, arb $$1, @Nullable evm $$2) {
+      return $$0 instanceof ckh $$3 ? this.c.d($$3.gr()) : false;
    }
 
-   public void a(aqo $$0, ctq $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
+   @Override
+   public MapCodec<du> a() {
+      return bw.d;
    }
 
-   public static record a(Optional<bc> b, Optional<ch> c) implements df.a {
-      public static final Codec<du.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(br.b.optionalFieldOf("player").forGetter(du.a::a), ch.a.optionalFieldOf("item").forGetter(du.a::b)).apply($$0, du.a::new)
-      );
-
-      public static an<du.a> a(br.a $$0, ch.a $$1) {
-         return am.W.a(new du.a(Optional.of(br.a($$0)), Optional.of($$1.b())));
-      }
-
-      public boolean a(ctq $$0) {
-         return !this.c.isPresent() || this.c.get().a($$0);
-      }
-
-      @Override
-      public Optional<bc> a() {
-         return this.b;
-      }
-
-      public Optional<ch> b() {
-         return this.c;
-      }
+   public de.d b() {
+      return this.c;
    }
 }

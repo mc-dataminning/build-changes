@@ -1,40 +1,54 @@
-public class dxl implements dwk {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private long h;
-   private final dwx i = new dwx(this);
+import com.mojang.serialization.Codec;
 
-   public dxl(long $$0) {
-      this.b($$0);
+public class dxl {
+   public static enum a implements azp {
+      a("air"),
+      b("liquid");
+
+      public static final Codec<dxl.a> c = azp.a(dxl.a::values);
+      private final String d;
+
+      private a(final String $$0) {
+         this.d = $$0;
+      }
+
+      public String a() {
+         return this.d;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
    }
 
-   @Override
-   public aym d() {
-      return new dxl(this.g());
-   }
+   public static enum b implements azp {
+      a("raw_generation"),
+      b("lakes"),
+      c("local_modifications"),
+      d("underground_structures"),
+      e("surface_structures"),
+      f("strongholds"),
+      g("underground_ores"),
+      h("underground_decoration"),
+      i("fluid_springs"),
+      j("vegetal_decoration"),
+      k("top_layer_modification");
 
-   @Override
-   public dxi e() {
-      return new dww.a(this.g());
-   }
+      public static final Codec<dxl.b> l = azp.a(dxl.b::values);
+      private final String m;
 
-   @Override
-   public void b(long $$0) {
-      this.h = ($$0 ^ 25214903917L) & 281474976710655L;
-      this.i.a();
-   }
+      private b(final String $$0) {
+         this.m = $$0;
+      }
 
-   @Override
-   public int c(int $$0) {
-      long $$1 = this.h * 25214903917L + 11L & 281474976710655L;
-      this.h = $$1;
-      return (int)($$1 >> 48 - $$0);
-   }
+      public String a() {
+         return this.m;
+      }
 
-   @Override
-   public double k() {
-      return this.i.b();
+      @Override
+      public String c() {
+         return this.m;
+      }
    }
 }

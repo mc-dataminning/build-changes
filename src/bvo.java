@@ -1,44 +1,44 @@
-import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class bvo extends buj<cll> {
-   private final float c;
+public class bvo implements bwr {
+   private final bsp a;
+   private final boolean b;
 
-   public bvo(float $$0) {
-      super(ImmutableMap.of(cbu.m, cbv.c, cbu.n, cbv.c), Integer.MAX_VALUE);
-      this.c = $$0;
-   }
-
-   protected boolean a(aqn $$0, cll $$1) {
-      cly $$2 = $$1.gp();
-      return $$1.bD() && $$2 != null && !$$1.be() && !$$1.U && $$1.g($$2) <= 16.0 && $$2.cb != null;
-   }
-
-   protected boolean a(aqn $$0, cll $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(aqn $$0, cll $$1, long $$2) {
-      this.a($$1);
-   }
-
-   protected void c(aqn $$0, cll $$1, long $$2) {
-      bts<?> $$3 = $$1.dS();
-      $$3.b(cbu.m);
-      $$3.b(cbu.n);
-   }
-
-   protected void d(aqn $$0, cll $$1, long $$2) {
-      this.a($$1);
+   public bvo(bsp $$0, boolean $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
    @Override
-   protected boolean a(long $$0) {
-      return false;
+   public evm a() {
+      return this.b ? this.a.dn().b(0.0, (double)this.a.cL(), 0.0) : this.a.dn();
    }
 
-   private void a(cll $$0) {
-      bts<?> $$1 = $$0.dS();
-      $$1.a(cbu.m, new cbx(new buu($$0.gp(), false), this.c, 2));
-      $$1.a(cbu.n, new buu($$0.gp(), true));
+   @Override
+   public iz b() {
+      return this.a.dp();
+   }
+
+   @Override
+   public boolean a(btk $$0) {
+      if (this.a instanceof btk $$1) {
+         if (!$$1.bD()) {
+            return false;
+         } else {
+            Optional<ccq> $$3 = $$0.dS().c(cco.h);
+            return $$3.isPresent() && $$3.get().a($$1);
+         }
+      } else {
+         return true;
+      }
+   }
+
+   public bsp c() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "EntityTracker for " + this.a;
    }
 }

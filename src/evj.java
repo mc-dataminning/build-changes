@@ -1,34 +1,21 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+public class evj extends evk {
+   private final bsp b;
 
-public record evj(String a, int b, @Nullable wx c, @Nullable yn d) {
-   public boolean a() {
-      return this.a.startsWith("#");
+   public evj(bsp $$0) {
+      this($$0, $$0.dn());
    }
 
-   public wx b() {
-      return (wx)(this.c != null ? this.c : wx.b(this.c()));
+   public evj(bsp $$0, evm $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
-   public xl a(yn $$0) {
-      return Objects.requireNonNullElse(this.d, $$0).a(this.b);
-   }
-
-   public String c() {
-      return this.a;
-   }
-
-   public int d() {
+   public bsp a() {
       return this.b;
    }
 
-   @Nullable
-   public wx e() {
-      return this.c;
-   }
-
-   @Nullable
-   public yn f() {
-      return this.d;
+   @Override
+   public evk.a c() {
+      return evk.a.c;
    }
 }

@@ -1,55 +1,57 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dh extends df<dh.a> {
+public class dh extends dr<dh.a> {
    @Override
    public Codec<dh.a> a() {
       return dh.a.a;
    }
 
-   public void a(aqo $$0, drd $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
+   public void a(arc $$0, cuk $$1, @Nullable bsp $$2) {
+      eqd $$3 = bu.b($$0, $$2);
+      this.a($$0, $$3x -> $$3x.a($$0, $$1, $$3));
    }
 
-   public static record a(Optional<bc> b, Optional<ix<dea>> c, Optional<dl> d) implements df.a {
+   public static record a(Optional<bf> b, Optional<cp> c, Optional<bf> d) implements dr.a {
       public static final Codec<dh.a> a = RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     br.b.optionalFieldOf("player").forGetter(dh.a::a),
-                     le.e.r().optionalFieldOf("block").forGetter(dh.a::b),
-                     dl.a.optionalFieldOf("state").forGetter(dh.a::c)
-                  )
-                  .apply($$0, dh.a::new)
-         )
-         .validate(dh.a::a);
+         $$0 -> $$0.group(
+                  bu.b.optionalFieldOf("player").forGetter(dh.a::a),
+                  cp.a.optionalFieldOf("item").forGetter(dh.a::b),
+                  bu.b.optionalFieldOf("entity").forGetter(dh.a::c)
+               )
+               .apply($$0, dh.a::new)
+      );
 
-      private static DataResult<dh.a> a(dh.a $$0) {
-         return $$0.c
-            .<DataResult<dh.a>>flatMap(
-               $$1 -> $$0.d.<String>flatMap($$1x -> $$1x.a(((dea)$$1.a()).l())).map($$1x -> DataResult.error(() -> "Block" + $$1 + " has no property " + $$1x))
-            )
-            .orElseGet(() -> DataResult.success($$0));
+      public static an<dh.a> a(bf $$0, Optional<cp> $$1, Optional<bf> $$2) {
+         return am.R.a(new dh.a(Optional.of($$0), $$1, $$2));
       }
 
-      public static an<dh.a> a(dea $$0) {
-         return am.K.a(new dh.a(Optional.empty(), Optional.of($$0.q()), Optional.empty()));
+      public static an<dh.a> a(Optional<bf> $$0, Optional<cp> $$1, Optional<bf> $$2) {
+         return am.S.a(new dh.a($$0, $$1, $$2));
       }
 
-      public boolean a(drd $$0) {
-         return this.c.isPresent() && !$$0.a(this.c.get()) ? false : !this.d.isPresent() || this.d.get().a($$0);
+      public boolean a(arc $$0, cuk $$1, eqd $$2) {
+         return this.c.isPresent() && !this.c.get().a($$1) ? false : !this.d.isPresent() || this.d.get().a($$2);
       }
 
       @Override
-      public Optional<bc> a() {
+      public void a(bg $$0) {
+         dr.a.super.a($$0);
+         $$0.a(this.d, ".entity");
+      }
+
+      @Override
+      public Optional<bf> a() {
          return this.b;
       }
 
-      public Optional<ix<dea>> b() {
+      public Optional<cp> b() {
          return this.c;
       }
 
-      public Optional<dl> c() {
+      public Optional<bf> c() {
          return this.d;
       }
    }

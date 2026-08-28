@@ -1,36 +1,18 @@
-public class glo<T extends bsq, M extends fsw<T>> extends gmf<T, M> {
-   private static final akn a = new akn("textures/entity/elytra.png");
-   private final fst<T> b;
+public class glo extends gjl<ckn> {
+   private static final alb a = new alb("textures/entity/illager/vindicator.png");
 
-   public glo(gjp<T, M> $$0, fvs $$1) {
-      super($$0);
-      this.b = new fst<>($$1.a(fvv.W));
+   public glo(gis.a $$0) {
+      super($$0, new fuj<>($$0.a(fwu.bQ)), 0.5F);
+      this.a(new gmx<ckn, fuj<ckn>>(this, $$0.d()) {
+         public void a(ezt $$0, gdj $$1, int $$2, ckn $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+            if ($$3.gi()) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+            }
+         }
+      });
    }
 
-   public void a(eyu $$0, gck $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      ctq $$10 = $$3.a(bsd.e);
-      if ($$10.a(ctt.nT)) {
-         akn $$13;
-         if ($$3 instanceof gbj $$11) {
-            gov $$12 = $$11.b();
-            if ($$12.d() != null) {
-               $$13 = $$12.d();
-            } else if ($$12.c() != null && $$11.a(clz.a)) {
-               $$13 = $$12.c();
-            } else {
-               $$13 = a;
-            }
-         } else {
-            $$13 = a;
-         }
-
-         $$0.a();
-         $$0.a(0.0F, 0.0F, 0.125F);
-         this.c().a(this.b);
-         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-         eyy $$17 = gir.a($$1, gcs.a($$13), false, $$10.y());
-         this.b.a($$0, $$17, $$2, gnm.d, 1.0F, 1.0F, 1.0F, 1.0F);
-         $$0.b();
-      }
+   public alb a(ckn $$0) {
+      return a;
    }
 }

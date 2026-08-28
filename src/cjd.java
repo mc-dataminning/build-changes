@@ -1,93 +1,121 @@
-public class cjd extends cjn {
-   public cjd(bsc<? extends cjd> $$0, daz $$1) {
+import javax.annotation.Nullable;
+
+public class cjd extends bsp implements buj {
+   private static final akg<Integer> c = akk.a(cjd.class, aki.b);
+   private static final akg<drx> d = akk.a(cjd.class, aki.i);
+   private static final int e = 80;
+   private static final String f = "block_state";
+   public static final String b = "fuse";
+   @Nullable
+   private btk g;
+
+   public cjd(bsv<? extends cjd> $$0, dbt $$1) {
       super($$0, $$1);
+      this.J = true;
    }
 
-   public static btx.a s() {
-      return cje.gv().a(bty.r, 0.2F);
-   }
-
-   public static boolean b(bsc<cjd> $$0, dba $$1, bsu $$2, io $$3, aym $$4) {
-      return $$1.ak() != bpt.a;
-   }
-
-   @Override
-   public void a(int $$0, boolean $$1) {
-      super.a($$0, $$1);
-      this.f(bty.a).a((double)($$0 * 3));
-   }
-
-   @Override
-   public float bt() {
-      return 1.0F;
+   public cjd(dbt $$0, double $$1, double $$2, double $$3, @Nullable btk $$4) {
+      this(bsv.bc, $$0);
+      this.a_($$1, $$2, $$3);
+      double $$5 = $$0.z.j() * (float) (Math.PI * 2);
+      this.o(-Math.sin($$5) * 0.02, 0.2F, -Math.cos($$5) * 0.02);
+      this.b(80);
+      this.L = $$1;
+      this.M = $$2;
+      this.N = $$3;
+      this.g = $$4;
    }
 
    @Override
-   protected kw u() {
-      return ky.F;
+   protected void a(akk.a $$0) {
+      $$0.a(c, 80);
+      $$0.a(d, dew.ck.n());
    }
 
    @Override
-   public boolean bQ() {
-      return false;
+   protected bsp.b bb() {
+      return bsp.b.a;
    }
 
    @Override
-   protected int y() {
-      return super.y() * 4;
+   public boolean bz() {
+      return !this.dK();
    }
 
    @Override
-   protected void gl() {
-      this.e *= 0.9F;
+   protected double aY() {
+      return 0.04;
    }
 
    @Override
-   protected void fj() {
-      eum $$0 = this.ds();
-      float $$1 = (float)this.gq() * 0.1F;
-      this.o($$0.c, (double)(this.fh() + $$1), $$0.e);
-      this.av = true;
-   }
+   public void l() {
+      this.ba();
+      this.a(btp.a, this.ds());
+      this.h(this.ds().a(0.98));
+      if (this.aE()) {
+         this.h(this.ds().d(0.7, -0.5, 0.7));
+      }
 
-   @Override
-   protected void c(awm<emv> $$0) {
-      if ($$0 == awc.b) {
-         eum $$1 = this.ds();
-         this.o($$1.c, (double)(0.22F + (float)this.gq() * 0.05F), $$1.e);
-         this.av = true;
+      int $$0 = this.u() - 1;
+      this.b($$0);
+      if ($$0 <= 0) {
+         this.ao();
+         if (!this.dP().B) {
+            this.w();
+         }
       } else {
-         super.c($$0);
+         this.bl();
+         if (this.dP().B) {
+            this.dP().a(lj.ae, this.du(), this.dw() + 0.5, this.dA(), 0.0, 0.0, 0.0);
+         }
       }
    }
 
-   @Override
-   protected boolean gm() {
-      return this.db();
+   private void w() {
+      float $$0 = 4.0F;
+      this.dP().a(this, this.du(), this.e(0.0625), this.dA(), 4.0F, dbt.a.d);
    }
 
    @Override
-   protected float gn() {
-      return super.gn() + 2.0F;
+   protected void b(ur $$0) {
+      $$0.a("fuse", (short)this.u());
+      $$0.a("block_state", vg.a(this.v()));
    }
 
    @Override
-   protected avh d(bqp $$0) {
-      return this.gr() ? avi.ot : avi.os;
+   protected void a(ur $$0) {
+      this.b($$0.g("fuse"));
+      if ($$0.b("block_state", 10)) {
+         this.c(vg.a(this.dP().a(lq.f), $$0.p("block_state")));
+      }
+   }
+
+   @Nullable
+   public btk p() {
+      return this.g;
    }
 
    @Override
-   protected avh o_() {
-      return this.gr() ? avi.oh : avi.or;
+   public void w(bsp $$0) {
+      super.w($$0);
+      if ($$0 instanceof cjd $$1) {
+         this.g = $$1.g;
+      }
    }
 
-   @Override
-   protected avh go() {
-      return this.gr() ? avi.ow : avi.ov;
+   public void b(int $$0) {
+      this.ao.a(c, $$0);
    }
 
-   @Override
-   protected avh gp() {
-      return avi.ou;
+   public int u() {
+      return this.ao.a(c);
+   }
+
+   public void c(drx $$0) {
+      this.ao.a(d, $$0);
+   }
+
+   public drx v() {
+      return this.ao.a(d);
    }
 }

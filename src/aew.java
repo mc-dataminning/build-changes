@@ -1,39 +1,19 @@
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-public class aew implements ze<abq> {
-   public static final yv<vx, aew> a = ze.a(aew::a, aew::new);
-   private final int b;
-   private final int c;
-
-   public aew(brw $$0, @Nullable brw $$1) {
-      this.b = $$0.al();
-      this.c = $$1 != null ? $$1.al() : 0;
-   }
-
-   private aew(vx $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
-   }
-
-   private void a(vx $$0) {
-      $$0.p(this.b);
-      $$0.p(this.c);
-   }
+public record aew(xl b, Optional<byte[]> c) implements zs<ace> {
+   public static final zj<ByteBuf, aew> a = zj.a(xn.f, aew::b, zh.k.a(zh::a), aew::e, aew::new);
 
    @Override
-   public zg<aew> a() {
-      return agc.aD;
+   public zu<aew> a() {
+      return agq.ap;
    }
 
-   public void a(abq $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
+   public Optional<byte[]> e() {
       return this.c;
    }
 }

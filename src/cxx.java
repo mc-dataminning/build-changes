@@ -1,81 +1,71 @@
-import java.lang.ref.WeakReference;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 public class cxx {
-   private final cxx.a[] a;
-   private WeakReference<cxz> b = new WeakReference<>(null);
+   @Nullable
+   private final cms a;
+   private final bqo b;
+   private final evi c;
+   private final dbt d;
+   private final cuk e;
 
-   public cxx(int $$0) {
-      this.a = new cxx.a[$$0];
+   public cxx(cms $$0, bqo $$1, evi $$2) {
+      this($$0.dP(), $$0, $$1, $$0.b($$1), $$2);
    }
 
-   public Optional<cxy<cxn>> a(daz $$0, cpl $$1) {
-      if ($$1.c()) {
-         return Optional.empty();
-      } else {
-         this.a($$0);
-
-         for (int $$2 = 0; $$2 < this.a.length; $$2++) {
-            cxx.a $$3 = this.a[$$2];
-            if ($$3 != null && $$3.a($$1.h())) {
-               this.a($$2);
-               return Optional.ofNullable($$3.b());
-            }
-         }
-
-         return this.a($$1, $$0);
-      }
+   protected cxx(dbt $$0, @Nullable cms $$1, bqo $$2, cuk $$3, evi $$4) {
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$4;
+      this.e = $$3;
+      this.d = $$0;
    }
 
-   private void a(daz $$0) {
-      cxz $$1 = $$0.r();
-      if ($$1 != this.b.get()) {
-         this.b = new WeakReference<>($$1);
-         Arrays.fill(this.a, null);
-      }
+   protected final evi j() {
+      return this.c;
    }
 
-   private Optional<cxy<cxn>> a(cpl $$0, daz $$1) {
-      Optional<cxy<cxn>> $$2 = $$1.r().a(cyb.a, $$0, $$1);
-      this.a($$0.h(), $$2.orElse(null));
-      return $$2;
+   public iz a() {
+      return this.c.a();
    }
 
-   private void a(int $$0) {
-      if ($$0 > 0) {
-         cxx.a $$1 = this.a[$$0];
-         System.arraycopy(this.a, 0, this.a, 1, $$0);
-         this.a[0] = $$1;
-      }
+   public je k() {
+      return this.c.b();
    }
 
-   private void a(List<ctq> $$0, @Nullable cxy<cxn> $$1) {
-      jg<ctq> $$2 = jg.a($$0.size(), ctq.i);
-
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         $$2.set($$3, $$0.get($$3).c(1));
-      }
-
-      System.arraycopy(this.a, 0, this.a, 1, this.a.length - 1);
-      this.a[0] = new cxx.a($$2, $$1);
+   public evm l() {
+      return this.c.e();
    }
 
-   static record a(jg<ctq> a, @Nullable cxy<cxn> b) {
-      public boolean a(List<ctq> $$0) {
-         if (this.a.size() != $$0.size()) {
-            return false;
-         } else {
-            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
-               if (!ctq.c(this.a.get($$1), $$0.get($$1))) {
-                  return false;
-               }
-            }
+   public boolean m() {
+      return this.c.d();
+   }
 
-            return true;
-         }
-      }
+   public cuk n() {
+      return this.e;
+   }
+
+   @Nullable
+   public cms o() {
+      return this.a;
+   }
+
+   public bqo p() {
+      return this.b;
+   }
+
+   public dbt q() {
+      return this.d;
+   }
+
+   public je g() {
+      return this.a == null ? je.c : this.a.cH();
+   }
+
+   public boolean h() {
+      return this.a != null && this.a.fR();
+   }
+
+   public float i() {
+      return this.a == null ? 0.0F : this.a.dF();
    }
 }

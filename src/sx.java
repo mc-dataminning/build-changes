@@ -1,9 +1,95 @@
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.util.List;
 
-@Target({ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface sx {
+public class sx {
+   public static final ala<ehj> a = sw.a("crimson_fungi");
+   public static final ala<ehj> b = sw.a("warped_fungi");
+   public static final ala<ehj> c = sw.a("oak_checked");
+   public static final ala<ehj> d = sw.a("dark_oak_checked");
+   public static final ala<ehj> e = sw.a("birch_checked");
+   public static final ala<ehj> f = sw.a("acacia_checked");
+   public static final ala<ehj> g = sw.a("spruce_checked");
+   public static final ala<ehj> h = sw.a("mangrove_checked");
+   public static final ala<ehj> i = sw.a("cherry_checked");
+   public static final ala<ehj> j = sw.a("pine_on_snow");
+   public static final ala<ehj> k = sw.a("spruce_on_snow");
+   public static final ala<ehj> l = sw.a("pine_checked");
+   public static final ala<ehj> m = sw.a("jungle_tree");
+   public static final ala<ehj> n = sw.a("fancy_oak_checked");
+   public static final ala<ehj> o = sw.a("mega_jungle_tree_checked");
+   public static final ala<ehj> p = sw.a("mega_spruce_checked");
+   public static final ala<ehj> q = sw.a("mega_pine_checked");
+   public static final ala<ehj> r = sw.a("tall_mangrove_checked");
+   public static final ala<ehj> s = sw.a("jungle_bush");
+   public static final ala<ehj> t = sw.a("super_birch_bees_0002");
+   public static final ala<ehj> u = sw.a("super_birch_bees");
+   public static final ala<ehj> v = sw.a("oak_bees_0002");
+   public static final ala<ehj> w = sw.a("oak_bees_002");
+   public static final ala<ehj> x = sw.a("birch_bees_0002");
+   public static final ala<ehj> y = sw.a("birch_bees_002");
+   public static final ala<ehj> z = sw.a("fancy_oak_bees_0002");
+   public static final ala<ehj> A = sw.a("fancy_oak_bees_002");
+   public static final ala<ehj> B = sw.a("fancy_oak_bees");
+   public static final ala<ehj> C = sw.a("cherry_bees_005");
+
+   public static void a(rc<ehj> $$0) {
+      jj<eag<?, ?>> $$1 = $$0.a(lq.aC);
+      ji<eag<?, ?>> $$2 = $$1.b(sm.a);
+      ji<eag<?, ?>> $$3 = $$1.b(sm.c);
+      ji<eag<?, ?>> $$4 = $$1.b(sm.g);
+      ji<eag<?, ?>> $$5 = $$1.b(sm.h);
+      ji<eag<?, ?>> $$6 = $$1.b(sm.i);
+      ji<eag<?, ?>> $$7 = $$1.b(sm.j);
+      ji<eag<?, ?>> $$8 = $$1.b(sm.k);
+      ji<eag<?, ?>> $$9 = $$1.b(sm.x);
+      ji<eag<?, ?>> $$10 = $$1.b(sm.z);
+      ji<eag<?, ?>> $$11 = $$1.b(sm.l);
+      ji<eag<?, ?>> $$12 = $$1.b(sm.m);
+      ji<eag<?, ?>> $$13 = $$1.b(sm.n);
+      ji<eag<?, ?>> $$14 = $$1.b(sm.p);
+      ji<eag<?, ?>> $$15 = $$1.b(sm.q);
+      ji<eag<?, ?>> $$16 = $$1.b(sm.r);
+      ji<eag<?, ?>> $$17 = $$1.b(sm.y);
+      ji<eag<?, ?>> $$18 = $$1.b(sm.v);
+      ji<eag<?, ?>> $$19 = $$1.b(sm.s);
+      ji<eag<?, ?>> $$20 = $$1.b(sm.t);
+      ji<eag<?, ?>> $$21 = $$1.b(sm.A);
+      ji<eag<?, ?>> $$22 = $$1.b(sm.B);
+      ji<eag<?, ?>> $$23 = $$1.b(sm.D);
+      ji<eag<?, ?>> $$24 = $$1.b(sm.E);
+      ji<eag<?, ?>> $$25 = $$1.b(sm.G);
+      ji<eag<?, ?>> $$26 = $$1.b(sm.H);
+      ji<eag<?, ?>> $$27 = $$1.b(sm.J);
+      ji<eag<?, ?>> $$28 = $$1.b(sm.K);
+      sw.a($$0, a, $$2, ehb.a(8), egx.a());
+      sw.a($$0, b, $$3, ehb.a(8), egx.a());
+      sw.a($$0, c, $$4, sw.a(dew.x));
+      sw.a($$0, d, $$5, sw.a(dew.D));
+      sw.a($$0, e, $$6, sw.a(dew.z));
+      sw.a($$0, f, $$7, sw.a(dew.B));
+      sw.a($$0, g, $$8, sw.a(dew.y));
+      sw.a($$0, h, $$9, sw.a(dew.E));
+      sw.a($$0, i, $$10, sw.a(dew.C));
+      dyw $$29 = dyw.a(je.a.q(), dew.dP, dew.qP);
+      List<ehm> $$30 = List.of(ehd.a(je.b, dyw.a(dyw.a(dew.qP)), 8), egy.a($$29));
+      sw.a($$0, j, $$11, $$30);
+      sw.a($$0, k, $$8, $$30);
+      sw.a($$0, l, $$11, sw.a(dew.y));
+      sw.a($$0, m, $$12, sw.a(dew.A));
+      sw.a($$0, n, $$13, sw.a(dew.x));
+      sw.a($$0, o, $$14, sw.a(dew.A));
+      sw.a($$0, p, $$15, sw.a(dew.y));
+      sw.a($$0, q, $$16, sw.a(dew.y));
+      sw.a($$0, r, $$17, sw.a(dew.E));
+      sw.a($$0, s, $$18, sw.a(dew.x));
+      sw.a($$0, t, $$19, sw.a(dew.z));
+      sw.a($$0, u, $$20, sw.a(dew.z));
+      sw.a($$0, v, $$21, sw.a(dew.x));
+      sw.a($$0, w, $$22, sw.a(dew.x));
+      sw.a($$0, x, $$23, sw.a(dew.z));
+      sw.a($$0, y, $$24, sw.a(dew.z));
+      sw.a($$0, z, $$25, sw.a(dew.x));
+      sw.a($$0, A, $$26, sw.a(dew.x));
+      sw.a($$0, B, $$27, sw.a(dew.x));
+      sw.a($$0, C, $$28, sw.a(dew.C));
+   }
 }

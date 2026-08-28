@@ -1,44 +1,49 @@
-import javax.annotation.Nullable;
+public record ait(int b, String c, int d, ais e) implements zs<aiw> {
+   public static final zj<wl, ait> a = zs.a(ait::a, ait::new);
+   private static final int f = 255;
 
-public record ait(int b, @Nullable aix c) implements ze<ais> {
-   public static final yv<vx, ait> a = ze.a(ait::c, ait::a);
-   private static final int d = 1048576;
-
-   private static ait a(vx $$0) {
-      int $$1 = $$0.l();
-      return new ait($$1, a($$1, $$0));
+   @Deprecated
+   public ait(int b, String c, int d, ais e) {
+      this.b = b;
+      this.c = c;
+      this.d = d;
+      this.e = e;
    }
 
-   private static aix a(int $$0, vx $$1) {
-      return b($$1);
+   private ait(wl $$0) {
+      this($$0.l(), $$0.d(255), $$0.readUnsignedShort(), ais.a($$0.l()));
    }
 
-   private static aix b(vx $$0) {
-      int $$1 = $$0.readableBytes();
-      if ($$1 >= 0 && $$1 <= 1048576) {
-         $$0.j($$1);
-         return aiz.a;
-      } else {
-         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
-      }
-   }
-
-   private void c(vx $$0) {
+   private void a(wl $$0) {
       $$0.c(this.b);
-      $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
+      $$0.a(this.c);
+      $$0.l(this.d);
+      $$0.c(this.e.a());
    }
 
    @Override
-   public zg<ait> a() {
-      return aiq.f;
+   public zu<ait> a() {
+      return aiu.a;
    }
 
-   public void a(ais $$0) {
+   public void a(aiw $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public aix e() {
+   @Override
+   public boolean d() {
+      return true;
+   }
+
+   public String e() {
       return this.c;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   public ais g() {
+      return this.e;
    }
 }

@@ -1,104 +1,81 @@
-import com.google.common.base.Preconditions;
 import com.mojang.serialization.Codec;
-import java.nio.ByteBuffer;
-import java.util.Arrays;
-import java.util.Base64;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record xj(byte[] c) {
-   public static final Codec<xj> a = axn.n.xmap(xj::new, xj::b);
-   public static final int b = 256;
+public class xj {
+   public static final Codec<xj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(xj.a.h.forGetter($$0x -> $$0x.b), Codec.STRING.fieldOf("value").forGetter($$0x -> $$0x.c)).apply($$0, xj::new)
+   );
+   private final xj.a b;
+   private final String c;
 
-   public xj(byte[] c) {
-      Preconditions.checkState(c.length == 256, "Invalid message signature size");
-      this.c = c;
+   public xj(xj.a $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static xj a(vx $$0) {
-      byte[] $$1 = new byte[256];
-      $$0.b($$1);
-      return new xj($$1);
+   public xj.a a() {
+      return this.b;
    }
 
-   public static void a(vx $$0, xj $$1) {
-      $$0.c($$1.c);
-   }
-
-   public boolean a(ayr $$0, ayq $$1) {
-      return $$0.validate($$1, this.c);
-   }
-
-   public ByteBuffer a() {
-      return ByteBuffer.wrap(this.c);
+   public String b() {
+      return this.c;
    }
 
    @Override
    public boolean equals(Object $$0) {
       if (this == $$0) {
          return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         xj $$1 = (xj)$$0;
+         return this.b == $$1.b && this.c.equals($$1.c);
       } else {
-         if ($$0 instanceof xj $$1 && Arrays.equals(this.c, $$1.c)) {
-            return true;
-         }
-
          return false;
       }
    }
 
    @Override
-   public int hashCode() {
-      return Arrays.hashCode(this.c);
+   public String toString() {
+      return "ClickEvent{action=" + this.b + ", value='" + this.c + "'}";
    }
 
    @Override
-   public String toString() {
-      return Base64.getEncoder().encodeToString(this.c);
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      return 31 * $$0 + this.c.hashCode();
    }
 
-   public xj.a a(xk $$0) {
-      int $$1 = $$0.a(this);
-      return $$1 != -1 ? new xj.a($$1) : new xj.a(this);
-   }
+   public static enum a implements azp {
+      a("open_url", true),
+      b("open_file", false),
+      c("run_command", true),
+      d("suggest_command", true),
+      e("change_page", true),
+      f("copy_to_clipboard", true);
 
-   public byte[] b() {
-      return this.c;
-   }
+      public static final MapCodec<xj.a> g = azp.a(xj.a::values).fieldOf("action");
+      public static final MapCodec<xj.a> h = g.validate(xj.a::a);
+      private final boolean i;
+      private final String j;
 
-   public static record a(int b, @Nullable xj c) {
-      public static final int a = -1;
-
-      public a(xj $$0) {
-         this(-1, $$0);
+      private a(final String $$0, final boolean $$1) {
+         this.j = $$0;
+         this.i = $$1;
       }
 
-      public a(int $$0) {
-         this($$0, null);
+      public boolean a() {
+         return this.i;
       }
 
-      public static xj.a a(vx $$0) {
-         int $$1 = $$0.l() - 1;
-         return $$1 == -1 ? new xj.a(xj.a($$0)) : new xj.a($$1);
+      @Override
+      public String c() {
+         return this.j;
       }
 
-      public static void a(vx $$0, xj.a $$1) {
-         $$0.c($$1.a() + 1);
-         if ($$1.b() != null) {
-            xj.a($$0, $$1.b());
-         }
-      }
-
-      public Optional<xj> a(xk $$0) {
-         return this.c != null ? Optional.of(this.c) : Optional.ofNullable($$0.a(this.b));
-      }
-
-      public int a() {
-         return this.b;
-      }
-
-      @Nullable
-      public xj b() {
-         return this.c;
+      public static DataResult<xj.a> a(xj.a $$0) {
+         return !$$0.a() ? DataResult.error(() -> "Action not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
       }
    }
 }

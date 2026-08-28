@@ -1,26 +1,52 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import java.util.List;
+import java.util.Optional;
 
-public abstract class boz implements bpe {
-   private static final Codec<Either<Float, boz>> a = Codec.either(Codec.FLOAT, le.L.q().dispatch(boz::c, bpa::codec));
-   public static final Codec<boz> c = a.xmap(
-      $$0 -> (boz)$$0.map(box::a, $$0x -> $$0x), $$0 -> $$0.c() == bpa.a ? Either.left(((box)$$0).d()) : Either.right($$0)
-   );
-
-   public static Codec<boz> a(float $$0, float $$1) {
-      return c.validate($$2 -> {
-         if ($$2.a() < $$0) {
-            return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
-         } else {
-            return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
-         }
-      });
+public class boz<E> extends bpd<bpb.b<E>> {
+   public static <E> Codec<boz<E>> a(Codec<E> $$0) {
+      return bpb.b.a($$0).listOf().xmap(boz::new, bpd::e);
    }
 
-   public abstract float a();
+   public static <E> Codec<boz<E>> b(Codec<E> $$0) {
+      return ayc.a(bpb.b.a($$0).listOf()).xmap(boz::new, bpd::e);
+   }
 
-   public abstract float b();
+   boz(List<? extends bpb.b<E>> $$0) {
+      super($$0);
+   }
 
-   public abstract bpa<?> c();
+   public static <E> boz.a<E> a() {
+      return new boz.a<>();
+   }
+
+   public static <E> boz<E> b() {
+      return new boz<>(List.of());
+   }
+
+   public static <E> boz<E> a(E $$0) {
+      return new boz<>(List.of(bpb.a($$0, 1)));
+   }
+
+   public Optional<E> a(azc $$0) {
+      return this.b($$0).map(bpb.b::b);
+   }
+
+   public static class a<E> {
+      private final Builder<bpb.b<E>> a = ImmutableList.builder();
+
+      public boz.a<E> a(E $$0) {
+         return this.a($$0, 1);
+      }
+
+      public boz.a<E> a(E $$0, int $$1) {
+         this.a.add(bpb.a($$0, $$1));
+         return this;
+      }
+
+      public boz<E> a() {
+         return new boz<>(this.a.build());
+      }
+   }
 }

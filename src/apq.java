@@ -1,25 +1,13 @@
-import java.util.Vector;
-import javax.swing.JList;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
-public class apq extends JList<String> {
-   private final MinecraftServer a;
-   private int b;
+public interface apq {
+   void a(ur var1) throws CommandSyntaxException;
 
-   public apq(MinecraftServer $$0) {
-      this.a = $$0;
-      $$0.b(this::a);
-   }
+   ur a() throws CommandSyntaxException;
 
-   public void a() {
-      if (this.b++ % 20 == 0) {
-         Vector<String> $$0 = new Vector<>();
+   xl b();
 
-         for (int $$1 = 0; $$1 < this.a.ah().t().size(); $$1++) {
-            $$0.add(this.a.ah().t().get($$1).gb().getName());
-         }
+   xl a(vo var1);
 
-         this.setListData($$0);
-      }
-   }
+   xl a(fh.g var1, double var2, int var4);
 }

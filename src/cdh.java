@@ -1,89 +1,43 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public class cdh {
-   public static final cdh a = a();
-   private static final double b = 2.0;
-   private final boolean c;
-   private double d = -1.0;
-   private boolean e = true;
-   private boolean f = true;
-   @Nullable
-   private Predicate<bsq> g;
-
-   private cdh(boolean $$0) {
-      this.c = $$0;
+public class cdh extends cdu<clc> {
+   @Override
+   public Set<cco<?>> a() {
+      return ImmutableSet.of(cco.h, cco.aw, cco.aq, cco.ap, cco.as, cco.at, new cco[0]);
    }
 
-   public static cdh a() {
-      return new cdh(true);
-   }
+   protected void a(arb $$0, clc $$1) {
+      bum<?> $$2 = $$1.dS();
+      $$2.a(cco.aw, this.b($$0, $$1));
+      Optional<cli> $$3 = Optional.empty();
+      int $$4 = 0;
+      List<clc> $$5 = Lists.newArrayList();
+      ccq $$6 = $$2.c(cco.h).orElse(ccq.a());
 
-   public static cdh b() {
-      return new cdh(false);
-   }
-
-   public cdh c() {
-      cdh $$0 = this.c ? a() : b();
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      $$0.g = this.g;
-      return $$0;
-   }
-
-   public cdh a(double $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   public cdh d() {
-      this.e = false;
-      return this;
-   }
-
-   public cdh e() {
-      this.f = false;
-      return this;
-   }
-
-   public cdh a(@Nullable Predicate<bsq> $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public boolean a(@Nullable bsq $$0, bsq $$1) {
-      if ($$0 == $$1) {
-         return false;
-      } else if (!$$1.eu()) {
-         return false;
-      } else if (this.g != null && !this.g.test($$1)) {
-         return false;
-      } else {
-         if ($$0 == null) {
-            if (this.c && (!$$1.et() || $$1.dP().ak() == bpt.a)) {
-               return false;
-            }
-         } else {
-            if (this.c && (!$$0.c($$1) || !$$0.a($$1.ak()) || $$0.s($$1))) {
-               return false;
-            }
-
-            if (this.d > 0.0) {
-               double $$2 = this.f ? $$1.B($$0) : 1.0;
-               double $$3 = Math.max(this.d * $$2, 2.0);
-               double $$4 = $$0.i($$1.du(), $$1.dw(), $$1.dA());
-               if ($$4 > $$3 * $$3) {
-                  return false;
-               }
-            }
-
-            if (this.e && $$0 instanceof bss $$5 && !$$5.M().a($$1)) {
-               return false;
+      for (btk $$7 : $$6.b($$0x -> !$$0x.p_() && ($$0x instanceof cli || $$0x instanceof clc))) {
+         if ($$7 instanceof cli $$8) {
+            $$4++;
+            if ($$3.isEmpty()) {
+               $$3 = Optional.of($$8);
             }
          }
 
-         return true;
+         if ($$7 instanceof clc $$9) {
+            $$5.add($$9);
+         }
       }
+
+      $$2.a(cco.aq, $$3);
+      $$2.a(cco.ap, $$5);
+      $$2.a(cco.as, $$4);
+      $$2.a(cco.at, $$5.size());
+   }
+
+   private Optional<iz> b(arb $$0, clc $$1) {
+      return iz.a($$1.dp(), 8, 4, $$1x -> $$0.a_($$1x).a(awl.aS));
    }
 }

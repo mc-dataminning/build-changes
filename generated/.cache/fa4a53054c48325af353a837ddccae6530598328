@@ -1,4 +1,4 @@
-// 24w14a	2026-08-28T01:57:19.7024284	vanilla/Tags for minecraft:item
+// 1.20.5 Pre-Release 1	2026-08-28T01:59:51.5627442	vanilla/Tags for minecraft:item
 71180030d3ebe73ed7aa07473fb200e0aa359909 data\minecraft\tags\items\candles.json
 a91a14b0d844c2e8beb882a51072178e0667620c data\minecraft\tags\items\jungle_logs.json
 3e070569b31d1100ac334efd44a58e52df25df1a data\minecraft\tags\items\flowers.json
@@ -7,9 +7,9 @@ a91a14b0d844c2e8beb882a51072178e0667620c data\minecraft\tags\items\jungle_logs.j
 f44e286dddebca1577f70e0e424c3109c07170fb data\minecraft\tags\items\piglin_loved.json
 5271e7aa01a851b891fdc27fcc241414309798ee data\minecraft\tags\items\chest_armor.json
 04f7aade1edcb69408b1861c72ede4c545c3a679 data\minecraft\tags\items\rabbit_food.json
-4b636e8a202b80de17ec8352bba191763ed63d3c data\minecraft\tags\items\wooden_doors.json
-e85d473045cf55c6f706798af73a74b69875c186 data\minecraft\tags\items\smelts_to_glass.json
 3970b76be7ae4036da7a0d208370acfa1fc1577c data\minecraft\tags\items\birch_logs.json
+e85d473045cf55c6f706798af73a74b69875c186 data\minecraft\tags\items\smelts_to_glass.json
+4b636e8a202b80de17ec8352bba191763ed63d3c data\minecraft\tags\items\wooden_doors.json
 d8a8fe4018317922c6d197d313209eabe908ea8b data\minecraft\tags\items\strider_food.json
 b7d959a4eef7bbd9e6ce12e26764c3931088f42c data\minecraft\tags\items\wooden_buttons.json
 f7dd3e320c8b36c050a15a1d9c4a4413778f527d data\minecraft\tags\items\enchantable\weapon.json
@@ -46,8 +46,8 @@ b197c522c5d1bf863432ab04a9c9b18fa9e8ced7 data\minecraft\tags\items\axolotl_food.
 c998cf5cbc50fe6ebff96350e415e3db67a94c6b data\minecraft\tags\items\wooden_pressure_plates.json
 1b50a67efc31f461ce0bca94ec806cbf528412db data\minecraft\tags\items\coal_ores.json
 02dfdb41688ccea8169a8d046943461f0aa3c361 data\minecraft\tags\items\fox_food.json
-49fc3802397b9999fbbc71f9d4e9c1962cab6506 data\minecraft\tags\items\anvil.json
 af26b6f8afbcb74c6e990850cb8baf45137075f4 data\minecraft\tags\items\dirt.json
+49fc3802397b9999fbbc71f9d4e9c1962cab6506 data\minecraft\tags\items\anvil.json
 5671028f6cec1b1c772da1cd507313c31a738ac7 data\minecraft\tags\items\dampens_vibrations.json
 885d31455883795cf973f9a3096f1094799602bd data\minecraft\tags\items\pickaxes.json
 4945b995a6277b3529e7ea8b445e7562b8f3b096 data\minecraft\tags\items\strider_tempt_items.json
@@ -59,7 +59,7 @@ cefc090b8dcff422ad66b2068860ce1910cbc9b2 data\minecraft\tags\items\boats.json
 a62188adba8d65fe5971b95f4c552a1072086c31 data\minecraft\tags\items\parrot_poisonous_food.json
 1b34690c952fb0cae947d85b752e19a7a83a453b data\minecraft\tags\items\oak_logs.json
 e70ae23a62e7115f4464da721e870e8809abffb9 data\minecraft\tags\items\creeper_drop_music_discs.json
-b659daa5aa6d07472c8191c9548c70e2239d56ac data\minecraft\tags\items\breaks_decorated_pots.json
+3d861f3f7b192d7388d7788c3d0e59e3a871aa37 data\minecraft\tags\items\breaks_decorated_pots.json
 4b41342be611564da2a2009e3322c8fd08f20cdd data\minecraft\tags\items\warped_stems.json
 7e52d9f1e5b59cae0cac0f1095fd3cbe94be375f data\minecraft\tags\items\enchantable\foot_armor.json
 ddddcd9ef8cd706876a4c5b9fb1bb011516a430c data\minecraft\tags\items\enchantable\sharp_weapon.json
@@ -70,16 +70,16 @@ a6c8bad401aae8576742844c87f1b8717cf253b7 data\minecraft\tags\items\noteblock_top
 7e7d3420a52ab3a414f357e405493da7fd6434ad data\minecraft\tags\items\chest_boats.json
 31855d768b20e56a7ad007279733d27e91becc21 data\minecraft\tags\items\dark_oak_logs.json
 f8fefc25b1df4fbf75b2f1db5237ce04d2d50cc1 data\minecraft\tags\items\parrot_food.json
-5a1da22b7562d3101cd95b2874ef21e709215ca8 data\minecraft\tags\items\beds.json
 f28dc9f2c7d071fef84fb760a59427d564938731 data\minecraft\tags\items\diamond_ores.json
+5a1da22b7562d3101cd95b2874ef21e709215ca8 data\minecraft\tags\items\beds.json
 a72c613d8786fc7756573ffec9c22f7ed2973d9e data\minecraft\tags\items\bee_food.json
 3c14928ee4a5428a0856e205485230539f706d8f data\minecraft\tags\items\enchantable\fishing.json
 49731163f40c037fed63e50ebb86dc7fd3d2722b data\minecraft\tags\items\sniffer_food.json
 50e13739c5004ff1f5177fb29ecff7b5d3d45cd3 data\minecraft\tags\items\coals.json
 913bc5c31b098eada6b776a32e560c19f9515e61 data\minecraft\tags\items\emerald_ores.json
 555cdf03117de10eb8274ffe28d2304a4d7bfb9f data\minecraft\tags\items\shovels.json
-5338100e594200c9c08cc4228d31ae3b14f5bdd1 data\minecraft\tags\items\buttons.json
 d795677dfa226e3d5f7f602fd7e9d9e7a55ee61b data\minecraft\tags\items\small_flowers.json
+5338100e594200c9c08cc4228d31ae3b14f5bdd1 data\minecraft\tags\items\buttons.json
 4b5f3ef91668afe7be45b3949ecab5d666d7977f data\minecraft\tags\items\completes_find_tree_tutorial.json
 daec9f32b34c685d972f66ea58ffc7ef3fc977a5 data\minecraft\tags\items\wooden_fences.json
 6c13071b28cffd16efe3749222d1cff2c381dec7 data\minecraft\tags\items\enchantable\fire_aspect.json
@@ -140,7 +140,6 @@ d65ccc0a76745b7ae2fa8d612eaee0cab59052e9 data\minecraft\tags\items\fishes.json
 e6756cdd6fb03cf772eba210ae3f93335e83dcd6 data\minecraft\tags\items\enchantable\sword.json
 a29ec90520f525468f28a70148124fd85ce81a1a data\minecraft\tags\items\wooden_stairs.json
 4ab2fe5a762b59023e074a73499c0195dc4fb1c4 data\minecraft\tags\items\trimmable_armor.json
-3d861f3f7b192d7388d7788c3d0e59e3a871aa37 data\minecraft\tags\items\tools.json
 84fbe775bf2e331dd6e0083cbaca1bc8aa63a5f0 data\minecraft\tags\items\cat_food.json
 090e10929cf921bcfe7ca9e263679610ff359335 data\minecraft\tags\items\wart_blocks.json
 ac0578d1426dddb5cb5128f42b583b2992367b68 data\minecraft\tags\items\enchantable\durability.json

@@ -1,104 +1,53 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
 import java.util.List;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.util.freetype.FT_Face;
-import org.lwjgl.util.freetype.FreeType;
 
-public record fjf(akn c, float d, float e, fjf.a f, String g) implements fjc {
-   private static final Codec<String> h = Codec.withAlternative(Codec.STRING, Codec.STRING.listOf(), $$0 -> String.join("", $$0));
-   public static final MapCodec<fjf> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               akn.a.fieldOf("file").forGetter(fjf::c),
-               Codec.FLOAT.optionalFieldOf("size", 11.0F).forGetter(fjf::d),
-               Codec.FLOAT.optionalFieldOf("oversample", 1.0F).forGetter(fjf::e),
-               fjf.a.b.optionalFieldOf("shift", fjf.a.a).forGetter(fjf::f),
-               h.optionalFieldOf("skip", "").forGetter(fjf::g)
-            )
-            .apply($$0, fjf::new)
-   );
+public class fjf implements fji {
+   private static final alb d = new alb("toast/advancement");
+   public static final int a = 5000;
+   private final af e;
+   private boolean f;
 
-   @Override
-   public fjd a() {
-      return fjd.b;
+   public fjf(af $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public Either<fjc.b, fjc.c> b() {
-      return Either.left(this::a);
-   }
+   public fji.a a(fgm $$0, fjj $$1, long $$2) {
+      ar $$3 = this.e.b().c().orElse(null);
+      $$0.a(d, 0, 0, this.a(), this.b());
+      if ($$3 != null) {
+         List<ayg> $$4 = $$1.b().h.c($$3.a(), 125);
+         int $$5 = $$3.e() == al.b ? 16746751 : 16776960;
+         if ($$4.size() == 1) {
+            $$0.a($$1.b().h, $$3.e().b(), 30, 7, $$5 | 0xFF000000, false);
+            $$0.a($$1.b().h, $$4.get(0), 30, 18, -1, false);
+         } else {
+            int $$6 = 1500;
+            float $$7 = 300.0F;
+            if ($$2 < 1500L) {
+               int $$8 = ayu.d(ayu.a((float)(1500L - $$2) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
+               $$0.a($$1.b().h, $$3.e().b(), 30, 11, $$5 | $$8, false);
+            } else {
+               int $$9 = ayu.d(ayu.a((float)($$2 - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
+               int $$10 = this.b() / 2 - $$4.size() * 9 / 2;
 
-   private ewx a(atx $$0) throws IOException {
-      FT_Face $$1 = null;
-      ByteBuffer $$2 = null;
-
-      try {
-         exa var14;
-         try (InputStream $$3 = $$0.open(this.c.d("font/"))) {
-            $$2 = TextureUtil.readResource($$3);
-            $$2.flip();
-            MemoryStack $$4 = MemoryStack.stackPush();
-
-            try {
-               PointerBuffer $$5 = $$4.mallocPointer(1);
-               fjb.a(FreeType.FT_New_Memory_Face(fjb.a(), $$2, 0L, $$5), "Initializing font face");
-               $$1 = FT_Face.create($$5.get());
-            } catch (Throwable var10) {
-               if ($$4 != null) {
-                  try {
-                     $$4.close();
-                  } catch (Throwable var9) {
-                     var10.addSuppressed(var9);
-                  }
+               for (ayg $$11 : $$4) {
+                  $$0.a($$1.b().h, $$11, 30, $$10, 16777215 | $$9, false);
+                  $$10 += 9;
                }
-
-               throw var10;
             }
-
-            if ($$4 != null) {
-               $$4.close();
-            }
-
-            String $$6 = FreeType.FT_Get_Font_Format($$1);
-            if (!"TrueType".equals($$6)) {
-               throw new IOException("Font is not in TTF format, was " + $$6);
-            }
-
-            fjb.a(FreeType.FT_Select_Charmap($$1, FreeType.FT_ENCODING_UNICODE), "Find unicode charmap");
-            var14 = new exa($$2, $$1, this.d, this.e, this.f.c, this.f.d, this.g);
          }
 
-         return var14;
-      } catch (Exception var12) {
-         if ($$1 != null) {
-            FreeType.FT_Done_Face($$1);
+         if (!this.f && $$2 > 0L) {
+            this.f = true;
+            if ($$3.e() == al.b) {
+               $$1.b().aj().a(gsd.a(avw.Au, 1.0F, 1.0F));
+            }
          }
 
-         MemoryUtil.memFree($$2);
-         throw var12;
-      }
-   }
-
-   public static record a(float c, float d) {
-      public static final fjf.a a = new fjf.a(0.0F, 0.0F);
-      public static final Codec<fjf.a> b = Codec.FLOAT
-         .listOf()
-         .comapFlatMap($$0 -> ac.a($$0, 2).map($$0x -> new fjf.a((Float)$$0x.get(0), (Float)$$0x.get(1))), $$0 -> List.of($$0.c, $$0.d));
-
-      public float a() {
-         return this.c;
-      }
-
-      public float b() {
-         return this.d;
+         $$0.b($$3.c(), 8, 8);
+         return (double)$$2 >= 5000.0 * $$1.c() ? fji.a.b : fji.a.a;
+      } else {
+         return fji.a.b;
       }
    }
 }

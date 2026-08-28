@@ -1,63 +1,113 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Charsets;
-import com.google.common.hash.HashFunction;
-import com.google.common.hash.Hashing;
-import com.google.common.primitives.Longs;
-import java.util.concurrent.atomic.AtomicLong;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Stream;
 
-public final class dxk {
-   public static final long a = -7046029254386353131L;
-   public static final long b = 7640891576956012809L;
-   private static final HashFunction c = Hashing.md5();
-   private static final AtomicLong d = new AtomicLong(8682522807148012L);
+public class dxk extends dtu {
+   public static final MapCodec<dxk> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(egi.a.fieldOf("settings").forGetter(dxk::g)).apply($$0, $$0.stable(dxk::new))
+   );
+   private final egi d;
 
-   @VisibleForTesting
-   public static long a(long $$0) {
-      $$0 = ($$0 ^ $$0 >>> 30) * -4658895280553007687L;
-      $$0 = ($$0 ^ $$0 >>> 27) * -7723592293110705685L;
-      return $$0 ^ $$0 >>> 31;
+   public dxk(egi $$0) {
+      super(new ddd($$0.d()), ac.b($$0::a));
+      this.d = $$0;
    }
 
-   public static dxk.a b(long $$0) {
-      long $$1 = $$0 ^ 7640891576956012809L;
-      long $$2 = $$1 + -7046029254386353131L;
-      return new dxk.a($$1, $$2);
+   @Override
+   public dtv a(jk<eil> $$0, dyd $$1, long $$2) {
+      Stream<ji<eil>> $$3 = this.d.c().map(jm::a).orElseGet(() -> $$0.b().map($$0xx -> $$0xx));
+      return dtv.a($$1, $$2, this.b, $$3);
    }
 
-   public static dxk.a c(long $$0) {
-      return b($$0).a();
+   @Override
+   protected MapCodec<? extends dtu> a() {
+      return c;
    }
 
-   public static dxk.a a(String $$0) {
-      byte[] $$1 = c.hashString($$0, Charsets.UTF_8).asBytes();
-      long $$2 = Longs.fromBytes($$1[0], $$1[1], $$1[2], $$1[3], $$1[4], $$1[5], $$1[6], $$1[7]);
-      long $$3 = Longs.fromBytes($$1[8], $$1[9], $$1[10], $$1[11], $$1[12], $$1[13], $$1[14], $$1[15]);
-      return new dxk.a($$2, $$3);
+   public egi g() {
+      return this.d;
    }
 
-   public static long a() {
-      return d.updateAndGet($$0 -> $$0 * 1181783497276652981L) ^ System.nanoTime();
+   @Override
+   public void a(ari $$0, dcm $$1, dyd $$2, dtt $$3) {
    }
 
-   public static record a(long a, long b) {
-      public dxk.a a(long $$0, long $$1) {
-         return new dxk.a(this.a ^ $$0, this.b ^ $$1);
+   @Override
+   public int a(dbv $$0) {
+      return $$0.I_() + Math.min($$0.J_(), this.d.f().size());
+   }
+
+   @Override
+   public CompletableFuture<dtt> a(Executor $$0, dyr $$1, dyd $$2, dcm $$3, dtt $$4) {
+      List<drx> $$5 = this.d.f();
+      iz.a $$6 = new iz.a();
+      dxp $$7 = $$4.a(dxp.a.c);
+      dxp $$8 = $$4.a(dxp.a.a);
+
+      for (int $$9 = 0; $$9 < Math.min($$4.J_(), $$5.size()); $$9++) {
+         drx $$10 = $$5.get($$9);
+         if ($$10 != null) {
+            int $$11 = $$4.I_() + $$9;
+
+            for (int $$12 = 0; $$12 < 16; $$12++) {
+               for (int $$13 = 0; $$13 < 16; $$13++) {
+                  $$4.a($$6.d($$12, $$11, $$13), $$10, false);
+                  $$7.a($$12, $$11, $$13, $$10);
+                  $$8.a($$12, $$11, $$13, $$10);
+               }
+            }
+         }
       }
 
-      public dxk.a a(dxk.a $$0) {
-         return this.a($$0.a, $$0.b);
+      return CompletableFuture.completedFuture($$4);
+   }
+
+   @Override
+   public int a(int $$0, int $$1, dxp.a $$2, dbv $$3, dyd $$4) {
+      List<drx> $$5 = this.d.f();
+
+      for (int $$6 = Math.min($$5.size(), $$3.am()) - 1; $$6 >= 0; $$6--) {
+         drx $$7 = $$5.get($$6);
+         if ($$7 != null && $$2.e().test($$7)) {
+            return $$3.I_() + $$6 + 1;
+         }
       }
 
-      public dxk.a a() {
-         return new dxk.a(dxk.a(this.a), dxk.a(this.b));
-      }
+      return $$3.I_();
+   }
 
-      public long b() {
-         return this.a;
-      }
+   @Override
+   public dcf a(int $$0, int $$1, dbv $$2, dyd $$3) {
+      return new dcf($$2.I_(), this.d.f().stream().limit((long)$$2.J_()).map($$0x -> $$0x == null ? dew.a.n() : $$0x).toArray(drx[]::new));
+   }
 
-      public long c() {
-         return this.b;
-      }
+   @Override
+   public void a(List<String> $$0, dyd $$1, iz $$2) {
+   }
+
+   @Override
+   public void a(ari $$0, long $$1, dyd $$2, dcu $$3, dcm $$4, dtt $$5, dxl.a $$6) {
+   }
+
+   @Override
+   public void a(ari $$0) {
+   }
+
+   @Override
+   public int f() {
+      return 0;
+   }
+
+   @Override
+   public int d() {
+      return 384;
+   }
+
+   @Override
+   public int e() {
+      return -63;
    }
 }

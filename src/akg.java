@@ -1,33 +1,23 @@
-import java.util.List;
-import java.util.Map;
-
-public class akg {
-   private final String a;
-   private final String b;
-
-   public akg(String $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public record akg<T>(int a, akh<T> b) {
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         akg<?> $$1 = (akg<?>)$$0;
+         return this.a == $$1.a;
+      } else {
+         return false;
+      }
    }
 
-   public static akg a(String $$0) {
-      return new akg($$0, ".json");
+   @Override
+   public int hashCode() {
+      return this.a;
    }
 
-   public akn a(akn $$0) {
-      return $$0.c(this.a + "/" + $$0.a() + this.b);
-   }
-
-   public akn b(akn $$0) {
-      String $$1 = $$0.a();
-      return $$0.c($$1.substring(this.a.length() + 1, $$1.length() - this.b.length()));
-   }
-
-   public Map<akn, atv> a(atx $$0) {
-      return $$0.b(this.a, $$0x -> $$0x.a().endsWith(this.b));
-   }
-
-   public Map<akn, List<atv>> b(atx $$0) {
-      return $$0.c(this.a, $$0x -> $$0x.a().endsWith(this.b));
+   @Override
+   public String toString() {
+      return "<entity data: " + this.a + ">";
    }
 }

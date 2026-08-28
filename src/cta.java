@@ -1,14 +1,16 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class cta extends cro {
-   public cta(dea $$0, ctl.a $$1) {
-      super($$0, $$1);
+public class cta extends cuf {
+   public cta(cuf.a $$0) {
+      super($$0);
    }
 
-   @Nullable
    @Override
-   protected drd c(cxb $$0) {
-      cly $$1 = $$0.o();
-      return $$1 != null && !$$1.gz() ? null : super.c($$0);
+   public void a(cuk $$0, cuf.b $$1, List<xl> $$2, cwd $$3) {
+      $$2.add(this.c().a(n.h));
+   }
+
+   public xz c() {
+      return xl.c(this.a() + ".desc");
    }
 }

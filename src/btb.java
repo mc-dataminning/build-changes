@@ -1,13 +1,46 @@
-public interface btb extends bta {
-   void b(int var1);
+public abstract class btb extends btm {
+   protected btb(bsv<? extends btb> $$0, dbt $$1) {
+      super($$0, $$1);
+   }
 
-   boolean a();
+   @Override
+   protected void a(double $$0, boolean $$1, drx $$2, iz $$3) {
+   }
 
-   void c(int var1);
+   @Override
+   public void a(evm $$0) {
+      if (this.da()) {
+         if (this.be()) {
+            this.a(0.02F, $$0);
+            this.a(btp.a, this.ds());
+            this.h(this.ds().a(0.8F));
+         } else if (this.bs()) {
+            this.a(0.02F, $$0);
+            this.a(btp.a, this.ds());
+            this.h(this.ds().a(0.5));
+         } else {
+            float $$1 = 0.91F;
+            if (this.aE()) {
+               $$1 = this.dP().a_(this.aK()).b().h() * 0.91F;
+            }
 
-   void b();
+            float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
+            $$1 = 0.91F;
+            if (this.aE()) {
+               $$1 = this.dP().a_(this.aK()).b().h() * 0.91F;
+            }
 
-   default int c() {
-      return 0;
+            this.a(this.aE() ? 0.1F * $$2 : 0.02F, $$0);
+            this.a(btp.a, this.ds());
+            this.h(this.ds().a((double)$$1));
+         }
+      }
+
+      this.r(false);
+   }
+
+   @Override
+   public boolean q_() {
+      return false;
    }
 }

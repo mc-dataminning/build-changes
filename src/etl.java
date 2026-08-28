@@ -1,48 +1,45 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import java.util.Optional;
 
-public record etl(akn b, ew.g c) implements eti {
+public record etl(Optional<dc> b, iz c) implements etn {
+   private static final MapCodec<iz> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.INT.optionalFieldOf("offsetX", 0).forGetter(kd::u),
+               Codec.INT.optionalFieldOf("offsetY", 0).forGetter(kd::v),
+               Codec.INT.optionalFieldOf("offsetZ", 0).forGetter(kd::w)
+            )
+            .apply($$0, iz::new)
+   );
    public static final MapCodec<etl> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(akn.a.fieldOf("storage").forGetter(etl::c), ew.g.a.fieldOf("path").forGetter(etl::d)).apply($$0, etl::new)
+      $$0 -> $$0.group(dc.a.optionalFieldOf("predicate").forGetter(etl::c), d.forGetter(etl::d)).apply($$0, etl::new)
    );
 
    @Override
-   public eth b() {
-      return etj.f;
+   public eto b() {
+      return etp.p;
    }
 
-   private Optional<ut> c(eph $$0) {
-      ud $$1 = $$0.d().o().aL().a(this.b);
-
-      try {
-         List<va> $$2 = this.c.a($$1);
-         if ($$2.size() == 1 && $$2.get(0) instanceof ut $$3) {
-            return Optional.of($$3);
-         }
-      } catch (CommandSyntaxException var6) {
-      }
-
-      return Optional.empty();
+   public boolean a(eqd $$0) {
+      evm $$1 = $$0.c(esz.f);
+      return $$1 != null
+         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
    }
 
-   @Override
-   public float b(eph $$0) {
-      return this.c($$0).map(ut::k).orElse(0.0F);
+   public static etn.a a(dc.a $$0) {
+      return () -> new etl(Optional.of($$0.b()), iz.c);
    }
 
-   @Override
-   public int a(eph $$0) {
-      return this.c($$0).map(ut::g).orElse(0);
+   public static etn.a a(dc.a $$0, iz $$1) {
+      return () -> new etl(Optional.of($$0.b()), $$1);
    }
 
-   public akn c() {
+   public Optional<dc> c() {
       return this.b;
    }
 
-   public ew.g d() {
+   public iz d() {
       return this.c;
    }
 }

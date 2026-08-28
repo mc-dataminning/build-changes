@@ -1,22 +1,20 @@
-public class cvg extends ctl {
-   private final cvf a;
-
-   public cvg(cvf $$0, ctl.a $$1) {
-      super($$1.b($$0.a()));
-      this.a = $$0;
-   }
-
-   public cvf h() {
-      return this.a;
+public class cvg extends cuf {
+   public cvg(cuf.a $$0) {
+      super($$0);
    }
 
    @Override
-   public int g() {
-      return this.a.e();
-   }
+   public bqp a(cuk $$0, cms $$1, btk $$2, bqo $$3) {
+      if ($$2 instanceof bua $$4 && $$2.bD() && !$$4.i() && $$4.f()) {
+         if (!$$1.dP().B) {
+            $$4.a(avx.g);
+            $$2.dP().a($$2, dwq.v, $$2.dn());
+            $$0.h(1);
+         }
 
-   @Override
-   public boolean a(ctq $$0, ctq $$1) {
-      return this.a.f().a($$1) || super.a($$0, $$1);
+         return bqp.a($$1.dP().B);
+      }
+
+      return bqp.e;
    }
 }

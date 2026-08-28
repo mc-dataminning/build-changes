@@ -1,11 +1,11 @@
-public class gky extends giz<cjw, ftg<cjw>> {
-   private static final akn a = new akn("textures/entity/hoglin/zoglin.png");
+public class gky extends ghr<cnq> {
+   public static final alb a = new alb("textures/entity/projectiles/spectral_arrow.png");
 
-   public gky(ght.a $$0) {
-      super($$0, new ftg<>($$0.a(fvv.ce)), 0.7F);
+   public gky(gis.a $$0) {
+      super($$0);
    }
 
-   public akn a(cjw $$0) {
+   public alb a(cnq $$0) {
       return a;
    }
 }

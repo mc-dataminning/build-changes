@@ -1,64 +1,69 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class eqb extends epq {
-   public static final MapCodec<eqb> a = a(eqb::new);
-
-   eqb(List<epx> $$0, List<esn> $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   public epy a() {
-      return epv.h;
-   }
-
-   @Override
-   protected epp a(List<? extends epp> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (epp)$$0.get(0);
-         case 2 -> $$0.get(0).and($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (epp $$3 : $$0) {
-            if (!$$3.expand($$1, $$2)) {
-               return false;
-            }
-         }
-
-         return true;
-      };
-      };
-   }
-
-   public static eqb.a a(epx.a<?>... $$0) {
-      return new eqb.a($$0);
-   }
-
-   public static class a extends epx.a<eqb.a> {
-      private final Builder<epx> a = ImmutableList.builder();
-
-      public a(epx.a<?>... $$0) {
-         for (epx.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
-
-      protected eqb.a a() {
-         return this;
-      }
-
+public interface eqb {
+   eqa<cxg> a = new eqa<cxg>() {
       @Override
-      public eqb.a c(epx.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
+      public kl<cxg> a() {
+         return km.Z;
       }
 
-      @Override
-      public epx b() {
-         return new eqb(this.a.build(), this.f());
+      public Stream<cuk> a(cxg $$0) {
+         return $$0.b();
       }
-   }
+
+      public cxg c() {
+         return cxg.a;
+      }
+
+      public cxg a(cxg $$0, Stream<cuk> $$1) {
+         return cxg.a($$1.toList());
+      }
+   };
+   eqa<cwx> b = new eqa<cwx>() {
+      @Override
+      public kl<cwx> a() {
+         return km.E;
+      }
+
+      public cwx c() {
+         return cwx.a;
+      }
+
+      public Stream<cuk> a(cwx $$0) {
+         return $$0.a();
+      }
+
+      public cwx a(cwx $$0, Stream<cuk> $$1) {
+         cwx.a $$2 = new cwx.a($$0).a();
+         $$1.forEach($$2::a);
+         return $$2.d();
+      }
+   };
+   eqa<cwy> c = new eqa<cwy>() {
+      @Override
+      public kl<cwy> a() {
+         return km.D;
+      }
+
+      public cwy c() {
+         return cwy.a;
+      }
+
+      public Stream<cuk> a(cwy $$0) {
+         return $$0.a().stream();
+      }
+
+      public cwy a(cwy $$0, Stream<cuk> $$1) {
+         return cwy.a($$1.toList());
+      }
+   };
+   Map<kl<?>, eqa<?>> d = Stream.of(a, b, c).collect(Collectors.toMap(eqa::a, $$0 -> (eqa<?>)$$0));
+   Codec<eqa<?>> e = lp.as.q().comapFlatMap($$0 -> {
+      eqa<?> $$1 = d.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No items in component");
+   }, eqa::a);
 }

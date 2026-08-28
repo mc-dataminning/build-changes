@@ -1,174 +1,159 @@
-import com.google.common.annotations.VisibleForTesting;
-import javax.annotation.Nullable;
+public class dpj extends dqh implements dqf {
+   private static final int d = 1;
+   private jr<cuk> e = jr.a(27, cuk.l);
+   private final dpp f = new dpp() {
+      @Override
+      protected void a(dbt $$0, iz $$1, drx $$2) {
+         dpj.a($$0, $$1, $$2, avw.eQ);
+      }
 
-public class dpj extends doi implements bpn, evx.a {
-   private static final int b = 20;
-   private ctq c = ctq.i;
-   private int d;
-   private long e;
-   private long f;
-   private boolean g;
+      @Override
+      protected void b(dbt $$0, iz $$1, drx $$2) {
+         dpj.a($$0, $$1, $$2, avw.eO);
+      }
 
-   public dpj(io $$0, drd $$1) {
-      super(dok.e, $$0, $$1);
+      @Override
+      protected void a(dbt $$0, iz $$1, drx $$2, int $$3, int $$4) {
+         dpj.this.a($$0, $$1, $$2, $$3, $$4);
+      }
+
+      @Override
+      protected boolean a(cms $$0) {
+         if (!($$0.cb instanceof cpw)) {
+            return false;
+         } else {
+            bqi $$1 = ((cpw)$$0.cb).l();
+            return $$1 == dpj.this || $$1 instanceof bqh && ((bqh)$$1).a(dpj.this);
+         }
+      }
+   };
+   private final dpk g = new dpk();
+
+   protected dpj(dpe<?> $$0, iz $$1, drx $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   public dpj(iz $$0, drx $$1) {
+      this(dpe.b, $$0, $$1);
    }
 
    @Override
-   protected void a(ud $$0, iz.a $$1) {
+   public int b() {
+      return 27;
+   }
+
+   @Override
+   protected xl k() {
+      return xl.c("container.chest");
+   }
+
+   @Override
+   protected void a(ur $$0, jk.a $$1) {
       super.a($$0, $$1);
-      if ($$0.b("RecordItem", 10)) {
-         this.c = ctq.a($$1, (va)$$0.p("RecordItem")).orElse(ctq.i);
-      } else {
-         this.c = ctq.i;
+      this.e = jr.a(this.b(), cuk.l);
+      if (!this.a_($$0)) {
+         bqj.b($$0, this.e, $$1);
       }
-
-      this.g = $$0.q("IsPlaying");
-      this.f = $$0.i("RecordStartTick");
-      this.e = $$0.i("TickCount");
    }
 
    @Override
-   protected void b(ud $$0, iz.a $$1) {
+   protected void b(ur $$0, jk.a $$1) {
       super.b($$0, $$1);
-      if (!this.f().e()) {
-         $$0.a("RecordItem", this.f().a($$1));
-      }
-
-      $$0.a("IsPlaying", this.g);
-      $$0.a("RecordStartTick", this.f);
-      $$0.a("TickCount", this.e);
-   }
-
-   public boolean j() {
-      return !this.f().e() && this.g;
-   }
-
-   private void a(@Nullable brw $$0, boolean $$1) {
-      if (this.n.a_(this.aA_()) == this.n()) {
-         this.n.a(this.aA_(), this.n().a(did.b, Boolean.valueOf($$1)), 2);
-         this.n.a(dvw.c, this.aA_(), dvw.a.a($$0, this.n()));
+      if (!this.b_($$0)) {
+         bqj.a($$0, this.e, $$1);
       }
    }
 
-   @VisibleForTesting
-   public void k() {
-      this.f = this.e;
-      this.g = true;
-      this.n.a(this.aA_(), this.n().b());
-      this.n.a(null, 1010, this.aA_(), ctl.a(this.f().g()));
-      this.e();
+   public static void a(dbt $$0, iz $$1, drx $$2, dpj $$3) {
+      $$3.g.a();
    }
 
-   private void u() {
-      this.g = false;
-      this.n.a(dvw.F, this.aA_(), dvw.a.a(this.n()));
-      this.n.a(this.aA_(), this.n().b());
-      this.n.c(1011, this.aA_(), 0);
-      this.e();
+   static void a(dbt $$0, iz $$1, drx $$2, avv $$3) {
+      dsp $$4 = $$2.c(dfx.d);
+      if ($$4 != dsp.b) {
+         double $$5 = (double)$$1.u() + 0.5;
+         double $$6 = (double)$$1.v() + 0.5;
+         double $$7 = (double)$$1.w() + 0.5;
+         if ($$4 == dsp.c) {
+            je $$8 = dfx.h($$2);
+            $$5 += (double)$$8.j() * 0.5;
+            $$7 += (double)$$8.l() * 0.5;
+         }
+
+         $$0.a(null, $$5, $$6, $$7, $$3, avx.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
+      }
    }
 
-   private void b(daz $$0, io $$1, drd $$2) {
-      this.d++;
-      if (this.j() && this.f().g() instanceof cul $$3) {
-         if (this.a($$3)) {
-            this.u();
-         } else if (this.w()) {
-            this.d = 0;
-            $$0.a(dvw.E, $$1, dvw.a.a($$2));
-            this.a($$0, $$1);
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.g.a($$1 > 0);
+         return true;
+      } else {
+         return super.a_($$0, $$1);
+      }
+   }
+
+   @Override
+   public void d_(cms $$0) {
+      if (!this.p && !$$0.N_()) {
+         this.f.a($$0, this.i(), this.aA_(), this.n());
+      }
+   }
+
+   @Override
+   public void c(cms $$0) {
+      if (!this.p && !$$0.N_()) {
+         this.f.b($$0, this.i(), this.aA_(), this.n());
+      }
+   }
+
+   @Override
+   protected jr<cuk> j() {
+      return this.e;
+   }
+
+   @Override
+   protected void a(jr<cuk> $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   public float a(float $$0) {
+      return this.g.a($$0);
+   }
+
+   public static int a(daz $$0, iz $$1) {
+      drx $$2 = $$0.a_($$1);
+      if ($$2.t()) {
+         dpc $$3 = $$0.c_($$1);
+         if ($$3 instanceof dpj) {
+            return ((dpj)$$3).f.a();
          }
       }
 
-      this.e++;
+      return 0;
    }
 
-   private boolean a(cul $$0) {
-      return this.e >= this.f + (long)$$0.m() + 20L;
-   }
-
-   private boolean w() {
-      return this.d >= 20;
-   }
-
-   @Override
-   public ctq f() {
-      return this.c;
+   public static void a(dpj $$0, dpj $$1) {
+      jr<cuk> $$2 = $$0.j();
+      $$0.a($$1.j());
+      $$1.a($$2);
    }
 
    @Override
-   public ctq c(int $$0) {
-      ctq $$1 = this.c;
-      this.c = ctq.i;
-      if (!$$1.e()) {
-         this.a(null, false);
-         this.u();
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public void b(ctq $$0) {
-      if ($$0.a(awf.aR) && this.n != null) {
-         this.c = $$0;
-         this.a(null, true);
-         this.k();
-      } else if ($$0.e()) {
-         this.c(1);
-      }
-   }
-
-   @Override
-   public int ai_() {
-      return 1;
-   }
-
-   @Override
-   public doi v() {
-      return this;
-   }
-
-   @Override
-   public boolean b(int $$0, ctq $$1) {
-      return $$1.a(awf.aR) && this.a($$0).e();
-   }
-
-   @Override
-   public boolean a(bpp $$0, int $$1, ctq $$2) {
-      return $$0.a_(ctq::e);
-   }
-
-   private void a(daz $$0, io $$1) {
-      if ($$0 instanceof aqn $$2) {
-         eum $$3 = eum.c($$1).b(0.0, 1.2F, 0.0);
-         float $$4 = (float)$$0.E_().a(4) / 24.0F;
-         $$2.a(ky.aa, $$3.a(), $$3.b(), $$3.c(), 0, (double)$$4, 0.0, 0.0, 1.0);
-      }
+   protected cpp a(int $$0, cmr $$1) {
+      return cpw.a($$0, $$1, this);
    }
 
    public void l() {
-      if (this.n != null && !this.n.B) {
-         io $$0 = this.aA_();
-         ctq $$1 = this.f();
-         if (!$$1.e()) {
-            this.h();
-            eum $$2 = eum.a($$0, 0.5, 1.01, 0.5).a(this.n.z, 0.7F);
-            ctq $$3 = $$1.s();
-            cii $$4 = new cii(this.n, $$2.a(), $$2.b(), $$2.c(), $$3);
-            $$4.v();
-            this.n.b($$4);
-         }
+      if (!this.p) {
+         this.f.c(this.i(), this.aA_(), this.n());
       }
    }
 
-   public static void a(daz $$0, io $$1, drd $$2, dpj $$3) {
-      $$3.b($$0, $$1, $$2);
-   }
-
-   @VisibleForTesting
-   public void c(ctq $$0) {
-      this.c = $$0;
-      this.n.a(this.aA_(), this.n().b());
-      this.e();
+   protected void a(dbt $$0, iz $$1, drx $$2, int $$3, int $$4) {
+      deu $$5 = $$2.b();
+      $$0.a($$1, $$5, 1, $$4);
    }
 }

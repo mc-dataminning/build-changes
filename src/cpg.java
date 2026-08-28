@@ -1,34 +1,97 @@
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
+import it.unimi.dsi.fastutil.HashCommon;
+import java.util.Arrays;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-public interface cpg {
-   cpg a = new cpg() {
-      @Override
-      public <T> Optional<T> a(BiFunction<daz, io, T> $$0) {
-         return Optional.empty();
+public final class cpg {
+   private static final cpg b = new cpg(null, 0L);
+   public static final int a = 64;
+   @Nullable
+   private final cph c;
+   private final long d;
+
+   private cpg(@Nullable cph $$0, long $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   static cpg a(cph $$0, Collection<cpe> $$1) {
+      if ($$1.isEmpty()) {
+         return b;
+      } else {
+         long $$2 = a($$0, 0L, $$1);
+         return new cpg($$0, $$2);
       }
-   };
+   }
 
-   static cpg a(final daz $$0, final io $$1) {
-      return new cpg() {
-         @Override
-         public <T> Optional<T> a(BiFunction<daz, io, T> $$0x) {
-            return Optional.of($$0.apply($$0, $$1));
+   public static cpg a() {
+      return b;
+   }
+
+   public static cpg a(cpe $$0) {
+      return new cpg($$0.a, $$0.b);
+   }
+
+   public static cpg a(cpe $$0, cpe... $$1) {
+      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
+      return new cpg($$0.a, $$2);
+   }
+
+   private static long a(cph $$0, long $$1, Iterable<cpe> $$2) {
+      for (cpe $$3 : $$2) {
+         if ($$0 != $$3.a) {
+            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
          }
-      };
+
+         $$1 |= $$3.b;
+      }
+
+      return $$1;
    }
 
-   <T> Optional<T> a(BiFunction<daz, io, T> var1);
-
-   default <T> T a(BiFunction<daz, io, T> $$0, T $$1) {
-      return this.a($$0).orElse($$1);
+   public boolean b(cpe $$0) {
+      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
    }
 
-   default void a(BiConsumer<daz, io> $$0) {
-      this.a(($$1, $$2) -> {
-         $$0.accept($$1, $$2);
-         return Optional.empty();
-      });
+   public boolean b() {
+      return this.equals(b);
+   }
+
+   public boolean a(cpg $$0) {
+      if (this.c == null) {
+         return true;
+      } else {
+         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
+      }
+   }
+
+   public cpg b(cpg $$0) {
+      if (this.c == null) {
+         return $$0;
+      } else if ($$0.c == null) {
+         return this;
+      } else if (this.c != $$0.c) {
+         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
+      } else {
+         return new cpg(this.c, this.d | $$0.d);
+      }
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof cpg $$1 && this.c == $$1.c && this.d == $$1.d) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return (int)HashCommon.mix(this.d);
    }
 }

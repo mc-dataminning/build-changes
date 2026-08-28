@@ -1,20 +1,29 @@
-import com.mojang.authlib.GameProfile;
-import io.netty.buffer.ByteBuf;
+public class aim implements zs<ags> {
+   public static final zj<wl, aim> a = zs.a(aim::a, aim::new);
+   private final bqo b;
 
-public record aim(GameProfile b) implements ze<aik> {
-   public static final yv<ByteBuf, aim> a = yt.t.a(aim::new, aim::b);
-
-   @Override
-   public zg<aim> a() {
-      return aiq.b;
+   public aim(bqo $$0) {
+      this.b = $$0;
    }
 
-   public void a(aik $$0) {
+   private aim(wl $$0) {
+      this.b = $$0.b(bqo.class);
+   }
+
+   private void a(wl $$0) {
+      $$0.a(this.b);
+   }
+
+   @Override
+   public zu<aim> a() {
+      return agq.ca;
+   }
+
+   public void a(ags $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public bqo b() {
+      return this.b;
    }
 }

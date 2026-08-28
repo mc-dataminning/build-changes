@@ -1,37 +1,93 @@
-public interface avz {
-   awm<bqr> a = a("damages_helmet");
-   awm<bqr> b = a("breeze_immune_to");
-   awm<bqr> c = a("bypasses_armor");
-   awm<bqr> d = a("bypasses_shield");
-   awm<bqr> e = a("bypasses_invulnerability");
-   awm<bqr> f = a("bypasses_cooldown");
-   awm<bqr> g = a("bypasses_effects");
-   awm<bqr> h = a("bypasses_resistance");
-   awm<bqr> i = a("bypasses_enchantments");
-   awm<bqr> j = a("is_fire");
-   awm<bqr> k = a("is_projectile");
-   awm<bqr> l = a("witch_resistant_to");
-   awm<bqr> m = a("is_explosion");
-   awm<bqr> n = a("is_fall");
-   awm<bqr> o = a("is_drowning");
-   awm<bqr> p = a("is_freezing");
-   awm<bqr> q = a("is_lightning");
-   awm<bqr> r = a("no_anger");
-   awm<bqr> s = a("no_impact");
-   awm<bqr> t = a("always_most_significant_fall");
-   awm<bqr> u = a("wither_immune_to");
-   awm<bqr> v = a("ignites_armor_stands");
-   awm<bqr> w = a("burns_armor_stands");
-   awm<bqr> x = a("avoids_guardian_thorns");
-   awm<bqr> y = a("always_triggers_silverfish");
-   awm<bqr> z = a("always_hurts_ender_dragons");
-   awm<bqr> A = a("no_knockback");
-   awm<bqr> B = a("always_kills_armor_stands");
-   awm<bqr> C = a("can_break_armor_stand");
-   awm<bqr> D = a("bypasses_wolf_armor");
-   awm<bqr> E = a("is_player_attack");
+import com.google.common.collect.Sets;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-   private static awm<bqr> a(String $$0) {
-      return awm.a(lf.s, new akn($$0));
+public class avz {
+   protected final Set<alb> a = Sets.newHashSet();
+   protected final Set<alb> b = Sets.newHashSet();
+   private final awa c = new awa();
+
+   public void a(avz $$0) {
+      this.a.clear();
+      this.b.clear();
+      this.c.a($$0.c);
+      this.a.addAll($$0.a);
+      this.b.addAll($$0.b);
+   }
+
+   public void a(cys<?> $$0) {
+      if (!$$0.b().ao_()) {
+         this.a($$0.a());
+      }
+   }
+
+   protected void a(alb $$0) {
+      this.a.add($$0);
+   }
+
+   public boolean b(@Nullable cys<?> $$0) {
+      return $$0 == null ? false : this.a.contains($$0.a());
+   }
+
+   public boolean b(alb $$0) {
+      return this.a.contains($$0);
+   }
+
+   public void c(cys<?> $$0) {
+      this.c($$0.a());
+   }
+
+   protected void c(alb $$0) {
+      this.a.remove($$0);
+      this.b.remove($$0);
+   }
+
+   public boolean d(cys<?> $$0) {
+      return this.b.contains($$0.a());
+   }
+
+   public void e(cys<?> $$0) {
+      this.b.remove($$0.a());
+   }
+
+   public void f(cys<?> $$0) {
+      this.d($$0.a());
+   }
+
+   protected void d(alb $$0) {
+      this.b.add($$0);
+   }
+
+   public boolean a(crd $$0) {
+      return this.c.a($$0);
+   }
+
+   public void a(crd $$0, boolean $$1) {
+      this.c.a($$0, $$1);
+   }
+
+   public boolean a(crc<?> $$0) {
+      return this.b($$0.t());
+   }
+
+   public boolean b(crd $$0) {
+      return this.c.b($$0);
+   }
+
+   public void b(crd $$0, boolean $$1) {
+      this.c.b($$0, $$1);
+   }
+
+   public void a(awa $$0) {
+      this.c.a($$0);
+   }
+
+   public awa a() {
+      return this.c.a();
+   }
+
+   public void a(crd $$0, boolean $$1, boolean $$2) {
+      this.c.a($$0, $$1);
+      this.c.b($$0, $$2);
    }
 }

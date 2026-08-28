@@ -1,468 +1,376 @@
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodType;
-import java.lang.invoke.MethodHandles.Lookup;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import java.nio.IntBuffer;
+import java.util.Collections;
+import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Objects;
-import java.util.OptionalInt;
-import java.util.function.BiFunction;
+import java.util.OptionalLong;
+import java.util.Set;
 import javax.annotation.Nullable;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWCharModsCallbackI;
-import org.lwjgl.glfw.GLFWCursorPosCallbackI;
-import org.lwjgl.glfw.GLFWDropCallbackI;
-import org.lwjgl.glfw.GLFWKeyCallbackI;
-import org.lwjgl.glfw.GLFWMouseButtonCallbackI;
-import org.lwjgl.glfw.GLFWScrollCallbackI;
+import org.lwjgl.openal.AL;
+import org.lwjgl.openal.AL10;
+import org.lwjgl.openal.ALC;
+import org.lwjgl.openal.ALC10;
+import org.lwjgl.openal.ALC11;
+import org.lwjgl.openal.ALCCapabilities;
+import org.lwjgl.openal.ALCapabilities;
+import org.lwjgl.openal.ALUtil;
+import org.lwjgl.openal.SOFTHRTF;
+import org.lwjgl.system.MemoryStack;
+import org.slf4j.Logger;
 
 public class exp {
+   static final Logger a = LogUtils.getLogger();
+   private static final int b = 0;
+   private static final int c = 30;
+   private long d;
+   private long e;
+   private boolean f;
    @Nullable
-   private static final MethodHandle bw;
-   private static final int bx;
-   public static final int a = 48;
-   public static final int b = 49;
-   public static final int c = 50;
-   public static final int d = 51;
-   public static final int e = 52;
-   public static final int f = 53;
-   public static final int g = 54;
-   public static final int h = 55;
-   public static final int i = 56;
-   public static final int j = 57;
-   public static final int k = 65;
-   public static final int l = 66;
-   public static final int m = 67;
-   public static final int n = 68;
-   public static final int o = 69;
-   public static final int p = 70;
-   public static final int q = 71;
-   public static final int r = 72;
-   public static final int s = 73;
-   public static final int t = 74;
-   public static final int u = 75;
-   public static final int v = 76;
-   public static final int w = 77;
-   public static final int x = 78;
-   public static final int y = 79;
-   public static final int z = 80;
-   public static final int A = 81;
-   public static final int B = 82;
-   public static final int C = 83;
-   public static final int D = 84;
-   public static final int E = 85;
-   public static final int F = 86;
-   public static final int G = 87;
-   public static final int H = 88;
-   public static final int I = 89;
-   public static final int J = 90;
-   public static final int K = 290;
-   public static final int L = 291;
-   public static final int M = 292;
-   public static final int N = 293;
-   public static final int O = 294;
-   public static final int P = 295;
-   public static final int Q = 296;
-   public static final int R = 297;
-   public static final int S = 298;
-   public static final int T = 299;
-   public static final int U = 300;
-   public static final int V = 301;
-   public static final int W = 302;
-   public static final int X = 303;
-   public static final int Y = 304;
-   public static final int Z = 305;
-   public static final int aa = 306;
-   public static final int ab = 307;
-   public static final int ac = 308;
-   public static final int ad = 309;
-   public static final int ae = 310;
-   public static final int af = 311;
-   public static final int ag = 312;
-   public static final int ah = 313;
-   public static final int ai = 314;
-   public static final int aj = 282;
-   public static final int ak = 320;
-   public static final int al = 321;
-   public static final int am = 322;
-   public static final int an = 323;
-   public static final int ao = 324;
-   public static final int ap = 325;
-   public static final int aq = 326;
-   public static final int ar = 327;
-   public static final int as = 328;
-   public static final int at = 329;
-   public static final int au = 330;
-   public static final int av = 335;
-   public static final int aw = 336;
-   public static final int ax = 264;
-   public static final int ay = 263;
-   public static final int az = 262;
-   public static final int aA = 265;
-   public static final int aB = 334;
-   public static final int aC = 39;
-   public static final int aD = 92;
-   public static final int aE = 44;
-   public static final int aF = 61;
-   public static final int aG = 96;
-   public static final int aH = 91;
-   public static final int aI = 45;
-   public static final int aJ = 332;
-   public static final int aK = 46;
-   public static final int aL = 93;
-   public static final int aM = 59;
-   public static final int aN = 47;
-   public static final int aO = 32;
-   public static final int aP = 258;
-   public static final int aQ = 342;
-   public static final int aR = 341;
-   public static final int aS = 340;
-   public static final int aT = 343;
-   public static final int aU = 346;
-   public static final int aV = 345;
-   public static final int aW = 344;
-   public static final int aX = 347;
-   public static final int aY = 257;
-   public static final int aZ = 256;
-   public static final int ba = 259;
-   public static final int bb = 261;
-   public static final int bc = 269;
-   public static final int bd = 268;
-   public static final int be = 260;
-   public static final int bf = 267;
-   public static final int bg = 266;
-   public static final int bh = 280;
-   public static final int bi = 284;
-   public static final int bj = 281;
-   public static final int bk = 283;
-   public static final int bl = 1;
-   public static final int bm = 0;
-   public static final int bn = 2;
-   public static final int bo = 0;
-   public static final int bp = 2;
-   public static final int bq = 1;
-   public static final int br = 2;
-   public static final int bs = 208897;
-   public static final int bt = 212995;
-   public static final int bu = 212993;
-   public static final exp.a bv;
+   private String g;
+   private static final exp.a h = new exp.a() {
+      @Nullable
+      @Override
+      public exo a() {
+         return null;
+      }
 
-   public static exp.a a(int $$0, int $$1) {
-      return $$0 == -1 ? exp.b.b.a($$1) : exp.b.a.a($$0);
+      @Override
+      public boolean a(exo $$0) {
+         return false;
+      }
+
+      @Override
+      public void b() {
+      }
+
+      @Override
+      public int c() {
+         return 0;
+      }
+
+      @Override
+      public int d() {
+         return 0;
+      }
+   };
+   private exp.a i = h;
+   private exp.a j = h;
+   private final exq k = new exq();
+
+   public exp() {
+      this.g = a();
    }
 
-   public static exp.a a(String $$0) {
-      if (exp.a.e.containsKey($$0)) {
-         return exp.a.e.get($$0);
+   public void a(@Nullable String $$0, boolean $$1) {
+      this.d = a($$0);
+      this.f = false;
+      ALCCapabilities $$2 = ALC.createCapabilities(this.d);
+      if (exs.a(this.d, "Get capabilities")) {
+         throw new IllegalStateException("Failed to get OpenAL capabilities");
+      } else if (!$$2.OpenALC11) {
+         throw new IllegalStateException("OpenAL 1.1 not supported");
       } else {
-         for (exp.b $$1 : exp.b.values()) {
-            if ($$0.startsWith($$1.f)) {
-               String $$2 = $$0.substring($$1.f.length() + 1);
-               int $$3 = Integer.parseInt($$2);
-               if ($$1 == exp.b.c) {
-                  $$3--;
+         this.a($$2.ALC_SOFT_HRTF && $$1);
+         MemoryStack $$3 = MemoryStack.stackPush();
+
+         try {
+            IntBuffer $$4 = $$3.callocInt(3).put(6554).put(1).put(0).flip();
+            this.e = ALC10.alcCreateContext(this.d, $$4);
+         } catch (Throwable var9) {
+            if ($$3 != null) {
+               try {
+                  $$3.close();
+               } catch (Throwable var8) {
+                  var9.addSuppressed(var8);
+               }
+            }
+
+            throw var9;
+         }
+
+         if ($$3 != null) {
+            $$3.close();
+         }
+
+         if (exs.a(this.d, "Create context")) {
+            throw new IllegalStateException("Unable to create OpenAL context");
+         } else {
+            ALC10.alcMakeContextCurrent(this.e);
+            int $$5 = this.i();
+            int $$6 = ayu.a((int)ayu.c((float)$$5), 2, 8);
+            int $$7 = ayu.a($$5 - $$6, 8, 255);
+            this.i = new exp.b($$7);
+            this.j = new exp.b($$6);
+            ALCapabilities $$8 = AL.createCapabilities($$2);
+            exs.a("Initialization");
+            if (!$$8.AL_EXT_source_distance_model) {
+               throw new IllegalStateException("AL_EXT_source_distance_model is not supported");
+            } else {
+               AL10.alEnable(512);
+               if (!$$8.AL_EXT_LINEAR_DISTANCE) {
+                  throw new IllegalStateException("AL_EXT_LINEAR_DISTANCE is not supported");
+               } else {
+                  exs.a("Enable per-source distance models");
+                  a.info("OpenAL initialized on device {}", this.b());
+                  this.f = ALC10.alcIsExtensionPresent(this.d, "ALC_EXT_disconnect");
+               }
+            }
+         }
+      }
+   }
+
+   private void a(boolean $$0) {
+      int $$1 = ALC10.alcGetInteger(this.d, 6548);
+      if ($$1 > 0) {
+         MemoryStack $$2 = MemoryStack.stackPush();
+
+         try {
+            IntBuffer $$3 = $$2.callocInt(10).put(6546).put($$0 ? 1 : 0).put(6550).put(0).put(0).flip();
+            if (!SOFTHRTF.alcResetDeviceSOFT(this.d, $$3)) {
+               a.warn("Failed to reset device: {}", ALC10.alcGetString(this.d, ALC10.alcGetError(this.d)));
+            }
+         } catch (Throwable var7) {
+            if ($$2 != null) {
+               try {
+                  $$2.close();
+               } catch (Throwable var6) {
+                  var7.addSuppressed(var6);
+               }
+            }
+
+            throw var7;
+         }
+
+         if ($$2 != null) {
+            $$2.close();
+         }
+      }
+   }
+
+   private int i() {
+      MemoryStack $$0 = MemoryStack.stackPush();
+
+      int var7;
+      label58: {
+         try {
+            int $$1 = ALC10.alcGetInteger(this.d, 4098);
+            if (exs.a(this.d, "Get attributes size")) {
+               throw new IllegalStateException("Failed to get OpenAL attributes");
+            }
+
+            IntBuffer $$2 = $$0.mallocInt($$1);
+            ALC10.alcGetIntegerv(this.d, 4099, $$2);
+            if (exs.a(this.d, "Get attributes")) {
+               throw new IllegalStateException("Failed to get OpenAL attributes");
+            }
+
+            int $$3 = 0;
+
+            while ($$3 < $$1) {
+               int $$4 = $$2.get($$3++);
+               if ($$4 == 0) {
+                  break;
                }
 
-               return $$1.a($$3);
+               int $$5 = $$2.get($$3++);
+               if ($$4 == 4112) {
+                  var7 = $$5;
+                  break label58;
+               }
             }
+         } catch (Throwable var9) {
+            if ($$0 != null) {
+               try {
+                  $$0.close();
+               } catch (Throwable var8) {
+                  var9.addSuppressed(var8);
+               }
+            }
+
+            throw var9;
          }
 
-         throw new IllegalArgumentException("Unknown key name: " + $$0);
+         if ($$0 != null) {
+            $$0.close();
+         }
+
+         return 30;
+      }
+
+      if ($$0 != null) {
+         $$0.close();
+      }
+
+      return var7;
+   }
+
+   @Nullable
+   public static String a() {
+      if (!ALC10.alcIsExtensionPresent(0L, "ALC_ENUMERATE_ALL_EXT")) {
+         return null;
+      } else {
+         ALUtil.getStringList(0L, 4115);
+         return ALC10.alcGetString(0L, 4114);
       }
    }
 
-   public static boolean a(long $$0, int $$1) {
-      return GLFW.glfwGetKey($$0, $$1) == 1;
+   public String b() {
+      String $$0 = ALC10.alcGetString(this.d, 4115);
+      if ($$0 == null) {
+         $$0 = ALC10.alcGetString(this.d, 4101);
+      }
+
+      if ($$0 == null) {
+         $$0 = "Unknown";
+      }
+
+      return $$0;
    }
 
-   public static void a(long $$0, GLFWKeyCallbackI $$1, GLFWCharModsCallbackI $$2) {
-      GLFW.glfwSetKeyCallback($$0, $$1);
-      GLFW.glfwSetCharModsCallback($$0, $$2);
-   }
-
-   public static void a(long $$0, GLFWCursorPosCallbackI $$1, GLFWMouseButtonCallbackI $$2, GLFWScrollCallbackI $$3, GLFWDropCallbackI $$4) {
-      GLFW.glfwSetCursorPosCallback($$0, $$1);
-      GLFW.glfwSetMouseButtonCallback($$0, $$2);
-      GLFW.glfwSetScrollCallback($$0, $$3);
-      GLFW.glfwSetDropCallback($$0, $$4);
-   }
-
-   public static void a(long $$0, int $$1, double $$2, double $$3) {
-      GLFW.glfwSetCursorPos($$0, $$2, $$3);
-      GLFW.glfwSetInputMode($$0, 208897, $$1);
-   }
-
-   public static boolean a() {
-      try {
-         return bw != null && (boolean)bw.invokeExact();
-      } catch (Throwable var1) {
-         throw new RuntimeException(var1);
+   public synchronized boolean c() {
+      String $$0 = a();
+      if (Objects.equals(this.g, $$0)) {
+         return false;
+      } else {
+         this.g = $$0;
+         return true;
       }
    }
 
-   public static void a(long $$0, boolean $$1) {
-      if (a()) {
-         GLFW.glfwSetInputMode($$0, bx, $$1 ? 1 : 0);
+   private static long a(@Nullable String $$0) {
+      OptionalLong $$1 = OptionalLong.empty();
+      if ($$0 != null) {
+         $$1 = b($$0);
+      }
+
+      if ($$1.isEmpty()) {
+         $$1 = b(a());
+      }
+
+      if ($$1.isEmpty()) {
+         $$1 = b(null);
+      }
+
+      if ($$1.isEmpty()) {
+         throw new IllegalStateException("Failed to open OpenAL device");
+      } else {
+         return $$1.getAsLong();
       }
    }
 
-   static {
-      Lookup $$0 = MethodHandles.lookup();
-      MethodType $$1 = MethodType.methodType(boolean.class);
-      MethodHandle $$2 = null;
-      int $$3 = 0;
-
-      try {
-         $$2 = $$0.findStatic(GLFW.class, "glfwRawMouseMotionSupported", $$1);
-         MethodHandle $$4 = $$0.findStaticGetter(GLFW.class, "GLFW_RAW_MOUSE_MOTION", int.class);
-         $$3 = (int)$$4.invokeExact();
-      } catch (NoSuchFieldException | NoSuchMethodException var5) {
-      } catch (Throwable var6) {
-         throw new RuntimeException(var6);
-      }
-
-      bw = $$2;
-      bx = $$3;
-      bv = exp.b.a.a(-1);
+   private static OptionalLong b(@Nullable String $$0) {
+      long $$1 = ALC10.alcOpenDevice($$0);
+      return $$1 != 0L && !exs.a($$1, "Open device") ? OptionalLong.of($$1) : OptionalLong.empty();
    }
 
-   public static final class a {
-      private final String a;
-      private final exp.b b;
-      private final int c;
-      private final axz<wx> d;
-      static final Map<String, exp.a> e = Maps.newHashMap();
+   public void d() {
+      this.i.b();
+      this.j.b();
+      ALC10.alcDestroyContext(this.e);
+      if (this.d != 0L) {
+         ALC10.alcCloseDevice(this.d);
+      }
+   }
 
-      a(String $$0, exp.b $$1, int $$2) {
+   public exq e() {
+      return this.k;
+   }
+
+   @Nullable
+   public exo a(exp.c $$0) {
+      return ($$0 == exp.c.b ? this.j : this.i).a();
+   }
+
+   public void a(exo $$0) {
+      if (!this.i.a($$0) && !this.j.a($$0)) {
+         throw new IllegalStateException("Tried to release unknown channel");
+      }
+   }
+
+   public String f() {
+      return String.format(Locale.ROOT, "Sounds: %d/%d + %d/%d", this.i.d(), this.i.c(), this.j.d(), this.j.c());
+   }
+
+   public List<String> g() {
+      List<String> $$0 = ALUtil.getStringList(0L, 4115);
+      return $$0 == null ? Collections.emptyList() : $$0;
+   }
+
+   public boolean h() {
+      return this.f && ALC11.alcGetInteger(this.d, 787) == 0;
+   }
+
+   interface a {
+      @Nullable
+      exo a();
+
+      boolean a(exo var1);
+
+      void b();
+
+      int c();
+
+      int d();
+   }
+
+   static class b implements exp.a {
+      private final int a;
+      private final Set<exo> b = Sets.newIdentityHashSet();
+
+      public b(int $$0) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = new axz<>(() -> $$1.g.apply($$2, $$0));
-         e.put($$0, this);
       }
 
-      public exp.b a() {
-         return this.b;
-      }
+      @Nullable
+      @Override
+      public exo a() {
+         if (this.b.size() >= this.a) {
+            if (aa.aX) {
+               exp.a.warn("Maximum sound pool size {} reached", this.a);
+            }
 
-      public int b() {
-         return this.c;
-      }
-
-      public String c() {
-         return this.a;
-      }
-
-      public wx d() {
-         return this.d.a();
-      }
-
-      public OptionalInt e() {
-         if (this.c >= 48 && this.c <= 57) {
-            return OptionalInt.of(this.c - 48);
+            return null;
          } else {
-            return this.c >= 320 && this.c <= 329 ? OptionalInt.of(this.c - 320) : OptionalInt.empty();
+            exo $$0 = exo.a();
+            if ($$0 != null) {
+               this.b.add($$0);
+            }
+
+            return $$0;
          }
       }
 
       @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            exp.a $$1 = (exp.a)$$0;
-            return this.c == $$1.c && this.b == $$1.b;
-         } else {
+      public boolean a(exo $$0) {
+         if (!this.b.remove($$0)) {
             return false;
+         } else {
+            $$0.b();
+            return true;
          }
       }
 
       @Override
-      public int hashCode() {
-         return Objects.hash(this.b, this.c);
+      public void b() {
+         this.b.forEach(exo::b);
+         this.b.clear();
       }
 
       @Override
-      public String toString() {
+      public int c() {
          return this.a;
+      }
+
+      @Override
+      public int d() {
+         return this.b.size();
       }
    }
 
-   public static enum b {
-      a("key.keyboard", ($$0, $$1) -> {
-         if ("key.keyboard.unknown".equals($$1)) {
-            return wx.c($$1);
-         } else {
-            String $$2 = GLFW.glfwGetKeyName($$0, -1);
-            return $$2 != null ? wx.b($$2.toUpperCase(Locale.ROOT)) : wx.c($$1);
-         }
-      }),
-      b("scancode", ($$0, $$1) -> {
-         String $$2 = GLFW.glfwGetKeyName(-1, $$0);
-         return $$2 != null ? wx.b($$2) : wx.c($$1);
-      }),
-      c("key.mouse", ($$0, $$1) -> ty.a().b($$1) ? wx.c($$1) : wx.a("key.mouse", $$0 + 1));
-
-      private static final String d = "key.keyboard.unknown";
-      private final Int2ObjectMap<exp.a> e = new Int2ObjectOpenHashMap();
-      final String f;
-      final BiFunction<Integer, String, wx> g;
-
-      private static void a(exp.b $$0, String $$1, int $$2) {
-         exp.a $$3 = new exp.a($$1, $$0, $$2);
-         $$0.e.put($$2, $$3);
-      }
-
-      private b(String $$0, BiFunction<Integer, String, wx> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      public exp.a a(int $$0) {
-         return (exp.a)this.e.computeIfAbsent($$0, $$0x -> {
-            int $$1 = $$0x;
-            if (this == c) {
-               $$1 = $$0x + 1;
-            }
-
-            String $$2 = this.f + "." + $$1;
-            return new exp.a($$2, this, $$0x);
-         });
-      }
-
-      static {
-         a(a, "key.keyboard.unknown", -1);
-         a(c, "key.mouse.left", 0);
-         a(c, "key.mouse.right", 1);
-         a(c, "key.mouse.middle", 2);
-         a(c, "key.mouse.4", 3);
-         a(c, "key.mouse.5", 4);
-         a(c, "key.mouse.6", 5);
-         a(c, "key.mouse.7", 6);
-         a(c, "key.mouse.8", 7);
-         a(a, "key.keyboard.0", 48);
-         a(a, "key.keyboard.1", 49);
-         a(a, "key.keyboard.2", 50);
-         a(a, "key.keyboard.3", 51);
-         a(a, "key.keyboard.4", 52);
-         a(a, "key.keyboard.5", 53);
-         a(a, "key.keyboard.6", 54);
-         a(a, "key.keyboard.7", 55);
-         a(a, "key.keyboard.8", 56);
-         a(a, "key.keyboard.9", 57);
-         a(a, "key.keyboard.a", 65);
-         a(a, "key.keyboard.b", 66);
-         a(a, "key.keyboard.c", 67);
-         a(a, "key.keyboard.d", 68);
-         a(a, "key.keyboard.e", 69);
-         a(a, "key.keyboard.f", 70);
-         a(a, "key.keyboard.g", 71);
-         a(a, "key.keyboard.h", 72);
-         a(a, "key.keyboard.i", 73);
-         a(a, "key.keyboard.j", 74);
-         a(a, "key.keyboard.k", 75);
-         a(a, "key.keyboard.l", 76);
-         a(a, "key.keyboard.m", 77);
-         a(a, "key.keyboard.n", 78);
-         a(a, "key.keyboard.o", 79);
-         a(a, "key.keyboard.p", 80);
-         a(a, "key.keyboard.q", 81);
-         a(a, "key.keyboard.r", 82);
-         a(a, "key.keyboard.s", 83);
-         a(a, "key.keyboard.t", 84);
-         a(a, "key.keyboard.u", 85);
-         a(a, "key.keyboard.v", 86);
-         a(a, "key.keyboard.w", 87);
-         a(a, "key.keyboard.x", 88);
-         a(a, "key.keyboard.y", 89);
-         a(a, "key.keyboard.z", 90);
-         a(a, "key.keyboard.f1", 290);
-         a(a, "key.keyboard.f2", 291);
-         a(a, "key.keyboard.f3", 292);
-         a(a, "key.keyboard.f4", 293);
-         a(a, "key.keyboard.f5", 294);
-         a(a, "key.keyboard.f6", 295);
-         a(a, "key.keyboard.f7", 296);
-         a(a, "key.keyboard.f8", 297);
-         a(a, "key.keyboard.f9", 298);
-         a(a, "key.keyboard.f10", 299);
-         a(a, "key.keyboard.f11", 300);
-         a(a, "key.keyboard.f12", 301);
-         a(a, "key.keyboard.f13", 302);
-         a(a, "key.keyboard.f14", 303);
-         a(a, "key.keyboard.f15", 304);
-         a(a, "key.keyboard.f16", 305);
-         a(a, "key.keyboard.f17", 306);
-         a(a, "key.keyboard.f18", 307);
-         a(a, "key.keyboard.f19", 308);
-         a(a, "key.keyboard.f20", 309);
-         a(a, "key.keyboard.f21", 310);
-         a(a, "key.keyboard.f22", 311);
-         a(a, "key.keyboard.f23", 312);
-         a(a, "key.keyboard.f24", 313);
-         a(a, "key.keyboard.f25", 314);
-         a(a, "key.keyboard.num.lock", 282);
-         a(a, "key.keyboard.keypad.0", 320);
-         a(a, "key.keyboard.keypad.1", 321);
-         a(a, "key.keyboard.keypad.2", 322);
-         a(a, "key.keyboard.keypad.3", 323);
-         a(a, "key.keyboard.keypad.4", 324);
-         a(a, "key.keyboard.keypad.5", 325);
-         a(a, "key.keyboard.keypad.6", 326);
-         a(a, "key.keyboard.keypad.7", 327);
-         a(a, "key.keyboard.keypad.8", 328);
-         a(a, "key.keyboard.keypad.9", 329);
-         a(a, "key.keyboard.keypad.add", 334);
-         a(a, "key.keyboard.keypad.decimal", 330);
-         a(a, "key.keyboard.keypad.enter", 335);
-         a(a, "key.keyboard.keypad.equal", 336);
-         a(a, "key.keyboard.keypad.multiply", 332);
-         a(a, "key.keyboard.keypad.divide", 331);
-         a(a, "key.keyboard.keypad.subtract", 333);
-         a(a, "key.keyboard.down", 264);
-         a(a, "key.keyboard.left", 263);
-         a(a, "key.keyboard.right", 262);
-         a(a, "key.keyboard.up", 265);
-         a(a, "key.keyboard.apostrophe", 39);
-         a(a, "key.keyboard.backslash", 92);
-         a(a, "key.keyboard.comma", 44);
-         a(a, "key.keyboard.equal", 61);
-         a(a, "key.keyboard.grave.accent", 96);
-         a(a, "key.keyboard.left.bracket", 91);
-         a(a, "key.keyboard.minus", 45);
-         a(a, "key.keyboard.period", 46);
-         a(a, "key.keyboard.right.bracket", 93);
-         a(a, "key.keyboard.semicolon", 59);
-         a(a, "key.keyboard.slash", 47);
-         a(a, "key.keyboard.space", 32);
-         a(a, "key.keyboard.tab", 258);
-         a(a, "key.keyboard.left.alt", 342);
-         a(a, "key.keyboard.left.control", 341);
-         a(a, "key.keyboard.left.shift", 340);
-         a(a, "key.keyboard.left.win", 343);
-         a(a, "key.keyboard.right.alt", 346);
-         a(a, "key.keyboard.right.control", 345);
-         a(a, "key.keyboard.right.shift", 344);
-         a(a, "key.keyboard.right.win", 347);
-         a(a, "key.keyboard.enter", 257);
-         a(a, "key.keyboard.escape", 256);
-         a(a, "key.keyboard.backspace", 259);
-         a(a, "key.keyboard.delete", 261);
-         a(a, "key.keyboard.end", 269);
-         a(a, "key.keyboard.home", 268);
-         a(a, "key.keyboard.insert", 260);
-         a(a, "key.keyboard.page.down", 267);
-         a(a, "key.keyboard.page.up", 266);
-         a(a, "key.keyboard.caps.lock", 280);
-         a(a, "key.keyboard.pause", 284);
-         a(a, "key.keyboard.scroll.lock", 281);
-         a(a, "key.keyboard.menu", 348);
-         a(a, "key.keyboard.print.screen", 283);
-         a(a, "key.keyboard.world.1", 161);
-         a(a, "key.keyboard.world.2", 162);
-      }
+   public static enum c {
+      a,
+      b;
    }
 }

@@ -1,59 +1,71 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.Optional;
+import java.util.Set;
 
-public class dsx implements AutoCloseable {
-   private final dba a;
-   private final Long2ObjectMap<dtk> b = new Long2ObjectOpenHashMap();
-   @Nullable
-   private dtk c;
-   private long d;
+public class dsx extends dta<Integer> {
+   private final ImmutableSet<Integer> a;
+   private final int b;
+   private final int c;
 
-   public dsx(dba $$0) {
-      this.a = $$0;
-   }
+   protected dsx(String $$0, int $$1, int $$2) {
+      super($$0, Integer.class);
+      if ($$1 < 0) {
+         throw new IllegalArgumentException("Min value of " + $$0 + " must be 0 or greater");
+      } else if ($$2 <= $$1) {
+         throw new IllegalArgumentException("Max value of " + $$0 + " must be greater than min (" + $$1 + ")");
+      } else {
+         this.b = $$1;
+         this.c = $$2;
+         Set<Integer> $$3 = Sets.newHashSet();
 
-   @Nullable
-   public dtk a(io $$0) {
-      int $$1 = this.a.e($$0.v());
-      if ($$1 >= 0 && $$1 < this.a.am()) {
-         long $$2 = jq.c($$0);
-         if (this.c == null || this.d != $$2) {
-            this.c = (dtk)this.b.computeIfAbsent($$2, $$2x -> {
-               dsz $$3 = this.a.a(jq.a($$0.u()), jq.a($$0.w()));
-               dtk $$4 = $$3.b($$1);
-               $$4.a();
-               return $$4;
-            });
-            this.d = $$2;
+         for (int $$4 = $$1; $$4 <= $$2; $$4++) {
+            $$3.add($$4);
          }
 
-         return this.c;
-      } else {
-         return null;
-      }
-   }
-
-   public drd b(io $$0) {
-      dtk $$1 = this.a($$0);
-      if ($$1 == null) {
-         return dec.a.n();
-      } else {
-         int $$2 = jq.b($$0.u());
-         int $$3 = jq.b($$0.v());
-         int $$4 = jq.b($$0.w());
-         return $$1.a($$2, $$3, $$4);
+         this.a = ImmutableSet.copyOf($$3);
       }
    }
 
    @Override
-   public void close() {
-      ObjectIterator var1 = this.b.values().iterator();
+   public Collection<Integer> a() {
+      return this.a;
+   }
 
-      while (var1.hasNext()) {
-         dtk $$0 = (dtk)var1.next();
-         $$0.b();
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof dsx $$1 && super.equals($$0)) {
+            return this.a.equals($$1.a);
+         }
+
+         return false;
       }
+   }
+
+   @Override
+   public int b() {
+      return 31 * super.b() + this.a.hashCode();
+   }
+
+   public static dsx a(String $$0, int $$1, int $$2) {
+      return new dsx($$0, $$1, $$2);
+   }
+
+   @Override
+   public Optional<Integer> b(String $$0) {
+      try {
+         Integer $$1 = Integer.valueOf($$0);
+         return $$1 >= this.b && $$1 <= this.c ? Optional.of($$1) : Optional.empty();
+      } catch (NumberFormatException var3) {
+         return Optional.empty();
+      }
+   }
+
+   public String a(Integer $$0) {
+      return $$0.toString();
    }
 }

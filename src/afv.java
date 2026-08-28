@@ -1,59 +1,45 @@
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+public class afv implements zs<ace> {
+   public static final zj<wl, afv> a = zs.a(afv::a, afv::new);
+   private final long b;
+   private final long c;
 
-public class afv implements ze<abq> {
-   public static final yv<wi, afv> a = ze.a(afv::a, afv::new);
-   private final boolean b;
-   private final List<af> c;
-   private final Set<akn> d;
-   private final Map<akn, ah> e;
-
-   public afv(boolean $$0, Collection<af> $$1, Set<akn> $$2, Map<akn, ah> $$3) {
+   public afv(long $$0, long $$1, boolean $$2) {
       this.b = $$0;
-      this.c = List.copyOf($$1);
-      this.d = Set.copyOf($$2);
-      this.e = Map.copyOf($$3);
+      long $$3 = $$1;
+      if (!$$2) {
+         $$3 = -$$1;
+         if ($$3 == 0L) {
+            $$3 = -1L;
+         }
+      }
+
+      this.c = $$3;
    }
 
-   private afv(wi $$0) {
-      this.b = $$0.readBoolean();
-      this.c = af.b.decode($$0);
-      this.d = $$0.a(Sets::newLinkedHashSetWithExpectedSize, vx::q);
-      this.e = $$0.a(vx::q, ah::b);
+   private afv(wl $$0) {
+      this.b = $$0.readLong();
+      this.c = $$0.readLong();
    }
 
-   private void a(wi $$0) {
-      $$0.a(this.b);
-      af.b.encode($$0, this.c);
-      $$0.a(this.d, vx::a);
-      $$0.a(this.e, vx::a, ($$0x, $$1) -> $$1.a($$0x));
+   private void a(wl $$0) {
+      $$0.b(this.b);
+      $$0.b(this.c);
    }
 
    @Override
-   public zg<afv> a() {
-      return agc.ba;
+   public zu<afv> a() {
+      return agq.aO;
    }
 
-   public void a(abq $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public List<af> b() {
-      return this.c;
-   }
-
-   public Set<akn> e() {
-      return this.d;
-   }
-
-   public Map<akn, ah> f() {
-      return this.e;
-   }
-
-   public boolean g() {
+   public long b() {
       return this.b;
+   }
+
+   public long e() {
+      return this.c;
    }
 }

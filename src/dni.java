@@ -1,33 +1,39 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dni extends dea implements dnf {
-   public static final MapCodec<dni> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dnf.a.e.fieldOf("weathering_state").forGetter(dfb::c), u()).apply($$0, dni::new)
-   );
-   private final dnf.a e;
+public class dni extends dfx {
+   public static final MapCodec<dni> n = b(dni::new);
 
    @Override
    public MapCodec<dni> a() {
-      return d;
+      return n;
    }
 
-   public dni(dnf.a $$0, drc.d $$1) {
-      super($$1);
-      this.e = $$0;
-   }
-
-   @Override
-   protected void b(drd $$0, aqn $$1, io $$2, aym $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   public dni(drw.d $$0) {
+      super($$0, () -> dpe.c);
    }
 
    @Override
-   protected boolean d_(drd $$0) {
-      return dnf.c($$0.b()).isPresent();
+   public dpc a(iz $$0, drx $$1) {
+      return new dqv($$0, $$1);
    }
 
-   public dnf.a m() {
-      return this.e;
+   @Override
+   protected awd<alb> c() {
+      return awg.i.b(awg.ai);
+   }
+
+   @Override
+   protected boolean e_(drx $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(drx $$0, daz $$1, iz $$2, je $$3) {
+      return ayu.a(dpj.a($$1, $$2), 0, 15);
+   }
+
+   @Override
+   protected int b(drx $$0, daz $$1, iz $$2, je $$3) {
+      return $$3 == je.b ? $$0.b($$1, $$2, $$3) : 0;
    }
 }

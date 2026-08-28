@@ -1,5 +1,12 @@
-public interface cph {
-   void a(cov var1, int var2, ctq var3);
+public class cph {
+   private final String a;
 
-   void a(cov var1, int var2, int var3);
+   public cph(String $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.a;
+   }
 }

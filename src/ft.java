@@ -3,107 +3,150 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import com.mojang.datafixers.util.Either;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Predicate;
 
-public class ft implements ArgumentType<Integer> {
-   private static final Collection<String> a = Arrays.asList("0d", "0s", "0t", "0");
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wx.c("argument.time.invalid_unit"));
-   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> wx.b("argument.time.tick_count_too_low", $$1, $$0));
-   private static final Object2IntMap<String> d = new Object2IntOpenHashMap();
-   final int e;
+public class ft<T> implements ArgumentType<ft.c<T>> {
+   private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012", "#skeletons", "#minecraft:skeletons");
+   final ala<? extends jv<T>> b;
 
-   private ft(int $$0) {
-      this.e = $$0;
+   public ft(ala<? extends jv<T>> $$0) {
+      this.b = $$0;
    }
 
-   public static ft a() {
-      return new ft(0);
+   public static <T> ft<T> a(ala<? extends jv<T>> $$0) {
+      return new ft<>($$0);
    }
 
-   public static ft a(int $$0) {
-      return new ft($$0);
+   public static <T> ft.c<T> a(CommandContext<ep> $$0, String $$1, ala<jv<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
+      ft.c<?> $$4 = (ft.c<?>)$$0.getArgument($$1, ft.c.class);
+      Optional<ft.c<T>> $$5 = $$4.a($$2);
+      return $$5.orElseThrow(() -> $$3.create($$4));
    }
 
-   public Integer a(StringReader $$0) throws CommandSyntaxException {
-      float $$1 = $$0.readFloat();
-      String $$2 = $$0.readUnquotedString();
-      int $$3 = d.getOrDefault($$2, 0);
-      if ($$3 == 0) {
-         throw b.createWithContext($$0);
-      } else {
-         int $$4 = Math.round($$1 * (float)$$3);
-         if ($$4 < this.e) {
-            throw c.createWithContext($$0, $$4, this.e);
-         } else {
-            return $$4;
+   public ft.c<T> a(StringReader $$0) throws CommandSyntaxException {
+      if ($$0.canRead() && $$0.peek() == '#') {
+         int $$1 = $$0.getCursor();
+
+         try {
+            $$0.skip();
+            alb $$2 = alb.a($$0);
+            return new ft.d<>(axb.a(this.b, $$2));
+         } catch (CommandSyntaxException var4) {
+            $$0.setCursor($$1);
+            throw var4;
          }
+      } else {
+         alb $$4 = alb.a($$0);
+         return new ft.b<>(ala.a(this.b, $$4));
       }
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      StringReader $$2 = new StringReader($$1.getRemaining());
-
-      try {
-         $$2.readFloat();
-      } catch (CommandSyntaxException var5) {
-         return $$1.buildFuture();
-      }
-
-      return ej.b(d.keySet(), $$1.createOffset($$1.getStart() + $$2.getCursor()));
+      return $$0.getSource() instanceof eu $$2 ? $$2.a(this.b, eu.a.c, $$1, $$0) : $$1.buildFuture();
    }
 
    public Collection<String> getExamples() {
       return a;
    }
 
-   static {
-      d.put("d", 24000);
-      d.put("s", 20);
-      d.put("t", 1);
-      d.put("", 1);
-   }
-
-   public static class a implements hy<ft, ft.a.a> {
-      public void a(ft.a.a $$0, vx $$1) {
-         $$1.p($$0.b);
+   public static class a<T> implements ik<ft<T>, ft.a<T>.a> {
+      public void a(ft.a<T>.a $$0, wl $$1) {
+         $$1.b($$0.b);
       }
 
-      public ft.a.a a(vx $$0) {
-         int $$1 = $$0.readInt();
-         return new ft.a.a($$1);
+      public ft.a<T>.a a(wl $$0) {
+         return new ft.a.a($$0.r());
       }
 
-      public void a(ft.a.a $$0, JsonObject $$1) {
-         $$1.addProperty("min", $$0.b);
+      public void a(ft.a<T>.a $$0, JsonObject $$1) {
+         $$1.addProperty("registry", $$0.b.a().toString());
       }
 
-      public ft.a.a a(ft $$0) {
-         return new ft.a.a($$0.e);
+      public ft.a<T>.a a(ft<T> $$0) {
+         return new ft.a.a($$0.b);
       }
 
-      public final class a implements hy.a<ft> {
-         final int b;
+      public final class a implements ik.a<ft<T>> {
+         final ala<? extends jv<T>> b;
 
-         a(int $$1) {
+         a(final ala<? extends jv<T>> $$1) {
             this.b = $$1;
          }
 
-         public ft a(ea $$0) {
-            return ft.a(this.b);
+         public ft<T> a(el $$0) {
+            return new ft<>(this.b);
          }
 
          @Override
-         public hy<ft, ?> a() {
+         public ik<ft<T>, ?> a() {
             return a.this;
          }
+      }
+   }
+
+   static record b<T>(ala<T> a) implements ft.c<T> {
+      @Override
+      public Either<ala<T>, axb<T>> a() {
+         return Either.left(this.a);
+      }
+
+      @Override
+      public <E> Optional<ft.c<E>> a(ala<? extends jv<E>> $$0) {
+         return this.a.d($$0).map(ft.b::new);
+      }
+
+      public boolean a(ji<T> $$0) {
+         return $$0.a(this.a);
+      }
+
+      @Override
+      public String b() {
+         return this.a.a().toString();
+      }
+
+      public ala<T> c() {
+         return this.a;
+      }
+   }
+
+   public interface c<T> extends Predicate<ji<T>> {
+      Either<ala<T>, axb<T>> a();
+
+      <E> Optional<ft.c<E>> a(ala<? extends jv<E>> var1);
+
+      String b();
+   }
+
+   static record d<T>(axb<T> a) implements ft.c<T> {
+      @Override
+      public Either<ala<T>, axb<T>> a() {
+         return Either.right(this.a);
+      }
+
+      @Override
+      public <E> Optional<ft.c<E>> a(ala<? extends jv<E>> $$0) {
+         return this.a.d($$0).map(ft.d::new);
+      }
+
+      public boolean a(ji<T> $$0) {
+         return $$0.a(this.a);
+      }
+
+      @Override
+      public String b() {
+         return "#" + this.a.b();
+      }
+
+      public axb<T> c() {
+         return this.a;
       }
    }
 }

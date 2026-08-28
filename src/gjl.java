@@ -1,16 +1,11 @@
-public class gjl extends giz<cey, fuc<cey>> {
-   private static final akn a = new akn("textures/entity/bear/polarbear.png");
-
-   public gjl(ght.a $$0) {
-      super($$0, new fuc<>($$0.a(fvv.ba)), 0.9F);
+public abstract class gjl<T extends cjf> extends gjy<T, fuj<T>> {
+   protected gjl(gis.a $$0, fuj<T> $$1, float $$2) {
+      super($$0, $$1, $$2);
+      this.a(new gmj<>(this, $$0.f(), $$0.d()));
    }
 
-   public akn a(cey $$0) {
-      return a;
-   }
-
-   protected void a(cey $$0, eyu $$1, float $$2) {
-      $$1.b(1.2F, 1.2F, 1.2F);
-      super.a($$0, $$1, $$2);
+   protected void a(T $$0, ezt $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

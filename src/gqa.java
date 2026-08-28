@@ -1,8 +1,26 @@
-import javax.annotation.Nullable;
+import java.util.IllegalFormatException;
 
-public interface gqa {
-   gqh a(akn var1);
+public class gqa {
+   private static volatile um a = um.a();
 
-   @Nullable
-   gpw a(akn var1, gqe var2);
+   private gqa() {
+   }
+
+   static void a(um $$0) {
+      a = $$0;
+   }
+
+   public static String a(String $$0, Object... $$1) {
+      String $$2 = a.a($$0);
+
+      try {
+         return String.format($$2, $$1);
+      } catch (IllegalFormatException var4) {
+         return "Format error: " + $$2;
+      }
+   }
+
+   public static boolean a(String $$0) {
+      return a.b($$0);
+   }
 }

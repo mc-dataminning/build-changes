@@ -1,76 +1,48 @@
-public class fzk extends gay {
-   private final double a;
-   private final double b;
-   private final double F;
-   private final int G;
-   private final int H;
+import com.mojang.logging.LogUtils;
+import java.util.Hashtable;
+import java.util.Optional;
+import javax.naming.directory.Attribute;
+import javax.naming.directory.Attributes;
+import javax.naming.directory.DirContext;
+import javax.naming.directory.InitialDirContext;
+import org.slf4j.Logger;
 
-   fzk(fwr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, int $$8) {
-      super($$0, $$1, $$2, $$3);
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.a = $$1;
-      this.b = $$2;
-      this.F = $$3;
-      this.d = $$1 + $$4;
-      this.e = $$2 + $$5;
-      this.f = $$3 + $$6;
-      this.g = this.d;
-      this.h = this.e;
-      this.i = this.f;
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
-      this.n = false;
-      this.t = (int)(Math.random() * 5.0) + 25;
-      this.G = $$7;
-      this.H = $$8;
-   }
+@FunctionalInterface
+public interface fzk {
+   Logger a = LogUtils.getLogger();
+   fzk b = $$0 -> Optional.empty();
 
-   @Override
-   public gac b() {
-      return gac.b;
-   }
+   Optional<fzh> lookupRedirect(fzh var1);
 
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-   }
-
-   @Override
-   public int a(float $$0) {
-      return 240;
-   }
-
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         float $$0 = (float)this.s / (float)this.t;
-         float $$1 = 1.0F - $$0;
-         this.g = this.a + this.j * (double)$$1;
-         this.h = this.b + this.k * (double)$$1;
-         this.i = this.F + this.l * (double)$$1;
-         int $$2 = axp.b.a($$0, this.G, this.H);
-         this.a((float)axp.b.b($$2) / 255.0F, (float)axp.b.c($$2) / 255.0F, (float)axp.b.d($$2) / 255.0F);
-         this.e((float)axp.b.a($$2) / 255.0F);
-      }
-   }
-
-   public static class a implements gab<lb> {
-      private final gat a;
-
-      public a(gat $$0) {
-         this.a = $$0;
+   static fzk createDnsSrvRedirectHandler() {
+      DirContext $$2;
+      try {
+         String $$0 = "com.sun.jndi.dns.DnsContextFactory";
+         Class.forName("com.sun.jndi.dns.DnsContextFactory");
+         Hashtable<String, String> $$1 = new Hashtable<>();
+         $$1.put("java.naming.factory.initial", "com.sun.jndi.dns.DnsContextFactory");
+         $$1.put("java.naming.provider.url", "dns:");
+         $$1.put("com.sun.jndi.dns.timeout.retries", "1");
+         $$2 = new InitialDirContext($$1);
+      } catch (Throwable var3) {
+         a.error("Failed to initialize SRV redirect resolved, some servers might not work", var3);
+         return b;
       }
 
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fzk $$8 = new fzk($$1, $$2, $$3, $$4, $$5, $$6, $$7, -12210434, -1);
-         $$8.d(ayf.b($$1.E_(), 3.0F, 5.0F));
-         $$8.a(this.a);
-         return $$8;
-      }
+      return $$1x -> {
+         if ($$1x.b() == 25565) {
+            try {
+               Attributes $$2x = $$2.getAttributes("_minecraft._tcp." + $$1x.a(), new String[]{"SRV"});
+               Attribute $$3x = $$2x.get("srv");
+               if ($$3x != null) {
+                  String[] $$4x = $$3x.get().toString().split(" ", 4);
+                  return Optional.of(new fzh($$4x[3], fzh.c($$4x[2])));
+               }
+            } catch (Throwable var5) {
+            }
+         }
+
+         return Optional.empty();
+      };
    }
 }

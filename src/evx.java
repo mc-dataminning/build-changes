@@ -1,59 +1,32 @@
-public interface evx extends bpp {
-   ctq f();
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-   default ctq c(int $$0) {
-      return this.f().a($$0);
-   }
+public class evx implements evy {
+   private final DoubleList a;
 
-   void b(ctq var1);
-
-   default ctq h() {
-      return this.c(this.ai_());
+   public evx(DoubleList $$0) {
+      this.a = $$0;
    }
 
    @Override
-   default int b() {
-      return 1;
-   }
+   public boolean a(evy.a $$0) {
+      int $$1 = this.a.size() - 1;
 
-   @Override
-   default boolean c() {
-      return this.f().e();
-   }
-
-   @Override
-   default void a() {
-      this.h();
-   }
-
-   @Override
-   default ctq b(int $$0) {
-      return this.a($$0, this.ai_());
-   }
-
-   @Override
-   default ctq a(int $$0) {
-      return $$0 == 0 ? this.f() : ctq.i;
-   }
-
-   @Override
-   default ctq a(int $$0, int $$1) {
-      return $$0 != 0 ? ctq.i : this.c($$1);
-   }
-
-   @Override
-   default void a(int $$0, ctq $$1) {
-      if ($$0 == 0) {
-         this.b($$1);
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2, $$2, $$2)) {
+            return false;
+         }
       }
+
+      return true;
    }
 
-   public interface a extends evx {
-      doi v();
+   @Override
+   public int size() {
+      return this.a.size();
+   }
 
-      @Override
-      default boolean a(cly $$0) {
-         return bpp.a(this.v(), $$0);
-      }
+   @Override
+   public DoubleList a() {
+      return this.a;
    }
 }

@@ -1,23 +1,25 @@
-public record aag(akn a) implements aaf {
-   public static <T extends vx> yv<T, aag> a(akn $$0, int $$1) {
-      return aaf.a(($$0x, $$1x) -> {
-      }, $$2 -> {
-         int $$3 = $$2.readableBytes();
-         if ($$3 >= 0 && $$3 <= $$1) {
-            $$2.j($$3);
-            return new aag($$0);
-         } else {
-            throw new IllegalArgumentException("Payload may not be larger than " + $$1 + " bytes");
-         }
-      });
+public record aag(String b, int c) implements zs<zy> {
+   public static final zj<wl, aag> a = zs.a(aag::a, aag::new);
+
+   private aag(wl $$0) {
+      this($$0.p(), $$0.l());
+   }
+
+   private void a(wl $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public aaf.b<aag> a() {
-      return new aaf.b<>(this.a);
+   public zu<aag> a() {
+      return aai.h;
    }
 
-   public akn b() {
-      return this.a;
+   public void a(zy $$0) {
+      $$0.a(this);
+   }
+
+   public int e() {
+      return this.c;
    }
 }

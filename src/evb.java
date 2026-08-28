@@ -1,20 +1,25 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class evb extends AbstractDoubleList {
-   private final DoubleList a;
-   private final double b;
+public class evb extends Exception {
+   private final Path a;
+   private final List<evd> b;
 
-   public evb(DoubleList $$0, double $$1) {
+   public evb(Path $$0, List<evd> $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
-   public double getDouble(int $$0) {
-      return this.a.getDouble($$0) + this.b;
+   @Override
+   public String getMessage() {
+      return a(this.a, this.b);
    }
 
-   public int size() {
-      return this.a.size();
+   public static String a(Path $$0, List<evd> $$1) {
+      return "Failed to validate '"
+         + $$0
+         + "'. Found forbidden symlinks: "
+         + $$1.stream().map($$0x -> $$0x.a() + "->" + $$0x.b()).collect(Collectors.joining(", "));
    }
 }

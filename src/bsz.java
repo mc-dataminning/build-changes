@@ -1,83 +1,63 @@
-public abstract class bsz extends bss {
-   protected static final float bX = 0.0F;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-   protected bsz(bsc<? extends bsz> $$0, daz $$1) {
-      super($$0, $$1);
+public interface bsz {
+   void a(bsw var1, cuk var2);
+
+   cuk a(bsw var1);
+
+   void a(bsw var1, float var2);
+
+   default void a(bsy $$0, eqg $$1) {
+      this.a($$0.a(), $$1, $$0.b());
    }
 
-   public float d(io $$0) {
-      return this.a($$0, this.dP());
+   default void a(ala<eqi> $$0, eqg $$1, Map<bsw, Float> $$2) {
+      this.a($$0, $$1, 0L, $$2);
    }
 
-   public float a(io $$0, dbc $$1) {
-      return 0.0F;
+   default void a(ala<eqi> $$0, eqg $$1, long $$2, Map<bsw, Float> $$3) {
+      if (!$$0.equals(epz.a)) {
+         eqi $$4 = $$1.a().o().be().b($$0);
+         if ($$4 != eqi.a) {
+            List<cuk> $$5 = $$4.a($$1, $$2);
+            List<bsw> $$6 = new ArrayList<>();
+
+            for (cuk $$7 : $$5) {
+               bsw $$8 = this.a($$7, $$6);
+               if ($$8 != null) {
+                  cuk $$9 = $$8.f() ? $$7.c(1) : $$7;
+                  this.a($$8, $$9);
+                  Float $$10 = $$3.get($$8);
+                  if ($$10 != null) {
+                     this.a($$8, $$10);
+                  }
+
+                  $$6.add($$8);
+               }
+            }
+         }
+      }
    }
 
-   @Override
-   public boolean a(dba $$0, bsu $$1) {
-      return this.a(this.dp(), $$0) >= 0.0F;
-   }
-
-   public boolean gl() {
-      return !this.K().l();
-   }
-
-   public boolean gm() {
-      if (this.bD.a(cbu.Z)) {
-         return this.bD.c(cbu.Z).isPresent();
+   @Nullable
+   default bsw a(cuk $$0, List<bsw> $$1) {
+      if ($$0.e()) {
+         return null;
       } else {
-         for (cbc $$0 : this.bS.b()) {
-            if ($$0.h() && $$0.k() instanceof cah) {
-               return true;
+         ctm $$2 = ctm.c_($$0);
+         if ($$2 != null) {
+            bsw $$3 = $$2.m();
+            if (!$$1.contains($$3)) {
+               return $$3;
             }
+         } else if (!$$1.contains(bsw.a)) {
+            return bsw.a;
          }
 
-         return false;
+         return null;
       }
-   }
-
-   @Override
-   protected void gb() {
-      super.gb();
-      brw $$0 = this.ge();
-      if ($$0 != null && $$0.dP() == this.dP()) {
-         this.a($$0.dp(), 5);
-         float $$1 = this.f($$0);
-         if (this instanceof btn && ((btn)this).y()) {
-            if ($$1 > 10.0F) {
-               this.a(true, true);
-            }
-
-            return;
-         }
-
-         this.F($$1);
-         if ($$1 > 10.0F) {
-            this.a(true, true);
-            this.bS.a(bzo.a.a);
-         } else if ($$1 > 6.0F) {
-            double $$2 = ($$0.du() - this.du()) / (double)$$1;
-            double $$3 = ($$0.dw() - this.dw()) / (double)$$1;
-            double $$4 = ($$0.dA() - this.dA()) / (double)$$1;
-            this.g(this.ds().b(Math.copySign($$2 * $$2 * 0.4, $$2), Math.copySign($$3 * $$3 * 0.4, $$3), Math.copySign($$4 * $$4 * 0.4, $$4)));
-            this.cq();
-         } else if (this.gn() && !this.gm()) {
-            this.bS.b(bzo.a.a);
-            float $$5 = 2.0F;
-            eum $$6 = new eum($$0.du() - this.du(), $$0.dw() - this.dw(), $$0.dA() - this.dA()).d().a((double)Math.max($$1 - 2.0F, 0.0F));
-            this.K().a(this.du() + $$6.c, this.dw() + $$6.d, this.dA() + $$6.e, this.go());
-         }
-      }
-   }
-
-   protected boolean gn() {
-      return true;
-   }
-
-   protected double go() {
-      return 1.0;
-   }
-
-   protected void F(float $$0) {
    }
 }

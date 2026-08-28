@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import org.joml.Matrix3f;
 
-public enum h implements ayz {
+public enum h implements azp {
    a("identity", i.a, false, false, false),
    b("rot_180_face_xy", i.a, true, true, false),
    c("rot_180_face_xz", i.a, true, false, true),
@@ -61,7 +61,7 @@ public enum h implements ayz {
    private final Matrix3f X;
    private final String Y;
    @Nullable
-   private Map<it, it> Z;
+   private Map<je, je> Z;
    private final boolean aa;
    private final boolean ab;
    private final boolean ac;
@@ -86,7 +86,7 @@ public enum h implements ayz {
    });
    private static final h[] af = Arrays.stream(values()).map($$0 -> Arrays.stream(values()).filter($$1 -> $$0.a($$1) == a).findAny().get()).toArray(h[]::new);
 
-   private h(String $$0, i $$1, boolean $$2, boolean $$3, boolean $$4) {
+   private h(final String $$0, final i $$1, final boolean $$2, final boolean $$3, final boolean $$4) {
       this.Y = $$0;
       this.aa = $$2;
       this.ab = $$3;
@@ -122,17 +122,17 @@ public enum h implements ayz {
       return this.Y;
    }
 
-   public it a(it $$0) {
+   public je a(je $$0) {
       if (this.Z == null) {
-         this.Z = Maps.newEnumMap(it.class);
-         it.a[] $$1 = it.a.values();
+         this.Z = Maps.newEnumMap(je.class);
+         je.a[] $$1 = je.a.values();
 
-         for (it $$2 : it.values()) {
-            it.a $$3 = $$2.o();
-            it.b $$4 = $$2.f();
-            it.a $$5 = $$1[this.ad.a($$3.ordinal())];
-            it.b $$6 = this.a($$5) ? $$4.c() : $$4;
-            it $$7 = it.a($$5, $$6);
+         for (je $$2 : je.values()) {
+            je.a $$3 = $$2.o();
+            je.b $$4 = $$2.f();
+            je.a $$5 = $$1[this.ad.a($$3.ordinal())];
+            je.b $$6 = this.a($$5) ? $$4.c() : $$4;
+            je $$7 = je.a($$5, $$6);
             this.Z.put($$2, $$7);
          }
       }
@@ -140,7 +140,7 @@ public enum h implements ayz {
       return this.Z.get($$0);
    }
 
-   public boolean a(it.a $$0) {
+   public boolean a(je.a $$0) {
       switch ($$0) {
          case a:
             return this.aa;
@@ -152,7 +152,7 @@ public enum h implements ayz {
       }
    }
 
-   public iv a(iv $$0) {
-      return iv.a(this.a($$0.a()), this.a($$0.b()));
+   public jg a(jg $$0) {
+      return jg.a(this.a($$0.a()), this.a($$0.b()));
    }
 }

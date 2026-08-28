@@ -1,96 +1,115 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.BiConsumer;
-import java.util.regex.Pattern;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import java.util.Collection;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
-public abstract class ty {
-   private static final Logger b = LogUtils.getLogger();
-   private static final Gson c = new Gson();
-   private static final Pattern d = Pattern.compile("%(\\d+\\$)?[\\d.]*[df]");
-   public static final String a = "en_us";
-   private static volatile ty e = c();
+public class ty {
+   private static final char a = ' ';
+   private static final char b = '_';
+   private static final char c = '+';
+   private static final char d = 'x';
+   private static final char e = 'X';
+   private final Collection<tn> f = Lists.newArrayList();
+   private final Collection<to> g = Lists.newArrayList();
 
-   private static ty c() {
-      Builder<String, String> $$0 = ImmutableMap.builder();
-      BiConsumer<String, String> $$1 = $$0::put;
-      a($$1, "/assets/minecraft/lang/en_us.json");
-      final Map<String, String> $$2 = $$0.build();
-      return new ty() {
+   public ty() {
+   }
+
+   public ty(Collection<tn> $$0) {
+      this.f.addAll($$0);
+   }
+
+   public void a(tn $$0) {
+      this.f.add($$0);
+      this.g.forEach($$0::a);
+   }
+
+   public void a(to $$0) {
+      this.g.add($$0);
+      this.f.forEach($$1 -> $$1.a($$0));
+   }
+
+   public void a(final Consumer<tn> $$0) {
+      this.a(new to() {
          @Override
-         public String a(String $$0, String $$1) {
-            return $$2.getOrDefault($$0, $$1);
+         public void a(tn $$0x) {
          }
 
          @Override
-         public boolean b(String $$0) {
-            return $$2.containsKey($$0);
+         public void a(tn $$0x, tq $$1) {
          }
 
          @Override
-         public boolean b() {
-            return false;
+         public void b(tn $$0x, tq $$1) {
+            $$0.accept($$0);
          }
 
          @Override
-         public axr a(xc $$0) {
-            return $$1 -> $$0.a(($$1x, $$2xxx) -> ayy.c($$2xxx, $$1x, $$1) ? Optional.empty() : xc.a, xu.a).isPresent();
+         public void a(tn $$0x, tn $$1, tq $$2) {
          }
-      };
+      });
    }
 
-   private static void a(BiConsumer<String, String> $$0, String $$1) {
-      try (InputStream $$2 = ty.class.getResourceAsStream($$1)) {
-         a($$2, $$0);
-      } catch (JsonParseException | IOException var7) {
-         b.error("Couldn't read strings from {}", $$1, var7);
-      }
+   public int a() {
+      return (int)this.f.stream().filter(tn::h).filter(tn::q).count();
    }
 
-   public static void a(InputStream $$0, BiConsumer<String, String> $$1) {
-      JsonObject $$2 = (JsonObject)c.fromJson(new InputStreamReader($$0, StandardCharsets.UTF_8), JsonObject.class);
-
-      for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
-         String $$4 = d.matcher(axv.a($$3.getValue(), $$3.getKey())).replaceAll("%$1s");
-         $$1.accept($$3.getKey(), $$4);
-      }
+   public int b() {
+      return (int)this.f.stream().filter(tn::h).filter(tn::r).count();
    }
 
-   public static ty a() {
-      return e;
+   public int c() {
+      return (int)this.f.stream().filter(tn::j).count();
    }
 
-   public static void a(ty $$0) {
-      e = $$0;
+   public boolean d() {
+      return this.a() > 0;
    }
 
-   public String a(String $$0) {
-      return this.a($$0, $$0);
+   public boolean e() {
+      return this.b() > 0;
    }
 
-   public abstract String a(String var1, String var2);
+   public Collection<tn> f() {
+      return this.f.stream().filter(tn::h).filter(tn::q).collect(Collectors.toList());
+   }
 
-   public abstract boolean b(String var1);
+   public Collection<tn> g() {
+      return this.f.stream().filter(tn::h).filter(tn::r).collect(Collectors.toList());
+   }
 
-   public abstract boolean b();
+   public int h() {
+      return this.f.size();
+   }
 
-   public abstract axr a(xc var1);
+   public boolean i() {
+      return this.c() == this.h();
+   }
 
-   public List<axr> a(List<xc> $$0) {
-      return $$0.stream().map(this::a).collect(ImmutableList.toImmutableList());
+   public String j() {
+      StringBuffer $$0 = new StringBuffer();
+      $$0.append('[');
+      this.f.forEach($$1 -> {
+         if (!$$1.i()) {
+            $$0.append(' ');
+         } else if ($$1.g()) {
+            $$0.append('+');
+         } else if ($$1.h()) {
+            $$0.append((char)($$1.q() ? 'X' : 'x'));
+         } else {
+            $$0.append('_');
+         }
+      });
+      $$0.append(']');
+      return $$0.toString();
+   }
+
+   @Override
+   public String toString() {
+      return this.j();
+   }
+
+   public void b(tn $$0) {
+      this.f.remove($$0);
    }
 }

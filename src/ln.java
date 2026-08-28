@@ -1,51 +1,33 @@
-import java.nio.file.Path;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ln {
-   private final Path a;
+public class ln implements lh {
+   private static final Codec<dwu> c = dwu.c
+      .validate($$0 -> $$0 instanceof dwo ? DataResult.error(() -> "Entity position sources are not allowed") : DataResult.success($$0));
+   public static final MapCodec<ln> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(c.fieldOf("destination").forGetter(ln::b), Codec.INT.fieldOf("arrival_in_ticks").forGetter(ln::c)).apply($$0, ln::new)
+   );
+   public static final zj<ww, ln> b = zj.a(dwu.d, ln::b, zh.g, ln::c, ln::new);
+   private final dwu d;
+   private final int e;
 
-   public ln(Path $$0) {
-      this.a = $$0;
+   public ln(dwu $$0, int $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public Path a() {
-      return this.a;
+   @Override
+   public li<ln> a() {
+      return lj.T;
    }
 
-   public Path a(ln.b $$0) {
-      return this.a().resolve($$0.d);
+   public dwu b() {
+      return this.d;
    }
 
-   public ln.a a(ln.b $$0, String $$1) {
-      return new ln.a(this, $$0, $$1);
-   }
-
-   public static class a {
-      private final Path a;
-      private final String b;
-
-      a(ln $$0, ln.b $$1, String $$2) {
-         this.a = $$0.a($$1);
-         this.b = $$2;
-      }
-
-      public Path a(akn $$0, String $$1) {
-         return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + "." + $$1);
-      }
-
-      public Path a(akn $$0) {
-         return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + ".json");
-      }
-   }
-
-   public static enum b {
-      a("data"),
-      b("assets"),
-      c("reports");
-
-      final String d;
-
-      private b(String $$0) {
-         this.d = $$0;
-      }
+   public int c() {
+      return this.e;
    }
 }

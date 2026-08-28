@@ -1,89 +1,48 @@
-public interface vl extends ux {
-   vl a = new vl() {
-   };
+public interface vl {
+   vl.b a();
 
-   @Override
-   default ux.b a() {
-      return ux.b.a;
+   vl.b a(String var1);
+
+   vl.b a(byte var1);
+
+   vl.b a(short var1);
+
+   vl.b a(int var1);
+
+   vl.b a(long var1);
+
+   vl.b a(float var1);
+
+   vl.b a(double var1);
+
+   vl.b a(byte[] var1);
+
+   vl.b a(int[] var1);
+
+   vl.b a(long[] var1);
+
+   vl.b a(vq<?> var1, int var2);
+
+   vl.a a(vq<?> var1);
+
+   vl.a a(vq<?> var1, String var2);
+
+   vl.a b(vq<?> var1, int var2);
+
+   vl.b b();
+
+   vl.b b(vq<?> var1);
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 
-   @Override
-   default ux.b a(String $$0) {
-      return ux.b.a;
-   }
-
-   @Override
-   default ux.b a(byte $$0) {
-      return ux.b.a;
-   }
-
-   @Override
-   default ux.b a(short $$0) {
-      return ux.b.a;
-   }
-
-   @Override
-   default ux.b a(int $$0) {
-      return ux.b.a;
-   }
-
-   @Override
-   default ux.b a(long $$0) {
-      return ux.b.a;
-   }
-
-   @Override
-   default ux.b a(float $$0) {
-      return ux.b.a;
-   }
-
-   @Override
-   default ux.b a(double $$0) {
-      return ux.b.a;
-   }
-
-   @Override
-   default ux.b a(byte[] $$0) {
-      return ux.b.a;
-   }
-
-   @Override
-   default ux.b a(int[] $$0) {
-      return ux.b.a;
-   }
-
-   @Override
-   default ux.b a(long[] $$0) {
-      return ux.b.a;
-   }
-
-   @Override
-   default ux.b a(vc<?> $$0, int $$1) {
-      return ux.b.a;
-   }
-
-   @Override
-   default ux.a b(vc<?> $$0, int $$1) {
-      return ux.a.b;
-   }
-
-   @Override
-   default ux.a a(vc<?> $$0) {
-      return ux.a.b;
-   }
-
-   @Override
-   default ux.a a(vc<?> $$0, String $$1) {
-      return ux.a.b;
-   }
-
-   @Override
-   default ux.b b() {
-      return ux.b.a;
-   }
-
-   @Override
-   default ux.b b(vc<?> $$0) {
-      return ux.b.a;
+   public static enum b {
+      a,
+      b,
+      c;
    }
 }

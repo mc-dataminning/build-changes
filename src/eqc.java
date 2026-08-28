@@ -1,61 +1,109 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.Set;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class eqc extends epz {
-   public static final MapCodec<eqc> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(awm.a(lf.G).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
-            .and(b($$0))
+public class eqc {
+   private static final Codec<eqc> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               euj.a.optionalFieldOf("min").forGetter($$0x -> Optional.ofNullable($$0x.c)),
+               euj.a.optionalFieldOf("max").forGetter($$0x -> Optional.ofNullable($$0x.d))
+            )
             .apply($$0, eqc::new)
    );
-   private final awm<ctl> j;
-   private final boolean k;
+   public static final Codec<eqc> a = Codec.either(Codec.INT, b).xmap($$0 -> (eqc)$$0.map(eqc::a, Function.identity()), $$0 -> {
+      OptionalInt $$1 = $$0.b();
+      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
+   });
+   @Nullable
+   private final eui c;
+   @Nullable
+   private final eui d;
+   private final eqc.b e;
+   private final eqc.a f;
 
-   private eqc(awm<ctl> $$0, boolean $$1, int $$2, int $$3, List<esn> $$4, List<eqt> $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.j = $$0;
-      this.k = $$1;
+   public Set<esw<?>> a() {
+      Builder<esw<?>> $$0 = ImmutableSet.builder();
+      if (this.c != null) {
+         $$0.addAll(this.c.a());
+      }
+
+      if (this.d != null) {
+         $$0.addAll(this.d.a());
+      }
+
+      return $$0.build();
    }
 
-   @Override
-   public epy a() {
-      return epv.f;
+   private eqc(Optional<eui> $$0, Optional<eui> $$1) {
+      this($$0.orElse(null), $$1.orElse(null));
    }
 
-   @Override
-   public void a(Consumer<ctq> $$0, eph $$1) {
-      le.h.c(this.j).forEach($$1x -> $$0.accept(new ctq($$1x)));
-   }
-
-   private boolean a(eph $$0, Consumer<epw> $$1) {
-      if (!this.a($$0)) {
-         return false;
-      } else {
-         for (final ix<ctl> $$2 : le.h.c(this.j)) {
-            $$1.accept(new epz.c() {
-               @Override
-               public void a(Consumer<ctq> $$0, eph $$1) {
-                  $$0.accept(new ctq($$2));
-               }
-            });
+   private eqc(@Nullable eui $$0, @Nullable eui $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      if ($$0 == null) {
+         if ($$1 == null) {
+            this.e = ($$0x, $$1x) -> $$1x;
+            this.f = ($$0x, $$1x) -> true;
+         } else {
+            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
+            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
          }
-
-         return true;
+      } else if ($$1 == null) {
+         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
+         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
+      } else {
+         this.e = ($$2, $$3) -> ayu.a($$3, $$0.a($$2), $$1.a($$2));
+         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
       }
    }
 
-   @Override
-   public boolean expand(eph $$0, Consumer<epw> $$1) {
-      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
+   public static eqc a(int $$0) {
+      eug $$1 = eug.a((float)$$0);
+      return new eqc(Optional.of($$1), Optional.of($$1));
    }
 
-   public static epz.a<?> a(awm<ctl> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new eqc($$0, false, $$1, $$2, $$3, $$4));
+   public static eqc a(int $$0, int $$1) {
+      return new eqc(Optional.of(eug.a((float)$$0)), Optional.of(eug.a((float)$$1)));
    }
 
-   public static epz.a<?> b(awm<ctl> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new eqc($$0, true, $$1, $$2, $$3, $$4));
+   public static eqc b(int $$0) {
+      return new eqc(Optional.of(eug.a((float)$$0)), Optional.empty());
+   }
+
+   public static eqc c(int $$0) {
+      return new eqc(Optional.empty(), Optional.of(eug.a((float)$$0)));
+   }
+
+   public int a(eqd $$0, int $$1) {
+      return this.e.apply($$0, $$1);
+   }
+
+   public boolean b(eqd $$0, int $$1) {
+      return this.f.test($$0, $$1);
+   }
+
+   private OptionalInt b() {
+      return Objects.equals(this.c, this.d) && this.c instanceof eug $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
+         ? OptionalInt.of((int)$$0.c())
+         : OptionalInt.empty();
+   }
+
+   @FunctionalInterface
+   interface a {
+      boolean test(eqd var1, int var2);
+   }
+
+   @FunctionalInterface
+   interface b {
+      int apply(eqd var1, int var2);
    }
 }

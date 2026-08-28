@@ -1,74 +1,76 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.DoubleSupplier;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public class ggi implements gfw.a {
-   private final feb a;
-   private double b = Double.MIN_VALUE;
-   private List<brw> c = Collections.emptyList();
+public class ggi {
+   private final Long2ObjectMap<ggi.a> a = new Long2ObjectOpenHashMap();
 
-   public ggi(feb $$0) {
-      this.a = $$0;
-   }
+   @Nullable
+   public ggh a(dbt $$0, iz $$1, iz $$2, int $$3) {
+      int $$4 = kb.a($$1.u() - $$3);
+      int $$5 = kb.a($$1.w() - $$3);
+      int $$6 = kb.a($$2.u() + $$3);
+      int $$7 = kb.a($$2.w() + $$3);
+      ggi.a[][] $$8 = new ggi.a[$$6 - $$4 + 1][$$7 - $$5 + 1];
 
-   @Override
-   public void a(eyu $$0, gck $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ac.d();
-      if ($$5 - this.b > 1.0E8) {
-         this.b = $$5;
-         brw $$6 = this.a.j.m().g();
-         this.c = ImmutableList.copyOf($$6.dP().a_($$6, $$6.cK().g(16.0)));
-      }
-
-      cly $$7 = this.a.s;
-      if ($$7 != null && $$7.aE.isPresent()) {
-         this.a($$0, $$1, $$2, $$3, $$4, $$7, () -> 0.0, 1.0F, 0.0F, 0.0F);
-      }
-
-      for (brw $$8 : this.c) {
-         if ($$8 != $$7) {
-            this.a($$0, $$1, $$2, $$3, $$4, $$8, () -> this.a($$8), 0.0F, 1.0F, 0.0F);
+      for (int $$9 = $$4; $$9 <= $$6; $$9++) {
+         for (int $$10 = $$5; $$10 <= $$7; $$10++) {
+            $$8[$$9 - $$4][$$10 - $$5] = (ggi.a)this.a.computeIfAbsent(dba.c($$9, $$10), $$1x -> new ggi.a($$0.d(dba.a($$1x), dba.b($$1x))));
          }
       }
-   }
 
-   private void a(eyu $$0, gck $$1, double $$2, double $$3, double $$4, brw $$5, DoubleSupplier $$6, float $$7, float $$8, float $$9) {
-      $$5.aE.ifPresent($$10 -> {
-         double $$11 = $$6.getAsDouble();
-         io $$12 = $$5.aL();
-         this.a($$12, $$0, $$2, $$3, $$4, $$1, 0.02 + $$11, $$7, $$8, $$9);
-         io $$13 = $$5.aJ();
-         if (!$$13.equals($$12)) {
-            this.a($$13, $$0, $$2, $$3, $$4, $$1, 0.04 + $$11, 0.0F, 1.0F, 1.0F);
+      if (a($$1, $$2, $$4, $$5, $$8)) {
+         return null;
+      } else {
+         ggg[][] $$11 = new ggg[$$6 - $$4 + 1][$$7 - $$5 + 1];
+
+         for (int $$12 = $$4; $$12 <= $$6; $$12++) {
+            for (int $$13 = $$5; $$13 <= $$7; $$13++) {
+               $$11[$$12 - $$4][$$13 - $$5] = $$8[$$12 - $$4][$$13 - $$5].b();
+            }
          }
-      });
+
+         return new ggh($$0, $$4, $$5, $$11);
+      }
    }
 
-   private double a(brw $$0) {
-      return 0.02 * (double)(String.valueOf((double)$$0.al() + 0.132453657).hashCode() % 1000) / 1000.0;
+   private static boolean a(iz $$0, iz $$1, int $$2, int $$3, ggi.a[][] $$4) {
+      int $$5 = kb.a($$0.u());
+      int $$6 = kb.a($$0.w());
+      int $$7 = kb.a($$1.u());
+      int $$8 = kb.a($$1.w());
+
+      for (int $$9 = $$5; $$9 <= $$7; $$9++) {
+         for (int $$10 = $$6; $$10 <= $$8; $$10++) {
+            dud $$11 = $$4[$$9 - $$2][$$10 - $$3].a();
+            if (!$$11.a($$0.v(), $$1.v())) {
+               return false;
+            }
+         }
+      }
+
+      return true;
    }
 
-   private void a(io $$0, eyu $$1, double $$2, double $$3, double $$4, gck $$5, double $$6, float $$7, float $$8, float $$9) {
-      double $$10 = (double)$$0.u() - $$2 - 2.0 * $$6;
-      double $$11 = (double)$$0.v() - $$3 - 2.0 * $$6;
-      double $$12 = (double)$$0.w() - $$4 - 2.0 * $$6;
-      double $$13 = $$10 + 1.0 + 4.0 * $$6;
-      double $$14 = $$11 + 1.0 + 4.0 * $$6;
-      double $$15 = $$12 + 1.0 + 4.0 * $$6;
-      gci.a($$1, $$5.getBuffer(gcs.y()), $$10, $$11, $$12, $$13, $$14, $$15, $$7, $$8, $$9, 0.4F);
-      gci.a(
-         $$1,
-         $$5.getBuffer(gcs.y()),
-         this.a.r.a_($$0).b(this.a.r, $$0, eur.a()).a((double)$$0.u(), (double)$$0.v(), (double)$$0.w()),
-         -$$2,
-         -$$3,
-         -$$4,
-         $$7,
-         $$8,
-         $$9,
-         1.0F,
-         false
-      );
+   static final class a {
+      private final dud a;
+      @Nullable
+      private ggg b;
+
+      a(dud $$0) {
+         this.a = $$0;
+      }
+
+      public dud a() {
+         return this.a;
+      }
+
+      public ggg b() {
+         if (this.b == null) {
+            this.b = new ggg(this.a);
+         }
+
+         return this.b;
+      }
    }
 }

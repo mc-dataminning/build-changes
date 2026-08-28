@@ -1,49 +1,71 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class dr extends df<dr.a> {
+public abstract class dr<T extends dr.a> implements ap<T> {
+   private final Map<alj, Set<ap.a<T>>> a = Maps.newIdentityHashMap();
+
    @Override
-   public Codec<dr.a> a() {
-      return dr.a.a;
+   public final void a(alj $$0, ap.a<T> $$1) {
+      this.a.computeIfAbsent($$0, $$0x -> Sets.newHashSet()).add($$1);
    }
 
-   public void a(aqo $$0, clg $$1, ctq $$2) {
-      eph $$3 = br.b($$0, $$1);
-      this.a($$0, $$2x -> $$2x.a($$3, $$2));
+   @Override
+   public final void b(alj $$0, ap.a<T> $$1) {
+      Set<ap.a<T>> $$2 = this.a.get($$0);
+      if ($$2 != null) {
+         $$2.remove($$1);
+         if ($$2.isEmpty()) {
+            this.a.remove($$0);
+         }
+      }
    }
 
-   public static record a(Optional<bc> b, Optional<bc> c, Optional<ch> d) implements df.a {
-      public static final Codec<dr.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  br.b.optionalFieldOf("player").forGetter(dr.a::a),
-                  br.b.optionalFieldOf("villager").forGetter(dr.a::c),
-                  ch.a.optionalFieldOf("item").forGetter(dr.a::d)
-               )
-               .apply($$0, dr.a::new)
-      );
+   @Override
+   public final void a(alj $$0) {
+      this.a.remove($$0);
+   }
 
-      public static an<dr.a> b() {
-         return am.t.a(new dr.a(Optional.empty(), Optional.empty(), Optional.empty()));
+   protected void a(arc $$0, Predicate<T> $$1) {
+      alj $$2 = $$0.Q();
+      Set<ap.a<T>> $$3 = this.a.get($$2);
+      if ($$3 != null && !$$3.isEmpty()) {
+         eqd $$4 = bu.b($$0, $$0);
+         List<ap.a<T>> $$5 = null;
+
+         for (ap.a<T> $$6 : $$3) {
+            T $$7 = $$6.a();
+            if ($$1.test($$7)) {
+               Optional<bf> $$8 = $$7.a();
+               if ($$8.isEmpty() || $$8.get().a($$4)) {
+                  if ($$5 == null) {
+                     $$5 = Lists.newArrayList();
+                  }
+
+                  $$5.add($$6);
+               }
+            }
+         }
+
+         if ($$5 != null) {
+            for (ap.a<T> $$9 : $$5) {
+               $$9.a($$2);
+            }
+         }
       }
+   }
 
-      public static an<dr.a> a(br.a $$0) {
-         return am.t.a(new dr.a(Optional.of(br.a($$0)), Optional.empty(), Optional.empty()));
-      }
-
-      public boolean a(eph $$0, ctq $$1) {
-         return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || this.d.get().a($$1);
-      }
-
+   public interface a extends aq {
       @Override
-      public void a(bd $$0) {
-         df.a.super.a($$0);
-         $$0.a(this.c, ".villager");
+      default void a(bg $$0) {
+         $$0.a(this.a(), ".player");
       }
 
-      @Override
-      public Optional<bc> a() {
-         return this.b;
-      }
+      Optional<bf> a();
    }
 }

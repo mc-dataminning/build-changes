@@ -1,90 +1,30 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.systems.RenderSystem;
 
 public class gdl {
-   public float[] a;
-   public final int b;
+   public static final alb a = new alb("textures/gui/title/background/panorama_overlay.png");
+   private final ffa b;
+   private final gcx c;
+   private float d;
+   private float e;
 
-   public gdl(@Nullable float[] $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public gdl(gcx $$0) {
+      this.c = $$0;
+      this.b = ffa.Q();
    }
 
-   public float a(int $$0) {
-      if (this.a == null) {
-         throw new NullPointerException("uvs");
-      } else {
-         int $$1 = this.d($$0);
-         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
-      }
+   public void a(fgm $$0, int $$1, int $$2, float $$3, float $$4) {
+      float $$5 = (float)((double)$$4 * this.b.m.s().c());
+      this.d = a(this.d + $$5 * 0.1F, 360.0F);
+      this.e = a(this.e + $$5 * 0.001F, (float) (Math.PI * 2));
+      this.c.a(this.b, 10.0F, -this.d, $$3);
+      RenderSystem.enableBlend();
+      $$0.a(1.0F, 1.0F, 1.0F, $$3);
+      $$0.a(a, 0, 0, $$1, $$2, 0.0F, 0.0F, 16, 128, 16, 128);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.disableBlend();
    }
 
-   public float b(int $$0) {
-      if (this.a == null) {
-         throw new NullPointerException("uvs");
-      } else {
-         int $$1 = this.d($$0);
-         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
-      }
-   }
-
-   private int d(int $$0) {
-      return ($$0 + this.b / 90) % 4;
-   }
-
-   public int c(int $$0) {
-      return ($$0 + 4 - this.b / 90) % 4;
-   }
-
-   public void a(float[] $$0) {
-      if (this.a == null) {
-         this.a = $$0;
-      }
-   }
-
-   protected static class a implements JsonDeserializer<gdl> {
-      private static final int a = 0;
-
-      public gdl a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         float[] $$4 = this.b($$3);
-         int $$5 = this.a($$3);
-         return new gdl($$4, $$5);
-      }
-
-      protected int a(JsonObject $$0) {
-         int $$1 = axv.a($$0, "rotation", 0);
-         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
-            return $$1;
-         } else {
-            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
-         }
-      }
-
-      @Nullable
-      private float[] b(JsonObject $$0) {
-         if (!$$0.has("uv")) {
-            return null;
-         } else {
-            JsonArray $$1 = axv.v($$0, "uv");
-            if ($$1.size() != 4) {
-               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
-            } else {
-               float[] $$2 = new float[4];
-
-               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-                  $$2[$$3] = axv.e($$1.get($$3), "uv[" + $$3 + "]");
-               }
-
-               return $$2;
-            }
-         }
-      }
+   private static float a(float $$0, float $$1) {
+      return $$0 > $$1 ? $$0 - $$1 : $$0;
    }
 }

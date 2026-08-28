@@ -1,21 +1,18 @@
-public record act(wx b, wt.a c) implements ze<abq> {
-   public static final yv<wi, act> a = yv.a(wz.d, act::b, wt.a.a, act::e, act::new);
+import io.netty.buffer.ByteBuf;
 
-   @Override
-   public zg<act> a() {
-      return agc.C;
+public class act implements zs<ace> {
+   public static final act a = new act();
+   public static final zj<ByteBuf, act> b = zj.a(a);
+
+   private act() {
    }
 
-   public void a(abq $$0) {
+   @Override
+   public zu<act> a() {
+      return agq.o;
+   }
+
+   public void a(ace $$0) {
       $$0.a(this);
-   }
-
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   public wt.a e() {
-      return this.c;
    }
 }

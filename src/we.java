@@ -1,38 +1,17 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToMessageDecoder;
+import java.util.List;
+import javax.crypto.Cipher;
 
-public interface we {
-   static we a(final Runnable $$0) {
-      return new we() {
-         @Override
-         public void a() {
-            $$0.run();
-         }
+public class we extends MessageToMessageDecoder<ByteBuf> {
+   private final wd a;
 
-         @Nullable
-         @Override
-         public ze<?> b() {
-            $$0.run();
-            return null;
-         }
-      };
+   public we(Cipher $$0) {
+      this.a = new wd($$0);
    }
 
-   static we a(final Supplier<ze<?>> $$0) {
-      return new we() {
-         @Nullable
-         @Override
-         public ze<?> b() {
-            return $$0.get();
-         }
-      };
-   }
-
-   default void a() {
-   }
-
-   @Nullable
-   default ze<?> b() {
-      return null;
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
+      $$2.add(this.a.a($$0, $$1));
    }
 }

@@ -1,49 +1,105 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class dlh extends dcv {
-   public static final MapCodec<dlh> c = b(dlh::new);
+public enum dlh implements azp {
+   a("none", h.a),
+   b("clockwise_90", h.u),
+   c("180", h.c),
+   d("counterclockwise_90", h.v);
 
-   @Override
-   public MapCodec<dlh> a() {
-      return c;
+   public static final Codec<dlh> e = azp.a(dlh::values);
+   private final String f;
+   private final h g;
+
+   private dlh(final String $$0, final h $$1) {
+      this.f = $$0;
+      this.g = $$1;
    }
 
-   protected dlh(drc.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public doi a(io $$0, drd $$1) {
-      return new dpv($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends doi> doj<T> a(daz $$0, drd $$1, dok<T> $$2) {
-      return a($$0, $$2, dok.B);
-   }
-
-   @Override
-   protected void a(daz $$0, io $$1, cly $$2) {
-      doi $$3 = $$0.c_($$1);
-      if ($$3 instanceof dpv) {
-         $$2.a((bqa)$$3);
-         $$2.a(avs.at);
+   public dlh a(dlh $$0) {
+      switch ($$0) {
+         case c:
+            switch (this) {
+               case a:
+                  return c;
+               case b:
+                  return d;
+               case c:
+                  return a;
+               case d:
+                  return b;
+            }
+         case d:
+            switch (this) {
+               case a:
+                  return d;
+               case b:
+                  return a;
+               case c:
+                  return b;
+               case d:
+                  return c;
+            }
+         case b:
+            switch (this) {
+               case a:
+                  return b;
+               case b:
+                  return c;
+               case c:
+                  return d;
+               case d:
+                  return a;
+            }
+         default:
+            return this;
       }
    }
 
-   @Override
-   public void a(drd $$0, daz $$1, io $$2, aym $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, avi.yh, avj.e, 1.0F, 1.0F, false);
+   public h a() {
+      return this.g;
+   }
+
+   public je a(je $$0) {
+      if ($$0.o() == je.a.b) {
+         return $$0;
+      } else {
+         switch (this) {
+            case b:
+               return $$0.h();
+            case c:
+               return $$0.g();
+            case d:
+               return $$0.i();
+            default:
+               return $$0;
          }
-
-         $$1.a(ky.ae, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
       }
+   }
+
+   public int a(int $$0, int $$1) {
+      switch (this) {
+         case b:
+            return ($$0 + $$1 / 4) % $$1;
+         case c:
+            return ($$0 + $$1 / 2) % $$1;
+         case d:
+            return ($$0 + $$1 * 3 / 4) % $$1;
+         default:
+            return $$0;
+      }
+   }
+
+   public static dlh a(azc $$0) {
+      return ac.a(values(), $$0);
+   }
+
+   public static List<dlh> b(azc $$0) {
+      return ac.b(values(), $$0);
+   }
+
+   @Override
+   public String c() {
+      return this.f;
    }
 }

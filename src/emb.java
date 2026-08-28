@@ -1,74 +1,157 @@
-import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
-import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import com.google.common.collect.Lists;
 import java.util.List;
+import javax.annotation.Nullable;
 
 public class emb {
-   private final emc[] a;
-   private final double b;
-   private final double c;
+   private djr a;
+   private dlh b;
+   private iz c;
+   private boolean d;
+   @Nullable
+   private ehx e;
+   private boolean f;
+   @Nullable
+   private azc g;
+   private int h;
+   private final List<emc> i;
+   private boolean j;
+   private boolean k;
 
-   public emb(aym $$0, List<Integer> $$1) {
-      this($$0, new IntRBTreeSet($$1));
+   public emb() {
+      this.a = djr.a;
+      this.b = dlh.a;
+      this.c = iz.c;
+      this.f = true;
+      this.i = Lists.newArrayList();
    }
 
-   private emb(aym $$0, IntSortedSet $$1) {
-      if ($$1.isEmpty()) {
-         throw new IllegalArgumentException("Need some octaves!");
+   public emb a() {
+      emb $$0 = new emb();
+      $$0.a = this.a;
+      $$0.b = this.b;
+      $$0.c = this.c;
+      $$0.d = this.d;
+      $$0.e = this.e;
+      $$0.f = this.f;
+      $$0.g = this.g;
+      $$0.h = this.h;
+      $$0.i.addAll(this.i);
+      $$0.j = this.j;
+      $$0.k = this.k;
+      return $$0;
+   }
+
+   public emb a(djr $$0) {
+      this.a = $$0;
+      return this;
+   }
+
+   public emb a(dlh $$0) {
+      this.b = $$0;
+      return this;
+   }
+
+   public emb a(iz $$0) {
+      this.c = $$0;
+      return this;
+   }
+
+   public emb a(boolean $$0) {
+      this.d = $$0;
+      return this;
+   }
+
+   public emb a(ehx $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   public emb a(@Nullable azc $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public emb b(boolean $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public emb c(boolean $$0) {
+      this.j = $$0;
+      return this;
+   }
+
+   public emb b() {
+      this.i.clear();
+      return this;
+   }
+
+   public emb a(emc $$0) {
+      this.i.add($$0);
+      return this;
+   }
+
+   public emb b(emc $$0) {
+      this.i.remove($$0);
+      return this;
+   }
+
+   public djr c() {
+      return this.a;
+   }
+
+   public dlh d() {
+      return this.b;
+   }
+
+   public iz e() {
+      return this.c;
+   }
+
+   public azc b(@Nullable iz $$0) {
+      if (this.g != null) {
+         return this.g;
       } else {
-         int $$2 = -$$1.firstInt();
-         int $$3 = $$1.lastInt();
-         int $$4 = $$2 + $$3 + 1;
-         if ($$4 < 1) {
-            throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
-         } else {
-            emc $$5 = new emc($$0);
-            int $$6 = $$3;
-            this.a = new emc[$$4];
-            if ($$3 >= 0 && $$3 < $$4 && $$1.contains(0)) {
-               this.a[$$3] = $$5;
-            }
-
-            for (int $$7 = $$3 + 1; $$7 < $$4; $$7++) {
-               if ($$7 >= 0 && $$1.contains($$6 - $$7)) {
-                  this.a[$$7] = new emc($$0);
-               } else {
-                  $$0.b(262);
-               }
-            }
-
-            if ($$3 > 0) {
-               long $$8 = (long)($$5.a($$5.b, $$5.c, $$5.d) * 9.223372E18F);
-               aym $$9 = new dxu(new dww($$8));
-
-               for (int $$10 = $$6 - 1; $$10 >= 0; $$10--) {
-                  if ($$10 < $$4 && $$1.contains($$6 - $$10)) {
-                     this.a[$$10] = new emc($$9);
-                  } else {
-                     $$9.b(262);
-                  }
-               }
-            }
-
-            this.c = Math.pow(2.0, (double)$$3);
-            this.b = 1.0 / (Math.pow(2.0, (double)$$4) - 1.0);
-         }
+         return $$0 == null ? azc.a(ac.c()) : azc.a(ayu.a($$0));
       }
    }
 
-   public double a(double $$0, double $$1, boolean $$2) {
-      double $$3 = 0.0;
-      double $$4 = this.c;
-      double $$5 = this.b;
+   public boolean f() {
+      return this.d;
+   }
 
-      for (emc $$6 : this.a) {
-         if ($$6 != null) {
-            $$3 += $$6.a($$0 * $$4 + ($$2 ? $$6.b : 0.0), $$1 * $$4 + ($$2 ? $$6.c : 0.0)) * $$5;
-         }
+   @Nullable
+   public ehx g() {
+      return this.e;
+   }
 
-         $$4 /= 2.0;
-         $$5 *= 2.0;
+   public boolean h() {
+      return this.j;
+   }
+
+   public List<emc> i() {
+      return this.i;
+   }
+
+   public boolean j() {
+      return this.f;
+   }
+
+   public emf.a a(List<emf.a> $$0, @Nullable iz $$1) {
+      int $$2 = $$0.size();
+      if ($$2 == 0) {
+         throw new IllegalStateException("No palettes");
+      } else {
+         return $$0.get(this.b($$1).a($$2));
       }
+   }
 
-      return $$3;
+   public emb d(boolean $$0) {
+      this.k = $$0;
+      return this;
+   }
+
+   public boolean k() {
+      return this.k;
    }
 }

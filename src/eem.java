@@ -1,49 +1,49 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record eem(eee b, List<eem.a> c) {
-   public static final Codec<eem> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eee.a.fieldOf("fallback").forGetter(eem::a), eem.a.a.listOf().fieldOf("rules").forGetter(eem::b)).apply($$0, eem::new)
+public class eem extends eej {
+   public static final MapCodec<eem> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(bpu.b(0, 24).fieldOf("crown_height").forGetter($$0x -> $$0x.b)).apply($$0, eem::new)
    );
+   private final bpu b;
 
-   public static eem a(eee $$0) {
-      return new eem($$0, List.of());
+   public eem(bpu $$0, bpu $$1, bpu $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
-   public static eem a(dea $$0) {
-      return a(eee.a($$0));
+   @Override
+   protected eek<?> a() {
+      return eek.h;
    }
 
-   public drd a(dbu $$0, aym $$1, io $$2) {
-      for (eem.a $$3 : this.c) {
-         if ($$3.a().test($$0, $$2)) {
-            return $$3.b().a($$1, $$2);
+   @Override
+   protected void a(dbz $$0, eej.b $$1, azc $$2, edt $$3, int $$4, eej.a $$5, int $$6, int $$7, int $$8) {
+      iz $$9 = $$5.a();
+      int $$10 = 0;
+
+      for (int $$11 = $$9.v() - $$6 + $$8; $$11 <= $$9.v() + $$8; $$11++) {
+         int $$12 = $$9.v() - $$11;
+         int $$13 = $$7 + $$5.b() + ayu.d((float)$$12 / (float)$$6 * 3.5F);
+         int $$14;
+         if ($$12 > 0 && $$13 == $$10 && ($$11 & 1) == 0) {
+            $$14 = $$13 + 1;
+         } else {
+            $$14 = $$13;
          }
-      }
 
-      return this.b.a($$1, $$2);
+         this.a($$0, $$1, $$2, $$3, new iz($$9.u(), $$11, $$9.w()), $$14, 0, $$5.c());
+         $$10 = $$13;
+      }
    }
 
-   public eee a() {
-      return this.b;
+   @Override
+   public int a(azc $$0, int $$1, edt $$2) {
+      return this.b.a($$0);
    }
 
-   public List<eem.a> b() {
-      return this.c;
-   }
-
-   public static record a(dyc b, eee c) {
-      public static final Codec<eem.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(dyc.b.fieldOf("if_true").forGetter(eem.a::a), eee.a.fieldOf("then").forGetter(eem.a::b)).apply($$0, eem.a::new)
-      );
-
-      public dyc a() {
-         return this.b;
-      }
-
-      public eee b() {
-         return this.c;
-      }
+   @Override
+   protected boolean a(azc $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
    }
 }

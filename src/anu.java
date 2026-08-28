@@ -1,56 +1,38 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
 
 public class anu {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wx.b("commands.ride.not_riding", $$0));
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> wx.b("commands.ride.already_riding", $$0, $$1));
-   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> wx.b("commands.ride.mount.failure.generic", $$0, $$1));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wx.c("commands.ride.mount.failure.cant_ride_players"));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wx.c("commands.ride.mount.failure.loop"));
-   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(wx.c("commands.ride.mount.failure.wrong_dimension"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xl.c("commands.op.failed"));
 
-   public static void a(CommandDispatcher<ee> $$0) {
+   public static void a(CommandDispatcher<ep> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("ride").requires($$0x -> $$0x.c(2)))
-            .then(
-               ((RequiredArgumentBuilder)ef.a("target", er.a())
-                     .then(ef.a("mount").then(ef.a("vehicle", er.a()).executes($$0x -> a((ee)$$0x.getSource(), er.a($$0x, "target"), er.a($$0x, "vehicle"))))))
-                  .then(ef.a("dismount").executes($$0x -> a((ee)$$0x.getSource(), er.a($$0x, "target"))))
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("op").requires($$0x -> $$0x.c(3))).then(eq.a("targets", fe.a()).suggests(($$0x, $$1) -> {
+            auz $$2 = ((ep)$$0x.getSource()).l().ah();
+            return eu.b($$2.t().stream().filter($$1x -> !$$2.f($$1x.gb())).map($$0xx -> $$0xx.gb().getName()), $$1);
+         }).executes($$0x -> a((ep)$$0x.getSource(), fe.a($$0x, "targets"))))
       );
    }
 
-   private static int a(ee $$0, brw $$1, brw $$2) throws CommandSyntaxException {
-      brw $$3 = $$1.dc();
-      if ($$3 != null) {
-         throw b.create($$1.O_(), $$3.O_());
-      } else if ($$2.ak() == bsc.by) {
-         throw d.create();
-      } else if ($$1.cU().anyMatch($$1x -> $$1x == $$2)) {
-         throw e.create();
-      } else if ($$1.dP() != $$2.dP()) {
-         throw f.create();
-      } else if (!$$1.a($$2, true)) {
-         throw c.create($$1.O_(), $$2.O_());
-      } else {
-         $$0.a(() -> wx.a("commands.ride.mount.success", $$1.O_(), $$2.O_()), true);
-         return 1;
-      }
-   }
+   private static int a(ep $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      auz $$2 = $$0.l().ah();
+      int $$3 = 0;
 
-   private static int a(ee $$0, brw $$1) throws CommandSyntaxException {
-      brw $$2 = $$1.dc();
-      if ($$2 == null) {
-         throw a.create($$1.O_());
+      for (GameProfile $$4 : $$1) {
+         if (!$$2.f($$4)) {
+            $$2.a($$4);
+            $$3++;
+            $$0.a(() -> xl.a("commands.op.success", $$1.iterator().next().getName()), true);
+         }
+      }
+
+      if ($$3 == 0) {
+         throw a.create();
       } else {
-         $$1.ac();
-         $$0.a(() -> wx.a("commands.ride.dismount.success", $$1.O_(), $$2.O_()), true);
-         return 1;
+         return $$3;
       }
    }
 }

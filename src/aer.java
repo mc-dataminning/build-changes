@@ -1,37 +1,28 @@
-public class aer implements ze<abq> {
-   public static final yv<vx, aer> a = ze.a(aer::a, aer::new);
-   private final int b;
-   private final int c;
+import javax.annotation.Nullable;
 
-   public aer(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public record aer(String b, @Nullable String c) implements zs<ace> {
+   public static final zj<wl, aer> a = zs.a(aer::a, aer::new);
+
+   private aer(wl $$0) {
+      this($$0.p(), $$0.c(wl::p));
    }
 
-   private aer(vx $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-   }
-
-   private void a(vx $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
+   private void a(wl $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c, wl::a);
    }
 
    @Override
-   public zg<aer> a() {
-      return agc.ay;
+   public zu<aer> a() {
+      return agq.ce;
    }
 
-   public void a(abq $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
+   @Nullable
+   public String e() {
       return this.c;
    }
 }

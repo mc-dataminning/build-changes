@@ -1,59 +1,114 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class cur extends csf {
-   protected static final Map<dea, drd> a = Maps.newHashMap(
-      new Builder()
-         .put(dec.i, dec.kE.n())
-         .put(dec.j, dec.kE.n())
-         .put(dec.l, dec.kE.n())
-         .put(dec.k, dec.kE.n())
-         .put(dec.fl, dec.kE.n())
-         .put(dec.sH, dec.kE.n())
-         .build()
-   );
+public class cur extends cuf {
+   private static final int b = 6;
+   private static final float c = -2.4F;
+   private static final float j = 1.5F;
+   private static final float k = 5.0F;
+   public static final float a = 3.5F;
+   private static final float l = 0.7F;
+   private static final float m = 3.0F;
 
-   public cur(cvf $$0, ctl.a $$1) {
-      super($$0, avx.bD, $$1);
+   public cur(cuf.a $$0) {
+      super($$0);
+   }
+
+   public static cxf h() {
+      return cxf.a().a(bus.c, new buq(e, "Weapon modifier", 6.0, buq.a.a), bsx.b).a(bus.e, new buq(f, "Weapon modifier", -2.4F, buq.a.a), bsx.b).a();
+   }
+
+   public static cxp k() {
+      return new cxp(List.of(), 1.0F, 2);
    }
 
    @Override
-   public bpw a(cxd $$0) {
-      daz $$1 = $$0.q();
-      io $$2 = $$0.a();
-      drd $$3 = $$1.a_($$2);
-      if ($$0.k() == it.a) {
-         return bpw.d;
-      } else {
-         cly $$4 = $$0.o();
-         drd $$5 = a.get($$3.b());
-         drd $$6 = null;
-         if ($$5 != null && $$1.a_($$2.c()).i()) {
-            $$1.a($$4, $$2, avi.wH, avj.e, 1.0F, 1.0F);
-            $$6 = $$5;
-         } else if ($$3.b() instanceof deo && $$3.c(deo.c)) {
-            if (!$$1.x_()) {
-               $$1.a(null, 1009, $$2, 0);
-            }
+   public boolean a(drx $$0, dbt $$1, iz $$2, cms $$3) {
+      return !$$3.f();
+   }
 
-            deo.a($$0.o(), $$1, $$2, $$3);
-            $$6 = $$3.a(deo.c, Boolean.valueOf(false));
-         }
+   @Override
+   public int g() {
+      return 15;
+   }
 
-         if ($$6 != null) {
-            if (!$$1.B) {
-               $$1.a($$2, $$6, 11);
-               $$1.a(dvw.c, $$2, dvw.a.a($$4, $$6));
-               if ($$4 != null) {
-                  $$0.n().a(1, $$4, bsq.d($$0.p()));
-               }
-            }
-
-            return bpw.a($$1.B);
+   @Override
+   public boolean a(cuk $$0, btk $$1, btk $$2) {
+      $$0.a(1, $$2, bsw.a);
+      if ($$2 instanceof arc $$3 && a($$3)) {
+         arb $$4 = (arb)$$2.dP();
+         $$3.cv = $$3.dn();
+         $$3.cx = true;
+         $$3.h($$3.ds().a(je.a.b, 0.01F));
+         $$3.c.b(new afl($$3));
+         if ($$1.aE()) {
+            $$3.b(true);
+            avv $$5 = $$3.ac > 5.0F ? avw.oq : avw.op;
+            $$4.a(null, $$3.du(), $$3.dw(), $$3.dA(), $$5, $$3.de(), 1.0F, 1.0F);
          } else {
-            return bpw.d;
+            $$4.a(null, $$3.du(), $$3.dw(), $$3.dA(), avw.oo, $$3.de(), 1.0F, 1.0F);
          }
+
+         a($$4, $$3, $$1);
+         return true;
       }
+
+      return false;
+   }
+
+   @Override
+   public boolean a(cuk $$0, cuk $$1) {
+      return $$1.a(cun.yD);
+   }
+
+   @Override
+   public float a(cms $$0, float $$1) {
+      int $$2 = czw.a(czy.L, $$0);
+      float $$3 = czt.a($$2, $$0.ac);
+      return a($$0) ? 3.0F * $$0.ac + $$3 : 0.0F;
+   }
+
+   private static void a(dbt $$0, cms $$1, bsp $$2) {
+      $$0.c(2013, $$2.aL(), 750);
+      $$0.a(btk.class, $$2.cK().g(3.5), a($$1, $$2)).forEach($$2x -> {
+         evm $$3 = $$2x.dn().d($$2.dn());
+         double $$4 = a($$1, $$2x, $$3);
+         evm $$5 = $$3.d().a($$4);
+         if ($$4 > 0.0) {
+            $$2x.j($$5.c, 0.7F, $$5.e);
+         }
+      });
+   }
+
+   private static Predicate<btk> a(cms $$0, bsp $$1) {
+      return $$2 -> {
+         boolean $$3;
+         boolean $$4;
+         boolean $$5;
+         boolean var10000;
+         label44: {
+            $$3 = !$$2.N_();
+            $$4 = $$2 != $$0 && $$2 != $$1;
+            $$5 = !$$0.s($$2);
+            if ($$2 instanceof cis $$6 && $$6.z()) {
+               var10000 = false;
+               break label44;
+            }
+
+            var10000 = true;
+         }
+
+         boolean $$8 = var10000;
+         boolean $$9 = $$1.g($$2) <= Math.pow(3.5, 2.0);
+         return $$3 && $$4 && $$5 && $$8 && $$9;
+      };
+   }
+
+   private static double a(cms $$0, btk $$1, evm $$2) {
+      return (3.5 - $$2.f()) * 0.7F * (double)($$0.ac > 5.0F ? 2 : 1) * (1.0 - $$1.g(bus.n));
+   }
+
+   public static boolean a(cms $$0) {
+      return $$0.ac > 1.5F && !$$0.fE();
    }
 }

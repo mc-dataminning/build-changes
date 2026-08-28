@@ -1,97 +1,59 @@
-import it.unimi.dsi.fastutil.HashCommon;
-import java.util.Arrays;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
 import java.util.Collection;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public final class col {
-   private static final col b = new col(null, 0L);
-   public static final int a = 64;
-   @Nullable
-   private final com c;
-   private final long d;
+public class col {
+   private final List<coi> a = Lists.newArrayList();
+   private int b;
 
-   private col(@Nullable com $$0, long $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public ImmutableList<coi> a() {
+      return ImmutableList.copyOf(this.a);
    }
 
-   static col a(com $$0, Collection<coj> $$1) {
-      if ($$1.isEmpty()) {
-         return b;
+   public col a(int $$0, float $$1) {
+      this.a.add(new coi($$0, $$1));
+      this.b();
+      return this;
+   }
+
+   public col a(Collection<coi> $$0) {
+      this.a.addAll($$0);
+      this.b();
+      return this;
+   }
+
+   private void b() {
+      Int2ObjectSortedMap<coi> $$0 = new Int2ObjectAVLTreeMap();
+      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
+      this.a.clear();
+      this.a.addAll($$0.values());
+      this.b = 0;
+   }
+
+   public float a(int $$0) {
+      if (this.a.size() <= 0) {
+         return 0.0F;
       } else {
-         long $$2 = a($$0, 0L, $$1);
-         return new col($$0, $$2);
-      }
-   }
+         coi $$1 = this.a.get(this.b);
+         coi $$2 = this.a.get(this.a.size() - 1);
+         boolean $$3 = $$0 < $$1.a();
+         int $$4 = $$3 ? 0 : this.b;
+         float $$5 = $$3 ? $$2.b() : $$1.b();
 
-   public static col a() {
-      return b;
-   }
+         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
+            coi $$7 = this.a.get($$6);
+            if ($$7.a() > $$0) {
+               break;
+            }
 
-   public static col a(coj $$0) {
-      return new col($$0.a, $$0.b);
-   }
-
-   public static col a(coj $$0, coj... $$1) {
-      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
-      return new col($$0.a, $$2);
-   }
-
-   private static long a(com $$0, long $$1, Iterable<coj> $$2) {
-      for (coj $$3 : $$2) {
-         if ($$0 != $$3.a) {
-            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
+            this.b = $$6;
+            $$5 = $$7.b();
          }
 
-         $$1 |= $$3.b;
+         return $$5;
       }
-
-      return $$1;
-   }
-
-   public boolean b(coj $$0) {
-      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
-   }
-
-   public boolean b() {
-      return this.equals(b);
-   }
-
-   public boolean a(col $$0) {
-      if (this.c == null) {
-         return true;
-      } else {
-         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
-      }
-   }
-
-   public col b(col $$0) {
-      if (this.c == null) {
-         return $$0;
-      } else if ($$0.c == null) {
-         return this;
-      } else if (this.c != $$0.c) {
-         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
-      } else {
-         return new col(this.c, this.d | $$0.d);
-      }
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof col $$1 && this.c == $$1.c && this.d == $$1.d) {
-            return true;
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return (int)HashCommon.mix(this.d);
    }
 }

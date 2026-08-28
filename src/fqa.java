@@ -1,59 +1,63 @@
-import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class fqa extends fpw<fxu.a> {
-   private static final int y = 120;
-   private static final wx z = wx.c("gui.abuseReport.name.title");
-   private final fjr A = fjr.d().a(8);
-   private fgs B;
-   private fga C;
+public abstract class fqa extends fmy {
+   private static final int b = 100;
+   private final xl c;
+   @Nullable
+   private final xl d;
+   private final xl r;
+   @Nullable
+   protected fhb a;
+   @Nullable
+   private fhk s;
+   private final fkk u;
 
-   private fqa(flz $$0, fxz $$1, fxu.a $$2) {
-      super(z, $$0, $$1, $$2);
+   protected fqa(xl $$0, xl $$1, xl $$2) {
+      this($$0, $$1, null, $$2);
    }
 
-   public fqa(flz $$0, fxz $$1, UUID $$2, String $$3) {
-      this($$0, $$1, new fxu.a($$2, $$3, $$1.a().b()));
+   protected fqa(xl $$0, xl $$1, @Nullable xl $$2, xl $$3) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
+      this.r = $$3;
+      this.u = new fkk(0, 0, this.n, this.o);
    }
 
-   public fqa(flz $$0, fxz $$1, fxu $$2) {
-      this($$0, $$1, new fxu.a($$2, $$1.a().b()));
-   }
+   protected abstract fkn m();
 
    @Override
    protected void aN_() {
-      this.A.c().b();
-      this.A.a(new fhh(this.l, this.p));
-      wx $$0 = wx.b(this.x.e().a()).a(n.o);
-      this.A.a(new fhh(wx.a("gui.abuseReport.name.reporting", $$0), this.p), $$0x -> $$0x.a().a(0, 8));
-      this.B = this.a(280, 9 * 8, $$0x -> {
-         this.x.a($$0x);
-         this.C();
-      });
-      this.A.a(fjj.a(this.p, this.B, d, $$0x -> $$0x.e(12)));
-      fjr $$1 = this.A.a(fjr.e().a(8));
-      $$1.a(fga.a(ww.k, $$0x -> this.d()).a(120).a());
-      this.C = $$1.a(fga.a(a, $$0x -> this.m()).a(120).a());
-      this.C();
-      this.A.a($$1x -> {
-         ffy var10000 = this.c($$1x);
+      fkq $$0 = this.u.a(fkq.d().a(8));
+      $$0.c().b();
+      $$0.a(new fig(this.n(), this.p));
+      this.s = $$0.a(new fhk(this.n - 100, this.c, this.p, 12), $$0x -> $$0x.a(12));
+      this.s.b(false);
+      fkq $$1 = $$0.a(fkq.d().a(8));
+      $$1.c().b();
+      if (this.d != null) {
+         this.a = $$1.a(fhb.a(this.d, this.p).a());
+      }
+
+      $$1.a(this.m());
+      this.u.a($$1x -> {
+         fgx var10000 = this.c($$1x);
       });
       this.c();
    }
 
    @Override
    protected void c() {
-      this.A.a();
-      fjl.a(this.A, this.G());
-   }
+      if (this.s != null) {
+         this.s.d(this.n - 100);
+      }
 
-   private void C() {
-      fxv.b $$0 = this.x.c();
-      this.C.j = $$0 == null;
-      this.C.a(x.a($$0, fxv.b::a));
+      this.u.a();
+      fkk.a(this.u, this.G());
    }
 
    @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return super.b($$0, $$1, $$2) ? true : this.B.b($$0, $$1, $$2);
+   public xl i() {
+      return this.r;
    }
 }

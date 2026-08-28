@@ -1,30 +1,27 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class egy extends egr {
+public class egy extends ehl {
    public static final MapCodec<egy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.INT.fieldOf("max_water_depth").forGetter($$0x -> $$0x.c)).apply($$0, egy::new)
+      $$0 -> $$0.group(dyw.b.fieldOf("predicate").forGetter($$0x -> $$0x.c)).apply($$0, egy::new)
    );
-   private final int c;
+   private final dyw c;
 
-   private egy(int $$0) {
+   private egy(dyw $$0) {
       this.c = $$0;
    }
 
-   public static egy a(int $$0) {
+   public static egy a(dyw $$0) {
       return new egy($$0);
    }
 
    @Override
-   protected boolean a(egq $$0, aym $$1, io $$2) {
-      int $$3 = $$0.a(dwv.a.d, $$2.u(), $$2.w());
-      int $$4 = $$0.a(dwv.a.b, $$2.u(), $$2.w());
-      return $$4 - $$3 <= this.c;
+   protected boolean a(ehk $$0, azc $$1, iz $$2) {
+      return this.c.test($$0.d(), $$2);
    }
 
    @Override
-   public egt<?> b() {
-      return egt.d;
+   public ehn<?> b() {
+      return ehn.a;
    }
 }

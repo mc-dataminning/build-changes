@@ -1,16 +1,32 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class ecw implements ecd {
-   public static final Codec<ecw> a = axn.b(egp.c).fieldOf("features").xmap(ecw::new, $$0 -> $$0.b).codec();
-   public final jb<egp> b;
+public class ecw implements ecx {
+   public static final Codec<ecw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(iz.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, ecw::new)
+   );
+   private final Optional<iz> b;
+   private final boolean c;
 
-   public ecw(jb<egp> $$0) {
+   private ecw(Optional<iz> $$0, boolean $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   public Stream<dzm<?, ?>> e() {
-      return this.b.a().flatMap($$0 -> $$0.a().a());
+   public static ecw a(iz $$0, boolean $$1) {
+      return new ecw(Optional.of($$0), $$1);
+   }
+
+   public static ecw a() {
+      return new ecw(Optional.empty(), false);
+   }
+
+   public Optional<iz> b() {
+      return this.b;
+   }
+
+   public boolean c() {
+      return this.c;
    }
 }

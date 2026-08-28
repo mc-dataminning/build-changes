@@ -1,53 +1,42 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dlv extends dla {
-   public static final MapCodec<dlv> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dsq.a.fieldOf("wood_type").forGetter(dla::d), u()).apply($$0, dlv::new));
-   public static final dsd b = drt.ba;
-
+public interface dlv extends dfb, djl {
    @Override
-   public MapCodec<dlv> a() {
-      return a;
-   }
-
-   public dlv(dsq $$0, drc.d $$1) {
-      super($$0, $$1.a($$0.d()));
-      this.k(this.E.b().a(b, Integer.valueOf(0)).a(f, Boolean.valueOf(false)));
+   default boolean a(@Nullable cms $$0, daz $$1, iz $$2, drx $$3, enp $$4) {
+      return $$4 == enr.c;
    }
 
    @Override
-   protected boolean a(drd $$0, dbc $$1, io $$2) {
-      return $$1.a_($$2.d()).e();
+   default boolean a(dbu $$0, iz $$1, drx $$2, enq $$3) {
+      if (!$$2.c(dsn.C) && $$3.a() == enr.c) {
+         if (!$$0.x_()) {
+            $$0.a($$1, $$2.a(dsn.C, Boolean.valueOf(true)), 3);
+            $$0.a($$1, $$3.a(), $$3.a().a($$0));
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 
    @Override
-   public drd a(cxb $$0) {
-      emw $$1 = $$0.q().b_($$0.a());
-      return this.n().a(b, Integer.valueOf(dsj.a($$0.i() + 180.0F))).a(f, Boolean.valueOf($$1.a() == emx.c));
+   default cuk a(@Nullable cms $$0, dbu $$1, iz $$2, drx $$3) {
+      if ($$3.c(dsn.C)) {
+         $$1.a($$2, $$3.a(dsn.C, Boolean.valueOf(false)), 3);
+         if (!$$3.a($$1, $$2)) {
+            $$1.b($$2, true);
+         }
+
+         return new cuk(cun.qz);
+      } else {
+         return cuk.l;
+      }
    }
 
    @Override
-   protected drd a(drd $$0, it $$1, drd $$2, dba $$3, io $$4, io $$5) {
-      return $$1 == it.a && !this.a($$0, $$3, $$4) ? dec.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public float g(drd $$0) {
-      return dsj.b($$0.c(b));
-   }
-
-   @Override
-   protected drd a(drd $$0, dkn $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
-
-   @Override
-   protected drd a(drd $$0, dix $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
-
-   @Override
-   protected void a(dre.a<dea, drd> $$0) {
-      $$0.a(b, f);
+   default Optional<avv> at_() {
+      return enr.c.j();
    }
 }

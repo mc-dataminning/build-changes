@@ -1,182 +1,72 @@
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-import org.apache.commons.lang3.ArrayUtils;
+import java.util.function.Consumer;
 
-public class uh extends uc<ui> {
-   private static final int b = 24;
-   public static final vc<uh> a = new vc.b<uh>() {
-      public uh a(DataInput $$0, um $$1) throws IOException {
-         return new uh(d($$0, $$1));
-      }
-
-      @Override
-      public ux.b a(DataInput $$0, ux $$1, um $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
-      }
-
-      private static int[] d(DataInput $$0, um $$1) throws IOException {
-         $$1.b(24L);
-         int $$2 = $$0.readInt();
-         $$1.a(4L, (long)$$2);
-         int[] $$3 = new int[$$2];
-
-         for (int $$4 = 0; $$4 < $$2; $$4++) {
-            $$3[$$4] = $$0.readInt();
-         }
-
-         return $$3;
-      }
-
-      @Override
-      public void b(DataInput $$0, um $$1) throws IOException {
-         $$0.skipBytes($$0.readInt() * 4);
-      }
-
-      @Override
-      public String a() {
-         return "INT[]";
-      }
-
-      @Override
-      public String b() {
-         return "TAG_Int_Array";
-      }
-   };
-   private int[] c;
-
-   public uh(int[] $$0) {
-      this.c = $$0;
+public record uh(String a, String b, String c, dlh d, int e, long f, boolean g, boolean h, int i, int j, boolean k, Consumer<tm> l) {
+   public uh(String $$0, String $$1, String $$2, int $$3, long $$4, boolean $$5, Consumer<tm> $$6) {
+      this($$0, $$1, $$2, dlh.a, $$3, $$4, $$5, false, 1, 1, false, $$6);
    }
 
-   public uh(List<Integer> $$0) {
-      this(a($$0));
+   public uh(String $$0, String $$1, String $$2, dlh $$3, int $$4, long $$5, boolean $$6, Consumer<tm> $$7) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, 1, 1, false, $$7);
    }
 
-   private static int[] a(List<Integer> $$0) {
-      int[] $$1 = new int[$$0.size()];
-
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         Integer $$3 = $$0.get($$2);
-         $$1[$$2] = $$3 == null ? 0 : $$3;
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public void a(DataOutput $$0) throws IOException {
-      $$0.writeInt(this.c.length);
-
-      for (int $$1 : this.c) {
-         $$0.writeInt($$1);
-      }
-   }
-
-   @Override
-   public int a() {
-      return 24 + 4 * this.c.length;
-   }
-
-   @Override
-   public byte b() {
-      return 11;
-   }
-
-   @Override
-   public vc<uh> c() {
-      return a;
+   public void a(tm $$0) {
+      this.l.accept($$0);
    }
 
    @Override
    public String toString() {
-      return this.s_();
+      return this.b;
    }
 
-   public uh e() {
-      int[] $$0 = new int[this.c.length];
-      System.arraycopy(this.c, 0, $$0, 0, this.c.length);
-      return new uh($$0);
+   public boolean a() {
+      return this.i > 1;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof uh && Arrays.equals(this.c, ((uh)$$0).c);
+   public String b() {
+      return this.a;
    }
 
-   @Override
-   public int hashCode() {
-      return Arrays.hashCode(this.c);
+   public String c() {
+      return this.b;
    }
 
-   public int[] g() {
+   public String d() {
       return this.c;
    }
 
-   @Override
-   public void a(ve $$0) {
-      $$0.a(this);
+   public dlh e() {
+      return this.d;
    }
 
-   @Override
-   public int size() {
-      return this.c.length;
+   public int f() {
+      return this.e;
    }
 
-   public ui a(int $$0) {
-      return ui.a(this.c[$$0]);
+   public long g() {
+      return this.f;
    }
 
-   public ui a(int $$0, ui $$1) {
-      int $$2 = this.c[$$0];
-      this.c[$$0] = $$1.g();
-      return ui.a($$2);
+   public boolean h() {
+      return this.g;
    }
 
-   public void b(int $$0, ui $$1) {
-      this.c = ArrayUtils.add(this.c, $$0, $$1.g());
+   public boolean i() {
+      return this.h;
    }
 
-   @Override
-   public boolean a(int $$0, va $$1) {
-      if ($$1 instanceof ut) {
-         this.c[$$0] = ((ut)$$1).g();
-         return true;
-      } else {
-         return false;
-      }
+   public int j() {
+      return this.i;
    }
 
-   @Override
-   public boolean b(int $$0, va $$1) {
-      if ($$1 instanceof ut) {
-         this.c = ArrayUtils.add(this.c, $$0, ((ut)$$1).g());
-         return true;
-      } else {
-         return false;
-      }
+   public int k() {
+      return this.j;
    }
 
-   public ui b(int $$0) {
-      int $$1 = this.c[$$0];
-      this.c = ArrayUtils.remove(this.c, $$0);
-      return ui.a($$1);
+   public boolean l() {
+      return this.k;
    }
 
-   @Override
-   public byte f() {
-      return 3;
-   }
-
-   @Override
-   public void clear() {
-      this.c = new int[0];
-   }
-
-   @Override
-   public ux.b a(ux $$0) {
-      return $$0.a(this.c);
+   public Consumer<tm> m() {
+      return this.l;
    }
 }

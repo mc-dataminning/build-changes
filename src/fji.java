@@ -1,83 +1,37 @@
-public abstract class fji implements fjo {
-   private int c;
-   private int d;
-   protected int a;
-   protected int b;
+public interface fji {
+   Object b = new Object();
+   int c = 32;
 
-   public fji(int $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.b = $$3;
+   fji.a a(fgm var1, fjj var2, long var3);
+
+   default Object e() {
+      return b;
    }
 
-   @Override
-   public void m(int $$0) {
-      this.b($$1 -> {
-         int $$2 = $$1.C() + ($$0 - this.C());
-         $$1.m($$2);
-      });
-      this.c = $$0;
+   default int a() {
+      return 160;
    }
 
-   @Override
-   public void n(int $$0) {
-      this.b($$1 -> {
-         int $$2 = $$1.D() + ($$0 - this.D());
-         $$1.n($$2);
-      });
-      this.d = $$0;
+   default int b() {
+      return 32;
    }
 
-   @Override
-   public int C() {
-      return this.c;
+   default int f() {
+      return ayu.e(this.b(), 32);
    }
 
-   @Override
-   public int D() {
-      return this.d;
-   }
+   public static enum a {
+      a(avw.Av),
+      b(avw.Aw);
 
-   @Override
-   public int x() {
-      return this.a;
-   }
+      private final avv c;
 
-   @Override
-   public int v() {
-      return this.b;
-   }
-
-   protected abstract static class a {
-      public final fjp a;
-      public final fjq.a b;
-
-      protected a(fjp $$0, fjq $$1) {
-         this.a = $$0;
-         this.b = $$1.h();
+      private a(final avv $$0) {
+         this.c = $$0;
       }
 
-      public int a() {
-         return this.a.v() + this.b.b + this.b.d;
-      }
-
-      public int b() {
-         return this.a.x() + this.b.a + this.b.c;
-      }
-
-      public void a(int $$0, int $$1) {
-         float $$2 = (float)this.b.a;
-         float $$3 = (float)($$1 - this.a.x() - this.b.c);
-         int $$4 = (int)ayf.i(this.b.e, $$2, $$3);
-         this.a.m($$4 + $$0);
-      }
-
-      public void b(int $$0, int $$1) {
-         float $$2 = (float)this.b.b;
-         float $$3 = (float)($$1 - this.a.v() - this.b.d);
-         int $$4 = Math.round(ayf.i(this.b.f, $$2, $$3));
-         this.a.n($$4 + $$0);
+      public void a(gtq $$0) {
+         $$0.a(gsd.a(this.c, 1.0F, 1.0F));
       }
    }
 }

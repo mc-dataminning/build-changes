@@ -1,27 +1,16 @@
-import com.google.common.collect.Lists;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
 
-public class drx extends dsb<it> {
-   protected drx(String $$0, Collection<it> $$1) {
-      super($$0, it.class, $$1);
+public class drx extends drw.a {
+   public static final Codec<drx> b = a(lp.e.q(), deu::n).stable();
+
+   public drx(deu $$0, Reference2ObjectArrayMap<dta<?>, Comparable<?>> $$1, MapCodec<drx> $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public static drx a(String $$0) {
-      return a($$0, $$0x -> true);
-   }
-
-   public static drx a(String $$0, Predicate<it> $$1) {
-      return a($$0, Arrays.stream(it.values()).filter($$1).collect(Collectors.toList()));
-   }
-
-   public static drx a(String $$0, it... $$1) {
-      return a($$0, Lists.newArrayList($$1));
-   }
-
-   public static drx a(String $$0, Collection<it> $$1) {
-      return new drx($$0, $$1);
+   @Override
+   protected drx x() {
+      return this;
    }
 }

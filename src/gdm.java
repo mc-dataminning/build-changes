@@ -1,377 +1,340 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
+import com.google.gson.JsonSyntaxException;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.IOException;
 import java.io.Reader;
-import java.io.StringReader;
-import java.lang.reflect.Type;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.joml.Matrix4f;
 
-public class gdm implements gqh {
-   private static final Logger g = LogUtils.getLogger();
-   private static final gdo h = new gdo();
-   @VisibleForTesting
-   static final Gson a = new GsonBuilder()
-      .registerTypeAdapter(gdm.class, new gdm.a())
-      .registerTypeAdapter(gdi.class, new gdi.a())
-      .registerTypeAdapter(gdj.class, new gdj.a())
-      .registerTypeAdapter(gdl.class, new gdl.a())
-      .registerTypeAdapter(gds.class, new gds.a())
-      .registerTypeAdapter(gdt.class, new gdt.a())
-      .registerTypeAdapter(gdq.class, new gdq.a())
-      .create();
-   private static final char i = '#';
-   public static final String b = "particle";
-   private static final boolean j = true;
-   private final List<gdi> k;
-   @Nullable
-   private final gdm.b l;
-   @Nullable
-   private final Boolean m;
-   private final gdt n;
-   private final List<gdq> o;
-   public String c = "";
-   @VisibleForTesting
-   protected final Map<String, Either<gpz, String>> d;
-   @Nullable
-   protected gdm e;
-   @Nullable
-   protected akn f;
+public class gdm implements AutoCloseable {
+   private static final String a = "minecraft:main";
+   private final eyf b;
+   private final auo c;
+   private final String d;
+   private final List<gdn> e = Lists.newArrayList();
+   private final Map<String, eyf> f = Maps.newHashMap();
+   private final List<eyf> g = Lists.newArrayList();
+   private Matrix4f h;
+   private int i;
+   private int j;
+   private float k;
+   private float l;
 
-   public static gdm a(Reader $$0) {
-      return axv.a(a, $$0, gdm.class);
+   public gdm(gov $$0, auo $$1, eyf $$2, alb $$3) throws IOException, JsonSyntaxException {
+      this.c = $$1;
+      this.b = $$2;
+      this.k = 0.0F;
+      this.l = 0.0F;
+      this.i = $$2.e;
+      this.j = $$2.f;
+      this.d = $$3.toString();
+      this.b();
+      this.a($$0, $$3);
    }
 
-   public static gdm a(String $$0) {
-      return a(new StringReader($$0));
-   }
+   private void a(gov $$0, alb $$1) throws IOException, JsonSyntaxException {
+      auj $$2 = this.c.getResourceOrThrow($$1);
 
-   public gdm(@Nullable akn $$0, List<gdi> $$1, Map<String, Either<gpz, String>> $$2, @Nullable Boolean $$3, @Nullable gdm.b $$4, gdt $$5, List<gdq> $$6) {
-      this.k = $$1;
-      this.m = $$3;
-      this.l = $$4;
-      this.d = $$2;
-      this.f = $$0;
-      this.n = $$5;
-      this.o = $$6;
-   }
+      try {
+         try (Reader $$3 = $$2.e()) {
+            JsonObject $$4 = ayk.a($$3);
+            if (ayk.d($$4, "targets")) {
+               JsonArray $$5 = $$4.getAsJsonArray("targets");
+               int $$6 = 0;
 
-   public List<gdi> a() {
-      return this.k.isEmpty() && this.e != null ? this.e.a() : this.k;
-   }
+               for (JsonElement $$7 : $$5) {
+                  try {
+                     this.a($$7);
+                  } catch (Exception var14) {
+                     ale $$9 = ale.a(var14);
+                     $$9.a("targets[" + $$6 + "]");
+                     throw $$9;
+                  }
 
-   public boolean b() {
-      if (this.m != null) {
-         return this.m;
-      } else {
-         return this.e != null ? this.e.b() : true;
-      }
-   }
+                  $$6++;
+               }
+            }
 
-   public gdm.b c() {
-      if (this.l != null) {
-         return this.l;
-      } else {
-         return this.e != null ? this.e.c() : gdm.b.b;
-      }
-   }
+            if (ayk.d($$4, "passes")) {
+               JsonArray $$10 = $$4.getAsJsonArray("passes");
+               int $$11 = 0;
 
-   public boolean d() {
-      return this.f == null || this.e != null && this.e.d();
-   }
+               for (JsonElement $$12 : $$10) {
+                  try {
+                     this.a($$0, $$12);
+                  } catch (Exception var13) {
+                     ale $$14 = ale.a(var13);
+                     $$14.a("passes[" + $$11 + "]");
+                     throw $$14;
+                  }
 
-   public List<gdq> e() {
-      return this.o;
-   }
-
-   private gdr a(gqa $$0, gdm $$1) {
-      return this.o.isEmpty() ? gdr.a : new gdr($$0, $$1, this.o);
-   }
-
-   @Override
-   public Collection<akn> f() {
-      Set<akn> $$0 = Sets.newHashSet();
-
-      for (gdq $$1 : this.o) {
-         $$0.add($$1.a());
-      }
-
-      if (this.f != null) {
-         $$0.add(this.f);
-      }
-
-      return $$0;
-   }
-
-   @Override
-   public void a(Function<akn, gqh> $$0) {
-      Set<gqh> $$1 = Sets.newLinkedHashSet();
-
-      for (gdm $$2 = this; $$2.f != null && $$2.e == null; $$2 = $$2.e) {
-         $$1.add($$2);
-         gqh $$3 = $$0.apply($$2.f);
-         if ($$3 == null) {
-            g.warn("No parent '{}' while loading model '{}'", this.f, $$2);
-         }
-
-         if ($$1.contains($$3)) {
-            g.warn(
-               "Found 'parent' loop while loading model '{}' in chain: {} -> {}",
-               new Object[]{$$2, $$1.stream().map(Object::toString).collect(Collectors.joining(" -> ")), this.f}
-            );
-            $$3 = null;
-         }
-
-         if ($$3 == null) {
-            $$2.f = gqb.n;
-            $$3 = $$0.apply($$2.f);
-         }
-
-         if (!($$3 instanceof gdm)) {
-            throw new IllegalStateException("BlockModel parent has to be a block model.");
-         }
-
-         $$2.e = (gdm)$$3;
-      }
-
-      this.o.forEach($$1x -> {
-         gqh $$2x = $$0.apply($$1x.a());
-         if (!Objects.equals($$2x, this)) {
-            $$2x.a($$0);
-         }
-      });
-   }
-
-   @Override
-   public gpw a(gqa $$0, Function<gpz, gnv> $$1, gqe $$2, akn $$3) {
-      return this.a($$0, this, $$1, $$2, $$3, true);
-   }
-
-   public gpw a(gqa $$0, gdm $$1, Function<gpz, gnv> $$2, gqe $$3, akn $$4, boolean $$5) {
-      gnv $$6 = $$2.apply(this.c("particle"));
-      if (this.g() == gqb.s) {
-         return new gpy(this.h(), this.a($$0, $$1), $$6, this.c().a());
-      } else {
-         gqg.a $$7 = new gqg.a(this, this.a($$0, $$1), $$5).a($$6);
-
-         for (gdi $$8 : this.a()) {
-            for (it $$9 : $$8.c.keySet()) {
-               gdj $$10 = $$8.c.get($$9);
-               gnv $$11 = $$2.apply(this.c($$10.d));
-               if ($$10.b == null) {
-                  $$7.a(a($$8, $$10, $$11, $$9, $$3, $$4));
-               } else {
-                  $$7.a(it.a($$3.b().c(), $$10.b), a($$8, $$10, $$11, $$9, $$3, $$4));
+                  $$11++;
                }
             }
          }
-
-         return $$7.b();
+      } catch (Exception var16) {
+         ale $$16 = ale.a(var16);
+         $$16.b($$1.a() + " (" + $$2.b() + ")");
+         throw $$16;
       }
    }
 
-   private static gdh a(gdi $$0, gdj $$1, gnv $$2, it $$3, gqe $$4, akn $$5) {
-      return h.a($$0.a, $$0.b, $$1, $$2, $$3, $$4, $$0.d, $$0.e, $$5);
-   }
-
-   public boolean b(String $$0) {
-      return !gnl.b().equals(this.c($$0).b());
-   }
-
-   public gpz c(String $$0) {
-      if (e($$0)) {
-         $$0 = $$0.substring(1);
-      }
-
-      List<String> $$1 = Lists.newArrayList();
-
-      while (true) {
-         Either<gpz, String> $$2 = this.d($$0);
-         Optional<gpz> $$3 = $$2.left();
-         if ($$3.isPresent()) {
-            return $$3.get();
+   private void a(JsonElement $$0) throws ale {
+      if (ayk.a($$0)) {
+         this.a($$0.getAsString(), this.i, this.j);
+      } else {
+         JsonObject $$1 = ayk.m($$0, "target");
+         String $$2 = ayk.i($$1, "name");
+         int $$3 = ayk.a($$1, "width", this.i);
+         int $$4 = ayk.a($$1, "height", this.j);
+         if (this.f.containsKey($$2)) {
+            throw new ale($$2 + " is already defined");
          }
 
-         $$0 = (String)$$2.right().get();
-         if ($$1.contains($$0)) {
-            g.warn("Unable to resolve texture due to reference chain {}->{} in {}", new Object[]{Joiner.on("->").join($$1), $$0, this.c});
-            return new gpz(gnu.e, gnl.b());
-         }
-
-         $$1.add($$0);
+         this.a($$2, $$3, $$4);
       }
    }
 
-   private Either<gpz, String> d(String $$0) {
-      for (gdm $$1 = this; $$1 != null; $$1 = $$1.e) {
-         Either<gpz, String> $$2 = $$1.d.get($$0);
-         if ($$2 != null) {
-            return $$2;
+   private void a(gov $$0, JsonElement $$1) throws IOException {
+      JsonObject $$2 = ayk.m($$1, "pass");
+      String $$3 = ayk.i($$2, "name");
+      String $$4 = ayk.i($$2, "intarget");
+      String $$5 = ayk.i($$2, "outtarget");
+      eyf $$6 = this.b($$4);
+      eyf $$7 = this.b($$5);
+      boolean $$8 = ayk.a($$2, "use_linear_filter", false);
+      if ($$6 == null) {
+         throw new ale("Input target '" + $$4 + "' does not exist");
+      } else if ($$7 == null) {
+         throw new ale("Output target '" + $$5 + "' does not exist");
+      } else {
+         gdn $$9 = this.a($$3, $$6, $$7, $$8);
+         JsonArray $$10 = ayk.a($$2, "auxtargets", null);
+         if ($$10 != null) {
+            int $$11 = 0;
+
+            for (JsonElement $$12 : $$10) {
+               try {
+                  JsonObject $$13 = ayk.m($$12, "auxtarget");
+                  String $$14 = ayk.i($$13, "name");
+                  String $$15 = ayk.i($$13, "id");
+                  boolean $$16;
+                  String $$17;
+                  if ($$15.endsWith(":depth")) {
+                     $$16 = true;
+                     $$17 = $$15.substring(0, $$15.lastIndexOf(58));
+                  } else {
+                     $$16 = false;
+                     $$17 = $$15;
+                  }
+
+                  eyf $$20 = this.b($$17);
+                  if ($$20 == null) {
+                     if ($$16) {
+                        throw new ale("Render target '" + $$17 + "' can't be used as depth buffer");
+                     }
+
+                     alb $$21 = new alb("textures/effect/" + $$17 + ".png");
+                     this.c.getResource($$21).orElseThrow(() -> new ale("Render target or texture '" + $$17 + "' does not exist"));
+                     RenderSystem.setShaderTexture(0, $$21);
+                     $$0.a($$21);
+                     gof $$22 = $$0.b($$21);
+                     int $$23 = ayk.o($$13, "width");
+                     int $$24 = ayk.o($$13, "height");
+                     boolean $$25 = ayk.k($$13, "bilinear");
+                     if ($$25) {
+                        RenderSystem.texParameter(3553, 10241, 9729);
+                        RenderSystem.texParameter(3553, 10240, 9729);
+                     } else {
+                        RenderSystem.texParameter(3553, 10241, 9728);
+                        RenderSystem.texParameter(3553, 10240, 9728);
+                     }
+
+                     $$9.a($$14, $$22::a, $$23, $$24);
+                  } else if ($$16) {
+                     $$9.a($$14, $$20::g, $$20.c, $$20.d);
+                  } else {
+                     $$9.a($$14, $$20::f, $$20.c, $$20.d);
+                  }
+               } catch (Exception var27) {
+                  ale $$27 = ale.a(var27);
+                  $$27.a("auxtargets[" + $$11 + "]");
+                  throw $$27;
+               }
+
+               $$11++;
+            }
+         }
+
+         JsonArray $$28 = ayk.a($$2, "uniforms", null);
+         if ($$28 != null) {
+            int $$29 = 0;
+
+            for (JsonElement $$30 : $$28) {
+               try {
+                  this.b($$30);
+               } catch (Exception var26) {
+                  ale $$32 = ale.a(var26);
+                  $$32.a("uniforms[" + $$29 + "]");
+                  throw $$32;
+               }
+
+               $$29++;
+            }
          }
       }
-
-      return Either.left(new gpz(gnu.e, gnl.b()));
    }
 
-   static boolean e(String $$0) {
-      return $$0.charAt(0) == '#';
+   private void b(JsonElement $$0) throws ale {
+      JsonObject $$1 = ayk.m($$0, "uniform");
+      String $$2 = ayk.i($$1, "name");
+      ezk $$3 = this.e.get(this.e.size() - 1).b().a($$2);
+      if ($$3 == null) {
+         throw new ale("Uniform '" + $$2 + "' does not exist");
+      } else {
+         float[] $$4 = new float[4];
+         int $$5 = 0;
+
+         for (JsonElement $$7 : ayk.v($$1, "values")) {
+            try {
+               $$4[$$5] = ayk.e($$7, "value");
+            } catch (Exception var12) {
+               ale $$9 = ale.a(var12);
+               $$9.a("values[" + $$5 + "]");
+               throw $$9;
+            }
+
+            $$5++;
+         }
+
+         switch ($$5) {
+            case 0:
+            default:
+               break;
+            case 1:
+               $$3.a($$4[0]);
+               break;
+            case 2:
+               $$3.a($$4[0], $$4[1]);
+               break;
+            case 3:
+               $$3.a($$4[0], $$4[1], $$4[2]);
+               break;
+            case 4:
+               $$3.a($$4[0], $$4[1], $$4[2], $$4[3]);
+         }
+      }
    }
 
-   public gdm g() {
-      return this.e == null ? this : this.e.g();
+   public eyf a(String $$0) {
+      return this.f.get($$0);
    }
 
-   public gdt h() {
-      gds $$0 = this.a(ctn.b);
-      gds $$1 = this.a(ctn.c);
-      gds $$2 = this.a(ctn.d);
-      gds $$3 = this.a(ctn.e);
-      gds $$4 = this.a(ctn.f);
-      gds $$5 = this.a(ctn.g);
-      gds $$6 = this.a(ctn.h);
-      gds $$7 = this.a(ctn.i);
-      return new gdt($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   private gds a(ctn $$0) {
-      return this.e != null && !this.n.b($$0) ? this.e.a($$0) : this.n.a($$0);
+   public void a(String $$0, int $$1, int $$2) {
+      eyf $$3 = new eyg($$1, $$2, true, ffa.a);
+      $$3.a(0.0F, 0.0F, 0.0F, 0.0F);
+      this.f.put($$0, $$3);
+      if ($$1 == this.i && $$2 == this.j) {
+         this.g.add($$3);
+      }
    }
 
    @Override
-   public String toString() {
-      return this.c;
+   public void close() {
+      for (eyf $$0 : this.f.values()) {
+         $$0.a();
+      }
+
+      for (gdn $$1 : this.e) {
+         $$1.close();
+      }
+
+      this.e.clear();
    }
 
-   public static class a implements JsonDeserializer<gdm> {
-      public gdm a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         List<gdi> $$4 = this.b($$2, $$3);
-         String $$5 = this.c($$3);
-         Map<String, Either<gpz, String>> $$6 = this.b($$3);
-         Boolean $$7 = this.a($$3);
-         gdt $$8 = gdt.a;
-         if ($$3.has("display")) {
-            JsonObject $$9 = axv.u($$3, "display");
-            $$8 = (gdt)$$2.deserialize($$9, gdt.class);
-         }
+   public gdn a(String $$0, eyf $$1, eyf $$2, boolean $$3) throws IOException {
+      gdn $$4 = new gdn(this.c, $$0, $$1, $$2, $$3);
+      this.e.add(this.e.size(), $$4);
+      return $$4;
+   }
 
-         List<gdq> $$10 = this.a($$2, $$3);
-         gdm.b $$11 = null;
-         if ($$3.has("gui_light")) {
-            $$11 = gdm.b.a(axv.i($$3, "gui_light"));
-         }
+   private void b() {
+      this.h = new Matrix4f().setOrtho(0.0F, (float)this.b.c, 0.0F, (float)this.b.d, 0.1F, 1000.0F);
+   }
 
-         akn $$12 = $$5.isEmpty() ? null : new akn($$5);
-         return new gdm($$12, $$4, $$6, $$7, $$11, $$8, $$10);
+   public void a(int $$0, int $$1) {
+      this.i = this.b.c;
+      this.j = this.b.d;
+      this.b();
+
+      for (gdn $$2 : this.e) {
+         $$2.a(this.h);
       }
 
-      protected List<gdq> a(JsonDeserializationContext $$0, JsonObject $$1) {
-         List<gdq> $$2 = Lists.newArrayList();
-         if ($$1.has("overrides")) {
-            for (JsonElement $$4 : axv.v($$1, "overrides")) {
-               $$2.add((gdq)$$0.deserialize($$4, gdq.class));
-            }
-         }
-
-         return $$2;
-      }
-
-      private Map<String, Either<gpz, String>> b(JsonObject $$0) {
-         akn $$1 = gnu.e;
-         Map<String, Either<gpz, String>> $$2 = Maps.newHashMap();
-         if ($$0.has("textures")) {
-            JsonObject $$3 = axv.u($$0, "textures");
-
-            for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
-               $$2.put($$4.getKey(), a($$1, $$4.getValue().getAsString()));
-            }
-         }
-
-         return $$2;
-      }
-
-      private static Either<gpz, String> a(akn $$0, String $$1) {
-         if (gdm.e($$1)) {
-            return Either.right($$1.substring(1));
-         } else {
-            akn $$2 = akn.a($$1);
-            if ($$2 == null) {
-               throw new JsonParseException($$1 + " is not valid resource location");
-            } else {
-               return Either.left(new gpz($$0, $$2));
-            }
-         }
-      }
-
-      private String c(JsonObject $$0) {
-         return axv.a($$0, "parent", "");
-      }
-
-      @Nullable
-      protected Boolean a(JsonObject $$0) {
-         return $$0.has("ambientocclusion") ? axv.k($$0, "ambientocclusion") : null;
-      }
-
-      protected List<gdi> b(JsonDeserializationContext $$0, JsonObject $$1) {
-         List<gdi> $$2 = Lists.newArrayList();
-         if ($$1.has("elements")) {
-            for (JsonElement $$3 : axv.v($$1, "elements")) {
-               $$2.add((gdi)$$0.deserialize($$3, gdi.class));
-            }
-         }
-
-         return $$2;
+      for (eyf $$3 : this.g) {
+         $$3.a($$0, $$1, ffa.a);
       }
    }
 
-   public static enum b {
-      a("front"),
-      b("side");
+   private void a(int $$0) {
+      this.b.a($$0);
 
-      private final String c;
-
-      private b(String $$0) {
-         this.c = $$0;
-      }
-
-      public static gdm.b a(String $$0) {
-         for (gdm.b $$1 : values()) {
-            if ($$1.c.equals($$0)) {
-               return $$1;
-            }
-         }
-
-         throw new IllegalArgumentException("Invalid gui light: " + $$0);
-      }
-
-      public boolean a() {
-         return this == b;
+      for (eyf $$1 : this.f.values()) {
+         $$1.a($$0);
       }
    }
 
-   public static class c extends RuntimeException {
-      public c(String $$0) {
-         super($$0);
+   public void a(float $$0) {
+      if ($$0 < this.l) {
+         this.k = this.k + (1.0F - this.l);
+         this.k += $$0;
+      } else {
+         this.k = this.k + ($$0 - this.l);
+      }
+
+      this.l = $$0;
+
+      while (this.k > 20.0F) {
+         this.k -= 20.0F;
+      }
+
+      int $$1 = 9728;
+
+      for (gdn $$2 : this.e) {
+         int $$3 = $$2.c();
+         if ($$1 != $$3) {
+            this.a($$3);
+            $$1 = $$3;
+         }
+
+         $$2.a(this.k / 20.0F);
+      }
+
+      this.a(9728);
+   }
+
+   public void a(String $$0, float $$1) {
+      for (gdn $$2 : this.e) {
+         $$2.b().b($$0).a($$1);
+      }
+   }
+
+   public final String a() {
+      return this.d;
+   }
+
+   @Nullable
+   private eyf b(@Nullable String $$0) {
+      if ($$0 == null) {
+         return null;
+      } else {
+         return $$0.equals("minecraft:main") ? this.b : this.f.get($$0);
       }
    }
 }

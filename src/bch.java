@@ -1,103 +1,56 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.google.common.collect.Streams;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import java.util.Map;
+import com.mojang.serialization.Dynamic;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
-public class bch extends DataFix {
-   private static final Map<String, String> a = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
-      $$0.put("AreaEffectCloud", "minecraft:area_effect_cloud");
-      $$0.put("ArmorStand", "minecraft:armor_stand");
-      $$0.put("Arrow", "minecraft:arrow");
-      $$0.put("Bat", "minecraft:bat");
-      $$0.put("Blaze", "minecraft:blaze");
-      $$0.put("Boat", "minecraft:boat");
-      $$0.put("CaveSpider", "minecraft:cave_spider");
-      $$0.put("Chicken", "minecraft:chicken");
-      $$0.put("Cow", "minecraft:cow");
-      $$0.put("Creeper", "minecraft:creeper");
-      $$0.put("Donkey", "minecraft:donkey");
-      $$0.put("DragonFireball", "minecraft:dragon_fireball");
-      $$0.put("ElderGuardian", "minecraft:elder_guardian");
-      $$0.put("EnderCrystal", "minecraft:ender_crystal");
-      $$0.put("EnderDragon", "minecraft:ender_dragon");
-      $$0.put("Enderman", "minecraft:enderman");
-      $$0.put("Endermite", "minecraft:endermite");
-      $$0.put("EyeOfEnderSignal", "minecraft:eye_of_ender_signal");
-      $$0.put("FallingSand", "minecraft:falling_block");
-      $$0.put("Fireball", "minecraft:fireball");
-      $$0.put("FireworksRocketEntity", "minecraft:fireworks_rocket");
-      $$0.put("Ghast", "minecraft:ghast");
-      $$0.put("Giant", "minecraft:giant");
-      $$0.put("Guardian", "minecraft:guardian");
-      $$0.put("Horse", "minecraft:horse");
-      $$0.put("Husk", "minecraft:husk");
-      $$0.put("Item", "minecraft:item");
-      $$0.put("ItemFrame", "minecraft:item_frame");
-      $$0.put("LavaSlime", "minecraft:magma_cube");
-      $$0.put("LeashKnot", "minecraft:leash_knot");
-      $$0.put("MinecartChest", "minecraft:chest_minecart");
-      $$0.put("MinecartCommandBlock", "minecraft:commandblock_minecart");
-      $$0.put("MinecartFurnace", "minecraft:furnace_minecart");
-      $$0.put("MinecartHopper", "minecraft:hopper_minecart");
-      $$0.put("MinecartRideable", "minecraft:minecart");
-      $$0.put("MinecartSpawner", "minecraft:spawner_minecart");
-      $$0.put("MinecartTNT", "minecraft:tnt_minecart");
-      $$0.put("Mule", "minecraft:mule");
-      $$0.put("MushroomCow", "minecraft:mooshroom");
-      $$0.put("Ozelot", "minecraft:ocelot");
-      $$0.put("Painting", "minecraft:painting");
-      $$0.put("Pig", "minecraft:pig");
-      $$0.put("PigZombie", "minecraft:zombie_pigman");
-      $$0.put("PolarBear", "minecraft:polar_bear");
-      $$0.put("PrimedTnt", "minecraft:tnt");
-      $$0.put("Rabbit", "minecraft:rabbit");
-      $$0.put("Sheep", "minecraft:sheep");
-      $$0.put("Shulker", "minecraft:shulker");
-      $$0.put("ShulkerBullet", "minecraft:shulker_bullet");
-      $$0.put("Silverfish", "minecraft:silverfish");
-      $$0.put("Skeleton", "minecraft:skeleton");
-      $$0.put("SkeletonHorse", "minecraft:skeleton_horse");
-      $$0.put("Slime", "minecraft:slime");
-      $$0.put("SmallFireball", "minecraft:small_fireball");
-      $$0.put("SnowMan", "minecraft:snowman");
-      $$0.put("Snowball", "minecraft:snowball");
-      $$0.put("SpectralArrow", "minecraft:spectral_arrow");
-      $$0.put("Spider", "minecraft:spider");
-      $$0.put("Squid", "minecraft:squid");
-      $$0.put("Stray", "minecraft:stray");
-      $$0.put("ThrownEgg", "minecraft:egg");
-      $$0.put("ThrownEnderpearl", "minecraft:ender_pearl");
-      $$0.put("ThrownExpBottle", "minecraft:xp_bottle");
-      $$0.put("ThrownPotion", "minecraft:potion");
-      $$0.put("Villager", "minecraft:villager");
-      $$0.put("VillagerGolem", "minecraft:villager_golem");
-      $$0.put("Witch", "minecraft:witch");
-      $$0.put("WitherBoss", "minecraft:wither");
-      $$0.put("WitherSkeleton", "minecraft:wither_skeleton");
-      $$0.put("WitherSkull", "minecraft:wither_skull");
-      $$0.put("Wolf", "minecraft:wolf");
-      $$0.put("XPOrb", "minecraft:xp_orb");
-      $$0.put("Zombie", "minecraft:zombie");
-      $$0.put("ZombieHorse", "minecraft:zombie_horse");
-      $$0.put("ZombieVillager", "minecraft:zombie_villager");
-   });
+public class bch extends bfq {
+   private static final String[] a = new String[]{
+      "Text1", "Text2", "Text3", "Text4", "FilteredText1", "FilteredText2", "FilteredText3", "FilteredText4", "Color", "GlowingText"
+   };
 
-   public bch(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public bch(Schema $$0, String $$1, String $$2) {
+      super($$0, false, $$1, bgs.s, $$2);
    }
 
-   public TypeRewriteRule makeRule() {
-      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bga.z);
-      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bga.z);
-      Type<?> $$2 = this.getInputSchema().getType(bga.t);
-      Type<?> $$3 = this.getOutputSchema().getType(bga.t);
-      return TypeRewriteRule.seq(
-         this.convertUnchecked("item stack entity name hook converter", $$2, $$3),
-         this.fixTypeEverywhere("EntityIdFix", $$0, $$1, $$0x -> $$0xx -> $$0xx.mapFirst($$0xxx -> a.getOrDefault($$0xxx, $$0xxx)))
-      );
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      $$0 = $$0.update("front_text", bch::b);
+      $$0 = $$0.update("back_text", bch::b);
+
+      for (String $$1 : a) {
+         $$0 = $$0.remove($$1);
+      }
+
+      return $$0;
+   }
+
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      boolean $$1 = $$0.get("_filtered_correct").asBoolean(false);
+      if ($$1) {
+         return $$0.remove("_filtered_correct");
+      } else {
+         Optional<Stream<Dynamic<T>>> $$2 = $$0.get("filtered_messages").asStreamOpt().result();
+         if ($$2.isEmpty()) {
+            return $$0;
+         } else {
+            Dynamic<T> $$3 = baa.a($$0.getOps());
+            List<Dynamic<T>> $$4 = $$0.get("messages").asStreamOpt().result().orElse(Stream.of()).toList();
+            List<Dynamic<T>> $$5 = Streams.mapWithIndex($$2.get(), ($$2x, $$3x) -> {
+               Dynamic<T> $$4x = $$3x < (long)$$4.size() ? $$4.get((int)$$3x) : $$3;
+               return $$2x.equals($$3) ? $$4x : $$2x;
+            }).toList();
+            return $$5.stream().allMatch($$1x -> $$1x.equals($$3))
+               ? $$0.remove("filtered_messages")
+               : $$0.set("filtered_messages", $$0.createList($$5.stream()));
+         }
+      }
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), bch::a);
    }
 }

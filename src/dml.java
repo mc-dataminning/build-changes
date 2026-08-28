@@ -1,61 +1,46 @@
 import com.mojang.serialization.MapCodec;
 
-public class dml extends dfv {
-   public static final MapCodec<dml> a = b(dml::new);
-   public static final int b = 2;
-   public static final dsd c = drt.aq;
-   private static final float g = 3.0F;
-   private static final evf[] h = new evf[]{dea.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0), dea.a(5.0, 0.0, 5.0, 11.0, 10.0, 11.0)};
-   private static final int i = 1;
-
-   @Override
-   public MapCodec<dml> a() {
-      return a;
-   }
-
-   public dml(drc.d $$0) {
+public abstract class dml extends dme {
+   protected dml(drw.d $$0) {
       super($$0);
    }
 
-   @Override
-   protected void a(dre.a<dea, drd> $$0) {
-      $$0.a(c);
-   }
-
-   @Override
-   public evf a(drd $$0, daf $$1, io $$2, eur $$3) {
-      return h[this.g($$0)];
-   }
-
-   @Override
-   protected dsd b() {
-      return c;
-   }
-
-   @Override
-   public int c() {
-      return 2;
-   }
-
-   @Override
-   protected day d() {
-      return ctt.vi;
-   }
-
-   @Override
-   public drd b(int $$0) {
-      return $$0 == 2 ? dec.bS.n() : super.b($$0);
-   }
-
-   @Override
-   public void b(drd $$0, aqn $$1, io $$2, aym $$3) {
-      if ($$3.a(3) != 0) {
-         super.b($$0, $$1, $$2, $$3);
+   private static boolean b(drx $$0, dbw $$1, iz $$2) {
+      iz $$3 = $$2.c();
+      drx $$4 = $$1.a_($$3);
+      if ($$4.a(dew.dN) && $$4.c(dmd.c) == 1) {
+         return true;
+      } else if ($$4.u().e() == 8) {
+         return false;
+      } else {
+         int $$5 = enh.a($$1, $$0, $$2, $$4, $$3, je.b, $$4.b($$1, $$3));
+         return $$5 < $$1.Q();
       }
    }
 
    @Override
-   protected int a(daz $$0) {
-      return 1;
+   protected abstract MapCodec<? extends dml> a();
+
+   private static boolean c(drx $$0, dbw $$1, iz $$2) {
+      iz $$3 = $$2.c();
+      return b($$0, $$1, $$2) && !$$1.b_($$3).a(awr.a);
+   }
+
+   @Override
+   protected void b(drx $$0, arb $$1, iz $$2, azc $$3) {
+      if (!b($$0, $$1, $$2)) {
+         $$1.b($$2, dew.j.n());
+      } else {
+         if ($$1.A($$2.c()) >= 9) {
+            drx $$4 = this.n();
+
+            for (int $$5 = 0; $$5 < 4; $$5++) {
+               iz $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
+               if ($$1.a_($$6).a(dew.j) && c($$4, $$1, $$6)) {
+                  $$1.b($$6, $$4.a(c, Boolean.valueOf($$1.a_($$6.c()).a(dew.dN))));
+               }
+            }
+         }
+      }
    }
 }

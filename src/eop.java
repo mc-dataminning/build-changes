@@ -1,30 +1,13 @@
 public class eop {
-   private final int b;
-   private final String c;
-   public static String a = "main";
+   public final evm a;
+   public final evm b;
+   public final float c;
+   public final float d;
 
-   public eop(int $$0) {
-      this($$0, a);
-   }
-
-   public eop(int $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public boolean a() {
-      return !this.c.equals(a);
-   }
-
-   public String b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.b;
-   }
-
-   public boolean a(eop $$0) {
-      return this.b().equals($$0.b());
+   public eop(evm $$0, evm $$1, float $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 }

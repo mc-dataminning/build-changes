@@ -1,22 +1,29 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Set;
 
-public class cdn {
-   @Nullable
-   public static eum a(bsz $$0, int $$1, int $$2, double $$3, double $$4, float $$5, int $$6, int $$7) {
-      boolean $$8 = cdm.a($$0, $$1);
-      return cdp.a($$0, () -> {
-         io $$9 = cdp.a($$0.el(), $$1, $$2, 0, $$3, $$4, (double)$$5);
-         if ($$9 == null) {
-            return null;
-         } else {
-            io $$10 = cdo.a($$0, $$1, $$8, $$9);
-            if ($$10 == null) {
-               return null;
-            } else {
-               $$10 = cdp.a($$10, $$0.el().a($$6 - $$7 + 1) + $$7, $$0.dP().al(), $$1xx -> cdm.c($$0, $$1xx));
-               return !cdm.a($$0, $$10) && !cdm.b($$0, $$10) ? $$10 : null;
-            }
-         }
-      });
+public class cdn<T extends btk> extends cdu<T> {
+   @Override
+   protected void a(arb $$0, T $$1) {
+      evh $$2 = $$1.cK().c((double)this.b(), (double)this.c(), (double)this.b());
+      List<btk> $$3 = $$0.a(btk.class, $$2, $$1x -> $$1x != $$1 && $$1x.bD());
+      $$3.sort(Comparator.comparingDouble($$1::g));
+      bum<?> $$4 = $$1.dS();
+      $$4.a(cco.g, $$3);
+      $$4.a(cco.h, new ccq($$1, $$3));
+   }
+
+   protected int b() {
+      return 16;
+   }
+
+   protected int c() {
+      return 16;
+   }
+
+   @Override
+   public Set<cco<?>> a() {
+      return ImmutableSet.of(cco.g, cco.h);
    }
 }

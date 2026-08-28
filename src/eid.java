@@ -1,70 +1,84 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+public abstract class eid extends eij {
+   protected final int a;
+   protected final int b;
+   protected final int c;
+   protected int d = -1;
 
-public class eid implements ehq {
-   private final List<ehp> a = Lists.newArrayList();
-
-   @Override
-   public void a(ehp $$0) {
-      this.a.add($$0);
-   }
-
-   @Nullable
-   @Override
-   public ehp a(ehd $$0) {
-      return ehp.a(this.a, $$0);
-   }
-
-   @Deprecated
-   public void a(int $$0) {
-      for (ehp $$1 : this.a) {
-         $$1.a(0, $$0, 0);
-      }
-   }
-
-   @Deprecated
-   public int a(int $$0, int $$1, aym $$2, int $$3) {
-      int $$4 = $$0 - $$3;
-      ehd $$5 = this.d();
-      int $$6 = $$5.e() + $$1 + 1;
-      if ($$6 < $$4) {
-         $$6 += $$2.a($$4 - $$6);
-      }
-
-      int $$7 = $$6 - $$5.l();
+   protected eid(eiw $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, je $$7) {
+      super($$0, 0, eij.a($$1, $$2, $$3, $$7, $$4, $$5, $$6));
+      this.a = $$4;
+      this.b = $$5;
+      this.c = $$6;
       this.a($$7);
-      return $$7;
    }
 
-   /** @deprecated */
-   public void a(aym $$0, int $$1, int $$2) {
-      ehd $$3 = this.d();
-      int $$4 = $$2 - $$1 + 1 - $$3.e();
-      int $$5;
-      if ($$4 > 1) {
-         $$5 = $$1 + $$0.a($$4);
+   protected eid(eiw $$0, ur $$1) {
+      super($$0, $$1);
+      this.a = $$1.h("Width");
+      this.b = $$1.h("Height");
+      this.c = $$1.h("Depth");
+      this.d = $$1.h("HPos");
+   }
+
+   @Override
+   protected void a(eiv $$0, ur $$1) {
+      $$1.a("Width", this.a);
+      $$1.a("Height", this.b);
+      $$1.a("Depth", this.c);
+      $$1.a("HPos", this.d);
+   }
+
+   protected boolean a(dbu $$0, ehx $$1, int $$2) {
+      if (this.d >= 0) {
+         return true;
       } else {
-         $$5 = $$1;
+         int $$3 = 0;
+         int $$4 = 0;
+         iz.a $$5 = new iz.a();
+
+         for (int $$6 = this.f.j(); $$6 <= this.f.m(); $$6++) {
+            for (int $$7 = this.f.h(); $$7 <= this.f.k(); $$7++) {
+               $$5.d($$7, 64, $$6);
+               if ($$1.b($$5)) {
+                  $$3 += $$0.a(dxp.a.f, $$5).v();
+                  $$4++;
+               }
+            }
+         }
+
+         if ($$4 == 0) {
+            return false;
+         } else {
+            this.d = $$3 / $$4;
+            this.f.a(0, this.d - this.f.i() + $$2, 0);
+            return true;
+         }
       }
-
-      int $$7 = $$5 - $$3.i();
-      this.a($$7);
    }
 
-   public eia a() {
-      return new eia(this.a);
-   }
+   protected boolean a(dbu $$0, int $$1) {
+      if (this.d >= 0) {
+         return true;
+      } else {
+         int $$2 = $$0.am();
+         boolean $$3 = false;
+         iz.a $$4 = new iz.a();
 
-   public void b() {
-      this.a.clear();
-   }
+         for (int $$5 = this.f.j(); $$5 <= this.f.m(); $$5++) {
+            for (int $$6 = this.f.h(); $$6 <= this.f.k(); $$6++) {
+               $$4.d($$6, 0, $$5);
+               $$2 = Math.min($$2, $$0.a(dxp.a.f, $$4).v());
+               $$3 = true;
+            }
+         }
 
-   public boolean c() {
-      return this.a.isEmpty();
-   }
-
-   public ehd d() {
-      return ehp.a(this.a.stream());
+         if (!$$3) {
+            return false;
+         } else {
+            this.d = $$2;
+            this.f.a(0, this.d - this.f.i() + $$1, 0);
+            return true;
+         }
+      }
    }
 }

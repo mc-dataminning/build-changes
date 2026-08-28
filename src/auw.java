@@ -1,33 +1,34 @@
-import java.nio.charset.StandardCharsets;
+import com.google.gson.JsonObject;
+import java.util.Date;
+import javax.annotation.Nullable;
 
-public class auw {
-   public static final int a = 1460;
-   public static final char[] b = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+public class auw extends aut<String> {
+   public auw(String $$0) {
+      this($$0, null, null, null, null);
+   }
 
-   public static String a(byte[] $$0, int $$1, int $$2) {
-      int $$3 = $$2 - 1;
-      int $$4 = $$1 > $$3 ? $$3 : $$1;
+   public auw(String $$0, @Nullable Date $$1, @Nullable String $$2, @Nullable Date $$3, @Nullable String $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+   }
 
-      while (0 != $$0[$$4] && $$4 < $$3) {
-         $$4++;
+   @Override
+   public xl e() {
+      return xl.b(String.valueOf(this.g()));
+   }
+
+   public auw(JsonObject $$0) {
+      super(b($$0), $$0);
+   }
+
+   private static String b(JsonObject $$0) {
+      return $$0.has("ip") ? $$0.get("ip").getAsString() : null;
+   }
+
+   @Override
+   protected void a(JsonObject $$0) {
+      if (this.g() != null) {
+         $$0.addProperty("ip", this.g());
+         super.a($$0);
       }
-
-      return new String($$0, $$1, $$4 - $$1, StandardCharsets.UTF_8);
-   }
-
-   public static int a(byte[] $$0, int $$1) {
-      return b($$0, $$1, $$0.length);
-   }
-
-   public static int b(byte[] $$0, int $$1, int $$2) {
-      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1 + 3] << 24 | ($$0[$$1 + 2] & 0xFF) << 16 | ($$0[$$1 + 1] & 0xFF) << 8 | $$0[$$1] & 0xFF;
-   }
-
-   public static int c(byte[] $$0, int $$1, int $$2) {
-      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1] << 24 | ($$0[$$1 + 1] & 0xFF) << 16 | ($$0[$$1 + 2] & 0xFF) << 8 | $$0[$$1 + 3] & 0xFF;
-   }
-
-   public static String a(byte $$0) {
-      return "" + b[($$0 & 240) >>> 4] + b[$$0 & 15];
    }
 }

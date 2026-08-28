@@ -1,35 +1,57 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JavaOps;
-import java.util.HashMap;
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.google.gson.JsonObject;
+import com.mojang.brigadier.arguments.DoubleArgumentType;
 
-public class ip<T> {
-   private final Codec<T> a;
-
-   ip(Codec<T> $$0) {
-      this.a = $$0;
-   }
-
-   public T a(T $$0, iz.a $$1, iz.a $$2) {
-      DynamicOps<Object> $$3 = $$1.a(JavaOps.INSTANCE);
-      DynamicOps<Object> $$4 = $$2.a(JavaOps.INSTANCE);
-      Object $$5 = this.a.encodeStart($$3, $$0).getOrThrow($$0x -> new IllegalStateException("Failed to encode: " + $$0x));
-      return (T)this.a.parse($$4, $$5).getOrThrow($$0x -> new IllegalStateException("Failed to decode: " + $$0x));
-   }
-
-   public static class a {
-      private final Map<akm<? extends jk<?>>, ip<?>> a = new HashMap<>();
-
-      public <T> ip.a a(akm<? extends jk<? extends T>> $$0, Codec<T> $$1) {
-         this.a.put($$0, new ip($$1));
-         return this;
+public class ip implements ik<DoubleArgumentType, ip.a> {
+   public void a(ip.a $$0, wl $$1) {
+      boolean $$2 = $$0.b != -Double.MAX_VALUE;
+      boolean $$3 = $$0.c != Double.MAX_VALUE;
+      $$1.k(im.a($$2, $$3));
+      if ($$2) {
+         $$1.a($$0.b);
       }
 
-      @Nullable
-      public <T> ip<T> a(akm<? extends jk<? extends T>> $$0) {
-         return (ip<T>)this.a.get($$0);
+      if ($$3) {
+         $$1.a($$0.c);
+      }
+   }
+
+   public ip.a a(wl $$0) {
+      byte $$1 = $$0.readByte();
+      double $$2 = im.a($$1) ? $$0.readDouble() : -Double.MAX_VALUE;
+      double $$3 = im.b($$1) ? $$0.readDouble() : Double.MAX_VALUE;
+      return new ip.a($$2, $$3);
+   }
+
+   public void a(ip.a $$0, JsonObject $$1) {
+      if ($$0.b != -Double.MAX_VALUE) {
+         $$1.addProperty("min", $$0.b);
+      }
+
+      if ($$0.c != Double.MAX_VALUE) {
+         $$1.addProperty("max", $$0.c);
+      }
+   }
+
+   public ip.a a(DoubleArgumentType $$0) {
+      return new ip.a($$0.getMinimum(), $$0.getMaximum());
+   }
+
+   public final class a implements ik.a<DoubleArgumentType> {
+      final double b;
+      final double c;
+
+      a(final double $$1, final double $$2) {
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public DoubleArgumentType a(el $$0) {
+         return DoubleArgumentType.doubleArg(this.b, this.c);
+      }
+
+      @Override
+      public ik<DoubleArgumentType, ?> a() {
+         return ip.this;
       }
    }
 }

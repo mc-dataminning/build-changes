@@ -1,29 +1,17 @@
-public enum fkd {
-   a,
-   b;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public fkd a() {
-      return switch (this) {
-         case a -> b;
-         case b -> a;
-      };
+public record fkd(alb c) implements fkb {
+   public static final MapCodec<fkd> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alb.a.fieldOf("id").forGetter(fkd::c)).apply($$0, fkd::new));
+
+   @Override
+   public fkc a() {
+      return fkc.e;
    }
 
-   public fke b() {
-      return switch (this) {
-         case a -> fke.d;
-         case b -> fke.b;
-      };
-   }
-
-   public fke c() {
-      return switch (this) {
-         case a -> fke.c;
-         case b -> fke.a;
-      };
-   }
-
-   public fke a(boolean $$0) {
-      return $$0 ? this.b() : this.c();
+   @Override
+   public Either<fkb.b, fkb.c> b() {
+      return Either.right(new fkb.c(this.c));
    }
 }

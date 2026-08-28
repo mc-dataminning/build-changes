@@ -1,5 +1,7 @@
-import java.util.function.Consumer;
+import java.util.List;
 
-public interface cww {
-   void a(Consumer<wx> var1, cvj var2);
+public interface cww<T, C> {
+   List<ars<T>> a();
+
+   C a(List<ars<T>> var1);
 }

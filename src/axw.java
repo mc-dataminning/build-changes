@@ -1,231 +1,328 @@
-import com.google.common.hash.Funnels;
-import com.google.common.hash.HashCode;
-import com.google.common.hash.HashFunction;
-import com.google.common.hash.Hasher;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.UncheckedIOException;
-import java.net.HttpURLConnection;
-import java.net.Proxy;
-import java.net.ServerSocket;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
-import java.nio.file.StandardOpenOption;
-import java.nio.file.attribute.FileTime;
-import java.time.Instant;
-import java.util.Map;
-import java.util.OptionalLong;
-import javax.annotation.Nullable;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.floats.FloatArrayList;
+import it.unimi.dsi.fastutil.floats.FloatList;
+import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import org.apache.commons.lang3.mutable.MutableObject;
 
-public class axw {
-   private static final Logger a = LogUtils.getLogger();
+public interface axw<C, I extends azv<C>> extends azv<C> {
+   @azy
+   String a();
 
-   private axw() {
+   axw<C, I> a(axw.d<I> var1);
+
+   static <C, I extends azv<C>> Codec<axw<C, I>> a(Codec<I> $$0) {
+      MutableObject<Codec<axw<C, I>>> $$1 = new MutableObject();
+
+      record a<C, I extends azv<C>>(float a, axw<C, I> b, float c) {
+      }
+
+      Codec<a<C, I>> $$2 = RecordCodecBuilder.create(
+         $$1x -> $$1x.group(
+                  Codec.FLOAT.fieldOf("location").forGetter(a::a),
+                  Codec.lazyInitialized($$1::getValue).fieldOf("value").forGetter(a::b),
+                  Codec.FLOAT.fieldOf("derivative").forGetter(a::c)
+               )
+               .apply($$1x, ($$0xx, $$1xx, $$2x) -> new a($$0xx, $$1xx, $$2x))
+      );
+      Codec<axw.e<C, I>> $$3 = RecordCodecBuilder.create(
+         $$2x -> $$2x.group(
+                  $$0.fieldOf("coordinate").forGetter(axw.e::d),
+                  ayc.a($$2.listOf())
+                     .fieldOf("points")
+                     .forGetter(
+                        $$0xx -> IntStream.range(0, $$0xx.c.length)
+                              .mapToObj($$1xx -> new a($$0xx.e()[$$1xx], (axw<C, I>)$$0xx.f().get($$1xx), $$0xx.g()[$$1xx]))
+                              .toList()
+                     )
+               )
+               .apply($$2x, ($$0xx, $$1xx) -> {
+                  float[] $$2xx = new float[$$1xx.size()];
+                  Builder<axw<C, I>> $$3x = ImmutableList.builder();
+                  float[] $$4 = new float[$$1xx.size()];
+
+                  for (int $$5 = 0; $$5 < $$1xx.size(); $$5++) {
+                     a<C, I> $$6 = (a<C, I>)$$1xx.get($$5);
+                     $$2xx[$$5] = $$6.a();
+                     $$3x.add($$6.b());
+                     $$4[$$5] = $$6.c();
+                  }
+
+                  return axw.e.a((I)$$0xx, $$2xx, $$3x.build(), $$4);
+               })
+      );
+      $$1.setValue(
+         Codec.either(Codec.FLOAT, $$3)
+            .xmap(
+               $$0x -> (axw)$$0x.map(axw.c::new, $$0xx -> $$0xx), $$0x -> $$0x instanceof axw.c<C, I> $$1x ? Either.left($$1x.d()) : Either.right((axw.e)$$0x)
+            )
+      );
+      return (Codec<axw<C, I>>)$$1.getValue();
    }
 
-   public static Path a(Path $$0, URL $$1, Map<String, String> $$2, HashFunction $$3, @Nullable HashCode $$4, int $$5, Proxy $$6, axw.a $$7) {
-      HttpURLConnection $$8 = null;
-      InputStream $$9 = null;
-      $$7.a();
-      Path $$10;
-      if ($$4 != null) {
-         $$10 = a($$0, $$4);
+   static <C, I extends azv<C>> axw<C, I> a(float $$0) {
+      return new axw.c<>($$0);
+   }
 
-         try {
-            if (a($$10, $$3, $$4)) {
-               a.info("Returning cached file since actual hash matches requested");
-               $$7.a(true);
-               a($$10);
-               return $$10;
+   static <C, I extends azv<C>> axw.b<C, I> a(I $$0) {
+      return new axw.b<>($$0);
+   }
+
+   static <C, I extends azv<C>> axw.b<C, I> a(I $$0, azv<Float> $$1) {
+      return new axw.b<>($$0, $$1);
+   }
+
+   public static final class b<C, I extends azv<C>> {
+      private final I a;
+      private final azv<Float> b;
+      private final FloatList c = new FloatArrayList();
+      private final List<axw<C, I>> d = Lists.newArrayList();
+      private final FloatList e = new FloatArrayList();
+
+      protected b(I $$0) {
+         this($$0, azv.a);
+      }
+
+      protected b(I $$0, azv<Float> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public axw.b<C, I> a(float $$0, float $$1) {
+         return this.a($$0, new axw.c<>(this.b.a($$1)), 0.0F);
+      }
+
+      public axw.b<C, I> a(float $$0, float $$1, float $$2) {
+         return this.a($$0, new axw.c<>(this.b.a($$1)), $$2);
+      }
+
+      public axw.b<C, I> a(float $$0, axw<C, I> $$1) {
+         return this.a($$0, $$1, 0.0F);
+      }
+
+      private axw.b<C, I> a(float $$0, axw<C, I> $$1, float $$2) {
+         if (!this.c.isEmpty() && $$0 <= this.c.getFloat(this.c.size() - 1)) {
+            throw new IllegalArgumentException("Please register points in ascending order");
+         } else {
+            this.c.add($$0);
+            this.d.add($$1);
+            this.e.add($$2);
+            return this;
+         }
+      }
+
+      public axw<C, I> a() {
+         if (this.c.isEmpty()) {
+            throw new IllegalStateException("No elements added");
+         } else {
+            return axw.e.a(this.a, this.c.toFloatArray(), ImmutableList.copyOf(this.d), this.e.toFloatArray());
+         }
+      }
+   }
+
+   @azy
+   public static record c<C, I extends azv<C>>(float b) implements axw<C, I> {
+      @Override
+      public float a(C $$0) {
+         return this.b;
+      }
+
+      @Override
+      public String a() {
+         return String.format(Locale.ROOT, "k=%.3f", this.b);
+      }
+
+      @Override
+      public float c() {
+         return this.b;
+      }
+
+      @Override
+      public axw<C, I> a(axw.d<I> $$0) {
+         return this;
+      }
+
+      public float d() {
+         return this.b;
+      }
+   }
+
+   public interface d<I> {
+      I visit(I var1);
+   }
+
+   @azy
+   public static record e<C, I extends azv<C>>(I b, float[] c, List<axw<C, I>> d, float[] e, float f, float g) implements axw<C, I> {
+
+      public e(I b, float[] c, List<axw<C, I>> d, float[] e, float f, float g) {
+         a(c, d, e);
+         this.b = b;
+         this.c = c;
+         this.d = d;
+         this.e = e;
+         this.f = f;
+         this.g = g;
+      }
+
+      static <C, I extends azv<C>> axw.e<C, I> a(I $$0, float[] $$1, List<axw<C, I>> $$2, float[] $$3) {
+         a($$1, $$2, $$3);
+         int $$4 = $$1.length - 1;
+         float $$5 = Float.POSITIVE_INFINITY;
+         float $$6 = Float.NEGATIVE_INFINITY;
+         float $$7 = $$0.b();
+         float $$8 = $$0.c();
+         if ($$7 < $$1[0]) {
+            float $$9 = a($$7, $$1, $$2.get(0).b(), $$3, 0);
+            float $$10 = a($$7, $$1, $$2.get(0).c(), $$3, 0);
+            $$5 = Math.min($$5, Math.min($$9, $$10));
+            $$6 = Math.max($$6, Math.max($$9, $$10));
+         }
+
+         if ($$8 > $$1[$$4]) {
+            float $$11 = a($$8, $$1, $$2.get($$4).b(), $$3, $$4);
+            float $$12 = a($$8, $$1, $$2.get($$4).c(), $$3, $$4);
+            $$5 = Math.min($$5, Math.min($$11, $$12));
+            $$6 = Math.max($$6, Math.max($$11, $$12));
+         }
+
+         for (axw<C, I> $$13 : $$2) {
+            $$5 = Math.min($$5, $$13.b());
+            $$6 = Math.max($$6, $$13.c());
+         }
+
+         for (int $$14 = 0; $$14 < $$4; $$14++) {
+            float $$15 = $$1[$$14];
+            float $$16 = $$1[$$14 + 1];
+            float $$17 = $$16 - $$15;
+            axw<C, I> $$18 = $$2.get($$14);
+            axw<C, I> $$19 = $$2.get($$14 + 1);
+            float $$20 = $$18.b();
+            float $$21 = $$18.c();
+            float $$22 = $$19.b();
+            float $$23 = $$19.c();
+            float $$24 = $$3[$$14];
+            float $$25 = $$3[$$14 + 1];
+            if ($$24 != 0.0F || $$25 != 0.0F) {
+               float $$26 = $$24 * $$17;
+               float $$27 = $$25 * $$17;
+               float $$28 = Math.min($$20, $$22);
+               float $$29 = Math.max($$21, $$23);
+               float $$30 = $$26 - $$23 + $$20;
+               float $$31 = $$26 - $$22 + $$21;
+               float $$32 = -$$27 + $$22 - $$21;
+               float $$33 = -$$27 + $$23 - $$20;
+               float $$34 = Math.min($$30, $$32);
+               float $$35 = Math.max($$31, $$33);
+               $$5 = Math.min($$5, $$28 + 0.25F * $$34);
+               $$6 = Math.max($$6, $$29 + 0.25F * $$35);
             }
-         } catch (IOException var35) {
-            a.warn("Failed to check cached file {}", $$10, var35);
          }
 
-         try {
-            a.warn("Existing file {} not found or had mismatched hash", $$10);
-            Files.deleteIfExists($$10);
-         } catch (IOException var34) {
-            $$7.a(false);
-            throw new UncheckedIOException("Failed to remove existing file " + $$10, var34);
-         }
-      } else {
-         $$10 = null;
+         return new axw.e<>($$0, $$1, $$2, $$3, $$5, $$6);
       }
 
-      Path $$18;
-      try {
-         $$8 = (HttpURLConnection)$$1.openConnection($$6);
-         $$8.setInstanceFollowRedirects(true);
-         $$2.forEach($$8::setRequestProperty);
-         $$9 = $$8.getInputStream();
-         long $$14 = $$8.getContentLengthLong();
-         OptionalLong $$15 = $$14 != -1L ? OptionalLong.of($$14) : OptionalLong.empty();
-         v.c($$0);
-         $$7.a($$15);
-         if ($$15.isPresent() && $$15.getAsLong() > (long)$$5) {
-            throw new IOException("Filesize is bigger than maximum allowed (file is " + $$15 + ", limit is " + $$5 + ")");
-         }
-
-         if ($$10 == null) {
-            Path $$17 = Files.createTempFile($$0, "download", ".tmp");
-
-            try {
-               HashCode $$18x = a($$3, $$5, $$7, $$9, $$17);
-               Path $$19 = a($$0, $$18x);
-               if (!a($$19, $$3, $$18x)) {
-                  Files.move($$17, $$19, StandardCopyOption.REPLACE_EXISTING);
-               } else {
-                  a($$19);
-               }
-
-               $$7.a(true);
-               return $$19;
-            } finally {
-               Files.deleteIfExists($$17);
-            }
-         }
-
-         HashCode $$16 = a($$3, $$5, $$7, $$9, $$10);
-         if (!$$16.equals($$4)) {
-            throw new IOException("Hash of downloaded file (" + $$16 + ") did not match requested (" + $$4 + ")");
-         }
-
-         $$7.a(true);
-         $$18 = $$10;
-      } catch (Throwable var36) {
-         if ($$8 != null) {
-            InputStream $$21 = $$8.getErrorStream();
-            if ($$21 != null) {
-               try {
-                  a.error("HTTP response error: {}", IOUtils.toString($$21, StandardCharsets.UTF_8));
-               } catch (Exception var32) {
-                  a.error("Failed to read response from server");
-               }
-            }
-         }
-
-         $$7.a(false);
-         throw new IllegalStateException("Failed to download file " + $$1, var36);
-      } finally {
-         IOUtils.closeQuietly($$9);
+      private static float a(float $$0, float[] $$1, float $$2, float[] $$3, int $$4) {
+         float $$5 = $$3[$$4];
+         return $$5 == 0.0F ? $$2 : $$2 + $$5 * ($$0 - $$1[$$4]);
       }
 
-      return $$18;
-   }
-
-   private static void a(Path $$0) {
-      try {
-         Files.setLastModifiedTime($$0, FileTime.from(Instant.now()));
-      } catch (IOException var2) {
-         a.warn("Failed to update modification time of {}", $$0, var2);
-      }
-   }
-
-   private static HashCode a(Path $$0, HashFunction $$1) throws IOException {
-      Hasher $$2 = $$1.newHasher();
-
-      try (
-         OutputStream $$3 = Funnels.asOutputStream($$2);
-         InputStream $$4 = Files.newInputStream($$0);
-      ) {
-         $$4.transferTo($$3);
-      }
-
-      return $$2.hash();
-   }
-
-   private static boolean a(Path $$0, HashFunction $$1, HashCode $$2) throws IOException {
-      if (Files.exists($$0)) {
-         HashCode $$3 = a($$0, $$1);
-         if ($$3.equals($$2)) {
-            return true;
+      private static <C, I extends azv<C>> void a(float[] $$0, List<axw<C, I>> $$1, float[] $$2) {
+         if ($$0.length != $$1.size() || $$0.length != $$2.length) {
+            throw new IllegalArgumentException("All lengths must be equal, got: " + $$0.length + " " + $$1.size() + " " + $$2.length);
+         } else if ($$0.length == 0) {
+            throw new IllegalArgumentException("Cannot create a multipoint spline with no points");
          }
-
-         a.warn("Mismatched hash of file {}, expected {} but found {}", new Object[]{$$0, $$2, $$3});
       }
 
-      return false;
-   }
-
-   private static Path a(Path $$0, HashCode $$1) {
-      return $$0.resolve($$1.toString());
-   }
-
-   private static HashCode a(HashFunction $$0, int $$1, axw.a $$2, InputStream $$3, Path $$4) throws IOException {
-      HashCode var11;
-      try (OutputStream $$5 = Files.newOutputStream($$4, StandardOpenOption.CREATE)) {
-         Hasher $$6 = $$0.newHasher();
-         byte[] $$7 = new byte[8196];
-         long $$8 = 0L;
-
-         int $$9;
-         while (($$9 = $$3.read($$7)) >= 0) {
-            $$8 += (long)$$9;
-            $$2.a($$8);
-            if ($$8 > (long)$$1) {
-               throw new IOException("Filesize was bigger than maximum allowed (got >= " + $$8 + ", limit was " + $$1 + ")");
-            }
-
-            if (Thread.interrupted()) {
-               a.error("INTERRUPTED");
-               throw new IOException("Download interrupted");
-            }
-
-            $$5.write($$7, 0, $$9);
-            $$6.putBytes($$7, 0, $$9);
+      @Override
+      public float a(C $$0) {
+         float $$1 = this.b.a($$0);
+         int $$2 = a(this.c, $$1);
+         int $$3 = this.c.length - 1;
+         if ($$2 < 0) {
+            return a($$1, this.c, this.d.get(0).a($$0), this.e, 0);
+         } else if ($$2 == $$3) {
+            return a($$1, this.c, this.d.get($$3).a($$0), this.e, $$3);
+         } else {
+            float $$4 = this.c[$$2];
+            float $$5 = this.c[$$2 + 1];
+            float $$6 = ($$1 - $$4) / ($$5 - $$4);
+            azv<C> $$7 = (azv<C>)this.d.get($$2);
+            azv<C> $$8 = (azv<C>)this.d.get($$2 + 1);
+            float $$9 = this.e[$$2];
+            float $$10 = this.e[$$2 + 1];
+            float $$11 = $$7.a($$0);
+            float $$12 = $$8.a($$0);
+            float $$13 = $$9 * ($$5 - $$4) - ($$12 - $$11);
+            float $$14 = -$$10 * ($$5 - $$4) + ($$12 - $$11);
+            return ayu.i($$6, $$11, $$12) + $$6 * (1.0F - $$6) * ayu.i($$6, $$13, $$14);
          }
-
-         var11 = $$6.hash();
       }
 
-      return var11;
-   }
-
-   public static int a() {
-      try {
-         int var1;
-         try (ServerSocket $$0 = new ServerSocket(0)) {
-            var1 = $$0.getLocalPort();
-         }
-
-         return var1;
-      } catch (IOException var5) {
-         return 25564;
+      private static int a(float[] $$0, float $$1) {
+         return ayu.a(0, $$0.length, $$2 -> $$1 < $$0[$$2]) - 1;
       }
-   }
 
-   public static boolean a(int $$0) {
-      if ($$0 >= 0 && $$0 <= 65535) {
-         try {
-            boolean var2;
-            try (ServerSocket $$1 = new ServerSocket($$0)) {
-               var2 = $$1.getLocalPort() == $$0;
-            }
-
-            return var2;
-         } catch (IOException var6) {
-            return false;
-         }
-      } else {
-         return false;
+      @VisibleForTesting
+      @Override
+      public String a() {
+         return "Spline{coordinate="
+            + this.b
+            + ", locations="
+            + this.a(this.c)
+            + ", derivatives="
+            + this.a(this.e)
+            + ", values="
+            + this.d.stream().map(axw::a).collect(Collectors.joining(", ", "[", "]"))
+            + "}";
       }
-   }
 
-   public interface a {
-      void a();
+      private String a(float[] $$0) {
+         return "["
+            + IntStream.range(0, $$0.length)
+               .mapToDouble($$1 -> (double)$$0[$$1])
+               .mapToObj($$0x -> String.format(Locale.ROOT, "%.3f", $$0x))
+               .collect(Collectors.joining(", "))
+            + "]";
+      }
 
-      void a(OptionalLong var1);
+      @Override
+      public axw<C, I> a(axw.d<I> $$0) {
+         return a($$0.visit(this.b), this.c, this.f().stream().map($$1 -> $$1.a($$0)).toList(), this.e);
+      }
 
-      void a(long var1);
+      public I d() {
+         return this.b;
+      }
 
-      void a(boolean var1);
+      public float[] e() {
+         return this.c;
+      }
+
+      public List<axw<C, I>> f() {
+         return this.d;
+      }
+
+      public float[] g() {
+         return this.e;
+      }
+
+      @Override
+      public float b() {
+         return this.f;
+      }
+
+      @Override
+      public float c() {
+         return this.g;
+      }
    }
 }

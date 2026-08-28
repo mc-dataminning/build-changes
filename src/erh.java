@@ -1,45 +1,64 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
+import java.util.Set;
 
-public class erh extends eqs {
+public class erh extends erp {
    public static final MapCodec<erh> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  cwj.c.sizeLimitedListOf(256).optionalFieldOf("explosions", List.of()).forGetter($$0x -> $$0x.c),
-                  eqr.a(256).forGetter($$0x -> $$0x.d),
-                  axn.h.optionalFieldOf("flight_duration").forGetter($$0x -> $$0x.e)
-               )
-            )
+            .and($$0.group(euj.a.fieldOf("levels").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("treasure").orElse(false).forGetter($$0x -> $$0x.c)))
             .apply($$0, erh::new)
    );
-   public static final cwk b = new cwk(0, List.of());
-   private final List<cwj> c;
-   private final eqr d;
-   private final Optional<Integer> e;
+   private final eui b;
+   private final boolean c;
 
-   protected erh(List<esn> $$0, List<cwj> $$1, eqr $$2, Optional<Integer> $$3) {
+   erh(List<etn> $$0, eui $$1, boolean $$2) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   protected ctq a(ctq $$0, eph $$1) {
-      $$0.a(kb.T, b, this::a);
-      return $$0;
-   }
-
-   private cwk a(cwk $$0) {
-      List<cwj> $$1 = this.d.a($$0.b(), this.c, 256);
-      return new cwk(this.e.orElseGet($$0::a), $$1);
+   public err<erh> b() {
+      return ers.g;
    }
 
    @Override
-   public equ b() {
-      return eqv.H;
+   public Set<esw<?>> a() {
+      return this.b.a();
+   }
+
+   @Override
+   public cuk a(cuk $$0, eqd $$1) {
+      azc $$2 = $$1.b();
+      return czw.a($$1.d().J(), $$2, $$0, this.b.a($$1), this.c);
+   }
+
+   public static erh.a a(eui $$0) {
+      return new erh.a($$0);
+   }
+
+   public static class a extends erp.a<erh.a> {
+      private final eui a;
+      private boolean b;
+
+      public a(eui $$0) {
+         this.a = $$0;
+      }
+
+      protected erh.a a() {
+         return this;
+      }
+
+      public erh.a e() {
+         this.b = true;
+         return this;
+      }
+
+      @Override
+      public erq b() {
+         return new erh(this.g(), this.a, this.b);
+      }
    }
 }

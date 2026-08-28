@@ -1,8 +1,20 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface tx {
+public class tx implements uk {
+   private static final Logger a = LogUtils.getLogger();
+
+   @Override
+   public void a(tn $$0) {
+      String $$1 = $$0.c().x();
+      if ($$0.q()) {
+         a.error("{} failed at {}! {}", new Object[]{$$0.b(), $$1, ac.c($$0.m())});
+      } else {
+         a.warn("(optional) {} failed at {}. {}", new Object[]{$$0.b(), $$1, ac.c($$0.m())});
+      }
+   }
+
+   @Override
+   public void b(tn $$0) {
+   }
 }

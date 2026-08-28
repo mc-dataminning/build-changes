@@ -1,27 +1,20 @@
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import javax.annotation.Nullable;
 
-public class far extends faq {
-   private static final Logger d = LogUtils.getLogger();
-   public String a;
-   public String b;
-   public String c;
+public class far {
+   private final Gson a = new Gson();
 
-   public static far a(String $$0) {
-      JsonParser $$1 = new JsonParser();
-      JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
-      far $$3 = new far();
+   public String a(fbj $$0) {
+      return this.a.toJson($$0);
+   }
 
-      try {
-         $$3.a = fcn.b("downloadLink", $$2, "");
-         $$3.b = fcn.b("resourcePackUrl", $$2, "");
-         $$3.c = fcn.b("resourcePackHash", $$2, "");
-      } catch (Exception var5) {
-         d.error("Could not parse WorldDownload: {}", var5.getMessage());
-      }
+   public String a(JsonElement $$0) {
+      return this.a.toJson($$0);
+   }
 
-      return $$3;
+   @Nullable
+   public <T extends fbj> T a(String $$0, Class<T> $$1) {
+      return (T)this.a.fromJson($$0, $$1);
    }
 }

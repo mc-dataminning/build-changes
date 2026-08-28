@@ -1,27 +1,7 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.MapCodec;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import io.netty.handler.codec.EncoderException;
 
-public interface wy {
-   default <T> Optional<T> a(xc.b<T> $$0, xu $$1) {
-      return Optional.empty();
-   }
-
-   default <T> Optional<T> a(xc.a<T> $$0) {
-      return Optional.empty();
-   }
-
-   default xl a(@Nullable ee $$0, @Nullable brw $$1, int $$2) throws CommandSyntaxException {
-      return xl.a(this);
-   }
-
-   wy.a<?> a();
-
-   public static record a<T extends wy>(MapCodec<T> a, String b) implements ayz {
-      @Override
-      public String c() {
-         return this.b;
-      }
+public class wy extends EncoderException {
+   public wy(Throwable $$0) {
+      super($$0);
    }
 }

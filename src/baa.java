@@ -1,95 +1,81 @@
-import com.mojang.datafixers.DSL;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
 import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.Map;
+import com.mojang.serialization.DynamicOps;
+import java.util.Optional;
 
-public class baa extends bez {
-   private static final Map<String, String> a = Map.ofEntries(
-      Map.entry("b", "minecraft:base"),
-      Map.entry("bl", "minecraft:square_bottom_left"),
-      Map.entry("br", "minecraft:square_bottom_right"),
-      Map.entry("tl", "minecraft:square_top_left"),
-      Map.entry("tr", "minecraft:square_top_right"),
-      Map.entry("bs", "minecraft:stripe_bottom"),
-      Map.entry("ts", "minecraft:stripe_top"),
-      Map.entry("ls", "minecraft:stripe_left"),
-      Map.entry("rs", "minecraft:stripe_right"),
-      Map.entry("cs", "minecraft:stripe_center"),
-      Map.entry("ms", "minecraft:stripe_middle"),
-      Map.entry("drs", "minecraft:stripe_downright"),
-      Map.entry("dls", "minecraft:stripe_downleft"),
-      Map.entry("ss", "minecraft:small_stripes"),
-      Map.entry("cr", "minecraft:cross"),
-      Map.entry("sc", "minecraft:straight_cross"),
-      Map.entry("bt", "minecraft:triangle_bottom"),
-      Map.entry("tt", "minecraft:triangle_top"),
-      Map.entry("bts", "minecraft:triangles_bottom"),
-      Map.entry("tts", "minecraft:triangles_top"),
-      Map.entry("ld", "minecraft:diagonal_left"),
-      Map.entry("rd", "minecraft:diagonal_up_right"),
-      Map.entry("lud", "minecraft:diagonal_up_left"),
-      Map.entry("rud", "minecraft:diagonal_right"),
-      Map.entry("mc", "minecraft:circle"),
-      Map.entry("mr", "minecraft:rhombus"),
-      Map.entry("vh", "minecraft:half_vertical"),
-      Map.entry("hh", "minecraft:half_horizontal"),
-      Map.entry("vhr", "minecraft:half_vertical_right"),
-      Map.entry("hhb", "minecraft:half_horizontal_bottom"),
-      Map.entry("bo", "minecraft:border"),
-      Map.entry("cbo", "minecraft:curly_border"),
-      Map.entry("gra", "minecraft:gradient"),
-      Map.entry("gru", "minecraft:gradient_up"),
-      Map.entry("bri", "minecraft:bricks"),
-      Map.entry("glb", "minecraft:globe"),
-      Map.entry("cre", "minecraft:creeper"),
-      Map.entry("sku", "minecraft:skull"),
-      Map.entry("flo", "minecraft:flower"),
-      Map.entry("moj", "minecraft:mojang"),
-      Map.entry("pig", "minecraft:piglin")
-   );
+public class baa {
+   private static final String a = b("");
 
-   public baa(Schema $$0) {
-      super($$0, false, "BannerPatternFormatFix", bga.s, "minecraft:banner");
+   public static <T> Dynamic<T> a(DynamicOps<T> $$0, String $$1) {
+      String $$2 = b($$1);
+      return new Dynamic($$0, $$0.createString($$2));
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), baa::a);
+   public static <T> Dynamic<T> a(DynamicOps<T> $$0) {
+      return new Dynamic($$0, $$0.createString(a));
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.renameAndFixField("Patterns", "patterns", $$0x -> $$0x.createList($$0x.asStream().map(baa::b)));
+   private static String b(String $$0) {
+      JsonObject $$1 = new JsonObject();
+      $$1.addProperty("text", $$0);
+      return ayk.e($$1);
    }
 
-   private static Dynamic<?> b(Dynamic<?> $$0) {
-      $$0 = $$0.renameAndFixField(
-         "Pattern",
-         "pattern",
-         $$0x -> (Dynamic)DataFixUtils.orElse($$0x.asString().map($$0xx -> a.getOrDefault($$0xx, $$0xx)).map($$0x::createString).result(), $$0x)
-      );
-      return $$0.renameAndFixField("Color", "color", $$0x -> $$0x.createString(a($$0x.asInt(0))));
+   public static <T> Dynamic<T> b(DynamicOps<T> $$0, String $$1) {
+      JsonObject $$2 = new JsonObject();
+      $$2.addProperty("translate", $$1);
+      return new Dynamic($$0, $$0.createString(ayk.e($$2)));
    }
 
-   public static String a(int $$0) {
-      return switch ($$0) {
-         case 1 -> "orange";
-         case 2 -> "magenta";
-         case 3 -> "light_blue";
-         case 4 -> "yellow";
-         case 5 -> "lime";
-         case 6 -> "pink";
-         case 7 -> "gray";
-         case 8 -> "light_gray";
-         case 9 -> "cyan";
-         case 10 -> "purple";
-         case 11 -> "blue";
-         case 12 -> "brown";
-         case 13 -> "green";
-         case 14 -> "red";
-         case 15 -> "black";
-         default -> "white";
-      };
+   public static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return (Dynamic<T>)DataFixUtils.orElse($$0.asString().map($$1 -> a($$0.getOps(), $$1)).result(), $$0);
+   }
+
+   public static Dynamic<?> b(Dynamic<?> $$0) {
+      Optional<String> $$1 = $$0.asString().result();
+      if ($$1.isEmpty()) {
+         return $$0;
+      } else {
+         String $$2 = $$1.get();
+         if (!$$2.isEmpty() && !$$2.equals("null")) {
+            char $$3 = $$2.charAt(0);
+            char $$4 = $$2.charAt($$2.length() - 1);
+            if ($$3 == '"' && $$4 == '"' || $$3 == '{' && $$4 == '}' || $$3 == '[' && $$4 == ']') {
+               try {
+                  JsonElement $$5 = JsonParser.parseString($$2);
+                  if ($$5.isJsonPrimitive()) {
+                     return a($$0.getOps(), $$5.getAsString());
+                  }
+
+                  return $$0.createString(ayk.e($$5));
+               } catch (JsonParseException var6) {
+               }
+            }
+
+            return a($$0.getOps(), $$2);
+         } else {
+            return a($$0.getOps());
+         }
+      }
+   }
+
+   public static Optional<String> a(String $$0) {
+      try {
+         JsonElement $$1 = JsonParser.parseString($$0);
+         if ($$1.isJsonObject()) {
+            JsonObject $$2 = $$1.getAsJsonObject();
+            JsonElement $$3 = $$2.get("translate");
+            if ($$3 != null && $$3.isJsonPrimitive()) {
+               return Optional.of($$3.getAsString());
+            }
+         }
+      } catch (JsonParseException var4) {
+      }
+
+      return Optional.empty();
    }
 }

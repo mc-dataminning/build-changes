@@ -1,31 +1,57 @@
-public class ful<T extends cfc> extends fug<T> {
-   private float j;
+import java.util.Arrays;
 
-   public ful(fvw $$0) {
-      super($$0, false, 8.0F, 4.0F, 2.0F, 2.0F, 24);
+public class ful<T extends ckh> extends fue<T> {
+   private static final int a = 8;
+   private final fwv b;
+   private final fwv[] f = new fwv[8];
+
+   public ful(fwv $$0) {
+      this.b = $$0;
+      Arrays.setAll(this.f, $$1 -> $$0.b(a($$1)));
    }
 
-   public static fwc c() {
-      fwe $$0 = new fwe();
-      fwf $$1 = $$0.a();
-      $$1.a("head", fwb.c().a(0, 0).a(-3.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, new fwa(0.6F)), fvy.a(0.0F, 6.0F, -8.0F));
-      $$1.a("body", fwb.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F, new fwa(1.75F)), fvy.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      fwb $$2 = fwb.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, new fwa(0.5F));
-      $$1.a("right_hind_leg", $$2, fvy.a(-3.0F, 12.0F, 7.0F));
-      $$1.a("left_hind_leg", $$2, fvy.a(3.0F, 12.0F, 7.0F));
-      $$1.a("right_front_leg", $$2, fvy.a(-3.0F, 12.0F, -5.0F));
-      $$1.a("left_front_leg", $$2, fvy.a(3.0F, 12.0F, -5.0F));
-      return fwc.a($$0, 64, 32);
+   private static String a(int $$0) {
+      return "cube" + $$0;
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a.c = 6.0F + $$0.G($$3) * 9.0F;
-      this.j = $$0.H($$3);
+   public static fxb b() {
+      fxd $$0 = new fxd();
+      fxe $$1 = $$0.a();
+
+      for (int $$2 = 0; $$2 < 8; $$2++) {
+         int $$3 = 0;
+         int $$4 = $$2;
+         if ($$2 == 2) {
+            $$3 = 24;
+            $$4 = 10;
+         } else if ($$2 == 3) {
+            $$3 = 24;
+            $$4 = 19;
+         }
+
+         $$1.a(a($$2), fxa.c().a($$3, $$4).a(-4.0F, (float)(16 + $$2), -4.0F, 8.0F, 1.0F, 8.0F), fwx.a);
+      }
+
+      $$1.a("inside_cube", fxa.c().a(0, 16).a(-2.0F, 18.0F, -2.0F, 4.0F, 4.0F, 4.0F), fwx.a);
+      return fxb.a($$0, 64, 32);
    }
 
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.a.e = this.j;
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      float $$4 = ayu.i($$3, $$0.bY, $$0.bX);
+      if ($$4 < 0.0F) {
+         $$4 = 0.0F;
+      }
+
+      for (int $$5 = 0; $$5 < this.f.length; $$5++) {
+         this.f[$$5].c = (float)(-(4 - $$5)) * $$4 * 1.7F;
+      }
+   }
+
+   @Override
+   public fwv a() {
+      return this.b;
    }
 }

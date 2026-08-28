@@ -1,90 +1,298 @@
+import com.google.common.base.Suppliers;
+import com.mojang.datafixers.util.Function3;
+import com.mojang.datafixers.util.Function4;
+import com.mojang.datafixers.util.Function5;
+import com.mojang.datafixers.util.Function6;
 import io.netty.buffer.ByteBuf;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
+import java.util.function.BiFunction;
 import java.util.function.Function;
-import javax.annotation.Nullable;
+import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 
-public class zj<T extends wd, B extends ByteBuf> {
-   private final vw a;
-   private final zf b;
-   private final List<zj.a<T, ?, B>> c = new ArrayList<>();
-   @Nullable
-   private zd d;
+public interface zj<B, V> extends zk<B, V>, zl<B, V> {
+   static <B, V> zj<B, V> a(final zl<B, V> $$0, final zk<B, V> $$1) {
+      return new zj<B, V>() {
+         @Override
+         public V decode(B $$0x) {
+            return $$1.decode($$0);
+         }
 
-   public zj(vw $$0, zf $$1) {
-      this.a = $$0;
-      this.b = $$1;
+         @Override
+         public void encode(B $$0x, V $$1x) {
+            $$0.encode($$0, $$1);
+         }
+      };
    }
 
-   public <P extends ze<? super T>> zj<T, B> a(zg<P> $$0, yv<? super B, P> $$1) {
-      this.c.add(new zj.a<>($$0, $$1));
+   static <B, V> zj<B, V> a(final zm<B, V> $$0, final zk<B, V> $$1) {
+      return new zj<B, V>() {
+         @Override
+         public V decode(B $$0x) {
+            return $$1.decode($$0);
+         }
+
+         @Override
+         public void encode(B $$0x, V $$1x) {
+            $$0.encode($$1, $$0);
+         }
+      };
+   }
+
+   static <B, V> zj<B, V> a(final V $$0) {
+      return new zj<B, V>() {
+         @Override
+         public V decode(B $$0x) {
+            return $$0;
+         }
+
+         @Override
+         public void encode(B $$0x, V $$1) {
+            if (!$$1.equals($$0)) {
+               throw new IllegalStateException("Can't encode '" + $$1 + "', expected '" + $$0 + "'");
+            }
+         }
+      };
+   }
+
+   default <O> zj<B, O> a(zj.a<B, V, O> $$0) {
+      return $$0.apply(this);
+   }
+
+   default <O> zj<B, O> a(final Function<? super V, ? extends O> $$0, final Function<? super O, ? extends V> $$1) {
+      return new zj<B, O>() {
+         @Override
+         public O decode(B $$0x) {
+            return (O)$$0.apply(zj.this.decode($$0));
+         }
+
+         @Override
+         public void encode(B $$0x, O $$1x) {
+            zj.this.encode($$0, (V)$$1.apply($$1));
+         }
+      };
+   }
+
+   default <O extends ByteBuf> zj<O, V> b(final Function<O, ? extends B> $$0) {
+      return new zj<O, V>() {
+         public V a(O $$0x) {
+            B $$1 = (B)$$0.apply($$0);
+            return zj.this.decode($$1);
+         }
+
+         public void a(O $$0x, V $$1) {
+            B $$2 = (B)$$0.apply($$0);
+            zj.this.encode($$2, $$1);
+         }
+      };
+   }
+
+   default <U> zj<B, U> b(final Function<? super U, ? extends V> $$0, final Function<? super V, ? extends zj<? super B, ? extends U>> $$1) {
+      return new zj<B, U>() {
+         @Override
+         public U decode(B $$0x) {
+            V $$1 = zj.this.decode($$0);
+            zj<? super B, ? extends U> $$2 = (zj<? super B, ? extends U>)$$1.apply($$1);
+            return (U)$$2.decode($$0);
+         }
+
+         @Override
+         public void encode(B $$0x, U $$1x) {
+            V $$2 = (V)$$0.apply($$1);
+            zj<B, U> $$3 = (zj<B, U>)$$1.apply($$2);
+            zj.this.encode($$0, $$2);
+            $$3.encode($$0, $$1);
+         }
+      };
+   }
+
+   static <B, C, T1> zj<B, C> a(final zj<? super B, T1> $$0, final Function<C, T1> $$1, final Function<T1, C> $$2) {
+      return new zj<B, C>() {
+         @Override
+         public C decode(B $$0x) {
+            T1 $$1 = $$0.decode($$0);
+            return $$2.apply($$1);
+         }
+
+         @Override
+         public void encode(B $$0x, C $$1x) {
+            $$0.encode($$0, $$1.apply($$1));
+         }
+      };
+   }
+
+   static <B, C, T1, T2> zj<B, C> a(
+      final zj<? super B, T1> $$0, final Function<C, T1> $$1, final zj<? super B, T2> $$2, final Function<C, T2> $$3, final BiFunction<T1, T2, C> $$4
+   ) {
+      return new zj<B, C>() {
+         @Override
+         public C decode(B $$0x) {
+            T1 $$1 = $$0.decode($$0);
+            T2 $$2 = $$2.decode($$0);
+            return $$4.apply($$1, $$2);
+         }
+
+         @Override
+         public void encode(B $$0x, C $$1x) {
+            $$0.encode($$0, $$1.apply($$1));
+            $$2.encode($$0, $$3.apply($$1));
+         }
+      };
+   }
+
+   static <B, C, T1, T2, T3> zj<B, C> a(
+      final zj<? super B, T1> $$0,
+      final Function<C, T1> $$1,
+      final zj<? super B, T2> $$2,
+      final Function<C, T2> $$3,
+      final zj<? super B, T3> $$4,
+      final Function<C, T3> $$5,
+      final Function3<T1, T2, T3, C> $$6
+   ) {
+      return new zj<B, C>() {
+         @Override
+         public C decode(B $$0x) {
+            T1 $$1 = $$0.decode($$0);
+            T2 $$2 = $$2.decode($$0);
+            T3 $$3 = $$4.decode($$0);
+            return (C)$$6.apply($$1, $$2, $$3);
+         }
+
+         @Override
+         public void encode(B $$0x, C $$1x) {
+            $$0.encode($$0, $$1.apply($$1));
+            $$2.encode($$0, $$3.apply($$1));
+            $$4.encode($$0, $$5.apply($$1));
+         }
+      };
+   }
+
+   static <B, C, T1, T2, T3, T4> zj<B, C> a(
+      final zj<? super B, T1> $$0,
+      final Function<C, T1> $$1,
+      final zj<? super B, T2> $$2,
+      final Function<C, T2> $$3,
+      final zj<? super B, T3> $$4,
+      final Function<C, T3> $$5,
+      final zj<? super B, T4> $$6,
+      final Function<C, T4> $$7,
+      final Function4<T1, T2, T3, T4, C> $$8
+   ) {
+      return new zj<B, C>() {
+         @Override
+         public C decode(B $$0x) {
+            T1 $$1 = $$0.decode($$0);
+            T2 $$2 = $$2.decode($$0);
+            T3 $$3 = $$4.decode($$0);
+            T4 $$4 = $$6.decode($$0);
+            return (C)$$8.apply($$1, $$2, $$3, $$4);
+         }
+
+         @Override
+         public void encode(B $$0x, C $$1x) {
+            $$0.encode($$0, $$1.apply($$1));
+            $$2.encode($$0, $$3.apply($$1));
+            $$4.encode($$0, $$5.apply($$1));
+            $$6.encode($$0, $$7.apply($$1));
+         }
+      };
+   }
+
+   static <B, C, T1, T2, T3, T4, T5> zj<B, C> a(
+      final zj<? super B, T1> $$0,
+      final Function<C, T1> $$1,
+      final zj<? super B, T2> $$2,
+      final Function<C, T2> $$3,
+      final zj<? super B, T3> $$4,
+      final Function<C, T3> $$5,
+      final zj<? super B, T4> $$6,
+      final Function<C, T4> $$7,
+      final zj<? super B, T5> $$8,
+      final Function<C, T5> $$9,
+      final Function5<T1, T2, T3, T4, T5, C> $$10
+   ) {
+      return new zj<B, C>() {
+         @Override
+         public C decode(B $$0x) {
+            T1 $$1 = $$0.decode($$0);
+            T2 $$2 = $$2.decode($$0);
+            T3 $$3 = $$4.decode($$0);
+            T4 $$4 = $$6.decode($$0);
+            T5 $$5 = $$8.decode($$0);
+            return (C)$$10.apply($$1, $$2, $$3, $$4, $$5);
+         }
+
+         @Override
+         public void encode(B $$0x, C $$1x) {
+            $$0.encode($$0, $$1.apply($$1));
+            $$2.encode($$0, $$3.apply($$1));
+            $$4.encode($$0, $$5.apply($$1));
+            $$6.encode($$0, $$7.apply($$1));
+            $$8.encode($$0, $$9.apply($$1));
+         }
+      };
+   }
+
+   static <B, C, T1, T2, T3, T4, T5, T6> zj<B, C> a(
+      final zj<? super B, T1> $$0,
+      final Function<C, T1> $$1,
+      final zj<? super B, T2> $$2,
+      final Function<C, T2> $$3,
+      final zj<? super B, T3> $$4,
+      final Function<C, T3> $$5,
+      final zj<? super B, T4> $$6,
+      final Function<C, T4> $$7,
+      final zj<? super B, T5> $$8,
+      final Function<C, T5> $$9,
+      final zj<? super B, T6> $$10,
+      final Function<C, T6> $$11,
+      final Function6<T1, T2, T3, T4, T5, T6, C> $$12
+   ) {
+      return new zj<B, C>() {
+         @Override
+         public C decode(B $$0x) {
+            T1 $$1 = $$0.decode($$0);
+            T2 $$2 = $$2.decode($$0);
+            T3 $$3 = $$4.decode($$0);
+            T4 $$4 = $$6.decode($$0);
+            T5 $$5 = $$8.decode($$0);
+            T6 $$6 = $$10.decode($$0);
+            return (C)$$12.apply($$1, $$2, $$3, $$4, $$5, $$6);
+         }
+
+         @Override
+         public void encode(B $$0x, C $$1x) {
+            $$0.encode($$0, $$1.apply($$1));
+            $$2.encode($$0, $$3.apply($$1));
+            $$4.encode($$0, $$5.apply($$1));
+            $$6.encode($$0, $$7.apply($$1));
+            $$8.encode($$0, $$9.apply($$1));
+            $$10.encode($$0, $$11.apply($$1));
+         }
+      };
+   }
+
+   static <B, T> zj<B, T> a(final UnaryOperator<zj<B, T>> $$0) {
+      return new zj<B, T>() {
+         private final Supplier<zj<B, T>> b = Suppliers.memoize(() -> $$0.apply(this));
+
+         @Override
+         public T decode(B $$0x) {
+            return this.b.get().decode($$0);
+         }
+
+         @Override
+         public void encode(B $$0x, T $$1) {
+            this.b.get().encode($$0, $$1);
+         }
+      };
+   }
+
+   default <S extends B> zj<S, V> a() {
       return this;
    }
 
-   public <P extends zc<? super T>, D extends zb<? super T>> zj<T, B> a(zg<P> $$0, Function<Iterable<ze<? super T>>, P> $$1, D $$2) {
-      yv<ByteBuf, D> $$3 = yv.a($$2);
-      zg<D> $$4 = (zg<D>)$$2.a();
-      this.c.add(new zj.a<>($$4, $$3));
-      this.d = zd.a($$0, $$1, $$2);
-      return this;
-   }
-
-   private yv<ByteBuf, ze<? super T>> a(Function<ByteBuf, B> $$0, List<zj.a<T, ?, B>> $$1) {
-      zi<ByteBuf, T> $$2 = new zi<>(this.b);
-
-      for (zj.a<T, ?, B> $$3 : $$1) {
-         $$3.a($$2, $$0);
-      }
-
-      return $$2.a();
-   }
-
-   public wf<T> a(Function<ByteBuf, B> $$0) {
-      return new zj.b<>(this.a, this.b, this.a($$0, this.c), this.d);
-   }
-
-   public wf.a<T, B> a() {
-      List<zj.a<T, ?, B>> $$0 = List.copyOf(this.c);
-      zd $$1 = this.d;
-      return $$2 -> new zj.b<>(this.a, this.b, this.a($$2, $$0), $$1);
-   }
-
-   private static <L extends wd> wf<L> a(vw $$0, zf $$1, Consumer<zj<L, vx>> $$2) {
-      zj<L, vx> $$3 = new zj<>($$0, $$1);
-      $$2.accept($$3);
-      return $$3.a(vx::new);
-   }
-
-   public static <T extends wj> wf<T> a(vw $$0, Consumer<zj<T, vx>> $$1) {
-      return a($$0, zf.a, $$1);
-   }
-
-   public static <T extends vs> wf<T> b(vw $$0, Consumer<zj<T, vx>> $$1) {
-      return a($$0, zf.b, $$1);
-   }
-
-   private static <L extends wd, B extends ByteBuf> wf.a<L, B> b(vw $$0, zf $$1, Consumer<zj<L, B>> $$2) {
-      zj<L, B> $$3 = new zj<>($$0, $$1);
-      $$2.accept($$3);
-      return $$3.a();
-   }
-
-   public static <T extends wj, B extends ByteBuf> wf.a<T, B> c(vw $$0, Consumer<zj<T, B>> $$1) {
-      return b($$0, zf.a, $$1);
-   }
-
-   public static <T extends vs, B extends ByteBuf> wf.a<T, B> d(vw $$0, Consumer<zj<T, B>> $$1) {
-      return b($$0, zf.b, $$1);
-   }
-
-   static record a<T extends wd, P extends ze<? super T>, B extends ByteBuf>(zg<P> a, yv<? super B, P> b) {
-      public void a(zi<ByteBuf, T> $$0, Function<ByteBuf, B> $$1) {
-         yv<ByteBuf, P> $$2 = this.b.b($$1);
-         $$0.a(this.a, $$2);
-      }
-   }
-
-   static record b<L extends wd>(vw a, zf b, yv<ByteBuf, ze<? super L>> c, @Nullable zd d) implements wf<L> {
+   @FunctionalInterface
+   public interface a<B, S, T> {
+      zj<B, T> apply(zj<B, S> var1);
    }
 }

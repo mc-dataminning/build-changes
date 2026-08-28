@@ -1,40 +1,93 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.function.Function;
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class azq extends DataFix {
-   public azq(Schema $$0) {
-      super($$0, false);
+public class azq {
+   private static final Pattern a = Pattern.compile("(?i)\\u00A7[0-9A-FK-OR]");
+   private static final Pattern b = Pattern.compile("\\r\\n|\\v");
+   private static final Pattern c = Pattern.compile("(?:\\r\\n|\\v)$");
+
+   public static String a(int $$0, float $$1) {
+      int $$2 = ayu.d((float)$$0 / $$1);
+      int $$3 = $$2 / 60;
+      $$2 %= 60;
+      int $$4 = $$3 / 60;
+      $$3 %= 60;
+      return $$4 > 0 ? String.format(Locale.ROOT, "%02d:%02d:%02d", $$4, $$3, $$2) : String.format(Locale.ROOT, "%02d:%02d", $$3, $$2);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Schema $$0 = this.getInputSchema();
-      return this.fixTypeEverywhereTyped("AbstractArrowPickupFix", $$0.getType(bga.z), this::a);
+   public static String a(String $$0) {
+      return a.matcher($$0).replaceAll("");
    }
 
-   private Typed<?> a(Typed<?> $$0) {
-      $$0 = this.a($$0, "minecraft:arrow", azq::a);
-      $$0 = this.a($$0, "minecraft:spectral_arrow", azq::a);
-      return this.a($$0, "minecraft:trident", azq::a);
+   public static boolean b(@Nullable String $$0) {
+      return StringUtils.isEmpty($$0);
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      if ($$0.get("pickup").result().isPresent()) {
+   public static String a(String $$0, int $$1, boolean $$2) {
+      if ($$0.length() <= $$1) {
          return $$0;
       } else {
-         boolean $$1 = $$0.get("player").asBoolean(true);
-         return $$0.set("pickup", $$0.createByte((byte)($$1 ? 1 : 0))).remove("player");
+         return $$2 && $$1 > 3 ? $$0.substring(0, $$1 - 3) + "..." : $$0.substring(0, $$1);
       }
    }
 
-   private Typed<?> a(Typed<?> $$0, String $$1, Function<Dynamic<?>, Dynamic<?>> $$2) {
-      Type<?> $$3 = this.getInputSchema().getChoiceType(bga.z, $$1);
-      Type<?> $$4 = this.getOutputSchema().getChoiceType(bga.z, $$1);
-      return $$0.updateTyped(DSL.namedChoice($$1, $$3), $$4, $$1x -> $$1x.update(DSL.remainderFinder(), $$2));
+   public static int c(String $$0) {
+      if ($$0.isEmpty()) {
+         return 0;
+      } else {
+         Matcher $$1 = b.matcher($$0);
+         int $$2 = 1;
+
+         while ($$1.find()) {
+            $$2++;
+         }
+
+         return $$2;
+      }
+   }
+
+   public static boolean d(String $$0) {
+      return c.matcher($$0).find();
+   }
+
+   public static String e(String $$0) {
+      return a($$0, 256, false);
+   }
+
+   public static boolean a(char $$0) {
+      return $$0 != 167 && $$0 >= ' ' && $$0 != 127;
+   }
+
+   public static boolean f(String $$0) {
+      return $$0.length() > 16 ? false : $$0.chars().filter($$0x -> $$0x <= 32 || $$0x >= 127).findAny().isEmpty();
+   }
+
+   public static String g(String $$0) {
+      return a($$0, false);
+   }
+
+   public static String a(String $$0, boolean $$1) {
+      StringBuilder $$2 = new StringBuilder();
+
+      for (char $$3 : $$0.toCharArray()) {
+         if (a($$3)) {
+            $$2.append($$3);
+         } else if ($$1 && $$3 == '\n') {
+            $$2.append($$3);
+         }
+      }
+
+      return $$2.toString();
+   }
+
+   public static boolean a(int $$0) {
+      return Character.isWhitespace($$0) || Character.isSpaceChar($$0);
+   }
+
+   public static boolean h(@Nullable String $$0) {
+      return $$0 != null && $$0.length() != 0 ? $$0.chars().allMatch(azq::a) : true;
    }
 }

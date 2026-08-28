@@ -1,28 +1,19 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class edl extends edk {
-   public static final MapCodec<edl> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, edl::new));
+public class edl implements ecx {
+   public static final Codec<edl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.list(edf.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, edl::new)
+   );
+   public final List<edf.a> b;
 
-   public edl(bpb $$0, bpb $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public edl(drx $$0, drx $$1) {
+      this(ImmutableList.of(edf.a(new elk($$0), $$1)));
    }
 
-   @Override
-   protected edq<?> a() {
-      return edq.e;
-   }
-
-   @Override
-   protected void a(dbf $$0, edp.b $$1, aym $$2, ecz $$3, int $$4, edp.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + $$5.b() - 1 - $$9;
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
-   }
-
-   @Override
-   protected boolean a(aym $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
+   public edl(List<edf.a> $$0) {
+      this.b = $$0;
    }
 }

@@ -1,27 +1,29 @@
-public abstract class boq<R extends Runnable> extends bom<R> {
-   private int b;
+public class boq implements bor {
+   public static final bor a = new boq();
 
-   public boq(String $$0) {
-      super($$0);
+   @Override
+   public void a() {
    }
 
    @Override
-   public boolean ay() {
-      return this.bA() || super.ay();
-   }
-
-   protected boolean bA() {
-      return this.b != 0;
+   public void b() {
    }
 
    @Override
-   public void d(R $$0) {
-      this.b++;
+   public void c() {
+   }
 
-      try {
-         super.d($$0);
-      } finally {
-         this.b--;
-      }
+   @Override
+   public boolean e() {
+      return false;
+   }
+
+   @Override
+   public bnd f() {
+      return bna.a;
+   }
+
+   @Override
+   public void d() {
    }
 }

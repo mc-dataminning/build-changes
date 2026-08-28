@@ -1,35 +1,22 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
+import java.util.UUID;
 
-public class cdf extends cct<clc> {
+public class cdf extends cdo {
+   public static final float a = 10.0F;
+
    @Override
-   public Set<cbu<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cbu.B)));
+   protected boolean a(btk $$0, btk $$1) {
+      return !$$0.dS().a(cco.U) && cdu.c($$0, $$1) && cgu.j($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
    }
 
-   protected void a(aqn $$0, clc $$1) {
-      super.a($$0, $$1);
-      a($$1, $$0x -> $$0x.ak() == bsc.by)
-         .or(() -> a($$1, $$0xx -> $$0xx.ak() != bsc.by))
-         .ifPresentOrElse($$1x -> $$1.dS().a(cbu.B, $$1x), () -> $$1.dS().b(cbu.B));
-   }
-
-   private static Optional<bsq> a(clc $$0, Predicate<bsq> $$1) {
-      return $$0.dS().c(cbu.g).stream().flatMap(Collection::stream).filter($$0::b).filter($$1).findFirst();
+   private boolean e(btk $$0, btk $$1) {
+      List<UUID> $$2 = $$0.dS().c(cco.aa).orElseGet(ArrayList::new);
+      return $$2.contains($$1.cz());
    }
 
    @Override
-   protected int b() {
-      return 24;
-   }
-
-   @Override
-   protected int c() {
-      return 24;
+   protected cco<btk> b() {
+      return cco.B;
    }
 }

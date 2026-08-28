@@ -1,19 +1,47 @@
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class py extends pm<bsc<?>> {
-   public py(ln $$0, CompletableFuture<iz.a> $$1) {
-      super($$0, lf.v, $$1, $$0x -> $$0x.r().h());
+public abstract class py<T> extends qd<T> {
+   private final Function<T, ala<T>> d;
+
+   public py(ly $$0, ala<? extends jv<T>> $$1, CompletableFuture<jk.a> $$2, Function<T, ala<T>> $$3) {
+      super($$0, $$1, $$2);
+      this.d = $$3;
    }
 
-   @Override
-   protected void a(iz.a $$0) {
-      this.a(awa.o).a(bsc.m);
-      this.a(awa.r).a(bsc.m);
-      this.a(awa.s).a(bsc.m);
-      this.a(awa.g).a(bsc.bn, bsc.n);
-      this.a(awa.E).a(bsc.m, bsc.aN, bsc.l, bsc.aY, bsc.bu, bsc.ac, bsc.aW, bsc.q, bsc.aP);
-      this.a(awa.a).a(bsc.l);
-      this.a(awa.G).a(bsc.aM);
-      this.a(awa.F).a(bsc.aP);
+   public py(ly $$0, ala<? extends jv<T>> $$1, CompletableFuture<jk.a> $$2, CompletableFuture<qd.c<T>> $$3, Function<T, ala<T>> $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.d = $$4;
+   }
+
+   protected py.a<T> a(axb<T> $$0) {
+      awy $$1 = this.c($$0);
+      return new py.a<>($$1, this.d);
+   }
+
+   protected static class a<T> extends qd.b<T> {
+      private final Function<T, ala<T>> a;
+
+      a(awy $$0, Function<T, ala<T>> $$1) {
+         super($$0);
+         this.a = $$1;
+      }
+
+      public py.a<T> a(axb<T> $$0) {
+         super.b($$0);
+         return this;
+      }
+
+      public final py.a<T> a(T $$0) {
+         this.a(this.a.apply($$0));
+         return this;
+      }
+
+      @SafeVarargs
+      public final py.a<T> a(T... $$0) {
+         Stream.<T>of($$0).map(this.a).forEach(this::a);
+         return this;
+      }
    }
 }

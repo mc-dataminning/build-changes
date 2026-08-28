@@ -1,30 +1,37 @@
-public record agv(int b, int c, boolean d) implements ze<age> {
-   public static final yv<vx, agv> a = ze.a(agv::a, agv::new);
+public class agv implements zs<ags> {
+   public static final zj<wl, agv> a = zs.a(agv::a, agv::new);
+   private final int b;
+   private final iz c;
 
-   private agv(vx $$0) {
-      this($$0.l(), $$0.l(), $$0.readBoolean());
+   public agv(int $$0, iz $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private void a(vx $$0) {
+   private agv(wl $$0) {
+      this.b = $$0.l();
+      this.c = $$0.e();
+   }
+
+   private void a(wl $$0) {
       $$0.c(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
+      $$0.a(this.c);
    }
 
    @Override
-   public zg<agv> a() {
-      return agc.bu;
+   public zu<agv> a() {
+      return agq.bg;
    }
 
-   public void a(age $$0) {
+   public void a(ags $$0) {
       $$0.a(this);
    }
 
-   public int e() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 
-   public boolean f() {
-      return this.d;
+   public iz e() {
+      return this.c;
    }
 }

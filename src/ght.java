@@ -1,60 +1,11 @@
-@FunctionalInterface
-public interface ght<T extends brw> {
-   ghs<T> create(ght.a var1);
+public class ght extends gjy<cev, fsy> {
+   private static final alb a = new alb("textures/entity/bat.png");
 
-   public static class a {
-      private final ghr a;
-      private final gir b;
-      private final gde c;
-      private final gcg d;
-      private final atx e;
-      private final fvs f;
-      private final ffl g;
+   public ght(gis.a $$0) {
+      super($$0, new fsy($$0.a(fwu.h)), 0.25F);
+   }
 
-      public a(ghr $$0, gir $$1, gde $$2, gcg $$3, atx $$4, fvs $$5, ffl $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-      }
-
-      public ghr a() {
-         return this.a;
-      }
-
-      public gir b() {
-         return this.b;
-      }
-
-      public gde c() {
-         return this.c;
-      }
-
-      public gcg d() {
-         return this.d;
-      }
-
-      public atx e() {
-         return this.e;
-      }
-
-      public fvs f() {
-         return this.f;
-      }
-
-      public gqc g() {
-         return this.c.a().a();
-      }
-
-      public fvw a(fvu $$0) {
-         return this.f.a($$0);
-      }
-
-      public ffl h() {
-         return this.g;
-      }
+   public alb a(cev $$0) {
+      return a;
    }
 }

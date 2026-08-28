@@ -1,57 +1,23 @@
-import java.util.BitSet;
-import java.util.Set;
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 
-public class gfm {
-   private static final int a = it.values().length;
-   private final BitSet b = new BitSet(a * a);
-
-   public void a(Set<it> $$0) {
-      for (it $$1 : $$0) {
-         for (it $$2 : $$0) {
-            this.a($$1, $$2, true);
-         }
-      }
+public class gfm<S extends dpc> implements dhb.b<S, Int2IntFunction> {
+   public Int2IntFunction a(S $$0, S $$1) {
+      return $$2 -> {
+         int $$3 = gdh.a($$0.i(), $$0.aA_());
+         int $$4 = gdh.a($$1.i(), $$1.aA_());
+         int $$5 = gdi.a($$3);
+         int $$6 = gdi.a($$4);
+         int $$7 = gdi.b($$3);
+         int $$8 = gdi.b($$4);
+         return gdi.a(Math.max($$5, $$6), Math.max($$7, $$8));
+      };
    }
 
-   public void a(it $$0, it $$1, boolean $$2) {
-      this.b.set($$0.ordinal() + $$1.ordinal() * a, $$2);
-      this.b.set($$1.ordinal() + $$0.ordinal() * a, $$2);
+   public Int2IntFunction a(S $$0) {
+      return $$0x -> $$0x;
    }
 
-   public void a(boolean $$0) {
-      this.b.set(0, this.b.size(), $$0);
-   }
-
-   public boolean a(it $$0, it $$1) {
-      return this.b.get($$0.ordinal() + $$1.ordinal() * a);
-   }
-
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append(' ');
-
-      for (it $$1 : it.values()) {
-         $$0.append(' ').append($$1.toString().toUpperCase().charAt(0));
-      }
-
-      $$0.append('\n');
-
-      for (it $$2 : it.values()) {
-         $$0.append($$2.toString().toUpperCase().charAt(0));
-
-         for (it $$3 : it.values()) {
-            if ($$2 == $$3) {
-               $$0.append("  ");
-            } else {
-               boolean $$4 = this.a($$2, $$3);
-               $$0.append(' ').append((char)($$4 ? 'Y' : 'n'));
-            }
-         }
-
-         $$0.append('\n');
-      }
-
-      return $$0.toString();
+   public Int2IntFunction a() {
+      return $$0 -> $$0;
    }
 }

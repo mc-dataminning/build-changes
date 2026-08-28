@@ -1,60 +1,81 @@
-public class cyr extends cxo {
-   public cyr(cxm $$0) {
-      super($$0);
+import java.lang.ref.WeakReference;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
+
+public class cyr {
+   private final cyr.a[] a;
+   private WeakReference<cyt> b = new WeakReference<>(null);
+
+   public cyr(int $$0) {
+      this.a = new cyr.a[$$0];
    }
 
-   public boolean a(cpl $$0, daz $$1) {
-      boolean $$2 = false;
-      boolean $$3 = false;
-      boolean $$4 = false;
-      boolean $$5 = false;
+   public Optional<cys<cyh>> a(dbt $$0, cqf $$1) {
+      if ($$1.c()) {
+         return Optional.empty();
+      } else {
+         this.a($$0);
 
-      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
-         ctq $$7 = $$0.a($$6);
-         if (!$$7.e()) {
-            if ($$7.a(dec.cf.r()) && !$$4) {
-               $$4 = true;
-            } else if ($$7.a(dec.cg.r()) && !$$3) {
-               $$3 = true;
-            } else if ($$7.a(awf.O) && !$$2) {
-               $$2 = true;
-            } else {
-               if (!$$7.a(ctt.pq) || $$5) {
-                  return false;
-               }
-
-               $$5 = true;
+         for (int $$2 = 0; $$2 < this.a.length; $$2++) {
+            cyr.a $$3 = this.a[$$2];
+            if ($$3 != null && $$3.a($$1.h())) {
+               this.a($$2);
+               return Optional.ofNullable($$3.b());
             }
          }
-      }
 
-      return $$2 && $$4 && $$3 && $$5;
+         return this.a($$1, $$0);
+      }
    }
 
-   public ctq a(cpl $$0, iz.a $$1) {
-      ctq $$2 = new ctq(ctt.vU, 1);
-
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         ctq $$4 = $$0.a($$3);
-         if (!$$4.e()) {
-            dmc $$5 = dmc.a($$4.g());
-            if ($$5 != null) {
-               $$2.b(kb.G, $$5.b());
-               break;
-            }
-         }
+   private void a(dbt $$0) {
+      cyt $$1 = $$0.r();
+      if ($$1 != this.b.get()) {
+         this.b = new WeakReference<>($$1);
+         Arrays.fill(this.a, null);
       }
+   }
 
+   private Optional<cys<cyh>> a(cqf $$0, dbt $$1) {
+      Optional<cys<cyh>> $$2 = $$1.r().a(cyv.a, $$0, $$1);
+      this.a($$0.h(), $$2.orElse(null));
       return $$2;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 2 && $$1 >= 2;
+   private void a(int $$0) {
+      if ($$0 > 0) {
+         cyr.a $$1 = this.a[$$0];
+         System.arraycopy(this.a, 0, this.a, 1, $$0);
+         this.a[0] = $$1;
+      }
    }
 
-   @Override
-   public cya<?> ap_() {
-      return cya.n;
+   private void a(List<cuk> $$0, @Nullable cys<cyh> $$1) {
+      jr<cuk> $$2 = jr.a($$0.size(), cuk.l);
+
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         $$2.set($$3, $$0.get($$3).c(1));
+      }
+
+      System.arraycopy(this.a, 0, this.a, 1, this.a.length - 1);
+      this.a[0] = new cyr.a($$2, $$1);
+   }
+
+   static record a(jr<cuk> a, @Nullable cys<cyh> b) {
+      public boolean a(List<cuk> $$0) {
+         if (this.a.size() != $$0.size()) {
+            return false;
+         } else {
+            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+               if (!cuk.c(this.a.get($$1), $$0.get($$1))) {
+                  return false;
+               }
+            }
+
+            return true;
+         }
+      }
    }
 }

@@ -1,19 +1,17 @@
-public class bky extends bku {
-   private final bkv c;
-   private final bkx d;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
+import java.util.function.Supplier;
 
-   public bky(int $$0, bkv $$1, bkx $$2) {
-      this($$0, $$1, $$2, new long[$$0]);
+public class bky extends bid {
+   public bky(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   public bky(int $$0, bkv $$1, bkx $$2, long[] $$3) {
-      super($$0, $$3);
-      this.c = $$1;
-      this.d = $$2;
-   }
-
-   @Override
-   protected void a() {
-      this.c.a(new acr((long[])this.b.clone(), this.d));
+   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
+      $$0.register($$1, "minecraft:beehive", () -> DSL.optionalFields("bees", DSL.list(DSL.optionalFields("entity_data", bgs.A.in($$0)))));
+      return $$1;
    }
 }

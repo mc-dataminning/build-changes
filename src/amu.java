@@ -1,47 +1,58 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import java.util.Collection;
-import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+import net.minecraft.server.MinecraftServer;
 
 public class amu {
-   public static final int a = 2;
-
-   public static void a(CommandDispatcher<ee> $$0) {
+   public static void a(CommandDispatcher<ep> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("gamemode").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("debugconfig").requires($$0x -> $$0x.c(3)))
+               .then(eq.a("config").then(eq.a("target", fc.c()).executes($$0x -> a((ep)$$0x.getSource(), fc.e($$0x, "target"))))))
             .then(
-               ((RequiredArgumentBuilder)ef.a("gamemode", es.a())
-                     .executes($$0x -> a($$0x, Collections.singleton(((ee)$$0x.getSource()).h()), es.a($$0x, "gamemode"))))
-                  .then(ef.a("target", er.d()).executes($$0x -> a($$0x, er.f($$0x, "target"), es.a($$0x, "gamemode"))))
+               eq.a("unconfig")
+                  .then(
+                     eq.a("target", gf.a())
+                        .suggests(($$0x, $$1) -> eu.b(a(((ep)$$0x.getSource()).l()), $$1))
+                        .executes($$0x -> a((ep)$$0x.getSource(), gf.a($$0x, "target")))
+                  )
             )
       );
    }
 
-   private static void a(ee $$0, aqo $$1, daw $$2) {
-      wx $$3 = wx.c("gameMode." + $$2.b());
-      if ($$0.f() == $$1) {
-         $$0.a(() -> wx.a("commands.gamemode.success.self", $$3), true);
-      } else {
-         if ($$0.e().aa().b(dav.p)) {
-            $$1.a(wx.a("gameMode.changed", $$3));
-         }
+   private static Iterable<String> a(MinecraftServer $$0) {
+      Set<String> $$1 = new HashSet<>();
 
-         $$0.a(() -> wx.a("commands.gamemode.success.other", $$1.O_(), $$3), true);
+      for (wj $$2 : $$0.ai().e()) {
+         if ($$2.k() instanceof arz $$3) {
+            $$1.add($$3.k().getId().toString());
+         }
       }
+
+      return $$1;
    }
 
-   private static int a(CommandContext<ee> $$0, Collection<aqo> $$1, daw $$2) {
-      int $$3 = 0;
+   private static int a(ep $$0, arc $$1) {
+      GameProfile $$2 = $$1.gb();
+      $$1.c.o();
+      $$0.a(() -> xl.b("Switched player " + $$2.getName() + "(" + $$2.getId() + ") to config mode"), false);
+      return 1;
+   }
 
-      for (aqo $$4 : $$1) {
-         if ($$4.a($$2)) {
-            a((ee)$$0.getSource(), $$4, $$2);
-            $$3++;
+   private static int a(ep $$0, UUID $$1) {
+      for (wj $$2 : $$0.l().ai().e()) {
+         wr var5 = $$2.k();
+         if (var5 instanceof arz) {
+            arz $$3 = (arz)var5;
+            if ($$3.k().getId().equals($$1)) {
+               $$3.n();
+            }
          }
       }
 
-      return $$3;
+      $$0.b(xl.b("Can't find player to unconfig"));
+      return 0;
    }
 }

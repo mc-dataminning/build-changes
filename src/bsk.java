@@ -1,38 +1,58 @@
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
+import java.util.function.Consumer;
 
-public enum bsk implements ayh, ayz {
-   a(0, "left", "options.mainHand.left"),
-   b(1, "right", "options.mainHand.right");
+public class bsk {
+   private static final long a = Long.MAX_VALUE;
+   private long b = Long.MAX_VALUE;
+   private long c;
 
-   public static final Codec<bsk> c = ayz.a(bsk::values);
-   public static final IntFunction<bsk> d = aww.a(bsk::a, values(), aww.a.a);
-   private final int e;
-   private final String f;
-   private final String g;
-
-   private bsk(int $$0, String $$1, String $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public void a(int $$0) {
+      this.b = (long)$$0 * 1000L / 20L;
+      this.c = 0L;
    }
 
-   public bsk e() {
-      return this == a ? b : a;
+   public void b(int $$0) {
+      if (!this.c()) {
+         this.a($$0);
+      }
    }
 
-   @Override
-   public int a() {
-      return this.e;
+   public void a(boolean $$0, int $$1) {
+      if ($$0) {
+         this.b($$1);
+      } else {
+         this.a();
+      }
    }
 
-   @Override
-   public String b() {
-      return this.g;
+   public void a() {
+      this.b = Long.MAX_VALUE;
    }
 
-   @Override
-   public String c() {
-      return this.f;
+   public void a(Consumer<bsk> $$0) {
+      if (this.c()) {
+         $$0.accept(this);
+      }
+   }
+
+   public void a(float $$0, float $$1) {
+      if (this.c()) {
+         long $$2 = ayu.b((double)($$0 * 1000.0F / 20.0F));
+         this.c = this.c + (long)((float)($$2 - this.b) * $$1);
+         this.b = $$2;
+      }
+   }
+
+   public void a(int $$0, float $$1) {
+      if (this.c()) {
+         this.c += (long)((float)($$0 * 1000) * $$1) / 20L;
+      }
+   }
+
+   public long b() {
+      return this.c;
+   }
+
+   public boolean c() {
+      return this.b != Long.MAX_VALUE;
    }
 }

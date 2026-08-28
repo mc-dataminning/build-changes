@@ -1,121 +1,98 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectFunction;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongAVLTreeSet;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.LongSortedSet;
-import java.util.Objects;
-import java.util.Spliterators;
-import java.util.PrimitiveIterator.OfLong;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.io.BufferedOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.zip.DeflaterOutputStream;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
+import java.util.zip.InflaterInputStream;
 import javax.annotation.Nullable;
+import net.jpountz.lz4.LZ4BlockInputStream;
+import net.jpountz.lz4.LZ4BlockOutputStream;
+import org.slf4j.Logger;
 
-public class dvi<T extends dvd> {
-   private final Class<T> a;
-   private final Long2ObjectFunction<dvq> b;
-   private final Long2ObjectMap<dvh<T>> c = new Long2ObjectOpenHashMap();
-   private final LongSortedSet d = new LongAVLTreeSet();
-
-   public dvi(Class<T> $$0, Long2ObjectFunction<dvq> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public void a(euh $$0, aws<dvh<T>> $$1) {
-      int $$2 = 2;
-      int $$3 = jq.a($$0.a - 2.0);
-      int $$4 = jq.a($$0.b - 4.0);
-      int $$5 = jq.a($$0.c - 2.0);
-      int $$6 = jq.a($$0.d + 2.0);
-      int $$7 = jq.a($$0.e + 0.0);
-      int $$8 = jq.a($$0.f + 2.0);
-
-      for (int $$9 = $$3; $$9 <= $$6; $$9++) {
-         long $$10 = jq.b($$9, 0, 0);
-         long $$11 = jq.b($$9, -1, -1);
-         LongIterator $$12 = this.d.subSet($$10, $$11 + 1L).iterator();
-
-         while ($$12.hasNext()) {
-            long $$13 = $$12.nextLong();
-            int $$14 = jq.c($$13);
-            int $$15 = jq.d($$13);
-            if ($$14 >= $$4 && $$14 <= $$7 && $$15 >= $$5 && $$15 <= $$8) {
-               dvh<T> $$16 = (dvh<T>)this.c.get($$13);
-               if ($$16 != null && !$$16.a() && $$16.c().b() && $$1.accept($$16).a()) {
-                  return;
-               }
-            }
-         }
-      }
-   }
-
-   public LongStream a(long $$0) {
-      int $$1 = dag.a($$0);
-      int $$2 = dag.b($$0);
-      LongSortedSet $$3 = this.a($$1, $$2);
-      if ($$3.isEmpty()) {
-         return LongStream.empty();
-      } else {
-         OfLong $$4 = $$3.iterator();
-         return StreamSupport.longStream(Spliterators.spliteratorUnknownSize($$4, 1301), false);
-      }
-   }
-
-   private LongSortedSet a(int $$0, int $$1) {
-      long $$2 = jq.b($$0, 0, $$1);
-      long $$3 = jq.b($$0, -1, $$1);
-      return this.d.subSet($$2, $$3 + 1L);
-   }
-
-   public Stream<dvh<T>> b(long $$0) {
-      return this.a($$0).<dvh<T>>mapToObj(this.c::get).filter(Objects::nonNull);
-   }
-
-   private static long f(long $$0) {
-      return dag.c(jq.b($$0), jq.d($$0));
-   }
-
-   public dvh<T> c(long $$0) {
-      return (dvh<T>)this.c.computeIfAbsent($$0, this::g);
-   }
-
+public class dvi {
+   private static final Logger g = LogUtils.getLogger();
+   private static final Int2ObjectMap<dvi> h = new Int2ObjectOpenHashMap();
+   private static final Object2ObjectMap<String, dvi> i = new Object2ObjectOpenHashMap();
+   public static final dvi a = a(new dvi(1, null, $$0 -> new ayd(new GZIPInputStream($$0)), $$0 -> new BufferedOutputStream(new GZIPOutputStream($$0))));
+   public static final dvi b = a(
+      new dvi(2, "deflate", $$0 -> new ayd(new InflaterInputStream($$0)), $$0 -> new BufferedOutputStream(new DeflaterOutputStream($$0)))
+   );
+   public static final dvi c = a(new dvi(3, "none", ayd::new, BufferedOutputStream::new));
+   public static final dvi d = a(
+      new dvi(4, "lz4", $$0 -> new ayd(new LZ4BlockInputStream($$0)), $$0 -> new BufferedOutputStream(new LZ4BlockOutputStream($$0)))
+   );
+   public static final dvi e = a(new dvi(127, null, $$0 -> {
+      throw new UnsupportedOperationException();
+   }, $$0 -> {
+      throw new UnsupportedOperationException();
+   }));
+   public static final dvi f = b;
+   private static volatile dvi j = f;
+   private final int k;
    @Nullable
-   public dvh<T> d(long $$0) {
-      return (dvh<T>)this.c.get($$0);
+   private final String l;
+   private final dvi.a<InputStream> m;
+   private final dvi.a<OutputStream> n;
+
+   private dvi(int $$0, @Nullable String $$1, dvi.a<InputStream> $$2, dvi.a<OutputStream> $$3) {
+      this.k = $$0;
+      this.l = $$1;
+      this.m = $$2;
+      this.n = $$3;
    }
 
-   private dvh<T> g(long $$0) {
-      long $$1 = f($$0);
-      dvq $$2 = (dvq)this.b.get($$1);
-      this.d.add($$0);
-      return new dvh<>(this.a, $$2);
-   }
+   private static dvi a(dvi $$0) {
+      h.put($$0.k, $$0);
+      if ($$0.l != null) {
+         i.put($$0.l, $$0);
+      }
 
-   public LongSet a() {
-      LongSet $$0 = new LongOpenHashSet();
-      this.c.keySet().forEach($$1 -> $$0.add(f($$1)));
       return $$0;
    }
 
-   public void b(euh $$0, aws<T> $$1) {
-      this.a($$0, $$2 -> $$2.a($$0, $$1));
+   @Nullable
+   public static dvi a(int $$0) {
+      return (dvi)h.get($$0);
    }
 
-   public <U extends T> void a(dvk<T, U> $$0, euh $$1, aws<U> $$2) {
-      this.a($$1, $$3 -> $$3.a($$0, $$1, $$2));
+   public static void a(String $$0) {
+      dvi $$1 = (dvi)i.get($$0);
+      if ($$1 != null) {
+         j = $$1;
+      } else {
+         g.error("Invalid `region-file-compression` value `{}` in server.properties. Please use one of: {}", $$0, String.join(", ", i.keySet()));
+      }
    }
 
-   public void e(long $$0) {
-      this.c.remove($$0);
-      this.d.remove($$0);
+   public static dvi a() {
+      return j;
    }
 
-   @azi
+   public static boolean b(int $$0) {
+      return h.containsKey($$0);
+   }
+
    public int b() {
-      return this.d.size();
+      return this.k;
+   }
+
+   public OutputStream a(OutputStream $$0) throws IOException {
+      return this.n.wrap($$0);
+   }
+
+   public InputStream a(InputStream $$0) throws IOException {
+      return this.m.wrap($$0);
+   }
+
+   @FunctionalInterface
+   interface a<O> {
+      O wrap(O var1) throws IOException;
    }
 }

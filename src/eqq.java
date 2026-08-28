@@ -1,35 +1,30 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import java.util.function.Consumer;
 
-public class eqq extends eqs {
-   public static final MapCodec<eqq> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(epg.a.fieldOf("limit").forGetter($$0x -> $$0x.b)).apply($$0, eqq::new));
-   private final epg b;
+public class eqq extends eqv {
+   public static final MapCodec<eqq> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(lp.h.r().fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, eqq::new)
+   );
+   private final ji<cuf> j;
 
-   private eqq(List<esn> $$0, epg $$1) {
-      super($$0);
-      this.b = $$1;
+   private eqq(ji<cuf> $$0, int $$1, int $$2, List<etn> $$3, List<erq> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public equ b() {
-      return eqv.t;
+   public equ a() {
+      return eqr.c;
    }
 
    @Override
-   public Set<erw<?>> a() {
-      return this.b.a();
+   public void a(Consumer<cuk> $$0, eqd $$1) {
+      $$0.accept(new cuk(this.j));
    }
 
-   @Override
-   public ctq a(ctq $$0, eph $$1) {
-      int $$2 = this.b.a($$1, $$0.I());
-      $$0.e($$2);
-      return $$0;
-   }
-
-   public static eqs.a<?> a(epg $$0) {
-      return a($$1 -> new eqq($$1, $$0));
+   public static eqv.a<?> a(dbs $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new eqq($$0.r().o(), $$1, $$2, $$3, $$4));
    }
 }

@@ -2,45 +2,26 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class cn extends df<cn.a> {
+public record cn(Optional<bc<cxd, cm.a>> c, de.d d) implements ds<cxe> {
+   public static final Codec<cn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(bc.a(cm.a.a).optionalFieldOf("explosions").forGetter(cn::b), de.d.d.optionalFieldOf("flight_duration", de.d.c).forGetter(cn::c))
+            .apply($$0, cn::new)
+   );
+
    @Override
-   public Codec<cn.a> a() {
-      return cn.a.a;
+   public kl<cxe> a() {
+      return km.T;
    }
 
-   public void a(aqo $$0, eum $$1, int $$2) {
-      this.a($$0, $$3 -> $$3.a($$0, $$1, $$2));
+   public boolean a(cuk $$0, cxe $$1) {
+      return this.c.isPresent() && !this.c.get().a($$1.b()) ? false : this.d.d($$1.a());
    }
 
-   public static record a(Optional<bc> b, Optional<bi> c, ct.d d) implements df.a {
-      public static final Codec<cn.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  br.b.optionalFieldOf("player").forGetter(cn.a::a),
-                  bi.a.optionalFieldOf("distance").forGetter(cn.a::b),
-                  ct.d.d.optionalFieldOf("duration", ct.d.c).forGetter(cn.a::c)
-               )
-               .apply($$0, cn.a::new)
-      );
+   public Optional<bc<cxd, cm.a>> b() {
+      return this.c;
+   }
 
-      public static an<cn.a> a(bi $$0) {
-         return am.v.a(new cn.a(Optional.empty(), Optional.of($$0), ct.d.c));
-      }
-
-      public boolean a(aqo $$0, eum $$1, int $$2) {
-         return this.c.isPresent() && !this.c.get().a($$1.c, $$1.d, $$1.e, $$0.du(), $$0.dw(), $$0.dA()) ? false : this.d.d($$2);
-      }
-
-      @Override
-      public Optional<bc> a() {
-         return this.b;
-      }
-
-      public Optional<bi> b() {
-         return this.c;
-      }
-
-      public ct.d c() {
-         return this.d;
-      }
+   public de.d c() {
+      return this.d;
    }
 }

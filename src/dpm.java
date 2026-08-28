@@ -1,61 +1,164 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-
-public record dpm(Optional<ctl> d, Optional<ctl> e, Optional<ctl> f, Optional<ctl> g) {
-   public static final dpm a = new dpm(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
-   public static final Codec<dpm> b = le.h.q().sizeLimitedListOf(4).xmap(dpm::new, dpm::a);
-   public static final yv<wi, dpm> c = yt.a(lf.G).a(yt.c(4)).a(dpm::new, dpm::a);
-
-   private dpm(List<ctl> $$0) {
-      this(a($$0, 0), a($$0, 1), a($$0, 2), a($$0, 3));
-   }
-
-   public dpm(ctl $$0, ctl $$1, ctl $$2, ctl $$3) {
-      this(List.of($$0, $$1, $$2, $$3));
-   }
-
-   private static Optional<ctl> a(List<ctl> $$0, int $$1) {
-      if ($$1 >= $$0.size()) {
-         return Optional.empty();
-      } else {
-         ctl $$2 = $$0.get($$1);
-         return $$2 == ctt.qL ? Optional.empty() : Optional.of($$2);
+public class dpm extends dpc {
+   private boolean a;
+   private boolean b;
+   private boolean c;
+   private final dau d = new dau() {
+      @Override
+      public void a(String $$0) {
+         super.a($$0);
+         dpm.this.e();
       }
-   }
 
-   public ud a(ud $$0) {
-      if (this.equals(a)) {
-         return $$0;
-      } else {
-         $$0.a("sherds", (va)b.encodeStart(ur.a, this).getOrThrow());
-         return $$0;
+      @Override
+      public arb e() {
+         return (arb)dpm.this.n;
       }
+
+      @Override
+      public void f() {
+         drx $$0 = dpm.this.n.a_(dpm.this.o);
+         this.e().a(dpm.this.o, $$0, $$0, 3);
+      }
+
+      @Override
+      public evm g() {
+         return evm.b(dpm.this.o);
+      }
+
+      @Override
+      public ep i() {
+         je $$0 = dpm.this.n().c(dgd.b);
+         return new ep(this, evm.b(dpm.this.o), new evl(0.0F, $$0.p()), this.e(), 2, this.n().getString(), this.n(), this.e().o(), null);
+      }
+
+      @Override
+      public boolean j() {
+         return !dpm.this.o();
+      }
+   };
+
+   public dpm(iz $$0, drx $$1) {
+      super(dpe.w, $$0, $$1);
    }
 
-   public List<ctl> a() {
-      return Stream.of(this.d, this.e, this.f, this.g).map($$0 -> $$0.orElse(ctt.qL)).toList();
+   @Override
+   protected void b(ur $$0, jk.a $$1) {
+      super.b($$0, $$1);
+      this.d.a($$0, $$1);
+      $$0.a("powered", this.c());
+      $$0.a("conditionMet", this.j());
+      $$0.a("auto", this.d());
    }
 
-   public static dpm b(@Nullable ud $$0) {
-      return $$0 != null && $$0.e("sherds") ? b.parse(ur.a, $$0.c("sherds")).result().orElse(a) : a;
+   @Override
+   protected void a(ur $$0, jk.a $$1) {
+      super.a($$0, $$1);
+      this.d.b($$0, $$1);
+      this.a = $$0.q("powered");
+      this.c = $$0.q("conditionMet");
+      this.b($$0.q("auto"));
    }
 
-   public Optional<ctl> b() {
+   @Override
+   public boolean q() {
+      return true;
+   }
+
+   public dau b() {
       return this.d;
    }
 
-   public Optional<ctl> c() {
-      return this.e;
+   public void a(boolean $$0) {
+      this.a = $$0;
    }
 
-   public Optional<ctl> d() {
-      return this.f;
+   public boolean c() {
+      return this.a;
    }
 
-   public Optional<ctl> e() {
-      return this.g;
+   public boolean d() {
+      return this.b;
+   }
+
+   public void b(boolean $$0) {
+      boolean $$1 = this.b;
+      this.b = $$0;
+      if (!$$1 && $$0 && !this.a && this.n != null && this.l() != dpm.a.a) {
+         this.v();
+      }
+   }
+
+   public void f() {
+      dpm.a $$0 = this.l();
+      if ($$0 == dpm.a.b && (this.a || this.b) && this.n != null) {
+         this.v();
+      }
+   }
+
+   private void v() {
+      deu $$0 = this.n().b();
+      if ($$0 instanceof dgd) {
+         this.k();
+         this.n.a(this.o, $$0, 1);
+      }
+   }
+
+   public boolean j() {
+      return this.c;
+   }
+
+   public boolean k() {
+      this.c = true;
+      if (this.u()) {
+         iz $$0 = this.o.a(this.n.a_(this.o).c(dgd.b).g());
+         if (this.n.a_($$0).b() instanceof dgd) {
+            dpc $$1 = this.n.c_($$0);
+            this.c = $$1 instanceof dpm && ((dpm)$$1).b().k() > 0;
+         } else {
+            this.c = false;
+         }
+      }
+
+      return this.c;
+   }
+
+   public dpm.a l() {
+      drx $$0 = this.n();
+      if ($$0.a(dew.fN)) {
+         return dpm.a.c;
+      } else if ($$0.a(dew.kG)) {
+         return dpm.a.b;
+      } else {
+         return $$0.a(dew.kH) ? dpm.a.a : dpm.a.c;
+      }
+   }
+
+   public boolean u() {
+      drx $$0 = this.n.a_(this.aA_());
+      return $$0.b() instanceof dgd ? $$0.c(dgd.c) : false;
+   }
+
+   @Override
+   protected void a(dpc.b $$0) {
+      super.a($$0);
+      this.d.b($$0.a(km.f));
+   }
+
+   @Override
+   protected void a(ki.a $$0) {
+      super.a($$0);
+      $$0.a(km.f, this.d.o());
+   }
+
+   @Override
+   public void a(ur $$0) {
+      super.a($$0);
+      $$0.r("CustomName");
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

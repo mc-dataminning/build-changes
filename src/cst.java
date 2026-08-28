@@ -1,33 +1,63 @@
-public class cst extends ctl implements cui {
-   public cst(ctl.a $$0) {
+import java.util.Optional;
+import javax.annotation.Nullable;
+
+public class cst extends cuf {
+   public cst(cuf.a $$0) {
       super($$0);
    }
 
+   @Nullable
+   public static jh a(dbt $$0) {
+      return $$0.D_().j() ? jh.a($$0.af(), $$0.V()) : null;
+   }
+
    @Override
-   public bpx<ctq> a(daz $$0, cly $$1, bpv $$2) {
-      ctq $$3 = $$1.b($$2);
-      $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), avi.iG, avj.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      if (!$$0.B) {
-         cnb $$4 = new cnb($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dH(), $$1.dF(), -20.0F, 0.7F, 1.0F);
-         $$0.b($$4);
+   public boolean d_(cuk $$0) {
+      return $$0.b(km.R) || super.d_($$0);
+   }
+
+   @Override
+   public void a(cuk $$0, dbt $$1, bsp $$2, int $$3, boolean $$4) {
+      if ($$1 instanceof arb $$5) {
+         cxi $$6 = $$0.a(km.R);
+         if ($$6 != null) {
+            cxi $$7 = $$6.a($$5);
+            if ($$7 != $$6) {
+               $$0.b(km.R, $$7);
+            }
+         }
       }
-
-      $$1.b(avs.c.b(this));
-      $$3.a(1, $$1);
-      return bpx.a($$3, $$0.x_());
    }
 
    @Override
-   public cmq a(daz $$0, jh $$1, ctq $$2, it $$3) {
-      cnb $$4 = new cnb($$0, $$1.a(), $$1.b(), $$1.c());
-      $$4.a($$2);
-      return $$4;
+   public bqp a(cxx $$0) {
+      iz $$1 = $$0.a();
+      dbt $$2 = $$0.q();
+      if (!$$2.a_($$1).a(dew.pq)) {
+         return super.a($$0);
+      } else {
+         $$2.a(null, $$1, avw.on, avx.h, 1.0F, 1.0F);
+         cms $$3 = $$0.o();
+         cuk $$4 = $$0.n();
+         boolean $$5 = !$$3.fP() && $$4.I() == 1;
+         cxi $$6 = new cxi(Optional.of(jh.a($$2.af(), $$1)), true);
+         if ($$5) {
+            $$4.b(km.R, $$6);
+         } else {
+            cuk $$7 = $$4.a(cun.qS, 1);
+            $$4.a(1, $$3);
+            $$7.b(km.R, $$6);
+            if (!$$3.gc().f($$7)) {
+               $$3.a($$7, false);
+            }
+         }
+
+         return bqp.a($$2.B);
+      }
    }
 
    @Override
-   public cui.a c() {
-      return cui.a.a().a(cui.a.a.c() * 0.5F).b(cui.a.a.d() * 1.25F).a();
+   public String i(cuk $$0) {
+      return $$0.b(km.R) ? "item.minecraft.lodestone_compass" : super.i($$0);
    }
 }

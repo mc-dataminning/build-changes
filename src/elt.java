@@ -1,11 +1,13 @@
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface elt {
-   Codec<elt> c = le.p.q().dispatch(elt::a, elu::codec);
+public interface elt<P extends els> {
+   elt<elr> a = a("always_true", elr.a);
+   elt<elp> b = a("linear_pos", elp.a);
+   elt<ele> c = a("axis_aligned_linear_pos", ele.a);
 
-   @Nullable
-   ud a(aym var1, @Nullable ud var2);
+   MapCodec<P> codec();
 
-   elu<?> a();
+   static <P extends els> elt<P> a(String $$0, MapCodec<P> $$1) {
+      return jv.a(lp.q, $$0, () -> $$1);
+   }
 }

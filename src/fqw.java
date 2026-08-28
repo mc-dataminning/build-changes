@@ -1,59 +1,84 @@
-import java.util.function.BiFunction;
-import java.util.function.UnaryOperator;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.UUID;
 
-public record fqw(dxt a, jk<duw> b, dxq c, je<akw> d, aky e, dbt f) {
-   public fqw(dxr $$0, je<akw> $$1, aky $$2, dbt $$3) {
-      this($$0.a(), $$0.b(), $$1, $$2, $$3);
+public class fqw extends fqv<fyr.a> {
+   private static final int y = 120;
+   private static final xl z = xl.c("gui.chatReport.title");
+   private static final xl A = xl.c("gui.chatReport.select_chat");
+   private final fkq B = fkq.d().a(8);
+   private fhr C;
+   private fgz D;
+   private fgz E;
+   private fgz F;
+
+   private fqw(fmy $$0, fyy $$1, fyr.a $$2) {
+      super(z, $$0, $$1, $$2);
    }
 
-   public fqw(dxt $$0, dxq $$1, je<akw> $$2, aky $$3, dbt $$4) {
-      this($$0, $$2.a(akw.c).d(lf.aT), $$1, $$2.a(akw.c), $$3, $$4);
+   public fqw(fmy $$0, fyy $$1, UUID $$2) {
+      this($$0, $$1, new fyr.a($$2, $$1.a().b()));
    }
 
-   public fqw a(dxt $$0, dxq $$1) {
-      return new fqw($$0, this.b, $$1, this.d, this.e, this.f);
+   public fqw(fmy $$0, fyy $$1, fyr $$2) {
+      this($$0, $$1, new fyr.a($$2, $$1.a().b()));
    }
 
-   public fqw a(fqw.b $$0) {
-      return new fqw($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f);
+   @Override
+   protected void aN_() {
+      this.B.c().b();
+      this.B.a(new fig(this.l, this.p));
+      this.E = this.B.a(fgz.a(A, $$0x -> this.m.a(new fqy(this, this.w, this.x, $$0xx -> {
+            this.x = $$0xx;
+            this.C();
+         }))).a(280).a());
+      this.F = fgz.a(c, $$0x -> this.m.a(new frb(this, this.x.h(), $$0xx -> {
+            this.x.a($$0xx);
+            this.C();
+         }))).a(280).a();
+      this.B.a(fki.a(this.p, this.F, b));
+      this.C = this.a(280, 9 * 8, $$0x -> {
+         this.x.a($$0x);
+         this.C();
+      });
+      this.B.a(fki.a(this.p, this.C, d, $$0x -> $$0x.e(12)));
+      fkq $$0 = this.B.a(fkq.e().a(8));
+      $$0.a(fgz.a(xk.k, $$0x -> this.d()).a(120).a());
+      this.D = $$0.a(fgz.a(a, $$0x -> this.m()).a(120).a());
+      this.B.a($$1 -> {
+         fgx var10000 = this.c($$1);
+      });
+      this.c();
+      this.C();
    }
 
-   public fqw a(fqw.a $$0) {
-      return new fqw(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f);
+   @Override
+   protected void c() {
+      this.B.a();
+      fkk.a(this.B, this.G());
    }
 
-   public jl.b a() {
-      return this.d.a();
+   private void C() {
+      IntSet $$0 = this.x.a();
+      if ($$0.isEmpty()) {
+         this.E.b(A);
+      } else {
+         this.E.b(xl.a("gui.chatReport.selected_chat", $$0.size()));
+      }
+
+      fyw $$1 = this.x.h();
+      if ($$1 != null) {
+         this.F.b($$1.b());
+      } else {
+         this.F.b(c);
+      }
+
+      fyu.b $$2 = this.x.c();
+      this.D.j = $$2 == null;
+      this.D.a(x.a($$2, fyu.b::a));
    }
 
-   public dxt b() {
-      return this.a;
-   }
-
-   public jk<duw> c() {
-      return this.b;
-   }
-
-   public dxq d() {
-      return this.c;
-   }
-
-   public je<akw> e() {
-      return this.d;
-   }
-
-   public aky f() {
-      return this.e;
-   }
-
-   public dbt g() {
-      return this.f;
-   }
-
-   @FunctionalInterface
-   public interface a extends BiFunction<jl.b, dxq, dxq> {
-   }
-
-   public interface b extends UnaryOperator<dxt> {
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.C.b($$0, $$1, $$2);
    }
 }

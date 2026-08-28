@@ -1,53 +1,61 @@
-public abstract class cmk extends cmf implements cmn {
-   private static final ajs<ctq> f = ajw.a(cmk.class, aju.h);
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public cmk(bsc<? extends cmk> $$0, daz $$1) {
-      super($$0, $$1);
-   }
+public final class cmk {
+   public static final cmk a = a("desert");
+   public static final cmk b = a("jungle");
+   public static final cmk c = a("plains");
+   public static final cmk d = a("savanna");
+   public static final cmk e = a("snow");
+   public static final cmk f = a("swamp");
+   public static final cmk g = a("taiga");
+   private final String h;
+   private static final Map<ala<dcs>, cmk> i = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(dcz.A, a);
+      $$0.put(dcz.f, a);
+      $$0.put(dcz.B, a);
+      $$0.put(dcz.C, a);
+      $$0.put(dcz.z, b);
+      $$0.put(dcz.x, b);
+      $$0.put(dcz.y, b);
+      $$0.put(dcz.s, d);
+      $$0.put(dcz.r, d);
+      $$0.put(dcz.w, d);
+      $$0.put(dcz.X, e);
+      $$0.put(dcz.W, e);
+      $$0.put(dcz.L, e);
+      $$0.put(dcz.e, e);
+      $$0.put(dcz.N, e);
+      $$0.put(dcz.q, e);
+      $$0.put(dcz.d, e);
+      $$0.put(dcz.F, e);
+      $$0.put(dcz.G, e);
+      $$0.put(dcz.H, e);
+      $$0.put(dcz.I, e);
+      $$0.put(dcz.g, f);
+      $$0.put(dcz.h, f);
+      $$0.put(dcz.o, g);
+      $$0.put(dcz.n, g);
+      $$0.put(dcz.u, g);
+      $$0.put(dcz.t, g);
+      $$0.put(dcz.p, g);
+      $$0.put(dcz.v, g);
+   });
 
-   public cmk(bsc<? extends cmk> $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, daz $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   public cmk(bsc<? extends cmk> $$0, bsq $$1, double $$2, double $$3, double $$4, daz $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public void a(ctq $$0) {
-      if ($$0.e()) {
-         this.ap().a(f, this.z());
-      } else {
-         this.ap().a(f, $$0.c(1));
-      }
+   private cmk(String $$0) {
+      this.h = $$0;
    }
 
    @Override
-   public ctq p() {
-      return this.ap().a(f);
+   public String toString() {
+      return this.h;
    }
 
-   @Override
-   protected void a(ajw.a $$0) {
-      $$0.a(f, this.z());
+   private static cmk a(String $$0) {
+      return jv.a(lp.y, new alb($$0), new cmk($$0));
    }
 
-   @Override
-   public void b(ud $$0) {
-      super.b($$0);
-      $$0.a("Item", this.p().a(this.dR()));
-   }
-
-   @Override
-   public void a(ud $$0) {
-      super.a($$0);
-      if ($$0.b("Item", 10)) {
-         this.a(ctq.a(this.dR(), (va)$$0.p("Item")).orElse(this.z()));
-      } else {
-         this.a(this.z());
-      }
-   }
-
-   private ctq z() {
-      return new ctq(ctt.tX);
+   public static cmk a(ji<dcs> $$0) {
+      return $$0.e().map(i::get).orElse(c);
    }
 }

@@ -1,46 +1,61 @@
-public class fvq extends fut {
-   private final fvw a;
-   private final fvw b;
-
-   public fvq(fvw $$0) {
-      this.a = $$0.b("head");
-      this.b = this.a.b("jaw");
+public class fvq<T extends btm & ckc> extends fui<T> {
+   public fvq(fwv $$0) {
+      super($$0);
    }
 
-   public static fwc a() {
-      fwe $$0 = new fwe();
-      fwf $$1 = $$0.a();
-      float $$2 = -16.0F;
-      fwf $$3 = $$1.a(
-         "head",
-         fwb.c()
-            .a("upper_lip", -6.0F, -1.0F, -24.0F, 12, 5, 16, 176, 44)
-            .a("upper_head", -8.0F, -8.0F, -10.0F, 16, 16, 16, 112, 30)
-            .a(true)
-            .a("scale", -5.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
-            .a("nostril", -5.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0)
-            .a(false)
-            .a("scale", 3.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
-            .a("nostril", 3.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0),
-         fvy.a
-      );
-      $$3.a("jaw", fwb.c().a(176, 65).a("jaw", -6.0F, 0.0F, -16.0F, 12.0F, 4.0F, 16.0F), fvy.a(0.0F, 4.0F, -8.0F));
-      return fwc.a($$0, 256, 256);
+   public static fxb e() {
+      fxd $$0 = fui.a(fwz.a, 0.0F);
+      fxe $$1 = $$0.a();
+      a($$1);
+      return fxb.a($$0, 64, 32);
+   }
+
+   protected static void a(fxe $$0) {
+      $$0.a("right_arm", fxa.c().a(40, 16).a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fwx.a(-5.0F, 2.0F, 0.0F));
+      $$0.a("left_arm", fxa.c().a(40, 16).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fwx.a(5.0F, 2.0F, 0.0F));
+      $$0.a("right_leg", fxa.c().a(0, 16).a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), fwx.a(-2.0F, 12.0F, 0.0F));
+      $$0.a("left_leg", fxa.c().a(0, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), fwx.a(2.0F, 12.0F, 0.0F));
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      this.s = fui.a.a;
+      this.r = fui.a.a;
+      cuk $$4 = $$0.b(bqo.a);
+      if ($$4.a(cun.ou) && $$0.gi()) {
+         if ($$0.fu() == bte.b) {
+            this.s = fui.a.d;
+         } else {
+            this.r = fui.a.d;
+         }
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      cuk $$6 = $$0.eX();
+      if ($$0.gi() && ($$6.e() || !$$6.a(cun.ou))) {
+         float $$7 = ayu.a(this.c * (float) Math.PI);
+         float $$8 = ayu.a((1.0F - (1.0F - this.c) * (1.0F - this.c)) * (float) Math.PI);
+         this.n.g = 0.0F;
+         this.o.g = 0.0F;
+         this.n.f = -(0.1F - $$7 * 0.6F);
+         this.o.f = 0.1F - $$7 * 0.6F;
+         this.n.e = (float) (-Math.PI / 2);
+         this.o.e = (float) (-Math.PI / 2);
+         this.n.e -= $$7 * 1.2F - $$8 * 0.4F;
+         this.o.e -= $$7 * 1.2F - $$8 * 0.4F;
+         fss.a(this.n, this.o, $$3);
+      }
    }
 
    @Override
-   public void a(float $$0, float $$1, float $$2) {
-      this.b.e = (float)(Math.sin((double)($$0 * (float) Math.PI * 0.2F)) + 1.0) * 0.2F;
-      this.a.f = $$1 * (float) (Math.PI / 180.0);
-      this.a.e = $$2 * (float) (Math.PI / 180.0);
-   }
-
-   @Override
-   public void a(eyu $$0, eyy $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      $$0.a();
-      $$0.a(0.0F, -0.374375F, 0.0F);
-      $$0.b(0.75F, 0.75F, 0.75F);
-      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      $$0.b();
+   public void a(bte $$0, ezt $$1) {
+      float $$2 = $$0 == bte.b ? 1.0F : -1.0F;
+      fwv $$3 = this.a($$0);
+      $$3.b += $$2;
+      $$3.a($$1);
+      $$3.b -= $$2;
    }
 }

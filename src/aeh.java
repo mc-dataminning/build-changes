@@ -1,33 +1,18 @@
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
 
-public class aeh implements ze<abq> {
-   public static final yv<vx, aeh> a = ze.a(aeh::a, aeh::new);
-   @Nullable
-   private final akn b;
+public class aeh implements zs<ace> {
+   public static final aeh a = new aeh();
+   public static final zj<ByteBuf, aeh> b = zj.a(a);
 
-   public aeh(@Nullable akn $$0) {
-      this.b = $$0;
-   }
-
-   private aeh(vx $$0) {
-      this.b = $$0.c(vx::q);
-   }
-
-   private void a(vx $$0) {
-      $$0.a(this.b, vx::a);
+   private aeh() {
    }
 
    @Override
-   public zg<aeh> a() {
-      return agc.ao;
+   public zu<aeh> a() {
+      return agq.ac;
    }
 
-   public void a(abq $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
-   }
-
-   @Nullable
-   public akn b() {
-      return this.b;
    }
 }

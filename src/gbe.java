@@ -1,21 +1,14 @@
-public class gbe extends gay {
-   private float a;
-
-   gbe(fwr $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.t = (int)(Math.random() * 60.0) + 30;
-      this.n = false;
-      this.j = 0.0;
-      this.k = -0.05;
-      this.l = 0.0;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.u = 0.002F;
+public class gbe extends gbd {
+   gbe(fxq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.D *= 1.5F;
+      this.t = (int)(Math.random() * 2.0) + 60;
    }
 
    @Override
-   public gac b() {
-      return gac.b;
+   public float b(float $$0) {
+      float $$1 = 1.0F - ((float)this.s + $$0) / ((float)this.t * 1.5F);
+      return this.D * $$1;
    }
 
    @Override
@@ -26,29 +19,22 @@ public class gbe extends gay {
       if (this.s++ >= this.t) {
          this.k();
       } else {
-         float $$0 = 0.6F;
-         this.j = this.j + (double)(0.6F * ayf.b(this.a));
-         this.l = this.l + (double)(0.6F * ayf.a(this.a));
-         this.j *= 0.07;
-         this.l *= 0.07;
-         this.a(this.j, this.k, this.l);
-         if (!this.c.b_(io.a(this.g, this.h, this.i)).a(awc.a) || this.m) {
-            this.k();
-         }
-
-         this.a += 0.08F;
+         float $$0 = (float)this.s / (float)this.t;
+         this.g = this.g + this.j * (double)$$0;
+         this.h = this.h + this.k * (double)$$0;
+         this.i = this.i + this.l * (double)$$0;
       }
    }
 
-   public static class a implements gab<lb> {
-      private final gat a;
+   public static class a implements gba<lm> {
+      private final gbs a;
 
-      public a(gat $$0) {
+      public a(gbs $$0) {
          this.a = $$0;
       }
 
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gbe $$8 = new gbe($$1, $$2, $$3, $$4);
+      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gbe $$8 = new gbe($$1, $$2, $$3, $$4, $$5, $$6, $$7);
          $$8.a(this.a);
          return $$8;
       }

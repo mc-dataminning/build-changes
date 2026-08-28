@@ -1,37 +1,29 @@
-public class aib implements ze<age> {
-   public static final yv<vx, aib> a = ze.a(aib::a, aib::new);
-   private final bpv b;
-   private final int c;
+public class aib implements zs<ags> {
+   public static final zj<wl, aib> a = zs.a(aib::a, aib::new);
+   private final String b;
 
-   public aib(bpv $$0, int $$1) {
+   public aib(String $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
-   private aib(vx $$0) {
-      this.b = $$0.b(bpv.class);
-      this.c = $$0.l();
+   private aib(wl $$0) {
+      this.b = $$0.p();
    }
 
-   private void a(vx $$0) {
+   private void a(wl $$0) {
       $$0.a(this.b);
-      $$0.c(this.c);
    }
 
    @Override
-   public zg<aib> a() {
-      return agc.cd;
+   public zu<aib> a() {
+      return agq.bP;
    }
 
-   public void a(age $$0) {
+   public void a(ags $$0) {
       $$0.a(this);
    }
 
-   public bpv b() {
+   public String b() {
       return this.b;
-   }
-
-   public int e() {
-      return this.c;
    }
 }

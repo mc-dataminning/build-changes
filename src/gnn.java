@@ -1,39 +1,34 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import javax.annotation.Nullable;
-
-public class gnn extends gno {
-   @Nullable
-   private CompletableFuture<gno.a> f;
-
-   public gnn(atx $$0, akn $$1, Executor $$2) {
-      super($$1);
-      this.f = CompletableFuture.supplyAsync(() -> gno.a.a($$0, $$1), $$2);
+public abstract class gnn<T extends btk, M extends fva<T>> extends gne<T, M> {
+   public gnn(gjt<T, M> $$0) {
+      super($$0);
    }
 
-   @Override
-   protected gno.a b(atx $$0) {
-      if (this.f != null) {
-         gno.a $$1 = this.f.join();
-         this.f = null;
-         return $$1;
-      } else {
-         return gno.a.a($$0, this.e);
+   protected abstract int a(T var1);
+
+   protected abstract void a(ezt var1, gdj var2, int var3, bsp var4, float var5, float var6, float var7, float var8);
+
+   public void a(ezt $$0, gdj $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      int $$10 = this.a($$3);
+      azc $$11 = azc.a((long)$$3.al());
+      if ($$10 > 0) {
+         for (int $$12 = 0; $$12 < $$10; $$12++) {
+            $$0.a();
+            fwv $$13 = this.c().a($$11);
+            fwv.a $$14 = $$13.a($$11);
+            $$13.a($$0);
+            float $$15 = $$11.i();
+            float $$16 = $$11.i();
+            float $$17 = $$11.i();
+            float $$18 = ayu.i($$15, $$14.a, $$14.d) / 16.0F;
+            float $$19 = ayu.i($$16, $$14.b, $$14.e) / 16.0F;
+            float $$20 = ayu.i($$17, $$14.c, $$14.f) / 16.0F;
+            $$0.a($$18, $$19, $$20);
+            $$15 = -1.0F * ($$15 * 2.0F - 1.0F);
+            $$16 = -1.0F * ($$16 * 2.0F - 1.0F);
+            $$17 = -1.0F * ($$17 * 2.0F - 1.0F);
+            this.a($$0, $$1, $$2, $$3, $$15, $$16, $$17, $$6);
+            $$0.b();
+         }
       }
-   }
-
-   public CompletableFuture<Void> d() {
-      return this.f == null ? CompletableFuture.completedFuture(null) : this.f.thenApply($$0 -> null);
-   }
-
-   @Override
-   public void a(gnw $$0, atx $$1, akn $$2, Executor $$3) {
-      this.f = CompletableFuture.supplyAsync(() -> gno.a.a($$1, this.e), ac.g());
-      this.f.thenRunAsync(() -> $$0.a(this.e, this), a($$3));
-   }
-
-   private static Executor a(Executor $$0) {
-      return $$1 -> $$0.execute(() -> RenderSystem.recordRenderCall($$1::run));
    }
 }

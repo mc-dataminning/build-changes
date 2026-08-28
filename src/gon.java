@@ -1,41 +1,119 @@
-import com.mojang.authlib.GameProfile;
-import java.util.UUID;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.Closeable;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gon {
-   private static final gov[] a = new gov[]{
-      a("textures/entity/player/slim/alex.png", gov.a.a),
-      a("textures/entity/player/slim/ari.png", gov.a.a),
-      a("textures/entity/player/slim/efe.png", gov.a.a),
-      a("textures/entity/player/slim/kai.png", gov.a.a),
-      a("textures/entity/player/slim/makena.png", gov.a.a),
-      a("textures/entity/player/slim/noor.png", gov.a.a),
-      a("textures/entity/player/slim/steve.png", gov.a.a),
-      a("textures/entity/player/slim/sunny.png", gov.a.a),
-      a("textures/entity/player/slim/zuri.png", gov.a.a),
-      a("textures/entity/player/wide/alex.png", gov.a.b),
-      a("textures/entity/player/wide/ari.png", gov.a.b),
-      a("textures/entity/player/wide/efe.png", gov.a.b),
-      a("textures/entity/player/wide/kai.png", gov.a.b),
-      a("textures/entity/player/wide/makena.png", gov.a.b),
-      a("textures/entity/player/wide/noor.png", gov.a.b),
-      a("textures/entity/player/wide/steve.png", gov.a.b),
-      a("textures/entity/player/wide/sunny.png", gov.a.b),
-      a("textures/entity/player/wide/zuri.png", gov.a.b)
-   };
+public class gon extends gof {
+   static final Logger f = LogUtils.getLogger();
+   protected final alb e;
 
-   public static akn a() {
-      return a[6].a();
+   public gon(alb $$0) {
+      this.e = $$0;
    }
 
-   public static gov a(UUID $$0) {
-      return a[Math.floorMod($$0.hashCode(), a.length)];
+   @Override
+   public void a(aul $$0) throws IOException {
+      gon.a $$1 = this.b($$0);
+      $$1.c();
+      gqr $$2 = $$1.a();
+      boolean $$3;
+      boolean $$4;
+      if ($$2 != null) {
+         $$3 = $$2.a();
+         $$4 = $$2.b();
+      } else {
+         $$3 = false;
+         $$4 = false;
+      }
+
+      eyu $$7 = $$1.b();
+      if (!RenderSystem.isOnRenderThreadOrInit()) {
+         RenderSystem.recordRenderCall(() -> this.a($$7, $$3, $$4));
+      } else {
+         this.a($$7, $$3, $$4);
+      }
    }
 
-   public static gov a(GameProfile $$0) {
-      return a($$0.getId());
+   private void a(eyu $$0, boolean $$1, boolean $$2) {
+      TextureUtil.prepareImage(this.a(), 0, $$0.a(), $$0.b());
+      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), $$1, $$2, false, true);
    }
 
-   private static gov a(String $$0, gov.a $$1) {
-      return new gov(new akn($$0), null, null, null, $$1, true);
+   protected gon.a b(aul $$0) {
+      return gon.a.a($$0, this.e);
+   }
+
+   protected static class a implements Closeable {
+      @Nullable
+      private final gqr a;
+      @Nullable
+      private final eyu b;
+      @Nullable
+      private final IOException c;
+
+      public a(IOException $$0) {
+         this.c = $$0;
+         this.a = null;
+         this.b = null;
+      }
+
+      public a(@Nullable gqr $$0, eyu $$1) {
+         this.c = null;
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public static gon.a a(aul $$0, alb $$1) {
+         try {
+            auj $$2 = $$0.getResourceOrThrow($$1);
+
+            eyu $$4;
+            try (InputStream $$3 = $$2.d()) {
+               $$4 = eyu.a($$3);
+            }
+
+            gqr $$6 = null;
+
+            try {
+               $$6 = $$2.f().a(gqr.a).orElse(null);
+            } catch (RuntimeException var8) {
+               gon.f.warn("Failed reading metadata of: {}", $$1, var8);
+            }
+
+            return new gon.a($$6, $$4);
+         } catch (IOException var10) {
+            return new gon.a(var10);
+         }
+      }
+
+      @Nullable
+      public gqr a() {
+         return this.a;
+      }
+
+      public eyu b() throws IOException {
+         if (this.c != null) {
+            throw this.c;
+         } else {
+            return this.b;
+         }
+      }
+
+      @Override
+      public void close() {
+         if (this.b != null) {
+            this.b.close();
+         }
+      }
+
+      public void c() throws IOException {
+         if (this.c != null) {
+            throw this.c;
+         }
+      }
    }
 }

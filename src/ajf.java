@@ -1,20 +1,4 @@
-public record ajf(long b) implements ze<aje> {
-   public static final yv<vx, ajf> a = ze.a(ajf::a, ajf::new);
-
-   private ajf(vx $$0) {
-      this($$0.readLong());
-   }
-
-   private void a(vx $$0) {
-      $$0.b(this.b);
-   }
-
-   @Override
-   public zg<ajf> a() {
-      return ajg.a;
-   }
-
-   public void a(aje $$0) {
-      $$0.a(this);
-   }
+public class ajf {
+   public static final wt<ajg> a = zx.a(wk.d, $$0 -> $$0.a(aje.g, aji.a).a(aje.h, ajj.a).a(aje.f, ajh.a).a(aje.i, ajk.b).a(aca.b, acc.a));
+   public static final wt<aiy> b = zx.b(wk.d, $$0 -> $$0.a(aje.e, ajd.a).a(aje.c, ajb.a).a(aje.b, aja.a).a(aje.d, ajc.a).a(aje.a, aiz.a).a(aca.a, abz.a));
 }

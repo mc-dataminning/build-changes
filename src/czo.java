@@ -1,10 +1,10 @@
-public class czo extends czb {
-   public czo(czb.b $$0) {
+public class czo extends czv {
+   public czo(czv.b $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(czb $$0) {
-      return super.a($$0) && $$0 != cze.E && $$0 != cze.H;
+   public boolean a(czv $$0) {
+      return $$0 instanceof dac ? false : super.a($$0);
    }
 }

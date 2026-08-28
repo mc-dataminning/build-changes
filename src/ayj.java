@@ -1,45 +1,30 @@
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
+import com.google.common.collect.ImmutableSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Consumer;
 
-public record ayj(int a, int b) {
-   private static final long c = -8552249625308161526L;
-   private static final int d = 1229472850;
-   private static final int e = 13;
-
-   public static ayj a(InputStream $$0) throws IOException {
-      DataInputStream $$1 = new DataInputStream($$0);
-      if ($$1.readLong() != -8552249625308161526L) {
-         throw new IOException("Bad PNG Signature");
-      } else if ($$1.readInt() != 13) {
-         throw new IOException("Bad length for IHDR chunk!");
-      } else if ($$1.readInt() != 1229472850) {
-         throw new IOException("Bad type for IHDR chunk!");
-      } else {
-         int $$2 = $$1.readInt();
-         int $$3 = $$1.readInt();
-         return new ayj($$2, $$3);
-      }
+public final class ayj {
+   private ayj() {
    }
 
-   public static ayj a(byte[] $$0) throws IOException {
-      return a(new ByteArrayInputStream($$0));
-   }
-
-   public static void a(ByteBuffer $$0) throws IOException {
-      ByteOrder $$1 = $$0.order();
-      $$0.order(ByteOrder.BIG_ENDIAN);
-      if ($$0.getLong(0) != -8552249625308161526L) {
-         throw new IOException("Bad PNG Signature");
-      } else if ($$0.getInt(8) != 13) {
-         throw new IOException("Bad length for IHDR chunk!");
-      } else if ($$0.getInt(12) != 1229472850) {
-         throw new IOException("Bad type for IHDR chunk!");
+   public static <T> boolean a(Map<T, Set<T>> $$0, Set<T> $$1, Set<T> $$2, Consumer<T> $$3, T $$4) {
+      if ($$1.contains($$4)) {
+         return false;
+      } else if ($$2.contains($$4)) {
+         return true;
       } else {
-         $$0.order($$1);
+         $$2.add($$4);
+
+         for (T $$5 : $$0.getOrDefault($$4, ImmutableSet.of())) {
+            if (a($$0, $$1, $$2, $$3, $$5)) {
+               return true;
+            }
+         }
+
+         $$2.remove($$4);
+         $$1.add($$4);
+         $$3.accept($$4);
+         return false;
       }
    }
 }

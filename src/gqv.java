@@ -1,15 +1,20 @@
-public class gqv extends gqw {
-   public gqv(ceh $$0) {
-      super($$0, avi.bR, avj.g);
-   }
+import java.util.List;
+import javax.annotation.Nullable;
 
-   @Override
-   protected gqs o() {
-      return new gqu(this.n);
-   }
+public interface gqv {
+   List<geg> a(@Nullable drx var1, @Nullable je var2, azc var3);
 
-   @Override
-   protected boolean p() {
-      return this.n.Z_();
-   }
+   boolean a();
+
+   boolean b();
+
+   boolean c();
+
+   boolean d();
+
+   gou e();
+
+   ges f();
+
+   geq g();
 }

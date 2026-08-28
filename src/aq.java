@@ -1,3 +1,3 @@
 public interface aq {
-   void a(bd var1);
+   void a(bg var1);
 }

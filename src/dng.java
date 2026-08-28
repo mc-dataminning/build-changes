@@ -1,33 +1,29 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dng extends dfo implements dnf {
-   public static final MapCodec<dng> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dnf.a.e.fieldOf("weathering_state").forGetter(dng::m), u()).apply($$0, dng::new)
-   );
-   private final dnf.a e;
+public class dng extends dik {
+   public static final MapCodec<dng> b = b(dng::new);
 
-   @Override
-   protected MapCodec<dng> a() {
-      return d;
-   }
-
-   public dng(dnf.a $$0, drc.d $$1) {
-      super($$1);
-      this.e = $$0;
+   protected dng(drw.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected void b(drd $$0, aqn $$1, io $$2, aym $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   protected MapCodec<? extends dng> a() {
+      return b;
    }
 
    @Override
-   protected boolean d_(drd $$0) {
-      return dnf.c($$0.b()).isPresent();
+   protected ewf c(drx $$0, daz $$1, iz $$2, evr $$3) {
+      return ewc.a();
    }
 
-   public dnf.a m() {
-      return this.e;
+   @Override
+   protected float d(drx $$0, daz $$1, iz $$2) {
+      return 1.0F;
+   }
+
+   @Override
+   protected boolean a_(drx $$0, daz $$1, iz $$2) {
+      return true;
    }
 }

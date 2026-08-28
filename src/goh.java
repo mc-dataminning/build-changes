@@ -1,35 +1,77 @@
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.io.IOException;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class goh implements gnz {
-   private static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<goh> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(akn.a.fieldOf("resource").forGetter($$0x -> $$0x.d), akn.a.optionalFieldOf("sprite").forGetter($$0x -> $$0x.e)).apply($$0, goh::new)
-   );
-   private final akn d;
-   private final Optional<akn> e;
+public class goh extends gof implements gog {
+   private static final Logger e = LogUtils.getLogger();
+   @Nullable
+   private eyu f;
 
-   public goh(akn $$0, Optional<akn> $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public goh(eyu $$0) {
+      this.f = $$0;
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> {
+            TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
+            this.d();
+         });
+      } else {
+         TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
+         this.d();
+      }
+   }
+
+   public goh(int $$0, int $$1, boolean $$2) {
+      RenderSystem.assertOnGameThreadOrInit();
+      this.f = new eyu($$0, $$1, $$2);
+      TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
    }
 
    @Override
-   public void a(atx $$0, gnz.a $$1) {
-      akn $$2 = a.a(this.d);
-      Optional<atv> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         $$1.a(this.e.orElse(this.d), $$3.get());
+   public void a(aul $$0) {
+   }
+
+   @Override
+   public void d() {
+      if (this.f != null) {
+         this.c();
+         this.f.a(0, 0, 0, false);
       } else {
-         c.warn("Missing sprite: {}", $$2);
+         e.warn("Trying to upload disposed texture {}", this.a());
+      }
+   }
+
+   @Nullable
+   public eyu e() {
+      return this.f;
+   }
+
+   public void a(eyu $$0) {
+      if (this.f != null) {
+         this.f.close();
+      }
+
+      this.f = $$0;
+   }
+
+   @Override
+   public void close() {
+      if (this.f != null) {
+         this.f.close();
+         this.b();
+         this.f = null;
       }
    }
 
    @Override
-   public gob a() {
-      return goc.a;
+   public void a(alb $$0, Path $$1) throws IOException {
+      if (this.f != null) {
+         String $$2 = $$0.c() + ".png";
+         Path $$3 = $$1.resolve($$2);
+         this.f.a($$3);
+      }
    }
 }

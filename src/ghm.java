@@ -1,16 +1,13 @@
-public class ghm extends gih {
-   public static final akn a = new akn("textures/entity/guardian_elder.png");
+public abstract class ghm<T extends che, M extends fug<T>> extends gjy<T, M> {
+   private final float a;
 
-   public ghm(ght.a $$0) {
-      super($$0, 1.2F, fvv.V);
+   public ghm(gis.a $$0, M $$1, float $$2) {
+      super($$0, $$1, 0.75F);
+      this.a = $$2;
    }
 
-   protected void a(cja $$0, eyu $$1, float $$2) {
-      $$1.b(cit.b, cit.b, cit.b);
-   }
-
-   @Override
-   public akn a(cja $$0) {
-      return a;
+   protected void a(T $$0, ezt $$1, float $$2) {
+      $$1.b(this.a, this.a, this.a);
+      super.a($$0, $$1, $$2);
    }
 }

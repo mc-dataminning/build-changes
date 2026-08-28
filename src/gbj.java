@@ -1,85 +1,53 @@
-import com.mojang.authlib.GameProfile;
-import javax.annotation.Nullable;
+public class gbj extends gbx {
+   protected final gbs a;
+   private float b;
+   private float F;
+   private float G;
+   private boolean H;
 
-public abstract class gbj extends cly {
-   @Nullable
-   private fxc g;
-   protected eum b;
-   public float c;
-   public float d;
-   public float e;
-   public final fwr f;
+   protected gbj(fxq $$0, double $$1, double $$2, double $$3, gbs $$4, float $$5) {
+      super($$0, $$1, $$2, $$3);
+      this.B = 0.91F;
+      this.u = $$5;
+      this.a = $$4;
+   }
 
-   public gbj(fwr $$0, GameProfile $$1) {
-      super($$0, $$0.U(), $$0.V(), $$1);
-      this.b = eum.b;
-      this.f = $$0;
+   public void b(int $$0) {
+      float $$1 = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
+      float $$2 = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
+      float $$3 = (float)(($$0 & 0xFF) >> 0) / 255.0F;
+      float $$4 = 1.0F;
+      this.a($$1 * 1.0F, $$2 * 1.0F, $$3 * 1.0F);
+   }
+
+   public void c(int $$0) {
+      this.b = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
+      this.F = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
+      this.G = (float)(($$0 & 0xFF) >> 0) / 255.0F;
+      this.H = true;
    }
 
    @Override
-   public boolean N_() {
-      fxc $$0 = this.a();
-      return $$0 != null && $$0.e() == daw.d;
+   public gbb b() {
+      return gbb.c;
    }
 
    @Override
-   public boolean f() {
-      fxc $$0 = this.a();
-      return $$0 != null && $$0.e() == daw.b;
-   }
-
-   @Nullable
-   protected fxc a() {
-      if (this.g == null) {
-         this.g = feb.Q().L().a(this.cz());
-      }
-
-      return this.g;
-   }
-
-   @Override
-   public void l() {
-      this.b = this.ds();
-      super.l();
-   }
-
-   public eum E(float $$0) {
-      return this.b.a(this.ds(), (double)$$0);
-   }
-
-   public gov b() {
-      fxc $$0 = this.a();
-      return $$0 == null ? gon.a(this.cz()) : $$0.g();
-   }
-
-   public float c() {
-      float $$0 = 1.0F;
-      if (this.gd().b) {
-         $$0 *= 1.1F;
-      }
-
-      $$0 *= ((float)this.g(bty.r) / this.gd().b() + 1.0F) / 2.0F;
-      if (this.gd().b() == 0.0F || Float.isNaN($$0) || Float.isInfinite($$0)) {
-         $$0 = 1.0F;
-      }
-
-      ctq $$1 = this.fx();
-      if (this.fv()) {
-         if ($$1.a(ctt.ou)) {
-            int $$2 = this.fz();
-            float $$3 = (float)$$2 / 20.0F;
-            if ($$3 > 1.0F) {
-               $$3 = 1.0F;
-            } else {
-               $$3 *= $$3;
-            }
-
-            $$0 *= 1.0F - $$3 * 0.15F;
-         } else if (feb.Q().m.aA().a() && this.gA()) {
-            return 0.1F;
+   public void a() {
+      super.a();
+      this.b(this.a);
+      if (this.s > this.t / 2) {
+         this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
+         if (this.H) {
+            this.v = this.v + (this.b - this.v) * 0.2F;
+            this.w = this.w + (this.F - this.w) * 0.2F;
+            this.x = this.x + (this.G - this.x) * 0.2F;
          }
       }
+   }
 
-      return ayf.i(feb.Q().m.ak().c().floatValue(), 1.0F, $$0);
+   @Override
+   public int a(float $$0) {
+      return 15728880;
    }
 }

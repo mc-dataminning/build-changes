@@ -1,58 +1,28 @@
-public class ctf extends ctl {
-   private static final int a = 40;
-
-   public ctf(ctl.a $$0) {
+public class ctf extends cuf implements cvc {
+   public ctf(cuf.a $$0) {
       super($$0);
    }
 
    @Override
-   public ctq a(ctq $$0, daz $$1, bsq $$2) {
-      super.a($$0, $$1, $$2);
-      if ($$2 instanceof aqo $$3) {
-         am.A.a($$3, $$0);
-         $$3.b(avs.c.b(this));
+   public bqq<cuk> a(dbt $$0, cms $$1, bqo $$2) {
+      cuk $$3 = $$1.b($$2);
+      $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), avw.hN, avx.h, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      if (!$$0.B) {
+         cnt $$4 = new cnt($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dH(), $$1.dF(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
       }
 
-      if (!$$1.B) {
-         $$2.e(brg.s);
-      }
-
-      if ($$0.e()) {
-         return new ctq(ctt.sl);
-      } else {
-         if ($$2 instanceof cly $$4 && !$$4.fP()) {
-            ctq $$5 = new ctq(ctt.sl);
-            if (!$$4.gc().f($$5)) {
-               $$4.a($$5, false);
-            }
-         }
-
-         return $$0;
-      }
+      $$1.b(awg.c.b(this));
+      $$3.a(1, $$1);
+      return bqq.a($$3, $$0.x_());
    }
 
    @Override
-   public int b(ctq $$0) {
-      return 40;
-   }
-
-   @Override
-   public cvl c(ctq $$0) {
-      return cvl.c;
-   }
-
-   @Override
-   public avh al_() {
-      return avi.mD;
-   }
-
-   @Override
-   public avh am_() {
-      return avi.mD;
-   }
-
-   @Override
-   public bpx<ctq> a(daz $$0, cly $$1, bpv $$2) {
-      return cts.a($$0, $$1, $$2);
+   public cnk a(dbt $$0, js $$1, cuk $$2, je $$3) {
+      cnt $$4 = new cnt($$0, $$1.a(), $$1.b(), $$1.c());
+      $$4.a($$2);
+      return $$4;
    }
 }

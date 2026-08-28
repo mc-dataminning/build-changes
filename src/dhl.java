@@ -1,75 +1,132 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dhl extends dlr implements ded {
-   public static final MapCodec<dhl> a = b(dhl::new);
+public class dhl extends ddo<dpx> implements dlv {
+   public static final MapCodec<dhl> b = b(dhl::new);
+   public static final dsr c = diq.aE;
+   public static final dso d = dsn.C;
+   protected static final ewf e = deu.a(1.0, 0.0, 1.0, 15.0, 14.0, 15.0);
+   private static final xl f = xl.c("container.enderchest");
 
    @Override
    public MapCodec<dhl> a() {
-      return a;
+      return b;
    }
 
-   public dhl(drc.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean b(dbc $$0, io $$1, drd $$2) {
-      return $$0.a_($$1.c()).i();
+   protected dhl(drw.d $$0) {
+      super($$0, () -> dpe.d);
+      this.k(this.E.b().a(c, je.c).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean a(daz $$0, aym $$1, io $$2, drd $$3) {
-      return true;
+   public dhb.c<? extends dpj> a(drx $$0, dbt $$1, iz $$2, boolean $$3) {
+      return dhb.b::b;
    }
 
    @Override
-   public void a(aqn $$0, aym $$1, io $$2, drd $$3) {
-      io $$4 = $$2.c();
-      drd $$5 = dec.bt.n();
-      Optional<ix.c<egp>> $$6 = $$0.H_().d(lf.aI).b(sk.n);
+   protected ewf a(drx $$0, daz $$1, iz $$2, evr $$3) {
+      return e;
+   }
 
-      label49:
-      for (int $$7 = 0; $$7 < 128; $$7++) {
-         io $$8 = $$4;
+   @Override
+   protected dla a_(drx $$0) {
+      return dla.b;
+   }
 
-         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
-            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
-            if (!$$0.a_($$8.d()).a(this) || $$0.a_($$8).r($$0, $$8)) {
-               continue label49;
-            }
+   @Override
+   public drx a(cxv $$0) {
+      enq $$1 = $$0.q().b_($$0.a());
+      return this.n().a(c, $$0.g().g()).a(d, Boolean.valueOf($$1.a() == enr.c));
+   }
+
+   @Override
+   protected bqp a(drx $$0, dbt $$1, iz $$2, cms $$3, evi $$4) {
+      crb $$5 = $$3.gp();
+      dpc $$6 = $$1.c_($$2);
+      if ($$5 != null && $$6 instanceof dpx) {
+         iz $$7 = $$2.c();
+         if ($$1.a_($$7).g($$1, $$7)) {
+            return bqp.a($$1.B);
+         } else if ($$1.B) {
+            return bqp.a;
+         } else {
+            dpx $$8 = (dpx)$$6;
+            $$5.a($$8);
+            $$3.a(new bqz(($$1x, $$2x, $$3x) -> cpw.a($$1x, $$2x, $$5), f));
+            $$3.a(awg.aj);
+            clj.a($$3, true);
+            return bqp.c;
          }
-
-         drd $$10 = $$0.a_($$8);
-         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
-            ((ded)$$5.b()).a($$0, $$1, $$8, $$10);
-         }
-
-         if ($$10.i()) {
-            ix<egp> $$12;
-            if ($$1.a(8) == 0) {
-               List<dzm<?, ?>> $$11 = $$0.t($$8).a().d().a();
-               if ($$11.isEmpty()) {
-                  continue;
-               }
-
-               $$12 = ((ecq)$$11.get(0).c()).d();
-            } else {
-               if (!$$6.isPresent()) {
-                  continue;
-               }
-
-               $$12 = $$6.get();
-            }
-
-            $$12.a().a($$0, $$0.l().g(), $$1, $$8);
-         }
+      } else {
+         return bqp.a($$1.B);
       }
    }
 
    @Override
-   public ded.a ar_() {
-      return ded.a.a;
+   public dpc a(iz $$0, drx $$1) {
+      return new dpx($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dpc> dpd<T> a(dbt $$0, drx $$1, dpe<T> $$2) {
+      return $$0.B ? a($$2, dpe.d, dpx::a) : null;
+   }
+
+   @Override
+   public void a(drx $$0, dbt $$1, iz $$2, azc $$3) {
+      for (int $$4 = 0; $$4 < 3; $$4++) {
+         int $$5 = $$3.a(2) * 2 - 1;
+         int $$6 = $$3.a(2) * 2 - 1;
+         double $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$5;
+         double $$8 = (double)((float)$$2.v() + $$3.i());
+         double $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$6;
+         double $$10 = (double)($$3.i() * (float)$$5);
+         double $$11 = ((double)$$3.i() - 0.5) * 0.125;
+         double $$12 = (double)($$3.i() * (float)$$6);
+         $$1.a(lj.ac, $$7, $$8, $$9, $$10, $$11, $$12);
+      }
+   }
+
+   @Override
+   protected drx a(drx $$0, dlh $$1) {
+      return $$0.a(c, $$1.a($$0.c(c)));
+   }
+
+   @Override
+   protected drx a(drx $$0, djr $$1) {
+      return $$0.a($$1.a($$0.c(c)));
+   }
+
+   @Override
+   protected void a(dry.a<deu, drx> $$0) {
+      $$0.a(c, d);
+   }
+
+   @Override
+   protected enq b_(drx $$0) {
+      return $$0.c(d) ? enr.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected drx a(drx $$0, je $$1, drx $$2, dbu $$3, iz $$4, iz $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, enr.c, enr.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected boolean a(drx $$0, eof $$1) {
+      return false;
+   }
+
+   @Override
+   protected void a(drx $$0, arb $$1, iz $$2, azc $$3) {
+      dpc $$4 = $$1.c_($$2);
+      if ($$4 instanceof dpx) {
+         ((dpx)$$4).b();
+      }
    }
 }

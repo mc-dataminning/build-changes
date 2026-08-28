@@ -1,93 +1,53 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+public class ekm {
+   private static final alb[] a = new alb[]{
+      new alb("nether_fossils/fossil_1"),
+      new alb("nether_fossils/fossil_2"),
+      new alb("nether_fossils/fossil_3"),
+      new alb("nether_fossils/fossil_4"),
+      new alb("nether_fossils/fossil_5"),
+      new alb("nether_fossils/fossil_6"),
+      new alb("nether_fossils/fossil_7"),
+      new alb("nether_fossils/fossil_8"),
+      new alb("nether_fossils/fossil_9"),
+      new alb("nether_fossils/fossil_10"),
+      new alb("nether_fossils/fossil_11"),
+      new alb("nether_fossils/fossil_12"),
+      new alb("nether_fossils/fossil_13"),
+      new alb("nether_fossils/fossil_14")
+   };
 
-public class ekm extends eli {
-   public static final MapCodec<ekm> a = Codec.FLOAT.fieldOf("mossiness").xmap(ekm::new, $$0 -> $$0.f);
-   private static final float b = 0.5F;
-   private static final float c = 0.5F;
-   private static final float d = 0.15F;
-   private static final drd[] e = new drd[]{dec.jD.n(), dec.jK.n()};
-   private final float f;
-
-   public ekm(float $$0) {
-      this.f = $$0;
+   public static void a(emg $$0, eik $$1, azc $$2, iz $$3) {
+      dlh $$4 = dlh.a($$2);
+      $$1.a(new ekm.a($$0, ac.a(a, $$2), $$3, $$4));
    }
 
-   @Nullable
-   @Override
-   public ell.c a(dbc $$0, io $$1, io $$2, ell.c $$3, ell.c $$4, elh $$5) {
-      aym $$6 = $$5.b($$4.a());
-      drd $$7 = $$4.b();
-      io $$8 = $$4.a();
-      drd $$9 = null;
-      if ($$7.a(dec.eH) || $$7.a(dec.b) || $$7.a(dec.eK)) {
-         $$9 = this.a($$6);
-      } else if ($$7.a(avx.J)) {
-         $$9 = this.a($$6, $$4.b());
-      } else if ($$7.a(avx.K)) {
-         $$9 = this.b($$6);
-      } else if ($$7.a(avx.L)) {
-         $$9 = this.c($$6);
-      } else if ($$7.a(dec.co)) {
-         $$9 = this.d($$6);
+   public static class a extends eip {
+      public a(emg $$0, alb $$1, iz $$2, dlh $$3) {
+         super(eiw.ac, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
       }
 
-      return $$9 != null ? new ell.c($$8, $$9, $$4.c()) : $$4;
-   }
-
-   @Nullable
-   private drd a(aym $$0) {
-      if ($$0.i() >= 0.5F) {
-         return null;
-      } else {
-         drd[] $$1 = new drd[]{dec.eJ.n(), a($$0, dec.fj)};
-         drd[] $$2 = new drd[]{dec.eI.n(), a($$0, dec.ng)};
-         return this.a($$0, $$1, $$2);
+      public a(emg $$0, ur $$1) {
+         super(eiw.ac, $$1, $$0, $$1x -> a(dlh.valueOf($$1.l("Rot"))));
       }
-   }
 
-   @Nullable
-   private drd a(aym $$0, drd $$1) {
-      it $$2 = $$1.c(dlu.b);
-      dsc $$3 = $$1.c(dlu.c);
-      if ($$0.i() >= 0.5F) {
-         return null;
-      } else {
-         drd[] $$4 = new drd[]{dec.ng.n().a(dlu.b, $$2).a(dlu.c, $$3), dec.nu.n()};
-         return this.a($$0, e, $$4);
+      private static emb a(dlh $$0) {
+         return new emb().a($$0).a(djr.a).a(elh.d);
       }
-   }
 
-   @Nullable
-   private drd b(aym $$0) {
-      return $$0.i() < this.f ? dec.nu.n() : null;
-   }
+      @Override
+      protected void a(eiv $$0, ur $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", this.c.d().name());
+      }
 
-   @Nullable
-   private drd c(aym $$0) {
-      return $$0.i() < this.f ? dec.nI.n() : null;
-   }
+      @Override
+      protected void a(String $$0, iz $$1, dci $$2, azc $$3, ehx $$4) {
+      }
 
-   @Nullable
-   private drd d(aym $$0) {
-      return $$0.i() < 0.15F ? dec.pk.n() : null;
-   }
-
-   private static drd a(aym $$0, dea $$1) {
-      return $$1.n().a(dlu.b, it.c.a.a($$0)).a(dlu.c, ac.a(dsc.values(), $$0));
-   }
-
-   private drd a(aym $$0, drd[] $$1, drd[] $$2) {
-      return $$0.i() < this.f ? a($$0, $$2) : a($$0, $$1);
-   }
-
-   private static drd a(aym $$0, drd[] $$1) {
-      return $$1[$$0.a($$1.length)];
-   }
-
-   @Override
-   protected elk<?> a() {
-      return elk.k;
+      @Override
+      public void a(dco $$0, dcm $$1, dtu $$2, azc $$3, ehx $$4, dba $$5, iz $$6) {
+         $$4.b(this.b.b(this.c, this.d));
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      }
    }
 }

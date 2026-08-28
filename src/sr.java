@@ -1,5 +1,65 @@
-public class sr extends RuntimeException {
-   public sr(String $$0) {
-      super($$0);
+public class sr {
+   public static final ala<ehj> a = sw.a("monster_room");
+   public static final ala<ehj> b = sw.a("monster_room_deep");
+   public static final ala<ehj> c = sw.a("fossil_upper");
+   public static final ala<ehj> d = sw.a("fossil_lower");
+   public static final ala<ehj> e = sw.a("dripstone_cluster");
+   public static final ala<ehj> f = sw.a("large_dripstone");
+   public static final ala<ehj> g = sw.a("pointed_dripstone");
+   public static final ala<ehj> h = sw.a("underwater_magma");
+   public static final ala<ehj> i = sw.a("glow_lichen");
+   public static final ala<ehj> j = sw.a("rooted_azalea_tree");
+   public static final ala<ehj> k = sw.a("cave_vines");
+   public static final ala<ehj> l = sw.a("lush_caves_vegetation");
+   public static final ala<ehj> m = sw.a("lush_caves_clay");
+   public static final ala<ehj> n = sw.a("lush_caves_ceiling_vegetation");
+   public static final ala<ehj> o = sw.a("spore_blossom");
+   public static final ala<ehj> p = sw.a("classic_vines_cave_feature");
+   public static final ala<ehj> q = sw.a("amethyst_geode");
+   public static final ala<ehj> r = sw.a("sculk_patch_deep_dark");
+   public static final ala<ehj> s = sw.a("sculk_patch_ancient_city");
+   public static final ala<ehj> t = sw.a("sculk_vein");
+
+   public static void a(rc<ehj> $$0) {
+      jj<eag<?, ?>> $$1 = $$0.a(lq.aC);
+      ji<eag<?, ?>> $$2 = $$1.b(sf.a);
+      ji<eag<?, ?>> $$3 = $$1.b(sf.b);
+      ji<eag<?, ?>> $$4 = $$1.b(sf.c);
+      ji<eag<?, ?>> $$5 = $$1.b(sf.d);
+      ji<eag<?, ?>> $$6 = $$1.b(sf.e);
+      ji<eag<?, ?>> $$7 = $$1.b(sf.f);
+      ji<eag<?, ?>> $$8 = $$1.b(sf.g);
+      ji<eag<?, ?>> $$9 = $$1.b(sf.h);
+      ji<eag<?, ?>> $$10 = $$1.b(sf.i);
+      ji<eag<?, ?>> $$11 = $$1.b(sf.j);
+      ji<eag<?, ?>> $$12 = $$1.b(sf.m);
+      ji<eag<?, ?>> $$13 = $$1.b(sf.r);
+      ji<eag<?, ?>> $$14 = $$1.b(sf.s);
+      ji<eag<?, ?>> $$15 = $$1.b(sf.t);
+      ji<eag<?, ?>> $$16 = $$1.b(sn.c);
+      ji<eag<?, ?>> $$17 = $$1.b(sf.u);
+      ji<eag<?, ?>> $$18 = $$1.b(sf.v);
+      ji<eag<?, ?>> $$19 = $$1.b(sf.w);
+      ji<eag<?, ?>> $$20 = $$1.b(sf.x);
+      sw.a($$0, a, $$2, ehc.a(10), ehg.a(), ehe.a(dyj.a(0), dyj.b()), egx.a());
+      sw.a($$0, b, $$2, ehc.a(4), ehg.a(), ehe.a(dyj.b(6), dyj.a(-1)), egx.a());
+      sw.a($$0, c, $$3, ehp.a(64), ehg.a(), ehe.a(dyj.a(0), dyj.b()), egx.a());
+      sw.a($$0, d, $$4, ehp.a(64), ehg.a(), ehe.a(dyj.a(), dyj.a(-8)), egx.a());
+      sw.a($$0, e, $$5, ehc.a(bqa.a(48, 96)), ehg.a(), sw.i, egx.a());
+      sw.a($$0, f, $$6, ehc.a(bqa.a(10, 48)), ehg.a(), sw.i, egx.a());
+      sw.a($$0, g, $$7, ehc.a(bqa.a(192, 256)), ehg.a(), sw.i, ehc.a(bqa.a(1, 5)), eho.a(bpp.a(0.0F, 3.0F, -10, 10), bpp.a(0.0F, 0.6F, -2, 2)), egx.a());
+      sw.a($$0, h, $$8, ehc.a(bqa.a(44, 52)), ehg.a(), sw.i, ehr.a(dxp.a.c, Integer.MIN_VALUE, -2), egx.a());
+      sw.a($$0, i, $$9, ehc.a(bqa.a(104, 157)), sw.i, ehg.a(), ehr.a(dxp.a.c, Integer.MIN_VALUE, -13), egx.a());
+      sw.a($$0, j, $$10, ehc.a(bqa.a(1, 2)), ehg.a(), sw.i, ehd.a(je.b, dyw.c(), dyw.c, 12), eho.a(bpr.a(-1)), egx.a());
+      sw.a($$0, k, $$11, ehc.a(188), ehg.a(), sw.i, ehd.a(je.b, dyw.a(je.a), dyw.c, 12), eho.a(bpr.a(-1)), egx.a());
+      sw.a($$0, l, $$12, ehc.a(125), ehg.a(), sw.i, ehd.a(je.a, dyw.c(), dyw.c, 12), eho.a(bpr.a(1)), egx.a());
+      sw.a($$0, m, $$13, ehc.a(62), ehg.a(), sw.i, ehd.a(je.a, dyw.c(), dyw.c, 12), eho.a(bpr.a(1)), egx.a());
+      sw.a($$0, n, $$14, ehc.a(125), ehg.a(), sw.i, ehd.a(je.b, dyw.c(), dyw.c, 12), eho.a(bpr.a(-1)), egx.a());
+      sw.a($$0, o, $$15, ehc.a(25), ehg.a(), sw.i, ehd.a(je.b, dyw.c(), dyw.c, 12), eho.a(bpr.a(-1)), egx.a());
+      sw.a($$0, p, $$16, ehc.a(256), ehg.a(), sw.i, egx.a());
+      sw.a($$0, q, $$17, ehp.a(24), ehg.a(), ehe.a(dyj.b(6), dyj.a(30)), egx.a());
+      sw.a($$0, r, $$18, ehc.a(bpr.a(256)), ehg.a(), sw.i, egx.a());
+      sw.a($$0, s, $$19);
+      sw.a($$0, t, $$20, ehc.a(bqa.a(204, 250)), ehg.a(), sw.i, egx.a());
    }
 }

@@ -1,3 +1,8 @@
-public interface exu {
-   ext createMonitor(long var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@exn
+@exm
+interface exu {
 }

@@ -1,33 +1,43 @@
-import com.mojang.util.UndashedUuid;
-import java.util.UUID;
+import com.google.common.collect.Interner;
+import com.google.common.collect.Interners;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Optional;
 
-public class axb {
-   public static final String a = "https://aka.ms/MinecraftGDPR";
-   public static final String b = "https://aka.ms/MinecraftEULA";
-   public static final String c = "http://go.microsoft.com/fwlink/?LinkId=521839";
-   public static final String d = "https://aka.ms/MinecraftJavaAttribution";
-   public static final String e = "https://aka.ms/MinecraftJavaLicenses";
-   public static final String f = "https://aka.ms/BuyMinecraftJava";
-   public static final String g = "https://aka.ms/JavaAccountSettings";
-   public static final String h = "https://aka.ms/snapshotfeedback?ref=game";
-   public static final String i = "https://aka.ms/javafeedback?ref=game";
-   public static final String j = "https://aka.ms/snapshotbugs?ref=game";
-   public static final String k = "https://aka.ms/Minecraft-Support";
-   public static final String l = "https://aka.ms/MinecraftJavaAccessibility";
-   public static final String m = "https://aka.ms/aboutjavareporting";
-   public static final String n = "https://aka.ms/mcjavamoderation";
-   public static final String o = "https://aka.ms/javablocking";
-   public static final String p = "https://aka.ms/MinecraftSymLinks";
-   public static final String q = "https://aka.ms/startjavarealmstrial";
-   public static final String r = "https://aka.ms/BuyJavaRealms";
-   public static final String s = "https://aka.ms/MinecraftRealmsTerms";
-   public static final String t = "https://aka.ms/MinecraftRealmsContentCreator";
+public record axb<T>(ala<? extends jv<T>> a, alb b) {
+   private static final Interner<axb<?>> c = Interners.newWeakInterner();
 
-   public static String a(String $$0, UUID $$1, boolean $$2) {
-      return a($$0, $$1) + "&ref=" + ($$2 ? "expiredTrial" : "expiredRealm");
+   @Deprecated
+   public axb(ala<? extends jv<T>> a, alb b) {
+      this.a = a;
+      this.b = b;
    }
 
-   public static String a(String $$0, UUID $$1) {
-      return "https://aka.ms/ExtendJavaRealms?subscriptionId=" + $$0 + "&profileId=" + UndashedUuid.toString($$1);
+   public static <T> Codec<axb<T>> a(ala<? extends jv<T>> $$0) {
+      return alb.a.xmap($$1 -> a($$0, $$1), axb::b);
+   }
+
+   public static <T> Codec<axb<T>> b(ala<? extends jv<T>> $$0) {
+      return Codec.STRING
+         .comapFlatMap(
+            $$1 -> $$1.startsWith("#") ? alb.b($$1.substring(1)).map($$1x -> a($$0, $$1x)) : DataResult.error(() -> "Not a tag id"), $$0x -> "#" + $$0x.b
+         );
+   }
+
+   public static <T> axb<T> a(ala<? extends jv<T>> $$0, alb $$1) {
+      return (axb<T>)c.intern(new axb<>($$0, $$1));
+   }
+
+   public boolean c(ala<? extends jv<?>> $$0) {
+      return this.a == $$0;
+   }
+
+   public <E> Optional<axb<E>> d(ala<? extends jv<E>> $$0) {
+      return this.c($$0) ? Optional.of((axb<E>)this) : Optional.empty();
+   }
+
+   @Override
+   public String toString() {
+      return "TagKey[" + this.a.a() + " / " + this.b + "]";
    }
 }

@@ -1,166 +1,36 @@
-import com.google.common.base.Stopwatch;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public enum dtb implements azp {
+   a("north_south"),
+   b("east_west"),
+   c("ascending_east"),
+   d("ascending_west"),
+   e("ascending_north"),
+   f("ascending_south"),
+   g("south_east"),
+   h("south_west"),
+   i("north_west"),
+   j("north_east");
 
-public class dtb {
-   private static final Logger a = LogUtils.getLogger();
-   private final dxj b;
-   private final dcc c;
-   private final long d;
-   private final long e;
-   private final Map<ehl, List<eii>> f = new Object2ObjectOpenHashMap();
-   private final Map<eif, CompletableFuture<List<dag>>> g = new Object2ObjectArrayMap();
-   private boolean h;
-   private final List<ix<ehr>> i;
+   private final String k;
 
-   public static dtb a(dxj $$0, long $$1, dcc $$2, Stream<ix<ehr>> $$3) {
-      List<ix<ehr>> $$4 = $$3.filter($$1x -> a((ehr)$$1x.a(), $$2)).toList();
-      return new dtb($$0, $$2, $$1, 0L, $$4);
+   private dtb(final String $$0) {
+      this.k = $$0;
    }
 
-   public static dtb a(dxj $$0, long $$1, dcc $$2, iz<ehr> $$3) {
-      List<ix<ehr>> $$4 = $$3.b().filter($$1x -> a((ehr)$$1x.a(), $$2)).collect(Collectors.toUnmodifiableList());
-      return new dtb($$0, $$2, $$1, $$1, $$4);
+   public String a() {
+      return this.k;
    }
 
-   private static boolean a(ehr $$0, dcc $$1) {
-      Stream<ix<dby>> $$2 = $$0.a().stream().flatMap($$0x -> {
-         ehl $$1x = $$0x.a().a();
-         return $$1x.a().a();
-      });
-      return $$2.anyMatch($$1.c()::contains);
+   @Override
+   public String toString() {
+      return this.k;
    }
 
-   private dtb(dxj $$0, dcc $$1, long $$2, long $$3, List<ix<ehr>> $$4) {
-      this.b = $$0;
-      this.d = $$2;
-      this.c = $$1;
-      this.e = $$3;
-      this.i = $$4;
+   public boolean b() {
+      return this == e || this == c || this == f || this == d;
    }
 
-   public List<ix<ehr>> a() {
-      return this.i;
-   }
-
-   private void e() {
-      Set<ix<dby>> $$0 = this.c.c();
-      this.a().forEach($$1 -> {
-         ehr $$2 = $$1.a();
-         boolean $$3 = false;
-
-         for (ehr.a $$4 : $$2.a()) {
-            ehl $$5 = $$4.a().a();
-            if ($$5.a().a().anyMatch($$0::contains)) {
-               this.f.computeIfAbsent($$5, $$0xx -> new ArrayList<>()).add($$2.b());
-               $$3 = true;
-            }
-         }
-
-         if ($$3 && $$2.b() instanceof eif $$7) {
-            this.g.put($$7, this.a((ix<ehr>)$$1, $$7));
-         }
-      });
-   }
-
-   private CompletableFuture<List<dag>> a(ix<ehr> $$0, eif $$1) {
-      if ($$1.c() == 0) {
-         return CompletableFuture.completedFuture(List.of());
-      } else {
-         Stopwatch $$2 = Stopwatch.createStarted(ac.d);
-         int $$3 = $$1.a();
-         int $$4 = $$1.c();
-         List<CompletableFuture<dag>> $$5 = new ArrayList<>($$4);
-         int $$6 = $$1.b();
-         jb<dby> $$7 = $$1.d();
-         aym $$8 = aym.a();
-         $$8.b(this.e);
-         double $$9 = $$8.j() * Math.PI * 2.0;
-         int $$10 = 0;
-         int $$11 = 0;
-
-         for (int $$12 = 0; $$12 < $$4; $$12++) {
-            double $$13 = (double)(4 * $$3 + $$3 * $$11 * 6) + ($$8.j() - 0.5) * (double)$$3 * 2.5;
-            int $$14 = (int)Math.round(Math.cos($$9) * $$13);
-            int $$15 = (int)Math.round(Math.sin($$9) * $$13);
-            aym $$16 = $$8.d();
-            $$5.add(CompletableFuture.supplyAsync(() -> {
-               Pair<io, ix<dby>> $$4x = this.c.a(jq.a($$14, 8), 0, jq.a($$15, 8), 112, $$7::a, $$16, this.b.b());
-               if ($$4x != null) {
-                  io $$5x = (io)$$4x.getFirst();
-                  return new dag(jq.a($$5x.u()), jq.a($$5x.w()));
-               } else {
-                  return new dag($$14, $$15);
-               }
-            }, ac.g()));
-            $$9 += (Math.PI * 2) / (double)$$6;
-            if (++$$10 == $$6) {
-               $$11++;
-               $$10 = 0;
-               $$6 += 2 * $$6 / ($$11 + 1);
-               $$6 = Math.min($$6, $$4 - $$12);
-               $$9 += $$8.j() * Math.PI * 2.0;
-            }
-         }
-
-         return ac.d($$5).thenApply($$2x -> {
-            double $$3x = (double)$$2.stop().elapsed(TimeUnit.MILLISECONDS) / 1000.0;
-            a.debug("Calculation for {} took {}s", $$0, $$3x);
-            return $$2x;
-         });
-      }
-   }
-
-   public void b() {
-      if (!this.h) {
-         this.e();
-         this.h = true;
-      }
-   }
-
-   @Nullable
-   public List<dag> a(eif $$0) {
-      this.b();
-      CompletableFuture<List<dag>> $$1 = this.g.get($$0);
-      return $$1 != null ? $$1.join() : null;
-   }
-
-   public List<eii> a(ix<ehl> $$0) {
-      this.b();
-      return this.f.getOrDefault($$0.a(), List.of());
-   }
-
-   public dxj c() {
-      return this.b;
-   }
-
-   public boolean a(ix<ehr> $$0, int $$1, int $$2, int $$3) {
-      eii $$4 = $$0.a().b();
-
-      for (int $$5 = $$1 - $$3; $$5 <= $$1 + $$3; $$5++) {
-         for (int $$6 = $$2 - $$3; $$6 <= $$2 + $$3; $$6++) {
-            if ($$4.b(this, $$5, $$6)) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public long d() {
-      return this.d;
+   @Override
+   public String c() {
+      return this.k;
    }
 }

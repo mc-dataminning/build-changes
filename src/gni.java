@@ -1,77 +1,14 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class gni<T extends btm & ckc, M extends ftv<T>> extends gne<T, M> {
+   private final fvq<T> a;
+   private final alb b;
 
-public class gni extends gng implements gnh {
-   private static final Logger e = LogUtils.getLogger();
-   @Nullable
-   private exv f;
-
-   public gni(exv $$0) {
-      this.f = $$0;
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> {
-            TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
-            this.d();
-         });
-      } else {
-         TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
-         this.d();
-      }
+   public gni(gko<T, M> $$0, fwr $$1, fwt $$2, alb $$3) {
+      super($$0);
+      this.b = $$3;
+      this.a = new fvq<>($$1.a($$2));
    }
 
-   public gni(int $$0, int $$1, boolean $$2) {
-      RenderSystem.assertOnGameThreadOrInit();
-      this.f = new exv($$0, $$1, $$2);
-      TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
-   }
-
-   @Override
-   public void a(atx $$0) {
-   }
-
-   @Override
-   public void d() {
-      if (this.f != null) {
-         this.c();
-         this.f.a(0, 0, 0, false);
-      } else {
-         e.warn("Trying to upload disposed texture {}", this.a());
-      }
-   }
-
-   @Nullable
-   public exv e() {
-      return this.f;
-   }
-
-   public void a(exv $$0) {
-      if (this.f != null) {
-         this.f.close();
-      }
-
-      this.f = $$0;
-   }
-
-   @Override
-   public void close() {
-      if (this.f != null) {
-         this.f.close();
-         this.b();
-         this.f = null;
-      }
-   }
-
-   @Override
-   public void a(akn $$0, Path $$1) throws IOException {
-      if (this.f != null) {
-         String $$2 = $$0.c() + ".png";
-         Path $$3 = $$1.resolve($$2);
-         this.f.a($$3);
-      }
+   public void a(ezt $$0, gdj $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      a(this.c(), this.a, this.b, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
    }
 }

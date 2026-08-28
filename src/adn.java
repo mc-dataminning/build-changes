@@ -1,33 +1,29 @@
-public class adn implements ze<abq> {
-   public static final yv<wi, adn> a = yv.a(yt.f, adn::b, yt.a(lf.Q), adn::e, wz.d, adn::f, adn::new);
-   private final int b;
-   private final cqc<?> c;
-   private final wx d;
+public record adn(int b, float c) implements zs<ace> {
+   public static final zj<wl, adn> a = zs.a(adn::a, adn::new);
 
-   public adn(int $$0, cqc<?> $$1, wx $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public adn(btk $$0) {
+      this($$0.al(), $$0.eJ());
+   }
+
+   private adn(wl $$0) {
+      this($$0.l(), $$0.readFloat());
+   }
+
+   private void a(wl $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zg<adn> a() {
-      return agc.W;
+   public zu<adn> a() {
+      return agq.I;
    }
 
-   public void a(abq $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public cqc<?> e() {
+   public float e() {
       return this.c;
-   }
-
-   public wx f() {
-      return this.d;
    }
 }

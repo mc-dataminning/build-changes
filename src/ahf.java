@@ -1,29 +1,23 @@
-public class ahf implements ze<age> {
-   public static final yv<vx, ahf> a = ze.a(ahf::a, ahf::new);
-   private final int b;
+import io.netty.buffer.ByteBuf;
 
-   public ahf(int $$0) {
-      this.b = $$0;
-   }
+public class ahf implements zs<ags> {
+   public static final ahf a = new ahf();
+   public static final zj<ByteBuf, ahf> b = zj.a(a);
 
-   private ahf(vx $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(vx $$0) {
-      $$0.c(this.b);
+   private ahf() {
    }
 
    @Override
-   public zg<ahf> a() {
-      return agc.bH;
+   public zu<ahf> a() {
+      return agq.bq;
    }
 
-   public void a(age $$0) {
+   public void a(ags $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

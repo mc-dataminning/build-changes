@@ -1,83 +1,69 @@
-import javax.annotation.Nullable;
-
-public class adx implements ze<abq> {
-   public static final yv<vx, adx> a = ze.a(adx::a, adx::new);
-   private final double b;
-   private final double c;
-   private final double d;
+public class adx implements zs<ace> {
+   public static final zj<ww, adx> a = zs.a(adx::a, adx::new);
+   private final int b;
+   private final das c;
+   private final int d;
    private final int e;
-   private final eq.a f;
-   private final eq.a g;
-   private final boolean h;
+   private final boolean f;
+   private final boolean g;
 
-   public adx(eq.a $$0, double $$1, double $$2, double $$3) {
-      this.f = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = 0;
-      this.h = false;
-      this.g = null;
+   public adx(int $$0, das $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
+      this.b = $$0;
+      this.c = $$1.a();
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
-   public adx(eq.a $$0, brw $$1, eq.a $$2) {
-      this.f = $$0;
-      this.e = $$1.al();
-      this.g = $$2;
-      eum $$3 = $$2.a($$1);
-      this.b = $$3.c;
-      this.c = $$3.d;
-      this.d = $$3.e;
-      this.h = true;
+   private adx(ww $$0) {
+      this.b = $$0.l();
+      this.c = das.b.decode($$0);
+      this.d = $$0.l();
+      this.e = $$0.l();
+      this.f = $$0.readBoolean();
+      this.g = $$0.readBoolean();
    }
 
-   private adx(vx $$0) {
-      this.f = $$0.b(eq.a.class);
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.h = $$0.readBoolean();
-      if (this.h) {
-         this.e = $$0.l();
-         this.g = $$0.b(eq.a.class);
-      } else {
-         this.e = 0;
-         this.g = null;
-      }
-   }
-
-   private void a(vx $$0) {
+   private void a(ww $$0) {
+      $$0.c(this.b);
+      das.b.encode($$0, this.c);
+      $$0.c(this.d);
+      $$0.c(this.e);
       $$0.a(this.f);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.h);
-      if (this.h) {
-         $$0.c(this.e);
-         $$0.a(this.g);
-      }
+      $$0.a(this.g);
    }
 
    @Override
-   public zg<adx> a() {
-      return agc.ag;
+   public zu<adx> a() {
+      return agq.Q;
    }
 
-   public void a(abq $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public eq.a b() {
+   public int b() {
+      return this.b;
+   }
+
+   public das e() {
+      return this.c;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   public int g() {
+      return this.e;
+   }
+
+   public boolean h() {
       return this.f;
    }
 
-   @Nullable
-   public eum a(daz $$0) {
-      if (this.h) {
-         brw $$1 = $$0.a(this.e);
-         return $$1 == null ? new eum(this.b, this.c, this.d) : this.g.a($$1);
-      } else {
-         return new eum(this.b, this.c, this.d);
-      }
+   public boolean i() {
+      return this.g;
    }
 }

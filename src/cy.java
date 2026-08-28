@@ -2,55 +2,44 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class cy extends df<cy.a> {
+public class cy extends dr<cy.a> {
    @Override
    public Codec<cy.a> a() {
       return cy.a.a;
    }
 
-   public void a(aqo $$0, ctq $$1, brw $$2) {
-      eph $$3 = br.b($$0, $$2);
-      this.a($$0, $$2x -> $$2x.a($$1, $$3));
+   public void a(arc $$0, evm $$1, int $$2) {
+      this.a($$0, $$3 -> $$3.a($$0, $$1, $$2));
    }
 
-   public static record a(Optional<bc> b, Optional<ch> c, Optional<bc> d) implements df.a {
+   public static record a(Optional<bf> b, Optional<bl> c, de.d d) implements dr.a {
       public static final Codec<cy.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  br.b.optionalFieldOf("player").forGetter(cy.a::a),
-                  ch.a.optionalFieldOf("item").forGetter(cy.a::b),
-                  br.b.optionalFieldOf("entity").forGetter(cy.a::c)
+                  bu.b.optionalFieldOf("player").forGetter(cy.a::a),
+                  bl.a.optionalFieldOf("distance").forGetter(cy.a::b),
+                  de.d.d.optionalFieldOf("duration", de.d.c).forGetter(cy.a::c)
                )
                .apply($$0, cy.a::new)
       );
 
-      public static an<cy.a> a(Optional<bc> $$0, ch.a $$1, Optional<bc> $$2) {
-         return am.T.a(new cy.a($$0, Optional.of($$1.b()), $$2));
+      public static an<cy.a> a(bl $$0) {
+         return am.v.a(new cy.a(Optional.empty(), Optional.of($$0), de.d.c));
       }
 
-      public static an<cy.a> a(ch.a $$0, Optional<bc> $$1) {
-         return a(Optional.empty(), $$0, $$1);
-      }
-
-      public boolean a(ctq $$0, eph $$1) {
-         return this.c.isPresent() && !this.c.get().a($$0) ? false : this.d.isEmpty() || this.d.get().a($$1);
+      public boolean a(arc $$0, evm $$1, int $$2) {
+         return this.c.isPresent() && !this.c.get().a($$1.c, $$1.d, $$1.e, $$0.du(), $$0.dw(), $$0.dA()) ? false : this.d.d($$2);
       }
 
       @Override
-      public void a(bd $$0) {
-         df.a.super.a($$0);
-         $$0.a(this.d, ".entity");
-      }
-
-      @Override
-      public Optional<bc> a() {
+      public Optional<bf> a() {
          return this.b;
       }
 
-      public Optional<ch> b() {
+      public Optional<bl> b() {
          return this.c;
       }
 
-      public Optional<bc> c() {
+      public de.d c() {
          return this.d;
       }
    }

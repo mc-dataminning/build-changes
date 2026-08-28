@@ -1,29 +1,49 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
 
-public class efg extends efh {
-   public static final MapCodec<efg> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, efg::new));
+public record efg(eey b, List<efg.a> c) {
+   public static final Codec<efg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(eey.a.fieldOf("fallback").forGetter(efg::a), efg.a.a.listOf().fieldOf("rules").forGetter(efg::b)).apply($$0, efg::new)
+   );
 
-   public efg(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public static efg a(eey $$0) {
+      return new efg($$0, List.of());
    }
 
-   @Override
-   protected efi<?> a() {
-      return efi.a;
+   public static efg a(deu $$0) {
+      return a(eey.a($$0));
    }
 
-   @Override
-   public List<edp.a> a(dbf $$0, BiConsumer<io, drd> $$1, aym $$2, int $$3, io $$4, ecz $$5) {
-      a($$0, $$1, $$2, $$4.d(), $$5);
-
-      for (int $$6 = 0; $$6 < $$3; $$6++) {
-         this.b($$0, $$1, $$2, $$4.b($$6), $$5);
+   public drx a(dco $$0, azc $$1, iz $$2) {
+      for (efg.a $$3 : this.c) {
+         if ($$3.a().test($$0, $$2)) {
+            return $$3.b().a($$1, $$2);
+         }
       }
 
-      return ImmutableList.of(new edp.a($$4.b($$3), 0, false));
+      return this.b.a($$1, $$2);
+   }
+
+   public eey a() {
+      return this.b;
+   }
+
+   public List<efg.a> b() {
+      return this.c;
+   }
+
+   public static record a(dyw b, eey c) {
+      public static final Codec<efg.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dyw.b.fieldOf("if_true").forGetter(efg.a::a), eey.a.fieldOf("then").forGetter(efg.a::b)).apply($$0, efg.a::new)
+      );
+
+      public dyw a() {
+         return this.b;
+      }
+
+      public eey b() {
+         return this.c;
+      }
    }
 }

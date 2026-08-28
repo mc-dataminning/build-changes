@@ -1,93 +1,74 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import java.util.List;
 
-public abstract class emv {
-   public static final jd<emw> c = new jd<>();
-   protected final dre<emv, emw> d;
-   private emw a;
-   private final ix.c<emv> b = le.c.f(this);
+public class emv {
+   private final emw[] a;
+   private final double b;
+   private final double c;
 
-   protected emv() {
-      dre.a<emv, emw> $$0 = new dre.a<>(this);
-      this.a($$0);
-      this.d = $$0.a(emv::g, emw::new);
-      this.f(this.d.b());
+   public emv(azc $$0, List<Integer> $$1) {
+      this($$0, new IntRBTreeSet($$1));
    }
 
-   protected void a(dre.a<emv, emw> $$0) {
+   private emv(azc $$0, IntSortedSet $$1) {
+      if ($$1.isEmpty()) {
+         throw new IllegalArgumentException("Need some octaves!");
+      } else {
+         int $$2 = -$$1.firstInt();
+         int $$3 = $$1.lastInt();
+         int $$4 = $$2 + $$3 + 1;
+         if ($$4 < 1) {
+            throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
+         } else {
+            emw $$5 = new emw($$0);
+            int $$6 = $$3;
+            this.a = new emw[$$4];
+            if ($$3 >= 0 && $$3 < $$4 && $$1.contains(0)) {
+               this.a[$$3] = $$5;
+            }
+
+            for (int $$7 = $$3 + 1; $$7 < $$4; $$7++) {
+               if ($$7 >= 0 && $$1.contains($$6 - $$7)) {
+                  this.a[$$7] = new emw($$0);
+               } else {
+                  $$0.b(262);
+               }
+            }
+
+            if ($$3 > 0) {
+               long $$8 = (long)($$5.a($$5.b, $$5.c, $$5.d) * 9.223372E18F);
+               azc $$9 = new dyo(new dxq($$8));
+
+               for (int $$10 = $$6 - 1; $$10 >= 0; $$10--) {
+                  if ($$10 < $$4 && $$1.contains($$6 - $$10)) {
+                     this.a[$$10] = new emw($$9);
+                  } else {
+                     $$9.b(262);
+                  }
+               }
+            }
+
+            this.c = Math.pow(2.0, (double)$$3);
+            this.b = 1.0 / (Math.pow(2.0, (double)$$4) - 1.0);
+         }
+      }
    }
 
-   public dre<emv, emw> f() {
-      return this.d;
-   }
+   public double a(double $$0, double $$1, boolean $$2) {
+      double $$3 = 0.0;
+      double $$4 = this.c;
+      double $$5 = this.b;
 
-   protected final void f(emw $$0) {
-      this.a = $$0;
-   }
+      for (emw $$6 : this.a) {
+         if ($$6 != null) {
+            $$3 += $$6.a($$0 * $$4 + ($$2 ? $$6.b : 0.0), $$1 * $$4 + ($$2 ? $$6.c : 0.0)) * $$5;
+         }
 
-   public final emw g() {
-      return this.a;
-   }
+         $$4 /= 2.0;
+         $$5 *= 2.0;
+      }
 
-   public abstract ctl a();
-
-   protected void a(daz $$0, io $$1, emw $$2, aym $$3) {
-   }
-
-   protected void b(daz $$0, io $$1, emw $$2) {
-   }
-
-   protected void b(daz $$0, io $$1, emw $$2, aym $$3) {
-   }
-
-   @Nullable
-   protected kw h() {
-      return null;
-   }
-
-   protected abstract boolean a(emw var1, daf var2, io var3, emv var4, it var5);
-
-   protected abstract eum a(daf var1, io var2, emw var3);
-
-   public abstract int a(dbc var1);
-
-   protected boolean i() {
-      return false;
-   }
-
-   protected boolean b() {
-      return false;
-   }
-
-   protected abstract float c();
-
-   public abstract float a(emw var1, daf var2, io var3);
-
-   public abstract float a(emw var1);
-
-   protected abstract drd b(emw var1);
-
-   public abstract boolean c(emw var1);
-
-   public abstract int d(emw var1);
-
-   public boolean a(emv $$0) {
-      return $$0 == this;
-   }
-
-   @Deprecated
-   public boolean a(awm<emv> $$0) {
-      return this.b.a($$0);
-   }
-
-   public abstract evf b(emw var1, daf var2, io var3);
-
-   public Optional<avh> j() {
-      return Optional.empty();
-   }
-
-   @Deprecated
-   public ix.c<emv> k() {
-      return this.b;
+      return $$3;
    }
 }

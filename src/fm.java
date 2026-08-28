@@ -9,36 +9,56 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 
-public class fm implements ArgumentType<Integer> {
-   private static final Collection<String> a = Arrays.asList("container.5", "weapon");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wx.b("slot.unknown", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wx.b("slot.only_single_allowed", $$0));
+public class fm implements ArgumentType<lh> {
+   private static final Collection<String> c = Arrays.asList("foo", "foo:bar", "particle{foo:bar}");
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xl.b("particle.notFound", $$0));
+   public static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xl.b("particle.invalidOptions", $$0));
+   private final jk.a d;
 
-   public static fm a() {
-      return new fm();
+   public fm(el $$0) {
+      this.d = $$0;
    }
 
-   public static int a(CommandContext<ee> $$0, String $$1) {
-      return (Integer)$$0.getArgument($$1, Integer.class);
+   public static fm a(el $$0) {
+      return new fm($$0);
    }
 
-   public Integer a(StringReader $$0) throws CommandSyntaxException {
-      String $$1 = ei.a($$0, $$0x -> $$0x != ' ');
-      cqr $$2 = cqs.a($$1);
-      if ($$2 == null) {
-         throw b.createWithContext($$0, $$1);
-      } else if ($$2.b() != 1) {
-         throw c.createWithContext($$0, $$1);
-      } else {
-         return $$2.a().getInt(0);
-      }
+   public static lh a(CommandContext<ep> $$0, String $$1) {
+      return (lh)$$0.getArgument($$1, lh.class);
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return ej.b(cqs.b(), $$1);
+   public lh a(StringReader $$0) throws CommandSyntaxException {
+      return a($$0, this.d);
    }
 
    public Collection<String> getExamples() {
-      return a;
+      return c;
+   }
+
+   public static lh a(StringReader $$0, jk.a $$1) throws CommandSyntaxException {
+      li<?> $$2 = a($$0, $$1.b(lq.T));
+      return a($$0, (li<lh>)$$2, $$1);
+   }
+
+   private static li<?> a(StringReader $$0, jk<li<?>> $$1) throws CommandSyntaxException {
+      alb $$2 = alb.a($$0);
+      ala<li<?>> $$3 = ala.a(lq.T, $$2);
+      return $$1.a($$3).orElseThrow(() -> a.createWithContext($$0, $$2)).a();
+   }
+
+   private static <T extends lh> T a(StringReader $$0, li<T> $$1, jk.a $$2) throws CommandSyntaxException {
+      ur $$3;
+      if ($$0.canRead() && $$0.peek() == '{') {
+         $$3 = new vp($$0).f();
+      } else {
+         $$3 = new ur();
+      }
+
+      return (T)$$1.c().codec().parse($$2.a(vf.a), $$3).getOrThrow(b::create);
+   }
+
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      jk.b<li<?>> $$2 = this.d.b(lq.T);
+      return eu.a($$2.c().map(ala::a), $$1);
    }
 }

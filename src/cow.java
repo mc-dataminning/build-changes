@@ -1,175 +1,118 @@
-public abstract class cow extends cqi<bpp> {
-   public static final int k = 0;
-   public static final int l = 1;
-   public static final int m = 2;
-   public static final int n = 3;
-   public static final int o = 4;
-   private static final int q = 3;
-   private static final int r = 30;
-   private static final int s = 30;
-   private static final int t = 39;
-   private final bpp u;
-   private final cpf v;
-   protected final daz p;
-   private final cyb<? extends cxf> w;
-   private final cqj x;
+public class cow extends coo {
+   static final akg<String> c = akk.a(cow.class, aki.e);
+   static final akg<xl> d = akk.a(cow.class, aki.f);
+   private final dau e = new cow.a();
+   private static final int i = 4;
+   private int j;
 
-   protected cow(cqc<?> $$0, cyb<? extends cxf> $$1, cqj $$2, int $$3, clx $$4) {
-      this($$0, $$1, $$2, $$3, $$4, new bqf(3), new cqp(4));
+   public cow(bsv<? extends cow> $$0, dbt $$1) {
+      super($$0, $$1);
    }
 
-   protected cow(cqc<?> $$0, cyb<? extends cxf> $$1, cqj $$2, int $$3, clx $$4, bpp $$5, cpf $$6) {
-      super($$0, $$3);
-      this.w = $$1;
-      this.x = $$2;
-      a($$5, 3);
-      a($$6, 4);
-      this.u = $$5;
-      this.v = $$6;
-      this.p = $$4.l.dP();
-      this.a(new cqq($$5, 0, 56, 17));
-      this.a(new cpq(this, $$5, 1, 56, 53));
-      this.a(new cps($$4.l, $$5, 2, 116, 35));
+   public cow(dbt $$0, double $$1, double $$2, double $$3) {
+      super(bsv.v, $$0, $$1, $$2, $$3);
+   }
 
-      for (int $$7 = 0; $$7 < 3; $$7++) {
-         for (int $$8 = 0; $$8 < 9; $$8++) {
-            this.a(new cqq($$4, $$8 + $$7 * 9 + 9, 8 + $$8 * 18, 84 + $$7 * 18));
+   @Override
+   protected cuf ah_() {
+      return cun.nM;
+   }
+
+   @Override
+   protected void a(akk.a $$0) {
+      super.a($$0);
+      $$0.a(c, "");
+      $$0.a(d, xk.a);
+   }
+
+   @Override
+   protected void a(ur $$0) {
+      super.a($$0);
+      this.e.b($$0, this.dR());
+      this.ap().a(c, this.B().m());
+      this.ap().a(d, this.B().l());
+   }
+
+   @Override
+   protected void b(ur $$0) {
+      super.b($$0);
+      this.e.a($$0, this.dR());
+   }
+
+   @Override
+   public coo.a v() {
+      return coo.a.g;
+   }
+
+   @Override
+   public drx x() {
+      return dew.fN.n();
+   }
+
+   public dau B() {
+      return this.e;
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      if ($$3 && this.ai - this.j >= 4) {
+         this.B().a(this.dP());
+         this.j = this.ai;
+      }
+   }
+
+   @Override
+   public bqp a(cms $$0, bqo $$1) {
+      return this.e.a($$0);
+   }
+
+   @Override
+   public void a(akg<?> $$0) {
+      super.a($$0);
+      if (d.equals($$0)) {
+         try {
+            this.e.c(this.ap().a(d));
+         } catch (Throwable var3) {
          }
-      }
-
-      for (int $$9 = 0; $$9 < 9; $$9++) {
-         this.a(new cqq($$4, $$9, 8 + $$9 * 18, 142));
-      }
-
-      this.a($$6);
-   }
-
-   @Override
-   public void a(cmc $$0) {
-      if (this.u instanceof cqv) {
-         ((cqv)this.u).a($$0);
+      } else if (c.equals($$0)) {
+         this.e.a(this.ap().a(c));
       }
    }
 
    @Override
-   public void l() {
-      this.b(0).f(ctq.i);
-      this.b(2).f(ctq.i);
+   public boolean cP() {
+      return true;
    }
 
-   @Override
-   public boolean a(cxy<? extends cxw<bpp>> $$0) {
-      return $$0.b().a(this.u, this.p);
-   }
-
-   @Override
-   public int m() {
-      return 2;
-   }
-
-   @Override
-   public int n() {
-      return 1;
-   }
-
-   @Override
-   public int o() {
-      return 1;
-   }
-
-   @Override
-   public int p() {
-      return 3;
-   }
-
-   @Override
-   public boolean a(cly $$0) {
-      return this.u.a($$0);
-   }
-
-   @Override
-   public ctq a(cly $$0, int $$1) {
-      ctq $$2 = ctq.i;
-      cqq $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         ctq $$4 = $$3.g();
-         $$2 = $$4.s();
-         if ($$1 == 2) {
-            if (!this.a($$4, 3, 39, true)) {
-               return ctq.i;
-            }
-
-            $$3.b($$4, $$2);
-         } else if ($$1 != 1 && $$1 != 0) {
-            if (this.c($$4)) {
-               if (!this.a($$4, 0, 1, false)) {
-                  return ctq.i;
-               }
-            } else if (this.d($$4)) {
-               if (!this.a($$4, 1, 2, false)) {
-                  return ctq.i;
-               }
-            } else if ($$1 >= 3 && $$1 < 30) {
-               if (!this.a($$4, 30, 39, false)) {
-                  return ctq.i;
-               }
-            } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
-               return ctq.i;
-            }
-         } else if (!this.a($$4, 3, 39, false)) {
-            return ctq.i;
-         }
-
-         if ($$4.e()) {
-            $$3.e(ctq.i);
-         } else {
-            $$3.b();
-         }
-
-         if ($$4.I() == $$2.I()) {
-            return ctq.i;
-         }
-
-         $$3.a($$0, $$4);
+   public class a extends dau {
+      @Override
+      public arb e() {
+         return (arb)cow.this.dP();
       }
 
-      return $$2;
-   }
-
-   protected boolean c(ctq $$0) {
-      return this.p.r().a(this.w, new bqf($$0), this.p).isPresent();
-   }
-
-   protected boolean d(ctq $$0) {
-      return dnw.c($$0);
-   }
-
-   public float q() {
-      int $$0 = this.v.a(2);
-      int $$1 = this.v.a(3);
-      return $$1 != 0 && $$0 != 0 ? ayf.a((float)$$0 / (float)$$1, 0.0F, 1.0F) : 0.0F;
-   }
-
-   public float r() {
-      int $$0 = this.v.a(1);
-      if ($$0 == 0) {
-         $$0 = 200;
+      @Override
+      public void f() {
+         cow.this.ap().a(cow.c, this.m());
+         cow.this.ap().a(cow.d, this.l());
       }
 
-      return ayf.a((float)this.v.a(0) / (float)$$0, 0.0F, 1.0F);
-   }
+      @Override
+      public evm g() {
+         return cow.this.dn();
+      }
 
-   public boolean s() {
-      return this.v.a(0) > 0;
-   }
+      public cow h() {
+         return cow.this;
+      }
 
-   @Override
-   public cqj t() {
-      return this.x;
-   }
+      @Override
+      public ep i() {
+         return new ep(this, cow.this.dn(), cow.this.bM(), this.e(), 2, this.n().getString(), cow.this.O_(), this.e().o(), cow.this);
+      }
 
-   @Override
-   public boolean e(int $$0) {
-      return $$0 != 1;
+      @Override
+      public boolean j() {
+         return !cow.this.dK();
+      }
    }
 }

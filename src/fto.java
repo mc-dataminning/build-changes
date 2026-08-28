@@ -1,18 +1,37 @@
-import java.util.function.Function;
-
-public abstract class fto<E extends brw> extends fsw<E> {
-   public fto() {
-      this(gcs::e);
+public class fto<T extends bsp> extends fvf<T> {
+   public fto(fwv $$0) {
+      super($$0, false, 10.0F, 4.0F, 2.0F, 2.0F, 24);
    }
 
-   public fto(Function<akn, gcs> $$0) {
-      super($$0);
+   public static fxb c() {
+      fxd $$0 = new fxd();
+      fxe $$1 = $$0.a();
+      int $$2 = 12;
+      $$1.a(
+         "head",
+         fxa.c()
+            .a(0, 0)
+            .a(-4.0F, -4.0F, -6.0F, 8.0F, 8.0F, 6.0F)
+            .a(22, 0)
+            .a("right_horn", -5.0F, -5.0F, -4.0F, 1.0F, 3.0F, 1.0F)
+            .a(22, 0)
+            .a("left_horn", 4.0F, -5.0F, -4.0F, 1.0F, 3.0F, 1.0F),
+         fwx.a(0.0F, 4.0F, -8.0F)
+      );
+      $$1.a(
+         "body",
+         fxa.c().a(18, 4).a(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F).a(52, 0).a(-2.0F, 2.0F, -8.0F, 4.0F, 6.0F, 1.0F),
+         fwx.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+      );
+      fxa $$3 = fxa.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F);
+      $$1.a("right_hind_leg", $$3, fwx.a(-4.0F, 12.0F, 7.0F));
+      $$1.a("left_hind_leg", $$3, fwx.a(4.0F, 12.0F, 7.0F));
+      $$1.a("right_front_leg", $$3, fwx.a(-4.0F, 12.0F, -6.0F));
+      $$1.a("left_front_leg", $$3, fwx.a(4.0F, 12.0F, -6.0F));
+      return fxb.a($$0, 64, 32);
    }
 
-   @Override
-   public void a(eyu $$0, eyy $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.d().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+   public fwv d() {
+      return this.a;
    }
-
-   public abstract Iterable<fvw> d();
 }

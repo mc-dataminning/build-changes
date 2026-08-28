@@ -1,29 +1,19 @@
-public enum dvq {
-   a(false, false),
-   b(true, false),
-   c(true, true);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   private final boolean d;
-   private final boolean e;
+public record dvq(ji<dvp> e, dtu f) {
+   public static final Codec<dvq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dvp.j.fieldOf("type").forGetter(dvq::a), dtu.a.fieldOf("generator").forGetter(dvq::b)).apply($$0, $$0.stable(dvq::new))
+   );
+   public static final ala<dvq> b = ala.a(lq.aT, new alb("overworld"));
+   public static final ala<dvq> c = ala.a(lq.aT, new alb("the_nether"));
+   public static final ala<dvq> d = ala.a(lq.aT, new alb("the_end"));
 
-   private dvq(boolean $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   public boolean a() {
+   public ji<dvp> a() {
       return this.e;
    }
 
-   public boolean b() {
-      return this.d;
-   }
-
-   public static dvq a(aqg $$0) {
-      if ($$0.a(aqg.d)) {
-         return c;
-      } else {
-         return $$0.a(aqg.b) ? b : a;
-      }
+   public dtu b() {
+      return this.f;
    }
 }

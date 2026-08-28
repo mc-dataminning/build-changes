@@ -1,12 +1,44 @@
-public class ghj extends giz<ceo, fsr<ceo>> {
-   private static final akn a = new akn("textures/entity/dolphin.png");
+public class ghj implements ggv.a {
+   private final ffa a;
 
-   public ghj(ght.a $$0) {
-      super($$0, new fsr<>($$0.a(fvv.M)), 0.7F);
-      this.a(new glm(this, $$0.d()));
+   public ghj(ffa $$0) {
+      this.a = $$0;
    }
 
-   public akn a(ceo $$0) {
-      return a;
+   @Override
+   public void a(ezt $$0, gdj $$1, double $$2, double $$3, double $$4) {
+      iz $$5 = this.a.s.dp();
+      dbw $$6 = this.a.s.dP();
+
+      for (iz $$7 : iz.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
+         enq $$8 = $$6.b_($$7);
+         if ($$8.a(awr.a)) {
+            double $$9 = (double)((float)$$7.v() + $$8.a($$6, $$7));
+            ggv.a(
+               $$0,
+               $$1,
+               new evh(
+                     (double)((float)$$7.u() + 0.01F),
+                     (double)((float)$$7.v() + 0.01F),
+                     (double)((float)$$7.w() + 0.01F),
+                     (double)((float)$$7.u() + 0.99F),
+                     $$9,
+                     (double)((float)$$7.w() + 0.99F)
+                  )
+                  .d(-$$2, -$$3, -$$4),
+               0.0F,
+               1.0F,
+               0.0F,
+               0.15F
+            );
+         }
+      }
+
+      for (iz $$10 : iz.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
+         enq $$11 = $$6.b_($$10);
+         if ($$11.a(awr.a)) {
+            ggv.a($$0, $$1, String.valueOf($$11.e()), (double)$$10.u() + 0.5, (double)((float)$$10.v() + $$11.a($$6, $$10)), (double)$$10.w() + 0.5, -16777216);
+         }
+      }
    }
 }

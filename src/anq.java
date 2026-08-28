@@ -1,82 +1,29 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import java.util.Collections;
+import java.util.List;
+import java.util.function.Function;
 
 public class anq {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.c("commands.recipe.give.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wx.c("commands.recipe.take.failed"));
-
-   public static void a(CommandDispatcher<ee> $$0) {
+   public static void a(CommandDispatcher<ep> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("recipe").requires($$0x -> $$0x.c(2)))
-               .then(
-                  ef.a("give")
-                     .then(
-                        ((RequiredArgumentBuilder)ef.a("targets", er.d())
-                              .then(
-                                 ef.a("recipe", ff.a())
-                                    .suggests(ic.b)
-                                    .executes($$0x -> a((ee)$$0x.getSource(), er.f($$0x, "targets"), Collections.singleton(ff.b($$0x, "recipe"))))
-                              ))
-                           .then(ef.a("*").executes($$0x -> a((ee)$$0x.getSource(), er.f($$0x, "targets"), ((ee)$$0x.getSource()).l().aJ().b())))
-                     )
-               ))
-            .then(
-               ef.a("take")
-                  .then(
-                     ((RequiredArgumentBuilder)ef.a("targets", er.d())
-                           .then(
-                              ef.a("recipe", ff.a())
-                                 .suggests(ic.b)
-                                 .executes($$0x -> b((ee)$$0x.getSource(), er.f($$0x, "targets"), Collections.singleton(ff.b($$0x, "recipe"))))
-                           ))
-                        .then(ef.a("*").executes($$0x -> b((ee)$$0x.getSource(), er.f($$0x, "targets"), ((ee)$$0x.getSource()).l().aJ().b())))
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("list").executes($$0x -> a((ep)$$0x.getSource())))
+            .then(eq.a("uuids").executes($$0x -> b((ep)$$0x.getSource())))
       );
    }
 
-   private static int a(ee $$0, Collection<aqo> $$1, Collection<cxy<?>> $$2) throws CommandSyntaxException {
-      int $$3 = 0;
-
-      for (aqo $$4 : $$1) {
-         $$3 += $$4.a($$2);
-      }
-
-      if ($$3 == 0) {
-         throw a.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> wx.a("commands.recipe.give.success.single", $$2.size(), $$1.iterator().next().O_()), true);
-         } else {
-            $$0.a(() -> wx.a("commands.recipe.give.success.multiple", $$2.size(), $$1.size()), true);
-         }
-
-         return $$3;
-      }
+   private static int a(ep $$0) {
+      return a($$0, cms::O_);
    }
 
-   private static int b(ee $$0, Collection<aqo> $$1, Collection<cxy<?>> $$2) throws CommandSyntaxException {
-      int $$3 = 0;
+   private static int b(ep $$0) {
+      return a($$0, $$0x -> xl.a("commands.list.nameAndId", $$0x.af(), xl.a($$0x.gb().getId())));
+   }
 
-      for (aqo $$4 : $$1) {
-         $$3 += $$4.b($$2);
-      }
-
-      if ($$3 == 0) {
-         throw b.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> wx.a("commands.recipe.take.success.single", $$2.size(), $$1.iterator().next().O_()), true);
-         } else {
-            $$0.a(() -> wx.a("commands.recipe.take.success.multiple", $$2.size(), $$1.size()), true);
-         }
-
-         return $$3;
-      }
+   private static int a(ep $$0, Function<arc, xl> $$1) {
+      auz $$2 = $$0.l().ah();
+      List<arc> $$3 = $$2.t();
+      xl $$4 = xo.b($$3, $$1);
+      $$0.a(() -> xl.a("commands.list.players", $$3.size(), $$2.n(), $$4), false);
+      return $$3.size();
    }
 }

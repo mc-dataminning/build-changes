@@ -1,17 +1,11 @@
+import java.util.Set;
+import javax.annotation.Nullable;
+
 public interface eur {
-   static eur a() {
-      return euw.a;
-   }
+   @Nullable
+   ewp a(eqd var1);
 
-   static eur a(brw $$0) {
-      return new euw($$0);
-   }
+   euq a();
 
-   boolean b();
-
-   boolean a(evf var1, io var2, boolean var3);
-
-   boolean a(ctl var1);
-
-   boolean a(emw var1, emw var2);
+   Set<esw<?>> b();
 }

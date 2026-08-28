@@ -1,74 +1,45 @@
-import com.google.common.hash.Hashing;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntComparator;
 
-public class fld implements AutoCloseable {
-   private static final akn a = new akn("textures/misc/unknown_server.png");
-   private static final int b = 64;
-   private static final int c = 64;
-   private final gnw d;
-   private final akn e;
-   @Nullable
-   private gni f;
-   private boolean g;
+public enum fld {
+   a,
+   b,
+   c,
+   d;
 
-   private fld(gnw $$0, akn $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   private final IntComparator e = ($$0, $$1) -> $$0 == $$1 ? 0 : (this.b($$0, $$1) ? -1 : 1);
+
+   public flc a() {
+      return switch (this) {
+         case a, b -> flc.b;
+         case c, d -> flc.a;
+      };
    }
 
-   public static fld a(gnw $$0, String $$1) {
-      return new fld($$0, new akn("minecraft", "worlds/" + ac.a($$1, akn::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
+   public fld b() {
+      return switch (this) {
+         case a -> b;
+         case b -> a;
+         case c -> d;
+         case d -> c;
+      };
    }
 
-   public static fld b(gnw $$0, String $$1) {
-      return new fld($$0, new akn("minecraft", "servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
+   public boolean c() {
+      return switch (this) {
+         case a, c -> false;
+         case b, d -> true;
+      };
    }
 
-   public void a(exv $$0) {
-      if ($$0.a() == 64 && $$0.b() == 64) {
-         try {
-            this.c();
-            if (this.f == null) {
-               this.f = new gni($$0);
-            } else {
-               this.f.a($$0);
-               this.f.d();
-            }
-
-            this.d.a(this.e, this.f);
-         } catch (Throwable var3) {
-            $$0.close();
-            this.a();
-            throw var3;
-         }
-      } else {
-         $$0.close();
-         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
-      }
+   public boolean a(int $$0, int $$1) {
+      return this.c() ? $$0 > $$1 : $$1 > $$0;
    }
 
-   public void a() {
-      this.c();
-      if (this.f != null) {
-         this.d.c(this.e);
-         this.f.close();
-         this.f = null;
-      }
+   public boolean b(int $$0, int $$1) {
+      return this.c() ? $$0 < $$1 : $$1 < $$0;
    }
 
-   public akn b() {
-      return this.f != null ? this.e : a;
-   }
-
-   @Override
-   public void close() {
-      this.a();
-      this.g = true;
-   }
-
-   private void c() {
-      if (this.g) {
-         throw new IllegalStateException("Icon already closed");
-      }
+   public IntComparator d() {
+      return this.e;
    }
 }

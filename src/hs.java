@@ -1,7 +1,8 @@
-import java.util.List;
-
+@FunctionalInterface
 public interface hs<T> {
-   akn a();
+   void execute(T var1, ho<T> var2, hq var3);
 
-   List<hh<T>> b();
+   default hn<T> bind(T $$0) {
+      return ($$1, $$2) -> this.execute($$0, $$1, $$2);
+   }
 }

@@ -1,19 +1,65 @@
-public class cug extends cvb {
-   public cug(dea $$0, dea $$1, ctl.a $$2) {
-      super($$0, $$1, $$2, it.a);
+import com.google.common.collect.Maps;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+
+public class cug {
+   private final Map<cuf, cug.a> a = Maps.newHashMap();
+   private int b;
+
+   public boolean a(cuf $$0) {
+      return this.a($$0, 0.0F) > 0.0F;
    }
 
-   @Override
-   public wx o(ctq $$0) {
-      cws $$1 = $$0.a(kb.U);
-      return (wx)($$1 != null && $$1.c().isPresent() ? wx.a(this.a() + ".named", $$1.c().get()) : super.o($$0));
+   public float a(cuf $$0, float $$1) {
+      cug.a $$2 = this.a.get($$0);
+      if ($$2 != null) {
+         float $$3 = (float)($$2.b - $$2.a);
+         float $$4 = (float)$$2.b - ((float)this.b + $$1);
+         return ayu.a($$4 / $$3, 0.0F, 1.0F);
+      } else {
+         return 0.0F;
+      }
    }
 
-   @Override
-   public void n(ctq $$0) {
-      cws $$1 = $$0.a(kb.U);
-      if ($$1 != null && !$$1.b()) {
-         $$1.a().thenAcceptAsync($$1x -> $$0.b(kb.U, $$1x), dpu.a);
+   public void a() {
+      this.b++;
+      if (!this.a.isEmpty()) {
+         Iterator<Entry<cuf, cug.a>> $$0 = this.a.entrySet().iterator();
+
+         while ($$0.hasNext()) {
+            Entry<cuf, cug.a> $$1 = $$0.next();
+            if ($$1.getValue().b <= this.b) {
+               $$0.remove();
+               this.c($$1.getKey());
+            }
+         }
+      }
+   }
+
+   public void a(cuf $$0, int $$1) {
+      this.a.put($$0, new cug.a(this.b, this.b + $$1));
+      this.b($$0, $$1);
+   }
+
+   public void b(cuf $$0) {
+      this.a.remove($$0);
+      this.c($$0);
+   }
+
+   protected void b(cuf $$0, int $$1) {
+   }
+
+   protected void c(cuf $$0) {
+   }
+
+   static class a {
+      final int a;
+      final int b;
+
+      a(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 }

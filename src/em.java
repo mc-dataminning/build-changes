@@ -1,44 +1,34 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-
-public class em implements ArgumentType<n> {
-   private static final Collection<String> b = Arrays.asList("red", "green");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wx.b("argument.color.invalid", $$0));
-
-   private em() {
-   }
-
-   public static em a() {
-      return new em();
-   }
-
-   public static n a(CommandContext<ee> $$0, String $$1) {
-      return (n)$$0.getArgument($$1, n.class);
-   }
-
-   public n a(StringReader $$0) throws CommandSyntaxException {
-      String $$1 = $$0.readUnquotedString();
-      n $$2 = n.b($$1);
-      if ($$2 != null && !$$2.d()) {
-         return $$2;
-      } else {
-         throw a.createWithContext($$0, $$1);
+@FunctionalInterface
+public interface em {
+   em a = new em() {
+      @Override
+      public void onResult(boolean $$0, int $$1) {
       }
+
+      @Override
+      public String toString() {
+         return "<empty>";
+      }
+   };
+
+   void onResult(boolean var1, int var2);
+
+   default void onSuccess(int $$0) {
+      this.onResult(true, $$0);
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return ej.b(n.a(true, false), $$1);
+   default void onFailure() {
+      this.onResult(false, 0);
    }
 
-   public Collection<String> getExamples() {
-      return b;
+   static em chain(em $$0, em $$1) {
+      if ($$0 == a) {
+         return $$1;
+      } else {
+         return $$1 == a ? $$0 : ($$2, $$3) -> {
+            $$0.onResult($$2, $$3);
+            $$1.onResult($$2, $$3);
+         };
+      }
    }
 }

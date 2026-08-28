@@ -1,21 +1,16 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class eus extends AbstractDoubleList {
-   private final int a;
+public class eus {
+   private static final Codec<eur> d = lp.K.q().dispatch(eur::a, euq::a);
+   public static final Codec<eur> a = Codec.lazyInitialized(
+      () -> Codec.either(euo.b, d).xmap(Either::unwrap, $$0 -> $$0 instanceof euo $$1 ? Either.left($$1) : Either.right($$0))
+   );
+   public static final euq b = a("fixed", eup.a);
+   public static final euq c = a("context", euo.a);
 
-   eus(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Need at least 1 part");
-      } else {
-         this.a = $$0;
-      }
-   }
-
-   public double getDouble(int $$0) {
-      return (double)$$0 / (double)this.a;
-   }
-
-   public int size() {
-      return this.a + 1;
+   private static euq a(String $$0, MapCodec<? extends eur> $$1) {
+      return jv.a(lp.K, new alb($$0), new euq($$1));
    }
 }

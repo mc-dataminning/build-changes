@@ -1,11 +1,17 @@
-import javax.annotation.Nullable;
+public class gab extends gac<ld> {
+   protected gab(fxq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ld $$7, gbs $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
+   }
 
-public interface gab<T extends kw> {
-   @Nullable
-   fzy createParticle(T var1, fwr var2, double var3, double var5, double var7, double var9, double var11, double var13);
+   public static class a implements gba<ld> {
+      private final gbs a;
 
-   public interface a<T extends kw> {
-      @Nullable
-      gay createParticle(T var1, fwr var2, double var3, double var5, double var7, double var9, double var11, double var13);
+      public a(gbs $$0) {
+         this.a = $$0;
+      }
+
+      public gax a(ld $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gab($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
+      }
    }
 }

@@ -1,20 +1,18 @@
-public enum dsf implements ayz {
-   a("normal"),
-   b("sticky");
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   private final String c;
+public class dsf implements Predicate<drx> {
+   private final deu a;
 
-   private dsf(String $$0) {
-      this.c = $$0;
+   public dsf(deu $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public String toString() {
-      return this.c;
+   public static dsf a(deu $$0) {
+      return new dsf($$0);
    }
 
-   @Override
-   public String c() {
-      return this.c;
+   public boolean a(@Nullable drx $$0) {
+      return $$0 != null && $$0.a(this.a);
    }
 }

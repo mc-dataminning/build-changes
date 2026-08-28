@@ -1,51 +1,83 @@
-public class cmv extends cmx {
-   public cmv(bsc<? extends cmv> $$0, daz $$1) {
-      super($$0, $$1);
-   }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.security.PublicKey;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Arrays;
+import java.util.UUID;
 
-   public cmv(daz $$0, bsq $$1) {
-      super(bsc.aT, $$1, $$0);
-   }
+public record cmv(cmv.a d) {
+   public static final xl a = xl.c("multiplayer.disconnect.expired_public_key");
+   private static final xl e = xl.c("multiplayer.disconnect.invalid_public_key_signature.new");
+   public static final Duration b = Duration.ofHours(8L);
+   public static final Codec<cmv> c = cmv.a.a.xmap(cmv::new, cmv::b);
 
-   public cmv(daz $$0, double $$1, double $$2, double $$3) {
-      super(bsc.aT, $$1, $$2, $$3, $$0);
-   }
-
-   @Override
-   protected ctl u() {
-      return ctt.qC;
-   }
-
-   private kw v() {
-      ctq $$0 = this.p();
-      return (kw)(!$$0.e() && !$$0.a(this.u()) ? new ku(ky.S, $$0) : ky.W);
-   }
-
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 3) {
-         kw $$1 = this.v();
-
-         for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dP().a($$1, this.du(), this.dw(), this.dA(), 0.0, 0.0, 0.0);
-         }
+   public static cmv a(azh $$0, UUID $$1, cmv.a $$2) throws cmv.b {
+      if (!$$2.a($$0, $$1)) {
+         throw new cmv.b(e);
+      } else {
+         return new cmv($$2);
       }
    }
 
-   @Override
-   protected void a(euj $$0) {
-      super.a($$0);
-      brw $$1 = $$0.a();
-      int $$2 = $$1 instanceof cin ? 3 : 0;
-      $$1.a(this.dQ().b(this, this.s()), (float)$$2);
+   public azh a() {
+      return azh.a(this.d.c, "SHA256withRSA");
    }
 
-   @Override
-   protected void a(euk $$0) {
-      super.a($$0);
-      if (!this.dP().B) {
-         this.dP().a(this, (byte)3);
-         this.ao();
+   public cmv.a b() {
+      return this.d;
+   }
+
+   public static record a(Instant b, PublicKey c, byte[] d) {
+      private static final int e = 4096;
+      public static final Codec<cmv.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  ayc.o.fieldOf("expires_at").forGetter(cmv.a::b), axs.f.fieldOf("key").forGetter(cmv.a::c), ayc.p.fieldOf("signature_v2").forGetter(cmv.a::d)
+               )
+               .apply($$0, cmv.a::new)
+      );
+
+      public a(wl $$0) {
+         this($$0.t(), $$0.u(), $$0.a(4096));
+      }
+
+      public void a(wl $$0) {
+         $$0.a(this.b);
+         $$0.a(this.c);
+         $$0.a(this.d);
+      }
+
+      boolean a(azh $$0, UUID $$1) {
+         return $$0.a(this.a($$1), this.d);
+      }
+
+      private byte[] a(UUID $$0) {
+         byte[] $$1 = this.c.getEncoded();
+         byte[] $$2 = new byte[24 + $$1.length];
+         ByteBuffer $$3 = ByteBuffer.wrap($$2).order(ByteOrder.BIG_ENDIAN);
+         $$3.putLong($$0.getMostSignificantBits()).putLong($$0.getLeastSignificantBits()).putLong(this.b.toEpochMilli()).put($$1);
+         return $$2;
+      }
+
+      public boolean a() {
+         return this.b.isBefore(Instant.now());
+      }
+
+      public boolean a(Duration $$0) {
+         return this.b.plus($$0).isBefore(Instant.now());
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         return !($$0 instanceof cmv.a $$1) ? false : this.b.equals($$1.b) && this.c.equals($$1.c) && Arrays.equals(this.d, $$1.d);
+      }
+   }
+
+   public static class b extends yl {
+      public b(xl $$0) {
+         super($$0);
       }
    }
 }

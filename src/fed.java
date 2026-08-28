@@ -1,37 +1,13 @@
-import java.util.function.IntFunction;
+public class fed extends fef {
+   private final fdt b;
 
-public enum fed {
-   a(0, "options.narrator.off"),
-   b(1, "options.narrator.all"),
-   c(2, "options.narrator.chat"),
-   d(3, "options.narrator.system");
-
-   private static final IntFunction<fed> e = aww.a(fed::a, values(), aww.a.b);
-   private final int f;
-   private final wx g;
-
-   private fed(int $$0, String $$1) {
-      this.f = $$0;
-      this.g = wx.c($$1);
+   public fed(fdt $$0, long $$1, xl $$2, Runnable $$3) {
+      super($$1, $$2, $$3);
+      this.b = $$0;
    }
 
-   public int a() {
-      return this.f;
-   }
-
-   public wx b() {
-      return this.g;
-   }
-
-   public static fed a(int $$0) {
-      return e.apply($$0);
-   }
-
-   public boolean c() {
-      return this == b || this == c;
-   }
-
-   public boolean d() {
-      return this == b || this == d;
+   @Override
+   protected void a(faj $$0, long $$1) throws fbw {
+      $$0.a($$1, this.b);
    }
 }

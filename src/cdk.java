@@ -1,13 +1,52 @@
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 
-public class cdk {
-   @Nullable
-   public static eum a(bsz $$0, int $$1, int $$2, int $$3, eum $$4, double $$5) {
-      eum $$6 = $$4.a($$0.du(), $$0.dw(), $$0.dA());
-      boolean $$7 = cdm.a($$0, $$1);
-      return cdp.a($$0, () -> {
-         io $$7x = cdj.a($$0, $$1, $$2, $$3, $$6.c, $$6.e, $$5, $$7);
-         return $$7x != null && !cdm.a($$0, $$7x) ? $$7x : null;
-      });
+public class cdk<T extends btk> extends cdu<T> {
+   private final BiPredicate<T, btk> a;
+   private final Predicate<T> c;
+   private final cco<Boolean> d;
+   private final int e;
+
+   public cdk(int $$0, BiPredicate<T, btk> $$1, Predicate<T> $$2, cco<Boolean> $$3, int $$4) {
+      super($$0);
+      this.a = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+   }
+
+   @Override
+   protected void a(arb $$0, T $$1) {
+      if (!this.c.test($$1)) {
+         this.c($$1);
+      } else {
+         this.a($$1);
+      }
+   }
+
+   @Override
+   public Set<cco<?>> a() {
+      return Set.of(cco.g);
+   }
+
+   public void a(T $$0) {
+      Optional<List<btk>> $$1 = $$0.dS().c(cco.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
+         if ($$2) {
+            this.b($$0);
+         }
+      }
+   }
+
+   public void b(T $$0) {
+      $$0.dS().a(this.d, true, (long)this.e);
+   }
+
+   public void c(T $$0) {
+      $$0.dS().b(this.d);
    }
 }

@@ -1,42 +1,43 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Set;
+public class ccy extends ccw {
+   private boolean p;
 
-public class ccy extends cda<cll> {
-   private static final int a = 40;
-
-   public ccy() {
-      super(40);
-   }
-
-   protected void a(aqn $$0, cll $$1) {
-      akm<daz> $$2 = $$0.ae();
-      io $$3 = $$1.dp();
-      List<iw> $$4 = Lists.newArrayList();
-      int $$5 = 4;
-
-      for (int $$6 = -4; $$6 <= 4; $$6++) {
-         for (int $$7 = -2; $$7 <= 2; $$7++) {
-            for (int $$8 = -4; $$8 <= 4; $$8++) {
-               io $$9 = $$3.b($$6, $$7, $$8);
-               if ($$1.gA().b().e().contains($$0.a_($$9).b())) {
-                  $$4.add(iw.a($$2, $$9));
-               }
-            }
-         }
-      }
-
-      bts<?> $$10 = $$1.dS();
-      if (!$$4.isEmpty()) {
-         $$10.a(cbu.f, $$4);
-      } else {
-         $$10.b(cbu.f);
-      }
+   public ccy(btm $$0, dbt $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public Set<cbu<?>> a() {
-      return ImmutableSet.of(cbu.f);
+   protected eog a(int $$0) {
+      this.p = this.a.ak() == bsv.y;
+      this.o = new eok(this.p);
+      return new eog(this.o, $$0);
+   }
+
+   @Override
+   protected boolean a() {
+      return this.p || this.a.bi();
+   }
+
+   @Override
+   protected evm b() {
+      return new evm(this.a.du(), this.a.e(0.5), this.a.dA());
+   }
+
+   @Override
+   protected double a(evm $$0) {
+      return $$0.d;
+   }
+
+   @Override
+   protected boolean a(evm $$0, evm $$1) {
+      return a(this.a, $$0, $$1, false);
+   }
+
+   @Override
+   public boolean a(iz $$0) {
+      return !this.b.a_($$0).i(this.b, $$0);
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

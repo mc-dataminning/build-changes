@@ -1,44 +1,63 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.Map;
+import java.util.Arrays;
+import java.util.function.IntConsumer;
+import org.apache.commons.lang3.Validate;
 
-public class azz extends DataFix {
-   public azz(Schema $$0) {
-      super($$0, false);
+public class azz implements axj {
+   public static final long[] a = new long[0];
+   private final int b;
+
+   public azz(int $$0) {
+      this.b = $$0;
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bga.s);
-      TaggedChoiceType<?> $$1 = this.getInputSchema().findChoiceType(bga.s);
-      OpticFinder<?> $$2 = $$0.findField("components");
-      return this.fixTypeEverywhereTyped("Banner entity custom_name to item_name component fix", $$0, $$2x -> {
-         Object $$3 = ((Pair)$$2x.get($$1.finder())).getFirst();
-         return $$3.equals("minecraft:banner") ? this.a($$2x, $$2) : $$2x;
-      });
+   @Override
+   public int a(int $$0, int $$1) {
+      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
+      Validate.inclusiveBetween(0L, 0L, (long)$$1);
+      return 0;
    }
 
-   private Typed<?> a(Typed<?> $$0, OpticFinder<?> $$1) {
-      Dynamic<?> $$2 = (Dynamic<?>)$$0.getOptional(DSL.remainderFinder()).orElseThrow();
-      OptionalDynamic<?> $$3 = $$2.get("CustomName");
-      boolean $$4 = $$3.asString().result().flatMap(azk::a).filter($$0x -> $$0x.equals("block.minecraft.ominous_banner")).isPresent();
-      if ($$4) {
-         Typed<?> $$5 = $$0.getOrCreateTyped($$1)
-            .update(
-               DSL.remainderFinder(),
-               $$1x -> $$1x.set("minecraft:item_name", (Dynamic)$$3.result().get()).set("minecraft:hide_additional_tooltip", $$1x.createMap(Map.of()))
-            );
-         return $$0.set($$1, $$5).set(DSL.remainderFinder(), $$2.remove("CustomName"));
-      } else {
-         return $$0;
+   @Override
+   public void b(int $$0, int $$1) {
+      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
+      Validate.inclusiveBetween(0L, 0L, (long)$$1);
+   }
+
+   @Override
+   public int a(int $$0) {
+      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
+      return 0;
+   }
+
+   @Override
+   public long[] a() {
+      return a;
+   }
+
+   @Override
+   public int b() {
+      return this.b;
+   }
+
+   @Override
+   public int c() {
+      return 0;
+   }
+
+   @Override
+   public void a(IntConsumer $$0) {
+      for (int $$1 = 0; $$1 < this.b; $$1++) {
+         $$0.accept(0);
       }
+   }
+
+   @Override
+   public void a(int[] $$0) {
+      Arrays.fill($$0, 0, this.b, 0);
+   }
+
+   @Override
+   public axj d() {
+      return this;
    }
 }

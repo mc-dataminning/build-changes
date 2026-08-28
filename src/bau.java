@@ -1,74 +1,121 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.List.ListType;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.Function;
+import java.util.List;
+import java.util.stream.LongStream;
 
-public abstract class bau extends DataFix {
-   private final String a;
+public class bau extends DataFix {
+   private static final int a = 6;
+   private static final int b = 16;
+   private static final int c = 16;
+   private static final int d = 4096;
+   private static final int e = 9;
+   private static final int f = 256;
 
-   public bau(Schema $$0, String $$1) {
+   public bau(Schema $$0) {
       super($$0, false);
-      this.a = $$1;
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bga.A);
-      Type<Pair<String, String>> $$1 = DSL.named(bga.A.typeName(), bhl.a());
-      if (!Objects.equals($$0, $$1)) {
-         throw new IllegalStateException("block type is not what was expected.");
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bgs.c);
+      Type<?> $$1 = $$0.findFieldType("Level");
+      OpticFinder<?> $$2 = DSL.fieldFinder("Level", $$1);
+      OpticFinder<?> $$3 = $$2.type().findField("Sections");
+      Type<?> $$4 = ((ListType)$$3.type()).getElement();
+      OpticFinder<?> $$5 = DSL.typeFinder($$4);
+      Type<Pair<String, Dynamic<?>>> $$6 = DSL.named(bgs.u.typeName(), DSL.remainderType());
+      OpticFinder<List<Pair<String, Dynamic<?>>>> $$7 = DSL.fieldFinder("Palette", DSL.list($$6));
+      return this.fixTypeEverywhereTyped(
+         "BitStorageAlignFix", $$0, this.getOutputSchema().getType(bgs.c), $$4x -> $$4x.updateTyped($$2, $$3xx -> this.a(a($$3, $$5, $$7, $$3xx)))
+      );
+   }
+
+   private Typed<?> a(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(), $$0x -> $$0x.update("Heightmaps", $$1 -> $$1.updateMapValues($$1x -> $$1x.mapSecond($$1xx -> a($$0x, $$1xx, 256, 9))))
+      );
+   }
+
+   private static Typed<?> a(OpticFinder<?> $$0, OpticFinder<?> $$1, OpticFinder<List<Pair<String, Dynamic<?>>>> $$2, Typed<?> $$3) {
+      return $$3.updateTyped(
+         $$0,
+         $$2x -> $$2x.updateTyped(
+               $$1,
+               $$1xx -> {
+                  int $$2xx = $$1xx.getOptional($$2).map($$0xxx -> Math.max(4, DataFixUtils.ceillog2($$0xxx.size()))).orElse(0);
+                  return $$2xx != 0 && !ayu.d($$2xx)
+                     ? $$1xx.update(DSL.remainderFinder(), $$1xxx -> $$1xxx.update("BlockStates", $$2xxx -> a($$1xxx, $$2xxx, 4096, $$2xx)))
+                     : $$1xx;
+               }
+            )
+      );
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0, Dynamic<?> $$1, int $$2, int $$3) {
+      long[] $$4 = $$1.asLongStream().toArray();
+      long[] $$5 = a($$2, $$3, $$4);
+      return $$0.createLongList(LongStream.of($$5));
+   }
+
+   public static long[] a(int $$0, int $$1, long[] $$2) {
+      int $$3 = $$2.length;
+      if ($$3 == 0) {
+         return $$2;
       } else {
-         TypeRewriteRule $$2 = this.fixTypeEverywhere(this.a + " for block", $$1, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
-         TypeRewriteRule $$3 = this.fixTypeEverywhereTyped(
-            this.a + " for block_state", this.getInputSchema().getType(bga.u), $$0x -> $$0x.update(DSL.remainderFinder(), this::a)
-         );
-         TypeRewriteRule $$4 = this.fixTypeEverywhereTyped(
-            this.a + " for flat_block_state",
-            this.getInputSchema().getType(bga.v),
-            $$0x -> $$0x.update(
-                  DSL.remainderFinder(), $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().result().map(this::b).map($$0xx::createString), $$0xx)
-               )
-         );
-         return TypeRewriteRule.seq($$2, new TypeRewriteRule[]{$$3, $$4});
-      }
-   }
+         long $$4 = (1L << $$1) - 1L;
+         int $$5 = 64 / $$1;
+         int $$6 = ($$0 + $$5 - 1) / $$5;
+         long[] $$7 = new long[$$6];
+         int $$8 = 0;
+         int $$9 = 0;
+         long $$10 = 0L;
+         int $$11 = 0;
+         long $$12 = $$2[0];
+         long $$13 = $$3 > 1 ? $$2[1] : 0L;
 
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.get("Name").asString().result();
-      return $$1.isPresent() ? $$0.set("Name", $$0.createString(this.a($$1.get()))) : $$0;
-   }
+         for (int $$14 = 0; $$14 < $$0; $$14++) {
+            int $$15 = $$14 * $$1;
+            int $$16 = $$15 >> 6;
+            int $$17 = ($$14 + 1) * $$1 - 1 >> 6;
+            int $$18 = $$15 ^ $$16 << 6;
+            if ($$16 != $$11) {
+               $$12 = $$13;
+               $$13 = $$16 + 1 < $$3 ? $$2[$$16 + 1] : 0L;
+               $$11 = $$16;
+            }
 
-   private String b(String $$0) {
-      int $$1 = $$0.indexOf(91);
-      int $$2 = $$0.indexOf(123);
-      int $$3 = $$0.length();
-      if ($$1 > 0) {
-         $$3 = $$1;
-      }
+            long $$19;
+            if ($$16 == $$17) {
+               $$19 = $$12 >>> $$18 & $$4;
+            } else {
+               int $$20 = 64 - $$18;
+               $$19 = ($$12 >>> $$18 | $$13 << $$20) & $$4;
+            }
 
-      if ($$2 > 0) {
-         $$3 = Math.min($$3, $$2);
-      }
-
-      String $$4 = $$0.substring(0, $$3);
-      String $$5 = this.a($$4);
-      return $$5 + $$0.substring($$3);
-   }
-
-   protected abstract String a(String var1);
-
-   public static DataFix a(Schema $$0, String $$1, final Function<String, String> $$2) {
-      return new bau($$0, $$1) {
-         @Override
-         protected String a(String $$0) {
-            return $$2.apply($$0);
+            int $$22 = $$9 + $$1;
+            if ($$22 >= 64) {
+               $$7[$$8++] = $$10;
+               $$10 = $$19;
+               $$9 = $$1;
+            } else {
+               $$10 |= $$19 << $$9;
+               $$9 = $$22;
+            }
          }
-      };
+
+         if ($$10 != 0L) {
+            $$7[$$8] = $$10;
+         }
+
+         return $$7;
+      }
    }
 }

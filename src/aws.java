@@ -1,22 +1,11 @@
-import java.util.function.Consumer;
+public class aws {
+   public static final axb<dwq> a = a("vibrations");
+   public static final axb<dwq> b = a("warden_can_listen");
+   public static final axb<dwq> c = a("shrieker_can_listen");
+   public static final axb<dwq> d = a("ignore_vibrations_sneaking");
+   public static final axb<dwq> e = a("allay_can_listen");
 
-@FunctionalInterface
-public interface aws<T> {
-   aws.a accept(T var1);
-
-   static <T> aws<T> forConsumer(Consumer<T> $$0) {
-      return $$1 -> {
-         $$0.accept($$1);
-         return aws.a.a;
-      };
-   }
-
-   public static enum a {
-      a,
-      b;
-
-      public boolean a() {
-         return this == b;
-      }
+   private static axb<dwq> a(String $$0) {
+      return axb.a(lq.C, new alb($$0));
    }
 }

@@ -1,204 +1,122 @@
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Keyable;
 import com.mojang.serialization.Lifecycle;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
-import javax.annotation.Nullable;
 
-public interface jk<T> extends Keyable, jc<T> {
-   akm<? extends jk<T>> c();
+public interface jk<T> extends jj<T> {
+   Stream<ji.c<T>> b();
 
-   default Codec<T> q() {
-      return this.a().flatComapMap(ix.c::a, $$0 -> this.a(this.e((T)$$0)));
+   default Stream<ala<T>> c() {
+      return this.b().map(ji.c::h);
    }
 
-   default Codec<ix<T>> r() {
-      return this.a().flatComapMap($$0 -> $$0, this::a);
+   Stream<jm.c<T>> d();
+
+   default Stream<axb<T>> e() {
+      return this.d().map(jm.c::g);
    }
 
-   private Codec<ix.c<T>> a() {
-      Codec<ix.c<T>> $$0 = akn.a
-         .comapFlatMap(
-            $$0x -> this.c($$0x)
-                  .<DataResult>map(DataResult::success)
-                  .orElseGet(() -> DataResult.error(() -> "Unknown registry key in " + this.c() + ": " + $$0x)),
-            $$0x -> $$0x.h().a()
-         );
-      return axn.a($$0, (Function<ix.c<T>, Lifecycle>)($$0x -> this.c($$0x.h()).map(jj::b).orElse(Lifecycle.experimental())));
-   }
+   public interface a {
+      Stream<ala<? extends jv<?>>> a();
 
-   private DataResult<ix.c<T>> a(ix<T> $$0) {
-      return $$0 instanceof ix.c<T> $$1 ? DataResult.success($$1) : DataResult.error(() -> "Unregistered holder in " + this.c() + ": " + $$0);
-   }
+      <T> Optional<jk.b<T>> a(ala<? extends jv<? extends T>> var1);
 
-   default <U> Stream<U> keys(DynamicOps<U> $$0) {
-      return this.e().stream().map($$1 -> (U)$$0.createString($$1.toString()));
-   }
+      default <T> jk.b<T> b(ala<? extends jv<? extends T>> $$0) {
+         return this.a($$0).orElseThrow(() -> new IllegalStateException("Registry " + $$0.a() + " not found"));
+      }
 
-   @Nullable
-   akn b(T var1);
+      default <V> akz<V> a(DynamicOps<V> $$0) {
+         return akz.a((DynamicOps<T>)$$0, this);
+      }
 
-   Optional<akm<T>> d(T var1);
+      default jj.a b() {
+         return new jj.a() {
+            @Override
+            public <T> Optional<jj<T>> a(ala<? extends jv<? extends T>> $$0) {
+               return a.this.a($$0).map($$0x -> $$0x);
+            }
+         };
+      }
 
-   @Override
-   int a(@Nullable T var1);
+      static jk.a a(Stream<jk.b<?>> $$0) {
+         final Map<ala<? extends jv<?>>, jk.b<?>> $$1 = $$0.collect(Collectors.toUnmodifiableMap(jk.b::f, $$0x -> $$0x));
+         return new jk.a() {
+            @Override
+            public Stream<ala<? extends jv<?>>> a() {
+               return $$1.keySet().stream();
+            }
 
-   @Nullable
-   T a(@Nullable akm<T> var1);
-
-   @Nullable
-   T a(@Nullable akn var1);
-
-   Optional<jj> c(akm<T> var1);
-
-   Lifecycle d();
-
-   default Optional<T> b(@Nullable akn $$0) {
-      return Optional.ofNullable(this.a($$0));
-   }
-
-   default Optional<T> e(@Nullable akm<T> $$0) {
-      return Optional.ofNullable(this.a($$0));
-   }
-
-   default T f(akm<T> $$0) {
-      T $$1 = this.a($$0);
-      if ($$1 == null) {
-         throw new IllegalStateException("Missing key in " + this.c() + ": " + $$0);
-      } else {
-         return $$1;
+            @Override
+            public <T> Optional<jk.b<T>> a(ala<? extends jv<? extends T>> $$0) {
+               return Optional.ofNullable((jk.b<T>)$$1.get($$0));
+            }
+         };
       }
    }
 
-   Set<akn> e();
+   public interface b<T> extends jk<T>, jl<T> {
+      ala<? extends jv<? extends T>> f();
 
-   Set<Entry<akm<T>, T>> g();
+      Lifecycle g();
 
-   Set<akm<T>> f();
+      default jk.b<T> a(cpg $$0) {
+         return cpd.bA.contains(this.f()) ? this.a($$1 -> ((cpd)$$1).a($$0)) : this;
+      }
 
-   Optional<ix.c<T>> a(aym var1);
+      default jk.b<T> a(final Predicate<T> $$0) {
+         return new jk.b.a<T>() {
+            @Override
+            public jk.b<T> a() {
+               return b.this;
+            }
 
-   default Stream<T> s() {
-      return StreamSupport.stream(this.spliterator(), false);
-   }
+            @Override
+            public Optional<ji.c<T>> a(ala<T> $$0x) {
+               return this.a().a($$0).filter($$1 -> $$0.test($$1.a()));
+            }
 
-   boolean d(akn var1);
+            @Override
+            public Stream<ji.c<T>> b() {
+               return this.a().b().filter($$1 -> $$0.test($$1.a()));
+            }
+         };
+      }
 
-   boolean d(akm<T> var1);
+      public interface a<T> extends jk.b<T> {
+         jk.b<T> a();
 
-   static <T> T a(jk<? super T> $$0, String $$1, T $$2) {
-      return a($$0, new akn($$1), $$2);
-   }
-
-   static <V, T extends V> T a(jk<V> $$0, akn $$1, T $$2) {
-      return a($$0, akm.a($$0.c(), $$1), $$2);
-   }
-
-   static <V, T extends V> T a(jk<V> $$0, akm<V> $$1, T $$2) {
-      ((jt)$$0).a($$1, (V)$$2, jj.a);
-      return $$2;
-   }
-
-   static <T> ix.c<T> b(jk<T> $$0, akm<T> $$1, T $$2) {
-      return ((jt)$$0).a($$1, $$2, jj.a);
-   }
-
-   static <T> ix.c<T> b(jk<T> $$0, akn $$1, T $$2) {
-      return b($$0, akm.a($$0.c(), $$1), $$2);
-   }
-
-   jk<T> l();
-
-   ix.c<T> f(T var1);
-
-   Optional<ix.c<T>> c(int var1);
-
-   Optional<ix.c<T>> c(akn var1);
-
-   Optional<ix.c<T>> b(akm<T> var1);
-
-   ix<T> e(T var1);
-
-   default ix.c<T> g(akm<T> $$0) {
-      return this.b($$0).orElseThrow(() -> new IllegalStateException("Missing key in " + this.c() + ": " + $$0));
-   }
-
-   Stream<ix.c<T>> h();
-
-   Optional<jb.c<T>> b(awm<T> var1);
-
-   default Iterable<ix<T>> c(awm<T> $$0) {
-      return (Iterable<ix<T>>)DataFixUtils.orElse(this.b($$0), List.of());
-   }
-
-   default Optional<ix<T>> a(awm<T> $$0, aym $$1) {
-      return this.b($$0).flatMap($$1x -> $$1x.a($$1));
-   }
-
-   jb.c<T> a(awm<T> var1);
-
-   Stream<Pair<awm<T>, jb.c<T>>> i();
-
-   Stream<awm<T>> j();
-
-   void m();
-
-   void a(Map<awm<T>, List<ix<T>>> var1);
-
-   default jc<ix<T>> t() {
-      return new jc<ix<T>>() {
-         public int a(ix<T> $$0) {
-            return jk.this.a($$0.a());
-         }
-
-         @Nullable
-         public ix<T> c(int $$0) {
-            return (ix<T>)jk.this.c($$0).orElse(null);
+         @Override
+         default ala<? extends jv<? extends T>> f() {
+            return this.a().f();
          }
 
          @Override
-         public int b() {
-            return jk.this.b();
+         default Lifecycle g() {
+            return this.a().g();
          }
 
          @Override
-         public Iterator<ix<T>> iterator() {
-            return jk.this.h().map($$0 -> (ix<T>)$$0).iterator();
-         }
-      };
-   }
-
-   ja<T> o();
-
-   iz.b<T> p();
-
-   default iz.b<T> u() {
-      return new iz.b.a<T>() {
-         @Override
-         public iz.b<T> a() {
-            return jk.this.p();
+         default Optional<ji.c<T>> a(ala<T> $$0) {
+            return this.a().a($$0);
          }
 
          @Override
-         public Optional<jb.c<T>> a(awm<T> $$0) {
-            return Optional.of(this.b($$0));
+         default Stream<ji.c<T>> b() {
+            return this.a().b();
          }
 
          @Override
-         public jb.c<T> b(awm<T> $$0) {
-            return jk.this.a($$0);
+         default Optional<jm.c<T>> a(axb<T> $$0) {
+            return this.a().a($$0);
          }
-      };
+
+         @Override
+         default Stream<jm.c<T>> d() {
+            return this.a().d();
+         }
+      }
    }
 }

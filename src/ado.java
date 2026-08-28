@@ -1,37 +1,85 @@
-public class ado implements ze<abq> {
-   public static final yv<vx, ado> a = ze.a(ado::a, ado::new);
-   private final io b;
-   private final boolean c;
+public class ado implements zs<ace> {
+   public static final zj<wl, ado> a = zs.a(ado::a, ado::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final double e;
+   private final long f;
+   private final int g;
+   private final int h;
+   private final int i;
 
-   public ado(io $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private ado(wl $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readDouble();
+      this.f = $$0.m();
+      this.g = $$0.l();
+      this.h = $$0.l();
+      this.i = $$0.l();
    }
 
-   private ado(vx $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readBoolean();
+   public ado(dto $$0) {
+      this.b = $$0.a();
+      this.c = $$0.b();
+      this.d = $$0.i();
+      this.e = $$0.k();
+      this.f = $$0.j();
+      this.g = $$0.m();
+      this.h = $$0.r();
+      this.i = $$0.q();
    }
 
-   private void a(vx $$0) {
+   private void a(wl $$0) {
       $$0.a(this.b);
       $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.c(this.g);
+      $$0.c(this.h);
+      $$0.c(this.i);
    }
 
    @Override
-   public zg<ado> a() {
-      return agc.X;
+   public zu<ado> a() {
+      return agq.J;
    }
 
-   public void a(abq $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public io b() {
+   public double b() {
       return this.b;
    }
 
-   public boolean e() {
+   public double e() {
       return this.c;
+   }
+
+   public double f() {
+      return this.e;
+   }
+
+   public double g() {
+      return this.d;
+   }
+
+   public long h() {
+      return this.f;
+   }
+
+   public int i() {
+      return this.g;
+   }
+
+   public int j() {
+      return this.i;
+   }
+
+   public int k() {
+      return this.h;
    }
 }

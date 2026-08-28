@@ -1,27 +1,49 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class cyj extends cyi {
+   public cyj(cyg $$0) {
+      super($$0);
+   }
 
-public class cyj<T extends cxn> implements cya<T> {
-   private final MapCodec<T> x;
-   private final yv<wi, T> y;
+   public boolean a(cqf $$0, dbt $$1) {
+      if (!this.a($$0.f(), $$0.g())) {
+         return false;
+      } else {
+         for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
+            cuk $$3 = $$0.a($$2);
+            switch ($$2) {
+               case 1:
+               case 3:
+               case 5:
+               case 7:
+                  if (!$$3.a(awu.bq)) {
+                     return false;
+                  }
+                  break;
+               case 2:
+               case 4:
+               case 6:
+               default:
+                  if (!$$3.a(cun.a)) {
+                     return false;
+                  }
+            }
+         }
 
-   public cyj(cyj.a<T> $$0) {
-      this.x = RecordCodecBuilder.mapCodec($$1 -> $$1.group(cxm.e.fieldOf("category").orElse(cxm.d).forGetter(cxn::d)).apply($$1, $$0::create));
-      this.y = yv.a(cxm.g, cxn::d, $$0::create);
+         return true;
+      }
+   }
+
+   public cuk a(cqf $$0, jk.a $$1) {
+      dqg $$2 = new dqg($$0.a(1).g(), $$0.a(3).g(), $$0.a(5).g(), $$0.a(7).g());
+      return dps.a($$2);
    }
 
    @Override
-   public MapCodec<T> a() {
-      return this.x;
+   public boolean a(int $$0, int $$1) {
+      return $$0 == 3 && $$1 == 3;
    }
 
    @Override
-   public yv<wi, T> b() {
-      return this.y;
-   }
-
-   @FunctionalInterface
-   public interface a<T extends cxn> {
-      T create(cxm var1);
+   public cyu<?> ap_() {
+      return cyu.w;
    }
 }

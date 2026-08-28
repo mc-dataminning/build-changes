@@ -1,3 +1,8 @@
-public interface abk extends vs {
-   void a(abl var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface abk {
 }

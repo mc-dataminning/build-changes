@@ -1,24 +1,35 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class pz extends pn {
-   public pz(ln $$0, CompletableFuture<iz.a> $$1, CompletableFuture<pr.c<ctl>> $$2, CompletableFuture<pr.c<dea>> $$3) {
-      super($$0, $$1, $$2, $$3);
+public abstract class pz extends py<cuf> {
+   private final CompletableFuture<qd.c<deu>> d;
+   private final Map<axb<deu>, axb<cuf>> g = new HashMap<>();
+
+   public pz(ly $$0, CompletableFuture<jk.a> $$1, CompletableFuture<qd.c<deu>> $$2) {
+      super($$0, lq.G, $$1, $$0x -> $$0x.o().h());
+      this.d = $$2;
+   }
+
+   public pz(ly $$0, CompletableFuture<jk.a> $$1, CompletableFuture<qd.c<cuf>> $$2, CompletableFuture<qd.c<deu>> $$3) {
+      super($$0, lq.G, $$1, $$2, $$0x -> $$0x.o().h());
+      this.d = $$3;
+   }
+
+   protected void a(axb<deu> $$0, axb<cuf> $$1) {
+      this.g.put($$0, $$1);
    }
 
    @Override
-   protected void a(iz.a $$0) {
-      this.a(awf.H).a(ctt.o, ctt.t, ctt.x);
-      this.a(awf.I).a(ctt.n, ctt.s, ctt.w);
-      this.a(awf.J).a(ctt.p, ctt.u, ctt.y);
-      this.a(awf.o).a(ctt.mU, ctt.mV, ctt.mW, ctt.mX, ctt.mY, ctt.mZ, ctt.na, ctt.nb);
-      this.a(awf.N).a(ctt.no, ctt.np, ctt.nq, ctt.nr, ctt.ns, ctt.nt, ctt.nu, ctt.nv);
-      this.a(awf.bS).a(ctt.ub);
-      this.a(awf.bp).a(ctt.xT, ctt.xV, ctt.yd);
-      this.a(awf.bq).a(ctt.xT).a(ctt.xV).a(ctt.yd);
-      this.a(awf.bo).a(ctt.xJ).a(ctt.xK);
-      this.a(awf.bN).a(ctt.ub);
-      this.a(awf.bI).a(ctt.ub);
-      this.a(awf.bG).a(ctt.ub);
-      this.a(awf.bR).a(ctt.ub);
+   protected CompletableFuture<jk.a> b() {
+      return super.b().thenCombineAsync(this.d, ($$0, $$1) -> {
+         this.g.forEach(($$1x, $$2) -> {
+            awy $$3 = this.c((axb<cuf>)$$2);
+            Optional<awy> $$4 = $$1.apply($$1x);
+            $$4.orElseThrow(() -> new IllegalStateException("Missing block tag " + $$2.b())).b().forEach($$3::a);
+         });
+         return (jk.a)$$0;
+      });
    }
 }

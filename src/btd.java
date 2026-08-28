@@ -1,3 +1,3 @@
 public interface btd {
-   boolean a();
+   void b(cms var1);
 }

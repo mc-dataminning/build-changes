@@ -1,109 +1,288 @@
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Stream;
+import com.google.common.base.MoreObjects;
+import com.google.common.collect.Lists;
+import com.mojang.authlib.GameProfile;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.io.IOException;
+import java.util.UUID;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class gsz {
-   final Map<gsy<?>, Object> a;
-
-   gsz(Map<gsy<?>, Object> $$0) {
-      this.a = $$0;
-   }
-
-   public static gsz.a a() {
-      return new gsz.a();
-   }
-
-   public static MapCodec<gsz> a(final List<gsy<?>> $$0) {
-      return new MapCodec<gsz>() {
-         public <T> RecordBuilder<T> a(gsz $$0x, DynamicOps<T> $$1, RecordBuilder<T> $$2) {
-            RecordBuilder<T> $$3 = $$2;
-
-            for (gsy<?> $$4 : $$0) {
-               $$3 = this.a($$0, $$3, $$4);
-            }
-
-            return $$3;
-         }
-
-         private <T, V> RecordBuilder<T> a(gsz $$0x, RecordBuilder<T> $$1, gsy<V> $$2) {
-            V $$3 = $$0.a($$2);
-            return $$3 != null ? $$1.add($$2.b(), $$3, $$2.d()) : $$1;
-         }
-
-         public <T> DataResult<gsz> decode(DynamicOps<T> $$0x, MapLike<T> $$1) {
-            DataResult<gsz.a> $$2 = DataResult.success(new gsz.a());
-
-            for (gsy<?> $$3 : $$0) {
-               $$2 = this.a($$2, $$0, $$1, $$3);
-            }
-
-            return $$2.map(gsz.a::a);
-         }
-
-         private <T, V> DataResult<gsz.a> a(DataResult<gsz.a> $$0x, DynamicOps<T> $$1, MapLike<T> $$2, gsy<V> $$3) {
-            T $$4 = (T)$$2.get($$3.b());
-            if ($$4 != null) {
-               DataResult<V> $$5 = $$3.d().parse($$1, $$4);
-               return $$0.apply2stable(($$1x, $$2x) -> $$1x.a($$3, (V)$$2x), $$5);
-            } else {
-               return $$0;
-            }
-         }
-
-         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
-            return $$0.stream().map(gsy::b).map($$0::createString);
-         }
-      };
-   }
-
+public class gsz extends MinecraftServer {
+   private static final Logger k = LogUtils.getLogger();
+   private static final int l = 2;
+   private final ffa m;
+   private boolean n = true;
+   private int o = -1;
    @Nullable
-   public <T> T a(gsy<T> $$0) {
-      return (T)this.a.get($$0);
+   private dbq p;
+   @Nullable
+   private gtc q;
+   @Nullable
+   private UUID r;
+   private int s = 0;
+
+   public gsz(Thread $$0, ffa $$1, epr.c $$2, atw $$3, aly $$4, alv $$5, arl $$6) {
+      super($$0, $$2, $$3, $$4, $$1.Z(), $$1.as(), $$5, $$6);
+      this.b($$1.Y());
+      this.c($$1.K());
+      this.a(new gsy(this, this.bd(), this.g));
+      this.m = $$1;
    }
 
    @Override
-   public String toString() {
-      return this.a.toString();
+   public boolean e() {
+      k.info("Starting integrated minecraft server version {}", aa.b().c());
+      this.d(true);
+      this.f(true);
+      this.g(true);
+      this.U();
+      this.t_();
+      GameProfile $$0 = this.S();
+      String $$1 = this.bb().e();
+      this.d($$0 != null ? $$0.getName() + " - " + $$1 : $$1);
+      return true;
    }
 
-   public Set<gsy<?>> b() {
-      return this.a.keySet();
+   @Override
+   public boolean D() {
+      return this.n;
    }
 
-   public static class a {
-      private final Map<gsy<?>, Object> a = new Reference2ObjectOpenHashMap();
-
-      a() {
+   @Override
+   public void a(BooleanSupplier $$0) {
+      boolean $$1 = this.n;
+      this.n = ffa.Q().ah();
+      bnd $$2 = this.aT();
+      if (!$$1 && this.n) {
+         $$2.a("autoSave");
+         k.info("Saving and pausing game...");
+         this.b(false, false, false);
+         $$2.c();
       }
 
-      public <T> gsz.a a(gsy<T> $$0, T $$1) {
-         this.a.put($$0, $$1);
-         return this;
-      }
-
-      public <T> gsz.a b(gsy<T> $$0, @Nullable T $$1) {
-         if ($$1 != null) {
-            this.a.put($$0, $$1);
+      boolean $$3 = ffa.Q().L() != null;
+      if ($$3 && this.n) {
+         this.b();
+      } else {
+         if ($$1 && !this.n) {
+            this.F();
          }
 
-         return this;
-      }
+         super.a($$0);
+         int $$4 = Math.max(2, this.m.m.e().c());
+         if ($$4 != this.ah().p()) {
+            k.info("Changing view distance to {}, from {}", $$4, this.ah().p());
+            this.ah().a($$4);
+         }
 
-      public gsz.a a(gsz $$0) {
-         this.a.putAll($$0.a);
-         return this;
+         int $$5 = Math.max(2, this.m.m.f().c());
+         if ($$5 != this.s) {
+            k.info("Changing simulation distance to {}, from {}", $$5, this.s);
+            this.ah().b($$5);
+            this.s = $$5;
+         }
       }
+   }
 
-      public gsz a() {
-         return new gsz(this.a);
+   protected blp a() {
+      return this.m.aP().l();
+   }
+
+   @Override
+   public boolean g() {
+      return true;
+   }
+
+   private void b() {
+      for (arc $$0 : this.ah().t()) {
+         $$0.a(awg.l);
       }
+   }
+
+   @Override
+   public boolean m() {
+      return true;
+   }
+
+   @Override
+   public boolean U_() {
+      return true;
+   }
+
+   @Override
+   public File C() {
+      return this.m.p;
+   }
+
+   @Override
+   public boolean n() {
+      return false;
+   }
+
+   @Override
+   public int o() {
+      return 0;
+   }
+
+   @Override
+   public boolean p() {
+      return false;
+   }
+
+   @Override
+   public void a(o $$0) {
+      this.m.b($$0);
+   }
+
+   @Override
+   public ab a(ab $$0) {
+      $$0.a("Type", "Integrated Server (map_client.txt)");
+      $$0.a("Is Modded", () -> this.P().b());
+      $$0.a("Launched Version", this.m::i);
+      return $$0;
+   }
+
+   @Override
+   public ayt P() {
+      return ffa.e().a(super.P());
+   }
+
+   @Override
+   public boolean a(@Nullable dbq $$0, boolean $$1, int $$2) {
+      try {
+         this.m.aT();
+         this.m.w().a().thenAcceptAsync($$0x -> $$0x.ifPresent($$0xx -> {
+               fxr $$1x = this.m.L();
+               if ($$1x != null) {
+                  $$1x.a($$0xx);
+               }
+            }), this.m);
+         this.ai().a(null, $$2);
+         k.info("Started serving on {}", $$2);
+         this.o = $$2;
+         this.q = new gtc(this.af(), $$2 + "");
+         this.q.start();
+         this.p = $$0;
+         this.ah().b($$1);
+         int $$3 = this.c(this.m.s.gb());
+         this.m.s.a($$3);
+
+         for (arc $$4 : this.ah().t()) {
+            this.aH().a($$4);
+         }
+
+         return true;
+      } catch (IOException var7) {
+         return false;
+      }
+   }
+
+   @Override
+   public void v() {
+      super.v();
+      if (this.q != null) {
+         this.q.interrupt();
+         this.q = null;
+      }
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.h(() -> {
+         for (arc $$1 : Lists.newArrayList(this.ah().t())) {
+            if (!$$1.cz().equals(this.r)) {
+               this.ah().c($$1);
+            }
+         }
+      });
+      super.a($$0);
+      if (this.q != null) {
+         this.q.interrupt();
+         this.q = null;
+      }
+   }
+
+   @Override
+   public boolean r() {
+      return this.o > -1;
+   }
+
+   @Override
+   public int R() {
+      return this.o;
+   }
+
+   @Override
+   public void a(dbq $$0) {
+      super.a($$0);
+      this.p = null;
+   }
+
+   @Override
+   public boolean q() {
+      return true;
+   }
+
+   @Override
+   public int k() {
+      return 2;
+   }
+
+   @Override
+   public int l() {
+      return 2;
+   }
+
+   public void a(UUID $$0) {
+      this.r = $$0;
+   }
+
+   @Override
+   public boolean a(GameProfile $$0) {
+      return this.S() != null && $$0.getName().equalsIgnoreCase(this.S().getName());
+   }
+
+   @Override
+   public int b(int $$0) {
+      return (int)(this.m.m.g().c() * (double)$$0);
+   }
+
+   @Override
+   public boolean aZ() {
+      return this.m.m.ae;
+   }
+
+   @Nullable
+   @Override
+   public dbq bf() {
+      return this.r() ? (dbq)MoreObjects.firstNonNull(this.p, this.j.k()) : null;
+   }
+
+   @Override
+   public boolean b(boolean $$0, boolean $$1, boolean $$2) {
+      boolean $$3 = super.b($$0, $$1, $$2);
+      this.c();
+      return $$3;
+   }
+
+   private void c() {
+      if (this.f.b()) {
+         fjh.a(this.m);
+      }
+   }
+
+   @Override
+   public void a(dba $$0) {
+      this.c();
+      fjh.a(this.m, $$0);
+   }
+
+   @Override
+   public void b(dba $$0) {
+      this.c();
+      fjh.b(this.m, $$0);
    }
 }

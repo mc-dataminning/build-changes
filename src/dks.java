@@ -1,55 +1,37 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dks extends ddm {
+public class dks extends deu {
    public static final MapCodec<dks> a = b(dks::new);
-   public static final dru b = drt.E;
-   private final bpb c = boy.a(5);
 
    @Override
    public MapCodec<dks> a() {
       return a;
    }
 
-   public dks(drc.d $$0) {
+   protected dks(drw.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dre.a<dea, drd> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected void a(drd $$0, aqn $$1, io $$2, aym $$3) {
-      if ($$0.c(b)) {
-         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
-      }
-   }
-
-   @Nullable
-   @Override
-   public doi a(io $$0, drd $$1) {
-      return new dpo($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends doi> doj<T> a(daz $$0, drd $$1, dok<T> $$2) {
-      return $$0.B ? null : a($$2, dok.K, dpo::a);
-   }
-
-   @Override
-   protected dkg a_(drd $$0) {
-      return dkg.c;
-   }
-
-   @Override
-   protected void a(drd $$0, aqn $$1, io $$2, ctq $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, this.c);
+   protected bqr a(cuk $$0, drx $$1, dbt $$2, iz $$3, cms $$4, bqo $$5, evi $$6) {
+      if (!$$0.a(cun.rV)) {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      } else if ($$2.B) {
+         return bqr.a($$2.B);
+      } else {
+         je $$7 = $$6.b();
+         je $$8 = $$7.o() == je.a.b ? $$4.cH().g() : $$7;
+         $$2.a(null, $$3, avw.uT, avx.e, 1.0F, 1.0F);
+         $$2.a($$3, dew.ee.n().a(dfo.b, $$8), 11);
+         cjc $$9 = new cjc(
+            $$2, (double)$$3.u() + 0.5 + (double)$$8.j() * 0.65, (double)$$3.v() + 0.1, (double)$$3.w() + 0.5 + (double)$$8.l() * 0.65, new cuk(cun.rY, 4)
+         );
+         $$9.o(0.05 * (double)$$8.j() + $$2.z.j() * 0.02, 0.05, 0.05 * (double)$$8.l() + $$2.z.j() * 0.02);
+         $$2.b($$9);
+         $$0.a(1, $$4, btk.d($$5));
+         $$2.a($$4, dwq.M, $$3);
+         $$4.b(awg.c.b(cun.rV));
+         return bqr.a($$2.B);
       }
    }
 }

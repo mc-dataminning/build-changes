@@ -1,10 +1,8 @@
-public abstract class cea extends bss {
-   protected cea(bsc<? extends cea> $$0, daz $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public boolean a(cly $$0) {
-      return false;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cea {
 }

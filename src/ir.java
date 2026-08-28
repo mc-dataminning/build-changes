@@ -1,66 +1,57 @@
-import com.mojang.serialization.Lifecycle;
-import java.util.Optional;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import com.google.gson.JsonObject;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 
-public class ir<T> extends jf<T> implements is<T> {
-   private final akn b;
-   private ix.c<T> c;
-
-   public ir(String $$0, akm<? extends jk<T>> $$1, Lifecycle $$2, boolean $$3) {
-      super($$1, $$2, $$3);
-      this.b = new akn($$0);
-   }
-
-   @Override
-   public ix.c<T> a(akm<T> $$0, T $$1, jj $$2) {
-      ix.c<T> $$3 = super.a($$0, $$1, $$2);
-      if (this.b.equals($$0.a())) {
-         this.c = $$3;
+public class ir implements ik<IntegerArgumentType, ir.a> {
+   public void a(ir.a $$0, wl $$1) {
+      boolean $$2 = $$0.b != Integer.MIN_VALUE;
+      boolean $$3 = $$0.c != Integer.MAX_VALUE;
+      $$1.k(im.a($$2, $$3));
+      if ($$2) {
+         $$1.p($$0.b);
       }
 
-      return $$3;
+      if ($$3) {
+         $$1.p($$0.c);
+      }
    }
 
-   @Override
-   public int a(@Nullable T $$0) {
-      int $$1 = super.a($$0);
-      return $$1 == -1 ? super.a(this.c.a()) : $$1;
+   public ir.a a(wl $$0) {
+      byte $$1 = $$0.readByte();
+      int $$2 = im.a($$1) ? $$0.readInt() : Integer.MIN_VALUE;
+      int $$3 = im.b($$1) ? $$0.readInt() : Integer.MAX_VALUE;
+      return new ir.a($$2, $$3);
    }
 
-   @Nonnull
-   @Override
-   public akn b(T $$0) {
-      akn $$1 = super.b($$0);
-      return $$1 == null ? this.b : $$1;
+   public void a(ir.a $$0, JsonObject $$1) {
+      if ($$0.b != Integer.MIN_VALUE) {
+         $$1.addProperty("min", $$0.b);
+      }
+
+      if ($$0.c != Integer.MAX_VALUE) {
+         $$1.addProperty("max", $$0.c);
+      }
    }
 
-   @Nonnull
-   @Override
-   public T a(@Nullable akn $$0) {
-      T $$1 = super.a($$0);
-      return $$1 == null ? this.c.a() : $$1;
+   public ir.a a(IntegerArgumentType $$0) {
+      return new ir.a($$0.getMinimum(), $$0.getMaximum());
    }
 
-   @Override
-   public Optional<T> b(@Nullable akn $$0) {
-      return Optional.ofNullable(super.a($$0));
-   }
+   public final class a implements ik.a<IntegerArgumentType> {
+      final int b;
+      final int c;
 
-   @Nonnull
-   @Override
-   public T a(int $$0) {
-      T $$1 = super.a($$0);
-      return $$1 == null ? this.c.a() : $$1;
-   }
+      a(final int $$1, final int $$2) {
+         this.b = $$1;
+         this.c = $$2;
+      }
 
-   @Override
-   public Optional<ix.c<T>> a(aym $$0) {
-      return super.a($$0).or(() -> Optional.of(this.c));
-   }
+      public IntegerArgumentType a(el $$0) {
+         return IntegerArgumentType.integer(this.b, this.c);
+      }
 
-   @Override
-   public akn a() {
-      return this.b;
+      @Override
+      public ik<IntegerArgumentType, ?> a() {
+         return ir.this;
+      }
    }
 }

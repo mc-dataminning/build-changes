@@ -1,44 +1,26 @@
-public class fvl<T extends brw> extends fvh<T> {
-   private boolean b;
+public class fvl<T extends cfw> extends fvf<T> {
+   private float j;
 
-   public fvl(fvw $$0) {
-      super($$0);
+   public fvl(fwv $$0) {
+      super($$0, false, 8.0F, 4.0F, 2.0F, 2.0F, 24);
    }
 
-   public static fwc c() {
-      fwe $$0 = fvh.b();
-      fwf $$1 = $$0.a();
-      fwf $$2 = $$1.a("head", fwb.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F), fvy.a);
-      fwf $$3 = $$2.a("hat", fwb.c().a(0, 64).a(0.0F, 0.0F, 0.0F, 10.0F, 2.0F, 10.0F), fvy.a(-5.0F, -10.03125F, -5.0F));
-      fwf $$4 = $$3.a("hat2", fwb.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 7.0F, 4.0F, 7.0F), fvy.a(1.75F, -4.0F, 2.0F, -0.05235988F, 0.0F, 0.02617994F));
-      fwf $$5 = $$4.a("hat3", fwb.c().a(0, 87).a(0.0F, 0.0F, 0.0F, 4.0F, 4.0F, 4.0F), fvy.a(1.75F, -4.0F, 2.0F, -0.10471976F, 0.0F, 0.05235988F));
-      $$5.a(
-         "hat4", fwb.c().a(0, 95).a(0.0F, 0.0F, 0.0F, 1.0F, 2.0F, 1.0F, new fwa(0.25F)), fvy.a(1.75F, -2.0F, 2.0F, (float) (-Math.PI / 15), 0.0F, 0.10471976F)
-      );
-      fwf $$6 = $$2.a("nose");
-      $$6.a("mole", fwb.c().a(0, 0).a(0.0F, 3.0F, -6.75F, 1.0F, 1.0F, 1.0F, new fwa(-0.25F)), fvy.a(0.0F, -2.0F, 0.0F));
-      return fwc.a($$0, 64, 128);
+   public static fxb c() {
+      fxd $$0 = fvf.a(12, fwz.a);
+      fxe $$1 = $$0.a();
+      $$1.a("head", fxa.c().a(0, 0).a(-3.0F, -4.0F, -6.0F, 6.0F, 6.0F, 8.0F), fwx.a(0.0F, 6.0F, -8.0F));
+      $$1.a("body", fxa.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F), fwx.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      return fxb.a($$0, 64, 32);
    }
 
-   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.c = 6.0F + $$0.G($$3) * 9.0F;
+      this.j = $$0.H($$3);
+   }
+
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.a.a(0.0F, -2.0F, 0.0F);
-      float $$6 = 0.01F * (float)($$0.al() % 10);
-      this.a.e = ayf.a((float)$$0.ai * $$6) * 4.5F * (float) (Math.PI / 180.0);
-      this.a.f = 0.0F;
-      this.a.g = ayf.b((float)$$0.ai * $$6) * 2.5F * (float) (Math.PI / 180.0);
-      if (this.b) {
-         this.a.a(0.0F, 1.0F, -1.5F);
-         this.a.e = -0.9F;
-      }
-   }
-
-   public fvw e() {
-      return this.a;
-   }
-
-   public void b(boolean $$0) {
-      this.b = $$0;
+      this.a.e = this.j;
    }
 }

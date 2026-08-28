@@ -1,18 +1,8 @@
-public enum zf {
-   a("serverbound"),
-   b("clientbound");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private final String c;
-
-   private zf(String $$0) {
-      this.c = $$0;
-   }
-
-   public zf a() {
-      return this == b ? a : b;
-   }
-
-   public String b() {
-      return this.c;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface zf {
 }

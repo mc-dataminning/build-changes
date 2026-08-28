@@ -1,30 +1,30 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record eca(eem b, dyc c, bpb d, int e) implements ecd {
-   public static final Codec<eca> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eem.a.fieldOf("state_provider").forGetter(eca::a),
-               dyc.b.fieldOf("target").forGetter(eca::b),
-               bpb.b(0, 8).fieldOf("radius").forGetter(eca::c),
-               Codec.intRange(0, 4).fieldOf("half_height").forGetter(eca::d)
-            )
-            .apply($$0, eca::new)
-   );
-
-   public eem a() {
-      return this.b;
+public class eca extends eat<edp> {
+   public eca(Codec<edp> $$0) {
+      super($$0);
    }
 
-   public dyc b() {
-      return this.c;
-   }
+   @Override
+   public boolean a(eav<edp> $$0) {
+      edp $$1 = $$0.f();
+      dco $$2 = $$0.b();
+      iz $$3 = $$0.e();
+      drx $$4 = $$1.a().a($$0.d(), $$3);
+      if ($$4.a($$2, $$3)) {
+         if ($$4.b() instanceof dhc) {
+            if (!$$2.u($$3.c())) {
+               return false;
+            }
 
-   public bpb c() {
-      return this.d;
-   }
+            dhc.a($$2, $$4, $$3, 2);
+         } else {
+            $$2.a($$3, $$4, 2);
+         }
 
-   public int d() {
-      return this.e;
+         return true;
+      } else {
+         return false;
+      }
    }
 }

@@ -1,69 +1,39 @@
-public class afk implements ze<abq> {
-   public static final yv<wi, afk> a = ze.a(afk::a, afk::new);
-   private final ix<avh> b;
-   private final avj c;
-   private final int d;
-   private final float e;
-   private final float f;
-   private final long g;
+import javax.annotation.Nullable;
 
-   public afk(ix<avh> $$0, avj $$1, brw $$2, float $$3, float $$4, long $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2.al();
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+public class afk implements zs<ace> {
+   public static final zj<wl, afk> a = zs.a(afk::a, afk::new);
+   private final int b;
+   private final int c;
+
+   public afk(bsp $$0, @Nullable bsp $$1) {
+      this.b = $$0.al();
+      this.c = $$1 != null ? $$1.al() : 0;
    }
 
-   private afk(wi $$0) {
-      this.b = avh.d.decode($$0);
-      this.c = $$0.b(avj.class);
-      this.d = $$0.l();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
-      this.g = $$0.readLong();
+   private afk(wl $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
    }
 
-   private void a(wi $$0) {
-      avh.d.encode($$0, this.b);
-      $$0.a(this.c);
-      $$0.c(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.b(this.g);
+   private void a(wl $$0) {
+      $$0.p(this.b);
+      $$0.p(this.c);
    }
 
    @Override
-   public zg<afk> a() {
-      return agc.aR;
+   public zu<afk> a() {
+      return agq.aD;
    }
 
-   public void a(abq $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public ix<avh> b() {
+   public int b() {
       return this.b;
    }
 
-   public avj e() {
+   public int e() {
       return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public float g() {
-      return this.e;
-   }
-
-   public float h() {
-      return this.f;
-   }
-
-   public long i() {
-      return this.g;
    }
 }

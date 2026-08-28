@@ -1,57 +1,52 @@
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.List;
+import java.util.Optional;
 
-public record esf(akm<esn> b) implements esn {
-   private static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<esf> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(akm.a(lf.aW).fieldOf("name").forGetter(esf::c)).apply($$0, esf::new));
+public class esf extends erp {
+   public static final MapCodec<esf> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  cxd.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
+                  cxd.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
+                  cxd.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
+                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
+                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
+               )
+            )
+            .apply($$0, esf::new)
+   );
+   public static final cxd b = new cxd(cxd.a.a, IntList.of(), IntList.of(), false, false);
+   final Optional<cxd.a> c;
+   final Optional<IntList> d;
+   final Optional<IntList> e;
+   final Optional<Boolean> f;
+   final Optional<Boolean> h;
 
-   @Override
-   public eso b() {
-      return esp.r;
+   public esf(List<etn> $$0, Optional<cxd.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.h = $$5;
    }
 
    @Override
-   public void a(epn $$0) {
-      if ($$0.a(this.b)) {
-         $$0.b("Condition " + this.b.a() + " is recursively called");
-      } else {
-         esn.super.a($$0);
-         $$0.a()
-            .a(lf.aW, this.b)
-            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.b.a() + "}", this.b)), () -> $$0.b("Unknown condition table called " + this.b.a()));
-      }
+   protected cuk a(cuk $$0, eqd $$1) {
+      $$0.a(km.S, b, this::a);
+      return $$0;
    }
 
-   public boolean a(eph $$0) {
-      esn $$1 = $$0.a().a(lf.aW, this.b).map(ix.c::a).orElse(null);
-      if ($$1 == null) {
-         c.warn("Tried using unknown condition table called {}", this.b.a());
-         return false;
-      } else {
-         eph.c<?> $$2 = eph.a($$1);
-         if ($$0.b($$2)) {
-            boolean var4;
-            try {
-               var4 = $$1.test($$0);
-            } finally {
-               $$0.c($$2);
-            }
-
-            return var4;
-         } else {
-            c.warn("Detected infinite loop in loot tables");
-            return false;
-         }
-      }
+   private cxd a(cxd $$0) {
+      return new cxd(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
    }
 
-   public static esn.a a(akm<esn> $$0) {
-      return () -> new esf($$0);
-   }
-
-   public akm<esn> c() {
-      return this.b;
+   @Override
+   public err<esf> b() {
+      return ers.L;
    }
 }

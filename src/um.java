@@ -1,60 +1,96 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.BiConsumer;
+import java.util.regex.Pattern;
+import org.slf4j.Logger;
 
-public class um {
-   private static final int a = 512;
-   private final long b;
-   private long c;
-   private final int d;
-   private int e;
+public abstract class um {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Gson c = new Gson();
+   private static final Pattern d = Pattern.compile("%(\\d+\\$)?[\\d.]*[df]");
+   public static final String a = "en_us";
+   private static volatile um e = c();
 
-   public um(long $$0, int $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   private static um c() {
+      Builder<String, String> $$0 = ImmutableMap.builder();
+      BiConsumer<String, String> $$1 = $$0::put;
+      a($$1, "/assets/minecraft/lang/en_us.json");
+      final Map<String, String> $$2 = $$0.build();
+      return new um() {
+         @Override
+         public String a(String $$0, String $$1) {
+            return $$2.getOrDefault($$0, $$1);
+         }
+
+         @Override
+         public boolean b(String $$0) {
+            return $$2.containsKey($$0);
+         }
+
+         @Override
+         public boolean b() {
+            return false;
+         }
+
+         @Override
+         public ayg a(xq $$0) {
+            return $$1 -> $$0.a(($$1x, $$2xxx) -> azo.c($$2xxx, $$1x, $$1) ? Optional.empty() : xq.a, yi.a).isPresent();
+         }
+      };
    }
 
-   public static um a(long $$0) {
-      return new um($$0, 512);
+   private static void a(BiConsumer<String, String> $$0, String $$1) {
+      try (InputStream $$2 = um.class.getResourceAsStream($$1)) {
+         a($$2, $$0);
+      } catch (JsonParseException | IOException var7) {
+         b.error("Couldn't read strings from {}", $$1, var7);
+      }
+   }
+
+   public static void a(InputStream $$0, BiConsumer<String, String> $$1) {
+      JsonObject $$2 = (JsonObject)c.fromJson(new InputStreamReader($$0, StandardCharsets.UTF_8), JsonObject.class);
+
+      for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
+         String $$4 = d.matcher(ayk.a($$3.getValue(), $$3.getKey())).replaceAll("%$1s");
+         $$1.accept($$3.getKey(), $$4);
+      }
    }
 
    public static um a() {
-      return new um(Long.MAX_VALUE, 512);
+      return e;
    }
 
-   public void a(long $$0, long $$1) {
-      this.b($$0 * $$1);
+   public static void a(um $$0) {
+      e = $$0;
    }
 
-   public void b(long $$0) {
-      if (this.c + $$0 > this.b) {
-         throw new un("Tried to read NBT tag that was too big; tried to allocate: " + this.c + " + " + $$0 + " bytes where max allowed: " + this.b);
-      } else {
-         this.c += $$0;
-      }
+   public String a(String $$0) {
+      return this.a($$0, $$0);
    }
 
-   public void b() {
-      if (this.e >= this.d) {
-         throw new un("Tried to read NBT tag with too high complexity, depth > " + this.d);
-      } else {
-         this.e++;
-      }
-   }
+   public abstract String a(String var1, String var2);
 
-   public void c() {
-      if (this.e <= 0) {
-         throw new un("NBT-Accounter tried to pop stack-depth at top-level");
-      } else {
-         this.e--;
-      }
-   }
+   public abstract boolean b(String var1);
 
-   @VisibleForTesting
-   public long d() {
-      return this.c;
-   }
+   public abstract boolean b();
 
-   @VisibleForTesting
-   public int e() {
-      return this.e;
+   public abstract ayg a(xq var1);
+
+   public List<ayg> a(List<xq> $$0) {
+      return $$0.stream().map(this::a).collect(ImmutableList.toImmutableList());
    }
 }

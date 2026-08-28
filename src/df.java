@@ -1,71 +1,105 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.List;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-public abstract class df<T extends df.a> implements ap<T> {
-   private final Map<akv, Set<ap.a<T>>> a = Maps.newIdentityHashMap();
+public record df(Map<ji<brv>, df.b> b) {
+   public static final Codec<df> a = Codec.unboundedMap(lp.d.r(), df.b.a).xmap(df::new, df::a);
 
-   @Override
-   public final void a(akv $$0, ap.a<T> $$1) {
-      this.a.computeIfAbsent($$0, $$0x -> Sets.newHashSet()).add($$1);
+   public boolean a(bsp $$0) {
+      if ($$0 instanceof btk $$1 && this.a($$1.ey())) {
+         return true;
+      }
+
+      return false;
    }
 
-   @Override
-   public final void b(akv $$0, ap.a<T> $$1) {
-      Set<ap.a<T>> $$2 = this.a.get($$0);
-      if ($$2 != null) {
-         $$2.remove($$1);
-         if ($$2.isEmpty()) {
-            this.a.remove($$0);
+   public boolean a(btk $$0) {
+      return this.a($$0.ey());
+   }
+
+   public boolean a(Map<ji<brv>, brx> $$0) {
+      for (Entry<ji<brv>, df.b> $$1 : this.b.entrySet()) {
+         brx $$2 = $$0.get($$1.getKey());
+         if (!$$1.getValue().a($$2)) {
+            return false;
          }
+      }
+
+      return true;
+   }
+
+   public Map<ji<brv>, df.b> a() {
+      return this.b;
+   }
+
+   public static class a {
+      private final Builder<ji<brv>, df.b> a = ImmutableMap.builder();
+
+      public static df.a a() {
+         return new df.a();
+      }
+
+      public df.a a(ji<brv> $$0) {
+         this.a.put($$0, new df.b());
+         return this;
+      }
+
+      public df.a a(ji<brv> $$0, df.b $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      public Optional<df> b() {
+         return Optional.of(new df(this.a.build()));
       }
    }
 
-   @Override
-   public final void a(akv $$0) {
-      this.a.remove($$0);
-   }
+   public static record b(de.d b, de.d c, Optional<Boolean> d, Optional<Boolean> e) {
+      public static final Codec<df.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  de.d.d.optionalFieldOf("amplifier", de.d.c).forGetter(df.b::a),
+                  de.d.d.optionalFieldOf("duration", de.d.c).forGetter(df.b::b),
+                  Codec.BOOL.optionalFieldOf("ambient").forGetter(df.b::c),
+                  Codec.BOOL.optionalFieldOf("visible").forGetter(df.b::d)
+               )
+               .apply($$0, df.b::new)
+      );
 
-   protected void a(aqo $$0, Predicate<T> $$1) {
-      akv $$2 = $$0.Q();
-      Set<ap.a<T>> $$3 = this.a.get($$2);
-      if ($$3 != null && !$$3.isEmpty()) {
-         eph $$4 = br.b($$0, $$0);
-         List<ap.a<T>> $$5 = null;
-
-         for (ap.a<T> $$6 : $$3) {
-            T $$7 = $$6.a();
-            if ($$1.test($$7)) {
-               Optional<bc> $$8 = $$7.a();
-               if ($$8.isEmpty() || $$8.get().a($$4)) {
-                  if ($$5 == null) {
-                     $$5 = Lists.newArrayList();
-                  }
-
-                  $$5.add($$6);
-               }
-            }
-         }
-
-         if ($$5 != null) {
-            for (ap.a<T> $$9 : $$5) {
-               $$9.a($$2);
-            }
-         }
-      }
-   }
-
-   public interface a extends aq {
-      @Override
-      default void a(bd $$0) {
-         $$0.a(this.a(), ".player");
+      public b() {
+         this(de.d.c, de.d.c, Optional.empty(), Optional.empty());
       }
 
-      Optional<bc> a();
+      public boolean a(@Nullable brx $$0) {
+         if ($$0 == null) {
+            return false;
+         } else if (!this.b.d($$0.e())) {
+            return false;
+         } else if (!this.c.d($$0.d())) {
+            return false;
+         } else {
+            return this.d.isPresent() && this.d.get() != $$0.f() ? false : !this.e.isPresent() || this.e.get() == $$0.g();
+         }
+      }
+
+      public de.d a() {
+         return this.b;
+      }
+
+      public de.d b() {
+         return this.c;
+      }
+
+      public Optional<Boolean> c() {
+         return this.d;
+      }
+
+      public Optional<Boolean> d() {
+         return this.e;
+      }
    }
 }

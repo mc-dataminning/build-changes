@@ -1,69 +1,87 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.function.Supplier;
 
-public class dhz extends dea {
-   public static final MapCodec<dhz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(le.e.q().fieldOf("host").forGetter(dhz::b), u()).apply($$0, dhz::new));
-   private final dea b;
-   private static final Map<dea, dea> c = Maps.newIdentityHashMap();
-   private static final Map<drd, drd> d = Maps.newIdentityHashMap();
-   private static final Map<drd, drd> e = Maps.newIdentityHashMap();
+public class dhz extends dis {
+   public static final MapCodec<dhz> a = b(dhz::new);
+   public static final int b = 3;
+   public static final dsx c = dsn.as;
+   private static final int f = 4;
+   private static final int g = 2;
 
    @Override
-   public MapCodec<? extends dhz> a() {
+   public MapCodec<dhz> a() {
       return a;
    }
 
-   public dhz(dea $$0, drc.d $$1) {
-      super($$1.e($$0.x() / 2.0F).f(0.75F));
-      this.b = $$0;
-      c.put($$0, this);
+   public dhz(drw.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
-   public dea b() {
-      return this.b;
+   @Override
+   protected void b(drx $$0, arb $$1, iz $$2, azc $$3) {
+      this.a($$0, $$1, $$2, $$3);
    }
 
-   public static boolean m(drd $$0) {
-      return c.containsKey($$0.b());
+   @Override
+   protected void a(drx $$0, arb $$1, iz $$2, azc $$3) {
+      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.A($$2) > 11 - $$0.c(c) - $$0.b($$1, $$2) && this.e($$0, $$1, $$2)) {
+         iz.a $$4 = new iz.a();
+
+         for (je $$5 : je.values()) {
+            $$4.a($$2, $$5);
+            drx $$6 = $$1.a_($$4);
+            if ($$6.a(this) && !this.e($$6, $$1, $$4)) {
+               $$1.a($$4, this, ayu.a($$3, 20, 40));
+            }
+         }
+      } else {
+         $$1.a($$2, this, ayu.a($$3, 20, 40));
+      }
    }
 
-   private void a(aqn $$0, io $$1) {
-      cjl $$2 = bsc.aM.a((daz)$$0);
-      if ($$2 != null) {
-         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
-         $$0.b($$2);
-         $$2.Q();
+   private boolean e(drx $$0, dbt $$1, iz $$2) {
+      int $$3 = $$0.c(c);
+      if ($$3 < 3) {
+         $$1.a($$2, $$0.a(c, Integer.valueOf($$3 + 1)), 2);
+         return false;
+      } else {
+         this.d($$0, $$1, $$2);
+         return true;
       }
    }
 
    @Override
-   protected void a(drd $$0, aqn $$1, io $$2, ctq $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$1.aa().b(dav.h) && czc.a(cze.v, $$3) == 0) {
-         this.a($$1, $$2);
+   protected void a(drx $$0, dbt $$1, iz $$2, deu $$3, iz $$4, boolean $$5) {
+      if ($$3.n().a(this) && this.a($$1, $$2, 2)) {
+         this.d($$0, $$1, $$2);
       }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public static drd n(drd $$0) {
-      return a(d, $$0, () -> c.get($$0.b()).n());
-   }
+   private boolean a(daz $$0, iz $$1, int $$2) {
+      int $$3 = 0;
+      iz.a $$4 = new iz.a();
 
-   public drd o(drd $$0) {
-      return a(e, $$0, () -> this.b().n());
-   }
-
-   private static drd a(Map<drd, drd> $$0, drd $$1, Supplier<drd> $$2) {
-      return $$0.computeIfAbsent($$1, $$1x -> {
-         drd $$2x = $$2.get();
-
-         for (dsg $$3 : $$1x.B()) {
-            $$2x = $$2x.b($$3) ? $$2x.a($$3, $$1x.c($$3)) : $$2x;
+      for (je $$5 : je.values()) {
+         $$4.a($$1, $$5);
+         if ($$0.a_($$4).a(this)) {
+            if (++$$3 >= $$2) {
+               return false;
+            }
          }
+      }
 
-         return $$2x;
-      });
+      return true;
+   }
+
+   @Override
+   protected void a(dry.a<deu, drx> $$0) {
+      $$0.a(c);
+   }
+
+   @Override
+   public cuk a(dbw $$0, iz $$1, drx $$2) {
+      return cuk.l;
    }
 }

@@ -2,16 +2,32 @@ import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
 public class bwd {
-   public static buk<cll> a() {
-      return bxw.a((Function<bxw.b<cll>, ? extends App<bxw.c<cll>, bxz<cll>>>)($$0 -> $$0.group($$0.c(cbu.c)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
-               clm $$3 = $$1.gA();
-               if ($$3.b() != clo.b && $$3.b() != clo.m && $$1.u() == 0 && $$3.c() <= 1) {
-                  $$1.a($$1.gA().a(clo.b));
-                  $$1.c($$0xx);
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
+   public static bwo<btk> a(int $$0, float $$1, int $$2) {
+      return byq.a(
+         (Function<byq.b<btk>, ? extends App<byq.c<btk>, byt<btk>>>)($$3 -> $$3.group(
+                  $$3.c(cco.m), $$3.a(cco.b), $$3.a(cco.C), $$3.a(cco.t), $$3.a(cco.n), $$3.a(cco.r), $$3.a(cco.q)
+               )
+               .apply(
+                  $$3,
+                  ($$4, $$5, $$6, $$7, $$8, $$9, $$10) -> ($$11, $$12, $$13) -> {
+                        $$11.y()
+                           .d($$0xxxx -> $$0xxxx.a(ces.n), $$0xxxx -> true, $$12.dp(), $$2 + 1, ceo.b.c)
+                           .filter($$2xxxx -> $$2xxxx.a($$12.dn(), (double)$$2))
+                           .or(() -> $$11.y().a($$0xxxxx -> $$0xxxxx.a(ces.n), $$0xxxxx -> true, ceo.b.c, $$12.dp(), $$0, $$12.el()))
+                           .or(() -> $$3.<jh>a($$5).map(jh::b))
+                           .ifPresent($$10xx -> {
+                              $$7.b();
+                              $$8.b();
+                              $$9.b();
+                              $$10.b();
+                              $$6.a(jh.a($$11.af(), $$10xx));
+                              if (!$$10xx.a($$12.dn(), (double)$$2)) {
+                                 $$4.a(new ccr($$10xx, $$1, $$2));
+                              }
+                           });
+                        return true;
+                     }
+               ))
+      );
    }
 }

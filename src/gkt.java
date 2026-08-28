@@ -1,22 +1,15 @@
-public class gkt extends giz<cju, fvl<cju>> {
-   private static final akn a = new akn("textures/entity/witch.png");
+public class gkt extends gjy<ckf, fvp<ckf>> {
+   private static final alb a = new alb("textures/entity/silverfish.png");
 
-   public gkt(ght.a $$0) {
-      super($$0, new fvl<>($$0.a(fvv.bU)), 0.5F);
-      this.a(new gms<>(this, $$0.d()));
+   public gkt(gis.a $$0) {
+      super($$0, new fvp<>($$0.a(fwu.bm)), 0.3F);
    }
 
-   public void a(cju $$0, float $$1, float $$2, eyu $$3, gck $$4, int $$5) {
-      this.f.b(!$$0.eX().e());
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected float a(ckf $$0) {
+      return 180.0F;
    }
 
-   public akn a(cju $$0) {
+   public alb b(ckf $$0) {
       return a;
-   }
-
-   protected void a(cju $$0, eyu $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

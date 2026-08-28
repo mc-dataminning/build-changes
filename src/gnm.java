@@ -1,59 +1,35 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+public class gnm<T extends btk> extends gne<T, fva<T>> {
+   public static final alb a = new alb("textures/entity/trident_riptide.png");
+   public static final String b = "box";
+   private final fwv c;
 
-public class gnm implements AutoCloseable {
-   private static final int e = 16;
-   public static final int a = 0;
-   public static final int b = 3;
-   public static final int c = 10;
-   public static final int d = a(0, 10);
-   private final gni f = new gni(16, 16, false);
+   public gnm(gko<T, fva<T>> $$0, fwr $$1) {
+      super($$0);
+      fwv $$2 = $$1.a(fwu.aZ);
+      this.c = $$2.b("box");
+   }
 
-   public gnm() {
-      exv $$0 = this.f.e();
+   public static fxb a() {
+      fxd $$0 = new fxd();
+      fxe $$1 = $$0.a();
+      $$1.a("box", fxa.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 32.0F, 16.0F), fwx.a);
+      return fxb.a($$0, 64, 64);
+   }
 
-      for (int $$1 = 0; $$1 < 16; $$1++) {
-         for (int $$2 = 0; $$2 < 16; $$2++) {
-            if ($$1 < 8) {
-               $$0.a($$2, $$1, -1308622593);
-            } else {
-               int $$3 = (int)((1.0F - (float)$$2 / 15.0F * 0.75F) * 255.0F);
-               $$0.a($$2, $$1, $$3 << 24 | 16777215);
-            }
+   public void a(ezt $$0, gdj $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.fr()) {
+         ezx $$10 = $$1.getBuffer(gdr.e(a));
+
+         for (int $$11 = 0; $$11 < 3; $$11++) {
+            $$0.a();
+            float $$12 = $$7 * (float)(-(45 + $$11 * 5));
+            $$0.a(a.d.rotationDegrees($$12));
+            float $$13 = 0.75F * (float)$$11;
+            $$0.b($$13, $$13, $$13);
+            $$0.a(0.0F, -0.2F + 0.6F * (float)$$11, 0.0F);
+            this.c.a($$0, $$10, $$2, gol.d);
+            $$0.b();
          }
       }
-
-      RenderSystem.activeTexture(33985);
-      this.f.c();
-      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), false, true, false, false);
-      RenderSystem.activeTexture(33984);
-   }
-
-   @Override
-   public void close() {
-      this.f.close();
-   }
-
-   public void a() {
-      RenderSystem.setupOverlayColor(this.f::a, 16);
-   }
-
-   public static int a(float $$0) {
-      return (int)($$0 * 15.0F);
-   }
-
-   public static int a(boolean $$0) {
-      return $$0 ? 3 : 10;
-   }
-
-   public static int a(int $$0, int $$1) {
-      return $$0 | $$1 << 16;
-   }
-
-   public static int a(float $$0, boolean $$1) {
-      return a(a($$0), a($$1));
-   }
-
-   public void b() {
-      RenderSystem.teardownOverlayColor();
    }
 }

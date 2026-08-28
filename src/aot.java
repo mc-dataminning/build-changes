@@ -1,54 +1,39 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import java.util.Collection;
+import java.util.Collections;
 
 public class aot {
-   public static void a(CommandDispatcher<ee> $$0) {
+   public static void a(CommandDispatcher<ep> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("time").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("set")
-                                    .then(ef.a("day").executes($$0x -> a((ee)$$0x.getSource(), 1000))))
-                                 .then(ef.a("noon").executes($$0x -> a((ee)$$0x.getSource(), 6000))))
-                              .then(ef.a("night").executes($$0x -> a((ee)$$0x.getSource(), 13000))))
-                           .then(ef.a("midnight").executes($$0x -> a((ee)$$0x.getSource(), 18000))))
-                        .then(ef.a("time", ft.a()).executes($$0x -> a((ee)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))
-                  ))
-               .then(ef.a("add").then(ef.a("time", ft.a()).executes($$0x -> b((ee)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("spawnpoint").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((ep)$$0x.getSource(), Collections.singleton(((ep)$$0x.getSource()).h()), iz.a(((ep)$$0x.getSource()).d()), 0.0F)))
             .then(
-               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("query")
-                        .then(ef.a("daytime").executes($$0x -> c((ee)$$0x.getSource(), a(((ee)$$0x.getSource()).e())))))
-                     .then(ef.a("gametime").executes($$0x -> c((ee)$$0x.getSource(), (int)(((ee)$$0x.getSource()).e().Y() % 2147483647L)))))
-                  .then(ef.a("day").executes($$0x -> c((ee)$$0x.getSource(), (int)(((ee)$$0x.getSource()).e().Z() / 24000L % 2147483647L))))
+               ((RequiredArgumentBuilder)eq.a("targets", fc.d())
+                     .executes($$0x -> a((ep)$$0x.getSource(), fc.f($$0x, "targets"), iz.a(((ep)$$0x.getSource()).d()), 0.0F)))
+                  .then(
+                     ((RequiredArgumentBuilder)eq.a("pos", gl.a()).executes($$0x -> a((ep)$$0x.getSource(), fc.f($$0x, "targets"), gl.c($$0x, "pos"), 0.0F)))
+                        .then(eq.a("angle", ev.a()).executes($$0x -> a((ep)$$0x.getSource(), fc.f($$0x, "targets"), gl.c($$0x, "pos"), ev.a($$0x, "angle"))))
+                  )
             )
       );
    }
 
-   private static int a(aqn $$0) {
-      return (int)($$0.Z() % 24000L);
-   }
+   private static int a(ep $$0, Collection<arc> $$1, iz $$2, float $$3) {
+      ala<dbt> $$4 = $$0.e().af();
 
-   private static int c(ee $$0, int $$1) {
-      $$0.a(() -> wx.a("commands.time.query", $$1), false);
-      return $$1;
-   }
-
-   public static int a(ee $$0, int $$1) {
-      for (aqn $$2 : $$0.l().K()) {
-         $$2.b((long)$$1);
+      for (arc $$5 : $$1) {
+         $$5.a($$4, $$2, $$3, true, false);
       }
 
-      $$0.a(() -> wx.a("commands.time.set", $$1), true);
-      return a($$0.e());
-   }
-
-   public static int b(ee $$0, int $$1) {
-      for (aqn $$2 : $$0.l().K()) {
-         $$2.b($$2.Z() + (long)$$1);
+      String $$6 = $$4.a().toString();
+      if ($$1.size() == 1) {
+         $$0.a(() -> xl.a("commands.spawnpoint.success.single", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.iterator().next().O_()), true);
+      } else {
+         $$0.a(() -> xl.a("commands.spawnpoint.success.multiple", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.size()), true);
       }
 
-      int $$3 = a($$0.e());
-      $$0.a(() -> wx.a("commands.time.set", $$3), true);
-      return $$3;
+      return $$1.size();
    }
 }

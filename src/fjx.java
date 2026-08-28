@@ -1,3 +1,8 @@
-public interface fjx {
-   void b(fjw var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fjx {
 }

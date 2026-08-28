@@ -1,16 +1,33 @@
-public class glh extends gmf<cej, fsh<cej>> {
-   private static final akn a = new akn("textures/entity/cat/cat_collar.png");
-   private final fsh<cej> b;
+public class glh extends gjx<cpa> {
+   private final ged f;
 
-   public glh(gjp<cej, fsh<cej>> $$0, fvs $$1) {
-      super($$0);
-      this.b = new fsh<>($$1.a(fvv.u));
+   public glh(gis.a $$0) {
+      super($$0, fwu.bG);
+      this.f = $$0.c();
    }
 
-   public void a(eyu $$0, gck $$1, int $$2, cej $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.s()) {
-         float[] $$10 = $$3.gy().d();
-         a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$10[0], $$10[1], $$10[2]);
+   protected void a(cpa $$0, float $$1, drx $$2, ezt $$3, gdj $$4, int $$5) {
+      int $$6 = $$0.C();
+      if ($$6 > -1 && (float)$$6 - $$1 + 1.0F < 10.0F) {
+         float $$7 = 1.0F - ((float)$$6 - $$1 + 1.0F) / 10.0F;
+         $$7 = ayu.a($$7, 0.0F, 1.0F);
+         $$7 *= $$7;
+         $$7 *= $$7;
+         float $$8 = 1.0F + $$7 * 0.3F;
+         $$3.b($$8, $$8, $$8);
       }
+
+      a(this.f, $$2, $$3, $$4, $$5, $$6 > -1 && $$6 / 5 % 2 == 0);
+   }
+
+   public static void a(ged $$0, drx $$1, ezt $$2, gdj $$3, int $$4, boolean $$5) {
+      int $$6;
+      if ($$5) {
+         $$6 = gol.a(gol.a(1.0F), 10);
+      } else {
+         $$6 = gol.d;
+      }
+
+      $$0.a($$1, $$2, $$3, $$4, $$6);
    }
 }

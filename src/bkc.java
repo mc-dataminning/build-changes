@@ -4,24 +4,26 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bkc extends bhl {
+public class bkc extends bid {
    public bkc(int $$0, Schema $$1) {
       super($$0, $$1);
+   }
+
+   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
+      $$0.register($$1, $$2, () -> bie.a($$0));
+   }
+
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      a($$0, $$1, "minecraft:frog");
+      a($$0, $$1, "minecraft:tadpole");
+      return $$1;
    }
 
    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
       $$0.register(
-         $$1,
-         "minecraft:vault",
-         () -> DSL.optionalFields(
-               "config",
-               DSL.optionalFields("key_item", bga.t.in($$0)),
-               "server_data",
-               DSL.optionalFields("items_to_eject", DSL.list(bga.t.in($$0))),
-               "shared_data",
-               DSL.optionalFields("display_item", bga.t.in($$0))
-            )
+         $$1, "minecraft:sculk_shrieker", () -> DSL.optionalFields("listener", DSL.optionalFields("event", DSL.optionalFields("game_event", bgs.E.in($$0))))
       );
       return $$1;
    }

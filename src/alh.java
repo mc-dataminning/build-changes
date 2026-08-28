@@ -1,43 +1,51 @@
-import com.mojang.authlib.GameProfileRepository;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.yggdrasil.ServicesKeySet;
-import com.mojang.authlib.yggdrasil.ServicesKeyType;
-import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
-import java.io.File;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Properties;
+import org.slf4j.Logger;
 
-public record alh(MinecraftSessionService a, ServicesKeySet b, GameProfileRepository c, aug d) {
-   private static final String e = "usercache.json";
+public class alh {
+   private static final Logger a = LogUtils.getLogger();
+   private final Path b;
+   private final boolean c;
 
-   public static alh a(YggdrasilAuthenticationService $$0, File $$1) {
-      MinecraftSessionService $$2 = $$0.createMinecraftSessionService();
-      GameProfileRepository $$3 = $$0.createProfileRepository();
-      aug $$4 = new aug($$3, new File($$1, "usercache.json"));
-      return new alh($$2, $$0.getServicesKeySet(), $$3, $$4);
+   public alh(Path $$0) {
+      this.b = $$0;
+      this.c = aa.aX || this.b();
    }
 
-   @Nullable
-   public ayr a() {
-      return ayr.a(this.b, ServicesKeyType.PROFILE_KEY);
+   private boolean b() {
+      try {
+         boolean var3;
+         try (InputStream $$0 = Files.newInputStream(this.b)) {
+            Properties $$1 = new Properties();
+            $$1.load($$0);
+            var3 = Boolean.parseBoolean($$1.getProperty("eula", "false"));
+         }
+
+         return var3;
+      } catch (Exception var6) {
+         a.warn("Failed to load {}", this.b);
+         this.c();
+         return false;
+      }
    }
 
-   public boolean b() {
-      return !this.b.keys(ServicesKeyType.PROFILE_KEY).isEmpty();
-   }
-
-   public MinecraftSessionService c() {
-      return this.a;
-   }
-
-   public ServicesKeySet d() {
-      return this.b;
-   }
-
-   public GameProfileRepository e() {
+   public boolean a() {
       return this.c;
    }
 
-   public aug f() {
-      return this.d;
+   private void c() {
+      if (!aa.aX) {
+         try (OutputStream $$0 = Files.newOutputStream(this.b)) {
+            Properties $$1 = new Properties();
+            $$1.setProperty("eula", "false");
+            $$1.store($$0, "By changing the setting below to TRUE you are indicating your agreement to our EULA (https://aka.ms/MinecraftEULA).");
+         } catch (Exception var6) {
+            a.warn("Failed to save {}", this.b, var6);
+         }
+      }
    }
 }

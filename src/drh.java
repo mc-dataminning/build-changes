@@ -1,49 +1,62 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class drh {
-   private final dbc a;
-   private final io b;
-   private final boolean c;
-   @Nullable
-   private drd d;
-   @Nullable
-   private doi e;
-   private boolean f;
+public record drh(ala<eqi> d, double e, double f, cuk g, Optional<ala<eqi>> h, dqz i, dqz.a j) {
+   static final String a = "config";
+   static drh b = new drh();
+   static Codec<drh> c = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  ala.a(lq.aU).lenientOptionalFieldOf("loot_table", b.b()).forGetter(drh::b),
+                  Codec.DOUBLE.lenientOptionalFieldOf("activation_range", b.c()).forGetter(drh::c),
+                  Codec.DOUBLE.lenientOptionalFieldOf("deactivation_range", b.d()).forGetter(drh::d),
+                  cuk.a("key_item").forGetter(drh::e),
+                  ala.a(lq.aU).lenientOptionalFieldOf("override_loot_table_to_display").forGetter(drh::f)
+               )
+               .apply($$0, drh::new)
+      )
+      .validate(drh::h);
 
-   public drh(dbc $$0, io $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1.i();
-      this.c = $$2;
+   private drh() {
+      this(epz.S, 4.0, 4.5, new cuk(cun.yz), Optional.empty(), dqz.b, dqz.a.a);
    }
 
-   public drd a() {
-      if (this.d == null && (this.c || this.a.B(this.b))) {
-         this.d = this.a.a_(this.b);
-      }
+   public drh(ala<eqi> $$0, double $$1, double $$2, cuk $$3, Optional<ala<eqi>> $$4) {
+      this($$0, $$1, $$2, $$3, $$4, b.a(), b.g());
+   }
 
+   public dqz a() {
+      return this.i;
+   }
+
+   private DataResult<drh> h() {
+      return this.e > this.f
+         ? DataResult.error(() -> "Activation range must (" + this.e + ") be less or equal to deactivation range (" + this.f + ")")
+         : DataResult.success(this);
+   }
+
+   public ala<eqi> b() {
       return this.d;
    }
 
-   @Nullable
-   public doi b() {
-      if (this.e == null && !this.f) {
-         this.e = this.a.c_(this.b);
-         this.f = true;
-      }
-
+   public double c() {
       return this.e;
    }
 
-   public dbc c() {
-      return this.a;
+   public double d() {
+      return this.f;
    }
 
-   public io d() {
-      return this.b;
+   public cuk e() {
+      return this.g;
    }
 
-   public static Predicate<drh> a(Predicate<drd> $$0) {
-      return $$1 -> $$1 != null && $$0.test($$1.a());
+   public Optional<ala<eqi>> f() {
+      return this.h;
+   }
+
+   public dqz.a g() {
+      return this.j;
    }
 }

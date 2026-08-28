@@ -1,32 +1,164 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.Message;
-import com.mojang.brigadier.ResultConsumer;
-import com.mojang.brigadier.exceptions.CommandExceptionType;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonNull;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
+import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public interface eg<T extends eg<T>> {
-   boolean c(int var1);
+public record eg(@Nullable Float c, @Nullable Float d) {
+   public static final eg a = new eg(null, null);
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xl.c("argument.range.ints"));
 
-   T b(eb var1);
-
-   eb p();
-
-   default T a_() {
-      return this.b(eb.a);
+   public static eg a(float $$0) {
+      return new eg($$0, $$0);
    }
 
-   CommandDispatcher<T> x();
-
-   void a(CommandExceptionType var1, Message var2, boolean var3, @Nullable hg var4);
-
-   boolean y();
-
-   default void a(CommandSyntaxException $$0, boolean $$1, @Nullable hg $$2) {
-      this.a($$0.getType(), $$0.getRawMessage(), $$1, $$2);
+   public static eg a(float $$0, float $$1) {
+      return new eg($$0, $$1);
    }
 
-   static <T extends eg<T>> ResultConsumer<T> b_() {
-      return ($$0, $$1, $$2) -> ((eg)$$0.getSource()).p().onResult($$1, $$2);
+   public static eg b(float $$0) {
+      return new eg($$0, null);
+   }
+
+   public static eg c(float $$0) {
+      return new eg(null, $$0);
+   }
+
+   public boolean d(float $$0) {
+      if (this.c != null && this.d != null && this.c > this.d && this.c > $$0 && this.d < $$0) {
+         return false;
+      } else {
+         return this.c != null && this.c > $$0 ? false : this.d == null || !(this.d < $$0);
+      }
+   }
+
+   public boolean a(double $$0) {
+      if (this.c != null && this.d != null && this.c > this.d && (double)(this.c * this.c) > $$0 && (double)(this.d * this.d) < $$0) {
+         return false;
+      } else {
+         return this.c != null && (double)(this.c * this.c) > $$0 ? false : this.d == null || !((double)(this.d * this.d) < $$0);
+      }
+   }
+
+   public JsonElement a() {
+      if (this == a) {
+         return JsonNull.INSTANCE;
+      } else if (this.c != null && this.d != null && this.c.equals(this.d)) {
+         return new JsonPrimitive(this.c);
+      } else {
+         JsonObject $$0 = new JsonObject();
+         if (this.c != null) {
+            $$0.addProperty("min", this.c);
+         }
+
+         if (this.d != null) {
+            $$0.addProperty("max", this.c);
+         }
+
+         return $$0;
+      }
+   }
+
+   public static eg a(@Nullable JsonElement $$0) {
+      if ($$0 == null || $$0.isJsonNull()) {
+         return a;
+      } else if (ayk.b($$0)) {
+         float $$1 = ayk.e($$0, "value");
+         return new eg($$1, $$1);
+      } else {
+         JsonObject $$2 = ayk.m($$0, "value");
+         Float $$3 = $$2.has("min") ? ayk.m($$2, "min") : null;
+         Float $$4 = $$2.has("max") ? ayk.m($$2, "max") : null;
+         return new eg($$3, $$4);
+      }
+   }
+
+   public static eg a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
+      return a($$0, $$1, $$0x -> $$0x);
+   }
+
+   public static eg a(StringReader $$0, boolean $$1, Function<Float, Float> $$2) throws CommandSyntaxException {
+      if (!$$0.canRead()) {
+         throw de.a.createWithContext($$0);
+      } else {
+         int $$3 = $$0.getCursor();
+         Float $$4 = a(b($$0, $$1), $$2);
+         Float $$5;
+         if ($$0.canRead(2) && $$0.peek() == '.' && $$0.peek(1) == '.') {
+            $$0.skip();
+            $$0.skip();
+            $$5 = a(b($$0, $$1), $$2);
+            if ($$4 == null && $$5 == null) {
+               $$0.setCursor($$3);
+               throw de.a.createWithContext($$0);
+            }
+         } else {
+            if (!$$1 && $$0.canRead() && $$0.peek() == '.') {
+               $$0.setCursor($$3);
+               throw b.createWithContext($$0);
+            }
+
+            $$5 = $$4;
+         }
+
+         if ($$4 == null && $$5 == null) {
+            $$0.setCursor($$3);
+            throw de.a.createWithContext($$0);
+         } else {
+            return new eg($$4, $$5);
+         }
+      }
+   }
+
+   @Nullable
+   private static Float b(StringReader $$0, boolean $$1) throws CommandSyntaxException {
+      int $$2 = $$0.getCursor();
+
+      while ($$0.canRead() && c($$0, $$1)) {
+         $$0.skip();
+      }
+
+      String $$3 = $$0.getString().substring($$2, $$0.getCursor());
+      if ($$3.isEmpty()) {
+         return null;
+      } else {
+         try {
+            return Float.parseFloat($$3);
+         } catch (NumberFormatException var5) {
+            if ($$1) {
+               throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.readerInvalidDouble().createWithContext($$0, $$3);
+            } else {
+               throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.readerInvalidInt().createWithContext($$0, $$3);
+            }
+         }
+      }
+   }
+
+   private static boolean c(StringReader $$0, boolean $$1) {
+      char $$2 = $$0.peek();
+      if (($$2 < '0' || $$2 > '9') && $$2 != '-') {
+         return $$1 && $$2 == '.' ? !$$0.canRead(2) || $$0.peek(1) != '.' : false;
+      } else {
+         return true;
+      }
+   }
+
+   @Nullable
+   private static Float a(@Nullable Float $$0, Function<Float, Float> $$1) {
+      return $$0 == null ? null : $$1.apply($$0);
+   }
+
+   @Nullable
+   public Float b() {
+      return this.c;
+   }
+
+   @Nullable
+   public Float c() {
+      return this.d;
    }
 }

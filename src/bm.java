@@ -1,46 +1,57 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 import java.util.Optional;
 
-public record bm(Optional<ix<czb>> b, ct.d c) {
-   public static final Codec<bm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(le.f.r().optionalFieldOf("enchantment").forGetter(bm::a), ct.d.d.optionalFieldOf("levels", ct.d.c).forGetter(bm::b)).apply($$0, bm::new)
-   );
-
-   public bm(czb $$0, ct.d $$1) {
-      this(Optional.of($$0.m()), $$1);
+public class bm extends dr<bm.a> {
+   @Override
+   public Codec<bm.a> a() {
+      return bm.a.a;
    }
 
-   public boolean a(czg $$0) {
-      if (this.b.isPresent()) {
-         czb $$1 = this.b.get().a();
-         int $$2 = $$0.a($$1);
-         if ($$2 == 0) {
-            return false;
-         }
+   public void a(arc $$0, evm $$1) {
+      evm $$2 = $$0.dn();
+      this.a($$0, $$3 -> $$3.a($$0.z(), $$1, $$2));
+   }
 
-         if (this.c != ct.d.c && !this.c.d($$2)) {
-            return false;
-         }
-      } else if (this.c != ct.d.c) {
-         for (Entry<ix<czb>> $$3 : $$0.b()) {
-            if (this.c.d($$3.getIntValue())) {
-               return true;
-            }
-         }
+   public static record a(Optional<bf> b, Optional<dc> c, Optional<bl> d) implements dr.a {
+      public static final Codec<bm.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  bu.b.optionalFieldOf("player").forGetter(bm.a::a),
+                  dc.a.optionalFieldOf("start_position").forGetter(bm.a::b),
+                  bl.a.optionalFieldOf("distance").forGetter(bm.a::c)
+               )
+               .apply($$0, bm.a::new)
+      );
 
-         return false;
+      public static an<bm.a> a(bu.a $$0, bl $$1, dc.a $$2) {
+         return am.X.a(new bm.a(Optional.of(bu.a($$0)), Optional.of($$2.b()), Optional.of($$1)));
       }
 
-      return true;
-   }
+      public static an<bm.a> a(bu.a $$0, bl $$1) {
+         return am.Y.a(new bm.a(Optional.of(bu.a($$0)), Optional.empty(), Optional.of($$1)));
+      }
 
-   public Optional<ix<czb>> a() {
-      return this.b;
-   }
+      public static an<bm.a> a(bl $$0) {
+         return am.D.a(new bm.a(Optional.empty(), Optional.empty(), Optional.of($$0)));
+      }
 
-   public ct.d b() {
-      return this.c;
+      public boolean a(arb $$0, evm $$1, evm $$2) {
+         return this.c.isPresent() && !this.c.get().a($$0, $$1.c, $$1.d, $$1.e)
+            ? false
+            : !this.d.isPresent() || this.d.get().a($$1.c, $$1.d, $$1.e, $$2.c, $$2.d, $$2.e);
+      }
+
+      @Override
+      public Optional<bf> a() {
+         return this.b;
+      }
+
+      public Optional<dc> b() {
+         return this.c;
+      }
+
+      public Optional<bl> c() {
+         return this.d;
+      }
    }
 }

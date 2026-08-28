@@ -1,49 +1,46 @@
-public class fgq extends fga {
-   private boolean a;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-   public fgq(int $$0, int $$1, fga.c $$2) {
-      super($$0, $$1, 20, 20, wx.c("narrator.button.difficulty_lock"), $$2, q);
+public abstract class fgq extends fgx {
+   protected static final int e = 2;
+   private static final fim a = new fim(new alb("widget/button"), new alb("widget/button_disabled"), new alb("widget/button_highlighted"));
+
+   public fgq(int $$0, int $$1, int $$2, int $$3, xl $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public abstract void b();
+
+   @Override
+   protected void b(fgm $$0, int $$1, int $$2, float $$3) {
+      ffa $$4 = ffa.Q();
+      $$0.a(1.0F, 1.0F, 1.0F, this.l);
+      RenderSystem.enableBlend();
+      RenderSystem.enableDepthTest();
+      $$0.a(a.a(this.j, this.A()), this.C(), this.D(), this.x(), this.v());
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      int $$5 = this.j ? 16777215 : 10526880;
+      this.a($$0, $$4.h, $$5 | ayu.f(this.l * 255.0F) << 24);
+   }
+
+   public void a(fgm $$0, fgk $$1, int $$2) {
+      this.a($$0, $$1, 2, $$2);
    }
 
    @Override
-   protected xl aL_() {
-      return ww.a(super.aL_(), this.a() ? wx.c("narrator.button.difficulty_lock.locked") : wx.c("narrator.button.difficulty_lock.unlocked"));
-   }
-
-   public boolean a() {
-      return this.a;
-   }
-
-   public void b(boolean $$0) {
-      this.a = $$0;
+   public void a(double $$0, double $$1) {
+      this.b();
    }
 
    @Override
-   public void b(ffn $$0, int $$1, int $$2, float $$3) {
-      fgq.a $$4;
-      if (!this.j) {
-         $$4 = this.a ? fgq.a.c : fgq.a.f;
-      } else if (this.A()) {
-         $$4 = this.a ? fgq.a.b : fgq.a.e;
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (!this.j || !this.k) {
+         return false;
+      } else if (fla.a($$0)) {
+         this.a(ffa.Q().aj());
+         this.b();
+         return true;
       } else {
-         $$4 = this.a ? fgq.a.a : fgq.a.d;
-      }
-
-      $$0.a($$4.g, this.C(), this.D(), this.g, this.h);
-   }
-
-   static enum a {
-      a(new akn("widget/locked_button")),
-      b(new akn("widget/locked_button_highlighted")),
-      c(new akn("widget/locked_button_disabled")),
-      d(new akn("widget/unlocked_button")),
-      e(new akn("widget/unlocked_button_highlighted")),
-      f(new akn("widget/unlocked_button_disabled"));
-
-      final akn g;
-
-      private a(akn $$0) {
-         this.g = $$0;
+         return false;
       }
    }
 }

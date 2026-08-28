@@ -1,32 +1,26 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+@FunctionalInterface
+public interface eux<T> {
+   void handle(T var1, euz<T> var2, long var3);
 
-public class eux implements euy {
-   private final DoubleList a;
+   public abstract static class a<T, C extends eux<T>> {
+      private final alb a;
+      private final Class<?> b;
 
-   public eux(DoubleList $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public boolean a(euy.a $$0) {
-      int $$1 = this.a.size() - 1;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2, $$2, $$2)) {
-            return false;
-         }
+      public a(alb $$0, Class<?> $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      return true;
-   }
+      public alb a() {
+         return this.a;
+      }
 
-   @Override
-   public int size() {
-      return this.a.size();
-   }
+      public Class<?> b() {
+         return this.b;
+      }
 
-   @Override
-   public DoubleList a() {
-      return this.a;
+      public abstract void a(ur var1, C var2);
+
+      public abstract C b(ur var1);
    }
 }

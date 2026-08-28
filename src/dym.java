@@ -1,21 +1,17 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class dym {
+   private final int a;
+   private final int b;
 
-@Deprecated
-public class dym extends dyn {
-   public static final MapCodec<dym> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, dym::new));
-
-   public dym(js $$0) {
-      super($$0);
+   public dym(dtu $$0, dbv $$1) {
+      this.a = Math.max($$1.I_(), $$0.f());
+      this.b = Math.min($$1.J_(), $$0.d());
    }
 
-   @Override
-   protected boolean a(drd $$0) {
-      return $$0.e();
+   public int a() {
+      return this.a;
    }
 
-   @Override
-   public dyd<?> a() {
-      return dyd.e;
+   public int b() {
+      return this.b;
    }
 }

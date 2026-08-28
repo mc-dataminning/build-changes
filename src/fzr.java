@@ -1,27 +1,72 @@
-public class fzr extends fzw {
-   fzr(fwr $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 8;
+public class fzr extends gbx {
+   private final float a;
+   private final float b;
+
+   fzr(fxq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cuk $$7) {
+      this($$0, $$1, $$2, $$3, $$7);
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
    }
 
    @Override
-   public void a() {
-      for (int $$0 = 0; $$0 < 6; $$0++) {
-         double $$1 = this.g + (this.r.j() - this.r.j()) * 4.0;
-         double $$2 = this.h + (this.r.j() - this.r.j()) * 4.0;
-         double $$3 = this.i + (this.r.j() - this.r.j()) * 4.0;
-         this.c.a(ky.w, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
-      }
+   public gbb b() {
+      return gbb.a;
+   }
 
-      this.s++;
-      if (this.s == this.t) {
-         this.k();
+   protected fzr(fxq $$0, double $$1, double $$2, double $$3, cuk $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a(ffa.Q().ar().a($$4, $$0, null, 0).e());
+      this.u = 1.0F;
+      this.D /= 2.0F;
+      this.a = this.r.i() * 3.0F;
+      this.b = this.r.i() * 3.0F;
+   }
+
+   @Override
+   protected float c() {
+      return this.E.a((this.a + 1.0F) / 4.0F);
+   }
+
+   @Override
+   protected float d() {
+      return this.E.a(this.a / 4.0F);
+   }
+
+   @Override
+   protected float e() {
+      return this.E.c(this.b / 4.0F);
+   }
+
+   @Override
+   protected float f() {
+      return this.E.c((this.b + 1.0F) / 4.0F);
+   }
+
+   public static class a implements gba<lm> {
+      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fzr($$1, $$2, $$3, $$4, new cuk(cun.cM));
       }
    }
 
-   public static class a implements gab<lb> {
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fzr($$1, $$2, $$3, $$4);
+   public static class b implements gba<lf> {
+      public gax a(lf $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fzr($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.b());
+      }
+   }
+
+   public static class c implements gba<lm> {
+      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fzr($$1, $$2, $$3, $$4, new cuk(cun.qQ));
+      }
+   }
+
+   public static class d implements gba<lm> {
+      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fzr($$1, $$2, $$3, $$4, new cuk(cun.qC));
       }
    }
 }

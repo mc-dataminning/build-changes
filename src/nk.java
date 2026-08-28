@@ -1,115 +1,81 @@
-import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.function.BiConsumer;
 
-public interface nk extends Supplier<JsonElement> {
-   void a(dre<?, ?> var1);
-
-   static nk.c a() {
-      return new nk.c();
-   }
-
-   static nk a(nk... $$0) {
-      return new nk.a(nk.b.a, Arrays.asList($$0));
-   }
-
-   static nk b(nk... $$0) {
-      return new nk.a(nk.b.b, Arrays.asList($$0));
-   }
-
-   public static class a implements nk {
-      private final nk.b a;
-      private final List<nk> b;
-
-      a(nk.b $$0, List<nk> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public void a(dre<?, ?> $$0) {
-         this.b.forEach($$1 -> $$1.a($$0));
-      }
-
-      public JsonElement b() {
-         JsonArray $$0 = new JsonArray();
-         this.b.stream().map(Supplier::get).forEach($$0::add);
-         JsonObject $$1 = new JsonObject();
-         $$1.add(this.a.c, $$0);
-         return $$1;
-      }
-   }
-
-   public static enum b {
-      a("AND"),
-      b("OR");
-
-      final String c;
-
-      private b(String $$0) {
-         this.c = $$0;
-      }
-   }
-
-   public static class c implements nk {
-      private final Map<dsg<?>, String> a = Maps.newHashMap();
-
-      private static <T extends Comparable<T>> String a(dsg<T> $$0, Stream<T> $$1) {
-         return $$1.<CharSequence>map($$0::a).collect(Collectors.joining("|"));
-      }
-
-      private static <T extends Comparable<T>> String c(dsg<T> $$0, T $$1, T[] $$2) {
-         return a($$0, Stream.concat(Stream.of($$1), Stream.of($$2)));
-      }
-
-      private <T extends Comparable<T>> void a(dsg<T> $$0, String $$1) {
-         String $$2 = this.a.put($$0, $$1);
-         if ($$2 != null) {
-            throw new IllegalStateException("Tried to replace " + $$0 + " value from " + $$2 + " to " + $$1);
-         }
-      }
-
-      public final <T extends Comparable<T>> nk.c a(dsg<T> $$0, T $$1) {
-         this.a($$0, $$0.a($$1));
-         return this;
-      }
-
-      @SafeVarargs
-      public final <T extends Comparable<T>> nk.c a(dsg<T> $$0, T $$1, T... $$2) {
-         this.a($$0, c($$0, $$1, $$2));
-         return this;
-      }
-
-      public final <T extends Comparable<T>> nk.c b(dsg<T> $$0, T $$1) {
-         this.a($$0, "!" + $$0.a($$1));
-         return this;
-      }
-
-      @SafeVarargs
-      public final <T extends Comparable<T>> nk.c b(dsg<T> $$0, T $$1, T... $$2) {
-         this.a($$0, "!" + c($$0, $$1, $$2));
-         return this;
-      }
-
-      public JsonElement b() {
-         JsonObject $$0 = new JsonObject();
-         this.a.forEach(($$1, $$2) -> $$0.addProperty($$1.f(), $$2));
-         return $$0;
-      }
-
-      @Override
-      public void a(dre<?, ?> $$0) {
-         List<dsg<?>> $$1 = this.a.keySet().stream().filter($$1x -> $$0.a($$1x.f()) != $$1x).collect(Collectors.toList());
-         if (!$$1.isEmpty()) {
-            throw new IllegalStateException("Properties " + $$1 + " are missing from " + $$0);
-         }
-      }
+public class nk implements mu {
+   @Override
+   public void generate(jk.a $$0, BiConsumer<ala<eqi>, eqi.a> $$1) {
+      $$1.accept(
+         epz.aG,
+         eqi.b()
+            .a(
+               eqh.a()
+                  .a(eug.a(1.0F))
+                  .a(eqq.a(cun.uE).a(10))
+                  .a(eqq.a(cun.uD).a(10))
+                  .a(eqq.a(cun.sc).a(10))
+                  .a(eqq.a(cun.pt).a(10))
+                  .a(eqq.a(cun.se).a(10))
+                  .a(eqq.a(cun.ps).a(10))
+                  .a(eqq.a(cun.vQ).a(2))
+            )
+      );
+      $$1.accept(epz.aH, eqi.b().a(eqh.a().a(eug.a(1.0F)).a(eqq.a(cun.pC)).a(eqq.a(cun.pD)).a(eqq.a(cun.pE)).a(eqq.a(cun.pF))));
+      $$1.accept(epz.aI, eqi.b().a(eqh.a().a(eug.a(1.0F)).a(eqq.a(cun.uB)).a(eqq.a(cun.sd)).a(eqq.a(cun.pY)).a(eqq.a(cun.sb)).a(eqq.a(cun.uO))));
+      $$1.accept(epz.aJ, eqi.b().a(eqh.a().a(eug.a(1.0F)).a(eqq.a(cun.uj)).a(eqq.a(cun.qO))));
+      $$1.accept(epz.aK, eqi.b().a(eqh.a().a(eug.a(1.0F)).a(eqq.a(cun.lH)).a(eqq.a(cun.oA))));
+      $$1.accept(epz.aL, eqi.b().a(eqh.a().a(eug.a(1.0F)).a(eqq.a(cun.px)).a(eqq.a(cun.ut)).a(eqq.a(cun.rS))));
+      $$1.accept(epz.aM, eqi.b().a(eqh.a().a(eug.a(1.0F)).a(eqq.a(cun.qZ)).a(eqq.a(cun.ra))));
+      $$1.accept(
+         epz.aN,
+         eqi.b()
+            .a(
+               eqh.a()
+                  .a(eug.a(1.0F))
+                  .a(eqq.a(cun.ov).a(26))
+                  .a(eqq.a(cun.vq).a(esi.a(eum.a(0.0F, 1.0F))).a(eso.a(cwm.n)))
+                  .a(eqq.a(cun.vq).a(esi.a(eum.a(0.0F, 1.0F))).a(eso.a(cwm.q)))
+                  .a(eqq.a(cun.vq).a(esi.a(eum.a(0.0F, 1.0F))).a(eso.a(cwm.I)))
+                  .a(eqq.a(cun.vq).a(esi.a(eum.a(0.0F, 1.0F))).a(eso.a(cwm.y)))
+                  .a(eqq.a(cun.vq).a(esi.a(eum.a(0.0F, 1.0F))).a(eso.a(cwm.A)))
+                  .a(eqq.a(cun.vq).a(esi.a(eum.a(0.0F, 1.0F))).a(eso.a(cwm.i)))
+                  .a(eqq.a(cun.vq).a(esi.a(eum.a(0.0F, 1.0F))).a(eso.a(cwm.F)))
+                  .a(eqq.a(cun.vq).a(esi.a(eum.a(0.0F, 1.0F))).a(eso.a(cwm.l)))
+                  .a(eqq.a(cun.vq).a(esi.a(eum.a(0.0F, 1.0F))).a(eso.a(cwm.w)))
+                  .a(eqq.a(cun.vq).a(esi.a(eum.a(0.0F, 1.0F))).a(eso.a(cwm.g)))
+                  .a(eqq.a(cun.vq).a(esi.a(eum.a(0.0F, 1.0F))).a(eso.a(cwm.e)))
+                  .a(eqq.a(cun.vq).a(esi.a(eum.a(0.0F, 1.0F))).a(eso.a(cwm.L)))
+                  .a(eqq.a(cun.vq).a(esi.a(eum.a(0.0F, 1.0F))).a(eso.a(cwm.C)))
+            )
+      );
+      $$1.accept(epz.aO, eqi.b().a(eqh.a().a(eug.a(1.0F)).a(eqq.a(cun.qD))));
+      $$1.accept(epz.aP, eqi.b().a(eqh.a().a(eug.a(1.0F)).a(eqq.a(cun.qP))));
+      $$1.accept(epz.aQ, eqi.b().a(eqh.a().a(eug.a(1.0F)).a(eqq.a(cun.eX))));
+      $$1.accept(
+         epz.aR,
+         eqi.b()
+            .a(
+               eqh.a()
+                  .a(eug.a(1.0F))
+                  .a(eqq.a(cun.cU))
+                  .a(eqq.a(cun.cV))
+                  .a(eqq.a(cun.cW))
+                  .a(eqq.a(cun.cX))
+                  .a(eqq.a(cun.cY))
+                  .a(eqq.a(cun.cZ))
+                  .a(eqq.a(cun.da))
+                  .a(eqq.a(cun.db))
+                  .a(eqq.a(cun.dc))
+                  .a(eqq.a(cun.dd))
+                  .a(eqq.a(cun.de))
+                  .a(eqq.a(cun.df))
+                  .a(eqq.a(cun.dg))
+                  .a(eqq.a(cun.dh))
+                  .a(eqq.a(cun.di))
+                  .a(eqq.a(cun.dj))
+            )
+      );
+      $$1.accept(epz.aS, eqi.b().a(eqh.a().a(eug.a(1.0F)).a(eqq.a(cun.oS)).a(eqq.a(cun.oT)).a(eqq.a(cun.oU)).a(eqq.a(cun.oR))));
+      $$1.accept(epz.aT, eqi.b().a(eqh.a().a(eug.a(1.0F)).a(eqq.a(cun.oT)).a(eqq.a(cun.oY)).a(eqq.a(cun.pd))));
+      $$1.accept(epz.aU, eqi.b().a(eqh.a().a(eug.a(1.0F)).a(eqq.a(cun.vi)).a(eqq.a(cun.vj))));
+      $$1.accept(epz.aV, eqi.b().a(eqh.a().a(eug.a(1.0F)).a(eqq.a(cun.qQ).a(1)).a(eqo.b().a(699))));
    }
 }

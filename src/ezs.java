@@ -1,20 +1,21 @@
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import javax.annotation.Nullable;
+public abstract class ezs implements ezx {
+   protected boolean a;
+   protected int b = 255;
+   protected int c = 255;
+   protected int d = 255;
+   protected int e = 255;
 
-public class ezs {
-   private final Gson a = new Gson();
-
-   public String a(fak $$0) {
-      return this.a.toJson($$0);
+   @Override
+   public void b(int $$0, int $$1, int $$2, int $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.a = true;
    }
 
-   public String a(JsonElement $$0) {
-      return this.a.toJson($$0);
-   }
-
-   @Nullable
-   public <T extends fak> T a(String $$0, Class<T> $$1) {
-      return (T)this.a.fromJson($$0, $$1);
+   @Override
+   public void l() {
+      this.a = false;
    }
 }

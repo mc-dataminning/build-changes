@@ -1,62 +1,36 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.SortedMap;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Set;
+import java.util.function.LongSupplier;
+import java.util.function.Supplier;
 
-public class gcq {
-   private final gcv a = new gcv();
-   private final gcw b;
-   private final gck.a c;
-   private final gck.a d;
-   private final gcl e;
+public class gcq implements bom {
+   private final gdh a;
+   private final Set<bok> b = new ObjectOpenHashSet();
+   private final bos c = new bos();
 
-   public gcq(int $$0) {
-      this.b = gcw.a($$0);
-      SortedMap<gcs, eyp> $$1 = ac.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
-         $$0x.put(gcz.h(), this.a.a(gcs.c()));
-         $$0x.put(gcz.i(), this.a.a(gcs.e()));
-         $$0x.put(gcz.a(), this.a.a(gcs.d()));
-         $$0x.put(gcz.k(), this.a.a(gcs.f()));
-         a($$0x, gcz.b());
-         a($$0x, gcz.c());
-         a($$0x, gcz.d());
-         a($$0x, gcz.e());
-         a($$0x, gcz.f());
-         $$0x.put(gcz.g(), new eyp(786432));
-         a($$0x, gcs.j());
-         a($$0x, gcs.k());
-         a($$0x, gcs.m());
-         a($$0x, gcs.n());
-         a($$0x, gcs.l());
-         a($$0x, gcs.o());
-         a($$0x, gcs.p());
-         a($$0x, gcs.i());
-         gqb.l.forEach($$1x -> a($$0x, $$1x));
-      });
-      this.d = gck.a(new eyp(1536));
-      this.c = gck.a($$1, new eyp(786432));
-      this.e = new gcl(this.c);
+   public gcq(LongSupplier $$0, gdh $$1) {
+      this.a = $$1;
+      this.b.add(bot.a($$0));
+      this.a();
    }
 
-   private static void a(Object2ObjectLinkedOpenHashMap<gcs, eyp> $$0, gcs $$1) {
-      $$0.put($$1, new eyp($$1.I()));
+   private void a() {
+      this.b.addAll(bot.a());
+      this.b.add(bok.a("totalChunks", boj.f, this.a, gdh::i));
+      this.b.add(bok.a("renderedChunks", boj.f, this.a, gdh::k));
+      this.b.add(bok.a("lastViewDistance", boj.f, this.a, gdh::j));
+      ggj $$0 = this.a.h();
+      this.b.add(bok.a("toUpload", boj.g, $$0, ggj::c));
+      this.b.add(bok.a("freeBufferCount", boj.g, $$0, ggj::d));
+      this.b.add(bok.a("toBatchCount", boj.g, $$0, ggj::b));
+      if (ezm.a().isPresent()) {
+         this.b.add(bok.a("gpuUtilization", boj.i, ffa.Q(), ffa::v));
+      }
    }
 
-   public gcv a() {
-      return this.a;
-   }
-
-   public gcw b() {
+   @Override
+   public Set<bok> a(Supplier<bnb> $$0) {
+      this.b.addAll(this.c.a($$0));
       return this.b;
-   }
-
-   public gck.a c() {
-      return this.c;
-   }
-
-   public gck.a d() {
-      return this.d;
-   }
-
-   public gcl e() {
-      return this.e;
    }
 }

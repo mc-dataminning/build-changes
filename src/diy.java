@@ -1,34 +1,59 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class diy extends dea implements ded {
-   public static final MapCodec<diy> a = b(diy::new);
+public class diy extends dij implements djl {
+   public static final MapCodec<diy> c = b(diy::new);
+   protected static final ewf g = deu.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+   private static final double h = 0.14;
 
    @Override
    public MapCodec<diy> a() {
-      return a;
+      return c;
    }
 
-   public diy(drc.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean b(dbc $$0, io $$1, drd $$2) {
-      return $$0.a_($$1.c()).i();
+   protected diy(drw.d $$0) {
+      super($$0, je.b, g, true, 0.14);
    }
 
    @Override
-   public boolean a(daz $$0, aym $$1, io $$2, drd $$3) {
-      return true;
+   protected boolean g(drx $$0) {
+      return $$0.a(dew.G);
    }
 
    @Override
-   public void a(aqn $$0, aym $$1, io $$2, drd $$3) {
-      $$0.H_().c(lf.aC).flatMap($$0x -> $$0x.b(rr.n)).ifPresent($$3x -> ((dzm)$$3x.a()).a($$0, $$0.l().g(), $$1, $$2.c()));
+   protected deu b() {
+      return dew.md;
    }
 
    @Override
-   public ded.a ar_() {
-      return ded.a.a;
+   protected boolean m(drx $$0) {
+      return !$$0.a(dew.kJ);
+   }
+
+   @Override
+   public boolean a(@Nullable cms $$0, daz $$1, iz $$2, drx $$3, enp $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(dbu $$0, iz $$1, drx $$2, enq $$3) {
+      return false;
+   }
+
+   @Override
+   protected int a(azc $$0) {
+      return 1;
+   }
+
+   @Nullable
+   @Override
+   public drx a(cxv $$0) {
+      enq $$1 = $$0.q().b_($$0.a());
+      return $$1.a(awr.a) && $$1.e() == 8 ? super.a($$0) : null;
+   }
+
+   @Override
+   protected enq b_(drx $$0) {
+      return enr.c.a(false);
    }
 }

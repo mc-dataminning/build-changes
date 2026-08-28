@@ -1,35 +1,18 @@
-import javax.annotation.Nullable;
+public class ss {
+   public static final ala<ehj> a = sw.a("end_spike");
+   public static final ala<ehj> b = sw.a("end_gateway_return");
+   public static final ala<ehj> c = sw.a("chorus_plant");
+   public static final ala<ehj> d = sw.a("end_island_decorated");
 
-public class ss extends sr {
-   private final io a;
-   private final io b;
-   private final long c;
-
-   public ss(String $$0, io $$1, io $$2, long $$3) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-   }
-
-   @Override
-   public String getMessage() {
-      String $$0 = this.a.u() + "," + this.a.v() + "," + this.a.w() + " (relative: " + this.b.u() + "," + this.b.v() + "," + this.b.w() + ")";
-      return super.getMessage() + " at " + $$0 + " (t=" + this.c + ")";
-   }
-
-   @Nullable
-   public String a() {
-      return super.getMessage();
-   }
-
-   @Nullable
-   public io b() {
-      return this.b;
-   }
-
-   @Nullable
-   public io c() {
-      return this.a;
+   public static void a(rc<ehj> $$0) {
+      jj<eag<?, ?>> $$1 = $$0.a(lq.aC);
+      ji<eag<?, ?>> $$2 = $$1.b(sg.a);
+      ji<eag<?, ?>> $$3 = $$1.b(sg.b);
+      ji<eag<?, ?>> $$4 = $$1.b(sg.d);
+      ji<eag<?, ?>> $$5 = $$1.b(sg.e);
+      sw.a($$0, a, $$2, egx.a());
+      sw.a($$0, b, $$3, ehp.a(700), ehg.a(), sw.a, eho.a(bqa.a(3, 9)), egx.a());
+      sw.a($$0, c, $$4, ehc.a(bqa.a(0, 4)), ehg.a(), sw.a, egx.a());
+      sw.a($$0, d, $$5, ehp.a(14), sw.a(1, 0.25F, 1), ehg.a(), ehe.a(dyj.a(55), dyj.a(70)), egx.a());
    }
 }

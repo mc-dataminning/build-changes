@@ -1,44 +1,30 @@
-import java.util.Optional;
+public class buu extends bun {
+   private final double b;
+   private final double c;
 
-public class buu implements bvx {
-   private final brw a;
-   private final boolean b;
-
-   public buu(brw $$0, boolean $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   @Override
-   public eum a() {
-      return this.b ? this.a.dn().b(0.0, (double)this.a.cL(), 0.0) : this.a.dn();
-   }
-
-   @Override
-   public io b() {
-      return this.a.dp();
-   }
-
-   @Override
-   public boolean a(bsq $$0) {
-      if (this.a instanceof bsq $$1) {
-         if (!$$1.bD()) {
-            return false;
-         } else {
-            Optional<cbw> $$3 = $$0.dS().c(cbu.h);
-            return $$3.isPresent() && $$3.get().a($$1);
-         }
-      } else {
-         return true;
+   public buu(String $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1);
+      this.b = $$2;
+      this.c = $$3;
+      if ($$2 > $$3) {
+         throw new IllegalArgumentException("Minimum value cannot be bigger than maximum value!");
+      } else if ($$1 < $$2) {
+         throw new IllegalArgumentException("Default value cannot be lower than minimum value!");
+      } else if ($$1 > $$3) {
+         throw new IllegalArgumentException("Default value cannot be bigger than maximum value!");
       }
    }
 
-   public brw c() {
-      return this.a;
+   public double d() {
+      return this.b;
+   }
+
+   public double e() {
+      return this.c;
    }
 
    @Override
-   public String toString() {
-      return "EntityTracker for " + this.a;
+   public double a(double $$0) {
+      return Double.isNaN($$0) ? this.b : ayu.a($$0, this.b, this.c);
    }
 }

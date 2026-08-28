@@ -1,17 +1,19 @@
-public enum cxl implements ayz {
-   a("food"),
-   b("blocks"),
-   c("misc");
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-   public static final ayz.a<cxl> d = ayz.a(cxl::values);
-   private final String e;
+public enum cxl {
+   a(0),
+   b(1);
 
-   private cxl(String $$0) {
+   public static final IntFunction<cxl> c = axl.a(cxl::a, values(), axl.a.a);
+   public static final zj<ByteBuf, cxl> d = zh.a(c, cxl::a);
+   private final int e;
+
+   private cxl(final int $$0) {
       this.e = $$0;
    }
 
-   @Override
-   public String c() {
+   public int a() {
       return this.e;
    }
 }

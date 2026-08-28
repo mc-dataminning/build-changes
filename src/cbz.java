@@ -1,41 +1,42 @@
-public class cbz extends ccc {
-   public cbz(bss $$0, daz $$1) {
-      super($$0, $$1);
+import java.util.EnumSet;
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class cbz extends cci {
+   private final cfm a;
+   @Nullable
+   private btk b;
+   private final ceb c = ceb.a().a(64.0);
+
+   public cbz(cfm $$0) {
+      super($$0, false, true);
+      this.a = $$0;
+      this.a(EnumSet.of(cai.a.d));
    }
 
    @Override
-   protected enm a(int $$0) {
-      this.o = new enf(false);
-      this.o.a(true);
-      return new enm(this.o, $$0);
+   public boolean a() {
+      evh $$0 = this.a.cK().c(10.0, 8.0, 10.0);
+      List<? extends btk> $$1 = this.a.dP().a(cmf.class, this.c, this.a, $$0);
+      List<cms> $$2 = this.a.dP().a(this.c, this.a, $$0);
+
+      for (btk $$3 : $$1) {
+         cmf $$4 = (cmf)$$3;
+
+         for (cms $$5 : $$2) {
+            int $$6 = $$4.g($$5);
+            if ($$6 <= -100) {
+               this.b = $$5;
+            }
+         }
+      }
+
+      return this.b == null ? false : !(this.b instanceof cms) || !this.b.N_() && !((cms)this.b).f();
    }
 
    @Override
-   protected boolean a() {
-      return true;
-   }
-
-   @Override
-   protected eum b() {
-      return new eum(this.a.du(), this.a.e(0.5), this.a.dA());
-   }
-
-   @Override
-   protected double a(eum $$0) {
-      return $$0.d;
-   }
-
-   @Override
-   protected boolean a(eum $$0, eum $$1) {
-      return this.a.bi() ? a(this.a, $$0, $$1, false) : false;
-   }
-
-   @Override
-   public boolean a(io $$0) {
-      return !this.b.a_($$0.d()).i();
-   }
-
-   @Override
-   public void a(boolean $$0) {
+   public void c() {
+      this.a.h(this.b);
+      super.c();
    }
 }

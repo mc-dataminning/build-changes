@@ -1,37 +1,47 @@
-import com.google.common.net.InetAddresses;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import java.util.Collection;
+import java.util.Collections;
 
 public class ani {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.c("commands.pardonip.invalid"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wx.c("commands.pardonip.failed"));
+   public static final int a = 2;
 
-   public static void a(CommandDispatcher<ee> $$0) {
+   public static void a(CommandDispatcher<ep> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("pardon-ip").requires($$0x -> $$0x.c(3)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("gamemode").requires($$0x -> $$0x.c(2)))
             .then(
-               ef.a("target", StringArgumentType.word())
-                  .suggests(($$0x, $$1) -> ej.a(((ee)$$0x.getSource()).l().ah().g().a(), $$1))
-                  .executes($$0x -> a((ee)$$0x.getSource(), StringArgumentType.getString($$0x, "target")))
+               ((RequiredArgumentBuilder)eq.a("gamemode", fd.a())
+                     .executes($$0x -> a($$0x, Collections.singleton(((ep)$$0x.getSource()).h()), fd.a($$0x, "gamemode"))))
+                  .then(eq.a("target", fc.d()).executes($$0x -> a($$0x, fc.f($$0x, "target"), fd.a($$0x, "gamemode"))))
             )
       );
    }
 
-   private static int a(ee $$0, String $$1) throws CommandSyntaxException {
-      if (!InetAddresses.isInetAddress($$1)) {
-         throw a.create();
+   private static void a(ep $$0, arc $$1, dbq $$2) {
+      xl $$3 = xl.c("gameMode." + $$2.b());
+      if ($$0.f() == $$1) {
+         $$0.a(() -> xl.a("commands.gamemode.success.self", $$3), true);
       } else {
-         auh $$2 = $$0.l().ah().g();
-         if (!$$2.a($$1)) {
-            throw b.create();
-         } else {
-            $$2.c($$1);
-            $$0.a(() -> wx.a("commands.pardonip.success", $$1), true);
-            return 1;
+         if ($$0.e().ab().b(dbp.p)) {
+            $$1.a(xl.a("gameMode.changed", $$3));
+         }
+
+         $$0.a(() -> xl.a("commands.gamemode.success.other", $$1.O_(), $$3), true);
+      }
+   }
+
+   private static int a(CommandContext<ep> $$0, Collection<arc> $$1, dbq $$2) {
+      int $$3 = 0;
+
+      for (arc $$4 : $$1) {
+         if ($$4.a($$2)) {
+            a((ep)$$0.getSource(), $$4, $$2);
+            $$3++;
          }
       }
+
+      return $$3;
    }
 }

@@ -1,116 +1,92 @@
-import com.google.common.collect.Sets;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
 import java.util.Collection;
-import java.util.Set;
+import net.minecraft.server.MinecraftServer;
 
 public class aon {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.c("commands.tag.add.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wx.c("commands.tag.remove.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xl.c("commands.schedule.same_tick"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xl.b("commands.schedule.cleared.failure", $$0));
+   private static final SuggestionProvider<ep> c = ($$0, $$1) -> eu.b(((ep)$$0.getSource()).l().bb().I().s().a(), $$1);
 
-   public static void a(CommandDispatcher<ee> $$0) {
+   public static void a(CommandDispatcher<ep> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("tag").requires($$0x -> $$0x.c(2)))
-            .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ef.a("targets", er.b())
-                        .then(
-                           ef.a("add")
-                              .then(
-                                 ef.a("name", StringArgumentType.word())
-                                    .executes($$0x -> a((ee)$$0x.getSource(), er.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
-                              )
-                        ))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("schedule").requires($$0x -> $$0x.c(2)))
+               .then(
+                  eq.a("function")
                      .then(
-                        ef.a("remove")
+                        eq.a("function", gx.a())
+                           .suggests(anh.b)
                            .then(
-                              ef.a("name", StringArgumentType.word())
-                                 .suggests(($$0x, $$1) -> ej.b(a(er.b($$0x, "targets")), $$1))
-                                 .executes($$0x -> b((ee)$$0x.getSource(), er.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
+                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)eq.a("time", ge.a())
+                                       .executes($$0x -> a((ep)$$0x.getSource(), gx.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true)))
+                                    .then(
+                                       eq.a("append")
+                                          .executes(
+                                             $$0x -> a((ep)$$0x.getSource(), gx.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), false)
+                                          )
+                                    ))
+                                 .then(
+                                    eq.a("replace")
+                                       .executes($$0x -> a((ep)$$0x.getSource(), gx.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true))
+                                 )
                            )
-                     ))
-                  .then(ef.a("list").executes($$0x -> a((ee)$$0x.getSource(), er.b($$0x, "targets"))))
+                     )
+               ))
+            .then(
+               eq.a("clear")
+                  .then(
+                     eq.a("function", StringArgumentType.greedyString())
+                        .suggests(c)
+                        .executes($$0x -> a((ep)$$0x.getSource(), StringArgumentType.getString($$0x, "function")))
+                  )
             )
       );
    }
 
-   private static Collection<String> a(Collection<? extends brw> $$0) {
-      Set<String> $$1 = Sets.newHashSet();
-
-      for (brw $$2 : $$0) {
-         $$1.addAll($$2.am());
-      }
-
-      return $$1;
-   }
-
-   private static int a(ee $$0, Collection<? extends brw> $$1, String $$2) throws CommandSyntaxException {
-      int $$3 = 0;
-
-      for (brw $$4 : $$1) {
-         if ($$4.a($$2)) {
-            $$3++;
-         }
-      }
-
-      if ($$3 == 0) {
+   private static int a(ep $$0, Pair<alb, Either<ib<ep>, Collection<ib<ep>>>> $$1, int $$2, boolean $$3) throws CommandSyntaxException {
+      if ($$2 == 0) {
          throw a.create();
       } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> wx.a("commands.tag.add.success.single", $$2, $$1.iterator().next().O_()), true);
-         } else {
-            $$0.a(() -> wx.a("commands.tag.add.success.multiple", $$2, $$1.size()), true);
-         }
+         long $$4 = $$0.e().Z() + (long)$$2;
+         alb $$5 = (alb)$$1.getFirst();
+         euz<MinecraftServer> $$6 = $$0.l().bb().I().s();
+         ((Either)$$1.getSecond()).ifLeft($$6x -> {
+            String $$7 = $$5.toString();
+            if ($$3) {
+               $$6.a($$7);
+            }
 
-         return $$3;
+            $$6.a($$7, $$4, new euv($$5));
+            $$0.a(() -> xl.a("commands.schedule.created.function", xl.a($$5), $$2, $$4), true);
+         }).ifRight($$6x -> {
+            String $$7 = "#" + $$5;
+            if ($$3) {
+               $$6.a($$7);
+            }
+
+            $$6.a($$7, $$4, new euw($$5));
+            $$0.a(() -> xl.a("commands.schedule.created.tag", xl.a($$5), $$2, $$4), true);
+         });
+         return Math.floorMod($$4, Integer.MAX_VALUE);
       }
    }
 
-   private static int b(ee $$0, Collection<? extends brw> $$1, String $$2) throws CommandSyntaxException {
-      int $$3 = 0;
-
-      for (brw $$4 : $$1) {
-         if ($$4.b($$2)) {
-            $$3++;
-         }
-      }
-
-      if ($$3 == 0) {
-         throw b.create();
+   private static int a(ep $$0, String $$1) throws CommandSyntaxException {
+      int $$2 = $$0.l().bb().I().s().a($$1);
+      if ($$2 == 0) {
+         throw b.create($$1);
       } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> wx.a("commands.tag.remove.success.single", $$2, $$1.iterator().next().O_()), true);
-         } else {
-            $$0.a(() -> wx.a("commands.tag.remove.success.multiple", $$2, $$1.size()), true);
-         }
-
-         return $$3;
+         $$0.a(() -> xl.a("commands.schedule.cleared.success", $$2, $$1), true);
+         return $$2;
       }
-   }
-
-   private static int a(ee $$0, Collection<? extends brw> $$1) {
-      Set<String> $$2 = Sets.newHashSet();
-
-      for (brw $$3 : $$1) {
-         $$2.addAll($$3.am());
-      }
-
-      if ($$1.size() == 1) {
-         brw $$4 = $$1.iterator().next();
-         if ($$2.isEmpty()) {
-            $$0.a(() -> wx.a("commands.tag.list.single.empty", $$4.O_()), false);
-         } else {
-            $$0.a(() -> wx.a("commands.tag.list.single.success", $$4.O_(), $$2.size(), xa.a($$2)), false);
-         }
-      } else if ($$2.isEmpty()) {
-         $$0.a(() -> wx.a("commands.tag.list.multiple.empty", $$1.size()), false);
-      } else {
-         $$0.a(() -> wx.a("commands.tag.list.multiple.success", $$1.size(), $$2.size(), xa.a($$2)), false);
-      }
-
-      return $$2.size();
    }
 }

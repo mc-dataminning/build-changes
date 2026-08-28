@@ -1,66 +1,51 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+import ca.weblite.objc.Client;
+import ca.weblite.objc.NSObject;
+import com.sun.jna.Pointer;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Base64;
+import java.util.Optional;
+import org.lwjgl.glfw.GLFWNativeCocoa;
 
 public class eyq {
-   @Nullable
-   private static eyx a;
+   private static final int a = 8;
+   private static final int b = 16384;
 
-   public static void a() {
-      if (a != null) {
-         b();
-         eyx.b();
-      }
+   public static void a(long $$0) {
+      c($$0).filter(eyq::a).ifPresent(eyq::c);
    }
 
-   public static void b() {
-      a = null;
+   public static void b(long $$0) {
+      c($$0).ifPresent($$0x -> {
+         long $$1 = b($$0x);
+         $$0x.send("setStyleMask:", new Object[]{$$1 & -9L});
+      });
    }
 
-   public static void a(eyp.b $$0) {
-      if (!RenderSystem.isOnRenderThreadOrInit()) {
-         RenderSystem.recordRenderCall(() -> c($$0));
-      } else {
-         c($$0);
-      }
+   private static Optional<NSObject> c(long $$0) {
+      long $$1 = GLFWNativeCocoa.glfwGetCocoaWindow($$0);
+      return $$1 != 0L ? Optional.of(new NSObject(new Pointer($$1))) : Optional.empty();
    }
 
-   private static void c(eyp.b $$0) {
-      eyx $$1 = d($$0);
-      if ($$1 != null) {
-         $$1.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
-      }
+   private static boolean a(NSObject $$0) {
+      return (b($$0) & 16384L) != 0L;
    }
 
-   public static void b(eyp.b $$0) {
-      eyx $$1 = d($$0);
-      if ($$1 != null) {
-         $$1.c();
-      }
+   private static long b(NSObject $$0) {
+      return (Long)$$0.sendRaw("styleMask", new Object[0]);
    }
 
-   @Nullable
-   private static eyx d(eyp.b $$0) {
-      RenderSystem.assertOnRenderThread();
-      if ($$0.d()) {
-         $$0.e();
-         return null;
-      } else {
-         eyx $$1 = a($$0.c().g());
-         $$1.a($$0);
-         return $$1;
-      }
+   private static void c(NSObject $$0) {
+      $$0.send("toggleFullScreen:", new Object[]{Pointer.NULL});
    }
 
-   private static eyx a(eyz $$0) {
-      eyx $$1 = $$0.g();
-      a($$1);
-      return $$1;
-   }
-
-   private static void a(eyx $$0) {
-      if ($$0 != a) {
-         $$0.a();
-         a = $$0;
+   public static void a(aud<InputStream> $$0) throws IOException {
+      try (InputStream $$1 = $$0.get()) {
+         String $$2 = Base64.getEncoder().encodeToString($$1.readAllBytes());
+         Client $$3 = Client.getInstance();
+         Object $$4 = $$3.sendProxy("NSData", "alloc", new Object[0]).send("initWithBase64Encoding:", new Object[]{$$2});
+         Object $$5 = $$3.sendProxy("NSImage", "alloc", new Object[0]).send("initWithData:", new Object[]{$$4});
+         $$3.sendProxy("NSApplication", "sharedApplication", new Object[0]).send("setApplicationIconImage:", new Object[]{$$5});
       }
    }
 }

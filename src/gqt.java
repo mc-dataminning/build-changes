@@ -1,3 +1,8 @@
-public interface gqt {
-   void a();
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gqt {
 }

@@ -1,27 +1,14 @@
-import com.mojang.logging.LogUtils;
-import java.security.PrivateKey;
-import java.security.Signature;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public interface ays {
-   Logger a = LogUtils.getLogger();
+public class ays {
+   @Nullable
+   private static byte[] a = null;
 
-   byte[] sign(ayq var1);
-
-   default byte[] a(byte[] $$0) {
-      return this.sign($$1 -> $$1.update($$0));
+   public static void a() {
+      a = new byte[10485760];
    }
 
-   static ays a(PrivateKey $$0, String $$1) {
-      return $$2 -> {
-         try {
-            Signature $$3 = Signature.getInstance($$1);
-            $$3.initSign($$0);
-            $$2.update($$3::update);
-            return $$3.sign();
-         } catch (Exception var4) {
-            throw new IllegalStateException("Failed to sign message", var4);
-         }
-      };
+   public static void b() {
+      a = new byte[0];
    }
 }

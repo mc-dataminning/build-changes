@@ -1,29 +1,40 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import net.minecraft.server.MinecraftServer;
+import java.util.Collection;
 
 public class anv {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.c("commands.save.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xl.c("commands.pardon.failed"));
 
-   public static void a(CommandDispatcher<ee> $$0) {
+   public static void a(CommandDispatcher<ep> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("save-all").requires($$0x -> $$0x.c(4)))
-               .executes($$0x -> a((ee)$$0x.getSource(), false)))
-            .then(ef.a("flush").executes($$0x -> a((ee)$$0x.getSource(), true)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("pardon").requires($$0x -> $$0x.c(3)))
+            .then(
+               eq.a("targets", fe.a())
+                  .suggests(($$0x, $$1) -> eu.a(((ep)$$0x.getSource()).l().ah().f().a(), $$1))
+                  .executes($$0x -> a((ep)$$0x.getSource(), fe.a($$0x, "targets")))
+            )
       );
    }
 
-   private static int a(ee $$0, boolean $$1) throws CommandSyntaxException {
-      $$0.a(() -> wx.c("commands.save.saving"), false);
-      MinecraftServer $$2 = $$0.l();
-      boolean $$3 = $$2.b(true, $$1, true);
-      if (!$$3) {
+   private static int a(ep $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      avf $$2 = $$0.l().ah().f();
+      int $$3 = 0;
+
+      for (GameProfile $$4 : $$1) {
+         if ($$2.a($$4)) {
+            $$2.c($$4);
+            $$3++;
+            $$0.a(() -> xl.a("commands.pardon.success", xl.b($$4.getName())), true);
+         }
+      }
+
+      if ($$3 == 0) {
          throw a.create();
       } else {
-         $$0.a(() -> wx.c("commands.save.success"), true);
-         return 1;
+         return $$3;
       }
    }
 }

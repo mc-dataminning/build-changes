@@ -1,130 +1,84 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class fhz implements frg {
-   private static final akn a = new akn("hud/hotbar");
-   private static final akn b = new akn("hud/hotbar_selection");
-   private static final long c = 5000L;
-   private static final long d = 2000L;
-   private final feb e;
-   private long f;
-   @Nullable
-   private frd g;
+public class fhz extends fgx {
+   private static final float a = 0.0625F;
+   private static final float b = 2.125F;
+   private static final float c = 100.0F;
+   private static final float d = 2.5F;
+   private static final float e = -5.0F;
+   private static final float f = 30.0F;
+   private static final float m = 50.0F;
+   private final fhz.a n;
+   private final Supplier<gpu> o;
+   private float p = -5.0F;
+   private float q = 30.0F;
 
-   public fhz(feb $$0) {
-      this.e = $$0;
-   }
-
-   public void a(int $$0) {
-      this.f = ac.c();
-      if (this.g != null) {
-         this.g.b($$0);
-      } else {
-         this.g = new frd(this);
-      }
-   }
-
-   private float c() {
-      long $$0 = this.f - ac.c() + 5000L;
-      return ayf.a((float)$$0 / 2000.0F, 0.0F, 1.0F);
-   }
-
-   public void a(ffn $$0) {
-      if (this.g != null) {
-         float $$1 = this.c();
-         if ($$1 <= 0.0F) {
-            this.g.d();
-         } else {
-            int $$2 = $$0.a() / 2;
-            $$0.c().a();
-            $$0.c().a(0.0F, 0.0F, -90.0F);
-            int $$3 = ayf.d((float)$$0.b() - 22.0F * $$1);
-            frh $$4 = this.g.f();
-            this.a($$0, $$1, $$2, $$3, $$4);
-            $$0.c().b();
-         }
-      }
-   }
-
-   protected void a(ffn $$0, float $$1, int $$2, int $$3, frh $$4) {
-      RenderSystem.enableBlend();
-      $$0.a(1.0F, 1.0F, 1.0F, $$1);
-      $$0.a(a, $$2 - 91, $$3, 182, 22);
-      if ($$4.a() >= 0) {
-         $$0.a(b, $$2 - 91 - 1 + $$4.a() * 20, $$3 - 1, 24, 23);
-      }
-
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-
-      for (int $$5 = 0; $$5 < 9; $$5++) {
-         this.a($$0, $$5, $$0.a() / 2 - 90 + $$5 * 20 + 2, (float)($$3 + 3), $$1, $$4.a($$5));
-      }
-
-      RenderSystem.disableBlend();
-   }
-
-   private void a(ffn $$0, int $$1, int $$2, float $$3, float $$4, frf $$5) {
-      if ($$5 != frd.a) {
-         int $$6 = (int)($$4 * 255.0F);
-         $$0.c().a();
-         $$0.c().a((float)$$2, $$3, 0.0F);
-         float $$7 = $$5.aP_() ? 1.0F : 0.25F;
-         $$0.a($$7, $$7, $$7, $$4);
-         $$5.a($$0, $$7, $$6);
-         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-         $$0.c().b();
-         if ($$6 > 3 && $$5.aP_()) {
-            wx $$8 = this.e.m.T[$$1].k();
-            $$0.b(this.e.h, $$8, $$2 + 19 - 2 - this.e.h.a($$8), (int)$$3 + 6 + 3, 16777215 + ($$6 << 24));
-         }
-      }
-   }
-
-   public void b(ffn $$0) {
-      int $$1 = (int)(this.c() * 255.0F);
-      if ($$1 > 3 && this.g != null) {
-         frf $$2 = this.g.b();
-         wx $$3 = $$2 == frd.a ? this.g.c().b() : $$2.aO_();
-         if ($$3 != null) {
-            int $$4 = ($$0.a() - this.e.h.a($$3)) / 2;
-            int $$5 = $$0.b() - 35;
-            $$0.b(this.e.h, $$3, $$4, $$5, 16777215 + ($$1 << 24));
-         }
-      }
+   public fhz(int $$0, int $$1, fwr $$2, Supplier<gpu> $$3) {
+      super(0, 0, $$0, $$1, xk.a);
+      this.n = fhz.a.a($$2);
+      this.o = $$3;
    }
 
    @Override
-   public void a(frd $$0) {
-      this.g = null;
-      this.f = 0L;
+   protected void b(fgm $$0, int $$1, int $$2, float $$3) {
+      $$0.c().a();
+      $$0.c().a((float)this.C() + (float)this.x() / 2.0F, (float)(this.D() + this.v()), 100.0F);
+      float $$4 = (float)this.v() / 2.125F;
+      $$0.c().b($$4, $$4, $$4);
+      $$0.c().a(0.0F, -0.0625F, 0.0F);
+      $$0.c().a(a.b.rotationDegrees(this.p), 0.0F, -1.0625F, 0.0F);
+      $$0.c().a(a.d.rotationDegrees(this.q));
+      $$0.e();
+      eyp.a(a.b.rotationDegrees(this.p));
+      this.n.a($$0, this.o.get());
+      $$0.e();
+      eyp.d();
+      $$0.c().b();
    }
 
-   public boolean a() {
-      return this.g != null;
+   @Override
+   protected void b(double $$0, double $$1, double $$2, double $$3) {
+      this.p = ayu.a(this.p - (float)$$3 * 2.5F, -50.0F, 50.0F);
+      this.q += (float)$$2 * 2.5F;
    }
 
-   public void b(int $$0) {
-      int $$1 = this.g.e() + $$0;
+   @Override
+   public void a(gtq $$0) {
+   }
 
-      while ($$1 >= 0 && $$1 <= 8 && (this.g.a($$1) == frd.a || !this.g.a($$1).aP_())) {
-         $$1 += $$0;
+   @Override
+   protected void a(fkv $$0) {
+   }
+
+   @Override
+   public boolean B() {
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public fgj a(flb $$0) {
+      return null;
+   }
+
+   static record a(fva<?> a, fva<?> b) {
+      public static fhz.a a(fwr $$0) {
+         fva<?> $$1 = new fva($$0.a(fwu.aS), false);
+         fva<?> $$2 = new fva($$0.a(fwu.aW), true);
+         $$1.e = false;
+         $$2.e = false;
+         return new fhz.a($$1, $$2);
       }
 
-      if ($$1 >= 0 && $$1 <= 8) {
-         this.g.b($$1);
-         this.f = ac.c();
-      }
-   }
-
-   public void b() {
-      this.f = ac.c();
-      if (this.a()) {
-         int $$0 = this.g.e();
-         if ($$0 != -1) {
-            this.g.b($$0);
-         }
-      } else {
-         this.g = new frd(this);
+      public void a(fgm $$0, gpu $$1) {
+         $$0.c().a();
+         $$0.c().b(1.0F, 1.0F, -1.0F);
+         $$0.c().a(0.0F, -1.5F, 0.0F);
+         fva<?> $$2 = $$1.e() == gpu.a.a ? this.b : this.a;
+         gdr $$3 = $$2.a($$1.a());
+         $$2.a($$0.c(), $$0.d().getBuffer($$3), 15728880, gol.d, 1.0F, 1.0F, 1.0F, 1.0F);
+         $$0.c().b();
       }
    }
 }

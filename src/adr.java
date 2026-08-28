@@ -1,60 +1,53 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class adr implements zs<ace> {
+   public static final zj<wl, adr> a = zs.a(adr::a, adr::new);
+   private final int b;
+   private final iz c;
+   private final int d;
+   private final boolean e;
 
-public record adr(UUID b, int c, @Nullable xj d, xq.a e, @Nullable wx f, xb g, wt.a h) implements ze<abq> {
-   public static final yv<wi, adr> a = ze.a(adr::a, adr::new);
-
-   private adr(wi $$0) {
-      this($$0.n(), $$0.l(), $$0.c(xj::a), new xq.a($$0), vx.a($$0, wz.d), xb.a($$0), wt.a.a.decode($$0));
+   public adr(int $$0, iz $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1.i();
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   private void a(wi $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d, xj::a);
-      this.e.a($$0);
-      vx.a($$0, this.f, wz.d);
-      xb.a($$0, this.g);
-      wt.a.a.encode($$0, this.h);
+   private adr(wl $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.e();
+      this.d = $$0.readInt();
+      this.e = $$0.readBoolean();
+   }
+
+   private void a(wl $$0) {
+      $$0.p(this.b);
+      $$0.a(this.c);
+      $$0.p(this.d);
+      $$0.a(this.e);
    }
 
    @Override
-   public zg<adr> a() {
-      return agc.aa;
+   public zu<adr> a() {
+      return agq.L;
    }
 
-   public void a(abq $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   @Nullable
-   public xj f() {
-      return this.d;
-   }
-
-   public xq.a g() {
+   public boolean b() {
       return this.e;
    }
 
-   @Nullable
-   public wx h() {
-      return this.f;
+   public int e() {
+      return this.b;
    }
 
-   public xb i() {
-      return this.g;
+   public int f() {
+      return this.d;
    }
 
-   public wt.a j() {
-      return this.h;
+   public iz g() {
+      return this.c;
    }
 }

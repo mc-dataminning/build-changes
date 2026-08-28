@@ -1,80 +1,147 @@
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+public class gal extends gbx {
+   static final azc a = azc.a();
+   private final gbs b;
 
-public abstract class gal extends fzy {
-   protected float D;
-   private final Quaternionf a = new Quaternionf();
-
-   protected gal(fwr $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
-   }
-
-   protected gal(fwr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+   gal(fxq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gbs $$7) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
-   }
-
-   public gal.a p() {
-      return gal.a.a;
-   }
-
-   @Override
-   public void a(eyy $$0, fdm $$1, float $$2) {
-      eum $$3 = $$1.b();
-      float $$4 = (float)(ayf.d((double)$$2, this.d, this.g) - $$3.a());
-      float $$5 = (float)(ayf.d((double)$$2, this.e, this.h) - $$3.b());
-      float $$6 = (float)(ayf.d((double)$$2, this.f, this.i) - $$3.c());
-      this.p().setRotation(this.a, $$1, $$2);
-      if (this.z != 0.0F) {
-         this.a.rotateZ(ayf.i($$2, this.A, this.z));
-      }
-
-      Vector3f[] $$7 = new Vector3f[]{
-         new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
-      };
-      float $$8 = this.b($$2);
-
-      for (int $$9 = 0; $$9 < 4; $$9++) {
-         Vector3f $$10 = $$7[$$9];
-         $$10.rotate(this.a);
-         $$10.mul($$8);
-         $$10.add($$4, $$5, $$6);
-      }
-
-      float $$11 = this.c();
-      float $$12 = this.d();
-      float $$13 = this.e();
-      float $$14 = this.f();
-      int $$15 = this.a($$2);
-      $$0.a((double)$$7[0].x(), (double)$$7[0].y(), (double)$$7[0].z()).a($$12, $$14).a(this.v, this.w, this.x, this.y).b($$15).e();
-      $$0.a((double)$$7[1].x(), (double)$$7[1].y(), (double)$$7[1].z()).a($$12, $$13).a(this.v, this.w, this.x, this.y).b($$15).e();
-      $$0.a((double)$$7[2].x(), (double)$$7[2].y(), (double)$$7[2].z()).a($$11, $$13).a(this.v, this.w, this.x, this.y).b($$15).e();
-      $$0.a((double)$$7[3].x(), (double)$$7[3].y(), (double)$$7[3].z()).a($$11, $$14).a(this.v, this.w, this.x, this.y).b($$15).e();
-   }
-
-   public float b(float $$0) {
-      return this.D;
+      this.B = 0.96F;
+      this.C = true;
+      this.b = $$7;
+      this.D *= 0.75F;
+      this.n = false;
+      this.b($$7);
    }
 
    @Override
-   public fzy d(float $$0) {
-      this.D *= $$0;
-      return super.d($$0);
+   public gbb b() {
+      return gbb.c;
    }
 
-   protected abstract float c();
+   @Override
+   public int a(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      $$1 = ayu.a($$1, 0.0F, 1.0F);
+      int $$2 = super.a($$0);
+      int $$3 = $$2 & 0xFF;
+      int $$4 = $$2 >> 16 & 0xFF;
+      $$3 += (int)($$1 * 15.0F * 16.0F);
+      if ($$3 > 240) {
+         $$3 = 240;
+      }
 
-   protected abstract float d();
+      return $$3 | $$4 << 16;
+   }
 
-   protected abstract float e();
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.b);
+   }
 
-   protected abstract float f();
+   public static class a implements gba<lm> {
+      private final double a = 0.25;
+      private final gbs b;
 
-   public interface a {
-      gal.a a = ($$0, $$1, $$2) -> $$0.set($$1.f());
-      gal.a b = ($$0, $$1, $$2) -> $$0.set(0.0F, $$1.f().y, 0.0F, $$1.f().w);
+      public a(gbs $$0) {
+         this.b = $$0;
+      }
 
-      void setRotation(Quaternionf var1, fdm var2, float var3);
+      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gal $$8 = new gal($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
+         $$8.a(1.0F, 0.9F, 1.0F);
+         $$8.b($$5 * 0.25, $$6 * 0.25, $$7 * 0.25);
+         int $$9 = 2;
+         int $$10 = 4;
+         $$8.a($$1.z.a(2) + 2);
+         return $$8;
+      }
+   }
+
+   public static class b implements gba<lm> {
+      private final gbs a;
+
+      public b(gbs $$0) {
+         this.a = $$0;
+      }
+
+      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gal $$8 = new gal($$1, $$2, $$3, $$4, 0.5 - gal.a.j(), $$6, 0.5 - gal.a.j(), this.a);
+         if ($$1.z.h()) {
+            $$8.a(0.6F, 1.0F, 0.8F);
+         } else {
+            $$8.a(0.08F, 0.4F, 0.4F);
+         }
+
+         $$8.k *= 0.2F;
+         if ($$5 == 0.0 && $$7 == 0.0) {
+            $$8.j *= 0.1F;
+            $$8.l *= 0.1F;
+         }
+
+         $$8.a((int)(8.0 / ($$1.z.j() * 0.8 + 0.2)));
+         return $$8;
+      }
+   }
+
+   public static class c implements gba<lm> {
+      private final double a = 0.01;
+      private final gbs b;
+
+      public c(gbs $$0) {
+         this.b = $$0;
+      }
+
+      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gal $$8 = new gal($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
+         if ($$1.z.h()) {
+            $$8.a(0.29F, 0.58F, 0.51F);
+         } else {
+            $$8.a(0.43F, 0.77F, 0.62F);
+         }
+
+         $$8.b($$5 * 0.01, $$6 * 0.01, $$7 * 0.01);
+         int $$9 = 10;
+         int $$10 = 40;
+         $$8.a($$1.z.a(30) + 10);
+         return $$8;
+      }
+   }
+
+   public static class d implements gba<lm> {
+      private final double a = 0.01;
+      private final gbs b;
+
+      public d(gbs $$0) {
+         this.b = $$0;
+      }
+
+      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gal $$8 = new gal($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
+         $$8.a(1.0F, 0.9F, 1.0F);
+         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
+         int $$9 = 10;
+         int $$10 = 40;
+         $$8.a($$1.z.a(30) + 10);
+         return $$8;
+      }
+   }
+
+   public static class e implements gba<lm> {
+      private final double a = 0.01;
+      private final gbs b;
+
+      public e(gbs $$0) {
+         this.b = $$0;
+      }
+
+      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gal $$8 = new gal($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
+         $$8.a(0.91F, 0.55F, 0.08F);
+         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
+         int $$9 = 10;
+         int $$10 = 40;
+         $$8.a($$1.z.a(30) + 10);
+         return $$8;
+      }
    }
 }

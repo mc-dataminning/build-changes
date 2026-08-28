@@ -1,13 +1,21 @@
-public class cvn extends ctl {
-   public cvn(ctl.a $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public class cvn extends cvv {
+   public cvn(cuf.a $$0, deu $$1, deu $$2) {
+      super($$1, $$2, $$0, je.a);
+   }
+
+   public cvn(cuf.a $$0, deu $$1, deu $$2, je $$3) {
+      super($$1, $$2, $$0, $$3);
    }
 
    @Override
-   public bpx<ctq> a(daz $$0, cly $$1, bpv $$2) {
-      ctq $$3 = $$1.b($$2);
-      $$1.a($$3, $$2);
-      $$1.b(avs.c.b(this));
-      return bpx.a($$3, $$0.x_());
+   protected boolean a(iz $$0, dbt $$1, @Nullable cms $$2, cuk $$3, drx $$4) {
+      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
+      if (!$$1.B && !$$5 && $$2 != null && $$1.c_($$0) instanceof dqm $$6 && $$1.a_($$0).b() instanceof dlu $$7) {
+         $$7.a($$2, $$6, true);
+      }
+
+      return $$5;
    }
 }

@@ -1,132 +1,67 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
 
-public class dff extends dea {
-   public static final MapCodec<dff> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(le.e.q().fieldOf("plant").forGetter($$0x -> $$0x.e), u()).apply($$0, dff::new)
-   );
-   public static final int b = 5;
-   public static final dsd c = drt.au;
-   protected static final evf d = dea.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
-   private final dea e;
+public class dff extends deu {
+   public static final MapCodec<dff> a = b(dff::new);
+   public static final dsx b = dsn.aw;
+   public static final int c = 15;
+   protected static final int d = 1;
+   protected static final ewf e = deu.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
+   protected static final ewf f = deu.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
    @Override
    public MapCodec<dff> a() {
       return a;
    }
 
-   protected dff(dea $$0, drc.d $$1) {
-      super($$1);
-      this.e = $$0;
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
+   protected dff(drw.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(drd $$0, aqn $$1, io $$2, aym $$3) {
+   protected void a(drx $$0, arb $$1, iz $$2, azc $$3) {
       if (!$$0.a($$1, $$2)) {
          $$1.b($$2, true);
       }
    }
 
    @Override
-   protected boolean d_(drd $$0) {
-      return $$0.c(c) < 5;
-   }
+   protected void b(drx $$0, arb $$1, iz $$2, azc $$3) {
+      iz $$4 = $$2.c();
+      if ($$1.u($$4)) {
+         int $$5 = 1;
 
-   @Override
-   public evf b_(drd $$0, daf $$1, io $$2) {
-      return d;
-   }
+         while ($$1.a_($$2.c($$5)).a(this)) {
+            $$5++;
+         }
 
-   @Override
-   protected void b(drd $$0, aqn $$1, io $$2, aym $$3) {
-      io $$4 = $$2.c();
-      if ($$1.u($$4) && $$4.v() < $$1.al()) {
-         int $$5 = $$0.c(c);
-         if ($$5 < 5) {
-            boolean $$6 = false;
-            boolean $$7 = false;
-            drd $$8 = $$1.a_($$2.d());
-            if ($$8.a(dec.fz)) {
-               $$6 = true;
-            } else if ($$8.a(this.e)) {
-               int $$9 = 1;
-
-               for (int $$10 = 0; $$10 < 4; $$10++) {
-                  drd $$11 = $$1.a_($$2.c($$9 + 1));
-                  if (!$$11.a(this.e)) {
-                     if ($$11.a(dec.fz)) {
-                        $$7 = true;
-                     }
-                     break;
-                  }
-
-                  $$9++;
-               }
-
-               if ($$9 < 2 || $$9 <= $$3.a($$7 ? 5 : 4)) {
-                  $$6 = true;
-               }
-            } else if ($$8.i()) {
-               $$6 = true;
-            }
-
-            if ($$6 && b($$1, $$4, null) && $$1.u($$2.b(2))) {
-               $$1.a($$2, dfg.a($$1, $$2, this.e.n()), 2);
-               this.a($$1, $$4, $$5);
-            } else if ($$5 < 4) {
-               int $$12 = $$3.a(4);
-               if ($$7) {
-                  $$12++;
-               }
-
-               boolean $$13 = false;
-
-               for (int $$14 = 0; $$14 < $$12; $$14++) {
-                  it $$15 = it.c.a.a($$3);
-                  io $$16 = $$2.a($$15);
-                  if ($$1.u($$16) && $$1.u($$16.d()) && b($$1, $$16, $$15.g())) {
-                     this.a($$1, $$16, $$5 + 1);
-                     $$13 = true;
-                  }
-               }
-
-               if ($$13) {
-                  $$1.a($$2, dfg.a($$1, $$2, this.e.n()), 2);
-               } else {
-                  this.a($$1, $$2);
-               }
+         if ($$5 < 3) {
+            int $$6 = $$0.c(b);
+            if ($$6 == 15) {
+               $$1.b($$4, this.n());
+               drx $$7 = $$0.a(b, Integer.valueOf(0));
+               $$1.a($$2, $$7, 4);
+               $$1.a($$7, $$4, this, $$2, false);
             } else {
-               this.a($$1, $$2);
+               $$1.a($$2, $$0.a(b, Integer.valueOf($$6 + 1)), 4);
             }
          }
       }
    }
 
-   private void a(daz $$0, io $$1, int $$2) {
-      $$0.a($$1, this.n().a(c, Integer.valueOf($$2)), 2);
-      $$0.c(1033, $$1, 0);
-   }
-
-   private void a(daz $$0, io $$1) {
-      $$0.a($$1, this.n().a(c, Integer.valueOf(5)), 2);
-      $$0.c(1034, $$1, 0);
-   }
-
-   private static boolean b(dbc $$0, io $$1, @Nullable it $$2) {
-      for (it $$3 : it.c.a) {
-         if ($$3 != $$2 && !$$0.u($$1.a($$3))) {
-            return false;
-         }
-      }
-
-      return true;
+   @Override
+   protected ewf b(drx $$0, daz $$1, iz $$2, evr $$3) {
+      return e;
    }
 
    @Override
-   protected drd a(drd $$0, it $$1, drd $$2, dba $$3, io $$4, io $$5) {
-      if ($$1 != it.b && !$$0.a($$3, $$4)) {
+   protected ewf a(drx $$0, daz $$1, iz $$2, evr $$3) {
+      return f;
+   }
+
+   @Override
+   protected drx a(drx $$0, je $$1, drx $$2, dbu $$3, iz $$4, iz $$5) {
+      if (!$$0.a($$3, $$4)) {
          $$3.a($$4, this, 1);
       }
 
@@ -134,90 +69,30 @@ public class dff extends dea {
    }
 
    @Override
-   protected boolean a(drd $$0, dbc $$1, io $$2) {
-      drd $$3 = $$1.a_($$2.d());
-      if (!$$3.a(this.e) && !$$3.a(dec.fz)) {
-         if (!$$3.i()) {
+   protected boolean a(drx $$0, dbw $$1, iz $$2) {
+      for (je $$3 : je.c.a) {
+         drx $$4 = $$1.a_($$2.a($$3));
+         if ($$4.e() || $$1.b_($$2.a($$3)).a(awr.b)) {
             return false;
-         } else {
-            boolean $$4 = false;
-
-            for (it $$5 : it.c.a) {
-               drd $$6 = $$1.a_($$2.a($$5));
-               if ($$6.a(this.e)) {
-                  if ($$4) {
-                     return false;
-                  }
-
-                  $$4 = true;
-               } else if (!$$6.i()) {
-                  return false;
-               }
-            }
-
-            return $$4;
          }
-      } else {
-         return true;
       }
+
+      drx $$5 = $$1.a_($$2.d());
+      return ($$5.a(dew.dQ) || $$5.a(awl.H)) && !$$1.a_($$2.c()).k();
    }
 
    @Override
-   protected void a(dre.a<dea, drd> $$0) {
-      $$0.a(c);
-   }
-
-   public static void a(dba $$0, io $$1, aym $$2, int $$3) {
-      $$0.a($$1, dfg.a($$0, $$1, dec.ku.n()), 2);
-      a($$0, $$1, $$2, $$1, $$3, 0);
-   }
-
-   private static void a(dba $$0, io $$1, aym $$2, io $$3, int $$4, int $$5) {
-      dea $$6 = dec.ku;
-      int $$7 = $$2.a(4) + 1;
-      if ($$5 == 0) {
-         $$7++;
-      }
-
-      for (int $$8 = 0; $$8 < $$7; $$8++) {
-         io $$9 = $$1.b($$8 + 1);
-         if (!b($$0, $$9, null)) {
-            return;
-         }
-
-         $$0.a($$9, dfg.a($$0, $$9, $$6.n()), 2);
-         $$0.a($$9.d(), dfg.a($$0, $$9.d(), $$6.n()), 2);
-      }
-
-      boolean $$10 = false;
-      if ($$5 < 4) {
-         int $$11 = $$2.a(4);
-         if ($$5 == 0) {
-            $$11++;
-         }
-
-         for (int $$12 = 0; $$12 < $$11; $$12++) {
-            it $$13 = it.c.a.a($$2);
-            io $$14 = $$1.b($$7).a($$13);
-            if (Math.abs($$14.u() - $$3.u()) < $$4 && Math.abs($$14.w() - $$3.w()) < $$4 && $$0.u($$14) && $$0.u($$14.d()) && b($$0, $$14, $$13.g())) {
-               $$10 = true;
-               $$0.a($$14, dfg.a($$0, $$14, $$6.n()), 2);
-               $$0.a($$14.a($$13.g()), dfg.a($$0, $$14.a($$13.g()), $$6.n()), 2);
-               a($$0, $$14, $$2, $$3, $$4, $$5 + 1);
-            }
-         }
-      }
-
-      if (!$$10) {
-         $$0.a($$1.b($$7), dec.kv.n().a(c, Integer.valueOf(5)), 2);
-      }
+   protected void a(drx $$0, dbt $$1, iz $$2, bsp $$3) {
+      $$3.a($$1.aj().j(), 1.0F);
    }
 
    @Override
-   protected void a(daz $$0, drd $$1, eui $$2, cmq $$3) {
-      io $$4 = $$2.a();
-      if (!$$0.B && $$3.a($$0, $$4) && $$3.b($$0)) {
-         $$0.a($$4, true, $$3);
-      }
+   protected void a(dry.a<deu, drx> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected boolean a(drx $$0, eof $$1) {
+      return false;
    }
 }

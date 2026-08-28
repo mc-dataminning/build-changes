@@ -1,11 +1,18 @@
 import com.mojang.serialization.Codec;
-import java.util.Map;
 
-public interface ci {
-   Codec<Map<ci.a<?>, ci>> b = Codec.dispatchedMap(le.au.q(), ci.a::a);
+public record ci(dg c) implements cq {
+   public static final Codec<ci> a = dg.a.xmap(ci::new, ci::a);
 
-   boolean a(ctq var1);
+   @Override
+   public boolean a(cuk $$0) {
+      return this.c.a($$0);
+   }
 
-   public static record a<T extends ci>(Codec<T> a) {
+   public static ci a(dg $$0) {
+      return new ci($$0);
+   }
+
+   public dg a() {
+      return this.c;
    }
 }

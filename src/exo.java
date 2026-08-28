@@ -1,40 +1,166 @@
-import java.io.FileNotFoundException;
+import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-import org.apache.commons.lang3.ArrayUtils;
+import java.nio.ByteBuffer;
+import java.util.concurrent.atomic.AtomicBoolean;
+import javax.annotation.Nullable;
+import javax.sound.sampled.AudioFormat;
+import org.lwjgl.openal.AL10;
+import org.slf4j.Logger;
 
-public enum exo {
-   a("icons"),
-   b("icons", "snapshot");
+public class exo {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 4;
+   public static final int a = 1;
+   private final int d;
+   private final AtomicBoolean e = new AtomicBoolean(true);
+   private int f = 16384;
+   @Nullable
+   private gte g;
 
-   private final String[] c;
-
-   private exo(String... $$0) {
-      this.c = $$0;
+   @Nullable
+   static exo a() {
+      int[] $$0 = new int[1];
+      AL10.alGenSources($$0);
+      return exs.a("Allocate new source") ? null : new exo($$0[0]);
    }
 
-   public List<atp<InputStream>> a(asj $$0) throws IOException {
-      return List.of(
-         this.a($$0, "icon_16x16.png"),
-         this.a($$0, "icon_32x32.png"),
-         this.a($$0, "icon_48x48.png"),
-         this.a($$0, "icon_128x128.png"),
-         this.a($$0, "icon_256x256.png")
-      );
+   private exo(int $$0) {
+      this.d = $$0;
    }
 
-   public atp<InputStream> b(asj $$0) throws IOException {
-      return this.a($$0, "minecraft.icns");
-   }
+   public void b() {
+      if (this.e.compareAndSet(true, false)) {
+         AL10.alSourceStop(this.d);
+         exs.a("Stop");
+         if (this.g != null) {
+            try {
+               this.g.close();
+            } catch (IOException var2) {
+               b.error("Failed to close audio stream", var2);
+            }
 
-   private atp<InputStream> a(asj $$0, String $$1) throws IOException {
-      String[] $$2 = (String[])ArrayUtils.add(this.c, $$1);
-      atp<InputStream> $$3 = $$0.a($$2);
-      if ($$3 == null) {
-         throw new FileNotFoundException(String.join("/", $$2));
-      } else {
-         return $$3;
+            this.l();
+            this.g = null;
+         }
+
+         AL10.alDeleteSources(new int[]{this.d});
+         exs.a("Cleanup");
       }
+   }
+
+   public void c() {
+      AL10.alSourcePlay(this.d);
+   }
+
+   private int k() {
+      return !this.e.get() ? 4116 : AL10.alGetSourcei(this.d, 4112);
+   }
+
+   public void d() {
+      if (this.k() == 4114) {
+         AL10.alSourcePause(this.d);
+      }
+   }
+
+   public void e() {
+      if (this.k() == 4115) {
+         AL10.alSourcePlay(this.d);
+      }
+   }
+
+   public void f() {
+      if (this.e.get()) {
+         AL10.alSourceStop(this.d);
+         exs.a("Stop");
+      }
+   }
+
+   public boolean g() {
+      return this.k() == 4114;
+   }
+
+   public boolean h() {
+      return this.k() == 4116;
+   }
+
+   public void a(evm $$0) {
+      AL10.alSourcefv(this.d, 4100, new float[]{(float)$$0.c, (float)$$0.d, (float)$$0.e});
+   }
+
+   public void a(float $$0) {
+      AL10.alSourcef(this.d, 4099, $$0);
+   }
+
+   public void a(boolean $$0) {
+      AL10.alSourcei(this.d, 4103, $$0 ? 1 : 0);
+   }
+
+   public void b(float $$0) {
+      AL10.alSourcef(this.d, 4106, $$0);
+   }
+
+   public void i() {
+      AL10.alSourcei(this.d, 53248, 0);
+   }
+
+   public void c(float $$0) {
+      AL10.alSourcei(this.d, 53248, 53251);
+      AL10.alSourcef(this.d, 4131, $$0);
+      AL10.alSourcef(this.d, 4129, 1.0F);
+      AL10.alSourcef(this.d, 4128, 0.0F);
+   }
+
+   public void b(boolean $$0) {
+      AL10.alSourcei(this.d, 514, $$0 ? 1 : 0);
+   }
+
+   public void a(ext $$0) {
+      $$0.a().ifPresent($$0x -> AL10.alSourcei(this.d, 4105, $$0x));
+   }
+
+   public void a(gte $$0) {
+      this.g = $$0;
+      AudioFormat $$1 = $$0.a();
+      this.f = a($$1, 1);
+      this.a(4);
+   }
+
+   private static int a(AudioFormat $$0, int $$1) {
+      return (int)((float)($$1 * $$0.getSampleSizeInBits()) / 8.0F * (float)$$0.getChannels() * $$0.getSampleRate());
+   }
+
+   private void a(int $$0) {
+      if (this.g != null) {
+         try {
+            for (int $$1 = 0; $$1 < $$0; $$1++) {
+               ByteBuffer $$2 = this.g.a(this.f);
+               if ($$2 != null) {
+                  new ext($$2, this.g.a()).c().ifPresent($$0x -> AL10.alSourceQueueBuffers(this.d, new int[]{$$0x}));
+               }
+            }
+         } catch (IOException var4) {
+            b.error("Failed to read from audio stream", var4);
+         }
+      }
+   }
+
+   public void j() {
+      if (this.g != null) {
+         int $$0 = this.l();
+         this.a($$0);
+      }
+   }
+
+   private int l() {
+      int $$0 = AL10.alGetSourcei(this.d, 4118);
+      if ($$0 > 0) {
+         int[] $$1 = new int[$$0];
+         AL10.alSourceUnqueueBuffers(this.d, $$1);
+         exs.a("Unqueue buffers");
+         AL10.alDeleteBuffers($$1);
+         exs.a("Remove processed buffers");
+      }
+
+      return $$0;
    }
 }

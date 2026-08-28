@@ -1,7 +1,8 @@
-import java.util.function.BiConsumer;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface dtl extends daf {
-   void a(BiConsumer<io, drd> var1);
-
-   emg B();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dtl {
 }

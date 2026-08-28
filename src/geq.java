@@ -1,112 +1,110 @@
-import java.util.Calendar;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class geq<T extends doi & dpl> implements gek<T> {
-   private static final String a = "bottom";
-   private static final String b = "lid";
-   private static final String c = "lock";
-   private final fvw d;
-   private final fvw e;
-   private final fvw f;
-   private final fvw g;
-   private final fvw h;
-   private final fvw i;
-   private final fvw j;
-   private final fvw k;
-   private final fvw l;
-   private boolean m;
+public class geq {
+   public static final geq a = new geq();
+   public static final float b = Float.NEGATIVE_INFINITY;
+   private final geq.a[] c;
+   private final alb[] d;
 
-   public geq(gel.a $$0) {
-      Calendar $$1 = Calendar.getInstance();
-      if ($$1.get(2) + 1 == 12 && $$1.get(5) >= 24 && $$1.get(5) <= 26) {
-         this.m = true;
+   private geq() {
+      this.c = new geq.a[0];
+      this.d = new alb[0];
+   }
+
+   public geq(gqz $$0, gel $$1, List<gep> $$2) {
+      this.d = $$2.stream().flatMap(gep::b).map(gep.b::a).distinct().toArray(alb[]::new);
+      Object2IntMap<alb> $$3 = new Object2IntOpenHashMap();
+
+      for (int $$4 = 0; $$4 < this.d.length; $$4++) {
+         $$3.put(this.d[$$4], $$4);
       }
 
-      fvw $$2 = $$0.a(fvv.x);
-      this.e = $$2.b("bottom");
-      this.d = $$2.b("lid");
-      this.f = $$2.b("lock");
-      fvw $$3 = $$0.a(fvv.O);
-      this.h = $$3.b("bottom");
-      this.g = $$3.b("lid");
-      this.i = $$3.b("lock");
-      fvw $$4 = $$0.a(fvv.P);
-      this.k = $$4.b("bottom");
-      this.j = $$4.b("lid");
-      this.l = $$4.b("lock");
+      List<geq.a> $$5 = Lists.newArrayList();
+
+      for (int $$6 = $$2.size() - 1; $$6 >= 0; $$6--) {
+         gep $$7 = $$2.get($$6);
+         gqv $$8 = this.a($$0, $$1, $$7);
+         geq.b[] $$9 = $$7.b().map($$1x -> {
+            int $$2x = $$3.getInt($$1x.a());
+            return new geq.b($$2x, $$1x.b());
+         }).toArray(geq.b[]::new);
+         $$5.add(new geq.a($$9, $$8));
+      }
+
+      this.c = $$5.toArray(new geq.a[0]);
    }
 
-   public static fwc b() {
-      fwe $$0 = new fwe();
-      fwf $$1 = $$0.a();
-      $$1.a("bottom", fwb.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 14.0F, 10.0F, 14.0F), fvy.a);
-      $$1.a("lid", fwb.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 14.0F, 5.0F, 14.0F), fvy.a(0.0F, 9.0F, 1.0F));
-      $$1.a("lock", fwb.c().a(0, 0).a(7.0F, -2.0F, 14.0F, 2.0F, 4.0F, 1.0F), fvy.a(0.0F, 9.0F, 1.0F));
-      return fwc.a($$0, 64, 64);
+   @Nullable
+   private gqv a(gqz $$0, gel $$1, gep $$2) {
+      grg $$3 = $$0.a($$2.a());
+      return Objects.equals($$3, $$1) ? null : $$0.a($$2.a(), gqw.a);
    }
 
-   public static fwc c() {
-      fwe $$0 = new fwe();
-      fwf $$1 = $$0.a();
-      $$1.a("bottom", fwb.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), fvy.a);
-      $$1.a("lid", fwb.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), fvy.a(0.0F, 9.0F, 1.0F));
-      $$1.a("lock", fwb.c().a(0, 0).a(15.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), fvy.a(0.0F, 9.0F, 1.0F));
-      return fwc.a($$0, 64, 64);
-   }
+   @Nullable
+   public gqv a(gqv $$0, cuk $$1, @Nullable fxq $$2, @Nullable btk $$3, int $$4) {
+      if (this.c.length != 0) {
+         int $$5 = this.d.length;
+         float[] $$6 = new float[$$5];
 
-   public static fwc d() {
-      fwe $$0 = new fwe();
-      fwf $$1 = $$0.a();
-      $$1.a("bottom", fwb.c().a(0, 19).a(0.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), fvy.a);
-      $$1.a("lid", fwb.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), fvy.a(0.0F, 9.0F, 1.0F));
-      $$1.a("lock", fwb.c().a(0, 0).a(0.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), fvy.a(0.0F, 9.0F, 1.0F));
-      return fwc.a($$0, 64, 64);
-   }
-
-   @Override
-   public void a(T $$0, float $$1, eyu $$2, gck $$3, int $$4, int $$5) {
-      daz $$6 = $$0.i();
-      boolean $$7 = $$6 != null;
-      drd $$8 = $$7 ? $$0.n() : dec.cv.n().a(dfd.c, it.d);
-      drv $$9 = $$8.b(dfd.d) ? $$8.c(dfd.d) : drv.a;
-      if ($$8.b() instanceof dcu<?> $$11) {
-         boolean $$12 = $$9 != drv.a;
-         $$2.a();
-         float $$13 = $$8.c(dfd.c).p();
-         $$2.a(0.5F, 0.5F, 0.5F);
-         $$2.a(a.d.rotationDegrees(-$$13));
-         $$2.a(-0.5F, -0.5F, -0.5F);
-         dgh.c<? extends dop> $$14;
-         if ($$7) {
-            $$14 = $$11.a($$8, $$6, $$0.aA_(), true);
-         } else {
-            $$14 = dgh.b::b;
-         }
-
-         float $$16 = $$14.apply(dfd.a($$0)).get($$1);
-         $$16 = 1.0F - $$16;
-         $$16 = 1.0F - $$16 * $$16 * $$16;
-         int $$17 = $$14.apply(new gen<>()).applyAsInt($$4);
-         gpz $$18 = gcz.a($$0, $$9, this.m);
-         eyy $$19 = $$18.a($$3, gcs::d);
-         if ($$12) {
-            if ($$9 == drv.b) {
-               this.a($$2, $$19, this.g, this.i, this.h, $$16, $$17, $$5);
+         for (int $$7 = 0; $$7 < $$5; $$7++) {
+            alb $$8 = this.d[$$7];
+            goc $$9 = gob.a($$1, $$8);
+            if ($$9 != null) {
+               $$6[$$7] = $$9.call($$1, $$2, $$3, $$4);
             } else {
-               this.a($$2, $$19, this.j, this.l, this.k, $$16, $$17, $$5);
+               $$6[$$7] = Float.NEGATIVE_INFINITY;
             }
-         } else {
-            this.a($$2, $$19, this.d, this.f, this.e, $$16, $$17, $$5);
          }
 
-         $$2.b();
+         for (geq.a $$10 : this.c) {
+            if ($$10.a($$6)) {
+               gqv $$11 = $$10.b;
+               if ($$11 == null) {
+                  return $$0;
+               }
+
+               return $$11;
+            }
+         }
+      }
+
+      return $$0;
+   }
+
+   static class a {
+      private final geq.b[] a;
+      @Nullable
+      final gqv b;
+
+      a(geq.b[] $$0, @Nullable gqv $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      boolean a(float[] $$0) {
+         for (geq.b $$1 : this.a) {
+            float $$2 = $$0[$$1.a];
+            if ($$2 < $$1.b) {
+               return false;
+            }
+         }
+
+         return true;
       }
    }
 
-   private void a(eyu $$0, eyy $$1, fvw $$2, fvw $$3, fvw $$4, float $$5, int $$6, int $$7) {
-      $$2.e = -($$5 * (float) (Math.PI / 2));
-      $$3.e = $$2.e;
-      $$2.a($$0, $$1, $$6, $$7);
-      $$3.a($$0, $$1, $$6, $$7);
-      $$4.a($$0, $$1, $$6, $$7);
+   static class b {
+      public final int a;
+      public final float b;
+
+      b(int $$0, float $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 }

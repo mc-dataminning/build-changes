@@ -1,17 +1,21 @@
-public class abe {
-   public static final zg<aaz> a = a("finish_configuration");
-   public static final zg<aba> b = a("registry_data");
-   public static final zg<abd> c = a("update_enabled_features");
-   public static final zg<abc> d = a("select_known_packs");
-   public static final zg<abb> e = a("reset_chat");
-   public static final zg<abh> f = b("finish_configuration");
-   public static final zg<abi> g = b("select_known_packs");
+public record abe(iz c) implements aat {
+   public static final zj<wl, abe> a = aat.a(abe::a, abe::new);
+   public static final aat.b<abe> b = aat.a("debug/poi_removed");
 
-   private static <T extends ze<aay>> zg<T> a(String $$0) {
-      return new zg<>(zf.b, new akn($$0));
+   private abe(wl $$0) {
+      this($$0.e());
    }
 
-   private static <T extends ze<abg>> zg<T> b(String $$0) {
-      return new zg<>(zf.a, new akn($$0));
+   private void a(wl $$0) {
+      $$0.a(this.c);
+   }
+
+   @Override
+   public aat.b<abe> a() {
+      return b;
+   }
+
+   public iz b() {
+      return this.c;
    }
 }

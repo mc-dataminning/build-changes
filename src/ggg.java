@@ -1,83 +1,70 @@
-import org.joml.Matrix4f;
+import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class ggg implements gfw.a {
-   private final feb a;
+class ggg {
+   private final Map<iz, dpc> a;
+   @Nullable
+   private final List<dul<drx>> b;
+   private final boolean c;
+   private final dud d;
 
-   public ggg(feb $$0) {
-      this.a = $$0;
+   ggg(dud $$0) {
+      this.d = $$0;
+      this.c = $$0.F().ai();
+      this.a = ImmutableMap.copyOf($$0.G());
+      if ($$0 instanceof dtz) {
+         this.b = null;
+      } else {
+         due[] $$1 = $$0.d();
+         this.b = new ArrayList<>($$1.length);
+
+         for (due $$2 : $$1) {
+            this.b.add($$2.c() ? null : $$2.h().d());
+         }
+      }
    }
 
-   @Override
-   public void a(eyu $$0, gck $$1, double $$2, double $$3, double $$4) {
-      Matrix4f $$5 = $$0.c().a();
-      daf $$6 = this.a.s.dP();
-      io $$7 = io.a($$2, $$3, $$4);
+   @Nullable
+   public dpc a(iz $$0) {
+      return this.a.get($$0);
+   }
 
-      for (io $$8 : io.c($$7.b(-6, -6, -6), $$7.b(6, 6, 6))) {
-         drd $$9 = $$6.a_($$8);
-         if (!$$9.a(dec.a)) {
-            evf $$10 = $$9.j($$6, $$8);
+   public drx b(iz $$0) {
+      int $$1 = $$0.u();
+      int $$2 = $$0.v();
+      int $$3 = $$0.w();
+      if (this.c) {
+         drx $$4 = null;
+         if ($$2 == 60) {
+            $$4 = dew.hW.n();
+         }
 
-            for (euh $$11 : $$10.e()) {
-               euh $$12 = $$11.a($$8).g(0.002);
-               float $$13 = (float)($$12.a - $$2);
-               float $$14 = (float)($$12.b - $$3);
-               float $$15 = (float)($$12.c - $$4);
-               float $$16 = (float)($$12.d - $$2);
-               float $$17 = (float)($$12.e - $$3);
-               float $$18 = (float)($$12.f - $$4);
-               float $$19 = 1.0F;
-               float $$20 = 0.0F;
-               float $$21 = 0.0F;
-               float $$22 = 0.5F;
-               if ($$9.d($$6, $$8, it.e)) {
-                  eyy $$23 = $$1.getBuffer(gcs.A());
-                  $$23.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$23.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$23.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$23.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
+         if ($$2 == 70) {
+            $$4 = dxg.a($$1, $$3);
+         }
 
-               if ($$9.d($$6, $$8, it.d)) {
-                  eyy $$24 = $$1.getBuffer(gcs.A());
-                  $$24.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$24.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$24.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$24.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-
-               if ($$9.d($$6, $$8, it.f)) {
-                  eyy $$25 = $$1.getBuffer(gcs.A());
-                  $$25.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$25.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$25.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$25.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-
-               if ($$9.d($$6, $$8, it.c)) {
-                  eyy $$26 = $$1.getBuffer(gcs.A());
-                  $$26.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$26.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$26.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$26.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-
-               if ($$9.d($$6, $$8, it.a)) {
-                  eyy $$27 = $$1.getBuffer(gcs.A());
-                  $$27.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$27.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$27.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$27.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-
-               if ($$9.d($$6, $$8, it.b)) {
-                  eyy $$28 = $$1.getBuffer(gcs.A());
-                  $$28.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$28.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$28.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$28.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+         return $$4 == null ? dew.a.n() : $$4;
+      } else if (this.b == null) {
+         return dew.a.n();
+      } else {
+         try {
+            int $$5 = this.d.e($$2);
+            if ($$5 >= 0 && $$5 < this.b.size()) {
+               dul<drx> $$6 = this.b.get($$5);
+               if ($$6 != null) {
+                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
                }
             }
+
+            return dew.a.n();
+         } catch (Throwable var8) {
+            o $$8 = o.a(var8, "Getting block state");
+            p $$9 = $$8.a("Block being got");
+            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
+            throw new y($$8);
          }
       }
    }

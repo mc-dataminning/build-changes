@@ -1,80 +1,173 @@
-public class fru extends frq<cfp> {
-   private static final float a = 16.02F;
-   private static final float b = 25.0F;
-   private static final float f = 22.5F;
-   private static final float g = 16.5F;
-   private static final float h = 2.5F;
-   private static final String i = "head_cube";
-   private static final String j = "right_ear_cube";
-   private static final String k = "left_ear_cube";
-   private final fvw l;
-   private final fvw m;
-   private final fvw n;
-   private final fvw o;
-   private final fvw p;
-   private final fvw q;
-   private final fvw r;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   public fru(fvw $$0) {
-      super(0.6F, 16.02F);
-      this.l = $$0;
-      this.m = $$0.b("body");
-      this.n = $$0.b("right_hind_leg");
-      this.o = $$0.b("left_hind_leg");
-      this.q = this.m.b("head");
-      this.r = this.m.b("tail");
-      this.p = $$0.b("cube");
+class fru {
+   private static final int a = 44;
+   private final List<fru.c> b;
+
+   fru(List<fru.c> $$0) {
+      this.b = $$0;
    }
 
-   public static fwc b() {
-      fwe $$0 = new fwe();
-      fwf $$1 = $$0.a();
-      fwf $$2 = $$1.a(
-         "body",
-         fwb.c().a(0, 20).a(-4.0F, -7.0F, -10.0F, 8.0F, 8.0F, 12.0F, new fwa(0.3F)).a(0, 40).a(-4.0F, -7.0F, -10.0F, 8.0F, 8.0F, 12.0F, new fwa(0.0F)),
-         fvy.a(0.0F, 21.0F, 4.0F)
-      );
-      $$2.a("tail", fwb.c().a(44, 53).a(-0.5F, -0.0865F, 0.0933F, 1.0F, 6.0F, 1.0F, new fwa(0.0F)), fvy.a(0.0F, -3.0F, 1.0F, 0.5061F, 0.0F, 0.0F));
-      fwf $$3 = $$2.a("head", fwb.c(), fvy.a(0.0F, -2.0F, -11.0F));
-      $$3.a("head_cube", fwb.c().a(43, 15).a(-1.5F, -1.0F, -1.0F, 3.0F, 5.0F, 2.0F, new fwa(0.0F)), fvy.a(0.0F, 0.0F, 0.0F, -0.3927F, 0.0F, 0.0F));
-      fwf $$4 = $$3.a("right_ear", fwb.c(), fvy.a(-1.0F, -1.0F, 0.0F));
-      $$4.a("right_ear_cube", fwb.c().a(43, 10).a(-2.0F, -3.0F, 0.0F, 2.0F, 5.0F, 0.0F, new fwa(0.0F)), fvy.a(-0.5F, 0.0F, -0.6F, 0.1886F, -0.3864F, -0.0718F));
-      fwf $$5 = $$3.a("left_ear", fwb.c(), fvy.a(1.0F, -2.0F, 0.0F));
-      $$5.a("left_ear_cube", fwb.c().a(47, 10).a(0.0F, -3.0F, 0.0F, 2.0F, 5.0F, 0.0F, new fwa(0.0F)), fvy.a(0.5F, 1.0F, -0.6F, 0.1886F, 0.3864F, 0.0718F));
-      $$1.a("right_hind_leg", fwb.c().a(51, 31).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new fwa(0.0F)), fvy.a(-2.0F, 21.0F, 4.0F));
-      $$1.a("left_hind_leg", fwb.c().a(42, 31).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new fwa(0.0F)), fvy.a(2.0F, 21.0F, 4.0F));
-      $$1.a("right_front_leg", fwb.c().a(51, 43).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new fwa(0.0F)), fvy.a(-2.0F, 21.0F, -4.0F));
-      $$1.a("left_front_leg", fwb.c().a(42, 43).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new fwa(0.0F)), fvy.a(2.0F, 21.0F, -4.0F));
-      $$1.a("cube", fwb.c().a(0, 0).a(-5.0F, -10.0F, -6.0F, 10.0F, 10.0F, 10.0F, new fwa(0.0F)), fvy.a(0.0F, 24.0F, 0.0F));
-      return fwc.a($$0, 64, 64);
+   public void a() {
+      this.b.forEach(fru.c::a);
    }
 
-   @Override
-   public fvw a() {
-      return this.l;
+   public static fru.a a(int $$0) {
+      return new fru.a($$0);
    }
 
-   public void a(cfp $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(fvw::c);
-      if ($$0.y()) {
-         this.m.l = true;
-         this.o.k = false;
-         this.n.k = false;
-         this.r.k = false;
-         this.p.k = true;
-      } else {
-         this.m.l = false;
-         this.o.k = true;
-         this.n.k = true;
-         this.r.k = true;
-         this.p.k = false;
-         this.q.e = ayf.a($$5, -22.5F, 25.0F) * (float) (Math.PI / 180.0);
-         this.q.f = ayf.a($$4, -32.5F, 32.5F) * (float) (Math.PI / 180.0);
+   public static class a {
+      final int a;
+      private final List<fru.d> b = new ArrayList<>();
+      int c;
+      int d = 4;
+      int e;
+      Optional<fru.b> f = Optional.empty();
+
+      public a(int $$0) {
+         this.a = $$0;
       }
 
-      this.a(feu.b, $$1, $$2, 16.5F, 2.5F);
-      this.a($$0.cc, feu.d, $$3, 1.0F);
-      this.a($$0.cd, feu.a, $$3, 1.0F);
-      this.a($$0.ce, feu.c, $$3, 1.0F);
+      void a() {
+         this.e++;
+      }
+
+      public fru.d a(xl $$0, BooleanSupplier $$1, Consumer<Boolean> $$2) {
+         fru.d $$3 = new fru.d($$0, $$1, $$2, 44);
+         this.b.add($$3);
+         return $$3;
+      }
+
+      public fru.a a(int $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public fru.a b(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public fru a(Consumer<fko> $$0) {
+         fkl $$1 = new fkl().b(this.d);
+         $$1.a(fkr.a(this.a - 44), 0, 0);
+         $$1.a(fkr.a(44), 0, 1);
+         List<fru.c> $$2 = new ArrayList<>();
+         this.e = 0;
+
+         for (fru.d $$3 : this.b) {
+            $$2.add($$3.a(this, $$1, 0));
+         }
+
+         $$1.a();
+         $$0.accept($$1);
+         fru $$4 = new fru($$2);
+         $$4.a();
+         return $$4;
+      }
+
+      public fru.a a(int $$0, boolean $$1) {
+         this.f = Optional.of(new fru.b($$0, $$1));
+         return this;
+      }
+   }
+
+   static record b(int a, boolean b) {
+   }
+
+   static record c(fhg<Boolean> a, BooleanSupplier b, @Nullable BooleanSupplier c) {
+      public void a() {
+         this.a.a(this.b.getAsBoolean());
+         if (this.c != null) {
+            this.a.j = this.c.getAsBoolean();
+         }
+      }
+
+      public fhg<Boolean> b() {
+         return this.a;
+      }
+
+      public BooleanSupplier c() {
+         return this.b;
+      }
+
+      @Nullable
+      public BooleanSupplier d() {
+         return this.c;
+      }
+   }
+
+   public static class d {
+      private final xl a;
+      private final BooleanSupplier b;
+      private final Consumer<Boolean> c;
+      @Nullable
+      private xl d;
+      @Nullable
+      private BooleanSupplier e;
+      private final int f;
+
+      d(xl $$0, BooleanSupplier $$1, Consumer<Boolean> $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = $$3;
+      }
+
+      public fru.d a(BooleanSupplier $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public fru.d a(xl $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      fru.c a(fru.a $$0, fkl $$1, int $$2) {
+         $$0.a();
+         fig $$3 = new fig(this.a, ffa.Q().h).d();
+         $$1.a($$3, $$0.e, $$2, $$1.b().a(0.0F, 0.5F).b($$0.c));
+         Optional<fru.b> $$4 = $$0.f;
+         fhg.a<Boolean> $$5 = fhg.b(this.b.getAsBoolean());
+         $$5.a();
+         boolean $$6 = this.d != null && $$4.isEmpty();
+         if ($$6) {
+            fik $$7 = fik.a(this.d);
+            $$5.a($$1x -> $$7);
+         }
+
+         if (this.d != null && !$$6) {
+            $$5.a($$0x -> xk.a(this.a, $$0x.d(), this.d));
+         } else {
+            $$5.a($$0x -> xk.a(this.a, $$0x.d()));
+         }
+
+         fhg<Boolean> $$8 = $$5.a(0, 0, this.f, 20, xl.i(), ($$0x, $$1x) -> this.c.accept($$1x));
+         if (this.e != null) {
+            $$8.j = this.e.getAsBoolean();
+         }
+
+         $$1.a($$8, $$0.e, $$2 + 1, $$1.b().c());
+         if (this.d != null) {
+            $$4.ifPresent($$3x -> {
+               xl $$4x = this.d.f().a(n.h);
+               fgk $$5x = ffa.Q().h;
+               fht $$6x = new fht($$4x, $$5x);
+               $$6x.d($$0.a - $$0.c - this.f);
+               $$6x.e($$3x.a());
+               $$0.a();
+               int $$7 = $$3x.b ? 9 * $$3x.a - $$6x.v() : 0;
+               $$1.a($$6x, $$0.e, $$2, $$1.b().c(-$$0.d).e($$7));
+            });
+         }
+
+         return new fru.c($$8, this.b, this.e);
+      }
    }
 }

@@ -1,115 +1,179 @@
-public class gih extends giz<cja, ftd> {
-   private static final akn a = new akn("textures/entity/guardian.png");
-   private static final akn i = new akn("textures/entity/guardian_beam.png");
-   private static final gcs j = gcs.e(i);
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.joml.Matrix4f;
+import org.joml.Quaternionf;
 
-   public gih(ght.a $$0) {
-      this($$0, 0.5F, fvv.am);
+public abstract class gih<T extends bso, S> extends gir<T> {
+   private final giq a;
+
+   protected gih(gis.a $$0) {
+      super($$0);
+      this.a = $$0.a();
    }
 
-   protected gih(ght.a $$0, float $$1, fvu $$2) {
-      super($$0, new ftd($$0.a($$2)), $$1);
+   public alb a(T $$0) {
+      return got.e;
    }
 
-   public boolean a(cja $$0, gfo $$1, double $$2, double $$3, double $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4)) {
-         return true;
-      } else {
-         if ($$0.gr()) {
-            bsq $$5 = $$0.gs();
-            if ($$5 != null) {
-               eum $$6 = this.a($$5, (double)$$5.dk() * 0.5, 1.0F);
-               eum $$7 = this.a($$0, (double)$$0.cL(), 1.0F);
-               return $$1.a(new euh($$7.c, $$7.d, $$7.e, $$6.c, $$6.d, $$6.e));
-            }
-         }
-
-         return false;
-      }
-   }
-
-   private eum a(bsq $$0, double $$1, float $$2) {
-      double $$3 = ayf.d((double)$$2, $$0.ad, $$0.du());
-      double $$4 = ayf.d((double)$$2, $$0.ae, $$0.dw()) + $$1;
-      double $$5 = ayf.d((double)$$2, $$0.af, $$0.dA());
-      return new eum($$3, $$4, $$5);
-   }
-
-   public void a(cja $$0, float $$1, float $$2, eyu $$3, gck $$4, int $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      bsq $$6 = $$0.gs();
+   public void a(T $$0, float $$1, float $$2, ezt $$3, gdj $$4, int $$5) {
+      bso.k $$6 = $$0.p();
       if ($$6 != null) {
-         float $$7 = $$0.I($$2);
-         float $$8 = $$0.gt() + $$2;
-         float $$9 = $$8 * 0.5F % 1.0F;
-         float $$10 = $$0.cL();
-         $$3.a();
-         $$3.a(0.0F, $$10, 0.0F);
-         eum $$11 = this.a($$6, (double)$$6.dk() * 0.5, $$2);
-         eum $$12 = this.a($$0, (double)$$10, $$2);
-         eum $$13 = $$11.d($$12);
-         float $$14 = (float)($$13.f() + 1.0);
-         $$13 = $$13.d();
-         float $$15 = (float)Math.acos($$13.d);
-         float $$16 = (float)Math.atan2($$13.e, $$13.c);
-         $$3.a(a.d.rotationDegrees(((float) (Math.PI / 2) - $$16) * (180.0F / (float)Math.PI)));
-         $$3.a(a.b.rotationDegrees($$15 * (180.0F / (float)Math.PI)));
-         int $$17 = 1;
-         float $$18 = $$8 * 0.05F * -1.5F;
-         float $$19 = $$7 * $$7;
-         int $$20 = 64 + (int)($$19 * 191.0F);
-         int $$21 = 32 + (int)($$19 * 191.0F);
-         int $$22 = 128 - (int)($$19 * 64.0F);
-         float $$23 = 0.2F;
-         float $$24 = 0.282F;
-         float $$25 = ayf.b($$18 + (float) (Math.PI * 3.0 / 4.0)) * 0.282F;
-         float $$26 = ayf.a($$18 + (float) (Math.PI * 3.0 / 4.0)) * 0.282F;
-         float $$27 = ayf.b($$18 + (float) (Math.PI / 4)) * 0.282F;
-         float $$28 = ayf.a($$18 + (float) (Math.PI / 4)) * 0.282F;
-         float $$29 = ayf.b($$18 + ((float) Math.PI * 5.0F / 4.0F)) * 0.282F;
-         float $$30 = ayf.a($$18 + ((float) Math.PI * 5.0F / 4.0F)) * 0.282F;
-         float $$31 = ayf.b($$18 + ((float) Math.PI * 7.0F / 4.0F)) * 0.282F;
-         float $$32 = ayf.a($$18 + ((float) Math.PI * 7.0F / 4.0F)) * 0.282F;
-         float $$33 = ayf.b($$18 + (float) Math.PI) * 0.2F;
-         float $$34 = ayf.a($$18 + (float) Math.PI) * 0.2F;
-         float $$35 = ayf.b($$18 + 0.0F) * 0.2F;
-         float $$36 = ayf.a($$18 + 0.0F) * 0.2F;
-         float $$37 = ayf.b($$18 + (float) (Math.PI / 2)) * 0.2F;
-         float $$38 = ayf.a($$18 + (float) (Math.PI / 2)) * 0.2F;
-         float $$39 = ayf.b($$18 + (float) (Math.PI * 3.0 / 2.0)) * 0.2F;
-         float $$40 = ayf.a($$18 + (float) (Math.PI * 3.0 / 2.0)) * 0.2F;
-         float $$42 = 0.0F;
-         float $$43 = 0.4999F;
-         float $$44 = -1.0F + $$9;
-         float $$45 = $$14 * 2.5F + $$44;
-         eyy $$46 = $$4.getBuffer(j);
-         eyu.a $$47 = $$3.c();
-         a($$46, $$47, $$33, $$14, $$34, $$20, $$21, $$22, 0.4999F, $$45);
-         a($$46, $$47, $$33, 0.0F, $$34, $$20, $$21, $$22, 0.4999F, $$44);
-         a($$46, $$47, $$35, 0.0F, $$36, $$20, $$21, $$22, 0.0F, $$44);
-         a($$46, $$47, $$35, $$14, $$36, $$20, $$21, $$22, 0.0F, $$45);
-         a($$46, $$47, $$37, $$14, $$38, $$20, $$21, $$22, 0.4999F, $$45);
-         a($$46, $$47, $$37, 0.0F, $$38, $$20, $$21, $$22, 0.4999F, $$44);
-         a($$46, $$47, $$39, 0.0F, $$40, $$20, $$21, $$22, 0.0F, $$44);
-         a($$46, $$47, $$39, $$14, $$40, $$20, $$21, $$22, 0.0F, $$45);
-         float $$48 = 0.0F;
-         if ($$0.ai % 2 == 0) {
-            $$48 = 0.5F;
+         S $$7 = this.b($$0);
+         if ($$7 != null) {
+            float $$8 = $$0.a($$2);
+            this.d = $$6.d().get($$8);
+            this.e = $$6.e().get($$8);
+            int $$9 = $$6.c();
+            int $$10 = $$9 != -1 ? $$9 : $$5;
+            super.a($$0, $$1, $$2, $$3, $$4, $$10);
+            $$3.a();
+            $$3.a(this.a($$6, $$0, $$2, new Quaternionf()));
+            j $$11 = $$6.a().get($$8);
+            $$3.a($$11.c());
+            this.a($$0, $$7, $$3, $$4, $$10, $$8);
+            $$3.b();
          }
-
-         a($$46, $$47, $$25, $$14, $$26, $$20, $$21, $$22, 0.5F, $$48 + 0.5F);
-         a($$46, $$47, $$27, $$14, $$28, $$20, $$21, $$22, 1.0F, $$48 + 0.5F);
-         a($$46, $$47, $$31, $$14, $$32, $$20, $$21, $$22, 1.0F, $$48);
-         a($$46, $$47, $$29, $$14, $$30, $$20, $$21, $$22, 0.5F, $$48);
-         $$3.b();
       }
    }
 
-   private static void a(eyy $$0, eyu.a $$1, float $$2, float $$3, float $$4, int $$5, int $$6, int $$7, float $$8, float $$9) {
-      $$0.a($$1, $$2, $$3, $$4).a($$5, $$6, $$7, 255).a($$8, $$9).c(gnm.d).b(15728880).b($$1, 0.0F, 1.0F, 0.0F).e();
+   private Quaternionf a(bso.k $$0, T $$1, float $$2, Quaternionf $$3) {
+      fel $$4 = this.a.b;
+
+      return switch ($$0.b()) {
+         case a -> $$3.rotationYXZ((float) (-Math.PI / 180.0) * a($$1, $$2), (float) (Math.PI / 180.0) * b($$1, $$2), 0.0F);
+         case c -> $$3.rotationYXZ((float) (-Math.PI / 180.0) * a($$1, $$2), (float) (Math.PI / 180.0) * b($$4), 0.0F);
+         case b -> $$3.rotationYXZ((float) (-Math.PI / 180.0) * a($$4), (float) (Math.PI / 180.0) * b($$1, $$2), 0.0F);
+         case d -> $$3.rotationYXZ((float) (-Math.PI / 180.0) * a($$4), (float) (Math.PI / 180.0) * b($$4), 0.0F);
+      };
    }
 
-   public akn a(cja $$0) {
-      return a;
+   private static float a(fel $$0) {
+      return $$0.e() - 180.0F;
+   }
+
+   private static float b(fel $$0) {
+      return -$$0.d();
+   }
+
+   private static <T extends bso> float a(T $$0, float $$1) {
+      return ayu.j($$1, $$0.O, $$0.dF());
+   }
+
+   private static <T extends bso> float b(T $$0, float $$1) {
+      return ayu.i($$1, $$0.P, $$0.dH());
+   }
+
+   @Nullable
+   protected abstract S b(T var1);
+
+   protected abstract void a(T var1, S var2, ezt var3, gdj var4, int var5, float var6);
+
+   public static class a extends gih<bso.b, bso.b.a> {
+      private final ged a;
+
+      protected a(gis.a $$0) {
+         super($$0);
+         this.a = $$0.c();
+      }
+
+      @Nullable
+      protected bso.b.a a(bso.b $$0) {
+         return $$0.s();
+      }
+
+      public void a(bso.b $$0, bso.b.a $$1, ezt $$2, gdj $$3, int $$4, float $$5) {
+         this.a.a($$1.a(), $$2, $$3, $$4, gol.d);
+      }
+   }
+
+   public static class b extends gih<bso.g, bso.g.a> {
+      private final gjq a;
+
+      protected b(gis.a $$0) {
+         super($$0);
+         this.a = $$0.b();
+      }
+
+      @Nullable
+      protected bso.g.a a(bso.g $$0) {
+         return $$0.s();
+      }
+
+      public void a(bso.g $$0, bso.g.a $$1, ezt $$2, gdj $$3, int $$4, float $$5) {
+         $$2.a(a.d.rotation((float) Math.PI));
+         this.a.a($$1.a(), $$1.b(), $$4, gol.d, $$2, $$3, $$0.dP(), $$0.al());
+      }
+   }
+
+   public static class c extends gih<bso.l, bso.l.e> {
+      private final fgk a;
+
+      protected c(gis.a $$0) {
+         super($$0);
+         this.a = $$0.h();
+      }
+
+      private bso.l.b a(xl $$0, int $$1) {
+         List<ayg> $$2 = this.a.c($$0, $$1);
+         List<bso.l.c> $$3 = new ArrayList<>($$2.size());
+         int $$4 = 0;
+
+         for (ayg $$5 : $$2) {
+            int $$6 = this.a.a($$5);
+            $$4 = Math.max($$4, $$6);
+            $$3.add(new bso.l.c($$5, $$6));
+         }
+
+         return new bso.l.b($$3, $$4);
+      }
+
+      @Nullable
+      protected bso.l.e a(bso.l $$0) {
+         return $$0.s();
+      }
+
+      public void a(bso.l $$0, bso.l.e $$1, ezt $$2, gdj $$3, int $$4, float $$5) {
+         byte $$6 = $$1.e();
+         boolean $$7 = ($$6 & 2) != 0;
+         boolean $$8 = ($$6 & 4) != 0;
+         boolean $$9 = ($$6 & 1) != 0;
+         bso.l.a $$10 = bso.l.a($$6);
+         byte $$11 = (byte)$$1.c().get($$5);
+         int $$13;
+         if ($$8) {
+            float $$12 = ffa.Q().m.a(0.25F);
+            $$13 = (int)($$12 * 255.0F) << 24;
+         } else {
+            $$13 = $$1.d().get($$5);
+         }
+
+         float $$15 = 0.0F;
+         Matrix4f $$16 = $$2.c().a();
+         $$16.rotate((float) Math.PI, 0.0F, 1.0F, 0.0F);
+         $$16.scale(-0.025F, -0.025F, -0.025F);
+         bso.l.b $$17 = $$0.a(this::a);
+         int $$18 = 9 + 1;
+         int $$19 = $$17.b();
+         int $$20 = $$17.a().size() * $$18;
+         $$16.translate(1.0F - (float)$$19 / 2.0F, (float)(-$$20), 0.0F);
+         if ($$13 != 0) {
+            ezx $$21 = $$3.getBuffer($$7 ? gdr.r() : gdr.q());
+            $$21.a($$16, -1.0F, -1.0F, 0.0F).a($$13).b($$4).e();
+            $$21.a($$16, -1.0F, (float)$$20, 0.0F).a($$13).b($$4).e();
+            $$21.a($$16, (float)$$19, (float)$$20, 0.0F).a($$13).b($$4).e();
+            $$21.a($$16, (float)$$19, -1.0F, 0.0F).a($$13).b($$4).e();
+         }
+
+         for (bso.l.c $$22 : $$17.a()) {
+            float $$23 = switch ($$10) {
+               case b -> 0.0F;
+               case c -> (float)($$19 - $$22.b());
+               case a -> (float)$$19 / 2.0F - (float)$$22.b() / 2.0F;
+            };
+            this.a.a($$22.a(), $$23, $$15, $$11 << 24 | 16777215, $$9, $$16, $$3, $$7 ? fgk.a.b : fgk.a.c, 0, $$4);
+            $$15 += (float)$$18;
+         }
+      }
    }
 }

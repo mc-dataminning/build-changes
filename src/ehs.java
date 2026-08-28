@@ -1,33 +1,30 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ehs(ehs.a b, bok<dck.c> c) {
-   public static final Codec<ehs> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ehs.a.c.fieldOf("bounding_box").forGetter(ehs::a), bok.c(dck.c.a).fieldOf("spawns").forGetter(ehs::b)).apply($$0, ehs::new)
+public class ehs extends ehl {
+   public static final MapCodec<ehs> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.INT.fieldOf("max_water_depth").forGetter($$0x -> $$0x.c)).apply($$0, ehs::new)
    );
+   private final int c;
 
-   public ehs.a a() {
-      return this.b;
+   private ehs(int $$0) {
+      this.c = $$0;
    }
 
-   public bok<dck.c> b() {
-      return this.c;
+   public static ehs a(int $$0) {
+      return new ehs($$0);
    }
 
-   public static enum a implements ayz {
-      a("piece"),
-      b("full");
+   @Override
+   protected boolean a(ehk $$0, azc $$1, iz $$2) {
+      int $$3 = $$0.a(dxp.a.d, $$2.u(), $$2.w());
+      int $$4 = $$0.a(dxp.a.b, $$2.u(), $$2.w());
+      return $$4 - $$3 <= this.c;
+   }
 
-      public static final Codec<ehs.a> c = ayz.a(ehs.a::values);
-      private final String d;
-
-      private a(String $$0) {
-         this.d = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
+   @Override
+   public ehn<?> b() {
+      return ehn.d;
    }
 }

@@ -1,98 +1,89 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.io.BufferedOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.zip.DeflaterOutputStream;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;
-import java.util.zip.InflaterInputStream;
+import java.util.List;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
-import net.jpountz.lz4.LZ4BlockInputStream;
-import net.jpountz.lz4.LZ4BlockOutputStream;
-import org.slf4j.Logger;
+import org.apache.commons.lang3.Validate;
 
-public class duo {
-   private static final Logger g = LogUtils.getLogger();
-   private static final Int2ObjectMap<duo> h = new Int2ObjectOpenHashMap();
-   private static final Object2ObjectMap<String, duo> i = new Object2ObjectOpenHashMap();
-   public static final duo a = a(new duo(1, null, $$0 -> new axo(new GZIPInputStream($$0)), $$0 -> new BufferedOutputStream(new GZIPOutputStream($$0))));
-   public static final duo b = a(
-      new duo(2, "deflate", $$0 -> new axo(new InflaterInputStream($$0)), $$0 -> new BufferedOutputStream(new DeflaterOutputStream($$0)))
-   );
-   public static final duo c = a(new duo(3, "none", axo::new, BufferedOutputStream::new));
-   public static final duo d = a(
-      new duo(4, "lz4", $$0 -> new axo(new LZ4BlockInputStream($$0)), $$0 -> new BufferedOutputStream(new LZ4BlockOutputStream($$0)))
-   );
-   public static final duo e = a(new duo(127, null, $$0 -> {
-      throw new UnsupportedOperationException();
-   }, $$0 -> {
-      throw new UnsupportedOperationException();
-   }));
-   public static final duo f = b;
-   private static volatile duo j = f;
-   private final int k;
+public class duo<T> implements duj<T> {
+   private final jn<T> a;
    @Nullable
-   private final String l;
-   private final duo.a<InputStream> m;
-   private final duo.a<OutputStream> n;
+   private T b;
+   private final duk<T> c;
 
-   private duo(int $$0, @Nullable String $$1, duo.a<InputStream> $$2, duo.a<OutputStream> $$3) {
-      this.k = $$0;
-      this.l = $$1;
-      this.m = $$2;
-      this.n = $$3;
-   }
-
-   private static duo a(duo $$0) {
-      h.put($$0.k, $$0);
-      if ($$0.l != null) {
-         i.put($$0.l, $$0);
+   public duo(jn<T> $$0, duk<T> $$1, List<T> $$2) {
+      this.a = $$0;
+      this.c = $$1;
+      if ($$2.size() > 0) {
+         Validate.isTrue($$2.size() <= 1, "Can't initialize SingleValuePalette with %d values.", (long)$$2.size());
+         this.b = $$2.get(0);
       }
-
-      return $$0;
    }
 
-   @Nullable
-   public static duo a(int $$0) {
-      return (duo)h.get($$0);
+   public static <A> duj<A> a(int $$0, jn<A> $$1, duk<A> $$2, List<A> $$3) {
+      return new duo<>($$1, $$2, $$3);
    }
 
-   public static void a(String $$0) {
-      duo $$1 = (duo)i.get($$0);
-      if ($$1 != null) {
-         j = $$1;
+   @Override
+   public int a(T $$0) {
+      if (this.b != null && this.b != $$0) {
+         return this.c.onResize(1, $$0);
       } else {
-         g.error("Invalid `region-file-compression` value `{}` in server.properties. Please use one of: {}", $$0, String.join(", ", i.keySet()));
+         this.b = $$0;
+         return 0;
       }
    }
 
-   public static duo a() {
-      return j;
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return $$0.test(this.b);
+      }
    }
 
-   public static boolean b(int $$0) {
-      return h.containsKey($$0);
+   @Override
+   public T a(int $$0) {
+      if (this.b != null && $$0 == 0) {
+         return this.b;
+      } else {
+         throw new IllegalStateException("Missing Palette entry for id " + $$0 + ".");
+      }
    }
 
+   @Override
+   public void a(wl $$0) {
+      this.b = this.a.b($$0.l());
+   }
+
+   @Override
+   public void b(wl $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         $$0.c(this.a.a(this.b));
+      }
+   }
+
+   @Override
+   public int a() {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return xc.a(this.a.a(this.b));
+      }
+   }
+
+   @Override
    public int b() {
-      return this.k;
+      return 1;
    }
 
-   public OutputStream a(OutputStream $$0) throws IOException {
-      return this.n.wrap($$0);
-   }
-
-   public InputStream a(InputStream $$0) throws IOException {
-      return this.m.wrap($$0);
-   }
-
-   @FunctionalInterface
-   interface a<O> {
-      O wrap(O var1) throws IOException;
+   @Override
+   public duj<T> c() {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return this;
+      }
    }
 }

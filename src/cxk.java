@@ -1,15 +1,12 @@
-public class cxk extends cxf {
-   public cxk(String $$0, cxl $$1, cxt $$2, ctq $$3, float $$4, int $$5) {
-      super(cyb.e, $$0, $$1, $$2, $$3, $$4, $$5);
-   }
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
 
-   @Override
-   public ctq g() {
-      return new ctq(dec.og);
-   }
+public record cxk(int d) {
+   public static final Codec<cxk> a = Codec.INT.xmap(cxk::new, cxk::a);
+   public static final zj<ByteBuf, cxk> b = zh.f.a(cxk::new, cxk::a);
+   public static final cxk c = new cxk(4603950);
 
-   @Override
-   public cya<?> ap_() {
-      return cya.s;
+   public int a() {
+      return this.d;
    }
 }

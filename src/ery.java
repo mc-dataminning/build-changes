@@ -1,49 +1,44 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
-import java.util.function.Consumer;
 
-public class ery {
-   private static final BiMap<akn, erx> t = HashBiMap.create();
-   public static final Codec<erx> a = akn.a
-      .comapFlatMap(
-         $$0 -> Optional.ofNullable((erx)t.get($$0))
-               .<DataResult>map(DataResult::success)
-               .orElseGet(() -> DataResult.error(() -> "No parameter set exists with id: '" + $$0 + "'")),
-         t.inverse()::get
-      );
-   public static final erx b = a("empty", $$0 -> {
-   });
-   public static final erx c = a("chest", $$0 -> $$0.a(erz.f).b(erz.a));
-   public static final erx d = a("command", $$0 -> $$0.a(erz.f).b(erz.a));
-   public static final erx e = a("selector", $$0 -> $$0.a(erz.f).a(erz.a));
-   public static final erx f = a("fishing", $$0 -> $$0.a(erz.f).a(erz.i).b(erz.a));
-   public static final erx g = a("entity", $$0 -> $$0.a(erz.a).a(erz.f).a(erz.c).b(erz.d).b(erz.e).b(erz.b));
-   public static final erx h = a("equipment", $$0 -> $$0.a(erz.f).a(erz.a));
-   public static final erx i = a("archaeology", $$0 -> $$0.a(erz.f).b(erz.a));
-   public static final erx j = a("gift", $$0 -> $$0.a(erz.f).a(erz.a));
-   public static final erx k = a("barter", $$0 -> $$0.a(erz.a));
-   public static final erx l = a("vault", $$0 -> $$0.a(erz.f).b(erz.a));
-   public static final erx m = a("advancement_reward", $$0 -> $$0.a(erz.a).a(erz.f));
-   public static final erx n = a("advancement_entity", $$0 -> $$0.a(erz.a).a(erz.f));
-   public static final erx o = a("advancement_location", $$0 -> $$0.a(erz.a).a(erz.f).a(erz.i).a(erz.g));
-   public static final erx p = a("block_use", $$0 -> $$0.a(erz.a).a(erz.f).a(erz.g));
-   public static final erx q = a("generic", $$0 -> $$0.a(erz.a).a(erz.b).a(erz.c).a(erz.d).a(erz.e).a(erz.f).a(erz.g).a(erz.h).a(erz.i).a(erz.j));
-   public static final erx r = a("block", $$0 -> $$0.a(erz.g).a(erz.f).a(erz.i).b(erz.a).b(erz.h).b(erz.j));
-   public static final erx s = a("shearing", $$0 -> $$0.a(erz.f).b(erz.a));
+public class ery extends erp {
+   public static final MapCodec<ery> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  ars.a(Codec.string(0, 32)).optionalFieldOf("title").forGetter($$0x -> $$0x.c),
+                  Codec.STRING.optionalFieldOf("author").forGetter($$0x -> $$0x.b),
+                  ayc.a(0, 3).optionalFieldOf("generation").forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, ery::new)
+   );
+   private final Optional<String> b;
+   private final Optional<ars<String>> c;
+   private final Optional<Integer> d;
 
-   private static erx a(String $$0, Consumer<erx.a> $$1) {
-      erx.a $$2 = new erx.a();
-      $$1.accept($$2);
-      erx $$3 = $$2.a();
-      akn $$4 = new akn($$0);
-      erx $$5 = (erx)t.put($$4, $$3);
-      if ($$5 != null) {
-         throw new IllegalStateException("Loot table parameter set " + $$4 + " is already registered");
-      } else {
-         return $$3;
-      }
+   public ery(List<etn> $$0, Optional<ars<String>> $$1, Optional<String> $$2, Optional<Integer> $$3) {
+      super($$0);
+      this.b = $$2;
+      this.c = $$1;
+      this.d = $$3;
+   }
+
+   @Override
+   protected cuk a(cuk $$0, eqd $$1) {
+      $$0.a(km.I, cxt.a, this::a);
+      return $$0;
+   }
+
+   private cxt a(cxt $$0) {
+      return new cxt(this.c.orElseGet($$0::d), this.b.orElseGet($$0::e), this.d.orElseGet($$0::f), $$0.a(), $$0.g());
+   }
+
+   @Override
+   public err<ery> b() {
+      return ers.M;
    }
 }

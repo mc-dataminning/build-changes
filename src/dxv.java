@@ -1,32 +1,110 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.LongStream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public class dxv {
-   private long b;
-   private long c;
-   public static final Codec<dxv> a = Codec.LONG_STREAM
-      .comapFlatMap($$0 -> ac.a($$0, 2).map($$0x -> new dxv($$0x[0], $$0x[1])), $$0 -> LongStream.of($$0.b, $$0.c));
+public record dxv(dxi b, dxi c, dxi d, dxi e, dxi f, dxi g, dxi h, dxi i, dxi j, dxi k, dxi l, dxi m, dxi n, dxi o, dxi p) {
+   public static final Codec<dxv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               a("barrier", dxv::a),
+               a("fluid_level_floodedness", dxv::b),
+               a("fluid_level_spread", dxv::c),
+               a("lava", dxv::d),
+               a("temperature", dxv::e),
+               a("vegetation", dxv::f),
+               a("continents", dxv::g),
+               a("erosion", dxv::h),
+               a("depth", dxv::i),
+               a("ridges", dxv::j),
+               a("initial_density_without_jaggedness", dxv::k),
+               a("final_density", dxv::l),
+               a("vein_toggle", dxv::m),
+               a("vein_ridged", dxv::n),
+               a("vein_gap", dxv::o)
+            )
+            .apply($$0, dxv::new)
+   );
 
-   public dxv(dxk.a $$0) {
-      this($$0.b(), $$0.c());
+   private static RecordCodecBuilder<dxv, dxi> a(String $$0, Function<dxv, dxi> $$1) {
+      return dxi.d.fieldOf($$0).forGetter($$1);
    }
 
-   public dxv(long $$0, long $$1) {
-      this.b = $$0;
-      this.c = $$1;
-      if ((this.b | this.c) == 0L) {
-         this.b = -7046029254386353131L;
-         this.c = 7640891576956012809L;
-      }
+   public dxv a(dxi.f $$0) {
+      return new dxv(
+         this.b.a($$0),
+         this.c.a($$0),
+         this.d.a($$0),
+         this.e.a($$0),
+         this.f.a($$0),
+         this.g.a($$0),
+         this.h.a($$0),
+         this.i.a($$0),
+         this.j.a($$0),
+         this.k.a($$0),
+         this.l.a($$0),
+         this.m.a($$0),
+         this.n.a($$0),
+         this.o.a($$0),
+         this.p.a($$0)
+      );
    }
 
-   public long a() {
-      long $$0 = this.b;
-      long $$1 = this.c;
-      long $$2 = Long.rotateLeft($$0 + $$1, 17) + $$0;
-      $$1 ^= $$0;
-      this.b = Long.rotateLeft($$0, 49) ^ $$1 ^ $$1 << 21;
-      this.c = Long.rotateLeft($$1, 28);
-      return $$2;
+   public dxi a() {
+      return this.b;
+   }
+
+   public dxi b() {
+      return this.c;
+   }
+
+   public dxi c() {
+      return this.d;
+   }
+
+   public dxi d() {
+      return this.e;
+   }
+
+   public dxi e() {
+      return this.f;
+   }
+
+   public dxi f() {
+      return this.g;
+   }
+
+   public dxi g() {
+      return this.h;
+   }
+
+   public dxi h() {
+      return this.i;
+   }
+
+   public dxi i() {
+      return this.j;
+   }
+
+   public dxi j() {
+      return this.k;
+   }
+
+   public dxi k() {
+      return this.l;
+   }
+
+   public dxi l() {
+      return this.m;
+   }
+
+   public dxi m() {
+      return this.n;
+   }
+
+   public dxi n() {
+      return this.o;
+   }
+
+   public dxi o() {
+      return this.p;
    }
 }

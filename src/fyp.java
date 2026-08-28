@@ -1,49 +1,85 @@
-public class fyp extends gay {
-   private final gat a;
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.exceptions.MinecraftClientHttpException;
+import com.mojang.authlib.minecraft.UserApiService;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
+import com.mojang.datafixers.util.Unit;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
-   fyp(fwr $$0, double $$1, double $$2, double $$3, double $$4, gat $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$5;
-      this.t = 4;
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 1.0F - (float)$$4 * 0.5F;
-      this.b($$5);
+public interface fyp {
+   static fyp a(fyv $$0, UserApiService $$1) {
+      return new fyp.b($$0, $$1);
    }
 
-   @Override
-   public int a(float $$0) {
-      return 15728880;
+   CompletableFuture<Unit> a(UUID var1, fyx var2, AbuseReport var3);
+
+   boolean a();
+
+   default AbuseReportLimits b() {
+      return AbuseReportLimits.DEFAULTS;
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.a);
+   public static class a extends yl {
+      public a(xl $$0, Throwable $$1) {
+         super($$0, $$1);
       }
    }
 
-   @Override
-   public gac b() {
-      return gac.d;
-   }
+   public static record b(fyv a, UserApiService b) implements fyp {
+      private static final xl c = xl.c("gui.abuseReport.send.service_unavailable");
+      private static final xl d = xl.c("gui.abuseReport.send.http_error");
+      private static final xl e = xl.c("gui.abuseReport.send.json_error");
 
-   public static class a implements gab<lb> {
-      private final gat a;
+      @Override
+      public CompletableFuture<Unit> a(UUID $$0, fyx $$1, AbuseReport $$2) {
+         return CompletableFuture.supplyAsync(() -> {
+            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
 
-      public a(gat $$0) {
-         this.a = $$0;
+            try {
+               this.b.reportAbuse($$3);
+               return Unit.INSTANCE;
+            } catch (MinecraftClientHttpException var7) {
+               xl $$5 = this.a(var7);
+               throw new CompletionException(new fyp.a($$5, var7));
+            } catch (MinecraftClientException var8) {
+               xl $$7 = this.a(var8);
+               throw new CompletionException(new fyp.a($$7, var8));
+            }
+         }, ac.h());
       }
 
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fyp($$1, $$2, $$3, $$4, $$5, this.a);
+      @Override
+      public boolean a() {
+         return this.b.canSendReports();
+      }
+
+      private xl a(MinecraftClientHttpException $$0) {
+         return xl.a("gui.abuseReport.send.error_message", $$0.getMessage());
+      }
+
+      private xl a(MinecraftClientException $$0) {
+         return switch ($$0.getType()) {
+            case SERVICE_UNAVAILABLE -> c;
+            case HTTP_ERROR -> d;
+            case JSON_ERROR -> e;
+            default -> throw new MatchException(null, null);
+         };
+      }
+
+      @Override
+      public AbuseReportLimits b() {
+         return this.b.getAbuseReportLimits();
+      }
+
+      public fyv c() {
+         return this.a;
+      }
+
+      public UserApiService d() {
+         return this.b;
       }
    }
 }

@@ -1,89 +1,73 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntLists;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class cqs {
-   private static final List<cqr> b = ac.a(new ArrayList<>(), $$0 -> {
-      a($$0, "contents", 0);
-      a($$0, "container.", 0, 54);
-      a($$0, "hotbar.", 0, 9);
-      a($$0, "inventory.", 9, 27);
-      a($$0, "enderchest.", 200, 27);
-      a($$0, "villager.", 300, 8);
-      a($$0, "horse.", 500, 15);
-      int $$1 = bsd.a.a(98);
-      int $$2 = bsd.b.a(98);
-      a($$0, "weapon", $$1);
-      a($$0, "weapon.mainhand", $$1);
-      a($$0, "weapon.offhand", $$2);
-      a($$0, "weapon.*", $$1, $$2);
-      $$1 = bsd.f.a(100);
-      $$2 = bsd.e.a(100);
-      int $$5 = bsd.d.a(100);
-      int $$6 = bsd.c.a(100);
-      int $$7 = bsd.g.a(105);
-      a($$0, "armor.head", $$1);
-      a($$0, "armor.chest", $$2);
-      a($$0, "armor.legs", $$5);
-      a($$0, "armor.feet", $$6);
-      a($$0, "armor.body", $$7);
-      a($$0, "armor.*", $$1, $$2, $$5, $$6, $$7);
-      a($$0, "horse.saddle", 400);
-      a($$0, "horse.chest", 499);
-      a($$0, "player.cursor", 499);
-      a($$0, "player.crafting.", 500, 4);
-   });
-   public static final Codec<cqr> a = ayz.b(() -> b.toArray(new cqr[0]));
-   private static final Function<String, cqr> c = ayz.a(b.toArray(new cqr[0]), $$0 -> $$0);
+   private final List<cqs.b> a;
+   private final cqs.b b;
 
-   private static cqr a(String $$0, int $$1) {
-      return cqr.a($$0, IntLists.singleton($$1));
+   cqs(List<cqs.b> $$0, cqs.b $$1) {
+      if (!$$0.isEmpty() && !$$1.equals(cqs.b.e)) {
+         this.a = $$0;
+         this.b = $$1;
+      } else {
+         throw new IllegalArgumentException("Need to define both inputSlots and resultSlot");
+      }
    }
 
-   private static cqr a(String $$0, IntList $$1) {
-      return cqr.a($$0, IntLists.unmodifiable($$1));
+   public static cqs.a a() {
+      return new cqs.a();
    }
 
-   private static cqr a(String $$0, int... $$1) {
-      return cqr.a($$0, IntList.of($$1));
+   public boolean a(int $$0) {
+      return this.a.size() >= $$0;
    }
 
-   private static void a(List<cqr> $$0, String $$1, int $$2) {
-      $$0.add(a($$1, $$2));
+   public cqs.b b(int $$0) {
+      return this.a.get($$0);
    }
 
-   private static void a(List<cqr> $$0, String $$1, int $$2, int $$3) {
-      IntList $$4 = new IntArrayList($$3);
+   public cqs.b b() {
+      return this.b;
+   }
 
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         int $$6 = $$2 + $$5;
-         $$0.add(a($$1 + $$5, $$6));
-         $$4.add($$6);
+   public List<cqs.b> c() {
+      return this.a;
+   }
+
+   public int d() {
+      return this.a.size();
+   }
+
+   public int e() {
+      return this.d();
+   }
+
+   public List<Integer> f() {
+      return this.a.stream().map(cqs.b::a).collect(Collectors.toList());
+   }
+
+   public static class a {
+      private final List<cqs.b> a = new ArrayList<>();
+      private cqs.b b = cqs.b.e;
+
+      public cqs.a a(int $$0, int $$1, int $$2, Predicate<cuk> $$3) {
+         this.a.add(new cqs.b($$0, $$1, $$2, $$3));
+         return this;
       }
 
-      $$0.add(a($$1 + "*", $$4));
+      public cqs.a a(int $$0, int $$1, int $$2) {
+         this.b = new cqs.b($$0, $$1, $$2, $$0x -> false);
+         return this;
+      }
+
+      public cqs a() {
+         return new cqs(this.a, this.b);
+      }
    }
 
-   private static void a(List<cqr> $$0, String $$1, int... $$2) {
-      $$0.add(a($$1, $$2));
-   }
-
-   @Nullable
-   public static cqr a(String $$0) {
-      return c.apply($$0);
-   }
-
-   public static Stream<String> a() {
-      return b.stream().map(ayz::c);
-   }
-
-   public static Stream<String> b() {
-      return b.stream().filter($$0 -> $$0.b() == 1).map(ayz::c);
+   public static record b(int a, int b, int c, Predicate<cuk> d) {
+      static final cqs.b e = new cqs.b(0, 0, 0, $$0 -> true);
    }
 }

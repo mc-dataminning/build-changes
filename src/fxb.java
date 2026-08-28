@@ -1,17 +1,17 @@
 public class fxb {
-   private final fws a;
-   private final bkw b;
+   private final fxd a;
+   private final fxc b;
 
-   public fxb(fws $$0, bkw $$1) {
+   private fxb(fxd $$0, fxc $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
-   public void a() {
-      this.a.b(new aji(ac.c()));
+   public fwv a() {
+      return this.a.a().a(this.b.a, this.b.b);
    }
 
-   public void a(ajf $$0) {
-      this.b.a(ac.c() - $$0.b());
+   public static fxb a(fxd $$0, int $$1, int $$2) {
+      return new fxb($$0, new fxc($$1, $$2));
    }
 }

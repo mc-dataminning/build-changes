@@ -1,85 +1,45 @@
-public class ada implements ze<abq> {
-   public static final yv<vx, ada> a = ze.a(ada::a, ada::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final double e;
-   private final long f;
-   private final int g;
-   private final int h;
-   private final int i;
+public class ada implements zs<ace> {
+   public static final zj<wl, ada> a = zs.a(ada::a, ada::new);
+   private final int b;
+   private final int c;
+   private final int d;
 
-   private ada(vx $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readDouble();
-      this.f = $$0.m();
-      this.g = $$0.l();
-      this.h = $$0.l();
-      this.i = $$0.l();
+   public ada(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public ada(dsu $$0) {
-      this.b = $$0.a();
-      this.c = $$0.b();
-      this.d = $$0.i();
-      this.e = $$0.k();
-      this.f = $$0.j();
-      this.g = $$0.m();
-      this.h = $$0.r();
-      this.i = $$0.q();
+   private ada(wl $$0) {
+      this.b = $$0.readUnsignedByte();
+      this.c = $$0.readShort();
+      this.d = $$0.readShort();
    }
 
-   private void a(vx $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.c(this.g);
-      $$0.c(this.h);
-      $$0.c(this.i);
+   private void a(wl $$0) {
+      $$0.k(this.b);
+      $$0.l(this.c);
+      $$0.l(this.d);
    }
 
    @Override
-   public zg<ada> a() {
-      return agc.J;
+   public zu<ada> a() {
+      return agq.v;
    }
 
-   public void a(abq $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public double b() {
+   public int b() {
       return this.b;
    }
 
-   public double e() {
+   public int e() {
       return this.c;
    }
 
-   public double f() {
-      return this.e;
-   }
-
-   public double g() {
+   public int f() {
       return this.d;
-   }
-
-   public long h() {
-      return this.f;
-   }
-
-   public int i() {
-      return this.g;
-   }
-
-   public int j() {
-      return this.i;
-   }
-
-   public int k() {
-      return this.h;
    }
 }

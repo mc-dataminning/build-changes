@@ -1,32 +1,23 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dcr extends ddm {
-   private final csj a;
+public class dcr {
+   public static final Codec<dcr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(lj.bf.fieldOf("options").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.c)).apply($$0, dcr::new)
+   );
+   private final lh b;
+   private final float c;
 
-   protected dcr(csj $$0, drc.d $$1) {
-      super($$1);
-      this.a = $$0;
+   public dcr(lh $$0, float $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   protected abstract MapCodec<? extends dcr> a();
-
-   @Override
-   public boolean a(drd $$0) {
-      return true;
+   public lh a() {
+      return this.b;
    }
 
-   @Override
-   public doi a(io $$0, drd $$1) {
-      return new dnx($$0, $$1, this.a);
-   }
-
-   @Override
-   public ctq a(dbc $$0, io $$1, drd $$2) {
-      return $$0.c_($$1) instanceof dnx $$3 ? $$3.c() : super.a($$0, $$1, $$2);
-   }
-
-   public csj b() {
-      return this.a;
+   public boolean a(azc $$0) {
+      return $$0.i() <= this.c;
    }
 }

@@ -1,76 +1,96 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.ImmutableBiMap;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.function.Supplier;
 
-public record dnz(List<dnz.b> d) {
-   static final Logger e = LogUtils.getLogger();
-   public static final dnz a = new dnz(List.of());
-   public static final Codec<dnz> b = dnz.b.a.listOf().xmap(dnz::new, dnz::b);
-   public static final yv<wi, dnz> c = dnz.b.b.a(yt.a()).a(dnz::new, dnz::b);
+public interface dnz extends dfv<dnz.a> {
+   Supplier<BiMap<deu, deu>> t_ = Suppliers.memoize(
+      () -> ImmutableBiMap.builder()
+            .put(dew.qW, dew.qX)
+            .put(dew.qX, dew.qY)
+            .put(dew.qY, dew.qZ)
+            .put(dew.rf, dew.re)
+            .put(dew.re, dew.rd)
+            .put(dew.rd, dew.rc)
+            .put(dew.rj, dew.ri)
+            .put(dew.ri, dew.rh)
+            .put(dew.rh, dew.rg)
+            .put(dew.rv, dew.ru)
+            .put(dew.ru, dew.rt)
+            .put(dew.rt, dew.rs)
+            .put(dew.rr, dew.rq)
+            .put(dew.rq, dew.rp)
+            .put(dew.rp, dew.ro)
+            .put(dew.rM, dew.rN)
+            .put(dew.rN, dew.rP)
+            .put(dew.rP, dew.rO)
+            .put(dew.rU, dew.rV)
+            .put(dew.rV, dew.rX)
+            .put(dew.rX, dew.rW)
+            .put(dew.sc, dew.sd)
+            .put(dew.sd, dew.se)
+            .put(dew.se, dew.sf)
+            .put(dew.sk, dew.sl)
+            .put(dew.sl, dew.sm)
+            .put(dew.sm, dew.sn)
+            .build()
+   );
+   Supplier<BiMap<deu, deu>> u_ = Suppliers.memoize(() -> t_.get().inverse());
 
-   public dnz a() {
-      return new dnz(List.copyOf(this.d.subList(0, this.d.size() - 1)));
+   static Optional<deu> a(deu $$0) {
+      return Optional.ofNullable((deu)u_.get().get($$0));
    }
 
-   public List<dnz.b> b() {
-      return this.d;
+   static deu b(deu $$0) {
+      deu $$1 = $$0;
+
+      for (deu $$2 = (deu)u_.get().get($$0); $$2 != null; $$2 = (deu)u_.get().get($$2)) {
+         $$1 = $$2;
+      }
+
+      return $$1;
    }
 
-   public static class a {
-      private final Builder<dnz.b> a = ImmutableList.builder();
-
-      @Deprecated
-      public dnz.a a(iy<dny> $$0, akm<dny> $$1, csj $$2) {
-         Optional<ix.c<dny>> $$3 = $$0.a($$1);
-         if ($$3.isEmpty()) {
-            dnz.e.warn("Unable to find banner pattern with id: '{}'", $$1.a());
-            return this;
-         } else {
-            return this.a($$3.get(), $$2);
-         }
-      }
-
-      public dnz.a a(ix<dny> $$0, csj $$1) {
-         return this.a(new dnz.b($$0, $$1));
-      }
-
-      public dnz.a a(dnz.b $$0) {
-         this.a.add($$0);
-         return this;
-      }
-
-      public dnz.a a(dnz $$0) {
-         this.a.addAll($$0.d);
-         return this;
-      }
-
-      public dnz a() {
-         return new dnz(this.a.build());
-      }
+   static Optional<drx> b(drx $$0) {
+      return a($$0.b()).map($$1 -> $$1.l($$0));
    }
 
-   public static record b(ix<dny> c, csj d) {
-      public static final Codec<dnz.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(dny.c.fieldOf("pattern").forGetter(dnz.b::b), csj.q.fieldOf("color").forGetter(dnz.b::c)).apply($$0, dnz.b::new)
-      );
-      public static final yv<wi, dnz.b> b = yv.a(dny.d, dnz.b::b, csj.r, dnz.b::c, dnz.b::new);
+   static Optional<deu> c(deu $$0) {
+      return Optional.ofNullable((deu)t_.get().get($$0));
+   }
 
-      public xl a() {
-         String $$0 = this.c.a().b();
-         return wx.c($$0 + "." + this.d.b());
+   static drx c(drx $$0) {
+      return b($$0.b()).l($$0);
+   }
+
+   @Override
+   default Optional<drx> i_(drx $$0) {
+      return c($$0.b()).map($$1 -> $$1.l($$0));
+   }
+
+   @Override
+   default float av_() {
+      return this.c() == dnz.a.a ? 0.75F : 1.0F;
+   }
+
+   public static enum a implements azp {
+      a("unaffected"),
+      b("exposed"),
+      c("weathered"),
+      d("oxidized");
+
+      public static final Codec<dnz.a> e = azp.a(dnz.a::values);
+      private final String f;
+
+      private a(final String $$0) {
+         this.f = $$0;
       }
 
-      public ix<dny> b() {
-         return this.c;
-      }
-
-      public csj c() {
-         return this.d;
+      @Override
+      public String c() {
+         return this.f;
       }
    }
 }

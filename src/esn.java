@@ -1,22 +1,38 @@
-import java.util.function.Predicate;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Set;
 
-public interface esn extends epi, Predicate<eph> {
-   eso b();
+public class esn extends erp {
+   static final MapCodec<esn> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(euj.a.fieldOf("amplifier").forGetter($$0x -> $$0x.b)).apply($$0, esn::new));
+   private final eui b;
 
-   @FunctionalInterface
-   public interface a {
-      esn build();
+   private esn(List<etn> $$0, eui $$1) {
+      super($$0);
+      this.b = $$1;
+   }
 
-      default esn.a invert() {
-         return esk.a(this);
-      }
+   @Override
+   public Set<esw<?>> a() {
+      return this.b.a();
+   }
 
-      default esc.a or(esn.a $$0) {
-         return esc.a(this, $$0);
-      }
+   @Override
+   public err<esn> b() {
+      return ers.Q;
+   }
 
-      default esb.a and(esn.a $$0) {
-         return esb.a(this, $$0);
-      }
+   @Override
+   public cuk a(cuk $$0, eqd $$1) {
+      $$0.b(km.P, Integer.valueOf(this.b.a($$1)));
+      return $$0;
+   }
+
+   public eui c() {
+      return this.b;
+   }
+
+   public static erp.a<?> a(eui $$0) {
+      return a($$1 -> new esn($$1, $$0));
    }
 }

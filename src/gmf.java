@@ -1,48 +1,24 @@
-public abstract class gmf<T extends brw, M extends fsw<T>> {
-   private final gjp<T, M> a;
+public class gmf extends gne<cjo, ftt<cjo>> {
+   private final ged a;
 
-   public gmf(gjp<T, M> $$0) {
-      this.a = $$0;
+   public gmf(gko<cjo, ftt<cjo>> $$0, ged $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
-   protected static <T extends bsq> void a(
-      fsw<T> $$0,
-      fsw<T> $$1,
-      akn $$2,
-      eyu $$3,
-      gck $$4,
-      int $$5,
-      T $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15
-   ) {
-      if (!$$6.ch()) {
-         $$0.a($$1);
-         $$1.a($$6, $$7, $$8, $$12);
-         $$1.a($$6, $$7, $$8, $$9, $$10, $$11);
-         a($$1, $$2, $$3, $$4, $$5, $$6, $$13, $$14, $$15);
+   public void a(ezt $$0, gdj $$1, int $$2, cjo $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      drx $$10 = $$3.gq();
+      if ($$10 != null) {
+         $$0.a();
+         $$0.a(0.0F, 0.6875F, -0.75F);
+         $$0.a(a.b.rotationDegrees(20.0F));
+         $$0.a(a.d.rotationDegrees(45.0F));
+         $$0.a(0.25F, 0.1875F, 0.25F);
+         float $$11 = 0.5F;
+         $$0.b(-0.5F, -0.5F, 0.5F);
+         $$0.a(a.d.rotationDegrees(90.0F));
+         this.a.a($$10, $$0, $$1, $$2, gol.d);
+         $$0.b();
       }
    }
-
-   protected static <T extends bsq> void a(fsw<T> $$0, akn $$1, eyu $$2, gck $$3, int $$4, T $$5, float $$6, float $$7, float $$8) {
-      eyy $$9 = $$3.getBuffer(gcs.e($$1));
-      $$0.a($$2, $$9, $$4, giu.c($$5, 0.0F), $$6, $$7, $$8, 1.0F);
-   }
-
-   public M c() {
-      return this.a.a();
-   }
-
-   protected akn a(T $$0) {
-      return this.a.a($$0);
-   }
-
-   public abstract void a(eyu var1, gck var2, int var3, T var4, float var5, float var6, float var7, float var8, float var9, float var10);
 }

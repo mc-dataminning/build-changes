@@ -1,41 +1,40 @@
-import java.util.stream.Stream;
-
-public class cts {
-   public static bpx<ctq> a(daz $$0, cly $$1, bpv $$2) {
-      $$1.c($$2);
-      return bpx.b($$1.b($$2));
+public class cts extends cuf {
+   public cts(cuf.a $$0) {
+      super($$0);
    }
 
-   public static ctq a(ctq $$0, cly $$1, ctq $$2, boolean $$3) {
-      boolean $$4 = $$1.fP();
-      if ($$3 && $$4) {
-         if (!$$1.gc().i($$2)) {
-            $$1.gc().f($$2);
-         }
-
-         return $$0;
-      } else {
-         $$0.a(1, $$1);
-         if ($$0.e()) {
-            return $$2;
-         } else {
-            if (!$$1.gc().f($$2)) {
-               $$1.a($$2, false);
+   @Override
+   public bqp a(cxx $$0) {
+      cms $$1 = $$0.o();
+      dbt $$2 = $$0.q();
+      iz $$3 = $$0.a();
+      drx $$4 = $$2.a_($$3);
+      if (!dfi.h($$4) && !dfj.g($$4) && !dfk.g($$4)) {
+         iz $$5 = $$3.a($$0.k());
+         if (deh.a($$2, $$5, $$0.g())) {
+            $$2.a($$1, $$5, avw.iZ, avx.e, 1.0F, $$2.E_().i() * 0.4F + 0.8F);
+            drx $$6 = deh.a($$2, $$5);
+            $$2.a($$5, $$6, 11);
+            $$2.a($$1, dwq.i, $$3);
+            cuk $$7 = $$0.n();
+            if ($$1 instanceof arc) {
+               am.z.a((arc)$$1, $$5, $$7);
+               $$7.a(1, $$1, btk.d($$0.p()));
             }
 
-            return $$0;
+            return bqp.a($$2.x_());
+         } else {
+            return bqp.f;
          }
-      }
-   }
+      } else {
+         $$2.a($$1, $$3, avw.iZ, avx.e, 1.0F, $$2.E_().i() * 0.4F + 0.8F);
+         $$2.a($$3, $$4.a(dsn.r, Boolean.valueOf(true)), 11);
+         $$2.a($$1, dwq.c, $$3);
+         if ($$1 != null) {
+            $$0.n().a(1, $$1, btk.d($$0.p()));
+         }
 
-   public static ctq a(ctq $$0, cly $$1, ctq $$2) {
-      return a($$0, $$1, $$2, true);
-   }
-
-   public static void a(cii $$0, Stream<ctq> $$1) {
-      daz $$2 = $$0.dP();
-      if (!$$2.B) {
-         $$1.forEach($$2x -> $$2.b(new cii($$2, $$0.du(), $$0.dw(), $$0.dA(), $$2x)));
+         return bqp.a($$2.x_());
       }
    }
 }

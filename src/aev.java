@@ -1,52 +1,33 @@
-import java.util.ArrayList;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public record aev(int c, List<ajw.c<?>> d) implements ze<abq> {
-   public static final yv<wi, aev> a = ze.a(aev::b, aev::new);
-   public static final int b = 255;
+public class aev implements zs<ace> {
+   public static final zj<wl, aev> a = zs.a(aev::a, aev::new);
+   @Nullable
+   private final alb b;
 
-   private aev(wi $$0) {
-      this($$0.l(), a($$0));
+   public aev(@Nullable alb $$0) {
+      this.b = $$0;
    }
 
-   private static void a(List<ajw.c<?>> $$0, wi $$1) {
-      for (ajw.c<?> $$2 : $$0) {
-         $$2.a($$1);
-      }
-
-      $$1.k(255);
+   private aev(wl $$0) {
+      this.b = $$0.c(wl::q);
    }
 
-   private static List<ajw.c<?>> a(wi $$0) {
-      List<ajw.c<?>> $$1 = new ArrayList<>();
-
-      int $$2;
-      while (($$2 = $$0.readUnsignedByte()) != 255) {
-         $$1.add(ajw.c.a($$0, $$2));
-      }
-
-      return $$1;
-   }
-
-   private void b(wi $$0) {
-      $$0.c(this.c);
-      a(this.d, $$0);
+   private void a(wl $$0) {
+      $$0.a(this.b, wl::a);
    }
 
    @Override
-   public zg<aev> a() {
-      return agc.aC;
+   public zu<aev> a() {
+      return agq.ao;
    }
 
-   public void a(abq $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public List<ajw.c<?>> e() {
-      return this.d;
+   @Nullable
+   public alb b() {
+      return this.b;
    }
 }

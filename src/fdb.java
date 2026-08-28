@@ -1,56 +1,70 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public class fdb extends gvb {
+   private static final int a = 212;
+   private static final xl b = xl.c("mco.configure.world.name");
+   private static final xl c = xl.c("mco.configure.world.description");
+   private final fcj B;
+   private final fba C;
+   private fhi D;
+   private fhi E;
 
-public abstract class fdb implements Runnable {
-   protected static final int a = 25;
-   private static final Logger b = LogUtils.getLogger();
-   private boolean c = false;
-
-   protected static void a(long $$0) {
-      try {
-         Thread.sleep($$0 * 1000L);
-      } catch (InterruptedException var3) {
-         Thread.currentThread().interrupt();
-         b.error("", var3);
-      }
+   public fdb(fcj $$0, fba $$1) {
+      super(xl.c("mco.configure.world.settings.title"));
+      this.B = $$0;
+      this.C = $$1;
    }
 
-   public static void a(flz $$0) {
-      feb $$1 = feb.Q();
-      $$1.execute(() -> $$1.a($$0));
+   @Override
+   public void aN_() {
+      int $$0 = this.n / 2 - 106;
+      String $$1 = this.C.e == fba.c.b ? "mco.configure.world.buttons.close" : "mco.configure.world.buttons.open";
+      fgz $$2 = fgz.a(xl.c($$1), $$0x -> {
+         if (this.C.e == fba.c.b) {
+            xl $$1x = xl.c("mco.configure.world.close.question.line1");
+            xl $$2x = xl.c("mco.configure.world.close.question.line2");
+            this.m.a(new fcp($$0xx -> {
+               if ($$0xx) {
+                  this.B.a(this);
+               } else {
+                  this.m.a(this);
+               }
+            }, fcp.a.b, $$1x, $$2x, true));
+         } else {
+            this.B.a(false, this);
+         }
+      }).a(this.n / 2 - 53, g(0), 106, 20).a();
+      this.c($$2);
+      this.E = new fhi(this.m.h, $$0, g(4), 212, 20, xl.c("mco.configure.world.name"));
+      this.E.f(32);
+      this.E.a(this.C.b());
+      this.c(this.E);
+      this.D = new fhi(this.m.h, $$0, g(8), 212, 20, xl.c("mco.configure.world.description"));
+      this.D.f(32);
+      this.D.a(this.C.a());
+      this.c(this.D);
+      fgz $$3 = this.c(fgz.a(xl.c("mco.configure.world.buttons.done"), $$0x -> this.g()).a($$0 - 2, g(12), 106, 20).a());
+      this.E.b($$1x -> $$3.j = !azq.h($$1x));
+      this.c(fgz.a(xk.e, $$0x -> this.d()).a(this.n / 2 + 2, g(12), 106, 20).a());
    }
 
-   protected void a(wx $$0) {
-      this.b();
-      feb $$1 = feb.Q();
-      $$1.execute(() -> $$1.a(new fbo($$0, new ezf(new fme()))));
+   @Override
+   protected void aD_() {
+      this.b(this.E);
    }
 
-   protected void a(Exception $$0) {
-      if ($$0 instanceof fax $$1) {
-         this.a($$1.a.b());
-      } else {
-         this.a(wx.b($$0.getMessage()));
-      }
+   @Override
+   public void d() {
+      this.m.a(this.B);
    }
 
-   protected void a(fax $$0) {
-      this.a($$0.a.b());
+   @Override
+   public void a(fgm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 17, -1);
+      $$0.a(this.p, b, this.n / 2 - 106, g(3), -1, false);
+      $$0.a(this.p, c, this.n / 2 - 106, g(7), -1, false);
    }
 
-   public abstract wx a();
-
-   public boolean d() {
-      return this.c;
-   }
-
-   public void c() {
-   }
-
-   public void e() {
-   }
-
-   public void b() {
-      this.c = true;
+   public void g() {
+      this.B.a(this.E.a(), this.D.a());
    }
 }

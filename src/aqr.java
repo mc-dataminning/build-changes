@@ -1,60 +1,42 @@
-import java.util.Objects;
+public record aqr(int a, int b) {
+   private static final long c = 32L;
+   private static final long d = 4294967295L;
 
-public final class aqr<T> implements Comparable<aqr<?>> {
-   private final aqs<T> a;
-   private final int b;
-   private final T c;
-   private long d;
-
-   protected aqr(aqs<T> $$0, int $$1, T $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public dba a() {
+      return new dba(kb.a(this.a), kb.a(this.b));
    }
 
-   public int a(aqr<?> $$0) {
-      int $$1 = Integer.compare(this.b, $$0.b);
-      if ($$1 != 0) {
-         return $$1;
-      } else {
-         int $$2 = Integer.compare(System.identityHashCode(this.a), System.identityHashCode($$0.a));
-         return $$2 != 0 ? $$2 : this.a.a().compare(this.c, (T)$$0.c);
-      }
+   public long b() {
+      return a(this.a, this.b);
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof aqr<?> $$1) ? false : this.b == $$1.b && Objects.equals(this.a, $$1.a) && Objects.equals(this.c, $$1.c);
-      }
+   public static long a(int $$0, int $$1) {
+      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
    }
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.a, this.b, this.c);
+   public static int a(long $$0) {
+      return (int)($$0 & 4294967295L);
+   }
+
+   public static int b(long $$0) {
+      return (int)($$0 >>> 32 & 4294967295L);
    }
 
    @Override
    public String toString() {
-      return "Ticket[" + this.a + " " + this.b + " (" + this.c + ")] at " + this.d;
+      return "[" + this.a + ", " + this.b + "]";
    }
 
-   public aqs<T> a() {
+   @Override
+   public int hashCode() {
+      return dba.d(this.a, this.b);
+   }
+
+   public int c() {
       return this.a;
    }
 
-   public int b() {
+   public int d() {
       return this.b;
-   }
-
-   protected void a(long $$0) {
-      this.d = $$0;
-   }
-
-   protected boolean b(long $$0) {
-      long $$1 = this.a.b();
-      return $$1 != 0L && $$0 - this.d > $$1;
    }
 }

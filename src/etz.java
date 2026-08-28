@@ -1,119 +1,93 @@
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.Table;
-import com.google.common.primitives.UnsignedLong;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class etz<T> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "Callback";
-   private static final String c = "Name";
-   private static final String d = "TriggerTime";
-   private final ety<T> e;
-   private final Queue<etz.a<T>> f = new PriorityQueue<>(c());
-   private UnsignedLong g = UnsignedLong.ZERO;
-   private final Table<String, Long, etz.a<T>> h = HashBasedTable.create();
+public class etz implements eub {
+   private static final String d = "block_entity";
+   private static final etz.a e = new etz.a() {
+      @Override
+      public vo a(eqd $$0) {
+         dpc $$1 = $$0.c(esz.h);
+         return $$1 != null ? $$1.b($$1.i().H_()) : null;
+      }
 
-   private static <T> Comparator<etz.a<T>> c() {
-      return Comparator.<etz.a<T>>comparingLong($$0 -> $$0.a).thenComparing($$0 -> $$0.b);
-   }
+      @Override
+      public String a() {
+         return "block_entity";
+      }
 
-   public etz(ety<T> $$0, Stream<? extends Dynamic<?>> $$1) {
-      this($$0);
-      this.f.clear();
-      this.h.clear();
-      this.g = UnsignedLong.ZERO;
-      $$1.forEach($$0x -> {
-         va $$1x = (va)$$0x.convert(ur.a).getValue();
-         if ($$1x instanceof ud $$2) {
-            this.a($$2);
-         } else {
-            a.warn("Invalid format of events: {}", $$1x);
+      @Override
+      public Set<esw<?>> b() {
+         return ImmutableSet.of(esz.h);
+      }
+   };
+   public static final etz a = new etz(e);
+   private static final Codec<etz.a> f = Codec.STRING.xmap($$0 -> {
+      if ($$0.equals("block_entity")) {
+         return e;
+      } else {
+         eqd.b $$1 = eqd.b.a($$0);
+         return b($$1);
+      }
+   }, etz.a::a);
+   public static final MapCodec<etz> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(f.fieldOf("target").forGetter($$0x -> $$0x.g)).apply($$0, etz::new));
+   public static final Codec<etz> c = f.xmap(etz::new, $$0 -> $$0.g);
+   private final etz.a g;
+
+   private static etz.a b(final eqd.b $$0) {
+      return new etz.a() {
+         @Nullable
+         @Override
+         public vo a(eqd $$0x) {
+            bsp $$1 = $$0.c($$0.a());
+            return $$1 != null ? dg.b($$1) : null;
          }
-      });
-   }
 
-   public etz(ety<T> $$0) {
-      this.e = $$0;
-   }
-
-   public void a(T $$0, long $$1) {
-      while (true) {
-         etz.a<T> $$2 = this.f.peek();
-         if ($$2 == null || $$2.a > $$1) {
-            return;
+         @Override
+         public String a() {
+            return $$0.name();
          }
 
-         this.f.remove();
-         this.h.remove($$2.c, $$1);
-         $$2.d.handle($$0, this, $$1);
-      }
+         @Override
+         public Set<esw<?>> b() {
+            return ImmutableSet.of($$0.a());
+         }
+      };
    }
 
-   public void a(String $$0, long $$1, etx<T> $$2) {
-      if (!this.h.contains($$0, $$1)) {
-         this.g = this.g.plus(UnsignedLong.ONE);
-         etz.a<T> $$3 = new etz.a<>($$1, this.g, $$0, $$2);
-         this.h.put($$0, $$1, $$3);
-         this.f.add($$3);
-      }
+   private etz(etz.a $$0) {
+      this.g = $$0;
    }
 
-   public int a(String $$0) {
-      Collection<etz.a<T>> $$1 = this.h.row($$0).values();
-      $$1.forEach(this.f::remove);
-      int $$2 = $$1.size();
-      $$1.clear();
-      return $$2;
+   @Override
+   public eua a() {
+      return euc.c;
    }
 
-   public Set<String> a() {
-      return Collections.unmodifiableSet(this.h.rowKeySet());
+   @Nullable
+   @Override
+   public vo a(eqd $$0) {
+      return this.g.a($$0);
    }
 
-   private void a(ud $$0) {
-      ud $$1 = $$0.p("Callback");
-      etx<T> $$2 = this.e.a($$1);
-      if ($$2 != null) {
-         String $$3 = $$0.l("Name");
-         long $$4 = $$0.i("TriggerTime");
-         this.a($$3, $$4, $$2);
-      }
+   @Override
+   public Set<esw<?>> b() {
+      return this.g.b();
    }
 
-   private ud a(etz.a<T> $$0) {
-      ud $$1 = new ud();
-      $$1.a("Name", $$0.c);
-      $$1.a("TriggerTime", $$0.a);
-      $$1.a("Callback", this.e.a($$0.d));
-      return $$1;
+   public static eub a(eqd.b $$0) {
+      return new etz(b($$0));
    }
 
-   public uj b() {
-      uj $$0 = new uj();
-      this.f.stream().sorted(c()).map(this::a).forEach($$0::add);
-      return $$0;
-   }
+   interface a {
+      @Nullable
+      vo a(eqd var1);
 
-   public static class a<T> {
-      public final long a;
-      public final UnsignedLong b;
-      public final String c;
-      public final etx<T> d;
+      String a();
 
-      a(long $$0, UnsignedLong $$1, String $$2, etx<T> $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
+      Set<esw<?>> b();
    }
 }

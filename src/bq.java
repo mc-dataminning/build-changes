@@ -1,41 +1,56 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class bq extends df<bq.a> {
+public class bq extends dr<bq.a> {
    @Override
    public Codec<bq.a> a() {
       return bq.a.a;
    }
 
-   public void a(aqo $$0, bqp $$1, float $$2, float $$3, boolean $$4) {
-      this.a($$0, $$5 -> $$5.a($$0, $$1, $$2, $$3, $$4));
+   public void a(arc $$0, drx $$1) {
+      this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public static record a(Optional<bc> b, Optional<bf> c) implements df.a {
+   public static record a(Optional<bf> b, Optional<ji<deu>> c, Optional<dx> d) implements dr.a {
       public static final Codec<bq.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(br.b.optionalFieldOf("player").forGetter(bq.a::a), bf.a.optionalFieldOf("damage").forGetter(bq.a::c)).apply($$0, bq.a::new)
-      );
+            $$0 -> $$0.group(
+                     bu.b.optionalFieldOf("player").forGetter(bq.a::a),
+                     lp.e.r().optionalFieldOf("block").forGetter(bq.a::b),
+                     dx.a.optionalFieldOf("state").forGetter(bq.a::c)
+                  )
+                  .apply($$0, bq.a::new)
+         )
+         .validate(bq.a::a);
 
-      public static an<bq.a> b() {
-         return am.i.a(new bq.a(Optional.empty(), Optional.empty()));
+      private static DataResult<bq.a> a(bq.a $$0) {
+         return $$0.c
+            .<DataResult<bq.a>>flatMap(
+               $$1 -> $$0.d.<String>flatMap($$1x -> $$1x.a(((deu)$$1.a()).l())).map($$1x -> DataResult.error(() -> "Block" + $$1 + " has no property " + $$1x))
+            )
+            .orElseGet(() -> DataResult.success($$0));
       }
 
-      public static an<bq.a> a(bf $$0) {
-         return am.i.a(new bq.a(Optional.empty(), Optional.of($$0)));
+      public static an<bq.a> a(deu $$0) {
+         return am.e.a(new bq.a(Optional.empty(), Optional.of($$0.q()), Optional.empty()));
       }
 
-      public static an<bq.a> a(bf.a $$0) {
-         return am.i.a(new bq.a(Optional.empty(), Optional.of($$0.b())));
-      }
-
-      public boolean a(aqo $$0, bqp $$1, float $$2, float $$3, boolean $$4) {
-         return !this.c.isPresent() || this.c.get().a($$0, $$1, $$2, $$3, $$4);
+      public boolean a(drx $$0) {
+         return this.c.isPresent() && !$$0.a(this.c.get()) ? false : !this.d.isPresent() || this.d.get().a($$0);
       }
 
       @Override
-      public Optional<bc> a() {
+      public Optional<bf> a() {
          return this.b;
+      }
+
+      public Optional<ji<deu>> b() {
+         return this.c;
+      }
+
+      public Optional<dx> c() {
+         return this.d;
       }
    }
 }

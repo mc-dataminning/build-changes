@@ -1,7 +1,29 @@
-public interface jh {
-   double a();
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 
-   double b();
+public record jh(ala<dbt> d, iz e) {
+   public static final MapCodec<jh> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dbt.g.fieldOf("dimension").forGetter(jh::a), iz.a.fieldOf("pos").forGetter(jh::b)).apply($$0, jh::a)
+   );
+   public static final Codec<jh> b = a.codec();
+   public static final zj<ByteBuf, jh> c = zj.a(ala.b(lq.aS), jh::a, iz.b, jh::b, jh::a);
 
-   double c();
+   public static jh a(ala<dbt> $$0, iz $$1) {
+      return new jh($$0, $$1);
+   }
+
+   @Override
+   public String toString() {
+      return this.d + " " + this.e;
+   }
+
+   public ala<dbt> a() {
+      return this.d;
+   }
+
+   public iz b() {
+      return this.e;
+   }
 }

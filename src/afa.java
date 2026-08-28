@@ -1,45 +1,29 @@
-public class afa implements ze<abq> {
-   public static final yv<vx, afa> a = ze.a(afa::a, afa::new);
-   private final float b;
-   private final int c;
-   private final float d;
+public class afa implements zs<ace> {
+   public static final zj<wl, afa> a = zs.a(afa::a, afa::new);
+   private final double b;
 
-   public afa(float $$0, int $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public afa(dto $$0) {
+      this.b = $$0.k();
    }
 
-   private afa(vx $$0) {
-      this.b = $$0.readFloat();
-      this.c = $$0.l();
-      this.d = $$0.readFloat();
+   private afa(wl $$0) {
+      this.b = $$0.readDouble();
    }
 
-   private void a(vx $$0) {
+   private void a(wl $$0) {
       $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
    }
 
    @Override
-   public zg<afa> a() {
-      return agc.aH;
+   public zu<afa> a() {
+      return agq.at;
    }
 
-   public void a(abq $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public float b() {
+   public double b() {
       return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public float f() {
-      return this.d;
    }
 }

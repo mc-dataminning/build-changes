@@ -1,167 +1,367 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fcj {
-   static final Logger a = LogUtils.getLogger();
-   final Executor b;
-   final TimeUnit c;
-   final azd d;
+public class fcj extends gvb {
+   private static final alb a = new alb("realm_status/expired");
+   private static final alb b = new alb("realm_status/expires_soon");
+   private static final alb c = new alb("realm_status/open");
+   private static final alb B = new alb("realm_status/closed");
+   private static final Logger C = LogUtils.getLogger();
+   private static final xl D = xl.c("mco.configure.worlds.title");
+   private static final xl E = xl.c("mco.configure.world.title");
+   private static final xl F = xl.c("mco.selectServer.expired");
+   private static final xl G = xl.c("mco.selectServer.expires.soon");
+   private static final xl H = xl.c("mco.selectServer.expires.day");
+   private static final xl I = xl.c("mco.selectServer.open");
+   private static final xl J = xl.c("mco.selectServer.closed");
+   private static final int K = 80;
+   private static final int L = 5;
+   @Nullable
+   private xl M;
+   private final fae N;
+   @Nullable
+   private fba O;
+   private final long P;
+   private int Q;
+   private int R;
+   private fgz S;
+   private fgz T;
+   private fgz U;
+   private fgz V;
+   private fgz W;
+   private fgz X;
+   private fgz Y;
+   private boolean Z;
+   private final List<fcc> aa = Lists.newArrayList();
 
-   public fcj(Executor $$0, TimeUnit $$1, azd $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public fcj(fae $$0, long $$1) {
+      super(E);
+      this.N = $$0;
+      this.P = $$1;
    }
 
-   public <T> fcj.e<T> a(String $$0, Callable<T> $$1, Duration $$2, fck $$3) {
-      long $$4 = this.c.convert($$2);
-      if ($$4 == 0L) {
-         throw new IllegalArgumentException("Period of " + $$2 + " too short for selected resolution of " + this.c);
+   @Override
+   public void aN_() {
+      if (this.O == null) {
+         this.a(this.P);
+      }
+
+      this.Q = this.n / 2 - 187;
+      this.R = this.n / 2 + 190;
+      this.S = this.c(fgz.a(xl.c("mco.configure.world.buttons.players"), $$0x -> this.m.a(new fcv(this, this.O))).a(this.a(0, 3), g(0), 100, 20).a());
+      this.T = this.c(fgz.a(xl.c("mco.configure.world.buttons.settings"), $$0x -> this.m.a(new fdb(this, this.O.g()))).a(this.a(1, 3), g(0), 100, 20).a());
+      this.U = this.c(
+         fgz.a(xl.c("mco.configure.world.buttons.subscription"), $$0x -> this.m.a(new fdd(this, this.O.g(), this.N))).a(this.a(2, 3), g(0), 100, 20).a()
+      );
+      this.aa.clear();
+
+      for (int $$0 = 1; $$0 < 5; $$0++) {
+         this.aa.add(this.a($$0));
+      }
+
+      this.Y = this.c(
+         fgz.a(xl.c("mco.configure.world.buttons.switchminigame"), $$0x -> this.m.a(new fda(xl.c("mco.template.title.minigame"), this::a, fba.d.b)))
+            .a(this.b(0), g(13) - 5, 100, 20)
+            .a()
+      );
+      this.V = this.c(
+         fgz.a(xl.c("mco.configure.world.buttons.options"), $$0x -> this.m.a(new fdc(this, this.O.i.get(this.O.n).d(), this.O.m, this.O.n)))
+            .a(this.b(0), g(13) - 5, 90, 20)
+            .a()
+      );
+      this.W = this.c(fgz.a(xl.c("mco.configure.world.backup"), $$0x -> this.m.a(new fcg(this, this.O.g(), this.O.n))).a(this.b(1), g(13) - 5, 90, 20).a());
+      this.X = this.c(
+         fgz.a(xl.c("mco.configure.world.buttons.resetworld"), $$0x -> this.m.a(fcy.a(this, this.O.g(), () -> this.m.execute(() -> this.m.a(this.f())))))
+            .a(this.b(2), g(13) - 5, 90, 20)
+            .a()
+      );
+      this.c(fgz.a(xk.k, $$0x -> this.d()).a(this.R - 80 + 8, g(13) - 5, 70, 20).a());
+      this.W.j = true;
+      if (this.O == null) {
+         this.I();
+         this.F();
+         this.S.j = false;
+         this.T.j = false;
+         this.U.j = false;
       } else {
-         return new fcj.e<>($$0, $$1, $$4, $$3);
-      }
-   }
-
-   public fcj.c a() {
-      return new fcj.c();
-   }
-
-   static record a<T>(Either<T, Exception> a, long b) {
-   }
-
-   class b<T> {
-      private final fcj.e<T> a;
-      private final Consumer<T> b;
-      private long c = -1L;
-
-      b(fcj.e<T> $$0, Consumer<T> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      void a(long $$0) {
-         this.a.a($$0);
-         this.a();
-      }
-
-      void a() {
-         fcj.d<T> $$0 = this.a.g;
-         if ($$0 != null && this.c < $$0.b) {
-            this.b.accept($$0.a);
-            this.c = $$0.b;
-         }
-      }
-
-      void b() {
-         fcj.d<T> $$0 = this.a.g;
-         if ($$0 != null) {
-            this.b.accept($$0.a);
-            this.c = $$0.b;
-         }
-      }
-
-      void c() {
-         this.a.a();
-         this.c = -1L;
-      }
-   }
-
-   public class c {
-      private final List<fcj.b<?>> b = new ArrayList<>();
-
-      public <T> void a(fcj.e<T> $$0, Consumer<T> $$1) {
-         fcj.b<T> $$2 = fcj.this.new b<>($$0, $$1);
-         this.b.add($$2);
-         $$2.a();
-      }
-
-      public void a() {
-         for (fcj.b<?> $$0 : this.b) {
-            $$0.b();
-         }
-      }
-
-      public void b() {
-         for (fcj.b<?> $$0 : this.b) {
-            $$0.a(fcj.this.d.get(fcj.this.c));
-         }
-      }
-
-      public void c() {
-         for (fcj.b<?> $$0 : this.b) {
-            $$0.c();
+         this.C();
+         if (this.E()) {
+            this.F();
+         } else {
+            this.I();
          }
       }
    }
 
-   static record d<T>(T a, long b) {
-   }
-
-   public class e<T> {
-      private final String b;
-      private final Callable<T> c;
-      private final long d;
-      private final fck e;
-      @Nullable
-      private CompletableFuture<fcj.a<T>> f;
-      @Nullable
-      fcj.d<T> g;
-      private long h = -1L;
-
-      e(String $$1, Callable<T> $$2, long $$3, fck $$4) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-      }
-
-      void a(long $$0) {
-         if (this.f != null) {
-            fcj.a<T> $$1 = this.f.getNow(null);
-            if ($$1 == null) {
-               return;
+   private fcc a(int $$0) {
+      int $$1 = this.h($$0);
+      int $$2 = g(5) + 5;
+      fcc $$3 = new fcc($$1, $$2, 80, 80, $$0, $$1x -> {
+         fcc.b $$2x = ((fcc)$$1x).a();
+         if ($$2x != null) {
+            switch ($$2x.c) {
+               case a:
+                  break;
+               case c:
+                  this.a(this.O);
+                  break;
+               case b:
+                  if ($$2x.b) {
+                     this.D();
+                  } else if ($$2x.a) {
+                     this.b($$0, this.O);
+                  } else {
+                     this.a($$0, this.O);
+                  }
+                  break;
+               default:
+                  throw new IllegalStateException("Unknown action " + $$2x.c);
             }
-
-            this.f = null;
-            long $$2 = $$1.b;
-            $$1.a().ifLeft($$1x -> {
-               this.g = new fcj.d<>((T)$$1x, $$2);
-               this.h = $$2 + this.d * this.e.a();
-            }).ifRight($$1x -> {
-               long $$2x = this.e.b();
-               fcj.a.warn("Failed to process task {}, will repeat after {} cycles", new Object[]{this.b, $$2x, $$1x});
-               this.h = $$2 + this.d * $$2x;
-            });
          }
+      });
+      if (this.O != null) {
+         $$3.a(this.O);
+      }
 
-         if (this.h <= $$0) {
-            this.f = CompletableFuture.supplyAsync(() -> {
-               try {
-                  T $$0x = this.c.call();
-                  long $$1x = fcj.this.d.get(fcj.this.c);
-                  return new fcj.a<>(Either.left($$0x), $$1x);
-               } catch (Exception var4x) {
-                  long $$3 = fcj.this.d.get(fcj.this.c);
-                  return new fcj.a<>(Either.right(var4x), $$3);
+      return this.c($$3);
+   }
+
+   private int b(int $$0) {
+      return this.Q + $$0 * 95;
+   }
+
+   private int a(int $$0, int $$1) {
+      return this.n / 2 - ($$1 * 105 - 5) / 2 + $$0 * 105;
+   }
+
+   @Override
+   public void a(fgm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.M = null;
+      $$0.a(this.p, D, this.n / 2, g(4), -1);
+      if (this.O == null) {
+         $$0.a(this.p, this.l, this.n / 2, 17, -1);
+      } else {
+         String $$4 = this.O.b();
+         int $$5 = this.p.b($$4);
+         int $$6 = this.O.e == fba.c.a ? -6250336 : 8388479;
+         int $$7 = this.p.a(this.l);
+         $$0.a(this.p, this.l, this.n / 2, 12, -1);
+         $$0.a(this.p, $$4, this.n / 2, 24, $$6);
+         int $$8 = Math.min(this.a(2, 3) + 80 - 11, this.n / 2 + $$5 / 2 + $$7 / 2 + 10);
+         this.b($$0, $$8, 7, $$1, $$2);
+         if (this.E()) {
+            String $$9 = this.O.c();
+            if ($$9 != null) {
+               $$0.a(this.p, xl.a("mco.configure.world.minigame", $$9), this.Q + 80 + 20 + 10, g(13), -1, false);
+            }
+         }
+      }
+   }
+
+   private int h(int $$0) {
+      return this.Q + ($$0 - 1) * 98;
+   }
+
+   @Override
+   public void d() {
+      this.m.a(this.N);
+      if (this.Z) {
+         this.N.h();
+      }
+   }
+
+   private void a(long $$0) {
+      new Thread(() -> {
+         faj $$1 = faj.a();
+
+         try {
+            fba $$2 = $$1.a($$0);
+            this.m.execute(() -> {
+               this.O = $$2;
+               this.C();
+               if (this.E()) {
+                  this.b(this.Y);
+               } else {
+                  this.b(this.V);
+                  this.b(this.W);
+                  this.b(this.X);
                }
-            }, fcj.this.b);
+
+               for (fcc $$1x : this.aa) {
+                  $$1x.a($$2);
+               }
+            });
+         } catch (fbw var5) {
+            C.error("Couldn't get own world", var5);
+            this.m.execute(() -> this.m.a(new fcn(var5, this.N)));
+         }
+      }).start();
+   }
+
+   private void C() {
+      this.S.j = !this.O.j;
+      this.T.j = !this.O.j;
+      this.U.j = true;
+      this.Y.j = !this.O.j;
+      this.V.j = !this.O.j;
+      this.X.j = !this.O.j;
+   }
+
+   private void a(fba $$0) {
+      if (this.O.e == fba.c.b) {
+         fae.a($$0, new fcj(this.N, this.P));
+      } else {
+         this.a(true, new fcj(this.N, this.P));
+      }
+   }
+
+   private void D() {
+      fda $$0 = new fda(xl.c("mco.template.title.minigame"), this::a, fba.d.b);
+      $$0.a(xl.c("mco.minigame.world.info.line1"), xl.c("mco.minigame.world.info.line2"));
+      this.m.a($$0);
+   }
+
+   private void a(int $$0, fba $$1) {
+      xl $$2 = xl.c("mco.configure.world.slot.switch.question.line1");
+      xl $$3 = xl.c("mco.configure.world.slot.switch.question.line2");
+      this.m.a(new fcp($$2x -> {
+         if ($$2x) {
+            this.b();
+            this.m.a(new fcq(this.N, new fei($$1.a, $$0, () -> this.m.execute(() -> this.m.a(this.f())))));
+         } else {
+            this.m.a(this);
+         }
+      }, fcp.a.b, $$2, $$3, true));
+   }
+
+   private void b(int $$0, fba $$1) {
+      xl $$2 = xl.c("mco.configure.world.slot.switch.question.line1");
+      xl $$3 = xl.c("mco.configure.world.slot.switch.question.line2");
+      this.m.a(new fcp($$2x -> {
+         if ($$2x) {
+            this.b();
+            fcy $$3x = fcy.a(this, $$0, $$1, () -> this.m.execute(() -> this.m.a(this.f())));
+            this.m.a($$3x);
+         } else {
+            this.m.a(this);
+         }
+      }, fcp.a.b, $$2, $$3, true));
+   }
+
+   private void b(fgm $$0, int $$1, int $$2, int $$3, int $$4) {
+      if (this.O.j) {
+         this.a($$0, $$1, $$2, $$3, $$4, a, () -> F);
+      } else if (this.O.e == fba.c.a) {
+         this.a($$0, $$1, $$2, $$3, $$4, B, () -> J);
+      } else if (this.O.e == fba.c.b) {
+         if (this.O.l < 7) {
+            this.a($$0, $$1, $$2, $$3, $$4, b, () -> {
+               if (this.O.l <= 0) {
+                  return G;
+               } else {
+                  return (xl)(this.O.l == 1 ? H : xl.a("mco.selectServer.expires.days", this.O.l));
+               }
+            });
+         } else {
+            this.a($$0, $$1, $$2, $$3, $$4, c, () -> I);
          }
       }
+   }
 
-      public void a() {
-         this.f = null;
-         this.g = null;
-         this.h = -1L;
+   private void a(fgm $$0, int $$1, int $$2, int $$3, int $$4, alb $$5, Supplier<xl> $$6) {
+      $$0.a($$5, $$1, $$2, 10, 28);
+      if ($$3 >= $$1 && $$3 <= $$1 + 9 && $$4 >= $$2 && $$4 <= $$2 + 27) {
+         this.d($$6.get());
       }
+   }
+
+   private boolean E() {
+      return this.O != null && this.O.m == fba.d.b;
+   }
+
+   private void F() {
+      this.a(this.V);
+      this.a(this.W);
+      this.a(this.X);
+   }
+
+   private void a(fgz $$0) {
+      $$0.k = false;
+   }
+
+   private void b(fgz $$0) {
+      $$0.k = true;
+   }
+
+   private void I() {
+      this.a(this.Y);
+   }
+
+   public void a(fbh $$0) {
+      fbh $$1 = this.O.i.get(this.O.n);
+      $$0.l = $$1.l;
+      $$0.m = $$1.m;
+      faj $$2 = faj.a();
+
+      try {
+         $$2.a(this.O.a, this.O.n, $$0);
+         this.O.i.put(this.O.n, $$0);
+      } catch (fbw var5) {
+         C.error("Couldn't save slot settings", var5);
+         this.m.a(new fcn(var5, this));
+         return;
+      }
+
+      this.m.a(this);
+   }
+
+   public void a(String $$0, String $$1) {
+      String $$2 = azq.h($$1) ? null : $$1;
+      faj $$3 = faj.a();
+
+      try {
+         $$3.b(this.O.a, $$0, $$2);
+         this.O.a($$0);
+         this.O.b($$2);
+         this.b();
+      } catch (fbw var6) {
+         C.error("Couldn't save settings", var6);
+         this.m.a(new fcn(var6, this));
+         return;
+      }
+
+      this.m.a(this);
+   }
+
+   public void a(boolean $$0, fmy $$1) {
+      this.m.a(new fcq($$1, new feb(this.O, this, $$0, this.m)));
+   }
+
+   public void a(fmy $$0) {
+      this.m.a(new fcq($$0, new fdv(this.O, this)));
+   }
+
+   public void b() {
+      this.Z = true;
+   }
+
+   private void a(@Nullable fbr $$0) {
+      if ($$0 != null && fbr.a.b == $$0.i) {
+         this.b();
+         this.m.a(new fcq(this.N, new feh(this.O.a, $$0, this.f())));
+      } else {
+         this.m.a(this);
+      }
+   }
+
+   public fcj f() {
+      fcj $$0 = new fcj(this.N, this.P);
+      $$0.Z = this.Z;
+      return $$0;
    }
 }

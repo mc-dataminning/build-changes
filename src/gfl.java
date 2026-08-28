@@ -1,155 +1,51 @@
-import it.unimi.dsi.fastutil.ints.IntArrayFIFOQueue;
-import it.unimi.dsi.fastutil.ints.IntPriorityQueue;
-import java.util.BitSet;
-import java.util.EnumSet;
-import java.util.Set;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
 
 public class gfl {
-   private static final int a = 4;
-   private static final int b = 16;
-   private static final int c = 15;
-   private static final int d = 4096;
-   private static final int e = 0;
-   private static final int f = 4;
-   private static final int g = 8;
-   private static final int h = (int)Math.pow(16.0, 0.0);
-   private static final int i = (int)Math.pow(16.0, 1.0);
-   private static final int j = (int)Math.pow(16.0, 2.0);
-   private static final int k = -1;
-   private static final it[] l = it.values();
-   private final BitSet m = new BitSet(4096);
-   private static final int[] n = ac.a(new int[1352], $$0 -> {
-      int $$1 = 0;
-      int $$2 = 15;
-      int $$3 = 0;
+   private static final Map<dpe<?>, gfk<?>> a = Maps.newHashMap();
 
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            for (int $$6 = 0; $$6 < 16; $$6++) {
-               if ($$4 == 0 || $$4 == 15 || $$5 == 0 || $$5 == 15 || $$6 == 0 || $$6 == 15) {
-                  $$0[$$3++] = a($$4, $$5, $$6);
-               }
-            }
+   private static <T extends dpc> void a(dpe<? extends T> $$0, gfk<T> $$1) {
+      a.put($$0, $$1);
+   }
+
+   public static Map<dpe<?>, gfj<?>> a(gfk.a $$0) {
+      Builder<dpe<?>, gfj<?>> $$1 = ImmutableMap.builder();
+      a.forEach(($$2, $$3) -> {
+         try {
+            $$1.put($$2, $$3.create($$0));
+         } catch (Exception var5) {
+            throw new IllegalStateException("Failed to create model for " + lp.k.b((dpe<?>)$$2), var5);
          }
-      }
-   });
-   private int o = 4096;
-
-   public void a(io $$0) {
-      this.m.set(b($$0), true);
-      this.o--;
+      });
+      return $$1.build();
    }
 
-   private static int b(io $$0) {
-      return a($$0.u() & 15, $$0.v() & 15, $$0.w() & 15);
-   }
-
-   private static int a(int $$0, int $$1, int $$2) {
-      return $$0 << 0 | $$1 << 8 | $$2 << 4;
-   }
-
-   public gfm a() {
-      gfm $$0 = new gfm();
-      if (4096 - this.o < 256) {
-         $$0.a(true);
-      } else if (this.o == 0) {
-         $$0.a(false);
-      } else {
-         for (int $$1 : n) {
-            if (!this.m.get($$1)) {
-               $$0.a(this.a($$1));
-            }
-         }
-      }
-
-      return $$0;
-   }
-
-   private Set<it> a(int $$0) {
-      Set<it> $$1 = EnumSet.noneOf(it.class);
-      IntPriorityQueue $$2 = new IntArrayFIFOQueue();
-      $$2.enqueue($$0);
-      this.m.set($$0, true);
-
-      while (!$$2.isEmpty()) {
-         int $$3 = $$2.dequeueInt();
-         this.a($$3, $$1);
-
-         for (it $$4 : l) {
-            int $$5 = this.a($$3, $$4);
-            if ($$5 >= 0 && !this.m.get($$5)) {
-               this.m.set($$5, true);
-               $$2.enqueue($$5);
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   private void a(int $$0, Set<it> $$1) {
-      int $$2 = $$0 >> 0 & 15;
-      if ($$2 == 0) {
-         $$1.add(it.e);
-      } else if ($$2 == 15) {
-         $$1.add(it.f);
-      }
-
-      int $$3 = $$0 >> 8 & 15;
-      if ($$3 == 0) {
-         $$1.add(it.a);
-      } else if ($$3 == 15) {
-         $$1.add(it.b);
-      }
-
-      int $$4 = $$0 >> 4 & 15;
-      if ($$4 == 0) {
-         $$1.add(it.c);
-      } else if ($$4 == 15) {
-         $$1.add(it.d);
-      }
-   }
-
-   private int a(int $$0, it $$1) {
-      switch ($$1) {
-         case a:
-            if (($$0 >> 8 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - j;
-         case b:
-            if (($$0 >> 8 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + j;
-         case c:
-            if (($$0 >> 4 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - i;
-         case d:
-            if (($$0 >> 4 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + i;
-         case e:
-            if (($$0 >> 0 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - h;
-         case f:
-            if (($$0 >> 0 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + h;
-         default:
-            return -1;
-      }
+   static {
+      a(dpe.h, gfx::new);
+      a(dpe.i, gft::new);
+      a(dpe.j, gfz::new);
+      a(dpe.k, gfv::new);
+      a(dpe.b, gfp::new);
+      a(dpe.d, gfp::new);
+      a(dpe.c, gfp::new);
+      a(dpe.m, gfs::new);
+      a(dpe.D, gfu::new);
+      a(dpe.n, ggc::new);
+      a(dpe.v, ggb::new);
+      a(dpe.o, gff::new);
+      a(dpe.p, gfy::new);
+      a(dpe.t, gfe::new);
+      a(dpe.u, gga::new);
+      a(dpe.x, gfw::new);
+      a(dpe.y, gfg::new);
+      a(dpe.z, gfq::new);
+      a(dpe.E, gfh::new);
+      a(dpe.G, gfo::new);
+      a(dpe.N, gfn::new);
+      a(dpe.O, gfr::new);
+      a(dpe.Q, ggd::new);
+      a(dpe.R, gge::new);
    }
 }

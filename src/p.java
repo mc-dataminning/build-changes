@@ -12,15 +12,15 @@ public class p {
       this.a = $$0;
    }
 
-   public static String a(dbb $$0, double $$1, double $$2, double $$3) {
-      return String.format(Locale.ROOT, "%.2f,%.2f,%.2f - %s", $$1, $$2, $$3, a($$0, io.a($$1, $$2, $$3)));
+   public static String a(dbv $$0, double $$1, double $$2, double $$3) {
+      return String.format(Locale.ROOT, "%.2f,%.2f,%.2f - %s", $$1, $$2, $$3, a($$0, iz.a($$1, $$2, $$3)));
    }
 
-   public static String a(dbb $$0, io $$1) {
+   public static String a(dbv $$0, iz $$1) {
       return a($$0, $$1.u(), $$1.v(), $$1.w());
    }
 
-   public static String a(dbb $$0, int $$1, int $$2, int $$3) {
+   public static String a(dbv $$0, int $$1, int $$2, int $$3) {
       StringBuilder $$4 = new StringBuilder();
 
       try {
@@ -32,18 +32,18 @@ public class p {
       $$4.append(", ");
 
       try {
-         int $$6 = jq.a($$1);
-         int $$7 = jq.a($$2);
-         int $$8 = jq.a($$3);
+         int $$6 = kb.a($$1);
+         int $$7 = kb.a($$2);
+         int $$8 = kb.a($$3);
          int $$9 = $$1 & 15;
          int $$10 = $$2 & 15;
          int $$11 = $$3 & 15;
-         int $$12 = jq.c($$6);
+         int $$12 = kb.c($$6);
          int $$13 = $$0.I_();
-         int $$14 = jq.c($$8);
-         int $$15 = jq.c($$6 + 1) - 1;
-         int $$16 = $$0.al() - 1;
-         int $$17 = jq.c($$8 + 1) - 1;
+         int $$14 = kb.c($$8);
+         int $$15 = kb.c($$6 + 1) - 1;
+         int $$16 = $$0.am() - 1;
+         int $$17 = kb.c($$8 + 1) - 1;
          $$4.append(
             String.format(
                Locale.ROOT,
@@ -79,7 +79,7 @@ public class p {
          int $$26 = $$0.I_();
          int $$27 = $$20 << 9;
          int $$28 = ($$19 + 1 << 9) - 1;
-         int $$29 = $$0.al() - 1;
+         int $$29 = $$0.am() - 1;
          int $$30 = ($$20 + 1 << 9) - 1;
          $$4.append(
             String.format(
@@ -190,7 +190,7 @@ public class p {
       return this.c;
    }
 
-   public static void a(p $$0, dbb $$1, io $$2, @Nullable drd $$3) {
+   public static void a(p $$0, dbv $$1, iz $$2, @Nullable drx $$3) {
       if ($$3 != null) {
          $$0.a("Block", $$3::toString);
       }

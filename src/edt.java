@@ -1,48 +1,97 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 
-public class edt extends edp {
-   public static final MapCodec<edt> a = RecordCodecBuilder.mapCodec(
-      $$0 -> b($$0).and(bpb.b(0, 24).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, edt::new)
+public class edt implements ecx {
+   public static final Codec<edt> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eey.a.fieldOf("trunk_provider").forGetter($$0x -> $$0x.b),
+               egb.c.fieldOf("trunk_placer").forGetter($$0x -> $$0x.d),
+               eey.a.fieldOf("foliage_provider").forGetter($$0x -> $$0x.e),
+               eej.d.fieldOf("foliage_placer").forGetter($$0x -> $$0x.f),
+               eev.d.optionalFieldOf("root_placer").forGetter($$0x -> $$0x.g),
+               eey.a.fieldOf("dirt_provider").forGetter($$0x -> $$0x.c),
+               edy.a.fieldOf("minimum_size").forGetter($$0x -> $$0x.h),
+               efp.h.listOf().fieldOf("decorators").forGetter($$0x -> $$0x.i),
+               Codec.BOOL.fieldOf("ignore_vines").orElse(false).forGetter($$0x -> $$0x.j),
+               Codec.BOOL.fieldOf("force_dirt").orElse(false).forGetter($$0x -> $$0x.k)
+            )
+            .apply($$0, edt::new)
    );
-   private final bpb b;
+   public final eey b;
+   public final eey c;
+   public final egb d;
+   public final eey e;
+   public final eej f;
+   public final Optional<eev> g;
+   public final edy h;
+   public final List<efp> i;
+   public final boolean j;
+   public final boolean k;
 
-   public edt(bpb $$0, bpb $$1, bpb $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+   protected edt(eey $$0, egb $$1, eey $$2, eej $$3, Optional<eev> $$4, eey $$5, edy $$6, List<efp> $$7, boolean $$8, boolean $$9) {
+      this.b = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.c = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
    }
 
-   @Override
-   protected edq<?> a() {
-      return edq.c;
-   }
+   public static class a {
+      public final eey a;
+      private final egb c;
+      public final eey b;
+      private final eej d;
+      private final Optional<eev> e;
+      private eey f;
+      private final edy g;
+      private List<efp> h = ImmutableList.of();
+      private boolean i;
+      private boolean j;
 
-   @Override
-   protected void a(dbf $$0, edp.b $$1, aym $$2, ecz $$3, int $$4, edp.a $$5, int $$6, int $$7, int $$8) {
-      int $$9 = 0;
-
-      for (int $$10 = $$8; $$10 >= $$8 - $$6; $$10--) {
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$9, $$10, $$5.c());
-         if ($$9 >= 1 && $$10 == $$8 - $$6 + 1) {
-            $$9--;
-         } else if ($$9 < $$7 + $$5.b()) {
-            $$9++;
-         }
+      public a(eey $$0, egb $$1, eey $$2, eej $$3, Optional<eev> $$4, edy $$5) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = $$2;
+         this.f = eey.a(dew.j);
+         this.d = $$3;
+         this.e = $$4;
+         this.g = $$5;
       }
-   }
 
-   @Override
-   public int a(aym $$0, int $$1) {
-      return super.a($$0, $$1) + $$0.a(Math.max($$1 + 1, 1));
-   }
+      public a(eey $$0, egb $$1, eey $$2, eej $$3, edy $$4) {
+         this($$0, $$1, $$2, $$3, Optional.empty(), $$4);
+      }
 
-   @Override
-   public int a(aym $$0, int $$1, ecz $$2) {
-      return this.b.a($$0);
-   }
+      public edt.a a(eey $$0) {
+         this.f = $$0;
+         return this;
+      }
 
-   @Override
-   protected boolean a(aym $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+      public edt.a a(List<efp> $$0) {
+         this.h = $$0;
+         return this;
+      }
+
+      public edt.a a() {
+         this.i = true;
+         return this;
+      }
+
+      public edt.a b() {
+         this.j = true;
+         return this;
+      }
+
+      public edt c() {
+         return new edt(this.a, this.c, this.b, this.d, this.e, this.f, this.g, this.h, this.i, this.j);
+      }
    }
 }

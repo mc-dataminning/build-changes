@@ -1,151 +1,176 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableMap;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 
-public class gfx implements gfw.a {
-   private final feb a;
-   private static final int b = 32;
-   private static final float c = 1.0F;
-   private final List<gfx.a> d = Lists.newArrayList();
-   private final List<gfx.b> e = Lists.newArrayList();
+public class gfx implements gfj<dqm> {
+   private static final String a = "stick";
+   private static final int b = -988212;
+   private static final int c = ayu.h(16);
+   private static final float d = 0.6666667F;
+   private static final evm e = new evm(0.0, 0.33333334F, 0.046666667F);
+   private final Map<dtk, gfx.a> f;
+   private final fgk g;
 
-   public gfx(feb $$0) {
-      this.a = $$0;
+   public gfx(gfk.a $$0) {
+      this.f = dtk.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new gfx.a($$0.a(fwu.a($$1)))));
+      this.g = $$0.f();
    }
 
-   @Override
-   public void a(eyu $$0, gck $$1, double $$2, double $$3, double $$4) {
-      daz $$5 = this.a.r;
-      if ($$5 == null) {
-         this.d.clear();
-         this.e.clear();
+   public void a(dqm $$0, float $$1, ezt $$2, gdj $$3, int $$4, int $$5) {
+      drx $$6 = $$0.n();
+      dlu $$7 = (dlu)$$6.b();
+      dtk $$8 = dlu.a($$7);
+      gfx.a $$9 = this.f.get($$8);
+      $$9.b.k = $$6.b() instanceof dmp;
+      this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+   }
+
+   public float b() {
+      return 0.6666667F;
+   }
+
+   public float c() {
+      return 0.6666667F;
+   }
+
+   void a(dqm $$0, ezt $$1, gdj $$2, int $$3, int $$4, drx $$5, dlu $$6, dtk $$7, fur $$8) {
+      $$1.a();
+      this.a($$1, -$$6.g($$5), $$5);
+      this.a($$1, $$2, $$3, $$4, $$7, $$8);
+      this.a($$0.aA_(), $$0.j(), $$1, $$2, $$3, $$0.b(), $$0.c(), true);
+      this.a($$0.aA_(), $$0.k(), $$1, $$2, $$3, $$0.b(), $$0.c(), false);
+      $$1.b();
+   }
+
+   void a(ezt $$0, float $$1, drx $$2) {
+      $$0.a(0.5F, 0.75F * this.b(), 0.5F);
+      $$0.a(a.d.rotationDegrees($$1));
+      if (!($$2.b() instanceof dmp)) {
+         $$0.a(0.0F, -0.3125F, -0.4375F);
+      }
+   }
+
+   void a(ezt $$0, gdj $$1, int $$2, int $$3, dtk $$4, fur $$5) {
+      $$0.a();
+      float $$6 = this.b();
+      $$0.b($$6, -$$6, -$$6);
+      gqy $$7 = this.a($$4);
+      ezx $$8 = $$7.a($$1, $$5::a);
+      this.a($$0, $$2, $$3, $$5, $$8);
+      $$0.b();
+   }
+
+   void a(ezt $$0, int $$1, int $$2, fur $$3, ezx $$4) {
+      gfx.a $$5 = (gfx.a)$$3;
+      $$5.a.a($$0, $$4, $$1, $$2);
+   }
+
+   gqy a(dtk $$0) {
+      return gdy.a($$0);
+   }
+
+   void a(iz $$0, dqn $$1, ezt $$2, gdj $$3, int $$4, int $$5, int $$6, boolean $$7) {
+      $$2.a();
+      this.a($$2, $$7, this.d());
+      int $$8 = a($$1);
+      int $$9 = 4 * $$5 / 2;
+      ayg[] $$10 = $$1.a(ffa.Q().aS(), $$1x -> {
+         List<ayg> $$2x = this.g.c($$1x, $$6);
+         return $$2x.isEmpty() ? ayg.a : $$2x.get(0);
+      });
+      int $$11;
+      boolean $$12;
+      int $$13;
+      if ($$1.a()) {
+         $$11 = $$1.b().g();
+         $$12 = a($$0, $$11);
+         $$13 = 15728880;
       } else {
-         eum $$6 = new eum($$2, 0.0, $$4);
-         this.d.removeIf(gfx.a::a);
-         this.e.removeIf($$2x -> $$2x.a($$5, $$6));
-         eyy $$7 = $$1.getBuffer(gcs.y());
+         $$11 = $$8;
+         $$12 = false;
+         $$13 = $$4;
+      }
 
-         for (gfx.b $$8 : this.e) {
-            $$8.a($$5).ifPresent($$6x -> {
-               double $$7x = $$6x.a() - (double)$$8.b();
-               double $$8x = $$6x.b() - (double)$$8.b();
-               double $$9 = $$6x.c() - (double)$$8.b();
-               double $$10 = $$6x.a() + (double)$$8.b();
-               double $$11 = $$6x.b() + (double)$$8.b();
-               double $$12x = $$6x.c() + (double)$$8.b();
-               gci.a($$0, $$7, evc.a(new euh($$7x, $$8x, $$9, $$10, $$11, $$12x)), -$$2, -$$3, -$$4, 1.0F, 1.0F, 0.0F, 0.35F, true);
-            });
+      for (int $$17 = 0; $$17 < 4; $$17++) {
+         ayg $$18 = $$10[$$17];
+         float $$19 = (float)(-this.g.a($$18) / 2);
+         if ($$12) {
+            this.g.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, $$8, $$2.c().a(), $$3, $$13);
+         } else {
+            this.g.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, false, $$2.c().a(), $$3, fgk.a.c, 0, $$13);
          }
+      }
 
-         eyy $$9 = $$1.getBuffer(gcs.A());
+      $$2.b();
+   }
 
-         for (gfx.b $$10 : this.e) {
-            $$10.a($$5)
-               .ifPresent(
-                  $$5x -> gci.b(
-                        $$0,
-                        $$9,
-                        $$5x.a() - 0.25 - $$2,
-                        $$5x.b() - $$3,
-                        $$5x.c() - 0.25 - $$4,
-                        $$5x.a() + 0.25 - $$2,
-                        $$5x.b() - $$3 + 1.0,
-                        $$5x.c() + 0.25 - $$4,
-                        1.0F,
-                        1.0F,
-                        0.0F,
-                        0.35F
-                     )
-               );
-         }
+   private void a(ezt $$0, boolean $$1, evm $$2) {
+      if (!$$1) {
+         $$0.a(a.d.rotationDegrees(180.0F));
+      }
 
-         for (gfx.b $$11 : this.e) {
-            $$11.a($$5).ifPresent($$2x -> {
-               gfw.a($$0, $$1, "Listener Origin", $$2x.a(), $$2x.b() + 1.8F, $$2x.c(), -1, 0.025F);
-               gfw.a($$0, $$1, io.a($$2x).toString(), $$2x.a(), $$2x.b() + 1.5, $$2x.c(), -6959665, 0.025F);
-            });
-         }
+      float $$3 = 0.015625F * this.c();
+      $$0.a($$2.c, $$2.d, $$2.e);
+      $$0.b($$3, -$$3, $$3);
+   }
 
-         for (gfx.a $$12 : this.d) {
-            eum $$13 = $$12.c;
-            double $$14 = 0.2F;
-            double $$15 = $$13.c - 0.2F;
-            double $$16 = $$13.d - 0.2F;
-            double $$17 = $$13.e - 0.2F;
-            double $$18 = $$13.c + 0.2F;
-            double $$19 = $$13.d + 0.2F + 0.5;
-            double $$20 = $$13.e + 0.2F;
-            a($$0, $$1, new euh($$15, $$16, $$17, $$18, $$19, $$20), 1.0F, 1.0F, 1.0F, 0.2F);
-            gfw.a($$0, $$1, $$12.b.a().toString(), $$13.c, $$13.d + 0.85F, $$13.e, -7564911, 0.0075F);
+   evm d() {
+      return e;
+   }
+
+   static boolean a(iz $$0, int $$1) {
+      if ($$1 == ctd.p.g()) {
+         return true;
+      } else {
+         ffa $$2 = ffa.Q();
+         gcl $$3 = $$2.s;
+         if ($$3 != null && $$2.m.aA().a() && $$3.gA()) {
+            return true;
+         } else {
+            bsp $$4 = $$2.an();
+            return $$4 != null && $$4.f(evm.b($$0)) < (double)c;
          }
       }
    }
 
-   private static void a(eyu $$0, gck $$1, euh $$2, float $$3, float $$4, float $$5, float $$6) {
-      fdm $$7 = feb.Q().j.m();
-      if ($$7.h()) {
-         eum $$8 = $$7.b().e();
-         gfw.a($$0, $$1, $$2.c($$8), $$3, $$4, $$5, $$6);
+   public static int a(dqn $$0) {
+      int $$1 = $$0.b().g();
+      if ($$1 == ctd.p.g() && $$0.a()) {
+         return -988212;
+      } else {
+         double $$2 = 0.4;
+         int $$3 = (int)((double)aye.b.b($$1) * 0.4);
+         int $$4 = (int)((double)aye.b.c($$1) * 0.4);
+         int $$5 = (int)((double)aye.b.d($$1) * 0.4);
+         return aye.b.a(0, $$3, $$4, $$5);
       }
    }
 
-   public void a(akm<dvw> $$0, eum $$1) {
-      this.d.add(new gfx.a(ac.c(), $$0, $$1));
+   public static gfx.a a(fwr $$0, dtk $$1) {
+      return new gfx.a($$0.a(fwu.a($$1)));
    }
 
-   public void a(dwa $$0, int $$1) {
-      this.e.add(new gfx.b($$0, $$1));
+   public static fxb f() {
+      fxd $$0 = new fxd();
+      fxe $$1 = $$0.a();
+      $$1.a("sign", fxa.c().a(0, 0).a(-12.0F, -14.0F, -1.0F, 24.0F, 12.0F, 2.0F), fwx.a);
+      $$1.a("stick", fxa.c().a(0, 14).a(-1.0F, -2.0F, -1.0F, 2.0F, 14.0F, 2.0F), fwx.a);
+      return fxb.a($$0, 64, 32);
    }
 
-   static record a(long a, akm<dvw> b, eum c) {
+   public static final class a extends fur {
+      public final fwv a;
+      public final fwv b;
 
-      public boolean a() {
-         return ac.c() - this.a > 3000L;
-      }
-
-      public long b() {
-         return this.a;
-      }
-
-      public akm<dvw> c() {
-         return this.b;
-      }
-
-      public eum d() {
-         return this.c;
-      }
-   }
-
-   static class b implements dvy {
-      public final dwa a;
-      public final int b;
-
-      public b(dwa $$0, int $$1) {
+      public a(fwv $$0) {
+         super(gdr::e);
          this.a = $$0;
-         this.b = $$1;
-      }
-
-      public boolean a(daz $$0, eum $$1) {
-         return this.a.a($$0).filter($$1x -> $$1x.g($$1) <= 1024.0).isPresent();
-      }
-
-      public Optional<eum> a(daz $$0) {
-         return this.a.a($$0);
+         this.b = $$0.b("stick");
       }
 
       @Override
-      public dwa a() {
-         return this.a;
-      }
-
-      @Override
-      public int b() {
-         return this.b;
-      }
-
-      @Override
-      public boolean a(aqn $$0, ix<dvw> $$1, dvw.a $$2, eum $$3) {
-         return false;
+      public void a(ezt $$0, ezx $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       }
    }
 }

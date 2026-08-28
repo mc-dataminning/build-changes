@@ -1,34 +1,30 @@
-import java.util.Arrays;
-import java.util.stream.Stream;
+public class fln extends fna {
+   private static final xl a = xl.c("options.chat.title");
 
-public class fln extends flr {
-   private static final wx a = wx.c("options.mouse_settings.title");
-   private final fjn r = new fjn(this);
-   private fgx s;
-
-   private static fee<?>[] a(fef $$0) {
-      return new fee[]{$$0.d(), $$0.R(), $$0.F(), $$0.S(), $$0.Z()};
-   }
-
-   public fln(flz $$0, fef $$1) {
-      super($$0, $$1, a);
-   }
-
-   @Override
-   protected void aN_() {
-      this.s = this.c(new fgx(this.m, this.n, this.o, this));
-      if (exp.a()) {
-         this.s.a(Stream.concat(Arrays.stream(a(this.c)), Stream.of(this.c.G())).toArray(fee[]::new));
-      } else {
-         this.s.a(a(this.c));
-      }
-
-      super.aN_();
-   }
-
-   @Override
-   protected void c() {
-      super.c();
-      this.s.a(this.n, this.r);
+   public fln(fmy $$0, ffe $$1) {
+      super(
+         $$0,
+         $$1,
+         a,
+         new ffd[]{
+            $$1.m(),
+            $$1.K(),
+            $$1.L(),
+            $$1.M(),
+            $$1.n(),
+            $$1.r(),
+            $$1.w(),
+            $$1.o(),
+            $$1.A(),
+            $$1.x(),
+            $$1.z(),
+            $$1.y(),
+            $$1.as(),
+            $$1.J(),
+            $$1.ae(),
+            $$1.V(),
+            $$1.ag()
+         }
+      );
    }
 }

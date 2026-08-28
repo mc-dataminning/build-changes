@@ -1,27 +1,48 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class das {
-   public Optional<Float> a(dar $$0, daf $$1, io $$2, drd $$3, emw $$4) {
-      return $$3.i() && $$4.c() ? Optional.empty() : Optional.of(Math.max($$3.b().e(), $$4.i()));
+public class das extends ArrayList<dar> {
+   public static final Codec<das> a = dar.a.listOf().fieldOf("Recipes").xmap(das::new, Function.identity()).codec();
+   public static final zj<ww, das> b = dar.b.a(zh.a(das::new));
+
+   public das() {
    }
 
-   public boolean a(dar $$0, daf $$1, io $$2, drd $$3, float $$4) {
-      return true;
+   private das(int $$0) {
+      super($$0);
    }
 
-   public boolean a(dar $$0, brw $$1) {
-      return true;
+   private das(Collection<dar> $$0) {
+      super($$0);
    }
 
-   public float a() {
-      return 1.0F;
+   @Nullable
+   public dar a(cuk $$0, cuk $$1, int $$2) {
+      if ($$2 > 0 && $$2 < this.size()) {
+         dar $$3 = this.get($$2);
+         return $$3.a($$0, $$1) ? $$3 : null;
+      } else {
+         for (int $$4 = 0; $$4 < this.size(); $$4++) {
+            dar $$5 = this.get($$4);
+            if ($$5.a($$0, $$1)) {
+               return $$5;
+            }
+         }
+
+         return null;
+      }
    }
 
-   public float b(dar $$0, brw $$1) {
-      float $$2 = $$0.a() * 2.0F;
-      eum $$3 = $$0.b();
-      double $$4 = Math.sqrt($$1.f($$3)) / (double)$$2;
-      double $$5 = (1.0 - $$4) * (double)dar.a($$3, $$1);
-      return (float)(($$5 * $$5 + $$5) / 2.0 * 7.0 * (double)$$2 + 1.0);
+   public das a() {
+      das $$0 = new das(this.size());
+
+      for (dar $$1 : this) {
+         $$0.add($$1.v());
+      }
+
+      return $$0;
    }
 }

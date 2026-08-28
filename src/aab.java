@@ -1,98 +1,29 @@
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class aab implements zs<zy> {
+   public static final zj<wl, aab> a = zs.a(aab::a, aab::new);
+   private final long b;
 
-public record aab(aab.a c) implements aaf {
-   public static final yv<vx, aab> a = aaf.a(aab::a, aab::new);
-   public static final aaf.b<aab> b = aaf.a("debug/bee");
-
-   private aab(vx $$0) {
-      this(new aab.a($$0));
+   public aab(long $$0) {
+      this.b = $$0;
    }
 
-   private void a(vx $$0) {
-      this.c.a($$0);
+   private aab(wl $$0) {
+      this.b = $$0.readLong();
+   }
+
+   private void a(wl $$0) {
+      $$0.b(this.b);
    }
 
    @Override
-   public aaf.b<aab> a() {
-      return b;
+   public zu<aab> a() {
+      return aai.c;
    }
 
-   public aab.a b() {
-      return this.c;
+   public void a(zy $$0) {
+      $$0.a(this);
    }
 
-   public static record a(UUID a, int b, eum c, @Nullable enk d, @Nullable io e, @Nullable io f, int g, Set<String> h, List<io> i) {
-      public a(vx $$0) {
-         this($$0.n(), $$0.readInt(), $$0.k(), $$0.c(enk::b), $$0.c(io.b), $$0.c(io.b), $$0.readInt(), $$0.a(HashSet::new, vx::p), $$0.a(io.b));
-      }
-
-      public void a(vx $$0) {
-         $$0.a(this.a);
-         $$0.p(this.b);
-         $$0.a(this.c);
-         $$0.a(this.d, ($$0x, $$1) -> $$1.a($$0x));
-         $$0.a(this.e, io.b);
-         $$0.a(this.f, io.b);
-         $$0.p(this.g);
-         $$0.a(this.h, vx::a);
-         $$0.a(this.i, io.b);
-      }
-
-      public boolean a(io $$0) {
-         return Objects.equals($$0, this.e);
-      }
-
-      public String a() {
-         return aga.a(this.a);
-      }
-
-      @Override
-      public String toString() {
-         return this.a();
-      }
-
-      public UUID b() {
-         return this.a;
-      }
-
-      public int c() {
-         return this.b;
-      }
-
-      public eum d() {
-         return this.c;
-      }
-
-      @Nullable
-      public enk e() {
-         return this.d;
-      }
-
-      @Nullable
-      public io f() {
-         return this.e;
-      }
-
-      @Nullable
-      public io g() {
-         return this.f;
-      }
-
-      public int h() {
-         return this.g;
-      }
-
-      public Set<String> i() {
-         return this.h;
-      }
-
-      public List<io> j() {
-         return this.i;
-      }
+   public long b() {
+      return this.b;
    }
 }

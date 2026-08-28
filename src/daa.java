@@ -1,201 +1,152 @@
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import java.util.Collections;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
-public abstract class daa implements ed {
-   private static final SimpleDateFormat b = new SimpleDateFormat("HH:mm:ss");
-   private static final wx c = wx.b("@");
-   private long d = -1L;
-   private boolean e = true;
-   private int f;
-   private boolean g = true;
-   @Nullable
-   private wx h;
-   private String i = "";
-   @Nullable
-   private wx j;
+public class daa implements cxq {
+   public static final daa a = new daa(new Object2IntOpenHashMap(), true);
+   public static final int b = 255;
+   private static final Codec<Integer> e = Codec.intRange(0, 255);
+   private static final Codec<Object2IntOpenHashMap<ji<czv>>> f = Codec.unboundedMap(lp.f.r(), e).xmap(Object2IntOpenHashMap::new, Function.identity());
+   private static final Codec<daa> g = RecordCodecBuilder.create(
+      $$0 -> $$0.group(f.fieldOf("levels").forGetter($$0x -> $$0x.h), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter($$0x -> $$0x.i))
+            .apply($$0, daa::new)
+   );
+   public static final Codec<daa> c = Codec.withAlternative(g, f, $$0 -> new daa($$0, true));
+   public static final zj<ww, daa> d = zj.a(zh.a(Object2IntOpenHashMap::new, zh.b(lq.u), zh.g), $$0 -> $$0.h, zh.b, $$0 -> $$0.i, daa::new);
+   final Object2IntOpenHashMap<ji<czv>> h;
+   final boolean i;
 
-   public int k() {
-      return this.f;
+   daa(Object2IntOpenHashMap<ji<czv>> $$0, boolean $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
-   public void a(int $$0) {
-      this.f = $$0;
+   public int a(czv $$0) {
+      return this.h.getInt($$0.m());
    }
 
-   public wx l() {
-      return this.h == null ? ww.a : this.h;
-   }
+   @Override
+   public void a(cuf.b $$0, Consumer<xl> $$1, cwd $$2) {
+      if (this.i) {
+         jk.a $$3 = $$0.a();
+         jm<czv> $$4 = a($$3, lq.u, awo.a);
 
-   public ud a(ud $$0, iz.a $$1) {
-      $$0.a("Command", this.i);
-      $$0.a("SuccessCount", this.f);
-      if (this.j != null) {
-         $$0.a("CustomName", wx.a.a(this.j, $$1));
-      }
-
-      $$0.a("TrackOutput", this.g);
-      if (this.h != null && this.g) {
-         $$0.a("LastOutput", wx.a.a(this.h, $$1));
-      }
-
-      $$0.a("UpdateLastExecution", this.e);
-      if (this.e && this.d > 0L) {
-         $$0.a("LastExecution", this.d);
-      }
-
-      return $$0;
-   }
-
-   public void b(ud $$0, iz.a $$1) {
-      this.i = $$0.l("Command");
-      this.f = $$0.h("SuccessCount");
-      if ($$0.b("CustomName", 8)) {
-         this.b(wx.a.a($$0.l("CustomName"), $$1));
-      } else {
-         this.b(null);
-      }
-
-      if ($$0.b("TrackOutput", 1)) {
-         this.g = $$0.q("TrackOutput");
-      }
-
-      if ($$0.b("LastOutput", 8) && this.g) {
-         try {
-            this.h = wx.a.a($$0.l("LastOutput"), $$1);
-         } catch (Throwable var4) {
-            this.h = wx.b(var4.getMessage());
-         }
-      } else {
-         this.h = null;
-      }
-
-      if ($$0.e("UpdateLastExecution")) {
-         this.e = $$0.q("UpdateLastExecution");
-      }
-
-      if (this.e && $$0.e("LastExecution")) {
-         this.d = $$0.i("LastExecution");
-      } else {
-         this.d = -1L;
-      }
-   }
-
-   public void a(String $$0) {
-      this.i = $$0;
-      this.f = 0;
-   }
-
-   public String m() {
-      return this.i;
-   }
-
-   public boolean a(daz $$0) {
-      if ($$0.B || $$0.Y() == this.d) {
-         return false;
-      } else if ("Searge".equalsIgnoreCase(this.i)) {
-         this.h = wx.b("#itzlipofutzli");
-         this.f = 1;
-         return true;
-      } else {
-         this.f = 0;
-         MinecraftServer $$1 = this.e().o();
-         if ($$1.q() && !aza.b(this.i)) {
-            try {
-               this.h = null;
-               ee $$2 = this.i().a((eb)(($$0x, $$1x) -> {
-                  if ($$0x) {
-                     this.f++;
-                  }
-               }));
-               $$1.aH().a($$2, this.i);
-            } catch (Throwable var6) {
-               o $$4 = o.a(var6, "Executing command block");
-               p $$5 = $$4.a("Command to be executed");
-               $$5.a("Command", this::m);
-               $$5.a("Name", () -> this.n().getString());
-               throw new y($$4);
+         for (ji<czv> $$5 : $$4) {
+            int $$6 = this.h.getInt($$5);
+            if ($$6 > 0) {
+               $$1.accept($$5.a().e($$6));
             }
          }
 
-         if (this.e) {
-            this.d = $$0.Y();
-         } else {
-            this.d = -1L;
-         }
+         ObjectIterator var9 = this.h.object2IntEntrySet().iterator();
 
+         while (var9.hasNext()) {
+            Entry<ji<czv>> $$7 = (Entry<ji<czv>>)var9.next();
+            ji<czv> $$8 = (ji<czv>)$$7.getKey();
+            if (!$$4.a($$8)) {
+               $$1.accept($$8.a().e($$7.getIntValue()));
+            }
+         }
+      }
+   }
+
+   private static <T> jm<T> a(@Nullable jk.a $$0, ala<jv<T>> $$1, axb<T> $$2) {
+      if ($$0 != null) {
+         Optional<jm.c<T>> $$3 = $$0.b($$1).a($$2);
+         if ($$3.isPresent()) {
+            return $$3.get();
+         }
+      }
+
+      return jm.a();
+   }
+
+   public daa a(boolean $$0) {
+      return new daa(this.h, $$0);
+   }
+
+   public Set<ji<czv>> a() {
+      return Collections.unmodifiableSet(this.h.keySet());
+   }
+
+   public Set<Entry<ji<czv>>> b() {
+      return Collections.unmodifiableSet(this.h.object2IntEntrySet());
+   }
+
+   public int c() {
+      return this.h.size();
+   }
+
+   public boolean d() {
+      return this.h.isEmpty();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
          return true;
-      }
-   }
-
-   public wx n() {
-      return this.j != null ? this.j : c;
-   }
-
-   @Nullable
-   public wx o() {
-      return this.j;
-   }
-
-   public void b(@Nullable wx $$0) {
-      this.j = $$0;
-   }
-
-   @Override
-   public void a(wx $$0) {
-      if (this.g) {
-         this.h = wx.b("[" + b.format(new Date()) + "] ").b($$0);
-         this.f();
-      }
-   }
-
-   public abstract aqn e();
-
-   public abstract void f();
-
-   public void c(@Nullable wx $$0) {
-      this.h = $$0;
-   }
-
-   public void a(boolean $$0) {
-      this.g = $$0;
-   }
-
-   public boolean p() {
-      return this.g;
-   }
-
-   public bpw a(cly $$0) {
-      if (!$$0.gz()) {
-         return bpw.d;
       } else {
-         if ($$0.cN().B) {
-            $$0.a(this);
-         }
-
-         return bpw.a($$0.dP().B);
+         return !($$0 instanceof daa $$1) ? false : this.i == $$1.i && this.h.equals($$1.h);
       }
    }
 
-   public abstract eum g();
-
-   public abstract ee i();
-
    @Override
-   public boolean l_() {
-      return this.e().aa().b(dav.p) && this.g;
+   public int hashCode() {
+      int $$0 = this.h.hashCode();
+      return 31 * $$0 + (this.i ? 1 : 0);
    }
 
    @Override
-   public boolean w_() {
-      return this.g;
+   public String toString() {
+      return "ItemEnchantments{enchantments=" + this.h + ", showInTooltip=" + this.i + "}";
    }
 
-   @Override
-   public boolean U_() {
-      return this.e().aa().b(dav.j);
-   }
+   public static class a {
+      private final Object2IntOpenHashMap<ji<czv>> a = new Object2IntOpenHashMap();
+      private final boolean b;
 
-   public abstract boolean j();
+      public a(daa $$0) {
+         this.a.putAll($$0.h);
+         this.b = $$0.i;
+      }
+
+      public void a(czv $$0, int $$1) {
+         if ($$1 <= 0) {
+            this.a.removeInt($$0.m());
+         } else {
+            this.a.put($$0.m(), $$1);
+         }
+      }
+
+      public void b(czv $$0, int $$1) {
+         if ($$1 > 0) {
+            this.a.merge($$0.m(), $$1, Integer::max);
+         }
+      }
+
+      public void a(Predicate<ji<czv>> $$0) {
+         this.a.keySet().removeIf($$0);
+      }
+
+      public int a(czv $$0) {
+         return this.a.getOrDefault($$0.m(), 0);
+      }
+
+      public Set<ji<czv>> a() {
+         return this.a.keySet();
+      }
+
+      public daa b() {
+         return new daa(this.a, this.b);
+      }
+   }
 }

@@ -1,93 +1,61 @@
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWVidMode;
-import org.lwjgl.glfw.GLFWVidMode.Buffer;
+import java.nio.ByteBuffer;
+import java.util.OptionalInt;
+import javax.annotation.Nullable;
+import javax.sound.sampled.AudioFormat;
+import org.lwjgl.openal.AL10;
 
-public final class ext {
-   private final long a;
-   private final List<exx> b;
-   private exx c;
+public class ext {
+   @Nullable
+   private ByteBuffer a;
+   private final AudioFormat b;
+   private boolean c;
    private int d;
-   private int e;
 
-   public ext(long $$0) {
+   public ext(ByteBuffer $$0, AudioFormat $$1) {
       this.a = $$0;
-      this.b = Lists.newArrayList();
-      this.a();
+      this.b = $$1;
    }
 
-   public void a() {
-      RenderSystem.assertInInitPhase();
-      this.b.clear();
-      Buffer $$0 = GLFW.glfwGetVideoModes(this.a);
+   OptionalInt a() {
+      if (!this.c) {
+         if (this.a == null) {
+            return OptionalInt.empty();
+         }
 
-      for (int $$1 = $$0.limit() - 1; $$1 >= 0; $$1--) {
-         $$0.position($$1);
-         exx $$2 = new exx($$0);
-         if ($$2.c() >= 8 && $$2.d() >= 8 && $$2.e() >= 8) {
-            this.b.add($$2);
+         int $$0 = exs.a(this.b);
+         int[] $$1 = new int[1];
+         AL10.alGenBuffers($$1);
+         if (exs.a("Creating buffer")) {
+            return OptionalInt.empty();
+         }
+
+         AL10.alBufferData($$1[0], $$0, this.a, (int)this.b.getSampleRate());
+         if (exs.a("Assigning buffer data")) {
+            return OptionalInt.empty();
+         }
+
+         this.d = $$1[0];
+         this.c = true;
+         this.a = null;
+      }
+
+      return OptionalInt.of(this.d);
+   }
+
+   public void b() {
+      if (this.c) {
+         AL10.alDeleteBuffers(new int[]{this.d});
+         if (exs.a("Deleting stream buffers")) {
+            return;
          }
       }
 
-      int[] $$3 = new int[1];
-      int[] $$4 = new int[1];
-      GLFW.glfwGetMonitorPos(this.a, $$3, $$4);
-      this.d = $$3[0];
-      this.e = $$4[0];
-      GLFWVidMode $$5 = GLFW.glfwGetVideoMode(this.a);
-      this.c = new exx($$5);
+      this.c = false;
    }
 
-   public exx a(Optional<exx> $$0) {
-      RenderSystem.assertInInitPhase();
-      if ($$0.isPresent()) {
-         exx $$1 = $$0.get();
-
-         for (exx $$2 : this.b) {
-            if ($$2.equals($$1)) {
-               return $$2;
-            }
-         }
-      }
-
-      return this.b();
-   }
-
-   public int a(exx $$0) {
-      RenderSystem.assertInInitPhase();
-      return this.b.indexOf($$0);
-   }
-
-   public exx b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
-   }
-
-   public exx a(int $$0) {
-      return this.b.get($$0);
-   }
-
-   public int e() {
-      return this.b.size();
-   }
-
-   public long f() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "Monitor[%s %sx%s %s]", this.a, this.d, this.e, this.c);
+   public OptionalInt c() {
+      OptionalInt $$0 = this.a();
+      this.c = false;
+      return $$0;
    }
 }

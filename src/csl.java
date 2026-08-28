@@ -1,28 +1,15 @@
-public class csl extends ctl implements cui {
-   public csl(ctl.a $$0) {
+public class csl extends cuf {
+   public csl(cuf.a $$0) {
       super($$0);
    }
 
    @Override
-   public bpx<ctq> a(daz $$0, cly $$1, bpv $$2) {
-      ctq $$3 = $$1.b($$2);
-      $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), avi.hN, avj.h, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      if (!$$0.B) {
-         cmz $$4 = new cmz($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dH(), $$1.dF(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
-      }
-
-      $$1.b(avs.c.b(this));
-      $$3.a(1, $$1);
-      return bpx.a($$3, $$0.x_());
+   public boolean a(cuk $$0) {
+      return $$0.I() == 1;
    }
 
    @Override
-   public cmq a(daz $$0, jh $$1, ctq $$2, it $$3) {
-      cmz $$4 = new cmz($$0, $$1.a(), $$1.b(), $$1.c());
-      $$4.a($$2);
-      return $$4;
+   public int g() {
+      return 1;
    }
 }

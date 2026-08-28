@@ -1,9 +1,15 @@
-import com.mojang.brigadier.arguments.StringArgumentType;
-import java.util.Optional;
+import java.util.function.Consumer;
 
-public record asi(String a, wx b, atj c, Optional<ate> d) {
-   public wx a(boolean $$0, wx $$1) {
-      return xa.a(this.c.a(wx.b(this.a)))
-         .a($$2 -> $$2.a($$0 ? n.k : n.m).a(StringArgumentType.escapeIfRequired(this.a)).a(new xd(xd.a.a, wx.i().b(this.b).f("\n").b($$1))));
+public class asi implements arr {
+   public static final arr.a a = new arr.a("join_world");
+
+   @Override
+   public void a(Consumer<zs<?>> $$0) {
+      $$0.accept(abn.a);
+   }
+
+   @Override
+   public arr.a a() {
+      return a;
    }
 }

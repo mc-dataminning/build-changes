@@ -1,61 +1,49 @@
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 import java.util.UUID;
 
-public record aae(aae.a c) implements aaf {
-   public static final yv<vx, aae> a = aaf.a(aae::a, aae::new);
-   public static final aaf.b<aae> b = aaf.a("debug/breeze");
+public record aae(UUID c, String d, String e, boolean f, Optional<xl> g) implements zs<zy> {
+   public static final int a = 40;
+   public static final zj<ByteBuf, aae> b = zj.a(kc.g, aae::b, zh.l, aae::e, zh.b(40), aae::f, zh.b, aae::g, xn.f.a(zh::a), aae::h, aae::new);
 
-   private aae(vx $$0) {
-      this(new aae.a($$0));
-   }
-
-   private void a(vx $$0) {
-      this.c.a($$0);
+   public aae(UUID c, String d, String e, boolean f, Optional<xl> g) {
+      if (e.length() > 40) {
+         throw new IllegalArgumentException("Hash is too long (max 40, was " + e.length() + ")");
+      } else {
+         this.c = c;
+         this.d = d;
+         this.e = e;
+         this.f = f;
+         this.g = g;
+      }
    }
 
    @Override
-   public aaf.b<aae> a() {
-      return b;
+   public zu<aae> a() {
+      return aai.f;
    }
 
-   public aae.a b() {
+   public void a(zy $$0) {
+      $$0.a(this);
+   }
+
+   public UUID b() {
       return this.c;
    }
 
-   public static record a(UUID a, int b, Integer c, io d) {
-      public a(vx $$0) {
-         this($$0.n(), $$0.readInt(), $$0.c(vx::readInt), $$0.c(io.b));
-      }
+   public String e() {
+      return this.d;
+   }
 
-      public void a(vx $$0) {
-         $$0.a(this.a);
-         $$0.p(this.b);
-         $$0.a(this.c, vx::p);
-         $$0.a(this.d, io.b);
-      }
+   public String f() {
+      return this.e;
+   }
 
-      public String a() {
-         return aga.a(this.a);
-      }
+   public boolean g() {
+      return this.f;
+   }
 
-      @Override
-      public String toString() {
-         return this.a();
-      }
-
-      public UUID b() {
-         return this.a;
-      }
-
-      public int c() {
-         return this.b;
-      }
-
-      public Integer d() {
-         return this.c;
-      }
-
-      public io e() {
-         return this.d;
-      }
+   public Optional<xl> h() {
+      return this.g;
    }
 }

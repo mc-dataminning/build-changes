@@ -1,102 +1,64 @@
-import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.internal.Streams;
+import com.google.gson.stream.JsonReader;
 import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import java.lang.reflect.Field;
 
-public class et implements ArgumentType<et.a> {
-   private static final Collection<String> b = Arrays.asList("Player", "0123", "dd12be42-52a9-4a91-a8a1-11c01849e498", "@e");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.c("argument.player.unknown"));
+public class et {
+   private static final Field a = ac.a(() -> {
+      try {
+         Field $$0 = JsonReader.class.getDeclaredField("pos");
+         $$0.setAccessible(true);
+         return $$0;
+      } catch (NoSuchFieldException var1) {
+         throw new IllegalStateException("Couldn't get field 'pos' for JsonReader", var1);
+      }
+   });
+   private static final Field b = ac.a(() -> {
+      try {
+         Field $$0 = JsonReader.class.getDeclaredField("lineStart");
+         $$0.setAccessible(true);
+         return $$0;
+      } catch (NoSuchFieldException var1) {
+         throw new IllegalStateException("Couldn't get field 'lineStart' for JsonReader", var1);
+      }
+   });
 
-   public static Collection<GameProfile> a(CommandContext<ee> $$0, String $$1) throws CommandSyntaxException {
-      return ((et.a)$$0.getArgument($$1, et.a.class)).getNames((ee)$$0.getSource());
-   }
-
-   public static et a() {
-      return new et();
-   }
-
-   public et.a a(StringReader $$0) throws CommandSyntaxException {
-      if ($$0.canRead() && $$0.peek() == '@') {
-         gu $$1 = new gu($$0);
-         gt $$2 = $$1.t();
-         if ($$2.b()) {
-            throw er.c.createWithContext($$0);
-         } else {
-            return new et.b($$2);
-         }
-      } else {
-         int $$3 = $$0.getCursor();
-
-         while ($$0.canRead() && $$0.peek() != ' ') {
-            $$0.skip();
-         }
-
-         String $$4 = $$0.getString().substring($$3, $$0.getCursor());
-         return $$1 -> {
-            Optional<GameProfile> $$2 = $$1.l().au().a($$4);
-            return Collections.singleton($$2.orElseThrow(a::create));
-         };
+   private static int a(JsonReader $$0) {
+      try {
+         return a.getInt($$0) - b.getInt($$0);
+      } catch (IllegalAccessException var2) {
+         throw new IllegalStateException("Couldn't read position of JsonReader", var2);
       }
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      if ($$0.getSource() instanceof ej) {
-         StringReader $$2 = new StringReader($$1.getInput());
-         $$2.setCursor($$1.getStart());
-         gu $$3 = new gu($$2);
+   public static <T> T a(jk.a $$0, StringReader $$1, Codec<T> $$2) {
+      JsonReader $$3 = new JsonReader(new java.io.StringReader($$1.getRemaining()));
+      $$3.setLenient(false);
 
-         try {
-            $$3.t();
-         } catch (CommandSyntaxException var6) {
-         }
-
-         return $$3.a($$1, $$1x -> ej.b(((ej)$$0.getSource()).q(), $$1x));
-      } else {
-         return Suggestions.empty();
-      }
-   }
-
-   public Collection<String> getExamples() {
-      return b;
-   }
-
-   @FunctionalInterface
-   public interface a {
-      Collection<GameProfile> getNames(ee var1) throws CommandSyntaxException;
-   }
-
-   public static class b implements et.a {
-      private final gt a;
-
-      public b(gt $$0) {
-         this.a = $$0;
+      Object var5;
+      try {
+         JsonElement $$4 = Streams.parse($$3);
+         var5 = $$2.parse($$0.a(JsonOps.INSTANCE), $$4).getOrThrow(JsonParseException::new);
+      } catch (StackOverflowError var9) {
+         throw new JsonParseException(var9);
+      } finally {
+         $$1.setCursor($$1.getCursor() + a($$3));
       }
 
-      @Override
-      public Collection<GameProfile> getNames(ee $$0) throws CommandSyntaxException {
-         List<aqo> $$1 = this.a.d($$0);
-         if ($$1.isEmpty()) {
-            throw er.e.create();
-         } else {
-            List<GameProfile> $$2 = Lists.newArrayList();
+      return (T)var5;
+   }
 
-            for (aqo $$3 : $$1) {
-               $$2.add($$3.gb());
-            }
+   public static String a(StringReader $$0, m $$1) {
+      int $$2 = $$0.getCursor();
 
-            return $$2;
-         }
+      while ($$0.canRead() && $$1.test($$0.peek())) {
+         $$0.skip();
       }
+
+      return $$0.getString().substring($$2, $$0.getCursor());
    }
 }

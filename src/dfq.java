@@ -1,43 +1,29 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
-public class dfq extends ddi {
-   public static final MapCodec<dfq> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dfp.a.forGetter($$0x -> $$0x.c), u()).apply($$0, dfq::new));
-   private final dea c;
+public interface dfq {
+   ewf q_ = deu.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+   dso r_ = dsn.D;
 
-   @Override
-   public MapCodec<dfq> a() {
-      return b;
-   }
-
-   protected dfq(dea $$0, drc.d $$1) {
-      super($$1);
-      this.c = $$0;
-   }
-
-   @Override
-   protected void b(drd $$0, daz $$1, io $$2, drd $$3, boolean $$4) {
-      this.a($$0, (dba)$$1, $$2);
-   }
-
-   @Override
-   protected void a(drd $$0, aqn $$1, io $$2, aym $$3) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this.c.n().a(d, Boolean.valueOf(false)), 2);
-      }
-   }
-
-   @Override
-   protected drd a(drd $$0, it $$1, drd $$2, dba $$3, io $$4, io $$5) {
-      if ($$1 == it.a && !$$0.a($$3, $$4)) {
-         return dec.a.n();
+   static bqp a(@Nullable bsp $$0, drx $$1, dbt $$2, iz $$3) {
+      if ($$1.c(r_)) {
+         deu.a($$2, $$3, new cuk(cun.ws, 1));
+         float $$4 = ayu.b($$2.z, 0.8F, 1.2F);
+         $$2.a(null, $$3, avw.ee, avx.e, 1.0F, $$4);
+         drx $$5 = $$1.a(r_, Boolean.valueOf(false));
+         $$2.a($$3, $$5, 2);
+         $$2.a(dwq.c, $$3, dwq.a.a($$0, $$5));
+         return bqp.a($$2.B);
       } else {
-         this.a($$0, $$3, $$4);
-         if ($$0.c(d)) {
-            $$3.a($$4, emx.c, emx.c.a($$3));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         return bqp.e;
       }
+   }
+
+   static boolean h_(drx $$0) {
+      return $$0.b(r_) && $$0.c(r_);
+   }
+
+   static ToIntFunction<drx> h_(int $$0) {
+      return $$1 -> $$1.c(dsn.D) ? $$0 : 0;
    }
 }

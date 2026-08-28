@@ -1,12 +1,8 @@
-public class com {
-   private final String a;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public com(String $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.a;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface com {
 }

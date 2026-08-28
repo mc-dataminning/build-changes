@@ -1,83 +1,65 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Map;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
 
-public interface ka<T> {
-   Codec<ka<?>> a = Codec.lazyInitialized(() -> le.as.q());
-   yv<wi, ka<?>> b = yv.a($$0 -> yt.a(lf.av));
-   Codec<ka<?>> c = a.validate($$0 -> $$0.d() ? DataResult.error(() -> "Encountered transient component " + le.as.b($$0)) : DataResult.success($$0));
-   Codec<Map<ka<?>, Object>> d = Codec.dispatchedMap(c, ka::c);
+public class ka {
+   public static final zj<ByteBuf, ka> a = new zj<ByteBuf, ka>() {
+      public ka a(ByteBuf $$0) {
+         return new ka($$0.readFloat(), $$0.readFloat(), $$0.readFloat());
+      }
 
-   static <T> ka.a<T> a() {
-      return new ka.a<>();
+      public void a(ByteBuf $$0, ka $$1) {
+         $$0.writeFloat($$1.b);
+         $$0.writeFloat($$1.c);
+         $$0.writeFloat($$1.d);
+      }
+   };
+   protected final float b;
+   protected final float c;
+   protected final float d;
+
+   public ka(float $$0, float $$1, float $$2) {
+      this.b = !Float.isInfinite($$0) && !Float.isNaN($$0) ? $$0 % 360.0F : 0.0F;
+      this.c = !Float.isInfinite($$1) && !Float.isNaN($$1) ? $$1 % 360.0F : 0.0F;
+      this.d = !Float.isInfinite($$2) && !Float.isNaN($$2) ? $$2 % 360.0F : 0.0F;
    }
 
-   @Nullable
-   Codec<T> b();
-
-   default Codec<T> c() {
-      Codec<T> $$0 = this.b();
-      if ($$0 == null) {
-         throw new IllegalStateException(this + " is not a persistent component");
-      } else {
-         return $$0;
-      }
+   public ka(ux $$0) {
+      this($$0.i(0), $$0.i(1), $$0.i(2));
    }
 
-   default boolean d() {
-      return this.b() == null;
+   public ux a() {
+      ux $$0 = new ux();
+      $$0.add(uu.a(this.b));
+      $$0.add(uu.a(this.c));
+      $$0.add(uu.a(this.d));
+      return $$0;
    }
 
-   yv<? super wi, T> e();
+   @Override
+   public boolean equals(Object $$0) {
+      return !($$0 instanceof ka $$1) ? false : this.b == $$1.b && this.c == $$1.c && this.d == $$1.d;
+   }
 
-   public static class a<T> {
-      @Nullable
-      private Codec<T> a;
-      @Nullable
-      private yv<? super wi, T> b;
+   public float b() {
+      return this.b;
+   }
 
-      public ka.a<T> a(Codec<T> $$0) {
-         this.a = $$0;
-         return this;
-      }
+   public float c() {
+      return this.c;
+   }
 
-      public ka.a<T> a(yv<? super wi, T> $$0) {
-         this.b = $$0;
-         return this;
-      }
+   public float d() {
+      return this.d;
+   }
 
-      public ka<T> a() {
-         yv<? super wi, T> $$0 = Objects.requireNonNullElseGet(this.b, () -> yt.d(Objects.requireNonNull(this.a, "Missing Codec for component")));
-         return new ka.a.a<>(this.a, $$0);
-      }
+   public float e() {
+      return ayu.g(this.b);
+   }
 
-      static class a<T> implements ka<T> {
-         @Nullable
-         private final Codec<T> e;
-         private final yv<? super wi, T> f;
+   public float f() {
+      return ayu.g(this.c);
+   }
 
-         a(@Nullable Codec<T> $$0, yv<? super wi, T> $$1) {
-            this.e = $$0;
-            this.f = $$1;
-         }
-
-         @Nullable
-         @Override
-         public Codec<T> b() {
-            return this.e;
-         }
-
-         @Override
-         public yv<? super wi, T> e() {
-            return this.f;
-         }
-
-         @Override
-         public String toString() {
-            return ac.a((jk<ka.a.a<T>>)le.as, this);
-         }
-      }
+   public float g() {
+      return ayu.g(this.d);
    }
 }

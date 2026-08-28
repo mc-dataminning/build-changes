@@ -1,52 +1,36 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.List;
+public class gfz implements gfj<dqq> {
+   private final giq a;
 
-public class gfz implements gfw.a {
-   private static final int a = 160;
-   private final feb b;
-   private final Int2ObjectMap<gfz.a> c = new Int2ObjectOpenHashMap();
-
-   @Override
-   public void a() {
-      this.c.clear();
+   public gfz(gfk.a $$0) {
+      this.a = $$0.c();
    }
 
-   public void a(int $$0, io $$1, List<aal.a> $$2) {
-      this.c.put($$0, new gfz.a($$1, $$2));
-   }
-
-   public void a(int $$0) {
-      this.c.remove($$0);
-   }
-
-   public gfz(feb $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public void a(eyu $$0, gck $$1, double $$2, double $$3, double $$4) {
-      fdm $$5 = this.b.j.m();
-      io $$6 = io.a($$5.b().c, 0.0, $$5.b().e);
-      ObjectIterator var11 = this.c.values().iterator();
-
-      while (var11.hasNext()) {
-         gfz.a $$7 = (gfz.a)var11.next();
-         io $$8 = $$7.a;
-         if ($$6.a($$8, 160.0)) {
-            for (int $$9 = 0; $$9 < $$7.b.size(); $$9++) {
-               aal.a $$10 = $$7.b.get($$9);
-               double $$11 = (double)$$8.u() + 0.5;
-               double $$12 = (double)$$8.v() + 2.0 + (double)$$9 * 0.25;
-               double $$13 = (double)$$8.w() + 0.5;
-               int $$14 = $$10.b() ? -16711936 : -3355444;
-               gfw.a($$0, $$1, $$10.c(), $$11, $$12, $$13, $$14);
-            }
+   public void a(dqq $$0, float $$1, ezt $$2, gdj $$3, int $$4, int $$5) {
+      dbt $$6 = $$0.i();
+      if ($$6 != null) {
+         dav $$7 = $$0.c();
+         bsp $$8 = $$7.b($$6, $$0.aA_());
+         if ($$8 != null) {
+            a($$1, $$2, $$3, $$4, $$8, this.a, $$7.b(), $$7.a());
          }
       }
    }
 
-   static record a(io a, List<aal.a> b) {
+   public static void a(float $$0, ezt $$1, gdj $$2, int $$3, bsp $$4, giq $$5, double $$6, double $$7) {
+      $$1.a();
+      $$1.a(0.5F, 0.0F, 0.5F);
+      float $$8 = 0.53125F;
+      float $$9 = Math.max($$4.dj(), $$4.dk());
+      if ((double)$$9 > 1.0) {
+         $$8 /= $$9;
+      }
+
+      $$1.a(0.0F, 0.4F, 0.0F);
+      $$1.a(a.d.rotationDegrees((float)ayu.d((double)$$0, $$6, $$7) * 10.0F));
+      $$1.a(0.0F, -0.2F, 0.0F);
+      $$1.a(a.b.rotationDegrees(-30.0F));
+      $$1.b($$8, $$8, $$8);
+      $$5.a($$4, 0.0, 0.0, 0.0, 0.0F, $$0, $$1, $$2, $$3);
+      $$1.b();
    }
 }

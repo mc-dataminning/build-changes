@@ -1,9 +1,25 @@
-import com.mojang.serialization.MapCodec;
+public enum dtc implements azp {
+   a("up"),
+   b("side"),
+   c("none");
 
-public class dtc {
-   public static MapCodec<? extends dta> a(jk<MapCodec<? extends dta>> $$0) {
-      jk.a($$0, "noise", dwy.c);
-      jk.a($$0, "flat", dwq.c);
-      return jk.a($$0, "debug", dwm.c);
+   private final String d;
+
+   private dtc(final String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.c();
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
+
+   public boolean a() {
+      return this != c;
    }
 }

@@ -1,45 +1,27 @@
-public abstract class gay extends gal {
-   protected gnv E;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import java.util.List;
 
-   protected gay(fwr $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
+public class gay {
+   private final List<alb> a;
+
+   private gay(List<alb> $$0) {
+      this.a = $$0;
    }
 
-   protected gay(fwr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   public List<alb> a() {
+      return this.a;
    }
 
-   protected void a(gnv $$0) {
-      this.E = $$0;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.c();
-   }
-
-   @Override
-   protected float d() {
-      return this.E.d();
-   }
-
-   @Override
-   protected float e() {
-      return this.E.g();
-   }
-
-   @Override
-   protected float f() {
-      return this.E.h();
-   }
-
-   public void a(gat $$0) {
-      this.a($$0.a(this.r));
-   }
-
-   public void b(gat $$0) {
-      if (!this.o) {
-         this.a($$0.a(this.s, this.t));
+   public static gay a(JsonObject $$0) {
+      JsonArray $$1 = ayk.a($$0, "textures", null);
+      if ($$1 == null) {
+         return new gay(List.of());
+      } else {
+         List<alb> $$2 = Streams.stream($$1).map($$0x -> ayk.a($$0x, "texture")).map(alb::new).collect(ImmutableList.toImmutableList());
+         return new gay($$2);
       }
    }
 }

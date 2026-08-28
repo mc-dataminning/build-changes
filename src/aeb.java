@@ -1,36 +1,33 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+public class aeb implements zs<ace> {
+   public static final zj<ww, aeb> a = zj.a(zh.g, aeb::b, zh.a(lq.Q), aeb::e, xn.d, aeb::f, aeb::new);
+   private final int b;
+   private final cqw<?> c;
+   private final xl d;
 
-public class aeb implements ze<abq> {
-   public static final yv<vx, aeb> a = ze.a(aeb::a, aeb::new);
-   private final IntList b;
-
-   public aeb(IntList $$0) {
-      this.b = new IntArrayList($$0);
-   }
-
-   public aeb(int... $$0) {
-      this.b = new IntArrayList($$0);
-   }
-
-   private aeb(vx $$0) {
-      this.b = $$0.a();
-   }
-
-   private void a(vx $$0) {
-      $$0.a(this.b);
+   public aeb(int $$0, cqw<?> $$1, xl $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public zg<aeb> a() {
-      return agc.aj;
+   public zu<aeb> a() {
+      return agq.W;
    }
 
-   public void a(abq $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public IntList b() {
+   public int b() {
       return this.b;
+   }
+
+   public cqw<?> e() {
+      return this.c;
+   }
+
+   public xl f() {
+      return this.d;
    }
 }

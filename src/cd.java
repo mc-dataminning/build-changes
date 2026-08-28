@@ -1,30 +1,28 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record cd(ct.d c, ct.d d) implements dg<Integer> {
-   public static final Codec<cd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ct.d.d.optionalFieldOf("durability", ct.d.c).forGetter(cd::b), ct.d.d.optionalFieldOf("damage", ct.d.c).forGetter(cd::c))
-            .apply($$0, cd::new)
-   );
+public class cd implements ap<cd.a> {
+   @Override
+   public void a(alj $$0, ap.a<cd.a> $$1) {
+   }
 
    @Override
-   public ka<Integer> a() {
-      return kb.d;
+   public void b(alj $$0, ap.a<cd.a> $$1) {
    }
 
-   public boolean a(ctq $$0, Integer $$1) {
-      return !this.c.d($$0.o() - $$1) ? false : this.d.d($$1);
+   @Override
+   public void a(alj $$0) {
    }
 
-   public static cd a(ct.d $$0) {
-      return new cd($$0, ct.d.c);
+   @Override
+   public Codec<cd.a> a() {
+      return cd.a.a;
    }
 
-   public ct.d b() {
-      return this.c;
-   }
+   public static record a() implements aq {
+      public static final Codec<cd.a> a = Codec.unit(new cd.a());
 
-   public ct.d c() {
-      return this.d;
+      @Override
+      public void a(bg $$0) {
+      }
    }
 }

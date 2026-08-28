@@ -1,90 +1,58 @@
-import java.util.Optional;
+import java.util.function.ToDoubleFunction;
+import javax.annotation.Nullable;
 
-public interface cei {
-   boolean u();
+public class cei {
+   @Nullable
+   public static evm a(btt $$0, int $$1, int $$2) {
+      return a($$0, $$1, $$2, $$0::d);
+   }
 
-   void w(boolean var1);
+   @Nullable
+   public static evm a(btt $$0, int $$1, int $$2, ToDoubleFunction<iz> $$3) {
+      boolean $$4 = ceg.a($$0, $$1);
+      return cej.a(() -> {
+         iz $$4x = cej.a($$0.el(), $$1, $$2);
+         iz $$5 = a($$0, $$1, $$4, $$4x);
+         return $$5 == null ? null : a($$0, $$5);
+      }, $$3);
+   }
 
-   void n(ctq var1);
+   @Nullable
+   public static evm a(btt $$0, int $$1, int $$2, evm $$3) {
+      evm $$4 = $$3.a($$0.du(), $$0.dw(), $$0.dA());
+      boolean $$5 = ceg.a($$0, $$1);
+      return a($$0, $$1, $$2, $$4, $$5);
+   }
 
-   void c(ud var1);
+   @Nullable
+   public static evm b(btt $$0, int $$1, int $$2, evm $$3) {
+      evm $$4 = $$0.dn().d($$3);
+      boolean $$5 = ceg.a($$0, $$1);
+      return a($$0, $$1, $$2, $$4, $$5);
+   }
 
-   ctq b();
-
-   avh y();
-
-   @Deprecated
-   static void a(bss $$0, ctq $$1) {
-      $$1.b(kb.f, $$0.ah());
-      cwf.a(kb.M, $$1, $$1x -> {
-         if ($$0.gf()) {
-            $$1x.a("NoAI", $$0.gf());
+   @Nullable
+   private static evm a(btt $$0, int $$1, int $$2, evm $$3, boolean $$4) {
+      return cej.a($$0, () -> {
+         iz $$5 = cej.a($$0.el(), $$1, $$2, 0, $$3.c, $$3.e, (float) (Math.PI / 2));
+         if ($$5 == null) {
+            return null;
+         } else {
+            iz $$6 = a($$0, $$1, $$4, $$5);
+            return $$6 == null ? null : a($$0, $$6);
          }
-
-         if ($$0.aW()) {
-            $$1x.a("Silent", $$0.aW());
-         }
-
-         if ($$0.aX()) {
-            $$1x.a("NoGravity", $$0.aX());
-         }
-
-         if ($$0.cf()) {
-            $$1x.a("Glowing", $$0.cf());
-         }
-
-         if ($$0.cu()) {
-            $$1x.a("Invulnerable", $$0.cu());
-         }
-
-         $$1x.a("Health", $$0.eA());
       });
    }
 
-   @Deprecated
-   static void a(bss $$0, ud $$1) {
-      if ($$1.e("NoAI")) {
-         $$0.t($$1.q("NoAI"));
-      }
-
-      if ($$1.e("Silent")) {
-         $$0.e($$1.q("Silent"));
-      }
-
-      if ($$1.e("NoGravity")) {
-         $$0.f($$1.q("NoGravity"));
-      }
-
-      if ($$1.e("Glowing")) {
-         $$0.j($$1.q("Glowing"));
-      }
-
-      if ($$1.e("Invulnerable")) {
-         $$0.n($$1.q("Invulnerable"));
-      }
-
-      if ($$1.b("Health", 99)) {
-         $$0.t($$1.j("Health"));
-      }
+   @Nullable
+   public static iz a(btt $$0, iz $$1) {
+      $$1 = cej.a($$1, $$0.dP().am(), $$1x -> ceg.c($$0, $$1x));
+      return !ceg.a($$0, $$1) && !ceg.b($$0, $$1) ? $$1 : null;
    }
 
-   static <T extends bsq & cei> Optional<bpw> a(cly $$0, bpv $$1, T $$2) {
-      ctq $$3 = $$0.b($$1);
-      if ($$3.g() == ctt.qz && $$2.bD()) {
-         $$2.a($$2.y(), 1.0F, 1.0F);
-         ctq $$4 = $$2.b();
-         $$2.n($$4);
-         ctq $$5 = cts.a($$3, $$0, $$4, false);
-         $$0.a($$1, $$5);
-         daz $$6 = $$2.dP();
-         if (!$$6.B) {
-            am.k.a((aqo)$$0, $$4);
-         }
-
-         $$2.ao();
-         return Optional.of(bpw.a($$6.B));
-      } else {
-         return Optional.empty();
-      }
+   @Nullable
+   public static iz a(btt $$0, int $$1, boolean $$2, iz $$3) {
+      iz $$4 = cej.a($$0, $$1, $$0.el(), $$3);
+      return !ceg.a($$4, $$0) && !ceg.a($$2, $$0, $$4) && !ceg.a($$0.K(), $$4) ? $$4 : null;
    }
 }

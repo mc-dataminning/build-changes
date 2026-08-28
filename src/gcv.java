@@ -1,24 +1,21 @@
-import java.util.Map;
-import java.util.stream.Collectors;
+public class gcv {
+   public static final dbe a = dcs::a;
+   public static final dbe b = ($$0, $$1, $$2) -> $$0.f();
+   public static final dbe c = ($$0, $$1, $$2) -> $$0.i();
 
-public class gcv implements AutoCloseable {
-   public static final int a = gcs.H().stream().mapToInt(gcs::I).sum();
-   private final Map<gcs, eyp> b = gcs.H().stream().collect(Collectors.toMap($$0 -> (gcs)$$0, $$0 -> new eyp($$0.I())));
-
-   public eyp a(gcs $$0) {
-      return this.b.get($$0);
+   private static int a(daw $$0, iz $$1, dbe $$2) {
+      return $$0.a($$1, $$2);
    }
 
-   public void a() {
-      this.b.values().forEach(eyp::g);
+   public static int a(daw $$0, iz $$1) {
+      return a($$0, $$1, a);
    }
 
-   public void b() {
-      this.b.values().forEach(eyp::h);
+   public static int b(daw $$0, iz $$1) {
+      return a($$0, $$1, b);
    }
 
-   @Override
-   public void close() {
-      this.b.values().forEach(eyp::i);
+   public static int c(daw $$0, iz $$1) {
+      return a($$0, $$1, c);
    }
 }

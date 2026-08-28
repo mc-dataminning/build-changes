@@ -1,65 +1,63 @@
-public abstract class gqw extends gqs {
-   private static final float o = 0.0F;
-   private static final float p = 1.2F;
-   private static final float q = 0.0F;
-   protected final ceh n;
-   private boolean r;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
+import org.joml.Quaternionf;
 
-   public gqw(ceh $$0, avh $$1, avj $$2) {
-      super($$1, $$2, grj.t());
-      this.n = $$0;
-      this.f = (double)((float)$$0.du());
-      this.g = (double)((float)$$0.dw());
-      this.h = (double)((float)$$0.dA());
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
+public enum gqw implements grd {
+   a(0, 0),
+   b(0, 90),
+   c(0, 180),
+   d(0, 270),
+   e(90, 0),
+   f(90, 90),
+   g(90, 180),
+   h(90, 270),
+   i(180, 0),
+   j(180, 90),
+   k(180, 180),
+   l(180, 270),
+   m(270, 0),
+   n(270, 90),
+   o(270, 180),
+   p(270, 270);
+
+   private static final int q = 360;
+   private static final Map<Integer, gqw> r = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.u, $$0 -> (gqw)$$0));
+   private final j s;
+   private final h t;
+   private final int u;
+
+   private static int b(int $$0, int $$1) {
+      return $$0 * 360 + $$1;
    }
 
-   @Override
-   public void q() {
-      boolean $$0 = this.p();
-      if ($$0 && !this.m()) {
-         feb.Q().aj().a((grk)this.o());
-         this.r = true;
+   private gqw(final int $$0, final int $$1) {
+      this.u = b($$0, $$1);
+      Quaternionf $$2 = new Quaternionf().rotateYXZ((float)(-$$1) * (float) (Math.PI / 180.0), (float)(-$$0) * (float) (Math.PI / 180.0), 0.0F);
+      h $$3 = h.a;
+
+      for (int $$4 = 0; $$4 < $$1; $$4 += 90) {
+         $$3 = $$3.a(h.u);
       }
 
-      if (!this.n.dK() && !this.r) {
-         this.f = (double)((float)this.n.du());
-         this.g = (double)((float)this.n.dw());
-         this.h = (double)((float)this.n.dA());
-         float $$1 = (float)this.n.ds().h();
-         if ($$1 >= 0.01F) {
-            this.e = ayf.i(ayf.a($$1, this.u(), this.v()), this.u(), this.v());
-            this.d = ayf.i(ayf.a($$1, 0.0F, 0.5F), 0.0F, 1.2F);
-         } else {
-            this.e = 0.0F;
-            this.d = 0.0F;
-         }
-      } else {
-         this.n();
+      for (int $$5 = 0; $$5 < $$0; $$5 += 90) {
+         $$3 = $$3.a(h.s);
       }
-   }
 
-   private float u() {
-      return this.n.p_() ? 1.1F : 0.7F;
-   }
-
-   private float v() {
-      return this.n.p_() ? 1.5F : 1.1F;
+      this.s = new j(null, $$2, null, null);
+      this.t = $$3;
    }
 
    @Override
-   public boolean r() {
-      return true;
+   public j b() {
+      return this.s;
    }
 
-   @Override
-   public boolean s() {
-      return !this.n.aW();
+   public static gqw a(int $$0, int $$1) {
+      return r.get(b(ayu.b($$0, 360), ayu.b($$1, 360)));
    }
 
-   protected abstract gqs o();
-
-   protected abstract boolean p();
+   public h a() {
+      return this.t;
+   }
 }

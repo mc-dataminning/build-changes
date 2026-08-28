@@ -1,56 +1,45 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import javax.annotation.Nullable;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class ann {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.c("commands.publish.failed"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wx.b("commands.publish.alreadyPublished", $$0));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xl.c("commands.jfr.start.failed"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xl.b("commands.jfr.dump.failed", $$0));
 
-   public static void a(CommandDispatcher<ee> $$0) {
+   private ann() {
+   }
+
+   public static void a(CommandDispatcher<ep> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("publish").requires($$0x -> $$0x.c(4)))
-               .executes($$0x -> a((ee)$$0x.getSource(), axw.a(), false, null)))
-            .then(
-               ((RequiredArgumentBuilder)ef.a("allowCommands", BoolArgumentType.bool())
-                     .executes($$0x -> a((ee)$$0x.getSource(), axw.a(), BoolArgumentType.getBool($$0x, "allowCommands"), null)))
-                  .then(
-                     ((RequiredArgumentBuilder)ef.a("gamemode", es.a())
-                           .executes($$0x -> a((ee)$$0x.getSource(), axw.a(), BoolArgumentType.getBool($$0x, "allowCommands"), es.a($$0x, "gamemode"))))
-                        .then(
-                           ef.a("port", IntegerArgumentType.integer(0, 65535))
-                              .executes(
-                                 $$0x -> a(
-                                       (ee)$$0x.getSource(),
-                                       IntegerArgumentType.getInteger($$0x, "port"),
-                                       BoolArgumentType.getBool($$0x, "allowCommands"),
-                                       es.a($$0x, "gamemode")
-                                    )
-                              )
-                        )
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("jfr").requires($$0x -> $$0x.c(4)))
+               .then(eq.a("start").executes($$0x -> a((ep)$$0x.getSource()))))
+            .then(eq.a("stop").executes($$0x -> b((ep)$$0x.getSource())))
       );
    }
 
-   private static int a(ee $$0, int $$1, boolean $$2, @Nullable daw $$3) throws CommandSyntaxException {
-      if ($$0.l().r()) {
-         throw b.create($$0.l().R());
-      } else if (!$$0.l().a($$3, $$2, $$1)) {
+   private static int a(ep $$0) throws CommandSyntaxException {
+      bnh $$1 = bnh.a($$0.l());
+      if (!bnj.f.a($$1)) {
          throw a.create();
       } else {
-         $$0.a(() -> a($$1), true);
-         return $$1;
+         $$0.a(() -> xl.c("commands.jfr.started"), false);
+         return 1;
       }
    }
 
-   public static xl a(int $$0) {
-      wx $$1 = xa.a(String.valueOf($$0));
-      return wx.a("commands.publish.started", $$1);
+   private static int b(ep $$0) throws CommandSyntaxException {
+      try {
+         Path $$1 = Paths.get(".").relativize(bnj.f.b().normalize());
+         Path $$2 = $$0.l().r() && !aa.aX ? $$1 : $$1.toAbsolutePath();
+         xl $$3 = xl.b($$1.toString()).a(n.t).a($$1x -> $$1x.a(new xj(xj.a.f, $$2.toString())).a(new xr(xr.a.a, xl.c("chat.copy.click"))));
+         $$0.a(() -> xl.a("commands.jfr.stopped", $$3), false);
+         return 1;
+      } catch (Throwable var4) {
+         throw b.create(var4.getMessage());
+      }
    }
 }

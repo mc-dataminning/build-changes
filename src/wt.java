@@ -1,84 +1,18 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import io.netty.buffer.ByteBuf;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public record wt(wu j, wu k) {
-   public static final Codec<wt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(wu.a.fieldOf("chat").forGetter(wt::a), wu.a.fieldOf("narration").forGetter(wt::b)).apply($$0, wt::new)
-   );
-   public static final wu b = wu.a("chat.type.text");
-   public static final akm<wt> c = a("chat");
-   public static final akm<wt> d = a("say_command");
-   public static final akm<wt> e = a("msg_command_incoming");
-   public static final akm<wt> f = a("msg_command_outgoing");
-   public static final akm<wt> g = a("team_msg_command_incoming");
-   public static final akm<wt> h = a("team_msg_command_outgoing");
-   public static final akm<wt> i = a("emote_command");
+public interface wt<T extends wr> {
+   wk a();
 
-   private static akm<wt> a(String $$0) {
-      return akm.a(lf.aA, new akn($$0));
-   }
+   zt b();
 
-   public static void a(qo<wt> $$0) {
-      $$0.a(c, new wt(b, wu.a("chat.type.text.narrate")));
-      $$0.a(d, new wt(wu.a("chat.type.announcement"), wu.a("chat.type.text.narrate")));
-      $$0.a(e, new wt(wu.b("commands.message.display.incoming"), wu.a("chat.type.text.narrate")));
-      $$0.a(f, new wt(wu.c("commands.message.display.outgoing"), wu.a("chat.type.text.narrate")));
-      $$0.a(g, new wt(wu.d("chat.type.team.text"), wu.a("chat.type.text.narrate")));
-      $$0.a(h, new wt(wu.d("chat.type.team.sent"), wu.a("chat.type.text.narrate")));
-      $$0.a(i, new wt(wu.a("chat.type.emote"), wu.a("chat.type.emote")));
-   }
+   zj<ByteBuf, zs<? super T>> c();
 
-   public static wt.a a(akm<wt> $$0, brw $$1) {
-      return a($$0, $$1.dP().H_(), $$1.O_());
-   }
+   @Nullable
+   zr d();
 
-   public static wt.a a(akm<wt> $$0, ee $$1) {
-      return a($$0, $$1.v(), $$1.b());
-   }
-
-   public static wt.a a(akm<wt> $$0, jl $$1, wx $$2) {
-      jk<wt> $$3 = $$1.d(lf.aA);
-      return new wt.a($$3.g($$0), $$2);
-   }
-
-   public wu a() {
-      return this.j;
-   }
-
-   public wu b() {
-      return this.k;
-   }
-
-   public static record a(ix<wt> b, wx c, Optional<wx> d) {
-      public static final yv<wi, wt.a> a = yv.a(yt.b(lf.aA), wt.a::a, wz.d, wt.a::b, wz.e, wt.a::c, wt.a::new);
-
-      a(ix<wt> $$0, wx $$1) {
-         this($$0, $$1, Optional.empty());
-      }
-
-      public wx a(wx $$0) {
-         return this.b.a().a().a($$0, this);
-      }
-
-      public wx b(wx $$0) {
-         return this.b.a().b().a($$0, this);
-      }
-
-      public wt.a c(wx $$0) {
-         return new wt.a(this.b, this.c, Optional.of($$0));
-      }
-
-      public ix<wt> a() {
-         return this.b;
-      }
-
-      public wx b() {
-         return this.c;
-      }
-
-      public Optional<wx> c() {
-         return this.d;
-      }
+   public interface a<T extends wr, B extends ByteBuf> {
+      wt<T> bind(Function<ByteBuf, B> var1);
    }
 }

@@ -1,18 +1,12 @@
-import java.nio.file.Path;
-import java.util.List;
-import java.util.UUID;
+import com.mojang.serialization.Codec;
+import java.util.Map;
 
-public interface gqo {
-   void scheduleReload(gqo.a var1);
+public record gqo(Map<String, gqb> d) {
+   public static final Codec<String> a = Codec.string(1, 16);
+   public static final Codec<gqo> b = Codec.unboundedMap(a, gqb.a).xmap(gqo::new, gqo::a);
+   public static final atl<gqo> c = atl.a("language", b);
 
-   public interface a {
-      void a();
-
-      void a(boolean var1);
-
-      List<gqo.b> b();
-   }
-
-   public static record b(UUID a, Path b) {
+   public Map<String, gqb> a() {
+      return this.d;
    }
 }

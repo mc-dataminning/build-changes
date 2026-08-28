@@ -1,47 +1,24 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public abstract class pm<T> extends pr<T> {
-   private final Function<T, akm<T>> d;
+public class pm implements pl.a {
+   private static final Logger a = LogUtils.getLogger();
 
-   public pm(ln $$0, akm<? extends jk<T>> $$1, CompletableFuture<iz.a> $$2, Function<T, akm<T>> $$3) {
-      super($$0, $$1, $$2);
-      this.d = $$3;
+   @Override
+   public ur apply(String $$0, ur $$1) {
+      return $$0.startsWith("data/minecraft/structures/") ? a($$0, $$1) : $$1;
    }
 
-   public pm(ln $$0, akm<? extends jk<T>> $$1, CompletableFuture<iz.a> $$2, CompletableFuture<pr.c<T>> $$3, Function<T, akm<T>> $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.d = $$4;
-   }
-
-   protected pm.a<T> a(awm<T> $$0) {
-      awj $$1 = this.c($$0);
-      return new pm.a<>($$1, this.d);
-   }
-
-   protected static class a<T> extends pr.b<T> {
-      private final Function<T, akm<T>> a;
-
-      a(awj $$0, Function<T, akm<T>> $$1) {
-         super($$0);
-         this.a = $$1;
+   public static ur a(String $$0, ur $$1) {
+      emf $$2 = new emf();
+      int $$3 = vg.b($$1, 500);
+      int $$4 = 3798;
+      if ($$3 < 3798) {
+         a.warn("SNBT Too old, do not forget to update: {} < {}: {}", new Object[]{$$3, 3798, $$0});
       }
 
-      public pm.a<T> a(awm<T> $$0) {
-         super.b($$0);
-         return this;
-      }
-
-      public final pm.a<T> a(T $$0) {
-         this.a(this.a.apply($$0));
-         return this;
-      }
-
-      @SafeVarargs
-      public final pm.a<T> a(T... $$0) {
-         Stream.<T>of($$0).map(this.a).forEach(this::a);
-         return this;
-      }
+      ur $$5 = bab.f.a(bac.a(), $$1, $$3);
+      $$2.a(lp.e.p(), $$5);
+      return $$2.a(new ur());
    }
 }

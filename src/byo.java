@@ -1,51 +1,48 @@
-public class byo extends byr {
-   private final int l;
-   private final boolean m;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-   public byo(bss $$0, int $$1, boolean $$2) {
-      super($$0);
-      this.l = $$1;
-      this.m = $$2;
+public class byo extends bvd<cmf> {
+   private static final int c = 300;
+   private static final double d = 1.73;
+   private long e;
+
+   public byo() {
+      super(ImmutableMap.of(cco.c, ccp.a, cco.n, ccp.c));
    }
 
-   @Override
-   public void a() {
-      if (this.k == byr.a.b) {
-         this.k = byr.a.a;
-         this.d.f(true);
-         double $$0 = this.e - this.d.du();
-         double $$1 = this.f - this.d.dw();
-         double $$2 = this.g - this.d.dA();
-         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
-         if ($$3 < 2.5000003E-7F) {
-            this.d.D(0.0F);
-            this.d.C(0.0F);
-            return;
-         }
-
-         float $$4 = (float)(ayf.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
-         this.d.r(this.a(this.d.dF(), $$4, 90.0F));
-         float $$5;
-         if (this.d.aE()) {
-            $$5 = (float)(this.h * this.d.g(bty.r));
-         } else {
-            $$5 = (float)(this.h * this.d.g(bty.j));
-         }
-
-         this.d.y($$5);
-         double $$7 = Math.sqrt($$0 * $$0 + $$2 * $$2);
-         if (Math.abs($$1) > 1.0E-5F || Math.abs($$7) > 1.0E-5F) {
-            float $$8 = (float)(-(ayf.d($$1, $$7) * 180.0F / (float)Math.PI));
-            this.d.s(this.a(this.d.dH(), $$8, (float)this.l));
-            this.d.D($$1 > 0.0 ? $$5 : -$$5);
-         }
+   protected boolean b(arb $$0, cmf $$1) {
+      if ($$0.Z() - this.e < 300L) {
+         return false;
+      } else if ($$0.z.a(2) != 0) {
+         return false;
       } else {
-         if (!this.m) {
-            this.d.f(false);
-         }
+         this.e = $$0.Z();
+         jh $$2 = $$1.dS().c(cco.c).get();
+         return $$2.a() == $$0.af() && $$2.b().a($$1.dn(), 1.73);
+      }
+   }
 
-         this.d.D(0.0F);
-         this.d.C(0.0F);
+   protected void a(arb $$0, cmf $$1, long $$2) {
+      bum<cmf> $$3 = $$1.dS();
+      $$3.a(cco.J, $$2);
+      $$3.c(cco.c).ifPresent($$1x -> $$3.a(cco.n, new bvg($$1x.b())));
+      $$1.gF();
+      this.a($$0, $$1);
+      if ($$1.gE()) {
+         $$1.gD();
+      }
+   }
+
+   protected void a(arb $$0, cmf $$1) {
+   }
+
+   protected boolean b(arb $$0, cmf $$1, long $$2) {
+      Optional<jh> $$3 = $$1.dS().c(cco.c);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         jh $$4 = $$3.get();
+         return $$4.a() == $$0.af() && $$4.b().a($$1.dn(), 1.73);
       }
    }
 }

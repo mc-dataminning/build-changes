@@ -1,57 +1,28 @@
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
-
-public class cvp implements coi {
-   @Nullable
-   private final String a;
-   private final List<bre> b;
-   private col c = coo.g;
-
-   public cvp(bre... $$0) {
-      this(null, $$0);
-   }
-
-   public cvp(@Nullable String $$0, bre... $$1) {
-      this.a = $$0;
-      this.b = List.of($$1);
-   }
-
-   public cvp a(coj... $$0) {
-      this.c = coo.e.a($$0);
-      return this;
+public class cvp extends cuf implements cvc {
+   public cvp(cuf.a $$0) {
+      super($$0);
    }
 
    @Override
-   public col i() {
-      return this.c;
-   }
-
-   public static String a(Optional<ix<cvp>> $$0, String $$1) {
-      if ($$0.isPresent()) {
-         String $$2 = $$0.get().a().a;
-         if ($$2 != null) {
-            return $$1 + $$2;
-         }
+   public bqq<cuk> a(dbt $$0, cms $$1, bqo $$2) {
+      cuk $$3 = $$1.b($$2);
+      $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), avw.yx, avx.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      if (!$$0.B) {
+         cnp $$4 = new cnp($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dH(), $$1.dF(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
       }
 
-      String $$3 = $$0.flatMap(ix::e).map($$0x -> $$0x.a().a()).orElse("empty");
-      return $$1 + $$3;
+      $$1.b(awg.c.b(this));
+      $$3.a(1, $$1);
+      return bqq.a($$3, $$0.x_());
    }
 
-   public List<bre> a() {
-      return this.b;
-   }
-
-   public boolean b() {
-      if (!this.b.isEmpty()) {
-         for (bre $$0 : this.b) {
-            if ($$0.c().a().a()) {
-               return true;
-            }
-         }
-      }
-
-      return false;
+   @Override
+   public cnk a(dbt $$0, js $$1, cuk $$2, je $$3) {
+      cnp $$4 = new cnp($$0, $$1.a(), $$1.b(), $$1.c());
+      $$4.a($$2);
+      return $$4;
    }
 }

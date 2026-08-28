@@ -1,26 +1,52 @@
-@FunctionalInterface
-public interface etx<T> {
-   void handle(T var1, etz<T> var2, long var3);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-   public abstract static class a<T, C extends etx<T>> {
-      private final akn a;
-      private final Class<?> b;
+public record etx(Optional<Boolean> b, Optional<Boolean> c) implements etn {
+   public static final MapCodec<etx> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("raining").forGetter(etx::d), Codec.BOOL.optionalFieldOf("thundering").forGetter(etx::e))
+            .apply($$0, etx::new)
+   );
 
-      public a(akn $$0, Class<?> $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   public eto b() {
+      return etp.q;
+   }
+
+   public boolean a(eqd $$0) {
+      arb $$1 = $$0.d();
+      return this.b.isPresent() && this.b.get() != $$1.ad() ? false : !this.c.isPresent() || this.c.get() == $$1.ac();
+   }
+
+   public static etx.a c() {
+      return new etx.a();
+   }
+
+   public Optional<Boolean> d() {
+      return this.b;
+   }
+
+   public Optional<Boolean> e() {
+      return this.c;
+   }
+
+   public static class a implements etn.a {
+      private Optional<Boolean> a = Optional.empty();
+      private Optional<Boolean> b = Optional.empty();
+
+      public etx.a a(boolean $$0) {
+         this.a = Optional.of($$0);
+         return this;
       }
 
-      public akn a() {
-         return this.a;
+      public etx.a b(boolean $$0) {
+         this.b = Optional.of($$0);
+         return this;
       }
 
-      public Class<?> b() {
-         return this.b;
+      public etx a() {
+         return new etx(this.a, this.b);
       }
-
-      public abstract void a(ud var1, C var2);
-
-      public abstract C b(ud var1);
    }
 }

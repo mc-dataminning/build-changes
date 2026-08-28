@@ -1,55 +1,132 @@
-import com.google.gson.annotations.SerializedName;
-import java.util.UUID;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
+import org.lwjgl.system.MemoryStack;
 
-public class ezx extends faq implements fak {
-   @SerializedName("name")
-   private String a;
-   @SerializedName("uuid")
-   private UUID b;
-   @SerializedName("operator")
-   private boolean c;
-   @SerializedName("accepted")
-   private boolean d;
-   @SerializedName("online")
-   private boolean e;
+public interface ezx {
+   ezx a(double var1, double var3, double var5);
 
-   public String a() {
-      return this.a;
+   ezx a(int var1, int var2, int var3, int var4);
+
+   ezx a(float var1, float var2);
+
+   ezx a(int var1, int var2);
+
+   ezx b(int var1, int var2);
+
+   ezx a(float var1, float var2, float var3);
+
+   void e();
+
+   default void a(
+      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
+   ) {
+      this.a((double)$$0, (double)$$1, (double)$$2);
+      this.a($$3, $$4, $$5, $$6);
+      this.a($$7, $$8);
+      this.c($$9);
+      this.b($$10);
+      this.a($$11, $$12, $$13);
+      this.e();
    }
 
-   public void a(String $$0) {
-      this.a = $$0;
+   void b(int var1, int var2, int var3, int var4);
+
+   void l();
+
+   default ezx a(float $$0, float $$1, float $$2, float $$3) {
+      return this.a((int)($$0 * 255.0F), (int)($$1 * 255.0F), (int)($$2 * 255.0F), (int)($$3 * 255.0F));
    }
 
-   public UUID b() {
-      return this.b;
+   default ezx a(int $$0) {
+      return this.a(aye.b.b($$0), aye.b.c($$0), aye.b.d($$0), aye.b.a($$0));
    }
 
-   public void a(UUID $$0) {
-      this.b = $$0;
+   default ezx b(int $$0) {
+      return this.b($$0 & 65535, $$0 >> 16 & 65535);
    }
 
-   public boolean c() {
-      return this.c;
+   default ezx c(int $$0) {
+      return this.a($$0 & 65535, $$0 >> 16 & 65535);
    }
 
-   public void a(boolean $$0) {
-      this.c = $$0;
+   default void a(ezt.a $$0, geg $$1, float $$2, float $$3, float $$4, float $$5, int $$6, int $$7) {
+      this.a($$0, $$1, new float[]{1.0F, 1.0F, 1.0F, 1.0F}, $$2, $$3, $$4, $$5, new int[]{$$6, $$6, $$6, $$6}, $$7, false);
    }
 
-   public boolean d() {
-      return this.d;
+   default void a(ezt.a $$0, geg $$1, float[] $$2, float $$3, float $$4, float $$5, float $$6, int[] $$7, int $$8, boolean $$9) {
+      float[] $$10 = new float[]{$$2[0], $$2[1], $$2[2], $$2[3]};
+      int[] $$11 = new int[]{$$7[0], $$7[1], $$7[2], $$7[3]};
+      int[] $$12 = $$1.b();
+      kd $$13 = $$1.e().q();
+      Matrix4f $$14 = $$0.a();
+      Vector3f $$15 = $$0.a((float)$$13.u(), (float)$$13.v(), (float)$$13.w(), new Vector3f());
+      int $$16 = 8;
+      int $$17 = $$12.length / 8;
+      MemoryStack $$18 = MemoryStack.stackPush();
+
+      try {
+         ByteBuffer $$19 = $$18.malloc(ezr.j.b());
+         IntBuffer $$20 = $$19.asIntBuffer();
+
+         for (int $$21 = 0; $$21 < $$17; $$21++) {
+            $$20.clear();
+            $$20.put($$12, $$21 * 8, 8);
+            float $$22 = $$19.getFloat(0);
+            float $$23 = $$19.getFloat(4);
+            float $$24 = $$19.getFloat(8);
+            float $$28;
+            float $$29;
+            float $$30;
+            if ($$9) {
+               float $$25 = (float)($$19.get(12) & 255) / 255.0F;
+               float $$26 = (float)($$19.get(13) & 255) / 255.0F;
+               float $$27 = (float)($$19.get(14) & 255) / 255.0F;
+               $$28 = $$25 * $$10[$$21] * $$3;
+               $$29 = $$26 * $$10[$$21] * $$4;
+               $$30 = $$27 * $$10[$$21] * $$5;
+            } else {
+               $$28 = $$10[$$21] * $$3;
+               $$29 = $$10[$$21] * $$4;
+               $$30 = $$10[$$21] * $$5;
+            }
+
+            int $$34 = $$11[$$21];
+            float $$35 = $$19.getFloat(16);
+            float $$36 = $$19.getFloat(20);
+            Vector4f $$37 = $$14.transform(new Vector4f($$22, $$23, $$24, 1.0F));
+            this.a($$37.x(), $$37.y(), $$37.z(), $$28, $$29, $$30, $$6, $$35, $$36, $$8, $$34, $$15.x(), $$15.y(), $$15.z());
+         }
+      } catch (Throwable var34) {
+         if ($$18 != null) {
+            try {
+               $$18.close();
+            } catch (Throwable var33) {
+               var34.addSuppressed(var33);
+            }
+         }
+
+         throw var34;
+      }
+
+      if ($$18 != null) {
+         $$18.close();
+      }
    }
 
-   public void b(boolean $$0) {
-      this.d = $$0;
+   default ezx a(ezt.a $$0, float $$1, float $$2, float $$3) {
+      return this.a($$0.a(), $$1, $$2, $$3);
    }
 
-   public boolean e() {
-      return this.e;
+   default ezx a(Matrix4f $$0, float $$1, float $$2, float $$3) {
+      Vector3f $$4 = $$0.transformPosition($$1, $$2, $$3, new Vector3f());
+      return this.a((double)$$4.x(), (double)$$4.y(), (double)$$4.z());
    }
 
-   public void c(boolean $$0) {
-      this.e = $$0;
+   default ezx b(ezt.a $$0, float $$1, float $$2, float $$3) {
+      Vector3f $$4 = $$0.a($$1, $$2, $$3, new Vector3f());
+      return this.a($$4.x(), $$4.y(), $$4.z());
    }
 }

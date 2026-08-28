@@ -1,36 +1,85 @@
-public class get implements gek<dpc> {
-   public static final gpz a = new gpz(gnu.e, new akn("entity/enchanting_table_book"));
-   private final fse b;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.Collection;
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-   public get(gel.a $$0) {
-      this.b = new fse($$0.a(fvv.r));
+public class get implements grg {
+   private final List<geu> a;
+
+   public get(List<geu> $$0) {
+      this.a = $$0;
    }
 
-   public void a(dpc $$0, float $$1, eyu $$2, gck $$3, int $$4, int $$5) {
-      $$2.a();
-      $$2.a(0.5F, 0.75F, 0.5F);
-      float $$6 = (float)$$0.a + $$1;
-      $$2.a(0.0F, 0.1F + ayf.a($$6 * 0.1F) * 0.01F, 0.0F);
-      float $$7 = $$0.h - $$0.i;
+   public List<geu> a() {
+      return this.a;
+   }
 
-      while ($$7 >= (float) Math.PI) {
-         $$7 -= (float) (Math.PI * 2);
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 instanceof get $$1 ? this.a.equals($$1.a) : false;
       }
+   }
 
-      while ($$7 < (float) -Math.PI) {
-         $$7 += (float) (Math.PI * 2);
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
+   }
+
+   @Override
+   public Collection<alb> f() {
+      return this.a().stream().map(geu::a).collect(Collectors.toSet());
+   }
+
+   @Override
+   public void a(Function<alb, grg> $$0) {
+      this.a().stream().map(geu::a).distinct().forEach($$1 -> $$0.apply($$1).a($$0));
+   }
+
+   @Nullable
+   @Override
+   public gqv a(gqz $$0, Function<gqy, gou> $$1, grd $$2, alb $$3) {
+      if (this.a().isEmpty()) {
+         return null;
+      } else {
+         grh.a $$4 = new grh.a();
+
+         for (geu $$5 : this.a()) {
+            gqv $$6 = $$0.a($$5.a(), $$5);
+            $$4.a($$6, $$5.d());
+         }
+
+         return $$4.a();
       }
+   }
 
-      float $$8 = $$0.i + $$7 * $$1;
-      $$2.a(a.d.rotation(-$$8));
-      $$2.a(a.f.rotationDegrees(80.0F));
-      float $$9 = ayf.i($$1, $$0.c, $$0.b);
-      float $$10 = ayf.h($$9 + 0.25F) * 1.6F - 0.3F;
-      float $$11 = ayf.h($$9 + 0.75F) * 1.6F - 0.3F;
-      float $$12 = ayf.i($$1, $$0.g, $$0.f);
-      this.b.a($$6, ayf.a($$10, 0.0F, 1.0F), ayf.a($$11, 0.0F, 1.0F), $$12);
-      eyy $$13 = a.a($$3, gcs::c);
-      this.b.b($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$2.b();
+   public static class a implements JsonDeserializer<get> {
+      public get a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         List<geu> $$3 = Lists.newArrayList();
+         if ($$0.isJsonArray()) {
+            JsonArray $$4 = $$0.getAsJsonArray();
+            if ($$4.size() == 0) {
+               throw new JsonParseException("Empty variant array");
+            }
+
+            for (JsonElement $$5 : $$4) {
+               $$3.add((geu)$$2.deserialize($$5, geu.class));
+            }
+         } else {
+            $$3.add((geu)$$2.deserialize($$0, geu.class));
+         }
+
+         return new get($$3);
+      }
    }
 }

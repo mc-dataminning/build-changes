@@ -1,65 +1,55 @@
-public class qp {
-   public static final akm<dyy<?>> a = a("cave");
-   public static final akm<dyy<?>> b = a("cave_extra_underground");
-   public static final akm<dyy<?>> c = a("canyon");
-   public static final akm<dyy<?>> d = a("nether_cave");
+import java.util.concurrent.CompletableFuture;
 
-   private static akm<dyy<?>> a(String $$0) {
-      return akm.a(lf.aB, new akn($$0));
+public class qp extends ps {
+   public qp(ly $$0, CompletableFuture<jk.a> $$1) {
+      super($$0, $$1, cpg.a(cpi.a));
    }
 
-   public static void a(qo<dyy<?>> $$0) {
-      iy<dea> $$1 = $$0.a(lf.f);
-      $$0.a(
-         a,
-         dza.a
-            .a(
-               new dyw(
-                  0.15F,
-                  efv.a(dxp.b(8), dxp.a(180)),
-                  bpg.b(0.1F, 0.9F),
-                  dxp.b(8),
-                  dyu.a(false, dec.oS.n()),
-                  $$1.b(avx.bi),
-                  bpg.b(0.7F, 1.4F),
-                  bpg.b(0.8F, 1.3F),
-                  bpg.b(-1.0F, -0.4F)
-               )
-            )
+   @Override
+   protected void a(jk.a $$0) {
+      this.a(
+         $$0,
+         new czv[]{
+            czy.k,
+            czy.P,
+            czy.G,
+            czy.H,
+            czy.j,
+            czy.n,
+            czy.o,
+            czy.p,
+            czy.F,
+            czy.y,
+            czy.K,
+            czy.t,
+            czy.I,
+            czy.r,
+            czy.A,
+            czy.q,
+            czy.z,
+            czy.a,
+            czy.d,
+            czy.b,
+            czy.e,
+            czy.c,
+            czy.x,
+            czy.s,
+            czy.v,
+            czy.C,
+            czy.u,
+            czy.J,
+            czy.D,
+            czy.f,
+            czy.g,
+            czy.l,
+            czy.m,
+            czy.i,
+            czy.h,
+            czy.E,
+            czy.w,
+            czy.B,
+            czy.O
+         }
       );
-      $$0.a(
-         b,
-         dza.a
-            .a(
-               new dyw(
-                  0.07F,
-                  efv.a(dxp.b(8), dxp.a(47)),
-                  bpg.b(0.1F, 0.9F),
-                  dxp.b(8),
-                  dyu.a(false, dec.gv.n()),
-                  $$1.b(avx.bi),
-                  bpg.b(0.7F, 1.4F),
-                  bpg.b(0.8F, 1.3F),
-                  bpg.b(-1.0F, -0.4F)
-               )
-            )
-      );
-      $$0.a(
-         c,
-         dza.c
-            .a(
-               new dyr(
-                  0.01F,
-                  efv.a(dxp.a(10), dxp.a(67)),
-                  box.a(3.0F),
-                  dxp.b(8),
-                  dyu.a(false, dec.oT.n()),
-                  $$1.b(avx.bi),
-                  bpg.b(-0.125F, 0.125F),
-                  new dyr.a(bpg.b(0.75F, 1.0F), bpf.a(0.0F, 6.0F, 2.0F), 3, bpg.b(0.75F, 1.0F), 1.0F, 0.0F)
-               )
-            )
-      );
-      $$0.a(d, dza.b.a(new dyw(0.2F, efv.a(dxp.a(0), dxp.c(1)), box.a(0.5F), dxp.b(10), $$1.b(avx.bj), box.a(1.0F), box.a(1.0F), box.a(-0.7F))));
    }
 }

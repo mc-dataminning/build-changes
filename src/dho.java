@@ -1,73 +1,58 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public abstract class dho extends dhn implements ded {
-   protected dho(drc.d $$0, it $$1, evf $$2, boolean $$3) {
-      super($$0, $$1, $$2, $$3);
+public abstract class dho extends diq {
+   public static final dsv<dsi> K = dsn.U;
+
+   protected dho(drw.d $$0) {
+      super($$0);
    }
 
    @Override
    protected abstract MapCodec<? extends dho> a();
 
-   protected drd a(drd $$0, drd $$1) {
-      return $$1;
+   @Override
+   protected boolean a(drx $$0, dbw $$1, iz $$2) {
+      return b($$1, $$2, m($$0).g());
    }
 
-   @Override
-   protected drd a(drd $$0, it $$1, drd $$2, dba $$3, io $$4, io $$5) {
-      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
+   public static boolean b(dbw $$0, iz $$1, je $$2) {
+      iz $$3 = $$1.a($$2);
+      return $$0.a_($$3).d($$0, $$3, $$2.g());
+   }
 
-      dhp $$6 = this.c();
-      if ($$1 == this.a && !$$2.a(this) && !$$2.a($$6)) {
-         return this.a($$0, $$6.a($$3));
-      } else {
-         if (this.b) {
-            $$3.a($$4, emx.c, emx.c.a($$3));
+   @Nullable
+   @Override
+   public drx a(cxv $$0) {
+      for (je $$1 : $$0.f()) {
+         drx $$2;
+         if ($$1.o() == je.a.b) {
+            $$2 = this.n().a(K, $$1 == je.b ? dsi.c : dsi.a).a(aE, $$0.g());
+         } else {
+            $$2 = this.n().a(K, dsi.b).a(aE, $$1.g());
          }
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         if ($$2.a((dbw)$$0.q(), $$0.a())) {
+            return $$2;
+         }
       }
+
+      return null;
    }
 
    @Override
-   public ctq a(dbc $$0, io $$1, drd $$2) {
-      return new ctq(this.c());
+   protected drx a(drx $$0, je $$1, drx $$2, dbu $$3, iz $$4, iz $$5) {
+      return m($$0).g() == $$1 && !$$0.a($$3, $$4) ? dew.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   public boolean b(dbc $$0, io $$1, drd $$2) {
-      Optional<io> $$3 = this.a($$0, $$1, $$2.b());
-      return $$3.isPresent() && this.c().g($$0.a_($$3.get().a(this.a)));
-   }
-
-   @Override
-   public boolean a(daz $$0, aym $$1, io $$2, drd $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(aqn $$0, aym $$1, io $$2, drd $$3) {
-      Optional<io> $$4 = this.a($$0, $$2, $$3.b());
-      if ($$4.isPresent()) {
-         drd $$5 = $$0.a_($$4.get());
-         ((dhp)$$5.b()).a($$0, $$1, $$4.get(), $$5);
+   protected static je m(drx $$0) {
+      switch ((dsi)$$0.c(K)) {
+         case c:
+            return je.a;
+         case a:
+            return je.b;
+         default:
+            return $$0.c(aE);
       }
-   }
-
-   private Optional<io> a(daf $$0, io $$1, dea $$2) {
-      return l.a($$0, $$1, $$2, this.a, this.c());
-   }
-
-   @Override
-   protected boolean a(drd $$0, cxb $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      return $$2 && $$1.n().a(this.c().r()) ? false : $$2;
-   }
-
-   @Override
-   protected dea b() {
-      return this;
    }
 }

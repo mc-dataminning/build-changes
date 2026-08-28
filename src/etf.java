@@ -1,53 +1,57 @@
-import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import org.slf4j.Logger;
 
-public record etf(eti b, eti c) implements eti {
-   public static final MapCodec<etf> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(etj.a.fieldOf("n").forGetter(etf::c), etj.a.fieldOf("p").forGetter(etf::d)).apply($$0, etf::new)
-   );
+public record etf(ala<etn> b) implements etn {
+   private static final Logger c = LogUtils.getLogger();
+   public static final MapCodec<etf> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ala.a(lq.aW).fieldOf("name").forGetter(etf::c)).apply($$0, etf::new));
 
    @Override
-   public eth b() {
-      return etj.d;
+   public eto b() {
+      return etp.r;
    }
 
    @Override
-   public int a(eph $$0) {
-      int $$1 = this.b.a($$0);
-      float $$2 = this.c.b($$0);
-      aym $$3 = $$0.b();
-      int $$4 = 0;
+   public void a(eqj $$0) {
+      if ($$0.a(this.b)) {
+         $$0.b("Condition " + this.b.a() + " is recursively called");
+      } else {
+         etn.super.a($$0);
+         $$0.a()
+            .a(lq.aW, this.b)
+            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.b.a() + "}", this.b)), () -> $$0.b("Unknown condition table called " + this.b.a()));
+      }
+   }
 
-      for (int $$5 = 0; $$5 < $$1; $$5++) {
-         if ($$3.i() < $$2) {
-            $$4++;
+   public boolean a(eqd $$0) {
+      etn $$1 = $$0.a().a(lq.aW, this.b).map(ji.c::a).orElse(null);
+      if ($$1 == null) {
+         c.warn("Tried using unknown condition table called {}", this.b.a());
+         return false;
+      } else {
+         eqd.c<?> $$2 = eqd.a($$1);
+         if ($$0.b($$2)) {
+            boolean var4;
+            try {
+               var4 = $$1.test($$0);
+            } finally {
+               $$0.c($$2);
+            }
+
+            return var4;
+         } else {
+            c.warn("Detected infinite loop in loot tables");
+            return false;
          }
       }
-
-      return $$4;
    }
 
-   @Override
-   public float b(eph $$0) {
-      return (float)this.a($$0);
+   public static etn.a a(ala<etn> $$0) {
+      return () -> new etf($$0);
    }
 
-   public static etf a(int $$0, float $$1) {
-      return new etf(etg.a((float)$$0), etg.a($$1));
-   }
-
-   @Override
-   public Set<erw<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
-
-   public eti c() {
+   public ala<etn> c() {
       return this.b;
-   }
-
-   public eti d() {
-      return this.c;
    }
 }

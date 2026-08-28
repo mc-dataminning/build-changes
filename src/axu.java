@@ -1,30 +1,54 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
+import com.google.common.collect.Lists;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringEscapeUtils;
 
-public final class axu {
-   private axu() {
+public class axu {
+   private static final String a = "\r\n";
+   private static final String b = ",";
+   private final Writer c;
+   private final int d;
+
+   axu(Writer $$0, List<String> $$1) throws IOException {
+      this.c = $$0;
+      this.d = $$1.size();
+      this.a($$1.stream());
    }
 
-   public static <T> boolean a(Map<T, Set<T>> $$0, Set<T> $$1, Set<T> $$2, Consumer<T> $$3, T $$4) {
-      if ($$1.contains($$4)) {
-         return false;
-      } else if ($$2.contains($$4)) {
-         return true;
+   public static axu.a a() {
+      return new axu.a();
+   }
+
+   public void a(Object... $$0) throws IOException {
+      if ($$0.length != this.d) {
+         throw new IllegalArgumentException("Invalid number of columns, expected " + this.d + ", but got " + $$0.length);
       } else {
-         $$2.add($$4);
+         this.a(Stream.of($$0));
+      }
+   }
 
-         for (T $$5 : $$0.getOrDefault($$4, ImmutableSet.of())) {
-            if (a($$0, $$1, $$2, $$3, $$5)) {
-               return true;
-            }
-         }
+   private void a(Stream<?> $$0) throws IOException {
+      this.c.write($$0.<CharSequence>map(axu::a).collect(Collectors.joining(",")) + "\r\n");
+   }
 
-         $$2.remove($$4);
-         $$1.add($$4);
-         $$3.accept($$4);
-         return false;
+   private static String a(@Nullable Object $$0) {
+      return StringEscapeUtils.escapeCsv($$0 != null ? $$0.toString() : "[null]");
+   }
+
+   public static class a {
+      private final List<String> a = Lists.newArrayList();
+
+      public axu.a a(String $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      public axu a(Writer $$0) throws IOException {
+         return new axu($$0, this.a);
       }
    }
 }

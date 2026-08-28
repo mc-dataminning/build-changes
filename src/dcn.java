@@ -1,14 +1,25 @@
-public class dcn {
-   public static final akm<dcm> a = a("nether");
-   public static final akm<dcm> b = a("overworld");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public static void a(qo<dcm> $$0) {
-      iy<dby> $$1 = $$0.a(lf.az);
-      $$0.a(a, new dcm(dcm.a.a, $$1));
-      $$0.a(b, new dcm(dcm.a.b, $$1));
+public record dcn(dbh d, cpg e) {
+   public static final String a = "enabled_features";
+   public static final Codec<dcn> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dbh.b.lenientOptionalFieldOf("DataPacks", dbh.a).forGetter(dcn::a), cpi.f.lenientOptionalFieldOf("enabled_features", cpi.h).forGetter(dcn::b)
+            )
+            .apply($$0, dcn::new)
+   );
+   public static final dcn c = new dcn(dbh.a, cpi.h);
+
+   public dcn a(cpg $$0) {
+      return new dcn(this.d, this.e.b($$0));
    }
 
-   private static akm<dcm> a(String $$0) {
-      return akm.a(lf.aR, new akn($$0));
+   public dbh a() {
+      return this.d;
+   }
+
+   public cpg b() {
+      return this.e;
    }
 }

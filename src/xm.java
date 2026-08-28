@@ -1,35 +1,27 @@
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import javax.annotation.Nullable;
+
 public interface xm {
-   wx a();
-
-   void a(aqo var1, boolean var2, wt.a var3);
-
-   static xm a(xn $$0) {
-      return (xm)($$0.h() ? new xm.a($$0.d()) : new xm.b($$0));
+   default <T> Optional<T> a(xq.b<T> $$0, yi $$1) {
+      return Optional.empty();
    }
 
-   public static record a(wx a) implements xm {
-      @Override
-      public void a(aqo $$0, boolean $$1, wt.a $$2) {
-         $$0.c.a(this.a, $$2);
-      }
+   default <T> Optional<T> a(xq.a<T> $$0) {
+      return Optional.empty();
    }
 
-   public static record b(xn a) implements xm {
-      @Override
-      public wx a() {
-         return this.a.d();
-      }
+   default xz a(@Nullable ep $$0, @Nullable bsp $$1, int $$2) throws CommandSyntaxException {
+      return xz.a(this);
+   }
 
-      @Override
-      public void a(aqo $$0, boolean $$1, wt.a $$2) {
-         xn $$3 = this.a.a($$1);
-         if (!$$3.j()) {
-            $$0.c.a($$3, $$2);
-         }
-      }
+   xm.a<?> a();
 
-      public xn b() {
-         return this.a;
+   public static record a<T extends xm>(MapCodec<T> a, String b) implements azp {
+      @Override
+      public String c() {
+         return this.b;
       }
    }
 }

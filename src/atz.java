@@ -1,71 +1,56 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonObject;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.Collection;
+import com.google.common.annotations.VisibleForTesting;
+import java.nio.file.Path;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public interface atz {
-   atz a = new atz() {
-      @Override
-      public <T> Optional<T> a(asw<T> $$0) {
-         return Optional.empty();
-      }
-   };
-   atp<atz> b = () -> a;
+public class atz extends atq {
+   private static final atm c = new atm(xl.c("dataPack.vanilla.description"), aa.b().a(asz.b), Optional.empty());
+   private static final ast d = new ast(cpi.h);
+   private static final asp e = asp.a(atm.b, c, ast.a, d);
+   private static final asw f = new asw("vanilla", xl.c("dataPack.vanilla.name"), atx.c, Optional.of(b));
+   private static final asy g = new asy(false, att.b.b, false);
+   private static final asy h = new asy(false, att.b.a, false);
+   private static final alb i = new alb("minecraft", "datapacks");
 
-   static atz a(InputStream $$0) throws IOException {
-      atz var3;
-      try (BufferedReader $$1 = new BufferedReader(new InputStreamReader($$0, StandardCharsets.UTF_8))) {
-         final JsonObject $$2 = axv.a($$1);
-         var3 = new atz() {
-            @Override
-            public <T> Optional<T> a(asw<T> $$0) {
-               String $$1 = $$0.a();
-               return $$2.has($$1) ? Optional.of($$0.a(axv.u($$2, $$1))) : Optional.empty();
-            }
-         };
-      }
-
-      return var3;
+   public atz(evc $$0) {
+      super(asz.b, b(), i, $$0);
    }
 
-   <T> Optional<T> a(asw<T> var1);
-
-   default atz a(Collection<asw<?>> $$0) {
-      atz.a $$1 = new atz.a();
-
-      for (asw<?> $$2 : $$0) {
-         this.a($$1, $$2);
-      }
-
-      return $$1.a();
+   private static asw a(String $$0, xl $$1) {
+      return new asw($$0, $$1, atx.d, Optional.of(ats.a($$0)));
    }
 
-   private <T> void a(atz.a $$0, asw<T> $$1) {
-      this.a($$1).ifPresent($$2 -> $$0.a($$1, (T)$$2));
+   @VisibleForTesting
+   public static atb b() {
+      return new atc().a(e).a("minecraft").b().a().a(f);
    }
 
-   public static class a {
-      private final Builder<asw<?>, Object> a = ImmutableMap.builder();
+   @Override
+   protected xl a(String $$0) {
+      return xl.b($$0);
+   }
 
-      public <T> atz.a a(asw<T> $$0, T $$1) {
-         this.a.put($$0, $$1);
-         return this;
-      }
+   @Nullable
+   @Override
+   protected att a(asx $$0) {
+      return att.a(f, b($$0), asz.b, g);
+   }
 
-      public atz a() {
-         final ImmutableMap<asw<?>, Object> $$0 = this.a.build();
-         return $$0.isEmpty() ? atz.a : new atz() {
-            @Override
-            public <T> Optional<T> a(asw<T> $$0x) {
-               return Optional.ofNullable((T)$$0.get($$0));
-            }
-         };
-      }
+   @Nullable
+   @Override
+   protected att a(String $$0, att.c $$1, xl $$2) {
+      return att.a(a($$0, $$2), $$1, asz.b, h);
+   }
+
+   public static atw a(Path $$0, evc $$1) {
+      return new atw(new atz($$1), new atr($$0, asz.b, atx.e, $$1));
+   }
+
+   public static atw c() {
+      return new atw(new atz(new evc($$0 -> true)));
+   }
+
+   public static atw a(epr.c $$0) {
+      return a($$0.a(epp.j), $$0.d().e());
    }
 }

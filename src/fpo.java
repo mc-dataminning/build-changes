@@ -1,89 +1,90 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.List;
+import org.apache.commons.lang3.math.Fraction;
 
-public class fpo extends fhg {
-   private static final fhn c = new fhn(new akn("recipe_book/tab"), new akn("recipe_book/tab_selected"));
-   private final fej d;
-   private static final float e = 15.0F;
-   private float f;
+public class fpo implements fpq {
+   private static final alb a = new alb("container/bundle/background");
+   private static final int b = 4;
+   private static final int c = 1;
+   private static final int d = 18;
+   private static final int e = 20;
+   private final cwx f;
 
-   public fpo(fej $$0) {
-      super(0, 0, 35, 27, false);
-      this.d = $$0;
-      this.a(c);
-   }
-
-   public void a(feb $$0) {
-      fdo $$1 = $$0.s.m();
-      List<fpq> $$2 = $$1.a(this.d);
-      if ($$0.s.cb instanceof cqi) {
-         for (fpq $$3 : $$2) {
-            for (cxy<?> $$4 : $$3.a($$1.a((cqi<?>)$$0.s.cb))) {
-               if ($$1.d($$4)) {
-                  this.f = 15.0F;
-                  return;
-               }
-            }
-         }
-      }
+   public fpo(cwx $$0) {
+      this.f = $$0;
    }
 
    @Override
-   public void b(ffn $$0, int $$1, int $$2, float $$3) {
-      if (this.a != null) {
-         if (this.f > 0.0F) {
-            float $$4 = 1.0F + 0.1F * (float)Math.sin((double)(this.f / 15.0F * (float) Math.PI));
-            $$0.c().a();
-            $$0.c().a((float)(this.C() + 8), (float)(this.D() + 12), 0.0F);
-            $$0.c().b(1.0F, $$4, 1.0F);
-            $$0.c().a((float)(-(this.C() + 8)), (float)(-(this.D() + 12)), 0.0F);
-         }
+   public int a() {
+      return this.c() + 4;
+   }
 
-         feb $$5 = feb.Q();
-         RenderSystem.disableDepthTest();
-         akn $$6 = this.a.a(true, this.b);
-         int $$7 = this.C();
-         if (this.b) {
-            $$7 -= 2;
-         }
+   @Override
+   public int a(fgk $$0) {
+      return this.b();
+   }
 
-         $$0.a($$6, $$7, this.D(), this.g, this.h);
-         RenderSystem.enableDepthTest();
-         this.a($$0, $$5.ar());
-         if (this.f > 0.0F) {
-            $$0.c().b();
-            this.f -= $$3;
+   private int b() {
+      return this.d() * 18 + 2;
+   }
+
+   private int c() {
+      return this.e() * 20 + 2;
+   }
+
+   @Override
+   public void a(fgk $$0, int $$1, int $$2, fgm $$3) {
+      int $$4 = this.d();
+      int $$5 = this.e();
+      $$3.a(a, $$1, $$2, this.b(), this.c());
+      boolean $$6 = this.f.e().compareTo(Fraction.ONE) >= 0;
+      int $$7 = 0;
+
+      for (int $$8 = 0; $$8 < $$5; $$8++) {
+         for (int $$9 = 0; $$9 < $$4; $$9++) {
+            int $$10 = $$1 + $$9 * 18 + 1;
+            int $$11 = $$2 + $$8 * 20 + 1;
+            this.a($$10, $$11, $$7++, $$6, $$3, $$0);
          }
       }
    }
 
-   private void a(ffn $$0, gir $$1) {
-      List<ctq> $$2 = this.d.a();
-      int $$3 = this.b ? -2 : 0;
-      if ($$2.size() == 1) {
-         $$0.b($$2.get(0), this.C() + 9 + $$3, this.D() + 5);
-      } else if ($$2.size() == 2) {
-         $$0.b($$2.get(0), this.C() + 3 + $$3, this.D() + 5);
-         $$0.b($$2.get(1), this.C() + 14 + $$3, this.D() + 5);
-      }
-   }
-
-   public fej b() {
-      return this.d;
-   }
-
-   public boolean a(fdo $$0) {
-      List<fpq> $$1 = $$0.a(this.d);
-      this.k = false;
-      if ($$1 != null) {
-         for (fpq $$2 : $$1) {
-            if ($$2.b() && $$2.d()) {
-               this.k = true;
-               break;
-            }
+   private void a(int $$0, int $$1, int $$2, boolean $$3, fgm $$4, fgk $$5) {
+      if ($$2 >= this.f.d()) {
+         this.a($$4, $$0, $$1, $$3 ? fpo.a.a : fpo.a.b);
+      } else {
+         cuk $$6 = this.f.a($$2);
+         this.a($$4, $$0, $$1, fpo.a.b);
+         $$4.a($$6, $$0 + 1, $$1 + 1, $$2);
+         $$4.a($$5, $$6, $$0 + 1, $$1 + 1);
+         if ($$2 == 0) {
+            fnw.a($$4, $$0 + 1, $$1 + 1, 0);
          }
       }
+   }
 
-      return this.k;
+   private void a(fgm $$0, int $$1, int $$2, fpo.a $$3) {
+      $$0.a($$3.c, $$1, $$2, 0, $$3.d, $$3.e);
+   }
+
+   private int d() {
+      return Math.max(2, (int)Math.ceil(Math.sqrt((double)this.f.d() + 1.0)));
+   }
+
+   private int e() {
+      return (int)Math.ceil(((double)this.f.d() + 1.0) / (double)this.d());
+   }
+
+   static enum a {
+      a(new alb("container/bundle/blocked_slot"), 18, 20),
+      b(new alb("container/bundle/slot"), 18, 20);
+
+      public final alb c;
+      public final int d;
+      public final int e;
+
+      private a(final alb $$0, final int $$1, final int $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+      }
    }
 }

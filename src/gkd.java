@@ -1,28 +1,107 @@
-public class gkd extends giz<cjr, fuz<cjr>> {
-   private static final akn a = new akn("textures/entity/strider/strider.png");
-   private static final akn i = new akn("textures/entity/strider/strider_cold.png");
-   private static final float j = 0.5F;
-
-   public gkd(ght.a $$0) {
-      super($$0, new fuz<>($$0.a(fvv.bD)), 0.5F);
-      this.a(new gmg<>(this, new fuz<>($$0.a(fvv.bE)), new akn("textures/entity/strider/strider_saddle.png")));
+public class gkd extends gir<cix> {
+   public gkd(gis.a $$0) {
+      super($$0);
    }
 
-   public akn a(cjr $$0) {
-      return $$0.s() ? i : a;
+   public void a(cix $$0, float $$1, float $$2, ezt $$3, gdj $$4, int $$5) {
+      $$3.a();
+      $$3.a(a.d.rotationDegrees(180.0F - $$1));
+      ciy $$6 = $$0.p().a();
+      float $$7 = 0.0625F;
+      $$3.b(0.0625F, 0.0625F, 0.0625F);
+      ezx $$8 = $$4.getBuffer(gdr.c(this.a($$0)));
+      gpt $$9 = ffa.Q().aE();
+      this.a($$3, $$8, $$0, $$6.a(), $$6.b(), $$9.a($$6), $$9.a());
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected float b(cjr $$0) {
-      float $$1 = super.b($$0);
-      return $$0.p_() ? $$1 * 0.5F : $$1;
+   public alb a(cix $$0) {
+      return ffa.Q().aE().a().i();
    }
 
-   protected void a(cjr $$0, eyu $$1, float $$2) {
-      float $$3 = $$0.ed();
-      $$1.b($$3, $$3, $$3);
+   private void a(ezt $$0, ezx $$1, cix $$2, int $$3, int $$4, gou $$5, gou $$6) {
+      ezt.a $$7 = $$0.c();
+      float $$8 = (float)(-$$3) / 2.0F;
+      float $$9 = (float)(-$$4) / 2.0F;
+      float $$10 = 0.5F;
+      float $$11 = $$6.c();
+      float $$12 = $$6.d();
+      float $$13 = $$6.g();
+      float $$14 = $$6.h();
+      float $$15 = $$6.c();
+      float $$16 = $$6.d();
+      float $$17 = $$6.g();
+      float $$18 = $$6.c(0.0625F);
+      float $$19 = $$6.c();
+      float $$20 = $$6.a(0.0625F);
+      float $$21 = $$6.g();
+      float $$22 = $$6.h();
+      int $$23 = $$3 / 16;
+      int $$24 = $$4 / 16;
+      double $$25 = 1.0 / (double)$$23;
+      double $$26 = 1.0 / (double)$$24;
+
+      for (int $$27 = 0; $$27 < $$23; $$27++) {
+         for (int $$28 = 0; $$28 < $$24; $$28++) {
+            float $$29 = $$8 + (float)(($$27 + 1) * 16);
+            float $$30 = $$8 + (float)($$27 * 16);
+            float $$31 = $$9 + (float)(($$28 + 1) * 16);
+            float $$32 = $$9 + (float)($$28 * 16);
+            int $$33 = $$2.dt();
+            int $$34 = ayu.a($$2.dw() + (double)(($$31 + $$32) / 2.0F / 16.0F));
+            int $$35 = $$2.dz();
+            je $$36 = $$2.cH();
+            if ($$36 == je.c) {
+               $$33 = ayu.a($$2.du() + (double)(($$29 + $$30) / 2.0F / 16.0F));
+            }
+
+            if ($$36 == je.e) {
+               $$35 = ayu.a($$2.dA() - (double)(($$29 + $$30) / 2.0F / 16.0F));
+            }
+
+            if ($$36 == je.d) {
+               $$33 = ayu.a($$2.du() - (double)(($$29 + $$30) / 2.0F / 16.0F));
+            }
+
+            if ($$36 == je.f) {
+               $$35 = ayu.a($$2.dA() + (double)(($$29 + $$30) / 2.0F / 16.0F));
+            }
+
+            int $$37 = gdh.a($$2.dP(), new iz($$33, $$34, $$35));
+            float $$38 = $$5.a((float)($$25 * (double)($$23 - $$27)));
+            float $$39 = $$5.a((float)($$25 * (double)($$23 - ($$27 + 1))));
+            float $$40 = $$5.c((float)($$26 * (double)($$24 - $$28)));
+            float $$41 = $$5.c((float)($$26 * (double)($$24 - ($$28 + 1))));
+            this.a($$7, $$1, $$29, $$32, $$39, $$40, -0.5F, 0, 0, -1, $$37);
+            this.a($$7, $$1, $$30, $$32, $$38, $$40, -0.5F, 0, 0, -1, $$37);
+            this.a($$7, $$1, $$30, $$31, $$38, $$41, -0.5F, 0, 0, -1, $$37);
+            this.a($$7, $$1, $$29, $$31, $$39, $$41, -0.5F, 0, 0, -1, $$37);
+            this.a($$7, $$1, $$29, $$31, $$12, $$13, 0.5F, 0, 0, 1, $$37);
+            this.a($$7, $$1, $$30, $$31, $$11, $$13, 0.5F, 0, 0, 1, $$37);
+            this.a($$7, $$1, $$30, $$32, $$11, $$14, 0.5F, 0, 0, 1, $$37);
+            this.a($$7, $$1, $$29, $$32, $$12, $$14, 0.5F, 0, 0, 1, $$37);
+            this.a($$7, $$1, $$29, $$31, $$15, $$17, -0.5F, 0, 1, 0, $$37);
+            this.a($$7, $$1, $$30, $$31, $$16, $$17, -0.5F, 0, 1, 0, $$37);
+            this.a($$7, $$1, $$30, $$31, $$16, $$18, 0.5F, 0, 1, 0, $$37);
+            this.a($$7, $$1, $$29, $$31, $$15, $$18, 0.5F, 0, 1, 0, $$37);
+            this.a($$7, $$1, $$29, $$32, $$15, $$17, 0.5F, 0, -1, 0, $$37);
+            this.a($$7, $$1, $$30, $$32, $$16, $$17, 0.5F, 0, -1, 0, $$37);
+            this.a($$7, $$1, $$30, $$32, $$16, $$18, -0.5F, 0, -1, 0, $$37);
+            this.a($$7, $$1, $$29, $$32, $$15, $$18, -0.5F, 0, -1, 0, $$37);
+            this.a($$7, $$1, $$29, $$31, $$20, $$21, 0.5F, -1, 0, 0, $$37);
+            this.a($$7, $$1, $$29, $$32, $$20, $$22, 0.5F, -1, 0, 0, $$37);
+            this.a($$7, $$1, $$29, $$32, $$19, $$22, -0.5F, -1, 0, 0, $$37);
+            this.a($$7, $$1, $$29, $$31, $$19, $$21, -0.5F, -1, 0, 0, $$37);
+            this.a($$7, $$1, $$30, $$31, $$20, $$21, -0.5F, 1, 0, 0, $$37);
+            this.a($$7, $$1, $$30, $$32, $$20, $$22, -0.5F, 1, 0, 0, $$37);
+            this.a($$7, $$1, $$30, $$32, $$19, $$22, 0.5F, 1, 0, 0, $$37);
+            this.a($$7, $$1, $$30, $$31, $$19, $$21, 0.5F, 1, 0, 0, $$37);
+         }
+      }
    }
 
-   protected boolean c(cjr $$0) {
-      return super.a($$0) || $$0.s();
+   private void a(ezt.a $$0, ezx $$1, float $$2, float $$3, float $$4, float $$5, float $$6, int $$7, int $$8, int $$9, int $$10) {
+      $$1.a($$0, $$2, $$3, $$6).a(255, 255, 255, 255).a($$4, $$5).c(gol.d).b($$10).b($$0, (float)$$7, (float)$$8, (float)$$9).e();
    }
 }

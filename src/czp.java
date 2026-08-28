@@ -1,10 +1,10 @@
-public class czp extends czb {
-   protected czp(czb.b $$0) {
+public class czp extends czv {
+   public czp(czv.b $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(czb $$0) {
-      return super.a($$0) && $$0 != cze.x;
+   public boolean a(czv $$0) {
+      return super.a($$0) && $$0 != czy.I;
    }
 }

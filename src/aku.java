@@ -1,29 +1,33 @@
-import com.mojang.logging.LogUtils;
-import java.io.OutputStream;
-import java.io.PrintStream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.Map;
 
-public class aku extends PrintStream {
-   private static final Logger b = LogUtils.getLogger();
-   protected final String a;
+public class aku {
+   private final String a;
+   private final String b;
 
-   public aku(String $$0, OutputStream $$1) {
-      super($$1);
+   public aku(String $$0, String $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public void println(@Nullable String $$0) {
-      this.a($$0);
+   public static aku a(String $$0) {
+      return new aku($$0, ".json");
    }
 
-   @Override
-   public void println(Object $$0) {
-      this.a(String.valueOf($$0));
+   public alb a(alb $$0) {
+      return $$0.c(this.a + "/" + $$0.a() + this.b);
    }
 
-   protected void a(@Nullable String $$0) {
-      b.info("[{}]: {}", this.a, $$0);
+   public alb b(alb $$0) {
+      String $$1 = $$0.a();
+      return $$0.c($$1.substring(this.a.length() + 1, $$1.length() - this.b.length()));
+   }
+
+   public Map<alb, auj> a(aul $$0) {
+      return $$0.b(this.a, $$0x -> $$0x.a().endsWith(this.b));
+   }
+
+   public Map<alb, List<auj>> b(aul $$0) {
+      return $$0.c(this.a, $$0x -> $$0x.a().endsWith(this.b));
    }
 }

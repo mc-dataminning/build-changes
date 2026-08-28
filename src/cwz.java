@@ -1,112 +1,132 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapDecoder;
+import com.mojang.serialization.MapEncoder;
+import com.mojang.serialization.MapLike;
+import io.netty.buffer.ByteBuf;
+import java.util.UUID;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
-public record cwz(are<String> l, String m, int n, List<are<wx>> o, boolean p) implements cwc<wx, cwz> {
-   public static final cwz a = new cwz(are.a(""), "", 0, List.of(), true);
-   public static final int b = 32767;
-   public static final int c = 100;
-   public static final int d = 16;
-   public static final int e = 32;
-   public static final int f = 3;
-   public static final int g = 2;
-   public static final Codec<wx> h = wz.a(32767);
-   public static final Codec<List<are<wx>>> i = a(h);
-   public static final Codec<cwz> j = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               are.a(Codec.string(0, 32)).fieldOf("title").forGetter(cwz::d),
-               Codec.STRING.fieldOf("author").forGetter(cwz::e),
-               axn.a(0, 3).optionalFieldOf("generation", 0).forGetter(cwz::f),
-               i.optionalFieldOf("pages", List.of()).forGetter(cwz::a),
-               Codec.BOOL.optionalFieldOf("resolved", false).forGetter(cwz::g)
-            )
-            .apply($$0, cwz::new)
+public final class cwz {
+   public static final cwz a = new cwz(new ur());
+   public static final Codec<cwz> b = ur.a.xmap(cwz::new, $$0 -> $$0.e);
+   public static final Codec<cwz> c = b.validate(
+      $$0 -> $$0.d().b("id", 8) ? DataResult.success($$0) : DataResult.error(() -> "Missing id for entity in: " + $$0)
    );
-   public static final yv<wi, cwz> k = yv.a(are.a(yt.b(32)), cwz::d, yt.k, cwz::e, yt.f, cwz::f, are.a(wz.b).a(yt.c(100)), cwz::a, yt.b, cwz::g, cwz::new);
+   @Deprecated
+   public static final zj<ByteBuf, cwz> d = zh.o.a(cwz::new, $$0 -> $$0.e);
+   private final ur e;
 
-   private static Codec<are<wx>> b(Codec<wx> $$0) {
-      return are.a($$0);
+   private cwz(ur $$0) {
+      this.e = $$0;
    }
 
-   public static Codec<List<are<wx>>> a(Codec<wx> $$0) {
-      return b($$0).sizeLimitedListOf(100);
+   public static cwz a(ur $$0) {
+      return new cwz($$0.h());
    }
 
-   @Nullable
-   public cwz b() {
-      return this.n >= 2 ? null : new cwz(this.l, this.m, this.n + 1, this.o, this.p);
+   public static Predicate<cuk> a(kl<cwz> $$0, ur $$1) {
+      return $$2 -> {
+         cwz $$3 = $$2.a($$0, a);
+         return $$3.b($$1);
+      };
    }
 
-   @Nullable
-   public cwz a(ee $$0, @Nullable cly $$1) {
-      if (this.p) {
-         return null;
+   public boolean b(ur $$0) {
+      return vg.a($$0, this.e, true);
+   }
+
+   public static void a(kl<cwz> $$0, cuk $$1, Consumer<ur> $$2) {
+      cwz $$3 = $$1.a($$0, a).a($$2);
+      if ($$3.e.g()) {
+         $$1.c($$0);
       } else {
-         Builder<are<wx>> $$2 = ImmutableList.builderWithExpectedSize(this.o.size());
-
-         for (are<wx> $$3 : this.o) {
-            Optional<are<wx>> $$4 = a($$0, $$1, $$3);
-            if ($$4.isEmpty()) {
-               return null;
-            }
-
-            $$2.add($$4.get());
-         }
-
-         return new cwz(this.l, this.m, this.n, $$2.build(), true);
+         $$1.b($$0, $$3);
       }
    }
 
-   public cwz c() {
-      return new cwz(this.l, this.m, this.n, this.o, true);
+   public static void a(kl<cwz> $$0, cuk $$1, ur $$2) {
+      if (!$$2.g()) {
+         $$1.b($$0, a($$2));
+      } else {
+         $$1.c($$0);
+      }
    }
 
-   private static Optional<are<wx>> a(ee $$0, @Nullable cly $$1, are<wx> $$2) {
-      return $$2.b($$2x -> {
-         try {
-            wx $$3 = xa.a($$0, $$2x, $$1, 0);
-            return a($$3, $$0.v()) ? Optional.empty() : Optional.of($$3);
-         } catch (Exception var4) {
-            return Optional.of($$2x);
-         }
-      });
+   public cwz a(Consumer<ur> $$0) {
+      ur $$1 = this.e.h();
+      $$0.accept($$1);
+      return new cwz($$1);
    }
 
-   private static boolean a(wx $$0, iz.a $$1) {
-      return wx.a.a($$0, $$1).length() > 32767;
+   public void a(bsp $$0) {
+      ur $$1 = $$0.f(new ur());
+      UUID $$2 = $$0.cz();
+      $$1.a(this.e);
+      $$0.g($$1);
+      $$0.a_($$2);
    }
 
-   public List<wx> a(boolean $$0) {
-      return Lists.transform(this.o, $$1 -> (wx)$$1.a($$0));
+   public boolean a(dpc $$0, jk.a $$1) {
+      ur $$2 = $$0.e($$1);
+      ur $$3 = $$2.h();
+      $$2.a(this.e);
+      if (!$$2.equals($$3)) {
+         $$0.d($$2, $$1);
+         $$0.e();
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   public cwz b(List<are<wx>> $$0) {
-      return new cwz(this.l, this.m, this.n, $$0, false);
+   public <T> DataResult<cwz> a(MapEncoder<T> $$0, T $$1) {
+      return $$0.encode($$1, vf.a, vf.a.mapBuilder()).build(this.e).map($$0x -> new cwz((ur)$$0x));
    }
 
-   public are<String> d() {
-      return this.l;
+   public <T> DataResult<T> a(MapDecoder<T> $$0) {
+      MapLike<vo> $$1 = (MapLike<vo>)vf.a.e(this.e).getOrThrow();
+      return $$0.decode(vf.a, $$1);
    }
 
-   public String e() {
-      return this.m;
+   public int a() {
+      return this.e.f();
    }
 
-   public int f() {
-      return this.n;
+   public boolean b() {
+      return this.e.g();
+   }
+
+   public ur c() {
+      return this.e.h();
+   }
+
+   public boolean a(String $$0) {
+      return this.e.e($$0);
    }
 
    @Override
-   public List<are<wx>> a() {
-      return this.o;
+   public boolean equals(Object $$0) {
+      if ($$0 == this) {
+         return true;
+      } else {
+         return $$0 instanceof cwz $$1 ? this.e.equals($$1.e) : false;
+      }
    }
 
-   public boolean g() {
-      return this.p;
+   @Override
+   public int hashCode() {
+      return this.e.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return this.e.toString();
+   }
+
+   @Deprecated
+   public ur d() {
+      return this.e;
    }
 }

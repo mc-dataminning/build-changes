@@ -1,26 +1,28 @@
-public class gmk<T extends bsq> extends gmf<T, fuu<T>> {
-   private final fsw<T> a;
-
-   public gmk(gjp<T, fuu<T>> $$0, fvs $$1) {
+public class gmk extends gne<gci, fva<gci>> {
+   public gmk(gko<gci, fva<gci>> $$0) {
       super($$0);
-      this.a = new fuu<>($$1.a(fvv.bt));
    }
 
-   public void a(eyu $$0, gck $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      feb $$10 = feb.Q();
-      boolean $$11 = $$10.b($$3) && $$3.ch();
-      if (!$$3.ch() || $$11) {
-         eyy $$12;
-         if ($$11) {
-            $$12 = $$1.getBuffer(gcs.r(this.a($$3)));
-         } else {
-            $$12 = $$1.getBuffer(gcs.i(this.a($$3)));
-         }
+   public void a(ezt $$0, gdj $$1, int $$2, gci $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ("deadmau5".equals($$3.af().getString()) && !$$3.ch()) {
+         ezx $$10 = $$1.getBuffer(gdr.c($$3.b().a()));
+         int $$11 = gjt.c($$3, 0.0F);
 
-         this.c().a(this.a);
-         this.a.a($$3, $$4, $$5, $$6);
-         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
-         this.a.a($$0, $$12, $$2, giu.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
+         for (int $$12 = 0; $$12 < 2; $$12++) {
+            float $$13 = ayu.i($$6, $$3.O, $$3.dF()) - ayu.i($$6, $$3.aZ, $$3.aY);
+            float $$14 = ayu.i($$6, $$3.P, $$3.dH());
+            $$0.a();
+            $$0.a(a.d.rotationDegrees($$13));
+            $$0.a(a.b.rotationDegrees($$14));
+            $$0.a(0.375F * (float)($$12 * 2 - 1), 0.0F, 0.0F);
+            $$0.a(0.0F, -0.375F, 0.0F);
+            $$0.a(a.b.rotationDegrees(-$$14));
+            $$0.a(a.d.rotationDegrees(-$$13));
+            float $$15 = 1.3333334F;
+            $$0.b(1.3333334F, 1.3333334F, 1.3333334F);
+            this.c().a($$0, $$10, $$2, $$11);
+            $$0.b();
+         }
       }
    }
 }

@@ -1,31 +1,58 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
+import java.util.concurrent.CompletableFuture;
 
-public class qk {
-   public static final akm<eiu> a = qv.a("bastion/starts");
+public class qk extends ps {
+   public qk(ly $$0, CompletableFuture<jk.a> $$1) {
+      super($$0, $$1, cpg.a(cpi.a, cpi.c));
+   }
 
-   public static void a(qo<eiu> $$0) {
-      iy<elj> $$1 = $$0.a(lf.aK);
-      ix<elj> $$2 = $$1.b(qw.w);
-      iy<eiu> $$3 = $$0.a(lf.aM);
-      ix<eiu> $$4 = $$3.b(qv.a);
-      $$0.a(
-         a,
-         new eiu(
-            $$4,
-            ImmutableList.of(
-               Pair.of(eis.b("bastion/units/air_base", $$2), 1),
-               Pair.of(eis.b("bastion/hoglin_stable/air_base", $$2), 1),
-               Pair.of(eis.b("bastion/treasure/big_air_full", $$2), 1),
-               Pair.of(eis.b("bastion/bridge/starting_pieces/entrance_base", $$2), 1)
-            ),
-            eiu.a.b
-         )
+   @Override
+   protected void a(jk.a $$0) {
+      this.a(
+         $$0,
+         new czv[]{
+            czy.k,
+            czy.P,
+            czy.G,
+            czy.H,
+            czy.N,
+            czy.j,
+            czy.n,
+            czy.o,
+            czy.p,
+            czy.F,
+            czy.y,
+            czy.L,
+            czy.M,
+            czy.K,
+            czy.t,
+            czy.I,
+            czy.r,
+            czy.A,
+            czy.q,
+            czy.z,
+            czy.a,
+            czy.d,
+            czy.b,
+            czy.e,
+            czy.c,
+            czy.x,
+            czy.s,
+            czy.v,
+            czy.C,
+            czy.u,
+            czy.J,
+            czy.D,
+            czy.f,
+            czy.g,
+            czy.l,
+            czy.m,
+            czy.i,
+            czy.h,
+            czy.E,
+            czy.w,
+            czy.B,
+            czy.O
+         }
       );
-      qj.a($$0);
-      qi.a($$0);
-      qm.a($$0);
-      qh.a($$0);
-      ql.a($$0);
    }
 }

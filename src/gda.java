@@ -1,61 +1,51 @@
-public class gda implements eyy {
-   private final eyy a;
-   private final gnv b;
+public enum gda {
+   a(new gda.b(gda.a.f, gda.a.e, gda.a.a), new gda.b(gda.a.f, gda.a.e, gda.a.d), new gda.b(gda.a.c, gda.a.e, gda.a.d), new gda.b(gda.a.c, gda.a.e, gda.a.a)),
+   b(new gda.b(gda.a.f, gda.a.b, gda.a.d), new gda.b(gda.a.f, gda.a.b, gda.a.a), new gda.b(gda.a.c, gda.a.b, gda.a.a), new gda.b(gda.a.c, gda.a.b, gda.a.d)),
+   c(new gda.b(gda.a.c, gda.a.b, gda.a.d), new gda.b(gda.a.c, gda.a.e, gda.a.d), new gda.b(gda.a.f, gda.a.e, gda.a.d), new gda.b(gda.a.f, gda.a.b, gda.a.d)),
+   d(new gda.b(gda.a.f, gda.a.b, gda.a.a), new gda.b(gda.a.f, gda.a.e, gda.a.a), new gda.b(gda.a.c, gda.a.e, gda.a.a), new gda.b(gda.a.c, gda.a.b, gda.a.a)),
+   e(new gda.b(gda.a.f, gda.a.b, gda.a.d), new gda.b(gda.a.f, gda.a.e, gda.a.d), new gda.b(gda.a.f, gda.a.e, gda.a.a), new gda.b(gda.a.f, gda.a.b, gda.a.a)),
+   f(new gda.b(gda.a.c, gda.a.b, gda.a.a), new gda.b(gda.a.c, gda.a.e, gda.a.a), new gda.b(gda.a.c, gda.a.e, gda.a.d), new gda.b(gda.a.c, gda.a.b, gda.a.d));
 
-   public gda(eyy $$0, gnv $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   private static final gda[] g = ac.a(new gda[6], $$0 -> {
+      $$0[gda.a.e] = a;
+      $$0[gda.a.b] = b;
+      $$0[gda.a.d] = c;
+      $$0[gda.a.a] = d;
+      $$0[gda.a.f] = e;
+      $$0[gda.a.c] = f;
+   });
+   private final gda.b[] h;
+
+   public static gda a(je $$0) {
+      return g[$$0.d()];
    }
 
-   @Override
-   public eyy a(double $$0, double $$1, double $$2) {
-      return this.a.a($$0, $$1, $$2);
+   private gda(final gda.b... $$0) {
+      this.h = $$0;
    }
 
-   @Override
-   public eyy a(int $$0, int $$1, int $$2, int $$3) {
-      return this.a.a($$0, $$1, $$2, $$3);
+   public gda.b a(int $$0) {
+      return this.h[$$0];
    }
 
-   @Override
-   public eyy a(float $$0, float $$1) {
-      return this.a.a(this.b.a($$0), this.b.c($$1));
+   public static final class a {
+      public static final int a = je.d.d();
+      public static final int b = je.b.d();
+      public static final int c = je.f.d();
+      public static final int d = je.c.d();
+      public static final int e = je.a.d();
+      public static final int f = je.e.d();
    }
 
-   @Override
-   public eyy a(int $$0, int $$1) {
-      return this.a.a($$0, $$1);
-   }
+   public static class b {
+      public final int a;
+      public final int b;
+      public final int c;
 
-   @Override
-   public eyy b(int $$0, int $$1) {
-      return this.a.b($$0, $$1);
-   }
-
-   @Override
-   public eyy a(float $$0, float $$1, float $$2) {
-      return this.a.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void e() {
-      this.a.e();
-   }
-
-   @Override
-   public void b(int $$0, int $$1, int $$2, int $$3) {
-      this.a.b($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void l() {
-      this.a.l();
-   }
-
-   @Override
-   public void a(
-      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
-   ) {
-      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, this.b.a($$7), this.b.c($$8), $$9, $$10, $$11, $$12, $$13);
+      b(int $$0, int $$1, int $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
    }
 }

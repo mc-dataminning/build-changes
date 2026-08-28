@@ -3,13 +3,13 @@ import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 
-public class bdb extends bez {
-   public bdb(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityWolfColorFix", bga.z, "minecraft:wolf");
+public class bdb extends bfq {
+   public bdb(Schema $$0) {
+      super($$0, false, "EntityPaintingFieldsRenameFix", bgs.B, "minecraft:painting");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("CollarColor", $$0x -> $$0x.createByte((byte)(15 - $$0x.asInt(0))));
+      return $$0.renameField("Motive", "variant").renameField("Facing", "facing");
    }
 
    @Override

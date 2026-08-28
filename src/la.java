@@ -1,37 +1,30 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Locale;
 
-public class la implements kw {
-   public static final MapCodec<la> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.INT.fieldOf("delay").forGetter($$0x -> $$0x.d)).apply($$0, la::new));
-   public static final yv<wi, la> b = yv.a(yt.f, $$0 -> $$0.d, la::new);
-   public static final kw.a<la> c = new kw.a<la>() {
-      public la a(kx<la> $$0, StringReader $$1, iz.a $$2) throws CommandSyntaxException {
-         $$1.expect(' ');
-         int $$3 = $$1.readInt();
-         return new la($$3);
-      }
-   };
-   private final int d;
+public class la implements lh {
+   private static final Codec<drx> a = Codec.withAlternative(drx.b, lp.e.q(), deu::n);
+   private final li<la> b;
+   private final drx c;
 
-   public la(int $$0) {
-      this.d = $$0;
+   public static MapCodec<la> a(li<la> $$0) {
+      return a.xmap($$1 -> new la($$0, $$1), $$0x -> $$0x.c).fieldOf("block_state");
+   }
+
+   public static zj<? super ww, la> b(li<la> $$0) {
+      return zh.a(deu.q).a($$1 -> new la($$0, $$1), $$0x -> $$0x.c);
+   }
+
+   public la(li<la> $$0, drx $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public String a(iz.a $$0) {
-      return String.format(Locale.ROOT, "%s %d", le.j.b(this.a()), this.d);
+   public li<la> a() {
+      return this.b;
    }
 
-   @Override
-   public kx<la> a() {
-      return ky.aV;
-   }
-
-   public int b() {
-      return this.d;
+   public drx b() {
+      return this.c;
    }
 }

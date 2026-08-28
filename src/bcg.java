@@ -1,34 +1,18 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
 
-public class bcg extends bcr {
-   public bcg(Schema $$0, boolean $$1) {
-      super("EntityHorseSplitFix", $$0, $$1);
+public class bcg extends DataFix {
+   private static final String a = "minecraft:decorated_pot";
+
+   public bcg(Schema $$0) {
+      super($$0, true);
    }
 
-   @Override
-   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
-      Dynamic<?> $$2 = (Dynamic<?>)$$1.get(DSL.remainderFinder());
-      if (Objects.equals("EntityHorse", $$0)) {
-         int $$3 = $$2.get("Type").asInt(0);
-
-         String $$4 = switch ($$3) {
-            case 1 -> "Donkey";
-            case 2 -> "Mule";
-            case 3 -> "ZombieHorse";
-            case 4 -> "SkeletonHorse";
-            default -> "Horse";
-         };
-         $$2.remove("Type");
-         Type<?> $$5 = (Type<?>)this.getOutputSchema().findChoiceType(bga.z).types().get($$4);
-         return Pair.of($$4, ac.a($$1, $$5, $$0x -> $$0x));
-      } else {
-         return Pair.of($$0, $$1);
-      }
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getChoiceType(bgs.s, "minecraft:decorated_pot");
+      Type<?> $$1 = this.getOutputSchema().getChoiceType(bgs.s, "minecraft:decorated_pot");
+      return this.convertUnchecked("DecoratedPotFieldRenameFix", $$0, $$1);
    }
 }

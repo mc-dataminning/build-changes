@@ -1,61 +1,173 @@
-import com.google.common.base.MoreObjects;
-import com.google.common.base.Splitter;
+import com.google.common.collect.ImmutableList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.function.Predicate;
+import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class gdy implements gdx {
-   private static final Splitter a = Splitter.on('|').omitEmptyStrings();
-   private final String d;
-   private final String e;
+public class gdy {
+   public static final alb a = new alb("textures/atlas/shulker_boxes.png");
+   public static final alb b = new alb("textures/atlas/beds.png");
+   public static final alb c = new alb("textures/atlas/banner_patterns.png");
+   public static final alb d = new alb("textures/atlas/shield_patterns.png");
+   public static final alb e = new alb("textures/atlas/signs.png");
+   public static final alb f = new alb("textures/atlas/chest.png");
+   public static final alb g = new alb("textures/atlas/armor_trims.png");
+   public static final alb h = new alb("textures/atlas/decorated_pot.png");
+   private static final gdr A = gdr.e(a);
+   private static final gdr B = gdr.c(b);
+   private static final gdr C = gdr.m(c);
+   private static final gdr D = gdr.m(d);
+   private static final gdr E = gdr.e(e);
+   private static final gdr F = gdr.d(f);
+   private static final gdr G = gdr.a(g);
+   private static final gdr H = gdr.b(g);
+   private static final gdr I = gdr.c(got.e);
+   private static final gdr J = gdr.d(got.e);
+   private static final gdr K = gdr.g(got.e);
+   private static final gdr L = gdr.h(got.e);
+   public static final gqy i = new gqy(a, new alb("entity/shulker/shulker"));
+   public static final List<gqy> j = Stream.of(
+         "white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "light_gray", "cyan", "purple", "blue", "brown", "green", "red", "black"
+      )
+      .map($$0 -> new gqy(a, new alb("entity/shulker/shulker_" + $$0)))
+      .collect(ImmutableList.toImmutableList());
+   public static final Map<dtk, gqy> k = dtk.a().collect(Collectors.toMap(Function.identity(), gdy::c));
+   public static final Map<dtk, gqy> l = dtk.a().collect(Collectors.toMap(Function.identity(), gdy::d));
+   public static final gqy m = new gqy(c, new alb("entity/banner/base"));
+   public static final gqy n = new gqy(d, new alb("entity/shield/base"));
+   private static final Map<alb, gqy> M = new HashMap<>();
+   private static final Map<alb, gqy> N = new HashMap<>();
+   public static final Map<ala<String>, gqy> o = lp.an.f().stream().collect(Collectors.toMap(Function.identity(), gdy::b));
+   public static final gqy[] p = Arrays.stream(ctd.values())
+      .sorted(Comparator.comparingInt(ctd::a))
+      .map($$0 -> new gqy(b, new alb("entity/bed/" + $$0.b())))
+      .toArray(gqy[]::new);
+   public static final gqy q = a("trapped");
+   public static final gqy r = a("trapped_left");
+   public static final gqy s = a("trapped_right");
+   public static final gqy t = a("christmas");
+   public static final gqy u = a("christmas_left");
+   public static final gqy v = a("christmas_right");
+   public static final gqy w = a("normal");
+   public static final gqy x = a("normal_left");
+   public static final gqy y = a("normal_right");
+   public static final gqy z = a("ender");
 
-   public gdy(String $$0, String $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public static gdr a() {
+      return C;
    }
 
-   @Override
-   public Predicate<drd> getPredicate(dre<dea, drd> $$0) {
-      dsg<?> $$1 = $$0.a(this.d);
-      if ($$1 == null) {
-         throw new RuntimeException(String.format(Locale.ROOT, "Unknown property '%s' on '%s'", this.d, $$0.c()));
+   public static gdr b() {
+      return D;
+   }
+
+   public static gdr c() {
+      return B;
+   }
+
+   public static gdr d() {
+      return A;
+   }
+
+   public static gdr e() {
+      return E;
+   }
+
+   public static gdr f() {
+      return E;
+   }
+
+   public static gdr g() {
+      return F;
+   }
+
+   public static gdr a(boolean $$0) {
+      return $$0 ? H : G;
+   }
+
+   public static gdr h() {
+      return I;
+   }
+
+   public static gdr i() {
+      return J;
+   }
+
+   public static gdr j() {
+      return K;
+   }
+
+   public static gdr k() {
+      return L;
+   }
+
+   private static gqy c(dtk $$0) {
+      return new gqy(e, new alb("entity/signs/" + $$0.b()));
+   }
+
+   private static gqy d(dtk $$0) {
+      return new gqy(e, new alb("entity/signs/hanging/" + $$0.b()));
+   }
+
+   public static gqy a(dtk $$0) {
+      return k.get($$0);
+   }
+
+   public static gqy b(dtk $$0) {
+      return l.get($$0);
+   }
+
+   public static gqy a(ji<dos> $$0) {
+      return M.computeIfAbsent($$0.a().a(), $$0x -> {
+         alb $$1 = $$0x.d("entity/banner/");
+         return new gqy(c, $$1);
+      });
+   }
+
+   public static gqy b(ji<dos> $$0) {
+      return N.computeIfAbsent($$0.a().a(), $$0x -> {
+         alb $$1 = $$0x.d("entity/shield/");
+         return new gqy(d, $$1);
+      });
+   }
+
+   private static gqy a(String $$0) {
+      return new gqy(f, new alb("entity/chest/" + $$0));
+   }
+
+   private static gqy b(ala<String> $$0) {
+      return new gqy(h, dpt.a($$0));
+   }
+
+   @Nullable
+   public static gqy a(@Nullable ala<String> $$0) {
+      return $$0 == null ? null : o.get($$0);
+   }
+
+   public static gqy a(dpc $$0, dsp $$1, boolean $$2) {
+      if ($$0 instanceof dpx) {
+         return z;
+      } else if ($$2) {
+         return a($$1, t, u, v);
       } else {
-         String $$2 = this.e;
-         boolean $$3 = !$$2.isEmpty() && $$2.charAt(0) == '!';
-         if ($$3) {
-            $$2 = $$2.substring(1);
-         }
-
-         List<String> $$4 = a.splitToList($$2);
-         if ($$4.isEmpty()) {
-            throw new RuntimeException(String.format(Locale.ROOT, "Empty value '%s' for property '%s' on '%s'", this.e, this.d, $$0.c()));
-         } else {
-            Predicate<drd> $$5;
-            if ($$4.size() == 1) {
-               $$5 = this.a($$0, $$1, $$2);
-            } else {
-               List<Predicate<drd>> $$6 = $$4.stream().map($$2x -> this.a($$0, $$1, $$2x)).collect(Collectors.toList());
-               $$5 = $$1x -> $$6.stream().anyMatch($$1xx -> $$1xx.test($$1x));
-            }
-
-            return $$3 ? $$5.negate() : $$5;
-         }
+         return $$0 instanceof dqv ? a($$1, q, r, s) : a($$1, w, x, y);
       }
    }
 
-   private Predicate<drd> a(dre<dea, drd> $$0, dsg<?> $$1, String $$2) {
-      Optional<?> $$3 = $$1.b($$2);
-      if ($$3.isEmpty()) {
-         throw new RuntimeException(String.format(Locale.ROOT, "Unknown value '%s' for property '%s' on '%s' in '%s'", $$2, this.d, $$0.c(), this.e));
-      } else {
-         return $$2x -> $$2x.c($$1).equals($$3.get());
+   private static gqy a(dsp $$0, gqy $$1, gqy $$2, gqy $$3) {
+      switch ($$0) {
+         case b:
+            return $$2;
+         case c:
+            return $$3;
+         case a:
+         default:
+            return $$1;
       }
-   }
-
-   @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this).add("key", this.d).add("value", this.e).toString();
    }
 }

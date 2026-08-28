@@ -1,33 +1,47 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.function.Function;
 
-public interface ars {
-   ars a = new ars() {
-      @Override
-      public void a() {
+public record ars<T>(T a, Optional<T> b) {
+   public static <T> Codec<ars<T>> a(Codec<T> $$0) {
+      Codec<ars<T>> $$1 = RecordCodecBuilder.create(
+         $$1x -> $$1x.group($$0.fieldOf("raw").forGetter(ars::a), $$0.optionalFieldOf("filtered").forGetter(ars::b)).apply($$1x, ars::new)
+      );
+      Codec<ars<T>> $$2 = $$0.xmap(ars::a, ars::a);
+      return Codec.withAlternative($$1, $$2);
+   }
+
+   public static <B extends ByteBuf, T> zj<B, ars<T>> a(zj<B, T> $$0) {
+      return zj.a($$0, ars::a, $$0.a(zh::a), ars::b, ars::new);
+   }
+
+   public static <T> ars<T> a(T $$0) {
+      return new ars<>($$0, Optional.empty());
+   }
+
+   public static ars<String> a(art $$0) {
+      return new ars<>($$0.d(), $$0.c() ? Optional.of($$0.b()) : Optional.empty());
+   }
+
+   public T a(boolean $$0) {
+      return $$0 ? this.b.orElse(this.a) : this.a;
+   }
+
+   public <U> ars<U> a(Function<T, U> $$0) {
+      return new ars<>($$0.apply(this.a), this.b.map($$0));
+   }
+
+   public <U> Optional<ars<U>> b(Function<T, Optional<U>> $$0) {
+      Optional<U> $$1 = $$0.apply(this.a);
+      if ($$1.isEmpty()) {
+         return Optional.empty();
+      } else if (this.b.isPresent()) {
+         Optional<U> $$2 = $$0.apply(this.b.get());
+         return $$2.isEmpty() ? Optional.empty() : Optional.of(new ars<>($$1.get(), $$2));
+      } else {
+         return Optional.of(new ars<>($$1.get(), Optional.empty()));
       }
-
-      @Override
-      public void b() {
-      }
-
-      @Override
-      public CompletableFuture<arf> a(String $$0) {
-         return CompletableFuture.completedFuture(arf.a($$0));
-      }
-
-      @Override
-      public CompletableFuture<List<arf>> a(List<String> $$0) {
-         return CompletableFuture.completedFuture($$0.stream().map(arf::a).collect(ImmutableList.toImmutableList()));
-      }
-   };
-
-   void a();
-
-   void b();
-
-   CompletableFuture<arf> a(String var1);
-
-   CompletableFuture<List<arf>> a(List<String> var1);
+   }
 }

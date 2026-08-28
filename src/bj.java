@@ -1,57 +1,72 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
 
-public class bj extends df<bj.a> {
-   @Override
-   public Codec<bj.a> a() {
-      return bj.a.a;
+public record bj(List<dz<brk>> b, Optional<bu> c, Optional<bu> d) {
+   public static final Codec<bj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dz.a(lq.s).listOf().optionalFieldOf("tags", List.of()).forGetter(bj::a),
+               bu.a.optionalFieldOf("direct_entity").forGetter(bj::b),
+               bu.a.optionalFieldOf("source_entity").forGetter(bj::c)
+            )
+            .apply($$0, bj::new)
+   );
+
+   public boolean a(arc $$0, bri $$1) {
+      return this.a($$0.z(), $$0.dn(), $$1);
    }
 
-   public void a(aqo $$0, eum $$1) {
-      eum $$2 = $$0.dn();
-      this.a($$0, $$3 -> $$3.a($$0.z(), $$1, $$2));
+   public boolean a(arb $$0, evm $$1, bri $$2) {
+      for (dz<brk> $$3 : this.b) {
+         if (!$$3.a($$2.k())) {
+            return false;
+         }
+      }
+
+      return this.c.isPresent() && !this.c.get().a($$0, $$1, $$2.c()) ? false : !this.d.isPresent() || this.d.get().a($$0, $$1, $$2.d());
    }
 
-   public static record a(Optional<bc> b, Optional<cr> c, Optional<bi> d) implements df.a {
-      public static final Codec<bj.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  br.b.optionalFieldOf("player").forGetter(bj.a::a),
-                  cr.a.optionalFieldOf("start_position").forGetter(bj.a::b),
-                  bi.a.optionalFieldOf("distance").forGetter(bj.a::c)
-               )
-               .apply($$0, bj.a::new)
-      );
+   public List<dz<brk>> a() {
+      return this.b;
+   }
 
-      public static an<bj.a> a(br.a $$0, bi $$1, cr.a $$2) {
-         return am.X.a(new bj.a(Optional.of(br.a($$0)), Optional.of($$2.b()), Optional.of($$1)));
+   public Optional<bu> b() {
+      return this.c;
+   }
+
+   public Optional<bu> c() {
+      return this.d;
+   }
+
+   public static class a {
+      private final Builder<dz<brk>> a = ImmutableList.builder();
+      private Optional<bu> b = Optional.empty();
+      private Optional<bu> c = Optional.empty();
+
+      public static bj.a a() {
+         return new bj.a();
       }
 
-      public static an<bj.a> a(br.a $$0, bi $$1) {
-         return am.Y.a(new bj.a(Optional.of(br.a($$0)), Optional.empty(), Optional.of($$1)));
+      public bj.a a(dz<brk> $$0) {
+         this.a.add($$0);
+         return this;
       }
 
-      public static an<bj.a> a(bi $$0) {
-         return am.D.a(new bj.a(Optional.empty(), Optional.empty(), Optional.of($$0)));
+      public bj.a a(bu.a $$0) {
+         this.b = Optional.of($$0.b());
+         return this;
       }
 
-      public boolean a(aqn $$0, eum $$1, eum $$2) {
-         return this.c.isPresent() && !this.c.get().a($$0, $$1.c, $$1.d, $$1.e)
-            ? false
-            : !this.d.isPresent() || this.d.get().a($$1.c, $$1.d, $$1.e, $$2.c, $$2.d, $$2.e);
+      public bj.a b(bu.a $$0) {
+         this.c = Optional.of($$0.b());
+         return this;
       }
 
-      @Override
-      public Optional<bc> a() {
-         return this.b;
-      }
-
-      public Optional<cr> b() {
-         return this.c;
-      }
-
-      public Optional<bi> c() {
-         return this.d;
+      public bj b() {
+         return new bj(this.a.build(), this.b, this.c);
       }
    }
 }

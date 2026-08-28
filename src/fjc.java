@@ -1,34 +1,48 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
+import java.util.Objects;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public interface fjc {
-   MapCodec<fjc> b = fjd.f.dispatchMap(fjc::a, fjd::a);
+public class fjc {
+   private final Consumer<fgx> a;
+   private final Consumer<fgx> b;
+   @Nullable
+   private fjb c;
+   @Nullable
+   private flf d;
 
-   fjd a();
+   public fjc(Consumer<fgx> $$0, Consumer<fgx> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   Either<fjc.b, fjc.c> b();
-
-   public static record a(fjc b, fiq.a c) {
-      public static final Codec<fjc.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(fjc.b.forGetter(fjc.a::a), fiq.a.a.optionalFieldOf("filter", fiq.a.b).forGetter(fjc.a::b)).apply($$0, fjc.a::new)
-      );
-
-      public fjc a() {
-         return this.b;
-      }
-
-      public fiq.a b() {
-         return this.c;
+   public void a(flf $$0) {
+      this.d = $$0;
+      fjb $$1 = this.a();
+      if ($$1 != null) {
+         $$1.a($$0);
       }
    }
 
-   public interface b {
-      ewx load(atx var1) throws IOException;
+   public void a(fjb $$0, boolean $$1) {
+      if (!Objects.equals(this.c, $$0)) {
+         if (this.c != null) {
+            this.c.a(this.b);
+         }
+
+         this.c = $$0;
+         $$0.a(this.a);
+         if (this.d != null) {
+            $$0.a(this.d);
+         }
+
+         if ($$1) {
+            ffa.Q().aj().a(gsd.a(avw.Ao, 1.0F));
+         }
+      }
    }
 
-   public static record c(akn a) {
+   @Nullable
+   public fjb a() {
+      return this.c;
    }
 }

@@ -1,94 +1,36 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+public class can extends cai {
+   private final cfx a;
+   private arc b;
+   private boolean c;
 
-public class can extends bzo {
-   private final bss a;
-   private final cji b;
-   @Nullable
-   private bsq c;
-   private int d = -1;
-   private final double e;
-   private int f;
-   private final int g;
-   private final int h;
-   private final float i;
-   private final float j;
-
-   public can(cji $$0, double $$1, int $$2, float $$3) {
-      this($$0, $$1, $$2, $$2, $$3);
-   }
-
-   public can(cji $$0, double $$1, int $$2, int $$3, float $$4) {
-      if (!($$0 instanceof bsq)) {
-         throw new IllegalArgumentException("ArrowAttackGoal requires Mob implements RangedAttackMob");
-      } else {
-         this.b = $$0;
-         this.a = (bss)$$0;
-         this.e = $$1;
-         this.g = $$2;
-         this.h = $$3;
-         this.i = $$4;
-         this.j = $$4 * $$4;
-         this.a(EnumSet.of(bzo.a.a, bzo.a.b));
-      }
+   public can(cfx $$0) {
+      this.a = $$0;
    }
 
    @Override
    public boolean a() {
-      bsq $$0 = this.a.p();
-      if ($$0 != null && $$0.bD()) {
-         this.c = $$0;
-         return true;
-      } else {
-         return false;
-      }
+      arc $$0 = (arc)this.a.P_();
+      boolean $$1 = $$0 != null && !$$0.N_() && !$$0.gd().b && !$$0.be() && !$$0.aB;
+      return !this.a.gq() && $$1 && this.a.gz();
    }
 
    @Override
-   public boolean b() {
-      return this.a() || this.c.bD() && !this.a.K().l();
+   public boolean Q_() {
+      return !this.c;
    }
 
    @Override
-   public void d() {
-      this.c = null;
-      this.f = 0;
-      this.d = -1;
-   }
-
-   @Override
-   public boolean R_() {
-      return true;
+   public void c() {
+      this.b = (arc)this.a.P_();
+      this.c = false;
    }
 
    @Override
    public void e() {
-      double $$0 = this.a.i(this.c.du(), this.c.dw(), this.c.dA());
-      boolean $$1 = this.a.M().a(this.c);
-      if ($$1) {
-         this.f++;
-      } else {
-         this.f = 0;
-      }
-
-      if (!($$0 > (double)this.j) && this.f >= 5) {
-         this.a.K().n();
-      } else {
-         this.a.K().a(this.c, this.e);
-      }
-
-      this.a.G().a(this.c, 30.0F, 30.0F);
-      if (--this.d == 0) {
-         if (!$$1) {
-            return;
+      if (!this.c && !this.a.y() && !this.a.gd()) {
+         if (this.a.cK().c(this.b.cK())) {
+            this.c = this.a.b(this.b);
          }
-
-         float $$2 = (float)Math.sqrt($$0) / this.i;
-         float $$3 = ayf.a($$2, 0.1F, 1.0F);
-         this.b.a(this.c, $$3);
-         this.d = ayf.d($$2 * (float)(this.h - this.g) + (float)this.g);
-      } else if (this.d < 0) {
-         this.d = ayf.a(ayf.d(Math.sqrt($$0) / (double)this.i, (double)this.g, (double)this.h));
       }
    }
 }

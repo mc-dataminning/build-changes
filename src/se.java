@@ -1,18 +1,21 @@
 public class se {
-   public static final akm<egp> a = si.a("end_spike");
-   public static final akm<egp> b = si.a("end_gateway_return");
-   public static final akm<egp> c = si.a("chorus_plant");
-   public static final akm<egp> d = si.a("end_island_decorated");
+   public static final ala<eag<?, ?>> a = sh.a("seagrass_short");
+   public static final ala<eag<?, ?>> b = sh.a("seagrass_slightly_less_short");
+   public static final ala<eag<?, ?>> c = sh.a("seagrass_mid");
+   public static final ala<eag<?, ?>> d = sh.a("seagrass_tall");
+   public static final ala<eag<?, ?>> e = sh.a("sea_pickle");
+   public static final ala<eag<?, ?>> f = sh.a("seagrass_simple");
+   public static final ala<eag<?, ?>> g = sh.a("kelp");
+   public static final ala<eag<?, ?>> h = sh.a("warm_ocean_vegetation");
 
-   public static void a(qo<egp> $$0) {
-      iy<dzm<?, ?>> $$1 = $$0.a(lf.aC);
-      ix<dzm<?, ?>> $$2 = $$1.b(rs.a);
-      ix<dzm<?, ?>> $$3 = $$1.b(rs.b);
-      ix<dzm<?, ?>> $$4 = $$1.b(rs.d);
-      ix<dzm<?, ?>> $$5 = $$1.b(rs.e);
-      si.a($$0, a, $$2, egd.a());
-      si.a($$0, b, $$3, egv.a(700), egm.a(), si.a, egu.a(bph.a(3, 9)), egd.a());
-      si.a($$0, c, $$4, egi.a(bph.a(0, 4)), egm.a(), si.a, egd.a());
-      si.a($$0, d, $$5, egv.a(14), si.a(1, 0.25F, 1), egm.a(), egk.a(dxp.a(55), dxp.a(70)), egd.a());
+   public static void a(rc<eag<?, ?>> $$0) {
+      sh.a($$0, a, eat.M, new edh(0.3F));
+      sh.a($$0, b, eat.M, new edh(0.4F));
+      sh.a($$0, c, eat.M, new edh(0.6F));
+      sh.a($$0, d, eat.M, new edh(0.8F));
+      sh.a($$0, e, eat.R, new ecs(20));
+      sh.a($$0, f, eat.S, new edp(eey.a(dew.bw)));
+      sh.a($$0, g, eat.N);
+      sh.a($$0, h, eat.ag, new edq(jm.a(sw.a(eat.O, ecx.m), sw.a(eat.Q, ecx.m), sw.a(eat.P, ecx.m))));
    }
 }

@@ -1,35 +1,107 @@
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.PeekingIterator;
-import java.util.Comparator;
-import java.util.Iterator;
+public abstract class grq implements gsi {
+   protected gsf a;
+   protected final avx b;
+   protected final alb c;
+   protected float d = 1.0F;
+   protected float e = 1.0F;
+   protected double f;
+   protected double g;
+   protected double h;
+   protected boolean i;
+   protected int j;
+   protected gsi.a k = gsi.a.b;
+   protected boolean l;
+   protected azc m;
 
-public class grq<T> extends AbstractIterator<T> {
-   private final PeekingIterator<T> a;
-   private final PeekingIterator<T> b;
-   private final Comparator<T> c;
-
-   public grq(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
-      this.a = Iterators.peekingIterator($$0);
-      this.b = Iterators.peekingIterator($$1);
-      this.c = $$2;
+   protected grq(avv $$0, avx $$1, azc $$2) {
+      this($$0.a(), $$1, $$2);
    }
 
-   protected T computeNext() {
-      while (this.a.hasNext() && this.b.hasNext()) {
-         int $$0 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
-         if ($$0 == 0) {
-            this.b.next();
-            return (T)this.a.next();
-         }
+   protected grq(alb $$0, avx $$1, azc $$2) {
+      this.c = $$0;
+      this.b = $$1;
+      this.m = $$2;
+   }
 
-         if ($$0 < 0) {
-            this.a.next();
+   @Override
+   public alb a() {
+      return this.c;
+   }
+
+   @Override
+   public gtr a(gtq $$0) {
+      if (this.c.equals(gtq.b)) {
+         this.a = gtq.d;
+         return gtq.c;
+      } else {
+         gtr $$1 = $$0.a(this.c);
+         if ($$1 == null) {
+            this.a = gtq.a;
          } else {
-            this.b.next();
+            this.a = $$1.a(this.m);
          }
-      }
 
-      return (T)this.endOfData();
+         return $$1;
+      }
+   }
+
+   @Override
+   public gsf b() {
+      return this.a;
+   }
+
+   @Override
+   public avx c() {
+      return this.b;
+   }
+
+   @Override
+   public boolean d() {
+      return this.i;
+   }
+
+   @Override
+   public int e() {
+      return this.j;
+   }
+
+   @Override
+   public float f() {
+      return this.d * this.a.c().a(this.m);
+   }
+
+   @Override
+   public float g() {
+      return this.e * this.a.d().a(this.m);
+   }
+
+   @Override
+   public double h() {
+      return this.f;
+   }
+
+   @Override
+   public double i() {
+      return this.g;
+   }
+
+   @Override
+   public double j() {
+      return this.h;
+   }
+
+   @Override
+   public gsi.a k() {
+      return this.k;
+   }
+
+   @Override
+   public boolean l() {
+      return this.l;
+   }
+
+   @Override
+   public String toString() {
+      return "SoundInstance[" + this.c + "]";
    }
 }

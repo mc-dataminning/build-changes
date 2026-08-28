@@ -1,45 +1,35 @@
-public class bzc extends cab {
-   private final cej g;
+import com.google.common.collect.ImmutableMap;
 
-   public bzc(cej $$0, double $$1) {
-      super($$0, $$1, 8);
-      this.g = $$0;
+public class bzc<E extends clw> extends bvd<E> {
+   private static final double c = 6.0;
+   private static final double d = 20.0;
+
+   public bzc(int $$0) {
+      super(ImmutableMap.of(cco.aB, ccp.a, cco.o, ccp.b, cco.m, ccp.b, cco.n, ccp.c, cco.B, ccp.c, cco.az, ccp.c, cco.aG, ccp.c), $$0);
    }
 
-   @Override
-   public boolean a() {
-      return this.g.s() && !this.g.gp() && super.a();
+   protected boolean a(arb $$0, E $$1, long $$2) {
+      return true;
    }
 
-   @Override
-   public void c() {
-      super.c();
-      this.g.x(false);
+   protected void b(arb $$0, E $$1, long $$2) {
+      $$1.a(avw.BR, 5.0F, 1.0F);
    }
 
-   @Override
-   public void d() {
-      super.d();
-      this.g.x(false);
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.g.x(this.m());
-   }
-
-   @Override
-   protected boolean a(dbc $$0, io $$1) {
-      if (!$$0.u($$1.c())) {
-         return false;
-      } else {
-         drd $$2 = $$0.a_($$1);
-         if ($$2.a(dec.cv)) {
-            return dop.a($$0, $$1) < 1;
-         } else {
-            return $$2.a(dec.cD) && $$2.c(dhh.b) ? true : $$2.a(avx.R, $$0x -> $$0x.d(ddt.b).map($$0xx -> $$0xx != drq.a).orElse(true));
-         }
+   protected void c(arb $$0, E $$1, long $$2) {
+      if ($$1.c(btw.m)) {
+         $$1.b(btw.a);
       }
+
+      $$1.dS().b(cco.aB);
+      $$1.dS().c(cco.B).filter($$1::b).ifPresent($$1x -> {
+         if ($$1.a($$1x, 6.0, 20.0)) {
+            $$1.d($$1x);
+         }
+
+         if (!$$1.dS().a(cco.az)) {
+            clx.a($$1, $$1x.dp());
+         }
+      });
    }
 }

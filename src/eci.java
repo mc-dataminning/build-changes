@@ -1,62 +1,96 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class eci implements ecd {
-   public static final Codec<eci> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               le.e.q().fieldOf("block").flatXmap(eci::a, DataResult::success).orElse((dja)dec.fg).forGetter($$0x -> $$0x.b),
-               Codec.intRange(1, 64).fieldOf("search_range").orElse(10).forGetter($$0x -> $$0x.c),
-               Codec.BOOL.fieldOf("can_place_on_floor").orElse(false).forGetter($$0x -> $$0x.d),
-               Codec.BOOL.fieldOf("can_place_on_ceiling").orElse(false).forGetter($$0x -> $$0x.e),
-               Codec.BOOL.fieldOf("can_place_on_wall").orElse(false).forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spreading").orElse(0.5F).forGetter($$0x -> $$0x.g),
-               jm.a(lf.f).fieldOf("can_be_placed_on").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, eci::new)
-   );
-   public final dja b;
-   public final int c;
-   public final boolean d;
-   public final boolean e;
-   public final boolean f;
-   public final float g;
-   public final jb<dea> h;
-   private final ObjectArrayList<it> i;
-
-   private static DataResult<dja> a(dea $$0) {
-      return $$0 instanceof dja $$1 ? DataResult.success($$1) : DataResult.error(() -> "Growth block should be a multiface block");
+public class eci extends eat<edw> {
+   public eci(Codec<edw> $$0) {
+      super($$0);
    }
 
-   public eci(dja $$0, int $$1, boolean $$2, boolean $$3, boolean $$4, float $$5, jb<dea> $$6) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = new ObjectArrayList(6);
-      if ($$3) {
-         this.i.add(it.b);
+   @Override
+   public boolean a(eav<edw> $$0) {
+      dco $$1 = $$0.b();
+      edw $$2 = $$0.f();
+      azc $$3 = $$0.d();
+      iz $$4 = $$0.e();
+      Predicate<drx> $$5 = $$1x -> $$1x.a($$2.b);
+      int $$6 = $$2.j.a($$3) + 1;
+      int $$7 = $$2.j.a($$3) + 1;
+      Set<iz> $$8 = this.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      this.a($$0, $$1, $$2, $$3, $$8, $$6, $$7);
+      return !$$8.isEmpty();
+   }
+
+   protected Set<iz> a(dco $$0, edw $$1, azc $$2, iz $$3, Predicate<drx> $$4, int $$5, int $$6) {
+      iz.a $$7 = $$3.j();
+      iz.a $$8 = $$7.j();
+      je $$9 = $$1.e.a();
+      je $$10 = $$9.g();
+      Set<iz> $$11 = new HashSet<>();
+
+      for (int $$12 = -$$5; $$12 <= $$5; $$12++) {
+         boolean $$13 = $$12 == -$$5 || $$12 == $$5;
+
+         for (int $$14 = -$$6; $$14 <= $$6; $$14++) {
+            boolean $$15 = $$14 == -$$6 || $$14 == $$6;
+            boolean $$16 = $$13 || $$15;
+            boolean $$17 = $$13 && $$15;
+            boolean $$18 = $$16 && !$$17;
+            if (!$$17 && (!$$18 || $$1.k != 0.0F && !($$2.i() > $$1.k))) {
+               $$7.a($$3, $$12, 0, $$14);
+
+               for (int $$19 = 0; $$0.a($$7, drw.a::i) && $$19 < $$1.h; $$19++) {
+                  $$7.c($$9);
+               }
+
+               for (int var25 = 0; $$0.a($$7, $$0x -> !$$0x.i()) && var25 < $$1.h; var25++) {
+                  $$7.c($$10);
+               }
+
+               $$8.a($$7, $$1.e.a());
+               drx $$20 = $$0.a_($$8);
+               if ($$0.u($$7) && $$20.d($$0, $$8, $$1.e.a().g())) {
+                  int $$21 = $$1.f.a($$2) + ($$1.g > 0.0F && $$2.i() < $$1.g ? 1 : 0);
+                  iz $$22 = $$8.i();
+                  boolean $$23 = this.a($$0, $$1, $$4, $$2, $$8, $$21);
+                  if ($$23) {
+                     $$11.add($$22);
+                  }
+               }
+            }
+         }
       }
 
-      if ($$2) {
-         this.i.add(it.a);
-      }
+      return $$11;
+   }
 
-      if ($$4) {
-         it.c.a.forEach(this.i::add);
+   protected void a(eav<edw> $$0, dco $$1, edw $$2, azc $$3, Set<iz> $$4, int $$5, int $$6) {
+      for (iz $$7 : $$4) {
+         if ($$2.i > 0.0F && $$3.i() < $$2.i) {
+            this.a($$1, $$2, $$0.c(), $$3, $$7);
+         }
       }
    }
 
-   public List<it> a(aym $$0, it $$1) {
-      return ac.a(this.i.stream().filter($$1x -> $$1x != $$1), $$0);
+   protected boolean a(dco $$0, edw $$1, dtu $$2, azc $$3, iz $$4) {
+      return $$1.d.a().a($$0, $$2, $$3, $$4.a($$1.e.a().g()));
    }
 
-   public List<it> a(aym $$0) {
-      return ac.a(this.i, $$0);
+   protected boolean a(dco $$0, edw $$1, Predicate<drx> $$2, azc $$3, iz.a $$4, int $$5) {
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         drx $$7 = $$1.c.a($$3, $$4);
+         drx $$8 = $$0.a_($$4);
+         if (!$$7.a($$8.b())) {
+            if (!$$2.test($$8)) {
+               return $$6 != 0;
+            }
+
+            $$0.a($$4, $$7, 2);
+            $$4.c($$1.e.a());
+         }
+      }
+
+      return true;
    }
 }

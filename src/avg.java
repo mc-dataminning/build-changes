@@ -1,18 +1,52 @@
-public class avg {
-   private static final int h = 20;
-   private static final int i = 600;
-   private static final int j = 12000;
-   private static final int k = 24000;
-   private static final int l = 6000;
-   public static final avf a = new avf(avi.pZ, 20, 600, true);
-   public static final avf b = new avf(avi.pE, 12000, 24000, false);
-   public static final avf c = new avf(avi.pF, 0, 0, true);
-   public static final avf d = new avf(avi.pW, 0, 0, true);
-   public static final avf e = new avf(avi.pX, 6000, 24000, true);
-   public static final avf f = a(avi.qy);
-   public static final avf g = a(avi.pY);
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.util.Date;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   public static avf a(ix<avh> $$0) {
-      return new avf($$0, 12000, 24000, false);
+public class avg extends aut<GameProfile> {
+   public avg(@Nullable GameProfile $$0) {
+      this($$0, null, null, null, null);
+   }
+
+   public avg(@Nullable GameProfile $$0, @Nullable Date $$1, @Nullable String $$2, @Nullable Date $$3, @Nullable String $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public avg(JsonObject $$0) {
+      super(b($$0), $$0);
+   }
+
+   @Override
+   protected void a(JsonObject $$0) {
+      if (this.g() != null) {
+         $$0.addProperty("uuid", this.g().getId().toString());
+         $$0.addProperty("name", this.g().getName());
+         super.a($$0);
+      }
+   }
+
+   @Override
+   public xl e() {
+      GameProfile $$0 = this.g();
+      return $$0 != null ? xl.b($$0.getName()) : xl.c("commands.banlist.entry.unknown");
+   }
+
+   @Nullable
+   private static GameProfile b(JsonObject $$0) {
+      if ($$0.has("uuid") && $$0.has("name")) {
+         String $$1 = $$0.get("uuid").getAsString();
+
+         UUID $$2;
+         try {
+            $$2 = UUID.fromString($$1);
+         } catch (Throwable var4) {
+            return null;
+         }
+
+         return new GameProfile($$2, $$0.get("name").getAsString());
+      } else {
+         return null;
+      }
    }
 }

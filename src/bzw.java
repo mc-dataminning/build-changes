@@ -1,86 +1,45 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+public class bzw extends cav {
+   private final cfd g;
 
-public class bzw extends bzo {
-   public static final float a = 0.02F;
-   protected final bss b;
-   @Nullable
-   protected brw c;
-   protected final float d;
-   private int h;
-   protected final float e;
-   private final boolean i;
-   protected final Class<? extends bsq> f;
-   protected final cdh g;
-
-   public bzw(bss $$0, Class<? extends bsq> $$1, float $$2) {
-      this($$0, $$1, $$2, 0.02F);
-   }
-
-   public bzw(bss $$0, Class<? extends bsq> $$1, float $$2, float $$3) {
-      this($$0, $$1, $$2, $$3, false);
-   }
-
-   public bzw(bss $$0, Class<? extends bsq> $$1, float $$2, float $$3, boolean $$4) {
-      this.b = $$0;
-      this.f = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.i = $$4;
-      this.a(EnumSet.of(bzo.a.b));
-      if ($$1 == cly.class) {
-         this.g = cdh.b().a((double)$$2).a($$1x -> bsb.b($$0).test($$1x));
-      } else {
-         this.g = cdh.b().a((double)$$2);
-      }
+   public bzw(cfd $$0, double $$1) {
+      super($$0, $$1, 8);
+      this.g = $$0;
    }
 
    @Override
    public boolean a() {
-      if (this.b.el().i() >= this.e) {
-         return false;
-      } else {
-         if (this.b.p() != null) {
-            this.c = this.b.p();
-         }
-
-         if (this.f == cly.class) {
-            this.c = this.b.dP().a(this.g, this.b, this.b.du(), this.b.dy(), this.b.dA());
-         } else {
-            this.c = this.b
-               .dP()
-               .a(this.b.dP().a(this.f, this.b.cK().c((double)this.d, 3.0, (double)this.d), $$0 -> true), this.g, this.b, this.b.du(), this.b.dy(), this.b.dA());
-         }
-
-         return this.c != null;
-      }
-   }
-
-   @Override
-   public boolean b() {
-      if (!this.c.bD()) {
-         return false;
-      } else {
-         return this.b.g(this.c) > (double)(this.d * this.d) ? false : this.h > 0;
-      }
+      return this.g.s() && !this.g.gq() && super.a();
    }
 
    @Override
    public void c() {
-      this.h = this.a(40 + this.b.el().a(40));
+      super.c();
+      this.g.x(false);
    }
 
    @Override
    public void d() {
-      this.c = null;
+      super.d();
+      this.g.x(false);
    }
 
    @Override
    public void e() {
-      if (this.c.bD()) {
-         double $$0 = this.i ? this.b.dy() : this.c.dy();
-         this.b.G().a(this.c.du(), $$0, this.c.dA());
-         this.h--;
+      super.e();
+      this.g.x(this.m());
+   }
+
+   @Override
+   protected boolean a(dbw $$0, iz $$1) {
+      if (!$$0.u($$1.c())) {
+         return false;
+      } else {
+         drx $$2 = $$0.a_($$1);
+         if ($$2.a(dew.cv)) {
+            return dpj.a($$0, $$1) < 1;
+         } else {
+            return $$2.a(dew.cD) && $$2.c(dib.b) ? true : $$2.a(awl.R, $$0x -> $$0x.d(den.b).map($$0xx -> $$0xx != dsk.a).orElse(true));
+         }
       }
    }
 }

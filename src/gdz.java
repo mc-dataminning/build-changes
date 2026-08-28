@@ -1,100 +1,61 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+public class gdz implements ezx {
+   private final ezx a;
+   private final gou b;
 
-public class gdz implements gqh {
-   private final dre<dea, drd> a;
-   private final List<geb> b;
-
-   public gdz(dre<dea, drd> $$0, List<geb> $$1) {
+   public gdz(ezx $$0, gou $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
-   public List<geb> a() {
-      return this.b;
-   }
-
-   public Set<gdu> b() {
-      Set<gdu> $$0 = Sets.newHashSet();
-
-      for (geb $$1 : this.b) {
-         $$0.add($$1.a());
-      }
-
-      return $$0;
+   @Override
+   public ezx a(double $$0, double $$1, double $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof gdz $$1) ? false : Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b);
-      }
+   public ezx a(int $$0, int $$1, int $$2, int $$3) {
+      return this.a.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public int hashCode() {
-      return Objects.hash(this.a, this.b);
+   public ezx a(float $$0, float $$1) {
+      return this.a.a(this.b.a($$0), this.b.c($$1));
    }
 
    @Override
-   public Collection<akn> f() {
-      return this.a().stream().flatMap($$0 -> $$0.a().f().stream()).collect(Collectors.toSet());
+   public ezx a(int $$0, int $$1) {
+      return this.a.a($$0, $$1);
    }
 
    @Override
-   public void a(Function<akn, gqh> $$0) {
-      this.a().forEach($$1 -> $$1.a().a($$0));
+   public ezx b(int $$0, int $$1) {
+      return this.a.b($$0, $$1);
    }
 
-   @Nullable
    @Override
-   public gpw a(gqa $$0, Function<gpz, gnv> $$1, gqe $$2, akn $$3) {
-      gqf.a $$4 = new gqf.a();
-
-      for (geb $$5 : this.a()) {
-         gpw $$6 = $$5.a().a($$0, $$1, $$2, $$3);
-         if ($$6 != null) {
-            $$4.a($$5.a(this.a), $$6);
-         }
-      }
-
-      return $$4.a();
+   public ezx a(float $$0, float $$1, float $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   public static class a implements JsonDeserializer<gdz> {
-      private final gdn.a a;
+   @Override
+   public void e() {
+      this.a.e();
+   }
 
-      public a(gdn.a $$0) {
-         this.a = $$0;
-      }
+   @Override
+   public void b(int $$0, int $$1, int $$2, int $$3) {
+      this.a.b($$0, $$1, $$2, $$3);
+   }
 
-      public gdz a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return new gdz(this.a.a(), this.a($$2, $$0.getAsJsonArray()));
-      }
+   @Override
+   public void l() {
+      this.a.l();
+   }
 
-      private List<geb> a(JsonDeserializationContext $$0, JsonArray $$1) {
-         List<geb> $$2 = Lists.newArrayList();
-
-         for (JsonElement $$3 : $$1) {
-            $$2.add((geb)$$0.deserialize($$3, geb.class));
-         }
-
-         return $$2;
-      }
+   @Override
+   public void a(
+      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
+   ) {
+      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, this.b.a($$7), this.b.c($$8), $$9, $$10, $$11, $$12, $$13);
    }
 }

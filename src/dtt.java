@@ -1,283 +1,429 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.shorts.ShortArrayList;
+import it.unimi.dsi.fastutil.shorts.ShortList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.EnumSet;
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dtt extends dsz {
+public abstract class dtt implements daz, dcu.a, duf, dup {
+   public static final int a = -1;
+   private static final Logger n = LogUtils.getLogger();
+   private static final LongSet o = new LongOpenHashSet();
+   protected final ShortList[] b;
+   protected volatile boolean c;
+   private volatile boolean p;
+   protected final dba d;
+   private long q;
    @Nullable
-   private volatile eml n;
-   private volatile dty o = dty.c;
-   private final List<ud> p = Lists.newArrayList();
-   private final Map<dwr.a, dsy> q = new Object2ObjectArrayMap();
+   @Deprecated
+   private dct r;
    @Nullable
-   private dwj r;
-   private final ewb<dea> s;
-   private final ewb<emv> t;
-
-   public dtt(dag $$0, dtw $$1, dbb $$2, jk<dby> $$3, @Nullable dxy $$4) {
-      this($$0, $$1, null, new ewb<>(), new ewb<>(), $$2, $$3, $$4);
-   }
-
-   public dtt(dag $$0, dtw $$1, @Nullable dtk[] $$2, ewb<dea> $$3, ewb<emv> $$4, dbb $$5, jk<dby> $$6, @Nullable dxy $$7) {
-      super($$0, $$1, $$5, $$6, 0L, $$2, $$7);
-      this.s = $$3;
-      this.t = $$4;
-   }
-
-   @Override
-   public ewg<dea> o() {
-      return this.s;
-   }
-
-   @Override
-   public ewg<emv> p() {
-      return this.t;
-   }
-
-   @Override
-   public dsz.a q() {
-      return new dsz.a(this.s, this.t);
-   }
-
-   @Override
-   public drd a_(io $$0) {
-      int $$1 = $$0.v();
-      if (this.d($$1)) {
-         return dec.nb.n();
-      } else {
-         dtk $$2 = this.b(this.e($$1));
-         return $$2.c() ? dec.a.n() : $$2.a($$0.u() & 15, $$1 & 15, $$0.w() & 15);
-      }
-   }
-
-   @Override
-   public emw b_(io $$0) {
-      int $$1 = $$0.v();
-      if (this.d($$1)) {
-         return emx.a.g();
-      } else {
-         dtk $$2 = this.b(this.e($$1));
-         return $$2.c() ? emx.a.g() : $$2.b($$0.u() & 15, $$1 & 15, $$0.w() & 15);
-      }
-   }
-
+   protected dxt e;
+   protected final duq f;
    @Nullable
-   @Override
-   public drd a(io $$0, drd $$1, boolean $$2) {
-      int $$3 = $$0.u();
-      int $$4 = $$0.v();
-      int $$5 = $$0.w();
-      if ($$4 >= this.I_() && $$4 < this.al()) {
-         int $$6 = this.e($$4);
-         dtk $$7 = this.b($$6);
-         boolean $$8 = $$7.c();
-         if ($$8 && $$1.a(dec.a)) {
-            return $$1;
+   protected dys g;
+   protected final Map<dxp.a, dxp> h = Maps.newEnumMap(dxp.a.class);
+   protected ena i;
+   private final Map<eif, ein> s = Maps.newHashMap();
+   private final Map<eif, LongSet> t = Maps.newHashMap();
+   protected final Map<iz, ur> j = Maps.newHashMap();
+   protected final Map<iz, dpc> k = new Object2ObjectOpenHashMap();
+   protected final dbv l;
+   protected final due[] m;
+
+   public dtt(dba $$0, duq $$1, dbv $$2, jv<dcs> $$3, long $$4, @Nullable due[] $$5, @Nullable dys $$6) {
+      this.d = $$0;
+      this.f = $$1;
+      this.l = $$2;
+      this.m = new due[$$2.an()];
+      this.q = $$4;
+      this.b = new ShortList[$$2.an()];
+      this.g = $$6;
+      this.i = new ena($$2);
+      if ($$5 != null) {
+         if (this.m.length == $$5.length) {
+            System.arraycopy($$5, 0, this.m, 0, this.m.length);
          } else {
-            int $$9 = jq.b($$3);
-            int $$10 = jq.b($$4);
-            int $$11 = jq.b($$5);
-            drd $$12 = $$7.a($$9, $$10, $$11, $$1);
-            if (this.o.b(dty.k)) {
-               boolean $$13 = $$7.c();
-               if ($$13 != $$8) {
-                  this.n.a($$0, $$13);
-               }
-
-               if (emn.a(this, $$0, $$12, $$1)) {
-                  this.i.a(this, $$9, $$4, $$11);
-                  this.n.a($$0);
-               }
-            }
-
-            EnumSet<dwv.a> $$14 = this.j().h();
-            EnumSet<dwv.a> $$15 = null;
-
-            for (dwv.a $$16 : $$14) {
-               dwv $$17 = this.h.get($$16);
-               if ($$17 == null) {
-                  if ($$15 == null) {
-                     $$15 = EnumSet.noneOf(dwv.a.class);
-                  }
-
-                  $$15.add($$16);
-               }
-            }
-
-            if ($$15 != null) {
-               dwv.a(this, $$15);
-            }
-
-            for (dwv.a $$18 : $$14) {
-               this.h.get($$18).a($$9, $$4, $$11, $$1);
-            }
-
-            return $$12;
+            n.warn("Could not set level chunk sections, array length is {} instead of {}", $$5.length, this.m.length);
          }
-      } else {
-         return dec.nb.n();
+      }
+
+      a($$3, this.m);
+   }
+
+   private static void a(jv<dcs> $$0, due[] $$1) {
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$1[$$2] == null) {
+            $$1[$$2] = new due($$0);
+         }
       }
    }
 
-   @Override
-   public void a(doi $$0) {
-      this.k.put($$0.aA_(), $$0);
+   public dwt a(int $$0) {
+      return dwt.a;
+   }
+
+   @Nullable
+   public abstract drx a(iz var1, drx var2, boolean var3);
+
+   public abstract void a(dpc var1);
+
+   public abstract void a(bsp var1);
+
+   public int a() {
+      due[] $$0 = this.d();
+
+      for (int $$1 = $$0.length - 1; $$1 >= 0; $$1--) {
+         due $$2 = $$0[$$1];
+         if (!$$2.c()) {
+            return $$1;
+         }
+      }
+
+      return -1;
+   }
+
+   @Deprecated(
+      forRemoval = true
+   )
+   public int b() {
+      int $$0 = this.a();
+      return $$0 == -1 ? this.I_() : kb.c(this.g($$0));
+   }
+
+   public Set<iz> c() {
+      Set<iz> $$0 = Sets.newHashSet(this.j.keySet());
+      $$0.addAll(this.k.keySet());
+      return $$0;
+   }
+
+   public due[] d() {
+      return this.m;
+   }
+
+   public due b(int $$0) {
+      return this.d()[$$0];
+   }
+
+   public Collection<Entry<dxp.a, dxp>> e() {
+      return Collections.unmodifiableSet(this.h.entrySet());
+   }
+
+   public void a(dxp.a $$0, long[] $$1) {
+      this.a($$0).a(this, $$0, $$1);
+   }
+
+   public dxp a(dxp.a $$0) {
+      return this.h.computeIfAbsent($$0, $$0x -> new dxp(this, $$0x));
+   }
+
+   public boolean b(dxp.a $$0) {
+      return this.h.get($$0) != null;
+   }
+
+   public int a(dxp.a $$0, int $$1, int $$2) {
+      dxp $$3 = this.h.get($$0);
+      if ($$3 == null) {
+         if (aa.aX && this instanceof dud) {
+            n.error("Unprimed heightmap: " + $$0 + " " + $$1 + " " + $$2);
+         }
+
+         dxp.a(this, EnumSet.of($$0));
+         $$3 = this.h.get($$0);
+      }
+
+      return $$3.a($$1 & 15, $$2 & 15) - 1;
+   }
+
+   public dba f() {
+      return this.d;
    }
 
    @Nullable
    @Override
-   public doi c_(io $$0) {
-      return this.k.get($$0);
-   }
-
-   public Map<io, doi> D() {
-      return this.k;
-   }
-
-   public void b(ud $$0) {
-      this.p.add($$0);
+   public ein a(eif $$0) {
+      return this.s.get($$0);
    }
 
    @Override
-   public void a(brw $$0) {
-      if (!$$0.bR()) {
-         ud $$1 = new ud();
-         $$0.e($$1);
-         this.b($$1);
+   public void a(eif $$0, ein $$1) {
+      this.s.put($$0, $$1);
+      this.c = true;
+   }
+
+   public Map<eif, ein> g() {
+      return Collections.unmodifiableMap(this.s);
+   }
+
+   public void a(Map<eif, ein> $$0) {
+      this.s.clear();
+      this.s.putAll($$0);
+      this.c = true;
+   }
+
+   @Override
+   public LongSet b(eif $$0) {
+      return this.t.getOrDefault($$0, o);
+   }
+
+   @Override
+   public void a(eif $$0, long $$1) {
+      this.t.computeIfAbsent($$0, $$0x -> new LongOpenHashSet()).add($$1);
+      this.c = true;
+   }
+
+   @Override
+   public Map<eif, LongSet> h() {
+      return Collections.unmodifiableMap(this.t);
+   }
+
+   @Override
+   public void b(Map<eif, LongSet> $$0) {
+      this.t.clear();
+      this.t.putAll($$0);
+      this.c = true;
+   }
+
+   public boolean a(int $$0, int $$1) {
+      if ($$0 < this.I_()) {
+         $$0 = this.I_();
       }
-   }
 
-   @Override
-   public void a(ehl $$0, eht $$1) {
-      dwj $$2 = this.x();
-      if ($$2 != null && $$1.b()) {
-         ehd $$3 = $$1.a();
-         dbb $$4 = this.z();
-         if ($$3.i() < $$4.I_() || $$3.l() >= $$4.al()) {
-            return;
+      if ($$1 >= this.am()) {
+         $$1 = this.am() - 1;
+      }
+
+      for (int $$2 = $$0; $$2 <= $$1; $$2 += 16) {
+         if (!this.b(this.e($$2)).c()) {
+            return false;
          }
       }
 
-      super.a($$0, $$1);
+      return true;
    }
 
-   public List<ud> E() {
+   public void a(boolean $$0) {
+      this.c = $$0;
+   }
+
+   public boolean i() {
+      return this.c;
+   }
+
+   public abstract dus j();
+
+   public dus k() {
+      dus $$0 = this.j();
+      dxd $$1 = this.x();
+      if ($$1 != null) {
+         dus $$2 = $$1.a();
+         return $$2.b($$0) ? $$2 : $$0;
+      } else {
+         return $$0;
+      }
+   }
+
+   public abstract void d(iz var1);
+
+   public void e(iz $$0) {
+      n.warn("Trying to mark a block for PostProcessing @ {}, but this operation is not supported.", $$0);
+   }
+
+   public ShortList[] n() {
+      return this.b;
+   }
+
+   public void a(short $$0, int $$1) {
+      a(this.n(), $$1).add($$0);
+   }
+
+   public void a(ur $$0) {
+      this.j.put(dpc.b($$0), $$0);
+   }
+
+   @Nullable
+   public ur f(iz $$0) {
+      return this.j.get($$0);
+   }
+
+   @Nullable
+   public abstract ur a(iz var1, jk.a var2);
+
+   @Override
+   public final void a(BiConsumer<iz, drx> $$0) {
+      this.a($$0x -> $$0x.h() != 0, $$0);
+   }
+
+   public void a(Predicate<drx> $$0, BiConsumer<iz, drx> $$1) {
+      iz.a $$2 = new iz.a();
+
+      for (int $$3 = this.ao(); $$3 < this.ap(); $$3++) {
+         due $$4 = this.b(this.f($$3));
+         if ($$4.a($$0)) {
+            iz $$5 = kb.a(this.d, $$3).j();
+
+            for (int $$6 = 0; $$6 < 16; $$6++) {
+               for (int $$7 = 0; $$7 < 16; $$7++) {
+                  for (int $$8 = 0; $$8 < 16; $$8++) {
+                     drx $$9 = $$4.a($$8, $$6, $$7);
+                     if ($$0.test($$9)) {
+                        $$1.accept($$2.a($$5, $$8, $$6, $$7), $$9);
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   public abstract exg<deu> o();
+
+   public abstract exg<enp> p();
+
+   public abstract dtt.a q();
+
+   public duq r() {
+      return this.f;
+   }
+
+   public boolean s() {
+      return this.g != null;
+   }
+
+   @Nullable
+   public dys t() {
+      return this.g;
+   }
+
+   public void a(dys $$0) {
+      this.g = $$0;
+   }
+
+   public long u() {
+      return this.q;
+   }
+
+   public void a(long $$0) {
+      this.q += $$0;
+   }
+
+   public void b(long $$0) {
+      this.q = $$0;
+   }
+
+   public static ShortList a(ShortList[] $$0, int $$1) {
+      if ($$0[$$1] == null) {
+         $$0[$$1] = new ShortArrayList();
+      }
+
+      return $$0[$$1];
+   }
+
+   public boolean v() {
       return this.p;
    }
 
-   @Override
-   public dty j() {
-      return this.o;
-   }
-
-   public void a(dty $$0) {
-      this.o = $$0;
-      if (this.r != null && $$0.b(this.r.a())) {
-         this.a(null);
-      }
-
+   public void b(boolean $$0) {
+      this.p = $$0;
       this.a(true);
    }
 
    @Override
-   public ix<dby> getNoiseBiome(int $$0, int $$1, int $$2) {
-      if (this.k().b(dty.f)) {
-         return super.getNoiseBiome($$0, $$1, $$2);
-      } else {
-         throw new IllegalStateException("Asking for biomes before we have biomes");
+   public int I_() {
+      return this.l.I_();
+   }
+
+   @Override
+   public int J_() {
+      return this.l.J_();
+   }
+
+   public dxt a(Function<dtt, dxt> $$0) {
+      if (this.e == null) {
+         this.e = $$0.apply(this);
       }
+
+      return this.e;
    }
 
-   public static short g(io $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      int $$4 = $$1 & 15;
-      int $$5 = $$2 & 15;
-      int $$6 = $$3 & 15;
-      return (short)($$4 | $$5 << 4 | $$6 << 8);
-   }
-
-   public static io a(short $$0, int $$1, dag $$2) {
-      int $$3 = jq.a($$2.e, $$0 & 15);
-      int $$4 = jq.a($$1, $$0 >>> 4 & 15);
-      int $$5 = jq.a($$2.f, $$0 >>> 8 & 15);
-      return new io($$3, $$4, $$5);
-   }
-
-   @Override
-   public void e(io $$0) {
-      if (!this.s($$0)) {
-         dsz.a(this.b, this.e($$0.v())).add(g($$0));
+   @Deprecated
+   public dct a(Supplier<dct> $$0) {
+      if (this.r == null) {
+         this.r = $$0.get();
       }
-   }
 
-   @Override
-   public void a(short $$0, int $$1) {
-      dsz.a(this.b, $$1).add($$0);
-   }
-
-   public Map<io, ud> F() {
-      return Collections.unmodifiableMap(this.j);
-   }
-
-   @Nullable
-   @Override
-   public ud a(io $$0, iz.a $$1) {
-      doi $$2 = this.c_($$0);
-      return $$2 != null ? $$2.b($$1) : this.j.get($$0);
-   }
-
-   @Override
-   public void d(io $$0) {
-      this.k.remove($$0);
-      this.j.remove($$0);
-   }
-
-   @Nullable
-   public dsy a(dwr.a $$0) {
-      return this.q.get($$0);
-   }
-
-   public dsy b(dwr.a $$0) {
-      return this.q.computeIfAbsent($$0, $$0x -> new dsy(this.J_(), this.I_()));
-   }
-
-   public void a(dwr.a $$0, dsy $$1) {
-      this.q.put($$0, $$1);
-   }
-
-   public void a(eml $$0) {
-      this.n = $$0;
-   }
-
-   public void a(@Nullable dwj $$0) {
-      this.r = $$0;
-   }
-
-   @Nullable
-   @Override
-   public dwj x() {
       return this.r;
    }
 
-   private static <T> evy<T> a(ewb<T> $$0) {
-      return new evy<>($$0.b());
+   @Override
+   public ji<dcs> getNoiseBiome(int $$0, int $$1, int $$2) {
+      try {
+         int $$3 = jt.a(this.I_());
+         int $$4 = $$3 + jt.a(this.J_()) - 1;
+         int $$5 = ayu.a($$1, $$3, $$4);
+         int $$6 = this.e(jt.c($$5));
+         return this.m[$$6].c($$0 & 3, $$5 & 3, $$2 & 3);
+      } catch (Throwable var8) {
+         o $$8 = o.a(var8, "Getting biome");
+         p $$9 = $$8.a("Biome being got");
+         $$9.a("Location", () -> p.a(this, $$0, $$1, $$2));
+         throw new y($$8);
+      }
    }
 
-   public evy<dea> G() {
-      return a(this.s);
+   public void a(dcv $$0, ddb.f $$1) {
+      dba $$2 = this.f();
+      int $$3 = jt.a($$2.d());
+      int $$4 = jt.a($$2.e());
+      dbv $$5 = this.z();
+
+      for (int $$6 = $$5.ao(); $$6 < $$5.ap(); $$6++) {
+         due $$7 = this.b(this.f($$6));
+         int $$8 = jt.d($$6);
+         $$7.a($$0, $$1, $$3, $$8, $$4);
+      }
    }
 
-   public evy<emv> H() {
-      return a(this.t);
+   public boolean w() {
+      return !this.h().isEmpty();
+   }
+
+   @Nullable
+   public dxd x() {
+      return null;
+   }
+
+   public boolean y() {
+      return this.x() != null;
+   }
+
+   public dbv z() {
+      return this;
+   }
+
+   public void A() {
+      this.i.a(this);
    }
 
    @Override
-   public dbb z() {
-      return (dbb)(this.y() ? dwj.b : this);
+   public ena B() {
+      return this.i;
+   }
+
+   public static record a(exe<deu> a, exe<enp> b) {
    }
 }

@@ -1,30 +1,39 @@
-public record gy(byte b) {
-   public static final gy a = new gy((byte)0);
-   private static final byte c = 1;
-   private static final byte d = 2;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
 
-   private gy a(byte $$0) {
-      int $$1 = this.b | $$0;
-      return $$1 != this.b ? new gy((byte)$$1) : this;
+public class gy implements ArgumentType<gz> {
+   private static final Collection<String> a = Arrays.asList("stick", "minecraft:stick", "stick{foo=bar}");
+   private final ha b;
+
+   public gy(el $$0) {
+      this.b = new ha($$0);
    }
 
-   public boolean a() {
-      return (this.b & 1) != 0;
+   public static gy a(el $$0) {
+      return new gy($$0);
    }
 
-   public gy b() {
-      return this.a((byte)1);
+   public gz a(StringReader $$0) throws CommandSyntaxException {
+      ha.a $$1 = this.b.a($$0);
+      return new gz($$1.a(), $$1.b());
    }
 
-   public boolean c() {
-      return (this.b & 2) != 0;
+   public static <S> gz a(CommandContext<S> $$0, String $$1) {
+      return (gz)$$0.getArgument($$1, gz.class);
    }
 
-   public gy d() {
-      return this.a((byte)2);
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return this.b.a($$1);
    }
 
-   public byte e() {
-      return this.b;
+   public Collection<String> getExamples() {
+      return a;
    }
 }

@@ -1,127 +1,67 @@
+import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public abstract class cbo extends bzo {
-   private static final int a = 0;
-   private static final int b = 1;
-   private static final int c = 2;
-   protected final bss e;
-   protected final boolean f;
-   private final boolean d;
-   private int i;
-   private int j;
-   private int k;
+public class cbo extends cai {
+   private static final int a = 10;
+   private final btt b;
+   private final int c;
    @Nullable
-   protected bsq g;
-   protected int h = 60;
+   private iz d;
 
-   public cbo(bss $$0, boolean $$1) {
-      this($$0, $$1, false);
+   public cbo(btt $$0, int $$1) {
+      this.b = $$0;
+      this.c = b($$1);
+      this.a(EnumSet.of(cai.a.a));
    }
 
-   public cbo(bss $$0, boolean $$1, boolean $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.d = $$2;
+   @Override
+   public boolean a() {
+      if (this.b.cR()) {
+         return false;
+      } else if (this.b.dP().R()) {
+         return false;
+      } else if (this.b.el().a(this.c) != 0) {
+         return false;
+      } else {
+         arb $$0 = (arb)this.b.dP();
+         iz $$1 = this.b.dp();
+         if (!$$0.a($$1, 6)) {
+            return false;
+         } else {
+            evm $$2 = cei.a(this.b, 15, 7, $$1x -> (double)(-$$0.b(kb.a($$1x))));
+            this.d = $$2 == null ? null : iz.a($$2);
+            return this.d != null;
+         }
+      }
    }
 
    @Override
    public boolean b() {
-      bsq $$0 = this.e.p();
-      if ($$0 == null) {
-         $$0 = this.g;
-      }
-
-      if ($$0 == null) {
-         return false;
-      } else if (!this.e.c($$0)) {
-         return false;
-      } else {
-         evs $$1 = this.e.cj();
-         evs $$2 = $$0.cj();
-         if ($$1 != null && $$2 == $$1) {
-            return false;
-         } else {
-            double $$3 = this.l();
-            if (this.e.g($$0) > $$3 * $$3) {
-               return false;
-            } else {
-               if (this.f) {
-                  if (this.e.M().a($$0)) {
-                     this.k = 0;
-                  } else if (++this.k > b(this.h)) {
-                     return false;
-                  }
-               }
-
-               this.e.h($$0);
-               return true;
-            }
-         }
-      }
-   }
-
-   protected double l() {
-      return this.e.g(bty.k);
+      return this.d != null && !this.b.K().l() && this.b.K().h().equals(this.d);
    }
 
    @Override
-   public void c() {
-      this.i = 0;
-      this.j = 0;
-      this.k = 0;
-   }
-
-   @Override
-   public void d() {
-      this.e.h(null);
-      this.g = null;
-   }
-
-   protected boolean a(@Nullable bsq $$0, cdh $$1) {
-      if ($$0 == null) {
-         return false;
-      } else if (!$$1.a(this.e, $$0)) {
-         return false;
-      } else if (!this.e.a($$0.dp())) {
-         return false;
-      } else {
-         if (this.d) {
-            if (--this.j <= 0) {
-               this.i = 0;
+   public void e() {
+      if (this.d != null) {
+         ccw $$0 = this.b.K();
+         if ($$0.l() && !this.d.a(this.b.dn(), 10.0)) {
+            evm $$1 = evm.c(this.d);
+            evm $$2 = this.b.dn();
+            evm $$3 = $$2.d($$1);
+            $$1 = $$3.a(0.4).e($$1);
+            evm $$4 = $$1.d($$2).d().a(10.0).e($$2);
+            iz $$5 = iz.a($$4);
+            $$5 = this.b.dP().a(dxp.a.f, $$5);
+            if (!$$0.a((double)$$5.u(), (double)$$5.v(), (double)$$5.w(), 1.0)) {
+               this.h();
             }
-
-            if (this.i == 0) {
-               this.i = this.a($$0) ? 1 : 2;
-            }
-
-            if (this.i == 2) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   private boolean a(bsq $$0) {
-      this.j = b(10 + this.e.el().a(5));
-      enk $$1 = this.e.K().a($$0, 0);
-      if ($$1 == null) {
-         return false;
-      } else {
-         eni $$2 = $$1.d();
-         if ($$2 == null) {
-            return false;
-         } else {
-            int $$3 = $$2.a - $$0.dt();
-            int $$4 = $$2.c - $$0.dz();
-            return (double)($$3 * $$3 + $$4 * $$4) <= 2.25;
          }
       }
    }
 
-   public cbo c(int $$0) {
-      this.h = $$0;
-      return this;
+   private void h() {
+      azc $$0 = this.b.el();
+      iz $$1 = this.b.dP().a(dxp.a.f, this.b.dp().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
+      this.b.K().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), 1.0);
    }
 }

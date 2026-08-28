@@ -1,45 +1,37 @@
-public class afh implements ze<abq> {
-   public static final yv<vx, afh> a = ze.a(afh::a, afh::new);
-   private final long b;
-   private final long c;
+public class afh implements zs<ace> {
+   public static final zj<wl, afh> a = zs.a(afh::a, afh::new);
+   private final iz b;
+   private final float c;
 
-   public afh(long $$0, long $$1, boolean $$2) {
+   public afh(iz $$0, float $$1) {
       this.b = $$0;
-      long $$3 = $$1;
-      if (!$$2) {
-         $$3 = -$$1;
-         if ($$3 == 0L) {
-            $$3 = -1L;
-         }
-      }
-
-      this.c = $$3;
+      this.c = $$1;
    }
 
-   private afh(vx $$0) {
-      this.b = $$0.readLong();
-      this.c = $$0.readLong();
+   private afh(wl $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readFloat();
    }
 
-   private void a(vx $$0) {
-      $$0.b(this.b);
-      $$0.b(this.c);
+   private void a(wl $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zg<afh> a() {
-      return agc.aO;
+   public zu<afh> a() {
+      return agq.aA;
    }
 
-   public void a(abq $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public long b() {
+   public iz b() {
       return this.b;
    }
 
-   public long e() {
+   public float e() {
       return this.c;
    }
 }

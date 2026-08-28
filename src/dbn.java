@@ -1,41 +1,31 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-
 public class dbn {
-   private final List<dbn.a> a = Lists.newArrayList();
+   private static int[] a = new int[65536];
 
-   public void a(io $$0, double $$1) {
-      if ($$1 != 0.0) {
-         this.a.add(new dbn.a($$0, $$1));
-      }
+   public static void a(int[] $$0) {
+      a = $$0;
    }
 
-   public double b(io $$0, double $$1) {
-      if ($$1 == 0.0) {
-         return 0.0;
-      } else {
-         double $$2 = 0.0;
-
-         for (dbn.a $$3 : this.a) {
-            $$2 += $$3.a($$0);
-         }
-
-         return $$2 * $$1;
-      }
+   public static int a(double $$0, double $$1) {
+      $$1 *= $$0;
+      int $$2 = (int)((1.0 - $$0) * 255.0);
+      int $$3 = (int)((1.0 - $$1) * 255.0);
+      int $$4 = $$3 << 8 | $$2;
+      return $$4 >= a.length ? c() : a[$$4];
    }
 
-   static class a {
-      private final io a;
-      private final double b;
+   public static int a() {
+      return -10380959;
+   }
 
-      public a(io $$0, double $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public static int b() {
+      return -8345771;
+   }
 
-      public double a(io $$0) {
-         double $$1 = this.a.j($$0);
-         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
-      }
+   public static int c() {
+      return -12012264;
+   }
+
+   public static int d() {
+      return -7158200;
    }
 }

@@ -1,19 +1,30 @@
 import com.mojang.serialization.MapCodec;
 
-public class dnn extends dea {
-   public static final MapCodec<dnn> a = b(dnn::new);
+public class dnn extends dij {
+   public static final MapCodec<dnn> c = b(dnn::new);
+   public static final ewf g = deu.a(4.0, 0.0, 4.0, 12.0, 15.0, 12.0);
 
    @Override
    public MapCodec<dnn> a() {
-      return a;
+      return c;
    }
 
-   public dnn(drc.d $$0) {
-      super($$0);
+   public dnn(drw.d $$0) {
+      super($$0, je.b, g, false, 0.1);
    }
 
    @Override
-   protected void a(drd $$0, daz $$1, io $$2, brw $$3) {
-      $$3.a($$0, new eum(0.25, 0.05F, 0.25));
+   protected int a(azc $$0) {
+      return dka.a($$0);
+   }
+
+   @Override
+   protected deu b() {
+      return dew.oC;
+   }
+
+   @Override
+   protected boolean g(drx $$0) {
+      return dka.a($$0);
    }
 }

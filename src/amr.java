@@ -1,162 +1,171 @@
 import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collections;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import java.util.Collection;
 import java.util.List;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.stream.Collectors;
 
 public class amr {
-   private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> wx.b("commands.fill.toobig", $$0, $$1));
-   static final fv b = new fv(dec.a.n(), Collections.emptySet(), null);
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wx.c("commands.fill.failed"));
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xl.b("commands.datapack.unknown", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xl.b("commands.datapack.enable.failed", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xl.b("commands.datapack.disable.failed", $$0));
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> xl.b("commands.datapack.disable.failed.feature", $$0));
+   private static final Dynamic2CommandExceptionType e = new Dynamic2CommandExceptionType(
+      ($$0, $$1) -> xl.b("commands.datapack.enable.failed.no_flags", $$0, $$1)
+   );
+   private static final SuggestionProvider<ep> f = ($$0, $$1) -> eu.b(
+         ((ep)$$0.getSource()).l().aG().d().stream().map(StringArgumentType::escapeIfRequired), $$1
+      );
+   private static final SuggestionProvider<ep> g = ($$0, $$1) -> {
+      atw $$2 = ((ep)$$0.getSource()).l().aG();
+      Collection<String> $$3 = $$2.d();
+      cpg $$4 = ((ep)$$0.getSource()).w();
+      return eu.b(
+         $$2.c().stream().filter($$1x -> $$1x.e().a($$4)).map(att::g).filter($$1x -> !$$3.contains($$1x)).map(StringArgumentType::escapeIfRequired), $$1
+      );
+   };
 
-   public static void a(CommandDispatcher<ee> $$0, ea $$1) {
+   public static void a(CommandDispatcher<ep> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("fill").requires($$0x -> $$0x.c(2)))
-            .then(
-               ef.a("from", ga.a())
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("datapack").requires($$0x -> $$0x.c(2)))
                   .then(
-                     ef.a("to", ga.a())
+                     eq.a("enable")
                         .then(
-                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ef.a(
-                                                "block", fx.a($$1)
-                                             )
-                                             .executes(
-                                                $$0x -> a((ee)$$0x.getSource(), ehd.a(ga.a($$0x, "from"), ga.a($$0x, "to")), fx.a($$0x, "block"), amr.a.a, null)
-                                             ))
-                                          .then(
-                                             ((LiteralArgumentBuilder)ef.a("replace")
-                                                   .executes(
-                                                      $$0x -> a(
-                                                            (ee)$$0x.getSource(),
-                                                            ehd.a(ga.a($$0x, "from"), ga.a($$0x, "to")),
-                                                            fx.a($$0x, "block"),
-                                                            amr.a.a,
-                                                            null
-                                                         )
-                                                   ))
-                                                .then(
-                                                   ef.a("filter", fw.a($$1))
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (ee)$$0x.getSource(),
-                                                               ehd.a(ga.a($$0x, "from"), ga.a($$0x, "to")),
-                                                               fx.a($$0x, "block"),
-                                                               amr.a.a,
-                                                               fw.a($$0x, "filter")
-                                                            )
-                                                      )
-                                                )
+                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)eq.a(
+                                             "name", StringArgumentType.string()
+                                          )
+                                          .suggests(g)
+                                          .executes(
+                                             $$0x -> a((ep)$$0x.getSource(), a($$0x, "name", true), ($$0xx, $$1) -> $$1.k().a($$0xx, $$1, att::h, false))
                                           ))
                                        .then(
-                                          ef.a("keep")
-                                             .executes(
-                                                $$0x -> a(
-                                                      (ee)$$0x.getSource(),
-                                                      ehd.a(ga.a($$0x, "from"), ga.a($$0x, "to")),
-                                                      fx.a($$0x, "block"),
-                                                      amr.a.a,
-                                                      $$0xx -> $$0xx.c().u($$0xx.d())
+                                          eq.a("after")
+                                             .then(
+                                                eq.a("existing", StringArgumentType.string())
+                                                   .suggests(f)
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (ep)$$0x.getSource(),
+                                                            a($$0x, "name", true),
+                                                            ($$1, $$2) -> $$1.add($$1.indexOf(a($$0x, "existing", false)) + 1, $$2)
+                                                         )
                                                    )
                                              )
                                        ))
                                     .then(
-                                       ef.a("outline")
-                                          .executes(
-                                             $$0x -> a((ee)$$0x.getSource(), ehd.a(ga.a($$0x, "from"), ga.a($$0x, "to")), fx.a($$0x, "block"), amr.a.b, null)
+                                       eq.a("before")
+                                          .then(
+                                             eq.a("existing", StringArgumentType.string())
+                                                .suggests(f)
+                                                .executes(
+                                                   $$0x -> a(
+                                                         (ep)$$0x.getSource(),
+                                                         a($$0x, "name", true),
+                                                         ($$1, $$2) -> $$1.add($$1.indexOf(a($$0x, "existing", false)), $$2)
+                                                      )
+                                                )
                                           )
                                     ))
-                                 .then(
-                                    ef.a("hollow")
-                                       .executes(
-                                          $$0x -> a((ee)$$0x.getSource(), ehd.a(ga.a($$0x, "from"), ga.a($$0x, "to")), fx.a($$0x, "block"), amr.a.c, null)
-                                       )
-                                 ))
-                              .then(
-                                 ef.a("destroy")
-                                    .executes($$0x -> a((ee)$$0x.getSource(), ehd.a(ga.a($$0x, "from"), ga.a($$0x, "to")), fx.a($$0x, "block"), amr.a.d, null))
-                              )
+                                 .then(eq.a("last").executes($$0x -> a((ep)$$0x.getSource(), a($$0x, "name", true), List::add))))
+                              .then(eq.a("first").executes($$0x -> a((ep)$$0x.getSource(), a($$0x, "name", true), ($$0xx, $$1) -> $$0xx.add(0, $$1))))
                         )
-                  )
+                  ))
+               .then(
+                  eq.a("disable").then(eq.a("name", StringArgumentType.string()).suggests(f).executes($$0x -> a((ep)$$0x.getSource(), a($$0x, "name", false))))
+               ))
+            .then(
+               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("list").executes($$0x -> a((ep)$$0x.getSource())))
+                     .then(eq.a("available").executes($$0x -> b((ep)$$0x.getSource()))))
+                  .then(eq.a("enabled").executes($$0x -> c((ep)$$0x.getSource())))
             )
       );
    }
 
-   private static int a(ee $$0, ehd $$1, fv $$2, amr.a $$3, @Nullable Predicate<drh> $$4) throws CommandSyntaxException {
-      int $$5 = $$1.d() * $$1.e() * $$1.f();
-      int $$6 = $$0.e().aa().c(dav.z);
-      if ($$5 > $$6) {
-         throw a.create($$6, $$5);
+   private static int a(ep $$0, att $$1, amr.a $$2) throws CommandSyntaxException {
+      atw $$3 = $$0.l().aG();
+      List<att> $$4 = Lists.newArrayList($$3.f());
+      $$2.apply($$4, $$1);
+      $$0.a(() -> xl.a("commands.datapack.modify.enable", $$1.a(true)), true);
+      aof.a($$4.stream().map(att::g).collect(Collectors.toList()), $$0);
+      return $$4.size();
+   }
+
+   private static int a(ep $$0, att $$1) {
+      atw $$2 = $$0.l().aG();
+      List<att> $$3 = Lists.newArrayList($$2.f());
+      $$3.remove($$1);
+      $$0.a(() -> xl.a("commands.datapack.modify.disable", $$1.a(true)), true);
+      aof.a($$3.stream().map(att::g).collect(Collectors.toList()), $$0);
+      return $$3.size();
+   }
+
+   private static int a(ep $$0) {
+      return c($$0) + b($$0);
+   }
+
+   private static int b(ep $$0) {
+      atw $$1 = $$0.l().aG();
+      $$1.a();
+      Collection<att> $$2 = $$1.f();
+      Collection<att> $$3 = $$1.c();
+      cpg $$4 = $$0.w();
+      List<att> $$5 = $$3.stream().filter($$2x -> !$$2.contains($$2x) && $$2x.e().a($$4)).toList();
+      if ($$5.isEmpty()) {
+         $$0.a(() -> xl.c("commands.datapack.list.available.none"), false);
       } else {
-         List<io> $$7 = Lists.newArrayList();
-         aqn $$8 = $$0.e();
-         int $$9 = 0;
+         $$0.a(() -> xl.a("commands.datapack.list.available.success", $$5.size(), xo.b($$5, $$0xx -> $$0xx.a(false))), false);
+      }
 
-         for (io $$10 : io.b($$1.h(), $$1.i(), $$1.j(), $$1.k(), $$1.l(), $$1.m())) {
-            if ($$4 == null || $$4.test(new drh($$8, $$10, true))) {
-               fv $$11 = $$3.e.filter($$1, $$10, $$2, $$8);
-               if ($$11 != null) {
-                  doi $$12 = $$8.c_($$10);
-                  bpn.a_($$12);
-                  if ($$11.a($$8, $$10, 2)) {
-                     $$7.add($$10.i());
-                     $$9++;
-                  }
-               }
-            }
-         }
+      return $$5.size();
+   }
 
-         for (io $$13 : $$7) {
-            dea $$14 = $$8.a_($$13).b();
-            $$8.b($$13, $$14);
-         }
+   private static int c(ep $$0) {
+      atw $$1 = $$0.l().aG();
+      $$1.a();
+      Collection<? extends att> $$2 = $$1.f();
+      if ($$2.isEmpty()) {
+         $$0.a(() -> xl.c("commands.datapack.list.enabled.none"), false);
+      } else {
+         $$0.a(() -> xl.a("commands.datapack.list.enabled.success", $$2.size(), xo.b($$2, $$0xx -> $$0xx.a(true))), false);
+      }
 
-         if ($$9 == 0) {
-            throw c.create();
+      return $$2.size();
+   }
+
+   private static att a(CommandContext<ep> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
+      String $$3 = StringArgumentType.getString($$0, $$1);
+      atw $$4 = ((ep)$$0.getSource()).l().aG();
+      att $$5 = $$4.c($$3);
+      if ($$5 == null) {
+         throw a.create($$3);
+      } else {
+         boolean $$6 = $$4.f().contains($$5);
+         if ($$2 && $$6) {
+            throw b.create($$3);
+         } else if (!$$2 && !$$6) {
+            throw c.create($$3);
          } else {
-            int $$15 = $$9;
-            $$0.a(() -> wx.a("commands.fill.success", $$15), true);
-            return $$9;
+            cpg $$7 = ((ep)$$0.getSource()).w();
+            cpg $$8 = $$5.e();
+            if (!$$2 && !$$8.b() && $$5.l() == atx.d) {
+               throw d.create($$3);
+            } else if (!$$8.a($$7)) {
+               throw e.create($$3, cpi.a($$7, $$8));
+            } else {
+               return $$5;
+            }
          }
       }
    }
 
-   static enum a {
-      a(($$0, $$1, $$2, $$3) -> $$2),
-      b(
-         ($$0, $$1, $$2, $$3) -> $$1.u() != $$0.h()
-                  && $$1.u() != $$0.k()
-                  && $$1.v() != $$0.i()
-                  && $$1.v() != $$0.l()
-                  && $$1.w() != $$0.j()
-                  && $$1.w() != $$0.m()
-               ? null
-               : $$2
-      ),
-      c(
-         ($$0, $$1, $$2, $$3) -> $$1.u() != $$0.h()
-                  && $$1.u() != $$0.k()
-                  && $$1.v() != $$0.i()
-                  && $$1.v() != $$0.l()
-                  && $$1.w() != $$0.j()
-                  && $$1.w() != $$0.m()
-               ? amr.b
-               : $$2
-      ),
-      d(($$0, $$1, $$2, $$3) -> {
-         $$3.b($$1, true);
-         return $$2;
-      });
-
-      public final aod.a e;
-
-      private a(aod.a $$0) {
-         this.e = $$0;
-      }
+   interface a {
+      void apply(List<att> var1, att var2) throws CommandSyntaxException;
    }
 }

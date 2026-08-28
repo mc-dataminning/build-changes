@@ -1,58 +1,69 @@
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class flp extends fmb {
-   private static final wx a = wx.c("options.online.title");
-   @Nullable
-   private final fee<Unit> u;
+public class flp extends flq {
+   private static final xl d = xl.c("chat.copy");
+   private static final xl r = xl.c("chat.link.warning");
+   private final String s;
+   private final boolean u;
 
-   public static flp a(feb $$0, flz $$1, fef $$2) {
-      List<fee<?>> $$3 = new ArrayList<>();
-      $$3.add($$2.T());
-      $$3.add($$2.U());
-      fee<Unit> $$4 = x.a(
-         $$0.r,
-         $$0x -> {
-            bpt $$1x = $$0x.ak();
-            return new fee<>(
-               "options.difficulty.online",
-               fee.a(),
-               ($$1xx, $$2x) -> $$1x.b(),
-               new fee.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
-               Unit.INSTANCE,
-               $$0xx -> {
-               }
-            );
-         }
-      );
-      if ($$4 != null) {
-         $$3.add($$4);
-      }
-
-      return new flp($$1, $$2, $$3.toArray(new fee[0]), $$4);
+   public flp(BooleanConsumer $$0, String $$1, boolean $$2) {
+      this($$0, c($$2), xl.b($$1), $$1, $$2 ? xk.e : xk.g, $$2);
    }
 
-   private flp(flz $$0, fef $$1, fee<?>[] $$2, @Nullable fee<Unit> $$3) {
-      super($$0, $$1, a, $$2);
-      this.u = $$3;
+   public flp(BooleanConsumer $$0, xl $$1, String $$2, boolean $$3) {
+      this($$0, $$1, a($$3, $$2), $$2, $$3 ? xk.e : xk.g, $$3);
+   }
+
+   public flp(BooleanConsumer $$0, xl $$1, xl $$2, String $$3, xl $$4, boolean $$5) {
+      super($$0, $$1, $$2);
+      this.a = (xl)($$5 ? xl.c("chat.link.open") : xk.f);
+      this.b = $$4;
+      this.u = !$$5;
+      this.s = $$3;
+   }
+
+   protected static xz a(boolean $$0, String $$1) {
+      return c($$0).b(xk.v).b(xl.b($$1));
+   }
+
+   protected static xz c(boolean $$0) {
+      return xl.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
    }
 
    @Override
-   protected void aN_() {
-      super.aN_();
-      if (this.u != null) {
-         ffy $$0 = this.s.b(this.u);
-         if ($$0 != null) {
-            $$0.j = false;
-         }
-      }
+   protected void a(int $$0) {
+      this.c(fgz.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 50 - 105, $$0, 100, 20).a());
+      this.c(fgz.a(d, $$0x -> {
+         this.l();
+         this.c.accept(false);
+      }).a(this.n / 2 - 50, $$0, 100, 20).a());
+      this.c(fgz.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 50 + 105, $$0, 100, 20).a());
+   }
 
-      ffy $$1 = this.s.b(this.c.ai());
-      if ($$1 != null) {
-         $$1.j = this.m.D();
+   public void l() {
+      this.m.o.a(this.s);
+   }
+
+   @Override
+   public void a(fgm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.u) {
+         $$0.a(this.p, r, this.n / 2, 110, 16764108);
       }
+   }
+
+   public static void a(fmy $$0, String $$1) {
+      ffa $$2 = ffa.Q();
+      $$2.a(new flp($$3 -> {
+         if ($$3) {
+            ac.k().a($$1);
+         }
+
+         $$2.a($$0);
+      }, $$1, true));
+   }
+
+   public static fgz.c b(fmy $$0, String $$1) {
+      return $$2 -> a($$0, $$1);
    }
 }

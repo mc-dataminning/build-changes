@@ -1,8 +1,16 @@
-public interface aii extends agf {
+public record aii(int b, cuk c) implements zs<ags> {
+   public static final zj<ww, aii> a = zj.a(zh.e, aii::b, cuk.a(cuk.h), aii::e, aii::new);
+
    @Override
-   default vw b() {
-      return vw.a;
+   public zu<aii> a() {
+      return agq.bW;
    }
 
-   void a(aif var1);
+   public void a(ags $$0) {
+      $$0.a(this);
+   }
+
+   public cuk e() {
+      return this.c;
+   }
 }

@@ -1,35 +1,37 @@
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class bd {
-   private final ayk a;
-   private final iy.a b;
-
-   public bd(ayk $$0, iy.a $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class bd extends dr<bd.a> {
+   @Override
+   public Codec<bd.a> a() {
+      return bd.a.a;
    }
 
-   public void a(Optional<bc> $$0, String $$1) {
-      $$0.ifPresent($$1x -> this.a($$1x, $$1));
+   public void a(arc $$0, int $$1) {
+      this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public void a(List<bc> $$0, String $$1) {
-      this.a($$0, ery.n, $$1);
-   }
+   public static record a(Optional<bf> b, de.d c) implements dr.a {
+      public static final Codec<bd.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bu.b.optionalFieldOf("player").forGetter(bd.a::a), de.d.d.optionalFieldOf("level", de.d.c).forGetter(bd.a::c)).apply($$0, bd.a::new)
+      );
 
-   public void a(bc $$0, String $$1) {
-      this.a($$0, ery.n, $$1);
-   }
+      public static an<bd.a> b() {
+         return am.m.a(new bd.a(Optional.empty(), de.d.c));
+      }
 
-   public void a(bc $$0, erx $$1, String $$2) {
-      $$0.a(new epn(this.a.a($$2), $$1, this.b));
-   }
+      public static an<bd.a> a(de.d $$0) {
+         return am.m.a(new bd.a(Optional.empty(), $$0));
+      }
 
-   public void a(List<bc> $$0, erx $$1, String $$2) {
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         bc $$4 = $$0.get($$3);
-         $$4.a(new epn(this.a.a($$2 + "[" + $$3 + "]"), $$1, this.b));
+      public boolean a(int $$0) {
+         return this.c.d($$0);
+      }
+
+      @Override
+      public Optional<bf> a() {
+         return this.b;
       }
    }
 }

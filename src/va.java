@@ -1,52 +1,60 @@
-import java.io.DataOutput;
-import java.io.IOException;
+import com.google.common.annotations.VisibleForTesting;
 
-public interface va {
-   int d = 8;
-   int e = 12;
-   int f = 4;
-   int g = 28;
-   byte h = 0;
-   byte i = 1;
-   byte j = 2;
-   byte k = 3;
-   byte l = 4;
-   byte m = 5;
-   byte n = 6;
-   byte o = 7;
-   byte p = 8;
-   byte q = 9;
-   byte r = 10;
-   byte s = 11;
-   byte t = 12;
-   byte u = 99;
-   int v = 512;
+public class va {
+   private static final int a = 512;
+   private final long b;
+   private long c;
+   private final int d;
+   private int e;
 
-   void a(DataOutput var1) throws IOException;
-
-   @Override
-   String toString();
-
-   byte b();
-
-   vc<?> c();
-
-   va d();
-
-   int a();
-
-   default String s_() {
-      return new uz().a(this);
+   public va(long $$0, int $$1) {
+      this.b = $$0;
+      this.d = $$1;
    }
 
-   void a(ve var1);
+   public static va a(long $$0) {
+      return new va($$0, 512);
+   }
 
-   ux.b a(ux var1);
+   public static va a() {
+      return new va(Long.MAX_VALUE, 512);
+   }
 
-   default void b(ux $$0) {
-      ux.b $$1 = $$0.b(this.c());
-      if ($$1 == ux.b.a) {
-         this.a($$0);
+   public void a(long $$0, long $$1) {
+      this.b($$0 * $$1);
+   }
+
+   public void b(long $$0) {
+      if (this.c + $$0 > this.b) {
+         throw new vb("Tried to read NBT tag that was too big; tried to allocate: " + this.c + " + " + $$0 + " bytes where max allowed: " + this.b);
+      } else {
+         this.c += $$0;
       }
+   }
+
+   public void b() {
+      if (this.e >= this.d) {
+         throw new vb("Tried to read NBT tag with too high complexity, depth > " + this.d);
+      } else {
+         this.e++;
+      }
+   }
+
+   public void c() {
+      if (this.e <= 0) {
+         throw new vb("NBT-Accounter tried to pop stack-depth at top-level");
+      } else {
+         this.e--;
+      }
+   }
+
+   @VisibleForTesting
+   public long d() {
+      return this.c;
+   }
+
+   @VisibleForTesting
+   public int e() {
+      return this.e;
    }
 }

@@ -1,31 +1,24 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record co(ct.d b) {
-   public static final Codec<co> a = RecordCodecBuilder.create($$0 -> $$0.group(ct.d.d.optionalFieldOf("light", ct.d.c).forGetter(co::a)).apply($$0, co::new));
+public record co(jm<cwj> c) implements ds<cwl> {
+   public static final Codec<co> a = jx.a(lq.Y).xmap(co::new, co::b);
 
-   public boolean a(aqn $$0, io $$1) {
-      return !$$0.p($$1) ? false : this.b.d($$0.A($$1));
+   @Override
+   public kl<cwl> a() {
+      return km.F;
    }
 
-   public ct.d a() {
-      return this.b;
+   public boolean a(cuk $$0, cwl $$1) {
+      Optional<ji<cwj>> $$2 = $$1.e();
+      return !$$2.isEmpty() && this.c.a($$2.get());
    }
 
-   public static class a {
-      private ct.d a = ct.d.c;
+   public static cq a(jm<cwj> $$0) {
+      return new co($$0);
+   }
 
-      public static co.a a() {
-         return new co.a();
-      }
-
-      public co.a a(ct.d $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public co b() {
-         return new co(this.a);
-      }
+   public jm<cwj> b() {
+      return this.c;
    }
 }

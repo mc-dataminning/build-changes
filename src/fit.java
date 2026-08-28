@@ -1,17 +1,36 @@
-public record fit(gcs a, gcs b, gcs c) {
-   public static fit a(akn $$0) {
-      return new fit(gcs.u($$0), gcs.y($$0), gcs.w($$0));
+import javax.annotation.Nullable;
+
+public abstract class fit implements fiu {
+   @Nullable
+   private fiv a;
+   private boolean b;
+
+   @Override
+   public final boolean aH_() {
+      return this.b;
    }
 
-   public static fit b(akn $$0) {
-      return new fit(gcs.t($$0), gcs.x($$0), gcs.v($$0));
+   @Override
+   public final void b(boolean $$0) {
+      this.b = $$0;
    }
 
-   public gcs a(ffl.a $$0) {
-      return switch ($$0) {
-         case a -> this.a;
-         case b -> this.b;
-         case c -> this.c;
-      };
+   @Nullable
+   @Override
+   public fiv aI_() {
+      return this.a;
+   }
+
+   @Override
+   public void a(@Nullable fiv $$0) {
+      if (this.a != null) {
+         this.a.a(false);
+      }
+
+      if ($$0 != null) {
+         $$0.a(true);
+      }
+
+      this.a = $$0;
    }
 }

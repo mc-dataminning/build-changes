@@ -1,77 +1,49 @@
-import com.google.common.base.Stopwatch;
-import java.io.File;
-import java.time.Instant;
-import java.time.format.DateTimeFormatter;
-import java.util.concurrent.TimeUnit;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Streams;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
-public class ti implements tw {
-   private final Document a;
-   private final Element b;
-   private final Stopwatch c;
-   private final File d;
+public class ti {
+   private static final int a = 50;
 
-   public ti(File $$0) throws ParserConfigurationException {
-      this.d = $$0;
-      this.a = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
-      this.b = this.a.createElement("testsuite");
-      Element $$1 = this.a.createElement("testsuite");
-      $$1.appendChild(this.b);
-      this.a.appendChild($$1);
-      this.b.setAttribute("timestamp", DateTimeFormatter.ISO_INSTANT.format(Instant.now()));
-      this.c = Stopwatch.createStarted();
+   public static Collection<th> a(Collection<uh> $$0, arb $$1) {
+      Map<String, List<uh>> $$2 = $$0.stream().collect(Collectors.groupingBy(uh::b));
+      return $$2.entrySet()
+         .stream()
+         .flatMap(
+            $$1x -> {
+               String $$2x = (String)$$1x.getKey();
+               List<uh> $$3 = (List<uh>)$$1x.getValue();
+               return Streams.mapWithIndex(
+                  Lists.partition($$3, 50).stream(), ($$2xx, $$3x) -> a($$2xx.stream().map($$1xxx -> a($$1xxx, 0, $$1)).toList(), $$2x, $$3x)
+               );
+            }
+         )
+         .toList();
    }
 
-   private Element a(sz $$0, String $$1) {
-      Element $$2 = this.a.createElement("testcase");
-      $$2.setAttribute("name", $$1);
-      $$2.setAttribute("classname", $$0.s());
-      $$2.setAttribute("time", String.valueOf((double)$$0.k() / 1000.0));
-      this.b.appendChild($$2);
-      return $$2;
+   public static tn a(uh $$0, int $$1, arb $$2) {
+      return new tn($$0, ud.a($$1), $$2, ua.a());
    }
 
-   @Override
-   public void a(sz $$0) {
-      String $$1 = $$0.b();
-      String $$2 = $$0.m().getMessage();
-      Element $$3 = this.a.createElement($$0.q() ? "failure" : "skipped");
-      $$3.setAttribute("message", "(" + $$0.c().x() + ") " + $$2);
-      Element $$4 = this.a($$0, $$1);
-      $$4.appendChild($$3);
+   public static tq.b a() {
+      return $$0 -> {
+         Map<String, List<tn>> $$1 = $$0.stream().filter(Objects::nonNull).collect(Collectors.groupingBy($$0x -> $$0x.u().b()));
+         return $$1.entrySet().stream().flatMap($$0x -> {
+            String $$1x = (String)$$0x.getKey();
+            List<tn> $$2 = (List<tn>)$$0x.getValue();
+            return Streams.mapWithIndex(Lists.partition($$2, 50).stream(), ($$1xx, $$2x) -> a(List.copyOf($$1xx), $$1x, $$2x));
+         }).toList();
+      };
    }
 
-   @Override
-   public void b(sz $$0) {
-      String $$1 = $$0.b();
-      this.a($$0, $$1);
-   }
-
-   @Override
-   public void a() {
-      this.c.stop();
-      this.b.setAttribute("time", String.valueOf((double)this.c.elapsed(TimeUnit.MILLISECONDS) / 1000.0));
-
-      try {
-         this.a(this.d);
-      } catch (TransformerException var2) {
-         throw new Error("Couldn't save test report", var2);
-      }
-   }
-
-   public void a(File $$0) throws TransformerException {
-      TransformerFactory $$1 = TransformerFactory.newInstance();
-      Transformer $$2 = $$1.newTransformer();
-      DOMSource $$3 = new DOMSource(this.a);
-      StreamResult $$4 = new StreamResult($$0);
-      $$2.transform($$3, $$4);
+   private static th a(List<tn> $$0, String $$1, long $$2) {
+      Consumer<arb> $$3 = tp.c($$1);
+      Consumer<arb> $$4 = tp.d($$1);
+      return new th($$1 + ":" + $$2, $$0, $$3, $$4);
    }
 }

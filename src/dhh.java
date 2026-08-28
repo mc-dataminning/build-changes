@@ -1,57 +1,63 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dhh extends dcv {
-   public static final MapCodec<dhh> c = b(dhh::new);
+public class dhh extends deg {
+   public static final MapCodec<dhh> a = b(dhh::new);
 
    @Override
    public MapCodec<dhh> a() {
-      return c;
+      return a;
    }
 
-   protected dhh(drc.d $$0) {
+   protected dhh(drw.d $$0) {
       super($$0);
    }
 
    @Override
-   public doi a(io $$0, drd $$1) {
-      return new dpe($$0, $$1);
+   public dpc a(iz $$0, drx $$1) {
+      return new dqs($$0, $$1);
    }
 
    @Nullable
    @Override
-   public <T extends doi> doj<T> a(daz $$0, drd $$1, dok<T> $$2) {
-      return a($$0, $$2, dok.a);
+   public <T extends dpc> dpd<T> a(dbt $$0, drx $$1, dpe<T> $$2) {
+      return a($$2, dpe.v, $$0.B ? dqs::a : dqs::b);
    }
 
    @Override
-   protected void a(daz $$0, io $$1, cly $$2) {
-      doi $$3 = $$0.c_($$1);
-      if ($$3 instanceof dpe) {
-         $$2.a((bqa)$$3);
-         $$2.a(avs.am);
-      }
-   }
+   public void a(drx $$0, dbt $$1, iz $$2, azc $$3) {
+      dpc $$4 = $$1.c_($$2);
+      if ($$4 instanceof dqs) {
+         int $$5 = ((dqs)$$4).f();
 
-   @Override
-   public void a(drd $$0, daz $$1, io $$2, aym $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, avi.jY, avj.e, 1.0F, 1.0F, false);
+         for (int $$6 = 0; $$6 < $$5; $$6++) {
+            double $$7 = (double)$$2.u() + $$3.j();
+            double $$8 = (double)$$2.v() + $$3.j();
+            double $$9 = (double)$$2.w() + $$3.j();
+            double $$10 = ($$3.j() - 0.5) * 0.5;
+            double $$11 = ($$3.j() - 0.5) * 0.5;
+            double $$12 = ($$3.j() - 0.5) * 0.5;
+            int $$13 = $$3.a(2) * 2 - 1;
+            if ($$3.h()) {
+               $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$13;
+               $$12 = (double)($$3.i() * 2.0F * (float)$$13);
+            } else {
+               $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$13;
+               $$10 = (double)($$3.i() * 2.0F * (float)$$13);
+            }
+
+            $$1.a(lj.ac, $$7, $$8, $$9, $$10, $$11, $$12);
          }
-
-         it $$7 = $$0.c(a);
-         it.a $$8 = $$7.o();
-         double $$9 = 0.52;
-         double $$10 = $$3.j() * 0.6 - 0.3;
-         double $$11 = $$8 == it.a.a ? (double)$$7.j() * 0.52 : $$10;
-         double $$12 = $$3.j() * 6.0 / 16.0;
-         double $$13 = $$8 == it.a.c ? (double)$$7.l() * 0.52 : $$10;
-         $$1.a(ky.ae, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
-         $$1.a(ky.F, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
       }
+   }
+
+   @Override
+   public cuk a(dbw $$0, iz $$1, drx $$2) {
+      return cuk.l;
+   }
+
+   @Override
+   protected boolean a(drx $$0, enp $$1) {
+      return false;
    }
 }

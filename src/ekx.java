@@ -1,19 +1,45 @@
 import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class ekx extends eky {
-   public static final MapCodec<ekx> a = MapCodec.unit(() -> ekx.b);
-   public static final ekx b = new ekx();
+public class ekx extends eif {
+   public static final MapCodec<ekx> d = a(ekx::new);
 
-   private ekx() {
+   public ekx(eif.c $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(io $$0, io $$1, io $$2, aym $$3) {
-      return true;
+   public Optional<eif.b> a(eif.a $$0) {
+      return Optional.of(new eif.b($$0.h().l(), (Consumer<eix>)($$1 -> a($$1, $$0))));
+   }
+
+   private static void a(eix $$0, eif.a $$1) {
+      int $$2 = 0;
+
+      ekw.m $$3;
+      do {
+         $$0.b();
+         $$1.f().c($$1.g() + (long)($$2++), $$1.h().e, $$1.h().f);
+         ekw.a();
+         $$3 = new ekw.m($$1.f(), $$1.h().a(2), $$1.h().b(2));
+         $$0.a($$3);
+         $$3.a($$3, $$0, $$1.f());
+         List<eij> $$4 = $$3.c;
+
+         while (!$$4.isEmpty()) {
+            int $$5 = $$1.f().a($$4.size());
+            eij $$6 = $$4.remove($$5);
+            $$6.a($$3, $$0, $$1.f());
+         }
+
+         $$0.a($$1.b().e(), $$1.b().f(), $$1.f(), 10);
+      } while ($$0.c() || $$3.b == null);
    }
 
    @Override
-   protected ekz<?> a() {
-      return ekz.a;
+   public eio<?> e() {
+      return eio.n;
    }
 }

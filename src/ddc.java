@@ -1,40 +1,108 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList.Builder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
+import java.util.function.Function;
+import java.util.function.ToIntFunction;
+import java.util.stream.Collectors;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class ddc extends dej implements ded {
-   public static final MapCodec<ddc> a = b(ddc::new);
-   private static final evf b = evc.a(dea.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0), dea.a(6.0, 0.0, 6.0, 10.0, 8.0, 10.0));
+public class ddc {
+   public static <T> List<ddc.b> a(List<T> $$0, Function<T, List<jm<ehj>>> $$1, boolean $$2) {
+      Object2IntMap<ehj> $$3 = new Object2IntOpenHashMap();
+      MutableInt $$4 = new MutableInt(0);
 
-   @Override
-   public MapCodec<ddc> a() {
-      return a;
+      record a(int a, int b, ehj c) {
+      }
+
+      Comparator<a> $$5 = Comparator.comparingInt(a::b).thenComparingInt(a::a);
+      Map<a, Set<a>> $$6 = new TreeMap<>($$5);
+      int $$7 = 0;
+
+      for (T $$8 : $$0) {
+         List<a> $$9 = Lists.newArrayList();
+         List<jm<ehj>> $$10 = $$1.apply($$8);
+         $$7 = Math.max($$7, $$10.size());
+
+         for (int $$11 = 0; $$11 < $$10.size(); $$11++) {
+            for (ji<ehj> $$12 : $$10.get($$11)) {
+               ehj $$13 = $$12.a();
+               $$9.add(new a($$3.computeIfAbsent($$13, $$1x -> $$4.getAndIncrement()), $$11, $$13));
+            }
+         }
+
+         for (int $$14 = 0; $$14 < $$9.size(); $$14++) {
+            Set<a> $$15 = $$6.computeIfAbsent($$9.get($$14), $$1x -> new TreeSet<>($$5));
+            if ($$14 < $$9.size() - 1) {
+               $$15.add($$9.get($$14 + 1));
+            }
+         }
+      }
+
+      Set<a> $$16 = new TreeSet<>($$5);
+      Set<a> $$17 = new TreeSet<>($$5);
+      List<a> $$18 = Lists.newArrayList();
+
+      for (a $$19 : $$6.keySet()) {
+         if (!$$17.isEmpty()) {
+            throw new IllegalStateException("You somehow broke the universe; DFS bork (iteration finished with non-empty in-progress vertex set");
+         }
+
+         if (!$$16.contains($$19) && ayj.a($$6, $$16, $$17, $$18::add, $$19)) {
+            if (!$$2) {
+               throw new IllegalStateException("Feature order cycle found");
+            }
+
+            List<T> $$20 = new ArrayList<>($$0);
+
+            int $$21;
+            do {
+               $$21 = $$20.size();
+               ListIterator<T> $$22 = $$20.listIterator();
+
+               while ($$22.hasNext()) {
+                  T $$23 = $$22.next();
+                  $$22.remove();
+
+                  try {
+                     a($$20, $$1, false);
+                  } catch (IllegalStateException var18) {
+                     continue;
+                  }
+
+                  $$22.add($$23);
+               }
+            } while ($$21 != $$20.size());
+
+            throw new IllegalStateException("Feature order cycle found, involved sources: " + $$20);
+         }
+      }
+
+      Collections.reverse($$18);
+      Builder<ddc.b> $$25 = ImmutableList.builder();
+
+      for (int $$26 = 0; $$26 < $$7; $$26++) {
+         int $$27 = $$26;
+         List<ehj> $$28 = $$18.stream().filter($$1x -> $$1x.b() == $$27).map(a::c).collect(Collectors.toList());
+         $$25.add(new ddc.b($$28));
+      }
+
+      return $$25.build();
    }
 
-   protected ddc(drc.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected evf a(drd $$0, daf $$1, io $$2, eur $$3) {
-      return b;
-   }
-
-   @Override
-   protected boolean b(drd $$0, daf $$1, io $$2) {
-      return $$0.a(dec.dR) || super.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean b(dbc $$0, io $$1, drd $$2) {
-      return $$0.b_($$1.c()).c();
-   }
-
-   @Override
-   public boolean a(daz $$0, aym $$1, io $$2, drd $$3) {
-      return (double)$$0.z.i() < 0.45;
-   }
-
-   @Override
-   public void a(aqn $$0, aym $$1, io $$2, drd $$3) {
-      dqs.e.a($$0, $$0.l().g(), $$2, $$3, $$1);
+   public static record b(List<ehj> a, ToIntFunction<ehj> b) {
+      b(List<ehj> $$0) {
+         this($$0, ac.h($$0));
+      }
    }
 }

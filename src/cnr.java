@@ -1,59 +1,47 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
-import java.util.Collection;
-import java.util.List;
+public abstract class cnr extends cns implements cnh {
+   private static final akg<cuk> b = akk.a(cnr.class, aki.h);
 
-public class cnr {
-   private final List<cno> a = Lists.newArrayList();
-   private int b;
-
-   public ImmutableList<cno> a() {
-      return ImmutableList.copyOf(this.a);
+   public cnr(bsv<? extends cnr> $$0, dbt $$1) {
+      super($$0, $$1);
    }
 
-   public cnr a(int $$0, float $$1) {
-      this.a.add(new cno($$0, $$1));
-      this.b();
-      return this;
+   public cnr(bsv<? extends cnr> $$0, double $$1, double $$2, double $$3, dbt $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
-   public cnr a(Collection<cno> $$0) {
-      this.a.addAll($$0);
-      this.b();
-      return this;
+   public cnr(bsv<? extends cnr> $$0, btk $$1, dbt $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private void b() {
-      Int2ObjectSortedMap<cno> $$0 = new Int2ObjectAVLTreeMap();
-      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
-      this.a.clear();
-      this.a.addAll($$0.values());
-      this.b = 0;
+   public void a(cuk $$0) {
+      this.ap().a(b, $$0.c(1));
    }
 
-   public float a(int $$0) {
-      if (this.a.size() <= 0) {
-         return 0.0F;
+   protected abstract cuf u();
+
+   @Override
+   public cuk p() {
+      return this.ap().a(b);
+   }
+
+   @Override
+   protected void a(akk.a $$0) {
+      $$0.a(b, new cuk(this.u()));
+   }
+
+   @Override
+   public void b(ur $$0) {
+      super.b($$0);
+      $$0.a("Item", this.p().a(this.dR()));
+   }
+
+   @Override
+   public void a(ur $$0) {
+      super.a($$0);
+      if ($$0.b("Item", 10)) {
+         this.a(cuk.a(this.dR(), (vo)$$0.p("Item")).orElseGet(() -> new cuk(this.u())));
       } else {
-         cno $$1 = this.a.get(this.b);
-         cno $$2 = this.a.get(this.a.size() - 1);
-         boolean $$3 = $$0 < $$1.a();
-         int $$4 = $$3 ? 0 : this.b;
-         float $$5 = $$3 ? $$2.b() : $$1.b();
-
-         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
-            cno $$7 = this.a.get($$6);
-            if ($$7.a() > $$0) {
-               break;
-            }
-
-            this.b = $$6;
-            $$5 = $$7.b();
-         }
-
-         return $$5;
+         this.a(new cuk(this.u()));
       }
    }
 }

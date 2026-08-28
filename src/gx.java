@@ -1,8 +1,98 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gx {
+public class gx implements ArgumentType<gx.a> {
+   private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "#foo");
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xl.b("arguments.function.tag.unknown", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xl.b("arguments.function.unknown", $$0));
+
+   public static gx a() {
+      return new gx();
+   }
+
+   public gx.a a(StringReader $$0) throws CommandSyntaxException {
+      if ($$0.canRead() && $$0.peek() == '#') {
+         $$0.skip();
+         final alb $$1 = alb.a($$0);
+         return new gx.a() {
+            @Override
+            public Collection<ib<ep>> a(CommandContext<ep> $$0) throws CommandSyntaxException {
+               return gx.b($$0, $$1);
+            }
+
+            @Override
+            public Pair<alb, Either<ib<ep>, Collection<ib<ep>>>> b(CommandContext<ep> $$0) throws CommandSyntaxException {
+               return Pair.of($$1, Either.right(gx.b($$0, $$1)));
+            }
+
+            @Override
+            public Pair<alb, Collection<ib<ep>>> c(CommandContext<ep> $$0) throws CommandSyntaxException {
+               return Pair.of($$1, gx.b($$0, $$1));
+            }
+         };
+      } else {
+         final alb $$2 = alb.a($$0);
+         return new gx.a() {
+            @Override
+            public Collection<ib<ep>> a(CommandContext<ep> $$0) throws CommandSyntaxException {
+               return Collections.singleton(gx.a($$0, $$2));
+            }
+
+            @Override
+            public Pair<alb, Either<ib<ep>, Collection<ib<ep>>>> b(CommandContext<ep> $$0) throws CommandSyntaxException {
+               return Pair.of($$2, Either.left(gx.a($$0, $$2)));
+            }
+
+            @Override
+            public Pair<alb, Collection<ib<ep>>> c(CommandContext<ep> $$0) throws CommandSyntaxException {
+               return Pair.of($$2, Collections.singleton(gx.a($$0, $$2)));
+            }
+         };
+      }
+   }
+
+   static ib<ep> a(CommandContext<ep> $$0, alb $$1) throws CommandSyntaxException {
+      return ((ep)$$0.getSource()).l().aF().a($$1).orElseThrow(() -> c.create($$1.toString()));
+   }
+
+   static Collection<ib<ep>> b(CommandContext<ep> $$0, alb $$1) throws CommandSyntaxException {
+      Collection<ib<ep>> $$2 = ((ep)$$0.getSource()).l().aF().b($$1);
+      if ($$2 == null) {
+         throw b.create($$1.toString());
+      } else {
+         return $$2;
+      }
+   }
+
+   public static Collection<ib<ep>> a(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+      return ((gx.a)$$0.getArgument($$1, gx.a.class)).a($$0);
+   }
+
+   public static Pair<alb, Either<ib<ep>, Collection<ib<ep>>>> b(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+      return ((gx.a)$$0.getArgument($$1, gx.a.class)).b($$0);
+   }
+
+   public static Pair<alb, Collection<ib<ep>>> c(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+      return ((gx.a)$$0.getArgument($$1, gx.a.class)).c($$0);
+   }
+
+   public Collection<String> getExamples() {
+      return a;
+   }
+
+   public interface a {
+      Collection<ib<ep>> a(CommandContext<ep> var1) throws CommandSyntaxException;
+
+      Pair<alb, Either<ib<ep>, Collection<ib<ep>>>> b(CommandContext<ep> var1) throws CommandSyntaxException;
+
+      Pair<alb, Collection<ib<ep>>> c(CommandContext<ep> var1) throws CommandSyntaxException;
+   }
 }

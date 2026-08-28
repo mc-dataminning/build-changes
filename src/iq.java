@@ -1,69 +1,57 @@
-public class iq {
-   public static final int a = 0;
-   public static final int b = 1;
-   public static final int c = 2;
-   public static final int d = 3;
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
-   private final int j;
-   private final int k;
-   private int l;
-   private int m;
-   private int n;
-   private int o;
+import com.google.gson.JsonObject;
+import com.mojang.brigadier.arguments.FloatArgumentType;
 
-   public iq(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3 - $$0 + 1;
-      this.i = $$4 - $$1 + 1;
-      this.j = $$5 - $$2 + 1;
-      this.k = this.h * this.i * this.j;
-   }
+public class iq implements ik<FloatArgumentType, iq.a> {
+   public void a(iq.a $$0, wl $$1) {
+      boolean $$2 = $$0.b != -Float.MAX_VALUE;
+      boolean $$3 = $$0.c != Float.MAX_VALUE;
+      $$1.k(im.a($$2, $$3));
+      if ($$2) {
+         $$1.a($$0.b);
+      }
 
-   public boolean a() {
-      if (this.l == this.k) {
-         return false;
-      } else {
-         this.m = this.l % this.h;
-         int $$0 = this.l / this.h;
-         this.n = $$0 % this.i;
-         this.o = $$0 / this.i;
-         this.l++;
-         return true;
+      if ($$3) {
+         $$1.a($$0.c);
       }
    }
 
-   public int b() {
-      return this.e + this.m;
+   public iq.a a(wl $$0) {
+      byte $$1 = $$0.readByte();
+      float $$2 = im.a($$1) ? $$0.readFloat() : -Float.MAX_VALUE;
+      float $$3 = im.b($$1) ? $$0.readFloat() : Float.MAX_VALUE;
+      return new iq.a($$2, $$3);
    }
 
-   public int c() {
-      return this.f + this.n;
+   public void a(iq.a $$0, JsonObject $$1) {
+      if ($$0.b != -Float.MAX_VALUE) {
+         $$1.addProperty("min", $$0.b);
+      }
+
+      if ($$0.c != Float.MAX_VALUE) {
+         $$1.addProperty("max", $$0.c);
+      }
    }
 
-   public int d() {
-      return this.g + this.o;
+   public iq.a a(FloatArgumentType $$0) {
+      return new iq.a($$0.getMinimum(), $$0.getMaximum());
    }
 
-   public int e() {
-      int $$0 = 0;
-      if (this.m == 0 || this.m == this.h - 1) {
-         $$0++;
+   public final class a implements ik.a<FloatArgumentType> {
+      final float b;
+      final float c;
+
+      a(final float $$1, final float $$2) {
+         this.b = $$1;
+         this.c = $$2;
       }
 
-      if (this.n == 0 || this.n == this.i - 1) {
-         $$0++;
+      public FloatArgumentType a(el $$0) {
+         return FloatArgumentType.floatArg(this.b, this.c);
       }
 
-      if (this.o == 0 || this.o == this.j - 1) {
-         $$0++;
+      @Override
+      public ik<FloatArgumentType, ?> a() {
+         return iq.this;
       }
-
-      return $$0;
    }
 }

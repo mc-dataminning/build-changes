@@ -1,49 +1,89 @@
 import java.util.EnumSet;
+import java.util.List;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class caf extends bzo {
-   private static final cdh b = cdh.b().a(6.0);
-   public static final int a = 400;
-   private final ces c;
-   private cll d;
-   private int e;
+public class caf extends cai {
+   private final btm a;
+   private final Predicate<btm> b;
+   @Nullable
+   private btm c;
+   private final double d;
+   private final ccw e;
+   private int f;
+   private final float g;
+   private float h;
+   private final float i;
 
-   public caf(ces $$0) {
-      this.c = $$0;
-      this.a(EnumSet.of(bzo.a.a, bzo.a.b));
-   }
-
-   @Override
-   public boolean a() {
-      if (!this.c.dP().Q()) {
-         return false;
-      } else if (this.c.el().a(8000) != 0) {
-         return false;
-      } else {
-         this.d = this.c.dP().a(cll.class, b, this.c, this.c.du(), this.c.dw(), this.c.dA(), this.c.cK().c(6.0, 2.0, 6.0));
-         return this.d != null;
+   public caf(btm $$0, double $$1, float $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1x -> $$1x != null && $$0.getClass() != $$1x.getClass();
+      this.d = $$1;
+      this.e = $$0.K();
+      this.g = $$2;
+      this.i = $$3;
+      this.a(EnumSet.of(cai.a.a, cai.a.b));
+      if (!($$0.K() instanceof ccv) && !($$0.K() instanceof ccu)) {
+         throw new IllegalArgumentException("Unsupported mob type for FollowMobGoal");
       }
    }
 
    @Override
+   public boolean a() {
+      List<btm> $$0 = this.a.dP().a(btm.class, this.a.cK().g((double)this.i), this.b);
+      if (!$$0.isEmpty()) {
+         for (btm $$1 : $$0) {
+            if (!$$1.ch()) {
+               this.c = $$1;
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   @Override
    public boolean b() {
-      return this.e > 0;
+      return this.c != null && !this.e.l() && this.a.g(this.c) > (double)(this.g * this.g);
    }
 
    @Override
    public void c() {
-      this.e = this.a(400);
-      this.c.w(true);
+      this.f = 0;
+      this.h = this.a.a(eoh.j);
+      this.a.a(eoh.j, 0.0F);
    }
 
    @Override
    public void d() {
-      this.c.w(false);
-      this.d = null;
+      this.c = null;
+      this.e.n();
+      this.a.a(eoh.j, this.h);
    }
 
    @Override
    public void e() {
-      this.c.G().a(this.d, 30.0F, 30.0F);
-      this.e--;
+      if (this.c != null && !this.a.gd()) {
+         this.a.G().a(this.c, 10.0F, (float)this.a.aa());
+         if (--this.f <= 0) {
+            this.f = this.a(10);
+            double $$0 = this.a.du() - this.c.du();
+            double $$1 = this.a.dw() - this.c.dw();
+            double $$2 = this.a.dA() - this.c.dA();
+            double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+            if (!($$3 <= (double)(this.g * this.g))) {
+               this.e.a(this.c, this.d);
+            } else {
+               this.e.n();
+               bzk $$4 = this.c.G();
+               if ($$3 <= (double)this.g || $$4.e() == this.a.du() && $$4.f() == this.a.dw() && $$4.g() == this.a.dA()) {
+                  double $$5 = this.c.du() - this.a.du();
+                  double $$6 = this.c.dA() - this.a.dA();
+                  this.e.a(this.a.du() - $$5, this.a.dw(), this.a.dA() - $$6, this.d);
+               }
+            }
+         }
+      }
    }
 }

@@ -1,16 +1,36 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-public class etc {
-   private static final Codec<etb> d = le.J.q().dispatch(etb::a, eta::a);
-   public static final Codec<etb> a = Codec.lazyInitialized(
-      () -> Codec.either(esz.c, d).xmap(Either::unwrap, $$0 -> $$0 instanceof esz $$1 ? Either.left($$1) : Either.right($$0))
-   );
-   public static final eta b = a("storage", etd.a);
-   public static final eta c = a("context", esz.b);
+public class etc extends ete {
+   public static final MapCodec<etc> a = a(etc::new);
 
-   private static eta a(String $$0, MapCodec<? extends etb> $$1) {
-      return jk.a(le.J, new akn($$0), new eta($$1));
+   etc(List<etn> $$0) {
+      super($$0, ac.b($$0));
+   }
+
+   @Override
+   public eto b() {
+      return etp.d;
+   }
+
+   public static etc.a a(etn.a... $$0) {
+      return new etc.a($$0);
+   }
+
+   public static class a extends ete.a {
+      public a(etn.a... $$0) {
+         super($$0);
+      }
+
+      @Override
+      public etc.a or(etn.a $$0) {
+         this.a($$0);
+         return this;
+      }
+
+      @Override
+      protected etn a(List<etn> $$0) {
+         return new etc($$0);
+      }
    }
 }

@@ -1,12 +1,8 @@
-public class eh extends Exception {
-   private final wx a;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public eh(wx $$0) {
-      super($$0.getString());
-      this.a = $$0;
-   }
-
-   public wx a() {
-      return this.a;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface eh {
 }

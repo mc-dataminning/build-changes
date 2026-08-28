@@ -1,86 +1,61 @@
-public class afl implements ze<abq> {
-   public static final yv<wi, afl> a = ze.a(afl::a, afl::new);
-   public static final float b = 8.0F;
-   private final ix<avh> c;
-   private final avj d;
+public class afl implements zs<ace> {
+   public static final zj<wl, afl> a = zs.a(afl::a, afl::new);
+   private final int b;
+   private final int c;
+   private final int d;
    private final int e;
-   private final int f;
-   private final int g;
-   private final float h;
-   private final float i;
-   private final long j;
 
-   public afl(ix<avh> $$0, avj $$1, double $$2, double $$3, double $$4, float $$5, float $$6, long $$7) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = (int)($$2 * 8.0);
-      this.f = (int)($$3 * 8.0);
-      this.g = (int)($$4 * 8.0);
-      this.h = $$5;
-      this.i = $$6;
-      this.j = $$7;
+   public afl(bsp $$0) {
+      this($$0.al(), $$0.ds());
    }
 
-   private afl(wi $$0) {
-      this.c = avh.d.decode($$0);
-      this.d = $$0.b(avj.class);
-      this.e = $$0.readInt();
-      this.f = $$0.readInt();
-      this.g = $$0.readInt();
-      this.h = $$0.readFloat();
-      this.i = $$0.readFloat();
-      this.j = $$0.readLong();
+   public afl(int $$0, evm $$1) {
+      this.b = $$0;
+      double $$2 = 3.9;
+      double $$3 = ayu.a($$1.c, -3.9, 3.9);
+      double $$4 = ayu.a($$1.d, -3.9, 3.9);
+      double $$5 = ayu.a($$1.e, -3.9, 3.9);
+      this.c = (int)($$3 * 8000.0);
+      this.d = (int)($$4 * 8000.0);
+      this.e = (int)($$5 * 8000.0);
    }
 
-   private void a(wi $$0) {
-      avh.d.encode($$0, this.c);
-      $$0.a(this.d);
-      $$0.p(this.e);
-      $$0.p(this.f);
-      $$0.p(this.g);
-      $$0.a(this.h);
-      $$0.a(this.i);
-      $$0.b(this.j);
+   private afl(wl $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readShort();
+      this.d = $$0.readShort();
+      this.e = $$0.readShort();
+   }
+
+   private void a(wl $$0) {
+      $$0.c(this.b);
+      $$0.l(this.c);
+      $$0.l(this.d);
+      $$0.l(this.e);
    }
 
    @Override
-   public zg<afl> a() {
-      return agc.aS;
+   public zu<afl> a() {
+      return agq.aE;
    }
 
-   public void a(abq $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public ix<avh> b() {
+   public int b() {
+      return this.b;
+   }
+
+   public int e() {
       return this.c;
    }
 
-   public avj e() {
+   public int f() {
       return this.d;
    }
 
-   public double f() {
-      return (double)((float)this.e / 8.0F);
-   }
-
-   public double g() {
-      return (double)((float)this.f / 8.0F);
-   }
-
-   public double h() {
-      return (double)((float)this.g / 8.0F);
-   }
-
-   public float i() {
-      return this.h;
-   }
-
-   public float j() {
-      return this.i;
-   }
-
-   public long k() {
-      return this.j;
+   public int g() {
+      return this.e;
    }
 }

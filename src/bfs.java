@@ -1,22 +1,31 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
+import java.util.Objects;
+import java.util.function.UnaryOperator;
 
-public class bfs extends azs {
-   public bfs(Schema $$0) {
-      super($$0, bga.b);
+public class bfs extends DataFix {
+   private final String a;
+   private final TypeReference b;
+   private final UnaryOperator<String> c;
+
+   public bfs(Schema $$0, String $$1, TypeReference $$2, UnaryOperator<String> $$3) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "PlayerUUIDFix",
-         this.getInputSchema().getType(this.a),
-         $$0 -> {
-            OpticFinder<?> $$1 = $$0.getType().findField("RootVehicle");
-            return $$0.updateTyped($$1, $$1.type(), $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> c($$0xx, "Attach", "Attach").orElse($$0xx)))
-               .update(DSL.remainderFinder(), $$0x -> bcz.c(bcz.b($$0x)));
-         }
-      );
+      Type<Pair<String, String>> $$0 = DSL.named(this.b.typeName(), bid.a());
+      if (!Objects.equals($$0, this.getInputSchema().getType(this.b))) {
+         throw new IllegalStateException("\"" + this.b.typeName() + "\" is not what was expected.");
+      } else {
+         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this.c));
+      }
    }
 }

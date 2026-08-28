@@ -1,90 +1,128 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Splitter;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-import org.apache.commons.lang3.math.NumberUtils;
+import java.util.Objects;
+import java.util.Optional;
 
 public class bep extends DataFix {
-   private static final String b = "generatorOptions";
-   @VisibleForTesting
-   static final String a = "minecraft:bedrock,2*minecraft:dirt,minecraft:grass_block;1;village";
-   private static final Splitter c = Splitter.on(';').limit(5);
-   private static final Splitter d = Splitter.on(',');
-   private static final Splitter e = Splitter.on('x').limit(2);
-   private static final Splitter f = Splitter.on('*').limit(2);
-   private static final Splitter g = Splitter.on(':').limit(3);
+   private static final String[] a = (String[])DataFixUtils.make(new String[256], $$0 -> {
+      $$0[1] = "Item";
+      $$0[2] = "XPOrb";
+      $$0[7] = "ThrownEgg";
+      $$0[8] = "LeashKnot";
+      $$0[9] = "Painting";
+      $$0[10] = "Arrow";
+      $$0[11] = "Snowball";
+      $$0[12] = "Fireball";
+      $$0[13] = "SmallFireball";
+      $$0[14] = "ThrownEnderpearl";
+      $$0[15] = "EyeOfEnderSignal";
+      $$0[16] = "ThrownPotion";
+      $$0[17] = "ThrownExpBottle";
+      $$0[18] = "ItemFrame";
+      $$0[19] = "WitherSkull";
+      $$0[20] = "PrimedTnt";
+      $$0[21] = "FallingSand";
+      $$0[22] = "FireworksRocketEntity";
+      $$0[23] = "TippedArrow";
+      $$0[24] = "SpectralArrow";
+      $$0[25] = "ShulkerBullet";
+      $$0[26] = "DragonFireball";
+      $$0[30] = "ArmorStand";
+      $$0[41] = "Boat";
+      $$0[42] = "MinecartRideable";
+      $$0[43] = "MinecartChest";
+      $$0[44] = "MinecartFurnace";
+      $$0[45] = "MinecartTNT";
+      $$0[46] = "MinecartHopper";
+      $$0[47] = "MinecartSpawner";
+      $$0[40] = "MinecartCommandBlock";
+      $$0[48] = "Mob";
+      $$0[49] = "Monster";
+      $$0[50] = "Creeper";
+      $$0[51] = "Skeleton";
+      $$0[52] = "Spider";
+      $$0[53] = "Giant";
+      $$0[54] = "Zombie";
+      $$0[55] = "Slime";
+      $$0[56] = "Ghast";
+      $$0[57] = "PigZombie";
+      $$0[58] = "Enderman";
+      $$0[59] = "CaveSpider";
+      $$0[60] = "Silverfish";
+      $$0[61] = "Blaze";
+      $$0[62] = "LavaSlime";
+      $$0[63] = "EnderDragon";
+      $$0[64] = "WitherBoss";
+      $$0[65] = "Bat";
+      $$0[66] = "Witch";
+      $$0[67] = "Endermite";
+      $$0[68] = "Guardian";
+      $$0[69] = "Shulker";
+      $$0[90] = "Pig";
+      $$0[91] = "Sheep";
+      $$0[92] = "Cow";
+      $$0[93] = "Chicken";
+      $$0[94] = "Squid";
+      $$0[95] = "Wolf";
+      $$0[96] = "MushroomCow";
+      $$0[97] = "SnowMan";
+      $$0[98] = "Ozelot";
+      $$0[99] = "VillagerGolem";
+      $$0[100] = "EntityHorse";
+      $$0[101] = "Rabbit";
+      $$0[120] = "Villager";
+      $$0[200] = "EnderCrystal";
+   });
 
    public bep(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
    public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("LevelFlatGeneratorInfoFix", this.getInputSchema().getType(bga.a), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.get("generatorName").asString("").equalsIgnoreCase("flat")
-         ? $$0.update("generatorOptions", $$0x -> (Dynamic)DataFixUtils.orElse($$0x.asString().map(this::a).map($$0x::createString).result(), $$0x))
-         : $$0;
-   }
-
-   @VisibleForTesting
-   String a(String $$0) {
-      if ($$0.isEmpty()) {
-         return "minecraft:bedrock,2*minecraft:dirt,minecraft:grass_block;1;village";
-      } else {
-         Iterator<String> $$1 = c.split($$0).iterator();
-         String $$2 = $$1.next();
-         int $$3;
-         String $$4;
-         if ($$1.hasNext()) {
-            $$3 = NumberUtils.toInt($$2, 0);
-            $$4 = $$1.next();
-         } else {
-            $$3 = 0;
-            $$4 = $$2;
-         }
-
-         if ($$3 >= 0 && $$3 <= 3) {
-            StringBuilder $$7 = new StringBuilder();
-            Splitter $$8 = $$3 < 3 ? e : f;
-            $$7.append(StreamSupport.<String>stream(d.split($$4).spliterator(), false).map($$2x -> {
-               List<String> $$3x = $$8.splitToList($$2x);
-               int $$4x;
-               String $$5x;
-               if ($$3x.size() == 2) {
-                  $$4x = NumberUtils.toInt($$3x.get(0));
-                  $$5x = $$3x.get(1);
-               } else {
-                  $$4x = 1;
-                  $$5x = $$3x.get(0);
-               }
-
-               List<String> $$8x = g.splitToList($$5x);
-               int $$9 = $$8x.get(0).equals("minecraft") ? 1 : 0;
-               String $$10 = $$8x.get($$9);
-               int $$11 = $$3 == 3 ? bbw.a("minecraft:" + $$10) : NumberUtils.toInt($$10, 0);
-               int $$12 = $$9 + 1;
-               int $$13 = $$8x.size() > $$12 ? NumberUtils.toInt($$8x.get($$12), 0) : 0;
-               return ($$4x == 1 ? "" : $$4x + "*") + bav.b($$11 << 4 | $$13).get("Name").asString("");
-            }).collect(Collectors.joining(",")));
-
-            while ($$1.hasNext()) {
-               $$7.append(';').append($$1.next());
+      Schema $$0 = this.getInputSchema();
+      Type<?> $$1 = $$0.getType(bgs.t);
+      OpticFinder<Pair<String, String>> $$2 = DSL.fieldFinder("id", DSL.named(bgs.D.typeName(), bid.a()));
+      OpticFinder<String> $$3 = DSL.fieldFinder("id", DSL.string());
+      OpticFinder<?> $$4 = $$1.findField("tag");
+      OpticFinder<?> $$5 = $$4.type().findField("EntityTag");
+      OpticFinder<?> $$6 = DSL.typeFinder($$0.getTypeRaw(bgs.B));
+      Type<?> $$7 = this.getOutputSchema().getTypeRaw(bgs.B);
+      return this.fixTypeEverywhereTyped("ItemSpawnEggFix", $$1, $$6x -> {
+         Optional<Pair<String, String>> $$7x = $$6x.getOptional($$2);
+         if ($$7x.isPresent() && Objects.equals($$7x.get().getSecond(), "minecraft:spawn_egg")) {
+            Dynamic<?> $$8 = (Dynamic<?>)$$6x.get(DSL.remainderFinder());
+            short $$9 = $$8.get("Damage").asShort((short)0);
+            Optional<? extends Typed<?>> $$10 = $$6x.getOptionalTyped($$4);
+            Optional<? extends Typed<?>> $$11 = $$10.flatMap($$1xx -> $$1xx.getOptionalTyped($$5));
+            Optional<? extends Typed<?>> $$12 = $$11.flatMap($$1xx -> $$1xx.getOptionalTyped($$6));
+            Optional<String> $$13 = $$12.flatMap($$1xx -> $$1xx.getOptional($$3));
+            Typed<?> $$14 = $$6x;
+            String $$15 = a[$$9 & 255];
+            if ($$15 != null && ($$13.isEmpty() || !Objects.equals($$13.get(), $$15))) {
+               Typed<?> $$16 = $$6x.getOrCreateTyped($$4);
+               Typed<?> $$17 = $$16.getOrCreateTyped($$5);
+               Typed<?> $$18 = $$17.getOrCreateTyped($$6);
+               Typed<?> $$20 = ac.a($$18, $$7, $$2xx -> $$2xx.set("id", $$8.createString($$15)));
+               $$14 = $$6x.set($$4, $$16.set($$5, $$17.set($$6, $$20)));
             }
 
-            return $$7.toString();
+            if ($$9 != 0) {
+               $$8 = $$8.set("Damage", $$8.createShort((short)0));
+               $$14 = $$14.set(DSL.remainderFinder(), $$8);
+            }
+
+            return $$14;
          } else {
-            return "minecraft:bedrock,2*minecraft:dirt,minecraft:grass_block;1;village";
+            return $$6x;
          }
-      }
+      });
    }
 }

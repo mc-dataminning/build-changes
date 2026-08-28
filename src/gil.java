@@ -1,18 +1,16 @@
-public class gil extends gkz {
-   private static final akn a = new akn("textures/entity/zombie/husk.png");
+public class gil extends gjg {
+   public static final alb a = new alb("textures/entity/guardian_elder.png");
 
-   public gil(ght.a $$0) {
-      super($$0, fvv.ar, fvv.as, fvv.at);
+   public gil(gis.a $$0) {
+      super($$0, 1.2F, fwu.V);
    }
 
-   protected void a(cjx $$0, eyu $$1, float $$2) {
-      float $$3 = 1.0625F;
-      $$1.b(1.0625F, 1.0625F, 1.0625F);
-      super.a($$0, $$1, $$2);
+   protected void a(cju $$0, ezt $$1, float $$2) {
+      $$1.b(cjn.b, cjn.b, cjn.b);
    }
 
    @Override
-   public akn a(cjx $$0) {
+   public alb a(cju $$0) {
       return a;
    }
 }

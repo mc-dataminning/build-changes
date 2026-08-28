@@ -1,37 +1,70 @@
-public class fzv extends fzy {
-   private final fts a;
-   private final gcs b = gcs.i(ghm.a);
-
-   fzv(fwr $$0, double $$1, double $$2, double $$3) {
+public class fzv extends gbx {
+   fzv(fxq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7) {
       super($$0, $$1, $$2, $$3);
-      this.a = new ftd(feb.Q().aR().a(fvv.V));
-      this.u = 0.0F;
-      this.t = 30;
+      this.d(3.0F);
+      this.b(0.25F, 0.25F);
+      if ($$7) {
+         this.t = this.r.a(50) + 280;
+      } else {
+         this.t = this.r.a(50) + 80;
+      }
+
+      this.u = 3.0E-6F;
+      this.j = $$4;
+      this.k = $$5 + (double)(this.r.i() / 500.0F);
+      this.l = $$6;
    }
 
    @Override
-   public gac b() {
-      return gac.e;
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ < this.t && !(this.y <= 0.0F)) {
+         this.j = this.j + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
+         this.l = this.l + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         if (this.s >= this.t - 60 && this.y > 0.01F) {
+            this.y -= 0.015F;
+         }
+      } else {
+         this.k();
+      }
    }
 
    @Override
-   public void a(eyy $$0, fdm $$1, float $$2) {
-      float $$3 = ((float)this.s + $$2) / (float)this.t;
-      float $$4 = 0.05F + 0.5F * ayf.a($$3 * (float) Math.PI);
-      eyu $$5 = new eyu();
-      $$5.a($$1.f());
-      $$5.a(a.b.rotationDegrees(150.0F * $$3 - 60.0F));
-      $$5.b(-1.0F, -1.0F, 1.0F);
-      $$5.a(0.0F, -1.101F, 1.5F);
-      gck.a $$6 = feb.Q().aQ().c();
-      eyy $$7 = $$6.getBuffer(this.b);
-      this.a.a($$5, $$7, 15728880, gnm.d, 1.0F, 1.0F, 1.0F, $$4);
-      $$6.b();
+   public gbb b() {
+      return gbb.c;
    }
 
-   public static class a implements gab<lb> {
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fzv($$1, $$2, $$3, $$4);
+   public static class a implements gba<lm> {
+      private final gbs a;
+
+      public a(gbs $$0) {
+         this.a = $$0;
+      }
+
+      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fzv $$8 = new fzv($$1, $$2, $$3, $$4, $$5, $$6, $$7, false);
+         $$8.e(0.9F);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements gba<lm> {
+      private final gbs a;
+
+      public b(gbs $$0) {
+         this.a = $$0;
+      }
+
+      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fzv $$8 = new fzv($$1, $$2, $$3, $$4, $$5, $$6, $$7, true);
+         $$8.e(0.95F);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

@@ -1,17 +1,19 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
-import java.util.Objects;
+import com.mojang.serialization.Dynamic;
 
-public class bco extends bgl {
-   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:puffer_fish_spawn_egg", "minecraft:pufferfish_spawn_egg").build();
+public class bco extends bfq {
+   public bco(Schema $$0) {
+      super($$0, false, "EntityBrushableBlockFieldsRenameFix", bgs.s, "minecraft:brushable_block");
+   }
 
-   public bco(Schema $$0, boolean $$1) {
-      super("EntityPufferfishRenameFix", $$0, $$1);
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.renameField("loot_table", "LootTable").renameField("loot_table_seed", "LootTableSeed");
    }
 
    @Override
-   protected String a(String $$0) {
-      return Objects.equals("minecraft:puffer_fish", $$0) ? "minecraft:pufferfish" : $$0;
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

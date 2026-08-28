@@ -2,97 +2,61 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.concurrent.CompletableFuture;
 
-public class gm implements ArgumentType<gm.a> {
-   private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "#foo");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wx.b("arguments.function.tag.unknown", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wx.b("arguments.function.unknown", $$0));
+public class gm implements ArgumentType<gn> {
+   private static final Collection<String> b = Arrays.asList("0 0", "~ ~", "~1 ~-2", "^ ^", "^-1 ^0");
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xl.c("argument.pos2d.incomplete"));
 
    public static gm a() {
       return new gm();
    }
 
-   public gm.a a(StringReader $$0) throws CommandSyntaxException {
-      if ($$0.canRead() && $$0.peek() == '#') {
-         $$0.skip();
-         final akn $$1 = akn.a($$0);
-         return new gm.a() {
-            @Override
-            public Collection<hq<ee>> a(CommandContext<ee> $$0) throws CommandSyntaxException {
-               return gm.b($$0, $$1);
-            }
+   public static aqr a(CommandContext<ep> $$0, String $$1) {
+      iz $$2 = ((gn)$$0.getArgument($$1, gn.class)).c((ep)$$0.getSource());
+      return new aqr($$2.u(), $$2.w());
+   }
 
-            @Override
-            public Pair<akn, Either<hq<ee>, Collection<hq<ee>>>> b(CommandContext<ee> $$0) throws CommandSyntaxException {
-               return Pair.of($$1, Either.right(gm.b($$0, $$1)));
-            }
-
-            @Override
-            public Pair<akn, Collection<hq<ee>>> c(CommandContext<ee> $$0) throws CommandSyntaxException {
-               return Pair.of($$1, gm.b($$0, $$1));
-            }
-         };
+   public gn a(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = $$0.getCursor();
+      if (!$$0.canRead()) {
+         throw a.createWithContext($$0);
       } else {
-         final akn $$2 = akn.a($$0);
-         return new gm.a() {
-            @Override
-            public Collection<hq<ee>> a(CommandContext<ee> $$0) throws CommandSyntaxException {
-               return Collections.singleton(gm.a($$0, $$2));
-            }
-
-            @Override
-            public Pair<akn, Either<hq<ee>, Collection<hq<ee>>>> b(CommandContext<ee> $$0) throws CommandSyntaxException {
-               return Pair.of($$2, Either.left(gm.a($$0, $$2)));
-            }
-
-            @Override
-            public Pair<akn, Collection<hq<ee>>> c(CommandContext<ee> $$0) throws CommandSyntaxException {
-               return Pair.of($$2, Collections.singleton(gm.a($$0, $$2)));
-            }
-         };
+         gt $$2 = gt.a($$0);
+         if ($$0.canRead() && $$0.peek() == ' ') {
+            $$0.skip();
+            gt $$3 = gt.a($$0);
+            return new gu($$2, new gt(true, 0.0), $$3);
+         } else {
+            $$0.setCursor($$1);
+            throw a.createWithContext($$0);
+         }
       }
    }
 
-   static hq<ee> a(CommandContext<ee> $$0, akn $$1) throws CommandSyntaxException {
-      return ((ee)$$0.getSource()).l().aF().a($$1).orElseThrow(() -> c.create($$1.toString()));
-   }
-
-   static Collection<hq<ee>> b(CommandContext<ee> $$0, akn $$1) throws CommandSyntaxException {
-      Collection<hq<ee>> $$2 = ((ee)$$0.getSource()).l().aF().b($$1);
-      if ($$2 == null) {
-         throw b.create($$1.toString());
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      if (!($$0.getSource() instanceof eu)) {
+         return Suggestions.empty();
       } else {
-         return $$2;
+         String $$2 = $$1.getRemaining();
+         Collection<eu.b> $$3;
+         if (!$$2.isEmpty() && $$2.charAt(0) == '^') {
+            $$3 = Collections.singleton(eu.b.a);
+         } else {
+            $$3 = ((eu)$$0.getSource()).B();
+         }
+
+         return eu.b($$2, $$3, $$1, eq.a(this::a));
       }
-   }
-
-   public static Collection<hq<ee>> a(CommandContext<ee> $$0, String $$1) throws CommandSyntaxException {
-      return ((gm.a)$$0.getArgument($$1, gm.a.class)).a($$0);
-   }
-
-   public static Pair<akn, Either<hq<ee>, Collection<hq<ee>>>> b(CommandContext<ee> $$0, String $$1) throws CommandSyntaxException {
-      return ((gm.a)$$0.getArgument($$1, gm.a.class)).b($$0);
-   }
-
-   public static Pair<akn, Collection<hq<ee>>> c(CommandContext<ee> $$0, String $$1) throws CommandSyntaxException {
-      return ((gm.a)$$0.getArgument($$1, gm.a.class)).c($$0);
    }
 
    public Collection<String> getExamples() {
-      return a;
-   }
-
-   public interface a {
-      Collection<hq<ee>> a(CommandContext<ee> var1) throws CommandSyntaxException;
-
-      Pair<akn, Either<hq<ee>, Collection<hq<ee>>>> b(CommandContext<ee> var1) throws CommandSyntaxException;
-
-      Pair<akn, Collection<hq<ee>>> c(CommandContext<ee> var1) throws CommandSyntaxException;
+      return b;
    }
 }

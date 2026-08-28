@@ -1,49 +1,53 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dmp extends ddm {
-   public static final MapCodec<dmp> a = b(dmp::new);
-   public static final dsb<dqj> b = drt.by;
-   public static final dru c = drt.bA;
+public class dmp extends dlu {
+   public static final MapCodec<dmp> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dtk.a.fieldOf("wood_type").forGetter(dlu::d), u()).apply($$0, dmp::new));
+   public static final dsx b = dsn.ba;
 
    @Override
    public MapCodec<dmp> a() {
       return a;
    }
 
-   public dmp(drc.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, dqj.a).a(c, Boolean.valueOf(false)));
+   public dmp(dtk $$0, drw.d $$1) {
+      super($$0, $$1.a($$0.d()));
+      this.k(this.E.b().a(b, Integer.valueOf(0)).a(f, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dre.a<dea, drd> $$0) {
-      $$0.a(b, c);
+   protected boolean a(drx $$0, dbw $$1, iz $$2) {
+      return $$1.a_($$2.d()).e();
    }
 
    @Override
-   protected dkg a_(drd $$0) {
-      return dkg.c;
-   }
-
-   @Nullable
-   @Override
-   public doi a(io $$0, drd $$1) {
-      return new dqc($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends doi> doj<T> a(daz $$0, drd $$1, dok<T> $$2) {
-      return $$0 instanceof aqn $$3
-         ? a($$2, dok.Q, ($$1x, $$2x, $$3x, $$4) -> $$4.c().a($$3, $$2x, $$3x.d(drt.bA).orElse(false)))
-         : a($$2, dok.Q, ($$0x, $$1x, $$2x, $$3x) -> $$3x.c().a($$0x, $$1x, $$2x.d(drt.bA).orElse(false)));
+   public drx a(cxv $$0) {
+      enq $$1 = $$0.q().b_($$0.a());
+      return this.n().a(b, Integer.valueOf(dtd.a($$0.i() + 180.0F))).a(f, Boolean.valueOf($$1.a() == enr.c));
    }
 
    @Override
-   public void a(ctq $$0, ctl.b $$1, List<wx> $$2, cvj $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      dbr.a($$0, $$2, "spawn_data");
+   protected drx a(drx $$0, je $$1, drx $$2, dbu $$3, iz $$4, iz $$5) {
+      return $$1 == je.a && !this.a($$0, $$3, $$4) ? dew.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public float g(drx $$0) {
+      return dtd.b($$0.c(b));
+   }
+
+   @Override
+   protected drx a(drx $$0, dlh $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   }
+
+   @Override
+   protected drx a(drx $$0, djr $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   }
+
+   @Override
+   protected void a(dry.a<deu, drx> $$0) {
+      $$0.a(b, f);
    }
 }

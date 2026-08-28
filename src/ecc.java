@@ -1,32 +1,39 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class ecc implements ecd {
-   public static final Codec<ecc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(io.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, ecc::new)
-   );
-   private final Optional<io> b;
-   private final boolean c;
-
-   private ecc(Optional<io> $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class ecc extends eat<ede> {
+   public ecc(Codec<ede> $$0) {
+      super($$0);
    }
 
-   public static ecc a(io $$0, boolean $$1) {
-      return new ecc(Optional.of($$0), $$1);
-   }
+   @Override
+   public boolean a(eav<ede> $$0) {
+      dco $$1 = $$0.b();
+      iz $$2 = $$0.e();
+      iz.a $$3 = new iz.a();
+      iz.a $$4 = new iz.a();
 
-   public static ecc a() {
-      return new ecc(Optional.empty(), false);
-   }
+      for (int $$5 = 0; $$5 < 16; $$5++) {
+         for (int $$6 = 0; $$6 < 16; $$6++) {
+            int $$7 = $$2.u() + $$5;
+            int $$8 = $$2.w() + $$6;
+            int $$9 = $$1.a(dxp.a.e, $$7, $$8);
+            $$3.d($$7, $$9, $$8);
+            $$4.g($$3).c(je.a, 1);
+            dcs $$10 = $$1.t($$3).a();
+            if ($$10.a($$1, $$4, false)) {
+               $$1.a($$4, dew.dO.n(), 2);
+            }
 
-   public Optional<io> b() {
-      return this.b;
-   }
+            if ($$10.b($$1, $$3)) {
+               $$1.a($$3, dew.dN.n(), 2);
+               drx $$11 = $$1.a_($$4);
+               if ($$11.b(dme.c)) {
+                  $$1.a($$4, $$11.a(dme.c, Boolean.valueOf(true)), 2);
+               }
+            }
+         }
+      }
 
-   public boolean c() {
-      return this.c;
+      return true;
    }
 }

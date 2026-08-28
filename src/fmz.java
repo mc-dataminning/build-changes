@@ -1,180 +1,96 @@
-import java.util.stream.IntStream;
 import javax.annotation.Nullable;
-import org.joml.Vector3f;
 
-public abstract class fmz extends flz {
-   private final dps b;
-   private dpt c;
-   private final String[] d;
-   private final boolean r;
-   protected final dsq a;
-   private int s;
-   private int u;
+public class fmz extends fmy {
+   private static final int a = 1024;
+   private static final int b = 65535;
+   private static final xl c = xl.c("selectWorld.allowCommands.new");
+   private static final xl d = xl.c("selectWorld.gameMode");
+   private static final xl r = xl.c("lanServer.otherPlayers");
+   private static final xl s = xl.c("lanServer.port");
+   private static final xl u = xl.a("lanServer.port.unavailable.new", 1024, 65535);
+   private static final xl v = xl.a("lanServer.port.invalid.new", 1024, 65535);
+   private static final int w = 16733525;
+   private final fmy x;
+   private dbq y = dbq.a;
+   private boolean z;
+   private int A = ayl.a();
    @Nullable
-   private fiu v;
+   private fhi B;
 
-   public fmz(dps $$0, boolean $$1, boolean $$2) {
-      this($$0, $$1, $$2, wx.c("sign.edit"));
-   }
-
-   public fmz(dps $$0, boolean $$1, boolean $$2, wx $$3) {
-      super($$3);
-      this.b = $$0;
-      this.c = $$0.a($$1);
-      this.r = $$1;
-      this.a = dla.a($$0.n().b());
-      this.d = IntStream.range(0, 4).mapToObj($$1x -> this.c.a($$1x, $$2)).map(wx::getString).toArray(String[]::new);
+   public fmz(fmy $$0) {
+      super(xl.c("lanServer.title"));
+      this.x = $$0;
    }
 
    @Override
    protected void aN_() {
-      this.c(fga.a(ww.d, $$0 -> this.D()).a(this.n / 2 - 100, this.o / 4 + 144, 200, 20).a());
-      this.v = new fiu(() -> this.d[this.u], this::a, fiu.a(this.m), fiu.c(this.m), $$0 -> this.m.h.b($$0) <= this.b.c());
-   }
+      gsz $$0 = this.m.V();
+      this.y = $$0.u_();
+      this.z = $$0.bb().m();
+      this.c(fhg.a(dbq::e).a(dbq.a, dbq.d, dbq.b, dbq.c).a(this.y).a(this.n / 2 - 155, 100, 150, 20, d, ($$0x, $$1x) -> this.y = $$1x));
+      this.c(fhg.b(this.z).a(this.n / 2 + 5, 100, 150, 20, c, ($$0x, $$1x) -> this.z = $$1x));
+      fgz $$1 = fgz.a(xl.c("lanServer.start"), $$1x -> {
+         this.m.a(null);
+         xl $$2;
+         if ($$0.a(this.y, this.z, this.A)) {
+            $$2 = aob.a(this.A);
+         } else {
+            $$2 = xl.c("commands.publish.failed");
+         }
 
-   @Override
-   public void e() {
-      this.s++;
-      if (!this.C()) {
-         this.D();
-      }
-   }
-
-   private boolean C() {
-      return this.m != null && this.m.s != null && !this.b.o() && !this.b.b(this.m.s.cz());
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 265) {
-         this.u = this.u - 1 & 3;
-         this.v.f();
-         return true;
-      } else if ($$0 == 264 || $$0 == 257 || $$0 == 335) {
-         this.u = this.u + 1 & 3;
-         this.v.f();
-         return true;
-      } else {
-         return this.v.a($$0) ? true : super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      this.v.a($$0);
-      return true;
-   }
-
-   @Override
-   public void a(ffn $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      exq.c();
-      $$0.a(this.p, this.l, this.n / 2, 40, 16777215);
-      this.c($$0);
-      exq.d();
-   }
-
-   @Override
-   public void b(ffn $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+         this.m.l.d().a($$2);
+         this.m.d();
+      }).a(this.n / 2 - 155, this.o - 28, 150, 20).a();
+      this.B = new fhi(this.p, this.n / 2 - 75, 160, 150, 20, xl.c("lanServer.port"));
+      this.B.b($$1x -> {
+         xl $$2 = this.a($$1x);
+         this.B.c(xl.b(this.A + "").a(n.i));
+         if ($$2 == null) {
+            this.B.g(14737632);
+            this.B.a(null);
+            $$1.j = true;
+         } else {
+            this.B.g(16733525);
+            this.B.a(fik.a($$2));
+            $$1.j = false;
+         }
+      });
+      this.B.c(xl.b(this.A + "").a(n.i));
+      this.c(this.B);
+      this.c($$1);
+      this.c(fgz.a(xk.e, $$0x -> this.d()).a(this.n / 2 + 5, this.o - 28, 150, 20).a());
    }
 
    @Override
    public void d() {
-      this.D();
+      this.m.a(this.x);
    }
 
-   @Override
-   public void j() {
-      fws $$0 = this.m.L();
-      if ($$0 != null) {
-         $$0.b(new ahx(this.b.aA_(), this.r, this.d[0], this.d[1], this.d[2], this.d[3]));
-      }
-   }
-
-   @Override
-   public boolean k() {
-      return false;
-   }
-
-   protected abstract void a(ffn var1, drd var2);
-
-   protected abstract Vector3f m();
-
-   protected void b(ffn $$0, drd $$1) {
-      $$0.c().a((float)this.n / 2.0F, 90.0F, 50.0F);
-   }
-
-   private void c(ffn $$0) {
-      drd $$1 = this.b.n();
-      $$0.c().a();
-      this.b($$0, $$1);
-      $$0.c().a();
-      this.a($$0, $$1);
-      $$0.c().b();
-      this.d($$0);
-      $$0.c().b();
-   }
-
-   private void d(ffn $$0) {
-      $$0.c().a(0.0F, 0.0F, 4.0F);
-      Vector3f $$1 = this.m();
-      $$0.c().b($$1.x(), $$1.y(), $$1.z());
-      int $$2 = this.c.a() ? this.c.b().g() : gey.a(this.c);
-      boolean $$3 = this.s / 6 % 2 == 0;
-      int $$4 = this.v.g();
-      int $$5 = this.v.h();
-      int $$6 = 4 * this.b.b() / 2;
-      int $$7 = this.u * this.b.b() - $$6;
-
-      for (int $$8 = 0; $$8 < this.d.length; $$8++) {
-         String $$9 = this.d[$$8];
-         if ($$9 != null) {
-            if (this.p.a()) {
-               $$9 = this.p.a($$9);
+   @Nullable
+   private xl a(String $$0) {
+      if ($$0.isBlank()) {
+         this.A = ayl.a();
+         return null;
+      } else {
+         try {
+            this.A = Integer.parseInt($$0);
+            if (this.A < 1024 || this.A > 65535) {
+               return v;
+            } else {
+               return !ayl.a(this.A) ? u : null;
             }
-
-            int $$10 = -this.p.b($$9) / 2;
-            $$0.a(this.p, $$9, $$10, $$8 * this.b.b() - $$6, $$2, false);
-            if ($$8 == this.u && $$4 >= 0 && $$3) {
-               int $$11 = this.p.b($$9.substring(0, Math.max(Math.min($$4, $$9.length()), 0)));
-               int $$12 = $$11 - this.p.b($$9) / 2;
-               if ($$4 >= $$9.length()) {
-                  $$0.a(this.p, "_", $$12, $$7, $$2, false);
-               }
-            }
-         }
-      }
-
-      for (int $$13 = 0; $$13 < this.d.length; $$13++) {
-         String $$14 = this.d[$$13];
-         if ($$14 != null && $$13 == this.u && $$4 >= 0) {
-            int $$15 = this.p.b($$14.substring(0, Math.max(Math.min($$4, $$14.length()), 0)));
-            int $$16 = $$15 - this.p.b($$14) / 2;
-            if ($$3 && $$4 < $$14.length()) {
-               $$0.a($$16, $$7 - 1, $$16 + 1, $$7 + this.b.b(), 0xFF000000 | $$2);
-            }
-
-            if ($$5 != $$4) {
-               int $$17 = Math.min($$4, $$5);
-               int $$18 = Math.max($$4, $$5);
-               int $$19 = this.p.b($$14.substring(0, $$17)) - this.p.b($$14) / 2;
-               int $$20 = this.p.b($$14.substring(0, $$18)) - this.p.b($$14) / 2;
-               int $$21 = Math.min($$19, $$20);
-               int $$22 = Math.max($$19, $$20);
-               $$0.a(gcs.F(), $$21, $$7, $$22, $$7 + this.b.b(), -16776961);
-            }
+         } catch (NumberFormatException var3) {
+            this.A = ayl.a();
+            return v;
          }
       }
    }
 
-   private void a(String $$0) {
-      this.d[this.u] = $$0;
-      this.c = this.c.a(this.u, wx.b($$0));
-      this.b.a(this.c, this.r);
-   }
-
-   private void D() {
-      this.m.a(null);
+   @Override
+   public void a(fgm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 50, 16777215);
+      $$0.a(this.p, r, this.n / 2, 82, 16777215);
+      $$0.a(this.p, s, this.n / 2, 142, 16777215);
    }
 }

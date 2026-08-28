@@ -1,71 +1,41 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+public class gfh implements gfj<dpa> {
+   public static final gqy a = new gqy(got.e, new alb("entity/bell/bell_body"));
+   private static final String b = "bell_body";
+   private final fwv c;
 
-class gfh {
-   private final Map<io, doi> a;
-   @Nullable
-   private final List<dtr<drd>> b;
-   private final boolean c;
-   private final dtj d;
-
-   gfh(dtj $$0) {
-      this.d = $$0;
-      this.c = $$0.F().ah();
-      this.a = ImmutableMap.copyOf($$0.G());
-      if ($$0 instanceof dtf) {
-         this.b = null;
-      } else {
-         dtk[] $$1 = $$0.d();
-         this.b = new ArrayList<>($$1.length);
-
-         for (dtk $$2 : $$1) {
-            this.b.add($$2.c() ? null : $$2.h().d());
-         }
-      }
+   public gfh(gfk.a $$0) {
+      fwv $$1 = $$0.a(fwu.l);
+      this.c = $$1.b("bell_body");
    }
 
-   @Nullable
-   public doi a(io $$0) {
-      return this.a.get($$0);
+   public static fxb b() {
+      fxd $$0 = new fxd();
+      fxe $$1 = $$0.a();
+      fxe $$2 = $$1.a("bell_body", fxa.c().a(0, 0).a(-3.0F, -6.0F, -3.0F, 6.0F, 7.0F, 6.0F), fwx.a(8.0F, 12.0F, 8.0F));
+      $$2.a("bell_base", fxa.c().a(0, 13).a(4.0F, 4.0F, 4.0F, 8.0F, 2.0F, 8.0F), fwx.a(-8.0F, -12.0F, -8.0F));
+      return fxb.a($$0, 32, 32);
    }
 
-   public drd b(io $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      if (this.c) {
-         drd $$4 = null;
-         if ($$2 == 60) {
-            $$4 = dec.hW.n();
-         }
-
-         if ($$2 == 70) {
-            $$4 = dwm.a($$1, $$3);
-         }
-
-         return $$4 == null ? dec.a.n() : $$4;
-      } else if (this.b == null) {
-         return dec.a.n();
-      } else {
-         try {
-            int $$5 = this.d.e($$2);
-            if ($$5 >= 0 && $$5 < this.b.size()) {
-               dtr<drd> $$6 = this.b.get($$5);
-               if ($$6 != null) {
-                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
-               }
-            }
-
-            return dec.a.n();
-         } catch (Throwable var8) {
-            o $$8 = o.a(var8, "Getting block state");
-            p $$9 = $$8.a("Block being got");
-            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
-            throw new y($$8);
+   public void a(dpa $$0, float $$1, ezt $$2, gdj $$3, int $$4, int $$5) {
+      float $$6 = (float)$$0.a + $$1;
+      float $$7 = 0.0F;
+      float $$8 = 0.0F;
+      if ($$0.b) {
+         float $$9 = ayu.a($$6 / (float) Math.PI) / (4.0F + $$6 / 3.0F);
+         if ($$0.c == je.c) {
+            $$7 = -$$9;
+         } else if ($$0.c == je.d) {
+            $$7 = $$9;
+         } else if ($$0.c == je.f) {
+            $$8 = -$$9;
+         } else if ($$0.c == je.e) {
+            $$8 = $$9;
          }
       }
+
+      this.c.e = $$7;
+      this.c.g = $$8;
+      ezx $$10 = a.a($$3, gdr::c);
+      this.c.a($$2, $$10, $$4, $$5);
    }
 }

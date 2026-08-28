@@ -1,52 +1,33 @@
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import java.util.function.UnaryOperator;
 
-public interface atx extends aua {
-   Set<String> a();
+public interface atx {
+   UnaryOperator<xl> a = UnaryOperator.identity();
+   atx b = a(a, true);
+   atx c = a(a("pack.source.builtin"), true);
+   atx d = a(a("pack.source.feature"), false);
+   atx e = a(a("pack.source.world"), true);
+   atx f = a(a("pack.source.server"), true);
 
-   List<atv> a(akn var1);
+   xl a(xl var1);
 
-   Map<akn, atv> b(String var1, Predicate<akn> var2);
+   boolean a();
 
-   Map<akn, List<atv>> c(String var1, Predicate<akn> var2);
+   static atx a(final UnaryOperator<xl> $$0, final boolean $$1) {
+      return new atx() {
+         @Override
+         public xl a(xl $$0x) {
+            return $$0.apply($$0);
+         }
 
-   Stream<asj> b();
+         @Override
+         public boolean a() {
+            return $$1;
+         }
+      };
+   }
 
-   public static enum a implements atx {
-      a;
-
-      @Override
-      public Set<String> a() {
-         return Set.of();
-      }
-
-      @Override
-      public Optional<atv> getResource(akn $$0) {
-         return Optional.empty();
-      }
-
-      @Override
-      public List<atv> a(akn $$0) {
-         return List.of();
-      }
-
-      @Override
-      public Map<akn, atv> b(String $$0, Predicate<akn> $$1) {
-         return Map.of();
-      }
-
-      @Override
-      public Map<akn, List<atv>> c(String $$0, Predicate<akn> $$1) {
-         return Map.of();
-      }
-
-      @Override
-      public Stream<asj> b() {
-         return Stream.of();
-      }
+   private static UnaryOperator<xl> a(String $$0) {
+      xl $$1 = xl.c($$0);
+      return $$1x -> xl.a("pack.nameAndSource", $$1x, $$1).a(n.h);
    }
 }

@@ -1,19 +1,19 @@
-class bqz extends brc {
-   protected bqz(brd $$0, int $$1) {
-      super($$0, $$1);
+public final class bqz implements bqt {
+   private final xl a;
+   private final cqv b;
+
+   public bqz(cqv $$0, xl $$1) {
+      this.b = $$0;
+      this.a = $$1;
    }
 
    @Override
-   public boolean a(bsq $$0, int $$1) {
-      if ($$0 instanceof cly $$2) {
-         $$2.C(0.005F * (float)($$1 + 1));
-      }
-
-      return true;
+   public xl O_() {
+      return this.a;
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
+   public cpp createMenu(int $$0, cmr $$1, cms $$2) {
+      return this.b.createMenu($$0, $$1, $$2);
    }
 }

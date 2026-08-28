@@ -1,15 +1,24 @@
-public class rx {
-   public static final akm<dzm<?, ?>> a = rt.a("pile_hay");
-   public static final akm<dzm<?, ?>> b = rt.a("pile_melon");
-   public static final akm<dzm<?, ?>> c = rt.a("pile_snow");
-   public static final akm<dzm<?, ?>> d = rt.a("pile_ice");
-   public static final akm<dzm<?, ?>> e = rt.a("pile_pumpkin");
+import java.util.Arrays;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
-   public static void a(qo<dzm<?, ?>> $$0) {
-      rt.a($$0, a, dzz.j, new ebv(new eel(dec.ij)));
-      rt.a($$0, b, dzz.j, new ebv(eee.a(dec.fa)));
-      rt.a($$0, c, dzz.j, new ebv(eee.a(dec.dN)));
-      rt.a($$0, d, dzz.j, new ebv(new eeo(bog.<drd>a().a(dec.mW.n(), 1).a(dec.iC.n(), 5))));
-      rt.a($$0, e, dzz.j, new ebv(new eeo(bog.<drd>a().a(dec.eZ.n(), 19).a(dec.ef.n(), 1))));
+public class rx {
+   public static void a(rc<eif> $$0) {
+      jj<dcs> $$1 = $$0.a(lq.az);
+      jj<ejo> $$2 = $$0.a(lq.aM);
+      $$0.a(
+         ehz.H,
+         new ekf(
+            ro.a($$1.b(awk.I), Arrays.stream(btn.values()).collect(Collectors.toMap($$0x -> $$0x, $$0x -> new eim(eim.a.a, bpd.c()))), dxl.b.d, eiq.e),
+            $$2.b(rt.a),
+            Optional.empty(),
+            20,
+            egp.a(dyj.a(-40), dyj.a(-20)),
+            false,
+            Optional.empty(),
+            116,
+            rt.d
+         )
+      );
    }
 }

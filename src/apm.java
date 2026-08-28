@@ -1,92 +1,47 @@
-import com.google.common.collect.Streams;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.lang.management.ManagementFactory;
-import java.lang.management.ThreadInfo;
-import java.lang.management.ThreadMXBean;
-import java.util.Locale;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
-public class apm implements Runnable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final long b = 10000L;
-   private static final int c = 1;
-   private final apj d;
-   private final long e;
+public class apm {
+   private static final int a = -1;
 
-   public apm(apj $$0) {
-      this.d = $$0;
-      this.e = $$0.bt() * aze.b;
+   public static void a(CommandDispatcher<ep> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("weather").requires($$0x -> $$0x.c(2)))
+                  .then(
+                     ((LiteralArgumentBuilder)eq.a("clear").executes($$0x -> a((ep)$$0x.getSource(), -1)))
+                        .then(eq.a("duration", ge.a(1)).executes($$0x -> a((ep)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
+                  ))
+               .then(
+                  ((LiteralArgumentBuilder)eq.a("rain").executes($$0x -> b((ep)$$0x.getSource(), -1)))
+                     .then(eq.a("duration", ge.a(1)).executes($$0x -> b((ep)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
+               ))
+            .then(
+               ((LiteralArgumentBuilder)eq.a("thunder").executes($$0x -> c((ep)$$0x.getSource(), -1)))
+                  .then(eq.a("duration", ge.a(1)).executes($$0x -> c((ep)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
+            )
+      );
    }
 
-   @Override
-   public void run() {
-      while (this.d.x()) {
-         long $$0 = this.d.aC();
-         long $$1 = ac.d();
-         long $$2 = $$1 - $$0;
-         if ($$2 > this.e) {
-            a.error(
-               LogUtils.FATAL_MARKER,
-               "A single server tick took {} seconds (should be max {})",
-               String.format(Locale.ROOT, "%.2f", (float)$$2 / (float)aze.a),
-               String.format(Locale.ROOT, "%.2f", this.d.aQ().g() / (float)aze.c)
-            );
-            a.error(LogUtils.FATAL_MARKER, "Considering it to be crashed, server will forcibly shutdown.");
-            ThreadMXBean $$3 = ManagementFactory.getThreadMXBean();
-            ThreadInfo[] $$4 = $$3.dumpAllThreads(true, true);
-            StringBuilder $$5 = new StringBuilder();
-            Error $$6 = new Error("Watchdog");
-
-            for (ThreadInfo $$7 : $$4) {
-               if ($$7.getThreadId() == this.d.az().getId()) {
-                  $$6.setStackTrace($$7.getStackTrace());
-               }
-
-               $$5.append($$7);
-               $$5.append("\n");
-            }
-
-            o $$8 = new o("Watching Server", $$6);
-            this.d.b($$8.g());
-            p $$9 = $$8.a("Thread Dump");
-            $$9.a("Threads", $$5);
-            p $$10 = $$8.a("Performance stats");
-            $$10.a("Random tick rate", () -> this.d.bb().o().a(dav.o).toString());
-            $$10.a("Level stats", () -> Streams.stream(this.d.K()).map($$0x -> $$0x.ae() + ": " + $$0x.F()).collect(Collectors.joining(",\n")));
-            akp.a("Crash report:\n" + $$8.e());
-            File $$11 = new File(new File(this.d.C(), "crash-reports"), "crash-" + ac.f() + "-server.txt");
-            if ($$8.a($$11)) {
-               a.error("This crash report has been saved to: {}", $$11.getAbsolutePath());
-            } else {
-               a.error("We were unable to save this crash report to disk.");
-            }
-
-            this.a();
-         }
-
-         try {
-            Thread.sleep(($$0 + this.e - $$1) / aze.b);
-         } catch (InterruptedException var15) {
-         }
-      }
+   private static int a(ep $$0, int $$1, bpu $$2) {
+      return $$1 == -1 ? $$2.a($$0.l().I().E_()) : $$1;
    }
 
-   private void a() {
-      try {
-         Timer $$0 = new Timer();
-         $$0.schedule(new TimerTask() {
-            @Override
-            public void run() {
-               Runtime.getRuntime().halt(1);
-            }
-         }, 10000L);
-         System.exit(1);
-      } catch (Throwable var2) {
-         Runtime.getRuntime().halt(1);
-      }
+   private static int a(ep $$0, int $$1) {
+      $$0.l().I().a(a($$0, $$1, arb.b), 0, false, false);
+      $$0.a(() -> xl.c("commands.weather.set.clear"), true);
+      return $$1;
+   }
+
+   private static int b(ep $$0, int $$1) {
+      $$0.l().I().a(0, a($$0, $$1, arb.c), true, false);
+      $$0.a(() -> xl.c("commands.weather.set.rain"), true);
+      return $$1;
+   }
+
+   private static int c(ep $$0, int $$1) {
+      $$0.l().I().a(0, a($$0, $$1, arb.d), true, true);
+      $$0.a(() -> xl.c("commands.weather.set.thunder"), true);
+      return $$1;
    }
 }

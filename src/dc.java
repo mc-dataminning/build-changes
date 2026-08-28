@@ -1,79 +1,212 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Optional;
 
-public class dc extends df<dc.a> {
-   @Override
-   public Codec<dc.a> a() {
-      return dc.a.a;
-   }
+public record dc(
+   Optional<dc.b> b, Optional<jm<dcs>> c, Optional<jm<eif>> d, Optional<ala<dbt>> e, Optional<Boolean> f, Optional<cz> g, Optional<av> h, Optional<cc> i
+) {
+   public static final Codec<dc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dc.b.a.optionalFieldOf("position").forGetter(dc::a),
+               jx.a(lq.az).optionalFieldOf("biomes").forGetter(dc::b),
+               jx.a(lq.aJ).optionalFieldOf("structures").forGetter(dc::c),
+               ala.a(lq.aS).optionalFieldOf("dimension").forGetter(dc::d),
+               Codec.BOOL.optionalFieldOf("smokey").forGetter(dc::e),
+               cz.a.optionalFieldOf("light").forGetter(dc::f),
+               av.a.optionalFieldOf("block").forGetter(dc::g),
+               cc.a.optionalFieldOf("fluid").forGetter(dc::h)
+            )
+            .apply($$0, dc::new)
+   );
 
-   public void a(aqo $$0, akn $$1, List<ctq> $$2) {
-      this.a($$0, $$2x -> $$2x.b($$1, $$2));
-   }
-
-   public static record a(Optional<bc> b, akn c, List<ch> d) implements df.a {
-      public static final Codec<dc.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  br.b.optionalFieldOf("player").forGetter(dc.a::a),
-                  akn.a.fieldOf("recipe_id").forGetter(dc.a::b),
-                  ch.a.listOf().optionalFieldOf("ingredients", List.of()).forGetter(dc.a::c)
-               )
-               .apply($$0, dc.a::new)
-      );
-
-      public static an<dc.a> a(akn $$0, List<ch.a> $$1) {
-         return am.ac.a(new dc.a(Optional.empty(), $$0, $$1.stream().map(ch.a::b).toList()));
-      }
-
-      public static an<dc.a> a(akn $$0) {
-         return am.ac.a(new dc.a(Optional.empty(), $$0, List.of()));
-      }
-
-      public static an<dc.a> b(akn $$0) {
-         return am.ad.a(new dc.a(Optional.empty(), $$0, List.of()));
-      }
-
-      boolean b(akn $$0, List<ctq> $$1) {
-         if (!$$0.equals(this.c)) {
-            return false;
-         } else {
-            List<ctq> $$2 = new ArrayList<>($$1);
-
-            for (ch $$3 : this.d) {
-               boolean $$4 = false;
-               Iterator<ctq> $$5 = $$2.iterator();
-
-               while ($$5.hasNext()) {
-                  if ($$3.a($$5.next())) {
-                     $$5.remove();
-                     $$4 = true;
-                     break;
+   public boolean a(arb $$0, double $$1, double $$2, double $$3) {
+      if (this.b.isPresent() && !this.b.get().a($$1, $$2, $$3)) {
+         return false;
+      } else if (this.e.isPresent() && this.e.get() != $$0.af()) {
+         return false;
+      } else {
+         iz $$4 = iz.a($$1, $$2, $$3);
+         boolean $$5 = $$0.p($$4);
+         if (!this.c.isPresent() || $$5 && this.c.get().a($$0.t($$4))) {
+            if (!this.d.isPresent() || $$5 && $$0.a().a($$4, this.d.get()).b()) {
+               if (!this.f.isPresent() || $$5 && this.f.get() == dfi.a($$0, $$4)) {
+                  if (this.g.isPresent() && !this.g.get().a($$0, $$4)) {
+                     return false;
+                  } else {
+                     return this.h.isPresent() && !this.h.get().a($$0, $$4) ? false : !this.i.isPresent() || this.i.get().a($$0, $$4);
                   }
-               }
-
-               if (!$$4) {
+               } else {
                   return false;
                }
+            } else {
+               return false;
             }
-
-            return true;
+         } else {
+            return false;
          }
       }
+   }
 
-      @Override
-      public Optional<bc> a() {
+   public Optional<dc.b> a() {
+      return this.b;
+   }
+
+   public Optional<jm<dcs>> b() {
+      return this.c;
+   }
+
+   public Optional<jm<eif>> c() {
+      return this.d;
+   }
+
+   public Optional<ala<dbt>> d() {
+      return this.e;
+   }
+
+   public Optional<Boolean> e() {
+      return this.f;
+   }
+
+   public Optional<cz> f() {
+      return this.g;
+   }
+
+   public Optional<av> g() {
+      return this.h;
+   }
+
+   public Optional<cc> h() {
+      return this.i;
+   }
+
+   public static class a {
+      private de.c a;
+      private de.c b;
+      private de.c c;
+      private Optional<jm<dcs>> d;
+      private Optional<jm<eif>> e;
+      private Optional<ala<dbt>> f;
+      private Optional<Boolean> g;
+      private Optional<cz> h;
+      private Optional<av> i;
+      private Optional<cc> j;
+
+      public a() {
+         this.a = de.c.c;
+         this.b = de.c.c;
+         this.c = de.c.c;
+         this.d = Optional.empty();
+         this.e = Optional.empty();
+         this.f = Optional.empty();
+         this.g = Optional.empty();
+         this.h = Optional.empty();
+         this.i = Optional.empty();
+         this.j = Optional.empty();
+      }
+
+      public static dc.a a() {
+         return new dc.a();
+      }
+
+      public static dc.a a(ji<dcs> $$0) {
+         return a().a(jm.a($$0));
+      }
+
+      public static dc.a a(ala<dbt> $$0) {
+         return a().b($$0);
+      }
+
+      public static dc.a b(ji<eif> $$0) {
+         return a().b(jm.a($$0));
+      }
+
+      public static dc.a a(de.c $$0) {
+         return a().c($$0);
+      }
+
+      public dc.a b(de.c $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public dc.a c(de.c $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public dc.a d(de.c $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public dc.a a(jm<dcs> $$0) {
+         this.d = Optional.of($$0);
+         return this;
+      }
+
+      public dc.a b(jm<eif> $$0) {
+         this.e = Optional.of($$0);
+         return this;
+      }
+
+      public dc.a b(ala<dbt> $$0) {
+         this.f = Optional.of($$0);
+         return this;
+      }
+
+      public dc.a a(cz.a $$0) {
+         this.h = Optional.of($$0.b());
+         return this;
+      }
+
+      public dc.a a(av.a $$0) {
+         this.i = Optional.of($$0.b());
+         return this;
+      }
+
+      public dc.a a(cc.a $$0) {
+         this.j = Optional.of($$0.b());
+         return this;
+      }
+
+      public dc.a a(boolean $$0) {
+         this.g = Optional.of($$0);
+         return this;
+      }
+
+      public dc b() {
+         Optional<dc.b> $$0 = dc.b.a(this.a, this.b, this.c);
+         return new dc($$0, this.d, this.e, this.f, this.g, this.h, this.i, this.j);
+      }
+   }
+
+   static record b(de.c b, de.c c, de.c d) {
+      public static final Codec<dc.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  de.c.d.optionalFieldOf("x", de.c.c).forGetter(dc.b::a),
+                  de.c.d.optionalFieldOf("y", de.c.c).forGetter(dc.b::b),
+                  de.c.d.optionalFieldOf("z", de.c.c).forGetter(dc.b::c)
+               )
+               .apply($$0, dc.b::new)
+      );
+
+      static Optional<dc.b> a(de.c $$0, de.c $$1, de.c $$2) {
+         return $$0.c() && $$1.c() && $$2.c() ? Optional.empty() : Optional.of(new dc.b($$0, $$1, $$2));
+      }
+
+      public boolean a(double $$0, double $$1, double $$2) {
+         return this.b.d($$0) && this.c.d($$1) && this.d.d($$2);
+      }
+
+      public de.c a() {
          return this.b;
       }
 
-      public akn b() {
+      public de.c b() {
          return this.c;
       }
 
-      public List<ch> c() {
+      public de.c c() {
          return this.d;
       }
    }

@@ -1,47 +1,33 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import java.util.List;
 
-public record esq(Optional<br> b, eph.b c) implements esn {
+public class esq extends erp {
    public static final MapCodec<esq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(br.a.optionalFieldOf("predicate").forGetter(esq::c), eph.b.e.fieldOf("entity").forGetter(esq::d)).apply($$0, esq::new)
+      $$0 -> a($$0).and($$0.group(cxs.d.fieldOf("pages").forGetter($$0x -> $$0x.b), ero.a(100).forGetter($$0x -> $$0x.c))).apply($$0, esq::new)
    );
+   private final List<ars<String>> b;
+   private final ero c;
 
-   @Override
-   public eso b() {
-      return esp.h;
+   protected esq(List<etn> $$0, List<ars<String>> $$1, ero $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public Set<erw<?>> a() {
-      return ImmutableSet.of(erz.f, this.c.a());
+   protected cuk a(cuk $$0, eqd $$1) {
+      $$0.a(km.H, cxs.a, this::a);
+      return $$0;
    }
 
-   public boolean a(eph $$0) {
-      brw $$1 = $$0.c(this.c.a());
-      eum $$2 = $$0.c(erz.f);
-      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
+   public cxs a(cxs $$0) {
+      List<ars<String>> $$1 = this.c.a($$0.a(), this.b, 100);
+      return $$0.b($$1);
    }
 
-   public static esn.a a(eph.b $$0) {
-      return a($$0, br.a.a());
-   }
-
-   public static esn.a a(eph.b $$0, br.a $$1) {
-      return () -> new esq(Optional.of($$1.b()), $$0);
-   }
-
-   public static esn.a a(eph.b $$0, br $$1) {
-      return () -> new esq(Optional.of($$1), $$0);
-   }
-
-   public Optional<br> c() {
-      return this.b;
-   }
-
-   public eph.b d() {
-      return this.c;
+   @Override
+   public err<esq> b() {
+      return ers.O;
    }
 }

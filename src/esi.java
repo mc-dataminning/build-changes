@@ -1,85 +1,46 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import java.util.List;
 import java.util.Set;
-import java.util.Map.Entry;
-import java.util.stream.Stream;
 
-public record esi(Map<String, epg> b, eph.b c) implements esn {
+public class esi extends erp {
    public static final MapCodec<esi> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.unboundedMap(Codec.STRING, epg.a).fieldOf("scores").forGetter(esi::c), eph.b.e.fieldOf("entity").forGetter(esi::d))
+      $$0 -> a($$0)
+            .and($$0.group(euj.a.fieldOf("count").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)))
             .apply($$0, esi::new)
    );
+   private final eui b;
+   private final boolean c;
 
-   @Override
-   public eso b() {
-      return esp.j;
+   private esi(List<etn> $$0, eui $$1, boolean $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public Set<erw<?>> a() {
-      return Stream.concat(Stream.of(this.c.a()), this.b.values().stream().flatMap($$0 -> $$0.a().stream())).collect(ImmutableSet.toImmutableSet());
+   public err<esi> b() {
+      return ers.e;
    }
 
-   public boolean a(eph $$0) {
-      brw $$1 = $$0.c(this.c.a());
-      if ($$1 == null) {
-         return false;
-      } else {
-         evq $$2 = $$0.d().f();
-
-         for (Entry<String, epg> $$3 : this.b.entrySet()) {
-            if (!this.a($$0, $$1, $$2, $$3.getKey(), $$3.getValue())) {
-               return false;
-            }
-         }
-
-         return true;
-      }
+   @Override
+   public Set<esw<?>> a() {
+      return this.b.a();
    }
 
-   protected boolean a(eph $$0, brw $$1, evq $$2, String $$3, epg $$4) {
-      evi $$5 = $$2.a($$3);
-      if ($$5 == null) {
-         return false;
-      } else {
-         evm $$6 = $$2.d($$1, $$5);
-         return $$6 == null ? false : $$4.b($$0, $$6.a());
-      }
+   @Override
+   public cuk a(cuk $$0, eqd $$1) {
+      int $$2 = this.c ? $$0.I() : 0;
+      $$0.e($$2 + this.b.a($$1));
+      return $$0;
    }
 
-   public static esi.a a(eph.b $$0) {
-      return new esi.a($$0);
+   public static erp.a<?> a(eui $$0) {
+      return a($$1 -> new esi($$1, $$0, false));
    }
 
-   public Map<String, epg> c() {
-      return this.b;
-   }
-
-   public eph.b d() {
-      return this.c;
-   }
-
-   public static class a implements esn.a {
-      private final Builder<String, epg> a = ImmutableMap.builder();
-      private final eph.b b;
-
-      public a(eph.b $$0) {
-         this.b = $$0;
-      }
-
-      public esi.a a(String $$0, epg $$1) {
-         this.a.put($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public esn build() {
-         return new esi(this.a.build(), this.b);
-      }
+   public static erp.a<?> a(eui $$0, boolean $$1) {
+      return a($$2 -> new esi($$2, $$0, $$1));
    }
 }

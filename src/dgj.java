@@ -1,68 +1,56 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dgj extends dgw {
-   public static final MapCodec<dgj> a = b(dgj::new);
-   protected static final evf b = dea.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+public class dgj extends deu {
+   public static final MapCodec<deu> a = lp.e.q().fieldOf("dead");
+   public static final MapCodec<dgj> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter($$0x -> $$0x.c), u()).apply($$0, dgj::new));
+   private final deu c;
+
+   public dgj(deu $$0, drw.d $$1) {
+      super($$1);
+      this.c = $$0;
+   }
 
    @Override
    public MapCodec<dgj> a() {
-      return a;
-   }
-
-   public dgj(drc.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected evf a(drd $$0, daf $$1, io $$2, eur $$3) {
       return b;
    }
 
    @Override
-   protected bpw a(drd $$0, daz $$1, io $$2, cly $$3, eui $$4) {
-      this.d($$0, $$1, $$2);
-      return bpw.a($$1.B);
-   }
-
-   @Override
-   protected void a(drd $$0, daz $$1, io $$2, cly $$3) {
-      this.d($$0, $$1, $$2);
-   }
-
-   private void d(drd $$0, daz $$1, io $$2) {
-      dsu $$3 = $$1.C_();
-
-      for (int $$4 = 0; $$4 < 1000; $$4++) {
-         io $$5 = $$2.b($$1.z.a(16) - $$1.z.a(16), $$1.z.a(8) - $$1.z.a(8), $$1.z.a(16) - $$1.z.a(16));
-         if ($$1.a_($$5).i() && $$3.a($$5)) {
-            if ($$1.B) {
-               for (int $$6 = 0; $$6 < 128; $$6++) {
-                  double $$7 = $$1.z.j();
-                  float $$8 = ($$1.z.i() - 0.5F) * 0.2F;
-                  float $$9 = ($$1.z.i() - 0.5F) * 0.2F;
-                  float $$10 = ($$1.z.i() - 0.5F) * 0.2F;
-                  double $$11 = ayf.d($$7, (double)$$5.u(), (double)$$2.u()) + ($$1.z.j() - 0.5) + 0.5;
-                  double $$12 = ayf.d($$7, (double)$$5.v(), (double)$$2.v()) + $$1.z.j() - 0.5;
-                  double $$13 = ayf.d($$7, (double)$$5.w(), (double)$$2.w()) + ($$1.z.j() - 0.5) + 0.5;
-                  $$1.a(ky.ac, $$11, $$12, $$13, (double)$$8, (double)$$9, (double)$$10);
-               }
-            } else {
-               $$1.a($$5, $$0, 2);
-               $$1.a($$2, false);
-            }
-
-            return;
-         }
+   protected void a(drx $$0, arb $$1, iz $$2, azc $$3) {
+      if (!this.a($$1, $$2)) {
+         $$1.a($$2, this.c.n(), 2);
       }
    }
 
    @Override
-   protected int b() {
-      return 5;
+   protected drx a(drx $$0, je $$1, drx $$2, dbu $$3, iz $$4, iz $$5) {
+      if (!this.a($$3, $$4)) {
+         $$3.a($$4, this, 60 + $$3.E_().a(40));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   protected boolean a(drd $$0, enl $$1) {
+   protected boolean a(daz $$0, iz $$1) {
+      for (je $$2 : je.values()) {
+         enq $$3 = $$0.b_($$1.a($$2));
+         if ($$3.a(awr.a)) {
+            return true;
+         }
+      }
+
       return false;
+   }
+
+   @Nullable
+   @Override
+   public drx a(cxv $$0) {
+      if (!this.a($$0.q(), $$0.a())) {
+         $$0.q().a($$0.a(), this, 60 + $$0.q().E_().a(40));
+      }
+
+      return this.n();
    }
 }

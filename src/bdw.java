@@ -1,37 +1,48 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import java.util.Objects;
-import java.util.function.Function;
+import com.mojang.serialization.Dynamic;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public abstract class bdw extends DataFix {
+public class bdw extends DataFix {
    private final String a;
+   private final Set<String> b;
 
-   public bdw(Schema $$0, String $$1) {
+   public bdw(Schema $$0, String $$1, Set<String> $$2) {
       super($$0, false);
       this.a = $$1;
+      this.b = $$2;
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<Pair<String, String>> $$0 = DSL.named(bga.B.typeName(), bhl.a());
-      if (!Objects.equals(this.getInputSchema().getType(bga.B), $$0)) {
-         throw new IllegalStateException("item name type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(this.a, this.getInputSchema().getType(bgs.a), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
+   }
+
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      List<Dynamic<T>> $$1 = $$0.get("removed_features").asStream().collect(Collectors.toCollection(ArrayList::new));
+      Dynamic<T> $$2 = $$0.update("enabled_features", $$2x -> (Dynamic)DataFixUtils.orElse($$2x.asStreamOpt().result().map($$2xx -> $$2xx.filter($$2xxx -> {
+               Optional<String> $$3 = $$2xxx.asString().result();
+               if ($$3.isEmpty()) {
+                  return true;
+               } else {
+                  boolean $$4 = this.b.contains($$3.get());
+                  if ($$4) {
+                     $$1.add($$0.createString($$3.get()));
+                  }
+
+                  return !$$4;
+               }
+            })).map($$0::createList), $$2x));
+      if (!$$1.isEmpty()) {
+         $$2 = $$2.set("removed_features", $$0.createList($$1.stream()));
       }
-   }
 
-   protected abstract String a(String var1);
-
-   public static DataFix a(Schema $$0, String $$1, final Function<String, String> $$2) {
-      return new bdw($$0, $$1) {
-         @Override
-         protected String a(String $$0) {
-            return $$2.apply($$0);
-         }
-      };
+      return $$2;
    }
 }

@@ -1,60 +1,56 @@
-public class apt implements Comparable<apt> {
-   private final int a;
-   private final io b;
-   private int c;
-   private int d;
+import com.mojang.brigadier.builder.ArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import java.util.Locale;
+import java.util.function.Function;
 
-   public apt(int $$0, io $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class apt implements apq {
+   static final SuggestionProvider<ep> b = ($$0, $$1) -> eu.a(a($$0).a(), $$1);
+   public static final Function<String, apr.c> a = $$0 -> new apr.c() {
+         @Override
+         public apq a(CommandContext<ep> $$0x) {
+            return new apt(apt.a($$0), fq.c($$0, $$0));
+         }
+
+         @Override
+         public ArgumentBuilder<ep, ?> a(ArgumentBuilder<ep, ?> $$0x, Function<ArgumentBuilder<ep, ?>, ArgumentBuilder<ep, ?>> $$1) {
+            return $$0.then(eq.a("storage").then($$1.apply(eq.a($$0, fq.a()).suggests(apt.b))));
+         }
+      };
+   private final epi c;
+   private final alb d;
+
+   static epi a(CommandContext<ep> $$0) {
+      return ((ep)$$0.getSource()).l().aL();
    }
 
-   public int a() {
-      return this.a;
-   }
-
-   public io b() {
-      return this.b;
-   }
-
-   public void a(int $$0) {
-      if ($$0 > 10) {
-         $$0 = 10;
-      }
-
+   apt(epi $$0, alb $$1) {
       this.c = $$0;
-   }
-
-   public int c() {
-      return this.c;
-   }
-
-   public void b(int $$0) {
-      this.d = $$0;
-   }
-
-   public int d() {
-      return this.d;
+      this.d = $$1;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         apt $$1 = (apt)$$0;
-         return this.a == $$1.a;
-      } else {
-         return false;
-      }
+   public void a(ur $$0) {
+      this.c.a(this.d, $$0);
    }
 
    @Override
-   public int hashCode() {
-      return Integer.hashCode(this.a);
+   public ur a() {
+      return this.c.a(this.d);
    }
 
-   public int a(apt $$0) {
-      return this.c != $$0.c ? Integer.compare(this.c, $$0.c) : Integer.compare(this.a, $$0.a);
+   @Override
+   public xl b() {
+      return xl.a("commands.data.storage.modified", xl.a(this.d));
+   }
+
+   @Override
+   public xl a(vo $$0) {
+      return xl.a("commands.data.storage.query", xl.a(this.d), vg.c($$0));
+   }
+
+   @Override
+   public xl a(fh.g $$0, double $$1, int $$2) {
+      return xl.a("commands.data.storage.get", $$0.a(), xl.a(this.d), String.format(Locale.ROOT, "%.2f", $$1), $$2);
    }
 }

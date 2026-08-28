@@ -1,28 +1,16 @@
-public class ftn<T extends brw> extends ftf<T> {
-   private static final String a = "knot";
-   private final fvw b;
-   private final fvw f;
+public abstract class ftn<E extends bsp> extends fue<E> {
+   private float a = 1.0F;
+   private float b = 1.0F;
+   private float f = 1.0F;
 
-   public ftn(fvw $$0) {
-      this.b = $$0;
-      this.f = $$0.b("knot");
-   }
-
-   public static fwc b() {
-      fwe $$0 = new fwe();
-      fwf $$1 = $$0.a();
-      $$1.a("knot", fwb.c().a(0, 0).a(-3.0F, -8.0F, -3.0F, 6.0F, 8.0F, 6.0F), fvy.a);
-      return fwc.a($$0, 32, 32);
+   public void a(float $$0, float $$1, float $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.f = $$2;
    }
 
    @Override
-   public fvw a() {
-      return this.b;
-   }
-
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.f.f = $$4 * (float) (Math.PI / 180.0);
-      this.f.e = $$5 * (float) (Math.PI / 180.0);
+   public void a(ezt $$0, ezx $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      super.a($$0, $$1, $$2, $$3, this.a * $$4, this.b * $$5, this.f * $$6, $$7);
    }
 }

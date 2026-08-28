@@ -1,16 +1,16 @@
-public interface aay extends zk {
-   @Override
-   default vw b() {
-      return vw.e;
+public record aay() implements aat {
+   public static final zj<wl, aay> a = aat.a(aay::a, aay::new);
+   public static final aat.b<aay> b = aat.a("debug/game_test_clear");
+
+   private aay(wl $$0) {
+      this();
    }
 
-   void a(aaz var1);
+   private void a(wl $$0) {
+   }
 
-   void a(aba var1);
-
-   void a(abd var1);
-
-   void a(abc var1);
-
-   void a(abb var1);
+   @Override
+   public aat.b<aay> a() {
+      return b;
+   }
 }

@@ -1,119 +1,62 @@
-public class cmg extends cme {
-   private static final int f = 600;
-   private static final int g = -1;
-   private static final ajs<Integer> h = ajw.a(cmg.class, aju.b);
-   private static final byte i = 0;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public cmg(bsc<? extends cmg> $$0, daz $$1) {
-      super($$0, $$1);
+public class cmg {
+   public static final int a = 1;
+   public static final int b = 5;
+   private static final int[] e = new int[]{0, 10, 70, 150, 250};
+   public static final Codec<cmg> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               lp.y.q().fieldOf("type").orElseGet(() -> cmk.c).forGetter($$0x -> $$0x.f),
+               lp.z.q().fieldOf("profession").orElseGet(() -> cmi.b).forGetter($$0x -> $$0x.g),
+               Codec.INT.fieldOf("level").orElse(1).forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, cmg::new)
+   );
+   public static final zj<ww, cmg> d = zj.a(zh.a(lq.ar), $$0 -> $$0.f, zh.a(lq.aq), $$0 -> $$0.g, zh.g, $$0 -> $$0.h, cmg::new);
+   private final cmk f;
+   private final cmi g;
+   private final int h;
+
+   public cmg(cmk $$0, cmi $$1, int $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = Math.max(1, $$2);
    }
 
-   public cmg(daz $$0, double $$1, double $$2, double $$3, ctq $$4) {
-      super(bsc.e, $$1, $$2, $$3, $$0, $$4);
-      this.M();
+   public cmk a() {
+      return this.f;
    }
 
-   public cmg(daz $$0, bsq $$1, ctq $$2) {
-      super(bsc.e, $$1, $$0, $$2);
-      this.M();
+   public cmi b() {
+      return this.g;
    }
 
-   private cvr K() {
-      return this.y().a(kb.F, cvr.a);
+   public int c() {
+      return this.h;
    }
 
-   private void a(cvr $$0) {
-      this.y().b(kb.F, $$0);
-      this.M();
+   public cmg a(cmk $$0) {
+      return new cmg($$0, this.g, this.h);
    }
 
-   @Override
-   protected void a(ctq $$0) {
-      super.a($$0);
-      this.M();
+   public cmg a(cmi $$0) {
+      return new cmg(this.f, $$0, this.h);
    }
 
-   private void M() {
-      cvr $$0 = this.K();
-      this.ao.a(h, $$0.equals(cvr.a) ? -1 : $$0.c());
+   public cmg a(int $$0) {
+      return new cmg(this.f, this.g, $$0);
    }
 
-   public void a(bre $$0) {
-      this.a(this.K().a($$0));
+   public static int b(int $$0) {
+      return d($$0) ? e[$$0 - 1] : 0;
    }
 
-   @Override
-   protected void a(ajw.a $$0) {
-      super.a($$0);
-      $$0.a(h, -1);
+   public static int c(int $$0) {
+      return d($$0) ? e[$$0] : 0;
    }
 
-   @Override
-   public void l() {
-      super.l();
-      if (this.dP().B) {
-         if (this.b) {
-            if (this.c % 5 == 0) {
-               this.c(1);
-            }
-         } else {
-            this.c(2);
-         }
-      } else if (this.b && this.c != 0 && !this.K().equals(cvr.a) && this.c >= 600) {
-         this.dP().a(this, (byte)0);
-         this.a(new ctq(ctt.ov));
-      }
-   }
-
-   private void c(int $$0) {
-      int $$1 = this.H();
-      if ($$1 != -1 && $$0 > 0) {
-         for (int $$2 = 0; $$2 < $$0; $$2++) {
-            this.dP().a(kq.a(ky.u, $$1), this.d(0.5), this.dx(), this.g(0.5), 0.0, 0.0, 0.0);
-         }
-      }
-   }
-
-   public int H() {
-      return this.ao.a(h);
-   }
-
-   @Override
-   protected void a(bsq $$0) {
-      super.a($$0);
-      brw $$1 = this.I();
-      cvr $$2 = this.K();
-      if ($$2.f().isPresent()) {
-         for (bre $$3 : $$2.f().get().a().a()) {
-            $$0.b(new bre($$3.c(), Math.max($$3.a($$0x -> $$0x / 8), 1), $$3.e(), $$3.f(), $$3.g()), $$1);
-         }
-      }
-
-      for (bre $$4 : $$2.e()) {
-         $$0.b($$4, $$1);
-      }
-   }
-
-   @Override
-   protected ctq x() {
-      return new ctq(ctt.ov);
-   }
-
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 0) {
-         int $$1 = this.H();
-         if ($$1 != -1) {
-            float $$2 = (float)($$1 >> 16 & 0xFF) / 255.0F;
-            float $$3 = (float)($$1 >> 8 & 0xFF) / 255.0F;
-            float $$4 = (float)($$1 >> 0 & 0xFF) / 255.0F;
-
-            for (int $$5 = 0; $$5 < 20; $$5++) {
-               this.dP().a(kq.a(ky.u, $$2, $$3, $$4), this.d(0.5), this.dx(), this.g(0.5), 0.0, 0.0, 0.0);
-            }
-         }
-      } else {
-         super.b($$0);
-      }
+   public static boolean d(int $$0) {
+      return $$0 >= 1 && $$0 < 5;
    }
 }

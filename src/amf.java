@@ -1,216 +1,138 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.context.ContextChain;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.UncheckedIOException;
+import java.io.OutputStream;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.nio.channels.ClosedByInterruptException;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Collection;
+import java.util.List;
 import java.util.Locale;
-import net.minecraft.server.MinecraftServer;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 
 public class amf {
-   static final Logger a = LogUtils.getLogger();
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wx.c("commands.debug.notRunning"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wx.c("commands.debug.alreadyRunning"));
-   static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wx.c("commands.debug.function.noRecursion"));
-   static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wx.c("commands.debug.function.noReturnRun"));
+   private static final Logger a = LogUtils.getLogger();
+   private final String b;
+   private final int c;
+   private final auz d;
+   private final int e;
+   private volatile boolean f;
+   @Nullable
+   private ServerSocket g;
+   private final CopyOnWriteArrayList<Socket> h = new CopyOnWriteArrayList<>();
 
-   public static void a(CommandDispatcher<ee> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("debug").requires($$0x -> $$0x.c(3)))
-                  .then(ef.a("start").executes($$0x -> a((ee)$$0x.getSource()))))
-               .then(ef.a("stop").executes($$0x -> b((ee)$$0x.getSource()))))
-            .then(((LiteralArgumentBuilder)ef.a("function").requires($$0x -> $$0x.c(3))).then(ef.a("name", gm.a()).suggests(amt.b).executes(new amf.a())))
-      );
+   public amf(String $$0, int $$1, auz $$2, int $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   private static int a(ee $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if ($$1.bi()) {
-         throw c.create();
+   public void a() throws IOException {
+      if (this.g != null && !this.g.isClosed()) {
+         a.warn("Remote control server was asked to start, but it is already running. Will ignore.");
       } else {
-         $$1.bj();
-         $$0.a(() -> wx.c("commands.debug.started"), true);
-         return 0;
+         this.f = true;
+         this.g = new ServerSocket(this.c, 50, InetAddress.getByName(this.b));
+         Thread $$0 = new Thread(this::d, "chase-server-acceptor");
+         $$0.setDaemon(true);
+         $$0.start();
+         Thread $$1 = new Thread(this::c, "chase-server-sender");
+         $$1.setDaemon(true);
+         $$1.start();
       }
    }
 
-   private static int b(ee $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if (!$$1.bi()) {
-         throw b.create();
-      } else {
-         bmj $$2 = $$1.bk();
-         double $$3 = (double)$$2.g() / (double)aze.a;
-         double $$4 = (double)$$2.f() / $$3;
-         $$0.a(() -> wx.a("commands.debug.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2.f(), String.format(Locale.ROOT, "%.2f", $$4)), true);
-         return (int)$$4;
-      }
-   }
+   private void c() {
+      amf.a $$0 = null;
 
-   static class a extends ha.b<ee> implements ha.a<ee> {
-      public void a(ee $$0, ContextChain<ee> $$1, gy $$2, he<ee> $$3) throws CommandSyntaxException {
-         if ($$2.c()) {
-            throw amf.e.create();
-         } else if ($$3.a() != null) {
-            throw amf.d.create();
-         } else {
-            CommandContext<ee> $$4 = $$1.getTopContext();
-            Collection<hq<ee>> $$5 = gm.a($$4, "name");
-            MinecraftServer $$6 = $$0.l();
-            String $$7 = "debug-trace-" + ac.f() + ".txt";
-            CommandDispatcher<ee> $$8 = $$0.l().aF().a();
-            int $$9 = 0;
+      while (this.f) {
+         if (!this.h.isEmpty()) {
+            amf.a $$1 = this.e();
+            if ($$1 != null && !$$1.equals($$0)) {
+               $$0 = $$1;
+               byte[] $$2 = $$1.g().getBytes(StandardCharsets.US_ASCII);
 
-            try {
-               Path $$10 = $$6.c("debug").toPath();
-               Files.createDirectories($$10);
-               final PrintWriter $$11 = new PrintWriter(Files.newBufferedWriter($$10.resolve($$7), StandardCharsets.UTF_8));
-               amf.b $$12 = new amf.b($$11);
-               $$3.a($$12);
-
-               for (final hq<ee> $$13 : $$5) {
-                  try {
-                     ee $$14 = $$0.a($$12).b(2);
-                     hs<ee> $$15 = $$13.a(null, $$8);
-                     $$3.a((new hk<ee>($$15, eb.a, false) {
-                        public void a(ee $$0, hd<ee> $$1, hf $$2) {
-                           $$11.println($$13.a());
-                           super.a($$0, $$1, $$2);
+               for (Socket $$3 : this.h) {
+                  if (!$$3.isClosed()) {
+                     ac.h().submit(() -> {
+                        try {
+                           OutputStream $$2x = $$3.getOutputStream();
+                           $$2x.write($$2);
+                           $$2x.flush();
+                        } catch (IOException var3x) {
+                           a.info("Remote control client socket got an IO exception and will be closed", var3x);
+                           IOUtils.closeQuietly($$3);
                         }
-                     }).bind($$14));
-                     $$9 += $$15.b().size();
-                  } catch (eh var18) {
-                     $$0.b(var18.a());
+                     });
                   }
                }
-            } catch (IOException | UncheckedIOException var19) {
-               amf.a.warn("Tracing failed", var19);
-               $$0.b(wx.c("commands.debug.function.traceFailed"));
             }
 
-            int $$18 = $$9;
-            $$3.a(($$4x, $$5x) -> {
-               if ($$5.size() == 1) {
-                  $$0.a(() -> wx.a("commands.debug.function.success.single", $$18, wx.a($$5.iterator().next().a()), $$7), true);
-               } else {
-                  $$0.a(() -> wx.a("commands.debug.function.success.multiple", $$18, $$5.size(), $$7), true);
-               }
-            });
+            List<Socket> $$4 = this.h.stream().filter(Socket::isClosed).collect(Collectors.toList());
+            this.h.removeAll($$4);
+         }
+
+         if (this.f) {
+            try {
+               Thread.sleep((long)this.e);
+            } catch (InterruptedException var6) {
+            }
          }
       }
    }
 
-   static class b implements ed, hg {
-      public static final int b = 1;
-      private final PrintWriter c;
-      private int d;
-      private boolean e;
+   public void b() {
+      this.f = false;
+      IOUtils.closeQuietly(this.g);
+      this.g = null;
+   }
 
-      b(PrintWriter $$0) {
-         this.c = $$0;
-      }
-
-      private void a(int $$0) {
-         this.b($$0);
-         this.d = $$0;
-      }
-
-      private void b(int $$0) {
-         for (int $$1 = 0; $$1 < $$0 + 1; $$1++) {
-            this.c.write("    ");
+   private void d() {
+      try {
+         while (this.f) {
+            if (this.g != null) {
+               a.info("Remote control server is listening for connections on port {}", this.c);
+               Socket $$0 = this.g.accept();
+               a.info("Remote control server received client connection on port {}", $$0.getPort());
+               this.h.add($$0);
+            }
          }
-      }
-
-      private void e() {
-         if (this.e) {
-            this.c.println();
-            this.e = false;
+      } catch (ClosedByInterruptException var6) {
+         if (this.f) {
+            a.info("Remote control server closed by interrupt");
          }
-      }
-
-      @Override
-      public void a(int $$0, String $$1) {
-         this.e();
-         this.a($$0);
-         this.c.print("[C] ");
-         this.c.print($$1);
-         this.e = true;
-      }
-
-      @Override
-      public void a(int $$0, String $$1, int $$2) {
-         if (this.e) {
-            this.c.print(" -> ");
-            this.c.println($$2);
-            this.e = false;
-         } else {
-            this.a($$0);
-            this.c.print("[R = ");
-            this.c.print($$2);
-            this.c.print("] ");
-            this.c.println($$1);
+      } catch (IOException var7) {
+         if (this.f) {
+            a.error("Remote control server closed because of an IO exception", var7);
          }
+      } finally {
+         IOUtils.closeQuietly(this.g);
       }
 
-      @Override
-      public void a(int $$0, akn $$1, int $$2) {
-         this.e();
-         this.a($$0);
-         this.c.print("[F] ");
-         this.c.print($$1);
-         this.c.print(" size=");
-         this.c.println($$2);
-      }
+      a.info("Remote control server is now stopped");
+      this.f = false;
+   }
 
-      @Override
-      public void a(String $$0) {
-         this.e();
-         this.a(this.d + 1);
-         this.c.print("[E] ");
-         this.c.print($$0);
+   @Nullable
+   private amf.a e() {
+      List<arc> $$0 = this.d.t();
+      if ($$0.isEmpty()) {
+         return null;
+      } else {
+         arc $$1 = $$0.get(0);
+         String $$2 = (String)amn.a.inverse().get($$1.dP().af());
+         return $$2 == null ? null : new amf.a($$2, $$1.du(), $$1.dw(), $$1.dA(), $$1.dF(), $$1.dH());
       }
+   }
 
-      @Override
-      public void a(wx $$0) {
-         this.e();
-         this.b(this.d + 1);
-         this.c.print("[M] ");
-         this.c.println($$0.getString());
-      }
-
-      @Override
-      public boolean l_() {
-         return true;
-      }
-
-      @Override
-      public boolean w_() {
-         return true;
-      }
-
-      @Override
-      public boolean U_() {
-         return false;
-      }
-
-      @Override
-      public boolean m_() {
-         return true;
-      }
-
-      @Override
-      public void close() {
-         IOUtils.closeQuietly(this.c);
+   static record a(String a, double b, double c, double d, float e, float f) {
+      String g() {
+         return String.format(Locale.ROOT, "t %s %.2f %.2f %.2f %.2f %.2f\n", this.a, this.b, this.c, this.d, this.e, this.f);
       }
    }
 }

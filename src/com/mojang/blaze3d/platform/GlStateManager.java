@@ -23,7 +23,7 @@ import org.lwjgl.opengl.GL32C;
 import org.lwjgl.system.MemoryStack;
 import org.lwjgl.system.MemoryUtil;
 
-@ewl
+@exl
 public class GlStateManager {
    private static final boolean ON_LINUX = ac.k() == ac.a.a;
    public static final int TEXTURE_COUNT = 12;
@@ -574,7 +574,7 @@ public class GlStateManager {
       GL11.glTexSubImage2D($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
    }
 
-   public static void upload(int $$0, int $$1, int $$2, int $$3, int $$4, exv.a $$5, IntBuffer $$6, Consumer<IntBuffer> $$7) {
+   public static void upload(int $$0, int $$1, int $$2, int $$3, int $$4, eyu.a $$5, IntBuffer $$6, Consumer<IntBuffer> $$7) {
       if (!RenderSystem.isOnRenderThreadOrInit()) {
          RenderSystem.recordRenderCall(() -> _upload($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
       } else {
@@ -582,7 +582,7 @@ public class GlStateManager {
       }
    }
 
-   private static void _upload(int $$0, int $$1, int $$2, int $$3, int $$4, exv.a $$5, IntBuffer $$6, Consumer<IntBuffer> $$7) {
+   private static void _upload(int $$0, int $$1, int $$2, int $$3, int $$4, eyu.a $$5, IntBuffer $$6, Consumer<IntBuffer> $$7) {
       try {
          RenderSystem.assertOnRenderThreadOrInit();
          _pixelStore(3314, $$3);
@@ -731,7 +731,7 @@ public class GlStateManager {
       return GL11.glGetInteger($$0);
    }
 
-   @ewl
+   @exl
    public static enum DestFactor {
       CONSTANT_ALPHA(32771),
       CONSTANT_COLOR(32769),
@@ -750,12 +750,12 @@ public class GlStateManager {
 
       public final int value;
 
-      private DestFactor(int $$0) {
+      private DestFactor(final int $$0) {
          this.value = $$0;
       }
    }
 
-   @ewl
+   @exl
    public static enum SourceFactor {
       CONSTANT_ALPHA(32771),
       CONSTANT_COLOR(32769),
@@ -775,7 +775,7 @@ public class GlStateManager {
 
       public final int value;
 
-      private SourceFactor(int $$0) {
+      private SourceFactor(final int $$0) {
          this.value = $$0;
       }
    }
@@ -860,7 +860,7 @@ public class GlStateManager {
 
       public final int q;
 
-      private g(int $$0) {
+      private g(final int $$0) {
          this.q = $$0;
       }
    }

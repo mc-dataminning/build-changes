@@ -1,20 +1,39 @@
-public class cum extends ctl {
-   public cum(ctl.a $$0) {
-      super($$0);
+public class cum {
+   public static bqq<cuk> a(dbt $$0, cms $$1, bqo $$2) {
+      $$1.c($$2);
+      return bqq.b($$1.b($$2));
    }
 
-   @Override
-   public bpw a(ctq $$0, cly $$1, bsq $$2, bpv $$3) {
-      if ($$2 instanceof btg $$4 && $$2.bD() && !$$4.i() && $$4.f()) {
-         if (!$$1.dP().B) {
-            $$4.a(avj.g);
-            $$2.dP().a($$2, dvw.v, $$2.dn());
-            $$0.h(1);
+   public static cuk a(cuk $$0, cms $$1, cuk $$2, boolean $$3) {
+      boolean $$4 = $$1.fP();
+      if ($$3 && $$4) {
+         if (!$$1.gc().i($$2)) {
+            $$1.gc().f($$2);
          }
 
-         return bpw.a($$1.dP().B);
-      }
+         return $$0;
+      } else {
+         $$0.a(1, $$1);
+         if ($$0.e()) {
+            return $$2;
+         } else {
+            if (!$$1.gc().f($$2)) {
+               $$1.a($$2, false);
+            }
 
-      return bpw.d;
+            return $$0;
+         }
+      }
+   }
+
+   public static cuk a(cuk $$0, cms $$1, cuk $$2) {
+      return a($$0, $$1, $$2, true);
+   }
+
+   public static void a(cjc $$0, Iterable<cuk> $$1) {
+      dbt $$2 = $$0.dP();
+      if (!$$2.B) {
+         $$1.forEach($$2x -> $$2.b(new cjc($$2, $$0.du(), $$0.dw(), $$0.dA(), $$2x)));
+      }
    }
 }

@@ -1,32 +1,19 @@
-public class gjd extends ghs<bsx> {
-   private static final float a = 40.0F;
-   private static final int f = 50;
-   private final gir g;
+public class gjd extends gjy<cjt, fui<cjt>> {
+   private static final alb a = new alb("textures/entity/zombie/zombie.png");
+   private final float i;
 
-   protected gjd(ght.a $$0) {
-      super($$0);
-      this.g = $$0.b();
+   public gjd(gis.a $$0, float $$1) {
+      super($$0, new fua($$0.a(fwu.ah)), 0.5F * $$1);
+      this.i = $$1;
+      this.a(new gmx<>(this, $$0.d()));
+      this.a(new gmu<>(this, new fua($$0.a(fwu.ai)), new fua($$0.a(fwu.aj)), $$0.g()));
    }
 
-   public akn a(bsx $$0) {
-      return gnu.e;
+   protected void a(cjt $$0, ezt $$1, float $$2) {
+      $$1.b(this.i, this.i, this.i);
    }
 
-   public void a(bsx $$0, float $$1, float $$2, eyu $$3, gck $$4, int $$5) {
-      ctq $$6 = $$0.s();
-      if (!$$6.e()) {
-         $$3.a();
-         if ($$0.ai <= 50) {
-            float $$7 = Math.min((float)$$0.ai + $$2, 50.0F) / 50.0F;
-            $$3.b($$7, $$7, $$7);
-         }
-
-         daz $$8 = $$0.dP();
-         float $$9 = ayf.g((float)($$8.Y() - 1L)) * 40.0F;
-         float $$10 = ayf.g((float)$$8.Y()) * 40.0F;
-         $$3.a(a.d.rotationDegrees(ayf.j($$2, $$9, $$10)));
-         gip.a(this.g, $$3, $$4, 15728880, $$6, $$8.z, $$8);
-         $$3.b();
-      }
+   public alb a(cjt $$0) {
+      return a;
    }
 }

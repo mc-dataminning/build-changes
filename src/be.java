@@ -2,45 +2,39 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class be extends df<be.a> {
+public class be extends dr<be.a> {
    @Override
    public Codec<be.a> a() {
       return be.a.a;
    }
 
-   public void a(aqo $$0, cjx $$1, cll $$2) {
-      eph $$3 = br.b($$0, $$1);
-      eph $$4 = br.b($$0, $$2);
-      this.a($$0, $$2x -> $$2x.a($$3, $$4));
+   public void a(arc $$0, cuk $$1) {
+      this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public static record a(Optional<bc> b, Optional<bc> c, Optional<bc> d) implements df.a {
+   public static record a(Optional<bf> b, Optional<cp> c) implements dr.a {
       public static final Codec<be.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  br.b.optionalFieldOf("player").forGetter(be.a::a),
-                  br.b.optionalFieldOf("zombie").forGetter(be.a::c),
-                  br.b.optionalFieldOf("villager").forGetter(be.a::d)
-               )
-               .apply($$0, be.a::new)
+         $$0 -> $$0.group(bu.b.optionalFieldOf("player").forGetter(be.a::a), cp.a.optionalFieldOf("item").forGetter(be.a::c)).apply($$0, be.a::new)
       );
 
       public static an<be.a> b() {
-         return am.s.a(new be.a(Optional.empty(), Optional.empty(), Optional.empty()));
+         return am.A.a(new be.a(Optional.empty(), Optional.empty()));
       }
 
-      public boolean a(eph $$0, eph $$1) {
-         return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || this.d.get().a($$1);
+      public static an<be.a> a(dbs $$0) {
+         return a(cp.a.a().a($$0.r()));
+      }
+
+      public static an<be.a> a(cp.a $$0) {
+         return am.A.a(new be.a(Optional.empty(), Optional.of($$0.b())));
+      }
+
+      public boolean a(cuk $$0) {
+         return this.c.isEmpty() || this.c.get().a($$0);
       }
 
       @Override
-      public void a(bd $$0) {
-         df.a.super.a($$0);
-         $$0.a(this.c, ".zombie");
-         $$0.a(this.d, ".villager");
-      }
-
-      @Override
-      public Optional<bc> a() {
+      public Optional<bf> a() {
          return this.b;
       }
    }

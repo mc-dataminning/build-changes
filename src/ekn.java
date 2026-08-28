@@ -1,27 +1,48 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class ekn extends eli {
-   public static final MapCodec<ekn> a = drd.b.xmap(drc.a::b, dea::n).listOf().fieldOf("blocks").xmap(ekn::new, $$0 -> $$0.e);
-   public static final ekn b = new ekn(ImmutableList.of(dec.pa));
-   public static final ekn c = new ekn(ImmutableList.of(dec.a));
-   public static final ekn d = new ekn(ImmutableList.of(dec.a, dec.pa));
-   private final ImmutableList<dea> e;
+public class ekn extends eif {
+   public static final MapCodec<ekn> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(a($$0), egm.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, ekn::new)
+   );
+   public final egm e;
 
-   public ekn(List<dea> $$0) {
-      this.e = ImmutableList.copyOf($$0);
-   }
-
-   @Nullable
-   @Override
-   public ell.c a(dbc $$0, io $$1, io $$2, ell.c $$3, ell.c $$4, elh $$5) {
-      return this.e.contains($$4.b().b()) ? null : $$4;
+   public ekn(eif.c $$0, egm $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
    @Override
-   protected elk<?> a() {
-      return elk.e;
+   public Optional<eif.b> a(eif.a $$0) {
+      dyo $$1 = $$0.f();
+      int $$2 = $$0.h().d() + $$1.a(16);
+      int $$3 = $$0.h().e() + $$1.a(16);
+      int $$4 = $$0.b().e();
+      dym $$5 = new dym($$0.b(), $$0.i());
+      int $$6 = this.e.a($$1, $$5);
+      dcf $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
+      iz.a $$8 = new iz.a($$2, $$6, $$3);
+
+      while ($$6 > $$4) {
+         drx $$9 = $$7.a($$6);
+         drx $$10 = $$7.a(--$$6);
+         if ($$9.i() && ($$10.a(dew.dW) || $$10.d(dbi.a, $$8.q($$6), je.b))) {
+            break;
+         }
+      }
+
+      if ($$6 <= $$4) {
+         return Optional.empty();
+      } else {
+         iz $$11 = new iz($$2, $$6, $$3);
+         return Optional.of(new eif.b($$11, (Consumer<eix>)($$3x -> ekm.a($$0.e(), $$3x, $$1, $$11))));
+      }
+   }
+
+   @Override
+   public eio<?> e() {
+      return eio.i;
    }
 }

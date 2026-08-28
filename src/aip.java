@@ -1,29 +1,37 @@
-public class aip implements ze<aik> {
-   public static final yv<vx, aip> a = ze.a(aip::a, aip::new);
-   private final wx b;
+public class aip implements zs<ags> {
+   public static final zj<wl, aip> a = zs.a(aip::a, aip::new);
+   private final bqo b;
+   private final int c;
 
-   public aip(wx $$0) {
+   public aip(bqo $$0, int $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 
-   private aip(vx $$0) {
-      this.b = wx.a.b($$0.d(262144), jl.b);
+   private aip(wl $$0) {
+      this.b = $$0.b(bqo.class);
+      this.c = $$0.l();
    }
 
-   private void a(vx $$0) {
-      $$0.a(wx.a.a(this.b, jl.b));
+   private void a(wl $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public zg<aip> a() {
-      return aiq.e;
+   public zu<aip> a() {
+      return agq.cd;
    }
 
-   public void a(aik $$0) {
+   public void a(ags $$0) {
       $$0.a(this);
    }
 
-   public wx b() {
+   public bqo b() {
       return this.b;
+   }
+
+   public int e() {
+      return this.c;
    }
 }

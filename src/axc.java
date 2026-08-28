@@ -1,176 +1,130 @@
-import com.google.common.base.Predicates;
-import com.google.common.collect.Iterators;
-import java.util.Arrays;
-import java.util.Iterator;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.JsonOps;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class axc<K> implements jc<K> {
-   private static final int b = -1;
-   private static final Object c = null;
-   private static final float d = 0.8F;
-   private K[] e;
-   private int[] f;
-   private K[] g;
-   private int h;
-   private int i;
+public class axc<T> {
+   private static final Logger a = LogUtils.getLogger();
+   final Function<alb, Optional<? extends T>> b;
+   private final String c;
 
-   private axc(int $$0) {
-      this.e = (K[])(new Object[$$0]);
-      this.f = new int[$$0];
-      this.g = (K[])(new Object[$$0]);
+   public axc(Function<alb, Optional<? extends T>> $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private axc(K[] $$0, int[] $$1, K[] $$2, int $$3, int $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
-   }
+   public Map<alb, List<axc.a>> a(aul $$0) {
+      Map<alb, List<axc.a>> $$1 = Maps.newHashMap();
+      aku $$2 = aku.a(this.c);
 
-   public static <A> axc<A> c(int $$0) {
-      return new axc((int)((float)$$0 / 0.8F));
-   }
+      for (Entry<alb, List<auj>> $$3 : $$2.b($$0).entrySet()) {
+         alb $$4 = $$3.getKey();
+         alb $$5 = $$2.b($$4);
 
-   @Override
-   public int a(@Nullable K $$0) {
-      return this.e(this.b($$0, this.e($$0)));
-   }
+         for (auj $$6 : $$3.getValue()) {
+            try (Reader $$7 = $$6.e()) {
+               JsonElement $$8 = JsonParser.parseReader($$7);
+               List<axc.a> $$9 = $$1.computeIfAbsent($$5, $$0x -> new ArrayList<>());
+               axa $$10 = (axa)axa.a.parse(new Dynamic(JsonOps.INSTANCE, $$8)).getOrThrow();
+               if ($$10.b()) {
+                  $$9.clear();
+               }
 
-   @Nullable
-   @Override
-   public K a(int $$0) {
-      return $$0 >= 0 && $$0 < this.g.length ? this.g[$$0] : null;
-   }
+               String $$11 = $$6.b();
+               $$10.a().forEach($$2x -> $$9.add(new axc.a($$2x, $$11)));
+            } catch (Exception var17) {
+               a.error("Couldn't read tag list {} from {} in data pack {}", new Object[]{$$5, $$4, $$6.b(), var17});
+            }
+         }
+      }
 
-   private int e(int $$0) {
-      return $$0 == -1 ? -1 : this.f[$$0];
-   }
-
-   public boolean b(K $$0) {
-      return this.a($$0) != -1;
-   }
-
-   public boolean d(int $$0) {
-      return this.a($$0) != null;
-   }
-
-   public int d(K $$0) {
-      int $$1 = this.d();
-      this.a($$0, $$1);
       return $$1;
    }
 
-   private int d() {
-      while (this.h < this.g.length && this.g[this.h] != null) {
-         this.h++;
-      }
+   private Either<Collection<axc.a>, Collection<T>> a(awz.a<T> $$0, List<axc.a> $$1) {
+      Builder<T> $$2 = ImmutableSet.builder();
+      List<axc.a> $$3 = new ArrayList<>();
 
-      return this.h;
-   }
-
-   private void f(int $$0) {
-      K[] $$1 = this.e;
-      int[] $$2 = this.f;
-      axc<K> $$3 = new axc<>($$0);
-
-      for (int $$4 = 0; $$4 < $$1.length; $$4++) {
-         if ($$1[$$4] != null) {
-            $$3.a($$1[$$4], $$2[$$4]);
+      for (axc.a $$4 : $$1) {
+         if (!$$4.a().a($$0, $$2::add)) {
+            $$3.add($$4);
          }
       }
 
-      this.e = $$3.e;
-      this.f = $$3.f;
-      this.g = $$3.g;
-      this.h = $$3.h;
-      this.i = $$3.i;
+      return $$3.isEmpty() ? Either.right($$2.build()) : Either.left($$3);
    }
 
-   public void a(K $$0, int $$1) {
-      int $$2 = Math.max($$1, this.i + 1);
-      if ((float)$$2 >= (float)this.e.length * 0.8F) {
-         int $$3 = this.e.length << 1;
-
-         while ($$3 < $$1) {
-            $$3 <<= 1;
+   public Map<alb, Collection<T>> a(Map<alb, List<axc.a>> $$0) {
+      final Map<alb, Collection<T>> $$1 = Maps.newHashMap();
+      awz.a<T> $$2 = new awz.a<T>() {
+         @Nullable
+         @Override
+         public T a(alb $$0) {
+            return (T)axc.this.b.apply($$0).orElse(null);
          }
 
-         this.f($$3);
+         @Nullable
+         @Override
+         public Collection<T> b(alb $$0) {
+            return $$1.get($$0);
+         }
+      };
+      axz<alb, axc.b> $$3 = new axz<>();
+      $$0.forEach(($$1x, $$2x) -> $$3.a($$1x, new axc.b($$2x)));
+      $$3.a(
+         ($$2x, $$3x) -> this.a($$2, $$3x.a)
+               .ifLeft(
+                  $$1xx -> a.error(
+                        "Couldn't load tag {} as it is missing following references: {}",
+                        $$2x,
+                        $$1xx.stream().map(Objects::toString).collect(Collectors.joining(", "))
+                     )
+               )
+               .ifRight($$2xx -> $$1.put($$2x, $$2xx))
+      );
+      return $$1;
+   }
+
+   public Map<alb, Collection<T>> b(aul $$0) {
+      return this.a(this.a($$0));
+   }
+
+   public static record a(awz a, String b) {
+
+      @Override
+      public String toString() {
+         return this.a + " (from " + this.b + ")";
+      }
+   }
+
+   static record b(List<axc.a> a) implements axz.a<alb> {
+
+      @Override
+      public void a(Consumer<alb> $$0) {
+         this.a.forEach($$1 -> $$1.a.a($$0));
       }
 
-      int $$4 = this.g(this.e($$0));
-      this.e[$$4] = $$0;
-      this.f[$$4] = $$1;
-      this.g[$$1] = $$0;
-      this.i++;
-      if ($$1 == this.h) {
-         this.h++;
+      @Override
+      public void b(Consumer<alb> $$0) {
+         this.a.forEach($$1 -> $$1.a.b($$0));
       }
-   }
-
-   private int e(@Nullable K $$0) {
-      return (ayf.g(System.identityHashCode($$0)) & 2147483647) % this.e.length;
-   }
-
-   private int b(@Nullable K $$0, int $$1) {
-      for (int $$2 = $$1; $$2 < this.e.length; $$2++) {
-         if (this.e[$$2] == $$0) {
-            return $$2;
-         }
-
-         if (this.e[$$2] == c) {
-            return -1;
-         }
-      }
-
-      for (int $$3 = 0; $$3 < $$1; $$3++) {
-         if (this.e[$$3] == $$0) {
-            return $$3;
-         }
-
-         if (this.e[$$3] == c) {
-            return -1;
-         }
-      }
-
-      return -1;
-   }
-
-   private int g(int $$0) {
-      for (int $$1 = $$0; $$1 < this.e.length; $$1++) {
-         if (this.e[$$1] == c) {
-            return $$1;
-         }
-      }
-
-      for (int $$2 = 0; $$2 < $$0; $$2++) {
-         if (this.e[$$2] == c) {
-            return $$2;
-         }
-      }
-
-      throw new RuntimeException("Overflowed :(");
-   }
-
-   @Override
-   public Iterator<K> iterator() {
-      return Iterators.filter(Iterators.forArray(this.g), Predicates.notNull());
-   }
-
-   public void a() {
-      Arrays.fill(this.e, null);
-      Arrays.fill(this.g, null);
-      this.h = 0;
-      this.i = 0;
-   }
-
-   @Override
-   public int b() {
-      return this.i;
-   }
-
-   public axc<K> c() {
-      return new axc<>((K[])((Object[])this.e.clone()), (int[])this.f.clone(), (K[])((Object[])this.g.clone()), this.h, this.i);
    }
 }

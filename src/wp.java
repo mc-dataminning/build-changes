@@ -1,48 +1,46 @@
+import com.mojang.logging.LogUtils;
 import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.ByteToMessageDecoder;
+import java.io.IOException;
+import java.util.List;
+import org.slf4j.Logger;
 
-public class wp {
-   private static final int a = 10;
-   private static final int b = 127;
-   private static final int c = 128;
-   private static final int d = 7;
+public class wp<T extends wr> extends ByteToMessageDecoder implements wu {
+   private static final Logger a = LogUtils.getLogger();
+   private final wt<T> b;
 
-   public static int a(long $$0) {
-      for (int $$1 = 1; $$1 < 10; $$1++) {
-         if (($$0 & -1L << $$1 * 7) == 0L) {
-            return $$1;
+   public wp(wt<T> $$0) {
+      this.b = $$0;
+   }
+
+   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
+      int $$3 = $$1.readableBytes();
+      if ($$3 != 0) {
+         zs<? super T> $$4 = this.b.c().decode($$1);
+         zu<? extends zs<? super T>> $$5 = $$4.a();
+         bnj.f.a(this.b.a(), $$5, $$0.channel().remoteAddress(), $$3);
+         if ($$1.readableBytes() > 0) {
+            throw new IOException(
+               "Packet "
+                  + this.b.a().a()
+                  + "/"
+                  + $$5
+                  + " ("
+                  + $$4.getClass().getSimpleName()
+                  + ") was larger than I expected, found "
+                  + $$1.readableBytes()
+                  + " bytes extra whilst reading packet "
+                  + $$5
+            );
+         } else {
+            $$2.add($$4);
+            if (a.isDebugEnabled()) {
+               a.debug(wj.c, " IN: [{}:{}] {}", new Object[]{this.b.a().a(), $$5, $$4.getClass().getName()});
+            }
+
+            wu.a($$0, $$4);
          }
       }
-
-      return 10;
-   }
-
-   public static boolean a(byte $$0) {
-      return ($$0 & 128) == 128;
-   }
-
-   public static long a(ByteBuf $$0) {
-      long $$1 = 0L;
-      int $$2 = 0;
-
-      byte $$3;
-      do {
-         $$3 = $$0.readByte();
-         $$1 |= (long)($$3 & 127) << $$2++ * 7;
-         if ($$2 > 10) {
-            throw new RuntimeException("VarLong too big");
-         }
-      } while (a($$3));
-
-      return $$1;
-   }
-
-   public static ByteBuf a(ByteBuf $$0, long $$1) {
-      while (($$1 & -128L) != 0L) {
-         $$0.writeByte((int)($$1 & 127L) | 128);
-         $$1 >>>= 7;
-      }
-
-      $$0.writeByte((int)$$1);
-      return $$0;
    }
 }

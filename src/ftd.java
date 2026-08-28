@@ -1,138 +1,61 @@
-public class ftd extends ftf<cja> {
-   private static final float[] a = new float[]{1.75F, 0.25F, 0.0F, 0.0F, 0.5F, 0.5F, 0.5F, 0.5F, 1.25F, 0.75F, 0.0F, 0.0F};
-   private static final float[] b = new float[]{0.0F, 0.0F, 0.0F, 0.0F, 0.25F, 1.75F, 1.25F, 0.75F, 0.0F, 0.0F, 0.0F, 0.0F};
-   private static final float[] f = new float[]{0.0F, 0.0F, 0.25F, 1.75F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.75F, 1.25F};
-   private static final float[] g = new float[]{0.0F, 0.0F, 8.0F, -8.0F, -8.0F, 8.0F, 8.0F, -8.0F, 0.0F, 0.0F, 8.0F, -8.0F};
-   private static final float[] h = new float[]{-8.0F, -8.0F, -8.0F, -8.0F, 0.0F, 0.0F, 0.0F, 0.0F, 8.0F, 8.0F, 8.0F, 8.0F};
-   private static final float[] i = new float[]{8.0F, -8.0F, 0.0F, 0.0F, -8.0F, -8.0F, 8.0F, 8.0F, 8.0F, -8.0F, 0.0F, 0.0F};
-   private static final String j = "eye";
-   private static final String k = "tail0";
-   private static final String l = "tail1";
-   private static final String m = "tail2";
-   private final fvw n;
-   private final fvw o;
-   private final fvw p;
-   private final fvw[] q;
-   private final fvw[] r;
+public class ftd extends fur {
+   private static final String a = "left_pages";
+   private static final String b = "right_pages";
+   private static final String c = "flip_page1";
+   private static final String d = "flip_page2";
+   private final fwv e;
+   private final fwv f;
+   private final fwv g;
+   private final fwv h;
+   private final fwv i;
+   private final fwv j;
+   private final fwv k;
 
-   public ftd(fvw $$0) {
-      this.n = $$0;
-      this.q = new fvw[12];
-      this.o = $$0.b("head");
-
-      for (int $$1 = 0; $$1 < this.q.length; $$1++) {
-         this.q[$$1] = this.o.b(a($$1));
-      }
-
-      this.p = this.o.b("eye");
-      this.r = new fvw[3];
-      this.r[0] = this.o.b("tail0");
-      this.r[1] = this.r[0].b("tail1");
-      this.r[2] = this.r[1].b("tail2");
+   public ftd(fwv $$0) {
+      super(gdr::c);
+      this.e = $$0;
+      this.f = $$0.b("left_lid");
+      this.g = $$0.b("right_lid");
+      this.h = $$0.b("left_pages");
+      this.i = $$0.b("right_pages");
+      this.j = $$0.b("flip_page1");
+      this.k = $$0.b("flip_page2");
    }
 
-   private static String a(int $$0) {
-      return "spike" + $$0;
-   }
-
-   public static fwc b() {
-      fwe $$0 = new fwe();
-      fwf $$1 = $$0.a();
-      fwf $$2 = $$1.a(
-         "head",
-         fwb.c()
-            .a(0, 0)
-            .a(-6.0F, 10.0F, -8.0F, 12.0F, 12.0F, 16.0F)
-            .a(0, 28)
-            .a(-8.0F, 10.0F, -6.0F, 2.0F, 12.0F, 12.0F)
-            .a(0, 28)
-            .a(6.0F, 10.0F, -6.0F, 2.0F, 12.0F, 12.0F, true)
-            .a(16, 40)
-            .a(-6.0F, 8.0F, -6.0F, 12.0F, 2.0F, 12.0F)
-            .a(16, 40)
-            .a(-6.0F, 22.0F, -6.0F, 12.0F, 2.0F, 12.0F),
-         fvy.a
-      );
-      fwb $$3 = fwb.c().a(0, 0).a(-1.0F, -4.5F, -1.0F, 2.0F, 9.0F, 2.0F);
-
-      for (int $$4 = 0; $$4 < 12; $$4++) {
-         float $$5 = b($$4, 0.0F, 0.0F);
-         float $$6 = c($$4, 0.0F, 0.0F);
-         float $$7 = d($$4, 0.0F, 0.0F);
-         float $$8 = (float) Math.PI * a[$$4];
-         float $$9 = (float) Math.PI * b[$$4];
-         float $$10 = (float) Math.PI * f[$$4];
-         $$2.a(a($$4), $$3, fvy.a($$5, $$6, $$7, $$8, $$9, $$10));
-      }
-
-      $$2.a("eye", fwb.c().a(8, 0).a(-1.0F, 15.0F, 0.0F, 2.0F, 2.0F, 1.0F), fvy.a(0.0F, 0.0F, -8.25F));
-      fwf $$11 = $$2.a("tail0", fwb.c().a(40, 0).a(-2.0F, 14.0F, 7.0F, 4.0F, 4.0F, 8.0F), fvy.a);
-      fwf $$12 = $$11.a("tail1", fwb.c().a(0, 54).a(0.0F, 14.0F, 0.0F, 3.0F, 3.0F, 7.0F), fvy.a(-1.5F, 0.5F, 14.0F));
-      $$12.a("tail2", fwb.c().a(41, 32).a(0.0F, 14.0F, 0.0F, 2.0F, 2.0F, 6.0F).a(25, 19).a(1.0F, 10.5F, 3.0F, 1.0F, 9.0F, 9.0F), fvy.a(0.5F, 0.5F, 6.0F));
-      return fwc.a($$0, 64, 64);
+   public static fxb a() {
+      fxd $$0 = new fxd();
+      fxe $$1 = $$0.a();
+      $$1.a("left_lid", fxa.c().a(0, 0).a(-6.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), fwx.a(0.0F, 0.0F, -1.0F));
+      $$1.a("right_lid", fxa.c().a(16, 0).a(0.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), fwx.a(0.0F, 0.0F, 1.0F));
+      $$1.a("seam", fxa.c().a(12, 0).a(-1.0F, -5.0F, 0.0F, 2.0F, 10.0F, 0.005F), fwx.b(0.0F, (float) (Math.PI / 2), 0.0F));
+      $$1.a("left_pages", fxa.c().a(0, 10).a(0.0F, -4.0F, -0.99F, 5.0F, 8.0F, 1.0F), fwx.a);
+      $$1.a("right_pages", fxa.c().a(12, 10).a(0.0F, -4.0F, -0.01F, 5.0F, 8.0F, 1.0F), fwx.a);
+      fxa $$2 = fxa.c().a(24, 10).a(0.0F, -4.0F, 0.0F, 5.0F, 8.0F, 0.005F);
+      $$1.a("flip_page1", $$2, fwx.a);
+      $$1.a("flip_page2", $$2, fwx.a);
+      return fxb.a($$0, 64, 32);
    }
 
    @Override
-   public fvw a() {
-      return this.n;
+   public void a(ezt $$0, ezx $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   public void a(cja $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = $$3 - (float)$$0.ai;
-      this.o.f = $$4 * (float) (Math.PI / 180.0);
-      this.o.e = $$5 * (float) (Math.PI / 180.0);
-      float $$7 = (1.0F - $$0.H($$6)) * 0.55F;
-      this.a($$3, $$7);
-      brw $$8 = feb.Q().an();
-      if ($$0.gr()) {
-         $$8 = $$0.gs();
-      }
-
-      if ($$8 != null) {
-         eum $$9 = $$8.j(0.0F);
-         eum $$10 = $$0.j(0.0F);
-         double $$11 = $$9.d - $$10.d;
-         if ($$11 > 0.0) {
-            this.p.c = 0.0F;
-         } else {
-            this.p.c = 1.0F;
-         }
-
-         eum $$12 = $$0.f(0.0F);
-         $$12 = new eum($$12.c, 0.0, $$12.e);
-         eum $$13 = new eum($$10.c - $$9.c, 0.0, $$10.e - $$9.e).d().b((float) (Math.PI / 2));
-         double $$14 = $$12.b($$13);
-         this.p.b = ayf.c((float)Math.abs($$14)) * 2.0F * (float)Math.signum($$14);
-      }
-
-      this.p.k = true;
-      float $$15 = $$0.G($$6);
-      this.r[0].f = ayf.a($$15) * (float) Math.PI * 0.05F;
-      this.r[1].f = ayf.a($$15) * (float) Math.PI * 0.1F;
-      this.r[2].f = ayf.a($$15) * (float) Math.PI * 0.15F;
+   public void b(ezt $$0, ezx $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.e.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   private void a(float $$0, float $$1) {
-      for (int $$2 = 0; $$2 < 12; $$2++) {
-         this.q[$$2].b = b($$2, $$0, $$1);
-         this.q[$$2].c = c($$2, $$0, $$1);
-         this.q[$$2].d = d($$2, $$0, $$1);
-      }
-   }
-
-   private static float a(int $$0, float $$1, float $$2) {
-      return 1.0F + ayf.b($$1 * 1.5F + (float)$$0) * 0.01F - $$2;
-   }
-
-   private static float b(int $$0, float $$1, float $$2) {
-      return g[$$0] * a($$0, $$1, $$2);
-   }
-
-   private static float c(int $$0, float $$1, float $$2) {
-      return 16.0F + h[$$0] * a($$0, $$1, $$2);
-   }
-
-   private static float d(int $$0, float $$1, float $$2) {
-      return i[$$0] * a($$0, $$1, $$2);
+   public void a(float $$0, float $$1, float $$2, float $$3) {
+      float $$4 = (ayu.a($$0 * 0.02F) * 0.1F + 1.25F) * $$3;
+      this.f.f = (float) Math.PI + $$4;
+      this.g.f = -$$4;
+      this.h.f = $$4;
+      this.i.f = -$$4;
+      this.j.f = $$4 - $$4 * 2.0F * $$1;
+      this.k.f = $$4 - $$4 * 2.0F * $$2;
+      this.h.b = ayu.a($$4);
+      this.i.b = ayu.a($$4);
+      this.j.b = ayu.a($$4);
+      this.k.b = ayu.a($$4);
    }
 }

@@ -1,77 +1,54 @@
-import com.google.common.collect.Lists;
-import java.util.AbstractList;
-import java.util.Arrays;
-import java.util.List;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-public class jg<E> extends AbstractList<E> {
-   private final List<E> a;
-   @Nullable
-   private final E b;
+public enum jg implements azp {
+   a("down_east", je.a, je.f),
+   b("down_north", je.a, je.c),
+   c("down_south", je.a, je.d),
+   d("down_west", je.a, je.e),
+   e("up_east", je.b, je.f),
+   f("up_north", je.b, je.c),
+   g("up_south", je.b, je.d),
+   h("up_west", je.b, je.e),
+   i("west_up", je.e, je.b),
+   j("east_up", je.f, je.b),
+   k("north_up", je.c, je.b),
+   l("south_up", je.d, je.b);
 
-   public static <E> jg<E> a() {
-      return new jg<>(Lists.newArrayList(), null);
-   }
-
-   public static <E> jg<E> a(int $$0) {
-      return new jg<>(Lists.newArrayListWithCapacity($$0), null);
-   }
-
-   public static <E> jg<E> a(int $$0, E $$1) {
-      Validate.notNull($$1);
-      Object[] $$2 = new Object[$$0];
-      Arrays.fill($$2, $$1);
-      return new jg<>(Arrays.asList((E[])$$2), $$1);
-   }
-
-   @SafeVarargs
-   public static <E> jg<E> a(E $$0, E... $$1) {
-      return new jg<>(Arrays.asList($$1), $$0);
-   }
-
-   protected jg(List<E> $$0, @Nullable E $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   @Nonnull
-   @Override
-   public E get(int $$0) {
-      return this.a.get($$0);
-   }
-
-   @Override
-   public E set(int $$0, E $$1) {
-      Validate.notNull($$1);
-      return this.a.set($$0, $$1);
-   }
-
-   @Override
-   public void add(int $$0, E $$1) {
-      Validate.notNull($$1);
-      this.a.add($$0, $$1);
-   }
-
-   @Override
-   public E remove(int $$0) {
-      return this.a.remove($$0);
-   }
-
-   @Override
-   public int size() {
-      return this.a.size();
-   }
-
-   @Override
-   public void clear() {
-      if (this.b == null) {
-         super.clear();
-      } else {
-         for (int $$0 = 0; $$0 < this.size(); $$0++) {
-            this.set($$0, this.b);
-         }
+   private static final Int2ObjectMap<jg> m = ac.a(new Int2ObjectOpenHashMap(values().length), $$0 -> {
+      for (jg $$1 : values()) {
+         $$0.put(b($$1.p, $$1.o), $$1);
       }
+   });
+   private final String n;
+   private final je o;
+   private final je p;
+
+   private static int b(je $$0, je $$1) {
+      return $$1.ordinal() << 3 | $$0.ordinal();
+   }
+
+   private jg(final String $$0, final je $$1, final je $$2) {
+      this.n = $$0;
+      this.p = $$1;
+      this.o = $$2;
+   }
+
+   @Override
+   public String c() {
+      return this.n;
+   }
+
+   public static jg a(je $$0, je $$1) {
+      int $$2 = b($$0, $$1);
+      return (jg)m.get($$2);
+   }
+
+   public je a() {
+      return this.p;
+   }
+
+   public je b() {
+      return this.o;
    }
 }

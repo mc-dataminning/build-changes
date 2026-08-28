@@ -1,53 +1,100 @@
-import java.util.Iterator;
+import com.mojang.authlib.GameProfile;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+import java.util.List;
+import java.util.Optional;
 
-public interface aka<T> {
-   default void a(int $$0, int $$1, int $$2, cxy<?> $$3, Iterator<T> $$4, int $$5) {
-      int $$6 = $$0;
-      int $$7 = $$1;
-      if ($$3.b() instanceof cyd $$9) {
-         $$6 = $$9.j();
-         $$7 = $$9.k();
-      }
+public record aka(xl b, Optional<aka.b> c, Optional<aka.c> d, Optional<aka.a> e, boolean f) {
+   public static final Codec<aka> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               xn.a.lenientOptionalFieldOf("description", xk.a).forGetter(aka::a),
+               aka.b.a.lenientOptionalFieldOf("players").forGetter(aka::b),
+               aka.c.a.lenientOptionalFieldOf("version").forGetter(aka::c),
+               aka.a.a.lenientOptionalFieldOf("favicon").forGetter(aka::d),
+               Codec.BOOL.lenientOptionalFieldOf("enforcesSecureChat", false).forGetter(aka::e)
+            )
+            .apply($$0, aka::new)
+   );
 
-      int $$10 = 0;
+   public xl a() {
+      return this.b;
+   }
 
-      for (int $$11 = 0; $$11 < $$1; $$11++) {
-         if ($$10 == $$2) {
-            $$10++;
-         }
+   public Optional<aka.b> b() {
+      return this.c;
+   }
 
-         boolean $$12 = (float)$$7 < (float)$$1 / 2.0F;
-         int $$13 = ayf.d((float)$$1 / 2.0F - (float)$$7 / 2.0F);
-         if ($$12 && $$13 > $$11) {
-            $$10 += $$0;
-            $$11++;
-         }
+   public Optional<aka.c> c() {
+      return this.d;
+   }
 
-         for (int $$14 = 0; $$14 < $$0; $$14++) {
-            if (!$$4.hasNext()) {
-               return;
+   public Optional<aka.a> d() {
+      return this.e;
+   }
+
+   public boolean e() {
+      return this.f;
+   }
+
+   public static record a(byte[] b) {
+      private static final String c = "data:image/png;base64,";
+      public static final Codec<aka.a> a = Codec.STRING.comapFlatMap($$0 -> {
+         if (!$$0.startsWith("data:image/png;base64,")) {
+            return DataResult.error(() -> "Unknown format");
+         } else {
+            try {
+               String $$1 = $$0.substring("data:image/png;base64,".length()).replaceAll("\n", "");
+               byte[] $$2 = Base64.getDecoder().decode($$1.getBytes(StandardCharsets.UTF_8));
+               return DataResult.success(new aka.a($$2));
+            } catch (IllegalArgumentException var3) {
+               return DataResult.error(() -> "Malformed base64 server icon");
             }
-
-            $$12 = (float)$$6 < (float)$$0 / 2.0F;
-            $$13 = ayf.d((float)$$0 / 2.0F - (float)$$6 / 2.0F);
-            int $$15 = $$6;
-            boolean $$16 = $$14 < $$6;
-            if ($$12) {
-               $$15 = $$13 + $$6;
-               $$16 = $$13 <= $$14 && $$14 < $$13 + $$6;
-            }
-
-            if ($$16) {
-               this.a($$4, $$10, $$5, $$11, $$14);
-            } else if ($$15 == $$14) {
-               $$10 += $$0 - $$14;
-               break;
-            }
-
-            $$10++;
          }
+      }, $$0 -> "data:image/png;base64," + new String(Base64.getEncoder().encode($$0.b), StandardCharsets.UTF_8));
+
+      public byte[] a() {
+         return this.b;
       }
    }
 
-   void a(Iterator<T> var1, int var2, int var3, int var4, int var5);
+   public static record b(int b, int c, List<GameProfile> d) {
+      private static final Codec<GameProfile> e = RecordCodecBuilder.create(
+         $$0 -> $$0.group(kc.d.fieldOf("id").forGetter(GameProfile::getId), Codec.STRING.fieldOf("name").forGetter(GameProfile::getName))
+               .apply($$0, GameProfile::new)
+      );
+      public static final Codec<aka.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.INT.fieldOf("max").forGetter(aka.b::a),
+                  Codec.INT.fieldOf("online").forGetter(aka.b::b),
+                  e.listOf().lenientOptionalFieldOf("sample", List.of()).forGetter(aka.b::c)
+               )
+               .apply($$0, aka.b::new)
+      );
+
+      public int a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      public List<GameProfile> c() {
+         return this.d;
+      }
+   }
+
+   public static record c(String b, int c) {
+      public static final Codec<aka.c> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(aka.c::b), Codec.INT.fieldOf("protocol").forGetter(aka.c::c)).apply($$0, aka.c::new)
+      );
+
+      public static aka.c a() {
+         ad $$0 = aa.b();
+         return new aka.c($$0.c(), $$0.e());
+      }
+   }
 }

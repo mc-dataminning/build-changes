@@ -1,26 +1,62 @@
-public abstract class euk {
-   protected final eum a;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-   protected euk(eum $$0) {
-      this.a = $$0;
+public record euk(eur b, String c, float d) implements eui {
+   public static final MapCodec<euk> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               eus.a.fieldOf("target").forGetter(euk::c),
+               Codec.STRING.fieldOf("score").forGetter(euk::d),
+               Codec.FLOAT.fieldOf("scale").orElse(1.0F).forGetter(euk::e)
+            )
+            .apply($$0, euk::new)
+   );
+
+   @Override
+   public euh b() {
+      return euj.e;
    }
 
-   public double a(brw $$0) {
-      double $$1 = this.a.c - $$0.du();
-      double $$2 = this.a.d - $$0.dw();
-      double $$3 = this.a.e - $$0.dA();
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   @Override
+   public Set<esw<?>> a() {
+      return this.b.b();
    }
 
-   public abstract euk.a c();
-
-   public eum e() {
-      return this.a;
+   public static euk a(eqd.b $$0, String $$1) {
+      return a($$0, $$1, 1.0F);
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public static euk a(eqd.b $$0, String $$1, float $$2) {
+      return new euk(euo.a($$0), $$1, $$2);
+   }
+
+   @Override
+   public float b(eqd $$0) {
+      ewp $$1 = this.b.a($$0);
+      if ($$1 == null) {
+         return 0.0F;
+      } else {
+         ewq $$2 = $$0.d().f();
+         ewi $$3 = $$2.a(this.c);
+         if ($$3 == null) {
+            return 0.0F;
+         } else {
+            ewm $$4 = $$2.d($$1, $$3);
+            return $$4 == null ? 0.0F : (float)$$4.a() * this.d;
+         }
+      }
+   }
+
+   public eur c() {
+      return this.b;
+   }
+
+   public String d() {
+      return this.c;
+   }
+
+   public float e() {
+      return this.d;
    }
 }

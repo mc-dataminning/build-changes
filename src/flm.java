@@ -1,82 +1,91 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.authlib.minecraft.BanDetails;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.time.Duration;
+import java.time.Instant;
+import org.apache.commons.lang3.StringUtils;
 
 public class flm {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<cqc<?>, flm.a<?, ?>> b = Maps.newHashMap();
+   private static final xl b = xl.c("gui.banned.title.temporary").a(n.r);
+   private static final xl c = xl.c("gui.banned.title.permanent").a(n.r);
+   public static final xl a = xl.c("gui.banned.name.title").a(n.r);
+   private static final xl d = xl.c("gui.banned.skin.title").a(n.r);
+   private static final xl e = xl.a("gui.banned.skin.description", xl.b("https://aka.ms/mcjavamoderation"));
 
-   public static <T extends cov> void a(cqc<T> $$0, feb $$1, int $$2, wx $$3) {
-      flm.a<T, ?> $$4 = a($$0);
-      if ($$4 == null) {
-         a.warn("Failed to create screen for menu type: {}", le.r.b($$0));
-      } else {
-         $$4.a($$3, $$0, $$1, $$2);
-      }
+   public static flp a(BooleanConsumer $$0, BanDetails $$1) {
+      return new flp($$0, a($$1), b($$1), "https://aka.ms/mcjavamoderation", xk.m, true);
    }
 
-   @Nullable
-   private static <T extends cov> flm.a<T, ?> a(cqc<T> $$0) {
-      return (flm.a<T, ?>)b.get($$0);
-   }
-
-   private static <M extends cov, U extends flz & foc<M>> void a(cqc<? extends M> $$0, flm.a<M, U> $$1) {
-      flm.a<?, ?> $$2 = b.put($$0, $$1);
-      if ($$2 != null) {
-         throw new IllegalStateException("Duplicate registration for " + le.r.b($$0));
-      }
-   }
-
-   public static boolean a() {
-      boolean $$0 = false;
-
-      for (cqc<?> $$1 : le.r) {
-         if (!b.containsKey($$1)) {
-            a.debug("Menu {} has no matching screen", le.r.b($$1));
-            $$0 = true;
+   public static flp a(Runnable $$0) {
+      String $$1 = "https://aka.ms/mcjavamoderation";
+      return new flp($$1x -> {
+         if ($$1x) {
+            ac.k().a("https://aka.ms/mcjavamoderation");
          }
-      }
 
-      return $$0;
+         $$0.run();
+      }, d, e, "https://aka.ms/mcjavamoderation", xk.m, true);
    }
 
-   static {
-      a(cqc.a, fni::new);
-      a(cqc.b, fni::new);
-      a(cqc.c, fni::new);
-      a(cqc.d, fni::new);
-      a(cqc.e, fni::new);
-      a(cqc.f, fni::new);
-      a(cqc.g, fno::new);
-      a(cqc.h, fnj::new);
-      a(cqc.i, fna::new);
-      a(cqc.j, fnb::new);
-      a(cqc.k, fnc::new);
-      a(cqc.l, fnf::new);
-      a(cqc.m, fnk::new);
-      a(cqc.n, fnr::new);
-      a(cqc.o, fns::new);
-      a(cqc.p, fnt::new);
-      a(cqc.q, fnv::new);
-      a(cqc.r, foa::new);
-      a(cqc.s, fob::new);
-      a(cqc.t, fod::new);
-      a(cqc.u, fog::new);
-      a(cqc.v, foi::new);
-      a(cqc.w, foj::new);
-      a(cqc.x, fng::new);
-      a(cqc.y, fok::new);
+   public static flp a(String $$0, Runnable $$1) {
+      String $$2 = "https://aka.ms/mcjavamoderation";
+      return new flp($$1x -> {
+         if ($$1x) {
+            ac.k().a("https://aka.ms/mcjavamoderation");
+         }
+
+         $$1.run();
+      }, a, xl.a("gui.banned.name.description", xl.b($$0).a(n.o), "https://aka.ms/mcjavamoderation"), "https://aka.ms/mcjavamoderation", xk.m, true);
    }
 
-   interface a<T extends cov, U extends flz & foc<T>> {
-      default void a(wx $$0, cqc<T> $$1, feb $$2, int $$3) {
-         U $$4 = this.create($$1.a($$3, $$2.s.gc()), $$2.s.gc(), $$0);
-         $$2.s.cb = $$4.D();
-         $$2.a($$4);
-      }
+   private static xl a(BanDetails $$0) {
+      return f($$0) ? b : c;
+   }
 
-      U create(T var1, clx var2, wx var3);
+   private static xl b(BanDetails $$0) {
+      return xl.a("gui.banned.description", c($$0), d($$0), xl.b("https://aka.ms/mcjavamoderation"));
+   }
+
+   private static xl c(BanDetails $$0) {
+      String $$1 = $$0.reason();
+      String $$2 = $$0.reasonMessage();
+      if (StringUtils.isNumeric($$1)) {
+         int $$3 = Integer.parseInt($$1);
+         fyq $$4 = fyq.a($$3);
+         xl $$5;
+         if ($$4 != null) {
+            $$5 = xo.a($$4.a().f(), yi.a.a(true));
+         } else if ($$2 != null) {
+            $$5 = xl.a("gui.banned.description.reason_id_message", $$3, $$2).a(n.r);
+         } else {
+            $$5 = xl.a("gui.banned.description.reason_id", $$3).a(n.r);
+         }
+
+         return xl.a("gui.banned.description.reason", $$5);
+      } else {
+         return xl.c("gui.banned.description.unknownreason");
+      }
+   }
+
+   private static xl d(BanDetails $$0) {
+      if (f($$0)) {
+         xl $$1 = e($$0);
+         return xl.a("gui.banned.description.temporary", xl.a("gui.banned.description.temporary.duration", $$1).a(n.r));
+      } else {
+         return xl.c("gui.banned.description.permanent").a(n.r);
+      }
+   }
+
+   private static xl e(BanDetails $$0) {
+      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
+      long $$2 = $$1.toHours();
+      if ($$2 > 72L) {
+         return xk.a($$1.toDays());
+      } else {
+         return $$2 < 1L ? xk.c($$1.toMinutes()) : xk.b($$1.toHours());
+      }
+   }
+
+   private static boolean f(BanDetails $$0) {
+      return $$0.expires() != null;
    }
 }

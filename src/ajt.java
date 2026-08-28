@@ -1,20 +1,20 @@
-public interface ajt<T> {
-   yv<? super wi, T> codec();
+public record ajt(long b) implements zs<ajs> {
+   public static final zj<wl, ajt> a = zs.a(ajt::a, ajt::new);
 
-   default ajs<T> a(int $$0) {
-      return new ajs<>($$0, this);
+   private ajt(wl $$0) {
+      this($$0.readLong());
    }
 
-   T copy(T var1);
-
-   static <T> ajt<T> a(yv<? super wi, T> $$0) {
-      return () -> $$0;
+   private void a(wl $$0) {
+      $$0.b(this.b);
    }
 
-   public interface a<T> extends ajt<T> {
-      @Override
-      default T copy(T $$0) {
-         return $$0;
-      }
+   @Override
+   public zu<ajt> a() {
+      return aju.a;
+   }
+
+   public void a(ajs $$0) {
+      $$0.a(this);
    }
 }

@@ -1,30 +1,25 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class cqx implements cpl {
-   private final jg<ctq> b;
-   private final int c;
-   private final int d;
-   private final cov e;
+public class cqx implements bqi {
+   private final daq b;
+   private final jr<cuk> c = jr.a(3, cuk.l);
+   @Nullable
+   private dar d;
+   private int e;
+   private int f;
 
-   public cqx(cov $$0, int $$1, int $$2) {
-      this($$0, $$1, $$2, jg.a($$1 * $$2, ctq.i));
-   }
-
-   public cqx(cov $$0, int $$1, int $$2, jg<ctq> $$3) {
-      this.b = $$3;
-      this.e = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public cqx(daq $$0) {
+      this.b = $$0;
    }
 
    @Override
    public int b() {
-      return this.b.size();
+      return this.c.size();
    }
 
    @Override
    public boolean c() {
-      for (ctq $$0 : this.b) {
+      for (cuk $$0 : this.c) {
          if (!$$0.e()) {
             return false;
          }
@@ -34,64 +29,107 @@ public class cqx implements cpl {
    }
 
    @Override
-   public ctq a(int $$0) {
-      return $$0 >= this.b() ? ctq.i : this.b.get($$0);
+   public cuk a(int $$0) {
+      return this.c.get($$0);
    }
 
    @Override
-   public ctq b(int $$0) {
-      return bpq.a(this.b, $$0);
-   }
+   public cuk a(int $$0, int $$1) {
+      cuk $$2 = this.c.get($$0);
+      if ($$0 == 2 && !$$2.e()) {
+         return bqj.a(this.c, $$0, $$2.I());
+      } else {
+         cuk $$3 = bqj.a(this.c, $$0, $$1);
+         if (!$$3.e() && this.d($$0)) {
+            this.f();
+         }
 
-   @Override
-   public ctq a(int $$0, int $$1) {
-      ctq $$2 = bpq.a(this.b, $$0, $$1);
-      if (!$$2.e()) {
-         this.e.a(this);
+         return $$3;
       }
+   }
 
-      return $$2;
+   private boolean d(int $$0) {
+      return $$0 == 0 || $$0 == 1;
    }
 
    @Override
-   public void a(int $$0, ctq $$1) {
-      this.b.set($$0, $$1);
-      this.e.a(this);
+   public cuk b(int $$0) {
+      return bqj.a(this.c, $$0);
+   }
+
+   @Override
+   public void a(int $$0, cuk $$1) {
+      this.c.set($$0, $$1);
+      $$1.f(this.e_($$1));
+      if (this.d($$0)) {
+         this.f();
+      }
+   }
+
+   @Override
+   public boolean a(cms $$0) {
+      return this.b.gq() == $$0;
    }
 
    @Override
    public void e() {
+      this.f();
    }
 
-   @Override
-   public boolean a(cly $$0) {
-      return true;
+   public void f() {
+      this.d = null;
+      cuk $$0;
+      cuk $$1;
+      if (this.c.get(0).e()) {
+         $$0 = this.c.get(1);
+         $$1 = cuk.l;
+      } else {
+         $$0 = this.c.get(0);
+         $$1 = this.c.get(1);
+      }
+
+      if ($$0.e()) {
+         this.a(2, cuk.l);
+         this.f = 0;
+      } else {
+         das $$4 = this.b.gs();
+         if (!$$4.isEmpty()) {
+            dar $$5 = $$4.a($$0, $$1, this.e);
+            if ($$5 == null || $$5.r()) {
+               this.d = $$5;
+               $$5 = $$4.a($$1, $$0, this.e);
+            }
+
+            if ($$5 != null && !$$5.r()) {
+               this.d = $$5;
+               this.a(2, $$5.h());
+               this.f = $$5.q();
+            } else {
+               this.a(2, cuk.l);
+               this.f = 0;
+            }
+         }
+
+         this.b.n(this.a(2));
+      }
+   }
+
+   @Nullable
+   public dar g() {
+      return this.d;
+   }
+
+   public void c(int $$0) {
+      this.e = $$0;
+      this.f();
    }
 
    @Override
    public void a() {
-      this.b.clear();
+      this.c.clear();
    }
 
-   @Override
-   public int g() {
-      return this.d;
-   }
-
-   @Override
-   public int f() {
-      return this.c;
-   }
-
-   @Override
-   public List<ctq> h() {
-      return List.copyOf(this.b);
-   }
-
-   @Override
-   public void a(cmc $$0) {
-      for (ctq $$1 : this.b) {
-         $$0.a($$1);
-      }
+   public int h() {
+      return this.f;
    }
 }

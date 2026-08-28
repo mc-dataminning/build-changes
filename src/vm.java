@@ -1,42 +1,148 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
+import java.util.Objects;
 
-public class vm extends vi {
-   private final Deque<vk> a = new ArrayDeque<>();
-
-   public vm(vj... $$0) {
-      vk $$1 = vk.a();
-
-      for (vj $$2 : $$0) {
-         $$1.a($$2);
+public class vm implements vo {
+   private static final int b = 36;
+   public static final vq<vm> a = new vq.b<vm>() {
+      public vm a(DataInput $$0, va $$1) throws IOException {
+         return vm.a(d($$0, $$1));
       }
 
-      this.a.push($$1);
+      @Override
+      public vl.b a(DataInput $$0, vl $$1, va $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
+      }
+
+      private static String d(DataInput $$0, va $$1) throws IOException {
+         $$1.b(36L);
+         String $$2 = $$0.readUTF();
+         $$1.a(2L, (long)$$2.length());
+         return $$2;
+      }
+
+      @Override
+      public void b(DataInput $$0, va $$1) throws IOException {
+         vm.a($$0);
+      }
+
+      @Override
+      public String a() {
+         return "STRING";
+      }
+
+      @Override
+      public String b() {
+         return "TAG_String";
+      }
+
+      @Override
+      public boolean d() {
+         return true;
+      }
+   };
+   private static final vm c = new vm("");
+   private static final char w = '"';
+   private static final char x = '\'';
+   private static final char y = '\\';
+   private static final char z = '\u0000';
+   private final String A;
+
+   public static void a(DataInput $$0) throws IOException {
+      $$0.skipBytes($$0.readUnsignedShort());
+   }
+
+   private vm(String $$0) {
+      Objects.requireNonNull($$0, "Null string not allowed");
+      this.A = $$0;
+   }
+
+   public static vm a(String $$0) {
+      return $$0.isEmpty() ? c : new vm($$0);
    }
 
    @Override
-   public ux.a a(vc<?> $$0, String $$1) {
-      vk $$2 = this.a.element();
-      if ($$2.a($$0, $$1)) {
-         return ux.a.b;
-      } else {
-         if ($$0 == ud.b) {
-            vk $$3 = $$2.d().get($$1);
-            if ($$3 != null) {
-               this.a.push($$3);
+   public void a(DataOutput $$0) throws IOException {
+      $$0.writeUTF(this.A);
+   }
+
+   @Override
+   public int a() {
+      return 36 + 2 * this.A.length();
+   }
+
+   @Override
+   public byte b() {
+      return 8;
+   }
+
+   @Override
+   public vq<vm> c() {
+      return a;
+   }
+
+   @Override
+   public String toString() {
+      return vo.super.s_();
+   }
+
+   public vm e() {
+      return this;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof vm && Objects.equals(this.A, ((vm)$$0).A);
+   }
+
+   @Override
+   public int hashCode() {
+      return this.A.hashCode();
+   }
+
+   @Override
+   public String s_() {
+      return this.A;
+   }
+
+   @Override
+   public void a(vs $$0) {
+      $$0.a(this);
+   }
+
+   public static String b(String $$0) {
+      StringBuilder $$1 = new StringBuilder(" ");
+      char $$2 = 0;
+
+      for (int $$3 = 0; $$3 < $$0.length(); $$3++) {
+         char $$4 = $$0.charAt($$3);
+         if ($$4 == '\\') {
+            $$1.append('\\');
+         } else if ($$4 == '"' || $$4 == '\'') {
+            if ($$2 == 0) {
+               $$2 = (char)($$4 == '"' ? 39 : 34);
+            }
+
+            if ($$2 == $$4) {
+               $$1.append('\\');
             }
          }
 
-         return super.a($$0, $$1);
+         $$1.append($$4);
       }
+
+      if ($$2 == 0) {
+         $$2 = '"';
+      }
+
+      $$1.setCharAt(0, $$2);
+      $$1.append($$2);
+      return $$1.toString();
    }
 
    @Override
-   public ux.b b() {
-      if (this.e() == this.a.element().b()) {
-         this.a.pop();
-      }
-
-      return super.b();
+   public vl.b a(vl $$0) {
+      return $$0.a(this.A);
    }
 }

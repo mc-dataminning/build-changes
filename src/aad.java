@@ -1,21 +1,23 @@
-public record aad(String c) implements aaf {
-   public static final yv<vx, aad> a = aaf.a(aad::a, aad::new);
-   public static final aaf.b<aad> b = aaf.a("brand");
+import java.util.Optional;
+import java.util.UUID;
 
-   private aad(vx $$0) {
-      this($$0.p());
+public record aad(Optional<UUID> b) implements zs<zy> {
+   public static final zj<wl, aad> a = zs.a(aad::a, aad::new);
+
+   private aad(wl $$0) {
+      this($$0.b(kc.g));
    }
 
-   private void a(vx $$0) {
-      $$0.a(this.c);
+   private void a(wl $$0) {
+      $$0.a(this.b, kc.g);
    }
 
    @Override
-   public aaf.b<aad> a() {
-      return b;
+   public zu<aad> a() {
+      return aai.e;
    }
 
-   public String b() {
-      return this.c;
+   public void a(zy $$0) {
+      $$0.a(this);
    }
 }

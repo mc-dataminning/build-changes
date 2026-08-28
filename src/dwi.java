@@ -1,148 +1,415 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Queues;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.io.Writer;
+import java.util.List;
+import java.util.Queue;
+import java.util.Set;
+import java.util.UUID;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class dwi implements dwp.c {
-   public static final int a = 12;
-   private static final int f = 24;
-   private static final float[] g = ac.a(new float[13824], $$0 -> {
-      for (int $$1 = 0; $$1 < 24; $$1++) {
-         for (int $$2 = 0; $$2 < 24; $$2++) {
-            for (int $$3 = 0; $$3 < 24; $$3++) {
-               $$0[$$1 * 24 * 24 + $$2 * 24 + $$3] = (float)b($$2 - 12, $$3 - 12, $$1 - 12);
-            }
-         }
+public class dwi<T extends dvx> implements AutoCloseable {
+   static final Logger a = LogUtils.getLogger();
+   final Set<UUID> b = Sets.newHashSet();
+   final dwf<T> c;
+   private final dwa<T> d;
+   private final dvz<T> e;
+   final dwc<T> f;
+   private final dwg<T> g;
+   private final Long2ObjectMap<dwk> h = new Long2ObjectOpenHashMap();
+   private final Long2ObjectMap<dwi.b> i = new Long2ObjectOpenHashMap();
+   private final LongSet j = new LongOpenHashSet();
+   private final Queue<dvv<T>> k = Queues.newConcurrentLinkedQueue();
+
+   public dwi(Class<T> $$0, dwf<T> $$1, dwa<T> $$2) {
+      this.e = new dvz<>();
+      this.f = new dwc<>($$0, this.h);
+      this.h.defaultReturnValue(dwk.a);
+      this.i.defaultReturnValue(dwi.b.a);
+      this.c = $$1;
+      this.d = $$2;
+      this.g = new dwh<>(this.e, this.f);
+   }
+
+   void a(long $$0, dwb<T> $$1) {
+      if ($$1.a()) {
+         this.f.e($$0);
       }
-   });
-   private final ObjectListIterator<dwi.a> h;
-   private final ObjectListIterator<ein> i;
+   }
 
-   public static dwi a(dbs $$0, dag $$1) {
-      int $$2 = $$1.d();
-      int $$3 = $$1.e();
-      ObjectList<dwi.a> $$4 = new ObjectArrayList(10);
-      ObjectList<ein> $$5 = new ObjectArrayList(32);
-      $$0.a($$1, $$0x -> $$0x.d() != ehw.a).forEach($$5x -> {
-         ehw $$6 = $$5x.h().d();
+   private boolean b(T $$0) {
+      if (!this.b.add($$0.cz())) {
+         a.warn("UUID of added entity already exists: {}", $$0);
+         return false;
+      } else {
+         return true;
+      }
+   }
 
-         for (ehp $$7 : $$5x.i()) {
-            if ($$7.a($$1, 12)) {
-               if ($$7 instanceof ehh) {
-                  ehh $$8 = (ehh)$$7;
-                  eiu.a $$9 = $$8.b().e();
-                  if ($$9 == eiu.a.b) {
-                     $$4.add(new dwi.a($$8.f(), $$6, $$8.d()));
-                  }
+   public boolean a(T $$0) {
+      return this.a($$0, false);
+   }
 
-                  for (ein $$10 : $$8.e()) {
-                     int $$11 = $$10.a();
-                     int $$12 = $$10.c();
-                     if ($$11 > $$2 - 12 && $$12 > $$3 - 12 && $$11 < $$2 + 15 + 12 && $$12 < $$3 + 15 + 12) {
-                        $$5.add($$10);
-                     }
-                  }
-               } else {
-                  $$4.add(new dwi.a($$7.f(), $$6, 0));
-               }
-            }
+   private boolean a(T $$0, boolean $$1) {
+      if (!this.b($$0)) {
+         return false;
+      } else {
+         long $$2 = kb.c($$0.dp());
+         dwb<T> $$3 = this.f.c($$2);
+         $$3.a($$0);
+         $$0.a(new dwi.a($$0, $$2, $$3));
+         if (!$$1) {
+            this.c.g($$0);
+         }
+
+         dwk $$4 = a($$0, $$3.c());
+         if ($$4.b()) {
+            this.e($$0);
+         }
+
+         if ($$4.a()) {
+            this.c($$0);
+         }
+
+         return true;
+      }
+   }
+
+   static <T extends dvx> dwk a(T $$0, dwk $$1) {
+      return $$0.dO() ? dwk.c : $$1;
+   }
+
+   public void a(Stream<T> $$0) {
+      $$0.forEach($$0x -> this.a((T)$$0x, true));
+   }
+
+   public void b(Stream<T> $$0) {
+      $$0.forEach($$0x -> this.a((T)$$0x, false));
+   }
+
+   void c(T $$0) {
+      this.c.e($$0);
+   }
+
+   void d(T $$0) {
+      this.c.d($$0);
+   }
+
+   void e(T $$0) {
+      this.e.a($$0);
+      this.c.c($$0);
+   }
+
+   void f(T $$0) {
+      this.c.b($$0);
+      this.e.b($$0);
+   }
+
+   public void a(dba $$0, aqu $$1) {
+      dwk $$2 = dwk.a($$1);
+      this.a($$0, $$2);
+   }
+
+   public void a(dba $$0, dwk $$1) {
+      long $$2 = $$0.a();
+      if ($$1 == dwk.a) {
+         this.h.remove($$2);
+         this.j.add($$2);
+      } else {
+         this.h.put($$2, $$1);
+         this.j.remove($$2);
+         this.b($$2);
+      }
+
+      this.f.b($$2).forEach($$1x -> {
+         dwk $$2x = $$1x.a($$1);
+         boolean $$3 = $$2x.b();
+         boolean $$4 = $$1.b();
+         boolean $$5 = $$2x.a();
+         boolean $$6 = $$1.a();
+         if ($$5 && !$$6) {
+            $$1x.b().filter($$0xx -> !$$0xx.dO()).forEach(this::d);
+         }
+
+         if ($$3 && !$$4) {
+            $$1x.b().filter($$0xx -> !$$0xx.dO()).forEach(this::f);
+         } else if (!$$3 && $$4) {
+            $$1x.b().filter($$0xx -> !$$0xx.dO()).forEach(this::e);
+         }
+
+         if (!$$5 && $$6) {
+            $$1x.b().filter($$0xx -> !$$0xx.dO()).forEach(this::c);
          }
       });
-      return new dwi($$4.iterator(), $$5.iterator());
    }
 
-   @VisibleForTesting
-   public dwi(ObjectListIterator<dwi.a> $$0, ObjectListIterator<ein> $$1) {
-      this.h = $$0;
-      this.i = $$1;
-   }
-
-   @Override
-   public double a(dwo.b $$0) {
-      int $$1 = $$0.a();
-      int $$2 = $$0.b();
-      int $$3 = $$0.c();
-      double $$4 = 0.0;
-
-      while (this.h.hasNext()) {
-         dwi.a $$5 = (dwi.a)this.h.next();
-         ehd $$6 = $$5.a();
-         int $$7 = $$5.c();
-         int $$8 = Math.max(0, Math.max($$6.h() - $$1, $$1 - $$6.k()));
-         int $$9 = Math.max(0, Math.max($$6.j() - $$3, $$3 - $$6.m()));
-         int $$10 = $$6.i() + $$7;
-         int $$11 = $$2 - $$10;
-
-         int $$12 = switch ($$5.b()) {
-            case a -> 0;
-            case b, c -> $$11;
-            case d -> Math.max(0, Math.max($$10 - $$2, $$2 - $$6.l()));
-         };
-
-         $$4 += switch ($$5.b()) {
-            case a -> 0.0;
-            case b -> a($$8, $$12, $$9);
-            case c, d -> a($$8, $$12, $$9, $$11) * 0.8;
-         };
+   private void b(long $$0) {
+      dwi.b $$1 = (dwi.b)this.i.get($$0);
+      if ($$1 == dwi.b.a) {
+         this.c($$0);
       }
-
-      this.h.back(Integer.MAX_VALUE);
-
-      while (this.i.hasNext()) {
-         ein $$13 = (ein)this.i.next();
-         int $$14 = $$1 - $$13.a();
-         int $$15 = $$2 - $$13.b();
-         int $$16 = $$3 - $$13.c();
-         $$4 += a($$14, $$15, $$16, $$15) * 0.4;
-      }
-
-      this.i.back(Integer.MAX_VALUE);
-      return $$4;
    }
 
-   @Override
-   public double a() {
-      return Double.NEGATIVE_INFINITY;
-   }
-
-   @Override
-   public double b() {
-      return Double.POSITIVE_INFINITY;
-   }
-
-   private static double a(int $$0, int $$1, int $$2) {
-      double $$3 = ayf.g((double)$$0, (double)$$1 / 2.0, (double)$$2);
-      return ayf.a($$3, 0.0, 6.0, 1.0, 0.0);
-   }
-
-   private static double a(int $$0, int $$1, int $$2, int $$3) {
-      int $$4 = $$0 + 12;
-      int $$5 = $$1 + 12;
-      int $$6 = $$2 + 12;
-      if (a($$4) && a($$5) && a($$6)) {
-         double $$7 = (double)$$3 + 0.5;
-         double $$8 = ayf.f((double)$$0, $$7, (double)$$2);
-         double $$9 = -$$7 * ayf.g($$8 / 2.0) / 2.0;
-         return $$9 * (double)g[$$6 * 24 * 24 + $$4 * 24 + $$5];
+   private boolean a(long $$0, Consumer<T> $$1) {
+      dwi.b $$2 = (dwi.b)this.i.get($$0);
+      if ($$2 == dwi.b.b) {
+         return false;
       } else {
-         return 0.0;
+         List<T> $$3 = this.f.b($$0).flatMap($$0x -> $$0x.b().filter(dvx::dN)).collect(Collectors.toList());
+         if ($$3.isEmpty()) {
+            if ($$2 == dwi.b.c) {
+               this.d.a(new dvv<>(new dba($$0), ImmutableList.of()));
+            }
+
+            return true;
+         } else if ($$2 == dwi.b.a) {
+            this.c($$0);
+            return false;
+         } else {
+            this.d.a(new dvv<>(new dba($$0), $$3));
+            $$3.forEach($$1);
+            return true;
+         }
       }
    }
 
-   private static boolean a(int $$0) {
-      return $$0 >= 0 && $$0 < 24;
+   private void c(long $$0) {
+      this.i.put($$0, dwi.b.b);
+      dba $$1 = new dba($$0);
+      this.d.a($$1).thenAccept(this.k::add).exceptionally($$1x -> {
+         a.error("Failed to read chunk {}", $$1, $$1x);
+         return null;
+      });
    }
 
-   private static double b(int $$0, int $$1, int $$2) {
-      return a($$0, (double)$$1 + 0.5, $$2);
+   private boolean d(long $$0) {
+      boolean $$1 = this.a($$0, $$0x -> $$0x.cV().forEach(this::g));
+      if (!$$1) {
+         return false;
+      } else {
+         this.i.remove($$0);
+         return true;
+      }
    }
 
-   private static double a(int $$0, double $$1, int $$2) {
-      double $$3 = ayf.f((double)$$0, $$1, (double)$$2);
-      return Math.pow(Math.E, -$$3 / 16.0);
+   private void g(dvx $$0) {
+      $$0.b(bsp.c.c);
+      $$0.a(dvy.a);
    }
 
-   @VisibleForTesting
-   public static record a(ehd a, ehw b, int c) {
+   private void g() {
+      this.j.removeIf($$0 -> this.h.get($$0) != dwk.a ? true : this.d($$0));
+   }
+
+   private void h() {
+      dvv<T> $$0;
+      while (($$0 = this.k.poll()) != null) {
+         $$0.b().forEach($$0x -> this.a((T)$$0x, true));
+         this.i.put($$0.a().a(), dwi.b.c);
+      }
+   }
+
+   public void a() {
+      this.h();
+      this.g();
+   }
+
+   private LongSet i() {
+      LongSet $$0 = this.f.a();
+      ObjectIterator var2 = Long2ObjectMaps.fastIterable(this.i).iterator();
+
+      while (var2.hasNext()) {
+         Entry<dwi.b> $$1 = (Entry<dwi.b>)var2.next();
+         if ($$1.getValue() == dwi.b.c) {
+            $$0.add($$1.getLongKey());
+         }
+      }
+
+      return $$0;
+   }
+
+   public void b() {
+      this.i().forEach($$0 -> {
+         boolean $$1 = this.h.get($$0) == dwk.a;
+         if ($$1) {
+            this.d($$0);
+         } else {
+            this.a($$0, $$0x -> {
+            });
+         }
+      });
+   }
+
+   public void c() {
+      LongSet $$0 = this.i();
+
+      while (!$$0.isEmpty()) {
+         this.d.a(false);
+         this.h();
+         $$0.removeIf($$0x -> {
+            boolean $$1 = this.h.get($$0x) == dwk.a;
+            return $$1 ? this.d($$0x) : this.a($$0x, $$0xx -> {
+            });
+         });
+      }
+
+      this.d.a(true);
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.c();
+      this.d.close();
+   }
+
+   public boolean a(UUID $$0) {
+      return this.b.contains($$0);
+   }
+
+   public dwg<T> d() {
+      return this.g;
+   }
+
+   public boolean a(iz $$0) {
+      return ((dwk)this.h.get(dba.a($$0))).a();
+   }
+
+   public boolean a(dba $$0) {
+      return ((dwk)this.h.get($$0.a())).a();
+   }
+
+   public boolean a(long $$0) {
+      return this.i.get($$0) == dwi.b.c;
+   }
+
+   public void a(Writer $$0) throws IOException {
+      axu $$1 = axu.a().a("x").a("y").a("z").a("visibility").a("load_status").a("entity_count").a($$0);
+      this.f.a().forEach($$1x -> {
+         dwi.b $$2 = (dwi.b)this.i.get($$1x);
+         this.f.a($$1x).forEach($$2x -> {
+            dwb<T> $$3 = this.f.d($$2x);
+            if ($$3 != null) {
+               try {
+                  $$1.a(kb.b($$2x), kb.c($$2x), kb.d($$2x), $$3.c(), $$2, $$3.d());
+               } catch (IOException var7) {
+                  throw new UncheckedIOException(var7);
+               }
+            }
+         });
+      });
+   }
+
+   @azy
+   public String e() {
+      return this.b.size() + "," + this.e.b() + "," + this.f.b() + "," + this.i.size() + "," + this.h.size() + "," + this.k.size() + "," + this.j.size();
+   }
+
+   @azy
+   public int f() {
+      return this.e.b();
+   }
+
+   class a implements dvy {
+      private final T c;
+      private long d;
+      private dwb<T> e;
+
+      a(final T $$0, final long $$1, final dwb<T> $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+      }
+
+      @Override
+      public void a() {
+         iz $$0 = this.c.dp();
+         long $$1 = kb.c($$0);
+         if ($$1 != this.d) {
+            dwk $$2 = this.e.c();
+            if (!this.e.b(this.c)) {
+               dwi.a.warn("Entity {} wasn't found in section {} (moving to {})", new Object[]{this.c, kb.a(this.d), $$1});
+            }
+
+            dwi.this.a(this.d, this.e);
+            dwb<T> $$3 = dwi.this.f.c($$1);
+            $$3.a(this.c);
+            this.e = $$3;
+            this.d = $$1;
+            this.a($$2, $$3.c());
+         }
+      }
+
+      private void a(dwk $$0, dwk $$1) {
+         dwk $$2 = dwi.a(this.c, $$0);
+         dwk $$3 = dwi.a(this.c, $$1);
+         if ($$2 == $$3) {
+            if ($$3.b()) {
+               dwi.this.c.a(this.c);
+            }
+         } else {
+            boolean $$4 = $$2.b();
+            boolean $$5 = $$3.b();
+            if ($$4 && !$$5) {
+               dwi.this.f(this.c);
+            } else if (!$$4 && $$5) {
+               dwi.this.e(this.c);
+            }
+
+            boolean $$6 = $$2.a();
+            boolean $$7 = $$3.a();
+            if ($$6 && !$$7) {
+               dwi.this.d(this.c);
+            } else if (!$$6 && $$7) {
+               dwi.this.c(this.c);
+            }
+
+            if ($$5) {
+               dwi.this.c.a(this.c);
+            }
+         }
+      }
+
+      @Override
+      public void a(bsp.c $$0) {
+         if (!this.e.b(this.c)) {
+            dwi.a.warn("Entity {} wasn't found in section {} (destroying due to {})", new Object[]{this.c, kb.a(this.d), $$0});
+         }
+
+         dwk $$1 = dwi.a(this.c, this.e.c());
+         if ($$1.a()) {
+            dwi.this.d(this.c);
+         }
+
+         if ($$1.b()) {
+            dwi.this.f(this.c);
+         }
+
+         if ($$0.a()) {
+            dwi.this.c.f(this.c);
+         }
+
+         dwi.this.b.remove(this.c.cz());
+         this.c.a(a);
+         dwi.this.a(this.d, this.e);
+      }
+   }
+
+   static enum b {
+      a,
+      b,
+      c;
    }
 }

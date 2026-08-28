@@ -1,105 +1,70 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Function;
 
-public interface dwo {
-   Codec<dwo> b = dwp.b;
-   Codec<ix<dwo>> c = akj.a(lf.aD, b);
-   Codec<dwo> d = c.xmap(dwp.j::new, $$0 -> (ix)($$0 instanceof dwp.j $$1 ? $$1.j() : new ix.a<>($$0)));
+public class dwo implements dwu {
+   public static final MapCodec<dwo> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(kc.a.fieldOf("source_entity").forGetter(dwo::b), Codec.FLOAT.fieldOf("y_offset").orElse(0.0F).forGetter($$0x -> $$0x.f))
+            .apply($$0, ($$0x, $$1) -> new dwo(Either.right(Either.left($$0x)), $$1))
+   );
+   public static final zj<ByteBuf, dwo> b = zj.a(zh.g, dwo::c, zh.i, $$0 -> $$0.f, ($$0, $$1) -> new dwo(Either.right(Either.right($$0)), $$1));
+   private Either<bsp, Either<UUID, Integer>> e;
+   private final float f;
 
-   double a(dwo.b var1);
-
-   void a(double[] var1, dwo.a var2);
-
-   dwo a(dwo.f var1);
-
-   double a();
-
-   double b();
-
-   axy<? extends dwo> c();
-
-   default dwo a(double $$0, double $$1) {
-      return new dwp.g(this, $$0, $$1);
+   public dwo(bsp $$0, float $$1) {
+      this(Either.left($$0), $$1);
    }
 
-   default dwo d() {
-      return dwp.a(this, dwp.k.a.a);
+   private dwo(Either<bsp, Either<UUID, Integer>> $$0, float $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   default dwo e() {
-      return dwp.a(this, dwp.k.a.b);
-   }
-
-   default dwo f() {
-      return dwp.a(this, dwp.k.a.c);
-   }
-
-   default dwo g() {
-      return dwp.a(this, dwp.k.a.d);
-   }
-
-   default dwo h() {
-      return dwp.a(this, dwp.k.a.e);
-   }
-
-   default dwo i() {
-      return dwp.a(this, dwp.k.a.f);
-   }
-
-   public interface a {
-      dwo.b a(int var1);
-
-      void a(double[] var1, dwo var2);
-   }
-
-   public interface b {
-      int a();
-
-      int b();
-
-      int c();
-
-      default dxx d() {
-         return dxx.a();
-      }
-   }
-
-   public static record c(ix<elz.a> b, @Nullable elz c) {
-      public static final Codec<dwo.c> a = elz.a.b.xmap($$0 -> new dwo.c($$0, null), dwo.c::b);
-
-      public c(ix<elz.a> $$0) {
-         this($$0, null);
+   @Override
+   public Optional<evm> a(dbt $$0) {
+      if (this.e.left().isEmpty()) {
+         this.b($$0);
       }
 
-      public double a(double $$0, double $$1, double $$2) {
-         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
-      }
-
-      public double a() {
-         return this.c == null ? 2.0 : this.c.a();
-      }
+      return this.e.left().map($$0x -> $$0x.dn().b(0.0, (double)this.f, 0.0));
    }
 
-   public interface d extends dwo {
+   private void b(dbt $$0) {
+      ((Optional)this.e.map(Optional::of, $$1 -> Optional.ofNullable((bsp)$$1.map($$1x -> $$0 instanceof arb $$2 ? $$2.a($$1x) : null, $$0::a))))
+         .ifPresent($$0x -> this.e = Either.left($$0x));
+   }
+
+   private UUID b() {
+      return (UUID)this.e.map(bsp::cz, $$0 -> (UUID)$$0.map(Function.identity(), $$0x -> {
+            throw new RuntimeException("Unable to get entityId from uuid");
+         }));
+   }
+
+   private int c() {
+      return (Integer)this.e.map(bsp::al, $$0 -> (Integer)$$0.map($$0x -> {
+            throw new IllegalStateException("Unable to get entityId from uuid");
+         }, Function.identity()));
+   }
+
+   @Override
+   public dwv<dwo> a() {
+      return dwv.b;
+   }
+
+   public static class a implements dwv<dwo> {
       @Override
-      default void a(double[] $$0, dwo.a $$1) {
-         $$1.a($$0, this);
+      public MapCodec<dwo> a() {
+         return dwo.a;
       }
 
       @Override
-      default dwo a(dwo.f $$0) {
-         return $$0.apply(this);
-      }
-   }
-
-   public static record e(int a, int b, int c) implements dwo.b {
-   }
-
-   public interface f {
-      dwo apply(dwo var1);
-
-      default dwo.c a(dwo.c $$0) {
-         return $$0;
+      public zj<ByteBuf, dwo> b() {
+         return dwo.b;
       }
    }
 }

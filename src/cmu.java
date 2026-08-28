@@ -1,61 +1,19 @@
-public class cmu extends cmk {
-   public cmu(bsc<? extends cmu> $$0, daz $$1) {
-      super($$0, $$1);
-   }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.security.PrivateKey;
+import java.time.Instant;
 
-   public cmu(daz $$0, bsq $$1, double $$2, double $$3, double $$4) {
-      super(bsc.aQ, $$1, $$2, $$3, $$4, $$0);
-   }
+public record cmu(PrivateKey b, cmv c, Instant d) {
+   public static final Codec<cmu> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               axs.g.fieldOf("private_key").forGetter(cmu::b),
+               cmv.c.fieldOf("public_key").forGetter(cmu::c),
+               ayc.o.fieldOf("refreshed_after").forGetter(cmu::d)
+            )
+            .apply($$0, cmu::new)
+   );
 
-   public cmu(daz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super(bsc.aQ, $$1, $$2, $$3, $$4, $$5, $$6, $$0);
-   }
-
-   @Override
-   protected void a(euj $$0) {
-      super.a($$0);
-      if (!this.dP().B) {
-         brw $$1 = $$0.a();
-         brw $$2 = this.s();
-         int $$3 = $$1.aB();
-         $$1.g(5);
-         if (!$$1.a(this.dQ().a((cmk)this, $$2), 5.0F)) {
-            $$1.i($$3);
-         } else if ($$2 instanceof bsq) {
-            this.a((bsq)$$2, $$1);
-         }
-      }
-   }
-
-   @Override
-   protected void a(eui $$0) {
-      super.a($$0);
-      if (!this.dP().B) {
-         brw $$1 = this.s();
-         if (!($$1 instanceof bss) || this.dP().aa().b(dav.c)) {
-            io $$2 = $$0.a().a($$0.b());
-            if (this.dP().u($$2)) {
-               this.dP().b($$2, ddn.a(this.dP(), $$2));
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void a(euk $$0) {
-      super.a($$0);
-      if (!this.dP().B) {
-         this.ao();
-      }
-   }
-
-   @Override
-   public boolean bz() {
-      return false;
-   }
-
-   @Override
-   public boolean a(bqp $$0, float $$1) {
-      return false;
+   public boolean a() {
+      return this.d.isBefore(Instant.now());
    }
 }

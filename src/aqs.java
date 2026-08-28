@@ -1,42 +1,85 @@
-import java.util.Comparator;
+public class aqs extends ard {
+   public static final int a = 5;
+   public static final int b = 120500;
+   private boolean e;
+   private boolean f;
+   private int g;
+   private int h;
 
-public class aqs<T> {
-   private final String i;
-   private final Comparator<T> j;
-   private final long k;
-   public static final aqs<azh> a = a("start", ($$0, $$1) -> 0);
-   public static final aqs<azh> b = a("dragon", ($$0, $$1) -> 0);
-   public static final aqs<dag> c = a("player", Comparator.comparingLong(dag::a));
-   public static final aqs<dag> d = a("forced", Comparator.comparingLong(dag::a));
-   public static final aqs<dag> e = a("light", Comparator.comparingLong(dag::a));
-   public static final aqs<io> f = a("portal", js::i, 300);
-   public static final aqs<Integer> g = a("post_teleport", Integer::compareTo, 5);
-   public static final aqs<dag> h = a("unknown", Comparator.comparingLong(dag::a), 1);
-
-   public static <T> aqs<T> a(String $$0, Comparator<T> $$1) {
-      return new aqs<>($$0, $$1, 0L);
-   }
-
-   public static <T> aqs<T> a(String $$0, Comparator<T> $$1, int $$2) {
-      return new aqs<>($$0, $$1, (long)$$2);
-   }
-
-   protected aqs(String $$0, Comparator<T> $$1, long $$2) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
+   public aqs(arc $$0) {
+      super($$0);
    }
 
    @Override
-   public String toString() {
-      return this.i;
+   public void a() {
+      super.a();
+      this.h++;
+      long $$0 = this.c.Z();
+      long $$1 = $$0 / 24000L + 1L;
+      if (!this.e && this.h > 20) {
+         this.e = true;
+         this.d.c.b(new adl(adl.g, 0.0F));
+      }
+
+      this.f = $$0 > 120500L;
+      if (this.f) {
+         this.g++;
+      }
+
+      if ($$0 % 24000L == 500L) {
+         if ($$1 <= 6L) {
+            if ($$1 == 6L) {
+               this.d.c.b(new adl(adl.g, 104.0F));
+            } else {
+               this.d.a(xl.c("demo.day." + $$1));
+            }
+         }
+      } else if ($$1 == 1L) {
+         if ($$0 == 100L) {
+            this.d.c.b(new adl(adl.g, 101.0F));
+         } else if ($$0 == 175L) {
+            this.d.c.b(new adl(adl.g, 102.0F));
+         } else if ($$0 == 250L) {
+            this.d.c.b(new adl(adl.g, 103.0F));
+         }
+      } else if ($$1 == 5L && $$0 % 24000L == 22000L) {
+         this.d.a(xl.c("demo.day.warning"));
+      }
    }
 
-   public Comparator<T> a() {
-      return this.j;
+   private void f() {
+      if (this.g > 100) {
+         this.d.a(xl.c("demo.reminder"));
+         this.g = 0;
+      }
    }
 
-   public long b() {
-      return this.k;
+   @Override
+   public void a(iz $$0, ahw.a $$1, je $$2, int $$3, int $$4) {
+      if (this.f) {
+         this.f();
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public bqp a(arc $$0, dbt $$1, cuk $$2, bqo $$3) {
+      if (this.f) {
+         this.f();
+         return bqp.e;
+      } else {
+         return super.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   @Override
+   public bqp a(arc $$0, dbt $$1, cuk $$2, bqo $$3, evi $$4) {
+      if (this.f) {
+         this.f();
+         return bqp.e;
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
+      }
    }
 }

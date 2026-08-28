@@ -1,90 +1,42 @@
-public class cxh extends cxo {
-   public cxh(cxm $$0) {
-      super($$0);
+import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.function.Consumer;
+
+public record cxh(List<xl> e, List<xl> f) implements cxq {
+   public static final cxh a = new cxh(List.of());
+   public static final int b = 256;
+   private static final yi g = yi.a.a(n.f).b(true);
+   public static final Codec<cxh> c = xn.g.sizeLimitedListOf(256).xmap(cxh::new, cxh::a);
+   public static final zj<ww, cxh> d = xn.b.a(zh.c(256)).a(cxh::new, cxh::a);
+
+   public cxh(List<xl> $$0) {
+      this($$0, Lists.transform($$0, $$0x -> xo.a($$0x.f(), g)));
    }
 
-   public boolean a(cpl $$0, daz $$1) {
-      csj $$2 = null;
-      ctq $$3 = null;
-      ctq $$4 = null;
-
-      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
-         ctq $$6 = $$0.a($$5);
-         if (!$$6.e()) {
-            ctl $$7 = $$6.g();
-            if (!($$7 instanceof crl)) {
-               return false;
-            }
-
-            crl $$8 = (crl)$$7;
-            if ($$2 == null) {
-               $$2 = $$8.b();
-            } else if ($$2 != $$8.b()) {
-               return false;
-            }
-
-            int $$9 = $$6.a(kb.W, dnz.a).b().size();
-            if ($$9 > 6) {
-               return false;
-            }
-
-            if ($$9 > 0) {
-               if ($$3 != null) {
-                  return false;
-               }
-
-               $$3 = $$6;
-            } else {
-               if ($$4 != null) {
-                  return false;
-               }
-
-               $$4 = $$6;
-            }
-         }
+   public cxh(List<xl> e, List<xl> f) {
+      if (e.size() > 256) {
+         throw new IllegalArgumentException("Got " + e.size() + " lines, but maximum is 256");
+      } else {
+         this.e = e;
+         this.f = f;
       }
-
-      return $$3 != null && $$4 != null;
    }
 
-   public ctq a(cpl $$0, iz.a $$1) {
-      for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
-         ctq $$3 = $$0.a($$2);
-         if (!$$3.e()) {
-            int $$4 = $$3.a(kb.W, dnz.a).b().size();
-            if ($$4 > 0 && $$4 <= 6) {
-               return $$3.c(1);
-            }
-         }
-      }
-
-      return ctq.i;
-   }
-
-   public jg<ctq> a(cpl $$0) {
-      jg<ctq> $$1 = jg.a($$0.b(), ctq.i);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         ctq $$3 = $$0.a($$2);
-         if (!$$3.e()) {
-            if ($$3.g().v()) {
-               $$1.set($$2, new ctq($$3.g().u()));
-            } else if (!$$3.a(kb.W, dnz.a).b().isEmpty()) {
-               $$1.set($$2, $$3.c(1));
-            }
-         }
-      }
-
-      return $$1;
+   public cxh a(xl $$0) {
+      return new cxh(ac.a(this.e, $$0));
    }
 
    @Override
-   public cya<?> ap_() {
-      return cya.k;
+   public void a(cuf.b $$0, Consumer<xl> $$1, cwd $$2) {
+      this.f.forEach($$1);
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public List<xl> a() {
+      return this.e;
+   }
+
+   public List<xl> b() {
+      return this.f;
    }
 }

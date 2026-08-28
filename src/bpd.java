@@ -1,25 +1,67 @@
-import java.util.Arrays;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class bpd implements bpe {
-   private final bpe[] a;
+public class bpd<E extends bpb> {
+   private final int a;
+   private final ImmutableList<E> b;
 
-   public bpd(bpe... $$0) {
-      this.a = $$0;
+   bpd(List<? extends E> $$0) {
+      this.b = ImmutableList.copyOf($$0);
+      this.a = bpc.a($$0);
    }
 
-   @Override
-   public float a(aym $$0) {
-      float $$1 = 1.0F;
+   public static <E extends bpb> bpd<E> c() {
+      return new bpd<>(ImmutableList.of());
+   }
 
-      for (bpe $$2 : this.a) {
-         $$1 *= $$2.a($$0);
+   @SafeVarargs
+   public static <E extends bpb> bpd<E> a(E... $$0) {
+      return new bpd<>(ImmutableList.copyOf($$0));
+   }
+
+   public static <E extends bpb> bpd<E> a(List<E> $$0) {
+      return new bpd<>($$0);
+   }
+
+   public boolean d() {
+      return this.b.isEmpty();
+   }
+
+   public Optional<E> b(azc $$0) {
+      if (this.a == 0) {
+         return Optional.empty();
+      } else {
+         int $$1 = $$0.a(this.a);
+         return bpc.a(this.b, $$1);
       }
+   }
 
-      return $$1;
+   public List<E> e() {
+      return this.b;
+   }
+
+   public static <E extends bpb> Codec<bpd<E>> c(Codec<E> $$0) {
+      return $$0.listOf().xmap(bpd::a, bpd::e);
    }
 
    @Override
-   public String toString() {
-      return "MultipliedFloats" + Arrays.toString((Object[])this.a);
+   public boolean equals(@Nullable Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         bpd<?> $$1 = (bpd<?>)$$0;
+         return this.a == $$1.a && Objects.equals(this.b, $$1.b);
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.a, this.b);
    }
 }

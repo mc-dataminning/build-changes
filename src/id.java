@@ -1,57 +1,7 @@
-import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.DoubleArgumentType;
+import java.util.List;
 
-public class id implements hy<DoubleArgumentType, id.a> {
-   public void a(id.a $$0, vx $$1) {
-      boolean $$2 = $$0.b != -Double.MAX_VALUE;
-      boolean $$3 = $$0.c != Double.MAX_VALUE;
-      $$1.k(ia.a($$2, $$3));
-      if ($$2) {
-         $$1.a($$0.b);
-      }
+public interface id<T> {
+   alb a();
 
-      if ($$3) {
-         $$1.a($$0.c);
-      }
-   }
-
-   public id.a a(vx $$0) {
-      byte $$1 = $$0.readByte();
-      double $$2 = ia.a($$1) ? $$0.readDouble() : -Double.MAX_VALUE;
-      double $$3 = ia.b($$1) ? $$0.readDouble() : Double.MAX_VALUE;
-      return new id.a($$2, $$3);
-   }
-
-   public void a(id.a $$0, JsonObject $$1) {
-      if ($$0.b != -Double.MAX_VALUE) {
-         $$1.addProperty("min", $$0.b);
-      }
-
-      if ($$0.c != Double.MAX_VALUE) {
-         $$1.addProperty("max", $$0.c);
-      }
-   }
-
-   public id.a a(DoubleArgumentType $$0) {
-      return new id.a($$0.getMinimum(), $$0.getMaximum());
-   }
-
-   public final class a implements hy.a<DoubleArgumentType> {
-      final double b;
-      final double c;
-
-      a(double $$1, double $$2) {
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      public DoubleArgumentType a(ea $$0) {
-         return DoubleArgumentType.doubleArg(this.b, this.c);
-      }
-
-      @Override
-      public hy<DoubleArgumentType, ?> a() {
-         return id.this;
-      }
-   }
+   List<hs<T>> b();
 }

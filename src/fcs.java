@@ -1,172 +1,167 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
 
-public class fcs {
-   private fcs() {
-   }
-
-   @VisibleForTesting
-   protected static List<String> a(String $$0) {
-      return Arrays.asList($$0.split("\\n"));
-   }
-
-   public static List<fcs.a> a(String $$0, fcs.b... $$1) {
-      return a($$0, Arrays.asList($$1));
-   }
-
-   private static List<fcs.a> a(String $$0, List<fcs.b> $$1) {
-      List<String> $$2 = a($$0);
-      return a($$2, $$1);
-   }
-
-   private static List<fcs.a> a(List<String> $$0, List<fcs.b> $$1) {
-      int $$2 = 0;
-      List<fcs.a> $$3 = Lists.newArrayList();
-
-      for (String $$4 : $$0) {
-         List<fcs.b> $$5 = Lists.newArrayList();
-
-         for (String $$7 : a($$4, "%link")) {
-            if ("%link".equals($$7)) {
-               $$5.add($$1.get($$2++));
-            } else {
-               $$5.add(fcs.b.a($$7));
-            }
-         }
-
-         $$3.add(new fcs.a($$5));
+public class fcs extends gvb {
+   private static final alb a = new alb("icon/unseen_notification");
+   private static final alb b = new alb("icon/news");
+   private static final alb c = new alb("icon/invite");
+   private static final alb B = new alb("icon/trial_available");
+   private final CompletableFuture<Boolean> C = fad.a().thenApply($$0 -> $$0.a() == fad.b.a);
+   @Nullable
+   private fdi.c D;
+   @Nullable
+   private fcs.a E;
+   private volatile int F;
+   private static boolean G;
+   private static boolean H;
+   private static boolean I;
+   private final fcs.a J = new fcs.a() {
+      @Override
+      public fdi.c a(fbz $$0) {
+         fdi.c $$1 = $$0.a.a();
+         fcs.this.a($$0, $$1);
+         fcs.this.b($$0, $$1);
+         return $$1;
       }
 
-      return $$3;
+      @Override
+      public boolean a() {
+         return true;
+      }
+   };
+   private final fcs.a K = new fcs.a() {
+      @Override
+      public fdi.c a(fbz $$0) {
+         fdi.c $$1 = $$0.a.a();
+         fcs.this.b($$0, $$1);
+         return $$1;
+      }
+
+      @Override
+      public boolean a() {
+         return false;
+      }
+   };
+
+   public fcs() {
+      super(fes.a);
    }
 
-   public static List<String> a(String $$0, String $$1) {
-      if ($$1.isEmpty()) {
-         throw new IllegalArgumentException("Delimiter cannot be the empty string");
+   @Override
+   public void aN_() {
+      if (this.D != null) {
+         this.D.a();
+      }
+   }
+
+   @Override
+   public void aG_() {
+      super.aG_();
+      this.m.ba().b.a();
+   }
+
+   @Nullable
+   private fcs.a C() {
+      boolean $$0 = this.E() && this.C.getNow(false);
+      if (!$$0) {
+         return null;
       } else {
-         List<String> $$2 = Lists.newArrayList();
-         int $$3 = 0;
+         return this.D() ? this.J : this.K;
+      }
+   }
 
-         int $$4;
-         while (($$4 = $$0.indexOf($$1, $$3)) != -1) {
-            if ($$4 > $$3) {
-               $$2.add($$0.substring($$3, $$4));
+   @Override
+   public void e() {
+      fcs.a $$0 = this.C();
+      if (!Objects.equals(this.E, $$0)) {
+         this.E = $$0;
+         if (this.E != null) {
+            this.D = this.E.a(this.m.ba());
+         } else {
+            this.D = null;
+         }
+      }
+
+      if (this.D != null) {
+         this.D.b();
+      }
+   }
+
+   private boolean D() {
+      return this.m.m.T().c();
+   }
+
+   private boolean E() {
+      return this.m.y instanceof fnd;
+   }
+
+   @Override
+   public void a(fgm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.C.getNow(false)) {
+         this.c($$0);
+      }
+   }
+
+   @Override
+   public void b(fgm $$0, int $$1, int $$2, float $$3) {
+   }
+
+   private void c(fgm $$0) {
+      int $$1 = this.F;
+      int $$2 = 24;
+      int $$3 = this.o / 4 + 48;
+      int $$4 = this.n / 2 + 100;
+      int $$5 = $$3 + 48 + 2;
+      int $$6 = $$4 - 3;
+      if (I) {
+         $$0.a(a, $$6 - 12, $$5 + 3, 10, 10);
+         $$6 -= 16;
+      }
+
+      if (this.E != null && this.E.a()) {
+         if (H) {
+            $$0.a(b, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
+         }
+
+         if ($$1 != 0) {
+            $$0.a(c, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
+         }
+
+         if (G) {
+            $$0.a(B, $$6 - 10, $$5 + 4, 8, 8);
+         }
+      }
+   }
+
+   void a(fbz $$0, fdi.c $$1) {
+      $$1.a($$0.d, $$0x -> this.F = $$0x);
+      $$1.a($$0.e, $$0x -> G = $$0x);
+      $$1.a($$0.f, $$1x -> {
+         $$0.g.a($$1x);
+         H = $$0.g.a();
+      });
+   }
+
+   void b(fbz $$0, fdi.c $$1) {
+      $$1.a($$0.b, $$0x -> {
+         I = false;
+
+         for (faz $$1x : $$0x) {
+            if (!$$1x.a()) {
+               I = true;
+               break;
             }
-
-            $$2.add($$1);
-            $$3 = $$4 + $$1.length();
          }
-
-         if ($$3 < $$0.length()) {
-            $$2.add($$0.substring($$3));
-         }
-
-         return $$2;
-      }
+      });
    }
 
-   public static class a {
-      public final List<fcs.b> a;
+   interface a {
+      fdi.c a(fbz var1);
 
-      a(fcs.b... $$0) {
-         this(Arrays.asList($$0));
-      }
-
-      a(List<fcs.b> $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public String toString() {
-         return "Line{segments=" + this.a + "}";
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            fcs.a $$1 = (fcs.a)$$0;
-            return Objects.equals(this.a, $$1.a);
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         return Objects.hash(this.a);
-      }
-   }
-
-   public static class b {
-      private final String a;
-      @Nullable
-      private final String b;
-      @Nullable
-      private final String c;
-
-      private b(String $$0) {
-         this.a = $$0;
-         this.b = null;
-         this.c = null;
-      }
-
-      private b(String $$0, @Nullable String $$1, @Nullable String $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            fcs.b $$1 = (fcs.b)$$0;
-            return Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b) && Objects.equals(this.c, $$1.c);
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         return Objects.hash(this.a, this.b, this.c);
-      }
-
-      @Override
-      public String toString() {
-         return "Segment{fullText='" + this.a + "', linkTitle='" + this.b + "', linkUrl='" + this.c + "'}";
-      }
-
-      public String a() {
-         return this.b() ? this.b : this.a;
-      }
-
-      public boolean b() {
-         return this.b != null;
-      }
-
-      public String c() {
-         if (!this.b()) {
-            throw new IllegalStateException("Not a link: " + this);
-         } else {
-            return this.c;
-         }
-      }
-
-      public static fcs.b a(String $$0, String $$1) {
-         return new fcs.b(null, $$0, $$1);
-      }
-
-      @VisibleForTesting
-      protected static fcs.b a(String $$0) {
-         return new fcs.b($$0);
-      }
+      boolean a();
    }
 }

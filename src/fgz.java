@@ -1,39 +1,100 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class fgz {
-   public static final int a = 8;
-   public static final int b = 8;
-   public static final int c = 8;
-   public static final int d = 8;
-   public static final int e = 40;
-   public static final int f = 8;
-   public static final int g = 8;
-   public static final int h = 8;
-   public static final int i = 64;
-   public static final int j = 64;
+public class fgz extends fgq {
+   public static final int f = 120;
+   public static final int m = 150;
+   public static final int n = 200;
+   public static final int o = 20;
+   public static final int p = 8;
+   protected static final fgz.b q = $$0 -> $$0.get();
+   protected final fgz.c r;
+   protected final fgz.b s;
 
-   public static void a(ffn $$0, gov $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1.a(), $$2, $$3, $$4);
+   public static fgz.a a(xl $$0, fgz.c $$1) {
+      return new fgz.a($$0, $$1);
    }
 
-   public static void a(ffn $$0, akn $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1, $$2, $$3, $$4, true, false);
+   protected fgz(int $$0, int $$1, int $$2, int $$3, xl $$4, fgz.c $$5, fgz.b $$6) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.r = $$5;
+      this.s = $$6;
    }
 
-   public static void a(ffn $$0, akn $$1, int $$2, int $$3, int $$4, boolean $$5, boolean $$6) {
-      int $$7 = 8 + ($$6 ? 8 : 0);
-      int $$8 = 8 * ($$6 ? -1 : 1);
-      $$0.a($$1, $$2, $$3, $$4, $$4, 8.0F, (float)$$7, 8, $$8, 64, 64);
-      if ($$5) {
-         a($$0, $$1, $$2, $$3, $$4, $$6);
+   @Override
+   public void b() {
+      this.r.onPress(this);
+   }
+
+   @Override
+   protected xz aL_() {
+      return this.s.createNarrationMessage(() -> super.aL_());
+   }
+
+   @Override
+   public void a(fkv $$0) {
+      this.c($$0);
+   }
+
+   public static class a {
+      private final xl a;
+      private final fgz.c b;
+      @Nullable
+      private fik c;
+      private int d;
+      private int e;
+      private int f = 150;
+      private int g = 20;
+      private fgz.b h = fgz.q;
+
+      public a(xl $$0, fgz.c $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public fgz.a a(int $$0, int $$1) {
+         this.d = $$0;
+         this.e = $$1;
+         return this;
+      }
+
+      public fgz.a a(int $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public fgz.a b(int $$0, int $$1) {
+         this.f = $$0;
+         this.g = $$1;
+         return this;
+      }
+
+      public fgz.a a(int $$0, int $$1, int $$2, int $$3) {
+         return this.a($$0, $$1).b($$2, $$3);
+      }
+
+      public fgz.a a(@Nullable fik $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public fgz.a a(fgz.b $$0) {
+         this.h = $$0;
+         return this;
+      }
+
+      public fgz a() {
+         fgz $$0 = new fgz(this.d, this.e, this.f, this.g, this.a, this.b, this.h);
+         $$0.a(this.c);
+         return $$0;
       }
    }
 
-   private static void a(ffn $$0, akn $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      int $$6 = 8 + ($$5 ? 8 : 0);
-      int $$7 = 8 * ($$5 ? -1 : 1);
-      RenderSystem.enableBlend();
-      $$0.a($$1, $$2, $$3, $$4, $$4, 40.0F, (float)$$6, 8, $$7, 64, 64);
-      RenderSystem.disableBlend();
+   public interface b {
+      xz createNarrationMessage(Supplier<xz> var1);
+   }
+
+   public interface c {
+      void onPress(fgz var1);
    }
 }

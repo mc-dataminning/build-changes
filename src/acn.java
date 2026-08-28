@@ -1,55 +1,31 @@
-public class acn implements ze<abq> {
-   public static final yv<wi, acn> a = ze.a(acn::a, acn::new);
-   public static final int b = -1;
-   public static final int c = -2;
-   private final int d;
-   private final int e;
-   private final int f;
-   private final ctq g;
+public class acn implements zs<ace> {
+   public static final zj<ww, acn> a = zj.a(iz.b, acn::e, zh.a(deu.q), acn::b, acn::new);
+   private final iz b;
+   private final drx c;
 
-   public acn(int $$0, int $$1, int $$2, ctq $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3.s();
+   public acn(iz $$0, drx $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private acn(wi $$0) {
-      this.d = $$0.readByte();
-      this.e = $$0.l();
-      this.f = $$0.readShort();
-      this.g = ctq.e.decode($$0);
-   }
-
-   private void a(wi $$0) {
-      $$0.k(this.d);
-      $$0.c(this.e);
-      $$0.l(this.f);
-      ctq.e.encode($$0, this.g);
+   public acn(daz $$0, iz $$1) {
+      this($$1, $$0.a_($$1));
    }
 
    @Override
-   public zg<acn> a() {
-      return agc.w;
+   public zu<acn> a() {
+      return agq.k;
    }
 
-   public void a(abq $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.d;
+   public drx b() {
+      return this.c;
    }
 
-   public int e() {
-      return this.f;
-   }
-
-   public ctq f() {
-      return this.g;
-   }
-
-   public int g() {
-      return this.e;
+   public iz e() {
+      return this.b;
    }
 }

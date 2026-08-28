@@ -1,8 +1,12 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class lg {
+   private final int b;
+   public static final lg a = new lg(1000);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface lg {
+   public lg(int $$0) {
+      this.b = $$0;
+   }
+
+   public int a() {
+      return this.b;
+   }
 }

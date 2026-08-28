@@ -1,76 +1,103 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.Contract;
 
-public record dbq(ud d, Optional<dbq.a> e, Optional<akn> f) {
-   public static final String a = "entity";
-   public static final Codec<dbq> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ud.a.fieldOf("entity").forGetter($$0x -> $$0x.d),
-               dbq.a.a.optionalFieldOf("custom_spawn_rules").forGetter($$0x -> $$0x.e),
-               akn.a.optionalFieldOf("equipment_loot_table").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dbq::new)
-   );
-   public static final Codec<bog<dbq>> c = bog.a(b);
+public enum dbq implements azp {
+   a(0, "survival"),
+   b(1, "creative"),
+   c(2, "adventure"),
+   d(3, "spectator");
 
-   public dbq() {
-      this(new ud(), Optional.empty(), Optional.empty());
+   public static final dbq e = a;
+   public static final azp.a<dbq> f = azp.a(dbq::values);
+   private static final IntFunction<dbq> g = axl.a(dbq::a, values(), axl.a.a);
+   private static final int h = -1;
+   private final int i;
+   private final String j;
+   private final xl k;
+   private final xl l;
+
+   private dbq(final int $$0, final String $$1) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = xl.c("selectWorld.gameMode." + $$1);
+      this.l = xl.c("gameMode." + $$1);
    }
 
-   public dbq(ud d, Optional<dbq.a> e, Optional<akn> f) {
-      if (d.e("id")) {
-         akn $$3 = akn.a(d.l("id"));
-         if ($$3 != null) {
-            d.a("id", $$3.toString());
-         } else {
-            d.r("id");
-         }
-      }
-
-      this.d = d;
-      this.e = e;
-      this.f = f;
+   public int a() {
+      return this.i;
    }
 
-   public ud a() {
-      return this.d;
+   public String b() {
+      return this.j;
    }
 
-   public Optional<dbq.a> b() {
-      return this.e;
+   @Override
+   public String c() {
+      return this.j;
    }
 
-   public Optional<akn> c() {
-      return this.f;
+   public xl d() {
+      return this.l;
    }
 
-   public static record a(axx<Integer> b, axx<Integer> c) {
-      private static final axx<Integer> d = new axx<>(0, 15);
-      public static final Codec<dbq.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(a("block_light_limit").forGetter($$0x -> $$0x.b), a("sky_light_limit").forGetter($$0x -> $$0x.c)).apply($$0, dbq.a::new)
-      );
+   public xl e() {
+      return this.k;
+   }
 
-      private static DataResult<axx<Integer>> a(axx<Integer> $$0) {
-         return !d.a($$0) ? DataResult.error(() -> "Light values must be withing range " + d) : DataResult.success($$0);
+   public void a(cmp $$0) {
+      if (this == b) {
+         $$0.c = true;
+         $$0.d = true;
+         $$0.a = true;
+      } else if (this == d) {
+         $$0.c = true;
+         $$0.d = false;
+         $$0.a = true;
+         $$0.b = true;
+      } else {
+         $$0.c = false;
+         $$0.d = false;
+         $$0.a = false;
+         $$0.b = false;
       }
 
-      private static MapCodec<axx<Integer>> a(String $$0) {
-         return axx.a.lenientOptionalFieldOf($$0, d).validate(dbq.a::a);
-      }
+      $$0.e = !this.f();
+   }
 
-      public boolean a(io $$0, aqn $$1) {
-         return this.b.a($$1.a(dbi.b, $$0)) && this.c.a($$1.a(dbi.a, $$0));
-      }
+   public boolean f() {
+      return this == c || this == d;
+   }
 
-      public axx<Integer> a() {
-         return this.b;
-      }
+   public boolean g() {
+      return this == b;
+   }
 
-      public axx<Integer> b() {
-         return this.c;
-      }
+   public boolean h() {
+      return this == a || this == c;
+   }
+
+   public static dbq a(int $$0) {
+      return g.apply($$0);
+   }
+
+   public static dbq a(String $$0) {
+      return a($$0, a);
+   }
+
+   @Nullable
+   @Contract("_,!null->!null;_,null->_")
+   public static dbq a(String $$0, @Nullable dbq $$1) {
+      dbq $$2 = f.a($$0);
+      return $$2 != null ? $$2 : $$1;
+   }
+
+   public static int a(@Nullable dbq $$0) {
+      return $$0 != null ? $$0.i : -1;
+   }
+
+   @Nullable
+   public static dbq b(int $$0) {
+      return $$0 == -1 ? null : a($$0);
    }
 }

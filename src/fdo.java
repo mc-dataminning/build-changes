@@ -1,113 +1,58 @@
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Table;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.annotations.SerializedName;
 import com.mojang.logging.LogUtils;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
 import org.slf4j.Logger;
 
-public class fdo extends avl {
+public class fdo {
+   private static final String a = "realms_persistence.json";
+   private static final far b = new far();
    private static final Logger c = LogUtils.getLogger();
-   private Map<fej, List<fpq>> d = ImmutableMap.of();
-   private List<fpq> e = ImmutableList.of();
 
-   public void a(Iterable<cxy<?>> $$0, jl $$1) {
-      Map<fej, List<List<cxy<?>>>> $$2 = a($$0);
-      Map<fej, List<fpq>> $$3 = Maps.newHashMap();
-      Builder<fpq> $$4 = ImmutableList.builder();
-      $$2.forEach(($$3x, $$4x) -> $$3.put($$3x, $$4x.stream().map($$1xx -> new fpq($$1, $$1xx)).peek($$4::add).collect(ImmutableList.toImmutableList())));
-      fej.w
-         .forEach(
-            ($$1x, $$2x) -> $$3.put(
-                  $$1x, $$2x.stream().flatMap($$1xx -> $$3.getOrDefault($$1xx, ImmutableList.of()).stream()).collect(ImmutableList.toImmutableList())
-               )
-         );
-      this.d = ImmutableMap.copyOf($$3);
-      this.e = $$4.build();
+   public fdo.a a() {
+      return b();
    }
 
-   private static Map<fej, List<List<cxy<?>>>> a(Iterable<cxy<?>> $$0) {
-      Map<fej, List<List<cxy<?>>>> $$1 = Maps.newHashMap();
-      Table<fej, String, List<cxy<?>>> $$2 = HashBasedTable.create();
+   public void a(fdo.a $$0) {
+      b($$0);
+   }
 
-      for (cxy<?> $$3 : $$0) {
-         cxw<?> $$4 = $$3.b();
-         if (!$$4.ao_() && !$$4.i()) {
-            fej $$5 = g($$3);
-            String $$6 = $$4.c();
-            if ($$6.isEmpty()) {
-               $$1.computeIfAbsent($$5, $$0x -> Lists.newArrayList()).add(ImmutableList.of($$3));
-            } else {
-               List<cxy<?>> $$7 = (List<cxy<?>>)$$2.get($$5, $$6);
-               if ($$7 == null) {
-                  $$7 = Lists.newArrayList();
-                  $$2.put($$5, $$6, $$7);
-                  $$1.computeIfAbsent($$5, $$0x -> Lists.newArrayList()).add($$7);
-               }
+   public static fdo.a b() {
+      Path $$0 = c();
 
-               $$7.add($$3);
-            }
+      try {
+         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
+         fdo.a $$2 = b.a($$1, fdo.a.class);
+         if ($$2 != null) {
+            return $$2;
          }
+      } catch (NoSuchFileException var3) {
+      } catch (Exception var4) {
+         c.warn("Failed to read Realms storage {}", $$0, var4);
       }
 
-      return $$1;
+      return new fdo.a();
    }
 
-   private static fej g(cxy<?> $$0) {
-      cxw<?> $$1 = $$0.b();
-      if ($$1 instanceof cxn $$2) {
-         return switch ($$2.d()) {
-            case a -> fej.b;
-            case c -> fej.d;
-            case b -> fej.c;
-            case d -> fej.e;
-         };
-      } else {
-         cyb<?> $$3 = $$1.e();
-         if ($$1 instanceof cxf $$4) {
-            cxl $$5 = $$4.f();
-            if ($$3 == cyb.b) {
-               return switch ($$5) {
-                  case b -> fej.h;
-                  case a -> fej.g;
-                  case c -> fej.i;
-               };
-            }
+   public static void b(fdo.a $$0) {
+      Path $$1 = c();
 
-            if ($$3 == cyb.c) {
-               return $$5 == cxl.b ? fej.k : fej.l;
-            }
-
-            if ($$3 == cyb.d) {
-               return fej.n;
-            }
-
-            if ($$3 == cyb.e) {
-               return fej.q;
-            }
-         }
-
-         if ($$3 == cyb.f) {
-            return fej.o;
-         } else if ($$3 == cyb.g) {
-            return fej.p;
-         } else {
-            c.warn("Unknown recipe category: {}/{}", LogUtils.defer(() -> le.s.b($$1.e())), LogUtils.defer($$0::a));
-            return fej.r;
-         }
+      try {
+         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
+      } catch (Exception var3) {
       }
    }
 
-   public List<fpq> b() {
-      return this.e;
+   private static Path c() {
+      return ffa.Q().p.toPath().resolve("realms_persistence.json");
    }
 
-   public List<fpq> a(fej $$0) {
-      return this.d.getOrDefault($$0, Collections.emptyList());
+   public static class a implements fbj {
+      @SerializedName("newsLink")
+      public String a;
+      @SerializedName("hasUnreadNews")
+      public boolean b;
    }
 }

@@ -1,80 +1,141 @@
 import javax.annotation.Nullable;
 
 public class chk extends che {
-   private static final cdh b = cdh.a().d();
-   @Nullable
-   private enk c;
-   @Nullable
-   private eum d;
+   private final chl bY = new chl(this);
+   private static final int bZ = 18000;
+   private static final bss cb = bsv.aO.n().a(bsr.a().a(bsq.a, 0.0F, bsv.aO.m() - 0.03125F, 0.0F)).a(0.5F);
+   private boolean cc;
+   private int cd;
 
-   public chk(chc $$0) {
-      super($$0);
+   public chk(bsv<? extends chk> $$0, dbt $$1) {
+      super($$0, $$1);
+   }
+
+   public static bur.a s() {
+      return gP().a(bus.q, 15.0).a(bus.r, 0.2F);
+   }
+
+   public static boolean c(bsv<? extends cfa> $$0, dbu $$1, bto $$2, iz $$3, azc $$4) {
+      return !bto.a($$2) ? cfa.b($$0, $$1, $$2, $$3, $$4) : bto.b($$2) || a($$1, $$3);
    }
 
    @Override
-   public chs<chk> i() {
-      return chs.c;
+   protected void a(azc $$0) {
+      this.f(bus.m).a(a($$0::j));
    }
 
    @Override
-   public void d() {
-      this.c = null;
-      this.d = null;
+   protected void gG() {
    }
 
    @Override
-   public void c() {
-      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.du(), this.a.dw(), this.a.dA());
-      if ($$0 < 100.0 || $$0 > 22500.0 || this.a.Q || this.a.R) {
-         this.j();
+   protected avv v() {
+      return this.a(awr.a) ? avw.xf : avw.xb;
+   }
+
+   @Override
+   protected avv o_() {
+      return avw.xc;
+   }
+
+   @Override
+   protected avv d(bri $$0) {
+      return avw.xd;
+   }
+
+   @Override
+   protected avv aP() {
+      if (this.aE()) {
+         if (!this.bS()) {
+            return avw.xi;
+         }
+
+         this.cx++;
+         if (this.cx > 5 && this.cx % 3 == 0) {
+            return avw.xg;
+         }
+
+         if (this.cx <= 5) {
+            return avw.xi;
+         }
+      }
+
+      return avw.xe;
+   }
+
+   @Override
+   protected void e(float $$0) {
+      if (this.aE()) {
+         super.e(0.3F);
+      } else {
+         super.e(Math.min(0.1F, $$0 * 25.0F));
       }
    }
 
-   @Nullable
    @Override
-   public eum g() {
-      return this.d;
+   protected void gW() {
+      if (this.be()) {
+         this.a(avw.xh, 0.4F, 1.0F);
+      } else {
+         super.gW();
+      }
    }
 
-   private void j() {
-      if (this.c == null || this.c.c()) {
-         int $$0 = this.a.y();
-         io $$1 = this.a.dP().a(dwv.a.f, dzy.a(this.a.s()));
-         cly $$2 = this.a.dP().a(b, this.a, (double)$$1.u(), (double)$$1.v(), (double)$$1.w());
-         int $$4;
-         if ($$2 != null) {
-            eum $$3 = new eum($$2.du(), 0.0, $$2.dA()).d();
-            $$4 = this.a.r(-$$3.c * 40.0, 105.0, -$$3.e * 40.0);
+   @Override
+   public bss e(btw $$0) {
+      return this.p_() ? cb : super.e($$0);
+   }
+
+   @Override
+   public void n_() {
+      super.n_();
+      if (this.u() && this.cd++ >= 18000) {
+         this.ao();
+      }
+   }
+
+   @Override
+   public void b(ur $$0) {
+      super.b($$0);
+      $$0.a("SkeletonTrap", this.u());
+      $$0.a("SkeletonTrapTime", this.cd);
+   }
+
+   @Override
+   public void a(ur $$0) {
+      super.a($$0);
+      this.w($$0.q("SkeletonTrap"));
+      this.cd = $$0.h("SkeletonTrapTime");
+   }
+
+   @Override
+   protected float fl() {
+      return 0.96F;
+   }
+
+   public boolean u() {
+      return this.cc;
+   }
+
+   public void w(boolean $$0) {
+      if ($$0 != this.cc) {
+         this.cc = $$0;
+         if ($$0) {
+            this.bS.a(1, this.bY);
          } else {
-            $$4 = this.a.r(40.0, (double)$$1.v(), 0.0);
+            this.bS.a(this.bY);
          }
-
-         eni $$6 = new eni($$1.u(), $$1.v(), $$1.w());
-         this.c = this.a.a($$0, $$4, $$6);
-         if (this.c != null) {
-            this.c.a();
-         }
-      }
-
-      this.k();
-      if (this.c != null && this.c.c()) {
-         this.a.gm().a(chs.d);
       }
    }
 
-   private void k() {
-      if (this.c != null && !this.c.c()) {
-         js $$0 = this.c.g();
-         this.c.a();
-         double $$1 = (double)$$0.u();
-         double $$2 = (double)$$0.w();
+   @Nullable
+   @Override
+   public bsj a(arb $$0, bsj $$1) {
+      return bsv.aO.a((dbt)$$0);
+   }
 
-         double $$3;
-         do {
-            $$3 = (double)((float)$$0.v() + this.a.el().i() * 20.0F);
-         } while ($$3 < (double)$$0.v());
-
-         this.d = new eum($$1, $$3, $$2);
-      }
+   @Override
+   public bqp b(cms $$0, bqo $$1) {
+      return !this.gF() ? bqp.e : super.b($$0, $$1);
    }
 }

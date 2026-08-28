@@ -1,37 +1,57 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.OptionalInt;
 
-public class cvc extends ctl {
-   public static final int a = 160;
+public interface cvc {
+   cnk a(dbt var1, js var2, cuk var3, je var4);
 
-   public cvc(ctl.a $$0) {
-      super($$0);
+   default cvc.a c() {
+      return cvc.a.a;
    }
 
-   @Override
-   public void a(ctq $$0, ctl.b $$1, List<wx> $$2, cvj $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3.b()) {
-         List<bre> $$4 = new ArrayList<>();
-         cwu $$5 = $$0.a(kb.G, cwu.a);
+   default void a(cnk $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
+      $$0.c($$1, $$2, $$3, $$4, $$5);
+   }
 
-         for (cwu.a $$6 : $$5.a()) {
-            $$4.add($$6.a());
+   public static record a(cvc.b b, float c, float d, OptionalInt e) {
+      public static final cvc.a a = a().a();
+
+      public static cvc.a.a a() {
+         return new cvc.a.a();
+      }
+
+      public static class a {
+         private cvc.b a = ($$0, $$1) -> dgz.a($$0, 0.7, new evm(0.0, 0.1, 0.0));
+         private float b = 6.0F;
+         private float c = 1.1F;
+         private OptionalInt d = OptionalInt.empty();
+
+         public cvc.a.a a(cvc.b $$0) {
+            this.a = $$0;
+            return this;
          }
 
-         cvr.a($$4, $$2::add, 1.0F, $$1.b());
+         public cvc.a.a a(float $$0) {
+            this.b = $$0;
+            return this;
+         }
+
+         public cvc.a.a b(float $$0) {
+            this.c = $$0;
+            return this;
+         }
+
+         public cvc.a.a a(int $$0) {
+            this.d = OptionalInt.of($$0);
+            return this;
+         }
+
+         public cvc.a a() {
+            return new cvc.a(this.a, this.b, this.c, this.d);
+         }
       }
    }
 
-   @Override
-   public ctq a(ctq $$0, daz $$1, bsq $$2) {
-      cwu $$3 = $$0.a(kb.G, cwu.a);
-
-      for (cwu.a $$4 : $$3.a()) {
-         $$2.b($$4.a());
-      }
-
-      super.a($$0, $$1, $$2);
-      return $$2.fP() ? $$0 : new ctq(ctt.pq);
+   @FunctionalInterface
+   public interface b {
+      js getDispensePosition(kq var1, je var2);
    }
 }

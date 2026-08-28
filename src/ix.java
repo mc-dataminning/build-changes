@@ -1,237 +1,85 @@
-import com.mojang.datafixers.util.Either;
-import java.util.Collection;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
+import java.util.Iterator;
 
-public interface ix<T> {
-   T a();
+public record ix(iz b, iz c) implements Iterable<iz> {
+   public static final zj<ByteBuf, ix> a = new zj<ByteBuf, ix>() {
+      public ix a(ByteBuf $$0) {
+         return new ix(wl.b($$0), wl.b($$0));
+      }
 
-   boolean b();
+      public void a(ByteBuf $$0, ix $$1) {
+         wl.a($$0, $$1.f());
+         wl.a($$0, $$1.g());
+      }
+   };
 
-   boolean a(akn var1);
-
-   boolean a(akm<T> var1);
-
-   boolean a(Predicate<akm<T>> var1);
-
-   boolean a(awm<T> var1);
-
-   @Deprecated
-   boolean a(ix<T> var1);
-
-   Stream<awm<T>> c();
-
-   Either<akm<T>, T> d();
-
-   Optional<akm<T>> e();
-
-   ix.b f();
-
-   boolean a(ja<T> var1);
-
-   default String g() {
-      return this.e().map($$0 -> $$0.a().toString()).orElse("[unregistered]");
+   public ix(final iz b, final iz c) {
+      this.b = iz.a(b, c);
+      this.c = iz.b(b, c);
    }
 
-   static <T> ix<T> a(T $$0) {
-      return new ix.a<>($$0);
+   public static ix a(iz $$0) {
+      return new ix($$0, $$0);
    }
 
-   public static record a<T>(T a) implements ix<T> {
-      @Override
-      public boolean b() {
-         return true;
-      }
+   public static ix a(iz $$0, iz $$1) {
+      return new ix($$0, $$1);
+   }
 
-      @Override
-      public boolean a(akn $$0) {
-         return false;
-      }
+   public ix b(iz $$0) {
+      return new ix(iz.a(this.b, $$0), iz.b(this.c, $$0));
+   }
 
-      @Override
-      public boolean a(akm<T> $$0) {
-         return false;
-      }
+   public boolean a() {
+      return this.b.equals(this.c);
+   }
 
-      @Override
-      public boolean a(awm<T> $$0) {
-         return false;
-      }
+   public boolean c(iz $$0) {
+      return $$0.u() >= this.b.u() && $$0.v() >= this.b.v() && $$0.w() >= this.b.w() && $$0.u() <= this.c.u() && $$0.v() <= this.c.v() && $$0.w() <= this.c.w();
+   }
 
-      @Override
-      public boolean a(ix<T> $$0) {
-         return this.a.equals($$0.a());
-      }
+   public evh b() {
+      return evh.a(this.b, this.c);
+   }
 
-      @Override
-      public boolean a(Predicate<akm<T>> $$0) {
-         return false;
-      }
+   @Override
+   public Iterator<iz> iterator() {
+      return iz.c(this.b, this.c).iterator();
+   }
 
-      @Override
-      public Either<akm<T>, T> d() {
-         return Either.right(this.a);
-      }
+   public int c() {
+      return this.c.u() - this.b.u() + 1;
+   }
 
-      @Override
-      public Optional<akm<T>> e() {
-         return Optional.empty();
-      }
+   public int d() {
+      return this.c.v() - this.b.v() + 1;
+   }
 
-      @Override
-      public ix.b f() {
-         return ix.b.b;
-      }
+   public int e() {
+      return this.c.w() - this.b.w() + 1;
+   }
 
-      @Override
-      public String toString() {
-         return "Direct{" + this.a + "}";
-      }
-
-      @Override
-      public boolean a(ja<T> $$0) {
-         return true;
-      }
-
-      @Override
-      public Stream<awm<T>> c() {
-         return Stream.of();
+   public ix a(je $$0, int $$1) {
+      if ($$1 == 0) {
+         return this;
+      } else {
+         return $$0.f() == je.b.a ? a(this.b, iz.b(this.b, this.c.a($$0, $$1))) : a(iz.a(this.b.a($$0, $$1), this.c), this.c);
       }
    }
 
-   public static enum b {
-      a,
-      b;
+   public ix b(je $$0, int $$1) {
+      return $$1 == 0 ? this : new ix(this.b.a($$0, $$1), this.c.a($$0, $$1));
    }
 
-   public static class c<T> implements ix<T> {
-      private final ja<T> a;
-      private Set<awm<T>> b = Set.of();
-      private final ix.c.a c;
-      @Nullable
-      private akm<T> d;
-      @Nullable
-      private T e;
+   public ix a(kd $$0) {
+      return new ix(this.b.a($$0), this.c.a($$0));
+   }
 
-      protected c(ix.c.a $$0, ja<T> $$1, @Nullable akm<T> $$2, @Nullable T $$3) {
-         this.a = $$1;
-         this.c = $$0;
-         this.d = $$2;
-         this.e = $$3;
-      }
+   public iz f() {
+      return this.b;
+   }
 
-      public static <T> ix.c<T> a(ja<T> $$0, akm<T> $$1) {
-         return new ix.c<>(ix.c.a.a, $$0, $$1, null);
-      }
-
-      @Deprecated
-      public static <T> ix.c<T> a(ja<T> $$0, @Nullable T $$1) {
-         return new ix.c<>(ix.c.a.b, $$0, null, $$1);
-      }
-
-      public akm<T> h() {
-         if (this.d == null) {
-            throw new IllegalStateException("Trying to access unbound value '" + this.e + "' from registry " + this.a);
-         } else {
-            return this.d;
-         }
-      }
-
-      @Override
-      public T a() {
-         if (this.e == null) {
-            throw new IllegalStateException("Trying to access unbound value '" + this.d + "' from registry " + this.a);
-         } else {
-            return this.e;
-         }
-      }
-
-      @Override
-      public boolean a(akn $$0) {
-         return this.h().a().equals($$0);
-      }
-
-      @Override
-      public boolean a(akm<T> $$0) {
-         return this.h() == $$0;
-      }
-
-      @Override
-      public boolean a(awm<T> $$0) {
-         return this.b.contains($$0);
-      }
-
-      @Override
-      public boolean a(ix<T> $$0) {
-         return $$0.a(this.h());
-      }
-
-      @Override
-      public boolean a(Predicate<akm<T>> $$0) {
-         return $$0.test(this.h());
-      }
-
-      @Override
-      public boolean a(ja<T> $$0) {
-         return this.a.a($$0);
-      }
-
-      @Override
-      public Either<akm<T>, T> d() {
-         return Either.left(this.h());
-      }
-
-      @Override
-      public Optional<akm<T>> e() {
-         return Optional.of(this.h());
-      }
-
-      @Override
-      public ix.b f() {
-         return ix.b.a;
-      }
-
-      @Override
-      public boolean b() {
-         return this.d != null && this.e != null;
-      }
-
-      void b(akm<T> $$0) {
-         if (this.d != null && $$0 != this.d) {
-            throw new IllegalStateException("Can't change holder key: existing=" + this.d + ", new=" + $$0);
-         } else {
-            this.d = $$0;
-         }
-      }
-
-      protected void b(T $$0) {
-         if (this.c == ix.c.a.b && this.e != $$0) {
-            throw new IllegalStateException("Can't change holder " + this.d + " value: existing=" + this.e + ", new=" + $$0);
-         } else {
-            this.e = $$0;
-         }
-      }
-
-      void a(Collection<awm<T>> $$0) {
-         this.b = Set.copyOf($$0);
-      }
-
-      @Override
-      public Stream<awm<T>> c() {
-         return this.b.stream();
-      }
-
-      @Override
-      public String toString() {
-         return "Reference{" + this.d + "=" + this.e + "}";
-      }
-
-      protected static enum a {
-         a,
-         b;
-      }
+   public iz g() {
+      return this.c;
    }
 }

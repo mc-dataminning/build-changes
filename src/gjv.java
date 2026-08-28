@@ -1,24 +1,25 @@
-public class gjv<T extends cim> extends gik<T, fur<T>> {
-   private static final akn a = new akn("textures/entity/skeleton/skeleton.png");
+public class gjv extends gir<cnj> {
+   private static final alb a = new alb("textures/entity/llama/spit.png");
+   private final fup<cnj> f;
 
-   public gjv(ght.a $$0) {
-      this($$0, fvv.bn, fvv.bp, fvv.bq);
+   public gjv(gis.a $$0) {
+      super($$0);
+      this.f = new fup<>($$0.a(fwu.az));
    }
 
-   public gjv(ght.a $$0, fvu $$1, fvu $$2, fvu $$3) {
-      this($$0, $$2, $$3, new fur<>($$0.a($$1)));
+   public void a(cnj $$0, float $$1, float $$2, ezt $$3, gdj $$4, int $$5) {
+      $$3.a();
+      $$3.a(0.0F, 0.15F, 0.0F);
+      $$3.a(a.d.rotationDegrees(ayu.i($$2, $$0.O, $$0.dF()) - 90.0F));
+      $$3.a(a.f.rotationDegrees(ayu.i($$2, $$0.P, $$0.dH())));
+      this.f.a($$0, $$2, 0.0F, -0.1F, 0.0F, 0.0F);
+      ezx $$6 = $$4.getBuffer(this.f.a(a));
+      this.f.a($$3, $$6, $$5, gol.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public gjv(ght.a $$0, fvu $$1, fvu $$2, fur<T> $$3) {
-      super($$0, $$3, 0.5F);
-      this.a(new glv<>(this, new fur($$0.a($$1)), new fur($$0.a($$2)), $$0.g()));
-   }
-
-   public akn a(T $$0) {
+   public alb a(cnj $$0) {
       return a;
-   }
-
-   protected boolean b(T $$0) {
-      return $$0.gr();
    }
 }

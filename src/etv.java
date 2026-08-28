@@ -1,29 +1,61 @@
-import net.minecraft.server.MinecraftServer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public class etv implements etx<MinecraftServer> {
-   final akn a;
+public record etv(Optional<Long> b, eqc c) implements etn {
+   public static final MapCodec<etv> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.LONG.optionalFieldOf("period").forGetter(etv::c), eqc.a.fieldOf("value").forGetter(etv::d)).apply($$0, etv::new)
+   );
 
-   public etv(akn $$0) {
-      this.a = $$0;
+   @Override
+   public eto b() {
+      return etp.s;
    }
 
-   public void a(MinecraftServer $$0, etz<MinecraftServer> $$1, long $$2) {
-      alc $$3 = $$0.aF();
-      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
+   @Override
+   public Set<esw<?>> a() {
+      return this.c.a();
    }
 
-   public static class a extends etx.a<MinecraftServer, etv> {
-      public a() {
-         super(new akn("function"), etv.class);
+   public boolean a(eqd $$0) {
+      arb $$1 = $$0.d();
+      long $$2 = $$1.aa();
+      if (this.b.isPresent()) {
+         $$2 %= this.b.get();
       }
 
-      public void a(ud $$0, etv $$1) {
-         $$0.a("Name", $$1.a.toString());
+      return this.c.b($$0, (int)$$2);
+   }
+
+   public static etv.a a(eqc $$0) {
+      return new etv.a($$0);
+   }
+
+   public Optional<Long> c() {
+      return this.b;
+   }
+
+   public eqc d() {
+      return this.c;
+   }
+
+   public static class a implements etn.a {
+      private Optional<Long> a = Optional.empty();
+      private final eqc b;
+
+      public a(eqc $$0) {
+         this.b = $$0;
       }
 
-      public etv a(ud $$0) {
-         akn $$1 = new akn($$0.l("Name"));
-         return new etv($$1);
+      public etv.a a(long $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public etv a() {
+         return new etv(this.a, this.b);
       }
    }
 }

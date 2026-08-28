@@ -1,83 +1,105 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dkf extends dke {
-   public static final MapCodec<dkf> h = b(dkf::new);
-   public static final drx i = dhw.aE;
-   public static final dru j = dke.d;
+public class dkf extends dgx {
+   public static final MapCodec<dkf> b = b(dkf::new);
+   public static final dso c = dsn.w;
 
    @Override
    public MapCodec<dkf> a() {
-      return h;
+      return b;
    }
 
-   protected dkf(drc.d $$0) {
+   public dkf(drw.d $$0) {
       super($$0);
-      this.k(this.E.b().a(i, it.c).a(j, Boolean.valueOf(true)));
+      this.k(this.E.b().a(a, je.d).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public String g() {
-      return this.r().a();
+   protected void a(dry.a<deu, drx> $$0) {
+      $$0.a(a, c);
    }
 
    @Override
-   protected evf a(drd $$0, daf $$1, io $$2, eur $$3) {
-      return dnc.m($$0);
+   protected drx a(drx $$0, dlh $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
    }
 
    @Override
-   protected boolean a(drd $$0, dbc $$1, io $$2) {
-      return dnc.b($$1, $$2, $$0.c(i));
+   protected drx a(drx $$0, djr $$1) {
+      return $$0.a($$1.a($$0.c(a)));
    }
 
    @Override
-   protected drd a(drd $$0, it $$1, drd $$2, dba $$3, io $$4, io $$5) {
-      return $$1.g() == $$0.c(i) && !$$0.a($$3, $$4) ? dec.a.n() : $$0;
+   protected void a(drx $$0, arb $$1, iz $$2, azc $$3) {
+      if ($$0.c(c)) {
+         $$1.a($$2, $$0.a(c, Boolean.valueOf(false)), 2);
+      } else {
+         $$1.a($$2, $$0.a(c, Boolean.valueOf(true)), 2);
+         $$1.a($$2, this, 2);
+      }
+
+      this.a($$1, $$2, $$0);
    }
 
-   @Nullable
    @Override
-   public drd a(cxb $$0) {
-      drd $$1 = dec.cq.a($$0);
-      return $$1 == null ? null : this.n().a(i, $$1.c(i));
+   protected drx a(drx $$0, je $$1, drx $$2, dbu $$3, iz $$4, iz $$5) {
+      if ($$0.c(a) == $$1 && !$$0.c(c)) {
+         this.a($$3, $$4);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   private void a(dbu $$0, iz $$1) {
+      if (!$$0.x_() && !$$0.P().a($$1, this)) {
+         $$0.a($$1, this, 2);
+      }
+   }
+
+   protected void a(dbt $$0, iz $$1, drx $$2) {
+      je $$3 = $$2.c(a);
+      iz $$4 = $$1.a($$3.g());
+      $$0.a($$4, this, $$1);
+      $$0.a($$4, this, $$3);
    }
 
    @Override
-   public void a(drd $$0, daz $$1, io $$2, aym $$3) {
-      if ($$0.c(j)) {
-         it $$4 = $$0.c(i).g();
-         double $$5 = 0.27;
-         double $$6 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.j();
-         double $$7 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2 + 0.22;
-         double $$8 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.l();
-         $$1.a(ks.b, $$6, $$7, $$8, 0.0, 0.0, 0.0);
+   protected boolean e_(drx $$0) {
+      return true;
+   }
+
+   @Override
+   protected int b(drx $$0, daz $$1, iz $$2, je $$3) {
+      return $$0.b($$1, $$2, $$3);
+   }
+
+   @Override
+   protected int a(drx $$0, daz $$1, iz $$2, je $$3) {
+      return $$0.c(c) && $$0.c(a) == $$3 ? 15 : 0;
+   }
+
+   @Override
+   protected void b(drx $$0, dbt $$1, iz $$2, drx $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if (!$$1.x_() && $$0.c(c) && !$$1.P().a($$2, this)) {
+            drx $$5 = $$0.a(c, Boolean.valueOf(false));
+            $$1.a($$2, $$5, 18);
+            this.a($$1, $$2, $$5);
+         }
       }
    }
 
    @Override
-   protected boolean a(daz $$0, io $$1, drd $$2) {
-      it $$3 = $$2.c(i).g();
-      return $$0.b($$1.a($$3), $$3);
+   protected void a(drx $$0, dbt $$1, iz $$2, drx $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if (!$$1.B && $$0.c(c) && $$1.P().a($$2, this)) {
+            this.a($$1, $$2, $$0.a(c, Boolean.valueOf(false)));
+         }
+      }
    }
 
    @Override
-   protected int a(drd $$0, daf $$1, io $$2, it $$3) {
-      return $$0.c(j) && $$0.c(i) != $$3 ? 15 : 0;
-   }
-
-   @Override
-   protected drd a(drd $$0, dkn $$1) {
-      return $$0.a(i, $$1.a($$0.c(i)));
-   }
-
-   @Override
-   protected drd a(drd $$0, dix $$1) {
-      return $$0.a($$1.a($$0.c(i)));
-   }
-
-   @Override
-   protected void a(dre.a<dea, drd> $$0) {
-      $$0.a(i, j);
+   public drx a(cxv $$0) {
+      return this.n().a(a, $$0.d().g().g());
    }
 }

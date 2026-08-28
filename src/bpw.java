@@ -1,23 +1,25 @@
-public enum bpw {
-   a,
-   b,
-   c,
-   d,
-   e;
+import java.util.Arrays;
 
-   public boolean a() {
-      return this == a || this == b || this == c;
+public class bpw implements bpx {
+   private final bpx[] a;
+
+   public bpw(bpx... $$0) {
+      this.a = $$0;
    }
 
-   public boolean b() {
-      return this == a;
+   @Override
+   public float a(azc $$0) {
+      float $$1 = 1.0F;
+
+      for (bpx $$2 : this.a) {
+         $$1 *= $$2.a($$0);
+      }
+
+      return $$1;
    }
 
-   public boolean c() {
-      return this == a || this == b;
-   }
-
-   public static bpw a(boolean $$0) {
-      return $$0 ? a : b;
+   @Override
+   public String toString() {
+      return "MultipliedFloats" + Arrays.toString((Object[])this.a);
    }
 }

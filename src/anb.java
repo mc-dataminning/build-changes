@@ -1,28 +1,78 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
 
 public class anb {
-   public static void a(CommandDispatcher<ee> $$0) {
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xl.b("commands.enchant.failed.entity", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xl.b("commands.enchant.failed.itemless", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xl.b("commands.enchant.failed.incompatible", $$0));
+   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> xl.b("commands.enchant.failed.level", $$0, $$1));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(xl.c("commands.enchant.failed"));
+
+   public static void a(CommandDispatcher<ep> $$0, el $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("kill").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((ee)$$0x.getSource(), ImmutableList.of(((ee)$$0x.getSource()).g()))))
-            .then(ef.a("targets", er.b()).executes($$0x -> a((ee)$$0x.getSource(), er.b($$0x, "targets"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("enchant").requires($$0x -> $$0x.c(2)))
+            .then(
+               eq.a("targets", fc.b())
+                  .then(
+                     ((RequiredArgumentBuilder)eq.a("enchantment", fo.a($$1, lq.u))
+                           .executes($$0x -> a((ep)$$0x.getSource(), fc.b($$0x, "targets"), fo.g($$0x, "enchantment"), 1)))
+                        .then(
+                           eq.a("level", IntegerArgumentType.integer(0))
+                              .executes(
+                                 $$0x -> a(
+                                       (ep)$$0x.getSource(), fc.b($$0x, "targets"), fo.g($$0x, "enchantment"), IntegerArgumentType.getInteger($$0x, "level")
+                                    )
+                              )
+                        )
+                  )
+            )
       );
    }
 
-   private static int a(ee $$0, Collection<? extends brw> $$1) {
-      for (brw $$2 : $$1) {
-         $$2.an();
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> wx.a("commands.kill.success.single", $$1.iterator().next().O_()), true);
+   private static int a(ep $$0, Collection<? extends bsp> $$1, ji<czv> $$2, int $$3) throws CommandSyntaxException {
+      czv $$4 = $$2.a();
+      if ($$3 > $$4.g()) {
+         throw d.create($$3, $$4.g());
       } else {
-         $$0.a(() -> wx.a("commands.kill.success.multiple", $$1.size()), true);
-      }
+         int $$5 = 0;
 
-      return $$1.size();
+         for (bsp $$6 : $$1) {
+            if ($$6 instanceof btk) {
+               btk $$7 = (btk)$$6;
+               cuk $$8 = $$7.eX();
+               if (!$$8.e()) {
+                  if ($$4.b($$8) && czw.a(czw.b($$8).a(), $$4)) {
+                     $$8.a($$4, $$3);
+                     $$5++;
+                  } else if ($$1.size() == 1) {
+                     throw c.create($$8.g().o($$8).getString());
+                  }
+               } else if ($$1.size() == 1) {
+                  throw b.create($$7.af().getString());
+               }
+            } else if ($$1.size() == 1) {
+               throw a.create($$6.af().getString());
+            }
+         }
+
+         if ($$5 == 0) {
+            throw e.create();
+         } else {
+            if ($$1.size() == 1) {
+               $$0.a(() -> xl.a("commands.enchant.success.single", $$4.e($$3), $$1.iterator().next().O_()), true);
+            } else {
+               $$0.a(() -> xl.a("commands.enchant.success.multiple", $$4.e($$3), $$1.size()), true);
+            }
+
+            return $$5;
+         }
+      }
    }
 }

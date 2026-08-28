@@ -1,42 +1,14 @@
-import java.util.UUID;
+import io.netty.buffer.ByteBuf;
 
-public record aaa(UUID b, aaa.a c) implements ze<zv> {
-   public static final yv<vx, aaa> a = ze.a(aaa::a, aaa::new);
-
-   private aaa(vx $$0) {
-      this($$0.n(), $$0.b(aaa.a.class));
-   }
-
-   private void a(vx $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-   }
+public record aaa(xl b) implements zs<zy> {
+   public static final zj<ByteBuf, aaa> a = xn.f.a(aaa::new, aaa::b);
 
    @Override
-   public zg<aaa> a() {
-      return zu.n;
+   public zu<aaa> a() {
+      return aai.b;
    }
 
-   public void a(zv $$0) {
+   public void a(zy $$0) {
       $$0.a(this);
-   }
-
-   public aaa.a e() {
-      return this.c;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h;
-
-      public boolean a() {
-         return this != d && this != e;
-      }
    }
 }

@@ -1,40 +1,36 @@
-import java.util.ArrayList;
-import java.util.HashSet;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
+import org.slf4j.Logger;
 
-public class fbc implements Iterable<fab> {
-   private final feb a;
-   private final Set<fab> b = new HashSet<>();
-   private List<fab> c = List.of();
+public class fbc extends fbp {
+   private static final Logger b = LogUtils.getLogger();
+   public List<fba> a;
 
-   public fbc(feb $$0) {
-      this.a = $$0;
-   }
+   public static fbc a(String $$0) {
+      fbc $$1 = new fbc();
+      $$1.a = Lists.newArrayList();
 
-   public void a(List<fab> $$0) {
-      List<fab> $$1 = new ArrayList<>($$0);
-      $$1.sort(new fab.b(this.a.X().c()));
-      boolean $$2 = $$1.removeAll(this.b);
-      if (!$$2) {
-         this.b.clear();
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("servers").isJsonArray()) {
+            JsonArray $$4 = $$3.get("servers").getAsJsonArray();
+            Iterator<JsonElement> $$5 = $$4.iterator();
+
+            while ($$5.hasNext()) {
+               $$1.a.add(fba.a($$5.next().getAsJsonObject()));
+            }
+         }
+      } catch (Exception var6) {
+         b.error("Could not parse McoServerList: {}", var6.getMessage());
       }
 
-      this.c = $$1;
-   }
-
-   public void a(fab $$0) {
-      this.c.remove($$0);
-      this.b.add($$0);
-   }
-
-   @Override
-   public Iterator<fab> iterator() {
-      return this.c.iterator();
-   }
-
-   public boolean a() {
-      return this.c.isEmpty();
+      return $$1;
    }
 }

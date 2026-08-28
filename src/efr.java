@@ -1,34 +1,45 @@
 import com.mojang.serialization.MapCodec;
 
-public class efr extends efs {
-   public static final efr a = new efr(dxp.a(0));
-   public static final MapCodec<efr> b = dxp.a.fieldOf("value").xmap(efr::new, efr::b);
-   private final dxp d;
+public class efr extends efp {
+   public static final MapCodec<efr> a = MapCodec.unit(() -> efr.b);
+   public static final efr b = new efr();
 
-   public static efr a(dxp $$0) {
-      return new efr($$0);
-   }
-
-   private efr(dxp $$0) {
-      this.d = $$0;
-   }
-
-   public dxp b() {
-      return this.d;
+   @Override
+   protected efq<?> a() {
+      return efq.a;
    }
 
    @Override
-   public int a(aym $$0, dxs $$1) {
-      return this.d.a($$1);
-   }
+   public void a(efp.a $$0) {
+      azc $$1 = $$0.b();
+      $$0.c().forEach($$2 -> {
+         if ($$1.a(3) > 0) {
+            iz $$3 = $$2.g();
+            if ($$0.a($$3)) {
+               $$0.a($$3, dnq.d);
+            }
+         }
 
-   @Override
-   public eft<?> a() {
-      return eft.a;
-   }
+         if ($$1.a(3) > 0) {
+            iz $$4 = $$2.h();
+            if ($$0.a($$4)) {
+               $$0.a($$4, dnq.f);
+            }
+         }
 
-   @Override
-   public String toString() {
-      return this.d.toString();
+         if ($$1.a(3) > 0) {
+            iz $$5 = $$2.e();
+            if ($$0.a($$5)) {
+               $$0.a($$5, dnq.e);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            iz $$6 = $$2.f();
+            if ($$0.a($$6)) {
+               $$0.a($$6, dnq.c);
+            }
+         }
+      });
    }
 }

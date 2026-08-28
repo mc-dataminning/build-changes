@@ -1,68 +1,77 @@
-import com.mojang.logging.LogUtils;
-import java.util.function.BooleanSupplier;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import java.util.BitSet;
+import java.util.Objects;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-@FunctionalInterface
-public interface xt {
-   Logger a = LogUtils.getLogger();
-   xt b = xn::b;
-   xt c = $$0 -> {
-      a.error("Received chat message from {}, but they have no chat session initialized and secure chat is enforced", $$0.g());
-      return null;
-   };
-
+public class xt {
+   private final xv[] a;
+   private int b;
+   private int c;
    @Nullable
-   xn updateAndValidate(xn var1);
+   private xx d;
 
-   public static class a implements xt {
-      private final ayr d;
-      private final BooleanSupplier e;
-      @Nullable
-      private xn f;
-      private boolean g = true;
+   public xt(int $$0) {
+      this.a = new xv[$$0];
+   }
 
-      public a(ayr $$0, BooleanSupplier $$1) {
+   public boolean a(xx $$0, boolean $$1) {
+      if (Objects.equals($$0, this.d)) {
+         return false;
+      } else {
          this.d = $$0;
-         this.e = $$1;
+         this.a($$1 ? new xv($$0, true) : null);
+         return true;
       }
+   }
 
-      private boolean a(xn $$0) {
-         if ($$0.equals(this.f)) {
-            return true;
-         } else if (this.f != null && !$$0.k().a(this.f.k())) {
-            a.error(
-               "Received out-of-order chat message from {}: expected index > {} for session {}, but was {} for session {}",
-               new Object[]{$$0.g(), this.f.k().b(), this.f.k().d(), $$0.k().b(), $$0.k().d()}
-            );
-            return false;
-         } else {
-            return true;
+   private void a(@Nullable xv $$0) {
+      int $$1 = this.b;
+      this.b = ($$1 + 1) % this.a.length;
+      this.c++;
+      this.a[$$1] = $$0;
+   }
+
+   public void a(xx $$0) {
+      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
+         xv $$2 = this.a[$$1];
+         if ($$2 != null && $$2.c() && $$0.equals($$2.b())) {
+            this.a[$$1] = null;
+            break;
+         }
+      }
+   }
+
+   public int a() {
+      int $$0 = this.c;
+      this.c = 0;
+      return $$0;
+   }
+
+   public xt.a b() {
+      int $$0 = this.a();
+      BitSet $$1 = new BitSet(this.a.length);
+      ObjectList<xx> $$2 = new ObjectArrayList(this.a.length);
+
+      for (int $$3 = 0; $$3 < this.a.length; $$3++) {
+         int $$4 = (this.b + $$3) % this.a.length;
+         xv $$5 = this.a[$$4];
+         if ($$5 != null) {
+            $$1.set($$3, true);
+            $$2.add($$5.b());
+            this.a[$$4] = $$5.a();
          }
       }
 
-      private boolean b(xn $$0) {
-         if (this.e.getAsBoolean()) {
-            a.error("Received message from player with expired profile public key: {}", $$0);
-            return false;
-         } else if (!$$0.a(this.d)) {
-            a.error("Received message with invalid signature from {}", $$0.g());
-            return false;
-         } else {
-            return this.a($$0);
-         }
-      }
+      xs $$6 = new xs($$2);
+      xs.b $$7 = new xs.b($$0, $$1);
+      return new xt.a($$6, $$7);
+   }
 
-      @Nullable
-      @Override
-      public xn updateAndValidate(xn $$0) {
-         this.g = this.g && this.b($$0);
-         if (!this.g) {
-            return null;
-         } else {
-            this.f = $$0;
-            return $$0;
-         }
-      }
+   public int c() {
+      return this.c;
+   }
+
+   public static record a(xs a, xs.b b) {
    }
 }

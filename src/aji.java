@@ -1,29 +1,27 @@
-public class aji implements ze<ajh> {
-   public static final yv<vx, aji> a = ze.a(aji::a, aji::new);
-   private final long b;
+import java.util.UUID;
 
-   public aji(long $$0) {
-      this.b = $$0;
+public record aji(String b, UUID c) implements zs<ajg> {
+   public static final zj<wl, aji> a = zs.a(aji::a, aji::new);
+
+   private aji(wl $$0) {
+      this($$0.d(16), $$0.n());
    }
 
-   private aji(vx $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(vx $$0) {
-      $$0.b(this.b);
+   private void a(wl $$0) {
+      $$0.a(this.b, 16);
+      $$0.a(this.c);
    }
 
    @Override
-   public zg<aji> a() {
-      return ajg.b;
+   public zu<aji> a() {
+      return aje.g;
    }
 
-   public void a(ajh $$0) {
+   public void a(ajg $$0) {
       $$0.a(this);
    }
 
-   public long b() {
-      return this.b;
+   public UUID e() {
+      return this.c;
    }
 }

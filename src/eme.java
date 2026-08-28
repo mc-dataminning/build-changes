@@ -1,113 +1,26 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public final class eme extends emn<emf.a, emf> {
-   private final io.a g = new io.a();
+public interface eme<P extends emc> {
+   Codec<emc> a = lp.ah.q().dispatch("processor_type", emc::a, eme::codec);
+   Codec<emd> b = a.listOf().xmap(emd::new, emd::a);
+   Codec<emd> c = Codec.withAlternative(b.fieldOf("processors").codec(), b);
+   Codec<ji<emd>> d = akx.a(lq.aK, c);
+   eme<elh> e = a("block_ignore", elh.a);
+   eme<elj> f = a("block_rot", elj.a);
+   eme<elm> g = a("gravity", elm.a);
+   eme<eln> h = a("jigsaw_replacement", eln.a);
+   eme<ely> i = a("rule", ely.a);
+   eme<elq> j = a("nop", elq.a);
+   eme<elg> k = a("block_age", elg.a);
+   eme<elf> l = a("blackstone_replace", elf.a);
+   eme<elo> m = a("lava_submerged_block", elo.a);
+   eme<elv> n = a("protected_blocks", elv.b);
+   eme<ell> o = a("capped", ell.a);
 
-   public eme(dtm $$0) {
-      this($$0, new emf($$0));
-   }
+   MapCodec<P> codec();
 
-   @VisibleForTesting
-   public eme(dtm $$0, emf $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   protected void a(long $$0) {
-      long $$1 = jq.e($$0);
-      if (this.f.b($$1)) {
-         drd $$2 = this.c(this.g.f($$0));
-         int $$3 = this.a($$0, $$2);
-         int $$4 = this.f.e($$0);
-         if ($$3 < $$4) {
-            this.f.a($$0, 0);
-            this.b($$0, emn.a.a($$4));
-         } else {
-            this.b($$0, c);
-         }
-
-         if ($$3 > 0) {
-            this.c($$0, emn.a.a($$3, a($$2)));
-         }
-      }
-   }
-
-   @Override
-   protected void a(long $$0, long $$1, int $$2) {
-      drd $$3 = null;
-
-      for (it $$4 : d) {
-         if (emn.a.a($$1, $$4)) {
-            long $$5 = io.a($$0, $$4);
-            if (this.f.b(jq.e($$5))) {
-               int $$6 = this.f.e($$5);
-               int $$7 = $$2 - 1;
-               if ($$7 > $$6) {
-                  this.g.f($$5);
-                  drd $$8 = this.c(this.g);
-                  int $$9 = $$2 - this.a($$8, this.g);
-                  if ($$9 > $$6) {
-                     if ($$3 == null) {
-                        $$3 = emn.a.b($$1) ? dec.a.n() : this.c(this.g.f($$0));
-                     }
-
-                     if (!this.a($$0, $$3, $$5, $$8, $$4)) {
-                        this.f.a($$5, $$9);
-                        if ($$9 > 1) {
-                           this.c($$5, emn.a.a($$9, a($$8), $$4.g()));
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void a(long $$0, long $$1) {
-      int $$2 = emn.a.a($$1);
-
-      for (it $$3 : d) {
-         if (emn.a.a($$1, $$3)) {
-            long $$4 = io.a($$0, $$3);
-            if (this.f.b(jq.e($$4))) {
-               int $$5 = this.f.e($$4);
-               if ($$5 != 0) {
-                  if ($$5 <= $$2 - 1) {
-                     drd $$6 = this.c(this.g.f($$4));
-                     int $$7 = this.a($$4, $$6);
-                     this.f.a($$4, 0);
-                     if ($$7 < $$5) {
-                        this.b($$4, emn.a.a($$5, $$3.g()));
-                     }
-
-                     if ($$7 > 0) {
-                        this.c($$4, emn.a.a($$7, a($$6)));
-                     }
-                  } else {
-                     this.c($$4, emn.a.b($$5, false, $$3.g()));
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private int a(long $$0, drd $$1) {
-      int $$2 = $$1.h();
-      return $$2 > 0 && this.f.j(jq.e($$0)) ? $$2 : 0;
-   }
-
-   @Override
-   public void b(dag $$0) {
-      this.a($$0, true);
-      dtl $$1 = this.e.c($$0.e, $$0.f);
-      if ($$1 != null) {
-         $$1.a(($$0x, $$1x) -> {
-            int $$2 = $$1x.h();
-            this.c($$0x.a(), emn.a.a($$2, a($$1x)));
-         });
-      }
+   static <P extends emc> eme<P> a(String $$0, MapCodec<P> $$1) {
+      return jv.a(lp.ah, $$0, () -> $$1);
    }
 }

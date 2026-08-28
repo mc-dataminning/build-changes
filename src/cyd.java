@@ -1,121 +1,95 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public class cyd implements cxn {
-   final cye a;
-   final ctq b;
-   final String c;
-   final cxm d;
-   final boolean e;
-
-   public cyd(String $$0, cxm $$1, cye $$2, ctq $$3, boolean $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.b = $$3;
-      this.e = $$4;
+public class cyd extends cyi {
+   public cyd(cyg $$0) {
+      super($$0);
    }
 
-   public cyd(String $$0, cxm $$1, cye $$2, ctq $$3) {
-      this($$0, $$1, $$2, $$3, true);
+   public boolean a(cqf $$0, dbt $$1) {
+      int $$2 = 0;
+      cuk $$3 = cuk.l;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cuk $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            if ($$5.a(cun.ua)) {
+               if (!$$3.e()) {
+                  return false;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cun.tZ)) {
+                  return false;
+               }
+
+               $$2++;
+            }
+         }
+      }
+
+      return !$$3.e() && $$2 > 0;
+   }
+
+   public cuk a(cqf $$0, jk.a $$1) {
+      int $$2 = 0;
+      cuk $$3 = cuk.l;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cuk $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            if ($$5.a(cun.ua)) {
+               if (!$$3.e()) {
+                  return cuk.l;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cun.tZ)) {
+                  return cuk.l;
+               }
+
+               $$2++;
+            }
+         }
+      }
+
+      cxt $$6 = $$3.a(km.I);
+      if (!$$3.e() && $$2 >= 1 && $$6 != null) {
+         cxt $$7 = $$6.b();
+         if ($$7 == null) {
+            return cuk.l;
+         } else {
+            cuk $$8 = $$3.c($$2);
+            $$8.b(km.I, $$7);
+            return $$8;
+         }
+      } else {
+         return cuk.l;
+      }
+   }
+
+   public jr<cuk> a(cqf $$0) {
+      jr<cuk> $$1 = jr.a($$0.b(), cuk.l);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cuk $$3 = $$0.a($$2);
+         if ($$3.g().v()) {
+            $$1.set($$2, new cuk($$3.g().u()));
+         } else if ($$3.g() instanceof cwi) {
+            $$1.set($$2, $$3.c(1));
+            break;
+         }
+      }
+
+      return $$1;
    }
 
    @Override
-   public cya<?> ap_() {
-      return cya.a;
-   }
-
-   @Override
-   public String c() {
-      return this.c;
-   }
-
-   @Override
-   public cxm d() {
-      return this.d;
-   }
-
-   @Override
-   public ctq a(iz.a $$0) {
-      return this.b;
-   }
-
-   @Override
-   public jg<cxt> a() {
-      return this.a.c();
-   }
-
-   @Override
-   public boolean h() {
-      return this.e;
+   public cyu<?> ap_() {
+      return cyu.d;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 >= this.a.a() && $$1 >= this.a.b();
-   }
-
-   public boolean a(cpl $$0, daz $$1) {
-      return this.a.a($$0);
-   }
-
-   public ctq a(cpl $$0, iz.a $$1) {
-      return this.a($$1).s();
-   }
-
-   public int j() {
-      return this.a.a();
-   }
-
-   public int k() {
-      return this.a.b();
-   }
-
-   @Override
-   public boolean i() {
-      jg<cxt> $$0 = this.a();
-      return $$0.isEmpty() || $$0.stream().filter($$0x -> !$$0x.c()).anyMatch($$0x -> $$0x.a().length == 0);
-   }
-
-   public static class a implements cya<cyd> {
-      public static final MapCodec<cyd> x = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.c),
-                  cxm.e.fieldOf("category").orElse(cxm.d).forGetter($$0x -> $$0x.d),
-                  cye.a.forGetter($$0x -> $$0x.a),
-                  ctq.a.fieldOf("result").forGetter($$0x -> $$0x.b),
-                  Codec.BOOL.optionalFieldOf("show_notification", true).forGetter($$0x -> $$0x.e)
-               )
-               .apply($$0, cyd::new)
-      );
-      public static final yv<wi, cyd> y = yv.a(cyd.a::a, cyd.a::a);
-
-      @Override
-      public MapCodec<cyd> a() {
-         return x;
-      }
-
-      @Override
-      public yv<wi, cyd> b() {
-         return y;
-      }
-
-      private static cyd a(wi $$0) {
-         String $$1 = $$0.p();
-         cxm $$2 = $$0.b(cxm.class);
-         cye $$3 = cye.b.decode($$0);
-         ctq $$4 = ctq.f.decode($$0);
-         boolean $$5 = $$0.readBoolean();
-         return new cyd($$1, $$2, $$3, $$4, $$5);
-      }
-
-      private static void a(wi $$0, cyd $$1) {
-         $$0.a($$1.c);
-         $$0.a($$1.d);
-         cye.b.encode($$0, $$1.a);
-         ctq.f.encode($$0, $$1.b);
-         $$0.a($$1.e);
-      }
+      return $$0 >= 3 && $$1 >= 3;
    }
 }

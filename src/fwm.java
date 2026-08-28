@@ -1,103 +1,121 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
 
-public class fwm {
-   private static final Logger a = LogUtils.getLogger();
-   private final feb b;
-   private final gta c;
-   private final ak d = new ak();
-   private final Map<af, ah> e = new Object2ObjectOpenHashMap();
-   @Nullable
-   private fwm.a f;
-   @Nullable
-   private af g;
+public class fwm<T extends cgd> extends ftm<T> {
+   private static final String a = "real_head";
+   private static final String b = "upper_body";
+   private static final String f = "real_tail";
+   private final fwv g;
+   private final fwv h;
+   private final fwv i;
+   private final fwv j;
+   private final fwv k;
+   private final fwv l;
+   private final fwv m;
+   private final fwv n;
+   private final fwv o;
+   private final fwv p;
+   private static final int q = 8;
 
-   public fwm(feb $$0, gta $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public fwm(fwv $$0) {
+      this.g = $$0.b("head");
+      this.h = this.g.b("real_head");
+      this.i = $$0.b("body");
+      this.p = $$0.b("upper_body");
+      this.j = $$0.b("right_hind_leg");
+      this.k = $$0.b("left_hind_leg");
+      this.l = $$0.b("right_front_leg");
+      this.m = $$0.b("left_front_leg");
+      this.n = $$0.b("tail");
+      this.o = this.n.b("real_tail");
    }
 
-   public void a(afv $$0) {
-      if ($$0.g()) {
-         this.d.a();
-         this.e.clear();
+   public static fxd a(fwz $$0) {
+      fxd $$1 = new fxd();
+      fxe $$2 = $$1.a();
+      float $$3 = 13.5F;
+      fxe $$4 = $$2.a("head", fxa.c(), fwx.a(-1.0F, 13.5F, -7.0F));
+      $$4.a(
+         "real_head",
+         fxa.c()
+            .a(0, 0)
+            .a(-2.0F, -3.0F, -2.0F, 6.0F, 6.0F, 4.0F, $$0)
+            .a(16, 14)
+            .a(-2.0F, -5.0F, 0.0F, 2.0F, 2.0F, 1.0F, $$0)
+            .a(16, 14)
+            .a(2.0F, -5.0F, 0.0F, 2.0F, 2.0F, 1.0F, $$0)
+            .a(0, 10)
+            .a(-0.5F, -0.001F, -5.0F, 3.0F, 3.0F, 4.0F, $$0),
+         fwx.a
+      );
+      $$2.a("body", fxa.c().a(18, 14).a(-3.0F, -2.0F, -3.0F, 6.0F, 9.0F, 6.0F, $$0), fwx.a(0.0F, 14.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      $$2.a("upper_body", fxa.c().a(21, 0).a(-3.0F, -3.0F, -3.0F, 8.0F, 6.0F, 7.0F, $$0), fwx.a(-1.0F, 14.0F, -3.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      fxa $$5 = fxa.c().a(0, 18).a(0.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, $$0);
+      $$2.a("right_hind_leg", $$5, fwx.a(-2.5F, 16.0F, 7.0F));
+      $$2.a("left_hind_leg", $$5, fwx.a(0.5F, 16.0F, 7.0F));
+      $$2.a("right_front_leg", $$5, fwx.a(-2.5F, 16.0F, -4.0F));
+      $$2.a("left_front_leg", $$5, fwx.a(0.5F, 16.0F, -4.0F));
+      fxe $$6 = $$2.a("tail", fxa.c(), fwx.a(-1.0F, 12.0F, 8.0F, (float) (Math.PI / 5), 0.0F, 0.0F));
+      $$6.a("real_tail", fxa.c().a(9, 18).a(0.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, $$0), fwx.a);
+      return $$1;
+   }
+
+   @Override
+   protected Iterable<fwv> a() {
+      return ImmutableList.of(this.g);
+   }
+
+   @Override
+   protected Iterable<fwv> b() {
+      return ImmutableList.of(this.i, this.j, this.k, this.l, this.m, this.n, this.p);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      if ($$0.Z_()) {
+         this.n.f = 0.0F;
+      } else {
+         this.n.f = ayu.b($$1 * 0.6662F) * 1.4F * $$2;
       }
 
-      this.d.a($$0.e());
-      this.d.a($$0.b());
-
-      for (Entry<akn, ah> $$1 : $$0.f().entrySet()) {
-         ag $$2 = this.d.a($$1.getKey());
-         if ($$2 != null) {
-            ah $$3 = $$1.getValue();
-            $$3.a($$2.a().f());
-            this.e.put($$2.b(), $$3);
-            if (this.f != null) {
-               this.f.a($$2, $$3);
-            }
-
-            if (!$$0.g() && $$3.a()) {
-               if (this.b.r != null) {
-                  this.c.a(this.b.r, $$2.b());
-               }
-
-               Optional<ar> $$4 = $$2.a().c();
-               if ($$4.isPresent() && $$4.get().h()) {
-                  this.b.ax().a(new fig($$2.b()));
-               }
-            }
-         } else {
-            a.warn("Server informed client about progress for unknown advancement {}", $$1.getKey());
-         }
-      }
-   }
-
-   public ak a() {
-      return this.d;
-   }
-
-   public void a(@Nullable af $$0, boolean $$1) {
-      fws $$2 = this.b.L();
-      if ($$2 != null && $$0 != null && $$1) {
-         $$2.b(aho.a($$0));
+      if ($$0.y()) {
+         this.p.a(-1.0F, 16.0F, -3.0F);
+         this.p.e = (float) (Math.PI * 2.0 / 5.0);
+         this.p.f = 0.0F;
+         this.i.a(0.0F, 18.0F, 0.0F);
+         this.i.e = (float) (Math.PI / 4);
+         this.n.a(-1.0F, 21.0F, 6.0F);
+         this.j.a(-2.5F, 22.7F, 2.0F);
+         this.j.e = (float) (Math.PI * 3.0 / 2.0);
+         this.k.a(0.5F, 22.7F, 2.0F);
+         this.k.e = (float) (Math.PI * 3.0 / 2.0);
+         this.l.e = 5.811947F;
+         this.l.a(-2.49F, 17.0F, -4.0F);
+         this.m.e = 5.811947F;
+         this.m.a(0.51F, 17.0F, -4.0F);
+      } else {
+         this.i.a(0.0F, 14.0F, 2.0F);
+         this.i.e = (float) (Math.PI / 2);
+         this.p.a(-1.0F, 14.0F, -3.0F);
+         this.p.e = this.i.e;
+         this.n.a(-1.0F, 12.0F, 8.0F);
+         this.j.a(-2.5F, 16.0F, 7.0F);
+         this.k.a(0.5F, 16.0F, 7.0F);
+         this.l.a(-2.5F, 16.0F, -4.0F);
+         this.m.a(0.5F, 16.0F, -4.0F);
+         this.j.e = ayu.b($$1 * 0.6662F) * 1.4F * $$2;
+         this.k.e = ayu.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+         this.l.e = ayu.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+         this.m.e = ayu.b($$1 * 0.6662F) * 1.4F * $$2;
       }
 
-      if (this.g != $$0) {
-         this.g = $$0;
-         if (this.f != null) {
-            this.f.a($$0);
-         }
-      }
+      this.h.g = $$0.H($$3) + $$0.f($$3, 0.0F);
+      this.p.g = $$0.f($$3, -0.08F);
+      this.i.g = $$0.f($$3, -0.16F);
+      this.o.g = $$0.f($$3, -0.2F);
    }
 
-   public void a(@Nullable fwm.a $$0) {
-      this.f = $$0;
-      this.d.a($$0);
-      if ($$0 != null) {
-         this.e.forEach(($$1, $$2) -> {
-            ag $$3 = this.d.a($$1);
-            if ($$3 != null) {
-               $$0.a($$3, $$2);
-            }
-         });
-         $$0.a(this.g);
-      }
-   }
-
-   @Nullable
-   public af a(akn $$0) {
-      ag $$1 = this.d.a($$0);
-      return $$1 != null ? $$1.b() : null;
-   }
-
-   public interface a extends ak.a {
-      void a(ag var1, ah var2);
-
-      void a(@Nullable af var1);
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.g.e = $$5 * (float) (Math.PI / 180.0);
+      this.g.f = $$4 * (float) (Math.PI / 180.0);
+      this.n.e = $$3;
    }
 }

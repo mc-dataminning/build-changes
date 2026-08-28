@@ -1,49 +1,57 @@
-public class grc extends gqs {
-   private static final float n = 0.0F;
-   private static final float o = 0.7F;
-   private static final float p = 0.0F;
-   private static final float q = 1.0F;
-   private static final float r = 0.0025F;
-   private final cnt s;
-   private float t = 0.0F;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-   public grc(cnt $$0) {
-      super(avi.oN, avj.g, grj.t());
-      this.s = $$0;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
-      this.f = (double)((float)$$0.du());
-      this.g = (double)((float)$$0.dw());
-      this.h = (double)((float)$$0.dA());
+public class grc extends alb {
+   @VisibleForTesting
+   static final char g = '#';
+   private final String h;
+
+   private grc(String $$0, String $$1, String $$2, @Nullable alb.a $$3) {
+      super($$0, $$1, $$3);
+      this.h = $$2;
+   }
+
+   public grc(String $$0, String $$1, String $$2) {
+      super($$0, $$1);
+      this.h = j($$2);
+   }
+
+   public grc(alb $$0, String $$1) {
+      this($$0.b(), $$0.a(), j($$1), null);
+   }
+
+   public static grc c(String $$0, String $$1) {
+      return new grc("minecraft", $$0, $$1);
+   }
+
+   private static String j(String $$0) {
+      return $$0.toLowerCase(Locale.ROOT);
+   }
+
+   public String f() {
+      return this.h;
    }
 
    @Override
-   public boolean s() {
-      return !this.s.aW();
-   }
-
-   @Override
-   public boolean r() {
-      return true;
-   }
-
-   @Override
-   public void q() {
-      if (this.s.dK()) {
-         this.n();
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 instanceof grc && super.equals($$0)) {
+         grc $$1 = (grc)$$0;
+         return this.h.equals($$1.h);
       } else {
-         this.f = (double)((float)this.s.du());
-         this.g = (double)((float)this.s.dw());
-         this.h = (double)((float)this.s.dA());
-         float $$0 = (float)this.s.ds().h();
-         if ($$0 >= 0.01F && this.s.dP().s().i()) {
-            this.t = ayf.a(this.t + 0.0025F, 0.0F, 1.0F);
-            this.d = ayf.i(ayf.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
-         } else {
-            this.t = 0.0F;
-            this.d = 0.0F;
-         }
+         return false;
       }
+   }
+
+   @Override
+   public int hashCode() {
+      return 31 * super.hashCode() + this.h.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return super.toString() + "#" + this.h;
    }
 }

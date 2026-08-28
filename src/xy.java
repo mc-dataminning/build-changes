@@ -1,78 +1,63 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.ArrayDeque;
+import java.util.List;
+import java.util.Set;
 import javax.annotation.Nullable;
+import org.jetbrains.annotations.VisibleForTesting;
 
-public record xy(String d, @Nullable gc e) implements xz {
-   public static final MapCodec<xy> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("block").forGetter(xy::b)).apply($$0, xy::new));
-   public static final xz.a<xy> b = new xz.a<>(a, "block");
+public class xy {
+   public static final int a = -1;
+   private static final int b = 128;
+   private final xx[] c;
 
-   public xy(String $$0) {
-      this($$0, a($$0));
+   public xy(int $$0) {
+      this.c = new xx[$$0];
    }
 
-   @Nullable
-   private static gc a(String $$0) {
-      try {
-         return ga.a().a(new StringReader($$0));
-      } catch (CommandSyntaxException var2) {
-         return null;
-      }
+   public static xy a() {
+      return new xy(128);
    }
 
-   @Override
-   public Stream<ud> a(ee $$0) {
-      if (this.e != null) {
-         aqn $$1 = $$0.e();
-         io $$2 = this.e.c($$0);
-         if ($$1.p($$2)) {
-            doi $$3 = $$1.c_($$2);
-            if ($$3 != null) {
-               return Stream.of($$3.b($$0.v()));
-            }
+   public int a(xx $$0) {
+      for (int $$1 = 0; $$1 < this.c.length; $$1++) {
+         if ($$0.equals(this.c[$$1])) {
+            return $$1;
          }
       }
 
-      return Stream.empty();
-   }
-
-   @Override
-   public xz.a<?> a() {
-      return b;
-   }
-
-   @Override
-   public String toString() {
-      return "block=" + this.d;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof xy $$1 && this.d.equals($$1.d)) {
-            return true;
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.d.hashCode();
-   }
-
-   public String b() {
-      return this.d;
+      return -1;
    }
 
    @Nullable
-   public gc c() {
-      return this.e;
+   public xx a(int $$0) {
+      return this.c[$$0];
+   }
+
+   public void a(ye $$0, @Nullable xx $$1) {
+      List<xx> $$2 = $$0.d().a();
+      ArrayDeque<xx> $$3 = new ArrayDeque<>($$2.size() + 1);
+      $$3.addAll($$2);
+      if ($$1 != null) {
+         $$3.add($$1);
+      }
+
+      this.a($$3);
+   }
+
+   @VisibleForTesting
+   void a(List<xx> $$0) {
+      this.a(new ArrayDeque<>($$0));
+   }
+
+   private void a(ArrayDeque<xx> $$0) {
+      Set<xx> $$1 = new ObjectOpenHashSet($$0);
+
+      for (int $$2 = 0; !$$0.isEmpty() && $$2 < this.c.length; $$2++) {
+         xx $$3 = this.c[$$2];
+         this.c[$$2] = $$0.removeLast();
+         if ($$3 != null && !$$1.contains($$3)) {
+            $$0.addFirst($$3);
+         }
+      }
    }
 }

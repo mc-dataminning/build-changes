@@ -1,33 +1,29 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableInt;
 
 public class bwk {
-   private static final int a = 300;
-
-   public static buk<bsq> a(int $$0, int $$1) {
-      int $$2 = $$0 * 20;
-      MutableInt $$3 = new MutableInt(0);
-      return bxw.a(
-         (Function<bxw.b<bsq>, ? extends App<bxw.c<bsq>, bxz<bsq>>>)($$3x -> $$3x.group($$3x.b(cbu.C), $$3x.b(cbu.D))
-               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                     long $$9 = $$3x.<Long>b($$5);
-                     boolean $$10 = $$9 + 300L <= $$8;
-                     if ($$3.getValue() <= $$2 && !$$10) {
-                        io $$11 = $$3x.<iw>b($$4).b();
-                        if ($$11.a($$7.dp(), (double)$$1)) {
-                           $$3.increment();
-                        }
-
+   public static bwo<btm> a(int $$0) {
+      return byq.a(
+         (Function<byq.b<btm>, ? extends App<byq.c<btm>, byt<btm>>>)($$1 -> $$1.group($$1.a(cco.n), $$1.b(cco.o), $$1.c(cco.p), $$1.b(cco.h))
+               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     btk $$9 = $$1.b($$3);
+                     if (!a($$7) && $$7.i($$9) && $$1.<ccq>b($$5).a($$9)) {
+                        $$2.a(new bvo($$9, true));
+                        $$7.a(bqo.a);
+                        $$7.C($$9);
+                        $$4.a(true, (long)$$0);
                         return true;
                      } else {
-                        $$5.b();
-                        $$4.b();
-                        $$7.dS().a($$6.Z(), $$6.Y());
-                        $$3.setValue(0);
-                        return true;
+                        return false;
                      }
                   }))
       );
+   }
+
+   private static boolean a(btm $$0) {
+      return $$0.b($$1 -> {
+         cuf $$2 = $$1.g();
+         return $$2 instanceof cvd && $$0.a((cvd)$$2);
+      });
    }
 }

@@ -1,139 +1,46 @@
+import com.google.gson.JsonElement;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Encoder;
+import com.mojang.serialization.JsonOps;
+import java.nio.file.Path;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
+import org.slf4j.Logger;
 
-public class pe extends pr<dby> {
-   public pe(ln $$0, CompletableFuture<iz.a> $$1) {
-      super($$0, lf.az, $$1);
+public class pe implements lw {
+   private static final Logger d = LogUtils.getLogger();
+   private final ly e;
+   private final CompletableFuture<jk.a> f;
+
+   public pe(ly $$0, CompletableFuture<jk.a> $$1) {
+      this.f = $$1;
+      this.e = $$0;
    }
 
    @Override
-   protected void a(iz.a $$0) {
-      this.b(avw.a).a(dcf.X).a(dcf.V).a(dcf.T).a(dcf.R);
-      this.b(avw.b).b(avw.a).a(dcf.W).a(dcf.S).a(dcf.U).a(dcf.Q).a(dcf.P);
-      this.b(avw.c).a(dcf.M).a(dcf.N);
-      this.b(avw.d).a(dcf.K).a(dcf.L);
-      this.b(avw.e).a(dcf.D).a(dcf.H).a(dcf.I).a(dcf.J).a(dcf.G).a(dcf.E);
-      this.b(avw.f).a(dcf.A).a(dcf.B).a(dcf.C);
-      this.b(avw.g).a(dcf.t).a(dcf.v).a(dcf.u);
-      this.b(avw.h).a(dcf.p).a(dcf.q).a(dcf.n).a(dcf.o);
-      this.b(avw.i).a(dcf.z).a(dcf.x).a(dcf.y);
-      this.b(avw.j).a(dcf.i).a(dcf.j).a(dcf.k).a(dcf.m).a(dcf.l).a(dcf.F);
-      this.b(avw.k).a(dcf.r).a(dcf.s).a(dcf.w);
-      pr.b<dby> $$1 = this.b(avw.m);
-      dcm.a.a.a().forEach($$1::a);
-      pr.b<dby> $$2 = this.b(avw.l);
-      dcm.a.b.a().forEach($$2::a);
-      this.b(avw.n).a(dcf.ah).a(dcf.ai).a(dcf.aj).a(dcf.ak).a(dcf.al);
-      this.b(avw.p).b(avw.c);
-      this.b(avw.q).a(dcf.f);
-      this.b(avw.r).a(dcf.q).a(dcf.d).a(dcf.G);
-      this.b(avw.s).a(dcf.z).a(dcf.x);
-      this.b(avw.t)
-         .b(avw.b)
-         .b(avw.d)
-         .b(avw.c)
-         .b(avw.e)
-         .b(avw.g)
-         .b(avw.h)
-         .b(avw.i)
-         .b(avw.j)
-         .a(dcf.O)
-         .a(dcf.Y)
-         .a(dcf.e)
-         .a(dcf.w)
-         .a(dcf.f)
-         .a(dcf.r)
-         .a(dcf.d)
-         .a(dcf.b)
-         .a(dcf.c)
-         .a(dcf.g)
-         .a(dcf.h)
-         .a(dcf.s)
-         .a(dcf.Z)
-         .a(dcf.aa);
-      this.b(avw.u).b(avw.f);
-      this.b(avw.Y).a(dcf.ab);
-      this.b(avw.v).b(avw.a);
-      this.b(avw.X).b(avw.b).b(avw.d);
-      this.b(avw.w).a(dcf.W).a(dcf.U).a(dcf.S).a(dcf.X).a(dcf.V).a(dcf.T);
-      this.b(avw.x).a(dcf.Q).a(dcf.P).a(dcf.R);
-      this.b(avw.y).a(dcf.f).a(dcf.b).a(dcf.r).a(dcf.d).a(dcf.p).b(avw.e).a(dcf.F);
-      this.b(avw.z).a(dcf.f);
-      this.b(avw.A).b(avw.i);
-      this.b(avw.B).b(avw.b);
-      this.b(avw.C).a(dcf.g).a(dcf.h);
-      this.b(avw.D).b(avw.f).b(avw.g).a(dcf.s).a(dcf.w).a(dcf.O).b(avw.e);
-      this.b(avw.E).b(avw.c).b(avw.d).b(avw.h).b(avw.j).a(dcf.Y).a(dcf.e).a(dcf.Z).a(dcf.aa).a(dcf.r).a(dcf.d).a(dcf.b).a(dcf.c);
-      this.b(avw.F).b(avw.c);
-      this.b(avw.G).b(avw.b);
-      this.b(avw.J).a(dcf.g);
-      this.b(avw.K).a(dcf.f);
-      this.b(avw.L).a(dcf.b).a(dcf.D);
-      this.b(avw.M).a(dcf.r);
-      this.b(avw.N).a(dcf.d);
-      this.b(avw.O).a(dcf.p);
-      this.b(avw.P).a(dcf.p).a(dcf.q).a(dcf.n).a(dcf.o).a(dcf.m).a(dcf.x);
-      this.b(avw.Q).a(dcf.l);
-      this.b(avw.o)
-         .a(dcf.b)
-         .a(dcf.c)
-         .a(dcf.d)
-         .a(dcf.e)
-         .a(dcf.f)
-         .a(dcf.i)
-         .a(dcf.j)
-         .a(dcf.k)
-         .a(dcf.l)
-         .a(dcf.m)
-         .a(dcf.n)
-         .a(dcf.o)
-         .a(dcf.p)
-         .a(dcf.q)
-         .a(dcf.r)
-         .a(dcf.s)
-         .a(dcf.t)
-         .a(dcf.u)
-         .a(dcf.v)
-         .a(dcf.w)
-         .a(dcf.x)
-         .a(dcf.y)
-         .a(dcf.z)
-         .a(dcf.A)
-         .a(dcf.B)
-         .a(dcf.C)
-         .a(dcf.D)
-         .a(dcf.F)
-         .a(dcf.G)
-         .a(dcf.H)
-         .a(dcf.I)
-         .a(dcf.J)
-         .a(dcf.Y)
-         .a(dcf.Z)
-         .a(dcf.aa);
-      this.b(avw.H).b(avw.l);
-      this.b(avw.R).b(avw.m);
-      this.b(avw.S).a(dcf.af);
-      this.b(avw.T).a(dcf.ae).a(dcf.ac).a(dcf.af).a(dcf.ad);
-      this.b(avw.U).a(dcf.ab);
-      this.b(avw.V).b(avw.m);
-      this.b(avw.W).a(dcf.ai).a(dcf.aj);
-      this.b(avw.ac).a(dcf.P);
-      this.b(avw.Z).b(avw.b).b(avw.d);
-      this.b(avw.aa).a(dcf.g).a(dcf.h);
-      this.b(avw.ab).b(avw.b).b(avw.d).a(dcf.g).a(dcf.h);
-      this.b(avw.af).a(dcf.Y);
-      this.b(avw.ag).a(dcf.Y);
-      this.b(avw.ah).a(dcf.a);
-      this.b(avw.ai).a(dcf.d).a(dcf.e).a(dcf.H).a(dcf.I).a(dcf.G).a(dcf.W).a(dcf.X).a(dcf.F).a(dcf.ab).a(dcf.L).a(dcf.q).a(dcf.N).b(avw.n);
-      this.b(avw.aj).a(dcf.f).a(dcf.P).b(avw.i).b(avw.k).b(avw.m).b(avw.f).a(dcf.h);
-      this.b(avw.ak).a(dcf.f);
-      this.b(avw.al).a(dcf.d).a(dcf.e).a(dcf.W).a(dcf.q).a(dcf.L).a(dcf.N).a(dcf.H).a(dcf.I).a(dcf.G).a(dcf.F);
-      this.b(avw.am).b(avw.d);
-      this.b(avw.an).a(dcf.aa);
-      this.b(avw.ao).a(dcf.W).a(dcf.X);
-      this.b(avw.ap).b(avw.d);
-      this.b(avw.aq).a(dcf.g).a(dcf.h);
-      this.b(avw.ar).a(dcf.d).a(dcf.e).a(dcf.W).a(dcf.q).a(dcf.L).a(dcf.N).a(dcf.H).a(dcf.I).a(dcf.G).a(dcf.F);
-      this.b(avw.ad).a(dcf.z).a(dcf.Y).a(dcf.h).a(dcf.G).a(dcf.H).a(dcf.I).a(dcf.g).a(dcf.x);
-      this.b(avw.ae).a(dcf.A).a(dcf.ag).a(dcf.ae).a(dcf.f).a(dcf.B).a(dcf.ac).a(dcf.r).a(dcf.s).a(dcf.af).a(dcf.ad).a(dcf.w).a(dcf.C);
+   public CompletableFuture<?> a(lu $$0) {
+      return this.f.thenCompose($$1 -> {
+         DynamicOps<JsonElement> $$2 = $$1.a(JsonOps.INSTANCE);
+         return CompletableFuture.allOf(akw.a.stream().flatMap($$3 -> this.a($$0, $$1, $$2, (akw.c<?>)$$3).stream()).toArray(CompletableFuture[]::new));
+      });
+   }
+
+   private <T> Optional<CompletableFuture<?>> a(lu $$0, jk.a $$1, DynamicOps<JsonElement> $$2, akw.c<T> $$3) {
+      ala<? extends jv<T>> $$4 = $$3.a();
+      return $$1.a($$4).map($$4x -> {
+         ly.a $$5 = this.e.a(ly.b.a, $$4.a().a());
+         return CompletableFuture.allOf($$4x.b().map($$4xx -> a($$5.a($$4xx.h().a()), $$0, $$2, $$3.b(), $$4xx.a())).toArray(CompletableFuture[]::new));
+      });
+   }
+
+   private static <E> CompletableFuture<?> a(Path $$0, lu $$1, DynamicOps<JsonElement> $$2, Encoder<E> $$3, E $$4) {
+      Optional<JsonElement> $$5 = $$3.encodeStart($$2, $$4).resultOrPartial($$1x -> d.error("Couldn't serialize element {}: {}", $$0, $$1x));
+      return $$5.isPresent() ? lw.a($$1, $$5.get(), $$0) : CompletableFuture.completedFuture(null);
+   }
+
+   @Override
+   public final String a() {
+      return "Registries";
    }
 }

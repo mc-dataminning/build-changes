@@ -1,32 +1,6 @@
-import java.util.function.UnaryOperator;
+import com.google.gson.JsonElement;
+import java.util.function.Supplier;
 
-public class nu {
-   @Deprecated
-   public static akn a(String $$0) {
-      return new akn("minecraft", "block/" + $$0);
-   }
-
-   public static akn b(String $$0) {
-      return new akn("minecraft", "item/" + $$0);
-   }
-
-   public static akn a(dea $$0, String $$1) {
-      akn $$2 = le.e.b($$0);
-      return $$2.a((UnaryOperator<String>)($$1x -> "block/" + $$1x + $$1));
-   }
-
-   public static akn a(dea $$0) {
-      akn $$1 = le.e.b($$0);
-      return $$1.d("block/");
-   }
-
-   public static akn a(ctl $$0) {
-      akn $$1 = le.h.b($$0);
-      return $$1.d("item/");
-   }
-
-   public static akn a(ctl $$0, String $$1) {
-      akn $$2 = le.h.b($$0);
-      return $$2.a((UnaryOperator<String>)($$1x -> "item/" + $$1x + $$1));
-   }
+public interface nu extends Supplier<JsonElement> {
+   deu a();
 }

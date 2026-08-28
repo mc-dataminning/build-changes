@@ -1,30 +1,76 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.Optional;
+import com.mojang.serialization.DynamicOps;
+import java.util.Set;
 
-public class bab extends DataFix {
-   public bab(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public enum bab {
+   a(bgs.a),
+   b(bgs.b),
+   c(bgs.c),
+   d(bgs.d),
+   e(bgs.e),
+   f(bgs.f),
+   g(bgs.g),
+   h(bgs.h),
+   i(bgs.i),
+   j(bgs.j),
+   k(bgs.k),
+   l(bgs.l),
+   m(bgs.m),
+   n(bgs.o),
+   o(bgs.n),
+   p(bgs.p),
+   q(bgs.q),
+   r(bgs.M),
+   s(bgs.r);
+
+   public static final Set<TypeReference> t;
+   private final TypeReference u;
+
+   private bab(final TypeReference $$0) {
+      this.u = $$0;
    }
 
-   public TypeRewriteRule makeRule() {
-      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(bga.B.typeName(), bhl.a()));
-      return this.fixTypeEverywhereTyped("BedItemColorFix", this.getInputSchema().getType(bga.t), $$1 -> {
-         Optional<Pair<String, String>> $$2 = $$1.getOptional($$0);
-         if ($$2.isPresent() && Objects.equals($$2.get().getSecond(), "minecraft:bed")) {
-            Dynamic<?> $$3 = (Dynamic<?>)$$1.get(DSL.remainderFinder());
-            if ($$3.get("Damage").asInt(0) == 0) {
-               return $$1.set(DSL.remainderFinder(), $$3.set("Damage", $$3.createShort((short)14)));
-            }
+   static int a() {
+      return aa.b().d().c();
+   }
+
+   public <A> Codec<A> a(final Codec<A> $$0, final DataFixer $$1, final int $$2) {
+      return new Codec<A>() {
+         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1x, T $$2x) {
+            return $$0.encode($$0, $$1, $$2).flatMap($$1xxx -> $$1.mergeToMap($$1xxx, $$1.createString("DataVersion"), $$1.createInt(bab.a())));
          }
 
-         return $$1;
-      });
+         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1x) {
+            int $$2 = $$0.get($$1, "DataVersion").flatMap($$0::getNumberValue).map(Number::intValue).result().orElse($$2);
+            Dynamic<T> $$3 = new Dynamic($$0, $$0.remove($$1, "DataVersion"));
+            Dynamic<T> $$4 = bab.this.a($$1, $$3, $$2);
+            return $$0.decode($$4);
+         }
+      };
+   }
+
+   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2, int $$3) {
+      return $$0.update(this.u, $$1, $$2, $$3);
+   }
+
+   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2) {
+      return this.a($$0, $$1, $$2, a());
+   }
+
+   public ur a(DataFixer $$0, ur $$1, int $$2, int $$3) {
+      return (ur)this.a($$0, new Dynamic(vf.a, $$1), $$2, $$3).getValue();
+   }
+
+   public ur a(DataFixer $$0, ur $$1, int $$2) {
+      return this.a($$0, $$1, $$2, a());
+   }
+
+   static {
+      t = Set.of(a.u);
    }
 }

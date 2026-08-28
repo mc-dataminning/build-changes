@@ -1,24 +1,28 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eef<P extends eee> {
-   public static final eef<een> a = a("simple_state_provider", een.b);
-   public static final eef<eeo> b = a("weighted_state_provider", eeo.b);
-   public static final eef<eej> c = a("noise_threshold_provider", eej.b);
-   public static final eef<eei> d = a("noise_provider", eei.g);
-   public static final eef<eeg> e = a("dual_noise_provider", eeg.b);
-   public static final eef<eel> f = a("rotated_block_provider", eel.b);
-   public static final eef<eek> g = a("randomized_int_state_provider", eek.b);
-   private final MapCodec<P> h;
+public class eef extends eee {
+   public static final MapCodec<eef> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eef::new));
 
-   private static <P extends eee> eef<P> a(String $$0, MapCodec<P> $$1) {
-      return jk.a(le.V, $$0, new eef<>($$1));
+   public eef(bpu $$0, bpu $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private eef(MapCodec<P> $$0) {
-      this.h = $$0;
+   @Override
+   protected eek<?> a() {
+      return eek.e;
    }
 
-   public MapCodec<P> a() {
-      return this.h;
+   @Override
+   protected void a(dbz $$0, eej.b $$1, azc $$2, edt $$3, int $$4, eej.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = $$7 + $$5.b() - 1 - $$9;
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+      }
+   }
+
+   @Override
+   protected boolean a(azc $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
    }
 }

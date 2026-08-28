@@ -1,40 +1,19 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
 
-public record edz(jb<dea> b, jb<dea> c, eee d, int e, int f, float g) {
-   public static final Codec<edz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               jm.a(lf.f).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
-               jm.a(lf.f).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
-               eee.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
-               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, edz::new)
-   );
+public class edz<P extends edy> {
+   public static final edz<eeb> a = a("two_layers_feature_size", eeb.d);
+   public static final edz<eea> b = a("three_layers_feature_size", eea.d);
+   private final MapCodec<P> c;
 
-   public jb<dea> a() {
-      return this.b;
+   private static <P extends edy> edz<P> a(String $$0, MapCodec<P> $$1) {
+      return jv.a(lp.aa, $$0, new edz<>($$1));
    }
 
-   public jb<dea> b() {
+   private edz(MapCodec<P> $$0) {
+      this.c = $$0;
+   }
+
+   public MapCodec<P> a() {
       return this.c;
-   }
-
-   public eee c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
-   }
-
-   public int e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
    }
 }

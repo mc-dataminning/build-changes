@@ -1,133 +1,338 @@
-public class drt {
-   public static final dru a = dru.a("attached");
-   public static final dru b = dru.a("bottom");
-   public static final dru c = dru.a("conditional");
-   public static final dru d = dru.a("disarmed");
-   public static final dru e = dru.a("drag");
-   public static final dru f = dru.a("enabled");
-   public static final dru g = dru.a("extended");
-   public static final dru h = dru.a("eye");
-   public static final dru i = dru.a("falling");
-   public static final dru j = dru.a("hanging");
-   public static final dru k = dru.a("has_bottle_0");
-   public static final dru l = dru.a("has_bottle_1");
-   public static final dru m = dru.a("has_bottle_2");
-   public static final dru n = dru.a("has_record");
-   public static final dru o = dru.a("has_book");
-   public static final dru p = dru.a("inverted");
-   public static final dru q = dru.a("in_wall");
-   public static final dru r = dru.a("lit");
-   public static final dru s = dru.a("locked");
-   public static final dru t = dru.a("occupied");
-   public static final dru u = dru.a("open");
-   public static final dru v = dru.a("persistent");
-   public static final dru w = dru.a("powered");
-   public static final dru x = dru.a("short");
-   public static final dru y = dru.a("signal_fire");
-   public static final dru z = dru.a("snowy");
-   public static final dru A = dru.a("triggered");
-   public static final dru B = dru.a("unstable");
-   public static final dru C = dru.a("waterlogged");
-   public static final dru D = dru.a("berries");
-   public static final dru E = dru.a("bloom");
-   public static final dru F = dru.a("shrieking");
-   public static final dru G = dru.a("can_summon");
-   public static final dsb<it.a> H = dsb.a("axis", it.a.class, it.a.a, it.a.c);
-   public static final dsb<it.a> I = dsb.a("axis", it.a.class);
-   public static final dru J = dru.a("up");
-   public static final dru K = dru.a("down");
-   public static final dru L = dru.a("north");
-   public static final dru M = dru.a("east");
-   public static final dru N = dru.a("south");
-   public static final dru O = dru.a("west");
-   public static final drx P = drx.a("facing", it.c, it.f, it.d, it.e, it.b, it.a);
-   public static final drx Q = drx.a("facing", $$0 -> $$0 != it.b);
-   public static final drx R = drx.a("facing", it.c.a);
-   public static final dsd S = dsd.a("flower_amount", 1, 4);
-   public static final dsb<iv> T = dsb.a("orientation", iv.class);
-   public static final dsb<dro> U = dsb.a("face", dro.class);
-   public static final dsb<drr> V = dsb.a("attachment", drr.class);
-   public static final dsb<dsp> W = dsb.a("east", dsp.class);
-   public static final dsb<dsp> X = dsb.a("north", dsp.class);
-   public static final dsb<dsp> Y = dsb.a("south", dsp.class);
-   public static final dsb<dsp> Z = dsb.a("west", dsp.class);
-   public static final dsb<dsi> aa = dsb.a("east", dsi.class);
-   public static final dsb<dsi> ab = dsb.a("north", dsi.class);
-   public static final dsb<dsi> ac = dsb.a("south", dsi.class);
-   public static final dsb<dsi> ad = dsb.a("west", dsi.class);
-   public static final dsb<drz> ae = dsb.a("half", drz.class);
-   public static final dsb<dsc> af = dsb.a("half", dsc.class);
-   public static final dsb<dsh> ag = dsb.a("shape", dsh.class);
-   public static final dsb<dsh> ah = dsb.a("shape", dsh.class, $$0 -> $$0 != dsh.j && $$0 != dsh.i && $$0 != dsh.g && $$0 != dsh.h);
-   public static final int ai = 1;
-   public static final int aj = 2;
-   public static final int ak = 3;
-   public static final int al = 4;
-   public static final int am = 5;
-   public static final int an = 7;
-   public static final int ao = 15;
-   public static final int ap = 25;
-   public static final dsd aq = dsd.a("age", 0, 1);
-   public static final dsd ar = dsd.a("age", 0, 2);
-   public static final dsd as = dsd.a("age", 0, 3);
-   public static final dsd at = dsd.a("age", 0, 4);
-   public static final dsd au = dsd.a("age", 0, 5);
-   public static final dsd av = dsd.a("age", 0, 7);
-   public static final dsd aw = dsd.a("age", 0, 15);
-   public static final dsd ax = dsd.a("age", 0, 25);
-   public static final dsd ay = dsd.a("bites", 0, 6);
-   public static final dsd az = dsd.a("candles", 1, 4);
-   public static final dsd aA = dsd.a("delay", 1, 4);
-   public static final int aB = 7;
-   public static final dsd aC = dsd.a("distance", 1, 7);
-   public static final dsd aD = dsd.a("eggs", 1, 4);
-   public static final dsd aE = dsd.a("hatch", 0, 2);
-   public static final dsd aF = dsd.a("layers", 1, 8);
-   public static final int aG = 0;
-   public static final int aH = 1;
-   public static final int aI = 3;
-   public static final int aJ = 8;
-   public static final dsd aK = dsd.a("level", 1, 3);
-   public static final dsd aL = dsd.a("level", 0, 8);
-   public static final dsd aM = dsd.a("level", 1, 8);
-   public static final dsd aN = dsd.a("honey_level", 0, 5);
-   public static final int aO = 15;
-   public static final dsd aP = dsd.a("level", 0, 15);
-   public static final dsd aQ = dsd.a("moisture", 0, 7);
-   public static final dsd aR = dsd.a("note", 0, 24);
-   public static final dsd aS = dsd.a("pickles", 1, 4);
-   public static final dsd aT = dsd.a("power", 0, 15);
-   public static final dsd aU = dsd.a("stage", 0, 1);
-   public static final int aV = 7;
-   public static final dsd aW = dsd.a("distance", 0, 7);
-   public static final int aX = 0;
-   public static final int aY = 4;
-   public static final dsd aZ = dsd.a("charges", 0, 4);
-   public static final dsd ba = dsd.a("rotation", 0, dsj.a());
-   public static final dsb<drq> bb = dsb.a("part", drq.class);
-   public static final dsb<drv> bc = dsb.a("type", drv.class);
-   public static final dsb<drw> bd = dsb.a("mode", drw.class);
-   public static final dsb<dry> be = dsb.a("hinge", dry.class);
-   public static final dsb<dse> bf = dsb.a("instrument", dse.class);
-   public static final dsb<dsf> bg = dsb.a("type", dsf.class);
-   public static final dsb<dsl> bh = dsb.a("type", dsl.class);
-   public static final dsb<dsm> bi = dsb.a("shape", dsm.class);
-   public static final dsb<dsn> bj = dsb.a("mode", dsn.class);
-   public static final dsb<drp> bk = dsb.a("leaves", drp.class);
-   public static final dsb<dso> bl = dsb.a("tilt", dso.class);
-   public static final drx bm = drx.a("vertical_direction", it.b, it.a);
-   public static final dsb<dsa> bn = dsb.a("thickness", dsa.class);
-   public static final dsb<dsk> bo = dsb.a("sculk_sensor_phase", dsk.class);
-   public static final dru bp = dru.a("slot_0_occupied");
-   public static final dru bq = dru.a("slot_1_occupied");
-   public static final dru br = dru.a("slot_2_occupied");
-   public static final dru bs = dru.a("slot_3_occupied");
-   public static final dru bt = dru.a("slot_4_occupied");
-   public static final dru bu = dru.a("slot_5_occupied");
-   public static final dsd bv = dsd.a("dusted", 0, 3);
-   public static final dru bw = dru.a("cracked");
-   public static final dru bx = dru.a("crafting");
-   public static final dsb<dqj> by = dsb.a("trial_spawner_state", dqj.class);
-   public static final dsb<dqq> bz = dsb.a("vault_state", dqq.class);
-   public static final dru bA = dru.a("ominous");
+import java.util.Iterator;
+import java.util.List;
+
+public class drt extends dpc {
+   private static final int b = 2;
+   private static final double c = 0.01;
+   public static final double a = 0.51;
+   private drx d = dew.a.n();
+   private je e;
+   private boolean f;
+   private boolean g;
+   private static final ThreadLocal<je> h = ThreadLocal.withInitial(() -> null);
+   private float i;
+   private float j;
+   private long k;
+   private int l;
+
+   public drt(iz $$0, drx $$1) {
+      super(dpe.k, $$0, $$1);
+   }
+
+   public drt(iz $$0, drx $$1, drx $$2, je $$3, boolean $$4, boolean $$5) {
+      this($$0, $$1);
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+   }
+
+   @Override
+   public ur a(jk.a $$0) {
+      return this.e($$0);
+   }
+
+   public boolean b() {
+      return this.f;
+   }
+
+   public je c() {
+      return this.e;
+   }
+
+   public boolean d() {
+      return this.g;
+   }
+
+   public float a(float $$0) {
+      if ($$0 > 1.0F) {
+         $$0 = 1.0F;
+      }
+
+      return ayu.i($$0, this.j, this.i);
+   }
+
+   public float b(float $$0) {
+      return (float)this.e.j() * this.e(this.a($$0));
+   }
+
+   public float c(float $$0) {
+      return (float)this.e.k() * this.e(this.a($$0));
+   }
+
+   public float d(float $$0) {
+      return (float)this.e.l() * this.e(this.a($$0));
+   }
+
+   private float e(float $$0) {
+      return this.f ? $$0 - 1.0F : 1.0F - $$0;
+   }
+
+   private drx u() {
+      return !this.b() && this.d() && this.d.b() instanceof drq
+         ? dew.bz.n().a(drr.d, Boolean.valueOf(this.i > 0.25F)).a(drr.c, this.d.a(dew.br) ? dsz.b : dsz.a).a(drr.a, this.d.c(drq.a))
+         : this.d;
+   }
+
+   private static void a(dbt $$0, iz $$1, float $$2, drt $$3) {
+      je $$4 = $$3.f();
+      double $$5 = (double)($$2 - $$3.i);
+      ewf $$6 = $$3.u().k($$0, $$1);
+      if (!$$6.c()) {
+         evh $$7 = a($$1, $$6.a(), $$3);
+         List<bsp> $$8 = $$0.a_(null, drs.a($$7, $$4, $$5).b($$7));
+         if (!$$8.isEmpty()) {
+            List<evh> $$9 = $$6.e();
+            boolean $$10 = $$3.d.a(dew.hV);
+            Iterator var12 = $$8.iterator();
+
+            while (true) {
+               bsp $$11;
+               while (true) {
+                  if (!var12.hasNext()) {
+                     return;
+                  }
+
+                  $$11 = (bsp)var12.next();
+                  if ($$11.k_() != env.d) {
+                     if (!$$10) {
+                        break;
+                     }
+
+                     if (!($$11 instanceof arc)) {
+                        evm $$12 = $$11.ds();
+                        double $$13 = $$12.c;
+                        double $$14 = $$12.d;
+                        double $$15 = $$12.e;
+                        switch ($$4.o()) {
+                           case a:
+                              $$13 = (double)$$4.j();
+                              break;
+                           case b:
+                              $$14 = (double)$$4.k();
+                              break;
+                           case c:
+                              $$15 = (double)$$4.l();
+                        }
+
+                        $$11.o($$13, $$14, $$15);
+                        break;
+                     }
+                  }
+               }
+
+               double $$16 = 0.0;
+
+               for (evh $$17 : $$9) {
+                  evh $$18 = drs.a(a($$1, $$17, $$3), $$4, $$5);
+                  evh $$19 = $$11.cK();
+                  if ($$18.c($$19)) {
+                     $$16 = Math.max($$16, a($$18, $$4, $$19));
+                     if ($$16 >= $$5) {
+                        break;
+                     }
+                  }
+               }
+
+               if (!($$16 <= 0.0)) {
+                  $$16 = Math.min($$16, $$5) + 0.01;
+                  a($$4, $$11, $$16, $$4);
+                  if (!$$3.f && $$3.g) {
+                     a($$1, $$11, $$4, $$5);
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private static void a(je $$0, bsp $$1, double $$2, je $$3) {
+      h.set($$0);
+      $$1.a(btp.c, new evm($$2 * (double)$$3.j(), $$2 * (double)$$3.k(), $$2 * (double)$$3.l()));
+      h.set(null);
+   }
+
+   private static void b(dbt $$0, iz $$1, float $$2, drt $$3) {
+      if ($$3.v()) {
+         je $$4 = $$3.f();
+         if ($$4.o().d()) {
+            double $$5 = $$3.d.k($$0, $$1).c(je.a.b);
+            evh $$6 = a($$1, new evh(0.0, $$5, 0.0, 1.0, 1.5000010000000001, 1.0), $$3);
+            double $$7 = (double)($$2 - $$3.i);
+
+            for (bsp $$9 : $$0.a((bsp)null, $$6, $$2x -> a($$6, $$2x, $$1))) {
+               a($$4, $$9, $$7, $$4);
+            }
+         }
+      }
+   }
+
+   private static boolean a(evh $$0, bsp $$1, iz $$2) {
+      return $$1.k_() == env.a && $$1.aE() && ($$1.e($$2) || $$1.du() >= $$0.a && $$1.du() <= $$0.d && $$1.dA() >= $$0.c && $$1.dA() <= $$0.f);
+   }
+
+   private boolean v() {
+      return this.d.a(dew.pg);
+   }
+
+   public je f() {
+      return this.f ? this.e : this.e.g();
+   }
+
+   private static double a(evh $$0, je $$1, evh $$2) {
+      switch ($$1) {
+         case f:
+            return $$0.d - $$2.a;
+         case e:
+            return $$2.d - $$0.a;
+         case b:
+         default:
+            return $$0.e - $$2.b;
+         case a:
+            return $$2.e - $$0.b;
+         case d:
+            return $$0.f - $$2.c;
+         case c:
+            return $$2.f - $$0.c;
+      }
+   }
+
+   private static evh a(iz $$0, evh $$1, drt $$2) {
+      double $$3 = (double)$$2.e($$2.i);
+      return $$1.d((double)$$0.u() + $$3 * (double)$$2.e.j(), (double)$$0.v() + $$3 * (double)$$2.e.k(), (double)$$0.w() + $$3 * (double)$$2.e.l());
+   }
+
+   private static void a(iz $$0, bsp $$1, je $$2, double $$3) {
+      evh $$4 = $$1.cK();
+      evh $$5 = ewc.b().a().a($$0);
+      if ($$4.c($$5)) {
+         je $$6 = $$2.g();
+         double $$7 = a($$5, $$6, $$4) + 0.01;
+         double $$8 = a($$5, $$6, $$4.a($$5)) + 0.01;
+         if (Math.abs($$7 - $$8) < 0.01) {
+            $$7 = Math.min($$7, $$3) + 0.01;
+            a($$2, $$1, $$7, $$6);
+         }
+      }
+   }
+
+   public drx j() {
+      return this.d;
+   }
+
+   public void k() {
+      if (this.n != null && (this.j < 1.0F || this.n.B)) {
+         this.i = 1.0F;
+         this.j = this.i;
+         this.n.o(this.o);
+         this.ax_();
+         if (this.n.a_(this.o).a(dew.bQ)) {
+            drx $$0;
+            if (this.g) {
+               $$0 = dew.a.n();
+            } else {
+               $$0 = deu.b(this.d, this.n, this.o);
+            }
+
+            this.n.a(this.o, $$0, 3);
+            this.n.a(this.o, $$0.b(), this.o);
+         }
+      }
+   }
+
+   public static void a(dbt $$0, iz $$1, drx $$2, drt $$3) {
+      $$3.k = $$0.Z();
+      $$3.j = $$3.i;
+      if ($$3.j >= 1.0F) {
+         if ($$0.B && $$3.l < 5) {
+            $$3.l++;
+         } else {
+            $$0.o($$1);
+            $$3.ax_();
+            if ($$0.a_($$1).a(dew.bQ)) {
+               drx $$4 = deu.b($$3.d, $$0, $$1);
+               if ($$4.i()) {
+                  $$0.a($$1, $$3.d, 84);
+                  deu.a($$3.d, $$4, $$0, $$1, 3);
+               } else {
+                  if ($$4.b(dsn.C) && $$4.c(dsn.C)) {
+                     $$4 = $$4.a(dsn.C, Boolean.valueOf(false));
+                  }
+
+                  $$0.a($$1, $$4, 67);
+                  $$0.a($$1, $$4.b(), $$1);
+               }
+            }
+         }
+      } else {
+         float $$5 = $$3.i + 0.5F;
+         a($$0, $$1, $$5, $$3);
+         b($$0, $$1, $$5, $$3);
+         $$3.i = $$5;
+         if ($$3.i >= 1.0F) {
+            $$3.i = 1.0F;
+         }
+      }
+   }
+
+   @Override
+   protected void a(ur $$0, jk.a $$1) {
+      super.a($$0, $$1);
+      jj<deu> $$2 = (jj<deu>)(this.n != null ? this.n.a(lq.f) : lp.e.p());
+      this.d = vg.a($$2, $$0.p("blockState"));
+      this.e = je.a($$0.h("facing"));
+      this.i = $$0.j("progress");
+      this.j = this.i;
+      this.f = $$0.q("extending");
+      this.g = $$0.q("source");
+   }
+
+   @Override
+   protected void b(ur $$0, jk.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("blockState", vg.a(this.d));
+      $$0.a("facing", this.e.d());
+      $$0.a("progress", this.j);
+      $$0.a("extending", this.f);
+      $$0.a("source", this.g);
+   }
+
+   public ewf a(daz $$0, iz $$1) {
+      ewf $$2;
+      if (!this.f && this.g && this.d.b() instanceof drq) {
+         $$2 = this.d.a(drq.c, Boolean.valueOf(true)).k($$0, $$1);
+      } else {
+         $$2 = ewc.a();
+      }
+
+      je $$4 = h.get();
+      if ((double)this.i < 1.0 && $$4 == this.f()) {
+         return $$2;
+      } else {
+         drx $$5;
+         if (this.d()) {
+            $$5 = dew.bz.n().a(drr.a, this.e).a(drr.d, Boolean.valueOf(this.f != 1.0F - this.i < 0.25F));
+         } else {
+            $$5 = this.d;
+         }
+
+         float $$7 = this.e(this.i);
+         double $$8 = (double)((float)this.e.j() * $$7);
+         double $$9 = (double)((float)this.e.k() * $$7);
+         double $$10 = (double)((float)this.e.l() * $$7);
+         return ewc.a($$2, $$5.k($$0, $$1).a($$8, $$9, $$10));
+      }
+   }
+
+   public long l() {
+      return this.k;
+   }
+
+   @Override
+   public void a(dbt $$0) {
+      super.a($$0);
+      if ($$0.a(lq.f).a(this.d.b().q().h()).isEmpty()) {
+         this.d = dew.a.n();
+      }
+   }
 }

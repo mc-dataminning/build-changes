@@ -1,12 +1,23 @@
-public record aej(wx b) implements ze<abq> {
-   public static final yv<wi, aej> a = yv.a(wz.d, aej::b, aej::new);
+import java.util.List;
+import java.util.UUID;
 
-   @Override
-   public zg<aej> a() {
-      return agc.aq;
+public record aej(List<UUID> b) implements zs<ace> {
+   public static final zj<wl, aej> a = zs.a(aej::a, aej::new);
+
+   private aej(wl $$0) {
+      this($$0.a(kc.g));
    }
 
-   public void a(abq $$0) {
+   private void a(wl $$0) {
+      $$0.a(this.b, kc.g);
+   }
+
+   @Override
+   public zu<aej> a() {
+      return agq.ae;
+   }
+
+   public void a(ace $$0) {
       $$0.a(this);
    }
 }

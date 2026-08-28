@@ -1,79 +1,61 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-import java.util.List;
+public class acg implements zs<ace> {
+   public static final zj<wl, acg> a = zs.a(acg::a, acg::new);
+   private final int b;
+   private final double c;
+   private final double d;
+   private final double e;
+   private final int f;
 
-public record acg(List<acg.a> b) implements ze<abq> {
-   public static final yv<vx, acg> a = ze.a(acg::a, acg::new);
-   private static final int c = 2097152;
-
-   private acg(vx $$0) {
-      this($$0.a(acg.a::new));
+   public acg(bta $$0) {
+      this.b = $$0.al();
+      this.c = $$0.du();
+      this.d = $$0.dw();
+      this.e = $$0.dA();
+      this.f = $$0.p();
    }
 
-   public static acg a(List<dtj> $$0) {
-      return new acg($$0.stream().map(acg.a::new).toList());
+   private acg(wl $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readDouble();
+      this.f = $$0.readShort();
    }
 
-   private void a(vx $$0) {
-      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
+   private void a(wl $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.l(this.f);
    }
 
    @Override
-   public zg<acg> a() {
-      return agc.p;
+   public zu<acg> a() {
+      return agq.d;
    }
 
-   public void a(abq $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public static record a(dag a, byte[] b) {
-      public a(dtj $$0) {
-         this($$0.f(), new byte[a($$0)]);
-         a(new vx(this.d()), $$0);
-      }
+   public int b() {
+      return this.b;
+   }
 
-      public a(vx $$0) {
-         this($$0.f(), $$0.a(2097152));
-      }
+   public double e() {
+      return this.c;
+   }
 
-      private static int a(dtj $$0) {
-         int $$1 = 0;
+   public double f() {
+      return this.d;
+   }
 
-         for (dtk $$2 : $$0.d()) {
-            $$1 += $$2.i().c();
-         }
+   public double g() {
+      return this.e;
+   }
 
-         return $$1;
-      }
-
-      public vx a() {
-         return new vx(Unpooled.wrappedBuffer(this.b));
-      }
-
-      private ByteBuf d() {
-         ByteBuf $$0 = Unpooled.wrappedBuffer(this.b);
-         $$0.writerIndex(0);
-         return $$0;
-      }
-
-      public static void a(vx $$0, dtj $$1) {
-         for (dtk $$2 : $$1.d()) {
-            $$2.i().b($$0);
-         }
-      }
-
-      public void a(vx $$0) {
-         $$0.a(this.a);
-         $$0.a(this.b);
-      }
-
-      public dag b() {
-         return this.a;
-      }
-
-      public byte[] c() {
-         return this.b;
-      }
+   public int h() {
+      return this.f;
    }
 }

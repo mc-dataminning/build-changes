@@ -1,12 +1,12 @@
 public class akd {
-   public static final akm<dea> a = a("pumpkin");
-   public static final akm<dea> b = a("pumpkin_stem");
-   public static final akm<dea> c = a("attached_pumpkin_stem");
-   public static final akm<dea> d = a("melon");
-   public static final akm<dea> e = a("melon_stem");
-   public static final akm<dea> f = a("attached_melon_stem");
+   public static final zu<ajz> a = a("status_response");
+   public static final zu<akc> b = b("status_request");
 
-   private static akm<dea> a(String $$0) {
-      return akm.a(lf.f, new akn($$0));
+   private static <T extends zs<ajy>> zu<T> a(String $$0) {
+      return new zu<>(zt.b, new alb($$0));
+   }
+
+   private static <T extends zs<akb>> zu<T> b(String $$0) {
+      return new zu<>(zt.a, new alb($$0));
    }
 }

@@ -1,21 +1,35 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+public class cfv extends cez {
+   public cfv(bsv<? extends cfv> $$0, dbt $$1) {
+      super($$0, $$1);
+   }
 
-public class cfv {
-   public static buk<bsq> a() {
-      return bxw.a(
-         (Function<bxw.b<bsq>, ? extends App<bxw.c<bsq>, bxz<bsq>>>)($$0 -> $$0.group($$0.b(cbu.N), $$0.a(cbu.y)).apply($$0, ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                  int $$6 = $$0.<Integer>b($$1);
-                  if ($$6 <= 0) {
-                     $$1.b();
-                     $$2.b();
-                     $$4.dS().f();
-                  } else {
-                     $$1.a($$6 - 1);
-                  }
+   @Override
+   public int gs() {
+      return 5;
+   }
 
-                  return true;
-               }))
-      );
+   @Override
+   public cuk b() {
+      return new cuk(cun.qG);
+   }
+
+   @Override
+   protected avv v() {
+      return avw.vC;
+   }
+
+   @Override
+   protected avv o_() {
+      return avw.vD;
+   }
+
+   @Override
+   protected avv d(bri $$0) {
+      return avw.vF;
+   }
+
+   @Override
+   protected avv gr() {
+      return avw.vE;
    }
 }

@@ -1,39 +1,20 @@
-public class chz extends cib {
-   public chz(bsc<? extends cib> $$0, daz $$1) {
-      super($$0, $$1);
-   }
-
-   public chz(daz $$0, io $$1, it $$2) {
-      super(bsc.V, $$0, $$1, $$2);
+public abstract class chz extends chy {
+   public chz(chw $$0) {
+      super($$0);
    }
 
    @Override
-   public avh p() {
-      return avi.kE;
+   public boolean a() {
+      return true;
    }
 
    @Override
-   public avh s() {
-      return avi.kC;
-   }
-
-   @Override
-   public avh u() {
-      return avi.kD;
-   }
-
-   @Override
-   public avh v() {
-      return avi.kB;
-   }
-
-   @Override
-   public avh w() {
-      return avi.kF;
-   }
-
-   @Override
-   protected ctq x() {
-      return new ctq(ctt.ud);
+   public float a(bri $$0, float $$1) {
+      if (!($$0.c() instanceof cmy) && !($$0.c() instanceof coc)) {
+         return super.a($$0, $$1);
+      } else {
+         $$0.c().g(1);
+         return 0.0F;
+      }
    }
 }

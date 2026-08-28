@@ -1,176 +1,143 @@
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public record cvr(Optional<ix<cvp>> d, Optional<Integer> e, List<bre> f) {
-   public static final cvr a = new cvr(Optional.empty(), Optional.empty(), List.of());
-   private static final wx g = wx.c("effect.none").a(n.h);
-   private static final int h = -524040;
-   private static final int i = -13083194;
-   private static final Codec<cvr> j = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               le.i.r().optionalFieldOf("potion").forGetter(cvr::f),
-               Codec.INT.optionalFieldOf("custom_color").forGetter(cvr::g),
-               bre.d.listOf().optionalFieldOf("custom_effects", List.of()).forGetter(cvr::e)
-            )
-            .apply($$0, cvr::new)
-   );
-   public static final Codec<cvr> b = Codec.withAlternative(j, le.i.r(), cvr::new);
-   public static final yv<wi, cvr> c = yv.a(yt.b(lf.Y).a(yt::a), cvr::f, yt.e.a(yt::a), cvr::g, bre.e.a(yt.a()), cvr::e, cvr::new);
+public class cvr extends cuf {
+   private static final Map<bsv<? extends btm>, cvr> a = Maps.newIdentityHashMap();
+   private static final MapCodec<bsv<?>> b = lp.g.q().fieldOf("id");
+   private final int c;
+   private final int j;
+   private final bsv<?> k;
 
-   public cvr(ix<cvp> $$0) {
-      this(Optional.of($$0), Optional.empty(), List.of());
+   public cvr(bsv<? extends btm> $$0, int $$1, int $$2, cuf.a $$3) {
+      super($$3);
+      this.k = $$0;
+      this.c = $$1;
+      this.j = $$2;
+      a.put($$0, this);
    }
 
-   public static ctq a(ctl $$0, ix<cvp> $$1) {
-      ctq $$2 = new ctq($$0);
-      $$2.b(kb.F, new cvr($$1));
-      return $$2;
-   }
-
-   public boolean a(ix<cvp> $$0) {
-      return this.d.isPresent() && this.d.get().a($$0) && this.f.isEmpty();
-   }
-
-   public Iterable<bre> a() {
-      if (this.d.isEmpty()) {
-         return this.f;
+   @Override
+   public bqp a(cxx $$0) {
+      dbt $$1 = $$0.q();
+      if (!($$1 instanceof arb)) {
+         return bqp.a;
       } else {
-         return (Iterable<bre>)(this.f.isEmpty() ? this.d.get().a().a() : Iterables.concat(this.d.get().a().a(), this.f));
-      }
-   }
-
-   public void a(Consumer<bre> $$0) {
-      if (this.d.isPresent()) {
-         for (bre $$1 : this.d.get().a().a()) {
-            $$0.accept(new bre($$1));
-         }
-      }
-
-      for (bre $$2 : this.f) {
-         $$0.accept(new bre($$2));
-      }
-   }
-
-   public cvr b(ix<cvp> $$0) {
-      return new cvr(Optional.of($$0), this.e, this.f);
-   }
-
-   public cvr a(bre $$0) {
-      return new cvr(this.d, this.e, ac.a(this.f, $$0));
-   }
-
-   public int b() {
-      if (this.e.isPresent()) {
-         return this.e.get();
-      } else {
-         return this.d.isEmpty() ? -524040 : a(this.a());
-      }
-   }
-
-   public int c() {
-      return this.e.isPresent() ? this.e.get() : a(this.a());
-   }
-
-   public static int c(ix<cvp> $$0) {
-      return a($$0.a().a());
-   }
-
-   public static int a(Iterable<bre> $$0) {
-      return b($$0).orElse(-13083194);
-   }
-
-   public static OptionalInt b(Iterable<bre> $$0) {
-      int $$1 = 0;
-      int $$2 = 0;
-      int $$3 = 0;
-      int $$4 = 0;
-
-      for (bre $$5 : $$0) {
-         if ($$5.g()) {
-            int $$6 = $$5.c().a().g();
-            int $$7 = $$5.e() + 1;
-            $$1 += $$7 * axp.b.b($$6);
-            $$2 += $$7 * axp.b.c($$6);
-            $$3 += $$7 * axp.b.d($$6);
-            $$4 += $$7;
-         }
-      }
-
-      return $$4 == 0 ? OptionalInt.empty() : OptionalInt.of(axp.b.a($$1 / $$4, $$2 / $$4, $$3 / $$4));
-   }
-
-   public boolean d() {
-      return !this.f.isEmpty() ? true : this.d.isPresent() && !this.d.get().a().a().isEmpty();
-   }
-
-   public List<bre> e() {
-      return Lists.transform(this.f, bre::new);
-   }
-
-   public void a(Consumer<wx> $$0, float $$1, float $$2) {
-      a(this.a(), $$0, $$1, $$2);
-   }
-
-   public static void a(Iterable<bre> $$0, Consumer<wx> $$1, float $$2, float $$3) {
-      List<Pair<ix<btt>, btw>> $$4 = Lists.newArrayList();
-      boolean $$5 = true;
-
-      for (bre $$6 : $$0) {
-         $$5 = false;
-         xl $$7 = wx.c($$6.i());
-         ix<brc> $$8 = $$6.c();
-         $$8.a().a($$6.e(), ($$1x, $$2x) -> $$4.add(new Pair($$1x, $$2x)));
-         if ($$6.e() > 0) {
-            $$7 = wx.a("potion.withAmplifier", $$7, wx.c("potion.potency." + $$6.e()));
-         }
-
-         if (!$$6.a(20)) {
-            $$7 = wx.a("potion.withDuration", $$7, brf.a($$6, $$2, $$3));
-         }
-
-         $$1.accept($$7.a($$8.a().f().a()));
-      }
-
-      if ($$5) {
-         $$1.accept(g);
-      }
-
-      if (!$$4.isEmpty()) {
-         $$1.accept(ww.a);
-         $$1.accept(wx.c("potion.whenDrank").a(n.f));
-
-         for (Pair<ix<btt>, btw> $$9 : $$4) {
-            btw $$10 = (btw)$$9.getSecond();
-            double $$11 = $$10.d();
-            double $$13;
-            if ($$10.e() != btw.a.b && $$10.e() != btw.a.c) {
-               $$13 = $$10.d();
+         cuk $$2 = $$0.n();
+         iz $$3 = $$0.a();
+         je $$4 = $$0.k();
+         drx $$5 = $$1.a_($$3);
+         if ($$1.c_($$3) instanceof dcl $$6) {
+            bsv<?> $$7 = this.j($$2);
+            $$6.a($$7, $$1.E_());
+            $$1.a($$3, $$5, $$5, 3);
+            $$1.a($$0.o(), dwq.c, $$3);
+            $$2.h(1);
+            return bqp.c;
+         } else {
+            iz $$8;
+            if ($$5.k($$1, $$3).c()) {
+               $$8 = $$3;
             } else {
-               $$13 = $$10.d() * 100.0;
+               $$8 = $$3.a($$4);
             }
 
-            if ($$11 > 0.0) {
-               $$1.accept(wx.a("attribute.modifier.plus." + $$10.e().a(), cwl.d.format($$13), wx.c(((btt)((ix)$$9.getFirst()).a()).c())).a(n.j));
-            } else if ($$11 < 0.0) {
-               $$13 *= -1.0;
-               $$1.accept(wx.a("attribute.modifier.take." + $$10.e().a(), cwl.d.format($$13), wx.c(((btt)((ix)$$9.getFirst()).a()).c())).a(n.m));
+            bsv<?> $$10 = this.j($$2);
+            if ($$10.a((arb)$$1, $$2, $$0.o(), $$8, bto.m, true, !Objects.equals($$3, $$8) && $$4 == je.b) != null) {
+               $$2.h(1);
+               $$1.a($$0.o(), dwq.t, $$3);
             }
+
+            return bqp.c;
          }
       }
    }
 
-   public Optional<ix<cvp>> f() {
-      return this.d;
+   @Override
+   public bqq<cuk> a(dbt $$0, cms $$1, bqo $$2) {
+      cuk $$3 = $$1.b($$2);
+      evi $$4 = a($$0, $$1, dbc.b.b);
+      if ($$4.c() != evk.a.b) {
+         return bqq.c($$3);
+      } else if (!($$0 instanceof arb)) {
+         return bqq.a($$3);
+      } else {
+         iz $$6 = $$4.a();
+         if (!($$0.a_($$6).b() instanceof djk)) {
+            return bqq.c($$3);
+         } else if ($$0.a($$1, $$6) && $$1.a($$6, $$4.b(), $$3)) {
+            bsv<?> $$7 = this.j($$3);
+            bsp $$8 = $$7.a((arb)$$0, $$3, $$1, $$6, bto.m, false, false);
+            if ($$8 == null) {
+               return bqq.c($$3);
+            } else {
+               $$3.a(1, $$1);
+               $$1.b(awg.c.b(this));
+               $$0.a($$1, dwq.t, $$8.dn());
+               return bqq.b($$3);
+            }
+         } else {
+            return bqq.d($$3);
+         }
+      }
    }
 
-   public Optional<Integer> g() {
-      return this.e;
+   public boolean a(cuk $$0, bsv<?> $$1) {
+      return Objects.equals(this.j($$0), $$1);
+   }
+
+   public int a(int $$0) {
+      return $$0 == 0 ? this.c : this.j;
+   }
+
+   @Nullable
+   public static cvr a(@Nullable bsv<?> $$0) {
+      return a.get($$0);
+   }
+
+   public static Iterable<cvr> h() {
+      return Iterables.unmodifiableIterable(a.values());
+   }
+
+   public bsv<?> j(cuk $$0) {
+      cwz $$1 = $$0.a(km.L, cwz.a);
+      return !$$1.b() ? $$1.a(b).result().orElse(this.k) : this.k;
+   }
+
+   @Override
+   public cpg i() {
+      return this.k.i();
+   }
+
+   public Optional<btm> a(cms $$0, btm $$1, bsv<? extends btm> $$2, arb $$3, evm $$4, cuk $$5) {
+      if (!this.a($$5, $$2)) {
+         return Optional.empty();
+      } else {
+         btm $$6;
+         if ($$1 instanceof bsj) {
+            $$6 = ((bsj)$$1).a($$3, (bsj)$$1);
+         } else {
+            $$6 = $$2.a((dbt)$$3);
+         }
+
+         if ($$6 == null) {
+            return Optional.empty();
+         } else {
+            $$6.a(true);
+            if (!$$6.p_()) {
+               return Optional.empty();
+            } else {
+               $$6.b($$4.a(), $$4.b(), $$4.c(), 0.0F, 0.0F);
+               $$3.a_($$6);
+               $$6.b($$5.a(km.f));
+               $$5.a(1, $$0);
+               return Optional.of($$6);
+            }
+         }
+      }
    }
 }

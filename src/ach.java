@@ -1,29 +1,42 @@
-public class ach implements ze<abq> {
-   public static final yv<vx, ach> a = ze.a(ach::a, ach::new);
-   private final boolean b;
+public class ach implements zs<ace> {
+   public static final zj<wl, ach> a = zs.a(ach::a, ach::new);
+   public static final int b = 0;
+   public static final int c = 2;
+   public static final int d = 3;
+   public static final int e = 4;
+   public static final int f = 5;
+   private final int g;
+   private final int h;
 
-   public ach(boolean $$0) {
-      this.b = $$0;
+   public ach(bsp $$0, int $$1) {
+      this.g = $$0.al();
+      this.h = $$1;
    }
 
-   private ach(vx $$0) {
-      this.b = $$0.readBoolean();
+   private ach(wl $$0) {
+      this.g = $$0.l();
+      this.h = $$0.readUnsignedByte();
    }
 
-   private void a(vx $$0) {
-      $$0.a(this.b);
+   private void a(wl $$0) {
+      $$0.c(this.g);
+      $$0.k(this.h);
    }
 
    @Override
-   public zg<ach> a() {
-      return agc.q;
+   public zu<ach> a() {
+      return agq.e;
    }
 
-   public void a(abq $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
-      return this.b;
+   public int b() {
+      return this.g;
+   }
+
+   public int e() {
+      return this.h;
    }
 }

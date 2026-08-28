@@ -1,49 +1,25 @@
-public class fzq extends gay {
-   private final gat a;
-
-   protected fzq(fwr $$0, double $$1, double $$2, double $$3, double $$4, gat $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 6 + this.r.a(4);
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
-      this.a = $$5;
-      this.b($$5);
+public class fzq extends gbx {
+   fzq(fxq $$0, double $$1, double $$2, double $$3, drx $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a(ffa.Q().ao().a().a($$4));
+      this.u = 0.0F;
+      this.t = 80;
+      this.n = false;
    }
 
    @Override
-   public int a(float $$0) {
-      return 15728880;
+   public gbb b() {
+      return gbb.a;
    }
 
    @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.a);
-      }
+   public float b(float $$0) {
+      return 0.5F;
    }
 
-   @Override
-   public gac b() {
-      return gac.d;
-   }
-
-   public static class a implements gab<lb> {
-      private final gat a;
-
-      public a(gat $$0) {
-         this.a = $$0;
-      }
-
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fzq($$1, $$2, $$3, $$4, $$5, this.a);
+   public static class a implements gba<la> {
+      public gax a(la $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fzq($$1, $$2, $$3, $$4, $$0.b());
       }
    }
 }

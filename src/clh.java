@@ -1,75 +1,111 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class clh implements dam {
-   private static final int a = 1200;
-   private int b;
+public abstract class clh extends cjy {
+   protected static final akg<Boolean> b = akk.a(clh.class, aki.k);
+   protected static final int c = 300;
+   protected int d;
+
+   public clh(bsv<? extends clh> $$0, dbt $$1) {
+      super($$0, $$1);
+      this.a_(true);
+      this.y();
+      this.a(eoh.n, 16.0F);
+      this.a(eoh.o, -1.0F);
+   }
+
+   private void y() {
+      if (ceg.a(this)) {
+         ((ccv)this.K()).b(true);
+      }
+   }
+
+   protected abstract boolean s();
+
+   public void w(boolean $$0) {
+      this.ap().a(b, $$0);
+   }
+
+   protected boolean u() {
+      return this.ap().a(b);
+   }
 
    @Override
-   public int a(aqn $$0, boolean $$1, boolean $$2) {
-      if ($$2 && $$0.aa().b(dav.e)) {
-         this.b--;
-         if (this.b > 0) {
-            return 0;
-         } else {
-            this.b = 1200;
-            cly $$3 = $$0.j();
-            if ($$3 == null) {
-               return 0;
-            } else {
-               aym $$4 = $$0.z;
-               int $$5 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
-               int $$6 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
-               io $$7 = $$3.dp().b($$5, 0, $$6);
-               int $$8 = 10;
-               if (!$$0.b($$7.u() - 10, $$7.w() - 10, $$7.u() + 10, $$7.w() + 10)) {
-                  return 0;
-               } else {
-                  if (btm.a(bsc.p, $$0, $$7)) {
-                     if ($$0.a($$7, 2)) {
-                        return this.a($$0, $$7);
-                     }
+   protected void a(akk.a $$0) {
+      super.a($$0);
+      $$0.a(b, false);
+   }
 
-                     if ($$0.a().a($$7, awi.n).b()) {
-                        return this.b($$0, $$7);
-                     }
-                  }
+   @Override
+   public void b(ur $$0) {
+      super.b($$0);
+      if (this.u()) {
+         $$0.a("IsImmuneToZombification", true);
+      }
 
-                  return 0;
-               }
-            }
-         }
+      $$0.a("TimeInOverworld", this.d);
+   }
+
+   @Override
+   public void a(ur $$0) {
+      super.a($$0);
+      this.w($$0.q("IsImmuneToZombification"));
+      this.d = $$0.h("TimeInOverworld");
+   }
+
+   @Override
+   protected void Z() {
+      super.Z();
+      if (this.gq()) {
+         this.d++;
       } else {
-         return 0;
+         this.d = 0;
+      }
+
+      if (this.d > 300) {
+         this.gu();
+         this.c((arb)this.dP());
       }
    }
 
-   private int a(aqn $$0, io $$1) {
-      int $$2 = 48;
-      if ($$0.y().a($$0x -> $$0x.a(cdy.n), $$1, 48, cdu.b.b) > 4L) {
-         List<cej> $$3 = $$0.a(cej.class, new euh($$1).c(48.0, 8.0, 48.0));
-         if ($$3.size() < 5) {
-            return this.a($$1, $$0);
-         }
-      }
-
-      return 0;
+   public boolean gq() {
+      return !this.dP().D_().b() && !this.u() && !this.gg();
    }
 
-   private int b(aqn $$0, io $$1) {
-      int $$2 = 16;
-      List<cej> $$3 = $$0.a(cej.class, new euh($$1).c(16.0, 8.0, 16.0));
-      return $$3.size() < 1 ? this.a($$1, $$0) : 0;
-   }
-
-   private int a(io $$0, aqn $$1) {
-      cej $$2 = bsc.p.a((daz)$$1);
-      if ($$2 == null) {
-         return 0;
-      } else {
-         $$2.a($$1, $$1.d_($$0), bsu.a, null);
-         $$2.a($$0, 0.0F, 0.0F);
-         $$1.a_($$2);
-         return 1;
+   protected void c(arb $$0) {
+      ckt $$1 = this.a(bsv.bx, true);
+      if ($$1 != null) {
+         $$1.b(new brx(brz.i, 200, 0));
       }
    }
+
+   public boolean gr() {
+      return !this.p_();
+   }
+
+   public abstract clk gs();
+
+   @Nullable
+   @Override
+   public btk p() {
+      return this.N();
+   }
+
+   protected boolean gt() {
+      return this.eX().g() instanceof cwa;
+   }
+
+   @Override
+   public void Q() {
+      if (clj.d(this)) {
+         super.Q();
+      }
+   }
+
+   @Override
+   protected void Y() {
+      super.Y();
+      agp.a(this);
+   }
+
+   protected abstract void gu();
 }

@@ -1,78 +1,112 @@
-import com.mojang.serialization.MapCodec;
-import java.util.stream.Stream;
-import java.util.stream.Stream.Builder;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-@Deprecated
-public class egh extends egs {
-   public static final MapCodec<egh> a = bpb.b(0, 256).fieldOf("count").xmap(egh::new, $$0 -> $$0.c);
-   private final bpb c;
+public class egh {
+   public static final ala<egg> a = a("classic_flat");
+   public static final ala<egg> b = a("tunnelers_dream");
+   public static final ala<egg> c = a("water_world");
+   public static final ala<egg> d = a("overworld");
+   public static final ala<egg> e = a("snowy_kingdom");
+   public static final ala<egg> f = a("bottomless_pit");
+   public static final ala<egg> g = a("desert");
+   public static final ala<egg> h = a("redstone_ready");
+   public static final ala<egg> i = a("the_void");
 
-   private egh(bpb $$0) {
-      this.c = $$0;
+   public static void a(rc<egg> $$0) {
+      new egh.a($$0).a();
    }
 
-   public static egh a(bpb $$0) {
-      return new egh($$0);
+   private static ala<egg> a(String $$0) {
+      return ala.a(lq.aF, new alb($$0));
    }
 
-   public static egh a(int $$0) {
-      return a(boy.a($$0));
-   }
+   static class a {
+      private final rc<egg> a;
 
-   @Override
-   public Stream<io> a_(egq $$0, aym $$1, io $$2) {
-      Builder<io> $$3 = Stream.builder();
-      int $$4 = 0;
-
-      boolean $$5;
-      do {
-         $$5 = false;
-
-         for (int $$6 = 0; $$6 < this.c.a($$1); $$6++) {
-            int $$7 = $$1.a(16) + $$2.u();
-            int $$8 = $$1.a(16) + $$2.w();
-            int $$9 = $$0.a(dwv.a.e, $$7, $$8);
-            int $$10 = a($$0, $$7, $$9, $$8, $$4);
-            if ($$10 != Integer.MAX_VALUE) {
-               $$3.add(new io($$7, $$10, $$8));
-               $$5 = true;
-            }
-         }
-
-         $$4++;
-      } while ($$5);
-
-      return $$3.build();
-   }
-
-   @Override
-   public egt<?> b() {
-      return egt.i;
-   }
-
-   private static int a(egq $$0, int $$1, int $$2, int $$3, int $$4) {
-      io.a $$5 = new io.a($$1, $$2, $$3);
-      int $$6 = 0;
-      drd $$7 = $$0.a($$5);
-
-      for (int $$8 = $$2; $$8 >= $$0.c() + 1; $$8--) {
-         $$5.q($$8 - 1);
-         drd $$9 = $$0.a($$5);
-         if (!a($$9) && a($$7) && !$$9.a(dec.F)) {
-            if ($$6 == $$4) {
-               return $$5.v() + 1;
-            }
-
-            $$6++;
-         }
-
-         $$7 = $$9;
+      a(rc<egg> $$0) {
+         this.a = $$0;
       }
 
-      return Integer.MAX_VALUE;
-   }
+      private void a(ala<egg> $$0, dbs $$1, ala<dcs> $$2, Set<ala<eil>> $$3, boolean $$4, boolean $$5, egf... $$6) {
+         jj<eil> $$7 = this.a.a(lq.aL);
+         jj<ehj> $$8 = this.a.a(lq.aI);
+         jj<dcs> $$9 = this.a.a(lq.az);
+         jm.a<eil> $$10 = jm.a($$3.stream().map($$7::b).collect(Collectors.toList()));
+         egi $$11 = new egi(Optional.of($$10), $$9.b($$2), egi.b($$8));
+         if ($$4) {
+            $$11.a();
+         }
 
-   private static boolean a(drd $$0) {
-      return $$0.i() || $$0.a(dec.G) || $$0.a(dec.H);
+         if ($$5) {
+            $$11.b();
+         }
+
+         for (int $$12 = $$6.length - 1; $$12 >= 0; $$12--) {
+            $$11.e().add($$6[$$12]);
+         }
+
+         this.a.a($$0, new egg($$1.r().o(), $$11));
+      }
+
+      public void a() {
+         this.a(egh.a, dew.i, dcz.b, ImmutableSet.of(ehy.a), false, false, new egf(1, dew.i), new egf(2, dew.j), new egf(1, dew.F));
+         this.a(egh.b, dew.b, dcz.t, ImmutableSet.of(ehy.j, ehy.r), true, false, new egf(1, dew.i), new egf(5, dew.j), new egf(230, dew.b), new egf(1, dew.F));
+         this.a(
+            egh.c,
+            cun.qz,
+            dcz.T,
+            ImmutableSet.of(ehy.m, ehy.l, ehy.g),
+            false,
+            false,
+            new egf(90, dew.G),
+            new egf(5, dew.L),
+            new egf(5, dew.j),
+            new egf(5, dew.b),
+            new egf(64, dew.sJ),
+            new egf(1, dew.F)
+         );
+         this.a(
+            egh.d,
+            dew.bt,
+            dcz.b,
+            ImmutableSet.of(ehy.a, ehy.j, ehy.f, ehy.k, ehy.r),
+            true,
+            true,
+            new egf(1, dew.i),
+            new egf(3, dew.j),
+            new egf(59, dew.b),
+            new egf(1, dew.F)
+         );
+         this.a(
+            egh.e,
+            dew.dN,
+            dcz.d,
+            ImmutableSet.of(ehy.a, ehy.c),
+            false,
+            false,
+            new egf(1, dew.dN),
+            new egf(1, dew.i),
+            new egf(3, dew.j),
+            new egf(59, dew.b),
+            new egf(1, dew.F)
+         );
+         this.a(egh.f, cun.pt, dcz.b, ImmutableSet.of(ehy.a), false, false, new egf(1, dew.i), new egf(3, dew.j), new egf(2, dew.m));
+         this.a(
+            egh.g,
+            dew.I,
+            dcz.f,
+            ImmutableSet.of(ehy.a, ehy.b, ehy.j, ehy.r),
+            true,
+            false,
+            new egf(8, dew.I),
+            new egf(52, dew.aV),
+            new egf(3, dew.b),
+            new egf(1, dew.F)
+         );
+         this.a(egh.h, cun.lH, dcz.f, ImmutableSet.of(), false, false, new egf(116, dew.aV), new egf(3, dew.b), new egf(1, dew.F));
+         this.a(egh.i, dew.hW, dcz.a, ImmutableSet.of(), true, false, new egf(1, dew.a));
+      }
    }
 }

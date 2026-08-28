@@ -1,47 +1,21 @@
-import java.util.List;
-import java.util.Optional;
+public enum boj {
+   a("pathfinding"),
+   b("event-loops"),
+   c("mailboxes"),
+   d("ticking"),
+   e("jvm"),
+   f("chunk rendering"),
+   g("chunk rendering dispatching"),
+   h("cpu"),
+   i("gpu");
 
-public class boj {
-   private boj() {
+   private final String j;
+
+   private boj(final String $$0) {
+      this.j = $$0;
    }
 
-   public static int a(List<? extends boi> $$0) {
-      long $$1 = 0L;
-
-      for (boi $$2 : $$0) {
-         $$1 += (long)$$2.a().a();
-      }
-
-      if ($$1 > 2147483647L) {
-         throw new IllegalArgumentException("Sum of weights must be <= 2147483647");
-      } else {
-         return (int)$$1;
-      }
-   }
-
-   public static <T extends boi> Optional<T> a(aym $$0, List<T> $$1, int $$2) {
-      if ($$2 < 0) {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Negative total weight in getRandomItem"));
-      } else if ($$2 == 0) {
-         return Optional.empty();
-      } else {
-         int $$3 = $$0.a($$2);
-         return a($$1, $$3);
-      }
-   }
-
-   public static <T extends boi> Optional<T> a(List<T> $$0, int $$1) {
-      for (T $$2 : $$0) {
-         $$1 -= $$2.a().a();
-         if ($$1 < 0) {
-            return Optional.of($$2);
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   public static <T extends boi> Optional<T> a(aym $$0, List<T> $$1) {
-      return a($$0, $$1, a($$1));
+   public String a() {
+      return this.j;
    }
 }

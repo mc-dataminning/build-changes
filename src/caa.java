@@ -1,130 +1,72 @@
-import com.google.common.collect.Lists;
 import java.util.EnumSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public class caa extends bzo {
-   protected final bsz a;
-   private final double b;
-   @Nullable
-   private enk c;
-   private io d;
-   private final boolean e;
-   private final List<io> f = Lists.newArrayList();
-   private final int g;
-   private final BooleanSupplier h;
+public class caa extends cai {
+   private static final int a = 40;
+   private static final Predicate<drx> b = dsg.a(dew.bt);
+   private final btm c;
+   private final dbt d;
+   private int e;
 
-   public caa(bsz $$0, double $$1, boolean $$2, int $$3, BooleanSupplier $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.e = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.a(EnumSet.of(bzo.a.a));
-      if (!cdm.a($$0)) {
-         throw new IllegalArgumentException("Unsupported mob for MoveThroughVillageGoal");
-      }
+   public caa(btm $$0) {
+      this.c = $$0;
+      this.d = $$0.dP();
+      this.a(EnumSet.of(cai.a.a, cai.a.b, cai.a.c));
    }
 
    @Override
    public boolean a() {
-      if (!cdm.a(this.a)) {
+      if (this.c.el().a(this.c.p_() ? 50 : 1000) != 0) {
          return false;
       } else {
-         this.h();
-         if (this.e && this.a.dP().Q()) {
-            return false;
-         } else {
-            aqn $$0 = (aqn)this.a.dP();
-            io $$1 = this.a.dp();
-            if (!$$0.a($$1, 6)) {
-               return false;
-            } else {
-               eum $$2 = cdo.a(this.a, 15, 7, $$2x -> {
-                  if (!$$0.c($$2x)) {
-                     return Double.NEGATIVE_INFINITY;
-                  } else {
-                     Optional<io> $$3x = $$0.y().d($$0xx -> $$0xx.a(awh.b), this::a, $$2x, 10, cdu.b.b);
-                     return $$3x.<Double>map($$1xx -> -$$1xx.j($$1)).orElse(Double.NEGATIVE_INFINITY);
-                  }
-               });
-               if ($$2 == null) {
-                  return false;
-               } else {
-                  Optional<io> $$3 = $$0.y().d($$0x -> $$0x.a(awh.b), this::a, io.a($$2), 10, cdu.b.b);
-                  if ($$3.isEmpty()) {
-                     return false;
-                  } else {
-                     this.d = $$3.get().i();
-                     ccb $$4 = (ccb)this.a.K();
-                     boolean $$5 = $$4.f();
-                     $$4.b(this.h.getAsBoolean());
-                     this.c = $$4.a(this.d, 0);
-                     $$4.b($$5);
-                     if (this.c == null) {
-                        eum $$6 = cdl.a(this.a, 10, 7, eum.c(this.d), (float) (Math.PI / 2));
-                        if ($$6 == null) {
-                           return false;
-                        }
-
-                        $$4.b(this.h.getAsBoolean());
-                        this.c = this.a.K().a($$6.c, $$6.d, $$6.e, 0);
-                        $$4.b($$5);
-                        if (this.c == null) {
-                           return false;
-                        }
-                     }
-
-                     for (int $$7 = 0; $$7 < this.c.e(); $$7++) {
-                        eni $$8 = this.c.a($$7);
-                        io $$9 = new io($$8.a, $$8.b + 1, $$8.c);
-                        if (dgg.a(this.a.dP(), $$9)) {
-                           this.c = this.a.K().a((double)$$8.a, (double)$$8.b, (double)$$8.c, 0);
-                           break;
-                        }
-                     }
-
-                     return this.c != null;
-                  }
-               }
-            }
-         }
+         iz $$0 = this.c.dp();
+         return b.test(this.d.a_($$0)) ? true : this.d.a_($$0.d()).a(dew.i);
       }
-   }
-
-   @Override
-   public boolean b() {
-      return this.a.K().l() ? false : !this.d.a(this.a.dn(), (double)(this.a.dj() + (float)this.g));
    }
 
    @Override
    public void c() {
-      this.a.K().a(this.c, this.b);
+      this.e = this.a(40);
+      this.d.a(this.c, (byte)10);
+      this.c.K().n();
    }
 
    @Override
    public void d() {
-      if (this.a.K().l() || this.d.a(this.a.dn(), (double)this.g)) {
-         this.f.add(this.d);
-      }
+      this.e = 0;
    }
 
-   private boolean a(io $$0) {
-      for (io $$1 : this.f) {
-         if (Objects.equals($$0, $$1)) {
-            return false;
+   @Override
+   public boolean b() {
+      return this.e > 0;
+   }
+
+   public int h() {
+      return this.e;
+   }
+
+   @Override
+   public void e() {
+      this.e = Math.max(0, this.e - 1);
+      if (this.e == this.a(4)) {
+         iz $$0 = this.c.dp();
+         if (b.test(this.d.a_($$0))) {
+            if (this.d.ab().b(dbp.c)) {
+               this.d.b($$0, false);
+            }
+
+            this.c.O();
+         } else {
+            iz $$1 = $$0.d();
+            if (this.d.a_($$1).a(dew.i)) {
+               if (this.d.ab().b(dbp.c)) {
+                  this.d.c(2001, $$1, deu.i(dew.i.n()));
+                  this.d.a($$1, dew.j.n(), 2);
+               }
+
+               this.c.O();
+            }
          }
-      }
-
-      return true;
-   }
-
-   private void h() {
-      if (this.f.size() > 15) {
-         this.f.remove(0);
       }
    }
 }

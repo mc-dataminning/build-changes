@@ -1,36 +1,82 @@
-public class gfa implements gek<dpw> {
-   private final ghr a;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.List;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   public gfa(gel.a $$0) {
-      this.a = $$0.c();
+public class gfa {
+   private final gew a;
+   private final get b;
+
+   public gfa(gew $$0, get $$1) {
+      if ($$0 == null) {
+         throw new IllegalArgumentException("Missing condition for selector");
+      } else if ($$1 == null) {
+         throw new IllegalArgumentException("Missing variant for selector");
+      } else {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 
-   public void a(dpw $$0, float $$1, eyu $$2, gck $$3, int $$4, int $$5) {
-      daz $$6 = $$0.i();
-      if ($$6 != null) {
-         dab $$7 = $$0.c();
-         brw $$8 = $$7.b($$6, $$0.aA_());
-         if ($$8 != null) {
-            a($$1, $$2, $$3, $$4, $$8, this.a, $$7.b(), $$7.a());
+   public get a() {
+      return this.b;
+   }
+
+   public Predicate<drx> a(dry<deu, drx> $$0) {
+      return this.a.getPredicate($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0;
+   }
+
+   @Override
+   public int hashCode() {
+      return System.identityHashCode(this);
+   }
+
+   public static class a implements JsonDeserializer<gfa> {
+      public gfa a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         return new gfa(this.b($$3), (get)$$2.deserialize($$3.get("apply"), get.class));
+      }
+
+      private gew b(JsonObject $$0) {
+         return $$0.has("when") ? a(ayk.u($$0, "when")) : gew.b;
+      }
+
+      @VisibleForTesting
+      static gew a(JsonObject $$0) {
+         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
+         if ($$1.isEmpty()) {
+            throw new JsonParseException("No elements found in selector");
+         } else if ($$1.size() == 1) {
+            if ($$0.has("OR")) {
+               List<gew> $$2 = Streams.stream(ayk.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new gez($$2);
+            } else if ($$0.has("AND")) {
+               List<gew> $$3 = Streams.stream(ayk.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new gev($$3);
+            } else {
+               return a($$1.iterator().next());
+            }
+         } else {
+            return new gev($$1.stream().map(gfa.a::a).collect(Collectors.toList()));
          }
       }
-   }
 
-   public static void a(float $$0, eyu $$1, gck $$2, int $$3, brw $$4, ghr $$5, double $$6, double $$7) {
-      $$1.a();
-      $$1.a(0.5F, 0.0F, 0.5F);
-      float $$8 = 0.53125F;
-      float $$9 = Math.max($$4.dj(), $$4.dk());
-      if ((double)$$9 > 1.0) {
-         $$8 /= $$9;
+      private static gew a(Entry<String, JsonElement> $$0) {
+         return new gex($$0.getKey(), $$0.getValue().getAsString());
       }
-
-      $$1.a(0.0F, 0.4F, 0.0F);
-      $$1.a(a.d.rotationDegrees((float)ayf.d((double)$$0, $$6, $$7) * 10.0F));
-      $$1.a(0.0F, -0.2F, 0.0F);
-      $$1.a(a.b.rotationDegrees(-30.0F));
-      $$1.b($$8, $$8, $$8);
-      $$5.a($$4, 0.0, 0.0, 0.0, 0.0F, $$0, $$1, $$2, $$3);
-      $$1.b();
    }
 }

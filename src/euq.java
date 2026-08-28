@@ -1,20 +1,4 @@
-public interface euq {
-   euq a = ($$0, $$1) -> false;
-   euq b = ($$0, $$1) -> !$$0 && !$$1;
-   euq c = ($$0, $$1) -> $$1 && !$$0;
-   euq d = ($$0, $$1) -> !$$0;
-   euq e = ($$0, $$1) -> $$0 && !$$1;
-   euq f = ($$0, $$1) -> !$$1;
-   euq g = ($$0, $$1) -> $$0 != $$1;
-   euq h = ($$0, $$1) -> !$$0 || !$$1;
-   euq i = ($$0, $$1) -> $$0 && $$1;
-   euq j = ($$0, $$1) -> $$0 == $$1;
-   euq k = ($$0, $$1) -> $$1;
-   euq l = ($$0, $$1) -> !$$0 || $$1;
-   euq m = ($$0, $$1) -> $$0;
-   euq n = ($$0, $$1) -> $$0 || !$$1;
-   euq o = ($$0, $$1) -> $$0 || $$1;
-   euq p = ($$0, $$1) -> true;
+import com.mojang.serialization.MapCodec;
 
-   boolean apply(boolean var1, boolean var2);
+public record euq(MapCodec<? extends eur> a) {
 }

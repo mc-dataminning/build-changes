@@ -1,112 +1,149 @@
-import com.mojang.authlib.GameProfile;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Supplier;
+import java.util.function.DoubleConsumer;
+import javax.annotation.Nullable;
 
-public class frj implements fre, frf {
-   private static final akn a = new akn("spectator/teleport_to_team");
-   private static final wx b = wx.c("spectatorMenu.team_teleport");
-   private static final wx c = wx.c("spectatorMenu.team_teleport.prompt");
-   private final List<frf> d;
+public class frj extends fgt {
+   private static final int a = 32;
+   private static final String b = "telemetry.event.required";
+   private static final String c = "telemetry.event.optional";
+   private static final String d = "telemetry.event.optional.disabled";
+   private static final xl e = xl.c("telemetry_info.property_title").a(n.t);
+   private final fgk f;
+   private frj.a m;
+   @Nullable
+   private DoubleConsumer n;
 
-   public frj() {
-      feb $$0 = feb.Q();
-      this.d = a($$0, $$0.r.L());
+   public frj(int $$0, int $$1, int $$2, int $$3, fgk $$4) {
+      super($$0, $$1, $$2, $$3, xl.i());
+      this.f = $$4;
+      this.m = this.c(ffa.Q().C());
    }
 
-   private static List<frf> a(feb $$0, evq $$1) {
-      return $$1.g().stream().flatMap($$1x -> frj.a.a($$0, $$1x).stream()).toList();
+   public void b(boolean $$0) {
+      this.m = this.c($$0);
+      this.a(this.c());
+   }
+
+   public void j() {
+      this.m = this.c(ffa.Q().C());
+      this.a(this.c());
+   }
+
+   private frj.a c(boolean $$0) {
+      frj.b $$1 = new frj.b(this.k());
+      List<gtz> $$2 = new ArrayList<>(gtz.g());
+      $$2.sort(Comparator.comparing(gtz::d));
+
+      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+         gtz $$4 = $$2.get($$3);
+         boolean $$5 = $$4.d() && !$$0;
+         this.a($$1, $$4, $$5);
+         if ($$3 < $$2.size() - 1) {
+            $$1.a(9);
+         }
+      }
+
+      return $$1.a();
+   }
+
+   public void a(@Nullable DoubleConsumer $$0) {
+      this.n = $$0;
    }
 
    @Override
-   public List<frf> a() {
-      return this.d;
+   protected void a(double $$0) {
+      super.a($$0);
+      if (this.n != null) {
+         this.n.accept(this.c());
+      }
    }
 
    @Override
-   public wx b() {
-      return c;
+   protected int h() {
+      return this.m.a().v();
    }
 
    @Override
-   public void a(frd $$0) {
-      $$0.a(this);
+   protected double i() {
+      return 9.0;
    }
 
    @Override
-   public wx aO_() {
-      return b;
+   protected void c(fgm $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.D() + this.a();
+      int $$5 = this.C() + this.a();
+      $$0.c().a();
+      $$0.c().a((double)$$5, (double)$$4, 0.0);
+      this.m.a().a($$4x -> $$4x.a($$0, $$1, $$2, $$3));
+      $$0.c().b();
    }
 
    @Override
-   public void a(ffn $$0, float $$1, int $$2) {
-      $$0.a(a, 0, 0, 16, 16);
+   protected void a(fkv $$0) {
+      $$0.a(fku.a, this.m.b());
    }
 
-   @Override
-   public boolean aP_() {
-      return !this.d.isEmpty();
+   private xl a(xl $$0, boolean $$1) {
+      return (xl)($$1 ? $$0.f().a(n.h) : $$0);
    }
 
-   static class a implements frf {
-      private final evl a;
-      private final Supplier<gov> b;
-      private final List<fxc> c;
+   private void a(frj.b $$0, gtz $$1, boolean $$2) {
+      String $$3 = $$1.d() ? ($$2 ? "telemetry.event.optional.disabled" : "telemetry.event.optional") : "telemetry.event.required";
+      $$0.b(this.f, this.a(xl.a($$3, $$1.e()), $$2));
+      $$0.b(this.f, $$1.f().a(n.h));
+      $$0.a(9 / 2);
+      $$0.a(this.f, this.a(e, $$2), 2);
+      this.a($$1, $$0, $$2);
+   }
 
-      private a(evl $$0, List<fxc> $$1, Supplier<gov> $$2) {
+   private void a(gtz $$0, frj.b $$1, boolean $$2) {
+      for (gub<?> $$3 : $$0.b()) {
+         $$1.a(this.f, this.a($$3.a(), $$2));
+      }
+   }
+
+   private int k() {
+      return this.g - this.b();
+   }
+
+   static record a(fkn a, xl b) {
+   }
+
+   static class b {
+      private final int a;
+      private final fkq b;
+      private final xz c = xl.i();
+
+      public b(int $$0) {
          this.a = $$0;
-         this.c = $$1;
-         this.b = $$2;
+         this.b = fkq.d();
+         this.b.c().a();
+         this.b.a(fkr.a($$0));
       }
 
-      public static Optional<frf> a(feb $$0, evl $$1) {
-         List<fxc> $$2 = new ArrayList<>();
-
-         for (String $$3 : $$1.g()) {
-            fxc $$4 = $$0.L().a($$3);
-            if ($$4 != null && $$4.e() != daw.d) {
-               $$2.add($$4);
-            }
-         }
-
-         if ($$2.isEmpty()) {
-            return Optional.empty();
-         } else {
-            GameProfile $$5 = $$2.get(aym.a().a($$2.size())).a();
-            Supplier<gov> $$6 = $$0.am().a($$5);
-            return Optional.of(new frj.a($$1, $$2, $$6));
-         }
+      public void a(fgk $$0, xl $$1) {
+         this.a($$0, $$1, 0);
       }
 
-      @Override
-      public void a(frd $$0) {
-         $$0.a(new fri(this.c));
+      public void a(fgk $$0, xl $$1, int $$2) {
+         this.b.a(new fht($$1, $$0).d(this.a), $$1x -> $$1x.e($$2));
+         this.c.b($$1).f("\n");
       }
 
-      @Override
-      public wx aO_() {
-         return this.a.c();
+      public void b(fgk $$0, xl $$1) {
+         this.b.a(new fht($$1, $$0).d(this.a - 64).b(true), $$0x -> $$0x.b().f(32));
+         this.c.b($$1).f("\n");
       }
 
-      @Override
-      public void a(ffn $$0, float $$1, int $$2) {
-         Integer $$3 = this.a.n().f();
-         if ($$3 != null) {
-            float $$4 = (float)($$3 >> 16 & 0xFF) / 255.0F;
-            float $$5 = (float)($$3 >> 8 & 0xFF) / 255.0F;
-            float $$6 = (float)($$3 & 0xFF) / 255.0F;
-            $$0.a(1, 1, 15, 15, ayf.f($$4 * $$1, $$5 * $$1, $$6 * $$1) | $$2 << 24);
-         }
-
-         $$0.a($$1, $$1, $$1, (float)$$2 / 255.0F);
-         fgz.a($$0, this.b.get(), 2, 2, 12);
-         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      public void a(int $$0) {
+         this.b.a(fkr.b($$0));
       }
 
-      @Override
-      public boolean aP_() {
-         return true;
+      public frj.a a() {
+         this.b.a();
+         return new frj.a(this.b, this.c);
       }
    }
 }

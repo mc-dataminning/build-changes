@@ -1,18 +1,29 @@
-public class csf extends cvg {
-   protected csf(cvf $$0, awm<dea> $$1, ctl.a $$2) {
-      super($$0, $$2.a(kb.w, $$0.a($$1)));
+import java.util.List;
+import org.apache.commons.lang3.Validate;
+
+public class csf extends cvv {
+   public csf(deu $$0, deu $$1, cuf.a $$2) {
+      super($$0, $$1, $$2, je.a);
+      Validate.isInstanceOf(ddl.class, $$0);
+      Validate.isInstanceOf(ddl.class, $$1);
    }
 
-   public static cwl a(cvf $$0, float $$1, float $$2) {
-      return cwl.a()
-         .a(bty.c, new btw(e, "Tool modifier", (double)($$1 + $$0.c()), btw.a.a), bse.b)
-         .a(bty.e, new btw(f, "Tool modifier", (double)$$2, btw.a.a), bse.b)
-         .a();
+   public static void a(cuk $$0, List<xl> $$1) {
+      dot $$2 = $$0.a(km.W);
+      if ($$2 != null) {
+         for (int $$3 = 0; $$3 < Math.min($$2.b().size(), 6); $$3++) {
+            dot.b $$4 = $$2.b().get($$3);
+            $$1.add($$4.a().a(n.h));
+         }
+      }
+   }
+
+   public ctd b() {
+      return ((ddl)this.d()).b();
    }
 
    @Override
-   public boolean a(ctq $$0, bsq $$1, bsq $$2) {
-      $$0.a(2, $$2, bsd.a);
-      return true;
+   public void a(cuk $$0, cuf.b $$1, List<xl> $$2, cwd $$3) {
+      a($$0, $$2);
    }
 }

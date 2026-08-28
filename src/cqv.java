@@ -1,3 +1,7 @@
+import javax.annotation.Nullable;
+
+@FunctionalInterface
 public interface cqv {
-   void a(cmc var1);
+   @Nullable
+   cpp createMenu(int var1, cmr var2, cms var3);
 }

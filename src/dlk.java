@@ -1,36 +1,52 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-public class dlk extends dea {
-   public static final MapCodec<dlk> b = b(dlk::new);
-   public static final dru c = drt.z;
+public interface dlk {
+   dlk s_ = new dlk() {
+      @Override
+      public boolean a(dbu $$0, iz $$1, drx $$2, @Nullable Collection<je> $$3, boolean $$4) {
+         if ($$3 == null) {
+            return ((dlq)dew.qT).m().a($$0.a_($$1), $$0, $$1, $$4) > 0L;
+         } else if (!$$3.isEmpty()) {
+            return !$$2.i() && !$$2.u().b(enr.c) ? false : dlq.a($$0, $$1, $$2, $$3);
+         } else {
+            return dlk.super.a($$0, $$1, $$2, $$3, $$4);
+         }
+      }
 
-   @Override
-   protected MapCodec<? extends dlk> a() {
-      return b;
+      @Override
+      public int a(dlp.a $$0, dbu $$1, iz $$2, azc $$3, dlp $$4, boolean $$5) {
+         return $$0.c() > 0 ? $$0.b() : 0;
+      }
+
+      @Override
+      public int i_(int $$0) {
+         return Math.max($$0 - 1, 0);
+      }
+   };
+
+   default byte b() {
+      return 1;
    }
 
-   protected dlk(drc.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, Boolean.valueOf(false)));
+   default void a(dbu $$0, drx $$1, iz $$2, azc $$3) {
    }
 
-   @Override
-   protected drd a(drd $$0, it $$1, drd $$2, dba $$3, io $$4, io $$5) {
-      return $$1 == it.b ? $$0.a(c, Boolean.valueOf(m($$2))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   default boolean a(dbu $$0, iz $$1, azc $$2) {
+      return false;
    }
 
-   @Override
-   public drd a(cxb $$0) {
-      drd $$1 = $$0.q().a_($$0.a().c());
-      return this.n().a(c, Boolean.valueOf(m($$1)));
+   default boolean a(dbu $$0, iz $$1, drx $$2, @Nullable Collection<je> $$3, boolean $$4) {
+      return ((dju)dew.qT).c().a($$2, $$0, $$1, $$4) > 0L;
    }
 
-   private static boolean m(drd $$0) {
-      return $$0.a(avx.bz);
+   default boolean d() {
+      return true;
    }
 
-   @Override
-   protected void a(dre.a<dea, drd> $$0) {
-      $$0.a(c);
+   default int i_(int $$0) {
+      return 1;
    }
+
+   int a(dlp.a var1, dbu var2, iz var3, azc var4, dlp var5, boolean var6);
 }

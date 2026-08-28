@@ -1,41 +1,56 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class dt extends df<dt.a> {
+public class dt extends dr<dt.a> {
    @Override
    public Codec<dt.a> a() {
       return dt.a.a;
    }
 
-   public void a(aqo $$0, ctq $$1) {
+   public void a(arc $$0, drx $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public static record a(Optional<bc> b, Optional<ch> c) implements df.a {
+   public static record a(Optional<bf> b, Optional<ji<deu>> c, Optional<dx> d) implements dr.a {
       public static final Codec<dt.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(br.b.optionalFieldOf("player").forGetter(dt.a::a), ch.a.optionalFieldOf("item").forGetter(dt.a::b)).apply($$0, dt.a::new)
-      );
+            $$0 -> $$0.group(
+                     bu.b.optionalFieldOf("player").forGetter(dt.a::a),
+                     lp.e.r().optionalFieldOf("block").forGetter(dt.a::b),
+                     dx.a.optionalFieldOf("state").forGetter(dt.a::c)
+                  )
+                  .apply($$0, dt.a::new)
+         )
+         .validate(dt.a::a);
 
-      public static an<dt.a> a(ch $$0) {
-         return am.C.a(new dt.a(Optional.empty(), Optional.of($$0)));
+      private static DataResult<dt.a> a(dt.a $$0) {
+         return $$0.c
+            .<DataResult<dt.a>>flatMap(
+               $$1 -> $$0.d.<String>flatMap($$1x -> $$1x.a(((deu)$$1.a()).l())).map($$1x -> DataResult.error(() -> "Block" + $$1 + " has no property " + $$1x))
+            )
+            .orElseGet(() -> DataResult.success($$0));
       }
 
-      public static an<dt.a> a(day $$0) {
-         return am.C.a(new dt.a(Optional.empty(), Optional.of(ch.a.a().a($$0).b())));
+      public static an<dt.a> a(deu $$0) {
+         return am.K.a(new dt.a(Optional.empty(), Optional.of($$0.q()), Optional.empty()));
       }
 
-      public boolean a(ctq $$0) {
-         return this.c.isEmpty() || this.c.get().a($$0);
+      public boolean a(drx $$0) {
+         return this.c.isPresent() && !$$0.a(this.c.get()) ? false : !this.d.isPresent() || this.d.get().a($$0);
       }
 
       @Override
-      public Optional<bc> a() {
+      public Optional<bf> a() {
          return this.b;
       }
 
-      public Optional<ch> b() {
+      public Optional<ji<deu>> b() {
          return this.c;
+      }
+
+      public Optional<dx> c() {
+         return this.d;
       }
    }
 }

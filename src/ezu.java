@@ -1,30 +1,93 @@
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import java.util.Date;
-import java.util.UUID;
-import org.slf4j.Logger;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
 
-public class ezu extends faq {
-   private static final Logger f = LogUtils.getLogger();
-   public String a;
-   public String b;
-   public String c;
-   public UUID d;
-   public Date e;
+public class ezu extends ezs {
+   private final ezx f;
+   private final Matrix4f g;
+   private final Matrix3f h;
+   private final float i;
+   private float j;
+   private float k;
+   private float l;
+   private int m;
+   private int n;
+   private int o;
+   private float p;
+   private float q;
+   private float r;
 
-   public static ezu a(JsonObject $$0) {
-      ezu $$1 = new ezu();
+   public ezu(ezx $$0, ezt.a $$1, float $$2) {
+      this.f = $$0;
+      this.g = new Matrix4f($$1.a()).invert();
+      this.h = new Matrix3f($$1.b()).invert();
+      this.i = $$2;
+      this.a();
+   }
 
-      try {
-         $$1.a = fcn.b("invitationId", $$0, "");
-         $$1.b = fcn.b("worldName", $$0, "");
-         $$1.c = fcn.b("worldOwnerName", $$0, "");
-         $$1.d = fcn.a("worldOwnerUuid", $$0, ac.e);
-         $$1.e = fcn.b("date", $$0);
-      } catch (Exception var3) {
-         f.error("Could not parse PendingInvite: {}", var3.getMessage());
-      }
+   private void a() {
+      this.j = 0.0F;
+      this.k = 0.0F;
+      this.l = 0.0F;
+      this.m = 0;
+      this.n = 10;
+      this.o = 15728880;
+      this.p = 0.0F;
+      this.q = 1.0F;
+      this.r = 0.0F;
+   }
 
-      return $$1;
+   @Override
+   public void e() {
+      Vector3f $$0 = this.h.transform(new Vector3f(this.p, this.q, this.r));
+      je $$1 = je.a($$0.x(), $$0.y(), $$0.z());
+      Vector4f $$2 = this.g.transform(new Vector4f(this.j, this.k, this.l, 1.0F));
+      $$2.rotateY((float) Math.PI);
+      $$2.rotateX((float) (-Math.PI / 2));
+      $$2.rotate($$1.b());
+      float $$3 = -$$2.x() * this.i;
+      float $$4 = -$$2.y() * this.i;
+      this.f.a((double)this.j, (double)this.k, (double)this.l).a(1.0F, 1.0F, 1.0F, 1.0F).a($$3, $$4).a(this.m, this.n).b(this.o).a(this.p, this.q, this.r).e();
+      this.a();
+   }
+
+   @Override
+   public ezx a(double $$0, double $$1, double $$2) {
+      this.j = (float)$$0;
+      this.k = (float)$$1;
+      this.l = (float)$$2;
+      return this;
+   }
+
+   @Override
+   public ezx a(int $$0, int $$1, int $$2, int $$3) {
+      return this;
+   }
+
+   @Override
+   public ezx a(float $$0, float $$1) {
+      return this;
+   }
+
+   @Override
+   public ezx a(int $$0, int $$1) {
+      this.m = $$0;
+      this.n = $$1;
+      return this;
+   }
+
+   @Override
+   public ezx b(int $$0, int $$1) {
+      this.o = $$0 | $$1 << 16;
+      return this;
+   }
+
+   @Override
+   public ezx a(float $$0, float $$1, float $$2) {
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      return this;
    }
 }

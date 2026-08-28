@@ -1,33 +1,41 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
 
-public class djm extends dnb {
-   public static final MapCodec<djm> b = b(djm::new);
-   private static final Map<it, evf> e = Maps.immutableEnumMap(
-      Map.of(
-         it.c,
-         dea.a(3.0, 4.0, 8.0, 13.0, 12.0, 16.0),
-         it.d,
-         dea.a(3.0, 4.0, 0.0, 13.0, 12.0, 8.0),
-         it.f,
-         dea.a(0.0, 4.0, 3.0, 8.0, 12.0, 13.0),
-         it.e,
-         dea.a(8.0, 4.0, 3.0, 16.0, 12.0, 13.0)
-      )
-   );
+public class djm extends diq {
+   public static final MapCodec<djm> a = b(djm::new);
+   private static final xl b = xl.c("container.loom");
 
    @Override
    public MapCodec<djm> a() {
-      return b;
+      return a;
    }
 
-   public djm(drc.d $$0) {
-      super(dlc.b.h, $$0);
+   protected djm(drw.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected evf a(drd $$0, daf $$1, io $$2, eur $$3) {
-      return e.get($$0.c(d));
+   protected bqp a(drx $$0, dbt $$1, iz $$2, cms $$3, evi $$4) {
+      if ($$1.B) {
+         return bqp.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(awg.ax);
+         return bqp.c;
+      }
+   }
+
+   @Override
+   protected bqt b(drx $$0, dbt $$1, iz $$2) {
+      return new bqz(($$2x, $$3, $$4) -> new cqu($$2x, $$3, cqa.a($$1, $$2)), b);
+   }
+
+   @Override
+   public drx a(cxv $$0) {
+      return this.n().a(aE, $$0.g().g());
+   }
+
+   @Override
+   protected void a(dry.a<deu, drx> $$0) {
+      $$0.a(aE);
    }
 }

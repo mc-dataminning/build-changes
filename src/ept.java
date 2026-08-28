@@ -1,70 +1,54 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
 
-public class ept extends epq {
-   public static final MapCodec<ept> a = a(ept::new);
+public class ept {
+   private final int a;
+   private final long b;
+   private final String c;
+   private final epj d;
+   private final boolean e;
 
-   ept(List<epx> $$0, List<esn> $$1) {
-      super($$0, $$1);
+   private ept(int $$0, long $$1, String $$2, int $$3, String $$4, boolean $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = new epj($$3, $$4);
+      this.e = $$5;
    }
 
-   @Override
-   public epy a() {
-      return epv.i;
+   public static ept a(Dynamic<?> $$0) {
+      int $$1 = $$0.get("version").asInt(0);
+      long $$2 = $$0.get("LastPlayed").asLong(0L);
+      OptionalDynamic<?> $$3 = $$0.get("Version");
+      return $$3.result().isPresent()
+         ? new ept(
+            $$1,
+            $$2,
+            $$3.get("Name").asString(aa.b().c()),
+            $$3.get("Id").asInt(aa.b().d().c()),
+            $$3.get("Series").asString(epj.a),
+            $$3.get("Snapshot").asBoolean(!aa.b().g())
+         )
+         : new ept($$1, $$2, "", 0, epj.a, false);
    }
 
-   @Override
-   protected epp a(List<? extends epp> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (epp)$$0.get(0);
-         case 2 -> {
-            epp $$1 = $$0.get(0);
-            epp $$2 = $$0.get(1);
-            yield ($$2x, $$3) -> {
-               $$1.expand($$2x, $$3);
-               $$2.expand($$2x, $$3);
-               return true;
-            };
-         }
-         default -> ($$1x, $$2x) -> {
-         for (epp $$3 : $$0) {
-            $$3.expand($$1x, $$2x);
-         }
-
-         return true;
-      };
-      };
+   public int a() {
+      return this.a;
    }
 
-   public static ept.a a(epx.a<?>... $$0) {
-      return new ept.a($$0);
+   public long b() {
+      return this.b;
    }
 
-   public static class a extends epx.a<ept.a> {
-      private final Builder<epx> a = ImmutableList.builder();
+   public String c() {
+      return this.c;
+   }
 
-      public a(epx.a<?>... $$0) {
-         for (epx.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
+   public epj d() {
+      return this.d;
+   }
 
-      protected ept.a a() {
-         return this;
-      }
-
-      @Override
-      public ept.a b(epx.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public epx b() {
-         return new ept(this.a.build(), this.f());
-      }
+   public boolean e() {
+      return this.e;
    }
 }

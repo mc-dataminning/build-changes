@@ -1,15 +1,28 @@
-public enum dst {
-   a(4259712),
-   b(16724016),
-   c(2138367);
+public enum dst implements azp {
+   a(je.a),
+   b(je.b);
 
-   private final int d;
+   private final je c;
 
-   private dst(int $$0) {
-      this.d = $$0;
+   private dst(final je $$0) {
+      this.c = $$0;
    }
 
-   public int a() {
-      return this.d;
+   public je a() {
+      return this.c;
+   }
+
+   @Override
+   public String toString() {
+      return this.c();
+   }
+
+   @Override
+   public String c() {
+      return this == a ? "upper" : "lower";
+   }
+
+   public dst b() {
+      return this == a ? b : a;
    }
 }

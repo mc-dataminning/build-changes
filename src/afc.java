@@ -1,44 +1,29 @@
-import java.util.List;
-
-public class afc implements ze<abq> {
-   public static final yv<vx, afc> a = ze.a(afc::a, afc::new);
+public class afc implements zs<ace> {
+   public static final zj<wl, afc> a = zs.a(afc::a, afc::new);
    private final int b;
-   private final int[] c;
 
-   public afc(brw $$0) {
-      this.b = $$0.al();
-      List<brw> $$1 = $$0.cS();
-      this.c = new int[$$1.size()];
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.c[$$2] = $$1.get($$2).al();
-      }
+   public afc(dto $$0) {
+      this.b = $$0.r();
    }
 
-   private afc(vx $$0) {
+   private afc(wl $$0) {
       this.b = $$0.l();
-      this.c = $$0.c();
    }
 
-   private void a(vx $$0) {
+   private void a(wl $$0) {
       $$0.c(this.b);
-      $$0.a(this.c);
    }
 
    @Override
-   public zg<afc> a() {
-      return agc.aJ;
+   public zu<afc> a() {
+      return agq.av;
    }
 
-   public void a(abq $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public int[] b() {
-      return this.c;
-   }
-
-   public int e() {
+   public int b() {
       return this.b;
    }
 }

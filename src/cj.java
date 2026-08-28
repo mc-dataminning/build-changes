@@ -1,17 +1,30 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cj {
-   public static final ci.a<cd> a = a("damage", cd.a);
-   public static final ci.a<cf.a> b = a("enchantments", cf.a.a);
-   public static final ci.a<cf.b> c = a("stored_enchantments", cf.b.a);
-   public static final ci.a<cg> d = a("potion_contents", cg.a);
-   public static final ci.a<cc> e = a("custom_data", cc.a);
+public record cj(de.d c, de.d d) implements ds<Integer> {
+   public static final Codec<cj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(de.d.d.optionalFieldOf("durability", de.d.c).forGetter(cj::b), de.d.d.optionalFieldOf("damage", de.d.c).forGetter(cj::c))
+            .apply($$0, cj::new)
+   );
 
-   private static <T extends ci> ci.a<T> a(String $$0, Codec<T> $$1) {
-      return jk.a(le.au, $$0, new ci.a<>($$1));
+   @Override
+   public kl<Integer> a() {
+      return km.d;
    }
 
-   public static ci.a<?> a(jk<ci.a<?>> $$0) {
-      return a;
+   public boolean a(cuk $$0, Integer $$1) {
+      return !this.c.d($$0.o() - $$1) ? false : this.d.d($$1);
+   }
+
+   public static cj a(de.d $$0) {
+      return new cj($$0, de.d.c);
+   }
+
+   public de.d b() {
+      return this.c;
+   }
+
+   public de.d c() {
+      return this.d;
    }
 }

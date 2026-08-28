@@ -1,110 +1,51 @@
-import com.google.common.base.MoreObjects;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import java.util.Collection;
-import java.util.Optional;
-import java.util.stream.Stream;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public abstract class dsg<T extends Comparable<T>> {
-   private final Class<T> a;
-   private final String b;
-   @Nullable
-   private Integer c;
-   private final Codec<T> d = Codec.STRING
-      .comapFlatMap(
-         $$0x -> this.b($$0x)
-               .<DataResult>map(DataResult::success)
-               .orElseGet(() -> DataResult.error(() -> "Unable to read property: " + this + " with value: " + $$0x)),
-         this::a
-      );
-   private final Codec<dsg.a<T>> e = this.d.xmap(this::b, dsg.a::b);
+public class dsg implements Predicate<drx> {
+   public static final Predicate<drx> a = $$0 -> true;
+   private final dry<deu, drx> b;
+   private final Map<dta<?>, Predicate<Object>> c = Maps.newHashMap();
 
-   protected dsg(String $$0, Class<T> $$1) {
-      this.a = $$1;
+   private dsg(dry<deu, drx> $$0) {
       this.b = $$0;
    }
 
-   public dsg.a<T> b(T $$0) {
-      return new dsg.a<>(this, $$0);
+   public static dsg a(deu $$0) {
+      return new dsg($$0.l());
    }
 
-   public dsg.a<T> a(drf<?, ?> $$0) {
-      return new dsg.a<>(this, $$0.c(this));
-   }
-
-   public Stream<dsg.a<T>> c() {
-      return this.a().stream().map(this::b);
-   }
-
-   public Codec<T> d() {
-      return this.d;
-   }
-
-   public Codec<dsg.a<T>> e() {
-      return this.e;
-   }
-
-   public String f() {
-      return this.b;
-   }
-
-   public Class<T> g() {
-      return this.a;
-   }
-
-   public abstract Collection<T> a();
-
-   public abstract String a(T var1);
-
-   public abstract Optional<T> b(String var1);
-
-   @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this).add("name", this.b).add("clazz", this.a).add("values", this.a()).toString();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof dsg<?> $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
-      }
-   }
-
-   @Override
-   public final int hashCode() {
-      if (this.c == null) {
-         this.c = this.b();
-      }
-
-      return this.c;
-   }
-
-   public int b() {
-      return 31 * this.a.hashCode() + this.b.hashCode();
-   }
-
-   public <U, S extends drf<?, S>> DataResult<S> a(DynamicOps<U> $$0, S $$1, U $$2) {
-      DataResult<T> $$3 = this.d.parse($$0, $$2);
-      return $$3.map($$1x -> $$1.a(this, $$1x)).setPartial($$1);
-   }
-
-   public static record a<T extends Comparable<T>>(dsg<T> a, T b) {
-      public a(dsg<T> a, T b) {
-         if (!a.a().contains(b)) {
-            throw new IllegalArgumentException("Value " + b + " does not belong to property " + a);
+   public boolean a(@Nullable drx $$0) {
+      if ($$0 != null && $$0.b().equals(this.b.c())) {
+         if (this.c.isEmpty()) {
+            return true;
          } else {
-            this.a = a;
-            this.b = b;
-         }
-      }
+            for (Entry<dta<?>, Predicate<Object>> $$1 : this.c.entrySet()) {
+               if (!this.a($$0, $$1.getKey(), $$1.getValue())) {
+                  return false;
+               }
+            }
 
-      @Override
-      public String toString() {
-         return this.a.f() + "=" + this.a.a(this.b);
+            return true;
+         }
+      } else {
+         return false;
+      }
+   }
+
+   protected <T extends Comparable<T>> boolean a(drx $$0, dta<T> $$1, Predicate<Object> $$2) {
+      T $$3 = $$0.c($$1);
+      return $$2.test($$3);
+   }
+
+   public <V extends Comparable<V>> dsg a(dta<V> $$0, Predicate<Object> $$1) {
+      if (!this.b.d().contains($$0)) {
+         throw new IllegalArgumentException(this.b + " cannot support property " + $$0);
+      } else {
+         this.c.put($$0, $$1);
+         return this;
       }
    }
 }

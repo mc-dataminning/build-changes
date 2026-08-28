@@ -1,10 +1,23 @@
-import java.util.stream.Stream;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class egr extends egs {
-   @Override
-   public final Stream<io> a_(egq $$0, aym $$1, io $$2) {
-      return this.a($$0, $$1, $$2) ? Stream.of($$2) : Stream.of();
+public class egr extends egm {
+   public static final MapCodec<egr> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(boz.b(egm.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, egr::new)
+   );
+   private final boz<egm> b;
+
+   public egr(boz<egm> $$0) {
+      this.b = $$0;
    }
 
-   protected abstract boolean a(egq var1, aym var2, io var3);
+   @Override
+   public int a(azc $$0, dym $$1) {
+      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0, $$1);
+   }
+
+   @Override
+   public egn<?> a() {
+      return egn.f;
+   }
 }

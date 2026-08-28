@@ -1,60 +1,88 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Map;
+import java.util.Set;
 
-public abstract class ese implements esn {
-   protected final List<esn> c;
-   private final Predicate<eph> a;
+public class ese extends erp {
+   public static final MapCodec<ese> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  Codec.unboundedMap(lp.f.r(), euj.a).optionalFieldOf("enchantments", Map.of()).forGetter($$0x -> $$0x.b),
+                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
+               )
+            )
+            .apply($$0, ese::new)
+   );
+   private final Map<ji<czv>, eui> b;
+   private final boolean c;
 
-   protected ese(List<esn> $$0, Predicate<eph> $$1) {
-      this.c = $$0;
-      this.a = $$1;
-   }
-
-   protected static <T extends ese> MapCodec<T> a(Function<List<esn>, T> $$0) {
-      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(esp.a.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
-   }
-
-   protected static <T extends ese> Codec<T> b(Function<List<esn>, T> $$0) {
-      return esp.a.listOf().xmap($$0, $$0x -> $$0x.c);
-   }
-
-   public final boolean a(eph $$0) {
-      return this.a.test($$0);
+   ese(List<etn> $$0, Map<ji<czv>, eui> $$1, boolean $$2) {
+      super($$0);
+      this.b = Map.copyOf($$1);
+      this.c = $$2;
    }
 
    @Override
-   public void a(epn $$0) {
-      esn.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
-      }
+   public err<ese> b() {
+      return ers.i;
    }
 
-   public abstract static class a implements esn.a {
-      private final Builder<esn> a = ImmutableList.builder();
+   @Override
+   public Set<esw<?>> a() {
+      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
+   }
 
-      protected a(esn.a... $$0) {
-         for (esn.a $$1 : $$0) {
-            this.a.add($$1.build());
-         }
+   @Override
+   public cuk a(cuk $$0, eqd $$1) {
+      Object2IntMap<czv> $$2 = new Object2IntOpenHashMap();
+      this.b.forEach(($$2x, $$3) -> $$2.put((czv)$$2x.a(), ayu.a($$3.a($$1), 0, 255)));
+      if ($$0.a(cun.qP)) {
+         $$0 = $$0.a(cun.uw, $$0.I());
+         $$0.b(km.x, $$0.c(km.j));
       }
 
-      public void a(esn.a $$0) {
-         this.a.add($$0.build());
+      czw.a($$0, $$1x -> {
+         if (this.c) {
+            $$2.forEach(($$1xx, $$2x) -> $$1x.a($$1xx, $$1x.a($$1xx) + $$2x));
+         } else {
+            $$2.forEach($$1x::a);
+         }
+      });
+      return $$0;
+   }
+
+   public static class a extends erp.a<ese.a> {
+      private final Builder<ji<czv>, eui> a = ImmutableMap.builder();
+      private final boolean b;
+
+      public a() {
+         this(false);
+      }
+
+      public a(boolean $$0) {
+         this.b = $$0;
+      }
+
+      protected ese.a a() {
+         return this;
+      }
+
+      public ese.a a(czv $$0, eui $$1) {
+         this.a.put($$0.m(), $$1);
+         return this;
       }
 
       @Override
-      public esn build() {
-         return this.a(this.a.build());
+      public erq b() {
+         return new ese(this.g(), this.a.build(), this.b);
       }
-
-      protected abstract esn a(List<esn> var1);
    }
 }

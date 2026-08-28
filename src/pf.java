@@ -1,13 +1,21 @@
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class pf extends pr<cek> {
-   public pf(ln $$0, CompletableFuture<iz.a> $$1) {
-      super($$0, lf.l, $$1);
-   }
+public class pf {
+   public static CompletableFuture<jy.g> a(CompletableFuture<jk.a> $$0, jy $$1) {
+      return $$0.thenApply($$1x -> {
+         jw.b $$2 = jw.a(lp.aw);
+         ja.a $$3 = new ja.a();
+         akw.a.forEach($$1xx -> $$1xx.a($$3::a));
+         jy.g $$4 = $$1.a($$2, $$1x, $$3);
+         jk.a $$5 = $$4.a();
+         Optional<jk.b<dcs>> $$6 = $$5.a(lq.az);
+         Optional<jk.b<ehj>> $$7 = $$5.a(lq.aI);
+         if ($$6.isPresent() || $$7.isPresent()) {
+            ph.a($$7.orElseGet(() -> $$1x.b(lq.aI)), $$6.orElseGet(() -> $$1x.b(lq.az)));
+         }
 
-   @Override
-   protected void a(iz.a $$0) {
-      this.b(avy.a).a(cek.a, cek.b, cek.c, cek.d, cek.e, cek.f, cek.g, cek.h, cek.i, cek.j);
-      this.b(avy.b).b(avy.a).a(cek.k);
+         return $$4;
+      });
    }
 }

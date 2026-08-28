@@ -1,30 +1,87 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.authlib.GameProfile;
 
-public class gcm {
-   public static final akn a = new akn("textures/gui/title/background/panorama_overlay.png");
-   private final feb b;
-   private final gby c;
-   private float d;
-   private float e;
+public class gcm extends gci {
+   private evm g = evm.b;
+   private int cz;
 
-   public gcm(gby $$0) {
-      this.c = $$0;
-      this.b = feb.Q();
+   public gcm(fxq $$0, GameProfile $$1) {
+      super($$0, $$1);
+      this.ag = true;
    }
 
-   public void a(ffn $$0, int $$1, int $$2, float $$3, float $$4) {
-      float $$5 = (float)((double)$$4 * this.b.m.s().c());
-      this.d = a(this.d + $$5 * 0.1F, 360.0F);
-      this.e = a(this.e + $$5 * 0.001F, (float) (Math.PI * 2));
-      this.c.a(this.b, 10.0F, -this.d, $$3);
-      RenderSystem.enableBlend();
-      $$0.a(1.0F, 1.0F, 1.0F, $$3);
-      $$0.a(a, 0, 0, $$1, $$2, 0.0F, 0.0F, 16, 128, 16, 128);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.disableBlend();
+   @Override
+   public boolean a(double $$0) {
+      double $$1 = this.cK().a() * 10.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 1.0;
+      }
+
+      $$1 *= 64.0 * cD();
+      return $$0 < $$1 * $$1;
    }
 
-   private static float a(float $$0, float $$1) {
-      return $$0 > $$1 ? $$0 - $$1 : $$0;
+   @Override
+   public boolean a(bri $$0, float $$1) {
+      return true;
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      this.r(false);
+   }
+
+   @Override
+   public void n_() {
+      if (this.br > 0) {
+         this.a(this.br, this.bs, this.bt, this.bu, this.bv, this.bw);
+         this.br--;
+      }
+
+      if (this.by > 0) {
+         this.a(this.by, this.bx);
+         this.by--;
+      }
+
+      if (this.cz > 0) {
+         this.i(new evm((this.g.c - this.ds().c) / (double)this.cz, (this.g.d - this.ds().d) / (double)this.cz, (this.g.e - this.ds().e) / (double)this.cz));
+         this.cz--;
+      }
+
+      this.ce = this.cf;
+      this.eV();
+      float $$1;
+      if (this.aE() && !this.eB()) {
+         $$1 = (float)Math.min(0.1, this.ds().h());
+      } else {
+         $$1 = 0.0F;
+      }
+
+      this.cf = this.cf + ($$1 - this.cf) * 0.4F;
+      this.dP().ag().a("push");
+      this.q();
+      this.dP().ag().c();
+   }
+
+   @Override
+   public void l(double $$0, double $$1, double $$2) {
+      this.g = new evm($$0, $$1, $$2);
+      this.cz = this.ak().p() + 1;
+   }
+
+   @Override
+   protected void fV() {
+   }
+
+   @Override
+   public void a(xl $$0) {
+      ffa $$1 = ffa.Q();
+      $$1.l.d().a($$0);
+   }
+
+   @Override
+   public void a(acf $$0) {
+      super.a($$0);
+      this.bu();
    }
 }

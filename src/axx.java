@@ -1,65 +1,43 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReferenceArray;
 
-public record axx<T extends Comparable<T>>(T b, T c) {
-   public static final Codec<axx<Integer>> a = a(Codec.INT);
+public class axx<T> {
+   private final AtomicReferenceArray<T> a;
+   private final AtomicInteger b;
 
-   public axx(T b, T c) {
-      if (b.compareTo(c) > 0) {
-         throw new IllegalArgumentException("min_inclusive must be less than or equal to max_inclusive");
-      } else {
-         this.b = b;
-         this.c = c;
+   public axx(int $$0) {
+      this.a = new AtomicReferenceArray<>($$0);
+      this.b = new AtomicInteger(0);
+   }
+
+   public void a(T $$0) {
+      int $$1 = this.a.length();
+
+      int $$2;
+      int $$3;
+      do {
+         $$2 = this.b.get();
+         $$3 = ($$2 + 1) % $$1;
+      } while (!this.b.compareAndSet($$2, $$3));
+
+      this.a.set($$3, $$0);
+   }
+
+   public List<T> a() {
+      int $$0 = this.b.get();
+      Builder<T> $$1 = ImmutableList.builder();
+
+      for (int $$2 = 0; $$2 < this.a.length(); $$2++) {
+         int $$3 = Math.floorMod($$0 - $$2, this.a.length());
+         T $$4 = this.a.get($$3);
+         if ($$4 != null) {
+            $$1.add($$4);
+         }
       }
-   }
 
-   public axx(T $$0) {
-      this($$0, $$0);
-   }
-
-   public static <T extends Comparable<T>> Codec<axx<T>> a(Codec<T> $$0) {
-      return axn.a($$0, "min_inclusive", "max_inclusive", axx::a, axx::a, axx::b);
-   }
-
-   public static <T extends Comparable<T>> Codec<axx<T>> a(Codec<T> $$0, T $$1, T $$2) {
-      return a($$0)
-         .validate(
-            $$2x -> {
-               if ($$2x.a().compareTo($$1) < 0) {
-                  return DataResult.error(() -> "Range limit too low, expected at least " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
-               } else {
-                  return $$2x.b().compareTo($$2) > 0
-                     ? DataResult.error(() -> "Range limit too high, expected at most " + $$2 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
-                     : DataResult.success($$2x);
-               }
-            }
-         );
-   }
-
-   public static <T extends Comparable<T>> DataResult<axx<T>> a(T $$0, T $$1) {
-      return $$0.compareTo($$1) <= 0
-         ? DataResult.success(new axx($$0, $$1))
-         : DataResult.error(() -> "min_inclusive must be less than or equal to max_inclusive");
-   }
-
-   public boolean a(T $$0) {
-      return $$0.compareTo(this.b) >= 0 && $$0.compareTo(this.c) <= 0;
-   }
-
-   public boolean a(axx<T> $$0) {
-      return $$0.a().compareTo(this.b) >= 0 && $$0.c.compareTo(this.c) <= 0;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.b + ", " + this.c + "]";
-   }
-
-   public T a() {
-      return this.b;
-   }
-
-   public T b() {
-      return this.c;
+      return $$1.build();
    }
 }

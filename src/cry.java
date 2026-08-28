@@ -1,44 +1,53 @@
-public class cry extends ctl {
-   public cry(ctl.a $$0) {
-      super($$0);
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
+
+public class cry extends crz {
+   private final alb j;
+   @Nullable
+   private final alb k;
+   private final cry.a l;
+
+   public cry(ji<csa> $$0, cry.a $$1, boolean $$2, cuf.a $$3) {
+      super($$0, crz.a.e, $$3);
+      this.l = $$1;
+      alb $$4 = $$1.c.apply($$0.e().orElseThrow().a());
+      this.j = $$4.e(".png");
+      if ($$2) {
+         this.k = $$4.e("_overlay.png");
+      } else {
+         this.k = null;
+      }
+   }
+
+   public alb b() {
+      return this.j;
+   }
+
+   @Nullable
+   public alb c() {
+      return this.k;
+   }
+
+   public cry.a d() {
+      return this.l;
    }
 
    @Override
-   public ctq a(ctq $$0, daz $$1, bsq $$2) {
-      ctq $$3 = super.a($$0, $$1, $$2);
-      if (!$$1.B) {
-         for (int $$4 = 0; $$4 < 16; $$4++) {
-            double $$5 = $$2.du() + ($$2.el().j() - 0.5) * 16.0;
-            double $$6 = ayf.a($$2.dw() + (double)($$2.el().a(16) - 8), (double)$$1.I_(), (double)($$1.I_() + ((aqn)$$1).k() - 1));
-            double $$7 = $$2.dA() + ($$2.el().j() - 0.5) * 16.0;
-            if ($$2.bR()) {
-               $$2.ac();
-            }
+   public avv e() {
+      return this.l.d;
+   }
 
-            eum $$8 = $$2.dn();
-            if ($$2.b($$5, $$6, $$7, true)) {
-               $$1.a(dvw.R, $$8, dvw.a.a($$2));
-               avj $$10;
-               avh $$9;
-               if ($$2 instanceof ceq) {
-                  $$9 = avi.jp;
-                  $$10 = avj.g;
-               } else {
-                  $$9 = avi.fh;
-                  $$10 = avj.h;
-               }
+   public static enum a {
+      a($$0 -> $$0.a((UnaryOperator<String>)($$0x -> "textures/entity/horse/armor/horse_armor_" + $$0x)), avw.nB),
+      b($$0 -> $$0.c("textures/entity/wolf/wolf_armor"), avw.CE);
 
-               $$1.a(null, $$2.du(), $$2.dw(), $$2.dA(), $$9, $$10);
-               $$2.n();
-               break;
-            }
-         }
+      final Function<alb, alb> c;
+      final avv d;
 
-         if ($$2 instanceof cly $$13) {
-            $$13.gx().a(this, 20);
-         }
+      private a(final Function<alb, alb> $$0, final avv $$1) {
+         this.c = $$0;
+         this.d = $$1;
       }
-
-      return $$3;
    }
 }

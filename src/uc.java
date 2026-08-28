@@ -1,15 +1,36 @@
-import java.util.AbstractList;
+import java.util.Optional;
 
-public abstract class uc<T extends va> extends AbstractList<T> implements va {
-   public abstract T d(int var1, T var2);
+public class uc implements tq.c {
+   private static final int c = 5;
+   private static final int d = 6;
+   private final int e;
+   private int f;
+   private evh g;
+   private final iz.a h;
+   private final iz i;
 
-   public abstract void c(int var1, T var2);
+   public uc(iz $$0, int $$1) {
+      this.e = $$1;
+      this.h = $$0.j();
+      this.g = new evh(this.h);
+      this.i = $$0;
+   }
 
-   public abstract T c(int var1);
+   @Override
+   public Optional<tn> spawnStructure(tn $$0) {
+      iz $$1 = new iz(this.h);
+      $$0.b($$1);
+      $$0.n();
+      evh $$2 = ud.a($$0.e());
+      this.g = this.g.b($$2);
+      this.h.e((int)$$2.b() + 5, 0, 0);
+      if (++this.f >= this.e) {
+         this.f = 0;
+         this.h.e(0, 0, (int)this.g.d() + 6);
+         this.h.p(this.i.u());
+         this.g = new evh(this.h);
+      }
 
-   public abstract boolean a(int var1, va var2);
-
-   public abstract boolean b(int var1, va var2);
-
-   public abstract byte f();
+      return Optional.of($$0);
+   }
 }

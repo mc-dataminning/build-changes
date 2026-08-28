@@ -1,41 +1,45 @@
-import java.util.List;
+public class gmr extends gne<cfk, ftx<cfk>> {
+   private final gdf a;
 
-public class gmr<T extends clc, M extends fvi<T>> extends gmf<T, M> {
-   private final akn a;
-   private final gmr.a<T> b;
-   private final gmr.b<T, M> c;
-
-   public gmr(gjp<T, M> $$0, akn $$1, gmr.a<T> $$2, gmr.b<T, M> $$3) {
+   public gmr(gko<cfk, ftx<cfk>> $$0, gdf $$1) {
       super($$0);
       this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
    }
 
-   public void a(eyu $$0, gck $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.ch()) {
-         this.a();
-         eyy $$10 = $$1.getBuffer(gcs.j(this.a));
-         this.c().a($$0, $$10, $$2, giu.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, this.b.apply($$3, $$6, $$7));
-         this.b();
+   public void a(ezt $$0, gdj $$1, int $$2, cfk $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fL();
+      boolean $$11 = $$3.p_();
+      $$0.a();
+      if ($$11) {
+         float $$12 = 0.75F;
+         $$0.b(0.75F, 0.75F, 0.75F);
+         $$0.a(0.0F, 0.5F, 0.209375F);
       }
-   }
 
-   private void a() {
-      List<fvw> $$0 = this.c.getPartsToDraw(this.c());
-      this.c().a().e().forEach($$0x -> $$0x.l = true);
-      $$0.forEach($$0x -> $$0x.l = false);
-   }
+      $$0.a(this.c().a.b / 16.0F, this.c().a.c / 16.0F, this.c().a.d / 16.0F);
+      float $$13 = $$3.G($$6);
+      $$0.a(a.f.rotation($$13));
+      $$0.a(a.d.rotationDegrees($$8));
+      $$0.a(a.b.rotationDegrees($$9));
+      if ($$3.p_()) {
+         if ($$10) {
+            $$0.a(0.4F, 0.26F, 0.15F);
+         } else {
+            $$0.a(0.06F, 0.26F, -0.5F);
+         }
+      } else if ($$10) {
+         $$0.a(0.46F, 0.26F, 0.22F);
+      } else {
+         $$0.a(0.06F, 0.27F, -0.5F);
+      }
 
-   private void b() {
-      this.c().a().e().forEach($$0 -> $$0.l = false);
-   }
+      $$0.a(a.b.rotationDegrees(90.0F));
+      if ($$10) {
+         $$0.a(a.f.rotationDegrees(90.0F));
+      }
 
-   public interface a<T extends clc> {
-      float apply(T var1, float var2, float var3);
-   }
-
-   public interface b<T extends clc, M extends fsw<T>> {
-      List<fvw> getPartsToDraw(M var1);
+      cuk $$14 = $$3.a(bsw.a);
+      this.a.a($$3, $$14, cuh.h, false, $$0, $$1, $$2);
+      $$0.b();
    }
 }

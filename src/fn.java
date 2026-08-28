@@ -2,40 +2,47 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
-public class fn implements ArgumentType<cqr> {
-   private static final Collection<String> a = List.of("container.*", "container.5", "weapon");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wx.b("slot.unknown", $$0));
-
-   public static fn a() {
-      return new fn();
+public interface fn<T extends de<?>> extends ArgumentType<T> {
+   static fn.b a() {
+      return new fn.b();
    }
 
-   public static cqr a(CommandContext<ee> $$0, String $$1) {
-      return (cqr)$$0.getArgument($$1, cqr.class);
+   static fn.a b() {
+      return new fn.a();
    }
 
-   public cqr a(StringReader $$0) throws CommandSyntaxException {
-      String $$1 = ei.a($$0, $$0x -> $$0x != ' ');
-      cqr $$2 = cqs.a($$1);
-      if ($$2 == null) {
-         throw b.createWithContext($$0, $$1);
-      } else {
-         return $$2;
+   public static class a implements fn<de.c> {
+      private static final Collection<String> a = Arrays.asList("0..5.2", "0", "-5.4", "-100.76..", "..100");
+
+      public static de.c a(CommandContext<ep> $$0, String $$1) {
+         return (de.c)$$0.getArgument($$1, de.c.class);
+      }
+
+      public de.c a(StringReader $$0) throws CommandSyntaxException {
+         return de.c.a($$0);
+      }
+
+      public Collection<String> getExamples() {
+         return a;
       }
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return ej.b(cqs.a(), $$1);
-   }
+   public static class b implements fn<de.d> {
+      private static final Collection<String> a = Arrays.asList("0..5", "0", "-5", "-100..", "..100");
 
-   public Collection<String> getExamples() {
-      return a;
+      public static de.d a(CommandContext<ep> $$0, String $$1) {
+         return (de.d)$$0.getArgument($$1, de.d.class);
+      }
+
+      public de.d a(StringReader $$0) throws CommandSyntaxException {
+         return de.d.a($$0);
+      }
+
+      public Collection<String> getExamples() {
+         return a;
+      }
    }
 }

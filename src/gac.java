@@ -1,117 +1,41 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+public class gac<T extends le> extends gbx {
+   private final gbs a;
 
-public interface gac {
-   gac a = new gac() {
-      @Override
-      public void a(eyp $$0, gnw $$1) {
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, gnu.e);
-         $$0.a(eyz.b.h, eys.l);
-      }
+   protected gac(fxq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, T $$7, gbs $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.C = true;
+      this.a = $$8;
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      float $$9 = this.r.i() * 0.4F + 0.6F;
+      this.v = this.a($$7.d().x(), $$9);
+      this.w = this.a($$7.d().y(), $$9);
+      this.x = this.a($$7.d().z(), $$9);
+      this.D = this.D * 0.75F * $$7.e();
+      int $$10 = (int)(8.0 / (this.r.j() * 0.8 + 0.2));
+      this.t = (int)Math.max((float)$$10 * $$7.e(), 1.0F);
+      this.b($$8);
+   }
 
-      @Override
-      public void a(eyw $$0) {
-         $$0.c();
-      }
+   protected float a(float $$0, float $$1) {
+      return (this.r.i() * 0.2F + 0.8F) * $$0 * $$1;
+   }
 
-      @Override
-      public String toString() {
-         return "TERRAIN_SHEET";
-      }
-   };
-   gac b = new gac() {
-      @Override
-      public void a(eyp $$0, gnw $$1) {
-         RenderSystem.disableBlend();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShader(gcd::u);
-         RenderSystem.setShaderTexture(0, gnu.f);
-         $$0.a(eyz.b.h, eys.l);
-      }
+   @Override
+   public gbb b() {
+      return gbb.b;
+   }
 
-      @Override
-      public void a(eyw $$0) {
-         $$0.c();
-      }
+   @Override
+   public float b(float $$0) {
+      return this.D * ayu.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
 
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_OPAQUE";
-      }
-   };
-   gac c = new gac() {
-      @Override
-      public void a(eyp $$0, gnw $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, gnu.f);
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         $$0.a(eyz.b.h, eys.l);
-      }
-
-      @Override
-      public void a(eyw $$0) {
-         $$0.c();
-      }
-
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_TRANSLUCENT";
-      }
-   };
-   gac d = new gac() {
-      @Override
-      public void a(eyp $$0, gnw $$1) {
-         RenderSystem.disableBlend();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, gnu.f);
-         $$0.a(eyz.b.h, eys.l);
-      }
-
-      @Override
-      public void a(eyw $$0) {
-         $$0.c();
-      }
-
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_LIT";
-      }
-   };
-   gac e = new gac() {
-      @Override
-      public void a(eyp $$0, gnw $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.disableBlend();
-      }
-
-      @Override
-      public void a(eyw $$0) {
-      }
-
-      @Override
-      public String toString() {
-         return "CUSTOM";
-      }
-   };
-   gac f = new gac() {
-      @Override
-      public void a(eyp $$0, gnw $$1) {
-      }
-
-      @Override
-      public void a(eyw $$0) {
-      }
-
-      @Override
-      public String toString() {
-         return "NO_RENDER";
-      }
-   };
-
-   void a(eyp var1, gnw var2);
-
-   void a(eyw var1);
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+   }
 }

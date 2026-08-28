@@ -1,26 +1,27 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import com.google.common.collect.ImmutableMap;
 import java.util.Map;
 
-public class bgx extends bez {
-   private final Map<String, String> a;
-
-   public bgx(Schema $$0, String $$1, TypeReference $$2, String $$3, Map<String, String> $$4) {
-      super($$0, false, $$1, $$2, $$3);
-      this.a = $$4;
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> $$0x.update(
-               "variant", $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().map($$1 -> $$0xx.createString(this.a.getOrDefault($$1, $$1))).result(), $$0xx)
-            )
-      );
-   }
+public class bgx {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:blue_coral", "minecraft:tube_coral_block")
+      .put("minecraft:pink_coral", "minecraft:brain_coral_block")
+      .put("minecraft:purple_coral", "minecraft:bubble_coral_block")
+      .put("minecraft:red_coral", "minecraft:fire_coral_block")
+      .put("minecraft:yellow_coral", "minecraft:horn_coral_block")
+      .put("minecraft:blue_coral_plant", "minecraft:tube_coral")
+      .put("minecraft:pink_coral_plant", "minecraft:brain_coral")
+      .put("minecraft:purple_coral_plant", "minecraft:bubble_coral")
+      .put("minecraft:red_coral_plant", "minecraft:fire_coral")
+      .put("minecraft:yellow_coral_plant", "minecraft:horn_coral")
+      .put("minecraft:blue_coral_fan", "minecraft:tube_coral_fan")
+      .put("minecraft:pink_coral_fan", "minecraft:brain_coral_fan")
+      .put("minecraft:purple_coral_fan", "minecraft:bubble_coral_fan")
+      .put("minecraft:red_coral_fan", "minecraft:fire_coral_fan")
+      .put("minecraft:yellow_coral_fan", "minecraft:horn_coral_fan")
+      .put("minecraft:blue_dead_coral", "minecraft:dead_tube_coral")
+      .put("minecraft:pink_dead_coral", "minecraft:dead_brain_coral")
+      .put("minecraft:purple_dead_coral", "minecraft:dead_bubble_coral")
+      .put("minecraft:red_dead_coral", "minecraft:dead_fire_coral")
+      .put("minecraft:yellow_dead_coral", "minecraft:dead_horn_coral")
+      .build();
 }

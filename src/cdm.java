@@ -1,33 +1,24 @@
-public class cdm {
-   public static boolean a(bss $$0) {
-      return $$0.K() instanceof ccb;
+import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+
+public class cdm extends cdu<btm> {
+   private static final long c = 32L;
+   private static final long d = 16L;
+   public static final int a = 32;
+
+   @Override
+   public Set<cco<?>> a() {
+      return ImmutableSet.of(cco.L);
    }
 
-   public static boolean a(bsz $$0, int $$1) {
-      return $$0.ga() && $$0.fX().a($$0.dn(), (double)($$0.fY() + (float)$$1) + 1.0);
-   }
-
-   public static boolean a(io $$0, bsz $$1) {
-      return $$0.v() < $$1.dP().I_() || $$0.v() > $$1.dP().al();
-   }
-
-   public static boolean a(boolean $$0, bsz $$1, io $$2) {
-      return $$0 && !$$1.a($$2);
-   }
-
-   public static boolean a(ccc $$0, io $$1) {
-      return !$$0.a($$1);
-   }
-
-   public static boolean a(bsz $$0, io $$1) {
-      return $$0.dP().b_($$1).a(awc.a);
-   }
-
-   public static boolean b(bsz $$0, io $$1) {
-      return $$0.a(ens.b($$0, $$1)) != 0.0F;
-   }
-
-   public static boolean c(bsz $$0, io $$1) {
-      return $$0.dP().a_($$1).e();
+   protected void a(arb $$0, btm $$1) {
+      bum<?> $$2 = $$1.dS();
+      List<cjc> $$3 = $$0.a(cjc.class, $$1.cK().c(32.0, 16.0, 32.0), $$0x -> true);
+      $$3.sort(Comparator.comparingDouble($$1::g));
+      Optional<cjc> $$4 = $$3.stream().filter($$1x -> $$1.k($$1x.p())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::E).findFirst();
+      $$2.a(cco.L, $$4);
    }
 }

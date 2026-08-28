@@ -1,42 +1,23 @@
-public class abt implements ze<abq> {
-   public static final yv<vx, abt> a = ze.a(abt::a, abt::new);
-   public static final int b = 0;
-   public static final int c = 2;
-   public static final int d = 3;
-   public static final int e = 4;
-   public static final int f = 5;
-   private final int g;
-   private final int h;
-
-   public abt(brw $$0, int $$1) {
-      this.g = $$0.al();
-      this.h = $$1;
-   }
-
-   private abt(vx $$0) {
-      this.g = $$0.l();
-      this.h = $$0.readUnsignedByte();
-   }
-
-   private void a(vx $$0) {
-      $$0.c(this.g);
-      $$0.k(this.h);
-   }
-
-   @Override
-   public zg<abt> a() {
-      return agc.e;
-   }
-
-   public void a(abq $$0) {
-      $$0.a(this);
-   }
-
-   public int b() {
-      return this.g;
-   }
-
-   public int e() {
-      return this.h;
-   }
+public class abt {
+   public static final wt<abu> a = zx.a(
+      wk.e, $$0 -> $$0.a(aai.j, aak.a).a(aca.b, acc.a).a(aai.k, aal.a).a(abs.f, abv.b).a(aai.l, aam.a).a(aai.m, aan.a).a(aai.n, aao.a).a(abs.g, abw.a)
+   );
+   public static final wt<abm> b = zx.b(
+      wk.e,
+      $$0 -> $$0.a(aca.a, abz.a)
+            .a(aai.a, zz.b)
+            .a(aai.b, aaa.a)
+            .a(abs.a, abn.b)
+            .a(aai.c, aab.a)
+            .a(aai.d, aac.a)
+            .a(abs.e, abp.b)
+            .a(abs.b, abo.a)
+            .a(aai.e, aad.a)
+            .a(aai.f, aae.b)
+            .a(aai.g, aaf.a)
+            .a(aai.h, aag.a)
+            .a(abs.c, abr.a)
+            .a(aai.i, aah.a)
+            .a(abs.d, abq.a)
+   );
 }

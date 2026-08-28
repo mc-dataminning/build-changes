@@ -1,63 +1,76 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayDeque;
-import java.util.List;
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.jetbrains.annotations.VisibleForTesting;
+import java.util.Arrays;
+import java.util.Collection;
 
 public class xk {
-   public static final int a = -1;
-   private static final int b = 128;
-   private final xj[] c;
+   public static final xl a = xl.i();
+   public static final xl b = xl.c("options.on");
+   public static final xl c = xl.c("options.off");
+   public static final xl d = xl.c("gui.done");
+   public static final xl e = xl.c("gui.cancel");
+   public static final xl f = xl.c("gui.yes");
+   public static final xl g = xl.c("gui.no");
+   public static final xl h = xl.c("gui.ok");
+   public static final xl i = xl.c("gui.proceed");
+   public static final xl j = xl.c("gui.continue");
+   public static final xl k = xl.c("gui.back");
+   public static final xl l = xl.c("gui.toTitle");
+   public static final xl m = xl.c("gui.acknowledge");
+   public static final xl n = xl.c("chat.link.open");
+   public static final xl o = xl.c("gui.copy_link_to_clipboard");
+   public static final xl p = xl.c("menu.disconnect");
+   public static final xl q = xl.c("connect.failed.transfer");
+   public static final xl r = xl.c("connect.failed");
+   public static final xl s = xl.b("\n");
+   public static final xl t = xl.b(". ");
+   public static final xl u = xl.b("...");
+   public static final xl v = a();
 
-   public xk(int $$0) {
-      this.c = new xj[$$0];
+   public static xz a() {
+      return xl.b(" ");
    }
 
-   public static xk a() {
-      return new xk(128);
+   public static xz a(long $$0) {
+      return xl.a("gui.days", $$0);
    }
 
-   public int a(xj $$0) {
-      for (int $$1 = 0; $$1 < this.c.length; $$1++) {
-         if ($$0.equals(this.c[$$1])) {
-            return $$1;
+   public static xz b(long $$0) {
+      return xl.a("gui.hours", $$0);
+   }
+
+   public static xz c(long $$0) {
+      return xl.a("gui.minutes", $$0);
+   }
+
+   public static xl a(boolean $$0) {
+      return $$0 ? b : c;
+   }
+
+   public static xz a(xl $$0, boolean $$1) {
+      return xl.a($$1 ? "options.on.composed" : "options.off.composed", $$0);
+   }
+
+   public static xz a(xl $$0, xl $$1) {
+      return xl.a("options.generic_value", $$0, $$1);
+   }
+
+   public static xz a(xl... $$0) {
+      xz $$1 = xl.i();
+
+      for (int $$2 = 0; $$2 < $$0.length; $$2++) {
+         $$1.b($$0[$$2]);
+         if ($$2 != $$0.length - 1) {
+            $$1.b(t);
          }
       }
 
-      return -1;
+      return $$1;
    }
 
-   @Nullable
-   public xj a(int $$0) {
-      return this.c[$$0];
+   public static xl b(xl... $$0) {
+      return a(Arrays.asList($$0));
    }
 
-   public void a(xq $$0, @Nullable xj $$1) {
-      List<xj> $$2 = $$0.d().a();
-      ArrayDeque<xj> $$3 = new ArrayDeque<>($$2.size() + 1);
-      $$3.addAll($$2);
-      if ($$1 != null) {
-         $$3.add($$1);
-      }
-
-      this.a($$3);
-   }
-
-   @VisibleForTesting
-   void a(List<xj> $$0) {
-      this.a(new ArrayDeque<>($$0));
-   }
-
-   private void a(ArrayDeque<xj> $$0) {
-      Set<xj> $$1 = new ObjectOpenHashSet($$0);
-
-      for (int $$2 = 0; !$$0.isEmpty() && $$2 < this.c.length; $$2++) {
-         xj $$3 = this.c[$$2];
-         this.c[$$2] = $$0.removeLast();
-         if ($$3 != null && !$$1.contains($$3)) {
-            $$0.addFirst($$3);
-         }
-      }
+   public static xl a(Collection<? extends xl> $$0) {
+      return xo.a($$0, s);
    }
 }

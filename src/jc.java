@@ -1,30 +1,66 @@
+import com.mojang.serialization.Lifecycle;
+import java.util.Optional;
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public interface jc<T> extends Iterable<T> {
-   int a = -1;
+public class jc<T> extends jq<T> implements jd<T> {
+   private final alb b;
+   private ji.c<T> c;
 
-   int a(T var1);
-
-   @Nullable
-   T a(int var1);
-
-   default T b(int $$0) {
-      T $$1 = this.a($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("No value with id " + $$0);
-      } else {
-         return $$1;
-      }
+   public jc(String $$0, ala<? extends jv<T>> $$1, Lifecycle $$2, boolean $$3) {
+      super($$1, $$2, $$3);
+      this.b = new alb($$0);
    }
 
-   default int c(T $$0) {
-      int $$1 = this.a($$0);
-      if ($$1 == -1) {
-         throw new IllegalArgumentException("Can't find id for '" + $$0 + "' in map " + this);
-      } else {
-         return $$1;
+   @Override
+   public ji.c<T> a(ala<T> $$0, T $$1, ju $$2) {
+      ji.c<T> $$3 = super.a($$0, $$1, $$2);
+      if (this.b.equals($$0.a())) {
+         this.c = $$3;
       }
+
+      return $$3;
    }
 
-   int b();
+   @Override
+   public int a(@Nullable T $$0) {
+      int $$1 = super.a($$0);
+      return $$1 == -1 ? super.a(this.c.a()) : $$1;
+   }
+
+   @Nonnull
+   @Override
+   public alb b(T $$0) {
+      alb $$1 = super.b($$0);
+      return $$1 == null ? this.b : $$1;
+   }
+
+   @Nonnull
+   @Override
+   public T a(@Nullable alb $$0) {
+      T $$1 = super.a($$0);
+      return $$1 == null ? this.c.a() : $$1;
+   }
+
+   @Override
+   public Optional<T> b(@Nullable alb $$0) {
+      return Optional.ofNullable(super.a($$0));
+   }
+
+   @Nonnull
+   @Override
+   public T a(int $$0) {
+      T $$1 = super.a($$0);
+      return $$1 == null ? this.c.a() : $$1;
+   }
+
+   @Override
+   public Optional<ji.c<T>> a(azc $$0) {
+      return super.a($$0).or(() -> Optional.of(this.c));
+   }
+
+   @Override
+   public alb a() {
+      return this.b;
+   }
 }

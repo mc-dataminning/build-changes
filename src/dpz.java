@@ -1,13 +1,23 @@
-public class dpz extends doi {
-   protected dpz(dok<?> $$0, io $$1, drd $$2) {
-      super($$0, $$1, $$2);
+public class dpz extends dqm {
+   private static final int a = 60;
+   private static final int b = 9;
+
+   public dpz(iz $$0, drx $$1) {
+      super(dpe.i, $$0, $$1);
    }
 
-   public dpz(io $$0, drd $$1) {
-      this(dok.n, $$0, $$1);
+   @Override
+   public int b() {
+      return 9;
    }
 
-   public boolean a(it $$0) {
-      return $$0.o() == it.a.b;
+   @Override
+   public int c() {
+      return 60;
+   }
+
+   @Override
+   public avv d() {
+      return avw.BW;
    }
 }

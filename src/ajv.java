@@ -1,7 +1,3 @@
-import java.util.List;
-
-public interface ajv {
-   void a(ajs<?> var1);
-
-   void a(List<ajw.c<?>> var1);
+public interface ajv extends wr {
+   void a(ajw var1);
 }

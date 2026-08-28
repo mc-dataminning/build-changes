@@ -1,95 +1,46 @@
+import com.google.gson.JsonObject;
 import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.List;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fbr extends gty {
-   private static final Logger a = LogUtils.getLogger();
-   private static final gtz b = new gtz(Duration.ofSeconds(5L));
-   private final List<fdb> c;
-   private final flz B;
-   private final fjr C = fjr.d();
-   private volatile wx D;
+public class fbr extends fbp {
+   private static final Logger j = LogUtils.getLogger();
+   public String a = "";
+   public String b = "";
+   public String c = "";
+   public String d = "";
+   public String e = "";
    @Nullable
-   private fgp E;
+   public String f;
+   public String g = "";
+   public String h = "";
+   public fbr.a i = fbr.a.a;
 
-   public fbr(flz $$0, fdb... $$1) {
-      super(fdt.a);
-      this.B = $$0;
-      this.c = List.of($$1);
-      if (this.c.isEmpty()) {
-         throw new IllegalArgumentException("No tasks added");
-      } else {
-         this.D = this.c.get(0).a();
-         Runnable $$2 = () -> {
-            for (fdb $$1x : $$1) {
-               this.a($$1x.a());
-               if ($$1x.d()) {
-                  break;
-               }
+   public static fbr a(JsonObject $$0) {
+      fbr $$1 = new fbr();
 
-               $$1x.run();
-               if ($$1x.d()) {
-                  return;
-               }
-            }
-         };
-         Thread $$3 = new Thread($$2, "Realms-long-running-task");
-         $$3.setUncaughtExceptionHandler(new fav(a));
-         $$3.start();
-      }
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      if (this.E != null) {
-         b.a(this.m.aX(), this.E.y());
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.f();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void aN_() {
-      this.C.c().b();
-      this.E = new fgp(this.p, this.D);
-      this.C.a(this.E, $$0 -> $$0.e(30));
-      this.C.a(fga.a(ww.e, $$0 -> this.f()).a());
-      this.C.a($$1 -> {
-         ffy var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.C.a();
-      fjl.a(this.C, this.G());
-   }
-
-   protected void f() {
-      for (fdb $$0 : this.c) {
-         $$0.b();
+      try {
+         $$1.a = fdm.b("id", $$0, "");
+         $$1.b = fdm.b("name", $$0, "");
+         $$1.c = fdm.b("version", $$0, "");
+         $$1.d = fdm.b("author", $$0, "");
+         $$1.e = fdm.b("link", $$0, "");
+         $$1.f = fdm.b("image", $$0, null);
+         $$1.g = fdm.b("trailer", $$0, "");
+         $$1.h = fdm.b("recommendedPlayers", $$0, "");
+         $$1.i = fbr.a.valueOf(fdm.b("type", $$0, fbr.a.a.name()));
+      } catch (Exception var3) {
+         j.error("Could not parse WorldTemplate: {}", var3.getMessage());
       }
 
-      this.m.a(this.B);
+      return $$1;
    }
 
-   public void a(wx $$0) {
-      if (this.E != null) {
-         this.E.b($$0);
-      }
-
-      this.D = $$0;
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

@@ -1,19 +1,18 @@
-import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import com.mojang.datafixers.types.Type;
 
-public class bfu extends azr {
-   private final Function<String, String> a;
-
-   public bfu(Schema $$0, String $$1, Function<String, String> $$2) {
+public class bfu extends DataFix {
+   public bfu(Schema $$0, boolean $$1) {
       super($$0, $$1);
-      this.a = $$2;
    }
 
-   @Override
-   protected <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
-      return $$0.map($$0x -> $$0x.update("type", $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().map(this.a).map($$0xx::createString).result(), $$0xx)));
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bgs.H);
+      return this.fixTypeEverywhereTyped(
+         "ObjectiveDisplayNameFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> $$0xx.update("DisplayName", baa::a))
+      );
    }
 }

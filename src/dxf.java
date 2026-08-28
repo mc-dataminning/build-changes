@@ -1,68 +1,181 @@
-public final class dxf {
-   private static final float a = 0.4F;
-   private static final int b = 20;
-   private static final double c = 0.2;
-   private static final float d = 0.7F;
-   private static final float e = 0.1F;
-   private static final float f = 0.3F;
-   private static final float g = 0.6F;
-   private static final float h = 0.02F;
-   private static final float i = -0.3F;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-   private dxf() {
+public abstract class dxf {
+   public static dxf.b a(int $$0, int $$1) {
+      return new dxf.b($$0 - 1, $$1 + 1);
    }
 
-   protected static dwz.c a(dwo $$0, dwo $$1, dwo $$2, dxi $$3) {
-      drd $$4 = null;
-      return $$5 -> {
-         double $$6 = $$0.a($$5);
-         int $$7 = $$5.b();
-         dxf.a $$8 = $$6 > 0.0 ? dxf.a.a : dxf.a.b;
-         double $$9 = Math.abs($$6);
-         int $$10 = $$8.d - $$7;
-         int $$11 = $$7 - $$8.c;
-         if ($$11 >= 0 && $$10 >= 0) {
-            int $$12 = Math.min($$10, $$11);
-            double $$13 = ayf.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
-            if ($$9 + $$13 < 0.4F) {
-               return $$4;
-            } else {
-               aym $$14 = $$3.a($$5.a(), $$7, $$5.c());
-               if ($$14.i() > 0.7F) {
-                  return $$4;
-               } else if ($$1.a($$5) >= 0.0) {
-                  return $$4;
-               } else {
-                  double $$15 = ayf.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
-                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
-                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
-                  } else {
-                     return $$8.g;
-                  }
-               }
-            }
-         } else {
-            return $$4;
+   public static dxf.b b(int $$0, int $$1) {
+      return new dxf.b($$0, $$1);
+   }
+
+   public static dxf a(int $$0) {
+      return new dxf.c($$0, false);
+   }
+
+   public static dxf b(int $$0) {
+      return new dxf.c($$0 + 1, false);
+   }
+
+   public static dxf c(int $$0) {
+      return new dxf.c($$0, true);
+   }
+
+   public static dxf d(int $$0) {
+      return new dxf.c($$0 - 1, true);
+   }
+
+   public static dxf a() {
+      return dxf.a.a;
+   }
+
+   public static dxf a(OptionalInt $$0, OptionalInt $$1) {
+      if ($$0.isPresent() && $$1.isPresent()) {
+         return b($$0.getAsInt(), $$1.getAsInt());
+      } else if ($$0.isPresent()) {
+         return c($$0.getAsInt());
+      } else {
+         return $$1.isPresent() ? a($$1.getAsInt()) : a();
+      }
+   }
+
+   public abstract OptionalInt b();
+
+   public abstract OptionalInt c();
+
+   public abstract OptionalInt d();
+
+   public dxf a(OptionalInt $$0) {
+      return a($$0, this.b());
+   }
+
+   public dxf b(OptionalInt $$0) {
+      return a(this.c(), $$0);
+   }
+
+   public static Optional<dxf> a(dbz $$0, iz $$1, int $$2, Predicate<drx> $$3, Predicate<drx> $$4) {
+      iz.a $$5 = $$1.j();
+      if (!$$0.a($$1, $$3)) {
+         return Optional.empty();
+      } else {
+         int $$6 = $$1.v();
+         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, je.b);
+         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, je.a);
+         return Optional.of(a($$8, $$7));
+      }
+   }
+
+   private static OptionalInt a(dbz $$0, int $$1, Predicate<drx> $$2, Predicate<drx> $$3, iz.a $$4, int $$5, je $$6) {
+      $$4.q($$5);
+
+      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
+         $$4.c($$6);
+      }
+
+      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
+   }
+
+   public static final class a extends dxf {
+      static final dxf.a a = new dxf.a();
+
+      private a() {
+      }
+
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return "C(-)";
+      }
+   }
+
+   public static final class b extends dxf {
+      private final int a;
+      private final int b;
+
+      protected b(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+         if (this.g() < 0) {
+            throw new IllegalArgumentException("Column of negative height: " + this);
          }
-      };
+      }
+
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.of(this.b);
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.of(this.a);
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.of(this.g());
+      }
+
+      public int e() {
+         return this.b;
+      }
+
+      public int f() {
+         return this.a;
+      }
+
+      public int g() {
+         return this.b - this.a - 1;
+      }
+
+      @Override
+      public String toString() {
+         return "C(" + this.b + "-" + this.a + ")";
+      }
    }
 
-   protected static enum a {
-      a(dec.ra.n(), dec.tg.n(), dec.c.n(), 0, 50),
-      b(dec.Q.n(), dec.tf.n(), dec.qz.n(), -60, -8);
+   public static final class c extends dxf {
+      private final int a;
+      private final boolean b;
 
-      final drd e;
-      final drd f;
-      final drd g;
-      protected final int c;
-      protected final int d;
+      public c(int $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-      private a(drd $$0, drd $$1, drd $$2, int $$3, int $$4) {
-         this.e = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.c = $$3;
-         this.d = $$4;
+      @Override
+      public OptionalInt b() {
+         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
+      }
+
+      @Override
+      public OptionalInt c() {
+         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
       }
    }
 }

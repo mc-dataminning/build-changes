@@ -1,201 +1,140 @@
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-public class enk {
-   private final List<eni> a;
-   @Nullable
-   private enk.a b;
-   private int c;
-   private final io d;
-   private final float e;
-   private final boolean f;
-
-   public enk(List<eni> $$0, io $$1, boolean $$2) {
-      this.a = $$0;
-      this.d = $$1;
-      this.e = $$0.isEmpty() ? Float.MAX_VALUE : this.a.get(this.a.size() - 1).c(this.d);
-      this.f = $$2;
-   }
-
-   public void a() {
-      this.c++;
-   }
-
-   public boolean b() {
-      return this.c <= 0;
-   }
-
-   public boolean c() {
-      return this.c >= this.a.size();
-   }
-
-   @Nullable
-   public eni d() {
-      return !this.a.isEmpty() ? this.a.get(this.a.size() - 1) : null;
-   }
-
-   public eni a(int $$0) {
-      return this.a.get($$0);
-   }
-
-   public void b(int $$0) {
-      if (this.a.size() > $$0) {
-         this.a.subList($$0, this.a.size()).clear();
-      }
-   }
-
-   public void a(int $$0, eni $$1) {
-      this.a.set($$0, $$1);
-   }
-
-   public int e() {
-      return this.a.size();
-   }
-
-   public int f() {
-      return this.c;
-   }
-
-   public void c(int $$0) {
-      this.c = $$0;
-   }
-
-   public eum a(brw $$0, int $$1) {
-      eni $$2 = this.a.get($$1);
-      double $$3 = (double)$$2.a + (double)((int)($$0.dj() + 1.0F)) * 0.5;
-      double $$4 = (double)$$2.b;
-      double $$5 = (double)$$2.c + (double)((int)($$0.dj() + 1.0F)) * 0.5;
-      return new eum($$3, $$4, $$5);
-   }
-
-   public io d(int $$0) {
-      return this.a.get($$0).a();
-   }
-
-   public eum a(brw $$0) {
-      return this.a($$0, this.c);
-   }
-
-   public io g() {
-      return this.a.get(this.c).a();
-   }
-
-   public eni h() {
-      return this.a.get(this.c);
-   }
-
-   @Nullable
-   public eni i() {
-      return this.c > 0 ? this.a.get(this.c - 1) : null;
-   }
-
-   public boolean a(@Nullable enk $$0) {
-      if ($$0 == null) {
-         return false;
-      } else if ($$0.a.size() != this.a.size()) {
-         return false;
-      } else {
-         for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
-            eni $$2 = this.a.get($$1);
-            eni $$3 = $$0.a.get($$1);
-            if ($$2.a != $$3.a || $$2.b != $$3.b || $$2.c != $$3.c) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   public boolean j() {
-      return this.f;
-   }
-
-   @azi
-   void a(eni[] $$0, eni[] $$1, Set<enr> $$2) {
-      this.b = new enk.a($$0, $$1, $$2);
-   }
-
-   @Nullable
-   public enk.a k() {
-      return this.b;
-   }
-
-   public void a(vx $$0) {
-      if (this.b != null && !this.b.c.isEmpty()) {
-         $$0.a(this.f);
-         $$0.p(this.c);
-         $$0.a(this.d);
-         $$0.a(this.a, ($$0x, $$1) -> $$1.a($$0x));
-         this.b.a($$0);
-      }
-   }
-
-   public static enk b(vx $$0) {
-      boolean $$1 = $$0.readBoolean();
-      int $$2 = $$0.readInt();
-      io $$3 = $$0.e();
-      List<eni> $$4 = $$0.a(eni::b);
-      enk.a $$5 = enk.a.b($$0);
-      enk $$6 = new enk($$4, $$3, $$1);
-      $$6.b = $$5;
-      $$6.c = $$2;
-      return $$6;
+public class enk extends ene<enk.a> {
+   protected enk(dug $$0) {
+      super(dcc.a, $$0, new enk.a(new Long2ObjectOpenHashMap(), new Long2IntOpenHashMap(), Integer.MAX_VALUE));
    }
 
    @Override
-   public String toString() {
-      return "Path(length=" + this.a.size() + ")";
+   protected int a(long $$0) {
+      return this.e($$0, false);
    }
 
-   public io l() {
-      return this.d;
-   }
+   protected int e(long $$0, boolean $$1) {
+      long $$2 = kb.e($$0);
+      int $$3 = kb.c($$2);
+      enk.a $$4 = $$1 ? this.d : this.c;
+      int $$5 = $$4.c.get(kb.f($$2));
+      if ($$5 != $$4.b && $$3 < $$5) {
+         dty $$6 = this.a($$4, $$2);
+         if ($$6 == null) {
+            for ($$0 = iz.e($$0); $$6 == null; $$6 = this.a($$4, $$2)) {
+               if (++$$3 >= $$5) {
+                  return 15;
+               }
 
-   public float m() {
-      return this.e;
-   }
+               $$2 = kb.a($$2, je.b);
+            }
+         }
 
-   static eni[] c(vx $$0) {
-      eni[] $$1 = new eni[$$0.l()];
-
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         $$1[$$2] = eni.b($$0);
-      }
-
-      return $$1;
-   }
-
-   static void a(vx $$0, eni[] $$1) {
-      $$0.c($$1.length);
-
-      for (eni $$2 : $$1) {
-         $$2.a($$0);
+         return $$6.a(kb.b(iz.a($$0)), kb.b(iz.b($$0)), kb.b(iz.c($$0)));
+      } else {
+         return $$1 && !this.j($$2) ? 0 : 15;
       }
    }
 
-   public enk n() {
-      enk $$0 = new enk(this.a, this.d, this.f);
-      $$0.b = this.b;
-      $$0.c = this.c;
-      return $$0;
-   }
-
-   public static record a(eni[] a, eni[] b, Set<enr> c) {
-
-      public void a(vx $$0) {
-         $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
-         enk.a($$0, this.a);
-         enk.a($$0, this.b);
+   @Override
+   protected void h(long $$0) {
+      int $$1 = kb.c($$0);
+      if (this.d.b > $$1) {
+         this.d.b = $$1;
+         this.d.c.defaultReturnValue(this.d.b);
       }
 
-      public static enk.a b(vx $$0) {
-         HashSet<enr> $$1 = $$0.a(HashSet::new, enr::c);
-         eni[] $$2 = enk.c($$0);
-         eni[] $$3 = enk.c($$0);
-         return new enk.a($$2, $$3, $$1);
+      long $$2 = kb.f($$0);
+      int $$3 = this.d.c.get($$2);
+      if ($$3 < $$1 + 1) {
+         this.d.c.put($$2, $$1 + 1);
+      }
+   }
+
+   @Override
+   protected void i(long $$0) {
+      long $$1 = kb.f($$0);
+      int $$2 = kb.c($$0);
+      if (this.d.c.get($$1) == $$2 + 1) {
+         long $$3;
+         for ($$3 = $$0; !this.b($$3) && this.a($$2); $$3 = kb.a($$3, je.a)) {
+            $$2--;
+         }
+
+         if (this.b($$3)) {
+            this.d.c.put($$1, $$2 + 1);
+         } else {
+            this.d.c.remove($$1);
+         }
+      }
+   }
+
+   @Override
+   protected dty g(long $$0) {
+      dty $$1 = (dty)this.g.get($$0);
+      if ($$1 != null) {
+         return $$1;
+      } else {
+         int $$2 = this.d.c.get(kb.f($$0));
+         if ($$2 != this.d.b && kb.c($$0) < $$2) {
+            long $$3 = kb.a($$0, je.b);
+
+            dty $$4;
+            while (($$4 = this.a($$3, true)) == null) {
+               $$3 = kb.a($$3, je.b);
+            }
+
+            return a($$4);
+         } else {
+            return this.j($$0) ? new dty(15) : new dty();
+         }
+      }
+   }
+
+   private static dty a(dty $$0) {
+      if ($$0.c()) {
+         return $$0.b();
+      } else {
+         byte[] $$1 = $$0.a();
+         byte[] $$2 = new byte[2048];
+
+         for (int $$3 = 0; $$3 < 16; $$3++) {
+            System.arraycopy($$1, 0, $$2, $$3 * 128, 128);
+         }
+
+         return new dty($$2);
+      }
+   }
+
+   protected boolean a(int $$0) {
+      return $$0 >= this.d.b;
+   }
+
+   protected boolean l(long $$0) {
+      long $$1 = kb.f($$0);
+      int $$2 = this.d.c.get($$1);
+      return $$2 == this.d.b || kb.c($$0) >= $$2;
+   }
+
+   protected int m(long $$0) {
+      return this.d.c.get($$0);
+   }
+
+   protected int c() {
+      return this.d.b;
+   }
+
+   protected static final class a extends enb<enk.a> {
+      int b;
+      final Long2IntOpenHashMap c;
+
+      public a(Long2ObjectOpenHashMap<dty> $$0, Long2IntOpenHashMap $$1, int $$2) {
+         super($$0);
+         this.c = $$1;
+         $$1.defaultReturnValue($$2);
+         this.b = $$2;
+      }
+
+      public enk.a a() {
+         return new enk.a(this.a.clone(), this.c.clone(), this.b);
       }
    }
 }

@@ -1,21 +1,46 @@
-import java.util.concurrent.ConcurrentLinkedQueue;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.system.MemoryUtil;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.Collections;
+import java.util.Map;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class ewk {
-   public static void a(exf $$0, float $$1) {
-      ConcurrentLinkedQueue<exe> $$2 = $$0.i();
+class ewk {
+   private final Reference2ObjectOpenHashMap<ewi, ewn> a = new Reference2ObjectOpenHashMap(16, 0.5F);
+
+   @Nullable
+   public ewn a(ewi $$0) {
+      return (ewn)this.a.get($$0);
    }
 
-   public static void b(exf $$0, float $$1) {
-      ConcurrentLinkedQueue<exe> $$2 = $$0.j();
+   public ewn a(ewi $$0, Consumer<ewn> $$1) {
+      return (ewn)this.a.computeIfAbsent($$0, $$1x -> {
+         ewn $$2 = new ewn();
+         $$1.accept($$2);
+         return $$2;
+      });
    }
 
-   public static void a() {
-      MemoryUtil.memSet(0L, 0, 1L);
+   public boolean b(ewi $$0) {
+      return this.a.remove($$0) != null;
    }
 
-   public static double b() {
-      return GLFW.glfwGetTime();
+   public boolean a() {
+      return !this.a.isEmpty();
+   }
+
+   public Object2IntMap<ewi> b() {
+      Object2IntMap<ewi> $$0 = new Object2IntOpenHashMap();
+      this.a.forEach(($$1, $$2) -> $$0.put($$1, $$2.a()));
+      return $$0;
+   }
+
+   void a(ewi $$0, ewn $$1) {
+      this.a.put($$0, $$1);
+   }
+
+   Map<ewi, ewn> c() {
+      return Collections.unmodifiableMap(this.a);
    }
 }

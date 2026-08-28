@@ -1,38 +1,58 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class bl extends df<bl.a> {
-   @Override
-   public Codec<bl.a> a() {
-      return bl.a.a;
+public record bl(de.c b, de.c c, de.c d, de.c e, de.c f) {
+   public static final Codec<bl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               de.c.d.optionalFieldOf("x", de.c.c).forGetter(bl::a),
+               de.c.d.optionalFieldOf("y", de.c.c).forGetter(bl::b),
+               de.c.d.optionalFieldOf("z", de.c.c).forGetter(bl::c),
+               de.c.d.optionalFieldOf("horizontal", de.c.c).forGetter(bl::d),
+               de.c.d.optionalFieldOf("absolute", de.c.c).forGetter(bl::e)
+            )
+            .apply($$0, bl::new)
+   );
+
+   public static bl a(de.c $$0) {
+      return new bl(de.c.c, de.c.c, de.c.c, $$0, de.c.c);
    }
 
-   public void a(aqo $$0, ctq $$1, int $$2) {
-      this.a($$0, $$2x -> $$2x.a($$1, $$2));
+   public static bl b(de.c $$0) {
+      return new bl(de.c.c, $$0, de.c.c, de.c.c, de.c.c);
    }
 
-   public static record a(Optional<bc> b, Optional<ch> c, ct.d d) implements df.a {
-      public static final Codec<bl.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  br.b.optionalFieldOf("player").forGetter(bl.a::a),
-                  ch.a.optionalFieldOf("item").forGetter(bl.a::c),
-                  ct.d.d.optionalFieldOf("levels", ct.d.c).forGetter(bl.a::d)
-               )
-               .apply($$0, bl.a::new)
-      );
+   public static bl c(de.c $$0) {
+      return new bl(de.c.c, de.c.c, de.c.c, de.c.c, $$0);
+   }
 
-      public static an<bl.a> b() {
-         return am.j.a(new bl.a(Optional.empty(), Optional.empty(), ct.d.c));
+   public boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      float $$6 = (float)($$0 - $$3);
+      float $$7 = (float)($$1 - $$4);
+      float $$8 = (float)($$2 - $$5);
+      if (!this.b.d((double)ayu.e($$6)) || !this.c.d((double)ayu.e($$7)) || !this.d.d((double)ayu.e($$8))) {
+         return false;
+      } else {
+         return !this.e.e((double)($$6 * $$6 + $$8 * $$8)) ? false : this.f.e((double)($$6 * $$6 + $$7 * $$7 + $$8 * $$8));
       }
+   }
 
-      public boolean a(ctq $$0, int $$1) {
-         return this.c.isPresent() && !this.c.get().a($$0) ? false : this.d.d($$1);
-      }
+   public de.c a() {
+      return this.b;
+   }
 
-      @Override
-      public Optional<bc> a() {
-         return this.b;
-      }
+   public de.c b() {
+      return this.c;
+   }
+
+   public de.c c() {
+      return this.d;
+   }
+
+   public de.c d() {
+      return this.e;
+   }
+
+   public de.c e() {
+      return this.f;
    }
 }

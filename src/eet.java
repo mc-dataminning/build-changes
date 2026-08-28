@@ -1,37 +1,40 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eet extends eev {
-   public static final MapCodec<eet> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(eet::new, $$0 -> $$0.b);
-   private final float b;
+public record eet(jm<deu> b, jm<deu> c, eey d, int e, int f, float g) {
+   public static final Codec<eet> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               jx.a(lq.f).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
+               jx.a(lq.f).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
+               eey.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
+               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, eet::new)
+   );
 
-   public eet(float $$0) {
-      this.b = $$0;
+   public jm<deu> a() {
+      return this.b;
    }
 
-   @Override
-   protected eew<?> a() {
-      return eew.c;
+   public jm<deu> b() {
+      return this.c;
    }
 
-   @Override
-   public void a(eev.a $$0) {
-      aym $$1 = $$0.b();
-      if (!($$1.i() >= this.b)) {
-         List<io> $$2 = $$0.c();
-         int $$3 = $$2.get(0).v();
-         $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
-            for (it $$3x : it.c.a) {
-               if ($$1.i() <= 0.25F) {
-                  it $$4 = $$3x.g();
-                  io $$5 = $$2x.b($$4.j(), 0, $$4.l());
-                  if ($$0.a($$5)) {
-                     $$0.a($$5, dec.fC.n().a(dfh.c, Integer.valueOf($$1.a(3))).a(dfh.aE, $$3x));
-                  }
-               }
-            }
-         });
-      }
+   public eey c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
+   }
+
+   public int e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
    }
 }

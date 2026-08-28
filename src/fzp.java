@@ -1,53 +1,59 @@
-public class fzp extends gay {
-   fzp(fwr $$0, double $$1, double $$2, double $$3) {
+public class fzp extends gbx {
+   private final gbs a;
+
+   protected fzp(
+      fxq $$0,
+      double $$1,
+      double $$2,
+      double $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      double $$7,
+      double $$8,
+      double $$9,
+      float $$10,
+      gbs $$11,
+      float $$12,
+      int $$13,
+      float $$14,
+      boolean $$15
+   ) {
       super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.96F;
+      this.u = $$14;
       this.C = true;
-      this.B = 0.86F;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.1;
-      this.D *= 1.5F;
-      this.t = 16;
-      this.n = false;
+      this.a = $$11;
+      this.j *= (double)$$4;
+      this.k *= (double)$$5;
+      this.l *= (double)$$6;
+      this.j += $$7;
+      this.k += $$8;
+      this.l += $$9;
+      float $$16 = $$0.z.i() * $$12;
+      this.v = $$16;
+      this.w = $$16;
+      this.x = $$16;
+      this.D *= 0.75F * $$10;
+      this.t = (int)((double)$$13 / ((double)$$0.z.i() * 0.8 + 0.2) * (double)$$10);
+      this.t = Math.max(this.t, 1);
+      this.b($$11);
+      this.n = $$15;
    }
 
    @Override
-   public gac b() {
-      return gac.b;
+   public gbb b() {
+      return gbb.b;
    }
 
    @Override
    public float b(float $$0) {
-      return this.D * ayf.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+      return this.D * ayu.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
-   public static class a implements gab<lb> {
-      private final gat a;
-
-      public a(gat $$0) {
-         this.a = $$0;
-      }
-
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fzp $$8 = new fzp($$1, $$2, $$3 + 0.5, $$4);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
-      }
-   }
-
-   public static class b implements gab<lb> {
-      private final gat a;
-
-      public b(gat $$0) {
-         this.a = $$0;
-      }
-
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fzp $$8 = new fzp($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
-      }
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
    }
 }

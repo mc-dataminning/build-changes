@@ -1,40 +1,65 @@
-public class fyt extends gay {
-   fyt(fwr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.u = -0.125F;
-      this.B = 0.85F;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.t = (int)(40.0 / (Math.random() * 0.8 + 0.2));
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.minecraft.report.ReportedEntity;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
+
+public class fyt extends fyu {
+   private final String f;
+
+   fyt(UUID $$0, Instant $$1, UUID $$2, String $$3) {
+      super($$0, $$1, $$2);
+      this.f = $$3;
+   }
+
+   public String a() {
+      return this.f;
+   }
+
+   public fyt c() {
+      fyt $$0 = new fyt(this.a, this.b, this.c, this.f);
+      $$0.d = this.d;
+      return $$0;
    }
 
    @Override
-   public void a() {
-      super.a();
-      if (!this.o && !this.c.b_(io.a(this.g, this.h, this.i)).a(awc.a)) {
-         this.k();
-      }
+   public fmy a(fmy $$0, fyy $$1) {
+      return new fqz($$0, $$1, this);
    }
 
-   @Override
-   public gac b() {
-      return gac.b;
-   }
-
-   public static class a implements gab<lb> {
-      private final gat a;
-
-      public a(gat $$0) {
-         this.a = $$0;
+   public static class a extends fyu.a<fyt> {
+      public a(fyt $$0, AbuseReportLimits $$1) {
+         super($$0, $$1);
       }
 
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fyt $$8 = new fyt($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
+         super(new fyt(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
+      }
+
+      @Override
+      public boolean b() {
+         return StringUtils.isNotEmpty(this.g());
+      }
+
+      @Nullable
+      @Override
+      public fyu.b c() {
+         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fyu.b.d : null;
+      }
+
+      @Override
+      public Either<fyu.c, fyu.b> a(fyy $$0) {
+         fyu.b $$1 = this.c();
+         if ($$1 != null) {
+            return Either.right($$1);
+         } else {
+            ReportedEntity $$2 = new ReportedEntity(this.a.c);
+            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
+            return Either.left(new fyu.c(this.a.a, fyx.c, $$3));
+         }
       }
    }
 }

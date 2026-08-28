@@ -1,17 +1,19 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class elr implements elt {
-   private static final elr b = new elr();
-   public static final MapCodec<elr> a = MapCodec.unit(b);
+public class elr extends els {
+   public static final MapCodec<elr> a = MapCodec.unit(() -> elr.b);
+   public static final elr b = new elr();
 
-   @Override
-   public ud a(aym $$0, @Nullable ud $$1) {
-      return new ud();
+   private elr() {
    }
 
    @Override
-   public elu<?> a() {
-      return elu.a;
+   public boolean a(iz $$0, iz $$1, iz $$2, azc $$3) {
+      return true;
+   }
+
+   @Override
+   protected elt<?> a() {
+      return elt.a;
    }
 }

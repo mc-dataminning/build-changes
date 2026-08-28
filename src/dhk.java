@@ -1,72 +1,39 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.ToIntFunction;
 
-public class dhk extends dja implements ded, dlb {
-   public static final MapCodec<dhk> a = b(dhk::new);
-   private static final dru c = drt.C;
-   private final djb d = new djb(this);
+public class dhk extends dld {
+   public static final MapCodec<dhk> b = b(dhk::new);
 
    @Override
    public MapCodec<dhk> a() {
-      return a;
+      return b;
    }
 
-   public dhk(drc.d $$0) {
+   protected dhk(drw.d $$0) {
       super($$0);
-      this.k(this.n().a(c, Boolean.valueOf(false)));
-   }
-
-   public static ToIntFunction<drd> b(int $$0) {
-      return $$1 -> dja.n($$1) ? $$0 : 0;
+      this.k(this.E.b().a(a, je.b));
    }
 
    @Override
-   protected void a(dre.a<dea, drd> $$0) {
-      super.a($$0);
-      $$0.a(c);
+   public drx a(cxv $$0) {
+      je $$1 = $$0.k();
+      drx $$2 = $$0.q().a_($$0.a().a($$1.g()));
+      return $$2.a(this) && $$2.c(a) == $$1 ? this.n().a(a, $$1.g()) : this.n().a(a, $$1);
    }
 
    @Override
-   protected drd a(drd $$0, it $$1, drd $$2, dba $$3, io $$4, io $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, emx.c, emx.c.a($$3));
+   public void a(drx $$0, dbt $$1, iz $$2, azc $$3) {
+      je $$4 = $$0.c(a);
+      double $$5 = (double)$$2.u() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$6 = (double)$$2.v() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$7 = (double)$$2.w() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$8 = (double)(0.4F - ($$3.i() + $$3.i()) * 0.4F);
+      if ($$3.a(5) == 0) {
+         $$1.a(lj.t, $$5 + (double)$$4.j() * $$8, $$6 + (double)$$4.k() * $$8, $$7 + (double)$$4.l() * $$8, $$3.k() * 0.005, $$3.k() * 0.005, $$3.k() * 0.005);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean a(drd $$0, cxb $$1) {
-      return !$$1.n().a(ctt.fW) || super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean b(dbc $$0, io $$1, drd $$2) {
-      return it.a().anyMatch($$3 -> this.d.a($$2, $$0, $$1, $$3.g()));
-   }
-
-   @Override
-   public boolean a(daz $$0, aym $$1, io $$2, drd $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(aqn $$0, aym $$1, io $$2, drd $$3) {
-      this.d.a($$3, $$0, $$2, $$1);
-   }
-
-   @Override
-   protected emw b_(drd $$0) {
-      return $$0.c(c) ? emx.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean a_(drd $$0, daf $$1, io $$2) {
-      return $$0.u().c();
-   }
-
-   @Override
-   public djb c() {
-      return this.d;
+   protected void a(dry.a<deu, drx> $$0) {
+      $$0.a(a);
    }
 }

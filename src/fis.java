@@ -1,115 +1,61 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import java.nio.file.Path;
-import javax.annotation.Nullable;
+import java.util.Locale;
+import java.util.function.Supplier;
 
-public class fis extends gng implements gnh {
-   private static final int e = 256;
-   private final fit f;
-   private final boolean g;
-   private final fis.a h;
+public class fis extends fio {
+   private static final int f = -65536;
+   private static final int g = -256;
+   private static final int h = -16711936;
+   private static final int i = -6745839;
+   private static final int j = -4548257;
+   private static final int k = -10547572;
+   private final Supplier<Float> l;
 
-   public fis(fit $$0, boolean $$1) {
-      this.g = $$1;
-      this.h = new fis.a(0, 0, 256, 256);
-      TextureUtil.prepareImage($$1 ? exv.b.a : exv.b.d, this.a(), 256, 256);
-      this.f = $$0;
+   public fis(fgk $$0, blt $$1, Supplier<Float> $$2) {
+      super($$0, $$1);
+      this.l = $$2;
    }
 
    @Override
-   public void a(atx $$0) {
+   protected void d(fgm $$0, int $$1, int $$2, int $$3) {
+      float $$4 = (float)azu.c / this.l.get();
+      this.a($$0, String.format("%.1f TPS", $$4), $$1 + 1, $$3 - 60 + 1);
    }
 
    @Override
-   public void close() {
-      this.b();
-   }
-
-   @Nullable
-   public fiv a(ewy $$0) {
-      if ($$0.c() != this.g) {
-         return null;
-      } else {
-         fis.a $$1 = this.h.a($$0);
-         if ($$1 != null) {
-            this.c();
-            $$0.a($$1.a, $$1.b);
-            float $$2 = 256.0F;
-            float $$3 = 256.0F;
-            float $$4 = 0.01F;
-            return new fiv(
-               this.f,
-               ((float)$$1.a + 0.01F) / 256.0F,
-               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
-               ((float)$$1.b + 0.01F) / 256.0F,
-               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
-               $$0.e(),
-               $$0.f(),
-               $$0.g(),
-               $$0.h()
-            );
-         } else {
-            return null;
-         }
-      }
+   protected void c(fgm $$0, int $$1, int $$2, int $$3) {
+      long $$4 = this.e.a($$3, blu.b.ordinal());
+      int $$5 = this.b((double)$$4);
+      $$0.a(gdr.E(), $$2, $$1 - $$5, $$2 + 1, $$1, -6745839);
+      long $$6 = this.e.a($$3, blu.c.ordinal());
+      int $$7 = this.b((double)$$6);
+      $$0.a(gdr.E(), $$2, $$1 - $$5 - $$7, $$2 + 1, $$1 - $$5, -4548257);
+      long $$8 = this.e.a($$3) - this.e.a($$3, blu.d.ordinal()) - $$4 - $$6;
+      int $$9 = this.b((double)$$8);
+      $$0.a(gdr.E(), $$2, $$1 - $$9 - $$7 - $$5, $$2 + 1, $$1 - $$7 - $$5, -10547572);
    }
 
    @Override
-   public void a(akn $$0, Path $$1) {
-      String $$2 = $$0.c();
-      TextureUtil.writeAsPNG($$1, $$2, this.a(), 0, 256, 256, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
+   protected long b(int $$0) {
+      return this.e.a($$0) - this.e.a($$0, blu.d.ordinal());
    }
 
-   static class a {
-      final int a;
-      final int b;
-      private final int c;
-      private final int d;
-      @Nullable
-      private fis.a e;
-      @Nullable
-      private fis.a f;
-      private boolean g;
+   @Override
+   protected String a(double $$0) {
+      return String.format(Locale.ROOT, "%d ms", (int)Math.round(c($$0)));
+   }
 
-      a(int $$0, int $$1, int $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
+   @Override
+   protected int b(double $$0) {
+      return (int)Math.round(c($$0) * 60.0 / (double)this.l.get().floatValue());
+   }
 
-      @Nullable
-      fis.a a(ewy $$0) {
-         if (this.e != null && this.f != null) {
-            fis.a $$1 = this.e.a($$0);
-            if ($$1 == null) {
-               $$1 = this.f.a($$0);
-            }
+   @Override
+   protected int a(long $$0) {
+      float $$1 = this.l.get();
+      return this.a(c((double)$$0), (double)$$1, -16711936, (double)$$1 * 1.125, -256, (double)$$1 * 1.25, -65536);
+   }
 
-            return $$1;
-         } else if (this.g) {
-            return null;
-         } else {
-            int $$2 = $$0.a();
-            int $$3 = $$0.b();
-            if ($$2 > this.c || $$3 > this.d) {
-               return null;
-            } else if ($$2 == this.c && $$3 == this.d) {
-               this.g = true;
-               return this;
-            } else {
-               int $$4 = this.c - $$2;
-               int $$5 = this.d - $$3;
-               if ($$4 > $$5) {
-                  this.e = new fis.a(this.a, this.b, $$2, this.d);
-                  this.f = new fis.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
-               } else {
-                  this.e = new fis.a(this.a, this.b, this.c, $$3);
-                  this.f = new fis.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
-               }
-
-               return this.e.a($$0);
-            }
-         }
-      }
+   private static double c(double $$0) {
+      return $$0 / 1000000.0;
    }
 }

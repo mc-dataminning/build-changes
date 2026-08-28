@@ -1,39 +1,71 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-public class fgr {
-   public static final akn a = new akn("textures/gui/title/minecraft.png");
-   public static final akn b = new akn("textures/gui/title/minceraft.png");
-   public static final akn c = new akn("textures/gui/title/edition.png");
-   public static final int d = 256;
-   public static final int e = 44;
-   private static final int g = 256;
-   private static final int h = 64;
-   private static final int i = 128;
-   private static final int j = 14;
-   private static final int k = 128;
-   private static final int l = 16;
-   public static final int f = 30;
-   private static final int m = 7;
-   private final boolean n = (double)aym.a().i() < 1.0E-4;
-   private final boolean o;
+public abstract class fgr extends fgx implements fiu {
+   @Nullable
+   private fiv a;
+   private boolean b;
 
-   public fgr(boolean $$0) {
-      this.o = $$0;
+   public fgr(int $$0, int $$1, int $$2, int $$3, xl $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
-   public void a(ffn $$0, int $$1, float $$2) {
-      this.a($$0, $$1, $$2, 30);
+   @Override
+   public final boolean aH_() {
+      return this.b;
    }
 
-   public void a(ffn $$0, int $$1, float $$2, int $$3) {
-      $$0.a(1.0F, 1.0F, 1.0F, this.o ? 1.0F : $$2);
-      RenderSystem.enableBlend();
-      int $$4 = $$1 / 2 - 128;
-      $$0.a(this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64);
-      int $$5 = $$1 / 2 - 64;
-      int $$6 = $$3 + 44 - 7;
-      $$0.a(c, $$5, $$6, 0.0F, 0.0F, 128, 14, 128, 16);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.disableBlend();
+   @Override
+   public final void b(boolean $$0) {
+      this.b = $$0;
+   }
+
+   @Nullable
+   @Override
+   public fiv aI_() {
+      return this.a;
+   }
+
+   @Override
+   public void a(@Nullable fiv $$0) {
+      if (this.a != null) {
+         this.a.a(false);
+      }
+
+      if ($$0 != null) {
+         $$0.a(true);
+      }
+
+      this.a = $$0;
+   }
+
+   @Nullable
+   @Override
+   public fgj a(flb $$0) {
+      return fiu.super.a($$0);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      return fiu.super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      return fiu.super.b($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      return fiu.super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   public boolean aJ_() {
+      return fiu.super.aJ_();
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      fiu.super.a($$0);
    }
 }

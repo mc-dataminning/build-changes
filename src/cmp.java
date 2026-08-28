@@ -1,77 +1,55 @@
-public class cmp extends cmq {
-   public cmp(bsc<? extends cmp> $$0, daz $$1) {
-      super($$0, $$1);
+public class cmp {
+   public boolean a;
+   public boolean b;
+   public boolean c;
+   public boolean d;
+   public boolean e = true;
+   private float f = 0.05F;
+   private float g = 0.1F;
+
+   public void a(ur $$0) {
+      ur $$1 = new ur();
+      $$1.a("invulnerable", this.a);
+      $$1.a("flying", this.b);
+      $$1.a("mayfly", this.c);
+      $$1.a("instabuild", this.d);
+      $$1.a("mayBuild", this.e);
+      $$1.a("flySpeed", this.f);
+      $$1.a("walkSpeed", this.g);
+      $$0.a("abilities", $$1);
    }
 
-   public cmp(daz $$0, cgn $$1) {
-      this(bsc.ao, $$0);
-      this.c($$1);
-      this.a_(
-         $$1.du() - (double)($$1.dj() + 1.0F) * 0.5 * (double)ayf.a($$1.aY * (float) (Math.PI / 180.0)),
-         $$1.dy() - 0.1F,
-         $$1.dA() + (double)($$1.dj() + 1.0F) * 0.5 * (double)ayf.b($$1.aY * (float) (Math.PI / 180.0))
-      );
-   }
+   public void b(ur $$0) {
+      if ($$0.b("abilities", 10)) {
+         ur $$1 = $$0.p("abilities");
+         this.a = $$1.q("invulnerable");
+         this.b = $$1.q("flying");
+         this.c = $$1.q("mayfly");
+         this.d = $$1.q("instabuild");
+         if ($$1.b("flySpeed", 99)) {
+            this.f = $$1.j("flySpeed");
+            this.g = $$1.j("walkSpeed");
+         }
 
-   @Override
-   protected double aY() {
-      return 0.06;
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      eum $$0 = this.ds();
-      euk $$1 = cms.a(this, this::b);
-      this.b($$1);
-      double $$2 = this.du() + $$0.c;
-      double $$3 = this.dw() + $$0.d;
-      double $$4 = this.dA() + $$0.e;
-      this.J();
-      float $$5 = 0.99F;
-      if (this.dP().a(this.cK()).noneMatch(drc.a::i)) {
-         this.ao();
-      } else if (this.bh()) {
-         this.ao();
-      } else {
-         this.g($$0.a(0.99F));
-         this.ba();
-         this.a_($$2, $$3, $$4);
+         if ($$1.b("mayBuild", 1)) {
+            this.e = $$1.q("mayBuild");
+         }
       }
    }
 
-   @Override
-   protected void a(euj $$0) {
-      super.a($$0);
-      if (this.s() instanceof bsq $$1) {
-         $$0.a().a(this.dQ().b(this, $$1), 1.0F);
-      }
+   public float a() {
+      return this.f;
    }
 
-   @Override
-   protected void a(eui $$0) {
-      super.a($$0);
-      if (!this.dP().B) {
-         this.ao();
-      }
+   public void a(float $$0) {
+      this.f = $$0;
    }
 
-   @Override
-   protected void a(ajw.a $$0) {
+   public float b() {
+      return this.g;
    }
 
-   @Override
-   public void a(abr $$0) {
-      super.a($$0);
-      double $$1 = $$0.j();
-      double $$2 = $$0.k();
-      double $$3 = $$0.l();
-
-      for (int $$4 = 0; $$4 < 7; $$4++) {
-         double $$5 = 0.4 + 0.1 * (double)$$4;
-         this.dP().a(ky.ah, this.du(), this.dw(), this.dA(), $$1 * $$5, $$2, $$3 * $$5);
-      }
-
-      this.o($$1, $$2, $$3);
+   public void b(float $$0) {
+      this.g = $$0;
    }
 }

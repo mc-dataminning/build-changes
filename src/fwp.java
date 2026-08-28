@@ -1,106 +1,46 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class fwp extends fvs {
+   private final fwv a;
+   private final fwv b;
 
-public class fwp extends fwo implements aay, wl {
-   private static final Logger j = LogUtils.getLogger();
-   private final GameProfile k;
-   private col l;
-   private final jl.b m;
-   private final fxe n = new fxe();
-   @Nullable
-   private fwx o;
-   @Nullable
-   protected fgb.b i;
+   public fwp(fwv $$0) {
+      this.a = $$0.b("head");
+      this.b = this.a.b("jaw");
+   }
 
-   public fwp(feb $$0, vv $$1, fwv $$2) {
-      super($$0, $$1, $$2);
-      this.k = $$2.a();
-      this.m = $$2.c();
-      this.l = $$2.d();
-      this.i = $$2.i();
+   public static fxb a() {
+      fxd $$0 = new fxd();
+      fxe $$1 = $$0.a();
+      float $$2 = -16.0F;
+      fxe $$3 = $$1.a(
+         "head",
+         fxa.c()
+            .a("upper_lip", -6.0F, -1.0F, -24.0F, 12, 5, 16, 176, 44)
+            .a("upper_head", -8.0F, -8.0F, -10.0F, 16, 16, 16, 112, 30)
+            .a(true)
+            .a("scale", -5.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
+            .a("nostril", -5.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0)
+            .a(false)
+            .a("scale", 3.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
+            .a("nostril", 3.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0),
+         fwx.a
+      );
+      $$3.a("jaw", fxa.c().a(176, 65).a("jaw", -6.0F, 0.0F, -16.0F, 12.0F, 4.0F, 16.0F), fwx.a(0.0F, 4.0F, -8.0F));
+      return fxb.a($$0, 256, 256);
    }
 
    @Override
-   public boolean c() {
-      return this.b.i();
+   public void a(float $$0, float $$1, float $$2) {
+      this.b.e = (float)(Math.sin((double)($$0 * (float) Math.PI * 0.2F)) + 1.0) * 0.2F;
+      this.a.f = $$1 * (float) (Math.PI / 180.0);
+      this.a.e = $$2 * (float) (Math.PI / 180.0);
    }
 
    @Override
-   protected void a(aaf $$0) {
-      this.b($$0);
-   }
-
-   private void b(aaf $$0) {
-      j.warn("Unknown custom packet payload: {}", $$0.a().a());
-   }
-
-   @Override
-   public void a(aba $$0) {
-      zh.a($$0, this, this.a);
-      this.n.a($$0.b(), $$0.e());
-   }
-
-   @Override
-   public void a(zt $$0) {
-      zh.a($$0, this, this.a);
-      this.n.a($$0.b());
-   }
-
-   @Override
-   public void a(abd $$0) {
-      this.l = coo.e.a($$0.b());
-   }
-
-   @Override
-   public void a(abc $$0) {
-      zh.a($$0, this, this.a);
-      if (this.o == null) {
-         this.o = new fwx();
-      }
-
-      List<ate> $$1 = this.o.a($$0.b());
-      this.b(new abi($$1));
-   }
-
-   @Override
-   public void a(abb $$0) {
-      this.i = null;
-   }
-
-   private <T> T a(Function<aua, T> $$0) {
-      if (this.o == null) {
-         return $$0.apply(aua.b);
-      } else {
-         Object var3;
-         try (atn $$1 = this.o.a()) {
-            var3 = $$0.apply($$1);
-         }
-
-         return (T)var3;
-      }
-   }
-
-   @Override
-   public void a(aaz $$0) {
-      zh.a($$0, this, this.a);
-      jl.b $$1 = this.a($$0x -> this.n.a($$0x, this.m, this.b.e()));
-      this.b.a(agd.b.bind(wi.a($$1)), new fws(this.a, this.b, new fwv(this.k, this.e, $$1, this.l, this.d, this.c, this.f, this.h, this.i)));
-      this.b.a(abh.a);
-      this.b.a(agd.a.bind(wi.a($$1)));
-   }
-
-   @Override
-   public void e() {
-      this.f();
-   }
-
-   @Override
-   public void a(wx $$0) {
-      super.a($$0);
-      this.a.B();
+   public void a(ezt $$0, ezx $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      $$0.a();
+      $$0.a(0.0F, -0.374375F, 0.0F);
+      $$0.b(0.75F, 0.75F, 0.75F);
+      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      $$0.b();
    }
 }

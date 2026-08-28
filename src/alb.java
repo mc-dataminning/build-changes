@@ -1,97 +1,263 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import java.util.concurrent.Executor;
-import org.slf4j.Logger;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import io.netty.buffer.ByteBuf;
+import java.lang.reflect.Type;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class alb implements atr {
-   private static final Logger a = LogUtils.getLogger();
-   private static final akg b = new akg("functions", ".mcfunction");
-   private volatile Map<akn, hq<ee>> c = ImmutableMap.of();
-   private final awn<hq<ee>> d = new awn<>(this::a, "tags/functions");
-   private volatile Map<akn, Collection<hq<ee>>> e = Map.of();
-   private final int f;
-   private final CommandDispatcher<ee> g;
+public class alb implements Comparable<alb> {
+   public static final Codec<alb> a = Codec.STRING.comapFlatMap(alb::b, alb::toString).stable();
+   public static final zj<ByteBuf, alb> b = zh.l.a(alb::new, alb::toString);
+   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xl.c("argument.id.invalid"));
+   public static final char d = ':';
+   public static final String e = "minecraft";
+   public static final String f = "realms";
+   private final String g;
+   private final String h;
 
-   public Optional<hq<ee>> a(akn $$0) {
-      return Optional.ofNullable(this.c.get($$0));
+   protected alb(String $$0, String $$1, @Nullable alb.a $$2) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   public Map<akn, hq<ee>> a() {
-      return this.c;
+   public alb(String $$0, String $$1) {
+      this(c($$0, $$1), d($$0, $$1), null);
    }
 
-   public Collection<hq<ee>> b(akn $$0) {
-      return this.e.getOrDefault($$0, List.of());
+   private alb(String[] $$0) {
+      this($$0[0], $$0[1]);
    }
 
-   public Iterable<akn> b() {
-      return this.e.keySet();
+   public alb(String $$0) {
+      this(b($$0, ':'));
    }
 
-   public alb(int $$0, CommandDispatcher<ee> $$1) {
-      this.f = $$0;
-      this.g = $$1;
+   public static alb a(String $$0, char $$1) {
+      return new alb(b($$0, $$1));
+   }
+
+   @Nullable
+   public static alb a(String $$0) {
+      try {
+         return new alb($$0);
+      } catch (z var2) {
+         return null;
+      }
+   }
+
+   @Nullable
+   public static alb a(String $$0, String $$1) {
+      try {
+         return new alb($$0, $$1);
+      } catch (z var3) {
+         return null;
+      }
+   }
+
+   protected static String[] b(String $$0, char $$1) {
+      String[] $$2 = new String[]{"minecraft", $$0};
+      int $$3 = $$0.indexOf($$1);
+      if ($$3 >= 0) {
+         $$2[1] = $$0.substring($$3 + 1);
+         if ($$3 >= 1) {
+            $$2[0] = $$0.substring(0, $$3);
+         }
+      }
+
+      return $$2;
+   }
+
+   public static DataResult<alb> b(String $$0) {
+      try {
+         return DataResult.success(new alb($$0));
+      } catch (z var2) {
+         return DataResult.error(() -> "Not a valid resource location: " + $$0 + " " + var2.getMessage());
+      }
+   }
+
+   public String a() {
+      return this.h;
+   }
+
+   public String b() {
+      return this.g;
+   }
+
+   public alb c(String $$0) {
+      return new alb(this.g, d(this.g, $$0), null);
+   }
+
+   public alb a(UnaryOperator<String> $$0) {
+      return this.c($$0.apply(this.h));
+   }
+
+   public alb d(String $$0) {
+      return this.c($$0 + this.h);
+   }
+
+   public alb e(String $$0) {
+      return this.c(this.h + $$0);
    }
 
    @Override
-   public CompletableFuture<Void> a(atr.a $$0, atx $$1, bmk $$2, bmk $$3, Executor $$4, Executor $$5) {
-      CompletableFuture<Map<akn, List<awn.a>>> $$6 = CompletableFuture.supplyAsync(() -> this.d.a($$1), $$4);
-      CompletableFuture<Map<akn, CompletableFuture<hq<ee>>>> $$7 = CompletableFuture.<Map<akn, atv>>supplyAsync(() -> b.a($$1), $$4).thenCompose($$1x -> {
-         Map<akn, CompletableFuture<hq<ee>>> $$2x = Maps.newHashMap();
-         ee $$3x = new ee(ed.a, eum.b, eul.a, null, this.f, "", ww.a, null, null);
-
-         for (Entry<akn, atv> $$4x : $$1x.entrySet()) {
-            akn $$5x = $$4x.getKey();
-            akn $$6x = b.b($$5x);
-            $$2x.put($$6x, CompletableFuture.supplyAsync(() -> {
-               List<String> $$3xx = a($$4x.getValue());
-               return hq.a($$6x, this.g, $$3x, $$3xx);
-            }, $$4));
-         }
-
-         CompletableFuture<?>[] $$7x = $$2x.values().toArray(new CompletableFuture[0]);
-         return CompletableFuture.allOf($$7x).handle(($$1xx, $$2xx) -> $$2x);
-      });
-      return $$6.thenCombine($$7, Pair::of).thenCompose($$0::a).thenAcceptAsync($$0x -> {
-         Map<akn, CompletableFuture<hq<ee>>> $$1x = (Map<akn, CompletableFuture<hq<ee>>>)$$0x.getSecond();
-         Builder<akn, hq<ee>> $$2x = ImmutableMap.builder();
-         $$1x.forEach(($$1xx, $$2xx) -> $$2xx.handle(($$2xxx, $$3x) -> {
-               if ($$3x != null) {
-                  a.error("Failed to load function {}", $$1xx, $$3x);
-               } else {
-                  $$2x.put($$1xx, $$2xxx);
-               }
-
-               return null;
-            }).join());
-         this.c = $$2x.build();
-         this.e = this.d.a((Map<akn, List<awn.a>>)$$0x.getFirst());
-      }, $$5);
+   public String toString() {
+      return this.g + ":" + this.h;
    }
 
-   private static List<String> a(atv $$0) {
-      try {
-         List var2;
-         try (BufferedReader $$1 = $$0.e()) {
-            var2 = $$1.lines().toList();
-         }
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof alb $$1) ? false : this.g.equals($$1.g) && this.h.equals($$1.h);
+      }
+   }
 
-         return var2;
-      } catch (IOException var6) {
-         throw new CompletionException(var6);
+   @Override
+   public int hashCode() {
+      return 31 * this.g.hashCode() + this.h.hashCode();
+   }
+
+   public int a(alb $$0) {
+      int $$1 = this.h.compareTo($$0.h);
+      if ($$1 == 0) {
+         $$1 = this.g.compareTo($$0.g);
+      }
+
+      return $$1;
+   }
+
+   public String c() {
+      return this.toString().replace('/', '_').replace(':', '_');
+   }
+
+   public String d() {
+      return this.g + "." + this.h;
+   }
+
+   public String e() {
+      return this.g.equals("minecraft") ? this.h : this.d();
+   }
+
+   public String f(String $$0) {
+      return $$0 + "." + this.d();
+   }
+
+   public String b(String $$0, String $$1) {
+      return $$0 + "." + this.d() + "." + $$1;
+   }
+
+   private static String c(StringReader $$0) {
+      int $$1 = $$0.getCursor();
+
+      while ($$0.canRead() && a($$0.peek())) {
+         $$0.skip();
+      }
+
+      return $$0.getString().substring($$1, $$0.getCursor());
+   }
+
+   public static alb a(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = $$0.getCursor();
+      String $$2 = c($$0);
+
+      try {
+         return new alb($$2);
+      } catch (z var4) {
+         $$0.setCursor($$1);
+         throw c.createWithContext($$0);
+      }
+   }
+
+   public static alb b(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = $$0.getCursor();
+      String $$2 = c($$0);
+      if ($$2.isEmpty()) {
+         throw c.createWithContext($$0);
+      } else {
+         try {
+            return new alb($$2);
+         } catch (z var4) {
+            $$0.setCursor($$1);
+            throw c.createWithContext($$0);
+         }
+      }
+   }
+
+   public static boolean a(char $$0) {
+      return $$0 >= '0' && $$0 <= '9' || $$0 >= 'a' && $$0 <= 'z' || $$0 == '_' || $$0 == ':' || $$0 == '/' || $$0 == '.' || $$0 == '-';
+   }
+
+   public static boolean g(String $$0) {
+      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
+         if (!b($$0.charAt($$1))) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static boolean h(String $$0) {
+      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
+         if (!c($$0.charAt($$1))) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   private static String c(String $$0, String $$1) {
+      if (!h($$0)) {
+         throw new z("Non [a-z0-9_.-] character in namespace of location: " + $$0 + ":" + $$1);
+      } else {
+         return $$0;
+      }
+   }
+
+   public static boolean b(char $$0) {
+      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '/' || $$0 == '.';
+   }
+
+   private static boolean c(char $$0) {
+      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '.';
+   }
+
+   public static boolean i(String $$0) {
+      String[] $$1 = b($$0, ':');
+      return h(StringUtils.isEmpty($$1[0]) ? "minecraft" : $$1[0]) && g($$1[1]);
+   }
+
+   private static String d(String $$0, String $$1) {
+      if (!g($$1)) {
+         throw new z("Non [a-z0-9/._-] character in path of location: " + $$0 + ":" + $$1);
+      } else {
+         return $$1;
+      }
+   }
+
+   protected interface a {
+   }
+
+   public static class b implements JsonDeserializer<alb>, JsonSerializer<alb> {
+      public alb a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         return new alb(ayk.a($$0, "location"));
+      }
+
+      public JsonElement a(alb $$0, Type $$1, JsonSerializationContext $$2) {
+         return new JsonPrimitive($$0.toString());
       }
    }
 }

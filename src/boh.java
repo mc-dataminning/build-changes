@@ -1,52 +1,22 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import org.slf4j.Logger;
+import java.time.Duration;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class boh {
-   public static final Codec<boh> a = Codec.INT.xmap(boh::a, boh::a);
-   private static final boh b = new boh(1);
-   private static final Logger c = LogUtils.getLogger();
-   private final int d;
-
-   private boh(int $$0) {
-      this.d = $$0;
-   }
-
-   public static boh a(int $$0) {
-      if ($$0 == 1) {
-         return b;
+public record boh<T extends bog>(T a, T b, @Nullable T c, int d, Map<Integer, Double> e, Duration f) {
+   public static <T extends bog> boh<T> a(List<T> $$0) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("No values");
       } else {
-         b($$0);
-         return new boh($$0);
+         List<T> $$1 = $$0.stream().sorted(Comparator.comparing(bog::a)).toList();
+         Duration $$2 = $$1.stream().map(bog::a).reduce(Duration::plus).orElse(Duration.ZERO);
+         T $$3 = (T)$$1.get(0);
+         T $$4 = (T)$$1.get($$1.size() - 1);
+         T $$5 = $$1.size() > 1 ? $$1.get($$1.size() - 2) : null;
+         int $$6 = $$1.size();
+         Map<Integer, Double> $$7 = bnk.a($$1.stream().mapToLong($$0x -> $$0x.a().toNanos()).toArray());
+         return new boh<>($$3, $$4, $$5, $$6, $$7, $$2);
       }
-   }
-
-   public int a() {
-      return this.d;
-   }
-
-   private static void b(int $$0) {
-      if ($$0 < 0) {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Weight should be >= 0"));
-      } else {
-         if ($$0 == 0 && aa.aX) {
-            c.warn("Found 0 weight, make sure this is intentional!");
-         }
-      }
-   }
-
-   @Override
-   public String toString() {
-      return Integer.toString(this.d);
-   }
-
-   @Override
-   public int hashCode() {
-      return Integer.hashCode(this.d);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof boh && this.d == ((boh)$$0).d;
    }
 }

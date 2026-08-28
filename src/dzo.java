@@ -1,52 +1,61 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dzo extends dzz<eck> {
-   public dzo(Codec<eck> $$0) {
-      super($$0);
+public class dzo {
+   public static final dzo a = new dzo(false, dew.gz.n(), dew.pL.n(), dew.ej.n(), dew.aQ.n());
+   public static final Codec<dzo> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(dzo::a),
+               drx.b.optionalFieldOf("air_state", a.b()).forGetter(dzo::b),
+               drx.b.optionalFieldOf("water_state", a.b()).forGetter(dzo::c),
+               drx.b.optionalFieldOf("lava_state", a.b()).forGetter(dzo::d),
+               drx.b.optionalFieldOf("barrier_state", a.b()).forGetter(dzo::e)
+            )
+            .apply($$0, dzo::new)
+   );
+   private final boolean c;
+   private final drx d;
+   private final drx e;
+   private final drx f;
+   private final drx g;
+
+   public static dzo a(boolean $$0, drx $$1, drx $$2, drx $$3, drx $$4) {
+      return new dzo($$0, $$1, $$2, $$3, $$4);
    }
 
-   @Override
-   public boolean a(eab<eck> $$0) {
-      aym $$1 = $$0.d();
-      dbu $$2 = $$0.b();
-      io $$3 = $$0.e();
-      Optional<dea> $$4 = le.e.a(avx.aq, $$1).map(ix::a);
-      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().n());
+   public static dzo a(drx $$0, drx $$1, drx $$2, drx $$3) {
+      return new dzo(false, $$0, $$1, $$2, $$3);
    }
 
-   protected abstract boolean a(dba var1, aym var2, io var3, drd var4);
+   public static dzo a(boolean $$0, drx $$1) {
+      return new dzo($$0, $$1, a.c(), a.d(), a.e());
+   }
 
-   protected boolean b(dba $$0, aym $$1, io $$2, drd $$3) {
-      io $$4 = $$2.c();
-      drd $$5 = $$0.a_($$2);
-      if (($$5.a(dec.G) || $$5.a(avx.at)) && $$0.a_($$4).a(dec.G)) {
-         $$0.a($$2, $$3, 3);
-         if ($$1.i() < 0.25F) {
-            le.e.a(avx.at, $$1).map(ix::a).ifPresent($$2x -> $$0.a($$4, $$2x.n(), 2));
-         } else if ($$1.i() < 0.05F) {
-            $$0.a($$4, dec.mV.n().a(dkx.c, Integer.valueOf($$1.a(4) + 1)), 2);
-         }
+   private dzo(boolean $$0, drx $$1, drx $$2, drx $$3, drx $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+   }
 
-         for (it $$6 : it.c.a) {
-            if ($$1.i() < 0.2F) {
-               io $$7 = $$2.a($$6);
-               if ($$0.a_($$7).a(dec.G)) {
-                  le.e.a(avx.ar, $$1).map(ix::a).ifPresent($$3x -> {
-                     drd $$4x = $$3x.n();
-                     if ($$4x.b(ddl.c)) {
-                        $$4x = $$4x.a(ddl.c, $$6);
-                     }
+   public boolean a() {
+      return this.c;
+   }
 
-                     $$0.a($$7, $$4x, 2);
-                  });
-               }
-            }
-         }
+   public drx b() {
+      return this.d;
+   }
 
-         return true;
-      } else {
-         return false;
-      }
+   public drx c() {
+      return this.e;
+   }
+
+   public drx d() {
+      return this.f;
+   }
+
+   public drx e() {
+      return this.g;
    }
 }

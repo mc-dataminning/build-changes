@@ -1,99 +1,24 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
+import java.util.function.Function;
 
-public class dzs extends dzz<eck> {
-   private static final drm a = drm.a(dec.I);
-   private final drd b = dec.I.n();
-   private final drd c = dec.jF.n();
-   private final drd d = dec.aV.n();
-   private final drd an = dec.G.n();
+public record dzs<WC extends dzn>(dzu<WC> d, WC e) {
+   public static final Codec<dzs<?>> a = lp.P.q().dispatch($$0 -> $$0.d, dzu::c);
+   public static final Codec<ji<dzs<?>>> b = akx.a(lq.aB, a);
+   public static final Codec<jm<dzs<?>>> c = jx.a(lq.aB, a);
 
-   public dzs(Codec<eck> $$0) {
-      super($$0);
+   public boolean a(azc $$0) {
+      return this.d.a(this.e, $$0);
    }
 
-   @Override
-   public boolean a(eab<eck> $$0) {
-      dbu $$1 = $$0.b();
-      io $$2 = $$0.e();
-      $$2 = $$2.c();
-
-      while ($$1.u($$2) && $$2.v() > $$1.I_() + 2) {
-         $$2 = $$2.d();
-      }
-
-      if (!a.a($$1.a_($$2))) {
-         return false;
-      } else {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            for (int $$4 = -2; $$4 <= 2; $$4++) {
-               if ($$1.u($$2.b($$3, -1, $$4)) && $$1.u($$2.b($$3, -2, $$4))) {
-                  return false;
-               }
-            }
-         }
-
-         for (int $$5 = -2; $$5 <= 0; $$5++) {
-            for (int $$6 = -2; $$6 <= 2; $$6++) {
-               for (int $$7 = -2; $$7 <= 2; $$7++) {
-                  $$1.a($$2.b($$6, $$5, $$7), this.d, 2);
-               }
-            }
-         }
-
-         $$1.a($$2, this.an, 2);
-
-         for (it $$8 : it.c.a) {
-            $$1.a($$2.a($$8), this.an, 2);
-         }
-
-         io $$9 = $$2.d();
-         $$1.a($$9, this.b, 2);
-
-         for (it $$10 : it.c.a) {
-            $$1.a($$9.a($$10), this.b, 2);
-         }
-
-         for (int $$11 = -2; $$11 <= 2; $$11++) {
-            for (int $$12 = -2; $$12 <= 2; $$12++) {
-               if ($$11 == -2 || $$11 == 2 || $$12 == -2 || $$12 == 2) {
-                  $$1.a($$2.b($$11, 1, $$12), this.d, 2);
-               }
-            }
-         }
-
-         $$1.a($$2.b(2, 1, 0), this.c, 2);
-         $$1.a($$2.b(-2, 1, 0), this.c, 2);
-         $$1.a($$2.b(0, 1, 2), this.c, 2);
-         $$1.a($$2.b(0, 1, -2), this.c, 2);
-
-         for (int $$13 = -1; $$13 <= 1; $$13++) {
-            for (int $$14 = -1; $$14 <= 1; $$14++) {
-               if ($$13 == 0 && $$14 == 0) {
-                  $$1.a($$2.b($$13, 4, $$14), this.d, 2);
-               } else {
-                  $$1.a($$2.b($$13, 4, $$14), this.c, 2);
-               }
-            }
-         }
-
-         for (int $$15 = 1; $$15 <= 3; $$15++) {
-            $$1.a($$2.b(-1, $$15, -1), this.d, 2);
-            $$1.a($$2.b(-1, $$15, 1), this.d, 2);
-            $$1.a($$2.b(1, $$15, -1), this.d, 2);
-            $$1.a($$2.b(1, $$15, 1), this.d, 2);
-         }
-
-         List<io> $$17 = List.of($$2, $$2.h(), $$2.f(), $$2.g(), $$2.e());
-         aym $$18 = $$0.d();
-         b($$1, ac.a($$17, $$18).c(1));
-         b($$1, ac.a($$17, $$18).c(2));
-         return true;
-      }
+   public boolean a(dzp $$0, dtt $$1, Function<iz, ji<dcs>> $$2, azc $$3, dxb $$4, dba $$5, dts $$6) {
+      return aa.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   private static void b(dbu $$0, io $$1) {
-      $$0.a($$1, dec.J.n(), 3);
-      $$0.a($$1, dok.N).ifPresent($$1x -> $$1x.a(epf.bb, $$1.a()));
+   public dzu<WC> a() {
+      return this.d;
+   }
+
+   public WC b() {
+      return this.e;
    }
 }

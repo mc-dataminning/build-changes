@@ -1,126 +1,45 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import java.util.function.Consumer;
 
-public class eqm extends eqs {
-   public static final awm<ehl> a = awi.l;
-   public static final ix<eog> b = eoh.i;
-   public static final byte c = 2;
-   public static final int d = 50;
-   public static final boolean e = true;
-   public static final MapCodec<eqm> f = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  awm.a(lf.aJ).optionalFieldOf("destination", a).forGetter($$0x -> $$0x.h),
-                  eog.b.optionalFieldOf("decoration", b).forGetter($$0x -> $$0x.i),
-                  Codec.BYTE.optionalFieldOf("zoom", (byte)2).forGetter($$0x -> $$0x.j),
-                  Codec.INT.optionalFieldOf("search_radius", 50).forGetter($$0x -> $$0x.k),
-                  Codec.BOOL.optionalFieldOf("skip_existing_chunks", true).forGetter($$0x -> $$0x.l)
-               )
-            )
-            .apply($$0, eqm::new)
-   );
-   private final awm<ehl> h;
-   private final ix<eog> i;
-   private final byte j;
-   private final int k;
-   private final boolean l;
+public abstract class eqm extends eqt {
+   protected final List<eqt> d;
+   private final eql a;
 
-   eqm(List<esn> $$0, awm<ehl> $$1, ix<eog> $$2, byte $$3, int $$4, boolean $$5) {
-      super($$0);
-      this.h = $$1;
-      this.i = $$2;
-      this.j = $$3;
-      this.k = $$4;
-      this.l = $$5;
+   protected eqm(List<eqt> $$0, List<etn> $$1) {
+      super($$1);
+      this.d = $$0;
+      this.a = this.a($$0);
    }
 
    @Override
-   public equ b() {
-      return eqv.p;
+   public void a(eqj $$0) {
+      super.a($$0);
+      if (this.d.isEmpty()) {
+         $$0.b("Empty children list");
+      }
+
+      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
+         this.d.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+      }
    }
+
+   protected abstract eql a(List<? extends eql> var1);
 
    @Override
-   public Set<erw<?>> a() {
-      return ImmutableSet.of(erz.f);
+   public final boolean expand(eqd $$0, Consumer<eqs> $$1) {
+      return !this.a($$0) ? false : this.a.expand($$0, $$1);
    }
 
-   @Override
-   public ctq a(ctq $$0, eph $$1) {
-      if (!$$0.a(ctt.uj)) {
-         return $$0;
-      } else {
-         eum $$2 = $$1.c(erz.f);
-         if ($$2 != null) {
-            aqn $$3 = $$1.d();
-            io $$4 = $$3.a(this.h, io.a($$2), this.k, this.l);
-            if ($$4 != null) {
-               ctq $$5 = cty.a($$3, $$4.u(), $$4.w(), this.j, true, true);
-               cty.a($$3, $$5);
-               eol.a($$5, $$4, "+", this.i);
-               return $$5;
-            }
-         }
-
-         return $$0;
-      }
+   public static <T extends eqm> MapCodec<T> a(eqm.a<T> $$0) {
+      return RecordCodecBuilder.mapCodec(
+         $$1 -> $$1.group(eqr.a.listOf().optionalFieldOf("children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
+      );
    }
 
-   public static eqm.a c() {
-      return new eqm.a();
-   }
-
-   public static class a extends eqs.a<eqm.a> {
-      private awm<ehl> a;
-      private ix<eog> b;
-      private byte c;
-      private int d;
-      private boolean e;
-
-      public a() {
-         this.a = eqm.a;
-         this.b = eqm.b;
-         this.c = 2;
-         this.d = 50;
-         this.e = true;
-      }
-
-      protected eqm.a a() {
-         return this;
-      }
-
-      public eqm.a a(awm<ehl> $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public eqm.a a(ix<eog> $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public eqm.a a(byte $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public eqm.a a(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public eqm.a a(boolean $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      @Override
-      public eqt b() {
-         return new eqm(this.g(), this.a, this.b, this.c, this.d, this.e);
-      }
+   @FunctionalInterface
+   public interface a<T extends eqm> {
+      T create(List<eqt> var1, List<etn> var2);
    }
 }

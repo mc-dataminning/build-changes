@@ -1,35 +1,70 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public interface cya<T extends cxw<?>> {
-   cya<cyd> a = a("crafting_shaped", new cyd.a());
-   cya<cyf> b = a("crafting_shapeless", new cyf.a());
-   cya<cxg> c = a("crafting_special_armordye", new cyj<>(cxg::new));
-   cya<cxj> d = a("crafting_special_bookcloning", new cyj<>(cxj::new));
-   cya<cxu> e = a("crafting_special_mapcloning", new cyj<>(cxu::new));
-   cya<cxv> f = a("crafting_special_mapextending", new cyj<>(cxv::new));
-   cya<cxq> g = a("crafting_special_firework_rocket", new cyj<>(cxq::new));
-   cya<cxs> h = a("crafting_special_firework_star", new cyj<>(cxs::new));
-   cya<cxr> i = a("crafting_special_firework_star_fade", new cyj<>(cxr::new));
-   cya<cys> j = a("crafting_special_tippedarrow", new cyj<>(cys::new));
-   cya<cxh> k = a("crafting_special_bannerduplicate", new cyj<>(cxh::new));
-   cya<cyg> l = a("crafting_special_shielddecoration", new cyj<>(cyg::new));
-   cya<cyh> m = a("crafting_special_shulkerboxcoloring", new cyj<>(cyh::new));
-   cya<cyr> n = a("crafting_special_suspiciousstew", new cyj<>(cyr::new));
-   cya<cyc> o = a("crafting_special_repairitem", new cyj<>(cyc::new));
-   cya<cyl> p = a("smelting", new cyi<>(cyl::new, 200));
-   cya<cxi> q = a("blasting", new cyi<>(cxi::new, 100));
-   cya<cyp> r = a("smoking", new cyi<>(cyp::new, 100));
-   cya<cxk> s = a("campfire_cooking", new cyi<>(cxk::new, 100));
-   cya<cyq> t = a("stonecutting", new cyk.b<>(cyq::new));
-   cya<cyn> u = a("smithing_transform", new cyn.a());
-   cya<cyo> v = a("smithing_trim", new cyo.a());
-   cya<cxp> w = a("crafting_decorated_pot", new cyj<>(cxp::new));
+public class cya extends cyi {
+   public cya(cyg $$0) {
+      super($$0);
+   }
 
-   MapCodec<T> a();
+   public boolean a(cqf $$0, dbt $$1) {
+      cuk $$2 = cuk.l;
+      List<cuk> $$3 = Lists.newArrayList();
 
-   yv<wi, T> b();
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cuk $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            if ($$5.a(awu.by)) {
+               if (!$$2.e()) {
+                  return false;
+               }
 
-   static <S extends cya<T>, T extends cxw<?>> S a(String $$0, S $$1) {
-      return jk.a(le.t, $$0, $$1);
+               $$2 = $$5;
+            } else {
+               if (!($$5.g() instanceof cte)) {
+                  return false;
+               }
+
+               $$3.add($$5);
+            }
+         }
+      }
+
+      return !$$2.e() && !$$3.isEmpty();
+   }
+
+   public cuk a(cqf $$0, jk.a $$1) {
+      List<cte> $$2 = Lists.newArrayList();
+      cuk $$3 = cuk.l;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cuk $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            if ($$5.a(awu.by)) {
+               if (!$$3.e()) {
+                  return cuk.l;
+               }
+
+               $$3 = $$5.s();
+            } else {
+               if (!($$5.g() instanceof cte $$6)) {
+                  return cuk.l;
+               }
+
+               $$2.add($$6);
+            }
+         }
+      }
+
+      return !$$3.e() && !$$2.isEmpty() ? cxc.a($$3, $$2) : cuk.l;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
+   }
+
+   @Override
+   public cyu<?> ap_() {
+      return cyu.c;
    }
 }

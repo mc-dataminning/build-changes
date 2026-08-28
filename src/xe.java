@@ -1,71 +1,57 @@
-import com.google.common.primitives.Ints;
-import com.mojang.serialization.Codec;
-import java.security.SignatureException;
-import java.util.ArrayList;
-import java.util.BitSet;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.ByteToMessageDecoder;
+import io.netty.handler.codec.CorruptedFrameException;
 import java.util.List;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record xe(List<xj> d) {
-   public static final Codec<xe> a = xj.a.listOf().xmap(xe::new, xe::a);
-   public static xe b = new xe(List.of());
-   public static final int c = 20;
+public class xe extends ByteToMessageDecoder {
+   private static final int a = 3;
+   private final ByteBuf b = Unpooled.directBuffer(3);
+   @Nullable
+   private final wc c;
 
-   public void a(ayq.a $$0) throws SignatureException {
-      $$0.update(Ints.toByteArray(this.d.size()));
-
-      for (xj $$1 : this.d) {
-         $$0.update($$1.b());
-      }
+   public xe(@Nullable wc $$0) {
+      this.c = $$0;
    }
 
-   public xe.a a(xk $$0) {
-      return new xe.a(this.d.stream().map($$1 -> $$1.a($$0)).toList());
+   protected void handlerRemoved0(ChannelHandlerContext $$0) {
+      this.b.release();
    }
 
-   public List<xj> a() {
-      return this.d;
-   }
-
-   public static record a(List<xj.a> b) {
-      public static final xe.a a = new xe.a(List.of());
-
-      public a(vx $$0) {
-         this($$0.a(vx.a(ArrayList::new, 20), xj.a::a));
-      }
-
-      public void a(vx $$0) {
-         $$0.a(this.b, xj.a::a);
-      }
-
-      public Optional<xe> a(xk $$0) {
-         List<xj> $$1 = new ArrayList<>(this.b.size());
-
-         for (xj.a $$2 : this.b) {
-            Optional<xj> $$3 = $$2.a($$0);
-            if ($$3.isEmpty()) {
-               return Optional.empty();
-            }
-
-            $$1.add($$3.get());
+   private static boolean a(ByteBuf $$0, ByteBuf $$1) {
+      for (int $$2 = 0; $$2 < 3; $$2++) {
+         if (!$$0.isReadable()) {
+            return false;
          }
 
-         return Optional.of(new xe($$1));
+         byte $$3 = $$0.readByte();
+         $$1.writeByte($$3);
+         if (!xc.a($$3)) {
+            return true;
+         }
       }
 
-      public List<xj.a> a() {
-         return this.b;
-      }
+      throw new CorruptedFrameException("length wider than 21-bit");
    }
 
-   public static record b(int a, BitSet b) {
-      public b(vx $$0) {
-         this($$0.l(), $$0.e(20));
-      }
+   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) {
+      $$1.markReaderIndex();
+      this.b.clear();
+      if (!a($$1, this.b)) {
+         $$1.resetReaderIndex();
+      } else {
+         int $$3 = xc.a(this.b);
+         if ($$1.readableBytes() < $$3) {
+            $$1.resetReaderIndex();
+         } else {
+            if (this.c != null) {
+               this.c.a($$3 + xc.a($$3));
+            }
 
-      public void a(vx $$0) {
-         $$0.c(this.a);
-         $$0.a(this.b, 20);
+            $$2.add($$1.readBytes($$3));
+         }
       }
    }
 }

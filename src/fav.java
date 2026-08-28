@@ -1,15 +1,10 @@
-import java.lang.Thread.UncaughtExceptionHandler;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import com.google.gson.annotations.SerializedName;
+import java.util.List;
 
-public class fav implements UncaughtExceptionHandler {
-   private final Logger a;
-
-   public fav(Logger $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public void uncaughtException(Thread $$0, Throwable $$1) {
-      this.a.error("Caught previously unhandled exception", $$1);
-   }
+public class fav extends fbp implements fbj {
+   @SerializedName("pingResults")
+   public List<fbk> a = Lists.newArrayList();
+   @SerializedName("worldIds")
+   public List<Long> b = Lists.newArrayList();
 }

@@ -1,534 +1,153 @@
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.function.Function;
 
-public class clx implements bpp, bqb {
-   public static final int b = 5;
-   public static final int c = 36;
-   private static final int m = 9;
-   public static final int d = 40;
-   public static final int e = -1;
-   public static final int[] f = new int[]{0, 1, 2, 3};
-   public static final int[] g = new int[]{3};
-   public final jg<ctq> h = jg.a(36, ctq.i);
-   public final jg<ctq> i = jg.a(4, ctq.i);
-   public final jg<ctq> j = jg.a(1, ctq.i);
-   private final List<jg<ctq>> n = ImmutableList.of(this.h, this.i, this.j);
-   public int k;
-   public final cly l;
-   private int o;
-
-   public clx(cly $$0) {
-      this.l = $$0;
-   }
-
-   public ctq f() {
-      return d(this.k) ? this.h.get(this.k) : ctq.i;
-   }
-
-   public static int g() {
-      return 9;
-   }
-
-   private boolean a(ctq $$0, ctq $$1) {
-      return !$$0.e() && ctq.c($$0, $$1) && $$0.k() && $$0.I() < this.e_($$0);
-   }
-
-   public int h() {
-      for (int $$0 = 0; $$0 < this.h.size(); $$0++) {
-         if (this.h.get($$0).e()) {
-            return $$0;
-         }
-      }
-
-      return -1;
-   }
-
-   public void b(ctq $$0) {
-      int $$1 = this.c($$0);
-      if (d($$1)) {
-         this.k = $$1;
-      } else {
-         if ($$1 == -1) {
-            this.k = this.i();
-            if (!this.h.get(this.k).e()) {
-               int $$2 = this.h();
-               if ($$2 != -1) {
-                  this.h.set($$2, this.h.get(this.k));
+public class clx {
+   private static final float d = 0.5F;
+   private static final float e = 0.7F;
+   private static final float f = 1.2F;
+   private static final int g = 18;
+   private static final int h = ayu.f(100.0F);
+   public static final int a = ayu.f(133.59999F);
+   public static final int b = ayu.f(84.0F);
+   private static final int i = ayu.f(83.2F);
+   public static final int c = 1200;
+   private static final int j = 100;
+   private static final List<cdv<? extends cdu<? super clw>>> k = List.of(cdv.d, cdv.x);
+   private static final List<cco<?>> l = List.of(
+      cco.g,
+      cco.h,
+      cco.k,
+      cco.l,
+      cco.M,
+      cco.n,
+      cco.m,
+      cco.E,
+      cco.t,
+      cco.o,
+      cco.p,
+      cco.B,
+      cco.ay,
+      cco.az,
+      cco.aA,
+      cco.aB,
+      cco.aC,
+      cco.aD,
+      cco.aE,
+      cco.aF,
+      cco.aG,
+      cco.aH,
+      cco.aI,
+      cco.aJ,
+      cco.aK,
+      cco.aL
+   );
+   private static final bve<clw> m = byq.a(
+      (Function<byq.b<clw>, ? extends App<byq.c<clw>, byt<clw>>>)($$0 -> $$0.group($$0.a(cco.aE)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
+               if ($$0.a($$1).isPresent()) {
+                  $$1.a(azx.a, 1200L);
                }
-            }
 
-            this.h.set(this.k, $$0);
-         } else {
-            this.c($$1);
-         }
-      }
+               return true;
+            }))
+   );
+
+   public static void a(clw $$0) {
+      $$0.dS().a(ImmutableList.of(coh.y, coh.z, coh.x, coh.k, coh.w, coh.v, coh.b));
    }
 
-   public void c(int $$0) {
-      this.k = this.i();
-      ctq $$1 = this.h.get(this.k);
-      this.h.set(this.k, this.h.get($$0));
-      this.h.set($$0, $$1);
-   }
-
-   public static boolean d(int $$0) {
-      return $$0 >= 0 && $$0 < 9;
-   }
-
-   public int c(ctq $$0) {
-      for (int $$1 = 0; $$1 < this.h.size(); $$1++) {
-         if (!this.h.get($$1).e() && ctq.c($$0, this.h.get($$1))) {
-            return $$1;
-         }
-      }
-
-      return -1;
-   }
-
-   public int d(ctq $$0) {
-      for (int $$1 = 0; $$1 < this.h.size(); $$1++) {
-         ctq $$2 = this.h.get($$1);
-         if (!this.h.get($$1).e() && ctq.c($$0, this.h.get($$1)) && !this.h.get($$1).m() && !$$2.B() && !$$2.b(kb.f)) {
-            return $$1;
-         }
-      }
-
-      return -1;
-   }
-
-   public int i() {
-      for (int $$0 = 0; $$0 < 9; $$0++) {
-         int $$1 = (this.k + $$0) % 9;
-         if (this.h.get($$1).e()) {
-            return $$1;
-         }
-      }
-
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         int $$3 = (this.k + $$2) % 9;
-         if (!this.h.get($$3).B()) {
-            return $$3;
-         }
-      }
-
-      return this.k;
-   }
-
-   public void a(double $$0) {
-      int $$1 = (int)Math.signum($$0);
-      this.k -= $$1;
-
-      while (this.k < 0) {
-         this.k += 9;
-      }
-
-      while (this.k >= 9) {
-         this.k -= 9;
-      }
-   }
-
-   public int a(Predicate<ctq> $$0, int $$1, bpp $$2) {
-      int $$3 = 0;
-      boolean $$4 = $$1 == 0;
-      $$3 += bpq.a(this, $$0, $$1 - $$3, $$4);
-      $$3 += bpq.a($$2, $$0, $$1 - $$3, $$4);
-      ctq $$5 = this.l.cb.g();
-      $$3 += bpq.a($$5, $$0, $$1 - $$3, $$4);
-      if ($$5.e()) {
-         this.l.cb.b(ctq.i);
-      }
-
+   protected static bum<?> a(clw $$0, Dynamic<?> $$1) {
+      bum.b<clw> $$2 = bum.a(l, k);
+      bum<clw> $$3 = $$2.a($$1);
+      a($$3);
+      b($$3);
+      c($$3);
+      d($$3);
+      g($$3);
+      a($$0, $$3);
+      e($$3);
+      f($$3);
+      $$3.a(ImmutableSet.of(coh.a));
+      $$3.b(coh.b);
+      $$3.f();
       return $$3;
    }
 
-   private int j(ctq $$0) {
-      int $$1 = this.e($$0);
-      if ($$1 == -1) {
-         $$1 = this.h();
-      }
-
-      return $$1 == -1 ? $$0.I() : this.d($$1, $$0);
+   private static void a(bum<clw> $$0) {
+      $$0.a(coh.a, 0, ImmutableList.of(new bxx(0.8F), bzb.a(), new bwj(45, 90), new bwn()));
    }
 
-   private int d(int $$0, ctq $$1) {
-      int $$2 = $$1.I();
-      ctq $$3 = this.a($$0);
-      if ($$3.e()) {
-         $$3 = $$1.c(0);
-         this.a($$0, $$3);
-      }
-
-      int $$4 = this.e_($$3) - $$3.I();
-      int $$5 = Math.min($$2, $$4);
-      if ($$5 == 0) {
-         return $$2;
-      } else {
-         $$2 -= $$5;
-         $$3.g($$5);
-         $$3.d(5);
-         return $$2;
-      }
+   private static void b(bum<clw> $$0) {
+      $$0.a(coh.y, 5, ImmutableList.of(new byx(a)), cco.aC);
    }
 
-   public int e(ctq $$0) {
-      if (this.a(this.a(this.k), $$0)) {
-         return this.k;
-      } else if (this.a(this.a(40), $$0)) {
-         return 40;
-      } else {
-         for (int $$1 = 0; $$1 < this.h.size(); $$1++) {
-            if (this.a(this.h.get($$1), $$0)) {
-               return $$1;
-            }
-         }
+   private static void c(bum<clw> $$0) {
+      $$0.a(coh.z, ImmutableList.of(Pair.of(0, new byy()), Pair.of(1, new byw(h))), ImmutableSet.of(Pair.of(cco.ay, ccp.b), Pair.of(cco.aE, ccp.b)));
+   }
 
-         return -1;
+   private static void d(bum<clw> $$0) {
+      $$0.a(
+         coh.b,
+         10,
+         ImmutableList.of(
+            bza.a(clw::gq), bze.a(), new bxa(ImmutableMap.of(cco.aB, ccp.b), ImmutableList.of(Pair.of(bwv.a(0.5F), 2), Pair.of(new bvn(30, 60), 1)))
+         )
+      );
+   }
+
+   private static void e(bum<clw> $$0) {
+      $$0.a(coh.w, 5, ImmutableList.of(bza.a(clw::gq), bvw.a(cco.az, 2, 0.7F)), cco.az);
+   }
+
+   private static void f(bum<clw> $$0) {
+      $$0.a(coh.v, 5, ImmutableList.of(bza.a(clw::gq), new bzc(i)), cco.aB);
+   }
+
+   private static void g(bum<clw> $$0) {
+      $$0.a(coh.x, 10, ImmutableList.of(new byz()), cco.ay);
+   }
+
+   private static void a(clw $$0, bum<clw> $$1) {
+      $$1.a(
+         coh.k,
+         10,
+         ImmutableList.of(
+            m, bxs.a($$1x -> !$$0.y().d() || !$$0.b($$1x), clx::b, false), bxc.a($$1x -> a($$0, $$1x), (float)$$0.g(bus.k)), bxi.a(1.2F), new bzd(), bwk.a(18)
+         ),
+         cco.o
+      );
+   }
+
+   private static boolean a(clw $$0, btk $$1) {
+      return $$0.dS().c(cco.o).filter($$1x -> $$1x == $$1).isPresent();
+   }
+
+   private static void b(clw $$0, btk $$1) {
+      if (!$$0.b($$1)) {
+         $$0.c($$1);
       }
+
+      a((btk)$$0);
    }
 
-   public void j() {
-      for (jg<ctq> $$0 : this.n) {
-         for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-            if (!$$0.get($$1).e()) {
-               $$0.get($$1).a(this.l.dP(), this.l, $$1, this.k == $$1);
-            }
-         }
-      }
-   }
-
-   public boolean f(ctq $$0) {
-      return this.c(-1, $$0);
-   }
-
-   public boolean c(int $$0, ctq $$1) {
-      if ($$1.e()) {
-         return false;
-      } else {
-         try {
-            if ($$1.m()) {
-               if ($$0 == -1) {
-                  $$0 = this.h();
-               }
-
-               if ($$0 >= 0) {
-                  this.h.set($$0, $$1.f());
-                  this.h.get($$0).d(5);
-                  return true;
-               } else if (this.l.fP()) {
-                  $$1.e(0);
-                  return true;
-               } else {
-                  return false;
-               }
-            } else {
-               int $$2;
-               do {
-                  $$2 = $$1.I();
-                  if ($$0 == -1) {
-                     $$1.e(this.j($$1));
-                  } else {
-                     $$1.e(this.d($$0, $$1));
-                  }
-               } while (!$$1.e() && $$1.I() < $$2);
-
-               if ($$1.I() == $$2 && this.l.fP()) {
-                  $$1.e(0);
-                  return true;
-               } else {
-                  return $$1.I() < $$2;
-               }
-            }
-         } catch (Throwable var6) {
-            o $$4 = o.a(var6, "Adding item to inventory");
-            p $$5 = $$4.a("Item being added");
-            $$5.a("Item ID", ctl.a($$1.g()));
-            $$5.a("Item data", $$1.n());
-            $$5.a("Item name", () -> $$1.x().getString());
-            throw new y($$4);
-         }
+   public static void a(btk $$0) {
+      if ($$0.dS().a(cco.aE)) {
+         $$0.dS().a(cco.aE, azx.a, 1200L);
       }
    }
 
-   public void g(ctq $$0) {
-      this.a($$0, true);
-   }
-
-   public void a(ctq $$0, boolean $$1) {
-      while (!$$0.e()) {
-         int $$2 = this.e($$0);
-         if ($$2 == -1) {
-            $$2 = this.h();
-         }
-
-         if ($$2 == -1) {
-            this.l.a($$0, false);
-            break;
-         }
-
-         int $$3 = $$0.j() - this.a($$2).I();
-         if (this.c($$2, $$0.a($$3)) && $$1 && this.l instanceof aqo) {
-            ((aqo)this.l).c.b(new acn(-2, 0, $$2, this.a($$2)));
-         }
+   public static void a(clw $$0, iz $$1) {
+      if ($$0.dP().C_().a($$1) && !$$0.gq().isPresent() && !$$0.dS().c(cco.o).isPresent()) {
+         a((btk)$$0);
+         $$0.dS().a(cco.aG, azx.a, 100L);
+         $$0.dS().a(cco.n, new bvg($$1), 100L);
+         $$0.dS().a(cco.az, $$1, 100L);
+         $$0.dS().b(cco.m);
       }
-   }
-
-   @Override
-   public ctq a(int $$0, int $$1) {
-      List<ctq> $$2 = null;
-
-      for (jg<ctq> $$3 : this.n) {
-         if ($$0 < $$3.size()) {
-            $$2 = $$3;
-            break;
-         }
-
-         $$0 -= $$3.size();
-      }
-
-      return $$2 != null && !$$2.get($$0).e() ? bpq.a($$2, $$0, $$1) : ctq.i;
-   }
-
-   public void h(ctq $$0) {
-      for (jg<ctq> $$1 : this.n) {
-         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-            if ($$1.get($$2) == $$0) {
-               $$1.set($$2, ctq.i);
-               break;
-            }
-         }
-      }
-   }
-
-   @Override
-   public ctq b(int $$0) {
-      jg<ctq> $$1 = null;
-
-      for (jg<ctq> $$2 : this.n) {
-         if ($$0 < $$2.size()) {
-            $$1 = $$2;
-            break;
-         }
-
-         $$0 -= $$2.size();
-      }
-
-      if ($$1 != null && !$$1.get($$0).e()) {
-         ctq $$3 = $$1.get($$0);
-         $$1.set($$0, ctq.i);
-         return $$3;
-      } else {
-         return ctq.i;
-      }
-   }
-
-   @Override
-   public void a(int $$0, ctq $$1) {
-      jg<ctq> $$2 = null;
-
-      for (jg<ctq> $$3 : this.n) {
-         if ($$0 < $$3.size()) {
-            $$2 = $$3;
-            break;
-         }
-
-         $$0 -= $$3.size();
-      }
-
-      if ($$2 != null) {
-         $$2.set($$0, $$1);
-      }
-   }
-
-   public float a(drd $$0) {
-      return this.h.get(this.k).a($$0);
-   }
-
-   public uj a(uj $$0) {
-      for (int $$1 = 0; $$1 < this.h.size(); $$1++) {
-         if (!this.h.get($$1).e()) {
-            ud $$2 = new ud();
-            $$2.a("Slot", (byte)$$1);
-            $$0.add(this.h.get($$1).b(this.l.dR(), $$2));
-         }
-      }
-
-      for (int $$3 = 0; $$3 < this.i.size(); $$3++) {
-         if (!this.i.get($$3).e()) {
-            ud $$4 = new ud();
-            $$4.a("Slot", (byte)($$3 + 100));
-            $$0.add(this.i.get($$3).b(this.l.dR(), $$4));
-         }
-      }
-
-      for (int $$5 = 0; $$5 < this.j.size(); $$5++) {
-         if (!this.j.get($$5).e()) {
-            ud $$6 = new ud();
-            $$6.a("Slot", (byte)($$5 + 150));
-            $$0.add(this.j.get($$5).b(this.l.dR(), $$6));
-         }
-      }
-
-      return $$0;
-   }
-
-   public void b(uj $$0) {
-      this.h.clear();
-      this.i.clear();
-      this.j.clear();
-
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         ud $$2 = $$0.a($$1);
-         int $$3 = $$2.f("Slot") & 255;
-         ctq $$4 = ctq.a(this.l.dR(), (va)$$2).orElse(ctq.i);
-         if ($$3 >= 0 && $$3 < this.h.size()) {
-            this.h.set($$3, $$4);
-         } else if ($$3 >= 100 && $$3 < this.i.size() + 100) {
-            this.i.set($$3 - 100, $$4);
-         } else if ($$3 >= 150 && $$3 < this.j.size() + 150) {
-            this.j.set($$3 - 150, $$4);
-         }
-      }
-   }
-
-   @Override
-   public int b() {
-      return this.h.size() + this.i.size() + this.j.size();
-   }
-
-   @Override
-   public boolean c() {
-      for (ctq $$0 : this.h) {
-         if (!$$0.e()) {
-            return false;
-         }
-      }
-
-      for (ctq $$1 : this.i) {
-         if (!$$1.e()) {
-            return false;
-         }
-      }
-
-      for (ctq $$2 : this.j) {
-         if (!$$2.e()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public ctq a(int $$0) {
-      List<ctq> $$1 = null;
-
-      for (jg<ctq> $$2 : this.n) {
-         if ($$0 < $$2.size()) {
-            $$1 = $$2;
-            break;
-         }
-
-         $$0 -= $$2.size();
-      }
-
-      return $$1 == null ? ctq.i : $$1.get($$0);
-   }
-
-   @Override
-   public wx af() {
-      return wx.c("container.inventory");
-   }
-
-   public ctq e(int $$0) {
-      return this.i.get($$0);
-   }
-
-   public void k() {
-      for (List<ctq> $$0 : this.n) {
-         for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-            ctq $$2 = $$0.get($$1);
-            if (!$$2.e()) {
-               this.l.a($$2, true, false);
-               $$0.set($$1, ctq.i);
-            }
-         }
-      }
-   }
-
-   @Override
-   public void e() {
-      this.o++;
-   }
-
-   public int l() {
-      return this.o;
-   }
-
-   @Override
-   public boolean a(cly $$0) {
-      return $$0.b(this.l, 4.0);
-   }
-
-   public boolean i(ctq $$0) {
-      for (List<ctq> $$1 : this.n) {
-         for (ctq $$2 : $$1) {
-            if (!$$2.e() && ctq.c($$2, $$0)) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public boolean a(awm<ctl> $$0) {
-      for (List<ctq> $$1 : this.n) {
-         for (ctq $$2 : $$1) {
-            if (!$$2.e() && $$2.a($$0)) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public boolean b(Predicate<ctq> $$0) {
-      for (List<ctq> $$1 : this.n) {
-         for (ctq $$2 : $$1) {
-            if ($$0.test($$2)) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public void a(clx $$0) {
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         this.a($$1, $$0.a($$1));
-      }
-
-      this.k = $$0.k;
-   }
-
-   @Override
-   public void a() {
-      for (List<ctq> $$0 : this.n) {
-         $$0.clear();
-      }
-   }
-
-   public void a(cmc $$0) {
-      for (ctq $$1 : this.h) {
-         $$0.a($$1);
-      }
-   }
-
-   public ctq a(boolean $$0) {
-      ctq $$1 = this.f();
-      return $$1.e() ? ctq.i : this.a(this.k, $$0 ? $$1.I() : 1);
    }
 }

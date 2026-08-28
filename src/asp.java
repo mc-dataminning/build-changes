@@ -1,43 +1,26 @@
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileTime;
-import javax.annotation.Nullable;
+import java.util.Map;
 
-abstract class asp implements BasicFileAttributes {
-   private static final FileTime a = FileTime.fromMillis(0L);
+public class asp {
+   private static final asp a = new asp(Map.of());
+   private final Map<atk<?>, ?> b;
 
-   @Override
-   public FileTime lastModifiedTime() {
+   private asp(Map<atk<?>, ?> $$0) {
+      this.b = $$0;
+   }
+
+   public <T> T a(atk<T> $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   public static asp a() {
       return a;
    }
 
-   @Override
-   public FileTime lastAccessTime() {
-      return a;
+   public static <T> asp a(atk<T> $$0, T $$1) {
+      return new asp(Map.of($$0, $$1));
    }
 
-   @Override
-   public FileTime creationTime() {
-      return a;
-   }
-
-   @Override
-   public boolean isSymbolicLink() {
-      return false;
-   }
-
-   @Override
-   public boolean isOther() {
-      return false;
-   }
-
-   @Override
-   public long size() {
-      return 0L;
-   }
-
-   @Nullable
-   @Override
-   public Object fileKey() {
-      return null;
+   public static <T1, T2> asp a(atk<T1> $$0, T1 $$1, atk<T2> $$2, T2 $$3) {
+      return new asp(Map.of($$0, $$1, $$2, (T1)$$3));
    }
 }

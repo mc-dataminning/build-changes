@@ -1,35 +1,45 @@
-public class ghk extends ghs<cmh> {
-   private static final akn a = new akn("textures/entity/enderdragon/dragon_fireball.png");
-   private static final gcs f = gcs.e(a);
+import com.google.common.collect.Lists;
+import java.util.List;
 
-   public ghk(ght.a $$0) {
-      super($$0);
+public class ghk implements ggv.a {
+   private final List<iz> a = Lists.newArrayList();
+   private final List<Float> b = Lists.newArrayList();
+   private final List<Float> c = Lists.newArrayList();
+   private final List<Float> d = Lists.newArrayList();
+   private final List<Float> e = Lists.newArrayList();
+   private final List<Float> f = Lists.newArrayList();
+
+   public void a(iz $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a.add($$0);
+      this.b.add($$1);
+      this.c.add($$5);
+      this.d.add($$2);
+      this.e.add($$3);
+      this.f.add($$4);
    }
 
-   protected int a(cmh $$0, io $$1) {
-      return 15;
-   }
+   @Override
+   public void a(ezt $$0, gdj $$1, double $$2, double $$3, double $$4) {
+      ezx $$5 = $$1.getBuffer(gdr.A());
 
-   public void a(cmh $$0, float $$1, float $$2, eyu $$3, gck $$4, int $$5) {
-      $$3.a();
-      $$3.b(2.0F, 2.0F, 2.0F);
-      $$3.a(this.c.b());
-      $$3.a(a.d.rotationDegrees(180.0F));
-      eyu.a $$6 = $$3.c();
-      eyy $$7 = $$4.getBuffer(f);
-      a($$7, $$6, $$5, 0.0F, 0, 0, 1);
-      a($$7, $$6, $$5, 1.0F, 0, 1, 1);
-      a($$7, $$6, $$5, 1.0F, 1, 1, 0);
-      a($$7, $$6, $$5, 0.0F, 1, 0, 0);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   private static void a(eyy $$0, eyu.a $$1, int $$2, float $$3, int $$4, int $$5, int $$6) {
-      $$0.a($$1, $$3 - 0.5F, (float)$$4 - 0.25F, 0.0F).a(255, 255, 255, 255).a((float)$$5, (float)$$6).c(gnm.d).b($$2).b($$1, 0.0F, 1.0F, 0.0F).e();
-   }
-
-   public akn a(cmh $$0) {
-      return a;
+      for (int $$6 = 0; $$6 < this.a.size(); $$6++) {
+         iz $$7 = this.a.get($$6);
+         Float $$8 = this.b.get($$6);
+         float $$9 = $$8 / 2.0F;
+         gdh.b(
+            $$0,
+            $$5,
+            (double)((float)$$7.u() + 0.5F - $$9) - $$2,
+            (double)((float)$$7.v() + 0.5F - $$9) - $$3,
+            (double)((float)$$7.w() + 0.5F - $$9) - $$4,
+            (double)((float)$$7.u() + 0.5F + $$9) - $$2,
+            (double)((float)$$7.v() + 0.5F + $$9) - $$3,
+            (double)((float)$$7.w() + 0.5F + $$9) - $$4,
+            this.d.get($$6),
+            this.e.get($$6),
+            this.f.get($$6),
+            this.c.get($$6)
+         );
+      }
    }
 }

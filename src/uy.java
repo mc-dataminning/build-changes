@@ -1,148 +1,187 @@
+import it.unimi.dsi.fastutil.longs.LongSet;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
-import java.util.Objects;
+import java.util.Arrays;
+import java.util.List;
+import org.apache.commons.lang3.ArrayUtils;
 
-public class uy implements va {
-   private static final int b = 36;
-   public static final vc<uy> a = new vc.b<uy>() {
-      public uy a(DataInput $$0, um $$1) throws IOException {
-         return uy.a(d($$0, $$1));
+public class uy extends uq<uz> {
+   private static final int b = 24;
+   public static final vq<uy> a = new vq.b<uy>() {
+      public uy a(DataInput $$0, va $$1) throws IOException {
+         return new uy(d($$0, $$1));
       }
 
       @Override
-      public ux.b a(DataInput $$0, ux $$1, um $$2) throws IOException {
+      public vl.b a(DataInput $$0, vl $$1, va $$2) throws IOException {
          return $$1.a(d($$0, $$2));
       }
 
-      private static String d(DataInput $$0, um $$1) throws IOException {
-         $$1.b(36L);
-         String $$2 = $$0.readUTF();
-         $$1.a(2L, (long)$$2.length());
-         return $$2;
+      private static long[] d(DataInput $$0, va $$1) throws IOException {
+         $$1.b(24L);
+         int $$2 = $$0.readInt();
+         $$1.a(8L, (long)$$2);
+         long[] $$3 = new long[$$2];
+
+         for (int $$4 = 0; $$4 < $$2; $$4++) {
+            $$3[$$4] = $$0.readLong();
+         }
+
+         return $$3;
       }
 
       @Override
-      public void b(DataInput $$0, um $$1) throws IOException {
-         uy.a($$0);
+      public void b(DataInput $$0, va $$1) throws IOException {
+         $$0.skipBytes($$0.readInt() * 8);
       }
 
       @Override
       public String a() {
-         return "STRING";
+         return "LONG[]";
       }
 
       @Override
       public String b() {
-         return "TAG_String";
-      }
-
-      @Override
-      public boolean d() {
-         return true;
+         return "TAG_Long_Array";
       }
    };
-   private static final uy c = new uy("");
-   private static final char w = '"';
-   private static final char x = '\'';
-   private static final char y = '\\';
-   private static final char z = '\u0000';
-   private final String A;
+   private long[] c;
 
-   public static void a(DataInput $$0) throws IOException {
-      $$0.skipBytes($$0.readUnsignedShort());
+   public uy(long[] $$0) {
+      this.c = $$0;
    }
 
-   private uy(String $$0) {
-      Objects.requireNonNull($$0, "Null string not allowed");
-      this.A = $$0;
+   public uy(LongSet $$0) {
+      this.c = $$0.toLongArray();
    }
 
-   public static uy a(String $$0) {
-      return $$0.isEmpty() ? c : new uy($$0);
+   public uy(List<Long> $$0) {
+      this(a($$0));
+   }
+
+   private static long[] a(List<Long> $$0) {
+      long[] $$1 = new long[$$0.size()];
+
+      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
+         Long $$3 = $$0.get($$2);
+         $$1[$$2] = $$3 == null ? 0L : $$3;
+      }
+
+      return $$1;
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeUTF(this.A);
+      $$0.writeInt(this.c.length);
+
+      for (long $$1 : this.c) {
+         $$0.writeLong($$1);
+      }
    }
 
    @Override
    public int a() {
-      return 36 + 2 * this.A.length();
+      return 24 + 8 * this.c.length;
    }
 
    @Override
    public byte b() {
-      return 8;
+      return 12;
    }
 
    @Override
-   public vc<uy> c() {
+   public vq<uy> c() {
       return a;
    }
 
    @Override
    public String toString() {
-      return va.super.s_();
+      return this.s_();
    }
 
    public uy e() {
-      return this;
+      long[] $$0 = new long[this.c.length];
+      System.arraycopy(this.c, 0, $$0, 0, this.c.length);
+      return new uy($$0);
    }
 
    @Override
    public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof uy && Objects.equals(this.A, ((uy)$$0).A);
+      return this == $$0 ? true : $$0 instanceof uy && Arrays.equals(this.c, ((uy)$$0).c);
    }
 
    @Override
    public int hashCode() {
-      return this.A.hashCode();
+      return Arrays.hashCode(this.c);
    }
 
    @Override
-   public String s_() {
-      return this.A;
-   }
-
-   @Override
-   public void a(ve $$0) {
+   public void a(vs $$0) {
       $$0.a(this);
    }
 
-   public static String b(String $$0) {
-      StringBuilder $$1 = new StringBuilder(" ");
-      char $$2 = 0;
-
-      for (int $$3 = 0; $$3 < $$0.length(); $$3++) {
-         char $$4 = $$0.charAt($$3);
-         if ($$4 == '\\') {
-            $$1.append('\\');
-         } else if ($$4 == '"' || $$4 == '\'') {
-            if ($$2 == 0) {
-               $$2 = (char)($$4 == '"' ? 39 : 34);
-            }
-
-            if ($$2 == $$4) {
-               $$1.append('\\');
-            }
-         }
-
-         $$1.append($$4);
-      }
-
-      if ($$2 == 0) {
-         $$2 = '"';
-      }
-
-      $$1.setCharAt(0, $$2);
-      $$1.append($$2);
-      return $$1.toString();
+   public long[] g() {
+      return this.c;
    }
 
    @Override
-   public ux.b a(ux $$0) {
-      return $$0.a(this.A);
+   public int size() {
+      return this.c.length;
+   }
+
+   public uz a(int $$0) {
+      return uz.a(this.c[$$0]);
+   }
+
+   public uz a(int $$0, uz $$1) {
+      long $$2 = this.c[$$0];
+      this.c[$$0] = $$1.f();
+      return uz.a($$2);
+   }
+
+   public void b(int $$0, uz $$1) {
+      this.c = ArrayUtils.add(this.c, $$0, $$1.f());
+   }
+
+   @Override
+   public boolean a(int $$0, vo $$1) {
+      if ($$1 instanceof vh) {
+         this.c[$$0] = ((vh)$$1).f();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean b(int $$0, vo $$1) {
+      if ($$1 instanceof vh) {
+         this.c = ArrayUtils.add(this.c, $$0, ((vh)$$1).f());
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public uz b(int $$0) {
+      long $$1 = this.c[$$0];
+      this.c = ArrayUtils.remove(this.c, $$0);
+      return uz.a($$1);
+   }
+
+   @Override
+   public byte f() {
+      return 4;
+   }
+
+   @Override
+   public void clear() {
+      this.c = new long[0];
+   }
+
+   @Override
+   public vl.b a(vl $$0) {
+      return $$0.a(this.c);
    }
 }

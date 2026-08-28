@@ -1,25 +1,11 @@
-import java.nio.file.Path;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public class eub extends Exception {
-   private final Path a;
-   private final List<eud> b;
+public interface eub {
+   @Nullable
+   vo a(eqd var1);
 
-   public eub(Path $$0, List<eud> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   Set<esw<?>> b();
 
-   @Override
-   public String getMessage() {
-      return a(this.a, this.b);
-   }
-
-   public static String a(Path $$0, List<eud> $$1) {
-      return "Failed to validate '"
-         + $$0
-         + "'. Found forbidden symlinks: "
-         + $$1.stream().map($$0x -> $$0x.a() + "->" + $$0x.b()).collect(Collectors.joining(", "));
-   }
+   eua a();
 }

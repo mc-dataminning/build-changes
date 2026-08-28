@@ -1,30 +1,29 @@
-import java.util.Optional;
+public class afe implements zs<ace> {
+   public static final zj<wl, afe> a = zs.a(afe::a, afe::new);
+   private final int b;
 
-public record afe(String b, String c, int d, Optional<wx> e, Optional<yn> f) implements ze<abq> {
-   public static final yv<wi, afe> a = yv.a(yt.k, afe::b, yt.k, afe::e, yt.f, afe::f, wz.e, afe::g, yp.d, afe::h, afe::new);
-
-   @Override
-   public zg<afe> a() {
-      return agc.aL;
+   public afe(int $$0) {
+      this.b = $$0;
    }
 
-   public void a(abq $$0) {
+   private afe(wl $$0) {
+      this.b = $$0.readByte();
+   }
+
+   private void a(wl $$0) {
+      $$0.k(this.b);
+   }
+
+   @Override
+   public zu<afe> a() {
+      return agq.ax;
+   }
+
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public String e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public Optional<wx> g() {
-      return this.e;
-   }
-
-   public Optional<yn> h() {
-      return this.f;
+   public int b() {
+      return this.b;
    }
 }

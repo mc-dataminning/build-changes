@@ -1,58 +1,94 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record bi(ct.c b, ct.c c, ct.c d, ct.c e, ct.c f) {
+public record bi(de.c b, de.c c, Optional<bu> d, Optional<Boolean> e, Optional<bj> f) {
    public static final Codec<bi> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               ct.c.d.optionalFieldOf("x", ct.c.c).forGetter(bi::a),
-               ct.c.d.optionalFieldOf("y", ct.c.c).forGetter(bi::b),
-               ct.c.d.optionalFieldOf("z", ct.c.c).forGetter(bi::c),
-               ct.c.d.optionalFieldOf("horizontal", ct.c.c).forGetter(bi::d),
-               ct.c.d.optionalFieldOf("absolute", ct.c.c).forGetter(bi::e)
+               de.c.d.optionalFieldOf("dealt", de.c.c).forGetter(bi::a),
+               de.c.d.optionalFieldOf("taken", de.c.c).forGetter(bi::b),
+               bu.a.optionalFieldOf("source_entity").forGetter(bi::c),
+               Codec.BOOL.optionalFieldOf("blocked").forGetter(bi::d),
+               bj.a.optionalFieldOf("type").forGetter(bi::e)
             )
             .apply($$0, bi::new)
    );
 
-   public static bi a(ct.c $$0) {
-      return new bi(ct.c.c, ct.c.c, ct.c.c, $$0, ct.c.c);
-   }
-
-   public static bi b(ct.c $$0) {
-      return new bi(ct.c.c, $$0, ct.c.c, ct.c.c, ct.c.c);
-   }
-
-   public static bi c(ct.c $$0) {
-      return new bi(ct.c.c, ct.c.c, ct.c.c, ct.c.c, $$0);
-   }
-
-   public boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      float $$6 = (float)($$0 - $$3);
-      float $$7 = (float)($$1 - $$4);
-      float $$8 = (float)($$2 - $$5);
-      if (!this.b.d((double)ayf.e($$6)) || !this.c.d((double)ayf.e($$7)) || !this.d.d((double)ayf.e($$8))) {
+   public boolean a(arc $$0, bri $$1, float $$2, float $$3, boolean $$4) {
+      if (!this.b.d((double)$$2)) {
+         return false;
+      } else if (!this.c.d((double)$$3)) {
+         return false;
+      } else if (this.d.isPresent() && !this.d.get().a($$0, $$1.d())) {
          return false;
       } else {
-         return !this.e.e((double)($$6 * $$6 + $$8 * $$8)) ? false : this.f.e((double)($$6 * $$6 + $$7 * $$7 + $$8 * $$8));
+         return this.e.isPresent() && this.e.get() != $$4 ? false : !this.f.isPresent() || this.f.get().a($$0, $$1);
       }
    }
 
-   public ct.c a() {
+   public de.c a() {
       return this.b;
    }
 
-   public ct.c b() {
+   public de.c b() {
       return this.c;
    }
 
-   public ct.c c() {
+   public Optional<bu> c() {
       return this.d;
    }
 
-   public ct.c d() {
+   public Optional<Boolean> d() {
       return this.e;
    }
 
-   public ct.c e() {
+   public Optional<bj> e() {
       return this.f;
+   }
+
+   public static class a {
+      private de.c a = de.c.c;
+      private de.c b = de.c.c;
+      private Optional<bu> c = Optional.empty();
+      private Optional<Boolean> d = Optional.empty();
+      private Optional<bj> e = Optional.empty();
+
+      public static bi.a a() {
+         return new bi.a();
+      }
+
+      public bi.a a(de.c $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public bi.a b(de.c $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public bi.a a(bu $$0) {
+         this.c = Optional.of($$0);
+         return this;
+      }
+
+      public bi.a a(Boolean $$0) {
+         this.d = Optional.of($$0);
+         return this;
+      }
+
+      public bi.a a(bj $$0) {
+         this.e = Optional.of($$0);
+         return this;
+      }
+
+      public bi.a a(bj.a $$0) {
+         this.e = Optional.of($$0.b());
+         return this;
+      }
+
+      public bi b() {
+         return new bi(this.a, this.b, this.c, this.d, this.e);
+      }
    }
 }

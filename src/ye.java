@@ -1,53 +1,71 @@
+import com.google.common.primitives.Ints;
+import com.google.common.primitives.Longs;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.charset.StandardCharsets;
+import java.security.SignatureException;
+import java.time.Instant;
 import java.util.Optional;
 
-public interface ye extends wy {
-   MapCodec<ye> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("text").forGetter(ye::b)).apply($$0, ye::a));
-   wy.a<ye> b = new wy.a<>(a, "text");
-   ye c = new ye() {
-      @Override
-      public String toString() {
-         return "empty";
-      }
+public record ye(String b, Instant c, long d, xs e) {
+   public static final MapCodec<ye> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("content").forGetter(ye::a),
+               ayc.o.fieldOf("time_stamp").forGetter(ye::b),
+               Codec.LONG.fieldOf("salt").forGetter(ye::c),
+               xs.a.optionalFieldOf("last_seen", xs.b).forGetter(ye::d)
+            )
+            .apply($$0, ye::new)
+   );
 
-      @Override
-      public String b() {
-         return "";
-      }
-   };
-
-   static ye a(String $$0) {
-      return (ye)($$0.isEmpty() ? c : new ye.a($$0));
+   public static ye a(String $$0) {
+      return new ye($$0, Instant.now(), 0L, xs.b);
    }
 
-   String b();
-
-   @Override
-   default wy.a<?> a() {
-      return b;
+   public void a(azg.a $$0) throws SignatureException {
+      $$0.update(Longs.toByteArray(this.d));
+      $$0.update(Longs.toByteArray(this.c.getEpochSecond()));
+      byte[] $$1 = this.b.getBytes(StandardCharsets.UTF_8);
+      $$0.update(Ints.toByteArray($$1.length));
+      $$0.update($$1);
+      this.e.a($$0);
    }
 
-   public static record a(String d) implements ye {
-      @Override
-      public <T> Optional<T> a(xc.a<T> $$0) {
-         return $$0.accept(this.d);
+   public ye.a a(xy $$0) {
+      return new ye.a(this.b, this.c, this.d, this.e.a($$0));
+   }
+
+   public String a() {
+      return this.b;
+   }
+
+   public Instant b() {
+      return this.c;
+   }
+
+   public long c() {
+      return this.d;
+   }
+
+   public xs d() {
+      return this.e;
+   }
+
+   public static record a(String a, Instant b, long c, xs.a d) {
+      public a(wl $$0) {
+         this($$0.d(256), $$0.t(), $$0.readLong(), new xs.a($$0));
       }
 
-      @Override
-      public <T> Optional<T> a(xc.b<T> $$0, xu $$1) {
-         return $$0.accept($$1, this.d);
+      public void a(wl $$0) {
+         $$0.a(this.a, 256);
+         $$0.a(this.b);
+         $$0.b(this.c);
+         this.d.a($$0);
       }
 
-      @Override
-      public String toString() {
-         return "literal{" + this.d + "}";
-      }
-
-      @Override
-      public String b() {
-         return this.d;
+      public Optional<ye> a(xy $$0) {
+         return this.d.a($$0).map($$0x -> new ye(this.a, this.b, this.c, $$0x));
       }
    }
 }

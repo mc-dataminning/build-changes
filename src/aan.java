@@ -1,26 +1,29 @@
-public record aan(long c, io d) implements aaf {
-   public static final yv<vx, aan> a = aaf.a(aan::a, aan::new);
-   public static final aaf.b<aan> b = aaf.a("debug/neighbors_update");
+public class aan implements zs<aaj> {
+   public static final zj<wl, aan> a = zs.a(aan::a, aan::new);
+   private final int b;
 
-   private aan(vx $$0) {
-      this($$0.m(), $$0.e());
+   public aan(int $$0) {
+      this.b = $$0;
    }
 
-   private void a(vx $$0) {
-      $$0.a(this.c);
-      $$0.a(this.d);
+   private aan(wl $$0) {
+      this.b = $$0.readInt();
+   }
+
+   private void a(wl $$0) {
+      $$0.p(this.b);
    }
 
    @Override
-   public aaf.b<aan> a() {
-      return b;
+   public zu<aan> a() {
+      return aai.m;
    }
 
-   public long b() {
-      return this.c;
+   public void a(aaj $$0) {
+      $$0.a(this);
    }
 
-   public io c() {
-      return this.d;
+   public int b() {
+      return this.b;
    }
 }

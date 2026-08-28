@@ -1,139 +1,109 @@
 import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class dor extends doi implements bpp {
-   public static final int b = 6;
-   private static final Logger c = LogUtils.getLogger();
-   private final jg<ctq> d = jg.a(6, ctq.i);
-   private int e = -1;
+public class dor extends dpc implements bqu {
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = 6;
+   private static final String c = "patterns";
+   @Nullable
+   private xl d;
+   private ctd e;
+   private dot f = dot.a;
 
-   public dor(io $$0, drd $$1) {
-      super(dok.M, $$0, $$1);
+   public dor(iz $$0, drx $$1) {
+      super(dpe.t, $$0, $$1);
+      this.e = ((ddl)$$1.b()).b();
    }
 
-   private void c(int $$0) {
-      if ($$0 >= 0 && $$0 < 6) {
-         this.e = $$0;
-         drd $$1 = this.n();
+   public dor(iz $$0, drx $$1, ctd $$2) {
+      this($$0, $$1);
+      this.e = $$2;
+   }
 
-         for (int $$2 = 0; $$2 < dfe.c.size(); $$2++) {
-            boolean $$3 = !this.a($$2).e();
-            dru $$4 = dfe.c.get($$2);
-            $$1 = $$1.a($$4, Boolean.valueOf($$3));
-         }
-
-         Objects.requireNonNull(this.n).a(this.o, $$1, 3);
-         this.n.a(dvw.c, this.o, dvw.a.a($$1));
-      } else {
-         c.error("Expected slot 0-5, got {}", $$0);
-      }
+   public void a(cuk $$0, ctd $$1) {
+      this.e = $$1;
+      this.a($$0);
    }
 
    @Override
-   protected void a(ud $$0, iz.a $$1) {
-      super.a($$0, $$1);
-      this.d.clear();
-      bpq.b($$0, this.d, $$1);
-      this.e = $$0.h("last_interacted_slot");
+   public xl af() {
+      return (xl)(this.d != null ? this.d : xl.c("block.minecraft.banner"));
+   }
+
+   @Nullable
+   @Override
+   public xl ah() {
+      return this.d;
    }
 
    @Override
-   protected void b(ud $$0, iz.a $$1) {
+   protected void b(ur $$0, jk.a $$1) {
       super.b($$0, $$1);
-      bpq.a($$0, this.d, true, $$1);
-      $$0.a("last_interacted_slot", this.e);
-   }
-
-   public int f() {
-      return (int)this.d.stream().filter(Predicate.not(ctq::e)).count();
-   }
-
-   @Override
-   public void a() {
-      this.d.clear();
-   }
-
-   @Override
-   public int b() {
-      return 6;
-   }
-
-   @Override
-   public boolean c() {
-      return this.d.stream().allMatch(ctq::e);
-   }
-
-   @Override
-   public ctq a(int $$0) {
-      return this.d.get($$0);
-   }
-
-   @Override
-   public ctq a(int $$0, int $$1) {
-      ctq $$2 = Objects.requireNonNullElse(this.d.get($$0), ctq.i);
-      this.d.set($$0, ctq.i);
-      if (!$$2.e()) {
-         this.c($$0);
+      if (!this.f.equals(dot.a)) {
+         $$0.a("patterns", (vo)dot.b.encodeStart($$1.a(vf.a), this.f).getOrThrow());
       }
 
-      return $$2;
-   }
-
-   @Override
-   public ctq b(int $$0) {
-      return this.a($$0, 1);
-   }
-
-   @Override
-   public void a(int $$0, ctq $$1) {
-      if ($$1.a(awf.aW)) {
-         this.d.set($$0, $$1);
-         this.c($$0);
-      } else if ($$1.e()) {
-         this.a($$0, 1);
+      if (this.d != null) {
+         $$0.a("CustomName", xl.a.a(this.d, $$1));
       }
    }
 
    @Override
-   public boolean a(bpp $$0, int $$1, ctq $$2) {
-      return $$0.a_($$2x -> $$2x.e() ? true : ctq.c($$2, $$2x) && $$2x.I() + $$2.I() <= $$0.e_($$2x));
+   protected void a(ur $$0, jk.a $$1) {
+      super.a($$0, $$1);
+      if ($$0.b("CustomName", 8)) {
+         this.d = xl.a.a($$0.l("CustomName"), $$1);
+      }
+
+      if ($$0.e("patterns")) {
+         dot.b
+            .parse($$1.a(vf.a), $$0.c("patterns"))
+            .resultOrPartial($$0x -> b.error("Failed to parse banner patterns: '{}'", $$0x))
+            .ifPresent($$0x -> this.f = $$0x);
+      }
+   }
+
+   public acl a() {
+      return acl.a(this);
    }
 
    @Override
-   public int ai_() {
-      return 1;
+   public ur a(jk.a $$0) {
+      return this.e($$0);
    }
 
-   @Override
-   public boolean a(cly $$0) {
-      return bpp.a(this, $$0);
+   public dot b() {
+      return this.f;
    }
 
-   @Override
-   public boolean b(int $$0, ctq $$1) {
-      return $$1.a(awf.aW) && this.a($$0).e() && $$1.I() == this.ai_();
+   public cuk c() {
+      cuk $$0 = new cuk(ddz.a(this.e));
+      $$0.b(this.s());
+      return $$0;
    }
 
-   public int j() {
+   public ctd f() {
       return this.e;
    }
 
    @Override
-   protected void a(doi.b $$0) {
+   protected void a(dpc.b $$0) {
       super.a($$0);
-      $$0.a(kb.Z, cwm.a).a(this.d);
+      this.f = $$0.a(km.W, dot.a);
+      this.d = $$0.a(km.f);
    }
 
    @Override
-   protected void a(jx.a $$0) {
+   protected void a(ki.a $$0) {
       super.a($$0);
-      $$0.a(kb.Z, cwm.a(this.d));
+      $$0.a(km.W, this.f);
+      $$0.a(km.f, this.d);
    }
 
    @Override
-   public void a(ud $$0) {
-      $$0.r("Items");
+   public void a(ur $$0) {
+      $$0.r("patterns");
+      $$0.r("CustomName");
    }
 }

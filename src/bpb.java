@@ -1,36 +1,48 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class bpb {
-   private static final Codec<Either<Integer, bpb>> a = Codec.either(Codec.INT, le.M.q().dispatch(bpb::c, bpc::codec));
-   public static final Codec<bpb> c = a.xmap(
-      $$0 -> (bpb)$$0.map(boy::a, $$0x -> $$0x), $$0 -> $$0.c() == bpc.a ? Either.left(((boy)$$0).d()) : Either.right($$0)
-   );
-   public static final Codec<bpb> d = b(0, Integer.MAX_VALUE);
-   public static final Codec<bpb> e = b(1, Integer.MAX_VALUE);
+public interface bpb {
+   bpa a();
 
-   public static Codec<bpb> b(int $$0, int $$1) {
-      return a($$0, $$1, c);
+   static <T> bpb.b<T> a(T $$0, int $$1) {
+      return new bpb.b<>($$0, bpa.a($$1));
    }
 
-   public static <T extends bpb> Codec<T> a(int $$0, int $$1, Codec<T> $$2) {
-      return $$2.validate($$2x -> a($$0, $$1, $$2x));
-   }
+   public static class a implements bpb {
+      private final bpa a;
 
-   private static <T extends bpb> DataResult<T> a(int $$0, int $$1, T $$2) {
-      if ($$2.a() < $$0) {
-         return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
-      } else {
-         return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
+      public a(int $$0) {
+         this.a = bpa.a($$0);
+      }
+
+      public a(bpa $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public bpa a() {
+         return this.a;
       }
    }
 
-   public abstract int a(aym var1);
+   public static record b<T>(T a, bpa b) implements bpb {
+      @Override
+      public bpa a() {
+         return this.b;
+      }
 
-   public abstract int a();
+      public static <E> Codec<bpb.b<E>> a(Codec<E> $$0) {
+         return RecordCodecBuilder.create(
+            $$1 -> $$1.group($$0.fieldOf("data").forGetter(bpb.b::b), bpa.a.fieldOf("weight").forGetter(bpb.b::c)).apply($$1, bpb.b::new)
+         );
+      }
 
-   public abstract int b();
+      public T b() {
+         return this.a;
+      }
 
-   public abstract bpc<?> c();
+      public bpa c() {
+         return this.b;
+      }
+   }
 }

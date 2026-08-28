@@ -1,63 +1,74 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Predicate;
 
-public abstract class cf implements dg<czg> {
-   private final List<bm> a;
+public record cf(Optional<bc<cxf.b, cf.a>> c) implements ds<cxf> {
+   public static final Codec<cf> a = RecordCodecBuilder.create($$0 -> $$0.group(bc.a(cf.a.a).optionalFieldOf("modifiers").forGetter(cf::b)).apply($$0, cf::new));
 
-   protected cf(List<bm> $$0) {
-      this.a = $$0;
+   @Override
+   public kl<cxf> a() {
+      return km.m;
    }
 
-   public static <T extends cf> Codec<T> a(Function<List<bm>, T> $$0) {
-      return bm.a.listOf().xmap($$0, cf::b);
+   public boolean a(cuk $$0, cxf $$1) {
+      return !this.c.isPresent() || this.c.get().a($$1.b());
    }
 
-   protected List<bm> b() {
-      return this.a;
+   public Optional<bc<cxf.b, cf.a>> b() {
+      return this.c;
    }
 
-   public boolean a(ctq $$0, czg $$1) {
-      for (bm $$2 : this.a) {
-         if (!$$2.a($$1)) {
+   public static record a(Optional<jm<bun>> b, Optional<UUID> c, Optional<String> d, de.c e, Optional<buq.a> f, Optional<bsx> g) implements Predicate<cxf.b> {
+      public static final Codec<cf.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  jx.a(lq.c).optionalFieldOf("attribute").forGetter(cf.a::a),
+                  kc.f.optionalFieldOf("uuid").forGetter(cf.a::b),
+                  Codec.STRING.optionalFieldOf("name").forGetter(cf.a::c),
+                  de.c.d.optionalFieldOf("amount", de.c.c).forGetter(cf.a::d),
+                  buq.a.f.optionalFieldOf("operation").forGetter(cf.a::e),
+                  bsx.l.optionalFieldOf("slot").forGetter(cf.a::f)
+               )
+               .apply($$0, cf.a::new)
+      );
+
+      public boolean a(cxf.b $$0) {
+         if (this.b.isPresent() && !this.b.get().a($$0.a())) {
             return false;
+         } else if (this.c.isPresent() && !this.c.get().equals($$0.b().b())) {
+            return false;
+         } else if (this.d.isPresent() && !this.d.get().equals($$0.b().c())) {
+            return false;
+         } else if (!this.e.d($$0.b().d())) {
+            return false;
+         } else {
+            return this.f.isPresent() && this.f.get() != $$0.b().e() ? false : !this.g.isPresent() || this.g.get() == $$0.c();
          }
       }
 
-      return true;
-   }
-
-   public static cf.a a(List<bm> $$0) {
-      return new cf.a($$0);
-   }
-
-   public static cf.b b(List<bm> $$0) {
-      return new cf.b($$0);
-   }
-
-   public static class a extends cf {
-      public static final Codec<cf.a> a = a(cf.a::new);
-
-      protected a(List<bm> $$0) {
-         super($$0);
+      public Optional<jm<bun>> a() {
+         return this.b;
       }
 
-      @Override
-      public ka<czg> a() {
-         return kb.j;
-      }
-   }
-
-   public static class b extends cf {
-      public static final Codec<cf.b> a = a(cf.b::new);
-
-      protected b(List<bm> $$0) {
-         super($$0);
+      public Optional<UUID> b() {
+         return this.c;
       }
 
-      @Override
-      public ka<czg> a() {
-         return kb.x;
+      public Optional<String> c() {
+         return this.d;
+      }
+
+      public de.c d() {
+         return this.e;
+      }
+
+      public Optional<buq.a> e() {
+         return this.f;
+      }
+
+      public Optional<bsx> f() {
+         return this.g;
       }
    }
 }

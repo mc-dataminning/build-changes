@@ -2,35 +2,35 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class dd extends df<dd.a> {
+public class dd extends dr<dd.a> {
    @Override
    public Codec<dd.a> a() {
       return dd.a.a;
    }
 
-   public void a(aqo $$0, cxy<?> $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
+   public void a(arc $$0, ala<eqi> $$1) {
+      this.a($$0, $$1x -> $$1x.b($$1));
    }
 
-   public static an<dd.a> a(akn $$0) {
-      return am.g.a(new dd.a(Optional.empty(), $$0));
-   }
-
-   public static record a(Optional<bc> b, akn c) implements df.a {
+   public static record a(Optional<bf> b, ala<eqi> c) implements dr.a {
       public static final Codec<dd.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(br.b.optionalFieldOf("player").forGetter(dd.a::a), akn.a.fieldOf("recipe").forGetter(dd.a::b)).apply($$0, dd.a::new)
+         $$0 -> $$0.group(bu.b.optionalFieldOf("player").forGetter(dd.a::a), ala.a(lq.aU).fieldOf("loot_table").forGetter(dd.a::b)).apply($$0, dd.a::new)
       );
 
-      public boolean a(cxy<?> $$0) {
-         return this.c.equals($$0.a());
+      public static an<dd.a> a(ala<eqi> $$0) {
+         return am.Q.a(new dd.a(Optional.empty(), $$0));
+      }
+
+      public boolean b(ala<eqi> $$0) {
+         return this.c == $$0;
       }
 
       @Override
-      public Optional<bc> a() {
+      public Optional<bf> a() {
          return this.b;
       }
 
-      public akn b() {
+      public ala<eqi> b() {
          return this.c;
       }
    }

@@ -1,55 +1,65 @@
-import com.google.common.collect.Lists;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
 import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
 
 public class bcj extends DataFix {
-   private static final List<String> a = Lists.newArrayList(new String[]{"MinecartRideable", "MinecartChest", "MinecartFurnace"});
+   private static final Set<String> a = Set.of("minecraft:potion", "minecraft:splash_potion", "minecraft:lingering_potion", "minecraft:tipped_arrow");
 
-   public bcj(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public bcj(Schema $$0) {
+      super($$0, false);
    }
 
-   public TypeRewriteRule makeRule() {
-      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bga.z);
-      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bga.z);
-      return this.fixTypeEverywhere(
-         "EntityMinecartIdentifiersFix",
-         $$0,
-         $$1,
-         $$2 -> $$3 -> {
-               if (!Objects.equals($$3.getFirst(), "Minecart")) {
-                  return $$3;
-               } else {
-                  Typed<? extends Pair<String, ?>> $$4 = (Typed<? extends Pair<String, ?>>)$$0.point($$2, "Minecart", $$3.getSecond())
-                     .orElseThrow(IllegalStateException::new);
-                  Dynamic<?> $$5 = (Dynamic<?>)$$4.getOrCreate(DSL.remainderFinder());
-                  int $$6 = $$5.get("Type").asInt(0);
-                  String $$7;
-                  if ($$6 > 0 && $$6 < a.size()) {
-                     $$7 = a.get($$6);
-                  } else {
-                     $$7 = "MinecartRideable";
+   protected TypeRewriteRule makeRule() {
+      Schema $$0 = this.getInputSchema();
+      Type<?> $$1 = this.getInputSchema().getType(bgs.t);
+      OpticFinder<Pair<String, String>> $$2 = DSL.fieldFinder("id", DSL.named(bgs.D.typeName(), bid.a()));
+      OpticFinder<?> $$3 = $$1.findField("tag");
+      return TypeRewriteRule.seq(
+         this.fixTypeEverywhereTyped("EffectDurationEntity", $$0.getType(bgs.B), $$0x -> $$0x.update(DSL.remainderFinder(), this::c)),
+         new TypeRewriteRule[]{
+            this.fixTypeEverywhereTyped("EffectDurationPlayer", $$0.getType(bgs.b), $$0x -> $$0x.update(DSL.remainderFinder(), this::c)),
+            this.fixTypeEverywhereTyped("EffectDurationItem", $$1, $$2x -> {
+               Optional<Pair<String, String>> $$3x = $$2x.getOptional($$2);
+               if ($$3x.filter(a::contains).isPresent()) {
+                  Optional<? extends Typed<?>> $$4 = $$2x.getOptionalTyped($$3);
+                  if ($$4.isPresent()) {
+                     Dynamic<?> $$5 = (Dynamic<?>)$$4.get().get(DSL.remainderFinder());
+                     Typed<?> $$6 = $$4.get().set(DSL.remainderFinder(), $$5.update("CustomPotionEffects", this::b));
+                     return $$2x.set($$3, $$6);
                   }
-
-                  return Pair.of(
-                     $$7,
-                     (DataResult)$$4.write()
-                        .map($$2xx -> ((Type)$$1.types().get($$7)).read($$2xx))
-                        .result()
-                        .orElseThrow(() -> new IllegalStateException("Could not read the new minecart."))
-                  );
                }
-            }
+
+               return $$2x;
+            })
+         }
       );
+   }
+
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.update("FactorCalculationData", $$1 -> {
+         int $$2 = $$1.get("effect_changed_timestamp").asInt(-1);
+         $$1 = $$1.remove("effect_changed_timestamp");
+         int $$3 = $$0.get("Duration").asInt(-1);
+         int $$4 = $$2 - $$3;
+         return $$1.set("ticks_active", $$1.createInt($$4));
+      });
+   }
+
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      return $$0.createList($$0.asStream().map(this::a));
+   }
+
+   private Dynamic<?> c(Dynamic<?> $$0) {
+      $$0 = $$0.update("Effects", this::b);
+      $$0 = $$0.update("ActiveEffects", this::b);
+      return $$0.update("CustomPotionEffects", this::b);
    }
 }

@@ -1,59 +1,24 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.UUID;
+import java.util.stream.Stream;
 
-public class dvx {
-   private final aqn a;
+public interface dvx {
+   int al();
 
-   public dvx(aqn $$0) {
-      this.a = $$0;
-   }
+   UUID cz();
 
-   public void a(ix<dvw> $$0, eum $$1, dvw.a $$2) {
-      int $$3 = $$0.a().a();
-      io $$4 = io.a($$1);
-      int $$5 = jq.a($$4.u() - $$3);
-      int $$6 = jq.a($$4.v() - $$3);
-      int $$7 = jq.a($$4.w() - $$3);
-      int $$8 = jq.a($$4.u() + $$3);
-      int $$9 = jq.a($$4.v() + $$3);
-      int $$10 = jq.a($$4.w() + $$3);
-      List<dvw.b> $$11 = new ArrayList<>();
-      dvz.a $$12 = ($$4x, $$5x) -> {
-         if ($$4x.c() == dvy.a.b) {
-            $$11.add(new dvw.b($$0, $$1, $$2, $$4x, $$5x));
-         } else {
-            $$4x.a(this.a, $$0, $$2, $$1);
-         }
-      };
-      boolean $$13 = false;
+   iz dp();
 
-      for (int $$14 = $$5; $$14 <= $$8; $$14++) {
-         for (int $$15 = $$7; $$15 <= $$10; $$15++) {
-            dsz $$16 = this.a.l().a($$14, $$15);
-            if ($$16 != null) {
-               for (int $$17 = $$6; $$17 <= $$9; $$17++) {
-                  $$13 |= $$16.a($$17).a($$0, $$1, $$2, $$12);
-               }
-            }
-         }
-      }
+   evh cK();
 
-      if (!$$11.isEmpty()) {
-         this.a($$11);
-      }
+   void a(dvy var1);
 
-      if ($$13) {
-         agb.a(this.a, $$0, $$1);
-      }
-   }
+   Stream<? extends dvx> cU();
 
-   private void a(List<dvw.b> $$0) {
-      Collections.sort($$0);
+   Stream<? extends dvx> cV();
 
-      for (dvw.b $$1 : $$0) {
-         dvy $$2 = $$1.d();
-         $$2.a(this.a, $$1.a(), $$1.c(), $$1.b());
-      }
-   }
+   void b(bsp.c var1);
+
+   boolean dN();
+
+   boolean dO();
 }

@@ -1,48 +1,23 @@
-import java.util.Objects;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-
 public class fid {
-   private final Consumer<ffy> a;
-   private final Consumer<ffy> b;
-   @Nullable
-   private fic c;
-   @Nullable
-   private fkg d;
+   public static final fid a = new fid("Merry X-mas!");
+   public static final fid b = new fid("Happy new year!");
+   public static final fid c = new fid("OOoooOOOoooo! Spooky!");
+   private static final int d = 123;
+   private static final int e = 69;
+   private final String f;
 
-   public fid(Consumer<ffy> $$0, Consumer<ffy> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public fid(String $$0) {
+      this.f = $$0;
    }
 
-   public void a(fkg $$0) {
-      this.d = $$0;
-      fic $$1 = this.a();
-      if ($$1 != null) {
-         $$1.a($$0);
-      }
-   }
-
-   public void a(fic $$0, boolean $$1) {
-      if (!Objects.equals(this.c, $$0)) {
-         if (this.c != null) {
-            this.c.a(this.b);
-         }
-
-         this.c = $$0;
-         $$0.a(this.a);
-         if (this.d != null) {
-            $$0.a(this.d);
-         }
-
-         if ($$1) {
-            feb.Q().aj().a(gre.a(avi.Ao, 1.0F));
-         }
-      }
-   }
-
-   @Nullable
-   public fic a() {
-      return this.c;
+   public void a(fgm $$0, int $$1, fgk $$2, int $$3) {
+      $$0.c().a();
+      $$0.c().a((float)$$1 / 2.0F + 123.0F, 69.0F, 0.0F);
+      $$0.c().a(a.f.rotationDegrees(-20.0F));
+      float $$4 = 1.8F - ayu.e(ayu.a((float)(ac.c() % 1000L) / 1000.0F * (float) (Math.PI * 2)) * 0.1F);
+      $$4 = $$4 * 100.0F / (float)($$2.b(this.f) + 32);
+      $$0.c().b($$4, $$4, $$4);
+      $$0.a($$2, this.f, 0, -8, 16776960 | $$3);
+      $$0.c().b();
    }
 }

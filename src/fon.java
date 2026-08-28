@@ -1,26 +1,26 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+public class fon extends fnw<cqi> {
+   private static final alb D = new alb("textures/gui/container/dispenser.png");
 
-public class fon implements fos {
-   private final fkg a;
-
-   public fon(fkg $$0) {
-      this.a = $$0;
+   public fon(cqi $$0, cmr $$1, xl $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i();
-      $$6.x = this.a.d() + 3;
-      $$6.y = this.a.c() + 3 + 1;
-      if ($$6.y + $$5 + 3 > $$1) {
-         $$6.y = this.a.b() - $$5 - 3 - 1;
-      }
+   protected void aN_() {
+      super.aN_();
+      this.r = (this.c - this.p.a(this.l)) / 2;
+   }
 
-      if ($$6.x + $$4 > $$0) {
-         $$6.x = Math.max(this.a.e() - $$4 - 3, 4);
-      }
+   @Override
+   public void a(fgm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
 
-      return $$6;
+   @Override
+   protected void a(fgm $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.c) / 2;
+      int $$5 = (this.o - this.d) / 2;
+      $$0.a(D, $$4, $$5, 0, 0, this.c, this.d);
    }
 }

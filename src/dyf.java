@@ -1,26 +1,40 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class dyf implements dxe {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private long h;
+   private final dxr i = new dxr(this);
 
-public class dyf implements dyc {
-   private final js e;
-   private final it f;
-   public static final MapCodec<dyf> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(js.v(16).optionalFieldOf("offset", js.g).forGetter($$0x -> $$0x.e), it.g.fieldOf("direction").forGetter($$0x -> $$0x.f))
-            .apply($$0, dyf::new)
-   );
-
-   public dyf(js $$0, it $$1) {
-      this.e = $$0;
-      this.f = $$1;
-   }
-
-   public boolean a(dbu $$0, io $$1) {
-      io $$2 = $$1.a(this.e);
-      return $$0.a_($$2).d($$0, $$2, this.f);
+   public dyf(long $$0) {
+      this.b($$0);
    }
 
    @Override
-   public dyd<?> a() {
-      return dyd.d;
+   public azc d() {
+      return new dyf(this.g());
+   }
+
+   @Override
+   public dyc e() {
+      return new dxq.a(this.g());
+   }
+
+   @Override
+   public void b(long $$0) {
+      this.h = ($$0 ^ 25214903917L) & 281474976710655L;
+      this.i.a();
+   }
+
+   @Override
+   public int c(int $$0) {
+      long $$1 = this.h * 25214903917L + 11L & 281474976710655L;
+      this.h = $$1;
+      return (int)($$1 >> 48 - $$0);
+   }
+
+   @Override
+   public double k() {
+      return this.i.b();
    }
 }

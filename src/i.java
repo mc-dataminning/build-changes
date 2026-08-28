@@ -27,7 +27,7 @@ public enum i {
       }
    });
 
-   private i(int $$0, int $$1, int $$2) {
+   private i(final int $$0, final int $$1, final int $$2) {
       this.g = new int[]{$$0, $$1, $$2};
       this.h = new Matrix3f();
       this.h.set(this.a(0), 0, 1.0F);

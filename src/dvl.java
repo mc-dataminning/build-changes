@@ -1,15 +1,45 @@
-public interface dvl<T> {
-   void g(T var1);
+import com.mojang.datafixers.DataFixer;
+import com.mojang.serialization.Dynamic;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
-   void f(T var1);
+public class dvl implements AutoCloseable {
+   private final dvc a;
+   private final DataFixer b;
+   private final bab c;
 
-   void e(T var1);
+   public dvl(dvj $$0, Path $$1, DataFixer $$2, boolean $$3, bab $$4) {
+      this.b = $$2;
+      this.c = $$4;
+      this.a = new dvc($$0, $$1, $$3);
+   }
 
-   void d(T var1);
+   public CompletableFuture<Optional<ur>> a(dba $$0) {
+      return this.a.a($$0);
+   }
 
-   void c(T var1);
+   public CompletableFuture<Void> a(dba $$0, @Nullable ur $$1) {
+      return this.a.a($$0, $$1);
+   }
 
-   void b(T var1);
+   public ur a(ur $$0, int $$1) {
+      int $$2 = vg.b($$0, $$1);
+      return this.c.a(this.b, $$0, $$2);
+   }
 
-   void a(T var1);
+   public Dynamic<vo> a(Dynamic<vo> $$0, int $$1) {
+      return this.c.a(this.b, $$0, $$1);
+   }
+
+   public CompletableFuture<Void> a(boolean $$0) {
+      return this.a.a($$0);
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.a.close();
+   }
 }

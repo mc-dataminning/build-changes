@@ -1,23 +1,29 @@
-public record cer(akn d) {
-   public static final akm<cer> a = a("temperate");
-   public static final akm<cer> b = a("warm");
-   public static final akm<cer> c = a("cold");
+import java.util.Set;
+import java.util.function.Predicate;
 
-   private static akm<cer> a(String $$0) {
-      return akm.a(lf.B, new akn($$0));
+public record cer(Set<drx> b, int c, int d) {
+   public static final Predicate<ji<cer>> a = $$0 -> false;
+
+   public cer(Set<drx> b, int c, int d) {
+      b = Set.copyOf(b);
+      this.b = b;
+      this.c = c;
+      this.d = d;
    }
 
-   public static cer a(jk<cer> $$0) {
-      a($$0, a, "textures/entity/frog/temperate_frog.png");
-      a($$0, b, "textures/entity/frog/warm_frog.png");
-      return a($$0, c, "textures/entity/frog/cold_frog.png");
+   public boolean a(drx $$0) {
+      return this.b.contains($$0);
    }
 
-   private static cer a(jk<cer> $$0, akm<cer> $$1, String $$2) {
-      return jk.a($$0, $$1, new cer(new akn($$2)));
+   public Set<drx> a() {
+      return this.b;
    }
 
-   public akn a() {
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
       return this.d;
    }
 }

@@ -1029,7 +1029,7 @@
         "type": "minecraft:food",
         "value": {
           "nutrition": 4,
-          "saturation_modifier": 0.3
+          "saturation": 2.4
         }
       }
     ]
@@ -1424,7 +1424,7 @@
         "type": "minecraft:food",
         "value": {
           "nutrition": 5,
-          "saturation_modifier": 0.6
+          "saturation": 6.0
         }
       }
     ]
@@ -2303,7 +2303,7 @@
         "type": "minecraft:food",
         "value": {
           "nutrition": 3,
-          "saturation_modifier": 0.3
+          "saturation": 1.8000001
         }
       }
     ]
@@ -2378,7 +2378,7 @@
         "type": "minecraft:food",
         "value": {
           "nutrition": 1,
-          "saturation_modifier": 0.6
+          "saturation": 1.2
         }
       }
     ]
@@ -2449,7 +2449,7 @@
         "type": "minecraft:food",
         "value": {
           "nutrition": 6,
-          "saturation_modifier": 0.6
+          "saturation": 7.2000003
         }
       }
     ]
@@ -4493,8 +4493,12 @@
   "minecraft:bow": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -4515,12 +4519,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -4692,7 +4692,7 @@
         "type": "minecraft:food",
         "value": {
           "nutrition": 5,
-          "saturation_modifier": 0.6
+          "saturation": 6.0
         }
       }
     ]
@@ -5480,8 +5480,12 @@
   "minecraft:brush": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -5502,12 +5506,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -6007,7 +6007,7 @@
         "type": "minecraft:food",
         "value": {
           "nutrition": 3,
-          "saturation_modifier": 0.6
+          "saturation": 3.6000001
         }
       }
     ]
@@ -6015,8 +6015,12 @@
   "minecraft:carrot_on_a_stick": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -6037,12 +6041,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -6279,8 +6279,12 @@
   "minecraft:chainmail_boots": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -6301,12 +6305,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -6319,8 +6319,12 @@
   "minecraft:chainmail_chestplate": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -6341,12 +6345,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -6359,8 +6359,12 @@
   "minecraft:chainmail_helmet": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -6381,12 +6385,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -6399,8 +6399,12 @@
   "minecraft:chainmail_leggings": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -6421,12 +6425,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -7124,7 +7124,7 @@
             }
           ],
           "nutrition": 2,
-          "saturation_modifier": 0.3
+          "saturation": 1.2
         }
       }
     ]
@@ -7616,7 +7616,7 @@
         "value": {
           "can_always_eat": true,
           "nutrition": 4,
-          "saturation_modifier": 0.3
+          "saturation": 2.4
         }
       }
     ]
@@ -8263,7 +8263,7 @@
         "type": "minecraft:food",
         "value": {
           "nutrition": 2,
-          "saturation_modifier": 0.1
+          "saturation": 0.4
         }
       }
     ]
@@ -8562,7 +8562,7 @@
         "type": "minecraft:food",
         "value": {
           "nutrition": 8,
-          "saturation_modifier": 0.8
+          "saturation": 12.8
         }
       }
     ]
@@ -8601,7 +8601,7 @@
         "type": "minecraft:food",
         "value": {
           "nutrition": 6,
-          "saturation_modifier": 0.6
+          "saturation": 7.2000003
         }
       }
     ]
@@ -8640,7 +8640,7 @@
         "type": "minecraft:food",
         "value": {
           "nutrition": 5,
-          "saturation_modifier": 0.6
+          "saturation": 6.0
         }
       }
     ]
@@ -8679,7 +8679,7 @@
         "type": "minecraft:food",
         "value": {
           "nutrition": 6,
-          "saturation_modifier": 0.8
+          "saturation": 9.6
         }
       }
     ]
@@ -8718,7 +8718,7 @@
         "type": "minecraft:food",
         "value": {
           "nutrition": 8,
-          "saturation_modifier": 0.8
+          "saturation": 12.8
         }
       }
     ]
@@ -8757,7 +8757,7 @@
         "type": "minecraft:food",
         "value": {
           "nutrition": 5,
-          "saturation_modifier": 0.6
+          "saturation": 6.0
         }
       }
     ]
@@ -8796,7 +8796,7 @@
         "type": "minecraft:food",
         "value": {
           "nutrition": 6,
-          "saturation_modifier": 0.8
+          "saturation": 9.6
         }
       }
     ]
@@ -8835,7 +8835,7 @@
         "type": "minecraft:food",
         "value": {
           "nutrition": 2,
-          "saturation_modifier": 0.1
+          "saturation": 0.4
         }
       }
     ]
@@ -9967,16 +9967,16 @@
   "minecraft:crossbow": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
         "value": 465
-      },
-      {
-        "type": "minecraft:charged_projectiles",
-        "value": []
       },
       {
         "type": "minecraft:rarity",
@@ -9993,12 +9993,12 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:charged_projectiles",
+        "value": []
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -11971,12 +11971,12 @@
   "minecraft:debug_stick": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
       },
       {
-        "type": "minecraft:enchantment_glint_override",
-        "value": true
+        "type": "minecraft:debug_stick_state",
+        "value": {}
       },
       {
         "type": "minecraft:rarity",
@@ -11993,12 +11993,12 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:enchantment_glint_override",
+        "value": true
       },
       {
-        "type": "minecraft:debug_stick_state",
-        "value": {}
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -12660,8 +12660,12 @@
   "minecraft:diamond_axe": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -12682,8 +12686,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -12700,10 +12704,6 @@
             }
           ]
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -12775,8 +12775,12 @@
   "minecraft:diamond_boots": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -12797,12 +12801,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -12815,8 +12815,12 @@
   "minecraft:diamond_chestplate": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -12837,12 +12841,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -12855,8 +12855,12 @@
   "minecraft:diamond_helmet": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -12877,12 +12881,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -12895,8 +12895,12 @@
   "minecraft:diamond_hoe": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -12917,8 +12921,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -12935,10 +12939,6 @@
             }
           ]
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -13010,8 +13010,12 @@
   "minecraft:diamond_leggings": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -13032,12 +13036,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -13082,8 +13082,12 @@
   "minecraft:diamond_pickaxe": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -13104,8 +13108,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -13122,10 +13126,6 @@
             }
           ]
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -13165,8 +13165,12 @@
   "minecraft:diamond_shovel": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -13187,8 +13191,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -13205,10 +13209,6 @@
             }
           ]
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -13248,8 +13248,12 @@
   "minecraft:diamond_sword": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -13270,8 +13274,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -13289,10 +13293,6 @@
             }
           ]
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -13784,7 +13784,7 @@
         "value": {
           "eat_seconds": 0.8,
           "nutrition": 1,
-          "saturation_modifier": 0.3
+          "saturation": 0.6
         }
       }
     ]
@@ -14052,8 +14052,12 @@
   "minecraft:elytra": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -14074,12 +14078,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -14188,12 +14188,8 @@
   "minecraft:enchanted_book": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
-      },
-      {
-        "type": "minecraft:enchantment_glint_override",
-        "value": true
+        "type": "minecraft:lore",
+        "value": []
       },
       {
         "type": "minecraft:rarity",
@@ -14210,8 +14206,12 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:enchantment_glint_override",
+        "value": true
+      },
+      {
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:stored_enchantments",
@@ -14229,28 +14229,6 @@
   },
   "minecraft:enchanted_golden_apple": {
     "components": [
-      {
-        "type": "minecraft:max_stack_size",
-        "value": 64
-      },
-      {
-        "type": "minecraft:enchantment_glint_override",
-        "value": true
-      },
-      {
-        "type": "minecraft:rarity",
-        "value": "epic"
-      },
-      {
-        "type": "minecraft:repair_cost",
-        "value": 0
-      },
-      {
-        "type": "minecraft:enchantments",
-        "value": {
-          "levels": {}
-        }
-      },
       {
         "type": "minecraft:lore",
         "value": []
@@ -14292,8 +14270,30 @@
             }
           ],
           "nutrition": 4,
-          "saturation_modifier": 1.2
+          "saturation": 9.6
         }
+      },
+      {
+        "type": "minecraft:rarity",
+        "value": "epic"
+      },
+      {
+        "type": "minecraft:repair_cost",
+        "value": 0
+      },
+      {
+        "type": "minecraft:enchantments",
+        "value": {
+          "levels": {}
+        }
+      },
+      {
+        "type": "minecraft:enchantment_glint_override",
+        "value": true
+      },
+      {
+        "type": "minecraft:max_stack_size",
+        "value": 64
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -15342,12 +15342,8 @@
   "minecraft:filled_map": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 64
-      },
-      {
-        "type": "minecraft:map_decorations",
-        "value": {}
+        "type": "minecraft:lore",
+        "value": []
       },
       {
         "type": "minecraft:rarity",
@@ -15364,8 +15360,12 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 64
+      },
+      {
+        "type": "minecraft:map_decorations",
+        "value": {}
       },
       {
         "type": "minecraft:map_color",
@@ -15580,8 +15580,12 @@
   "minecraft:fishing_rod": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -15602,12 +15606,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -15684,8 +15684,12 @@
   "minecraft:flint_and_steel": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -15706,12 +15710,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -16431,7 +16431,7 @@
         "type": "minecraft:food",
         "value": {
           "nutrition": 2,
-          "saturation_modifier": 0.1
+          "saturation": 0.4
         }
       }
     ]
@@ -16872,7 +16872,7 @@
             }
           ],
           "nutrition": 4,
-          "saturation_modifier": 1.2
+          "saturation": 9.6
         }
       }
     ]
@@ -16880,8 +16880,12 @@
   "minecraft:golden_axe": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -16902,8 +16906,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -16920,10 +16924,6 @@
             }
           ]
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -16963,8 +16963,12 @@
   "minecraft:golden_boots": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -16985,12 +16989,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -17034,7 +17034,7 @@
         "type": "minecraft:food",
         "value": {
           "nutrition": 6,
-          "saturation_modifier": 1.2
+          "saturation": 14.400001
         }
       }
     ]
@@ -17042,8 +17042,12 @@
   "minecraft:golden_chestplate": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -17064,12 +17068,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -17082,8 +17082,12 @@
   "minecraft:golden_helmet": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -17104,12 +17108,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -17122,8 +17122,12 @@
   "minecraft:golden_hoe": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -17144,8 +17148,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -17162,10 +17166,6 @@
             }
           ]
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -17237,8 +17237,12 @@
   "minecraft:golden_leggings": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -17259,12 +17263,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -17277,8 +17277,12 @@
   "minecraft:golden_pickaxe": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -17299,8 +17303,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -17317,10 +17321,6 @@
             }
           ]
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -17360,8 +17360,12 @@
   "minecraft:golden_shovel": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -17382,8 +17386,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -17400,10 +17404,6 @@
             }
           ]
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -17443,8 +17443,12 @@
   "minecraft:golden_sword": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -17465,8 +17469,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -17484,10 +17488,6 @@
             }
           ]
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -19046,7 +19046,7 @@
         "type": "minecraft:food",
         "value": {
           "nutrition": 6,
-          "saturation_modifier": 0.1
+          "saturation": 1.2
         }
       }
     ]
@@ -19698,8 +19698,12 @@
   "minecraft:iron_axe": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -19720,8 +19724,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -19738,10 +19742,6 @@
             }
           ]
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -19845,8 +19845,12 @@
   "minecraft:iron_boots": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -19867,12 +19871,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -19885,8 +19885,12 @@
   "minecraft:iron_chestplate": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -19907,12 +19911,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -19989,8 +19989,12 @@
   "minecraft:iron_helmet": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -20011,12 +20015,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -20029,8 +20029,12 @@
   "minecraft:iron_hoe": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -20051,8 +20055,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -20069,10 +20073,6 @@
             }
           ]
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -20176,8 +20176,12 @@
   "minecraft:iron_leggings": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -20198,12 +20202,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -20280,8 +20280,12 @@
   "minecraft:iron_pickaxe": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -20302,8 +20306,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -20320,10 +20324,6 @@
             }
           ]
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -20363,8 +20363,12 @@
   "minecraft:iron_shovel": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -20385,8 +20389,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -20403,10 +20407,6 @@
             }
           ]
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -20446,8 +20446,12 @@
   "minecraft:iron_sword": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -20468,8 +20472,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -20487,10 +20491,6 @@
             }
           ]
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -21622,8 +21622,12 @@
   "minecraft:leather_boots": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -21644,12 +21648,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -21662,8 +21662,12 @@
   "minecraft:leather_chestplate": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -21684,12 +21688,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -21702,8 +21702,12 @@
   "minecraft:leather_helmet": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -21724,12 +21728,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -21774,8 +21774,12 @@
   "minecraft:leather_leggings": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -21796,12 +21800,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -23474,8 +23474,12 @@
   "minecraft:mace": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -23496,8 +23500,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -23505,10 +23509,6 @@
           "damage_per_block": 2,
           "rules": []
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -24803,7 +24803,7 @@
         "type": "minecraft:food",
         "value": {
           "nutrition": 2,
-          "saturation_modifier": 0.3
+          "saturation": 1.2
         }
       }
     ]
@@ -25610,7 +25610,7 @@
         "type": "minecraft:food",
         "value": {
           "nutrition": 6,
-          "saturation_modifier": 0.6
+          "saturation": 7.2000003
         }
       }
     ]
@@ -26161,7 +26161,7 @@
         "type": "minecraft:food",
         "value": {
           "nutrition": 2,
-          "saturation_modifier": 0.3
+          "saturation": 1.2
         }
       }
     ]
@@ -26653,8 +26653,12 @@
   "minecraft:netherite_axe": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -26675,8 +26679,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -26693,10 +26697,6 @@
             }
           ]
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:fire_resistant",
@@ -26776,8 +26776,12 @@
   "minecraft:netherite_boots": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -26798,12 +26802,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:fire_resistant",
@@ -26820,8 +26820,12 @@
   "minecraft:netherite_chestplate": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -26842,12 +26846,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:fire_resistant",
@@ -26864,8 +26864,12 @@
   "minecraft:netherite_helmet": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -26886,12 +26890,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:fire_resistant",
@@ -26908,8 +26908,12 @@
   "minecraft:netherite_hoe": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -26930,8 +26934,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -26948,10 +26952,6 @@
             }
           ]
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:fire_resistant",
@@ -27031,8 +27031,12 @@
   "minecraft:netherite_leggings": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -27053,12 +27057,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:fire_resistant",
@@ -27075,8 +27075,12 @@
   "minecraft:netherite_pickaxe": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -27097,8 +27101,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -27115,10 +27119,6 @@
             }
           ]
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:fire_resistant",
@@ -27198,8 +27198,12 @@
   "minecraft:netherite_shovel": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -27220,8 +27224,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -27238,10 +27242,6 @@
             }
           ]
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:fire_resistant",
@@ -27285,8 +27285,12 @@
   "minecraft:netherite_sword": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -27307,8 +27311,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -27326,10 +27330,6 @@
             }
           ]
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:fire_resistant",
@@ -28141,8 +28141,15 @@
   "minecraft:ominous_bottle": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 64
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:food",
+        "value": {
+          "nutrition": 1,
+          "saturation": 0.2
+        }
       },
       {
         "type": "minecraft:rarity",
@@ -28159,15 +28166,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:food",
-        "value": {
-          "nutrition": 1,
-          "saturation_modifier": 0.1
-        }
+        "type": "minecraft:max_stack_size",
+        "value": 64
       },
       {
         "type": "minecraft:ominous_bottle_amplifier",
@@ -30289,7 +30289,7 @@
             }
           ],
           "nutrition": 2,
-          "saturation_modifier": 0.3
+          "saturation": 1.2
         }
       }
     ]
@@ -31320,7 +31320,7 @@
         "type": "minecraft:food",
         "value": {
           "nutrition": 3,
-          "saturation_modifier": 0.3
+          "saturation": 1.8000001
         }
       }
     ]
@@ -31359,7 +31359,7 @@
         "type": "minecraft:food",
         "value": {
           "nutrition": 1,
-          "saturation_modifier": 0.3
+          "saturation": 0.6
         }
       }
     ]
@@ -31843,7 +31843,7 @@
             }
           ],
           "nutrition": 1,
-          "saturation_modifier": 0.1
+          "saturation": 0.2
         }
       }
     ]
@@ -31982,7 +31982,7 @@
         "type": "minecraft:food",
         "value": {
           "nutrition": 8,
-          "saturation_modifier": 0.3
+          "saturation": 4.8
         }
       }
     ]
@@ -32797,7 +32797,7 @@
         "type": "minecraft:food",
         "value": {
           "nutrition": 3,
-          "saturation_modifier": 0.3
+          "saturation": 1.8000001
         }
       }
     ]
@@ -32932,7 +32932,7 @@
         "type": "minecraft:food",
         "value": {
           "nutrition": 10,
-          "saturation_modifier": 0.6
+          "saturation": 12.0
         }
       }
     ]
@@ -34493,7 +34493,7 @@
             }
           ],
           "nutrition": 4,
-          "saturation_modifier": 0.1
+          "saturation": 0.8
         }
       }
     ]
@@ -34564,7 +34564,7 @@
         "type": "minecraft:food",
         "value": {
           "nutrition": 2,
-          "saturation_modifier": 0.1
+          "saturation": 0.4
         }
       }
     ]
@@ -35216,8 +35216,12 @@
   "minecraft:shears": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -35238,8 +35242,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -35267,10 +35271,6 @@
             }
           ]
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -35347,12 +35347,16 @@
   "minecraft:shield": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
-      },
-      {
         "type": "minecraft:banner_patterns",
         "value": []
+      },
+      {
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -35373,12 +35377,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -36915,7 +36915,7 @@
             }
           ],
           "nutrition": 2,
-          "saturation_modifier": 0.8
+          "saturation": 3.2
         }
       }
     ]
@@ -37791,8 +37791,12 @@
   "minecraft:stone_axe": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -37813,8 +37817,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -37831,10 +37835,6 @@
             }
           ]
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -38034,8 +38034,12 @@
   "minecraft:stone_hoe": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -38056,8 +38060,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -38074,10 +38078,6 @@
             }
           ]
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -38117,8 +38117,12 @@
   "minecraft:stone_pickaxe": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -38139,8 +38143,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -38157,10 +38161,6 @@
             }
           ]
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -38232,8 +38232,12 @@
   "minecraft:stone_shovel": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -38254,8 +38258,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -38272,10 +38276,6 @@
             }
           ]
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -38379,8 +38379,12 @@
   "minecraft:stone_sword": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -38401,8 +38405,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -38420,10 +38424,6 @@
             }
           ]
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -39487,8 +39487,16 @@
   "minecraft:suspicious_stew": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:food",
+        "value": {
+          "can_always_eat": true,
+          "nutrition": 6,
+          "saturation": 7.2000003
+        }
       },
       {
         "type": "minecraft:rarity",
@@ -39505,20 +39513,12 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:suspicious_stew_effects",
         "value": []
-      },
-      {
-        "type": "minecraft:food",
-        "value": {
-          "can_always_eat": true,
-          "nutrition": 6,
-          "saturation_modifier": 0.6
-        }
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -39562,7 +39562,7 @@
         "type": "minecraft:food",
         "value": {
           "nutrition": 2,
-          "saturation_modifier": 0.1
+          "saturation": 0.4
         }
       }
     ]
@@ -40158,8 +40158,12 @@
   "minecraft:trident": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -40180,8 +40184,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -40189,10 +40193,6 @@
           "damage_per_block": 2,
           "rules": []
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -40295,7 +40295,7 @@
         "type": "minecraft:food",
         "value": {
           "nutrition": 1,
-          "saturation_modifier": 0.1
+          "saturation": 0.2
         }
       }
     ]
@@ -40755,8 +40755,12 @@
   "minecraft:turtle_helmet": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -40777,12 +40781,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -41371,8 +41371,12 @@
   "minecraft:warped_fungus_on_a_stick": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -41393,12 +41397,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -44107,8 +44107,12 @@
   "minecraft:wolf_armor": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -44129,12 +44133,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -44179,8 +44179,12 @@
   "minecraft:wooden_axe": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -44201,8 +44205,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -44219,10 +44223,6 @@
             }
           ]
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -44262,8 +44262,12 @@
   "minecraft:wooden_hoe": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -44284,8 +44288,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -44302,10 +44306,6 @@
             }
           ]
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -44345,8 +44345,12 @@
   "minecraft:wooden_pickaxe": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -44367,8 +44371,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -44385,10 +44389,6 @@
             }
           ]
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -44428,8 +44428,12 @@
   "minecraft:wooden_shovel": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -44450,8 +44454,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -44468,10 +44472,6 @@
             }
           ]
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:attribute_modifiers",
@@ -44511,8 +44511,12 @@
   "minecraft:wooden_sword": {
     "components": [
       {
-        "type": "minecraft:max_stack_size",
-        "value": 1
+        "type": "minecraft:lore",
+        "value": []
+      },
+      {
+        "type": "minecraft:damage",
+        "value": 0
       },
       {
         "type": "minecraft:max_damage",
@@ -44533,8 +44537,8 @@
         }
       },
       {
-        "type": "minecraft:lore",
-        "value": []
+        "type": "minecraft:max_stack_size",
+        "value": 1
       },
       {
         "type": "minecraft:tool",
@@ -44552,10 +44556,6 @@
             }
           ]
         }
-      },
-      {
-        "type": "minecraft:damage",
-        "value": 0
       },
       {
         "type": "minecraft:attribute_modifiers",

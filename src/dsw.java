@@ -1,5 +1,20 @@
-public interface dsw {
-   drd a(int var1);
+public enum dsw implements azp {
+   a("top"),
+   b("bottom");
 
-   void a(int var1, drd var2);
+   private final String c;
+
+   private dsw(final String $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.c;
+   }
+
+   @Override
+   public String c() {
+      return this.c;
+   }
 }

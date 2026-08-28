@@ -1,258 +1,531 @@
 import com.google.common.collect.ImmutableList;
-import java.util.Map;
-import org.joml.Vector3f;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
 
-public class fry<T extends cfs & bso> extends frr<T> {
-   public static final float a = 1.8849558F;
-   private final fvw b;
-   private final fvw f;
-   private final fvw g;
-   private final fvw h;
-   private final fvw i;
-   private final fvw j;
-   private final fvw k;
-   private final fvw l;
-   private final fvw m;
-   private final fvw n;
+public class fry extends fhv<fry.a> {
+   public static final DateTimeFormatter a = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT).withZone(ZoneId.systemDefault());
+   static final alb m = new alb("world_list/error_highlighted");
+   static final alb n = new alb("world_list/error");
+   static final alb o = new alb("world_list/marked_join_highlighted");
+   static final alb p = new alb("world_list/marked_join");
+   static final alb q = new alb("world_list/warning_highlighted");
+   static final alb r = new alb("world_list/warning");
+   static final alb s = new alb("world_list/join_highlighted");
+   static final alb u = new alb("world_list/join");
+   static final Logger v = LogUtils.getLogger();
+   static final xl w = xl.c("selectWorld.tooltip.fromNewerVersion1").a(n.m);
+   static final xl x = xl.c("selectWorld.tooltip.fromNewerVersion2").a(n.m);
+   static final xl y = xl.c("selectWorld.tooltip.snapshot1").a(n.g);
+   static final xl z = xl.c("selectWorld.tooltip.snapshot2").a(n.g);
+   static final xl A = xl.c("selectWorld.locked").a(n.m);
+   static final xl B = xl.c("selectWorld.conversion.tooltip").a(n.m);
+   static final xl C = xl.c("selectWorld.incompatible.tooltip").a(n.m);
+   static final xl D = xl.c("selectWorld.experimental");
+   private final frt E;
+   private CompletableFuture<List<eps>> F;
+   @Nullable
+   private List<eps> G;
+   private String H;
+   private final fry.b I;
 
-   public fry(fvw $$0) {
-      super(true, 8.0F, 3.35F);
-      this.j = $$0.b("body");
-      this.k = this.j.b("head");
-      this.g = this.j.b("right_hind_leg");
-      this.f = this.j.b("left_hind_leg");
-      this.i = this.j.b("right_front_leg");
-      this.h = this.j.b("left_front_leg");
-      this.b = this.j.b("tail");
-      this.l = this.k.b("top_gills");
-      this.m = this.k.b("left_gills");
-      this.n = this.k.b("right_gills");
-   }
-
-   public static fwc c() {
-      fwe $$0 = new fwe();
-      fwf $$1 = $$0.a();
-      fwf $$2 = $$1.a(
-         "body", fwb.c().a(0, 11).a(-4.0F, -2.0F, -9.0F, 8.0F, 4.0F, 10.0F).a(2, 17).a(0.0F, -3.0F, -8.0F, 0.0F, 5.0F, 9.0F), fvy.a(0.0F, 20.0F, 5.0F)
-      );
-      fwa $$3 = new fwa(0.001F);
-      fwf $$4 = $$2.a("head", fwb.c().a(0, 1).a(-4.0F, -3.0F, -5.0F, 8.0F, 5.0F, 5.0F, $$3), fvy.a(0.0F, 0.0F, -9.0F));
-      fwb $$5 = fwb.c().a(3, 37).a(-4.0F, -3.0F, 0.0F, 8.0F, 3.0F, 0.0F, $$3);
-      fwb $$6 = fwb.c().a(0, 40).a(-3.0F, -5.0F, 0.0F, 3.0F, 7.0F, 0.0F, $$3);
-      fwb $$7 = fwb.c().a(11, 40).a(0.0F, -5.0F, 0.0F, 3.0F, 7.0F, 0.0F, $$3);
-      $$4.a("top_gills", $$5, fvy.a(0.0F, -3.0F, -1.0F));
-      $$4.a("left_gills", $$6, fvy.a(-4.0F, 0.0F, -1.0F));
-      $$4.a("right_gills", $$7, fvy.a(4.0F, 0.0F, -1.0F));
-      fwb $$8 = fwb.c().a(2, 13).a(-1.0F, 0.0F, 0.0F, 3.0F, 5.0F, 0.0F, $$3);
-      fwb $$9 = fwb.c().a(2, 13).a(-2.0F, 0.0F, 0.0F, 3.0F, 5.0F, 0.0F, $$3);
-      $$2.a("right_hind_leg", $$9, fvy.a(-3.5F, 1.0F, -1.0F));
-      $$2.a("left_hind_leg", $$8, fvy.a(3.5F, 1.0F, -1.0F));
-      $$2.a("right_front_leg", $$9, fvy.a(-3.5F, 1.0F, -8.0F));
-      $$2.a("left_front_leg", $$8, fvy.a(3.5F, 1.0F, -8.0F));
-      $$2.a("tail", fwb.c().a(2, 19).a(0.0F, -3.0F, 0.0F, 0.0F, 5.0F, 12.0F), fvy.a(0.0F, 0.0F, 1.0F));
-      return fwc.a($$0, 64, 64);
-   }
-
-   @Override
-   protected Iterable<fvw> a() {
-      return ImmutableList.of();
-   }
-
-   @Override
-   protected Iterable<fvw> b() {
-      return ImmutableList.of(this.j);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a($$0, $$4, $$5);
-      if ($$0.gv()) {
-         this.b($$4);
-         this.a($$0);
+   public fry(frt $$0, ffa $$1, int $$2, int $$3, int $$4, int $$5, String $$6, @Nullable fry $$7) {
+      super($$1, $$2, $$3, $$4, $$5);
+      this.E = $$0;
+      this.I = new fry.b($$1);
+      this.H = $$6;
+      if ($$7 != null) {
+         this.F = $$7.F;
       } else {
-         boolean $$6 = $$2 > 1.0E-5F || $$0.dH() != $$0.P || $$0.dF() != $$0.O;
-         if ($$0.bh()) {
-            if ($$6) {
-               this.d($$3, $$5);
-            } else {
-               this.a($$3);
+         this.F = this.L();
+      }
+
+      this.a(this.J());
+   }
+
+   @Override
+   protected void k() {
+      this.aF_().forEach(fry.a::close);
+      super.k();
+   }
+
+   @Nullable
+   private List<eps> J() {
+      try {
+         return this.F.getNow(null);
+      } catch (CancellationException | CompletionException var2) {
+         return null;
+      }
+   }
+
+   void K() {
+      this.F = this.L();
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (fla.a($$0)) {
+         Optional<fry.c> $$3 = this.d();
+         if ($$3.isPresent()) {
+            if ($$3.get().b()) {
+               this.c.aj().a(gsd.a(avw.Ao, 1.0F));
+               $$3.get().c();
             }
 
-            this.a($$0);
-         } else {
-            if ($$0.aE()) {
-               if ($$6) {
-                  this.c($$3, $$4);
-               } else {
-                  this.b($$3, $$4);
-               }
-            }
-
-            this.a($$0);
+            return true;
          }
       }
+
+      return super.a($$0, $$1, $$2);
    }
 
-   private void a(T $$0) {
-      Map<String, Vector3f> $$1 = $$0.a();
-      $$1.put("body", this.a(this.j));
-      $$1.put("head", this.a(this.k));
-      $$1.put("right_hind_leg", this.a(this.g));
-      $$1.put("left_hind_leg", this.a(this.f));
-      $$1.put("right_front_leg", this.a(this.i));
-      $$1.put("left_front_leg", this.a(this.h));
-      $$1.put("tail", this.a(this.b));
-      $$1.put("top_gills", this.a(this.l));
-      $$1.put("left_gills", this.a(this.m));
-      $$1.put("right_gills", this.a(this.n));
+   @Override
+   public void b(fgm $$0, int $$1, int $$2, float $$3) {
+      List<eps> $$4 = this.J();
+      if ($$4 != this.G) {
+         this.a($$4);
+      }
+
+      super.b($$0, $$1, $$2, $$3);
    }
 
-   private Vector3f a(fvw $$0) {
-      return new Vector3f($$0.e, $$0.f, $$0.g);
-   }
-
-   private void a(fvw $$0, Vector3f $$1) {
-      $$0.b($$1.x(), $$1.y(), $$1.z());
-   }
-
-   private void a(T $$0, float $$1, float $$2) {
-      this.j.b = 0.0F;
-      this.k.c = 0.0F;
-      this.j.c = 20.0F;
-      Map<String, Vector3f> $$3 = $$0.a();
-      if ($$3.isEmpty()) {
-         this.j.b($$2 * (float) (Math.PI / 180.0), $$1 * (float) (Math.PI / 180.0), 0.0F);
-         this.k.b(0.0F, 0.0F, 0.0F);
-         this.f.b(0.0F, 0.0F, 0.0F);
-         this.g.b(0.0F, 0.0F, 0.0F);
-         this.h.b(0.0F, 0.0F, 0.0F);
-         this.i.b(0.0F, 0.0F, 0.0F);
-         this.m.b(0.0F, 0.0F, 0.0F);
-         this.n.b(0.0F, 0.0F, 0.0F);
-         this.l.b(0.0F, 0.0F, 0.0F);
-         this.b.b(0.0F, 0.0F, 0.0F);
+   private void a(@Nullable List<eps> $$0) {
+      if ($$0 == null) {
+         this.M();
       } else {
-         this.a(this.j, $$3.get("body"));
-         this.a(this.k, $$3.get("head"));
-         this.a(this.f, $$3.get("left_hind_leg"));
-         this.a(this.g, $$3.get("right_hind_leg"));
-         this.a(this.h, $$3.get("left_front_leg"));
-         this.a(this.i, $$3.get("right_front_leg"));
-         this.a(this.m, $$3.get("left_gills"));
-         this.a(this.n, $$3.get("right_gills"));
-         this.a(this.l, $$3.get("top_gills"));
-         this.a(this.b, $$3.get("tail"));
+         this.a(this.H, $$0);
+      }
+
+      this.G = $$0;
+   }
+
+   public void a(String $$0) {
+      if (this.G != null && !$$0.equals(this.H)) {
+         this.a($$0, this.G);
+      }
+
+      this.H = $$0;
+   }
+
+   private CompletableFuture<List<eps>> L() {
+      epr.a $$0;
+      try {
+         $$0 = this.c.m().b();
+      } catch (epq var3) {
+         v.error("Couldn't load level list", var3);
+         this.c(var3.a());
+         return CompletableFuture.completedFuture(List.of());
+      }
+
+      if ($$0.a()) {
+         frn.a(this.c, null);
+         return CompletableFuture.completedFuture(List.of());
+      } else {
+         return this.c.m().a($$0).exceptionally($$0x -> {
+            this.c.a(o.a($$0x, "Couldn't load level list"));
+            return List.of();
+         });
       }
    }
 
-   private float a(float $$0, float $$1) {
-      return this.a(0.05F, $$0, $$1);
+   private void a(String $$0, List<eps> $$1) {
+      this.k();
+      $$0 = $$0.toLowerCase(Locale.ROOT);
+
+      for (eps $$2 : $$1) {
+         if (this.a($$0, $$2)) {
+            this.b(new fry.c(this, $$2));
+         }
+      }
+
+      this.N();
    }
 
-   private float a(float $$0, float $$1, float $$2) {
-      return ayf.j($$0, $$1, $$2);
+   private boolean a(String $$0, eps $$1) {
+      return $$1.b().toLowerCase(Locale.ROOT).contains($$0) || $$1.a().toLowerCase(Locale.ROOT).contains($$0);
    }
 
-   private void a(fvw $$0, float $$1, float $$2, float $$3) {
-      $$0.b(this.a($$0.e, $$1), this.a($$0.f, $$2), this.a($$0.g, $$3));
+   private void M() {
+      this.k();
+      this.b(this.I);
+      this.N();
    }
 
-   private void b(float $$0, float $$1) {
-      float $$2 = $$0 * 0.09F;
-      float $$3 = ayf.a($$2);
-      float $$4 = ayf.b($$2);
-      float $$5 = $$3 * $$3 - 2.0F * $$3;
-      float $$6 = $$4 * $$4 - 3.0F * $$3;
-      this.k.e = this.a(this.k.e, -0.09F * $$5);
-      this.k.f = this.a(this.k.f, 0.0F);
-      this.k.g = this.a(this.k.g, -0.2F);
-      this.b.f = this.a(this.b.f, -0.1F + 0.1F * $$5);
-      this.l.e = this.a(this.l.e, 0.6F + 0.05F * $$6);
-      this.m.f = this.a(this.m.f, -this.l.e);
-      this.n.f = this.a(this.n.f, -this.m.f);
-      this.a(this.f, 1.1F, 1.0F, 0.0F);
-      this.a(this.h, 0.8F, 2.3F, -0.5F);
-      this.d();
-      this.j.e = this.a(0.2F, this.j.e, 0.0F);
-      this.j.f = this.a(this.j.f, $$1 * (float) (Math.PI / 180.0));
-      this.j.g = this.a(this.j.g, 0.0F);
+   private void N() {
+      this.a(this.n());
+      this.E.d(true);
    }
 
-   private void c(float $$0, float $$1) {
-      float $$2 = $$0 * 0.11F;
-      float $$3 = ayf.b($$2);
-      float $$4 = ($$3 * $$3 - 2.0F * $$3) / 5.0F;
-      float $$5 = 0.7F * $$3;
-      this.k.e = this.a(this.k.e, 0.0F);
-      this.k.f = this.a(this.k.f, 0.09F * $$3);
-      this.k.g = this.a(this.k.g, 0.0F);
-      this.b.f = this.a(this.b.f, this.k.f);
-      this.l.e = this.a(this.l.e, 0.6F - 0.08F * ($$3 * $$3 + 2.0F * ayf.a($$2)));
-      this.m.f = this.a(this.m.f, -this.l.e);
-      this.n.f = this.a(this.n.f, -this.m.f);
-      this.a(this.f, 0.9424779F, 1.5F - $$4, -0.1F);
-      this.a(this.h, 1.0995574F, (float) (Math.PI / 2) - $$5, 0.0F);
-      this.a(this.g, this.f.e, -1.0F - $$4, 0.0F);
-      this.a(this.i, this.h.e, (float) (-Math.PI / 2) - $$5, 0.0F);
-      this.j.e = this.a(0.2F, this.j.e, 0.0F);
-      this.j.f = this.a(this.j.f, $$1 * (float) (Math.PI / 180.0));
-      this.j.g = this.a(this.j.g, 0.0F);
+   private void c(xl $$0) {
+      this.c.a(new fmb(xl.c("selectWorld.unable_to_load"), $$0));
    }
 
-   private void a(float $$0) {
-      float $$1 = $$0 * 0.075F;
-      float $$2 = ayf.b($$1);
-      float $$3 = ayf.a($$1) * 0.15F;
-      this.j.e = this.a(this.j.e, -0.15F + 0.075F * $$2);
-      this.j.c -= $$3;
-      this.k.e = this.a(this.k.e, -this.j.e);
-      this.l.e = this.a(this.l.e, 0.2F * $$2);
-      this.m.f = this.a(this.m.f, -0.3F * $$2 - 0.19F);
-      this.n.f = this.a(this.n.f, -this.m.f);
-      this.a(this.f, (float) (Math.PI * 3.0 / 4.0) - $$2 * 0.11F, 0.47123894F, 1.7278761F);
-      this.a(this.h, (float) (Math.PI / 4) - $$2 * 0.2F, 2.042035F, 0.0F);
-      this.d();
-      this.b.f = this.a(this.b.f, 0.5F * $$2);
-      this.k.f = this.a(this.k.f, 0.0F);
-      this.k.g = this.a(this.k.g, 0.0F);
+   @Override
+   public int b() {
+      return 270;
    }
 
-   private void d(float $$0, float $$1) {
-      float $$2 = $$0 * 0.33F;
-      float $$3 = ayf.a($$2);
-      float $$4 = ayf.b($$2);
-      float $$5 = 0.13F * $$3;
-      this.j.e = this.a(0.1F, this.j.e, $$1 * (float) (Math.PI / 180.0) + $$5);
-      this.k.e = -$$5 * 1.8F;
-      this.j.c -= 0.45F * $$4;
-      this.l.e = this.a(this.l.e, -0.5F * $$3 - 0.8F);
-      this.m.f = this.a(this.m.f, 0.3F * $$3 + 0.9F);
-      this.n.f = this.a(this.n.f, -this.m.f);
-      this.b.f = this.a(this.b.f, 0.3F * ayf.b($$2 * 0.9F));
-      this.a(this.f, 1.8849558F, -0.4F * $$3, (float) (Math.PI / 2));
-      this.a(this.h, 1.8849558F, -0.2F * $$4 - 0.1F, (float) (Math.PI / 2));
-      this.d();
-      this.k.f = this.a(this.k.f, 0.0F);
-      this.k.g = this.a(this.k.g, 0.0F);
+   public void a(@Nullable fry.a $$0) {
+      super.a($$0);
+      this.E.a($$0 instanceof fry.c $$1 ? $$1.f : null);
    }
 
-   private void b(float $$0) {
-      this.a(this.f, 1.4137167F, 1.0995574F, (float) (Math.PI / 4));
-      this.a(this.h, (float) (Math.PI / 4), 2.042035F, 0.0F);
-      this.j.e = this.a(this.j.e, -0.15F);
-      this.j.g = this.a(this.j.g, 0.35F);
-      this.d();
-      this.j.f = this.a(this.j.f, $$0 * (float) (Math.PI / 180.0));
-      this.k.e = this.a(this.k.e, 0.0F);
-      this.k.f = this.a(this.k.f, 0.0F);
-      this.k.g = this.a(this.k.g, 0.0F);
-      this.b.f = this.a(this.b.f, 0.0F);
-      this.a(this.l, 0.0F, 0.0F, 0.0F);
-      this.a(this.m, 0.0F, 0.0F, 0.0F);
-      this.a(this.n, 0.0F, 0.0F, 0.0F);
+   public Optional<fry.c> d() {
+      fry.a $$0 = this.h();
+      return $$0 instanceof fry.c $$1 ? Optional.of($$1) : Optional.empty();
    }
 
-   private void d() {
-      this.a(this.g, this.f.e, -this.f.f, -this.f.g);
-      this.a(this.i, this.h.e, -this.h.f, -this.h.g);
+   public frt I() {
+      return this.E;
+   }
+
+   @Override
+   public void a(fkv $$0) {
+      if (this.aF_().contains(this.I)) {
+         this.I.b($$0);
+      } else {
+         super.a($$0);
+      }
+   }
+
+   public abstract static class a extends fhv.a<fry.a> implements AutoCloseable {
+      @Override
+      public void close() {
+      }
+   }
+
+   public static class b extends fry.a {
+      private static final xl a = xl.c("selectWorld.loading_list");
+      private final ffa b;
+
+      public b(ffa $$0) {
+         this.b = $$0;
+      }
+
+      @Override
+      public void a(fgm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10 = (this.b.y.n - this.b.h.a(a)) / 2;
+         int $$11 = $$2 + ($$5 - 9) / 2;
+         $$0.a(this.b.h, a, $$10, $$11, 16777215, false);
+         String $$12 = fmj.a(ac.c());
+         int $$13 = (this.b.y.n - this.b.h.b($$12)) / 2;
+         int $$14 = $$11 + 9;
+         $$0.a(this.b.h, $$12, $$13, $$14, -8355712, false);
+      }
+
+      @Override
+      public xl a() {
+         return a;
+      }
+   }
+
+   public final class c extends fry.a implements AutoCloseable {
+      private static final int b = 32;
+      private static final int c = 32;
+      private final ffa d;
+      private final frt e;
+      final eps f;
+      private final fmc g;
+      @Nullable
+      private Path h;
+      private long i;
+
+      public c(final fry $$1, final eps $$2) {
+         this.d = $$1.c;
+         this.e = $$1.I();
+         this.f = $$2;
+         this.g = fmc.a(this.d.aa(), $$2.a());
+         this.h = $$2.c();
+         this.j();
+         this.l();
+      }
+
+      private void j() {
+         if (this.h != null) {
+            try {
+               BasicFileAttributes $$0 = Files.readAttributes(this.h, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
+               if ($$0.isSymbolicLink()) {
+                  List<evd> $$1 = this.d.bd().a(this.h);
+                  if (!$$1.isEmpty()) {
+                     fry.v.warn("{}", evb.a(this.h, $$1));
+                     this.h = null;
+                  } else {
+                     $$0 = Files.readAttributes(this.h, BasicFileAttributes.class);
+                  }
+               }
+
+               if (!$$0.isRegularFile()) {
+                  this.h = null;
+               }
+            } catch (NoSuchFileException var3) {
+               this.h = null;
+            } catch (IOException var4) {
+               fry.v.error("could not validate symlink", var4);
+               this.h = null;
+            }
+         }
+      }
+
+      @Override
+      public xl a() {
+         xl $$0 = xl.a("narrator.select.world_info", this.f.b(), xl.a(new Date(this.f.f())), this.f.s());
+         if (this.f.p()) {
+            $$0 = xk.a($$0, fry.A);
+         }
+
+         if (this.f.e()) {
+            $$0 = xk.a($$0, fry.D);
+         }
+
+         return xl.a("narrator.select", $$0);
+      }
+
+      @Override
+      public void a(fgm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         String $$10 = this.f.b();
+         String $$11 = this.f.a();
+         long $$12 = this.f.f();
+         if ($$12 != -1L) {
+            $$11 = $$11 + " (" + fry.a.format(Instant.ofEpochMilli($$12)) + ")";
+         }
+
+         if (StringUtils.isEmpty($$10)) {
+            $$10 = gqa.a("selectWorld.world") + " " + ($$1 + 1);
+         }
+
+         xl $$13 = this.f.s();
+         $$0.a(this.d.h, $$10, $$3 + 32 + 3, $$2 + 1, 16777215, false);
+         $$0.a(this.d.h, $$11, $$3 + 32 + 3, $$2 + 9 + 3, -8355712, false);
+         $$0.a(this.d.h, $$13, $$3 + 32 + 3, $$2 + 9 + 9 + 3, -8355712, false);
+         RenderSystem.enableBlend();
+         $$0.a(this.g.b(), $$3, $$2, 0.0F, 0.0F, 32, 32, 32, 32);
+         RenderSystem.disableBlend();
+         if (this.d.m.Z().c() || $$8) {
+            $$0.a($$3, $$2, $$3 + 32, $$2 + 32, -1601138544);
+            int $$14 = $$6 - $$3;
+            boolean $$15 = $$14 < 32;
+            alb $$16 = $$15 ? fry.s : fry.u;
+            alb $$17 = $$15 ? fry.q : fry.r;
+            alb $$18 = $$15 ? fry.m : fry.n;
+            alb $$19 = $$15 ? fry.o : fry.p;
+            if (this.f instanceof eps.c || this.f instanceof eps.b) {
+               $$0.a($$18, $$3, $$2, 32, 32);
+               $$0.a($$19, $$3, $$2, 32, 32);
+               return;
+            }
+
+            if (this.f.p()) {
+               $$0.a($$18, $$3, $$2, 32, 32);
+               if ($$15) {
+                  this.e.b(this.d.h.c(fry.A, 175));
+               }
+            } else if (this.f.d()) {
+               $$0.a($$18, $$3, $$2, 32, 32);
+               if ($$15) {
+                  this.e.b(this.d.h.c(fry.B, 175));
+               }
+            } else if (!this.f.r()) {
+               $$0.a($$18, $$3, $$2, 32, 32);
+               if ($$15) {
+                  this.e.b(this.d.h.c(fry.C, 175));
+               }
+            } else if (this.f.m()) {
+               $$0.a($$19, $$3, $$2, 32, 32);
+               if (this.f.n()) {
+                  $$0.a($$18, $$3, $$2, 32, 32);
+                  if ($$15) {
+                     this.e.b(ImmutableList.of(fry.w.g(), fry.x.g()));
+                  }
+               } else if (!aa.b().g()) {
+                  $$0.a($$17, $$3, $$2, 32, 32);
+                  if ($$15) {
+                     this.e.b(ImmutableList.of(fry.y.g(), fry.z.g()));
+                  }
+               }
+            } else {
+               $$0.a($$16, $$3, $$2, 32, 32);
+            }
+         }
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         if (!this.f.u()) {
+            return true;
+         } else {
+            fry.this.a((fry.a)this);
+            if (!($$0 - (double)fry.this.r() <= 32.0) && ac.c() - this.i >= 250L) {
+               this.i = ac.c();
+               return super.a($$0, $$1, $$2);
+            } else {
+               if (this.b()) {
+                  this.d.aj().a(gsd.a(avw.Ao, 1.0F));
+                  this.c();
+               }
+
+               return true;
+            }
+         }
+      }
+
+      public boolean b() {
+         return this.f.u();
+      }
+
+      public void c() {
+         if (this.f.u()) {
+            if (this.f instanceof eps.c) {
+               this.d.a(fmn.a(() -> this.d.a(this.e)));
+            } else {
+               this.d.x().a(this.f.a(), () -> {
+                  fry.this.K();
+                  this.d.a(this.e);
+               });
+            }
+         }
+      }
+
+      public void d() {
+         this.d.a(new flq($$0 -> {
+            if ($$0) {
+               this.d.a(new fmv(true));
+               this.e();
+            }
+
+            this.d.a(this.e);
+         }, xl.c("selectWorld.deleteQuestion"), xl.a("selectWorld.deleteWarning", this.f.b()), xl.c("selectWorld.deleteButton"), xk.e));
+      }
+
+      public void e() {
+         epr $$0 = this.d.m();
+         String $$1 = this.f.a();
+
+         try (epr.c $$2 = $$0.e($$1)) {
+            $$2.k();
+         } catch (IOException var8) {
+            fjh.b(this.d, $$1);
+            fry.v.error("Failed to delete world {}", $$1, var8);
+         }
+
+         fry.this.K();
+      }
+
+      public void f() {
+         this.k();
+         String $$0 = this.f.a();
+
+         epr.c $$1;
+         try {
+            $$1 = this.d.m().d($$0);
+         } catch (IOException var6) {
+            fjh.a(this.d, $$0);
+            fry.v.error("Failed to access level {}", $$0, var6);
+            fry.this.K();
+            return;
+         } catch (evb var7) {
+            fry.v.warn("{}", var7.getMessage());
+            this.d.a(fmn.a(() -> this.d.a(this.e)));
+            return;
+         }
+
+         frp $$5;
+         try {
+            $$5 = frp.a(this.d, $$1, $$1x -> {
+               $$1.c();
+               if ($$1x) {
+                  fry.this.K();
+               }
+
+               this.d.a(this.e);
+            });
+         } catch (vc | vi | IOException var5) {
+            $$1.c();
+            fjh.a(this.d, $$0);
+            fry.v.error("Failed to load world data {}", $$0, var5);
+            fry.this.K();
+            return;
+         }
+
+         this.d.a($$5);
+      }
+
+      public void h() {
+         this.k();
+
+         try (epr.c $$0 = this.d.m().d(this.f.a())) {
+            Pair<dbx, frv> $$1 = this.d.x().a($$0);
+            dbx $$2 = (dbx)$$1.getFirst();
+            frv $$3 = (frv)$$1.getSecond();
+            Path $$4 = frn.a($$0.a(epp.j), this.d);
+            if ($$3.b().e()) {
+               this.d
+                  .a(
+                     new flq(
+                        $$3x -> this.d.a((fmy)($$3x ? frn.a(this.d, this.e, $$2, $$3, $$4) : this.e)),
+                        xl.c("selectWorld.recreate.customized.title"),
+                        xl.c("selectWorld.recreate.customized.text"),
+                        xk.i,
+                        xk.e
+                     )
+                  );
+            } else {
+               this.d.a(frn.a(this.d, this.e, $$2, $$3, $$4));
+            }
+         } catch (evb var8) {
+            fry.v.warn("{}", var8.getMessage());
+            this.d.a(fmn.a(() -> this.d.a(this.e)));
+         } catch (Exception var9) {
+            fry.v.error("Unable to recreate world", var9);
+            this.d.a(new flk(() -> this.d.a(this.e), xl.c("selectWorld.recreate.error.title"), xl.c("selectWorld.recreate.error.text")));
+         }
+      }
+
+      private void k() {
+         this.d.d(new fme(xl.c("selectWorld.data_read")));
+      }
+
+      private void l() {
+         boolean $$0 = this.h != null && Files.isRegularFile(this.h);
+         if ($$0) {
+            try (InputStream $$1 = Files.newInputStream(this.h)) {
+               this.g.a(eyu.a($$1));
+            } catch (Throwable var7) {
+               fry.v.error("Invalid icon for world {}", this.f.a(), var7);
+               this.h = null;
+            }
+         } else {
+            this.g.a();
+         }
+      }
+
+      @Override
+      public void close() {
+         this.g.close();
+      }
+
+      public String i() {
+         return this.f.b();
+      }
    }
 }

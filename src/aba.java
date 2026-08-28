@@ -1,20 +1,35 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
+public record aba(aba.a c) implements aat {
+   public static final zj<wl, aba> a = aat.a(aba::a, aba::new);
+   public static final aat.b<aba> b = aat.a("debug/hive");
 
-public record aba(akm<? extends jk<?>> b, List<jo.a> c) implements ze<aay> {
-   private static final yv<ByteBuf, akm<? extends jk<?>>> d = akn.b.a(akm::a, akm::a);
-   public static final yv<vx, aba> a = yv.a(d, aba::b, jo.a.a.a(yt.a()), aba::e, aba::new);
+   private aba(wl $$0) {
+      this(new aba.a($$0));
+   }
+
+   private void a(wl $$0) {
+      this.c.a($$0);
+   }
 
    @Override
-   public zg<aba> a() {
-      return abe.b;
+   public aat.b<aba> a() {
+      return b;
    }
 
-   public void a(aay $$0) {
-      $$0.a(this);
-   }
-
-   public List<jo.a> e() {
+   public aba.a b() {
       return this.c;
+   }
+
+   public static record a(iz a, String b, int c, int d, boolean e) {
+      public a(wl $$0) {
+         this($$0.e(), $$0.p(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
+      }
+
+      public void a(wl $$0) {
+         $$0.a(this.a);
+         $$0.a(this.b);
+         $$0.p(this.c);
+         $$0.p(this.d);
+         $$0.a(this.e);
+      }
    }
 }

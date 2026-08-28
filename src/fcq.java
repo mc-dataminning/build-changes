@@ -1,57 +1,95 @@
-import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.Base64;
-import java.util.Map;
+import java.time.Duration;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.lwjgl.system.MemoryUtil;
 import org.slf4j.Logger;
 
-public class fcq {
-   private static final Map<String, fcq.a> a = Maps.newHashMap();
-   private static final Logger b = LogUtils.getLogger();
-   private static final akn c = new akn("textures/gui/presets/isles.png");
-
-   public static akn a(String $$0, @Nullable String $$1) {
-      return $$1 == null ? c : b($$0, $$1);
-   }
-
-   private static akn b(String $$0, String $$1) {
-      fcq.a $$2 = a.get($$0);
-      if ($$2 != null && $$2.a().equals($$1)) {
-         return $$2.b;
-      } else {
-         exv $$3 = a($$1);
-         if ($$3 == null) {
-            akn $$4 = gnl.b();
-            a.put($$0, new fcq.a($$1, $$4));
-            return $$4;
-         } else {
-            akn $$5 = new akn("realms", "dynamic/" + $$0);
-            feb.Q().aa().a($$5, new gni($$3));
-            a.put($$0, new fcq.a($$1, $$5));
-            return $$5;
-         }
-      }
-   }
-
+public class fcq extends gvb {
+   private static final Logger a = LogUtils.getLogger();
+   private static final gvc b = new gvc(Duration.ofSeconds(5L));
+   private final List<fea> c;
+   private final fmy B;
+   private final fkq C = fkq.d();
+   private volatile xl D;
    @Nullable
-   private static exv a(String $$0) {
-      byte[] $$1 = Base64.getDecoder().decode($$0);
-      ByteBuffer $$2 = MemoryUtil.memAlloc($$1.length);
+   private fho E;
 
-      try {
-         return exv.a($$2.put($$1).flip());
-      } catch (IOException var7) {
-         b.warn("Failed to load world image: {}", $$0, var7);
-      } finally {
-         MemoryUtil.memFree($$2);
+   public fcq(fmy $$0, fea... $$1) {
+      super(fes.a);
+      this.B = $$0;
+      this.c = List.of($$1);
+      if (this.c.isEmpty()) {
+         throw new IllegalArgumentException("No tasks added");
+      } else {
+         this.D = this.c.get(0).a();
+         Runnable $$2 = () -> {
+            for (fea $$1x : $$1) {
+               this.a($$1x.a());
+               if ($$1x.d()) {
+                  break;
+               }
+
+               $$1x.run();
+               if ($$1x.d()) {
+                  return;
+               }
+            }
+         };
+         Thread $$3 = new Thread($$2, "Realms-long-running-task");
+         $$3.setUncaughtExceptionHandler(new fbu(a));
+         $$3.start();
       }
-
-      return null;
    }
 
-   public static record a(String a, akn b) {
+   @Override
+   public void e() {
+      super.e();
+      if (this.E != null) {
+         b.a(this.m.aX(), this.E.y());
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.f();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public void aN_() {
+      this.C.c().b();
+      this.E = new fho(this.p, this.D);
+      this.C.a(this.E, $$0 -> $$0.e(30));
+      this.C.a(fgz.a(xk.e, $$0 -> this.f()).a());
+      this.C.a($$1 -> {
+         fgx var10000 = this.c($$1);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      this.C.a();
+      fkk.a(this.C, this.G());
+   }
+
+   protected void f() {
+      for (fea $$0 : this.c) {
+         $$0.b();
+      }
+
+      this.m.a(this.B);
+   }
+
+   public void a(xl $$0) {
+      if (this.E != null) {
+         this.E.b($$0);
+      }
+
+      this.D = $$0;
    }
 }

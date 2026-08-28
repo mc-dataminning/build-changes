@@ -1,42 +1,20 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
+import java.util.concurrent.CompletableFuture;
 
-public class ql {
-   public static void a(qo<eiu> $$0) {
-      iy<eiu> $$1 = $$0.a(lf.aM);
-      ix<eiu> $$2 = $$1.b(qv.a);
-      qv.a(
-         $$0,
-         "bastion/mobs/piglin",
-         new eiu(
-            $$2,
-            ImmutableList.of(
-               Pair.of(eis.b("bastion/mobs/melee_piglin"), 1),
-               Pair.of(eis.b("bastion/mobs/sword_piglin"), 4),
-               Pair.of(eis.b("bastion/mobs/crossbow_piglin"), 4),
-               Pair.of(eis.b("bastion/mobs/empty"), 1)
-            ),
-            eiu.a.b
-         )
-      );
-      qv.a(
-         $$0, "bastion/mobs/hoglin", new eiu($$2, ImmutableList.of(Pair.of(eis.b("bastion/mobs/hoglin"), 2), Pair.of(eis.b("bastion/mobs/empty"), 1)), eiu.a.b)
-      );
-      qv.a(
-         $$0, "bastion/blocks/gold", new eiu($$2, ImmutableList.of(Pair.of(eis.b("bastion/blocks/air"), 3), Pair.of(eis.b("bastion/blocks/gold"), 1)), eiu.a.b)
-      );
-      qv.a(
-         $$0,
-         "bastion/mobs/piglin_melee",
-         new eiu(
-            $$2,
-            ImmutableList.of(
-               Pair.of(eis.b("bastion/mobs/melee_piglin_always"), 1),
-               Pair.of(eis.b("bastion/mobs/melee_piglin"), 5),
-               Pair.of(eis.b("bastion/mobs/sword_piglin"), 1)
-            ),
-            eiu.a.b
-         )
-      );
+public class ql extends py<bsv<?>> {
+   public ql(ly $$0, CompletableFuture<jk.a> $$1) {
+      super($$0, lq.v, $$1, $$0x -> $$0x.r().h());
+   }
+
+   @Override
+   protected void a(jk.a $$0) {
+      this.a(awp.o).a(bsv.m);
+      this.a(awp.r).a(bsv.m);
+      this.a(awp.s).a(bsv.m);
+      this.a(awp.g).a(bsv.bn, bsv.n);
+      this.a(awp.E).a(bsv.m, bsv.aN, bsv.l, bsv.aY, bsv.bu, bsv.ac, bsv.aW, bsv.q, bsv.aP);
+      this.a(awp.a).a(bsv.l);
+      this.a(awp.G).a(bsv.aM);
+      this.a(awp.F).a(bsv.aP);
+      this.a(awp.H).a(bsv.bn, bsv.n);
    }
 }

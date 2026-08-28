@@ -1,110 +1,219 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class cfn {
-   private static final float a = 1.0F;
-   private static final float b = 2.25F;
-   private static final float c = 1.75F;
-   private static final float d = 2.5F;
-   private static final int e = 4;
-   private static final int f = 16;
-   private static final int g = 6;
-   private static final int h = 30;
-   private static final int i = 60;
-   private static final int j = 600;
-   private static final int k = 32;
-   private static final int l = 20;
+public class cfn extends cfh implements bub, buk<cfn.a> {
+   private static final akg<String> bY = akk.a(cfn.class, aki.e);
+   private static final int bZ = 1024;
+   private static final String cb = "stew_effects";
+   @Nullable
+   private cxo cc;
+   @Nullable
+   private UUID cd;
 
-   protected static bts<?> a(bts<cfm> $$0) {
-      b($$0);
-      c($$0);
-      $$0.a(ImmutableSet.of(cnn.a));
-      $$0.b(cnn.b);
-      $$0.f();
-      return $$0;
+   public cfn(bsv<? extends cfn> $$0, dbt $$1) {
+      super($$0, $$1);
    }
 
-   private static void b(bts<cfm> $$0) {
-      $$0.a(cnn.a, 0, ImmutableList.of(new bxd(0.8F), new bue(2.5F), new bvp(45, 90), new bvt(), new bup(cbu.aO), new bup(cbu.aP)));
+   @Override
+   public float a(iz $$0, dbw $$1) {
+      return $$1.a_($$0.d()).a(dew.fl) ? 10.0F : $$1.w($$0);
    }
 
-   private static void c(bts<cfm> $$0) {
-      $$0.a(
-         cnn.b,
-         ImmutableList.of(
-            Pair.of(0, bvd.a($$0x -> true, 1.75F, true, 32)),
-            Pair.of(1, new buz(cfn::b, 2.25F, 20)),
-            Pair.of(2, bwx.a(cfn::b, Predicate.not(cfn::c), 4, 16, 2.25F)),
-            Pair.of(3, bwj.a(6.0F, bph.a(30, 60))),
-            Pair.of(4, new bwg(ImmutableList.of(Pair.of(bwb.b(1.0F), 2), Pair.of(bwq.a(1.0F, 3), 2), Pair.of(new but(30, 60), 1))))
-         ),
-         ImmutableSet.of()
-      );
+   public static boolean c(bsv<cfn> $$0, dbu $$1, bto $$2, iz $$3, azc $$4) {
+      return $$1.a_($$3.d()).a(awl.ca) && a($$1, $$3);
    }
 
-   public static void a(cfm $$0) {
-      $$0.dS().a(ImmutableList.of(cnn.b));
-   }
-
-   public static void a(bsq $$0, io $$1) {
-      bts<?> $$2 = $$0.dS();
-      iw $$3 = iw.a($$0.dP().ae(), $$1);
-      Optional<iw> $$4 = $$2.c(cbu.aN);
-      if ($$4.isEmpty()) {
-         $$2.a(cbu.aN, $$3);
-         $$2.a(cbu.aO, 600);
-      } else if ($$4.get().equals($$3)) {
-         $$2.a(cbu.aO, 600);
+   @Override
+   public void a(arb $$0, btj $$1) {
+      UUID $$2 = $$1.cz();
+      if (!$$2.equals(this.cd)) {
+         this.a(this.u() == cfn.a.a ? cfn.a.b : cfn.a.a);
+         this.cd = $$2;
+         this.a(avw.oO, 2.0F, 1.0F);
       }
    }
 
-   private static Optional<bvx> b(bsq $$0) {
-      bts<?> $$1 = $$0.dS();
-      Optional<iw> $$2 = $$1.c(cbu.aN);
-      if ($$2.isPresent()) {
-         iw $$3 = $$2.get();
-         if (a($$0, $$1, $$3)) {
-            return Optional.of(new bum($$3.b().c()));
+   @Override
+   protected void a(akk.a $$0) {
+      super.a($$0);
+      $$0.a(bY, cfn.a.a.d);
+   }
+
+   @Override
+   public bqp b(cms $$0, bqo $$1) {
+      cuk $$2 = $$0.b($$1);
+      if ($$2.a(cun.pq) && !this.p_()) {
+         boolean $$3 = false;
+         cuk $$4;
+         if (this.cc != null) {
+            $$3 = true;
+            $$4 = new cuk(cun.vU);
+            $$4.b(km.G, this.cc);
+            this.cc = null;
+         } else {
+            $$4 = new cuk(cun.pr);
          }
 
-         $$1.b(cbu.aN);
-      }
+         cuk $$6 = cum.a($$2, $$0, $$4, false);
+         $$0.a($$1, $$6);
+         avv $$7;
+         if ($$3) {
+            $$7 = avw.oR;
+         } else {
+            $$7 = avw.oQ;
+         }
 
-      return d($$0);
-   }
+         this.a($$7, 1.0F, 1.0F);
+         return bqp.a(this.dP().B);
+      } else if ($$2.a(cun.rV) && this.a()) {
+         this.a(avx.h);
+         this.a(dwq.M, $$0);
+         if (!this.dP().B) {
+            $$2.a(1, $$0, d($$1));
+         }
 
-   private static boolean c(bsq $$0) {
-      bts<?> $$1 = $$0.dS();
-      return $$1.a(cbu.L);
-   }
-
-   private static boolean a(bsq $$0, bts<?> $$1, iw $$2) {
-      Optional<Integer> $$3 = $$1.c(cbu.aO);
-      daz $$4 = $$0.dP();
-      return $$4.ae() == $$2.a() && $$4.a_($$2.b()).a(dec.aY) && $$3.isPresent();
-   }
-
-   private static Optional<bvx> d(bsq $$0) {
-      return a($$0).map($$0x -> new buu($$0x, true));
-   }
-
-   public static Optional<aqo> a(bsq $$0) {
-      daz $$1 = $$0.dP();
-      if (!$$1.x_() && $$1 instanceof aqn $$2) {
-         Optional<UUID> $$3 = $$0.dS().c(cbu.aM);
-         if ($$3.isPresent()) {
-            if ($$2.a($$3.get()) instanceof aqo $$5 && ($$5.e.d() || $$5.e.e()) && $$5.a($$0, 64.0)) {
-               return Optional.of($$5);
+         return bqp.a(this.dP().B);
+      } else if (this.u() == cfn.a.b && $$2.a(awu.O)) {
+         if (this.cc != null) {
+            for (int $$9 = 0; $$9 < 2; $$9++) {
+               this.dP().a(lj.ae, this.du() + this.ah.j() / 2.0, this.e(0.5), this.dA() + this.ah.j() / 2.0, 0.0, this.ah.j() / 5.0, 0.0);
+            }
+         } else {
+            Optional<cxo> $$10 = this.n($$2);
+            if ($$10.isEmpty()) {
+               return bqp.e;
             }
 
-            return Optional.empty();
+            $$2.a(1, $$0);
+
+            for (int $$11 = 0; $$11 < 4; $$11++) {
+               this.dP().a(lj.p, this.du() + this.ah.j() / 2.0, this.e(0.5), this.dA() + this.ah.j() / 2.0, 0.0, this.ah.j() / 5.0, 0.0);
+            }
+
+            this.cc = $$10.get();
+            this.a(avw.oP, 2.0F, 1.0F);
+         }
+
+         return bqp.a(this.dP().B);
+      } else {
+         return super.b($$0, $$1);
+      }
+   }
+
+   @Override
+   public void a(avx $$0) {
+      this.dP().a(null, this, avw.oS, $$0, 1.0F, 1.0F);
+      if (!this.dP().x_()) {
+         cfh $$1 = bsv.w.a(this.dP());
+         if ($$1 != null) {
+            ((arb)this.dP()).a(lj.w, this.du(), this.e(0.5), this.dA(), 1, 0.0, 0.0, 0.0, 0.0);
+            this.ao();
+            $$1.b(this.du(), this.dw(), this.dA(), this.dF(), this.dH());
+            $$1.t(this.eA());
+            $$1.aY = this.aY;
+            if (this.ag()) {
+               $$1.b(this.ah());
+               $$1.o(this.cE());
+            }
+
+            if (this.fW()) {
+               $$1.fU();
+            }
+
+            $$1.n(this.cu());
+            this.dP().b($$1);
+
+            for (int $$2 = 0; $$2 < 5; $$2++) {
+               this.dP().b(new cjc(this.dP(), this.du(), this.e(1.0), this.dA(), new cuk(this.u().e.b())));
+            }
          }
       }
+   }
 
-      return Optional.empty();
+   @Override
+   public boolean a() {
+      return this.bD() && !this.p_();
+   }
+
+   @Override
+   public void b(ur $$0) {
+      super.b($$0);
+      $$0.a("Type", this.u().c());
+      if (this.cc != null) {
+         cxo.b.encodeStart(vf.a, this.cc).ifSuccess($$1 -> $$0.a("stew_effects", $$1));
+      }
+   }
+
+   @Override
+   public void a(ur $$0) {
+      super.a($$0);
+      this.a(cfn.a.a($$0.l("Type")));
+      if ($$0.b("stew_effects", 9)) {
+         cxo.b.parse(vf.a, $$0.c("stew_effects")).ifSuccess($$0x -> this.cc = $$0x);
+      }
+   }
+
+   private Optional<cxo> n(cuk $$0) {
+      dmw $$1 = dmw.a($$0.g());
+      return $$1 != null ? Optional.of($$1.b()) : Optional.empty();
+   }
+
+   public void a(cfn.a $$0) {
+      this.ao.a(bY, $$0.d);
+   }
+
+   public cfn.a u() {
+      return cfn.a.a(this.ao.a(bY));
+   }
+
+   @Nullable
+   public cfn c(arb $$0, bsj $$1) {
+      cfn $$2 = bsv.as.a((dbt)$$0);
+      if ($$2 != null) {
+         $$2.a(this.a((cfn)$$1));
+      }
+
+      return $$2;
+   }
+
+   private cfn.a a(cfn $$0) {
+      cfn.a $$1 = this.u();
+      cfn.a $$2 = $$0.u();
+      cfn.a $$3;
+      if ($$1 == $$2 && this.ah.a(1024) == 0) {
+         $$3 = $$1 == cfn.a.b ? cfn.a.a : cfn.a.b;
+      } else {
+         $$3 = this.ah.h() ? $$1 : $$2;
+      }
+
+      return $$3;
+   }
+
+   public static enum a implements azp {
+      a("red", dew.cg.n()),
+      b("brown", dew.cf.n());
+
+      public static final azp.a<cfn.a> c = azp.a(cfn.a::values);
+      final String d;
+      final drx e;
+
+      private a(final String $$0, final drx $$1) {
+         this.d = $$0;
+         this.e = $$1;
+      }
+
+      public drx a() {
+         return this.e;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
+
+      static cfn.a a(String $$0) {
+         return c.a($$0, a);
+      }
    }
 }

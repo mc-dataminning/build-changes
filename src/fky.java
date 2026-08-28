@@ -1,49 +1,88 @@
-public class fky extends flz {
-   private static final akn a = new akn("textures/gui/demo_background.png");
-   private fgt b = fgt.a;
-   private fgt c = fgt.a;
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.function.Consumer;
 
-   public fky() {
-      super(wx.c("demo.help.title"));
+public class fky {
+   int a;
+   final Map<fky.a, fky.b> b = Maps.newTreeMap(Comparator.<fky.a, fku>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
+
+   public void a(Consumer<fkv> $$0) {
+      this.a++;
+      $$0.accept(new fky.c(0));
    }
 
-   @Override
-   protected void aN_() {
-      int $$0 = -16;
-      this.c(fga.a(wx.c("demo.help.buy"), $$0x -> {
-         $$0x.j = false;
-         ac.k().a("https://aka.ms/BuyMinecraftJava");
-      }).a(this.n / 2 - 116, this.o / 2 + 62 + -16, 114, 20).a());
-      this.c(fga.a(wx.c("demo.help.later"), $$0x -> {
-         this.m.a(null);
-         this.m.n.i();
-      }).a(this.n / 2 + 2, this.o / 2 + 62 + -16, 114, 20).a());
-      fef $$1 = this.m.m;
-      this.b = fgt.a(
-         this.p,
-         wx.a("demo.help.movementShort", $$1.w.k(), $$1.x.k(), $$1.y.k(), $$1.z.k()),
-         wx.c("demo.help.movementMouse"),
-         wx.a("demo.help.jump", $$1.A.k()),
-         wx.a("demo.help.inventory", $$1.D.k())
-      );
-      this.c = fgt.a(this.p, wx.c("demo.help.fullWrapped"), 218);
+   public String a(boolean $$0) {
+      final StringBuilder $$1 = new StringBuilder();
+      Consumer<String> $$2 = new Consumer<String>() {
+         private boolean b = true;
+
+         public void a(String $$0) {
+            if (!this.b) {
+               $$1.append(". ");
+            }
+
+            this.b = false;
+            $$1.append($$0);
+         }
+      };
+      this.b.forEach(($$2x, $$3) -> {
+         if ($$3.b == this.a && ($$0 || !$$3.c)) {
+            $$3.a.a($$2);
+            $$3.c = true;
+         }
+      });
+      return $$1.toString();
    }
 
-   @Override
-   public void b(ffn $$0, int $$1, int $$2, float $$3) {
-      super.b($$0, $$1, $$2, $$3);
-      int $$4 = (this.n - 248) / 2;
-      int $$5 = (this.o - 166) / 2;
-      $$0.a(a, $$4, $$5, 0, 0, 248, 166);
+   static class a {
+      final fku a;
+      final int b;
+
+      a(fku $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 
-   @Override
-   public void a(ffn $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      int $$4 = (this.n - 248) / 2 + 10;
-      int $$5 = (this.o - 166) / 2 + 8;
-      $$0.a(this.p, this.l, $$4, $$5, 2039583, false);
-      $$5 = this.b.c($$0, $$4, $$5 + 12, 12, 5197647);
-      this.c.c($$0, $$4, $$5 + 20, 9, 2039583);
+   static class b {
+      fkx<?> a;
+      int b;
+      boolean c;
+
+      b() {
+         this.a = fkx.a;
+         this.b = -1;
+      }
+
+      public fky.b a(int $$0, fkx<?> $$1) {
+         if (!this.a.equals($$1)) {
+            this.a = $$1;
+            this.c = false;
+         } else if (this.b + 1 != $$0) {
+            this.c = false;
+         }
+
+         this.b = $$0;
+         return this;
+      }
+   }
+
+   class c implements fkv {
+      private final int b;
+
+      c(final int $$0) {
+         this.b = $$0;
+      }
+
+      @Override
+      public void a(fku $$0, fkx<?> $$1) {
+         fky.this.b.computeIfAbsent(new fky.a($$0, this.b), $$0x -> new fky.b()).a(fky.this.a, $$1);
+      }
+
+      @Override
+      public fkv a() {
+         return fky.this.new c(this.b + 1);
+      }
    }
 }

@@ -1,36 +1,35 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.ArrayList;
+import java.util.List;
 
 public class awy {
-   public static final int a = -1;
-   private final Object2IntMap<Class<?>> b = ac.a(new Object2IntOpenHashMap(), $$0 -> $$0.defaultReturnValue(-1));
+   private final List<awz> a = new ArrayList<>();
 
-   public int a(Class<?> $$0) {
-      int $$1 = this.b.getInt($$0);
-      if ($$1 != -1) {
-         return $$1;
-      } else {
-         Class<?> $$2 = $$0;
-
-         while (($$2 = $$2.getSuperclass()) != Object.class) {
-            int $$3 = this.b.getInt($$2);
-            if ($$3 != -1) {
-               return $$3;
-            }
-         }
-
-         return -1;
-      }
+   public static awy a() {
+      return new awy();
    }
 
-   public int b(Class<?> $$0) {
-      return this.a($$0) + 1;
+   public List<awz> b() {
+      return List.copyOf(this.a);
    }
 
-   public int c(Class<?> $$0) {
-      int $$1 = this.a($$0);
-      int $$2 = $$1 == -1 ? 0 : $$1 + 1;
-      this.b.put($$0, $$2);
-      return $$2;
+   public awy a(awz $$0) {
+      this.a.add($$0);
+      return this;
+   }
+
+   public awy a(alb $$0) {
+      return this.a(awz.a($$0));
+   }
+
+   public awy b(alb $$0) {
+      return this.a(awz.b($$0));
+   }
+
+   public awy c(alb $$0) {
+      return this.a(awz.c($$0));
+   }
+
+   public awy d(alb $$0) {
+      return this.a(awz.d($$0));
    }
 }

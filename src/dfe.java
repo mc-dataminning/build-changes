@@ -1,164 +1,122 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.BiConsumer;
 import javax.annotation.Nullable;
 
-public class dfe extends ddm {
-   public static final MapCodec<dfe> a = b(dfe::new);
-   private static final int d = 6;
-   public static final int b = 3;
-   public static final List<dru> c = List.of(drt.bp, drt.bq, drt.br, drt.bs, drt.bt, drt.bu);
+public class dfe extends dho {
+   public static final MapCodec<dfe> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               dsm.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.N),
+               Codec.intRange(1, 1024).fieldOf("ticks_to_stay_pressed").forGetter($$0x -> $$0x.O),
+               u()
+            )
+            .apply($$0, dfe::new)
+   );
+   public static final dso b = dsn.w;
+   private static final int L = 1;
+   private static final int M = 2;
+   protected static final int c = 2;
+   protected static final int d = 3;
+   protected static final ewf e = deu.a(6.0, 14.0, 5.0, 10.0, 16.0, 11.0);
+   protected static final ewf f = deu.a(5.0, 14.0, 6.0, 11.0, 16.0, 10.0);
+   protected static final ewf g = deu.a(6.0, 0.0, 5.0, 10.0, 2.0, 11.0);
+   protected static final ewf h = deu.a(5.0, 0.0, 6.0, 11.0, 2.0, 10.0);
+   protected static final ewf i = deu.a(5.0, 6.0, 14.0, 11.0, 10.0, 16.0);
+   protected static final ewf j = deu.a(5.0, 6.0, 0.0, 11.0, 10.0, 2.0);
+   protected static final ewf k = deu.a(14.0, 6.0, 5.0, 16.0, 10.0, 11.0);
+   protected static final ewf l = deu.a(0.0, 6.0, 5.0, 2.0, 10.0, 11.0);
+   protected static final ewf m = deu.a(6.0, 15.0, 5.0, 10.0, 16.0, 11.0);
+   protected static final ewf n = deu.a(5.0, 15.0, 6.0, 11.0, 16.0, 10.0);
+   protected static final ewf o = deu.a(6.0, 0.0, 5.0, 10.0, 1.0, 11.0);
+   protected static final ewf F = deu.a(5.0, 0.0, 6.0, 11.0, 1.0, 10.0);
+   protected static final ewf G = deu.a(5.0, 6.0, 15.0, 11.0, 10.0, 16.0);
+   protected static final ewf H = deu.a(5.0, 6.0, 0.0, 11.0, 10.0, 1.0);
+   protected static final ewf I = deu.a(15.0, 6.0, 5.0, 16.0, 10.0, 11.0);
+   protected static final ewf J = deu.a(0.0, 6.0, 5.0, 1.0, 10.0, 11.0);
+   private final dsm N;
+   private final int O;
 
    @Override
    public MapCodec<dfe> a() {
       return a;
    }
 
-   public dfe(drc.d $$0) {
-      super($$0);
-      drd $$1 = this.E.b().a(dhw.aE, it.c);
-
-      for (dru $$2 : c) {
-         $$1 = $$1.a($$2, Boolean.valueOf(false));
-      }
-
-      this.k($$1);
+   protected dfe(dsm $$0, int $$1, drw.d $$2) {
+      super($$2.a($$0.g()));
+      this.N = $$0;
+      this.k(this.E.b().a(aE, je.c).a(b, Boolean.valueOf(false)).a(K, dsi.b));
+      this.O = $$1;
    }
 
    @Override
-   protected dkg a_(drd $$0) {
-      return dkg.c;
-   }
+   protected ewf a(drx $$0, daz $$1, iz $$2, evr $$3) {
+      je $$4 = $$0.c(aE);
+      boolean $$5 = $$0.c(b);
+      switch ((dsi)$$0.c(K)) {
+         case a:
+            if ($$4.o() == je.a.a) {
+               return $$5 ? o : g;
+            }
 
-   @Override
-   protected bpy a(ctq $$0, drd $$1, daz $$2, io $$3, cly $$4, bpv $$5, eui $$6) {
-      if ($$2.c_($$3) instanceof dor $$7) {
-         if (!$$0.a(awf.aW)) {
-            return bpy.d;
-         } else {
-            OptionalInt $$9 = this.a($$6, $$1);
-            if ($$9.isEmpty()) {
-               return bpy.e;
-            } else if ($$1.c(c.get($$9.getAsInt()))) {
-               return bpy.d;
+            return $$5 ? F : h;
+         case b:
+            return switch ($$4) {
+               case f -> $$5 ? J : l;
+               case e -> $$5 ? I : k;
+               case d -> $$5 ? H : j;
+               case c, b, a -> $$5 ? G : i;
+            };
+         case c:
+         default:
+            if ($$4.o() == je.a.a) {
+               return $$5 ? m : e;
             } else {
-               a($$2, $$3, $$4, $$7, $$0, $$9.getAsInt());
-               return bpy.a($$2.B);
+               return $$5 ? n : f;
             }
-         }
-      } else {
-         return bpy.e;
       }
    }
 
    @Override
-   protected bpw a(drd $$0, daz $$1, io $$2, cly $$3, eui $$4) {
-      if ($$1.c_($$2) instanceof dor $$5) {
-         OptionalInt $$7 = this.a($$4, $$0);
-         if ($$7.isEmpty()) {
-            return bpw.d;
-         } else if (!$$0.c(c.get($$7.getAsInt()))) {
-            return bpw.b;
-         } else {
-            a($$1, $$2, $$3, $$5, $$7.getAsInt());
-            return bpw.a($$1.B);
-         }
+   protected bqp a(drx $$0, dbt $$1, iz $$2, cms $$3, evi $$4) {
+      if ($$0.c(b)) {
+         return bqp.c;
       } else {
-         return bpw.d;
+         this.d($$0, $$1, $$2);
+         this.a($$3, $$1, $$2, true);
+         $$1.a($$3, dwq.a, $$2);
+         return bqp.a($$1.B);
       }
-   }
-
-   private OptionalInt a(eui $$0, drd $$1) {
-      return a($$0, $$1.c(dhw.aE)).map($$0x -> {
-         int $$1x = $$0x.j >= 0.5F ? 0 : 1;
-         int $$2 = a($$0x.i);
-         return OptionalInt.of($$2 + $$1x * 3);
-      }).orElseGet(OptionalInt::empty);
-   }
-
-   private static Optional<eul> a(eui $$0, it $$1) {
-      it $$2 = $$0.b();
-      if ($$1 != $$2) {
-         return Optional.empty();
-      } else {
-         io $$3 = $$0.a().a($$2);
-         eum $$4 = $$0.e().a((double)$$3.u(), (double)$$3.v(), (double)$$3.w());
-         double $$5 = $$4.a();
-         double $$6 = $$4.b();
-         double $$7 = $$4.c();
-
-         return switch ($$2) {
-            case c -> Optional.of(new eul((float)(1.0 - $$5), (float)$$6));
-            case d -> Optional.of(new eul((float)$$5, (float)$$6));
-            case e -> Optional.of(new eul((float)$$7, (float)$$6));
-            case f -> Optional.of(new eul((float)(1.0 - $$7), (float)$$6));
-            case a, b -> Optional.empty();
-         };
-      }
-   }
-
-   private static int a(float $$0) {
-      float $$1 = 0.0625F;
-      float $$2 = 0.375F;
-      if ($$0 < 0.375F) {
-         return 0;
-      } else {
-         float $$3 = 0.6875F;
-         return $$0 < 0.6875F ? 1 : 2;
-      }
-   }
-
-   private static void a(daz $$0, io $$1, cly $$2, dor $$3, ctq $$4, int $$5) {
-      if (!$$0.B) {
-         $$2.b(avs.c.b($$4.g()));
-         avh $$6 = $$4.a(ctt.uw) ? avi.fa : avi.eZ;
-         $$3.a($$5, $$4.a(1));
-         $$0.a(null, $$1, $$6, avj.e, 1.0F, 1.0F);
-         if ($$2.f()) {
-            $$4.g(1);
-         }
-      }
-   }
-
-   private static void a(daz $$0, io $$1, cly $$2, dor $$3, int $$4) {
-      if (!$$0.B) {
-         ctq $$5 = $$3.a($$4, 1);
-         avh $$6 = $$5.a(ctt.uw) ? avi.fd : avi.fc;
-         $$0.a(null, $$1, $$6, avj.e, 1.0F, 1.0F);
-         if (!$$2.gc().f($$5)) {
-            $$2.a($$5, false);
-         }
-
-         $$0.a($$2, dvw.c, $$1);
-      }
-   }
-
-   @Nullable
-   @Override
-   public doi a(io $$0, drd $$1) {
-      return new dor($$0, $$1);
    }
 
    @Override
-   protected void a(dre.a<dea, drd> $$0) {
-      $$0.a(dhw.aE);
-      c.forEach($$1 -> $$0.a($$1));
+   protected void a(drx $$0, dbt $$1, iz $$2, dbl $$3, BiConsumer<cuk, iz> $$4) {
+      if ($$3.j() == dbl.a.d && !$$1.x_() && !$$0.c(b)) {
+         this.d($$0, $$1, $$2);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public void d(drx $$0, dbt $$1, iz $$2) {
+      $$1.a($$2, $$0.a(b, Boolean.valueOf(true)), 3);
+      this.f($$0, $$1, $$2);
+      $$1.a($$2, this, this.O);
+   }
+
+   protected void a(@Nullable cms $$0, dbu $$1, iz $$2, boolean $$3) {
+      $$1.a($$3 ? $$0 : null, $$2, this.a($$3), avx.e);
+   }
+
+   protected avv a(boolean $$0) {
+      return $$0 ? this.N.o() : this.N.n();
    }
 
    @Override
-   protected void a(drd $$0, daz $$1, io $$2, drd $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$1.c_($$2) instanceof dor $$6 && !$$6.c()) {
-            for (int $$7 = 0; $$7 < 6; $$7++) {
-               ctq $$8 = $$6.a($$7);
-               if (!$$8.e()) {
-                  bps.a($$1, (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$8);
-               }
-            }
-
-            $$6.a();
-            $$1.c($$2, this);
+   protected void a(drx $$0, dbt $$1, iz $$2, drx $$3, boolean $$4) {
+      if (!$$4 && !$$0.a($$3.b())) {
+         if ($$0.c(b)) {
+            this.f($$0, $$1, $$2);
          }
 
          super.a($$0, $$1, $$2, $$3, $$4);
@@ -166,31 +124,57 @@ public class dfe extends ddm {
    }
 
    @Override
-   public drd a(cxb $$0) {
-      return this.n().a(dhw.aE, $$0.g().g());
+   protected int a(drx $$0, daz $$1, iz $$2, je $$3) {
+      return $$0.c(b) ? 15 : 0;
    }
 
    @Override
-   public drd a(drd $$0, dkn $$1) {
-      return $$0.a(dhw.aE, $$1.a($$0.c(dhw.aE)));
+   protected int b(drx $$0, daz $$1, iz $$2, je $$3) {
+      return $$0.c(b) && m($$0) == $$3 ? 15 : 0;
    }
 
    @Override
-   public drd a(drd $$0, dix $$1) {
-      return $$0.a($$1.a($$0.c(dhw.aE)));
-   }
-
-   @Override
-   protected boolean c_(drd $$0) {
+   protected boolean e_(drx $$0) {
       return true;
    }
 
    @Override
-   protected int a(drd $$0, daz $$1, io $$2) {
-      if ($$1.x_()) {
-         return 0;
-      } else {
-         return $$1.c_($$2) instanceof dor $$3 ? $$3.j() + 1 : 0;
+   protected void a(drx $$0, arb $$1, iz $$2, azc $$3) {
+      if ($$0.c(b)) {
+         this.e($$0, $$1, $$2);
       }
+   }
+
+   @Override
+   protected void a(drx $$0, dbt $$1, iz $$2, bsp $$3) {
+      if (!$$1.B && this.N.e() && !$$0.c(b)) {
+         this.e($$0, $$1, $$2);
+      }
+   }
+
+   protected void e(drx $$0, dbt $$1, iz $$2) {
+      cmy $$3 = this.N.e() ? $$1.a(cmy.class, $$0.j($$1, $$2).a().a($$2)).stream().findFirst().orElse(null) : null;
+      boolean $$4 = $$3 != null;
+      boolean $$5 = $$0.c(b);
+      if ($$4 != $$5) {
+         $$1.a($$2, $$0.a(b, Boolean.valueOf($$4)), 3);
+         this.f($$0, $$1, $$2);
+         this.a(null, $$1, $$2, $$4);
+         $$1.a($$3, $$4 ? dwq.a : dwq.e, $$2);
+      }
+
+      if ($$4) {
+         $$1.a(new iz($$2), this, this.O);
+      }
+   }
+
+   private void f(drx $$0, dbt $$1, iz $$2) {
+      $$1.a($$2, this);
+      $$1.a($$2.a(m($$0).g()), this);
+   }
+
+   @Override
+   protected void a(dry.a<deu, drx> $$0) {
+      $$0.a(aE, b, K);
    }
 }

@@ -1,31 +1,38 @@
-import java.util.UUID;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.BooleanSupplier;
 
-public class fgo extends bpm {
-   private static final long j = 100L;
-   protected float h;
-   protected long i;
+public class fgo {
+   public static final float a = 200.0F;
+   private final List<fgo.a> b = new ArrayList<>();
 
-   public fgo(UUID $$0, wx $$1, float $$2, bpm.a $$3, bpm.b $$4, boolean $$5, boolean $$6, boolean $$7) {
-      super($$0, $$1, $$3, $$4);
-      this.h = $$2;
-      this.b = $$2;
-      this.i = ac.c();
-      this.a($$5);
-      this.b($$6);
-      this.c($$7);
+   public fgo a(fgo.a $$0) {
+      this.b.add($$0);
+      return this;
    }
 
-   @Override
-   public void a(float $$0) {
-      this.b = this.j();
-      this.h = $$0;
-      this.i = ac.c();
+   public fgo a(fgo $$0, BooleanSupplier $$1) {
+      return this.a(($$2, $$3) -> {
+         if ($$1.getAsBoolean()) {
+            $$0.b($$2, $$3);
+         }
+      });
    }
 
-   @Override
-   public float j() {
-      long $$0 = ac.c() - this.i;
-      float $$1 = ayf.a((float)$$0 / 100.0F, 0.0F, 1.0F);
-      return ayf.i($$1, this.b, this.h);
+   public void a(fgm $$0, float $$1) {
+      $$0.c().a();
+      this.b($$0, $$1);
+      $$0.c().b();
+   }
+
+   private void b(fgm $$0, float $$1) {
+      for (fgo.a $$2 : this.b) {
+         $$2.render($$0, $$1);
+         $$0.c().a(0.0F, 0.0F, 200.0F);
+      }
+   }
+
+   public interface a {
+      void render(fgm var1, float var2);
    }
 }

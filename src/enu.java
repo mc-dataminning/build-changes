@@ -1,162 +1,135 @@
-import java.util.Comparator;
-import java.util.Optional;
+import com.google.common.base.Preconditions;
 
 public class enu {
-   public static final int a = 3;
-   private static final int b = 128;
-   private static final int c = 16;
-   private static final int d = 5;
-   private static final int e = 4;
-   private static final int f = 3;
-   private static final int g = -1;
-   private static final int h = 4;
-   private static final int i = -1;
-   private static final int j = 3;
-   private static final int k = -1;
-   private static final int l = 2;
-   private static final int m = -1;
-   private final aqn n;
+   private static final enu[] am = new enu[64];
+   public static final enu a = new enu(0, 0);
+   public static final enu b = new enu(1, 8368696);
+   public static final enu c = new enu(2, 16247203);
+   public static final enu d = new enu(3, 13092807);
+   public static final enu e = new enu(4, 16711680);
+   public static final enu f = new enu(5, 10526975);
+   public static final enu g = new enu(6, 10987431);
+   public static final enu h = new enu(7, 31744);
+   public static final enu i = new enu(8, 16777215);
+   public static final enu j = new enu(9, 10791096);
+   public static final enu k = new enu(10, 9923917);
+   public static final enu l = new enu(11, 7368816);
+   public static final enu m = new enu(12, 4210943);
+   public static final enu n = new enu(13, 9402184);
+   public static final enu o = new enu(14, 16776437);
+   public static final enu p = new enu(15, 14188339);
+   public static final enu q = new enu(16, 11685080);
+   public static final enu r = new enu(17, 6724056);
+   public static final enu s = new enu(18, 15066419);
+   public static final enu t = new enu(19, 8375321);
+   public static final enu u = new enu(20, 15892389);
+   public static final enu v = new enu(21, 5000268);
+   public static final enu w = new enu(22, 10066329);
+   public static final enu x = new enu(23, 5013401);
+   public static final enu y = new enu(24, 8339378);
+   public static final enu z = new enu(25, 3361970);
+   public static final enu A = new enu(26, 6704179);
+   public static final enu B = new enu(27, 6717235);
+   public static final enu C = new enu(28, 10040115);
+   public static final enu D = new enu(29, 1644825);
+   public static final enu E = new enu(30, 16445005);
+   public static final enu F = new enu(31, 6085589);
+   public static final enu G = new enu(32, 4882687);
+   public static final enu H = new enu(33, 55610);
+   public static final enu I = new enu(34, 8476209);
+   public static final enu J = new enu(35, 7340544);
+   public static final enu K = new enu(36, 13742497);
+   public static final enu L = new enu(37, 10441252);
+   public static final enu M = new enu(38, 9787244);
+   public static final enu N = new enu(39, 7367818);
+   public static final enu O = new enu(40, 12223780);
+   public static final enu P = new enu(41, 6780213);
+   public static final enu Q = new enu(42, 10505550);
+   public static final enu R = new enu(43, 3746083);
+   public static final enu S = new enu(44, 8874850);
+   public static final enu T = new enu(45, 5725276);
+   public static final enu U = new enu(46, 8014168);
+   public static final enu V = new enu(47, 4996700);
+   public static final enu W = new enu(48, 4993571);
+   public static final enu X = new enu(49, 5001770);
+   public static final enu Y = new enu(50, 9321518);
+   public static final enu Z = new enu(51, 2430480);
+   public static final enu aa = new enu(52, 12398641);
+   public static final enu ab = new enu(53, 9715553);
+   public static final enu ac = new enu(54, 6035741);
+   public static final enu ad = new enu(55, 1474182);
+   public static final enu ae = new enu(56, 3837580);
+   public static final enu af = new enu(57, 5647422);
+   public static final enu ag = new enu(58, 1356933);
+   public static final enu ah = new enu(59, 6579300);
+   public static final enu ai = new enu(60, 14200723);
+   public static final enu aj = new enu(61, 8365974);
+   public final int ak;
+   public final int al;
 
-   public enu(aqn $$0) {
-      this.n = $$0;
+   private enu(int $$0, int $$1) {
+      if ($$0 >= 0 && $$0 <= 63) {
+         this.al = $$0;
+         this.ak = $$1;
+         am[$$0] = this;
+      } else {
+         throw new IndexOutOfBoundsException("Map colour ID must be between 0 and 63 (inclusive)");
+      }
    }
 
-   public Optional<l.a> a(io $$0, boolean $$1, dsu $$2) {
-      cdu $$3 = this.n.y();
-      int $$4 = $$1 ? 16 : 128;
-      $$3.a(this.n, $$0, $$4);
-      Optional<cdv> $$5 = $$3.b($$0x -> $$0x.a(cdy.r), $$0, $$4, cdu.b.c)
-         .filter($$1x -> $$2.a($$1x.f()))
-         .sorted(Comparator.<cdv>comparingDouble($$1x -> $$1x.f().j($$0)).thenComparingInt($$0x -> $$0x.f().v()))
-         .filter($$0x -> this.n.a_($$0x.f()).b(drt.H))
-         .findFirst();
-      return $$5.map($$0x -> {
-         io $$1x = $$0x.f();
-         this.n.l().a(aqs.f, new dag($$1x), 3, $$1x);
-         drd $$2x = this.n.a_($$1x);
-         return l.a($$1x, $$2x.c(drt.H), 21, it.a.b, 21, $$1xx -> this.n.a_($$1xx) == $$2x);
-      });
+   public int a(enu.a $$0) {
+      if (this == a) {
+         return 0;
+      } else {
+         int $$1 = $$0.f;
+         int $$2 = (this.ak >> 16 & 0xFF) * $$1 / 255;
+         int $$3 = (this.ak >> 8 & 0xFF) * $$1 / 255;
+         int $$4 = (this.ak & 0xFF) * $$1 / 255;
+         return 0xFF000000 | $$4 << 16 | $$3 << 8 | $$2;
+      }
    }
 
-   public Optional<l.a> a(io $$0, it.a $$1) {
-      it $$2 = it.a(it.b.a, $$1);
-      double $$3 = -1.0;
-      io $$4 = null;
-      double $$5 = -1.0;
-      io $$6 = null;
-      dsu $$7 = this.n.C_();
-      int $$8 = Math.min(this.n.al(), this.n.I_() + this.n.k()) - 1;
-      io.a $$9 = $$0.j();
-
-      for (io.a $$10 : io.a($$0, 16, it.f, it.d)) {
-         int $$11 = Math.min($$8, this.n.a(dwv.a.e, $$10.u(), $$10.w()));
-         int $$12 = 1;
-         if ($$7.a($$10) && $$7.a($$10.c($$2, 1))) {
-            $$10.c($$2.g(), 1);
-
-            for (int $$13 = $$11; $$13 >= this.n.I_(); $$13--) {
-               $$10.q($$13);
-               if (this.a($$10)) {
-                  int $$14 = $$13;
-
-                  while ($$13 > this.n.I_() && this.a($$10.c(it.a))) {
-                     $$13--;
-                  }
-
-                  if ($$13 + 4 <= $$8) {
-                     int $$15 = $$14 - $$13;
-                     if ($$15 <= 0 || $$15 >= 3) {
-                        $$10.q($$13);
-                        if (this.a($$10, $$9, $$2, 0)) {
-                           double $$16 = $$0.j($$10);
-                           if (this.a($$10, $$9, $$2, -1) && this.a($$10, $$9, $$2, 1) && ($$3 == -1.0 || $$3 > $$16)) {
-                              $$3 = $$16;
-                              $$4 = $$10.i();
-                           }
-
-                           if ($$3 == -1.0 && ($$5 == -1.0 || $$5 > $$16)) {
-                              $$5 = $$16;
-                              $$6 = $$10.i();
-                           }
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      if ($$3 == -1.0 && $$5 != -1.0) {
-         $$4 = $$6;
-         $$3 = $$5;
-      }
-
-      if ($$3 == -1.0) {
-         int $$17 = Math.max(this.n.I_() - -1, 70);
-         int $$18 = $$8 - 9;
-         if ($$18 < $$17) {
-            return Optional.empty();
-         }
-
-         $$4 = new io($$0.u(), ayf.a($$0.v(), $$17, $$18), $$0.w()).i();
-         it $$19 = $$2.h();
-         if (!$$7.a($$4)) {
-            return Optional.empty();
-         }
-
-         for (int $$20 = -1; $$20 < 2; $$20++) {
-            for (int $$21 = 0; $$21 < 2; $$21++) {
-               for (int $$22 = -1; $$22 < 3; $$22++) {
-                  drd $$23 = $$22 < 0 ? dec.co.n() : dec.a.n();
-                  $$9.a($$4, $$21 * $$2.j() + $$20 * $$19.j(), $$22, $$21 * $$2.l() + $$20 * $$19.l());
-                  this.n.b($$9, $$23);
-               }
-            }
-         }
-      }
-
-      for (int $$24 = -1; $$24 < 3; $$24++) {
-         for (int $$25 = -1; $$25 < 4; $$25++) {
-            if ($$24 == -1 || $$24 == 2 || $$25 == -1 || $$25 == 3) {
-               $$9.a($$4, $$24 * $$2.j(), $$25, $$24 * $$2.l());
-               this.n.a($$9, dec.co.n(), 3);
-            }
-         }
-      }
-
-      drd $$26 = dec.ed.n().a(dje.b, $$1);
-
-      for (int $$27 = 0; $$27 < 2; $$27++) {
-         for (int $$28 = 0; $$28 < 3; $$28++) {
-            $$9.a($$4, $$27 * $$2.j(), $$28, $$27 * $$2.l());
-            this.n.a($$9, $$26, 18);
-         }
-      }
-
-      return Optional.of(new l.a($$4.i(), 2, 3));
+   public static enu a(int $$0) {
+      Preconditions.checkPositionIndex($$0, am.length, "material id");
+      return c($$0);
    }
 
-   private boolean a(io.a $$0) {
-      drd $$1 = this.n.a_($$0);
-      return $$1.r() && $$1.u().c();
+   private static enu c(int $$0) {
+      enu $$1 = am[$$0];
+      return $$1 != null ? $$1 : a;
    }
 
-   private boolean a(io $$0, io.a $$1, it $$2, int $$3) {
-      it $$4 = $$2.h();
+   public static int b(int $$0) {
+      int $$1 = $$0 & 0xFF;
+      return c($$1 >> 2).a(enu.a.b($$1 & 3));
+   }
 
-      for (int $$5 = -1; $$5 < 3; $$5++) {
-         for (int $$6 = -1; $$6 < 4; $$6++) {
-            $$1.a($$0, $$2.j() * $$5 + $$4.j() * $$3, $$6, $$2.l() * $$5 + $$4.l() * $$3);
-            if ($$6 < 0 && !this.n.a_($$1).e()) {
-               return false;
-            }
+   public byte b(enu.a $$0) {
+      return (byte)(this.al << 2 | $$0.e & 3);
+   }
 
-            if ($$6 >= 0 && !this.a($$1)) {
-               return false;
-            }
-         }
+   public static enum a {
+      a(0, 180),
+      b(1, 220),
+      c(2, 255),
+      d(3, 135);
+
+      private static final enu.a[] g = new enu.a[]{a, b, c, d};
+      public final int e;
+      public final int f;
+
+      private a(final int $$0, final int $$1) {
+         this.e = $$0;
+         this.f = $$1;
       }
 
-      return true;
+      public static enu.a a(int $$0) {
+         Preconditions.checkPositionIndex($$0, g.length, "brightness id");
+         return b($$0);
+      }
+
+      static enu.a b(int $$0) {
+         return g[$$0];
+      }
    }
 }

@@ -1,116 +1,74 @@
-public enum dqq implements ayz {
-   a("inactive", dqq.a.a) {
+import javax.annotation.Nullable;
+
+public class dqq extends dpc implements dcl {
+   private final dav a = new dav() {
       @Override
-      protected void a(aqn $$0, io $$1, dqn $$2, dqp $$3, boolean $$4) {
-         $$3.a(ctq.i);
-         $$0.c(3016, $$1, $$4 ? 1 : 0);
+      public void a(dbt $$0, iz $$1, int $$2) {
+         $$0.a($$1, dew.ct, $$2, 0);
       }
-   },
-   b("active", dqq.a.b) {
+
       @Override
-      protected void a(aqn $$0, io $$1, dqn $$2, dqp $$3, boolean $$4) {
-         if (!$$3.b()) {
-            dql.b.a($$0, this, $$2, $$3, $$1);
+      public void a(@Nullable dbt $$0, iz $$1, dck $$2) {
+         super.a($$0, $$1, $$2);
+         if ($$0 != null) {
+            drx $$3 = $$0.a_($$1);
+            $$0.a($$1, $$3, $$3, 4);
          }
-
-         $$0.c(3015, $$1, $$4 ? 1 : 0);
-      }
-   },
-   c("unlocking", dqq.a.b) {
-      @Override
-      protected void a(aqn $$0, io $$1, dqn $$2, dqp $$3, boolean $$4) {
-         $$0.a(null, $$1, avi.AF, avj.e);
-      }
-   },
-   d("ejecting", dqq.a.b) {
-      @Override
-      protected void a(aqn $$0, io $$1, dqn $$2, dqp $$3, boolean $$4) {
-         $$0.a(null, $$1, avi.AH, avj.e);
-      }
-
-      @Override
-      protected void a(aqn $$0, io $$1, dqn $$2, dqp $$3) {
-         $$0.a(null, $$1, avi.AA, avj.e);
       }
    };
 
-   private static final int e = 20;
-   private static final int f = 20;
-   private static final int g = 20;
-   private static final int h = 20;
-   private final String i;
-   private final dqq.a j;
-
-   dqq(String $$0, dqq.a $$1) {
-      this.i = $$0;
-      this.j = $$1;
+   public dqq(iz $$0, drx $$1) {
+      super(dpe.j, $$0, $$1);
    }
 
    @Override
-   public String c() {
-      return this.i;
+   protected void a(ur $$0, jk.a $$1) {
+      super.a($$0, $$1);
+      this.a.a(this.n, this.o, $$0);
    }
 
-   public int a() {
-      return this.j.c;
+   @Override
+   protected void b(ur $$0, jk.a $$1) {
+      super.b($$0, $$1);
+      this.a.a($$0);
    }
 
-   public dqq a(aqn $$0, io $$1, dqn $$2, dqo $$3, dqp $$4) {
-      return switch (this) {
-         case a -> a($$0, $$1, $$2, $$3, $$4, $$2.c());
-         case b -> a($$0, $$1, $$2, $$3, $$4, $$2.d());
-         case c -> {
-            $$3.b($$0.Y() + 20L);
-            yield d;
-         }
-         case d -> {
-            if ($$3.d().isEmpty()) {
-               $$3.e();
-               yield a($$0, $$1, $$2, $$3, $$4, $$2.d());
-            } else {
-               float $$5 = $$3.h();
-               this.a($$0, $$1, $$3.g(), $$5);
-               $$4.a($$3.f());
-               boolean $$6 = $$3.d().isEmpty();
-               int $$7 = $$6 ? 20 : 20;
-               $$3.b($$0.Y() + (long)$$7);
-               yield d;
-            }
-         }
-      };
+   public static void a(dbt $$0, iz $$1, drx $$2, dqq $$3) {
+      $$3.a.a($$0, $$1);
    }
 
-   private static dqq a(aqn $$0, io $$1, dqn $$2, dqo $$3, dqp $$4, double $$5) {
-      $$4.a($$0, $$1, $$3, $$2, $$5);
-      $$3.b($$0.Y() + 20L);
-      return $$4.c() ? b : a;
+   public static void b(dbt $$0, iz $$1, drx $$2, dqq $$3) {
+      $$3.a.a((arb)$$0, $$1);
    }
 
-   public void a(aqn $$0, io $$1, dqq $$2, dqn $$3, dqp $$4, boolean $$5) {
-      this.a($$0, $$1, $$3, $$4);
-      $$2.a($$0, $$1, $$3, $$4, $$5);
+   public acl b() {
+      return acl.a(this);
    }
 
-   protected void a(aqn $$0, io $$1, dqn $$2, dqp $$3, boolean $$4) {
+   @Override
+   public ur a(jk.a $$0) {
+      ur $$1 = this.e($$0);
+      $$1.r("SpawnPotentials");
+      return $$1;
    }
 
-   protected void a(aqn $$0, io $$1, dqn $$2, dqp $$3) {
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      return this.a.a(this.n, $$0) ? true : super.a_($$0, $$1);
    }
 
-   private void a(aqn $$0, io $$1, ctq $$2, float $$3) {
-      kh.a($$0, $$2, 2, it.b, eum.c($$1).a(it.b, 1.2));
-      $$0.c(3017, $$1, 0);
-      $$0.a(null, $$1, avi.AC, avj.e, 1.0F, 0.8F + 0.4F * $$3);
+   @Override
+   public boolean q() {
+      return true;
    }
 
-   static enum a {
-      a(6),
-      b(12);
+   @Override
+   public void a(bsv<?> $$0, azc $$1) {
+      this.a.a($$0, this.n, $$1, this.o);
+      this.e();
+   }
 
-      final int c;
-
-      private a(int $$0) {
-         this.c = $$0;
-      }
+   public dav c() {
+      return this.a;
    }
 }

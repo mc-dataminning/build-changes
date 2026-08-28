@@ -1,100 +1,114 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.io.IOException;
 import java.util.List;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import org.slf4j.Logger;
+import java.util.function.Predicate;
+import org.apache.commons.lang3.Validate;
 
-public class duh implements dvg<brw> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "Entities";
-   private static final String c = "Position";
-   private final aqn d;
-   private final dur e;
-   private final LongSet f = new LongOpenHashSet();
-   private final bop<Runnable> g;
+public class duh<T> implements duj<T> {
+   private final jn<T> a;
+   private final T[] b;
+   private final duk<T> c;
+   private final int d;
+   private int e;
 
-   public duh(dur $$0, aqn $$1, Executor $$2) {
-      this.e = $$0;
+   private duh(jn<T> $$0, int $$1, duk<T> $$2, List<T> $$3) {
+      this.a = $$0;
+      this.b = (T[])(new Object[1 << $$1]);
       this.d = $$1;
-      this.g = bop.a($$2, "entity-deserializer");
+      this.c = $$2;
+      Validate.isTrue($$3.size() <= this.b.length, "Can't initialize LinearPalette of size %d with %d entries", new Object[]{this.b.length, $$3.size()});
+
+      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
+         this.b[$$4] = $$3.get($$4);
+      }
+
+      this.e = $$3.size();
+   }
+
+   private duh(jn<T> $$0, T[] $$1, duk<T> $$2, int $$3, int $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+   }
+
+   public static <A> duj<A> a(int $$0, jn<A> $$1, duk<A> $$2, List<A> $$3) {
+      return new duh<>($$1, $$0, $$2, $$3);
    }
 
    @Override
-   public CompletableFuture<dvb<brw>> a(dag $$0) {
-      return this.f.contains($$0.a()) ? CompletableFuture.completedFuture(b($$0)) : this.e.a($$0).thenApplyAsync($$1 -> {
-         if ($$1.isEmpty()) {
-            this.f.add($$0.a());
-            return b($$0);
-         } else {
-            try {
-               dag $$2 = a($$1.get());
-               if (!Objects.equals($$0, $$2)) {
-                  a.error("Chunk file at {} is in the wrong location. (Expected {}, got {})", new Object[]{$$0, $$0, $$2});
-               }
-            } catch (Exception var6) {
-               a.warn("Failed to parse chunk {} position info", $$0, var6);
-            }
-
-            ud $$4 = this.e.a($$1.get(), -1);
-            uj $$5 = $$4.c("Entities", 10);
-            List<brw> $$6 = bsc.a($$5, this.d).collect(ImmutableList.toImmutableList());
-            return new dvb<>($$0, $$6);
+   public int a(T $$0) {
+      for (int $$1 = 0; $$1 < this.e; $$1++) {
+         if (this.b[$$1] == $$0) {
+            return $$1;
          }
-      }, this.g::a);
-   }
+      }
 
-   private static dag a(ud $$0) {
-      int[] $$1 = $$0.n("Position");
-      return new dag($$1[0], $$1[1]);
-   }
-
-   private static void a(ud $$0, dag $$1) {
-      $$0.a("Position", new uh(new int[]{$$1.e, $$1.f}));
-   }
-
-   private static dvb<brw> b(dag $$0) {
-      return new dvb<>($$0, ImmutableList.of());
-   }
-
-   @Override
-   public void a(dvb<brw> $$0) {
-      dag $$1 = $$0.a();
-      if ($$0.c()) {
-         if (this.f.add($$1.a())) {
-            this.e.a($$1, null);
-         }
+      int $$2 = this.e;
+      if ($$2 < this.b.length) {
+         this.b[$$2] = $$0;
+         this.e++;
+         return $$2;
       } else {
-         uj $$2 = new uj();
-         $$0.b().forEach($$1x -> {
-            ud $$2x = new ud();
-            if ($$1x.e($$2x)) {
-               $$2.add($$2x);
-            }
-         });
-         ud $$3 = us.e(new ud());
-         $$3.a("Entities", $$2);
-         a($$3, $$1);
-         this.e.a($$1, $$3).exceptionally($$1x -> {
-            a.error("Failed to store chunk {}", $$1, $$1x);
-            return null;
-         });
-         this.f.remove($$1.a());
+         return this.c.onResize(this.d + 1, $$0);
       }
    }
 
    @Override
-   public void a(boolean $$0) {
-      this.e.a($$0).join();
-      this.g.a();
+   public boolean a(Predicate<T> $$0) {
+      for (int $$1 = 0; $$1 < this.e; $$1++) {
+         if ($$0.test(this.b[$$1])) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
    @Override
-   public void close() throws IOException {
-      this.e.close();
+   public T a(int $$0) {
+      if ($$0 >= 0 && $$0 < this.e) {
+         return this.b[$$0];
+      } else {
+         throw new dui($$0);
+      }
+   }
+
+   @Override
+   public void a(wl $$0) {
+      this.e = $$0.l();
+
+      for (int $$1 = 0; $$1 < this.e; $$1++) {
+         this.b[$$1] = this.a.b($$0.l());
+      }
+   }
+
+   @Override
+   public void b(wl $$0) {
+      $$0.c(this.e);
+
+      for (int $$1 = 0; $$1 < this.e; $$1++) {
+         $$0.c(this.a.a(this.b[$$1]));
+      }
+   }
+
+   @Override
+   public int a() {
+      int $$0 = xc.a(this.b());
+
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         $$0 += xc.a(this.a.a(this.b[$$1]));
+      }
+
+      return $$0;
+   }
+
+   @Override
+   public int b() {
+      return this.e;
+   }
+
+   @Override
+   public duj<T> c() {
+      return new duh<>(this.a, (T[])((Object[])this.b.clone()), this.c, this.d, this.e);
    }
 }

@@ -1,72 +1,117 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
 import java.util.function.BiFunction;
+import java.util.function.Consumer;
 
-public class eqv {
-   public static final BiFunction<ctq, eph, ctq> a = ($$0, $$1) -> $$0;
-   public static final Codec<eqt> b = le.G.q().dispatch("function", eqt::b, equ::a);
-   public static final Codec<eqt> c = Codec.lazyInitialized(() -> Codec.withAlternative(b, eqx.b));
-   public static final Codec<ix<eqt>> d = akj.a(lf.aV, c);
-   public static final equ e = a("set_count", erj.a);
-   public static final equ f = a("enchant_with_levels", eql.a);
-   public static final equ g = a("enchant_randomly", eqk.a);
-   public static final equ h = a("set_enchantments", erf.a);
-   public static final equ i = a("set_custom_data", ere.a);
-   public static final equ j = a("set_components", erb.a);
-   public static final equ k = a("furnace_smelt", ers.a);
-   public static final equ l = a("looting_enchant", eqw.b);
-   public static final equ m = a("set_damage", erk.a);
-   public static final equ n = a("set_attributes", eqy.a);
-   public static final equ o = a("set_name", erm.a);
-   public static final equ p = a("exploration_map", eqm.f);
-   public static final equ q = a("set_stew_effect", erp.a);
-   public static final equ r = a("copy_name", eqj.a);
-   public static final equ s = a("set_contents", erc.a);
-   public static final equ t = a("limit_count", eqq.a);
-   public static final equ u = a("apply_bonus", eqe.a);
-   public static final equ v = a("set_loot_table", erd.a);
-   public static final equ w = a("explosion_decay", eqf.a);
-   public static final equ x = a("set_lore", erl.a);
-   public static final equ y = a("fill_player_head", eqn.a);
-   public static final equ z = a("copy_custom_data", eqi.a);
-   public static final equ A = a("copy_state", eqg.a);
-   public static final equ B = a("set_banner_pattern", eqz.a);
-   public static final equ C = a("set_potion", ero.a);
-   public static final equ D = a("set_instrument", eri.a);
-   public static final equ E = a("reference", eqo.a);
-   public static final equ F = a("sequence", eqx.a);
-   public static final equ G = a("copy_components", eqh.a);
-   public static final equ H = a("set_fireworks", erh.a);
-   public static final equ I = a("set_firework_explosion", erg.a);
-   public static final equ J = a("set_book_cover", era.a);
-   public static final equ K = a("set_written_book_pages", err.b);
-   public static final equ L = a("set_writable_book_pages", erq.a);
-   public static final equ M = a("toggle_tooltips", ert.a);
-   public static final equ N = a("set_ominous_bottle_amplifier", ern.a);
+public abstract class eqv extends eqt {
+   public static final int d = 1;
+   public static final int f = 0;
+   protected final int g;
+   protected final int h;
+   protected final List<erq> i;
+   final BiFunction<cuk, eqd, cuk> a;
+   private final eqs j = new eqv.c() {
+      @Override
+      public void a(Consumer<cuk> $$0, eqd $$1) {
+         eqv.this.a(erq.a(eqv.this.a, $$0, $$1), $$1);
+      }
+   };
 
-   private static equ a(String $$0, MapCodec<? extends eqt> $$1) {
-      return jk.a(le.G, new akn($$0), new equ($$1));
+   protected eqv(int $$0, int $$1, List<etn> $$2, List<erq> $$3) {
+      super($$2);
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$3;
+      this.a = ers.a($$3);
    }
 
-   public static BiFunction<ctq, eph, ctq> a(List<? extends BiFunction<ctq, eph, ctq>> $$0) {
-      List<BiFunction<ctq, eph, ctq>> $$1 = List.copyOf($$0);
+   protected static <T extends eqv> P4<Mu<T>, Integer, Integer, List<etn>, List<erq>> b(Instance<T> $$0) {
+      return $$0.group(Codec.INT.optionalFieldOf("weight", 1).forGetter($$0x -> $$0x.g), Codec.INT.optionalFieldOf("quality", 0).forGetter($$0x -> $$0x.h))
+         .and(a($$0).t1())
+         .and(ers.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.i));
+   }
 
-      return switch ($$1.size()) {
-         case 0 -> a;
-         case 1 -> (BiFunction)$$1.get(0);
-         case 2 -> {
-            BiFunction<ctq, eph, ctq> $$2 = $$1.get(0);
-            BiFunction<ctq, eph, ctq> $$3 = $$1.get(1);
-            yield ($$2x, $$3x) -> $$3.apply($$2.apply($$2x, $$3x), $$3x);
-         }
-         default -> ($$1x, $$2x) -> {
-         for (BiFunction<ctq, eph, ctq> $$3x : $$1) {
-            $$1x = $$3x.apply($$1x, $$2x);
-         }
+   @Override
+   public void a(eqj $$0) {
+      super.a($$0);
 
-         return $$1x;
-      };
-      };
+      for (int $$1 = 0; $$1 < this.i.size(); $$1++) {
+         this.i.get($$1).a($$0.a(".functions[" + $$1 + "]"));
+      }
+   }
+
+   protected abstract void a(Consumer<cuk> var1, eqd var2);
+
+   @Override
+   public boolean expand(eqd $$0, Consumer<eqs> $$1) {
+      if (this.a($$0)) {
+         $$1.accept(this.j);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public static eqv.a<?> a(eqv.d $$0) {
+      return new eqv.b($$0);
+   }
+
+   public abstract static class a<T extends eqv.a<T>> extends eqt.a<T> implements erm<T> {
+      protected int a = 1;
+      protected int b = 0;
+      private final Builder<erq> c = ImmutableList.builder();
+
+      public T a(erq.a $$0) {
+         this.c.add($$0.b());
+         return this.aC_();
+      }
+
+      protected List<erq> a() {
+         return this.c.build();
+      }
+
+      public T a(int $$0) {
+         this.a = $$0;
+         return this.aC_();
+      }
+
+      public T b(int $$0) {
+         this.b = $$0;
+         return this.aC_();
+      }
+   }
+
+   static class b extends eqv.a<eqv.b> {
+      private final eqv.d c;
+
+      public b(eqv.d $$0) {
+         this.c = $$0;
+      }
+
+      protected eqv.b g() {
+         return this;
+      }
+
+      @Override
+      public eqt b() {
+         return this.c.build(this.a, this.b, this.f(), this.a());
+      }
+   }
+
+   protected abstract class c implements eqs {
+      @Override
+      public int a(float $$0) {
+         return Math.max(ayu.d((float)eqv.this.g + (float)eqv.this.h * $$0), 0);
+      }
+   }
+
+   @FunctionalInterface
+   protected interface d {
+      eqv build(int var1, int var2, List<etn> var3, List<erq> var4);
    }
 }

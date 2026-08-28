@@ -1,31 +1,25 @@
-import java.util.Optional;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-public class dyv extends dxs {
-   private final jl a;
-   private final dwz b;
-   private final dxj c;
-   private final dxm.o d;
+class dyv extends dyy {
+   public static final MapCodec<dyv> a = a(dyv::new);
 
-   public dyv(dwy $$0, jl $$1, dbb $$2, dwz $$3, dxj $$4, dxm.o $$5) {
-      super($$0, $$2);
-      this.a = $$1;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
+   public dyv(List<dyw> $$0) {
+      super($$0);
    }
 
-   @Deprecated
-   public Optional<drd> a(Function<io, ix<dby>> $$0, dsz $$1, io $$2, boolean $$3) {
-      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
+   public boolean a(dco $$0, iz $$1) {
+      for (dyw $$2 : this.e) {
+         if ($$2.test($$0, $$1)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   @Deprecated
-   public jl c() {
-      return this.a;
-   }
-
-   public dxj d() {
-      return this.c;
+   @Override
+   public dyx<?> a() {
+      return dyx.i;
    }
 }

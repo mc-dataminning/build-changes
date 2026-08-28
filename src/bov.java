@@ -1,61 +1,112 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
-public class bov extends boz {
-   public static final MapCodec<bov> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.d),
-                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.e),
-                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.f)
-               )
-               .apply($$0, bov::new)
-      )
-      .validate($$0 -> $$0.f < $$0.e ? DataResult.error(() -> "Max must be larger than min: [" + $$0.e + ", " + $$0.f + "]") : DataResult.success($$0));
-   private final float b;
-   private final float d;
-   private final float e;
-   private final float f;
+public class bov {
+   public static final Path a = Paths.get("debug/profiling");
+   public static final String b = "metrics";
+   public static final String c = "deviations";
+   public static final String d = "profiling.txt";
+   private static final Logger e = LogUtils.getLogger();
+   private final String f;
 
-   public static bov a(float $$0, float $$1, float $$2, float $$3) {
-      return new bov($$0, $$1, $$2, $$3);
+   public bov(String $$0) {
+      this.f = $$0;
    }
 
-   private bov(float $$0, float $$1, float $$2, float $$3) {
-      this.b = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public Path a(Set<bok> $$0, Map<bok, List<bow>> $$1, bnc $$2) {
+      try {
+         Files.createDirectories(a);
+      } catch (IOException var8) {
+         throw new UncheckedIOException(var8);
+      }
+
+      try {
+         Path $$4 = Files.createTempDirectory("minecraft-profiling");
+         $$4.toFile().deleteOnExit();
+         Files.createDirectories(a);
+         Path $$5 = $$4.resolve(this.f);
+         Path $$6 = $$5.resolve("metrics");
+         this.a($$0, $$6);
+         if (!$$1.isEmpty()) {
+            this.a($$1, $$5.resolve("deviations"));
+         }
+
+         this.a($$2, $$5);
+         return $$4;
+      } catch (IOException var7) {
+         throw new UncheckedIOException(var7);
+      }
    }
 
-   @Override
-   public float a(aym $$0) {
-      return a($$0, this.b, this.d, this.e, this.f);
+   private void a(Set<bok> $$0, Path $$1) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Expected at least one sampler to persist");
+      } else {
+         Map<boj, List<bok>> $$2 = $$0.stream().collect(Collectors.groupingBy(bok::e));
+         $$2.forEach(($$1x, $$2x) -> this.a($$1x, $$2x, $$1));
+      }
    }
 
-   public static float a(aym $$0, float $$1, float $$2, float $$3, float $$4) {
-      return ayf.a(ayf.c($$0, $$1, $$2), $$3, $$4);
+   private void a(boj $$0, List<bok> $$1, Path $$2) {
+      Path $$3 = $$2.resolve(ac.a($$0.a(), alb::b) + ".csv");
+      Writer $$4 = null;
+
+      try {
+         Files.createDirectories($$3.getParent());
+         $$4 = Files.newBufferedWriter($$3, StandardCharsets.UTF_8);
+         axu.a $$5 = axu.a();
+         $$5.a("@tick");
+
+         for (bok $$6 : $$1) {
+            $$5.a($$6.d());
+         }
+
+         axu $$7 = $$5.a($$4);
+         List<bok.b> $$8 = $$1.stream().map(bok::f).collect(Collectors.toList());
+         int $$9 = $$8.stream().mapToInt(bok.b::a).summaryStatistics().getMin();
+         int $$10 = $$8.stream().mapToInt(bok.b::b).summaryStatistics().getMax();
+
+         for (int $$11 = $$9; $$11 <= $$10; $$11++) {
+            int $$12 = $$11;
+            Stream<String> $$13 = $$8.stream().map($$1x -> String.valueOf($$1x.a($$12)));
+            Object[] $$14 = Stream.concat(Stream.of(String.valueOf($$11)), $$13).toArray(String[]::new);
+            $$7.a($$14);
+         }
+
+         e.info("Flushed metrics to {}", $$3);
+      } catch (Exception var18) {
+         e.error("Could not save profiler results to {}", $$3, var18);
+      } finally {
+         IOUtils.closeQuietly($$4);
+      }
    }
 
-   @Override
-   public float a() {
-      return this.e;
+   private void a(Map<bok, List<bow>> $$0, Path $$1) {
+      DateTimeFormatter $$2 = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH.mm.ss.SSS", Locale.UK).withZone(ZoneId.systemDefault());
+      $$0.forEach(($$2x, $$3) -> $$3.forEach($$3x -> {
+            String $$4 = $$2.format($$3x.a);
+            Path $$5 = $$1.resolve(ac.a($$2x.d(), alb::b)).resolve(String.format(Locale.ROOT, "%d@%s.txt", $$3x.b, $$4));
+            $$3x.c.a($$5);
+         }));
    }
 
-   @Override
-   public float b() {
-      return this.f;
-   }
-
-   @Override
-   public bpa<?> c() {
-      return bpa.c;
-   }
-
-   @Override
-   public String toString() {
-      return "normal(" + this.b + ", " + this.d + ") in [" + this.e + "-" + this.f + "]";
+   private void a(bnc $$0, Path $$1) {
+      $$0.a($$1.resolve("profiling.txt"));
    }
 }

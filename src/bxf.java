@@ -1,28 +1,23 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class bxf {
-   public static <E extends bsq> bvu<E> a(List<Pair<? extends bxz<? super E>, Integer>> $$0) {
-      return a($$0, bux.a.b, bux.b.a);
-   }
-
-   public static <E extends bsq> bvu<E> a(List<Pair<? extends bxz<? super E>, Integer>> $$0, bux.a $$1, bux.b $$2) {
-      bws<bxz<? super E>> $$3 = new bws<>();
-      $$0.forEach($$1x -> $$3.a((bxz<? super E>)$$1x.getFirst(), (Integer)$$1x.getSecond()));
-      return bxw.a((Function<bxw.b<E>, ? extends App<bxw.c<E>, bxz<E>>>)($$3x -> $$3x.a((bxz<E>)(($$3xx, $$4, $$5) -> {
-            if ($$1 == bux.a.b) {
-               $$3.a();
-            }
-
-            for (bxz<? super E> $$6 : $$3) {
-               if ($$6.trigger($$3xx, $$4, $$5) && $$2 == bux.b.a) {
-                  break;
-               }
-            }
-
-            return true;
-         }))));
+   public static bve<btk> a(bsv<?> $$0, int $$1) {
+      int $$2 = $$1 * $$1;
+      return byq.a(
+         (Function<byq.b<btk>, ? extends App<byq.c<btk>, byt<btk>>>)($$2x -> $$2x.group($$2x.a(cco.n), $$2x.c(cco.q), $$2x.b(cco.h))
+               .apply($$2x, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<btk> $$9 = $$2x.<ccq>b($$5).a($$3xx -> $$3xx.g((bsp)$$7) <= (double)$$2 && $$0.equals($$3xx.ak()));
+                     if ($$9.isEmpty()) {
+                        return false;
+                     } else {
+                        btk $$10 = $$9.get();
+                        $$4.a($$10);
+                        $$3.a(new bvo($$10, true));
+                        return true;
+                     }
+                  }))
+      );
    }
 }

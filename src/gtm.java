@@ -1,73 +1,56 @@
-public class gtm implements gtr {
-   private static final int a = 6000;
-   private static final wx b = wx.c("tutorial.find_tree.title");
-   private static final wx c = wx.c("tutorial.find_tree.description");
-   private final gtq d;
-   private fil e;
-   private int f;
+import com.google.common.collect.Maps;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.util.Collection;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
-   public gtm(gtq $$0) {
-      this.d = $$0;
+public class gtm {
+   private final auo a;
+   private final Map<alb, CompletableFuture<ext>> b = Maps.newHashMap();
+
+   public gtm(auo $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(gts.f);
-      } else {
-         if (this.f == 1) {
-            gbm $$0 = this.d.e().s;
-            if ($$0 != null && (b($$0) || a($$0))) {
-               this.d.a(gts.e);
-               return;
+   public CompletableFuture<ext> a(alb $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> CompletableFuture.supplyAsync(() -> {
+            try {
+               ext var5;
+               try (
+                  InputStream $$1 = this.a.open($$0x);
+                  gth $$2 = new gtj($$1);
+               ) {
+                  ByteBuffer $$3 = $$2.b();
+                  var5 = new ext($$3, $$2.a());
+               }
+
+               return var5;
+            } catch (IOException var10) {
+               throw new CompletionException(var10);
             }
+         }, ac.i()));
+   }
+
+   public CompletableFuture<gte> a(alb $$0, boolean $$1) {
+      return CompletableFuture.supplyAsync(() -> {
+         try {
+            InputStream $$2 = this.a.open($$0);
+            return (gte)($$1 ? new gtk(gtj::new, $$2) : new gtj($$2));
+         } catch (IOException var4) {
+            throw new CompletionException(var4);
          }
-
-         if (this.f >= 6000 && this.e == null) {
-            this.e = new fil(fil.a.c, b, c, false);
-            this.d.e().ax().a(this.e);
-         }
-      }
+      }, ac.i());
    }
 
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
-      }
+   public void a() {
+      this.b.values().forEach($$0 -> $$0.thenAccept(ext::b));
+      this.b.clear();
    }
 
-   @Override
-   public void a(fwr $$0, euk $$1) {
-      if ($$1.c() == euk.a.b) {
-         drd $$2 = $$0.a_(((eui)$$1).a());
-         if ($$2.a(avx.aj)) {
-            this.d.a(gts.c);
-         }
-      }
-   }
-
-   @Override
-   public void a(ctq $$0) {
-      if ($$0.a(awf.aM)) {
-         this.d.a(gts.e);
-      }
-   }
-
-   private static boolean b(gbm $$0) {
-      return $$0.gc().a_($$0x -> $$0x.a(awf.aM));
-   }
-
-   public static boolean a(gbm $$0) {
-      for (ix<dea> $$1 : le.e.c(avx.aj)) {
-         dea $$2 = $$1.a();
-         if ($$0.j().a(avs.a.b($$2)) > 0) {
-            return true;
-         }
-      }
-
-      return false;
+   public CompletableFuture<?> a(Collection<gsf> $$0) {
+      return CompletableFuture.allOf($$0.stream().map($$0x -> this.a($$0x.b())).toArray(CompletableFuture[]::new));
    }
 }

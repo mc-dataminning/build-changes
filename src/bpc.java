@@ -1,16 +1,47 @@
-import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Optional;
 
-public interface bpc<P extends bpb> {
-   bpc<boy> a = a("constant", boy.b);
-   bpc<bph> b = a("uniform", bph.a);
-   bpc<bot> c = a("biased_to_bottom", bot.a);
-   bpc<bou> d = a("clamped", bou.a);
-   bpc<bpi> e = a("weighted_list", bpi.a);
-   bpc<bow> f = a("clamped_normal", bow.a);
+public class bpc {
+   private bpc() {
+   }
 
-   MapCodec<P> codec();
+   public static int a(List<? extends bpb> $$0) {
+      long $$1 = 0L;
 
-   static <P extends bpb> bpc<P> a(String $$0, MapCodec<P> $$1) {
-      return jk.a(le.M, $$0, () -> $$1);
+      for (bpb $$2 : $$0) {
+         $$1 += (long)$$2.a().a();
+      }
+
+      if ($$1 > 2147483647L) {
+         throw new IllegalArgumentException("Sum of weights must be <= 2147483647");
+      } else {
+         return (int)$$1;
+      }
+   }
+
+   public static <T extends bpb> Optional<T> a(azc $$0, List<T> $$1, int $$2) {
+      if ($$2 < 0) {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Negative total weight in getRandomItem"));
+      } else if ($$2 == 0) {
+         return Optional.empty();
+      } else {
+         int $$3 = $$0.a($$2);
+         return a($$1, $$3);
+      }
+   }
+
+   public static <T extends bpb> Optional<T> a(List<T> $$0, int $$1) {
+      for (T $$2 : $$0) {
+         $$1 -= $$2.a().a();
+         if ($$1 < 0) {
+            return Optional.of($$2);
+         }
+      }
+
+      return Optional.empty();
+   }
+
+   public static <T extends bpb> Optional<T> a(azc $$0, List<T> $$1) {
+      return a($$0, $$1, a($$1));
    }
 }

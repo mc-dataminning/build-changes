@@ -1,21 +1,20 @@
-public enum dsk implements ayz {
-   a("inactive"),
-   b("active"),
-   c("cooldown");
+public enum dsk implements azp {
+   a("head"),
+   b("foot");
 
-   private final String d;
+   private final String c;
 
-   private dsk(String $$0) {
-      this.d = $$0;
+   private dsk(final String $$0) {
+      this.c = $$0;
    }
 
    @Override
    public String toString() {
-      return this.d;
+      return this.c;
    }
 
    @Override
    public String c() {
-      return this.d;
+      return this.c;
    }
 }

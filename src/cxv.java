@@ -1,54 +1,77 @@
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class cxv extends cyd {
-   public cxv(cxm $$0) {
-      super("", $$0, cye.a(Map.of('#', cxt.a(ctt.qO), 'x', cxt.a(ctt.rU)), "###", "#x#", "###"), new ctq(ctt.uj));
+public class cxv extends cxx {
+   private final iz b;
+   protected boolean a = true;
+
+   public cxv(cms $$0, bqo $$1, cuk $$2, evi $$3) {
+      this($$0.dP(), $$0, $$1, $$2, $$3);
+   }
+
+   public cxv(cxx $$0) {
+      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
+   }
+
+   protected cxv(dbt $$0, @Nullable cms $$1, bqo $$2, cuk $$3, evi $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.b = $$4.a().a($$4.b());
+      this.a = $$0.a_($$4.a()).a(this);
+   }
+
+   public static cxv a(cxv $$0, iz $$1, je $$2) {
+      return new cxv(
+         $$0.q(),
+         $$0.o(),
+         $$0.p(),
+         $$0.n(),
+         new evi(
+            new evm((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
+            $$2,
+            $$1,
+            false
+         )
+      );
    }
 
    @Override
-   public boolean a(cpl $$0, daz $$1) {
-      if (!super.a($$0, $$1)) {
-         return false;
+   public iz a() {
+      return this.a ? super.a() : this.b;
+   }
+
+   public boolean b() {
+      return this.a || this.q().a_(this.a()).a(this);
+   }
+
+   public boolean c() {
+      return this.a;
+   }
+
+   public je d() {
+      return je.a(this.o())[0];
+   }
+
+   public je e() {
+      return je.a(this.o(), je.a.b);
+   }
+
+   public je[] f() {
+      je[] $$0 = je.a(this.o());
+      if (this.a) {
+         return $$0;
       } else {
-         ctq $$2 = a($$0);
-         if ($$2.e()) {
-            return false;
-         } else {
-            eol $$3 = cty.b($$2, $$1);
-            if ($$3 == null) {
-               return false;
-            } else {
-               return $$3.g() ? false : $$3.f < 4;
-            }
+         je $$1 = this.k();
+         int $$2 = 0;
+
+         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
+            $$2++;
          }
-      }
-   }
 
-   @Override
-   public ctq a(cpl $$0, iz.a $$1) {
-      ctq $$2 = a($$0).c(1);
-      $$2.b(kb.C, cwr.b);
-      return $$2;
-   }
-
-   private static ctq a(cpl $$0) {
-      for (int $$1 = 0; $$1 < $$0.b(); $$1++) {
-         ctq $$2 = $$0.a($$1);
-         if ($$2.a(ctt.rU)) {
-            return $$2;
+         if ($$2 > 0) {
+            System.arraycopy($$0, 0, $$0, 1, $$2);
+            $$0[0] = $$1.g();
          }
+
+         return $$0;
       }
-
-      return ctq.i;
-   }
-
-   @Override
-   public boolean ao_() {
-      return true;
-   }
-
-   @Override
-   public cya<?> ap_() {
-      return cya.f;
    }
 }

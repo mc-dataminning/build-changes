@@ -1,30 +1,22 @@
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
+public class cqk extends crk {
+   private final cpq a;
 
-public interface cqk {
-   void a(@Nullable cxy<?> var1);
-
-   @Nullable
-   cxy<?> d();
-
-   default void a(cly $$0, List<ctq> $$1) {
-      cxy<?> $$2 = this.d();
-      if ($$2 != null) {
-         $$0.a($$2, $$1);
-         if (!$$2.b().ao_()) {
-            $$0.a(Collections.singleton($$2));
-            this.a(null);
-         }
-      }
+   public cqk(cpq $$0, bqi $$1, int $$2, int $$3, int $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.a = $$0;
    }
 
-   default boolean a(daz $$0, aqo $$1, cxy<?> $$2) {
-      if (!$$2.b().ao_() && $$0.aa().b(dav.w) && !$$1.I().b($$2)) {
-         return false;
-      } else {
-         this.a($$2);
-         return true;
-      }
+   @Override
+   public boolean a(cuk $$0) {
+      return this.a.d($$0) || c($$0);
+   }
+
+   @Override
+   public int a_(cuk $$0) {
+      return c($$0) ? 1 : super.a_($$0);
+   }
+
+   public static boolean c(cuk $$0) {
+      return $$0.a(cun.qy);
    }
 }

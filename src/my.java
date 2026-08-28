@@ -1,57 +1,68 @@
-import java.util.function.BiConsumer;
+import java.util.Set;
 
-public class my implements mj {
-   @Override
-   public void generate(iz.a $$0, BiConsumer<akm<epm>, epm.a> $$1) {
-      iz.b<dby> $$2 = $$0.b(lf.az);
-      $$1.accept(
-         epf.aA,
-         epm.b()
-            .a(
-               epl.a()
-                  .a(etg.a(1.0F))
-                  .a(eqa.a(epf.aB).a(10).b(-2))
-                  .a(eqa.a(epf.aC).a(5).b(2).a(esq.a(eph.b.a, br.a.a().a(bx.a(true)))))
-                  .a(eqa.a(epf.aD).a(85).b(-1))
-            )
-      );
-      $$1.accept(epf.aD, a());
-      $$1.accept(
-         epf.aB,
-         epm.b()
-            .a(
-               epl.a()
-                  .a(epu.a(dec.fm).a(17))
-                  .a(epu.a(ctt.pB).a(10).a(erk.a(etm.a(0.0F, 0.9F))))
-                  .a(epu.a(ctt.qD).a(10))
-                  .a(epu.a(ctt.rz).a(10))
-                  .a(epu.a(ctt.sk).a(10).a(ero.a(cvs.a)))
-                  .a(epu.a(ctt.ps).a(5))
-                  .a(epu.a(ctt.qV).a(2).a(erk.a(etm.a(0.0F, 0.9F))))
-                  .a(epu.a(ctt.pq).a(10))
-                  .a(epu.a(ctt.pp).a(5))
-                  .a(epu.a(ctt.rf).a(1).a(erj.a(etg.a(10.0F))))
-                  .a(epu.a(dec.fH).a(10))
-                  .a(epu.a(ctt.se).a(10))
-                  .a(epu.a(dec.mZ).a(esl.a(cr.a.a().a(jb.a($$2.b(dcf.x), $$2.b(dcf.y), $$2.b(dcf.z))))).a(10))
-            )
-      );
-      $$1.accept(
-         epf.aC,
-         epm.b()
-            .a(
-               epl.a()
-                  .a(epu.a(ctt.uL))
-                  .a(epu.a(ctt.nL))
-                  .a(epu.a(ctt.ou).a(erk.a(etm.a(0.0F, 0.25F))).a(eql.a(etg.a(30.0F)).e()))
-                  .a(epu.a(ctt.qV).a(erk.a(etm.a(0.0F, 0.25F))).a(eql.a(etg.a(30.0F)).e()))
-                  .a(epu.a(ctt.qP).a(eql.a(etg.a(30.0F)).e()))
-                  .a(epu.a(ctt.vR))
-            )
-      );
+public class my extends mr {
+   protected my() {
+      super(Set.of(), cpg.a(cpi.c));
    }
 
-   public static epm.a a() {
-      return epm.b().a(epl.a().a(epu.a(ctt.qZ).a(60)).a(epu.a(ctt.ra).a(25)).a(epu.a(ctt.rb).a(2)).a(epu.a(ctt.rc).a(13)));
+   @Override
+   protected void b() {
+      this.t(dew.tq);
+      this.t(dew.qH);
+      this.t(dew.qB);
+      this.t(dew.qC);
+      this.t(dew.qD);
+      this.t(dew.qF);
+      this.t(dew.qG);
+      this.t(dew.qI);
+      this.t(dew.qK);
+      this.t(dew.qL);
+      this.t(dew.qM);
+      this.a(dew.qA, $$1 -> this.a($$1));
+      this.a(dew.qJ, $$1 -> this.a($$1));
+      this.a(dew.qE, $$1 -> this.a($$1));
+      this.t(dew.rj);
+      this.t(dew.ri);
+      this.t(dew.rh);
+      this.t(dew.rg);
+      this.t(dew.rn);
+      this.t(dew.rm);
+      this.t(dew.rl);
+      this.t(dew.rk);
+      this.a(dew.rM, $$1 -> this.q($$1));
+      this.a(dew.rN, $$1 -> this.q($$1));
+      this.a(dew.rP, $$1 -> this.q($$1));
+      this.a(dew.rO, $$1 -> this.q($$1));
+      this.a(dew.rQ, $$1 -> this.q($$1));
+      this.a(dew.rR, $$1 -> this.q($$1));
+      this.a(dew.rT, $$1 -> this.q($$1));
+      this.a(dew.rS, $$1 -> this.q($$1));
+      this.t(dew.rU);
+      this.t(dew.rV);
+      this.t(dew.rX);
+      this.t(dew.rW);
+      this.t(dew.rY);
+      this.t(dew.rZ);
+      this.t(dew.sb);
+      this.t(dew.sa);
+      this.t(dew.sc);
+      this.t(dew.sd);
+      this.t(dew.se);
+      this.t(dew.sf);
+      this.t(dew.sg);
+      this.t(dew.sh);
+      this.t(dew.si);
+      this.t(dew.sj);
+      this.t(dew.sk);
+      this.t(dew.sl);
+      this.t(dew.sm);
+      this.t(dew.sn);
+      this.t(dew.so);
+      this.t(dew.sp);
+      this.t(dew.sq);
+      this.t(dew.sr);
+      this.a(dew.tr, a());
+      this.a(dew.ts, a());
+      this.t(dew.tt);
    }
 }

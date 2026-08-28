@@ -1,53 +1,54 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.properties.PropertyMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
 import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
 
-public record cws(Optional<String> c, Optional<UUID> d, PropertyMap e, GameProfile f) {
-   private static final Codec<cws> g = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               axn.u.optionalFieldOf("name").forGetter(cws::c),
-               jr.a.optionalFieldOf("id").forGetter(cws::d),
-               axn.t.optionalFieldOf("properties", new PropertyMap()).forGetter(cws::e)
-            )
-            .apply($$0, cws::new)
-   );
-   public static final Codec<cws> a = Codec.withAlternative(g, axn.u, $$0 -> new cws(Optional.of($$0), Optional.empty(), new PropertyMap()));
-   public static final yv<ByteBuf, cws> b = yv.a(yt.b(16).a(yt::a), cws::c, jr.g.a(yt::a), cws::d, yt.s, cws::e, cws::new);
+public class cws {
+   public static final ala<cwr> a = a("sentry");
+   public static final ala<cwr> b = a("dune");
+   public static final ala<cwr> c = a("coast");
+   public static final ala<cwr> d = a("wild");
+   public static final ala<cwr> e = a("ward");
+   public static final ala<cwr> f = a("eye");
+   public static final ala<cwr> g = a("vex");
+   public static final ala<cwr> h = a("tide");
+   public static final ala<cwr> i = a("snout");
+   public static final ala<cwr> j = a("rib");
+   public static final ala<cwr> k = a("spire");
+   public static final ala<cwr> l = a("wayfinder");
+   public static final ala<cwr> m = a("shaper");
+   public static final ala<cwr> n = a("silence");
+   public static final ala<cwr> o = a("raiser");
+   public static final ala<cwr> p = a("host");
+   public static final ala<cwr> q = a("flow");
+   public static final ala<cwr> r = a("bolt");
 
-   public cws(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
-      this($$0, $$1, $$2, a($$0, $$1, $$2));
+   public static void a(rc<cwr> $$0) {
+      a($$0, cun.xt, a);
+      a($$0, cun.xu, b);
+      a($$0, cun.xv, c);
+      a($$0, cun.xw, d);
+      a($$0, cun.xx, e);
+      a($$0, cun.xy, f);
+      a($$0, cun.xz, g);
+      a($$0, cun.xA, h);
+      a($$0, cun.xB, i);
+      a($$0, cun.xC, j);
+      a($$0, cun.xD, k);
+      a($$0, cun.xE, l);
+      a($$0, cun.xF, m);
+      a($$0, cun.xG, n);
+      a($$0, cun.xH, o);
+      a($$0, cun.xI, p);
    }
 
-   public cws(GameProfile $$0) {
-      this(Optional.of($$0.getName()), Optional.of($$0.getId()), $$0.getProperties(), $$0);
+   public static Optional<ji.c<cwr>> a(jk.a $$0, cuk $$1) {
+      return $$0.b(lq.aP).b().filter($$1x -> $$1.a(((cwr)$$1x.a()).b())).findFirst();
    }
 
-   public CompletableFuture<cws> a() {
-      if (this.b()) {
-         return CompletableFuture.completedFuture(this);
-      } else {
-         return this.d.isPresent() ? dpu.a(this.d.get()).thenApply($$0 -> {
-            GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(this.d.get(), this.c.orElse("")));
-            return new cws($$1);
-         }) : dpu.a(this.c.orElseThrow()).thenApply($$0 -> {
-            GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(ac.e, this.c.get()));
-            return new cws($$1);
-         });
-      }
+   public static void a(rc<cwr> $$0, cuf $$1, ala<cwr> $$2) {
+      cwr $$3 = new cwr($$2.a(), lp.h.e($$1), xl.c(ac.a("trim_pattern", $$2.a())), false);
+      $$0.a($$2, $$3);
    }
 
-   private static GameProfile a(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
-      GameProfile $$3 = new GameProfile($$1.orElse(ac.e), $$0.orElse(""));
-      $$3.getProperties().putAll($$2);
-      return $$3;
-   }
-
-   public boolean b() {
-      return !this.e.isEmpty() ? true : this.d.isPresent() == this.c.isPresent();
+   private static ala<cwr> a(String $$0) {
+      return ala.a(lq.aP, new alb($$0));
    }
 }

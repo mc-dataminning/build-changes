@@ -1,24 +1,20 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record cg(jb<cvp> c) implements dg<cvr> {
-   public static final Codec<cg> a = jm.a(lf.Y).xmap(cg::new, cg::b);
+public record cg(Optional<bc<cuk, cp>> c) implements ds<cwx> {
+   public static final Codec<cg> a = RecordCodecBuilder.create($$0 -> $$0.group(bc.a(cp.a).optionalFieldOf("items").forGetter(cg::b)).apply($$0, cg::new));
 
    @Override
-   public ka<cvr> a() {
-      return kb.F;
+   public kl<cwx> a() {
+      return km.E;
    }
 
-   public boolean a(ctq $$0, cvr $$1) {
-      Optional<ix<cvp>> $$2 = $$1.f();
-      return !$$2.isEmpty() && this.c.a($$2.get());
+   public boolean a(cuk $$0, cwx $$1) {
+      return !this.c.isPresent() || this.c.get().a($$1.b());
    }
 
-   public static ci a(jb<cvp> $$0) {
-      return new cg($$0);
-   }
-
-   public jb<cvp> b() {
+   public Optional<bc<cuk, cp>> b() {
       return this.c;
    }
 }

@@ -1,80 +1,22 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
+import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
+import java.util.function.Function;
 
-public class bxt extends bxu {
-   private static final List<ctl> c = ImmutableList.of(ctt.pv, ctt.vl);
-
-   @Override
-   protected void a(aqn $$0, cll $$1) {
-      Optional<iw> $$2 = $$1.dS().c(cbu.c);
-      if (!$$2.isEmpty()) {
-         iw $$3 = $$2.get();
-         drd $$4 = $$0.a_($$3.b());
-         if ($$4.a(dec.pc)) {
-            this.a($$1);
-            this.a($$0, $$1, $$3, $$4);
-         }
-      }
-   }
-
-   private void a(aqn $$0, cll $$1, iw $$2, drd $$3) {
-      io $$4 = $$2.b();
-      if ($$3.c(dfl.e) == 8) {
-         $$3 = dfl.a($$1, $$3, (daz)$$0, $$4);
-      }
-
-      int $$5 = 20;
-      int $$6 = 10;
-      int[] $$7 = new int[c.size()];
-      bqf $$8 = $$1.y();
-      int $$9 = $$8.b();
-      drd $$10 = $$3;
-
-      for (int $$11 = $$9 - 1; $$11 >= 0 && $$5 > 0; $$11--) {
-         ctq $$12 = $$8.a($$11);
-         int $$13 = c.indexOf($$12.g());
-         if ($$13 != -1) {
-            int $$14 = $$12.I();
-            int $$15 = $$7[$$13] + $$14;
-            $$7[$$13] = $$15;
-            int $$16 = Math.min(Math.min($$15 - 10, $$5), $$14);
-            if ($$16 > 0) {
-               $$5 -= $$16;
-
-               for (int $$17 = 0; $$17 < $$16; $$17++) {
-                  $$10 = dfl.a($$1, $$10, $$0, $$12, $$4);
-                  if ($$10.c(dfl.e) == 7) {
-                     this.a($$0, $$3, $$4, $$10);
-                     return;
-                  }
-               }
-            }
-         }
-      }
-
-      this.a($$0, $$3, $$4, $$10);
-   }
-
-   private void a(aqn $$0, drd $$1, io $$2, drd $$3) {
-      $$0.c(1500, $$2, $$3 != $$1 ? 1 : 0);
-   }
-
-   private void a(cll $$0) {
-      bqf $$1 = $$0.y();
-      if ($$1.a_(ctt.px) <= 36) {
-         int $$2 = $$1.a_(ctt.pw);
-         int $$3 = 3;
-         int $$4 = 3;
-         int $$5 = Math.min(3, $$2 / 3);
-         if ($$5 != 0) {
-            int $$6 = $$5 * 3;
-            $$1.a(ctt.pw, $$6);
-            ctq $$7 = $$1.b(new ctq(ctt.px, $$5));
-            if (!$$7.e()) {
-               $$0.a($$7, 0.5F);
-            }
-         }
-      }
+public class bxt {
+   public static bve<btk> a() {
+      return byq.a(
+         (Function<byq.b<btk>, ? extends App<byq.c<btk>, byt<btk>>>)($$0 -> $$0.group($$0.b(cco.ab))
+               .apply(
+                  $$0,
+                  $$1 -> ($$2, $$3, $$4) -> {
+                        Optional.ofNullable($$2.a($$0.b($$1)))
+                           .map($$0xxx -> $$0xxx instanceof btk $$1xx ? $$1xx : null)
+                           .filter(btk::eB)
+                           .filter($$1xx -> $$1xx.ak() != bsv.by || $$2.ab().b(dbp.N))
+                           .ifPresent($$1xx -> $$1.b());
+                        return true;
+                     }
+               ))
+      );
    }
 }

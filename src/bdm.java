@@ -1,28 +1,24 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.Objects;
 
-public class bdm extends bez {
-   public bdm(Schema $$0, String $$1) {
-      super($$0, false, "Gossip for for " + $$1, bga.z, $$1);
+public class bdm extends bhc {
+   public bdm(Schema $$0, boolean $$1) {
+      super("EntitySkeletonSplitFix", $$0, $$1);
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> $$0x.update(
-               "Gossips",
-               $$0xx -> (Dynamic)DataFixUtils.orElse(
-                     $$0xx.asStreamOpt()
-                        .result()
-                        .map($$0xxx -> $$0xxx.map($$0xxxx -> (Dynamic)azs.c($$0xxxx, "Target", "Target").orElse($$0xxxx)))
-                        .map($$0xx::createList),
-                     $$0xx
-                  )
-            )
-      );
+   protected Pair<String, Dynamic<?>> a(String $$0, Dynamic<?> $$1) {
+      if (Objects.equals($$0, "Skeleton")) {
+         int $$2 = $$1.get("SkeletonType").asInt(0);
+         if ($$2 == 1) {
+            $$0 = "WitherSkeleton";
+         } else if ($$2 == 2) {
+            $$0 = "Stray";
+         }
+      }
+
+      return Pair.of($$0, $$1);
    }
 }

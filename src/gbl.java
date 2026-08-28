@@ -1,31 +1,17 @@
-public class gbl extends gbk {
-   private final fef i;
-
-   public gbl(fef $$0) {
-      this.i = $$0;
+public class gbl extends fzp {
+   protected gbl(fxq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gbs $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
    }
 
-   private static float a(boolean $$0, boolean $$1) {
-      if ($$0 == $$1) {
-         return 0.0F;
-      } else {
-         return $$0 ? 1.0F : -1.0F;
+   public static class a implements gba<lm> {
+      private final gbs a;
+
+      public a(gbs $$0) {
+         this.a = $$0;
       }
-   }
 
-   @Override
-   public void a(boolean $$0, float $$1) {
-      this.c = this.i.w.e();
-      this.d = this.i.y.e();
-      this.e = this.i.x.e();
-      this.f = this.i.z.e();
-      this.b = a(this.c, this.d);
-      this.a = a(this.e, this.f);
-      this.g = this.i.A.e();
-      this.h = this.i.B.e();
-      if ($$0) {
-         this.a *= $$1;
-         this.b *= $$1;
+      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gbl($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
       }
    }
 }

@@ -1,39 +1,22 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dz {
-   public static final Codec<dz> a = akn.a.xmap(dz::new, dz::a);
-   private final akn b;
-   private boolean c;
-   private Optional<hq<ee>> d = Optional.empty();
-
-   public dz(akn $$0) {
-      this.b = $$0;
+public record dz<T>(axb<T> a, boolean b) {
+   public static <T> Codec<dz<T>> a(ala<? extends jv<T>> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(axb.a($$0).fieldOf("id").forGetter(dz::a), Codec.BOOL.fieldOf("expected").forGetter(dz::b)).apply($$1, dz::new)
+      );
    }
 
-   public Optional<hq<ee>> a(alc $$0) {
-      if (!this.c) {
-         this.d = $$0.a(this.b);
-         this.c = true;
-      }
-
-      return this.d;
+   public static <T> dz<T> a(axb<T> $$0) {
+      return new dz<>($$0, true);
    }
 
-   public akn a() {
-      return this.b;
+   public static <T> dz<T> b(axb<T> $$0) {
+      return new dz<>($$0, false);
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if ($$0 == this) {
-         return true;
-      } else {
-         if ($$0 instanceof dz $$1 && this.a().equals($$1.a())) {
-            return true;
-         }
-
-         return false;
-      }
+   public boolean a(ji<T> $$0) {
+      return $$0.a(this.a) == this.b;
    }
 }

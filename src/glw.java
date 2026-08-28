@@ -1,27 +1,27 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-
-public class glw extends gmf<ces, ftl<ces>> {
-   private static final Map<bru.a, akn> a = ImmutableMap.of(
-      bru.a.b,
-      new akn("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
-      bru.a.c,
-      new akn("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
-      bru.a.d,
-      new akn("textures/entity/iron_golem/iron_golem_crackiness_high.png")
-   );
-
-   public glw(gjp<ces, ftl<ces>> $$0) {
-      super($$0);
+public class glw extends gjy<cgd, fwm<cgd>> {
+   public glw(gis.a $$0) {
+      super($$0, new fwm<>($$0.a(fwu.cc)), 0.5F);
+      this.a(new gnt(this, $$0.f()));
+      this.a(new gnu(this));
    }
 
-   public void a(eyu $$0, gck $$1, int $$2, ces $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.ch()) {
-         bru.a $$10 = $$3.u();
-         if ($$10 != bru.a.a) {
-            akn $$11 = a.get($$10);
-            a(this.c(), $$11, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
-         }
+   protected float a(cgd $$0, float $$1) {
+      return $$0.gA();
+   }
+
+   public void a(cgd $$0, float $$1, float $$2, ezt $$3, gdj $$4, int $$5) {
+      if ($$0.gz()) {
+         float $$6 = $$0.G($$2);
+         this.f.a($$6, $$6, $$6);
       }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if ($$0.gz()) {
+         this.f.a(1.0F, 1.0F, 1.0F);
+      }
+   }
+
+   public alb a(cgd $$0) {
+      return $$0.gw();
    }
 }

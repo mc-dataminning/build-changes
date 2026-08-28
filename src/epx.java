@@ -1,66 +1,94 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
-import java.util.function.Predicate;
+import com.mojang.serialization.Lifecycle;
+import java.util.Locale;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public abstract class epx implements epp {
-   protected final List<esn> e;
-   private final Predicate<eph> a;
+public interface epx {
+   int d = 19133;
+   int e = 19132;
 
-   protected epx(List<esn> $$0) {
-      this.e = $$0;
-      this.a = ac.a($$0);
+   dcn D();
+
+   void a(dcn var1);
+
+   boolean F();
+
+   Set<String> G();
+
+   Set<String> H();
+
+   void a(String var1, boolean var2);
+
+   default void a(p $$0) {
+      $$0.a("Known server brands", () -> String.join(", ", this.G()));
+      $$0.a("Removed feature flags", () -> String.join(", ", this.H()));
+      $$0.a("Level was modded", () -> Boolean.toString(this.F()));
+      $$0.a("Level storage version", () -> {
+         int $$0x = this.x();
+         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.f($$0x));
+      });
    }
 
-   protected static <T extends epx> P1<Mu<T>, List<esn>> a(Instance<T> $$0) {
-      return $$0.group(esp.a.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.e));
-   }
-
-   public void a(epn $$0) {
-      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
-         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+   default String f(int $$0) {
+      switch ($$0) {
+         case 19132:
+            return "McRegion";
+         case 19133:
+            return "Anvil";
+         default:
+            return "Unknown?";
       }
    }
 
-   protected final boolean a(eph $$0) {
-      return this.a.test($$0);
-   }
+   @Nullable
+   ur E();
 
-   public abstract epy a();
+   void a(@Nullable ur var1);
 
-   public abstract static class a<T extends epx.a<T>> implements esg<T> {
-      private final Builder<esn> a = ImmutableList.builder();
+   epw I();
 
-      protected abstract T aC_();
+   dbx J();
 
-      public T a(esn.a $$0) {
-         this.a.add($$0.build());
-         return this.aC_();
-      }
+   ur a(jw var1, @Nullable ur var2);
 
-      public final T e() {
-         return this.aC_();
-      }
+   boolean l();
 
-      protected List<esn> f() {
-         return this.a.build();
-      }
+   int x();
 
-      public epo.a a(epx.a<?> $$0) {
-         return new epo.a(this, $$0);
-      }
+   String e();
 
-      public ept.a b(epx.a<?> $$0) {
-         return new ept.a(this, $$0);
-      }
+   dbq k();
 
-      public eqb.a c(epx.a<?> $$0) {
-         return new eqb.a(this, $$0);
-      }
+   void a(dbq var1);
 
-      public abstract epx b();
+   boolean m();
+
+   bqm q();
+
+   void a(bqm var1);
+
+   boolean r();
+
+   void d(boolean var1);
+
+   dbp o();
+
+   @Nullable
+   ur w();
+
+   dvs.a C();
+
+   void a(dvs.a var1);
+
+   dyn y();
+
+   boolean z();
+
+   boolean A();
+
+   Lifecycle B();
+
+   default cpg K() {
+      return this.D().b();
    }
 }

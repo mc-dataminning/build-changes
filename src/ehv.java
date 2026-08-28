@@ -1,101 +1,103 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import java.util.Map;
+import java.util.Optional;
 
-public abstract class ehv extends ehp {
-   private static final Logger h = LogUtils.getLogger();
-   protected final String a;
-   protected ell b;
-   protected elh c;
-   protected io d;
+public class ehv {
+   public static final ala<ehu> a = a("normal");
+   public static final ala<ehu> b = a("flat");
+   public static final ala<ehu> c = a("large_biomes");
+   public static final ala<ehu> d = a("amplified");
+   public static final ala<ehu> e = a("single_biome_surface");
+   public static final ala<ehu> f = a("debug_all_block_states");
 
-   public ehv(eic $$0, int $$1, elm $$2, akn $$3, String $$4, elh $$5, io $$6) {
-      super($$0, $$1, $$2.a($$3).b($$5, $$6));
-      this.a(it.c);
-      this.a = $$4;
-      this.d = $$6;
-      this.b = $$2.a($$3);
-      this.c = $$5;
+   public static void a(rc<ehu> $$0) {
+      new ehv.a($$0).a();
    }
 
-   public ehv(eic $$0, ud $$1, elm $$2, Function<akn, elh> $$3) {
-      super($$0, $$1);
-      this.a(it.c);
-      this.a = $$1.l("Template");
-      this.d = new io($$1.h("TPX"), $$1.h("TPY"), $$1.h("TPZ"));
-      akn $$4 = this.b();
-      this.b = $$2.a($$4);
-      this.c = $$3.apply($$4);
-      this.f = this.b.b(this.c, this.d);
+   private static ala<ehu> a(String $$0) {
+      return ala.a(lq.aQ, new alb($$0));
    }
 
-   protected akn b() {
-      return new akn(this.a);
-   }
-
-   @Override
-   protected void a(eib $$0, ud $$1) {
-      $$1.a("TPX", this.d.u());
-      $$1.a("TPY", this.d.v());
-      $$1.a("TPZ", this.d.w());
-      $$1.a("Template", this.a);
-   }
-
-   @Override
-   public void a(dbu $$0, dbs $$1, dta $$2, aym $$3, ehd $$4, dag $$5, io $$6) {
-      this.c.a($$4);
-      this.f = this.b.b(this.c, this.d);
-      if (this.b.a($$0, this.d, $$6, this.c, $$3, 2)) {
-         for (ell.c $$8 : this.b.a(this.d, this.c, dec.pa)) {
-            if ($$8.c() != null) {
-               dsn $$9 = dsn.valueOf($$8.c().l("mode"));
-               if ($$9 == dsn.d) {
-                  this.a($$8.c().l("metadata"), $$8.a(), $$0, $$3, $$4);
-               }
-            }
+   public static Optional<ala<ehu>> a(dyk $$0) {
+      return $$0.a(dvq.b).flatMap($$0x -> {
+         dtu $$1 = $$0x.b();
+         if ($$1 instanceof dxk) {
+            return Optional.of(b);
+         } else {
+            return $$1 instanceof dxg ? Optional.of(f) : Optional.empty();
          }
+      });
+   }
 
-         for (ell.c $$11 : this.b.a(this.d, this.c, dec.pb)) {
-            if ($$11.c() != null) {
-               String $$12 = $$11.c().l("final_state");
-               drd $$13 = dec.a.n();
+   public static dyk a(jw $$0) {
+      return $$0.d(lq.aQ).g(a).a().a();
+   }
 
-               try {
-                  $$13 = fy.a($$0.a(lf.f), $$12, true).a();
-               } catch (CommandSyntaxException var15) {
-                  h.error("Error while parsing blockstate {} in jigsaw block @ {}", $$12, $$11.a());
-               }
+   public static dvq b(jw $$0) {
+      return $$0.d(lq.aQ).g(a).a().b().orElseThrow();
+   }
 
-               $$0.a($$11.a(), $$13, 3);
-            }
-         }
+   static class a {
+      private final rc<ehu> a;
+      private final jj<dxu> b;
+      private final jj<dcs> c;
+      private final jj<ehj> d;
+      private final jj<eil> e;
+      private final jj<ddg> f;
+      private final ji<dvp> g;
+      private final dvq h;
+      private final dvq i;
+
+      a(rc<ehu> $$0) {
+         this.a = $$0;
+         jj<dvp> $$1 = $$0.a(lq.aE);
+         this.b = $$0.a(lq.aG);
+         this.c = $$0.a(lq.az);
+         this.d = $$0.a(lq.aI);
+         this.e = $$0.a(lq.aL);
+         this.f = $$0.a(lq.aR);
+         this.g = $$1.b(dvn.a);
+         ji<dvp> $$2 = $$1.b(dvn.b);
+         ji<dxu> $$3 = this.b.b(dxu.f);
+         ji.c<ddg> $$4 = this.f.b(ddh.a);
+         this.h = new dvq($$2, new dxs(ddf.a($$4), $$3));
+         ji<dvp> $$5 = $$1.b(dvn.c);
+         ji<dxu> $$6 = this.b.b(dxu.g);
+         this.i = new dvq($$5, new dxs(ddj.a(this.c), $$6));
       }
-   }
 
-   protected abstract void a(String var1, io var2, dbo var3, aym var4, ehd var5);
+      private dvq a(dtu $$0) {
+         return new dvq(this.g, $$0);
+      }
 
-   @Deprecated
-   @Override
-   public void a(int $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.d = this.d.b($$0, $$1, $$2);
-   }
+      private dvq a(dcw $$0, ji<dxu> $$1) {
+         return this.a(new dxs($$0, $$1));
+      }
 
-   @Override
-   public dkn a() {
-      return this.c.d();
-   }
+      private ehu a(dvq $$0) {
+         return new ehu(Map.of(dvq.b, $$0, dvq.c, this.h, dvq.d, this.i));
+      }
 
-   public ell c() {
-      return this.b;
-   }
+      private void a(ala<ehu> $$0, dvq $$1) {
+         this.a.a($$0, this.a($$1));
+      }
 
-   public io d() {
-      return this.d;
-   }
+      private void a(dcw $$0) {
+         ji<dxu> $$1 = this.b.b(dxu.c);
+         this.a(ehv.a, this.a($$0, $$1));
+         ji<dxu> $$2 = this.b.b(dxu.d);
+         this.a(ehv.c, this.a($$0, $$2));
+         ji<dxu> $$3 = this.b.b(dxu.e);
+         this.a(ehv.d, this.a($$0, $$3));
+      }
 
-   public elh e() {
-      return this.c;
+      public void a() {
+         ji.c<ddg> $$0 = this.f.b(ddh.b);
+         this.a(ddf.a($$0));
+         ji<dxu> $$1 = this.b.b(dxu.c);
+         ji.c<dcs> $$2 = this.c.b(dcz.b);
+         this.a(ehv.e, this.a(new ddd($$2), $$1));
+         this.a(ehv.b, this.a(new dxk(egi.a(this.c, this.e, this.d))));
+         this.a(ehv.f, this.a(new dxg($$2)));
+      }
    }
 }

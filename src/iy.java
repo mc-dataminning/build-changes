@@ -1,27 +1,51 @@
-import java.util.Optional;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.util.Map;
+import java.util.function.Supplier;
+import org.joml.Matrix4f;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
+import org.slf4j.Logger;
 
-public interface iy<T> {
-   Optional<ix.c<T>> a(akm<T> var1);
-
-   default ix.c<T> b(akm<T> $$0) {
-      return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing element " + $$0));
-   }
-
-   Optional<jb.c<T>> a(awm<T> var1);
-
-   default jb.c<T> b(awm<T> $$0) {
-      return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing tag " + $$0));
-   }
-
-   public interface a {
-      <T> Optional<iy<T>> a(akm<? extends jk<? extends T>> var1);
-
-      default <T> iy<T> b(akm<? extends jk<? extends T>> $$0) {
-         return this.a($$0).orElseThrow(() -> new IllegalStateException("Registry " + $$0.a() + " not found"));
+public class iy {
+   private static final Logger c = LogUtils.getLogger();
+   public static final Map<je, j> a = ac.a(Maps.newEnumMap(je.class), $$0 -> {
+      $$0.put(je.d, j.a());
+      $$0.put(je.f, new j(null, new Quaternionf().rotateY((float) (Math.PI / 2)), null, null));
+      $$0.put(je.e, new j(null, new Quaternionf().rotateY((float) (-Math.PI / 2)), null, null));
+      $$0.put(je.c, new j(null, new Quaternionf().rotateY((float) Math.PI), null, null));
+      $$0.put(je.b, new j(null, new Quaternionf().rotateX((float) (-Math.PI / 2)), null, null));
+      $$0.put(je.a, new j(null, new Quaternionf().rotateX((float) (Math.PI / 2)), null, null));
+   });
+   public static final Map<je, j> b = ac.a(Maps.newEnumMap(je.class), $$0 -> {
+      for (je $$1 : je.values()) {
+         $$0.put($$1, a.get($$1).b());
       }
+   });
 
-      default <T> Optional<ix.c<T>> a(akm<? extends jk<? extends T>> $$0, akm<T> $$1) {
-         return this.a($$0).flatMap($$1x -> $$1x.a($$1));
+   public static j a(j $$0) {
+      Matrix4f $$1 = new Matrix4f().translation(0.5F, 0.5F, 0.5F);
+      $$1.mul($$0.c());
+      $$1.translate(-0.5F, -0.5F, -0.5F);
+      return new j($$1);
+   }
+
+   public static j b(j $$0) {
+      Matrix4f $$1 = new Matrix4f().translation(-0.5F, -0.5F, -0.5F);
+      $$1.mul($$0.c());
+      $$1.translate(0.5F, 0.5F, 0.5F);
+      return new j($$1);
+   }
+
+   public static j a(j $$0, je $$1, Supplier<String> $$2) {
+      je $$3 = je.a($$0.c(), $$1);
+      j $$4 = $$0.b();
+      if ($$4 == null) {
+         c.warn($$2.get());
+         return new j(null, null, new Vector3f(0.0F, 0.0F, 0.0F), null);
+      } else {
+         j $$5 = b.get($$1).a($$4).a(a.get($$3));
+         return a($$5);
       }
    }
 }

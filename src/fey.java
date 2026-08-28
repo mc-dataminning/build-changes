@@ -1,390 +1,166 @@
-public class fey {
-   public static final fer a = fer.a.a(3.0F)
-      .a(
-         "croaking_body",
-         new feq(
-            feq.d.a,
-            new fes(0.0F, fet.a(0.0F, 0.0F, 0.0F), feq.b.a),
-            new fes(0.375F, fet.a(0.0F, 0.0F, 0.0F), feq.b.a),
-            new fes(0.4167F, fet.a(0.0F, 0.0F, 0.0F), feq.b.a),
-            new fes(0.4583F, fet.a(0.0F, 1.0F, 0.0F), feq.b.a),
-            new fes(2.9583F, fet.a(0.0F, 1.0F, 0.0F), feq.b.a),
-            new fes(3.0F, fet.a(0.0F, 0.0F, 0.0F), feq.b.a)
-         )
-      )
-      .a(
-         "croaking_body",
-         new feq(
-            feq.d.c,
-            new fes(0.0F, fet.a(0.0, 0.0, 0.0), feq.b.a),
-            new fes(0.375F, fet.a(0.0, 0.0, 0.0), feq.b.a),
-            new fes(0.4167F, fet.a(1.0, 1.0, 1.0), feq.b.a),
-            new fes(0.4583F, fet.a(1.0, 1.0, 1.0), feq.b.a),
-            new fes(0.5417F, fet.a(1.3F, 2.1F, 1.6F), feq.b.a),
-            new fes(0.625F, fet.a(1.3F, 2.1F, 1.6F), feq.b.a),
-            new fes(0.7083F, fet.a(1.0, 1.0, 1.0), feq.b.a),
-            new fes(2.25F, fet.a(1.0, 1.0, 1.0), feq.b.a),
-            new fes(2.3333F, fet.a(1.3F, 2.1F, 1.6F), feq.b.a),
-            new fes(2.4167F, fet.a(1.3F, 2.1F, 1.6F), feq.b.a),
-            new fes(2.5F, fet.a(1.0, 1.0, 1.0), feq.b.a),
-            new fes(2.5833F, fet.a(1.0, 1.0, 1.0), feq.b.a),
-            new fes(2.6667F, fet.a(1.3F, 2.1F, 1.6F), feq.b.a),
-            new fes(2.875F, fet.a(1.3F, 2.1F, 1.6F), feq.b.a),
-            new fes(2.9583F, fet.a(1.0, 1.0, 1.0), feq.b.a),
-            new fes(3.0F, fet.a(0.0, 0.0, 0.0), feq.b.a)
-         )
-      )
-      .b();
-   public static final fer b = fer.a.a(1.25F)
-      .a()
-      .a(
-         "left_arm",
-         new feq(
-            feq.d.b,
-            new fes(0.0F, fet.b(0.0F, -5.0F, 0.0F), feq.b.a),
-            new fes(0.2917F, fet.b(7.5F, -2.67F, -7.5F), feq.b.a),
-            new fes(0.625F, fet.b(0.0F, 0.0F, 0.0F), feq.b.a),
-            new fes(0.7917F, fet.b(22.5F, 0.0F, 0.0F), feq.b.a),
-            new fes(1.125F, fet.b(-45.0F, 0.0F, 0.0F), feq.b.a),
-            new fes(1.25F, fet.b(0.0F, -5.0F, 0.0F), feq.b.a)
-         )
-      )
-      .a(
-         "left_arm",
-         new feq(
-            feq.d.a,
-            new fes(0.0F, fet.a(0.0F, 0.1F, -2.0F), feq.b.a),
-            new fes(0.2917F, fet.a(-0.5F, -0.25F, -0.13F), feq.b.a),
-            new fes(0.625F, fet.a(-0.5F, 0.1F, 2.0F), feq.b.a),
-            new fes(0.9583F, fet.a(0.5F, 1.0F, -0.11F), feq.b.a),
-            new fes(1.25F, fet.a(0.0F, 0.1F, -2.0F), feq.b.a)
-         )
-      )
-      .a(
-         "right_arm",
-         new feq(
-            feq.d.b,
-            new fes(0.0F, fet.b(0.0F, 0.0F, 0.0F), feq.b.a),
-            new fes(0.125F, fet.b(22.5F, 0.0F, 0.0F), feq.b.a),
-            new fes(0.4583F, fet.b(-45.0F, 0.0F, 0.0F), feq.b.a),
-            new fes(0.625F, fet.b(0.0F, 5.0F, 0.0F), feq.b.a),
-            new fes(0.9583F, fet.b(7.5F, 2.33F, 7.5F), feq.b.a),
-            new fes(1.25F, fet.b(0.0F, 0.0F, 0.0F), feq.b.a)
-         )
-      )
-      .a(
-         "right_arm",
-         new feq(
-            feq.d.a,
-            new fes(0.0F, fet.a(0.5F, 0.1F, 2.0F), feq.b.a),
-            new fes(0.2917F, fet.a(-0.5F, 1.0F, 0.12F), feq.b.a),
-            new fes(0.625F, fet.a(0.0F, 0.1F, -2.0F), feq.b.a),
-            new fes(0.9583F, fet.a(0.5F, -0.25F, -0.13F), feq.b.a),
-            new fes(1.25F, fet.a(0.5F, 0.1F, 2.0F), feq.b.a)
-         )
-      )
-      .a(
-         "left_leg",
-         new feq(
-            feq.d.b,
-            new fes(0.0F, fet.b(0.0F, 0.0F, 0.0F), feq.b.a),
-            new fes(0.1667F, fet.b(0.0F, 0.0F, 0.0F), feq.b.a),
-            new fes(0.2917F, fet.b(45.0F, 0.0F, 0.0F), feq.b.a),
-            new fes(0.625F, fet.b(-45.0F, 0.0F, 0.0F), feq.b.a),
-            new fes(0.7917F, fet.b(0.0F, 0.0F, 0.0F), feq.b.a),
-            new fes(1.25F, fet.b(0.0F, 0.0F, 0.0F), feq.b.a)
-         )
-      )
-      .a(
-         "left_leg",
-         new feq(
-            feq.d.a,
-            new fes(0.0F, fet.a(0.0F, 0.1F, 1.2F), feq.b.a),
-            new fes(0.1667F, fet.a(0.0F, 0.1F, 2.0F), feq.b.a),
-            new fes(0.4583F, fet.a(0.0F, 2.0F, 1.06F), feq.b.a),
-            new fes(0.7917F, fet.a(0.0F, 0.1F, -1.0F), feq.b.a),
-            new fes(1.25F, fet.a(0.0F, 0.1F, 1.2F), feq.b.a)
-         )
-      )
-      .a(
-         "right_leg",
-         new feq(
-            feq.d.b,
-            new fes(0.0F, fet.b(-33.75F, 0.0F, 0.0F), feq.b.a),
-            new fes(0.0417F, fet.b(-45.0F, 0.0F, 0.0F), feq.b.a),
-            new fes(0.1667F, fet.b(0.0F, 0.0F, 0.0F), feq.b.a),
-            new fes(0.7917F, fet.b(0.0F, 0.0F, 0.0F), feq.b.a),
-            new fes(0.9583F, fet.b(45.0F, 0.0F, 0.0F), feq.b.a),
-            new fes(1.25F, fet.b(-33.75F, 0.0F, 0.0F), feq.b.a)
-         )
-      )
-      .a(
-         "right_leg",
-         new feq(
-            feq.d.a,
-            new fes(0.0F, fet.a(0.0F, 1.14F, 0.11F), feq.b.a),
-            new fes(0.1667F, fet.a(0.0F, 0.1F, -1.0F), feq.b.a),
-            new fes(0.7917F, fet.a(0.0F, 0.1F, 2.0F), feq.b.a),
-            new fes(1.125F, fet.a(0.0F, 2.0F, 0.95F), feq.b.a),
-            new fes(1.25F, fet.a(0.0F, 1.14F, 0.11F), feq.b.a)
-         )
-      )
-      .a(
-         "body",
-         new feq(
-            feq.d.b,
-            new fes(0.0F, fet.b(0.0F, 5.0F, 0.0F), feq.b.a),
-            new fes(0.2917F, fet.b(-7.5F, 0.33F, 7.5F), feq.b.a),
-            new fes(0.625F, fet.b(0.0F, -5.0F, 0.0F), feq.b.a),
-            new fes(0.9583F, fet.b(-7.5F, 0.33F, -7.5F), feq.b.a),
-            new fes(1.25F, fet.b(0.0F, 5.0F, 0.0F), feq.b.a)
-         )
-      )
-      .b();
-   public static final fer c = fer.a.a(0.5F)
-      .a("body", new feq(feq.d.b, new fes(0.0F, fet.b(-22.5F, 0.0F, 0.0F), feq.b.a), new fes(0.5F, fet.b(-22.5F, 0.0F, 0.0F), feq.b.a)))
-      .a("body", new feq(feq.d.a, new fes(0.0F, fet.a(0.0F, 0.0F, 0.0F), feq.b.a), new fes(0.5F, fet.a(0.0F, 0.0F, 0.0F), feq.b.a)))
-      .a("left_arm", new feq(feq.d.b, new fes(0.0F, fet.b(-56.14F, 0.0F, 0.0F), feq.b.a), new fes(0.5F, fet.b(-56.14F, 0.0F, 0.0F), feq.b.a)))
-      .a("left_arm", new feq(feq.d.a, new fes(0.0F, fet.a(0.0F, 1.0F, 0.0F), feq.b.a), new fes(0.5F, fet.a(0.0F, 1.0F, 0.0F), feq.b.a)))
-      .a("right_arm", new feq(feq.d.b, new fes(0.0F, fet.b(-56.14F, 0.0F, 0.0F), feq.b.a), new fes(0.5F, fet.b(-56.14F, 0.0F, 0.0F), feq.b.a)))
-      .a("right_arm", new feq(feq.d.a, new fes(0.0F, fet.a(0.0F, 1.0F, 0.0F), feq.b.a), new fes(0.5F, fet.a(0.0F, 1.0F, 0.0F), feq.b.a)))
-      .a("left_leg", new feq(feq.d.b, new fes(0.0F, fet.b(45.0F, 0.0F, 0.0F), feq.b.a), new fes(0.5F, fet.b(45.0F, 0.0F, 0.0F), feq.b.a)))
-      .a("left_leg", new feq(feq.d.a, new fes(0.0F, fet.a(0.0F, 0.0F, 0.0F), feq.b.a), new fes(0.5F, fet.a(0.0F, 0.0F, 0.0F), feq.b.a)))
-      .a("right_leg", new feq(feq.d.b, new fes(0.0F, fet.b(45.0F, 0.0F, 0.0F), feq.b.a), new fes(0.5F, fet.b(45.0F, 0.0F, 0.0F), feq.b.a)))
-      .a("right_leg", new feq(feq.d.a, new fes(0.0F, fet.a(0.0F, 0.0F, 0.0F), feq.b.a), new fes(0.5F, fet.a(0.0F, 0.0F, 0.0F), feq.b.a)))
-      .b();
-   public static final fer d = fer.a.a(0.5F)
-      .a(
-         "head",
-         new feq(
-            feq.d.b,
-            new fes(0.0F, fet.b(0.0F, 0.0F, 0.0F), feq.b.a),
-            new fes(0.0833F, fet.b(-60.0F, 0.0F, 0.0F), feq.b.a),
-            new fes(0.4167F, fet.b(-60.0F, 0.0F, 0.0F), feq.b.a),
-            new fes(0.5F, fet.b(0.0F, 0.0F, 0.0F), feq.b.a)
-         )
-      )
-      .a(
-         "head",
-         new feq(
-            feq.d.c,
-            new fes(0.0F, fet.b(1.0F, 1.0F, 1.0F), feq.b.a),
-            new fes(0.0833F, fet.b(0.998F, 1.0F, 1.0F), feq.b.a),
-            new fes(0.4167F, fet.b(0.998F, 1.0F, 1.0F), feq.b.a),
-            new fes(0.5F, fet.b(1.0F, 1.0F, 1.0F), feq.b.a)
-         )
-      )
-      .a(
-         "tongue",
-         new feq(
-            feq.d.b,
-            new fes(0.0F, fet.b(0.0F, 0.0F, 0.0F), feq.b.a),
-            new fes(0.0833F, fet.b(0.0F, 0.0F, 0.0F), feq.b.a),
-            new fes(0.4167F, fet.b(-18.0F, 0.0F, 0.0F), feq.b.a),
-            new fes(0.5F, fet.b(0.0F, 0.0F, 0.0F), feq.b.a)
-         )
-      )
-      .a(
-         "tongue",
-         new feq(
-            feq.d.c,
-            new fes(0.0833F, fet.a(1.0, 1.0, 1.0), feq.b.a),
-            new fes(0.1667F, fet.a(0.5, 1.0, 5.0), feq.b.a),
-            new fes(0.4167F, fet.a(1.0, 1.0, 1.0), feq.b.a)
-         )
-      )
-      .b();
-   public static final fer e = fer.a.a(1.04167F)
-      .a()
-      .a(
-         "body",
-         new feq(
-            feq.d.b,
-            new fes(0.0F, fet.b(0.0F, 0.0F, 0.0F), feq.b.b),
-            new fes(0.3333F, fet.b(10.0F, 0.0F, 0.0F), feq.b.b),
-            new fes(0.6667F, fet.b(-10.0F, 0.0F, 0.0F), feq.b.b),
-            new fes(1.0417F, fet.b(0.0F, 0.0F, 0.0F), feq.b.b)
-         )
-      )
-      .a(
-         "left_arm",
-         new feq(
-            feq.d.b,
-            new fes(0.0F, fet.b(90.0F, 22.5F, 0.0F), feq.b.b),
-            new fes(0.4583F, fet.b(45.0F, 22.5F, 0.0F), feq.b.b),
-            new fes(0.6667F, fet.b(-22.5F, -22.5F, -22.5F), feq.b.b),
-            new fes(0.875F, fet.b(-45.0F, -22.5F, 0.0F), feq.b.b),
-            new fes(0.9583F, fet.b(22.5F, 0.0F, 22.5F), feq.b.b),
-            new fes(1.0417F, fet.b(90.0F, 22.5F, 0.0F), feq.b.b)
-         )
-      )
-      .a(
-         "left_arm",
-         new feq(
-            feq.d.a,
-            new fes(0.0F, fet.a(0.0F, -0.64F, 2.0F), feq.b.b),
-            new fes(0.4583F, fet.a(0.0F, -0.64F, 0.0F), feq.b.b),
-            new fes(0.6667F, fet.a(0.0F, 0.0F, 0.0F), feq.b.b),
-            new fes(0.875F, fet.a(0.0F, -0.27F, -1.14F), feq.b.b),
-            new fes(0.9583F, fet.a(0.0F, -1.45F, 0.43F), feq.b.b),
-            new fes(1.0417F, fet.a(0.0F, -0.64F, 2.0F), feq.b.b)
-         )
-      )
-      .a(
-         "right_arm",
-         new feq(
-            feq.d.b,
-            new fes(0.0F, fet.b(90.0F, -22.5F, 0.0F), feq.b.b),
-            new fes(0.4583F, fet.b(45.0F, -22.5F, 0.0F), feq.b.b),
-            new fes(0.6667F, fet.b(-22.5F, 22.5F, 22.5F), feq.b.b),
-            new fes(0.875F, fet.b(-45.0F, 22.5F, 0.0F), feq.b.b),
-            new fes(0.9583F, fet.b(22.5F, 0.0F, -22.5F), feq.b.b),
-            new fes(1.0417F, fet.b(90.0F, -22.5F, 0.0F), feq.b.b)
-         )
-      )
-      .a(
-         "right_arm",
-         new feq(
-            feq.d.a,
-            new fes(0.0F, fet.a(0.0F, -0.64F, 2.0F), feq.b.b),
-            new fes(0.4583F, fet.a(0.0F, -0.64F, 0.0F), feq.b.b),
-            new fes(0.6667F, fet.a(0.0F, 0.0F, 0.0F), feq.b.b),
-            new fes(0.875F, fet.a(0.0F, -0.27F, -1.14F), feq.b.b),
-            new fes(0.9583F, fet.a(0.0F, -1.45F, 0.43F), feq.b.b),
-            new fes(1.0417F, fet.a(0.0F, -0.64F, 2.0F), feq.b.b)
-         )
-      )
-      .a(
-         "left_leg",
-         new feq(
-            feq.d.b,
-            new fes(0.0F, fet.b(90.0F, 0.0F, 0.0F), feq.b.b),
-            new fes(0.25F, fet.b(90.0F, 0.0F, 0.0F), feq.b.b),
-            new fes(0.4583F, fet.b(67.5F, -45.0F, 0.0F), feq.b.b),
-            new fes(0.7917F, fet.b(90.0F, 45.0F, 0.0F), feq.b.b),
-            new fes(0.9583F, fet.b(90.0F, 0.0F, 0.0F), feq.b.b),
-            new fes(1.0417F, fet.b(90.0F, 0.0F, 0.0F), feq.b.b)
-         )
-      )
-      .a(
-         "left_leg",
-         new feq(
-            feq.d.a,
-            new fes(0.0F, fet.a(-2.5F, 0.0F, 1.0F), feq.b.b),
-            new fes(0.25F, fet.a(-2.0F, 0.0F, 1.0F), feq.b.b),
-            new fes(0.4583F, fet.a(1.0F, -2.0F, -1.0F), feq.b.b),
-            new fes(0.7917F, fet.a(0.58F, 0.0F, -2.83F), feq.b.b),
-            new fes(0.9583F, fet.a(-2.5F, 0.0F, 1.0F), feq.b.b),
-            new fes(1.0417F, fet.a(-2.5F, 0.0F, 1.0F), feq.b.b)
-         )
-      )
-      .a(
-         "right_leg",
-         new feq(
-            feq.d.b,
-            new fes(0.0F, fet.b(90.0F, 0.0F, 0.0F), feq.b.b),
-            new fes(0.25F, fet.b(90.0F, 0.0F, 0.0F), feq.b.b),
-            new fes(0.4583F, fet.b(67.5F, 45.0F, 0.0F), feq.b.b),
-            new fes(0.7917F, fet.b(90.0F, -45.0F, 0.0F), feq.b.b),
-            new fes(0.9583F, fet.b(90.0F, 0.0F, 0.0F), feq.b.b),
-            new fes(1.0417F, fet.b(90.0F, 0.0F, 0.0F), feq.b.b)
-         )
-      )
-      .a(
-         "right_leg",
-         new feq(
-            feq.d.a,
-            new fes(0.0F, fet.a(2.5F, 0.0F, 1.0F), feq.b.b),
-            new fes(0.25F, fet.a(2.0F, 0.0F, 1.0F), feq.b.b),
-            new fes(0.4583F, fet.a(-1.0F, -2.0F, -1.0F), feq.b.b),
-            new fes(0.7917F, fet.a(-0.58F, 0.0F, -2.83F), feq.b.b),
-            new fes(0.9583F, fet.a(2.5F, 0.0F, 1.0F), feq.b.b),
-            new fes(1.0417F, fet.a(2.5F, 0.0F, 1.0F), feq.b.b)
-         )
-      )
-      .b();
-   public static final fer f = fer.a.a(3.0F)
-      .a()
-      .a(
-         "body",
-         new feq(
-            feq.d.b,
-            new fes(0.0F, fet.b(0.0F, 0.0F, 0.0F), feq.b.b),
-            new fes(1.625F, fet.b(-10.0F, 0.0F, 0.0F), feq.b.b),
-            new fes(3.0F, fet.b(0.0F, 0.0F, 0.0F), feq.b.b)
-         )
-      )
-      .a(
-         "left_arm",
-         new feq(
-            feq.d.b,
-            new fes(0.0F, fet.b(0.0F, 0.0F, -22.5F), feq.b.b),
-            new fes(2.2083F, fet.b(0.0F, 0.0F, -45.0F), feq.b.b),
-            new fes(3.0F, fet.b(0.0F, 0.0F, -22.5F), feq.b.b)
-         )
-      )
-      .a(
-         "left_arm",
-         new feq(
-            feq.d.a,
-            new fes(0.0F, fet.a(-1.0F, 0.0F, 0.0F), feq.b.b),
-            new fes(2.2083F, fet.a(-1.0F, -0.5F, 0.0F), feq.b.b),
-            new fes(3.0F, fet.a(-1.0F, 0.0F, 0.0F), feq.b.b)
-         )
-      )
-      .a(
-         "right_arm",
-         new feq(
-            feq.d.b,
-            new fes(0.0F, fet.b(0.0F, 0.0F, 22.5F), feq.b.b),
-            new fes(2.2083F, fet.b(0.0F, 0.0F, 45.0F), feq.b.b),
-            new fes(3.0F, fet.b(0.0F, 0.0F, 22.5F), feq.b.b)
-         )
-      )
-      .a(
-         "right_arm",
-         new feq(
-            feq.d.a,
-            new fes(0.0F, fet.a(1.0F, 0.0F, 0.0F), feq.b.b),
-            new fes(2.2083F, fet.a(1.0F, -0.5F, 0.0F), feq.b.b),
-            new fes(3.0F, fet.a(1.0F, 0.0F, 0.0F), feq.b.b)
-         )
-      )
-      .a(
-         "left_leg",
-         new feq(
-            feq.d.b,
-            new fes(0.0F, fet.b(22.5F, -22.5F, 0.0F), feq.b.b),
-            new fes(1.0F, fet.b(22.5F, -22.5F, -45.0F), feq.b.b),
-            new fes(3.0F, fet.b(22.5F, -22.5F, 0.0F), feq.b.b)
-         )
-      )
-      .a(
-         "left_leg",
-         new feq(
-            feq.d.a,
-            new fes(0.0F, fet.a(0.0F, 0.0F, 1.0F), feq.b.b),
-            new fes(1.0F, fet.a(0.0F, -1.0F, 1.0F), feq.b.b),
-            new fes(3.0F, fet.a(0.0F, 0.0F, 1.0F), feq.b.b)
-         )
-      )
-      .a(
-         "right_leg",
-         new feq(
-            feq.d.b,
-            new fes(0.0F, fet.b(22.5F, 22.5F, 0.0F), feq.b.b),
-            new fes(1.0F, fet.b(22.5F, 22.5F, 45.0F), feq.b.b),
-            new fes(3.0F, fet.b(22.5F, 22.5F, 0.0F), feq.b.b)
-         )
-      )
-      .a(
-         "right_leg",
-         new feq(
-            feq.d.a,
-            new fes(0.0F, fet.a(0.0F, 0.0F, 1.0F), feq.b.b),
-            new fes(1.0F, fet.a(0.0F, -1.0F, 1.0F), feq.b.b),
-            new fes(3.0F, fet.a(0.0F, 0.0F, 1.0F), feq.b.b)
-         )
-      )
-      .b();
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Supplier;
+
+public class fey implements Comparable<fey> {
+   private static final Map<String, fey> h = Maps.newHashMap();
+   private static final Map<eyo.a, fey> i = Maps.newHashMap();
+   private static final Set<String> j = Sets.newHashSet();
+   public static final String a = "key.categories.movement";
+   public static final String b = "key.categories.misc";
+   public static final String c = "key.categories.multiplayer";
+   public static final String d = "key.categories.gameplay";
+   public static final String e = "key.categories.inventory";
+   public static final String f = "key.categories.ui";
+   public static final String g = "key.categories.creative";
+   private static final Map<String, Integer> k = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put("key.categories.movement", 1);
+      $$0.put("key.categories.gameplay", 2);
+      $$0.put("key.categories.inventory", 3);
+      $$0.put("key.categories.creative", 4);
+      $$0.put("key.categories.multiplayer", 5);
+      $$0.put("key.categories.ui", 6);
+      $$0.put("key.categories.misc", 7);
+   });
+   private final String l;
+   private final eyo.a m;
+   private final String n;
+   private eyo.a o;
+   private boolean p;
+   private int q;
+
+   public static void a(eyo.a $$0) {
+      fey $$1 = i.get($$0);
+      if ($$1 != null) {
+         $$1.q++;
+      }
+   }
+
+   public static void a(eyo.a $$0, boolean $$1) {
+      fey $$2 = i.get($$0);
+      if ($$2 != null) {
+         $$2.a($$1);
+      }
+   }
+
+   public static void a() {
+      for (fey $$0 : h.values()) {
+         if ($$0.o.a() == eyo.b.a && $$0.o.b() != eyo.bv.b()) {
+            $$0.a(eyo.a(ffa.Q().aO().i(), $$0.o.b()));
+         }
+      }
+   }
+
+   public static void b() {
+      for (fey $$0 : h.values()) {
+         $$0.n();
+      }
+   }
+
+   public static void c() {
+      for (fey $$0 : h.values()) {
+         if ($$0 instanceof ffn $$1) {
+            $$1.n();
+         }
+      }
+   }
+
+   public static void d() {
+      i.clear();
+
+      for (fey $$0 : h.values()) {
+         i.put($$0.o, $$0);
+      }
+   }
+
+   public fey(String $$0, int $$1, String $$2) {
+      this($$0, eyo.b.a, $$1, $$2);
+   }
+
+   public fey(String $$0, eyo.b $$1, int $$2, String $$3) {
+      this.l = $$0;
+      this.o = $$1.a($$2);
+      this.m = this.o;
+      this.n = $$3;
+      h.put($$0, this);
+      i.put(this.o, this);
+      j.add($$3);
+   }
+
+   public boolean e() {
+      return this.p;
+   }
+
+   public String f() {
+      return this.n;
+   }
+
+   public boolean g() {
+      if (this.q == 0) {
+         return false;
+      } else {
+         this.q--;
+         return true;
+      }
+   }
+
+   private void n() {
+      this.q = 0;
+      this.a(false);
+   }
+
+   public String h() {
+      return this.l;
+   }
+
+   public eyo.a i() {
+      return this.m;
+   }
+
+   public void b(eyo.a $$0) {
+      this.o = $$0;
+   }
+
+   public int a(fey $$0) {
+      return this.n.equals($$0.n) ? gqa.a(this.l).compareTo(gqa.a($$0.l)) : k.get(this.n).compareTo(k.get($$0.n));
+   }
+
+   public static Supplier<xl> a(String $$0) {
+      fey $$1 = h.get($$0);
+      return $$1 == null ? () -> xl.c($$0) : $$1::k;
+   }
+
+   public boolean b(fey $$0) {
+      return this.o.equals($$0.o);
+   }
+
+   public boolean j() {
+      return this.o.equals(eyo.bv);
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return $$0 == eyo.bv.b() ? this.o.a() == eyo.b.b && this.o.b() == $$1 : this.o.a() == eyo.b.a && this.o.b() == $$0;
+   }
+
+   public boolean a(int $$0) {
+      return this.o.a() == eyo.b.c && this.o.b() == $$0;
+   }
+
+   public xl k() {
+      return this.o.d();
+   }
+
+   public boolean l() {
+      return this.o.equals(this.m);
+   }
+
+   public String m() {
+      return this.o.c();
+   }
+
+   public void a(boolean $$0) {
+      this.p = $$0;
+   }
 }

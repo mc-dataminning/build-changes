@@ -1,42 +1,144 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import org.apache.commons.lang3.mutable.MutableBoolean;
+import java.util.Optional;
 
-public class azo extends bez {
-   private static final String a = "minecraft:wolf";
-   private static final String b = "minecraft:generic.max_health";
+public class azo {
+   private static final char a = '�';
+   private static final Optional<Object> b = Optional.of(azx.a);
 
-   public azo(Schema $$0) {
-      super($$0, false, "FixWolfHealth", bga.z, "minecraft:wolf");
+   private static boolean a(yi $$0, ayh $$1, int $$2, char $$3) {
+      return Character.isSurrogate($$3) ? $$1.accept($$2, $$0, 65533) : $$1.accept($$2, $$0, $$3);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> {
-            MutableBoolean $$1 = new MutableBoolean(false);
-            $$0x = $$0x.update(
-               "Attributes",
-               $$1x -> $$1x.createList(
-                     $$1x.asStream()
-                        .map($$1xx -> "minecraft:generic.max_health".equals(bhl.a($$1xx.get("Name").asString(""))) ? $$1xx.update("Base", $$1xxx -> {
-                              if ($$1xxx.asDouble(0.0) == 20.0) {
-                                 $$1.setTrue();
-                                 return $$1xxx.createDouble(40.0);
-                              } else {
-                                 return $$1xxx;
-                              }
-                           }) : $$1xx)
-                  )
-            );
-            if ($$1.isTrue()) {
-               $$0x = $$0x.update("Health", $$0xx -> $$0xx.createFloat($$0xx.asFloat(0.0F) * 2.0F));
+   public static boolean a(String $$0, yi $$1, ayh $$2) {
+      int $$3 = $$0.length();
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         char $$5 = $$0.charAt($$4);
+         if (Character.isHighSurrogate($$5)) {
+            if ($$4 + 1 >= $$3) {
+               if (!$$2.accept($$4, $$1, 65533)) {
+                  return false;
+               }
+               break;
             }
 
-            return $$0x;
+            char $$6 = $$0.charAt($$4 + 1);
+            if (Character.isLowSurrogate($$6)) {
+               if (!$$2.accept($$4, $$1, Character.toCodePoint($$5, $$6))) {
+                  return false;
+               }
+
+               $$4++;
+            } else if (!$$2.accept($$4, $$1, 65533)) {
+               return false;
+            }
+         } else if (!a($$1, $$2, $$4, $$5)) {
+            return false;
          }
-      );
+      }
+
+      return true;
+   }
+
+   public static boolean b(String $$0, yi $$1, ayh $$2) {
+      int $$3 = $$0.length();
+
+      for (int $$4 = $$3 - 1; $$4 >= 0; $$4--) {
+         char $$5 = $$0.charAt($$4);
+         if (Character.isLowSurrogate($$5)) {
+            if ($$4 - 1 < 0) {
+               if (!$$2.accept(0, $$1, 65533)) {
+                  return false;
+               }
+               break;
+            }
+
+            char $$6 = $$0.charAt($$4 - 1);
+            if (Character.isHighSurrogate($$6)) {
+               if (!$$2.accept(--$$4, $$1, Character.toCodePoint($$6, $$5))) {
+                  return false;
+               }
+            } else if (!$$2.accept($$4, $$1, 65533)) {
+               return false;
+            }
+         } else if (!a($$1, $$2, $$4, $$5)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static boolean c(String $$0, yi $$1, ayh $$2) {
+      return a($$0, 0, $$1, $$2);
+   }
+
+   public static boolean a(String $$0, int $$1, yi $$2, ayh $$3) {
+      return a($$0, $$1, $$2, $$2, $$3);
+   }
+
+   public static boolean a(String $$0, int $$1, yi $$2, yi $$3, ayh $$4) {
+      int $$5 = $$0.length();
+      yi $$6 = $$2;
+
+      for (int $$7 = $$1; $$7 < $$5; $$7++) {
+         char $$8 = $$0.charAt($$7);
+         if ($$8 == 167) {
+            if ($$7 + 1 >= $$5) {
+               break;
+            }
+
+            char $$9 = $$0.charAt($$7 + 1);
+            n $$10 = n.a($$9);
+            if ($$10 != null) {
+               $$6 = $$10 == n.v ? $$3 : $$6.c($$10);
+            }
+
+            $$7++;
+         } else if (Character.isHighSurrogate($$8)) {
+            if ($$7 + 1 >= $$5) {
+               if (!$$4.accept($$7, $$6, 65533)) {
+                  return false;
+               }
+               break;
+            }
+
+            char $$11 = $$0.charAt($$7 + 1);
+            if (Character.isLowSurrogate($$11)) {
+               if (!$$4.accept($$7, $$6, Character.toCodePoint($$8, $$11))) {
+                  return false;
+               }
+
+               $$7++;
+            } else if (!$$4.accept($$7, $$6, 65533)) {
+               return false;
+            }
+         } else if (!a($$6, $$4, $$7, $$8)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static boolean a(xq $$0, yi $$1, ayh $$2) {
+      return $$0.a(($$1x, $$2x) -> a($$2x, 0, $$1x, $$2) ? Optional.empty() : b, $$1).isEmpty();
+   }
+
+   public static String a(String $$0) {
+      StringBuilder $$1 = new StringBuilder();
+      a($$0, yi.a, ($$1x, $$2, $$3) -> {
+         $$1.appendCodePoint($$3);
+         return true;
+      });
+      return $$1.toString();
+   }
+
+   public static String a(xq $$0) {
+      StringBuilder $$1 = new StringBuilder();
+      a($$0, yi.a, ($$1x, $$2, $$3) -> {
+         $$1.appendCodePoint($$3);
+         return true;
+      });
+      return $$1.toString();
    }
 }

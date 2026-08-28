@@ -1,33 +1,30 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import java.util.List;
 
-public record esh(Optional<bg> b) implements esn {
-   public static final MapCodec<esh> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bg.a.optionalFieldOf("predicate").forGetter(esh::c)).apply($$0, esh::new));
+public class esh extends erp {
+   public static final MapCodec<esh> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(axb.b(lq.E).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, esh::new)
+   );
+   private final axb<cuc> b;
 
-   @Override
-   public eso b() {
-      return esp.o;
+   private esh(List<etn> $$0, axb<cuc> $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public Set<erw<?>> a() {
-      return ImmutableSet.of(erz.f, erz.c);
+   public err<esh> b() {
+      return ers.G;
    }
 
-   public boolean a(eph $$0) {
-      bqp $$1 = $$0.c(erz.c);
-      eum $$2 = $$0.c(erz.f);
-      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
+   @Override
+   public cuk a(cuk $$0, eqd $$1) {
+      cud.a($$0, this.b, $$1.b());
+      return $$0;
    }
 
-   public static esn.a a(bg.a $$0) {
-      return () -> new esh(Optional.of($$0.b()));
-   }
-
-   public Optional<bg> c() {
-      return this.b;
+   public static erp.a<?> a(axb<cuc> $$0) {
+      return a($$1 -> new esh($$1, $$0));
    }
 }

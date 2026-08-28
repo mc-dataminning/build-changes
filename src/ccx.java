@@ -1,24 +1,50 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class ccx extends cda<bsq> {
-   @Override
-   public Set<cbu<?>> a() {
-      return ImmutableSet.of(cbu.j, cbu.k, cbu.l);
+public class ccx extends ccv {
+   @Nullable
+   private iz p;
+
+   public ccx(btm $$0, dbt $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected void a(aqn $$0, bsq $$1) {
-      List<cly> $$2 = $$0.x().stream().filter(bsb.f).filter($$1x -> $$1.a($$1x, 16.0)).sorted(Comparator.comparingDouble($$1::g)).collect(Collectors.toList());
-      bts<?> $$3 = $$1.dS();
-      $$3.a(cbu.j, $$2);
-      List<cly> $$4 = $$2.stream().filter($$1x -> b($$1, $$1x)).collect(Collectors.toList());
-      $$3.a(cbu.k, $$4.isEmpty() ? null : $$4.get(0));
-      Optional<cly> $$5 = $$4.stream().filter($$1x -> c($$1, $$1x)).findFirst();
-      $$3.a(cbu.l, $$5);
+   public eoe a(iz $$0, int $$1) {
+      this.p = $$0;
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public eoe a(bsp $$0, int $$1) {
+      this.p = $$0.dp();
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(bsp $$0, double $$1) {
+      eoe $$2 = this.a($$0, 0);
+      if ($$2 != null) {
+         return this.a($$2, $$1);
+      } else {
+         this.p = $$0.dp();
+         this.d = $$1;
+         return true;
+      }
+   }
+
+   @Override
+   public void c() {
+      if (!this.l()) {
+         super.c();
+      } else {
+         if (this.p != null) {
+            if (!this.p.a(this.a.dn(), (double)this.a.dj())
+               && (!(this.a.dw() > (double)this.p.v()) || !iz.a((double)this.p.u(), this.a.dw(), (double)this.p.w()).a(this.a.dn(), (double)this.a.dj()))) {
+               this.a.H().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
+            } else {
+               this.p = null;
+            }
+         }
+      }
    }
 }

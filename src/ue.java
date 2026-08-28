@@ -1,132 +1,41 @@
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
+import com.mojang.brigadier.Message;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
 
-public class ue extends ut {
-   private static final int c = 16;
-   public static final ue a = new ue(0.0);
-   public static final vc<ue> b = new vc.a<ue>() {
-      public ue a(DataInput $$0, um $$1) throws IOException {
-         return ue.a(d($$0, $$1));
+public class ue implements ArgumentType<String> {
+   private static final Collection<String> a = Arrays.asList("techtests", "mobtests");
+
+   public String a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = $$0.readUnquotedString();
+      if (tp.b($$1)) {
+         return $$1;
+      } else {
+         Message $$2 = xl.b("No such test class: " + $$1);
+         throw new CommandSyntaxException(new SimpleCommandExceptionType($$2), $$2);
       }
-
-      @Override
-      public ux.b a(DataInput $$0, ux $$1, um $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
-      }
-
-      private static double d(DataInput $$0, um $$1) throws IOException {
-         $$1.b(16L);
-         return $$0.readDouble();
-      }
-
-      @Override
-      public int c() {
-         return 8;
-      }
-
-      @Override
-      public String a() {
-         return "DOUBLE";
-      }
-
-      @Override
-      public String b() {
-         return "TAG_Double";
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-   };
-   private final double w;
-
-   private ue(double $$0) {
-      this.w = $$0;
    }
 
-   public static ue a(double $$0) {
-      return $$0 == 0.0 ? a : new ue($$0);
+   public static ue a() {
+      return new ue();
    }
 
-   @Override
-   public void a(DataOutput $$0) throws IOException {
-      $$0.writeDouble(this.w);
+   public static String a(CommandContext<ep> $$0, String $$1) {
+      return (String)$$0.getArgument($$1, String.class);
    }
 
-   @Override
-   public int a() {
-      return 16;
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return eu.b(tp.b().stream(), $$1);
    }
 
-   @Override
-   public byte b() {
-      return 6;
-   }
-
-   @Override
-   public vc<ue> c() {
-      return b;
-   }
-
-   public ue e() {
-      return this;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof ue && this.w == ((ue)$$0).w;
-   }
-
-   @Override
-   public int hashCode() {
-      long $$0 = Double.doubleToLongBits(this.w);
-      return (int)($$0 ^ $$0 >>> 32);
-   }
-
-   @Override
-   public void a(ve $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public long f() {
-      return (long)Math.floor(this.w);
-   }
-
-   @Override
-   public int g() {
-      return ayf.a(this.w);
-   }
-
-   @Override
-   public short h() {
-      return (short)(ayf.a(this.w) & 65535);
-   }
-
-   @Override
-   public byte i() {
-      return (byte)(ayf.a(this.w) & 0xFF);
-   }
-
-   @Override
-   public double j() {
-      return this.w;
-   }
-
-   @Override
-   public float k() {
-      return (float)this.w;
-   }
-
-   @Override
-   public Number l() {
-      return this.w;
-   }
-
-   @Override
-   public ux.b a(ux $$0) {
-      return $$0.a(this.w);
+   public Collection<String> getExamples() {
+      return a;
    }
 }

@@ -1,36 +1,14 @@
-public class arr implements ajn {
-   private static final wx a = wx.c("multiplayer.status.request_handled");
-   private final ajm b;
-   private final vv c;
-   private boolean d;
+import java.util.function.Consumer;
 
-   public arr(ajm $$0, vv $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+public interface arr {
+   void a(Consumer<zs<?>> var1);
 
-   @Override
-   public void a(wx $$0) {
-   }
+   arr.a a();
 
-   @Override
-   public boolean c() {
-      return this.c.i();
-   }
-
-   @Override
-   public void a(ajo $$0) {
-      if (this.d) {
-         this.c.a(a);
-      } else {
-         this.d = true;
-         this.c.a(new ajl(this.b));
+   public static record a(String a) {
+      @Override
+      public String toString() {
+         return this.a;
       }
-   }
-
-   @Override
-   public void a(aji $$0) {
-      this.c.a(new ajf($$0.b()));
-      this.c.a(a);
    }
 }

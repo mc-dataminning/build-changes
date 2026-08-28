@@ -1,30 +1,93 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.glfw.GLFWVidMode.Buffer;
 
-public class eys {
-   public static final eza a = new eza(0, eza.a.a, eza.b.a, 3);
-   public static final eza b = new eza(0, eza.a.b, eza.b.c, 4);
-   public static final eza c = new eza(0, eza.a.a, eza.b.d, 2);
-   public static final eza d = new eza(1, eza.a.e, eza.b.d, 2);
-   public static final eza e = new eza(2, eza.a.e, eza.b.d, 2);
-   public static final eza f = new eza(0, eza.a.c, eza.b.b, 3);
-   public static final eza g = new eza(0, eza.a.c, eza.b.e, 1);
-   public static final eza h = c;
-   public static final eyz i = new eyz(ImmutableMap.builder().put("Position", a).put("UV", h).put("Color", b).build());
-   public static final eyz j = new eyz(
-      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).put("Normal", f).put("Padding", g).build()
-   );
-   public static final eyz k = new eyz(
-      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV1", d).put("UV2", e).put("Normal", f).put("Padding", g).build()
-   );
-   public static final eyz l = new eyz(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("UV2", e).build());
-   public static final eyz m = new eyz(ImmutableMap.builder().put("Position", a).build());
-   public static final eyz n = new eyz(ImmutableMap.builder().put("Position", a).put("Color", b).build());
-   public static final eyz o = new eyz(ImmutableMap.builder().put("Position", a).put("Color", b).put("Normal", f).put("Padding", g).build());
-   public static final eyz p = new eyz(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV2", e).build());
-   public static final eyz q = new eyz(ImmutableMap.builder().put("Position", a).put("UV0", c).build());
-   public static final eyz r = new eyz(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).build());
-   public static final eyz s = new eyz(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).build());
-   public static final eyz t = new eyz(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).build());
-   public static final eyz u = new eyz(ImmutableMap.builder().put("Position", a).put("UV0", c).put("UV2", e).put("Color", b).build());
-   public static final eyz v = new eyz(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("Normal", f).put("Padding", g).build());
+public final class eys {
+   private final long a;
+   private final List<eyw> b;
+   private eyw c;
+   private int d;
+   private int e;
+
+   public eys(long $$0) {
+      this.a = $$0;
+      this.b = Lists.newArrayList();
+      this.a();
+   }
+
+   public void a() {
+      RenderSystem.assertInInitPhase();
+      this.b.clear();
+      Buffer $$0 = GLFW.glfwGetVideoModes(this.a);
+
+      for (int $$1 = $$0.limit() - 1; $$1 >= 0; $$1--) {
+         $$0.position($$1);
+         eyw $$2 = new eyw($$0);
+         if ($$2.c() >= 8 && $$2.d() >= 8 && $$2.e() >= 8) {
+            this.b.add($$2);
+         }
+      }
+
+      int[] $$3 = new int[1];
+      int[] $$4 = new int[1];
+      GLFW.glfwGetMonitorPos(this.a, $$3, $$4);
+      this.d = $$3[0];
+      this.e = $$4[0];
+      GLFWVidMode $$5 = GLFW.glfwGetVideoMode(this.a);
+      this.c = new eyw($$5);
+   }
+
+   public eyw a(Optional<eyw> $$0) {
+      RenderSystem.assertInInitPhase();
+      if ($$0.isPresent()) {
+         eyw $$1 = $$0.get();
+
+         for (eyw $$2 : this.b) {
+            if ($$2.equals($$1)) {
+               return $$2;
+            }
+         }
+      }
+
+      return this.b();
+   }
+
+   public int a(eyw $$0) {
+      RenderSystem.assertInInitPhase();
+      return this.b.indexOf($$0);
+   }
+
+   public eyw b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
+   }
+
+   public eyw a(int $$0) {
+      return this.b.get($$0);
+   }
+
+   public int e() {
+      return this.b.size();
+   }
+
+   public long f() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "Monitor[%s %sx%s %s]", this.a, this.d, this.e, this.c);
+   }
 }

@@ -1,43 +1,22 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class djx extends ddo {
-   public static final MapCodec<djx> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(drs.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), u()).apply($$0, djx::new)
-   );
-   public static final dru f = drt.w;
+public class djx extends dml {
+   public static final MapCodec<djx> a = b(djx::new);
 
    @Override
    public MapCodec<djx> a() {
-      return e;
+      return a;
    }
 
-   protected djx(drs $$0, drc.d $$1) {
-      super($$1, $$0);
-      this.k(this.E.b().a(f, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected int g(drd $$0) {
-      return $$0.c(f) ? 15 : 0;
+   public djx(drw.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected drd a(drd $$0, int $$1) {
-      return $$0.a(f, Boolean.valueOf($$1 > 0));
-   }
-
-   @Override
-   protected int b(daz $$0, io $$1) {
-      Class<? extends brw> $$2 = switch (this.d.f()) {
-         case a -> brw.class;
-         case b -> bsq.class;
-      };
-      return a($$0, c.a($$1), $$2) > 0 ? 15 : 0;
-   }
-
-   @Override
-   protected void a(dre.a<dea, drd> $$0) {
-      $$0.a(f);
+   public void a(drx $$0, dbt $$1, iz $$2, azc $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3.a(10) == 0) {
+         $$1.a(lj.Z, (double)$$2.u() + $$3.j(), (double)$$2.v() + 1.1, (double)$$2.w() + $$3.j(), 0.0, 0.0, 0.0);
+      }
    }
 }

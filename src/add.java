@@ -1,53 +1,33 @@
-public class add implements ze<abq> {
-   public static final yv<vx, add> a = ze.a(add::a, add::new);
-   private final int b;
-   private final io c;
-   private final int d;
-   private final boolean e;
+import java.util.List;
 
-   public add(int $$0, io $$1, int $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1.i();
-      this.d = $$2;
-      this.e = $$3;
+public record add(add.a b, List<String> c) implements zs<ace> {
+   public static final zj<wl, add> a = zs.a(add::a, add::new);
+
+   private add(wl $$0) {
+      this($$0.b(add.a.class), $$0.a(wl::p));
    }
 
-   private add(vx $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.e();
-      this.d = $$0.readInt();
-      this.e = $$0.readBoolean();
-   }
-
-   private void a(vx $$0) {
-      $$0.p(this.b);
-      $$0.a(this.c);
-      $$0.p(this.d);
-      $$0.a(this.e);
+   private void a(wl $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c, wl::a);
    }
 
    @Override
-   public zg<add> a() {
-      return agc.L;
+   public zu<add> a() {
+      return agq.y;
    }
 
-   public void a(abq $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
-      return this.e;
-   }
-
-   public int e() {
-      return this.b;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public io g() {
+   public List<String> e() {
       return this.c;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

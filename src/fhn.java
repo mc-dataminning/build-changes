@@ -1,17 +1,31 @@
-public record fhn(akn a, akn b, akn c, akn d) {
-   public fhn(akn $$0, akn $$1) {
-      this($$0, $$0, $$1, $$1);
+import java.util.UUID;
+
+public class fhn extends bqf {
+   private static final long j = 100L;
+   protected float h;
+   protected long i;
+
+   public fhn(UUID $$0, xl $$1, float $$2, bqf.a $$3, bqf.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      super($$0, $$1, $$3, $$4);
+      this.h = $$2;
+      this.b = $$2;
+      this.i = ac.c();
+      this.a($$5);
+      this.b($$6);
+      this.c($$7);
    }
 
-   public fhn(akn $$0, akn $$1, akn $$2) {
-      this($$0, $$1, $$2, $$1);
+   @Override
+   public void a(float $$0) {
+      this.b = this.j();
+      this.h = $$0;
+      this.i = ac.c();
    }
 
-   public akn a(boolean $$0, boolean $$1) {
-      if ($$0) {
-         return $$1 ? this.c : this.a;
-      } else {
-         return $$1 ? this.d : this.b;
-      }
+   @Override
+   public float j() {
+      long $$0 = ac.c() - this.i;
+      float $$1 = ayu.a((float)$$0 / 100.0F, 0.0F, 1.0F);
+      return ayu.i($$1, this.b, this.h);
    }
 }

@@ -1,28 +1,34 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class ca implements ap<ca.a> {
-   @Override
-   public void a(akv $$0, ap.a<ca.a> $$1) {
+public record ca(Optional<Boolean> d) implements bv {
+   public static final ca b = new ca(Optional.empty());
+   public static final MapCodec<ca> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("in_open_water").forGetter(ca::b)).apply($$0, ca::new)
+   );
+
+   public static ca a(boolean $$0) {
+      return new ca(Optional.of($$0));
    }
 
    @Override
-   public void b(akv $$0, ap.a<ca.a> $$1) {
+   public MapCodec<ca> a() {
+      return bw.b;
    }
 
    @Override
-   public void a(akv $$0) {
-   }
-
-   @Override
-   public Codec<ca.a> a() {
-      return ca.a.a;
-   }
-
-   public static record a() implements aq {
-      public static final Codec<ca.a> a = Codec.unit(new ca.a());
-
-      @Override
-      public void a(bd $$0) {
+   public boolean a(bsp $$0, arb $$1, @Nullable evm $$2) {
+      if (this.d.isEmpty()) {
+         return true;
+      } else {
+         return $$0 instanceof cng $$3 ? this.d.get() == $$3.p() : false;
       }
+   }
+
+   public Optional<Boolean> b() {
+      return this.d;
    }
 }

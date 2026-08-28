@@ -1,15 +1,42 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.BiConsumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class bxs {
-   public static buk<bsq> a() {
-      return bxw.a((Function<bxw.b<bsq>, ? extends App<bxw.c<bsq>, bxz<bsq>>>)($$0 -> $$0.a((bxz<bsq>)(($$0x, $$1, $$2) -> {
-            if (!$$1.dS().c(cnn.e) && $$1.fL()) {
-               $$1.fM();
-               return true;
-            } else {
-               return false;
-            }
-         }))));
+   private static final int a = 200;
+
+   public static <E extends btm> bve<E> a(BiConsumer<E, btk> $$0) {
+      return a($$0x -> false, $$0, true);
+   }
+
+   public static <E extends btm> bve<E> a(Predicate<btk> $$0) {
+      return a($$0, ($$0x, $$1) -> {
+      }, true);
+   }
+
+   public static <E extends btm> bve<E> a() {
+      return a($$0 -> false, ($$0, $$1) -> {
+      }, true);
+   }
+
+   public static <E extends btm> bve<E> a(Predicate<btk> $$0, BiConsumer<E, btk> $$1, boolean $$2) {
+      return byq.a(
+         (Function<byq.b<E>, ? extends App<byq.c<E>, byt<E>>>)($$3 -> $$3.group($$3.b(cco.o), $$3.a(cco.E)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                  btk $$9 = $$3.b($$4);
+                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bD() && $$9.dP() == $$7.dP() && !$$0.test($$9)) {
+                     return true;
+                  } else {
+                     $$1.accept((E)$$7, $$9);
+                     $$4.b();
+                     return true;
+                  }
+               }))
+      );
+   }
+
+   private static boolean a(btk $$0, Optional<Long> $$1) {
+      return $$1.isPresent() && $$0.dP().Z() - $$1.get() > 200L;
    }
 }

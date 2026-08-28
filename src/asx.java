@@ -1,28 +1,41 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import javax.annotation.Nullable;
 
-public interface asx<T> extends asw<T> {
-   JsonObject a(T var1);
+public interface asx extends AutoCloseable {
+   String a = ".mcmeta";
+   String b = "pack.mcmeta";
 
-   static <T> asx<T> a(final String $$0, final Codec<T> $$1) {
-      return new asx<T>() {
-         @Override
-         public String a() {
-            return $$0;
-         }
+   @Nullable
+   aud<InputStream> a(String... var1);
 
-         @Override
-         public T a(JsonObject $$0x) {
-            return (T)$$1.parse(JsonOps.INSTANCE, $$0).getOrThrow(JsonParseException::new);
-         }
+   @Nullable
+   aud<InputStream> a(asz var1, alb var2);
 
-         @Override
-         public JsonObject a(T $$0x) {
-            return ((JsonElement)$$1.encodeStart(JsonOps.INSTANCE, $$0).getOrThrow(IllegalArgumentException::new)).getAsJsonObject();
-         }
-      };
+   void a(asz var1, String var2, String var3, asx.a var4);
+
+   Set<String> a(asz var1);
+
+   @Nullable
+   <T> T a(atk<T> var1) throws IOException;
+
+   asw a();
+
+   default String b() {
+      return this.a().a();
+   }
+
+   default Optional<ats> c() {
+      return this.a().d();
+   }
+
+   @Override
+   void close();
+
+   @FunctionalInterface
+   public interface a extends BiConsumer<alb, aud<InputStream>> {
    }
 }

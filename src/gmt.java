@@ -1,24 +1,24 @@
-public class gmt extends glq<chw, fvm<chw>> {
-   private static final akn a = new akn("textures/entity/wither/wither_armor.png");
-   private final fvm<chw> b;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gmt(gjp<chw, fvm<chw>> $$0, fvs $$1) {
+public class gmt extends gne<chg, fug<chg>> {
+   private static final Map<chi, alb> a = ac.a(Maps.newEnumMap(chi.class), $$0 -> {
+      $$0.put(chi.a, null);
+      $$0.put(chi.b, new alb("textures/entity/horse/horse_markings_white.png"));
+      $$0.put(chi.c, new alb("textures/entity/horse/horse_markings_whitefield.png"));
+      $$0.put(chi.d, new alb("textures/entity/horse/horse_markings_whitedots.png"));
+      $$0.put(chi.e, new alb("textures/entity/horse/horse_markings_blackdots.png"));
+   });
+
+   public gmt(gko<chg, fug<chg>> $$0) {
       super($$0);
-      this.b = new fvm<>($$1.a(fvv.bW));
    }
 
-   @Override
-   protected float a(float $$0) {
-      return ayf.b($$0 * 0.02F) * 3.0F;
-   }
-
-   @Override
-   protected akn a() {
-      return a;
-   }
-
-   @Override
-   protected fsw<chw> b() {
-      return this.b;
+   public void a(ezt $$0, gdj $$1, int $$2, chg $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      alb $$10 = a.get($$3.u());
+      if ($$10 != null && !$$3.ch()) {
+         ezx $$11 = $$1.getBuffer(gdr.i($$10));
+         this.c().a($$0, $$11, $$2, gjt.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
+      }
    }
 }

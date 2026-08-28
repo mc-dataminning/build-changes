@@ -1,57 +1,31 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.stream.Stream;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dzn extends dzo {
-   public dzn(Codec<eck> $$0) {
+public class dzn extends edh {
+   public static final MapCodec<dzn> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l),
+               egm.c.fieldOf("y").forGetter($$0x -> $$0x.e),
+               bps.c.fieldOf("yScale").forGetter($$0x -> $$0x.f),
+               dyj.a.fieldOf("lava_level").forGetter($$0x -> $$0x.g),
+               dzo.b.optionalFieldOf("debug_settings", dzo.a).forGetter($$0x -> $$0x.h),
+               jx.a(lq.f).fieldOf("replaceable").forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, dzn::new)
+   );
+   public final egm e;
+   public final bps f;
+   public final dyj g;
+   public final dzo h;
+   public final jm<deu> i;
+
+   public dzn(float $$0, egm $$1, bps $$2, dyj $$3, dzo $$4, jm<deu> $$5) {
       super($$0);
-   }
-
-   @Override
-   protected boolean a(dba $$0, aym $$1, io $$2, drd $$3) {
-      if (!this.b($$0, $$1, $$2, $$3)) {
-         return false;
-      } else {
-         it $$4 = it.c.a.a($$1);
-         int $$5 = $$1.a(2) + 2;
-         List<it> $$6 = ac.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
-
-         for (it $$8 : $$6.subList(0, $$5)) {
-            io.a $$9 = $$2.j();
-            int $$10 = $$1.a(2) + 1;
-            $$9.c($$8);
-            int $$12;
-            it $$11;
-            if ($$8 == $$4) {
-               $$11 = $$4;
-               $$12 = $$1.a(3) + 2;
-            } else {
-               $$9.c(it.b);
-               it[] $$13 = new it[]{$$8, it.b};
-               $$11 = ac.a($$13, $$1);
-               $$12 = $$1.a(3) + 3;
-            }
-
-            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
-               $$9.c($$11);
-            }
-
-            $$9.c($$11.g());
-            $$9.c(it.b);
-
-            for (int $$17 = 0; $$17 < $$12; $$17++) {
-               $$9.c($$4);
-               if (!this.b($$0, $$1, $$9, $$3)) {
-                  break;
-               }
-
-               if ($$1.i() < 0.25F) {
-                  $$9.c(it.b);
-               }
-            }
-         }
-
-         return true;
-      }
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
    }
 }

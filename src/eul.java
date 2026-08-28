@@ -1,60 +1,48 @@
-public class eul {
-   public static final eul a = new eul(0.0F, 0.0F);
-   public static final eul b = new eul(1.0F, 1.0F);
-   public static final eul c = new eul(1.0F, 0.0F);
-   public static final eul d = new eul(-1.0F, 0.0F);
-   public static final eul e = new eul(0.0F, 1.0F);
-   public static final eul f = new eul(0.0F, -1.0F);
-   public static final eul g = new eul(Float.MAX_VALUE, Float.MAX_VALUE);
-   public static final eul h = new eul(Float.MIN_VALUE, Float.MIN_VALUE);
-   public final float i;
-   public final float j;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 
-   public eul(float $$0, float $$1) {
-      this.i = $$0;
-      this.j = $$1;
+public record eul(alb b, fh.g c) implements eui {
+   public static final MapCodec<eul> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alb.a.fieldOf("storage").forGetter(eul::c), fh.g.a.fieldOf("path").forGetter(eul::d)).apply($$0, eul::new)
+   );
+
+   @Override
+   public euh b() {
+      return euj.f;
    }
 
-   public eul a(float $$0) {
-      return new eul(this.i * $$0, this.j * $$0);
+   private Optional<vh> c(eqd $$0) {
+      ur $$1 = $$0.d().o().aL().a(this.b);
+
+      try {
+         List<vo> $$2 = this.c.a($$1);
+         if ($$2.size() == 1 && $$2.get(0) instanceof vh $$3) {
+            return Optional.of($$3);
+         }
+      } catch (CommandSyntaxException var6) {
+      }
+
+      return Optional.empty();
    }
 
-   public float a(eul $$0) {
-      return this.i * $$0.i + this.j * $$0.j;
+   @Override
+   public float b(eqd $$0) {
+      return this.c($$0).map(vh::k).orElse(0.0F);
    }
 
-   public eul b(eul $$0) {
-      return new eul(this.i + $$0.i, this.j + $$0.j);
+   @Override
+   public int a(eqd $$0) {
+      return this.c($$0).map(vh::g).orElse(0);
    }
 
-   public eul b(float $$0) {
-      return new eul(this.i + $$0, this.j + $$0);
+   public alb c() {
+      return this.b;
    }
 
-   public boolean c(eul $$0) {
-      return this.i == $$0.i && this.j == $$0.j;
-   }
-
-   public eul a() {
-      float $$0 = ayf.c(this.i * this.i + this.j * this.j);
-      return $$0 < 1.0E-4F ? a : new eul(this.i / $$0, this.j / $$0);
-   }
-
-   public float b() {
-      return ayf.c(this.i * this.i + this.j * this.j);
-   }
-
-   public float c() {
-      return this.i * this.i + this.j * this.j;
-   }
-
-   public float d(eul $$0) {
-      float $$1 = $$0.i - this.i;
-      float $$2 = $$0.j - this.j;
-      return $$1 * $$1 + $$2 * $$2;
-   }
-
-   public eul d() {
-      return new eul(-this.i, -this.j);
+   public fh.g d() {
+      return this.c;
    }
 }

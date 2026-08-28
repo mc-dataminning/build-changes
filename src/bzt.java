@@ -1,36 +1,62 @@
-public class bzt extends bzo {
-   private final cfd a;
-   private aqo b;
-   private boolean c;
+import java.util.EnumSet;
 
-   public bzt(cfd $$0) {
+public class bzt extends cai {
+   private final btt a;
+
+   public bzt(btt $$0) {
       this.a = $$0;
+      this.a(EnumSet.of(cai.a.a, cai.a.b));
    }
 
    @Override
    public boolean a() {
-      aqo $$0 = (aqo)this.a.P_();
-      boolean $$1 = $$0 != null && !$$0.N_() && !$$0.gd().b && !$$0.be() && !$$0.aB;
-      return !this.a.gp() && $$1 && this.a.gy();
+      return this.a.cl() < 140;
+   }
+
+   @Override
+   public boolean b() {
+      return this.a();
    }
 
    @Override
    public boolean Q_() {
-      return !this.c;
+      return false;
    }
 
    @Override
    public void c() {
-      this.b = (aqo)this.a.P_();
-      this.c = false;
+      this.h();
+   }
+
+   private void h() {
+      Iterable<iz> $$0 = iz.b(
+         ayu.a(this.a.du() - 1.0), this.a.dv(), ayu.a(this.a.dA() - 1.0), ayu.a(this.a.du() + 1.0), ayu.a(this.a.dw() + 8.0), ayu.a(this.a.dA() + 1.0)
+      );
+      iz $$1 = null;
+
+      for (iz $$2 : $$0) {
+         if (this.a(this.a.dP(), $$2)) {
+            $$1 = $$2;
+            break;
+         }
+      }
+
+      if ($$1 == null) {
+         $$1 = iz.a(this.a.du(), this.a.dw() + 8.0, this.a.dA());
+      }
+
+      this.a.K().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
    }
 
    @Override
    public void e() {
-      if (!this.c && !this.a.y() && !this.a.gc()) {
-         if (this.a.cK().c(this.b.cK())) {
-            this.c = this.a.b(this.b);
-         }
-      }
+      this.h();
+      this.a.a(0.02F, new evm((double)this.a.bo, (double)this.a.bp, (double)this.a.bq));
+      this.a.a(btp.a, this.a.ds());
+   }
+
+   private boolean a(dbw $$0, iz $$1) {
+      drx $$2 = $$0.a_($$1);
+      return ($$0.b_($$1).c() || $$2.a(dew.nd)) && $$2.a(eof.a);
    }
 }

@@ -1,85 +1,119 @@
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleLists;
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.Table;
+import com.google.common.primitives.UnsignedLong;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.Set;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class euz implements euy {
-   private static final DoubleList a = DoubleLists.unmodifiable(DoubleArrayList.wrap(new double[]{0.0}));
-   private final double[] b;
-   private final int[] c;
-   private final int[] d;
-   private final int e;
+public class euz<T> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "Callback";
+   private static final String c = "Name";
+   private static final String d = "TriggerTime";
+   private final euy<T> e;
+   private final Queue<euz.a<T>> f = new PriorityQueue<>(c());
+   private UnsignedLong g = UnsignedLong.ZERO;
+   private final Table<String, Long, euz.a<T>> h = HashBasedTable.create();
 
-   public euz(DoubleList $$0, DoubleList $$1, boolean $$2, boolean $$3) {
-      double $$4 = Double.NaN;
-      int $$5 = $$0.size();
-      int $$6 = $$1.size();
-      int $$7 = $$5 + $$6;
-      this.b = new double[$$7];
-      this.c = new int[$$7];
-      this.d = new int[$$7];
-      boolean $$8 = !$$2;
-      boolean $$9 = !$$3;
-      int $$10 = 0;
-      int $$11 = 0;
-      int $$12 = 0;
+   private static <T> Comparator<euz.a<T>> c() {
+      return Comparator.<euz.a<T>>comparingLong($$0 -> $$0.a).thenComparing($$0 -> $$0.b);
+   }
 
+   public euz(euy<T> $$0, Stream<? extends Dynamic<?>> $$1) {
+      this($$0);
+      this.f.clear();
+      this.h.clear();
+      this.g = UnsignedLong.ZERO;
+      $$1.forEach($$0x -> {
+         vo $$1x = (vo)$$0x.convert(vf.a).getValue();
+         if ($$1x instanceof ur $$2) {
+            this.a($$2);
+         } else {
+            a.warn("Invalid format of events: {}", $$1x);
+         }
+      });
+   }
+
+   public euz(euy<T> $$0) {
+      this.e = $$0;
+   }
+
+   public void a(T $$0, long $$1) {
       while (true) {
-         boolean $$13 = $$11 >= $$5;
-         boolean $$14 = $$12 >= $$6;
-         if ($$13 && $$14) {
-            this.e = Math.max(1, $$10);
+         euz.a<T> $$2 = this.f.peek();
+         if ($$2 == null || $$2.a > $$1) {
             return;
          }
 
-         boolean $$15 = !$$13 && ($$14 || $$0.getDouble($$11) < $$1.getDouble($$12) + 1.0E-7);
-         if ($$15) {
-            $$11++;
-            if ($$8 && ($$12 == 0 || $$14)) {
-               continue;
-            }
-         } else {
-            $$12++;
-            if ($$9 && ($$11 == 0 || $$13)) {
-               continue;
-            }
-         }
-
-         int $$16 = $$11 - 1;
-         int $$17 = $$12 - 1;
-         double $$18 = $$15 ? $$0.getDouble($$16) : $$1.getDouble($$17);
-         if (!($$4 >= $$18 - 1.0E-7)) {
-            this.c[$$10] = $$16;
-            this.d[$$10] = $$17;
-            this.b[$$10] = $$18;
-            $$10++;
-            $$4 = $$18;
-         } else {
-            this.c[$$10 - 1] = $$16;
-            this.d[$$10 - 1] = $$17;
-         }
+         this.f.remove();
+         this.h.remove($$2.c, $$1);
+         $$2.d.handle($$0, this, $$1);
       }
    }
 
-   @Override
-   public boolean a(euy.a $$0) {
-      int $$1 = this.e - 1;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge(this.c[$$2], this.d[$$2], $$2)) {
-            return false;
-         }
+   public void a(String $$0, long $$1, eux<T> $$2) {
+      if (!this.h.contains($$0, $$1)) {
+         this.g = this.g.plus(UnsignedLong.ONE);
+         euz.a<T> $$3 = new euz.a<>($$1, this.g, $$0, $$2);
+         this.h.put($$0, $$1, $$3);
+         this.f.add($$3);
       }
-
-      return true;
    }
 
-   @Override
-   public int size() {
-      return this.e;
+   public int a(String $$0) {
+      Collection<euz.a<T>> $$1 = this.h.row($$0).values();
+      $$1.forEach(this.f::remove);
+      int $$2 = $$1.size();
+      $$1.clear();
+      return $$2;
    }
 
-   @Override
-   public DoubleList a() {
-      return (DoubleList)(this.e <= 1 ? a : DoubleArrayList.wrap(this.b, this.e));
+   public Set<String> a() {
+      return Collections.unmodifiableSet(this.h.rowKeySet());
+   }
+
+   private void a(ur $$0) {
+      ur $$1 = $$0.p("Callback");
+      eux<T> $$2 = this.e.a($$1);
+      if ($$2 != null) {
+         String $$3 = $$0.l("Name");
+         long $$4 = $$0.i("TriggerTime");
+         this.a($$3, $$4, $$2);
+      }
+   }
+
+   private ur a(euz.a<T> $$0) {
+      ur $$1 = new ur();
+      $$1.a("Name", $$0.c);
+      $$1.a("TriggerTime", $$0.a);
+      $$1.a("Callback", this.e.a($$0.d));
+      return $$1;
+   }
+
+   public ux b() {
+      ux $$0 = new ux();
+      this.f.stream().sorted(c()).map(this::a).forEach($$0::add);
+      return $$0;
+   }
+
+   public static class a<T> {
+      public final long a;
+      public final UnsignedLong b;
+      public final String c;
+      public final eux<T> d;
+
+      a(long $$0, UnsignedLong $$1, String $$2, eux<T> $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
    }
 }

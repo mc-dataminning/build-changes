@@ -1,29 +1,42 @@
 import java.util.Optional;
 
-public abstract class ehk extends ehl {
-   private final ehk.a d;
-   private final int e;
-   private final int f;
+public class ehk extends dym {
+   private final dco a;
+   private final dtu b;
+   private final Optional<ehj> c;
 
-   protected ehk(ehk.a $$0, int $$1, int $$2, ehl.c $$3) {
-      super($$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public ehk(dco $$0, dtu $$1, Optional<ehj> $$2) {
+      super($$1, $$0);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   public Optional<ehl.b> a(ehl.a $$0) {
-      return a($$0, this.e, this.f) < $$0.b().e() ? Optional.empty() : a($$0, dwv.a.a, $$1 -> this.a($$1, $$0));
+   public int a(dxp.a $$0, int $$1, int $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   private void a(eid $$0, ehl.a $$1) {
-      dag $$2 = $$1.h();
-      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
+   public dts a(dba $$0, dxl.a $$1) {
+      return ((dun)this.a.a($$0.e, $$0.f)).b($$1);
    }
 
-   @FunctionalInterface
-   protected interface a {
-      ehp construct(dxu var1, int var2, int var3);
+   public drx a(iz $$0) {
+      return this.a.a_($$0);
+   }
+
+   public int c() {
+      return this.a.I_();
+   }
+
+   public dco d() {
+      return this.a;
+   }
+
+   public Optional<ehj> e() {
+      return this.c;
+   }
+
+   public dtu f() {
+      return this.b;
    }
 }

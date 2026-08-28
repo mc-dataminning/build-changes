@@ -1,52 +1,88 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import org.slf4j.Logger;
 
-public class erg extends eqs {
+public class erg extends erp {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Codec<jm<czv>> c = lp.f.r().listOf().xmap(jm::a, $$0 -> $$0.a().toList());
    public static final MapCodec<erg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  cwj.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
-                  cwj.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
-                  cwj.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
-                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
-                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
-               )
-            )
-            .apply($$0, erg::new)
+      $$0 -> a($$0).and(c.optionalFieldOf("enchantments").forGetter($$0x -> $$0x.d)).apply($$0, erg::new)
    );
-   public static final cwj b = new cwj(cwj.a.a, IntList.of(), IntList.of(), false, false);
-   final Optional<cwj.a> c;
-   final Optional<IntList> d;
-   final Optional<IntList> e;
-   final Optional<Boolean> f;
-   final Optional<Boolean> h;
+   private final Optional<jm<czv>> d;
 
-   public erg(List<esn> $$0, Optional<cwj.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
+   erg(List<etn> $$0, Optional<jm<czv>> $$1) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.h = $$5;
+      this.d = $$1;
    }
 
    @Override
-   protected ctq a(ctq $$0, eph $$1) {
-      $$0.a(kb.S, b, this::a);
+   public err<erg> b() {
+      return ers.h;
+   }
+
+   @Override
+   public cuk a(cuk $$0, eqd $$1) {
+      azc $$2 = $$1.b();
+      Optional<ji<czv>> $$3 = this.d
+         .<ji<czv>>flatMap($$1x -> $$1x.a($$2))
+         .or(
+            () -> {
+               boolean $$3x = $$0.a(cun.qP);
+               List<ji.c<czv>> $$4 = lp.f
+                  .h()
+                  .filter($$1xx -> ((czv)$$1xx.a()).a($$1.d().J()))
+                  .filter($$0xx -> ((czv)$$0xx.a()).l())
+                  .filter($$2xx -> $$3x || ((czv)$$2xx.a()).b($$0))
+                  .toList();
+               return ac.b($$4, $$2);
+            }
+         );
+      if ($$3.isEmpty()) {
+         b.warn("Couldn't find a compatible enchantment for {}", $$0);
+         return $$0;
+      } else {
+         return a($$0, $$3.get().a(), $$2);
+      }
+   }
+
+   private static cuk a(cuk $$0, czv $$1, azc $$2) {
+      int $$3 = ayu.a($$2, $$1.f(), $$1.g());
+      if ($$0.a(cun.qP)) {
+         $$0 = new cuk(cun.uw);
+      }
+
+      $$0.a($$1, $$3);
       return $$0;
    }
 
-   private cwj a(cwj $$0) {
-      return new cwj(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
+   public static erg.a c() {
+      return new erg.a();
    }
 
-   @Override
-   public equ b() {
-      return eqv.I;
+   public static erp.a<?> d() {
+      return a($$0 -> new erg($$0, Optional.empty()));
+   }
+
+   public static class a extends erp.a<erg.a> {
+      private final List<ji<czv>> a = new ArrayList<>();
+
+      protected erg.a a() {
+         return this;
+      }
+
+      public erg.a a(czv $$0) {
+         this.a.add($$0.m());
+         return this;
+      }
+
+      @Override
+      public erq b() {
+         return new erg(this.g(), this.a.isEmpty() ? Optional.empty() : Optional.of(jm.a(this.a)));
+      }
    }
 }

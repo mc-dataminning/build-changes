@@ -1,34 +1,12 @@
-public class gkj extends ghs<cij> {
-   private final gde a;
+public class gkj extends gjl<ckb> {
+   private static final alb a = new alb("textures/entity/illager/pillager.png");
 
-   public gkj(ght.a $$0) {
-      super($$0);
-      this.d = 0.5F;
-      this.a = $$0.c();
+   public gkj(gis.a $$0) {
+      super($$0, new fuj<>($$0.a(fwu.aR)), 0.5F);
+      this.a(new gmx<>(this, $$0.d()));
    }
 
-   public void a(cij $$0, float $$1, float $$2, eyu $$3, gck $$4, int $$5) {
-      $$3.a();
-      $$3.a(0.0F, 0.5F, 0.0F);
-      int $$6 = $$0.u();
-      if ((float)$$6 - $$2 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$2 + 1.0F) / 10.0F;
-         $$7 = ayf.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
-      }
-
-      $$3.a(a.d.rotationDegrees(-90.0F));
-      $$3.a(-0.5F, -0.5F, 0.5F);
-      $$3.a(a.d.rotationDegrees(90.0F));
-      gki.a(this.a, $$0.v(), $$3, $$4, $$5, $$6 / 5 % 2 == 0);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public akn a(cij $$0) {
-      return gnu.e;
+   public alb a(ckb $$0) {
+      return a;
    }
 }

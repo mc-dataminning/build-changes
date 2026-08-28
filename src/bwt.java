@@ -1,81 +1,88 @@
 import com.google.common.collect.ImmutableMap;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
+import java.util.function.Function;
+import java.util.function.ToDoubleFunction;
 
-public class bwt extends buj<bsq> {
-   public static final int c = 100;
-   private long d;
+public class bwt extends bvd<cha> {
+   public static final int c = 200;
+   public static final float d = 1.65F;
+   private final Function<cha, bqa> e;
+   private final ceb f;
+   private final float g;
+   private final ToDoubleFunction<cha> h;
+   private evm i;
+   private final Function<cha, avv> j;
+   private final Function<cha, avv> k;
 
-   public bwt() {
-      super(ImmutableMap.of(cbu.b, cbv.a, cbu.I, cbv.c));
+   public bwt(Function<cha, bqa> $$0, ceb $$1, float $$2, ToDoubleFunction<cha> $$3, Function<cha, avv> $$4, Function<cha, avv> $$5) {
+      super(ImmutableMap.of(cco.V, ccp.b, cco.W, ccp.a), 200);
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.j = $$4;
+      this.k = $$5;
+      this.i = evm.b;
    }
 
-   @Override
-   protected boolean a(aqn $$0, bsq $$1) {
-      if ($$1.bR()) {
-         return false;
-      } else {
-         bts<?> $$2 = $$1.dS();
-         iw $$3 = $$2.c(cbu.b).get();
-         if ($$0.ae() != $$3.a()) {
-            return false;
-         } else {
-            Optional<Long> $$4 = $$2.c(cbu.I);
-            if ($$4.isPresent()) {
-               long $$5 = $$0.Y() - $$4.get();
-               if ($$5 > 0L && $$5 < 100L) {
-                  return false;
-               }
-            }
+   protected boolean a(arb $$0, cha $$1) {
+      return $$1.dS().a(cco.W);
+   }
 
-            drd $$6 = $$0.a_($$3.b());
-            return $$3.b().a($$1.dn(), 2.0) && $$6.a(avx.R) && !$$6.c(ddt.c);
+   protected boolean a(arb $$0, cha $$1, long $$2) {
+      return $$1.dS().a(cco.W);
+   }
+
+   protected void b(arb $$0, cha $$1, long $$2) {
+      iz $$3 = $$1.dp();
+      bum<?> $$4 = $$1.dS();
+      evm $$5 = $$4.c(cco.W).get();
+      this.i = new evm((double)$$3.u() - $$5.a(), 0.0, (double)$$3.w() - $$5.c()).d();
+      $$4.a(cco.m, new ccr($$5, this.g, 0));
+   }
+
+   protected void c(arb $$0, cha $$1, long $$2) {
+      List<btk> $$3 = $$0.a(btk.class, this.f, $$1, $$1.cK());
+      bum<?> $$4 = $$1.dS();
+      if (!$$3.isEmpty()) {
+         btk $$5 = $$3.get(0);
+         $$5.a($$0.aj().c((btk)$$1), (float)$$1.g(bus.c));
+         int $$6 = $$1.b(brz.a) ? $$1.c(brz.a).e() + 1 : 0;
+         int $$7 = $$1.b(brz.b) ? $$1.c(brz.b).e() + 1 : 0;
+         float $$8 = 0.25F * (float)($$6 - $$7);
+         float $$9 = ayu.a($$1.fn() * 1.65F, 0.2F, 3.0F) + $$8;
+         float $$10 = $$5.f($$0.aj().b((btk)$$1)) ? 0.5F : 1.0F;
+         $$5.q((double)($$10 * $$9) * this.h.applyAsDouble($$1), this.i.a(), this.i.c());
+         this.b($$0, $$1);
+         $$0.a(null, $$1, this.j.apply($$1), avx.g, 1.0F, 1.0F);
+      } else if (this.c($$0, $$1)) {
+         $$0.a(null, $$1, this.j.apply($$1), avx.g, 1.0F, 1.0F);
+         boolean $$11 = $$1.gx();
+         if ($$11) {
+            $$0.a(null, $$1, this.k.apply($$1), avx.g, 1.0F, 1.0F);
+         }
+
+         this.b($$0, $$1);
+      } else {
+         Optional<ccr> $$12 = $$4.c(cco.m);
+         Optional<evm> $$13 = $$4.c(cco.W);
+         boolean $$14 = $$12.isEmpty() || $$13.isEmpty() || $$12.get().a().a().a($$13.get(), 0.25);
+         if ($$14) {
+            this.b($$0, $$1);
          }
       }
    }
 
-   @Override
-   protected boolean a(aqn $$0, bsq $$1, long $$2) {
-      Optional<iw> $$3 = $$1.dS().c(cbu.b);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         io $$4 = $$3.get().b();
-         return $$1.dS().c(cnn.e) && $$1.dw() > (double)$$4.v() + 0.4 && $$4.a($$1.dn(), 1.14);
-      }
+   private boolean c(arb $$0, cha $$1) {
+      evm $$2 = $$1.ds().d(1.0, 0.0, 1.0).d();
+      iz $$3 = iz.a($$1.dn().e($$2));
+      return $$0.a_($$3).a(awl.cm) || $$0.a_($$3.c()).a(awl.cm);
    }
 
-   @Override
-   protected void d(aqn $$0, bsq $$1, long $$2) {
-      if ($$2 > this.d) {
-         bts<?> $$3 = $$1.dS();
-         if ($$3.a(cbu.v)) {
-            Set<iw> $$4 = $$3.c(cbu.v).get();
-            Optional<List<bsq>> $$5;
-            if ($$3.a(cbu.g)) {
-               $$5 = $$3.c(cbu.g);
-            } else {
-               $$5 = Optional.empty();
-            }
-
-            bvh.a($$0, $$1, null, null, $$4, $$5);
-         }
-
-         $$1.b($$1.dS().c(cbu.b).get().b());
-      }
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   @Override
-   protected void b(aqn $$0, bsq $$1, long $$2) {
-      if ($$1.fL()) {
-         $$1.fM();
-         this.d = $$2 + 40L;
-      }
+   protected void b(arb $$0, cha $$1) {
+      $$0.a($$1, (byte)59);
+      $$1.dS().a(cco.V, this.e.apply($$1).a($$0.z));
+      $$1.dS().b(cco.W);
    }
 }

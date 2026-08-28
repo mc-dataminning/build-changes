@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public enum n implements ayz {
+public enum n implements azp {
    a("BLACK", '0', 0, 0),
    b("DARK_BLUE", '1', 1, 170),
    c("DARK_GREEN", '2', 2, 43520),
@@ -33,7 +33,7 @@ public enum n implements ayz {
    u("ITALIC", 'o', true),
    v("RESET", 'r', -1, null);
 
-   public static final Codec<n> w = ayz.a(n::values);
+   public static final Codec<n> w = azp.a(n::values);
    public static final char x = '§';
    private static final Map<String, n> y = Arrays.stream(values()).collect(Collectors.toMap($$0 -> c($$0.A), $$0 -> (n)$$0));
    private static final Pattern z = Pattern.compile("(?i)§[0-9A-FK-OR]");
@@ -49,15 +49,15 @@ public enum n implements ayz {
       return $$0.toLowerCase(Locale.ROOT).replaceAll("[^a-z]", "");
    }
 
-   private n(String $$0, char $$1, int $$2, @Nullable Integer $$3) {
+   private n(final String $$0, final char $$1, final int $$2, @Nullable final Integer $$3) {
       this($$0, $$1, false, $$2, $$3);
    }
 
-   private n(String $$0, char $$1, boolean $$2) {
+   private n(final String $$0, final char $$1, final boolean $$2) {
       this($$0, $$1, $$2, -1, null);
    }
 
-   private n(String $$0, char $$1, boolean $$2, int $$3, @Nullable Integer $$4) {
+   private n(final String $$0, final char $$1, final boolean $$2, final int $$3, @Nullable final Integer $$4) {
       this.A = $$0;
       this.B = $$1;
       this.C = $$2;

@@ -1,93 +1,136 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Objects;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class eqg extends eqs {
-   public static final MapCodec<eqg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  le.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
-                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dsg::f).toList())
-               )
-            )
-            .apply($$0, eqg::new)
-   );
-   private final ix<dea> b;
-   private final Set<dsg<?>> c;
+public class eqg {
+   private final arb a;
+   private final Map<esw<?>, Object> b;
+   private final Map<alb, eqg.b> c;
+   private final float d;
 
-   eqg(List<esn> $$0, ix<dea> $$1, Set<dsg<?>> $$2) {
-      super($$0);
+   public eqg(arb $$0, Map<esw<?>, Object> $$1, Map<alb, eqg.b> $$2, float $$3) {
+      this.a = $$0;
       this.b = $$1;
       this.c = $$2;
+      this.d = $$3;
    }
 
-   private eqg(List<esn> $$0, ix<dea> $$1, List<String> $$2) {
-      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
+   public arb a() {
+      return this.a;
    }
 
-   @Override
-   public equ b() {
-      return eqv.A;
+   public boolean a(esw<?> $$0) {
+      return this.b.containsKey($$0);
    }
 
-   @Override
-   public Set<erw<?>> a() {
-      return ImmutableSet.of(erz.g);
+   public <T> T b(esw<T> $$0) {
+      T $$1 = (T)this.b.get($$0);
+      if ($$1 == null) {
+         throw new NoSuchElementException($$0.a().toString());
+      } else {
+         return $$1;
+      }
    }
 
-   @Override
-   protected ctq a(ctq $$0, eph $$1) {
-      drd $$2 = $$1.c(erz.g);
+   @Nullable
+   public <T> T c(esw<T> $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   @Nullable
+   public <T> T d(esw<T> $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   public void a(alb $$0, Consumer<cuk> $$1) {
+      eqg.b $$2 = this.c.get($$0);
       if ($$2 != null) {
-         $$0.a(kb.aa, cwb.a, $$1x -> {
-            for (dsg<?> $$2x : this.c) {
-               if ($$2.b($$2x)) {
-                  $$1x = $$1x.a($$2x, $$2);
-               }
-            }
-
-            return $$1x;
-         });
+         $$2.add($$1);
       }
-
-      return $$0;
    }
 
-   public static eqg.a a(dea $$0) {
-      return new eqg.a($$0);
+   public float b() {
+      return this.d;
    }
 
-   public static class a extends eqs.a<eqg.a> {
-      private final ix<dea> a;
-      private final Builder<dsg<?>> b = ImmutableSet.builder();
+   public static class a {
+      private final arb a;
+      private final Map<esw<?>, Object> b = Maps.newIdentityHashMap();
+      private final Map<alb, eqg.b> c = Maps.newHashMap();
+      private float d;
 
-      a(dea $$0) {
-         this.a = $$0.q();
+      public a(arb $$0) {
+         this.a = $$0;
       }
 
-      public eqg.a a(dsg<?> $$0) {
-         if (!this.a.a().l().d().contains($$0)) {
-            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
+      public arb a() {
+         return this.a;
+      }
+
+      public <T> eqg.a a(esw<T> $$0, T $$1) {
+         this.b.put($$0, $$1);
+         return this;
+      }
+
+      public <T> eqg.a b(esw<T> $$0, @Nullable T $$1) {
+         if ($$1 == null) {
+            this.b.remove($$0);
          } else {
-            this.b.add($$0);
+            this.b.put($$0, $$1);
+         }
+
+         return this;
+      }
+
+      public <T> T a(esw<T> $$0) {
+         T $$1 = (T)this.b.get($$0);
+         if ($$1 == null) {
+            throw new NoSuchElementException($$0.a().toString());
+         } else {
+            return $$1;
+         }
+      }
+
+      @Nullable
+      public <T> T b(esw<T> $$0) {
+         return (T)this.b.get($$0);
+      }
+
+      public eqg.a a(alb $$0, eqg.b $$1) {
+         eqg.b $$2 = this.c.put($$0, $$1);
+         if ($$2 != null) {
+            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
+         } else {
             return this;
          }
       }
 
-      protected eqg.a a() {
+      public eqg.a a(float $$0) {
+         this.d = $$0;
          return this;
       }
 
-      @Override
-      public eqt b() {
-         return new eqg(this.g(), this.a, this.b.build());
+      public eqg a(esx $$0) {
+         Set<esw<?>> $$1 = Sets.difference(this.b.keySet(), $$0.b());
+         if (!$$1.isEmpty()) {
+            throw new IllegalArgumentException("Parameters not allowed in this parameter set: " + $$1);
+         } else {
+            Set<esw<?>> $$2 = Sets.difference($$0.a(), this.b.keySet());
+            if (!$$2.isEmpty()) {
+               throw new IllegalArgumentException("Missing required parameters: " + $$2);
+            } else {
+               return new eqg(this.a, this.b, this.c, this.d);
+            }
+         }
       }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      void add(Consumer<cuk> var1);
    }
 }

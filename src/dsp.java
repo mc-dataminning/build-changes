@@ -1,21 +1,24 @@
-public enum dsp implements ayz {
-   a("none"),
-   b("low"),
-   c("tall");
+public enum dsp implements azp {
+   a("single"),
+   b("left"),
+   c("right");
 
    private final String d;
 
-   private dsp(String $$0) {
+   private dsp(final String $$0) {
       this.d = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.c();
    }
 
    @Override
    public String c() {
       return this.d;
+   }
+
+   public dsp a() {
+      return switch (this) {
+         case a -> a;
+         case b -> c;
+         case c -> b;
+      };
    }
 }

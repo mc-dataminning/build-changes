@@ -1,60 +1,45 @@
-import javax.annotation.Nullable;
+public class aho implements zs<ags> {
+   public static final zj<wl, aho> a = zs.a(aho::a, aho::new);
+   private final iz b;
+   private final int c;
+   private final boolean d;
 
-public class aho implements ze<age> {
-   public static final yv<vx, aho> a = ze.a(aho::a, aho::new);
-   private final aho.a b;
-   @Nullable
-   private final akn c;
-
-   public aho(aho.a $$0, @Nullable akn $$1) {
+   public aho(iz $$0, int $$1, boolean $$2) {
       this.b = $$0;
       this.c = $$1;
+      this.d = $$2;
    }
 
-   public static aho a(af $$0) {
-      return new aho(aho.a.a, $$0.a());
+   private aho(wl $$0) {
+      this.b = $$0.e();
+      this.c = $$0.l();
+      this.d = $$0.readBoolean();
    }
 
-   public static aho b() {
-      return new aho(aho.a.b, null);
-   }
-
-   private aho(vx $$0) {
-      this.b = $$0.b(aho.a.class);
-      if (this.b == aho.a.a) {
-         this.c = $$0.q();
-      } else {
-         this.c = null;
-      }
-   }
-
-   private void a(vx $$0) {
+   private void a(wl $$0) {
       $$0.a(this.b);
-      if (this.b == aho.a.a) {
-         $$0.a(this.c);
-      }
+      $$0.c(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zg<aho> a() {
-      return agc.bQ;
+   public zu<aho> a() {
+      return agq.bz;
    }
 
-   public void a(age $$0) {
+   public void a(ags $$0) {
       $$0.a(this);
    }
 
-   public aho.a e() {
+   public iz b() {
       return this.b;
    }
 
-   @Nullable
-   public akn f() {
+   public int e() {
       return this.c;
    }
 
-   public static enum a {
-      a,
-      b;
+   public boolean f() {
+      return this.d;
    }
 }

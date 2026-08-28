@@ -1,125 +1,99 @@
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.time.Instant;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Optional;
 
-public class gbu {
-   private static final gbu a = new gbu("") {
-      @Override
-      public void a(feb $$0) {
+public class gbu extends gbx {
+   gbu(fxq $$0, gbs $$1, double $$2, double $$3, double $$4) {
+      super($$0, $$2, $$3 - 0.125, $$4);
+      this.b(0.01F, 0.01F);
+      this.a($$1);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      this.n = false;
+      this.B = 1.0F;
+      this.u = 0.0F;
+   }
+
+   gbu(fxq $$0, gbs $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      super($$0, $$2, $$3 - 0.125, $$4, $$5, $$6, $$7);
+      this.b(0.01F, 0.01F);
+      this.a($$1);
+      this.D = this.D * (this.r.i() * 0.6F + 0.6F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      this.n = false;
+      this.B = 1.0F;
+      this.u = 0.0F;
+   }
+
+   @Override
+   public gbb b() {
+      return gbb.b;
+   }
+
+   public static class a implements gba<lm> {
+      private final gbs a;
+
+      public a(gbs $$0) {
+         this.a = $$0;
       }
 
-      @Override
-      public void a(gbu.c $$0, String $$1, String $$2) {
+      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         azc $$8 = $$1.z;
+         double $$9 = $$8.k() * 1.0E-6F;
+         double $$10 = $$8.k() * 1.0E-4F;
+         double $$11 = $$8.k() * 1.0E-6F;
+         gbu $$12 = new gbu($$1, this.a, $$2, $$3, $$4, $$9, $$10, $$11);
+         $$12.a(0.9F, 0.4F, 0.5F);
+         return $$12;
       }
-   };
-   private static final Logger b = LogUtils.getLogger();
-   private static final Gson c = new GsonBuilder().create();
-   private final Path d;
-   @Nullable
-   private gbu.b e;
-
-   gbu(String $$0) {
-      this.d = feb.Q().p.toPath().resolve($$0);
    }
 
-   public static gbu a(@Nullable String $$0) {
-      return $$0 == null ? a : new gbu($$0);
-   }
+   public static class b implements gba<lm> {
+      private final gbs a;
 
-   public void a(gbu.c $$0, String $$1, String $$2) {
-      this.e = new gbu.b($$0, $$1, $$2);
-   }
+      public b(gbs $$0) {
+         this.a = $$0;
+      }
 
-   public void a(feb $$0) {
-      if ($$0.q != null && this.e != null) {
-         ac.h().execute(() -> {
-            try {
-               Files.deleteIfExists(this.d);
-            } catch (IOException var3) {
-               b.error("Failed to delete quickplay log file {}", this.d, var3);
+      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gbu $$8 = new gbu($$1, this.a, $$2, $$3, $$4, 0.0, -0.8F, 0.0) {
+            @Override
+            public Optional<lg> o() {
+               return Optional.of(lg.a);
             }
-
-            gbu.a $$2 = new gbu.a(this.e, Instant.now(), $$0.q.j());
-            Codec.list(gbu.a.a).encodeStart(JsonOps.INSTANCE, List.of($$2)).resultOrPartial(ac.a("Quick Play: ", b::error)).ifPresent($$0xx -> {
-               try {
-                  Files.createDirectories(this.d.getParent());
-                  Files.writeString(this.d, c.toJson($$0xx));
-               } catch (IOException var3x) {
-                  b.error("Failed to write to quickplay log file {}", this.d, var3x);
-               }
-            });
-         });
-      } else {
-         b.error("Failed to log session for quickplay. Missing world data or gamemode");
+         };
+         $$8.t = ayu.b($$1.z, 500, 1000);
+         $$8.u = 0.01F;
+         $$8.a(0.32F, 0.5F, 0.22F);
+         return $$8;
       }
    }
 
-   static record a(gbu.b b, Instant c, daw d) {
-      public static final Codec<gbu.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(gbu.b.a.forGetter(gbu.a::a), axn.m.fieldOf("lastPlayedTime").forGetter(gbu.a::b), daw.f.fieldOf("gamemode").forGetter(gbu.a::c))
-               .apply($$0, gbu.a::new)
-      );
+   public static class c implements gba<lm> {
+      private final gbs a;
 
-      public gbu.b a() {
-         return this.b;
+      public c(gbs $$0) {
+         this.a = $$0;
       }
 
-      public Instant b() {
-         return this.c;
-      }
-
-      public daw c() {
-         return this.d;
+      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gbu $$8 = new gbu($$1, this.a, $$2, $$3, $$4);
+         $$8.a(0.4F, 0.4F, 0.7F);
+         return $$8;
       }
    }
 
-   static record b(gbu.c b, String c, String d) {
-      public static final MapCodec<gbu.b> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  gbu.c.d.fieldOf("type").forGetter(gbu.b::a), axn.o.fieldOf("id").forGetter(gbu.b::b), Codec.STRING.fieldOf("name").forGetter(gbu.b::c)
-               )
-               .apply($$0, gbu.b::new)
-      );
+   public static class d implements gba<lm> {
+      private final gbs a;
 
-      public gbu.c a() {
-         return this.b;
+      public d(gbs $$0) {
+         this.a = $$0;
       }
 
-      public String b() {
-         return this.c;
-      }
-
-      public String c() {
-         return this.d;
-      }
-   }
-
-   public static enum c implements ayz {
-      a("singleplayer"),
-      b("multiplayer"),
-      c("realms");
-
-      static final Codec<gbu.c> d = ayz.a(gbu.c::values);
-      private final String e;
-
-      private c(String $$0) {
-         this.e = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.e;
+      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         double $$8 = (double)$$1.z.i() * -1.9 * (double)$$1.z.i() * 0.1;
+         gbu $$9 = new gbu($$1, this.a, $$2, $$3, $$4, 0.0, $$8, 0.0);
+         $$9.a(0.1F, 0.1F, 0.3F);
+         $$9.b(0.001F, 0.001F);
+         return $$9;
       }
    }
 }

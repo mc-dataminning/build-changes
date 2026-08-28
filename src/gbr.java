@@ -1,36 +1,25 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
-
-public class gbr implements bnt {
-   private final gci a;
-   private final Set<bnr> b = new ObjectOpenHashSet();
-   private final bnz c = new bnz();
-
-   public gbr(LongSupplier $$0, gci $$1) {
-      this.a = $$1;
-      this.b.add(boa.a($$0));
-      this.a();
-   }
-
-   private void a() {
-      this.b.addAll(boa.a());
-      this.b.add(bnr.a("totalChunks", bnq.f, this.a, gci::i));
-      this.b.add(bnr.a("renderedChunks", bnq.f, this.a, gci::k));
-      this.b.add(bnr.a("lastViewDistance", bnq.f, this.a, gci::j));
-      gfk $$0 = this.a.h();
-      this.b.add(bnr.a("toUpload", bnq.g, $$0, gfk::c));
-      this.b.add(bnr.a("freeBufferCount", bnq.g, $$0, gfk::d));
-      this.b.add(bnr.a("toBatchCount", bnq.g, $$0, gfk::b));
-      if (eyn.a().isPresent()) {
-         this.b.add(bnr.a("gpuUtilization", bnq.i, feb.Q(), feb::v));
+public class gbr extends gce {
+   gbr(fxq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3);
+      this.u = 0.04F;
+      if ($$5 == 0.0 && ($$4 != 0.0 || $$6 != 0.0)) {
+         this.j = $$4;
+         this.k = 0.1;
+         this.l = $$6;
       }
    }
 
-   @Override
-   public Set<bnr> a(Supplier<bmi> $$0) {
-      this.b.addAll(this.c.a($$0));
-      return this.b;
+   public static class a implements gba<lm> {
+      private final gbs a;
+
+      public a(gbs $$0) {
+         this.a = $$0;
+      }
+
+      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gbr $$8 = new gbr($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

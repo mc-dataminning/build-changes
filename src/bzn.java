@@ -1,78 +1,68 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class bzn extends bzl {
+   private static final float l = 10.0F;
+   private static final float m = 60.0F;
+   private final int n;
+   private final int o;
+   private final float p;
+   private final float q;
+   private final boolean r;
 
-public class bzn extends bzo {
-   public static final int a = 8;
-   public static final int b = 4;
-   public static final int c = 3;
-   private final ceg d;
-   @Nullable
-   private ceg e;
-   private final double f;
-   private int g;
-
-   public bzn(ceg $$0, double $$1) {
-      this.d = $$0;
-      this.f = $$1;
+   public bzn(btm $$0, int $$1, int $$2, float $$3, float $$4, boolean $$5) {
+      super($$0);
+      this.n = $$1;
+      this.o = $$2;
+      this.p = $$3;
+      this.q = $$4;
+      this.r = $$5;
    }
 
    @Override
-   public boolean a() {
-      if (this.d.g() >= 0) {
-         return false;
-      } else {
-         List<? extends ceg> $$0 = this.d.dP().a((Class<? extends ceg>)this.d.getClass(), this.d.cK().c(8.0, 4.0, 8.0));
-         ceg $$1 = null;
-         double $$2 = Double.MAX_VALUE;
+   public void a() {
+      if (this.r && this.d.be()) {
+         this.d.h(this.d.ds().b(0.0, 0.005, 0.0));
+      }
 
-         for (ceg $$3 : $$0) {
-            if ($$3.g() >= 0) {
-               double $$4 = this.d.g($$3);
-               if (!($$4 > $$2)) {
-                  $$2 = $$4;
-                  $$1 = $$3;
+      if (this.k == bzl.a.b && !this.d.K().l()) {
+         double $$0 = this.e - this.d.du();
+         double $$1 = this.f - this.d.dw();
+         double $$2 = this.g - this.d.dA();
+         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+         if ($$3 < 2.5000003E-7F) {
+            this.d.C(0.0F);
+         } else {
+            float $$4 = (float)(ayu.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
+            this.d.r(this.a(this.d.dF(), $$4, (float)this.o));
+            this.d.aY = this.d.dF();
+            this.d.ba = this.d.dF();
+            float $$5 = (float)(this.h * this.d.g(bus.r));
+            if (this.d.be()) {
+               this.d.y($$5 * this.p);
+               double $$6 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+               if (Math.abs($$1) > 1.0E-5F || Math.abs($$6) > 1.0E-5F) {
+                  float $$7 = -((float)(ayu.d($$1, $$6) * 180.0F / (float)Math.PI));
+                  $$7 = ayu.a(ayu.g($$7), (float)(-this.n), (float)this.n);
+                  this.d.s(this.a(this.d.dH(), $$7, 5.0F));
                }
+
+               float $$8 = ayu.b(this.d.dH() * (float) (Math.PI / 180.0));
+               float $$9 = ayu.a(this.d.dH() * (float) (Math.PI / 180.0));
+               this.d.bq = $$8 * $$5;
+               this.d.bp = -$$9 * $$5;
+            } else {
+               float $$10 = Math.abs(ayu.g(this.d.dF() - $$4));
+               float $$11 = a($$10);
+               this.d.y($$5 * this.q * $$11);
             }
          }
-
-         if ($$1 == null) {
-            return false;
-         } else if ($$2 < 9.0) {
-            return false;
-         } else {
-            this.e = $$1;
-            return true;
-         }
-      }
-   }
-
-   @Override
-   public boolean b() {
-      if (this.d.g() >= 0) {
-         return false;
-      } else if (!this.e.bD()) {
-         return false;
       } else {
-         double $$0 = this.d.g(this.e);
-         return !($$0 < 9.0) && !($$0 > 256.0);
+         this.d.y(0.0F);
+         this.d.E(0.0F);
+         this.d.D(0.0F);
+         this.d.C(0.0F);
       }
    }
 
-   @Override
-   public void c() {
-      this.g = 0;
-   }
-
-   @Override
-   public void d() {
-      this.e = null;
-   }
-
-   @Override
-   public void e() {
-      if (--this.g <= 0) {
-         this.g = this.a(10);
-         this.d.K().a(this.e, this.f);
-      }
+   private static float a(float $$0) {
+      return 1.0F - ayu.a(($$0 - 10.0F) / 50.0F, 0.0F, 1.0F);
    }
 }

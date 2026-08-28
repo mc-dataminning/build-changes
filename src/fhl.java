@@ -1,43 +1,22 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class fhl extends fgz {
+   protected final fim a;
 
-public class fhl implements fjx {
-   private static final int a = 170;
-   private final wx b;
-   @Nullable
-   private List<axr> c;
-   @Nullable
-   private final wx d;
-
-   private fhl(wx $$0, @Nullable wx $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   public fhl(int $$0, int $$1, int $$2, int $$3, fim $$4, fgz.c $$5) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, xk.a);
    }
 
-   public static fhl a(wx $$0, @Nullable wx $$1) {
-      return new fhl($$0, $$1);
+   public fhl(int $$0, int $$1, int $$2, int $$3, fim $$4, fgz.c $$5, xl $$6) {
+      super($$0, $$1, $$2, $$3, $$6, $$5, q);
+      this.a = $$4;
    }
 
-   public static fhl a(wx $$0) {
-      return new fhl($$0, $$0);
+   public fhl(int $$0, int $$1, fim $$2, fgz.c $$3, xl $$4) {
+      this(0, 0, $$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public void b(fjw $$0) {
-      if (this.d != null) {
-         $$0.a(fjv.c, this.d);
-      }
-   }
-
-   public List<axr> a(feb $$0) {
-      if (this.c == null) {
-         this.c = a($$0, this.b);
-      }
-
-      return this.c;
-   }
-
-   public static List<axr> a(feb $$0, wx $$1) {
-      return $$0.h.c($$1, 170);
+   public void b(fgm $$0, int $$1, int $$2, float $$3) {
+      alb $$4 = this.a.a(this.B(), this.A());
+      $$0.a($$4, this.C(), this.D(), this.g, this.h);
    }
 }

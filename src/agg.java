@@ -1,29 +1,78 @@
-public class agg implements ze<age> {
-   public static final yv<vx, agg> a = ze.a(agg::a, agg::new);
+public class agg implements zs<ace> {
+   public static final zj<wl, agg> a = zs.a(agg::a, agg::new);
    private final int b;
+   private final double c;
+   private final double d;
+   private final double e;
+   private final byte f;
+   private final byte g;
+   private final boolean h;
 
-   public agg(int $$0) {
-      this.b = $$0;
+   public agg(bsp $$0) {
+      this.b = $$0.al();
+      evm $$1 = $$0.do();
+      this.c = $$1.c;
+      this.d = $$1.d;
+      this.e = $$1.e;
+      this.f = (byte)((int)($$0.dF() * 256.0F / 360.0F));
+      this.g = (byte)((int)($$0.dH() * 256.0F / 360.0F));
+      this.h = $$0.aE();
    }
 
-   private agg(vx $$0) {
+   private agg(wl $$0) {
       this.b = $$0.l();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readDouble();
+      this.f = $$0.readByte();
+      this.g = $$0.readByte();
+      this.h = $$0.readBoolean();
    }
 
-   private void a(vx $$0) {
+   private void a(wl $$0) {
       $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.k(this.f);
+      $$0.k(this.g);
+      $$0.a(this.h);
    }
 
    @Override
-   public zg<agg> a() {
-      return agc.bf;
+   public zu<agg> a() {
+      return agq.aZ;
    }
 
-   public void a(age $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
    public int b() {
       return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public double f() {
+      return this.d;
+   }
+
+   public double g() {
+      return this.e;
+   }
+
+   public byte h() {
+      return this.f;
+   }
+
+   public byte i() {
+      return this.g;
+   }
+
+   public boolean j() {
+      return this.h;
    }
 }

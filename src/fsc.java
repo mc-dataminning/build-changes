@@ -1,88 +1,161 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.common.base.MoreObjects;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public class fsc extends fto<cnv> implements fvj {
-   private static final String a = "left_paddle";
-   private static final String b = "right_paddle";
-   private static final String f = "water_patch";
-   private static final String g = "bottom";
-   private static final String h = "back";
-   private static final String i = "front";
-   private static final String j = "right";
-   private static final String k = "left";
-   private final fvw l;
-   private final fvw m;
-   private final fvw n;
-   private final ImmutableList<fvw> o;
+public class fsc {
+   static final alb b = new alb("spectator/close");
+   static final alb c = new alb("spectator/scroll_left");
+   static final alb d = new alb("spectator/scroll_right");
+   private static final fse e = new fsc.a();
+   private static final fse f = new fsc.b(-1, true);
+   private static final fse g = new fsc.b(1, true);
+   private static final fse h = new fsc.b(1, false);
+   private static final int i = 8;
+   static final xl j = xl.c("spectatorMenu.close");
+   static final xl k = xl.c("spectatorMenu.previous_page");
+   static final xl l = xl.c("spectatorMenu.next_page");
+   public static final fse a = new fse() {
+      @Override
+      public void a(fsc $$0) {
+      }
 
-   public fsc(fvw $$0) {
-      this.l = $$0.b("left_paddle");
-      this.m = $$0.b("right_paddle");
-      this.n = $$0.b("water_patch");
-      this.o = this.a($$0).build();
+      @Override
+      public xl aO_() {
+         return xk.a;
+      }
+
+      @Override
+      public void a(fgm $$0, float $$1, int $$2) {
+      }
+
+      @Override
+      public boolean aP_() {
+         return false;
+      }
+   };
+   private final fsf m;
+   private fsd n;
+   private int o = -1;
+   int p;
+
+   public fsc(fsf $$0) {
+      this.n = new fsb();
+      this.m = $$0;
    }
 
-   protected Builder<fvw> a(fvw $$0) {
-      Builder<fvw> $$1 = new Builder();
-      $$1.add(new fvw[]{$$0.b("bottom"), $$0.b("back"), $$0.b("front"), $$0.b("right"), $$0.b("left"), this.l, this.m});
-      return $$1;
+   public fse a(int $$0) {
+      int $$1 = $$0 + this.p * 6;
+      if (this.p > 0 && $$0 == 0) {
+         return f;
+      } else if ($$0 == 7) {
+         return $$1 < this.n.a().size() ? g : h;
+      } else if ($$0 == 8) {
+         return e;
+      } else {
+         return $$1 >= 0 && $$1 < this.n.a().size() ? (fse)MoreObjects.firstNonNull(this.n.a().get($$1), a) : a;
+      }
    }
 
-   public static void a(fwf $$0) {
-      int $$1 = 32;
-      int $$2 = 6;
-      int $$3 = 20;
-      int $$4 = 4;
-      int $$5 = 28;
-      $$0.a("bottom", fwb.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), fvy.a(0.0F, 3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      $$0.a("back", fwb.c().a(0, 19).a(-13.0F, -7.0F, -1.0F, 18.0F, 6.0F, 2.0F), fvy.a(-15.0F, 4.0F, 4.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
-      $$0.a("front", fwb.c().a(0, 27).a(-8.0F, -7.0F, -1.0F, 16.0F, 6.0F, 2.0F), fvy.a(15.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      $$0.a("right", fwb.c().a(0, 35).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), fvy.a(0.0F, 4.0F, -9.0F, 0.0F, (float) Math.PI, 0.0F));
-      $$0.a("left", fwb.c().a(0, 43).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), fvy.a(0.0F, 4.0F, 9.0F));
-      int $$6 = 20;
-      int $$7 = 7;
-      int $$8 = 6;
-      float $$9 = -5.0F;
-      $$0.a(
-         "left_paddle",
-         fwb.c().a(62, 0).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         fvy.a(3.0F, -5.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
-      );
-      $$0.a(
-         "right_paddle",
-         fwb.c().a(62, 20).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         fvy.a(3.0F, -5.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
-      );
-      $$0.a("water_patch", fwb.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), fvy.a(0.0F, -3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+   public List<fse> a() {
+      List<fse> $$0 = Lists.newArrayList();
+
+      for (int $$1 = 0; $$1 <= 8; $$1++) {
+         $$0.add(this.a($$1));
+      }
+
+      return $$0;
    }
 
-   public static fwc a() {
-      fwe $$0 = new fwe();
-      fwf $$1 = $$0.a();
-      a($$1);
-      return fwc.a($$0, 128, 64);
+   public fse b() {
+      return this.a(this.o);
    }
 
-   public void a(cnv $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      a($$0, 0, this.l, $$1);
-      a($$0, 1, this.m, $$1);
-   }
-
-   public ImmutableList<fvw> b() {
-      return this.o;
-   }
-
-   @Override
-   public fvw c() {
+   public fsd c() {
       return this.n;
    }
 
-   private static void a(cnv $$0, int $$1, fvw $$2, float $$3) {
-      float $$4 = $$0.a($$1, $$3);
-      $$2.e = ayf.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (ayf.a(-$$4) + 1.0F) / 2.0F);
-      $$2.f = ayf.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (ayf.a(-$$4 + 1.0F) + 1.0F) / 2.0F);
-      if ($$1 == 1) {
-         $$2.f = (float) Math.PI - $$2.f;
+   public void b(int $$0) {
+      fse $$1 = this.a($$0);
+      if ($$1 != a) {
+         if (this.o == $$0 && $$1.aP_()) {
+            $$1.a(this);
+         } else {
+            this.o = $$0;
+         }
+      }
+   }
+
+   public void d() {
+      this.m.a(this);
+   }
+
+   public int e() {
+      return this.o;
+   }
+
+   public void a(fsd $$0) {
+      this.n = $$0;
+      this.o = -1;
+      this.p = 0;
+   }
+
+   public fsg f() {
+      return new fsg(this.a(), this.o);
+   }
+
+   static class a implements fse {
+      @Override
+      public void a(fsc $$0) {
+         $$0.d();
+      }
+
+      @Override
+      public xl aO_() {
+         return fsc.j;
+      }
+
+      @Override
+      public void a(fgm $$0, float $$1, int $$2) {
+         $$0.a(fsc.b, 0, 0, 16, 16);
+      }
+
+      @Override
+      public boolean aP_() {
+         return true;
+      }
+   }
+
+   static class b implements fse {
+      private final int a;
+      private final boolean b;
+
+      public b(int $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public void a(fsc $$0) {
+         $$0.p = $$0.p + this.a;
+      }
+
+      @Override
+      public xl aO_() {
+         return this.a < 0 ? fsc.k : fsc.l;
+      }
+
+      @Override
+      public void a(fgm $$0, float $$1, int $$2) {
+         if (this.a < 0) {
+            $$0.a(fsc.c, 0, 0, 16, 16);
+         } else {
+            $$0.a(fsc.d, 0, 0, 16, 16);
+         }
+      }
+
+      @Override
+      public boolean aP_() {
+         return this.b;
       }
    }
 }

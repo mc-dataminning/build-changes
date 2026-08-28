@@ -1,113 +1,103 @@
-public class fli extends flr {
-   private static final wx a = wx.c("options.languageAccuracyWarning").a(n.h);
-   private static final int r = 53;
-   private fli.a s;
-   final gpd u;
+import com.mojang.text2speech.Narrator;
+import javax.annotation.Nullable;
 
-   public fli(flz $$0, fef $$1, gpd $$2) {
-      super($$0, $$1, wx.c("options.language.title"));
-      this.u = $$2;
+public class fli extends fmy {
+   private static final xl a = xl.c("accessibility.onboarding.screen.title");
+   private static final xl b = xl.c("accessibility.onboarding.screen.narrator");
+   private static final int c = 4;
+   private static final int d = 16;
+   private final fhq r;
+   private final ffe s;
+   private final boolean u;
+   private boolean v;
+   private float w;
+   private final Runnable x;
+   @Nullable
+   private fhk y;
+   @Nullable
+   private fgx z;
+   private final fkm A = new fkm(this, this.m(), 33);
+
+   public fli(ffe $$0, Runnable $$1) {
+      super(a);
+      this.s = $$0;
+      this.x = $$1;
+      this.r = new fhq(true);
+      this.u = ffa.Q().aX().a();
    }
 
    @Override
-   protected void aN_() {
-      this.s = this.c(new fli.a(this.m));
-      this.d.a(53);
-      super.aN_();
+   public void aN_() {
+      fkq $$0 = this.A.c(fkq.d());
+      $$0.c().b().a(4);
+      this.y = $$0.a(new fhk(this.n, this.l, this.p), $$0x -> $$0x.a(8));
+      this.z = this.s.as().a(this.s);
+      this.z.j = this.u;
+      $$0.a(this.z);
+      $$0.a(fhd.b(150, $$0x -> this.a(new flj(this, this.m.m)), false));
+      $$0.a(fhd.a(150, $$0x -> this.a(new fmh(this, this.m.m, this.m.ag())), false));
+      this.A.b(fgz.a(xk.j, $$0x -> this.d()).a());
+      this.A.a(this::c);
+      this.c();
    }
 
    @Override
    protected void c() {
-      super.c();
-      this.s.a(this.n, this.d);
+      if (this.y != null) {
+         this.y.b(this.n);
+      }
+
+      this.A.a();
    }
 
    @Override
-   protected void h() {
-      fjr $$0 = this.d.b(fjr.d()).a(8);
-      $$0.c().b();
-      $$0.a(new fhh(a, this.p));
-      fjr $$1 = $$0.a(fjr.e().a(8));
-      $$1.a(fga.a(wx.c("options.font"), $$0x -> this.m.a(new fle(this, this.c))).a());
-      $$1.a(fga.a(ww.d, $$0x -> this.C()).a());
+   protected void aD_() {
+      if (this.u && this.z != null) {
+         this.b(this.z);
+      } else {
+         super.aD_();
+      }
    }
 
-   void C() {
-      fli.a.a $$0 = this.s.h();
-      if ($$0 != null && !$$0.b.equals(this.u.a())) {
-         this.u.a($$0.b);
-         this.c.ac = $$0.b;
-         this.m.l();
-      }
-
-      this.m.a(this.b);
+   private int m() {
+      return 90;
    }
 
-   class a extends fgw<fli.a.a> {
-      public a(feb $$0) {
-         super($$0, fli.this.n, fli.this.o - 33 - 53, 33, 18);
-         String $$1 = fli.this.u.a();
-         fli.this.u.b().forEach(($$1x, $$2) -> {
-            fli.a.a $$3 = new fli.a.a($$1x, $$2);
-            this.b($$3);
-            if ($$1.equals($$1x)) {
-               this.a($$3);
-            }
-         });
-         if (this.h() != null) {
-            this.e(this.h());
-         }
-      }
+   @Override
+   public void d() {
+      this.a(this.x);
+   }
 
-      @Override
-      public int b() {
-         return super.b() + 50;
-      }
+   private void a(fmy $$0) {
+      this.a(() -> this.m.a($$0));
+   }
 
-      public class a extends fgw.a<fli.a.a> {
-         final String b;
-         private final wx c;
-         private long d;
+   private void a(Runnable $$0) {
+      this.s.ad = false;
+      this.s.av();
+      Narrator.getNarrator().clear();
+      $$0.run();
+   }
 
-         public a(String $$1, gpc $$2) {
-            this.b = $$1;
-            this.c = $$2.a();
-         }
+   @Override
+   public void a(fgm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.C();
+      this.r.a($$0, this.n, 1.0F);
+   }
 
-         @Override
-         public void a(ffn $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.a(fli.this.p, this.c, a.this.g / 2, $$2 + 1, -1);
-         }
+   @Override
+   protected void a(fgm $$0, float $$1) {
+      f.a($$0, this.n, this.o, 1.0F, 0.0F);
+   }
 
-         @Override
-         public boolean a(int $$0, int $$1, int $$2) {
-            if (fkb.a($$0)) {
-               this.b();
-               fli.this.C();
-               return true;
-            } else {
-               return super.a($$0, $$1, $$2);
-            }
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            this.b();
-            if (ac.c() - this.d < 250L) {
-               fli.this.C();
-            }
-
-            this.d = ac.c();
-            return super.a($$0, $$1, $$2);
-         }
-
-         private void b() {
-            a.this.a(this);
-         }
-
-         @Override
-         public wx a() {
-            return wx.a("narrator.select", this.c);
+   private void C() {
+      if (!this.v && this.u) {
+         if (this.w < 40.0F) {
+            this.w++;
+         } else if (this.m.aB()) {
+            Narrator.getNarrator().say(b.getString(), true);
+            this.v = true;
          }
       }
    }

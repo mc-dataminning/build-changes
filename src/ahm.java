@@ -1,29 +1,37 @@
-public class ahm implements ze<age> {
-   public static final yv<vx, ahm> a = ze.a(ahm::a, ahm::new);
-   private final akn b;
+public class ahm implements zs<ags> {
+   public static final zj<wl, ahm> a = zs.a(ahm::a, ahm::new);
+   private final int b;
+   private final int c;
 
-   public ahm(cxy<?> $$0) {
-      this.b = $$0.a();
+   public ahm(int $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private ahm(vx $$0) {
-      this.b = $$0.q();
+   private ahm(wl $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
    }
 
-   private void a(vx $$0) {
-      $$0.a(this.b);
+   private void a(wl $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public zg<ahm> a() {
-      return agc.bO;
+   public zu<ahm> a() {
+      return agq.bx;
    }
 
-   public void a(age $$0) {
+   public void a(ags $$0) {
       $$0.a(this);
    }
 
-   public akn b() {
+   public int b() {
       return this.b;
+   }
+
+   public int e() {
+      return this.c;
    }
 }

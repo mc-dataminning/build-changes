@@ -1,9 +1,5 @@
-public abstract class zb<T extends wd> implements ze<T> {
-   @Override
-   public final void a(T $$0) {
-      throw new AssertionError("This packet should be handled by pipeline");
-   }
+public interface zb {
+   xz a(int var1);
 
-   @Override
-   public abstract zg<? extends zb<T>> a();
+   zc<? extends zb> a();
 }

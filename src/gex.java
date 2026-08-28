@@ -1,39 +1,61 @@
-public class gex implements gek<dpr> {
-   private final fup<?> a;
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Splitter;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   public gex(gel.a $$0) {
-      this.a = new fup($$0.a(fvv.bk));
+public class gex implements gew {
+   private static final Splitter a = Splitter.on('|').omitEmptyStrings();
+   private final String d;
+   private final String e;
+
+   public gex(String $$0, String $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public void a(dpr $$0, float $$1, eyu $$2, gck $$3, int $$4, int $$5) {
-      it $$6 = it.b;
-      if ($$0.m()) {
-         drd $$7 = $$0.i().a_($$0.aA_());
-         if ($$7.b() instanceof dkz) {
-            $$6 = $$7.c(dkz.b);
+   @Override
+   public Predicate<drx> getPredicate(dry<deu, drx> $$0) {
+      dta<?> $$1 = $$0.a(this.d);
+      if ($$1 == null) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown property '%s' on '%s'", this.d, $$0.c()));
+      } else {
+         String $$2 = this.e;
+         boolean $$3 = !$$2.isEmpty() && $$2.charAt(0) == '!';
+         if ($$3) {
+            $$2 = $$2.substring(1);
+         }
+
+         List<String> $$4 = a.splitToList($$2);
+         if ($$4.isEmpty()) {
+            throw new RuntimeException(String.format(Locale.ROOT, "Empty value '%s' for property '%s' on '%s'", this.e, this.d, $$0.c()));
+         } else {
+            Predicate<drx> $$5;
+            if ($$4.size() == 1) {
+               $$5 = this.a($$0, $$1, $$2);
+            } else {
+               List<Predicate<drx>> $$6 = $$4.stream().map($$2x -> this.a($$0, $$1, $$2x)).collect(Collectors.toList());
+               $$5 = $$1x -> $$6.stream().anyMatch($$1xx -> $$1xx.test($$1x));
+            }
+
+            return $$3 ? $$5.negate() : $$5;
          }
       }
+   }
 
-      csj $$8 = $$0.u();
-      gpz $$9;
-      if ($$8 == null) {
-         $$9 = gcz.i;
+   private Predicate<drx> a(dry<deu, drx> $$0, dta<?> $$1, String $$2) {
+      Optional<?> $$3 = $$1.b($$2);
+      if ($$3.isEmpty()) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown value '%s' for property '%s' on '%s' in '%s'", $$2, this.d, $$0.c(), this.e));
       } else {
-         $$9 = gcz.j.get($$8.a());
+         return $$2x -> $$2x.c($$1).equals($$3.get());
       }
+   }
 
-      $$2.a();
-      $$2.a(0.5F, 0.5F, 0.5F);
-      float $$11 = 0.9995F;
-      $$2.b(0.9995F, 0.9995F, 0.9995F);
-      $$2.a($$6.b());
-      $$2.b(1.0F, -1.0F, -1.0F);
-      $$2.a(0.0F, -1.0F, 0.0F);
-      fvw $$12 = this.a.b();
-      $$12.a(0.0F, 24.0F - $$0.a($$1) * 0.5F * 16.0F, 0.0F);
-      $$12.f = 270.0F * $$0.a($$1) * (float) (Math.PI / 180.0);
-      eyy $$13 = $$9.a($$3, gcs::e);
-      this.a.a($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$2.b();
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this).add("key", this.d).add("value", this.e).toString();
    }
 }

@@ -1,22 +1,140 @@
-public class fnv extends fmx<cpu> {
-   private static final akn D = new akn("textures/gui/container/hopper.png");
+public abstract class fnv extends fmy {
+   private static final xl s = xl.c("advMode.setCommand");
+   private static final xl u = xl.c("advMode.command");
+   private static final xl v = xl.c("advMode.previousOutput");
+   protected fhi a;
+   protected fhi b;
+   protected fgz c;
+   protected fgz d;
+   protected fhg<Boolean> r;
+   fhc w;
 
-   public fnv(cpu $$0, clx $$1, wx $$2) {
-      super($$0, $$1, $$2);
-      this.d = 133;
-      this.v = this.d - 94;
+   public fnv() {
+      super(fes.a);
    }
 
    @Override
-   public void a(ffn $$0, int $$1, int $$2, float $$3) {
+   public void e() {
+      if (!this.m().j()) {
+         this.d();
+      }
+   }
+
+   abstract dau m();
+
+   abstract int C();
+
+   @Override
+   protected void aN_() {
+      this.c = this.c(fgz.a(xk.d, $$0x -> this.D()).a(this.n / 2 - 4 - 150, this.o / 4 + 120 + 12, 150, 20).a());
+      this.d = this.c(fgz.a(xk.e, $$0x -> this.d()).a(this.n / 2 + 4, this.o / 4 + 120 + 12, 150, 20).a());
+      boolean $$0 = this.m().p();
+      this.r = this.c(fhg.a(xl.b("O"), xl.b("X")).a($$0).a().a(this.n / 2 + 150 - 20, this.C(), 20, 20, xl.c("advMode.trackOutput"), ($$0x, $$1) -> {
+         dau $$2 = this.m();
+         $$2.a($$1);
+         this.c($$1);
+      }));
+      this.a = new fhi(this.p, this.n / 2 - 150, 50, 300, 20, xl.c("advMode.command")) {
+         @Override
+         protected xz aL_() {
+            return super.aL_().b(fnv.this.w.e());
+         }
+      };
+      this.a.f(32500);
+      this.a.b(this::a);
+      this.d(this.a);
+      this.b = new fhi(this.p, this.n / 2 - 150, this.C(), 276, 20, xl.c("advMode.previousOutput"));
+      this.b.f(32500);
+      this.b.e(false);
+      this.b.a("-");
+      this.d(this.b);
+      this.w = new fhc(this.m, this, this.a, this.p, true, true, 0, 7, false, Integer.MIN_VALUE);
+      this.w.a(true);
+      this.w.d();
+      this.c($$0);
+   }
+
+   @Override
+   protected void aD_() {
+      this.b(this.a);
+   }
+
+   @Override
+   protected xl z() {
+      return this.w.a() ? this.w.b() : super.z();
+   }
+
+   @Override
+   public void a(ffa $$0, int $$1, int $$2) {
+      String $$3 = this.a.a();
+      this.b($$0, $$1, $$2);
+      this.a.a($$3);
+      this.w.d();
+   }
+
+   @Override
+   protected void c(boolean $$0) {
+      this.b.a($$0 ? this.m().l().getString() : "-");
+   }
+
+   protected void D() {
+      dau $$0 = this.m();
+      this.a($$0);
+      if (!$$0.p()) {
+         $$0.c(null);
+      }
+
+      this.m.a(null);
+   }
+
+   protected abstract void a(dau var1);
+
+   private void a(String $$0) {
+      this.w.d();
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.w.a($$0, $$1, $$2)) {
+         return true;
+      } else if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return false;
+      } else {
+         this.D();
+         return true;
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return this.w.a($$3) ? true : super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      return this.w.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(fgm $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+      $$0.a(this.p, s, this.n / 2, 20, 16777215);
+      $$0.b(this.p, u, this.n / 2 - 150 + 1, 40, 10526880);
+      this.a.a($$0, $$1, $$2, $$3);
+      int $$4 = 75;
+      if (!this.b.a().isEmpty()) {
+         $$4 += 5 * 9 + 1 + this.C() - 135;
+         $$0.b(this.p, v, this.n / 2 - 150 + 1, $$4 + 4, 10526880);
+         this.b.a($$0, $$1, $$2, $$3);
+      }
+
+      this.w.a($$0, $$1, $$2);
    }
 
    @Override
-   protected void a(ffn $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.c) / 2;
-      int $$5 = (this.o - this.d) / 2;
-      $$0.a(D, $$4, $$5, 0, 0, this.c, this.d);
+   public void b(fgm $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

@@ -1,19 +1,36 @@
-import io.netty.buffer.ByteBuf;
+import com.mojang.serialization.MapCodec;
 
-public interface ze<T extends wd> {
-   zg<? extends ze<T>> a();
+public class ze implements zb {
+   public static final zc<ze> a = new zc<ze>() {
+      private static final MapCodec<ze> a = yi.b.a.xmap(ze::new, $$0 -> $$0.e);
+      private static final zj<ww, ze> b = zj.a(yi.b.c, $$0 -> $$0.e, ze::new);
 
-   void a(T var1);
+      @Override
+      public MapCodec<ze> a() {
+         return a;
+      }
 
-   default boolean c() {
-      return false;
+      @Override
+      public zj<ww, ze> b() {
+         return b;
+      }
+   };
+   public static final ze b = new ze(yi.a);
+   public static final ze c = new ze(yi.a.a(n.m));
+   public static final ze d = new ze(yi.a.a(n.o));
+   final yi e;
+
+   public ze(yi $$0) {
+      this.e = $$0;
    }
 
-   default boolean d() {
-      return false;
+   @Override
+   public xz a(int $$0) {
+      return xl.b(Integer.toString($$0)).c(this.e);
    }
 
-   static <B extends ByteBuf, T extends ze<?>> yv<B, T> a(yy<B, T> $$0, yw<B, T> $$1) {
-      return yv.a($$0, $$1);
+   @Override
+   public zc<ze> a() {
+      return a;
    }
 }

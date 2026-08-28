@@ -1,13 +1,24 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 
-public interface ekz<P extends eky> {
-   ekz<ekx> a = a("always_true", ekx.a);
-   ekz<ekv> b = a("linear_pos", ekv.a);
-   ekz<ekk> c = a("axis_aligned_linear_pos", ekk.a);
+public class ekz extends eif {
+   public static final MapCodec<ekz> d = a(ekz::new);
 
-   MapCodec<P> codec();
+   public ekz(eif.c $$0) {
+      super($$0);
+   }
 
-   static <P extends eky> ekz<P> a(String $$0, MapCodec<P> $$1) {
-      return jk.a(le.q, $$0, () -> $$1);
+   @Override
+   public Optional<eif.b> a(eif.a $$0) {
+      return a($$0, dxp.a.a, $$1 -> a($$1, $$0));
+   }
+
+   private static void a(eix $$0, eif.a $$1) {
+      $$0.a(new eky($$1.f(), $$1.h().d(), $$1.h().e()));
+   }
+
+   @Override
+   public eio<?> e() {
+      return eio.o;
    }
 }

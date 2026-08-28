@@ -1,33 +1,54 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.util.concurrent.Executor;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.Locale;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class gst implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final bld<gss> b;
-   private final bop<Runnable> c;
+public interface gst<T> {
+   static <T> gst<T> a() {
+      return new gst<T>() {
+         @Override
+         public List<T> a(String $$0) {
+            return List.of();
+         }
 
-   public gst(FileChannel $$0, Executor $$1) {
-      this.b = new bld<>(gss.a, $$0);
-      this.c = bop.a($$1, "telemetry-event-log");
+         @Override
+         public List<T> b(String $$0) {
+            return List.of();
+         }
+      };
    }
 
-   public gsu a() {
-      return $$0 -> this.c.a(() -> {
-            try {
-               this.b.a($$0);
-            } catch (IOException var3) {
-               a.error("Failed to write telemetry event to log", var3);
+   static <T> gst<T> a(List<T> $$0, Function<T, Stream<alb>> $$1) {
+      if ($$0.isEmpty()) {
+         return a();
+      } else {
+         final gsw<T> $$2 = new gsw<>();
+         final gsw<T> $$3 = new gsw<>();
+
+         for (T $$4 : $$0) {
+            $$1.apply($$4).forEach($$3x -> {
+               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
+               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
+            });
+         }
+
+         $$2.a();
+         $$3.a();
+         return new gst<T>() {
+            @Override
+            public List<T> a(String $$0) {
+               return $$2.a($$0);
             }
-         });
+
+            @Override
+            public List<T> b(String $$0) {
+               return $$3.a($$0);
+            }
+         };
+      }
    }
 
-   @Override
-   public void close() {
-      this.c.a(() -> IOUtils.closeQuietly(this.b));
-      this.c.close();
-   }
+   List<T> a(String var1);
+
+   List<T> b(String var1);
 }

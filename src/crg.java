@@ -1,73 +1,80 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Supplier;
-import java.util.function.UnaryOperator;
+public class crg extends crk {
+   private final cqf a;
+   private final cms b;
+   private int g;
 
-public record crg(Map<crf.a, Integer> b, int c, ix<avh> d, Supplier<cxt> e, List<crg.a> f, float g, float h) {
-   public static final Codec<ix<crg>> a = le.ar.r();
-
-   public int a(crf.a $$0) {
-      return this.b.getOrDefault($$0, 0);
+   public crg(cms $$0, cqf $$1, bqi $$2, int $$3, int $$4, int $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.b = $$0;
+      this.a = $$1;
    }
 
-   public Map<crf.a, Integer> a() {
-      return this.b;
+   @Override
+   public boolean a(cuk $$0) {
+      return false;
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public ix<avh> c() {
-      return this.d;
-   }
-
-   public Supplier<cxt> d() {
-      return this.e;
-   }
-
-   public List<crg.a> e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
-   }
-
-   public float g() {
-      return this.h;
-   }
-
-   public static final class a {
-      private final akn a;
-      private final String b;
-      private final boolean c;
-      private final akn d;
-      private final akn e;
-
-      public a(akn $$0, String $$1, boolean $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = this.b(true);
-         this.e = this.b(false);
+   @Override
+   public cuk a(int $$0) {
+      if (this.h()) {
+         this.g = this.g + Math.min($$0, this.g().I());
       }
 
-      public a(akn $$0) {
-         this($$0, "", false);
+      return super.a($$0);
+   }
+
+   @Override
+   protected void a(cuk $$0, int $$1) {
+      this.g += $$1;
+      this.b_($$0);
+   }
+
+   @Override
+   protected void b(int $$0) {
+      this.g += $$0;
+   }
+
+   @Override
+   protected void b_(cuk $$0) {
+      if (this.g > 0) {
+         $$0.a(this.b.dP(), this.b, this.g);
       }
 
-      private akn b(boolean $$0) {
-         return this.a.a((UnaryOperator<String>)($$1 -> "textures/models/armor/" + this.a.a() + "_layer_" + ($$0 ? 2 : 1) + this.b + ".png"));
+      if (this.c instanceof cre $$1) {
+         $$1.a(this.b, this.a.h());
       }
 
-      public akn a(boolean $$0) {
-         return $$0 ? this.d : this.e;
-      }
+      this.g = 0;
+   }
 
-      public boolean a() {
-         return this.c;
+   @Override
+   public void a(cms $$0, cuk $$1) {
+      this.b_($$1);
+      jr<cuk> $$2 = $$0.dP().r().c(cyv.a, this.a, $$0.dP());
+
+      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+         cuk $$4 = this.a.a($$3);
+         cuk $$5 = $$2.get($$3);
+         if (!$$4.e()) {
+            this.a.a($$3, 1);
+            $$4 = this.a.a($$3);
+         }
+
+         if (!$$5.e()) {
+            if ($$4.e()) {
+               this.a.a($$3, $$5);
+            } else if (cuk.c($$4, $$5)) {
+               $$5.g($$4.I());
+               this.a.a($$3, $$5);
+            } else if (!this.b.gc().f($$5)) {
+               this.b.a($$5, false);
+            }
+         }
       }
+   }
+
+   @Override
+   public boolean f() {
+      return true;
    }
 }

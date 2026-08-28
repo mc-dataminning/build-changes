@@ -1,12 +1,12 @@
-public class gkh extends ggs<cmg> {
-   public static final akn a = new akn("textures/entity/projectiles/arrow.png");
-   public static final akn f = new akn("textures/entity/projectiles/tipped_arrow.png");
+public class gkh extends gjy<cfr, fux<cfr>> {
+   private static final alb a = new alb("textures/entity/pig/pig.png");
 
-   public gkh(ght.a $$0) {
-      super($$0);
+   public gkh(gis.a $$0) {
+      super($$0, new fux<>($$0.a(fwu.aI)), 0.7F);
+      this.a(new gnf<>(this, new fux<>($$0.a(fwu.aQ)), new alb("textures/entity/pig/pig_saddle.png")));
    }
 
-   public akn a(cmg $$0) {
-      return $$0.H() > 0 ? f : a;
+   public alb a(cfr $$0) {
+      return a;
    }
 }

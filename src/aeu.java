@@ -1,45 +1,66 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.shorts.ShortIterator;
+import it.unimi.dsi.fastutil.shorts.ShortSet;
+import java.util.function.BiConsumer;
 
-public class aeu implements ze<abq> {
-   public static final yv<vx, aeu> a = ze.a(aeu::a, aeu::new);
-   private final evh b;
-   private final String c;
+public class aeu implements zs<ace> {
+   public static final zj<wl, aeu> a = zs.a(aeu::a, aeu::new);
+   private static final int b = 12;
+   private final kb c;
+   private final short[] d;
+   private final drx[] e;
 
-   public aeu(evh $$0, @Nullable evi $$1) {
-      this.b = $$0;
-      if ($$1 == null) {
-         this.c = "";
-      } else {
-         this.c = $$1.b();
+   public aeu(kb $$0, ShortSet $$1, due $$2) {
+      this.c = $$0;
+      int $$3 = $$1.size();
+      this.d = new short[$$3];
+      this.e = new drx[$$3];
+      int $$4 = 0;
+
+      for (ShortIterator var6 = $$1.iterator(); var6.hasNext(); $$4++) {
+         short $$5 = (Short)var6.next();
+         this.d[$$4] = $$5;
+         this.e[$$4] = $$2.a(kb.a($$5), kb.b($$5), kb.c($$5));
       }
    }
 
-   private aeu(vx $$0) {
-      this.b = $$0.a(evh.u);
-      this.c = $$0.p();
+   private aeu(wl $$0) {
+      this.c = kb.a($$0.readLong());
+      int $$1 = $$0.l();
+      this.d = new short[$$1];
+      this.e = new drx[$$1];
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         long $$3 = $$0.m();
+         this.d[$$2] = (short)((int)($$3 & 4095L));
+         this.e[$$2] = deu.q.a((int)($$3 >>> 12));
+      }
    }
 
-   private void a(vx $$0) {
-      $$0.a(evh::a, this.b);
-      $$0.a(this.c);
+   private void a(wl $$0) {
+      $$0.b(this.c.s());
+      $$0.c(this.d.length);
+
+      for (int $$1 = 0; $$1 < this.d.length; $$1++) {
+         $$0.a((long)deu.i(this.e[$$1]) << 12 | (long)this.d[$$1]);
+      }
    }
 
    @Override
-   public zg<aeu> a() {
-      return agc.aB;
+   public zu<aeu> a() {
+      return agq.an;
    }
 
-   public void a(abq $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public evh b() {
-      return this.b;
-   }
+   public void a(BiConsumer<iz, drx> $$0) {
+      iz.a $$1 = new iz.a();
 
-   @Nullable
-   public String e() {
-      return Objects.equals(this.c, "") ? null : this.c;
+      for (int $$2 = 0; $$2 < this.d.length; $$2++) {
+         short $$3 = this.d[$$2];
+         $$1.d(this.c.d($$3), this.c.e($$3), this.c.f($$3));
+         $$0.accept($$1, this.e[$$2]);
+      }
    }
 }

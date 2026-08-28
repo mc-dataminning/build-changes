@@ -1,65 +1,65 @@
-import io.netty.util.internal.ThreadLocalRandom;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 
-public interface aym {
-   @Deprecated
-   double a = 2.297;
+public record aym<T extends Comparable<T>>(T b, T c) {
+   public static final Codec<aym<Integer>> a = a(Codec.INT);
 
-   static aym a() {
-      return a(dxk.a());
-   }
-
-   @Deprecated
-   static aym b() {
-      return new dxo(dxk.a());
-   }
-
-   static aym a(long $$0) {
-      return new dww($$0);
-   }
-
-   static aym c() {
-      return new dxl(ThreadLocalRandom.current().nextLong());
-   }
-
-   aym d();
-
-   dxi e();
-
-   void b(long var1);
-
-   int f();
-
-   int a(int var1);
-
-   default int a(int $$0, int $$1) {
-      return this.a($$1 - $$0 + 1) + $$0;
-   }
-
-   long g();
-
-   boolean h();
-
-   float i();
-
-   double j();
-
-   double k();
-
-   default double a(double $$0, double $$1) {
-      return $$0 + $$1 * (this.j() - this.j());
-   }
-
-   default void b(int $$0) {
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.f();
-      }
-   }
-
-   default int b(int $$0, int $$1) {
-      if ($$0 >= $$1) {
-         throw new IllegalArgumentException("bound - origin is non positive");
+   public aym(T b, T c) {
+      if (b.compareTo(c) > 0) {
+         throw new IllegalArgumentException("min_inclusive must be less than or equal to max_inclusive");
       } else {
-         return $$0 + this.a($$1 - $$0);
+         this.b = b;
+         this.c = c;
       }
+   }
+
+   public aym(T $$0) {
+      this($$0, $$0);
+   }
+
+   public static <T extends Comparable<T>> Codec<aym<T>> a(Codec<T> $$0) {
+      return ayc.a($$0, "min_inclusive", "max_inclusive", aym::a, aym::a, aym::b);
+   }
+
+   public static <T extends Comparable<T>> Codec<aym<T>> a(Codec<T> $$0, T $$1, T $$2) {
+      return a($$0)
+         .validate(
+            $$2x -> {
+               if ($$2x.a().compareTo($$1) < 0) {
+                  return DataResult.error(() -> "Range limit too low, expected at least " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
+               } else {
+                  return $$2x.b().compareTo($$2) > 0
+                     ? DataResult.error(() -> "Range limit too high, expected at most " + $$2 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
+                     : DataResult.success($$2x);
+               }
+            }
+         );
+   }
+
+   public static <T extends Comparable<T>> DataResult<aym<T>> a(T $$0, T $$1) {
+      return $$0.compareTo($$1) <= 0
+         ? DataResult.success(new aym($$0, $$1))
+         : DataResult.error(() -> "min_inclusive must be less than or equal to max_inclusive");
+   }
+
+   public boolean a(T $$0) {
+      return $$0.compareTo(this.b) >= 0 && $$0.compareTo(this.c) <= 0;
+   }
+
+   public boolean a(aym<T> $$0) {
+      return $$0.a().compareTo(this.b) >= 0 && $$0.c.compareTo(this.c) <= 0;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.b + ", " + this.c + "]";
+   }
+
+   public T a() {
+      return this.b;
+   }
+
+   public T b() {
+      return this.c;
    }
 }

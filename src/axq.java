@@ -1,84 +1,33 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.logging.LogUtils;
-import java.io.Closeable;
-import java.io.File;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.FileSystem;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import com.mojang.util.UndashedUuid;
+import java.util.UUID;
 
-public class axq implements Closeable {
-   private static final Logger a = LogUtils.getLogger();
-   private final Path b;
-   private final Path c;
-   private final FileSystem d;
+public class axq {
+   public static final String a = "https://aka.ms/MinecraftGDPR";
+   public static final String b = "https://aka.ms/MinecraftEULA";
+   public static final String c = "http://go.microsoft.com/fwlink/?LinkId=521839";
+   public static final String d = "https://aka.ms/MinecraftJavaAttribution";
+   public static final String e = "https://aka.ms/MinecraftJavaLicenses";
+   public static final String f = "https://aka.ms/BuyMinecraftJava";
+   public static final String g = "https://aka.ms/JavaAccountSettings";
+   public static final String h = "https://aka.ms/snapshotfeedback?ref=game";
+   public static final String i = "https://aka.ms/javafeedback?ref=game";
+   public static final String j = "https://aka.ms/snapshotbugs?ref=game";
+   public static final String k = "https://aka.ms/Minecraft-Support";
+   public static final String l = "https://aka.ms/MinecraftJavaAccessibility";
+   public static final String m = "https://aka.ms/aboutjavareporting";
+   public static final String n = "https://aka.ms/mcjavamoderation";
+   public static final String o = "https://aka.ms/javablocking";
+   public static final String p = "https://aka.ms/MinecraftSymLinks";
+   public static final String q = "https://aka.ms/startjavarealmstrial";
+   public static final String r = "https://aka.ms/BuyJavaRealms";
+   public static final String s = "https://aka.ms/MinecraftRealmsTerms";
+   public static final String t = "https://aka.ms/MinecraftRealmsContentCreator";
 
-   public axq(Path $$0) {
-      this.b = $$0;
-      this.c = $$0.resolveSibling($$0.getFileName().toString() + "_tmp");
-
-      try {
-         this.d = ac.f.newFileSystem(this.c, ImmutableMap.of("create", "true"));
-      } catch (IOException var3) {
-         throw new UncheckedIOException(var3);
-      }
+   public static String a(String $$0, UUID $$1, boolean $$2) {
+      return a($$0, $$1) + "&ref=" + ($$2 ? "expiredTrial" : "expiredRealm");
    }
 
-   public void a(Path $$0, String $$1) {
-      try {
-         Path $$2 = this.d.getPath(File.separator);
-         Path $$3 = $$2.resolve($$0.toString());
-         Files.createDirectories($$3.getParent());
-         Files.write($$3, $$1.getBytes(StandardCharsets.UTF_8));
-      } catch (IOException var5) {
-         throw new UncheckedIOException(var5);
-      }
-   }
-
-   public void a(Path $$0, File $$1) {
-      try {
-         Path $$2 = this.d.getPath(File.separator);
-         Path $$3 = $$2.resolve($$0.toString());
-         Files.createDirectories($$3.getParent());
-         Files.copy($$1.toPath(), $$3);
-      } catch (IOException var5) {
-         throw new UncheckedIOException(var5);
-      }
-   }
-
-   public void a(Path $$0) {
-      try {
-         Path $$1 = this.d.getPath(File.separator);
-         if (Files.isRegularFile($$0)) {
-            Path $$2 = $$1.resolve($$0.getParent().relativize($$0).toString());
-            Files.copy($$2, $$0);
-         } else {
-            try (Stream<Path> $$3 = Files.find($$0, Integer.MAX_VALUE, ($$0x, $$1x) -> $$1x.isRegularFile())) {
-               for (Path $$4 : $$3.collect(Collectors.toList())) {
-                  Path $$5 = $$1.resolve($$0.relativize($$4).toString());
-                  Files.createDirectories($$5.getParent());
-                  Files.copy($$4, $$5);
-               }
-            }
-         }
-      } catch (IOException var9) {
-         throw new UncheckedIOException(var9);
-      }
-   }
-
-   @Override
-   public void close() {
-      try {
-         this.d.close();
-         Files.move(this.c, this.b);
-         a.info("Compressed to {}", this.b);
-      } catch (IOException var2) {
-         throw new UncheckedIOException(var2);
-      }
+   public static String a(String $$0, UUID $$1) {
+      return "https://aka.ms/ExtendJavaRealms?subscriptionId=" + $$0 + "&profileId=" + UndashedUuid.toString($$1);
    }
 }

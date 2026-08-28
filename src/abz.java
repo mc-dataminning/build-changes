@@ -1,31 +1,20 @@
-public class abz implements ze<abq> {
-   public static final yv<wi, abz> a = yv.a(io.b, abz::e, yt.a(dea.q), abz::b, abz::new);
-   private final io b;
-   private final drd c;
+public record abz(alb b) implements zs<aby> {
+   public static final zj<wl, abz> a = zs.a(abz::a, abz::new);
 
-   public abz(io $$0, drd $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private abz(wl $$0) {
+      this($$0.q());
    }
 
-   public abz(daf $$0, io $$1) {
-      this($$1, $$0.a_($$1));
+   private void a(wl $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zg<abz> a() {
-      return agc.k;
+   public zu<abz> a() {
+      return aca.a;
    }
 
-   public void a(abq $$0) {
+   public void a(aby $$0) {
       $$0.a(this);
-   }
-
-   public drd b() {
-      return this.c;
-   }
-
-   public io e() {
-      return this.b;
    }
 }

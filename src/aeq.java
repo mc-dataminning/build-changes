@@ -1,29 +1,23 @@
-public class aeq implements ze<abq> {
-   public static final yv<vx, aeq> a = ze.a(aeq::a, aeq::new);
-   private final int b;
+import javax.annotation.Nullable;
 
-   public aeq(int $$0) {
-      this.b = $$0;
-   }
-
-   private aeq(vx $$0) {
-      this.b = $$0.readByte();
-   }
-
-   private void a(vx $$0) {
-      $$0.k(this.b);
-   }
+public record aeq(int b, ji<brv> c) implements zs<ace> {
+   public static final zj<ww, aeq> a = zj.a(zh.g, $$0 -> $$0.b, zh.b(lq.R), aeq::e, aeq::new);
 
    @Override
-   public zg<aeq> a() {
-      return agc.ax;
+   public zu<aeq> a() {
+      return agq.ak;
    }
 
-   public void a(abq $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   @Nullable
+   public bsp a(dbt $$0) {
+      return $$0.a(this.b);
+   }
+
+   public ji<brv> e() {
+      return this.c;
    }
 }

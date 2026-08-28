@@ -1,93 +1,33 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.nio.charset.StandardCharsets;
 
 public class avl {
-   protected final Set<akn> a = Sets.newHashSet();
-   protected final Set<akn> b = Sets.newHashSet();
-   private final avm c = new avm();
+   public static final int a = 1460;
+   public static final char[] b = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
 
-   public void a(avl $$0) {
-      this.a.clear();
-      this.b.clear();
-      this.c.a($$0.c);
-      this.a.addAll($$0.a);
-      this.b.addAll($$0.b);
-   }
+   public static String a(byte[] $$0, int $$1, int $$2) {
+      int $$3 = $$2 - 1;
+      int $$4 = $$1 > $$3 ? $$3 : $$1;
 
-   public void a(cxy<?> $$0) {
-      if (!$$0.b().ao_()) {
-         this.a($$0.a());
+      while (0 != $$0[$$4] && $$4 < $$3) {
+         $$4++;
       }
+
+      return new String($$0, $$1, $$4 - $$1, StandardCharsets.UTF_8);
    }
 
-   protected void a(akn $$0) {
-      this.a.add($$0);
+   public static int a(byte[] $$0, int $$1) {
+      return b($$0, $$1, $$0.length);
    }
 
-   public boolean b(@Nullable cxy<?> $$0) {
-      return $$0 == null ? false : this.a.contains($$0.a());
+   public static int b(byte[] $$0, int $$1, int $$2) {
+      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1 + 3] << 24 | ($$0[$$1 + 2] & 0xFF) << 16 | ($$0[$$1 + 1] & 0xFF) << 8 | $$0[$$1] & 0xFF;
    }
 
-   public boolean b(akn $$0) {
-      return this.a.contains($$0);
+   public static int c(byte[] $$0, int $$1, int $$2) {
+      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1] << 24 | ($$0[$$1 + 1] & 0xFF) << 16 | ($$0[$$1 + 2] & 0xFF) << 8 | $$0[$$1 + 3] & 0xFF;
    }
 
-   public void c(cxy<?> $$0) {
-      this.c($$0.a());
-   }
-
-   protected void c(akn $$0) {
-      this.a.remove($$0);
-      this.b.remove($$0);
-   }
-
-   public boolean d(cxy<?> $$0) {
-      return this.b.contains($$0.a());
-   }
-
-   public void e(cxy<?> $$0) {
-      this.b.remove($$0.a());
-   }
-
-   public void f(cxy<?> $$0) {
-      this.d($$0.a());
-   }
-
-   protected void d(akn $$0) {
-      this.b.add($$0);
-   }
-
-   public boolean a(cqj $$0) {
-      return this.c.a($$0);
-   }
-
-   public void a(cqj $$0, boolean $$1) {
-      this.c.a($$0, $$1);
-   }
-
-   public boolean a(cqi<?> $$0) {
-      return this.b($$0.t());
-   }
-
-   public boolean b(cqj $$0) {
-      return this.c.b($$0);
-   }
-
-   public void b(cqj $$0, boolean $$1) {
-      this.c.b($$0, $$1);
-   }
-
-   public void a(avm $$0) {
-      this.c.a($$0);
-   }
-
-   public avm a() {
-      return this.c.a();
-   }
-
-   public void a(cqj $$0, boolean $$1, boolean $$2) {
-      this.c.a($$0, $$1);
-      this.c.b($$0, $$2);
+   public static String a(byte $$0) {
+      return "" + b[($$0 & 240) >>> 4] + b[$$0 & 15];
    }
 }

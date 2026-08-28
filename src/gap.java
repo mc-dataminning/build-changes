@@ -1,56 +1,49 @@
-public class gap extends gag {
-   private final gat b;
-   protected boolean a;
+public class gap extends gbx {
+   private final gbs a;
 
-   gap(fwr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gat $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.b = $$7;
-      this.d(1.5F);
-      this.b($$7);
+   protected gap(fxq $$0, double $$1, double $$2, double $$3, double $$4, gbs $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.t = 6 + this.r.a(4);
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
+      this.a = $$5;
+      this.b($$5);
    }
 
    @Override
    public int a(float $$0) {
-      return this.a ? 240 : super.a($$0);
-   }
-
-   @Override
-   public gac b() {
-      return gac.c;
+      return 15728880;
    }
 
    @Override
    public void a() {
-      super.a();
-      this.b(this.b);
-   }
-
-   public static class a implements gab<lb> {
-      private final gat a;
-
-      public a(gat $$0) {
-         this.a = $$0;
-      }
-
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gap $$8 = new gap($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.a = true;
-         return $$8;
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.a);
       }
    }
 
-   public static class b implements gab<lb> {
-      private final gat a;
+   @Override
+   public gbb b() {
+      return gbb.d;
+   }
 
-      public b(gat $$0) {
+   public static class a implements gba<lm> {
+      private final gbs a;
+
+      public a(gbs $$0) {
          this.a = $$0;
       }
 
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gap $$8 = new gap($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         return $$8;
+      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gap($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

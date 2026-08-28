@@ -1,31 +1,44 @@
-public class ftz extends fut {
-   private final fvw a;
-   private final fvw b;
-   private final fvw c;
+public class ftz<T extends bsp> extends fue<T> {
+   private final fwv a;
+   private final fwv[] b = new fwv[9];
 
-   public ftz(fvw $$0) {
-      this.a = $$0.b("head");
-      this.b = this.a.b("left_ear");
-      this.c = this.a.b("right_ear");
+   public ftz(fwv $$0) {
+      this.a = $$0;
+
+      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
+         this.b[$$1] = $$0.b(a($$1));
+      }
    }
 
-   public static fwe a() {
-      fwe $$0 = new fwe();
-      fua.a(fwa.a, $$0);
-      return $$0;
+   private static String a(int $$0) {
+      return "tentacle" + $$0;
+   }
+
+   public static fxb b() {
+      fxd $$0 = new fxd();
+      fxe $$1 = $$0.a();
+      $$1.a("body", fxa.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), fwx.a(0.0F, 17.6F, 0.0F));
+      azc $$2 = azc.a(1660L);
+
+      for (int $$3 = 0; $$3 < 9; $$3++) {
+         float $$4 = (((float)($$3 % 3) - (float)($$3 / 3 % 2) * 0.5F + 0.25F) / 2.0F * 2.0F - 1.0F) * 5.0F;
+         float $$5 = ((float)($$3 / 3) / 2.0F * 2.0F - 1.0F) * 5.0F;
+         int $$6 = $$2.a(7) + 8;
+         $$1.a(a($$3), fxa.c().a(0, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, (float)$$6, 2.0F), fwx.a($$4, 24.6F, $$5));
+      }
+
+      return fxb.a($$0, 64, 32);
    }
 
    @Override
-   public void a(float $$0, float $$1, float $$2) {
-      this.a.f = $$1 * (float) (Math.PI / 180.0);
-      this.a.e = $$2 * (float) (Math.PI / 180.0);
-      float $$3 = 1.2F;
-      this.b.g = (float)(-(Math.cos((double)($$0 * (float) Math.PI * 0.2F * 1.2F)) + 2.5)) * 0.2F;
-      this.c.g = (float)(Math.cos((double)($$0 * (float) Math.PI * 0.2F)) + 2.5) * 0.2F;
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      for (int $$6 = 0; $$6 < this.b.length; $$6++) {
+         this.b[$$6].e = 0.2F * ayu.a($$3 * 0.3F + (float)$$6) + 0.4F;
+      }
    }
 
    @Override
-   public void a(eyu $$0, eyy $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public fwv a() {
+      return this.a;
    }
 }

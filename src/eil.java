@@ -1,42 +1,44 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Collections;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class eil extends eis {
-   public static final MapCodec<eil> a = MapCodec.unit(() -> eil.b);
-   public static final eil b = new eil();
+public record eil(List<eil.a> c, ejc d) {
+   public static final Codec<eil> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(eil.a.a.listOf().fieldOf("structures").forGetter(eil::a), ejc.b.fieldOf("placement").forGetter(eil::b)).apply($$0, eil::new)
+   );
+   public static final Codec<ji<eil>> b = akx.a(lq.aL, a);
 
-   private eil() {
-      super(eiu.a.a);
+   public eil(ji<eif> $$0, ejc $$1) {
+      this(List.of(new eil.a($$0, 1)), $$1);
    }
 
-   @Override
-   public js a(elm $$0, dkn $$1) {
-      return js.g;
+   public static eil.a a(ji<eif> $$0, int $$1) {
+      return new eil.a($$0, $$1);
    }
 
-   @Override
-   public List<ell.c> a(elm $$0, io $$1, dkn $$2, aym $$3) {
-      return Collections.emptyList();
+   public static eil.a a(ji<eif> $$0) {
+      return new eil.a($$0, 1);
    }
 
-   @Override
-   public ehd a(elm $$0, io $$1, dkn $$2) {
-      throw new IllegalStateException("Invalid call to EmtyPoolElement.getBoundingBox, filter me!");
+   public List<eil.a> a() {
+      return this.c;
    }
 
-   @Override
-   public boolean a(elm $$0, dbu $$1, dbs $$2, dta $$3, io $$4, io $$5, dkn $$6, ehd $$7, aym $$8, boolean $$9) {
-      return true;
+   public ejc b() {
+      return this.d;
    }
 
-   @Override
-   public eit<?> a() {
-      return eit.d;
-   }
+   public static record a(ji<eif> b, int c) {
+      public static final Codec<eil.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(eif.b.fieldOf("structure").forGetter(eil.a::a), ayc.l.fieldOf("weight").forGetter(eil.a::b)).apply($$0, eil.a::new)
+      );
 
-   @Override
-   public String toString() {
-      return "Empty";
+      public ji<eif> a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
    }
 }

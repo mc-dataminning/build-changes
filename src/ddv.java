@@ -1,59 +1,91 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Optional;
 
-public class ddv extends dfv {
-   public static final MapCodec<ddv> a = b(ddv::new);
-   public static final int b = 3;
-   public static final dsd c = drt.as;
-   private static final evf[] g = new evf[]{
-      dea.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      dea.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      dea.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      dea.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0)
-   };
+public class ddv extends dfd {
+   public static final MapCodec<ddv> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ala.a(lq.f).fieldOf("fruit").forGetter($$0x -> $$0x.e),
+               ala.a(lq.f).fieldOf("stem").forGetter($$0x -> $$0x.f),
+               ala.a(lq.G).fieldOf("seed").forGetter($$0x -> $$0x.g),
+               u()
+            )
+            .apply($$0, ddv::new)
+   );
+   public static final dsr b = diq.aE;
+   protected static final float c = 2.0F;
+   private static final Map<je, ewf> d = Maps.newEnumMap(
+      ImmutableMap.of(
+         je.d,
+         deu.a(6.0, 0.0, 6.0, 10.0, 10.0, 16.0),
+         je.e,
+         deu.a(0.0, 0.0, 6.0, 10.0, 10.0, 10.0),
+         je.c,
+         deu.a(6.0, 0.0, 0.0, 10.0, 10.0, 10.0),
+         je.f,
+         deu.a(6.0, 0.0, 6.0, 16.0, 10.0, 10.0)
+      )
+   );
+   private final ala<deu> e;
+   private final ala<deu> f;
+   private final ala<cuf> g;
 
    @Override
    public MapCodec<ddv> a() {
       return a;
    }
 
-   public ddv(drc.d $$0) {
-      super($$0);
+   protected ddv(ala<deu> $$0, ala<deu> $$1, ala<cuf> $$2, drw.d $$3) {
+      super($$3);
+      this.k(this.E.b().a(b, je.c));
+      this.f = $$0;
+      this.e = $$1;
+      this.g = $$2;
    }
 
    @Override
-   protected dsd b() {
-      return c;
+   protected ewf a(drx $$0, daz $$1, iz $$2, evr $$3) {
+      return d.get($$0.c(b));
    }
 
    @Override
-   public int c() {
-      return 3;
-   }
-
-   @Override
-   protected day d() {
-      return ctt.vl;
-   }
-
-   @Override
-   protected void b(drd $$0, aqn $$1, io $$2, aym $$3) {
-      if ($$3.a(3) != 0) {
-         super.b($$0, $$1, $$2, $$3);
+   protected drx a(drx $$0, je $$1, drx $$2, dbu $$3, iz $$4, iz $$5) {
+      if (!$$2.a(this.e) && $$1 == $$0.c(b)) {
+         Optional<deu> $$6 = $$3.H_().d(lq.f).e(this.f);
+         if ($$6.isPresent()) {
+            return $$6.get().n().b(dmq.c, Integer.valueOf(7));
+         }
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected int a(daz $$0) {
-      return super.a($$0) / 3;
+   protected boolean b(drx $$0, daz $$1, iz $$2) {
+      return $$0.a(dew.cC);
    }
 
    @Override
-   protected void a(dre.a<dea, drd> $$0) {
-      $$0.a(c);
+   public cuk a(dbw $$0, iz $$1, drx $$2) {
+      return new cuk((dbs)DataFixUtils.orElse($$0.H_().d(lq.G).e(this.g), this));
    }
 
    @Override
-   protected evf a(drd $$0, daf $$1, io $$2, eur $$3) {
-      return g[this.g($$0)];
+   protected drx a(drx $$0, dlh $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected drx a(drx $$0, djr $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dry.a<deu, drx> $$0) {
+      $$0.a(b);
    }
 }

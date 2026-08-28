@@ -1,29 +1,26 @@
+import com.google.common.collect.Iterables;
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import java.util.function.Predicate;
 
-public class bc {
-   public static final Codec<bc> a = esp.a.listOf().xmap(bc::new, $$0 -> $$0.b);
-   private final List<esn> b;
-   private final Predicate<eph> c;
-
-   bc(List<esn> $$0) {
-      this.b = $$0;
-      this.c = ac.a($$0);
+public record bc<T, P extends Predicate<T>>(Optional<ba<T, P>> a, Optional<bb<T, P>> b, Optional<de.d> c) implements Predicate<Iterable<T>> {
+   public static <T, P extends Predicate<T>> Codec<bc<T, P>> a(Codec<P> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(
+                  ba.a($$0).optionalFieldOf("contains").forGetter(bc::a),
+                  bb.a($$0).optionalFieldOf("count").forGetter(bc::b),
+                  de.d.d.optionalFieldOf("size").forGetter(bc::c)
+               )
+               .apply($$1, bc::new)
+      );
    }
 
-   public static bc a(esn... $$0) {
-      return new bc(List.of($$0));
-   }
-
-   public boolean a(eph $$0) {
-      return this.c.test($$0);
-   }
-
-   public void a(epn $$0) {
-      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
-         esn $$2 = this.b.get($$1);
-         $$2.a($$0.a("[" + $$1 + "]"));
+   public boolean a(Iterable<T> $$0) {
+      if (this.a.isPresent() && !this.a.get().test($$0)) {
+         return false;
+      } else {
+         return this.b.isPresent() && !this.b.get().test($$0) ? false : !this.c.isPresent() || this.c.get().d(Iterables.size($$0));
       }
    }
 }

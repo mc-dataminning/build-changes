@@ -1,43 +1,59 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.Set;
 
-public class ccn extends cda<cki> {
-   @Override
-   public Set<cbu<?>> a() {
-      return ImmutableSet.of(cbu.h, cbu.aw, cbu.aq, cbu.ap, cbu.as, cbu.at, new cbu[0]);
+public class ccn<T> {
+   private final T a;
+   private long b;
+
+   public ccn(T $$0, long $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   protected void a(aqn $$0, cki $$1) {
-      bts<?> $$2 = $$1.dS();
-      $$2.a(cbu.aw, this.b($$0, $$1));
-      Optional<cko> $$3 = Optional.empty();
-      int $$4 = 0;
-      List<cki> $$5 = Lists.newArrayList();
-      cbw $$6 = $$2.c(cbu.h).orElse(cbw.a());
-
-      for (bsq $$7 : $$6.b($$0x -> !$$0x.p_() && ($$0x instanceof cko || $$0x instanceof cki))) {
-         if ($$7 instanceof cko $$8) {
-            $$4++;
-            if ($$3.isEmpty()) {
-               $$3 = Optional.of($$8);
-            }
-         }
-
-         if ($$7 instanceof cki $$9) {
-            $$5.add($$9);
-         }
+   public void a() {
+      if (this.e()) {
+         this.b--;
       }
-
-      $$2.a(cbu.aq, $$3);
-      $$2.a(cbu.ap, $$5);
-      $$2.a(cbu.as, $$4);
-      $$2.a(cbu.at, $$5.size());
    }
 
-   private Optional<io> b(aqn $$0, cki $$1) {
-      return io.a($$1.dp(), 8, 4, $$1x -> $$0.a_($$1x).a(avx.aS));
+   public static <T> ccn<T> a(T $$0) {
+      return new ccn<>($$0, Long.MAX_VALUE);
+   }
+
+   public static <T> ccn<T> a(T $$0, long $$1) {
+      return new ccn<>($$0, $$1);
+   }
+
+   public long b() {
+      return this.b;
+   }
+
+   public T c() {
+      return this.a;
+   }
+
+   public boolean d() {
+      return this.b <= 0L;
+   }
+
+   @Override
+   public String toString() {
+      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
+   }
+
+   @azy
+   public boolean e() {
+      return this.b != Long.MAX_VALUE;
+   }
+
+   public static <T> Codec<ccn<T>> a(Codec<T> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(
+                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
+                  Codec.LONG.lenientOptionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
+               )
+               .apply($$1, ($$0xx, $$1x) -> new ccn<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
+      );
    }
 }

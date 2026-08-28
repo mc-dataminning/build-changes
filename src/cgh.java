@@ -1,92 +1,110 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.mojang.datafixers.util.Pair;
+import java.util.Optional;
+import java.util.UUID;
 import java.util.function.Predicate;
 
 public class cgh {
-   public static final int a = 20;
-   public static final int b = 7;
-   private static final bph i = bph.a(5, 16);
-   private static final float j = 1.0F;
-   private static final float k = 1.25F;
-   private static final float l = 1.25F;
-   private static final float m = 2.0F;
-   private static final float n = 1.25F;
-   private static final bph o = bph.a(600, 1200);
-   public static final int c = 5;
-   public static final int d = 5;
-   public static final float e = 3.5714288F;
-   private static final bph p = bph.a(600, 6000);
-   private static final bph q = bph.a(100, 300);
-   private static final cdh r = cdh.a().a($$0 -> !$$0.ak().equals(bsc.X) && $$0.dP().C_().a($$0.cK()));
-   private static final float s = 3.0F;
-   public static final int f = 4;
-   public static final float g = 2.5F;
-   public static final float h = 1.0F;
+   private static final float a = 1.0F;
+   private static final float b = 2.25F;
+   private static final float c = 1.75F;
+   private static final float d = 2.5F;
+   private static final int e = 4;
+   private static final int f = 16;
+   private static final int g = 6;
+   private static final int h = 30;
+   private static final int i = 60;
+   private static final int j = 600;
+   private static final int k = 32;
+   private static final int l = 20;
 
-   protected static void a(cgg $$0, aym $$1) {
-      $$0.dS().a(cbu.S, o.a($$1));
-      $$0.dS().a(cbu.V, p.a($$1));
-   }
-
-   protected static bts<?> a(bts<cgg> $$0) {
+   protected static bum<?> a(bum<cgg> $$0) {
       b($$0);
       c($$0);
-      d($$0);
-      e($$0);
-      $$0.a(ImmutableSet.of(cnn.a));
-      $$0.b(cnn.b);
+      $$0.a(ImmutableSet.of(coh.a));
+      $$0.b(coh.b);
       $$0.f();
       return $$0;
    }
 
-   private static void b(bts<cgg> $$0) {
-      $$0.a(cnn.a, 0, ImmutableList.of(new bxd(0.8F), new bue(2.0F), new bvp(45, 90), new bvt(), new bup(cbu.P), new bup(cbu.S), new bup(cbu.V)));
+   private static void b(bum<cgg> $$0) {
+      $$0.a(coh.a, 0, ImmutableList.of(new bxx(0.8F), new buy(2.5F), new bwj(45, 90), new bwn(), new bvj(cco.aO), new bvj(cco.aP)));
    }
 
-   private static void c(bts<cgg> $$0) {
+   private static void c(bum<cgg> $$0) {
       $$0.a(
-         cnn.b,
+         coh.b,
          ImmutableList.of(
-            Pair.of(0, bwj.a(bsc.by, 6.0F, bph.a(30, 60))),
-            Pair.of(0, new bud(bsc.X)),
-            Pair.of(1, new buw($$0x -> 1.25F)),
-            Pair.of(2, bug.a(i, 1.25F)),
-            Pair.of(3, new bwg(ImmutableList.of(Pair.of(bwb.a(1.0F), 2), Pair.of(bwq.a(1.0F, 3), 2), Pair.of(new but(30, 60), 1))))
+            Pair.of(0, bvx.a($$0x -> true, 1.75F, true, 32)),
+            Pair.of(1, new bvt(cgh::b, 2.25F, 20)),
+            Pair.of(2, bxr.a(cgh::b, Predicate.not(cgh::c), 4, 16, 2.25F)),
+            Pair.of(3, bxd.a(6.0F, bqa.a(30, 60))),
+            Pair.of(4, new bxa(ImmutableList.of(Pair.of(bwv.b(1.0F), 2), Pair.of(bxk.a(1.0F, 3), 2), Pair.of(new bvn(30, 60), 1))))
          ),
-         ImmutableSet.of(Pair.of(cbu.W, cbv.b), Pair.of(cbu.T, cbv.b))
-      );
-   }
-
-   private static void d(bts<cgg> $$0) {
-      $$0.a(
-         cnn.q,
-         ImmutableList.of(Pair.of(0, new bvk(o, avi.ld)), Pair.of(1, new bvm<>(o, 5, 5, 3.5714288F, $$0x -> $$0x.gz() ? avi.kY : avi.kO))),
-         ImmutableSet.of(Pair.of(cbu.O, cbv.b), Pair.of(cbu.r, cbv.b), Pair.of(cbu.m, cbv.b), Pair.of(cbu.S, cbv.b))
-      );
-   }
-
-   private static void e(bts<cgg> $$0) {
-      $$0.a(
-         cnn.r,
-         ImmutableList.of(
-            Pair.of(
-               0,
-               new bvz(
-                  $$0x -> $$0x.gz() ? q : p, r, 3.0F, $$0x -> $$0x.p_() ? 1.0 : 2.5, $$0x -> $$0x.gz() ? avi.lb : avi.kR, $$0x -> $$0x.gz() ? avi.lc : avi.kS
-               )
-            ),
-            Pair.of(1, new bvy<>($$0x -> $$0x.gz() ? q.a() : p.a(), 4, 7, 1.25F, r, 20, $$0x -> $$0x.gz() ? avi.la : avi.kQ))
-         ),
-         ImmutableSet.of(Pair.of(cbu.O, cbv.b), Pair.of(cbu.r, cbv.b), Pair.of(cbu.V, cbv.b))
+         ImmutableSet.of()
       );
    }
 
    public static void a(cgg $$0) {
-      $$0.dS().a(ImmutableList.of(cnn.r, cnn.q, cnn.b));
+      $$0.dS().a(ImmutableList.of(coh.b));
    }
 
-   public static Predicate<ctq> a() {
-      return $$0 -> $$0.a(awf.ab);
+   public static void a(btk $$0, iz $$1) {
+      bum<?> $$2 = $$0.dS();
+      jh $$3 = jh.a($$0.dP().af(), $$1);
+      Optional<jh> $$4 = $$2.c(cco.aN);
+      if ($$4.isEmpty()) {
+         $$2.a(cco.aN, $$3);
+         $$2.a(cco.aO, 600);
+      } else if ($$4.get().equals($$3)) {
+         $$2.a(cco.aO, 600);
+      }
+   }
+
+   private static Optional<bwr> b(btk $$0) {
+      bum<?> $$1 = $$0.dS();
+      Optional<jh> $$2 = $$1.c(cco.aN);
+      if ($$2.isPresent()) {
+         jh $$3 = $$2.get();
+         if (a($$0, $$1, $$3)) {
+            return Optional.of(new bvg($$3.b().c()));
+         }
+
+         $$1.b(cco.aN);
+      }
+
+      return d($$0);
+   }
+
+   private static boolean c(btk $$0) {
+      bum<?> $$1 = $$0.dS();
+      return $$1.a(cco.L);
+   }
+
+   private static boolean a(btk $$0, bum<?> $$1, jh $$2) {
+      Optional<Integer> $$3 = $$1.c(cco.aO);
+      dbt $$4 = $$0.dP();
+      return $$4.af() == $$2.a() && $$4.a_($$2.b()).a(dew.aY) && $$3.isPresent();
+   }
+
+   private static Optional<bwr> d(btk $$0) {
+      return a($$0).map($$0x -> new bvo($$0x, true));
+   }
+
+   public static Optional<arc> a(btk $$0) {
+      dbt $$1 = $$0.dP();
+      if (!$$1.x_() && $$1 instanceof arb $$2) {
+         Optional<UUID> $$3 = $$0.dS().c(cco.aM);
+         if ($$3.isPresent()) {
+            if ($$2.a($$3.get()) instanceof arc $$5 && ($$5.e.d() || $$5.e.e()) && $$5.a($$0, 64.0)) {
+               return Optional.of($$5);
+            }
+
+            return Optional.empty();
+         }
+      }
+
+      return Optional.empty();
    }
 }

@@ -1,41 +1,143 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
+import java.util.function.BiConsumer;
 
-public class ne implements ll {
-   private final ln d;
-   private final Map<String, Supplier<JsonElement>> e = new HashMap<>();
-
-   public ne(ln $$0) {
-      this.d = $$0;
-   }
-
-   public <T> ne a(asx<T> $$0, T $$1) {
-      this.e.put($$0.a(), () -> $$0.a($$1));
-      return this;
-   }
-
+public class ne implements mu {
    @Override
-   public CompletableFuture<?> a(lj $$0) {
-      JsonObject $$1 = new JsonObject();
-      this.e.forEach(($$1x, $$2) -> $$1.add($$1x, $$2.get()));
-      return ll.a($$0, $$1, this.d.a().resolve("pack.mcmeta"));
-   }
-
-   @Override
-   public final String a() {
-      return "Pack Metadata";
-   }
-
-   public static ne a(ln $$0, wx $$1) {
-      return new ne($$0).a(asy.b, new asy($$1, t.a.a(asl.b), Optional.empty()));
-   }
-
-   public static ne a(ln $$0, wx $$1, col $$2) {
-      return a($$0, $$1).a(asf.a, new asf($$2));
+   public void generate(jk.a $$0, BiConsumer<ala<eqi>, eqi.a> $$1) {
+      $$1.accept(
+         epz.bd,
+         eqi.b()
+            .a(
+               eqh.a()
+                  .a(eug.a(1.0F))
+                  .a(eqq.a(cun.xN).a(2))
+                  .a(eqq.a(cun.xP).a(2))
+                  .a(eqq.a(cun.qL))
+                  .a(eqq.a(cun.oz))
+                  .a(eqq.a(cun.pp))
+                  .a(
+                     eqq.a(cun.vU)
+                        .a(
+                           esp.c()
+                              .a(brz.p, eum.a(7.0F, 10.0F))
+                              .a(brz.h, eum.a(7.0F, 10.0F))
+                              .a(brz.r, eum.a(6.0F, 8.0F))
+                              .a(brz.o, eum.a(5.0F, 7.0F))
+                              .a(brz.s, eum.a(10.0F, 20.0F))
+                              .a(brz.w, eum.a(7.0F, 10.0F))
+                        )
+                  )
+            )
+      );
+      $$1.accept(
+         epz.be,
+         eqi.b()
+            .a(
+               eqh.a()
+                  .a(eug.a(1.0F))
+                  .a(eqq.a(cun.xM))
+                  .a(eqq.a(cun.xZ))
+                  .a(eqq.a(cun.yc))
+                  .a(eqq.a(cun.yg))
+                  .a(eqq.a(cun.oy))
+                  .a(eqq.a(cun.md))
+                  .a(eqq.a(cun.pu))
+                  .a(eqq.a(cun.oz))
+            )
+      );
+      $$1.accept(
+         epz.bf,
+         eqi.b()
+            .a(
+               eqh.a()
+                  .a(eug.a(1.0F))
+                  .a(eqq.a(cun.oz).a(2))
+                  .a(eqq.a(cun.pw).a(2))
+                  .a(eqq.a(cun.oP).a(2))
+                  .a(eqq.a(cun.eX).a(2))
+                  .a(eqq.a(cun.qL).a(2))
+                  .a(eqq.a(cun.rm).a(2))
+                  .a(eqq.a(cun.rt).a(2))
+                  .a(eqq.a(cun.rl).a(2))
+                  .a(eqq.a(cun.ri).a(2))
+                  .a(eqq.a(cun.rj).a(2))
+                  .a(eqq.a(cun.xf).a(2))
+                  .a(eqq.a(cun.xe).a(2))
+                  .a(eqq.a(cun.xb).a(2))
+                  .a(eqq.a(cun.xd).a(2))
+                  .a(eqq.a(cun.iv))
+                  .a(eqq.a(cun.iz))
+                  .a(eqq.a(cun.iE))
+                  .a(eqq.a(cun.iw))
+                  .a(eqq.a(cun.iH))
+                  .a(eqq.a(cun.ix))
+                  .a(eqq.a(cun.iD))
+                  .a(eqq.a(cun.qo))
+                  .a(eqq.a(cun.qn))
+                  .a(eqq.a(cun.si))
+                  .a(eqq.a(cun.ow))
+                  .a(eqq.a(cun.pv))
+                  .a(eqq.a(cun.vl))
+                  .a(eqq.a(cun.cR))
+                  .a(eqq.a(cun.ue))
+                  .a(eqq.a(cun.ps))
+                  .a(eqq.a(cun.uK))
+            )
+      );
+      $$1.accept(
+         epz.bg,
+         eqi.b()
+            .a(
+               eqh.a()
+                  .a(eug.a(1.0F))
+                  .a(eqq.a(cun.xQ))
+                  .a(eqq.a(cun.xR))
+                  .a(eqq.a(cun.xU))
+                  .a(eqq.a(cun.xW))
+                  .a(eqq.a(cun.xX))
+                  .a(eqq.a(cun.xY))
+                  .a(eqq.a(cun.ye))
+                  .a(eqq.a(cun.xE))
+                  .a(eqq.a(cun.xH))
+                  .a(eqq.a(cun.xF))
+                  .a(eqq.a(cun.xI))
+                  .a(eqq.a(cun.vL))
+            )
+      );
+      $$1.accept(
+         epz.bh,
+         eqi.b()
+            .a(
+               eqh.a()
+                  .a(eug.a(1.0F))
+                  .a(eqq.a(cun.xL))
+                  .a(eqq.a(cun.yf))
+                  .a(eqq.a(cun.yh))
+                  .a(eqq.a(cun.kq))
+                  .a(eqq.a(cun.pd))
+                  .a(eqq.a(cun.oz).a(2))
+                  .a(eqq.a(cun.pw).a(2))
+                  .a(eqq.a(cun.oP).a(2))
+                  .a(eqq.a(cun.ow).a(2))
+                  .a(eqq.a(cun.si).a(2))
+            )
+      );
+      $$1.accept(
+         epz.bi,
+         eqi.b()
+            .a(
+               eqh.a()
+                  .a(eug.a(1.0F))
+                  .a(eqq.a(cun.xO))
+                  .a(eqq.a(cun.xS))
+                  .a(eqq.a(cun.ya))
+                  .a(eqq.a(cun.yb))
+                  .a(eqq.a(cun.pd))
+                  .a(eqq.a(cun.oz).a(2))
+                  .a(eqq.a(cun.pw).a(2))
+                  .a(eqq.a(cun.oP).a(2))
+                  .a(eqq.a(cun.ow).a(2))
+                  .a(eqq.a(cun.si).a(2))
+            )
+      );
    }
 }

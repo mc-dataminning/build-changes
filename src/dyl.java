@@ -1,20 +1,26 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class dyl extends dyn {
-   public static final MapCodec<dyl> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, dyl::new));
+public record dyl(dyn b, dyk c) {
+   public static final Codec<dyl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dyn.a.forGetter(dyl::a), dyk.a.forGetter(dyl::b)).apply($$0, $$0.stable(dyl::new))
+   );
 
-   public dyl(js $$0) {
-      super($$0);
+   public static <T> DataResult<T> a(DynamicOps<T> $$0, dyn $$1, dyk $$2) {
+      return a.encodeStart($$0, new dyl($$1, $$2));
    }
 
-   @Override
-   protected boolean a(drd $$0) {
-      return $$0.r();
+   public static <T> DataResult<T> a(DynamicOps<T> $$0, dyn $$1, jw $$2) {
+      return a($$0, $$1, new dyk($$2.d(lq.aT)));
    }
 
-   @Override
-   public dyd<?> a() {
-      return dyd.f;
+   public dyn a() {
+      return this.b;
+   }
+
+   public dyk b() {
+      return this.c;
    }
 }

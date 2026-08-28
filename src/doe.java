@@ -1,25 +1,33 @@
-public class doe extends doi {
-   private csj a;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public doe(io $$0, drd $$1) {
-      super(dok.y, $$0, $$1);
-      this.a = ((ddt)$$1.b()).b();
+public class doe extends dlx implements dnz {
+   public static final MapCodec<doe> f = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dnz.a.e.fieldOf("weathering_state").forGetter(dfv::c), u()).apply($$0, doe::new)
+   );
+   private final dnz.a g;
+
+   @Override
+   public MapCodec<doe> a() {
+      return f;
    }
 
-   public doe(io $$0, drd $$1, csj $$2) {
-      super(dok.y, $$0, $$1);
-      this.a = $$2;
+   public doe(dnz.a $$0, drw.d $$1) {
+      super($$1);
+      this.g = $$0;
    }
 
-   public abx b() {
-      return abx.a(this);
+   @Override
+   protected void b(drx $$0, arb $$1, iz $$2, azc $$3) {
+      this.a_($$0, $$1, $$2, $$3);
    }
 
-   public csj c() {
-      return this.a;
+   @Override
+   protected boolean d_(drx $$0) {
+      return dnz.c($$0.b()).isPresent();
    }
 
-   public void a(csj $$0) {
-      this.a = $$0;
+   public dnz.a m() {
+      return this.g;
    }
 }

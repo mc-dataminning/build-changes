@@ -1,28 +1,51 @@
-import java.util.EnumSet;
+public class bzi extends bzl {
+   private final int l;
+   private final boolean m;
 
-public class bzi extends bzo {
-   private final bss a;
-
-   public bzi(bss $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(bzo.a.c));
-      $$0.K().a(true);
+   public bzi(btm $$0, int $$1, boolean $$2) {
+      super($$0);
+      this.l = $$1;
+      this.m = $$2;
    }
 
    @Override
-   public boolean a() {
-      return this.a.be() && this.a.b(awc.a) > this.a.di() || this.a.bs();
-   }
+   public void a() {
+      if (this.k == bzl.a.b) {
+         this.k = bzl.a.a;
+         this.d.f(true);
+         double $$0 = this.e - this.d.du();
+         double $$1 = this.f - this.d.dw();
+         double $$2 = this.g - this.d.dA();
+         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+         if ($$3 < 2.5000003E-7F) {
+            this.d.D(0.0F);
+            this.d.C(0.0F);
+            return;
+         }
 
-   @Override
-   public boolean R_() {
-      return true;
-   }
+         float $$4 = (float)(ayu.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
+         this.d.r(this.a(this.d.dF(), $$4, 90.0F));
+         float $$5;
+         if (this.d.aE()) {
+            $$5 = (float)(this.h * this.d.g(bus.r));
+         } else {
+            $$5 = (float)(this.h * this.d.g(bus.j));
+         }
 
-   @Override
-   public void e() {
-      if (this.a.el().i() < 0.8F) {
-         this.a.I().a();
+         this.d.y($$5);
+         double $$7 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+         if (Math.abs($$1) > 1.0E-5F || Math.abs($$7) > 1.0E-5F) {
+            float $$8 = (float)(-(ayu.d($$1, $$7) * 180.0F / (float)Math.PI));
+            this.d.s(this.a(this.d.dH(), $$8, (float)this.l));
+            this.d.D($$1 > 0.0 ? $$5 : -$$5);
+         }
+      } else {
+         if (!this.m) {
+            this.d.f(false);
+         }
+
+         this.d.D(0.0F);
+         this.d.C(0.0F);
       }
    }
 }

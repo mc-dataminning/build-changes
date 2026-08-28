@@ -1,84 +1,57 @@
-public abstract class ehj extends ehp {
-   protected final int a;
-   protected final int b;
-   protected final int c;
-   protected int d = -1;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-   protected ehj(eic $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, it $$7) {
-      super($$0, 0, ehp.a($$1, $$2, $$3, $$7, $$4, $$5, $$6));
-      this.a = $$4;
-      this.b = $$5;
-      this.c = $$6;
-      this.a($$7);
+public record ehj(ji<eag<?, ?>> e, List<ehm> f) {
+   public static final Codec<ehj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(eag.b.fieldOf("feature").forGetter($$0x -> $$0x.e), ehm.b.listOf().fieldOf("placement").forGetter($$0x -> $$0x.f)).apply($$0, ehj::new)
+   );
+   public static final Codec<ji<ehj>> b = akx.a(lq.aI, a);
+   public static final Codec<jm<ehj>> c = jx.a(lq.aI, a);
+   public static final Codec<List<jm<ehj>>> d = jx.a(lq.aI, a, true).listOf();
+
+   public boolean a(dco $$0, dtu $$1, azc $$2, iz $$3) {
+      return this.a(new ehk($$0, $$1, Optional.empty()), $$2, $$3);
    }
 
-   protected ehj(eic $$0, ud $$1) {
-      super($$0, $$1);
-      this.a = $$1.h("Width");
-      this.b = $$1.h("Height");
-      this.c = $$1.h("Depth");
-      this.d = $$1.h("HPos");
+   public boolean b(dco $$0, dtu $$1, azc $$2, iz $$3) {
+      return this.a(new ehk($$0, $$1, Optional.of(this)), $$2, $$3);
+   }
+
+   private boolean a(ehk $$0, azc $$1, iz $$2) {
+      Stream<iz> $$3 = Stream.of($$2);
+
+      for (ehm $$4 : this.f) {
+         $$3 = $$3.flatMap($$3x -> $$4.a_($$0, $$1, $$3x));
+      }
+
+      eag<?, ?> $$5 = this.e.a();
+      MutableBoolean $$6 = new MutableBoolean();
+      $$3.forEach($$4 -> {
+         if ($$5.a($$0.d(), $$0.f(), $$1, $$4)) {
+            $$6.setTrue();
+         }
+      });
+      return $$6.isTrue();
+   }
+
+   public Stream<eag<?, ?>> a() {
+      return this.e.a().a();
    }
 
    @Override
-   protected void a(eib $$0, ud $$1) {
-      $$1.a("Width", this.a);
-      $$1.a("Height", this.b);
-      $$1.a("Depth", this.c);
-      $$1.a("HPos", this.d);
+   public String toString() {
+      return "Placed " + this.e;
    }
 
-   protected boolean a(dba $$0, ehd $$1, int $$2) {
-      if (this.d >= 0) {
-         return true;
-      } else {
-         int $$3 = 0;
-         int $$4 = 0;
-         io.a $$5 = new io.a();
-
-         for (int $$6 = this.f.j(); $$6 <= this.f.m(); $$6++) {
-            for (int $$7 = this.f.h(); $$7 <= this.f.k(); $$7++) {
-               $$5.d($$7, 64, $$6);
-               if ($$1.b($$5)) {
-                  $$3 += $$0.a(dwv.a.f, $$5).v();
-                  $$4++;
-               }
-            }
-         }
-
-         if ($$4 == 0) {
-            return false;
-         } else {
-            this.d = $$3 / $$4;
-            this.f.a(0, this.d - this.f.i() + $$2, 0);
-            return true;
-         }
-      }
+   public ji<eag<?, ?>> b() {
+      return this.e;
    }
 
-   protected boolean a(dba $$0, int $$1) {
-      if (this.d >= 0) {
-         return true;
-      } else {
-         int $$2 = $$0.al();
-         boolean $$3 = false;
-         io.a $$4 = new io.a();
-
-         for (int $$5 = this.f.j(); $$5 <= this.f.m(); $$5++) {
-            for (int $$6 = this.f.h(); $$6 <= this.f.k(); $$6++) {
-               $$4.d($$6, 0, $$5);
-               $$2 = Math.min($$2, $$0.a(dwv.a.f, $$4).v());
-               $$3 = true;
-            }
-         }
-
-         if (!$$3) {
-            return false;
-         } else {
-            this.d = $$2;
-            this.f.a(0, this.d - this.f.i() + $$1, 0);
-            return true;
-         }
-      }
+   public List<ehm> c() {
+      return this.f;
    }
 }

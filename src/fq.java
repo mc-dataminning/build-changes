@@ -3,37 +3,40 @@ import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
 
-public class fq implements ArgumentType<String> {
-   private static final Collection<String> a = Arrays.asList("foo", "123");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wx.b("team.notFound", $$0));
+public class fq implements ArgumentType<alb> {
+   private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012");
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xl.b("advancement.advancementNotFound", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xl.b("recipe.notFound", $$0));
 
    public static fq a() {
       return new fq();
    }
 
-   public static evl a(CommandContext<ee> $$0, String $$1) throws CommandSyntaxException {
-      String $$2 = (String)$$0.getArgument($$1, String.class);
-      evq $$3 = ((ee)$$0.getSource()).l().aK();
-      evl $$4 = $$3.b($$2);
-      if ($$4 == null) {
+   public static af a(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+      alb $$2 = c($$0, $$1);
+      af $$3 = ((ep)$$0.getSource()).l().aE().a($$2);
+      if ($$3 == null) {
          throw b.create($$2);
       } else {
-         return $$4;
+         return $$3;
       }
    }
 
-   public String a(StringReader $$0) throws CommandSyntaxException {
-      return $$0.readUnquotedString();
+   public static cys<?> b(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+      cyt $$2 = ((ep)$$0.getSource()).l().aJ();
+      alb $$3 = c($$0, $$1);
+      return $$2.a($$3).orElseThrow(() -> c.create($$3));
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return $$0.getSource() instanceof ej ? ej.b(((ej)$$0.getSource()).r(), $$1) : Suggestions.empty();
+   public static alb c(CommandContext<ep> $$0, String $$1) {
+      return (alb)$$0.getArgument($$1, alb.class);
+   }
+
+   public alb a(StringReader $$0) throws CommandSyntaxException {
+      return alb.a($$0);
    }
 
    public Collection<String> getExamples() {

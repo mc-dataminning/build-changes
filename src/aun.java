@@ -1,45 +1,71 @@
-import java.util.List;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.JsonObject;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.Collection;
+import java.util.Optional;
 
-public class aun {
-   private int a;
-   private int b;
+public interface aun {
+   aun a = new aun() {
+      @Override
+      public <T> Optional<T> a(atk<T> $$0) {
+         return Optional.empty();
+      }
+   };
+   aud<aun> b = () -> a;
 
-   public boolean a(int $$0) {
-      return this.b >= this.b($$0);
-   }
-
-   public boolean a(int $$0, List<aqo> $$1) {
-      int $$2 = (int)$$1.stream().filter(cly::gf).count();
-      return $$2 >= this.b($$0);
-   }
-
-   public int b(int $$0) {
-      return Math.max(1, ayf.f((float)(this.a * $$0) / 100.0F));
-   }
-
-   public void a() {
-      this.b = 0;
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public boolean a(List<aqo> $$0) {
-      int $$1 = this.a;
-      int $$2 = this.b;
-      this.a = 0;
-      this.b = 0;
-
-      for (aqo $$3 : $$0) {
-         if (!$$3.N_()) {
-            this.a++;
-            if ($$3.fL()) {
-               this.b++;
+   static aun a(InputStream $$0) throws IOException {
+      aun var3;
+      try (BufferedReader $$1 = new BufferedReader(new InputStreamReader($$0, StandardCharsets.UTF_8))) {
+         final JsonObject $$2 = ayk.a($$1);
+         var3 = new aun() {
+            @Override
+            public <T> Optional<T> a(atk<T> $$0) {
+               String $$1 = $$0.a();
+               return $$2.has($$1) ? Optional.of($$0.a(ayk.u($$2, $$1))) : Optional.empty();
             }
-         }
+         };
       }
 
-      return ($$2 > 0 || this.b > 0) && ($$1 != this.a || $$2 != this.b);
+      return var3;
+   }
+
+   <T> Optional<T> a(atk<T> var1);
+
+   default aun a(Collection<atk<?>> $$0) {
+      aun.a $$1 = new aun.a();
+
+      for (atk<?> $$2 : $$0) {
+         this.a($$1, $$2);
+      }
+
+      return $$1.a();
+   }
+
+   private <T> void a(aun.a $$0, atk<T> $$1) {
+      this.a($$1).ifPresent($$2 -> $$0.a($$1, (T)$$2));
+   }
+
+   public static class a {
+      private final Builder<atk<?>, Object> a = ImmutableMap.builder();
+
+      public <T> aun.a a(atk<T> $$0, T $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      public aun a() {
+         final ImmutableMap<atk<?>, Object> $$0 = this.a.build();
+         return $$0.isEmpty() ? aun.a : new aun() {
+            @Override
+            public <T> Optional<T> a(atk<T> $$0x) {
+               return Optional.ofNullable((T)$$0.get($$0));
+            }
+         };
+      }
    }
 }

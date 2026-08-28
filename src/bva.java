@@ -2,36 +2,28 @@ import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
 public class bva {
-   public static buk<cll> a(float $$0, int $$1) {
-      return bxw.a((Function<bxw.b<cll>, ? extends App<bxw.c<cll>, bxz<cll>>>)($$2 -> $$2.group($$2.c(cbu.m)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
-               if ($$3.c($$4.dp())) {
-                  return false;
-               } else {
-                  cdu $$6 = $$3.y();
-                  int $$7 = $$6.a(jq.a($$4.dp()));
-                  eum $$8 = null;
+   public static bwo<bsj> a(bqa $$0, float $$1) {
+      return a($$0, $$1x -> $$1);
+   }
 
-                  for (int $$9 = 0; $$9 < 5; $$9++) {
-                     eum $$10 = cdo.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(jq.a($$1xxxx))));
-                     if ($$10 != null) {
-                        int $$11 = $$6.a(jq.a(io.a($$10)));
-                        if ($$11 < $$7) {
-                           $$8 = $$10;
-                           break;
-                        }
-
-                        if ($$11 == $$7) {
-                           $$8 = $$10;
+   public static bwo<bsj> a(bqa $$0, Function<btk, Float> $$1) {
+      return byq.a(
+         (Function<byq.b<bsj>, ? extends App<byq.c<bsj>, byt<bsj>>>)($$2 -> $$2.group($$2.b(cco.K), $$2.a(cco.n), $$2.c(cco.m))
+               .apply($$2, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     if (!$$7.p_()) {
+                        return false;
+                     } else {
+                        bsj $$9 = $$2.b($$3);
+                        if ($$7.a($$9, (double)($$0.b() + 1)) && !$$7.a($$9, (double)$$0.a())) {
+                           ccr $$10 = new ccr(new bvo($$9, false), $$1.apply($$7), $$0.a() - 1);
+                           $$4.a(new bvo($$9, true));
+                           $$5.a($$10);
+                           return true;
+                        } else {
+                           return false;
                         }
                      }
-                  }
-
-                  if ($$8 != null) {
-                     $$2x.a(new cbx($$8, $$0, $$1));
-                  }
-
-                  return true;
-               }
-            })));
+                  }))
+      );
    }
 }

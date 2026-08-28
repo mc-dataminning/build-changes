@@ -1,78 +1,123 @@
-import com.mojang.serialization.Dynamic;
+import com.google.common.collect.Iterables;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
 
-public final class dbd {
-   private final String a;
-   private final daw b;
-   private final boolean c;
-   private final bpt d;
-   private final boolean e;
-   private final dav f;
-   private final dbt g;
+public interface dbd extends daz {
+   dto C_();
 
-   public dbd(String $$0, daw $$1, boolean $$2, bpt $$3, boolean $$4, dav $$5, dbt $$6) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
+   @Nullable
+   daz c(int var1, int var2);
+
+   default boolean a(@Nullable bsp $$0, ewf $$1) {
+      return true;
    }
 
-   public static dbd a(Dynamic<?> $$0, dbt $$1) {
-      daw $$2 = daw.a($$0.get("GameType").asInt(0));
-      return new dbd(
-         $$0.get("LevelName").asString(""),
-         $$2,
-         $$0.get("hardcore").asBoolean(false),
-         $$0.get("Difficulty").asNumber().map($$0x -> bpt.a($$0x.byteValue())).result().orElse(bpt.c),
-         $$0.get("allowCommands").asBoolean($$2 == daw.b),
-         new dav($$0.get("GameRules")),
-         $$1
-      );
+   default boolean a(drx $$0, iz $$1, evr $$2) {
+      ewf $$3 = $$0.b(this, $$1, $$2);
+      return $$3.c() || this.a(null, $$3.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w()));
    }
 
-   public String a() {
-      return this.a;
+   default boolean f(bsp $$0) {
+      return this.a($$0, ewc.a($$0.cK()));
    }
 
-   public daw b() {
-      return this.b;
+   default boolean b(evh $$0) {
+      return this.a(null, $$0);
    }
 
-   public boolean c() {
-      return this.c;
+   default boolean g(bsp $$0) {
+      return this.a($$0, $$0.cK());
    }
 
-   public bpt d() {
-      return this.d;
+   default boolean a(@Nullable bsp $$0, evh $$1) {
+      for (ewf $$2 : this.e($$0, $$1)) {
+         if (!$$2.c()) {
+            return false;
+         }
+      }
+
+      if (!this.c($$0, $$1).isEmpty()) {
+         return false;
+      } else if ($$0 == null) {
+         return true;
+      } else {
+         ewf $$3 = this.h($$0, $$1);
+         return $$3 == null || !ewc.c($$3, ewc.a($$1), evq.i);
+      }
    }
 
-   public boolean e() {
-      return this.e;
+   default boolean b(@Nullable bsp $$0, evh $$1) {
+      for (ewf $$2 : this.e($$0, $$1)) {
+         if (!$$2.c()) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   public dav f() {
-      return this.f;
+   List<ewf> c(@Nullable bsp var1, evh var2);
+
+   default Iterable<ewf> d(@Nullable bsp $$0, evh $$1) {
+      List<ewf> $$2 = this.c($$0, $$1);
+      Iterable<ewf> $$3 = this.e($$0, $$1);
+      return $$2.isEmpty() ? $$3 : Iterables.concat($$2, $$3);
    }
 
-   public dbt g() {
-      return this.g;
+   default Iterable<ewf> e(@Nullable bsp $$0, evh $$1) {
+      return () -> new dax<ewf>(this, $$0, $$1, false, ($$0xx, $$1xx) -> $$1xx);
    }
 
-   public dbd a(daw $$0) {
-      return new dbd(this.a, $$0, this.c, this.d, this.e, this.f, this.g);
+   @Nullable
+   private ewf h(bsp $$0, evh $$1) {
+      dto $$2 = this.C_();
+      return $$2.a($$0, $$1) ? $$2.c() : null;
    }
 
-   public dbd a(bpt $$0) {
-      return new dbd(this.a, this.b, this.c, $$0, this.e, this.f, this.g);
+   default boolean f(@Nullable bsp $$0, evh $$1) {
+      dax<ewf> $$2 = new dax<>(this, $$0, $$1, true, ($$0x, $$1x) -> $$1x);
+
+      while ($$2.hasNext()) {
+         if (!((ewf)$$2.next()).c()) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   public dbd a(dbt $$0) {
-      return new dbd(this.a, this.b, this.c, this.d, this.e, this.f, $$0);
+   default Optional<iz> g(bsp $$0, evh $$1) {
+      iz $$2 = null;
+      double $$3 = Double.MAX_VALUE;
+      dax<iz> $$4 = new dax<>(this, $$0, $$1, false, ($$0x, $$1x) -> $$0x);
+
+      while ($$4.hasNext()) {
+         iz $$5 = (iz)$$4.next();
+         double $$6 = $$5.b($$0.dn());
+         if ($$6 < $$3 || $$6 == $$3 && ($$2 == null || $$2.i($$5) < 0)) {
+            $$2 = $$5.i();
+            $$3 = $$6;
+         }
+      }
+
+      return Optional.ofNullable($$2);
    }
 
-   public dbd h() {
-      return new dbd(this.a, this.b, this.c, this.d, this.e, this.f.b(), this.g);
+   default Optional<evm> a(@Nullable bsp $$0, ewf $$1, evm $$2, double $$3, double $$4, double $$5) {
+      if ($$1.c()) {
+         return Optional.empty();
+      } else {
+         evh $$6 = $$1.a().c($$3, $$4, $$5);
+         ewf $$7 = StreamSupport.stream(this.e($$0, $$6).spliterator(), false)
+            .filter($$0x -> this.C_() == null || this.C_().a($$0x.a()))
+            .flatMap($$0x -> $$0x.e().stream())
+            .map($$3x -> $$3x.c($$3 / 2.0, $$4 / 2.0, $$5 / 2.0))
+            .map(ewc::a)
+            .reduce(ewc.a(), ewc::a);
+         ewf $$8 = ewc.a($$1, $$7, evq.e);
+         return $$8.a($$2);
+      }
    }
 }

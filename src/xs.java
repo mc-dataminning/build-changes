@@ -1,36 +1,71 @@
 import com.google.common.primitives.Ints;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.security.SignatureException;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.List;
+import java.util.Optional;
 
-public record xs(int b, UUID c, UUID d) {
-   public static final Codec<xs> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(axn.i.fieldOf("index").forGetter(xs::b), jr.a.fieldOf("sender").forGetter(xs::c), jr.a.fieldOf("session_id").forGetter(xs::d))
-            .apply($$0, xs::new)
-   );
+public record xs(List<xx> d) {
+   public static final Codec<xs> a = xx.a.listOf().xmap(xs::new, xs::a);
+   public static xs b = new xs(List.of());
+   public static final int c = 20;
 
-   public static xs a(UUID $$0) {
-      return a($$0, ac.e);
+   public void a(azg.a $$0) throws SignatureException {
+      $$0.update(Ints.toByteArray(this.d.size()));
+
+      for (xx $$1 : this.d) {
+         $$0.update($$1.b());
+      }
    }
 
-   public static xs a(UUID $$0, UUID $$1) {
-      return new xs(0, $$0, $$1);
+   public xs.a a(xy $$0) {
+      return new xs.a(this.d.stream().map($$1 -> $$1.a($$0)).toList());
    }
 
-   public void a(ayq.a $$0) throws SignatureException {
-      $$0.update(jr.b(this.c));
-      $$0.update(jr.b(this.d));
-      $$0.update(Ints.toByteArray(this.b));
+   public List<xx> a() {
+      return this.d;
    }
 
-   public boolean a(xs $$0) {
-      return this.b > $$0.b() && this.c.equals($$0.c()) && this.d.equals($$0.d());
+   public static record a(List<xx.a> b) {
+      public static final xs.a a = new xs.a(List.of());
+
+      public a(wl $$0) {
+         this($$0.a(wl.a(ArrayList::new, 20), xx.a::a));
+      }
+
+      public void a(wl $$0) {
+         $$0.a(this.b, xx.a::a);
+      }
+
+      public Optional<xs> a(xy $$0) {
+         List<xx> $$1 = new ArrayList<>(this.b.size());
+
+         for (xx.a $$2 : this.b) {
+            Optional<xx> $$3 = $$2.a($$0);
+            if ($$3.isEmpty()) {
+               return Optional.empty();
+            }
+
+            $$1.add($$3.get());
+         }
+
+         return Optional.of(new xs($$1));
+      }
+
+      public List<xx.a> a() {
+         return this.b;
+      }
    }
 
-   @Nullable
-   public xs a() {
-      return this.b == Integer.MAX_VALUE ? null : new xs(this.b + 1, this.c, this.d);
+   public static record b(int a, BitSet b) {
+      public b(wl $$0) {
+         this($$0.l(), $$0.e(20));
+      }
+
+      public void a(wl $$0) {
+         $$0.c(this.a);
+         $$0.a(this.b, 20);
+      }
    }
 }

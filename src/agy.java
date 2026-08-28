@@ -1,37 +1,20 @@
-public class agy implements ze<age> {
-   public static final yv<vx, agy> a = ze.a(agy::a, agy::new);
-   private final int b;
-   private final int c;
+public record agy(String b) implements zs<ags> {
+   public static final zj<wl, agy> a = zs.a(agy::a, agy::new);
 
-   public agy(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private agy(wl $$0) {
+      this($$0.d(256));
    }
 
-   private agy(vx $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-   }
-
-   private void a(vx $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
+   private void a(wl $$0) {
+      $$0.a(this.b, 256);
    }
 
    @Override
-   public zg<agy> a() {
-      return agc.bx;
+   public zu<agy> a() {
+      return agq.bj;
    }
 
-   public void a(age $$0) {
+   public void a(ags $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
    }
 }

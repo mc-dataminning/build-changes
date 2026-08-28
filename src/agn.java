@@ -1,20 +1,24 @@
-public record agn(xo.a b) implements ze<age> {
-   public static final yv<vx, agn> a = ze.a(agn::a, agn::new);
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   private agn(vx $$0) {
-      this(xo.a.a($$0));
+public record agn(ji<dvp> a, ala<dbt> b, long c, dbq d, @Nullable dbq e, boolean f, boolean g, Optional<jh> h, int i) {
+   private static final zj<ww, ji<dvp>> j = zh.b(lq.aE);
+
+   public agn(ww $$0) {
+      this(
+         j.decode($$0), $$0.a(lq.aS), $$0.readLong(), dbq.a($$0.readByte()), dbq.b($$0.readByte()), $$0.readBoolean(), $$0.readBoolean(), $$0.b(wl::h), $$0.l()
+      );
    }
 
-   private void a(vx $$0) {
-      xo.a.a($$0, this.b);
-   }
-
-   @Override
-   public zg<agn> a() {
-      return agc.bm;
-   }
-
-   public void a(age $$0) {
-      $$0.a(this);
+   public void a(ww $$0) {
+      j.encode($$0, this.a);
+      $$0.b(this.b);
+      $$0.b(this.c);
+      $$0.k(this.d.a());
+      $$0.k(dbq.a(this.e));
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h, wl::a);
+      $$0.c(this.i);
    }
 }

@@ -1,276 +1,225 @@
-import java.util.function.Consumer;
-import java.util.function.Predicate;
+import com.mojang.datafixers.util.Pair;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Optional;
+import java.util.function.BooleanSupplier;
 import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.joml.Vector2i;
 
-public class fiu {
-   private final Supplier<String> a;
-   private final Consumer<String> b;
-   private final Supplier<String> c;
-   private final Consumer<String> d;
-   private final Predicate<String> e;
-   private int f;
-   private int g;
+public interface fiu extends fiv {
+   List<? extends fiv> aF_();
 
-   public fiu(Supplier<String> $$0, Consumer<String> $$1, Supplier<String> $$2, Consumer<String> $$3, Predicate<String> $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f();
-   }
-
-   public static Supplier<String> a(feb $$0) {
-      return () -> b($$0);
-   }
-
-   public static String b(feb $$0) {
-      return n.a($$0.o.a().replaceAll("\\r", ""));
-   }
-
-   public static Consumer<String> c(feb $$0) {
-      return $$1 -> a($$0, $$1);
-   }
-
-   public static void a(feb $$0, String $$1) {
-      $$0.o.a($$1);
-   }
-
-   public boolean a(char $$0) {
-      if (aza.a($$0)) {
-         this.a(this.a.get(), Character.toString($$0));
+   default Optional<fiv> b_(double $$0, double $$1) {
+      for (fiv $$2 : this.aF_()) {
+         if ($$2.c($$0, $$1)) {
+            return Optional.of($$2);
+         }
       }
 
-      return true;
+      return Optional.empty();
    }
 
-   public boolean a(int $$0) {
-      if (flz.f($$0)) {
-         this.d();
-         return true;
-      } else if (flz.e($$0)) {
-         this.c();
-         return true;
-      } else if (flz.d($$0)) {
-         this.b();
-         return true;
-      } else if (flz.c($$0)) {
-         this.a();
-         return true;
-      } else {
-         fiu.a $$1 = flz.r() ? fiu.a.b : fiu.a.a;
-         if ($$0 == 259) {
-            this.a(-1, $$1);
+   @Override
+   default boolean a(double $$0, double $$1, int $$2) {
+      for (fiv $$3 : this.aF_()) {
+         if ($$3.a($$0, $$1, $$2)) {
+            this.a($$3);
+            if ($$2 == 0) {
+               this.b(true);
+            }
+
             return true;
-         } else {
-            if ($$0 == 261) {
-               this.a(1, $$1);
-            } else {
-               if ($$0 == 263) {
-                  this.a(-1, flz.s(), $$1);
-                  return true;
-               }
-
-               if ($$0 == 262) {
-                  this.a(1, flz.s(), $$1);
-                  return true;
-               }
-
-               if ($$0 == 268) {
-                  this.a(flz.s());
-                  return true;
-               }
-
-               if ($$0 == 269) {
-                  this.b(flz.s());
-                  return true;
-               }
-            }
-
-            return false;
          }
       }
+
+      return false;
    }
 
-   private int h(int $$0) {
-      return ayf.a($$0, 0, this.a.get().length());
-   }
-
-   private void a(String $$0, String $$1) {
-      if (this.g != this.f) {
-         $$0 = this.c($$0);
-      }
-
-      this.f = ayf.a(this.f, 0, $$0.length());
-      String $$2 = new StringBuilder($$0).insert(this.f, $$1).toString();
-      if (this.e.test($$2)) {
-         this.b.accept($$2);
-         this.g = this.f = Math.min($$2.length(), this.f + $$1.length());
-      }
-   }
-
-   public void a(String $$0) {
-      this.a(this.a.get(), $$0);
-   }
-
-   private void c(boolean $$0) {
-      if (!$$0) {
-         this.g = this.f;
-      }
-   }
-
-   public void a(int $$0, boolean $$1, fiu.a $$2) {
-      switch ($$2) {
-         case a:
-            this.a($$0, $$1);
-            break;
-         case b:
-            this.b($$0, $$1);
-      }
-   }
-
-   public void b(int $$0) {
-      this.a($$0, false);
-   }
-
-   public void a(int $$0, boolean $$1) {
-      this.f = ac.a(this.a.get(), this.f, $$0);
-      this.c($$1);
-   }
-
-   public void c(int $$0) {
-      this.b($$0, false);
-   }
-
-   public void b(int $$0, boolean $$1) {
-      this.f = fem.a(this.a.get(), $$0, this.f, true);
-      this.c($$1);
-   }
-
-   public void a(int $$0, fiu.a $$1) {
-      switch ($$1) {
-         case a:
-            this.e($$0);
-            break;
-         case b:
-            this.d($$0);
-      }
-   }
-
-   public void d(int $$0) {
-      int $$1 = fem.a(this.a.get(), $$0, this.f, true);
-      this.e($$1 - this.f);
-   }
-
-   public void e(int $$0) {
-      String $$1 = this.a.get();
-      if (!$$1.isEmpty()) {
-         String $$2;
-         if (this.g != this.f) {
-            $$2 = this.c($$1);
-         } else {
-            int $$3 = ac.a($$1, this.f, $$0);
-            int $$4 = Math.min($$3, this.f);
-            int $$5 = Math.max($$3, this.f);
-            $$2 = new StringBuilder($$1).delete($$4, $$5).toString();
-            if ($$0 < 0) {
-               this.g = this.f = $$4;
-            }
-         }
-
-         this.b.accept($$2);
-      }
-   }
-
-   public void a() {
-      String $$0 = this.a.get();
-      this.d.accept(this.b($$0));
-      this.b.accept(this.c($$0));
-   }
-
-   public void b() {
-      this.a(this.a.get(), this.c.get());
-      this.g = this.f;
-   }
-
-   public void c() {
-      this.d.accept(this.b(this.a.get()));
-   }
-
-   public void d() {
-      this.g = 0;
-      this.f = this.a.get().length();
-   }
-
-   private String b(String $$0) {
-      int $$1 = Math.min(this.f, this.g);
-      int $$2 = Math.max(this.f, this.g);
-      return $$0.substring($$1, $$2);
-   }
-
-   private String c(String $$0) {
-      if (this.g == this.f) {
-         return $$0;
-      } else {
-         int $$1 = Math.min(this.f, this.g);
-         int $$2 = Math.max(this.f, this.g);
-         String $$3 = $$0.substring(0, $$1) + $$0.substring($$2);
-         this.g = this.f = $$1;
-         return $$3;
-      }
-   }
-
-   public void e() {
-      this.a(false);
-   }
-
-   public void a(boolean $$0) {
-      this.f = 0;
-      this.c($$0);
-   }
-
-   public void f() {
+   @Override
+   default boolean b(double $$0, double $$1, int $$2) {
       this.b(false);
+      return this.b_($$0, $$1).filter($$3 -> $$3.b($$0, $$1, $$2)).isPresent();
    }
 
-   public void b(boolean $$0) {
-      this.f = this.a.get().length();
-      this.c($$0);
+   @Override
+   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      return this.aI_() != null && this.aH_() && $$2 == 0 ? this.aI_().a($$0, $$1, $$2, $$3, $$4) : false;
    }
 
-   public int g() {
-      return this.f;
+   boolean aH_();
+
+   void b(boolean var1);
+
+   @Override
+   default boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return this.b_($$0, $$1).filter($$4 -> $$4.a($$0, $$1, $$2, $$3)).isPresent();
    }
 
-   public void f(int $$0) {
-      this.c($$0, true);
+   @Override
+   default boolean a(int $$0, int $$1, int $$2) {
+      return this.aI_() != null && this.aI_().a($$0, $$1, $$2);
    }
 
-   public void c(int $$0, boolean $$1) {
-      this.f = this.h($$0);
-      this.c($$1);
+   @Override
+   default boolean c(int $$0, int $$1, int $$2) {
+      return this.aI_() != null && this.aI_().c($$0, $$1, $$2);
    }
 
-   public int h() {
-      return this.g;
+   @Override
+   default boolean a(char $$0, int $$1) {
+      return this.aI_() != null && this.aI_().a($$0, $$1);
    }
 
-   public void g(int $$0) {
-      this.g = this.h($$0);
+   @Nullable
+   fiv aI_();
+
+   void a(@Nullable fiv var1);
+
+   @Override
+   default void a(boolean $$0) {
    }
 
-   public void a(int $$0, int $$1) {
-      int $$2 = this.a.get().length();
-      this.f = ayf.a($$0, 0, $$2);
-      this.g = ayf.a($$1, 0, $$2);
+   @Override
+   default boolean aJ_() {
+      return this.aI_() != null;
    }
 
-   public boolean i() {
-      return this.f != this.g;
+   @Nullable
+   @Override
+   default fgj aK_() {
+      fiv $$0 = this.aI_();
+      return $$0 != null ? fgj.a(this, $$0.aK_()) : null;
    }
 
-   public static enum a {
-      a,
-      b;
+   @Nullable
+   @Override
+   default fgj a(flb $$0) {
+      fiv $$1 = this.aI_();
+      if ($$1 != null) {
+         fgj $$2 = $$1.a($$0);
+         if ($$2 != null) {
+            return fgj.a(this, $$2);
+         }
+      }
+
+      if ($$0 instanceof flb.c $$3) {
+         return this.a($$3);
+      } else {
+         return $$0 instanceof flb.a $$4 ? this.a($$4) : null;
+      }
+   }
+
+   @Nullable
+   private fgj a(flb.c $$0) {
+      boolean $$1 = $$0.b();
+      fiv $$2 = this.aI_();
+      List<? extends fiv> $$3 = new ArrayList<>(this.aF_());
+      Collections.sort($$3, Comparator.comparingInt($$0x -> $$0x.H()));
+      int $$4 = $$3.indexOf($$2);
+      int $$5;
+      if ($$2 != null && $$4 >= 0) {
+         $$5 = $$4 + ($$1 ? 1 : 0);
+      } else if ($$1) {
+         $$5 = 0;
+      } else {
+         $$5 = $$3.size();
+      }
+
+      ListIterator<? extends fiv> $$8 = $$3.listIterator($$5);
+      BooleanSupplier $$9 = $$1 ? $$8::hasNext : $$8::hasPrevious;
+      Supplier<? extends fiv> $$10 = $$1 ? $$8::next : $$8::previous;
+
+      while ($$9.getAsBoolean()) {
+         fiv $$11 = $$10.get();
+         fgj $$12 = $$11.a($$0);
+         if ($$12 != null) {
+            return fgj.a(this, $$12);
+         }
+      }
+
+      return null;
+   }
+
+   @Nullable
+   private fgj a(flb.a $$0) {
+      fiv $$1 = this.aI_();
+      if ($$1 == null) {
+         fld $$2 = $$0.b();
+         flf $$3 = this.G().c($$2.b());
+         return fgj.a(this, this.a($$3, $$2, null, $$0));
+      } else {
+         flf $$4 = $$1.G();
+         return fgj.a(this, this.a($$4, $$0.b(), $$1, $$0));
+      }
+   }
+
+   @Nullable
+   private fgj a(flf $$0, fld $$1, @Nullable fiv $$2, flb $$3) {
+      flc $$4 = $$1.a();
+      flc $$5 = $$4.a();
+      fld $$6 = $$5.b();
+      int $$7 = $$0.b($$1.b());
+      List<fiv> $$8 = new ArrayList<>();
+
+      for (fiv $$9 : this.aF_()) {
+         if ($$9 != $$2) {
+            flf $$10 = $$9.G();
+            if ($$10.a($$0, $$5)) {
+               int $$11 = $$10.b($$1.b());
+               if ($$1.a($$11, $$7)) {
+                  $$8.add($$9);
+               } else if ($$11 == $$7 && $$1.a($$10.b($$1), $$0.b($$1))) {
+                  $$8.add($$9);
+               }
+            }
+         }
+      }
+
+      Comparator<fiv> $$12 = Comparator.comparing($$1x -> $$1x.G().b($$1.b()), $$1.d());
+      Comparator<fiv> $$13 = Comparator.comparing($$1x -> $$1x.G().b($$6.b()), $$6.d());
+      $$8.sort($$12.thenComparing($$13));
+
+      for (fiv $$14 : $$8) {
+         fgj $$15 = $$14.a($$3);
+         if ($$15 != null) {
+            return $$15;
+         }
+      }
+
+      return this.b($$0, $$1, $$2, $$3);
+   }
+
+   @Nullable
+   private fgj b(flf $$0, fld $$1, @Nullable fiv $$2, flb $$3) {
+      flc $$4 = $$1.a();
+      flc $$5 = $$4.a();
+      List<Pair<fiv, Long>> $$6 = new ArrayList<>();
+      fle $$7 = fle.a($$4, $$0.b($$1), $$0.b($$5));
+
+      for (fiv $$8 : this.aF_()) {
+         if ($$8 != $$2) {
+            flf $$9 = $$8.G();
+            fle $$10 = fle.a($$4, $$9.b($$1.b()), $$9.b($$5));
+            if ($$1.a($$10.a($$4), $$7.a($$4))) {
+               long $$11 = Vector2i.distanceSquared($$7.a(), $$7.b(), $$10.a(), $$10.b());
+               $$6.add(Pair.of($$8, $$11));
+            }
+         }
+      }
+
+      $$6.sort(Comparator.comparingDouble(Pair::getSecond));
+
+      for (Pair<fiv, Long> $$12 : $$6) {
+         fgj $$13 = ((fiv)$$12.getFirst()).a($$3);
+         if ($$13 != null) {
+            return $$13;
+         }
+      }
+
+      return null;
    }
 }

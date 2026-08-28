@@ -1,72 +1,102 @@
-public class fys extends gay {
-   private final float a;
-   private final float b;
+import it.unimi.dsi.fastutil.ints.IntCollection;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-   fys(fwr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ctq $$7) {
-      this($$0, $$1, $$2, $$3, $$7);
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
+public class fys {
+   final int a;
+   private final List<fys.a> b = new ArrayList<>();
+
+   public fys(int $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public gac b() {
-      return gac.a;
-   }
+   public void a(fyk $$0, IntCollection $$1, fys.b $$2) {
+      IntSortedSet $$3 = new IntRBTreeSet($$1);
 
-   protected fys(fwr $$0, double $$1, double $$2, double $$3, ctq $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a(feb.Q().ar().a($$4, $$0, null, 0).e());
-      this.u = 1.0F;
-      this.D /= 2.0F;
-      this.a = this.r.i() * 3.0F;
-      this.b = this.r.i() * 3.0F;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.a((this.a + 1.0F) / 4.0F);
-   }
-
-   @Override
-   protected float d() {
-      return this.E.a(this.a / 4.0F);
-   }
-
-   @Override
-   protected float e() {
-      return this.E.c(this.b / 4.0F);
-   }
-
-   @Override
-   protected float f() {
-      return this.E.c((this.b + 1.0F) / 4.0F);
-   }
-
-   public static class a implements gab<lb> {
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fys($$1, $$2, $$3, $$4, new ctq(ctt.cM));
+      for (int $$4 = $$3.lastInt(); $$4 >= $$0.a() && (this.a() || !$$3.isEmpty()); $$4--) {
+         fym $$6 = $$0.b($$4);
+         if ($$6 instanceof fyn.a) {
+            fyn.a $$5 = (fyn.a)$$6;
+            boolean $$6x = this.b($$5.g());
+            if ($$3.remove($$4)) {
+               this.a($$5.g());
+               $$2.accept($$4, $$5);
+            } else if ($$6x) {
+               $$2.accept($$4, $$5);
+            }
+         }
       }
    }
 
-   public static class b implements gab<ku> {
-      public fzy a(ku $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fys($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.b());
+   public void a(yb $$0) {
+      this.b.add(new fys.a($$0));
+   }
+
+   public boolean b(yb $$0) {
+      boolean $$1 = false;
+      Iterator<fys.a> $$2 = this.b.iterator();
+
+      while ($$2.hasNext()) {
+         fys.a $$3 = $$2.next();
+         if ($$3.a($$0)) {
+            $$1 = true;
+            if ($$3.a()) {
+               $$2.remove();
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   public boolean a() {
+      return !this.b.isEmpty();
+   }
+
+   class a {
+      private final Set<xx> b;
+      private yb c;
+      private boolean d = true;
+      private int e;
+
+      a(final yb $$0) {
+         this.b = new ObjectOpenHashSet($$0.m().d().a());
+         this.c = $$0;
+      }
+
+      boolean a(yb $$0) {
+         if ($$0.equals(this.c)) {
+            return false;
+         } else {
+            boolean $$1 = this.b.remove($$0.l());
+            if (this.d && this.c.g().equals($$0.g())) {
+               if (this.c.k().a($$0.k())) {
+                  $$1 = true;
+                  this.c = $$0;
+               } else {
+                  this.d = false;
+               }
+            }
+
+            if ($$1) {
+               this.e++;
+            }
+
+            return $$1;
+         }
+      }
+
+      boolean a() {
+         return this.e >= fys.this.a || !this.d && this.b.isEmpty();
       }
    }
 
-   public static class c implements gab<lb> {
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fys($$1, $$2, $$3, $$4, new ctq(ctt.qQ));
-      }
-   }
-
-   public static class d implements gab<lb> {
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fys($$1, $$2, $$3, $$4, new ctq(ctt.qC));
-      }
+   public interface b {
+      void accept(int var1, fyn.a var2);
    }
 }

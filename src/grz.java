@@ -1,34 +1,29 @@
-import com.mojang.authlib.GameProfile;
-import java.net.SocketAddress;
+public class grz extends grr {
+   private final bsp n;
 
-public class grz extends auk {
-   private ud h;
-
-   public grz(gsa $$0, je<akw> $$1, epa $$2) {
-      super($$0, $$1, $$2, 8);
-      this.a(10);
+   public grz(avv $$0, avx $$1, float $$2, float $$3, bsp $$4, long $$5) {
+      super($$0, $$1, azc.a($$5));
+      this.d = $$2;
+      this.e = $$3;
+      this.n = $$4;
+      this.f = (double)((float)this.n.du());
+      this.g = (double)((float)this.n.dw());
+      this.h = (double)((float)this.n.dA());
    }
 
    @Override
-   protected void b(aqo $$0) {
-      if (this.b().a($$0.gb())) {
-         this.h = $$0.f(new ud());
+   public boolean s() {
+      return !this.n.aW();
+   }
+
+   @Override
+   public void q() {
+      if (this.n.dK()) {
+         this.n();
+      } else {
+         this.f = (double)((float)this.n.du());
+         this.g = (double)((float)this.n.dw());
+         this.h = (double)((float)this.n.dA());
       }
-
-      super.b($$0);
-   }
-
-   @Override
-   public wx a(SocketAddress $$0, GameProfile $$1) {
-      return (wx)(this.b().a($$1) && this.a($$1.getName()) != null ? wx.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
-   }
-
-   public gsa b() {
-      return (gsa)super.c();
-   }
-
-   @Override
-   public ud r() {
-      return this.h;
    }
 }

@@ -1,41 +1,21 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bvb extends buj<cll> {
-   private static final int d = 1200;
-   final float c;
-
-   public bvb(float $$0) {
-      super(ImmutableMap.of(cbu.d, cbv.a), 1200);
-      this.c = $$0;
-   }
-
-   protected boolean a(aqn $$0, cll $$1) {
-      return $$1.dS().g().map($$0x -> $$0x == cnn.b || $$0x == cnn.c || $$0x == cnn.d).orElse(true);
-   }
-
-   protected boolean a(aqn $$0, cll $$1, long $$2) {
-      return $$1.dS().a(cbu.d);
-   }
-
-   protected void b(aqn $$0, cll $$1, long $$2) {
-      bul.a($$1, $$1.dS().c(cbu.d).get().b(), this.c, 1);
-   }
-
-   protected void c(aqn $$0, cll $$1, long $$2) {
-      Optional<iw> $$3 = $$1.dS().c(cbu.d);
-      $$3.ifPresent($$1x -> {
-         io $$2x = $$1x.b();
-         aqn $$3x = $$0.o().a($$1x.a());
-         if ($$3x != null) {
-            cdu $$4 = $$3x.y();
-            if ($$4.a($$2x, $$0xx -> true)) {
-               $$4.b($$2x);
-            }
-
-            agb.c($$0, $$2x);
-         }
-      });
-      $$1.dS().b(cbu.d);
+public class bvb {
+   public static bwo<btm> a(int $$0, float $$1) {
+      return byq.a(
+         (Function<byq.b<btm>, ? extends App<byq.c<btm>, byt<btm>>>)($$2 -> $$2.group($$2.c(cco.m), $$2.a(cco.n), $$2.b(cco.o), $$2.b(cco.h))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
+                     btk $$9 = $$2.b($$5);
+                     if ($$9.a($$7, (double)$$0) && $$2.<ccq>b($$6).a($$9)) {
+                        $$4.a(new bvo($$9, true));
+                        $$7.H().a(-$$1, 0.0F);
+                        $$7.r(ayu.c($$7.dF(), $$7.ba, 0.0F));
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

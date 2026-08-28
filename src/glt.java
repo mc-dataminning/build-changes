@@ -1,34 +1,28 @@
-public class glt extends gmf<cgm, fth<cgm>> {
-   private final fth<cgm> a;
+public class glt extends gjy<ciq, fwl<ciq>> {
+   private static final alb a = new alb("textures/entity/wither/wither_invulnerable.png");
+   private static final alb i = new alb("textures/entity/wither/wither.png");
 
-   public glt(gjp<cgm, fth<cgm>> $$0, fvs $$1) {
-      super($$0);
-      this.a = new fth<>($$1.a(fvv.aq));
+   public glt(gis.a $$0) {
+      super($$0, new fwl<>($$0.a(fwu.bV)), 1.0F);
+      this.a(new gns(this, $$0.f()));
    }
 
-   public void a(eyu $$0, gck $$1, int $$2, cgm $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      ctq $$10 = $$3.fQ();
-      if ($$10.g() instanceof cre $$11 && $$11.d() == cre.a.a) {
-         this.c().a(this.a);
-         this.a.a($$3, $$4, $$5, $$6);
-         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
-         float $$15;
-         float $$16;
-         float $$14;
-         if ($$10.a(awf.bz)) {
-            int $$13 = cwi.a($$10, -6265536);
-            $$14 = (float)axp.b.b($$13) / 255.0F;
-            $$15 = (float)axp.b.c($$13) / 255.0F;
-            $$16 = (float)axp.b.d($$13) / 255.0F;
-         } else {
-            $$14 = 1.0F;
-            $$15 = 1.0F;
-            $$16 = 1.0F;
-         }
+   protected int a(ciq $$0, iz $$1) {
+      return 15;
+   }
 
-         eyy $$20 = $$1.getBuffer(gcs.e($$11.b()));
-         this.a.a($$0, $$20, $$2, gnm.d, $$14, $$15, $$16, 1.0F);
-         return;
+   public alb a(ciq $$0) {
+      int $$1 = $$0.y();
+      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : i;
+   }
+
+   protected void a(ciq $$0, ezt $$1, float $$2) {
+      float $$3 = 2.0F;
+      int $$4 = $$0.y();
+      if ($$4 > 0) {
+         $$3 -= ((float)$$4 - $$2) / 220.0F * 0.5F;
       }
+
+      $$1.b($$3, $$3, $$3);
    }
 }

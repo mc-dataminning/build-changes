@@ -1,71 +1,99 @@
-import com.google.common.primitives.Ints;
-import com.google.common.primitives.Longs;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.charset.StandardCharsets;
-import java.security.SignatureException;
-import java.time.Instant;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
 import java.util.Optional;
 
-public record xq(String b, Instant c, long d, xe e) {
-   public static final MapCodec<xq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("content").forGetter(xq::a),
-               axn.m.fieldOf("time_stamp").forGetter(xq::b),
-               Codec.LONG.fieldOf("salt").forGetter(xq::c),
-               xe.a.optionalFieldOf("last_seen", xe.b).forGetter(xq::d)
-            )
-            .apply($$0, xq::new)
-   );
-
-   public static xq a(String $$0) {
-      return new xq($$0, Instant.now(), 0L, xe.b);
-   }
-
-   public void a(ayq.a $$0) throws SignatureException {
-      $$0.update(Longs.toByteArray(this.d));
-      $$0.update(Longs.toByteArray(this.c.getEpochSecond()));
-      byte[] $$1 = this.b.getBytes(StandardCharsets.UTF_8);
-      $$0.update(Ints.toByteArray($$1.length));
-      $$0.update($$1);
-      this.e.a($$0);
-   }
-
-   public xq.a a(xk $$0) {
-      return new xq.a(this.b, this.c, this.d, this.e.a($$0));
-   }
-
-   public String a() {
-      return this.b;
-   }
-
-   public Instant b() {
-      return this.c;
-   }
-
-   public long c() {
-      return this.d;
-   }
-
-   public xe d() {
-      return this.e;
-   }
-
-   public static record a(String a, Instant b, long c, xe.a d) {
-      public a(vx $$0) {
-         this($$0.d(256), $$0.t(), $$0.readLong(), new xe.a($$0));
+public interface xq {
+   Optional<azx> a = Optional.of(azx.a);
+   xq b = new xq() {
+      @Override
+      public <T> Optional<T> a(xq.a<T> $$0) {
+         return Optional.empty();
       }
 
-      public void a(vx $$0) {
-         $$0.a(this.a, 256);
-         $$0.a(this.b);
-         $$0.b(this.c);
-         this.d.a($$0);
+      @Override
+      public <T> Optional<T> a(xq.b<T> $$0, yi $$1) {
+         return Optional.empty();
       }
+   };
 
-      public Optional<xq> a(xk $$0) {
-         return this.d.a($$0).map($$0x -> new xq(this.a, this.b, this.c, $$0x));
-      }
+   <T> Optional<T> a(xq.a<T> var1);
+
+   <T> Optional<T> a(xq.b<T> var1, yi var2);
+
+   static xq e(final String $$0) {
+      return new xq() {
+         @Override
+         public <T> Optional<T> a(xq.a<T> $$0x) {
+            return $$0.accept($$0);
+         }
+
+         @Override
+         public <T> Optional<T> a(xq.b<T> $$0x, yi $$1) {
+            return $$0.accept($$1, $$0);
+         }
+      };
+   }
+
+   static xq a(final String $$0, final yi $$1) {
+      return new xq() {
+         @Override
+         public <T> Optional<T> a(xq.a<T> $$0x) {
+            return $$0.accept($$0);
+         }
+
+         @Override
+         public <T> Optional<T> a(xq.b<T> $$0x, yi $$1x) {
+            return $$0.accept($$1.a($$1), $$0);
+         }
+      };
+   }
+
+   static xq a(xq... $$0) {
+      return a(ImmutableList.copyOf($$0));
+   }
+
+   static xq a(final List<? extends xq> $$0) {
+      return new xq() {
+         @Override
+         public <T> Optional<T> a(xq.a<T> $$0x) {
+            for (xq $$1 : $$0) {
+               Optional<T> $$2 = $$1.a($$0);
+               if ($$2.isPresent()) {
+                  return $$2;
+               }
+            }
+
+            return Optional.empty();
+         }
+
+         @Override
+         public <T> Optional<T> a(xq.b<T> $$0x, yi $$1) {
+            for (xq $$2 : $$0) {
+               Optional<T> $$3 = $$2.a($$0, $$1);
+               if ($$3.isPresent()) {
+                  return $$3;
+               }
+            }
+
+            return Optional.empty();
+         }
+      };
+   }
+
+   default String getString() {
+      StringBuilder $$0 = new StringBuilder();
+      this.a($$1 -> {
+         $$0.append($$1);
+         return Optional.empty();
+      });
+      return $$0.toString();
+   }
+
+   public interface a<T> {
+      Optional<T> accept(String var1);
+   }
+
+   public interface b<T> {
+      Optional<T> accept(yi var1, String var2);
    }
 }

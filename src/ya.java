@@ -1,74 +1,35 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+public interface ya {
+   xl a();
 
-public record ya(String d, @Nullable gt e) implements xz {
-   public static final MapCodec<ya> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("entity").forGetter(ya::b)).apply($$0, ya::new));
-   public static final xz.a<ya> b = new xz.a<>(a, "entity");
+   void a(arc var1, boolean var2, xh.a var3);
 
-   public ya(String $$0) {
-      this($$0, a($$0));
+   static ya a(yb $$0) {
+      return (ya)($$0.h() ? new ya.a($$0.d()) : new ya.b($$0));
    }
 
-   @Nullable
-   private static gt a(String $$0) {
-      try {
-         gu $$1 = new gu(new StringReader($$0));
-         return $$1.t();
-      } catch (CommandSyntaxException var2) {
-         return null;
+   public static record a(xl a) implements ya {
+      @Override
+      public void a(arc $$0, boolean $$1, xh.a $$2) {
+         $$0.c.a(this.a, $$2);
       }
    }
 
-   @Override
-   public Stream<ud> a(ee $$0) throws CommandSyntaxException {
-      if (this.e != null) {
-         List<? extends brw> $$1 = this.e.b($$0);
-         return $$1.stream().map(cv::b);
-      } else {
-         return Stream.empty();
+   public static record b(yb a) implements ya {
+      @Override
+      public xl a() {
+         return this.a.d();
       }
-   }
 
-   @Override
-   public xz.a<?> a() {
-      return b;
-   }
-
-   @Override
-   public String toString() {
-      return "entity=" + this.d;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof ya $$1 && this.d.equals($$1.d)) {
-            return true;
+      @Override
+      public void a(arc $$0, boolean $$1, xh.a $$2) {
+         yb $$3 = this.a.a($$1);
+         if (!$$3.j()) {
+            $$0.c.a($$3, $$2);
          }
-
-         return false;
       }
-   }
 
-   @Override
-   public int hashCode() {
-      return this.d.hashCode();
-   }
-
-   public String b() {
-      return this.d;
-   }
-
-   @Nullable
-   public gt c() {
-      return this.e;
+      public yb b() {
+         return this.a;
+      }
    }
 }

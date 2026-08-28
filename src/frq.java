@@ -1,29 +1,81 @@
-import java.util.function.Function;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2BooleanLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
-public abstract class frq<E extends brw> extends ftf<E> {
-   private final float a;
-   private final float b;
+public class frq extends fmy {
+   private static final xl a = xl.c("selectWorld.experiments");
+   private static final xl b = xl.c("selectWorld.experiments.info").a(n.m);
+   private static final int c = 310;
+   private final fkm d = new fkm(this);
+   private final fmy r;
+   private final atw s;
+   private final Consumer<atw> u;
+   private final Object2BooleanMap<att> v = new Object2BooleanLinkedOpenHashMap();
 
-   public frq(float $$0, float $$1) {
-      this($$0, $$1, gcs::e);
-   }
+   public frq(fmy $$0, atw $$1, Consumer<atw> $$2) {
+      super(a);
+      this.r = $$0;
+      this.s = $$1;
+      this.u = $$2;
 
-   public frq(float $$0, float $$1, Function<akn, gcs> $$2) {
-      super($$2);
-      this.b = $$1;
-      this.a = $$0;
+      for (att $$3 : $$1.c()) {
+         if ($$3.l() == atx.d) {
+            this.v.put($$3, $$1.f().contains($$3));
+         }
+      }
    }
 
    @Override
-   public void a(eyu $$0, eyy $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      if (this.e) {
-         $$0.a();
-         $$0.b(this.a, this.a, this.a);
-         $$0.a(0.0F, this.b / 16.0F, 0.0F);
-         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$0.b();
-      } else {
-         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
+   protected void aN_() {
+      this.d.a(a, this.p);
+      fkq $$0 = this.d.c(fkq.d());
+      $$0.a(new fht(b, this.p).d(310), $$0x -> $$0x.e(15));
+      fru.a $$1 = fru.a(310).a(2, true).b(4);
+      this.v.forEach(($$1x, $$2x) -> $$1.a(a($$1x), () -> this.v.getBoolean($$1x), $$1xx -> this.v.put($$1x, $$1xx)).a($$1x.c()));
+      $$1.a($$0::a);
+      fkq $$2 = this.d.b(fkq.e().a(8));
+      $$2.a(fgz.a(xk.d, $$0x -> this.m()).a());
+      $$2.a(fgz.a(xk.e, $$0x -> this.d()).a());
+      this.d.a($$1x -> {
+         fgx var10000 = this.c($$1x);
+      });
+      this.c();
+   }
+
+   private static xl a(att $$0) {
+      String $$1 = "dataPack." + $$0.g() + ".name";
+      return (xl)(gqa.a($$1) ? xl.c($$1) : $$0.b());
+   }
+
+   @Override
+   protected void c() {
+      this.d.a();
+   }
+
+   @Override
+   public xl i() {
+      return xk.a(super.i(), b);
+   }
+
+   @Override
+   public void d() {
+      this.m.a(this.r);
+   }
+
+   private void m() {
+      List<att> $$0 = new ArrayList<>(this.s.f());
+      List<att> $$1 = new ArrayList<>();
+      this.v.forEach(($$2, $$3) -> {
+         $$0.remove($$2);
+         if ($$3) {
+            $$1.add($$2);
+         }
+      });
+      $$0.addAll(Lists.reverse($$1));
+      this.s.a($$0.stream().map(att::g).toList());
+      this.u.accept(this.s);
    }
 }

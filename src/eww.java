@@ -1,26 +1,45 @@
-import java.util.function.Function;
-
-public interface eww {
-   float getAdvance();
-
-   default float a(boolean $$0) {
-      return this.getAdvance() + ($$0 ? this.a() : 0.0F);
-   }
-
-   default float a() {
-      return 1.0F;
-   }
-
-   default float b() {
-      return 1.0F;
-   }
-
-   fiv bake(Function<ewy, fiv> var1);
-
-   public interface a extends eww {
+public class eww {
+   private static final exg<Object> a = new exg<Object>() {
       @Override
-      default fiv bake(Function<ewy, fiv> $$0) {
-         return fiw.a;
+      public void a(exd<Object> $$0) {
       }
+
+      @Override
+      public boolean a(iz $$0, Object $$1) {
+         return false;
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+   };
+   private static final ewz<Object> b = new ewz<Object>() {
+      @Override
+      public void a(exd<Object> $$0) {
+      }
+
+      @Override
+      public boolean a(iz $$0, Object $$1) {
+         return false;
+      }
+
+      @Override
+      public boolean b(iz $$0, Object $$1) {
+         return false;
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+   };
+
+   public static <T> exg<T> a() {
+      return (exg<T>)a;
+   }
+
+   public static <T> ewz<T> b() {
+      return (ewz<T>)b;
    }
 }

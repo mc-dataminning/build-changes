@@ -1,45 +1,32 @@
-import java.util.List;
+import com.mojang.brigadier.Command;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.context.ContextChain;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import javax.annotation.Nullable;
 
-public class hl<T, P> implements hc<T> {
-   private final hl.a<T, P> a;
-   private final List<P> b;
-   private final gz<T> c;
-   private int d;
+public interface hl<T> {
+   void a(T var1, ContextChain<T> var2, hj var3, hp<T> var4);
 
-   private hl(hl.a<T, P> $$0, List<P> $$1, hf $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = new gz<>($$2, this);
-   }
-
-   @Override
-   public void execute(hd<T> $$0, hf $$1) {
-      P $$2 = this.b.get(this.d);
-      $$0.a(this.a.create($$1, $$2));
-      if (++this.d < this.b.size()) {
-         $$0.a(this.c);
+   public interface a<T> extends Command<T>, hl<T> {
+      default int run(CommandContext<T> $$0) throws CommandSyntaxException {
+         throw new UnsupportedOperationException("This function should not run");
       }
    }
 
-   public static <T, P> void a(hd<T> $$0, hf $$1, List<P> $$2, hl.a<T, P> $$3) {
-      int $$4 = $$2.size();
-      switch ($$4) {
-         case 0:
-            break;
-         case 1:
-            $$0.a($$3.create($$1, $$2.get(0)));
-            break;
-         case 2:
-            $$0.a($$3.create($$1, $$2.get(0)));
-            $$0.a($$3.create($$1, $$2.get(1)));
-            break;
-         default:
-            $$0.a((new hl<>($$3, $$2, $$1)).c);
+   public abstract static class b<T extends er<T>> implements hl<T> {
+      public final void a(T $$0, ContextChain<T> $$1, hj $$2, hp<T> $$3) {
+         try {
+            this.b($$0, $$1, $$2, $$3);
+         } catch (CommandSyntaxException var6) {
+            this.a(var6, $$0, $$2, $$3.a());
+            $$0.p().onFailure();
+         }
       }
-   }
 
-   @FunctionalInterface
-   public interface a<T, P> {
-      gz<T> create(hf var1, P var2);
+      protected void a(CommandSyntaxException $$0, T $$1, hj $$2, @Nullable hr $$3) {
+         $$1.a($$0, $$2.a(), $$3);
+      }
+
+      protected abstract void b(T var1, ContextChain<T> var2, hj var3, hp<T> var4) throws CommandSyntaxException;
    }
 }

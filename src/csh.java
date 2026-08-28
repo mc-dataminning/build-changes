@@ -1,8 +1,10 @@
-import javax.annotation.Nullable;
-
-public interface csh {
-   default void a(@Nullable cly $$0, daz $$1, ctq $$2, io $$3) {
+public class csh extends csi {
+   public csh(deu $$0, cuf.a $$1) {
+      super($$0, $$1);
    }
 
-   boolean a(@Nullable cly var1, daz var2, io var3, @Nullable eui var4);
+   @Override
+   protected boolean a(cxv $$0, drx $$1) {
+      return $$0.q().a($$0.a(), $$1, 26);
+   }
 }

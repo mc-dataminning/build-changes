@@ -1,28 +1,24 @@
-public class gku extends giz<chw, fvm<chw>> {
-   private static final akn a = new akn("textures/entity/wither/wither_invulnerable.png");
-   private static final akn i = new akn("textures/entity/wither/wither.png");
+public class gku<T extends cjg> extends gjj<T, fvq<T>> {
+   private static final alb a = new alb("textures/entity/skeleton/skeleton.png");
 
-   public gku(ght.a $$0) {
-      super($$0, new fvm<>($$0.a(fvv.bV)), 1.0F);
-      this.a(new gmt(this, $$0.f()));
+   public gku(gis.a $$0) {
+      this($$0, fwu.bn, fwu.bp, fwu.bq);
    }
 
-   protected int a(chw $$0, io $$1) {
-      return 15;
+   public gku(gis.a $$0, fwt $$1, fwt $$2, fwt $$3) {
+      this($$0, $$2, $$3, new fvq<>($$0.a($$1)));
    }
 
-   public akn a(chw $$0) {
-      int $$1 = $$0.y();
-      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : i;
+   public gku(gis.a $$0, fwt $$1, fwt $$2, fvq<T> $$3) {
+      super($$0, $$3, 0.5F);
+      this.a(new gmu<>(this, new fvq($$0.a($$1)), new fvq($$0.a($$2)), $$0.g()));
    }
 
-   protected void a(chw $$0, eyu $$1, float $$2) {
-      float $$3 = 2.0F;
-      int $$4 = $$0.y();
-      if ($$4 > 0) {
-         $$3 -= ((float)$$4 - $$2) / 220.0F * 0.5F;
-      }
+   public alb a(T $$0) {
+      return a;
+   }
 
-      $$1.b($$3, $$3, $$3);
+   protected boolean b(T $$0) {
+      return $$0.gs();
    }
 }

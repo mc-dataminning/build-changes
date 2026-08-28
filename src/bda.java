@@ -1,41 +1,55 @@
+import com.google.common.collect.Lists;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.function.Function;
-import java.util.function.IntFunction;
+import java.util.List;
+import java.util.Objects;
 
-public class bda extends bez {
-   private final String a;
-   private final IntFunction<String> b;
+public class bda extends DataFix {
+   private static final List<String> a = Lists.newArrayList(new String[]{"MinecartRideable", "MinecartChest", "MinecartFurnace"});
 
-   public bda(Schema $$0, String $$1, TypeReference $$2, String $$3, String $$4, IntFunction<String> $$5) {
-      super($$0, false, $$1, $$2, $$3);
-      this.a = $$4;
-      this.b = $$5;
+   public bda(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0, String $$1, String $$2, Function<Dynamic<T>, Dynamic<T>> $$3) {
-      return $$0.map($$4 -> {
-         DynamicOps<T> $$5 = $$0.getOps();
-         Function<T, T> $$6 = $$2xx -> (T)$$3.apply(new Dynamic($$5, $$2xx)).getValue();
-         return $$5.get($$4, $$1).map($$4x -> $$5.set($$4, $$2, $$6.apply((T)$$4x))).result().orElse($$4);
-      });
-   }
+   public TypeRewriteRule makeRule() {
+      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bgs.B);
+      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bgs.B);
+      return this.fixTypeEverywhere(
+         "EntityMinecartIdentifiersFix",
+         $$0,
+         $$1,
+         $$2 -> $$3 -> {
+               if (!Objects.equals($$3.getFirst(), "Minecart")) {
+                  return $$3;
+               } else {
+                  Typed<? extends Pair<String, ?>> $$4 = (Typed<? extends Pair<String, ?>>)$$0.point($$2, "Minecart", $$3.getSecond())
+                     .orElseThrow(IllegalStateException::new);
+                  Dynamic<?> $$5 = (Dynamic<?>)$$4.getOrCreate(DSL.remainderFinder());
+                  int $$6 = $$5.get("Type").asInt(0);
+                  String $$7;
+                  if ($$6 > 0 && $$6 < a.size()) {
+                     $$7 = a.get($$6);
+                  } else {
+                     $$7 = "MinecartRideable";
+                  }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> a(
-               $$0x,
-               this.a,
-               "variant",
-               $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asNumber().map($$1 -> $$0xx.createString(this.b.apply($$1.intValue()))).result(), $$0xx)
-            )
+                  return Pair.of(
+                     $$7,
+                     (DataResult)$$4.write()
+                        .map($$2xx -> ((Type)$$1.types().get($$7)).read($$2xx))
+                        .result()
+                        .orElseThrow(() -> new IllegalStateException("Could not read the new minecart."))
+                  );
+               }
+            }
       );
    }
 }

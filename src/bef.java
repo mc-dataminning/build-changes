@@ -1,39 +1,25 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.function.UnaryOperator;
 
-public abstract class bef extends DataFix {
+public class bef extends bfr {
    private final String a;
-   private final Predicate<String> b;
 
-   public bef(Schema $$0, String $$1, Predicate<String> $$2) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
+   public bef(Schema $$0, String $$1, String $$2) {
+      super($$0, true, "Horse armor fix for " + $$1, bgs.B, $$1);
+      this.a = $$2;
    }
 
-   public final TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bga.t);
-      return this.fixTypeEverywhereTyped(this.a, $$0, a($$0, this.b, this::a));
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<? extends Dynamic<?>> $$1 = $$0.get(this.a).result();
+      if ($$1.isPresent()) {
+         Dynamic<?> $$2 = (Dynamic<?>)$$1.get();
+         Dynamic<T> $$3 = $$0.remove(this.a);
+         $$3 = $$3.set("body_armor_item", $$2);
+         return $$3.set("body_armor_drop_chance", $$0.createFloat(2.0F));
+      } else {
+         return $$0;
+      }
    }
-
-   public static UnaryOperator<Typed<?>> a(Type<?> $$0, Predicate<String> $$1, UnaryOperator<Dynamic<?>> $$2) {
-      OpticFinder<Pair<String, String>> $$3 = DSL.fieldFinder("id", DSL.named(bga.B.typeName(), bhl.a()));
-      OpticFinder<?> $$4 = $$0.findField("tag");
-      return $$4x -> {
-         Optional<Pair<String, String>> $$5 = $$4x.getOptional($$3);
-         return $$5.isPresent() && $$1.test((String)$$5.get().getSecond()) ? $$4x.updateTyped($$4, $$1xx -> $$1xx.update(DSL.remainderFinder(), $$2)) : $$4x;
-      };
-   }
-
-   protected abstract <T> Dynamic<T> a(Dynamic<T> var1);
 }

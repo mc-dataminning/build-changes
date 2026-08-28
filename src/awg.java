@@ -1,10 +1,98 @@
 public class awg {
-   public static final awm<cie> a = a("placeable");
+   public static final awf<deu> a = a("mined", lp.e);
+   public static final awf<cuf> b = a("crafted", lp.h);
+   public static final awf<cuf> c = a("used", lp.h);
+   public static final awf<cuf> d = a("broken", lp.h);
+   public static final awf<cuf> e = a("picked_up", lp.h);
+   public static final awf<cuf> f = a("dropped", lp.h);
+   public static final awf<bsv<?>> g = a("killed", lp.g);
+   public static final awf<bsv<?>> h = a("killed_by", lp.g);
+   public static final awf<alb> i = a("custom", lp.m);
+   public static final alb j = a("leave_game", awe.b);
+   public static final alb k = a("play_time", awe.e);
+   public static final alb l = a("total_world_time", awe.e);
+   public static final alb m = a("time_since_death", awe.e);
+   public static final alb n = a("time_since_rest", awe.e);
+   public static final alb o = a("sneak_time", awe.e);
+   public static final alb p = a("walk_one_cm", awe.d);
+   public static final alb q = a("crouch_one_cm", awe.d);
+   public static final alb r = a("sprint_one_cm", awe.d);
+   public static final alb s = a("walk_on_water_one_cm", awe.d);
+   public static final alb t = a("fall_one_cm", awe.d);
+   public static final alb u = a("climb_one_cm", awe.d);
+   public static final alb v = a("fly_one_cm", awe.d);
+   public static final alb w = a("walk_under_water_one_cm", awe.d);
+   public static final alb x = a("minecart_one_cm", awe.d);
+   public static final alb y = a("boat_one_cm", awe.d);
+   public static final alb z = a("pig_one_cm", awe.d);
+   public static final alb A = a("horse_one_cm", awe.d);
+   public static final alb B = a("aviate_one_cm", awe.d);
+   public static final alb C = a("swim_one_cm", awe.d);
+   public static final alb D = a("strider_one_cm", awe.d);
+   public static final alb E = a("jump", awe.b);
+   public static final alb F = a("drop", awe.b);
+   public static final alb G = a("damage_dealt", awe.c);
+   public static final alb H = a("damage_dealt_absorbed", awe.c);
+   public static final alb I = a("damage_dealt_resisted", awe.c);
+   public static final alb J = a("damage_taken", awe.c);
+   public static final alb K = a("damage_blocked_by_shield", awe.c);
+   public static final alb L = a("damage_absorbed", awe.c);
+   public static final alb M = a("damage_resisted", awe.c);
+   public static final alb N = a("deaths", awe.b);
+   public static final alb O = a("mob_kills", awe.b);
+   public static final alb P = a("animals_bred", awe.b);
+   public static final alb Q = a("player_kills", awe.b);
+   public static final alb R = a("fish_caught", awe.b);
+   public static final alb S = a("talked_to_villager", awe.b);
+   public static final alb T = a("traded_with_villager", awe.b);
+   public static final alb U = a("eat_cake_slice", awe.b);
+   public static final alb V = a("fill_cauldron", awe.b);
+   public static final alb W = a("use_cauldron", awe.b);
+   public static final alb X = a("clean_armor", awe.b);
+   public static final alb Y = a("clean_banner", awe.b);
+   public static final alb Z = a("clean_shulker_box", awe.b);
+   public static final alb aa = a("interact_with_brewingstand", awe.b);
+   public static final alb ab = a("interact_with_beacon", awe.b);
+   public static final alb ac = a("inspect_dropper", awe.b);
+   public static final alb ad = a("inspect_hopper", awe.b);
+   public static final alb ae = a("inspect_dispenser", awe.b);
+   public static final alb af = a("play_noteblock", awe.b);
+   public static final alb ag = a("tune_noteblock", awe.b);
+   public static final alb ah = a("pot_flower", awe.b);
+   public static final alb ai = a("trigger_trapped_chest", awe.b);
+   public static final alb aj = a("open_enderchest", awe.b);
+   public static final alb ak = a("enchant_item", awe.b);
+   public static final alb al = a("play_record", awe.b);
+   public static final alb am = a("interact_with_furnace", awe.b);
+   public static final alb an = a("interact_with_crafting_table", awe.b);
+   public static final alb ao = a("open_chest", awe.b);
+   public static final alb ap = a("sleep_in_bed", awe.b);
+   public static final alb aq = a("open_shulker_box", awe.b);
+   public static final alb ar = a("open_barrel", awe.b);
+   public static final alb as = a("interact_with_blast_furnace", awe.b);
+   public static final alb at = a("interact_with_smoker", awe.b);
+   public static final alb au = a("interact_with_lectern", awe.b);
+   public static final alb av = a("interact_with_campfire", awe.b);
+   public static final alb aw = a("interact_with_cartography_table", awe.b);
+   public static final alb ax = a("interact_with_loom", awe.b);
+   public static final alb ay = a("interact_with_stonecutter", awe.b);
+   public static final alb az = a("bell_ring", awe.b);
+   public static final alb aA = a("raid_trigger", awe.b);
+   public static final alb aB = a("raid_win", awe.b);
+   public static final alb aC = a("interact_with_anvil", awe.b);
+   public static final alb aD = a("interact_with_grindstone", awe.b);
+   public static final alb aE = a("target_hit", awe.b);
+   public static final alb aF = a("interact_with_smithing_table", awe.b);
 
-   private awg() {
+   private static alb a(String $$0, awe $$1) {
+      alb $$2 = new alb($$0);
+      jv.a(lp.m, $$0, $$2);
+      i.a($$2, $$1);
+      return $$2;
    }
 
-   private static awm<cie> a(String $$0) {
-      return awm.a(lf.S, new akn($$0));
+   private static <T> awf<T> a(String $$0, jv<T> $$1) {
+      xl $$2 = xl.c("stat_type.minecraft." + $$0);
+      return jv.a(lp.x, $$0, new awf<>($$1, $$2));
    }
 }
