@@ -1,44 +1,24 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 
-public record ent(List<ent.a> c, eok d) {
-   public static final Codec<ent> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ent.a.a.listOf().fieldOf("structures").forGetter(ent::a), eok.b.fieldOf("placement").forGetter(ent::b)).apply($$0, ent::new)
-   );
-   public static final Codec<jr<ent>> b = akr.a(mc.aW, a);
+public class ent extends enp {
+   public static final MapCodec<ent> a = ayi.m.fieldOf("chance").xmap(ent::new, $$0 -> $$0.c);
+   private final int c;
 
-   public ent(jr<enn> $$0, eok $$1) {
-      this(List.of(new ent.a($$0, 1)), $$1);
+   private ent(int $$0) {
+      this.c = $$0;
    }
 
-   public static ent.a a(jr<enn> $$0, int $$1) {
-      return new ent.a($$0, $$1);
+   public static ent a(int $$0) {
+      return new ent($$0);
    }
 
-   public static ent.a a(jr<enn> $$0) {
-      return new ent.a($$0, 1);
+   @Override
+   protected boolean a(eno $$0, azh $$1, ji $$2) {
+      return $$1.i() < 1.0F / (float)this.c;
    }
 
-   public List<ent.a> a() {
-      return this.c;
-   }
-
-   public eok b() {
-      return this.d;
-   }
-
-   public static record a(jr<enn> b, int c) {
-      public static final Codec<ent.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(enn.b.fieldOf("structure").forGetter(ent.a::a), ayi.m.fieldOf("weight").forGetter(ent.a::b)).apply($$0, ent.a::new)
-      );
-
-      public jr<enn> a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
+   @Override
+   public enr<?> b() {
+      return enr.b;
    }
 }

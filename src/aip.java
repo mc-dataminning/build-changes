@@ -1,8 +1,16 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface aip extends abf {
+   @Override
+   default vj b() {
+      return vj.d;
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface aip {
+   void a(air var1);
+
+   void a(aiu var1);
+
+   void a(ait var1);
+
+   void a(ais var1);
+
+   void a(aiq var1);
 }

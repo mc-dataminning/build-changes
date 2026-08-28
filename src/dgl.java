@@ -1,59 +1,25 @@
-public interface dgl {
-   int M_();
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   int L_();
-
-   default int an() {
-      return this.L_() + this.M_() - 1;
+public interface dgl extends dgr, dhc, dhe {
+   @Override
+   default <T extends dus> Optional<T> a(ji $$0, duu<T> $$1) {
+      return dhc.super.a($$0, $$1);
    }
 
-   default int ao() {
-      return this.aq() - this.ap() + 1;
+   @Override
+   default List<fcr> c(@Nullable bva $$0, fbs $$1) {
+      return dgr.super.c($$0, $$1);
    }
 
-   default int ap() {
-      return kk.a(this.L_());
+   @Override
+   default boolean a(@Nullable bva $$0, fcr $$1) {
+      return dgr.super.a($$0, $$1);
    }
 
-   default int aq() {
-      return kk.a(this.an());
-   }
-
-   default boolean d(int $$0) {
-      return $$0 >= this.L_() && $$0 <= this.an();
-   }
-
-   default boolean s(ji $$0) {
-      return this.e($$0.v());
-   }
-
-   default boolean e(int $$0) {
-      return $$0 < this.L_() || $$0 > this.an();
-   }
-
-   default int f(int $$0) {
-      return this.g(kk.a($$0));
-   }
-
-   default int g(int $$0) {
-      return $$0 - this.ap();
-   }
-
-   default int h(int $$0) {
-      return $$0 + this.ap();
-   }
-
-   static dgl e(final int $$0, final int $$1) {
-      return new dgl() {
-         @Override
-         public int M_() {
-            return $$1;
-         }
-
-         @Override
-         public int L_() {
-            return $$0;
-         }
-      };
+   @Override
+   default ji a(edo.a $$0, ji $$1) {
+      return dhc.super.a($$0, $$1);
    }
 }

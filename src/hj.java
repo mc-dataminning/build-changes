@@ -28,12 +28,12 @@ public class hj implements ArgumentType<hj.d> {
    static final Dynamic2CommandExceptionType e = new Dynamic2CommandExceptionType(($$0, $$1) -> wp.b("arguments.item.component.malformed", $$0, $$1));
    static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> wp.b("arguments.item.predicate.unknown", $$0));
    static final Dynamic2CommandExceptionType g = new Dynamic2CommandExceptionType(($$0, $$1) -> wp.b("arguments.item.predicate.malformed", $$0, $$1));
-   private static final akv h = akv.b("count");
-   static final Map<akv, hj.a> i = Stream.of(new hj.a(h, $$0 -> true, dk.d.d.map($$0 -> $$1 -> $$0.d($$1.M()))))
+   private static final aku h = aku.b("count");
+   static final Map<aku, hj.a> i = Stream.of(new hj.a(h, $$0 -> true, dk.d.d.map($$0 -> $$1 -> $$0.d($$1.M()))))
       .collect(Collectors.toUnmodifiableMap(hj.a::a, $$0 -> (hj.a)$$0));
-   static final Map<akv, hj.c> j = Stream.of(new hj.c(h, dk.d.d.map($$0 -> $$1 -> $$0.d($$1.M()))))
+   static final Map<aku, hj.c> j = Stream.of(new hj.c(h, dk.d.d.map($$0 -> $$1 -> $$0.d($$1.M()))))
       .collect(Collectors.toUnmodifiableMap(hj.c::a, $$0 -> (hj.c)$$0));
-   private final bod<List<Predicate<cwq>>> k;
+   private final bos<List<Predicate<cxh>>> k;
 
    public hj(et $$0) {
       hj.b $$1 = new hj.b($$0);
@@ -60,9 +60,9 @@ public class hj implements ArgumentType<hj.d> {
       return a;
    }
 
-   static record a(akv a, Predicate<cwq> b, Decoder<? extends Predicate<cwq>> c) {
+   static record a(aku a, Predicate<cxh> b, Decoder<? extends Predicate<cxh>> c) {
 
-      public static <T> hj.a a(ImmutableStringReader $$0, akv $$1, ku<T> $$2) throws CommandSyntaxException {
+      public static <T> hj.a a(ImmutableStringReader $$0, aku $$1, ku<T> $$2) throws CommandSyntaxException {
          Codec<T> $$3 = $$2.b();
          if ($$3 == null) {
             throw hj.d.createWithContext($$0, $$1);
@@ -74,17 +74,17 @@ public class hj implements ArgumentType<hj.d> {
          }
       }
 
-      public Predicate<cwq> a(ImmutableStringReader $$0, akt<un> $$1, un $$2) throws CommandSyntaxException {
-         DataResult<? extends Predicate<cwq>> $$3 = this.c.parse($$1, $$2);
-         return (Predicate<cwq>)$$3.getOrThrow($$1x -> hj.e.createWithContext($$0, this.a.toString(), $$1x));
+      public Predicate<cxh> a(ImmutableStringReader $$0, aks<un> $$1, un $$2) throws CommandSyntaxException {
+         DataResult<? extends Predicate<cxh>> $$3 = this.c.parse($$1, $$2);
+         return (Predicate<cxh>)$$3.getOrThrow($$1x -> hj.e.createWithContext($$0, this.a.toString(), $$1x));
       }
    }
 
-   static class b implements he.b<Predicate<cwq>, hj.a, hj.c> {
-      private final jt.b<cwm> a;
+   static class b implements he.b<Predicate<cxh>, hj.a, hj.c> {
+      private final jt.b<cxd> a;
       private final jt.b<ku<?>> b;
       private final jt.b<cw.a<?>> c;
-      private final akt<un> d;
+      private final aks<un> d;
 
       b(jt.a $$0) {
          this.a = $$0.d(mc.K);
@@ -93,83 +93,83 @@ public class hj implements ArgumentType<hj.d> {
          this.d = $$0.a(ue.a);
       }
 
-      public Predicate<cwq> e(ImmutableStringReader $$0, akv $$1) throws CommandSyntaxException {
-         jr.c<cwm> $$2 = this.a.a(aku.a(mc.K, $$1)).orElseThrow(() -> hj.b.createWithContext($$0, $$1));
+      public Predicate<cxh> e(ImmutableStringReader $$0, aku $$1) throws CommandSyntaxException {
+         jr.c<cxd> $$2 = this.a.a(akt.a(mc.K, $$1)).orElseThrow(() -> hj.b.createWithContext($$0, $$1));
          return $$1x -> $$1x.a($$2);
       }
 
-      public Predicate<cwq> f(ImmutableStringReader $$0, akv $$1) throws CommandSyntaxException {
-         jv<cwm> $$2 = this.a.a(axf.a(mc.K, $$1)).orElseThrow(() -> hj.c.createWithContext($$0, $$1));
+      public Predicate<cxh> f(ImmutableStringReader $$0, aku $$1) throws CommandSyntaxException {
+         jv<cxd> $$2 = this.a.a(axf.a(mc.K, $$1)).orElseThrow(() -> hj.c.createWithContext($$0, $$1));
          return $$1x -> $$1x.a($$2);
       }
 
-      public hj.a g(ImmutableStringReader $$0, akv $$1) throws CommandSyntaxException {
+      public hj.a g(ImmutableStringReader $$0, aku $$1) throws CommandSyntaxException {
          hj.a $$2 = hj.i.get($$1);
          if ($$2 != null) {
             return $$2;
          } else {
-            ku<?> $$3 = this.b.a(aku.a(mc.az, $$1)).map(jr::a).orElseThrow(() -> hj.d.createWithContext($$0, $$1));
+            ku<?> $$3 = this.b.a(akt.a(mc.az, $$1)).map(jr::a).orElseThrow(() -> hj.d.createWithContext($$0, $$1));
             return hj.a.a($$0, $$1, $$3);
          }
       }
 
-      public Predicate<cwq> a(ImmutableStringReader $$0, hj.a $$1, un $$2) throws CommandSyntaxException {
+      public Predicate<cxh> a(ImmutableStringReader $$0, hj.a $$1, un $$2) throws CommandSyntaxException {
          return $$1.a($$0, this.d, $$2);
       }
 
-      public Predicate<cwq> a(ImmutableStringReader $$0, hj.a $$1) {
+      public Predicate<cxh> a(ImmutableStringReader $$0, hj.a $$1) {
          return $$1.b;
       }
 
-      public hj.c h(ImmutableStringReader $$0, akv $$1) throws CommandSyntaxException {
+      public hj.c h(ImmutableStringReader $$0, aku $$1) throws CommandSyntaxException {
          hj.c $$2 = hj.j.get($$1);
-         return $$2 != null ? $$2 : this.c.a(aku.a(mc.aB, $$1)).map(hj.c::new).orElseThrow(() -> hj.f.createWithContext($$0, $$1));
+         return $$2 != null ? $$2 : this.c.a(akt.a(mc.aB, $$1)).map(hj.c::new).orElseThrow(() -> hj.f.createWithContext($$0, $$1));
       }
 
-      public Predicate<cwq> a(ImmutableStringReader $$0, hj.c $$1, un $$2) throws CommandSyntaxException {
+      public Predicate<cxh> a(ImmutableStringReader $$0, hj.c $$1, un $$2) throws CommandSyntaxException {
          return $$1.a($$0, this.d, $$2);
       }
 
       @Override
-      public Stream<akv> a() {
-         return this.a.c_().map(aku::a);
+      public Stream<aku> a() {
+         return this.a.c_().map(akt::a);
       }
 
       @Override
-      public Stream<akv> b() {
+      public Stream<aku> b() {
          return this.a.f().map(axf::b);
       }
 
       @Override
-      public Stream<akv> c() {
+      public Stream<aku> c() {
          return Stream.concat(hj.i.keySet().stream(), this.b.c().filter($$0 -> !$$0.a().d()).map($$0 -> $$0.h().a()));
       }
 
       @Override
-      public Stream<akv> d() {
-         return Stream.concat(hj.j.keySet().stream(), this.c.c_().map(aku::a));
+      public Stream<aku> d() {
+         return Stream.concat(hj.j.keySet().stream(), this.c.c_().map(akt::a));
       }
 
-      public Predicate<cwq> a(Predicate<cwq> $$0) {
+      public Predicate<cxh> a(Predicate<cxh> $$0) {
          return $$0.negate();
       }
 
-      public Predicate<cwq> b(List<Predicate<cwq>> $$0) {
+      public Predicate<cxh> b(List<Predicate<cxh>> $$0) {
          return af.b($$0);
       }
    }
 
-   static record c(akv a, Decoder<? extends Predicate<cwq>> b) {
+   static record c(aku a, Decoder<? extends Predicate<cxh>> b) {
       public c(jr.c<cw.a<?>> $$0) {
          this($$0.h().a(), $$0.a().a().map($$0x -> $$0x::a));
       }
 
-      public Predicate<cwq> a(ImmutableStringReader $$0, akt<un> $$1, un $$2) throws CommandSyntaxException {
-         DataResult<? extends Predicate<cwq>> $$3 = this.b.parse($$1, $$2);
-         return (Predicate<cwq>)$$3.getOrThrow($$1x -> hj.g.createWithContext($$0, this.a.toString(), $$1x));
+      public Predicate<cxh> a(ImmutableStringReader $$0, aks<un> $$1, un $$2) throws CommandSyntaxException {
+         DataResult<? extends Predicate<cxh>> $$3 = this.b.parse($$1, $$2);
+         return (Predicate<cxh>)$$3.getOrThrow($$1x -> hj.g.createWithContext($$0, this.a.toString(), $$1x));
       }
    }
 
-   public interface d extends Predicate<cwq> {
+   public interface d extends Predicate<cxh> {
    }
 }

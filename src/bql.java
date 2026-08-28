@@ -1,13 +1,7 @@
-public interface bql {
-   void a();
+import jdk.jfr.consumer.RecordedEvent;
 
-   void b();
-
-   void c();
-
-   boolean e();
-
-   bou f();
-
-   void d();
+public record bql(String a, String b, String c) {
+   public static bql a(RecordedEvent $$0) {
+      return new bql($$0.getString("packetDirection"), $$0.getString("protocolId"), $$0.getString("packetId"));
+   }
 }

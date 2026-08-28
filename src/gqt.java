@@ -1,55 +1,66 @@
-import org.joml.Quaternionf;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import org.joml.Matrix4f;
 
-public abstract class gqt extends gse<cqv, gxx> {
-   public gqt(gsf.a $$0) {
-      super($$0);
-      this.f = 0.8F;
+public class gqt {
+   private static final int a = axk.a(255, 255, 100, 255);
+   private static final int b = axk.a(255, 100, 255, 255);
+   private static final int c = axk.a(255, 0, 255, 0);
+   private static final int d = axk.a(255, 255, 165, 0);
+   private static final int e = axk.a(255, 255, 0, 0);
+   private static final int f = 20;
+   private static final float g = (float) (Math.PI / 10);
+   private final fmg h;
+   private final Map<Integer, zy.a> i = new HashMap<>();
+
+   public gqt(fmg $$0) {
+      this.h = $$0;
    }
 
-   public void a(gxx $$0, ffv $$1, glz $$2, int $$3) {
-      $$1.a();
-      $$1.a(0.0F, 0.375F, 0.0F);
-      $$1.a(a.d.rotationDegrees(180.0F - $$0.a));
-      float $$4 = $$0.c;
-      if ($$4 > 0.0F) {
-         $$1.a(a.b.rotationDegrees(ayz.a($$4) * $$4 * $$0.d / 10.0F * (float)$$0.b));
+   public void a(fgr $$0, gmx $$1, double $$2, double $$3, double $$4) {
+      glv $$5 = this.h.t;
+      $$5.dU().a(bvi.r, $$5.cQ().g(100.0), $$0x -> true).forEach($$6 -> {
+         Optional<zy.a> $$7 = Optional.ofNullable(this.i.get($$6.ar()));
+         $$7.map(zy.a::d).map($$1xx -> $$5.dU().a($$1xx)).map($$0xx -> $$0xx.p(this.h.av().a(true))).ifPresent($$6x -> {
+            a($$0, $$1, $$2, $$3, $$4, $$6.ds(), $$6x, b);
+            fbx $$7x = $$6x.b(0.0, 0.01F, 0.0);
+            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(gnh.a(2.0)), $$7x, 4.0F, c);
+            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(gnh.a(2.0)), $$7x, 8.0F, d);
+            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(gnh.a(2.0)), $$7x, 24.0F, e);
+         });
+         $$7.map(zy.a::e).ifPresent($$6x -> {
+            a($$0, $$1, $$2, $$3, $$4, $$6.ds(), $$6x.b(), a);
+            gqy.a($$0, $$1, fbs.a(fbx.a($$6x)).d(-$$2, -$$3, -$$4), 1.0F, 0.0F, 0.0F, 1.0F);
+         });
+      });
+   }
+
+   private static void a(fgr $$0, gmx $$1, double $$2, double $$3, double $$4, fbx $$5, fbx $$6, int $$7) {
+      fgv $$8 = $$1.getBuffer(gnh.a(2.0));
+      $$8.a($$0.c(), (float)($$5.d - $$2), (float)($$5.e - $$3), (float)($$5.f - $$4)).a($$7);
+      $$8.a($$0.c(), (float)($$6.d - $$2), (float)($$6.e - $$3), (float)($$6.f - $$4)).a($$7);
+   }
+
+   private static void a(Matrix4f $$0, double $$1, double $$2, double $$3, fgv $$4, fbx $$5, float $$6, int $$7) {
+      for (int $$8 = 0; $$8 < 20; $$8++) {
+         a($$8, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       }
 
-      if (!ayz.a($$0.e, 0.0F)) {
-         $$1.a(new Quaternionf().setAngleAxis($$0.e * (float) (Math.PI / 180.0), 1.0F, 0.0F, 1.0F));
-      }
-
-      $$1.b(-1.0F, -1.0F, 1.0F);
-      $$1.a(a.d.rotationDegrees(90.0F));
-      gcc<gxx> $$5 = this.a();
-      $$5.a($$0);
-      ffz $$6 = $$2.getBuffer(this.b());
-      $$5.a($$1, $$6, $$3, hej.d);
-      this.b($$0, $$1, $$2, $$3);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+      a(0, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   protected void b(gxx $$0, ffv $$1, glz $$2, int $$3) {
+   private static void a(int $$0, Matrix4f $$1, double $$2, double $$3, double $$4, fgv $$5, fbx $$6, float $$7, int $$8) {
+      float $$9 = (float)$$0 * (float) (Math.PI / 10);
+      fbx $$10 = $$6.b((double)$$7 * Math.cos((double)$$9), 0.0, (double)$$7 * Math.sin((double)$$9));
+      $$5.a($$1, (float)($$10.d - $$2), (float)($$10.e - $$3), (float)($$10.f - $$4)).a($$8);
    }
 
-   protected abstract gcc<gxx> a();
-
-   protected abstract gmj b();
-
-   public gxx c() {
-      return new gxx();
+   public void a() {
+      this.i.clear();
    }
 
-   public void a(cqv $$0, gxx $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.k($$2);
-      $$1.c = (float)$$0.N() - $$2;
-      $$1.b = $$0.O();
-      $$1.d = Math.max($$0.L() - $$2, 0.0F);
-      $$1.e = $$0.a($$2);
-      $$1.f = $$0.bo();
-      $$1.g = $$0.a(0, $$2);
-      $$1.h = $$0.a(1, $$2);
+   public void a(zy.a $$0) {
+      this.i.put($$0.c(), $$0);
    }
 }

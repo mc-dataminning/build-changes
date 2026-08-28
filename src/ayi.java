@@ -30,6 +30,8 @@ import it.unimi.dsi.fastutil.floats.FloatList;
 import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
 import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAccessor;
@@ -130,12 +132,12 @@ public class ayi {
       .comapFlatMap($$0 -> DataResult.success(StringEscapeUtils.unescapeJava($$0)), StringEscapeUtils::escapeJava);
    public static final Codec<ayi.d> t = Codec.STRING
       .comapFlatMap(
-         $$0 -> $$0.startsWith("#") ? akv.d($$0.substring(1)).map($$0x -> new ayi.d($$0x, true)) : akv.d($$0).map($$0x -> new ayi.d($$0x, false)), ayi.d::c
+         $$0 -> $$0.startsWith("#") ? aku.d($$0.substring(1)).map($$0x -> new ayi.d($$0x, true)) : aku.d($$0).map($$0x -> new ayi.d($$0x, false)), ayi.d::c
       );
    public static final Function<Optional<Long>, OptionalLong> u = $$0 -> $$0.map(OptionalLong::of).orElseGet(OptionalLong::empty);
    public static final Function<OptionalLong, Optional<Long>> v = $$0 -> $$0.isPresent() ? Optional.of($$0.getAsLong()) : Optional.empty();
    public static final Codec<BitSet> w = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> Arrays.stream($$0.toLongArray()));
-   private static final Codec<Property> D = RecordCodecBuilder.create(
+   private static final Codec<Property> F = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                Codec.STRING.fieldOf("name").forGetter(Property::name),
                Codec.STRING.fieldOf("value").forGetter(Property::value),
@@ -143,7 +145,7 @@ public class ayi {
             )
             .apply($$0, ($$0x, $$1, $$2) -> new Property($$0x, $$1, (String)$$2.orElse(null)))
    );
-   public static final Codec<PropertyMap> x = Codec.either(Codec.unboundedMap(Codec.STRING, Codec.STRING.listOf()), D.listOf()).xmap($$0 -> {
+   public static final Codec<PropertyMap> x = Codec.either(Codec.unboundedMap(Codec.STRING, Codec.STRING.listOf()), F.listOf()).xmap($$0 -> {
       PropertyMap $$1 = new PropertyMap();
       $$0.ifLeft($$1x -> $$1x.forEach(($$1xx, $$2) -> {
             for (String $$3 : $$2) {
@@ -158,11 +160,11 @@ public class ayi {
    }, $$0 -> Either.right($$0.values().stream().toList()));
    public static final Codec<String> y = Codec.string(0, 16)
       .validate($$0 -> azw.f($$0) ? DataResult.success($$0) : DataResult.error(() -> "Player name contained disallowed characters: '" + $$0 + "'"));
-   private static final MapCodec<GameProfile> E = RecordCodecBuilder.mapCodec(
+   private static final MapCodec<GameProfile> G = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(kl.e.fieldOf("id").forGetter(GameProfile::getId), y.fieldOf("name").forGetter(GameProfile::getName)).apply($$0, GameProfile::new)
    );
    public static final Codec<GameProfile> z = RecordCodecBuilder.create(
-      $$0 -> $$0.group(E.forGetter(Function.identity()), x.lenientOptionalFieldOf("properties", new PropertyMap()).forGetter(GameProfile::getProperties))
+      $$0 -> $$0.group(G.forGetter(Function.identity()), x.lenientOptionalFieldOf("properties", new PropertyMap()).forGetter(GameProfile::getProperties))
             .apply($$0, ($$0x, $$1) -> {
                $$1.forEach(($$1x, $$2) -> $$0x.getProperties().put($$1x, $$2));
                return $$0x;
@@ -175,7 +177,24 @@ public class ayi {
       return $$1.length != 1 ? DataResult.error(() -> "Expected one codepoint, got: " + $$0) : DataResult.success($$1[0]);
    }, Character::toString);
    public static final Codec<String> C = Codec.STRING
-      .validate($$0 -> !akv.i($$0) ? DataResult.error(() -> "Invalid string to use as a resource path element: " + $$0) : DataResult.success($$0));
+      .validate($$0 -> !aku.i($$0) ? DataResult.error(() -> "Invalid string to use as a resource path element: " + $$0) : DataResult.success($$0));
+   public static final Codec<URI> D = Codec.STRING.comapFlatMap($$0 -> {
+      try {
+         return DataResult.success(af.a($$0));
+      } catch (URISyntaxException var2) {
+         return DataResult.error(var2::getMessage);
+      }
+   }, URI::toString);
+   public static final Codec<String> E = Codec.STRING.validate($$0 -> {
+      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
+         char $$2 = $$0.charAt($$1);
+         if (!azw.a($$2)) {
+            return DataResult.error(() -> "Disallowed chat character: '" + $$2 + "'");
+         }
+      }
+
+      return DataResult.success($$0);
+   });
 
    public static <T> Codec<T> a(DynamicOps<T> $$0) {
       return Codec.PASSTHROUGH.xmap($$1 -> $$1.convert($$0).getValue(), $$1 -> new Dynamic($$0, $$1));
@@ -541,7 +560,7 @@ public class ayi {
       }
    }
 
-   public static record d(akv a, boolean b) {
+   public static record d(aku a, boolean b) {
       @Override
       public String toString() {
          return this.c();

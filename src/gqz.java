@@ -1,17 +1,151 @@
-@Deprecated
-public abstract class gqz<T extends bvk, S extends gzl, M extends gcc<? super S>> extends gtl<T, S, M> {
-   private final M a;
-   private final M b;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-   public gqz(gsf.a $$0, M $$1, M $$2, float $$3) {
-      super($$0, $$1, $$3);
-      this.a = $$1;
-      this.b = $$2;
+public class gqz implements gqy.a {
+   private final fmg a;
+   private static final int b = 32;
+   private static final float c = 1.0F;
+   private final List<gqz.a> d = Lists.newArrayList();
+   private final List<gqz.b> e = Lists.newArrayList();
+
+   public gqz(fmg $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a(S $$0, ffv $$1, glz $$2, int $$3) {
-      this.h = $$0.aj ? this.b : this.a;
-      super.a($$0, $$1, $$2, $$3);
+   public void a(fgr $$0, gmx $$1, double $$2, double $$3, double $$4) {
+      dgz $$5 = this.a.s;
+      if ($$5 == null) {
+         this.d.clear();
+         this.e.clear();
+      } else {
+         fbx $$6 = new fbx($$2, 0.0, $$4);
+         this.d.removeIf(gqz.a::a);
+         this.e.removeIf($$2x -> $$2x.a($$5, $$6));
+         fgv $$7 = $$1.getBuffer(gnh.y());
+
+         for (gqz.b $$8 : this.e) {
+            $$8.a($$5).ifPresent($$6x -> {
+               double $$7x = $$6x.a() - (double)$$8.b();
+               double $$8x = $$6x.b() - (double)$$8.b();
+               double $$9 = $$6x.c() - (double)$$8.b();
+               double $$10 = $$6x.a() + (double)$$8.b();
+               double $$11 = $$6x.b() + (double)$$8.b();
+               double $$12x = $$6x.c() + (double)$$8.b();
+               gqy.a($$0, $$7, fco.a(new fbs($$7x, $$8x, $$9, $$10, $$11, $$12x)), -$$2, -$$3, -$$4, 1.0F, 1.0F, 0.0F, 0.35F, true);
+            });
+         }
+
+         fgv $$9 = $$1.getBuffer(gnh.B());
+
+         for (gqz.b $$10 : this.e) {
+            $$10.a($$5)
+               .ifPresent(
+                  $$5x -> gnr.b(
+                        $$0,
+                        $$9,
+                        $$5x.a() - 0.25 - $$2,
+                        $$5x.b() - $$3,
+                        $$5x.c() - 0.25 - $$4,
+                        $$5x.a() + 0.25 - $$2,
+                        $$5x.b() - $$3 + 1.0,
+                        $$5x.c() + 0.25 - $$4,
+                        1.0F,
+                        1.0F,
+                        0.0F,
+                        0.35F
+                     )
+               );
+         }
+
+         for (gqz.b $$11 : this.e) {
+            $$11.a($$5).ifPresent($$2x -> {
+               gqy.a($$0, $$1, "Listener Origin", $$2x.a(), $$2x.b() + 1.8F, $$2x.c(), -1, 0.025F);
+               gqy.a($$0, $$1, ji.a((kb)$$2x).toString(), $$2x.a(), $$2x.b() + 1.5, $$2x.c(), -6959665, 0.025F);
+            });
+         }
+
+         for (gqz.a $$12 : this.d) {
+            fbx $$13 = $$12.c;
+            double $$14 = 0.2F;
+            double $$15 = $$13.d - 0.2F;
+            double $$16 = $$13.e - 0.2F;
+            double $$17 = $$13.f - 0.2F;
+            double $$18 = $$13.d + 0.2F;
+            double $$19 = $$13.e + 0.2F + 0.5;
+            double $$20 = $$13.f + 0.2F;
+            a($$0, $$1, new fbs($$15, $$16, $$17, $$18, $$19, $$20), 1.0F, 1.0F, 1.0F, 0.2F);
+            gqy.a($$0, $$1, $$12.b.a().toString(), $$13.d, $$13.e + 0.85F, $$13.f, -7564911, 0.0075F);
+         }
+      }
+   }
+
+   private static void a(fgr $$0, gmx $$1, fbs $$2, float $$3, float $$4, float $$5, float $$6) {
+      flo $$7 = fmg.Q().j.k();
+      if ($$7.h()) {
+         fbx $$8 = $$7.b().e();
+         gqy.a($$0, $$1, $$2.c($$8), $$3, $$4, $$5, $$6);
+      }
+   }
+
+   public void a(akt<ecp> $$0, fbx $$1) {
+      this.d.add(new gqz.a(af.c(), $$0, $$1));
+   }
+
+   public void a(ect $$0, int $$1) {
+      this.e.add(new gqz.b($$0, $$1));
+   }
+
+   static record a(long a, akt<ecp> b, fbx c) {
+
+      public boolean a() {
+         return af.c() - this.a > 3000L;
+      }
+
+      public long b() {
+         return this.a;
+      }
+
+      public akt<ecp> c() {
+         return this.b;
+      }
+
+      public fbx d() {
+         return this.c;
+      }
+   }
+
+   static class b implements ecr {
+      public final ect a;
+      public final int b;
+
+      public b(ect $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public boolean a(dgz $$0, fbx $$1) {
+         return this.a.a($$0).filter($$1x -> $$1x.g($$1) <= 1024.0).isPresent();
+      }
+
+      public Optional<fbx> a(dgz $$0) {
+         return this.a.a($$0);
+      }
+
+      @Override
+      public ect a() {
+         return this.a;
+      }
+
+      @Override
+      public int b() {
+         return this.b;
+      }
+
+      @Override
+      public boolean a(ard $$0, jr<ecp> $$1, ecp.a $$2, fbx $$3) {
+         return false;
+      }
    }
 }

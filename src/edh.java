@@ -1,127 +1,105 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public final class edh {
-   final edg a;
-   private final js<esd.a> b;
-   private final ecz c;
-   private final dhu.f d;
-   private final edl e;
-   private final edg f;
-   private final edg g;
-   private final Map<aku<esd.a>, esd> h;
-   private final Map<akv, edg> i;
+public interface edh {
+   Codec<edh> b = edi.b;
+   Codec<jr<edh>> c = akq.a(mc.aN, b);
+   Codec<edh> d = c.xmap(edi.j::new, $$0 -> (jr)($$0 instanceof edi.j $$1 ? $$1.j() : new jr.a<>($$0)));
 
-   public static edh a(js.a $$0, aku<ecy> $$1, long $$2) {
-      return a($$0.b(mc.aR).b($$1).a(), $$0.b(mc.aS), $$2);
+   double a(edh.b var1);
+
+   void a(double[] var1, edh.a var2);
+
+   edh a(edh.f var1);
+
+   double a();
+
+   double b();
+
+   ays<? extends edh> c();
+
+   default edh a(double $$0, double $$1) {
+      return new edi.g(this, $$0, $$1);
    }
 
-   public static edh a(ecy $$0, js<esd.a> $$1, long $$2) {
-      return new edh($$0, $$1, $$2);
+   default edh d() {
+      return edi.a(this, edi.k.a.a);
    }
 
-   private edh(ecy $$0, js<esd.a> $$1, final long $$2) {
-      this.a = $$0.d().a($$2).e();
-      this.b = $$1;
-      this.f = this.a.a(akv.b("aquifer")).e();
-      this.g = this.a.a(akv.b("ore")).e();
-      this.h = new ConcurrentHashMap<>();
-      this.i = new ConcurrentHashMap<>();
-      this.e = new edl(this, $$0.g(), $$0.l(), this.a);
-      final boolean $$3 = $$0.n();
+   default edh e() {
+      return edi.a(this, edi.k.a.b);
+   }
 
-      class a implements ecm.f {
-         private final Map<ecm, ecm> d = new HashMap<>();
+   default edh f() {
+      return edi.a(this, edi.k.a.c);
+   }
 
-         private azh a(long $$0) {
-            return new ecu($$2 + $$0);
-         }
+   default edh g() {
+      return edi.a(this, edi.k.a.d);
+   }
 
-         @Override
-         public ecm.c a(ecm.c $$0) {
-            jr<esd.a> $$1 = $$0.b();
-            if ($$3) {
-               if ($$1.a(edc.a)) {
-                  esd $$2 = esd.a(this.a(0L), new esd.a(-7, 1.0, 1.0));
-                  return new ecm.c($$1, $$2);
-               }
+   default edh h() {
+      return edi.a(this, edi.k.a.e);
+   }
 
-               if ($$1.a(edc.b)) {
-                  esd $$3 = esd.a(this.a(1L), new esd.a(-7, 1.0, 1.0));
-                  return new ecm.c($$1, $$3);
-               }
+   default edh i() {
+      return edi.a(this, edi.k.a.f);
+   }
 
-               if ($$1.a(edc.j)) {
-                  esd $$4 = esd.b(edh.this.a.a(edc.j.a()), new esd.a(0, 0.0));
-                  return new ecm.c($$1, $$4);
-               }
-            }
+   public interface a {
+      edh.b a(int var1);
 
-            esd $$5 = edh.this.a($$1.e().orElseThrow());
-            return new ecm.c($$1, $$5);
-         }
+      void a(double[] var1, edh var2);
+   }
 
-         private ecm a(ecm $$0) {
-            if ($$0 instanceof esa $$1) {
-               azh $$2 = $$3 ? this.a(0L) : edh.this.a.a(akv.b("terrain"));
-               return $$1.a($$2);
-            } else {
-               return (ecm)($$0 instanceof ecn.i ? new ecn.i($$2) : $$0);
-            }
-         }
+   public interface b {
+      int a();
 
-         @Override
-         public ecm apply(ecm $$0) {
-            return this.d.computeIfAbsent($$0, this::a);
-         }
+      int b();
+
+      int c();
+
+      default eeq d() {
+         return eeq.a();
+      }
+   }
+
+   public static record c(jr<esz.a> b, @Nullable esz c) {
+      public static final Codec<edh.c> a = esz.a.b.xmap($$0 -> new edh.c($$0, null), edh.c::b);
+
+      public c(jr<esz.a> $$0) {
+         this($$0, null);
       }
 
-      this.c = $$0.i().a(new a());
-      ecm.f $$4 = new ecm.f() {
-         private final Map<ecm, ecm> a = new HashMap<>();
+      public double a(double $$0, double $$1, double $$2) {
+         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
+      }
 
-         private ecm a(ecm $$0) {
-            if ($$0 instanceof ecn.j $$1) {
-               return $$1.j().a();
-            } else {
-               return $$0 instanceof ecn.l $$2 ? $$2.k() : $$0;
-            }
-         }
-
-         @Override
-         public ecm apply(ecm $$0) {
-            return this.a.computeIfAbsent($$0, this::a);
-         }
-      };
-      this.d = new dhu.f(this.c.e().a($$4), this.c.f().a($$4), this.c.g().a($$4), this.c.h().a($$4), this.c.i().a($$4), this.c.j().a($$4), $$0.k());
+      public double a() {
+         return this.c == null ? 2.0 : this.c.a();
+      }
    }
 
-   public esd a(aku<esd.a> $$0) {
-      return this.h.computeIfAbsent($$0, $$1 -> edc.a(this.b, this.a, $$0));
+   public interface d extends edh {
+      @Override
+      default void a(double[] $$0, edh.a $$1) {
+         $$1.a($$0, this);
+      }
+
+      @Override
+      default edh a(edh.f $$0) {
+         return $$0.apply(this);
+      }
    }
 
-   public edg a(akv $$0) {
-      return this.i.computeIfAbsent($$0, $$1 -> this.a.a($$0).e());
+   public static record e(int a, int b, int c) implements edh.b {
    }
 
-   public ecz a() {
-      return this.c;
-   }
+   public interface f {
+      edh apply(edh var1);
 
-   public dhu.f b() {
-      return this.d;
-   }
-
-   public edl c() {
-      return this.e;
-   }
-
-   public edg d() {
-      return this.f;
-   }
-
-   public edg e() {
-      return this.g;
+      default edh.c a(edh.c $$0) {
+         return $$0;
+      }
    }
 }

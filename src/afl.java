@@ -1,45 +1,69 @@
 public class afl implements yw<abl> {
-   public static final yn<vl, afl> a = yw.a(afl::a, afl::new);
-   private final int b;
-   private final int c;
+   public static final yn<wa, afl> a = yw.a(afl::a, afl::new);
+   private final jr<avz> b;
+   private final awb c;
    private final int d;
+   private final float e;
+   private final float f;
+   private final long g;
 
-   public afl(int $$0, int $$1, int $$2) {
+   public afl(jr<avz> $$0, awb $$1, bva $$2, float $$3, float $$4, long $$5) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
+      this.d = $$2.ar();
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
-   private afl(vl $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
-      this.d = $$0.readInt();
+   private afl(wa $$0) {
+      this.b = avz.d.decode($$0);
+      this.c = $$0.b(awb.class);
+      this.d = $$0.l();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+      this.g = $$0.readLong();
    }
 
-   private void a(vl $$0) {
-      $$0.q(this.b);
-      $$0.q(this.c);
-      $$0.q(this.d);
+   private void a(wa $$0) {
+      avz.d.encode($$0, this.b);
+      $$0.a(this.c);
+      $$0.c(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.b(this.g);
    }
 
    @Override
    public yy<afl> a() {
-      return age.aU;
+      return agd.aU;
    }
 
    public void a(abl $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public jr<avz> b() {
       return this.b;
    }
 
-   public int e() {
+   public awb e() {
       return this.c;
    }
 
    public int f() {
       return this.d;
+   }
+
+   public float g() {
+      return this.e;
+   }
+
+   public float h() {
+      return this.f;
+   }
+
+   public long i() {
+      return this.g;
    }
 }

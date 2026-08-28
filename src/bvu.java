@@ -1,35 +1,61 @@
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+public class bvu {
+   private static final int a = 140;
+   private static final int b = 700;
+   private final akb c;
+   private final ajx<Integer> d;
+   private final ajx<Boolean> e;
+   private boolean f;
+   private int g;
 
-public enum bvu {
-   a(0),
-   b(1),
-   c(2),
-   d(3),
-   e(4),
-   f(5),
-   g(6),
-   h(7),
-   i(8),
-   j(9),
-   k(10),
-   l(11),
-   m(12),
-   n(13),
-   o(14),
-   p(15),
-   q(16),
-   r(17);
-
-   public static final IntFunction<bvu> s = axq.a(bvu::a, values(), axq.a.a);
-   public static final yn<ByteBuf, bvu> t = yl.a(s, bvu::a);
-   private final int u;
-
-   private bvu(final int $$0) {
-      this.u = $$0;
+   public bvu(akb $$0, ajx<Integer> $$1, ajx<Boolean> $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public int a() {
-      return this.u;
+   public void a() {
+      this.f = true;
+      this.g = 0;
+   }
+
+   public boolean a(azh $$0) {
+      if (this.f) {
+         return false;
+      } else {
+         this.f = true;
+         this.g = 0;
+         this.c.a(this.d, $$0.a(841) + 140);
+         return true;
+      }
+   }
+
+   public void b() {
+      if (this.f && this.g++ > this.e()) {
+         this.f = false;
+      }
+   }
+
+   public float c() {
+      return this.f ? 1.0F + 1.15F * ayz.a((float)this.g / (float)this.e() * (float) Math.PI) : 1.0F;
+   }
+
+   private int e() {
+      return this.c.a(this.d);
+   }
+
+   public void a(tq $$0) {
+      $$0.a("Saddle", this.d());
+   }
+
+   public void b(tq $$0) {
+      this.a($$0.q("Saddle"));
+   }
+
+   public void a(boolean $$0) {
+      this.c.a(this.e, $$0);
+   }
+
+   public boolean d() {
+      return this.c.a(this.e);
    }
 }

@@ -1,137 +1,91 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import javax.annotation.Nullable;
 
-public class dsr extends dqs {
-   public static final MapCodec<dsr> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dyk.a.fieldOf("wood_type").forGetter(dqs::d), t()).apply($$0, dsr::new));
-   public static final dxv<jn> b = dnl.aF;
-   public static final fbv c = djn.a(0.0, 14.0, 6.0, 16.0, 16.0, 10.0);
-   public static final fbv d = djn.a(6.0, 14.0, 0.0, 10.0, 16.0, 16.0);
-   public static final fbv e = fbs.a(c, djn.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0));
-   public static final fbv i = fbs.a(d, djn.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0));
-   private static final Map<jn, fbv> j = Maps.newEnumMap(ImmutableMap.of(jn.c, e, jn.d, e, jn.f, i, jn.e, i));
+public class dsr extends dke {
+   public static final MapCodec<dsr> a = b(dsr::new);
+   private static final dyq b = dyg.aW;
+   private static final int c = 20;
+   private static final int d = 8;
 
    @Override
    public MapCodec<dsr> a() {
       return a;
    }
 
-   public dsr(dyk $$0, dwx.d $$1) {
-      super($$0, $$1.a($$0.e()));
-      this.l(this.F.b().b(b, jn.c).b(f, Boolean.valueOf(false)));
+   public dsr(dxp.d $$0) {
+      super($$0);
+      this.l(this.B.b().b(b, Integer.valueOf(0)));
    }
 
    @Override
-   protected bsl a(cwq $$0, dwy $$1, dgj $$2, ji $$3, coy $$4, bsk $$5, fax $$6) {
-      if ($$2.c_($$3) instanceof dvn $$7 && this.a($$1, $$4, $$6, $$7, $$0)) {
-         return bsl.e;
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   private boolean a(dwy $$0, coy $$1, fax $$2, dvn $$3, cwq $$4) {
-      return !$$3.a($$3.a($$1), $$1) && $$4.h() instanceof cwf && !this.a($$2, $$0);
-   }
-
-   private boolean a(fax $$0, dwy $$1) {
-      return $$0.c().o() == $$1.c(b).o();
-   }
-
-   @Override
-   protected fbv a(dwy $$0, dfo $$1, ji $$2, fbg $$3) {
-      return j.get($$0.c(b));
-   }
-
-   @Override
-   protected fbv b_(dwy $$0, dfo $$1, ji $$2) {
-      return this.a($$0, $$1, $$2, fbg.a());
-   }
-
-   @Override
-   protected fbv b(dwy $$0, dfo $$1, ji $$2, fbg $$3) {
-      switch ((jn)$$0.c(b)) {
-         case f:
-         case e:
-            return d;
-         default:
-            return c;
+   protected void a(dgz $$0, dxq $$1, fbt $$2, cqk $$3) {
+      int $$4 = a((dha)$$0, $$1, $$2, (bva)$$3);
+      if ($$3.q() instanceof are $$6) {
+         $$6.a(awk.aE);
+         ap.M.a($$6, $$3, $$2.g(), $$4);
       }
    }
 
-   public boolean b(dwy $$0, dgm $$1, ji $$2) {
-      jn $$3 = $$0.c(b).h();
-      jn $$4 = $$0.c(b).i();
-      return this.a($$1, $$0, $$2.a($$3), $$4) || this.a($$1, $$0, $$2.a($$4), $$3);
+   private static int a(dha $$0, dxq $$1, fbt $$2, bva $$3) {
+      int $$4 = a($$2, $$2.g());
+      int $$5 = $$3 instanceof cpy ? 20 : 8;
+      if (!$$0.U().a($$2.b(), $$1.b())) {
+         a($$0, $$1, $$4, $$2.b(), $$5);
+      }
+
+      return $$4;
    }
 
-   public boolean a(dgm $$0, dwy $$1, ji $$2, jn $$3) {
-      dwy $$4 = $$0.a_($$2);
-      return $$4.a(awp.aC) ? $$4.c(b).o().a($$1.c(b)) : $$4.a($$0, $$2, $$3, drt.a);
+   private static int a(fbt $$0, fbx $$1) {
+      jn $$2 = $$0.c();
+      double $$3 = Math.abs(ayz.e($$1.d) - 0.5);
+      double $$4 = Math.abs(ayz.e($$1.e) - 0.5);
+      double $$5 = Math.abs(ayz.e($$1.f) - 0.5);
+      jn.a $$6 = $$2.o();
+      double $$7;
+      if ($$6 == jn.a.b) {
+         $$7 = Math.max($$3, $$5);
+      } else if ($$6 == jn.a.c) {
+         $$7 = Math.max($$3, $$4);
+      } else {
+         $$7 = Math.max($$4, $$5);
+      }
+
+      return Math.max(1, ayz.c(15.0 * ayz.a((0.5 - $$7) / 0.5, 0.0, 1.0)));
    }
 
-   @Nullable
+   private static void a(dha $$0, dxq $$1, int $$2, ji $$3, int $$4) {
+      $$0.a($$3, $$1.b(b, Integer.valueOf($$2)), 3);
+      $$0.a($$3, $$1.b(), $$4);
+   }
+
    @Override
-   public dwy a(dah $$0) {
-      dwy $$1 = this.m();
-      eta $$2 = $$0.q().b_($$0.a());
-      dgm $$3 = $$0.q();
-      ji $$4 = $$0.a();
+   protected void a(dxq $$0, ard $$1, ji $$2, azh $$3) {
+      if ($$0.c(b) != 0) {
+         $$1.a($$2, $$0.b(b, Integer.valueOf(0)), 3);
+      }
+   }
 
-      for (jn $$5 : $$0.f()) {
-         if ($$5.o().d() && !$$5.o().a($$0.k())) {
-            jn $$6 = $$5.g();
-            $$1 = $$1.b(b, $$6);
-            if ($$1.a($$3, $$4) && this.b($$1, $$3, $$4)) {
-               return $$1.b(f, Boolean.valueOf($$2.a() == etb.c));
-            }
+   @Override
+   protected int a(dxq $$0, dgf $$1, ji $$2, jn $$3) {
+      return $$0.c(b);
+   }
+
+   @Override
+   protected boolean f_(dxq $$0) {
+      return true;
+   }
+
+   @Override
+   protected void a(dxr.a<dke, dxq> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected void a(dxq $$0, dgz $$1, ji $$2, dxq $$3, boolean $$4) {
+      if (!$$1.w_() && !$$0.a($$3.b())) {
+         if ($$0.c(b) > 0 && !$$1.U().a($$2, this)) {
+            $$1.a($$2, $$0.b(b, Integer.valueOf(0)), 18);
          }
       }
-
-      return null;
-   }
-
-   @Override
-   protected dwy a(dwy $$0, dgm $$1, dgy $$2, ji $$3, jn $$4, ji $$5, dwy $$6, azh $$7) {
-      return $$4.o() == $$0.c(b).h().o() && !$$0.a($$1, $$3) ? djp.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   public float h(dwy $$0) {
-      return $$0.c(b).p();
-   }
-
-   @Override
-   protected dwy a(dwy $$0, dqf $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dwy a(dwy $$0, dom $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dwz.a<djn, dwy> $$0) {
-      $$0.a(b, f);
-   }
-
-   @Override
-   public dua a(ji $$0, dwy $$1) {
-      return new dva($$0, $$1);
-   }
-
-   @Override
-   protected boolean a(dwy $$0, etp $$1) {
-      return false;
-   }
-
-   @Nullable
-   @Override
-   public <T extends dua> dub<T> a(dgj $$0, dwy $$1, duc<T> $$2) {
-      return a($$2, duc.i, dvn::a);
    }
 }

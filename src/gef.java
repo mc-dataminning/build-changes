@@ -1,45 +1,95 @@
-import java.util.Arrays;
+import java.util.List;
 
-public class gef extends gcc<hal> {
-   public static final gfn a = gfn.scaling(0.5F);
-   private final gfe[] b = new gfe[8];
+public class gef extends gdn<hav> {
+   private static final String f = "left_sleeve";
+   private static final String g = "right_sleeve";
+   private static final String x = "left_pants";
+   private static final String y = "right_pants";
+   private final List<ggc> z;
+   public final ggc a;
+   public final ggc b;
+   public final ggc c;
+   public final ggc d;
+   public final ggc e;
+   private final boolean A;
 
-   public gef(gfe $$0) {
-      super($$0);
-      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
+   public gef(ggc $$0, boolean $$1) {
+      super($$0, gnh::j);
+      this.A = $$1;
+      this.a = this.s.b("left_sleeve");
+      this.b = this.r.b("right_sleeve");
+      this.c = this.u.b("left_pants");
+      this.d = this.t.b("right_pants");
+      this.e = this.q.b("jacket");
+      this.z = List.of(this.o, this.q, this.s, this.r, this.u, this.t);
    }
 
-   private static String a(int $$0) {
-      return "tentacle" + $$0;
-   }
-
-   public static gfk a() {
-      gfm $$0 = new gfm();
-      gfo $$1 = $$0.a();
-      gfi $$2 = new gfi(0.02F);
-      int $$3 = -16;
-      $$1.a("body", gfj.c().a(0, 0).a(-6.0F, -8.0F, -6.0F, 12.0F, 16.0F, 12.0F, $$2), gfg.a(0.0F, 8.0F, 0.0F));
-      int $$4 = 8;
-      gfj $$5 = gfj.c().a(48, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 18.0F, 2.0F);
-
-      for (int $$6 = 0; $$6 < 8; $$6++) {
-         double $$7 = (double)$$6 * Math.PI * 2.0 / 8.0;
-         float $$8 = (float)Math.cos($$7) * 5.0F;
-         float $$9 = 15.0F;
-         float $$10 = (float)Math.sin($$7) * 5.0F;
-         $$7 = (double)$$6 * Math.PI * -2.0 / 8.0 + (Math.PI / 2);
-         float $$11 = (float)$$7;
-         $$1.a(a($$6), $$5, gfg.a($$8, 15.0F, $$10, 0.0F, $$11, 0.0F));
+   public static ggk a(ggg $$0, boolean $$1) {
+      ggk $$2 = gdn.a($$0, 0.0F);
+      ggm $$3 = $$2.a();
+      float $$4 = 0.25F;
+      if ($$1) {
+         ggm $$5 = $$3.a("left_arm", ggh.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0), gge.a(5.0F, 2.0F, 0.0F));
+         ggm $$6 = $$3.a("right_arm", ggh.c().a(40, 16).a(-2.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0), gge.a(-5.0F, 2.0F, 0.0F));
+         $$5.a("left_sleeve", ggh.c().a(48, 48).a(-1.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0.a(0.25F)), gge.a);
+         $$6.a("right_sleeve", ggh.c().a(40, 32).a(-2.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0.a(0.25F)), gge.a);
+      } else {
+         ggm $$7 = $$3.a("left_arm", ggh.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), gge.a(5.0F, 2.0F, 0.0F));
+         ggm $$8 = $$3.b("right_arm");
+         $$7.a("left_sleeve", ggh.c().a(48, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), gge.a);
+         $$8.a("right_sleeve", ggh.c().a(40, 32).a(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), gge.a);
       }
 
-      return gfk.a($$0, 64, 32);
+      ggm $$9 = $$3.a("left_leg", ggh.c().a(16, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), gge.a(1.9F, 12.0F, 0.0F));
+      ggm $$10 = $$3.b("right_leg");
+      $$9.a("left_pants", ggh.c().a(0, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), gge.a);
+      $$10.a("right_pants", ggh.c().a(0, 32).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), gge.a);
+      ggm $$11 = $$3.b("body");
+      $$11.a("jacket", ggh.c().a(16, 32).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0.a(0.25F)), gge.a);
+      return $$2;
    }
 
-   public void a(hal $$0) {
+   public void a(hav $$0) {
+      boolean $$1 = !$$0.m;
+      this.q.k = $$1;
+      this.r.k = $$1;
+      this.s.k = $$1;
+      this.t.k = $$1;
+      this.u.k = $$1;
+      this.p.k = $$0.n;
+      this.e.k = $$0.o;
+      this.c.k = $$0.p;
+      this.d.k = $$0.q;
+      this.a.k = $$0.aw;
+      this.b.k = $$0.ax;
       super.a($$0);
+   }
 
-      for (gfe $$1 : this.b) {
-         $$1.e = $$0.a;
+   @Override
+   public void c_(boolean $$0) {
+      super.c_($$0);
+      this.a.k = $$0;
+      this.b.k = $$0;
+      this.c.k = $$0;
+      this.d.k = $$0;
+      this.e.k = $$0;
+   }
+
+   @Override
+   public void a(bvr $$0, fgr $$1) {
+      this.e().a($$1);
+      ggc $$2 = this.a($$0);
+      if (this.A) {
+         float $$3 = 0.5F * (float)($$0 == bvr.b ? 1 : -1);
+         $$2.b += $$3;
+         $$2.a($$1);
+         $$2.b -= $$3;
+      } else {
+         $$2.a($$1);
       }
+   }
+
+   public ggc a(azh $$0) {
+      return af.a(this.z, $$0);
    }
 }

@@ -1,49 +1,26 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class fan<C> {
-   private static final Logger b = LogUtils.getLogger();
-   public static final fan<MinecraftServer> a = new fan<MinecraftServer>().a(new fak.a()).a(new fal.a());
-   private final Map<akv, fam.a<C, ?>> c = Maps.newHashMap();
-   private final Map<Class<?>, fam.a<C, ?>> d = Maps.newHashMap();
+public record fan(aku b) implements fal {
+   public static final MapCodec<fan> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(aku.a.fieldOf("source").forGetter(fan::c)).apply($$0, fan::new));
 
-   public fan<C> a(fam.a<C, ?> $$0) {
-      this.c.put($$0.a(), $$0);
-      this.d.put($$0.b(), $$0);
-      return this;
+   @Override
+   public fak a() {
+      return fam.b;
    }
 
-   private <T extends fam<C>> fam.a<C, T> a(Class<?> $$0) {
-      return (fam.a<C, T>)this.d.get($$0);
+   @Override
+   public un a(ewo $$0) {
+      return $$0.d().p().aK().a(this.b);
    }
 
-   public <T extends fam<C>> tq a(T $$0) {
-      fam.a<C, T> $$1 = this.a($$0.getClass());
-      tq $$2 = new tq();
-      $$1.a($$2, $$0);
-      $$2.a("Type", $$1.a().toString());
-      return $$2;
+   @Override
+   public Set<bai<?>> b() {
+      return Set.of();
    }
 
-   @Nullable
-   public fam<C> a(tq $$0) {
-      akv $$1 = akv.c($$0.l("Type"));
-      fam.a<C, ?> $$2 = this.c.get($$1);
-      if ($$2 == null) {
-         b.error("Failed to deserialize timer callback: {}", $$0);
-         return null;
-      } else {
-         try {
-            return $$2.b($$0);
-         } catch (Exception var5) {
-            b.error("Failed to deserialize timer callback: {}", $$0, var5);
-            return null;
-         }
-      }
+   public aku c() {
+      return this.b;
    }
 }

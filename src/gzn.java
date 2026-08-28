@@ -1,4 +1,3 @@
-public class gzn extends gyl {
-   public float a;
-   public float b;
+public class gzn extends gzj {
+   public int a;
 }

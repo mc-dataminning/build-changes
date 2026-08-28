@@ -1,97 +1,53 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
 
-public class eiz implements eid {
-   public static final Codec<eiz> a = RecordCodecBuilder.create(
+public class eiz implements eiy {
+   public static final Codec<Double> a = Codec.doubleRange(0.0, 1.0);
+   public static final Codec<eiz> b = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               eke.a.fieldOf("trunk_provider").forGetter($$0x -> $$0x.b),
-               elj.c.fieldOf("trunk_placer").forGetter($$0x -> $$0x.d),
-               eke.a.fieldOf("foliage_provider").forGetter($$0x -> $$0x.e),
-               ejp.d.fieldOf("foliage_placer").forGetter($$0x -> $$0x.f),
-               ekb.d.optionalFieldOf("root_placer").forGetter($$0x -> $$0x.g),
-               eke.a.fieldOf("dirt_provider").forGetter($$0x -> $$0x.c),
-               eje.a.fieldOf("minimum_size").forGetter($$0x -> $$0x.h),
-               ekx.h.listOf().fieldOf("decorators").forGetter($$0x -> $$0x.i),
-               Codec.BOOL.fieldOf("ignore_vines").orElse(false).forGetter($$0x -> $$0x.j),
-               Codec.BOOL.fieldOf("force_dirt").orElse(false).forGetter($$0x -> $$0x.k)
+               edl.i.fieldOf("blocks").forGetter($$0x -> $$0x.c),
+               edn.a.fieldOf("layers").forGetter($$0x -> $$0x.d),
+               edm.a.fieldOf("crack").forGetter($$0x -> $$0x.e),
+               a.fieldOf("use_potential_placements_chance").orElse(0.35).forGetter($$0x -> $$0x.f),
+               a.fieldOf("use_alternate_layer0_chance").orElse(0.0).forGetter($$0x -> $$0x.g),
+               Codec.BOOL.fieldOf("placements_require_layer0_alternate").orElse(true).forGetter($$0x -> $$0x.h),
+               bsd.b(1, 20).fieldOf("outer_wall_distance").orElse(bsj.a(4, 5)).forGetter($$0x -> $$0x.i),
+               bsd.b(1, 20).fieldOf("distribution_points").orElse(bsj.a(3, 4)).forGetter($$0x -> $$0x.j),
+               bsd.b(0, 10).fieldOf("point_offset").orElse(bsj.a(1, 2)).forGetter($$0x -> $$0x.k),
+               Codec.INT.fieldOf("min_gen_offset").orElse(-16).forGetter($$0x -> $$0x.l),
+               Codec.INT.fieldOf("max_gen_offset").orElse(16).forGetter($$0x -> $$0x.n),
+               a.fieldOf("noise_multiplier").orElse(0.05).forGetter($$0x -> $$0x.o),
+               Codec.INT.fieldOf("invalid_blocks_threshold").forGetter($$0x -> $$0x.p)
             )
             .apply($$0, eiz::new)
    );
-   public final eke b;
-   public final eke c;
-   public final elj d;
-   public final eke e;
-   public final ejp f;
-   public final Optional<ekb> g;
-   public final eje h;
-   public final List<ekx> i;
-   public final boolean j;
-   public final boolean k;
+   public final edl c;
+   public final edn d;
+   public final edm e;
+   public final double f;
+   public final double g;
+   public final boolean h;
+   public final bsd i;
+   public final bsd j;
+   public final bsd k;
+   public final int l;
+   public final int n;
+   public final double o;
+   public final int p;
 
-   protected eiz(eke $$0, elj $$1, eke $$2, ejp $$3, Optional<ekb> $$4, eke $$5, eje $$6, List<ekx> $$7, boolean $$8, boolean $$9) {
-      this.b = $$0;
+   public eiz(edl $$0, edn $$1, edm $$2, double $$3, double $$4, boolean $$5, bsd $$6, bsd $$7, bsd $$8, int $$9, int $$10, double $$11, int $$12) {
+      this.c = $$0;
       this.d = $$1;
       this.e = $$2;
       this.f = $$3;
       this.g = $$4;
-      this.c = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-   }
-
-   public static class a {
-      public final eke a;
-      private final elj c;
-      public final eke b;
-      private final ejp d;
-      private final Optional<ekb> e;
-      private eke f;
-      private final eje g;
-      private List<ekx> h = ImmutableList.of();
-      private boolean i;
-      private boolean j;
-
-      public a(eke $$0, elj $$1, eke $$2, ejp $$3, Optional<ekb> $$4, eje $$5) {
-         this.a = $$0;
-         this.c = $$1;
-         this.b = $$2;
-         this.f = eke.a(djp.j);
-         this.d = $$3;
-         this.e = $$4;
-         this.g = $$5;
-      }
-
-      public a(eke $$0, elj $$1, eke $$2, ejp $$3, eje $$4) {
-         this($$0, $$1, $$2, $$3, Optional.empty(), $$4);
-      }
-
-      public eiz.a a(eke $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public eiz.a a(List<ekx> $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public eiz.a a() {
-         this.i = true;
-         return this;
-      }
-
-      public eiz.a b() {
-         this.j = true;
-         return this;
-      }
-
-      public eiz c() {
-         return new eiz(this.a, this.c, this.b, this.d, this.e, this.f, this.g, this.h, this.i, this.j);
-      }
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
+      this.k = $$8;
+      this.l = $$9;
+      this.n = $$10;
+      this.o = $$11;
+      this.p = $$12;
    }
 }

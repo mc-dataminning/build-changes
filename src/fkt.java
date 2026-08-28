@@ -1,26 +1,22 @@
 public enum fkt {
-   a(true, false),
-   b(false, false),
-   c(false, true);
+   a(0, enz.a),
+   b(1, enz.b),
+   c(2, enz.c),
+   d(3, enz.d);
 
-   private static final fkt[] d = values();
-   private final boolean e;
-   private final boolean f;
+   private final int e;
+   private final wp f;
 
-   private fkt(final boolean $$0, final boolean $$1) {
+   private fkt(final int $$0, final akt<eny> $$1) {
       this.e = $$0;
-      this.f = $$1;
+      this.f = wp.c($$1.a().h("generator"));
    }
 
-   public boolean a() {
-      return this.e;
-   }
-
-   public boolean b() {
+   public wp a() {
       return this.f;
    }
 
-   public fkt c() {
-      return d[(this.ordinal() + 1) % d.length];
+   public int b() {
+      return this.e;
    }
 }

@@ -1,48 +1,36 @@
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-public enum frl implements azv {
-   a("uniform"),
-   b("jp");
+public abstract class frl implements frm {
+   @Nullable
+   private frn a;
+   private boolean b;
 
-   public static final Codec<frl> c = azv.a(frl::values);
-   private final String d;
-
-   private frl(final String $$0) {
-      this.d = $$0;
+   @Override
+   public final boolean aK_() {
+      return this.b;
    }
 
    @Override
-   public String c() {
-      return this.d;
+   public final void b_(boolean $$0) {
+      this.b = $$0;
    }
 
-   public static class a {
-      private final Map<frl, Boolean> c;
-      public static final Codec<frl.a> a = Codec.unboundedMap(frl.c, Codec.BOOL).xmap(frl.a::new, $$0 -> $$0.c);
-      public static final frl.a b = new frl.a(Map.of());
+   @Nullable
+   @Override
+   public frn aL_() {
+      return this.a;
+   }
 
-      public a(Map<frl, Boolean> $$0) {
-         this.c = $$0;
+   @Override
+   public void a(@Nullable frn $$0) {
+      if (this.a != null) {
+         this.a.a(false);
       }
 
-      public boolean a(Set<frl> $$0) {
-         for (Entry<frl, Boolean> $$1 : this.c.entrySet()) {
-            if ($$0.contains($$1.getKey()) != $$1.getValue()) {
-               return false;
-            }
-         }
-
-         return true;
+      if ($$0 != null) {
+         $$0.a(true);
       }
 
-      public frl.a a(frl.a $$0) {
-         Map<frl, Boolean> $$1 = new HashMap<>($$0.c);
-         $$1.putAll(this.c);
-         return new frl.a(Map.copyOf($$1));
-      }
+      this.a = $$0;
    }
 }

@@ -1,53 +1,25 @@
-public class giz extends gki {
-   giz(gga $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.C = true;
-      this.B = 0.86F;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.1;
-      this.D *= 1.5F;
-      this.t = 16;
+public class giz extends glg {
+   giz(ggy $$0, double $$1, double $$2, double $$3, dxq $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a(fmg.Q().ap().a().a($$4));
+      this.u = 0.0F;
+      this.t = 80;
       this.n = false;
    }
 
    @Override
-   public gjm b() {
-      return gjm.b;
+   public gkk b() {
+      return gkk.a;
    }
 
    @Override
    public float b(float $$0) {
-      return this.D * ayz.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+      return 0.5F;
    }
 
-   public static class a implements gjl<lx> {
-      private final gkd a;
-
-      public a(gkd $$0) {
-         this.a = $$0;
-      }
-
-      public gji a(lx $$0, gga $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         giz $$8 = new giz($$1, $$2, $$3 + 0.5, $$4);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
-      }
-   }
-
-   public static class b implements gjl<lx> {
-      private final gkd a;
-
-      public b(gkd $$0) {
-         this.a = $$0;
-      }
-
-      public gji a(lx $$0, gga $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         giz $$8 = new giz($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+   public static class a implements gkj<ll> {
+      public gkg a(ll $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new giz($$1, $$2, $$3, $$4, $$0.b());
       }
    }
 }

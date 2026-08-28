@@ -1,28 +1,29 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class emj extends emy {
-   public static final MapCodec<emj> a = brq.b(0, 256).fieldOf("count").xmap(emj::new, $$0 -> $$0.c);
-   private final brq c;
+public class emj {
+   public static final Codec<emj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.intRange(0, ebm.c).fieldOf("height").forGetter(emj::a), mb.e.q().fieldOf("block").orElse(dkg.a).forGetter($$0x -> $$0x.b().b()))
+            .apply($$0, emj::new)
+   );
+   private final dke b;
+   private final int c;
 
-   private emj(brq $$0) {
+   public emj(int $$0, dke $$1) {
       this.c = $$0;
+      this.b = $$1;
    }
 
-   public static emj a(brq $$0) {
-      return new emj($$0);
+   public int a() {
+      return this.c;
    }
 
-   public static emj a(int $$0) {
-      return a(brn.a($$0));
-   }
-
-   @Override
-   protected int a(azh $$0, ji $$1) {
-      return this.c.a($$0);
+   public dxq b() {
+      return this.b.m();
    }
 
    @Override
-   public emv<?> b() {
-      return emv.f;
+   public String toString() {
+      return (this.c != 1 ? this.c + "*" : "") + mb.e.b(this.b);
    }
 }

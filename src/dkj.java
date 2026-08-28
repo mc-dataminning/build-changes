@@ -1,62 +1,77 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dkj extends dig {
-   public static final MapCodec<dkj> d = b(dkj::new);
-   private static final float e = 0.05F;
-   private static final float f = 0.1F;
+public class dkj extends djq {
+   public static final MapCodec<dkj> a = b(dkj::new);
+   public static final dyh[] b = new dyh[]{dyg.n, dyg.o, dyg.p};
+   private static final fcr c = fco.a(dke.b(2.0, 2.0, 14.0), dke.b(14.0, 0.0, 2.0));
 
    @Override
    public MapCodec<dkj> a() {
-      return d;
+      return a;
    }
 
-   public dkj(dwx.d $$0) {
-      super($$0, ko.c);
+   public dkj(dxp.d $$0) {
+      super($$0);
+      this.l(this.B.b().b(b[0], Boolean.valueOf(false)).b(b[1], Boolean.valueOf(false)).b(b[2], Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean d(dwy $$0) {
-      return false;
+   public dus a(ji $$0, dxq $$1) {
+      return new duv($$0, $$1);
    }
 
-   protected static boolean a(dgj $$0, dhl.c $$1) {
-      if ($$1 == dhl.c.b) {
-         return $$0.H_().i() < 0.05F;
-      } else {
-         return $$1 == dhl.c.c ? $$0.H_().i() < 0.1F : false;
+   @Nullable
+   @Override
+   public <T extends dus> dut<T> a(dgz $$0, dxq $$1, duu<T> $$2) {
+      return $$0.C ? null : a($$2, duu.m, duv::a);
+   }
+
+   @Override
+   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
+      return c;
+   }
+
+   @Override
+   protected bsy a(dxq $$0, dgz $$1, ji $$2, cpr $$3, fbt $$4) {
+      if (!$$1.C && $$1.c_($$2) instanceof duv $$5) {
+         $$3.a($$5);
+         $$3.a(awk.aa);
       }
+
+      return bsy.a;
    }
 
    @Override
-   public void a(dwy $$0, dgj $$1, ji $$2, dhl.c $$3) {
-      if (a($$1, $$3)) {
-         if ($$3 == dhl.c.b) {
-            $$1.b($$2, djp.fP.m());
-            $$1.a(null, ebu.c, $$2);
-         } else if ($$3 == dhl.c.c) {
-            $$1.b($$2, djp.fR.m());
-            $$1.a(null, ebu.c, $$2);
-         }
-      }
+   public void a(dxq $$0, dgz $$1, ji $$2, azh $$3) {
+      double $$4 = (double)$$2.u() + 0.4 + (double)$$3.i() * 0.2;
+      double $$5 = (double)$$2.v() + 0.7 + (double)$$3.i() * 0.3;
+      double $$6 = (double)$$2.w() + 0.4 + (double)$$3.i() * 0.2;
+      $$1.a(lt.ah, $$4, $$5, $$6, 0.0, 0.0, 0.0);
    }
 
    @Override
-   protected boolean a(esz $$0) {
+   protected void a(dxq $$0, ard $$1, ji $$2, boolean $$3) {
+      bsu.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected boolean c_(dxq $$0) {
       return true;
    }
 
    @Override
-   protected void a(dwy $$0, dgj $$1, ji $$2, esz $$3) {
-      if ($$3 == etb.c) {
-         dwy $$4 = djp.fP.m();
-         $$1.b($$2, $$4);
-         $$1.a(ebu.c, $$2, ebu.a.a($$4));
-         $$1.c(1047, $$2, 0);
-      } else if ($$3 == etb.e) {
-         dwy $$5 = djp.fQ.m();
-         $$1.b($$2, $$5);
-         $$1.a(ebu.c, $$2, ebu.a.a($$5));
-         $$1.c(1046, $$2, 0);
-      }
+   protected int a(dxq $$0, dgz $$1, ji $$2) {
+      return csw.a($$1.c_($$2));
+   }
+
+   @Override
+   protected void a(dxr.a<dke, dxq> $$0) {
+      $$0.a(b[0], b[1], b[2]);
+   }
+
+   @Override
+   protected boolean a(dxq $$0, eul $$1) {
+      return false;
    }
 }

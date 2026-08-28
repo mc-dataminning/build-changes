@@ -1,24 +1,77 @@
-import org.joml.Vector3f;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 
-public class gil extends gim<lo> {
-   protected gil(gga $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, lo $$7, gkd $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      float $$9 = this.r.i() * 0.4F + 0.6F;
-      Vector3f $$10 = $$7.b();
-      this.v = this.a($$10.x(), $$9);
-      this.w = this.a($$10.y(), $$9);
-      this.x = this.a($$10.z(), $$9);
+public class gil implements AutoCloseable {
+   private final Long2ObjectOpenHashMap<gil.a> a = new Long2ObjectOpenHashMap();
+   private int b;
+   private boolean c;
+
+   public void a(ji $$0, dxq $$1, glv $$2) {
+      this.a.compute($$0.a(), ($$2x, $$3) -> $$3 != null ? $$3.a(this.b) : new gil.a(this.b, $$1, $$2.ds()));
    }
 
-   public static class a implements gjl<lo> {
-      private final gkd a;
+   public boolean a(ji $$0, dxq $$1) {
+      gil.a $$2 = (gil.a)this.a.get($$0.a());
+      if ($$2 == null) {
+         return false;
+      } else {
+         $$2.a($$1);
+         return true;
+      }
+   }
 
-      public a(gkd $$0) {
-         this.a = $$0;
+   public void a(int $$0, ggy $$1) {
+      ObjectIterator<Entry<gil.a>> $$2 = this.a.long2ObjectEntrySet().iterator();
+
+      while ($$2.hasNext()) {
+         Entry<gil.a> $$3 = (Entry<gil.a>)$$2.next();
+         gil.a $$4 = (gil.a)$$3.getValue();
+         if ($$4.b <= $$0) {
+            ji $$5 = ji.d($$3.getLongKey());
+            $$2.remove();
+            $$1.a($$5, $$4.c, $$4.a);
+         }
+      }
+   }
+
+   public gil a() {
+      this.b++;
+      this.c = true;
+      return this;
+   }
+
+   @Override
+   public void close() {
+      this.c = false;
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public boolean c() {
+      return this.c;
+   }
+
+   static class a {
+      final fbx a;
+      int b;
+      dxq c;
+
+      a(int $$0, dxq $$1, fbx $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.a = $$2;
       }
 
-      public gji a(lo $$0, gga $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gil($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
+      gil.a a(int $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      void a(dxq $$0) {
+         this.c = $$0;
       }
    }
 }

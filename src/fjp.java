@@ -1,256 +1,213 @@
 import com.google.common.collect.Lists;
-import com.google.common.util.concurrent.RateLimiter;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
+import com.mojang.logging.LogUtils;
 import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.CompletionException;
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fjp extends hlf implements fgz {
-   private static final int b = 200;
+public class fjp extends hmd {
+   private static final aku a = aku.b("widget/slot_frame");
+   private static final Logger b = LogUtils.getLogger();
    private static final int c = 80;
-   private static final int C = 95;
-   private static final int D = 1;
-   private static final String[] E = new String[]{"", ".", ". .", ". . ."};
-   private static final wp F = wp.c("mco.upload.verifying");
-   private final fji G;
-   private final evh H;
+   private final fvi C;
    @Nullable
-   private final fkk I;
-   private final long J;
-   private final int K;
-   final AtomicReference<fgy> a = new AtomicReference<>();
-   private final fgp L;
-   private final RateLimiter M;
-   @Nullable
-   private volatile wp[] N;
-   private volatile wp O = wp.c("mco.upload.preparing");
-   @Nullable
-   private volatile String P;
-   private volatile boolean Q;
-   private volatile boolean R;
-   private volatile boolean S = true;
-   private volatile boolean T;
-   @Nullable
-   private fou U;
-   @Nullable
-   private fou V;
-   private int W;
-   private final fsi X = new fsi(this);
+   private fii D;
+   private final long E;
+   private final wp[] F = new wp[]{wp.c("mco.brokenworld.message.line1"), wp.c("mco.brokenworld.message.line2")};
+   private int G;
+   private final List<Integer> H = Lists.newArrayList();
+   private int I;
 
-   public fjp(@Nullable fkk $$0, long $$1, int $$2, fji $$3, evh $$4) {
-      super(flb.a);
-      this.I = $$0;
-      this.J = $$1;
-      this.K = $$2;
-      this.G = $$3;
-      this.H = $$4;
-      this.L = new fgp();
-      this.M = RateLimiter.create(0.1F);
+   public fjp(fvi $$0, long $$1, boolean $$2) {
+      super($$2 ? wp.c("mco.brokenworld.minigame.title") : wp.c("mco.brokenworld.title"));
+      this.C = $$0;
+      this.E = $$1;
    }
 
    @Override
    public void aR_() {
-      this.U = this.X.b(fou.a(wo.k, $$0x -> this.E()).a());
-      this.U.k = false;
-      this.V = this.X.b(fou.a(wo.e, $$0x -> this.F()).a());
-      if (!this.T) {
-         if (this.G.b == -1) {
-            this.T = true;
-            this.H();
-         } else {
-            List<fki> $$0 = new ArrayList<>();
-            if (this.I != null) {
-               $$0.add(this.I);
-            }
-
-            $$0.add(new fkp(this.J, this.G.b, () -> {
-               if (!this.T) {
-                  this.T = true;
-                  this.m.execute(() -> {
-                     this.m.a(this);
-                     this.H();
-                  });
-               }
-            }));
-            this.m.a(new fjb(this.G, $$0.toArray(new fki[0])));
-         }
+      this.G = this.n / 2 - 150;
+      this.c(fpq.a(wo.k, $$0 -> this.aO_()).a((this.n - 150) / 2, g(13) - 5, 150, 20).a());
+      if (this.D == null) {
+         this.a(this.E);
+      } else {
+         this.E();
       }
-
-      this.X.a($$1 -> {
-         fos var10000 = this.c($$1);
-      });
-      this.c();
    }
 
    @Override
-   protected void c() {
-      this.X.a();
+   public wp i() {
+      return ws.a(Stream.concat(Stream.of(this.l), Stream.of(this.F)).collect(Collectors.toList()), wo.v);
    }
 
    private void E() {
-      this.m.a(new fiv(new fgg(new fuo()), this.J));
-   }
-
-   private void F() {
-      this.Q = true;
-      fgy $$0 = this.a.get();
-      if ($$0 != null) {
-         $$0.b();
-      } else {
-         this.m.a(this.G);
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         if (this.S) {
-            this.F();
+      for (Entry<Integer, fio> $$0 : this.D.i.entrySet()) {
+         int $$1 = $$0.getKey();
+         boolean $$2 = $$1 != this.D.p || this.D.i();
+         fpq $$3;
+         if ($$2) {
+            $$3 = fpq.a(wp.c("mco.brokenworld.play"), $$1x -> this.m.a(new fjx(this.C, new fll(this.D.a, $$1, this::b)))).a(this.a($$1), g(8), 80, 20).a();
+            $$3.j = !this.D.i.get($$1).m;
          } else {
-            this.E();
+            $$3 = fpq.a(
+                  wp.c("mco.brokenworld.download"),
+                  $$1x -> this.m.a(fkd.a(this, wp.c("mco.configure.world.restore.download.question.line1"), $$1xx -> this.b($$1)))
+               )
+               .a(this.a($$1), g(8), 80, 20)
+               .a();
          }
 
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void a(fof $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (!this.R && this.L.c() && this.L.d() && this.V != null) {
-         this.O = F;
-         this.V.j = false;
-      }
-
-      $$0.a(this.p, this.O, this.n / 2, 50, -1);
-      if (this.S) {
-         $$0.b(this.p, E[this.W / 10 % E.length], this.n / 2 + this.p.a(this.O) / 2 + 5, 50, -1);
-      }
-
-      if (this.L.c() && !this.Q) {
-         this.c($$0);
-         this.d($$0);
-      }
-
-      wp[] $$4 = this.N;
-      if ($$4 != null) {
-         for (int $$5 = 0; $$5 < $$4.length; $$5++) {
-            $$0.a(this.p, $$4[$$5], this.n / 2, 110 + 12 * $$5, -65536);
+         if (this.H.contains($$1)) {
+            $$3.j = false;
+            $$3.b(wp.c("mco.brokenworld.downloaded"));
          }
-      }
-   }
 
-   private void c(fof $$0) {
-      double $$1 = this.L.e();
-      this.P = String.format(Locale.ROOT, "%.1f", $$1 * 100.0);
-      int $$2 = (this.n - 200) / 2;
-      int $$3 = $$2 + (int)Math.round(200.0 * $$1);
-      $$0.a($$2 - 1, 79, $$3 + 1, 96, -1);
-      $$0.a($$2, 80, $$3, 95, -8355712);
-      $$0.a(this.p, wp.a("mco.upload.percent", this.P), this.n / 2, 84, -1);
-   }
-
-   private void d(fof $$0) {
-      this.a($$0, this.L.g());
-   }
-
-   private void a(fof $$0, long $$1) {
-      String $$2 = this.P;
-      if ($$1 > 0L && $$2 != null) {
-         int $$3 = this.p.b($$2);
-         String $$4 = "(" + fgh.b($$1) + "/s)";
-         $$0.b(this.p, $$4, this.n / 2 + $$3 / 2 + 15, 84, -1);
+         this.c($$3);
       }
    }
 
    @Override
    public void e() {
-      super.e();
-      this.W++;
-      this.L.f();
-      if (this.M.tryAcquire(1)) {
-         wp $$0 = this.G();
-         this.m.aY().c($$0);
-      }
+      this.I++;
    }
 
-   private wp G() {
-      List<wp> $$0 = Lists.newArrayList();
-      $$0.add(this.O);
-      if (this.P != null) {
-         $$0.add(wp.a("mco.upload.percent", this.P));
+   @Override
+   public void a(fpc $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 17, -1);
+
+      for (int $$4 = 0; $$4 < this.F.length; $$4++) {
+         $$0.a(this.p, this.F[$$4], this.n / 2, g(-1) + 3 + $$4 * 12, -6250336);
       }
 
-      wp[] $$1 = this.N;
-      if ($$1 != null) {
-         $$0.addAll(Arrays.asList($$1));
-      }
-
-      return wo.a($$0);
-   }
-
-   private void H() {
-      Path $$0 = this.m.q.toPath().resolve("saves").resolve(this.H.a());
-      fhs $$1 = fhs.a(this.H.g(), this.H.l().c());
-      fgy $$2 = new fgy($$0, $$1, this.m.X(), this.J, this.K, this);
-      if (!this.a.compareAndSet(null, $$2)) {
-         throw new IllegalStateException("Tried to start uploading but was already uploading");
-      } else {
-         $$2.a().handleAsync(($$0x, $$1x) -> {
-            if ($$1x != null) {
-               if ($$1x instanceof CompletionException $$2x) {
-                  $$1x = $$2x.getCause();
-               }
-
-               if ($$1x instanceof fgt $$3) {
-                  if ($$3.a() != null) {
-                     this.O = $$3.a();
-                  }
-
-                  this.a($$3.b());
-               } else {
-                  this.O = wp.a("mco.upload.failed", $$1x.getMessage());
-               }
+      if (this.D != null) {
+         for (Entry<Integer, fio> $$5 : this.D.i.entrySet()) {
+            if ($$5.getValue().l != null && $$5.getValue().k != -1L) {
+               this.a(
+                  $$0,
+                  this.a($$5.getKey()),
+                  g(1) + 5,
+                  $$1,
+                  $$2,
+                  this.D.p == $$5.getKey() && !this.F(),
+                  $$5.getValue().a($$5.getKey()),
+                  $$5.getKey(),
+                  $$5.getValue().k,
+                  $$5.getValue().l,
+                  $$5.getValue().m
+               );
             } else {
-               this.O = wp.c("mco.upload.done");
-               if (this.U != null) {
-                  this.U.b(wo.d);
-               }
+               this.a(
+                  $$0,
+                  this.a($$5.getKey()),
+                  g(1) + 5,
+                  $$1,
+                  $$2,
+                  this.D.p == $$5.getKey() && !this.F(),
+                  $$5.getValue().a($$5.getKey()),
+                  $$5.getKey(),
+                  -1L,
+                  null,
+                  $$5.getValue().m
+               );
             }
-
-            this.R = true;
-            this.S = false;
-            if (this.U != null) {
-               this.U.k = true;
-            }
-
-            if (this.V != null) {
-               this.V.k = false;
-            }
-
-            this.a.set(null);
-            return null;
-         }, this.m);
+         }
       }
    }
 
-   private void a(@Nullable wp... $$0) {
-      this.N = $$0;
+   private int a(int $$0) {
+      return this.G + ($$0 - 1) * 110;
+   }
+
+   private void a(long $$0) {
+      new Thread(() -> {
+         fhh $$1 = fhh.a();
+
+         try {
+            this.D = $$1.a($$0);
+            this.E();
+         } catch (fjd var5) {
+            b.error("Couldn't get own world", var5);
+            this.m.a(new fjv(var5, this.C));
+         }
+      }).start();
+   }
+
+   public void b() {
+      new Thread(() -> {
+         fhh $$0 = fhh.a();
+         if (this.D.e == fii.c.a) {
+            this.m.execute(() -> this.m.a(new fjx(this, new flf(this.D, this, true, this.m))));
+         } else {
+            try {
+               fii $$1 = $$0.a(this.E);
+               this.m.execute(() -> fhc.a($$1, this));
+            } catch (fjd var3) {
+               b.error("Couldn't get own world", var3);
+               this.m.execute(() -> this.m.a(this.C));
+            }
+         }
+      }).start();
+   }
+
+   private void b(int $$0) {
+      fhh $$1 = fhh.a();
+
+      try {
+         fix $$2 = $$1.b(this.D.a, $$0);
+         fju $$3 = new fju(this, $$2, this.D.a($$0), $$1x -> {
+            if ($$1x) {
+               this.H.add($$0);
+               this.p();
+               this.E();
+            } else {
+               this.m.a(this);
+            }
+         });
+         this.m.a($$3);
+      } catch (fjd var5) {
+         b.error("Couldn't download world data", var5);
+         this.m.a(new fjv(var5, this));
+      }
    }
 
    @Override
-   public fgp b() {
-      return this.L;
+   public void aO_() {
+      this.m.a(this.C);
    }
 
-   @Override
-   public void d() {
-      this.O = wp.a("mco.upload.uploading", this.H.b());
+   private boolean F() {
+      return this.D != null && this.D.i();
+   }
+
+   private void a(fpc $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5, String $$6, int $$7, long $$8, @Nullable String $$9, boolean $$10) {
+      aku $$11;
+      if ($$10) {
+         $$11 = fjj.a;
+      } else if ($$9 != null && $$8 != -1L) {
+         $$11 = fkv.a(String.valueOf($$8), $$9);
+      } else if ($$7 == 1) {
+         $$11 = fjj.b;
+      } else if ($$7 == 2) {
+         $$11 = fjj.c;
+      } else if ($$7 == 3) {
+         $$11 = fjj.d;
+      } else {
+         $$11 = fkv.a(String.valueOf(this.D.r), this.D.s);
+      }
+
+      if ($$5) {
+         float $$17 = 0.9F + 0.1F * ayz.b((float)this.I * 0.2F);
+         $$0.a(gnh::H, $$11, $$1 + 3, $$2 + 3, 0.0F, 0.0F, 74, 74, 74, 74, 74, 74, axk.a(1.0F, $$17, $$17, $$17));
+         $$0.a(gnh::H, a, $$1, $$2, 80, 80);
+      } else {
+         int $$18 = axk.a(1.0F, 0.56F, 0.56F, 0.56F);
+         $$0.a(gnh::H, $$11, $$1 + 3, $$2 + 3, 0.0F, 0.0F, 74, 74, 74, 74, 74, 74, $$18);
+         $$0.a(gnh::H, a, $$1, $$2, 80, 80, $$18);
+      }
+
+      $$0.a(this.p, $$6, $$1 + 40, $$2 + 66, -1);
    }
 }

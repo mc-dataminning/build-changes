@@ -1,34 +1,36 @@
-public record dbk<T extends dbf<?>>(aku<dbf<?>> b, T c) {
-   public static final yn<wa, dbk<?>> a = yn.a(aku.b(mc.bk), dbk::a, dbf.b, dbk::b, dbk::new);
+public interface dbk extends dbv<dbj> {
+   @Override
+   default dcg<dbk> b() {
+      return dcg.a;
+   }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof dbk<?> $$1 && this.b == $$1.b) {
-            return true;
-         }
+   dcf<? extends dbk> a();
 
-         return false;
+   dbi c();
+
+   default ka<cxh> a(dbj $$0) {
+      return b($$0);
+   }
+
+   static ka<cxh> b(dbj $$0) {
+      ka<cxh> $$1 = ka.a($$0.a(), cxh.k);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cxd $$3 = $$0.a($$2).h();
+         $$1.set($$2, $$3.j());
       }
+
+      return $$1;
    }
 
    @Override
-   public int hashCode() {
-      return this.b.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return this.b.toString();
-   }
-
-   public aku<dbf<?>> a() {
-      return this.b;
-   }
-
-   public T b() {
-      return this.c;
+   default dby h() {
+      return switch (this.c()) {
+         case a -> dbx.a;
+         case c -> dbx.c;
+         case b -> dbx.b;
+         case d -> dbx.d;
+      };
    }
 }

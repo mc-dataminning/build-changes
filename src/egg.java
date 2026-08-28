@@ -1,47 +1,29 @@
 import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class egg extends efz<eik> {
-   public egg(Codec<eik> $$0) {
-      super($$0);
+public record egg<FC extends eiy, F extends egu<FC>>(F d, FC e) {
+   public static final Codec<egg<?, ?>> a = mb.O.q().dispatch($$0 -> $$0.d, egu::a);
+   public static final Codec<jr<egg<?, ?>>> b = akq.a(mc.aM, a);
+   public static final Codec<jv<egg<?, ?>>> c = kg.a(mc.aM, a);
+
+   public boolean a(dhy $$0, dzn $$1, azh $$2, ji $$3) {
+      return this.d.a(this.e, $$0, $$1, $$2, $$3);
+   }
+
+   public Stream<egg<?, ?>> a() {
+      return Stream.concat(Stream.of(this), this.e.e());
    }
 
    @Override
-   public boolean a(egb<eik> $$0) {
-      dhh $$1 = $$0.b();
-      ji $$2 = $$0.e();
-      azh $$3 = $$0.d();
-      if (!$$1.u($$2)) {
-         return false;
-      } else {
-         dwy $$4 = $$1.a_($$2.d());
-         if (!$$4.a(djp.ei) && !$$4.a(djp.el) && !$$4.a(djp.pT)) {
-            return false;
-         } else {
-            $$1.a($$2, djp.ep.m(), 2);
+   public String toString() {
+      return "Configured: " + this.d + ": " + this.e;
+   }
 
-            for (int $$5 = 0; $$5 < 1500; $$5++) {
-               ji $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
-               if ($$1.a_($$6).l()) {
-                  int $$7 = 0;
+   public F b() {
+      return this.d;
+   }
 
-                  for (jn $$8 : jn.values()) {
-                     if ($$1.a_($$6.a($$8)).a(djp.ep)) {
-                        $$7++;
-                     }
-
-                     if ($$7 > 1) {
-                        break;
-                     }
-                  }
-
-                  if ($$7 == 1) {
-                     $$1.a($$6, djp.ep.m(), 2);
-                  }
-               }
-            }
-
-            return true;
-         }
-      }
+   public FC c() {
+      return this.e;
    }
 }

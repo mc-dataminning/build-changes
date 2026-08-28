@@ -1,167 +1,173 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.EnumSet;
 import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public record edo(Map<aku<eau>, eau> b) {
-   public static final MapCodec<edo> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.unboundedMap(aku.a(mc.bf), eau.a).fieldOf("dimensions").forGetter(edo::d)).apply($$0, $$0.stable(edo::new))
-   );
-   private static final Set<aku<eau>> c = ImmutableSet.of(eau.b, eau.c, eau.d);
-   private static final int d = c.size();
+public class edo {
+   private static final Logger a = LogUtils.getLogger();
+   static final Predicate<dxq> b = $$0 -> !$$0.l();
+   static final Predicate<dxq> c = dxp.a::d;
+   private final axo d;
+   private final Predicate<dxq> e;
+   private final dzm f;
 
-   public edo(Map<aku<eau>, eau> b) {
-      eau $$1 = b.get(eau.b);
-      if ($$1 == null) {
-         throw new IllegalStateException("Overworld settings missing");
-      } else {
-         this.b = b;
-      }
+   public edo(dzm $$0, edo.a $$1) {
+      this.e = $$1.e();
+      this.f = $$0;
+      int $$2 = ayz.e($$0.H_() + 1);
+      this.d = new azo($$2, 256);
    }
 
-   public edo(ke<eau> $$0) {
-      this($$0.c().collect(Collectors.toMap(jr.c::h, jr.c::a)));
-   }
+   public static void a(dzm $$0, Set<edo.a> $$1) {
+      if (!$$1.isEmpty()) {
+         int $$2 = $$1.size();
+         ObjectList<edo> $$3 = new ObjectArrayList($$2);
+         ObjectListIterator<edo> $$4 = $$3.iterator();
+         int $$5 = $$0.b() + 16;
+         ji.a $$6 = new ji.a();
 
-   public static Stream<aku<eau>> a(Stream<aku<eau>> $$0) {
-      return Stream.concat(c.stream(), $$0.filter($$0x -> !c.contains($$0x)));
-   }
+         for (int $$7 = 0; $$7 < 16; $$7++) {
+            for (int $$8 = 0; $$8 < 16; $$8++) {
+               for (edo.a $$9 : $$1) {
+                  $$3.add($$0.a($$9));
+               }
 
-   public edo a(jt.a $$0, dyu $$1) {
-      jt<eat> $$2 = $$0.d(mc.aN);
-      Map<aku<eau>, eau> $$3 = a($$2, this.b, $$1);
-      return new edo($$3);
-   }
+               for (int $$10 = $$5 - 1; $$10 >= $$0.G_(); $$10--) {
+                  $$6.d($$7, $$10, $$8);
+                  dxq $$11 = $$0.a_($$6);
+                  if (!$$11.a(dkg.a)) {
+                     while ($$4.hasNext()) {
+                        edo $$12 = (edo)$$4.next();
+                        if ($$12.e.test($$11)) {
+                           $$12.a($$7, $$8, $$10 + 1);
+                           $$4.remove();
+                        }
+                     }
 
-   public static Map<aku<eau>, eau> a(jt<eat> $$0, Map<aku<eau>, eau> $$1, dyu $$2) {
-      eau $$3 = $$1.get(eau.b);
-      jr<eat> $$4 = (jr<eat>)($$3 == null ? $$0.b(ear.a) : $$3.a());
-      return a($$1, $$4, $$2);
-   }
+                     if ($$3.isEmpty()) {
+                        break;
+                     }
 
-   public static Map<aku<eau>, eau> a(Map<aku<eau>, eau> $$0, jr<eat> $$1, dyu $$2) {
-      Builder<aku<eau>, eau> $$3 = ImmutableMap.builder();
-      $$3.putAll($$0);
-      $$3.put(eau.b, new eau($$1, $$2));
-      return $$3.buildKeepingLast();
-   }
-
-   public dyu a() {
-      eau $$0 = this.b.get(eau.b);
-      if ($$0 == null) {
-         throw new IllegalStateException("Overworld settings missing");
-      } else {
-         return $$0.b();
-      }
-   }
-
-   public Optional<eau> a(aku<eau> $$0) {
-      return Optional.ofNullable(this.b.get($$0));
-   }
-
-   public ImmutableSet<aku<dgj>> b() {
-      return this.d().keySet().stream().map(mc::a).collect(ImmutableSet.toImmutableSet());
-   }
-
-   public boolean c() {
-      return this.a() instanceof eck;
-   }
-
-   private static evk.a b(ke<eau> $$0) {
-      return $$0.f(eau.b).map($$0x -> {
-         dyu $$1 = $$0x.b();
-         if ($$1 instanceof eck) {
-            return evk.a.c;
-         } else {
-            return $$1 instanceof eco ? evk.a.b : evk.a.a;
+                     $$4.back($$2);
+                  }
+               }
+            }
          }
-      }).orElse(evk.a.a);
-   }
-
-   static Lifecycle a(aku<eau> $$0, eau $$1) {
-      return b($$0, $$1) ? Lifecycle.stable() : Lifecycle.experimental();
-   }
-
-   private static boolean b(aku<eau> $$0, eau $$1) {
-      if ($$0 == eau.b) {
-         return a($$1);
-      } else if ($$0 == eau.c) {
-         return b($$1);
-      } else {
-         return $$0 == eau.d ? c($$1) : false;
       }
    }
 
-   private static boolean a(eau $$0) {
-      jr<eat> $$1 = $$0.a();
-      if (!$$1.a(ear.a) && !$$1.a(ear.d)) {
+   public boolean a(int $$0, int $$1, int $$2, dxq $$3) {
+      int $$4 = this.a($$0, $$2);
+      if ($$1 <= $$4 - 2) {
          return false;
       } else {
-         if ($$0.b().d() instanceof dhy $$2 && !$$2.a(dia.b)) {
-            return false;
+         if (this.e.test($$3)) {
+            if ($$1 >= $$4) {
+               this.a($$0, $$2, $$1 + 1);
+               return true;
+            }
+         } else if ($$4 - 1 == $$1) {
+            ji.a $$5 = new ji.a();
+
+            for (int $$6 = $$1 - 1; $$6 >= this.f.G_(); $$6--) {
+               $$5.d($$0, $$6, $$2);
+               if (this.e.test(this.f.a_($$5))) {
+                  this.a($$0, $$2, $$6 + 1);
+                  return true;
+               }
+            }
+
+            this.a($$0, $$2, this.f.G_());
+            return true;
          }
 
-         return true;
+         return false;
       }
    }
 
-   private static boolean b(eau $$0) {
-      return $$0.a().a(ear.b) && $$0.b() instanceof ecw $$1 && $$1.a(ecy.f) && $$1.d() instanceof dhy $$2 && $$2.a(dia.a);
+   public int a(int $$0, int $$1) {
+      return this.a(c($$0, $$1));
    }
 
-   private static boolean c(eau $$0) {
-      return $$0.a().a(ear.c) && $$0.b() instanceof ecw $$1 && $$1.a(ecy.g) && $$1.d() instanceof dic;
+   public int b(int $$0, int $$1) {
+      return this.a(c($$0, $$1)) - 1;
    }
 
-   public edo.b a(ke<eau> $$0) {
-      Stream<aku<eau>> $$1 = Stream.concat($$0.j().stream(), this.b.keySet().stream()).distinct();
-
-      record a(aku<eau> a, eau b) {
-
-         kd c() {
-            return new kd(Optional.empty(), edo.a(this.a, this.b));
-         }
-      }
-
-      List<a> $$2 = new ArrayList<>();
-      a($$1).forEach($$2x -> $$0.f($$2x).or(() -> Optional.ofNullable(this.b.get($$2x))).ifPresent($$2xx -> $$2.add(new a($$2x, $$2xx))));
-      Lifecycle $$3 = $$2.size() == d ? Lifecycle.stable() : Lifecycle.experimental();
-      kn<eau> $$4 = new jz<>(mc.bf, $$3);
-      $$2.forEach($$1x -> $$4.a($$1x.a, $$1x.b, $$1x.c()));
-      ke<eau> $$5 = $$4.n();
-      evk.a $$6 = b($$5);
-      return new edo.b($$5.n(), $$6);
+   private int a(int $$0) {
+      return this.d.a($$0) + this.f.G_();
    }
 
-   public Map<aku<eau>, eau> d() {
-      return this.b;
+   private void a(int $$0, int $$1, int $$2) {
+      this.d.b(c($$0, $$1), $$2 - this.f.G_());
    }
 
-   public static record b(ke<eau> a, evk.a b) {
-      public Lifecycle a() {
-         return this.a.h();
+   public void a(dzm $$0, edo.a $$1, long[] $$2) {
+      long[] $$3 = this.d.a();
+      if ($$3.length == $$2.length) {
+         System.arraycopy($$2, 0, $$3, 0, $$2.length);
+      } else {
+         a.warn("Ignoring heightmap data for chunk " + $$0.f() + ", size does not match; expected: " + $$3.length + ", got: " + $$2.length);
+         a($$0, EnumSet.of($$1));
+      }
+   }
+
+   public long[] a() {
+      return this.d.a();
+   }
+
+   private static int c(int $$0, int $$1) {
+      return $$0 + $$1 * 16;
+   }
+
+   public static enum a implements azv {
+      a("WORLD_SURFACE_WG", edo.b.a, edo.b),
+      b("WORLD_SURFACE", edo.b.c, edo.b),
+      c("OCEAN_FLOOR_WG", edo.b.a, edo.c),
+      d("OCEAN_FLOOR", edo.b.b, edo.c),
+      e("MOTION_BLOCKING", edo.b.c, $$0 -> $$0.d() || !$$0.y().c()),
+      f("MOTION_BLOCKING_NO_LEAVES", edo.b.b, $$0 -> ($$0.d() || !$$0.y().c()) && !($$0.b() instanceof dos));
+
+      public static final Codec<edo.a> g = azv.a(edo.a::values);
+      private final String h;
+      private final edo.b i;
+      private final Predicate<dxq> j;
+
+      private a(final String $$0, final edo.b $$1, final Predicate<dxq> $$2) {
+         this.h = $$0;
+         this.i = $$1;
+         this.j = $$2;
       }
 
-      public kf.b b() {
-         return new kf.c(List.of(this.a)).e();
+      public String a() {
+         return this.h;
       }
 
-      public ke<eau> c() {
-         return this.a;
+      public boolean b() {
+         return this.i == edo.b.c;
       }
 
-      public evk.a d() {
-         return this.b;
+      public boolean d() {
+         return this.i != edo.b.a;
       }
+
+      public Predicate<dxq> e() {
+         return this.j;
+      }
+
+      @Override
+      public String c() {
+         return this.h;
+      }
+   }
+
+   public static enum b {
+      a,
+      b,
+      c;
    }
 }

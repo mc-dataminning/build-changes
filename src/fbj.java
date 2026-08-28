@@ -1,38 +1,49 @@
-import com.google.common.math.IntMath;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.util.Map;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public final class fbj implements fbn {
-   private final fbh a;
-   private final int b;
-   private final int c;
+public class fbj<C> {
+   private static final Logger b = LogUtils.getLogger();
+   public static final fbj<MinecraftServer> a = new fbj<MinecraftServer>().a(new fbg.a()).a(new fbh.a());
+   private final Map<aku, fbi.a<C, ?>> c = Maps.newHashMap();
+   private final Map<Class<?>, fbi.a<C, ?>> d = Maps.newHashMap();
 
-   fbj(int $$0, int $$1) {
-      this.a = new fbh((int)fbs.a($$0, $$1));
-      int $$2 = IntMath.gcd($$0, $$1);
-      this.b = $$0 / $$2;
-      this.c = $$1 / $$2;
+   public fbj<C> a(fbi.a<C, ?> $$0) {
+      this.c.put($$0.a(), $$0);
+      this.d.put($$0.b(), $$0);
+      return this;
    }
 
-   @Override
-   public boolean a(fbn.a $$0) {
-      int $$1 = this.a.size() - 1;
+   private <T extends fbi<C>> fbi.a<C, T> a(Class<?> $$0) {
+      return (fbi.a<C, T>)this.d.get($$0);
+   }
 
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
-            return false;
+   public <T extends fbi<C>> tq a(T $$0) {
+      fbi.a<C, T> $$1 = this.a($$0.getClass());
+      tq $$2 = new tq();
+      $$1.a($$2, $$0);
+      $$2.a("Type", $$1.a().toString());
+      return $$2;
+   }
+
+   @Nullable
+   public fbi<C> a(tq $$0) {
+      aku $$1 = aku.c($$0.l("Type"));
+      fbi.a<C, ?> $$2 = this.c.get($$1);
+      if ($$2 == null) {
+         b.error("Failed to deserialize timer callback: {}", $$0);
+         return null;
+      } else {
+         try {
+            return $$2.b($$0);
+         } catch (Exception var5) {
+            b.error("Failed to deserialize timer callback: {}", $$0, var5);
+            return null;
          }
       }
-
-      return true;
-   }
-
-   @Override
-   public int size() {
-      return this.a.size();
-   }
-
-   @Override
-   public DoubleList a() {
-      return this.a;
    }
 }

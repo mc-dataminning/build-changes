@@ -1,27 +1,41 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class byj {
-   private static final int a = 1;
+public class byj extends bxr<cpd> {
+   private static final int d = 1200;
+   final float c;
 
-   public static bxc<bvi> a(float $$0) {
-      return cao.a(
-         (Function<cao.b<bvi>, ? extends App<cao.c<bvi>, car<bvi>>>)($$1 -> $$1.group($$1.a(cem.n), $$1.c(cem.m), $$1.b(cem.s))
-               .apply($$1, ($$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
-                     if ($$6.bZ()) {
-                        return false;
-                     } else {
-                        bum $$8 = $$1.b($$4);
-                        if ($$8.a($$6, 1.0)) {
-                           $$6.n($$8);
-                        } else {
-                           $$2.a(new bxm($$8, true));
-                           $$3.a(new cep(new bxm($$8, false), $$0, 1));
-                        }
+   public byj(float $$0) {
+      super(ImmutableMap.of(cfc.d, cfd.a), 1200);
+      this.c = $$0;
+   }
 
-                        return true;
-                     }
-                  }))
-      );
+   protected boolean a(ard $$0, cpd $$1) {
+      return $$1.ea().g().map($$0x -> $$0x == cri.b || $$0x == cri.c || $$0x == cri.d).orElse(true);
+   }
+
+   protected boolean a(ard $$0, cpd $$1, long $$2) {
+      return $$1.ea().a(cfc.d);
+   }
+
+   protected void b(ard $$0, cpd $$1, long $$2) {
+      bxt.a($$1, $$1.ea().c(cfc.d).get().b(), this.c, 1);
+   }
+
+   protected void c(ard $$0, cpd $$1, long $$2) {
+      Optional<jq> $$3 = $$1.ea().c(cfc.d);
+      $$3.ifPresent($$1x -> {
+         ji $$2x = $$1x.b();
+         ard $$3x = $$0.p().a($$1x.a());
+         if ($$3x != null) {
+            chc $$4 = $$3x.A();
+            if ($$4.a($$2x, $$0xx -> true)) {
+               $$4.b($$2x);
+            }
+
+            agc.c($$0, $$2x);
+         }
+      });
+      $$1.ea().b(cfc.d);
    }
 }

@@ -1,51 +1,26 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejn extends ejp {
-   public static final MapCodec<ejn> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, ejn::new));
+public class ejn implements eiy {
+   public static final Codec<ejn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dxq.a.fieldOf("target").forGetter($$0x -> $$0x.b),
+               dxq.a.fieldOf("state").forGetter($$0x -> $$0x.c),
+               bsd.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, ejn::new)
+   );
+   public final dxq b;
+   public final dxq c;
+   private final bsd d;
 
-   public ejn(brq $$0, brq $$1) {
-      super($$0, $$1);
+   public ejn(dxq $$0, dxq $$1, bsd $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   protected ejq<?> a() {
-      return ejq.i;
-   }
-
-   @Override
-   protected void a(dgp $$0, ejp.b $$1, azh $$2, eiz $$3, int $$4, ejp.a $$5, int $$6, int $$7, int $$8) {
-      ji $$9 = $$5.a().b($$8);
-      boolean $$10 = $$5.c();
-      if ($$10) {
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 3, 0, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, 1, $$10);
-         if ($$2.h()) {
-            this.a($$0, $$1, $$2, $$3, $$9, $$7, 2, $$10);
-         }
-      } else {
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 1, 0, $$10);
-      }
-   }
-
-   @Override
-   public int a(azh $$0, int $$1, eiz $$2) {
-      return 4;
-   }
-
-   @Override
-   protected boolean b(azh $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$2 != 0 || !$$5 || $$1 != -$$4 && $$1 < $$4 || $$3 != -$$4 && $$3 < $$4 ? super.b($$0, $$1, $$2, $$3, $$4, $$5) : true;
-   }
-
-   @Override
-   protected boolean a(azh $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      if ($$2 == -1 && !$$5) {
-         return $$1 == $$4 && $$3 == $$4;
-      } else {
-         return $$2 == 1 ? $$1 + $$3 > $$4 * 2 - 2 : false;
-      }
+   public bsd a() {
+      return this.d;
    }
 }

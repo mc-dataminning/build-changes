@@ -1,27 +1,45 @@
-import com.google.common.math.Quantiles;
-import com.google.common.math.Quantiles.ScaleAndIndexes;
-import it.unimi.dsi.fastutil.ints.Int2DoubleRBTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2DoubleSortedMap;
-import it.unimi.dsi.fastutil.ints.Int2DoubleSortedMaps;
-import java.util.Comparator;
-import java.util.Map;
+import java.nio.file.Path;
+import java.util.Collections;
+import java.util.List;
 
-public class bpd {
-   public static final ScaleAndIndexes a = Quantiles.scale(100).indexes(new int[]{50, 75, 90, 99});
+public class bpd implements bph {
+   public static final bpd a = new bpd();
 
    private bpd() {
    }
 
-   public static Map<Integer, Double> a(long[] $$0) {
-      return $$0.length == 0 ? Map.of() : a(a.compute($$0));
+   @Override
+   public List<bpl> a(String $$0) {
+      return Collections.emptyList();
    }
 
-   public static Map<Integer, Double> a(double[] $$0) {
-      return $$0.length == 0 ? Map.of() : a(a.compute($$0));
+   @Override
+   public boolean a(Path $$0) {
+      return false;
    }
 
-   private static Map<Integer, Double> a(Map<Integer, Double> $$0) {
-      Int2DoubleSortedMap $$1 = af.a(new Int2DoubleRBTreeMap(Comparator.reverseOrder()), $$1x -> $$1x.putAll($$0));
-      return Int2DoubleSortedMaps.unmodifiable($$1);
+   @Override
+   public long a() {
+      return 0L;
+   }
+
+   @Override
+   public int b() {
+      return 0;
+   }
+
+   @Override
+   public long c() {
+      return 0L;
+   }
+
+   @Override
+   public int d() {
+      return 0;
+   }
+
+   @Override
+   public String e() {
+      return "";
    }
 }

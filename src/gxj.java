@@ -1,16 +1,24 @@
-public class gxj extends gwu<hbb, get> {
-   private static final akv a = akv.b("textures/entity/wolf/wolf_collar.png");
+public class gxj extends gxs<had, gdp> {
+   private final gob a;
 
-   public gxj(guc<hbb, get> $$0) {
+   public gxj(gva<had, gdp> $$0, gob $$1) {
       super($$0);
+      this.a = $$1;
    }
 
-   public void a(ffv $$0, glz $$1, int $$2, hbb $$3, float $$4, float $$5) {
-      cvn $$6 = $$3.h;
-      if ($$6 != null && !$$3.z) {
-         int $$7 = $$6.d();
-         ffz $$8 = $$1.getBuffer(gmj.g(a));
-         this.d().a($$0, $$8, $$2, hej.d, $$7);
+   public void a(fgr $$0, gmx $$1, int $$2, had $$3, float $$4, float $$5) {
+      if ($$3.b != 0) {
+         $$0.a();
+         ggc $$6 = this.d().b();
+         $$6.a($$0);
+         $$0.a(-1.1875F, 1.0625F, -0.9375F);
+         $$0.a(0.5F, 0.5F, 0.5F);
+         float $$7 = 0.5F;
+         $$0.b(0.5F, 0.5F, 0.5F);
+         $$0.a(a.b.rotationDegrees(-90.0F));
+         $$0.a(-0.5F, -0.5F, -0.5F);
+         this.a.a(dkg.ca.m(), $$0, $$1, $$2, hfh.d);
+         $$0.b();
       }
    }
 }

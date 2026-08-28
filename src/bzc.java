@@ -1,33 +1,37 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableInt;
+public abstract class bzc<E extends bvy> implements bxs<E>, cbh<E> {
+   private bxr.a a;
 
-public class bzc {
-   private static final int a = 300;
+   public bzc() {
+      this.a = bxr.a.a;
+   }
 
-   public static bxc<bvi> a(int $$0, int $$1) {
-      int $$2 = $$0 * 20;
-      MutableInt $$3 = new MutableInt(0);
-      return cao.a(
-         (Function<cao.b<bvi>, ? extends App<cao.c<bvi>, car<bvi>>>)($$3x -> $$3x.group($$3x.b(cem.C), $$3x.b(cem.D))
-               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                     long $$9 = $$3x.<Long>b($$5);
-                     boolean $$10 = $$9 + 300L <= $$8;
-                     if ($$3.getValue() <= $$2 && !$$10) {
-                        ji $$11 = $$3x.<jq>b($$4).b();
-                        if ($$11.a($$7.dv(), (double)$$1)) {
-                           $$3.increment();
-                        }
+   @Override
+   public final bxr.a a() {
+      return this.a;
+   }
 
-                        return true;
-                     } else {
-                        $$5.b();
-                        $$4.b();
-                        $$7.eb().a($$6.ae(), $$6.ad());
-                        $$3.setValue(0);
-                        return true;
-                     }
-                  }))
-      );
+   @Override
+   public final boolean e(ard $$0, E $$1, long $$2) {
+      if (this.trigger($$0, $$1, $$2)) {
+         this.a = bxr.a.b;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public final void f(ard $$0, E $$1, long $$2) {
+      this.g($$0, $$1, $$2);
+   }
+
+   @Override
+   public final void g(ard $$0, E $$1, long $$2) {
+      this.a = bxr.a.a;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
    }
 }

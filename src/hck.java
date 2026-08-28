@@ -1,16 +1,18 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public record hck() implements hcu {
-   public static final MapCodec<hck> a = MapCodec.unit(new hck());
+public interface hck {
+   void a(hcn var1, cxh var2, hcl var3, cxf var4, @Nullable ggy var5, @Nullable bvy var6, int var7);
 
-   @Override
-   public float a(cwq $$0, @Nullable gga $$1, @Nullable bvi $$2, int $$3) {
-      return cvd.c($$0);
+   public static record a(hia a, gfy b, hck c) {
+      public hhr a(aku $$0) {
+         return this.a().a($$0, hhs.a);
+      }
    }
 
-   @Override
-   public MapCodec<hck> a() {
-      return a;
+   public interface b extends hij {
+      MapCodec<? extends hck.b> a();
+
+      hck a(hck.a var1);
    }
 }

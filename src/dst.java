@@ -1,73 +1,106 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dst extends dij {
-   public static final MapCodec<dst> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dqu.a.b.fieldOf("kind").forGetter(dij::b), t()).apply($$0, dst::new));
-   public static final dxv<jn> d = dnl.aF;
-   private static final Map<jn, fbv> b = Maps.newEnumMap(
-      ImmutableMap.of(
-         jn.c,
-         djn.a(4.0, 4.0, 8.0, 12.0, 12.0, 16.0),
-         jn.d,
-         djn.a(4.0, 4.0, 0.0, 12.0, 12.0, 8.0),
-         jn.f,
-         djn.a(0.0, 4.0, 4.0, 8.0, 12.0, 12.0),
-         jn.e,
-         djn.a(8.0, 4.0, 4.0, 16.0, 12.0, 12.0)
-      )
-   );
+public class dst extends dke {
+   public static final MapCodec<dst> a = b(dst::new);
+   public static final dyh b = dyg.H;
 
    @Override
-   public MapCodec<? extends dst> a() {
-      return c;
+   public MapCodec<dst> a() {
+      return a;
    }
 
-   protected dst(dqu.a $$0, dwx.d $$1) {
-      super($$0, $$1);
-      this.l(this.m().b(d, jn.c));
+   public dst(dxp.d $$0) {
+      super($$0);
+      this.l(this.m().b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected fbv a(dwy $$0, dfo $$1, ji $$2, fbg $$3) {
-      return b.get($$0.c(d));
-   }
-
-   @Override
-   public dwy a(dah $$0) {
-      dwy $$1 = super.a($$0);
-      dfo $$2 = $$0.q();
-      ji $$3 = $$0.a();
-      jn[] $$4 = $$0.f();
-
-      for (jn $$5 : $$4) {
-         if ($$5.o().d()) {
-            jn $$6 = $$5.g();
-            $$1 = $$1.b(d, $$6);
-            if (!$$2.a_($$3.a($$5)).a($$0)) {
-               return $$1;
-            }
+   protected void a(dxq $$0, dgz $$1, ji $$2, dxq $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         if ($$1.C($$2)) {
+            a($$1, $$2);
+            $$1.a($$2, false);
          }
       }
-
-      return null;
    }
 
    @Override
-   protected dwy a(dwy $$0, dqf $$1) {
-      return $$0.b(d, $$1.a($$0.c(d)));
+   protected void a(dxq $$0, dgz $$1, ji $$2, dke $$3, @Nullable eve $$4, boolean $$5) {
+      if ($$1.C($$2)) {
+         a($$1, $$2);
+         $$1.a($$2, false);
+      }
    }
 
    @Override
-   protected dwy a(dwy $$0, dom $$1) {
-      return $$0.a($$1.a($$0.c(d)));
+   public dxq a(dgz $$0, ji $$1, dxq $$2, cpr $$3) {
+      if (!$$0.w_() && !$$3.gm().d && $$2.c(b)) {
+         a($$0, $$1);
+      }
+
+      return super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected void a(dwz.a<djn, dwy> $$0) {
-      super.a($$0);
-      $$0.a(d);
+   public void a(ard $$0, ji $$1, dgs $$2) {
+      clx $$3 = new clx($$0, (double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, $$2.c());
+      int $$4 = $$3.g();
+      $$3.b((short)($$0.A.a($$4 / 4) + $$4 / 8));
+      $$0.b($$3);
+   }
+
+   public static void a(dgz $$0, ji $$1) {
+      a($$0, $$1, null);
+   }
+
+   private static void a(dgz $$0, ji $$1, @Nullable bvy $$2) {
+      if (!$$0.C) {
+         clx $$3 = new clx($$0, (double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, $$2);
+         $$0.b($$3);
+         $$0.a(null, $$3.dz(), $$3.dB(), $$3.dF(), awa.Aw, awb.e, 1.0F, 1.0F);
+         $$0.a($$2, ecp.I, $$1);
+      }
+   }
+
+   @Override
+   protected bsy a(cxh $$0, dxq $$1, dgz $$2, ji $$3, cpr $$4, bsx $$5, fbt $$6) {
+      if (!$$0.a(cxl.oZ) && !$$0.a(cxl.uX)) {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      } else {
+         a($$2, $$3, $$4);
+         $$2.a($$3, dkg.a.m(), 11);
+         cxd $$7 = $$0.h();
+         if ($$0.a(cxl.oZ)) {
+            $$0.a(1, $$4, bvy.d($$5));
+         } else {
+            $$0.a(1, $$4);
+         }
+
+         $$4.b(awk.c.b($$7));
+         return bsy.a;
+      }
+   }
+
+   @Override
+   protected void a(dgz $$0, dxq $$1, fbt $$2, cqk $$3) {
+      if ($$0 instanceof ard $$4) {
+         ji $$5 = $$2.b();
+         bva $$6 = $$3.q();
+         if ($$3.bX() && $$3.c($$4, $$5)) {
+            a($$0, $$5, $$6 instanceof bvy ? (bvy)$$6 : null);
+            $$0.a($$5, false);
+         }
+      }
+   }
+
+   @Override
+   public boolean a(dgs $$0) {
+      return false;
+   }
+
+   @Override
+   protected void a(dxr.a<dke, dxq> $$0) {
+      $$0.a(b);
    }
 }

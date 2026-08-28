@@ -1,24 +1,16 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.function.Function;
 
-public record eex<WC extends ees>(eez<WC> d, WC e) {
-   public static final Codec<eex<?>> a = mb.N.q().dispatch($$0 -> $$0.d, eez::c);
-   public static final Codec<jr<eex<?>>> b = akr.a(mc.aK, a);
-   public static final Codec<jv<eex<?>>> c = kg.a(mc.aK, a);
+abstract class eex implements eev {
+   protected final List<eev> e;
 
-   public boolean a(azh $$0) {
-      return this.d.a(this.e, $$0);
+   protected eex(List<eev> $$0) {
+      this.e = $$0;
    }
 
-   public boolean a(eeu $$0, dyt $$1, Function<ji, jr<dhl>> $$2, azh $$3, ecf $$4, dfp $$5, dys $$6) {
-      return ab.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   public eez<WC> a() {
-      return this.d;
-   }
-
-   public WC b() {
-      return this.e;
+   public static <T extends eex> MapCodec<T> a(Function<List<eev>, T> $$0) {
+      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(eev.b.listOf().fieldOf("predicates").forGetter($$0xx -> $$0xx.e)).apply($$1, $$0));
    }
 }

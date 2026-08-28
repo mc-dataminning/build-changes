@@ -1,11 +1,11 @@
-import it.unimi.dsi.fastutil.objects.Object2LongMap;
+import com.mojang.brigadier.StringReader;
+import java.util.stream.Stream;
 
-public interface bov {
-   long a();
+public interface bov extends boq<StringReader> {
+   Stream<aku> a();
 
-   long b();
-
-   long c();
-
-   Object2LongMap<String> d();
+   @Override
+   default Stream<String> possibleValues(bon<StringReader> $$0) {
+      return this.a().map(aku::toString);
+   }
 }

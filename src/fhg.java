@@ -1,33 +1,73 @@
 import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Iterator;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.SocketAddress;
+import java.util.Comparator;
 import java.util.List;
-import org.slf4j.Logger;
+import org.apache.commons.io.IOUtils;
 
-public class fhg extends fia {
-   private static final Logger b = LogUtils.getLogger();
-   public List<fhf> a = Lists.newArrayList();
-
-   public static fhg a(String $$0) {
-      fhg $$1 = new fhg();
-
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("invites").isJsonArray()) {
-            Iterator<JsonElement> $$4 = $$3.get("invites").getAsJsonArray().iterator();
-
-            while ($$4.hasNext()) {
-               $$1.a.add(fhf.a($$4.next().getAsJsonObject()));
-            }
-         }
-      } catch (Exception var5) {
-         b.error("Could not parse PendingInvitesList: {}", var5.getMessage());
+public class fhg {
+   public static List<fir> a(fhg.a... $$0) {
+      for (fhg.a $$1 : $$0) {
+         a($$1.j);
       }
 
-      return $$1;
+      List<fir> $$2 = Lists.newArrayList();
+
+      for (fhg.a $$3 : $$0) {
+         $$2.add(new fir($$3.i, a($$3.j)));
+      }
+
+      $$2.sort(Comparator.comparingInt(fir::a));
+      return $$2;
+   }
+
+   private static int a(String $$0) {
+      int $$1 = 700;
+      long $$2 = 0L;
+      Socket $$3 = null;
+
+      for (int $$4 = 0; $$4 < 5; $$4++) {
+         try {
+            SocketAddress $$5 = new InetSocketAddress($$0, 80);
+            $$3 = new Socket();
+            long $$6 = b();
+            $$3.connect($$5, 700);
+            $$2 += b() - $$6;
+         } catch (Exception var12) {
+            $$2 += 700L;
+         } finally {
+            IOUtils.closeQuietly($$3);
+         }
+      }
+
+      return (int)((double)$$2 / 5.0);
+   }
+
+   private static long b() {
+      return af.c();
+   }
+
+   public static List<fir> a() {
+      return a(fhg.a.values());
+   }
+
+   static enum a {
+      a("us-east-1", "ec2.us-east-1.amazonaws.com"),
+      b("us-west-2", "ec2.us-west-2.amazonaws.com"),
+      c("us-west-1", "ec2.us-west-1.amazonaws.com"),
+      d("eu-west-1", "ec2.eu-west-1.amazonaws.com"),
+      e("ap-southeast-1", "ec2.ap-southeast-1.amazonaws.com"),
+      f("ap-southeast-2", "ec2.ap-southeast-2.amazonaws.com"),
+      g("ap-northeast-1", "ec2.ap-northeast-1.amazonaws.com"),
+      h("sa-east-1", "ec2.sa-east-1.amazonaws.com");
+
+      final String i;
+      final String j;
+
+      private a(final String $$0, final String $$1) {
+         this.i = $$0;
+         this.j = $$1;
+      }
    }
 }

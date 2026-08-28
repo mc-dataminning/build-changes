@@ -1,80 +1,150 @@
-import java.lang.ref.WeakReference;
-import java.util.Arrays;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
-public class dbj {
-   private final dbj.a[] a;
-   private WeakReference<dbm> b = new WeakReference<>(null);
+public class dbj implements dcb {
+   public static final dbj a = new dbj(0, 0, List.of());
+   private final int b;
+   private final int c;
+   private final List<cxh> d;
+   private final cpw e = new cpw();
+   private final int f;
 
-   public dbj(int $$0) {
-      this.a = new dbj.a[$$0];
-   }
+   private dbj(int $$0, int $$1, List<cxh> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      int $$3 = 0;
 
-   public Optional<dbk<dau>> a(ard $$0, dat $$1) {
-      if ($$1.b()) {
-         return Optional.empty();
-      } else {
-         this.a($$0);
-
-         for (int $$2 = 0; $$2 < this.a.length; $$2++) {
-            dbj.a $$3 = this.a[$$2];
-            if ($$3 != null && $$3.a($$1)) {
-               this.a($$2);
-               return Optional.ofNullable($$3.d());
-            }
+      for (cxh $$4 : $$2) {
+         if (!$$4.f()) {
+            $$3++;
+            this.e.a($$4, 1);
          }
-
-         return this.a($$1, $$0);
-      }
-   }
-
-   private void a(ard $$0) {
-      dbm $$1 = $$0.t();
-      if ($$1 != this.b.get()) {
-         this.b = new WeakReference<>($$1);
-         Arrays.fill(this.a, null);
-      }
-   }
-
-   private Optional<dbk<dau>> a(dat $$0, ard $$1) {
-      Optional<dbk<dau>> $$2 = $$1.t().a(dbq.a, $$0, $$1);
-      this.a($$0, $$2.orElse(null));
-      return $$2;
-   }
-
-   private void a(int $$0) {
-      if ($$0 > 0) {
-         dbj.a $$1 = this.a[$$0];
-         System.arraycopy(this.a, 0, this.a, 1, $$0);
-         this.a[0] = $$1;
-      }
-   }
-
-   private void a(dat $$0, @Nullable dbk<dau> $$1) {
-      ka<cwq> $$2 = ka.a($$0.a(), cwq.j);
-
-      for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
-         $$2.set($$3, $$0.a($$3).c(1));
       }
 
-      System.arraycopy(this.a, 0, this.a, 1, this.a.length - 1);
-      this.a[0] = new dbj.a($$2, $$0.f(), $$0.g(), $$1);
+      this.f = $$3;
    }
 
-   static record a(ka<cwq> a, int b, int c, @Nullable dbk<dau> d) {
-      public boolean a(dat $$0) {
-         if (this.b == $$0.f() && this.c == $$0.g()) {
-            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
-               if (!cwq.c(this.a.get($$1), $$0.a($$1))) {
-                  return false;
+   public static dbj a(int $$0, int $$1, List<cxh> $$2) {
+      return b($$0, $$1, $$2).a();
+   }
+
+   public static dbj.a b(int $$0, int $$1, List<cxh> $$2) {
+      if ($$0 != 0 && $$1 != 0) {
+         int $$3 = $$0 - 1;
+         int $$4 = 0;
+         int $$5 = $$1 - 1;
+         int $$6 = 0;
+
+         for (int $$7 = 0; $$7 < $$1; $$7++) {
+            boolean $$8 = true;
+
+            for (int $$9 = 0; $$9 < $$0; $$9++) {
+               cxh $$10 = $$2.get($$9 + $$7 * $$0);
+               if (!$$10.f()) {
+                  $$3 = Math.min($$3, $$9);
+                  $$4 = Math.max($$4, $$9);
+                  $$8 = false;
                }
             }
 
-            return true;
-         } else {
-            return false;
+            if (!$$8) {
+               $$5 = Math.min($$5, $$7);
+               $$6 = Math.max($$6, $$7);
+            }
          }
+
+         int $$11 = $$4 - $$3 + 1;
+         int $$12 = $$6 - $$5 + 1;
+         if ($$11 <= 0 || $$12 <= 0) {
+            return dbj.a.a;
+         } else if ($$11 == $$0 && $$12 == $$1) {
+            return new dbj.a(new dbj($$0, $$1, $$2), $$3, $$5);
+         } else {
+            List<cxh> $$13 = new ArrayList<>($$11 * $$12);
+
+            for (int $$14 = 0; $$14 < $$12; $$14++) {
+               for (int $$15 = 0; $$15 < $$11; $$15++) {
+                  int $$16 = $$15 + $$3 + ($$14 + $$5) * $$0;
+                  $$13.add($$2.get($$16));
+               }
+            }
+
+            return new dbj.a(new dbj($$11, $$12, $$13), $$3, $$5);
+         }
+      } else {
+         return dbj.a.a;
+      }
+   }
+
+   @Override
+   public cxh a(int $$0) {
+      return this.d.get($$0);
+   }
+
+   public cxh a(int $$0, int $$1) {
+      return this.d.get($$0 + $$1 * this.b);
+   }
+
+   @Override
+   public int a() {
+      return this.d.size();
+   }
+
+   @Override
+   public boolean b() {
+      return this.f == 0;
+   }
+
+   public cpw c() {
+      return this.e;
+   }
+
+   public List<cxh> d() {
+      return this.d;
+   }
+
+   public int e() {
+      return this.f;
+   }
+
+   public int f() {
+      return this.b;
+   }
+
+   public int g() {
+      return this.c;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 == this) {
+         return true;
+      } else {
+         return !($$0 instanceof dbj $$1) ? false : this.b == $$1.b && this.c == $$1.c && this.f == $$1.f && cxh.a(this.d, $$1.d);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = cxh.a(this.d);
+      $$0 = 31 * $$0 + this.b;
+      return 31 * $$0 + this.c;
+   }
+
+   public static record a(dbj b, int c, int d) {
+      public static final dbj.a a = new dbj.a(dbj.a, 0, 0);
+
+      public dbj a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      public int c() {
+         return this.d;
       }
    }
 }

@@ -1,23 +1,20 @@
-import com.google.gson.annotations.SerializedName;
-import java.util.Locale;
+public interface fhv {
+   fhl b();
 
-public class fhv extends fia implements fhu {
-   @SerializedName("regionName")
-   private final String a;
-   @SerializedName("ping")
-   private final int b;
+   void d();
 
-   public fhv(String $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   static fhv f() {
+      return new fhv() {
+         private final fhl a = new fhl();
 
-   public int a() {
-      return this.b;
-   }
+         @Override
+         public fhl b() {
+            return this.a;
+         }
 
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "%s --> %.2f ms", this.a, (float)this.b);
+         @Override
+         public void d() {
+         }
+      };
    }
 }

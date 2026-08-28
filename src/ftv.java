@@ -1,31 +1,45 @@
-public class ftv extends fum {
-   private final wp a;
+import it.unimi.dsi.fastutil.ints.IntComparator;
 
-   public ftv(wp $$0, wp $$1) {
-      super($$0);
-      this.a = $$1;
+public enum ftv {
+   a,
+   b,
+   c,
+   d;
+
+   private final IntComparator e = ($$0, $$1) -> $$0 == $$1 ? 0 : (this.b($$0, $$1) ? -1 : 1);
+
+   public ftu a() {
+      return switch (this) {
+         case a, b -> ftu.b;
+         case c, d -> ftu.a;
+      };
    }
 
-   @Override
-   protected void aR_() {
-      super.aR_();
-      this.c(fou.a(wo.e, $$0 -> this.m.a(null)).a(this.n / 2 - 100, 140, 200, 20).a());
+   public ftv b() {
+      return switch (this) {
+         case a -> b;
+         case b -> a;
+         case c -> d;
+         case d -> c;
+      };
    }
 
-   @Override
-   public void a(fof $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 90, 16777215);
-      $$0.a(this.p, this.a, this.n / 2, 110, 16777215);
+   public boolean c() {
+      return switch (this) {
+         case a, c -> false;
+         case b, d -> true;
+      };
    }
 
-   @Override
-   public void b(fof $$0, int $$1, int $$2, float $$3) {
-      $$0.b(0, 0, this.n, this.o, -12574688, -11530224);
+   public boolean a(int $$0, int $$1) {
+      return this.c() ? $$0 > $$1 : $$1 > $$0;
    }
 
-   @Override
-   public boolean aG_() {
-      return false;
+   public boolean b(int $$0, int $$1) {
+      return this.c() ? $$0 < $$1 : $$1 < $$0;
+   }
+
+   public IntComparator d() {
+      return this.e;
    }
 }

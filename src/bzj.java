@@ -1,124 +1,71 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class bzj extends bxb<coj> {
-   private static final int c = 900;
-   private static final int d = 40;
+public class bzj {
+   private static final int a = 10;
+   private static final int b = 7;
+   private static final int[][] c = new int[][]{{1, 1}, {3, 3}, {5, 5}, {6, 5}, {7, 7}, {10, 7}};
+
+   public static bzc<bwg> a(float $$0) {
+      return a($$0, true);
+   }
+
+   public static bzc<bwg> a(float $$0, boolean $$1) {
+      return a($$0, $$0x -> cgw.a($$0x, 10, 7), $$1 ? $$0x -> true : $$0x -> !$$0x.bj());
+   }
+
+   public static bxs<bwg> a(float $$0, int $$1, int $$2) {
+      return a($$0, $$2x -> cgw.a($$2x, $$1, $$2), $$0x -> true);
+   }
+
+   public static bxs<bwg> b(float $$0) {
+      return a($$0, $$0x -> a($$0x, 10, 7), $$0x -> true);
+   }
+
+   public static bxs<bwg> c(float $$0) {
+      return a($$0, bzj::a, bva::bj);
+   }
+
+   private static bzc<bwg> a(float $$0, Function<bwg, fbx> $$1, Predicate<bwg> $$2) {
+      return cbe.a((Function<cbe.b<bwg>, ? extends App<cbe.c<bwg>, cbh<bwg>>>)($$3 -> $$3.group($$3.c(cfc.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
+               if (!$$2.test($$5)) {
+                  return false;
+               } else {
+                  Optional<fbx> $$7 = Optional.ofNullable($$1.apply($$5));
+                  $$3x.a($$7.map($$1xxxx -> new cff($$1xxxx, $$0, 0)));
+                  return true;
+               }
+            })));
+   }
+
    @Nullable
-   private cwq e;
-   private final List<cwq> f = Lists.newArrayList();
-   private int g;
-   private int h;
-   private int i;
+   private static fbx a(bwg $$0) {
+      fbx $$1 = null;
+      fbx $$2 = null;
 
-   public bzj(int $$0, int $$1) {
-      super(ImmutableMap.of(cem.q, cen.a), $$0, $$1);
-   }
-
-   public boolean a(ard $$0, coj $$1) {
-      bwk<?> $$2 = $$1.eb();
-      if ($$2.c(cem.q).isEmpty()) {
-         return false;
-      } else {
-         bvi $$3 = $$2.c(cem.q).get();
-         return $$3.aq() == but.bR && $$1.bL() && $$3.bL() && !$$1.e_() && $$1.g($$3) <= 17.0;
-      }
-   }
-
-   public boolean a(ard $$0, coj $$1, long $$2) {
-      return this.a($$0, $$1) && this.i > 0 && $$1.eb().c(cem.q).isPresent();
-   }
-
-   public void b(ard $$0, coj $$1, long $$2) {
-      super.d($$0, $$1, $$2);
-      this.d($$1);
-      this.g = 0;
-      this.h = 0;
-      this.i = 40;
-   }
-
-   public void c(ard $$0, coj $$1, long $$2) {
-      bvi $$3 = this.d($$1);
-      this.a($$3, $$1);
-      if (!this.f.isEmpty()) {
-         this.e($$1);
-      } else {
-         c($$1);
-         this.i = Math.min(this.i, 40);
-      }
-
-      this.i--;
-   }
-
-   public void d(ard $$0, coj $$1, long $$2) {
-      super.b($$0, $$1, $$2);
-      $$1.eb().b(cem.q);
-      c($$1);
-      this.e = null;
-   }
-
-   private void a(bvi $$0, coj $$1) {
-      boolean $$2 = false;
-      cwq $$3 = $$0.eZ();
-      if (this.e == null || !cwq.b(this.e, $$3)) {
-         this.e = $$3;
-         $$2 = true;
-         this.f.clear();
-      }
-
-      if ($$2 && !this.e.f()) {
-         this.b($$1);
-         if (!this.f.isEmpty()) {
-            this.i = 900;
-            this.a($$1);
+      for (int[] $$3 : c) {
+         if ($$1 == null) {
+            $$2 = bxt.a($$0, $$3[0], $$3[1]);
+         } else {
+            $$2 = $$0.ds().e($$0.ds().a($$1).d().d((double)$$3[0], (double)$$3[1], (double)$$3[0]));
          }
-      }
-   }
 
-   private void a(coj $$0) {
-      a($$0, this.f.get(0));
-   }
-
-   private void b(coj $$0) {
-      for (dfg $$1 : $$0.gu()) {
-         if (!$$1.r() && this.a($$1)) {
-            this.f.add($$1.h());
+         if ($$2 == null || $$0.dU().b_(ji.a((kb)$$2)).c()) {
+            return $$1;
          }
+
+         $$1 = $$2;
       }
-   }
 
-   private boolean a(dfg $$0) {
-      return cwq.b(this.e, $$0.b()) || cwq.b(this.e, $$0.c());
-   }
-
-   private static void c(coj $$0) {
-      $$0.a(buu.a, cwq.j);
-      $$0.a(buu.a, 0.085F);
-   }
-
-   private static void a(coj $$0, cwq $$1) {
-      $$0.a(buu.a, $$1);
-      $$0.a(buu.a, 0.0F);
-   }
-
-   private bvi d(coj $$0) {
-      bwk<?> $$1 = $$0.eb();
-      bvi $$2 = $$1.c(cem.q).get();
-      $$1.a(cem.n, new bxm($$2, true));
       return $$2;
    }
 
-   private void e(coj $$0) {
-      if (this.f.size() >= 2 && ++this.g >= 40) {
-         this.h++;
-         this.g = 0;
-         if (this.h > this.f.size() - 1) {
-            this.h = 0;
-         }
-
-         a($$0, this.f.get(this.h));
-      }
+   @Nullable
+   private static fbx a(bwg $$0, int $$1, int $$2) {
+      fbx $$3 = $$0.h(0.0F);
+      return cgr.a($$0, $$1, $$2, -2, $$3.d, $$3.f, (float) (Math.PI / 2));
    }
 }

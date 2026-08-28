@@ -1,28 +1,19 @@
-import java.util.List;
+public class cyg extends cxe {
+   private final are a;
 
-public class cyg extends cur {
-   public cyg(cwm.a $$0) {
-      super($$0);
+   public cyg(are $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public cwq n() {
-      cwq $$0 = super.n();
-      $$0.b(kv.Q, new cyp(cyq.C));
-      return $$0;
+   protected void b(aku $$0, int $$1) {
+      super.b($$0, $$1);
+      this.a.f.b(new aci($$0, $$1));
    }
 
    @Override
-   public void a(cwq $$0, cwm.b $$1, List<wp> $$2, cyi $$3) {
-      cyp $$4 = $$0.a(kv.Q);
-      if ($$4 != null) {
-         $$4.a($$2::add, 0.125F, $$1.b());
-      }
-   }
-
-   @Override
-   public wp a(cwq $$0) {
-      cyp $$1 = $$0.a(kv.Q);
-      return $$1 != null ? $$1.a(this.l + ".effect.") : super.a($$0);
+   protected void b(aku $$0) {
+      super.b($$0);
+      this.a.f.b(new aci($$0, 0));
    }
 }

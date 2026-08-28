@@ -1,82 +1,108 @@
-import com.mojang.authlib.GameProfile;
+public class gky extends glg {
+   private static final azh a = azh.a();
+   private final glb b;
+   private float F = 1.0F;
 
-public class gky extends gku {
-   private fbb h = fbb.c;
-   private int i;
+   gky(ggy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, glb $$7) {
+      super($$0, $$1, $$2, $$3, 0.5 - a.j(), $$5, 0.5 - a.j());
+      this.B = 0.96F;
+      this.u = -0.1F;
+      this.C = true;
+      this.b = $$7;
+      this.k *= 0.2F;
+      if ($$4 == 0.0 && $$6 == 0.0) {
+         this.j *= 0.1F;
+         this.l *= 0.1F;
+      }
 
-   public gky(gga $$0, GameProfile $$1) {
-      super($$0, $$1);
-      this.ad = true;
+      this.D *= 0.75F;
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+      this.n = false;
+      this.b($$7);
+      if (this.g()) {
+         this.e(0.0F);
+      }
    }
 
    @Override
-   public boolean a(double $$0) {
-      double $$1 = this.cR().a() * 10.0;
-      if (Double.isNaN($$1)) {
-         $$1 = 1.0;
-      }
-
-      $$1 *= 64.0 * cK();
-      return $$0 < $$1 * $$1;
+   public gkk b() {
+      return gkk.c;
    }
 
    @Override
-   public boolean b(btc $$0) {
-      return true;
-   }
-
-   @Override
-   public void h() {
-      super.h();
-      this.s(false);
-   }
-
-   @Override
-   public void d_() {
-      if (this.bq > 0) {
-         this.a(this.bq, this.br, this.bs, this.bt, this.bu, this.bv);
-         this.bq--;
-      }
-
-      if (this.bx > 0) {
-         this.a(this.bx, this.bw);
-         this.bx--;
-      }
-
-      if (this.i > 0) {
-         this.j(new fbb((this.h.d - this.dy().d) / (double)this.i, (this.h.e - this.dy().e) / (double)this.i, (this.h.f - this.dy().f) / (double)this.i));
-         this.i--;
-      }
-
-      this.ch = this.ci;
-      this.eX();
-      float $$1;
-      if (this.aJ() && !this.eE()) {
-         $$1 = (float)Math.min(0.1, this.dy().i());
+   public void a() {
+      super.a();
+      this.b(this.b);
+      if (this.g()) {
+         this.y = 0.0F;
       } else {
-         $$1 = 0.0F;
-      }
-
-      this.ci = this.ci + ($$1 - this.ci) * 0.4F;
-
-      try (boz $$2 = bot.a().d("push")) {
-         this.o();
+         this.y = ayz.h(0.05F, this.y, this.F);
       }
    }
 
    @Override
-   public void l(double $$0, double $$1, double $$2) {
-      this.h = new fbb($$0, $$1, $$2);
-      this.i = this.aq().p() + 1;
+   protected void e(float $$0) {
+      super.e($$0);
+      this.F = $$0;
    }
 
-   @Override
-   protected void gc() {
+   private boolean g() {
+      fmg $$0 = fmg.Q();
+      glv $$1 = $$0.t;
+      return $$1 != null && $$1.bD().c(this.g, this.h, this.i) <= 9.0 && $$0.n.aE().a() && $$1.gJ();
    }
 
-   @Override
-   public void a(abm $$0) {
-      super.a($$0);
-      this.bz();
+   public static class a implements gkj<lx> {
+      private final glb a;
+
+      public a(glb $$0) {
+         this.a = $$0;
+      }
+
+      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gky($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
+   }
+
+   public static class b implements gkj<lm> {
+      private final glb a;
+
+      public b(glb $$0) {
+         this.a = $$0;
+      }
+
+      public gkg a(lm $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gkg $$8 = new gky($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.a($$0.b(), $$0.c(), $$0.d());
+         $$8.e($$0.e());
+         return $$8;
+      }
+   }
+
+   public static class c implements gkj<lx> {
+      private final glb a;
+
+      public c(glb $$0) {
+         this.a = $$0;
+      }
+
+      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gky($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
+   }
+
+   public static class d implements gkj<lx> {
+      private final glb a;
+
+      public d(glb $$0) {
+         this.a = $$0;
+      }
+
+      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gky $$8 = new gky($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         float $$9 = $$1.A.i() * 0.5F + 0.35F;
+         $$8.a(1.0F * $$9, 0.0F * $$9, 1.0F * $$9);
+         return $$8;
+      }
    }
 }

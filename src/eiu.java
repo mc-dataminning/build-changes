@@ -1,33 +1,41 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record eiu(int b, int c, int d, int e, int f, brq g, float h) implements eid {
+public class eiu implements eiy {
    public static final Codec<eiu> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(eiu::a),
-               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(eiu::b),
-               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(eiu::c),
-               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(eiu::d),
-               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(eiu::f),
-               brq.c.fieldOf("extra_rare_growths").forGetter(eiu::g),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(eiu::h)
+               dxq.a.fieldOf("contents").forGetter($$0x -> $$0x.b),
+               dxq.a.fieldOf("rim").forGetter($$0x -> $$0x.c),
+               bsd.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
+               bsd.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
             )
             .apply($$0, eiu::new)
    );
+   private final dxq b;
+   private final dxq c;
+   private final bsd d;
+   private final bsd e;
 
-   public int a() {
+   public eiu(dxq $$0, dxq $$1, bsd $$2, bsd $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+   }
+
+   public dxq a() {
       return this.b;
    }
 
-   public int b() {
+   public dxq b() {
       return this.c;
    }
 
-   public int c() {
+   public bsd c() {
       return this.d;
    }
 
-   public int d() {
+   public bsd d() {
       return this.e;
    }
 }

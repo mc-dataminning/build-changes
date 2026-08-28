@@ -1,30 +1,40 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record eia(ekm b, eea c, brq d, int e) implements eid {
-   public static final Codec<eia> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ekm.a.fieldOf("state_provider").forGetter(eia::a),
-               eea.b.fieldOf("target").forGetter(eia::b),
-               brq.b(0, 8).fieldOf("radius").forGetter(eia::c),
-               Codec.intRange(0, 4).fieldOf("half_height").forGetter(eia::d)
-            )
-            .apply($$0, eia::new)
-   );
-
-   public ekm a() {
-      return this.b;
+public class eia extends egu<eji> {
+   public eia(Codec<eji> $$0) {
+      super($$0);
    }
 
-   public eea b() {
-      return this.c;
-   }
+   @Override
+   public boolean a(egw<eji> $$0) {
+      boolean $$1 = false;
+      azh $$2 = $$0.d();
+      dhy $$3 = $$0.b();
+      ji $$4 = $$0.e();
+      eji $$5 = $$0.f();
+      int $$6 = $$2.a(8) - $$2.a(8);
+      int $$7 = $$2.a(8) - $$2.a(8);
+      int $$8 = $$3.a(edo.a.d, $$4.u() + $$6, $$4.w() + $$7);
+      ji $$9 = new ji($$4.u() + $$6, $$8, $$4.w() + $$7);
+      if ($$3.a_($$9).a(dkg.J)) {
+         boolean $$10 = $$2.j() < (double)$$5.l;
+         dxq $$11 = $$10 ? dkg.bE.m() : dkg.bD.m();
+         if ($$11.a($$3, $$9)) {
+            if ($$10) {
+               dxq $$12 = $$11.b(dsq.d, dym.a);
+               ji $$13 = $$9.d();
+               if ($$3.a_($$13).a(dkg.J)) {
+                  $$3.a($$9, $$11, 2);
+                  $$3.a($$13, $$12, 2);
+               }
+            } else {
+               $$3.a($$9, $$11, 2);
+            }
 
-   public brq c() {
-      return this.d;
-   }
+            $$1 = true;
+         }
+      }
 
-   public int d() {
-      return this.e;
+      return $$1;
    }
 }

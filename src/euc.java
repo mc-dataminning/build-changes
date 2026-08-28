@@ -1,154 +1,117 @@
-import com.mojang.logging.LogUtils;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class euc implements euh {
-   private static final Logger b = LogUtils.getLogger();
-   private final dgj c;
-   private final int d;
-   private final ArrayDeque<euc.c> e = new ArrayDeque<>();
-   private final List<euc.c> f = new ArrayList<>();
-   private int g = 0;
-
-   public euc(dgj $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1;
+public abstract class euc extends etu {
+   @Override
+   public etv d() {
+      return etx.b;
    }
 
    @Override
-   public void a(jn $$0, dwy $$1, ji $$2, ji $$3, int $$4, int $$5) {
-      this.a($$2, new euc.d($$0, $$1, $$2.j(), $$3.j(), $$4, $$5));
+   public etv e() {
+      return etx.c;
    }
 
    @Override
-   public void a(ji $$0, djn $$1, @Nullable eui $$2) {
-      this.a($$0, new euc.e($$0, $$1, $$2));
+   public cxd a() {
+      return cxl.ri;
    }
 
    @Override
-   public void a(dwy $$0, ji $$1, djn $$2, @Nullable eui $$3, boolean $$4) {
-      this.a($$1, new euc.a($$0, $$1.j(), $$2, $$3, $$4));
-   }
-
-   @Override
-   public void a(ji $$0, djn $$1, @Nullable jn $$2, @Nullable eui $$3) {
-      this.a($$0, new euc.b($$0.j(), $$1, $$3, $$2));
-   }
-
-   private void a(ji $$0, euc.c $$1) {
-      boolean $$2 = this.g > 0;
-      boolean $$3 = this.d >= 0 && this.g >= this.d;
-      this.g++;
-      if (!$$3) {
-         if ($$2) {
-            this.f.add($$1);
-         } else {
-            this.e.push($$1);
+   public void a(dgz $$0, ji $$1, etw $$2, azh $$3) {
+      if (!$$2.b() && !$$2.c(a)) {
+         if ($$3.a(64) == 0) {
+            $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, awa.Da, awb.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
          }
-      } else if (this.g - 1 == this.d) {
-         b.error("Too many chained neighbor updates. Skipping the rest. First skipped position: " + $$0.x());
-      }
-
-      if (!$$2) {
-         this.a();
+      } else if ($$3.a(10) == 0) {
+         $$0.a(lt.ao, (double)$$1.u() + $$3.j(), (double)$$1.v() + $$3.j(), (double)$$1.w() + $$3.j(), 0.0, 0.0, 0.0);
       }
    }
 
-   private void a() {
-      try {
-         while (!this.e.isEmpty() || !this.f.isEmpty()) {
-            for (int $$0 = this.f.size() - 1; $$0 >= 0; $$0--) {
-               this.e.push(this.f.get($$0));
-            }
-
-            this.f.clear();
-            euc.c $$1 = this.e.peek();
-
-            while (this.f.isEmpty()) {
-               if (!$$1.a(this.c)) {
-                  this.e.pop();
-                  break;
-               }
-            }
-         }
-      } finally {
-         this.e.clear();
-         this.f.clear();
-         this.g = 0;
-      }
+   @Nullable
+   @Override
+   public lr h() {
+      return lt.l;
    }
 
-   static record a(dwy a, ji b, djn c, @Nullable eui d, boolean e) implements euc.c {
+   @Override
+   protected boolean a(ard $$0) {
+      return $$0.O().b(dgv.V);
+   }
+
+   @Override
+   protected void a(dha $$0, ji $$1, dxq $$2) {
+      dus $$3 = $$2.x() ? $$0.c_($$1) : null;
+      dke.a($$2, $$0, $$1, $$3);
+   }
+
+   @Override
+   public int b(dhc $$0) {
+      return 4;
+   }
+
+   @Override
+   public dxq b(etw $$0) {
+      return dkg.J.m().b(doy.b, Integer.valueOf(e($$0)));
+   }
+
+   @Override
+   public boolean a(etv $$0) {
+      return $$0 == etx.c || $$0 == etx.b;
+   }
+
+   @Override
+   public int c(dhc $$0) {
+      return 1;
+   }
+
+   @Override
+   public int a(dhc $$0) {
+      return 5;
+   }
+
+   @Override
+   public boolean a(etw $$0, dgf $$1, ji $$2, etv $$3, jn $$4) {
+      return $$4 == jn.a && !$$3.a(awv.a);
+   }
+
+   @Override
+   protected float c() {
+      return 100.0F;
+   }
+
+   @Override
+   public Optional<avz> j() {
+      return Optional.of(awa.dj);
+   }
+
+   public static class a extends euc {
       @Override
-      public boolean a(dgj $$0) {
-         euh.a($$0, this.a, this.b, this.c, this.d, this.e);
+      protected void a(dxr.a<etv, etw> $$0) {
+         super.a($$0);
+         $$0.a(b);
+      }
+
+      @Override
+      public int d(etw $$0) {
+         return $$0.c(b);
+      }
+
+      @Override
+      public boolean c(etw $$0) {
          return false;
       }
    }
 
-   static final class b implements euc.c {
-      private final ji a;
-      private final djn b;
-      @Nullable
-      private eui c;
-      @Nullable
-      private final jn d;
-      private int e = 0;
-
-      b(ji $$0, djn $$1, @Nullable eui $$2, @Nullable jn $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         if (euh.a[this.e] == $$3) {
-            this.e++;
-         }
+   public static class b extends euc {
+      @Override
+      public int d(etw $$0) {
+         return 8;
       }
 
       @Override
-      public boolean a(dgj $$0) {
-         jn $$1 = euh.a[this.e++];
-         ji $$2 = this.a.a($$1);
-         dwy $$3 = $$0.a_($$2);
-         eui $$4 = null;
-         if ($$0.K().b(crw.c)) {
-            if (this.c == null) {
-               this.c = eue.a($$0, this.d == null ? null : this.d.g(), null);
-            }
-
-            $$4 = this.c.b($$1);
-         }
-
-         euh.a($$0, $$3, $$2, this.b, $$4, false);
-         if (this.e < euh.a.length && euh.a[this.e] == this.d) {
-            this.e++;
-         }
-
-         return this.e < euh.a.length;
-      }
-   }
-
-   interface c {
-      boolean a(dgj var1);
-   }
-
-   static record d(jn a, dwy b, ji c, ji d, int e, int f) implements euc.c {
-      @Override
-      public boolean a(dgj $$0) {
-         euh.a($$0, this.a, this.c, this.d, this.b, this.e, this.f);
-         return false;
-      }
-   }
-
-   static record e(ji a, djn b, @Nullable eui c) implements euc.c {
-      @Override
-      public boolean a(dgj $$0) {
-         dwy $$1 = $$0.a_(this.a);
-         euh.a($$0, $$1, this.a, this.b, this.c, false);
-         return false;
+      public boolean c(etw $$0) {
+         return true;
       }
    }
 }

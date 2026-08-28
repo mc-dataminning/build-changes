@@ -8,11 +8,11 @@ public class ax extends dz<ax.a> {
       return ax.a.a;
    }
 
-   public void a(are $$0, dwy $$1, cwq $$2, int $$3) {
+   public void a(are $$0, dxq $$1, cxh $$2, int $$3) {
       this.a($$0, $$3x -> $$3x.a($$1, $$2, $$3));
    }
 
-   public static record a(Optional<bi> b, Optional<jr<djn>> c, Optional<cv> d, dk.d e) implements dz.a {
+   public static record a(Optional<bi> b, Optional<jr<dke>> c, Optional<cv> d, dk.d e) implements dz.a {
       public static final Codec<ax.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bx.b.optionalFieldOf("player").forGetter(ax.a::a),
@@ -23,11 +23,11 @@ public class ax extends dz<ax.a> {
                .apply($$0, ax.a::new)
       );
 
-      public static aq<ax.a> a(djn $$0, cv.a $$1, dk.d $$2) {
+      public static aq<ax.a> a(dke $$0, cv.a $$1, dk.d $$2) {
          return ap.L.a(new ax.a(Optional.empty(), Optional.of($$0.p()), Optional.of($$1.b()), $$2));
       }
 
-      public boolean a(dwy $$0, cwq $$1, int $$2) {
+      public boolean a(dxq $$0, cxh $$1, int $$2) {
          if (this.c.isPresent() && !$$0.a(this.c.get())) {
             return false;
          } else {
@@ -40,7 +40,7 @@ public class ax extends dz<ax.a> {
          return this.b;
       }
 
-      public Optional<jr<djn>> b() {
+      public Optional<jr<dke>> b() {
          return this.c;
       }
 

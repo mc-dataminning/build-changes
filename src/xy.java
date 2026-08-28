@@ -16,12 +16,12 @@ public record xy(ho c, Optional<wp> d) implements wq {
    }
 
    @Override
-   public xd a(@Nullable ex $$0, @Nullable bum $$1, int $$2) throws CommandSyntaxException {
+   public xd a(@Nullable ex $$0, @Nullable bva $$1, int $$2) throws CommandSyntaxException {
       if ($$0 == null) {
          return wp.i();
       } else {
          Optional<? extends wp> $$3 = ws.a($$0, this.d, $$1, $$2);
-         return ws.a(this.c.b().b($$0), $$3, bum::p_);
+         return ws.a(this.c.b().b($$0), $$3, bva::m_);
       }
    }
 

@@ -1,63 +1,71 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+public abstract class dij {
+   public static final akt<dic> a = a("the_void");
+   public static final akt<dic> b = a("plains");
+   public static final akt<dic> c = a("sunflower_plains");
+   public static final akt<dic> d = a("snowy_plains");
+   public static final akt<dic> e = a("ice_spikes");
+   public static final akt<dic> f = a("desert");
+   public static final akt<dic> g = a("swamp");
+   public static final akt<dic> h = a("mangrove_swamp");
+   public static final akt<dic> i = a("forest");
+   public static final akt<dic> j = a("flower_forest");
+   public static final akt<dic> k = a("birch_forest");
+   public static final akt<dic> l = a("dark_forest");
+   public static final akt<dic> m = a("pale_garden");
+   public static final akt<dic> n = a("old_growth_birch_forest");
+   public static final akt<dic> o = a("old_growth_pine_taiga");
+   public static final akt<dic> p = a("old_growth_spruce_taiga");
+   public static final akt<dic> q = a("taiga");
+   public static final akt<dic> r = a("snowy_taiga");
+   public static final akt<dic> s = a("savanna");
+   public static final akt<dic> t = a("savanna_plateau");
+   public static final akt<dic> u = a("windswept_hills");
+   public static final akt<dic> v = a("windswept_gravelly_hills");
+   public static final akt<dic> w = a("windswept_forest");
+   public static final akt<dic> x = a("windswept_savanna");
+   public static final akt<dic> y = a("jungle");
+   public static final akt<dic> z = a("sparse_jungle");
+   public static final akt<dic> A = a("bamboo_jungle");
+   public static final akt<dic> B = a("badlands");
+   public static final akt<dic> C = a("eroded_badlands");
+   public static final akt<dic> D = a("wooded_badlands");
+   public static final akt<dic> E = a("meadow");
+   public static final akt<dic> F = a("cherry_grove");
+   public static final akt<dic> G = a("grove");
+   public static final akt<dic> H = a("snowy_slopes");
+   public static final akt<dic> I = a("frozen_peaks");
+   public static final akt<dic> J = a("jagged_peaks");
+   public static final akt<dic> K = a("stony_peaks");
+   public static final akt<dic> L = a("river");
+   public static final akt<dic> M = a("frozen_river");
+   public static final akt<dic> N = a("beach");
+   public static final akt<dic> O = a("snowy_beach");
+   public static final akt<dic> P = a("stony_shore");
+   public static final akt<dic> Q = a("warm_ocean");
+   public static final akt<dic> R = a("lukewarm_ocean");
+   public static final akt<dic> S = a("deep_lukewarm_ocean");
+   public static final akt<dic> T = a("ocean");
+   public static final akt<dic> U = a("deep_ocean");
+   public static final akt<dic> V = a("cold_ocean");
+   public static final akt<dic> W = a("deep_cold_ocean");
+   public static final akt<dic> X = a("frozen_ocean");
+   public static final akt<dic> Y = a("deep_frozen_ocean");
+   public static final akt<dic> Z = a("mushroom_fields");
+   public static final akt<dic> aa = a("dripstone_caves");
+   public static final akt<dic> ab = a("lush_caves");
+   public static final akt<dic> ac = a("deep_dark");
+   public static final akt<dic> ad = a("nether_wastes");
+   public static final akt<dic> ae = a("warped_forest");
+   public static final akt<dic> af = a("crimson_forest");
+   public static final akt<dic> ag = a("soul_sand_valley");
+   public static final akt<dic> ah = a("basalt_deltas");
+   public static final akt<dic> ai = a("the_end");
+   public static final akt<dic> aj = a("end_highlands");
+   public static final akt<dic> ak = a("end_midlands");
+   public static final akt<dic> al = a("small_end_islands");
+   public static final akt<dic> am = a("end_barrens");
 
-public abstract class dij extends diz {
-   public static final dxp a = dxo.B;
-   private final dqu.a b;
-
-   public dij(dqu.a $$0, dwx.d $$1) {
-      super($$1);
-      this.b = $$0;
-      this.l(this.F.b().b(a, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected abstract MapCodec<? extends dij> a();
-
-   @Override
-   public dua a(ji $$0, dwy $$1) {
-      return new dvp($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dua> dub<T> a(dgj $$0, dwy $$1, duc<T> $$2) {
-      if ($$0.C) {
-         boolean $$3 = $$1.a(djp.hl) || $$1.a(djp.hm) || $$1.a(djp.hn) || $$1.a(djp.ho);
-         if ($$3) {
-            return a($$2, duc.q, dvp::a);
-         }
-      }
-
-      return null;
-   }
-
-   public dqu.a b() {
-      return this.b;
-   }
-
-   @Override
-   protected boolean a(dwy $$0, etp $$1) {
-      return false;
-   }
-
-   @Override
-   protected void a(dwz.a<djn, dwy> $$0) {
-      $$0.a(a);
-   }
-
-   @Override
-   public dwy a(dah $$0) {
-      return this.m().b(a, Boolean.valueOf($$0.q().C($$0.a())));
-   }
-
-   @Override
-   protected void a(dwy $$0, dgj $$1, ji $$2, djn $$3, @Nullable eui $$4, boolean $$5) {
-      if (!$$1.C) {
-         boolean $$6 = $$1.C($$2);
-         if ($$6 != $$0.c(a)) {
-            $$1.a($$2, $$0.b(a, Boolean.valueOf($$6)), 2);
-         }
-      }
+   private static akt<dic> a(String $$0) {
+      return akt.a(mc.aJ, aku.b($$0));
    }
 }

@@ -1,50 +1,45 @@
-public abstract class clg extends cqm {
-   protected clg(but<? extends clg> $$0, dgj $$1) {
-      super($$0, $$1);
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
+
+public class clg {
+   private static final Logger a = LogUtils.getLogger();
+   private final ckp b;
+   private final ckz[] c = new ckz[clf.c()];
+   @Nullable
+   private ckz d;
+
+   public clg(ckp $$0) {
+      this.b = $$0;
+      this.a(clf.k);
    }
 
-   @Override
-   protected void E() {
-      super.E();
-   }
+   public void a(clf<?> $$0) {
+      if (this.d == null || $$0 != this.d.h()) {
+         if (this.d != null) {
+            this.d.d();
+         }
 
-   public clg.a m() {
-      return clg.a.a;
-   }
+         this.d = this.b((clf<ckz>)$$0);
+         if (!this.b.dU().C) {
+            this.b.au().a(ckp.a, $$0.b());
+         }
 
-   @Override
-   public boolean c(bvi $$0) {
-      return $$0 instanceof coe && $$0.e_() ? false : super.c($$0);
-   }
-
-   @Override
-   protected boolean t(bum $$0) {
-      if (super.t($$0)) {
-         return true;
-      } else {
-         return !$$0.aq().a(awt.z) ? false : this.cr() == null && $$0.cr() == null;
+         a.debug("Dragon is now in phase {} on the {}", $$0, this.b.dU().C ? "client" : "server");
+         this.d.c();
       }
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h;
+   public ckz a() {
+      return this.d;
    }
 
-   protected class b extends ccy {
-      public b(final cqm $$1) {
-         super($$1, false);
+   public <T extends ckz> T b(clf<T> $$0) {
+      int $$1 = $$0.b();
+      if (this.c[$$1] == null) {
+         this.c[$$1] = $$0.a(this.b);
       }
 
-      @Override
-      public boolean b() {
-         return super.b() && clg.this.gI();
-      }
+      return (T)this.c[$$1];
    }
 }

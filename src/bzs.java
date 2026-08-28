@@ -1,29 +1,33 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class bzs {
-   private static final int a = 180;
-   private static final int b = 8;
-   private static final int c = 6;
+   private static final int a = 300;
 
-   public static bym<bvq> a(cem<jq> $$0, float $$1, int $$2) {
-      MutableLong $$3 = new MutableLong(0L);
-      return cao.a(
-         (Function<cao.b<bvq>, ? extends App<cao.c<bvq>, car<bvq>>>)($$4 -> $$4.group($$4.a(cem.m), $$4.b($$0)).apply($$4, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
-                  jq $$9 = $$4.b($$5);
-                  if ($$6.ai() != $$9.a() || !$$9.b().a($$7.dt(), (double)$$2)) {
-                     return false;
-                  } else if ($$8 <= $$3.getValue()) {
-                     return true;
-                  } else {
-                     Optional<fbb> $$10 = Optional.ofNullable(cgg.a($$7, 8, 6));
-                     $$4x.a($$10.map($$1xxxx -> new cep($$1xxxx, $$1, 1)));
-                     $$3.setValue($$8 + 180L);
-                     return true;
-                  }
-               }))
+   public static bxs<bvy> a(int $$0, int $$1) {
+      int $$2 = $$0 * 20;
+      MutableInt $$3 = new MutableInt(0);
+      return cbe.a(
+         (Function<cbe.b<bvy>, ? extends App<cbe.c<bvy>, cbh<bvy>>>)($$3x -> $$3x.group($$3x.b(cfc.C), $$3x.b(cfc.D))
+               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                     long $$9 = $$3x.<Long>b($$5);
+                     boolean $$10 = $$9 + 300L <= $$8;
+                     if ($$3.getValue() <= $$2 && !$$10) {
+                        ji $$11 = $$3x.<jq>b($$4).b();
+                        if ($$11.a($$7.du(), (double)$$1)) {
+                           $$3.increment();
+                        }
+
+                        return true;
+                     } else {
+                        $$5.b();
+                        $$4.b();
+                        $$7.ea().a($$6.af(), $$6.ae());
+                        $$3.setValue(0);
+                        return true;
+                     }
+                  }))
       );
    }
 }

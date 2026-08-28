@@ -1,31 +1,37 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class bxx {
-   public static bxc<bvq> a(float $$0) {
-      return cao.a(
-         (Function<cao.b<bvq>, ? extends App<cao.c<bvq>, car<bvq>>>)($$1 -> $$1.group($$1.c(cem.m))
-               .apply(
-                  $$1,
-                  $$1x -> ($$2, $$3, $$4) -> {
-                        if ($$2.h($$3.dv())) {
-                           return false;
-                        } else {
-                           ji $$5 = $$3.dv();
-                           List<ji> $$6 = ji.d($$5.b(-1, -1, -1), $$5.b(1, 1, 1)).map(ji::j).collect(af.b());
-                           Collections.shuffle($$6);
-                           $$6.stream()
-                              .filter($$1xxx -> !$$2.h($$1xxx))
-                              .filter($$2x -> $$2.a($$2x, $$3))
-                              .filter($$2x -> $$2.g($$3))
-                              .findFirst()
-                              .ifPresent($$2x -> $$1x.a(new cep($$2x, $$0, 0)));
-                           return true;
-                        }
-                     }
-               ))
-      );
+public class bxx extends bxr<bvy> {
+   private final cfc<Integer> c;
+
+   public bxx(cfc<Integer> $$0) {
+      super(ImmutableMap.of($$0, cfd.a));
+      this.c = $$0;
+   }
+
+   private Optional<Integer> b(bvy $$0) {
+      return $$0.ea().c(this.c);
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   @Override
+   protected boolean a(ard $$0, bvy $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      return $$3.isPresent() && $$3.get() > 0;
+   }
+
+   @Override
+   protected void c(ard $$0, bvy $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      $$1.ea().a(this.c, $$3.get() - 1);
+   }
+
+   @Override
+   protected void b(ard $$0, bvy $$1, long $$2) {
+      $$1.ea().b(this.c);
    }
 }

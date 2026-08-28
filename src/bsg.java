@@ -1,3 +1,3 @@
 public interface bsg {
-   void a(bse var1);
+   float a(azh var1);
 }

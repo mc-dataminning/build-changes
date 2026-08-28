@@ -1,120 +1,63 @@
-import com.google.common.base.Suppliers;
-import com.mojang.authlib.GameProfile;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 
 public class ggm {
-   private final GameProfile a;
-   private final Supplier<hfv> b;
-   private dgg c = dgg.e;
-   private int d;
-   @Nullable
-   private wp e;
-   private boolean f = true;
-   @Nullable
-   private xg g;
-   private xl h;
-   private int i;
+   private final List<ggf> a;
+   private final gge b;
+   private final Map<String, ggm> c = Maps.newHashMap();
 
-   public ggm(GameProfile $$0, boolean $$1) {
+   ggm(List<ggf> $$0, gge $$1) {
       this.a = $$0;
-      this.h = c($$1);
-      Supplier<Supplier<hfv>> $$2 = Suppliers.memoize(() -> a($$0));
-      this.b = () -> $$2.get().get();
+      this.b = $$1;
    }
 
-   private static Supplier<hfv> a(GameProfile $$0) {
-      flk $$1 = flk.Q();
-      hfw $$2 = $$1.an();
-      CompletableFuture<Optional<hfv>> $$3 = $$2.c($$0);
-      boolean $$4 = !$$1.b($$0.getId());
-      hfv $$5 = hfm.a($$0);
-      return () -> {
-         hfv $$3x = $$3.getNow(Optional.empty()).orElse($$5);
-         return $$4 && !$$3x.f() ? $$5 : $$3x;
-      };
+   public ggm a(String $$0, ggh $$1, gge $$2) {
+      ggm $$3 = new ggm($$1.b(), $$2);
+      return this.a($$0, $$3);
    }
 
-   public GameProfile a() {
-      return this.a;
+   public ggm a(String $$0, ggm $$1) {
+      ggm $$2 = this.c.put($$0, $$1);
+      if ($$2 != null) {
+         $$1.c.putAll($$2.c);
+      }
+
+      return $$1;
    }
 
-   @Nullable
-   public xg b() {
-      return this.g;
+   public ggm a(String $$0) {
+      return this.a($$0, ggh.c(), gge.a);
    }
 
-   public xl c() {
-      return this.h;
+   public ggc a(int $$0, int $$1) {
+      Object2ObjectArrayMap<String, ggc> $$2 = this.c
+         .entrySet()
+         .stream()
+         .collect(Collectors.toMap(Entry::getKey, $$2x -> ((ggm)$$2x.getValue()).a($$0, $$1), ($$0x, $$1x) -> $$0x, Object2ObjectArrayMap::new));
+      List<ggc.a> $$3 = this.a.stream().map($$2x -> $$2x.a($$0, $$1)).toList();
+      ggc $$4 = new ggc($$3, $$2);
+      $$4.a(this.b);
+      $$4.b(this.b);
+      return $$4;
    }
 
-   public boolean d() {
-      return this.g != null;
+   public ggm b(String $$0) {
+      return this.c.get($$0);
    }
 
-   protected void a(xg $$0) {
-      this.g = $$0;
-      this.h = $$0.a(cpb.b);
+   public Set<Entry<String, ggm>> a() {
+      return this.c.entrySet();
    }
 
-   protected void a(boolean $$0) {
-      this.g = null;
-      this.h = c($$0);
-   }
-
-   private static xl c(boolean $$0) {
-      return $$0 ? xl.c : xl.b;
-   }
-
-   public dgg e() {
-      return this.c;
-   }
-
-   protected void a(dgg $$0) {
-      this.c = $$0;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   protected void a(int $$0) {
-      this.d = $$0;
-   }
-
-   public hfv g() {
-      return this.b.get();
-   }
-
-   @Nullable
-   public fcb h() {
-      return flk.Q().s.R().e(this.a().getName());
-   }
-
-   public void a(@Nullable wp $$0) {
-      this.e = $$0;
-   }
-
-   @Nullable
-   public wp i() {
-      return this.e;
-   }
-
-   public void b(boolean $$0) {
-      this.f = $$0;
-   }
-
-   public boolean j() {
-      return this.f;
-   }
-
-   public void b(int $$0) {
-      this.i = $$0;
-   }
-
-   public int k() {
-      return this.i;
+   public ggm a(UnaryOperator<gge> $$0) {
+      ggm $$1 = new ggm(this.a, $$0.apply(this.b));
+      $$1.c.putAll(this.c);
+      return $$1;
    }
 }

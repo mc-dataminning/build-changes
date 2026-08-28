@@ -1,19 +1,19 @@
-import com.mojang.serialization.Codec;
+public final class btg implements bta {
+   private final wp a;
+   private final cue b;
 
-public enum btg implements azv {
-   a("default"),
-   b("fall_variants"),
-   c("intentional_game_design");
-
-   public static final Codec<btg> d = azv.a(btg::values);
-   private final String e;
-
-   private btg(final String $$0) {
-      this.e = $$0;
+   public btg(cue $$0, wp $$1) {
+      this.b = $$0;
+      this.a = $$1;
    }
 
    @Override
-   public String c() {
-      return this.e;
+   public wp m_() {
+      return this.a;
+   }
+
+   @Override
+   public csw createMenu(int $$0, cpq $$1, cpr $$2) {
+      return this.b.createMenu($$0, $$1, $$2);
    }
 }

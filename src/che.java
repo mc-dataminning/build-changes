@@ -1,149 +1,150 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.shorts.Short2ObjectMap;
+import it.unimi.dsi.fastutil.shorts.Short2ObjectOpenHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class che extends cgz {
-   private static final bup cg = but.z.n().a(0.5F).b(0.2975F);
-   public float bY;
-   public float bZ;
-   public float ca;
-   public float cc;
-   public float cd = 1.0F;
-   private float ch = 1.0F;
-   public int ce = this.ae.a(6000) + 6000;
-   public boolean cf;
+public class che {
+   private static final Logger a = LogUtils.getLogger();
+   private final Short2ObjectMap<chd> b = new Short2ObjectOpenHashMap();
+   private final Map<jr<chf>, Set<chd>> c = Maps.newHashMap();
+   private final Runnable d;
+   private boolean e;
 
-   public che(but<? extends che> $$0, dgj $$1) {
-      super($$0, $$1);
-      this.a(etr.j, 0.0F);
+   public che(Runnable $$0) {
+      this($$0, true, ImmutableList.of());
    }
 
-   @Override
-   protected void E() {
-      this.bS.a(0, new cca(this));
-      this.bS.a(1, new ccz(this, 1.4));
-      this.bS.a(2, new cbs(this, 1.0));
-      this.bS.a(3, new cdo(this, 1.0, $$0 -> $$0.a(awy.an), false));
-      this.bS.a(4, new ccf(this, 1.1));
-      this.bS.a(5, new cdt(this, 1.0));
-      this.bS.a(6, new cco(this, coy.class, 6.0F));
-      this.bS.a(7, new cdb(this));
+   che(Runnable $$0, boolean $$1, List<chd> $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      $$2.forEach(this::a);
    }
 
-   @Override
-   public bup e(bvu $$0) {
-      return this.e_() ? cg : super.e($$0);
+   public che.a a() {
+      return new che.a(this.e, this.b.values().stream().map(chd::a).toList());
    }
 
-   public static bwp.a p() {
-      return cgz.gx().a(bwq.s, 4.0).a(bwq.v, 0.25);
+   public Stream<chd> a(Predicate<jr<chf>> $$0, chc.b $$1) {
+      return this.c.entrySet().stream().filter($$1x -> $$0.test((jr<chf>)$$1x.getKey())).flatMap($$0x -> ((Set)$$0x.getValue()).stream()).filter($$1.a());
    }
 
-   @Override
-   public void d_() {
-      super.d_();
-      this.cc = this.bY;
-      this.ca = this.bZ;
-      this.bZ = this.bZ + (this.aJ() ? -1.0F : 4.0F) * 0.3F;
-      this.bZ = ayz.a(this.bZ, 0.0F, 1.0F);
-      if (!this.aJ() && this.cd < 1.0F) {
-         this.cd = 1.0F;
+   public void a(ji $$0, jr<chf> $$1) {
+      if (this.a(new chd($$0, $$1, this.d))) {
+         a.debug("Added POI of type {} @ {}", $$1.g(), $$0);
+         this.d.run();
       }
+   }
 
-      this.cd *= 0.9F;
-      fbb $$0 = this.dy();
-      if (!this.aJ() && $$0.e < 0.0) {
-         this.i($$0.d(1.0, 0.6, 1.0));
-      }
-
-      this.bY = this.bY + this.cd * 2.0F;
-      if (this.dV() instanceof ard $$1 && this.bL() && !this.e_() && !this.t() && --this.ce <= 0) {
-         if (this.a($$1, evo.aI, this::a)) {
-            this.a(awa.eV, 1.0F, (this.ae.i() - this.ae.i()) * 0.2F + 1.0F);
-            this.a(ebu.t);
+   private boolean a(chd $$0) {
+      ji $$1 = $$0.g();
+      jr<chf> $$2 = $$0.h();
+      short $$3 = kk.b($$1);
+      chd $$4 = (chd)this.b.get($$3);
+      if ($$4 != null) {
+         if ($$2.equals($$4.h())) {
+            return false;
          }
 
-         this.ce = this.ae.a(6000) + 6000;
+         af.b("POI data mismatch: already registered at " + $$1);
+      }
+
+      this.b.put($$3, $$0);
+      this.c.computeIfAbsent($$2, $$0x -> Sets.newHashSet()).add($$0);
+      return true;
+   }
+
+   public void a(ji $$0) {
+      chd $$1 = (chd)this.b.remove(kk.b($$0));
+      if ($$1 == null) {
+         a.error("POI data mismatch: never registered at {}", $$0);
+      } else {
+         this.c.get($$1.h()).remove($$1);
+         a.debug("Removed POI of type {} @ {}", LogUtils.defer($$1::h), LogUtils.defer($$1::g));
+         this.d.run();
       }
    }
 
-   @Override
-   protected boolean ba() {
-      return this.Y > this.ch;
+   @Deprecated
+   @bag
+   public int b(ji $$0) {
+      return this.e($$0).map(chd::b).orElse(0);
    }
 
-   @Override
-   protected void aZ() {
-      this.ch = this.Y + this.bZ / 2.0F;
-   }
-
-   @Override
-   protected avz u() {
-      return awa.eT;
-   }
-
-   @Override
-   protected avz e(btc $$0) {
-      return awa.eW;
-   }
-
-   @Override
-   protected avz o_() {
-      return awa.eU;
-   }
-
-   @Override
-   protected void b(ji $$0, dwy $$1) {
-      this.a(awa.eX, 0.15F, 1.0F);
-   }
-
-   @Nullable
-   public che b(ard $$0, bud $$1) {
-      return but.z.a($$0, bus.e);
-   }
-
-   @Override
-   public boolean j(cwq $$0) {
-      return $$0.a(awy.an);
-   }
-
-   @Override
-   protected int e(ard $$0) {
-      return this.t() ? 10 : super.e($$0);
-   }
-
-   @Override
-   public void a(tq $$0) {
-      super.a($$0);
-      this.cf = $$0.q("IsChickenJockey");
-      if ($$0.e("EggLayTime")) {
-         this.ce = $$0.h("EggLayTime");
+   public boolean c(ji $$0) {
+      chd $$1 = (chd)this.b.get(kk.b($$0));
+      if ($$1 == null) {
+         throw (IllegalStateException)af.b(new IllegalStateException("POI never registered at " + $$0));
+      } else {
+         boolean $$2 = $$1.d();
+         this.d.run();
+         return $$2;
       }
    }
 
-   @Override
-   public void b(tq $$0) {
-      super.b($$0);
-      $$0.a("IsChickenJockey", this.cf);
-      $$0.a("EggLayTime", this.ce);
+   public boolean a(ji $$0, Predicate<jr<chf>> $$1) {
+      return this.d($$0).filter($$1).isPresent();
    }
 
-   @Override
-   public boolean h(double $$0) {
-      return this.t();
+   public Optional<jr<chf>> d(ji $$0) {
+      return this.e($$0).map(chd::h);
    }
 
-   @Override
-   protected void a(bum $$0, bum.a $$1) {
-      super.a($$0, $$1);
-      if ($$0 instanceof bvi) {
-         ((bvi)$$0).aX = this.aX;
+   private Optional<chd> e(ji $$0) {
+      return Optional.ofNullable((chd)this.b.get(kk.b($$0)));
+   }
+
+   public void a(Consumer<BiConsumer<ji, jr<chf>>> $$0) {
+      if (!this.e) {
+         Short2ObjectMap<chd> $$1 = new Short2ObjectOpenHashMap(this.b);
+         this.c();
+         $$0.accept(($$1x, $$2) -> {
+            short $$3 = kk.b($$1x);
+            chd $$4 = (chd)$$1.computeIfAbsent($$3, $$2x -> new chd($$1x, $$2, this.d));
+            this.a($$4);
+         });
+         this.e = true;
+         this.d.run();
       }
    }
 
-   public boolean t() {
-      return this.cf;
+   private void c() {
+      this.b.clear();
+      this.c.clear();
    }
 
-   public void x(boolean $$0) {
-      this.cf = $$0;
+   boolean b() {
+      return this.e;
+   }
+
+   public static record a(boolean b, List<chd.a> c) {
+      public static final Codec<che.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.BOOL.lenientOptionalFieldOf("Valid", false).forGetter(che.a::a), chd.a.a.listOf().fieldOf("Records").forGetter(che.a::b))
+               .apply($$0, che.a::new)
+      );
+
+      public che a(Runnable $$0) {
+         return new che($$0, this.b, this.c.stream().map($$1 -> $$1.a($$0)).toList());
+      }
+
+      public boolean a() {
+         return this.b;
+      }
+
+      public List<chd.a> b() {
+         return this.c;
+      }
    }
 }

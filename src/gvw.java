@@ -1,27 +1,27 @@
-public class gvw extends gwd<gye, gbu> {
-   private static final akv a = akv.b("textures/entity/creeper/creeper_armor.png");
-   private final gbu b;
+public class gvw extends grx<cit, hbr, gfj> {
+   private static final aku a = aku.b("textures/entity/turtle/big_sea_turtle.png");
 
-   public gvw(guc<gye, gbu> $$0, gfa $$1) {
-      super($$0);
-      this.b = new gbu($$1.a(gfd.aj));
+   public gvw(gtd.a $$0) {
+      super($$0, new gfj($$0.a(ggb.ds)), new gfj($$0.a(ggb.dt)), 0.7F);
    }
 
-   protected boolean a(gye $$0) {
-      return $$0.b;
+   protected float a(hbr $$0) {
+      float $$1 = super.g($$0);
+      return $$0.aj ? $$1 * 0.83F : $$1;
    }
 
-   @Override
-   protected float a(float $$0) {
-      return $$0 * 0.01F;
+   public hbr b() {
+      return new hbr();
    }
 
-   @Override
-   protected akv a() {
+   public void a(cit $$0, hbr $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = !$$0.bj() && $$0.aJ();
+      $$1.b = $$0.t();
+      $$1.c = !$$0.n_() && $$0.q();
+   }
+
+   public aku b(hbr $$0) {
       return a;
-   }
-
-   protected gbu b() {
-      return this.b;
    }
 }

@@ -1,59 +1,56 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dnt extends dnd implements dog {
-   public static final MapCodec<dnt> c = b(dnt::new);
-   protected static final fbv g = djn.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
-   private static final double h = 0.14;
+public abstract class dnt extends dke {
+   protected final jn a;
+   protected final boolean b;
+   protected final fcr d;
 
-   @Override
-   public MapCodec<dnt> a() {
-      return c;
-   }
-
-   protected dnt(dwx.d $$0) {
-      super($$0, jn.b, g, true, 0.14);
-   }
-
-   @Override
-   protected boolean h(dwy $$0) {
-      return $$0.a(djp.J);
+   protected dnt(dxp.d $$0, jn $$1, fcr $$2, boolean $$3) {
+      super($$0);
+      this.a = $$1;
+      this.d = $$2;
+      this.b = $$3;
    }
 
    @Override
-   protected djn b() {
-      return djp.mF;
-   }
-
-   @Override
-   protected boolean o(dwy $$0) {
-      return !$$0.a(djp.ll);
-   }
-
-   @Override
-   public boolean a(@Nullable coy $$0, dfo $$1, ji $$2, dwy $$3, esz $$4) {
-      return false;
-   }
-
-   @Override
-   public boolean a(dgk $$0, ji $$1, dwy $$2, eta $$3) {
-      return false;
-   }
-
-   @Override
-   protected int a(azh $$0) {
-      return 1;
-   }
+   protected abstract MapCodec<? extends dnt> a();
 
    @Nullable
    @Override
-   public dwy a(dah $$0) {
-      eta $$1 = $$0.q().b_($$0.a());
-      return $$1.a(awv.a) && $$1.e() == 8 ? super.a($$0) : null;
+   public dxq a(dax $$0) {
+      dxq $$1 = $$0.q().a_($$0.a().a(this.a));
+      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.b($$0.q().A) : this.b().m();
+   }
+
+   public dxq b(azh $$0) {
+      return this.m();
    }
 
    @Override
-   protected eta b_(dwy $$0) {
-      return etb.c.a(false);
+   protected boolean a(dxq $$0, dhc $$1, ji $$2) {
+      ji $$3 = $$2.a(this.a.g());
+      dxq $$4 = $$1.a_($$3);
+      return !this.o($$4) ? false : $$4.a(this.b()) || $$4.c($$1, $$3, this.a);
    }
+
+   @Override
+   protected void a(dxq $$0, ard $$1, ji $$2, azh $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
+      }
+   }
+
+   protected boolean o(dxq $$0) {
+      return true;
+   }
+
+   @Override
+   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
+      return this.d;
+   }
+
+   protected abstract dnv c();
+
+   protected abstract dke b();
 }

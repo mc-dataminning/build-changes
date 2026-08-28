@@ -1,58 +1,42 @@
-import java.util.function.ToDoubleFunction;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Set;
 
-public class cgg {
-   @Nullable
-   public static fbb a(bvq $$0, int $$1, int $$2) {
-      return a($$0, $$1, $$2, $$0::c);
+public class cgg extends cgi<cpd> {
+   private static final int a = 40;
+
+   public cgg() {
+      super(40);
    }
 
-   @Nullable
-   public static fbb a(bvq $$0, int $$1, int $$2, ToDoubleFunction<ji> $$3) {
-      boolean $$4 = cge.a($$0, $$1);
-      return cgh.a(() -> {
-         ji $$4x = cgh.a($$0.dY(), $$1, $$2);
-         ji $$5 = a($$0, $$1, $$4, $$4x);
-         return $$5 == null ? null : a($$0, $$5);
-      }, $$3);
-   }
+   protected void a(ard $$0, cpd $$1) {
+      akt<dgz> $$2 = $$0.aj();
+      ji $$3 = $$1.du();
+      List<jq> $$4 = Lists.newArrayList();
+      int $$5 = 4;
 
-   @Nullable
-   public static fbb a(bvq $$0, int $$1, int $$2, fbb $$3) {
-      fbb $$4 = $$3.a($$0.dA(), $$0.dC(), $$0.dG());
-      boolean $$5 = cge.a($$0, $$1);
-      return a($$0, $$1, $$2, $$4, $$5);
-   }
-
-   @Nullable
-   public static fbb b(bvq $$0, int $$1, int $$2, fbb $$3) {
-      fbb $$4 = $$0.dt().d($$3);
-      boolean $$5 = cge.a($$0, $$1);
-      return a($$0, $$1, $$2, $$4, $$5);
-   }
-
-   @Nullable
-   private static fbb a(bvq $$0, int $$1, int $$2, fbb $$3, boolean $$4) {
-      return cgh.a($$0, () -> {
-         ji $$5 = cgh.a($$0.dY(), $$1, $$2, 0, $$3.d, $$3.f, (float) (Math.PI / 2));
-         if ($$5 == null) {
-            return null;
-         } else {
-            ji $$6 = a($$0, $$1, $$4, $$5);
-            return $$6 == null ? null : a($$0, $$6);
+      for (int $$6 = -4; $$6 <= 4; $$6++) {
+         for (int $$7 = -2; $$7 <= 2; $$7++) {
+            for (int $$8 = -4; $$8 <= 4; $$8++) {
+               ji $$9 = $$3.b($$6, $$7, $$8);
+               if ($$1.gA().b().e().contains($$0.a_($$9).b())) {
+                  $$4.add(jq.a($$2, $$9));
+               }
+            }
          }
-      });
+      }
+
+      bxa<?> $$10 = $$1.ea();
+      if (!$$4.isEmpty()) {
+         $$10.a(cfc.f, $$4);
+      } else {
+         $$10.b(cfc.f);
+      }
    }
 
-   @Nullable
-   public static ji a(bvq $$0, ji $$1) {
-      $$1 = cgh.a($$1, $$0.dV().an(), $$1x -> cge.c($$0, $$1x));
-      return !cge.a($$0, $$1) && !cge.b($$0, $$1) ? $$1 : null;
-   }
-
-   @Nullable
-   public static ji a(bvq $$0, int $$1, boolean $$2, ji $$3) {
-      ji $$4 = cgh.a($$0, $$1, $$0.dY(), $$3);
-      return !cge.a($$4, $$0) && !cge.a($$2, $$0, $$4) && !cge.a($$0.P(), $$4) ? $$4 : null;
+   @Override
+   public Set<cfc<?>> a() {
+      return ImmutableSet.of(cfc.f);
    }
 }

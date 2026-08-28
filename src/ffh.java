@@ -1,11 +1,11 @@
-public interface ffh<T> {
-   ffh<?> a = () -> {
-      throw new IllegalStateException("Cannot dereference handle with no underlying resource");
-   };
+import java.util.OptionalInt;
 
-   static <T> ffh<T> a() {
-      return (ffh<T>)a;
+public record ffh(int a, int b, OptionalInt c, OptionalInt d, boolean e) {
+   public ffh a(int $$0, int $$1) {
+      return new ffh($$0, $$1, this.c, this.d, this.e);
    }
 
-   T get();
+   public ffh a(boolean $$0) {
+      return new ffh(this.a, this.b, this.c, this.d, $$0);
+   }
 }

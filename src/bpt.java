@@ -1,31 +1,58 @@
-import com.mojang.datafixers.util.Pair;
-import java.time.Duration;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
+import com.mojang.logging.LogUtils;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
 
-public record bpt(Duration a, @Nullable String b, long c) {
-   public static bpt.a a(Duration $$0, List<bpt> $$1) {
-      long $$2 = $$1.stream().mapToLong($$0x -> $$0x.c).sum();
-      return new bpt.a(
-         $$2,
-         (double)$$2 / (double)$$0.getSeconds(),
-         (long)$$1.size(),
-         (double)$$1.size() / (double)$$0.getSeconds(),
-         $$1.stream().map(bpt::a).reduce(Duration.ZERO, Duration::plus),
-         $$1.stream()
-            .filter($$0x -> $$0x.b != null)
-            .collect(Collectors.groupingBy($$0x -> $$0x.b, Collectors.summingLong($$0x -> $$0x.c)))
-            .entrySet()
-            .stream()
-            .sorted(Entry.<String, Long>comparingByValue().reversed())
-            .map($$0x -> Pair.of((String)$$0x.getKey(), (Long)$$0x.getValue()))
-            .limit(10L)
-            .toList()
-      );
+public class bpt {
+   private static final Logger a = LogUtils.getLogger();
+   private final Runnable b;
+
+   protected bpt(Runnable $$0) {
+      this.b = $$0;
    }
 
-   public static record a(long a, double b, long c, double d, Duration e, List<Pair<String, Long>> f) {
+   public void a(@Nullable Path $$0) {
+      if ($$0 != null) {
+         this.b.run();
+         a(() -> "Dumped flight recorder profiling to " + $$0);
+
+         bqb $$1;
+         try {
+            $$1 = bqa.a($$0);
+         } catch (Throwable var5) {
+            a(() -> "Failed to parse JFR recording", var5);
+            return;
+         }
+
+         try {
+            a($$1::b);
+            Path $$4 = $$0.resolveSibling("jfr-report-" + StringUtils.substringBefore($$0.getFileName().toString(), ".jfr") + ".json");
+            Files.writeString($$4, $$1.b(), StandardOpenOption.CREATE);
+            a(() -> "Dumped recording summary to " + $$4);
+         } catch (Throwable var4) {
+            a(() -> "Failed to output JFR report", var4);
+         }
+      }
+   }
+
+   private static void a(Supplier<String> $$0) {
+      if (LogUtils.isLoggerActive()) {
+         a.info($$0.get());
+      } else {
+         akw.a($$0.get());
+      }
+   }
+
+   private static void a(Supplier<String> $$0, Throwable $$1) {
+      if (LogUtils.isLoggerActive()) {
+         a.warn($$0.get(), $$1);
+      } else {
+         akw.a($$0.get());
+         $$1.printStackTrace(akw.a);
+      }
    }
 }

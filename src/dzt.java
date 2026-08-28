@@ -1,63 +1,58 @@
-import com.google.common.collect.ImmutableList;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.UnaryOperator;
+import java.util.function.Predicate;
 
-public record dzt(ImmutableList<dzx> c) {
-   public static final dzt a = new dzt.a()
-      .a(dzu.c, $$0 -> $$0)
-      .a(dzu.d, $$0 -> $$0.a(dzw::b))
-      .a(dzu.e, $$0 -> $$0.a(dzu.d, 8).a(dzw::d))
-      .a(dzu.f, $$0 -> $$0.a(dzu.d, 8).a(dzw::e))
-      .a(dzu.g, $$0 -> $$0.a(dzu.d, 8).a(dzu.f, 1).a(0).a(dzw::f))
-      .a(dzu.h, $$0 -> $$0.a(dzu.d, 8).a(dzu.f, 1).a(0).a(dzw::g))
-      .a(dzu.i, $$0 -> $$0.a(dzu.d, 8).a(0).a(dzw::h))
-      .a(dzu.j, $$0 -> $$0.a(dzu.d, 8).a(dzu.i, 1).a(1).a(dzw::i))
-      .a(dzu.k, $$0 -> $$0.a(dzw::j))
-      .a(dzu.l, $$0 -> $$0.a(dzu.k, 1).a(dzw::k))
-      .a(dzu.m, $$0 -> $$0.a(dzu.f, 1).a(dzw::l))
-      .a(dzu.n, $$0 -> $$0.a(dzw::m))
-      .a();
-   public static final dzt b = new dzt.a()
-      .a(dzu.c, $$0 -> $$0)
-      .a(dzu.d, $$0 -> $$0.a(dzw::c))
-      .a(dzu.e, $$0 -> $$0)
-      .a(dzu.f, $$0 -> $$0)
-      .a(dzu.g, $$0 -> $$0)
-      .a(dzu.h, $$0 -> $$0)
-      .a(dzu.i, $$0 -> $$0)
-      .a(dzu.j, $$0 -> $$0)
-      .a(dzu.k, $$0 -> $$0.a(dzw::j))
-      .a(dzu.l, $$0 -> $$0.a(dzu.k, 1).a(dzw::k))
-      .a(dzu.m, $$0 -> $$0)
-      .a(dzu.n, $$0 -> $$0.a(dzw::m))
-      .a();
+public class dzt<T> implements eac<T> {
+   private final jw<T> a;
 
-   public dzx a(dzu $$0) {
-      return (dzx)this.c.get($$0.b());
+   public dzt(jw<T> $$0) {
+      this.a = $$0;
    }
 
-   public ImmutableList<dzx> a() {
-      return this.c;
+   public static <A> eac<A> a(int $$0, jw<A> $$1, ead<A> $$2, List<A> $$3) {
+      return new dzt<>($$1);
    }
 
-   public static class a {
-      private final List<dzx> a = new ArrayList<>();
+   @Override
+   public int a(T $$0) {
+      int $$1 = this.a.a($$0);
+      return $$1 == -1 ? 0 : $$1;
+   }
 
-      public dzt a() {
-         return new dzt(ImmutableList.copyOf(this.a));
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      return true;
+   }
+
+   @Override
+   public T a(int $$0) {
+      T $$1 = this.a.a($$0);
+      if ($$1 == null) {
+         throw new eab($$0);
+      } else {
+         return $$1;
       }
+   }
 
-      public dzt.a a(dzu $$0, UnaryOperator<dzx.a> $$1) {
-         dzx.a $$2;
-         if (this.a.isEmpty()) {
-            $$2 = new dzx.a($$0);
-         } else {
-            $$2 = new dzx.a($$0, this.a.getLast());
-         }
+   @Override
+   public void a(vl $$0) {
+   }
 
-         this.a.add($$1.apply($$2).a());
-         return this;
-      }
+   @Override
+   public void b(vl $$0) {
+   }
+
+   @Override
+   public int a() {
+      return 0;
+   }
+
+   @Override
+   public int b() {
+      return this.a.d();
+   }
+
+   @Override
+   public eac<T> a(ead<T> $$0) {
+      return this;
    }
 }

@@ -112,12 +112,12 @@ public class ji extends km {
       return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new ji(this.u() + $$0, this.v() + $$1, this.w() + $$2);
    }
 
-   public fbb b() {
-      return fbb.b(this);
+   public fbx b() {
+      return fbx.b(this);
    }
 
-   public fbb c() {
-      return fbb.c(this);
+   public fbx c() {
+      return fbx.c(this);
    }
 
    public ji a(km $$0) {
@@ -203,7 +203,7 @@ public class ji extends km {
       }
    }
 
-   public ji a(dqf $$0) {
+   public ji a(dqw $$0) {
       switch ($$0) {
          case a:
          default:
@@ -233,8 +233,8 @@ public class ji extends km {
       return new ji.a(this.u(), this.v(), this.w());
    }
 
-   public fbb a(fbb $$0) {
-      return new fbb(
+   public fbx a(fbx $$0) {
+      return new fbx(
          ayz.a($$0.d, (double)((float)this.u() + 1.0E-5F), (double)this.u() + 1.0 - 1.0E-5F),
          ayz.a($$0.e, (double)((float)this.v() + 1.0E-5F), (double)this.v() + 1.0 - 1.0E-5F),
          ayz.a($$0.f, (double)((float)this.w() + 1.0E-5F), (double)this.w() + 1.0 - 1.0E-5F)
@@ -337,7 +337,7 @@ public class ji extends km {
       return StreamSupport.stream(a($$0, $$1, $$2, $$3).spliterator(), false);
    }
 
-   public static Iterable<ji> a(faw $$0) {
+   public static Iterable<ji> a(fbs $$0) {
       ji $$1 = a($$0.a, $$0.b, $$0.c);
       ji $$2 = a($$0.d, $$0.e, $$0.f);
       return c($$1, $$2);
@@ -358,7 +358,7 @@ public class ji extends km {
       return StreamSupport.stream(c($$0, $$1).spliterator(), false);
    }
 
-   public static Stream<ji> a(enf $$0) {
+   public static Stream<ji> a(eob $$0) {
       return a(
          Math.min($$0.h(), $$0.k()),
          Math.min($$0.i(), $$0.l()),
@@ -369,7 +369,7 @@ public class ji extends km {
       );
    }
 
-   public static Stream<ji> b(faw $$0) {
+   public static Stream<ji> b(fbs $$0) {
       return a(ayz.a($$0.a), ayz.a($$0.b), ayz.a($$0.c), ayz.a($$0.d), ayz.a($$0.e), ayz.a($$0.f));
    }
 
@@ -501,7 +501,7 @@ public class ji extends km {
       }
 
       @Override
-      public ji a(dqf $$0) {
+      public ji a(dqw $$0) {
          return super.a($$0).j();
       }
 

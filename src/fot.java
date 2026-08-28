@@ -1,160 +1,77 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class fot {
-   private static final int a = 182;
-   private static final int b = 5;
-   private static final akv[] c = new akv[]{
-      akv.b("boss_bar/pink_background"),
-      akv.b("boss_bar/blue_background"),
-      akv.b("boss_bar/red_background"),
-      akv.b("boss_bar/green_background"),
-      akv.b("boss_bar/yellow_background"),
-      akv.b("boss_bar/purple_background"),
-      akv.b("boss_bar/white_background")
-   };
-   private static final akv[] d = new akv[]{
-      akv.b("boss_bar/pink_progress"),
-      akv.b("boss_bar/blue_progress"),
-      akv.b("boss_bar/red_progress"),
-      akv.b("boss_bar/green_progress"),
-      akv.b("boss_bar/yellow_progress"),
-      akv.b("boss_bar/purple_progress"),
-      akv.b("boss_bar/white_progress")
-   };
-   private static final akv[] e = new akv[]{
-      akv.b("boss_bar/notched_6_background"),
-      akv.b("boss_bar/notched_10_background"),
-      akv.b("boss_bar/notched_12_background"),
-      akv.b("boss_bar/notched_20_background")
-   };
-   private static final akv[] f = new akv[]{
-      akv.b("boss_bar/notched_6_progress"), akv.b("boss_bar/notched_10_progress"), akv.b("boss_bar/notched_12_progress"), akv.b("boss_bar/notched_20_progress")
-   };
-   private final flk g;
-   final Map<UUID, fpi> h = Maps.newLinkedHashMap();
+public final class fot {
+   public static final fot a = a("all");
+   public static final fot b = a("texture", a);
+   public static final fot c = a("particle", b);
+   public static final fot d = a("end", a);
+   public static final fot e = a("bottom", d);
+   public static final fot f = a("top", d);
+   public static final fot g = a("front", a);
+   public static final fot h = a("back", a);
+   public static final fot i = a("side", a);
+   public static final fot j = a("north", i);
+   public static final fot k = a("south", i);
+   public static final fot l = a("east", i);
+   public static final fot m = a("west", i);
+   public static final fot n = a("up");
+   public static final fot o = a("down");
+   public static final fot p = a("cross");
+   public static final fot q = a("cross_emissive");
+   public static final fot r = a("plant");
+   public static final fot s = a("wall", a);
+   public static final fot t = a("rail");
+   public static final fot u = a("wool");
+   public static final fot v = a("pattern");
+   public static final fot w = a("pane");
+   public static final fot x = a("edge");
+   public static final fot y = a("fan");
+   public static final fot z = a("stem");
+   public static final fot A = a("upperstem");
+   public static final fot B = a("crop");
+   public static final fot C = a("dirt");
+   public static final fot D = a("fire");
+   public static final fot E = a("lantern");
+   public static final fot F = a("platform");
+   public static final fot G = a("unsticky");
+   public static final fot H = a("torch");
+   public static final fot I = a("layer0");
+   public static final fot J = a("layer1");
+   public static final fot K = a("layer2");
+   public static final fot L = a("lit_log");
+   public static final fot M = a("candle");
+   public static final fot N = a("inside");
+   public static final fot O = a("content");
+   public static final fot P = a("inner_top");
+   public static final fot Q = a("flowerbed");
+   private final String R;
+   @Nullable
+   private final fot S;
 
-   public fot(flk $$0) {
-      this.g = $$0;
+   private static fot a(String $$0) {
+      return new fot($$0, null);
    }
 
-   public void a(fof $$0) {
-      if (!this.h.isEmpty()) {
-         bou $$1 = bot.a();
-         $$1.a("bossHealth");
-         int $$2 = $$0.a();
-         int $$3 = 12;
-
-         for (fpi $$4 : this.h.values()) {
-            int $$5 = $$2 / 2 - 91;
-            this.a($$0, $$5, $$3, $$4);
-            wp $$7 = $$4.i();
-            int $$8 = this.g.h.a($$7);
-            int $$9 = $$2 / 2 - $$8 / 2;
-            int $$10 = $$3 - 9;
-            $$0.b(this.g.h, $$7, $$9, $$10, 16777215);
-            $$3 += 10 + 9;
-            if ($$3 >= $$0.b() / 3) {
-               break;
-            }
-         }
-
-         $$1.c();
-      }
+   private static fot a(String $$0, fot $$1) {
+      return new fot($$0, $$1);
    }
 
-   private void a(fof $$0, int $$1, int $$2, bsb $$3) {
-      this.a($$0, $$1, $$2, $$3, 182, c, e);
-      int $$4 = ayz.b($$3.j(), 0, 182);
-      if ($$4 > 0) {
-         this.a($$0, $$1, $$2, $$3, $$4, d, f);
-      }
+   private fot(String $$0, @Nullable fot $$1) {
+      this.R = $$0;
+      this.S = $$1;
    }
 
-   private void a(fof $$0, int $$1, int $$2, bsb $$3, int $$4, akv[] $$5, akv[] $$6) {
-      $$0.a(gmj::H, $$5[$$3.k().ordinal()], 182, 5, 0, 0, $$1, $$2, $$4, 5);
-      if ($$3.l() != bsb.b.a) {
-         $$0.a(gmj::H, $$6[$$3.l().ordinal() - 1], 182, 5, 0, 0, $$1, $$2, $$4, 5);
-      }
+   public String a() {
+      return this.R;
    }
 
-   public void a(abv $$0) {
-      $$0.a(new abv.b() {
-         @Override
-         public void a(UUID $$0, wp $$1, float $$2, bsb.a $$3, bsb.b $$4, boolean $$5, boolean $$6, boolean $$7) {
-            fot.this.h.put($$0, new fpi($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-         }
-
-         @Override
-         public void a(UUID $$0) {
-            fot.this.h.remove($$0);
-         }
-
-         @Override
-         public void a(UUID $$0, float $$1) {
-            fot.this.h.get($$0).a($$1);
-         }
-
-         @Override
-         public void a(UUID $$0, wp $$1) {
-            fot.this.h.get($$0).a($$1);
-         }
-
-         @Override
-         public void a(UUID $$0, bsb.a $$1, bsb.b $$2) {
-            fpi $$3 = fot.this.h.get($$0);
-            $$3.a($$1);
-            $$3.a($$2);
-         }
-
-         @Override
-         public void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
-            fpi $$4 = fot.this.h.get($$0);
-            $$4.a($$1);
-            $$4.b($$2);
-            $$4.c($$3);
-         }
-      });
+   @Nullable
+   public fot b() {
+      return this.S;
    }
 
-   public void a() {
-      this.h.clear();
-   }
-
-   public boolean b() {
-      if (!this.h.isEmpty()) {
-         for (bsb $$0 : this.h.values()) {
-            if ($$0.n()) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public boolean c() {
-      if (!this.h.isEmpty()) {
-         for (bsb $$0 : this.h.values()) {
-            if ($$0.m()) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public boolean d() {
-      if (!this.h.isEmpty()) {
-         for (bsb $$0 : this.h.values()) {
-            if ($$0.o()) {
-               return true;
-            }
-         }
-      }
-
-      return false;
+   @Override
+   public String toString() {
+      return "#" + this.R;
    }
 }

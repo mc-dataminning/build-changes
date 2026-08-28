@@ -1,168 +1,188 @@
-import java.net.URI;
-import java.util.function.Supplier;
+import com.mojang.logging.LogUtils;
+import io.netty.channel.ChannelFuture;
+import java.net.InetSocketAddress;
+import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fuh extends fum {
-   private static final akv a = akv.b("icon/draft_report");
-   private static final int b = 2;
-   private static final int c = 50;
-   private static final int d = 4;
-   private static final int s = 204;
-   private static final int u = 98;
-   private static final wp v = wp.c("menu.returnToGame");
-   private static final wp w = wp.c("gui.advancements");
-   private static final wp x = wp.c("gui.stats");
-   private static final wp y = wp.c("menu.sendFeedback");
-   private static final wp z = wp.c("menu.reportBugs");
-   private static final wp A = wp.c("menu.feedback");
-   private static final wp B = wp.c("menu.server_links");
-   private static final wp C = wp.c("menu.options");
-   private static final wp D = wp.c("menu.shareToLan");
-   private static final wp E = wp.c("menu.playerReporting");
-   private static final wp F = wp.c("menu.returnToMenu");
-   private static final wp G = wp.c("menu.savingLevel");
-   private static final wp H = wp.c("menu.game");
-   private static final wp I = wp.c("menu.paused");
-   private final boolean J;
+public class fuh extends fvi {
+   private static final AtomicInteger c = new AtomicInteger(0);
+   static final Logger d = LogUtils.getLogger();
+   private static final long s = 2000L;
+   public static final wp a = wp.c("connect.aborted");
+   public static final wp b = wp.a("disconnect.genericReason", wp.c("disconnect.unknownHost"));
    @Nullable
-   private fou K;
+   volatile vi u;
+   @Nullable
+   ChannelFuture v;
+   volatile boolean w;
+   final fvi x;
+   private wp y = wp.c("connect.connecting");
+   private long z = -1L;
+   final wp A;
 
-   public fuh(boolean $$0) {
-      super($$0 ? H : I);
-      this.J = $$0;
+   private fuh(fvi $$0, wp $$1) {
+      super(flx.a);
+      this.x = $$0;
+      this.A = $$1;
    }
 
-   public boolean m() {
-      return this.J;
-   }
-
-   @Override
-   protected void aR_() {
-      if (this.J) {
-         this.E();
-      }
-
-      this.c(new fqb(0, this.J ? 40 : 10, this.n, 9, this.l, this.p));
-   }
-
-   private void E() {
-      fsh $$0 = new fsh();
-      $$0.c().a(4, 4, 4, 0);
-      fsh.b $$1 = $$0.d(2);
-      $$1.a(fou.a(v, $$0x -> {
-         this.m.a(null);
-         this.m.o.i();
-      }).a(204).a(), 2, $$0.b().c(50));
-      $$1.a(this.a(w, () -> new fuw(this.m.t.j.p(), this)));
-      $$1.a(this.a(x, () -> new fuq(this, this.m.t.m())));
-      aln $$2 = this.m.t.j.E();
-      if ($$2.a()) {
-         a(this, $$1);
+   public static void a(fvi $$0, fmg $$1, giq $$2, ghn $$3, boolean $$4, @Nullable ghr $$5) {
+      if ($$1.z instanceof fuh) {
+         d.error("Attempt to connect while already connecting");
       } else {
-         $$1.a(this.a(A, () -> new fuh.a(this)));
-         $$1.a(this.a(B, () -> new fxe(this, $$2)));
-      }
+         wp $$6;
+         if ($$5 != null) {
+            $$6 = wo.q;
+         } else if ($$4) {
+            $$6 = gmc.a;
+         } else {
+            $$6 = wo.r;
+         }
 
-      $$1.a(this.a(C, () -> new fxp(this, this.m.n)));
-      if (this.m.U() && !this.m.V().r()) {
-         $$1.a(this.a(D, () -> new fun(this)));
-      } else {
-         $$1.a(this.a(E, () -> new fze(this)));
-      }
+         fuh $$9 = new fuh($$0, $$6);
+         if ($$5 != null) {
+            $$9.a(wp.c("connect.transferring"));
+         }
 
-      wp $$3 = this.m.T() ? F : wo.p;
-      this.K = $$1.a(fou.a($$3, $$0x -> {
-         $$0x.j = false;
-         this.m.ba().a(this.m, this, this::F, true);
-      }).a(204).a(), 2);
-      $$0.a();
-      fsg.a($$0, 0, 0, this.n, this.o, 0.5F, 0.25F);
-      $$0.a(this::c);
+         $$1.y();
+         $$1.aU();
+         $$1.a(gie.a($$3.b));
+         $$1.bc().a(gmd.c.b, $$3.b, $$3.a);
+         $$1.a($$9);
+         $$9.a($$1, $$2, $$3, $$5);
+      }
    }
 
-   static void a(fum $$0, fsh.b $$1) {
-      $$1.a(a($$0, y, ab.b().g() ? axv.i : axv.h));
-      $$1.a(a($$0, z, axv.j)).j = !ab.b().d().a();
+   private void a(final fmg $$0, final giq $$1, final ghn $$2, @Nullable final ghr $$3) {
+      d.info("Connecting to {}, {}", $$1.a(), $$1.b());
+      Thread $$4 = new Thread("Server Connector #" + c.incrementAndGet()) {
+         @Override
+         public void run() {
+            InetSocketAddress $$0 = null;
+
+            try {
+               if (fuh.this.w) {
+                  return;
+               }
+
+               Optional<InetSocketAddress> $$1 = gis.a.a($$1).map(gip::d);
+               if (fuh.this.w) {
+                  return;
+               }
+
+               if ($$1.isEmpty()) {
+                  $$0.execute(() -> $$0.a(new fup(fuh.this.x, fuh.this.A, fuh.b)));
+                  return;
+               }
+
+               $$0 = $$1.get();
+               vi $$2;
+               synchronized (fuh.this) {
+                  if (fuh.this.w) {
+                     return;
+                  }
+
+                  $$2 = new vi(yx.b);
+                  $$2.a($$0.aQ().n());
+                  fuh.this.v = vi.a($$0, $$0.n.aD(), $$2);
+               }
+
+               fuh.this.v.syncUninterruptibly();
+               synchronized (fuh.this) {
+                  if (fuh.this.w) {
+                     $$2.a(fuh.a);
+                     return;
+                  }
+
+                  fuh.this.u = $$2;
+                  $$0.af().a($$2, a($$2.b()));
+               }
+
+               fuh.this.u
+                  .a($$0.getHostName(), $$0.getPort(), aiw.b, aiw.d, new ggx(fuh.this.u, $$0, $$2, fuh.this.x, false, null, fuh.this::a, $$3), $$3 != null);
+               fuh.this.u.a(new aiz($$0.X().c(), $$0.X().b()));
+            } catch (Exception var9) {
+               if (fuh.this.w) {
+                  return;
+               }
+
+               Exception $$6;
+               if (var9.getCause() instanceof Exception $$5) {
+                  $$6 = $$5;
+               } else {
+                  $$6 = var9;
+               }
+
+               fuh.d.error("Couldn't connect to server", var9);
+               String $$8 = $$0 == null
+                  ? $$6.getMessage()
+                  : $$6.getMessage().replaceAll($$0.getHostName() + ":" + $$0.getPort(), "").replaceAll($$0.toString(), "");
+               $$0.execute(() -> $$0.a(new fup(fuh.this.x, fuh.this.A, wp.a("disconnect.genericReason", $$8))));
+            }
+         }
+
+         private static hiu.c a(ghn.a $$0x) {
+            return switch ($$0) {
+               case a -> hiu.c.b;
+               case b -> hiu.c.c;
+               case c -> hiu.c.a;
+            };
+         }
+      };
+      $$4.setUncaughtExceptionHandler(new r(d));
+      $$4.start();
    }
 
-   private void F() {
-      boolean $$0 = this.m.T();
-      ggp $$1 = this.m.S();
-      this.m.s.ac();
-      if ($$0) {
-         this.m.b(new ftx(G));
-      } else {
-         this.m.y();
-      }
-
-      fuo $$2 = new fuo();
-      if ($$0) {
-         this.m.a($$2);
-      } else if ($$1 != null && $$1.e()) {
-         this.m.a(new fgg($$2));
-      } else {
-         this.m.a(new fxc($$2));
-      }
+   private void a(wp $$0) {
+      this.y = $$0;
    }
 
    @Override
    public void e() {
-      super.e();
+      if (this.u != null) {
+         if (this.u.i()) {
+            this.u.b();
+         } else {
+            this.u.n();
+         }
+      }
    }
 
    @Override
-   public void a(fof $$0, int $$1, int $$2, float $$3) {
+   public boolean aG_() {
+      return false;
+   }
+
+   @Override
+   protected void aR_() {
+      this.c(fpq.a(wo.e, $$0 -> {
+         synchronized (this) {
+            this.w = true;
+            if (this.v != null) {
+               this.v.cancel(true);
+               this.v = null;
+            }
+
+            if (this.u != null) {
+               this.u.a(a);
+            }
+         }
+
+         this.m.a(this.x);
+      }).a(this.n / 2 - 100, this.o / 4 + 120 + 12, 200, 20).a());
+   }
+
+   @Override
+   public void a(fpc $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      if (this.J && this.m != null && this.m.ba().c() && this.K != null) {
-         $$0.a(gmj::H, a, this.K.F() + this.K.A() - 17, this.K.G() + 3, 15, 15);
-      }
-   }
-
-   @Override
-   public void b(fof $$0, int $$1, int $$2, float $$3) {
-      if (this.J) {
-         super.b($$0, $$1, $$2, $$3);
-      }
-   }
-
-   private fou a(wp $$0, Supplier<fum> $$1) {
-      return fou.a($$0, $$1x -> this.m.a($$1.get())).a(98).a();
-   }
-
-   private static fou a(fum $$0, wp $$1, URI $$2) {
-      return fou.a($$1, ftj.b($$0, $$2)).a(98).a();
-   }
-
-   static class a extends fum {
-      private static final wp b = wp.c("menu.feedback.title");
-      public final fum a;
-      private final fsi c = new fsi(this);
-
-      protected a(fum $$0) {
-         super(b);
-         this.a = $$0;
+      long $$4 = af.c();
+      if ($$4 - this.z > 2000L) {
+         this.z = $$4;
+         this.m.aY().c(wp.c("narrator.joining"));
       }
 
-      @Override
-      protected void aR_() {
-         this.c.a(b, this.p);
-         fsh $$0 = this.c.c(new fsh());
-         $$0.c().a(4, 4, 4, 0);
-         fsh.b $$1 = $$0.d(2);
-         fuh.a(this, $$1);
-         this.c.b(fou.a(wo.k, $$0x -> this.aO_()).a(200).a());
-         this.c.a(this::c);
-         this.c();
-      }
-
-      @Override
-      protected void c() {
-         this.c.a();
-      }
-
-      @Override
-      public void aO_() {
-         this.m.a(this.a);
-      }
+      $$0.a(this.p, this.y, this.n / 2, this.o / 2 - 50, 16777215);
    }
 }

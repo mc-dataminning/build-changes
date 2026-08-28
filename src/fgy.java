@@ -1,96 +1,142 @@
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
 
 public class fgy {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 20;
-   private final fgl c = fgl.a();
-   private final Path d;
-   private final fhs e;
-   private final flw f;
-   private final long g;
-   private final int h;
-   private final fgz i;
-   private volatile boolean j;
-   @Nullable
-   private fgj k;
-
-   public fgy(Path $$0, fhs $$1, flw $$2, long $$3, int $$4, fgz $$5) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
+   public static fgv a() {
+      throw new IllegalArgumentException();
    }
 
-   public CompletableFuture<?> a() {
-      return CompletableFuture.runAsync(() -> {
-         File $$0 = null;
+   public static fgv a(fgv $$0) {
+      return $$0;
+   }
 
-         try {
-            fhz $$1 = this.c();
-            $$0 = fgx.a(this.d, () -> this.j);
-            this.i.d();
-            fgj $$2 = new fgj($$0, this.g, this.h, $$1, this.f, ab.b().c(), this.e.i, this.i.b());
-            this.k = $$2;
-            fjq $$3 = $$2.a();
-            String $$4 = $$3.a();
-            if ($$4 != null) {
-               throw new fgu($$4);
-            }
+   public static fgv a(fgv $$0, fgv $$1) {
+      return new fgy.a($$0, $$1);
+   }
 
-            fkc.b(this.g);
-            this.c.a(this.g, this.h, this.e);
-         } catch (IOException var11) {
-            throw new fgu(var11.getMessage());
-         } catch (fih var12) {
-            throw new fgu(var12.a.b());
-         } catch (CancellationException | InterruptedException var13) {
-            throw new fgs();
-         } finally {
-            if ($$0 != null) {
-               b.debug("Deleting file {}", $$0.getAbsolutePath());
-               $$0.delete();
-            }
+   public static fgv a(fgv... $$0) {
+      return new fgy.b($$0);
+   }
+
+   static class a implements fgv {
+      private final fgv a;
+      private final fgv b;
+
+      public a(fgv $$0, fgv $$1) {
+         if ($$0 == $$1) {
+            throw new IllegalArgumentException("Duplicate delegates");
+         } else {
+            this.a = $$0;
+            this.b = $$1;
          }
-      }, af.h());
-   }
+      }
 
-   public void b() {
-      this.j = true;
-      if (this.k != null) {
-         this.k.b();
-         this.k = null;
+      @Override
+      public fgv a(float $$0, float $$1, float $$2) {
+         this.a.a($$0, $$1, $$2);
+         this.b.a($$0, $$1, $$2);
+         return this;
+      }
+
+      @Override
+      public fgv a(int $$0, int $$1, int $$2, int $$3) {
+         this.a.a($$0, $$1, $$2, $$3);
+         this.b.a($$0, $$1, $$2, $$3);
+         return this;
+      }
+
+      @Override
+      public fgv a(float $$0, float $$1) {
+         this.a.a($$0, $$1);
+         this.b.a($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public fgv a(int $$0, int $$1) {
+         this.a.a($$0, $$1);
+         this.b.a($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public fgv b(int $$0, int $$1) {
+         this.a.b($$0, $$1);
+         this.b.b($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public fgv b(float $$0, float $$1, float $$2) {
+         this.a.b($$0, $$1, $$2);
+         this.b.b($$0, $$1, $$2);
+         return this;
+      }
+
+      @Override
+      public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
+         this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
       }
    }
 
-   private fhz c() throws fih, InterruptedException {
-      for (int $$0 = 0; $$0 < 20; $$0++) {
-         try {
-            fhz $$1 = this.c.i(this.g);
-            if (this.j) {
-               throw new fgs();
-            }
-
-            if ($$1 != null) {
-               if (!$$1.c()) {
-                  throw new fgw();
+   static record b(fgv[] a) implements fgv {
+      b(fgv[] a) {
+         for (int $$1 = 0; $$1 < a.length; $$1++) {
+            for (int $$2 = $$1 + 1; $$2 < a.length; $$2++) {
+               if (a[$$1] == a[$$2]) {
+                  throw new IllegalArgumentException("Duplicate delegates");
                }
-
-               return $$1;
             }
-         } catch (fii var3) {
-            Thread.sleep((long)var3.c * 1000L);
+         }
+
+         this.a = a;
+      }
+
+      private void a(Consumer<fgv> $$0) {
+         for (fgv $$1 : this.a) {
+            $$0.accept($$1);
          }
       }
 
-      throw new fgw();
+      @Override
+      public fgv a(float $$0, float $$1, float $$2) {
+         this.a($$3 -> $$3.a($$0, $$1, $$2));
+         return this;
+      }
+
+      @Override
+      public fgv a(int $$0, int $$1, int $$2, int $$3) {
+         this.a($$4 -> $$4.a($$0, $$1, $$2, $$3));
+         return this;
+      }
+
+      @Override
+      public fgv a(float $$0, float $$1) {
+         this.a($$2 -> $$2.a($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public fgv a(int $$0, int $$1) {
+         this.a($$2 -> $$2.a($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public fgv b(int $$0, int $$1) {
+         this.a($$2 -> $$2.b($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public fgv b(float $$0, float $$1, float $$2) {
+         this.a($$3 -> $$3.b($$0, $$1, $$2));
+         return this;
+      }
+
+      @Override
+      public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+         this.a($$11 -> $$11.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10));
+      }
    }
 }

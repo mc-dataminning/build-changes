@@ -1,41 +1,55 @@
-public record air(int b, aje c) implements yw<aiq> {
+import java.security.PublicKey;
+
+public class air implements yw<aip> {
    public static final yn<vl, air> a = yw.a(air::a, air::new);
-   private static final int d = 1048576;
+   private final String b;
+   private final byte[] c;
+   private final byte[] d;
+   private final boolean e;
+
+   public air(String $$0, byte[] $$1, byte[] $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+   }
 
    private air(vl $$0) {
-      this($$0.l(), a($$0.q(), $$0));
-   }
-
-   private static aje a(akv $$0, vl $$1) {
-      return b($$0, $$1);
-   }
-
-   private static ajg b(akv $$0, vl $$1) {
-      int $$2 = $$1.readableBytes();
-      if ($$2 >= 0 && $$2 <= 1048576) {
-         $$1.k($$2);
-         return new ajg($$0);
-      } else {
-         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
-      }
+      this.b = $$0.d(20);
+      this.c = $$0.b();
+      this.d = $$0.b();
+      this.e = $$0.readBoolean();
    }
 
    private void a(vl $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c.a());
-      this.c.a($$0);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
    }
 
    @Override
    public yy<air> a() {
-      return aiw.a;
+      return aiv.c;
    }
 
-   public void a(aiq $$0) {
+   public void a(aip $$0) {
       $$0.a(this);
    }
 
-   public aje e() {
-      return this.c;
+   public String b() {
+      return this.b;
+   }
+
+   public PublicKey e() throws axy {
+      return axx.a(this.c);
+   }
+
+   public byte[] f() {
+      return this.d;
+   }
+
+   public boolean g() {
+      return this.e;
    }
 }

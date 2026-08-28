@@ -1,42 +1,25 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Set;
+public class cfq extends cgc {
+   public static final float a = 8.0F;
 
-public class cfq extends cfs<coj> {
-   private static final int a = 40;
-
-   public cfq() {
-      super(40);
+   @Override
+   protected boolean a(ard $$0, bvy $$1, bvy $$2) {
+      return this.b($$1, $$2) && $$2.bj() && (this.b($$2) || this.a($$1, $$2)) && cgi.c($$0, $$1, $$2);
    }
 
-   protected void a(ard $$0, coj $$1) {
-      aku<dgj> $$2 = $$0.ai();
-      ji $$3 = $$1.dv();
-      List<jq> $$4 = Lists.newArrayList();
-      int $$5 = 4;
+   private boolean a(bvy $$0, bvy $$1) {
+      return !$$0.ea().a(cfc.U) && $$1.aq().a(awt.j);
+   }
 
-      for (int $$6 = -4; $$6 <= 4; $$6++) {
-         for (int $$7 = -2; $$7 <= 2; $$7++) {
-            for (int $$8 = -4; $$8 <= 4; $$8++) {
-               ji $$9 = $$3.b($$6, $$7, $$8);
-               if ($$1.gC().b().e().contains($$0.a_($$9).b())) {
-                  $$4.add(jq.a($$2, $$9));
-               }
-            }
-         }
-      }
+   private boolean b(bvy $$0) {
+      return $$0.aq().a(awt.i);
+   }
 
-      bwk<?> $$10 = $$1.eb();
-      if (!$$4.isEmpty()) {
-         $$10.a(cem.f, $$4);
-      } else {
-         $$10.b(cem.f);
-      }
+   private boolean b(bvy $$0, bvy $$1) {
+      return $$1.g((bva)$$0) <= 64.0;
    }
 
    @Override
-   public Set<cem<?>> a() {
-      return ImmutableSet.of(cem.f);
+   protected cfc<bvy> b() {
+      return cfc.B;
    }
 }

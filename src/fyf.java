@@ -1,76 +1,70 @@
-import java.util.List;
-import java.util.Objects;
+public class fyf extends fym {
+   public static final wp a = wp.c("options.accessibility.title");
 
-public class fyf extends fyj<cse> {
-   private static final fqh h = new fqh(
-      akv.b("recipe_book/filter_enabled"),
-      akv.b("recipe_book/filter_disabled"),
-      akv.b("recipe_book/filter_enabled_highlighted"),
-      akv.b("recipe_book/filter_disabled_highlighted")
-   );
-   private static final wp i = wp.c("gui.recipebook.toggleRecipes.craftable");
-   private static final List<fyj.a> j = List.of(
-      new fyj.a(fyp.a), new fyj.a(cwu.pJ, cwu.pB, dbh.c), new fyj.a(cwu.eM, dbh.a), new fyj.a(cwu.rh, cwu.oZ, dbh.d), new fyj.a(cwu.me, dbh.b)
-   );
-
-   public fyf(cse $$0) {
-      super($$0, j);
-   }
-
-   @Override
-   protected boolean a(cua $$0) {
-      return this.f.m() == $$0 || this.f.n().contains($$0);
-   }
-
-   private boolean b(dck $$0) {
-      int $$1 = this.f.o();
-      int $$2 = this.f.p();
-      Objects.requireNonNull($$0);
-
-      return switch ($$0) {
-         case dco $$3 -> $$1 >= $$3.b() && $$2 >= $$3.c();
-         case dcp $$4 -> $$1 * $$2 >= $$4.b().size();
-         default -> false;
+   private static fmj<?>[] a(fmk $$0) {
+      return new fmj[]{
+         $$0.av(),
+         $$0.Z(),
+         $$0.u(),
+         $$0.J(),
+         $$0.q(),
+         $$0.s(),
+         $$0.ab(),
+         $$0.o(),
+         $$0.p(),
+         $$0.C(),
+         $$0.D(),
+         $$0.ae(),
+         $$0.af(),
+         $$0.ag(),
+         $$0.am(),
+         $$0.an(),
+         $$0.ao(),
+         $$0.ar(),
+         $$0.ap(),
+         $$0.aq(),
+         $$0.b(),
+         $$0.a(),
+         $$0.t(),
+         $$0.c(),
+         $$0.w(),
+         $$0.K(),
+         $$0.v()
       };
    }
 
-   @Override
-   protected void a(fyh $$0, dck $$1, bak $$2) {
-      $$0.b(this.f.m(), $$2, $$1.d());
-      Objects.requireNonNull($$1);
-      switch ($$1) {
-         case dco $$3:
-            List<cua> $$4 = this.f.n();
-            akg.a(this.f.o(), this.f.p(), $$3.b(), $$3.c(), $$3.f(), ($$3x, $$4x, $$5x, $$6x) -> {
-               cua $$7x = $$4.get($$4x);
-               $$0.a($$7x, $$2, $$3x);
-            });
-            break;
-         case dcp $$5:
-            label15: {
-               List<cua> $$6 = this.f.n();
-               int $$7 = Math.min($$5.b().size(), $$6.size());
+   public fyf(fvi $$0, fmk $$1) {
+      super($$0, $$1, a);
+   }
 
-               for (int $$8 = 0; $$8 < $$7; $$8++) {
-                  $$0.a($$6.get($$8), $$2, $$5.b().get($$8));
-               }
-               break label15;
-            }
+   @Override
+   protected void aR_() {
+      super.aR_();
+      fpo $$0 = this.d.b(this.c.u());
+      if ($$0 != null && !this.m.ad().c().contains("high_contrast")) {
+         $$0.j = false;
+         $$0.a(frb.a(wp.c("options.accessibility.high_contrast.error.tooltip")));
+      }
+
+      fpo $$1 = this.d.b(this.c.K());
+      if ($$1 != null) {
+         $$1.j = this.H();
       }
    }
 
    @Override
-   protected void a() {
-      this.e.a(h);
+   protected void m() {
+      this.d.a(a(this.c));
    }
 
    @Override
-   protected wp b() {
-      return i;
+   protected void E() {
+      fti $$0 = this.s.b(fti.e().a(8));
+      $$0.a(fpq.a(wp.c("options.accessibility.link"), fuf.b(this, axv.l)).a());
+      $$0.a(fpq.a(wo.d, $$0x -> this.m.a(this.b)).a());
    }
 
-   @Override
-   protected void a(fyn $$0, cpd $$1) {
-      $$0.a($$1, this::b);
+   private boolean H() {
+      return this.m.s != null && this.m.s.K().b(csp.d);
    }
 }

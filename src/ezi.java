@@ -1,31 +1,14 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
-
-public record ezi(Optional<cv> b) implements ezb {
-   public static final MapCodec<ezi> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cv.a.optionalFieldOf("predicate").forGetter(ezi::c)).apply($$0, ezi::new));
-
-   @Override
-   public ezc b() {
-      return ezd.j;
-   }
-
-   @Override
-   public Set<bai<?>> a() {
-      return Set.of(eym.i);
-   }
-
-   public boolean a(evs $$0) {
-      cwq $$1 = $$0.c(eym.i);
-      return $$1 != null && (this.b.isEmpty() || this.b.get().a($$1));
-   }
-
-   public static ezb.a a(cv.a $$0) {
-      return () -> new ezi(Optional.of($$0.b()));
-   }
-
-   public Optional<cv> c() {
-      return this.b;
-   }
+public class ezi {
+   public static final bai<bva> a = bai.a("this_entity");
+   public static final bai<cpr> b = bai.a("last_damage_player");
+   public static final bai<btp> c = bai.a("damage_source");
+   public static final bai<bva> d = bai.a("attacking_entity");
+   public static final bai<bva> e = bai.a("direct_attacking_entity");
+   public static final bai<fbx> f = bai.a("origin");
+   public static final bai<dxq> g = bai.a("block_state");
+   public static final bai<dus> h = bai.a("block_entity");
+   public static final bai<cxh> i = bai.a("tool");
+   public static final bai<Float> j = bai.a("explosion_radius");
+   public static final bai<Integer> k = bai.a("enchantment_level");
+   public static final bai<Boolean> l = bai.a("enchantment_active");
 }

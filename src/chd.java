@@ -1,40 +1,108 @@
-public record chd(akv m) {
-   public static final yn<wa, jr<chd>> a = yl.b(mc.l);
-   public static final aku<chd> b = a("tabby");
-   public static final aku<chd> c = a("black");
-   public static final aku<chd> d = a("red");
-   public static final aku<chd> e = a("siamese");
-   public static final aku<chd> f = a("british_shorthair");
-   public static final aku<chd> g = a("calico");
-   public static final aku<chd> h = a("persian");
-   public static final aku<chd> i = a("ragdoll");
-   public static final aku<chd> j = a("white");
-   public static final aku<chd> k = a("jellie");
-   public static final aku<chd> l = a("all_black");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
 
-   private static aku<chd> a(String $$0) {
-      return aku.a(mc.l, akv.b($$0));
+public class chd {
+   private final ji a;
+   private final jr<chf> b;
+   private int c;
+   private final Runnable d;
+
+   chd(ji $$0, jr<chf> $$1, int $$2, Runnable $$3) {
+      this.a = $$0.j();
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public static chd a(ke<chd> $$0) {
-      a($$0, b, "textures/entity/cat/tabby.png");
-      a($$0, c, "textures/entity/cat/black.png");
-      a($$0, d, "textures/entity/cat/red.png");
-      a($$0, e, "textures/entity/cat/siamese.png");
-      a($$0, f, "textures/entity/cat/british_shorthair.png");
-      a($$0, g, "textures/entity/cat/calico.png");
-      a($$0, h, "textures/entity/cat/persian.png");
-      a($$0, i, "textures/entity/cat/ragdoll.png");
-      a($$0, j, "textures/entity/cat/white.png");
-      a($$0, k, "textures/entity/cat/jellie.png");
-      return a($$0, l, "textures/entity/cat/all_black.png");
+   public chd(ji $$0, jr<chf> $$1, Runnable $$2) {
+      this($$0, $$1, $$1.a().b(), $$2);
    }
 
-   private static chd a(ke<chd> $$0, aku<chd> $$1, String $$2) {
-      return ke.a($$0, $$1, new chd(akv.b($$2)));
+   public chd.a a() {
+      return new chd.a(this.a, this.b, this.c);
    }
 
-   public akv a() {
-      return this.m;
+   @Deprecated
+   @bag
+   public int b() {
+      return this.c;
+   }
+
+   protected boolean c() {
+      if (this.c <= 0) {
+         return false;
+      } else {
+         this.c--;
+         this.d.run();
+         return true;
+      }
+   }
+
+   protected boolean d() {
+      if (this.c >= this.b.a().b()) {
+         return false;
+      } else {
+         this.c++;
+         this.d.run();
+         return true;
+      }
+   }
+
+   public boolean e() {
+      return this.c > 0;
+   }
+
+   public boolean f() {
+      return this.c != this.b.a().b();
+   }
+
+   public ji g() {
+      return this.a;
+   }
+
+   public jr<chf> h() {
+      return this.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? Objects.equals(this.a, ((chd)$$0).a) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
+   }
+
+   public static record a(ji b, jr<chf> c, int d) {
+      public static final Codec<chd.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  ji.a.fieldOf("pos").forGetter(chd.a::a),
+                  akr.a(mc.aa).fieldOf("type").forGetter(chd.a::b),
+                  Codec.INT.fieldOf("free_tickets").orElse(0).forGetter(chd.a::c)
+               )
+               .apply($$0, chd.a::new)
+      );
+
+      public chd a(Runnable $$0) {
+         return new chd(this.b, this.c, this.d, $$0);
+      }
+
+      public ji a() {
+         return this.b;
+      }
+
+      public jr<chf> b() {
+         return this.c;
+      }
+
+      public int c() {
+         return this.d;
+      }
    }
 }

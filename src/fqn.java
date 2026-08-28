@@ -1,145 +1,143 @@
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.util.List;
-import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class fqn {
-   private static final int a = 105;
-   private static final int b = 5;
-   private static final int c = 10;
-   private final fod d;
+public class fqn extends fpw<fqn.a> {
+   private static final int a = 310;
+   private static final int m = 25;
+   private final fym n;
+
+   public fqn(fmg $$0, int $$1, fym $$2) {
+      super($$0, $$1, $$2.s.d(), $$2.s.c(), 25);
+      this.e = false;
+      this.n = $$2;
+   }
+
+   public void a(fmj<?> $$0) {
+      this.b(fqn.b.a(this.c.n, $$0, this.n));
+   }
+
+   public void a(fmj<?>... $$0) {
+      for (int $$1 = 0; $$1 < $$0.length; $$1 += 2) {
+         fmj<?> $$2 = $$1 < $$0.length - 1 ? $$0[$$1 + 1] : null;
+         this.b(fqn.b.a(this.c.n, $$0[$$1], $$2, this.n));
+      }
+   }
+
+   public void a(List<fpo> $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1 += 2) {
+         this.a($$0.get($$1), $$1 < $$0.size() - 1 ? $$0.get($$1 + 1) : null);
+      }
+   }
+
+   public void a(fpo $$0, @Nullable fpo $$1) {
+      this.b(fqn.a.a($$0, $$1, this.n));
+   }
+
+   @Override
+   public int a() {
+      return 310;
+   }
+
    @Nullable
-   private bos e;
-   private String f = "root";
-   private int g = 0;
-
-   public fqn(fod $$0) {
-      this.d = $$0;
-   }
-
-   public void a(@Nullable bos $$0) {
-      this.e = $$0;
-   }
-
-   public void a(int $$0) {
-      this.g = $$0;
-   }
-
-   public void a(fof $$0) {
-      if (this.e != null) {
-         List<bow> $$1 = this.e.a(this.f);
-         bow $$2 = $$1.removeFirst();
-         int $$3 = $$0.a() - 105 - 10;
-         int $$4 = $$3 - 105;
-         int $$5 = $$3 + 105;
-         int $$6 = $$1.size() * 9;
-         int $$7 = $$0.b() - this.g - 5;
-         int $$8 = $$7 - $$6;
-         int $$9 = 62;
-         int $$10 = $$8 - 62 - 5;
-         $$0.a($$4 - 5, $$10 - 62 - 5, $$5 + 5, $$7 + 5, -1873784752);
-         $$0.a($$4x -> {
-            double $$5x = 0.0;
-
-            for (bow $$6x : $$1) {
-               int $$7x = ayz.a($$6x.a / 4.0) + 1;
-               ffz $$8x = $$4x.getBuffer(gmj.D());
-               int $$9x = axk.f($$6x.a());
-               int $$10x = axk.a($$9x, -8355712);
-               ffv.a $$11x = $$0.c().c();
-               $$8x.a($$11x, (float)$$3, (float)$$10, 10.0F).a($$9x);
-
-               for (int $$12x = $$7x; $$12x >= 0; $$12x--) {
-                  float $$13x = (float)(($$5x + $$6x.a * (double)$$12x / (double)$$7x) * (float) (Math.PI * 2) / 100.0);
-                  float $$14x = ayz.a($$13x) * 105.0F;
-                  float $$15x = ayz.b($$13x) * 105.0F * 0.5F;
-                  $$8x.a($$11x, (float)$$3 + $$14x, (float)$$10 - $$15x, 10.0F).a($$9x);
-               }
-
-               $$8x = $$4x.getBuffer(gmj.C());
-
-               for (int $$16x = $$7x; $$16x > 0; $$16x--) {
-                  float $$17x = (float)(($$5x + $$6x.a * (double)$$16x / (double)$$7x) * (float) (Math.PI * 2) / 100.0);
-                  float $$18x = ayz.a($$17x) * 105.0F;
-                  float $$19x = ayz.b($$17x) * 105.0F * 0.5F;
-                  float $$20x = (float)(($$5x + $$6x.a * (double)($$16x - 1) / (double)$$7x) * (float) (Math.PI * 2) / 100.0);
-                  float $$21 = ayz.a($$20x) * 105.0F;
-                  float $$22 = ayz.b($$20x) * 105.0F * 0.5F;
-                  if (!(($$19x + $$22) / 2.0F > 0.0F)) {
-                     $$8x.a($$11x, (float)$$3 + $$18x, (float)$$10 - $$19x, 10.0F).a($$10x);
-                     $$8x.a($$11x, (float)$$3 + $$18x, (float)$$10 - $$19x + 10.0F, 10.0F).a($$10x);
-                     $$8x.a($$11x, (float)$$3 + $$21, (float)$$10 - $$22 + 10.0F, 10.0F).a($$10x);
-                     $$8x.a($$11x, (float)$$3 + $$21, (float)$$10 - $$22, 10.0F).a($$10x);
-                  }
-               }
-
-               $$5x += $$6x.a;
+   public fpo b(fmj<?> $$0) {
+      for (fqn.a $$1 : this.aH_()) {
+         if ($$1 instanceof fqn.b $$2) {
+            fpo $$3 = $$2.a.get($$0);
+            if ($$3 != null) {
+               return $$3;
             }
-         });
-         DecimalFormat $$11 = new DecimalFormat("##0.00");
-         $$11.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT));
-         String $$12 = bos.b($$2.d);
-         String $$13 = "";
-         if (!"unspecified".equals($$12)) {
-            $$13 = $$13 + "[0] ";
          }
+      }
 
-         if ($$12.isEmpty()) {
-            $$13 = $$13 + "ROOT ";
-         } else {
-            $$13 = $$13 + $$12 + " ";
-         }
+      return null;
+   }
 
-         int $$14 = 16777215;
-         int $$15 = $$10 - 62;
-         $$0.b(this.d, $$13, $$4, $$15, 16777215);
-         $$13 = $$11.format($$2.b) + "%";
-         $$0.b(this.d, $$13, $$5 - this.d.b($$13), $$15, 16777215);
+   public void b() {
+      for (fqn.a $$0 : this.aH_()) {
+         if ($$0 instanceof fqn.b) {
+            fqn.b $$1 = (fqn.b)$$0;
 
-         for (int $$16 = 0; $$16 < $$1.size(); $$16++) {
-            bow $$17 = $$1.get($$16);
-            StringBuilder $$18 = new StringBuilder();
-            if ("unspecified".equals($$17.d)) {
-               $$18.append("[?] ");
-            } else {
-               $$18.append("[").append($$16 + 1).append("] ");
+            for (fpo $$2 : $$1.a.values()) {
+               if ($$2 instanceof fmj.i<?> $$3) {
+                  $$3.c();
+               }
             }
-
-            String $$19 = $$18.append($$17.d).toString();
-            int $$20 = $$8 + $$16 * 9;
-            $$0.b(this.d, $$19, $$4, $$20, $$17.a());
-            $$19 = $$11.format($$17.a) + "%";
-            $$0.b(this.d, $$19, $$5 - 50 - this.d.b($$19), $$20, $$17.a());
-            $$19 = $$11.format($$17.b) + "%";
-            $$0.b(this.d, $$19, $$5 - this.d.b($$19), $$20, $$17.a());
          }
       }
    }
 
-   public void b(int $$0) {
-      if (this.e != null) {
-         List<bow> $$1 = this.e.a(this.f);
-         if (!$$1.isEmpty()) {
-            bow $$2 = $$1.remove(0);
-            if ($$0 == 0) {
-               if (!$$2.d.isEmpty()) {
-                  int $$3 = this.f.lastIndexOf(30);
-                  if ($$3 >= 0) {
-                     this.f = this.f.substring(0, $$3);
-                  }
-               }
-            } else {
-               $$0--;
-               if ($$0 < $$1.size() && !"unspecified".equals($$1.get($$0).d)) {
-                  if (!this.f.isEmpty()) {
-                     this.f = this.f + "\u001e";
-                  }
-
-                  this.f = this.f + $$1.get($$0).d;
-               }
+   public Optional<frn> e(double $$0, double $$1) {
+      for (fqn.a $$2 : this.aH_()) {
+         for (frn $$3 : $$2.aH_()) {
+            if ($$3.a_($$0, $$1)) {
+               return Optional.of($$3);
             }
          }
+      }
+
+      return Optional.empty();
+   }
+
+   protected static class a extends fpw.a<fqn.a> {
+      private final List<fpo> a;
+      private final fvi b;
+      private static final int c = 160;
+
+      a(List<fpo> $$0, fvi $$1) {
+         this.a = ImmutableList.copyOf($$0);
+         this.b = $$1;
+      }
+
+      public static fqn.a a(List<fpo> $$0, fvi $$1) {
+         return new fqn.a($$0, $$1);
+      }
+
+      public static fqn.a a(fpo $$0, @Nullable fpo $$1, fvi $$2) {
+         return $$1 == null ? new fqn.a(ImmutableList.of($$0), $$2) : new fqn.a(ImmutableList.of($$0, $$1), $$2);
+      }
+
+      @Override
+      public void a(fpc $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10 = 0;
+         int $$11 = this.b.n / 2 - 155;
+
+         for (fpo $$12 : this.a) {
+            $$12.c($$11 + $$10, $$2);
+            $$12.a($$0, $$6, $$7, $$9);
+            $$10 += 160;
+         }
+      }
+
+      @Override
+      public List<? extends frn> aH_() {
+         return this.a;
+      }
+
+      @Override
+      public List<? extends ftl> b() {
+         return this.a;
+      }
+   }
+
+   protected static class b extends fqn.a {
+      final Map<fmj<?>, fpo> a;
+
+      private b(Map<fmj<?>, fpo> $$0, fym $$1) {
+         super(ImmutableList.copyOf($$0.values()), $$1);
+         this.a = $$0;
+      }
+
+      public static fqn.b a(fmk $$0, fmj<?> $$1, fym $$2) {
+         return new fqn.b(ImmutableMap.of($$1, $$1.a($$0, 0, 0, 310)), $$2);
+      }
+
+      public static fqn.b a(fmk $$0, fmj<?> $$1, @Nullable fmj<?> $$2, fym $$3) {
+         fpo $$4 = $$1.a($$0);
+         return $$2 == null ? new fqn.b(ImmutableMap.of($$1, $$4), $$3) : new fqn.b(ImmutableMap.of($$1, $$4, $$2, $$2.a($$0)), $$3);
       }
    }
 }

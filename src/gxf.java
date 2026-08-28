@@ -1,44 +1,22 @@
-import javax.annotation.Nullable;
+public class gxf extends gxs<gzz, gdl> {
+   private final gdl a;
+   private final gdl b;
+   private final gxc c;
 
-public class gxf<S extends gzc, M extends gcc<S>> extends gwu<S, M> {
-   private final gby a;
-   private final gby b;
-   private final gwe c;
-
-   public gxf(guc<S, M> $$0, gfa $$1, gwe $$2) {
+   public gxf(gva<gzz, gdl> $$0, gfy $$1, gxc $$2) {
       super($$0);
-      this.a = new gby($$1.a(gfd.aF));
-      this.b = new gby($$1.a(gfd.aG));
       this.c = $$2;
+      this.a = new gdl($$1.a(ggb.bg));
+      this.b = new gdl($$1.a(ggb.bi));
    }
 
-   public void a(ffv $$0, glz $$1, int $$2, S $$3, float $$4, float $$5) {
-      cwq $$6 = $$3.W;
-      dev $$7 = $$6.a(kv.D);
+   public void a(fgr $$0, gmx $$1, int $$2, gzz $$3, float $$4, float $$5) {
+      cxh $$6 = $$3.i;
+      dfm $$7 = $$6.a(kv.E);
       if ($$7 != null && !$$7.c().isEmpty()) {
-         akv $$8 = a($$3);
-         gby $$9 = $$3.aj ? this.b : this.a;
-         $$0.a();
-         $$0.a(0.0F, 0.0F, 0.125F);
-         $$9.a($$3);
-         this.c.a(hgz.d.c, $$7.c().get(), $$9, $$6, $$0, $$1, $$2, $$8);
-         $$0.b();
+         gdl $$8 = $$3.aj ? this.b : this.a;
+         $$8.a($$3);
+         this.c.a(hhx.d.e, $$7.c().get(), $$8, $$6, $$0, $$1, $$2);
       }
-   }
-
-   @Nullable
-   private static akv a(gzc $$0) {
-      if ($$0 instanceof gzx $$1) {
-         hfv $$2 = $$1.a;
-         if ($$2.d() != null) {
-            return $$2.d();
-         }
-
-         if ($$2.c() != null && $$1.ay) {
-            return $$2.c();
-         }
-      }
-
-      return null;
    }
 }

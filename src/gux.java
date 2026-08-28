@@ -1,52 +1,41 @@
-public class gux extends gtl<chz, has, gcc<has>> {
-   private final gcc<has> a = this.c();
-   private final gcc<has> b;
-   private static final akv k = akv.b("textures/entity/fish/tropical_a.png");
-   private static final akv l = akv.b("textures/entity/fish/tropical_b.png");
+public class gux extends grx<cil, hay, gel> {
+   private static final aku a = aku.b("textures/entity/rabbit/brown.png");
+   private static final aku b = aku.b("textures/entity/rabbit/white.png");
+   private static final aku k = aku.b("textures/entity/rabbit/black.png");
+   private static final aku l = aku.b("textures/entity/rabbit/gold.png");
+   private static final aku m = aku.b("textures/entity/rabbit/salt.png");
+   private static final aku n = aku.b("textures/entity/rabbit/white_splotched.png");
+   private static final aku o = aku.b("textures/entity/rabbit/toast.png");
+   private static final aku p = aku.b("textures/entity/rabbit/caerbannog.png");
 
-   public gux(gsf.a $$0) {
-      super($$0, new gej($$0.a(gfd.do)), 0.15F);
-      this.b = new gek($$0.a(gfd.dm));
-      this.a(new gxd(this, $$0.f()));
+   public gux(gtd.a $$0) {
+      super($$0, new gel($$0.a(ggb.cv)), new gel($$0.a(ggb.cw)), 0.3F);
    }
 
-   public akv a(has $$0) {
-      return switch ($$0.a.a()) {
-         case a -> k;
-         case b -> l;
-      };
-   }
-
-   public has b() {
-      return new has();
-   }
-
-   public void a(chz $$0, has $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gC();
-      $$1.b = $$0.gA().d();
-      $$1.c = $$0.gB().d();
-   }
-
-   public void a(has $$0, ffv $$1, glz $$2, int $$3) {
-      this.h = switch ($$0.a.a()) {
-         case a -> this.a;
-         case b -> this.b;
-      };
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected int b(has $$0) {
-      return $$0.b;
-   }
-
-   protected void a(has $$0, ffv $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = 4.3F * ayz.a(0.6F * $$0.u);
-      $$1.a(a.d.rotationDegrees($$4));
-      if (!$$0.ak) {
-         $$1.a(0.2F, 0.1F, 0.0F);
-         $$1.a(a.f.rotationDegrees(90.0F));
+   public aku a(hay $$0) {
+      if ($$0.b) {
+         return o;
+      } else {
+         return switch ($$0.c) {
+            case a -> a;
+            case b -> b;
+            case c -> k;
+            case e -> l;
+            case f -> m;
+            case d -> n;
+            case g -> p;
+         };
       }
+   }
+
+   public hay b() {
+      return new hay();
+   }
+
+   public void a(cil $$0, hay $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.K($$2);
+      $$1.b = "Toast".equals(n.a($$0.al().getString()));
+      $$1.c = $$0.gs();
    }
 }

@@ -1,22 +1,49 @@
-import java.util.Set;
+import com.google.common.collect.ImmutableList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class fog extends hfy {
-   private static final Set<atp<?>> a = Set.of(hgg.b, hgk.c);
+public final class fog {
+   private static final fog a = new fog(ImmutableList.of());
+   private static final Comparator<dyt.a<?>> b = Comparator.comparing($$0 -> $$0.a().f());
+   private final List<dyt.a<?>> c;
 
-   public fog(hev $$0) {
-      super($$0, akv.b("textures/atlas/gui.png"), akv.b("gui"), a);
+   public fog a(dyt.a<?> $$0) {
+      return new fog(ImmutableList.builder().addAll(this.c).add($$0).build());
+   }
+
+   public fog a(fog $$0) {
+      return new fog(ImmutableList.builder().addAll(this.c).addAll($$0.c).build());
+   }
+
+   private fog(List<dyt.a<?>> $$0) {
+      this.c = $$0;
+   }
+
+   public static fog a() {
+      return a;
+   }
+
+   public static fog a(dyt.a<?>... $$0) {
+      return new fog(ImmutableList.copyOf($$0));
    }
 
    @Override
-   public het a(akv $$0) {
-      return super.a($$0);
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof fog && this.c.equals(((fog)$$0).c);
    }
 
-   public hgl a(het $$0) {
-      return this.b($$0).a();
+   @Override
+   public int hashCode() {
+      return this.c.hashCode();
    }
 
-   private hgk b(het $$0) {
-      return $$0.e().f().a(hgk.c).orElse(hgk.a);
+   public String b() {
+      return this.c.stream().sorted(b).map(dyt.a::toString).collect(Collectors.joining(","));
+   }
+
+   @Override
+   public String toString() {
+      return this.b();
    }
 }

@@ -1,15 +1,15 @@
 public class bai<T> {
-   private final akv a;
+   private final aku a;
 
-   public bai(akv $$0) {
+   public bai(aku $$0) {
       this.a = $$0;
    }
 
    public static <T> bai<T> a(String $$0) {
-      return new bai<>(akv.b($$0));
+      return new bai<>(aku.b($$0));
    }
 
-   public akv a() {
+   public aku a() {
       return this.a;
    }
 

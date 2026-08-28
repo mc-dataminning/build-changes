@@ -1,86 +1,31 @@
+import com.mojang.blaze3d.platform.GLX;
 import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import java.nio.Buffer;
+import java.nio.ByteBuffer;
+import org.lwjgl.system.MemoryUtil;
 
-public class ffk implements AutoCloseable {
-   private static final int a = -1;
-   private final akv b;
-   private int c;
-
-   private ffk(int $$0, akv $$1) {
-      this.b = $$1;
-      this.c = $$0;
+public class ffk {
+   public static ByteBuffer a(int $$0) {
+      return MemoryUtil.memAlloc($$0);
    }
 
-   public static ffk a(akv $$0, ffk.a $$1, String $$2) throws gmq.b {
-      RenderSystem.assertOnRenderThread();
-      int $$3 = GlStateManager.glCreateShader($$1.b());
-      GlStateManager.glShaderSource($$3, $$2);
-      GlStateManager.glCompileShader($$3);
-      if (GlStateManager.glGetShaderi($$3, 35713) == 0) {
-         String $$4 = StringUtils.trim(GlStateManager.glGetShaderInfoLog($$3, 32768));
-         throw new gmq.b("Couldn't compile " + $$1.a() + " shader (" + $$0 + ") : " + $$4);
-      } else {
-         return new ffk($$3, $$0);
-      }
+   public static void a(Buffer $$0) {
+      MemoryUtil.memFree($$0);
    }
 
-   @Override
-   public void close() {
-      if (this.c == -1) {
-         throw new IllegalStateException("Already closed");
-      } else {
-         RenderSystem.assertOnRenderThread();
-         GlStateManager.glDeleteShader(this.c);
-         this.c = -1;
-      }
+   public static String a() {
+      return GlStateManager._getString(7936);
    }
 
-   public akv a() {
-      return this.b;
+   public static String b() {
+      return GLX._getCpuInfo();
    }
 
-   public int b() {
-      return this.c;
+   public static String c() {
+      return GlStateManager._getString(7937);
    }
 
-   public static enum a {
-      a("vertex", ".vsh", 35633),
-      b("fragment", ".fsh", 35632);
-
-      private static final ffk.a[] c = values();
-      private final String d;
-      private final String e;
-      private final int f;
-
-      private a(final String $$0, final String $$1, final int $$2) {
-         this.d = $$0;
-         this.e = $$1;
-         this.f = $$2;
-      }
-
-      @Nullable
-      public static ffk.a a(akv $$0) {
-         for (ffk.a $$1 : c) {
-            if ($$0.a().endsWith($$1.e)) {
-               return $$1;
-            }
-         }
-
-         return null;
-      }
-
-      public String a() {
-         return this.d;
-      }
-
-      public int b() {
-         return this.f;
-      }
-
-      public ako c() {
-         return new ako("shaders", this.e);
-      }
+   public static String d() {
+      return GlStateManager._getString(7938);
    }
 }

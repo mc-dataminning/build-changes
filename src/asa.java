@@ -1,6 +1,6 @@
 import net.minecraft.server.MinecraftServer;
 
-public class asa implements aio {
+public class asa implements ain {
    private final MinecraftServer b;
    private final vi c;
 
@@ -10,12 +10,12 @@ public class asa implements aio {
    }
 
    @Override
-   public void a(ail $$0) {
-      if ($$0.g() != aik.b) {
+   public void a(aik $$0) {
+      if ($$0.g() != aij.b) {
          throw new UnsupportedOperationException("Invalid intention " + $$0.g());
       } else {
-         this.c.a(aix.b, new asi(this.b, this.c, false));
-         this.c.a(aix.d);
+         this.c.a(aiw.b, new asi(this.b, this.c, false));
+         this.c.a(aiw.d);
       }
    }
 

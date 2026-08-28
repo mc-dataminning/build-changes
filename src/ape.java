@@ -1,56 +1,126 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.Collection;
+import java.util.function.Function;
 
 public class ape {
-   public static void a(CommandDispatcher<ex> $$0) {
+   public static void a(CommandDispatcher<ex> $$0, et $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("time").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("set")
-                                    .then(ey.a("day").executes($$0x -> a((ex)$$0x.getSource(), 1000))))
-                                 .then(ey.a("noon").executes($$0x -> a((ex)$$0x.getSource(), 6000))))
-                              .then(ey.a("night").executes($$0x -> a((ex)$$0x.getSource(), 13000))))
-                           .then(ey.a("midnight").executes($$0x -> a((ex)$$0x.getSource(), 18000))))
-                        .then(ey.a("time", gm.a()).executes($$0x -> a((ex)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))
-                  ))
-               .then(ey.a("add").then(ey.a("time", gm.a()).executes($$0x -> b((ex)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("title").requires($$0x -> $$0x.c(2)))
             .then(
-               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("query")
-                        .then(ey.a("daytime").executes($$0x -> c((ex)$$0x.getSource(), a(((ex)$$0x.getSource()).e())))))
-                     .then(ey.a("gametime").executes($$0x -> c((ex)$$0x.getSource(), (int)(((ex)$$0x.getSource()).e().ad() % 2147483647L)))))
-                  .then(ey.a("day").executes($$0x -> c((ex)$$0x.getSource(), (int)(((ex)$$0x.getSource()).e().ae() / 24000L % 2147483647L))))
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ey.a(
+                                    "targets", fk.d()
+                                 )
+                                 .then(ey.a("clear").executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets")))))
+                              .then(ey.a("reset").executes($$0x -> b((ex)$$0x.getSource(), fk.f($$0x, "targets")))))
+                           .then(
+                              ey.a("title")
+                                 .then(
+                                    ey.a("title", fg.a($$1))
+                                       .executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), fg.a($$0x, "title"), "title", afj::new))
+                                 )
+                           ))
+                        .then(
+                           ey.a("subtitle")
+                              .then(
+                                 ey.a("title", fg.a($$1))
+                                    .executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), fg.a($$0x, "title"), "subtitle", afh::new))
+                              )
+                        ))
+                     .then(
+                        ey.a("actionbar")
+                           .then(
+                              ey.a("title", fg.a($$1))
+                                 .executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), fg.a($$0x, "title"), "actionbar", aei::new))
+                           )
+                     ))
+                  .then(
+                     ey.a("times")
+                        .then(
+                           ey.a("fadeIn", gm.a())
+                              .then(
+                                 ey.a("stay", gm.a())
+                                    .then(
+                                       ey.a("fadeOut", gm.a())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (ex)$$0x.getSource(),
+                                                   fk.f($$0x, "targets"),
+                                                   IntegerArgumentType.getInteger($$0x, "fadeIn"),
+                                                   IntegerArgumentType.getInteger($$0x, "stay"),
+                                                   IntegerArgumentType.getInteger($$0x, "fadeOut")
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
             )
       );
    }
 
-   private static int a(ard $$0) {
-      return (int)($$0.ae() % 24000L);
-   }
+   private static int a(ex $$0, Collection<are> $$1) {
+      acb $$2 = new acb(false);
 
-   private static int c(ex $$0, int $$1) {
-      $$0.a(() -> wp.a("commands.time.query", $$1), false);
-      return $$1;
-   }
-
-   public static int a(ex $$0, int $$1) {
-      for (ard $$2 : $$0.l().L()) {
-         $$2.b((long)$$1);
+      for (are $$3 : $$1) {
+         $$3.f.b($$2);
       }
 
-      $$0.l().H();
-      $$0.a(() -> wp.a("commands.time.set", $$1), true);
-      return a($$0.e());
-   }
-
-   public static int b(ex $$0, int $$1) {
-      for (ard $$2 : $$0.l().L()) {
-         $$2.b($$2.ae() + (long)$$1);
+      if ($$1.size() == 1) {
+         $$0.a(() -> wp.a("commands.title.cleared.single", $$1.iterator().next().m_()), true);
+      } else {
+         $$0.a(() -> wp.a("commands.title.cleared.multiple", $$1.size()), true);
       }
 
-      $$0.l().H();
-      int $$3 = a($$0.e());
-      $$0.a(() -> wp.a("commands.time.set", $$3), true);
-      return $$3;
+      return $$1.size();
+   }
+
+   private static int b(ex $$0, Collection<are> $$1) {
+      acb $$2 = new acb(true);
+
+      for (are $$3 : $$1) {
+         $$3.f.b($$2);
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> wp.a("commands.title.reset.single", $$1.iterator().next().m_()), true);
+      } else {
+         $$0.a(() -> wp.a("commands.title.reset.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
+   }
+
+   private static int a(ex $$0, Collection<are> $$1, wp $$2, String $$3, Function<wp, yw<?>> $$4) throws CommandSyntaxException {
+      for (are $$5 : $$1) {
+         $$5.f.b($$4.apply(ws.a($$0, $$2, $$5, 0)));
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> wp.a("commands.title.show." + $$3 + ".single", $$1.iterator().next().m_()), true);
+      } else {
+         $$0.a(() -> wp.a("commands.title.show." + $$3 + ".multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
+   }
+
+   private static int a(ex $$0, Collection<are> $$1, int $$2, int $$3, int $$4) {
+      afk $$5 = new afk($$2, $$3, $$4);
+
+      for (are $$6 : $$1) {
+         $$6.f.b($$5);
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> wp.a("commands.title.times.single", $$1.iterator().next().m_()), true);
+      } else {
+         $$0.a(() -> wp.a("commands.title.times.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 }

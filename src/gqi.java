@@ -1,38 +1,66 @@
-import org.apache.commons.lang3.mutable.MutableInt;
+import javax.annotation.Nullable;
 
-public class gqi {
-   private final flk a;
+public class gqi implements dgc {
+   public static final int a = 1;
+   public static final int b = 3;
+   private final int e;
+   private final int f;
+   protected final gqh[] c;
+   protected final dgz d;
 
-   public gqi(flk $$0) {
-      this.a = $$0;
+   gqi(dgz $$0, int $$1, int $$2, gqh[] $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.c = $$3;
    }
 
-   public void a(ffv $$0, gpr $$1, glz $$2, double $$3, double $$4, double $$5) {
-      gma $$6 = this.a.f.x().c();
-      MutableInt $$7 = new MutableInt(0);
-      $$6.a(($$6x, $$7x, $$8, $$9) -> this.a($$6x, $$0, $$2, $$3, $$4, $$5, $$8, $$7x, $$7, $$9), $$1, 32);
+   @Override
+   public dxq a_(ji $$0) {
+      return this.a(kk.a($$0.u()), kk.a($$0.w())).b($$0);
    }
 
-   private void a(gma.d $$0, ffv $$1, glz $$2, double $$3, double $$4, double $$5, int $$6, boolean $$7, MutableInt $$8, boolean $$9) {
-      faw $$10 = $$0.b();
-      double $$11 = $$10.b();
-      long $$12 = Math.round($$11 / 16.0);
-      if ($$12 == 1L) {
-         $$8.add(1);
-         double $$13 = $$10.f().d;
-         double $$14 = $$10.f().e;
-         double $$15 = $$10.f().f;
-         int $$16 = $$9 ? -16711936 : -1;
-         gqa.a($$1, $$2, String.valueOf($$8.getValue()), $$13, $$14, $$15, $$16, 0.3F);
-      }
-
-      ffz $$17 = $$2.getBuffer(gmj.y());
-      long $$18 = $$12 + 5L;
-      gmt.a($$1, $$17, $$10.h(0.1 * (double)$$6).d(-$$3, -$$4, -$$5), a($$18, 0.3F), a($$18, 0.8F), a($$18, 0.5F), $$7 ? 0.4F : 1.0F);
+   @Override
+   public etw b_(ji $$0) {
+      return this.a(kk.a($$0.u()), kk.a($$0.w())).b($$0).y();
    }
 
-   private static float a(long $$0, float $$1) {
-      float $$2 = 0.1F;
-      return ayz.i($$1 * (float)$$0) * 0.9F + 0.1F;
+   @Override
+   public float a(jn $$0, boolean $$1) {
+      return this.d.a($$0, $$1);
+   }
+
+   @Override
+   public etl x_() {
+      return this.d.x_();
+   }
+
+   @Nullable
+   @Override
+   public dus c_(ji $$0) {
+      return this.a(kk.a($$0.u()), kk.a($$0.w())).a($$0);
+   }
+
+   private gqh a(int $$0, int $$1) {
+      return this.c[a(this.e, this.f, $$0, $$1)];
+   }
+
+   @Override
+   public int a(ji $$0, dgk $$1) {
+      return this.d.a($$0, $$1);
+   }
+
+   @Override
+   public int G_() {
+      return this.d.G_();
+   }
+
+   @Override
+   public int H_() {
+      return this.d.H_();
+   }
+
+   public static int a(int $$0, int $$1, int $$2, int $$3) {
+      return $$2 - $$0 + ($$3 - $$1) * 3;
    }
 }

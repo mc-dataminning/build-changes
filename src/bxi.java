@@ -1,34 +1,30 @@
-import com.google.common.collect.ImmutableMap;
+public class bxi extends bxb {
+   private final double c;
+   private final double d;
 
-public class bxi extends bxb<cit> {
-   private static final int c = 60;
-   private static final int d = 100;
-   private int e;
-
-   public bxi() {
-      super(ImmutableMap.of(cem.m, cen.b), 100);
-   }
-
-   protected boolean a(ard $$0, cit $$1) {
-      return $$1.aw() == bvu.a;
-   }
-
-   protected boolean a(ard $$0, cit $$1, long $$2) {
-      return this.e < 60;
-   }
-
-   protected void b(ard $$0, cit $$1, long $$2) {
-      if (!$$1.bn()) {
-         $$1.b(bvu.i);
-         this.e = 0;
+   public bxi(String $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1);
+      this.c = $$2;
+      this.d = $$3;
+      if ($$2 > $$3) {
+         throw new IllegalArgumentException("Minimum value cannot be bigger than maximum value!");
+      } else if ($$1 < $$2) {
+         throw new IllegalArgumentException("Default value cannot be lower than minimum value!");
+      } else if ($$1 > $$3) {
+         throw new IllegalArgumentException("Default value cannot be bigger than maximum value!");
       }
    }
 
-   protected void c(ard $$0, cit $$1, long $$2) {
-      $$1.b(bvu.a);
+   public double d() {
+      return this.c;
    }
 
-   protected void d(ard $$0, cit $$1, long $$2) {
-      this.e++;
+   public double e() {
+      return this.d;
+   }
+
+   @Override
+   public double a(double $$0) {
+      return Double.isNaN($$0) ? this.c : ayz.a($$0, this.c, this.d);
    }
 }

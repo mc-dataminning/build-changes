@@ -1,32 +1,56 @@
-public class gth extends gqz<cjg, gzm, gcu> {
-   private static final akv a = akv.b("textures/entity/llama/creamy.png");
-   private static final akv b = akv.b("textures/entity/llama/white.png");
-   private static final akv k = akv.b("textures/entity/llama/brown.png");
-   private static final akv l = akv.b("textures/entity/llama/gray.png");
+public class gth extends gtc<bvn, gzn> {
+   private static final aku a = aku.b("textures/entity/experience_orb.png");
+   private static final gnh b = gnh.i(a);
 
-   public gth(gsf.a $$0, gfc $$1, gfc $$2) {
-      super($$0, new gcu($$0.a($$1)), new gcu($$0.a($$2)), 0.7F);
-      this.a(new gwo(this, $$0.f(), $$0.h()));
+   public gth(gtd.a $$0) {
+      super($$0);
+      this.f = 0.15F;
+      this.g = 0.75F;
    }
 
-   public akv a(gzm $$0) {
-      return switch ($$0.a) {
-         case a -> a;
-         case b -> b;
-         case c -> k;
-         case d -> l;
-      };
+   protected int a(bvn $$0, ji $$1) {
+      return ayz.a(super.a($$0, $$1) + 7, 0, 15);
    }
 
-   public gzm b() {
-      return new gzm();
+   public void a(gzn $$0, fgr $$1, gmx $$2, int $$3) {
+      $$1.a();
+      int $$4 = $$0.a;
+      float $$5 = (float)($$4 % 4 * 16 + 0) / 64.0F;
+      float $$6 = (float)($$4 % 4 * 16 + 16) / 64.0F;
+      float $$7 = (float)($$4 / 4 * 16 + 0) / 64.0F;
+      float $$8 = (float)($$4 / 4 * 16 + 16) / 64.0F;
+      float $$9 = 1.0F;
+      float $$10 = 0.5F;
+      float $$11 = 0.25F;
+      float $$12 = 255.0F;
+      float $$13 = $$0.u / 2.0F;
+      int $$14 = (int)((ayz.a($$13 + 0.0F) + 1.0F) * 0.5F * 255.0F);
+      int $$15 = 255;
+      int $$16 = (int)((ayz.a($$13 + (float) (Math.PI * 4.0 / 3.0)) + 1.0F) * 0.1F * 255.0F);
+      $$1.a(0.0F, 0.1F, 0.0F);
+      $$1.a(this.e.b());
+      float $$17 = 0.3F;
+      $$1.b(0.3F, 0.3F, 0.3F);
+      fgv $$18 = $$2.getBuffer(b);
+      fgr.a $$19 = $$1.c();
+      a($$18, $$19, -0.5F, -0.25F, $$14, 255, $$16, $$5, $$8, $$3);
+      a($$18, $$19, 0.5F, -0.25F, $$14, 255, $$16, $$6, $$8, $$3);
+      a($$18, $$19, 0.5F, 0.75F, $$14, 255, $$16, $$6, $$7, $$3);
+      a($$18, $$19, -0.5F, 0.75F, $$14, 255, $$16, $$5, $$7, $$3);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public void a(cjg $$0, gzm $$1, float $$2) {
+   private static void a(fgv $$0, fgr.a $$1, float $$2, float $$3, int $$4, int $$5, int $$6, float $$7, float $$8, int $$9) {
+      $$0.a($$1, $$2, $$3, 0.0F).a($$4, $$5, $$6, 128).a($$7, $$8).b(hfh.d).c($$9).b($$1, 0.0F, 1.0F, 0.0F);
+   }
+
+   public gzn a() {
+      return new gzn();
+   }
+
+   public void a(bvn $$0, gzn $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gF();
-      $$1.b = !$$0.e_() && $$0.t();
-      $$1.c = $$0.ak();
-      $$1.d = $$0.gv();
+      $$1.a = $$0.g();
    }
 }

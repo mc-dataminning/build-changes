@@ -1,24 +1,16 @@
-public enum dxq implements azv {
-   a("single"),
-   b("left"),
-   c("right");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
 
-   private final String d;
+public class dxq extends dxp.a {
+   public static final Codec<dxq> a = a(mb.e.q(), dke::m).stable();
 
-   private dxq(final String $$0) {
-      this.d = $$0;
+   public dxq(dke $$0, Reference2ObjectArrayMap<dyt<?>, Comparable<?>> $$1, MapCodec<dxq> $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public String c() {
-      return this.d;
-   }
-
-   public dxq a() {
-      return switch (this) {
-         case a -> a;
-         case b -> c;
-         case c -> b;
-      };
+   protected dxq B() {
+      return this;
    }
 }

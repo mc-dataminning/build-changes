@@ -1,29 +1,34 @@
 import com.google.common.collect.ImmutableMap;
 
-public class bys extends bxb<bvk> {
-   private final brq c;
-   private final float d;
-   private final float e;
-   private final float f;
+public class bys extends bxr<bwa> {
+   public static final int c = 100;
+   private final bsj d;
+   private final avz e;
 
-   public bys(brq $$0, float $$1, float $$2, float $$3) {
-      super(ImmutableMap.of(cem.n, cen.b, cem.Q, cen.b));
-      if ($$2 > $$3) {
-         throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + $$2 + " > " + $$3);
-      } else {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3 - $$2;
-      }
+   public bys(bsj $$0, avz $$1) {
+      super(ImmutableMap.of(cfc.n, cfd.c, cfc.T, cfd.a), 100);
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   protected void a(ard $$0, bvk $$1, long $$2) {
-      azh $$3 = $$1.dY();
-      float $$4 = ayz.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
-      float $$5 = ayz.h($$1.dL() + 2.0F * $$3.i() * this.d - this.d);
-      fbb $$6 = fbb.a($$4, $$5);
-      $$1.eb().a(cem.n, new bxe($$1.bF().e($$6)));
-      $$1.eb().a(cem.Q, this.c.a($$3));
+   protected boolean a(ard $$0, bwa $$1, long $$2) {
+      return !$$1.aJ();
+   }
+
+   protected void b(ard $$0, bwa $$1, long $$2) {
+      $$1.q(true);
+      $$1.b(bwk.g);
+   }
+
+   protected void c(ard $$0, bwa $$1, long $$2) {
+      if ($$1.aJ()) {
+         $$1.i($$1.dx().d(0.1F, 1.0, 0.1F));
+         $$0.a(null, $$1, this.e, awb.g, 2.0F, 1.0F);
+      }
+
+      $$1.q(false);
+      $$1.b(bwk.a);
+      $$1.ea().b(cfc.T);
+      $$1.ea().a(cfc.S, this.d.a($$0.A));
    }
 }

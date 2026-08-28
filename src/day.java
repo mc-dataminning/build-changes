@@ -1,70 +1,62 @@
-import java.util.ArrayList;
-import java.util.List;
+public class day extends dax {
+   private final jn b;
 
-public class day extends dav {
-   private static final dbb c = dbb.a(cwu.rv);
-   private static final dbb d = dbb.a(cwu.pZ);
-   private static final dbb e = dbb.a(cwu.vu);
-
-   public day(das $$0) {
-      super($$0);
-   }
-
-   public boolean a(dat $$0, dgj $$1) {
-      if ($$0.e() < 2) {
-         return false;
-      } else {
-         boolean $$2 = false;
-         int $$3 = 0;
-
-         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            cwq $$5 = $$0.a($$4);
-            if (!$$5.f()) {
-               if (c.a($$5)) {
-                  if ($$2) {
-                     return false;
-                  }
-
-                  $$2 = true;
-               } else if (d.a($$5)) {
-                  if (++$$3 > 3) {
-                     return false;
-                  }
-               } else if (!e.a($$5)) {
-                  return false;
-               }
-            }
-         }
-
-         return $$2 && $$3 >= 1;
-      }
-   }
-
-   public cwq a(dat $$0, jt.a $$1) {
-      List<czf> $$2 = new ArrayList<>();
-      int $$3 = 0;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cwq $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if (d.a($$5)) {
-               $$3++;
-            } else if (e.a($$5)) {
-               czf $$6 = $$5.a(kv.ae);
-               if ($$6 != null) {
-                  $$2.add($$6);
-               }
-            }
-         }
-      }
-
-      cwq $$7 = new cwq(cwu.vt, 3);
-      $$7.b(kv.af, new czg($$3, $$2));
-      return $$7;
+   public day(dgz $$0, ji $$1, jn $$2, cxh $$3, jn $$4) {
+      super($$0, null, bsx.a, $$3, new fbt(fbx.c($$1), $$4, $$1, false));
+      this.b = $$2;
    }
 
    @Override
-   public dbp<day> a() {
-      return dbp.g;
+   public ji a() {
+      return this.j().b();
+   }
+
+   @Override
+   public boolean b() {
+      return this.q().a_(this.j().b()).a(this);
+   }
+
+   @Override
+   public boolean c() {
+      return this.b();
+   }
+
+   @Override
+   public jn d() {
+      return jn.a;
+   }
+
+   @Override
+   public jn[] f() {
+      switch (this.b) {
+         case a:
+         default:
+            return new jn[]{jn.a, jn.c, jn.f, jn.d, jn.e, jn.b};
+         case b:
+            return new jn[]{jn.a, jn.b, jn.c, jn.f, jn.d, jn.e};
+         case c:
+            return new jn[]{jn.a, jn.c, jn.f, jn.e, jn.b, jn.d};
+         case d:
+            return new jn[]{jn.a, jn.d, jn.f, jn.e, jn.b, jn.c};
+         case e:
+            return new jn[]{jn.a, jn.e, jn.d, jn.b, jn.c, jn.f};
+         case f:
+            return new jn[]{jn.a, jn.f, jn.d, jn.b, jn.c, jn.e};
+      }
+   }
+
+   @Override
+   public jn g() {
+      return this.b.o() == jn.a.b ? jn.c : this.b;
+   }
+
+   @Override
+   public boolean h() {
+      return false;
+   }
+
+   @Override
+   public float i() {
+      return (float)(this.b.e() * 90);
    }
 }

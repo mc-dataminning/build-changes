@@ -1,29 +1,19 @@
-import java.util.function.Function;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class fcy<T> implements fcp<T> {
-   private final Function<ji, fcw<T>> a;
+public interface fcy {
+   int a();
 
-   public fcy(Function<ji, fcw<T>> $$0) {
-      this.a = $$0;
+   boolean b();
+
+   @Nullable
+   yf c();
+
+   default xd a(yf $$0) {
+      return Objects.requireNonNullElse(this.c(), $$0).a(this.a());
    }
 
-   @Override
-   public boolean a(ji $$0, T $$1) {
-      return this.a.apply($$0).a($$0, $$1);
-   }
-
-   @Override
-   public void a(fct<T> $$0) {
-      this.a.apply($$0.b()).a($$0);
-   }
-
-   @Override
-   public boolean b(ji $$0, T $$1) {
-      return false;
-   }
-
-   @Override
-   public int a() {
-      return 0;
+   static xd a(@Nullable fcy $$0, yf $$1) {
+      return $$0 != null ? $$0.a($$1) : $$1.a(0);
    }
 }

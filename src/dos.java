@@ -1,99 +1,146 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.OptionalInt;
 
-public class dos extends djx implements djq {
+public class dos extends dke implements drl {
    public static final MapCodec<dos> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(aku.a(mc.aL).fieldOf("feature").forGetter($$0x -> $$0x.d), t()).apply($$0, dos::new)
+      $$0 -> $$0.group(ayi.m.fieldOf("leaf_particle_chance").forGetter($$0x -> $$0x.g), lt.bj.fieldOf("leaf_particle").forGetter($$0x -> $$0x.f), t())
+            .apply($$0, dos::new)
    );
-   protected static final float b = 3.0F;
-   protected static final fbv c = djn.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
-   private final aku<efl<?, ?>> d;
+   public static final int b = 7;
+   public static final dyq c = dyg.aF;
+   public static final dyh d = dyg.z;
+   public static final dyh e = dyg.I;
+   protected final lr f;
+   protected final int g;
+   private static final int h = 1;
 
    @Override
-   public MapCodec<dos> a() {
+   public MapCodec<? extends dos> a() {
       return a;
    }
 
-   public dos(aku<efl<?, ?>> $$0, dwx.d $$1) {
-      super($$1);
-      this.d = $$0;
+   public dos(int $$0, lr $$1, dxp.d $$2) {
+      super($$2);
+      this.g = $$0;
+      this.f = $$1;
+      this.l(this.B.b().b(c, Integer.valueOf(7)).b(d, Boolean.valueOf(false)).b(e, Boolean.valueOf(false)));
    }
 
    @Override
-   protected fbv a(dwy $$0, dfo $$1, ji $$2, fbg $$3) {
-      return c;
+   protected fcr b_(dxq $$0, dgf $$1, ji $$2) {
+      return fco.a();
    }
 
    @Override
-   protected void b(dwy $$0, ard $$1, ji $$2, azh $$3) {
-      if ($$3.a(25) == 0) {
-         int $$4 = 5;
-         int $$5 = 4;
+   protected boolean f(dxq $$0) {
+      return $$0.c(c) == 7 && !$$0.c(d);
+   }
 
-         for (ji $$6 : ji.c($$2.b(-4, -1, -4), $$2.b(4, 1, 4))) {
-            if ($$1.a_($$6).a(this)) {
-               if (--$$4 <= 0) {
-                  return;
-               }
-            }
-         }
-
-         ji $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
-
-         for (int $$8 = 0; $$8 < 4; $$8++) {
-            if ($$1.u($$7) && $$0.a($$1, $$7)) {
-               $$2 = $$7;
-            }
-
-            $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
-         }
-
-         if ($$1.u($$7) && $$0.a($$1, $$7)) {
-            $$1.a($$7, $$0, 2);
-         }
+   @Override
+   protected void b(dxq $$0, ard $$1, ji $$2, azh $$3) {
+      if (this.o($$0)) {
+         c($$0, $$1, $$2);
+         $$1.a($$2, false);
       }
    }
 
-   @Override
-   protected boolean b(dwy $$0, dfo $$1, ji $$2) {
-      return $$0.s();
+   protected boolean o(dxq $$0) {
+      return !$$0.c(d) && $$0.c(c) == 7;
    }
 
    @Override
-   protected boolean a(dwy $$0, dgm $$1, ji $$2) {
-      ji $$3 = $$2.e();
-      dwy $$4 = $$1.a_($$3);
-      return $$4.a(awp.bc) ? true : $$1.b($$2, 0) < 13 && this.b($$4, $$1, $$3);
+   protected void a(dxq $$0, ard $$1, ji $$2, azh $$3) {
+      $$1.a($$2, a($$0, $$1, $$2), 3);
    }
 
-   public boolean a(ard $$0, ji $$1, dwy $$2, azh $$3) {
-      Optional<? extends jr<efl<?, ?>>> $$4 = $$0.K_().e(mc.aL).a(this.d);
-      if ($$4.isEmpty()) {
-         return false;
+   @Override
+   protected int i_(dxq $$0) {
+      return 1;
+   }
+
+   @Override
+   protected dxq a(dxq $$0, dhc $$1, dho $$2, ji $$3, jn $$4, ji $$5, dxq $$6, azh $$7) {
+      if ($$0.c(e)) {
+         $$2.a($$3, etx.c, etx.c.a($$1));
+      }
+
+      int $$8 = r($$6) + 1;
+      if ($$8 != 1 || $$0.c(c) != $$8) {
+         $$2.a($$3, this, 1);
+      }
+
+      return $$0;
+   }
+
+   private static dxq a(dxq $$0, dha $$1, ji $$2) {
+      int $$3 = 7;
+      ji.a $$4 = new ji.a();
+
+      for (jn $$5 : jn.values()) {
+         $$4.a($$2, $$5);
+         $$3 = Math.min($$3, r($$1.a_($$4)) + 1);
+         if ($$3 == 1) {
+            break;
+         }
+      }
+
+      return $$0.b(c, Integer.valueOf($$3));
+   }
+
+   private static int r(dxq $$0) {
+      return q($$0).orElse(7);
+   }
+
+   public static OptionalInt q(dxq $$0) {
+      if ($$0.a(awp.u)) {
+         return OptionalInt.of(0);
       } else {
-         $$0.a($$1, false);
-         if ($$4.get().a().a($$0, $$0.m().g(), $$3, $$1)) {
-            return true;
-         } else {
-            $$0.a($$1, $$2, 3);
-            return false;
+         return $$0.b(c) ? OptionalInt.of($$0.c(c)) : OptionalInt.empty();
+      }
+   }
+
+   @Override
+   protected etw b_(dxq $$0) {
+      return $$0.c(e) ? etx.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   public void a(dxq $$0, dgz $$1, ji $$2, azh $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      ji $$4 = $$2.e();
+      dxq $$5 = $$1.a_($$4);
+      a($$1, $$2, $$3, $$5, $$4);
+      this.b($$1, $$2, $$3, $$5, $$4);
+   }
+
+   private static void a(dgz $$0, ji $$1, azh $$2, dxq $$3, ji $$4) {
+      if ($$0.r($$1.d())) {
+         if ($$2.a(15) == 1) {
+            if (!$$3.t() || !$$3.c($$0, $$4, jn.b)) {
+               azd.a($$0, $$1, $$2, lt.l);
+            }
+         }
+      }
+   }
+
+   private void b(dgz $$0, ji $$1, azh $$2, dxq $$3, ji $$4) {
+      if ($$2.a(this.g) == 0) {
+         if (!a($$3.g($$0, $$4), jn.b)) {
+            azd.a($$0, $$1, $$2, this.f);
          }
       }
    }
 
    @Override
-   public boolean a(dgm $$0, ji $$1, dwy $$2) {
-      return true;
+   protected void a(dxr.a<dke, dxq> $$0) {
+      $$0.a(c, d, e);
    }
 
    @Override
-   public boolean a(dgj $$0, azh $$1, ji $$2, dwy $$3) {
-      return (double)$$1.i() < 0.4;
-   }
-
-   @Override
-   public void a(ard $$0, azh $$1, ji $$2, dwy $$3) {
-      this.a($$0, $$2, $$3, $$1);
+   public dxq a(dax $$0) {
+      etw $$1 = $$0.q().b_($$0.a());
+      dxq $$2 = this.m().b(d, Boolean.valueOf(true)).b(e, Boolean.valueOf($$1.a() == etx.c));
+      return a($$2, $$0.q(), $$0.a());
    }
 }

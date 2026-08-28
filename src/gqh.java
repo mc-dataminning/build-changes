@@ -1,59 +1,71 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Ordering;
-import com.google.common.collect.Sets;
-import java.util.Iterator;
+import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-public class gqh implements gqa.a {
-   private final flk a;
-   private final Map<Long, Map<ji, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
+class gqh {
+   private final Map<ji, dus> a;
+   @Nullable
+   private final List<eae<dxq>> b;
+   private final boolean c;
+   private final dzw d;
 
-   gqh(flk $$0) {
-      this.a = $$0;
-   }
+   gqh(dzw $$0) {
+      this.d = $$0;
+      this.c = $$0.H().ak();
+      this.a = ImmutableMap.copyOf($$0.I());
+      if ($$0 instanceof dzs) {
+         this.b = null;
+      } else {
+         dzx[] $$1 = $$0.d();
+         this.b = new ArrayList<>($$1.length);
 
-   public void a(long $$0, ji $$1) {
-      Map<ji, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
-      int $$3 = $$2.getOrDefault($$1, 0);
-      $$2.put($$1, $$3 + 1);
-   }
-
-   @Override
-   public void a(ffv $$0, glz $$1, double $$2, double $$3, double $$4) {
-      long $$5 = this.a.s.ad();
-      int $$6 = 200;
-      double $$7 = 0.0025;
-      Set<ji> $$8 = Sets.newHashSet();
-      Map<ji, Integer> $$9 = Maps.newHashMap();
-      ffz $$10 = $$1.getBuffer(gmj.y());
-      Iterator<Entry<Long, Map<ji, Integer>>> $$11 = this.b.entrySet().iterator();
-
-      while ($$11.hasNext()) {
-         Entry<Long, Map<ji, Integer>> $$12 = $$11.next();
-         Long $$13 = $$12.getKey();
-         Map<ji, Integer> $$14 = $$12.getValue();
-         long $$15 = $$5 - $$13;
-         if ($$15 > 200L) {
-            $$11.remove();
-         } else {
-            for (Entry<ji, Integer> $$16 : $$14.entrySet()) {
-               ji $$17 = $$16.getKey();
-               Integer $$18 = $$16.getValue();
-               if ($$8.add($$17)) {
-                  faw $$19 = new faw(ji.c).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
-                  gmt.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
-                  $$9.put($$17, $$18);
-               }
-            }
+         for (dzx $$2 : $$1) {
+            this.b.add($$2.c() ? null : $$2.h().d());
          }
       }
+   }
 
-      for (Entry<ji, Integer> $$20 : $$9.entrySet()) {
-         ji $$21 = $$20.getKey();
-         Integer $$22 = $$20.getValue();
-         gqa.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
+   @Nullable
+   public dus a(ji $$0) {
+      return this.a.get($$0);
+   }
+
+   public dxq b(ji $$0) {
+      int $$1 = $$0.u();
+      int $$2 = $$0.v();
+      int $$3 = $$0.w();
+      if (this.c) {
+         dxq $$4 = null;
+         if ($$2 == 60) {
+            $$4 = dkg.iu.m();
+         }
+
+         if ($$2 == 70) {
+            $$4 = edf.a($$1, $$3);
+         }
+
+         return $$4 == null ? dkg.a.m() : $$4;
+      } else if (this.b == null) {
+         return dkg.a.m();
+      } else {
+         try {
+            int $$5 = this.d.f($$2);
+            if ($$5 >= 0 && $$5 < this.b.size()) {
+               eae<dxq> $$6 = this.b.get($$5);
+               if ($$6 != null) {
+                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
+               }
+            }
+
+            return dkg.a.m();
+         } catch (Throwable var8) {
+            o $$8 = o.a(var8, "Getting block state");
+            p $$9 = $$8.a("Block being got");
+            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
+            throw new z($$8);
+         }
       }
    }
 }

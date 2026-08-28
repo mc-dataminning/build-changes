@@ -1,4 +1,6 @@
-public class gyn extends gyl {
-   public float a;
-   public float b;
+public class gyn extends haj {
+   public boolean a;
+   public final bur b = new bur();
+   public final bur c = new bur();
+   public final bur d = new bur();
 }

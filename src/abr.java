@@ -1,45 +1,44 @@
-public class abr implements yw<abl> {
-   public static final yn<vl, abr> a = yw.a(abr::a, abr::new);
-   private final int b;
-   private final ji c;
-   private final int d;
+import java.util.function.BiFunction;
 
-   public abr(int $$0, ji $$1, int $$2) {
+public class abr implements yw<abl> {
+   public static final yn<wa, abr> a = yn.a(ji.b, abr::b, yl.a(mc.h), abr::e, yl.s, abr::f, abr::new);
+   private final ji b;
+   private final duu<?> c;
+   private final tq d;
+
+   public static abr a(dus $$0, BiFunction<dus, kf, tq> $$1) {
+      kf $$2 = $$0.i().F_();
+      return new abr($$0.aA_(), $$0.p(), $$1.apply($$0, $$2));
+   }
+
+   public static abr a(dus $$0) {
+      return a($$0, dus::a);
+   }
+
+   private abr(ji $$0, duu<?> $$1, tq $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
    }
 
-   private abr(vl $$0) {
-      this.b = $$0.l();
-      this.c = $$0.e();
-      this.d = $$0.readUnsignedByte();
-   }
-
-   private void a(vl $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-      $$0.l(this.d);
-   }
-
    @Override
    public yy<abr> a() {
-      return age.h;
+      return agd.h;
    }
 
    public void a(abl $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public ji b() {
       return this.b;
    }
 
-   public ji e() {
+   public duu<?> e() {
       return this.c;
    }
 
-   public int f() {
+   public tq f() {
       return this.d;
    }
 }

@@ -1,69 +1,35 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashMap;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import org.slf4j.Logger;
 
-public class hfz extends tl {
-   private static final Logger b = LogUtils.getLogger();
-   private final Map<String, String> c;
-   private final boolean d;
+public class hfz {
+   private static final BiMap<aku, hfy> i = HashBiMap.create();
+   public static final hfy a = a("single", hge.b);
+   public static final hfy b = a("directory", hgb.b);
+   public static final hfy c = a("filter", hgf.b);
+   public static final hfy d = a("unstitch", hgg.b);
+   public static final hfy e = a("paletted_permutations", hgd.b);
+   public static Codec<hfy> f = aku.a.flatXmap($$0 -> {
+      hfy $$1 = (hfy)i.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$0);
+   }, $$0 -> {
+      aku $$1 = (aku)i.inverse().get($$0);
+      return $$0 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$1);
+   });
+   public static Codec<hfw> g = f.dispatch(hfw::a, hfy::a);
+   public static Codec<List<hfw>> h = g.listOf().fieldOf("sources").codec();
 
-   private hfz(Map<String, String> $$0, boolean $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   public static hfz a(aup $$0, List<String> $$1, boolean $$2) {
-      Map<String, String> $$3 = new HashMap<>();
-
-      for (String $$4 : $$1) {
-         String $$5 = String.format(Locale.ROOT, "lang/%s.json", $$4);
-
-         for (String $$6 : $$0.a()) {
-            try {
-               akv $$7 = akv.a($$6, $$5);
-               a($$4, $$0.a($$7), $$3);
-            } catch (Exception var10) {
-               b.warn("Skipped language file: {}:{} ({})", new Object[]{$$6, $$5, var10.toString()});
-            }
-         }
+   private static hfy a(String $$0, MapCodec<? extends hfw> $$1) {
+      hfy $$2 = new hfy($$1);
+      aku $$3 = aku.b($$0);
+      hfy $$4 = (hfy)i.putIfAbsent($$3, $$2);
+      if ($$4 != null) {
+         throw new IllegalStateException("Duplicate registration " + $$3);
+      } else {
+         return $$2;
       }
-
-      tk.a().a($$3);
-      return new hfz(Map.copyOf($$3), $$2);
-   }
-
-   private static void a(String $$0, List<aun> $$1, Map<String, String> $$2) {
-      for (aun $$3 : $$1) {
-         try (InputStream $$4 = $$3.d()) {
-            tl.a($$4, $$2::put);
-         } catch (IOException var10) {
-            b.warn("Failed to load translations for {} from pack {}", new Object[]{$$0, $$3.b(), var10});
-         }
-      }
-   }
-
-   @Override
-   public String a(String $$0, String $$1) {
-      return this.c.getOrDefault($$0, $$1);
-   }
-
-   @Override
-   public boolean b(String $$0) {
-      return this.c.containsKey($$0);
-   }
-
-   @Override
-   public boolean b() {
-      return this.d;
-   }
-
-   @Override
-   public ayl a(wu $$0) {
-      return hga.a($$0, this.d);
    }
 }

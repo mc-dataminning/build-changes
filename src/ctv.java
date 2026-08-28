@@ -1,68 +1,45 @@
-import javax.annotation.Nullable;
+public class ctv extends cut {
+   private final cpr a;
+   private int b;
 
-public class ctv implements bse, ctu {
-   private final ka<cwq> b = ka.a(1, cwq.j);
-   @Nullable
-   private dbk<?> c;
-
-   @Override
-   public int b() {
-      return 1;
+   public ctv(cpr $$0, bsr $$1, int $$2, int $$3, int $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.a = $$0;
    }
 
    @Override
-   public boolean c() {
-      for (cwq $$0 : this.b) {
-         if (!$$0.f()) {
-            return false;
-         }
+   public boolean a(cxh $$0) {
+      return false;
+   }
+
+   @Override
+   public cxh a(int $$0) {
+      if (this.h()) {
+         this.b = this.b + Math.min($$0, this.g().M());
       }
 
-      return true;
+      return super.a($$0);
    }
 
    @Override
-   public cwq a(int $$0) {
-      return this.b.get(0);
+   public void a(cpr $$0, cxh $$1) {
+      this.b_($$1);
+      super.a($$0, $$1);
    }
 
    @Override
-   public cwq a(int $$0, int $$1) {
-      return bsf.a(this.b, 0);
+   protected void a(cxh $$0, int $$1) {
+      this.b += $$1;
+      this.b_($$0);
    }
 
    @Override
-   public cwq b(int $$0) {
-      return bsf.a(this.b, 0);
-   }
+   protected void b_(cxh $$0) {
+      $$0.a(this.a.dU(), this.a, this.b);
+      if (this.a instanceof are $$1 && this.c instanceof dug $$2) {
+         $$2.a($$1);
+      }
 
-   @Override
-   public void a(int $$0, cwq $$1) {
-      this.b.set(0, $$1);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(coy $$0) {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      this.b.clear();
-   }
-
-   @Override
-   public void a(@Nullable dbk<?> $$0) {
-      this.c = $$0;
-   }
-
-   @Nullable
-   @Override
-   public dbk<?> d() {
-      return this.c;
+      this.b = 0;
    }
 }

@@ -32,7 +32,7 @@ public interface mi {
 
    String a();
 
-   static <T> CompletableFuture<?> a(mg $$0, Codec<T> $$1, mk.a $$2, Map<akv, T> $$3) {
+   static <T> CompletableFuture<?> a(mg $$0, Codec<T> $$1, mk.a $$2, Map<aku, T> $$3) {
       return a($$0, $$1, $$2::a, $$3);
    }
 
@@ -49,7 +49,7 @@ public interface mi {
    }
 
    static <T> CompletableFuture<?> a(mg $$0, jt.a $$1, Codec<T> $$2, T $$3, Path $$4) {
-      akt<JsonElement> $$5 = $$1.a(JsonOps.INSTANCE);
+      aks<JsonElement> $$5 = $$1.a(JsonOps.INSTANCE);
       return a($$0, $$5, $$2, $$3, $$4);
    }
 

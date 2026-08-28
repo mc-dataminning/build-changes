@@ -1,19 +1,37 @@
-public class cxj extends cyd {
-   public cxj(djn $$0, djn $$1, cwm.a $$2) {
-      super($$0, $$1, jn.a, $$2);
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
+
+public enum cxj implements azv {
+   a(0, "none"),
+   b(1, "eat"),
+   c(2, "drink"),
+   d(3, "block"),
+   e(4, "bow"),
+   f(5, "spear"),
+   g(6, "crossbow"),
+   h(7, "spyglass"),
+   i(8, "toot_horn"),
+   j(9, "brush"),
+   k(10, "bundle");
+
+   private static final IntFunction<cxj> n = axq.a(cxj::a, values(), axq.a.a);
+   public static final Codec<cxj> l = azv.a(cxj::values);
+   public static final yn<ByteBuf, cxj> m = yl.a(n, cxj::a);
+   private final int o;
+   private final String p;
+
+   private cxj(final int $$0, final String $$1) {
+      this.o = $$0;
+      this.p = $$1;
+   }
+
+   public int a() {
+      return this.o;
    }
 
    @Override
-   public wp a(cwq $$0) {
-      czp $$1 = $$0.a(kv.ag);
-      return (wp)($$1 != null && $$1.c().isPresent() ? wp.a(this.l + ".named", $$1.c().get()) : super.a($$0));
-   }
-
-   @Override
-   public void l(cwq $$0) {
-      czp $$1 = $$0.a(kv.ag);
-      if ($$1 != null && !$$1.b()) {
-         $$1.a().thenAcceptAsync($$1x -> $$0.b(kv.ag, $$1x), dvp.a);
-      }
+   public String c() {
+      return this.p;
    }
 }

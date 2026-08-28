@@ -1,36 +1,17 @@
-public final class hei {
-   private static final int a = 16;
-   private static final int b = 16;
-   private static final String c = "missingno";
-   private static final akv d = akv.b("missingno");
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-   public static fev a() {
-      return a(16, 16);
+public record hei() implements heh<akt<dfp>> {
+   public static final heh.a<hei, akt<dfp>> a = heh.a.a(MapCodec.unit(new hei()), akt.a(mc.bb));
+
+   @Nullable
+   public akt<dfp> a(cxh $$0, @Nullable ggy $$1, @Nullable bvy $$2, int $$3, cxf $$4) {
+      dfo $$5 = $$0.a(kv.W);
+      return $$5 == null ? null : $$5.a().e().orElse(null);
    }
 
-   public static fev a(int $$0, int $$1) {
-      fev $$2 = new fev($$0, $$1, false);
-      int $$3 = -524040;
-
-      for (int $$4 = 0; $$4 < $$1; $$4++) {
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            if ($$4 < $$1 / 2 ^ $$5 < $$0 / 2) {
-               $$2.a($$5, $$4, -524040);
-            } else {
-               $$2.a($$5, $$4, -16777216);
-            }
-         }
-      }
-
-      return $$2;
-   }
-
-   public static hen b() {
-      fev $$0 = a(16, 16);
-      return new hen(d, new hgh(16, 16), $$0, aur.a);
-   }
-
-   public static akv c() {
-      return d;
+   @Override
+   public heh.a<hei, akt<dfp>> a() {
+      return a;
    }
 }

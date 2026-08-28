@@ -1,26 +1,16 @@
-@FunctionalInterface
-public interface fam<T> {
-   void handle(T var1, fao<T> var2, long var3);
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-   public abstract static class a<T, C extends fam<T>> {
-      private final akv a;
-      private final Class<?> b;
+public class fam {
+   private static final Codec<fal> d = mb.H.q().dispatch(fal::a, fak::a);
+   public static final Codec<fal> a = Codec.lazyInitialized(
+      () -> Codec.either(faj.c, d).xmap(Either::unwrap, $$0 -> $$0 instanceof faj $$1 ? Either.left($$1) : Either.right($$0))
+   );
+   public static final fak b = a("storage", fan.a);
+   public static final fak c = a("context", faj.b);
 
-      public a(akv $$0, Class<?> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public akv a() {
-         return this.a;
-      }
-
-      public Class<?> b() {
-         return this.b;
-      }
-
-      public abstract void a(tq var1, C var2);
-
-      public abstract C b(tq var1);
+   private static fak a(String $$0, MapCodec<? extends fal> $$1) {
+      return ke.a(mb.H, aku.b($$0), new fak($$1));
    }
 }

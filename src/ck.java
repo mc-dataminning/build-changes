@@ -3,35 +3,35 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public record ck(Optional<bf<czh.b, ck.a>> c) implements ea<czh> {
+public record ck(Optional<bf<czw.b, ck.a>> c) implements ea<czw> {
    public static final Codec<ck> a = RecordCodecBuilder.create($$0 -> $$0.group(bf.a(ck.a.a).optionalFieldOf("modifiers").forGetter(ck::b)).apply($$0, ck::new));
 
    @Override
-   public ku<czh> a() {
+   public ku<czw> a() {
       return kv.o;
    }
 
-   public boolean a(cwq $$0, czh $$1) {
+   public boolean a(cxh $$0, czw $$1) {
       return !this.c.isPresent() || this.c.get().a($$1.b());
    }
 
-   public Optional<bf<czh.b, ck.a>> b() {
+   public Optional<bf<czw.b, ck.a>> b() {
       return this.c;
    }
 
-   public static record a(Optional<jv<bwl>> b, Optional<akv> c, dk.c d, Optional<bwo.a> e, Optional<buv> f) implements Predicate<czh.b> {
+   public static record a(Optional<jv<bxb>> b, Optional<aku> c, dk.c d, Optional<bxe.a> e, Optional<bvk> f) implements Predicate<czw.b> {
       public static final Codec<ck.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   kg.a(mc.c).optionalFieldOf("attribute").forGetter(ck.a::a),
-                  akv.a.optionalFieldOf("id").forGetter(ck.a::b),
+                  aku.a.optionalFieldOf("id").forGetter(ck.a::b),
                   dk.c.d.optionalFieldOf("amount", dk.c.c).forGetter(ck.a::c),
-                  bwo.a.f.optionalFieldOf("operation").forGetter(ck.a::d),
-                  buv.l.optionalFieldOf("slot").forGetter(ck.a::e)
+                  bxe.a.f.optionalFieldOf("operation").forGetter(ck.a::d),
+                  bvk.l.optionalFieldOf("slot").forGetter(ck.a::e)
                )
                .apply($$0, ck.a::new)
       );
 
-      public boolean a(czh.b $$0) {
+      public boolean a(czw.b $$0) {
          if (this.b.isPresent() && !this.b.get().a($$0.a())) {
             return false;
          } else if (this.c.isPresent() && !this.c.get().equals($$0.b().b())) {
@@ -43,11 +43,11 @@ public record ck(Optional<bf<czh.b, ck.a>> c) implements ea<czh> {
          }
       }
 
-      public Optional<jv<bwl>> a() {
+      public Optional<jv<bxb>> a() {
          return this.b;
       }
 
-      public Optional<akv> b() {
+      public Optional<aku> b() {
          return this.c;
       }
 
@@ -55,11 +55,11 @@ public record ck(Optional<bf<czh.b, ck.a>> c) implements ea<czh> {
          return this.d;
       }
 
-      public Optional<bwo.a> d() {
+      public Optional<bxe.a> d() {
          return this.e;
       }
 
-      public Optional<buv> e() {
+      public Optional<bvk> e() {
          return this.f;
       }
    }

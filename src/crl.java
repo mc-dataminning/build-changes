@@ -1,177 +1,45 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class crl extends cqx {
-   private static final byte b = 10;
-   private static final String c = "explosion_power";
-   private static final String d = "explosion_speed_factor";
-   private static final String h = "fuse";
-   private static final float i = 4.0F;
-   private static final float j = 1.0F;
-   private int k = -1;
-   private float l = 4.0F;
-   private float m = 1.0F;
+public class crl {
+   private final crk a;
+   private final List<crl.a> b = Lists.newArrayList();
 
-   public crl(but<? extends crl> $$0, dgj $$1) {
-      super($$0, $$1);
+   public crl(crk $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public dwy w() {
-      return djp.cr.m();
+   public crl a(int $$0, cri $$1) {
+      this.b.add(new crl.a($$0, $$1));
+      return this;
    }
 
-   @Override
-   public void h() {
-      super.h();
-      if (this.k > 0) {
-         this.k--;
-         this.dV().a(lt.ag, this.dA(), this.dC() + 0.5, this.dG(), 0.0, 0.0, 0.0);
-      } else if (this.k == 0) {
-         this.h(this.dy().j());
+   public crk a() {
+      this.b.stream().map(crl.a::b).collect(Collectors.toSet()).forEach(this.a::a);
+      this.b.forEach($$0 -> {
+         cri $$1 = $$0.b();
+         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
+         this.a.b($$1).a($$0.a(), 1.0F);
+      });
+      return this.a;
+   }
+
+   static class a {
+      private final int a;
+      private final cri b;
+
+      public a(int $$0, cri $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      if (this.P) {
-         double $$0 = this.dy().j();
-         if ($$0 >= 0.01F) {
-            this.h($$0);
-         }
-      }
-   }
-
-   @Override
-   public boolean a(ard $$0, btc $$1, float $$2) {
-      if ($$1.c() instanceof cpr $$4 && $$4.bY()) {
-         btc $$5 = this.dW().d(this, $$1.d());
-         this.a($$5, $$4.dy().h());
+      public int a() {
+         return this.a;
       }
 
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(ard $$0, btc $$1) {
-      double $$2 = this.dy().j();
-      if (!e($$1) && !($$2 >= 0.01F)) {
-         this.a($$0, this.u());
-      } else {
-         if (this.k < 0) {
-            this.v();
-            this.k = this.ae.a(20) + this.ae.a(20);
-         }
+      public cri b() {
+         return this.b;
       }
-   }
-
-   @Override
-   protected cwm u() {
-      return cwu.or;
-   }
-
-   @Override
-   public cwq dI() {
-      return new cwq(cwu.or);
-   }
-
-   protected void h(double $$0) {
-      this.a(null, $$0);
-   }
-
-   protected void a(@Nullable btc $$0, double $$1) {
-      if (this.dV() instanceof ard $$2) {
-         double $$3 = Math.min(Math.sqrt($$1), 5.0);
-         $$2.a(this, $$0, null, this.dA(), this.dC(), this.dG(), (float)((double)this.l + (double)this.m * this.ae.j() * 1.5 * $$3), false, dgj.a.d);
-         this.at();
-      }
-   }
-
-   @Override
-   public boolean a(float $$0, float $$1, btc $$2) {
-      if ($$0 >= 3.0F) {
-         float $$3 = $$0 / 10.0F;
-         this.h((double)($$3 * $$3));
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3 && this.k < 0) {
-         this.v();
-      }
-   }
-
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 10) {
-         this.v();
-      } else {
-         super.b($$0);
-      }
-   }
-
-   public void v() {
-      this.k = 80;
-      if (!this.dV().C) {
-         this.dV().a(this, (byte)10);
-         if (!this.bb()) {
-            this.dV().a(null, this.dA(), this.dC(), this.dG(), awa.Am, awb.e, 1.0F, 1.0F);
-         }
-      }
-   }
-
-   public int x() {
-      return this.k;
-   }
-
-   public boolean D() {
-      return this.k > -1;
-   }
-
-   @Override
-   public float a(dgb $$0, dfo $$1, ji $$2, dwy $$3, eta $$4, float $$5) {
-      return !this.D() || !$$3.a(awp.P) && !$$1.a_($$2.d()).a(awp.P) ? super.a($$0, $$1, $$2, $$3, $$4, $$5) : 0.0F;
-   }
-
-   @Override
-   public boolean a(dgb $$0, dfo $$1, ji $$2, dwy $$3, float $$4) {
-      return !this.D() || !$$3.a(awp.P) && !$$1.a_($$2.d()).a(awp.P) ? super.a($$0, $$1, $$2, $$3, $$4) : false;
-   }
-
-   @Override
-   protected void a(tq $$0) {
-      super.a($$0);
-      if ($$0.b("fuse", 99)) {
-         this.k = $$0.h("fuse");
-      }
-
-      if ($$0.b("explosion_power", 99)) {
-         this.l = ayz.a($$0.j("explosion_power"), 0.0F, 128.0F);
-      }
-
-      if ($$0.b("explosion_speed_factor", 99)) {
-         this.m = ayz.a($$0.j("explosion_speed_factor"), 0.0F, 128.0F);
-      }
-   }
-
-   @Override
-   protected void b(tq $$0) {
-      super.b($$0);
-      $$0.a("fuse", this.k);
-      if (this.l != 4.0F) {
-         $$0.a("explosion_power", this.l);
-      }
-
-      if (this.m != 1.0F) {
-         $$0.a("explosion_speed_factor", this.m);
-      }
-   }
-
-   @Override
-   boolean a(btc $$0) {
-      return e($$0);
-   }
-
-   private static boolean e(btc $$0) {
-      return $$0.a(awr.i) || $$0.a(awr.l);
    }
 }

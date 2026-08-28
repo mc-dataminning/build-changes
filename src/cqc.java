@@ -1,34 +1,144 @@
-public class cqc extends cpy {
-   public cqc(but<? extends cqc> $$0, dgj $$1) {
+import java.util.UUID;
+import javax.annotation.Nullable;
+
+public class cqc extends bva implements bwx {
+   public static final int a = 20;
+   public static final int b = 2;
+   public static final int c = 14;
+   private int d;
+   private boolean e;
+   private int f = 22;
+   private boolean g;
+   @Nullable
+   private bvy h;
+   @Nullable
+   private UUID i;
+
+   public cqc(bvi<? extends cqc> $$0, dgz $$1) {
       super($$0, $$1);
    }
 
-   public cqc(dgj $$0, bvi $$1, cwq $$2) {
-      super(but.U, $$1, $$0, $$2);
-   }
-
-   public cqc(dgj $$0, double $$1, double $$2, double $$3, cwq $$4) {
-      super(but.U, $$1, $$2, $$3, $$0, $$4);
-   }
-
-   @Override
-   protected cwm m() {
-      return cwu.uU;
+   public cqc(dgz $$0, double $$1, double $$2, double $$3, float $$4, int $$5, bvy $$6) {
+      this(bvi.T, $$0);
+      this.d = $$5;
+      this.a($$6);
+      this.w($$4 * (180.0F / (float)Math.PI));
+      this.a_($$1, $$2, $$3);
    }
 
    @Override
-   protected double bd() {
-      return 0.07;
+   protected void a(akb.a $$0) {
    }
 
-   @Override
-   protected void a(faz $$0) {
-      super.a($$0);
-      if (this.dV() instanceof ard) {
-         this.dV().c(2002, this.dv(), -13083194);
-         int $$1 = 3 + this.dV().A.a(5) + this.dV().A.a(5);
-         buy.a((ard)this.dV(), this.dt(), $$1);
-         this.at();
+   public void a(@Nullable bvy $$0) {
+      this.h = $$0;
+      this.i = $$0 == null ? null : $$0.cF();
+   }
+
+   @Nullable
+   public bvy f() {
+      if (this.h == null && this.i != null && this.dU() instanceof ard) {
+         bva $$0 = ((ard)this.dU()).b(this.i);
+         if ($$0 instanceof bvy) {
+            this.h = (bvy)$$0;
+         }
       }
+
+      return this.h;
+   }
+
+   @Override
+   protected void a(tq $$0) {
+      this.d = $$0.h("Warmup");
+      if ($$0.b("Owner")) {
+         this.i = $$0.a("Owner");
+      }
+   }
+
+   @Override
+   protected void b(tq $$0) {
+      $$0.a("Warmup", this.d);
+      if (this.i != null) {
+         $$0.a("Owner", this.i);
+      }
+   }
+
+   @Override
+   public void h() {
+      super.h();
+      if (this.dU().C) {
+         if (this.g) {
+            this.f--;
+            if (this.f == 14) {
+               for (int $$0 = 0; $$0 < 12; $$0++) {
+                  double $$1 = this.dz() + (this.ae.j() * 2.0 - 1.0) * (double)this.dp() * 0.5;
+                  double $$2 = this.dB() + 0.05 + this.ae.j();
+                  double $$3 = this.dF() + (this.ae.j() * 2.0 - 1.0) * (double)this.dp() * 0.5;
+                  double $$4 = (this.ae.j() * 2.0 - 1.0) * 0.3;
+                  double $$5 = 0.3 + this.ae.j() * 0.3;
+                  double $$6 = (this.ae.j() * 2.0 - 1.0) * 0.3;
+                  this.dU().a(lt.f, $$1, $$2 + 1.0, $$3, $$4, $$5, $$6);
+               }
+            }
+         }
+      } else if (--this.d < 0) {
+         if (this.d == -8) {
+            for (bvy $$8 : this.dU().a(bvy.class, this.cQ().c(0.2, 0.0, 0.2))) {
+               this.c($$8);
+            }
+         }
+
+         if (!this.e) {
+            this.dU().a(this, (byte)4);
+            this.e = true;
+         }
+
+         if (--this.f < 0) {
+            this.at();
+         }
+      }
+   }
+
+   private void c(bvy $$0) {
+      bvy $$1 = this.f();
+      if ($$0.bJ() && !$$0.cB() && $$0 != $$1) {
+         if ($$1 == null) {
+            $$0.a(this.dV().q(), 6.0F);
+         } else {
+            if ($$1.s($$0)) {
+               return;
+            }
+
+            btp $$2 = this.dV().c(this, (bva)$$1);
+            if (this.dU() instanceof ard $$3 && $$0.a($$3, $$2, 6.0F)) {
+               ddt.a($$3, (bva)$$0, $$2);
+            }
+         }
+      }
+   }
+
+   @Override
+   public void b(byte $$0) {
+      super.b($$0);
+      if ($$0 == 4) {
+         this.g = true;
+         if (!this.bb()) {
+            this.dU().a(this.dz(), this.dB(), this.dF(), awa.iW, this.dl(), 1.0F, this.ae.i() * 0.2F + 0.85F, false);
+         }
+      }
+   }
+
+   public float a(float $$0) {
+      if (!this.g) {
+         return 0.0F;
+      } else {
+         int $$1 = this.f - 2;
+         return $$1 <= 0 ? 1.0F : 1.0F - ((float)$$1 - $$0) / 20.0F;
+      }
+   }
+
+   @Override
+   public boolean a(ard $$0, btp $$1, float $$2) {
+      return false;
    }
 }

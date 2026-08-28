@@ -1,5 +1,4 @@
-public class hal extends gzl {
+public class hal extends gzj {
    public float a;
    public float b;
-   public float c;
 }

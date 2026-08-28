@@ -1,22 +1,26 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.function.Consumer;
 
-public record dad(jr<avz> c) implements dac {
-   public static final MapCodec<dad> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(avz.b.fieldOf("sound").forGetter(dad::b)).apply($$0, dad::new));
-   public static final yn<wa, dad> b = yn.a(avz.d, dad::b, dad::new);
+public record dad(int f) implements czm, dai {
+   public static final int a = 120000;
+   public static final int b = 0;
+   public static final int c = 4;
+   public static final Codec<dad> d = ayi.a(0, 4).xmap(dad::new, dad::a);
+   public static final yn<wa, dad> e = yn.a(yl.h, dad::a, dad::new);
 
    @Override
-   public dac.a<dad> a() {
-      return dac.a.e;
+   public void a(dgz $$0, bvy $$1, cxh $$2, czl $$3) {
+      $$1.a(new bue(bug.E, 120000, this.f, false, false, true));
    }
 
    @Override
-   public boolean a(dgj $$0, cwq $$1, bvi $$2) {
-      $$0.a(null, $$2.dv(), this.c.a(), $$2.dm(), 1.0F, 1.0F);
-      return true;
+   public void a(cxd.b $$0, Consumer<wp> $$1, cyx $$2) {
+      List<bue> $$3 = List.of(new bue(bug.E, 120000, this.f, false, false, true));
+      cze.a($$3, $$1, 1.0F, $$0.b());
    }
 
-   public jr<avz> b() {
-      return this.c;
+   public int a() {
+      return this.f;
    }
 }

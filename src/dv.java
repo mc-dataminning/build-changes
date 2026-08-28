@@ -11,41 +11,41 @@ public class dv extends dz<dv.a> {
       return dv.a.a;
    }
 
-   public void a(are $$0, aku<dbf<?>> $$1, List<cwq> $$2) {
+   public void a(are $$0, akt<dbv<?>> $$1, List<cxh> $$2) {
       this.a($$0, $$2x -> $$2x.b($$1, $$2));
    }
 
-   public static record a(Optional<bi> b, aku<dbf<?>> c, List<cv> d) implements dz.a {
+   public static record a(Optional<bi> b, akt<dbv<?>> c, List<cv> d) implements dz.a {
       public static final Codec<dv.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bx.b.optionalFieldOf("player").forGetter(dv.a::a),
-                  aku.a(mc.bk).fieldOf("recipe_id").forGetter(dv.a::b),
+                  akt.a(mc.bm).fieldOf("recipe_id").forGetter(dv.a::b),
                   cv.a.listOf().optionalFieldOf("ingredients", List.of()).forGetter(dv.a::c)
                )
                .apply($$0, dv.a::new)
       );
 
-      public static aq<dv.a> a(aku<dbf<?>> $$0, List<cv.a> $$1) {
+      public static aq<dv.a> a(akt<dbv<?>> $$0, List<cv.a> $$1) {
          return ap.ac.a(new dv.a(Optional.empty(), $$0, $$1.stream().map(cv.a::b).toList()));
       }
 
-      public static aq<dv.a> a(aku<dbf<?>> $$0) {
+      public static aq<dv.a> a(akt<dbv<?>> $$0) {
          return ap.ac.a(new dv.a(Optional.empty(), $$0, List.of()));
       }
 
-      public static aq<dv.a> b(aku<dbf<?>> $$0) {
+      public static aq<dv.a> b(akt<dbv<?>> $$0) {
          return ap.ad.a(new dv.a(Optional.empty(), $$0, List.of()));
       }
 
-      boolean b(aku<dbf<?>> $$0, List<cwq> $$1) {
+      boolean b(akt<dbv<?>> $$0, List<cxh> $$1) {
          if ($$0 != this.c) {
             return false;
          } else {
-            List<cwq> $$2 = new ArrayList<>($$1);
+            List<cxh> $$2 = new ArrayList<>($$1);
 
             for (cv $$3 : this.d) {
                boolean $$4 = false;
-               Iterator<cwq> $$5 = $$2.iterator();
+               Iterator<cxh> $$5 = $$2.iterator();
 
                while ($$5.hasNext()) {
                   if ($$3.a($$5.next())) {
@@ -69,7 +69,7 @@ public class dv extends dz<dv.a> {
          return this.b;
       }
 
-      public aku<dbf<?>> b() {
+      public akt<dbv<?>> b() {
          return this.c;
       }
 

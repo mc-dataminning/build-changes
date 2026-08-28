@@ -1,35 +1,28 @@
-public class gsb extends gtl<clp, gyk, gca<gyk>> {
-   private static final akv a = akv.b("textures/entity/enderman/enderman.png");
-   private final azh b = azh.a();
+public abstract class gsb<T extends cpy, S extends gyq> extends gtc<T, S> {
+   private final gbw a;
 
-   public gsb(gsf.a $$0) {
-      super($$0, new gca<>($$0.a(gfd.aH)), 0.5F);
-      this.a(new gwc(this));
-      this.a(new gvu(this, $$0.d()));
+   public gsb(gtd.a $$0) {
+      super($$0);
+      this.a = new gbw($$0.a(ggb.l));
    }
 
-   public fbb a(gyk $$0) {
-      fbb $$1 = super.a($$0);
-      if ($$0.a) {
-         double $$2 = 0.02 * (double)$$0.af;
-         return $$1.b(this.b.k() * $$2, 0.0, this.b.k() * $$2);
-      } else {
-         return $$1;
-      }
+   public void a(S $$0, fgr $$1, gmx $$2, int $$3) {
+      $$1.a();
+      $$1.a(a.d.rotationDegrees($$0.b - 90.0F));
+      $$1.a(a.f.rotationDegrees($$0.a));
+      fgv $$4 = $$2.getBuffer(gnh.f(this.a($$0)));
+      this.a.a($$0);
+      this.a.a($$1, $$4, $$3, hfh.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public akv b(gyk $$0) {
-      return a;
-   }
+   protected abstract aku a(S var1);
 
-   public gyk a() {
-      return new gyk();
-   }
-
-   public void a(clp $$0, gyk $$1, float $$2) {
+   public void a(T $$0, S $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      gsw.a($$0, $$1, $$2, this.i);
-      $$1.a = $$0.gs();
-      $$1.b = $$0.x();
+      $$1.a = $$0.k($$2);
+      $$1.b = $$0.l($$2);
+      $$1.c = (float)$$0.c - $$2;
    }
 }

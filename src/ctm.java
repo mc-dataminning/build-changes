@@ -1,55 +1,116 @@
-public class ctm<T extends csd> implements crr {
-   public static final ctm<csm> a = a("generic_9x1", csm::a);
-   public static final ctm<csm> b = a("generic_9x2", csm::b);
-   public static final ctm<csm> c = a("generic_9x3", csm::c);
-   public static final ctm<csm> d = a("generic_9x4", csm::d);
-   public static final ctm<csm> e = a("generic_9x5", csm::e);
-   public static final ctm<csm> f = a("generic_9x6", csm::f);
-   public static final ctm<csy> g = a("generic_3x3", csy::new);
-   public static final ctm<cst> h = a("crafter_3x3", cst::new);
-   public static final ctm<csg> i = a("anvil", csg::new);
-   public static final ctm<csi> j = a("beacon", csi::new);
-   public static final ctm<csj> k = a("blast_furnace", csj::new);
-   public static final ctm<csk> l = a("brewing_stand", csk::new);
-   public static final ctm<csw> m = a("crafting", csw::new);
-   public static final ctm<csz> n = a("enchantment", csz::new);
-   public static final ctm<ctb> o = a("furnace", ctb::new);
-   public static final ctm<ctd> p = a("grindstone", ctd::new);
-   public static final ctm<cte> q = a("hopper", cte::new);
-   public static final ctm<ctj> r = a("lectern", ($$0, $$1) -> new ctj($$0));
-   public static final ctm<ctk> s = a("loom", ctk::new);
-   public static final ctm<cto> t = a("merchant", cto::new);
-   public static final ctm<ctx> u = a("shulker_box", ctx::new);
-   public static final ctm<cud> v = a("smithing", cud::new);
-   public static final ctm<cue> w = a("smoker", cue::new);
-   public static final ctm<csl> x = a("cartography_table", csl::new);
-   public static final ctm<cug> y = a("stonecutter", cug::new);
-   private final cru z;
-   private final ctm.a<T> A;
+public class ctm extends csw implements ctk {
+   protected static final int m = 9;
+   private static final int n = 9;
+   private static final int o = 36;
+   private static final int p = 36;
+   private static final int q = 45;
+   private final cuo r = new cuo();
+   private final cti s;
+   private final cpr t;
+   private final cto u;
 
-   private static <T extends csd> ctm<T> a(String $$0, ctm.a<T> $$1) {
-      return ke.a(mb.p, $$0, new ctm<>($$1, crw.g));
+   public ctm(int $$0, cpq $$1) {
+      super(cuf.h, $$0);
+      this.t = $$1.k;
+      this.s = new cus(10);
+      this.u = new cva(this, 3, 3);
+      this.a($$1);
    }
 
-   private static <T extends csd> ctm<T> a(String $$0, ctm.a<T> $$1, crs... $$2) {
-      return ke.a(mb.p, $$0, new ctm<>($$1, crw.e.a($$2)));
+   public ctm(int $$0, cpq $$1, cto $$2, cti $$3) {
+      super(cuf.h, $$0);
+      this.t = $$1.k;
+      this.s = $$3;
+      this.u = $$2;
+      a($$2, 9);
+      $$2.c_($$1.k);
+      this.a($$1);
+      this.a(this);
    }
 
-   private ctm(ctm.a<T> $$0, cru $$1) {
-      this.A = $$0;
-      this.z = $$1;
+   private void a(cpq $$0) {
+      for (int $$1 = 0; $$1 < 3; $$1++) {
+         for (int $$2 = 0; $$2 < 3; $$2++) {
+            int $$3 = $$2 + $$1 * 3;
+            this.a(new ctn(this.u, $$3, 26 + $$2 * 18, 17 + $$1 * 18, this));
+         }
+      }
+
+      this.c($$0, 8, 84);
+      this.a(new cuj(this.r, 0, 134, 35));
+      this.a(this.s);
+      this.n();
    }
 
-   public T a(int $$0, cox $$1) {
-      return this.A.create($$0, $$1);
+   public void a(int $$0, boolean $$1) {
+      ctn $$2 = (ctn)this.b($$0);
+      this.s.a($$2.d, $$1 ? 0 : 1);
+      this.d();
+   }
+
+   public boolean e(int $$0) {
+      return $$0 > -1 && $$0 < 9 ? this.s.a($$0) == 1 : false;
+   }
+
+   public boolean l() {
+      return this.s.a(9) == 1;
    }
 
    @Override
-   public cru i() {
-      return this.z;
+   public cxh b(cpr $$0, int $$1) {
+      cxh $$2 = cxh.k;
+      cut $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cxh $$4 = $$3.g();
+         $$2 = $$4.v();
+         if ($$1 < 9) {
+            if (!this.a($$4, 9, 45, true)) {
+               return cxh.k;
+            }
+         } else if (!this.a($$4, 0, 9, false)) {
+            return cxh.k;
+         }
+
+         if ($$4.f()) {
+            $$3.f(cxh.k);
+         } else {
+            $$3.c();
+         }
+
+         if ($$4.M() == $$2.M()) {
+            return cxh.k;
+         }
+
+         $$3.a($$0, $$4);
+      }
+
+      return $$2;
    }
 
-   interface a<T extends csd> {
-      T create(int var1, cox var2);
+   @Override
+   public boolean b(cpr $$0) {
+      return this.u.a($$0);
+   }
+
+   private void n() {
+      if (this.t instanceof are $$0) {
+         ard $$1 = $$0.y();
+         dbj $$2 = this.u.aB_();
+         cxh $$3 = dlx.a($$1, $$2).map($$2x -> ((dbk)$$2x.b()).a($$2, $$1.F_())).orElse(cxh.k);
+         this.r.a(0, $$3);
+      }
+   }
+
+   public bsr m() {
+      return this.u;
+   }
+
+   @Override
+   public void a(csw $$0, int $$1, cxh $$2) {
+      this.n();
+   }
+
+   @Override
+   public void a(csw $$0, int $$1, int $$2) {
    }
 }

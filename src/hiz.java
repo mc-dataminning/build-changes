@@ -1,54 +1,16 @@
-import java.util.List;
-import java.util.Locale;
-import java.util.function.Function;
-import java.util.stream.Stream;
-
-public interface hiz<T> {
-   static <T> hiz<T> a() {
-      return new hiz<T>() {
-         @Override
-         public List<T> a(String $$0) {
-            return List.of();
-         }
-
-         @Override
-         public List<T> b(String $$0) {
-            return List.of();
-         }
-      };
+public class hiz extends hjb {
+   public hiz(chq $$0) {
+      super($$0, awa.bQ, awb.g);
+      this.j = 0;
    }
 
-   static <T> hiz<T> a(List<T> $$0, Function<T, Stream<akv>> $$1) {
-      if ($$0.isEmpty()) {
-         return a();
-      } else {
-         final hjb<T> $$2 = new hjb<>();
-         final hjb<T> $$3 = new hjb<>();
-
-         for (T $$4 : $$0) {
-            $$1.apply($$4).forEach($$3x -> {
-               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
-               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
-            });
-         }
-
-         $$2.a();
-         $$3.a();
-         return new hiz<T>() {
-            @Override
-            public List<T> a(String $$0) {
-               return $$2.a($$0);
-            }
-
-            @Override
-            public List<T> b(String $$0) {
-               return $$3.a($$0);
-            }
-         };
-      }
+   @Override
+   protected hix o() {
+      return new hja(this.n);
    }
 
-   List<T> a(String var1);
-
-   List<T> b(String var1);
+   @Override
+   protected boolean p() {
+      return !this.n.Z_();
+   }
 }

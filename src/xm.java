@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 
 public class xm {
    public static final xm a = new xm(null, null, null, null, null, null, null, null, null, null, null);
-   public static final akv b = akv.b("default");
+   public static final aku b = aku.b("default");
    @Nullable
    final xo c;
    @Nullable
@@ -29,7 +29,7 @@ public class xm {
    @Nullable
    final String l;
    @Nullable
-   final akv m;
+   final aku m;
 
    private static xm a(
       Optional<xo> $$0,
@@ -42,7 +42,7 @@ public class xm {
       Optional<wn> $$7,
       Optional<wv> $$8,
       Optional<String> $$9,
-      Optional<akv> $$10
+      Optional<aku> $$10
    ) {
       xm $$11 = new xm(
          $$0.orElse(null),
@@ -71,7 +71,7 @@ public class xm {
       @Nullable wn $$7,
       @Nullable wv $$8,
       @Nullable String $$9,
-      @Nullable akv $$10
+      @Nullable aku $$10
    ) {
       this.c = $$0;
       this.d = $$1;
@@ -135,7 +135,7 @@ public class xm {
       return this.l;
    }
 
-   public akv l() {
+   public aku l() {
       return this.m != null ? this.m : b;
    }
 
@@ -191,7 +191,7 @@ public class xm {
       return Objects.equals(this.l, $$0) ? this : a(new xm(this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, $$0, this.m), this.l, $$0);
    }
 
-   public xm a(@Nullable akv $$0) {
+   public xm a(@Nullable aku $$0) {
       return Objects.equals(this.m, $$0) ? this : a(new xm(this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l, $$0), this.m, $$0);
    }
 
@@ -409,10 +409,10 @@ public class xm {
                   Codec.BOOL.optionalFieldOf("underlined").forGetter($$0x -> Optional.ofNullable($$0x.g)),
                   Codec.BOOL.optionalFieldOf("strikethrough").forGetter($$0x -> Optional.ofNullable($$0x.h)),
                   Codec.BOOL.optionalFieldOf("obfuscated").forGetter($$0x -> Optional.ofNullable($$0x.i)),
-                  wn.a.optionalFieldOf("clickEvent").forGetter($$0x -> Optional.ofNullable($$0x.j)),
-                  wv.a.optionalFieldOf("hoverEvent").forGetter($$0x -> Optional.ofNullable($$0x.k)),
+                  wn.a.optionalFieldOf("click_event").forGetter($$0x -> Optional.ofNullable($$0x.j)),
+                  wv.a.optionalFieldOf("hover_event").forGetter($$0x -> Optional.ofNullable($$0x.k)),
                   Codec.STRING.optionalFieldOf("insertion").forGetter($$0x -> Optional.ofNullable($$0x.l)),
-                  akv.a.optionalFieldOf("font").forGetter($$0x -> Optional.ofNullable($$0x.m))
+                  aku.a.optionalFieldOf("font").forGetter($$0x -> Optional.ofNullable($$0x.m))
                )
                .apply($$0, xm::a)
       );

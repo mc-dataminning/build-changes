@@ -1,27 +1,83 @@
-import org.joml.Matrix4f;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Map;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public enum fde {
-   a(fgd.a, ($$0, $$1) -> $$0.scale(1.0F - $$1 / 4096.0F)),
-   b(fgd.b, ($$0, $$1) -> $$0.translate(0.0F, 0.0F, $$1 / 512.0F));
-
-   private final fgd c;
-   private final fde.a d;
-
-   private fde(final fgd $$0, final fde.a $$1) {
-      this.c = $$0;
-      this.d = $$1;
+public abstract class fde {
+   public boolean a(@Nullable fde $$0) {
+      return $$0 == null ? false : this == $$0;
    }
 
-   public fgd a() {
-      return this.c;
+   public abstract String b();
+
+   public abstract xd d(wp var1);
+
+   public abstract boolean i();
+
+   public abstract boolean h();
+
+   public abstract fde.b j();
+
+   public abstract n n();
+
+   public abstract Collection<String> g();
+
+   public abstract fde.b k();
+
+   public abstract fde.a l();
+
+   public static enum a {
+      a("always", 0),
+      b("never", 1),
+      c("pushOtherTeams", 2),
+      d("pushOwnTeam", 3);
+
+      private static final Map<String, fde.a> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (fde.a)$$0));
+      public final String e;
+      public final int f;
+
+      @Nullable
+      public static fde.a a(String $$0) {
+         return g.get($$0);
+      }
+
+      private a(final String $$0, final int $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
+
+      public wp a() {
+         return wp.c("team.collision." + this.e);
+      }
    }
 
-   public void a(Matrix4f $$0, float $$1) {
-      this.d.apply($$0, $$1);
-   }
+   public static enum b {
+      a("always", 0),
+      b("never", 1),
+      c("hideForOtherTeams", 2),
+      d("hideForOwnTeam", 3);
 
-   @FunctionalInterface
-   interface a {
-      void apply(Matrix4f var1, float var2);
+      private static final Map<String, fde.b> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (fde.b)$$0));
+      public final String e;
+      public final int f;
+
+      public static String[] a() {
+         return g.keySet().toArray(new String[0]);
+      }
+
+      @Nullable
+      public static fde.b a(String $$0) {
+         return g.get($$0);
+      }
+
+      private b(final String $$0, final int $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
+
+      public wp b() {
+         return wp.c("team.visibility." + this.e);
+      }
    }
 }

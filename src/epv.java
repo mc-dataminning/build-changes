@@ -1,53 +1,38 @@
-public class epv {
-   private static final akv[] a = new akv[]{
-      akv.b("nether_fossils/fossil_1"),
-      akv.b("nether_fossils/fossil_2"),
-      akv.b("nether_fossils/fossil_3"),
-      akv.b("nether_fossils/fossil_4"),
-      akv.b("nether_fossils/fossil_5"),
-      akv.b("nether_fossils/fossil_6"),
-      akv.b("nether_fossils/fossil_7"),
-      akv.b("nether_fossils/fossil_8"),
-      akv.b("nether_fossils/fossil_9"),
-      akv.b("nether_fossils/fossil_10"),
-      akv.b("nether_fossils/fossil_11"),
-      akv.b("nether_fossils/fossil_12"),
-      akv.b("nether_fossils/fossil_13"),
-      akv.b("nether_fossils/fossil_14")
-   };
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-   public static void a(erq $$0, ens $$1, azh $$2, ji $$3) {
-      dqf $$4 = dqf.a($$2);
-      $$1.a(new epv.a($$0, af.a(a, $$2), $$3, $$4));
+public interface epv {
+   Codec<epv> b = mb.ah.q().dispatch(epv::b, Function.identity());
+
+   void a(azh var1, BiConsumer<akt<ept>, akt<ept>> var2);
+
+   Stream<akt<ept>> a();
+
+   static epu a(String $$0, String $$1) {
+      return a(ql.a($$0), ql.a($$1));
    }
 
-   public static class a extends enx {
-      public a(erq $$0, akv $$1, ji $$2, dqf $$3) {
-         super(eoe.ac, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
-      }
-
-      public a(erq $$0, tq $$1) {
-         super(eoe.ac, $$1, $$0, $$1x -> a(dqf.valueOf($$1.l("Rot"))));
-      }
-
-      private static erl a(dqf $$0) {
-         return new erl().a($$0).a(dom.a).a(eqq.d);
-      }
-
-      @Override
-      protected void a(eod $$0, tq $$1) {
-         super.a($$0, $$1);
-         $$1.a("Rot", this.c.d().name());
-      }
-
-      @Override
-      protected void a(String $$0, ji $$1, dha $$2, azh $$3, enf $$4) {
-      }
-
-      @Override
-      public void a(dhh $$0, dhf $$1, dyu $$2, azh $$3, enf $$4, dfp $$5, ji $$6) {
-         $$4.b(this.b.b(this.c, this.d));
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      }
+   static epu a(akt<ept> $$0, akt<ept> $$1) {
+      return new epu($$0, $$1);
    }
+
+   static epy a(String $$0, brj<String> $$1) {
+      brj.a<akt<ept>> $$2 = brj.b();
+      $$1.d().forEach($$1x -> $$2.a(ql.a((String)$$1x.a()), $$1x.b()));
+      return a(ql.a($$0), $$2.a());
+   }
+
+   static epy a(akt<ept> $$0, brj<akt<ept>> $$1) {
+      return new epy($$0, $$1);
+   }
+
+   static epz a(brj<List<epv>> $$0) {
+      return new epz($$0);
+   }
+
+   MapCodec<? extends epv> b();
 }

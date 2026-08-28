@@ -1,46 +1,99 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.floats.FloatConsumer;
-import java.nio.ByteBuffer;
-import java.util.List;
-import org.lwjgl.BufferUtils;
+import javax.annotation.Nullable;
 
-public class hjl implements FloatConsumer {
-   private final List<ByteBuffer> a = Lists.newArrayList();
-   private final int b;
-   private int c;
-   private ByteBuffer d;
+public class hjl implements hkw<hjl> {
+   public static final akn a = new akn("sounds", ".ogg");
+   private final aku b;
+   private final bsg c;
+   private final bsg d;
+   private final int e;
+   private final hjl.a f;
+   private final boolean g;
+   private final boolean h;
+   private final int i;
 
-   public hjl(int $$0) {
-      this.b = $$0 + 1 & -2;
-      this.d = BufferUtils.createByteBuffer($$0);
+   public hjl(aku $$0, bsg $$1, bsg $$2, int $$3, hjl.a $$4, boolean $$5, boolean $$6, int $$7) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
    }
 
-   public void accept(float $$0) {
-      if (this.d.remaining() == 0) {
-         this.d.flip();
-         this.a.add(this.d);
-         this.d = BufferUtils.createByteBuffer(this.b);
-      }
-
-      int $$1 = ayz.a((int)($$0 * 32767.5F - 0.5F), -32768, 32767);
-      this.d.putShort((short)$$1);
-      this.c += 2;
+   public aku a() {
+      return this.b;
    }
 
-   public ByteBuffer a() {
-      this.d.flip();
-      if (this.a.isEmpty()) {
-         return this.d;
-      } else {
-         ByteBuffer $$0 = BufferUtils.createByteBuffer(this.c);
-         this.a.forEach($$0::put);
-         $$0.put(this.d);
-         $$0.flip();
-         return $$0;
-      }
+   public aku b() {
+      return a.a(this.b);
    }
 
-   public int b() {
+   public bsg c() {
       return this.c;
+   }
+
+   public bsg d() {
+      return this.d;
+   }
+
+   @Override
+   public int e() {
+      return this.e;
+   }
+
+   public hjl a(azh $$0) {
+      return this;
+   }
+
+   @Override
+   public void a(hkr $$0) {
+      if (this.h) {
+         $$0.a(this);
+      }
+   }
+
+   public hjl.a f() {
+      return this.f;
+   }
+
+   public boolean g() {
+      return this.g;
+   }
+
+   public boolean h() {
+      return this.h;
+   }
+
+   public int i() {
+      return this.i;
+   }
+
+   @Override
+   public String toString() {
+      return "Sound[" + this.b + "]";
+   }
+
+   public static enum a {
+      a("file"),
+      b("event");
+
+      private final String c;
+
+      private a(final String $$0) {
+         this.c = $$0;
+      }
+
+      @Nullable
+      public static hjl.a a(String $$0) {
+         for (hjl.a $$1 : values()) {
+            if ($$1.c.equals($$0)) {
+               return $$1;
+            }
+         }
+
+         return null;
+      }
    }
 }

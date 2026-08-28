@@ -1,19 +1,20 @@
-public interface dfl extends dfo {
-   float a(jn var1, boolean var2);
+import java.util.Map;
 
-   esp C_();
+public interface dfl {
+   akt<? extends ke<dfk>> a = akt.a(aku.b("equipment_asset"));
+   akt<dfk> b = a("leather");
+   akt<dfk> c = a("chainmail");
+   akt<dfk> d = a("iron");
+   akt<dfk> e = a("gold");
+   akt<dfk> f = a("diamond");
+   akt<dfk> g = a("turtle_scute");
+   akt<dfk> h = a("netherite");
+   akt<dfk> i = a("armadillo_scute");
+   akt<dfk> j = a("elytra");
+   Map<cwe, akt<dfk>> k = af.a(cwe.class, $$0 -> a($$0.c() + "_carpet"));
+   akt<dfk> l = a("trader_llama");
 
-   int a(ji var1, dft var2);
-
-   default int a(dgs $$0, ji $$1) {
-      return this.C_().a($$0).b($$1);
-   }
-
-   default int b(ji $$0, int $$1) {
-      return this.C_().a($$0, $$1);
-   }
-
-   default boolean h(ji $$0) {
-      return this.a(dgs.a, $$0) >= 15;
+   static akt<dfk> a(String $$0) {
+      return akt.a(a, aku.b($$0));
    }
 }

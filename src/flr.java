@@ -1,99 +1,91 @@
+import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import com.google.common.collect.Table;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Map;
+import java.util.OptionalInt;
+import java.util.Set;
 
-public class flr {
-   private static final Logger a = LogUtils.getLogger();
-   @Nullable
-   private flr.c b;
-   private int c;
+public class flr extends awd {
+   private final Map<ddd, ddc> b = new HashMap<>();
+   private final Set<ddd> c = new HashSet<>();
+   private Map<dbn, List<fzj>> d = Map.of();
+   private List<fzj> e = List.of();
 
-   public void a(flr.b $$0, List<atc> $$1) {
-      this.c++;
-      if (this.b != null && !this.b.d) {
-         a.warn("Reload already ongoing, replacing");
-      }
-
-      this.b = new flr.c($$0, $$1.stream().map(atc::b).collect(ImmutableList.toImmutableList()));
+   public void a(ddc $$0) {
+      this.b.put($$0.a(), $$0);
    }
 
-   public void a(Throwable $$0) {
-      if (this.b == null) {
-         a.warn("Trying to signal reload recovery, but nothing was started");
-         this.b = new flr.c(flr.b.c, ImmutableList.of());
-      }
-
-      this.b.c = new flr.a($$0);
+   public void a(ddd $$0) {
+      this.b.remove($$0);
+      this.c.remove($$0);
    }
 
-   public void a() {
-      if (this.b == null) {
-         a.warn("Trying to finish reload, but nothing was started");
-      } else {
-         this.b.d = true;
-      }
+   public void b() {
+      this.b.clear();
+      this.c.clear();
    }
 
-   public void a(o $$0) {
-      p $$1 = $$0.a("Last reload");
-      $$1.a("Reload number", this.c);
-      if (this.b != null) {
-         this.b.a($$1);
-      }
+   public boolean b(ddd $$0) {
+      return this.c.contains($$0);
    }
 
-   static class a {
-      private final Throwable a;
-
-      a(Throwable $$0) {
-         this.a = $$0;
-      }
-
-      public void a(p $$0) {
-         $$0.a("Recovery", "Yes");
-         $$0.a("Recovery reason", () -> {
-            StringWriter $$0x = new StringWriter();
-            this.a.printStackTrace(new PrintWriter($$0x));
-            return $$0x.toString();
-         });
-      }
+   public void c(ddd $$0) {
+      this.c.remove($$0);
    }
 
-   public static enum b {
-      a("initial"),
-      b("manual"),
-      c("unknown");
-
-      final String d;
-
-      private b(final String $$0) {
-         this.d = $$0;
-      }
+   public void d(ddd $$0) {
+      this.c.add($$0);
    }
 
-   static class c {
-      private final flr.b a;
-      private final List<String> b;
-      @Nullable
-      flr.a c;
-      boolean d;
+   public void c() {
+      Map<dby, List<List<ddc>>> $$0 = a(this.b.values());
+      Map<dbn, List<fzj>> $$1 = new HashMap<>();
+      Builder<fzj> $$2 = ImmutableList.builder();
+      $$0.forEach(($$2x, $$3x) -> $$1.put($$2x, $$3x.stream().map(fzj::new).peek($$2::add).collect(ImmutableList.toImmutableList())));
 
-      c(flr.b $$0, List<String> $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      for (fzl $$3 : fzl.values()) {
+         $$1.put($$3, $$3.a().stream().flatMap($$1x -> $$1.getOrDefault($$1x, List.of()).stream()).collect(ImmutableList.toImmutableList()));
       }
 
-      public void a(p $$0) {
-         $$0.a("Reload reason", this.a.d);
-         $$0.a("Finished", this.d ? "Yes" : "No");
-         $$0.a("Packs", () -> String.join(", ", this.b));
-         if (this.c != null) {
-            this.c.a($$0);
+      this.d = Map.copyOf($$1);
+      this.e = $$2.build();
+   }
+
+   private static Map<dby, List<List<ddc>>> a(Iterable<ddc> $$0) {
+      Map<dby, List<List<ddc>>> $$1 = new HashMap<>();
+      Table<dby, Integer, List<ddc>> $$2 = HashBasedTable.create();
+
+      for (ddc $$3 : $$0) {
+         dby $$4 = $$3.d();
+         OptionalInt $$5 = $$3.c();
+         if ($$5.isEmpty()) {
+            $$1.computeIfAbsent($$4, $$0x -> new ArrayList<>()).add(List.of($$3));
+         } else {
+            List<ddc> $$6 = (List<ddc>)$$2.get($$4, $$5.getAsInt());
+            if ($$6 == null) {
+               $$6 = new ArrayList<>();
+               $$2.put($$4, $$5.getAsInt(), $$6);
+               $$1.computeIfAbsent($$4, $$0x -> new ArrayList<>()).add($$6);
+            }
+
+            $$6.add($$3);
          }
       }
+
+      return $$1;
+   }
+
+   public List<fzj> d() {
+      return this.e;
+   }
+
+   public List<fzj> a(dbn $$0) {
+      return this.d.getOrDefault($$0, Collections.emptyList());
    }
 }

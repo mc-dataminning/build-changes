@@ -1,231 +1,89 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.ArgumentBuilder;
+import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Deque;
-import java.util.List;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
 public class aml {
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wp.c("commands.clone.overlap"));
-   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> wp.b("commands.clone.toobig", $$0, $$1));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wp.c("commands.clone.failed"));
-   public static final Predicate<dxc> a = $$0 -> !$$0.a().l();
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wp.c("commands.damage.invulnerable"));
 
    public static void a(CommandDispatcher<ex> $$0, et $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("clone").requires($$0x -> $$0x.c(2)))
-               .then(a($$1, $$0x -> ((ex)$$0x.getSource()).e())))
-            .then(ey.a("from").then(ey.a("sourceDimension", fi.a()).then(a($$1, $$0x -> fi.a($$0x, "sourceDimension")))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("damage").requires($$0x -> $$0x.c(2)))
+            .then(
+               ey.a("target", fk.a())
+                  .then(
+                     ((RequiredArgumentBuilder)ey.a("amount", FloatArgumentType.floatArg(0.0F))
+                           .executes(
+                              $$0x -> a(
+                                    (ex)$$0x.getSource(), fk.a($$0x, "target"), FloatArgumentType.getFloat($$0x, "amount"), ((ex)$$0x.getSource()).e().al().p()
+                                 )
+                           ))
+                        .then(
+                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ey.a("damageType", fw.a($$1, mc.s))
+                                    .executes(
+                                       $$0x -> a(
+                                             (ex)$$0x.getSource(),
+                                             fk.a($$0x, "target"),
+                                             FloatArgumentType.getFloat($$0x, "amount"),
+                                             new btp(fw.a($$0x, "damageType", mc.s))
+                                          )
+                                    ))
+                                 .then(
+                                    ey.a("at")
+                                       .then(
+                                          ey.a("location", ha.a())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ex)$$0x.getSource(),
+                                                      fk.a($$0x, "target"),
+                                                      FloatArgumentType.getFloat($$0x, "amount"),
+                                                      new btp(fw.a($$0x, "damageType", mc.s), ha.a($$0x, "location"))
+                                                   )
+                                             )
+                                       )
+                                 ))
+                              .then(
+                                 ey.a("by")
+                                    .then(
+                                       ((RequiredArgumentBuilder)ey.a("entity", fk.a())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ex)$$0x.getSource(),
+                                                      fk.a($$0x, "target"),
+                                                      FloatArgumentType.getFloat($$0x, "amount"),
+                                                      new btp(fw.a($$0x, "damageType", mc.s), fk.a($$0x, "entity"))
+                                                   )
+                                             ))
+                                          .then(
+                                             ey.a("from")
+                                                .then(
+                                                   ey.a("cause", fk.a())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (ex)$$0x.getSource(),
+                                                               fk.a($$0x, "target"),
+                                                               FloatArgumentType.getFloat($$0x, "amount"),
+                                                               new btp(fw.a($$0x, "damageType", mc.s), fk.a($$0x, "entity"), fk.a($$0x, "cause"))
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
       );
    }
 
-   private static ArgumentBuilder<ex, ?> a(et $$0, aml.c<CommandContext<ex>, ard> $$1) {
-      return ey.a("begin", gt.a())
-         .then(
-            ((RequiredArgumentBuilder)ey.a("end", gt.a()).then(a($$0, $$1, $$0x -> ((ex)$$0x.getSource()).e())))
-               .then(ey.a("to").then(ey.a("targetDimension", fi.a()).then(a($$0, $$1, $$0x -> fi.a($$0x, "targetDimension")))))
-         );
-   }
-
-   private static aml.d a(CommandContext<ex> $$0, ard $$1, String $$2) throws CommandSyntaxException {
-      ji $$3 = gt.a($$0, $$1, $$2);
-      return new aml.d($$1, $$3);
-   }
-
-   private static ArgumentBuilder<ex, ?> a(et $$0, aml.c<CommandContext<ex>, ard> $$1, aml.c<CommandContext<ex>, ard> $$2) {
-      aml.c<CommandContext<ex>, aml.d> $$3 = $$1x -> a($$1x, $$1.apply($$1x), "begin");
-      aml.c<CommandContext<ex>, aml.d> $$4 = $$1x -> a($$1x, $$1.apply($$1x), "end");
-      aml.c<CommandContext<ex>, aml.d> $$5 = $$1x -> a($$1x, $$2.apply($$1x), "destination");
-      return ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ey.a("destination", gt.a())
-                  .executes($$3x -> a((ex)$$3x.getSource(), $$3.apply($$3x), $$4.apply($$3x), $$5.apply($$3x), $$0xx -> true, aml.e.c)))
-               .then(
-                  a(
-                     $$3,
-                     $$4,
-                     $$5,
-                     $$0x -> $$0xx -> true,
-                     ey.a("replace").executes($$3x -> a((ex)$$3x.getSource(), $$3.apply($$3x), $$4.apply($$3x), $$5.apply($$3x), $$0xx -> true, aml.e.c))
-                  )
-               ))
-            .then(
-               a(
-                  $$3,
-                  $$4,
-                  $$5,
-                  $$0x -> a,
-                  ey.a("masked").executes($$3x -> a((ex)$$3x.getSource(), $$3.apply($$3x), $$4.apply($$3x), $$5.apply($$3x), a, aml.e.c))
-               )
-            ))
-         .then(
-            ey.a("filtered")
-               .then(
-                  a(
-                     $$3,
-                     $$4,
-                     $$5,
-                     $$0x -> gp.a($$0x, "filter"),
-                     ey.a("filter", gp.a($$0))
-                        .executes($$3x -> a((ex)$$3x.getSource(), $$3.apply($$3x), $$4.apply($$3x), $$5.apply($$3x), gp.a($$3x, "filter"), aml.e.c))
-                  )
-               )
-         );
-   }
-
-   private static ArgumentBuilder<ex, ?> a(
-      aml.c<CommandContext<ex>, aml.d> $$0,
-      aml.c<CommandContext<ex>, aml.d> $$1,
-      aml.c<CommandContext<ex>, aml.d> $$2,
-      aml.c<CommandContext<ex>, Predicate<dxc>> $$3,
-      ArgumentBuilder<ex, ?> $$4
-   ) {
-      return $$4.then(ey.a("force").executes($$4x -> a((ex)$$4x.getSource(), $$0.apply($$4x), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), aml.e.a)))
-         .then(ey.a("move").executes($$4x -> a((ex)$$4x.getSource(), $$0.apply($$4x), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), aml.e.b)))
-         .then(ey.a("normal").executes($$4x -> a((ex)$$4x.getSource(), $$0.apply($$4x), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), aml.e.c)));
-   }
-
-   private static int a(ex $$0, aml.d $$1, aml.d $$2, aml.d $$3, Predicate<dxc> $$4, aml.e $$5) throws CommandSyntaxException {
-      ji $$6 = $$1.b();
-      ji $$7 = $$2.b();
-      enf $$8 = enf.a($$6, $$7);
-      ji $$9 = $$3.b();
-      ji $$10 = $$9.a($$8.c());
-      enf $$11 = enf.a($$9, $$10);
-      ard $$12 = $$1.a();
-      ard $$13 = $$3.a();
-      if (!$$5.a() && $$12 == $$13 && $$11.a($$8)) {
-         throw b.create();
+   private static int a(ex $$0, bva $$1, float $$2, btp $$3) throws CommandSyntaxException {
+      if ($$1.a($$0.e(), $$3, $$2)) {
+         $$0.a(() -> wp.a("commands.damage.success", $$2, $$1.m_()), true);
+         return 1;
       } else {
-         int $$14 = $$8.d() * $$8.e() * $$8.f();
-         int $$15 = $$0.e().O().c(dgf.A);
-         if ($$14 > $$15) {
-            throw c.create($$15, $$14);
-         } else if ($$12.a($$6, $$7) && $$13.a($$9, $$10)) {
-            List<aml.b> $$16 = Lists.newArrayList();
-            List<aml.b> $$17 = Lists.newArrayList();
-            List<aml.b> $$18 = Lists.newArrayList();
-            Deque<ji> $$19 = Lists.newLinkedList();
-            ji $$20 = new ji($$11.h() - $$8.h(), $$11.i() - $$8.i(), $$11.j() - $$8.j());
-
-            for (int $$21 = $$8.j(); $$21 <= $$8.m(); $$21++) {
-               for (int $$22 = $$8.i(); $$22 <= $$8.l(); $$22++) {
-                  for (int $$23 = $$8.h(); $$23 <= $$8.k(); $$23++) {
-                     ji $$24 = new ji($$23, $$22, $$21);
-                     ji $$25 = $$24.a((km)$$20);
-                     dxc $$26 = new dxc($$12, $$24, false);
-                     dwy $$27 = $$26.a();
-                     if ($$4.test($$26)) {
-                        dua $$28 = $$12.c_($$24);
-                        if ($$28 != null) {
-                           aml.a $$29 = new aml.a($$28.e($$0.u()), $$28.r());
-                           $$17.add(new aml.b($$25, $$27, $$29));
-                           $$19.addLast($$24);
-                        } else if (!$$27.s() && !$$27.m($$12, $$24)) {
-                           $$18.add(new aml.b($$25, $$27, null));
-                           $$19.addFirst($$24);
-                        } else {
-                           $$16.add(new aml.b($$25, $$27, null));
-                           $$19.addLast($$24);
-                        }
-                     }
-                  }
-               }
-            }
-
-            if ($$5 == aml.e.b) {
-               for (ji $$30 : $$19) {
-                  dua $$31 = $$12.c_($$30);
-                  bsc.a($$31);
-                  $$12.a($$30, djp.iu.m(), 2);
-               }
-
-               for (ji $$32 : $$19) {
-                  $$12.a($$32, djp.a.m(), 3);
-               }
-            }
-
-            List<aml.b> $$33 = Lists.newArrayList();
-            $$33.addAll($$16);
-            $$33.addAll($$17);
-            $$33.addAll($$18);
-            List<aml.b> $$34 = Lists.reverse($$33);
-
-            for (aml.b $$35 : $$34) {
-               dua $$36 = $$13.c_($$35.a);
-               bsc.a($$36);
-               $$13.a($$35.a, djp.iu.m(), 2);
-            }
-
-            int $$37 = 0;
-
-            for (aml.b $$38 : $$33) {
-               if ($$13.a($$38.a, $$38.b, 2)) {
-                  $$37++;
-               }
-            }
-
-            for (aml.b $$39 : $$17) {
-               dua $$40 = $$13.c_($$39.a);
-               if ($$39.c != null && $$40 != null) {
-                  $$40.d($$39.c.a, $$13.K_());
-                  $$40.a($$39.c.b);
-                  $$40.e();
-               }
-
-               $$13.a($$39.a, $$39.b, 2);
-            }
-
-            for (aml.b $$41 : $$34) {
-               $$13.b($$41.a, $$41.b.b());
-            }
-
-            $$13.n().a($$12.n(), $$8, $$20);
-            if ($$37 == 0) {
-               throw d.create();
-            } else {
-               int $$42 = $$37;
-               $$0.a(() -> wp.a("commands.clone.success", $$42), true);
-               return $$37;
-            }
-         } else {
-            throw gt.a.create();
-         }
-      }
-   }
-
-   static record a(tq a, kr b) {
-   }
-
-   static record b(ji a, dwy b, @Nullable aml.a c) {
-   }
-
-   @FunctionalInterface
-   interface c<T, R> {
-      R apply(T var1) throws CommandSyntaxException;
-   }
-
-   static record d(ard a, ji b) {
-   }
-
-   static enum e {
-      a(true),
-      b(true),
-      c(false);
-
-      private final boolean d;
-
-      private e(final boolean $$0) {
-         this.d = $$0;
-      }
-
-      public boolean a() {
-         return this.d;
+         throw a.create();
       }
    }
 }

@@ -1,20 +1,30 @@
-public record agz(bnf b) implements yw<agg> {
-   public static final yn<vl, agz> a = yw.a(agz::a, agz::new);
+import java.util.List;
+import java.util.Optional;
 
-   private agz(vl $$0) {
-      this($$0.b(bnf.class));
-   }
+public record agz(int b, List<String> c, Optional<String> d) implements yw<agf> {
+   public static final yn<vl, agz> a = yn.a(yl.h, agz::b, yl.b(1024).a(yl.c(100)), agz::e, yl.b(32).a(yl::a), agz::f, agz::new);
 
-   private void a(vl $$0) {
-      $$0.a(this.b);
+   public agz(int b, List<String> c, Optional<String> d) {
+      c = List.copyOf(c);
+      this.b = b;
+      this.c = c;
+      this.d = d;
    }
 
    @Override
    public yy<agz> a() {
-      return age.bC;
+      return agd.bC;
    }
 
-   public void a(agg $$0) {
+   public void a(agf $$0) {
       $$0.a(this);
+   }
+
+   public List<String> e() {
+      return this.c;
+   }
+
+   public Optional<String> f() {
+      return this.d;
    }
 }

@@ -1,34 +1,23 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
 
-public record eyv(boolean b) implements ezb {
-   public static final MapCodec<eyv> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.BOOL.fieldOf("active").forGetter(eyv::e)).apply($$0, eyv::new));
+public class eyv extends eyb {
+   public static final MapCodec<eyv> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(cxd.e.fieldOf("item").forGetter($$0x -> $$0x.b)).apply($$0, eyv::new));
+   private final jr<cxd> b;
 
-   public boolean a(evs $$0) {
-      return $$0.b(eym.l) == this.b;
+   private eyv(List<ezx> $$0, jr<cxd> $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public ezc b() {
-      return ezd.s;
+   public eyd<eyv> b() {
+      return eye.f;
    }
 
    @Override
-   public Set<bai<?>> a() {
-      return Set.of(eym.l);
-   }
-
-   public static ezb.a c() {
-      return () -> new eyv(true);
-   }
-
-   public static ezb.a d() {
-      return () -> new eyv(false);
-   }
-
-   public boolean e() {
-      return this.b;
+   public cxh a(cxh $$0, ewo $$1) {
+      return $$0.a(this.b.a());
    }
 }

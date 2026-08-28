@@ -1,64 +1,60 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntIterator;
-import java.util.List;
-import java.util.stream.IntStream;
+import java.util.Objects;
+import java.util.Optional;
 
-public class equ extends erm {
-   public static final MapCodec<equ> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ero.a.fieldOf("delegate").forGetter($$0x -> $$0x.b), brq.e.fieldOf("limit").forGetter($$0x -> $$0x.c)).apply($$0, equ::new)
-   );
-   private final erm b;
-   private final brq c;
+public class equ extends eoj {
+   public static final MapCodec<equ> d = a(equ::new);
 
-   public equ(erm $$0, brq $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public equ(eoj.c $$0) {
+      super($$0);
    }
 
    @Override
-   protected ero<?> a() {
-      return ero.o;
-   }
+   public Optional<eoj.b> a(eoj.a $$0) {
+      int $$1 = $$0.h().a(9);
+      int $$2 = $$0.h().b(9);
 
-   @Override
-   public final List<erp.d> a(dha $$0, ji $$1, ji $$2, List<erp.d> $$3, List<erp.d> $$4, erl $$5) {
-      if (this.c.b() != 0 && !$$4.isEmpty()) {
-         if ($$3.size() != $$4.size()) {
-            af.b(
-               "Original block info list not in sync with processed list, skipping processing. Original size: "
-                  + $$3.size()
-                  + ", Processed size: "
-                  + $$4.size()
-            );
-            return $$4;
-         } else {
-            azh $$6 = azh.a($$0.a().E()).e().a($$1);
-            int $$7 = Math.min(this.c.a($$6), $$4.size());
-            if ($$7 < 1) {
-               return $$4;
-            } else {
-               IntArrayList $$8 = af.a(IntStream.range(0, $$4.size()), $$6);
-               IntIterator $$9 = $$8.intIterator();
-               int $$10 = 0;
-
-               while ($$9.hasNext() && $$10 < $$7) {
-                  int $$11 = $$9.nextInt();
-                  erp.d $$12 = $$3.get($$11);
-                  erp.d $$13 = $$4.get($$11);
-                  erp.d $$14 = this.b.a($$0, $$1, $$2, $$12, $$13, $$5);
-                  if ($$14 != null && !$$13.equals($$14)) {
-                     $$10++;
-                     $$4.set($$11, $$14);
-                  }
-               }
-
-               return $$4;
-            }
+      for (jr<dic> $$4 : $$0.c().a($$1, $$0.b().f(), $$2, 29, $$0.d().b())) {
+         if (!$$4.a(awo.X)) {
+            return Optional.empty();
          }
-      } else {
-         return $$4;
       }
+
+      return a($$0, edo.a.c, $$1x -> a($$1x, $$0));
+   }
+
+   private static eon a(dgg $$0, een $$1) {
+      int $$2 = $$0.d() - 29;
+      int $$3 = $$0.e() - 29;
+      jn $$4 = jn.c.a.a($$1);
+      return new eqt.h($$1, $$2, $$3, $$4);
+   }
+
+   private static void a(epb $$0, eoj.a $$1) {
+      $$0.a(a($$1.h(), $$1.f()));
+   }
+
+   public static eoy a(dgg $$0, long $$1, eoy $$2) {
+      if ($$2.a()) {
+         return $$2;
+      } else {
+         een $$3 = new een(new edp(eed.a()));
+         $$3.c($$1, $$0.h, $$0.i);
+         eon $$4 = $$2.c().get(0);
+         eob $$5 = $$4.f();
+         int $$6 = $$5.h();
+         int $$7 = $$5.j();
+         jn $$8 = jn.c.a.a($$3);
+         jn $$9 = Objects.requireNonNullElse($$4.i(), $$8);
+         eon $$10 = new eqt.h($$3, $$6, $$7, $$9);
+         epb $$11 = new epb();
+         $$11.a($$10);
+         return $$11.a();
+      }
+   }
+
+   @Override
+   public eos<?> e() {
+      return eos.j;
    }
 }

@@ -1,66 +1,71 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import javax.annotation.Nullable;
 
-public class daz extends dav {
-   private static final dbb c = dbb.a(cwu.vu);
+public class daz {
+   @Nullable
+   private final cpr a;
+   private final bsx b;
+   private final fbt c;
+   private final dgz d;
+   private final cxh e;
 
-   public daz(das $$0) {
-      super($$0);
+   public daz(cpr $$0, bsx $$1, fbt $$2) {
+      this($$0.dU(), $$0, $$1, $$0.b($$1), $$2);
    }
 
-   public boolean a(dat $$0, dgj $$1) {
-      if ($$0.e() < 2) {
-         return false;
-      } else {
-         boolean $$2 = false;
-         boolean $$3 = false;
-
-         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            cwq $$5 = $$0.a($$4);
-            if (!$$5.f()) {
-               if ($$5.h() instanceof cvo) {
-                  $$2 = true;
-               } else {
-                  if (!c.a($$5)) {
-                     return false;
-                  }
-
-                  if ($$3) {
-                     return false;
-                  }
-
-                  $$3 = true;
-               }
-            }
-         }
-
-         return $$3 && $$2;
-      }
+   protected daz(dgz $$0, @Nullable cpr $$1, bsx $$2, cxh $$3, fbt $$4) {
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$4;
+      this.e = $$3;
+      this.d = $$0;
    }
 
-   public cwq a(dat $$0, jt.a $$1) {
-      IntList $$2 = new IntArrayList();
-      cwq $$3 = null;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cwq $$5 = $$0.a($$4);
-         if ($$5.h() instanceof cvo $$7) {
-            $$2.add($$7.b().f());
-         } else if (c.a($$5)) {
-            $$3 = $$5.c(1);
-         }
-      }
-
-      if ($$3 != null && !$$2.isEmpty()) {
-         $$3.a(kv.ae, czf.a, $$2, czf::a);
-         return $$3;
-      } else {
-         return cwq.j;
-      }
+   protected final fbt j() {
+      return this.c;
    }
 
-   @Override
-   public dbp<daz> a() {
-      return dbp.i;
+   public ji a() {
+      return this.c.b();
+   }
+
+   public jn k() {
+      return this.c.c();
+   }
+
+   public fbx l() {
+      return this.c.g();
+   }
+
+   public boolean m() {
+      return this.c.e();
+   }
+
+   public cxh n() {
+      return this.e;
+   }
+
+   @Nullable
+   public cpr o() {
+      return this.a;
+   }
+
+   public bsx p() {
+      return this.b;
+   }
+
+   public dgz q() {
+      return this.d;
+   }
+
+   public jn g() {
+      return this.a == null ? jn.c : this.a.cN();
+   }
+
+   public boolean h() {
+      return this.a != null && this.a.ga();
+   }
+
+   public float i() {
+      return this.a == null ? 0.0F : this.a.dK();
    }
 }

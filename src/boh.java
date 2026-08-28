@@ -1,24 +1,8 @@
-import com.mojang.brigadier.StringReader;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class boh extends bny<StringReader> {
-   private final StringReader a;
-
-   public boh(bnv<StringReader> $$0, bnw<StringReader> $$1, StringReader $$2) {
-      super($$0, $$1);
-      this.a = $$2;
-   }
-
-   public StringReader d() {
-      return this.a;
-   }
-
-   @Override
-   public int c() {
-      return this.a.getCursor();
-   }
-
-   @Override
-   public void a(int $$0) {
-      this.a.setCursor($$0);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface boh {
 }

@@ -1,67 +1,32 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class efq extends efz<ehz> {
-   private static final ImmutableList<djn> a = ImmutableList.of(djp.I, djp.fI, djp.fJ, djp.fK, djp.fL, djp.cD, djp.cA);
-   private static final jn[] b = jn.values();
-   private static final double c = 0.9;
+public class efq extends efn {
+   public static final Codec<efq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               efn.d.forGetter($$0x -> $$0x),
+               bsb.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
+               bsb.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
+               bsb.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
+            )
+            .apply($$0, efq::new)
+   );
+   public final bsb b;
+   public final bsb c;
+   final bsb j;
 
-   public efq(Codec<ehz> $$0) {
-      super($$0);
+   public efq(float $$0, emq $$1, bsb $$2, eei $$3, efo $$4, jv<dke> $$5, bsb $$6, bsb $$7, bsb $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
+      this.j = $$8;
    }
 
-   @Override
-   public boolean a(egb<ehz> $$0) {
-      boolean $$1 = false;
-      azh $$2 = $$0.d();
-      dhh $$3 = $$0.b();
-      ehz $$4 = $$0.f();
-      ji $$5 = $$0.e();
-      boolean $$6 = $$2.j() < 0.9;
-      int $$7 = $$6 ? $$4.d().a($$2) : 0;
-      int $$8 = $$6 ? $$4.d().a($$2) : 0;
-      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
-      int $$10 = $$4.c().a($$2);
-      int $$11 = $$4.c().a($$2);
-      int $$12 = Math.max($$10, $$11);
-
-      for (ji $$13 : ji.a($$5, $$10, 0, $$11)) {
-         if ($$13.k($$5) > $$12) {
-            break;
-         }
-
-         if (a($$3, $$13, $$4)) {
-            if ($$9) {
-               $$1 = true;
-               this.a($$3, $$13, $$4.b());
-            }
-
-            ji $$14 = $$13.b($$7, 0, $$8);
-            if (a($$3, $$14, $$4)) {
-               $$1 = true;
-               this.a($$3, $$14, $$4.a());
-            }
-         }
-      }
-
-      return $$1;
+   public efq(float $$0, emq $$1, bsb $$2, eei $$3, jv<dke> $$4, bsb $$5, bsb $$6, bsb $$7) {
+      this($$0, $$1, $$2, $$3, efo.a, $$4, $$5, $$6, $$7);
    }
 
-   private static boolean a(dgk $$0, ji $$1, ehz $$2) {
-      dwy $$3 = $$0.a_($$1);
-      if ($$3.a($$2.a().b())) {
-         return false;
-      } else if (a.contains($$3.b())) {
-         return false;
-      } else {
-         for (jn $$4 : b) {
-            boolean $$5 = $$0.a_($$1.a($$4)).l();
-            if ($$5 && $$4 != jn.b || !$$5 && $$4 == jn.b) {
-               return false;
-            }
-         }
-
-         return true;
-      }
+   public efq(efn $$0, bsb $$1, bsb $$2, bsb $$3) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
    }
 }

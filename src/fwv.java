@@ -1,24 +1,30 @@
-import org.joml.Matrix4f;
+import org.joml.Vector3f;
 
-public class fwv implements fww {
-   private final ayl a;
+public class fwv extends fwa {
+   public static final float c = 4.5F;
+   private static final Vector3f d = new Vector3f(1.0F, 1.0F, 1.0F);
+   private static final int s = 16;
+   private static final int u = 16;
+   private final aku v = aku.b("textures/gui/hanging_signs/" + this.b.b() + ".png");
 
-   public fwv(ayl $$0) {
-      this.a = $$0;
+   public fwv(dwf $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2, wp.c("hanging_sign.edit"));
    }
 
    @Override
-   public int b(fod $$0) {
-      return $$0.a(this.a);
+   protected void a(fpc $$0, dxq $$1) {
+      $$0.c().a((float)this.n / 2.0F, 125.0F, 50.0F);
    }
 
    @Override
-   public int a(fod $$0) {
-      return 10;
+   protected void c(fpc $$0) {
+      $$0.c().a(0.0F, -13.0F, 0.0F);
+      $$0.c().b(4.5F, 4.5F, 1.0F);
+      $$0.a(gnh::H, this.v, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
    }
 
    @Override
-   public void a(fod $$0, int $$1, int $$2, Matrix4f $$3, glz.a $$4) {
-      $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, fod.a.a, 0, 15728880);
+   protected Vector3f m() {
+      return d;
    }
 }

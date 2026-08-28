@@ -8,20 +8,20 @@ public class ba extends dz<ba.a> {
       return ba.a.a;
    }
 
-   public void a(are $$0, jr<cyn> $$1) {
+   public void a(are $$0, jr<czc> $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public static record a(Optional<bi> b, Optional<jr<cyn>> c) implements dz.a {
+   public static record a(Optional<bi> b, Optional<jr<czc>> c) implements dz.a {
       public static final Codec<ba.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bx.b.optionalFieldOf("player").forGetter(ba.a::a), cyn.a.optionalFieldOf("potion").forGetter(ba.a::c)).apply($$0, ba.a::new)
+         $$0 -> $$0.group(bx.b.optionalFieldOf("player").forGetter(ba.a::a), czc.a.optionalFieldOf("potion").forGetter(ba.a::c)).apply($$0, ba.a::new)
       );
 
       public static aq<ba.a> b() {
          return ap.l.a(new ba.a(Optional.empty(), Optional.empty()));
       }
 
-      public boolean a(jr<cyn> $$0) {
+      public boolean a(jr<czc> $$0) {
          return !this.c.isPresent() || this.c.get().equals($$0);
       }
 

@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gfs {
+public class gfs<S extends hca> extends gbo<S> {
+   public gfs(ggc $$0) {
+      super($$0);
+   }
 }

@@ -7,18 +7,18 @@ public record wl(wm l, wm m) {
       $$0 -> $$0.group(wm.a.fieldOf("chat").forGetter(wl::a), wm.a.fieldOf("narration").forGetter(wl::b)).apply($$0, wl::new)
    );
    public static final yn<wa, wl> b = yn.a(wm.b, wl::a, wm.b, wl::b, wl::new);
-   public static final yn<wa, jr<wl>> c = yl.a(mc.aJ, b);
+   public static final yn<wa, jr<wl>> c = yl.a(mc.aK, b);
    public static final wm d = wm.a("chat.type.text");
-   public static final aku<wl> e = a("chat");
-   public static final aku<wl> f = a("say_command");
-   public static final aku<wl> g = a("msg_command_incoming");
-   public static final aku<wl> h = a("msg_command_outgoing");
-   public static final aku<wl> i = a("team_msg_command_incoming");
-   public static final aku<wl> j = a("team_msg_command_outgoing");
-   public static final aku<wl> k = a("emote_command");
+   public static final akt<wl> e = a("chat");
+   public static final akt<wl> f = a("say_command");
+   public static final akt<wl> g = a("msg_command_incoming");
+   public static final akt<wl> h = a("msg_command_outgoing");
+   public static final akt<wl> i = a("team_msg_command_incoming");
+   public static final akt<wl> j = a("team_msg_command_outgoing");
+   public static final akt<wl> k = a("emote_command");
 
-   private static aku<wl> a(String $$0) {
-      return aku.a(mc.aJ, akv.b($$0));
+   private static akt<wl> a(String $$0) {
+      return akt.a(mc.aK, aku.b($$0));
    }
 
    public static void a(qe<wl> $$0) {
@@ -31,16 +31,16 @@ public record wl(wm l, wm m) {
       $$0.a(k, new wl(wm.a("chat.type.emote"), wm.a("chat.type.emote")));
    }
 
-   public static wl.a a(aku<wl> $$0, bum $$1) {
-      return a($$0, $$1.dV().K_(), $$1.p_());
+   public static wl.a a(akt<wl> $$0, bva $$1) {
+      return a($$0, $$1.dU().F_(), $$1.m_());
    }
 
-   public static wl.a a(aku<wl> $$0, ex $$1) {
+   public static wl.a a(akt<wl> $$0, ex $$1) {
       return a($$0, $$1.u(), $$1.b());
    }
 
-   public static wl.a a(aku<wl> $$0, kf $$1, wp $$2) {
-      ke<wl> $$3 = $$1.e(mc.aJ);
+   public static wl.a a(akt<wl> $$0, kf $$1, wp $$2) {
+      ke<wl> $$3 = $$1.e(mc.aK);
       return new wl.a($$3.b($$0), $$2);
    }
 

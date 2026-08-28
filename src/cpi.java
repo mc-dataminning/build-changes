@@ -1,57 +1,61 @@
-import java.util.List;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public class cpi extends cpg {
-   public static final float d = 4.0F;
+public final class cpi {
+   public static final cpi a = a("desert");
+   public static final cpi b = a("jungle");
+   public static final cpi c = a("plains");
+   public static final cpi d = a("savanna");
+   public static final cpi e = a("snow");
+   public static final cpi f = a("swamp");
+   public static final cpi g = a("taiga");
+   private final String h;
+   private static final Map<akt<dic>, cpi> i = af.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(dij.B, a);
+      $$0.put(dij.f, a);
+      $$0.put(dij.C, a);
+      $$0.put(dij.D, a);
+      $$0.put(dij.A, b);
+      $$0.put(dij.y, b);
+      $$0.put(dij.z, b);
+      $$0.put(dij.t, d);
+      $$0.put(dij.s, d);
+      $$0.put(dij.x, d);
+      $$0.put(dij.Y, e);
+      $$0.put(dij.X, e);
+      $$0.put(dij.M, e);
+      $$0.put(dij.e, e);
+      $$0.put(dij.O, e);
+      $$0.put(dij.r, e);
+      $$0.put(dij.d, e);
+      $$0.put(dij.G, e);
+      $$0.put(dij.H, e);
+      $$0.put(dij.I, e);
+      $$0.put(dij.J, e);
+      $$0.put(dij.g, f);
+      $$0.put(dij.h, f);
+      $$0.put(dij.p, g);
+      $$0.put(dij.o, g);
+      $$0.put(dij.v, g);
+      $$0.put(dij.u, g);
+      $$0.put(dij.q, g);
+      $$0.put(dij.w, g);
+   });
 
-   public cpi(but<? extends cpi> $$0, dgj $$1) {
-      super($$0, $$1);
-   }
-
-   public cpi(dgj $$0, bvi $$1, fbb $$2) {
-      super(but.J, $$1, $$2, $$0);
-   }
-
-   @Override
-   protected void a(faz $$0) {
-      super.a($$0);
-      if ($$0.d() != faz.a.c || !this.e(((fay)$$0).a())) {
-         if (!this.dV().C) {
-            List<bvi> $$1 = this.dV().a(bvi.class, this.cR().c(4.0, 2.0, 4.0));
-            buf $$2 = new buf(this.dV(), this.dA(), this.dC(), this.dG());
-            bum $$3 = this.p();
-            if ($$3 instanceof bvi) {
-               $$2.a((bvi)$$3);
-            }
-
-            $$2.a(lt.h);
-            $$2.a(3.0F);
-            $$2.a(600);
-            $$2.c((7.0F - $$2.c()) / (float)$$2.g());
-            $$2.a(new btr(btt.g, 1, 1));
-            if (!$$1.isEmpty()) {
-               for (bvi $$4 : $$1) {
-                  double $$5 = this.g($$4);
-                  if ($$5 < 16.0) {
-                     $$2.a_($$4.dA(), $$4.dC(), $$4.dG());
-                     break;
-                  }
-               }
-            }
-
-            this.dV().c(2006, this.dv(), this.bb() ? -1 : 1);
-            this.dV().b($$2);
-            this.at();
-         }
-      }
-   }
-
-   @Override
-   protected lr s() {
-      return lt.h;
+   private cpi(String $$0) {
+      this.h = $$0;
    }
 
    @Override
-   protected boolean m() {
-      return false;
+   public String toString() {
+      return this.h;
+   }
+
+   private static cpi a(String $$0) {
+      return ke.a(mb.w, aku.b($$0), new cpi($$0));
+   }
+
+   public static cpi a(jr<dic> $$0) {
+      return $$0.e().map(i::get).orElse(c);
    }
 }

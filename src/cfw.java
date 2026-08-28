@@ -1,36 +1,30 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
 
-public class cfw extends cfm {
-   private static final ImmutableMap<but<?>, Float> a = ImmutableMap.builder()
-      .put(but.K, 8.0F)
-      .put(but.S, 12.0F)
-      .put(but.am, 8.0F)
-      .put(but.an, 12.0F)
-      .put(but.aT, 15.0F)
-      .put(but.aY, 12.0F)
-      .put(but.bB, 8.0F)
-      .put(but.bD, 10.0F)
-      .put(but.bM, 10.0F)
-      .put(but.bN, 8.0F)
-      .put(but.bP, 8.0F)
-      .build();
-
+public class cfw extends cgi<bvy> {
    @Override
-   protected boolean a(ard $$0, bvi $$1, bvi $$2) {
-      return this.b($$2) && this.a($$1, $$2);
-   }
-
-   private boolean a(bvi $$0, bvi $$1) {
-      float $$2 = (Float)a.get($$1.aq());
-      return $$1.g((bum)$$0) <= (double)($$2 * $$2);
+   public Set<cfc<?>> a() {
+      return ImmutableSet.of(cfc.x, cfc.y);
    }
 
    @Override
-   protected cem<bvi> b() {
-      return cem.A;
-   }
+   protected void a(ard $$0, bvy $$1) {
+      bxa<?> $$2 = $$1.ea();
+      btp $$3 = $$1.eG();
+      if ($$3 != null) {
+         $$2.a(cfc.x, $$1.eG());
+         bva $$4 = $$3.d();
+         if ($$4 instanceof bvy) {
+            $$2.a(cfc.y, (bvy)$$4);
+         }
+      } else {
+         $$2.b(cfc.x);
+      }
 
-   private boolean b(bvi $$0) {
-      return a.containsKey($$0.aq());
+      $$2.c(cfc.y).ifPresent($$2x -> {
+         if (!$$2x.bJ() || $$2x.dU() != $$0) {
+            $$2.b(cfc.y);
+         }
+      });
    }
 }

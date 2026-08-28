@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class hbu extends gzy implements hbt {
+   public boolean a;
+   public cpe b = new cpe(cpi.c, cpg.b, 1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface hbu {
+   @Override
+   public cpe a() {
+      return this.b;
+   }
 }

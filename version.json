@@ -154,37 +154,37 @@
     ]
   },
   "assetIndex": {
-    "id": "19",
-    "sha1": "f95b2d091d1c4d7f353a1bbcb25d89bb61363142",
-    "size": 464718,
-    "totalSize": 421071267,
-    "url": "https://piston-meta.mojang.com/v1/packages/f95b2d091d1c4d7f353a1bbcb25d89bb61363142/19.json"
+    "id": "20",
+    "sha1": "2761514a3452351ca7d52fd66680803d53c66245",
+    "size": 468097,
+    "totalSize": 421314274,
+    "url": "https://piston-meta.mojang.com/v1/packages/2761514a3452351ca7d52fd66680803d53c66245/20.json"
   },
-  "assets": "19",
+  "assets": "20",
   "complianceLevel": 1,
   "downloads": {
     "client": {
-      "sha1": "a7e5a6024bfd3cd614625aa05629adf760020304",
-      "size": 28335587,
-      "url": "https://piston-data.mojang.com/v1/objects/a7e5a6024bfd3cd614625aa05629adf760020304/client.jar"
+      "sha1": "5dc770c10d3769f9f3437a2bd7029b10b9c0d780",
+      "size": 28433347,
+      "url": "https://piston-data.mojang.com/v1/objects/5dc770c10d3769f9f3437a2bd7029b10b9c0d780/client.jar"
     },
     "client_mappings": {
-      "sha1": "0cf2a0b7f056da1a5a5dd99fc6dc752f33987150",
-      "size": 10323161,
-      "url": "https://piston-data.mojang.com/v1/objects/0cf2a0b7f056da1a5a5dd99fc6dc752f33987150/client.txt"
+      "sha1": "2a5d0ba89d8a9293c37821e4d9c192571a98ceda",
+      "size": 10355152,
+      "url": "https://piston-data.mojang.com/v1/objects/2a5d0ba89d8a9293c37821e4d9c192571a98ceda/client.txt"
     },
     "server": {
-      "sha1": "4707d00eb834b446575d89a61a11b5d548d8c001",
-      "size": 56880250,
-      "url": "https://piston-data.mojang.com/v1/objects/4707d00eb834b446575d89a61a11b5d548d8c001/server.jar"
+      "sha1": "d9bf4ff75df54a19c19cb4fbc37f020a734904e5",
+      "size": 56947699,
+      "url": "https://piston-data.mojang.com/v1/objects/d9bf4ff75df54a19c19cb4fbc37f020a734904e5/server.jar"
     },
     "server_mappings": {
-      "sha1": "0b1e60cc509cfb0172573ae56b436c29febbc187",
-      "size": 7753825,
-      "url": "https://piston-data.mojang.com/v1/objects/0b1e60cc509cfb0172573ae56b436c29febbc187/server.txt"
+      "sha1": "fea3bf04f0775c6413e0283e4398c09c38d752fa",
+      "size": 7779544,
+      "url": "https://piston-data.mojang.com/v1/objects/fea3bf04f0775c6413e0283e4398c09c38d752fa/server.txt"
     }
   },
-  "id": "1.21.4",
+  "id": "25w02a",
   "javaVersion": {
     "component": "java-runtime-delta",
     "majorVersion": 21
@@ -456,13 +456,13 @@
     {
       "downloads": {
         "artifact": {
-          "path": "com/mojang/text2speech/1.17.9/text2speech-1.17.9.jar",
-          "sha1": "3cad216e3a7f0c19b4b394388bc9ffc446f13b14",
-          "size": 12243,
-          "url": "https://libraries.minecraft.net/com/mojang/text2speech/1.17.9/text2speech-1.17.9.jar"
+          "path": "com/mojang/text2speech/1.18.10/text2speech-1.18.10.jar",
+          "sha1": "d3fd5cadb979aceb561dda93292933be8617de17",
+          "size": 12850,
+          "url": "https://libraries.minecraft.net/com/mojang/text2speech/1.18.10/text2speech-1.18.10.jar"
         }
       },
-      "name": "com.mojang:text2speech:1.17.9"
+      "name": "com.mojang:text2speech:1.18.10"
     },
     {
       "downloads": {
@@ -1880,7 +1880,7 @@
   },
   "mainClass": "net.minecraft.client.main.Main",
   "minimumLauncherVersion": 21,
-  "releaseTime": "2024-12-03T10:12:57+00:00",
-  "time": "2024-12-03T10:12:57+00:00",
-  "type": "release"
+  "releaseTime": "2025-01-08T13:42:18+00:00",
+  "time": "2025-01-08T13:42:18+00:00",
+  "type": "snapshot"
 }

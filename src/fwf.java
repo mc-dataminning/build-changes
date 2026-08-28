@@ -1,97 +1,250 @@
-import java.util.Objects;
+import java.util.Collections;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class fwf extends fvj implements fwh<ctj> {
-   private final ctj y;
-   private final csr z = new csr() {
-      @Override
-      public void a(csd $$0, int $$1, cwq $$2) {
-         fwf.this.M();
-      }
+public class fwf extends fvi {
+   public static final int a = 16;
+   public static final int b = 36;
+   public static final int c = 30;
+   private static final int y = 256;
+   private static final int z = 256;
+   public static final fwf.a d = new fwf.a(List.of());
+   public static final aku s = aku.b("textures/gui/book.png");
+   protected static final int u = 114;
+   protected static final int v = 128;
+   protected static final int w = 192;
+   protected static final int x = 192;
+   private fwf.a A;
+   private int B;
+   private List<ayl> C = Collections.emptyList();
+   private int D = -1;
+   private wp E = wo.a;
+   private fxg F;
+   private fxg G;
+   private final boolean H;
 
-      @Override
-      public void a(csd $$0, int $$1, int $$2) {
-         if ($$1 == 0) {
-            fwf.this.N();
-         }
-      }
-   };
-
-   public fwf(ctj $$0, cox $$1, wp $$2) {
-      this.y = $$0;
+   public fwf(fwf.a $$0) {
+      this($$0, true);
    }
 
-   public ctj L() {
-      return this.y;
+   public fwf() {
+      this(d, false);
    }
 
-   @Override
-   protected void aR_() {
-      super.aR_();
-      this.y.a(this.z);
+   private fwf(fwf.a $$0, boolean $$1) {
+      super(flx.a);
+      this.A = $$0;
+      this.H = $$1;
    }
 
-   @Override
-   public void aO_() {
-      this.m.t.p();
-      super.aO_();
+   public void a(fwf.a $$0) {
+      this.A = $$0;
+      this.B = ayz.a(this.B, 0, $$0.a());
+      this.L();
+      this.D = -1;
    }
 
-   @Override
-   public void aI_() {
-      super.aI_();
-      this.y.b(this.z);
-   }
-
-   @Override
-   protected void m() {
-      if (this.m.t.gv()) {
-         this.c(fou.a(wo.d, $$0 -> this.aO_()).a(this.n / 2 - 100, 196, 98, 20).a());
-         this.c(fou.a(wp.c("lectern.take_book"), $$0 -> this.g(3)).a(this.n / 2 + 2, 196, 98, 20).a());
-      } else {
-         super.m();
-      }
-   }
-
-   @Override
-   protected void G() {
-      this.g(1);
-   }
-
-   @Override
-   protected void H() {
-      this.g(2);
-   }
-
-   @Override
-   protected boolean b(int $$0) {
-      if ($$0 != this.y.m()) {
-         this.g(100 + $$0);
+   public boolean a(int $$0) {
+      int $$1 = ayz.a($$0, 0, this.A.a() - 1);
+      if ($$1 != this.B) {
+         this.B = $$1;
+         this.L();
+         this.D = -1;
          return true;
       } else {
          return false;
       }
    }
 
-   private void g(int $$0) {
-      this.m.r.a(this.y.l, $$0);
+   protected boolean b(int $$0) {
+      return this.a($$0);
    }
 
    @Override
-   public boolean k() {
-      return false;
+   protected void aR_() {
+      this.m();
+      this.E();
    }
 
-   void M() {
-      cwq $$0 = this.y.l();
-      this.a(Objects.requireNonNullElse(fvj.a.a($$0), fvj.d));
+   protected void m() {
+      this.c(fpq.a(wo.d, $$0 -> this.aO_()).a(this.n / 2 - 100, 196, 200, 20).a());
    }
 
-   void N() {
-      this.a(this.y.m());
+   protected void E() {
+      int $$0 = (this.n - 192) / 2;
+      int $$1 = 2;
+      this.F = this.c(new fxg($$0 + 116, 159, true, $$0x -> this.H(), this.H));
+      this.G = this.c(new fxg($$0 + 43, 159, false, $$0x -> this.G(), this.H));
+      this.L();
+   }
+
+   private int F() {
+      return this.A.a();
+   }
+
+   protected void G() {
+      if (this.B > 0) {
+         this.B--;
+      }
+
+      this.L();
+   }
+
+   protected void H() {
+      if (this.B < this.F() - 1) {
+         this.B++;
+      }
+
+      this.L();
+   }
+
+   private void L() {
+      this.F.k = this.B < this.F() - 1;
+      this.G.k = this.B > 0;
    }
 
    @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else {
+         switch ($$0) {
+            case 266:
+               this.G.b();
+               return true;
+            case 267:
+               this.F.b();
+               return true;
+            default:
+               return false;
+         }
+      }
+   }
+
+   @Override
+   public void a(fpc $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      int $$4 = (this.n - 192) / 2;
+      int $$5 = 2;
+      if (this.D != this.B) {
+         wu $$6 = this.A.a(this.B);
+         this.C = this.p.c($$6, 114);
+         this.E = wp.a("book.pageIndicator", this.B + 1, Math.max(this.F(), 1));
+      }
+
+      this.D = this.B;
+      int $$7 = this.p.a(this.E);
+      $$0.a(this.p, this.E, $$4 - $$7 + 192 - 44, 18, 0, false);
+      int $$8 = Math.min(128 / 9, this.C.size());
+
+      for (int $$9 = 0; $$9 < $$8; $$9++) {
+         ayl $$10 = this.C.get($$9);
+         $$0.a(this.p, $$10, $$4 + 36, 32 + $$9 * 9, 0, false);
+      }
+
+      xm $$11 = this.b((double)$$1, (double)$$2);
+      if ($$11 != null) {
+         $$0.a(this.p, $$11, $$1, $$2);
+      }
+   }
+
+   @Override
+   public void b(fpc $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+      $$0.a(gnh::H, s, (this.n - 192) / 2, 2, 0.0F, 0.0F, 192, 192, 256, 256);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if ($$2 == 0) {
+         xm $$3 = this.b($$0, $$1);
+         if ($$3 != null && this.a($$3)) {
+            return true;
+         }
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(xm $$0) {
+      wn $$1 = $$0.i();
+      if ($$1 == null) {
+         return false;
+      } else if ($$1 instanceof wn.b var7) {
+         wn.b var10000 = var7;
+
+         try {
+            var8 = var10000.b();
+         } catch (Throwable var6) {
+            throw new MatchException(var6.toString(), var6);
+         }
+
+         int var5 = var8;
+         return this.b(var5 - 1);
+      } else {
+         boolean $$3 = super.a($$0);
+         if ($$3 && $$1.a() == wn.a.c) {
+            this.I();
+         }
+
+         return $$3;
+      }
+   }
+
    protected void I() {
-      this.m.t.p();
+      this.m.a(null);
+   }
+
+   @Nullable
+   public xm b(double $$0, double $$1) {
+      if (this.C.isEmpty()) {
+         return null;
+      } else {
+         int $$2 = ayz.a($$0 - (double)((this.n - 192) / 2) - 36.0);
+         int $$3 = ayz.a($$1 - 2.0 - 30.0);
+         if ($$2 >= 0 && $$3 >= 0) {
+            int $$4 = Math.min(128 / 9, this.C.size());
+            if ($$2 <= 114 && $$3 < 9 * $$4 + $$4) {
+               int $$5 = $$3 / 9;
+               if ($$5 >= 0 && $$5 < this.C.size()) {
+                  ayl $$6 = this.C.get($$5);
+                  return this.m.h.b().a($$6, $$2);
+               } else {
+                  return null;
+               }
+            } else {
+               return null;
+            }
+         } else {
+            return null;
+         }
+      }
+   }
+
+   public static record a(List<wp> a) {
+      public int a() {
+         return this.a.size();
+      }
+
+      public wu a(int $$0) {
+         return $$0 >= 0 && $$0 < this.a() ? this.a.get($$0) : wu.b;
+      }
+
+      @Nullable
+      public static fwf.a a(cxh $$0) {
+         boolean $$1 = fmg.Q().aT();
+         dao $$2 = $$0.a(kv.V);
+         if ($$2 != null) {
+            return new fwf.a($$2.a($$1));
+         } else {
+            dan $$3 = $$0.a(kv.U);
+            return $$3 != null ? new fwf.a($$3.a($$1).map(wp::b).toList()) : null;
+         }
+      }
+
+      public List<wp> b() {
+         return this.a;
+      }
    }
 }

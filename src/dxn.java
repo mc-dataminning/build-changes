@@ -1,102 +1,185 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
-import java.util.stream.Stream;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public record dxn(String s, boolean t, boolean u, boolean v, dxn.a w, drf x, avz y, avz z, avz A, avz B, avz C, avz D, avz E, avz F) {
-   private static final Map<String, dxn> G = new Object2ObjectArrayMap();
-   public static final Codec<dxn> a = Codec.stringResolver(dxn::b, G::get);
-   public static final dxn b = a(new dxn("iron", false, false, false, dxn.a.a, drf.g, awa.nK, awa.nL, awa.nS, awa.nT, awa.pg, awa.ph, awa.zS, awa.zT));
-   public static final dxn c = a(new dxn("copper", true, true, false, dxn.a.a, drf.aj, awa.fP, awa.fQ, awa.fW, awa.fX, awa.pg, awa.ph, awa.zS, awa.zT));
-   public static final dxn d = a(new dxn("gold", false, true, false, dxn.a.a, drf.g, awa.nK, awa.nL, awa.nS, awa.nT, awa.pg, awa.ph, awa.zS, awa.zT));
-   public static final dxn e = a(new dxn("stone", true, true, false, dxn.a.b, drf.f, awa.nK, awa.nL, awa.nS, awa.nT, awa.zX, awa.zY, awa.zS, awa.zT));
-   public static final dxn f = a(
-      new dxn("polished_blackstone", true, true, false, dxn.a.b, drf.f, awa.nK, awa.nL, awa.nS, awa.nT, awa.zX, awa.zY, awa.zS, awa.zT)
-   );
-   public static final dxn g = a(new dxn("oak"));
-   public static final dxn h = a(new dxn("spruce"));
-   public static final dxn i = a(new dxn("birch"));
-   public static final dxn j = a(new dxn("acacia"));
-   public static final dxn k = a(new dxn("cherry", true, true, true, dxn.a.a, drf.aU, awa.eG, awa.eH, awa.eI, awa.eJ, awa.eM, awa.eN, awa.eK, awa.eL));
-   public static final dxn l = a(new dxn("jungle"));
-   public static final dxn m = a(new dxn("dark_oak"));
-   public static final dxn n = a(new dxn("pale_oak"));
-   public static final dxn o = a(new dxn("crimson", true, true, true, dxn.a.a, drf.aT, awa.rm, awa.rn, awa.ro, awa.rp, awa.rs, awa.rt, awa.rq, awa.rr));
-   public static final dxn p = a(new dxn("warped", true, true, true, dxn.a.a, drf.aT, awa.rm, awa.rn, awa.ro, awa.rp, awa.rs, awa.rt, awa.rq, awa.rr));
-   public static final dxn q = a(new dxn("mangrove"));
-   public static final dxn r = a(new dxn("bamboo", true, true, true, dxn.a.a, drf.aS, awa.bo, awa.bp, awa.bq, awa.br, awa.bu, awa.bv, awa.bs, awa.bt));
+public class dxn {
+   public static final int a = 12;
+   private final dgz b;
+   private final ji c;
+   private final boolean d;
+   private final ji e;
+   private final jn f;
+   private final List<ji> g = Lists.newArrayList();
+   private final List<ji> h = Lists.newArrayList();
+   private final jn i;
 
-   public dxn(String $$0) {
-      this($$0, true, true, true, dxn.a.a, drf.b, awa.DJ, awa.DK, awa.DL, awa.DM, awa.DP, awa.DQ, awa.DN, awa.DO);
+   public dxn(dgz $$0, ji $$1, jn $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.i = $$2;
+      this.d = $$3;
+      if ($$3) {
+         this.f = $$2;
+         this.e = $$1.a($$2);
+      } else {
+         this.f = $$2.g();
+         this.e = $$1.a($$2, 2);
+      }
    }
 
-   private static dxn a(dxn $$0) {
-      G.put($$0.s, $$0);
-      return $$0;
+   public boolean a() {
+      this.g.clear();
+      this.h.clear();
+      dxq $$0 = this.b.a_(this.e);
+      if (!dxj.a($$0, this.b, this.e, this.f, false, this.i)) {
+         if (this.d && $$0.r() == eub.b) {
+            this.h.add(this.e);
+            return true;
+         } else {
+            return false;
+         }
+      } else if (!this.a(this.e, this.f)) {
+         return false;
+      } else {
+         for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
+            ji $$2 = this.g.get($$1);
+            if (a(this.b.a_($$2)) && !this.a($$2)) {
+               return false;
+            }
+         }
+
+         return true;
+      }
    }
 
-   public static Stream<dxn> a() {
-      return G.values().stream();
+   private static boolean a(dxq $$0) {
+      return $$0.a(dkg.it) || $$0.a(dkg.pI);
    }
 
-   public String b() {
-      return this.s;
+   private static boolean a(dxq $$0, dxq $$1) {
+      if ($$0.a(dkg.pI) && $$1.a(dkg.it)) {
+         return false;
+      } else {
+         return $$0.a(dkg.it) && $$1.a(dkg.pI) ? false : a($$0) || a($$1);
+      }
    }
 
-   public boolean c() {
-      return this.t;
+   private boolean a(ji $$0, jn $$1) {
+      dxq $$2 = this.b.a_($$0);
+      if ($$2.l()) {
+         return true;
+      } else if (!dxj.a($$2, this.b, $$0, this.f, false, $$1)) {
+         return true;
+      } else if ($$0.equals(this.c)) {
+         return true;
+      } else if (this.g.contains($$0)) {
+         return true;
+      } else {
+         int $$3 = 1;
+         if ($$3 + this.g.size() > 12) {
+            return false;
+         } else {
+            while (a($$2)) {
+               ji $$4 = $$0.a(this.f.g(), $$3);
+               dxq $$5 = $$2;
+               $$2 = this.b.a_($$4);
+               if ($$2.l() || !a($$5, $$2) || !dxj.a($$2, this.b, $$4, this.f, false, this.f.g()) || $$4.equals(this.c)) {
+                  break;
+               }
+
+               if (++$$3 + this.g.size() > 12) {
+                  return false;
+               }
+            }
+
+            int $$6 = 0;
+
+            for (int $$7 = $$3 - 1; $$7 >= 0; $$7--) {
+               this.g.add($$0.a(this.f.g(), $$7));
+               $$6++;
+            }
+
+            int $$8 = 1;
+
+            while (true) {
+               ji $$9 = $$0.a(this.f, $$8);
+               int $$10 = this.g.indexOf($$9);
+               if ($$10 > -1) {
+                  this.a($$6, $$10);
+
+                  for (int $$11 = 0; $$11 <= $$10 + $$6; $$11++) {
+                     ji $$12 = this.g.get($$11);
+                     if (a(this.b.a_($$12)) && !this.a($$12)) {
+                        return false;
+                     }
+                  }
+
+                  return true;
+               }
+
+               $$2 = this.b.a_($$9);
+               if ($$2.l()) {
+                  return true;
+               }
+
+               if (!dxj.a($$2, this.b, $$9, this.f, true, this.f) || $$9.equals(this.c)) {
+                  return false;
+               }
+
+               if ($$2.r() == eub.b) {
+                  this.h.add($$9);
+                  return true;
+               }
+
+               if (this.g.size() >= 12) {
+                  return false;
+               }
+
+               this.g.add($$9);
+               $$6++;
+               $$8++;
+            }
+         }
+      }
    }
 
-   public boolean d() {
-      return this.u;
+   private void a(int $$0, int $$1) {
+      List<ji> $$2 = Lists.newArrayList();
+      List<ji> $$3 = Lists.newArrayList();
+      List<ji> $$4 = Lists.newArrayList();
+      $$2.addAll(this.g.subList(0, $$1));
+      $$3.addAll(this.g.subList(this.g.size() - $$0, this.g.size()));
+      $$4.addAll(this.g.subList($$1, this.g.size() - $$0));
+      this.g.clear();
+      this.g.addAll($$2);
+      this.g.addAll($$3);
+      this.g.addAll($$4);
    }
 
-   public boolean e() {
-      return this.v;
+   private boolean a(ji $$0) {
+      dxq $$1 = this.b.a_($$0);
+
+      for (jn $$2 : jn.values()) {
+         if ($$2.o() != this.f.o()) {
+            ji $$3 = $$0.a($$2);
+            dxq $$4 = this.b.a_($$3);
+            if (a($$4, $$1) && !this.a($$3, $$2)) {
+               return false;
+            }
+         }
+      }
+
+      return true;
    }
 
-   public dxn.a f() {
-      return this.w;
+   public jn b() {
+      return this.f;
    }
 
-   public drf g() {
-      return this.x;
+   public List<ji> c() {
+      return this.g;
    }
 
-   public avz h() {
-      return this.y;
-   }
-
-   public avz i() {
-      return this.z;
-   }
-
-   public avz j() {
-      return this.A;
-   }
-
-   public avz k() {
-      return this.B;
-   }
-
-   public avz l() {
-      return this.C;
-   }
-
-   public avz m() {
-      return this.D;
-   }
-
-   public avz n() {
-      return this.E;
-   }
-
-   public avz o() {
-      return this.F;
-   }
-
-   public static enum a {
-      a,
-      b;
+   public List<ji> d() {
+      return this.h;
    }
 }

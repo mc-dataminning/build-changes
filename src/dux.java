@@ -1,69 +1,34 @@
-public class dux extends dua implements dvg {
-   private final dui a = new dui();
-   private final dun b = new dun() {
-      @Override
-      protected void a(dgj $$0, ji $$1, dwy $$2) {
-         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, awa.iu, awb.e, 0.5F, $$0.A.i() * 0.1F + 0.9F);
-      }
+import javax.annotation.Nullable;
 
-      @Override
-      protected void b(dgj $$0, ji $$1, dwy $$2) {
-         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, awa.it, awb.e, 0.5F, $$0.A.i() * 0.1F + 0.9F);
-      }
-
-      @Override
-      protected void a(dgj $$0, ji $$1, dwy $$2, int $$3, int $$4) {
-         $$0.a(dux.this.o, djp.gb, 1, $$4);
-      }
-
-      @Override
-      protected boolean a(coy $$0) {
-         return $$0.gw().b(dux.this);
-      }
-   };
-
-   public dux(ji $$0, dwy $$1) {
-      super(duc.d, $$0, $$1);
-   }
-
-   public static void a(dgj $$0, ji $$1, dwy $$2, dux $$3) {
-      $$3.a.a();
+public class dux extends dwc {
+   public dux(ji $$0, dxq $$1) {
+      super(duu.K, $$0, $$1);
    }
 
    @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.a.a($$1 > 0);
-         return true;
-      } else {
-         return super.a_($$0, $$1);
+   public ecy.d b() {
+      return new dux.a(this.aA_());
+   }
+
+   protected class a extends dwc.a {
+      public a(final ji $$1) {
+         super($$1);
       }
-   }
 
-   public void a(coy $$0) {
-      if (!this.p && !$$0.Z_()) {
-         this.b.a($$0, this.i(), this.aA_(), this.m());
+      @Override
+      public int a() {
+         return 16;
       }
-   }
 
-   public void b(coy $$0) {
-      if (!this.p && !$$0.Z_()) {
-         this.b.b($$0, this.i(), this.aA_(), this.m());
+      @Override
+      public boolean a(ard $$0, ji $$1, jr<ecp> $$2, @Nullable ecp.a $$3) {
+         int $$4 = this.a($$0, this.c, dux.this.m());
+         return $$4 != 0 && ecy.a_($$2) != $$4 ? false : super.a($$0, $$1, $$2, $$3);
       }
-   }
 
-   public boolean c(coy $$0) {
-      return bse.a(this, $$0);
-   }
-
-   public void b() {
-      if (!this.p) {
-         this.b.c(this.i(), this.aA_(), this.m());
+      private int a(dgz $$0, ji $$1, dxq $$2) {
+         jn $$3 = $$2.c(dks.b).g();
+         return $$0.c($$1.a($$3), $$3);
       }
-   }
-
-   @Override
-   public float a(float $$0) {
-      return this.a.a($$0);
    }
 }

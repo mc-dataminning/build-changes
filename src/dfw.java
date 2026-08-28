@@ -1,27 +1,43 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.OptionalInt;
+import javax.annotation.Nullable;
 
-public class dfw {
-   public static final dfw a = new dfw(ImmutableList.of("vanilla"), ImmutableList.of());
-   public static final Codec<dfw> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter($$0x -> $$0x.c), Codec.STRING.listOf().fieldOf("Disabled").forGetter($$0x -> $$0x.d))
-            .apply($$0, dfw::new)
-   );
-   private final List<String> c;
-   private final List<String> d;
+public interface dfw {
+   void a(@Nullable cpr var1);
 
-   public dfw(List<String> $$0, List<String> $$1) {
-      this.c = ImmutableList.copyOf($$0);
-      this.d = ImmutableList.copyOf($$1);
+   @Nullable
+   cpr x();
+
+   dfy gt();
+
+   void a(dfy var1);
+
+   void a(dfx var1);
+
+   void i(cxh var1);
+
+   int t();
+
+   void s(int var1);
+
+   boolean gu();
+
+   avz gv();
+
+   default boolean gD() {
+      return false;
    }
 
-   public List<String> a() {
-      return this.c;
+   default void a(cpr $$0, wp $$1, int $$2) {
+      OptionalInt $$3 = $$0.a(new btg(($$0x, $$1x, $$2x) -> new cuh($$0x, $$1x, this), $$1));
+      if ($$3.isPresent()) {
+         dfy $$4 = this.gt();
+         if (!$$4.isEmpty()) {
+            $$0.a($$3.getAsInt(), $$4, $$2, this.t(), this.gu(), this.gD());
+         }
+      }
    }
 
-   public List<String> b() {
-      return this.d;
-   }
+   boolean gz();
+
+   boolean e(cpr var1);
 }

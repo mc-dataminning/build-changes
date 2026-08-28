@@ -55,7 +55,7 @@ public class mh {
    }
 
    static {
-      akx.a();
+      akw.a();
    }
 
    public class a {

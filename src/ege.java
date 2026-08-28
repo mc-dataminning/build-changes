@@ -1,35 +1,48 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntListIterator;
+import java.util.stream.IntStream;
 
-public class ege implements eid {
-   public static final Codec<ege> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               akv.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
-               akv.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
-               ero.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
-               ero.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, ege::new)
-   );
-   public final List<akv> b;
-   public final List<akv> c;
-   public final jr<ern> d;
-   public final jr<ern> e;
-   public final int f;
+public class ege extends egu<ejf> {
+   public ege(Codec<ejf> $$0) {
+      super($$0);
+   }
 
-   public ege(List<akv> $$0, List<akv> $$1, jr<ern> $$2, jr<ern> $$3, int $$4) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
-      } else if ($$0.size() != $$1.size()) {
-         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
-      } else {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
+   @Override
+   public boolean a(egw<ejf> $$0) {
+      azh $$1 = $$0.d();
+      dhy $$2 = $$0.b();
+      dgg $$3 = new dgg($$0.e());
+      IntArrayList $$4 = af.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
+      IntArrayList $$5 = af.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
+      ji.a $$6 = new ji.a();
+      IntListIterator var8 = $$4.iterator();
+
+      while (var8.hasNext()) {
+         Integer $$7 = (Integer)var8.next();
+         IntListIterator var10 = $$5.iterator();
+
+         while (var10.hasNext()) {
+            Integer $$8 = (Integer)var10.next();
+            $$6.d($$7, 0, $$8);
+            ji $$9 = $$2.a(edo.a.f, $$6);
+            if ($$2.u($$9) || $$2.a_($$9).g($$2, $$9).c()) {
+               $$2.a($$9, dkg.cD.m(), 2);
+               bte.a($$2, $$1, $$9, ewk.a);
+               dxq $$10 = dkg.cw.m();
+
+               for (jn $$11 : jn.c.a) {
+                  ji $$12 = $$9.a($$11);
+                  if ($$10.a($$2, $$12)) {
+                     $$2.a($$12, $$10, 2);
+                  }
+               }
+
+               return true;
+            }
+         }
       }
+
+      return false;
    }
 }

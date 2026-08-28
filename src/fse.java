@@ -1,20 +1,16 @@
-import java.util.function.Consumer;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import it.unimi.dsi.fastutil.ints.IntSets;
+import javax.annotation.Nullable;
 
-public class fse {
-   private static final int a = 4;
-
-   private fse() {
+public class fse implements feq {
+   @Nullable
+   @Override
+   public fep a(int $$0) {
+      return fso.b;
    }
 
-   public static fsj a(fod $$0, fsk $$1, wp $$2) {
-      return a($$0, $$1, $$2, $$0x -> {
-      });
-   }
-
-   public static fsj a(fod $$0, fsk $$1, wp $$2, Consumer<fsl> $$3) {
-      fsm $$4 = fsm.d().a(4);
-      $$4.a(new fqb($$2, $$0));
-      $$4.a($$1, $$3);
-      return $$4;
+   @Override
+   public IntSet a() {
+      return IntSets.EMPTY_SET;
    }
 }

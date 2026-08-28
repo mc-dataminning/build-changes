@@ -1,29 +1,38 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class enm extends enn {
-   private final enm.a d;
+public class enm extends enu {
+   public static final MapCodec<enm> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, enm::new)
+   );
+   private final double c;
+   private final int d;
    private final int e;
-   private final int f;
 
-   protected enm(enm.a $$0, int $$1, int $$2, enn.c $$3) {
-      super($$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   private enm(double $$0, int $$1, int $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   public static enm a(double $$0, int $$1, int $$2) {
+      return new enm($$0, $$1, $$2);
    }
 
    @Override
-   public Optional<enn.b> a(enn.a $$0) {
-      return a($$0, this.e, this.f) < $$0.b().f() ? Optional.empty() : a($$0, ect.a.a, $$1 -> this.a($$1, $$0));
+   protected int a(azh $$0, ji $$1) {
+      double $$2 = dic.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
+      return $$2 < this.c ? this.d : this.e;
    }
 
-   private void a(eof $$0, enn.a $$1) {
-      dfp $$2 = $$1.h();
-      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
-   }
-
-   @FunctionalInterface
-   protected interface a {
-      enr construct(eds var1, int var2, int var3);
+   @Override
+   public enr<?> b() {
+      return enr.h;
    }
 }

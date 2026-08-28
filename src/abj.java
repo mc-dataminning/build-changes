@@ -1,6 +1,6 @@
 import javax.annotation.Nullable;
 
-public record abj(akv b, @Nullable byte[] c) implements yw<abi> {
+public record abj(aku b, @Nullable byte[] c) implements yw<abi> {
    public static final yn<vl, abj> a = yw.a(abj::a, abj::new);
 
    private abj(vl $$0) {

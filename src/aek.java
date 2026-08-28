@@ -2,25 +2,29 @@ public class aek implements yw<abl> {
    public static final yn<vl, aek> a = yw.a(aek::a, aek::new);
    private final double b;
    private final double c;
+   private final long d;
 
-   public aek(dyo $$0) {
-      this.b = $$0.a();
-      this.c = $$0.b();
+   public aek(dzh $$0) {
+      this.b = $$0.i();
+      this.c = $$0.k();
+      this.d = $$0.j();
    }
 
    private aek(vl $$0) {
       this.b = $$0.readDouble();
       this.c = $$0.readDouble();
+      this.d = $$0.m();
    }
 
    private void a(vl $$0) {
       $$0.a(this.b);
       $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
    public yy<aek> a() {
-      return age.av;
+      return agd.av;
    }
 
    public void a(abl $$0) {
@@ -28,10 +32,14 @@ public class aek implements yw<abl> {
    }
 
    public double b() {
-      return this.c;
+      return this.b;
    }
 
    public double e() {
-      return this.b;
+      return this.c;
+   }
+
+   public long f() {
+      return this.d;
    }
 }

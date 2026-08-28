@@ -1,28 +1,19 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public record dek(jv<dda> c, brq d) implements dei {
-   public static final MapCodec<dek> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(kg.a(mc.aO).fieldOf("enchantments").forGetter(dek::b), brq.c.fieldOf("cost").forGetter(dek::c)).apply($$0, dek::new)
-   );
+public interface dek {
+   Codec<dek> b = mb.aw.q().dispatch(dek::a, Function.identity());
 
-   @Override
-   public void a(cwq $$0, ddg.a $$1, azh $$2, bsj $$3) {
-      for (ddd $$5 : ddc.b($$2, $$0, this.d.a($$2), this.c.a())) {
-         $$1.b($$5.a, $$5.b);
-      }
+   static MapCodec<? extends dek> a(ke<MapCodec<? extends dek>> $$0) {
+      ke.a($$0, "add", deb.a);
+      ke.a($$0, "all_of", dec.c.a);
+      ke.a($$0, "multiply", den.a);
+      ke.a($$0, "remove_binomial", dep.a);
+      return ke.a($$0, "set", deu.a);
    }
 
-   @Override
-   public MapCodec<dek> a() {
-      return b;
-   }
+   float a(int var1, azh var2, float var3);
 
-   public jv<dda> b() {
-      return this.c;
-   }
-
-   public brq c() {
-      return this.d;
-   }
+   MapCodec<? extends dek> a();
 }

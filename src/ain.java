@@ -1,4 +1,8 @@
-public class ain {
-   public static final vx.a<aio, vl> a = zb.a(vj.a, $$0 -> $$0.a(aim.a, ail.a));
-   public static final vx<aio> b = a.a(vl::new);
+public interface ain extends agg {
+   @Override
+   default vj b() {
+      return vj.a;
+   }
+
+   void a(aik var1);
 }

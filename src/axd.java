@@ -12,11 +12,11 @@ public class axd {
    );
    public static final Codec<axd> a = Codec.either(ayi.t, b)
       .xmap($$0 -> (axd)$$0.map($$0x -> new axd($$0x, true), $$0x -> $$0x), $$0 -> $$0.e ? Either.left($$0.a()) : Either.right($$0));
-   private final akv c;
+   private final aku c;
    private final boolean d;
    private final boolean e;
 
-   private axd(akv $$0, boolean $$1, boolean $$2) {
+   private axd(aku $$0, boolean $$1, boolean $$2) {
       this.c = $$0;
       this.d = $$1;
       this.e = $$2;
@@ -32,19 +32,19 @@ public class axd {
       return new ayi.d(this.c, this.d);
    }
 
-   public static axd a(akv $$0) {
+   public static axd a(aku $$0) {
       return new axd($$0, false, true);
    }
 
-   public static axd b(akv $$0) {
+   public static axd b(aku $$0) {
       return new axd($$0, false, false);
    }
 
-   public static axd c(akv $$0) {
+   public static axd c(aku $$0) {
       return new axd($$0, true, true);
    }
 
-   public static axd d(akv $$0) {
+   public static axd d(aku $$0) {
       return new axd($$0, true, false);
    }
 
@@ -68,19 +68,19 @@ public class axd {
       return true;
    }
 
-   public void a(Consumer<akv> $$0) {
+   public void a(Consumer<aku> $$0) {
       if (this.d && this.e) {
          $$0.accept(this.c);
       }
    }
 
-   public void b(Consumer<akv> $$0) {
+   public void b(Consumer<aku> $$0) {
       if (this.d && !this.e) {
          $$0.accept(this.c);
       }
    }
 
-   public boolean a(Predicate<akv> $$0, Predicate<akv> $$1) {
+   public boolean a(Predicate<aku> $$0, Predicate<aku> $$1) {
       return !this.e || (this.d ? $$1 : $$0).test(this.c);
    }
 
@@ -101,9 +101,9 @@ public class axd {
 
    public interface a<T> {
       @Nullable
-      T a(akv var1, boolean var2);
+      T a(aku var1, boolean var2);
 
       @Nullable
-      Collection<T> a(akv var1);
+      Collection<T> a(aku var1);
    }
 }

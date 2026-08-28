@@ -1,132 +1,251 @@
 import javax.annotation.Nullable;
 
 public class gmy {
-   protected final glv a;
-   protected final dgj b;
-   protected int c;
-   protected int d;
-   protected int e;
-   private int g;
-   private kk h;
-   public gpn.b[] f;
+   private final gmy.b a;
+   final ji b;
 
-   public gmy(gpn $$0, dgj $$1, int $$2, glv $$3) {
-      this.a = $$3;
-      this.b = $$1;
-      this.a($$2);
-      this.a($$0);
-      this.h = kk.a(this.g + 1, 0, this.g + 1);
+   public gmy(kk $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$1 * 2 + 1;
+      int $$5 = ayz.c($$4);
+      int $$6 = $$1 * 16;
+      ji $$7 = $$0.j();
+      this.b = $$0.k();
+      int $$8 = $$7.u() - $$6;
+      int $$9 = $$8 + $$5 * 16 - 1;
+      int $$10 = $$5 >= $$2 ? $$3 : $$7.v() - $$6;
+      int $$11 = $$10 + $$5 * 16 - 1;
+      int $$12 = $$7.w() - $$6;
+      int $$13 = $$12 + $$5 * 16 - 1;
+      this.a = new gmy.b(new eob($$8, $$10, $$12, $$9, $$11, $$13));
    }
 
-   protected void a(gpn $$0) {
-      if (!flk.Q().bx()) {
-         throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
-      } else {
-         int $$1 = this.d * this.c * this.e;
-         this.f = new gpn.b[$$1];
+   public boolean a(gql.b $$0) {
+      return this.a.a($$0);
+   }
 
-         for (int $$2 = 0; $$2 < this.d; $$2++) {
-            for (int $$3 = 0; $$3 < this.c; $$3++) {
-               for (int $$4 = 0; $$4 < this.e; $$4++) {
-                  int $$5 = this.a($$2, $$3, $$4);
-                  this.f[$$5] = $$0.new b($$5, kk.b($$2, $$3 + this.b.ap(), $$4));
-               }
-            }
+   public void a(gmy.e $$0, gqp $$1, int $$2) {
+      this.a.a($$0, false, $$1, 0, $$2, true);
+   }
+
+   boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, int $$6) {
+      int $$7 = this.b.u();
+      int $$8 = this.b.v();
+      int $$9 = this.b.w();
+      return (double)$$7 > $$0 - (double)$$6
+         && (double)$$7 < $$3 + (double)$$6
+         && (double)$$8 > $$1 - (double)$$6
+         && (double)$$8 < $$4 + (double)$$6
+         && (double)$$9 > $$2 - (double)$$6
+         && (double)$$9 < $$5 + (double)$$6;
+   }
+
+   static enum a {
+      a(4, 2, 1),
+      b(4, 1, 2),
+      c(2, 4, 1),
+      d(1, 4, 2),
+      e(2, 1, 4),
+      f(1, 2, 4);
+
+      final int g;
+      final int h;
+      final int i;
+
+      private a(final int $$0, final int $$1, final int $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
+      }
+
+      public static gmy.a a(int $$0, int $$1, int $$2) {
+         if ($$0 > $$1 && $$0 > $$2) {
+            return $$1 > $$2 ? a : b;
+         } else if ($$1 > $$0 && $$1 > $$2) {
+            return $$0 > $$2 ? c : d;
+         } else {
+            return $$0 > $$1 ? e : f;
          }
       }
    }
 
-   public void a() {
-      for (gpn.b $$0 : this.f) {
-         $$0.e();
+   class b implements gmy.d {
+      private final gmy.d[] b = new gmy.d[8];
+      private final eob c;
+      private final int d;
+      private final int e;
+      private final int f;
+      private final gmy.a g;
+      private final boolean h;
+      private final boolean i;
+      private final boolean j;
+
+      public b(final eob $$0) {
+         this.c = $$0;
+         this.d = this.c.h() + this.c.d() / 2;
+         this.e = this.c.i() + this.c.e() / 2;
+         this.f = this.c.j() + this.c.f() / 2;
+         int $$1 = gmy.this.b.u() - this.d;
+         int $$2 = gmy.this.b.v() - this.e;
+         int $$3 = gmy.this.b.w() - this.f;
+         this.g = gmy.a.a(Math.abs($$1), Math.abs($$2), Math.abs($$3));
+         this.h = $$1 < 0;
+         this.i = $$2 < 0;
+         this.j = $$3 < 0;
       }
-   }
 
-   private int a(int $$0, int $$1, int $$2) {
-      return ($$2 * this.c + $$1) * this.d + $$0;
-   }
+      public boolean a(gql.b $$0) {
+         long $$1 = $$0.g();
+         boolean $$2 = kk.c(kk.b($$1)) - this.d < 0;
+         boolean $$3 = kk.c(kk.c($$1)) - this.e < 0;
+         boolean $$4 = kk.c(kk.d($$1)) - this.f < 0;
+         boolean $$5 = $$2 != this.h;
+         boolean $$6 = $$3 != this.i;
+         boolean $$7 = $$4 != this.j;
+         int $$8 = a(this.g, $$5, $$6, $$7);
+         if (this.c()) {
+            boolean $$9 = this.b[$$8] != null;
+            this.b[$$8] = gmy.this.new c($$0);
+            return !$$9;
+         } else if (this.b[$$8] != null) {
+            gmy.b $$10 = (gmy.b)this.b[$$8];
+            return $$10.a($$0);
+         } else {
+            eob $$11 = this.a($$2, $$3, $$4);
+            gmy.b $$12 = gmy.this.new b($$11);
+            this.b[$$8] = $$12;
+            return $$12.a($$0);
+         }
+      }
 
-   protected void a(int $$0) {
-      int $$1 = $$0 * 2 + 1;
-      this.d = $$1;
-      this.c = this.b.ao();
-      this.e = $$1;
-      this.g = $$0;
-   }
+      private static int a(gmy.a $$0, boolean $$1, boolean $$2, boolean $$3) {
+         int $$4 = 0;
+         if ($$1) {
+            $$4 += $$0.g;
+         }
 
-   public int b() {
-      return this.g;
-   }
+         if ($$2) {
+            $$4 += $$0.h;
+         }
 
-   public dgl c() {
-      return this.b;
-   }
+         if ($$3) {
+            $$4 += $$0.i;
+         }
 
-   public void a(kk $$0) {
-      for (int $$1 = 0; $$1 < this.d; $$1++) {
-         int $$2 = $$0.a() - this.g;
-         int $$3 = $$2 + Math.floorMod($$1 - $$2, this.d);
+         return $$4;
+      }
 
-         for (int $$4 = 0; $$4 < this.e; $$4++) {
-            int $$5 = $$0.c() - this.g;
-            int $$6 = $$5 + Math.floorMod($$4 - $$5, this.e);
+      private boolean c() {
+         return this.c.d() == 32;
+      }
 
-            for (int $$7 = 0; $$7 < this.c; $$7++) {
-               int $$8 = this.b.ap() + $$7;
-               gpn.b $$9 = this.f[this.a($$1, $$7, $$4)];
-               long $$10 = $$9.g();
-               if ($$10 != kk.b($$3, $$8, $$6)) {
-                  $$9.a(kk.b($$3, $$8, $$6));
+      private eob a(boolean $$0, boolean $$1, boolean $$2) {
+         int $$3;
+         int $$4;
+         if ($$0) {
+            $$3 = this.c.h();
+            $$4 = this.d - 1;
+         } else {
+            $$3 = this.d;
+            $$4 = this.c.k();
+         }
+
+         int $$7;
+         int $$8;
+         if ($$1) {
+            $$7 = this.c.i();
+            $$8 = this.e - 1;
+         } else {
+            $$7 = this.e;
+            $$8 = this.c.l();
+         }
+
+         int $$11;
+         int $$12;
+         if ($$2) {
+            $$11 = this.c.j();
+            $$12 = this.f - 1;
+         } else {
+            $$11 = this.f;
+            $$12 = this.c.m();
+         }
+
+         return new eob($$3, $$7, $$11, $$4, $$8, $$12);
+      }
+
+      @Override
+      public void a(gmy.e $$0, boolean $$1, gqp $$2, int $$3, int $$4, boolean $$5) {
+         boolean $$6 = $$1;
+         if (!$$1) {
+            int $$7 = $$2.a(this.c);
+            $$1 = $$7 == -2;
+            $$6 = $$7 == -2 || $$7 == -1;
+         }
+
+         if ($$6) {
+            $$5 = $$5
+               && gmy.this.a((double)this.c.h(), (double)this.c.i(), (double)this.c.j(), (double)this.c.k(), (double)this.c.l(), (double)this.c.m(), $$4);
+            $$0.visit(this, $$1, $$3, $$5);
+
+            for (gmy.d $$8 : this.b) {
+               if ($$8 != null) {
+                  $$8.a($$0, $$1, $$2, $$3 + 1, $$4, $$5);
                }
             }
          }
       }
 
-      this.h = $$0;
-      this.a.x().a();
-   }
-
-   public kk d() {
-      return this.h;
-   }
-
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      gpn.b $$4 = this.b($$0, $$1, $$2);
-      if ($$4 != null) {
-         $$4.a($$3);
-      }
-   }
-
-   @Nullable
-   protected gpn.b a(ji $$0) {
-      return this.a(kk.c($$0));
-   }
-
-   @Nullable
-   protected gpn.b a(long $$0) {
-      int $$1 = kk.b($$0);
-      int $$2 = kk.c($$0);
-      int $$3 = kk.d($$0);
-      return this.b($$1, $$2, $$3);
-   }
-
-   @Nullable
-   private gpn.b b(int $$0, int $$1, int $$2) {
-      if (!this.c($$0, $$1, $$2)) {
+      @Nullable
+      @Override
+      public gql.b a() {
          return null;
-      } else {
-         int $$3 = $$1 - this.b.ap();
-         int $$4 = Math.floorMod($$0, this.d);
-         int $$5 = Math.floorMod($$2, this.e);
-         return this.f[this.a($$4, $$3, $$5)];
+      }
+
+      @Override
+      public fbs b() {
+         return new fbs(
+            (double)this.c.h(), (double)this.c.i(), (double)this.c.j(), (double)(this.c.k() + 1), (double)(this.c.l() + 1), (double)(this.c.m() + 1)
+         );
       }
    }
 
-   private boolean c(int $$0, int $$1, int $$2) {
-      if ($$1 >= this.b.ap() && $$1 <= this.b.aq()) {
-         return $$0 < this.h.a() - this.g || $$0 > this.h.a() + this.g ? false : $$2 >= this.h.c() - this.g && $$2 <= this.h.c() + this.g;
-      } else {
-         return false;
+   final class c implements gmy.d {
+      private final gql.b b;
+
+      c(final gql.b $$0) {
+         this.b = $$0;
       }
+
+      @Override
+      public void a(gmy.e $$0, boolean $$1, gqp $$2, int $$3, int $$4, boolean $$5) {
+         fbs $$6 = this.b.b();
+         if ($$1 || $$2.a(this.a().b())) {
+            $$5 = $$5 && gmy.this.a($$6.a, $$6.b, $$6.c, $$6.d, $$6.e, $$6.f, $$4);
+            $$0.visit(this, $$1, $$3, $$5);
+         }
+      }
+
+      @Override
+      public gql.b a() {
+         return this.b;
+      }
+
+      @Override
+      public fbs b() {
+         return this.b.b();
+      }
+   }
+
+   public interface d {
+      void a(gmy.e var1, boolean var2, gqp var3, int var4, int var5, boolean var6);
+
+      @Nullable
+      gql.b a();
+
+      fbs b();
+   }
+
+   @FunctionalInterface
+   public interface e {
+      void visit(gmy.d var1, boolean var2, int var3, boolean var4);
    }
 }

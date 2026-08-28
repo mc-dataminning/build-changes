@@ -1,8 +1,8 @@
 import io.netty.buffer.ByteBuf;
 import java.util.List;
 
-public record zk(List<aln.c> b) implements yw<zc> {
-   public static final yn<ByteBuf, zk> a = yn.a(aln.c, zk::b, zk::new);
+public record zk(List<alm.c> b) implements yw<zc> {
+   public static final yn<ByteBuf, zk> a = yn.a(alm.c, zk::b, zk::new);
 
    @Override
    public yy<zk> a() {

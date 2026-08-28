@@ -1,85 +1,73 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
+import java.util.Map;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
-public class cwx {
-   public static final int a = 20;
-   private long b;
-   @Nullable
-   private jr<cww> c;
-   private final ji d;
-   private final cwx.a e;
+public class cwx extends cxd {
+   protected static final Map<dke, Pair<Predicate<daz>, Consumer<daz>>> a = Maps.newHashMap(
+      ImmutableMap.of(
+         dkg.i,
+         Pair.of(cwx::b, a(dkg.cK.m())),
+         dkg.lg,
+         Pair.of(cwx::b, a(dkg.cK.m())),
+         dkg.j,
+         Pair.of(cwx::b, a(dkg.cK.m())),
+         dkg.k,
+         Pair.of(cwx::b, a(dkg.j.m())),
+         dkg.tl,
+         Pair.of((Predicate<daz>)$$0 -> true, a(dkg.j.m(), cxl.ec))
+      )
+   );
 
-   public cwx(cwx.a $$0, ji $$1) {
-      this.e = $$0;
-      this.d = $$1;
+   public cwx(cyw $$0, float $$1, float $$2, cxd.a $$3) {
+      super($$3.a($$0, awp.bD, $$1, $$2, false));
    }
 
-   public boolean a() {
-      return this.c != null;
-   }
-
-   @Nullable
-   public cww b() {
-      return this.c == null ? null : this.c.a();
-   }
-
-   public long c() {
-      return this.b;
-   }
-
-   public void a(jr<cww> $$0, long $$1) {
-      if (!$$0.a().a($$1)) {
-         this.c = $$0;
-         this.b = $$1;
-      }
-   }
-
-   public void a(dgk $$0, jr<cww> $$1) {
-      this.c = $$1;
-      this.b = 0L;
-      int $$2 = $$0.K_().e(mc.L).a(this.c.a());
-      $$0.a(null, 1010, this.d, $$2);
-      this.e.notifyChange();
-   }
-
-   public void a(dgk $$0, @Nullable dwy $$1) {
-      if (this.c != null) {
-         this.c = null;
-         this.b = 0L;
-         $$0.a(ebu.F, this.d, ebu.a.a($$1));
-         $$0.c(1011, this.d, 0);
-         this.e.notifyChange();
-      }
-   }
-
-   public void b(dgk $$0, @Nullable dwy $$1) {
-      if (this.c != null) {
-         if (this.c.a().a(this.b)) {
-            this.a($$0, $$1);
-         } else {
-            if (this.d()) {
-               $$0.a(ebu.E, this.d, ebu.a.a($$1));
-               a($$0, this.d);
+   @Override
+   public bsy a(daz $$0) {
+      dgz $$1 = $$0.q();
+      ji $$2 = $$0.a();
+      Pair<Predicate<daz>, Consumer<daz>> $$3 = a.get($$1.a_($$2).b());
+      if ($$3 == null) {
+         return bsy.e;
+      } else {
+         Predicate<daz> $$4 = (Predicate<daz>)$$3.getFirst();
+         Consumer<daz> $$5 = (Consumer<daz>)$$3.getSecond();
+         if ($$4.test($$0)) {
+            cpr $$6 = $$0.o();
+            $$1.a($$6, $$2, awa.mL, awb.e, 1.0F, 1.0F);
+            if (!$$1.C) {
+               $$5.accept($$0);
+               if ($$6 != null) {
+                  $$0.n().a(1, $$6, bvy.d($$0.p()));
+               }
             }
 
-            this.b++;
+            return bsy.a;
+         } else {
+            return bsy.e;
          }
       }
    }
 
-   private boolean d() {
-      return this.b % 20L == 0L;
+   public static Consumer<daz> a(dxq $$0) {
+      return $$1 -> {
+         $$1.q().a($$1.a(), $$0, 11);
+         $$1.q().a(ecp.c, $$1.a(), ecp.a.a($$1.o(), $$0));
+      };
    }
 
-   private static void a(dgk $$0, ji $$1) {
-      if ($$0 instanceof ard $$2) {
-         fbb $$3 = fbb.c($$1).b(0.0, 1.2F, 0.0);
-         float $$4 = (float)$$0.H_().a(4) / 24.0F;
-         $$2.a(lt.ac, $$3.a(), $$3.b(), $$3.c(), 0, (double)$$4, 0.0, 0.0, 1.0);
-      }
+   public static Consumer<daz> a(dxq $$0, dgy $$1) {
+      return $$2 -> {
+         $$2.q().a($$2.a(), $$0, 11);
+         $$2.q().a(ecp.c, $$2.a(), ecp.a.a($$2.o(), $$0));
+         dke.a($$2.q(), $$2.a(), $$2.k(), new cxh($$1));
+      };
    }
 
-   @FunctionalInterface
-   public interface a {
-      void notifyChange();
+   public static boolean b(daz $$0) {
+      return $$0.k() != jn.a && $$0.q().a_($$0.a().d()).l();
    }
 }

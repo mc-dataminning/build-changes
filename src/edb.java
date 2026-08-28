@@ -1,70 +1,150 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
 
-public record edb(int g, int h, int i, int j) {
-   public static final Codec<edb> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.intRange(eat.e, eat.d).fieldOf("min_y").forGetter(edb::c),
-                  Codec.intRange(0, eat.c).fieldOf("height").forGetter(edb::d),
-                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(edb::e),
-                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(edb::f)
-               )
-               .apply($$0, edb::new)
-      )
-      .comapFlatMap(edb::a, Function.identity());
-   protected static final edb b = a(-64, 384, 1, 2);
-   protected static final edb c = a(0, 128, 1, 2);
-   protected static final edb d = a(0, 128, 2, 1);
-   protected static final edb e = a(-64, 192, 1, 2);
-   protected static final edb f = a(0, 256, 2, 1);
-
-   private static DataResult<edb> a(edb $$0) {
-      if ($$0.c() + $$0.d() > eat.d + 1) {
-         return DataResult.error(() -> "min_y + height cannot be higher than: " + (eat.d + 1));
-      } else if ($$0.d() % 16 != 0) {
-         return DataResult.error(() -> "height has to be a multiple of 16");
-      } else {
-         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
+public class edb implements edi.c {
+   public static final int a = 12;
+   private static final int f = 24;
+   private static final float[] g = af.a(new float[13824], $$0 -> {
+      for (int $$1 = 0; $$1 < 24; $$1++) {
+         for (int $$2 = 0; $$2 < 24; $$2++) {
+            for (int $$3 = 0; $$3 < 24; $$3++) {
+               $$0[$$1 * 24 * 24 + $$2 * 24 + $$3] = (float)a($$2 - 12, $$3 - 12, $$1 - 12);
+            }
+         }
       }
+   });
+   private final ObjectListIterator<edb.a> h;
+   private final ObjectListIterator<epm> i;
+
+   public static edb a(dhv $$0, dgg $$1) {
+      int $$2 = $$1.d();
+      int $$3 = $$1.e();
+      ObjectList<edb.a> $$4 = new ObjectArrayList(10);
+      ObjectList<epm> $$5 = new ObjectArrayList(32);
+      $$0.a($$1, $$0x -> $$0x.d() != eou.a).forEach($$5x -> {
+         eou $$6 = $$5x.h().d();
+
+         for (eon $$7 : $$5x.i()) {
+            if ($$7.a($$1, 12)) {
+               if ($$7 instanceof eof) {
+                  eof $$8 = (eof)$$7;
+                  ept.a $$9 = $$8.b().f();
+                  if ($$9 == ept.a.b) {
+                     $$4.add(new edb.a($$8.f(), $$6, $$8.d()));
+                  }
+
+                  for (epm $$10 : $$8.e()) {
+                     int $$11 = $$10.a();
+                     int $$12 = $$10.c();
+                     if ($$11 > $$2 - 12 && $$12 > $$3 - 12 && $$11 < $$2 + 15 + 12 && $$12 < $$3 + 15 + 12) {
+                        $$5.add($$10);
+                     }
+                  }
+               } else {
+                  $$4.add(new edb.a($$7.f(), $$6, 0));
+               }
+            }
+         }
+      });
+      return new edb($$4.iterator(), $$5.iterator());
    }
 
-   public static edb a(int $$0, int $$1, int $$2, int $$3) {
-      edb $$4 = new edb($$0, $$1, $$2, $$3);
-      a($$4).error().ifPresent($$0x -> {
-         throw new IllegalStateException($$0x.message());
-      });
+   @VisibleForTesting
+   public edb(ObjectListIterator<edb.a> $$0, ObjectListIterator<epm> $$1) {
+      this.h = $$0;
+      this.i = $$1;
+   }
+
+   @Override
+   public double a(edh.b $$0) {
+      int $$1 = $$0.a();
+      int $$2 = $$0.b();
+      int $$3 = $$0.c();
+      double $$4 = 0.0;
+
+      while (this.h.hasNext()) {
+         edb.a $$5 = (edb.a)this.h.next();
+         eob $$6 = $$5.a();
+         int $$7 = $$5.c();
+         int $$8 = Math.max(0, Math.max($$6.h() - $$1, $$1 - $$6.k()));
+         int $$9 = Math.max(0, Math.max($$6.j() - $$3, $$3 - $$6.m()));
+         int $$10 = $$6.i() + $$7;
+         int $$11 = $$2 - $$10;
+
+         int $$12 = switch ($$5.b()) {
+            case a -> 0;
+            case b, c -> $$11;
+            case d -> Math.max(0, Math.max($$10 - $$2, $$2 - $$6.l()));
+            case e -> Math.max(0, Math.max($$6.i() - $$2, $$2 - $$6.l()));
+         };
+
+         $$4 += switch ($$5.b()) {
+            case a -> 0.0;
+            case b -> a((double)$$8, (double)$$12 / 2.0, (double)$$9);
+            case c, d -> a($$8, $$12, $$9, $$11) * 0.8;
+            case e -> a((double)$$8 / 2.0, (double)$$12 / 2.0, (double)$$9 / 2.0) * 0.8;
+         };
+      }
+
+      this.h.back(Integer.MAX_VALUE);
+
+      while (this.i.hasNext()) {
+         epm $$13 = (epm)this.i.next();
+         int $$14 = $$1 - $$13.a();
+         int $$15 = $$2 - $$13.b();
+         int $$16 = $$3 - $$13.c();
+         $$4 += a($$14, $$15, $$16, $$15) * 0.4;
+      }
+
+      this.i.back(Integer.MAX_VALUE);
       return $$4;
    }
 
-   public int a() {
-      return kc.c(this.f());
+   @Override
+   public double a() {
+      return Double.NEGATIVE_INFINITY;
    }
 
-   public int b() {
-      return kc.c(this.e());
+   @Override
+   public double b() {
+      return Double.POSITIVE_INFINITY;
    }
 
-   public edb a(dgl $$0) {
-      int $$1 = Math.max(this.g, $$0.L_());
-      int $$2 = Math.min(this.g + this.h, $$0.an() + 1) - $$1;
-      return new edb($$1, $$2, this.i, this.j);
+   private static double a(double $$0, double $$1, double $$2) {
+      double $$3 = ayz.g($$0, $$1, $$2);
+      return ayz.a($$3, 0.0, 6.0, 1.0, 0.0);
    }
 
-   public int c() {
-      return this.g;
+   private static double a(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$0 + 12;
+      int $$5 = $$1 + 12;
+      int $$6 = $$2 + 12;
+      if (a($$4) && a($$5) && a($$6)) {
+         double $$7 = (double)$$3 + 0.5;
+         double $$8 = ayz.f((double)$$0, $$7, (double)$$2);
+         double $$9 = -$$7 * ayz.g($$8 / 2.0) / 2.0;
+         return $$9 * (double)g[$$6 * 24 * 24 + $$4 * 24 + $$5];
+      } else {
+         return 0.0;
+      }
    }
 
-   public int d() {
-      return this.h;
+   private static boolean a(int $$0) {
+      return $$0 >= 0 && $$0 < 24;
    }
 
-   public int e() {
-      return this.i;
+   private static double a(int $$0, int $$1, int $$2) {
+      return a($$0, (double)$$1 + 0.5, $$2);
    }
 
-   public int f() {
-      return this.j;
+   private static double a(int $$0, double $$1, int $$2) {
+      double $$3 = ayz.f((double)$$0, $$1, (double)$$2);
+      return Math.pow(Math.E, -$$3 / 16.0);
+   }
+
+   @VisibleForTesting
+   public static record a(eob a, eou b, int c) {
    }
 }

@@ -8,12 +8,12 @@ import java.util.Optional;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public record ah(Optional<akv> c, Optional<au> d, am e, Map<String, aq<?>> f, al g, boolean h, Optional<wp> i) {
+public record ah(Optional<aku> c, Optional<au> d, am e, Map<String, aq<?>> f, al g, boolean h, Optional<wp> i) {
    private static final Codec<Map<String, aq<?>>> j = Codec.unboundedMap(Codec.STRING, aq.a)
       .validate($$0 -> $$0.isEmpty() ? DataResult.error(() -> "Advancement criteria cannot be empty") : DataResult.success($$0));
    public static final Codec<ah> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  akv.a.optionalFieldOf("parent").forGetter(ah::b),
+                  aku.a.optionalFieldOf("parent").forGetter(ah::b),
                   au.a.optionalFieldOf("display").forGetter(ah::c),
                   am.a.optionalFieldOf("rewards", am.b).forGetter(ah::d),
                   j.fieldOf("criteria").forGetter(ah::e),
@@ -28,7 +28,7 @@ public record ah(Optional<akv> c, Optional<au> d, am e, Map<String, aq<?>> f, al
       .validate(ah::a);
    public static final yn<wa, ah> b = yn.a(ah::a, ah::b);
 
-   public ah(Optional<akv> $$0, Optional<au> $$1, am $$2, Map<String, aq<?>> $$3, al $$4, boolean $$5) {
+   public ah(Optional<aku> $$0, Optional<au> $$1, am $$2, Map<String, aq<?>> $$3, al $$4, boolean $$5) {
       this($$0, $$1, $$2, Map.copyOf($$3), $$4, $$5, $$1.map(ah::a));
    }
 
@@ -40,7 +40,7 @@ public record ah(Optional<akv> c, Optional<au> d, am e, Map<String, aq<?>> f, al
       wp $$1 = $$0.a();
       n $$2 = $$0.e().a();
       wp $$3 = ws.a($$1.f(), xm.a.a($$2)).f("\n").b($$0.b());
-      wp $$4 = $$1.f().a($$1x -> $$1x.a(new wv(wv.a.a, $$3)));
+      wp $$4 = $$1.f().a($$1x -> $$1x.a(new wv.e($$3)));
       return ws.a($$4).a($$2);
    }
 
@@ -70,7 +70,7 @@ public record ah(Optional<akv> c, Optional<au> d, am e, Map<String, aq<?>> f, al
       });
    }
 
-   public Optional<akv> b() {
+   public Optional<aku> b() {
       return this.c;
    }
 
@@ -99,7 +99,7 @@ public record ah(Optional<akv> c, Optional<au> d, am e, Map<String, aq<?>> f, al
    }
 
    public static class a {
-      private Optional<akv> a = Optional.empty();
+      private Optional<aku> a = Optional.empty();
       private Optional<au> b = Optional.empty();
       private am c = am.b;
       private final Builder<String, aq<?>> d = ImmutableMap.builder();
@@ -123,17 +123,17 @@ public record ah(Optional<akv> c, Optional<au> d, am e, Map<String, aq<?>> f, al
       @Deprecated(
          forRemoval = true
       )
-      public ah.a a(akv $$0) {
+      public ah.a a(aku $$0) {
          this.a = Optional.of($$0);
          return this;
       }
 
-      public ah.a a(cwq $$0, wp $$1, wp $$2, @Nullable akv $$3, ao $$4, boolean $$5, boolean $$6, boolean $$7) {
+      public ah.a a(cxh $$0, wp $$1, wp $$2, @Nullable aku $$3, ao $$4, boolean $$5, boolean $$6, boolean $$7) {
          return this.a(new au($$0, $$1, $$2, Optional.ofNullable($$3), $$4, $$5, $$6, $$7));
       }
 
-      public ah.a a(dgi $$0, wp $$1, wp $$2, @Nullable akv $$3, ao $$4, boolean $$5, boolean $$6, boolean $$7) {
-         return this.a(new au(new cwq($$0.j()), $$1, $$2, Optional.ofNullable($$3), $$4, $$5, $$6, $$7));
+      public ah.a a(dgy $$0, wp $$1, wp $$2, @Nullable aku $$3, ao $$4, boolean $$5, boolean $$6, boolean $$7) {
+         return this.a(new au(new cxh($$0.i()), $$1, $$2, Optional.ofNullable($$3), $$4, $$5, $$6, $$7));
       }
 
       public ah.a a(au $$0) {
@@ -170,14 +170,14 @@ public record ah(Optional<akv> c, Optional<au> d, am e, Map<String, aq<?>> f, al
          return this;
       }
 
-      public ai b(akv $$0) {
+      public ai b(aku $$0) {
          Map<String, aq<?>> $$1 = this.d.buildOrThrow();
          al $$2 = this.e.orElseGet(() -> this.f.create($$1.keySet()));
          return new ai($$0, new ah(this.a, this.b, this.c, $$1, $$2, this.g));
       }
 
       public ai a(Consumer<ai> $$0, String $$1) {
-         ai $$2 = this.b(akv.a($$1));
+         ai $$2 = this.b(aku.a($$1));
          $$0.accept($$2);
          return $$2;
       }

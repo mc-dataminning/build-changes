@@ -1,10 +1,10 @@
-public class ask implements ajt {
+public class ask implements ajs {
    private static final wp b = wp.c("multiplayer.status.request_handled");
-   private final ajs c;
+   private final ajr c;
    private final vi d;
    private boolean e;
 
-   public ask(ajs $$0, vi $$1) {
+   public ask(ajr $$0, vi $$1) {
       this.c = $$0;
       this.d = $$1;
    }
@@ -19,18 +19,18 @@ public class ask implements ajt {
    }
 
    @Override
-   public void a(aju $$0) {
+   public void a(ajt $$0) {
       if (this.e) {
          this.d.a(b);
       } else {
          this.e = true;
-         this.d.a(new ajr(this.c));
+         this.d.a(new ajq(this.c));
       }
    }
 
    @Override
-   public void a(ajo $$0) {
-      this.d.a(new ajl($$0.b()));
+   public void a(ajn $$0) {
+      this.d.a(new ajk($$0.b()));
       this.d.a(b);
    }
 }

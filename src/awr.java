@@ -1,40 +1,40 @@
 public interface awr {
-   axf<bte> a = a("damages_helmet");
-   axf<bte> b = a("bypasses_armor");
-   axf<bte> c = a("bypasses_shield");
-   axf<bte> d = a("bypasses_invulnerability");
-   axf<bte> e = a("bypasses_cooldown");
-   axf<bte> f = a("bypasses_effects");
-   axf<bte> g = a("bypasses_resistance");
-   axf<bte> h = a("bypasses_enchantments");
-   axf<bte> i = a("is_fire");
-   axf<bte> j = a("is_projectile");
-   axf<bte> k = a("witch_resistant_to");
-   axf<bte> l = a("is_explosion");
-   axf<bte> m = a("is_fall");
-   axf<bte> n = a("is_drowning");
-   axf<bte> o = a("is_freezing");
-   axf<bte> p = a("is_lightning");
-   axf<bte> q = a("no_anger");
-   axf<bte> r = a("no_impact");
-   axf<bte> s = a("always_most_significant_fall");
-   axf<bte> t = a("wither_immune_to");
-   axf<bte> u = a("ignites_armor_stands");
-   axf<bte> v = a("burns_armor_stands");
-   axf<bte> w = a("avoids_guardian_thorns");
-   axf<bte> x = a("always_triggers_silverfish");
-   axf<bte> y = a("always_hurts_ender_dragons");
-   axf<bte> z = a("no_knockback");
-   axf<bte> A = a("always_kills_armor_stands");
-   axf<bte> B = a("can_break_armor_stand");
-   axf<bte> C = a("bypasses_wolf_armor");
-   axf<bte> D = a("is_player_attack");
-   axf<bte> E = a("burn_from_stepping");
-   axf<bte> F = a("panic_causes");
-   axf<bte> G = a("panic_environmental_causes");
-   axf<bte> H = a("mace_smash");
+   axf<btr> a = a("damages_helmet");
+   axf<btr> b = a("bypasses_armor");
+   axf<btr> c = a("bypasses_shield");
+   axf<btr> d = a("bypasses_invulnerability");
+   axf<btr> e = a("bypasses_cooldown");
+   axf<btr> f = a("bypasses_effects");
+   axf<btr> g = a("bypasses_resistance");
+   axf<btr> h = a("bypasses_enchantments");
+   axf<btr> i = a("is_fire");
+   axf<btr> j = a("is_projectile");
+   axf<btr> k = a("witch_resistant_to");
+   axf<btr> l = a("is_explosion");
+   axf<btr> m = a("is_fall");
+   axf<btr> n = a("is_drowning");
+   axf<btr> o = a("is_freezing");
+   axf<btr> p = a("is_lightning");
+   axf<btr> q = a("no_anger");
+   axf<btr> r = a("no_impact");
+   axf<btr> s = a("always_most_significant_fall");
+   axf<btr> t = a("wither_immune_to");
+   axf<btr> u = a("ignites_armor_stands");
+   axf<btr> v = a("burns_armor_stands");
+   axf<btr> w = a("avoids_guardian_thorns");
+   axf<btr> x = a("always_triggers_silverfish");
+   axf<btr> y = a("always_hurts_ender_dragons");
+   axf<btr> z = a("no_knockback");
+   axf<btr> A = a("always_kills_armor_stands");
+   axf<btr> B = a("can_break_armor_stand");
+   axf<btr> C = a("bypasses_wolf_armor");
+   axf<btr> D = a("is_player_attack");
+   axf<btr> E = a("burn_from_stepping");
+   axf<btr> F = a("panic_causes");
+   axf<btr> G = a("panic_environmental_causes");
+   axf<btr> H = a("mace_smash");
 
-   private static axf<bte> a(String $$0) {
-      return axf.a(mc.s, akv.b($$0));
+   private static axf<btr> a(String $$0) {
+      return axf.a(mc.s, aku.b($$0));
    }
 }

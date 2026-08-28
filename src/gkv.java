@@ -1,20 +1,44 @@
-public class gkv {
-   public cow a = cow.b;
-   public float b;
-   public float c;
+public class gkv extends glg {
+   private final glb a;
 
+   protected gkv(ggy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, glb $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.u = 0.225F;
+      this.B = 1.0F;
+      this.a = $$7;
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.D = 0.1F * (this.r.i() * this.r.i() * 1.0F + 1.0F);
+      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
+      this.b($$7);
+   }
+
+   @Override
+   public gkk b() {
+      return gkk.b;
+   }
+
+   @Override
    public void a() {
+      super.a();
+      this.b(this.a);
+      this.j *= 0.95F;
+      this.k *= 0.9F;
+      this.l *= 0.95F;
    }
 
-   public fba b() {
-      return new fba(this.b, this.c);
-   }
+   public static class a implements gkj<lx> {
+      private final glb a;
 
-   public boolean c() {
-      return this.c > 1.0E-5F;
-   }
+      public a(glb $$0) {
+         this.a = $$0;
+      }
 
-   public void d() {
-      this.a = new cow(this.a.a(), this.a.b(), this.a.c(), this.a.d(), true, this.a.f(), this.a.g());
+      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gkv $$8 = new gkv($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.a(0.923F, 0.964F, 0.999F);
+         return $$8;
+      }
    }
 }

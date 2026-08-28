@@ -1,46 +1,21 @@
-public class gvj extends gse<cqf, hba> {
-   private static final akv a = akv.b("textures/entity/wither/wither_invulnerable.png");
-   private static final akv b = akv.b("textures/entity/wither/wither.png");
-   private final gdy h;
+public class gvj extends guj<cip, hbi, gfa> {
+   private static final aku a = aku.b("textures/entity/snow_golem.png");
 
-   public gvj(gsf.a $$0) {
-      super($$0);
-      this.h = new gdy($$0.a(gfd.dG));
+   public gvj(gtd.a $$0) {
+      super($$0, new gfa($$0.a(ggb.cU)), 0.5F);
+      this.a(new gxx(this, $$0.d()));
    }
 
-   public static gfk a() {
-      gfm $$0 = new gfm();
-      gfo $$1 = $$0.a();
-      $$1.a("head", gfj.c().a(0, 35).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gfg.a);
-      return gfk.a($$0, 64, 64);
+   public aku a(hbi $$0) {
+      return a;
    }
 
-   protected int a(cqf $$0, ji $$1) {
-      return 15;
+   public hbi b() {
+      return new hbi();
    }
 
-   public void a(hba $$0, ffv $$1, glz $$2, int $$3) {
-      $$1.a();
-      $$1.b(-1.0F, -1.0F, 1.0F);
-      ffz $$4 = $$2.getBuffer(this.h.a(this.a($$0)));
-      this.h.a(0.0F, $$0.c, $$0.b);
-      this.h.a($$1, $$4, $$3, hej.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   private akv a(hba $$0) {
-      return $$0.a ? a : b;
-   }
-
-   public hba b() {
-      return new hba();
-   }
-
-   public void a(cqf $$0, hba $$1, float $$2) {
+   public void a(cip $$0, hbi $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.v();
-      $$1.c = $$0.k($$2);
-      $$1.b = $$0.j($$2);
+      $$1.a = $$0.m();
    }
 }

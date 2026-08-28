@@ -1,58 +1,19 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class efi extends efz<eik> {
-   public efi(Codec<eik> $$0) {
-      super($$0);
-   }
+record efi(km e) implements eev {
+   public static MapCodec<efi> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(km.g.optionalFieldOf("offset", km.h).forGetter(efi::g)).apply($$0, efi::new));
 
    @Override
-   public boolean a(egb<eik> $$0) {
-      ji $$1 = $$0.e();
-      dhh $$2 = $$0.b();
-      azh $$3 = $$0.d();
-      if ($$1.v() > $$2.P() - 1) {
-         return false;
-      } else if (!$$2.a_($$1).a(djp.J) && !$$2.a_($$1.e()).a(djp.J)) {
-         return false;
-      } else {
-         boolean $$4 = false;
+   public eew<?> a() {
+      return eew.m;
+   }
 
-         for (jn $$5 : jn.values()) {
-            if ($$5 != jn.a && $$2.a_($$1.a($$5)).a(djp.ja)) {
-               $$4 = true;
-               break;
-            }
-         }
+   public boolean a(dhy $$0, ji $$1) {
+      return $$0.a(null, fco.b().a($$1));
+   }
 
-         if (!$$4) {
-            return false;
-         } else {
-            $$2.a($$1, djp.ny.m(), 2);
-
-            for (int $$6 = 0; $$6 < 200; $$6++) {
-               int $$7 = $$3.a(5) - $$3.a(6);
-               int $$8 = 3;
-               if ($$7 < 2) {
-                  $$8 += $$7 / 2;
-               }
-
-               if ($$8 >= 1) {
-                  ji $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
-                  dwy $$10 = $$2.a_($$9);
-                  if ($$10.l() || $$10.a(djp.J) || $$10.a(djp.ja) || $$10.a(djp.eb)) {
-                     for (jn $$11 : jn.values()) {
-                        dwy $$12 = $$2.a_($$9.a($$11));
-                        if ($$12.a(djp.ny)) {
-                           $$2.a($$9, djp.ny.m(), 2);
-                           break;
-                        }
-                     }
-                  }
-               }
-            }
-
-            return true;
-         }
-      }
+   public km g() {
+      return this.e;
    }
 }

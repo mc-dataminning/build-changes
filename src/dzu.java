@@ -1,102 +1,111 @@
-import com.google.common.collect.Lists;
-import java.util.Collections;
-import java.util.EnumSet;
+import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Nullable;
-import org.jetbrains.annotations.VisibleForTesting;
+import java.util.function.Predicate;
 
-public class dzu {
-   public static final int a = 8;
-   private static final EnumSet<ect.a> o = EnumSet.of(ect.a.c, ect.a.a);
-   public static final EnumSet<ect.a> b = EnumSet.of(ect.a.d, ect.a.b, ect.a.e, ect.a.f);
-   public static final dzu c = a("empty", null, o, dzy.a);
-   public static final dzu d = a("structure_starts", c, o, dzy.a);
-   public static final dzu e = a("structure_references", d, o, dzy.a);
-   public static final dzu f = a("biomes", e, o, dzy.a);
-   public static final dzu g = a("noise", f, o, dzy.a);
-   public static final dzu h = a("surface", g, o, dzy.a);
-   public static final dzu i = a("carvers", h, b, dzy.a);
-   public static final dzu j = a("features", i, b, dzy.a);
-   public static final dzu k = a("initialize_light", j, b, dzy.a);
-   public static final dzu l = a("light", k, b, dzy.a);
-   public static final dzu m = a("spawn", l, b, dzy.a);
-   public static final dzu n = a("full", m, b, dzy.b);
-   private final int p;
-   private final dzu q;
-   private final dzy r;
-   private final EnumSet<ect.a> s;
+public class dzu<T> implements eac<T> {
+   private final jw<T> a;
+   private final axw<T> b;
+   private final ead<T> c;
+   private final int d;
 
-   private static dzu a(String $$0, @Nullable dzu $$1, EnumSet<ect.a> $$2, dzy $$3) {
-      return ke.a(mb.l, $$0, new dzu($$1, $$2, $$3));
+   public dzu(jw<T> $$0, int $$1, ead<T> $$2, List<T> $$3) {
+      this($$0, $$1, $$2);
+      $$3.forEach(this.b::d);
    }
 
-   public static List<dzu> a() {
-      List<dzu> $$0 = Lists.newArrayList();
-
-      dzu $$1;
-      for ($$1 = n; $$1.c() != $$1; $$1 = $$1.c()) {
-         $$0.add($$1);
-      }
-
-      $$0.add($$1);
-      Collections.reverse($$0);
-      return $$0;
+   public dzu(jw<T> $$0, int $$1, ead<T> $$2) {
+      this($$0, $$1, $$2, axw.c(1 << $$1));
    }
 
-   @VisibleForTesting
-   protected dzu(@Nullable dzu $$0, EnumSet<ect.a> $$1, dzy $$2) {
-      this.q = $$0 == null ? this : $$0;
-      this.r = $$2;
-      this.s = $$1;
-      this.p = $$0 == null ? 0 : $$0.b() + 1;
+   private dzu(jw<T> $$0, int $$1, ead<T> $$2, axw<T> $$3) {
+      this.a = $$0;
+      this.d = $$1;
+      this.c = $$2;
+      this.b = $$3;
    }
 
-   public int b() {
-      return this.p;
-   }
-
-   public dzu c() {
-      return this.q;
-   }
-
-   public dzy d() {
-      return this.r;
-   }
-
-   public static dzu a(String $$0) {
-      return mb.l.a(akv.c($$0));
-   }
-
-   public EnumSet<ect.a> e() {
-      return this.s;
-   }
-
-   public boolean a(dzu $$0) {
-      return this.b() >= $$0.b();
-   }
-
-   public boolean b(dzu $$0) {
-      return this.b() > $$0.b();
-   }
-
-   public boolean c(dzu $$0) {
-      return this.b() <= $$0.b();
-   }
-
-   public boolean d(dzu $$0) {
-      return this.b() < $$0.b();
-   }
-
-   public static dzu a(dzu $$0, dzu $$1) {
-      return $$0.b($$1) ? $$0 : $$1;
+   public static <A> eac<A> a(int $$0, jw<A> $$1, ead<A> $$2, List<A> $$3) {
+      return new dzu<>($$1, $$0, $$2, $$3);
    }
 
    @Override
-   public String toString() {
-      return this.f();
+   public int a(T $$0) {
+      int $$1 = this.b.a($$0);
+      if ($$1 == -1) {
+         $$1 = this.b.d($$0);
+         if ($$1 >= 1 << this.d) {
+            $$1 = this.c.onResize(this.d + 1, $$0);
+         }
+      }
+
+      return $$1;
    }
 
-   public String f() {
-      return mb.l.b(this).toString();
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         if ($$0.test(this.b.a($$1))) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   @Override
+   public T a(int $$0) {
+      T $$1 = this.b.a($$0);
+      if ($$1 == null) {
+         throw new eab($$0);
+      } else {
+         return $$1;
+      }
+   }
+
+   @Override
+   public void a(vl $$0) {
+      this.b.a();
+      int $$1 = $$0.l();
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         this.b.d(this.a.b($$0.l()));
+      }
+   }
+
+   @Override
+   public void b(vl $$0) {
+      int $$1 = this.b();
+      $$0.c($$1);
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         $$0.c(this.a.a(this.b.a($$2)));
+      }
+   }
+
+   @Override
+   public int a() {
+      int $$0 = wg.a(this.b());
+
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         $$0 += wg.a(this.a.a(this.b.a($$1)));
+      }
+
+      return $$0;
+   }
+
+   public List<T> c() {
+      ArrayList<T> $$0 = new ArrayList<>();
+      this.b.iterator().forEachRemaining($$0::add);
+      return $$0;
+   }
+
+   @Override
+   public int b() {
+      return this.b.d();
+   }
+
+   @Override
+   public eac<T> a(ead<T> $$0) {
+      return new dzu<>(this.a, this.d, $$0, this.b.b());
    }
 }

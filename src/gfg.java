@@ -1,67 +1,18 @@
-public record gfg(float b, float c, float d, float e, float f, float g, float h, float i, float j) {
-   public static final gfg a = a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+public class gfg extends gdv {
+   public static final aku a = aku.b("textures/entity/trident.png");
 
-   public static gfg a(float $$0, float $$1, float $$2) {
-      return a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F);
+   public gfg(ggc $$0) {
+      super($$0, gnh::d);
    }
 
-   public static gfg b(float $$0, float $$1, float $$2) {
-      return a(0.0F, 0.0F, 0.0F, $$0, $$1, $$2);
-   }
-
-   public static gfg a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      return new gfg($$0, $$1, $$2, $$3, $$4, $$5, 1.0F, 1.0F, 1.0F);
-   }
-
-   public gfg c(float $$0, float $$1, float $$2) {
-      return new gfg(this.b + $$0, this.c + $$1, this.d + $$2, this.e, this.f, this.g, this.h, this.i, this.j);
-   }
-
-   public gfg a(float $$0) {
-      return new gfg(this.b, this.c, this.d, this.e, this.f, this.g, $$0, $$0, $$0);
-   }
-
-   public gfg b(float $$0) {
-      return $$0 == 1.0F ? this : this.d($$0, $$0, $$0);
-   }
-
-   public gfg d(float $$0, float $$1, float $$2) {
-      return new gfg(this.b * $$0, this.c * $$1, this.d * $$2, this.e, this.f, this.g, this.h * $$0, this.i * $$1, this.j * $$2);
-   }
-
-   public float a() {
-      return this.b;
-   }
-
-   public float b() {
-      return this.c;
-   }
-
-   public float c() {
-      return this.d;
-   }
-
-   public float d() {
-      return this.e;
-   }
-
-   public float e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
-   }
-
-   public float g() {
-      return this.h;
-   }
-
-   public float h() {
-      return this.i;
-   }
-
-   public float i() {
-      return this.j;
+   public static ggi a() {
+      ggk $$0 = new ggk();
+      ggm $$1 = $$0.a();
+      ggm $$2 = $$1.a("pole", ggh.c().a(0, 6).a(-0.5F, 2.0F, -0.5F, 1.0F, 25.0F, 1.0F), gge.a);
+      $$2.a("base", ggh.c().a(4, 0).a(-1.5F, 0.0F, -0.5F, 3.0F, 2.0F, 1.0F), gge.a);
+      $$2.a("left_spike", ggh.c().a(4, 3).a(-2.5F, -3.0F, -0.5F, 1.0F, 4.0F, 1.0F), gge.a);
+      $$2.a("middle_spike", ggh.c().a(0, 0).a(-0.5F, -4.0F, -0.5F, 1.0F, 4.0F, 1.0F), gge.a);
+      $$2.a("right_spike", ggh.c().a(4, 3).a().a(1.5F, -3.0F, -0.5F, 1.0F, 4.0F, 1.0F), gge.a);
+      return ggi.a($$0, 32, 32);
    }
 }

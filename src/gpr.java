@@ -1,112 +1,122 @@
-import org.joml.FrustumIntersection;
-import org.joml.Matrix4f;
-import org.joml.Vector4f;
+import java.util.EnumSet;
+import java.util.Optional;
 
-public class gpr {
-   public static final int a = 4;
-   private final FrustumIntersection b = new FrustumIntersection();
-   private final Matrix4f c = new Matrix4f();
-   private Vector4f d;
-   private double e;
-   private double f;
-   private double g;
+public class gpr implements gpj<dvj> {
+   private static final String a = "neck";
+   private static final String b = "front";
+   private static final String c = "back";
+   private static final String d = "left";
+   private static final String e = "right";
+   private static final String f = "top";
+   private static final String g = "bottom";
+   private final ggc h;
+   private final ggc i;
+   private final ggc j;
+   private final ggc k;
+   private final ggc l;
+   private final ggc m;
+   private final ggc n;
+   private static final float o = 0.125F;
 
-   public gpr(Matrix4f $$0, Matrix4f $$1) {
-      this.a($$0, $$1);
+   public gpr(gpk.a $$0) {
+      this($$0.f());
    }
 
-   public gpr(gpr $$0) {
-      this.b.set($$0.c);
-      this.c.set($$0.c);
-      this.e = $$0.e;
-      this.f = $$0.f;
-      this.g = $$0.g;
-      this.d = $$0.d;
+   public gpr(gfy $$0) {
+      ggc $$1 = $$0.a(ggb.ap);
+      this.h = $$1.b("neck");
+      this.m = $$1.b("top");
+      this.n = $$1.b("bottom");
+      ggc $$2 = $$0.a(ggb.aq);
+      this.i = $$2.b("front");
+      this.j = $$2.b("back");
+      this.k = $$2.b("left");
+      this.l = $$2.b("right");
    }
 
-   public gpr a(int $$0) {
-      double $$1 = Math.floor(this.e / (double)$$0) * (double)$$0;
-      double $$2 = Math.floor(this.f / (double)$$0) * (double)$$0;
-      double $$3 = Math.floor(this.g / (double)$$0) * (double)$$0;
-      double $$4 = Math.ceil(this.e / (double)$$0) * (double)$$0;
-      double $$5 = Math.ceil(this.f / (double)$$0) * (double)$$0;
+   public static ggi b() {
+      ggk $$0 = new ggk();
+      ggm $$1 = $$0.a();
+      ggg $$2 = new ggg(0.2F);
+      ggg $$3 = new ggg(-0.1F);
+      $$1.a(
+         "neck",
+         ggh.c().a(0, 0).a(4.0F, 17.0F, 4.0F, 8.0F, 3.0F, 8.0F, $$3).a(0, 5).a(5.0F, 20.0F, 5.0F, 6.0F, 1.0F, 6.0F, $$2),
+         gge.a(0.0F, 37.0F, 16.0F, (float) Math.PI, 0.0F, 0.0F)
+      );
+      ggh $$4 = ggh.c().a(-14, 13).a(0.0F, 0.0F, 0.0F, 14.0F, 0.0F, 14.0F);
+      $$1.a("top", $$4, gge.a(1.0F, 16.0F, 1.0F, 0.0F, 0.0F, 0.0F));
+      $$1.a("bottom", $$4, gge.a(1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F));
+      return ggi.a($$0, 32, 32);
+   }
 
-      for (double $$6 = Math.ceil(this.g / (double)$$0) * (double)$$0;
-         this.b
-               .intersectAab(
-                  (float)($$1 - this.e), (float)($$2 - this.f), (float)($$3 - this.g), (float)($$4 - this.e), (float)($$5 - this.f), (float)($$6 - this.g)
-               )
-            != -2;
-         this.g = this.g - (double)(this.d.z() * 4.0F)
-      ) {
-         this.e = this.e - (double)(this.d.x() * 4.0F);
-         this.f = this.f - (double)(this.d.y() * 4.0F);
+   public static ggi c() {
+      ggk $$0 = new ggk();
+      ggm $$1 = $$0.a();
+      ggh $$2 = ggh.c().a(1, 0).a(0.0F, 0.0F, 0.0F, 14.0F, 16.0F, 0.0F, EnumSet.of(jn.c));
+      $$1.a("back", $$2, gge.a(15.0F, 16.0F, 1.0F, 0.0F, 0.0F, (float) Math.PI));
+      $$1.a("left", $$2, gge.a(1.0F, 16.0F, 1.0F, 0.0F, (float) (-Math.PI / 2), (float) Math.PI));
+      $$1.a("right", $$2, gge.a(15.0F, 16.0F, 15.0F, 0.0F, (float) (Math.PI / 2), (float) Math.PI));
+      $$1.a("front", $$2, gge.a(1.0F, 16.0F, 15.0F, (float) Math.PI, 0.0F, 0.0F));
+      return ggi.a($$0, 16, 16);
+   }
+
+   private static hhy a(Optional<cxd> $$0) {
+      if ($$0.isPresent()) {
+         hhy $$1 = gns.a(dvl.a($$0.get()));
+         if ($$1 != null) {
+            return $$1;
+         }
       }
 
-      return this;
+      return gns.q;
    }
 
-   public void a(double $$0, double $$1, double $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
-
-   private void a(Matrix4f $$0, Matrix4f $$1) {
-      $$1.mul($$0, this.c);
-      this.b.set(this.c);
-      this.d = this.c.transformTranspose(new Vector4f(0.0F, 0.0F, 1.0F, 0.0F));
-   }
-
-   public boolean a(faw $$0) {
-      int $$1 = this.a($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
-      return $$1 == -2 || $$1 == -1;
-   }
-
-   public int a(enf $$0) {
-      return this.a((double)$$0.h(), (double)$$0.i(), (double)$$0.j(), (double)($$0.k() + 1), (double)($$0.l() + 1), (double)($$0.m() + 1));
-   }
-
-   private int a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      float $$6 = (float)($$0 - this.e);
-      float $$7 = (float)($$1 - this.f);
-      float $$8 = (float)($$2 - this.g);
-      float $$9 = (float)($$3 - this.e);
-      float $$10 = (float)($$4 - this.f);
-      float $$11 = (float)($$5 - this.g);
-      return this.b.intersectAab($$6, $$7, $$8, $$9, $$10, $$11);
-   }
-
-   public Vector4f[] a() {
-      Vector4f[] $$0 = new Vector4f[]{
-         new Vector4f(-1.0F, -1.0F, -1.0F, 1.0F),
-         new Vector4f(1.0F, -1.0F, -1.0F, 1.0F),
-         new Vector4f(1.0F, 1.0F, -1.0F, 1.0F),
-         new Vector4f(-1.0F, 1.0F, -1.0F, 1.0F),
-         new Vector4f(-1.0F, -1.0F, 1.0F, 1.0F),
-         new Vector4f(1.0F, -1.0F, 1.0F, 1.0F),
-         new Vector4f(1.0F, 1.0F, 1.0F, 1.0F),
-         new Vector4f(-1.0F, 1.0F, 1.0F, 1.0F)
-      };
-      Matrix4f $$1 = this.c.invert(new Matrix4f());
-
-      for (int $$2 = 0; $$2 < 8; $$2++) {
-         $$1.transform($$0[$$2]);
-         $$0[$$2].div($$0[$$2].w());
+   public void a(dvj $$0, float $$1, fgr $$2, gmx $$3, int $$4, int $$5) {
+      $$2.a();
+      jn $$6 = $$0.k();
+      $$2.a(0.5, 0.0, 0.5);
+      $$2.a(a.d.rotationDegrees(180.0F - $$6.p()));
+      $$2.a(-0.5, 0.0, -0.5);
+      dvj.a $$7 = $$0.h;
+      if ($$7 != null && $$0.i() != null) {
+         float $$8 = ((float)($$0.i().ae() - $$0.g) + $$1) / (float)$$7.c;
+         if ($$8 >= 0.0F && $$8 <= 1.0F) {
+            if ($$7 == dvj.a.a) {
+               float $$9 = 0.015625F;
+               float $$10 = $$8 * (float) (Math.PI * 2);
+               float $$11 = -1.5F * (ayz.b($$10) + 0.5F) * ayz.a($$10 / 2.0F);
+               $$2.a(a.b.rotation($$11 * 0.015625F), 0.5F, 0.0F, 0.5F);
+               float $$12 = ayz.a($$10);
+               $$2.a(a.f.rotation($$12 * 0.015625F), 0.5F, 0.0F, 0.5F);
+            } else {
+               float $$13 = ayz.a(-$$8 * 3.0F * (float) Math.PI) * 0.125F;
+               float $$14 = 1.0F - $$8;
+               $$2.a(a.d.rotation($$13 * $$14), 0.5F, 0.0F, 0.5F);
+            }
+         }
       }
 
-      return $$0;
+      this.b($$2, $$3, $$4, $$5, $$0.s());
+      $$2.b();
    }
 
-   public double b() {
-      return this.e;
+   public void a(fgr $$0, gmx $$1, int $$2, int $$3, dvz $$4) {
+      this.b($$0, $$1, $$2, $$3, $$4);
    }
 
-   public double c() {
-      return this.f;
+   private void b(fgr $$0, gmx $$1, int $$2, int $$3, dvz $$4) {
+      fgv $$5 = gns.p.a($$1, gnh::d);
+      this.h.a($$0, $$5, $$2, $$3);
+      this.m.a($$0, $$5, $$2, $$3);
+      this.n.a($$0, $$5, $$2, $$3);
+      this.a(this.i, $$0, $$1, $$2, $$3, a($$4.e()));
+      this.a(this.j, $$0, $$1, $$2, $$3, a($$4.b()));
+      this.a(this.k, $$0, $$1, $$2, $$3, a($$4.c()));
+      this.a(this.l, $$0, $$1, $$2, $$3, a($$4.d()));
    }
 
-   public double d() {
-      return this.g;
+   private void a(ggc $$0, fgr $$1, gmx $$2, int $$3, int $$4, hhy $$5) {
+      $$0.a($$1, $$5.a($$2, gnh::d), $$3, $$4);
    }
 }

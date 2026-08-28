@@ -1,49 +1,86 @@
-import java.util.Set;
+public class gbq extends gda<gym> implements gbt {
+   private final ggc a = this.v.b("head");
+   private final ggc b = this.v.b("body");
+   private final ggc c = this.b.b("right_arm");
+   private final ggc d = this.b.b("left_arm");
+   private final ggc e = this.b.b("right_wing");
+   private final ggc f = this.b.b("left_wing");
+   private static final float g = (float) (Math.PI / 4);
+   private static final float i = -1.134464F;
+   private static final float j = (float) (-Math.PI / 3);
 
-public class gbq extends gcc<gyc> {
-   public static final String a = "red_thing";
-   public static final gfn b = new gbb(Set.of("head", "beak", "red_thing"));
-   private final gfe c;
-   private final gfe d;
-   private final gfe e;
-   private final gfe f;
-   private final gfe g;
-
-   public gbq(gfe $$0) {
-      super($$0);
-      this.c = $$0.b("head");
-      this.d = $$0.b("right_leg");
-      this.e = $$0.b("left_leg");
-      this.f = $$0.b("right_wing");
-      this.g = $$0.b("left_wing");
+   public gbq(ggc $$0) {
+      super($$0.b("root"), gnh::j);
    }
 
-   public static gfk a() {
-      gfm $$0 = new gfm();
-      gfo $$1 = $$0.a();
-      int $$2 = 16;
-      gfo $$3 = $$1.a("head", gfj.c().a(0, 0).a(-2.0F, -6.0F, -2.0F, 4.0F, 6.0F, 3.0F), gfg.a(0.0F, 15.0F, -4.0F));
-      $$3.a("beak", gfj.c().a(14, 0).a(-2.0F, -4.0F, -4.0F, 4.0F, 2.0F, 2.0F), gfg.a);
-      $$3.a("red_thing", gfj.c().a(14, 4).a(-1.0F, -2.0F, -3.0F, 2.0F, 2.0F, 2.0F), gfg.a);
-      $$1.a("body", gfj.c().a(0, 9).a(-3.0F, -4.0F, -3.0F, 6.0F, 8.0F, 6.0F), gfg.a(0.0F, 16.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      gfj $$4 = gfj.c().a(26, 0).a(-1.0F, 0.0F, -3.0F, 3.0F, 5.0F, 3.0F);
-      $$1.a("right_leg", $$4, gfg.a(-2.0F, 19.0F, 1.0F));
-      $$1.a("left_leg", $$4, gfg.a(1.0F, 19.0F, 1.0F));
-      $$1.a("right_wing", gfj.c().a(24, 13).a(0.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), gfg.a(-4.0F, 13.0F, 0.0F));
-      $$1.a("left_wing", gfj.c().a(24, 13).a(-1.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), gfg.a(4.0F, 13.0F, 0.0F));
-      return gfk.a($$0, 64, 32);
+   public static ggi a() {
+      ggk $$0 = new ggk();
+      ggm $$1 = $$0.a();
+      ggm $$2 = $$1.a("root", ggh.c(), gge.a(0.0F, 23.5F, 0.0F));
+      $$2.a("head", ggh.c().a(0, 0).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F, new ggg(0.0F)), gge.a(0.0F, -3.99F, 0.0F));
+      ggm $$3 = $$2.a(
+         "body",
+         ggh.c().a(0, 10).a(-1.5F, 0.0F, -1.0F, 3.0F, 4.0F, 2.0F, new ggg(0.0F)).a(0, 16).a(-1.5F, 0.0F, -1.0F, 3.0F, 5.0F, 2.0F, new ggg(-0.2F)),
+         gge.a(0.0F, -4.0F, 0.0F)
+      );
+      $$3.a("right_arm", ggh.c().a(23, 0).a(-0.75F, -0.5F, -1.0F, 1.0F, 4.0F, 2.0F, new ggg(-0.01F)), gge.a(-1.75F, 0.5F, 0.0F));
+      $$3.a("left_arm", ggh.c().a(23, 6).a(-0.25F, -0.5F, -1.0F, 1.0F, 4.0F, 2.0F, new ggg(-0.01F)), gge.a(1.75F, 0.5F, 0.0F));
+      $$3.a("right_wing", ggh.c().a(16, 14).a(0.0F, 1.0F, 0.0F, 0.0F, 5.0F, 8.0F, new ggg(0.0F)), gge.a(-0.5F, 0.0F, 0.6F));
+      $$3.a("left_wing", ggh.c().a(16, 14).a(0.0F, 1.0F, 0.0F, 0.0F, 5.0F, 8.0F, new ggg(0.0F)), gge.a(0.5F, 0.0F, 0.6F));
+      return ggi.a($$0, 32, 32);
    }
 
-   public void a(gyc $$0) {
+   public void a(gym $$0) {
       super.a($$0);
-      float $$1 = (ayz.a($$0.a) + 1.0F) * $$0.b;
-      this.c.e = $$0.ab * (float) (Math.PI / 180.0);
-      this.c.f = $$0.aa * (float) (Math.PI / 180.0);
-      float $$2 = $$0.ae;
-      float $$3 = $$0.ad;
-      this.d.e = ayz.b($$3 * 0.6662F) * 1.4F * $$2;
-      this.e.e = ayz.b($$3 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.f.g = $$1;
-      this.g.g = -$$1;
+      float $$1 = $$0.ae;
+      float $$2 = $$0.ad;
+      float $$3 = $$0.u * 20.0F * (float) (Math.PI / 180.0) + $$2;
+      float $$4 = ayz.b($$3) * (float) Math.PI * 0.15F + $$1;
+      float $$5 = $$0.u * 9.0F * (float) (Math.PI / 180.0);
+      float $$6 = Math.min($$1 / 0.3F, 1.0F);
+      float $$7 = 1.0F - $$6;
+      float $$8 = $$0.d;
+      if ($$0.a) {
+         float $$9 = $$0.u * 8.0F * (float) (Math.PI / 180.0) + $$1;
+         float $$10 = ayz.b($$9) * 16.0F * (float) (Math.PI / 180.0);
+         float $$11 = $$0.c;
+         float $$12 = ayz.b($$9) * 14.0F * (float) (Math.PI / 180.0);
+         float $$13 = ayz.b($$9) * 30.0F * (float) (Math.PI / 180.0);
+         this.v.f = $$0.b ? (float) (Math.PI * 4) * $$11 : this.v.f;
+         this.v.g = $$10 * (1.0F - $$11);
+         this.a.f = $$13 * (1.0F - $$11);
+         this.a.g = $$12 * (1.0F - $$11);
+      } else {
+         this.a.e = $$0.ab * (float) (Math.PI / 180.0);
+         this.a.f = $$0.aa * (float) (Math.PI / 180.0);
+      }
+
+      this.e.e = 0.43633232F * (1.0F - $$6);
+      this.e.f = (float) (-Math.PI / 4) + $$4;
+      this.f.e = 0.43633232F * (1.0F - $$6);
+      this.f.f = (float) (Math.PI / 4) - $$4;
+      this.b.e = $$6 * (float) (Math.PI / 4);
+      float $$14 = $$8 * ayz.h($$6, (float) (-Math.PI / 3), -1.134464F);
+      this.v.c = this.v.c + (float)Math.cos((double)$$5) * 0.25F * $$7;
+      this.c.e = $$14;
+      this.d.e = $$14;
+      float $$15 = $$7 * (1.0F - $$8);
+      float $$16 = 0.43633232F - ayz.b($$5 + (float) (Math.PI * 3.0 / 2.0)) * (float) Math.PI * 0.075F * $$15;
+      this.d.g = -$$16;
+      this.c.g = $$16;
+      this.c.f = 0.27925268F * $$8;
+      this.d.f = -0.27925268F * $$8;
+   }
+
+   @Override
+   public void a(bvr $$0, fgr $$1) {
+      float $$2 = 1.0F;
+      float $$3 = 3.0F;
+      this.v.a($$1);
+      this.b.a($$1);
+      $$1.a(0.0F, 0.0625F, 0.1875F);
+      $$1.a(a.b.rotation(this.c.e));
+      $$1.b(0.7F, 0.7F, 0.7F);
+      $$1.a(0.0625F, 0.0F, 0.0F);
    }
 }

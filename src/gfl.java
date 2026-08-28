@@ -1,9 +1,5 @@
-public class gfl {
-   final int a;
-   final int b;
+public interface gfl {
+   void a(boolean var1);
 
-   public gfl(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   void a(fgr var1);
 }

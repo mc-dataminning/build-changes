@@ -1,54 +1,47 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
+import javax.annotation.Nullable;
 
-public class cne {
-   protected static final ImmutableList<? extends cft<? extends cfs<? super cnd>>> a = ImmutableList.of(cft.c, cft.d);
-   protected static final ImmutableList<? extends cem<?>> b = ImmutableList.of(cem.g, cem.h, cem.k, cem.l, cem.n, cem.m, cem.E, cem.t, cem.o, cem.p);
-
-   static void a(bwk<cnd> $$0) {
-      $$0.a(cqp.a, 0, ImmutableList.of(new bzv<cnd>(0.8F) {
-         protected boolean a(ard $$0, cnd $$1) {
-            return $$1.t() && super.a($$0, (bvi)$$1);
-         }
-      }, new byh(45, 90), new byl()));
+public class cne extends cma {
+   public cne(bvi<? extends cne> $$0, dgz $$1) {
+      super($$0, $$1);
    }
 
-   static void b(bwk<cnd> $$0) {
-      $$0.a(
-         cqp.b,
-         10,
-         ImmutableList.of(
-            bzn.a(($$0x, $$1) -> $$1.gC(), ($$0x, $$1) -> $$1.eb().c(cem.l)),
-            bzb.a(8.0F, brw.a(30, 60)),
-            new byy(ImmutableList.of(Pair.of(byt.a(0.3F), 2), Pair.of(bzi.a(0.3F, 3), 2), Pair.of(new bxl(30, 60), 1)))
-         )
-      );
+   public static boolean a(bvi<cne> $$0, dhq $$1, bvh $$2, ji $$3, azh $$4) {
+      ji $$5 = $$3;
+
+      do {
+         $$5 = $$5.d();
+      } while ($$1.a_($$5).a(dkg.rr));
+
+      return b($$0, $$1, $$2, $$3, $$4) && (bvh.a($$2) || $$1.h($$5.e()));
    }
 
-   static void c(bwk<cnd> $$0) {
-      $$0.a(cqp.k, 10, ImmutableList.of(bzg.a(1.0F), byi.a(cnd::t, 40), bzq.a()), cem.o);
+   @Override
+   protected avz u() {
+      return awa.Ak;
    }
 
-   public static bwk.b<cnd> a() {
-      return bwk.a(b, a);
+   @Override
+   protected avz e(btp $$0) {
+      return awa.Am;
    }
 
-   public static bwk<cnd> d(bwk<cnd> $$0) {
-      a($$0);
-      b($$0);
-      c($$0);
-      $$0.a(ImmutableSet.of(cqp.a));
-      $$0.b(cqp.b);
-      $$0.f();
-      return $$0;
+   @Override
+   protected avz l_() {
+      return awa.Al;
    }
 
-   public static void a(cnd $$0) {
-      if (!$$0.t()) {
-         $$0.eb().f();
-      } else {
-         $$0.eb().a(ImmutableList.of(cqp.k, cqp.b));
+   @Override
+   avz m() {
+      return awa.An;
+   }
+
+   @Override
+   protected cpy a(cxh $$0, float $$1, @Nullable cxh $$2) {
+      cpy $$3 = super.a($$0, $$1, $$2);
+      if ($$3 instanceof cqa) {
+         ((cqa)$$3).a(new bue(bug.b, 600));
       }
+
+      return $$3;
    }
 }

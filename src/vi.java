@@ -61,7 +61,7 @@ public class vi extends SimpleChannelInboundHandler<yw<?>> {
    public static final Supplier<DefaultEventLoopGroup> g = Suppliers.memoize(
       () -> new DefaultEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Local Client IO #%d").setDaemon(true).build())
    );
-   private static final vx<aio> j = ain.b;
+   private static final vx<ain> j = aim.b;
    private final yx k;
    private volatile boolean l = true;
    private final Queue<Consumer<vi>> m = Queues.newConcurrentLinkedQueue();
@@ -126,7 +126,7 @@ public class vi extends SimpleChannelInboundHandler<yw<?>> {
                if ($$2) {
                   i.debug("Failed to sent packet", $$1);
                   if (this.g() == yx.b) {
-                     yw<?> $$7 = (yw<?>)(this.l ? new aiu($$3) : new zf($$3));
+                     yw<?> $$7 = (yw<?>)(this.l ? new ait($$3) : new zf($$3));
                      this.a($$7, vw.a(() -> this.a($$5)));
                   } else {
                      this.a($$5);
@@ -151,7 +151,7 @@ public class vi extends SimpleChannelInboundHandler<yw<?>> {
             if ($$2.a($$1)) {
                try {
                   a($$1, $$2);
-               } catch (alh var5) {
+               } catch (alg var5) {
                } catch (RejectedExecutionException var6) {
                   this.a(wp.c("multiplayer.disconnect.server_shutdown"));
                } catch (ClassCastException var7) {
@@ -238,26 +238,26 @@ public class vi extends SimpleChannelInboundHandler<yw<?>> {
       }
    }
 
-   public void a(String $$0, int $$1, ajq $$2) {
-      this.a($$0, $$1, ajw.b, ajw.d, $$2, aik.a);
+   public void a(String $$0, int $$1, ajp $$2) {
+      this.a($$0, $$1, ajv.b, ajv.d, $$2, aij.a);
    }
 
-   public void a(String $$0, int $$1, aiq $$2) {
-      this.a($$0, $$1, aix.b, aix.d, $$2, aik.b);
+   public void a(String $$0, int $$1, aip $$2) {
+      this.a($$0, $$1, aiw.b, aiw.d, $$2, aij.b);
    }
 
    public <S extends wb, C extends vf> void a(String $$0, int $$1, vx<S> $$2, vx<C> $$3, C $$4, boolean $$5) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5 ? aik.c : aik.b);
+      this.a($$0, $$1, $$2, $$3, $$4, $$5 ? aij.c : aij.b);
    }
 
-   private <S extends wb, C extends vf> void a(String $$0, int $$1, vx<S> $$2, vx<C> $$3, C $$4, aik $$5) {
+   private <S extends wb, C extends vf> void a(String $$0, int $$1, vx<S> $$2, vx<C> $$3, C $$4, aij $$5) {
       if ($$2.a() != $$3.a()) {
          throw new IllegalStateException("Mismatched initial protocols");
       } else {
          this.p = $$4;
          this.a((Consumer<vi>)($$6 -> {
             this.a($$3, $$4);
-            $$6.b(new ail(ab.b().e(), $$0, $$1, $$5), null, true);
+            $$6.b(new aik(ab.b().e(), $$0, $$1, $$5), null, true);
             this.a($$2);
          }));
       }
@@ -413,7 +413,7 @@ public class vi extends SimpleChannelInboundHandler<yw<?>> {
       return this.k.a();
    }
 
-   public static vi a(InetSocketAddress $$0, boolean $$1, @Nullable bne $$2) {
+   public static vi a(InetSocketAddress $$0, boolean $$1, @Nullable bnt $$2) {
       vi $$3 = new vi(yx.b);
       if ($$2 != null) {
          $$3.a($$2);
@@ -471,9 +471,9 @@ public class vi extends SimpleChannelInboundHandler<yw<?>> {
       boolean $$6 = $$4 == yx.a;
       $$0.addLast("splitter", a($$3, $$2))
          .addLast(new ChannelHandler[]{new FlowControlHandler()})
-         .addLast(c($$5), (ChannelHandler)($$5 ? new vt<aio>(j) : new we.a()))
+         .addLast(c($$5), (ChannelHandler)($$5 ? new vt<ain>(j) : new we.a()))
          .addLast("prepender", d($$2))
-         .addLast(b($$6), (ChannelHandler)($$6 ? new vu<aio>(j) : new we.c()));
+         .addLast(b($$6), (ChannelHandler)($$6 ? new vu<ain>(j) : new we.c()));
    }
 
    private static ChannelOutboundHandler d(boolean $$0) {
@@ -586,7 +586,7 @@ public class vi extends SimpleChannelInboundHandler<yw<?>> {
       return this.x;
    }
 
-   public void a(bne $$0) {
+   public void a(bnt $$0) {
       this.B = new vb($$0);
    }
 }

@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 
-public class gd implements ArgumentType<fbx> {
+public class gd implements ArgumentType<fct> {
    private static final Collection<String> b = Arrays.asList("sidebar", "foo.bar");
    public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wp.b("argument.scoreboardDisplaySlot.invalid", $$0));
 
@@ -20,13 +20,13 @@ public class gd implements ArgumentType<fbx> {
       return new gd();
    }
 
-   public static fbx a(CommandContext<ex> $$0, String $$1) {
-      return (fbx)$$0.getArgument($$1, fbx.class);
+   public static fct a(CommandContext<ex> $$0, String $$1) {
+      return (fct)$$0.getArgument($$1, fct.class);
    }
 
-   public fbx a(StringReader $$0) throws CommandSyntaxException {
+   public fct a(StringReader $$0) throws CommandSyntaxException {
       String $$1 = $$0.readUnquotedString();
-      fbx $$2 = fbx.t.a($$1);
+      fct $$2 = fct.t.a($$1);
       if ($$2 == null) {
          throw a.createWithContext($$0, $$1);
       } else {
@@ -35,7 +35,7 @@ public class gd implements ArgumentType<fbx> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return fc.b(Arrays.stream(fbx.values()).map(fbx::c), $$1);
+      return fc.b(Arrays.stream(fct.values()).map(fct::c), $$1);
    }
 
    public Collection<String> getExamples() {

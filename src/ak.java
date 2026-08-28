@@ -21,7 +21,7 @@ public class ak implements Comparable<ak> {
    private static final Codec<Instant> c = ayi.a(b).xmap(Instant::from, $$0 -> $$0.atZone(ZoneId.systemDefault()));
    private static final Codec<Map<String, ar>> d = Codec.unboundedMap(Codec.STRING, c)
       .xmap(
-         $$0 -> $$0.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$0x -> new ar((Instant)$$0x.getValue()))),
+         $$0 -> af.a($$0, ar::new),
          $$0 -> $$0.entrySet()
                .stream()
                .filter($$0x -> ((ar)$$0x.getValue()).a())

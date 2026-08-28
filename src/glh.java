@@ -1,21 +1,29 @@
-public class glh {
-   public static final dft a = dhl::a;
-   public static final dft b = ($$0, $$1, $$2) -> $$0.f();
-   public static final dft c = ($$0, $$1, $$2) -> $$0.i();
-
-   private static int a(dfl $$0, ji $$1, dft $$2) {
-      return $$0.a($$1, $$2);
+public class glh extends gks {
+   glh(ggy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, glb $$7) {
+      super($$0, $$1, $$2, $$3, $$7, 1.25F);
+      this.B = 0.6F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.D *= 0.75F;
+      this.t = 60 + this.r.a(12);
+      this.b($$7);
+      if (this.r.a(4) == 0) {
+         this.a(0.6F + this.r.i() * 0.2F, 0.6F + this.r.i() * 0.3F, this.r.i() * 0.2F);
+      } else {
+         this.a(0.1F + this.r.i() * 0.2F, 0.4F + this.r.i() * 0.3F, this.r.i() * 0.2F);
+      }
    }
 
-   public static int a(dfl $$0, ji $$1) {
-      return a($$0, $$1, a);
-   }
+   public static class a implements gkj<lx> {
+      private final glb a;
 
-   public static int b(dfl $$0, ji $$1) {
-      return a($$0, $$1, b);
-   }
+      public a(glb $$0) {
+         this.a = $$0;
+      }
 
-   public static int c(dfl $$0, ji $$1) {
-      return a($$0, $$1, c);
+      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new glh($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
    }
 }

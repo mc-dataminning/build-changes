@@ -1,40 +1,29 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalInt;
 
-public record ejz(jv<djn> b, jv<djn> c, eke d, int e, int f, float g) {
-   public static final Codec<ejz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               kg.a(mc.f).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
-               kg.a(mc.f).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
-               eke.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
-               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, ejz::new)
-   );
+public abstract class ejz {
+   public static final Codec<ejz> a = mb.Y.q().dispatch(ejz::b, eka::a);
+   protected static final int b = 16;
+   protected final OptionalInt c;
 
-   public jv<djn> a() {
-      return this.b;
+   protected static <S extends ejz> RecordCodecBuilder<S, OptionalInt> a() {
+      return Codec.intRange(0, 80)
+         .optionalFieldOf("min_clipped_height")
+         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
+         .forGetter($$0 -> $$0.c);
    }
 
-   public jv<djn> b() {
+   public ejz(OptionalInt $$0) {
+      this.c = $$0;
+   }
+
+   protected abstract eka<?> b();
+
+   public abstract int a(int var1, int var2);
+
+   public OptionalInt c() {
       return this.c;
-   }
-
-   public eke c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
-   }
-
-   public int e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
    }
 }

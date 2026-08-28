@@ -1,16 +1,10 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.Supplier;
 
-public abstract class dih<E extends dua> extends diz {
-   protected final Supplier<duc<? extends E>> a;
-
-   protected dih(dwx.d $$0, Supplier<duc<? extends E>> $$1) {
-      super($$0);
-      this.a = $$1;
+public class dih {
+   public static MapCodec<? extends dig> a(ke<MapCodec<? extends dig>> $$0) {
+      ke.a($$0, "fixed", din.b);
+      ke.a($$0, "multi_noise", dip.c);
+      ke.a($$0, "checkerboard", dik.b);
+      return ke.a($$0, "the_end", dit.b);
    }
-
-   @Override
-   protected abstract MapCodec<? extends dih<E>> a();
-
-   public abstract dlv.c<? extends duh> a(dwy var1, dgj var2, ji var3, boolean var4);
 }

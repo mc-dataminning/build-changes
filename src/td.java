@@ -209,7 +209,7 @@ public class td {
    }
 
    private static int a(sl $$0) {
-      $$0.g().a_(null, $$0.e()).stream().forEach($$0x -> $$0x.a(bum.d.b));
+      $$0.g().a_(null, $$0.e()).stream().forEach($$0x -> $$0x.a(bva.d.b));
       $$0.f().c($$0.g());
       tb.a($$0.e(), $$0.g());
       a($$0.g(), "Reset succeded for: " + $$0.b(), n.k);
@@ -225,7 +225,7 @@ public class td {
    }
 
    private static Optional<sl> a(ji $$0, ard $$1, sy $$2) {
-      dvs $$3 = (dvs)$$1.c_($$0);
+      dwk $$3 = (dwk)$$1.c_($$0);
       if ($$3 == null) {
          a($$1, "Structure block entity could not be found", n.m);
          return Optional.empty();
@@ -248,11 +248,11 @@ public class td {
       if ($$2 <= 48 && $$3 <= 48 && $$4 <= 48) {
          ard $$5 = $$0.e();
          ji $$6 = a($$0).e();
-         tb.a($$1.toLowerCase(), $$6, new km($$2, $$3, $$4), dqf.a, $$5);
+         tb.a($$1.toLowerCase(), $$6, new km($$2, $$3, $$4), dqw.a, $$5);
          ji $$7 = $$6.d();
          ji $$8 = $$7.b($$2 - 1, 0, $$4 - 1);
-         ji.d($$7, $$8).forEach($$1x -> $$5.b($$1x, djp.I.m()));
-         tb.a($$6, new ji(1, 0, -1), dqf.a, $$5);
+         ji.d($$7, $$8).forEach($$1x -> $$5.b($$1x, dkg.I.m()));
+         tb.a($$6, new ji(1, 0, -1), dqw.a, $$5);
          return 0;
       } else {
          throw new IllegalArgumentException("The structure must be less than 48 blocks big in each axis");
@@ -260,7 +260,7 @@ public class td {
    }
 
    private static int a(ex $$0, String $$1) throws CommandSyntaxException {
-      fax $$2 = (fax)$$0.h().a(10.0, 1.0F, false);
+      fbt $$2 = (fbt)$$0.h().a(10.0, 1.0F, false);
       ji $$3 = $$2.b();
       ard $$4 = $$0.e();
       Optional<ji> $$5 = tb.a($$3, 15, $$4);
@@ -272,7 +272,7 @@ public class td {
          $$0.b(wp.b("Can't find a structure block that contains the targeted pos " + $$3));
          return 0;
       } else {
-         dvs $$6 = (dvs)$$4.c_($$5.get());
+         dwk $$6 = (dwk)$$4.c_($$5.get());
          if ($$6 == null) {
             a($$4, "Structure block entity could not be found", n.m);
             return 0;
@@ -281,15 +281,9 @@ public class td {
             String $$8 = $$7.u() + ", " + $$7.v() + ", " + $$7.w();
             String $$9 = $$6.t();
             wp $$10 = wp.b($$8)
-               .b(
-                  xm.a
-                     .a(true)
-                     .a(n.k)
-                     .a(new wv(wv.a.a, wp.b("Click to copy to clipboard")))
-                     .a(new wn(wn.a.f, "final BlockPos " + $$1 + " = new BlockPos(" + $$8 + ");"))
-               );
+               .b(xm.a.a(true).a(n.k).a(new wv.e(wp.b("Click to copy to clipboard"))).a(new wn.c("final BlockPos " + $$1 + " = new BlockPos(" + $$8 + ");")));
             $$0.a(() -> wp.b("Position relative to " + $$9 + ": ").b($$10), false);
-            agd.a($$4, new ji($$3), $$8, -2147418368, 10000);
+            agc.a($$4, new ji($$3), $$8, -2147418368, 10000);
             return 1;
          }
       }
@@ -309,9 +303,9 @@ public class td {
       return 1;
    }
 
-   static int a(ex $$0, dvs $$1) {
+   static int a(ex $$0, dwk $$1) {
       String $$2 = $$1.c();
-      if (!$$1.b(true)) {
+      if (!$$1.c(true)) {
          c($$0, "Failed to save structure " + $$2);
       }
 
@@ -320,7 +314,7 @@ public class td {
 
    private static int b(ex $$0, String $$1) {
       Path $$2 = Paths.get(tb.c);
-      akv $$3 = akv.a($$1);
+      aku $$3 = aku.a($$1);
       Path $$4 = $$0.e().r().a($$3, ".nbt");
       Path $$5 = ot.a(mg.a, $$4, $$3.a(), $$2);
       if ($$5 == null) {
@@ -341,7 +335,7 @@ public class td {
    }
 
    private static boolean a(ard $$0, String $$1) {
-      if ($$0.r().b(akv.a($$1)).isEmpty()) {
+      if ($$0.r().b(aku.a($$1)).isEmpty()) {
          a($$0, "Test structure " + $$1 + " could not be found", n.m);
          return false;
       } else {
@@ -351,7 +345,7 @@ public class td {
 
    static ji a(ex $$0) {
       ji $$1 = ji.a((kb)$$0.d());
-      int $$2 = $$0.e().a(ect.a.b, $$1).v();
+      int $$2 = $$0.e().a(edo.a.b, $$1).v();
       return new ji($$1.u(), $$2 + 1, $$1.w() + 3);
    }
 
@@ -361,7 +355,7 @@ public class td {
 
    private static int d(ex $$0, String $$1) {
       Path $$2 = Paths.get(tb.c, $$1 + ".snbt");
-      akv $$3 = akv.b($$1);
+      aku $$3 = aku.b($$1);
       Path $$4 = $$0.e().r().a($$3, ".nbt");
 
       try {
@@ -413,11 +407,11 @@ public class td {
          ard $$1 = $$0.e();
          so.a($$1);
          this.a(this.a.findStructureBlockPos(), $$1x -> {
-            dvs $$2 = (dvs)$$1.c_($$1x);
+            dwk $$2 = (dwk)$$1.c_($$1x);
             if ($$2 == null) {
                return 0;
             } else {
-               enf $$3 = tb.b($$2);
+               eob $$3 = tb.b($$2);
                tb.a($$3, $$1);
                return 1;
             }
@@ -430,7 +424,7 @@ public class td {
          ex $$1 = this.a.a();
          ard $$2 = $$1.e();
          this.a(this.a.findStructureBlockPos(), $$3 -> {
-            dvs $$4 = (dvs)$$2.c_($$3);
+            dwk $$4 = (dwk)$$2.c_($$3);
             if ($$4 == null) {
                td.a($$2, "Structure block entity could not be found", n.m);
                $$0.setFalse();
@@ -457,7 +451,7 @@ public class td {
          Collection<sf> $$4 = new ArrayList<>();
 
          for (sl $$5 : $$3) {
-            for (dqf $$6 : dqf.values()) {
+            for (dqw $$6 : dqw.values()) {
                Collection<sl> $$7 = new ArrayList<>();
 
                for (int $$8 = 0; $$8 < 100; $$8++) {
@@ -521,7 +515,7 @@ public class td {
             .findStructureBlockPos()
             .forEach(
                $$2x -> {
-                  dvs $$3 = (dvs)this.a.a().e().c_($$2x);
+                  dwk $$3 = (dwk)this.a.a().e().c_($$2x);
                   if ($$3 != null) {
                      jn $$4 = $$3.s().a(jn.c);
                      ji $$5 = $$3.aA_().a($$4, 2);
@@ -531,7 +525,7 @@ public class td {
                      int $$9 = $$1.w() - $$2x.w();
                      int $$10 = ayz.d(ayz.c((float)($$8 * $$8 + $$9 * $$9)));
                      wp $$11 = ws.a((wp)wp.a("chat.coordinates", $$2x.u(), $$2x.v(), $$2x.w()))
-                        .a($$1xx -> $$1xx.a(n.k).a(new wn(wn.a.d, $$7)).a(new wv(wv.a.a, wp.c("chat.coordinates.tooltip"))));
+                        .a($$1xx -> $$1xx.a(n.k).a(new wn.g($$7)).a(new wv.e(wp.c("chat.coordinates.tooltip"))));
                      wp $$12 = wp.b("Found structure at: ").b($$11).f(" (distance: " + $$10 + ")");
                      this.a.a().a(() -> $$12, false);
                      $$0.increment();

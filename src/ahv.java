@@ -1,29 +1,18 @@
-public class ahv implements yw<agg> {
-   public static final yn<vl, ahv> a = yw.a(ahv::a, ahv::new);
-   private final int b;
+import java.util.Optional;
 
-   public ahv(int $$0) {
-      this.b = $$0;
-   }
-
-   private ahv(vl $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(vl $$0) {
-      $$0.c(this.b);
-   }
+public record ahv(Optional<jr<buc>> b, Optional<jr<buc>> c) implements yw<agf> {
+   public static final yn<wa, ahv> a = yn.a(buc.b.a(yl::a), ahv::b, buc.b.a(yl::a), ahv::e, ahv::new);
 
    @Override
    public yy<ahv> a() {
-      return age.ca;
+      return agd.ca;
    }
 
-   public void a(agg $$0) {
+   public void a(agf $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public Optional<jr<buc>> e() {
+      return this.c;
    }
 }

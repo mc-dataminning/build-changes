@@ -1,24 +1,26 @@
-public record acq(int b, bvv c, boolean d) implements yw<abl> {
-   public static final yn<vl, acq> a = yn.a(yl.h, acq::b, bvv.a, acq::e, yl.b, acq::f, acq::new);
+import java.util.Optional;
 
-   public static acq a(bum $$0) {
-      return new acq($$0.ar(), new bvv($$0.du(), $$0.dy(), $$0.dL(), $$0.dN()), $$0.aJ());
-   }
+public record acq(fbx b, Optional<fbx> c, lr d, jr<avz> e) implements yw<abl> {
+   public static final yn<wa, acq> a = yn.a(fbx.b, acq::b, fbx.b.a(yl::a), acq::e, lt.bk, acq::f, avz.d, acq::g, acq::new);
 
    @Override
    public yy<acq> a() {
-      return age.be;
+      return agd.D;
    }
 
    public void a(abl $$0) {
       $$0.a(this);
    }
 
-   public bvv e() {
+   public Optional<fbx> e() {
       return this.c;
    }
 
-   public boolean f() {
+   public lr f() {
       return this.d;
+   }
+
+   public jr<avz> g() {
+      return this.e;
    }
 }

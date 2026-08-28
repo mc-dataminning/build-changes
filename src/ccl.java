@@ -1,36 +1,34 @@
-public class ccl extends ccg {
-   private final chw a;
-   private are b;
-   private boolean c;
+import java.util.EnumSet;
 
-   public ccl(chw $$0) {
+public class ccl extends ccw {
+   private final bwa a;
+   private final dgz b;
+
+   public ccl(bwa $$0, dgz $$1) {
       this.a = $$0;
+      this.b = $$1;
+      this.a(EnumSet.of(ccw.a.c));
    }
 
    @Override
    public boolean b() {
-      are $$0 = (are)this.a.ag_();
-      boolean $$1 = $$0 != null && !$$0.Z_() && !$$0.gj().b && !$$0.bj() && !$$0.av;
-      return !this.a.gs() && $$1 && this.a.gI();
+      boolean $$0 = this.a.aw || this.a.av;
+      if ($$0 && this.a.aq().a(awt.h)) {
+         ji $$1 = this.a.du().d();
+         dxq $$2 = this.b.a_($$1);
+         return $$2.a(dkg.rr) || $$2.g(this.b, $$1) == fco.a();
+      } else {
+         return false;
+      }
    }
 
    @Override
-   public boolean U_() {
-      return !this.c;
-   }
-
-   @Override
-   public void d() {
-      this.b = (are)this.a.ag_();
-      this.c = false;
+   public boolean Q_() {
+      return true;
    }
 
    @Override
    public void a() {
-      if (!this.c && !this.a.x() && !this.a.P_()) {
-         if (this.a.cR().c(this.b.cR())) {
-            this.c = this.a.b(this.b);
-         }
-      }
+      this.a.N().a();
    }
 }

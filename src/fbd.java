@@ -1,46 +1,16 @@
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import java.util.Arrays;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class fbd extends fbv {
-   private final DoubleList b;
-   private final DoubleList c;
-   private final DoubleList d;
+public class fbd {
+   private static final Codec<fbc> d = mb.I.q().dispatch(fbc::a, fbb::a);
+   public static final Codec<fbc> a = Codec.lazyInitialized(
+      () -> Codec.either(faz.b, d).xmap(Either::unwrap, $$0 -> $$0 instanceof faz $$1 ? Either.left($$1) : Either.right($$0))
+   );
+   public static final fbb b = a("fixed", fba.a);
+   public static final fbb c = a("context", faz.a);
 
-   protected fbd(fbk $$0, double[] $$1, double[] $$2, double[] $$3) {
-      this(
-         $$0,
-         DoubleArrayList.wrap(Arrays.copyOf($$1, $$0.b() + 1)),
-         DoubleArrayList.wrap(Arrays.copyOf($$2, $$0.c() + 1)),
-         DoubleArrayList.wrap(Arrays.copyOf($$3, $$0.d() + 1))
-      );
-   }
-
-   fbd(fbk $$0, DoubleList $$1, DoubleList $$2, DoubleList $$3) {
-      super($$0);
-      int $$4 = $$0.b() + 1;
-      int $$5 = $$0.c() + 1;
-      int $$6 = $$0.d() + 1;
-      if ($$4 == $$1.size() && $$5 == $$2.size() && $$6 == $$3.size()) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      } else {
-         throw (IllegalArgumentException)af.b(new IllegalArgumentException("Lengths of point arrays must be consistent with the size of the VoxelShape."));
-      }
-   }
-
-   @Override
-   public DoubleList a(jn.a $$0) {
-      switch ($$0) {
-         case a:
-            return this.b;
-         case b:
-            return this.c;
-         case c:
-            return this.d;
-         default:
-            throw new IllegalArgumentException();
-      }
+   private static fbb a(String $$0, MapCodec<? extends fbc> $$1) {
+      return ke.a(mb.I, aku.b($$0), new fbb($$1));
    }
 }

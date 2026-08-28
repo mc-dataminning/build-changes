@@ -1,29 +1,37 @@
-import com.mojang.authlib.minecraft.TelemetryEvent;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.serialization.Codec;
+import com.mojang.authlib.GameProfile;
+import java.net.SocketAddress;
+import javax.annotation.Nullable;
 
-public record hkb(hkf b, hki c) {
-   public static final Codec<hkb> a = hkf.a.dispatchStable(hkb::a, hkf::c);
+public class hkb extends avd {
+   @Nullable
+   private tq h;
 
-   public hkb(hkf b, hki c) {
-      c.b().forEach($$1x -> {
-         if (!$$0.a($$1x)) {
-            throw new IllegalArgumentException("Property '" + $$1x.b() + "' not expected for event: '" + $$0.a() + "'");
-         }
-      });
-      this.b = b;
-      this.c = c;
+   public hkb(hkc $$0, jy<ald> $$1, ewf $$2) {
+      super($$0, $$1, $$2, 8);
+      this.a(10);
    }
 
-   public TelemetryEvent a(TelemetrySession $$0) {
-      return this.b.a($$0, this.c);
+   @Override
+   protected void b(are $$0) {
+      if (this.b().a($$0.gk())) {
+         this.h = $$0.f(new tq());
+      }
+
+      super.b($$0);
    }
 
-   public hkf a() {
-      return this.b;
+   @Override
+   public wp a(SocketAddress $$0, GameProfile $$1) {
+      return (wp)(this.b().a($$1) && this.a($$1.getName()) != null ? wp.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
    }
 
-   public hki b() {
-      return this.c;
+   public hkc b() {
+      return (hkc)super.c();
+   }
+
+   @Nullable
+   @Override
+   public tq r() {
+      return this.h;
    }
 }

@@ -1,172 +1,211 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fkb {
-   private fkb() {
+public class fkb extends hmd {
+   static final aku a = aku.b("pending_invite/accept_highlighted");
+   static final aku b = aku.b("pending_invite/accept");
+   static final aku c = aku.b("pending_invite/reject_highlighted");
+   static final aku C = aku.b("pending_invite/reject");
+   private static final Logger D = LogUtils.getLogger();
+   private static final wp E = wp.c("mco.invites.nopending");
+   static final wp F = wp.c("mco.invites.button.accept");
+   static final wp G = wp.c("mco.invites.button.reject");
+   private final fvi H;
+   private final CompletableFuture<List<fib>> I = CompletableFuture.supplyAsync(() -> {
+      try {
+         return fhh.a().i().a;
+      } catch (fjd var1x) {
+         D.error("Couldn't list invites", var1x);
+         return List.of();
+      }
+   }, af.i());
+   @Nullable
+   wp J;
+   fkb.b K;
+   private fpq L;
+   private fpq M;
+
+   public fkb(fvi $$0, wp $$1) {
+      super($$1);
+      this.H = $$0;
    }
 
-   @VisibleForTesting
-   protected static List<String> a(String $$0) {
-      return Arrays.asList($$0.split("\\n"));
+   @Override
+   public void aR_() {
+      fhc.f();
+      this.K = new fkb.b();
+      this.I.thenAcceptAsync($$0 -> {
+         List<fkb.a> $$1 = $$0.stream().map($$0x -> new fkb.a($$0x)).toList();
+         this.K.a($$1);
+         if ($$1.isEmpty()) {
+            this.m.aY().b(E);
+         }
+      }, this.r);
+      this.c(this.K);
+      this.L = this.c((fpq)fpq.a(F, $$0 -> this.c(true)).a(this.n / 2 - 174, this.o - 32, 100, 20).a());
+      this.c((fpq)fpq.a(wo.d, $$0 -> this.aO_()).a(this.n / 2 - 50, this.o - 32, 100, 20).a());
+      this.M = this.c((fpq)fpq.a(G, $$0 -> this.c(false)).a(this.n / 2 + 74, this.o - 32, 100, 20).a());
+      this.E();
    }
 
-   public static List<fkb.a> a(String $$0, fkb.b... $$1) {
-      return a($$0, Arrays.asList($$1));
+   @Override
+   public void aO_() {
+      this.m.a(this.H);
    }
 
-   private static List<fkb.a> a(String $$0, List<fkb.b> $$1) {
-      List<String> $$2 = a($$0);
-      return a($$2, $$1);
+   @Override
+   void c(boolean $$0) {
+      if (this.K.p() instanceof fkb.a $$1) {
+         String $$2 = $$1.c.a;
+         CompletableFuture.<Boolean>supplyAsync(() -> {
+            try {
+               fhh $$2x = fhh.a();
+               if ($$0) {
+                  $$2x.a($$2);
+               } else {
+                  $$2x.b($$2);
+               }
+
+               return true;
+            } catch (fjd var3) {
+               D.error("Couldn't handle invite", var3);
+               return false;
+            }
+         }, af.i()).thenAcceptAsync($$2x -> {
+            if ($$2x) {
+               this.K.a($$1);
+               this.E();
+               fjg $$3 = this.m.bb();
+               if ($$0) {
+                  $$3.c.a();
+               }
+
+               $$3.d.a();
+            }
+         }, this.r);
+      }
    }
 
-   private static List<fkb.a> a(List<String> $$0, List<fkb.b> $$1) {
-      int $$2 = 0;
-      List<fkb.a> $$3 = Lists.newArrayList();
+   @Override
+   public void a(fpc $$0, int $$1, int $$2, float $$3) {
+      this.J = null;
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 12, -1);
+      if (this.J != null) {
+         $$0.a(this.p, this.J, $$1, $$2);
+      }
 
-      for (String $$4 : $$0) {
-         List<fkb.b> $$5 = Lists.newArrayList();
+      if (this.I.isDone() && this.K.b()) {
+         $$0.a(this.p, E, this.n / 2, this.o / 2 - 20, -1);
+      }
+   }
 
-         for (String $$7 : a($$4, "%link")) {
-            if ("%link".equals($$7)) {
-               $$5.add($$1.get($$2++));
-            } else {
-               $$5.add(fkb.b.a($$7));
+   void E() {
+      fkb.a $$0 = this.K.p();
+      this.L.k = $$0 != null;
+      this.M.k = $$0 != null;
+   }
+
+   class a extends fqm.a<fkb.a> {
+      private static final int b = 38;
+      final fib c;
+      private final List<fjk> d;
+
+      a(final fib $$0) {
+         this.c = $$0;
+         this.d = Arrays.asList(new fkb.a.a(), new fkb.a.b());
+      }
+
+      @Override
+      public void a(fpc $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, this.c, $$3, $$2, $$6, $$7);
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         fjk.a(fkb.this.K, this, this.d, $$2, $$0, $$1);
+         return super.a($$0, $$1, $$2);
+      }
+
+      private void a(fpc $$0, fib $$1, int $$2, int $$3, int $$4, int $$5) {
+         $$0.b(fkb.this.p, $$1.b, $$2 + 38, $$3 + 1, -1);
+         $$0.b(fkb.this.p, $$1.c, $$2 + 38, $$3 + 12, 7105644);
+         $$0.b(fkb.this.p, fkw.a($$1.e), $$2 + 38, $$3 + 24, 7105644);
+         fjk.a($$0, this.d, fkb.this.K, $$2, $$3, $$4, $$5);
+         fkw.a($$0, $$2, $$3, 32, $$1.d);
+      }
+
+      @Override
+      public wp a() {
+         wp $$0 = wo.b(wp.b(this.c.b), wp.b(this.c.c), fkw.a(this.c.e));
+         return wp.a("narrator.select", $$0);
+      }
+
+      class a extends fjk {
+         a() {
+            super(15, 15, 215, 5);
+         }
+
+         @Override
+         protected void a(fpc $$0, int $$1, int $$2, boolean $$3) {
+            $$0.a(gnh::H, $$3 ? fkb.a : fkb.b, $$1, $$2, 18, 18);
+            if ($$3) {
+               fkb.this.J = fkb.F;
             }
          }
 
-         $$3.add(new fkb.a($$5));
+         @Override
+         public void a(int $$0) {
+            fkb.this.c(true);
+         }
       }
 
-      return $$3;
-   }
+      class b extends fjk {
+         b() {
+            super(15, 15, 235, 5);
+         }
 
-   public static List<String> a(String $$0, String $$1) {
-      if ($$1.isEmpty()) {
-         throw new IllegalArgumentException("Delimiter cannot be the empty string");
-      } else {
-         List<String> $$2 = Lists.newArrayList();
-         int $$3 = 0;
-
-         int $$4;
-         while (($$4 = $$0.indexOf($$1, $$3)) != -1) {
-            if ($$4 > $$3) {
-               $$2.add($$0.substring($$3, $$4));
+         @Override
+         protected void a(fpc $$0, int $$1, int $$2, boolean $$3) {
+            $$0.a(gnh::H, $$3 ? fkb.c : fkb.C, $$1, $$2, 18, 18);
+            if ($$3) {
+               fkb.this.J = fkb.G;
             }
-
-            $$2.add($$1);
-            $$3 = $$4 + $$1.length();
          }
 
-         if ($$3 < $$0.length()) {
-            $$2.add($$0.substring($$3));
+         @Override
+         public void a(int $$0) {
+            fkb.this.c(false);
          }
-
-         return $$2;
       }
    }
 
-   public static class a {
-      public final List<fkb.b> a;
-
-      a(fkb.b... $$0) {
-         this(Arrays.asList($$0));
-      }
-
-      a(List<fkb.b> $$0) {
-         this.a = $$0;
+   class b extends fqm<fkb.a> {
+      public b() {
+         super(fmg.Q(), fkb.this.n, fkb.this.o - 72, 32, 36);
       }
 
       @Override
-      public String toString() {
-         return "Line{segments=" + this.a + "}";
+      public int a() {
+         return 260;
       }
 
       @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            fkb.a $$1 = (fkb.a)$$0;
-            return Objects.equals(this.a, $$1.a);
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         return Objects.hash(this.a);
-      }
-   }
-
-   public static class b {
-      private final String a;
-      @Nullable
-      private final String b;
-      @Nullable
-      private final String c;
-
-      private b(String $$0) {
-         this.a = $$0;
-         this.b = null;
-         this.c = null;
-      }
-
-      private b(String $$0, @Nullable String $$1, @Nullable String $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            fkb.b $$1 = (fkb.b)$$0;
-            return Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b) && Objects.equals(this.c, $$1.c);
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         return Objects.hash(this.a, this.b, this.c);
-      }
-
-      @Override
-      public String toString() {
-         return "Segment{fullText='" + this.a + "', linkTitle='" + this.b + "', linkUrl='" + this.c + "'}";
-      }
-
-      public String a() {
-         return this.b() ? this.b : this.a;
+      public void a(int $$0) {
+         super.a($$0);
+         fkb.this.E();
       }
 
       public boolean b() {
-         return this.b != null;
+         return this.t() == 0;
       }
 
-      public String c() {
-         if (!this.b()) {
-            throw new IllegalStateException("Not a link: " + this);
-         } else {
-            return this.c;
-         }
-      }
-
-      public static fkb.b a(String $$0, String $$1) {
-         return new fkb.b(null, $$0, $$1);
-      }
-
-      @VisibleForTesting
-      protected static fkb.b a(String $$0) {
-         return new fkb.b($$0);
+      public void a(fkb.a $$0) {
+         this.g($$0);
       }
    }
 }

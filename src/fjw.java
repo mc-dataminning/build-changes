@@ -1,93 +1,99 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.util.UndashedUuid;
-import java.util.Date;
-import java.util.UUID;
-import java.util.function.Function;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fjw {
-   public static <T> T a(String $$0, JsonObject $$1, Function<JsonObject, T> $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 == null || $$3.isJsonNull()) {
-         throw new IllegalStateException("Missing required property: " + $$0);
-      } else if (!$$3.isJsonObject()) {
-         throw new IllegalStateException("Required property " + $$0 + " was not a JsonObject as espected");
-      } else {
-         return $$2.apply($$3.getAsJsonObject());
-      }
-   }
-
+public class fjw extends hmd {
+   private static final Logger a = LogUtils.getLogger();
+   private static final wp b = wp.c("mco.configure.world.buttons.invite");
+   private static final wp c = wp.c("mco.configure.world.invite.profile.name").b(-6250336);
+   private static final wp C = wp.c("mco.configure.world.players.inviting").b(-6250336);
+   private static final wp D = wp.c("mco.configure.world.players.error").b(-65536);
+   private final fte E = new fte(this);
+   private fpz F;
+   private fpq G;
+   private final fii H;
+   private final fjr I;
+   private final fvi J;
    @Nullable
-   public static <T> T b(String $$0, JsonObject $$1, Function<JsonObject, T> $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 == null || $$3.isJsonNull()) {
-         return null;
-      } else if (!$$3.isJsonObject()) {
-         throw new IllegalStateException("Required property " + $$0 + " was not a JsonObject as espected");
+   private wp K;
+
+   public fjw(fjr $$0, fvi $$1, fii $$2) {
+      super(b);
+      this.I = $$0;
+      this.J = $$1;
+      this.H = $$2;
+   }
+
+   @Override
+   public void aR_() {
+      this.E.a(b, this.p);
+      fti $$0 = this.E.c(fti.d().a(8));
+      this.F = new fpz(this.m.h, 200, 20, wp.c("mco.configure.world.invite.profile.name"));
+      $$0.a(fta.a(this.p, this.F, c));
+      this.G = $$0.a(fpq.a(b, $$0x -> this.E()).a(200).a());
+      this.E.b(fpq.a(wo.k, $$0x -> this.aO_()).a(200).a());
+      this.E.a($$1 -> {
+         fpo var10000 = this.c($$1);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      this.E.a();
+   }
+
+   @Override
+   protected void aF_() {
+      this.b(this.F);
+   }
+
+   private void E() {
+      if (azw.h(this.F.a())) {
+         this.a(D);
       } else {
-         return $$2.apply($$3.getAsJsonObject());
+         long $$0 = this.H.a;
+         String $$1 = this.F.a().trim();
+         this.G.j = false;
+         this.F.e(false);
+         this.a(C);
+         CompletableFuture.<fii>supplyAsync(() -> {
+            try {
+               return fhh.a().a($$0, $$1);
+            } catch (Exception var4) {
+               a.error("Couldn't invite user");
+               return null;
+            }
+         }, af.i()).thenAcceptAsync($$0x -> {
+            if ($$0x != null) {
+               this.H.h = $$0x.h;
+               this.m.a(new fkc(this.I, this.H));
+            } else {
+               this.a(D);
+            }
+
+            this.F.e(true);
+            this.G.j = true;
+         }, this.r);
       }
    }
 
-   public static String a(String $$0, JsonObject $$1) {
-      String $$2 = b($$0, $$1, null);
-      if ($$2 == null) {
-         throw new IllegalStateException("Missing required property: " + $$0);
-      } else {
-         return $$2;
+   private void a(wp $$0) {
+      this.K = $$0;
+      this.m.aY().c($$0);
+   }
+
+   @Override
+   public void aO_() {
+      this.m.a(this.J);
+   }
+
+   @Override
+   public void a(fpc $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.K != null) {
+         $$0.a(this.p, this.K, this.n / 2, this.G.G() + this.G.y() + 8, -1);
       }
-   }
-
-   public static String a(String $$0, JsonObject $$1, String $$2) {
-      return b($$0, $$1, $$2);
-   }
-
-   @Nullable
-   public static String b(String $$0, JsonObject $$1, @Nullable String $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsString();
-      } else {
-         return $$2;
-      }
-   }
-
-   @Nullable
-   public static UUID a(String $$0, JsonObject $$1, @Nullable UUID $$2) {
-      String $$3 = b($$0, $$1, null);
-      return $$3 == null ? $$2 : UndashedUuid.fromStringLenient($$3);
-   }
-
-   public static int a(String $$0, JsonObject $$1, int $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsInt();
-      } else {
-         return $$2;
-      }
-   }
-
-   public static long a(String $$0, JsonObject $$1, long $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsLong();
-      } else {
-         return $$2;
-      }
-   }
-
-   public static boolean a(String $$0, JsonObject $$1, boolean $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsBoolean();
-      } else {
-         return $$2;
-      }
-   }
-
-   public static Date b(String $$0, JsonObject $$1) {
-      JsonElement $$2 = $$1.get($$0);
-      return $$2 != null ? new Date(Long.parseLong($$2.getAsString())) : new Date();
    }
 }

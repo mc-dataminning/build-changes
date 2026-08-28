@@ -1,36 +1,60 @@
-public class gve extends gtl<coa, hax, gep> {
-   private static final akv a = akv.b("textures/entity/warden/warden.png");
-   private static final akv b = akv.b("textures/entity/warden/warden_bioluminescent_layer.png");
-   private static final akv k = akv.b("textures/entity/warden/warden_heart.png");
-   private static final akv l = akv.b("textures/entity/warden/warden_pulsating_spots_1.png");
-   private static final akv m = akv.b("textures/entity/warden/warden_pulsating_spots_2.png");
+import java.util.Objects;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-   public gve(gsf.a $$0) {
-      super($$0, new gep($$0.a(gfd.dx)), 0.9F);
-      this.a(new gwn<>(this, b, ($$0x, $$1) -> 1.0F, gep::d, gmj::k, false));
-      this.a(new gwn<>(this, l, ($$0x, $$1) -> Math.max(0.0F, ayz.b($$1 * 0.045F) * 0.25F), gep::e, gmj::k, false));
-      this.a(new gwn<>(this, m, ($$0x, $$1) -> Math.max(0.0F, ayz.b($$1 * 0.045F + (float) Math.PI) * 0.25F), gep::e, gmj::k, false));
-      this.a(new gwn<>(this, a, ($$0x, $$1) -> $$0x.a, gep::b, gmj::k, false));
-      this.a(new gwn<>(this, k, ($$0x, $$1) -> $$0x.b, gep::c, gmj::k, false));
+public class gve extends guj<cmy, hbe, get> {
+   private static final aku a = gns.i.b().a((UnaryOperator<String>)($$0 -> "textures/" + $$0 + ".png"));
+   private static final aku[] b = gns.j.stream().map($$0 -> $$0.b().a((UnaryOperator<String>)($$0x -> "textures/" + $$0x + ".png"))).toArray(aku[]::new);
+
+   public gve(gtd.a $$0) {
+      super($$0, new get($$0.a(ggb.cG)), 0.0F);
    }
 
-   public akv a(hax $$0) {
-      return a;
+   public fbx a(hbe $$0) {
+      return $$0.a;
    }
 
-   public hax b() {
-      return new hax();
+   public boolean a(cmy $$0, gqp $$1, double $$2, double $$3, double $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4)) {
+         return true;
+      } else {
+         fbx $$5 = $$0.L(0.0F);
+         if ($$5 == null) {
+            return false;
+         } else {
+            bvi<?> $$6 = $$0.aq();
+            float $$7 = $$6.m() / 2.0F;
+            float $$8 = $$6.l() / 2.0F;
+            fbx $$9 = fbx.c($$0.du());
+            return $$1.a(new fbs($$5.d, $$5.e + (double)$$7, $$5.f, $$9.d, $$9.e + (double)$$7, $$9.f).c((double)$$8, (double)$$7, (double)$$8));
+         }
+      }
    }
 
-   public void a(coa $$0, hax $$1, float $$2) {
+   public aku b(hbe $$0) {
+      return a($$0.b);
+   }
+
+   public hbe b() {
+      return new hbe();
+   }
+
+   public void a(cmy $$0, hbe $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
-      $$1.b = $$0.K($$2);
-      $$1.c.a($$0.a);
-      $$1.d.a($$0.b);
-      $$1.e.a($$0.c);
-      $$1.f.a($$0.d);
-      $$1.g.a($$0.bY);
-      $$1.h.a($$0.bZ);
+      $$1.a = Objects.requireNonNullElse($$0.L($$2), fbx.c);
+      $$1.b = $$0.t();
+      $$1.c = $$0.K($$2);
+      $$1.d = $$0.aX;
+      $$1.e = $$0.aV;
+      $$1.f = $$0.n();
+   }
+
+   public static aku a(@Nullable cwe $$0) {
+      return $$0 == null ? a : b[$$0.a()];
+   }
+
+   protected void a(hbe $$0, fgr $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2 + 180.0F, $$3);
+      $$1.a($$0.f.g().b(), 0.0F, 0.5F, 0.0F);
    }
 }

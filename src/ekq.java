@@ -1,75 +1,48 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ekq extends ekx {
-   public static final MapCodec<ekq> a = eke.a.fieldOf("provider").xmap(ekq::new, $$0 -> $$0.b);
-   private final eke b;
+public class ekq extends ekk {
+   public static final MapCodec<ekq> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(bsd.b(0, 24).fieldOf("trunk_height").forGetter($$0x -> $$0x.b)).apply($$0, ekq::new)
+   );
+   private final bsd b;
 
-   public ekq(eke $$0) {
-      this.b = $$0;
+   public ekq(bsd $$0, bsd $$1, bsd $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
-   protected eky<?> a() {
-      return eky.g;
+   protected ekl<?> a() {
+      return ekl.b;
    }
 
    @Override
-   public void a(ekx.a $$0) {
-      List<ji> $$1 = Lists.newArrayList();
-      List<ji> $$2 = $$0.e();
-      List<ji> $$3 = $$0.c();
-      if ($$2.isEmpty()) {
-         $$1.addAll($$3);
-      } else if (!$$3.isEmpty() && $$2.get(0).v() == $$3.get(0).v()) {
-         $$1.addAll($$3);
-         $$1.addAll($$2);
-      } else {
-         $$1.addAll($$2);
-      }
+   protected void a(dhf $$0, ekk.b $$1, azh $$2, eju $$3, int $$4, ekk.a $$5, int $$6, int $$7, int $$8) {
+      ji $$9 = $$5.a();
+      int $$10 = $$2.a(2);
+      int $$11 = 1;
+      int $$12 = 0;
 
-      if (!$$1.isEmpty()) {
-         int $$4 = $$1.get(0).v();
-         $$1.stream().filter($$1x -> $$1x.v() == $$4).forEach($$1x -> {
-            this.a($$0, $$1x.h().f());
-            this.a($$0, $$1x.g(2).f());
-            this.a($$0, $$1x.h().e(2));
-            this.a($$0, $$1x.g(2).e(2));
-
-            for (int $$2x = 0; $$2x < 5; $$2x++) {
-               int $$3x = $$0.b().a(64);
-               int $$4x = $$3x % 8;
-               int $$5 = $$3x / 8;
-               if ($$4x == 0 || $$4x == 7 || $$5 == 0 || $$5 == 7) {
-                  this.a($$0, $$1x.b(-3 + $$4x, 0, -3 + $$5));
-               }
-            }
-         });
-      }
-   }
-
-   private void a(ekx.a $$0, ji $$1) {
-      for (int $$2 = -2; $$2 <= 2; $$2++) {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
-               this.b($$0, $$1.b($$2, 0, $$3));
-            }
+      for (int $$13 = $$8; $$13 >= -$$6; $$13--) {
+         this.a($$0, $$1, $$2, $$3, $$9, $$10, $$13, $$5.c());
+         if ($$10 >= $$11) {
+            $$10 = $$12;
+            $$12 = 1;
+            $$11 = Math.min($$11 + 1, $$7 + $$5.b());
+         } else {
+            $$10++;
          }
       }
    }
 
-   private void b(ekx.a $$0, ji $$1) {
-      for (int $$2 = 2; $$2 >= -3; $$2--) {
-         ji $$3 = $$1.b($$2);
-         if (efz.a($$0.a(), $$3)) {
-            $$0.a($$3, this.b.a($$0.b(), $$1));
-            break;
-         }
+   @Override
+   public int a(azh $$0, int $$1, eju $$2) {
+      return Math.max(4, $$1 - this.b.a($$0));
+   }
 
-         if (!$$0.a($$3) && $$2 < 0) {
-            break;
-         }
-      }
+   @Override
+   protected boolean a(azh $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

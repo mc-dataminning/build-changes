@@ -1,81 +1,81 @@
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.mojang.authlib.GameProfile;
 
-public class glw implements gmd.a {
-   public static final akv a = gmd.a;
-   public static final akv b = akv.b("translucent");
-   public static final akv c = akv.b("item_entity");
-   public static final akv d = akv.b("particles");
-   public static final akv e = akv.b("weather");
-   public static final akv f = akv.b("clouds");
-   public static final akv g = akv.b("entity_outline");
-   public static final Set<akv> h = Set.of(a);
-   public static final Set<akv> i = Set.of(a, g);
-   public static final Set<akv> j = Set.of(a, b, c, d, e, f);
-   public ffh<fef> k = ffh.a();
-   @Nullable
-   public ffh<fef> l;
-   @Nullable
-   public ffh<fef> m;
-   @Nullable
-   public ffh<fef> n;
-   @Nullable
-   public ffh<fef> o;
-   @Nullable
-   public ffh<fef> p;
-   @Nullable
-   public ffh<fef> q;
+public class glw extends gls {
+   private fbx h = fbx.c;
+   private int i;
+
+   public glw(ggy $$0, GameProfile $$1) {
+      super($$0, $$1);
+      this.ad = true;
+   }
 
    @Override
-   public void a(akv $$0, ffh<fef> $$1) {
-      if ($$0.equals(a)) {
-         this.k = $$1;
-      } else if ($$0.equals(b)) {
-         this.l = $$1;
-      } else if ($$0.equals(c)) {
-         this.m = $$1;
-      } else if ($$0.equals(d)) {
-         this.n = $$1;
-      } else if ($$0.equals(e)) {
-         this.o = $$1;
-      } else if ($$0.equals(f)) {
-         this.p = $$1;
-      } else {
-         if (!$$0.equals(g)) {
-            throw new IllegalArgumentException("No target with id " + $$0);
-         }
+   public boolean a(double $$0) {
+      double $$1 = this.cQ().a() * 10.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 1.0;
+      }
 
-         this.q = $$1;
+      $$1 *= 64.0 * cJ();
+      return $$0 < $$1 * $$1;
+   }
+
+   @Override
+   public boolean b(btp $$0) {
+      return true;
+   }
+
+   @Override
+   public void h() {
+      super.h();
+      this.r(false);
+   }
+
+   @Override
+   public void k_() {
+      if (this.bQ()) {
+         this.N_().e();
+      }
+
+      if (this.bl > 0) {
+         this.a(this.bl, this.bk);
+         this.bl--;
+      }
+
+      if (this.i > 0) {
+         this.j(new fbx((this.h.d - this.dx().d) / (double)this.i, (this.h.e - this.dx().e) / (double)this.i, (this.h.f - this.dx().f) / (double)this.i));
+         this.i--;
+      }
+
+      this.bU = this.bV;
+      this.eX();
+      float $$1;
+      if (this.aJ() && !this.eF()) {
+         $$1 = (float)Math.min(0.1, this.dx().i());
+      } else {
+         $$1 = 0.0F;
+      }
+
+      this.bV = this.bV + ($$1 - this.bV) * 0.4F;
+
+      try (bpo $$2 = bpi.a().d("push")) {
+         this.o();
       }
    }
 
-   @Nullable
    @Override
-   public ffh<fef> a(akv $$0) {
-      if ($$0.equals(a)) {
-         return this.k;
-      } else if ($$0.equals(b)) {
-         return this.l;
-      } else if ($$0.equals(c)) {
-         return this.m;
-      } else if ($$0.equals(d)) {
-         return this.n;
-      } else if ($$0.equals(e)) {
-         return this.o;
-      } else if ($$0.equals(f)) {
-         return this.p;
-      } else {
-         return $$0.equals(g) ? this.q : null;
-      }
+   public void l(double $$0, double $$1, double $$2) {
+      this.h = new fbx($$0, $$1, $$2);
+      this.i = this.aq().p() + 1;
    }
 
-   public void a() {
-      this.k = ffh.a();
-      this.l = null;
-      this.m = null;
-      this.n = null;
-      this.o = null;
-      this.p = null;
-      this.q = null;
+   @Override
+   protected void ge() {
+   }
+
+   @Override
+   public void a(abm $$0) {
+      super.a($$0);
+      this.bx();
    }
 }

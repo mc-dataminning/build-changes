@@ -1,28 +1,41 @@
-public abstract class grd<T extends cpf, S extends gxs> extends gse<T, S> {
-   private final gaz a;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-   public grd(gsf.a $$0) {
-      super($$0);
-      this.a = new gaz($$0.a(gfd.l));
+public class grd implements gqy.a {
+   private final fmg a;
+   private static final int b = 10;
+
+   public grd(fmg $$0) {
+      this.a = $$0;
    }
 
-   public void a(S $$0, ffv $$1, glz $$2, int $$3) {
-      $$1.a();
-      $$1.a(a.d.rotationDegrees($$0.b - 90.0F));
-      $$1.a(a.f.rotationDegrees($$0.a));
-      ffz $$4 = $$2.getBuffer(gmj.f(this.a($$0)));
-      this.a.a($$0);
-      this.a.a($$1, $$4, $$3, hej.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
-   }
+   @Override
+   public void a(fgr $$0, gmx $$1, double $$2, double $$3, double $$4) {
+      dgz $$5 = this.a.s;
+      ji $$6 = ji.a($$2, $$3, $$4);
+      LongSet $$7 = new LongOpenHashSet();
 
-   protected abstract akv a(S var1);
+      for (ji $$8 : ji.c($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
+         int $$9 = $$5.a(dhi.a, $$8);
+         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
+         int $$11 = ayz.g($$10, 0.9F, 0.9F);
+         long $$12 = kk.e($$8.a());
+         if ($$7.add($$12)) {
+            gqy.a(
+               $$0,
+               $$1,
+               $$5.S().q().a(dhi.a, kk.a($$12)),
+               (double)kk.a(kk.b($$12), 8),
+               (double)kk.a(kk.c($$12), 8),
+               (double)kk.a(kk.d($$12), 8),
+               16711680,
+               0.3F
+            );
+         }
 
-   public void a(T $$0, S $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.j($$2);
-      $$1.b = $$0.k($$2);
-      $$1.c = (float)$$0.c - $$2;
+         if ($$9 != 15) {
+            gqy.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
+         }
+      }
    }
 }

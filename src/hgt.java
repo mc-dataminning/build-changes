@@ -1,16 +1,37 @@
-import java.util.List;
 import javax.annotation.Nullable;
 
-public interface hgt {
-   List<gng> a(@Nullable dwy var1, @Nullable jn var2, azh var3);
+public record hgt(aku a, @Nullable String b, @Nullable aku c, @Nullable aku d, hgt.a e, boolean f) {
+   public static enum a {
+      a("slim"),
+      b("default");
 
-   boolean a();
+      private final String c;
 
-   boolean b();
+      private a(final String $$0) {
+         this.c = $$0;
+      }
 
-   boolean c();
+      public static hgt.a a(@Nullable String $$0) {
+         if ($$0 == null) {
+            return b;
+         } else {
+            byte var2 = -1;
+            switch ($$0.hashCode()) {
+               case 3533117:
+                  if ($$0.equals("slim")) {
+                     var2 = 0;
+                  }
+               default:
+                  return switch (var2) {
+                     case 0 -> a;
+                     default -> b;
+                  };
+            }
+         }
+      }
 
-   het d();
-
-   gnq e();
+      public String a() {
+         return this.c;
+      }
+   }
 }

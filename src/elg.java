@@ -1,44 +1,21 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
 
-public class elg extends elj {
-   public static final MapCodec<elg> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, elg::new));
+public class elg extends ekz {
+   public static final MapCodec<elg> b = dxq.a.fieldOf("state").xmap(dxp.a::b, dke::m).xmap(elg::new, $$0 -> $$0.c);
+   private final dke c;
 
-   public elg(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public elg(dke $$0) {
+      this.c = $$0;
    }
 
    @Override
-   protected elk<?> a() {
-      return elk.c;
+   protected ela<?> a() {
+      return ela.f;
    }
 
    @Override
-   public List<ejp.a> a(dgp $$0, BiConsumer<ji, dwy> $$1, azh $$2, int $$3, ji $$4, eiz $$5) {
-      ji $$6 = $$4.e();
-      a($$0, $$1, $$2, $$6, $$5);
-      a($$0, $$1, $$2, $$6.i(), $$5);
-      a($$0, $$1, $$2, $$6.g(), $$5);
-      a($$0, $$1, $$2, $$6.g().i(), $$5);
-      ji.a $$7 = new ji.a();
-
-      for (int $$8 = 0; $$8 < $$3; $$8++) {
-         this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 0);
-         if ($$8 < $$3 - 1) {
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 0);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 1);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 1);
-         }
-      }
-
-      return ImmutableList.of(new ejp.a($$4.b($$3), 0, true));
-   }
-
-   private void a(dgp $$0, BiConsumer<ji, dwy> $$1, azh $$2, ji.a $$3, eiz $$4, ji $$5, int $$6, int $$7, int $$8) {
-      $$3.a($$5, $$6, $$7, $$8);
-      this.a($$0, $$1, $$2, $$3, $$4);
+   public dxq a(azh $$0, ji $$1) {
+      jn.a $$2 = jn.a.a($$0);
+      return this.c.m().c(dqv.d, $$2);
    }
 }

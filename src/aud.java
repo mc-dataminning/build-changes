@@ -5,14 +5,14 @@ import javax.annotation.Nullable;
 
 public class aud extends atu {
    private static final atq c = new atq(wp.c("dataPack.vanilla.description"), ab.b().a(ate.b), Optional.empty());
-   private static final asy d = new asy(crw.h);
+   private static final asy d = new asy(csp.h);
    private static final asu e = asu.a(atq.b, c, asy.a, d);
    private static final atb f = new atb("vanilla", wp.c("dataPack.vanilla.name"), aub.c, Optional.of(b));
    private static final atd g = new atd(false, atx.b.b, false);
    private static final atd h = new atd(false, atx.b.a, false);
-   private static final akv i = akv.b("datapacks");
+   private static final aku i = aku.b("datapacks");
 
-   public aud(far $$0) {
+   public aud(fbn $$0) {
       super(ate.b, b(), i, $$0);
    }
 
@@ -42,15 +42,15 @@ public class aud extends atu {
       return atx.a(a($$0, $$2), $$1, ate.b, h);
    }
 
-   public static aua a(Path $$0, far $$1) {
+   public static aua a(Path $$0, fbn $$1) {
       return new aua(new aud($$1), new atv($$0, ate.b, aub.e, $$1));
    }
 
    public static aua c() {
-      return new aua(new aud(new far($$0 -> true)));
+      return new aua(new aud(new fbn($$0 -> true)));
    }
 
-   public static aua a(evg.c $$0) {
-      return a($$0.a(eve.j), $$0.d().e());
+   public static aua a(ewc.c $$0) {
+      return a($$0.a(ewa.j), $$0.d().e());
    }
 }

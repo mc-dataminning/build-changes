@@ -1,7 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class gyi extends gyl {
-   public boolean a = true;
-   @Nullable
-   public fbb b;
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gyi {
 }

@@ -1,59 +1,255 @@
-public class fyx extends fum {
-   private static final wp a = wp.c("gui.abuseReport.title");
-   private static final wp b = wp.c("gui.abuseReport.message");
-   private static final wp c = wp.c("gui.abuseReport.type.chat");
-   private static final wp d = wp.c("gui.abuseReport.type.skin");
-   private static final wp s = wp.c("gui.abuseReport.type.name");
-   private static final int u = 6;
-   private final fum v;
-   private final ghj w;
-   private final fzb x;
-   private final fsm y = fsm.d().a(6);
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-   public fyx(fum $$0, ghj $$1, fzb $$2) {
-      super(a);
-      this.v = $$0;
-      this.w = $$1;
-      this.x = $$2;
+public class fyx {
+   private final aua a;
+   final List<atx> b;
+   final List<atx> c;
+   final Function<atx, aku> d;
+   final Runnable e;
+   private final Consumer<aua> f;
+
+   public fyx(Runnable $$0, Function<atx, aku> $$1, aua $$2, Consumer<aua> $$3) {
+      this.e = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = Lists.newArrayList($$2.g());
+      Collections.reverse(this.b);
+      this.c = Lists.newArrayList($$2.d());
+      this.c.removeAll(this.b);
+      this.f = $$3;
    }
 
-   @Override
-   public wp i() {
-      return wo.a(super.i(), b);
+   public Stream<fyx.a> a() {
+      return this.c.stream().map($$0 -> new fyx.d($$0));
    }
 
-   @Override
-   protected void aR_() {
-      this.y.c().b();
-      this.y.a(new fqb(this.l, this.p), this.y.b().e(6));
-      this.y.a(new fpo(b, this.p).b(true), this.y.b().e(6));
-      fou $$0 = this.y.a(fou.a(c, $$0x -> this.m.a(new fyt(this.v, this.w, this.x.g()))).a());
-      if (!this.x.l()) {
-         $$0.j = false;
-         $$0.a(fqf.a(wp.c("gui.socialInteractions.tooltip.report.not_reportable")));
-      } else if (!this.x.k()) {
-         $$0.j = false;
-         $$0.a(fqf.a(wp.a("gui.socialInteractions.tooltip.report.no_messages", this.x.c())));
+   public Stream<fyx.a> b() {
+      return this.b.stream().map($$0 -> new fyx.c($$0));
+   }
+
+   void e() {
+      this.a.b(Lists.reverse(this.b).stream().map(atx::g).collect(ImmutableList.toImmutableList()));
+   }
+
+   public void c() {
+      this.e();
+      this.f.accept(this.a);
+   }
+
+   public void d() {
+      this.a.a();
+      this.b.retainAll(this.a.d());
+      this.c.clear();
+      this.c.addAll(this.a.d());
+      this.c.removeAll(this.b);
+   }
+
+   public interface a {
+      aku a();
+
+      aty b();
+
+      String c();
+
+      wp d();
+
+      wp e();
+
+      aub f();
+
+      default wp g() {
+         return this.f().a(this.e());
       }
 
-      this.y.a(fou.a(d, $$0x -> this.m.a(new fyz(this.v, this.w, this.x.g(), this.x.h()))).a());
-      this.y.a(fou.a(s, $$0x -> this.m.a(new fyw(this.v, this.w, this.x.g(), this.x.c()))).a());
-      this.y.a(fsn.b(20));
-      this.y.a(fou.a(wo.e, $$0x -> this.aO_()).a());
-      this.y.a($$1 -> {
-         fos var10000 = this.c($$1);
-      });
-      this.c();
+      boolean h();
+
+      boolean i();
+
+      void j();
+
+      void k();
+
+      void l();
+
+      void m();
+
+      boolean n();
+
+      default boolean o() {
+         return !this.n();
+      }
+
+      default boolean p() {
+         return this.n() && !this.i();
+      }
+
+      boolean q();
+
+      boolean r();
    }
 
-   @Override
-   protected void c() {
-      this.y.a();
-      fsg.a(this.y, this.J());
+   abstract class b implements fyx.a {
+      private final atx b;
+
+      public b(final atx $$0) {
+         this.b = $$0;
+      }
+
+      protected abstract List<atx> s();
+
+      protected abstract List<atx> t();
+
+      @Override
+      public aku a() {
+         return fyx.this.d.apply(this.b);
+      }
+
+      @Override
+      public aty b() {
+         return this.b.d();
+      }
+
+      @Override
+      public String c() {
+         return this.b.g();
+      }
+
+      @Override
+      public wp d() {
+         return this.b.b();
+      }
+
+      @Override
+      public wp e() {
+         return this.b.c();
+      }
+
+      @Override
+      public aub f() {
+         return this.b.l();
+      }
+
+      @Override
+      public boolean h() {
+         return this.b.j();
+      }
+
+      @Override
+      public boolean i() {
+         return this.b.i();
+      }
+
+      protected void u() {
+         this.s().remove(this.b);
+         this.b.k().a(this.t(), this.b, atx::h, true);
+         fyx.this.e.run();
+         fyx.this.e();
+         this.v();
+      }
+
+      private void v() {
+         if (this.b.g().equals("high_contrast")) {
+            fmj<Boolean> $$0 = fmg.Q().n.u();
+            $$0.a(!$$0.c());
+         }
+      }
+
+      protected void a(int $$0) {
+         List<atx> $$1 = this.s();
+         int $$2 = $$1.indexOf(this.b);
+         $$1.remove($$2);
+         $$1.add($$2 + $$0, this.b);
+         fyx.this.e.run();
+      }
+
+      @Override
+      public boolean q() {
+         List<atx> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 > 0 && !$$0.get($$1 - 1).j();
+      }
+
+      @Override
+      public void l() {
+         this.a(-1);
+      }
+
+      @Override
+      public boolean r() {
+         List<atx> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 >= 0 && $$1 < $$0.size() - 1 && !$$0.get($$1 + 1).j();
+      }
+
+      @Override
+      public void m() {
+         this.a(1);
+      }
    }
 
-   @Override
-   public void aO_() {
-      this.m.a(this.v);
+   class c extends fyx.b {
+      public c(final atx $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected List<atx> s() {
+         return fyx.this.b;
+      }
+
+      @Override
+      protected List<atx> t() {
+         return fyx.this.c;
+      }
+
+      @Override
+      public boolean n() {
+         return true;
+      }
+
+      @Override
+      public void j() {
+      }
+
+      @Override
+      public void k() {
+         this.u();
+      }
+   }
+
+   class d extends fyx.b {
+      public d(final atx $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected List<atx> s() {
+         return fyx.this.c;
+      }
+
+      @Override
+      protected List<atx> t() {
+         return fyx.this.b;
+      }
+
+      @Override
+      public boolean n() {
+         return false;
+      }
+
+      @Override
+      public void j() {
+         this.u();
+      }
+
+      @Override
+      public void k() {
+      }
    }
 }

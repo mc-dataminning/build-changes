@@ -1,165 +1,80 @@
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cle extends bum implements bwh {
-   private static final ajy<Integer> b = akc.a(cle.class, aka.b);
-   private static final ajy<dwy> c = akc.a(cle.class, aka.i);
-   private static final int d = 80;
-   private static final float e = 4.0F;
-   private static final String f = "block_state";
-   public static final String a = "fuse";
-   private static final String g = "explosion_power";
-   private static final dgc h = new dgc() {
-      @Override
-      public boolean a(dgb $$0, dfo $$1, ji $$2, dwy $$3, float $$4) {
-         return $$3.a(djp.eq) ? false : super.a($$0, $$1, $$2, $$3, $$4);
-      }
-
-      @Override
-      public Optional<Float> a(dgb $$0, dfo $$1, ji $$2, dwy $$3, eta $$4) {
-         return $$3.a(djp.eq) ? Optional.empty() : super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   };
+public class cle extends ckr {
+   private boolean b;
    @Nullable
-   private bvi i;
-   private boolean j;
-   private float k = 4.0F;
+   private euk c;
+   @Nullable
+   private fbx d;
 
-   public cle(but<? extends cle> $$0, dgj $$1) {
-      super($$0, $$1);
-      this.I = true;
-   }
-
-   public cle(dgj $$0, double $$1, double $$2, double $$3, @Nullable bvi $$4) {
-      this(but.bv, $$0);
-      this.a_($$1, $$2, $$3);
-      double $$5 = $$0.A.j() * (float) (Math.PI * 2);
-      this.n(-Math.sin($$5) * 0.02, 0.2F, -Math.cos($$5) * 0.02);
-      this.b(80);
-      this.K = $$1;
-      this.L = $$2;
-      this.M = $$3;
-      this.i = $$4;
+   public cle(ckp $$0) {
+      super($$0);
    }
 
    @Override
-   protected void a(akc.a $$0) {
-      $$0.a(b, 80);
-      $$0.a(c, djp.cr.m());
-   }
-
-   @Override
-   protected bum.c bg() {
-      return bum.c.a;
-   }
-
-   @Override
-   public boolean bH() {
-      return !this.dQ();
-   }
-
-   @Override
-   protected double bd() {
-      return 0.04;
-   }
-
-   @Override
-   public void h() {
-      this.bW();
-      this.bf();
-      this.a(bvm.a, this.dy());
-      this.aK();
-      this.i(this.dy().c(0.98));
-      if (this.aJ()) {
-         this.i(this.dy().d(0.7, -0.5, 0.7));
-      }
-
-      int $$0 = this.m() - 1;
-      this.b($$0);
-      if ($$0 <= 0) {
-         this.at();
-         if (!this.dV().C) {
-            this.t();
+   public void a(ard $$0) {
+      if (!this.b && this.c != null) {
+         ji $$1 = $$0.a(edo.a.f, egt.a(this.a.j()));
+         if (!$$1.a(this.a.ds(), 10.0)) {
+            this.a.t().a(clf.a);
          }
       } else {
-         this.bq();
-         if (this.dV().C) {
-            this.dV().a(lt.ag, this.dA(), this.dC() + 0.5, this.dG(), 0.0, 0.0, 0.0);
+         this.b = false;
+         this.i();
+      }
+   }
+
+   @Override
+   public void c() {
+      this.b = true;
+      this.c = null;
+      this.d = null;
+   }
+
+   private void i() {
+      int $$0 = this.a.n();
+      fbx $$1 = this.a.K(1.0F);
+      int $$2 = this.a.q(-$$1.d * 40.0, 105.0, -$$1.f * 40.0);
+      if (this.a.x() != null && this.a.x().e() > 0) {
+         $$2 %= 12;
+         if ($$2 < 0) {
+            $$2 += 12;
+         }
+      } else {
+         $$2 -= 12;
+         $$2 &= 7;
+         $$2 += 12;
+      }
+
+      this.c = this.a.a($$0, $$2, null);
+      this.j();
+   }
+
+   private void j() {
+      if (this.c != null) {
+         this.c.a();
+         if (!this.c.c()) {
+            km $$0 = this.c.g();
+            this.c.a();
+
+            double $$1;
+            do {
+               $$1 = (double)((float)$$0.v() + this.a.dX().i() * 20.0F);
+            } while ($$1 < (double)$$0.v());
+
+            this.d = new fbx((double)$$0.u(), $$1, (double)$$0.w());
          }
       }
    }
 
-   private void t() {
-      this.dV().a(this, dgb.a(this.dV(), this), this.j ? h : null, this.dA(), this.e(0.0625), this.dG(), this.k, false, dgj.a.d);
-   }
-
-   @Override
-   protected void b(tq $$0) {
-      $$0.a("fuse", (short)this.m());
-      $$0.a("block_state", uf.a(this.s()));
-      if (this.k != 4.0F) {
-         $$0.a("explosion_power", this.k);
-      }
-   }
-
-   @Override
-   protected void a(tq $$0) {
-      this.b($$0.g("fuse"));
-      if ($$0.b("block_state", 10)) {
-         this.c(uf.a(this.dV().a(mc.f), $$0.p("block_state")));
-      }
-
-      if ($$0.b("explosion_power", 99)) {
-         this.k = ayz.a($$0.j("explosion_power"), 0.0F, 128.0F);
-      }
-   }
-
-   @Nullable
-   public bvi l() {
-      return this.i;
-   }
-
-   @Override
-   public void x(bum $$0) {
-      super.x($$0);
-      if ($$0 instanceof cle $$1) {
-         this.i = $$1.i;
-      }
-   }
-
-   public void b(int $$0) {
-      this.al.a(b, $$0);
-   }
-
-   public int m() {
-      return this.al.a(b);
-   }
-
-   public void c(dwy $$0) {
-      this.al.a(c, $$0);
-   }
-
-   public dwy s() {
-      return this.al.a(c);
-   }
-
-   private void a(boolean $$0) {
-      this.j = $$0;
-   }
-
    @Nullable
    @Override
-   public bum b(eua $$0) {
-      bum $$1 = super.b($$0);
-      if ($$1 instanceof cle $$2) {
-         $$2.a(true);
-      }
-
-      return $$1;
+   public fbx f() {
+      return this.d;
    }
 
    @Override
-   public final boolean a(ard $$0, btc $$1, float $$2) {
-      return false;
+   public clf<cle> h() {
+      return clf.e;
    }
 }

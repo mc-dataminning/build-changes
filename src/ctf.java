@@ -1,103 +1,85 @@
-public class ctf extends csd {
-   static final akv m = akv.b("container/slot/saddle");
-   private static final akv n = akv.b("container/slot/llama_armor");
-   private static final akv o = akv.b("container/slot/horse_armor");
-   private final bse p;
-   private final bse q;
-   private final cjd r;
-   private static final int s = 1;
-   private static final int t = 2;
+public class ctf extends csw {
+   private final bsr m;
+   private final int n;
 
-   public ctf(int $$0, cox $$1, bse $$2, final cjd $$3, int $$4) {
-      super(null, $$0);
-      this.p = $$2;
-      this.q = $$3.hd();
-      this.r = $$3;
-      $$2.c_($$1.k);
-      this.a(new cua($$2, 0, 8, 18) {
-         @Override
-         public boolean a(cwq $$0) {
-            return $$0.a(cwu.on) && !this.h() && $$3.f();
-         }
+   private ctf(cuf<?> $$0, int $$1, cpq $$2, int $$3) {
+      this($$0, $$1, $$2, new btf(9 * $$3), $$3);
+   }
 
-         @Override
-         public boolean d() {
-            return $$3.f();
-         }
+   public static ctf a(int $$0, cpq $$1) {
+      return new ctf(cuf.a, $$0, $$1, 1);
+   }
 
-         @Override
-         public akv b() {
-            return ctf.m;
-         }
-      });
-      akv $$5 = $$3 instanceof cjg ? n : o;
-      this.a(new csh(this.q, $$3, buu.g, 0, 8, 36, $$5) {
-         @Override
-         public boolean a(cwq $$0) {
-            return $$3.a($$0, buu.g);
-         }
+   public static ctf b(int $$0, cpq $$1) {
+      return new ctf(cuf.b, $$0, $$1, 2);
+   }
 
-         @Override
-         public boolean d() {
-            return $$3.e(buu.g);
-         }
-      });
-      if ($$4 > 0) {
-         for (int $$6 = 0; $$6 < 3; $$6++) {
-            for (int $$7 = 0; $$7 < $$4; $$7++) {
-               this.a(new cua($$2, 1 + $$7 + $$6 * $$4, 80 + $$7 * 18, 18 + $$6 * 18));
-            }
+   public static ctf c(int $$0, cpq $$1) {
+      return new ctf(cuf.c, $$0, $$1, 3);
+   }
+
+   public static ctf d(int $$0, cpq $$1) {
+      return new ctf(cuf.d, $$0, $$1, 4);
+   }
+
+   public static ctf e(int $$0, cpq $$1) {
+      return new ctf(cuf.e, $$0, $$1, 5);
+   }
+
+   public static ctf f(int $$0, cpq $$1) {
+      return new ctf(cuf.f, $$0, $$1, 6);
+   }
+
+   public static ctf a(int $$0, cpq $$1, bsr $$2) {
+      return new ctf(cuf.c, $$0, $$1, $$2, 3);
+   }
+
+   public static ctf b(int $$0, cpq $$1, bsr $$2) {
+      return new ctf(cuf.f, $$0, $$1, $$2, 6);
+   }
+
+   public ctf(cuf<?> $$0, int $$1, cpq $$2, bsr $$3, int $$4) {
+      super($$0, $$1);
+      a($$3, $$4 * 9);
+      this.m = $$3;
+      this.n = $$4;
+      $$3.c_($$2.k);
+      int $$5 = 18;
+      this.d($$3, 8, 18);
+      int $$6 = 18 + this.n * 18 + 13;
+      this.c($$2, 8, $$6);
+   }
+
+   private void d(bsr $$0, int $$1, int $$2) {
+      for (int $$3 = 0; $$3 < this.n; $$3++) {
+         for (int $$4 = 0; $$4 < 9; $$4++) {
+            this.a(new cut($$0, $$4 + $$3 * 9, $$1 + $$4 * 18, $$2 + $$3 * 18));
          }
       }
-
-      this.c($$1, 8, 84);
    }
 
    @Override
-   public boolean b(coy $$0) {
-      return !this.r.b(this.p) && this.p.a($$0) && this.q.a($$0) && this.r.bL() && $$0.b(this.r, 4.0);
+   public boolean b(cpr $$0) {
+      return this.m.a($$0);
    }
 
    @Override
-   public cwq b(coy $$0, int $$1) {
-      cwq $$2 = cwq.j;
-      cua $$3 = this.k.get($$1);
+   public cxh b(cpr $$0, int $$1) {
+      cxh $$2 = cxh.k;
+      cut $$3 = this.k.get($$1);
       if ($$3 != null && $$3.h()) {
-         cwq $$4 = $$3.g();
+         cxh $$4 = $$3.g();
          $$2 = $$4.v();
-         int $$5 = this.p.b() + 1;
-         if ($$1 < $$5) {
-            if (!this.a($$4, $$5, this.k.size(), true)) {
-               return cwq.j;
+         if ($$1 < this.n * 9) {
+            if (!this.a($$4, this.n * 9, this.k.size(), true)) {
+               return cxh.k;
             }
-         } else if (this.b(1).a($$4) && !this.b(1).h()) {
-            if (!this.a($$4, 1, 2, false)) {
-               return cwq.j;
-            }
-         } else if (this.b(0).a($$4)) {
-            if (!this.a($$4, 0, 1, false)) {
-               return cwq.j;
-            }
-         } else if ($$5 <= 1 || !this.a($$4, 2, $$5, false)) {
-            int $$7 = $$5 + 27;
-            int $$9 = $$7 + 9;
-            if ($$1 >= $$7 && $$1 < $$9) {
-               if (!this.a($$4, $$5, $$7, false)) {
-                  return cwq.j;
-               }
-            } else if ($$1 >= $$5 && $$1 < $$7) {
-               if (!this.a($$4, $$7, $$9, false)) {
-                  return cwq.j;
-               }
-            } else if (!this.a($$4, $$7, $$7, false)) {
-               return cwq.j;
-            }
-
-            return cwq.j;
+         } else if (!this.a($$4, 0, this.n * 9, false)) {
+            return cxh.k;
          }
 
          if ($$4.f()) {
-            $$3.e(cwq.j);
+            $$3.e(cxh.k);
          } else {
             $$3.c();
          }
@@ -107,8 +89,16 @@ public class ctf extends csd {
    }
 
    @Override
-   public void a(coy $$0) {
+   public void a(cpr $$0) {
       super.a($$0);
-      this.p.c($$0);
+      this.m.c($$0);
+   }
+
+   public bsr l() {
+      return this.m;
+   }
+
+   public int m() {
+      return this.n;
    }
 }

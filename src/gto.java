@@ -1,21 +1,22 @@
-public class gto extends gqz<chn, gyr, gcy> {
-   private static final akv a = akv.b("textures/entity/cat/ocelot.png");
+public class gto extends guj<cmn, hca, gdn<hca>> {
+   private static final aku a = aku.b("textures/entity/zombie/zombie.png");
 
-   public gto(gsf.a $$0) {
-      super($$0, new gcy($$0.a(gfd.bH)), new gcy($$0.a(gfd.bI)), 0.4F);
+   public gto(gtd.a $$0, float $$1) {
+      super($$0, new gdg($$0.a(ggb.aU)), 0.5F * $$1);
+      this.a(new gxk<>(this));
+      this.a(new gxh<>(this, new gdg($$0.a(ggb.aV)), new gdg($$0.a(ggb.aW)), $$0.h()));
    }
 
-   public akv a(gyr $$0) {
+   public aku a(hca $$0) {
       return a;
    }
 
-   public gyr b() {
-      return new gyr();
+   public hca b() {
+      return new hca();
    }
 
-   public void a(chn $$0, gyr $$1, float $$2) {
+   public void a(cmn $$0, hca $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.d = $$0.ci();
-      $$1.e = $$0.cj();
+      gtu.a($$0, $$1, $$2, this.i);
    }
 }

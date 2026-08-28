@@ -1,3 +1,7 @@
-public class hao extends gyl {
-   public final hbp a = new hbp();
+public class hao extends haj {
+   public cic.a a;
+
+   public hao() {
+      this.a = cic.a.a;
+   }
 }

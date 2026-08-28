@@ -1,9 +1,86 @@
-public class dcn {
-   public static dck.a<?> a(ke<dck.a<?>> $$0) {
-      ke.a($$0, "crafting_shapeless", dcp.c);
-      ke.a($$0, "crafting_shaped", dco.c);
-      ke.a($$0, "furnace", dcj.c);
-      ke.a($$0, "stonecutter", dcu.c);
-      return ke.a($$0, "smithing", dct.c);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
+
+public abstract class dcn implements dbv<dco> {
+   private final dbr c;
+   private final cxh d;
+   private final String e;
+   @Nullable
+   private dbu f;
+
+   public dcn(String $$0, dbr $$1, cxh $$2) {
+      this.e = $$0;
+      this.c = $$1;
+      this.d = $$2;
+   }
+
+   @Override
+   public abstract dcf<? extends dcn> a();
+
+   @Override
+   public abstract dcg<? extends dcn> b();
+
+   public boolean a(dco $$0, dgz $$1) {
+      return this.c.a($$0.c());
+   }
+
+   @Override
+   public String j() {
+      return this.e;
+   }
+
+   public dbr k() {
+      return this.c;
+   }
+
+   protected cxh l() {
+      return this.d;
+   }
+
+   @Override
+   public dbu ao_() {
+      if (this.f == null) {
+         this.f = dbu.a(this.c);
+      }
+
+      return this.f;
+   }
+
+   public cxh a(dco $$0, jt.a $$1) {
+      return this.d.v();
+   }
+
+   @FunctionalInterface
+   public interface a<T extends dcn> {
+      T create(String var1, dbr var2, cxh var3);
+   }
+
+   public static class b<T extends dcn> implements dcf<T> {
+      private final MapCodec<T> w;
+      private final yn<wa, T> x;
+
+      protected b(dcn.a<T> $$0) {
+         this.w = RecordCodecBuilder.mapCodec(
+            $$1 -> $$1.group(
+                     Codec.STRING.optionalFieldOf("group", "").forGetter(dcn::j),
+                     dbr.d.fieldOf("ingredient").forGetter(dcn::k),
+                     cxh.d.fieldOf("result").forGetter(dcn::l)
+                  )
+                  .apply($$1, $$0::create)
+         );
+         this.x = yn.a(yl.o, dcn::j, dbr.a, dcn::k, cxh.i, dcn::l, $$0::create);
+      }
+
+      @Override
+      public MapCodec<T> a() {
+         return this.w;
+      }
+
+      @Override
+      public yn<wa, T> b() {
+         return this.x;
+      }
    }
 }

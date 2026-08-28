@@ -1,49 +1,56 @@
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public enum bsi implements azv {
-   a(0, "peaceful"),
-   b(1, "easy"),
-   c(2, "normal"),
-   d(3, "hard");
+public class bsi extends bsb {
+   public static final MapCodec<bsi> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.FLOAT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("max_exclusive").forGetter($$0x -> $$0x.d))
+               .apply($$0, bsi::new)
+      )
+      .validate(
+         $$0 -> $$0.d <= $$0.b
+               ? DataResult.error(() -> "Max must be larger than min, min_inclusive: " + $$0.b + ", max_exclusive: " + $$0.d)
+               : DataResult.success($$0)
+      );
+   private final float b;
+   private final float d;
 
-   public static final azv.a<bsi> e = azv.a(bsi::values);
-   private static final IntFunction<bsi> f = axq.a(bsi::a, values(), axq.a.b);
-   private final int g;
-   private final String h;
-
-   private bsi(final int $$0, final String $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   private bsi(float $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
    }
 
-   public int a() {
-      return this.g;
-   }
-
-   public wp b() {
-      return wp.c("options.difficulty." + this.h);
-   }
-
-   public wp d() {
-      return wp.c("options.difficulty." + this.h + ".info");
-   }
-
-   public static bsi a(int $$0) {
-      return f.apply($$0);
-   }
-
-   @Nullable
-   public static bsi a(String $$0) {
-      return e.a($$0);
-   }
-
-   public String e() {
-      return this.h;
+   public static bsi b(float $$0, float $$1) {
+      if ($$1 <= $$0) {
+         throw new IllegalArgumentException("Max must exceed min");
+      } else {
+         return new bsi($$0, $$1);
+      }
    }
 
    @Override
-   public String c() {
-      return this.h;
+   public float a(azh $$0) {
+      return ayz.b($$0, this.b, this.d);
+   }
+
+   @Override
+   public float a() {
+      return this.b;
+   }
+
+   @Override
+   public float b() {
+      return this.d;
+   }
+
+   @Override
+   public bsc<?> c() {
+      return bsc.b;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.b + "-" + this.d + "]";
    }
 }

@@ -1,37 +1,28 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
-import javax.annotation.Nullable;
 
 public class byk {
-   public static bym<bvi> a(float $$0) {
-      return cao.a((Function<cao.b<bvi>, ? extends App<cao.c<bvi>, car<bvi>>>)($$1 -> $$1.group($$1.c(cem.m)).apply($$1, $$1x -> ($$2, $$3, $$4) -> {
-               if ($$2.h($$3.dv())) {
-                  return false;
-               } else {
-                  Optional<fbb> $$5 = Optional.ofNullable(a($$2, $$3));
-                  $$5.ifPresent($$2x -> $$1x.a(new cep($$2x, $$0, 0)));
-                  return true;
-               }
-            })));
+   private static ji a(bwa $$0, ji $$1) {
+      azh $$2 = $$0.dU().A;
+      return $$1.b(a($$2), 0, a($$2));
    }
 
-   @Nullable
-   private static fbb a(ard $$0, bvi $$1) {
-      azh $$2 = $$1.dY();
-      ji $$3 = $$1.dv();
-
-      for (int $$4 = 0; $$4 < 10; $$4++) {
-         ji $$5 = $$3.b($$2.a(20) - 10, $$2.a(6) - 3, $$2.a(20) - 10);
-         if (a($$0, $$1, $$5)) {
-            return fbb.c($$5);
-         }
-      }
-
-      return null;
+   private static int a(azh $$0) {
+      return $$0.a(3) - 1;
    }
 
-   public static boolean a(ard $$0, bvi $$1, ji $$2) {
-      return $$0.h($$2) && (double)$$0.a(ect.a.e, $$2).v() <= $$1.dC();
+   public static <E extends bwa> bzc<E> a(cfc<ji> $$0, int $$1, float $$2) {
+      return cbe.a(
+         (Function<cbe.b<E>, ? extends App<cbe.c<E>, cbh<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(cfc.o), $$3.c(cfc.m), $$3.a(cfc.n))
+               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
+                     ji $$7 = $$3.b($$3x);
+                     boolean $$8 = $$7.a($$5x.du(), (double)$$1);
+                     if (!$$8) {
+                        bxt.a($$5x, a($$5x, $$7), $$2, $$1);
+                     }
+
+                     return true;
+                  }))
+      );
    }
 }

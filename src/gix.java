@@ -1,18 +1,16 @@
-public class gix extends gki {
-   private final gkd a;
+public class gix extends glg {
+   private final glb a;
 
-   protected gix(gga $$0, double $$1, double $$2, double $$3, gkd $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a = $$4;
-      this.b($$4);
-      this.t = 12 + this.r.a(4);
-      this.D = 1.0F;
-      this.b(1.0F, 1.0F);
-   }
-
-   @Override
-   public gjm b() {
-      return gjm.b;
+   gix(ggy $$0, double $$1, double $$2, double $$3, double $$4, glb $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$5;
+      this.t = 4;
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 1.0F - (float)$$4 * 0.5F;
+      this.b($$5);
    }
 
    @Override
@@ -22,6 +20,9 @@ public class gix extends gki {
 
    @Override
    public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
       if (this.s++ >= this.t) {
          this.k();
       } else {
@@ -29,29 +30,20 @@ public class gix extends gki {
       }
    }
 
-   public static class a implements gjl<lx> {
-      private final gkd a;
-
-      public a(gkd $$0) {
-         this.a = $$0;
-      }
-
-      public gji a(lx $$0, gga $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gix($$1, $$2, $$3, $$4, this.a);
-      }
+   @Override
+   public gkk b() {
+      return gkk.b;
    }
 
-   public static class b implements gjl<lx> {
-      private final gkd a;
+   public static class a implements gkj<lx> {
+      private final glb a;
 
-      public b(gkd $$0) {
+      public a(glb $$0) {
          this.a = $$0;
       }
 
-      public gji a(lx $$0, gga $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gji $$8 = new gix($$1, $$2, $$3, $$4, this.a);
-         $$8.d(0.15F);
-         return $$8;
+      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gix($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

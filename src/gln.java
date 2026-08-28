@@ -1,51 +1,56 @@
-public enum gln {
-   a(new gln.b(gln.a.f, gln.a.e, gln.a.a), new gln.b(gln.a.f, gln.a.e, gln.a.d), new gln.b(gln.a.c, gln.a.e, gln.a.d), new gln.b(gln.a.c, gln.a.e, gln.a.a)),
-   b(new gln.b(gln.a.f, gln.a.b, gln.a.d), new gln.b(gln.a.f, gln.a.b, gln.a.a), new gln.b(gln.a.c, gln.a.b, gln.a.a), new gln.b(gln.a.c, gln.a.b, gln.a.d)),
-   c(new gln.b(gln.a.c, gln.a.b, gln.a.d), new gln.b(gln.a.c, gln.a.e, gln.a.d), new gln.b(gln.a.f, gln.a.e, gln.a.d), new gln.b(gln.a.f, gln.a.b, gln.a.d)),
-   d(new gln.b(gln.a.f, gln.a.b, gln.a.a), new gln.b(gln.a.f, gln.a.e, gln.a.a), new gln.b(gln.a.c, gln.a.e, gln.a.a), new gln.b(gln.a.c, gln.a.b, gln.a.a)),
-   e(new gln.b(gln.a.f, gln.a.b, gln.a.d), new gln.b(gln.a.f, gln.a.e, gln.a.d), new gln.b(gln.a.f, gln.a.e, gln.a.a), new gln.b(gln.a.f, gln.a.b, gln.a.a)),
-   f(new gln.b(gln.a.c, gln.a.b, gln.a.a), new gln.b(gln.a.c, gln.a.e, gln.a.a), new gln.b(gln.a.c, gln.a.e, gln.a.d), new gln.b(gln.a.c, gln.a.b, gln.a.d));
+public class gln extends glg {
+   private float a;
 
-   private static final gln[] g = af.a(new gln[6], $$0 -> {
-      $$0[gln.a.e] = a;
-      $$0[gln.a.b] = b;
-      $$0[gln.a.d] = c;
-      $$0[gln.a.a] = d;
-      $$0[gln.a.f] = e;
-      $$0[gln.a.c] = f;
-   });
-   private final gln.b[] h;
-
-   public static gln a(jn $$0) {
-      return g[$$0.d()];
+   gln(ggy $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.t = (int)(Math.random() * 60.0) + 30;
+      this.n = false;
+      this.j = 0.0;
+      this.k = -0.05;
+      this.l = 0.0;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.u = 0.002F;
    }
 
-   private gln(final gln.b... $$0) {
-      this.h = $$0;
+   @Override
+   public gkk b() {
+      return gkk.b;
    }
 
-   public gln.b a(int $$0) {
-      return this.h[$$0];
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = 0.6F;
+         this.j = this.j + (double)(0.6F * ayz.b(this.a));
+         this.l = this.l + (double)(0.6F * ayz.a(this.a));
+         this.j *= 0.07;
+         this.l *= 0.07;
+         this.a(this.j, this.k, this.l);
+         if (!this.c.b_(ji.a(this.g, this.h, this.i)).a(awv.a) || this.m) {
+            this.k();
+         }
+
+         this.a += 0.08F;
+      }
    }
 
-   public static final class a {
-      public static final int a = jn.d.d();
-      public static final int b = jn.b.d();
-      public static final int c = jn.f.d();
-      public static final int d = jn.c.d();
-      public static final int e = jn.a.d();
-      public static final int f = jn.e.d();
-   }
+   public static class a implements gkj<lx> {
+      private final glb a;
 
-   public static class b {
-      public final int a;
-      public final int b;
-      public final int c;
-
-      b(int $$0, int $$1, int $$2) {
+      public a(glb $$0) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+      }
+
+      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gln $$8 = new gln($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

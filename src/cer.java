@@ -1,40 +1,36 @@
-public class cer extends ceu {
-   public cer(bvk $$0, dgj $$1) {
-      super($$0, $$1);
+import javax.annotation.Nullable;
+
+public class cer<T extends bvy> extends cep<T> {
+   private static final int i = 200;
+   private int j = 0;
+
+   public cer(crf $$0, Class<T> $$1, boolean $$2, @Nullable cgp.a $$3) {
+      super($$0, $$1, 500, $$2, false, $$3);
+   }
+
+   public int i() {
+      return this.j;
+   }
+
+   public void k() {
+      this.j--;
    }
 
    @Override
-   protected etq a(int $$0) {
-      this.o = new etj(false);
-      return new etq(this.o, $$0);
+   public boolean b() {
+      if (this.j > 0 || !this.e.dX().h()) {
+         return false;
+      } else if (!((crf)this.e).gG()) {
+         return false;
+      } else {
+         this.h();
+         return this.c != null;
+      }
    }
 
    @Override
-   protected boolean a() {
-      return true;
-   }
-
-   @Override
-   protected fbb b() {
-      return new fbb(this.a.dA(), this.a.e(0.5), this.a.dG());
-   }
-
-   @Override
-   protected double a(fbb $$0) {
-      return $$0.e;
-   }
-
-   @Override
-   protected boolean a(fbb $$0, fbb $$1) {
-      return this.a.bn() ? a(this.a, $$0, $$1, false) : false;
-   }
-
-   @Override
-   public boolean a(ji $$0) {
-      return !this.b.a_($$0.e()).l();
-   }
-
-   @Override
-   public void a(boolean $$0) {
+   public void d() {
+      this.j = b(200);
+      super.d();
    }
 }

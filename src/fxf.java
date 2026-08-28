@@ -1,50 +1,30 @@
-public class fxf extends fum {
-   private static final int a = 600;
-   private final vi b;
-   private fou c;
-   private int d;
-   private final fsm s = fsm.d();
+public class fxf extends fvw {
+   private final dga u;
 
-   public fxf(wp $$0, vi $$1) {
-      super($$0);
-      this.b = $$1;
+   public fxf(dga $$0) {
+      this.u = $$0;
    }
 
    @Override
-   public boolean aG_() {
-      return false;
+   public dga m() {
+      return this.u;
+   }
+
+   @Override
+   int E() {
+      return 150;
    }
 
    @Override
    protected void aR_() {
-      this.s.c().b().a(10);
-      this.s.a(new fqb(this.l, this.p));
-      this.c = this.s.a(fou.a(wo.p, $$0 -> this.b.a(ftl.a)).a());
-      this.c.j = false;
-      this.s.a();
-      this.s.a($$1 -> {
-         fos var10000 = this.c($$1);
-      });
-      this.c();
+      super.aR_();
+      this.a.a(this.m().m());
    }
 
    @Override
-   protected void c() {
-      fsg.a(this.s, this.J());
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.d++;
-      if (this.d == 600) {
-         this.c.j = true;
-      }
-
-      if (this.b.i()) {
-         this.b.b();
-      } else {
-         this.b.n();
+   protected void a(dga $$0) {
+      if ($$0 instanceof csa.a $$1) {
+         this.m.L().b(new ahy($$1.h().ar(), this.a.a(), $$0.p()));
       }
    }
 }

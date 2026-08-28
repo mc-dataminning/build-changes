@@ -1,83 +1,73 @@
-public class gih extends gki {
-   gih(gga $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.7F;
-      this.u = 0.5F;
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4 * 0.4;
-      this.k += $$5 * 0.4;
-      this.l += $$6 * 0.4;
-      float $$7 = (float)(Math.random() * 0.3F + 0.6F);
-      this.v = $$7;
-      this.w = $$7;
-      this.x = $$7;
-      this.D *= 0.75F;
-      this.t = Math.max((int)(6.0 / (Math.random() * 0.8 + 0.6)), 1);
-      this.n = false;
-      this.a();
+import com.mojang.authlib.minecraft.UserApiService;
+import java.util.Objects;
+import java.util.UUID;
+import javax.annotation.Nullable;
+
+public final class gih {
+   private static final int a = 1024;
+   private final ghy b;
+   private final gie c;
+   private final ght d;
+   @Nullable
+   private gid e;
+
+   public gih(ghy $$0, gie $$1, ght $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * ayz.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public static gih a(gie $$0, UserApiService $$1) {
+      ght $$2 = new ght(1024);
+      ghy $$3 = ghy.a($$0, $$1);
+      return new gih($$3, $$0, $$2);
    }
 
-   @Override
-   public void a() {
-      super.a();
-      this.w *= 0.96F;
-      this.x *= 0.9F;
-   }
-
-   @Override
-   public gjm b() {
-      return gjm.b;
-   }
-
-   public static class a implements gjl<lx> {
-      private final gkd a;
-
-      public a(gkd $$0) {
-         this.a = $$0;
-      }
-
-      public gji a(lx $$0, gga $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gih $$8 = new gih($$1, $$2, $$3, $$4, $$5, $$6 + 1.0, $$7);
-         $$8.a(20);
-         $$8.a(this.a);
-         return $$8;
+   public void a(fmg $$0, fvi $$1, Runnable $$2, boolean $$3) {
+      if (this.e != null) {
+         gid $$4 = this.e.b();
+         $$0.a(
+            new fug(
+               $$4x -> {
+                  this.a(null);
+                  if ($$4x) {
+                     $$0.a($$4.a($$1, this));
+                  } else {
+                     $$2.run();
+                  }
+               },
+               wp.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
+               wp.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
+               wp.c("gui.abuseReport.draft.edit"),
+               wp.c("gui.abuseReport.draft.discard")
+            )
+         );
+      } else {
+         $$2.run();
       }
    }
 
-   public static class b implements gjl<lx> {
-      private final gkd a;
-
-      public b(gkd $$0) {
-         this.a = $$0;
-      }
-
-      public gji a(lx $$0, gga $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gih $$8 = new gih($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.v *= 0.3F;
-         $$8.w *= 0.8F;
-         $$8.a(this.a);
-         return $$8;
-      }
+   public ghy a() {
+      return this.b;
    }
 
-   public static class c implements gjl<lx> {
-      private final gkd a;
+   public ght b() {
+      return this.d;
+   }
 
-      public c(gkd $$0) {
-         this.a = $$0;
-      }
+   public boolean a(gie $$0) {
+      return Objects.equals(this.c, $$0);
+   }
 
-      public gji a(lx $$0, gga $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gih $$8 = new gih($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
+   public void a(@Nullable gid $$0) {
+      this.e = $$0;
+   }
+
+   public boolean c() {
+      return this.e != null;
+   }
+
+   public boolean a(UUID $$0) {
+      return this.c() && this.e.a($$0);
    }
 }

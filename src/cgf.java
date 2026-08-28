@@ -1,22 +1,33 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public class cgf {
-   @Nullable
-   public static fbb a(bvq $$0, int $$1, int $$2, double $$3, double $$4, float $$5, int $$6, int $$7) {
-      boolean $$8 = cge.a($$0, $$1);
-      return cgh.a($$0, () -> {
-         ji $$9 = cgh.a($$0.dY(), $$1, $$2, 0, $$3, $$4, (double)$$5);
-         if ($$9 == null) {
-            return null;
-         } else {
-            ji $$10 = cgg.a($$0, $$1, $$8, $$9);
-            if ($$10 == null) {
-               return null;
-            } else {
-               $$10 = cgh.a($$10, $$0.dY().a($$6 - $$7 + 1) + $$7, $$0.dV().an(), $$1xx -> cge.c($$0, $$1xx));
-               return !cge.a($$0, $$10) && !cge.b($$0, $$10) ? $$10 : null;
-            }
-         }
-      });
+public class cgf extends cgi<bvy> {
+   @Override
+   public Set<cfc<?>> a() {
+      return ImmutableSet.of(cfc.j, cfc.k, cfc.l);
+   }
+
+   @Override
+   protected void a(ard $$0, bvy $$1) {
+      List<cpr> $$2 = $$0.z()
+         .stream()
+         .filter(bvg.f)
+         .filter($$1x -> $$1.a($$1x, this.a($$1)))
+         .sorted(Comparator.comparingDouble($$1::g))
+         .collect(Collectors.toList());
+      bxa<?> $$3 = $$1.ea();
+      $$3.a(cfc.j, $$2);
+      List<cpr> $$4 = $$2.stream().filter($$2x -> b($$0, $$1, $$2x)).collect(Collectors.toList());
+      $$3.a(cfc.k, $$4.isEmpty() ? null : $$4.get(0));
+      Optional<cpr> $$5 = $$4.stream().filter($$2x -> c($$0, $$1, $$2x)).findFirst();
+      $$3.a(cfc.l, $$5);
+   }
+
+   protected double a(bvy $$0) {
+      return $$0.h(bxg.m);
    }
 }

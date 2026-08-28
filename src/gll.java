@@ -1,104 +1,92 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.List;
-import java.util.stream.IntStream;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fStack;
+import java.util.Optional;
+import org.joml.Quaternionf;
 
-public class gll {
-   private static final int a = 6;
-   private final List<akv> b;
+public class gll extends glg {
+   private final ect a;
+   private float b;
+   private float F;
+   private float G;
+   private float H;
 
-   public gll(akv $$0) {
-      this.b = IntStream.range(0, 6).mapToObj($$1 -> $$0.e($$0.a() + "_" + $$1 + ".png")).toList();
+   gll(ggy $$0, double $$1, double $$2, double $$3, ect $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.D = 0.3F;
+      this.a = $$4;
+      this.t = $$5;
+      Optional<fbx> $$6 = $$4.a($$0);
+      if ($$6.isPresent()) {
+         fbx $$7 = $$6.get();
+         double $$8 = $$1 - $$7.a();
+         double $$9 = $$2 - $$7.b();
+         double $$10 = $$3 - $$7.c();
+         this.F = this.b = (float)ayz.d($$8, $$10);
+         this.H = this.G = (float)ayz.d($$9, Math.sqrt($$8 * $$8 + $$10 * $$10));
+      }
    }
 
-   public void a(flk $$0, float $$1, float $$2, float $$3) {
-      ffx $$4 = ffx.b();
-      Matrix4f $$5 = new Matrix4f().setPerspective(1.4835298F, (float)$$0.aO().k() / (float)$$0.aO().l(), 0.05F, 10.0F);
-      RenderSystem.backupProjectionMatrix();
-      RenderSystem.setProjectionMatrix($$5, fde.a);
-      Matrix4fStack $$6 = RenderSystem.getModelViewStack();
-      $$6.pushMatrix();
-      $$6.rotationX((float) Math.PI);
-      RenderSystem.setShader(glk.i);
-      RenderSystem.enableBlend();
-      RenderSystem.disableCull();
-      RenderSystem.depthMask(false);
-      int $$7 = 2;
+   @Override
+   public void a(fgv $$0, flo $$1, float $$2) {
+      float $$3 = ayz.a(((float)this.s + $$2 - (float) (Math.PI * 2)) * 0.05F) * 2.0F;
+      float $$4 = ayz.h($$2, this.F, this.b);
+      float $$5 = ayz.h($$2, this.H, this.G) + (float) (Math.PI / 2);
+      Quaternionf $$6 = new Quaternionf();
+      $$6.rotationY($$4).rotateX(-$$5).rotateY($$3);
+      this.a($$0, $$1, $$6, $$2);
+      $$6.rotationY((float) -Math.PI + $$4).rotateX($$5).rotateY($$3);
+      this.a($$0, $$1, $$6, $$2);
+   }
 
-      for (int $$8 = 0; $$8 < 4; $$8++) {
-         $$6.pushMatrix();
-         float $$9 = ((float)($$8 % 2) / 2.0F - 0.5F) / 256.0F;
-         float $$10 = ((float)($$8 / 2) / 2.0F - 0.5F) / 256.0F;
-         float $$11 = 0.0F;
-         $$6.translate($$9, $$10, 0.0F);
-         $$6.rotateX($$1 * (float) (Math.PI / 180.0));
-         $$6.rotateY($$2 * (float) (Math.PI / 180.0));
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
 
-         for (int $$12 = 0; $$12 < 6; $$12++) {
-            RenderSystem.setShaderTexture(0, this.b.get($$12));
-            ffq $$13 = $$4.a(fga.c.h, fft.j);
-            int $$14 = Math.round(255.0F * $$3) / ($$8 + 1);
-            if ($$12 == 0) {
-               $$13.a(-1.0F, -1.0F, 1.0F).a(0.0F, 0.0F).d($$14);
-               $$13.a(-1.0F, 1.0F, 1.0F).a(0.0F, 1.0F).d($$14);
-               $$13.a(1.0F, 1.0F, 1.0F).a(1.0F, 1.0F).d($$14);
-               $$13.a(1.0F, -1.0F, 1.0F).a(1.0F, 0.0F).d($$14);
-            }
+   @Override
+   public gkk b() {
+      return gkk.c;
+   }
 
-            if ($$12 == 1) {
-               $$13.a(1.0F, -1.0F, 1.0F).a(0.0F, 0.0F).d($$14);
-               $$13.a(1.0F, 1.0F, 1.0F).a(0.0F, 1.0F).d($$14);
-               $$13.a(1.0F, 1.0F, -1.0F).a(1.0F, 1.0F).d($$14);
-               $$13.a(1.0F, -1.0F, -1.0F).a(1.0F, 0.0F).d($$14);
-            }
-
-            if ($$12 == 2) {
-               $$13.a(1.0F, -1.0F, -1.0F).a(0.0F, 0.0F).d($$14);
-               $$13.a(1.0F, 1.0F, -1.0F).a(0.0F, 1.0F).d($$14);
-               $$13.a(-1.0F, 1.0F, -1.0F).a(1.0F, 1.0F).d($$14);
-               $$13.a(-1.0F, -1.0F, -1.0F).a(1.0F, 0.0F).d($$14);
-            }
-
-            if ($$12 == 3) {
-               $$13.a(-1.0F, -1.0F, -1.0F).a(0.0F, 0.0F).d($$14);
-               $$13.a(-1.0F, 1.0F, -1.0F).a(0.0F, 1.0F).d($$14);
-               $$13.a(-1.0F, 1.0F, 1.0F).a(1.0F, 1.0F).d($$14);
-               $$13.a(-1.0F, -1.0F, 1.0F).a(1.0F, 0.0F).d($$14);
-            }
-
-            if ($$12 == 4) {
-               $$13.a(-1.0F, -1.0F, -1.0F).a(0.0F, 0.0F).d($$14);
-               $$13.a(-1.0F, -1.0F, 1.0F).a(0.0F, 1.0F).d($$14);
-               $$13.a(1.0F, -1.0F, 1.0F).a(1.0F, 1.0F).d($$14);
-               $$13.a(1.0F, -1.0F, -1.0F).a(1.0F, 0.0F).d($$14);
-            }
-
-            if ($$12 == 5) {
-               $$13.a(-1.0F, 1.0F, 1.0F).a(0.0F, 0.0F).d($$14);
-               $$13.a(-1.0F, 1.0F, -1.0F).a(0.0F, 1.0F).d($$14);
-               $$13.a(1.0F, 1.0F, -1.0F).a(1.0F, 1.0F).d($$14);
-               $$13.a(1.0F, 1.0F, 1.0F).a(1.0F, 0.0F).d($$14);
-            }
-
-            ffr.a($$13.b());
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         Optional<fbx> $$0 = this.a.a(this.c);
+         if ($$0.isEmpty()) {
+            this.k();
+         } else {
+            int $$1 = this.t - this.s;
+            double $$2 = 1.0 / (double)$$1;
+            fbx $$3 = $$0.get();
+            this.g = ayz.d($$2, this.g, $$3.a());
+            this.h = ayz.d($$2, this.h, $$3.b());
+            this.i = ayz.d($$2, this.i, $$3.c());
+            double $$4 = this.g - $$3.a();
+            double $$5 = this.h - $$3.b();
+            double $$6 = this.i - $$3.c();
+            this.F = this.b;
+            this.b = (float)ayz.d($$4, $$6);
+            this.H = this.G;
+            this.G = (float)ayz.d($$5, Math.sqrt($$4 * $$4 + $$6 * $$6));
          }
+      }
+   }
 
-         $$6.popMatrix();
-         RenderSystem.colorMask(true, true, true, false);
+   public static class a implements gkj<lz> {
+      private final glb a;
+
+      public a(glb $$0) {
+         this.a = $$0;
       }
 
-      RenderSystem.colorMask(true, true, true, true);
-      RenderSystem.restoreProjectionMatrix();
-      $$6.popMatrix();
-      RenderSystem.depthMask(true);
-      RenderSystem.enableCull();
-      RenderSystem.enableDepthTest();
-   }
-
-   public void a(hev $$0) {
-      for (akv $$1 : this.b) {
-         $$0.a($$1);
+      public gkg a(lz $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gll $$8 = new gll($$1, $$2, $$3, $$4, $$0.b(), $$0.c());
+         $$8.a(this.a);
+         $$8.e(1.0F);
+         return $$8;
       }
    }
 }

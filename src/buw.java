@@ -1,46 +1,38 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
+public class buw {
+   public static final buw a = new buw(0.75F, 0.5F, 0.25F);
+   public static final buw b = new buw(0.95F, 0.69F, 0.32F);
+   private final float c;
+   private final float d;
+   private final float e;
 
-public record buw(aku<evx> c, Map<buu, Float> d) {
-   public static final Codec<Map<buu, Float>> a = Codec.either(Codec.FLOAT, Codec.unboundedMap(buu.k, Codec.FLOAT))
-      .xmap($$0 -> (Map)$$0.map(buw::a, Function.identity()), $$0 -> {
-         boolean $$1 = $$0.values().stream().distinct().count() == 1L;
-         boolean $$2 = $$0.keySet().containsAll(buu.i);
-         return $$1 && $$2 ? Either.left($$0.values().stream().findFirst().orElse(0.0F)) : Either.right($$0);
-      });
-   public static final Codec<buw> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aku.a(mc.bg).fieldOf("loot_table").forGetter(buw::a), a.optionalFieldOf("slot_drop_chances", Map.of()).forGetter(buw::b))
-            .apply($$0, buw::new)
-   );
-
-   public buw(aku<evx> $$0, float $$1) {
-      this($$0, a($$1));
+   private buw(float $$0, float $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   private static Map<buu, Float> a(float $$0) {
-      return a(List.of(buu.values()), $$0);
-   }
-
-   private static Map<buu, Float> a(List<buu> $$0, float $$1) {
-      Map<buu, Float> $$2 = Maps.newHashMap();
-
-      for (buu $$3 : $$0) {
-         $$2.put($$3, $$1);
+   public buw.a a(float $$0) {
+      if ($$0 < this.e) {
+         return buw.a.d;
+      } else if ($$0 < this.d) {
+         return buw.a.c;
+      } else {
+         return $$0 < this.c ? buw.a.b : buw.a.a;
       }
-
-      return $$2;
    }
 
-   public aku<evx> a() {
-      return this.c;
+   public buw.a a(cxh $$0) {
+      return !$$0.m() ? buw.a.a : this.a($$0.o(), $$0.p());
    }
 
-   public Map<buu, Float> b() {
-      return this.d;
+   public buw.a a(int $$0, int $$1) {
+      return this.a((float)($$1 - $$0) / (float)$$1);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

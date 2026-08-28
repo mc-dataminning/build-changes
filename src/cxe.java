@@ -1,47 +1,69 @@
-public class cxe extends cwm {
-   private final but<? extends cqx> a;
+import com.google.common.collect.Maps;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
-   public cxe(but<? extends cqx> $$0, cwm.a $$1) {
-      super($$1);
-      this.a = $$0;
+public class cxe {
+   private final Map<aku, cxe.a> a = Maps.newHashMap();
+   private int b;
+
+   public boolean a(cxh $$0) {
+      return this.a($$0, 0.0F) > 0.0F;
    }
 
-   @Override
-   public bsl a(daj $$0) {
-      dgj $$1 = $$0.q();
-      ji $$2 = $$0.a();
-      dwy $$3 = $$1.a_($$2);
-      if (!$$3.a(awp.P)) {
-         return bsl.d;
+   public float a(cxh $$0, float $$1) {
+      aku $$2 = this.b($$0);
+      cxe.a $$3 = this.a.get($$2);
+      if ($$3 != null) {
+         float $$4 = (float)($$3.b - $$3.a);
+         float $$5 = (float)$$3.b - ((float)this.b + $$1);
+         return ayz.a($$5 / $$4, 0.0F, 1.0F);
       } else {
-         cwq $$4 = $$0.n();
-         dyb $$5 = $$3.b() instanceof djc ? $$3.c(((djc)$$3.b()).c()) : dyb.a;
-         double $$6 = 0.0;
-         if ($$5.b()) {
-            $$6 = 0.5;
-         }
+         return 0.0F;
+      }
+   }
 
-         fbb $$7 = new fbb((double)$$2.u() + 0.5, (double)$$2.v() + 0.0625 + $$6, (double)$$2.w() + 0.5);
-         cqx $$8 = cqx.a($$1, $$7.d, $$7.e, $$7.f, this.a, bus.o, $$4, $$0.o());
-         if ($$8 == null) {
-            return bsl.d;
-         } else {
-            if (cqx.b($$1)) {
-               for (bum $$10 : $$1.a_(null, $$8.cR())) {
-                  if ($$10 instanceof cqx) {
-                     return bsl.d;
-                  }
-               }
+   public void a() {
+      this.b++;
+      if (!this.a.isEmpty()) {
+         Iterator<Entry<aku, cxe.a>> $$0 = this.a.entrySet().iterator();
+
+         while ($$0.hasNext()) {
+            Entry<aku, cxe.a> $$1 = $$0.next();
+            if ($$1.getValue().b <= this.b) {
+               $$0.remove();
+               this.b($$1.getKey());
             }
-
-            if ($$1 instanceof ard $$11) {
-               $$11.b($$8);
-               $$11.a(ebu.t, $$2, ebu.a.a($$0.o(), $$11.a_($$2.e())));
-            }
-
-            $$4.h(1);
-            return bsl.a;
          }
       }
+   }
+
+   public aku b(cxh $$0) {
+      dak $$1 = $$0.a(kv.z);
+      aku $$2 = mb.g.b($$0.h());
+      return $$1 == null ? $$2 : $$1.c().orElse($$2);
+   }
+
+   public void a(cxh $$0, int $$1) {
+      this.a(this.b($$0), $$1);
+   }
+
+   public void a(aku $$0, int $$1) {
+      this.a.put($$0, new cxe.a(this.b, this.b + $$1));
+      this.b($$0, $$1);
+   }
+
+   public void a(aku $$0) {
+      this.a.remove($$0);
+      this.b($$0);
+   }
+
+   protected void b(aku $$0, int $$1) {
+   }
+
+   protected void b(aku $$0) {
+   }
+
+   static record a(int a, int b) {
    }
 }

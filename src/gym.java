@@ -1,8 +1,6 @@
-public class gym extends gzl {
+public class gym extends gyo {
+   public boolean a;
    public boolean b;
-   public boolean c;
-   public boolean d;
-   public float e;
-   public float f;
-   public float g;
+   public float c;
+   public float d;
 }

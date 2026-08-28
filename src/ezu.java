@@ -1,36 +1,36 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public record ezu(float c) implements ezx {
-   public static final MapCodec<ezu> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(ezu::c)).apply($$0, ezu::new));
-   public static final Codec<ezu> b = Codec.FLOAT.xmap(ezu::new, ezu::c);
+public record ezu(ezx b) implements ezx {
+   public static final MapCodec<ezu> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ezx.e.fieldOf("term").forGetter(ezu::c)).apply($$0, ezu::new));
 
    @Override
-   public ezw b() {
-      return ezy.b;
+   public ezy b() {
+      return ezz.a;
+   }
+
+   public boolean a(ewo $$0) {
+      return !this.b.test($$0);
    }
 
    @Override
-   public float b(evs $$0) {
-      return this.c;
-   }
-
-   public static ezu a(float $$0) {
-      return new ezu($$0);
+   public Set<bai<?>> a() {
+      return this.b.a();
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((ezu)$$0).c, this.c) == 0 : false;
-      }
+   public void a(ewu $$0) {
+      ezx.super.a($$0);
+      this.b.a($$0);
    }
 
-   @Override
-   public int hashCode() {
-      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
+   public static ezx.a a(ezx.a $$0) {
+      ezu $$1 = new ezu($$0.build());
+      return () -> $$1;
+   }
+
+   public ezx c() {
+      return this.b;
    }
 }

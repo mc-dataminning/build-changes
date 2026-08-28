@@ -1,48 +1,95 @@
 import com.google.common.collect.ImmutableMap;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.List;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class bxf extends bxb<coj> {
+public class bxf {
+   private final Map<jr<bxb>, bxc> a;
+
+   bxf(Map<jr<bxb>, bxc> $$0) {
+      this.a = $$0;
+   }
+
+   private bxc d(jr<bxb> $$0) {
+      bxc $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("Can't find attribute " + $$0.g());
+      } else {
+         return $$1;
+      }
+   }
+
+   public double a(jr<bxb> $$0) {
+      return this.d($$0).g();
+   }
+
+   public double b(jr<bxb> $$0) {
+      return this.d($$0).b();
+   }
+
+   public double a(jr<bxb> $$0, aku $$1) {
+      bxe $$2 = this.d($$0).a($$1);
+      if ($$2 == null) {
+         throw new IllegalArgumentException("Can't find modifier " + $$1 + " on attribute " + $$0.g());
+      } else {
+         return $$2.c();
+      }
+   }
+
    @Nullable
-   private cql c;
-
-   public bxf(int $$0, int $$1) {
-      super(ImmutableMap.of(), $$0, $$1);
-   }
-
-   protected boolean a(ard $$0, coj $$1) {
-      ji $$2 = $$1.dv();
-      this.c = $$0.d($$2);
-      return this.c != null && this.c.e() && byk.a($$0, $$1, $$2);
-   }
-
-   protected boolean a(ard $$0, coj $$1, long $$2) {
-      return this.c != null && !this.c.d();
-   }
-
-   protected void b(ard $$0, coj $$1, long $$2) {
-      this.c = null;
-      $$1.eb().a($$0.ae(), $$0.ad());
-   }
-
-   protected void c(ard $$0, coj $$1, long $$2) {
-      azh $$3 = $$1.dY();
-      if ($$3.a(100) == 0) {
-         $$1.gx();
-      }
-
-      if ($$3.a(200) == 0 && byk.a($$0, $$1, $$1.dv())) {
-         cvn $$4 = af.a(cvn.values(), $$3);
-         int $$5 = $$3.a(3);
-         cwq $$6 = this.a($$4, $$5);
-         cpr.a(new cpm($$1.dV(), $$1, $$1.dA(), $$1.dE(), $$1.dG(), $$6), $$0, $$6);
+   public bxc a(Consumer<bxc> $$0, jr<bxb> $$1) {
+      bxc $$2 = this.a.get($$1);
+      if ($$2 == null) {
+         return null;
+      } else {
+         bxc $$3 = new bxc($$1, $$0);
+         $$3.a($$2);
+         return $$3;
       }
    }
 
-   private cwq a(cvn $$0, int $$1) {
-      cwq $$2 = new cwq(cwu.vt);
-      $$2.b(kv.af, new czg((byte)$$1, List.of(new czf(czf.a.e, IntList.of($$0.f()), IntList.of(), false, false))));
-      return $$2;
+   public static bxf.a a() {
+      return new bxf.a();
+   }
+
+   public boolean c(jr<bxb> $$0) {
+      return this.a.containsKey($$0);
+   }
+
+   public boolean b(jr<bxb> $$0, aku $$1) {
+      bxc $$2 = this.a.get($$0);
+      return $$2 != null && $$2.a($$1) != null;
+   }
+
+   public static class a {
+      private final Builder<jr<bxb>, bxc> a = ImmutableMap.builder();
+      private boolean b;
+
+      private bxc b(jr<bxb> $$0) {
+         bxc $$1 = new bxc($$0, $$1x -> {
+            if (this.b) {
+               throw new UnsupportedOperationException("Tried to change value for default attribute instance: " + $$0.g());
+            }
+         });
+         this.a.put($$0, $$1);
+         return $$1;
+      }
+
+      public bxf.a a(jr<bxb> $$0) {
+         this.b($$0);
+         return this;
+      }
+
+      public bxf.a a(jr<bxb> $$0, double $$1) {
+         bxc $$2 = this.b($$0);
+         $$2.a($$1);
+         return this;
+      }
+
+      public bxf a() {
+         this.b = true;
+         return new bxf(this.a.buildKeepingLast());
+      }
    }
 }

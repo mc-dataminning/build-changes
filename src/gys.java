@@ -1,4 +1,5 @@
-public class gys extends gyl {
+public class gys extends haj {
    public boolean a;
-   public final hbp b = new hbp();
+   public final bur b = new bur();
+   public final bur c = new bur();
 }

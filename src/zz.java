@@ -11,13 +11,13 @@ public interface zz {
    }
 
    static <T extends zz> zz.b<T> a(String $$0) {
-      return new zz.b<>(akv.b($$0));
+      return new zz.b<>(aku.b($$0));
    }
 
    static <B extends vl> yn<B, zz> a(final zz.a<B> $$0, List<zz.c<? super B, ?>> $$1) {
-      final Map<akv, yn<? super B, ? extends zz>> $$2 = $$1.stream().collect(Collectors.toUnmodifiableMap($$0x -> $$0x.a().a(), zz.c::b));
+      final Map<aku, yn<? super B, ? extends zz>> $$2 = $$1.stream().collect(Collectors.toUnmodifiableMap($$0x -> $$0x.a().a(), zz.c::b));
       return new yn<B, zz>() {
-         private yn<? super B, ? extends zz> a(akv $$0x) {
+         private yn<? super B, ? extends zz> a(aku $$0x) {
             yn<? super B, ? extends zz> $$1 = $$2.get($$0);
             return $$1 != null ? $$1 : $$0.create($$0);
          }
@@ -33,17 +33,17 @@ public interface zz {
          }
 
          public zz a(B $$0x) {
-            akv $$1 = $$0.q();
+            aku $$1 = $$0.q();
             return (zz)this.a($$1).decode($$0);
          }
       };
    }
 
    public interface a<B extends vl> {
-      yn<B, ? extends zz> create(akv var1);
+      yn<B, ? extends zz> create(aku var1);
    }
 
-   public static record b<T extends zz>(akv a) {
+   public static record b<T extends zz>(aku a) {
    }
 
    public static record c<B extends vl, T extends zz>(zz.b<T> a, yn<B, T> b) {

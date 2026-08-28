@@ -1,22 +1,75 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eif implements eid {
-   public static final Codec<eif> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eke.a.fieldOf("cap_provider").forGetter($$0x -> $$0x.b),
-               eke.a.fieldOf("stem_provider").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("foliage_radius").orElse(2).forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, eif::new)
-   );
-   public final eke b;
-   public final eke c;
-   public final int d;
+public class eif extends egu<ejt> {
+   public eif(Codec<ejt> $$0) {
+      super($$0);
+   }
 
-   public eif(eke $$0, eke $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   @Override
+   public boolean a(egw<ejt> $$0) {
+      ejt $$1 = $$0.f();
+      dhy $$2 = $$0.b();
+      ji $$3 = $$0.e();
+      if (!$$2.a_($$3.d()).a($$1.f)) {
+         return false;
+      } else if ($$1.c && !$$2.a_($$3.e()).a($$1.f)) {
+         return false;
+      } else {
+         dxq $$4 = $$2.a_($$3);
+         if (!$$4.l() && !$$4.a($$1.f)) {
+            return false;
+         } else {
+            int $$5 = 0;
+            int $$6 = 0;
+            if ($$2.a_($$3.h()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.i()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.f()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.g()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.e()).a($$1.f)) {
+               $$6++;
+            }
+
+            int $$7 = 0;
+            if ($$2.u($$3.h())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.i())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.f())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.g())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.e())) {
+               $$7++;
+            }
+
+            if ($$6 == $$1.d && $$7 == $$1.e) {
+               $$2.a($$3, $$1.b.g(), 2);
+               $$2.a($$3, $$1.b.a(), 0);
+               $$5++;
+            }
+
+            return $$5 > 0;
+         }
+      }
    }
 }

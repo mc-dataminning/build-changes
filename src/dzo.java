@@ -1,89 +1,166 @@
+import com.google.common.base.Stopwatch;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
+import org.slf4j.Logger;
 
-public class dzo<T> implements dzj<T> {
-   private final jw<T> a;
-   @Nullable
-   private T b;
-   private final dzk<T> c;
+public class dzo {
+   private static final Logger a = LogUtils.getLogger();
+   private final eec b;
+   private final dig c;
+   private final long d;
+   private final long e;
+   private final Map<eoj, List<epg>> f = new Object2ObjectOpenHashMap();
+   private final Map<epd, CompletableFuture<List<dgg>>> g = new Object2ObjectArrayMap();
+   private boolean h;
+   private final List<jr<eop>> i;
 
-   public dzo(jw<T> $$0, dzk<T> $$1, List<T> $$2) {
-      this.a = $$0;
+   public static dzo a(eec $$0, long $$1, dig $$2, Stream<jr<eop>> $$3) {
+      List<jr<eop>> $$4 = $$3.filter($$1x -> a((eop)$$1x.a(), $$2)).toList();
+      return new dzo($$0, $$2, $$1, 0L, $$4);
+   }
+
+   public static dzo a(eec $$0, long $$1, dig $$2, jt<eop> $$3) {
+      List<jr<eop>> $$4 = $$3.c().filter($$1x -> a((eop)$$1x.a(), $$2)).collect(Collectors.toUnmodifiableList());
+      return new dzo($$0, $$2, $$1, $$1, $$4);
+   }
+
+   private static boolean a(eop $$0, dig $$1) {
+      Stream<jr<dic>> $$2 = $$0.a().stream().flatMap($$0x -> {
+         eoj $$1x = $$0x.a().a();
+         return $$1x.a().a();
+      });
+      return $$2.anyMatch($$1.c()::contains);
+   }
+
+   private dzo(eec $$0, dig $$1, long $$2, long $$3, List<jr<eop>> $$4) {
+      this.b = $$0;
+      this.d = $$2;
       this.c = $$1;
-      if ($$2.size() > 0) {
-         Validate.isTrue($$2.size() <= 1, "Can't initialize SingleValuePalette with %d values.", (long)$$2.size());
-         this.b = $$2.get(0);
-      }
+      this.e = $$3;
+      this.i = $$4;
    }
 
-   public static <A> dzj<A> a(int $$0, jw<A> $$1, dzk<A> $$2, List<A> $$3) {
-      return new dzo<>($$1, $$2, $$3);
+   public List<jr<eop>> a() {
+      return this.i;
    }
 
-   @Override
-   public int a(T $$0) {
-      if (this.b != null && this.b != $$0) {
-         return this.c.onResize(1, $$0);
+   private void e() {
+      Set<jr<dic>> $$0 = this.c.c();
+      this.a().forEach($$1 -> {
+         eop $$2 = $$1.a();
+         boolean $$3 = false;
+
+         for (eop.a $$4 : $$2.a()) {
+            eoj $$5 = $$4.a().a();
+            if ($$5.a().a().anyMatch($$0::contains)) {
+               this.f.computeIfAbsent($$5, $$0xx -> new ArrayList<>()).add($$2.b());
+               $$3 = true;
+            }
+         }
+
+         if ($$3 && $$2.b() instanceof epd $$7) {
+            this.g.put($$7, this.a((jr<eop>)$$1, $$7));
+         }
+      });
+   }
+
+   private CompletableFuture<List<dgg>> a(jr<eop> $$0, epd $$1) {
+      if ($$1.c() == 0) {
+         return CompletableFuture.completedFuture(List.of());
       } else {
-         this.b = $$0;
-         return 0;
+         Stopwatch $$2 = Stopwatch.createStarted(af.d);
+         int $$3 = $$1.a();
+         int $$4 = $$1.c();
+         List<CompletableFuture<dgg>> $$5 = new ArrayList<>($$4);
+         int $$6 = $$1.b();
+         jv<dic> $$7 = $$1.d();
+         azh $$8 = azh.a();
+         $$8.b(this.e);
+         double $$9 = $$8.j() * Math.PI * 2.0;
+         int $$10 = 0;
+         int $$11 = 0;
+
+         for (int $$12 = 0; $$12 < $$4; $$12++) {
+            double $$13 = (double)(4 * $$3 + $$3 * $$11 * 6) + ($$8.j() - 0.5) * (double)$$3 * 2.5;
+            int $$14 = (int)Math.round(Math.cos($$9) * $$13);
+            int $$15 = (int)Math.round(Math.sin($$9) * $$13);
+            azh $$16 = $$8.d();
+            $$5.add(CompletableFuture.supplyAsync(() -> {
+               Pair<ji, jr<dic>> $$4x = this.c.a(kk.a($$14, 8), 0, kk.a($$15, 8), 112, $$7::a, $$16, this.b.b());
+               if ($$4x != null) {
+                  ji $$5x = (ji)$$4x.getFirst();
+                  return new dgg(kk.a($$5x.u()), kk.a($$5x.w()));
+               } else {
+                  return new dgg($$14, $$15);
+               }
+            }, af.h().a("structureRings")));
+            $$9 += (Math.PI * 2) / (double)$$6;
+            if (++$$10 == $$6) {
+               $$11++;
+               $$10 = 0;
+               $$6 += 2 * $$6 / ($$11 + 1);
+               $$6 = Math.min($$6, $$4 - $$12);
+               $$9 += $$8.j() * Math.PI * 2.0;
+            }
+         }
+
+         return af.d($$5).thenApply($$2x -> {
+            double $$3x = (double)$$2.stop().elapsed(TimeUnit.MILLISECONDS) / 1000.0;
+            a.debug("Calculation for {} took {}s", $$0, $$3x);
+            return $$2x;
+         });
       }
    }
 
-   @Override
-   public boolean a(Predicate<T> $$0) {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         return $$0.test(this.b);
+   public void b() {
+      if (!this.h) {
+         this.e();
+         this.h = true;
       }
    }
 
-   @Override
-   public T a(int $$0) {
-      if (this.b != null && $$0 == 0) {
-         return this.b;
-      } else {
-         throw new IllegalStateException("Missing Palette entry for id " + $$0 + ".");
+   @Nullable
+   public List<dgg> a(epd $$0) {
+      this.b();
+      CompletableFuture<List<dgg>> $$1 = this.g.get($$0);
+      return $$1 != null ? $$1.join() : null;
+   }
+
+   public List<epg> a(jr<eoj> $$0) {
+      this.b();
+      return this.f.getOrDefault($$0.a(), List.of());
+   }
+
+   public eec c() {
+      return this.b;
+   }
+
+   public boolean a(jr<eop> $$0, int $$1, int $$2, int $$3) {
+      epg $$4 = $$0.a().b();
+
+      for (int $$5 = $$1 - $$3; $$5 <= $$1 + $$3; $$5++) {
+         for (int $$6 = $$2 - $$3; $$6 <= $$2 + $$3; $$6++) {
+            if ($$4.b(this, $$5, $$6)) {
+               return true;
+            }
+         }
       }
+
+      return false;
    }
 
-   @Override
-   public void a(vl $$0) {
-      this.b = this.a.b($$0.l());
-   }
-
-   @Override
-   public void b(vl $$0) {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         $$0.c(this.a.a(this.b));
-      }
-   }
-
-   @Override
-   public int a() {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         return wg.a(this.a.a(this.b));
-      }
-   }
-
-   @Override
-   public int b() {
-      return 1;
-   }
-
-   @Override
-   public dzj<T> a(dzk<T> $$0) {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         return this;
-      }
+   public long d() {
+      return this.d;
    }
 }

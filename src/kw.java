@@ -69,9 +69,9 @@ public final class kw implements kr {
    }
 
    @Nullable
-   public <T> T b(ku<? super T> $$0, @Nullable T $$1) {
+   public <T> T b(ku<T> $$0, @Nullable T $$1) {
       this.j();
-      T $$2 = this.c.a((ku<? extends T>)$$0);
+      T $$2 = this.c.a($$0);
       Optional<T> $$3;
       if (Objects.equals($$1, $$2)) {
          $$3 = (Optional<T>)this.d.remove($$0);

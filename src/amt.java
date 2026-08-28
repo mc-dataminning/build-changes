@@ -1,29 +1,34 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import net.minecraft.server.MinecraftServer;
 
 public class amt {
-   public static void a(CommandDispatcher<ex> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("defaultgamemode").requires($$0x -> $$0x.c(2)))
-            .then(ey.a("gamemode", fl.a()).executes($$0x -> a((ex)$$0x.getSource(), fl.a($$0x, "gamemode"))))
-      );
-   }
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wp.b("commands.difficulty.failure", $$0));
 
-   private static int a(ex $$0, dgg $$1) {
-      int $$2 = 0;
-      MinecraftServer $$3 = $$0.l();
-      $$3.a($$1);
-      dgg $$4 = $$3.bd();
-      if ($$4 != null) {
-         for (are $$5 : $$3.ag().t()) {
-            if ($$5.a($$4)) {
-               $$2++;
-            }
-         }
+   public static void a(CommandDispatcher<ex> $$0) {
+      LiteralArgumentBuilder<ex> $$1 = ey.a("difficulty");
+
+      for (bsv $$2 : bsv.values()) {
+         $$1.then(ey.a($$2.e()).executes($$1x -> a((ex)$$1x.getSource(), $$2)));
       }
 
-      $$0.a(() -> wp.a("commands.defaultgamemode.success", $$1.d()), true);
-      return $$2;
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)$$1.requires($$0x -> $$0x.c(2))).executes($$0x -> {
+         bsv $$1x = ((ex)$$0x.getSource()).e().an();
+         ((ex)$$0x.getSource()).a(() -> wp.a("commands.difficulty.query", $$1x.b()), false);
+         return $$1x.a();
+      }));
+   }
+
+   public static int a(ex $$0, bsv $$1) throws CommandSyntaxException {
+      MinecraftServer $$2 = $$0.l();
+      if ($$2.aZ().q() == $$1) {
+         throw a.create($$1.e());
+      } else {
+         $$2.a($$1, true);
+         $$0.a(() -> wp.a("commands.difficulty.success", $$1.b()), true);
+         return 0;
+      }
    }
 }

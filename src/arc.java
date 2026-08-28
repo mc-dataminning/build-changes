@@ -2,31 +2,31 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Nullable;
 
-public interface arc extends dga {
+public interface arc extends dgr {
    ard a();
 
    @Nullable
-   default coy a(cfz $$0, bvi $$1) {
-      return this.a(this.z(), $$0, $$1, $$1.dA(), $$1.dC(), $$1.dG());
+   default cpr a(cgp $$0, bvy $$1) {
+      return this.a(this.z(), $$0, $$1, $$1.dz(), $$1.dB(), $$1.dF());
    }
 
    @Nullable
-   default coy a(cfz $$0, bvi $$1, double $$2, double $$3, double $$4) {
+   default cpr a(cgp $$0, bvy $$1, double $$2, double $$3, double $$4) {
       return this.a(this.z(), $$0, $$1, $$2, $$3, $$4);
    }
 
    @Nullable
-   default coy a(cfz $$0, double $$1, double $$2, double $$3) {
+   default cpr a(cgp $$0, double $$1, double $$2, double $$3) {
       return this.a(this.z(), $$0, null, $$1, $$2, $$3);
    }
 
    @Nullable
-   default <T extends bvi> T a(Class<? extends T> $$0, cfz $$1, @Nullable bvi $$2, double $$3, double $$4, double $$5, faw $$6) {
+   default <T extends bvy> T a(Class<? extends T> $$0, cgp $$1, @Nullable bvy $$2, double $$3, double $$4, double $$5, fbs $$6) {
       return this.a(this.a($$0, $$6, $$0x -> true), $$1, $$2, $$3, $$4, $$5);
    }
 
    @Nullable
-   default <T extends bvi> T a(List<? extends T> $$0, cfz $$1, @Nullable bvi $$2, double $$3, double $$4, double $$5) {
+   default <T extends bvy> T a(List<? extends T> $$0, cgp $$1, @Nullable bvy $$2, double $$3, double $$4, double $$5) {
       double $$6 = -1.0;
       T $$7 = null;
 
@@ -43,11 +43,11 @@ public interface arc extends dga {
       return $$7;
    }
 
-   default List<coy> a(cfz $$0, bvi $$1, faw $$2) {
-      List<coy> $$3 = new ArrayList<>();
+   default List<cpr> a(cgp $$0, bvy $$1, fbs $$2) {
+      List<cpr> $$3 = new ArrayList<>();
 
-      for (coy $$4 : this.z()) {
-         if ($$2.e($$4.dA(), $$4.dC(), $$4.dG()) && $$0.a(this.a(), $$1, $$4)) {
+      for (cpr $$4 : this.z()) {
+         if ($$2.e($$4.dz(), $$4.dB(), $$4.dF()) && $$0.a(this.a(), $$1, $$4)) {
             $$3.add($$4);
          }
       }
@@ -55,7 +55,7 @@ public interface arc extends dga {
       return $$3;
    }
 
-   default <T extends bvi> List<T> a(Class<T> $$0, cfz $$1, bvi $$2, faw $$3) {
+   default <T extends bvy> List<T> a(Class<T> $$0, cgp $$1, bvy $$2, fbs $$3) {
       List<T> $$4 = this.a($$0, $$3, $$0x -> true);
       List<T> $$5 = new ArrayList<>();
 

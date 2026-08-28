@@ -1,9 +1,11 @@
-public class gzd extends gxq {
-   public boolean b;
-   public boolean c;
-   public bvc d = bvc.b;
-   public clg.a j = clg.a.h;
-   public int k;
-   public int l;
-   public float m;
+import javax.annotation.Nullable;
+
+public abstract class gzd extends gzj {
+   @Nullable
+   public bux.j b;
+   public float c;
+   public float d;
+   public float e;
+
+   public abstract boolean a();
 }

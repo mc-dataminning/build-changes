@@ -1,14 +1,13 @@
-public enum flh {
-   a,
-   b,
-   c,
-   d;
+public class flh extends fli {
+   private final fiy b;
 
-   public boolean a() {
-      return this == b;
+   public flh(fiy $$0, long $$1, wp $$2, Runnable $$3) {
+      super($$1, $$2, $$3);
+      this.b = $$0;
    }
 
-   public boolean b() {
-      return this == c || this == d;
+   @Override
+   protected void a(fhh $$0, long $$1) throws fjd {
+      $$0.d($$1, this.b.a);
    }
 }

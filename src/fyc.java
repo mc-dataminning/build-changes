@@ -1,326 +1,477 @@
-import com.google.common.collect.Maps;
-import com.google.common.hash.Hashing;
+import com.google.common.collect.Lists;
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.Path;
-import java.nio.file.StandardWatchEventKinds;
-import java.nio.file.WatchEvent;
-import java.nio.file.WatchKey;
-import java.nio.file.WatchService;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
+import java.net.UnknownHostException;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.ThreadPoolExecutor;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableBoolean;
 import org.slf4j.Logger;
 
-public class fyc extends fum {
-   static final Logger a = LogUtils.getLogger();
-   private static final wp b = wp.c("pack.available.title");
-   private static final wp c = wp.c("pack.selected.title");
-   private static final wp d = wp.c("pack.openFolder");
-   private static final int s = 200;
-   private static final wp u = wp.c("pack.dropInfo").a(n.h);
-   private static final wp v = wp.c("pack.folderInfo");
-   private static final int w = 20;
-   private static final akv x = akv.b("textures/misc/unknown_pack.png");
-   private final fsi y = new fsi(this);
-   private final fyb z;
-   @Nullable
-   private fyc.a A;
-   private long B;
-   private fyd C;
-   private fyd D;
-   private final Path E;
-   private fou F;
-   private final Map<String, akv> G = Maps.newHashMap();
+public class fyc extends fqm<fyc.a> {
+   static final aku a = aku.b("server_list/incompatible");
+   static final aku m = aku.b("server_list/unreachable");
+   static final aku n = aku.b("server_list/ping_1");
+   static final aku o = aku.b("server_list/ping_2");
+   static final aku p = aku.b("server_list/ping_3");
+   static final aku q = aku.b("server_list/ping_4");
+   static final aku r = aku.b("server_list/ping_5");
+   static final aku s = aku.b("server_list/pinging_1");
+   static final aku u = aku.b("server_list/pinging_2");
+   static final aku v = aku.b("server_list/pinging_3");
+   static final aku w = aku.b("server_list/pinging_4");
+   static final aku x = aku.b("server_list/pinging_5");
+   static final aku y = aku.b("server_list/join_highlighted");
+   static final aku z = aku.b("server_list/join");
+   static final aku A = aku.b("server_list/move_up_highlighted");
+   static final aku B = aku.b("server_list/move_up");
+   static final aku C = aku.b("server_list/move_down_highlighted");
+   static final aku D = aku.b("server_list/move_down");
+   static final Logger E = LogUtils.getLogger();
+   static final ThreadPoolExecutor F = new ScheduledThreadPoolExecutor(
+      5, new ThreadFactoryBuilder().setNameFormat("Server Pinger #%d").setDaemon(true).setUncaughtExceptionHandler(new r(E)).build()
+   );
+   static final wp G = wp.c("lanServer.scanning");
+   static final wp H = wp.c("multiplayer.status.cannot_resolve").b(-65536);
+   static final wp I = wp.c("multiplayer.status.cannot_connect").b(-65536);
+   static final wp J = wp.c("multiplayer.status.incompatible");
+   static final wp K = wp.c("multiplayer.status.no_connection");
+   static final wp L = wp.c("multiplayer.status.pinging");
+   static final wp M = wp.c("multiplayer.status.online");
+   private final fxy N;
+   private final List<fyc.d> O = Lists.newArrayList();
+   private final fyc.a P = new fyc.b();
+   private final List<fyc.c> Q = Lists.newArrayList();
 
-   public fyc(aua $$0, Consumer<aua> $$1, Path $$2, wp $$3) {
-      super($$3);
-      this.z = new fyb(this::F, this::a, $$0, $$1);
-      this.E = $$2;
-      this.A = fyc.a.a($$2);
+   public fyc(fxy $$0, fmg $$1, int $$2, int $$3, int $$4, int $$5) {
+      super($$1, $$2, $$3, $$4, $$5);
+      this.N = $$0;
+   }
+
+   private void c() {
+      this.s();
+      this.O.forEach($$1 -> this.b($$1));
+      this.b(this.P);
+      this.Q.forEach($$1 -> this.b($$1));
+   }
+
+   public void a(@Nullable fyc.a $$0) {
+      super.a($$0);
+      this.N.E();
    }
 
    @Override
-   public void aO_() {
-      this.z.c();
-      this.E();
+   public boolean a(int $$0, int $$1, int $$2) {
+      fyc.a $$3 = this.p();
+      return $$3 != null && $$3.a($$0, $$1, $$2) || super.a($$0, $$1, $$2);
    }
 
-   private void E() {
-      if (this.A != null) {
-         try {
-            this.A.close();
-            this.A = null;
-         } catch (Exception var2) {
-         }
+   public void a(gho $$0) {
+      this.O.clear();
+
+      for (int $$1 = 0; $$1 < $$0.c(); $$1++) {
+         this.O.add(new fyc.d(this.N, $$0.a($$1)));
       }
-   }
 
-   @Override
-   protected void aR_() {
-      fsm $$0 = this.y.a(fsm.d().a(5));
-      $$0.c().b();
-      $$0.a(new fqb(this.n(), this.p));
-      $$0.a(new fqb(u, this.p));
-      this.C = this.c(new fyd(this.m, this, 200, this.o - 66, b));
-      this.D = this.c(new fyd(this.m, this, 200, this.o - 66, c));
-      fsm $$1 = this.y.b(fsm.e().a(8));
-      $$1.a(fou.a(d, $$0x -> af.n().a(this.E)).a(fqf.a(v)).a());
-      this.F = $$1.a(fou.a(wo.d, $$0x -> this.aO_()).a());
-      this.G();
-      this.y.a($$1x -> {
-         fos var10000 = this.c($$1x);
-      });
       this.c();
    }
 
-   @Override
-   protected void c() {
-      this.y.a();
-      this.C.a(200, this.y);
-      this.C.j(this.n / 2 - 15 - 200);
-      this.D.a(200, this.y);
-      this.D.j(this.n / 2 + 15);
+   public void a(List<hkd> $$0) {
+      int $$1 = $$0.size() - this.Q.size();
+      this.Q.clear();
+
+      for (hkd $$2 : $$0) {
+         this.Q.add(new fyc.c(this.N, $$2));
+      }
+
+      this.c();
+
+      for (int $$3 = this.Q.size() - $$1; $$3 < this.Q.size(); $$3++) {
+         fyc.c $$4 = this.Q.get($$3);
+         int $$5 = $$3 - this.Q.size() + this.aH_().size();
+         int $$6 = this.d($$5);
+         int $$7 = this.e($$5);
+         if ($$7 >= this.G() && $$6 <= this.I()) {
+            this.c.aY().b(wp.a("multiplayer.lan.server_found", $$4.c()));
+         }
+      }
    }
 
    @Override
-   public void e() {
-      if (this.A != null) {
-         try {
-            if (this.A.a()) {
-               this.B = 20L;
-            }
-         } catch (IOException var2) {
-            a.warn("Failed to poll for directory {} changes, stopping", this.E);
-            this.E();
+   public int a() {
+      return 305;
+   }
+
+   public void b() {
+   }
+
+   public abstract static class a extends fqm.a<fyc.a> implements AutoCloseable {
+      @Override
+      public void close() {
+      }
+   }
+
+   public static class b extends fyc.a {
+      private final fmg a = fmg.Q();
+
+      @Override
+      public void a(fpc $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10 = $$2 + $$5 / 2 - 9 / 2;
+         $$0.b(this.a.h, fyc.G, this.a.z.n / 2 - this.a.h.a(fyc.G) / 2, $$10, -1);
+         String $$11 = fux.a(af.c());
+         $$0.b(this.a.h, $$11, this.a.z.n / 2 - this.a.h.b($$11) / 2, $$10 + 9, -8355712);
+      }
+
+      @Override
+      public wp a() {
+         return fyc.G;
+      }
+   }
+
+   public static class c extends fyc.a {
+      private static final int c = 32;
+      private static final wp d = wp.c("lanServer.title");
+      private static final wp e = wp.c("selectServer.hiddenAddress");
+      private final fxy f;
+      protected final fmg a;
+      protected final hkd b;
+      private long g;
+
+      protected c(fxy $$0, hkd $$1) {
+         this.f = $$0;
+         this.b = $$1;
+         this.a = fmg.Q();
+      }
+
+      @Override
+      public void a(fpc $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.b(this.a.h, d, $$3 + 32 + 3, $$2 + 1, -1);
+         $$0.b(this.a.h, this.b.a(), $$3 + 32 + 3, $$2 + 12, -8355712);
+         if (this.a.n.l) {
+            $$0.b(this.a.h, e, $$3 + 32 + 3, $$2 + 12 + 11, 3158064);
+         } else {
+            $$0.b(this.a.h, this.b.b(), $$3 + 32 + 3, $$2 + 12 + 11, 3158064);
          }
       }
 
-      if (this.B > 0L && --this.B == 0L) {
-         this.G();
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         this.f.a(this);
+         if (af.c() - this.g < 250L) {
+            this.f.m();
+         }
+
+         this.g = af.c();
+         return super.a($$0, $$1, $$2);
+      }
+
+      public hkd b() {
+         return this.b;
+      }
+
+      @Override
+      public wp a() {
+         return wp.a("narrator.select", this.c());
+      }
+
+      public wp c() {
+         return wp.i().b(d).b(wo.v).f(this.b.a());
       }
    }
 
-   private void F() {
-      this.a(this.D, this.z.b());
-      this.a(this.C, this.z.a());
-      this.F.j = !this.D.aH_().isEmpty();
-   }
+   public class d extends fyc.a {
+      private static final int b = 32;
+      private static final int c = 32;
+      private static final int d = 5;
+      private static final int e = 10;
+      private static final int f = 8;
+      private final fxy g;
+      private final fmg h;
+      private final ghn i;
+      private final fus j;
+      @Nullable
+      private byte[] k;
+      private long l;
+      @Nullable
+      private List<wp> m;
+      @Nullable
+      private aku n;
+      @Nullable
+      private wp o;
 
-   private void a(fyd $$0, Stream<fyb.a> $$1) {
-      $$0.aH_().clear();
-      fyd.a $$2 = $$0.p();
-      String $$3 = $$2 == null ? "" : $$2.b();
-      $$0.a(null);
-      $$1.forEach($$2x -> {
-         fyd.a $$3x = new fyd.a(this.m, $$0, $$2x);
-         $$0.aH_().add($$3x);
-         if ($$2x.c().equals($$3)) {
-            $$0.a($$3x);
-         }
-      });
-   }
+      protected d(final fxy $$1, final ghn $$2) {
+         this.g = $$1;
+         this.i = $$2;
+         this.h = fmg.Q();
+         this.j = fus.b(this.h.aa(), $$2.b);
+         this.d();
+      }
 
-   public void a(fyd $$0) {
-      fyd $$1 = this.D == $$0 ? this.C : this.D;
-      this.a(foc.a($$1.q(), $$1, this));
-   }
-
-   public void m() {
-      this.D.a(null);
-      this.C.a(null);
-   }
-
-   private void G() {
-      this.z.d();
-      this.F();
-      this.B = 0L;
-      this.G.clear();
-   }
-
-   protected static void a(flk $$0, List<Path> $$1, Path $$2) {
-      MutableBoolean $$3 = new MutableBoolean();
-      $$1.forEach($$2x -> {
-         try (Stream<Path> $$3x = Files.walk($$2x)) {
-            $$3x.forEach($$3xx -> {
+      @Override
+      public void a(fpc $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         if (this.i.g() == ghn.b.a) {
+            this.i.a(ghn.b.b);
+            this.i.d = wo.a;
+            this.i.c = wo.a;
+            fyc.F.submit(() -> {
                try {
-                  af.b($$2x.getParent(), $$2, $$3xx);
-               } catch (IOException var5) {
-                  a.warn("Failed to copy datapack file  from {} to {}", new Object[]{$$3xx, $$2, var5});
-                  $$3.setTrue();
+                  this.g.F().a(this.i, () -> this.h.execute(this::b), () -> {
+                     this.i.a(this.i.g == ab.b().e() ? ghn.b.e : ghn.b.d);
+                     this.h.execute(this::d);
+                  });
+               } catch (UnknownHostException var2x) {
+                  this.i.a(ghn.b.c);
+                  this.i.d = fyc.H;
+                  this.h.execute(this::d);
+               } catch (Exception var3x) {
+                  this.i.a(ghn.b.c);
+                  this.i.d = fyc.I;
+                  this.h.execute(this::d);
                }
             });
-         } catch (IOException var8) {
-            a.warn("Failed to copy datapack file from {} to {}", $$2x, $$2);
-            $$3.setTrue();
          }
-      });
-      if ($$3.isTrue()) {
-         frd.c($$0, $$2.toString());
-      }
-   }
 
-   @Override
-   public void a(List<Path> $$0) {
-      String $$1 = a($$0).collect(Collectors.joining(", "));
-      this.m.a(new ftk($$1x -> {
-         if ($$1x) {
-            List<Path> $$2 = new ArrayList<>($$0.size());
-            Set<Path> $$3 = new HashSet<>($$0);
-            atz<Path> $$4 = new atz<Path>(this.m.be()) {
-               protected Path a(Path $$0) {
-                  return $$0;
-               }
+         $$0.b(this.h.h, this.i.a, $$3 + 32 + 3, $$2 + 1, -1);
+         List<ayl> $$10 = this.h.h.c(this.i.d, $$4 - 32 - 2);
 
-               protected Path b(Path $$0) {
-                  return $$0;
-               }
+         for (int $$11 = 0; $$11 < Math.min($$10.size(), 2); $$11++) {
+            $$0.b(this.h.h, $$10.get($$11), $$3 + 32 + 3, $$2 + 12 + 9 * $$11, -8355712);
+         }
+
+         this.a($$0, $$3, $$2, this.j.b());
+         if (this.i.g() == ghn.b.b) {
+            int $$12 = (int)(af.c() / 100L + (long)($$1 * 2) & 7L);
+            if ($$12 > 4) {
+               $$12 = 8 - $$12;
+            }
+            this.n = switch ($$12) {
+               case 1 -> fyc.u;
+               case 2 -> fyc.v;
+               case 3 -> fyc.w;
+               case 4 -> fyc.x;
+               default -> fyc.s;
             };
-            List<fas> $$5 = new ArrayList<>();
+         }
 
-            for (Path $$6 : $$0) {
-               try {
-                  Path $$7 = $$4.a($$6, $$5);
-                  if ($$7 == null) {
-                     a.warn("Path {} does not seem like pack", $$6);
-                  } else {
-                     $$2.add($$7);
-                     $$3.remove($$7);
-                  }
-               } catch (IOException var10) {
-                  a.warn("Failed to check {} for packs", $$6, var10);
+         int $$13 = $$3 + $$4 - 10 - 5;
+         if (this.n != null) {
+            $$0.a(gnh::H, this.n, $$13, $$2, 10, 8);
+         }
+
+         byte[] $$14 = this.i.c();
+         if (!Arrays.equals($$14, this.k)) {
+            if (this.a($$14)) {
+               this.k = $$14;
+            } else {
+               this.i.a(null);
+               this.b();
+            }
+         }
+
+         wp $$15 = (wp)(this.i.g() == ghn.b.d ? this.i.h.f().a(n.m) : this.i.c);
+         int $$16 = this.h.h.a($$15);
+         int $$17 = $$13 - $$16 - 5;
+         $$0.b(this.h.h, $$15, $$17, $$2 + 1, -8355712);
+         if (this.o != null && $$6 >= $$13 && $$6 <= $$13 + 10 && $$7 >= $$2 && $$7 <= $$2 + 8) {
+            this.g.d(this.o);
+         } else if (this.m != null && $$6 >= $$17 && $$6 <= $$17 + $$16 && $$7 >= $$2 && $$7 <= $$2 - 1 + 9) {
+            this.g.b(Lists.transform(this.m, wp::g));
+         }
+
+         if (this.h.n.ac().c() || $$8) {
+            $$0.a($$3, $$2, $$3 + 32, $$2 + 32, -1601138544);
+            int $$18 = $$6 - $$3;
+            int $$19 = $$7 - $$2;
+            if (this.e()) {
+               if ($$18 < 32 && $$18 > 16) {
+                  $$0.a(gnh::H, fyc.y, $$3, $$2, 32, 32);
+               } else {
+                  $$0.a(gnh::H, fyc.z, $$3, $$2, 32, 32);
                }
             }
 
-            if (!$$5.isEmpty()) {
-               this.m.a(fue.b(() -> this.m.a(this)));
-               return;
-            }
-
-            if (!$$2.isEmpty()) {
-               a(this.m, $$2, this.E);
-               this.G();
-            }
-
-            if (!$$3.isEmpty()) {
-               String $$9 = a($$3).collect(Collectors.joining(", "));
-               this.m.a(new ftf(() -> this.m.a(this), wp.c("pack.dropRejected.title"), wp.a("pack.dropRejected.message", $$9)));
-               return;
-            }
-         }
-
-         this.m.a(this);
-      }, wp.c("pack.dropConfirm"), wp.b($$1)));
-   }
-
-   private static Stream<String> a(Collection<Path> $$0) {
-      return $$0.stream().map(Path::getFileName).map(Path::toString);
-   }
-
-   private akv a(hev $$0, atx $$1) {
-      try {
-         akv var9;
-         try (atc $$2 = $$1.f()) {
-            auh<InputStream> $$3 = $$2.a("pack.png");
-            if ($$3 == null) {
-               return x;
-            }
-
-            String $$4 = $$1.g();
-            akv $$5 = akv.b("pack/" + af.a($$4, akv::b) + "/" + Hashing.sha1().hashUnencodedChars($$4) + "/icon");
-
-            try (InputStream $$6 = $$3.get()) {
-               fev $$7 = fev.a($$6);
-               $$0.a($$5, new heg($$7));
-               var9 = $$5;
-            }
-         }
-
-         return var9;
-      } catch (Exception var14) {
-         a.warn("Failed to load icon from pack {}", $$1.g(), var14);
-         return x;
-      }
-   }
-
-   private akv a(atx $$0) {
-      return this.G.computeIfAbsent($$0.g(), $$1 -> this.a(this.m.aa(), $$0));
-   }
-
-   static class a implements AutoCloseable {
-      private final WatchService a;
-      private final Path b;
-
-      public a(Path $$0) throws IOException {
-         this.b = $$0;
-         this.a = $$0.getFileSystem().newWatchService();
-
-         try {
-            this.b($$0);
-
-            try (DirectoryStream<Path> $$1 = Files.newDirectoryStream($$0)) {
-               for (Path $$2 : $$1) {
-                  if (Files.isDirectory($$2, LinkOption.NOFOLLOW_LINKS)) {
-                     this.b($$2);
-                  }
-               }
-            }
-         } catch (Exception var7) {
-            this.a.close();
-            throw var7;
-         }
-      }
-
-      @Nullable
-      public static fyc.a a(Path $$0) {
-         try {
-            return new fyc.a($$0);
-         } catch (IOException var2) {
-            fyc.a.warn("Failed to initialize pack directory {} monitoring", $$0, var2);
-            return null;
-         }
-      }
-
-      private void b(Path $$0) throws IOException {
-         $$0.register(this.a, StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_DELETE, StandardWatchEventKinds.ENTRY_MODIFY);
-      }
-
-      public boolean a() throws IOException {
-         boolean $$0 = false;
-
-         WatchKey $$1;
-         while (($$1 = this.a.poll()) != null) {
-            for (WatchEvent<?> $$3 : $$1.pollEvents()) {
-               $$0 = true;
-               if ($$1.watchable() == this.b && $$3.kind() == StandardWatchEventKinds.ENTRY_CREATE) {
-                  Path $$4 = this.b.resolve((Path)$$3.context());
-                  if (Files.isDirectory($$4, LinkOption.NOFOLLOW_LINKS)) {
-                     this.b($$4);
-                  }
+            if ($$1 > 0) {
+               if ($$18 < 16 && $$19 < 16) {
+                  $$0.a(gnh::H, fyc.A, $$3, $$2, 32, 32);
+               } else {
+                  $$0.a(gnh::H, fyc.B, $$3, $$2, 32, 32);
                }
             }
 
-            $$1.reset();
+            if ($$1 < this.g.G().c() - 1) {
+               if ($$18 < 16 && $$19 > 16) {
+                  $$0.a(gnh::H, fyc.C, $$3, $$2, 32, 32);
+               } else {
+                  $$0.a(gnh::H, fyc.D, $$3, $$2, 32, 32);
+               }
+            }
+         }
+      }
+
+      private void d() {
+         this.m = null;
+         switch (this.i.g()) {
+            case a:
+            case b:
+               this.n = fyc.n;
+               this.o = fyc.L;
+               break;
+            case d:
+               this.n = fyc.a;
+               this.o = fyc.J;
+               this.m = this.i.i;
+               break;
+            case c:
+               this.n = fyc.m;
+               this.o = fyc.K;
+               break;
+            case e:
+               if (this.i.f < 150L) {
+                  this.n = fyc.r;
+               } else if (this.i.f < 300L) {
+                  this.n = fyc.q;
+               } else if (this.i.f < 600L) {
+                  this.n = fyc.p;
+               } else if (this.i.f < 1000L) {
+                  this.n = fyc.o;
+               } else {
+                  this.n = fyc.n;
+               }
+
+               this.o = wp.a("multiplayer.status.ping", this.i.f);
+               this.m = this.i.i;
+         }
+      }
+
+      public void b() {
+         this.g.G().b();
+      }
+
+      protected void a(fpc $$0, int $$1, int $$2, aku $$3) {
+         $$0.a(gnh::H, $$3, $$1, $$2, 0.0F, 0.0F, 32, 32, 32, 32);
+      }
+
+      private boolean e() {
+         return true;
+      }
+
+      private boolean a(@Nullable byte[] $$0) {
+         if ($$0 == null) {
+            this.j.a();
+         } else {
+            try {
+               this.j.a(ffr.a($$0));
+            } catch (Throwable var3) {
+               fyc.E.error("Invalid icon for server {} ({})", new Object[]{this.i.a, this.i.b, var3});
+               return false;
+            }
+         }
+
+         return true;
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1, int $$2) {
+         if (fvi.t()) {
+            fyc $$3 = this.g.s;
+            int $$4 = $$3.aH_().indexOf(this);
+            if ($$4 == -1) {
+               return true;
+            }
+
+            if ($$0 == 264 && $$4 < this.g.G().c() - 1 || $$0 == 265 && $$4 > 0) {
+               this.a($$4, $$0 == 264 ? $$4 + 1 : $$4 - 1);
+               return true;
+            }
+         }
+
+         return super.a($$0, $$1, $$2);
+      }
+
+      private void a(int $$0, int $$1) {
+         this.g.G().a($$0, $$1);
+         this.g.s.a(this.g.G());
+         fyc.a $$2 = this.g.s.aH_().get($$1);
+         this.g.s.a($$2);
+         fyc.this.f($$2);
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         double $$3 = $$0 - (double)fyc.this.u();
+         double $$4 = $$1 - (double)fyc.this.d(fyc.this.aH_().indexOf(this));
+         if ($$3 <= 32.0) {
+            if ($$3 < 32.0 && $$3 > 16.0 && this.e()) {
+               this.g.a(this);
+               this.g.m();
+               return true;
+            }
+
+            int $$5 = this.g.s.aH_().indexOf(this);
+            if ($$3 < 16.0 && $$4 < 16.0 && $$5 > 0) {
+               this.a($$5, $$5 - 1);
+               return true;
+            }
+
+            if ($$3 < 16.0 && $$4 > 16.0 && $$5 < this.g.G().c() - 1) {
+               this.a($$5, $$5 + 1);
+               return true;
+            }
+         }
+
+         this.g.a(this);
+         if (af.c() - this.l < 250L) {
+            this.g.m();
+         }
+
+         this.l = af.c();
+         return super.a($$0, $$1, $$2);
+      }
+
+      public ghn c() {
+         return this.i;
+      }
+
+      @Override
+      public wp a() {
+         xd $$0 = wp.i();
+         $$0.b(wp.a("narrator.select", this.i.a));
+         $$0.b(wo.t);
+         switch (this.i.g()) {
+            case b:
+               $$0.b(fyc.L);
+               break;
+            case d:
+               $$0.b(fyc.J);
+               $$0.b(wo.t);
+               $$0.b(wp.a("multiplayer.status.version.narration", this.i.h));
+               $$0.b(wo.t);
+               $$0.b(wp.a("multiplayer.status.motd.narration", this.i.d));
+               break;
+            case c:
+               $$0.b(fyc.K);
+               break;
+            default:
+               $$0.b(fyc.M);
+               $$0.b(wo.t);
+               $$0.b(wp.a("multiplayer.status.ping.narration", this.i.f));
+               $$0.b(wo.t);
+               $$0.b(wp.a("multiplayer.status.motd.narration", this.i.d));
+               if (this.i.e != null) {
+                  $$0.b(wo.t);
+                  $$0.b(wp.a("multiplayer.status.player_count.narration", this.i.e.b(), this.i.e.a()));
+                  $$0.b(wo.t);
+                  $$0.b(ws.a(this.i.i, wp.b(", ")));
+               }
          }
 
          return $$0;
       }
 
       @Override
-      public void close() throws IOException {
-         this.a.close();
+      public void close() {
+         this.j.close();
       }
    }
 }

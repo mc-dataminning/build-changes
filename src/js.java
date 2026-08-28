@@ -1,9 +1,9 @@
 import java.util.Optional;
 
 public interface js<T> {
-   Optional<jr.c<T>> a(aku<T> var1);
+   Optional<jr.c<T>> a(akt<T> var1);
 
-   default jr.c<T> b(aku<T> $$0) {
+   default jr.c<T> b(akt<T> $$0) {
       return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing element " + $$0));
    }
 
@@ -14,13 +14,13 @@ public interface js<T> {
    }
 
    public interface a {
-      <T> Optional<? extends js<T>> a(aku<? extends ke<? extends T>> var1);
+      <T> Optional<? extends js<T>> a(akt<? extends ke<? extends T>> var1);
 
-      default <T> js<T> b(aku<? extends ke<? extends T>> $$0) {
+      default <T> js<T> b(akt<? extends ke<? extends T>> $$0) {
          return (js<T>)this.a($$0).orElseThrow(() -> new IllegalStateException("Registry " + $$0.a() + " not found"));
       }
 
-      default <T> Optional<jr.c<T>> c(aku<T> $$0) {
+      default <T> Optional<jr.c<T>> c(akt<T> $$0) {
          return this.a($$0.c()).flatMap($$1 -> $$1.a($$0));
       }
    }

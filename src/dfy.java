@@ -1,31 +1,49 @@
+import com.mojang.serialization.Codec;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public enum dfy implements dfo {
-   a;
+public class dfy extends ArrayList<dfx> {
+   public static final Codec<dfy> a = dfx.a.listOf().optionalFieldOf("Recipes", List.of()).xmap(dfy::new, Function.identity()).codec();
+   public static final yn<wa, dfy> b = dfx.b.a(yl.a(dfy::new));
+
+   public dfy() {
+   }
+
+   private dfy(int $$0) {
+      super($$0);
+   }
+
+   private dfy(Collection<dfx> $$0) {
+      super($$0);
+   }
 
    @Nullable
-   @Override
-   public dua c_(ji $$0) {
-      return null;
+   public dfx a(cxh $$0, cxh $$1, int $$2) {
+      if ($$2 > 0 && $$2 < this.size()) {
+         dfx $$3 = this.get($$2);
+         return $$3.a($$0, $$1) ? $$3 : null;
+      } else {
+         for (int $$4 = 0; $$4 < this.size(); $$4++) {
+            dfx $$5 = this.get($$4);
+            if ($$5.a($$0, $$1)) {
+               return $$5;
+            }
+         }
+
+         return null;
+      }
    }
 
-   @Override
-   public dwy a_(ji $$0) {
-      return djp.a.m();
-   }
+   public dfy a() {
+      dfy $$0 = new dfy(this.size());
 
-   @Override
-   public eta b_(ji $$0) {
-      return etb.a.g();
-   }
+      for (dfx $$1 : this) {
+         $$0.add($$1.v());
+      }
 
-   @Override
-   public int L_() {
-      return 0;
-   }
-
-   @Override
-   public int M_() {
-      return 0;
+      return $$0;
    }
 }

@@ -1,71 +1,15 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+public interface gpj<T extends dus> {
+   void a(T var1, float var2, fgr var3, gmx var4, int var5, int var6);
 
-class gpj {
-   private final Map<ji, dua> a;
-   @Nullable
-   private final List<dzl<dwy>> b;
-   private final boolean c;
-   private final dzd d;
-
-   gpj(dzd $$0) {
-      this.d = $$0;
-      this.c = $$0.H().aj();
-      this.a = ImmutableMap.copyOf($$0.I());
-      if ($$0 instanceof dyz) {
-         this.b = null;
-      } else {
-         dze[] $$1 = $$0.d();
-         this.b = new ArrayList<>($$1.length);
-
-         for (dze $$2 : $$1) {
-            this.b.add($$2.c() ? null : $$2.h().d());
-         }
-      }
+   default boolean a(T $$0) {
+      return false;
    }
 
-   @Nullable
-   public dua a(ji $$0) {
-      return this.a.get($$0);
+   default int aU_() {
+      return 64;
    }
 
-   public dwy b(ji $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      if (this.c) {
-         dwy $$4 = null;
-         if ($$2 == 60) {
-            $$4 = djp.iu.m();
-         }
-
-         if ($$2 == 70) {
-            $$4 = eck.a($$1, $$3);
-         }
-
-         return $$4 == null ? djp.a.m() : $$4;
-      } else if (this.b == null) {
-         return djp.a.m();
-      } else {
-         try {
-            int $$5 = this.d.f($$2);
-            if ($$5 >= 0 && $$5 < this.b.size()) {
-               dzl<dwy> $$6 = this.b.get($$5);
-               if ($$6 != null) {
-                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
-               }
-            }
-
-            return djp.a.m();
-         } catch (Throwable var8) {
-            o $$8 = o.a(var8, "Getting block state");
-            p $$9 = $$8.a("Block being got");
-            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
-            throw new z($$8);
-         }
-      }
+   default boolean a(T $$0, fbx $$1) {
+      return fbx.b($$0.aA_()).a((kb)$$1, (double)this.aU_());
    }
 }

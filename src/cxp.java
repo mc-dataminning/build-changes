@@ -1,60 +1,51 @@
-import javax.annotation.Nullable;
+public interface cxp {
+   akt<cxn> a = a("13");
+   akt<cxn> b = a("cat");
+   akt<cxn> c = a("blocks");
+   akt<cxn> d = a("chirp");
+   akt<cxn> e = a("far");
+   akt<cxn> f = a("mall");
+   akt<cxn> g = a("mellohi");
+   akt<cxn> h = a("stal");
+   akt<cxn> i = a("strad");
+   akt<cxn> j = a("ward");
+   akt<cxn> k = a("11");
+   akt<cxn> l = a("wait");
+   akt<cxn> m = a("pigstep");
+   akt<cxn> n = a("otherside");
+   akt<cxn> o = a("5");
+   akt<cxn> p = a("relic");
+   akt<cxn> q = a("precipice");
+   akt<cxn> r = a("creator");
+   akt<cxn> s = a("creator_music_box");
 
-public class cxp extends cuw {
-   public cxp(djn $$0, cwm.a $$1) {
-      super($$0, $$1);
+   private static akt<cxn> a(String $$0) {
+      return akt.a(mc.L, aku.b($$0));
    }
 
-   @Nullable
-   @Override
-   public dah b(dah $$0) {
-      ji $$1 = $$0.a();
-      dgj $$2 = $$0.q();
-      dwy $$3 = $$2.a_($$1);
-      djn $$4 = this.d();
-      if (!$$3.a($$4)) {
-         return dqh.a($$2, $$1) == 7 ? null : $$0;
-      } else {
-         jn $$5;
-         if ($$0.h()) {
-            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
-         } else {
-            $$5 = $$0.k() == jn.b ? $$0.g() : jn.b;
-         }
-
-         int $$7 = 0;
-         ji.a $$8 = $$1.k().c($$5);
-
-         while ($$7 < 7) {
-            if (!$$2.C && !$$2.k($$8)) {
-               coy $$9 = $$0.o();
-               int $$10 = $$2.an();
-               if ($$9 instanceof are && $$8.v() > $$10) {
-                  ((are)$$9).b(wp.a("build.tooHigh", $$10).a(n.m), true);
-               }
-               break;
-            }
-
-            $$3 = $$2.a_($$8);
-            if (!$$3.a(this.d())) {
-               if ($$3.a($$0)) {
-                  return dah.a($$0, $$8, $$5);
-               }
-               break;
-            }
-
-            $$8.c($$5);
-            if ($$5.o().d()) {
-               $$7++;
-            }
-         }
-
-         return null;
-      }
+   private static void a(qe<cxn> $$0, akt<cxn> $$1, jr.c<avz> $$2, int $$3, int $$4) {
+      $$0.a($$1, new cxn($$2, wp.c(af.a("jukebox_song", $$1.a())), (float)$$3, $$4));
    }
 
-   @Override
-   protected boolean c() {
-      return false;
+   static void a(qe<cxn> $$0) {
+      a($$0, a, awa.qq, 178, 1);
+      a($$0, b, awa.qs, 185, 2);
+      a($$0, c, awa.qr, 345, 3);
+      a($$0, d, awa.qt, 185, 4);
+      a($$0, e, awa.qu, 174, 5);
+      a($$0, f, awa.qv, 197, 6);
+      a($$0, g, awa.qw, 96, 7);
+      a($$0, h, awa.qy, 150, 8);
+      a($$0, i, awa.qz, 188, 9);
+      a($$0, j, awa.qB, 251, 10);
+      a($$0, k, awa.qp, 71, 11);
+      a($$0, l, awa.qA, 238, 12);
+      a($$0, m, awa.qx, 149, 13);
+      a($$0, n, awa.qC, 195, 14);
+      a($$0, o, awa.qo, 178, 15);
+      a($$0, p, awa.qD, 218, 14);
+      a($$0, q, awa.qG, 299, 13);
+      a($$0, r, awa.qE, 176, 12);
+      a($$0, s, awa.qF, 73, 11);
    }
 }

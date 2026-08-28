@@ -1,12 +1,7 @@
-public class evf extends RuntimeException {
-   private final wp a;
-
-   public evf(wp $$0) {
-      super($$0.getString());
-      this.a = $$0;
-   }
-
-   public wp a() {
-      return this.a;
-   }
+public class evf {
+   public static final int a = 4;
+   public static final int b = 15;
+   public static final int c = 0;
+   public static final int d = 15;
+   public static final int e = 0;
 }

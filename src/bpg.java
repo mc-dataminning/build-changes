@@ -1,8 +1,12 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.tuple.Pair;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface bpg {
+public interface bpg extends bpj {
+   bph d();
+
+   @Nullable
+   bpb.a c(String var1);
+
+   Set<Pair<String, bqs>> e();
 }

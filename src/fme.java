@@ -1,544 +1,172 @@
-public class fme {
-   public static final fly a = fly.a.a(1.5F)
-      .a()
-      .a(
-         "root",
-         new flx(
-            flx.d.b,
-            new flz(0.0F, fma.b(0.0F, 0.0F, 2.5F), flx.b.b),
-            new flz(1.0F, fma.b(0.0F, 0.0F, -2.5F), flx.b.b),
-            new flz(1.5F, fma.b(0.0F, 0.0F, 2.5F), flx.b.b)
-         )
-      )
-      .a(
-         "head",
-         new flx(
-            flx.d.b,
-            new flz(0.0F, fma.b(2.5F, 0.0F, 0.0F), flx.b.b),
-            new flz(0.375F, fma.b(-2.5F, 0.0F, 0.0F), flx.b.b),
-            new flz(0.75F, fma.b(2.5F, 0.0F, 0.0F), flx.b.b),
-            new flz(1.125F, fma.b(-2.5F, 0.0F, 0.0F), flx.b.b),
-            new flz(1.5F, fma.b(2.5F, 0.0F, 0.0F), flx.b.b)
-         )
-      )
-      .a(
-         "right_front_leg",
-         new flx(
-            flx.d.b,
-            new flz(0.0F, fma.b(22.5F, 0.0F, 0.0F), flx.b.b),
-            new flz(0.75F, fma.b(-22.5F, 0.0F, 0.0F), flx.b.b),
-            new flz(1.5F, fma.b(22.5F, 0.0F, 0.0F), flx.b.b)
-         )
-      )
-      .a(
-         "right_front_leg",
-         new flx(
-            flx.d.a,
-            new flz(0.0F, fma.a(0.0F, 0.0F, 0.0F), flx.b.b),
-            new flz(0.4583F, fma.a(0.0F, 4.0F, 0.0F), flx.b.b),
-            new flz(0.75F, fma.a(0.0F, 0.0F, 0.0F), flx.b.b),
-            new flz(1.5F, fma.a(0.0F, 0.0F, 0.0F), flx.b.b)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new flx(
-            flx.d.b,
-            new flz(0.0F, fma.b(-22.5F, 0.0F, 0.0F), flx.b.b),
-            new flz(0.75F, fma.b(22.5F, 0.0F, 0.0F), flx.b.b),
-            new flz(1.5F, fma.b(-22.5F, 0.0F, 0.0F), flx.b.b)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new flx(
-            flx.d.a,
-            new flz(0.0F, fma.a(0.0F, 0.0F, 0.0F), flx.b.b),
-            new flz(0.75F, fma.a(0.0F, 0.0F, 0.0F), flx.b.b),
-            new flz(1.2083F, fma.a(0.0F, 4.0F, 0.0F), flx.b.b),
-            new flz(1.5F, fma.a(0.0F, 0.0F, 0.0F), flx.b.b)
-         )
-      )
-      .a(
-         "left_hind_leg",
-         new flx(
-            flx.d.b,
-            new flz(0.0F, fma.b(-20.4F, 0.0F, 0.0F), flx.b.b),
-            new flz(0.75F, fma.b(22.5F, 0.0F, 0.0F), flx.b.b),
-            new flz(1.375F, fma.b(-22.5F, 0.0F, 0.0F), flx.b.a),
-            new flz(1.5F, fma.b(-20.4F, 0.0F, 0.0F), flx.b.a)
-         )
-      )
-      .a(
-         "left_hind_leg",
-         new flx(
-            flx.d.a,
-            new flz(0.0F, fma.a(0.0F, -0.21F, 0.0F), flx.b.b),
-            new flz(0.75F, fma.a(0.0F, 0.0F, 0.0F), flx.b.b),
-            new flz(1.0833F, fma.a(0.0F, 4.0F, 0.0F), flx.b.b),
-            new flz(1.375F, fma.a(0.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(1.5F, fma.a(0.0F, -0.21F, 0.0F), flx.b.a)
-         )
-      )
-      .a(
-         "right_hind_leg",
-         new flx(
-            flx.d.b,
-            new flz(0.0F, fma.b(22.5F, 0.0F, 0.0F), flx.b.b),
-            new flz(0.625F, fma.b(-22.5F, 0.0F, 0.0F), flx.b.b),
-            new flz(1.5F, fma.b(22.5F, 0.0F, 0.0F), flx.b.b)
-         )
-      )
-      .a(
-         "right_hind_leg",
-         new flx(
-            flx.d.a,
-            new flz(0.0F, fma.a(0.0F, 0.0F, 0.0F), flx.b.b),
-            new flz(0.375F, fma.a(0.0F, 4.0F, 0.0F), flx.b.b),
-            new flz(0.625F, fma.a(0.0F, 0.0F, 0.0F), flx.b.b),
-            new flz(1.5F, fma.a(0.0F, 0.0F, 0.0F), flx.b.b)
-         )
-      )
-      .a(
-         "left_ear",
-         new flx(
-            flx.d.b,
-            new flz(0.0F, fma.b(0.0F, 0.0F, 0.0F), flx.b.b),
-            new flz(0.375F, fma.b(0.0F, 0.0F, -22.5F), flx.b.b),
-            new flz(0.75F, fma.b(0.0F, 0.0F, 0.0F), flx.b.b),
-            new flz(1.125F, fma.b(0.0F, 0.0F, -22.5F), flx.b.b),
-            new flz(1.5F, fma.b(0.0F, 0.0F, 0.0F), flx.b.b)
-         )
-      )
-      .a(
-         "right_ear",
-         new flx(
-            flx.d.b,
-            new flz(0.0F, fma.b(0.0F, 0.0F, 0.0F), flx.b.b),
-            new flz(0.375F, fma.b(0.0F, 0.0F, 22.5F), flx.b.b),
-            new flz(0.75F, fma.b(0.0F, 0.0F, 0.0F), flx.b.b),
-            new flz(1.125F, fma.b(0.0F, 0.0F, 22.5F), flx.b.b),
-            new flz(1.5F, fma.b(0.0F, 0.0F, 0.0F), flx.b.b)
-         )
-      )
-      .a(
-         "tail",
-         new flx(
-            flx.d.b,
-            new flz(0.0F, fma.b(15.94102F, -8.42106F, 20.94102F), flx.b.b),
-            new flz(0.75F, fma.b(15.94102F, 8.42106F, -20.94102F), flx.b.b),
-            new flz(1.5F, fma.b(15.94102F, -8.42106F, 20.94102F), flx.b.b)
-         )
-      )
-      .b();
-   public static final fly b = fly.a.a(2.0F)
-      .a(
-         "body",
-         new flx(
-            flx.d.b,
-            new flz(0.0F, fma.b(0.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(1.3F, fma.b(30.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(1.8F, fma.b(24.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(2.0F, fma.b(0.0F, 0.0F, 0.0F), flx.b.a)
-         )
-      )
-      .a(
-         "body",
-         new flx(
-            flx.d.a,
-            new flz(0.0F, fma.a(0.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(1.3F, fma.a(0.0F, 0.0F, 1.0F), flx.b.a),
-            new flz(1.8F, fma.a(0.0F, -6.0F, 1.0F), flx.b.a),
-            new flz(2.0F, fma.a(0.0F, -19.9F, 0.0F), flx.b.a)
-         )
-      )
-      .a(
-         "right_front_leg",
-         new flx(
-            flx.d.b,
-            new flz(0.0F, fma.b(0.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(1.0F, fma.b(-30.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(1.5F, fma.b(-30.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(2.0F, fma.b(-90.0F, 10.0F, 0.0F), flx.b.a)
-         )
-      )
-      .a(
-         "right_front_leg",
-         new flx(
-            flx.d.a,
-            new flz(0.0F, fma.a(0.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(1.0F, fma.a(0.0F, -2.0F, 11.0F), flx.b.a),
-            new flz(1.5F, fma.a(0.0F, -2.0F, 11.0F), flx.b.a),
-            new flz(1.7F, fma.a(0.0F, -8.4F, 11.4F), flx.b.a),
-            new flz(2.0F, fma.a(0.0F, -20.6F, 12.0F), flx.b.a)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new flx(
-            flx.d.b,
-            new flz(0.0F, fma.b(0.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(1.0F, fma.b(-30.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(1.5F, fma.b(-30.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(2.0F, fma.b(-90.0F, -10.0F, 0.0F), flx.b.a)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new flx(
-            flx.d.a,
-            new flz(0.0F, fma.a(0.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(1.0F, fma.a(0.0F, -2.0F, 11.0F), flx.b.a),
-            new flz(1.5F, fma.a(0.0F, -2.0F, 11.0F), flx.b.a),
-            new flz(1.7F, fma.a(0.0F, -8.4F, 11.4F), flx.b.a),
-            new flz(2.0F, fma.a(0.0F, -20.6F, 12.0F), flx.b.a)
-         )
-      )
-      .a(
-         "left_hind_leg",
-         new flx(
-            flx.d.b,
-            new flz(0.0F, fma.b(0.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(0.5F, fma.b(0.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(1.5F, fma.b(-10.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(1.7F, fma.b(-15.0F, -3.0F, 0.0F), flx.b.a),
-            new flz(1.9F, fma.b(-65.0F, -9.0F, 0.0F), flx.b.a),
-            new flz(2.0F, fma.b(-90.0F, -15.0F, 0.0F), flx.b.a)
-         )
-      )
-      .a(
-         "left_hind_leg",
-         new flx(
-            flx.d.a,
-            new flz(0.0F, fma.a(0.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(0.5F, fma.a(0.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(1.5F, fma.a(0.0F, 0.0F, 1.0F), flx.b.a),
-            new flz(1.7F, fma.a(1.0F, -0.62F, 0.25F), flx.b.a),
-            new flz(1.9F, fma.a(0.5F, -11.25F, 2.5F), flx.b.a),
-            new flz(2.0F, fma.a(1.0F, -20.5F, 5.0F), flx.b.a)
-         )
-      )
-      .a(
-         "right_hind_leg",
-         new flx(
-            flx.d.b,
-            new flz(0.0F, fma.b(0.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(0.5F, fma.b(0.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(1.5F, fma.b(-10.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(1.7F, fma.b(-15.0F, 3.0F, 0.0F), flx.b.a),
-            new flz(1.9F, fma.b(-65.0F, 9.0F, 0.0F), flx.b.a),
-            new flz(2.0F, fma.b(-90.0F, 15.0F, 0.0F), flx.b.a)
-         )
-      )
-      .a(
-         "right_hind_leg",
-         new flx(
-            flx.d.a,
-            new flz(0.0F, fma.a(0.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(0.5F, fma.a(0.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(1.5F, fma.a(0.0F, 0.0F, 1.0F), flx.b.a),
-            new flz(1.7F, fma.a(-1.0F, -0.62F, 0.25F), flx.b.a),
-            new flz(1.9F, fma.a(-0.5F, -11.25F, 2.5F), flx.b.a),
-            new flz(2.0F, fma.a(-1.0F, -20.5F, 5.0F), flx.b.a)
-         )
-      )
-      .a(
-         "head",
-         new flx(
-            flx.d.b,
-            new flz(0.0F, fma.b(0.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(0.7F, fma.b(-27.5F, 0.0F, 0.0F), flx.b.a),
-            new flz(1.5F, fma.b(-21.25F, 0.0F, 0.0F), flx.b.a),
-            new flz(2.0F, fma.b(0.0F, 0.0F, 0.0F), flx.b.a)
-         )
-      )
-      .a(
-         "tail",
-         new flx(
-            flx.d.b,
-            new flz(0.0F, fma.b(5.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(1.7F, fma.b(5.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(1.9F, fma.b(80.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(2.0F, fma.b(50.0F, 0.0F, 0.0F), flx.b.a)
-         )
-      )
-      .b();
-   public static final fly c = fly.a.a(1.0F)
-      .a("body", new flx(flx.d.b, new flz(0.0F, fma.b(0.0F, 0.0F, 0.0F), flx.b.a), new flz(1.0F, fma.b(0.0F, 0.0F, 0.0F), flx.b.a)))
-      .a("body", new flx(flx.d.a, new flz(0.0F, fma.a(0.0F, -19.9F, 0.0F), flx.b.a), new flz(1.0F, fma.a(0.0F, -19.9F, 0.0F), flx.b.a)))
-      .a("right_front_leg", new flx(flx.d.b, new flz(0.0F, fma.b(-90.0F, 10.0F, 0.0F), flx.b.a), new flz(1.0F, fma.b(-90.0F, 10.0F, 0.0F), flx.b.a)))
-      .a("right_front_leg", new flx(flx.d.a, new flz(0.0F, fma.a(0.0F, -20.6F, 12.0F), flx.b.a), new flz(1.0F, fma.a(0.0F, -20.6F, 12.0F), flx.b.a)))
-      .a("left_front_leg", new flx(flx.d.b, new flz(0.0F, fma.b(-90.0F, -10.0F, 0.0F), flx.b.a), new flz(1.0F, fma.b(-90.0F, -10.0F, 0.0F), flx.b.a)))
-      .a("left_front_leg", new flx(flx.d.a, new flz(0.0F, fma.a(0.0F, -20.6F, 12.0F), flx.b.a), new flz(1.0F, fma.a(0.0F, -20.6F, 12.0F), flx.b.a)))
-      .a("left_hind_leg", new flx(flx.d.b, new flz(0.0F, fma.b(-90.0F, -15.0F, 0.0F), flx.b.a), new flz(1.0F, fma.b(-90.0F, -15.0F, 0.0F), flx.b.a)))
-      .a("left_hind_leg", new flx(flx.d.a, new flz(0.0F, fma.a(1.0F, -20.5F, 5.0F), flx.b.a), new flz(1.0F, fma.a(1.0F, -20.5F, 5.0F), flx.b.a)))
-      .a("right_hind_leg", new flx(flx.d.b, new flz(0.0F, fma.b(-90.0F, 15.0F, 0.0F), flx.b.a), new flz(1.0F, fma.b(-90.0F, 15.0F, 0.0F), flx.b.a)))
-      .a("right_hind_leg", new flx(flx.d.a, new flz(0.0F, fma.a(-1.0F, -20.5F, 5.0F), flx.b.a), new flz(1.0F, fma.a(-1.0F, -20.5F, 5.0F), flx.b.a)))
-      .a("head", new flx(flx.d.b, new flz(0.0F, fma.b(0.0F, 0.0F, 0.0F), flx.b.a), new flz(1.0F, fma.b(0.0F, 0.0F, 0.0F), flx.b.a)))
-      .a("tail", new flx(flx.d.b, new flz(0.0F, fma.b(50.0F, 0.0F, 0.0F), flx.b.a), new flz(1.0F, fma.b(50.0F, 0.0F, 0.0F), flx.b.a)))
-      .b();
-   public static final fly d = fly.a.a(2.6F)
-      .a(
-         "body",
-         new flx(
-            flx.d.b,
-            new flz(0.0F, fma.b(0.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(0.7F, fma.b(-17.5F, 0.0F, 0.0F), flx.b.b),
-            new flz(1.8F, fma.b(-17.83F, 0.0F, 0.0F), flx.b.b),
-            new flz(2.3F, fma.b(-5.83F, 0.0F, 0.0F), flx.b.a),
-            new flz(2.6F, fma.b(0.0F, 0.0F, 0.0F), flx.b.a)
-         )
-      )
-      .a(
-         "body",
-         new flx(
-            flx.d.a,
-            new flz(0.0F, fma.a(0.0F, -19.9F, 0.0F), flx.b.a),
-            new flz(0.7F, fma.a(0.0F, -19.9F, -3.0F), flx.b.a),
-            new flz(1.4F, fma.a(0.0F, -12.76F, -4.0F), flx.b.b),
-            new flz(1.8F, fma.a(0.0F, -10.1F, -4.0F), flx.b.b),
-            new flz(2.3F, fma.a(0.0F, -2.9F, -2.0F), flx.b.a),
-            new flz(2.6F, fma.a(0.0F, 0.0F, 0.0F), flx.b.a)
-         )
-      )
-      .a(
-         "right_front_leg",
-         new flx(
-            flx.d.b,
-            new flz(0.0F, fma.b(-90.0F, 10.0F, 0.0F), flx.b.a),
-            new flz(0.5F, fma.b(-90.0F, 10.0F, 0.0F), flx.b.a),
-            new flz(1.1F, fma.b(-49.06F, 10.0F, 0.0F), flx.b.a),
-            new flz(1.8F, fma.b(-22.5F, 10.0F, 0.0F), flx.b.a),
-            new flz(2.3F, fma.b(-25.0F, 10.0F, 0.0F), flx.b.a),
-            new flz(2.6F, fma.b(0.0F, 0.0F, 0.0F), flx.b.a)
-         )
-      )
-      .a(
-         "right_front_leg",
-         new flx(
-            flx.d.a,
-            new flz(0.0F, fma.a(0.0F, -20.6F, 12.0F), flx.b.a),
-            new flz(0.5F, fma.a(0.0F, -20.6F, 8.0F), flx.b.a),
-            new flz(1.1F, fma.a(0.0F, -7.14F, 4.42F), flx.b.a),
-            new flz(1.8F, fma.a(0.0F, -1.27F, -1.33F), flx.b.a),
-            new flz(2.3F, fma.a(0.0F, -1.27F, -0.33F), flx.b.a),
-            new flz(2.6F, fma.a(0.0F, 0.0F, 0.0F), flx.b.a)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new flx(
-            flx.d.b,
-            new flz(0.0F, fma.b(-90.0F, -10.0F, 0.0F), flx.b.a),
-            new flz(0.5F, fma.b(-90.0F, -10.0F, 0.0F), flx.b.a),
-            new flz(1.1F, fma.b(-49.06F, -10.0F, 0.0F), flx.b.a),
-            new flz(1.8F, fma.b(-22.5F, -10.0F, 0.0F), flx.b.a),
-            new flz(2.3F, fma.b(-25.0F, -10.0F, 0.0F), flx.b.a),
-            new flz(2.6F, fma.b(0.0F, 0.0F, 0.0F), flx.b.a)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new flx(
-            flx.d.a,
-            new flz(0.0F, fma.a(0.0F, -20.6F, 12.0F), flx.b.a),
-            new flz(0.5F, fma.a(0.0F, -20.6F, 8.0F), flx.b.a),
-            new flz(1.1F, fma.a(0.0F, -7.14F, 4.42F), flx.b.a),
-            new flz(1.8F, fma.a(0.0F, -1.27F, -1.33F), flx.b.a),
-            new flz(2.3F, fma.a(0.0F, -1.27F, -0.33F), flx.b.a),
-            new flz(2.6F, fma.a(0.0F, 0.0F, 0.0F), flx.b.a)
-         )
-      )
-      .a(
-         "left_hind_leg",
-         new flx(
-            flx.d.b,
-            new flz(0.0F, fma.b(-90.0F, -15.0F, 0.0F), flx.b.a),
-            new flz(0.3F, fma.b(-90.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(0.6F, fma.b(-90.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(1.1F, fma.b(-60.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(1.9F, fma.b(35.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(2.2F, fma.b(30.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(2.6F, fma.b(0.0F, 0.0F, 0.0F), flx.b.a)
-         )
-      )
-      .a(
-         "left_hind_leg",
-         new flx(
-            flx.d.a,
-            new flz(0.0F, fma.a(1.0F, -20.5F, 5.0F), flx.b.a),
-            new flz(0.3F, fma.a(-2.0F, -20.5F, 3.0F), flx.b.a),
-            new flz(0.6F, fma.a(-2.0F, -20.5F, 3.0F), flx.b.a),
-            new flz(1.1F, fma.a(-2.0F, -10.5F, 2.0F), flx.b.a),
-            new flz(1.5F, fma.a(-2.0F, -0.4F, -3.9F), flx.b.a),
-            new flz(1.9F, fma.a(-2.0F, -4.3F, -9.8F), flx.b.a),
-            new flz(2.2F, fma.a(-1.0F, -2.5F, -5.0F), flx.b.a),
-            new flz(2.6F, fma.a(0.0F, 0.0F, 0.0F), flx.b.a)
-         )
-      )
-      .a(
-         "right_hind_leg",
-         new flx(
-            flx.d.b,
-            new flz(0.0F, fma.b(-90.0F, 15.0F, 0.0F), flx.b.a),
-            new flz(0.3F, fma.b(-90.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(0.6F, fma.b(-90.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(1.1F, fma.b(-60.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(1.9F, fma.b(35.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(2.2F, fma.b(30.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(2.6F, fma.b(0.0F, 0.0F, 0.0F), flx.b.a)
-         )
-      )
-      .a(
-         "right_hind_leg",
-         new flx(
-            flx.d.a,
-            new flz(0.0F, fma.a(-1.0F, -20.5F, 5.0F), flx.b.a),
-            new flz(0.3F, fma.a(2.0F, -20.5F, 3.0F), flx.b.a),
-            new flz(0.6F, fma.a(2.0F, -20.5F, 3.0F), flx.b.a),
-            new flz(1.1F, fma.a(2.0F, -10.5F, 2.0F), flx.b.a),
-            new flz(1.5F, fma.a(2.0F, -0.4F, -3.9F), flx.b.a),
-            new flz(1.9F, fma.a(2.0F, -4.3F, -9.8F), flx.b.a),
-            new flz(2.2F, fma.a(1.0F, -2.5F, -5.0F), flx.b.a),
-            new flz(2.6F, fma.a(0.0F, 0.0F, 0.0F), flx.b.a)
-         )
-      )
-      .a(
-         "head",
-         new flx(
-            flx.d.b,
-            new flz(0.0F, fma.b(0.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(0.3F, fma.b(0.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(0.8F, fma.b(55.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(2.0F, fma.b(65.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(2.4F, fma.b(0.0F, 0.0F, 0.0F), flx.b.a)
-         )
-      )
-      .a(
-         "tail",
-         new flx(
-            flx.d.b,
-            new flz(0.0F, fma.b(50.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(0.4F, fma.b(55.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(0.9F, fma.b(55.0F, 0.0F, 0.0F), flx.b.a),
-            new flz(1.5F, fma.b(17.5F, 0.0F, 0.0F), flx.b.a),
-            new flz(2.6F, fma.b(5.0F, 0.0F, 0.0F), flx.b.a)
-         )
-      )
-      .b();
-   public static final fly e = fly.a.a(0.5F)
-      .a()
-      .a("body", new flx(flx.d.b, new flz(0.0F, fma.b(5.0F, 0.0F, 0.0F), flx.b.a), new flz(0.5F, fma.b(5.0F, 0.0F, 0.0F), flx.b.a)))
-      .a(
-         "tail",
-         new flx(
-            flx.d.b,
-            new flz(0.0F, fma.b(67.5F, 0.0F, 0.0F), flx.b.b),
-            new flz(0.125F, fma.b(112.5F, 0.0F, 0.0F), flx.b.b),
-            new flz(0.25F, fma.b(67.5F, 0.0F, 0.0F), flx.b.b),
-            new flz(0.375F, fma.b(112.5F, 0.0F, 0.0F), flx.b.b),
-            new flz(0.5F, fma.b(67.5F, 0.0F, 0.0F), flx.b.b)
-         )
-      )
-      .a(
-         "head",
-         new flx(
-            flx.d.b,
-            new flz(0.0F, fma.b(10.0F, 0.0F, 0.0F), flx.b.b),
-            new flz(0.125F, fma.b(0.0F, 0.0F, 0.0F), flx.b.b),
-            new flz(0.25F, fma.b(10.0F, 0.0F, 0.0F), flx.b.b),
-            new flz(0.375F, fma.b(0.0F, 0.0F, 0.0F), flx.b.b),
-            new flz(0.5F, fma.b(10.0F, 0.0F, 0.0F), flx.b.b)
-         )
-      )
-      .a(
-         "right_front_leg",
-         new flx(
-            flx.d.b,
-            new flz(0.0F, fma.b(44.97272F, 1.76749F, -1.76833F), flx.b.b),
-            new flz(0.125F, fma.b(-90.0F, 0.0F, 0.0F), flx.b.b),
-            new flz(0.25F, fma.b(44.97272F, 1.76749F, -1.76833F), flx.b.b),
-            new flz(0.375F, fma.b(-90.0F, 0.0F, 0.0F), flx.b.b),
-            new flz(0.5F, fma.b(44.97272F, 1.76749F, -1.76833F), flx.b.b)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new flx(
-            flx.d.b,
-            new flz(0.0F, fma.b(-90.0F, 0.0F, 0.0F), flx.b.b),
-            new flz(0.125F, fma.b(44.97272F, -1.76749F, 1.76833F), flx.b.b),
-            new flz(0.25F, fma.b(-90.0F, 0.0F, 0.0F), flx.b.b),
-            new flz(0.375F, fma.b(44.97272F, -1.76749F, 1.76833F), flx.b.b),
-            new flz(0.5F, fma.b(-90.0F, 0.0F, 0.0F), flx.b.b)
-         )
-      )
-      .a(
-         "left_hind_leg",
-         new flx(
-            flx.d.b,
-            new flz(0.0F, fma.b(90.0F, 0.0F, 0.0F), flx.b.b),
-            new flz(0.125F, fma.b(-45.0F, 0.0F, 0.0F), flx.b.b),
-            new flz(0.25F, fma.b(90.0F, 0.0F, 0.0F), flx.b.b),
-            new flz(0.375F, fma.b(-45.0F, 0.0F, 0.0F), flx.b.b),
-            new flz(0.5F, fma.b(90.0F, 0.0F, 0.0F), flx.b.b)
-         )
-      )
-      .a(
-         "right_hind_leg",
-         new flx(
-            flx.d.b,
-            new flz(0.0F, fma.b(-45.0F, 0.0F, 0.0F), flx.b.b),
-            new flz(0.125F, fma.b(90.0F, 0.0F, 0.0F), flx.b.b),
-            new flz(0.25F, fma.b(-45.0F, 0.0F, 0.0F), flx.b.b),
-            new flz(0.375F, fma.b(90.0F, 0.0F, 0.0F), flx.b.b),
-            new flz(0.5F, fma.b(-45.0F, 0.0F, 0.0F), flx.b.b)
-         )
-      )
-      .a("left_ear", new flx(flx.d.b, new flz(0.0F, fma.b(0.0F, -67.5F, 0.0F), flx.b.a), new flz(0.5F, fma.b(0.0F, -67.5F, 0.0F), flx.b.a)))
-      .a("right_ear", new flx(flx.d.b, new flz(0.0F, fma.b(0.0F, 67.5F, 0.0F), flx.b.a), new flz(0.5F, fma.b(0.0F, 67.5F, 0.0F), flx.b.a)))
-      .b();
-   public static final fly f = fly.a.a(4.0F)
-      .a(
-         "tail",
-         new flx(
-            flx.d.b,
-            new flz(0.0F, fma.b(5.0F, 0.0F, 0.0F), flx.b.b),
-            new flz(1.0F, fma.b(4.98107F, 0.43523F, -4.98107F), flx.b.b),
-            new flz(3.0F, fma.b(4.9872F, -0.29424F, 3.36745F), flx.b.b),
-            new flz(4.0F, fma.b(5.0F, 0.0F, 0.0F), flx.b.b)
-         )
-      )
-      .a(
-         "head",
-         new flx(
-            flx.d.b,
-            new flz(0.0F, fma.b(0.0F, 0.0F, 0.0F), flx.b.b),
-            new flz(2.0F, fma.b(-2.5F, 0.0F, 0.0F), flx.b.b),
-            new flz(4.0F, fma.b(0.0F, 0.0F, 0.0F), flx.b.b)
-         )
-      )
-      .a(
-         "left_ear",
-         new flx(
-            flx.d.b,
-            new flz(2.5F, fma.b(0.0F, 0.0F, -45.0F), flx.b.b),
-            new flz(2.625F, fma.b(0.0F, 0.0F, 22.5F), flx.b.b),
-            new flz(2.75F, fma.b(0.0F, 0.0F, -45.0F), flx.b.b),
-            new flz(2.875F, fma.b(0.0F, 0.0F, 22.5F), flx.b.b),
-            new flz(3.0F, fma.b(0.0F, 0.0F, -45.0F), flx.b.b)
-         )
-      )
-      .a(
-         "right_ear",
-         new flx(
-            flx.d.b,
-            new flz(2.5F, fma.b(0.0F, 0.0F, 45.0F), flx.b.b),
-            new flz(2.625F, fma.b(0.0F, 0.0F, -22.5F), flx.b.b),
-            new flz(2.75F, fma.b(0.0F, 0.0F, 45.0F), flx.b.b),
-            new flz(2.875F, fma.b(0.0F, 0.0F, -22.5F), flx.b.b),
-            new flz(3.0F, fma.b(0.0F, 0.0F, 45.0F), flx.b.b)
-         )
-      )
-      .b();
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+
+public class fme implements Comparable<fme> {
+   private static final Map<String, fme> h = Maps.newHashMap();
+   private static final Map<ffm.a, fme> i = Maps.newHashMap();
+   private static final Set<String> j = Sets.newHashSet();
+   public static final String a = "key.categories.movement";
+   public static final String b = "key.categories.misc";
+   public static final String c = "key.categories.multiplayer";
+   public static final String d = "key.categories.gameplay";
+   public static final String e = "key.categories.inventory";
+   public static final String f = "key.categories.ui";
+   public static final String g = "key.categories.creative";
+   private static final Map<String, Integer> k = af.a(Maps.newHashMap(), $$0 -> {
+      $$0.put("key.categories.movement", 1);
+      $$0.put("key.categories.gameplay", 2);
+      $$0.put("key.categories.inventory", 3);
+      $$0.put("key.categories.creative", 4);
+      $$0.put("key.categories.multiplayer", 5);
+      $$0.put("key.categories.ui", 6);
+      $$0.put("key.categories.misc", 7);
+   });
+   private final String l;
+   private final ffm.a m;
+   private final String n;
+   private ffm.a o;
+   private boolean p;
+   private int q;
+
+   public static void a(ffm.a $$0) {
+      fme $$1 = i.get($$0);
+      if ($$1 != null) {
+         $$1.q++;
+      }
+   }
+
+   public static void a(ffm.a $$0, boolean $$1) {
+      fme $$2 = i.get($$0);
+      if ($$2 != null) {
+         $$2.a($$1);
+      }
+   }
+
+   public static void a() {
+      for (fme $$0 : h.values()) {
+         if ($$0.o.a() == ffm.b.a && $$0.o.b() != ffm.bv.b()) {
+            $$0.a(ffm.a(fmg.Q().aO().h(), $$0.o.b()));
+         }
+      }
+   }
+
+   public static void b() {
+      for (fme $$0 : h.values()) {
+         $$0.n();
+      }
+   }
+
+   public static void c() {
+      for (fme $$0 : h.values()) {
+         if ($$0 instanceof fmr $$1) {
+            $$1.n();
+         }
+      }
+   }
+
+   public static void d() {
+      i.clear();
+
+      for (fme $$0 : h.values()) {
+         i.put($$0.o, $$0);
+      }
+   }
+
+   public fme(String $$0, int $$1, String $$2) {
+      this($$0, ffm.b.a, $$1, $$2);
+   }
+
+   public fme(String $$0, ffm.b $$1, int $$2, String $$3) {
+      this.l = $$0;
+      this.o = $$1.a($$2);
+      this.m = this.o;
+      this.n = $$3;
+      h.put($$0, this);
+      i.put(this.o, this);
+      j.add($$3);
+   }
+
+   public boolean e() {
+      return this.p;
+   }
+
+   public String f() {
+      return this.n;
+   }
+
+   public boolean g() {
+      if (this.q == 0) {
+         return false;
+      } else {
+         this.q--;
+         return true;
+      }
+   }
+
+   private void n() {
+      this.q = 0;
+      this.a(false);
+   }
+
+   public String h() {
+      return this.l;
+   }
+
+   public ffm.a i() {
+      return this.m;
+   }
+
+   public void b(ffm.a $$0) {
+      this.o = $$0;
+   }
+
+   public int a(fme $$0) {
+      return this.n.equals($$0.n) ? hgz.a(this.l).compareTo(hgz.a($$0.l)) : k.get(this.n).compareTo(k.get($$0.n));
+   }
+
+   public static Supplier<wp> a(String $$0) {
+      fme $$1 = h.get($$0);
+      return $$1 == null ? () -> wp.c($$0) : $$1::k;
+   }
+
+   public boolean b(fme $$0) {
+      return this.o.equals($$0.o);
+   }
+
+   public boolean j() {
+      return this.o.equals(ffm.bv);
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return $$0 == ffm.bv.b() ? this.o.a() == ffm.b.b && this.o.b() == $$1 : this.o.a() == ffm.b.a && this.o.b() == $$0;
+   }
+
+   public boolean a(int $$0) {
+      return this.o.a() == ffm.b.c && this.o.b() == $$0;
+   }
+
+   public wp k() {
+      return this.o.d();
+   }
+
+   public boolean l() {
+      return this.o.equals(this.m);
+   }
+
+   public String m() {
+      return this.o.c();
+   }
+
+   public void a(boolean $$0) {
+      this.p = $$0;
+   }
+
+   @Nullable
+   public static fme b(String $$0) {
+      return h.get($$0);
+   }
 }

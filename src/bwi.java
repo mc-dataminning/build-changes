@@ -1,5 +1,13 @@
-public interface bwi<T> {
-   void a(T var1);
+public interface bwi extends bwh {
+   void b(int var1);
 
-   T d();
+   boolean a();
+
+   void c(int var1);
+
+   void b();
+
+   default int c() {
+      return 0;
+   }
 }

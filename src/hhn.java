@@ -1,5 +1,8 @@
-public interface hhn {
-   het a(hha var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   het a(String var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface hhn {
 }

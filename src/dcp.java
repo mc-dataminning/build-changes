@@ -1,40 +1,29 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-
-public record dcp(List<dcq> f, dcq g, dcq h) implements dck {
-   public static final MapCodec<dcp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               dcq.a.listOf().fieldOf("ingredients").forGetter(dcp::b),
-               dcq.a.fieldOf("result").forGetter(dcp::d),
-               dcq.a.fieldOf("crafting_station").forGetter(dcp::e)
-            )
-            .apply($$0, dcp::new)
-   );
-   public static final yn<wa, dcp> b = yn.a(dcq.b.a(yl.a()), dcp::b, dcq.b, dcp::d, dcq.b, dcp::e, dcp::new);
-   public static final dck.a<dcp> c = new dck.a<>(a, b);
-
-   @Override
-   public dck.a<dcp> a() {
-      return c;
+public class dcp extends dbb {
+   public dcp(String $$0, dbh $$1, dbr $$2, cxh $$3, float $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(cru $$0) {
-      return this.f.stream().allMatch($$1 -> $$1.a($$0)) && dck.super.a($$0);
-   }
-
-   public List<dcq> b() {
-      return this.f;
+   protected cxd f() {
+      return cxl.fg;
    }
 
    @Override
-   public dcq d() {
-      return this.g;
+   public dcf<dcp> a() {
+      return dcf.o;
    }
 
    @Override
-   public dcq e() {
-      return this.h;
+   public dcg<dcp> b() {
+      return dcg.b;
+   }
+
+   @Override
+   public dby h() {
+      return switch (this.e()) {
+         case b -> dbx.f;
+         case a -> dbx.e;
+         case c -> dbx.g;
+      };
    }
 }

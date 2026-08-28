@@ -1,139 +1,76 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 import org.slf4j.Logger;
 
-public class duj extends dua implements bse {
-   public static final int b = 6;
-   private static final Logger c = LogUtils.getLogger();
-   private final ka<cwq> d = ka.a(6, cwq.j);
-   private int e = -1;
+public record duj(List<duj.b> d) {
+   static final Logger e = LogUtils.getLogger();
+   public static final duj a = new duj(List.of());
+   public static final Codec<duj> b = duj.b.a.listOf().xmap(duj::new, duj::b);
+   public static final yn<wa, duj> c = duj.b.b.a(yl.a()).a(duj::new, duj::b);
 
-   public duj(ji $$0, dwy $$1) {
-      super(duc.N, $$0, $$1);
+   public duj a() {
+      return new duj(List.copyOf(this.d.subList(0, this.d.size() - 1)));
    }
 
-   private void c(int $$0) {
-      if ($$0 >= 0 && $$0 < 6) {
-         this.e = $$0;
-         dwy $$1 = this.m();
+   public List<duj.b> b() {
+      return this.d;
+   }
 
-         for (int $$2 = 0; $$2 < dkr.c.size(); $$2++) {
-            boolean $$3 = !this.a($$2).f();
-            dxp $$4 = dkr.c.get($$2);
-            $$1 = $$1.b($$4, Boolean.valueOf($$3));
+   public static class a {
+      private final Builder<duj.b> a = ImmutableList.builder();
+
+      @Deprecated
+      public duj.a a(js<dui> $$0, akt<dui> $$1, cwe $$2) {
+         Optional<jr.c<dui>> $$3 = $$0.a($$1);
+         if ($$3.isEmpty()) {
+            duj.e.warn("Unable to find banner pattern with id: '{}'", $$1.a());
+            return this;
+         } else {
+            return this.a($$3.get(), $$2);
          }
+      }
 
-         Objects.requireNonNull(this.n).a(this.o, $$1, 3);
-         this.n.a(ebu.c, this.o, ebu.a.a($$1));
-      } else {
-         c.error("Expected slot 0-5, got {}", $$0);
+      public duj.a a(jr<dui> $$0, cwe $$1) {
+         return this.a(new duj.b($$0, $$1));
+      }
+
+      public duj.a a(duj.b $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      public duj.a a(duj $$0) {
+         this.a.addAll($$0.d);
+         return this;
+      }
+
+      public duj a() {
+         return new duj(this.a.build());
       }
    }
 
-   @Override
-   protected void a(tq $$0, jt.a $$1) {
-      super.a($$0, $$1);
-      this.d.clear();
-      bsf.b($$0, this.d, $$1);
-      this.e = $$0.h("last_interacted_slot");
-   }
+   public static record b(jr<dui> c, cwe d) {
+      public static final Codec<duj.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dui.c.fieldOf("pattern").forGetter(duj.b::b), cwe.q.fieldOf("color").forGetter(duj.b::c)).apply($$0, duj.b::new)
+      );
+      public static final yn<wa, duj.b> b = yn.a(dui.d, duj.b::b, cwe.r, duj.b::c, duj.b::new);
 
-   @Override
-   protected void b(tq $$0, jt.a $$1) {
-      super.b($$0, $$1);
-      bsf.a($$0, this.d, true, $$1);
-      $$0.a("last_interacted_slot", this.e);
-   }
-
-   public int f() {
-      return (int)this.d.stream().filter(Predicate.not(cwq::f)).count();
-   }
-
-   @Override
-   public void a() {
-      this.d.clear();
-   }
-
-   @Override
-   public int b() {
-      return 6;
-   }
-
-   @Override
-   public boolean c() {
-      return this.d.stream().allMatch(cwq::f);
-   }
-
-   @Override
-   public cwq a(int $$0) {
-      return this.d.get($$0);
-   }
-
-   @Override
-   public cwq a(int $$0, int $$1) {
-      cwq $$2 = Objects.requireNonNullElse(this.d.get($$0), cwq.j);
-      this.d.set($$0, cwq.j);
-      if (!$$2.f()) {
-         this.c($$0);
+      public xd a() {
+         String $$0 = this.c.a().b();
+         return wp.c($$0 + "." + this.d.b());
       }
 
-      return $$2;
-   }
-
-   @Override
-   public cwq b(int $$0) {
-      return this.a($$0, 1);
-   }
-
-   @Override
-   public void a(int $$0, cwq $$1) {
-      if ($$1.a(awy.aZ)) {
-         this.d.set($$0, $$1);
-         this.c($$0);
-      } else if ($$1.f()) {
-         this.a($$0, 1);
+      public jr<dui> b() {
+         return this.c;
       }
-   }
 
-   @Override
-   public boolean a(bse $$0, int $$1, cwq $$2) {
-      return $$0.a_($$2x -> $$2x.f() ? true : cwq.c($$2, $$2x) && $$2x.M() + $$2.M() <= $$0.e_($$2x));
-   }
-
-   @Override
-   public int an_() {
-      return 1;
-   }
-
-   @Override
-   public boolean a(coy $$0) {
-      return bse.a(this, $$0);
-   }
-
-   @Override
-   public boolean b(int $$0, cwq $$1) {
-      return $$1.a(awy.aZ) && this.a($$0).f() && $$1.M() == this.an_();
-   }
-
-   public int j() {
-      return this.e;
-   }
-
-   @Override
-   protected void a(dua.b $$0) {
-      super.a($$0);
-      $$0.a(kv.al, czi.a).a(this.d);
-   }
-
-   @Override
-   protected void a(kr.a $$0) {
-      super.a($$0);
-      $$0.a(kv.al, czi.a(this.d));
-   }
-
-   @Override
-   public void a(tq $$0) {
-      $$0.r("Items");
+      public cwe c() {
+         return this.d;
+      }
    }
 }

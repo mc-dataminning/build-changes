@@ -340,14 +340,18 @@ public class tq implements un {
    }
 
    public float j(String $$0) {
+      return this.b($$0, 0.0F);
+   }
+
+   public float b(String $$0, float $$1) {
       try {
          if (this.b($$0, 99)) {
             return ((ug)this.x.get($$0)).k();
          }
-      } catch (ClassCastException var3) {
+      } catch (ClassCastException var4) {
       }
 
-      return 0.0F;
+      return $$1;
    }
 
    public double k(String $$0) {
@@ -364,7 +368,7 @@ public class tq implements un {
    public String l(String $$0) {
       try {
          if (this.b($$0, 8)) {
-            return this.x.get($$0).u_();
+            return this.x.get($$0).p_();
          }
       } catch (ClassCastException var3) {
       }
@@ -447,7 +451,7 @@ public class tq implements un {
 
    @Override
    public String toString() {
-      return this.u_();
+      return this.p_();
    }
 
    public boolean g() {
@@ -468,8 +472,7 @@ public class tq implements un {
    }
 
    public tq i() {
-      Map<String, un> $$0 = Maps.newHashMap(Maps.transformValues(this.x, un::d));
-      return new tq($$0);
+      return new tq(af.a(this.x, un::d));
    }
 
    @Override

@@ -1,23 +1,18 @@
-public class gvx<S extends gza, M extends gcc<S> & gen> extends gwu<S, M> {
-   public gvx(guc<S, M> $$0) {
-      super($$0);
+public class gvx extends grt<cjw, gzk, gbm<gzk>> {
+   private static final aku a = aku.b("textures/entity/horse/horse_zombie.png");
+   private static final aku b = aku.b("textures/entity/horse/horse_skeleton.png");
+   private final aku k;
+
+   public gvx(gtd.a $$0, gga $$1, gga $$2, boolean $$3) {
+      super($$0, new gdl($$0.a($$1)), new gdl($$0.a($$2)));
+      this.k = $$3 ? b : a;
    }
 
-   public void a(ffv $$0, glz $$1, int $$2, S $$3, float $$4, float $$5) {
-      hbp $$6 = $$3.i;
-      if (!$$6.c()) {
-         $$0.a();
-         this.a($$3, $$0);
-         $$6.a($$0, $$1, $$2, hej.d);
-         $$0.b();
-      }
+   public aku a(gzk $$0) {
+      return this.k;
    }
 
-   protected void a(S $$0, ffv $$1) {
-      this.d().a($$1);
-      $$1.a(a.b.rotation(0.75F));
-      $$1.b(1.07F, 1.07F, 1.07F);
-      $$1.a(0.0F, 0.13F, -0.34F);
-      $$1.a(a.b.rotation((float) Math.PI));
+   public gzk b() {
+      return new gzk();
    }
 }

@@ -1,38 +1,41 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.JavaOps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.BiFunction;
 
-public class eyg extends exf {
-   public static final Codec<wp> a = wr.a.validate($$0 -> czy.g.encodeStart(JavaOps.INSTANCE, $$0).map($$1 -> $$0));
-   public static final MapCodec<eyg> b = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and($$0.group(czy.a(a).fieldOf("pages").forGetter($$0x -> $$0x.c), exe.a.forGetter($$0x -> $$0x.d))).apply($$0, eyg::new)
+public class eyg implements eyc {
+   public static final MapCodec<eyg> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(eye.b.listOf().fieldOf("functions").forGetter($$0x -> $$0x.c)).apply($$0, eyg::new)
    );
-   private final List<arv<wp>> c;
-   private final exe d;
+   public static final Codec<eyg> b = eye.b.listOf().xmap(eyg::new, $$0 -> $$0.c);
+   private final List<eyc> c;
+   private final BiFunction<cxh, ewo, cxh> d;
 
-   protected eyg(List<ezb> $$0, List<arv<wp>> $$1, exe $$2) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
+   private eyg(List<eyc> $$0) {
+      this.c = $$0;
+      this.d = eye.a($$0);
+   }
+
+   public static eyg a(List<eyc> $$0) {
+      return new eyg(List.copyOf($$0));
+   }
+
+   public cxh a(cxh $$0, ewo $$1) {
+      return this.d.apply($$0, $$1);
    }
 
    @Override
-   protected cwq a(cwq $$0, evs $$1) {
-      $$0.a(kv.T, czy.a, this::a);
-      return $$0;
-   }
+   public void a(ewu $$0) {
+      eyc.super.a($$0);
 
-   @VisibleForTesting
-   public czy a(czy $$0) {
-      List<arv<wp>> $$1 = this.d.a($$0.a(), this.c);
-      return $$0.b($$1);
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".function[" + $$1 + "]"));
+      }
    }
 
    @Override
-   public exh<eyg> b() {
-      return exi.N;
+   public eyd<eyg> b() {
+      return eye.I;
    }
 }

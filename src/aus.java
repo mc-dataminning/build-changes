@@ -9,21 +9,21 @@ import java.util.Optional;
 public interface aus {
    aus b = $$0 -> Optional.empty();
 
-   Optional<aun> getResource(akv var1);
+   Optional<aun> getResource(aku var1);
 
-   default aun getResourceOrThrow(akv $$0) throws FileNotFoundException {
+   default aun getResourceOrThrow(aku $$0) throws FileNotFoundException {
       return this.getResource($$0).orElseThrow(() -> new FileNotFoundException($$0.toString()));
    }
 
-   default InputStream open(akv $$0) throws IOException {
+   default InputStream open(aku $$0) throws IOException {
       return this.getResourceOrThrow($$0).d();
    }
 
-   default BufferedReader openAsReader(akv $$0) throws IOException {
+   default BufferedReader openAsReader(aku $$0) throws IOException {
       return this.getResourceOrThrow($$0).e();
    }
 
-   static aus fromMap(Map<akv, aun> $$0) {
+   static aus fromMap(Map<aku, aun> $$0) {
       return $$1 -> Optional.ofNullable($$0.get($$1));
    }
 }

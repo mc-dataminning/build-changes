@@ -1,55 +1,26 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
 import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
 public class bci extends DataFix {
-   public bci(Schema $$0) {
-      super($$0, false);
+   public bci(Schema $$0, boolean $$1) {
+      super($$0, $$1);
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<String> $$1 = $$0.get("Name").asString().result();
+      if ($$1.equals(Optional.of("minecraft:cauldron"))) {
+         Dynamic<?> $$2 = $$0.get("Properties").orElseEmptyMap();
+         return $$2.get("level").asString("0").equals("0") ? $$0.remove("Properties") : $$0.set("Name", $$0.createString("minecraft:water_cauldron"));
+      } else {
+         return $$0;
+      }
    }
 
    protected TypeRewriteRule makeRule() {
-      OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> $$0 = DSL.typeFinder(
-         this.getInputSchema().getType(bhy.t)
-      );
-      Type<?> $$1 = this.getInputSchema().getType(bhy.B);
-      return TypeRewriteRule.seq(
-         this.a($$0, $$1, "minecraft:llama"),
-         new TypeRewriteRule[]{this.a($$0, $$1, "minecraft:trader_llama"), this.a($$0, $$1, "minecraft:mule"), this.a($$0, $$1, "minecraft:donkey")}
-      );
-   }
-
-   private TypeRewriteRule a(
-      OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> $$0, Type<?> $$1, String $$2
-   ) {
-      Type<?> $$3 = this.getInputSchema().getChoiceType(bhy.B, $$2);
-      OpticFinder<?> $$4 = DSL.namedChoice($$2, $$3);
-      OpticFinder<?> $$5 = $$3.findField("Items");
-      return this.fixTypeEverywhereTyped(
-         "Fix non-zero indexing in chest horse type " + $$2,
-         $$1,
-         $$3x -> $$3x.updateTyped(
-               $$4,
-               $$2xx -> $$2xx.updateTyped(
-                     $$5,
-                     $$1xxx -> $$1xxx.update(
-                           $$0,
-                           $$0xxxx -> $$0xxxx.mapSecond(
-                                 $$0xxxxx -> $$0xxxxx.mapSecond(
-                                       $$0xxxxxx -> $$0xxxxxx.mapSecond(
-                                             $$0xxxxxxx -> $$0xxxxxxx.update("Slot", $$0xxxxxxxx -> $$0xxxxxxxx.createByte((byte)($$0xxxxxxxx.asInt(2) - 2)))
-                                          )
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
+      return this.fixTypeEverywhereTyped("cauldron_rename_fix", this.getInputSchema().getType(bic.u), $$0 -> $$0.update(DSL.remainderFinder(), bci::a));
    }
 }

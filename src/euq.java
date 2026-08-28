@@ -1,52 +1,122 @@
-public class euq {
-   private static final int J = 12741452;
-   public static final jr<eup> a = a("player", "player", false, true);
-   public static final jr<eup> b = a("frame", "frame", true, true);
-   public static final jr<eup> c = a("red_marker", "red_marker", false, true);
-   public static final jr<eup> d = a("blue_marker", "blue_marker", false, true);
-   public static final jr<eup> e = a("target_x", "target_x", true, false);
-   public static final jr<eup> f = a("target_point", "target_point", true, false);
-   public static final jr<eup> g = a("player_off_map", "player_off_map", false, true);
-   public static final jr<eup> h = a("player_off_limits", "player_off_limits", false, true);
-   public static final jr<eup> i = a("mansion", "woodland_mansion", true, 5393476, false, true);
-   public static final jr<eup> j = a("monument", "ocean_monument", true, 3830373, false, true);
-   public static final jr<eup> k = a("banner_white", "white_banner", true, true);
-   public static final jr<eup> l = a("banner_orange", "orange_banner", true, true);
-   public static final jr<eup> m = a("banner_magenta", "magenta_banner", true, true);
-   public static final jr<eup> n = a("banner_light_blue", "light_blue_banner", true, true);
-   public static final jr<eup> o = a("banner_yellow", "yellow_banner", true, true);
-   public static final jr<eup> p = a("banner_lime", "lime_banner", true, true);
-   public static final jr<eup> q = a("banner_pink", "pink_banner", true, true);
-   public static final jr<eup> r = a("banner_gray", "gray_banner", true, true);
-   public static final jr<eup> s = a("banner_light_gray", "light_gray_banner", true, true);
-   public static final jr<eup> t = a("banner_cyan", "cyan_banner", true, true);
-   public static final jr<eup> u = a("banner_purple", "purple_banner", true, true);
-   public static final jr<eup> v = a("banner_blue", "blue_banner", true, true);
-   public static final jr<eup> w = a("banner_brown", "brown_banner", true, true);
-   public static final jr<eup> x = a("banner_green", "green_banner", true, true);
-   public static final jr<eup> y = a("banner_red", "red_banner", true, true);
-   public static final jr<eup> z = a("banner_black", "black_banner", true, true);
-   public static final jr<eup> A = a("red_x", "red_x", true, false);
-   public static final jr<eup> B = a("village_desert", "desert_village", true, ete.w.ak, false, true);
-   public static final jr<eup> C = a("village_plains", "plains_village", true, ete.w.ak, false, true);
-   public static final jr<eup> D = a("village_savanna", "savanna_village", true, ete.w.ak, false, true);
-   public static final jr<eup> E = a("village_snowy", "snowy_village", true, ete.w.ak, false, true);
-   public static final jr<eup> F = a("village_taiga", "taiga_village", true, ete.w.ak, false, true);
-   public static final jr<eup> G = a("jungle_temple", "jungle_temple", true, ete.w.ak, false, true);
-   public static final jr<eup> H = a("swamp_hut", "swamp_hut", true, ete.w.ak, false, true);
-   public static final jr<eup> I = a("trial_chambers", "trial_chambers", true, 12741452, false, true);
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-   public static jr<eup> a(ke<eup> $$0) {
-      return a;
+public class euq extends euj {
+   private final boolean a;
+   private final Long2ObjectMap<eun> l = new Long2ObjectOpenHashMap();
+
+   public euq(boolean $$0) {
+      this.a = $$0;
    }
 
-   private static jr<eup> a(String $$0, String $$1, boolean $$2, boolean $$3) {
-      return a($$0, $$1, $$2, -1, $$3, false);
+   @Override
+   public void a(dhm $$0, bwa $$1) {
+      super.a($$0, $$1);
+      this.l.clear();
    }
 
-   private static jr<eup> a(String $$0, String $$1, boolean $$2, int $$3, boolean $$4, boolean $$5) {
-      aku<eup> $$6 = aku.a(mc.aC, akv.b($$0));
-      eup $$7 = new eup(akv.b($$1), $$2, $$3, $$5, $$4);
-      return ke.b(mb.ar, $$6, $$7);
+   @Override
+   public void b() {
+      super.b();
+      this.l.clear();
+   }
+
+   @Override
+   public eui a() {
+      return this.c(ayz.a(this.c.cQ().a), ayz.a(this.c.cQ().b + 0.5), ayz.a(this.c.cQ().c));
+   }
+
+   @Override
+   public eur a(double $$0, double $$1, double $$2) {
+      return this.b($$0, $$1, $$2);
+   }
+
+   @Override
+   public int a(eui[] $$0, eui $$1) {
+      int $$2 = 0;
+      Map<jn, eui> $$3 = Maps.newEnumMap(jn.class);
+
+      for (jn $$4 : jn.values()) {
+         eui $$5 = this.a($$1.a + $$4.j(), $$1.b + $$4.k(), $$1.c + $$4.l());
+         $$3.put($$4, $$5);
+         if (this.a($$5)) {
+            $$0[$$2++] = $$5;
+         }
+      }
+
+      for (jn $$6 : jn.c.a) {
+         jn $$7 = $$6.h();
+         if (b($$3.get($$6)) && b($$3.get($$7))) {
+            eui $$8 = this.a($$1.a + $$6.j() + $$7.j(), $$1.b, $$1.c + $$6.l() + $$7.l());
+            if (this.a($$8)) {
+               $$0[$$2++] = $$8;
+            }
+         }
+      }
+
+      return $$2;
+   }
+
+   protected boolean a(@Nullable eui $$0) {
+      return $$0 != null && !$$0.i;
+   }
+
+   private static boolean b(@Nullable eui $$0) {
+      return $$0 != null && $$0.k >= 0.0F;
+   }
+
+   @Nullable
+   protected eui a(int $$0, int $$1, int $$2) {
+      eui $$3 = null;
+      eun $$4 = this.b($$0, $$1, $$2);
+      if (this.a && $$4 == eun.u || $$4 == eun.j) {
+         float $$5 = this.c.a($$4);
+         if ($$5 >= 0.0F) {
+            $$3 = this.c($$0, $$1, $$2);
+            $$3.l = $$4;
+            $$3.k = Math.max($$3.k, $$5);
+            if (this.b.a().b_(new ji($$0, $$1, $$2)).c()) {
+               $$3.k += 8.0F;
+            }
+         }
+      }
+
+      return $$3;
+   }
+
+   protected eun b(int $$0, int $$1, int $$2) {
+      return (eun)this.l.computeIfAbsent(ji.a($$0, $$1, $$2), $$3 -> this.a(this.b, $$0, $$1, $$2));
+   }
+
+   @Override
+   public eun a(eup $$0, int $$1, int $$2, int $$3) {
+      return this.a($$0, $$1, $$2, $$3, this.c);
+   }
+
+   @Override
+   public eun a(eup $$0, int $$1, int $$2, int $$3, bwa $$4) {
+      ji.a $$5 = new ji.a();
+
+      for (int $$6 = $$1; $$6 < $$1 + this.e; $$6++) {
+         for (int $$7 = $$2; $$7 < $$2 + this.f; $$7++) {
+            for (int $$8 = $$3; $$8 < $$3 + this.g; $$8++) {
+               dxq $$9 = $$0.a($$5.d($$6, $$7, $$8));
+               etw $$10 = $$9.y();
+               if ($$10.c() && $$9.a(eul.b) && $$9.l()) {
+                  return eun.u;
+               }
+
+               if (!$$10.a(awv.a)) {
+                  return eun.a;
+               }
+            }
+         }
+      }
+
+      dxq $$11 = $$0.a($$5);
+      return $$11.a(eul.b) ? eun.j : eun.a;
    }
 }

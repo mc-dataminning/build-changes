@@ -1,93 +1,26 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface edn {
-   Codec<edn> a = Codec.xor(edn.b.d, Codec.xor(edn.a.d, edn.c.d)).xmap(edn::a, edn::a);
-   edn b = b(0);
-   edn c = c(0);
+public class edn {
+   private static final Codec<Double> f = Codec.doubleRange(0.01, 50.0);
+   public static final Codec<edn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               f.fieldOf("filling").orElse(1.7).forGetter($$0x -> $$0x.b),
+               f.fieldOf("inner_layer").orElse(2.2).forGetter($$0x -> $$0x.c),
+               f.fieldOf("middle_layer").orElse(3.2).forGetter($$0x -> $$0x.d),
+               f.fieldOf("outer_layer").orElse(4.2).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, edn::new)
+   );
+   public final double b;
+   public final double c;
+   public final double d;
+   public final double e;
 
-   static edn a(int $$0) {
-      return new edn.b($$0);
-   }
-
-   static edn b(int $$0) {
-      return new edn.a($$0);
-   }
-
-   static edn c(int $$0) {
-      return new edn.c($$0);
-   }
-
-   static edn a() {
-      return b;
-   }
-
-   static edn b() {
-      return c;
-   }
-
-   private static edn a(Either<edn.b, Either<edn.a, edn.c>> $$0) {
-      return (edn)$$0.map(Function.identity(), Either::unwrap);
-   }
-
-   private static Either<edn.b, Either<edn.a, edn.c>> a(edn $$0) {
-      return $$0 instanceof edn.b ? Either.left((edn.b)$$0) : Either.right($$0 instanceof edn.a ? Either.left((edn.a)$$0) : Either.right((edn.c)$$0));
-   }
-
-   int a(edq var1);
-
-   public static record a(int e) implements edn {
-      public static final Codec<edn.a> d = Codec.intRange(eat.e, eat.d).fieldOf("above_bottom").xmap(edn.a::new, edn.a::c).codec();
-
-      @Override
-      public int a(edq $$0) {
-         return $$0.a() + this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " above bottom";
-      }
-
-      public int c() {
-         return this.e;
-      }
-   }
-
-   public static record b(int e) implements edn {
-      public static final Codec<edn.b> d = Codec.intRange(eat.e, eat.d).fieldOf("absolute").xmap(edn.b::new, edn.b::c).codec();
-
-      @Override
-      public int a(edq $$0) {
-         return this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " absolute";
-      }
-
-      public int c() {
-         return this.e;
-      }
-   }
-
-   public static record c(int e) implements edn {
-      public static final Codec<edn.c> d = Codec.intRange(eat.e, eat.d).fieldOf("below_top").xmap(edn.c::new, edn.c::c).codec();
-
-      @Override
-      public int a(edq $$0) {
-         return $$0.b() - 1 + $$0.a() - this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " below top";
-      }
-
-      public int c() {
-         return this.e;
-      }
+   public edn(double $$0, double $$1, double $$2, double $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 }

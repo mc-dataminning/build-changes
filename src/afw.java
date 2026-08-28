@@ -1,24 +1,67 @@
-public record afw(int b) implements yw<abl> {
-   public static final yn<vl, afw> a = yw.a(afw::a, afw::new);
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-   private afw(vl $$0) {
-      this($$0.l());
+public class afw implements yw<abl> {
+   public static final yn<wa, afw> a = yw.a(afw::a, afw::new);
+   private final boolean b;
+   private final List<ai> c;
+   private final Set<aku> d;
+   private final Map<aku, ak> e;
+   private final boolean f;
+
+   public afw(boolean $$0, Collection<ai> $$1, Set<aku> $$2, Map<aku, ak> $$3, boolean $$4) {
+      this.b = $$0;
+      this.c = List.copyOf($$1);
+      this.d = Set.copyOf($$2);
+      this.e = Map.copyOf($$3);
+      this.f = $$4;
    }
 
-   public static afw a(bsu $$0) {
-      return new afw($$0.k());
+   private afw(wa $$0) {
+      this.b = $$0.readBoolean();
+      this.c = ai.b.decode($$0);
+      this.d = $$0.a(Sets::newLinkedHashSetWithExpectedSize, vl::q);
+      this.e = $$0.a(vl::q, ak::b);
+      this.f = $$0.readBoolean();
    }
 
-   private void a(vl $$0) {
-      $$0.c(this.b);
+   private void a(wa $$0) {
+      $$0.a(this.b);
+      ai.b.encode($$0, this.c);
+      $$0.a(this.d, vl::a);
+      $$0.a(this.e, vl::a, ($$0x, $$1) -> $$1.a($$0x));
+      $$0.a(this.f);
    }
 
    @Override
    public yy<afw> a() {
-      return age.cp;
+      return agd.be;
    }
 
    public void a(abl $$0) {
       $$0.a(this);
+   }
+
+   public List<ai> b() {
+      return this.c;
+   }
+
+   public Set<aku> e() {
+      return this.d;
+   }
+
+   public Map<aku, ak> f() {
+      return this.e;
+   }
+
+   public boolean g() {
+      return this.b;
+   }
+
+   public boolean h() {
+      return this.f;
    }
 }

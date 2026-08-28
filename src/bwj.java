@@ -1,43 +1,65 @@
+import javax.annotation.Nullable;
+
 public class bwj {
-   private float a;
-   private float b;
-   private float c;
-   private float d = 1.0F;
+   private final dqb a;
+   private ji b;
+   private int c;
+   private boolean d;
 
-   public void a(float $$0) {
-      this.b = $$0;
+   public bwj(dqb $$0, ji $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = true;
    }
 
-   public void a(float $$0, float $$1, float $$2) {
-      this.a = this.b;
-      this.b = this.b + ($$0 - this.b) * $$1;
-      this.c = this.c + this.b;
-      this.d = $$2;
+   public boolean a(ard $$0, bva $$1, boolean $$2) {
+      if (!this.d) {
+         this.f();
+         return false;
+      } else {
+         this.d = false;
+         return $$2 && this.c++ >= this.a.a($$0, $$1);
+      }
    }
 
-   public void a() {
-      this.a = 0.0F;
-      this.b = 0.0F;
-      this.c = 0.0F;
+   @Nullable
+   public euw a(ard $$0, bva $$1) {
+      return this.a.a($$0, $$1, this.b);
    }
 
-   public float b() {
+   public dqb.a a() {
+      return this.a.b();
+   }
+
+   private void f() {
+      this.c = Math.max(this.c - 4, 0);
+   }
+
+   public boolean b() {
+      return this.c <= 0;
+   }
+
+   public ji c() {
       return this.b;
    }
 
-   public float b(float $$0) {
-      return Math.min(ayz.h($$0, this.a, this.b), 1.0F);
+   public void a(ji $$0) {
+      this.b = $$0;
    }
 
-   public float c() {
-      return this.c * this.d;
+   public int d() {
+      return this.c;
    }
 
-   public float c(float $$0) {
-      return (this.c - this.b * (1.0F - $$0)) * this.d;
+   public boolean e() {
+      return this.d;
    }
 
-   public boolean d() {
-      return this.b > 1.0E-5F;
+   public void a(boolean $$0) {
+      this.d = $$0;
+   }
+
+   public boolean a(dqb $$0) {
+      return this.a == $$0;
    }
 }

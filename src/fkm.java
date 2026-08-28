@@ -1,59 +1,40 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public abstract class fkm extends fki {
-   private static final Logger b = LogUtils.getLogger();
-   private final long c;
-   private final wp d;
-   private final Runnable e;
+public class fkm {
+   public final int a;
+   @Nullable
+   public final String b;
 
-   public fkm(long $$0, wp $$1, Runnable $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   fkm(int $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   protected abstract void a(fgl var1, long var2) throws fih;
-
-   @Override
-   public void run() {
-      fgl $$0 = fgl.a();
-      int $$1 = 0;
-
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            this.a($$0, this.c);
-            if (this.d()) {
-               return;
-            }
-
-            this.e.run();
-            return;
-         } catch (fii var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't reset world");
-            this.a(var5);
-            return;
-         }
+   @Nullable
+   public String a() {
+      if (this.a >= 200 && this.a < 300) {
+         return null;
+      } else {
+         return this.a == 400 && this.b != null ? this.b : String.valueOf(this.a);
       }
    }
 
-   @Override
-   public wp a() {
-      return this.d;
+   public static class a {
+      private int a = -1;
+      private String b;
+
+      public fkm.a a(int $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public fkm.a a(@Nullable String $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public fkm a() {
+         return new fkm(this.a, this.b);
+      }
    }
 }

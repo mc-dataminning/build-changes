@@ -1,38 +1,59 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ecq {
-   public final eke a;
-   public final eke b;
-   public final eke c;
-   public final eke d;
-   public final eke e;
-   public final List<dwy> f;
-   public final axf<djn> g;
-   public final axf<djn> h;
-   public static final Codec<ecq> i = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eke.a.fieldOf("filling_provider").forGetter($$0x -> $$0x.a),
-               eke.a.fieldOf("inner_layer_provider").forGetter($$0x -> $$0x.b),
-               eke.a.fieldOf("alternate_inner_layer_provider").forGetter($$0x -> $$0x.c),
-               eke.a.fieldOf("middle_layer_provider").forGetter($$0x -> $$0x.d),
-               eke.a.fieldOf("outer_layer_provider").forGetter($$0x -> $$0x.e),
-               ayi.b(dwy.a.listOf()).fieldOf("inner_placements").forGetter($$0x -> $$0x.f),
-               axf.b(mc.f).fieldOf("cannot_replace").forGetter($$0x -> $$0x.g),
-               axf.b(mc.f).fieldOf("invalid_blocks").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, ecq::new)
-   );
+   private final ard a;
 
-   public ecq(eke $$0, eke $$1, eke $$2, eke $$3, eke $$4, List<dwy> $$5, axf<djn> $$6, axf<djn> $$7) {
+   public ecq(ard $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
+   }
+
+   public void a(jr<ecp> $$0, fbx $$1, ecp.a $$2) {
+      int $$3 = $$0.a().a();
+      ji $$4 = ji.a((kb)$$1);
+      int $$5 = kk.a($$4.u() - $$3);
+      int $$6 = kk.a($$4.v() - $$3);
+      int $$7 = kk.a($$4.w() - $$3);
+      int $$8 = kk.a($$4.u() + $$3);
+      int $$9 = kk.a($$4.v() + $$3);
+      int $$10 = kk.a($$4.w() + $$3);
+      List<ecp.b> $$11 = new ArrayList<>();
+      ecs.a $$12 = ($$4x, $$5x) -> {
+         if ($$4x.c() == ecr.a.b) {
+            $$11.add(new ecp.b($$0, $$1, $$2, $$4x, $$5x));
+         } else {
+            $$4x.a(this.a, $$0, $$2, $$1);
+         }
+      };
+      boolean $$13 = false;
+
+      for (int $$14 = $$5; $$14 <= $$8; $$14++) {
+         for (int $$15 = $$7; $$15 <= $$10; $$15++) {
+            dzm $$16 = this.a.m().a($$14, $$15);
+            if ($$16 != null) {
+               for (int $$17 = $$6; $$17 <= $$9; $$17++) {
+                  $$13 |= $$16.a($$17).a($$0, $$1, $$2, $$12);
+               }
+            }
+         }
+      }
+
+      if (!$$11.isEmpty()) {
+         this.a($$11);
+      }
+
+      if ($$13) {
+         agc.a(this.a, $$0, $$1);
+      }
+   }
+
+   private void a(List<ecp.b> $$0) {
+      Collections.sort($$0);
+
+      for (ecp.b $$1 : $$0) {
+         ecr $$2 = $$1.d();
+         $$2.a(this.a, $$1.a(), $$1.c(), $$1.b());
+      }
    }
 }

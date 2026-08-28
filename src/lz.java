@@ -4,26 +4,26 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 public class lz implements lr {
-   private static final Codec<eby> c = eby.c
-      .validate($$0 -> $$0 instanceof ebs ? DataResult.error(() -> "Entity position sources are not allowed") : DataResult.success($$0));
+   private static final Codec<ect> c = ect.c
+      .validate($$0 -> $$0 instanceof ecn ? DataResult.error(() -> "Entity position sources are not allowed") : DataResult.success($$0));
    public static final MapCodec<lz> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(c.fieldOf("destination").forGetter(lz::b), Codec.INT.fieldOf("arrival_in_ticks").forGetter(lz::c)).apply($$0, lz::new)
    );
-   public static final yn<wa, lz> b = yn.a(eby.d, lz::b, yl.h, lz::c, lz::new);
-   private final eby d;
+   public static final yn<wa, lz> b = yn.a(ect.d, lz::b, yl.h, lz::c, lz::new);
+   private final ect d;
    private final int e;
 
-   public lz(eby $$0, int $$1) {
+   public lz(ect $$0, int $$1) {
       this.d = $$0;
       this.e = $$1;
    }
 
    @Override
    public ls<lz> a() {
-      return lt.U;
+      return lt.V;
    }
 
-   public eby b() {
+   public ect b() {
       return this.d;
    }
 

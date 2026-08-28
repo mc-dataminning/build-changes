@@ -1,45 +1,18 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class efh extends efz<ehv> {
-   public efh(Codec<ehv> $$0) {
-      super($$0);
+class efh implements eev {
+   public static efh a = new efh();
+   public static final MapCodec<efh> e = MapCodec.unit(() -> a);
+
+   private efh() {
+   }
+
+   public boolean a(dhy $$0, ji $$1) {
+      return true;
    }
 
    @Override
-   public boolean a(egb<ehv> $$0) {
-      ji $$1 = $$0.e();
-      dhh $$2 = $$0.b();
-      azh $$3 = $$0.d();
-      ehv $$4 = $$0.f();
-      if ($$1.v() < $$2.L_() + 5) {
-         return false;
-      } else {
-         int $$5 = 2 + $$3.a(2);
-         int $$6 = 2 + $$3.a(2);
-
-         for (ji $$7 : ji.c($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
-            int $$8 = $$1.u() - $$7.u();
-            int $$9 = $$1.w() - $$7.w();
-            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
-               this.a($$2, $$7, $$3, $$4);
-            } else if ((double)$$3.i() < 0.031) {
-               this.a($$2, $$7, $$3, $$4);
-            }
-         }
-
-         return true;
-      }
-   }
-
-   private boolean a(dgk $$0, ji $$1, azh $$2) {
-      ji $$3 = $$1.e();
-      dwy $$4 = $$0.a_($$3);
-      return $$4.a(djp.lg) ? $$2.h() : $$4.c($$0, $$3, jn.b);
-   }
-
-   private void a(dgk $$0, ji $$1, azh $$2, ehv $$3) {
-      if ($$0.u($$1) && this.a($$0, $$1, $$2)) {
-         $$0.a($$1, $$3.b.a($$2, $$1), 4);
-      }
+   public eew<?> a() {
+      return eew.l;
    }
 }

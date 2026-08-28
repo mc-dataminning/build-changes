@@ -1,59 +1,49 @@
 import javax.annotation.Nullable;
 
-public class ckb extends cjy {
-   @Nullable
-   private fbb b;
-   private int c;
-
-   public ckb(cjw $$0) {
-      super($$0);
+public class ckb extends cjv {
+   public ckb(bvi<? extends ckb> $$0, dgz $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public void b() {
-      if (this.c++ % 10 == 0) {
-         float $$0 = (this.a.dY().i() - 0.5F) * 8.0F;
-         float $$1 = (this.a.dY().i() - 0.5F) * 4.0F;
-         float $$2 = (this.a.dY().i() - 0.5F) * 8.0F;
-         this.a.dV().a(lt.v, this.a.dA() + (double)$$0, this.a.dC() + 2.0 + (double)$$1, this.a.dG() + (double)$$2, 0.0, 0.0, 0.0);
-      }
+   protected avz u() {
+      return awa.qf;
    }
 
    @Override
-   public void a(ard $$0) {
-      this.c++;
-      if (this.b == null) {
-         ji $$1 = $$0.a(ect.a.e, efy.a(this.a.m()));
-         this.b = fbb.c($$1);
-      }
-
-      double $$2 = this.b.c(this.a.dA(), this.a.dC(), this.a.dG());
-      if (!($$2 < 100.0) && !($$2 > 22500.0) && !this.a.P && !this.a.Q) {
-         this.a.x(1.0F);
-      } else {
-         this.a.x(0.0F);
-      }
+   protected avz gT() {
+      return awa.qg;
    }
 
    @Override
-   public void c() {
-      this.b = null;
-      this.c = 0;
-   }
-
-   @Override
-   public float e() {
-      return 3.0F;
+   protected avz l_() {
+      return awa.qi;
    }
 
    @Nullable
    @Override
-   public fbb f() {
-      return this.b;
+   protected avz gu() {
+      return awa.qj;
    }
 
    @Override
-   public ckm<ckb> h() {
-      return ckm.j;
+   protected avz e(btp $$0) {
+      return awa.qk;
+   }
+
+   @Override
+   protected void ha() {
+      this.a(awa.ql, 0.4F, 1.0F);
+   }
+
+   @Override
+   protected void x() {
+      this.a(awa.qh, 1.0F, (this.ae.i() - this.ae.i()) * 0.2F + 1.0F);
+   }
+
+   @Nullable
+   @Override
+   public buq a(ard $$0, buq $$1) {
+      return bvi.aF.a($$0, bvh.e);
    }
 }

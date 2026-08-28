@@ -1,143 +1,65 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
 
 public class etm {
-   public final int a;
-   public final int b;
-   public final int c;
-   private final int m;
-   public int d = -1;
-   public float e;
-   public float f;
-   public float g;
-   @Nullable
-   public etm h;
-   public boolean i;
-   public float j;
-   public float k;
-   public etr l = etr.a;
+   private final int a;
+   private final LongLinkedOpenHashSet[] b;
+   private int c;
 
-   public etm(int $$0, int $$1, int $$2) {
+   public etm(int $$0, final int $$1) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.m = b($$0, $$1, $$2);
+      this.b = new LongLinkedOpenHashSet[$$0];
+
+      for (int $$2 = 0; $$2 < $$0; $$2++) {
+         this.b[$$2] = new LongLinkedOpenHashSet($$1, 0.5F) {
+            protected void rehash(int $$0) {
+               if ($$0 > $$1) {
+                  super.rehash($$0);
+               }
+            }
+         };
+      }
+
+      this.c = $$0;
    }
 
-   public etm a(int $$0, int $$1, int $$2) {
-      etm $$3 = new etm($$0, $$1, $$2);
-      $$3.d = this.d;
-      $$3.e = this.e;
-      $$3.f = this.f;
-      $$3.g = this.g;
-      $$3.h = this.h;
-      $$3.i = this.i;
-      $$3.j = this.j;
-      $$3.k = this.k;
-      $$3.l = this.l;
-      return $$3;
-   }
+   public long a() {
+      LongLinkedOpenHashSet $$0 = this.b[this.c];
+      long $$1 = $$0.removeFirstLong();
+      if ($$0.isEmpty()) {
+         this.a(this.a);
+      }
 
-   public static int b(int $$0, int $$1, int $$2) {
-      return $$1 & 0xFF | ($$0 & 32767) << 8 | ($$2 & 32767) << 24 | ($$0 < 0 ? Integer.MIN_VALUE : 0) | ($$2 < 0 ? 32768 : 0);
-   }
-
-   public float a(etm $$0) {
-      float $$1 = (float)($$0.a - this.a);
-      float $$2 = (float)($$0.b - this.b);
-      float $$3 = (float)($$0.c - this.c);
-      return ayz.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
-   }
-
-   public float b(etm $$0) {
-      float $$1 = (float)($$0.a - this.a);
-      float $$2 = (float)($$0.c - this.c);
-      return ayz.c($$1 * $$1 + $$2 * $$2);
-   }
-
-   public float a(ji $$0) {
-      float $$1 = (float)($$0.u() - this.a);
-      float $$2 = (float)($$0.v() - this.b);
-      float $$3 = (float)($$0.w() - this.c);
-      return ayz.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
-   }
-
-   public float c(etm $$0) {
-      float $$1 = (float)($$0.a - this.a);
-      float $$2 = (float)($$0.b - this.b);
-      float $$3 = (float)($$0.c - this.c);
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
-   }
-
-   public float b(ji $$0) {
-      float $$1 = (float)($$0.u() - this.a);
-      float $$2 = (float)($$0.v() - this.b);
-      float $$3 = (float)($$0.w() - this.c);
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
-   }
-
-   public float d(etm $$0) {
-      float $$1 = (float)Math.abs($$0.a - this.a);
-      float $$2 = (float)Math.abs($$0.b - this.b);
-      float $$3 = (float)Math.abs($$0.c - this.c);
-      return $$1 + $$2 + $$3;
-   }
-
-   public float c(ji $$0) {
-      float $$1 = (float)Math.abs($$0.u() - this.a);
-      float $$2 = (float)Math.abs($$0.v() - this.b);
-      float $$3 = (float)Math.abs($$0.w() - this.c);
-      return $$1 + $$2 + $$3;
-   }
-
-   public ji a() {
-      return new ji(this.a, this.b, this.c);
-   }
-
-   public fbb b() {
-      return new fbb((double)this.a, (double)this.b, (double)this.c);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return !($$0 instanceof etm $$1) ? false : this.m == $$1.m && this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
-   }
-
-   @Override
-   public int hashCode() {
-      return this.m;
-   }
-
-   public boolean c() {
-      return this.d >= 0;
-   }
-
-   @Override
-   public String toString() {
-      return "Node{x=" + this.a + ", y=" + this.b + ", z=" + this.c + "}";
-   }
-
-   public void a(vl $$0) {
-      $$0.q(this.a);
-      $$0.q(this.b);
-      $$0.q(this.c);
-      $$0.a(this.j);
-      $$0.a(this.k);
-      $$0.a(this.i);
-      $$0.a(this.l);
-      $$0.a(this.g);
-   }
-
-   public static etm b(vl $$0) {
-      etm $$1 = new etm($$0.readInt(), $$0.readInt(), $$0.readInt());
-      a($$0, $$1);
       return $$1;
    }
 
-   protected static void a(vl $$0, etm $$1) {
-      $$1.j = $$0.readFloat();
-      $$1.k = $$0.readFloat();
-      $$1.i = $$0.readBoolean();
-      $$1.l = $$0.b(etr.class);
-      $$1.g = $$0.readFloat();
+   public boolean b() {
+      return this.c >= this.a;
+   }
+
+   public void a(long $$0, int $$1, int $$2) {
+      LongLinkedOpenHashSet $$3 = this.b[$$1];
+      $$3.remove($$0);
+      if ($$3.isEmpty() && this.c == $$1) {
+         this.a($$2);
+      }
+   }
+
+   public void a(long $$0, int $$1) {
+      this.b[$$1].add($$0);
+      if (this.c > $$1) {
+         this.c = $$1;
+      }
+   }
+
+   private void a(int $$0) {
+      int $$1 = this.c;
+      this.c = $$0;
+
+      for (int $$2 = $$1 + 1; $$2 < $$0; $$2++) {
+         if (!this.b[$$2].isEmpty()) {
+            this.c = $$2;
+            break;
+         }
+      }
    }
 }

@@ -1,49 +1,67 @@
-public class gie extends gki {
-   gie(gga $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
+import java.util.Locale;
+import javax.annotation.Nullable;
+
+public record gie(String a, @Nullable gie.a b) {
+   public static gie a() {
+      return a(null);
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
-      } else {
-         this.k += 0.002;
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.85F;
-         this.k *= 0.85F;
-         this.l *= 0.85F;
-         if (!this.c.b_(ji.a(this.g, this.h, this.i)).a(awv.a)) {
-            this.k();
+   public static gie a(String $$0) {
+      return a(new gie.a.b($$0));
+   }
+
+   public static gie a(fii $$0) {
+      return a(new gie.a.a($$0));
+   }
+
+   public static gie a(@Nullable gie.a $$0) {
+      return new gie(g(), $$0);
+   }
+
+   public ClientInfo b() {
+      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
+   }
+
+   @Nullable
+   public ThirdPartyServerInfo c() {
+      return this.b instanceof gie.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
+   }
+
+   @Nullable
+   public RealmInfo d() {
+      return this.b instanceof gie.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
+   }
+
+   private static String g() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append("25w02a");
+      if (fmg.e().a()) {
+         $$0.append(" (modded)");
+      }
+
+      return $$0.toString();
+   }
+
+   public String e() {
+      return this.a;
+   }
+
+   @Nullable
+   public gie.a f() {
+      return this.b;
+   }
+
+   public interface a {
+      public static record a(long a, int b) implements gie.a {
+         public a(fii $$0) {
+            this($$0.a, $$0.p);
          }
       }
-   }
 
-   @Override
-   public gjm b() {
-      return gjm.b;
-   }
-
-   public static class a implements gjl<lx> {
-      private final gkd a;
-
-      public a(gkd $$0) {
-         this.a = $$0;
-      }
-
-      public gji a(lx $$0, gga $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gie $$8 = new gie($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      public static record b(String a) implements gie.a {
       }
    }
 }

@@ -1,104 +1,43 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
+import java.util.function.Function;
 
-public class cad extends bxb<coj> {
-   private static final int c = 80;
-   private long d;
-   private long e;
-   private int f;
-   private Optional<ji> g = Optional.empty();
-
-   public cad() {
-      super(ImmutableMap.of(cem.n, cen.b, cem.m, cen.b));
+public class cad {
+   public static <E extends bwa> bxs<E> a(cad.b<E> $$0) {
+      return a(($$0x, $$1) -> true, $$0);
    }
 
-   protected boolean a(ard $$0, coj $$1) {
-      if ($$1.af % 10 == 0 && (this.e == 0L || this.e + 160L <= (long)$$1.af)) {
-         if ($$1.t().a_(cwu.sv) <= 0) {
-            return false;
-         } else {
-            this.g = this.b($$0, $$1);
-            return this.g.isPresent();
-         }
-      } else {
-         return false;
-      }
-   }
-
-   protected boolean a(ard $$0, coj $$1, long $$2) {
-      return this.f < 80 && this.g.isPresent();
-   }
-
-   private Optional<ji> b(ard $$0, coj $$1) {
-      ji.a $$2 = new ji.a();
-      Optional<ji> $$3 = Optional.empty();
-      int $$4 = 0;
-
-      for (int $$5 = -1; $$5 <= 1; $$5++) {
-         for (int $$6 = -1; $$6 <= 1; $$6++) {
-            for (int $$7 = -1; $$7 <= 1; $$7++) {
-               $$2.a($$1.dv(), $$5, $$6, $$7);
-               if (this.a($$2, $$0)) {
-                  if ($$0.A.a(++$$4) == 0) {
-                     $$3 = Optional.of($$2.j());
+   public static <E extends bwa> bxs<E> a(cad.a<E> $$0, cad.b<E> $$1) {
+      return cbe.a(
+         (Function<cbe.b<E>, ? extends App<cbe.c<E>, cbh<E>>>)($$2 -> $$2.group($$2.c(cfc.o), $$2.a(cfc.E)).apply($$2, ($$2x, $$3) -> ($$4, $$5, $$6) -> {
+                  if (!$$0.test($$4, (E)$$5)) {
+                     return false;
+                  } else {
+                     Optional<? extends bvy> $$7 = $$1.get($$4, (E)$$5);
+                     if ($$7.isEmpty()) {
+                        return false;
+                     } else {
+                        bvy $$8 = $$7.get();
+                        if (!$$5.c($$8)) {
+                           return false;
+                        } else {
+                           $$2x.a($$8);
+                           $$3.b();
+                           return true;
+                        }
+                     }
                   }
-               }
-            }
-         }
-      }
-
-      return $$3;
+               }))
+      );
    }
 
-   private boolean a(ji $$0, ard $$1) {
-      dwy $$2 = $$1.a_($$0);
-      djn $$3 = $$2.b();
-      return $$3 instanceof dlj && !((dlj)$$3).i($$2);
+   @FunctionalInterface
+   public interface a<E> {
+      boolean test(ard var1, E var2);
    }
 
-   protected void b(ard $$0, coj $$1, long $$2) {
-      this.a($$1);
-      $$1.a(buu.a, new cwq(cwu.sv));
-      this.d = $$2;
-      this.f = 0;
-   }
-
-   private void a(coj $$0) {
-      this.g.ifPresent($$1 -> {
-         bxe $$2 = new bxe($$1);
-         $$0.eb().a(cem.n, $$2);
-         $$0.eb().a(cem.m, new cep($$2, 0.5F, 1));
-      });
-   }
-
-   protected void c(ard $$0, coj $$1, long $$2) {
-      $$1.a(buu.a, cwq.j);
-      this.e = (long)$$1.af;
-   }
-
-   protected void d(ard $$0, coj $$1, long $$2) {
-      ji $$3 = this.g.get();
-      if ($$2 >= this.d && $$3.a($$1.dt(), 1.0)) {
-         cwq $$4 = cwq.j;
-         bss $$5 = $$1.t();
-         int $$6 = $$5.b();
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            cwq $$8 = $$5.a($$7);
-            if ($$8.a(cwu.sv)) {
-               $$4 = $$8;
-               break;
-            }
-         }
-
-         if (!$$4.f() && cuy.a($$4, $$0, $$3)) {
-            $$0.c(1505, $$3, 15);
-            this.g = this.b($$0, $$1);
-            this.a($$1);
-            this.d = $$2 + 40L;
-         }
-
-         this.f++;
-      }
+   @FunctionalInterface
+   public interface b<E> {
+      Optional<? extends bvy> get(ard var1, E var2);
    }
 }

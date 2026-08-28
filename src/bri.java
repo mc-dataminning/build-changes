@@ -1,52 +1,30 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public class bri extends brq {
-   public static final MapCodec<bri> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
-               .apply($$0, bri::new)
-      )
-      .validate(
-         $$0 -> $$0.f < $$0.b
-               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
-               : DataResult.success($$0)
-      );
-   private final int b;
-   private final int f;
+public record bri<T>(T a, int b) {
+   private static final Logger c = LogUtils.getLogger();
 
-   private bri(int $$0, int $$1) {
-      this.b = $$0;
-      this.f = $$1;
+   public bri(T a, int b) {
+      if (b < 0) {
+         throw (IllegalArgumentException)af.b(new IllegalArgumentException("Weight should be >= 0"));
+      } else {
+         if (b == 0 && ab.aU) {
+            c.warn("Found 0 weight, make sure this is intentional!");
+         }
+
+         this.a = a;
+         this.b = b;
+      }
    }
 
-   public static bri a(int $$0, int $$1) {
-      return new bri($$0, $$1);
+   public static <E> Codec<bri<E>> a(Codec<E> $$0) {
+      return a($$0.fieldOf("data"));
    }
 
-   @Override
-   public int a(azh $$0) {
-      return this.b + $$0.a($$0.a(this.f - this.b + 1) + 1);
-   }
-
-   @Override
-   public int a() {
-      return this.b;
-   }
-
-   @Override
-   public int b() {
-      return this.f;
-   }
-
-   @Override
-   public brr<?> c() {
-      return brr.c;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.b + "-" + this.f + "]";
+   public static <E> Codec<bri<E>> a(MapCodec<E> $$0) {
+      return RecordCodecBuilder.create($$1 -> $$1.group($$0.forGetter(bri::a), ayi.l.fieldOf("weight").forGetter(bri::b)).apply($$1, bri::new));
    }
 }

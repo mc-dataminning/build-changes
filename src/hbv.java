@@ -1,16 +1,10 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
-
-public record hbv() implements hby {
-   public static final MapCodec<hbv> a = MapCodec.unit(new hbv());
-
-   @Override
-   public boolean a(cwq $$0, @Nullable gga $$1, @Nullable bvi $$2, int $$3, cwo $$4) {
-      return $$0.r();
-   }
-
-   @Override
-   public MapCodec<hbv> a() {
-      return a;
-   }
+public class hbv extends haj {
+   public float a;
+   public float b;
+   public final bur c = new bur();
+   public final bur d = new bur();
+   public final bur e = new bur();
+   public final bur f = new bur();
+   public final bur g = new bur();
+   public final bur h = new bur();
 }

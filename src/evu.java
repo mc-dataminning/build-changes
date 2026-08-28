@@ -1,41 +1,30 @@
-import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+public class evu {
+   private final int b;
+   private final String c;
+   public static String a = "main";
 
-public record evu<T>(aku<ke<T>> d, Codec<T> e, evu.a<T> f) {
-   public static final evu<ezb> a = new evu<>(mc.bi, ezb.e, e());
-   public static final evu<exg> b = new evu<>(mc.bh, exi.c, e());
-   public static final evu<evx> c = new evu<>(mc.bg, evx.d, f());
-
-   public void a(evy $$0, aku<T> $$1, T $$2) {
-      this.f.run($$0, $$1, $$2);
+   public evu(int $$0) {
+      this($$0, a);
    }
 
-   public static Stream<evu<?>> a() {
-      return Stream.of(a, b, c);
+   public evu(int $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private static <T extends evt> evu.a<T> e() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
+   public boolean a() {
+      return !this.c.equals(a);
    }
 
-   private static evu.a<evx> f() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
+   public String b() {
+      return this.c;
    }
 
-   public aku<ke<T>> b() {
-      return this.d;
+   public int c() {
+      return this.b;
    }
 
-   public Codec<T> c() {
-      return this.e;
-   }
-
-   public evu.a<T> d() {
-      return this.f;
-   }
-
-   @FunctionalInterface
-   public interface a<T> {
-      void run(evy var1, aku<T> var2, T var3);
+   public boolean a(evu $$0) {
+      return this.b().equals($$0.b());
    }
 }

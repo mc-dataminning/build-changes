@@ -1,16 +1,21 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public record hdb() implements hdj<aku<dgj>> {
-   public static final hdj.a<hdb, aku<dgj>> a = hdj.a.a(MapCodec.unit(new hdb()), aku.a(mc.be));
+public record hdb(ku<?> b, boolean c) implements hcw {
+   public static final MapCodec<hdb> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(mb.ao.q().fieldOf("component").forGetter(hdb::b), Codec.BOOL.optionalFieldOf("ignore_default", false).forGetter(hdb::c))
+            .apply($$0, hdb::new)
+   );
 
-   @Nullable
-   public aku<dgj> a(cwq $$0, @Nullable gga $$1, @Nullable bvi $$2, int $$3, cwo $$4) {
-      return $$1 != null ? $$1.ai() : null;
+   @Override
+   public boolean a(cxh $$0, @Nullable ggy $$1, @Nullable bvy $$2, int $$3, cxf $$4) {
+      return this.c ? $$0.c(this.b) : $$0.b(this.b);
    }
 
    @Override
-   public hdj.a<hdb, aku<dgj>> a() {
+   public MapCodec<hdb> a() {
       return a;
    }
 }

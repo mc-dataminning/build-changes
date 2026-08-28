@@ -1,151 +1,183 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
 public class agd {
-   private static final Logger a = LogUtils.getLogger();
+   public static final yy<abw> a = a("bundle");
+   public static final yy<abv> b = a("bundle_delimiter");
+   public static final yy<abm> c = a("add_entity");
+   public static final yy<abn> d = a("animate");
+   public static final yy<abo> e = a("award_stats");
+   public static final yy<abp> f = a("block_changed_ack");
+   public static final yy<abq> g = a("block_destruction");
+   public static final yy<abr> h = a("block_entity_data");
+   public static final yy<abs> i = a("block_event");
+   public static final yy<abt> j = a("block_update");
+   public static final yy<abu> k = a("boss_event");
+   public static final yy<abx> l = a("change_difficulty");
+   public static final yy<aby> m = a("chunk_batch_finished");
+   public static final yy<abz> n = a("chunk_batch_start");
+   public static final yy<aca> o = a("chunks_biomes");
+   public static final yy<acb> p = a("clear_titles");
+   public static final yy<acc> q = a("command_suggestions");
+   public static final yy<acd> r = a("commands");
+   public static final yy<ace> s = a("container_close");
+   public static final yy<acf> t = a("container_set_content");
+   public static final yy<acg> u = a("container_set_data");
+   public static final yy<ach> v = a("container_set_slot");
+   public static final yy<aci> w = a("cooldown");
+   public static final yy<acj> x = a("custom_chat_completions");
+   public static final yy<ack> y = a("damage_event");
+   public static final yy<acl> z = a("debug_sample");
+   public static final yy<acm> A = a("delete_chat");
+   public static final yy<acn> B = a("disguised_chat");
+   public static final yy<aco> C = a("entity_event");
+   public static final yy<acq> D = a("explode");
+   public static final yy<acr> E = a("forget_level_chunk");
+   public static final yy<acs> F = a("game_event");
+   public static final yy<act> G = a("horse_screen_open");
+   public static final yy<acu> H = a("hurt_animation");
+   public static final yy<acv> I = a("initialize_border");
+   public static final yy<acx> J = a("level_chunk_with_light");
+   public static final yy<acy> K = a("level_event");
+   public static final yy<acz> L = a("level_particles");
+   public static final yy<ada> M = a("light_update");
+   public static final yy<adc> N = a("login");
+   public static final yy<add> O = a("map_item_data");
+   public static final yy<ade> P = a("merchant_offers");
+   public static final yy<adf.a> Q = a("move_entity_pos");
+   public static final yy<adf.b> R = a("move_entity_pos_rot");
+   public static final yy<adg> S = a("move_minecart_along_track");
+   public static final yy<adf.c> T = a("move_entity_rot");
+   public static final yy<adh> U = a("move_vehicle");
+   public static final yy<adi> V = a("open_book");
+   public static final yy<adj> W = a("open_screen");
+   public static final yy<adk> X = a("open_sign_editor");
+   public static final yy<adl> Y = a("place_ghost_recipe");
+   public static final yy<adm> Z = a("player_abilities");
+   public static final yy<adn> aa = a("player_chat");
+   public static final yy<ado> ab = a("player_combat_end");
+   public static final yy<adp> ac = a("player_combat_enter");
+   public static final yy<adq> ad = a("player_combat_kill");
+   public static final yy<adr> ae = a("player_info_remove");
+   public static final yy<ads> af = a("player_info_update");
+   public static final yy<adt> ag = a("player_look_at");
+   public static final yy<adu> ah = a("player_position");
+   public static final yy<adv> ai = a("player_rotation");
+   public static final yy<adx> aj = a("recipe_book_add");
+   public static final yy<ady> ak = a("recipe_book_remove");
+   public static final yy<adz> al = a("recipe_book_settings");
+   public static final yy<aea> am = a("remove_entities");
+   public static final yy<aeb> an = a("remove_mob_effect");
+   public static final yy<aed> ao = a("respawn");
+   public static final yy<aee> ap = a("rotate_head");
+   public static final yy<aef> aq = a("section_blocks_update");
+   public static final yy<aeg> ar = a("select_advancements_tab");
+   public static final yy<aeh> as = a("server_data");
+   public static final yy<aei> at = a("set_action_bar_text");
+   public static final yy<aej> au = a("set_border_center");
+   public static final yy<aek> av = a("set_border_lerp_size");
+   public static final yy<ael> aw = a("set_border_size");
+   public static final yy<aem> ax = a("set_border_warning_delay");
+   public static final yy<aen> ay = a("set_border_warning_distance");
+   public static final yy<aeo> az = a("set_camera");
+   public static final yy<aep> aA = a("set_chunk_cache_center");
+   public static final yy<aeq> aB = a("set_chunk_cache_radius");
+   public static final yy<aes> aC = a("set_default_spawn_position");
+   public static final yy<aet> aD = a("set_display_objective");
+   public static final yy<aeu> aE = a("set_entity_data");
+   public static final yy<aev> aF = a("set_entity_link");
+   public static final yy<aew> aG = a("set_entity_motion");
+   public static final yy<aex> aH = a("set_equipment");
+   public static final yy<aey> aI = a("set_experience");
+   public static final yy<aez> aJ = a("set_health");
+   public static final yy<afa> aK = a("set_held_slot");
+   public static final yy<afb> aL = a("set_objective");
+   public static final yy<afc> aM = a("set_passengers");
+   public static final yy<afe> aN = a("set_player_team");
+   public static final yy<aff> aO = a("set_score");
+   public static final yy<afg> aP = a("set_simulation_distance");
+   public static final yy<afh> aQ = a("set_subtitle_text");
+   public static final yy<afi> aR = a("set_time");
+   public static final yy<afj> aS = a("set_title_text");
+   public static final yy<afk> aT = a("set_titles_animation");
+   public static final yy<afl> aU = a("sound_entity");
+   public static final yy<afm> aV = a("sound");
+   public static final yy<afn> aW = a("start_configuration");
+   public static final yy<afo> aX = a("stop_sound");
+   public static final yy<afp> aY = a("system_chat");
+   public static final yy<afq> aZ = a("tab_list");
+   public static final yy<afr> ba = a("tag_query");
+   public static final yy<afs> bb = a("take_item_entity");
+   public static final yy<aft> bc = a("teleport_entity");
+   public static final yy<acp> bd = a("entity_position_sync");
+   public static final yy<afw> be = a("update_advancements");
+   public static final yy<afx> bf = a("update_attributes");
+   public static final yy<afy> bg = a("update_mob_effect");
+   public static final yy<afz> bh = a("update_recipes");
+   public static final yy<adw> bi = a("projectile_power");
+   public static final yy<agh> bj = b("accept_teleportation");
+   public static final yy<agi> bk = b("block_entity_tag_query");
+   public static final yy<aht> bl = b("bundle_item_selected");
+   public static final yy<agj> bm = b("change_difficulty");
+   public static final yy<agk> bn = b("chat_ack");
+   public static final yy<agl> bo = b("chat_command");
+   public static final yy<agm> bp = b("chat_command_signed");
+   public static final yy<agn> bq = b("chat");
+   public static final yy<ago> br = b("chat_session_update");
+   public static final yy<agp> bs = b("chunk_batch_received");
+   public static final yy<agq> bt = b("client_command");
+   public static final yy<agr> bu = b("client_tick_end");
+   public static final yy<ags> bv = b("command_suggestion");
+   public static final yy<agt> bw = b("configuration_acknowledged");
+   public static final yy<agu> bx = b("container_button_click");
+   public static final yy<agv> by = b("container_click");
+   public static final yy<agw> bz = b("container_close");
+   public static final yy<agx> bA = b("container_slot_state_changed");
+   public static final yy<agy> bB = b("debug_sample_subscription");
+   public static final yy<agz> bC = b("edit_book");
+   public static final yy<aha> bD = b("entity_tag_query");
+   public static final yy<ahb> bE = b("interact");
+   public static final yy<ahc> bF = b("jigsaw_generate");
+   public static final yy<ahd> bG = b("lock_difficulty");
+   public static final yy<ahe.a> bH = b("move_player_pos");
+   public static final yy<ahe.b> bI = b("move_player_pos_rot");
+   public static final yy<ahe.c> bJ = b("move_player_rot");
+   public static final yy<ahe.d> bK = b("move_player_status_only");
+   public static final yy<ahf> bL = b("move_vehicle");
+   public static final yy<ahg> bM = b("paddle_boat");
+   public static final yy<ahh> bN = b("pick_item_from_block");
+   public static final yy<ahi> bO = b("pick_item_from_entity");
+   public static final yy<ahj> bP = b("place_recipe");
+   public static final yy<ahk> bQ = b("player_abilities");
+   public static final yy<ahl> bR = b("player_action");
+   public static final yy<ahm> bS = b("player_command");
+   public static final yy<ahn> bT = b("player_input");
+   public static final yy<aho> bU = b("player_loaded");
+   public static final yy<ahp> bV = b("recipe_book_change_settings");
+   public static final yy<ahq> bW = b("recipe_book_seen_recipe");
+   public static final yy<ahr> bX = b("rename_item");
+   public static final yy<ahs> bY = b("seen_advancements");
+   public static final yy<ahu> bZ = b("select_trade");
+   public static final yy<ahv> ca = b("set_beacon");
+   public static final yy<ahw> cb = b("set_carried_item");
+   public static final yy<ahx> cc = b("set_command_block");
+   public static final yy<ahy> cd = b("set_command_minecart");
+   public static final yy<ahz> ce = b("set_creative_mode_slot");
+   public static final yy<aia> cf = b("set_jigsaw_block");
+   public static final yy<aib> cg = b("set_structure_block");
+   public static final yy<aic> ch = b("sign_update");
+   public static final yy<aid> ci = b("swing");
+   public static final yy<aie> cj = b("teleport_to_entity");
+   public static final yy<aif> ck = b("use_item_on");
+   public static final yy<aig> cl = b("use_item");
+   public static final yy<aec> cm = a("reset_score");
+   public static final yy<afu> cn = a("ticking_state");
+   public static final yy<afv> co = a("ticking_step");
+   public static final yy<aer> cp = a("set_cursor_item");
+   public static final yy<afd> cq = a("set_player_inventory");
 
-   public static void a(ard $$0, ji $$1, String $$2, int $$3, int $$4) {
-      a($$0, (zz)(new aad($$1, $$3, $$2, $$4)));
+   private static <T extends yw<abl>> yy<T> a(String $$0) {
+      return new yy<>(yx.b, aku.b($$0));
    }
 
-   public static void a(ard $$0) {
-      a($$0, (zz)(new aae()));
-   }
-
-   public static void a(ard $$0, dfp $$1) {
-   }
-
-   public static void a(ard $$0, ji $$1) {
-      d($$0, $$1);
-   }
-
-   public static void b(ard $$0, ji $$1) {
-      d($$0, $$1);
-   }
-
-   public static void c(ard $$0, ji $$1) {
-      d($$0, $$1);
-   }
-
-   private static void d(ard $$0, ji $$1) {
-   }
-
-   public static void a(dgj $$0, bvk $$1, @Nullable eto $$2, float $$3) {
-   }
-
-   public static void a(dgj $$0, ji $$1) {
-   }
-
-   public static void a(dgj $$0, aan $$1) {
-      if ($$0 instanceof ard $$2) {
-         a($$2, (zz)$$1);
-      }
-   }
-
-   public static void a(dhh $$0, env $$1) {
-   }
-
-   public static void a(dgj $$0, bvk $$1, cch $$2) {
-   }
-
-   public static void a(ard $$0, Collection<cql> $$1) {
-   }
-
-   public static void a(bvi $$0) {
-   }
-
-   public static void a(cha $$0) {
-   }
-
-   public static void a(cmv $$0) {
-   }
-
-   public static void a(dgj $$0, jr<ebu> $$1, fbb $$2) {
-   }
-
-   public static void a(dgj $$0, ebw $$1) {
-   }
-
-   public static void a(dgj $$0, ji $$1, dwy $$2, dtx $$3) {
-   }
-
-   private static List<String> a(bvi $$0, long $$1) {
-      Map<cem<?>, Optional<? extends cel<?>>> $$2 = $$0.eb().b();
-      List<String> $$3 = Lists.newArrayList();
-
-      for (Entry<cem<?>, Optional<? extends cel<?>>> $$4 : $$2.entrySet()) {
-         cem<?> $$5 = $$4.getKey();
-         Optional<? extends cel<?>> $$6 = $$4.getValue();
-         String $$10;
-         if ($$6.isPresent()) {
-            cel<?> $$7 = (cel<?>)$$6.get();
-            Object $$8 = $$7.c();
-            if ($$5 == cem.D) {
-               long $$9 = $$1 - (Long)$$8;
-               $$10 = $$9 + " ticks ago";
-            } else if ($$7.e()) {
-               $$10 = a((ard)$$0.dV(), $$8) + " (ttl: " + $$7.b() + ")";
-            } else {
-               $$10 = a((ard)$$0.dV(), $$8);
-            }
-         } else {
-            $$10 = "-";
-         }
-
-         $$3.add(mb.z.b($$5).a() + ": " + $$10);
-      }
-
-      $$3.sort(String::compareTo);
-      return $$3;
-   }
-
-   private static String a(ard $$0, @Nullable Object $$1) {
-      if ($$1 == null) {
-         return "-";
-      } else if ($$1 instanceof UUID) {
-         return a($$0, $$0.a((UUID)$$1));
-      } else if ($$1 instanceof bvi) {
-         bum $$2 = (bum)$$1;
-         return agc.a($$2);
-      } else if ($$1 instanceof bso) {
-         return ((bso)$$1).al().getString();
-      } else if ($$1 instanceof cep) {
-         return a($$0, ((cep)$$1).a());
-      } else if ($$1 instanceof bxm) {
-         return a($$0, ((bxm)$$1).c());
-      } else if ($$1 instanceof jq) {
-         return a($$0, ((jq)$$1).b());
-      } else if ($$1 instanceof bxe) {
-         return a($$0, ((bxe)$$1).b());
-      } else if ($$1 instanceof btc) {
-         bum $$3 = ((btc)$$1).d();
-         return $$3 == null ? $$1.toString() : a($$0, $$3);
-      } else if (!($$1 instanceof Collection)) {
-         return $$1.toString();
-      } else {
-         List<String> $$4 = Lists.newArrayList();
-
-         for (Object $$5 : (Iterable)$$1) {
-            $$4.add(a($$0, $$5));
-         }
-
-         return $$4.toString();
-      }
-   }
-
-   private static void a(ard $$0, zz $$1) {
-      yw<?> $$2 = new zd($$1);
-
-      for (are $$3 : $$0.z()) {
-         $$3.f.b($$2);
-      }
+   private static <T extends yw<agf>> yy<T> b(String $$0) {
+      return new yy<>(yx.a, aku.b($$0));
    }
 }

@@ -1,4 +1,4 @@
-public record aab(aku<ebu> c, fbb d) implements zz {
+public record aab(akt<ecp> c, fbx d) implements zz {
    public static final yn<vl, aab> a = zz.a(aab::a, aab::new);
    public static final zz.b<aab> b = zz.a("debug/game_event");
 
@@ -16,11 +16,11 @@ public record aab(aku<ebu> c, fbb d) implements zz {
       return b;
    }
 
-   public aku<ebu> b() {
+   public akt<ecp> b() {
       return this.c;
    }
 
-   public fbb c() {
+   public fbx c() {
       return this.d;
    }
 }

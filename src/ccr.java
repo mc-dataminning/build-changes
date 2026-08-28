@@ -1,27 +1,86 @@
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class ccr extends cdd {
-   private static final int i = 10;
-   private static final int j = 7;
+public class ccr extends ccw {
+   private int a;
+   private final bwg b;
+   @Nullable
+   private cpr c;
+   private ccf d;
 
-   public ccr(bvq $$0, double $$1, boolean $$2) {
-      super($$0, $$1, 10, $$2);
+   public ccr(bwg $$0) {
+      this.b = $$0;
    }
 
    @Override
    public boolean b() {
-      ard $$0 = (ard)this.b.dV();
-      ji $$1 = this.b.dv();
-      return $$0.c($$1) ? false : super.b();
+      List<cro> $$0 = this.b.dU().a(cro.class, this.b.cQ().g(5.0));
+      boolean $$1 = false;
+
+      for (cro $$2 : $$0) {
+         bva $$3 = $$2.cV();
+         if ($$3 instanceof cpr $$4 && (ayz.e($$4.bg) > 0.0F || ayz.e($$4.bi) > 0.0F)) {
+            $$1 = true;
+            break;
+         }
+      }
+
+      return this.c != null && (ayz.e(this.c.bg) > 0.0F || ayz.e(this.c.bi) > 0.0F) || $$1;
    }
 
-   @Nullable
    @Override
-   protected fbb h() {
-      ard $$0 = (ard)this.b.dV();
-      ji $$1 = this.b.dv();
-      kk $$2 = kk.a($$1);
-      kk $$3 = bxd.a($$0, $$2, 2);
-      return $$3 != $$2 ? cgd.a(this.b, 10, 7, fbb.c($$3.k()), (float) (Math.PI / 2)) : null;
+   public boolean P_() {
+      return true;
+   }
+
+   @Override
+   public boolean c() {
+      return this.c != null && this.c.bY() && (ayz.e(this.c.bg) > 0.0F || ayz.e(this.c.bi) > 0.0F);
+   }
+
+   @Override
+   public void d() {
+      for (cro $$1 : this.b.dU().a(cro.class, this.b.cQ().g(5.0))) {
+         if ($$1.cV() instanceof cpr $$2) {
+            this.c = $$2;
+            break;
+         }
+      }
+
+      this.a = 0;
+      this.d = ccf.a;
+   }
+
+   @Override
+   public void e() {
+      this.c = null;
+   }
+
+   @Override
+   public void a() {
+      boolean $$0 = ayz.e(this.c.bg) > 0.0F || ayz.e(this.c.bi) > 0.0F;
+      float $$1 = this.d == ccf.b ? ($$0 ? 0.01F : 0.0F) : 0.015F;
+      this.b.a($$1, new fbx((double)this.b.bg, (double)this.b.bh, (double)this.b.bi));
+      this.b.a(bwc.a, this.b.dx());
+      if (--this.a <= 0) {
+         this.a = this.a(10);
+         if (this.d == ccf.a) {
+            ji $$2 = this.c.du().a(this.c.cN().g());
+            $$2 = $$2.b(0, -1, 0);
+            this.b.O().a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0);
+            if (this.b.f(this.c) < 4.0F) {
+               this.a = 0;
+               this.d = ccf.b;
+            }
+         } else if (this.d == ccf.b) {
+            jn $$3 = this.c.cO();
+            ji $$4 = this.c.du().a($$3, 10);
+            this.b.O().a((double)$$4.u(), (double)($$4.v() - 1), (double)$$4.w(), 1.0);
+            if (this.b.f(this.c) > 12.0F) {
+               this.a = 0;
+               this.d = ccf.a;
+            }
+         }
+      }
    }
 }

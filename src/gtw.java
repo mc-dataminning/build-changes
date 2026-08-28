@@ -1,16 +1,18 @@
-public class gtw extends gsy<cmc, gzd> {
-   private static final akv a = akv.b("textures/entity/illager/pillager.png");
-
-   public gtw(gsf.a $$0) {
-      super($$0, new gcq<>($$0.a(gfd.cd)), 0.5F);
-      this.a(new gwm<>(this));
+public abstract class gtw<T extends clz, S extends hab> extends guj<T, S, gdo<S>> {
+   protected gtw(gtd.a $$0, gdo<S> $$1, float $$2) {
+      super($$0, $$1, $$2);
+      this.a(new gww<>(this, $$0.f()));
    }
 
-   public akv a(gzd $$0) {
-      return a;
-   }
-
-   public gzd b() {
-      return new gzd();
+   public void a(T $$0, S $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      gyo.a($$0, $$1, this.i);
+      $$1.b = $$0.bY();
+      $$1.d = $$0.fA();
+      $$1.j = $$0.j();
+      $$1.k = $$1.j == clz.a.f ? cvz.b($$0.fD(), $$0) : 0;
+      $$1.l = $$0.fF();
+      $$1.m = $$0.E($$2);
+      $$1.c = $$0.gj();
    }
 }

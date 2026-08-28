@@ -7,7 +7,7 @@ import java.util.Collection;
 import java.util.List;
 
 public class gi implements ArgumentType<xm> {
-   private static final Collection<String> b = List.of("{\"bold\": true}\n");
+   private static final Collection<String> b = List.of("{bold: true}", "{color: 'red'}", "{}");
    public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wp.b("argument.style.invalid", $$0));
    private final jt.a c;
 
@@ -24,12 +24,7 @@ public class gi implements ArgumentType<xm> {
    }
 
    public xm a(StringReader $$0) throws CommandSyntaxException {
-      try {
-         return fb.a(this.c, $$0, xm.b.b);
-      } catch (Exception var4) {
-         String $$2 = var4.getCause() != null ? var4.getCause().getMessage() : var4.getMessage();
-         throw a.createWithContext($$0, $$2);
-      }
+      return fb.a(xm.b.b, this.c, a, $$0);
    }
 
    public Collection<String> getExamples() {

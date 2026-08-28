@@ -11,58 +11,58 @@ import java.util.Collection;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class fx<T> implements ArgumentType<aku<T>> {
+public class fx<T> implements ArgumentType<akt<T>> {
    private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012");
    private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wp.b("commands.place.feature.invalid", $$0));
    private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wp.b("commands.place.structure.invalid", $$0));
    private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> wp.b("commands.place.jigsaw.invalid", $$0));
    private static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> wp.b("recipe.notFound", $$0));
    private static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> wp.b("advancement.advancementNotFound", $$0));
-   final aku<? extends ke<T>> g;
+   final akt<? extends ke<T>> g;
 
-   public fx(aku<? extends ke<T>> $$0) {
+   public fx(akt<? extends ke<T>> $$0) {
       this.g = $$0;
    }
 
-   public static <T> fx<T> a(aku<? extends ke<T>> $$0) {
+   public static <T> fx<T> a(akt<? extends ke<T>> $$0) {
       return new fx<>($$0);
    }
 
-   private static <T> aku<T> a(CommandContext<ex> $$0, String $$1, aku<ke<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
-      aku<?> $$4 = (aku<?>)$$0.getArgument($$1, aku.class);
-      Optional<aku<T>> $$5 = $$4.d($$2);
+   private static <T> akt<T> a(CommandContext<ex> $$0, String $$1, akt<ke<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
+      akt<?> $$4 = (akt<?>)$$0.getArgument($$1, akt.class);
+      Optional<akt<T>> $$5 = $$4.d($$2);
       return $$5.orElseThrow(() -> $$3.create($$4.a()));
    }
 
-   private static <T> ke<T> a(CommandContext<ex> $$0, aku<? extends ke<T>> $$1) {
+   private static <T> ke<T> a(CommandContext<ex> $$0, akt<? extends ke<T>> $$1) {
       return ((ex)$$0.getSource()).l().ba().e($$1);
    }
 
-   private static <T> jr.c<T> b(CommandContext<ex> $$0, String $$1, aku<ke<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
-      aku<T> $$4 = a($$0, $$1, $$2, $$3);
+   private static <T> jr.c<T> b(CommandContext<ex> $$0, String $$1, akt<ke<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
+      akt<T> $$4 = a($$0, $$1, $$2, $$3);
       return a($$0, $$2).a($$4).orElseThrow(() -> $$3.create($$4.a()));
    }
 
-   public static jr.c<efl<?, ?>> a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1, mc.aL, b);
+   public static jr.c<egg<?, ?>> a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+      return b($$0, $$1, mc.aM, b);
    }
 
-   public static jr.c<enn> b(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1, mc.aU, c);
+   public static jr.c<eoj> b(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+      return b($$0, $$1, mc.aW, c);
    }
 
-   public static jr.c<eox> c(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1, mc.aX, d);
+   public static jr.c<ept> c(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+      return b($$0, $$1, mc.aZ, d);
    }
 
-   public static dbk<?> d(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      dbm $$2 = ((ex)$$0.getSource()).l().aI();
-      aku<dbf<?>> $$3 = a($$0, $$1, mc.bk, e);
+   public static dca<?> d(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+      dcc $$2 = ((ex)$$0.getSource()).l().aI();
+      akt<dbv<?>> $$3 = a($$0, $$1, mc.bm, e);
       return $$2.b($$3).orElseThrow(() -> e.create($$3.a()));
    }
 
    public static ai e(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      aku<ah> $$2 = a($$0, $$1, mc.bj, f);
+      akt<ah> $$2 = a($$0, $$1, mc.bl, f);
       ai $$3 = ((ex)$$0.getSource()).l().aD().a($$2.a());
       if ($$3 == null) {
          throw f.create($$2.a());
@@ -71,9 +71,9 @@ public class fx<T> implements ArgumentType<aku<T>> {
       }
    }
 
-   public aku<T> a(StringReader $$0) throws CommandSyntaxException {
-      akv $$1 = akv.a($$0);
-      return aku.a(this.g, $$1);
+   public akt<T> a(StringReader $$0) throws CommandSyntaxException {
+      aku $$1 = aku.a($$0);
+      return akt.a(this.g, $$1);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
@@ -102,9 +102,9 @@ public class fx<T> implements ArgumentType<aku<T>> {
       }
 
       public final class a implements it.a<fx<T>> {
-         final aku<? extends ke<T>> b;
+         final akt<? extends ke<T>> b;
 
-         a(final aku<? extends ke<T>> $$1) {
+         a(final akt<? extends ke<T>> $$1) {
             this.b = $$1;
          }
 

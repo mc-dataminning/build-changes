@@ -6,31 +6,31 @@ import java.util.function.UnaryOperator;
 
 public final class awe {
    public static final yn<vl, awe> a = yn.a(awe::b, awe::a);
-   private static final Map<ctt, Pair<String, String>> b = ImmutableMap.of(
-      ctt.a,
+   private static final Map<cum, Pair<String, String>> b = ImmutableMap.of(
+      cum.a,
       Pair.of("isGuiOpen", "isFilteringCraftable"),
-      ctt.b,
+      cum.b,
       Pair.of("isFurnaceGuiOpen", "isFurnaceFilteringCraftable"),
-      ctt.c,
+      cum.c,
       Pair.of("isBlastingFurnaceGuiOpen", "isBlastingFurnaceFilteringCraftable"),
-      ctt.d,
+      cum.d,
       Pair.of("isSmokerGuiOpen", "isSmokerFilteringCraftable")
    );
-   private final Map<ctt, awe.a> c;
+   private final Map<cum, awe.a> c;
 
-   private awe(Map<ctt, awe.a> $$0) {
+   private awe(Map<cum, awe.a> $$0) {
       this.c = $$0;
    }
 
    public awe() {
-      this(new EnumMap<>(ctt.class));
+      this(new EnumMap<>(cum.class));
    }
 
-   private awe.a c(ctt $$0) {
+   private awe.a c(cum $$0) {
       return this.c.getOrDefault($$0, awe.a.a);
    }
 
-   private void a(ctt $$0, UnaryOperator<awe.a> $$1) {
+   private void a(cum $$0, UnaryOperator<awe.a> $$1) {
       this.c.compute($$0, ($$1x, $$2) -> {
          if ($$2 == null) {
             $$2 = awe.a.a;
@@ -45,26 +45,26 @@ public final class awe {
       });
    }
 
-   public boolean a(ctt $$0) {
+   public boolean a(cum $$0) {
       return this.c($$0).b;
    }
 
-   public void a(ctt $$0, boolean $$1) {
+   public void a(cum $$0, boolean $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public boolean b(ctt $$0) {
+   public boolean b(cum $$0) {
       return this.c($$0).c;
    }
 
-   public void b(ctt $$0, boolean $$1) {
+   public void b(cum $$0, boolean $$1) {
       this.a($$0, $$1x -> $$1x.b($$1));
    }
 
    private static awe a(vl $$0) {
-      Map<ctt, awe.a> $$1 = new EnumMap<>(ctt.class);
+      Map<cum, awe.a> $$1 = new EnumMap<>(cum.class);
 
-      for (ctt $$2 : ctt.values()) {
+      for (cum $$2 : cum.values()) {
          boolean $$3 = $$0.readBoolean();
          boolean $$4 = $$0.readBoolean();
          if ($$3 || $$4) {
@@ -76,7 +76,7 @@ public final class awe {
    }
 
    private void b(vl $$0) {
-      for (ctt $$1 : ctt.values()) {
+      for (cum $$1 : cum.values()) {
          awe.a $$2 = this.c.getOrDefault($$1, awe.a.a);
          $$0.a($$2.b);
          $$0.a($$2.c);
@@ -84,7 +84,7 @@ public final class awe {
    }
 
    public static awe a(tq $$0) {
-      Map<ctt, awe.a> $$1 = new EnumMap<>(ctt.class);
+      Map<cum, awe.a> $$1 = new EnumMap<>(cum.class);
       b.forEach(($$2, $$3) -> {
          boolean $$4 = $$0.q((String)$$3.getFirst());
          boolean $$5 = $$0.q((String)$$3.getSecond());

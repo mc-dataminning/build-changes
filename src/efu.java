@@ -1,111 +1,174 @@
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.Set;
+import java.util.function.Function;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class efu {
-   protected static double a(double $$0, double $$1, double $$2, double $$3) {
-      if ($$0 < $$3) {
-         $$0 = $$3;
-      }
+public abstract class efu<C extends efn> {
+   public static final efu<efq> a = a("cave", new efr(efq.a));
+   public static final efu<efq> b = a("nether_cave", new eft(efq.a));
+   public static final efu<efl> c = a("canyon", new efm(efl.a));
+   protected static final dxq d = dkg.a.m();
+   protected static final dxq e = dkg.nE.m();
+   protected static final etw f = etx.c.g();
+   protected static final etw g = etx.e.g();
+   protected Set<etv> h = ImmutableSet.of(etx.c);
+   private final MapCodec<efs<C>> i;
 
-      double $$4 = 0.384;
-      double $$5 = $$0 / $$1 * 0.384;
-      double $$6 = 0.75 * Math.pow($$5, 1.3333333333333333);
-      double $$7 = Math.pow($$5, 0.6666666666666666);
-      double $$8 = 0.3333333333333333 * Math.log($$5);
-      double $$9 = $$2 * ($$6 - $$7 - $$8);
-      $$9 = Math.max($$9, 0.0);
-      return $$9 / 0.384 * $$1;
+   private static <C extends efn, F extends efu<C>> F a(String $$0, F $$1) {
+      return ke.a(mb.N, $$0, $$1);
    }
 
-   protected static boolean a(dhh $$0, ji $$1, int $$2) {
-      if (b($$0, $$1)) {
-         return false;
-      } else {
-         float $$3 = 6.0F;
-         float $$4 = 6.0F / (float)$$2;
+   public efu(Codec<C> $$0) {
+      this.i = $$0.fieldOf("config").xmap(this::a, efs::b);
+   }
 
-         for (float $$5 = 0.0F; $$5 < (float) (Math.PI * 2); $$5 += $$4) {
-            int $$6 = (int)(ayz.b($$5) * (float)$$2);
-            int $$7 = (int)(ayz.a($$5) * (float)$$2);
-            if (b($$0, $$1.b($$6, 0, $$7))) {
-               return false;
+   public efs<C> a(C $$0) {
+      return new efs<>(this, $$0);
+   }
+
+   public MapCodec<efs<C>> c() {
+      return this.i;
+   }
+
+   public int d() {
+      return 4;
+   }
+
+   protected boolean a(
+      efp $$0, C $$1, dzm $$2, Function<ji, jr<dic>> $$3, eda $$4, double $$5, double $$6, double $$7, double $$8, double $$9, dzl $$10, efu.a $$11
+   ) {
+      dgg $$12 = $$2.f();
+      double $$13 = (double)$$12.b();
+      double $$14 = (double)$$12.c();
+      double $$15 = 16.0 + $$8 * 2.0;
+      if (!(Math.abs($$5 - $$13) > $$15) && !(Math.abs($$7 - $$14) > $$15)) {
+         int $$16 = $$12.d();
+         int $$17 = $$12.e();
+         int $$18 = Math.max(ayz.a($$5 - $$8) - $$16 - 1, 0);
+         int $$19 = Math.min(ayz.a($$5 + $$8) - $$16, 15);
+         int $$20 = Math.max(ayz.a($$6 - $$9) - 1, $$0.a() + 1);
+         int $$21 = $$2.A() ? 0 : 7;
+         int $$22 = Math.min(ayz.a($$6 + $$9) + 1, $$0.a() + $$0.b() - 1 - $$21);
+         int $$23 = Math.max(ayz.a($$7 - $$8) - $$17 - 1, 0);
+         int $$24 = Math.min(ayz.a($$7 + $$8) - $$17, 15);
+         boolean $$25 = false;
+         ji.a $$26 = new ji.a();
+         ji.a $$27 = new ji.a();
+
+         for (int $$28 = $$18; $$28 <= $$19; $$28++) {
+            int $$29 = $$12.a($$28);
+            double $$30 = ((double)$$29 + 0.5 - $$5) / $$8;
+
+            for (int $$31 = $$23; $$31 <= $$24; $$31++) {
+               int $$32 = $$12.b($$31);
+               double $$33 = ((double)$$32 + 0.5 - $$7) / $$8;
+               if (!($$30 * $$30 + $$33 * $$33 >= 1.0)) {
+                  MutableBoolean $$34 = new MutableBoolean(false);
+
+                  for (int $$35 = $$22; $$35 > $$20; $$35--) {
+                     double $$36 = ((double)$$35 - 0.5 - $$6) / $$9;
+                     if (!$$11.shouldSkip($$0, $$30, $$36, $$33, $$35) && (!$$10.b($$28, $$35, $$31) || b($$1))) {
+                        $$10.a($$28, $$35, $$31);
+                        $$26.d($$29, $$35, $$32);
+                        $$25 |= this.a($$0, $$1, $$2, $$3, $$10, $$26, $$27, $$4, $$34);
+                     }
+                  }
+               }
             }
          }
 
-         return true;
-      }
-   }
-
-   protected static boolean a(dgk $$0, ji $$1) {
-      return $$0.a($$1, efu::c);
-   }
-
-   protected static boolean b(dgk $$0, ji $$1) {
-      return $$0.a($$1, efu::e);
-   }
-
-   protected static void a(jn $$0, int $$1, boolean $$2, Consumer<dwy> $$3) {
-      if ($$1 >= 3) {
-         $$3.accept(a($$0, dxu.e));
-
-         for (int $$4 = 0; $$4 < $$1 - 3; $$4++) {
-            $$3.accept(a($$0, dxu.d));
-         }
-      }
-
-      if ($$1 >= 2) {
-         $$3.accept(a($$0, dxu.c));
-      }
-
-      if ($$1 >= 1) {
-         $$3.accept(a($$0, $$2 ? dxu.a : dxu.b));
-      }
-   }
-
-   protected static void a(dgk $$0, ji $$1, jn $$2, int $$3, boolean $$4) {
-      if (b($$0.a_($$1.a($$2.g())))) {
-         ji.a $$5 = $$1.k();
-         a($$2, $$3, $$4, $$3x -> {
-            if ($$3x.a(djp.sV)) {
-               $$3x = $$3x.b(dpj.d, Boolean.valueOf($$0.z($$5)));
-            }
-
-            $$0.a($$5, $$3x, 2);
-            $$5.c($$2);
-         });
-      }
-   }
-
-   protected static boolean c(dgk $$0, ji $$1) {
-      dwy $$2 = $$0.a_($$1);
-      if ($$2.a(awp.bu)) {
-         $$0.a($$1, djp.sW.m(), 2);
-         return true;
+         return $$25;
       } else {
          return false;
       }
    }
 
-   private static dwy a(jn $$0, dxu $$1) {
-      return djp.sV.m().b(dpj.b, $$0).b(dpj.c, $$1);
+   protected boolean a(efp $$0, C $$1, dzm $$2, Function<ji, jr<dic>> $$3, dzl $$4, ji.a $$5, ji.a $$6, eda $$7, MutableBoolean $$8) {
+      dxq $$9 = $$2.a_($$5);
+      if ($$9.a(dkg.i) || $$9.a(dkg.fA)) {
+         $$8.setTrue();
+      }
+
+      if (!this.a($$1, $$9) && !b($$1)) {
+         return false;
+      } else {
+         dxq $$10 = this.a($$0, $$1, $$5, $$7);
+         if ($$10 == null) {
+            return false;
+         } else {
+            $$2.a($$5, $$10);
+            if ($$7.a() && !$$10.y().c()) {
+               $$2.e($$5);
+            }
+
+            if ($$8.isTrue()) {
+               $$6.a($$5, jn.a);
+               if ($$2.a_($$6).a(dkg.j)) {
+                  $$0.a($$3, $$2, $$6, !$$10.y().c()).ifPresent($$2x -> {
+                     $$2.a($$6, $$2x);
+                     if (!$$2x.y().c()) {
+                        $$2.e($$6);
+                     }
+                  });
+               }
+            }
+
+            return true;
+         }
+      }
    }
 
-   public static boolean a(dwy $$0) {
-      return b($$0) || $$0.a(djp.K);
+   @Nullable
+   private dxq a(efp $$0, C $$1, ji $$2, eda $$3) {
+      if ($$2.v() <= $$1.g.a($$0)) {
+         return g.g();
+      } else {
+         dxq $$4 = $$3.a(new edh.e($$2.u(), $$2.v(), $$2.w()), 0.0);
+         if ($$4 == null) {
+            return b($$1) ? $$1.h.e() : null;
+         } else {
+            return b($$1) ? b($$1, $$4) : $$4;
+         }
+      }
    }
 
-   public static boolean b(dwy $$0) {
-      return $$0.a(djp.sW) || $$0.a(awp.bu);
+   private static dxq b(efn $$0, dxq $$1) {
+      if ($$1.a(dkg.a)) {
+         return $$0.h.b();
+      } else if ($$1.a(dkg.J)) {
+         dxq $$2 = $$0.h.c();
+         return $$2.b(dyg.I) ? $$2.b(dyg.I, Boolean.valueOf(true)) : $$2;
+      } else {
+         return $$1.a(dkg.K) ? $$0.h.d() : $$1;
+      }
    }
 
-   public static boolean c(dwy $$0) {
-      return $$0.l() || $$0.a(djp.J);
+   public abstract boolean a(efp var1, C var2, dzm var3, Function<ji, jr<dic>> var4, azh var5, eda var6, dgg var7, dzl var8);
+
+   public abstract boolean a(C var1, azh var2);
+
+   protected boolean a(C $$0, dxq $$1) {
+      return $$1.a($$0.i);
    }
 
-   public static boolean d(dwy $$0) {
-      return !$$0.l() && !$$0.a(djp.J);
+   protected static boolean a(dgg $$0, double $$1, double $$2, int $$3, int $$4, float $$5) {
+      double $$6 = (double)$$0.b();
+      double $$7 = (double)$$0.c();
+      double $$8 = $$1 - $$6;
+      double $$9 = $$2 - $$7;
+      double $$10 = (double)($$4 - $$3);
+      double $$11 = (double)($$5 + 2.0F + 16.0F);
+      return $$8 * $$8 + $$9 * $$9 - $$10 * $$10 <= $$11 * $$11;
    }
 
-   public static boolean e(dwy $$0) {
-      return $$0.l() || $$0.a(djp.J) || $$0.a(djp.K);
+   private static boolean b(efn $$0) {
+      return $$0.h.a();
+   }
+
+   public interface a {
+      boolean shouldSkip(efp var1, double var2, double var4, double var6, int var8);
    }
 }

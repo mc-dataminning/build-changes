@@ -1,41 +1,30 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehz implements eid {
-   public static final Codec<ehz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dwy.a.fieldOf("contents").forGetter($$0x -> $$0x.b),
-               dwy.a.fieldOf("rim").forGetter($$0x -> $$0x.c),
-               brq.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
-               brq.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, ehz::new)
-   );
-   private final dwy b;
-   private final dwy c;
-   private final brq d;
-   private final brq e;
-
-   public ehz(dwy $$0, dwy $$1, brq $$2, brq $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+public class ehz extends egu<eit> {
+   public ehz(Codec<eit> $$0) {
+      super($$0);
    }
 
-   public dwy a() {
-      return this.b;
-   }
+   @Override
+   public boolean a(egw<eit> $$0) {
+      int $$1 = 0;
+      azh $$2 = $$0.d();
+      dhy $$3 = $$0.b();
+      ji $$4 = $$0.e();
+      int $$5 = $$0.f().a().a($$2);
 
-   public dwy b() {
-      return this.c;
-   }
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         int $$7 = $$2.a(8) - $$2.a(8);
+         int $$8 = $$2.a(8) - $$2.a(8);
+         int $$9 = $$3.a(edo.a.d, $$4.u() + $$7, $$4.w() + $$8);
+         ji $$10 = new ji($$4.u() + $$7, $$9, $$4.w() + $$8);
+         dxq $$11 = dkg.nx.m().b(drg.c, Integer.valueOf($$2.a(4) + 1));
+         if ($$3.a_($$10).a(dkg.J) && $$11.a($$3, $$10)) {
+            $$3.a($$10, $$11, 2);
+            $$1++;
+         }
+      }
 
-   public brq c() {
-      return this.d;
-   }
-
-   public brq d() {
-      return this.e;
+      return $$1 > 0;
    }
 }

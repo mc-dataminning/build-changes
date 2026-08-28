@@ -3,6 +3,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.google.common.util.concurrent.MoreExecutors;
 import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.Typed;
@@ -111,11 +112,11 @@ public class af {
       return Collectors.toCollection(Lists::newArrayList);
    }
 
-   public static <T extends Comparable<T>> String a(dya<T> $$0, Object $$1) {
+   public static <T extends Comparable<T>> String a(dyt<T> $$0, Object $$1) {
       return $$0.b((T)$$1);
    }
 
-   public static String a(String $$0, @Nullable akv $$1) {
+   public static String a(String $$0, @Nullable aku $$1) {
       return $$1 == null ? $$0 + ".unregistered_sadface" : $$0 + "." + $$1.b() + "." + $$1.a().replace('/', '.');
    }
 
@@ -233,7 +234,7 @@ public class af {
       }
 
       if ($$1 instanceof z $$2) {
-         akx.a($$2.a().a(y.a));
+         akw.a($$2.a().a(y.a));
          System.exit(-1);
       }
 
@@ -250,7 +251,7 @@ public class af {
       Type<?> $$2 = null;
 
       try {
-         $$2 = bao.a().getSchema(DataFixUtils.makeKey(ab.b().d().c())).getChoiceType($$0, $$1);
+         $$2 = ban.a().getSchema(DataFixUtils.makeKey(ab.b().d().c())).getChoiceType($$0, $$1);
       } catch (IllegalArgumentException var4) {
          g.error("No data fixer registered for {}", $$1);
          if (ab.aU) {
@@ -314,7 +315,7 @@ public class af {
    }
 
    public static <T> String a(ke<T> $$0, T $$1) {
-      akv $$2 = $$0.b($$1);
+      aku $$2 = $$0.b($$1);
       return $$2 == null ? "[unregistered]" : $$2.toString();
    }
 
@@ -548,7 +549,7 @@ public class af {
       return $$0;
    }
 
-   public static <K extends Enum<K>, V> EnumMap<K, V> a(Class<K> $$0, Function<K, V> $$1) {
+   public static <K extends Enum<K>, V> Map<K, V> a(Class<K> $$0, Function<K, V> $$1) {
       EnumMap<K, V> $$2 = new EnumMap<>($$0);
 
       for (K $$3 : (Enum[])$$0.getEnumConstants()) {
@@ -556,6 +557,14 @@ public class af {
       }
 
       return $$2;
+   }
+
+   public static <K, V1, V2> Map<K, V2> a(Map<K, V1> $$0, Function<? super V1, V2> $$1) {
+      return $$0.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$1x -> $$1.apply((V1)$$1x.getValue())));
+   }
+
+   public static <K, V1, V2> Map<K, V2> a(Map<K, V1> $$0, com.google.common.base.Function<V1, V2> $$1) {
+      return Maps.transformValues($$0, $$1);
    }
 
    public static <V> CompletableFuture<List<V>> d(List<? extends CompletableFuture<V>> $$0) {

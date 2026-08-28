@@ -8,20 +8,20 @@ public class dj extends dz<dj.a> {
       return dj.a.a;
    }
 
-   public void a(are $$0, aku<evx> $$1) {
+   public void a(are $$0, akt<ewt> $$1) {
       this.a($$0, $$1x -> $$1x.b($$1));
    }
 
-   public static record a(Optional<bi> b, aku<evx> c) implements dz.a {
+   public static record a(Optional<bi> b, akt<ewt> c) implements dz.a {
       public static final Codec<dj.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bx.b.optionalFieldOf("player").forGetter(dj.a::a), aku.a(mc.bg).fieldOf("loot_table").forGetter(dj.a::b)).apply($$0, dj.a::new)
+         $$0 -> $$0.group(bx.b.optionalFieldOf("player").forGetter(dj.a::a), akt.a(mc.bi).fieldOf("loot_table").forGetter(dj.a::b)).apply($$0, dj.a::new)
       );
 
-      public static aq<dj.a> a(aku<evx> $$0) {
+      public static aq<dj.a> a(akt<ewt> $$0) {
          return ap.Q.a(new dj.a(Optional.empty(), $$0));
       }
 
-      public boolean b(aku<evx> $$0) {
+      public boolean b(akt<ewt> $$0) {
          return this.c == $$0;
       }
 
@@ -30,7 +30,7 @@ public class dj extends dz<dj.a> {
          return this.b;
       }
 
-      public aku<evx> b() {
+      public akt<ewt> b() {
          return this.c;
       }
    }

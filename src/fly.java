@@ -1,34 +1,39 @@
-import com.google.common.collect.Maps;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.function.IntFunction;
 
-public record fly(float a, boolean b, Map<String, List<flx>> c) {
-   public static class a {
-      private final float a;
-      private final Map<String, List<flx>> b = Maps.newHashMap();
-      private boolean c;
+public enum fly implements azc {
+   a(0, "options.graphics.fast"),
+   b(1, "options.graphics.fancy"),
+   c(2, "options.graphics.fabulous");
 
-      public static fly.a a(float $$0) {
-         return new fly.a($$0);
-      }
+   private static final IntFunction<fly> d = axq.a(fly::b, values(), axq.a.b);
+   private final int e;
+   private final String f;
 
-      private a(float $$0) {
-         this.a = $$0;
-      }
+   private fly(final int $$0, final String $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
 
-      public fly.a a() {
-         this.c = true;
-         return this;
-      }
+   @Override
+   public int b() {
+      return this.e;
+   }
 
-      public fly.a a(String $$0, flx $$1) {
-         this.b.computeIfAbsent($$0, $$0x -> new ArrayList<>()).add($$1);
-         return this;
-      }
+   @Override
+   public String a() {
+      return this.f;
+   }
 
-      public fly b() {
-         return new fly(this.a, this.c, this.b);
-      }
+   @Override
+   public String toString() {
+      return switch (this) {
+         case a -> "fast";
+         case b -> "fancy";
+         case c -> "fabulous";
+      };
+   }
+
+   public static fly a(int $$0) {
+      return d.apply($$0);
    }
 }

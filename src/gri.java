@@ -1,31 +1,44 @@
-import java.util.function.UnaryOperator;
+import com.google.common.collect.Lists;
+import java.util.Collection;
 
-public class gri extends gqt {
-   private final gcx a;
-   private final akv b;
-   private final gcc<gxx> h;
+public class gri implements gqy.a {
+   private static final int a = 160;
+   private static final float b = 0.04F;
+   private final fmg c;
+   private Collection<ji> d = Lists.newArrayList();
 
-   public gri(gsf.a $$0, gfc $$1) {
-      super($$0);
-      this.b = $$1.a().a((UnaryOperator<String>)($$0x -> "textures/entity/" + $$0x + ".png"));
-      this.a = new gcx.a($$0.a(gfd.E), $$0x -> gmj.i());
-      this.h = new gbj($$0.a($$1));
+   public gri(fmg $$0) {
+      this.c = $$0;
+   }
+
+   public void a(Collection<ji> $$0) {
+      this.d = $$0;
    }
 
    @Override
-   protected gcc<gxx> a() {
-      return this.h;
-   }
+   public void a(fgr $$0, gmx $$1, double $$2, double $$3, double $$4) {
+      ji $$5 = this.b().c();
 
-   @Override
-   protected gmj b() {
-      return this.h.a(this.b);
-   }
-
-   @Override
-   protected void b(gxx $$0, ffv $$1, glz $$2, int $$3) {
-      if (!$$0.f) {
-         this.a.a($$1, $$2.getBuffer(this.a.a(this.b)), $$3, hej.d);
+      for (ji $$6 : this.d) {
+         if ($$5.a($$6, 160.0)) {
+            a($$0, $$1, $$6);
+         }
       }
+   }
+
+   private static void a(fgr $$0, gmx $$1, ji $$2) {
+      gqy.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
+      a($$0, $$1, "Raid center", $$2, -65536);
+   }
+
+   private static void a(fgr $$0, gmx $$1, String $$2, ji $$3, int $$4) {
+      double $$5 = (double)$$3.u() + 0.5;
+      double $$6 = (double)$$3.v() + 1.3;
+      double $$7 = (double)$$3.w() + 0.5;
+      gqy.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
+   }
+
+   private flo b() {
+      return this.c.j.k();
    }
 }

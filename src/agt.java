@@ -1,37 +1,23 @@
-public class agt implements yw<agg> {
-   public static final yn<vl, agt> a = yw.a(agt::a, agt::new);
-   private final int b;
-   private final String c;
+import io.netty.buffer.ByteBuf;
 
-   public agt(int $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+public class agt implements yw<agf> {
+   public static final agt a = new agt();
+   public static final yn<ByteBuf, agt> b = yn.a(a);
 
-   private agt(vl $$0) {
-      this.b = $$0.l();
-      this.c = $$0.d(32500);
-   }
-
-   private void a(vl $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c, 32500);
+   private agt() {
    }
 
    @Override
    public yy<agt> a() {
-      return age.bw;
+      return agd.bw;
    }
 
-   public void a(agg $$0) {
+   public void a(agf $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public String e() {
-      return this.c;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

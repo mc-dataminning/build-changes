@@ -165,14 +165,7 @@ public class ath {
    }
 
    public atg a(atb $$0) {
-      Map<ate, List<Path>> $$1 = new EnumMap<>(ate.class);
-
-      for (ate $$2 : ate.values()) {
-         List<Path> $$3 = a(this.e.getOrDefault($$2, Set.of()));
-         $$1.put($$2, $$3);
-      }
-
-      return new atg($$0, this.f, Set.copyOf(this.g), a(this.d), $$1);
+      return new atg($$0, this.f, Set.copyOf(this.g), a(this.d), af.a(ate.class, $$0x -> a(this.e.getOrDefault($$0x, Set.of()))));
    }
 
    private static List<Path> a(Collection<Path> $$0) {

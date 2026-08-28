@@ -1,24 +1,38 @@
-public interface deo {
-   aku<dei> a = a("mob_spawn_equipment");
-   aku<dei> b = a("pillager_spawn_crossbow");
-   aku<dei> c = a("raid/pillager_post_wave_3");
-   aku<dei> d = a("raid/pillager_post_wave_5");
-   aku<dei> e = a("raid/vindicator");
-   aku<dei> f = a("raid/vindicator_post_wave_5");
-   aku<dei> g = a("enderman_loot_drop");
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   static void a(qe<dei> $$0) {
-      js<dda> $$1 = $$0.a(mc.aO);
-      $$0.a(a, new del($$1.b(aws.l), 5, 17));
-      $$0.a(b, new dem($$1.b(ddf.K), brn.a(1)));
-      $$0.a(c, new dem($$1.b(ddf.J), brn.a(1)));
-      $$0.a(d, new dem($$1.b(ddf.J), brn.a(2)));
-      $$0.a(e, new dem($$1.b(ddf.n), brn.a(1)));
-      $$0.a(f, new dem($$1.b(ddf.n), brn.a(2)));
-      $$0.a(g, new dem($$1.b(ddf.v), brn.a(1)));
+public record deo(jr<avz> d, bsb e, bsb f) implements dei {
+   public static final MapCodec<deo> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               avz.b.fieldOf("sound").forGetter(deo::b),
+               bsb.a(1.0E-5F, 10.0F).fieldOf("volume").forGetter(deo::c),
+               bsb.a(1.0E-5F, 2.0F).fieldOf("pitch").forGetter(deo::d)
+            )
+            .apply($$0, deo::new)
+   );
+
+   @Override
+   public void a(ard $$0, int $$1, ddq $$2, bva $$3, fbx $$4) {
+      azh $$5 = $$3.dX();
+      if (!$$3.bb()) {
+         $$0.a(null, $$4.a(), $$4.b(), $$4.c(), this.d, $$3.dl(), this.e.a($$5), this.f.a($$5));
+      }
    }
 
-   static aku<dei> a(String $$0) {
-      return aku.a(mc.aP, akv.b($$0));
+   @Override
+   public MapCodec<deo> a() {
+      return a;
+   }
+
+   public jr<avz> b() {
+      return this.d;
+   }
+
+   public bsb c() {
+      return this.e;
+   }
+
+   public bsb d() {
+      return this.f;
    }
 }

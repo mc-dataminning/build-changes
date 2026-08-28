@@ -1,36 +1,67 @@
-public class ahl implements yw<agg> {
+public class ahl implements yw<agf> {
    public static final yn<vl, ahl> a = yw.a(ahl::a, ahl::new);
-   private static final int b = 2;
-   private final boolean c;
+   private final ji b;
+   private final jn c;
+   private final ahl.a d;
+   private final int e;
 
-   public ahl(cou $$0) {
-      this.c = $$0.b;
+   public ahl(ahl.a $$0, ji $$1, jn $$2, int $$3) {
+      this.d = $$0;
+      this.b = $$1.j();
+      this.c = $$2;
+      this.e = $$3;
+   }
+
+   public ahl(ahl.a $$0, ji $$1, jn $$2) {
+      this($$0, $$1, $$2, 0);
    }
 
    private ahl(vl $$0) {
-      byte $$1 = $$0.readByte();
-      this.c = ($$1 & 2) != 0;
+      this.d = $$0.b(ahl.a.class);
+      this.b = $$0.e();
+      this.c = jn.a($$0.readUnsignedByte());
+      this.e = $$0.l();
    }
 
    private void a(vl $$0) {
-      byte $$1 = 0;
-      if (this.c) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.l($$1);
+      $$0.a(this.d);
+      $$0.a(this.b);
+      $$0.l(this.c.d());
+      $$0.c(this.e);
    }
 
    @Override
    public yy<ahl> a() {
-      return age.bR;
+      return agd.bR;
    }
 
-   public void a(agg $$0) {
+   public void a(agf $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
+   public ji b() {
+      return this.b;
+   }
+
+   public jn e() {
       return this.c;
+   }
+
+   public ahl.a f() {
+      return this.d;
+   }
+
+   public int g() {
+      return this.e;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g;
    }
 }

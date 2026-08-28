@@ -1,53 +1,38 @@
-import com.mojang.authlib.GameProfile;
-import javax.annotation.Nullable;
+import com.google.common.math.IntMath;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public interface fcf {
-   String cA = "*";
-   fcf cB = new fcf() {
-      @Override
-      public String cI() {
-         return "*";
-      }
-   };
+public final class fcf implements fcj {
+   private final fcd a;
+   private final int b;
+   private final int c;
 
-   String cI();
-
-   @Nullable
-   default wp p_() {
-      return null;
+   fcf(int $$0, int $$1) {
+      this.a = new fcd((int)fco.a($$0, $$1));
+      int $$2 = IntMath.gcd($$0, $$1);
+      this.b = $$0 / $$2;
+      this.c = $$1 / $$2;
    }
 
-   default wp hg() {
-      wp $$0 = this.p_();
-      return $$0 != null ? $$0.f().a($$0x -> $$0x.a(new wv(wv.a.a, wp.b(this.cI())))) : wp.b(this.cI());
-   }
+   @Override
+   public boolean a(fcj.a $$0) {
+      int $$1 = this.a.size() - 1;
 
-   static fcf c(final String $$0) {
-      if ($$0.equals("*")) {
-         return cB;
-      } else {
-         final wp $$1 = wp.b($$0);
-         return new fcf() {
-            @Override
-            public String cI() {
-               return $$0;
-            }
-
-            @Override
-            public wp hg() {
-               return $$1;
-            }
-         };
-      }
-   }
-
-   static fcf a(GameProfile $$0) {
-      final String $$1 = $$0.getName();
-      return new fcf() {
-         @Override
-         public String cI() {
-            return $$1;
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
+            return false;
          }
-      };
+      }
+
+      return true;
+   }
+
+   @Override
+   public int size() {
+      return this.a.size();
+   }
+
+   @Override
+   public DoubleList a() {
+      return this.a;
    }
 }

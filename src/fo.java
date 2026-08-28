@@ -55,7 +55,7 @@ public class fo implements ge<fo.a> {
 
    private static CompletableFuture<arw> a(ex $$0, xf $$1) {
       are $$2 = $$0.i();
-      return $$2 != null && $$1.a($$2.cG()) ? $$2.Z().a($$1.c()) : CompletableFuture.completedFuture(arw.a($$1.c()));
+      return $$2 != null && $$1.a($$2.cF()) ? $$2.Z().a($$1.c()) : CompletableFuture.completedFuture(arw.a($$1.c()));
    }
 
    public fo.a a(StringReader $$0) throws CommandSyntaxException {

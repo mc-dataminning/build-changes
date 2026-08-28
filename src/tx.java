@@ -97,7 +97,7 @@ public class tx extends tp<ty> {
 
    @Override
    public String toString() {
-      return this.u_();
+      return this.p_();
    }
 
    public tx e() {

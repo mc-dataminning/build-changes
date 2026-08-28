@@ -1,45 +1,43 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Arrays;
 
 public class ckn {
-   private static final Logger a = LogUtils.getLogger();
-   private final cjw b;
-   private final ckg[] c = new ckg[ckm.c()];
-   @Nullable
-   private ckg d;
+   public static final int a = 64;
+   private static final int b = 63;
+   private final ckn.a[] c = new ckn.a[64];
+   private int d = -1;
 
-   public ckn(cjw $$0) {
-      this.b = $$0;
-      this.a(ckm.k);
+   public ckn() {
+      Arrays.fill(this.c, new ckn.a(0.0, 0.0F));
    }
 
-   public void a(ckm<?> $$0) {
-      if (this.d == null || $$0 != this.d.h()) {
-         if (this.d != null) {
-            this.d.d();
-         }
-
-         this.d = this.b((ckm<ckg>)$$0);
-         if (!this.b.dV().C) {
-            this.b.au().a(cjw.a, $$0.b());
-         }
-
-         a.debug("Dragon is now in phase {} on the {}", $$0, this.b.dV().C ? "client" : "server");
-         this.d.c();
-      }
+   public void a(ckn $$0) {
+      System.arraycopy($$0.c, 0, this.c, 0, 64);
+      this.d = $$0.d;
    }
 
-   public ckg a() {
-      return this.d;
-   }
-
-   public <T extends ckg> T b(ckm<T> $$0) {
-      int $$1 = $$0.b();
-      if (this.c[$$1] == null) {
-         this.c[$$1] = $$0.a(this.b);
+   public void a(double $$0, float $$1) {
+      ckn.a $$2 = new ckn.a($$0, $$1);
+      if (this.d < 0) {
+         Arrays.fill(this.c, $$2);
       }
 
-      return (T)this.c[$$1];
+      if (++this.d == 64) {
+         this.d = 0;
+      }
+
+      this.c[this.d] = $$2;
+   }
+
+   public ckn.a a(int $$0) {
+      return this.c[this.d - $$0 & 63];
+   }
+
+   public ckn.a a(int $$0, float $$1) {
+      ckn.a $$2 = this.a($$0);
+      ckn.a $$3 = this.a($$0 + 1);
+      return new ckn.a(ayz.d((double)$$1, $$3.a, $$2.a), ayz.i($$1, $$3.b, $$2.b));
+   }
+
+   public static record a(double a, float b) {
    }
 }

@@ -1,21 +1,44 @@
-public class gro extends gqz<che, gyc, gbq> {
-   private static final akv a = akv.b("textures/entity/chicken.png");
+public class gro implements gqy.a {
+   private final fmg a;
 
-   public gro(gsf.a $$0) {
-      super($$0, new gbq($$0.a(gfd.X)), new gbq($$0.a(gfd.Y)), 0.3F);
+   public gro(fmg $$0) {
+      this.a = $$0;
    }
 
-   public akv a(gyc $$0) {
-      return a;
-   }
+   @Override
+   public void a(fgr $$0, gmx $$1, double $$2, double $$3, double $$4) {
+      ji $$5 = this.a.t.du();
+      dhc $$6 = this.a.t.dU();
 
-   public gyc a() {
-      return new gyc();
-   }
+      for (ji $$7 : ji.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
+         etw $$8 = $$6.b_($$7);
+         if ($$8.a(awv.a)) {
+            double $$9 = (double)((float)$$7.v() + $$8.a($$6, $$7));
+            gqy.a(
+               $$0,
+               $$1,
+               new fbs(
+                     (double)((float)$$7.u() + 0.01F),
+                     (double)((float)$$7.v() + 0.01F),
+                     (double)((float)$$7.w() + 0.01F),
+                     (double)((float)$$7.u() + 0.99F),
+                     $$9,
+                     (double)((float)$$7.w() + 0.99F)
+                  )
+                  .d(-$$2, -$$3, -$$4),
+               0.0F,
+               1.0F,
+               0.0F,
+               0.15F
+            );
+         }
+      }
 
-   public void a(che $$0, gyc $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = ayz.h($$2, $$0.cc, $$0.bY);
-      $$1.b = ayz.h($$2, $$0.ca, $$0.bZ);
+      for (ji $$10 : ji.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
+         etw $$11 = $$6.b_($$10);
+         if ($$11.a(awv.a)) {
+            gqy.a($$0, $$1, String.valueOf($$11.e()), (double)$$10.u() + 0.5, (double)((float)$$10.v() + $$11.a($$6, $$10)), (double)$$10.w() + 0.5, -16777216);
+         }
+      }
    }
 }

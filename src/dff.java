@@ -1,43 +1,24 @@
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
-
 public interface dff {
-   void a(@Nullable coy var1);
+   akt<dez> a = a("mob_spawn_equipment");
+   akt<dez> b = a("pillager_spawn_crossbow");
+   akt<dez> c = a("raid/pillager_post_wave_3");
+   akt<dez> d = a("raid/pillager_post_wave_5");
+   akt<dez> e = a("raid/vindicator");
+   akt<dez> f = a("raid/vindicator_post_wave_5");
+   akt<dez> g = a("enderman_loot_drop");
 
-   @Nullable
-   coy gs();
-
-   dfh gu();
-
-   void a(dfh var1);
-
-   void a(dfg var1);
-
-   void i(cwq var1);
-
-   int x();
-
-   void s(int var1);
-
-   boolean gv();
-
-   avz gw();
-
-   default boolean gE() {
-      return false;
+   static void a(qe<dez> $$0) {
+      js<ddr> $$1 = $$0.a(mc.aP);
+      $$0.a(a, new dfc($$1.b(aws.l), 5, 17));
+      $$0.a(b, new dfd($$1.b(ddw.K), bsa.a(1)));
+      $$0.a(c, new dfd($$1.b(ddw.J), bsa.a(1)));
+      $$0.a(d, new dfd($$1.b(ddw.J), bsa.a(2)));
+      $$0.a(e, new dfd($$1.b(ddw.n), bsa.a(1)));
+      $$0.a(f, new dfd($$1.b(ddw.n), bsa.a(2)));
+      $$0.a(g, new dfd($$1.b(ddw.v), bsa.a(1)));
    }
 
-   default void a(coy $$0, wp $$1, int $$2) {
-      OptionalInt $$3 = $$0.a(new bst(($$0x, $$1x, $$2x) -> new cto($$0x, $$1x, this), $$1));
-      if ($$3.isPresent()) {
-         dfh $$4 = this.gu();
-         if (!$$4.isEmpty()) {
-            $$0.a($$3.getAsInt(), $$4, $$2, this.x(), this.gv(), this.gE());
-         }
-      }
+   static akt<dez> a(String $$0) {
+      return akt.a(mc.aQ, aku.b($$0));
    }
-
-   boolean gA();
-
-   boolean f(coy var1);
 }

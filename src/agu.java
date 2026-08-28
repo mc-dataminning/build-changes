@@ -1,23 +1,16 @@
-import io.netty.buffer.ByteBuf;
-
-public class agu implements yw<agg> {
-   public static final agu a = new agu();
-   public static final yn<ByteBuf, agu> b = yn.a(a);
-
-   private agu() {
-   }
+public record agu(int b, int c) implements yw<agf> {
+   public static final yn<vl, agu> a = yn.a(yl.w, agu::b, yl.h, agu::e, agu::new);
 
    @Override
    public yy<agu> a() {
-      return age.bx;
+      return agd.bx;
    }
 
-   public void a(agg $$0) {
+   public void a(agf $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public int e() {
+      return this.c;
    }
 }

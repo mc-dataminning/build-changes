@@ -1,6 +1,8 @@
-import com.google.gson.JsonElement;
-import java.util.function.Supplier;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface fnf extends Supplier<JsonElement> {
-   djn a();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fnf {
 }

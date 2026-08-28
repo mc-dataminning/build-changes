@@ -1,56 +1,50 @@
-public class fqb extends fop {
-   private float a = 0.5F;
+public class fqb extends fqk {
+   private static final int a = 4;
+   private final boolean b;
+   private final int c;
 
-   public fqb(wp $$0, fod $$1) {
-      this(0, 0, $$1.a($$0.g()), 9, $$0, $$1);
+   public fqb(int $$0, wp $$1, fpa $$2) {
+      this($$0, $$1, $$2, 4);
    }
 
-   public fqb(int $$0, int $$1, wp $$2, fod $$3) {
-      this(0, 0, $$0, $$1, $$2, $$3);
+   public fqb(int $$0, wp $$1, fpa $$2, int $$3) {
+      this($$0, $$1, $$2, true, $$3);
    }
 
-   public fqb(int $$0, int $$1, int $$2, int $$3, wp $$4, fod $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.j = false;
+   public fqb(int $$0, wp $$1, fpa $$2, boolean $$3, int $$4) {
+      super($$1, $$2);
+      this.d($$0);
+      this.b(true);
+      this.j = true;
+      this.b = $$3;
+      this.c = $$4;
    }
 
-   public fqb b(int $$0) {
-      super.a($$0);
-      return this;
-   }
-
-   private fqb b(float $$0) {
-      this.a = $$0;
-      return this;
-   }
-
-   public fqb c() {
-      return this.b(0.0F);
-   }
-
-   public fqb e() {
-      return this.b(0.5F);
-   }
-
-   public fqb g() {
-      return this.b(1.0F);
+   public void b(int $$0) {
+      this.d($$0 - this.c * 4);
    }
 
    @Override
-   public void b(fof $$0, int $$1, int $$2, float $$3) {
-      wp $$4 = this.B();
-      fod $$5 = this.a();
-      int $$6 = this.A();
-      int $$7 = $$5.a($$4);
-      int $$8 = this.F() + Math.round(this.a * (float)($$6 - $$7));
-      int $$9 = this.G() + (this.y() - 9) / 2;
-      ayl $$10 = $$7 > $$6 ? this.a($$4, $$6) : $$4.g();
-      $$0.b($$5, $$10, $$8, $$9, this.b());
+   protected void a(ftn $$0) {
+      $$0.a(ftm.a, this.B());
    }
 
-   private ayl a(wp $$0, int $$1) {
-      fod $$2 = this.a();
-      wu $$3 = $$2.a($$0, $$1 - $$2.a(wo.u));
-      return tl.a().a(wu.a($$3, wo.u));
+   @Override
+   public void b(fpc $$0, int $$1, int $$2, float $$3) {
+      if (this.aM_() || this.b) {
+         int $$4 = this.F() - this.c;
+         int $$5 = this.G() - this.c;
+         int $$6 = this.A() + this.c * 2;
+         int $$7 = this.y() + this.c * 2;
+         int $$8 = this.b ? (this.aM_() ? -1 : -6250336) : -1;
+         $$0.a($$4 + 1, $$5, $$4 + $$6, $$5 + $$7, -16777216);
+         $$0.b($$4, $$5, $$6, $$7, $$8);
+      }
+
+      super.b($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(hku $$0) {
    }
 }

@@ -1,49 +1,40 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record ekm(eke b, List<ekm.a> c) {
-   public static final Codec<ekm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eke.a.fieldOf("fallback").forGetter(ekm::a), ekm.a.a.listOf().fieldOf("rules").forGetter(ekm::b)).apply($$0, ekm::new)
+public class ekm extends ekk {
+   public static final MapCodec<ekm> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, ekm::new)
    );
+   protected final int b;
 
-   public static ekm a(eke $$0) {
-      return new ekm($$0, List.of());
+   public ekm(bsd $$0, bsd $$1, int $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
-   public static ekm a(djn $$0) {
-      return a(eke.a($$0));
+   @Override
+   protected ekl<?> a() {
+      return ekl.g;
    }
 
-   public dwy a(dhh $$0, azh $$1, ji $$2) {
-      for (ekm.a $$3 : this.c) {
-         if ($$3.a().test($$0, $$2)) {
-            return $$3.b().a($$1, $$2);
-         }
+   @Override
+   protected void a(dhf $$0, ekk.b $$1, azh $$2, eju $$3, int $$4, ekk.a $$5, int $$6, int $$7, int $$8) {
+      int $$9 = $$5.c() ? $$6 : 1 + $$2.a(2);
+
+      for (int $$10 = $$8; $$10 >= $$8 - $$9; $$10--) {
+         int $$11 = $$7 + $$5.b() + 1 - $$10;
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$11, $$10, $$5.c());
       }
-
-      return this.b.a($$1, $$2);
    }
 
-   public eke a() {
+   @Override
+   public int a(azh $$0, int $$1, eju $$2) {
       return this.b;
    }
 
-   public List<ekm.a> b() {
-      return this.c;
-   }
-
-   public static record a(eea b, eke c) {
-      public static final Codec<ekm.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(eea.b.fieldOf("if_true").forGetter(ekm.a::a), eke.a.fieldOf("then").forGetter(ekm.a::b)).apply($$0, ekm.a::new)
-      );
-
-      public eea a() {
-         return this.b;
-      }
-
-      public eke b() {
-         return this.c;
-      }
+   @Override
+   protected boolean a(azh $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
    }
 }

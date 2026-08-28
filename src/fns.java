@@ -1,32 +1,22 @@
-import java.util.function.UnaryOperator;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class fns {
-   @Deprecated
-   public static akv a(String $$0) {
-      return akv.b("block/" + $$0);
+public record fns(int b) implements fnq {
+   public static final MapCodec<fns> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayi.i.fieldOf("default").forGetter(fns::b)).apply($$0, fns::new));
+
+   public fns() {
+      this(dab.c.a());
    }
 
-   public static akv b(String $$0) {
-      return akv.b("item/" + $$0);
+   @Override
+   public int a(cxh $$0, @Nullable ggy $$1, @Nullable bvy $$2) {
+      dab $$3 = $$0.a(kv.L);
+      return $$3 != null ? axk.f($$3.a()) : axk.f(this.b);
    }
 
-   public static akv a(djn $$0, String $$1) {
-      akv $$2 = mb.e.b($$0);
-      return $$2.a((UnaryOperator<String>)($$1x -> "block/" + $$1x + $$1));
-   }
-
-   public static akv a(djn $$0) {
-      akv $$1 = mb.e.b($$0);
-      return $$1.f("block/");
-   }
-
-   public static akv a(cwm $$0) {
-      akv $$1 = mb.g.b($$0);
-      return $$1.f("item/");
-   }
-
-   public static akv a(cwm $$0, String $$1) {
-      akv $$2 = mb.g.b($$0);
-      return $$2.a((UnaryOperator<String>)($$1x -> "item/" + $$1x + $$1));
+   @Override
+   public MapCodec<fns> a() {
+      return a;
    }
 }

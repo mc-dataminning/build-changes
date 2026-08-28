@@ -1,68 +1,84 @@
-import com.mojang.datafixers.Products.P4;
-import com.mojang.datafixers.Products.P5;
-import com.mojang.datafixers.Products.P9;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
-import java.util.Optional;
+public abstract class eoh extends eon {
+   protected final int a;
+   protected final int b;
+   protected final int c;
+   protected int d = -1;
 
-public class eoh extends eok {
-   public static final MapCodec<eoh> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, eoh::new));
-   private final int c;
-   private final int d;
-   private final int e;
-   private final jv<dhl> f;
-
-   private static P9<Mu<eoh>, km, eok.c, Float, Integer, Optional<eok.a>, Integer, Integer, Integer, jv<dhl>> b(Instance<eoh> $$0) {
-      P5<Mu<eoh>, km, eok.c, Float, Integer, Optional<eok.a>> $$1 = a($$0);
-      P4<Mu<eoh>, Integer, Integer, Integer, jv<dhl>> $$2 = $$0.group(
-         Codec.intRange(0, 1023).fieldOf("distance").forGetter(eoh::a),
-         Codec.intRange(0, 1023).fieldOf("spread").forGetter(eoh::b),
-         Codec.intRange(1, 4095).fieldOf("count").forGetter(eoh::c),
-         kg.a(mc.aI).fieldOf("preferred_biomes").forGetter(eoh::d)
-      );
-      return new P9($$1.t1(), $$1.t2(), $$1.t3(), $$1.t4(), $$1.t5(), $$2.t1(), $$2.t2(), $$2.t3(), $$2.t4());
+   protected eoh(epa $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, jn $$7) {
+      super($$0, 0, eon.a($$1, $$2, $$3, $$7, $$4, $$5, $$6));
+      this.a = $$4;
+      this.b = $$5;
+      this.c = $$6;
+      this.a($$7);
    }
 
-   public eoh(km $$0, eok.c $$1, float $$2, int $$3, Optional<eok.a> $$4, int $$5, int $$6, int $$7, jv<dhl> $$8) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.e = $$7;
-      this.f = $$8;
-   }
-
-   public eoh(int $$0, int $$1, int $$2, jv<dhl> $$3) {
-      this(km.h, eok.c.a, 1.0F, 0, Optional.empty(), $$0, $$1, $$2, $$3);
-   }
-
-   public int a() {
-      return this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public int c() {
-      return this.e;
-   }
-
-   public jv<dhl> d() {
-      return this.f;
+   protected eoh(epa $$0, tq $$1) {
+      super($$0, $$1);
+      this.a = $$1.h("Width");
+      this.b = $$1.h("Height");
+      this.c = $$1.h("Depth");
+      this.d = $$1.h("HPos");
    }
 
    @Override
-   protected boolean a(dyv $$0, int $$1, int $$2) {
-      List<dfp> $$3 = $$0.a(this);
-      return $$3 == null ? false : $$3.contains(new dfp($$1, $$2));
+   protected void a(eoz $$0, tq $$1) {
+      $$1.a("Width", this.a);
+      $$1.a("Height", this.b);
+      $$1.a("Depth", this.c);
+      $$1.a("HPos", this.d);
    }
 
-   @Override
-   public eol<?> e() {
-      return eol.b;
+   protected boolean a(dha $$0, eob $$1, int $$2) {
+      if (this.d >= 0) {
+         return true;
+      } else {
+         int $$3 = 0;
+         int $$4 = 0;
+         ji.a $$5 = new ji.a();
+
+         for (int $$6 = this.f.j(); $$6 <= this.f.m(); $$6++) {
+            for (int $$7 = this.f.h(); $$7 <= this.f.k(); $$7++) {
+               $$5.d($$7, 64, $$6);
+               if ($$1.b($$5)) {
+                  $$3 += $$0.a(edo.a.f, $$5).v();
+                  $$4++;
+               }
+            }
+         }
+
+         if ($$4 == 0) {
+            return false;
+         } else {
+            this.d = $$3 / $$4;
+            this.f.a(0, this.d - this.f.i() + $$2, 0);
+            return true;
+         }
+      }
+   }
+
+   protected boolean a(dha $$0, int $$1) {
+      if (this.d >= 0) {
+         return true;
+      } else {
+         int $$2 = $$0.ao() + 1;
+         boolean $$3 = false;
+         ji.a $$4 = new ji.a();
+
+         for (int $$5 = this.f.j(); $$5 <= this.f.m(); $$5++) {
+            for (int $$6 = this.f.h(); $$6 <= this.f.k(); $$6++) {
+               $$4.d($$6, 0, $$5);
+               $$2 = Math.min($$2, $$0.a(edo.a.f, $$4).v());
+               $$3 = true;
+            }
+         }
+
+         if (!$$3) {
+            return false;
+         } else {
+            this.d = $$2;
+            this.f.a(0, this.d - this.f.i() + $$1, 0);
+            return true;
+         }
+      }
    }
 }

@@ -1,9 +1,12 @@
-public class crs {
-   final crv a;
-   final long b;
+import java.util.function.Supplier;
 
-   crs(crv $$0, int $$1) {
-      this.a = $$0;
-      this.b = 1L << $$1;
+public class crs extends cro {
+   public crs(bvi<? extends crs> $$0, dgz $$1, Supplier<cxd> $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   @Override
+   protected double b(bvd $$0) {
+      return (double)($$0.b() / 3.0F);
    }
 }

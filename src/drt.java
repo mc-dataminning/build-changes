@@ -1,28 +1,105 @@
-public enum drt {
-   a {
-      @Override
-      public boolean a(dwy $$0, dfo $$1, ji $$2, jn $$3) {
-         return djn.a($$0.h($$1, $$2), $$3);
-      }
-   },
-   b {
-      private final int d = 1;
-      private final fbv e = djn.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0);
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-      @Override
-      public boolean a(dwy $$0, dfo $$1, ji $$2, jn $$3) {
-         return !fbs.c($$0.h($$1, $$2).a($$3), this.e, fbf.c);
-      }
-   },
-   c {
-      private final int d = 2;
-      private final fbv e = fbs.a(fbs.b(), djn.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0), fbf.e);
+public class drt extends dke {
+   public static final MapCodec<drt> a = b(drt::new);
+   public static final int b = 8;
+   public static final dyq c = dyg.aI;
+   private static final fcr[] e = dke.a(8, $$0 -> dke.b(16.0, 0.0, (double)($$0 * 2)));
+   public static final int d = 5;
 
-      @Override
-      public boolean a(dwy $$0, dfo $$1, ji $$2, jn $$3) {
-         return !fbs.c($$0.h($$1, $$2).a($$3), this.e, fbf.c);
-      }
-   };
+   @Override
+   public MapCodec<drt> a() {
+      return a;
+   }
 
-   public abstract boolean a(dwy var1, dfo var2, ji var3, jn var4);
+   protected drt(dxp.d $$0) {
+      super($$0);
+      this.l(this.B.b().b(c, Integer.valueOf(1)));
+   }
+
+   @Override
+   protected boolean a(dxq $$0, eul $$1) {
+      return $$1 == eul.a ? $$0.c(c) < 5 : false;
+   }
+
+   @Override
+   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
+      return e[$$0.c(c)];
+   }
+
+   @Override
+   protected fcr b(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
+      return e[$$0.c(c) - 1];
+   }
+
+   @Override
+   protected fcr b_(dxq $$0, dgf $$1, ji $$2) {
+      return e[$$0.c(c)];
+   }
+
+   @Override
+   protected fcr c(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
+      return e[$$0.c(c)];
+   }
+
+   @Override
+   protected boolean g_(dxq $$0) {
+      return true;
+   }
+
+   @Override
+   protected float c(dxq $$0, dgf $$1, ji $$2) {
+      return $$0.c(c) == 8 ? 0.2F : 1.0F;
+   }
+
+   @Override
+   protected boolean a(dxq $$0, dhc $$1, ji $$2) {
+      dxq $$3 = $$1.a_($$2.e());
+      if ($$3.a(awp.ct)) {
+         return false;
+      } else {
+         return $$3.a(awp.cu) ? true : dke.a($$3.g($$1, $$2.e()), jn.b) || $$3.a(this) && $$3.c(c) == 8;
+      }
+   }
+
+   @Override
+   protected dxq a(dxq $$0, dhc $$1, dho $$2, ji $$3, jn $$4, ji $$5, dxq $$6, azh $$7) {
+      return !$$0.a($$1, $$3) ? dkg.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected void b(dxq $$0, ard $$1, ji $$2, azh $$3) {
+      if ($$1.a(dhi.b, $$2) > 11) {
+         c($$0, $$1, $$2);
+         $$1.a($$2, false);
+      }
+   }
+
+   @Override
+   protected boolean a(dxq $$0, dax $$1) {
+      int $$2 = $$0.c(c);
+      if (!$$1.n().a(this.i()) || $$2 >= 8) {
+         return $$2 == 1;
+      } else {
+         return $$1.c() ? $$1.k() == jn.b : true;
+      }
+   }
+
+   @Nullable
+   @Override
+   public dxq a(dax $$0) {
+      dxq $$1 = $$0.q().a_($$0.a());
+      if ($$1.a(this)) {
+         int $$2 = $$1.c(c);
+         return $$1.b(c, Integer.valueOf(Math.min(8, $$2 + 1)));
+      } else {
+         return super.a($$0);
+      }
+   }
+
+   @Override
+   protected void a(dxr.a<dke, dxq> $$0) {
+      $$0.a(c);
+   }
 }

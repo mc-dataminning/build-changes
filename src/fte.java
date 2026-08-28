@@ -1,107 +1,130 @@
-import com.mojang.text2speech.Narrator;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public class fte extends fum {
-   private static final wp a = wp.c("accessibility.onboarding.screen.title");
-   private static final wp b = wp.c("accessibility.onboarding.screen.narrator");
-   private static final int c = 4;
-   private static final int d = 16;
-   private final fpl s;
-   private final flo u;
-   private final boolean v;
-   private boolean w;
-   private float x;
-   private final Runnable y;
-   @Nullable
-   private fpf z;
-   private final fsi A = new fsi(this, this.m(), 33);
+public class fte implements ftf {
+   public static final int a = 33;
+   private static final int b = 30;
+   private final ftc c = new ftc();
+   private final ftc d = new ftc();
+   private final ftc e = new ftc();
+   private final fvi f;
+   private int g;
+   private int h;
 
-   public fte(flo $$0, Runnable $$1) {
-      super(a);
-      this.u = $$0;
-      this.y = $$1;
-      this.s = new fpl(true);
-      this.v = flk.Q().aY().a();
+   public fte(fvi $$0) {
+      this($$0, 33);
+   }
+
+   public fte(fvi $$0, int $$1) {
+      this($$0, $$1, $$1);
+   }
+
+   public fte(fvi $$0, int $$1, int $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.c.c().a(0.5F, 0.5F);
+      this.d.c().a(0.5F, 0.5F);
    }
 
    @Override
-   public void aR_() {
-      fsm $$0 = this.A.c(fsm.d());
-      $$0.c().b().a(4);
-      this.z = $$0.a(new fpf(this.n, this.l, this.p), $$0x -> $$0x.a(8));
-      if (this.u.av().a(this.u) instanceof fpb $$1) {
-         this.q = $$1;
-         this.q.j = this.v;
-         $$0.a(this.q);
-      }
-
-      $$0.a(foy.b(150, $$0x -> this.a(new fxj(this, this.m.n)), false));
-      $$0.a(foy.a(150, $$0x -> this.a(new fxm(this, this.m.n, this.m.ah())), false));
-      this.A.b(fou.a(wo.j, $$0x -> this.aO_()).a());
-      this.A.a(this::c);
-      this.c();
+   public void j(int $$0) {
    }
 
    @Override
-   protected void c() {
-      if (this.z != null) {
-         this.z.b(this.n);
-      }
-
-      this.A.a();
+   public void k(int $$0) {
    }
 
    @Override
-   protected void aF_() {
-      if (this.v && this.q != null) {
-         this.b(this.q);
-      } else {
-         super.aF_();
-      }
-   }
-
-   private int m() {
-      return 90;
+   public int F() {
+      return 0;
    }
 
    @Override
-   public void aO_() {
-      this.a(true, this.y);
-   }
-
-   private void a(fum $$0) {
-      this.a(false, () -> this.m.a($$0));
-   }
-
-   private void a(boolean $$0, Runnable $$1) {
-      if ($$0) {
-         this.u.ax();
-      }
-
-      Narrator.getNarrator().clear();
-      $$1.run();
+   public int G() {
+      return 0;
    }
 
    @Override
-   public void a(fof $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.E();
-      this.s.a($$0, this.n, 1.0F);
+   public int A() {
+      return this.f.n;
    }
 
    @Override
-   protected void a(fof $$0, float $$1) {
-      f.a($$0, this.n, this.o, 1.0F, 0.0F);
+   public int y() {
+      return this.f.o;
    }
 
-   private void E() {
-      if (!this.w && this.v) {
-         if (this.x < 40.0F) {
-            this.x++;
-         } else if (this.m.aC()) {
-            Narrator.getNarrator().say(b.getString(), true);
-            this.w = true;
-         }
-      }
+   public int b() {
+      return this.h;
+   }
+
+   public void a(int $$0) {
+      this.h = $$0;
+   }
+
+   public void b(int $$0) {
+      this.g = $$0;
+   }
+
+   public int c() {
+      return this.g;
+   }
+
+   public int d() {
+      return this.f.o - this.c() - this.b();
+   }
+
+   @Override
+   public void b(Consumer<ftg> $$0) {
+      this.c.b($$0);
+      this.e.b($$0);
+      this.d.b($$0);
+   }
+
+   @Override
+   public void a() {
+      int $$0 = this.c();
+      int $$1 = this.b();
+      this.c.b(this.f.n);
+      this.c.a($$0);
+      this.c.c(0, 0);
+      this.c.a();
+      this.d.b(this.f.n);
+      this.d.a($$1);
+      this.d.a();
+      this.d.k(this.f.o - $$1);
+      this.e.b(this.f.n);
+      this.e.a();
+      int $$2 = $$0 + 30;
+      int $$3 = this.f.o - $$1 - this.e.y();
+      this.e.c(0, Math.min($$2, $$3));
+   }
+
+   public <T extends ftg> T a(T $$0) {
+      return this.c.a($$0);
+   }
+
+   public <T extends ftg> T a(T $$0, Consumer<fth> $$1) {
+      return this.c.a($$0, $$1);
+   }
+
+   public void a(wp $$0, fpa $$1) {
+      this.c.a(new fqx($$0, $$1));
+   }
+
+   public <T extends ftg> T b(T $$0) {
+      return this.d.a($$0);
+   }
+
+   public <T extends ftg> T b(T $$0, Consumer<fth> $$1) {
+      return this.d.a($$0, $$1);
+   }
+
+   public <T extends ftg> T c(T $$0) {
+      return this.e.a($$0);
+   }
+
+   public <T extends ftg> T c(T $$0, Consumer<fth> $$1) {
+      return this.e.a($$0, $$1);
    }
 }

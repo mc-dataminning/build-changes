@@ -1,2 +1,46 @@
-public interface fcw<T> extends fcv<T> {
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.Collections;
+import java.util.Map;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
+
+class fcw {
+   private final Reference2ObjectOpenHashMap<fcu, fcz> a = new Reference2ObjectOpenHashMap(16, 0.5F);
+
+   @Nullable
+   public fcz a(fcu $$0) {
+      return (fcz)this.a.get($$0);
+   }
+
+   public fcz a(fcu $$0, Consumer<fcz> $$1) {
+      return (fcz)this.a.computeIfAbsent($$0, $$1x -> {
+         fcz $$2 = new fcz();
+         $$1.accept($$2);
+         return $$2;
+      });
+   }
+
+   public boolean b(fcu $$0) {
+      return this.a.remove($$0) != null;
+   }
+
+   public boolean a() {
+      return !this.a.isEmpty();
+   }
+
+   public Object2IntMap<fcu> b() {
+      Object2IntMap<fcu> $$0 = new Object2IntOpenHashMap();
+      this.a.forEach(($$1, $$2) -> $$0.put($$1, $$2.a()));
+      return $$0;
+   }
+
+   void a(fcu $$0, fcz $$1) {
+      this.a.put($$0, $$1);
+   }
+
+   Map<fcu, fcz> c() {
+      return Collections.unmodifiableMap(this.a);
+   }
 }

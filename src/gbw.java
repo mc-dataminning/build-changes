@@ -1,39 +1,23 @@
-public class gbw extends gaq<gyh> {
-   public static final float e = 0.87F;
-   public static final float f = 0.92F;
-   private final gfe g = this.c.b("left_chest");
-   private final gfe i = this.c.b("right_chest");
-
-   public gbw(gfe $$0) {
-      super($$0);
+public class gbw extends gda<gyq> {
+   public gbw(ggc $$0) {
+      super($$0, gnh::f);
    }
 
-   public static gfk a(float $$0) {
-      gfm $$1 = gaq.a(gfi.a);
-      a($$1.a());
-      return gfk.a($$1, 64, 64).a(gfn.scaling($$0));
+   public static ggi a() {
+      ggk $$0 = new ggk();
+      ggm $$1 = $$0.a();
+      $$1.a("back", ggh.c().a(0, 0).a(0.0F, -2.5F, -2.5F, 0.0F, 5.0F, 5.0F), gge.a(-11.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F, 0.0F).a(0.8F));
+      ggh $$2 = ggh.c().a(0, 0).a(-12.0F, -2.0F, 0.0F, 16.0F, 4.0F, 0.0F, ggg.a, 1.0F, 0.8F);
+      $$1.a("cross_1", $$2, gge.b((float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("cross_2", $$2, gge.b((float) (Math.PI * 3.0 / 4.0), 0.0F, 0.0F));
+      return ggi.a($$0.a($$0x -> $$0x.b(0.9F)), 32, 32);
    }
 
-   public static gfk b(float $$0) {
-      gfm $$1 = gaq.c(gfi.a);
-      a($$1.a());
-      return gfk.a(gaq.b.apply($$1), 64, 64).a(gfn.scaling($$0));
-   }
-
-   private static void a(gfo $$0) {
-      gfo $$1 = $$0.b("body");
-      gfj $$2 = gfj.c().a(26, 21).a(-4.0F, 0.0F, -2.0F, 8.0F, 8.0F, 3.0F);
-      $$1.a("left_chest", $$2, gfg.a(6.0F, -8.0F, 0.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("right_chest", $$2, gfg.a(-6.0F, -8.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      gfo $$3 = $$0.b("head_parts").b("head");
-      gfj $$4 = gfj.c().a(0, 12).a(-1.0F, -7.0F, 0.0F, 2.0F, 7.0F, 1.0F);
-      $$3.a("left_ear", $$4, gfg.a(1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12)));
-      $$3.a("right_ear", $$4, gfg.a(-1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12)));
-   }
-
-   public void a(gyh $$0) {
+   public void a(gyq $$0) {
       super.a($$0);
-      this.g.k = $$0.a;
-      this.i.k = $$0.a;
+      if ($$0.c > 0.0F) {
+         float $$1 = -ayz.a($$0.c * 3.0F) * $$0.c;
+         this.v.g += $$1 * (float) (Math.PI / 180.0);
+      }
    }
 }

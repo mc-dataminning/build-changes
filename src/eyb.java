@@ -1,103 +1,80 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class eyb extends exf {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<eyb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  wr.a.optionalFieldOf("name").forGetter($$0x -> $$0x.c),
-                  evs.b.e.optionalFieldOf("entity").forGetter($$0x -> $$0x.d),
-                  eyb.a.c.optionalFieldOf("target", eyb.a.a).forGetter($$0x -> $$0x.e)
-               )
-            )
-            .apply($$0, eyb::new)
-   );
-   private final Optional<wp> c;
-   private final Optional<evs.b> d;
-   private final eyb.a e;
+public abstract class eyb implements eyc {
+   protected final List<ezx> g;
+   private final Predicate<ewo> a;
 
-   private eyb(List<ezb> $$0, Optional<wp> $$1, Optional<evs.b> $$2, eyb.a $$3) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   protected eyb(List<ezx> $$0) {
+      this.g = $$0;
+      this.a = af.a($$0);
    }
 
    @Override
-   public exh<eyb> b() {
-      return exi.p;
+   public abstract eyd<? extends eyb> b();
+
+   protected static <T extends eyb> P1<Mu<T>, List<ezx>> a(Instance<T> $$0) {
+      return $$0.group(ezx.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.g));
    }
+
+   public final cxh b(cxh $$0, ewo $$1) {
+      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
+   }
+
+   protected abstract cxh a(cxh var1, ewo var2);
 
    @Override
-   public Set<bai<?>> a() {
-      return this.d.<Set<bai<?>>>map($$0 -> Set.of($$0.a())).orElse(Set.of());
+   public void a(ewu $$0) {
+      eyc.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
+         this.g.get($$1).a($$0.a(".conditions[" + $$1 + "]"));
+      }
    }
 
-   public static UnaryOperator<wp> a(evs $$0, @Nullable evs.b $$1) {
-      if ($$1 != null) {
-         bum $$2 = $$0.c($$1.a());
-         if ($$2 != null) {
-            ex $$3 = $$2.d($$0.d()).a(2);
-            return $$2x -> {
-               try {
-                  return ws.a($$3, $$2x, $$2, 0);
-               } catch (CommandSyntaxException var4) {
-                  b.warn("Failed to resolve text component", var4);
-                  return $$2x;
-               }
-            };
-         }
+   protected static eyb.a<?> a(Function<List<ezx>, eyc> $$0) {
+      return new eyb.b($$0);
+   }
+
+   public abstract static class a<T extends eyb.a<T>> implements eyc.a, ezp<T> {
+      private final Builder<ezx> a = ImmutableList.builder();
+
+      public T a(ezx.a $$0) {
+         this.a.add($$0.build());
+         return this.c();
       }
 
-      return $$0x -> $$0x;
+      public final T f() {
+         return this.c();
+      }
+
+      protected abstract T c();
+
+      protected List<ezx> g() {
+         return this.a.build();
+      }
    }
 
-   @Override
-   public cwq a(cwq $$0, evs $$1) {
-      this.c.ifPresent($$2 -> $$0.b(this.e.a(), a($$1, this.d.orElse(null)).apply($$2)));
-      return $$0;
-   }
+   static final class b extends eyb.a<eyb.b> {
+      private final Function<List<ezx>, eyc> a;
 
-   public static exf.a<?> a(wp $$0, eyb.a $$1) {
-      return a($$2 -> new eyb($$2, Optional.of($$0), Optional.empty(), $$1));
-   }
+      public b(Function<List<ezx>, eyc> $$0) {
+         this.a = $$0;
+      }
 
-   public static exf.a<?> a(wp $$0, eyb.a $$1, evs.b $$2) {
-      return a($$3 -> new eyb($$3, Optional.of($$0), Optional.of($$2), $$1));
-   }
-
-   public static enum a implements azv {
-      a("custom_name"),
-      b("item_name");
-
-      public static final Codec<eyb.a> c = azv.a(eyb.a::values);
-      private final String d;
-
-      private a(final String $$0) {
-         this.d = $$0;
+      protected eyb.b a() {
+         return this;
       }
 
       @Override
-      public String c() {
-         return this.d;
-      }
-
-      public ku<wp> a() {
-         return switch (this) {
-            case a -> kv.g;
-            case b -> kv.h;
-         };
+      public eyc b() {
+         return this.a.apply(this.g());
       }
    }
 }

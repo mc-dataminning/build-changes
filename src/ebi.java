@@ -1,38 +1,49 @@
+import com.mojang.datafixers.DataFixer;
+import com.mojang.serialization.Dynamic;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
 
-public interface ebi<B, T extends B> {
-   static <B, T extends B> ebi<B, T> a(final Class<T> $$0) {
-      return new ebi<B, T>() {
-         @Nullable
-         @Override
-         public T a(B $$0x) {
-            return (T)($$0.isInstance($$0) ? $$0 : null);
-         }
+public class ebi implements AutoCloseable {
+   private final eay a;
+   private final DataFixer b;
+   private final bam c;
 
-         @Override
-         public Class<? extends B> a() {
-            return $$0;
-         }
-      };
+   public ebi(ebf $$0, Path $$1, DataFixer $$2, boolean $$3, bam $$4) {
+      this.b = $$2;
+      this.c = $$4;
+      this.a = new eay($$0, $$1, $$3);
    }
 
-   static <B, T extends B> ebi<B, T> b(final Class<T> $$0) {
-      return new ebi<B, T>() {
-         @Nullable
-         @Override
-         public T a(B $$0x) {
-            return (T)($$0.equals($$0.getClass()) ? $$0 : null);
-         }
-
-         @Override
-         public Class<? extends B> a() {
-            return $$0;
-         }
-      };
+   public CompletableFuture<Optional<tq>> a(dgg $$0) {
+      return this.a.a($$0);
    }
 
-   @Nullable
-   T a(B var1);
+   public CompletableFuture<Void> a(dgg $$0, @Nullable tq $$1) {
+      return this.a.a($$0, $$1);
+   }
 
-   Class<? extends B> a();
+   public tq a(tq $$0, int $$1) {
+      int $$2 = uf.b($$0, $$1);
+      return this.c.a(this.b, $$0, $$2);
+   }
+
+   public Dynamic<un> a(Dynamic<un> $$0, int $$1) {
+      return this.c.a(this.b, $$0, $$1);
+   }
+
+   public CompletableFuture<Void> a(boolean $$0) {
+      return this.a.a($$0);
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.a.close();
+   }
+
+   public ebf a() {
+      return this.a.a();
+   }
 }

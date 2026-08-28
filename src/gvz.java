@@ -1,18 +1,31 @@
-public class gvz extends gwu<gzx, gdh> {
-   private final gcp<gzx> a;
+public class gvz extends grx<cpd, hbu, gfm> {
+   private static final aku b = aku.b("textures/entity/villager/villager.png");
+   public static final gww.a a = new gww.a(-0.1171875F, -0.07421875F, 1.0F);
 
-   public gvz(guc<gzx, gdh> $$0, gfa $$1) {
-      super($$0);
-      this.a = new gdg($$1.a(gfd.cg));
+   public gvz(gtd.a $$0) {
+      super($$0, new gfm($$0.a(ggb.dv)), new gfm($$0.a(ggb.dw)), 0.5F);
+      this.a(new gww<>(this, $$0.f(), a));
+      this.a(new gyc<>(this, $$0.e(), "villager"));
+      this.a(new gwv<>(this));
    }
 
-   public void a(ffv $$0, glz $$1, int $$2, gzx $$3, float $$4, float $$5) {
-      if ("deadmau5".equals($$3.aH) && !$$3.z) {
-         ffz $$6 = $$1.getBuffer(gmj.d($$3.a.a()));
-         int $$7 = gtg.a($$3, 0.0F);
-         this.d().a(this.a);
-         this.a.a($$3);
-         this.a.a($$0, $$6, $$2, $$7);
-      }
+   public aku a(hbu $$0) {
+      return b;
+   }
+
+   protected float b(hbu $$0) {
+      float $$1 = super.g($$0);
+      return $$0.aj ? $$1 * 0.5F : $$1;
+   }
+
+   public hbu b() {
+      return new hbu();
+   }
+
+   public void a(cpd $$0, hbu $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      gzy.a($$0, $$1, this.i);
+      $$1.a = $$0.q() > 0;
+      $$1.b = $$0.gA();
    }
 }

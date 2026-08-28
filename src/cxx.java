@@ -1,25 +1,24 @@
-public class cxx extends cwm implements cxl {
-   public static float a = 1.5F;
-
-   public cxx(cwm.a $$0) {
+public class cxx extends cxd {
+   public cxx(cxd.a $$0) {
       super($$0);
    }
 
    @Override
-   public bsl a(dgj $$0, coy $$1, bsk $$2) {
-      cwq $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awa.zo, awb.g, 0.5F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
-      if ($$0 instanceof ard $$4) {
-         cpr.a(cpw::new, $$4, $$3, $$1, 0.0F, a, 1.0F);
+   public bsy a(cxh $$0, cpr $$1, bvy $$2, bsx $$3) {
+      wp $$4 = $$0.a(kv.g);
+      if ($$4 != null && $$2.aq().b()) {
+         if (!$$1.dU().C && $$2.bJ()) {
+            $$2.b($$4);
+            if ($$2 instanceof bwa $$5) {
+               $$5.ga();
+            }
+
+            $$0.h(1);
+         }
+
+         return bsy.a;
+      } else {
+         return bsy.e;
       }
-
-      $$1.b(awk.c.b(this));
-      $$3.a(1, $$1);
-      return bsl.a;
-   }
-
-   @Override
-   public cpr a(dgj $$0, kb $$1, cwq $$2, jn $$3) {
-      return new cpw($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
    }
 }

@@ -1,95 +1,100 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonSyntaxException;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public class gnz implements gnt {
-   private final List<gnz.d> a;
+public class gnz {
+   public static final aku a = aku.b("textures/misc/forcefield.png");
 
-   gnz(List<gnz.d> $$0) {
-      this.a = $$0;
-   }
+   public void a(dzh $$0, fbx $$1, double $$2, double $$3) {
+      double $$4 = $$0.e();
+      double $$5 = $$0.g();
+      double $$6 = $$0.f();
+      double $$7 = $$0.h();
+      if (!($$1.d < $$5 - $$2) || !($$1.d > $$4 + $$2) || !($$1.f < $$7 - $$2) || !($$1.f > $$6 + $$2)) {
+         double $$8 = 1.0 - $$0.b($$1.d, $$1.f) / $$2;
+         $$8 = Math.pow($$8, 4.0);
+         $$8 = ayz.a($$8, 0.0, 1.0);
+         double $$9 = $$1.d;
+         double $$10 = $$1.f;
+         float $$11 = (float)$$3;
+         gnh $$12 = gnh.a(fmg.O());
+         $$12.a();
+         int $$13 = $$0.d().a();
+         float $$14 = (float)axk.b($$13) / 255.0F;
+         float $$15 = (float)axk.c($$13) / 255.0F;
+         float $$16 = (float)axk.d($$13) / 255.0F;
+         RenderSystem.setShaderColor($$14, $$15, $$16, (float)$$8);
+         float $$17 = (float)(af.c() % 3000L) / 3000.0F;
+         float $$18 = (float)(-ayz.e($$1.e * 0.5));
+         float $$19 = $$18 + $$11;
+         fgm $$20 = fgt.b().a(fgw.c.h, fgp.i);
+         double $$21 = Math.max((double)ayz.a($$10 - $$2), $$6);
+         double $$22 = Math.min((double)ayz.c($$10 + $$2), $$7);
+         float $$23 = (float)(ayz.a($$21) & 1) * 0.5F;
+         if ($$9 > $$5 - $$2) {
+            float $$24 = $$23;
 
-   @Override
-   public Object a(dwy $$0) {
-      IntList $$1 = new IntArrayList();
-
-      for (int $$2 = 0; $$2 < this.a.size(); $$2++) {
-         if (this.a.get($$2).a.test($$0)) {
-            $$1.add($$2);
-         }
-      }
-
-      record a(gnz a, IntList b) {
-         a(IntList b) {
-            this.b = b;
-         }
-      }
-
-      return new a($$1);
-   }
-
-   @Override
-   public void a(hhl.a $$0) {
-      this.a.forEach($$1 -> $$1.b.a($$0));
-   }
-
-   @Override
-   public hgt a(hhc $$0) {
-      List<hhk.a> $$1 = new ArrayList<>(this.a.size());
-
-      for (gnz.d $$2 : this.a) {
-         hgt $$3 = $$2.b.a($$0);
-         $$1.add(new hhk.a($$2.a, $$3));
-      }
-
-      return new hhk($$1);
-   }
-
-   public static record b(List<gob> a) {
-      public gnz a(dwz<djn, dwy> $$0) {
-         List<gnz.d> $$1 = this.a.stream().map($$1x -> new gnz.d($$1x.a($$0), $$1x.a())).toList();
-         return new gnz($$1);
-      }
-
-      public Set<gnr> a() {
-         return this.a.stream().map(gob::a).collect(Collectors.toSet());
-      }
-
-      public List<gob> b() {
-         return this.a;
-      }
-   }
-
-   public static class c implements JsonDeserializer<gnz.b> {
-      public gnz.b a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return new gnz.b(this.a($$2, $$0.getAsJsonArray()));
-      }
-
-      private List<gob> a(JsonDeserializationContext $$0, JsonArray $$1) {
-         List<gob> $$2 = new ArrayList<>();
-         if ($$1.isEmpty()) {
-            throw new JsonSyntaxException("Empty selector array");
-         } else {
-            for (JsonElement $$3 : $$1) {
-               $$2.add((gob)$$0.deserialize($$3, gob.class));
+            for (double $$25 = $$21; $$25 < $$22; $$24 += 0.5F) {
+               double $$26 = Math.min(1.0, $$22 - $$25);
+               float $$27 = (float)$$26 * 0.5F;
+               $$20.a((float)($$5 - $$9), -$$11, (float)($$25 - $$10)).a($$17 - $$24, $$17 + $$19);
+               $$20.a((float)($$5 - $$9), -$$11, (float)($$25 + $$26 - $$10)).a($$17 - ($$27 + $$24), $$17 + $$19);
+               $$20.a((float)($$5 - $$9), $$11, (float)($$25 + $$26 - $$10)).a($$17 - ($$27 + $$24), $$17 + $$18);
+               $$20.a((float)($$5 - $$9), $$11, (float)($$25 - $$10)).a($$17 - $$24, $$17 + $$18);
+               $$25++;
             }
-
-            return $$2;
          }
-      }
-   }
 
-   static record d(Predicate<dwy> a, gnr b) {
+         if ($$9 < $$4 + $$2) {
+            float $$28 = $$23;
+
+            for (double $$29 = $$21; $$29 < $$22; $$28 += 0.5F) {
+               double $$30 = Math.min(1.0, $$22 - $$29);
+               float $$31 = (float)$$30 * 0.5F;
+               $$20.a((float)($$4 - $$9), -$$11, (float)($$29 - $$10)).a($$17 + $$28, $$17 + $$19);
+               $$20.a((float)($$4 - $$9), -$$11, (float)($$29 + $$30 - $$10)).a($$17 + $$31 + $$28, $$17 + $$19);
+               $$20.a((float)($$4 - $$9), $$11, (float)($$29 + $$30 - $$10)).a($$17 + $$31 + $$28, $$17 + $$18);
+               $$20.a((float)($$4 - $$9), $$11, (float)($$29 - $$10)).a($$17 + $$28, $$17 + $$18);
+               $$29++;
+            }
+         }
+
+         $$21 = Math.max((double)ayz.a($$9 - $$2), $$4);
+         $$22 = Math.min((double)ayz.c($$9 + $$2), $$5);
+         $$23 = (float)(ayz.a($$21) & 1) * 0.5F;
+         if ($$10 > $$7 - $$2) {
+            float $$32 = $$23;
+
+            for (double $$33 = $$21; $$33 < $$22; $$32 += 0.5F) {
+               double $$34 = Math.min(1.0, $$22 - $$33);
+               float $$35 = (float)$$34 * 0.5F;
+               $$20.a((float)($$33 - $$9), -$$11, (float)($$7 - $$10)).a($$17 + $$32, $$17 + $$19);
+               $$20.a((float)($$33 + $$34 - $$9), -$$11, (float)($$7 - $$10)).a($$17 + $$35 + $$32, $$17 + $$19);
+               $$20.a((float)($$33 + $$34 - $$9), $$11, (float)($$7 - $$10)).a($$17 + $$35 + $$32, $$17 + $$18);
+               $$20.a((float)($$33 - $$9), $$11, (float)($$7 - $$10)).a($$17 + $$32, $$17 + $$18);
+               $$33++;
+            }
+         }
+
+         if ($$10 < $$6 + $$2) {
+            float $$36 = $$23;
+
+            for (double $$37 = $$21; $$37 < $$22; $$36 += 0.5F) {
+               double $$38 = Math.min(1.0, $$22 - $$37);
+               float $$39 = (float)$$38 * 0.5F;
+               $$20.a((float)($$37 - $$9), -$$11, (float)($$6 - $$10)).a($$17 - $$36, $$17 + $$19);
+               $$20.a((float)($$37 + $$38 - $$9), -$$11, (float)($$6 - $$10)).a($$17 - ($$39 + $$36), $$17 + $$19);
+               $$20.a((float)($$37 + $$38 - $$9), $$11, (float)($$6 - $$10)).a($$17 - ($$39 + $$36), $$17 + $$18);
+               $$20.a((float)($$37 - $$9), $$11, (float)($$6 - $$10)).a($$17 - $$36, $$17 + $$18);
+               $$37++;
+            }
+         }
+
+         fgq $$40 = $$20.a();
+         if ($$40 != null) {
+            fgn.a($$40);
+         }
+
+         $$12.b();
+         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+      }
    }
 }

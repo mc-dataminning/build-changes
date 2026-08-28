@@ -1,9 +1,9 @@
 public interface awx {
-   axf<cwj> a = a("regular_goat_horns");
-   axf<cwj> b = a("screaming_goat_horns");
-   axf<cwj> c = a("goat_horns");
+   axf<cxa> a = a("regular_goat_horns");
+   axf<cxa> b = a("screaming_goat_horns");
+   axf<cxa> c = a("goat_horns");
 
-   private static axf<cwj> a(String $$0) {
-      return axf.a(mc.I, akv.b($$0));
+   private static axf<cxa> a(String $$0) {
+      return axf.a(mc.I, aku.b($$0));
    }
 }

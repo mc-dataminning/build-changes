@@ -8,7 +8,7 @@ public record lv(float c) implements lr {
 
    @Override
    public ls<lv> a() {
-      return lt.K;
+      return lt.L;
    }
 
    public float b() {

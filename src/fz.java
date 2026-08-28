@@ -18,7 +18,7 @@ public class fz<T> implements ArgumentType<jr<T>> {
    private final boolean e;
    private final Codec<jr<T>> f;
 
-   protected fz(et $$0, aku<ke<T>> $$1, Codec<jr<T>> $$2) {
+   protected fz(et $$0, akt<ke<T>> $$1, Codec<jr<T>> $$2) {
       this.d = $$0;
       this.e = $$0.a($$1).isPresent();
       this.f = $$2;
@@ -28,7 +28,7 @@ public class fz<T> implements ArgumentType<jr<T>> {
       return new fz.c($$0);
    }
 
-   public static jr<evx> a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+   public static jr<ewt> a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
       return d($$0, $$1);
    }
 
@@ -36,7 +36,7 @@ public class fz<T> implements ArgumentType<jr<T>> {
       return new fz.a($$0);
    }
 
-   public static jr<exg> b(CommandContext<ex> $$0, String $$1) {
+   public static jr<eyc> b(CommandContext<ex> $$0, String $$1) {
       return d($$0, $$1);
    }
 
@@ -44,7 +44,7 @@ public class fz<T> implements ArgumentType<jr<T>> {
       return new fz.b($$0);
    }
 
-   public static jr<ezb> c(CommandContext<ex> $$0, String $$1) {
+   public static jr<ezx> c(CommandContext<ex> $$0, String $$1) {
       return d($$0, $$1);
    }
 
@@ -58,7 +58,7 @@ public class fz<T> implements ArgumentType<jr<T>> {
       if (!this.e) {
          return null;
       } else {
-         akt<un> $$2 = this.d.a(ue.a);
+         aks<un> $$2 = this.d.a(ue.a);
          return (jr<T>)this.f.parse($$2, $$1).getOrThrow($$1x -> a.createWithContext($$0, $$1x));
       }
    }
@@ -71,7 +71,7 @@ public class fz<T> implements ArgumentType<jr<T>> {
          return $$2;
       } else {
          $$0.setCursor($$1);
-         akv $$3 = akv.a($$0);
+         aku $$3 = aku.a($$0);
          if (c($$0)) {
             return ul.a($$3.toString());
          } else {
@@ -89,21 +89,21 @@ public class fz<T> implements ArgumentType<jr<T>> {
       return b;
    }
 
-   public static class a extends fz<exg> {
+   public static class a extends fz<eyc> {
       protected a(et $$0) {
-         super($$0, mc.bh, exi.d);
+         super($$0, mc.bj, eye.d);
       }
    }
 
-   public static class b extends fz<ezb> {
+   public static class b extends fz<ezx> {
       protected b(et $$0) {
-         super($$0, mc.bi, ezb.f);
+         super($$0, mc.bk, ezx.f);
       }
    }
 
-   public static class c extends fz<evx> {
+   public static class c extends fz<ewt> {
       protected c(et $$0) {
-         super($$0, mc.bg, evx.e);
+         super($$0, mc.bi, ewt.e);
       }
    }
 }

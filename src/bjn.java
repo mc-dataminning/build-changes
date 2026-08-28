@@ -1,84 +1,29 @@
-import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.datafixers.types.Type;
 
-public class bjn extends Schema {
-   public bjn(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class bjn extends DataFix {
+   public bjn(Schema $$0) {
+      super($$0, false);
    }
 
-   protected static TypeTemplate a(Schema $$0) {
-      return DSL.optionalFields("ArmorItems", DSL.list(bhy.t.in($$0)), "HandItems", DSL.list(bhy.t.in($$0)), "body_armor_item", bhy.t.in($$0));
-   }
-
-   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register($$1, $$2, () -> a($$0));
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      a($$0, $$1, "ArmorStand");
-      a($$0, $$1, "Creeper");
-      a($$0, $$1, "Skeleton");
-      a($$0, $$1, "Spider");
-      a($$0, $$1, "Giant");
-      a($$0, $$1, "Zombie");
-      a($$0, $$1, "Slime");
-      a($$0, $$1, "Ghast");
-      a($$0, $$1, "PigZombie");
-      $$0.register($$1, "Enderman", $$1x -> DSL.optionalFields("carried", bhy.C.in($$0), a($$0)));
-      a($$0, $$1, "CaveSpider");
-      a($$0, $$1, "Silverfish");
-      a($$0, $$1, "Blaze");
-      a($$0, $$1, "LavaSlime");
-      a($$0, $$1, "EnderDragon");
-      a($$0, $$1, "WitherBoss");
-      a($$0, $$1, "Bat");
-      a($$0, $$1, "Witch");
-      a($$0, $$1, "Endermite");
-      a($$0, $$1, "Guardian");
-      a($$0, $$1, "Pig");
-      a($$0, $$1, "Sheep");
-      a($$0, $$1, "Cow");
-      a($$0, $$1, "Chicken");
-      a($$0, $$1, "Squid");
-      a($$0, $$1, "Wolf");
-      a($$0, $$1, "MushroomCow");
-      a($$0, $$1, "SnowMan");
-      a($$0, $$1, "Ozelot");
-      a($$0, $$1, "VillagerGolem");
-      $$0.register(
-         $$1, "EntityHorse", $$1x -> DSL.optionalFields("Items", DSL.list(bhy.t.in($$0)), "ArmorItem", bhy.t.in($$0), "SaddleItem", bhy.t.in($$0), a($$0))
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bic.N);
+      OpticFinder<?> $$1 = $$0.findField("dimensions");
+      return this.fixTypeEverywhereTyped(
+         "WorldGenSettingsDisallowOldCustomWorldsFix_" + this.getOutputSchema().getVersionKey(), $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> {
+               $$0xx.write().map($$0xxx -> $$0xxx.getMapValues().map($$0xxxx -> {
+                     $$0xxxx.forEach(($$0xxxxx, $$1xx) -> {
+                        if ($$1xx.get("type").asString().result().isEmpty()) {
+                           throw new uc("Unable load old custom worlds.");
+                        }
+                     });
+                     return $$0xxxx;
+                  }));
+               return $$0xx;
+            })
       );
-      a($$0, $$1, "Rabbit");
-      $$0.register(
-         $$1,
-         "Villager",
-         $$1x -> DSL.optionalFields("Inventory", DSL.list(bhy.t.in($$0)), "Offers", DSL.optionalFields("Recipes", DSL.list(bhy.x.in($$0))), a($$0))
-      );
-      a($$0, $$1, "Shulker");
-      $$0.register($$1, "AreaEffectCloud", $$1x -> DSL.optionalFields("Particle", bhy.y.in($$0)));
-      $$0.registerSimple($$1, "ShulkerBullet");
-      return $$1;
-   }
-
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         false,
-         bhy.f,
-         () -> DSL.optionalFields(
-               "entities",
-               DSL.list(DSL.optionalFields("nbt", bhy.A.in($$0))),
-               "blocks",
-               DSL.list(DSL.optionalFields("nbt", bhy.s.in($$0))),
-               "palette",
-               DSL.list(bhy.u.in($$0))
-            )
-      );
-      $$0.registerType(false, bhy.u, DSL::remainder);
-      $$0.registerType(false, bhy.v, DSL::remainder);
    }
 }

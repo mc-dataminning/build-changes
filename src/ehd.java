@@ -1,60 +1,31 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehd extends efz<eiu> {
-   public ehd(Codec<eiu> $$0) {
-      super($$0);
-   }
+public class ehd implements eiy {
+   public static final Codec<ehd> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dxq.a.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
+               dxq.a.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
+               dxq.a.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
+               dxq.a.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
+               eev.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
+               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, ehd::new)
+   );
+   public final dxq b;
+   public final dxq c;
+   public final dxq d;
+   public final dxq e;
+   public final eev f;
+   public final boolean g;
 
-   @Override
-   public boolean a(egb<eiu> $$0) {
-      dhh $$1 = $$0.b();
-      ji $$2 = $$0.e();
-      if (!this.a($$1, $$2)) {
-         return false;
-      } else {
-         eiu $$3 = $$0.f();
-         azh $$4 = $$0.d();
-         dqn $$5 = dqn.b();
-         int $$6 = $$3.f() + $$3.d();
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
-               $$5.a($$2, $$3.b());
-            }
-
-            boolean $$9 = $$7 < $$3.f();
-
-            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
-               $$5.a($$1, $$2, $$4, $$9);
-            }
-
-            $$5.j();
-         }
-
-         ji $$11 = $$2.e();
-         if ($$4.i() <= $$3.h() && $$1.a_($$11).m($$1, $$11)) {
-            $$1.a($$2, djp.rw.m(), 3);
-         }
-
-         int $$12 = $$3.g().a($$4);
-
-         for (int $$13 = 0; $$13 < $$12; $$13++) {
-            ji $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
-            if ($$1.a_($$14).l() && $$1.a_($$14.e()).c($$1, $$14.e(), jn.b)) {
-               $$1.a($$14, djp.rx.m().b(dqm.d, Boolean.valueOf(true)), 3);
-            }
-         }
-
-         return true;
-      }
-   }
-
-   private boolean a(dgk $$0, ji $$1) {
-      dwy $$2 = $$0.a_($$1);
-      if ($$2.b() instanceof dqi) {
-         return true;
-      } else {
-         return !$$2.l() && (!$$2.a(djp.J) || !$$2.y().b()) ? false : jn.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).m($$0, $$1x));
-      }
+   public ehd(dxq $$0, dxq $$1, dxq $$2, dxq $$3, eev $$4, boolean $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 }

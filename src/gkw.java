@@ -1,22 +1,20 @@
-public class gkw extends gkv {
-   private final flo d;
-
-   public gkw(flo $$0) {
-      this.d = $$0;
+public class gkw extends gjy {
+   protected gkw(ggy $$0, double $$1, double $$2, double $$3, double $$4, glb $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.t = 16;
+      this.D = 1.5F;
+      this.b($$5);
    }
 
-   private static float a(boolean $$0, boolean $$1) {
-      if ($$0 == $$1) {
-         return 0.0F;
-      } else {
-         return $$0 ? 1.0F : -1.0F;
+   public static class a implements gkj<lx> {
+      private final glb a;
+
+      public a(glb $$0) {
+         this.a = $$0;
       }
-   }
 
-   @Override
-   public void a() {
-      this.a = new cow(this.d.v.e(), this.d.x.e(), this.d.w.e(), this.d.y.e(), this.d.z.e(), this.d.A.e(), this.d.B.e());
-      this.c = a(this.a.a(), this.a.b());
-      this.b = a(this.a.c(), this.a.d());
+      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gkw($$1, $$2, $$3, $$4, $$5, this.a);
+      }
    }
 }

@@ -1,43 +1,19 @@
-import org.joml.Quaternionf;
+public class gbz extends gdv {
+   private final ggc a;
 
-public class gbz extends gcc<gyi> {
-   private static final String e = "outer_glass";
-   private static final String f = "inner_glass";
-   private static final String g = "base";
-   private static final float i = (float)Math.sin(Math.PI / 4);
-   public final gfe a;
-   public final gfe b;
-   public final gfe c;
-   public final gfe d;
-
-   public gbz(gfe $$0) {
-      super($$0);
-      this.a = $$0.b("base");
-      this.b = $$0.b("outer_glass");
-      this.c = this.b.b("inner_glass");
-      this.d = this.c.b("cube");
+   public gbz(ggc $$0) {
+      super($$0, gnh::d);
+      this.a = $$0.b("flag");
    }
 
-   public static gfk a() {
-      gfm $$0 = new gfm();
-      gfo $$1 = $$0.a();
-      float $$2 = 0.875F;
-      gfj $$3 = gfj.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F);
-      gfo $$4 = $$1.a("outer_glass", $$3, gfg.a(0.0F, 24.0F, 0.0F));
-      gfo $$5 = $$4.a("inner_glass", $$3, gfg.a.a(0.875F));
-      $$5.a("cube", gfj.c().a(32, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), gfg.a.a(0.765625F));
-      $$1.a("base", gfj.c().a(0, 16).a(-6.0F, 0.0F, -6.0F, 12.0F, 4.0F, 12.0F), gfg.a);
-      return gfk.a($$0, 64, 32);
+   public static ggi a(boolean $$0) {
+      ggk $$1 = new ggk();
+      ggm $$2 = $$1.a();
+      $$2.a("flag", ggh.c().a(0, 0).a(-10.0F, 0.0F, -2.0F, 20.0F, 40.0F, 1.0F), gge.a(0.0F, $$0 ? -44.0F : -20.5F, $$0 ? 0.0F : 10.5F));
+      return ggi.a($$1, 64, 64);
    }
 
-   public void a(gyi $$0) {
-      super.a($$0);
-      this.a.k = $$0.a;
-      float $$1 = $$0.u * 3.0F;
-      float $$2 = grz.a($$0.u) * 16.0F;
-      this.b.c += $$2 / 2.0F;
-      this.b.a(a.d.rotationDegrees($$1).rotateAxis((float) (Math.PI / 3), i, 0.0F, i));
-      this.c.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), i, 0.0F, i).rotateY($$1 * (float) (Math.PI / 180.0)));
-      this.d.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), i, 0.0F, i).rotateY($$1 * (float) (Math.PI / 180.0)));
+   public void a(float $$0) {
+      this.a.e = (-0.0125F + 0.01F * ayz.b((float) (Math.PI * 2) * $$0)) * (float) Math.PI;
    }
 }

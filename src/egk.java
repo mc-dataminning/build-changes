@@ -1,53 +1,44 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class egk extends efb {
-   public egk(Codec<eif> $$0) {
+public class egk extends egi {
+   public egk(Codec<ejf> $$0) {
       super($$0);
    }
 
    @Override
-   protected void a(dgk $$0, azh $$1, ji $$2, int $$3, ji.a $$4, eif $$5) {
-      for (int $$6 = $$3 - 3; $$6 <= $$3; $$6++) {
-         int $$7 = $$6 < $$3 ? $$5.d : $$5.d - 1;
-         int $$8 = $$5.d - 2;
+   protected boolean a(dha $$0, azh $$1, ji $$2, dxq $$3) {
+      ji.a $$4 = $$2.k();
+      int $$5 = $$1.a(3) + 1;
 
-         for (int $$9 = -$$7; $$9 <= $$7; $$9++) {
-            for (int $$10 = -$$7; $$10 <= $$7; $$10++) {
-               boolean $$11 = $$9 == -$$7;
-               boolean $$12 = $$9 == $$7;
-               boolean $$13 = $$10 == -$$7;
-               boolean $$14 = $$10 == $$7;
-               boolean $$15 = $$11 || $$12;
-               boolean $$16 = $$13 || $$14;
-               if ($$6 >= $$3 || $$15 != $$16) {
-                  $$4.a($$2, $$9, $$6, $$10);
-                  if (!$$0.a_($$4).s()) {
-                     dwy $$17 = $$5.b.a($$1, $$2);
-                     if ($$17.b(dnm.e) && $$17.b(dnm.c) && $$17.b(dnm.b) && $$17.b(dnm.d) && $$17.b(dnm.f)) {
-                        $$17 = $$17.b(dnm.f, Boolean.valueOf($$6 >= $$3 - 1))
-                           .b(dnm.e, Boolean.valueOf($$9 < -$$8))
-                           .b(dnm.c, Boolean.valueOf($$9 > $$8))
-                           .b(dnm.b, Boolean.valueOf($$10 < -$$8))
-                           .b(dnm.d, Boolean.valueOf($$10 > $$8));
-                     }
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         if (!this.b($$0, $$1, $$4, $$3)) {
+            return true;
+         }
 
-                     this.a($$0, $$4, $$17);
-                  }
-               }
+         $$4.c(jn.b);
+      }
+
+      ji $$7 = $$4.j();
+      int $$8 = $$1.a(3) + 2;
+      List<jn> $$9 = jn.c.a.c($$1);
+
+      for (jn $$11 : $$9.subList(0, $$8)) {
+         $$4.g($$7);
+         $$4.c($$11);
+         int $$12 = $$1.a(5) + 2;
+         int $$13 = 0;
+
+         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
+            $$13++;
+            $$4.c(jn.b);
+            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
+               $$4.c($$11);
+               $$13 = 0;
             }
          }
       }
-   }
 
-   @Override
-   protected int a(int $$0, int $$1, int $$2, int $$3) {
-      int $$4 = 0;
-      if ($$3 < $$1 && $$3 >= $$1 - 3) {
-         $$4 = $$2;
-      } else if ($$3 == $$1) {
-         $$4 = $$2;
-      }
-
-      return $$4;
+      return true;
    }
 }

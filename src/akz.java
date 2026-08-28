@@ -1,9 +1,18 @@
-public class akz {
-   public final String a;
-   public final ex b;
+import com.mojang.logging.LogUtils;
+import java.io.OutputStream;
+import org.slf4j.Logger;
 
-   public akz(String $$0, ex $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class akz extends alb {
+   private static final Logger b = LogUtils.getLogger();
+
+   public akz(String $$0, OutputStream $$1) {
+      super($$0, $$1);
+   }
+
+   @Override
+   protected void a(String $$0) {
+      StackTraceElement[] $$1 = Thread.currentThread().getStackTrace();
+      StackTraceElement $$2 = $$1[Math.min(3, $$1.length)];
+      b.info("[{}]@.({}:{}): {}", new Object[]{this.a, $$2.getFileName(), $$2.getLineNumber(), $$0});
    }
 }

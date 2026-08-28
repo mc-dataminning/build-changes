@@ -1,37 +1,31 @@
-import com.mojang.authlib.GameProfile;
-import java.net.SocketAddress;
-import javax.annotation.Nullable;
+public class hjd implements hiy {
+   private final glv a;
+   private boolean b;
+   private boolean c = true;
 
-public class hjd extends avd {
-   @Nullable
-   private tq h;
-
-   public hjd(hje $$0, jy<ale> $$1, evj $$2) {
-      super($$0, $$1, $$2, 8);
-      this.a(10);
+   public hjd(glv $$0) {
+      this.a = $$0;
    }
 
    @Override
-   protected void b(are $$0) {
-      if (this.b().a($$0.gh())) {
-         this.h = $$0.f(new tq());
+   public void a() {
+      dgz $$0 = this.a.dU();
+      dxq $$1 = $$0.c(this.a.cQ().c(0.0, -0.4F, 0.0).h(1.0E-6)).filter($$0x -> $$0x.a(dkg.nF)).findFirst().orElse(null);
+      if ($$1 != null) {
+         if (!this.b && !this.c && $$1.a(dkg.nF) && !this.a.U_()) {
+            boolean $$2 = $$1.c(dkl.b);
+            if ($$2) {
+               this.a.a(awa.db, 1.0F, 1.0F);
+            } else {
+               this.a.a(awa.cZ, 1.0F, 1.0F);
+            }
+         }
+
+         this.b = true;
+      } else {
+         this.b = false;
       }
 
-      super.b($$0);
-   }
-
-   @Override
-   public wp a(SocketAddress $$0, GameProfile $$1) {
-      return (wp)(this.b().a($$1) && this.a($$1.getName()) != null ? wp.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
-   }
-
-   public hje b() {
-      return (hje)super.c();
-   }
-
-   @Nullable
-   @Override
-   public tq r() {
-      return this.h;
+      this.c = false;
    }
 }

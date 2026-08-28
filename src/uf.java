@@ -122,23 +122,23 @@ public final class uf {
       return new tu(new int[]{$$0.u(), $$0.v(), $$0.w()});
    }
 
-   public static dwy a(js<djn> $$0, tq $$1) {
+   public static dxq a(js<dke> $$0, tq $$1) {
       if (!$$1.b("Name", 8)) {
-         return djp.a.m();
+         return dkg.a.m();
       } else {
-         akv $$2 = akv.a($$1.l("Name"));
-         Optional<? extends jr<djn>> $$3 = $$0.a(aku.a(mc.f, $$2));
+         aku $$2 = aku.a($$1.l("Name"));
+         Optional<? extends jr<dke>> $$3 = $$0.a(akt.a(mc.f, $$2));
          if ($$3.isEmpty()) {
-            return djp.a.m();
+            return dkg.a.m();
          } else {
-            djn $$4 = $$3.get().a();
-            dwy $$5 = $$4.m();
+            dke $$4 = $$3.get().a();
+            dxq $$5 = $$4.m();
             if ($$1.b("Properties", 10)) {
                tq $$6 = $$1.p("Properties");
-               dwz<djn, dwy> $$7 = $$4.l();
+               dxr<dke, dxq> $$7 = $$4.l();
 
                for (String $$8 : $$6.e()) {
-                  dya<?> $$9 = $$7.a($$8);
+                  dyt<?> $$9 = $$7.a($$8);
                   if ($$9 != null) {
                      $$5 = a($$5, $$9, $$8, $$6, $$1);
                   }
@@ -150,7 +150,7 @@ public final class uf {
       }
    }
 
-   private static <S extends dxa<?, S>, T extends Comparable<T>> S a(S $$0, dya<T> $$1, String $$2, tq $$3, tq $$4) {
+   private static <S extends dxs<?, S>, T extends Comparable<T>> S a(S $$0, dyt<T> $$1, String $$2, tq $$3, tq $$4) {
       Optional<T> $$5 = $$1.b($$3.l($$2));
       if ($$5.isPresent()) {
          return $$0.b($$1, $$5.get());
@@ -160,15 +160,15 @@ public final class uf {
       }
    }
 
-   public static tq a(dwy $$0) {
+   public static tq a(dxq $$0) {
       tq $$1 = new tq();
       $$1.a("Name", mb.e.b($$0.b()).toString());
-      Map<dya<?>, Comparable<?>> $$2 = $$0.G();
+      Map<dyt<?>, Comparable<?>> $$2 = $$0.G();
       if (!$$2.isEmpty()) {
          tq $$3 = new tq();
 
-         for (Entry<dya<?>, Comparable<?>> $$4 : $$2.entrySet()) {
-            dya<?> $$5 = $$4.getKey();
+         for (Entry<dyt<?>, Comparable<?>> $$4 : $$2.entrySet()) {
+            dyt<?> $$5 = $$4.getKey();
             $$3.a($$5.f(), a($$5, $$4.getValue()));
          }
 
@@ -178,15 +178,15 @@ public final class uf {
       return $$1;
    }
 
-   public static tq a(eta $$0) {
+   public static tq a(etw $$0) {
       tq $$1 = new tq();
       $$1.a("Name", mb.c.b($$0.a()).toString());
-      Map<dya<?>, Comparable<?>> $$2 = $$0.G();
+      Map<dyt<?>, Comparable<?>> $$2 = $$0.G();
       if (!$$2.isEmpty()) {
          tq $$3 = new tq();
 
-         for (Entry<dya<?>, Comparable<?>> $$4 : $$2.entrySet()) {
-            dya<?> $$5 = $$4.getKey();
+         for (Entry<dyt<?>, Comparable<?>> $$4 : $$2.entrySet()) {
+            dyt<?> $$5 = $$4.getKey();
             $$3.a($$5.f(), a($$5, $$4.getValue()));
          }
 
@@ -196,7 +196,7 @@ public final class uf {
       return $$1;
    }
 
-   private static <T extends Comparable<T>> String a(dya<T> $$0, Comparable<?> $$1) {
+   private static <T extends Comparable<T>> String a(dyt<T> $$0, Comparable<?> $$1) {
       return $$0.b((T)$$1);
    }
 
@@ -457,7 +457,7 @@ public final class uf {
    @VisibleForTesting
    static tq c(tq $$0) {
       tw $$1 = $$0.c("palette", 8);
-      Map<String, un> $$2 = $$1.stream().map(ul.class::cast).map(ul::u_).collect(ImmutableMap.toImmutableMap(Function.identity(), uf::b));
+      Map<String, un> $$2 = $$1.stream().map(ul.class::cast).map(ul::p_).collect(ImmutableMap.toImmutableMap(Function.identity(), uf::b));
       if ($$0.b("palettes", 9)) {
          $$0.a(
             "palettes",
@@ -505,7 +505,7 @@ public final class uf {
       StringBuilder $$1 = new StringBuilder($$0.l("Name"));
       if ($$0.b("Properties", 10)) {
          tq $$2 = $$0.p("Properties");
-         String $$3 = $$2.e().stream().sorted().map($$1x -> $$1x + ":" + $$2.c($$1x).u_()).collect(Collectors.joining(","));
+         String $$3 = $$2.e().stream().sorted().map($$1x -> $$1x + ":" + $$2.c($$1x).p_()).collect(Collectors.joining(","));
          $$1.append('{').append($$3).append('}');
       }
 

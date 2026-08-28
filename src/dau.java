@@ -1,36 +1,33 @@
-public interface dau extends dbf<dat> {
-   @Override
-   default dbq<dau> b() {
-      return dbq.a;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record dau(jv<buc> c) implements das {
+   public static final MapCodec<dau> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(kg.a(mc.W).fieldOf("effects").forGetter(dau::b)).apply($$0, dau::new));
+   public static final yn<wa, dau> b = yn.a(yl.c(mc.W), dau::b, dau::new);
+
+   public dau(jr<buc> $$0) {
+      this(jv.a($$0));
    }
 
    @Override
-   dbp<? extends dau> a();
-
-   das c();
-
-   default ka<cwq> a(dat $$0) {
-      return b($$0);
+   public das.a<dau> a() {
+      return das.a.b;
    }
 
-   static ka<cwq> b(dat $$0) {
-      ka<cwq> $$1 = ka.a($$0.a(), cwq.j);
+   @Override
+   public boolean a(dgz $$0, cxh $$1, bvy $$2) {
+      boolean $$3 = false;
 
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cwm $$3 = $$0.a($$2).h();
-         $$1.set($$2, $$3.k());
+      for (jr<buc> $$4 : this.c) {
+         if ($$2.e($$4)) {
+            $$3 = true;
+         }
       }
 
-      return $$1;
+      return $$3;
    }
 
-   @Override
-   default dbi h() {
-      return switch (this.c()) {
-         case a -> dbh.a;
-         case c -> dbh.c;
-         case b -> dbh.b;
-         case d -> dbh.d;
-      };
+   public jv<buc> b() {
+      return this.c;
    }
 }

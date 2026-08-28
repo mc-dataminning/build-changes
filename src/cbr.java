@@ -1,62 +1,63 @@
-import java.util.EnumSet;
+import com.google.common.collect.ImmutableMap;
 
-public class cbr extends ccg {
-   private final bvq a;
+public class cbr extends bxr<cou> {
+   private static final int d = 15;
+   private static final int e = 20;
+   private static final double f = 0.5;
+   private static final double g = 2.5;
+   public static final int c = 40;
+   private static final int h = ayz.c(34.0);
+   private static final int i = ayz.f(60.0F);
 
-   public cbr(bvq $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(ccg.a.a, ccg.a.b));
+   public cbr() {
+      super(ImmutableMap.of(cfc.o, cfd.a, cfc.aJ, cfd.b, cfc.aK, cfd.c, cfc.aL, cfd.c), i);
    }
 
-   @Override
-   public boolean b() {
-      return this.a.ct() < 140;
+   protected boolean a(ard $$0, cou $$1) {
+      return $$1.a($$1.ea().c(cfc.o).get(), 15.0, 20.0);
    }
 
-   @Override
-   public boolean c() {
-      return this.b();
+   protected boolean a(ard $$0, cou $$1, long $$2) {
+      return true;
    }
 
-   @Override
-   public boolean U_() {
-      return false;
+   protected void b(ard $$0, cou $$1, long $$2) {
+      $$1.ea().a(cfc.p, true, (long)i);
+      $$1.ea().a(cfc.aL, baf.a, (long)h);
+      $$0.a($$1, (byte)62);
+      $$1.a(awa.CV, 3.0F, 1.0F);
    }
 
-   @Override
-   public void d() {
-      this.h();
-   }
+   protected void c(ard $$0, cou $$1, long $$2) {
+      $$1.ea().c(cfc.o).ifPresent($$1x -> $$1.J().a($$1x.ds()));
+      if (!$$1.ea().a(cfc.aL) && !$$1.ea().a(cfc.aK)) {
+         $$1.ea().a(cfc.aK, baf.a, (long)(i - h));
+         $$1.ea().c(cfc.o).filter($$1::b).filter($$1x -> $$1.a($$1x, 15.0, 20.0)).ifPresent($$2x -> {
+            fbx $$3 = $$1.ds().e($$1.dr().b(bvb.d, 0, $$1.dK()));
+            fbx $$4 = $$2x.bD().d($$3);
+            fbx $$5 = $$4.d();
+            int $$6 = ayz.a($$4.g()) + 7;
 
-   private void h() {
-      Iterable<ji> $$0 = ji.b(
-         ayz.a(this.a.dA() - 1.0), this.a.dB(), ayz.a(this.a.dG() - 1.0), ayz.a(this.a.dA() + 1.0), ayz.a(this.a.dC() + 8.0), ayz.a(this.a.dG() + 1.0)
-      );
-      ji $$1 = null;
+            for (int $$7 = 1; $$7 < $$6; $$7++) {
+               fbx $$8 = $$3.e($$5.c((double)$$7));
+               $$0.a(lt.B, $$8.d, $$8.e, $$8.f, 1, 0.0, 0.0, 0.0, 0.0);
+            }
 
-      for (ji $$2 : $$0) {
-         if (this.a(this.a.dV(), $$2)) {
-            $$1 = $$2;
-            break;
-         }
+            $$1.a(awa.CU, 3.0F, 1.0F);
+            if ($$2x.a($$0, $$0.al().e($$1), 10.0F)) {
+               double $$9 = 0.5 * (1.0 - $$2x.h(bxg.p));
+               double $$10 = 2.5 * (1.0 - $$2x.h(bxg.p));
+               $$2x.j($$5.a() * $$10, $$5.b() * $$9, $$5.c() * $$10);
+            }
+         });
       }
-
-      if ($$1 == null) {
-         $$1 = ji.a(this.a.dA(), this.a.dC() + 8.0, this.a.dG());
-      }
-
-      this.a.P().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
    }
 
-   @Override
-   public void a() {
-      this.h();
-      this.a.a(0.02F, new fbb((double)this.a.bn, (double)this.a.bo, (double)this.a.bp));
-      this.a.a(bvm.a, this.a.dy());
+   protected void d(ard $$0, cou $$1, long $$2) {
+      a($$1, 40);
    }
 
-   private boolean a(dgm $$0, ji $$1) {
-      dwy $$2 = $$0.a_($$1);
-      return ($$0.b_($$1).c() || $$2.a(djp.nF)) && $$2.a(etp.a);
+   public static void a(bvy $$0, int $$1) {
+      $$0.ea().a(cfc.aJ, baf.a, (long)$$1);
    }
 }

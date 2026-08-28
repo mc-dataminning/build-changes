@@ -1,29 +1,27 @@
-public class guk extends gqz<cjq, haj, geb> {
-   private static final akv a = akv.b("textures/entity/sniffer/sniffer.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public guk(gsf.a $$0) {
-      super($$0, new geb($$0.a(gfd.cQ)), new geb($$0.a(gfd.cR)), 1.1F);
+public class guk extends grx<cic, hao, gcq> {
+   private static final Map<cic.a, aku> a = af.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(cic.a.b, aku.b("textures/entity/cow/brown_mooshroom.png"));
+      $$0.put(cic.a.a, aku.b("textures/entity/cow/red_mooshroom.png"));
+   });
+
+   public guk(gtd.a $$0) {
+      super($$0, new gcq($$0.a(ggb.bD)), new gcq($$0.a(ggb.bE)), 0.7F);
+      this.a(new gxn(this, $$0.d()));
    }
 
-   public akv a(haj $$0) {
-      return a;
+   public aku a(hao $$0) {
+      return a.get($$0.a);
    }
 
-   public haj b() {
-      return new haj();
+   public hao b() {
+      return new hao();
    }
 
-   public void a(cjq $$0, haj $$1, float $$2) {
+   public void a(cic $$0, hao $$1, float $$2) {
       super.a($$0, $$1, $$2);
       $$1.a = $$0.t();
-      $$1.b.a($$0.cc);
-      $$1.c.a($$0.ca);
-      $$1.d.a($$0.cd);
-      $$1.e.a($$0.bY);
-      $$1.f.a($$0.bZ);
-   }
-
-   protected faw a(cjq $$0) {
-      return super.a($$0).g(0.6F);
    }
 }

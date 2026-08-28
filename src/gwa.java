@@ -1,23 +1,22 @@
-public class gwa extends gwu<gyg, gbv> {
-   public gwa(guc<gyg, gbv> $$0) {
-      super($$0);
+public class gwa extends gtw<cnh, hab> {
+   private static final aku a = aku.b("textures/entity/illager/vindicator.png");
+
+   public gwa(gtd.a $$0) {
+      super($$0, new gdo<>($$0.a(ggb.dx)), 0.5F);
+      this.a(new gxk<hab, gdo<hab>>(this) {
+         public void a(fgr $$0, gmx $$1, int $$2, hab $$3, float $$4, float $$5) {
+            if ($$3.c) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5);
+            }
+         }
+      });
    }
 
-   public void a(ffv $$0, glz $$1, int $$2, gyg $$3, float $$4, float $$5) {
-      hbp $$6 = $$3.i;
-      if (!$$6.c()) {
-         $$0.a();
-         float $$7 = 1.0F;
-         float $$8 = -1.0F;
-         float $$9 = ayz.e($$3.ab) / 60.0F;
-         if ($$3.ab < 0.0F) {
-            $$0.a(0.0F, 1.0F - $$9 * 0.5F, -1.0F + $$9 * 0.5F);
-         } else {
-            $$0.a(0.0F, 1.0F + $$9 * 0.8F, -1.0F + $$9 * 0.2F);
-         }
+   public aku a(hab $$0) {
+      return a;
+   }
 
-         $$6.a($$0, $$1, $$2, hej.d);
-         $$0.b();
-      }
+   public hab b() {
+      return new hab();
    }
 }

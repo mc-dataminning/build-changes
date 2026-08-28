@@ -1,72 +1,89 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class diq extends djn implements djq {
-   public static final MapCodec<diq> a = b(diq::new);
-   protected static final float b = 4.0F;
-   protected static final fbv c = djn.a(4.0, 0.0, 4.0, 12.0, 12.0, 12.0);
+public class diq {
+   public static final Codec<diq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(diq.a.c.fieldOf("preset").forGetter($$0x -> $$0x.c), aks.c(mc.aJ)).apply($$0, diq::new)
+   );
+   public static final Codec<jr<diq>> b = akq.a(mc.be, a);
+   private final diq.a c;
+   private final dil.c<jr<dic>> d;
 
-   @Override
-   public MapCodec<diq> a() {
-      return a;
+   public diq(diq.a $$0, js<dic> $$1) {
+      this.c = $$0;
+      this.d = $$0.e.apply($$1::b);
    }
 
-   public diq(dwx.d $$0) {
-      super($$0);
+   public dil.c<jr<dic>> a() {
+      return this.d;
    }
 
-   @Override
-   protected fbv a(dwy $$0, dfo $$1, ji $$2, fbg $$3) {
-      fbb $$4 = $$0.a($$2);
-      return c.a($$4.d, $$4.e, $$4.f);
+   public static Map<diq.a, dil.c<akt<dic>>> b() {
+      return diq.a.f.values().stream().collect(Collectors.toMap($$0 -> (diq.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
    }
 
-   @Override
-   protected void b(dwy $$0, ard $$1, ji $$2, azh $$3) {
-      if ($$3.a(3) == 0 && $$1.u($$2.d()) && $$1.b($$2.d(), 0) >= 9) {
-         this.a($$1, $$2);
+   public static record a(aku d, diq.a.a e) {
+      public static final diq.a a = new diq.a(
+         aku.b("nether"),
+         new diq.a.a() {
+            @Override
+            public <T> dil.c<T> apply(Function<akt<dic>, T> $$0) {
+               return new dil.c<>(
+                  List.of(
+                     Pair.of(dil.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dij.ad)),
+                     Pair.of(dil.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dij.ag)),
+                     Pair.of(dil.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dij.af)),
+                     Pair.of(dil.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(dij.ae)),
+                     Pair.of(dil.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(dij.ah))
+                  )
+               );
+            }
+         }
+      );
+      public static final diq.a b = new diq.a(aku.b("overworld"), new diq.a.a() {
+         @Override
+         public <T> dil.c<T> apply(Function<akt<dic>, T> $$0) {
+            return diq.a.a($$0);
+         }
+      });
+      static final Map<aku, diq.a> f = Stream.of(a, b).collect(Collectors.toMap(diq.a::b, $$0 -> (diq.a)$$0));
+      public static final Codec<diq.a> c = aku.a
+         .flatXmap(
+            $$0 -> Optional.ofNullable(f.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
+            $$0 -> DataResult.success($$0.d)
+         );
+
+      static <T> dil.c<T> a(Function<akt<dic>, T> $$0) {
+         Builder<Pair<dil.d, T>> $$1 = ImmutableList.builder();
+         new dis().a($$2 -> $$1.add($$2.mapSecond($$0)));
+         return new dil.c<>($$1.build());
       }
-   }
 
-   @Override
-   protected boolean a(dwy $$0, dgm $$1, ji $$2) {
-      return $$1.a_($$2.e()).a(awp.ax);
-   }
-
-   @Override
-   protected dwy a(dwy $$0, dgm $$1, dgy $$2, ji $$3, jn $$4, ji $$5, dwy $$6, azh $$7) {
-      if (!$$0.a($$1, $$3)) {
-         return djp.a.m();
-      } else {
-         return $$4 == jn.b && $$6.a(djp.nB) ? djp.nB.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      public Stream<akt<dic>> a() {
+         return this.e.apply($$0 -> $$0).a().stream().<akt<dic>>map(Pair::getSecond).distinct();
       }
-   }
 
-   @Override
-   protected cwq a(dgm $$0, ji $$1, dwy $$2, boolean $$3) {
-      return new cwq(cwu.ed);
-   }
+      public aku b() {
+         return this.d;
+      }
 
-   @Override
-   public boolean a(dgm $$0, ji $$1, dwy $$2) {
-      return $$0.a_($$1.d()).l();
-   }
+      public diq.a.a c() {
+         return this.e;
+      }
 
-   @Override
-   public boolean a(dgj $$0, azh $$1, ji $$2, dwy $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(ard $$0, azh $$1, ji $$2, dwy $$3) {
-      this.a($$0, $$2);
-   }
-
-   @Override
-   protected float a(dwy $$0, coy $$1, dfo $$2, ji $$3) {
-      return $$1.eZ().h() instanceof cye ? 1.0F : super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected void a(dgj $$0, ji $$1) {
-      $$0.a($$1.d(), djp.nB.m().b(dir.i, dxk.b), 3);
+      @FunctionalInterface
+      interface a {
+         <T> dil.c<T> apply(Function<akt<dic>, T> var1);
+      }
    }
 }

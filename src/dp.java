@@ -9,8 +9,8 @@ public class dp extends dz<dp.a> {
       return dp.a.a;
    }
 
-   public void a(are $$0, cwq $$1, @Nullable bum $$2) {
-      evs $$3 = bx.b($$0, $$2);
+   public void a(are $$0, cxh $$1, @Nullable bva $$2) {
+      ewo $$3 = bx.b($$0, $$2);
       this.a($$0, $$3x -> $$3x.a($$0, $$1, $$3));
    }
 
@@ -32,7 +32,7 @@ public class dp extends dz<dp.a> {
          return ap.S.a(new dp.a($$0, $$1, $$2));
       }
 
-      public boolean a(are $$0, cwq $$1, evs $$2) {
+      public boolean a(are $$0, cxh $$1, ewo $$2) {
          return this.c.isPresent() && !this.c.get().a($$1) ? false : !this.d.isPresent() || this.d.get().a($$2);
       }
 

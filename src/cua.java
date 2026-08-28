@@ -1,159 +1,169 @@
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cua {
-   private final int a;
-   public final bse c;
-   public int d;
-   public final int e;
-   public final int f;
+public abstract class cua extends csw {
+   private static final int m = 9;
+   private static final int n = 3;
+   private static final int o = 0;
+   protected final ctj q;
+   protected final cpr r;
+   protected final bsr s;
+   protected final cuo t = new cuo() {
+      @Override
+      public void e() {
+         cua.this.a(this);
+      }
+   };
+   private final int p;
 
-   public cua(bse $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.a = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   protected boolean a(cpr $$0, boolean $$1) {
+      return true;
    }
 
-   public void b(cwq $$0, cwq $$1) {
-      int $$2 = $$1.M() - $$0.M();
-      if ($$2 > 0) {
-         this.a($$1, $$2);
+   protected abstract void a(cpr var1, cxh var2);
+
+   protected abstract boolean a(dxq var1);
+
+   public cua(@Nullable cuf<?> $$0, int $$1, cpq $$2, ctj $$3, cub $$4) {
+      super($$0, $$1);
+      this.q = $$3;
+      this.r = $$2.k;
+      this.s = this.e($$4.d());
+      this.p = $$4.e();
+      this.a($$4);
+      this.b($$4);
+      this.c($$2, 8, 84);
+   }
+
+   private void a(cub $$0) {
+      for (final cub.b $$1 : $$0.c()) {
+         this.a(new cut(this.s, $$1.a(), $$1.b(), $$1.c()) {
+            @Override
+            public boolean a(cxh $$0) {
+               return $$1.d().test($$0);
+            }
+         });
       }
    }
 
-   protected void a(cwq $$0, int $$1) {
+   private void b(cub $$0) {
+      this.a(new cut(this.t, $$0.b().a(), $$0.b().b(), $$0.b().c()) {
+         @Override
+         public boolean a(cxh $$0) {
+            return false;
+         }
+
+         @Override
+         public boolean a(cpr $$0) {
+            return cua.this.a($$0, this.h());
+         }
+
+         @Override
+         public void a(cpr $$0, cxh $$1) {
+            cua.this.a($$0, $$1);
+         }
+      });
    }
 
-   protected void b(int $$0) {
+   @Override
+   public abstract void l();
+
+   private btf e(int $$0) {
+      return new btf($$0) {
+         @Override
+         public void e() {
+            super.e();
+            cua.this.a(this);
+         }
+      };
    }
 
-   protected void b_(cwq $$0) {
+   @Override
+   public void a(bsr $$0) {
+      super.a($$0);
+      if ($$0 == this.s) {
+         this.l();
+      }
    }
 
-   public void a(coy $$0, cwq $$1) {
-      this.c();
+   @Override
+   public void a(cpr $$0) {
+      super.a($$0);
+      this.q.a(($$1, $$2) -> this.a($$0, this.s));
    }
 
-   public boolean a(cwq $$0) {
-      return true;
+   @Override
+   public boolean b(cpr $$0) {
+      return this.q.a(($$1, $$2) -> !this.a($$1.a_($$2)) ? false : $$0.a($$2, 4.0), true);
    }
 
-   public cwq g() {
-      return this.c.a(this.a);
-   }
-
-   public boolean h() {
-      return !this.g().f();
-   }
-
-   public void e(cwq $$0) {
-      this.a($$0, this.g());
-   }
-
-   public void a(cwq $$0, cwq $$1) {
-      this.f($$0);
-   }
-
-   public void f(cwq $$0) {
-      this.c.a(this.a, $$0);
-      this.c();
-   }
-
-   public void c() {
-      this.c.e();
-   }
-
-   public int a() {
-      return this.c.an_();
-   }
-
-   public int a_(cwq $$0) {
-      return Math.min(this.a(), $$0.k());
-   }
-
-   @Nullable
-   public akv b() {
-      return null;
-   }
-
-   public cwq a(int $$0) {
-      return this.c.a(this.a, $$0);
-   }
-
-   public boolean a(coy $$0) {
-      return true;
-   }
-
-   public boolean d() {
-      return true;
-   }
-
-   public Optional<cwq> a(int $$0, int $$1, coy $$2) {
-      if (!this.a($$2)) {
-         return Optional.empty();
-      } else if (!this.b($$2) && $$1 < this.g().M()) {
-         return Optional.empty();
-      } else {
-         $$0 = Math.min($$0, $$1);
-         cwq $$3 = this.a($$0);
-         if ($$3.f()) {
-            return Optional.empty();
-         } else {
-            if (this.g().f()) {
-               this.a(cwq.j, $$3);
+   @Override
+   public cxh b(cpr $$0, int $$1) {
+      cxh $$2 = cxh.k;
+      cut $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cxh $$4 = $$3.g();
+         $$2 = $$4.v();
+         int $$5 = this.m();
+         int $$6 = this.q();
+         if ($$1 == this.n()) {
+            if (!this.a($$4, $$5, $$6, true)) {
+               return cxh.k;
             }
 
-            return Optional.of($$3);
-         }
-      }
-   }
-
-   public cwq b(int $$0, int $$1, coy $$2) {
-      Optional<cwq> $$3 = this.a($$0, $$1, $$2);
-      $$3.ifPresent($$1x -> this.a($$2, $$1x));
-      return $$3.orElse(cwq.j);
-   }
-
-   public cwq d(cwq $$0) {
-      return this.b($$0, $$0.M());
-   }
-
-   public cwq b(cwq $$0, int $$1) {
-      if (!$$0.f() && this.a($$0)) {
-         cwq $$2 = this.g();
-         int $$3 = Math.min(Math.min($$1, $$0.M()), this.a_($$0) - $$2.M());
-         if ($$3 <= 0) {
-            return $$0;
-         } else {
-            if ($$2.f()) {
-               this.e($$0.a($$3));
-            } else if (cwq.c($$2, $$0)) {
-               $$0.h($$3);
-               $$2.g($$3);
-               this.e($$2);
+            $$3.b($$4, $$2);
+         } else if ($$1 >= 0 && $$1 < this.n()) {
+            if (!this.a($$4, $$5, $$6, false)) {
+               return cxh.k;
             }
-
-            return $$0;
+         } else if (this.c($$4) && $$1 >= this.m() && $$1 < this.q()) {
+            if (!this.a($$4, 0, this.n(), false)) {
+               return cxh.k;
+            }
+         } else if ($$1 >= this.m() && $$1 < this.o()) {
+            if (!this.a($$4, this.p(), this.q(), false)) {
+               return cxh.k;
+            }
+         } else if ($$1 >= this.p() && $$1 < this.q() && !this.a($$4, this.m(), this.o(), false)) {
+            return cxh.k;
          }
-      } else {
-         return $$0;
+
+         if ($$4.f()) {
+            $$3.e(cxh.k);
+         } else {
+            $$3.c();
+         }
+
+         if ($$4.M() == $$2.M()) {
+            return cxh.k;
+         }
+
+         $$3.a($$0, $$4);
       }
+
+      return $$2;
    }
 
-   public boolean b(coy $$0) {
-      return this.a($$0) && this.a(this.g());
-   }
-
-   public int i() {
-      return this.a;
-   }
-
-   public boolean e() {
+   protected boolean c(cxh $$0) {
       return true;
    }
 
-   public boolean f() {
-      return false;
+   public int n() {
+      return this.p;
+   }
+
+   private int m() {
+      return this.n() + 1;
+   }
+
+   private int o() {
+      return this.m() + 27;
+   }
+
+   private int p() {
+      return this.o();
+   }
+
+   private int q() {
+      return this.p() + 9;
    }
 }

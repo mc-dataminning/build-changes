@@ -1,53 +1,41 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Map;
+import java.util.function.Function;
 
-public class dri extends djn {
-   public static final MapCodec<dri> a = b(dri::new);
-   private static final fbv b = djn.a(2.0, 13.0, 2.0, 14.0, 16.0, 14.0);
-   private static final int c = 14;
-   private static final int d = 10;
-   private static final int e = 10;
+public interface dri {
+   int d = 1;
+   int e = 4;
+   dyq f = dyg.V;
 
-   @Override
-   public MapCodec<dri> a() {
-      return a;
-   }
+   default Function<dxq, fcr> a(dyo<jn> $$0, dyq $$1) {
+      Map<jn, fcr> $$2 = fco.c(dke.a(0.0, 0.0, 0.0, 8.0, this.b(), 8.0));
+      return $$3 -> {
+         fcr $$4 = fco.a();
+         jn $$5 = $$3.c($$0);
+         int $$6 = $$3.c($$1);
 
-   public dri(dwx.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected boolean a(dwy $$0, dgm $$1, ji $$2) {
-      return djn.a($$1, $$2.d(), jn.a) && !$$1.z($$2);
-   }
-
-   @Override
-   protected dwy a(dwy $$0, dgm $$1, dgy $$2, ji $$3, jn $$4, ji $$5, dwy $$6, azh $$7) {
-      return $$4 == jn.b && !this.a($$0, $$1, $$3) ? djp.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   public void a(dwy $$0, dgj $$1, ji $$2, azh $$3) {
-      int $$4 = $$2.u();
-      int $$5 = $$2.v();
-      int $$6 = $$2.w();
-      double $$7 = (double)$$4 + $$3.j();
-      double $$8 = (double)$$5 + 0.7;
-      double $$9 = (double)$$6 + $$3.j();
-      $$1.a(lt.aB, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-      ji.a $$10 = new ji.a();
-
-      for (int $$11 = 0; $$11 < 14; $$11++) {
-         $$10.d($$4 + ayz.a($$3, -10, 10), $$5 - $$3.a(10), $$6 + ayz.a($$3, -10, 10));
-         dwy $$12 = $$1.a_($$10);
-         if (!$$12.m($$1, $$10)) {
-            $$1.a(lt.aF, (double)$$10.u() + $$3.j(), (double)$$10.v() + $$3.j(), (double)$$10.w() + $$3.j(), 0.0, 0.0, 0.0);
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            $$4 = fco.a($$4, $$2.get($$5));
+            $$5 = $$5.i();
          }
-      }
+
+         return $$4.b();
+      };
    }
 
-   @Override
-   protected fbv a(dwy $$0, dfo $$1, ji $$2, fbg $$3) {
-      return b;
+   default dyq c() {
+      return f;
+   }
+
+   default double b() {
+      return 1.0;
+   }
+
+   default boolean a(dxq $$0, dax $$1, dyq $$2) {
+      return !$$1.h() && $$1.n().a($$0.b().i()) && $$0.c($$2) < 4;
+   }
+
+   default dxq a(dax $$0, dke $$1, dyq $$2, dyo<jn> $$3) {
+      dxq $$4 = $$0.q().a_($$0.a());
+      return $$4.a($$1) ? $$4.b($$2, Integer.valueOf(Math.min(4, $$4.c($$2) + 1))) : $$1.m().b($$3, $$0.g().g());
    }
 }

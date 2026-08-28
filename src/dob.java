@@ -1,84 +1,122 @@
-public class dob {
-   public static final int a = 1000;
-   public static final int b = 1001;
-   public static final int c = 1002;
-   public static final int d = 1004;
-   public static final int e = 1009;
-   public static final int f = 1010;
-   public static final int g = 1011;
-   public static final int h = 1015;
-   public static final int i = 1016;
-   public static final int j = 1017;
-   public static final int k = 1018;
-   public static final int l = 1019;
-   public static final int m = 1020;
-   public static final int n = 1021;
-   public static final int o = 1022;
-   public static final int p = 1023;
-   public static final int q = 1024;
-   public static final int r = 1025;
-   public static final int s = 1026;
-   public static final int t = 1027;
-   public static final int u = 1028;
-   public static final int v = 1029;
-   public static final int w = 1030;
-   public static final int x = 1031;
-   public static final int y = 1032;
-   public static final int z = 1033;
-   public static final int A = 1034;
-   public static final int B = 1035;
-   public static final int C = 1038;
-   public static final int D = 1039;
-   public static final int E = 1040;
-   public static final int F = 1041;
-   public static final int G = 1042;
-   public static final int H = 1043;
-   public static final int I = 1044;
-   public static final int J = 1045;
-   public static final int K = 1046;
-   public static final int L = 1047;
-   public static final int M = 1048;
-   public static final int N = 1049;
-   public static final int O = 1050;
-   public static final int P = 1051;
-   public static final int Q = 1500;
-   public static final int R = 1501;
-   public static final int S = 1502;
-   public static final int T = 1503;
-   public static final int U = 1504;
-   public static final int V = 1505;
-   public static final int W = 2000;
-   public static final int X = 2001;
-   public static final int Y = 2002;
-   public static final int Z = 2003;
-   public static final int aa = 2004;
-   public static final int ab = 2006;
-   public static final int ac = 2007;
-   public static final int ad = 2008;
-   public static final int ae = 2009;
-   public static final int af = 2010;
-   public static final int ag = 2011;
-   public static final int ah = 2012;
-   public static final int ai = 2013;
-   public static final int aj = 3000;
-   public static final int ak = 3001;
-   public static final int al = 3002;
-   public static final int am = 3003;
-   public static final int an = 3004;
-   public static final int ao = 3005;
-   public static final int ap = 3006;
-   public static final int aq = 3007;
-   public static final int ar = 3008;
-   public static final int as = 3009;
-   public static final int at = 3011;
-   public static final int au = 3012;
-   public static final int av = 3013;
-   public static final int aw = 3014;
-   public static final int ax = 3015;
-   public static final int ay = 3016;
-   public static final int az = 3017;
-   public static final int aA = 3018;
-   public static final int aB = 3019;
-   public static final int aC = 3020;
-   public static final int aD = 3021;
+import com.mojang.serialization.MapCodec;
+
+public class dob extends dnw {
+   public static final MapCodec<dob> a = b(dob::new);
+   private static final double b = 0.13;
+   private static final double c = 0.08;
+   private static final double e = 0.05;
+   private static final int f = 20;
+   private static final fcr g = dke.b(14.0, 0.0, 15.0);
+
+   @Override
+   public MapCodec<dob> a() {
+      return a;
+   }
+
+   public dob(dxp.d $$0) {
+      super($$0);
+   }
+
+   private static boolean c(bva $$0) {
+      return $$0 instanceof bvy || $$0 instanceof crq || $$0 instanceof clx || $$0 instanceof cro;
+   }
+
+   @Override
+   protected fcr b(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
+      return g;
+   }
+
+   @Override
+   public void a(dgz $$0, dxq $$1, ji $$2, bva $$3, float $$4) {
+      $$3.a(awa.mY, 1.0F, 1.0F);
+      if (!$$0.C) {
+         $$0.a($$3, (byte)54);
+      }
+
+      if ($$3.a($$4, 0.2F, $$0.al().l())) {
+         $$3.a(this.H.g(), this.H.a() * 0.5F, this.H.b() * 0.75F);
+      }
+   }
+
+   @Override
+   protected void a(dxq $$0, dgz $$1, ji $$2, bva $$3) {
+      if (this.a($$2, $$3)) {
+         this.a($$3, $$2);
+         this.d($$3);
+         this.a($$1, $$3);
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   private static double b(double $$0) {
+      return $$0 / 0.98F + 0.08;
+   }
+
+   private static double c(double $$0) {
+      return ($$0 - 0.08) * 0.98F;
+   }
+
+   private boolean a(ji $$0, bva $$1) {
+      if ($$1.aJ()) {
+         return false;
+      } else if ($$1.dB() > (double)$$0.v() + 0.9375 - 1.0E-7) {
+         return false;
+      } else if (b($$1.dx().e) >= -0.08) {
+         return false;
+      } else {
+         double $$2 = Math.abs((double)$$0.u() + 0.5 - $$1.dz());
+         double $$3 = Math.abs((double)$$0.w() + 0.5 - $$1.dF());
+         double $$4 = 0.4375 + (double)($$1.dp() / 2.0F);
+         return $$2 + 1.0E-7 > $$4 || $$3 + 1.0E-7 > $$4;
+      }
+   }
+
+   private void a(bva $$0, ji $$1) {
+      if ($$0 instanceof are && $$0.dU().ae() % 20L == 0L) {
+         ap.K.a((are)$$0, $$0.dU().a_($$1));
+      }
+   }
+
+   private void d(bva $$0) {
+      fbx $$1 = $$0.dx();
+      if (b($$0.dx().e) < -0.13) {
+         double $$2 = -0.05 / b($$0.dx().e);
+         $$0.i(new fbx($$1.d * $$2, c(-0.05), $$1.f * $$2));
+      } else {
+         $$0.i(new fbx($$1.d, c(-0.05), $$1.f));
+      }
+
+      $$0.k();
+   }
+
+   private void a(dgz $$0, bva $$1) {
+      if (c($$1)) {
+         if ($$0.A.a(5) == 0) {
+            $$1.a(awa.mY, 1.0F, 1.0F);
+         }
+
+         if (!$$0.C && $$0.A.a(5) == 0) {
+            $$0.a($$1, (byte)53);
+         }
+      }
+   }
+
+   public static void a(bva $$0) {
+      a($$0, 5);
+   }
+
+   public static void b(bva $$0) {
+      a($$0, 10);
+   }
+
+   private static void a(bva $$0, int $$1) {
+      if ($$0.dU().C) {
+         dxq $$2 = dkg.pI.m();
+
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            $$0.dU().a(new ll(lt.b, $$2), $$0.dz(), $$0.dB(), $$0.dF(), 0.0, 0.0, 0.0);
+         }
+      }
+   }
 }

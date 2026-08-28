@@ -1,80 +1,45 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.concurrent.TimeUnit;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
 
-public class ega {
-   private static final Logger a = LogUtils.getLogger();
-   private static final LoadingCache<ard, ega.b> b = CacheBuilder.newBuilder()
-      .weakKeys()
-      .expireAfterAccess(5L, TimeUnit.MINUTES)
-      .build(new CacheLoader<ard, ega.b>() {
-         public ega.b a(ard $$0) {
-            return new ega.b(Object2IntMaps.synchronize(new Object2IntOpenHashMap()), new MutableInt(0));
-         }
-      });
-
-   public static void a(ard $$0) {
-      try {
-         ((ega.b)b.get($$0)).b().increment();
-      } catch (Exception var2) {
-         a.error("Failed to increment chunk count", var2);
-      }
+public class ega extends egu<eir> {
+   public ega(Codec<eir> $$0) {
+      super($$0);
    }
 
-   public static void a(ard $$0, efl<?, ?> $$1, Optional<emr> $$2) {
-      try {
-         ((ega.b)b.get($$0)).a().computeInt(new ega.a($$1, $$2), ($$0x, $$1x) -> $$1x == null ? 1 : $$1x + 1);
-      } catch (Exception var4) {
-         a.error("Failed to increment feature count", var4);
-      }
-   }
+   @Override
+   public boolean a(egw<eir> $$0) {
+      ji $$1 = $$0.e();
+      dhy $$2 = $$0.b();
+      azh $$3 = $$0.d();
 
-   public static void a() {
-      b.invalidateAll();
-      a.debug("Cleared feature counts");
-   }
-
-   public static void b() {
-      a.debug("Logging feature counts:");
-      b.asMap()
-         .forEach(
-            ($$0, $$1) -> {
-               String $$2 = $$0.ai().a().toString();
-               boolean $$3 = $$0.p().x();
-               ke<emr> $$4 = $$0.K_().e(mc.aT);
-               String $$5 = ($$3 ? "running" : "dead") + " " + $$2;
-               Integer $$6 = $$1.b().getValue();
-               a.debug($$5 + " total_chunks: " + $$6);
-               $$1.a()
-                  .forEach(
-                     ($$3x, $$4x) -> a.debug(
-                           $$5
-                              + " "
-                              + String.format(Locale.ROOT, "%10d ", $$4x)
-                              + String.format(Locale.ROOT, "%10f ", (double)$$4x.intValue() / (double)$$6.intValue())
-                              + $$3x.b().flatMap($$4::d).<akv>map(aku::a)
-                              + " "
-                              + $$3x.a().b()
-                              + " "
-                              + $$3x.a()
-                        )
-                  );
+      eir $$4;
+      for ($$4 = $$0.f(); $$1.v() > $$2.G_() + 3; $$1 = $$1.e()) {
+         if (!$$2.u($$1.e())) {
+            dxq $$5 = $$2.a_($$1.e());
+            if (b($$5) || a($$5)) {
+               break;
             }
-         );
-   }
+         }
+      }
 
-   static record a(efl<?, ?> a, Optional<emr> b) {
-   }
+      if ($$1.v() <= $$2.G_() + 3) {
+         return false;
+      } else {
+         for (int $$6 = 0; $$6 < 3; $$6++) {
+            int $$7 = $$3.a(2);
+            int $$8 = $$3.a(2);
+            int $$9 = $$3.a(2);
+            float $$10 = (float)($$7 + $$8 + $$9) * 0.333F + 0.5F;
 
-   static record b(Object2IntMap<ega.a> a, MutableInt b) {
+            for (ji $$11 : ji.c($$1.b(-$$7, -$$8, -$$9), $$1.b($$7, $$8, $$9))) {
+               if ($$11.j($$1) <= (double)($$10 * $$10)) {
+                  $$2.a($$11, $$4.b, 3);
+               }
+            }
+
+            $$1 = $$1.b(-1 + $$3.a(2), -$$3.a(2), -1 + $$3.a(2));
+         }
+
+         return true;
+      }
    }
 }

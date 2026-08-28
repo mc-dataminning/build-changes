@@ -1,32 +1,23 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+public interface dkh {
+   boolean a(dhc var1, ji var2, dxq var3);
 
-public class dkh extends djn {
-   public static final MapCodec<dkh> a = b(dkh::new);
-   private static final wp b = wp.c("container.cartography_table");
+   boolean a(dgz var1, azh var2, ji var3, dxq var4);
 
-   @Override
-   public MapCodec<dkh> a() {
-      return a;
+   void a(ard var1, azh var2, ji var3, dxq var4);
+
+   default ji a(ji $$0) {
+      return switch (this.aq_()) {
+         case a -> $$0.d();
+         case b -> $$0;
+      };
    }
 
-   protected dkh(dwx.d $$0) {
-      super($$0);
+   default dkh.a aq_() {
+      return dkh.a.b;
    }
 
-   @Override
-   protected bsl a(dwy $$0, dgj $$1, ji $$2, coy $$3, fax $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.c($$1, $$2));
-         $$3.a(awk.aw);
-      }
-
-      return bsl.a;
-   }
-
-   @Nullable
-   @Override
-   protected bsn b(dwy $$0, dgj $$1, ji $$2) {
-      return new bst(($$2x, $$3, $$4) -> new csl($$2x, $$3, csq.a($$1, $$2)), b);
+   public static enum a {
+      a,
+      b;
    }
 }

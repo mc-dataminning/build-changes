@@ -1,23 +1,21 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Optional;
+import com.mojang.serialization.Dynamic;
 
-public class bjj extends bgt {
-   public bjj(Schema $$0, boolean $$1) {
-      super($$0, $$1, "Zombie Villager XP rebuild", bhy.B, "minecraft:zombie_villager");
+public class bjj extends bgy {
+   private static final String a = "CanPickUpLoot";
+
+   public bjj(Schema $$0) {
+      super($$0, true, "Villager CanPickUpLoot default value", bic.C, "Villager");
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), $$0x -> {
-         Optional<Number> $$1 = $$0x.get("Xp").asNumber().result();
-         if ($$1.isEmpty()) {
-            int $$2 = $$0x.get("VillagerData").get("level").asInt(1);
-            return $$0x.set("Xp", $$0x.createInt(bja.a($$2)));
-         } else {
-            return $$0x;
-         }
-      });
+      return $$0.update(DSL.remainderFinder(), bjj::a);
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.set("CanPickUpLoot", $$0.createBoolean(true));
    }
 }

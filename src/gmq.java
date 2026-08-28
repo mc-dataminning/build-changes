@@ -1,390 +1,387 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import it.unimi.dsi.fastutil.objects.ObjectArraySet;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.HashMap;
-import java.util.HashSet;
+import com.google.common.collect.Maps;
 import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
 
-public class gmq extends auu<gmq.c> implements AutoCloseable {
-   static final Logger d = LogUtils.getLogger();
-   public static final String a = "shaders";
-   public static final String b = "shaders/include/";
-   private static final ako e = ako.a("shaders");
-   private static final ako f = ako.a("post_effect");
-   public static final int c = 32768;
-   final hev g;
-   private final Consumer<Exception> h;
-   private gmq.a i = new gmq.a(gmq.c.a);
+public class gmq {
+   private static final Map<dke, gnh> a = af.a(Maps.newHashMap(), $$0 -> {
+      gnh $$1 = gnh.s();
+      $$0.put(dkg.gd, $$1);
+      gnh $$2 = gnh.d();
+      $$0.put(dkg.i, $$2);
+      $$0.put(dkg.fk, $$2);
+      $$0.put(dkg.fm, $$2);
+      $$0.put(dkg.gc, $$2);
+      $$0.put(dkg.hz, $$2);
+      $$0.put(dkg.fl, $$2);
+      $$0.put(dkg.aN, $$2);
+      $$0.put(dkg.aK, $$2);
+      $$0.put(dkg.aL, $$2);
+      $$0.put(dkg.aO, $$2);
+      $$0.put(dkg.aP, $$2);
+      $$0.put(dkg.aM, $$2);
+      $$0.put(dkg.aQ, $$2);
+      $$0.put(dkg.aR, $$2);
+      $$0.put(dkg.aT, $$2);
+      $$0.put(dkg.aU, $$2);
+      $$0.put(dkg.ag, $$2);
+      $$0.put(dkg.aS, $$2);
+      gnh $$3 = gnh.e();
+      $$0.put(dkg.z, $$3);
+      $$0.put(dkg.A, $$3);
+      $$0.put(dkg.B, $$3);
+      $$0.put(dkg.C, $$3);
+      $$0.put(dkg.D, $$3);
+      $$0.put(dkg.E, $$3);
+      $$0.put(dkg.F, $$3);
+      $$0.put(dkg.G, $$3);
+      $$0.put(dkg.aX, $$3);
+      $$0.put(dkg.bg, $$3);
+      $$0.put(dkg.bh, $$3);
+      $$0.put(dkg.bi, $$3);
+      $$0.put(dkg.bj, $$3);
+      $$0.put(dkg.bk, $$3);
+      $$0.put(dkg.bl, $$3);
+      $$0.put(dkg.bm, $$3);
+      $$0.put(dkg.bn, $$3);
+      $$0.put(dkg.bo, $$3);
+      $$0.put(dkg.bp, $$3);
+      $$0.put(dkg.bq, $$3);
+      $$0.put(dkg.br, $$3);
+      $$0.put(dkg.bs, $$3);
+      $$0.put(dkg.bt, $$3);
+      $$0.put(dkg.bu, $$3);
+      $$0.put(dkg.bv, $$3);
+      $$0.put(dkg.bw, $$3);
+      $$0.put(dkg.bx, $$3);
+      $$0.put(dkg.bz, $$3);
+      $$0.put(dkg.bA, $$3);
+      $$0.put(dkg.bB, $$3);
+      $$0.put(dkg.bC, $$3);
+      $$0.put(dkg.bD, $$3);
+      $$0.put(dkg.bE, $$3);
+      $$0.put(dkg.bY, $$3);
+      $$0.put(dkg.ub, $$3);
+      $$0.put(dkg.uc, $$3);
+      $$0.put(dkg.ca, $$3);
+      $$0.put(dkg.cb, $$3);
+      $$0.put(dkg.cc, $$3);
+      $$0.put(dkg.cd, $$3);
+      $$0.put(dkg.ce, $$3);
+      $$0.put(dkg.cf, $$3);
+      $$0.put(dkg.cg, $$3);
+      $$0.put(dkg.ch, $$3);
+      $$0.put(dkg.ci, $$3);
+      $$0.put(dkg.cj, $$3);
+      $$0.put(dkg.ck, $$3);
+      $$0.put(dkg.cl, $$3);
+      $$0.put(dkg.cm, $$3);
+      $$0.put(dkg.cn, $$3);
+      $$0.put(dkg.cw, $$3);
+      $$0.put(dkg.cx, $$3);
+      $$0.put(dkg.en, $$3);
+      $$0.put(dkg.eo, $$3);
+      $$0.put(dkg.cy, $$3);
+      $$0.put(dkg.cz, $$3);
+      $$0.put(dkg.cA, $$3);
+      $$0.put(dkg.tV, $$3);
+      $$0.put(dkg.tW, $$3);
+      $$0.put(dkg.cE, $$3);
+      $$0.put(dkg.cJ, $$3);
+      $$0.put(dkg.cW, $$3);
+      $$0.put(dkg.cX, $$3);
+      $$0.put(dkg.cY, $$3);
+      $$0.put(dkg.dK, $$3);
+      $$0.put(dkg.dX, $$3);
+      $$0.put(dkg.dY, $$3);
+      $$0.put(dkg.ed, $$3);
+      $$0.put(dkg.ef, $$3);
+      $$0.put(dkg.eu, $$3);
+      $$0.put(dkg.eL, $$3);
+      $$0.put(dkg.eM, $$3);
+      $$0.put(dkg.eN, $$3);
+      $$0.put(dkg.eO, $$3);
+      $$0.put(dkg.eP, $$3);
+      $$0.put(dkg.eQ, $$3);
+      $$0.put(dkg.eR, $$3);
+      $$0.put(dkg.eS, $$3);
+      $$0.put(dkg.po, $$3);
+      $$0.put(dkg.pp, $$3);
+      $$0.put(dkg.eT, $$3);
+      $$0.put(dkg.eU, $$3);
+      $$0.put(dkg.sw, $$3);
+      $$0.put(dkg.sx, $$3);
+      $$0.put(dkg.sz, $$3);
+      $$0.put(dkg.sy, $$3);
+      $$0.put(dkg.sA, $$3);
+      $$0.put(dkg.sB, $$3);
+      $$0.put(dkg.sD, $$3);
+      $$0.put(dkg.sC, $$3);
+      $$0.put(dkg.fp, $$3);
+      $$0.put(dkg.fq, $$3);
+      $$0.put(dkg.fr, $$3);
+      $$0.put(dkg.fs, $$3);
+      $$0.put(dkg.ft, $$3);
+      $$0.put(dkg.tZ, $$3);
+      $$0.put(dkg.ua, $$3);
+      $$0.put(dkg.fu, $$3);
+      $$0.put(dkg.fv, $$3);
+      $$0.put(dkg.fB, $$3);
+      $$0.put(dkg.fL, $$3);
+      $$0.put(dkg.fN, $$3);
+      $$0.put(dkg.fX, $$3);
+      $$0.put(dkg.gj, $$3);
+      $$0.put(dkg.gm, $$3);
+      $$0.put(dkg.go, $$3);
+      $$0.put(dkg.gp, $$3);
+      $$0.put(dkg.gq, $$3);
+      $$0.put(dkg.gr, $$3);
+      $$0.put(dkg.gs, $$3);
+      $$0.put(dkg.gt, $$3);
+      $$0.put(dkg.gu, $$3);
+      $$0.put(dkg.gv, $$3);
+      $$0.put(dkg.gw, $$3);
+      $$0.put(dkg.gx, $$3);
+      $$0.put(dkg.gy, $$3);
+      $$0.put(dkg.gz, $$3);
+      $$0.put(dkg.ud, $$3);
+      $$0.put(dkg.ue, $$3);
+      $$0.put(dkg.gA, $$3);
+      $$0.put(dkg.gB, $$3);
+      $$0.put(dkg.gC, $$3);
+      $$0.put(dkg.gD, $$3);
+      $$0.put(dkg.gE, $$3);
+      $$0.put(dkg.gF, $$3);
+      $$0.put(dkg.gG, $$3);
+      $$0.put(dkg.gH, $$3);
+      $$0.put(dkg.gI, $$3);
+      $$0.put(dkg.gJ, $$3);
+      $$0.put(dkg.gK, $$3);
+      $$0.put(dkg.gL, $$3);
+      $$0.put(dkg.gM, $$3);
+      $$0.put(dkg.gN, $$3);
+      $$0.put(dkg.gO, $$3);
+      $$0.put(dkg.tM, $$3);
+      $$0.put(dkg.tN, $$3);
+      $$0.put(dkg.gn, $$3);
+      $$0.put(dkg.gP, $$3);
+      $$0.put(dkg.gQ, $$3);
+      $$0.put(dkg.hv, $$3);
+      $$0.put(dkg.hE, $$3);
+      $$0.put(dkg.iw, $$3);
+      $$0.put(dkg.jb, $$3);
+      $$0.put(dkg.jc, $$3);
+      $$0.put(dkg.jd, $$3);
+      $$0.put(dkg.je, $$3);
+      $$0.put(dkg.jf, $$3);
+      $$0.put(dkg.jg, $$3);
+      $$0.put(dkg.kM, $$3);
+      $$0.put(dkg.kN, $$3);
+      $$0.put(dkg.kO, $$3);
+      $$0.put(dkg.kP, $$3);
+      $$0.put(dkg.kQ, $$3);
+      $$0.put(dkg.kR, $$3);
+      $$0.put(dkg.kS, $$3);
+      $$0.put(dkg.kT, $$3);
+      $$0.put(dkg.kU, $$3);
+      $$0.put(dkg.so, $$3);
+      $$0.put(dkg.sp, $$3);
+      $$0.put(dkg.sr, $$3);
+      $$0.put(dkg.sq, $$3);
+      $$0.put(dkg.ss, $$3);
+      $$0.put(dkg.st, $$3);
+      $$0.put(dkg.sv, $$3);
+      $$0.put(dkg.su, $$3);
+      $$0.put(dkg.kV, $$3);
+      $$0.put(dkg.kW, $$3);
+      $$0.put(dkg.kX, $$3);
+      $$0.put(dkg.bZ, $$3);
+      $$0.put(dkg.lc, $$3);
+      $$0.put(dkg.le, $$3);
+      $$0.put(dkg.ld, $$3);
+      $$0.put(dkg.lf, $$3);
+      $$0.put(dkg.mE, $$3);
+      $$0.put(dkg.mF, $$3);
+      $$0.put(dkg.mH, $$3);
+      $$0.put(dkg.mT, $$3);
+      $$0.put(dkg.mU, $$3);
+      $$0.put(dkg.mV, $$3);
+      $$0.put(dkg.mW, $$3);
+      $$0.put(dkg.mX, $$3);
+      $$0.put(dkg.mY, $$3);
+      $$0.put(dkg.mZ, $$3);
+      $$0.put(dkg.na, $$3);
+      $$0.put(dkg.nb, $$3);
+      $$0.put(dkg.nc, $$3);
+      $$0.put(dkg.nd, $$3);
+      $$0.put(dkg.ne, $$3);
+      $$0.put(dkg.nf, $$3);
+      $$0.put(dkg.ng, $$3);
+      $$0.put(dkg.nh, $$3);
+      $$0.put(dkg.ni, $$3);
+      $$0.put(dkg.nj, $$3);
+      $$0.put(dkg.nk, $$3);
+      $$0.put(dkg.nl, $$3);
+      $$0.put(dkg.nm, $$3);
+      $$0.put(dkg.nn, $$3);
+      $$0.put(dkg.no, $$3);
+      $$0.put(dkg.np, $$3);
+      $$0.put(dkg.nq, $$3);
+      $$0.put(dkg.nr, $$3);
+      $$0.put(dkg.ns, $$3);
+      $$0.put(dkg.nt, $$3);
+      $$0.put(dkg.nu, $$3);
+      $$0.put(dkg.nv, $$3);
+      $$0.put(dkg.nw, $$3);
+      $$0.put(dkg.nx, $$3);
+      $$0.put(dkg.nz, $$3);
+      $$0.put(dkg.nA, $$3);
+      $$0.put(dkg.nB, $$3);
+      $$0.put(dkg.nC, $$3);
+      $$0.put(dkg.ou, $$3);
+      $$0.put(dkg.oE, $$3);
+      $$0.put(dkg.oG, $$3);
+      $$0.put(dkg.oH, $$3);
+      $$0.put(dkg.oI, $$3);
+      $$0.put(dkg.oJ, $$3);
+      $$0.put(dkg.oK, $$3);
+      $$0.put(dkg.pb, $$3);
+      $$0.put(dkg.pc, $$3);
+      $$0.put(dkg.pd, $$3);
+      $$0.put(dkg.pe, $$3);
+      $$0.put(dkg.oT, $$3);
+      $$0.put(dkg.oZ, $$3);
+      $$0.put(dkg.oQ, $$3);
+      $$0.put(dkg.pf, $$3);
+      $$0.put(dkg.oS, $$3);
+      $$0.put(dkg.pO, $$3);
+      $$0.put(dkg.pP, $$3);
+      $$0.put(dkg.pQ, $$3);
+      $$0.put(dkg.pR, $$3);
+      $$0.put(dkg.pw, $$3);
+      $$0.put(dkg.px, $$3);
+      $$0.put(dkg.sV, $$3);
+      $$0.put(dkg.ra, $$3);
+      $$0.put(dkg.qZ, $$3);
+      $$0.put(dkg.qY, $$3);
+      $$0.put(dkg.qX, $$3);
+      $$0.put(dkg.sU, $$3);
+      $$0.put(dkg.sX, $$3);
+      $$0.put(dkg.sY, $$3);
+      $$0.put(dkg.sZ, $$3);
+      $$0.put(dkg.tb, $$3);
+      $$0.put(dkg.ta, $$3);
+      $$0.put(dkg.td, $$3);
+      $$0.put(dkg.te, $$3);
+      $$0.put(dkg.tf, $$3);
+      $$0.put(dkg.th, $$3);
+      $$0.put(dkg.ti, $$3);
+      $$0.put(dkg.tj, $$3);
+      $$0.put(dkg.tk, $$3);
+      $$0.put(dkg.rs, $$3);
+      $$0.put(dkg.rt, $$3);
+      $$0.put(dkg.rv, $$3);
+      $$0.put(dkg.rx, $$3);
+      $$0.put(dkg.H, $$3);
+      $$0.put(dkg.tR, $$3);
+      $$0.put(dkg.sE, $$3);
+      $$0.put(dkg.sF, $$3);
+      $$0.put(dkg.sG, $$3);
+      $$0.put(dkg.sH, $$3);
+      $$0.put(dkg.sI, $$3);
+      $$0.put(dkg.sJ, $$3);
+      $$0.put(dkg.sK, $$3);
+      $$0.put(dkg.sL, $$3);
+      gnh $$4 = gnh.f();
+      $$0.put(dkg.eb, $$4);
+      $$0.put(dkg.eq, $$4);
+      $$0.put(dkg.ev, $$4);
+      $$0.put(dkg.ew, $$4);
+      $$0.put(dkg.ex, $$4);
+      $$0.put(dkg.ey, $$4);
+      $$0.put(dkg.ez, $$4);
+      $$0.put(dkg.eA, $$4);
+      $$0.put(dkg.eB, $$4);
+      $$0.put(dkg.eC, $$4);
+      $$0.put(dkg.eD, $$4);
+      $$0.put(dkg.eE, $$4);
+      $$0.put(dkg.eF, $$4);
+      $$0.put(dkg.eG, $$4);
+      $$0.put(dkg.eH, $$4);
+      $$0.put(dkg.eI, $$4);
+      $$0.put(dkg.eJ, $$4);
+      $$0.put(dkg.eK, $$4);
+      $$0.put(dkg.hW, $$4);
+      $$0.put(dkg.hX, $$4);
+      $$0.put(dkg.hY, $$4);
+      $$0.put(dkg.hZ, $$4);
+      $$0.put(dkg.ia, $$4);
+      $$0.put(dkg.ib, $$4);
+      $$0.put(dkg.ic, $$4);
+      $$0.put(dkg.id, $$4);
+      $$0.put(dkg.ie, $$4);
+      $$0.put(dkg.if, $$4);
+      $$0.put(dkg.ig, $$4);
+      $$0.put(dkg.ih, $$4);
+      $$0.put(dkg.ii, $$4);
+      $$0.put(dkg.ij, $$4);
+      $$0.put(dkg.ik, $$4);
+      $$0.put(dkg.il, $$4);
+      $$0.put(dkg.it, $$4);
+      $$0.put(dkg.pI, $$4);
+      $$0.put(dkg.lk, $$4);
+      $$0.put(dkg.nF, $$4);
+      $$0.put(dkg.rq, $$4);
+   });
+   private static final Map<etv, gnh> b = af.a(Maps.newHashMap(), $$0 -> {
+      gnh $$1 = gnh.f();
+      $$0.put(etx.b, $$1);
+      $$0.put(etx.c, $$1);
+   });
+   private static boolean c;
 
-   public gmq(hev $$0, Consumer<Exception> $$1) {
-      this.g = $$0;
-      this.h = $$1;
-   }
-
-   protected gmq.c a(aup $$0, bou $$1) {
-      Builder<akv, gms> $$2 = ImmutableMap.builder();
-      Builder<gmq.e, String> $$3 = ImmutableMap.builder();
-      Map<akv, aun> $$4 = $$0.b("shaders", $$0x -> a($$0x) || b($$0x));
-
-      for (Entry<akv, aun> $$5 : $$4.entrySet()) {
-         akv $$6 = $$5.getKey();
-         ffk.a $$7 = ffk.a.a($$6);
-         if ($$7 != null) {
-            a($$6, $$5.getValue(), $$7, $$4, $$3);
-         } else if (a($$6)) {
-            a($$6, $$5.getValue(), $$2);
-         }
-      }
-
-      Builder<akv, gme> $$8 = ImmutableMap.builder();
-
-      for (Entry<akv, aun> $$9 : f.a($$0).entrySet()) {
-         b($$9.getKey(), $$9.getValue(), $$8);
-      }
-
-      return new gmq.c($$2.build(), $$3.build(), $$8.build());
-   }
-
-   private static void a(akv $$0, aun $$1, ffk.a $$2, Map<akv, aun> $$3, Builder<gmq.e, String> $$4) {
-      akv $$5 = $$2.c().b($$0);
-      ffb $$6 = a($$3, $$0);
-
-      try (Reader $$7 = $$1.e()) {
-         String $$8 = IOUtils.toString($$7);
-         $$4.put(new gmq.e($$5, $$2), String.join("", $$6.a($$8)));
-      } catch (IOException var12) {
-         d.error("Failed to load shader source at {}", $$0, var12);
-      }
-   }
-
-   private static ffb a(final Map<akv, aun> $$0, akv $$1) {
-      final akv $$2 = $$1.a(v::b);
-      return new ffb() {
-         private final Set<akv> c = new ObjectArraySet();
-
-         @Override
-         public String a(boolean $$0x, String $$1) {
-            akv $$2;
-            try {
-               if ($$0) {
-                  $$2 = $$2.a((UnaryOperator<String>)($$1x -> v.c($$1x + $$1)));
-               } else {
-                  $$2 = akv.a($$1).f("shaders/include/");
-               }
-            } catch (aa var8) {
-               gmq.d.error("Malformed GLSL import {}: {}", $$1, var8.getMessage());
-               return "#error " + var8.getMessage();
-            }
-
-            if (!this.c.add($$2)) {
-               return null;
-            } else {
-               try {
-                  String var5;
-                  try (Reader $$6 = $$0.get($$2).e()) {
-                     var5 = IOUtils.toString($$6);
-                  }
-
-                  return var5;
-               } catch (IOException var10) {
-                  gmq.d.error("Could not open GLSL import {}: {}", $$2, var10.getMessage());
-                  return "#error " + var10.getMessage();
-               }
-            }
-         }
-      };
-   }
-
-   private static void a(akv $$0, aun $$1, Builder<akv, gms> $$2) {
-      akv $$3 = e.b($$0);
-
-      try (Reader $$4 = $$1.e()) {
-         JsonElement $$5 = JsonParser.parseReader($$4);
-         gms $$6 = (gms)gms.a.parse(JsonOps.INSTANCE, $$5).getOrThrow(JsonSyntaxException::new);
-         $$2.put($$3, $$6);
-      } catch (JsonParseException | IOException var9) {
-         d.error("Failed to parse shader config at {}", $$0, var9);
-      }
-   }
-
-   private static void b(akv $$0, aun $$1, Builder<akv, gme> $$2) {
-      akv $$3 = f.b($$0);
-
-      try (Reader $$4 = $$1.e()) {
-         JsonElement $$5 = JsonParser.parseReader($$4);
-         $$2.put($$3, (gme)gme.a.parse(JsonOps.INSTANCE, $$5).getOrThrow(JsonSyntaxException::new));
-      } catch (JsonParseException | IOException var9) {
-         d.error("Failed to parse post chain at {}", $$0, var9);
-      }
-   }
-
-   private static boolean a(akv $$0) {
-      return $$0.a().endsWith(".json");
-   }
-
-   private static boolean b(akv $$0) {
-      return ffk.a.a($$0) != null || $$0.a().endsWith(".glsl");
-   }
-
-   protected void a(gmq.c $$0, aup $$1, bou $$2) {
-      gmq.a $$3 = new gmq.a($$0);
-      Map<gmr, gmq.b> $$4 = new HashMap<>();
-      Set<gmr> $$5 = new HashSet<>(glk.a());
-
-      for (gme $$6 : $$0.d.values()) {
-         for (gme.e $$7 : $$6.b()) {
-            $$5.add($$7.a());
-         }
-      }
-
-      for (gmr $$8 : $$5) {
-         try {
-            $$3.c.put($$8, Optional.of($$3.b($$8)));
-         } catch (gmq.b var11) {
-            $$4.put($$8, var11);
-         }
-      }
-
-      if (!$$4.isEmpty()) {
-         $$3.close();
-         throw new RuntimeException(
-            "Failed to load required shader programs:\n"
-               + $$4.entrySet().stream().map($$0x -> " - " + $$0x.getKey() + ": " + ((gmq.b)$$0x.getValue()).getMessage()).collect(Collectors.joining("\n"))
-         );
+   public static gnh a(dxq $$0) {
+      dke $$1 = $$0.b();
+      if ($$1 instanceof dos) {
+         return c ? gnh.d() : gnh.c();
       } else {
-         this.i.close();
-         this.i = $$3;
+         gnh $$2 = a.get($$1);
+         return $$2 != null ? $$2 : gnh.c();
       }
    }
 
-   @Override
-   public String c() {
-      return "Shader Loader";
-   }
-
-   private void a(Exception $$0) {
-      if (!this.i.f) {
-         this.h.accept($$0);
-         this.i.f = true;
-      }
-   }
-
-   public void a(aus $$0, gmr... $$1) throws IOException, gmq.b {
-      for (gmr $$2 : $$1) {
-         aun $$3 = $$0.getResourceOrThrow(e.a($$2.a()));
-
-         try (Reader $$4 = $$3.e()) {
-            JsonElement $$5 = JsonParser.parseReader($$4);
-            gms $$6 = (gms)gms.a.parse(JsonOps.INSTANCE, $$5).getOrThrow(JsonSyntaxException::new);
-            gmp $$7 = $$6.e().a($$2.c());
-            ffk $$8 = this.a($$0, $$6.a(), ffk.a.a, $$7);
-            ffk $$9 = this.a($$0, $$6.b(), ffk.a.b, $$7);
-            glj $$10 = a($$2, $$6, $$8, $$9);
-            this.i.c.put($$2, Optional.of($$10));
-         }
-      }
-   }
-
-   private ffk a(aus $$0, akv $$1, ffk.a $$2, gmp $$3) throws IOException, gmq.b {
-      akv $$4 = $$2.c().a($$1);
-
-      ffk var10;
-      try (Reader $$5 = $$0.getResourceOrThrow($$4).e()) {
-         String $$6 = IOUtils.toString($$5);
-         String $$7 = ffb.a($$6, $$3);
-         ffk $$8 = ffk.a($$1, $$2, $$7);
-         this.i.d.put(new gmq.d($$1, $$2, $$3), $$8);
-         var10 = $$8;
-      }
-
-      return var10;
-   }
-
-   @Nullable
-   public glj a(gmr $$0) {
-      try {
-         return this.i.a($$0);
-      } catch (gmq.b var3) {
-         d.error("Failed to load shader program: {}", $$0, var3);
-         this.i.c.put($$0, Optional.empty());
-         this.a(var3);
-         return null;
-      }
-   }
-
-   public glj b(gmr $$0) throws gmq.b {
-      glj $$1 = this.i.a($$0);
-      if ($$1 == null) {
-         throw new gmq.b("Shader '" + $$0 + "' could not be found");
+   public static gnh b(dxq $$0) {
+      dke $$1 = $$0.b();
+      if ($$1 instanceof dos) {
+         return c ? gnh.d() : gnh.c();
       } else {
-         return $$1;
-      }
-   }
-
-   static glj a(gmr $$0, gms $$1, ffk $$2, ffk $$3) throws gmq.b {
-      glj $$4 = glj.a($$2, $$3, $$0.b());
-      $$4.a($$1.d(), $$1.c());
-      return $$4;
-   }
-
-   @Nullable
-   public gmd a(akv $$0, Set<akv> $$1) {
-      try {
-         return this.i.a($$0, $$1);
-      } catch (gmq.b var4) {
-         d.error("Failed to load post chain: {}", $$0, var4);
-         this.i.e.put($$0, Optional.empty());
-         this.a(var4);
-         return null;
-      }
-   }
-
-   @Override
-   public void close() {
-      this.i.close();
-   }
-
-   class a implements AutoCloseable {
-      private final gmq.c b;
-      final Map<gmr, Optional<glj>> c = new HashMap<>();
-      final Map<gmq.d, ffk> d = new HashMap<>();
-      final Map<akv, Optional<gmd>> e = new HashMap<>();
-      boolean f;
-
-      a(final gmq.c $$0) {
-         this.b = $$0;
-      }
-
-      @Nullable
-      public glj a(gmr $$0) throws gmq.b {
-         Optional<glj> $$1 = this.c.get($$0);
-         if ($$1 != null) {
-            return $$1.orElse(null);
-         } else {
-            glj $$2 = this.b($$0);
-            this.c.put($$0, Optional.of($$2));
-            return $$2;
-         }
-      }
-
-      glj b(gmr $$0) throws gmq.b {
-         gms $$1 = this.b.b.get($$0.a());
-         if ($$1 == null) {
-            throw new gmq.b("Could not find program with id: " + $$0.a());
-         } else {
-            gmp $$2 = $$1.e().a($$0.c());
-            ffk $$3 = this.a($$1.a(), ffk.a.a, $$2);
-            ffk $$4 = this.a($$1.b(), ffk.a.b, $$2);
-            return gmq.a($$0, $$1, $$3, $$4);
-         }
-      }
-
-      private ffk a(akv $$0, ffk.a $$1, gmp $$2) throws gmq.b {
-         gmq.d $$3 = new gmq.d($$0, $$1, $$2);
-         ffk $$4 = this.d.get($$3);
-         if ($$4 == null) {
-            $$4 = this.a($$3);
-            this.d.put($$3, $$4);
-         }
-
-         return $$4;
-      }
-
-      private ffk a(gmq.d $$0) throws gmq.b {
-         String $$1 = this.b.c.get(new gmq.e($$0.a, $$0.b));
-         if ($$1 == null) {
-            throw new gmq.b("Could not find shader: " + $$0);
-         } else {
-            String $$2 = ffb.a($$1, $$0.c);
-            return ffk.a($$0.a, $$0.b, $$2);
-         }
-      }
-
-      @Nullable
-      public gmd a(akv $$0, Set<akv> $$1) throws gmq.b {
-         Optional<gmd> $$2 = this.e.get($$0);
+         gnh $$2 = a.get($$1);
          if ($$2 != null) {
-            return $$2.orElse(null);
+            return $$2 == gnh.f() ? gnh.g() : $$2;
          } else {
-            gmd $$3 = this.b($$0, $$1);
-            this.e.put($$0, Optional.of($$3));
-            return $$3;
+            return gnh.c();
          }
       }
+   }
 
-      private gmd b(akv $$0, Set<akv> $$1) throws gmq.b {
-         gme $$2 = this.b.d.get($$0);
-         if ($$2 == null) {
-            throw new gmq.b("Could not find post chain with id: " + $$0);
-         } else {
-            return gmd.a($$2, gmq.this.g, gmq.this, $$1);
-         }
-      }
+   public static gnh c(dxq $$0) {
+      gnh $$1 = a($$0);
+      return $$1 == gnh.f() ? gns.j() : gns.i();
+   }
 
-      @Override
-      public void close() {
-         RenderSystem.assertOnRenderThread();
-         this.c.values().forEach($$0 -> $$0.ifPresent(glj::close));
-         this.d.values().forEach(ffk::close);
-         this.c.clear();
-         this.d.clear();
-         this.e.clear();
+   public static gnh a(cxh $$0) {
+      if ($$0.h() instanceof cvo $$2) {
+         dke $$3 = $$2.d();
+         return c($$3.m());
+      } else {
+         return gns.j();
       }
    }
 
-   public static class b extends Exception {
-      public b(String $$0) {
-         super($$0);
-      }
+   public static gnh a(etw $$0) {
+      gnh $$1 = b.get($$0.a());
+      return $$1 != null ? $$1 : gnh.c();
    }
 
-   public static record c(Map<akv, gms> b, Map<gmq.e, String> c, Map<akv, gme> d) {
-      public static final gmq.c a = new gmq.c(Map.of(), Map.of(), Map.of());
-
-      public Map<akv, gms> a() {
-         return this.b;
-      }
-
-      public Map<gmq.e, String> b() {
-         return this.c;
-      }
-
-      public Map<akv, gme> c() {
-         return this.d;
-      }
-   }
-
-   static record d(akv a, ffk.a b, gmp c) {
-
-      @Override
-      public String toString() {
-         String $$0 = this.a + " (" + this.b + ")";
-         return !this.c.c() ? $$0 + " with " + this.c : $$0;
-      }
-   }
-
-   static record e(akv a, ffk.a b) {
-      @Override
-      public String toString() {
-         return this.a + " (" + this.b + ")";
-      }
+   public static void a(boolean $$0) {
+      c = $$0;
    }
 }

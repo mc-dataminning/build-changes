@@ -1,93 +1,56 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2LongMap;
+import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class cfz {
-   public static final cfz a = a();
-   private static final double b = 2.0;
-   private final boolean c;
-   private double d = -1.0;
-   private boolean e = true;
-   private boolean f = true;
-   @Nullable
-   private cfz.a g;
+public class cfz extends cgi<bwa> {
+   private static final int a = 40;
+   private static final int b = 5;
+   private static final int c = 20;
+   private final Long2LongMap d = new Long2LongOpenHashMap();
+   private int e;
+   private long f;
 
-   private cfz(boolean $$0) {
-      this.c = $$0;
+   public cfz() {
+      super(20);
    }
 
-   public static cfz a() {
-      return new cfz(true);
+   @Override
+   public Set<cfc<?>> a() {
+      return ImmutableSet.of(cfc.w);
    }
 
-   public static cfz b() {
-      return new cfz(false);
-   }
-
-   public cfz c() {
-      cfz $$0 = this.c ? a() : b();
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      $$0.g = this.g;
-      return $$0;
-   }
-
-   public cfz a(double $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   public cfz d() {
-      this.e = false;
-      return this;
-   }
-
-   public cfz e() {
-      this.f = false;
-      return this;
-   }
-
-   public cfz a(@Nullable cfz.a $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public boolean a(ard $$0, @Nullable bvi $$1, bvi $$2) {
-      if ($$1 == $$2) {
-         return false;
-      } else if (!$$2.ex()) {
-         return false;
-      } else if (this.g != null && !this.g.test($$2, $$0)) {
-         return false;
-      } else {
-         if ($$1 == null) {
-            if (this.c && (!$$2.ew() || $$0.am() == bsi.a)) {
+   protected void a(ard $$0, bwa $$1) {
+      if ($$1.n_()) {
+         this.e = 0;
+         this.f = $$0.ae() + (long)$$0.C_().a(20);
+         chc $$2 = $$0.A();
+         Predicate<ji> $$3 = $$0x -> {
+            long $$1x = $$0x.a();
+            if (this.d.containsKey($$1x)) {
                return false;
-            }
-         } else {
-            if (this.c && (!$$1.c($$2) || !$$1.a($$2.aq()) || $$1.s($$2))) {
+            } else if (++this.e >= 5) {
                return false;
+            } else {
+               this.d.put($$1x, this.f + 40L);
+               return true;
             }
-
-            if (this.d > 0.0) {
-               double $$3 = this.f ? $$2.C($$1) : 1.0;
-               double $$4 = Math.max(this.d * $$3, 2.0);
-               double $$5 = $$1.i($$2.dA(), $$2.dC(), $$2.dG());
-               if ($$5 > $$4 * $$4) {
-                  return false;
-               }
+         };
+         Set<Pair<jr<chf>, ji>> $$4 = $$2.b($$0x -> $$0x.a(chg.n), $$3, $$1.du(), 48, chc.b.c).collect(Collectors.toSet());
+         euk $$5 = bxk.a($$1, $$4);
+         if ($$5 != null && $$5.j()) {
+            ji $$6 = $$5.l();
+            Optional<jr<chf>> $$7 = $$2.c($$6);
+            if ($$7.isPresent()) {
+               $$1.ea().a(cfc.w, $$6);
             }
-
-            if (this.e && $$1 instanceof bvk $$6 && !$$6.Q().a($$2)) {
-               return false;
-            }
+         } else if (this.e < 5) {
+            this.d.long2LongEntrySet().removeIf($$0x -> $$0x.getLongValue() < this.f);
          }
-
-         return true;
       }
-   }
-
-   @FunctionalInterface
-   public interface a {
-      boolean test(bvi var1, ard var2);
    }
 }

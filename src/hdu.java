@@ -1,49 +1,19 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Objects;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class hdu implements hdx<kr> {
-   private final gdt a;
+public record hdu(float b) implements hds {
+   public static final MapCodec<hdu> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ayi.o.optionalFieldOf("period", 1.0F).forGetter(hdu::b)).apply($$0, hdu::new)
+   );
 
-   public hdu(gdt $$0) {
-      this.a = $$0;
+   @Override
+   public float a(cxh $$0, @Nullable ggy $$1, @Nullable bvy $$2, int $$3) {
+      return $$2 != null && $$2.fD() == $$0 ? (float)$$2.fE() % this.b : 0.0F;
    }
 
-   @Nullable
-   public kr a(cwq $$0) {
-      return $$0.e();
-   }
-
-   public void a(@Nullable kr $$0, cwo $$1, ffv $$2, glz $$3, int $$4, int $$5, boolean $$6) {
-      dtr $$7 = $$0 != null ? $$0.a(kv.ai, dtr.a) : dtr.a;
-      cvn $$8 = $$0 != null ? $$0.a(kv.aj) : null;
-      boolean $$9 = !$$7.b().isEmpty() || $$8 != null;
-      $$2.a();
-      $$2.b(1.0F, -1.0F, -1.0F);
-      hha $$10 = $$9 ? hhd.g : hhd.h;
-      ffz $$11 = $$10.c().a(gtd.a($$3, this.a.a($$10.a()), $$1 == cwo.g, $$6));
-      this.a.c().a($$2, $$11, $$4, $$5);
-      if ($$9) {
-         gog.a($$2, $$3, $$4, $$5, this.a.b(), $$10, false, Objects.requireNonNullElse($$8, cvn.a), $$7, $$6, false);
-      } else {
-         this.a.b().a($$2, $$11, $$4, $$5);
-      }
-
-      $$2.b();
-   }
-
-   public static record a() implements hdx.a {
-      public static final hdu.a a = new hdu.a();
-      public static final MapCodec<hdu.a> b = MapCodec.unit(a);
-
-      @Override
-      public MapCodec<hdu.a> a() {
-         return b;
-      }
-
-      @Override
-      public hdx<?> a(gfa $$0) {
-         return new hdu(new gdt($$0.a(gfd.cD)));
-      }
+   @Override
+   public MapCodec<hdu> a() {
+      return a;
    }
 }

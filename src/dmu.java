@@ -1,55 +1,81 @@
+import com.google.common.base.Predicates;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class dmu extends djx implements djq {
-   public static final MapCodec<dmu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(aku.a(mc.aL).fieldOf("feature").forGetter($$0x -> $$0x.e), mb.e.q().fieldOf("grows_on").forGetter($$0x -> $$0x.d), t())
-            .apply($$0, dmu::new)
-   );
-   protected static final fbv b = djn.a(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
-   private static final double c = 0.4;
-   private final djn d;
-   private final aku<efl<?, ?>> e;
+public class dmu extends dke {
+   public static final MapCodec<dmu> a = b(dmu::new);
+   public static final dyo<jn> b = dod.e;
+   public static final dyh c = dyg.k;
+   private static final fcr d = dke.b(16.0, 0.0, 13.0);
+   private static final fcr e = fco.a(d, dke.b(8.0, 13.0, 16.0));
+   private static dxv f;
 
    @Override
    public MapCodec<dmu> a() {
       return a;
    }
 
-   protected dmu(aku<efl<?, ?>> $$0, djn $$1, dwx.d $$2) {
-      super($$2);
-      this.e = $$0;
-      this.d = $$1;
+   public dmu(dxp.d $$0) {
+      super($$0);
+      this.l(this.B.b().b(b, jn.c).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected fbv a(dwy $$0, dfo $$1, ji $$2, fbg $$3) {
-      return b;
+   protected boolean g_(dxq $$0) {
+      return true;
    }
 
    @Override
-   protected boolean b(dwy $$0, dfo $$1, ji $$2) {
-      return $$0.a(awp.aO) || $$0.a(djp.fA) || $$0.a(djp.ek) || super.b($$0, $$1, $$2);
-   }
-
-   private Optional<? extends jr<efl<?, ?>>> a(dgm $$0) {
-      return $$0.K_().e(mc.aL).a(this.e);
+   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
+      return $$0.c(c) ? e : d;
    }
 
    @Override
-   public boolean a(dgm $$0, ji $$1, dwy $$2) {
-      dwy $$3 = $$0.a_($$1.e());
-      return $$3.a(this.d);
+   public dxq a(dax $$0) {
+      return this.m().b(b, $$0.g().g()).b(c, Boolean.valueOf(false));
    }
 
    @Override
-   public boolean a(dgj $$0, azh $$1, ji $$2, dwy $$3) {
-      return (double)$$1.i() < 0.4;
+   protected boolean c_(dxq $$0) {
+      return true;
    }
 
    @Override
-   public void a(ard $$0, azh $$1, ji $$2, dwy $$3) {
-      this.a($$0).ifPresent($$3x -> ((efl)$$3x.a()).a($$0, $$0.m().g(), $$1, $$2));
+   protected int a(dxq $$0, dgz $$1, ji $$2) {
+      return $$0.c(c) ? 15 : 0;
+   }
+
+   @Override
+   protected dxq a(dxq $$0, dqw $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dxq a(dxq $$0, dpf $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dxr.a<dke, dxq> $$0) {
+      $$0.a(b, c);
+   }
+
+   public static dxv b() {
+      if (f == null) {
+         f = dxw.a()
+            .a("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
+            .a('?', dxu.a(dxz.a))
+            .a('^', dxu.a(dxz.a(dkg.fT).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jn.d))))
+            .a('>', dxu.a(dxz.a(dkg.fT).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jn.e))))
+            .a('v', dxu.a(dxz.a(dkg.fT).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jn.c))))
+            .a('<', dxu.a(dxz.a(dkg.fT).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jn.f))))
+            .b();
+      }
+
+      return f;
+   }
+
+   @Override
+   protected boolean a(dxq $$0, eul $$1) {
+      return false;
    }
 }

@@ -1,109 +1,139 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.Optional;
-import java.util.function.Predicate;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public class cim {
-   private static final brw a = brw.a(5, 16);
-   private static final float b = 0.2F;
-   private static final float c = 0.15F;
-   private static final float d = 0.5F;
-   private static final float e = 0.6F;
-   private static final float f = 0.6F;
+public class cim extends chn implements bwy<cim.a> {
+   private static final String a = "type";
+   private static final ajx<Integer> b = akb.a(cim.class, ajz.b);
 
-   protected static bwk<?> a(bwk<cil> $$0) {
-      d($$0);
-      e($$0);
-      c($$0);
-      b($$0);
-      $$0.a(ImmutableSet.of(cqp.a));
-      $$0.b(cqp.b);
-      $$0.f();
-      return $$0;
+   public cim(bvi<? extends cim> $$0, dgz $$1) {
+      super($$0, $$1);
+      this.i_();
    }
 
-   private static void b(bwk<cil> $$0) {
-      $$0.a(cqp.p, ImmutableList.of(Pair.of(0, new cin()), Pair.of(1, bxn.a(bxd::a, cem.N))), ImmutableSet.of(Pair.of(cem.N, cen.a)), ImmutableSet.of(cem.N));
+   @Override
+   public int x() {
+      return 5;
    }
 
-   private static void c(bwk<cil> $$0) {
-      $$0.a(cqp.k, 0, ImmutableList.of(bzq.a(cil::a), bzg.a(cim::b), byi.a(20), bxn.a(bxd::a, cem.o)), cem.o);
+   @Override
+   public cxh R_() {
+      return new cxh(cxl.rp);
    }
 
-   private static void d(bwk<cil> $$0) {
-      $$0.a(cqp.a, 0, ImmutableList.of(new byh(45, 90), new byl(), cio.a(), new bxh(cem.P)));
+   @Override
+   protected avz u() {
+      return awa.wp;
    }
 
-   private static void e(bwk<cil> $$0) {
-      $$0.a(
-         cqp.b,
-         ImmutableList.of(
-            Pair.of(0, bzb.a(but.bR, 6.0F, brw.a(30, 60))),
-            Pair.of(1, new bwv(but.h, 0.2F, 2)),
-            Pair.of(2, new byy(ImmutableList.of(Pair.of(new bxo(cim::d), 1), Pair.of(bwy.a(a, cim::c), 1)))),
-            Pair.of(3, bzn.a(cim::a)),
-            Pair.of(3, caa.a(6, 0.15F)),
-            Pair.of(
-               4,
-               new bxp(
-                  ImmutableMap.of(cem.m, cen.b),
-                  ImmutableSet.of(),
-                  bxp.a.a,
-                  bxp.b.b,
-                  ImmutableList.of(
-                     Pair.of(byt.c(0.5F), 2),
-                     Pair.of(byt.a(0.15F, false), 2),
-                     Pair.of(bzi.a(cim::a, cim::d, 3), 3),
-                     Pair.of(cao.a(bum::bm), 5),
-                     Pair.of(cao.a(bum::aJ), 5)
-                  )
-               )
-            )
-         )
-      );
+   @Override
+   protected avz l_() {
+      return awa.wq;
    }
 
-   private static boolean a(bvi $$0) {
-      dgj $$1 = $$0.dV();
-      Optional<byp> $$2 = $$0.eb().c(cem.n);
-      if ($$2.isPresent()) {
-         ji $$3 = $$2.get().b();
-         return $$1.z($$3) == $$0.bm();
-      } else {
-         return false;
+   @Override
+   protected avz e(btp $$0) {
+      return awa.ws;
+   }
+
+   @Override
+   protected avz t() {
+      return awa.wr;
+   }
+
+   @Override
+   protected void a(akb.a $$0) {
+      super.a($$0);
+      $$0.a(b, cim.a.b.a());
+   }
+
+   @Override
+   public void a(ajx<?> $$0) {
+      super.a($$0);
+      if (b.equals($$0)) {
+         this.i_();
       }
    }
 
-   public static void a(cil $$0) {
-      bwk<cil> $$1 = $$0.eb();
-      cqp $$2 = $$1.g().orElse(null);
-      if ($$2 != cqp.p) {
-         $$1.a(ImmutableList.of(cqp.p, cqp.k, cqp.b));
-         if ($$2 == cqp.k && $$1.g().orElse(null) != cqp.k) {
-            $$1.a(cem.U, true, 2400L);
-         }
+   @Override
+   public void b(tq $$0) {
+      super.b($$0);
+      $$0.a("type", this.gy().c());
+   }
+
+   @Override
+   public void a(tq $$0) {
+      super.a($$0);
+      this.a(cim.a.a($$0.l("type")));
+   }
+
+   @Override
+   public void i(cxh $$0) {
+      chr.a(this, $$0);
+      czo.a(kv.Z, $$0, $$0x -> $$0x.a("type", this.gy().c()));
+   }
+
+   @Override
+   public void h(tq $$0) {
+      chr.a(this, $$0);
+      this.a(cim.a.a($$0.l("type")));
+   }
+
+   public void a(cim.a $$0) {
+      this.al.a(b, $$0.g);
+   }
+
+   public cim.a gy() {
+      return cim.a.e.apply(this.al.a(b));
+   }
+
+   @Nullable
+   @Override
+   public bwr a(dhq $$0, bsw $$1, bvh $$2, @Nullable bwr $$3) {
+      brj.a<cim.a> $$4 = brj.b();
+      $$4.a(cim.a.a, 30);
+      $$4.a(cim.a.b, 50);
+      $$4.a(cim.a.c, 15);
+      $$4.a().a(this.ae).ifPresent(this::a);
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   public float gz() {
+      return this.gy().h;
+   }
+
+   @Override
+   protected bvd e(bwk $$0) {
+      return super.e($$0).a(this.gz());
+   }
+
+   public static enum a implements azv {
+      a("small", 0, 0.5F),
+      b("medium", 1, 1.0F),
+      c("large", 2, 1.5F);
+
+      public static final azv.a<cim.a> d = azv.a(cim.a::values);
+      static final IntFunction<cim.a> e = axq.a(cim.a::a, values(), axq.a.c);
+      private final String f;
+      final int g;
+      final float h;
+
+      private a(final String $$0, final int $$1, final float $$2) {
+         this.f = $$0;
+         this.g = $$1;
+         this.h = $$2;
       }
-   }
 
-   private static float b(bvi $$0) {
-      return $$0.bm() ? 0.6F : 0.15F;
-   }
+      @Override
+      public String c() {
+         return this.f;
+      }
 
-   private static float c(bvi $$0) {
-      return $$0.bm() ? 0.6F : 0.15F;
-   }
+      int a() {
+         return this.g;
+      }
 
-   private static float d(bvi $$0) {
-      return $$0.bm() ? 0.5F : 0.15F;
-   }
-
-   private static Optional<? extends bvi> a(ard $$0, cil $$1) {
-      return bxd.a($$1) ? Optional.empty() : $$1.eb().c(cem.B);
-   }
-
-   public static Predicate<cwq> a() {
-      return $$0 -> $$0.a(awy.aC);
+      static cim.a a(String $$0) {
+         return d.a($$0, b);
+      }
    }
 }

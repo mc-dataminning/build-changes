@@ -1,41 +1,113 @@
 import javax.annotation.Nullable;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
 
-public class ftx extends fum {
+public record ftx(ftw a, int b, int c) {
+   private static final ftx d = new ftx(0, 0, 0, 0);
+
+   public ftx(int $$0, int $$1, int $$2, int $$3) {
+      this(new ftw($$0, $$1), $$2, $$3);
+   }
+
+   public static ftx a() {
+      return d;
+   }
+
+   public static ftx a(ftu $$0, int $$1, int $$2, int $$3, int $$4) {
+      return switch ($$0) {
+         case a -> new ftx($$1, $$2, $$3, $$4);
+         case b -> new ftx($$2, $$1, $$4, $$3);
+      };
+   }
+
+   public ftx a(ftv $$0) {
+      return new ftx(this.a.a($$0), this.b, this.c);
+   }
+
+   public int a(ftu $$0) {
+      return switch ($$0) {
+         case a -> this.b;
+         case b -> this.c;
+      };
+   }
+
+   public int b(ftv $$0) {
+      ftu $$1 = $$0.a();
+      return $$0.c() ? this.a.a($$1) + this.a($$1) - 1 : this.a.a($$1);
+   }
+
+   public ftx c(ftv $$0) {
+      int $$1 = this.b($$0);
+      ftu $$2 = $$0.a().a();
+      int $$3 = this.b($$2.c());
+      int $$4 = this.a($$2);
+      return a($$0.a(), $$1, $$3, 1, $$4).a($$0);
+   }
+
+   public boolean a(ftx $$0) {
+      return this.a($$0, ftu.a) && this.a($$0, ftu.b);
+   }
+
+   public boolean a(ftx $$0, ftu $$1) {
+      int $$2 = this.b($$1.c());
+      int $$3 = $$0.b($$1.c());
+      int $$4 = this.b($$1.b());
+      int $$5 = $$0.b($$1.b());
+      return Math.max($$2, $$3) <= Math.min($$4, $$5);
+   }
+
+   public int b(ftu $$0) {
+      return (this.b($$0.b()) + this.b($$0.c())) / 2;
+   }
+
    @Nullable
-   private fpf a;
-
-   public ftx(wp $$0) {
-      super($$0);
+   public ftx b(ftx $$0) {
+      int $$1 = Math.max(this.d(), $$0.d());
+      int $$2 = Math.max(this.b(), $$0.b());
+      int $$3 = Math.min(this.e(), $$0.e());
+      int $$4 = Math.min(this.c(), $$0.c());
+      return $$1 < $$3 && $$2 < $$4 ? new ftx($$1, $$2, $$3 - $$1, $$4 - $$2) : null;
    }
 
-   @Override
-   protected void aR_() {
-      this.a = this.c(new fpf(this.n, this.l, this.p, 12));
-      this.c();
+   public int b() {
+      return this.a.b();
    }
 
-   @Override
-   protected void c() {
-      if (this.a != null) {
-         this.a.b(this.n);
-         this.a.c(this.n / 2 - this.a.A() / 2, this.o / 2 - 9 / 2);
+   public int c() {
+      return this.a.b() + this.c;
+   }
+
+   public int d() {
+      return this.a.a();
+   }
+
+   public int e() {
+      return this.a.a() + this.b;
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= this.d() && $$0 < this.e() && $$1 >= this.b() && $$1 < this.c();
+   }
+
+   public ftx a(Matrix4f $$0) {
+      if (f.a($$0)) {
+         return this;
+      } else {
+         Vector3f $$1 = $$0.transformPosition((float)this.d(), (float)this.b(), 0.0F, new Vector3f());
+         Vector3f $$2 = $$0.transformPosition((float)this.e(), (float)this.c(), 0.0F, new Vector3f());
+         return new ftx(ayz.d($$1.x), ayz.d($$1.y), ayz.d($$2.x - $$1.x), ayz.d($$2.y - $$1.y));
       }
    }
 
-   @Override
-   public boolean aG_() {
-      return false;
+   public ftw f() {
+      return this.a;
    }
 
-   @Override
-   protected boolean aQ_() {
-      return false;
+   public int g() {
+      return this.b;
    }
 
-   @Override
-   public void b(fof $$0, int $$1, int $$2, float $$3) {
-      this.a($$0, $$3);
-      this.r();
-      this.a($$0);
+   public int h() {
+      return this.c;
    }
 }

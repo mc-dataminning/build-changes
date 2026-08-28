@@ -1,59 +1,20 @@
-public interface fcn extends bse {
-   cwq f();
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-   default cwq c(int $$0) {
-      return this.f().a($$0);
+public class fcn extends AbstractDoubleList {
+   private final DoubleList a;
+   private final double b;
+
+   public fcn(DoubleList $$0, double $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   void b(cwq var1);
-
-   default cwq h() {
-      return this.c(this.an_());
+   public double getDouble(int $$0) {
+      return this.a.getDouble($$0) + this.b;
    }
 
-   @Override
-   default int b() {
-      return 1;
-   }
-
-   @Override
-   default boolean c() {
-      return this.f().f();
-   }
-
-   @Override
-   default void a() {
-      this.h();
-   }
-
-   @Override
-   default cwq b(int $$0) {
-      return this.a($$0, this.an_());
-   }
-
-   @Override
-   default cwq a(int $$0) {
-      return $$0 == 0 ? this.f() : cwq.j;
-   }
-
-   @Override
-   default cwq a(int $$0, int $$1) {
-      return $$0 != 0 ? cwq.j : this.c($$1);
-   }
-
-   @Override
-   default void a(int $$0, cwq $$1) {
-      if ($$0 == 0) {
-         this.b($$1);
-      }
-   }
-
-   public interface a extends fcn {
-      dua t();
-
-      @Override
-      default boolean a(coy $$0) {
-         return bse.a(this.t(), $$0);
-      }
+   public int size() {
+      return this.a.size();
    }
 }

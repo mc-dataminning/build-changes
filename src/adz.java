@@ -1,12 +1,9 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-
-public record adz(List<dcm> b) implements yw<abl> {
-   public static final yn<ByteBuf, adz> a = yn.a(dcm.a.a(yl.a()), adz::b, adz::new);
+public record adz(awe b) implements yw<abl> {
+   public static final yn<vl, adz> a = yn.a(awe.a, adz::b, adz::new);
 
    @Override
    public yy<adz> a() {
-      return age.al;
+      return agd.al;
    }
 
    public void a(abl $$0) {

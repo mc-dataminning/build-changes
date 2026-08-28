@@ -4,26 +4,29 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bke extends bjm {
+public class bke extends bju {
    public bke(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register($$1, $$2, () -> bjn.a($$0));
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      a($$0, $$1, "minecraft:turtle");
-      a($$0, $$1, "minecraft:cod_mob");
-      a($$0, $$1, "minecraft:tropical_fish");
-      a($$0, $$1, "minecraft:salmon_mob");
-      a($$0, $$1, "minecraft:puffer_fish");
-      a($$0, $$1, "minecraft:phantom");
-      a($$0, $$1, "minecraft:dolphin");
-      a($$0, $$1, "minecraft:drowned");
-      $$0.register($$1, "minecraft:trident", $$1x -> DSL.optionalFields("inBlockState", bhy.u.in($$0), "Trident", bhy.t.in($$0)));
-      return $$1;
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(
+         false,
+         bic.c,
+         () -> DSL.fields(
+               "Level",
+               DSL.optionalFields(
+                  "Entities",
+                  DSL.list(bic.B.in($$0)),
+                  "TileEntities",
+                  DSL.list(DSL.or(bic.s.in($$0), DSL.remainder())),
+                  "TileTicks",
+                  DSL.list(DSL.fields("i", bic.D.in($$0))),
+                  "Sections",
+                  DSL.list(DSL.optionalFields("Palette", DSL.list(bic.u.in($$0))))
+               )
+            )
+      );
    }
 }

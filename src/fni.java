@@ -1,78 +1,78 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
 import java.util.Map;
 import java.util.Set;
-import java.util.TreeMap;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class fni implements fnf {
-   private final djn a;
-   private final List<fnl> b;
-   private final Set<dya<?>> c = Sets.newHashSet();
-   private final List<fnj> d = Lists.newArrayList();
+public class fni {
+   private static final int c = -1;
+   public static final int a = -14647248;
+   public static final int b = -9321636;
+   private final jx<fnh> d = new jx<>(32);
+   private final Map<dke, Set<dyt<?>>> e = Maps.newHashMap();
 
-   private fni(djn $$0, List<fnl> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public fni a(fnj $$0) {
-      $$0.b().forEach($$0x -> {
-         if (this.a.l().a($$0x.f()) != $$0x) {
-            throw new IllegalStateException("Property " + $$0x + " is not defined for block " + this.a);
-         } else if (!this.c.add($$0x)) {
-            throw new IllegalStateException("Values of property " + $$0x + " already defined for block " + this.a);
+   public static fni a() {
+      fni $$0 = new fni();
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gmf.a($$1, $$0x.c(dmn.b) == dym.a ? $$2.e() : $$2) : dgx.a(), dkg.jg, dkg.jf);
+      $$0.a(dmn.b, dkg.jg, dkg.jf);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gmf.a($$1, $$2) : dgx.a(), dkg.i, dkg.bB, dkg.bA, dkg.gx);
+      $$0.a(($$0x, $$1, $$2, $$3) -> {
+         if ($$3 != 0) {
+            return $$1 != null && $$2 != null ? gmf.a($$1, $$2) : dgx.a();
+         } else {
+            return -1;
          }
-      });
-      this.d.add($$0);
-      return this;
+      }, dkg.td, dkg.te);
+      $$0.a(($$0x, $$1, $$2, $$3) -> -10380959, dkg.aL);
+      $$0.a(($$0x, $$1, $$2, $$3) -> -8345771, dkg.aM);
+      $$0.a(($$0x, $$1, $$2, $$3) -> -9399763, dkg.aT, dkg.aU);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gmf.b($$1, $$2) : -12012264, dkg.aK, dkg.aN, dkg.aO, dkg.aQ, dkg.ft, dkg.aS);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gmf.c($$1, $$2) : -1, dkg.J, dkg.nF, dkg.fP);
+      $$0.a(($$0x, $$1, $$2, $$3) -> dql.b($$0x.c(dql.f)), dkg.cE);
+      $$0.a(dql.f, dkg.cE);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gmf.a($$1, $$2) : -1, dkg.ef);
+      $$0.a(($$0x, $$1, $$2, $$3) -> -2046180, dkg.fq, dkg.fp);
+      $$0.a(($$0x, $$1, $$2, $$3) -> {
+         int $$4 = $$0x.c(dsg.c);
+         return axk.a($$4 * 32, 255 - $$4 * 8, $$4 * 4);
+      }, dkg.fs, dkg.fr);
+      $$0.a(dsg.c, dkg.fs, dkg.fr);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? -14647248 : -9321636, dkg.fB);
+      return $$0;
    }
 
-   public JsonElement b() {
-      Stream<Pair<fnk, List<fnl>>> $$0 = Stream.of(Pair.of(fnk.a(), this.b));
-
-      for (fnj $$1 : this.d) {
-         Map<fnk, List<fnl>> $$2 = $$1.a();
-         $$0 = $$0.flatMap($$1x -> $$2.entrySet().stream().map($$1xx -> {
-               fnk $$2x = ((fnk)$$1.getFirst()).a((fnk)$$1xx.getKey());
-               List<fnl> $$3 = a((List<fnl>)$$1.getSecond(), (List<fnl>)$$1xx.getValue());
-               return Pair.of($$2x, $$3);
-            }));
+   public int a(dxq $$0, dgz $$1, ji $$2) {
+      fnh $$3 = this.d.a(mb.e.a($$0.b()));
+      if ($$3 != null) {
+         return $$3.getColor($$0, null, null, 0);
+      } else {
+         eua $$4 = $$0.a((dgf)$$1, $$2);
+         return $$4 != null ? $$4.ak : -1;
       }
-
-      Map<String, JsonElement> $$3 = new TreeMap<>();
-      $$0.forEach($$1 -> $$3.put(((fnk)$$1.getFirst()).b(), fnl.a((List<fnl>)$$1.getSecond())));
-      JsonObject $$4 = new JsonObject();
-      $$4.add("variants", af.a(new JsonObject(), $$1 -> $$3.forEach($$1::add)));
-      return $$4;
    }
 
-   private static List<fnl> a(List<fnl> $$0, List<fnl> $$1) {
-      Builder<fnl> $$2 = ImmutableList.builder();
-      $$0.forEach($$2x -> $$1.forEach($$2xx -> $$2.add(fnl.a($$2x, $$2xx))));
-      return $$2.build();
+   public int a(dxq $$0, @Nullable dgc $$1, @Nullable ji $$2, int $$3) {
+      fnh $$4 = this.d.a(mb.e.a($$0.b()));
+      return $$4 == null ? -1 : $$4.getColor($$0, $$1, $$2, $$3);
    }
 
-   @Override
-   public djn a() {
-      return this.a;
+   public void a(fnh $$0, dke... $$1) {
+      for (dke $$2 : $$1) {
+         this.d.a($$0, mb.e.a($$2));
+      }
    }
 
-   public static fni a(djn $$0) {
-      return new fni($$0, ImmutableList.of(fnl.a()));
+   private void a(Set<dyt<?>> $$0, dke... $$1) {
+      for (dke $$2 : $$1) {
+         this.e.put($$2, $$0);
+      }
    }
 
-   public static fni a(djn $$0, fnl $$1) {
-      return new fni($$0, ImmutableList.of($$1));
+   private void a(dyt<?> $$0, dke... $$1) {
+      this.a(ImmutableSet.of($$0), $$1);
    }
 
-   public static fni a(djn $$0, fnl... $$1) {
-      return new fni($$0, ImmutableList.copyOf($$1));
+   public Set<dyt<?>> a(dke $$0) {
+      return this.e.getOrDefault($$0, ImmutableSet.of());
    }
 }

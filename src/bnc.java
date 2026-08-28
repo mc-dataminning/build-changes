@@ -1,42 +1,40 @@
-public abstract class bnc implements bnh {
-   protected final long[] a;
-   protected final long[] b;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
+import java.util.function.Supplier;
 
-   protected bnc(int $$0, long[] $$1) {
-      if ($$1.length != $$0) {
-         throw new IllegalArgumentException("defaults have incorrect length of " + $$1.length);
-      } else {
-         this.b = new long[$$0];
-         this.a = $$1;
-      }
+public class bnc extends bju {
+   public bnc(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   public void a(long[] $$0) {
-      System.arraycopy($$0, 0, this.b, 0, $$0.length);
-      this.a();
-      this.b();
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$1.remove("minecraft:boat");
+      $$1.remove("minecraft:chest_boat");
+      this.registerSimple($$1, "minecraft:oak_boat");
+      this.registerSimple($$1, "minecraft:spruce_boat");
+      this.registerSimple($$1, "minecraft:birch_boat");
+      this.registerSimple($$1, "minecraft:jungle_boat");
+      this.registerSimple($$1, "minecraft:acacia_boat");
+      this.registerSimple($$1, "minecraft:cherry_boat");
+      this.registerSimple($$1, "minecraft:dark_oak_boat");
+      this.registerSimple($$1, "minecraft:mangrove_boat");
+      this.registerSimple($$1, "minecraft:bamboo_raft");
+      this.a($$1, "minecraft:oak_chest_boat");
+      this.a($$1, "minecraft:spruce_chest_boat");
+      this.a($$1, "minecraft:birch_chest_boat");
+      this.a($$1, "minecraft:jungle_chest_boat");
+      this.a($$1, "minecraft:acacia_chest_boat");
+      this.a($$1, "minecraft:cherry_chest_boat");
+      this.a($$1, "minecraft:dark_oak_chest_boat");
+      this.a($$1, "minecraft:mangrove_chest_boat");
+      this.a($$1, "minecraft:bamboo_chest_raft");
+      return $$1;
    }
 
-   @Override
-   public void a(long $$0) {
-      this.b[0] = $$0;
-      this.a();
-      this.b();
-   }
-
-   @Override
-   public void a(long $$0, int $$1) {
-      if ($$1 >= 1 && $$1 < this.b.length) {
-         this.b[$$1] = $$0;
-      } else {
-         throw new IndexOutOfBoundsException($$1 + " out of bounds for dimensions " + this.b.length);
-      }
-   }
-
-   protected abstract void a();
-
-   protected void b() {
-      System.arraycopy(this.a, 0, this.b, 0, this.a.length);
+   private void a(Map<String, Supplier<TypeTemplate>> $$0, String $$1) {
+      this.register($$0, $$1, $$0x -> DSL.optionalFields("Items", DSL.list(bic.t.in(this))));
    }
 }

@@ -1,55 +1,18 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.internal.Streams;
-import com.google.gson.stream.JsonReader;
 import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import java.lang.reflect.Field;
+import com.mojang.serialization.DataResult;
 
 public class fb {
-   private static final Field a = af.a(() -> {
-      try {
-         Field $$0 = JsonReader.class.getDeclaredField("pos");
-         $$0.setAccessible(true);
-         return $$0;
-      } catch (NoSuchFieldException var1) {
-         throw new IllegalStateException("Couldn't get field 'pos' for JsonReader", var1);
-      }
-   });
-   private static final Field b = af.a(() -> {
-      try {
-         Field $$0 = JsonReader.class.getDeclaredField("lineStart");
-         $$0.setAccessible(true);
-         return $$0;
-      } catch (NoSuchFieldException var1) {
-         throw new IllegalStateException("Couldn't get field 'lineStart' for JsonReader", var1);
-      }
-   });
-
-   private static int a(JsonReader $$0) {
-      try {
-         return a.getInt($$0) - b.getInt($$0);
-      } catch (IllegalAccessException var2) {
-         throw new IllegalStateException("Couldn't read position of JsonReader", var2);
-      }
-   }
-
-   public static <T> T a(jt.a $$0, StringReader $$1, Codec<T> $$2) {
-      JsonReader $$3 = new JsonReader(new java.io.StringReader($$1.getRemaining()));
-      $$3.setLenient(false);
-
-      Object var5;
-      try {
-         JsonElement $$4 = Streams.parse($$3);
-         var5 = $$2.parse($$0.a(JsonOps.INSTANCE), $$4).getOrThrow(JsonParseException::new);
-      } catch (StackOverflowError var9) {
-         throw new JsonParseException(var9);
-      } finally {
-         $$1.setCursor($$1.getCursor() + a($$3));
-      }
-
-      return (T)var5;
+   public static <T> T a(Codec<T> $$0, jt.a $$1, DynamicCommandExceptionType $$2, StringReader $$3) throws CommandSyntaxException {
+      int $$4 = $$3.getCursor();
+      un $$5 = new uo($$3).d();
+      DataResult<T> $$6 = $$0.parse($$1.a(ue.a), $$5);
+      return (T)$$6.getOrThrow($$3x -> {
+         $$3.setCursor($$4);
+         return $$2.createWithContext($$3, $$3x);
+      });
    }
 
    public static String a(StringReader $$0, m $$1) {

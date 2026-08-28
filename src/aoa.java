@@ -1,158 +1,80 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
+import java.util.Collection;
+import java.util.Collections;
 
 public class aoa {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wp.c("commands.random.error.range_too_large"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wp.c("commands.random.error.range_too_small"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wp.c("commands.recipe.give.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wp.c("commands.recipe.take.failed"));
 
    public static void a(CommandDispatcher<ex> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("random").then(a("value", false))).then(a("roll", true)))
-            .then(
-               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("reset").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("recipe").requires($$0x -> $$0x.c(2)))
+               .then(
+                  ey.a("give")
                      .then(
-                        ((LiteralArgumentBuilder)ey.a("*").executes($$0x -> a((ex)$$0x.getSource())))
-                           .then(
-                              ((RequiredArgumentBuilder)ey.a("seed", IntegerArgumentType.integer())
-                                    .executes($$0x -> a((ex)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "seed"), true, true)))
-                                 .then(
-                                    ((RequiredArgumentBuilder)ey.a("includeWorldSeed", BoolArgumentType.bool())
-                                          .executes(
-                                             $$0x -> a(
-                                                   (ex)$$0x.getSource(),
-                                                   IntegerArgumentType.getInteger($$0x, "seed"),
-                                                   BoolArgumentType.getBool($$0x, "includeWorldSeed"),
-                                                   true
-                                                )
-                                          ))
-                                       .then(
-                                          ey.a("includeSequenceId", BoolArgumentType.bool())
-                                             .executes(
-                                                $$0x -> a(
-                                                      (ex)$$0x.getSource(),
-                                                      IntegerArgumentType.getInteger($$0x, "seed"),
-                                                      BoolArgumentType.getBool($$0x, "includeWorldSeed"),
-                                                      BoolArgumentType.getBool($$0x, "includeSequenceId")
-                                                   )
-                                             )
-                                       )
-                                 )
-                           )
-                     ))
-                  .then(
-                     ((RequiredArgumentBuilder)ey.a("sequence", fy.a()).suggests(aoa::a).executes($$0x -> a((ex)$$0x.getSource(), fy.a($$0x, "sequence"))))
-                        .then(
-                           ((RequiredArgumentBuilder)ey.a("seed", IntegerArgumentType.integer())
-                                 .executes($$0x -> a((ex)$$0x.getSource(), fy.a($$0x, "sequence"), IntegerArgumentType.getInteger($$0x, "seed"), true, true)))
+                        ((RequiredArgumentBuilder)ey.a("targets", fk.d())
                               .then(
-                                 ((RequiredArgumentBuilder)ey.a("includeWorldSeed", BoolArgumentType.bool())
-                                       .executes(
-                                          $$0x -> a(
-                                                (ex)$$0x.getSource(),
-                                                fy.a($$0x, "sequence"),
-                                                IntegerArgumentType.getInteger($$0x, "seed"),
-                                                BoolArgumentType.getBool($$0x, "includeWorldSeed"),
-                                                true
-                                             )
-                                       ))
-                                    .then(
-                                       ey.a("includeSequenceId", BoolArgumentType.bool())
-                                          .executes(
-                                             $$0x -> a(
-                                                   (ex)$$0x.getSource(),
-                                                   fy.a($$0x, "sequence"),
-                                                   IntegerArgumentType.getInteger($$0x, "seed"),
-                                                   BoolArgumentType.getBool($$0x, "includeWorldSeed"),
-                                                   BoolArgumentType.getBool($$0x, "includeSequenceId")
-                                                )
-                                          )
-                                    )
-                              )
-                        )
+                                 ey.a("recipe", fx.a(mc.bm))
+                                    .executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), Collections.singleton(fx.d($$0x, "recipe"))))
+                              ))
+                           .then(ey.a("*").executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), ((ex)$$0x.getSource()).l().aI().e())))
+                     )
+               ))
+            .then(
+               ey.a("take")
+                  .then(
+                     ((RequiredArgumentBuilder)ey.a("targets", fk.d())
+                           .then(
+                              ey.a("recipe", fx.a(mc.bm))
+                                 .executes($$0x -> b((ex)$$0x.getSource(), fk.f($$0x, "targets"), Collections.singleton(fx.d($$0x, "recipe"))))
+                           ))
+                        .then(ey.a("*").executes($$0x -> b((ex)$$0x.getSource(), fk.f($$0x, "targets"), ((ex)$$0x.getSource()).l().aI().e())))
                   )
             )
       );
    }
 
-   private static LiteralArgumentBuilder<ex> a(String $$0, boolean $$1) {
-      return (LiteralArgumentBuilder<ex>)ey.a($$0)
-         .then(
-            ((RequiredArgumentBuilder)ey.a("range", fv.a()).executes($$1x -> a((ex)$$1x.getSource(), fv.b.a($$1x, "range"), null, $$1)))
-               .then(
-                  ((RequiredArgumentBuilder)ey.a("sequence", fy.a()).suggests(aoa::a).requires($$0x -> $$0x.c(2)))
-                     .executes($$1x -> a((ex)$$1x.getSource(), fv.b.a($$1x, "range"), fy.a($$1x, "sequence"), $$1))
-               )
-         );
-   }
+   private static int a(ex $$0, Collection<are> $$1, Collection<dca<?>> $$2) throws CommandSyntaxException {
+      int $$3 = 0;
 
-   private static CompletableFuture<Suggestions> a(CommandContext<ex> $$0, SuggestionsBuilder $$1) {
-      List<String> $$2 = Lists.newArrayList();
-      ((ex)$$0.getSource()).e().N().a(($$1x, $$2x) -> $$2.add($$1x.toString()));
-      return fc.b($$2, $$1);
-   }
-
-   private static int a(ex $$0, dk.d $$1, @Nullable akv $$2, boolean $$3) throws CommandSyntaxException {
-      azh $$4;
-      if ($$2 != null) {
-         $$4 = $$0.e().a($$2);
-      } else {
-         $$4 = $$0.e().H_();
+      for (are $$4 : $$1) {
+         $$3 += $$4.a($$2);
       }
 
-      int $$6 = $$1.a().orElse(Integer.MIN_VALUE);
-      int $$7 = $$1.b().orElse(Integer.MAX_VALUE);
-      long $$8 = (long)$$7 - (long)$$6;
-      if ($$8 == 0L) {
-         throw b.create();
-      } else if ($$8 >= 2147483647L) {
+      if ($$3 == 0) {
          throw a.create();
       } else {
-         int $$9 = ayz.b($$4, $$6, $$7);
-         if ($$3) {
-            $$0.l().ag().a(wp.a("commands.random.roll", $$0.b(), $$9, $$6, $$7), false);
+         if ($$1.size() == 1) {
+            $$0.a(() -> wp.a("commands.recipe.give.success.single", $$2.size(), $$1.iterator().next().m_()), true);
          } else {
-            $$0.a(() -> wp.a("commands.random.sample.success", $$9), false);
+            $$0.a(() -> wp.a("commands.recipe.give.success.multiple", $$2.size(), $$1.size()), true);
          }
 
-         return $$9;
+         return $$3;
       }
    }
 
-   private static int a(ex $$0, akv $$1) throws CommandSyntaxException {
-      $$0.e().N().b($$1);
-      $$0.a(() -> wp.a("commands.random.reset.success", wp.a($$1)), false);
-      return 1;
-   }
+   private static int b(ex $$0, Collection<are> $$1, Collection<dca<?>> $$2) throws CommandSyntaxException {
+      int $$3 = 0;
 
-   private static int a(ex $$0, akv $$1, int $$2, boolean $$3, boolean $$4) throws CommandSyntaxException {
-      $$0.e().N().a($$1, $$2, $$3, $$4);
-      $$0.a(() -> wp.a("commands.random.reset.success", wp.a($$1)), false);
-      return 1;
-   }
+      for (are $$4 : $$1) {
+         $$3 += $$4.b($$2);
+      }
 
-   private static int a(ex $$0) {
-      int $$1 = $$0.e().N().a();
-      $$0.a(() -> wp.a("commands.random.reset.all.success", $$1), false);
-      return $$1;
-   }
+      if ($$3 == 0) {
+         throw b.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> wp.a("commands.recipe.take.success.single", $$2.size(), $$1.iterator().next().m_()), true);
+         } else {
+            $$0.a(() -> wp.a("commands.recipe.take.success.multiple", $$2.size(), $$1.size()), true);
+         }
 
-   private static int a(ex $$0, int $$1, boolean $$2, boolean $$3) {
-      bsq $$4 = $$0.e().N();
-      $$4.a($$1, $$2, $$3);
-      int $$5 = $$4.a();
-      $$0.a(() -> wp.a("commands.random.reset.all.success", $$5), false);
-      return $$5;
+         return $$3;
+      }
    }
 }

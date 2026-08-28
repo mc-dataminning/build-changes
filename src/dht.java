@@ -1,35 +1,76 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import java.util.Optional;
 
-public class dht extends dhp {
-   public static final MapCodec<dht> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dhl.d.fieldOf("biomes").forGetter($$0x -> $$0x.c), Codec.intRange(0, 62).fieldOf("scale").orElse(2).forGetter($$0x -> $$0x.e))
+public record dht(tq d, Optional<dht.a> e, Optional<bvl> f) {
+   public static final String a = "entity";
+   public static final Codec<dht> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               tq.a.fieldOf("entity").forGetter($$0x -> $$0x.d),
+               dht.a.a.optionalFieldOf("custom_spawn_rules").forGetter($$0x -> $$0x.e),
+               bvl.b.optionalFieldOf("equipment").forGetter($$0x -> $$0x.f)
+            )
             .apply($$0, dht::new)
    );
-   private final jv<dhl> c;
-   private final int d;
-   private final int e;
+   public static final Codec<brj<dht>> c = brj.a(b);
 
-   public dht(jv<dhl> $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1 + 2;
-      this.e = $$1;
+   public dht() {
+      this(new tq(), Optional.empty(), Optional.empty());
    }
 
-   @Override
-   protected Stream<jr<dhl>> b() {
-      return this.c.a();
+   public dht(tq d, Optional<dht.a> e, Optional<bvl> f) {
+      if (d.e("id")) {
+         aku $$3 = aku.c(d.l("id"));
+         if ($$3 != null) {
+            d.a("id", $$3.toString());
+         } else {
+            d.r("id");
+         }
+      }
+
+      this.d = d;
+      this.e = e;
+      this.f = f;
    }
 
-   @Override
-   protected MapCodec<? extends dhp> a() {
-      return b;
+   public tq a() {
+      return this.d;
    }
 
-   @Override
-   public jr<dhl> getNoiseBiome(int $$0, int $$1, int $$2, dhu.f $$3) {
-      return this.c.a(Math.floorMod(($$0 >> this.d) + ($$2 >> this.d), this.c.b()));
+   public Optional<dht.a> b() {
+      return this.e;
+   }
+
+   public Optional<bvl> c() {
+      return this.f;
+   }
+
+   public static record a(ayr<Integer> b, ayr<Integer> c) {
+      private static final ayr<Integer> d = new ayr<>(0, 15);
+      public static final Codec<dht.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(a("block_light_limit").forGetter($$0x -> $$0x.b), a("sky_light_limit").forGetter($$0x -> $$0x.c)).apply($$0, dht.a::new)
+      );
+
+      private static DataResult<ayr<Integer>> a(ayr<Integer> $$0) {
+         return !d.a($$0) ? DataResult.error(() -> "Light values must be withing range " + d) : DataResult.success($$0);
+      }
+
+      private static MapCodec<ayr<Integer>> a(String $$0) {
+         return ayr.a.lenientOptionalFieldOf($$0, d).validate(dht.a::a);
+      }
+
+      public boolean a(ji $$0, ard $$1) {
+         return this.b.a($$1.a(dhi.b, $$0)) && this.c.a($$1.a(dhi.a, $$0));
+      }
+
+      public ayr<Integer> a() {
+         return this.b;
+      }
+
+      public ayr<Integer> b() {
+         return this.c;
+      }
    }
 }

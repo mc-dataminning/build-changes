@@ -1,46 +1,63 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class eqw extends erm {
-   private static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<eqw> a = MapCodec.unit(() -> eqw.b);
-   public static final eqw b = new eqw();
+public class eqw extends eoj {
+   public static final MapCodec<eqw> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               a($$0),
+               eqw.a.c.fieldOf("biome_temp").forGetter($$0x -> $$0x.e),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("large_probability").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("cluster_probability").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, eqw::new)
+   );
+   public final eqw.a e;
+   public final float f;
+   public final float g;
 
-   private eqw() {
+   public eqw(eoj.c $$0, eqw.a $$1, float $$2, float $$3) {
+      super($$0);
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
-   @Nullable
    @Override
-   public erp.d a(dgm $$0, ji $$1, ji $$2, erp.d $$3, erp.d $$4, erl $$5) {
-      dwy $$6 = $$4.b();
-      if ($$6.a(djp.pD)) {
-         if ($$4.c() == null) {
-            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
-            return $$4;
-         } else {
-            String $$7 = $$4.c().l("final_state");
+   public Optional<eoj.b> a(eoj.a $$0) {
+      return a($$0, edo.a.c, $$1 -> this.a($$1, $$0));
+   }
 
-            dwy $$9;
-            try {
-               gr.a $$8 = gr.a($$0.a(mc.f), $$7, true);
-               $$9 = $$8.a();
-            } catch (CommandSyntaxException var11) {
-               c.error("Failed to parse jigsaw replacement state '{}' at {}: {}", new Object[]{$$7, $$1, var11.getMessage()});
-               return null;
-            }
+   private void a(epb $$0, eoj.a $$1) {
+      ji $$2 = new ji($$1.h().d(), 90, $$1.h().e());
+      dqw $$3 = dqw.a($$1.f());
+      eqv.a($$1.e(), $$2, $$3, $$0, $$1.f(), this);
+   }
 
-            return $$9.a(djp.lp) ? null : new erp.d($$4.a(), $$9, null);
-         }
-      } else {
-         return $$4;
+   @Override
+   public eos<?> e() {
+      return eos.k;
+   }
+
+   public static enum a implements azv {
+      a("warm"),
+      b("cold");
+
+      public static final Codec<eqw.a> c = azv.a(eqw.a::values);
+      private final String d;
+
+      private a(final String $$0) {
+         this.d = $$0;
       }
-   }
 
-   @Override
-   protected ero<?> a() {
-      return ero.h;
+      public String a() {
+         return this.d;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
    }
 }

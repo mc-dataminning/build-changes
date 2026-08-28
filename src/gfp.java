@@ -1,22 +1,72 @@
-public class gfp {
-   private final float a;
-   private final float b;
+public class gfp extends gda<hbw> implements gdj, gfl {
+   protected final ggc a;
+   private final ggc b;
+   private final ggc c;
+   private final ggc d;
+   private final ggc e;
+   private final ggc f;
+   private final ggc g;
 
-   public gfp(float $$0, float $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public gfp(ggc $$0) {
+      super($$0);
+      this.b = $$0.b("head");
+      this.c = this.b.b("hat");
+      this.d = this.c.b("hat_rim");
+      this.a = this.b.b("nose");
+      this.e = $$0.b("right_leg");
+      this.f = $$0.b("left_leg");
+      this.g = $$0.b("arms");
    }
 
-   public float a() {
+   public static ggi a() {
+      ggk $$0 = gfm.a();
+      ggm $$1 = $$0.a();
+      ggm $$2 = $$1.a("head", ggh.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F), gge.a);
+      ggm $$3 = $$2.a("hat", ggh.c().a(0, 64).a(0.0F, 0.0F, 0.0F, 10.0F, 2.0F, 10.0F), gge.a(-5.0F, -10.03125F, -5.0F));
+      ggm $$4 = $$3.a("hat2", ggh.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 7.0F, 4.0F, 7.0F), gge.a(1.75F, -4.0F, 2.0F, -0.05235988F, 0.0F, 0.02617994F));
+      ggm $$5 = $$4.a("hat3", ggh.c().a(0, 87).a(0.0F, 0.0F, 0.0F, 4.0F, 4.0F, 4.0F), gge.a(1.75F, -4.0F, 2.0F, -0.10471976F, 0.0F, 0.05235988F));
+      $$5.a(
+         "hat4", ggh.c().a(0, 95).a(0.0F, 0.0F, 0.0F, 1.0F, 2.0F, 1.0F, new ggg(0.25F)), gge.a(1.75F, -2.0F, 2.0F, (float) (-Math.PI / 15), 0.0F, 0.10471976F)
+      );
+      ggm $$6 = $$2.b("nose");
+      $$6.a("mole", ggh.c().a(0, 0).a(0.0F, 3.0F, -6.75F, 1.0F, 1.0F, 1.0F, new ggg(-0.25F)), gge.a(0.0F, -2.0F, 0.0F));
+      return ggi.a($$0, 64, 128);
+   }
+
+   public void a(hbw $$0) {
+      super.a($$0);
+      this.b.f = $$0.aa * (float) (Math.PI / 180.0);
+      this.b.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.e.e = ayz.b($$0.ad * 0.6662F) * 1.4F * $$0.ae * 0.5F;
+      this.f.e = ayz.b($$0.ad * 0.6662F + (float) Math.PI) * 1.4F * $$0.ae * 0.5F;
+      float $$1 = 0.01F * (float)($$0.a % 10);
+      this.a.e = ayz.a($$0.u * $$1) * 4.5F * (float) (Math.PI / 180.0);
+      this.a.g = ayz.b($$0.u * $$1) * 2.5F * (float) (Math.PI / 180.0);
+      if ($$0.b) {
+         this.a.a(0.0F, 1.0F, -1.5F);
+         this.a.e = -0.9F;
+      }
+   }
+
+   public ggc c() {
       return this.a;
    }
 
-   public float b() {
+   @Override
+   public ggc b() {
       return this.b;
    }
 
    @Override
-   public String toString() {
-      return "(" + this.a + "," + this.b + ")";
+   public void a(boolean $$0) {
+      this.b.k = $$0;
+      this.c.k = $$0;
+      this.d.k = $$0;
+   }
+
+   @Override
+   public void a(fgr $$0) {
+      this.v.a($$0);
+      this.g.a($$0);
    }
 }

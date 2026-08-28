@@ -1,40 +1,44 @@
-public interface enh {
-   aku<enn> a = a("pillager_outpost");
-   aku<enn> b = a("mineshaft");
-   aku<enn> c = a("mineshaft_mesa");
-   aku<enn> d = a("mansion");
-   aku<enn> e = a("jungle_pyramid");
-   aku<enn> f = a("desert_pyramid");
-   aku<enn> g = a("igloo");
-   aku<enn> h = a("shipwreck");
-   aku<enn> i = a("shipwreck_beached");
-   aku<enn> j = a("swamp_hut");
-   aku<enn> k = a("stronghold");
-   aku<enn> l = a("monument");
-   aku<enn> m = a("ocean_ruin_cold");
-   aku<enn> n = a("ocean_ruin_warm");
-   aku<enn> o = a("fortress");
-   aku<enn> p = a("nether_fossil");
-   aku<enn> q = a("end_city");
-   aku<enn> r = a("buried_treasure");
-   aku<enn> s = a("bastion_remnant");
-   aku<enn> t = a("village_plains");
-   aku<enn> u = a("village_desert");
-   aku<enn> v = a("village_savanna");
-   aku<enn> w = a("village_snowy");
-   aku<enn> x = a("village_taiga");
-   aku<enn> y = a("ruined_portal");
-   aku<enn> z = a("ruined_portal_desert");
-   aku<enn> A = a("ruined_portal_jungle");
-   aku<enn> B = a("ruined_portal_swamp");
-   aku<enn> C = a("ruined_portal_mountain");
-   aku<enn> D = a("ruined_portal_ocean");
-   aku<enn> E = a("ruined_portal_nether");
-   aku<enn> F = a("ancient_city");
-   aku<enn> G = a("trail_ruins");
-   aku<enn> H = a("trial_chambers");
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.stream.Stream;
 
-   private static aku<enn> a(String $$0) {
-      return aku.a(mc.aU, akv.b($$0));
+public class enh extends enq {
+   public static final MapCodec<enh> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ji.a.listOf().fieldOf("positions").forGetter($$0x -> $$0x.c)).apply($$0, enh::new)
+   );
+   private final List<ji> c;
+
+   public static enh a(ji... $$0) {
+      return new enh(List.of($$0));
+   }
+
+   private enh(List<ji> $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public Stream<ji> a_(eno $$0, azh $$1, ji $$2) {
+      int $$3 = kk.a($$2.u());
+      int $$4 = kk.a($$2.w());
+      boolean $$5 = false;
+
+      for (ji $$6 : this.c) {
+         if (a($$3, $$4, $$6)) {
+            $$5 = true;
+            break;
+         }
+      }
+
+      return !$$5 ? Stream.empty() : this.c.stream().filter($$2x -> a($$3, $$4, $$2x));
+   }
+
+   private static boolean a(int $$0, int $$1, ji $$2) {
+      return $$0 == kk.a($$2.u()) && $$1 == kk.a($$2.w());
+   }
+
+   @Override
+   public enr<?> b() {
+      return enr.o;
    }
 }

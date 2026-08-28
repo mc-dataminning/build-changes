@@ -1,41 +1,79 @@
-public class gtz extends gqz<cht, haa, gdn> {
-   private static final akv a = akv.b("textures/entity/rabbit/brown.png");
-   private static final akv b = akv.b("textures/entity/rabbit/white.png");
-   private static final akv k = akv.b("textures/entity/rabbit/black.png");
-   private static final akv l = akv.b("textures/entity/rabbit/gold.png");
-   private static final akv m = akv.b("textures/entity/rabbit/salt.png");
-   private static final akv n = akv.b("textures/entity/rabbit/white_splotched.png");
-   private static final akv o = akv.b("textures/entity/rabbit/toast.png");
-   private static final akv p = akv.b("textures/entity/rabbit/caerbannog.png");
+public class gtz extends gtc<clw, hag> {
+   private static final float a = 0.15F;
+   private static final float b = 0.0F;
+   private static final float h = 0.0F;
+   private static final float i = 0.09375F;
+   private final hcl j;
+   private final azh k = azh.a();
 
-   public gtz(gsf.a $$0) {
-      super($$0, new gdn($$0.a(gfd.ct)), new gdn($$0.a(gfd.cu)), 0.3F);
+   public gtz(gtd.a $$0) {
+      super($$0);
+      this.j = $$0.b();
+      this.f = 0.15F;
+      this.g = 0.75F;
    }
 
-   public akv a(haa $$0) {
-      if ($$0.b) {
-         return o;
-      } else {
-         return switch ($$0.c) {
-            case a -> a;
-            case b -> b;
-            case c -> k;
-            case e -> l;
-            case f -> m;
-            case d -> n;
-            case g -> p;
-         };
+   public hag a() {
+      return new hag();
+   }
+
+   public void a(clw $$0, hag $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.u = (float)$$0.g() + $$2;
+      $$1.d = $$0.b;
+      $$1.a($$0, $$0.f(), this.j);
+   }
+
+   public void a(hag $$0, fgr $$1, gmx $$2, int $$3) {
+      if (!$$0.a.c()) {
+         $$1.a();
+         float $$4 = 0.25F;
+         float $$5 = ayz.a($$0.u / 10.0F + $$0.d) * 0.1F + 0.1F;
+         float $$6 = $$0.a.f().d.y();
+         $$1.a(0.0F, $$5 + 0.25F * $$6, 0.0F);
+         float $$7 = clw.f($$0.u, $$0.d);
+         $$1.a(a.d.rotation($$7));
+         a($$1, $$2, $$3, $$0, this.k);
+         $$1.b();
+         super.a($$0, $$1, $$2, $$3);
       }
    }
 
-   public haa b() {
-      return new haa();
-   }
+   public static void a(fgr $$0, gmx $$1, int $$2, hae $$3, azh $$4) {
+      $$4.b((long)$$3.c);
+      int $$5 = $$3.b;
+      hcn $$6 = $$3.a;
+      boolean $$7 = $$6.d();
+      float $$8 = $$6.f().d.x();
+      float $$9 = $$6.f().d.y();
+      float $$10 = $$6.f().d.z();
+      if (!$$7) {
+         float $$11 = -0.0F * (float)($$5 - 1) * 0.5F * $$8;
+         float $$12 = -0.0F * (float)($$5 - 1) * 0.5F * $$9;
+         float $$13 = -0.09375F * (float)($$5 - 1) * 0.5F * $$10;
+         $$0.a($$11, $$12, $$13);
+      }
 
-   public void a(cht $$0, haa $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
-      $$1.b = "Toast".equals(n.a($$0.al().getString()));
-      $$1.c = $$0.gs();
+      for (int $$14 = 0; $$14 < $$5; $$14++) {
+         $$0.a();
+         if ($$14 > 0) {
+            if ($$7) {
+               float $$15 = ($$4.i() * 2.0F - 1.0F) * 0.15F;
+               float $$16 = ($$4.i() * 2.0F - 1.0F) * 0.15F;
+               float $$17 = ($$4.i() * 2.0F - 1.0F) * 0.15F;
+               $$0.a($$15, $$16, $$17);
+            } else {
+               float $$18 = ($$4.i() * 2.0F - 1.0F) * 0.15F * 0.5F;
+               float $$19 = ($$4.i() * 2.0F - 1.0F) * 0.15F * 0.5F;
+               $$0.a($$18, $$19, 0.0F);
+            }
+         }
+
+         $$6.a($$0, $$1, $$2, hfh.d);
+         $$0.b();
+         if (!$$7) {
+            $$0.a(0.0F * $$8, 0.0F * $$9, 0.09375F * $$10);
+         }
+      }
    }
 }

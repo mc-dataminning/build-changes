@@ -1,88 +1,37 @@
-import com.google.common.base.Stopwatch;
-import com.google.common.base.Ticker;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
-import java.util.function.ToDoubleFunction;
-import java.util.stream.IntStream;
-import org.slf4j.Logger;
-import oshi.SystemInfo;
-import oshi.hardware.CentralProcessor;
+import com.google.common.base.MoreObjects;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
+import jdk.jfr.consumer.RecordedEvent;
+import jdk.jfr.consumer.RecordedThread;
 
-public class bqn implements bqg {
-   private static final Logger a = LogUtils.getLogger();
-   private final Set<bqe> b = new ObjectOpenHashSet();
-   private final bqm c = new bqm();
+public record bqn(Instant a, String b, long c) {
+   private static final String d = "unknown";
 
-   public bqn(LongSupplier $$0, boolean $$1) {
-      this.b.add(a($$0));
-      if ($$1) {
-         this.b.addAll(a());
-      }
+   public static bqn a(RecordedEvent $$0) {
+      RecordedThread $$1 = $$0.getThread("thread");
+      String $$2 = $$1 == null ? "unknown" : (String)MoreObjects.firstNonNull($$1.getJavaName(), "unknown");
+      return new bqn($$0.getStartTime(), $$2, $$0.getLong("allocated"));
    }
 
-   public static Set<bqe> a() {
-      Builder<bqe> $$0 = ImmutableSet.builder();
-
-      try {
-         bqn.a $$1 = new bqn.a();
-         IntStream.range(0, $$1.a).mapToObj($$1x -> bqe.a("cpu#" + $$1x, bqd.h, () -> $$1.a($$1))).forEach($$0::add);
-      } catch (Throwable var2) {
-         a.warn("Failed to query cpu, no cpu stats will be recorded", var2);
-      }
-
-      $$0.add(bqe.a("heap MiB", bqd.e, () -> (double)ad.a(Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())));
-      $$0.addAll(bqf.a.a());
-      return $$0.build();
-   }
-
-   @Override
-   public Set<bqe> a(Supplier<bor> $$0) {
-      this.b.addAll(this.c.a($$0));
-      return this.b;
-   }
-
-   public static bqe a(final LongSupplier $$0) {
-      Stopwatch $$1 = Stopwatch.createUnstarted(new Ticker() {
-         public long read() {
-            return $$0.getAsLong();
+   public static bqn.a a(List<bqn> $$0) {
+      Map<String, Double> $$1 = new TreeMap<>();
+      Map<String, List<bqn>> $$2 = $$0.stream().collect(Collectors.groupingBy($$0x -> $$0x.b));
+      $$2.forEach(($$1x, $$2x) -> {
+         if ($$2x.size() >= 2) {
+            bqn $$3 = (bqn)$$2x.get(0);
+            bqn $$4 = (bqn)$$2x.get($$2x.size() - 1);
+            long $$5 = Duration.between($$3.a, $$4.a).getSeconds();
+            long $$6 = $$4.c - $$3.c;
+            $$1.put($$1x, (double)$$6 / (double)$$5);
          }
       });
-      ToDoubleFunction<Stopwatch> $$2 = $$0x -> {
-         if ($$0x.isRunning()) {
-            $$0x.stop();
-         }
-
-         long $$1x = $$0x.elapsed(TimeUnit.NANOSECONDS);
-         $$0x.reset();
-         return (double)$$1x;
-      };
-      bqe.d $$3 = new bqe.d(2.0F);
-      return bqe.a("ticktime", bqd.d, $$2, $$1).a(Stopwatch::start).a($$3).a();
+      return new bqn.a($$1);
    }
 
-   static class a {
-      private final SystemInfo b = new SystemInfo();
-      private final CentralProcessor c = this.b.getHardware().getProcessor();
-      public final int a = this.c.getLogicalProcessorCount();
-      private long[][] d = this.c.getProcessorCpuLoadTicks();
-      private double[] e = this.c.getProcessorCpuLoadBetweenTicks(this.d);
-      private long f;
-
-      public double a(int $$0) {
-         long $$1 = System.currentTimeMillis();
-         if (this.f == 0L || this.f + 501L < $$1) {
-            this.e = this.c.getProcessorCpuLoadBetweenTicks(this.d);
-            this.d = this.c.getProcessorCpuLoadTicks();
-            this.f = $$1;
-         }
-
-         return this.e[$$0] * 100.0;
-      }
+   public static record a(Map<String, Double> a) {
    }
 }

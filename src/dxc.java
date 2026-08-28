@@ -1,49 +1,76 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class dxc {
-   private final dgm a;
-   private final ji b;
-   private final boolean c;
-   @Nullable
-   private dwy d;
-   @Nullable
-   private dua e;
-   private boolean f;
+   static final String a = "shared_data";
+   static Codec<dxc> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               cxh.a("display_item").forGetter($$0x -> $$0x.d),
+               kl.c.lenientOptionalFieldOf("connected_players", Set.of()).forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.lenientOptionalFieldOf("connected_particles_range", dxa.b.d()).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dxc::new)
+   );
+   private cxh d = cxh.k;
+   private Set<UUID> e = new ObjectLinkedOpenHashSet();
+   private double f = dxa.b.d();
+   boolean c;
 
-   public dxc(dgm $$0, ji $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1.j();
-      this.c = $$2;
+   dxc(cxh $$0, Set<UUID> $$1, double $$2) {
+      this.d = $$0;
+      this.e.addAll($$1);
+      this.f = $$2;
    }
 
-   public dwy a() {
-      if (this.d == null && (this.c || this.a.B(this.b))) {
-         this.d = this.a.a_(this.b);
-      }
+   dxc() {
+   }
 
+   public cxh a() {
       return this.d;
    }
 
-   @Nullable
-   public dua b() {
-      if (this.e == null && !this.f) {
-         this.e = this.a.c_(this.b);
-         this.f = true;
-      }
+   public boolean b() {
+      return !this.d.f();
+   }
 
+   public void a(cxh $$0) {
+      if (!cxh.a(this.d, $$0)) {
+         this.d = $$0.v();
+         this.f();
+      }
+   }
+
+   boolean c() {
+      return !this.e.isEmpty();
+   }
+
+   Set<UUID> d() {
       return this.e;
    }
 
-   public dgm c() {
-      return this.a;
+   double e() {
+      return this.f;
    }
 
-   public ji d() {
-      return this.b;
+   void a(ard $$0, ji $$1, dxb $$2, dxa $$3, double $$4) {
+      Set<UUID> $$5 = $$3.a().detect($$0, $$3.g(), $$1, $$4, false).stream().filter($$1x -> !$$2.b().contains($$1x)).collect(Collectors.toSet());
+      if (!this.e.equals($$5)) {
+         this.e = $$5;
+         this.f();
+      }
    }
 
-   public static Predicate<dxc> a(Predicate<dwy> $$0) {
-      return $$1 -> $$1 != null && $$0.test($$1.a());
+   private void f() {
+      this.c = true;
+   }
+
+   void a(dxc $$0) {
+      this.d = $$0.d;
+      this.e = $$0.e;
+      this.f = $$0.f;
    }
 }

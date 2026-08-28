@@ -1,181 +1,208 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.types.Type;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
+import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.stream.LongStream;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class biw extends bgt {
+public class biw extends DataFix {
    private static final Logger a = LogUtils.getLogger();
+   private static final Map<String, biw.a> b = ImmutableMap.builder()
+      .put(
+         "mineshaft",
+         biw.a.a(
+            Map.of(List.of("minecraft:badlands", "minecraft:eroded_badlands", "minecraft:wooded_badlands"), "minecraft:mineshaft_mesa"), "minecraft:mineshaft"
+         )
+      )
+      .put("shipwreck", biw.a.a(Map.of(List.of("minecraft:beach", "minecraft:snowy_beach"), "minecraft:shipwreck_beached"), "minecraft:shipwreck"))
+      .put(
+         "ocean_ruin",
+         biw.a.a(
+            Map.of(List.of("minecraft:warm_ocean", "minecraft:lukewarm_ocean", "minecraft:deep_lukewarm_ocean"), "minecraft:ocean_ruin_warm"),
+            "minecraft:ocean_ruin_cold"
+         )
+      )
+      .put(
+         "village",
+         biw.a.a(
+            Map.of(
+               List.of("minecraft:desert"),
+               "minecraft:village_desert",
+               List.of("minecraft:savanna"),
+               "minecraft:village_savanna",
+               List.of("minecraft:snowy_plains"),
+               "minecraft:village_snowy",
+               List.of("minecraft:taiga"),
+               "minecraft:village_taiga"
+            ),
+            "minecraft:village_plains"
+         )
+      )
+      .put(
+         "ruined_portal",
+         biw.a.a(
+            Map.of(
+               List.of("minecraft:desert"),
+               "minecraft:ruined_portal_desert",
+               List.of(
+                  "minecraft:badlands",
+                  "minecraft:eroded_badlands",
+                  "minecraft:wooded_badlands",
+                  "minecraft:windswept_hills",
+                  "minecraft:windswept_forest",
+                  "minecraft:windswept_gravelly_hills",
+                  "minecraft:savanna_plateau",
+                  "minecraft:windswept_savanna",
+                  "minecraft:stony_shore",
+                  "minecraft:meadow",
+                  "minecraft:frozen_peaks",
+                  "minecraft:jagged_peaks",
+                  "minecraft:stony_peaks",
+                  "minecraft:snowy_slopes"
+               ),
+               "minecraft:ruined_portal_mountain",
+               List.of("minecraft:bamboo_jungle", "minecraft:jungle", "minecraft:sparse_jungle"),
+               "minecraft:ruined_portal_jungle",
+               List.of(
+                  "minecraft:deep_frozen_ocean",
+                  "minecraft:deep_cold_ocean",
+                  "minecraft:deep_ocean",
+                  "minecraft:deep_lukewarm_ocean",
+                  "minecraft:frozen_ocean",
+                  "minecraft:ocean",
+                  "minecraft:cold_ocean",
+                  "minecraft:lukewarm_ocean",
+                  "minecraft:warm_ocean"
+               ),
+               "minecraft:ruined_portal_ocean"
+            ),
+            "minecraft:ruined_portal"
+         )
+      )
+      .put("pillager_outpost", biw.a.a("minecraft:pillager_outpost"))
+      .put("mansion", biw.a.a("minecraft:mansion"))
+      .put("jungle_pyramid", biw.a.a("minecraft:jungle_pyramid"))
+      .put("desert_pyramid", biw.a.a("minecraft:desert_pyramid"))
+      .put("igloo", biw.a.a("minecraft:igloo"))
+      .put("swamp_hut", biw.a.a("minecraft:swamp_hut"))
+      .put("stronghold", biw.a.a("minecraft:stronghold"))
+      .put("monument", biw.a.a("minecraft:monument"))
+      .put("fortress", biw.a.a("minecraft:fortress"))
+      .put("endcity", biw.a.a("minecraft:end_city"))
+      .put("buried_treasure", biw.a.a("minecraft:buried_treasure"))
+      .put("nether_fossil", biw.a.a("minecraft:nether_fossil"))
+      .put("bastion_remnant", biw.a.a("minecraft:bastion_remnant"))
+      .build();
 
    public biw(Schema $$0) {
-      super($$0, false, "TrialSpawnerConfigInRegistryFix", bhy.s, "minecraft:trial_spawner");
+      super($$0, false);
    }
 
-   public Dynamic<?> a(Dynamic<un> $$0) {
-      Optional<Dynamic<un>> $$1 = $$0.get("normal_config").result();
-      if ($$1.isEmpty()) {
-         return $$0;
-      } else {
-         Optional<Dynamic<un>> $$2 = $$0.get("ominous_config").result();
-         if ($$2.isEmpty()) {
-            return $$0;
-         } else {
-            akv $$3 = biw.a.a.get(Pair.of($$1.get(), $$2.get()));
-            return $$3 == null
-               ? $$0
-               : $$0.set("normal_config", $$0.createString($$3.g("/normal").toString())).set("ominous_config", $$0.createString($$3.g("/ominous").toString()));
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bic.c);
+      Type<?> $$1 = this.getInputSchema().getType(bic.c);
+      return this.writeFixAndRead("StucturesToConfiguredStructures", $$0, $$1, this::a);
+   }
+
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.update("structures", $$1 -> $$1.update("starts", $$1x -> this.a($$1x, $$0)).update("References", $$1x -> this.b($$1x, $$0)));
+   }
+
+   private Dynamic<?> a(Dynamic<?> $$0, Dynamic<?> $$1) {
+      Map<? extends Dynamic<?>, ? extends Dynamic<?>> $$2 = $$0.getMapValues().result().orElse(Map.of());
+      HashMap<Dynamic<?>, Dynamic<?>> $$3 = Maps.newHashMap();
+      $$2.forEach(($$2x, $$3x) -> {
+         if (!$$3x.get("id").asString("INVALID").equals("INVALID")) {
+            Dynamic<?> $$4 = this.c($$2x, $$1);
+            if ($$4 == null) {
+               a.warn("Encountered unknown structure in datafixer: " + $$2x.asString("<missing key>"));
+            } else {
+               $$3.computeIfAbsent($$4, $$2xx -> $$3x.set("id", $$4));
+            }
          }
-      }
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), $$0x -> {
-         DynamicOps<?> $$1 = $$0x.getOps();
-         Dynamic<?> $$2 = this.a($$0x.convert(ue.a));
-         return $$2.convert($$1);
       });
+      return $$1.createMap($$3);
    }
 
-   static final class a {
-      public static final Map<Pair<Dynamic<un>, Dynamic<un>>, akv> a = new HashMap<>();
+   private Dynamic<?> b(Dynamic<?> $$0, Dynamic<?> $$1) {
+      Map<? extends Dynamic<?>, ? extends Dynamic<?>> $$2 = $$0.getMapValues().result().orElse(Map.of());
+      HashMap<Dynamic<?>, Dynamic<?>> $$3 = Maps.newHashMap();
+      $$2.forEach(($$2x, $$3x) -> {
+         if ($$3x.asLongStream().count() != 0L) {
+            Dynamic<?> $$4 = this.c($$2x, $$1);
+            if ($$4 == null) {
+               a.warn("Encountered unknown structure in datafixer: " + $$2x.asString("<missing key>"));
+            } else {
+               $$3.compute($$4, ($$1xx, $$2xx) -> $$2xx == null ? $$3x : $$3x.createLongList(LongStream.concat($$2xx.asLongStream(), $$3x.asLongStream())));
+            }
+         }
+      });
+      return $$1.createMap($$3);
+   }
 
-      private a() {
+   @Nullable
+   private Dynamic<?> c(Dynamic<?> $$0, Dynamic<?> $$1) {
+      String $$2 = $$0.asString("UNKNOWN").toLowerCase(Locale.ROOT);
+      biw.a $$3 = b.get($$2);
+      if ($$3 == null) {
+         return null;
+      } else {
+         String $$4 = $$3.b;
+         if (!$$3.a().isEmpty()) {
+            Optional<String> $$5 = this.a($$1, $$3);
+            if ($$5.isPresent()) {
+               $$4 = $$5.get();
+            }
+         }
+
+         return $$1.createString($$4);
+      }
+   }
+
+   private Optional<String> a(Dynamic<?> $$0, biw.a $$1) {
+      Object2IntArrayMap<String> $$2 = new Object2IntArrayMap();
+      $$0.get("sections").asList(Function.identity()).forEach($$2x -> $$2x.get("biomes").get("palette").asList(Function.identity()).forEach($$2xx -> {
+            String $$3 = $$1.a().get($$2xx.asString(""));
+            if ($$3 != null) {
+               $$2.mergeInt($$3, 1, Integer::sum);
+            }
+         }));
+      return $$2.object2IntEntrySet().stream().max(Comparator.comparingInt(it.unimi.dsi.fastutil.objects.Object2IntMap.Entry::getIntValue)).map(Entry::getKey);
+   }
+
+   static record a(Map<String, String> a, String b) {
+
+      public static biw.a a(String $$0) {
+         return new biw.a(Map.of(), $$0);
       }
 
-      private static void a(akv $$0, String $$1, String $$2) {
-         try {
-            tq $$3 = a($$1);
-            tq $$4 = a($$2);
-            tq $$5 = $$3.i().a($$4);
-            tq $$6 = b($$5.i());
-            Dynamic<un> $$7 = a($$3);
-            a.put(Pair.of($$7, a($$4)), $$0);
-            a.put(Pair.of($$7, a($$5)), $$0);
-            a.put(Pair.of($$7, a($$6)), $$0);
-         } catch (RuntimeException var8) {
-            throw new IllegalStateException("Failed to parse NBT for " + $$0, var8);
-         }
+      public static biw.a a(Map<List<String>, String> $$0, String $$1) {
+         return new biw.a(a($$0), $$1);
       }
 
-      private static Dynamic<un> a(tq $$0) {
-         return new Dynamic(ue.a, $$0);
-      }
+      private static Map<String, String> a(Map<List<String>, String> $$0) {
+         Builder<String, String> $$1 = ImmutableMap.builder();
 
-      private static tq a(String $$0) {
-         try {
-            return uo.a($$0);
-         } catch (CommandSyntaxException var2) {
-            throw new IllegalArgumentException("Failed to parse Trial Spawner NBT config: " + $$0, var2);
-         }
-      }
-
-      private static tq b(tq $$0) {
-         if ($$0.h("spawn_range") == 4) {
-            $$0.r("spawn_range");
+         for (Entry<List<String>, String> $$2 : $$0.entrySet()) {
+            $$2.getKey().forEach($$2x -> $$1.put($$2x, $$2.getValue()));
          }
 
-         if ($$0.j("total_mobs") == 6.0F) {
-            $$0.r("total_mobs");
-         }
-
-         if ($$0.j("simultaneous_mobs") == 2.0F) {
-            $$0.r("simultaneous_mobs");
-         }
-
-         if ($$0.j("total_mobs_added_per_player") == 2.0F) {
-            $$0.r("total_mobs_added_per_player");
-         }
-
-         if ($$0.j("simultaneous_mobs_added_per_player") == 1.0F) {
-            $$0.r("simultaneous_mobs_added_per_player");
-         }
-
-         if ($$0.h("ticks_between_spawn") == 40) {
-            $$0.r("ticks_between_spawn");
-         }
-
-         return $$0;
-      }
-
-      static {
-         a(
-            akv.b("trial_chamber/breeze"),
-            "{simultaneous_mobs: 1.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:breeze\"}}, weight: 1}], ticks_between_spawn: 20, total_mobs: 2.0f, total_mobs_added_per_player: 1.0f}",
-            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], simultaneous_mobs: 2.0f, total_mobs: 4.0f}"
-         );
-         a(
-            akv.b("trial_chamber/melee/husk"),
-            "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:husk\"}}, weight: 1}], ticks_between_spawn: 20}",
-            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], spawn_potentials: [{data: {entity: {id: \"minecraft:husk\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_melee\", slot_drop_chances: 0.0f}}, weight: 1}]}"
-         );
-         a(
-            akv.b("trial_chamber/melee/spider"),
-            "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:spider\"}}, weight: 1}], ticks_between_spawn: 20}",
-            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}],simultaneous_mobs: 4.0f, total_mobs: 12.0f}"
-         );
-         a(
-            akv.b("trial_chamber/melee/zombie"),
-            "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:zombie\"}}, weight: 1}], ticks_between_spawn: 20}",
-            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}],spawn_potentials: [{data: {entity: {id: \"minecraft:zombie\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_melee\", slot_drop_chances: 0.0f}}, weight: 1}]}"
-         );
-         a(
-            akv.b("trial_chamber/ranged/poison_skeleton"),
-            "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:bogged\"}}, weight: 1}], ticks_between_spawn: 20}",
-            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}],spawn_potentials: [{data: {entity: {id: \"minecraft:bogged\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_ranged\", slot_drop_chances: 0.0f}}, weight: 1}]}"
-         );
-         a(
-            akv.b("trial_chamber/ranged/skeleton"),
-            "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:skeleton\"}}, weight: 1}], ticks_between_spawn: 20}",
-            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], spawn_potentials: [{data: {entity: {id: \"minecraft:skeleton\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_ranged\", slot_drop_chances: 0.0f}}, weight: 1}]}"
-         );
-         a(
-            akv.b("trial_chamber/ranged/stray"),
-            "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:stray\"}}, weight: 1}], ticks_between_spawn: 20}",
-            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], spawn_potentials: [{data: {entity: {id: \"minecraft:stray\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_ranged\", slot_drop_chances: 0.0f}}, weight: 1}]}"
-         );
-         a(
-            akv.b("trial_chamber/slow_ranged/poison_skeleton"),
-            "{simultaneous_mobs: 4.0f, simultaneous_mobs_added_per_player: 2.0f, spawn_potentials: [{data: {entity: {id: \"minecraft:bogged\"}}, weight: 1}], ticks_between_spawn: 160}",
-            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], spawn_potentials: [{data: {entity: {id: \"minecraft:bogged\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_ranged\", slot_drop_chances: 0.0f}}, weight: 1}]}"
-         );
-         a(
-            akv.b("trial_chamber/slow_ranged/skeleton"),
-            "{simultaneous_mobs: 4.0f, simultaneous_mobs_added_per_player: 2.0f, spawn_potentials: [{data: {entity: {id: \"minecraft:skeleton\"}}, weight: 1}], ticks_between_spawn: 160}",
-            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], spawn_potentials: [{data: {entity: {id: \"minecraft:skeleton\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_ranged\", slot_drop_chances: 0.0f}}, weight: 1}]}"
-         );
-         a(
-            akv.b("trial_chamber/slow_ranged/stray"),
-            "{simultaneous_mobs: 4.0f, simultaneous_mobs_added_per_player: 2.0f, spawn_potentials: [{data: {entity: {id: \"minecraft:stray\"}}, weight: 1}], ticks_between_spawn: 160}",
-            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}],spawn_potentials: [{data: {entity: {id: \"minecraft:stray\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_ranged\", slot_drop_chances: 0.0f}}, weight: 1}]}"
-         );
-         a(
-            akv.b("trial_chamber/small_melee/baby_zombie"),
-            "{simultaneous_mobs: 2.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {IsBaby: 1b, id: \"minecraft:zombie\"}}, weight: 1}], ticks_between_spawn: 20}",
-            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], spawn_potentials: [{data: {entity: {IsBaby: 1b, id: \"minecraft:zombie\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_melee\", slot_drop_chances: 0.0f}}, weight: 1}]}"
-         );
-         a(
-            akv.b("trial_chamber/small_melee/cave_spider"),
-            "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:cave_spider\"}}, weight: 1}], ticks_between_spawn: 20}",
-            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], simultaneous_mobs: 4.0f, total_mobs: 12.0f}"
-         );
-         a(
-            akv.b("trial_chamber/small_melee/silverfish"),
-            "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:silverfish\"}}, weight: 1}], ticks_between_spawn: 20}",
-            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], simultaneous_mobs: 4.0f, total_mobs: 12.0f}"
-         );
-         a(
-            akv.b("trial_chamber/small_melee/slime"),
-            "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {Size: 1, id: \"minecraft:slime\"}}, weight: 3}, {data: {entity: {Size: 2, id: \"minecraft:slime\"}}, weight: 1}], ticks_between_spawn: 20}",
-            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], simultaneous_mobs: 4.0f, total_mobs: 12.0f}"
-         );
+         return $$1.build();
       }
    }
 }

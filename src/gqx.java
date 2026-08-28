@@ -1,25 +1,29 @@
-public abstract class gqx<T extends clh, S extends hah> extends gsw<T, S, gdx<S>> {
-   public gqx(gsf.a $$0, gfc $$1, gfc $$2, gfc $$3) {
-      this($$0, $$2, $$3, new gdx<>($$0.a($$1)));
+import com.google.common.collect.ImmutableList;
+import java.util.Collections;
+import java.util.List;
+
+public class gqx implements gqy.a {
+   private final fmg a;
+   private double b = Double.MIN_VALUE;
+   private List<fcr> c = Collections.emptyList();
+
+   public gqx(fmg $$0) {
+      this.a = $$0;
    }
 
-   public gqx(gsf.a $$0, gfc $$1, gfc $$2, gdx<S> $$3) {
-      super($$0, $$3, 0.5F);
-      this.a(new gwj<>(this, new gdx($$0.a($$1)), new gdx($$0.a($$2)), $$0.h()));
-   }
+   @Override
+   public void a(fgr $$0, gmx $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)af.d();
+      if ($$5 - this.b > 1.0E8) {
+         this.b = $$5;
+         bva $$6 = this.a.j.k().g();
+         this.c = ImmutableList.copyOf($$6.dU().d($$6, $$6.cQ().g(6.0)));
+      }
 
-   public void a(T $$0, S $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.b = $$0.gh();
-      $$1.c = $$0.gt();
-      $$1.d = $$0.eZ().a(cwu.pa);
-   }
+      fgv $$7 = $$1.getBuffer(gnh.y());
 
-   protected boolean a(S $$0) {
-      return $$0.c;
-   }
-
-   protected gcp.a a(clh $$0, bvc $$1) {
-      return $$0.fy() == $$1 && $$0.gh() && $$0.eZ().a(cwu.pa) ? gcp.a.d : gcp.a.a;
+      for (fcr $$8 : this.c) {
+         gqy.a($$0, $$7, $$8, -$$2, -$$3, -$$4, 1.0F, 1.0F, 1.0F, 1.0F, true);
+      }
    }
 }

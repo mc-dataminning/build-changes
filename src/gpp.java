@@ -1,57 +1,64 @@
-import java.util.BitSet;
-import java.util.Set;
+import java.util.Calendar;
 
-public class gpp {
-   private static final int a = jn.values().length;
-   private final BitSet b = new BitSet(a * a);
+public class gpp<T extends dus & dvy> implements gpj<T> {
+   private final gcm a;
+   private final gcm b;
+   private final gcm c;
+   private final boolean d = b();
 
-   public void a(Set<jn> $$0) {
-      for (jn $$1 : $$0) {
-         for (jn $$2 : $$0) {
-            this.a($$1, $$2, true);
-         }
-      }
+   public gpp(gpk.a $$0) {
+      this.a = new gcm($$0.a(ggb.V));
+      this.b = new gcm($$0.a(ggb.av));
+      this.c = new gcm($$0.a(ggb.aw));
    }
 
-   public void a(jn $$0, jn $$1, boolean $$2) {
-      this.b.set($$0.ordinal() + $$1.ordinal() * a, $$2);
-      this.b.set($$1.ordinal() + $$0.ordinal() * a, $$2);
-   }
-
-   public void a(boolean $$0) {
-      this.b.set(0, this.b.size(), $$0);
-   }
-
-   public boolean a(jn $$0, jn $$1) {
-      return this.b.get($$0.ordinal() + $$1.ordinal() * a);
+   public static boolean b() {
+      Calendar $$0 = Calendar.getInstance();
+      return $$0.get(2) + 1 == 12 && $$0.get(5) >= 24 && $$0.get(5) <= 26;
    }
 
    @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append(' ');
-
-      for (jn $$1 : jn.values()) {
-         $$0.append(' ').append($$1.toString().toUpperCase().charAt(0));
-      }
-
-      $$0.append('\n');
-
-      for (jn $$2 : jn.values()) {
-         $$0.append($$2.toString().toUpperCase().charAt(0));
-
-         for (jn $$3 : jn.values()) {
-            if ($$2 == $$3) {
-               $$0.append("  ");
-            } else {
-               boolean $$4 = this.a($$2, $$3);
-               $$0.append(' ').append((char)($$4 ? 'Y' : 'n'));
-            }
+   public void a(T $$0, float $$1, fgr $$2, gmx $$3, int $$4, int $$5) {
+      dgz $$6 = $$0.i();
+      boolean $$7 = $$6 != null;
+      dxq $$8 = $$7 ? $$0.m() : dkg.cD.m().b(dlh.c, jn.d);
+      dyi $$9 = $$8.b(dlh.d) ? $$8.c(dlh.d) : dyi.a;
+      if ($$8.b() instanceof diy<?> $$11) {
+         boolean $$12 = $$9 != dyi.a;
+         $$2.a();
+         float $$13 = $$8.c(dlh.c).p();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.a(a.d.rotationDegrees(-$$13));
+         $$2.a(-0.5F, -0.5F, -0.5F);
+         dmm.c<? extends duz> $$14;
+         if ($$7) {
+            $$14 = $$11.a($$8, $$6, $$0.aA_(), true);
+         } else {
+            $$14 = dmm.b::b;
          }
 
-         $$0.append('\n');
-      }
+         float $$16 = $$14.apply(dlh.a($$0)).get($$1);
+         $$16 = 1.0F - $$16;
+         $$16 = 1.0F - $$16 * $$16 * $$16;
+         int $$17 = $$14.apply(new gpm<>()).applyAsInt($$4);
+         hhy $$18 = gns.a($$0, $$9, this.d);
+         fgv $$19 = $$18.a($$3, gnh::f);
+         if ($$12) {
+            if ($$9 == dyi.b) {
+               this.a($$2, $$19, this.b, $$16, $$17, $$5);
+            } else {
+               this.a($$2, $$19, this.c, $$16, $$17, $$5);
+            }
+         } else {
+            this.a($$2, $$19, this.a, $$16, $$17, $$5);
+         }
 
-      return $$0.toString();
+         $$2.b();
+      }
+   }
+
+   private void a(fgr $$0, fgv $$1, gcm $$2, float $$3, int $$4, int $$5) {
+      $$2.a($$3);
+      $$2.a($$0, $$1, $$4, $$5);
    }
 }

@@ -1,27 +1,46 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class eqq extends erm {
-   public static final MapCodec<eqq> a = dwy.a.xmap(dwx.a::b, djn::m).listOf().fieldOf("blocks").xmap(eqq::new, $$0 -> $$0.e);
-   public static final eqq b = new eqq(ImmutableList.of(djp.pC));
-   public static final eqq c = new eqq(ImmutableList.of(djp.a));
-   public static final eqq d = new eqq(ImmutableList.of(djp.a, djp.pC));
-   private final ImmutableList<djn> e;
+public class eqq extends eoj {
+   public static final brj<dio.c> d = brj.<dio.c>b()
+      .a(new dio.c(bvi.o, 2, 3), 10)
+      .a(new dio.c(bvi.bQ, 4, 4), 5)
+      .a(new dio.c(bvi.bJ, 5, 5), 8)
+      .a(new dio.c(bvi.be, 5, 5), 2)
+      .a(new dio.c(bvi.az, 4, 4), 3)
+      .a();
+   public static final MapCodec<eqq> e = a(eqq::new);
 
-   public eqq(List<djn> $$0) {
-      this.e = ImmutableList.copyOf($$0);
-   }
-
-   @Nullable
-   @Override
-   public erp.d a(dgm $$0, ji $$1, ji $$2, erp.d $$3, erp.d $$4, erl $$5) {
-      return this.e.contains($$4.b().b()) ? null : $$4;
+   public eqq(eoj.c $$0) {
+      super($$0);
    }
 
    @Override
-   protected ero<?> a() {
-      return ero.e;
+   public Optional<eoj.b> a(eoj.a $$0) {
+      dgg $$1 = $$0.h();
+      ji $$2 = new ji($$1.d(), 64, $$1.e());
+      return Optional.of(new eoj.b($$2, (Consumer<epb>)($$1x -> a($$1x, $$0))));
+   }
+
+   private static void a(epb $$0, eoj.a $$1) {
+      eqp.q $$2 = new eqp.q($$1.f(), $$1.h().a(2), $$1.h().b(2));
+      $$0.a($$2);
+      $$2.a($$2, $$0, $$1.f());
+      List<eon> $$3 = $$2.d;
+
+      while (!$$3.isEmpty()) {
+         int $$4 = $$1.f().a($$3.size());
+         eon $$5 = $$3.remove($$4);
+         $$5.a($$2, $$0, $$1.f());
+      }
+
+      $$0.a($$1.f(), 48, 70);
+   }
+
+   @Override
+   public eos<?> e() {
+      return eos.d;
    }
 }

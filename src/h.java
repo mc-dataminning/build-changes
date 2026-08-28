@@ -1,4 +1,3 @@
-import com.google.common.collect.Maps;
 import com.mojang.datafixers.util.Pair;
 import it.unimi.dsi.fastutil.booleans.BooleanArrayList;
 import it.unimi.dsi.fastutil.booleans.BooleanList;
@@ -58,101 +57,122 @@ public enum h implements azv {
    U("rot_90_ref_z_neg", i.b, false, true, true),
    V("rot_90_ref_z_pos", i.b, true, false, true);
 
-   private final Matrix3f X;
-   private final String Y;
+   private static final jn.a[] X = jn.a.values();
+   private final Matrix3f Y;
+   private final String Z;
    @Nullable
-   private Map<jn, jn> Z;
-   private final boolean aa;
+   private Map<jn, jn> aa;
    private final boolean ab;
    private final boolean ac;
-   private final i ad;
-   private static final h[][] ae = af.a(new h[values().length][values().length], $$0 -> {
-      Map<Pair<i, BooleanList>, h> $$1 = Arrays.stream(values()).collect(Collectors.toMap($$0x -> Pair.of($$0x.ad, $$0x.d()), $$0x -> $$0x));
+   private final boolean ad;
+   private final i ae;
+   private static final h[][] af = af.a(new h[values().length][values().length], $$0 -> {
+      Map<Pair<i, BooleanList>, h> $$1 = Arrays.stream(values()).collect(Collectors.toMap($$0x -> Pair.of($$0x.ae, $$0x.d()), $$0x -> $$0x));
 
       for (h $$2 : values()) {
          for (h $$3 : values()) {
             BooleanList $$4 = $$2.d();
             BooleanList $$5 = $$3.d();
-            i $$6 = $$3.ad.a($$2.ad);
+            i $$6 = $$3.ae.a($$2.ae);
             BooleanArrayList $$7 = new BooleanArrayList(3);
 
             for (int $$8 = 0; $$8 < 3; $$8++) {
-               $$7.add($$4.getBoolean($$8) ^ $$5.getBoolean($$2.ad.a($$8)));
+               $$7.add($$4.getBoolean($$8) ^ $$5.getBoolean($$2.ae.a($$8)));
             }
 
             $$0[$$2.ordinal()][$$3.ordinal()] = $$1.get(Pair.of($$6, $$7));
          }
       }
    });
-   private static final h[] af = Arrays.stream(values()).map($$0 -> Arrays.stream(values()).filter($$1 -> $$0.a($$1) == a).findAny().get()).toArray(h[]::new);
+   private static final h[] ag = Arrays.stream(values()).map($$0 -> Arrays.stream(values()).filter($$1 -> $$0.a($$1) == a).findAny().get()).toArray(h[]::new);
 
    private h(final String $$0, final i $$1, final boolean $$2, final boolean $$3, final boolean $$4) {
-      this.Y = $$0;
-      this.aa = $$2;
-      this.ab = $$3;
-      this.ac = $$4;
-      this.ad = $$1;
-      this.X = new Matrix3f().scaling($$2 ? -1.0F : 1.0F, $$3 ? -1.0F : 1.0F, $$4 ? -1.0F : 1.0F);
-      this.X.mul($$1.a());
+      this.Z = $$0;
+      this.ab = $$2;
+      this.ac = $$3;
+      this.ad = $$4;
+      this.ae = $$1;
+      this.Y = new Matrix3f().scaling($$2 ? -1.0F : 1.0F, $$3 ? -1.0F : 1.0F, $$4 ? -1.0F : 1.0F);
+      this.Y.mul($$1.a());
    }
 
    private BooleanList d() {
-      return new BooleanArrayList(new boolean[]{this.aa, this.ab, this.ac});
+      return new BooleanArrayList(new boolean[]{this.ab, this.ac, this.ad});
    }
 
    public h a(h $$0) {
-      return ae[this.ordinal()][$$0.ordinal()];
+      return af[this.ordinal()][$$0.ordinal()];
    }
 
    public h a() {
-      return af[this.ordinal()];
+      return ag[this.ordinal()];
    }
 
    public Matrix3f b() {
-      return new Matrix3f(this.X);
+      return new Matrix3f(this.Y);
    }
 
    @Override
    public String toString() {
-      return this.Y;
+      return this.Z;
    }
 
    @Override
    public String c() {
-      return this.Y;
+      return this.Z;
    }
 
    public jn a(jn $$0) {
-      if (this.Z == null) {
-         this.Z = Maps.newEnumMap(jn.class);
-         jn.a[] $$1 = jn.a.values();
-
-         for (jn $$2 : jn.values()) {
-            jn.a $$3 = $$2.o();
-            jn.b $$4 = $$2.f();
-            jn.a $$5 = $$1[this.ad.a($$3.ordinal())];
-            jn.b $$6 = this.a($$5) ? $$4.c() : $$4;
-            jn $$7 = jn.a($$5, $$6);
-            this.Z.put($$2, $$7);
-         }
+      if (this.aa == null) {
+         this.aa = af.a(jn.class, $$0x -> {
+            jn.a $$1 = $$0x.o();
+            jn.b $$2 = $$0x.f();
+            jn.a $$3 = this.b($$1);
+            jn.b $$4 = this.a($$3) ? $$2.c() : $$2;
+            return jn.a($$3, $$4);
+         });
       }
 
-      return this.Z.get($$0);
+      return this.aa.get($$0);
    }
 
    public boolean a(jn.a $$0) {
       switch ($$0) {
          case a:
-            return this.aa;
-         case b:
             return this.ab;
+         case b:
+            return this.ac;
          case c:
          default:
-            return this.ac;
+            return this.ad;
       }
+   }
+
+   public jn.a b(jn.a $$0) {
+      return X[this.ae.a($$0.ordinal())];
    }
 
    public jp a(jp $$0) {
       return jp.a(this.a($$0.a()), this.a($$0.b()));
+   }
+
+   public static h a(int $$0, int $$1) {
+      $$0 = ayz.b($$0, 360);
+      $$1 = ayz.b($$1, 360);
+      if ($$0 % 90 == 0 && $$1 % 90 == 0) {
+         h $$2 = a;
+
+         for (int $$3 = 0; $$3 < $$1; $$3 += 90) {
+            $$2 = $$2.a(u);
+         }
+
+         for (int $$4 = 0; $$4 < $$0; $$4 += 90) {
+            $$2 = $$2.a(s);
+         }
+
+         return $$2;
+      } else {
+         throw new IllegalArgumentException("Angles must be divisible by 90");
+      }
    }
 }

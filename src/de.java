@@ -8,7 +8,7 @@ public class de extends dz<de.a> {
       return de.a.a;
    }
 
-   public void a(are $$0, fbb $$1, int $$2) {
+   public void a(are $$0, fbx $$1, int $$2) {
       this.a($$0, $$3 -> $$3.a($$0, $$1, $$2));
    }
 
@@ -26,8 +26,8 @@ public class de extends dz<de.a> {
          return ap.v.a(new de.a(Optional.empty(), Optional.of($$0), dk.d.c));
       }
 
-      public boolean a(are $$0, fbb $$1, int $$2) {
-         return this.c.isPresent() && !this.c.get().a($$1.d, $$1.e, $$1.f, $$0.dA(), $$0.dC(), $$0.dG()) ? false : this.d.d($$2);
+      public boolean a(are $$0, fbx $$1, int $$2) {
+         return this.c.isPresent() && !this.c.get().a($$1.d, $$1.e, $$1.f, $$0.dz(), $$0.dB(), $$0.dF()) ? false : this.d.d($$2);
       }
 
       @Override

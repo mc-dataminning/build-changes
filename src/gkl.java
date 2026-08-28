@@ -1,53 +1,78 @@
-public class gkl extends gki {
-   private final fbb a;
+public class gkl extends glg {
+   private final glb a;
 
-   gkl(gga $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fbb $$7, int $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      $$8 = axk.a($$8, 0.875F + this.r.i() * 0.25F, 0.875F + this.r.i() * 0.25F, 0.875F + this.r.i() * 0.25F);
-      this.v = (float)axk.b($$8) / 255.0F;
-      this.w = (float)axk.c($$8) / 255.0F;
-      this.x = (float)axk.d($$8) / 255.0F;
-      this.D = 0.26F;
+   gkl(ggy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, glb $$7) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.96F;
       this.a = $$7;
+      float $$8 = 2.5F;
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
+      float $$9 = 1.0F - (float)(Math.random() * 0.3F);
+      this.v = $$9;
+      this.w = $$9;
+      this.x = $$9;
+      this.D *= 1.875F;
+      int $$10 = (int)(8.0 / (Math.random() * 0.8 + 0.3));
+      this.t = (int)Math.max((float)$$10 * 2.5F, 1.0F);
+      this.n = false;
+      this.b($$7);
    }
 
    @Override
-   public gjm b() {
-      return gjm.b;
+   public gkk b() {
+      return gkk.c;
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * ayz.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         int $$0 = this.t - this.s;
-         double $$1 = 1.0 / (double)$$0;
-         this.g = ayz.d($$1, this.g, this.a.a());
-         this.h = ayz.d($$1, this.h, this.a.b());
-         this.i = ayz.d($$1, this.i, this.a.c());
+      super.a();
+      if (!this.o) {
+         this.b(this.a);
+         cpr $$0 = this.c.a(this.g, this.h, this.i, 2.0, false);
+         if ($$0 != null) {
+            double $$1 = $$0.dB();
+            if (this.h > $$1) {
+               this.h = this.h + ($$1 - this.h) * 0.2;
+               this.k = this.k + ($$0.dx().e - this.k) * 0.2;
+               this.c(this.g, this.h, this.i);
+            }
+         }
       }
    }
 
-   @Override
-   public int a(float $$0) {
-      return 15728880;
-   }
+   public static class a implements gkj<lx> {
+      private final glb a;
 
-   public static class a implements gjl<ly> {
-      private final gkd a;
-
-      public a(gkd $$0) {
+      public a(glb $$0) {
          this.a = $$0;
       }
 
-      public gji a(ly $$0, gga $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gkl $$8 = new gkl($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.b(), $$0.c());
-         $$8.a(this.a);
-         $$8.a($$0.d());
+      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gkl($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
+   }
+
+   public static class b implements gkj<lx> {
+      private final glb a;
+
+      public b(glb $$0) {
+         this.a = $$0;
+      }
+
+      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gkg $$8 = new gkl($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.a(200.0F, 50.0F, 120.0F);
+         $$8.e(0.4F);
          return $$8;
       }
    }

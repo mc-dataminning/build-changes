@@ -1,36 +1,42 @@
-import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
 
-public record ezk(ezx b, evr c) implements ezb {
-   public static final MapCodec<ezk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ezy.a.fieldOf("value").forGetter(ezk::c), evr.a.fieldOf("range").forGetter(ezk::d)).apply($$0, ezk::new)
-   );
+public class ezk extends ezn {
+   public static final MapCodec<ezk> a = a(ezk::new);
+   public static final Codec<ezk> b = b(ezk::new);
 
-   @Override
-   public ezc b() {
-      return ezd.r;
+   ezk(List<ezx> $$0) {
+      super($$0, af.a($$0));
+   }
+
+   public static ezk a(List<ezx> $$0) {
+      return new ezk(List.copyOf($$0));
    }
 
    @Override
-   public Set<bai<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
+   public ezy b() {
+      return ezz.c;
    }
 
-   public boolean a(evs $$0) {
-      return this.c.b($$0, this.b.a($$0));
+   public static ezk.a a(ezx.a... $$0) {
+      return new ezk.a($$0);
    }
 
-   public static ezb.a a(ezx $$0, evr $$1) {
-      return () -> new ezk($$0, $$1);
-   }
+   public static class a extends ezn.a {
+      public a(ezx.a... $$0) {
+         super($$0);
+      }
 
-   public ezx c() {
-      return this.b;
-   }
+      @Override
+      public ezk.a and(ezx.a $$0) {
+         this.a($$0);
+         return this;
+      }
 
-   public evr d() {
-      return this.c;
+      @Override
+      protected ezx a(List<ezx> $$0) {
+         return new ezk($$0);
+      }
    }
 }

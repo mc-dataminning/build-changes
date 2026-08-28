@@ -1,87 +1,77 @@
 import com.mojang.serialization.Codec;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public final class dbb implements cpc.a<jr<cwm>>, Predicate<cwq> {
-   public static final yn<wa, dbb> a = yl.c(mc.K).a(dbb::new, $$0 -> $$0.e);
-   public static final yn<wa, Optional<dbb>> b = yl.c(mc.K)
-      .a($$0 -> $$0.b() == 0 ? Optional.empty() : Optional.of(new dbb((jv<cwm>)$$0)), $$0 -> $$0.<jv.a<cwm>>map($$0x -> $$0x.e).orElse(jv.a()));
-   public static final Codec<jv<cwm>> c = akp.a(mc.K, cwm.e, false);
-   public static final Codec<dbb> d = ayi.c(c).xmap(dbb::new, $$0 -> $$0.e);
-   private final jv<cwm> e;
+public abstract class dbb extends dcn {
+   private final dbh c;
+   private final float d;
+   private final int e;
 
-   private dbb(jv<cwm> $$0) {
-      $$0.d().ifRight($$0x -> {
-         if ($$0x.isEmpty()) {
-            throw new UnsupportedOperationException("Ingredients can't be empty");
-         } else if ($$0x.contains(cwu.a.f())) {
-            throw new UnsupportedOperationException("Ingredient can't contain air");
-         }
-      });
-      this.e = $$0;
-   }
-
-   public static boolean a(Optional<dbb> $$0, cwq $$1) {
-      return $$0.<Boolean>map($$1x -> $$1x.a($$1)).orElseGet($$1::f);
-   }
-
-   @Deprecated
-   public Stream<jr<cwm>> a() {
-      return this.e.a();
-   }
-
-   public boolean b() {
-      return this.e.b() == 0;
-   }
-
-   public boolean a(cwq $$0) {
-      return $$0.a(this.e);
-   }
-
-   public boolean a(jr<cwm> $$0) {
-      return this.e.a($$0);
+   public dbb(String $$0, dbh $$1, dbr $$2, cxh $$3, float $$4, int $$5) {
+      super($$0, $$2, $$3);
+      this.c = $$1;
+      this.d = $$4;
+      this.e = $$5;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return $$0 instanceof dbb $$1 ? Objects.equals(this.e, $$1.e) : false;
+   public abstract dcf<? extends dbb> a();
+
+   @Override
+   public abstract dcg<? extends dbb> b();
+
+   public float c() {
+      return this.d;
    }
 
-   public static dbb a(dgi $$0) {
-      return new dbb(jv.a($$0.j().f()));
+   public int d() {
+      return this.e;
    }
 
-   public static dbb a(dgi... $$0) {
-      return a(Arrays.stream($$0));
+   public dbh e() {
+      return this.c;
    }
 
-   public static dbb a(Stream<? extends dgi> $$0) {
-      return new dbb(jv.a($$0.map($$0x -> $$0x.j().f()).toList()));
+   protected abstract cxd f();
+
+   @Override
+   public List<ddb> g() {
+      return List.of(new dda(this.k().c(), ddh.a.c, new ddh.f(this.l()), new ddh.d(this.f()), this.e, this.d));
    }
 
-   public static dbb a(jv<cwm> $$0) {
-      return new dbb($$0);
+   @FunctionalInterface
+   public interface a<T extends dbb> {
+      T create(String var1, dbh var2, dbr var3, cxh var4, float var5, int var6);
    }
 
-   public dcq c() {
-      return (dcq)this.e.d().map(dcq.h::new, $$0 -> new dcq.b($$0.stream().map(dbb::b).toList()));
-   }
+   public static class b<T extends dbb> implements dcf<T> {
+      private final MapCodec<T> w;
+      private final yn<wa, T> x;
 
-   public static dcq a(Optional<dbb> $$0) {
-      return $$0.<dcq>map(dbb::c).orElse(dcq.c.c);
-   }
+      public b(dbb.a<T> $$0, int $$1) {
+         this.w = RecordCodecBuilder.mapCodec(
+            $$2 -> $$2.group(
+                     Codec.STRING.optionalFieldOf("group", "").forGetter(dcn::j),
+                     dbh.d.fieldOf("category").orElse(dbh.c).forGetter(dbb::e),
+                     dbr.d.fieldOf("ingredient").forGetter(dcn::k),
+                     cxh.e.fieldOf("result").forGetter(dcn::l),
+                     Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter(dbb::c),
+                     Codec.INT.fieldOf("cookingtime").orElse($$1).forGetter(dbb::d)
+                  )
+                  .apply($$2, $$0::create)
+         );
+         this.x = yn.a(yl.o, dcn::j, dbh.e, dbb::e, dbr.a, dcn::k, cxh.i, dcn::l, yl.l, dbb::c, yl.g, dbb::d, $$0::create);
+      }
 
-   private static dcq b(jr<cwm> $$0) {
-      dcq $$1 = new dcq.d($$0);
-      cwq $$2 = $$0.a().k();
-      if (!$$2.f()) {
-         dcq $$3 = new dcq.f($$2);
-         return new dcq.j($$1, $$3);
-      } else {
-         return $$1;
+      @Override
+      public MapCodec<T> a() {
+         return this.w;
+      }
+
+      @Override
+      public yn<wa, T> b() {
+         return this.x;
       }
    }
 }

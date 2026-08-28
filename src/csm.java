@@ -1,104 +1,107 @@
-public class csm extends csd {
-   private final bse m;
-   private final int n;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-   private csm(ctm<?> $$0, int $$1, cox $$2, int $$3) {
-      this($$0, $$1, $$2, new bss(9 * $$3), $$3);
+public class csm {
+   private static final Logger a = LogUtils.getLogger();
+   private final cso b;
+   private final Map<aku, csl> c;
+   private final csn d;
+
+   csm(cso $$0, csn $$1, Map<aku, csl> $$2) {
+      this.b = $$0;
+      this.c = $$2;
+      this.d = $$1;
    }
 
-   public static csm a(int $$0, cox $$1) {
-      return new csm(ctm.a, $$0, $$1, 1);
+   public boolean a(csn $$0) {
+      return $$0.a(this.d);
    }
 
-   public static csm b(int $$0, cox $$1) {
-      return new csm(ctm.b, $$0, $$1, 2);
+   public csn a() {
+      return this.d;
    }
 
-   public static csm c(int $$0, cox $$1) {
-      return new csm(ctm.c, $$0, $$1, 3);
+   public csn a(Iterable<aku> $$0) {
+      return this.a($$0, $$0x -> a.warn("Unknown feature flag: {}", $$0x));
    }
 
-   public static csm d(int $$0, cox $$1) {
-      return new csm(ctm.d, $$0, $$1, 4);
+   public csn a(csl... $$0) {
+      return csn.a(this.b, Arrays.asList($$0));
    }
 
-   public static csm e(int $$0, cox $$1) {
-      return new csm(ctm.e, $$0, $$1, 5);
-   }
+   public csn a(Iterable<aku> $$0, Consumer<aku> $$1) {
+      Set<csl> $$2 = Sets.newIdentityHashSet();
 
-   public static csm f(int $$0, cox $$1) {
-      return new csm(ctm.f, $$0, $$1, 6);
-   }
-
-   public static csm a(int $$0, cox $$1, bse $$2) {
-      return new csm(ctm.c, $$0, $$1, $$2, 3);
-   }
-
-   public static csm b(int $$0, cox $$1, bse $$2) {
-      return new csm(ctm.f, $$0, $$1, $$2, 6);
-   }
-
-   public csm(ctm<?> $$0, int $$1, cox $$2, bse $$3, int $$4) {
-      super($$0, $$1);
-      a($$3, $$4 * 9);
-      this.m = $$3;
-      this.n = $$4;
-      $$3.c_($$2.k);
-      int $$5 = 18;
-      this.d($$3, 8, 18);
-      int $$6 = 18 + this.n * 18 + 13;
-      this.c($$2, 8, $$6);
-   }
-
-   private void d(bse $$0, int $$1, int $$2) {
-      for (int $$3 = 0; $$3 < this.n; $$3++) {
-         for (int $$4 = 0; $$4 < 9; $$4++) {
-            this.a(new cua($$0, $$4 + $$3 * 9, $$1 + $$4 * 18, $$2 + $$3 * 18));
-         }
-      }
-   }
-
-   @Override
-   public boolean b(coy $$0) {
-      return this.m.a($$0);
-   }
-
-   @Override
-   public cwq b(coy $$0, int $$1) {
-      cwq $$2 = cwq.j;
-      cua $$3 = this.k.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cwq $$4 = $$3.g();
-         $$2 = $$4.v();
-         if ($$1 < this.n * 9) {
-            if (!this.a($$4, this.n * 9, this.k.size(), true)) {
-               return cwq.j;
-            }
-         } else if (!this.a($$4, 0, this.n * 9, false)) {
-            return cwq.j;
-         }
-
-         if ($$4.f()) {
-            $$3.e(cwq.j);
+      for (aku $$3 : $$0) {
+         csl $$4 = this.c.get($$3);
+         if ($$4 == null) {
+            $$1.accept($$3);
          } else {
-            $$3.c();
+            $$2.add($$4);
          }
       }
 
-      return $$2;
+      return csn.a(this.b, $$2);
    }
 
-   @Override
-   public void a(coy $$0) {
-      super.a($$0);
-      this.m.c($$0);
+   public Set<aku> b(csn $$0) {
+      Set<aku> $$1 = new HashSet<>();
+      this.c.forEach(($$2, $$3) -> {
+         if ($$0.b($$3)) {
+            $$1.add($$2);
+         }
+      });
+      return $$1;
    }
 
-   public bse l() {
-      return this.m;
+   public Codec<csn> b() {
+      return aku.a.listOf().comapFlatMap($$0 -> {
+         Set<aku> $$1 = new HashSet<>();
+         csn $$2 = this.a($$0, $$1::add);
+         return !$$1.isEmpty() ? DataResult.error(() -> "Unknown feature ids: " + $$1, $$2) : DataResult.success($$2);
+      }, $$0 -> List.copyOf(this.b($$0)));
    }
 
-   public int m() {
-      return this.n;
+   public static class a {
+      private final cso a;
+      private int b;
+      private final Map<aku, csl> c = new LinkedHashMap<>();
+
+      public a(String $$0) {
+         this.a = new cso($$0);
+      }
+
+      public csl a(String $$0) {
+         return this.a(aku.b($$0));
+      }
+
+      public csl a(aku $$0) {
+         if (this.b >= 64) {
+            throw new IllegalStateException("Too many feature flags");
+         } else {
+            csl $$1 = new csl(this.a, this.b++);
+            csl $$2 = this.c.put($$0, $$1);
+            if ($$2 != null) {
+               throw new IllegalStateException("Duplicate feature flag " + $$0);
+            } else {
+               return $$1;
+            }
+         }
+      }
+
+      public csm a() {
+         csn $$0 = csn.a(this.a, this.c.values());
+         return new csm(this.a, $$0, Map.copyOf(this.c));
+      }
    }
 }

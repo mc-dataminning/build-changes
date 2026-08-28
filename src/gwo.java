@@ -1,28 +1,12 @@
-public class gwo extends gwu<gzm, gcu> {
-   private final gcu a;
-   private final gcu b;
-   private final gwe c;
+public class gwo<M extends gef> extends gya<M> {
+   private static final aku a = aku.b("textures/entity/bee/bee_stinger.png");
 
-   public gwo(guc<gzm, gcu> $$0, gfa $$1, gwe $$2) {
-      super($$0);
-      this.c = $$2;
-      this.a = new gcu($$1.a(gfd.bv));
-      this.b = new gcu($$1.a(gfd.bu));
+   public gwo(gue<?, hav, M> $$0, gtd.a $$1) {
+      super($$0, new gcd($$1.a(ggb.z)), a, gya.a.b);
    }
 
-   public void a(ffv $$0, glz $$1, int $$2, gzm $$3, float $$4, float $$5) {
-      cwq $$6 = $$3.c;
-      dev $$7 = $$6.a(kv.D);
-      if ($$7 != null && $$7.c().isPresent()) {
-         this.a($$0, $$1, $$3, $$6, $$7.c().get(), $$2);
-      } else if ($$3.d) {
-         this.a($$0, $$1, $$3, cwq.j, deu.l, $$2);
-      }
-   }
-
-   private void a(ffv $$0, glz $$1, gzm $$2, cwq $$3, aku<det> $$4, int $$5) {
-      gcu $$6 = $$2.aj ? this.b : this.a;
-      $$6.a($$2);
-      this.c.a(hgz.d.f, $$4, $$6, $$3, $$0, $$1, $$5);
+   @Override
+   protected int a(hav $$0) {
+      return $$0.k;
    }
 }

@@ -1,39 +1,37 @@
-public class gch extends gcc<gyw> {
-   private final gfe[] a = new gfe[9];
+public class gch extends gev<gyw> {
+   private final ggc a;
 
-   public gch(gfe $$0) {
+   public gch(ggc $$0) {
       super($$0);
-
-      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
-         this.a[$$1] = $$0.b(a($$1));
-      }
+      this.a = $$0.b("head").b("mushrooms");
    }
 
-   private static String a(int $$0) {
-      return "tentacle" + $$0;
-   }
-
-   public static gfk a() {
-      gfm $$0 = new gfm();
-      gfo $$1 = $$0.a();
-      $$1.a("body", gfj.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), gfg.a(0.0F, 17.6F, 0.0F));
-      azh $$2 = azh.a(1660L);
-
-      for (int $$3 = 0; $$3 < 9; $$3++) {
-         float $$4 = (((float)($$3 % 3) - (float)($$3 / 3 % 2) * 0.5F + 0.25F) / 2.0F * 2.0F - 1.0F) * 5.0F;
-         float $$5 = ((float)($$3 / 3) / 2.0F * 2.0F - 1.0F) * 5.0F;
-         int $$6 = $$2.a(7) + 8;
-         $$1.a(a($$3), gfj.c().a(0, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, (float)$$6, 2.0F), gfg.a($$4, 24.6F, $$5));
-      }
-
-      return gfk.a($$0, 64, 32).a(gfn.scaling(4.5F));
+   public static ggi a() {
+      ggk $$0 = gdn.a(ggg.a, 0.0F);
+      ggm $$1 = $$0.a();
+      gev.a($$1);
+      ggm $$2 = $$1.b("head").a("mushrooms");
+      $$2.a("red_mushroom_1", ggh.c().a(50, 16).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), gge.a(3.0F, -8.0F, 3.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$2.a("red_mushroom_2", ggh.c().a(50, 16).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), gge.a(3.0F, -8.0F, 3.0F, 0.0F, (float) (Math.PI * 3.0 / 4.0), 0.0F));
+      $$2.a("brown_mushroom_1", ggh.c().a(50, 22).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), gge.a(-3.0F, -8.0F, -3.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$2.a(
+         "brown_mushroom_2", ggh.c().a(50, 22).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), gge.a(-3.0F, -8.0F, -3.0F, 0.0F, (float) (Math.PI * 3.0 / 4.0), 0.0F)
+      );
+      $$2.a(
+         "brown_mushroom_3",
+         ggh.c().a(50, 28).a(-3.0F, -4.0F, 0.0F, 6.0F, 4.0F, 0.0F),
+         gge.a(-2.0F, -1.0F, 4.0F, (float) (-Math.PI / 2), 0.0F, (float) (Math.PI / 4))
+      );
+      $$2.a(
+         "brown_mushroom_4",
+         ggh.c().a(50, 28).a(-3.0F, -4.0F, 0.0F, 6.0F, 4.0F, 0.0F),
+         gge.a(-2.0F, -1.0F, 4.0F, (float) (-Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 4.0))
+      );
+      return ggi.a($$0, 64, 32);
    }
 
    public void a(gyw $$0) {
       super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
-         this.a[$$1].e = 0.2F * ayz.a($$0.u * 0.3F + (float)$$1) + 0.4F;
-      }
+      this.a.k = !$$0.a;
    }
 }

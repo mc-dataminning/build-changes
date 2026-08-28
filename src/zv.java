@@ -26,9 +26,9 @@ public record zv(zv.a c) implements zz {
       return this.c;
    }
 
-   public static record a(UUID a, int b, fbb c, @Nullable eto d, @Nullable ji e, @Nullable ji f, int g, Set<String> h, List<ji> i) {
+   public static record a(UUID a, int b, fbx c, @Nullable euk d, @Nullable ji e, @Nullable ji f, int g, Set<String> h, List<ji> i) {
       public a(vl $$0) {
-         this($$0.n(), $$0.readInt(), $$0.k(), $$0.c(eto::b), $$0.c(ji.b), $$0.c(ji.b), $$0.readInt(), $$0.a(HashSet::new, vl::p), $$0.a(ji.b));
+         this($$0.n(), $$0.readInt(), $$0.k(), $$0.c(euk::b), $$0.c(ji.b), $$0.c(ji.b), $$0.readInt(), $$0.a(HashSet::new, vl::p), $$0.a(ji.b));
       }
 
       public void a(vl $$0) {
@@ -48,7 +48,7 @@ public record zv(zv.a c) implements zz {
       }
 
       public String a() {
-         return agc.a(this.a);
+         return agb.a(this.a);
       }
 
       @Override
@@ -64,12 +64,12 @@ public record zv(zv.a c) implements zz {
          return this.b;
       }
 
-      public fbb d() {
+      public fbx d() {
          return this.c;
       }
 
       @Nullable
-      public eto e() {
+      public euk e() {
          return this.d;
       }
 

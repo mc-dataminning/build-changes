@@ -1,71 +1,97 @@
-public class edc {
-   public static final aku<esd.a> a = a("temperature");
-   public static final aku<esd.a> b = a("vegetation");
-   public static final aku<esd.a> c = a("continentalness");
-   public static final aku<esd.a> d = a("erosion");
-   public static final aku<esd.a> e = a("temperature_large");
-   public static final aku<esd.a> f = a("vegetation_large");
-   public static final aku<esd.a> g = a("continentalness_large");
-   public static final aku<esd.a> h = a("erosion_large");
-   public static final aku<esd.a> i = a("ridge");
-   public static final aku<esd.a> j = a("offset");
-   public static final aku<esd.a> k = a("aquifer_barrier");
-   public static final aku<esd.a> l = a("aquifer_fluid_level_floodedness");
-   public static final aku<esd.a> m = a("aquifer_lava");
-   public static final aku<esd.a> n = a("aquifer_fluid_level_spread");
-   public static final aku<esd.a> o = a("pillar");
-   public static final aku<esd.a> p = a("pillar_rareness");
-   public static final aku<esd.a> q = a("pillar_thickness");
-   public static final aku<esd.a> r = a("spaghetti_2d");
-   public static final aku<esd.a> s = a("spaghetti_2d_elevation");
-   public static final aku<esd.a> t = a("spaghetti_2d_modulator");
-   public static final aku<esd.a> u = a("spaghetti_2d_thickness");
-   public static final aku<esd.a> v = a("spaghetti_3d_1");
-   public static final aku<esd.a> w = a("spaghetti_3d_2");
-   public static final aku<esd.a> x = a("spaghetti_3d_rarity");
-   public static final aku<esd.a> y = a("spaghetti_3d_thickness");
-   public static final aku<esd.a> z = a("spaghetti_roughness");
-   public static final aku<esd.a> A = a("spaghetti_roughness_modulator");
-   public static final aku<esd.a> B = a("cave_entrance");
-   public static final aku<esd.a> C = a("cave_layer");
-   public static final aku<esd.a> D = a("cave_cheese");
-   public static final aku<esd.a> E = a("ore_veininess");
-   public static final aku<esd.a> F = a("ore_vein_a");
-   public static final aku<esd.a> G = a("ore_vein_b");
-   public static final aku<esd.a> H = a("ore_gap");
-   public static final aku<esd.a> I = a("noodle");
-   public static final aku<esd.a> J = a("noodle_thickness");
-   public static final aku<esd.a> K = a("noodle_ridge_a");
-   public static final aku<esd.a> L = a("noodle_ridge_b");
-   public static final aku<esd.a> M = a("jagged");
-   public static final aku<esd.a> N = a("surface");
-   public static final aku<esd.a> O = a("surface_secondary");
-   public static final aku<esd.a> P = a("clay_bands_offset");
-   public static final aku<esd.a> Q = a("badlands_pillar");
-   public static final aku<esd.a> R = a("badlands_pillar_roof");
-   public static final aku<esd.a> S = a("badlands_surface");
-   public static final aku<esd.a> T = a("iceberg_pillar");
-   public static final aku<esd.a> U = a("iceberg_pillar_roof");
-   public static final aku<esd.a> V = a("iceberg_surface");
-   public static final aku<esd.a> W = a("surface_swamp");
-   public static final aku<esd.a> X = a("calcite");
-   public static final aku<esd.a> Y = a("gravel");
-   public static final aku<esd.a> Z = a("powder_snow");
-   public static final aku<esd.a> aa = a("packed_ice");
-   public static final aku<esd.a> ab = a("ice");
-   public static final aku<esd.a> ac = a("soul_sand_layer");
-   public static final aku<esd.a> ad = a("gravel_layer");
-   public static final aku<esd.a> ae = a("patch");
-   public static final aku<esd.a> af = a("netherrack");
-   public static final aku<esd.a> ag = a("nether_wart");
-   public static final aku<esd.a> ah = a("nether_state_selector");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.BitSet;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.LongStream;
+import javax.annotation.Nullable;
 
-   private static aku<esd.a> a(String $$0) {
-      return aku.a(mc.aS, akv.b($$0));
+public final class edc {
+   private static final BitSet c = new BitSet(0);
+   private static final Codec<BitSet> d = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> LongStream.of($$0.toLongArray()));
+   private static final Codec<ean> e = mb.l
+      .q()
+      .comapFlatMap($$0 -> $$0 == ean.c ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success($$0), Function.identity());
+   public static final Codec<edc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               e.fieldOf("target_status").forGetter(edc::a),
+               d.lenientOptionalFieldOf("missing_bedrock").forGetter($$0x -> $$0x.h.isEmpty() ? Optional.empty() : Optional.of($$0x.h))
+            )
+            .apply($$0, edc::new)
+   );
+   private static final Set<akt<dic>> f = Set.of(dij.ab, dij.aa, dij.ac);
+   public static final dhb b = new dhb() {
+      @Override
+      public int H_() {
+         return 64;
+      }
+
+      @Override
+      public int G_() {
+         return -64;
+      }
+   };
+   private final ean g;
+   private final BitSet h;
+
+   private edc(ean $$0, Optional<BitSet> $$1) {
+      this.g = $$0;
+      this.h = $$1.orElse(c);
    }
 
-   public static esd a(js<esd.a> $$0, edg $$1, aku<esd.a> $$2) {
-      jr<esd.a> $$3 = $$0.b($$2);
-      return esd.b($$1.a($$3.e().orElseThrow().a()), $$3.a());
+   @Nullable
+   public static edc a(tq $$0) {
+      ean $$1 = ean.a($$0.l("target_status"));
+      return $$1 == ean.c ? null : new edc($$1, Optional.of(BitSet.valueOf($$0.o("missing_bedrock"))));
+   }
+
+   public static void a(eag $$0) {
+      int $$1 = 4;
+      ji.b(0, 0, 0, 15, 4, 15).forEach($$1x -> {
+         if ($$0.a_($$1x).a(dkg.I)) {
+            $$0.a($$1x, dkg.tn.m());
+         }
+      });
+   }
+
+   public void b(eag $$0) {
+      dhb $$1 = $$0.B();
+      int $$2 = $$1.G_();
+      int $$3 = $$1.ao();
+
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            if (this.a($$4, $$5)) {
+               ji.b($$4, $$2, $$5, $$4, $$3, $$5).forEach($$1x -> $$0.a($$1x, dkg.a.m()));
+            }
+         }
+      }
+   }
+
+   public ean a() {
+      return this.g;
+   }
+
+   public boolean b() {
+      return !this.h.isEmpty();
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return this.h.get(($$1 & 15) * 16 + ($$0 & 15));
+   }
+
+   public static dif a(dif $$0, dzm $$1) {
+      if (!$$1.A()) {
+         return $$0;
+      } else {
+         Predicate<akt<dic>> $$2 = f::contains;
+         return ($$3, $$4, $$5, $$6) -> {
+            jr<dic> $$7 = $$0.getNoiseBiome($$3, $$4, $$5, $$6);
+            return $$7.a($$2) ? $$7 : $$1.getNoiseBiome($$3, 0, $$5);
+         };
+      }
    }
 }

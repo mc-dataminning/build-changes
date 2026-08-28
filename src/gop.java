@@ -1,58 +1,65 @@
-public class gop implements gol<due> {
-   private final gtd a;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.List;
 
-   public gop(gom.a $$0) {
-      this.a = $$0.e();
+public record gop(List<gos> a) implements gor {
+   public gop(List<gos> a) {
+      if (a.isEmpty()) {
+         throw new IllegalArgumentException("Variant list must contain at least one element");
+      } else {
+         this.a = a;
+      }
    }
 
-   public void a(due $$0, float $$1, ffv $$2, glz $$3, int $$4, int $$5) {
-      if ($$0.i() != null) {
-         int $$6 = $$0.m().c(dxo.by);
-         if ($$6 > 0) {
-            jn $$7 = $$0.c();
-            if ($$7 != null) {
-               cwq $$8 = $$0.d();
-               if (!$$8.f()) {
-                  $$2.a();
-                  $$2.a(0.0F, 0.5F, 0.0F);
-                  float[] $$9 = this.a($$7, $$6);
-                  $$2.a($$9[0], $$9[1], $$9[2]);
-                  $$2.a(a.d.rotationDegrees(75.0F));
-                  boolean $$10 = $$7 == jn.f || $$7 == jn.e;
-                  $$2.a(a.d.rotationDegrees((float)(($$10 ? 90 : 0) + 11)));
-                  $$2.b(0.5F, 0.5F, 0.5F);
-                  int $$11 = glv.a($$0.i(), $$0.m(), $$0.aA_().a($$7));
-                  this.a.a($$8, cwo.i, $$11, hej.d, $$2, $$3, $$0.i(), 0);
-                  $$2.b();
-               }
-            }
+   @Override
+   public Object a(dxq $$0) {
+      return this;
+   }
+
+   @Override
+   public void a(hij.a $$0) {
+      this.a.forEach($$1 -> $$0.a($$1.c()));
+   }
+
+   @Override
+   public hhr a(hia $$0) {
+      if (this.a.size() == 1) {
+         gos $$1 = this.a.getFirst();
+         return $$0.a($$1.c(), $$1);
+      } else {
+         brj.a<hhr> $$2 = brj.b();
+
+         for (gos $$3 : this.a) {
+            hhr $$4 = $$0.a($$3.c(), $$3);
+            $$2.a($$4, $$3.f());
          }
+
+         return new hin($$2.a());
       }
    }
 
-   private float[] a(jn $$0, int $$1) {
-      float[] $$2 = new float[]{0.5F, 0.0F, 0.5F};
-      float $$3 = (float)$$1 / 10.0F * 0.75F;
-      switch ($$0) {
-         case f:
-            $$2[0] = 0.73F + $$3;
-            break;
-         case e:
-            $$2[0] = 0.25F - $$3;
-            break;
-         case b:
-            $$2[1] = 0.25F + $$3;
-            break;
-         case a:
-            $$2[1] = -0.23F - $$3;
-            break;
-         case c:
-            $$2[2] = 0.25F - $$3;
-            break;
-         case d:
-            $$2[2] = 0.73F + $$3;
-      }
+   public static class a implements JsonDeserializer<gop> {
+      public gop a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         List<gos> $$3 = Lists.newArrayList();
+         if ($$0.isJsonArray()) {
+            JsonArray $$4 = $$0.getAsJsonArray();
+            if ($$4.isEmpty()) {
+               throw new JsonParseException("Empty variant array");
+            }
 
-      return $$2;
+            for (JsonElement $$5 : $$4) {
+               $$3.add((gos)$$2.deserialize($$5, gos.class));
+            }
+         } else {
+            $$3.add((gos)$$2.deserialize($$0, gos.class));
+         }
+
+         return new gop($$3);
+      }
    }
 }

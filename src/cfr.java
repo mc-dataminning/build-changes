@@ -1,38 +1,24 @@
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 
-public class cfr {
-   private final bvk a;
-   private final IntSet b = new IntOpenHashSet();
-   private final IntSet c = new IntOpenHashSet();
-
-   public cfr(bvk $$0) {
-      this.a = $$0;
+public class cfr extends cgb<cno> {
+   @Override
+   public Set<cfc<?>> a() {
+      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cfc.B)));
    }
 
-   public void a() {
-      this.b.clear();
-      this.c.clear();
-   }
-
-   public boolean a(bum $$0) {
-      int $$1 = $$0.ar();
-      if (this.b.contains($$1)) {
-         return true;
-      } else if (this.c.contains($$1)) {
-         return false;
-      } else {
-         bou $$2 = bot.a();
-         $$2.a("hasLineOfSight");
-         boolean $$3 = this.a.E($$0);
-         $$2.c();
-         if ($$3) {
-            this.b.add($$1);
-         } else {
-            this.c.add($$1);
-         }
-
-         return $$3;
-      }
+   protected void a(ard $$0, cno $$1) {
+      super.a($$0, $$1);
+      $$1.ea()
+         .c(cfc.g)
+         .stream()
+         .flatMap(Collection::stream)
+         .filter(bvg.e)
+         .filter($$2 -> cgi.c($$0, $$1, $$2))
+         .findFirst()
+         .ifPresentOrElse($$1x -> $$1.ea().a(cfc.B, $$1x), () -> $$1.ea().b(cfc.B));
    }
 }

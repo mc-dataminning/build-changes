@@ -1,9 +1,7 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+public record feg(fbx b, fbx c, fbx d) {
+   public static final feg a = new feg(fbx.c, new fbx(0.0, 0.0, -1.0), new fbx(0.0, 1.0, 0.0));
 
-public class feg extends fef {
-   public feg(int $$0, int $$1, boolean $$2) {
-      super($$2);
-      RenderSystem.assertOnRenderThreadOrInit();
-      this.a($$0, $$1);
+   public fbx a() {
+      return this.c.c(this.d);
    }
 }

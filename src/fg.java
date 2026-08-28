@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 public class fg implements ArgumentType<wp> {
-   private static final Collection<String> b = Arrays.asList("\"hello world\"", "\"\"", "\"{\"text\":\"hello world\"}", "[\"\"]");
+   private static final Collection<String> b = Arrays.asList("\"hello world\"", "'hello world'", "\"\"", "{text:\"hello world\"}", "[\"\"]");
    public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wp.b("argument.component.invalid", $$0));
    private final jt.a c;
 
@@ -24,12 +24,7 @@ public class fg implements ArgumentType<wp> {
    }
 
    public wp a(StringReader $$0) throws CommandSyntaxException {
-      try {
-         return fb.a(this.c, $$0, wr.a);
-      } catch (Exception var4) {
-         String $$2 = var4.getCause() != null ? var4.getCause().getMessage() : var4.getMessage();
-         throw a.createWithContext($$0, $$2);
-      }
+      return fb.a(wr.a, this.c, a, $$0);
    }
 
    public Collection<String> getExamples() {

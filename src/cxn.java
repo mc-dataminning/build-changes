@@ -1,32 +1,48 @@
 import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public enum cxn implements azv {
-   a(0, "common", n.p),
-   b(1, "uncommon", n.o),
-   c(2, "rare", n.l),
-   d(3, "epic", n.n);
+public record cxn(jr<avz> e, wp f, float g, int h) {
+   public static final Codec<cxn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               avz.b.fieldOf("sound_event").forGetter(cxn::b),
+               wr.a.fieldOf("description").forGetter(cxn::c),
+               ayi.o.fieldOf("length_in_seconds").forGetter(cxn::d),
+               ayi.a(0, 15).fieldOf("comparator_output").forGetter(cxn::e)
+            )
+            .apply($$0, cxn::new)
+   );
+   public static final yn<wa, cxn> b = yn.a(avz.d, cxn::b, wr.b, cxn::c, yl.l, cxn::d, yl.h, cxn::e, cxn::new);
+   public static final Codec<jr<cxn>> c = akr.a(mc.L);
+   public static final yn<wa, jr<cxn>> d = yl.a(mc.L, b);
+   private static final int i = 20;
 
-   public static final Codec<cxn> e = azv.b(cxn::values);
-   public static final IntFunction<cxn> f = axq.a($$0 -> $$0.h, values(), axq.a.a);
-   public static final yn<ByteBuf, cxn> g = yl.a(f, $$0 -> $$0.h);
-   private final int h;
-   private final String i;
-   private final n j;
-
-   private cxn(final int $$0, final String $$1, final n $$2) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
+   public int a() {
+      return ayz.f(this.g * 20.0F);
    }
 
-   public n a() {
-      return this.j;
+   public boolean a(long $$0) {
+      return $$0 >= (long)(this.a() + 20);
    }
 
-   @Override
-   public String c() {
-      return this.i;
+   public static Optional<jr<cxn>> a(jt.a $$0, cxh $$1) {
+      cxm $$2 = $$1.a(kv.ad);
+      return $$2 != null ? $$2.a().a($$0) : Optional.empty();
+   }
+
+   public jr<avz> b() {
+      return this.e;
+   }
+
+   public wp c() {
+      return this.f;
+   }
+
+   public float d() {
+      return this.g;
+   }
+
+   public int e() {
+      return this.h;
    }
 }

@@ -1,104 +1,76 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.google.common.collect.Maps;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class gpy implements gqa.a {
-   final flk a;
-   private double b = Double.MIN_VALUE;
-   private final int c = 12;
+public class gpy implements gpj<dwh> {
+   private final Function<drm.a, gex> a;
+   private static final Map<drm.a, aku> b = af.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(drm.b.c, aku.b("textures/entity/skeleton/skeleton.png"));
+      $$0.put(drm.b.d, aku.b("textures/entity/skeleton/wither_skeleton.png"));
+      $$0.put(drm.b.f, aku.b("textures/entity/zombie/zombie.png"));
+      $$0.put(drm.b.g, aku.b("textures/entity/creeper/creeper.png"));
+      $$0.put(drm.b.i, aku.b("textures/entity/enderdragon/dragon.png"));
+      $$0.put(drm.b.h, aku.b("textures/entity/piglin/piglin.png"));
+      $$0.put(drm.b.e, hgk.a());
+   });
+
    @Nullable
-   private gpy.a d;
-
-   public gpy(flk $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public void a(ffv $$0, glz $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)af.d();
-      if ($$5 - this.b > 3.0E9) {
-         this.b = $$5;
-         hje $$6 = this.a.V();
-         if ($$6 != null) {
-            this.d = new gpy.a($$6, $$2, $$4);
-         } else {
-            this.d = null;
-         }
-      }
-
-      if (this.d != null) {
-         Map<dfp, String> $$7 = this.d.b.getNow(null);
-         double $$8 = this.a.j.k().b().e * 0.85;
-
-         for (Entry<dfp, String> $$9 : this.d.a.entrySet()) {
-            dfp $$10 = $$9.getKey();
-            String $$11 = $$9.getValue();
-            if ($$7 != null) {
-               $$11 = $$11 + $$7.get($$10);
-            }
-
-            String[] $$12 = $$11.split("\n");
-            int $$13 = 0;
-
-            for (String $$14 : $$12) {
-               gqa.a($$0, $$1, $$14, (double)kk.a($$10.h, 8), $$8 + (double)$$13, (double)kk.a($$10.i, 8), -1, 0.15F, true, 0.0F, true);
-               $$13 -= 2;
-            }
-         }
-      }
-   }
-
-   final class a {
-      final Map<dfp, String> a;
-      final CompletableFuture<Map<dfp, String>> b;
-
-      a(final hje $$0, final double $$1, final double $$2) {
-         gga $$3 = gpy.this.a.s;
-         aku<dgj> $$4 = $$3.ai();
-         int $$5 = kk.a($$1);
-         int $$6 = kk.a($$2);
-         Builder<dfp, String> $$7 = ImmutableMap.builder();
-         gfw $$8 = $$3.h();
-
-         for (int $$9 = $$5 - 12; $$9 <= $$5 + 12; $$9++) {
-            for (int $$10 = $$6 - 12; $$10 <= $$6 + 12; $$10++) {
-               dfp $$11 = new dfp($$9, $$10);
-               String $$12 = "";
-               dzd $$13 = $$8.a($$9, $$10, false);
-               $$12 = $$12 + "Client: ";
-               if ($$13 == null) {
-                  $$12 = $$12 + "0n/a\n";
-               } else {
-                  $$12 = $$12 + ($$13.E() ? " E" : "");
-                  $$12 = $$12 + "\n";
-               }
-
-               $$7.put($$11, $$12);
-            }
-         }
-
-         this.a = $$7.build();
-         this.b = $$0.a(() -> {
-            ard $$4x = $$0.a($$4);
-            if ($$4x == null) {
-               return ImmutableMap.of();
-            } else {
-               Builder<dfp, String> $$5x = ImmutableMap.builder();
-               ara $$6x = $$4x.m();
-
-               for (int $$7x = $$5 - 12; $$7x <= $$5 + 12; $$7x++) {
-                  for (int $$8x = $$6 - 12; $$8x <= $$6 + 12; $$8x++) {
-                     dfp $$9x = new dfp($$7x, $$8x);
-                     $$5x.put($$9x, "Server: " + $$6x.a($$9x));
-                  }
-               }
-
-               return $$5x.build();
-            }
+   public static gex a(gfy $$0, drm.a $$1) {
+      if ($$1 instanceof drm.b $$2) {
+         return (gex)(switch ($$2) {
+            case c -> new gew($$0.a(ggb.cP));
+            case d -> new gew($$0.a(ggb.dH));
+            case e -> new gew($$0.a(ggb.cj));
+            case f -> new gew($$0.a(ggb.dT));
+            case g -> new gew($$0.a(ggb.am));
+            case i -> new gfv($$0.a(ggb.ax));
+            case h -> new geb($$0.a(ggb.bZ));
          });
+      } else {
+         return null;
       }
+   }
+
+   public gpy(gpk.a $$0) {
+      gfy $$1 = $$0.f();
+      this.a = af.b($$1x -> a($$1, $$1x));
+   }
+
+   public void a(dwh $$0, float $$1, fgr $$2, gmx $$3, int $$4, int $$5) {
+      float $$6 = $$0.a($$1);
+      dxq $$7 = $$0.m();
+      boolean $$8 = $$7.b() instanceof dtl;
+      jn $$9 = $$8 ? $$7.c(dtl.d) : null;
+      int $$10 = $$8 ? dyw.a($$9.g()) : $$7.c(drm.e);
+      float $$11 = dyw.b($$10);
+      drm.a $$12 = ((dja)$$7.b()).b();
+      gex $$13 = this.a.apply($$12);
+      gnh $$14 = a($$12, $$0.c());
+      a($$9, $$11, $$6, $$2, $$3, $$4, $$13, $$14);
+   }
+
+   public static void a(@Nullable jn $$0, float $$1, float $$2, fgr $$3, gmx $$4, int $$5, gex $$6, gnh $$7) {
+      $$3.a();
+      if ($$0 == null) {
+         $$3.a(0.5F, 0.0F, 0.5F);
+      } else {
+         float $$8 = 0.25F;
+         $$3.a(0.5F - (float)$$0.j() * 0.25F, 0.25F, 0.5F - (float)$$0.l() * 0.25F);
+      }
+
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      fgv $$9 = $$4.getBuffer($$7);
+      $$6.a($$2, $$1, 0.0F);
+      $$6.a($$3, $$9, $$5, hfh.d);
+      $$3.b();
+   }
+
+   public static gnh a(drm.a $$0, @Nullable dae $$1) {
+      return a($$0, $$1, null);
+   }
+
+   public static gnh a(drm.a $$0, @Nullable dae $$1, @Nullable aku $$2) {
+      return $$0 == drm.b.e && $$1 != null ? gnh.j($$2 != null ? $$2 : fmg.Q().an().b($$1.f()).a()) : gnh.h($$2 != null ? $$2 : b.get($$0));
    }
 }

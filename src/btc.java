@@ -1,125 +1,37 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
 public class btc {
-   private final jr<bte> a;
-   @Nullable
-   private final bum b;
-   @Nullable
-   private final bum c;
-   @Nullable
-   private final fbb d;
+   public static final Codec<btc> a = RecordCodecBuilder.create($$0 -> $$0.group(eep.b.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, btc::new));
+   private final eep b;
 
-   @Override
-   public String toString() {
-      return "DamageSource (" + this.k().a() + ")";
+   public btc(eep $$0) {
+      this.b = $$0;
    }
 
-   public float a() {
-      return this.k().c();
+   public btc(long $$0, aku $$1) {
+      this(a($$0, Optional.of($$1)));
    }
 
-   public boolean b() {
-      return this.b == this.c;
+   public btc(long $$0, Optional<aku> $$1) {
+      this(a($$0, $$1));
    }
 
-   private btc(jr<bte> $$0, @Nullable bum $$1, @Nullable bum $$2, @Nullable fbb $$3) {
-      this.a = $$0;
-      this.b = $$2;
-      this.c = $$1;
-      this.d = $$3;
+   private static eep a(long $$0, Optional<aku> $$1) {
+      eed.a $$2 = eed.b($$0);
+      if ($$1.isPresent()) {
+         $$2 = $$2.a(a($$1.get()));
+      }
+
+      return new eep($$2.a());
    }
 
-   public btc(jr<bte> $$0, @Nullable bum $$1, @Nullable bum $$2) {
-      this($$0, $$1, $$2, null);
+   public static eed.a a(aku $$0) {
+      return eed.a($$0.toString());
    }
 
-   public btc(jr<bte> $$0, fbb $$1) {
-      this($$0, null, null, $$1);
-   }
-
-   public btc(jr<bte> $$0, @Nullable bum $$1) {
-      this($$0, $$1, $$1);
-   }
-
-   public btc(jr<bte> $$0) {
-      this($$0, null, null, null);
-   }
-
-   @Nullable
-   public bum c() {
-      return this.c;
-   }
-
-   @Nullable
-   public bum d() {
+   public azh a() {
       return this.b;
-   }
-
-   @Nullable
-   public cwq e() {
-      return this.c != null ? this.c.dZ() : null;
-   }
-
-   public wp a(bvi $$0) {
-      String $$1 = "death.attack." + this.k().a();
-      if (this.b == null && this.c == null) {
-         bvi $$5 = $$0.eR();
-         String $$6 = $$1 + ".player";
-         return $$5 != null ? wp.a($$6, $$0.p_(), $$5.p_()) : wp.a($$1, $$0.p_());
-      } else {
-         wp $$2 = this.b == null ? this.c.p_() : this.b.p_();
-         cwq $$4 = this.b instanceof bvi $$3 ? $$3.eZ() : cwq.j;
-         return !$$4.f() && $$4.b(kv.g) ? wp.a($$1 + ".item", $$0.p_(), $$2, $$4.K()) : wp.a($$1, $$0.p_(), $$2);
-      }
-   }
-
-   public String f() {
-      return this.k().a();
-   }
-
-   public boolean g() {
-      return switch (this.k().b()) {
-         case a -> false;
-         case b -> this.b instanceof bvi && !(this.b instanceof coy);
-         case c -> true;
-      };
-   }
-
-   public boolean h() {
-      if (this.d() instanceof coy $$0 && $$0.gj().d) {
-         return true;
-      }
-
-      return false;
-   }
-
-   @Nullable
-   public fbb i() {
-      if (this.d != null) {
-         return this.d;
-      } else {
-         return this.c != null ? this.c.dt() : null;
-      }
-   }
-
-   @Nullable
-   public fbb j() {
-      return this.d;
-   }
-
-   public boolean a(axf<bte> $$0) {
-      return this.a.a($$0);
-   }
-
-   public boolean a(aku<bte> $$0) {
-      return this.a.a($$0);
-   }
-
-   public bte k() {
-      return this.a.a();
-   }
-
-   public jr<bte> l() {
-      return this.a;
    }
 }

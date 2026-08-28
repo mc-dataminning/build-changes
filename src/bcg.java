@@ -1,26 +1,32 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 import java.util.Optional;
 
 public class bcg extends DataFix {
-   public bcg(Schema $$0, boolean $$1) {
-      super($$0, $$1);
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.get("Name").asString().result();
-      if ($$1.equals(Optional.of("minecraft:cauldron"))) {
-         Dynamic<?> $$2 = $$0.get("Properties").orElseEmptyMap();
-         return $$2.get("level").asString("0").equals("0") ? $$0.remove("Properties") : $$0.set("Name", $$0.createString("minecraft:water_cauldron"));
-      } else {
-         return $$0;
-      }
+   public bcg(Schema $$0) {
+      super($$0, false);
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("cauldron_rename_fix", this.getInputSchema().getType(bhy.u), $$0 -> $$0.update(DSL.remainderFinder(), bcg::a));
+      return this.fixTypeEverywhereTyped("CarvingStepRemoveFix", this.getInputSchema().getType(bic.c), bcg::a);
+   }
+
+   private static Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), $$0x -> {
+         Dynamic<?> $$1 = $$0x;
+         Optional<? extends Dynamic<?>> $$2 = $$0x.get("CarvingMasks").result();
+         if ($$2.isPresent()) {
+            Optional<? extends Dynamic<?>> $$3 = $$2.get().get("AIR").result();
+            if ($$3.isPresent()) {
+               $$1 = $$0x.set("carving_mask", $$3.get());
+            }
+         }
+
+         return $$1.remove("CarvingMasks");
+      });
    }
 }

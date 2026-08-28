@@ -1,47 +1,41 @@
-import java.util.List;
-import java.util.Locale;
+public class ghh {
+   private final glv a;
+   private final ggy b;
+   private final gmt c;
+   private ghh.a d = ghh.a.a;
 
-public enum ghh {
-   a("i_want_to_report_them"),
-   b("hate_speech"),
-   c("harassment_or_bullying"),
-   d("self_harm_or_suicide"),
-   e("imminent_harm"),
-   f("defamation_impersonation_false_information"),
-   g("alcohol_tobacco_drugs"),
-   h("child_sexual_exploitation_or_abuse"),
-   i("terrorism_or_violent_extremism"),
-   j("non_consensual_intimate_imagery"),
-   k("sexually_inappropriate");
-
-   private final String l;
-   private final wp m;
-   private final wp n;
-
-   private ghh(final String $$0) {
-      this.l = $$0.toUpperCase(Locale.ROOT);
-      String $$1 = "gui.abuseReport.reason." + $$0;
-      this.m = wp.c($$1);
-      this.n = wp.c($$1 + ".description");
+   public ghh(glv $$0, ggy $$1, gmt $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public String a() {
-      return this.l;
+   public void a() {
+      switch (this.d) {
+         case b:
+            ji $$0 = this.a.du();
+            boolean $$1 = this.b.e($$0.v());
+            if ($$1 || this.c.a($$0) || this.a.U_() || !this.a.bJ()) {
+               this.d = ghh.a.c;
+            }
+         case a:
+         case c:
+      }
    }
 
-   public wp b() {
-      return this.m;
+   public boolean b() {
+      return this.d == ghh.a.c;
    }
 
-   public wp c() {
-      return this.n;
+   public void c() {
+      if (this.d == ghh.a.a) {
+         this.d = ghh.a.b;
+      }
    }
 
-   public static List<ghh> a(ghi $$0) {
-      return switch ($$0) {
-         case a -> List.of(k);
-         case b -> List.of(e, f);
-         default -> List.of();
-      };
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

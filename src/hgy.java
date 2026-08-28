@@ -1,21 +1,31 @@
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
+import com.google.common.collect.Lists;
+import com.ibm.icu.lang.UCharacter;
+import com.ibm.icu.text.ArabicShaping;
+import com.ibm.icu.text.Bidi;
+import com.ibm.icu.text.BidiRun;
+import java.util.List;
 
-public class hgy extends aut<hgz> {
-   public static final hgz a = new hgz(Map.of());
-   private static final ako b = ako.a("equipment");
-   private Map<aku<det>, hgz> c = Map.of();
+public class hgy {
+   public static ayl a(wu $$0, boolean $$1) {
+      xn $$2 = xn.a($$0, UCharacter::getMirror, hgy::a);
+      Bidi $$3 = new Bidi($$2.a(), $$1 ? 127 : 126);
+      $$3.setReorderingMode(0);
+      List<ayl> $$4 = Lists.newArrayList();
+      int $$5 = $$3.countRuns();
 
-   public hgy() {
-      super(hgz.a, b);
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         BidiRun $$7 = $$3.getVisualRun($$6);
+         $$4.addAll($$2.a($$7.getStart(), $$7.getLength(), $$7.isOddRun()));
+      }
+
+      return ayl.composite($$4);
    }
 
-   protected void a(Map<akv, hgz> $$0, aup $$1, bou $$2) {
-      this.c = $$0.entrySet().stream().collect(Collectors.toUnmodifiableMap($$0x -> aku.a(deu.a, (akv)$$0x.getKey()), Entry::getValue));
-   }
-
-   public hgz a(aku<det> $$0) {
-      return this.c.getOrDefault($$0, a);
+   private static String a(String $$0) {
+      try {
+         return new ArabicShaping(8).shape($$0);
+      } catch (Exception var2) {
+         return $$0;
+      }
    }
 }

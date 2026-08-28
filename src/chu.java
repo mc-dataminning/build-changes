@@ -1,139 +1,149 @@
-import java.util.function.IntFunction;
 import javax.annotation.Nullable;
 
-public class chu extends cgx implements bwi<chu.a> {
-   private static final String a = "type";
-   private static final ajy<Integer> b = akc.a(chu.class, aka.b);
+public class chu extends chp {
+   private static final bvd bN = bvi.z.n().a(0.5F).b(0.2975F);
+   public float bF;
+   public float bG;
+   public float bH;
+   public float bJ;
+   public float bK = 1.0F;
+   private float bO = 1.0F;
+   public int bL = this.ae.a(6000) + 6000;
+   public boolean bM;
 
-   public chu(but<? extends chu> $$0, dgj $$1) {
+   public chu(bvi<? extends chu> $$0, dgz $$1) {
       super($$0, $$1);
-      this.m_();
+      this.a(eun.j, 0.0F);
    }
 
    @Override
-   public int gt() {
-      return 5;
+   protected void D() {
+      this.bC.a(0, new ccq(this));
+      this.bC.a(1, new cdp(this, 1.4));
+      this.bC.a(2, new cci(this, 1.0));
+      this.bC.a(3, new cee(this, 1.0, $$0 -> $$0.a(awy.an), false));
+      this.bC.a(4, new ccv(this, 1.1));
+      this.bC.a(5, new cej(this, 1.0));
+      this.bC.a(6, new cde(this, cpr.class, 6.0F));
+      this.bC.a(7, new cdr(this));
    }
 
    @Override
-   public cwq W_() {
-      return new cwq(cwu.rn);
+   public bvd e(bwk $$0) {
+      return this.n_() ? bN : super.e($$0);
+   }
+
+   public static bxf.a q() {
+      return chp.gx().a(bxg.s, 4.0).a(bxg.v, 0.25);
+   }
+
+   @Override
+   public void k_() {
+      super.k_();
+      this.bJ = this.bF;
+      this.bH = this.bG;
+      this.bG = this.bG + (this.aJ() ? -1.0F : 4.0F) * 0.3F;
+      this.bG = ayz.a(this.bG, 0.0F, 1.0F);
+      if (!this.aJ() && this.bK < 1.0F) {
+         this.bK = 1.0F;
+      }
+
+      this.bK *= 0.9F;
+      fbx $$0 = this.dx();
+      if (!this.aJ() && $$0.e < 0.0) {
+         this.i($$0.d(1.0, 0.6, 1.0));
+      }
+
+      this.bF = this.bF + this.bK * 2.0F;
+      if (this.dU() instanceof ard $$1 && this.bJ() && !this.n_() && !this.t() && --this.bL <= 0) {
+         if (this.a($$1, ewk.aI, this::a)) {
+            this.a(awa.eV, 1.0F, (this.ae.i() - this.ae.i()) * 0.2F + 1.0F);
+            this.a(ecp.t);
+         }
+
+         this.bL = this.ae.a(6000) + 6000;
+      }
+   }
+
+   @Override
+   protected boolean ba() {
+      return this.Y > this.bO;
+   }
+
+   @Override
+   protected void aZ() {
+      this.bO = this.Y + this.bG / 2.0F;
    }
 
    @Override
    protected avz u() {
-      return awa.wf;
+      return awa.eT;
    }
 
    @Override
-   protected avz o_() {
-      return awa.wg;
+   protected avz e(btp $$0) {
+      return awa.eW;
    }
 
    @Override
-   protected avz e(btc $$0) {
-      return awa.wi;
+   protected avz l_() {
+      return awa.eU;
    }
 
    @Override
-   protected avz gs() {
-      return awa.wh;
+   protected void b(ji $$0, dxq $$1) {
+      this.a(awa.eX, 0.15F, 1.0F);
+   }
+
+   @Nullable
+   public chu b(ard $$0, buq $$1) {
+      return bvi.z.a($$0, bvh.e);
    }
 
    @Override
-   protected void a(akc.a $$0) {
+   public boolean j(cxh $$0) {
+      return $$0.a(awy.an);
+   }
+
+   @Override
+   protected int e(ard $$0) {
+      return this.t() ? 10 : super.e($$0);
+   }
+
+   @Override
+   public void a(tq $$0) {
       super.a($$0);
-      $$0.a(b, chu.a.b.a());
-   }
-
-   @Override
-   public void a(ajy<?> $$0) {
-      super.a($$0);
-      if (b.equals($$0)) {
-         this.m_();
+      this.bM = $$0.q("IsChickenJockey");
+      if ($$0.e("EggLayTime")) {
+         this.bL = $$0.h("EggLayTime");
       }
    }
 
    @Override
    public void b(tq $$0) {
       super.b($$0);
-      $$0.a("type", this.gA().c());
+      $$0.a("IsChickenJockey", this.bM);
+      $$0.a("EggLayTime", this.bL);
    }
 
    @Override
-   public void a(tq $$0) {
-      super.a($$0);
-      this.a(chu.a.a($$0.l("type")));
+   public boolean h(double $$0) {
+      return this.t();
    }
 
    @Override
-   public void i(cwq $$0) {
-      chb.a(this, $$0);
-      cyz.a(kv.X, $$0, $$0x -> $$0x.a("type", this.gA().c()));
-   }
-
-   @Override
-   public void h(tq $$0) {
-      chb.a(this, $$0);
-      this.a(chu.a.a($$0.l("type")));
-   }
-
-   public void a(chu.a $$0) {
-      this.al.a(b, $$0.g);
-   }
-
-   public chu.a gA() {
-      return chu.a.e.apply(this.al.a(b));
-   }
-
-   @Nullable
-   @Override
-   public bwb a(dha $$0, bsj $$1, bus $$2, @Nullable bwb $$3) {
-      bqt.a<chu.a> $$4 = bqt.a();
-      $$4.a(chu.a.a, 30);
-      $$4.a(chu.a.b, 50);
-      $$4.a(chu.a.c, 15);
-      $$4.a().a(this.ae).ifPresent(this::a);
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   public float gB() {
-      return this.gA().h;
-   }
-
-   @Override
-   protected bup e(bvu $$0) {
-      return super.e($$0).a(this.gB());
-   }
-
-   public static enum a implements azv {
-      a("small", 0, 0.5F),
-      b("medium", 1, 1.0F),
-      c("large", 2, 1.5F);
-
-      public static final azv.a<chu.a> d = azv.a(chu.a::values);
-      static final IntFunction<chu.a> e = axq.a(chu.a::a, values(), axq.a.c);
-      private final String f;
-      final int g;
-      final float h;
-
-      private a(final String $$0, final int $$1, final float $$2) {
-         this.f = $$0;
-         this.g = $$1;
-         this.h = $$2;
+   protected void a(bva $$0, bva.a $$1) {
+      super.a($$0, $$1);
+      if ($$0 instanceof bvy) {
+         ((bvy)$$0).aV = this.aV;
       }
+   }
 
-      @Override
-      public String c() {
-         return this.f;
-      }
+   public boolean t() {
+      return this.bM;
+   }
 
-      int a() {
-         return this.g;
-      }
-
-      static chu.a a(String $$0) {
-         return d.a($$0, b);
-      }
+   public void w(boolean $$0) {
+      this.bM = $$0;
    }
 }

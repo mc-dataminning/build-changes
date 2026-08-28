@@ -1,36 +1,28 @@
-import javax.annotation.Nullable;
+public class btl {
+   public static final float a = 20.0F;
+   public static final float b = 25.0F;
+   public static final float c = 2.0F;
+   public static final float d = 0.2F;
+   private static final int e = 4;
 
-class btl extends bto {
-   private final boolean c;
-
-   public btl(btq $$0, int $$1, boolean $$2) {
-      super($$0, $$1);
-      this.c = $$2;
-   }
-
-   @Override
-   public boolean a(ard $$0, bvi $$1, int $$2) {
-      if (this.c == $$1.eC()) {
-         $$1.c((float)Math.max(4 << $$2, 0));
+   public static float a(bvy $$0, float $$1, btp $$2, float $$3, float $$4) {
+      float $$5 = 2.0F + $$4 / 4.0F;
+      float $$6 = ayz.a($$3 - $$1 / $$5, $$3 * 0.2F, 20.0F);
+      float $$7 = $$6 / 25.0F;
+      cxh $$8 = $$2.e();
+      float $$10;
+      if ($$8 != null && $$0.dU() instanceof ard $$9) {
+         $$10 = ayz.a(ddt.c($$9, $$8, $$0, $$2, $$7), 0.0F, 1.0F);
       } else {
-         $$1.a($$0, $$1.dW().q(), (float)(6 << $$2));
+         $$10 = $$7;
       }
 
-      return true;
+      float $$12 = 1.0F - $$10;
+      return $$1 * $$12;
    }
 
-   @Override
-   public void a(ard $$0, @Nullable bum $$1, @Nullable bum $$2, bvi $$3, int $$4, double $$5) {
-      if (this.c == $$3.eC()) {
-         int $$6 = (int)($$5 * (double)(4 << $$4) + 0.5);
-         $$3.c((float)$$6);
-      } else {
-         int $$7 = (int)($$5 * (double)(6 << $$4) + 0.5);
-         if ($$1 == null) {
-            $$3.a($$0, $$3.dW().q(), (float)$$7);
-         } else {
-            $$3.a($$0, $$3.dW().c($$1, $$2), (float)$$7);
-         }
-      }
+   public static float a(float $$0, float $$1) {
+      float $$2 = ayz.a($$1, 0.0F, 20.0F);
+      return $$0 * (1.0F - $$2 / 25.0F);
    }
 }

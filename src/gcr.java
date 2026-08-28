@@ -1,63 +1,87 @@
-public class gcr extends gcc<gzf> {
-   private final gfe a;
-   private final gfe b;
-   private final gfe c;
-   private final gfe d;
-   private final gfe e;
+import java.util.List;
 
-   public gcr(gfe $$0) {
+public class gcr extends gda<gzb> {
+   public static final List<ggc> a = List.of();
+   private final ggc b;
+   private final List<ggc> c;
+
+   public gcr(ggc $$0) {
       super($$0);
-      this.a = $$0.b("head");
-      this.b = $$0.b("right_arm");
-      this.c = $$0.b("left_arm");
-      this.d = $$0.b("right_leg");
-      this.e = $$0.b("left_leg");
+      ggc $$1 = $$0.b("root");
+      ggc $$2 = $$1.b("upper_body");
+      this.b = $$2.b("head");
+      this.c = List.of(this.b);
    }
 
-   public static gfk a() {
-      gfm $$0 = new gfm();
-      gfo $$1 = $$0.a();
-      $$1.a("head", gfj.c().a(0, 0).a(-4.0F, -12.0F, -5.5F, 8.0F, 10.0F, 8.0F).a(24, 0).a(-1.0F, -5.0F, -7.5F, 2.0F, 4.0F, 2.0F), gfg.a(0.0F, -7.0F, -2.0F));
-      $$1.a(
-         "body",
-         gfj.c().a(0, 40).a(-9.0F, -2.0F, -6.0F, 18.0F, 12.0F, 11.0F).a(0, 70).a(-4.5F, 10.0F, -3.0F, 9.0F, 5.0F, 6.0F, new gfi(0.5F)),
-         gfg.a(0.0F, -7.0F, 0.0F)
+   private static ggk b() {
+      ggk $$0 = new ggk();
+      ggm $$1 = $$0.a();
+      ggm $$2 = $$1.a("root", ggh.c(), gge.a(0.0F, 24.0F, 0.0F));
+      ggm $$3 = $$2.a("upper_body", ggh.c(), gge.a(-1.0F, -19.0F, 0.0F));
+      $$3.a(
+         "head",
+         ggh.c()
+            .a(0, 0)
+            .a(-3.0F, -10.0F, -3.0F, 6.0F, 10.0F, 6.0F)
+            .a(28, 31)
+            .a(-3.0F, -13.0F, -3.0F, 6.0F, 3.0F, 6.0F)
+            .a(12, 40)
+            .a(3.0F, -13.0F, 0.0F, 9.0F, 14.0F, 0.0F)
+            .a(34, 12)
+            .a(-12.0F, -14.0F, 0.0F, 9.0F, 14.0F, 0.0F),
+         gge.a(-3.0F, -11.0F, 0.0F)
       );
-      $$1.a("right_arm", gfj.c().a(60, 21).a(-13.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), gfg.a(0.0F, -7.0F, 0.0F));
-      $$1.a("left_arm", gfj.c().a(60, 58).a(9.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), gfg.a(0.0F, -7.0F, 0.0F));
-      $$1.a("right_leg", gfj.c().a(37, 0).a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), gfg.a(-4.0F, 11.0F, 0.0F));
-      $$1.a("left_leg", gfj.c().a(60, 0).a().a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), gfg.a(5.0F, 11.0F, 0.0F));
-      return gfk.a($$0, 128, 128);
+      $$3.a("body", ggh.c().a(0, 16).a(0.0F, -3.0F, -3.0F, 6.0F, 13.0F, 5.0F).a(24, 0).a(-6.0F, -4.0F, -3.0F, 6.0F, 7.0F, 5.0F), gge.a(0.0F, -7.0F, 1.0F));
+      $$3.a(
+         "right_arm", ggh.c().a(22, 13).a(-2.0F, -1.5F, -1.5F, 3.0F, 21.0F, 3.0F).a(46, 0).a(-2.0F, 19.5F, -1.5F, 3.0F, 4.0F, 3.0F), gge.a(-7.0F, -9.5F, 1.5F)
+      );
+      $$3.a(
+         "left_arm",
+         ggh.c()
+            .a(30, 40)
+            .a(0.0F, -1.0F, -1.5F, 3.0F, 16.0F, 3.0F)
+            .a(52, 12)
+            .a(0.0F, -5.0F, -1.5F, 3.0F, 4.0F, 3.0F)
+            .a(52, 19)
+            .a(0.0F, 15.0F, -1.5F, 3.0F, 4.0F, 3.0F),
+         gge.a(6.0F, -9.0F, 0.5F)
+      );
+      $$2.a(
+         "left_leg", ggh.c().a(42, 40).a(-1.5F, 0.0F, -1.5F, 3.0F, 16.0F, 3.0F).a(45, 55).a(-1.5F, 15.7F, -4.5F, 5.0F, 0.0F, 9.0F), gge.a(1.5F, -16.0F, 0.5F)
+      );
+      $$2.a(
+         "right_leg",
+         ggh.c()
+            .a(0, 34)
+            .a(-3.0F, -1.5F, -1.5F, 3.0F, 19.0F, 3.0F)
+            .a(45, 46)
+            .a(-5.0F, 17.2F, -4.5F, 5.0F, 0.0F, 9.0F)
+            .a(12, 34)
+            .a(-3.0F, -4.5F, -1.5F, 3.0F, 3.0F, 3.0F),
+         gge.a(-1.0F, -17.5F, 0.5F)
+      );
+      return $$0;
    }
 
-   public void a(gzf $$0) {
+   public static ggi a() {
+      ggk $$0 = b();
+      return ggi.a($$0, 64, 64);
+   }
+
+   public void a(gzb $$0) {
       super.a($$0);
-      float $$1 = $$0.a;
-      float $$2 = $$0.ae;
-      float $$3 = $$0.ad;
-      if ($$1 > 0.0F) {
-         this.b.e = -2.0F + 1.5F * ayz.e($$1, 10.0F);
-         this.c.e = -2.0F + 1.5F * ayz.e($$1, 10.0F);
-      } else {
-         int $$4 = $$0.b;
-         if ($$4 > 0) {
-            this.b.e = -0.8F + 0.025F * ayz.e((float)$$4, 70.0F);
-            this.c.e = 0.0F;
-         } else {
-            this.b.e = (-0.2F + 1.5F * ayz.e($$3, 13.0F)) * $$2;
-            this.c.e = (-0.2F - 1.5F * ayz.e($$3, 13.0F)) * $$2;
-         }
+      this.b.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.b.f = $$0.aa * (float) (Math.PI / 180.0);
+      if ($$0.e) {
+         this.a(fnb.a, $$0.ad, $$0.ae, 1.0F, 1.0F);
       }
 
-      this.a.f = $$0.aa * (float) (Math.PI / 180.0);
-      this.a.e = $$0.ab * (float) (Math.PI / 180.0);
-      this.d.e = -1.5F * ayz.e($$3, 13.0F) * $$2;
-      this.e.e = 1.5F * ayz.e($$3, 13.0F) * $$2;
-      this.d.f = 0.0F;
-      this.e.f = 0.0F;
+      this.a($$0.b, fnb.b, $$0.u);
+      this.a($$0.a, fnb.c, $$0.u);
+      this.a($$0.c, fnb.d, $$0.u);
    }
 
-   public gfe b() {
-      return this.b;
+   public List<ggc> b(gzb $$0) {
+      return !$$0.d ? a : this.c;
    }
 }

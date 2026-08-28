@@ -1,80 +1,66 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.List;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class goz extends gof {
-   private static final float a = 0.6666667F;
-   private static final fbb b = new fbb(0.0, 0.33333334F, 0.046666667F);
-   private final Map<dyk, goz.a> c;
+public class goz {
+   private final gov a;
+   private final gop b;
 
-   public goz(gom.a $$0) {
-      super($$0);
-      this.c = dyk.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new goz.a(a($$0.f(), $$1, true), a($$0.f(), $$1, false))));
+   public goz(gov $$0, gop $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   protected gcx a(dwy $$0, dyk $$1) {
-      goz.a $$2 = this.c.get($$1);
-      return $$0.b() instanceof drn ? $$2.a() : $$2.b();
+   public gop a() {
+      return this.b;
    }
 
-   @Override
-   protected hha a(dyk $$0) {
-      return gmu.a($$0);
+   public Predicate<dxq> a(dxr<dke, dxq> $$0) {
+      return this.a.getPredicate($$0);
    }
 
-   @Override
-   protected float a() {
-      return 0.6666667F;
-   }
-
-   @Override
-   protected float b() {
-      return 0.6666667F;
-   }
-
-   private static void a(ffv $$0, float $$1) {
-      $$0.a(0.5F, 0.5F, 0.5F);
-      $$0.a(a.d.rotationDegrees($$1));
-   }
-
-   @Override
-   protected void a(ffv $$0, float $$1, dwy $$2) {
-      a($$0, $$1);
-      if (!($$2.b() instanceof drn)) {
-         $$0.a(0.0F, -0.3125F, -0.4375F);
-      }
-   }
-
-   @Override
-   protected fbb c() {
-      return b;
-   }
-
-   public static void a(ffv $$0, glz $$1, int $$2, int $$3, gcx $$4, hha $$5) {
-      $$0.a();
-      a($$0, 0.0F);
-      $$0.b(0.6666667F, -0.6666667F, -0.6666667F);
-      ffz $$6 = $$5.a($$1, $$4::a);
-      $$4.a($$0, $$6, $$2, $$3);
-      $$0.b();
-   }
-
-   public static gcx a(gfa $$0, dyk $$1, boolean $$2) {
-      gfc $$3 = $$2 ? gfd.a($$1) : gfd.b($$1);
-      return new gcx.a($$0.a($$3), gmj::g);
-   }
-
-   public static gfk a(boolean $$0) {
-      gfm $$1 = new gfm();
-      gfo $$2 = $$1.a();
-      $$2.a("sign", gfj.c().a(0, 0).a(-12.0F, -14.0F, -1.0F, 24.0F, 12.0F, 2.0F), gfg.a);
-      if ($$0) {
-         $$2.a("stick", gfj.c().a(0, 14).a(-1.0F, -2.0F, -1.0F, 2.0F, 14.0F, 2.0F), gfg.a);
+   public static class a implements JsonDeserializer<goz> {
+      public goz a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         return new goz(this.b($$3), (gop)$$2.deserialize($$3.get("apply"), gop.class));
       }
 
-      return gfk.a($$1, 64, 32);
-   }
+      private gov b(JsonObject $$0) {
+         return $$0.has("when") ? a(ayp.u($$0, "when")) : gov.b;
+      }
 
-   static record a(gcx a, gcx b) {
+      @VisibleForTesting
+      static gov a(JsonObject $$0) {
+         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
+         if ($$1.isEmpty()) {
+            throw new JsonParseException("No elements found in selector");
+         } else if ($$1.size() == 1) {
+            if ($$0.has("OR")) {
+               List<gov> $$2 = Streams.stream(ayp.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new goy($$2);
+            } else if ($$0.has("AND")) {
+               List<gov> $$3 = Streams.stream(ayp.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new gou($$3);
+            } else {
+               return a($$1.iterator().next());
+            }
+         } else {
+            return new gou($$1.stream().map(goz.a::a).collect(Collectors.toList()));
+         }
+      }
+
+      private static gov a(Entry<String, JsonElement> $$0) {
+         return new gow($$0.getKey(), $$0.getValue().getAsString());
+      }
    }
 }

@@ -1,28 +1,37 @@
-public record ahg(fbb b, float c, float d, boolean e) implements yw<agg> {
-   public static final yn<vl, ahg> a = yn.a(fbb.b, ahg::b, yl.l, ahg::e, yl.l, ahg::f, yl.b, ahg::g, ahg::new);
+public class ahg implements yw<agf> {
+   public static final yn<vl, ahg> a = yw.a(ahg::a, ahg::new);
+   private final boolean b;
+   private final boolean c;
 
-   public static ahg a(bum $$0) {
-      return new ahg(new fbb($$0.R_(), $$0.S_(), $$0.g_()), $$0.dL(), $$0.dN(), $$0.aJ());
+   public ahg(boolean $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   private ahg(vl $$0) {
+      this.b = $$0.readBoolean();
+      this.c = $$0.readBoolean();
+   }
+
+   private void a(vl $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+   }
+
+   public void a(agf $$0) {
+      $$0.a(this);
    }
 
    @Override
    public yy<ahg> a() {
-      return age.bM;
+      return agd.bM;
    }
 
-   public void a(agg $$0) {
-      $$0.a(this);
+   public boolean b() {
+      return this.b;
    }
 
-   public float e() {
+   public boolean e() {
       return this.c;
-   }
-
-   public float f() {
-      return this.d;
-   }
-
-   public boolean g() {
-      return this.e;
    }
 }

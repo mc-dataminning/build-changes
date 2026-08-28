@@ -1,44 +1,32 @@
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public class cyd extends cuw {
-   protected final djn a;
-   private final jn b;
+public enum cyd implements azv {
+   a(0, "common", n.p),
+   b(1, "uncommon", n.o),
+   c(2, "rare", n.l),
+   d(3, "epic", n.n);
 
-   public cyd(djn $$0, djn $$1, jn $$2, cwm.a $$3) {
-      super($$0, $$3);
-      this.a = $$1;
-      this.b = $$2;
+   public static final Codec<cyd> e = azv.b(cyd::values);
+   public static final IntFunction<cyd> f = axq.a($$0 -> $$0.h, values(), axq.a.a);
+   public static final yn<ByteBuf, cyd> g = yl.a(f, $$0 -> $$0.h);
+   private final int h;
+   private final String i;
+   private final n j;
+
+   private cyd(final int $$0, final String $$1, final n $$2) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
    }
 
-   protected boolean a(dgm $$0, dwy $$1, ji $$2) {
-      return $$1.a($$0, $$2);
-   }
-
-   @Nullable
-   @Override
-   protected dwy c(dah $$0) {
-      dwy $$1 = this.a.a($$0);
-      dwy $$2 = null;
-      dgm $$3 = $$0.q();
-      ji $$4 = $$0.a();
-
-      for (jn $$5 : $$0.f()) {
-         if ($$5 != this.b.g()) {
-            dwy $$6 = $$5 == this.b ? this.d().a($$0) : $$1;
-            if ($$6 != null && this.a($$3, $$6, $$4)) {
-               $$2 = $$6;
-               break;
-            }
-         }
-      }
-
-      return $$2 != null && $$3.a($$2, $$4, fbg.a()) ? $$2 : null;
+   public n a() {
+      return this.j;
    }
 
    @Override
-   public void a(Map<djn, cwm> $$0, cwm $$1) {
-      super.a($$0, $$1);
-      $$0.put(this.a, $$1);
+   public String c() {
+      return this.i;
    }
 }

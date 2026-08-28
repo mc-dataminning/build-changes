@@ -1,44 +1,28 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
 
 public class ank {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wp.c("commands.kick.owner.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wp.c("commands.kick.singleplayer.failed"));
-
    public static void a(CommandDispatcher<ex> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("kick").requires($$0x -> $$0x.c(3)))
-            .then(
-               ((RequiredArgumentBuilder)ey.a("targets", fk.d())
-                     .executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), wp.c("multiplayer.disconnect.kicked"))))
-                  .then(ey.a("reason", fo.a()).executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), fo.a($$0x, "reason"))))
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("kill").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((ex)$$0x.getSource(), ImmutableList.of(((ex)$$0x.getSource()).g()))))
+            .then(ey.a("targets", fk.b()).executes($$0x -> a((ex)$$0x.getSource(), fk.b($$0x, "targets"))))
       );
    }
 
-   private static int a(ex $$0, Collection<are> $$1, wp $$2) throws CommandSyntaxException {
-      if (!$$0.l().r()) {
-         throw b.create();
-      } else {
-         int $$3 = 0;
-
-         for (are $$4 : $$1) {
-            if (!$$0.l().a($$4.gh())) {
-               $$4.f.a($$2);
-               $$0.a(() -> wp.a("commands.kick.success", $$4.p_(), $$2), true);
-               $$3++;
-            }
-         }
-
-         if ($$3 == 0) {
-            throw a.create();
-         } else {
-            return $$3;
-         }
+   private static int a(ex $$0, Collection<? extends bva> $$1) {
+      for (bva $$2 : $$1) {
+         $$2.c($$0.e());
       }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> wp.a("commands.kill.success.single", $$1.iterator().next().m_()), true);
+      } else {
+         $$0.a(() -> wp.a("commands.kill.success.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 }

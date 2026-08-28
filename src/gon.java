@@ -1,51 +1,96 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 public class gon {
-   private static final Map<duc<?>, gom<?>> a = Maps.newHashMap();
+   public static final gon a = new gon(new Vector3f(), new Vector3f(), new Vector3f(1.0F, 1.0F, 1.0F));
+   public final Vector3f b;
+   public final Vector3f c;
+   public final Vector3f d;
 
-   private static <T extends dua> void a(duc<? extends T> $$0, gom<T> $$1) {
-      a.put($$0, $$1);
+   public gon(Vector3f $$0, Vector3f $$1, Vector3f $$2) {
+      this.b = new Vector3f($$0);
+      this.c = new Vector3f($$1);
+      this.d = new Vector3f($$2);
    }
 
-   public static Map<duc<?>, gol<?>> a(gom.a $$0) {
-      Builder<duc<?>, gol<?>> $$1 = ImmutableMap.builder();
-      a.forEach(($$2, $$3) -> {
-         try {
-            $$1.put($$2, $$3.create($$0));
-         } catch (Exception var5) {
-            throw new IllegalStateException("Failed to create model for " + mb.j.b((duc<?>)$$2), var5);
+   public void a(boolean $$0, fgr $$1) {
+      if (this != a) {
+         float $$2 = this.b.x();
+         float $$3 = this.b.y();
+         float $$4 = this.b.z();
+         if ($$0) {
+            $$3 = -$$3;
+            $$4 = -$$4;
          }
-      });
-      return $$1.build();
+
+         int $$5 = $$0 ? -1 : 1;
+         $$1.a((float)$$5 * this.c.x(), this.c.y(), this.c.z());
+         $$1.a(new Quaternionf().rotationXYZ($$2 * (float) (Math.PI / 180.0), $$3 * (float) (Math.PI / 180.0), $$4 * (float) (Math.PI / 180.0)));
+         $$1.b(this.d.x(), this.d.y(), this.d.z());
+      }
    }
 
-   static {
-      a(duc.h, goz::new);
-      a(duc.i, gov::new);
-      a(duc.j, gpb::new);
-      a(duc.l, gox::new);
-      a(duc.b, gor::new);
-      a(duc.d, gor::new);
-      a(duc.c, gor::new);
-      a(duc.n, gou::new);
-      a(duc.E, gow::new);
-      a(duc.o, gpe::new);
-      a(duc.w, gpd::new);
-      a(duc.p, goh::new);
-      a(duc.q, gpa::new);
-      a(duc.u, gog::new);
-      a(duc.v, gpc::new);
-      a(duc.y, goy::new);
-      a(duc.z, goi::new);
-      a(duc.A, gos::new);
-      a(duc.F, goj::new);
-      a(duc.H, goq::new);
-      a(duc.O, gop::new);
-      a(duc.P, got::new);
-      a(duc.R, gpf::new);
-      a(duc.S, gpg::new);
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if (this.getClass() != $$0.getClass()) {
+         return false;
+      } else {
+         gon $$1 = (gon)$$0;
+         return this.b.equals($$1.b) && this.d.equals($$1.d) && this.c.equals($$1.c);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      $$0 = 31 * $$0 + this.c.hashCode();
+      return 31 * $$0 + this.d.hashCode();
+   }
+
+   protected static class a implements JsonDeserializer<gon> {
+      private static final Vector3f c = new Vector3f(0.0F, 0.0F, 0.0F);
+      private static final Vector3f d = new Vector3f(0.0F, 0.0F, 0.0F);
+      private static final Vector3f e = new Vector3f(1.0F, 1.0F, 1.0F);
+      public static final float a = 5.0F;
+      public static final float b = 4.0F;
+
+      public gon a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         Vector3f $$4 = this.a($$3, "rotation", c);
+         Vector3f $$5 = this.a($$3, "translation", d);
+         $$5.mul(0.0625F);
+         $$5.set(ayz.a($$5.x, -5.0F, 5.0F), ayz.a($$5.y, -5.0F, 5.0F), ayz.a($$5.z, -5.0F, 5.0F));
+         Vector3f $$6 = this.a($$3, "scale", e);
+         $$6.set(ayz.a($$6.x, -4.0F, 4.0F), ayz.a($$6.y, -4.0F, 4.0F), ayz.a($$6.z, -4.0F, 4.0F));
+         return new gon($$4, $$5, $$6);
+      }
+
+      private Vector3f a(JsonObject $$0, String $$1, Vector3f $$2) {
+         if (!$$0.has($$1)) {
+            return $$2;
+         } else {
+            JsonArray $$3 = ayp.v($$0, $$1);
+            if ($$3.size() != 3) {
+               throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$3.size());
+            } else {
+               float[] $$4 = new float[3];
+
+               for (int $$5 = 0; $$5 < $$4.length; $$5++) {
+                  $$4[$$5] = ayp.e($$3.get($$5), $$1 + "[" + $$5 + "]");
+               }
+
+               return new Vector3f($$4[0], $$4[1], $$4[2]);
+            }
+         }
+      }
    }
 }

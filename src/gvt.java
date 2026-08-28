@@ -1,40 +1,42 @@
-public class gvt extends gwu<gzx, gdh> {
-   private final gcp<gzx> a;
-   private final hgy b;
+public class gvt extends gru<cse, han> {
+   private final gob b;
 
-   public gvt(guc<gzx, gdh> $$0, gfa $$1, hgy $$2) {
-      super($$0);
-      this.a = new gdf<>($$1.a(gfd.cf));
-      this.b = $$2;
+   public gvt(gtd.a $$0) {
+      super($$0, ggb.dk);
+      this.b = $$0.d();
    }
 
-   private boolean a(cwq $$0, hgz.d $$1) {
-      dev $$2 = $$0.a(kv.D);
-      if ($$2 != null && !$$2.c().isEmpty()) {
-         hgz $$3 = this.b.a($$2.c().get());
-         return !$$3.a($$1).isEmpty();
+   protected void a(han $$0, dxq $$1, fgr $$2, gmx $$3, int $$4) {
+      float $$5 = $$0.n;
+      if ($$5 > -1.0F && $$5 < 10.0F) {
+         float $$6 = 1.0F - $$5 / 10.0F;
+         $$6 = ayz.a($$6, 0.0F, 1.0F);
+         $$6 *= $$6;
+         $$6 *= $$6;
+         float $$7 = 1.0F + $$6 * 0.3F;
+         $$2.b($$7, $$7, $$7);
+      }
+
+      a(this.b, $$1, $$2, $$3, $$4, $$5 > -1.0F && (int)$$5 / 5 % 2 == 0);
+   }
+
+   public static void a(gob $$0, dxq $$1, fgr $$2, gmx $$3, int $$4, boolean $$5) {
+      int $$6;
+      if ($$5) {
+         $$6 = hfh.a(hfh.a(1.0F), 10);
       } else {
-         return false;
+         $$6 = hfh.d;
       }
+
+      $$0.a($$1, $$2, $$3, $$4, $$6);
    }
 
-   public void a(ffv $$0, glz $$1, int $$2, gzx $$3, float $$4, float $$5) {
-      if (!$$3.z && $$3.ay) {
-         hfv $$6 = $$3.a;
-         if ($$6.c() != null) {
-            if (!this.a($$3.W, hgz.d.c)) {
-               $$0.a();
-               if (this.a($$3.W, hgz.d.a)) {
-                  $$0.a(0.0F, -0.053125F, 0.06875F);
-               }
+   public han a() {
+      return new han();
+   }
 
-               ffz $$7 = $$1.getBuffer(gmj.d($$6.c()));
-               this.d().a(this.a);
-               this.a.a($$3);
-               this.a.a($$0, $$7, $$2, hej.d);
-               $$0.b();
-            }
-         }
-      }
+   public void a(cse $$0, han $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.n = $$0.s() > -1 ? (float)$$0.s() - $$2 + 1.0F : -1.0F;
    }
 }

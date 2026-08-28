@@ -1,27 +1,32 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import com.google.gson.annotations.SerializedName;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 
-public class fiw extends hlf {
-   protected BooleanConsumer a;
-   private final wp b;
-   private final wp c;
+public abstract class fiw {
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder("{");
 
-   public fiw(BooleanConsumer $$0, wp $$1, wp $$2) {
-      super(flb.a);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+      for (Field $$1 : this.getClass().getFields()) {
+         if (!b($$1)) {
+            try {
+               $$0.append(a($$1)).append("=").append($$1.get(this)).append(" ");
+            } catch (IllegalAccessException var7) {
+            }
+         }
+      }
+
+      $$0.deleteCharAt($$0.length() - 1);
+      $$0.append('}');
+      return $$0.toString();
    }
 
-   @Override
-   public void aR_() {
-      this.c(fou.a(wo.f, $$0 -> this.a.accept(true)).a(this.n / 2 - 105, g(9), 100, 20).a());
-      this.c(fou.a(wo.g, $$0 -> this.a.accept(false)).a(this.n / 2 + 5, g(9), 100, 20).a());
+   private static String a(Field $$0) {
+      SerializedName $$1 = $$0.getAnnotation(SerializedName.class);
+      return $$1 != null ? $$1.value() : $$0.getName();
    }
 
-   @Override
-   public void a(fof $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.b, this.n / 2, g(3), -1);
-      $$0.a(this.p, this.c, this.n / 2, g(5), -1);
+   private static boolean b(Field $$0) {
+      return Modifier.isStatic($$0.getModifiers());
    }
 }

@@ -1,19 +1,16 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class hct {
-   private static final ayi.b<akv, MapCodec<? extends hcu>> b = new ayi.b<>();
-   public static final MapCodec<hcu> a = b.a(akv.a).dispatchMap("property", hcu::a, $$0 -> $$0);
+public record hct() implements hcw {
+   public static final MapCodec<hct> a = MapCodec.unit(new hct());
 
-   public static void a() {
-      b.a(akv.b("custom_model_data"), hcq.a);
-      b.a(akv.b("bundle/fullness"), hck.a);
-      b.a(akv.b("damage"), hcr.a);
-      b.a(akv.b("cooldown"), hcn.a);
-      b.a(akv.b("time"), hcv.a);
-      b.a(akv.b("compass"), hcl.a);
-      b.a(akv.b("crossbow/pull"), hcp.a);
-      b.a(akv.b("use_cycle"), hcw.a);
-      b.a(akv.b("use_duration"), hcx.a);
-      b.a(akv.b("count"), hco.a);
+   @Override
+   public boolean a(cxh $$0, @Nullable ggy $$1, @Nullable bvy $$2, int $$3, cxf $$4) {
+      return $$0.r();
+   }
+
+   @Override
+   public MapCodec<hct> a() {
+      return a;
    }
 }

@@ -1,258 +1,433 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.math.DoubleMath;
-import com.google.common.math.IntMath;
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import java.util.Arrays;
-import java.util.Objects;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public final class fbs {
-   public static final double a = 1.0E-7;
-   public static final double b = 1.0E-6;
-   private static final fbv d = af.a(() -> {
-      fbk $$0 = new fbe(1, 1, 1);
-      $$0.c(0, 0, 0);
-      return new fbi($$0);
-   });
-   public static final fbv c = a(
-      Double.NEGATIVE_INFINITY,
-      Double.NEGATIVE_INFINITY,
-      Double.NEGATIVE_INFINITY,
-      Double.POSITIVE_INFINITY,
-      Double.POSITIVE_INFINITY,
-      Double.POSITIVE_INFINITY
-   );
-   private static final fbv e = new fbd(
-      new fbe(0, 0, 0), new DoubleArrayList(new double[]{0.0}), new DoubleArrayList(new double[]{0.0}), new DoubleArrayList(new double[]{0.0})
-   );
+public class fbs {
+   private static final double g = 1.0E-7;
+   public final double a;
+   public final double b;
+   public final double c;
+   public final double d;
+   public final double e;
+   public final double f;
 
-   public static fbv a() {
-      return e;
+   public fbs(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      this.a = Math.min($$0, $$3);
+      this.b = Math.min($$1, $$4);
+      this.c = Math.min($$2, $$5);
+      this.d = Math.max($$0, $$3);
+      this.e = Math.max($$1, $$4);
+      this.f = Math.max($$2, $$5);
    }
 
-   public static fbv b() {
-      return d;
+   public fbs(ji $$0) {
+      this((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), (double)($$0.u() + 1), (double)($$0.v() + 1), (double)($$0.w() + 1));
    }
 
-   public static fbv a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      if (!($$0 > $$3) && !($$1 > $$4) && !($$2 > $$5)) {
-         return b($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         throw new IllegalArgumentException("The min values need to be smaller or equals to the max values");
-      }
+   public fbs(fbx $$0, fbx $$1) {
+      this($$0.d, $$0.e, $$0.f, $$1.d, $$1.e, $$1.f);
    }
 
-   public static fbv b(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      if (!($$3 - $$0 < 1.0E-7) && !($$4 - $$1 < 1.0E-7) && !($$5 - $$2 < 1.0E-7)) {
-         int $$6 = a($$0, $$3);
-         int $$7 = a($$1, $$4);
-         int $$8 = a($$2, $$5);
-         if ($$6 < 0 || $$7 < 0 || $$8 < 0) {
-            return new fbd(
-               d.a, DoubleArrayList.wrap(new double[]{$$0, $$3}), DoubleArrayList.wrap(new double[]{$$1, $$4}), DoubleArrayList.wrap(new double[]{$$2, $$5})
-            );
-         } else if ($$6 == 0 && $$7 == 0 && $$8 == 0) {
-            return b();
-         } else {
-            int $$9 = 1 << $$6;
-            int $$10 = 1 << $$7;
-            int $$11 = 1 << $$8;
-            fbe $$12 = fbe.a(
-               $$9,
-               $$10,
-               $$11,
-               (int)Math.round($$0 * (double)$$9),
-               (int)Math.round($$1 * (double)$$10),
-               (int)Math.round($$2 * (double)$$11),
-               (int)Math.round($$3 * (double)$$9),
-               (int)Math.round($$4 * (double)$$10),
-               (int)Math.round($$5 * (double)$$11)
-            );
-            return new fbi($$12);
-         }
-      } else {
-         return a();
-      }
+   public static fbs a(eob $$0) {
+      return new fbs((double)$$0.h(), (double)$$0.i(), (double)$$0.j(), (double)($$0.k() + 1), (double)($$0.l() + 1), (double)($$0.m() + 1));
    }
 
-   public static fbv a(faw $$0) {
-      return b($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
+   public static fbs a(fbx $$0) {
+      return new fbs($$0.d, $$0.e, $$0.f, $$0.d + 1.0, $$0.e + 1.0, $$0.f + 1.0);
    }
 
-   @VisibleForTesting
-   protected static int a(double $$0, double $$1) {
-      if (!($$0 < -1.0E-7) && !($$1 > 1.0000001)) {
-         for (int $$2 = 0; $$2 <= 3; $$2++) {
-            int $$3 = 1 << $$2;
-            double $$4 = $$0 * (double)$$3;
-            double $$5 = $$1 * (double)$$3;
-            boolean $$6 = Math.abs($$4 - (double)Math.round($$4)) < 1.0E-7 * (double)$$3;
-            boolean $$7 = Math.abs($$5 - (double)Math.round($$5)) < 1.0E-7 * (double)$$3;
-            if ($$6 && $$7) {
-               return $$2;
-            }
-         }
-
-         return -1;
-      } else {
-         return -1;
-      }
+   public static fbs a(ji $$0, ji $$1) {
+      return new fbs(
+         (double)Math.min($$0.u(), $$1.u()),
+         (double)Math.min($$0.v(), $$1.v()),
+         (double)Math.min($$0.w(), $$1.w()),
+         (double)(Math.max($$0.u(), $$1.u()) + 1),
+         (double)(Math.max($$0.v(), $$1.v()) + 1),
+         (double)(Math.max($$0.w(), $$1.w()) + 1)
+      );
    }
 
-   protected static long a(int $$0, int $$1) {
-      return (long)$$0 * (long)($$1 / IntMath.gcd($$0, $$1));
+   public fbs a(double $$0) {
+      return new fbs($$0, this.b, this.c, this.d, this.e, this.f);
    }
 
-   public static fbv a(fbv $$0, fbv $$1) {
-      return a($$0, $$1, fbf.o);
+   public fbs b(double $$0) {
+      return new fbs(this.a, $$0, this.c, this.d, this.e, this.f);
    }
 
-   public static fbv a(fbv $$0, fbv... $$1) {
-      return Arrays.stream($$1).reduce($$0, fbs::a);
+   public fbs c(double $$0) {
+      return new fbs(this.a, this.b, $$0, this.d, this.e, this.f);
    }
 
-   public static fbv a(fbv $$0, fbv $$1, fbf $$2) {
-      return b($$0, $$1, $$2).d();
+   public fbs d(double $$0) {
+      return new fbs(this.a, this.b, this.c, $$0, this.e, this.f);
    }
 
-   public static fbv b(fbv $$0, fbv $$1, fbf $$2) {
-      if ($$2.apply(false, false)) {
-         throw (IllegalArgumentException)af.b(new IllegalArgumentException());
-      } else if ($$0 == $$1) {
-         return $$2.apply(true, true) ? $$0 : a();
-      } else {
-         boolean $$3 = $$2.apply(true, false);
-         boolean $$4 = $$2.apply(false, true);
-         if ($$0.c()) {
-            return $$4 ? $$1 : a();
-         } else if ($$1.c()) {
-            return $$3 ? $$0 : a();
-         } else {
-            fbn $$5 = a(1, $$0.a(jn.a.a), $$1.a(jn.a.a), $$3, $$4);
-            fbn $$6 = a($$5.size() - 1, $$0.a(jn.a.b), $$1.a(jn.a.b), $$3, $$4);
-            fbn $$7 = a(($$5.size() - 1) * ($$6.size() - 1), $$0.a(jn.a.c), $$1.a(jn.a.c), $$3, $$4);
-            fbe $$8 = fbe.a($$0.a, $$1.a, $$5, $$6, $$7, $$2);
-            return (fbv)($$5 instanceof fbj && $$6 instanceof fbj && $$7 instanceof fbj ? new fbi($$8) : new fbd($$8, $$5.a(), $$6.a(), $$7.a()));
-         }
-      }
+   public fbs e(double $$0) {
+      return new fbs(this.a, this.b, this.c, this.d, $$0, this.f);
    }
 
-   public static boolean c(fbv $$0, fbv $$1, fbf $$2) {
-      if ($$2.apply(false, false)) {
-         throw (IllegalArgumentException)af.b(new IllegalArgumentException());
-      } else {
-         boolean $$3 = $$0.c();
-         boolean $$4 = $$1.c();
-         if (!$$3 && !$$4) {
-            if ($$0 == $$1) {
-               return $$2.apply(true, true);
-            } else {
-               boolean $$5 = $$2.apply(true, false);
-               boolean $$6 = $$2.apply(false, true);
-
-               for (jn.a $$7 : jf.d) {
-                  if ($$0.c($$7) < $$1.b($$7) - 1.0E-7) {
-                     return $$5 || $$6;
-                  }
-
-                  if ($$1.c($$7) < $$0.b($$7) - 1.0E-7) {
-                     return $$5 || $$6;
-                  }
-               }
-
-               fbn $$8 = a(1, $$0.a(jn.a.a), $$1.a(jn.a.a), $$5, $$6);
-               fbn $$9 = a($$8.size() - 1, $$0.a(jn.a.b), $$1.a(jn.a.b), $$5, $$6);
-               fbn $$10 = a(($$8.size() - 1) * ($$9.size() - 1), $$0.a(jn.a.c), $$1.a(jn.a.c), $$5, $$6);
-               return a($$8, $$9, $$10, $$0.a, $$1.a, $$2);
-            }
-         } else {
-            return $$2.apply(!$$3, !$$4);
-         }
-      }
+   public fbs f(double $$0) {
+      return new fbs(this.a, this.b, this.c, this.d, this.e, $$0);
    }
 
-   private static boolean a(fbn $$0, fbn $$1, fbn $$2, fbk $$3, fbk $$4, fbf $$5) {
-      return !$$0.a(($$5x, $$6, $$7) -> $$1.a(($$6x, $$7x, $$8) -> $$2.a(($$7xx, $$8x, $$9) -> !$$5.apply($$3.e($$5x, $$6x, $$7xx), $$4.e($$6, $$7x, $$8x)))));
+   public double a(jn.a $$0) {
+      return $$0.a(this.a, this.b, this.c);
    }
 
-   public static double a(jn.a $$0, faw $$1, Iterable<fbv> $$2, double $$3) {
-      for (fbv $$4 : $$2) {
-         if (Math.abs($$3) < 1.0E-7) {
-            return 0.0;
-         }
-
-         $$3 = $$4.a($$0, $$1, $$3);
-      }
-
-      return $$3;
+   public double b(jn.a $$0) {
+      return $$0.a(this.d, this.e, this.f);
    }
 
-   public static boolean a(fbv $$0, fbv $$1, jn $$2) {
-      if ($$0 == b() && $$1 == b()) {
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
          return true;
-      } else if ($$1.c()) {
+      } else if (!($$0 instanceof fbs $$1)) {
+         return false;
+      } else if (Double.compare($$1.a, this.a) != 0) {
+         return false;
+      } else if (Double.compare($$1.b, this.b) != 0) {
+         return false;
+      } else if (Double.compare($$1.c, this.c) != 0) {
+         return false;
+      } else if (Double.compare($$1.d, this.d) != 0) {
          return false;
       } else {
-         jn.a $$3 = $$2.o();
-         jn.b $$4 = $$2.f();
-         fbv $$5 = $$4 == jn.b.a ? $$0 : $$1;
-         fbv $$6 = $$4 == jn.b.a ? $$1 : $$0;
-         fbf $$7 = $$4 == jn.b.a ? fbf.e : fbf.c;
-         return DoubleMath.fuzzyEquals($$5.c($$3), 1.0, 1.0E-7)
-            && DoubleMath.fuzzyEquals($$6.b($$3), 0.0, 1.0E-7)
-            && !c(new fbt($$5, $$3, $$5.a.c($$3) - 1), new fbt($$6, $$3, 0), $$7);
+         return Double.compare($$1.e, this.e) != 0 ? false : Double.compare($$1.f, this.f) == 0;
       }
    }
 
-   public static boolean b(fbv $$0, fbv $$1, jn $$2) {
-      if ($$0 != b() && $$1 != b()) {
-         jn.a $$3 = $$2.o();
-         jn.b $$4 = $$2.f();
-         fbv $$5 = $$4 == jn.b.a ? $$0 : $$1;
-         fbv $$6 = $$4 == jn.b.a ? $$1 : $$0;
-         if (!DoubleMath.fuzzyEquals($$5.c($$3), 1.0, 1.0E-7)) {
-            $$5 = a();
+   @Override
+   public int hashCode() {
+      long $$0 = Double.doubleToLongBits(this.a);
+      int $$1 = (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.b);
+      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.c);
+      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.d);
+      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.e);
+      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.f);
+      return 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+   }
+
+   public fbs a(double $$0, double $$1, double $$2) {
+      double $$3 = this.a;
+      double $$4 = this.b;
+      double $$5 = this.c;
+      double $$6 = this.d;
+      double $$7 = this.e;
+      double $$8 = this.f;
+      if ($$0 < 0.0) {
+         $$3 -= $$0;
+      } else if ($$0 > 0.0) {
+         $$6 -= $$0;
+      }
+
+      if ($$1 < 0.0) {
+         $$4 -= $$1;
+      } else if ($$1 > 0.0) {
+         $$7 -= $$1;
+      }
+
+      if ($$2 < 0.0) {
+         $$5 -= $$2;
+      } else if ($$2 > 0.0) {
+         $$8 -= $$2;
+      }
+
+      return new fbs($$3, $$4, $$5, $$6, $$7, $$8);
+   }
+
+   public fbs b(fbx $$0) {
+      return this.b($$0.d, $$0.e, $$0.f);
+   }
+
+   public fbs b(double $$0, double $$1, double $$2) {
+      double $$3 = this.a;
+      double $$4 = this.b;
+      double $$5 = this.c;
+      double $$6 = this.d;
+      double $$7 = this.e;
+      double $$8 = this.f;
+      if ($$0 < 0.0) {
+         $$3 += $$0;
+      } else if ($$0 > 0.0) {
+         $$6 += $$0;
+      }
+
+      if ($$1 < 0.0) {
+         $$4 += $$1;
+      } else if ($$1 > 0.0) {
+         $$7 += $$1;
+      }
+
+      if ($$2 < 0.0) {
+         $$5 += $$2;
+      } else if ($$2 > 0.0) {
+         $$8 += $$2;
+      }
+
+      return new fbs($$3, $$4, $$5, $$6, $$7, $$8);
+   }
+
+   public fbs c(double $$0, double $$1, double $$2) {
+      double $$3 = this.a - $$0;
+      double $$4 = this.b - $$1;
+      double $$5 = this.c - $$2;
+      double $$6 = this.d + $$0;
+      double $$7 = this.e + $$1;
+      double $$8 = this.f + $$2;
+      return new fbs($$3, $$4, $$5, $$6, $$7, $$8);
+   }
+
+   public fbs g(double $$0) {
+      return this.c($$0, $$0, $$0);
+   }
+
+   public fbs a(fbs $$0) {
+      double $$1 = Math.max(this.a, $$0.a);
+      double $$2 = Math.max(this.b, $$0.b);
+      double $$3 = Math.max(this.c, $$0.c);
+      double $$4 = Math.min(this.d, $$0.d);
+      double $$5 = Math.min(this.e, $$0.e);
+      double $$6 = Math.min(this.f, $$0.f);
+      return new fbs($$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   public fbs b(fbs $$0) {
+      double $$1 = Math.min(this.a, $$0.a);
+      double $$2 = Math.min(this.b, $$0.b);
+      double $$3 = Math.min(this.c, $$0.c);
+      double $$4 = Math.max(this.d, $$0.d);
+      double $$5 = Math.max(this.e, $$0.e);
+      double $$6 = Math.max(this.f, $$0.f);
+      return new fbs($$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   public fbs d(double $$0, double $$1, double $$2) {
+      return new fbs(this.a + $$0, this.b + $$1, this.c + $$2, this.d + $$0, this.e + $$1, this.f + $$2);
+   }
+
+   public fbs a(ji $$0) {
+      return new fbs(
+         this.a + (double)$$0.u(),
+         this.b + (double)$$0.v(),
+         this.c + (double)$$0.w(),
+         this.d + (double)$$0.u(),
+         this.e + (double)$$0.v(),
+         this.f + (double)$$0.w()
+      );
+   }
+
+   public fbs c(fbx $$0) {
+      return this.d($$0.d, $$0.e, $$0.f);
+   }
+
+   public fbs a(Vector3f $$0) {
+      return this.d((double)$$0.x, (double)$$0.y, (double)$$0.z);
+   }
+
+   public boolean c(fbs $$0) {
+      return this.a($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
+   }
+
+   public boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      return this.a < $$3 && this.d > $$0 && this.b < $$4 && this.e > $$1 && this.c < $$5 && this.f > $$2;
+   }
+
+   public boolean a(fbx $$0, fbx $$1) {
+      return this.a(
+         Math.min($$0.d, $$1.d), Math.min($$0.e, $$1.e), Math.min($$0.f, $$1.f), Math.max($$0.d, $$1.d), Math.max($$0.e, $$1.e), Math.max($$0.f, $$1.f)
+      );
+   }
+
+   public boolean d(fbx $$0) {
+      return this.e($$0.d, $$0.e, $$0.f);
+   }
+
+   public boolean e(double $$0, double $$1, double $$2) {
+      return $$0 >= this.a && $$0 < this.d && $$1 >= this.b && $$1 < this.e && $$2 >= this.c && $$2 < this.f;
+   }
+
+   public double a() {
+      double $$0 = this.b();
+      double $$1 = this.c();
+      double $$2 = this.d();
+      return ($$0 + $$1 + $$2) / 3.0;
+   }
+
+   public double b() {
+      return this.d - this.a;
+   }
+
+   public double c() {
+      return this.e - this.b;
+   }
+
+   public double d() {
+      return this.f - this.c;
+   }
+
+   public fbs f(double $$0, double $$1, double $$2) {
+      return this.c(-$$0, -$$1, -$$2);
+   }
+
+   public fbs h(double $$0) {
+      return this.g(-$$0);
+   }
+
+   public Optional<fbx> b(fbx $$0, fbx $$1) {
+      return a(this.a, this.b, this.c, this.d, this.e, this.f, $$0, $$1);
+   }
+
+   public static Optional<fbx> a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, fbx $$6, fbx $$7) {
+      double[] $$8 = new double[]{1.0};
+      double $$9 = $$7.d - $$6.d;
+      double $$10 = $$7.e - $$6.e;
+      double $$11 = $$7.f - $$6.f;
+      jn $$12 = a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$8, null, $$9, $$10, $$11);
+      if ($$12 == null) {
+         return Optional.empty();
+      } else {
+         double $$13 = $$8[0];
+         return Optional.of($$6.b($$13 * $$9, $$13 * $$10, $$13 * $$11));
+      }
+   }
+
+   @Nullable
+   public static fbt a(Iterable<fbs> $$0, fbx $$1, fbx $$2, ji $$3) {
+      double[] $$4 = new double[]{1.0};
+      jn $$5 = null;
+      double $$6 = $$2.d - $$1.d;
+      double $$7 = $$2.e - $$1.e;
+      double $$8 = $$2.f - $$1.f;
+
+      for (fbs $$9 : $$0) {
+         $$5 = a($$9.a($$3), $$1, $$4, $$5, $$6, $$7, $$8);
+      }
+
+      if ($$5 == null) {
+         return null;
+      } else {
+         double $$10 = $$4[0];
+         return new fbt($$1.b($$10 * $$6, $$10 * $$7, $$10 * $$8), $$5, $$3, false);
+      }
+   }
+
+   @Nullable
+   private static jn a(fbs $$0, fbx $$1, double[] $$2, @Nullable jn $$3, double $$4, double $$5, double $$6) {
+      return a($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   @Nullable
+   private static jn a(
+      double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, fbx $$6, double[] $$7, @Nullable jn $$8, double $$9, double $$10, double $$11
+   ) {
+      if ($$9 > 1.0E-7) {
+         $$8 = a($$7, $$8, $$9, $$10, $$11, $$0, $$1, $$4, $$2, $$5, jn.e, $$6.d, $$6.e, $$6.f);
+      } else if ($$9 < -1.0E-7) {
+         $$8 = a($$7, $$8, $$9, $$10, $$11, $$3, $$1, $$4, $$2, $$5, jn.f, $$6.d, $$6.e, $$6.f);
+      }
+
+      if ($$10 > 1.0E-7) {
+         $$8 = a($$7, $$8, $$10, $$11, $$9, $$1, $$2, $$5, $$0, $$3, jn.a, $$6.e, $$6.f, $$6.d);
+      } else if ($$10 < -1.0E-7) {
+         $$8 = a($$7, $$8, $$10, $$11, $$9, $$4, $$2, $$5, $$0, $$3, jn.b, $$6.e, $$6.f, $$6.d);
+      }
+
+      if ($$11 > 1.0E-7) {
+         $$8 = a($$7, $$8, $$11, $$9, $$10, $$2, $$0, $$3, $$1, $$4, jn.c, $$6.f, $$6.d, $$6.e);
+      } else if ($$11 < -1.0E-7) {
+         $$8 = a($$7, $$8, $$11, $$9, $$10, $$5, $$0, $$3, $$1, $$4, jn.d, $$6.f, $$6.d, $$6.e);
+      }
+
+      return $$8;
+   }
+
+   @Nullable
+   private static jn a(
+      double[] $$0,
+      @Nullable jn $$1,
+      double $$2,
+      double $$3,
+      double $$4,
+      double $$5,
+      double $$6,
+      double $$7,
+      double $$8,
+      double $$9,
+      jn $$10,
+      double $$11,
+      double $$12,
+      double $$13
+   ) {
+      double $$14 = ($$5 - $$11) / $$2;
+      double $$15 = $$12 + $$14 * $$3;
+      double $$16 = $$13 + $$14 * $$4;
+      if (0.0 < $$14 && $$14 < $$0[0] && $$6 - 1.0E-7 < $$15 && $$15 < $$7 + 1.0E-7 && $$8 - 1.0E-7 < $$16 && $$16 < $$9 + 1.0E-7) {
+         $$0[0] = $$14;
+         return $$10;
+      } else {
+         return $$1;
+      }
+   }
+
+   public boolean a(fbx $$0, List<fbs> $$1) {
+      fbx $$2 = this.f();
+      fbx $$3 = $$2.e($$0);
+
+      for (fbs $$4 : $$1) {
+         fbs $$5 = $$4.c(this.b() * 0.5, this.c() * 0.5, this.d() * 0.5);
+         if ($$5.d($$3) || $$5.d($$2)) {
+            return true;
          }
 
-         if (!DoubleMath.fuzzyEquals($$6.b($$3), 0.0, 1.0E-7)) {
-            $$6 = a();
-         }
-
-         return !c(b(), b(new fbt($$5, $$3, $$5.a.c($$3) - 1), new fbt($$6, $$3, 0), fbf.o), fbf.e);
-      } else {
-         return true;
-      }
-   }
-
-   public static boolean b(fbv $$0, fbv $$1) {
-      if ($$0 == b() || $$1 == b()) {
-         return true;
-      } else {
-         return $$0.c() && $$1.c() ? false : !c(b(), b($$0, $$1, fbf.o), fbf.e);
-      }
-   }
-
-   @VisibleForTesting
-   protected static fbn a(int $$0, DoubleList $$1, DoubleList $$2, boolean $$3, boolean $$4) {
-      int $$5 = $$1.size() - 1;
-      int $$6 = $$2.size() - 1;
-      if ($$1 instanceof fbh && $$2 instanceof fbh) {
-         long $$7 = a($$5, $$6);
-         if ((long)$$0 * $$7 <= 256L) {
-            return new fbj($$5, $$6);
+         if ($$5.b($$2, $$3).isPresent()) {
+            return true;
          }
       }
 
-      if ($$1.getDouble($$5) < $$2.getDouble(0) - 1.0E-7) {
-         return new fbq($$1, $$2, false);
-      } else if ($$2.getDouble($$6) < $$1.getDouble(0) - 1.0E-7) {
-         return new fbq($$2, $$1, true);
-      } else {
-         return (fbn)($$5 == $$6 && Objects.equals($$1, $$2) ? new fbm($$1) : new fbo($$1, $$2, $$3, $$4));
-      }
+      return false;
    }
 
-   public interface a {
-      void consume(double var1, double var3, double var5, double var7, double var9, double var11);
+   public double e(fbx $$0) {
+      double $$1 = Math.max(Math.max(this.a - $$0.d, $$0.d - this.d), 0.0);
+      double $$2 = Math.max(Math.max(this.b - $$0.e, $$0.e - this.e), 0.0);
+      double $$3 = Math.max(Math.max(this.c - $$0.f, $$0.f - this.f), 0.0);
+      return ayz.f($$1, $$2, $$3);
+   }
+
+   @Override
+   public String toString() {
+      return "AABB[" + this.a + ", " + this.b + ", " + this.c + "] -> [" + this.d + ", " + this.e + ", " + this.f + "]";
+   }
+
+   public boolean e() {
+      return Double.isNaN(this.a) || Double.isNaN(this.b) || Double.isNaN(this.c) || Double.isNaN(this.d) || Double.isNaN(this.e) || Double.isNaN(this.f);
+   }
+
+   public fbx f() {
+      return new fbx(ayz.d(0.5, this.a, this.d), ayz.d(0.5, this.b, this.e), ayz.d(0.5, this.c, this.f));
+   }
+
+   public fbx g() {
+      return new fbx(ayz.d(0.5, this.a, this.d), this.b, ayz.d(0.5, this.c, this.f));
+   }
+
+   public fbx h() {
+      return new fbx(this.a, this.b, this.c);
+   }
+
+   public fbx i() {
+      return new fbx(this.d, this.e, this.f);
+   }
+
+   public static fbs a(fbx $$0, double $$1, double $$2, double $$3) {
+      return new fbs($$0.d - $$1 / 2.0, $$0.e - $$2 / 2.0, $$0.f - $$3 / 2.0, $$0.d + $$1 / 2.0, $$0.e + $$2 / 2.0, $$0.f + $$3 / 2.0);
    }
 }

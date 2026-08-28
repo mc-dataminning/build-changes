@@ -1,54 +1,75 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Optional;
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.stream.Stream;
+import java.util.stream.Stream.Builder;
 
-public class eyl {
-   private static final BiMap<akv, baj> y = HashBiMap.create();
-   public static final Codec<baj> a = akv.a
-      .comapFlatMap(
-         $$0 -> Optional.ofNullable((baj)y.get($$0))
-               .<DataResult>map(DataResult::success)
-               .orElseGet(() -> DataResult.error(() -> "No parameter set exists with id: '" + $$0 + "'")),
-         y.inverse()::get
-      );
-   public static final baj b = a("empty", $$0 -> {
-   });
-   public static final baj c = a("chest", $$0 -> $$0.a(eym.f).b(eym.a));
-   public static final baj d = a("command", $$0 -> $$0.a(eym.f).b(eym.a));
-   public static final baj e = a("selector", $$0 -> $$0.a(eym.f).a(eym.a));
-   public static final baj f = a("fishing", $$0 -> $$0.a(eym.f).a(eym.i).b(eym.a));
-   public static final baj g = a("entity", $$0 -> $$0.a(eym.a).a(eym.f).a(eym.c).b(eym.d).b(eym.e).b(eym.b));
-   public static final baj h = a("equipment", $$0 -> $$0.a(eym.f).a(eym.a));
-   public static final baj i = a("archaeology", $$0 -> $$0.a(eym.f).a(eym.a).a(eym.i));
-   public static final baj j = a("gift", $$0 -> $$0.a(eym.f).a(eym.a));
-   public static final baj k = a("barter", $$0 -> $$0.a(eym.a));
-   public static final baj l = a("vault", $$0 -> $$0.a(eym.f).b(eym.a).b(eym.i));
-   public static final baj m = a("advancement_reward", $$0 -> $$0.a(eym.a).a(eym.f));
-   public static final baj n = a("advancement_entity", $$0 -> $$0.a(eym.a).a(eym.f));
-   public static final baj o = a("advancement_location", $$0 -> $$0.a(eym.a).a(eym.f).a(eym.i).a(eym.g));
-   public static final baj p = a("block_use", $$0 -> $$0.a(eym.a).a(eym.f).a(eym.g));
-   public static final baj q = a("generic", $$0 -> $$0.a(eym.a).a(eym.b).a(eym.c).a(eym.d).a(eym.e).a(eym.f).a(eym.g).a(eym.h).a(eym.i).a(eym.j));
-   public static final baj r = a("block", $$0 -> $$0.a(eym.g).a(eym.f).a(eym.i).b(eym.a).b(eym.h).b(eym.j));
-   public static final baj s = a("shearing", $$0 -> $$0.a(eym.f).a(eym.a).a(eym.i));
-   public static final baj t = a("enchanted_damage", $$0 -> $$0.a(eym.a).a(eym.k).a(eym.f).a(eym.c).b(eym.e).b(eym.d));
-   public static final baj u = a("enchanted_item", $$0 -> $$0.a(eym.i).a(eym.k));
-   public static final baj v = a("enchanted_location", $$0 -> $$0.a(eym.a).a(eym.k).a(eym.f).a(eym.l));
-   public static final baj w = a("enchanted_entity", $$0 -> $$0.a(eym.a).a(eym.k).a(eym.f));
-   public static final baj x = a("hit_block", $$0 -> $$0.a(eym.a).a(eym.k).a(eym.f).a(eym.g));
+public class eyl extends eyb {
+   public static final MapCodec<eyl> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and($$0.group(ewm.e.fieldOf("component").forGetter($$0x -> $$0x.b), exc.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
+            .apply($$0, eyl::new)
+   );
+   private final ewl<?> b;
+   private final List<exe> c;
 
-   private static baj a(String $$0, Consumer<baj.a> $$1) {
-      baj.a $$2 = new baj.a();
-      $$1.accept($$2);
-      baj $$3 = $$2.a();
-      akv $$4 = akv.b($$0);
-      baj $$5 = (baj)y.put($$4, $$3);
-      if ($$5 != null) {
-         throw new IllegalStateException("Loot table parameter set " + $$4 + " is already registered");
+   eyl(List<ezx> $$0, ewl<?> $$1, List<exe> $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = List.copyOf($$2);
+   }
+
+   @Override
+   public eyd<eyl> b() {
+      return eye.t;
+   }
+
+   @Override
+   public cxh a(cxh $$0, ewo $$1) {
+      if ($$0.f()) {
+         return $$0;
       } else {
-         return $$3;
+         Builder<cxh> $$2 = Stream.builder();
+         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(ewt.a($$1.d(), $$2::add), $$1)));
+         this.b.a($$0, $$2.build());
+         return $$0;
+      }
+   }
+
+   @Override
+   public void a(ewu $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+      }
+   }
+
+   public static eyl.a a(ewl<?> $$0) {
+      return new eyl.a($$0);
+   }
+
+   public static class a extends eyb.a<eyl.a> {
+      private final com.google.common.collect.ImmutableList.Builder<exe> a = ImmutableList.builder();
+      private final ewl<?> b;
+
+      public a(ewl<?> $$0) {
+         this.b = $$0;
+      }
+
+      protected eyl.a a() {
+         return this;
+      }
+
+      public eyl.a a(exe.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public eyc b() {
+         return new eyl(this.g(), this.b, this.a.build());
       }
    }
 }

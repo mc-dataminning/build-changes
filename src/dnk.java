@@ -1,159 +1,111 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dnk extends diz {
+public class dnk extends dke {
    public static final MapCodec<dnk> a = b(dnk::new);
-   public static final dxv<jn> b = dxo.T;
-   public static final dxp c = dxo.j;
-   private static final fbv d = djn.a(0.0, 10.0, 0.0, 16.0, 16.0, 16.0);
-   private static final fbv e = djn.a(4.0, 4.0, 4.0, 12.0, 10.0, 12.0);
-   private static final fbv f = fbs.a(e, d);
-   private static final fbv g = a(2.0, 11.0, 2.0, 14.0, 16.0, 14.0);
-   private static final fbv h = fbs.a(f, g, fbf.e);
-   private static final fbv i = fbs.a(h, djn.a(6.0, 0.0, 6.0, 10.0, 4.0, 10.0));
-   private static final fbv j = fbs.a(h, djn.a(12.0, 4.0, 6.0, 16.0, 8.0, 10.0));
-   private static final fbv k = fbs.a(h, djn.a(6.0, 4.0, 0.0, 10.0, 8.0, 4.0));
-   private static final fbv l = fbs.a(h, djn.a(6.0, 4.0, 12.0, 10.0, 8.0, 16.0));
-   private static final fbv m = fbs.a(h, djn.a(0.0, 4.0, 6.0, 4.0, 8.0, 10.0));
-   private static final fbv n = g;
-   private static final fbv o = fbs.a(g, djn.a(12.0, 8.0, 6.0, 16.0, 10.0, 10.0));
-   private static final fbv G = fbs.a(g, djn.a(6.0, 8.0, 0.0, 10.0, 10.0, 4.0));
-   private static final fbv H = fbs.a(g, djn.a(6.0, 8.0, 12.0, 10.0, 10.0, 16.0));
-   private static final fbv I = fbs.a(g, djn.a(0.0, 8.0, 6.0, 4.0, 10.0, 10.0));
+   private static final int b = 2;
+   private static final int c = 5;
+   private static final int d = 3600;
+   private static final int e = 12000;
+   private static final fcr f = dke.b(16.0, 0.0, 1.5);
+   private static int g = 3600;
+   private static int h = 12000;
 
    @Override
    public MapCodec<dnk> a() {
       return a;
    }
 
-   public dnk(dwx.d $$0) {
+   public dnk(dxp.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, jn.a).b(c, Boolean.valueOf(true)));
    }
 
    @Override
-   protected fbv a(dwy $$0, dfo $$1, ji $$2, fbg $$3) {
-      switch ((jn)$$0.c(b)) {
-         case a:
-            return i;
-         case c:
-            return k;
-         case d:
-            return l;
-         case e:
-            return m;
-         case f:
-            return j;
-         default:
-            return h;
+   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
+      return f;
+   }
+
+   @Override
+   protected boolean a(dxq $$0, dhc $$1, ji $$2) {
+      return a($$1, $$2.e());
+   }
+
+   @Override
+   protected void a(dxq $$0, dgz $$1, ji $$2, dxq $$3, boolean $$4) {
+      $$1.a($$2, this, a($$1.C_()));
+   }
+
+   private static int a(azh $$0) {
+      return $$0.b(g, h);
+   }
+
+   @Override
+   protected dxq a(dxq $$0, dhc $$1, dho $$2, ji $$3, jn $$4, ji $$5, dxq $$6, azh $$7) {
+      return !this.a($$0, $$1, $$3) ? dkg.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected void a(dxq $$0, ard $$1, ji $$2, azh $$3) {
+      if (!this.a($$0, $$1, $$2)) {
+         this.a((dgz)$$1, $$2);
+      } else {
+         this.a($$1, $$2, $$3);
       }
    }
 
    @Override
-   protected fbv a(dwy $$0, dfo $$1, ji $$2) {
-      switch ((jn)$$0.c(b)) {
-         case a:
-            return n;
-         case c:
-            return G;
-         case d:
-            return H;
-         case e:
-            return I;
-         case f:
-            return o;
-         default:
-            return g;
+   protected void a(dxq $$0, dgz $$1, ji $$2, bva $$3) {
+      if ($$3.aq().equals(bvi.X)) {
+         this.a($$1, $$2);
       }
    }
 
-   @Override
-   public dwy a(dah $$0) {
-      jn $$1 = $$0.k().g();
-      return this.m().b(b, $$1.o() == jn.a.b ? jn.a : $$1).b(c, Boolean.valueOf(true));
+   private static boolean a(dgf $$0, ji $$1) {
+      etw $$2 = $$0.b_($$1);
+      etw $$3 = $$0.b_($$1.d());
+      return $$2.a() == etx.c && $$3.a() == etx.a;
    }
 
-   @Override
-   public dua a(ji $$0, dwy $$1) {
-      return new dvc($$0, $$1);
+   private void a(ard $$0, ji $$1, azh $$2) {
+      this.a((dgz)$$0, $$1);
+      $$0.a(null, $$1, awa.ki, awb.e, 1.0F, 1.0F);
+      this.b($$0, $$1, $$2);
    }
 
-   @Nullable
-   @Override
-   public <T extends dua> dub<T> a(dgj $$0, dwy $$1, duc<T> $$2) {
-      return $$0.C ? null : a($$2, duc.s, dvc::a);
+   private void a(dgz $$0, ji $$1) {
+      $$0.b($$1, false);
    }
 
-   @Override
-   protected void b(dwy $$0, dgj $$1, ji $$2, dwy $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2, $$0);
+   private void b(ard $$0, ji $$1, azh $$2) {
+      int $$3 = $$2.b(2, 6);
+
+      for (int $$4 = 1; $$4 <= $$3; $$4++) {
+         cjp $$5 = bvi.bt.a($$0, bvh.e);
+         if ($$5 != null) {
+            double $$6 = (double)$$1.u() + this.b($$2);
+            double $$7 = (double)$$1.w() + this.b($$2);
+            int $$8 = $$2.b(1, 361);
+            $$5.b($$6, (double)$$1.v() - 0.5, $$7, (float)$$8, 0.0F);
+            $$5.ga();
+            $$0.b($$5);
+         }
       }
    }
 
-   @Override
-   protected bsl a(dwy $$0, dgj $$1, ji $$2, coy $$3, fax $$4) {
-      if (!$$1.C && $$1.c_($$2) instanceof dvc $$5) {
-         $$3.a($$5);
-         $$3.a(awk.ad);
-      }
-
-      return bsl.a;
+   private double b(azh $$0) {
+      double $$1 = 0.2F;
+      return ayz.a($$0.j(), 0.2F, 0.7999999970197678);
    }
 
-   @Override
-   protected void a(dwy $$0, dgj $$1, ji $$2, djn $$3, @Nullable eui $$4, boolean $$5) {
-      this.a($$1, $$2, $$0);
+   @VisibleForTesting
+   public static void a(int $$0, int $$1) {
+      g = $$0;
+      h = $$1;
    }
 
-   private void a(dgj $$0, ji $$1, dwy $$2) {
-      boolean $$3 = !$$0.C($$1);
-      if ($$3 != $$2.c(c)) {
-         $$0.a($$1, $$2.b(c, Boolean.valueOf($$3)), 2);
-      }
-   }
-
-   @Override
-   protected void a(dwy $$0, dgj $$1, ji $$2, dwy $$3, boolean $$4) {
-      bsh.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   protected boolean c_(dwy $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dwy $$0, dgj $$1, ji $$2) {
-      return csd.a($$1.c_($$2));
-   }
-
-   @Override
-   protected dwy a(dwy $$0, dqf $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dwy a(dwy $$0, dom $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dwz.a<djn, dwy> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected void a(dwy $$0, dgj $$1, ji $$2, bum $$3) {
-      dua $$4 = $$1.c_($$2);
-      if ($$4 instanceof dvc) {
-         dvc.a($$1, $$2, $$0, $$3, (dvc)$$4);
-      }
-   }
-
-   @Override
-   protected boolean a(dwy $$0, etp $$1) {
-      return false;
+   @VisibleForTesting
+   public static void b() {
+      g = 3600;
+      h = 12000;
    }
 }

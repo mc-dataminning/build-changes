@@ -1,111 +1,106 @@
-import java.util.function.Consumer;
+import org.joml.Matrix4f;
 
-public class fsm implements fsj {
-   private final fsh a;
-   private final fsm.a b;
-   private int c = 0;
+public class fsm {
+   public static final float a = 0.001F;
+   private final fsk b;
+   private final float c;
+   private final float d;
+   private final float e;
+   private final float f;
+   private final float g;
+   private final float h;
+   private final float i;
+   private final float j;
 
-   private fsm(fsm.a $$0) {
-      this(0, 0, $$0);
+   public fsm(fsk $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
    }
 
-   public fsm(int $$0, int $$1, fsm.a $$2) {
-      this.a = new fsh($$0, $$1);
-      this.b = $$2;
-   }
-
-   public fsm a(int $$0) {
-      this.b.a(this.a, $$0);
-      return this;
-   }
-
-   public fsl b() {
-      return this.a.b();
-   }
-
-   public fsl c() {
-      return this.a.c();
-   }
-
-   public <T extends fsk> T a(T $$0, fsl $$1) {
-      return this.b.a(this.a, $$0, this.c++, $$1);
-   }
-
-   public <T extends fsk> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
-
-   public <T extends fsk> T a(T $$0, Consumer<fsl> $$1) {
-      return this.b.a(this.a, $$0, this.c++, af.a(this.b(), $$1));
-   }
-
-   @Override
-   public void b(Consumer<fsk> $$0) {
-      this.a.b($$0);
-   }
-
-   @Override
-   public void a() {
-      this.a.a();
-   }
-
-   @Override
-   public int A() {
-      return this.a.A();
-   }
-
-   @Override
-   public int y() {
-      return this.a.y();
-   }
-
-   @Override
-   public void j(int $$0) {
-      this.a.j($$0);
-   }
-
-   @Override
-   public void k(int $$0) {
-      this.a.k($$0);
-   }
-
-   @Override
-   public int F() {
-      return this.a.F();
-   }
-
-   @Override
-   public int G() {
-      return this.a.G();
-   }
-
-   public static fsm d() {
-      return new fsm(fsm.a.b);
-   }
-
-   public static fsm e() {
-      return new fsm(fsm.a.a);
-   }
-
-   public static enum a {
-      a,
-      b;
-
-      void a(fsh $$0, int $$1) {
-         switch (this) {
-            case a:
-               $$0.a($$1);
-               break;
-            case b:
-               $$0.b($$1);
-         }
+   public void a(fsm.b $$0, Matrix4f $$1, fgv $$2, int $$3) {
+      xm $$4 = $$0.f();
+      boolean $$5 = $$4.d();
+      float $$6 = $$0.a();
+      float $$7 = $$0.b();
+      int $$8 = $$0.c();
+      int $$9 = $$0.d();
+      boolean $$10 = $$4.c();
+      if ($$0.i()) {
+         this.a($$5, $$6 + $$0.h(), $$7 + $$0.h(), $$1, $$2, $$9, $$10, $$3);
+         this.a($$5, $$6, $$7, 0.03F, $$1, $$2, $$8, $$10, $$3);
+      } else {
+         this.a($$5, $$6, $$7, $$1, $$2, $$8, $$10, $$3);
       }
 
-      public <T extends fsk> T a(fsh $$0, T $$1, int $$2, fsl $$3) {
-         return (T)(switch (this) {
-            case a -> (fsk)$$0.a($$1, 0, $$2, $$3);
-            case b -> (fsk)$$0.a($$1, $$2, 0, $$3);
-         });
+      if ($$10) {
+         if ($$0.i()) {
+            this.a($$5, $$6 + $$0.g() + $$0.h(), $$7 + $$0.h(), 0.001F, $$1, $$2, $$9, true, $$3);
+            this.a($$5, $$6 + $$0.g(), $$7, 0.03F, $$1, $$2, $$8, true, $$3);
+         } else {
+            this.a($$5, $$6 + $$0.g(), $$7, $$1, $$2, $$8, true, $$3);
+         }
+      }
+   }
+
+   private void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, fgv $$4, int $$5, boolean $$6, int $$7) {
+      this.a($$0, $$1, $$2, 0.0F, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   private void a(boolean $$0, float $$1, float $$2, float $$3, Matrix4f $$4, fgv $$5, int $$6, boolean $$7, int $$8) {
+      float $$9 = $$1 + this.g;
+      float $$10 = $$1 + this.h;
+      float $$11 = $$2 + this.i;
+      float $$12 = $$2 + this.j;
+      float $$13 = $$0 ? 1.0F - 0.25F * this.i : 0.0F;
+      float $$14 = $$0 ? 1.0F - 0.25F * this.j : 0.0F;
+      float $$15 = $$7 ? 0.1F : 0.0F;
+      $$5.a($$4, $$9 + $$13 - $$15, $$11 - $$15, $$3).a($$6).a(this.c, this.e).c($$8);
+      $$5.a($$4, $$9 + $$14 - $$15, $$12 + $$15, $$3).a($$6).a(this.c, this.f).c($$8);
+      $$5.a($$4, $$10 + $$14 + $$15, $$12 + $$15, $$3).a($$6).a(this.d, this.f).c($$8);
+      $$5.a($$4, $$10 + $$13 + $$15, $$11 - $$15, $$3).a($$6).a(this.d, this.e).c($$8);
+   }
+
+   public void a(fsm.a $$0, Matrix4f $$1, fgv $$2, int $$3) {
+      if ($$0.i()) {
+         this.a($$0, $$0.h(), 0.0F, $$0.g(), $$2, $$3, $$1);
+         this.a($$0, 0.0F, 0.03F, $$0.f, $$2, $$3, $$1);
+      } else {
+         this.a($$0, 0.0F, 0.0F, $$0.f, $$2, $$3, $$1);
+      }
+   }
+
+   private void a(fsm.a $$0, float $$1, float $$2, int $$3, fgv $$4, int $$5, Matrix4f $$6) {
+      $$4.a($$6, $$0.a + $$1, $$0.b + $$1, $$0.e + $$2).a($$3).a(this.c, this.e).c($$5);
+      $$4.a($$6, $$0.c + $$1, $$0.b + $$1, $$0.e + $$2).a($$3).a(this.c, this.f).c($$5);
+      $$4.a($$6, $$0.c + $$1, $$0.d + $$1, $$0.e + $$2).a($$3).a(this.d, this.f).c($$5);
+      $$4.a($$6, $$0.a + $$1, $$0.d + $$1, $$0.e + $$2).a($$3).a(this.d, this.e).c($$5);
+   }
+
+   public gnh a(fpa.a $$0) {
+      return this.b.a($$0);
+   }
+
+   public static record a(float a, float b, float c, float d, float e, int f, int g, float h) {
+
+      public a(float $$0, float $$1, float $$2, float $$3, float $$4, int $$5) {
+         this($$0, $$1, $$2, $$3, $$4, $$5, 0, 0.0F);
+      }
+
+      boolean i() {
+         return this.g() != 0;
+      }
+   }
+
+   public static record b(float a, float b, int c, int d, fsm e, xm f, float g, float h) {
+      boolean i() {
+         return this.d() != 0;
       }
    }
 }

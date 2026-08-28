@@ -1,25 +1,20 @@
-public record acm(long[] b, bnf c) implements yw<abl> {
+public record acm(xb.a b) implements yw<abl> {
    public static final yn<vl, acm> a = yw.a(acm::a, acm::new);
 
    private acm(vl $$0) {
-      this($$0.d(), $$0.b(bnf.class));
+      this(xb.a.a($$0));
    }
 
    private void a(vl $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+      xb.a.a($$0, this.b);
    }
 
    @Override
    public yy<acm> a() {
-      return age.A;
+      return agd.A;
    }
 
    public void a(abl $$0) {
       $$0.a(this);
-   }
-
-   public bnf e() {
-      return this.c;
    }
 }

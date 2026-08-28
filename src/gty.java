@@ -1,43 +1,34 @@
-public class gty extends gtl<chs, gzz, gcc<gyl>> {
-   private static final akv a = akv.b("textures/entity/fish/pufferfish.png");
-   private final gcc<gyl> b;
-   private final gcc<gyl> k;
-   private final gcc<gyl> l = this.c();
+public class gty extends guj<cib, had, gdp> {
+   private static final aku a = aku.b("textures/entity/iron_golem/iron_golem.png");
 
-   public gty(gsf.a $$0) {
-      super($$0, new gdj($$0.a(gfd.cq)), 0.2F);
-      this.k = new gdk($$0.a(gfd.cr));
-      this.b = new gdl($$0.a(gfd.cs));
+   public gty(gtd.a $$0) {
+      super($$0, new gdp($$0.a(ggb.bq)), 0.7F);
+      this.a(new gxi(this));
+      this.a(new gxj(this, $$0.d()));
    }
 
-   public akv a(gzz $$0) {
+   public aku a(had $$0) {
       return a;
    }
 
-   public gzz b() {
-      return new gzz();
+   public had b() {
+      return new had();
    }
 
-   protected float b(gzz $$0) {
-      return 0.1F + 0.1F * (float)$$0.a;
-   }
-
-   public void a(gzz $$0, ffv $$1, glz $$2, int $$3) {
-      this.h = switch ($$0.a) {
-         case 0 -> this.b;
-         case 1 -> this.k;
-         default -> this.l;
-      };
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   public void a(chs $$0, gzz $$1, float $$2) {
+   public void a(cib $$0, had $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gt();
+      $$1.a = (float)$$0.n() > 0.0F ? (float)$$0.n() - $$2 : 0.0F;
+      $$1.b = $$0.q();
+      $$1.c = $$0.m();
    }
 
-   protected void a(gzz $$0, ffv $$1, float $$2, float $$3) {
-      $$1.a(0.0F, ayz.b($$0.u * 0.05F) * 0.08F, 0.0F);
+   protected void a(had $$0, fgr $$1, float $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
+      if (!((double)$$0.ae < 0.01)) {
+         float $$4 = 13.0F;
+         float $$5 = $$0.ad + 6.0F;
+         float $$6 = (Math.abs($$5 % 13.0F - 6.5F) - 3.25F) / 3.25F;
+         $$1.a(a.f.rotationDegrees(6.5F * $$6));
+      }
    }
 }

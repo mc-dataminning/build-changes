@@ -1,28 +1,15 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class aoi {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wp.c("commands.save.alreadyOn"));
-
    public static void a(CommandDispatcher<ex> $$0) {
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("save-on").requires($$0x -> $$0x.c(4))).executes($$0x -> {
-         ex $$1 = (ex)$$0x.getSource();
-         boolean $$2 = false;
-
-         for (ard $$3 : $$1.l().L()) {
-            if ($$3 != null && $$3.e) {
-               $$3.e = false;
-               $$2 = true;
-            }
-         }
-
-         if (!$$2) {
-            throw a.create();
-         } else {
-            $$1.a(() -> wp.c("commands.save.enabled"), true);
-            return 1;
-         }
-      }));
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("say").requires($$0x -> $$0x.c(2))).then(ey.a("message", fo.a()).executes($$0x -> {
+         fo.a($$0x, "message", $$1 -> {
+            ex $$2 = (ex)$$0x.getSource();
+            avd $$3 = $$2.l().ag();
+            $$3.a($$1, $$2, wl.a(wl.f, $$2));
+         });
+         return 1;
+      })));
    }
 }

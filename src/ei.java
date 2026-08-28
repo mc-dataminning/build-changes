@@ -8,8 +8,8 @@ public class ei extends dz<ei.a> {
       return ei.a.a;
    }
 
-   public void a(are $$0, cgz $$1) {
-      evs $$2 = bx.b($$0, $$1);
+   public void a(are $$0, chp $$1) {
+      ewo $$2 = bx.b($$0, $$1);
       this.a($$0, $$1x -> $$1x.a($$2));
    }
 
@@ -26,7 +26,7 @@ public class ei extends dz<ei.a> {
          return ap.y.a(new ei.a(Optional.empty(), Optional.of(bx.a($$0))));
       }
 
-      public boolean a(evs $$0) {
+      public boolean a(ewo $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 

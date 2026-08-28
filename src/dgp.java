@@ -1,12 +1,31 @@
-import java.util.Optional;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public interface dgp {
-   boolean a(ji var1, Predicate<dwy> var2);
+public enum dgp implements dgf {
+   a;
 
-   boolean b(ji var1, Predicate<eta> var2);
+   @Nullable
+   @Override
+   public dus c_(ji $$0) {
+      return null;
+   }
 
-   <T extends dua> Optional<T> a(ji var1, duc<T> var2);
+   @Override
+   public dxq a_(ji $$0) {
+      return dkg.a.m();
+   }
 
-   ji a(ect.a var1, ji var2);
+   @Override
+   public etw b_(ji $$0) {
+      return etx.a.g();
+   }
+
+   @Override
+   public int G_() {
+      return 0;
+   }
+
+   @Override
+   public int H_() {
+      return 0;
+   }
 }

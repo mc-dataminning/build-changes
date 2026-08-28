@@ -1,22 +1,59 @@
-public class grf extends gtl<cgt, gxu, gbe> {
-   private static final akv a = akv.b("textures/entity/bat.png");
+import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
-   public grf(gsf.a $$0) {
-      super($$0, new gbe($$0.a(gfd.u)), 0.25F);
+public class grf implements gqy.a {
+   private final fmg a;
+   private final Map<Long, Map<ji, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
+
+   grf(fmg $$0) {
+      this.a = $$0;
    }
 
-   public akv a(gxu $$0) {
-      return a;
+   public void a(long $$0, ji $$1) {
+      Map<ji, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
+      int $$3 = $$2.getOrDefault($$1, 0);
+      $$2.put($$1, $$3 + 1);
    }
 
-   public gxu a() {
-      return new gxu();
-   }
+   @Override
+   public void a(fgr $$0, gmx $$1, double $$2, double $$3, double $$4) {
+      long $$5 = this.a.s.ae();
+      int $$6 = 200;
+      double $$7 = 0.0025;
+      Set<ji> $$8 = Sets.newHashSet();
+      Map<ji, Integer> $$9 = Maps.newHashMap();
+      fgv $$10 = $$1.getBuffer(gnh.y());
+      Iterator<Entry<Long, Map<ji, Integer>>> $$11 = this.b.entrySet().iterator();
 
-   public void a(cgt $$0, gxu $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.p();
-      $$1.b.a($$0.c);
-      $$1.c.a($$0.d);
+      while ($$11.hasNext()) {
+         Entry<Long, Map<ji, Integer>> $$12 = $$11.next();
+         Long $$13 = $$12.getKey();
+         Map<ji, Integer> $$14 = $$12.getValue();
+         long $$15 = $$5 - $$13;
+         if ($$15 > 200L) {
+            $$11.remove();
+         } else {
+            for (Entry<ji, Integer> $$16 : $$14.entrySet()) {
+               ji $$17 = $$16.getKey();
+               Integer $$18 = $$16.getValue();
+               if ($$8.add($$17)) {
+                  fbs $$19 = new fbs(ji.c).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
+                  gnr.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
+                  $$9.put($$17, $$18);
+               }
+            }
+         }
+      }
+
+      for (Entry<ji, Integer> $$20 : $$9.entrySet()) {
+         ji $$21 = $$20.getKey();
+         Integer $$22 = $$20.getValue();
+         gqy.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
+      }
    }
 }

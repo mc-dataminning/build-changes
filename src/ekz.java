@@ -1,45 +1,17 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public class ekz extends ekx {
-   public static final MapCodec<ekz> a = MapCodec.unit(() -> ekz.b);
-   public static final ekz b = new ekz();
+public abstract class ekz {
+   public static final Codec<ekz> a = mb.T.q().dispatch(ekz::a, ela::a);
 
-   @Override
-   protected eky<?> a() {
-      return eky.a;
+   public static eli a(dxq $$0) {
+      return new eli($$0);
    }
 
-   @Override
-   public void a(ekx.a $$0) {
-      azh $$1 = $$0.b();
-      $$0.c().forEach($$2 -> {
-         if ($$1.a(3) > 0) {
-            ji $$3 = $$2.h();
-            if ($$0.a($$3)) {
-               $$0.a($$3, dso.d);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            ji $$4 = $$2.i();
-            if ($$0.a($$4)) {
-               $$0.a($$4, dso.f);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            ji $$5 = $$2.f();
-            if ($$0.a($$5)) {
-               $$0.a($$5, dso.e);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            ji $$6 = $$2.g();
-            if ($$0.a($$6)) {
-               $$0.a($$6, dso.c);
-            }
-         }
-      });
+   public static eli a(dke $$0) {
+      return new eli($$0.m());
    }
+
+   protected abstract ela<?> a();
+
+   public abstract dxq a(azh var1, ji var2);
 }

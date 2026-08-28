@@ -7,41 +7,41 @@ import java.util.Objects;
 import javax.annotation.Nullable;
 
 public class od implements nz {
-   private final js<cwm> b;
+   private final js<cxd> b;
    private final oa c;
-   private final cwm d;
+   private final cxd d;
    private final int e;
    private final List<String> f = Lists.newArrayList();
-   private final Map<Character, dbb> g = Maps.newLinkedHashMap();
+   private final Map<Character, dbr> g = Maps.newLinkedHashMap();
    private final Map<String, aq<?>> h = new LinkedHashMap<>();
    @Nullable
    private String i;
    private boolean j = true;
 
-   private od(js<cwm> $$0, oa $$1, dgi $$2, int $$3) {
+   private od(js<cxd> $$0, oa $$1, dgy $$2, int $$3) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2.j();
+      this.d = $$2.i();
       this.e = $$3;
    }
 
-   public static od a(js<cwm> $$0, oa $$1, dgi $$2) {
+   public static od a(js<cxd> $$0, oa $$1, dgy $$2) {
       return a($$0, $$1, $$2, 1);
    }
 
-   public static od a(js<cwm> $$0, oa $$1, dgi $$2, int $$3) {
+   public static od a(js<cxd> $$0, oa $$1, dgy $$2, int $$3) {
       return new od($$0, $$1, $$2, $$3);
    }
 
-   public od a(Character $$0, axf<cwm> $$1) {
-      return this.a($$0, dbb.a(this.b.b($$1)));
+   public od a(Character $$0, axf<cxd> $$1) {
+      return this.a($$0, dbr.a(this.b.b($$1)));
    }
 
-   public od a(Character $$0, dgi $$1) {
-      return this.a($$0, dbb.a($$1));
+   public od a(Character $$0, dgy $$1) {
+      return this.a($$0, dbr.a($$1));
    }
 
-   public od a(Character $$0, dbb $$1) {
+   public od a(Character $$0, dbr $$1) {
       if (this.g.containsKey($$0)) {
          throw new IllegalArgumentException("Symbol '" + $$0 + "' is already defined!");
       } else if ($$0 == ' ') {
@@ -77,24 +77,24 @@ public class od implements nz {
    }
 
    @Override
-   public cwm a() {
+   public cxd a() {
       return this.d;
    }
 
    @Override
-   public void a(ob $$0, aku<dbf<?>> $$1) {
-      dbu $$2 = this.a($$1);
+   public void a(ob $$0, akt<dbv<?>> $$1) {
+      dck $$2 = this.a($$1);
       ah.a $$3 = $$0.a().a("has_the_recipe", dw.a($$1)).a(am.a.c($$1)).a(al.a.b);
       this.h.forEach($$3::a);
-      dbt $$4 = new dbt(Objects.requireNonNullElse(this.i, ""), nz.a(this.c), $$2, new cwq(this.d, this.e), this.j);
+      dcj $$4 = new dcj(Objects.requireNonNullElse(this.i, ""), nz.a(this.c), $$2, new cxh(this.d, this.e), this.j);
       $$0.a($$1, $$4, $$3.b($$1.a().f("recipes/" + this.c.a() + "/")));
    }
 
-   private dbu a(aku<dbf<?>> $$0) {
+   private dck a(akt<dbv<?>> $$0) {
       if (this.h.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0.a());
       } else {
-         return dbu.a(this.g, this.f);
+         return dck.a(this.g, this.f);
       }
    }
 }

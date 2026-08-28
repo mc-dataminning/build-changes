@@ -1,155 +1,30 @@
-import it.unimi.dsi.fastutil.ints.IntArrayFIFOQueue;
-import it.unimi.dsi.fastutil.ints.IntPriorityQueue;
-import java.util.BitSet;
-import java.util.EnumSet;
-import java.util.Set;
+public class gpo implements gpj<duy> {
+   private static final float a = 0.375F;
+   private final gub b;
 
-public class gpo {
-   private static final int a = 4;
-   private static final int b = 16;
-   private static final int c = 15;
-   private static final int d = 4096;
-   private static final int e = 0;
-   private static final int f = 4;
-   private static final int g = 8;
-   private static final int h = (int)Math.pow(16.0, 0.0);
-   private static final int i = (int)Math.pow(16.0, 1.0);
-   private static final int j = (int)Math.pow(16.0, 2.0);
-   private static final int k = -1;
-   private static final jn[] l = jn.values();
-   private final BitSet m = new BitSet(4096);
-   private static final int[] n = af.a(new int[1352], $$0 -> {
-      int $$1 = 0;
-      int $$2 = 15;
-      int $$3 = 0;
+   public gpo(gpk.a $$0) {
+      this.b = $$0.e();
+   }
 
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            for (int $$6 = 0; $$6 < 16; $$6++) {
-               if ($$4 == 0 || $$4 == 15 || $$5 == 0 || $$5 == 15 || $$6 == 0 || $$6 == 15) {
-                  $$0[$$3++] = a($$4, $$5, $$6);
-               }
-            }
+   public void a(duy $$0, float $$1, fgr $$2, gmx $$3, int $$4, int $$5) {
+      jn $$6 = $$0.m().c(dkt.e);
+      ka<cxh> $$7 = $$0.b();
+      int $$8 = (int)$$0.aA_().a();
+
+      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
+         cxh $$10 = $$7.get($$9);
+         if ($$10 != cxh.k) {
+            $$2.a();
+            $$2.a(0.5F, 0.44921875F, 0.5F);
+            jn $$11 = jn.b(($$9 + $$6.e()) % 4);
+            float $$12 = -$$11.p();
+            $$2.a(a.d.rotationDegrees($$12));
+            $$2.a(a.b.rotationDegrees(90.0F));
+            $$2.a(-0.3125F, -0.3125F, 0.0F);
+            $$2.b(0.375F, 0.375F, 0.375F);
+            this.b.a($$10, cxf.i, $$4, $$5, $$2, $$3, $$0.i(), $$8 + $$9);
+            $$2.b();
          }
-      }
-   });
-   private int o = 4096;
-
-   public void a(ji $$0) {
-      this.m.set(b($$0), true);
-      this.o--;
-   }
-
-   private static int b(ji $$0) {
-      return a($$0.u() & 15, $$0.v() & 15, $$0.w() & 15);
-   }
-
-   private static int a(int $$0, int $$1, int $$2) {
-      return $$0 << 0 | $$1 << 8 | $$2 << 4;
-   }
-
-   public gpp a() {
-      gpp $$0 = new gpp();
-      if (4096 - this.o < 256) {
-         $$0.a(true);
-      } else if (this.o == 0) {
-         $$0.a(false);
-      } else {
-         for (int $$1 : n) {
-            if (!this.m.get($$1)) {
-               $$0.a(this.a($$1));
-            }
-         }
-      }
-
-      return $$0;
-   }
-
-   private Set<jn> a(int $$0) {
-      Set<jn> $$1 = EnumSet.noneOf(jn.class);
-      IntPriorityQueue $$2 = new IntArrayFIFOQueue();
-      $$2.enqueue($$0);
-      this.m.set($$0, true);
-
-      while (!$$2.isEmpty()) {
-         int $$3 = $$2.dequeueInt();
-         this.a($$3, $$1);
-
-         for (jn $$4 : l) {
-            int $$5 = this.a($$3, $$4);
-            if ($$5 >= 0 && !this.m.get($$5)) {
-               this.m.set($$5, true);
-               $$2.enqueue($$5);
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   private void a(int $$0, Set<jn> $$1) {
-      int $$2 = $$0 >> 0 & 15;
-      if ($$2 == 0) {
-         $$1.add(jn.e);
-      } else if ($$2 == 15) {
-         $$1.add(jn.f);
-      }
-
-      int $$3 = $$0 >> 8 & 15;
-      if ($$3 == 0) {
-         $$1.add(jn.a);
-      } else if ($$3 == 15) {
-         $$1.add(jn.b);
-      }
-
-      int $$4 = $$0 >> 4 & 15;
-      if ($$4 == 0) {
-         $$1.add(jn.c);
-      } else if ($$4 == 15) {
-         $$1.add(jn.d);
-      }
-   }
-
-   private int a(int $$0, jn $$1) {
-      switch ($$1) {
-         case a:
-            if (($$0 >> 8 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - j;
-         case b:
-            if (($$0 >> 8 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + j;
-         case c:
-            if (($$0 >> 4 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - i;
-         case d:
-            if (($$0 >> 4 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + i;
-         case e:
-            if (($$0 >> 0 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - h;
-         case f:
-            if (($$0 >> 0 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + h;
-         default:
-            return -1;
       }
    }
 }

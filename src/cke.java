@@ -1,80 +1,137 @@
+import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class cke extends cjy {
-   private static final cfz b = cfz.a().d();
+public class cke extends cjz {
+   private int bF = 47999;
+
+   public cke(bvi<? extends cke> $$0, dgz $$1) {
+      super($$0, $$1);
+   }
+
+   @Override
+   public boolean gv() {
+      return true;
+   }
+
    @Nullable
-   private eto c;
-   @Nullable
-   private fbb d;
-
-   public cke(cjw $$0) {
-      super($$0);
+   @Override
+   protected cjz gG() {
+      return bvi.bx.a(this.dU(), bvh.e);
    }
 
    @Override
-   public ckm<cke> h() {
-      return ckm.c;
+   public void b(tq $$0) {
+      super.b($$0);
+      $$0.a("DespawnDelay", this.bF);
    }
 
    @Override
-   public void c() {
-      this.c = null;
-      this.d = null;
-   }
-
-   @Override
-   public void a(ard $$0) {
-      double $$1 = this.d == null ? 0.0 : this.d.c(this.a.dA(), this.a.dC(), this.a.dG());
-      if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
-         this.b($$0);
+   public void a(tq $$0) {
+      super.a($$0);
+      if ($$0.b("DespawnDelay", 99)) {
+         this.bF = $$0.h("DespawnDelay");
       }
    }
 
-   @Nullable
    @Override
-   public fbb f() {
-      return this.d;
+   protected void D() {
+      super.D();
+      this.bC.a(1, new cdp(this, 2.0));
+      this.bD.a(1, new cke.a(this));
+      this.bD.a(2, new cep<>(this, cnl.class, true, ($$0, $$1) -> $$0.aq() != bvi.bQ));
+      this.bD.a(2, new cep<>(this, clz.class, true));
    }
 
-   private void b(ard $$0) {
-      if (this.c == null || this.c.c()) {
-         int $$1 = this.a.t();
-         ji $$2 = $$0.a(ect.a.f, efy.a(this.a.m()));
-         coy $$3 = $$0.a(b, this.a, (double)$$2.u(), (double)$$2.v(), (double)$$2.w());
-         int $$5;
-         if ($$3 != null) {
-            fbb $$4 = new fbb($$3.dA(), 0.0, $$3.dG()).d();
-            $$5 = this.a.q(-$$4.d * 40.0, 105.0, -$$4.f * 40.0);
+   @Override
+   public void w(int $$0) {
+      this.bF = $$0;
+   }
+
+   @Override
+   protected void a(cpr $$0) {
+      bva $$1 = this.C();
+      if (!($$1 instanceof cpj)) {
+         super.a($$0);
+      }
+   }
+
+   @Override
+   public void k_() {
+      super.k_();
+      if (!this.dU().C) {
+         this.hh();
+      }
+   }
+
+   private void hh() {
+      if (this.hi()) {
+         this.bF = this.hj() ? ((cpj)this.C()).gA() - 1 : this.bF - 1;
+         if (this.bF <= 0) {
+            this.z();
+            this.at();
+         }
+      }
+   }
+
+   private boolean hi() {
+      return !this.gJ() && !this.hk() && !this.dd();
+   }
+
+   private boolean hj() {
+      return this.C() instanceof cpj;
+   }
+
+   private boolean hk() {
+      return this.O_() && !this.hj();
+   }
+
+   @Nullable
+   @Override
+   public bwr a(dhq $$0, bsw $$1, bvh $$2, @Nullable bwr $$3) {
+      if ($$2 == bvh.h) {
+         this.c_(0);
+      }
+
+      if ($$3 == null) {
+         $$3 = new buq.a(false);
+      }
+
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   protected static class a extends cew {
+      private final cjz a;
+      private bvy b;
+      private int c;
+
+      public a(cjz $$0) {
+         super($$0, false);
+         this.a = $$0;
+         this.a(EnumSet.of(ccw.a.d));
+      }
+
+      @Override
+      public boolean b() {
+         if (!this.a.O_()) {
+            return false;
+         } else if (!(this.a.C() instanceof cpj $$1)) {
+            return false;
          } else {
-            $$5 = this.a.q(40.0, (double)$$2.v(), 0.0);
-         }
-
-         etm $$7 = new etm($$2.u(), $$2.v(), $$2.w());
-         this.c = this.a.a($$1, $$5, $$7);
-         if (this.c != null) {
-            this.c.a();
+            this.b = $$1.ep();
+            int $$2 = $$1.er();
+            return $$2 != this.c && this.a(this.b, cgp.a);
          }
       }
 
-      this.i();
-      if (this.c != null && this.c.c()) {
-         this.a.go().a(ckm.d);
-      }
-   }
+      @Override
+      public void d() {
+         this.e.h(this.b);
+         bva $$0 = this.a.C();
+         if ($$0 instanceof cpj) {
+            this.c = ((cpj)$$0).er();
+         }
 
-   private void i() {
-      if (this.c != null && !this.c.c()) {
-         km $$0 = this.c.g();
-         this.c.a();
-         double $$1 = (double)$$0.u();
-         double $$2 = (double)$$0.w();
-
-         double $$3;
-         do {
-            $$3 = (double)((float)$$0.v() + this.a.dY().i() * 20.0F);
-         } while ($$3 < (double)$$0.v());
-
-         this.d = new fbb($$1, $$3, $$2);
+         super.d();
       }
    }
 }

@@ -1,82 +1,110 @@
-public class gbf extends gcc<gxv> {
-   public static final gfn a = gfn.scaling(0.5F);
-   private static final String b = "bone";
-   private static final String c = "stinger";
-   private static final String d = "left_antenna";
-   private static final String e = "right_antenna";
-   private static final String f = "front_legs";
-   private static final String g = "middle_legs";
-   private static final String i = "back_legs";
-   private final gfe j;
-   private final gfe k;
-   private final gfe l;
-   private final gfe m;
-   private final gfe n;
-   private final gfe o;
-   private final gfe p;
-   private final gfe q;
-   private final gfe r;
-   private float s;
+import com.mojang.authlib.GameProfile;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Supplier;
 
-   public gbf(gfe $$0) {
-      super($$0);
-      this.j = $$0.b("bone");
-      gfe $$1 = this.j.b("body");
-      this.p = $$1.b("stinger");
-      this.q = $$1.b("left_antenna");
-      this.r = $$1.b("right_antenna");
-      this.k = this.j.b("right_wing");
-      this.l = this.j.b("left_wing");
-      this.m = this.j.b("front_legs");
-      this.n = this.j.b("middle_legs");
-      this.o = this.j.b("back_legs");
+public class gbf implements gba, gbb {
+   private static final aku a = aku.b("spectator/teleport_to_team");
+   private static final wp b = wp.c("spectatorMenu.team_teleport");
+   private static final wp c = wp.c("spectatorMenu.team_teleport.prompt");
+   private final List<gbb> d;
+
+   public gbf() {
+      fmg $$0 = fmg.Q();
+      this.d = a($$0, $$0.s.R());
    }
 
-   public static gfk a() {
-      gfm $$0 = new gfm();
-      gfo $$1 = $$0.a();
-      gfo $$2 = $$1.a("bone", gfj.c(), gfg.a(0.0F, 19.0F, 0.0F));
-      gfo $$3 = $$2.a("body", gfj.c().a(0, 0).a(-3.5F, -4.0F, -5.0F, 7.0F, 7.0F, 10.0F), gfg.a);
-      $$3.a("stinger", gfj.c().a(26, 7).a(0.0F, -1.0F, 5.0F, 0.0F, 1.0F, 2.0F), gfg.a);
-      $$3.a("left_antenna", gfj.c().a(2, 0).a(1.5F, -2.0F, -3.0F, 1.0F, 2.0F, 3.0F), gfg.a(0.0F, -2.0F, -5.0F));
-      $$3.a("right_antenna", gfj.c().a(2, 3).a(-2.5F, -2.0F, -3.0F, 1.0F, 2.0F, 3.0F), gfg.a(0.0F, -2.0F, -5.0F));
-      gfi $$4 = new gfi(0.001F);
-      $$2.a("right_wing", gfj.c().a(0, 18).a(-9.0F, 0.0F, 0.0F, 9.0F, 0.0F, 6.0F, $$4), gfg.a(-1.5F, -4.0F, -3.0F, 0.0F, -0.2618F, 0.0F));
-      $$2.a("left_wing", gfj.c().a(0, 18).a().a(0.0F, 0.0F, 0.0F, 9.0F, 0.0F, 6.0F, $$4), gfg.a(1.5F, -4.0F, -3.0F, 0.0F, 0.2618F, 0.0F));
-      $$2.a("front_legs", gfj.c().a("front_legs", -5.0F, 0.0F, 0.0F, 7, 2, 0, 26, 1), gfg.a(1.5F, 3.0F, -2.0F));
-      $$2.a("middle_legs", gfj.c().a("middle_legs", -5.0F, 0.0F, 0.0F, 7, 2, 0, 26, 3), gfg.a(1.5F, 3.0F, 0.0F));
-      $$2.a("back_legs", gfj.c().a("back_legs", -5.0F, 0.0F, 0.0F, 7, 2, 0, 26, 5), gfg.a(1.5F, 3.0F, 2.0F));
-      return gfk.a($$0, 64, 64);
+   private static List<gbb> a(fmg $$0, fdc $$1) {
+      return $$1.g().stream().flatMap($$1x -> gbf.a.a($$0, $$1x).stream()).toList();
    }
 
-   public void a(gxv $$0) {
-      super.a($$0);
-      this.s = $$0.a;
-      this.p.k = $$0.b;
-      if (!$$0.c) {
-         float $$1 = $$0.u * 120.32113F * (float) (Math.PI / 180.0);
-         this.k.f = 0.0F;
-         this.k.g = ayz.b($$1) * (float) Math.PI * 0.15F;
-         this.l.e = this.k.e;
-         this.l.f = this.k.f;
-         this.l.g = -this.k.g;
-         this.m.e = (float) (Math.PI / 4);
-         this.n.e = (float) (Math.PI / 4);
-         this.o.e = (float) (Math.PI / 4);
+   @Override
+   public List<gbb> a() {
+      return this.d;
+   }
+
+   @Override
+   public wp b() {
+      return c;
+   }
+
+   @Override
+   public void a(gaz $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public wp aS_() {
+      return b;
+   }
+
+   @Override
+   public void a(fpc $$0, float $$1, float $$2) {
+      $$0.a(gnh::H, a, 0, 0, 16, 16, axk.a($$2, $$1, $$1, $$1));
+   }
+
+   @Override
+   public boolean aT_() {
+      return !this.d.isEmpty();
+   }
+
+   static class a implements gbb {
+      private final fcx a;
+      private final Supplier<hgt> b;
+      private final List<ghk> c;
+
+      private a(fcx $$0, List<ghk> $$1, Supplier<hgt> $$2) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = $$2;
       }
 
-      if (!$$0.d && !$$0.c) {
-         float $$2 = ayz.b($$0.u * 0.18F);
-         this.j.e = 0.1F + $$2 * (float) Math.PI * 0.025F;
-         this.q.e = $$2 * (float) Math.PI * 0.03F;
-         this.r.e = $$2 * (float) Math.PI * 0.03F;
-         this.m.e = -$$2 * (float) Math.PI * 0.1F + (float) (Math.PI / 8);
-         this.o.e = -$$2 * (float) Math.PI * 0.05F + (float) (Math.PI / 4);
-         this.j.c = this.j.c - ayz.b($$0.u * 0.18F) * 0.9F;
+      public static Optional<gbb> a(fmg $$0, fcx $$1) {
+         List<ghk> $$2 = new ArrayList<>();
+
+         for (String $$3 : $$1.g()) {
+            ghk $$4 = $$0.L().a($$3);
+            if ($$4 != null && $$4.e() != dgw.d) {
+               $$2.add($$4);
+            }
+         }
+
+         if ($$2.isEmpty()) {
+            return Optional.empty();
+         } else {
+            GameProfile $$5 = $$2.get(azh.a().a($$2.size())).a();
+            Supplier<hgt> $$6 = $$0.an().a($$5);
+            return Optional.of(new gbf.a($$1, $$2, $$6));
+         }
       }
 
-      if (this.s > 0.0F) {
-         this.j.e = ayz.j(this.s, this.j.e, 3.0915928F);
+      @Override
+      public void a(gaz $$0) {
+         $$0.a(new gbe(this.c));
+      }
+
+      @Override
+      public wp aS_() {
+         return this.a.c();
+      }
+
+      @Override
+      public void a(fpc $$0, float $$1, float $$2) {
+         Integer $$3 = this.a.n().f();
+         if ($$3 != null) {
+            float $$4 = (float)($$3 >> 16 & 0xFF) / 255.0F;
+            float $$5 = (float)($$3 >> 8 & 0xFF) / 255.0F;
+            float $$6 = (float)($$3 & 0xFF) / 255.0F;
+            $$0.a(1, 1, 15, 15, axk.a($$2, $$4 * $$1, $$5 * $$1, $$6 * $$1));
+         }
+
+         fqp.a($$0, this.b.get(), 2, 2, 12, axk.a($$2, $$1, $$1, $$1));
+      }
+
+      @Override
+      public boolean aT_() {
+         return true;
       }
    }
 }

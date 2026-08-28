@@ -1,30 +1,42 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import java.util.Objects;
-import java.util.function.Function;
+import com.mojang.serialization.Dynamic;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
-public class bjc extends DataFix {
+public class bjc extends bgz {
    public bjc(Schema $$0) {
-      super($$0, false);
+      super($$0, true, "Trial Spawner config tag fixer", bic.s, "minecraft:trial_spawner");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bhy.x);
-      OpticFinder<?> $$1 = $$0.findField("buy");
-      OpticFinder<?> $$2 = $$0.findField("buyB");
-      OpticFinder<?> $$3 = $$0.findField("sell");
-      OpticFinder<Pair<String, String>> $$4 = DSL.fieldFinder("id", DSL.named(bhy.D.typeName(), bjm.a()));
-      Function<Typed<?>, Typed<?>> $$5 = $$1x -> this.a($$4, $$1x);
-      return this.fixTypeEverywhereTyped("Villager trade fix", $$0, $$4x -> $$4x.updateTyped($$1, $$5).updateTyped($$2, $$5).updateTyped($$3, $$5));
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      List<String> $$1 = List.of(
+         "spawn_range",
+         "total_mobs",
+         "simultaneous_mobs",
+         "total_mobs_added_per_player",
+         "simultaneous_mobs_added_per_player",
+         "ticks_between_spawn",
+         "spawn_potentials",
+         "loot_tables_to_eject",
+         "items_to_drop_when_ominous"
+      );
+      Map<Dynamic<T>, Dynamic<T>> $$2 = new HashMap<>($$1.size());
+
+      for (String $$3 : $$1) {
+         Optional<Dynamic<T>> $$4 = $$0.get($$3).get().result();
+         if ($$4.isPresent()) {
+            $$2.put($$0.createString($$3), $$4.get());
+            $$0 = $$0.remove($$3);
+         }
+      }
+
+      return $$2.isEmpty() ? $$0 : $$0.set("normal_config", $$0.createMap($$2));
    }
 
-   private Typed<?> a(OpticFinder<Pair<String, String>> $$0, Typed<?> $$1) {
-      return $$1.update($$0, $$0x -> $$0x.mapSecond($$0xx -> Objects.equals($$0xx, "minecraft:carved_pumpkin") ? "minecraft:pumpkin" : $$0xx));
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return b($$0);
    }
 }

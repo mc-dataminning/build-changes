@@ -1,124 +1,69 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class dwj {
-   static final String a = "server_data";
-   static Codec<dwj> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               kl.c.lenientOptionalFieldOf("rewarded_players", Set.of()).forGetter($$0x -> $$0x.e),
-               Codec.LONG.lenientOptionalFieldOf("state_updating_resumes_at", 0L).forGetter($$0x -> $$0x.f),
-               cwq.a.listOf().lenientOptionalFieldOf("items_to_eject", List.of()).forGetter($$0x -> $$0x.g),
-               Codec.INT.lenientOptionalFieldOf("total_ejections_needed", 0).forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, dwj::new)
-   );
-   private static final int d = 128;
-   private final Set<UUID> e = new ObjectLinkedOpenHashSet();
-   private long f;
-   private final List<cwq> g = new ObjectArrayList();
-   private long h;
-   private int i;
-   boolean c;
+public class dwj extends dus implements dhu {
+   private final dgb a = new dgb() {
+      @Override
+      public void a(dgz $$0, ji $$1, int $$2) {
+         $$0.a($$1, dkg.cA, $$2, 0);
+      }
 
-   dwj(Set<UUID> $$0, long $$1, List<cwq> $$2, int $$3) {
-      this.e.addAll($$0);
-      this.f = $$1;
-      this.g.addAll($$2);
-      this.i = $$3;
-   }
-
-   dwj() {
-   }
-
-   void a(long $$0) {
-      this.h = $$0;
-   }
-
-   long a() {
-      return this.h;
-   }
-
-   Set<UUID> b() {
-      return this.e;
-   }
-
-   boolean a(coy $$0) {
-      return this.e.contains($$0.cG());
-   }
-
-   @VisibleForTesting
-   public void b(coy $$0) {
-      this.e.add($$0.cG());
-      if (this.e.size() > 128) {
-         Iterator<UUID> $$1 = this.e.iterator();
-         if ($$1.hasNext()) {
-            $$1.next();
-            $$1.remove();
+      @Override
+      public void a(@Nullable dgz $$0, ji $$1, dht $$2) {
+         super.a($$0, $$1, $$2);
+         if ($$0 != null) {
+            dxq $$3 = $$0.a_($$1);
+            $$0.a($$1, $$3, $$3, 260);
          }
       }
+   };
 
-      this.i();
+   public dwj(ji $$0, dxq $$1) {
+      super(duu.j, $$0, $$1);
    }
 
-   long c() {
-      return this.f;
+   @Override
+   protected void a(tq $$0, jt.a $$1) {
+      super.a($$0, $$1);
+      this.a.a(this.n, this.o, $$0);
    }
 
-   void b(long $$0) {
-      this.f = $$0;
-      this.i();
+   @Override
+   protected void b(tq $$0, jt.a $$1) {
+      super.b($$0, $$1);
+      this.a.a($$0);
    }
 
-   List<cwq> d() {
-      return this.g;
+   public static void a(dgz $$0, ji $$1, dxq $$2, dwj $$3) {
+      $$3.a.a($$0, $$1);
    }
 
-   void e() {
-      this.i = 0;
-      this.i();
+   public static void b(dgz $$0, ji $$1, dxq $$2, dwj $$3) {
+      $$3.a.a((ard)$$0, $$1);
    }
 
-   void a(List<cwq> $$0) {
-      this.g.clear();
-      this.g.addAll($$0);
-      this.i = this.g.size();
-      this.i();
+   public abr b() {
+      return abr.a(this);
    }
 
-   cwq f() {
-      return this.g.isEmpty() ? cwq.j : Objects.requireNonNullElse(this.g.get(this.g.size() - 1), cwq.j);
+   @Override
+   public tq a(jt.a $$0) {
+      tq $$1 = this.e($$0);
+      $$1.r("SpawnPotentials");
+      return $$1;
    }
 
-   cwq g() {
-      if (this.g.isEmpty()) {
-         return cwq.j;
-      } else {
-         this.i();
-         return Objects.requireNonNullElse(this.g.remove(this.g.size() - 1), cwq.j);
-      }
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      return this.a.a(this.n, $$0) ? true : super.a_($$0, $$1);
    }
 
-   void a(dwj $$0) {
-      this.f = $$0.c();
-      this.g.clear();
-      this.g.addAll($$0.g);
-      this.e.clear();
-      this.e.addAll($$0.e);
+   @Override
+   public void a(bvi<?> $$0, azh $$1) {
+      this.a.a($$0, this.n, $$1, this.o);
+      this.e();
    }
 
-   private void i() {
-      this.c = true;
-   }
-
-   public float h() {
-      return this.i == 1 ? 1.0F : 1.0F - ayz.f((float)this.d().size(), 1.0F, (float)this.i);
+   public dgb c() {
+      return this.a;
    }
 }

@@ -1,21 +1,20 @@
 public enum dyj implements azv {
-   a("none"),
-   b("low"),
-   c("tall");
+   a("compare"),
+   b("subtract");
 
-   private final String d;
+   private final String c;
 
    private dyj(final String $$0) {
-      this.d = $$0;
+      this.c = $$0;
    }
 
    @Override
    public String toString() {
-      return this.c();
+      return this.c;
    }
 
    @Override
    public String c() {
-      return this.d;
+      return this.c;
    }
 }

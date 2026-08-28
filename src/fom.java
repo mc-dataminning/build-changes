@@ -1,97 +1,104 @@
-public abstract class fom extends fos {
-   public static final int b = 6;
-   private double a;
-   private static final akv c = akv.b("widget/scroller");
-   private static final akv d = akv.b("widget/scroller_background");
-   private boolean e;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
 
-   public fom(int $$0, int $$1, int $$2, int $$3, wp $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+public class fom {
+   public static hck.b a(aku $$0) {
+      return new hce.a($$0, List.of());
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if (!this.k) {
-         return false;
-      } else {
-         this.a(this.g() - $$3 * this.o());
-         return true;
-      }
+   public static hck.b a(aku $$0, fnq... $$1) {
+      return new hce.a($$0, List.of($$1));
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if (this.e) {
-         if ($$1 < (double)this.G()) {
-            this.a(0.0);
-         } else if ($$1 > (double)this.I()) {
-            this.a((double)this.i());
-         } else {
-            double $$5 = (double)Math.max(1, this.i());
-            int $$6 = this.k();
-            double $$7 = Math.max(1.0, $$5 / (double)(this.h - $$6));
-            this.a(this.g() + $$4 * $$7);
-         }
-
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4);
-      }
+   public static fnq a(int $$0) {
+      return new fnl($$0);
    }
 
-   @Override
-   public void b(double $$0, double $$1) {
-      this.e = false;
+   public static hck.b a(hck.b... $$0) {
+      return new hch.a(List.of($$0));
    }
 
-   public double g() {
-      return this.a;
+   public static hck.b a(aku $$0, hev.a $$1) {
+      return new hcr.a($$0, $$1);
    }
 
-   public void a(double $$0) {
-      this.a = ayz.a($$0, 0.0, (double)this.i());
+   public static hcp.a a(hck.b $$0, float $$1) {
+      return new hcp.a($$1, $$0);
    }
 
-   public boolean c(double $$0, double $$1, int $$2) {
-      this.e = this.j() && this.g($$2) && $$0 >= (double)this.l() && $$0 <= (double)(this.l() + 6) && $$1 >= (double)this.G() && $$1 < (double)this.I();
-      return this.e;
+   public static hck.b a(hds $$0, hck.b $$1, hcp.a... $$2) {
+      return new hcp.b($$0, 1.0F, List.of($$2), Optional.of($$1));
    }
 
-   public void h() {
-      this.a(this.a);
+   public static hck.b a(hds $$0, float $$1, hck.b $$2, hcp.a... $$3) {
+      return new hcp.b($$0, $$1, List.of($$3), Optional.of($$2));
    }
 
-   public int i() {
-      return Math.max(0, this.n() - this.h);
+   public static hck.b a(hds $$0, hck.b $$1, List<hcp.a> $$2) {
+      return new hcp.b($$0, 1.0F, $$2, Optional.of($$1));
    }
 
-   protected boolean j() {
-      return this.i() > 0;
+   public static hck.b a(hds $$0, List<hcp.a> $$1) {
+      return new hcp.b($$0, 1.0F, $$1, Optional.empty());
    }
 
-   protected int k() {
-      return ayz.a((int)((float)(this.h * this.h) / (float)this.n()), 32, this.h - 8);
+   public static hck.b a(hds $$0, float $$1, List<hcp.a> $$2) {
+      return new hcp.b($$0, $$1, $$2, Optional.empty());
    }
 
-   protected int l() {
-      return this.H() - 6;
+   public static hck.b a(hcw $$0, hck.b $$1, hck.b $$2) {
+      return new hci.a($$0, $$1, $$2);
    }
 
-   protected int m() {
-      return Math.max(this.G(), (int)this.a * (this.h - this.k()) / this.i() + this.G());
+   public static <T> hcq.a<T> a(T $$0, hck.b $$1) {
+      return new hcq.a<>(List.of($$0), $$1);
    }
 
-   protected void a(fof $$0) {
-      if (this.j()) {
-         int $$1 = this.l();
-         int $$2 = this.k();
-         int $$3 = this.m();
-         $$0.a(gmj::H, d, $$1, this.G(), 6, this.y());
-         $$0.a(gmj::H, c, $$1, $$3, 6, $$2);
-      }
+   public static <T> hcq.a<T> a(List<T> $$0, hck.b $$1) {
+      return new hcq.a<>($$0, $$1);
    }
 
-   protected abstract int n();
+   @SafeVarargs
+   public static <T> hck.b a(heh<T> $$0, hck.b $$1, hcq.a<T>... $$2) {
+      return a($$0, $$1, List.of($$2));
+   }
 
-   protected abstract double o();
+   public static <T> hck.b a(heh<T> $$0, hck.b $$1, List<hcq.a<T>> $$2) {
+      return new hcq.b(new hcq.c<>($$0, $$2), Optional.of($$1));
+   }
+
+   @SafeVarargs
+   public static <T> hck.b a(heh<T> $$0, hcq.a<T>... $$1) {
+      return a($$0, List.of($$1));
+   }
+
+   public static <T> hck.b a(heh<T> $$0, List<hcq.a<T>> $$1) {
+      return new hcq.b(new hcq.c<>($$0, $$1), Optional.empty());
+   }
+
+   public static hcw a() {
+      return new hdf();
+   }
+
+   public static hcw a(ku<?> $$0) {
+      return new hdb($$0, false);
+   }
+
+   public static hck.b a(hck.b $$0, hck.b $$1) {
+      return a(new hdz(), $$1, a(dgz.i, $$0));
+   }
+
+   public static <T extends Comparable<T>> hck.b a(dyt<T> $$0, hck.b $$1, Map<T, hck.b> $$2) {
+      List<hcq.a<String>> $$3 = $$2.entrySet().stream().sorted(Entry.comparingByKey()).map($$1x -> {
+         String $$2x = $$0.b((T)$$1x.getKey());
+         return new hcq.a<>(List.of($$2x), (hck.b)$$1x.getValue());
+      }).toList();
+      return a(new hed($$0.f()), $$1, $$3);
+   }
+
+   public static hck.b b(hck.b $$0, hck.b $$1) {
+      return a(hee.a("MM-dd", "", Optional.empty()), $$1, List.of(a(List.of("12-24", "12-25", "12-26"), $$0)));
+   }
 }

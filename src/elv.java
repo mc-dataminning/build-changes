@@ -1,16 +1,45 @@
 import com.mojang.serialization.MapCodec;
 
-public interface elv<P extends elu> {
-   elv<elt> a = a("constant", elt.b);
-   elv<elx> b = a("uniform", elx.a);
-   elv<els> c = a("biased_to_bottom", els.a);
-   elv<ely> d = a("very_biased_to_bottom", ely.a);
-   elv<elw> e = a("trapezoid", elw.a);
-   elv<elz> f = a("weighted_list", elz.a);
+public class elv extends elt {
+   public static final MapCodec<elv> a = MapCodec.unit(() -> elv.b);
+   public static final elv b = new elv();
 
-   MapCodec<P> codec();
+   @Override
+   protected elu<?> a() {
+      return elu.a;
+   }
 
-   private static <P extends elu> elv<P> a(String $$0, MapCodec<P> $$1) {
-      return ke.a(mb.L, $$0, () -> $$1);
+   @Override
+   public void a(elt.a $$0) {
+      azh $$1 = $$0.b();
+      $$0.c().forEach($$2 -> {
+         if ($$1.a(3) > 0) {
+            ji $$3 = $$2.h();
+            if ($$0.a($$3)) {
+               $$0.a($$3, dtg.d);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            ji $$4 = $$2.i();
+            if ($$0.a($$4)) {
+               $$0.a($$4, dtg.f);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            ji $$5 = $$2.f();
+            if ($$0.a($$5)) {
+               $$0.a($$5, dtg.e);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            ji $$6 = $$2.g();
+            if ($$0.a($$6)) {
+               $$0.a($$6, dtg.c);
+            }
+         }
+      });
    }
 }

@@ -1,54 +1,38 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class eur extends eui {
+   private float m = Float.MAX_VALUE;
+   private eui n;
+   private boolean o;
 
-public class eur {
-   private final ji a;
-   private final int b;
-   private final int c;
-
-   public eur(ji $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public eur(eui $$0) {
+      super($$0.a, $$0.b, $$0.c);
    }
 
-   @Nullable
-   public static eur a(tq $$0) {
-      Optional<ji> $$1 = uf.a($$0, "pos");
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         int $$2 = $$0.h("rotation");
-         int $$3 = $$0.h("entity_id");
-         return new eur($$1.get(), $$2, $$3);
+   public eur(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   public void a(float $$0, eui $$1) {
+      if ($$0 < this.m) {
+         this.m = $$0;
+         this.n = $$1;
       }
    }
 
-   public tq a() {
-      tq $$0 = new tq();
-      $$0.a("pos", uf.a(this.a));
-      $$0.a("rotation", this.b);
-      $$0.a("entity_id", this.c);
-      return $$0;
+   public eui d() {
+      return this.n;
    }
 
-   public ji b() {
-      return this.a;
+   public void e() {
+      this.o = true;
    }
 
-   public int c() {
-      return this.b;
+   public boolean f() {
+      return this.o;
    }
 
-   public int d() {
-      return this.c;
-   }
-
-   public String e() {
-      return a(this.a);
-   }
-
-   public static String a(ji $$0) {
-      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
+   public static eur c(vl $$0) {
+      eur $$1 = new eur($$0.readInt(), $$0.readInt(), $$0.readInt());
+      a($$0, $$1);
+      return $$1;
    }
 }

@@ -1,17 +1,18 @@
-public interface ess {
-   void a(ji var1);
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-   boolean N_();
+public class ess implements est {
+   public static final ess a = new ess();
+   public static final MapCodec<ess> b = MapCodec.unit(a);
 
-   int a();
-
-   default void a(ji $$0, boolean $$1) {
-      this.a(kk.a($$0), $$1);
+   @Nullable
+   @Override
+   public tq a(azh $$0, @Nullable tq $$1) {
+      return $$1;
    }
 
-   void a(kk var1, boolean var2);
-
-   void a(dfp var1, boolean var2);
-
-   void b(dfp var1);
+   @Override
+   public esu<?> a() {
+      return esu.b;
+   }
 }

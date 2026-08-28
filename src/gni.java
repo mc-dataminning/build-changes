@@ -1,55 +1,35 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import javax.annotation.Nullable;
+public class gni {
+   private final long[] a;
+   private int b;
+   private int c;
 
-public record gni(@Nullable jn b, int c, String d, gnk e) {
-   public static final int a = -1;
-
-   @Nullable
-   public jn a() {
-      return this.b;
+   public gni(int $$0) {
+      this.a = new long[$$0];
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public String c() {
-      return this.d;
-   }
-
-   public gnk d() {
-      return this.e;
-   }
-
-   protected static class a implements JsonDeserializer<gni> {
-      private static final int a = -1;
-
-      public gni a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         jn $$4 = this.c($$3);
-         int $$5 = this.a($$3);
-         String $$6 = this.b($$3);
-         gnk $$7 = (gnk)$$2.deserialize($$3, gnk.class);
-         return new gni($$4, $$5, $$6, $$7);
+   public long a(long $$0) {
+      if (this.b < this.a.length) {
+         this.b++;
       }
 
-      protected int a(JsonObject $$0) {
-         return ayp.a($$0, "tintindex", -1);
+      this.a[this.c] = $$0;
+      this.c = (this.c + 1) % this.a.length;
+      long $$1 = Long.MAX_VALUE;
+      long $$2 = Long.MIN_VALUE;
+      long $$3 = 0L;
+
+      for (int $$4 = 0; $$4 < this.b; $$4++) {
+         long $$5 = this.a[$$4];
+         $$3 += $$5;
+         $$1 = Math.min($$1, $$5);
+         $$2 = Math.max($$2, $$5);
       }
 
-      private String b(JsonObject $$0) {
-         return ayp.i($$0, "texture");
-      }
-
-      @Nullable
-      private jn c(JsonObject $$0) {
-         String $$1 = ayp.a($$0, "cullface", "");
-         return jn.a($$1);
+      if (this.b > 2) {
+         $$3 -= $$1 + $$2;
+         return $$3 / (long)(this.b - 2);
+      } else {
+         return $$3 > 0L ? (long)this.b / $$3 : 0L;
       }
    }
 }

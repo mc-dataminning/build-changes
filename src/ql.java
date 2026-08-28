@@ -1,28 +1,28 @@
 import com.google.common.collect.ImmutableList;
 
 public class ql {
-   public static final aku<eox> a = a("empty");
+   public static final akt<ept> a = a("empty");
 
-   public static aku<eox> a(akv $$0) {
-      return aku.a(mc.aX, $$0);
+   public static akt<ept> a(aku $$0) {
+      return akt.a(mc.aZ, $$0);
    }
 
-   public static aku<eox> a(String $$0) {
-      return a(akv.b($$0));
+   public static akt<ept> a(String $$0) {
+      return a(aku.b($$0));
    }
 
-   public static aku<eox> b(String $$0) {
-      return a(akv.a($$0));
+   public static akt<ept> b(String $$0) {
+      return a(aku.a($$0));
    }
 
-   public static void a(qe<eox> $$0, String $$1, eox $$2) {
+   public static void a(qe<ept> $$0, String $$1, ept $$2) {
       $$0.a(a($$1), $$2);
    }
 
-   public static void a(qe<eox> $$0) {
-      js<eox> $$1 = $$0.a(mc.aX);
-      jr<eox> $$2 = $$1.b(a);
-      $$0.a(a, new eox($$2, ImmutableList.of(), eox.a.b));
+   public static void a(qe<ept> $$0) {
+      js<ept> $$1 = $$0.a(mc.aZ);
+      jr<ept> $$2 = $$1.b(a);
+      $$0.a(a, new ept($$2, ImmutableList.of(), ept.a.b));
       qa.a($$0);
       qj.a($$0);
       qw.a($$0);

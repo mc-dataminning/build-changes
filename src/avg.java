@@ -9,7 +9,7 @@ public class avg {
    }
 
    public boolean a(int $$0, List<are> $$1) {
-      int $$2 = (int)$$1.stream().filter(coy::gm).count();
+      int $$2 = (int)$$1.stream().filter(cpr::gq).count();
       return $$2 >= this.b($$0);
    }
 
@@ -32,9 +32,9 @@ public class avg {
       this.b = 0;
 
       for (are $$3 : $$0) {
-         if (!$$3.Z_()) {
+         if (!$$3.U_()) {
             this.a++;
-            if ($$3.fR()) {
+            if ($$3.fT()) {
                this.b++;
             }
          }

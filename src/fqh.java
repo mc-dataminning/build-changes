@@ -1,17 +1,35 @@
-public record fqh(akv a, akv b, akv c, akv d) {
-   public fqh(akv $$0, akv $$1) {
-      this($$0, $$0, $$1, $$1);
+public class fqh {
+   public static final aku a = aku.b("textures/gui/title/minecraft.png");
+   public static final aku b = aku.b("textures/gui/title/minceraft.png");
+   public static final aku c = aku.b("textures/gui/title/edition.png");
+   public static final int d = 256;
+   public static final int e = 44;
+   private static final int g = 256;
+   private static final int h = 64;
+   private static final int i = 128;
+   private static final int j = 14;
+   private static final int k = 128;
+   private static final int l = 16;
+   public static final int f = 30;
+   private static final int m = 7;
+   private final boolean n = (double)azh.a().i() < 1.0E-4;
+   private final boolean o;
+
+   public fqh(boolean $$0) {
+      this.o = $$0;
    }
 
-   public fqh(akv $$0, akv $$1, akv $$2) {
-      this($$0, $$1, $$2, $$1);
+   public void a(fpc $$0, int $$1, float $$2) {
+      this.a($$0, $$1, $$2, 30);
    }
 
-   public akv a(boolean $$0, boolean $$1) {
-      if ($$0) {
-         return $$1 ? this.c : this.a;
-      } else {
-         return $$1 ? this.d : this.b;
-      }
+   public void a(fpc $$0, int $$1, float $$2, int $$3) {
+      int $$4 = $$1 / 2 - 128;
+      float $$5 = this.o ? 1.0F : $$2;
+      int $$6 = axk.a($$5);
+      $$0.a(gnh::H, this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64, $$6);
+      int $$7 = $$1 / 2 - 64;
+      int $$8 = $$3 + 44 - 7;
+      $$0.a(gnh::H, c, $$7, $$8, 0.0F, 0.0F, 128, 14, 128, 16, $$6);
    }
 }

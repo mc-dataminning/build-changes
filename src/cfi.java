@@ -1,53 +1,65 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
-
-public class cfi<T extends bvi> extends cfs<T> {
-   private final BiPredicate<T, bvi> a;
-   private final Predicate<T> b;
-   private final cem<Boolean> c;
-   private final int d;
-
-   public cfi(int $$0, BiPredicate<T, bvi> $$1, Predicate<T> $$2, cem<Boolean> $$3, int $$4) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-      this.d = $$4;
+public class cfi extends cfk {
+   public cfi(bwa $$0, dgz $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected void a(ard $$0, T $$1) {
-      if (!this.b.test($$1)) {
-         this.c($$1);
-      } else {
-         this.a($$1);
+   protected eum a(int $$0) {
+      this.o = new euh();
+      return new eum(this.o, $$0);
+   }
+
+   @Override
+   protected boolean a(fbx $$0, fbx $$1) {
+      return a(this.a, $$0, $$1, true);
+   }
+
+   @Override
+   protected boolean a() {
+      return this.o() && this.a.bl() || !this.a.bY();
+   }
+
+   @Override
+   protected fbx b() {
+      return this.a.ds();
+   }
+
+   @Override
+   public euk a(bva $$0, int $$1) {
+      return this.a($$0.du(), $$1);
+   }
+
+   @Override
+   public void c() {
+      this.e++;
+      if (this.m) {
+         this.h();
       }
-   }
 
-   @Override
-   public Set<cem<?>> a() {
-      return Set.of(cem.g);
-   }
+      if (!this.k()) {
+         if (this.a()) {
+            this.j();
+         } else if (this.c != null && !this.c.c()) {
+            fbx $$0 = this.c.a(this.a);
+            if (this.a.dy() == ayz.a($$0.d) && this.a.dA() == ayz.a($$0.e) && this.a.dE() == ayz.a($$0.f)) {
+               this.c.a();
+            }
+         }
 
-   @Override
-   public void a(T $$0) {
-      Optional<List<bvi>> $$1 = $$0.eb().c(cem.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
-         if ($$2) {
-            this.b($$0);
+         agc.a(this.b, this.a, this.c, this.l);
+         if (!this.k()) {
+            fbx $$1 = this.c.a(this.a);
+            this.a.L().a($$1.d, $$1.e, $$1.f, this.d);
          }
       }
    }
 
-   public void b(T $$0) {
-      $$0.eb().a(this.c, true, (long)this.d);
+   public void b(boolean $$0) {
+      this.o.b($$0);
    }
 
-   public void c(T $$0) {
-      $$0.eb().b(this.c);
+   @Override
+   public boolean a(ji $$0) {
+      return this.b.a_($$0).a(this.b, $$0, this.a);
    }
 }

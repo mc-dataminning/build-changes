@@ -1,288 +1,156 @@
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.Proxy;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
+import com.mojang.jtracy.MemoryPool;
+import com.mojang.jtracy.TracyClient;
+import com.mojang.logging.LogUtils;
+import java.nio.ByteBuffer;
 import javax.annotation.Nullable;
+import org.lwjgl.system.MemoryUtil;
+import org.lwjgl.system.MemoryUtil.MemoryAllocator;
+import org.slf4j.Logger;
 
-public abstract class fgo<T extends fgo<T>> {
-   protected HttpURLConnection a;
-   private boolean c;
-   protected String b;
-   private static final int d = 60000;
-   private static final int e = 5000;
-   private static final String f = "Is-Prerelease";
-   private static final String g = "Cookie";
+public class fgo implements AutoCloseable {
+   private static final MemoryPool a = TracyClient.createMemoryPool("ByteBufferBuilder");
+   private static final Logger b = LogUtils.getLogger();
+   private static final MemoryAllocator c = MemoryUtil.getAllocator(false);
+   private static final int d = 2097152;
+   private static final int e = -1;
+   long f;
+   private int g;
+   private int h;
+   private int i;
+   private int j;
+   private int k;
 
-   public fgo(String $$0, int $$1, int $$2) {
-      try {
-         this.b = $$0;
-         Proxy $$3 = fgm.a();
-         if ($$3 != null) {
-            this.a = (HttpURLConnection)new URL($$0).openConnection($$3);
-         } else {
-            this.a = (HttpURLConnection)new URL($$0).openConnection();
-         }
-
-         this.a.setConnectTimeout($$1);
-         this.a.setReadTimeout($$2);
-      } catch (MalformedURLException var5) {
-         throw new fig(var5.getMessage(), var5);
-      } catch (IOException var6) {
-         throw new fig(var6.getMessage(), var6);
+   public fgo(int $$0) {
+      this.g = $$0;
+      this.f = c.malloc((long)$$0);
+      a.malloc(this.f, $$0);
+      if (this.f == 0L) {
+         throw new OutOfMemoryError("Failed to allocate " + $$0 + " bytes");
       }
    }
 
-   public void a(String $$0, String $$1) {
-      a(this.a, $$0, $$1);
+   public long a(int $$0) {
+      int $$1 = this.h;
+      int $$2 = $$1 + $$0;
+      this.b($$2);
+      this.h = $$2;
+      return this.f + (long)$$1;
    }
 
-   public static void a(HttpURLConnection $$0, String $$1, String $$2) {
-      String $$3 = $$0.getRequestProperty("Cookie");
-      if ($$3 == null) {
-         $$0.setRequestProperty("Cookie", $$1 + "=" + $$2);
+   private void b(int $$0) {
+      if ($$0 > this.g) {
+         int $$1 = Math.min(this.g, 2097152);
+         int $$2 = Math.max(this.g + $$1, $$0);
+         this.c($$2);
+      }
+   }
+
+   private void c(int $$0) {
+      a.free(this.f);
+      this.f = c.realloc(this.f, (long)$$0);
+      a.malloc(this.f, $$0);
+      b.debug("Needed to grow BufferBuilder buffer: Old size {} bytes, new size {} bytes.", this.g, $$0);
+      if (this.f == 0L) {
+         throw new OutOfMemoryError("Failed to resize buffer from " + this.g + " bytes to " + $$0 + " bytes");
       } else {
-         $$0.setRequestProperty("Cookie", $$3 + ";" + $$1 + "=" + $$2);
+         this.g = $$0;
       }
    }
 
-   public void a(boolean $$0) {
-      this.a.addRequestProperty("Is-Prerelease", String.valueOf($$0));
-   }
-
-   public int a() {
-      return a(this.a);
-   }
-
-   public static int a(HttpURLConnection $$0) {
-      String $$1 = $$0.getHeaderField("Retry-After");
-
-      try {
-         return Integer.valueOf($$1);
-      } catch (Exception var3) {
-         return 5;
-      }
-   }
-
-   public int b() {
-      try {
-         this.d();
-         return this.a.getResponseCode();
-      } catch (Exception var2) {
-         throw new fig(var2.getMessage(), var2);
-      }
-   }
-
-   public String c() {
-      try {
-         this.d();
-         String $$0;
-         if (this.b() >= 400) {
-            $$0 = this.a(this.a.getErrorStream());
-         } else {
-            $$0 = this.a(this.a.getInputStream());
-         }
-
-         this.f();
-         return $$0;
-      } catch (IOException var2) {
-         throw new fig(var2.getMessage(), var2);
-      }
-   }
-
-   private String a(@Nullable InputStream $$0) throws IOException {
-      if ($$0 == null) {
-         return "";
+   @Nullable
+   public fgo.a a() {
+      this.f();
+      int $$0 = this.i;
+      int $$1 = this.h - $$0;
+      if ($$1 == 0) {
+         return null;
       } else {
-         InputStreamReader $$1 = new InputStreamReader($$0, StandardCharsets.UTF_8);
-         StringBuilder $$2 = new StringBuilder();
+         this.i = this.h;
+         this.j++;
+         return new fgo.a($$0, $$1, this.k);
+      }
+   }
 
-         for (int $$3 = $$1.read(); $$3 != -1; $$3 = $$1.read()) {
-            $$2.append((char)$$3);
-         }
+   public void b() {
+      if (this.j > 0) {
+         b.warn("Clearing BufferBuilder with unused batches");
+      }
 
-         return $$2.toString();
+      this.c();
+   }
+
+   public void c() {
+      this.f();
+      if (this.j > 0) {
+         this.e();
+         this.j = 0;
+      }
+   }
+
+   boolean d(int $$0) {
+      return $$0 == this.k;
+   }
+
+   void d() {
+      if (--this.j <= 0) {
+         this.e();
+      }
+   }
+
+   private void e() {
+      int $$0 = this.h - this.i;
+      if ($$0 > 0) {
+         MemoryUtil.memCopy(this.f + (long)this.i, this.f, (long)$$0);
+      }
+
+      this.h = $$0;
+      this.i = 0;
+      this.k++;
+   }
+
+   @Override
+   public void close() {
+      if (this.f != 0L) {
+         a.free(this.f);
+         c.free(this.f);
+         this.f = 0L;
+         this.k = -1;
       }
    }
 
    private void f() {
-      byte[] $$0 = new byte[1024];
+      if (this.f == 0L) {
+         throw new IllegalStateException("Buffer has been freed");
+      }
+   }
 
-      try {
-         InputStream $$1 = this.a.getInputStream();
+   public class a implements AutoCloseable {
+      private final int b;
+      private final int c;
+      private final int d;
+      private boolean e;
 
-         while ($$1.read($$0) > 0) {
+      a(final int $$1, final int $$2, final int $$3) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public ByteBuffer a() {
+         if (!fgo.this.d(this.d)) {
+            throw new IllegalStateException("Buffer is no longer valid");
+         } else {
+            return MemoryUtil.memByteBuffer(fgo.this.f + (long)this.b, this.c);
          }
+      }
 
-         $$1.close();
-         return;
-      } catch (Exception var9) {
-         try {
-            InputStream $$3 = this.a.getErrorStream();
-            if ($$3 != null) {
-               while ($$3.read($$0) > 0) {
-               }
-
-               $$3.close();
-               return;
+      @Override
+      public void close() {
+         if (!this.e) {
+            this.e = true;
+            if (fgo.this.d(this.d)) {
+               fgo.this.d();
             }
-         } catch (IOException var8) {
-            return;
-         }
-      } finally {
-         if (this.a != null) {
-            this.a.disconnect();
-         }
-      }
-   }
-
-   protected T d() {
-      if (this.c) {
-         return (T)this;
-      } else {
-         T $$0 = this.e();
-         this.c = true;
-         return $$0;
-      }
-   }
-
-   protected abstract T e();
-
-   public static fgo<?> a(String $$0) {
-      return new fgo.b($$0, 5000, 60000);
-   }
-
-   public static fgo<?> a(String $$0, int $$1, int $$2) {
-      return new fgo.b($$0, $$1, $$2);
-   }
-
-   public static fgo<?> b(String $$0, String $$1) {
-      return new fgo.c($$0, $$1, 5000, 60000);
-   }
-
-   public static fgo<?> a(String $$0, String $$1, int $$2, int $$3) {
-      return new fgo.c($$0, $$1, $$2, $$3);
-   }
-
-   public static fgo<?> b(String $$0) {
-      return new fgo.a($$0, 5000, 60000);
-   }
-
-   public static fgo<?> c(String $$0, String $$1) {
-      return new fgo.d($$0, $$1, 5000, 60000);
-   }
-
-   public static fgo<?> b(String $$0, String $$1, int $$2, int $$3) {
-      return new fgo.d($$0, $$1, $$2, $$3);
-   }
-
-   public String c(String $$0) {
-      return a(this.a, $$0);
-   }
-
-   public static String a(HttpURLConnection $$0, String $$1) {
-      try {
-         return $$0.getHeaderField($$1);
-      } catch (Exception var3) {
-         return "";
-      }
-   }
-
-   public static class a extends fgo<fgo.a> {
-      public a(String $$0, int $$1, int $$2) {
-         super($$0, $$1, $$2);
-      }
-
-      public fgo.a f() {
-         try {
-            this.a.setDoOutput(true);
-            this.a.setRequestMethod("DELETE");
-            this.a.connect();
-            return this;
-         } catch (Exception var2) {
-            throw new fig(var2.getMessage(), var2);
-         }
-      }
-   }
-
-   public static class b extends fgo<fgo.b> {
-      public b(String $$0, int $$1, int $$2) {
-         super($$0, $$1, $$2);
-      }
-
-      public fgo.b f() {
-         try {
-            this.a.setDoInput(true);
-            this.a.setDoOutput(true);
-            this.a.setUseCaches(false);
-            this.a.setRequestMethod("GET");
-            return this;
-         } catch (Exception var2) {
-            throw new fig(var2.getMessage(), var2);
-         }
-      }
-   }
-
-   public static class c extends fgo<fgo.c> {
-      private final String c;
-
-      public c(String $$0, String $$1, int $$2, int $$3) {
-         super($$0, $$2, $$3);
-         this.c = $$1;
-      }
-
-      public fgo.c f() {
-         try {
-            if (this.c != null) {
-               this.a.setRequestProperty("Content-Type", "application/json; charset=utf-8");
-            }
-
-            this.a.setDoInput(true);
-            this.a.setDoOutput(true);
-            this.a.setUseCaches(false);
-            this.a.setRequestMethod("POST");
-            OutputStream $$0 = this.a.getOutputStream();
-            OutputStreamWriter $$1 = new OutputStreamWriter($$0, "UTF-8");
-            $$1.write(this.c);
-            $$1.close();
-            $$0.flush();
-            return this;
-         } catch (Exception var3) {
-            throw new fig(var3.getMessage(), var3);
-         }
-      }
-   }
-
-   public static class d extends fgo<fgo.d> {
-      private final String c;
-
-      public d(String $$0, String $$1, int $$2, int $$3) {
-         super($$0, $$2, $$3);
-         this.c = $$1;
-      }
-
-      public fgo.d f() {
-         try {
-            if (this.c != null) {
-               this.a.setRequestProperty("Content-Type", "application/json; charset=utf-8");
-            }
-
-            this.a.setDoOutput(true);
-            this.a.setDoInput(true);
-            this.a.setRequestMethod("PUT");
-            OutputStream $$0 = this.a.getOutputStream();
-            OutputStreamWriter $$1 = new OutputStreamWriter($$0, "UTF-8");
-            $$1.write(this.c);
-            $$1.close();
-            $$0.flush();
-            return this;
-         } catch (Exception var3) {
-            throw new fig(var3.getMessage(), var3);
          }
       }
    }

@@ -1,34 +1,38 @@
-public class guq extends gqz<cmm, ham, geg> {
-   private static final akv a = akv.b("textures/entity/strider/strider.png");
-   private static final akv b = akv.b("textures/entity/strider/strider_cold.png");
-   private static final float k = 0.5F;
+public class guq extends guj<cif, har, gdy> {
+   private static final aku a = aku.b("textures/entity/parrot/parrot_red_blue.png");
+   private static final aku b = aku.b("textures/entity/parrot/parrot_blue.png");
+   private static final aku k = aku.b("textures/entity/parrot/parrot_green.png");
+   private static final aku l = aku.b("textures/entity/parrot/parrot_yellow_blue.png");
+   private static final aku m = aku.b("textures/entity/parrot/parrot_grey.png");
 
-   public guq(gsf.a $$0) {
-      super($$0, new geg($$0.a(gfd.dd)), new geg($$0.a(gfd.df)), 0.5F);
-      this.a(new gwv<>(this, new geg($$0.a(gfd.de)), new geg($$0.a(gfd.dg)), akv.b("textures/entity/strider/strider_saddle.png")));
+   public guq(gtd.a $$0) {
+      super($$0, new gdy($$0.a(ggb.bP)), 0.3F);
    }
 
-   public akv a(ham $$0) {
-      return $$0.b ? b : a;
+   public aku a(har $$0) {
+      return a($$0.a);
    }
 
-   protected float b(ham $$0) {
-      float $$1 = super.g($$0);
-      return $$0.aj ? $$1 * 0.5F : $$1;
+   public har b() {
+      return new har();
    }
 
-   public ham b() {
-      return new ham();
-   }
-
-   public void a(cmm $$0, ham $$1, float $$2) {
+   public void a(cif $$0, har $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.j();
-      $$1.b = $$0.p();
-      $$1.c = $$0.ca();
+      $$1.a = $$0.gG();
+      float $$3 = ayz.h($$2, $$0.bM, $$0.bJ);
+      float $$4 = ayz.h($$2, $$0.bL, $$0.bK);
+      $$1.b = (ayz.a($$3) + 1.0F) * $$4;
+      $$1.c = gdy.a($$0);
    }
 
-   protected boolean c(ham $$0) {
-      return super.a($$0) || $$0.b;
+   public static aku a(cif.b $$0) {
+      return switch ($$0) {
+         case a -> a;
+         case b -> b;
+         case c -> k;
+         case d -> l;
+         case e -> m;
+      };
    }
 }

@@ -1,105 +1,124 @@
-import java.util.Optional;
-import java.util.function.Consumer;
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dwc {
-   private static final dwc.a a = dwc.a.a("trial_chamber/breeze");
-   private static final dwc.a b = dwc.a.a("trial_chamber/melee/husk");
-   private static final dwc.a c = dwc.a.a("trial_chamber/melee/spider");
-   private static final dwc.a d = dwc.a.a("trial_chamber/melee/zombie");
-   private static final dwc.a e = dwc.a.a("trial_chamber/ranged/poison_skeleton");
-   private static final dwc.a f = dwc.a.a("trial_chamber/ranged/skeleton");
-   private static final dwc.a g = dwc.a.a("trial_chamber/ranged/stray");
-   private static final dwc.a h = dwc.a.a("trial_chamber/slow_ranged/poison_skeleton");
-   private static final dwc.a i = dwc.a.a("trial_chamber/slow_ranged/skeleton");
-   private static final dwc.a j = dwc.a.a("trial_chamber/slow_ranged/stray");
-   private static final dwc.a k = dwc.a.a("trial_chamber/small_melee/baby_zombie");
-   private static final dwc.a l = dwc.a.a("trial_chamber/small_melee/cave_spider");
-   private static final dwc.a m = dwc.a.a("trial_chamber/small_melee/silverfish");
-   private static final dwc.a n = dwc.a.a("trial_chamber/small_melee/slime");
+public class dwc extends dus implements ecr.b<ecy.b>, ecy {
+   private static final Logger a = LogUtils.getLogger();
+   private ecy.a b;
+   private final ecy.b c;
+   private final ecy.d d = this.b();
+   private int h;
 
-   public static void a(qe<dwb> $$0) {
-      a(
-         $$0,
-         a,
-         dwb.b().b(1.0F).d(0.5F).b(20).a(2.0F).c(1.0F).a(bqt.a(a(but.r))).a(),
-         dwb.b().d(0.5F).b(20).a(4.0F).c(1.0F).a(bqt.a(a(but.r))).b(bqt.<aku<evx>>a().a(evo.aN, 3).a(evo.aO, 7).a()).a()
-      );
-      a($$0, b, c().a(bqt.a(a(but.am))).a(), c().a(bqt.a(a(but.am, evo.ak))).b(bqt.<aku<evx>>a().a(evo.aN, 3).a(evo.aO, 7).a()).a());
-      a($$0, c, c().a(bqt.a(a(but.bn))).a(), a().a(bqt.a(a(but.bn))).b(bqt.<aku<evx>>a().a(evo.aN, 3).a(evo.aO, 7).a()).a());
-      a($$0, d, c().a(bqt.a(a(but.bN))).a(), c().b(bqt.<aku<evx>>a().a(evo.aN, 3).a(evo.aO, 7).a()).a(bqt.a(a(but.bN, evo.ak))).a());
-      a($$0, e, c().a(bqt.a(a(but.q))).a(), c().b(bqt.<aku<evx>>a().a(evo.aN, 3).a(evo.aO, 7).a()).a(bqt.a(a(but.q, evo.aj))).a());
-      a($$0, f, c().a(bqt.a(a(but.be))).a(), c().b(bqt.<aku<evx>>a().a(evo.aN, 3).a(evo.aO, 7).a()).a(bqt.a(a(but.be, evo.aj))).a());
-      a($$0, g, c().a(bqt.a(a(but.br))).a(), c().b(bqt.<aku<evx>>a().a(evo.aN, 3).a(evo.aO, 7).a()).a(bqt.a(a(but.br, evo.aj))).a());
-      a($$0, h, b().a(bqt.a(a(but.q))).a(), b().b(bqt.<aku<evx>>a().a(evo.aN, 3).a(evo.aO, 7).a()).a(bqt.a(a(but.q, evo.aj))).a());
-      a($$0, i, b().a(bqt.a(a(but.be))).a(), b().b(bqt.<aku<evx>>a().a(evo.aN, 3).a(evo.aO, 7).a()).a(bqt.a(a(but.be, evo.aj))).a());
-      a($$0, j, b().a(bqt.a(a(but.br))).a(), b().b(bqt.<aku<evx>>a().a(evo.aN, 3).a(evo.aO, 7).a()).a(bqt.a(a(but.br, evo.aj))).a());
-      a(
-         $$0,
-         k,
-         dwb.b().d(0.5F).b(20).a(bqt.a(a(but.bN, $$0x -> $$0x.a("IsBaby", true), null))).a(),
-         dwb.b().d(0.5F).b(20).b(bqt.<aku<evx>>a().a(evo.aN, 3).a(evo.aO, 7).a()).a(bqt.a(a(but.bN, $$0x -> $$0x.a("IsBaby", true), evo.ak))).a()
-      );
-      a($$0, l, c().a(bqt.a(a(but.v))).a(), a().b(bqt.<aku<evx>>a().a(evo.aN, 3).a(evo.aO, 7).a()).a(bqt.a(a(but.v))).a());
-      a($$0, m, c().a(bqt.a(a(but.bd))).a(), a().b(bqt.<aku<evx>>a().a(evo.aN, 3).a(evo.aO, 7).a()).a(bqt.a(a(but.bd))).a());
-      a(
-         $$0,
-         n,
-         c().a(bqt.<dhd>a().a(a(but.bg, $$0x -> $$0x.a("Size", (byte)1)), 3).a(a(but.bg, $$0x -> $$0x.a("Size", (byte)2)), 1).a()).a(),
-         a()
-            .b(bqt.<aku<evx>>a().a(evo.aN, 3).a(evo.aO, 7).a())
-            .a(bqt.<dhd>a().a(a(but.bg, $$0x -> $$0x.a("Size", (byte)1)), 3).a(a(but.bg, $$0x -> $$0x.a("Size", (byte)2)), 1).a())
-            .a()
-      );
+   protected dwc(duu<?> $$0, ji $$1, dxq $$2) {
+      super($$0, $$1, $$2);
+      this.b = new ecy.a();
+      this.c = new ecy.b(this);
    }
 
-   private static <T extends bum> dhd a(but<T> $$0) {
-      return a($$0, $$0x -> {
-      }, null);
+   public dwc(ji $$0, dxq $$1) {
+      this(duu.J, $$0, $$1);
    }
 
-   private static <T extends bum> dhd a(but<T> $$0, Consumer<tq> $$1) {
-      return a($$0, $$1, null);
+   public ecy.d b() {
+      return new dwc.a(this.aA_());
    }
 
-   private static <T extends bum> dhd a(but<T> $$0, aku<evx> $$1) {
-      return a($$0, $$0x -> {
-      }, $$1);
+   @Override
+   protected void a(tq $$0, jt.a $$1) {
+      super.a($$0, $$1);
+      this.h = $$0.h("last_vibration_frequency");
+      aks<un> $$2 = $$1.a(ue.a);
+      if ($$0.b("listener", 10)) {
+         ecy.a.a
+            .parse($$2, $$0.p("listener"))
+            .resultOrPartial($$0x -> a.error("Failed to parse vibration listener for Sculk Sensor: '{}'", $$0x))
+            .ifPresent($$0x -> this.b = $$0x);
+      }
    }
 
-   private static <T extends bum> dhd a(but<T> $$0, Consumer<tq> $$1, @Nullable aku<evx> $$2) {
-      tq $$3 = new tq();
-      $$3.a("id", mb.f.b($$0).toString());
-      $$1.accept($$3);
-      Optional<buw> $$4 = Optional.ofNullable($$2).map($$0x -> new buw($$0x, 0.0F));
-      return new dhd($$3, Optional.empty(), $$4);
+   @Override
+   protected void b(tq $$0, jt.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("last_vibration_frequency", this.h);
+      aks<un> $$2 = $$1.a(ue.a);
+      ecy.a.a
+         .encodeStart($$2, this.b)
+         .resultOrPartial($$0x -> a.error("Failed to encode vibration listener for Sculk Sensor: '{}'", $$0x))
+         .ifPresent($$1x -> $$0.a("listener", $$1x));
    }
 
-   private static void a(qe<dwb> $$0, dwc.a $$1, dwb $$2, dwb $$3) {
-      $$0.a($$1.a, $$2);
-      $$0.a($$1.b, $$3);
+   @Override
+   public ecy.a x() {
+      return this.b;
    }
 
-   static aku<dwb> a(String $$0) {
-      return aku.a(mc.bd, akv.b($$0));
+   @Override
+   public ecy.d gs() {
+      return this.d;
    }
 
-   private static dwb.a a() {
-      return dwb.b().b(4.0F).d(0.5F).b(20).a(12.0F);
+   public int d() {
+      return this.h;
    }
 
-   private static dwb.a b() {
-      return dwb.b().b(4.0F).d(2.0F).b(160);
+   public void a(int $$0) {
+      this.h = $$0;
    }
 
-   private static dwb.a c() {
-      return dwb.b().b(3.0F).d(0.5F).b(20);
+   public ecy.b f() {
+      return this.c;
    }
 
-   static record a(aku<dwb> a, aku<dwb> b) {
+   protected class a implements ecy.d {
+      public static final int b = 8;
+      protected final ji c;
+      private final ect a;
 
-      public static dwc.a a(String $$0) {
-         return new dwc.a(dwc.a($$0 + "/normal"), dwc.a($$0 + "/ominous"));
+      public a(final ji $$1) {
+         this.c = $$1;
+         this.a = new ecl($$1);
+      }
+
+      @Override
+      public int a() {
+         return 8;
+      }
+
+      @Override
+      public ect b() {
+         return this.a;
+      }
+
+      @Override
+      public boolean d() {
+         return true;
+      }
+
+      @Override
+      public boolean a(ard $$0, ji $$1, jr<ecp> $$2, @Nullable ecp.a $$3) {
+         return !$$1.equals(this.c) || !$$2.a(ecp.f) && !$$2.a(ecp.i) ? drc.q(dwc.this.m()) : false;
+      }
+
+      @Override
+      public void a(ard $$0, ji $$1, jr<ecp> $$2, @Nullable bva $$3, @Nullable bva $$4, float $$5) {
+         dxq $$6 = dwc.this.m();
+         if (drc.q($$6)) {
+            dwc.this.a(ecy.a_($$2));
+            int $$7 = ecy.a_($$5, this.a());
+            if ($$6.b() instanceof drc $$8) {
+               $$8.a($$3, $$0, this.c, $$6, $$7, dwc.this.d());
+            }
+         }
+      }
+
+      @Override
+      public void e() {
+         dwc.this.e();
+      }
+
+      @Override
+      public boolean f() {
+         return true;
       }
    }
 }

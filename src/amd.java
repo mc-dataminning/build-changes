@@ -1,323 +1,266 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.arguments.DoubleArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.Dynamic3CommandExceptionType;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.stream.Stream;
 
 public class amd {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> (wp)$$0);
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wp.b("commands.attribute.failed.entity", $$0));
    private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(
-      ($$0, $$1) -> wp.b("commands.advancement.criterionNotFound", $$0, $$1)
+      ($$0, $$1) -> wp.b("commands.attribute.failed.no_attribute", $$0, $$1)
+   );
+   private static final Dynamic3CommandExceptionType c = new Dynamic3CommandExceptionType(
+      ($$0, $$1, $$2) -> wp.b("commands.attribute.failed.no_modifier", $$1, $$0, $$2)
+   );
+   private static final Dynamic3CommandExceptionType d = new Dynamic3CommandExceptionType(
+      ($$0, $$1, $$2) -> wp.b("commands.attribute.failed.modifier_already_present", $$2, $$1, $$0)
    );
 
-   public static void a(CommandDispatcher<ex> $$0) {
+   public static void a(CommandDispatcher<ex> $$0, et $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("advancement").requires($$0x -> $$0x.c(2)))
-               .then(
-                  ey.a("grant")
-                     .then(
-                        ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ey.a("targets", fk.d())
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("attribute").requires($$0x -> $$0x.c(2)))
+            .then(
+               ey.a("target", fk.a())
+                  .then(
+                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ey.a("attribute", fw.a($$1, mc.c))
+                              .then(
+                                 ((LiteralArgumentBuilder)ey.a("get")
+                                       .executes($$0x -> a((ex)$$0x.getSource(), fk.a($$0x, "target"), fw.a($$0x, "attribute"), 1.0)))
+                                    .then(
+                                       ey.a("scale", DoubleArgumentType.doubleArg())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (ex)$$0x.getSource(),
+                                                   fk.a($$0x, "target"),
+                                                   fw.a($$0x, "attribute"),
+                                                   DoubleArgumentType.getDouble($$0x, "scale")
+                                                )
+                                          )
+                                    )
+                              ))
+                           .then(
+                              ((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("base")
                                        .then(
-                                          ey.a("only")
+                                          ey.a("set")
                                              .then(
-                                                ((RequiredArgumentBuilder)ey.a("advancement", fx.a(mc.bj))
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (ex)$$0x.getSource(),
-                                                               fk.f($$0x, "targets"),
-                                                               amd.a.a,
-                                                               a($$0x, fx.e($$0x, "advancement"), amd.b.a)
-                                                            )
-                                                      ))
-                                                   .then(
-                                                      ey.a("criterion", StringArgumentType.greedyString())
-                                                         .suggests(($$0x, $$1) -> fc.b(fx.e($$0x, "advancement").b().e().keySet(), $$1))
-                                                         .executes(
-                                                            $$0x -> a(
-                                                                  (ex)$$0x.getSource(),
-                                                                  fk.f($$0x, "targets"),
-                                                                  amd.a.a,
-                                                                  fx.e($$0x, "advancement"),
-                                                                  StringArgumentType.getString($$0x, "criterion")
-                                                               )
+                                                ey.a("value", DoubleArgumentType.doubleArg())
+                                                   .executes(
+                                                      $$0x -> c(
+                                                            (ex)$$0x.getSource(),
+                                                            fk.a($$0x, "target"),
+                                                            fw.a($$0x, "attribute"),
+                                                            DoubleArgumentType.getDouble($$0x, "value")
                                                          )
                                                    )
                                              )
                                        ))
                                     .then(
-                                       ey.a("from")
+                                       ((LiteralArgumentBuilder)ey.a("get")
+                                             .executes($$0x -> b((ex)$$0x.getSource(), fk.a($$0x, "target"), fw.a($$0x, "attribute"), 1.0)))
                                           .then(
-                                             ey.a("advancement", fx.a(mc.bj))
+                                             ey.a("scale", DoubleArgumentType.doubleArg())
                                                 .executes(
-                                                   $$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), amd.a.a, a($$0x, fx.e($$0x, "advancement"), amd.b.c))
+                                                   $$0x -> b(
+                                                         (ex)$$0x.getSource(),
+                                                         fk.a($$0x, "target"),
+                                                         fw.a($$0x, "attribute"),
+                                                         DoubleArgumentType.getDouble($$0x, "scale")
+                                                      )
                                                 )
                                           )
                                     ))
-                                 .then(
-                                    ey.a("until")
-                                       .then(
-                                          ey.a("advancement", fx.a(mc.bj))
-                                             .executes(
-                                                $$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), amd.a.a, a($$0x, fx.e($$0x, "advancement"), amd.b.d))
-                                             )
-                                       )
-                                 ))
-                              .then(
-                                 ey.a("through")
+                                 .then(ey.a("reset").executes($$0x -> a((ex)$$0x.getSource(), fk.a($$0x, "target"), fw.a($$0x, "attribute"))))
+                           ))
+                        .then(
+                           ((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("modifier")
                                     .then(
-                                       ey.a("advancement", fx.a(mc.bj))
-                                          .executes(
-                                             $$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), amd.a.a, a($$0x, fx.e($$0x, "advancement"), amd.b.b))
-                                          )
-                                    )
-                              ))
-                           .then(
-                              ey.a("everything").executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), amd.a.a, ((ex)$$0x.getSource()).l().aD().b()))
-                           )
-                     )
-               ))
-            .then(
-               ey.a("revoke")
-                  .then(
-                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ey.a("targets", fk.d())
-                                    .then(
-                                       ey.a("only")
+                                       ey.a("add")
                                           .then(
-                                             ((RequiredArgumentBuilder)ey.a("advancement", fx.a(mc.bj))
-                                                   .executes(
-                                                      $$0x -> a(
-                                                            (ex)$$0x.getSource(), fk.f($$0x, "targets"), amd.a.b, a($$0x, fx.e($$0x, "advancement"), amd.b.a)
-                                                         )
-                                                   ))
+                                             ey.a("id", fy.a())
                                                 .then(
-                                                   ey.a("criterion", StringArgumentType.greedyString())
-                                                      .suggests(($$0x, $$1) -> fc.b(fx.e($$0x, "advancement").b().e().keySet(), $$1))
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (ex)$$0x.getSource(),
-                                                               fk.f($$0x, "targets"),
-                                                               amd.a.b,
-                                                               fx.e($$0x, "advancement"),
-                                                               StringArgumentType.getString($$0x, "criterion")
+                                                   ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ey.a("value", DoubleArgumentType.doubleArg())
+                                                            .then(
+                                                               ey.a("add_value")
+                                                                  .executes(
+                                                                     $$0x -> a(
+                                                                           (ex)$$0x.getSource(),
+                                                                           fk.a($$0x, "target"),
+                                                                           fw.a($$0x, "attribute"),
+                                                                           fy.a($$0x, "id"),
+                                                                           DoubleArgumentType.getDouble($$0x, "value"),
+                                                                           bxe.a.a
+                                                                        )
+                                                                  )
+                                                            ))
+                                                         .then(
+                                                            ey.a("add_multiplied_base")
+                                                               .executes(
+                                                                  $$0x -> a(
+                                                                        (ex)$$0x.getSource(),
+                                                                        fk.a($$0x, "target"),
+                                                                        fw.a($$0x, "attribute"),
+                                                                        fy.a($$0x, "id"),
+                                                                        DoubleArgumentType.getDouble($$0x, "value"),
+                                                                        bxe.a.b
+                                                                     )
+                                                               )
+                                                         ))
+                                                      .then(
+                                                         ey.a("add_multiplied_total")
+                                                            .executes(
+                                                               $$0x -> a(
+                                                                     (ex)$$0x.getSource(),
+                                                                     fk.a($$0x, "target"),
+                                                                     fw.a($$0x, "attribute"),
+                                                                     fy.a($$0x, "id"),
+                                                                     DoubleArgumentType.getDouble($$0x, "value"),
+                                                                     bxe.a.c
+                                                                  )
                                                             )
                                                       )
                                                 )
                                           )
                                     ))
                                  .then(
-                                    ey.a("from")
+                                    ey.a("remove")
                                        .then(
-                                          ey.a("advancement", fx.a(mc.bj))
-                                             .executes(
-                                                $$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), amd.a.b, a($$0x, fx.e($$0x, "advancement"), amd.b.c))
-                                             )
+                                          ey.a("id", fy.a())
+                                             .suggests(($$0x, $$1x) -> fc.a(c(fk.a($$0x, "target"), fw.a($$0x, "attribute")), $$1x))
+                                             .executes($$0x -> a((ex)$$0x.getSource(), fk.a($$0x, "target"), fw.a($$0x, "attribute"), fy.a($$0x, "id")))
                                        )
                                  ))
                               .then(
-                                 ey.a("until")
+                                 ey.a("value")
                                     .then(
-                                       ey.a("advancement", fx.a(mc.bj))
-                                          .executes(
-                                             $$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), amd.a.b, a($$0x, fx.e($$0x, "advancement"), amd.b.d))
+                                       ey.a("get")
+                                          .then(
+                                             ((RequiredArgumentBuilder)ey.a("id", fy.a())
+                                                   .suggests(($$0x, $$1x) -> fc.a(c(fk.a($$0x, "target"), fw.a($$0x, "attribute")), $$1x))
+                                                   .executes(
+                                                      $$0x -> a((ex)$$0x.getSource(), fk.a($$0x, "target"), fw.a($$0x, "attribute"), fy.a($$0x, "id"), 1.0)
+                                                   ))
+                                                .then(
+                                                   ey.a("scale", DoubleArgumentType.doubleArg())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (ex)$$0x.getSource(),
+                                                               fk.a($$0x, "target"),
+                                                               fw.a($$0x, "attribute"),
+                                                               fy.a($$0x, "id"),
+                                                               DoubleArgumentType.getDouble($$0x, "scale")
+                                                            )
+                                                      )
+                                                )
                                           )
                                     )
-                              ))
-                           .then(
-                              ey.a("through")
-                                 .then(
-                                    ey.a("advancement", fx.a(mc.bj))
-                                       .executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), amd.a.b, a($$0x, fx.e($$0x, "advancement"), amd.b.b)))
-                                 )
-                           ))
-                        .then(ey.a("everything").executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), amd.a.b, ((ex)$$0x.getSource()).l().aD().b())))
+                              )
+                        )
                   )
             )
       );
    }
 
-   private static int a(ex $$0, Collection<are> $$1, amd.a $$2, Collection<ai> $$3) throws CommandSyntaxException {
-      int $$4 = 0;
-
-      for (are $$5 : $$1) {
-         $$4 += $$2.a($$5, $$3);
-      }
-
-      if ($$4 == 0) {
-         if ($$3.size() == 1) {
-            if ($$1.size() == 1) {
-               throw a.create(wp.a($$2.a() + ".one.to.one.failure", ah.a($$3.iterator().next()), $$1.iterator().next().p_()));
-            } else {
-               throw a.create(wp.a($$2.a() + ".one.to.many.failure", ah.a($$3.iterator().next()), $$1.size()));
-            }
-         } else if ($$1.size() == 1) {
-            throw a.create(wp.a($$2.a() + ".many.to.one.failure", $$3.size(), $$1.iterator().next().p_()));
-         } else {
-            throw a.create(wp.a($$2.a() + ".many.to.many.failure", $$3.size(), $$1.size()));
-         }
+   private static bxc a(bva $$0, jr<bxb> $$1) throws CommandSyntaxException {
+      bxc $$2 = a($$0).eY().a($$1);
+      if ($$2 == null) {
+         throw b.create($$0.al(), a($$1));
       } else {
-         if ($$3.size() == 1) {
-            if ($$1.size() == 1) {
-               $$0.a(() -> wp.a($$2.a() + ".one.to.one.success", ah.a($$3.iterator().next()), $$1.iterator().next().p_()), true);
-            } else {
-               $$0.a(() -> wp.a($$2.a() + ".one.to.many.success", ah.a($$3.iterator().next()), $$1.size()), true);
-            }
-         } else if ($$1.size() == 1) {
-            $$0.a(() -> wp.a($$2.a() + ".many.to.one.success", $$3.size(), $$1.iterator().next().p_()), true);
-         } else {
-            $$0.a(() -> wp.a($$2.a() + ".many.to.many.success", $$3.size(), $$1.size()), true);
-         }
-
-         return $$4;
-      }
-   }
-
-   private static int a(ex $$0, Collection<are> $$1, amd.a $$2, ai $$3, String $$4) throws CommandSyntaxException {
-      int $$5 = 0;
-      ah $$6 = $$3.b();
-      if (!$$6.e().containsKey($$4)) {
-         throw b.create(ah.a($$3), $$4);
-      } else {
-         for (are $$7 : $$1) {
-            if ($$2.a($$7, $$3, $$4)) {
-               $$5++;
-            }
-         }
-
-         if ($$5 == 0) {
-            if ($$1.size() == 1) {
-               throw a.create(wp.a($$2.a() + ".criterion.to.one.failure", $$4, ah.a($$3), $$1.iterator().next().p_()));
-            } else {
-               throw a.create(wp.a($$2.a() + ".criterion.to.many.failure", $$4, ah.a($$3), $$1.size()));
-            }
-         } else {
-            if ($$1.size() == 1) {
-               $$0.a(() -> wp.a($$2.a() + ".criterion.to.one.success", $$4, ah.a($$3), $$1.iterator().next().p_()), true);
-            } else {
-               $$0.a(() -> wp.a($$2.a() + ".criterion.to.many.success", $$4, ah.a($$3), $$1.size()), true);
-            }
-
-            return $$5;
-         }
-      }
-   }
-
-   private static List<ai> a(CommandContext<ex> $$0, ai $$1, amd.b $$2) {
-      an $$3 = ((ex)$$0.getSource()).l().aD().a();
-      aj $$4 = $$3.a($$1);
-      if ($$4 == null) {
-         return List.of($$1);
-      } else {
-         List<ai> $$5 = new ArrayList<>();
-         if ($$2.f) {
-            for (aj $$6 = $$4.c(); $$6 != null; $$6 = $$6.c()) {
-               $$5.add($$6.b());
-            }
-         }
-
-         $$5.add($$1);
-         if ($$2.g) {
-            a($$4, $$5);
-         }
-
-         return $$5;
-      }
-   }
-
-   private static void a(aj $$0, List<ai> $$1) {
-      for (aj $$2 : $$0.e()) {
-         $$1.add($$2.b());
-         a($$2, $$1);
-      }
-   }
-
-   static enum a {
-      a("grant") {
-         @Override
-         protected boolean a(are $$0, ai $$1) {
-            ak $$2 = $$0.S().b($$1);
-            if ($$2.a()) {
-               return false;
-            } else {
-               for (String $$3 : $$2.e()) {
-                  $$0.S().a($$1, $$3);
-               }
-
-               return true;
-            }
-         }
-
-         @Override
-         protected boolean a(are $$0, ai $$1, String $$2) {
-            return $$0.S().a($$1, $$2);
-         }
-      },
-      b("revoke") {
-         @Override
-         protected boolean a(are $$0, ai $$1) {
-            ak $$2 = $$0.S().b($$1);
-            if (!$$2.b()) {
-               return false;
-            } else {
-               for (String $$3 : $$2.f()) {
-                  $$0.S().b($$1, $$3);
-               }
-
-               return true;
-            }
-         }
-
-         @Override
-         protected boolean a(are $$0, ai $$1, String $$2) {
-            return $$0.S().b($$1, $$2);
-         }
-      };
-
-      private final String c;
-
-      a(final String $$0) {
-         this.c = "commands.advancement." + $$0;
-      }
-
-      public int a(are $$0, Iterable<ai> $$1) {
-         int $$2 = 0;
-
-         for (ai $$3 : $$1) {
-            if (this.a($$0, $$3)) {
-               $$2++;
-            }
-         }
-
          return $$2;
       }
+   }
 
-      protected abstract boolean a(are var1, ai var2);
-
-      protected abstract boolean a(are var1, ai var2, String var3);
-
-      protected String a() {
-         return this.c;
+   private static bvy a(bva $$0) throws CommandSyntaxException {
+      if (!($$0 instanceof bvy)) {
+         throw a.create($$0.al());
+      } else {
+         return (bvy)$$0;
       }
    }
 
-   static enum b {
-      a(false, false),
-      b(true, true),
-      c(false, true),
-      d(true, false),
-      e(true, true);
-
-      final boolean f;
-      final boolean g;
-
-      private b(final boolean $$0, final boolean $$1) {
-         this.f = $$0;
-         this.g = $$1;
+   private static bvy b(bva $$0, jr<bxb> $$1) throws CommandSyntaxException {
+      bvy $$2 = a($$0);
+      if (!$$2.eY().b($$1)) {
+         throw b.create($$0.al(), a($$1));
+      } else {
+         return $$2;
       }
+   }
+
+   private static int a(ex $$0, bva $$1, jr<bxb> $$2, double $$3) throws CommandSyntaxException {
+      bvy $$4 = b($$1, $$2);
+      double $$5 = $$4.h($$2);
+      $$0.a(() -> wp.a("commands.attribute.value.get.success", a($$2), $$1.al(), $$5), false);
+      return (int)($$5 * $$3);
+   }
+
+   private static int b(ex $$0, bva $$1, jr<bxb> $$2, double $$3) throws CommandSyntaxException {
+      bvy $$4 = b($$1, $$2);
+      double $$5 = $$4.i($$2);
+      $$0.a(() -> wp.a("commands.attribute.base_value.get.success", a($$2), $$1.al(), $$5), false);
+      return (int)($$5 * $$3);
+   }
+
+   private static int a(ex $$0, bva $$1, jr<bxb> $$2, aku $$3, double $$4) throws CommandSyntaxException {
+      bvy $$5 = b($$1, $$2);
+      bxd $$6 = $$5.eY();
+      if (!$$6.a($$2, $$3)) {
+         throw c.create($$1.al(), a($$2), $$3);
+      } else {
+         double $$7 = $$6.b($$2, $$3);
+         $$0.a(() -> wp.a("commands.attribute.modifier.value.get.success", wp.a($$3), a($$2), $$1.al(), $$7), false);
+         return (int)($$7 * $$4);
+      }
+   }
+
+   private static Stream<aku> c(bva $$0, jr<bxb> $$1) throws CommandSyntaxException {
+      bxc $$2 = a($$0, $$1);
+      return $$2.c().stream().map(bxe::b);
+   }
+
+   private static int c(ex $$0, bva $$1, jr<bxb> $$2, double $$3) throws CommandSyntaxException {
+      a($$1, $$2).a($$3);
+      $$0.a(() -> wp.a("commands.attribute.base_value.set.success", a($$2), $$1.al(), $$3), false);
+      return 1;
+   }
+
+   private static int a(ex $$0, bva $$1, jr<bxb> $$2) throws CommandSyntaxException {
+      bvy $$3 = a($$1);
+      if (!$$3.eY().e($$2)) {
+         throw b.create($$1.al(), a($$2));
+      } else {
+         double $$4 = $$3.i($$2);
+         $$0.a(() -> wp.a("commands.attribute.base_value.reset.success", a($$2), $$1.al(), $$4), false);
+         return 1;
+      }
+   }
+
+   private static int a(ex $$0, bva $$1, jr<bxb> $$2, aku $$3, double $$4, bxe.a $$5) throws CommandSyntaxException {
+      bxc $$6 = a($$1, $$2);
+      bxe $$7 = new bxe($$3, $$4, $$5);
+      if ($$6.b($$3)) {
+         throw d.create($$1.al(), a($$2), $$3);
+      } else {
+         $$6.d($$7);
+         $$0.a(() -> wp.a("commands.attribute.modifier.add.success", wp.a($$3), a($$2), $$1.al()), false);
+         return 1;
+      }
+   }
+
+   private static int a(ex $$0, bva $$1, jr<bxb> $$2, aku $$3) throws CommandSyntaxException {
+      bxc $$4 = a($$1, $$2);
+      if ($$4.c($$3)) {
+         $$0.a(() -> wp.a("commands.attribute.modifier.remove.success", wp.a($$3), a($$2), $$1.al()), false);
+         return 1;
+      } else {
+         throw c.create($$1.al(), a($$2), $$3);
+      }
+   }
+
+   private static wp a(jr<bxb> $$0) {
+      return wp.c($$0.a().c());
    }
 }

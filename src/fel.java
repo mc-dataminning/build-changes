@@ -1,17 +1,21 @@
-import java.util.OptionalInt;
+public enum fel {
+   a(35048, false, true),
+   b(35044, false, true),
+   c(35040, false, true),
+   d(35045, true, false),
+   e(35049, true, false),
+   f(35041, true, false),
+   g(35050, false, false),
+   h(35046, false, false),
+   i(35042, false, false);
 
-public class fel {
-   public final int a;
-   public final int b;
-   public final OptionalInt c;
-   public final OptionalInt d;
-   public final boolean e;
+   final int j;
+   final boolean k;
+   final boolean l;
 
-   public fel(int $$0, int $$1, OptionalInt $$2, OptionalInt $$3, boolean $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   private fel(final int $$0, final boolean $$1, final boolean $$2) {
+      this.j = $$0;
+      this.k = $$1;
+      this.l = $$2;
    }
 }

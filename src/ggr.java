@@ -1,181 +1,138 @@
-import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
+import com.google.common.base.Strings;
+import com.google.gson.JsonParser;
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.minecraft.UserApiService;
+import com.mojang.authlib.minecraft.InsecurePublicKeyException.MissingException;
+import com.mojang.authlib.yggdrasil.response.KeyPairResponse;
+import com.mojang.authlib.yggdrasil.response.KeyPairResponse.KeyPair;
 import com.mojang.logging.LogUtils;
-import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelException;
-import io.netty.channel.ChannelHandler;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.EventLoopGroup;
-import io.netty.channel.socket.nio.NioSocketChannel;
-import java.net.InetSocketAddress;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import com.mojang.serialization.JsonOps;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.security.PublicKey;
+import java.time.DateTimeException;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class ggr {
-   private static final Logger a = LogUtils.getLogger();
-   private static final wp b = wp.c("multiplayer.status.cannot_connect").b(-65536);
-   private final List<vi> c = Collections.synchronizedList(Lists.newArrayList());
+public class ggr implements ghl {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Duration c = Duration.ofHours(1L);
+   private static final Path d = Path.of("profilekeys");
+   private final UserApiService e;
+   private final Path f;
+   private CompletableFuture<Optional<cpt>> g = CompletableFuture.completedFuture(Optional.empty());
+   private Instant h = Instant.EPOCH;
 
-   public void a(final ggp $$0, final Runnable $$1, final Runnable $$2) throws UnknownHostException {
-      final ghs $$3 = ghs.a($$0.b);
-      Optional<InetSocketAddress> $$4 = ghu.a.a($$3).map(ghr::d);
-      if ($$4.isEmpty()) {
-         this.a(ftl.b, $$0);
-      } else {
-         final InetSocketAddress $$5 = $$4.get();
-         final vi $$6 = vi.a($$5, false, null);
-         this.c.add($$6);
-         $$0.d = wp.c("multiplayer.status.pinging");
-         $$0.i = Collections.emptyList();
-         ajq $$7 = new ajq() {
-            private boolean h;
-            private boolean i;
-            private long j;
-
-            @Override
-            public void a(ajr $$0x) {
-               if (this.i) {
-                  $$6.a(wp.c("multiplayer.status.unrequested"));
-               } else {
-                  this.i = true;
-                  ajs $$1 = $$0.b();
-                  $$0.d = $$1.a();
-                  $$1.c().ifPresentOrElse($$1xxx -> {
-                     $$0.h = wp.b($$1xxx.b());
-                     $$0.g = $$1xxx.c();
-                  }, () -> {
-                     $$0.h = wp.c("multiplayer.status.old");
-                     $$0.g = 0;
-                  });
-                  $$1.b().ifPresentOrElse($$1xxx -> {
-                     $$0.c = ggr.a($$1xxx.b(), $$1xxx.a());
-                     $$0.e = $$1xxx;
-                     if (!$$1xxx.c().isEmpty()) {
-                        List<wp> $$2xx = new ArrayList<>($$1xxx.c().size());
-
-                        for (GameProfile $$3xx : $$1xxx.c()) {
-                           $$2xx.add(wp.b($$3xx.getName()));
-                        }
-
-                        if ($$1xxx.c().size() < $$1xxx.b()) {
-                           $$2xx.add(wp.a("multiplayer.status.and_more", $$1xxx.b() - $$1xxx.c().size()));
-                        }
-
-                        $$0.i = $$2xx;
-                     } else {
-                        $$0.i = List.of();
-                     }
-                  }, () -> $$0.c = wp.c("multiplayer.status.unknown").a(n.i));
-                  $$1.d().ifPresent($$2xx -> {
-                     if (!Arrays.equals($$2xx.a(), $$0.c())) {
-                        $$0.a(ggp.b($$2xx.a()));
-                        $$1.run();
-                     }
-                  });
-                  this.j = af.c();
-                  $$6.a(new ajo(this.j));
-                  this.h = true;
-               }
-            }
-
-            @Override
-            public void a(ajl $$0x) {
-               long $$1 = this.j;
-               long $$2 = af.c();
-               $$0.f = $$2 - $$1;
-               $$6.a(wp.c("multiplayer.status.finished"));
-               $$2.run();
-            }
-
-            @Override
-            public void a(vk $$0x) {
-               if (!this.h) {
-                  ggr.this.a($$0.a(), $$0);
-                  ggr.this.a($$5, $$3, $$0);
-               }
-            }
-
-            @Override
-            public boolean c() {
-               return $$6.i();
-            }
-         };
-
-         try {
-            $$6.a($$3.a(), $$3.b(), $$7);
-            $$6.a(aju.a);
-         } catch (Throwable var10) {
-            a.error("Failed to ping server {}", $$3, var10);
-         }
-      }
+   public ggr(UserApiService $$0, UUID $$1, Path $$2) {
+      this.e = $$0;
+      this.f = $$2.resolve(d).resolve($$1 + ".json");
    }
 
-   void a(wp $$0, ggp $$1) {
-      a.error("Can't ping {}: {}", $$1.b, $$0.getString());
-      $$1.d = b;
-      $$1.c = wo.a;
+   @Override
+   public CompletableFuture<Optional<cpt>> a() {
+      this.h = Instant.now().plus(c);
+      this.g = this.g.thenCompose(this::a);
+      return this.g;
    }
 
-   void a(InetSocketAddress $$0, final ghs $$1, final ggp $$2) {
-      ((Bootstrap)((Bootstrap)((Bootstrap)new Bootstrap().group((EventLoopGroup)vi.e.get())).handler(new ChannelInitializer<Channel>() {
-         protected void initChannel(Channel $$0) {
+   @Override
+   public boolean b() {
+      return this.g.isDone() && Instant.now().isAfter(this.h) ? this.g.join().<Boolean>map(cpt::a).orElse(true) : false;
+   }
+
+   private CompletableFuture<Optional<cpt>> a(Optional<cpt> $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         if ($$0.isPresent() && !$$0.get().a()) {
+            if (!ab.aU) {
+               this.a(null);
+            }
+
+            return $$0;
+         } else {
             try {
-               $$0.config().setOption(ChannelOption.TCP_NODELAY, true);
-            } catch (ChannelException var3) {
+               cpt $$1 = this.a(this.e);
+               this.a($$1);
+               return Optional.ofNullable($$1);
+            } catch (axy | MinecraftClientException | IOException var3) {
+               b.error("Failed to retrieve profile key pair", var3);
+               this.a(null);
+               return $$0;
             }
-
-            $$0.pipeline().addLast(new ChannelHandler[]{new ggi($$1, ($$1xx, $$2xx, $$3, $$4, $$5) -> {
-               $$2.a(ggp.b.d);
-               $$2.h = wp.b($$2xx);
-               $$2.d = wp.b($$3);
-               $$2.c = ggr.a($$4, $$5);
-               $$2.e = new ajs.b($$5, $$4, List.of());
-            })});
          }
-      })).channel(NioSocketChannel.class)).connect($$0.getAddress(), $$0.getPort());
+      }, af.j());
    }
 
-   public static wp a(int $$0, int $$1) {
-      wp $$2 = wp.b(Integer.toString($$0)).a(n.h);
-      wp $$3 = wp.b(Integer.toString($$1)).a(n.h);
-      return wp.a("multiplayer.status.player_count", $$2, $$3).a(n.i);
-   }
-
-   public void a() {
-      synchronized (this.c) {
-         Iterator<vi> $$0 = this.c.iterator();
-
-         while ($$0.hasNext()) {
-            vi $$1 = $$0.next();
-            if ($$1.i()) {
-               $$1.b();
-            } else {
-               $$0.remove();
-               $$1.n();
+   private Optional<cpt> c() {
+      if (Files.notExists(this.f)) {
+         return Optional.empty();
+      } else {
+         try {
+            Optional var2;
+            try (BufferedReader $$0 = Files.newBufferedReader(this.f)) {
+               var2 = cpt.a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$0)).result();
             }
+
+            return var2;
+         } catch (Exception var6) {
+            b.error("Failed to read profile key pair file {}", this.f, var6);
+            return Optional.empty();
          }
       }
    }
 
-   public void b() {
-      synchronized (this.c) {
-         Iterator<vi> $$0 = this.c.iterator();
+   private void a(@Nullable cpt $$0) {
+      try {
+         Files.deleteIfExists(this.f);
+      } catch (IOException var3) {
+         b.error("Failed to delete profile key pair file {}", this.f, var3);
+      }
 
-         while ($$0.hasNext()) {
-            vi $$1 = $$0.next();
-            if ($$1.i()) {
-               $$0.remove();
-               $$1.a(wp.c("multiplayer.status.cancelled"));
-            }
+      if ($$0 != null) {
+         if (ab.aU) {
+            cpt.a.encodeStart(JsonOps.INSTANCE, $$0).ifSuccess($$0x -> {
+               try {
+                  Files.createDirectories(this.f.getParent());
+                  Files.writeString(this.f, $$0x.toString());
+               } catch (Exception var3x) {
+                  b.error("Failed to write profile key pair file {}", this.f, var3x);
+               }
+            });
          }
+      }
+   }
+
+   @Nullable
+   private cpt a(UserApiService $$0) throws axy, IOException {
+      KeyPairResponse $$1 = $$0.getKeyPair();
+      if ($$1 != null) {
+         cpu.a $$2 = a($$1);
+         return new cpt(axx.a($$1.keyPair().privateKey()), new cpu($$2), Instant.parse($$1.refreshedAfter()));
+      } else {
+         return null;
+      }
+   }
+
+   private static cpu.a a(KeyPairResponse $$0) throws axy {
+      KeyPair $$1 = $$0.keyPair();
+      if ($$1 != null && !Strings.isNullOrEmpty($$1.publicKey()) && $$0.publicKeySignature() != null && $$0.publicKeySignature().array().length != 0) {
+         try {
+            Instant $$2 = Instant.parse($$0.expiresAt());
+            PublicKey $$3 = axx.b($$1.publicKey());
+            ByteBuffer $$4 = $$0.publicKeySignature();
+            return new cpu.a($$2, $$3, $$4.array());
+         } catch (IllegalArgumentException | DateTimeException var5) {
+            throw new axy(var5);
+         }
+      } else {
+         throw new axy(new MissingException("Missing public key"));
       }
    }
 }

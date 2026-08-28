@@ -1,45 +1,42 @@
-import java.util.Arrays;
+public class gcs extends gda<gzc> {
+   private final ggc a;
+   private final ggc b;
+   private final ggc c;
+   private final ggc d;
+   private final ggc e;
+   private static final int f = 6;
 
-public class gcs extends gcc<hai> {
-   private static final int a = 8;
-   private final gfe[] b = new gfe[8];
-
-   public gcs(gfe $$0) {
+   public gcs(ggc $$0) {
       super($$0);
-      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
+      this.a = $$0.b("head");
+      this.c = $$0.b("right_hind_leg");
+      this.b = $$0.b("left_hind_leg");
+      this.e = $$0.b("right_front_leg");
+      this.d = $$0.b("left_front_leg");
    }
 
-   private static String a(int $$0) {
-      return "cube" + $$0;
+   public static ggi a(ggg $$0) {
+      ggk $$1 = new ggk();
+      ggm $$2 = $$1.a();
+      $$2.a("head", ggh.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), gge.a(0.0F, 6.0F, 0.0F));
+      $$2.a("body", ggh.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), gge.a(0.0F, 6.0F, 0.0F));
+      ggh $$3 = ggh.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, $$0);
+      $$2.a("right_hind_leg", $$3, gge.a(-2.0F, 18.0F, 4.0F));
+      $$2.a("left_hind_leg", $$3, gge.a(2.0F, 18.0F, 4.0F));
+      $$2.a("right_front_leg", $$3, gge.a(-2.0F, 18.0F, -4.0F));
+      $$2.a("left_front_leg", $$3, gge.a(2.0F, 18.0F, -4.0F));
+      return ggi.a($$1, 64, 32);
    }
 
-   public static gfk a() {
-      gfm $$0 = new gfm();
-      gfo $$1 = $$0.a();
-
-      for (int $$2 = 0; $$2 < 8; $$2++) {
-         int $$3 = 0;
-         int $$4 = 0;
-         if ($$2 > 0 && $$2 < 4) {
-            $$4 += 9 * $$2;
-         } else if ($$2 > 3) {
-            $$3 = 32;
-            $$4 += 9 * $$2 - 36;
-         }
-
-         $$1.a(a($$2), gfj.c().a($$3, $$4).a(-4.0F, (float)(16 + $$2), -4.0F, 8.0F, 1.0F, 8.0F), gfg.a);
-      }
-
-      $$1.a("inside_cube", gfj.c().a(24, 40).a(-2.0F, 18.0F, -2.0F, 4.0F, 4.0F, 4.0F), gfg.a);
-      return gfk.a($$0, 64, 64);
-   }
-
-   public void a(hai $$0) {
+   public void a(gzc $$0) {
       super.a($$0);
-      float $$1 = Math.max(0.0F, $$0.a);
-
-      for (int $$2 = 0; $$2 < this.b.length; $$2++) {
-         this.b[$$2].c = (float)(-(4 - $$2)) * $$1 * 1.7F;
-      }
+      this.a.f = $$0.aa * (float) (Math.PI / 180.0);
+      this.a.e = $$0.ab * (float) (Math.PI / 180.0);
+      float $$1 = $$0.ae;
+      float $$2 = $$0.ad;
+      this.b.e = ayz.b($$2 * 0.6662F) * 1.4F * $$1;
+      this.c.e = ayz.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
+      this.d.e = ayz.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
+      this.e.e = ayz.b($$2 * 0.6662F) * 1.4F * $$1;
    }
 }

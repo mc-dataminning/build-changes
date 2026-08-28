@@ -1,32 +1,31 @@
-public class cbk extends cbi {
-   private final int h;
-   private static final int i = 10;
-   private static final int j = 20;
+import com.google.common.collect.ImmutableMap;
 
-   public cbk(bvk $$0, int $$1) {
-      super($$0);
-      this.h = $$1;
+public class cbk<E extends cou> extends bxr<E> {
+   public cbk(int $$0) {
+      super(ImmutableMap.of(cfc.o, cfd.b, cfc.m, cfd.b), $$0);
    }
 
-   @Override
-   public void a() {
-      if (this.d > 0) {
-         this.d--;
-         this.i().ifPresent($$0x -> this.a.aZ = this.a(this.a.aZ, $$0x + 20.0F, this.b));
-         this.h().ifPresent($$0x -> this.a.w(this.a(this.a.dN(), $$0x + 10.0F, this.c)));
+   protected boolean a(ard $$0, E $$1, long $$2) {
+      return $$1.dQ() == null;
+   }
+
+   protected boolean a(ard $$0, E $$1) {
+      return $$1.aJ() || $$1.bj() || $$1.bv();
+   }
+
+   protected void b(ard $$0, E $$1, long $$2) {
+      if ($$1.aJ()) {
+         $$1.b(bwk.o);
+         $$1.a(awa.CJ, 5.0F, 1.0F);
       } else {
-         if (this.a.P().k()) {
-            this.a.w(this.a(this.a.dN(), 0.0F, 5.0F));
-         }
-
-         this.a.aZ = this.a(this.a.aZ, this.a.aX, this.b);
+         $$1.a(awa.CE, 5.0F, 1.0F);
+         this.c($$0, $$1, $$2);
       }
+   }
 
-      float $$0 = ayz.h(this.a.aZ - this.a.aX);
-      if ($$0 < (float)(-this.h)) {
-         this.a.aX -= 4.0F;
-      } else if ($$0 > (float)this.h) {
-         this.a.aX += 4.0F;
+   protected void c(ard $$0, E $$1, long $$2) {
+      if ($$1.dQ() == null) {
+         $$1.a(bva.d.b);
       }
    }
 }

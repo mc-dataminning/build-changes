@@ -1,37 +1,61 @@
-import javax.annotation.Nullable;
-
-public class ett {
-   private final dfs a;
-   @Nullable
-   private final ets b;
-   private final ji c;
-   private final ji.a d = new ji.a();
-
-   public ett(dfs $$0, bvk $$1) {
-      this.a = $$0;
-      if ($$1.dV() instanceof ard $$2) {
-         this.b = $$2.I();
-      } else {
-         this.b = null;
-      }
-
-      this.c = $$1.dv();
+public class ett extends etv {
+   @Override
+   public cxd a() {
+      return cxl.a;
    }
 
-   public etr a(int $$0, int $$1, int $$2) {
-      ji $$3 = this.d.d($$0, $$1, $$2);
-      return this.b == null ? etw.b(this.a, $$3) : this.b.a(this.a, $$3);
+   @Override
+   public boolean a(etw $$0, dgf $$1, ji $$2, etv $$3, jn $$4) {
+      return true;
    }
 
-   public dwy a(ji $$0) {
-      return this.a.a_($$0);
+   @Override
+   public fbx a(dgf $$0, ji $$1, etw $$2) {
+      return fbx.c;
    }
 
-   public dfs a() {
-      return this.a;
+   @Override
+   public int a(dhc $$0) {
+      return 0;
    }
 
-   public ji b() {
-      return this.c;
+   @Override
+   protected boolean b() {
+      return true;
+   }
+
+   @Override
+   protected float c() {
+      return 0.0F;
+   }
+
+   @Override
+   public float a(etw $$0, dgf $$1, ji $$2) {
+      return 0.0F;
+   }
+
+   @Override
+   public float a(etw $$0) {
+      return 0.0F;
+   }
+
+   @Override
+   protected dxq b(etw $$0) {
+      return dkg.a.m();
+   }
+
+   @Override
+   public boolean c(etw $$0) {
+      return false;
+   }
+
+   @Override
+   public int d(etw $$0) {
+      return 0;
+   }
+
+   @Override
+   public fcr b(etw $$0, dgf $$1, ji $$2) {
+      return fco.a();
    }
 }

@@ -1,22 +1,40 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejb implements eid {
+public class ejb implements eiy {
    public static final Codec<ejb> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(0, 512).fieldOf("floor_search_range").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 64).fieldOf("placement_radius_around_floor").forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("placement_probability_per_valid_position").forGetter($$0x -> $$0x.d)
+               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").orElse(30).forGetter($$0x -> $$0x.b),
+               bsd.b(1, 60).fieldOf("column_radius").forGetter($$0x -> $$0x.c),
+               bsb.a(0.0F, 20.0F).fieldOf("height_scale").forGetter($$0x -> $$0x.d),
+               Codec.floatRange(0.1F, 1.0F).fieldOf("max_column_radius_to_cave_height_ratio").forGetter($$0x -> $$0x.e),
+               bsb.a(0.1F, 10.0F).fieldOf("stalactite_bluntness").forGetter($$0x -> $$0x.f),
+               bsb.a(0.1F, 10.0F).fieldOf("stalagmite_bluntness").forGetter($$0x -> $$0x.g),
+               bsb.a(0.0F, 2.0F).fieldOf("wind_speed").forGetter($$0x -> $$0x.h),
+               Codec.intRange(0, 100).fieldOf("min_radius_for_wind").forGetter($$0x -> $$0x.i),
+               Codec.floatRange(0.0F, 5.0F).fieldOf("min_bluntness_for_wind").forGetter($$0x -> $$0x.j)
             )
             .apply($$0, ejb::new)
    );
    public final int b;
-   public final int c;
-   public final float d;
+   public final bsd c;
+   public final bsb d;
+   public final float e;
+   public final bsb f;
+   public final bsb g;
+   public final bsb h;
+   public final int i;
+   public final float j;
 
-   public ejb(int $$0, int $$1, float $$2) {
+   public ejb(int $$0, bsd $$1, bsb $$2, float $$3, bsb $$4, bsb $$5, bsb $$6, int $$7, float $$8) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
    }
 }

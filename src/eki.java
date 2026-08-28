@@ -1,40 +1,51 @@
-import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
 
-public class eki extends ekh {
-   public static final MapCodec<eki> g = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, eki::new));
-   protected final List<dwy> h;
+public class eki extends ekk {
+   public static final MapCodec<eki> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, eki::new));
 
-   protected static <P extends eki> P4<Mu<P>, Long, esd.a, Float, List<dwy>> b(Instance<P> $$0) {
-      return a($$0).and(ayi.b(dwy.a.listOf()).fieldOf("states").forGetter($$0x -> $$0x.h));
-   }
-
-   public eki(long $$0, esd.a $$1, float $$2, List<dwy> $$3) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
+   public eki(bsd $$0, bsd $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected ekf<?> a() {
-      return ekf.d;
+   protected ekl<?> a() {
+      return ekl.i;
    }
 
    @Override
-   public dwy a(azh $$0, ji $$1) {
-      return this.a(this.h, $$1, (double)this.e);
+   protected void a(dhf $$0, ekk.b $$1, azh $$2, eju $$3, int $$4, ekk.a $$5, int $$6, int $$7, int $$8) {
+      ji $$9 = $$5.a().b($$8);
+      boolean $$10 = $$5.c();
+      if ($$10) {
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 3, 0, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, 1, $$10);
+         if ($$2.h()) {
+            this.a($$0, $$1, $$2, $$3, $$9, $$7, 2, $$10);
+         }
+      } else {
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 1, 0, $$10);
+      }
    }
 
-   protected dwy a(List<dwy> $$0, ji $$1, double $$2) {
-      double $$3 = this.a($$1, $$2);
-      return this.a($$0, $$3);
+   @Override
+   public int a(azh $$0, int $$1, eju $$2) {
+      return 4;
    }
 
-   protected dwy a(List<dwy> $$0, double $$1) {
-      double $$2 = ayz.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
-      return $$0.get((int)($$2 * (double)$$0.size()));
+   @Override
+   protected boolean b(azh $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$2 != 0 || !$$5 || $$1 != -$$4 && $$1 < $$4 || $$3 != -$$4 && $$3 < $$4 ? super.b($$0, $$1, $$2, $$3, $$4, $$5) : true;
+   }
+
+   @Override
+   protected boolean a(azh $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      if ($$2 == -1 && !$$5) {
+         return $$1 == $$4 && $$3 == $$4;
+      } else {
+         return $$2 == 1 ? $$1 + $$3 > $$4 * 2 - 2 : false;
+      }
    }
 }

@@ -1,77 +1,89 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 
-public class dah extends daj {
-   private final ji b;
-   protected boolean a = true;
+public record dah(List<dah.a> c, float d, int e, boolean f) {
+   public static final Codec<dah> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dah.a.a.listOf().fieldOf("rules").forGetter(dah::a),
+               Codec.FLOAT.optionalFieldOf("default_mining_speed", 1.0F).forGetter(dah::b),
+               ayi.l.optionalFieldOf("damage_per_block", 1).forGetter(dah::c),
+               Codec.BOOL.optionalFieldOf("can_destroy_blocks_in_creative", true).forGetter(dah::d)
+            )
+            .apply($$0, dah::new)
+   );
+   public static final yn<wa, dah> b = yn.a(dah.a.b.a(yl.a()), dah::a, yl.l, dah::b, yl.h, dah::c, yl.b, dah::d, dah::new);
 
-   public dah(coy $$0, bsk $$1, cwq $$2, fax $$3) {
-      this($$0.dV(), $$0, $$1, $$2, $$3);
+   public float a(dxq $$0) {
+      for (dah.a $$1 : this.c) {
+         if ($$1.d.isPresent() && $$0.a($$1.c)) {
+            return $$1.d.get();
+         }
+      }
+
+      return this.d;
    }
 
-   public dah(daj $$0) {
-      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
+   public boolean b(dxq $$0) {
+      for (dah.a $$1 : this.c) {
+         if ($$1.e.isPresent() && $$0.a($$1.c)) {
+            return $$1.e.get();
+         }
+      }
+
+      return false;
    }
 
-   protected dah(dgj $$0, @Nullable coy $$1, bsk $$2, cwq $$3, fax $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.b = $$4.b().a($$4.c());
-      this.a = $$0.a_($$4.b()).a(this);
+   public List<dah.a> a() {
+      return this.c;
    }
 
-   public static dah a(dah $$0, ji $$1, jn $$2) {
-      return new dah(
-         $$0.q(),
-         $$0.o(),
-         $$0.p(),
-         $$0.n(),
-         new fax(
-            new fbb((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
-            $$2,
-            $$1,
-            false
-         )
+   public float b() {
+      return this.d;
+   }
+
+   public int c() {
+      return this.e;
+   }
+
+   public boolean d() {
+      return this.f;
+   }
+
+   public static record a(jv<dke> c, Optional<Float> d, Optional<Boolean> e) {
+      public static final Codec<dah.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  kg.a(mc.f).fieldOf("blocks").forGetter(dah.a::a),
+                  ayi.o.optionalFieldOf("speed").forGetter(dah.a::b),
+                  Codec.BOOL.optionalFieldOf("correct_for_drops").forGetter(dah.a::c)
+               )
+               .apply($$0, dah.a::new)
       );
-   }
+      public static final yn<wa, dah.a> b = yn.a(yl.c(mc.f), dah.a::a, yl.l.a(yl::a), dah.a::b, yl.b.a(yl::a), dah.a::c, dah.a::new);
 
-   @Override
-   public ji a() {
-      return this.a ? super.a() : this.b;
-   }
+      public static dah.a a(jv<dke> $$0, float $$1) {
+         return new dah.a($$0, Optional.of($$1), Optional.of(true));
+      }
 
-   public boolean b() {
-      return this.a || this.q().a_(this.a()).a(this);
-   }
+      public static dah.a a(jv<dke> $$0) {
+         return new dah.a($$0, Optional.empty(), Optional.of(false));
+      }
 
-   public boolean c() {
-      return this.a;
-   }
+      public static dah.a b(jv<dke> $$0, float $$1) {
+         return new dah.a($$0, Optional.of($$1), Optional.empty());
+      }
 
-   public jn d() {
-      return jn.a(this.o())[0];
-   }
+      public jv<dke> a() {
+         return this.c;
+      }
 
-   public jn e() {
-      return jn.a(this.o(), jn.a.b);
-   }
+      public Optional<Float> b() {
+         return this.d;
+      }
 
-   public jn[] f() {
-      jn[] $$0 = jn.a(this.o());
-      if (this.a) {
-         return $$0;
-      } else {
-         jn $$1 = this.k();
-         int $$2 = 0;
-
-         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
-            $$2++;
-         }
-
-         if ($$2 > 0) {
-            System.arraycopy($$0, 0, $$0, 1, $$2);
-            $$0[0] = $$1.g();
-         }
-
-         return $$0;
+      public Optional<Boolean> c() {
+         return this.e;
       }
    }
 }

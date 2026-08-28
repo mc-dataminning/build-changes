@@ -1,42 +1,28 @@
-import com.google.common.collect.Sets;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public record fab(ezx b, ezx c) implements ezx {
-   public static final MapCodec<fab> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ezy.a.fieldOf("min").forGetter(fab::c), ezy.a.fieldOf("max").forGetter(fab::d)).apply($$0, fab::new)
-   );
+public class fab implements ezx {
+   private static final fab b = new fab();
+   public static final MapCodec<fab> a = MapCodec.unit(b);
 
-   @Override
-   public ezw b() {
-      return ezy.c;
-   }
-
-   public static fab a(float $$0, float $$1) {
-      return new fab(ezu.a($$0), ezu.a($$1));
+   private fab() {
    }
 
    @Override
-   public int a(evs $$0) {
-      return ayz.a($$0.b(), this.b.a($$0), this.c.a($$0));
-   }
-
-   @Override
-   public float b(evs $$0) {
-      return ayz.a($$0.b(), this.b.b($$0), this.c.b($$0));
+   public ezy b() {
+      return ezz.g;
    }
 
    @Override
    public Set<bai<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
+      return Set.of(ezi.b);
    }
 
-   public ezx c() {
-      return this.b;
+   public boolean a(ewo $$0) {
+      return $$0.a(ezi.b);
    }
 
-   public ezx d() {
-      return this.c;
+   public static ezx.a c() {
+      return () -> b;
    }
 }

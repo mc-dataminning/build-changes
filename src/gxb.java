@@ -1,17 +1,24 @@
-public class gxb extends gwu<gzx, gdh> {
-   public static final akv a = akv.b("textures/entity/trident_riptide.png");
-   private final gee b;
-
-   public gxb(guc<gzx, gdh> $$0, gfa $$1) {
+public abstract class gxb<S extends gzj, M extends gda<S>> extends gxs<S, M> {
+   public gxb(gva<S, M> $$0) {
       super($$0);
-      this.b = new gee($$1.a(gfd.cn));
    }
 
-   public void a(ffv $$0, glz $$1, int $$2, gzx $$3, float $$4, float $$5) {
-      if ($$3.al) {
-         ffz $$6 = $$1.getBuffer(this.b.a(a));
-         this.b.a($$3);
-         this.b.a($$0, $$6, $$2, hej.d);
+   @Override
+   public void a(fgr $$0, gmx $$1, int $$2, S $$3, float $$4, float $$5) {
+      if (this.a($$3)) {
+         float $$6 = $$3.u;
+         M $$7 = this.c();
+         fgv $$8 = $$1.getBuffer(gnh.b(this.a(), this.a($$6) % 1.0F, $$6 * 0.01F % 1.0F));
+         $$7.a($$3);
+         $$7.a($$0, $$8, $$2, hfh.d, -8355712);
       }
    }
+
+   protected abstract boolean a(S var1);
+
+   protected abstract float a(float var1);
+
+   protected abstract aku a();
+
+   protected abstract M c();
 }

@@ -1,2 +1,8 @@
-public record hgh(int a, int b) {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface hgh {
 }

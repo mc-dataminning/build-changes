@@ -1,2 +1,4 @@
-public record fzm(edp a, dhg b) {
+@FunctionalInterface
+public interface fzm {
+   int currentIndex();
 }

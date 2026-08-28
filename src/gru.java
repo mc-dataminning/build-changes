@@ -1,22 +1,146 @@
-public class gru extends gqz<chh, gyg, gbv> {
-   private static final akv a = akv.b("textures/entity/dolphin.png");
+import java.util.Objects;
 
-   public gru(gsf.a $$0) {
-      super($$0, new gbv($$0.a(gfd.ap)), new gbv($$0.a(gfd.aq)), 0.7F);
-      this.a(new gwa(this));
+public abstract class gru<T extends crq, S extends ham> extends gtc<T, S> {
+   private static final aku b = aku.b("textures/entity/minecart.png");
+   protected final gdu a;
+   private final gob h;
+
+   public gru(gtd.a $$0, gga $$1) {
+      super($$0);
+      this.f = 0.7F;
+      this.a = new gdu($$0.a($$1));
+      this.h = $$0.d();
    }
 
-   public akv a(gyg $$0) {
-      return a;
+   public void a(S $$0, fgr $$1, gmx $$2, int $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$1.a();
+      long $$4 = $$0.c;
+      float $$5 = (((float)($$4 >> 16 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
+      float $$6 = (((float)($$4 >> 20 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
+      float $$7 = (((float)($$4 >> 24 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
+      $$1.a($$5, $$6, $$7);
+      if ($$0.i) {
+         a($$0, $$1);
+      } else {
+         b($$0, $$1);
+      }
+
+      float $$8 = $$0.e;
+      if ($$8 > 0.0F) {
+         $$1.a(a.b.rotationDegrees(ayz.a($$8) * $$8 * $$0.f / 10.0F * (float)$$0.d));
+      }
+
+      dxq $$9 = $$0.h;
+      if ($$9.o() != dqp.a) {
+         $$1.a();
+         float $$10 = 0.75F;
+         $$1.b(0.75F, 0.75F, 0.75F);
+         $$1.a(-0.5F, (float)($$0.g - 8) / 16.0F, 0.5F);
+         $$1.a(a.d.rotationDegrees(90.0F));
+         this.a($$0, $$9, $$1, $$2, $$3);
+         $$1.b();
+      }
+
+      $$1.b(-1.0F, -1.0F, 1.0F);
+      this.a.a($$0);
+      fgv $$11 = $$2.getBuffer(this.a.a(b));
+      this.a.a($$1, $$11, $$3, hfh.d);
+      $$1.b();
    }
 
-   public gyg a() {
-      return new gyg();
+   private static <S extends ham> void a(S $$0, fgr $$1) {
+      $$1.a(a.d.rotationDegrees($$0.b));
+      $$1.a(a.f.rotationDegrees(-$$0.a));
+      $$1.a(0.0F, 0.375F, 0.0F);
    }
 
-   public void a(chh $$0, gyg $$1, float $$2) {
+   private static <S extends ham> void b(S $$0, fgr $$1) {
+      double $$2 = $$0.r;
+      double $$3 = $$0.s;
+      double $$4 = $$0.t;
+      float $$5 = $$0.a;
+      float $$6 = $$0.b;
+      if ($$0.k != null && $$0.l != null && $$0.m != null) {
+         fbx $$7 = $$0.l;
+         fbx $$8 = $$0.m;
+         $$1.a($$0.k.d - $$2, ($$7.e + $$8.e) / 2.0 - $$3, $$0.k.f - $$4);
+         fbx $$9 = $$8.b(-$$7.d, -$$7.e, -$$7.f);
+         if ($$9.g() != 0.0) {
+            $$9 = $$9.d();
+            $$6 = (float)(Math.atan2($$9.f, $$9.d) * 180.0 / Math.PI);
+            $$5 = (float)(Math.atan($$9.e) * 73.0);
+         }
+      }
+
+      $$1.a(0.0F, 0.375F, 0.0F);
+      $$1.a(a.d.rotationDegrees(180.0F - $$6));
+      $$1.a(a.f.rotationDegrees(-$$5));
+   }
+
+   public void a(T $$0, S $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      gza.a($$0, $$1, this.i);
-      $$1.a = $$0.dy().j() > 1.0E-7;
+      if ($$0.f() instanceof csf $$3) {
+         a($$0, $$3, $$1, $$2);
+         $$1.i = true;
+      } else if ($$0.f() instanceof csg $$4) {
+         a($$0, $$4, $$1, $$2);
+         $$1.i = false;
+      }
+
+      long $$5 = (long)$$0.ar() * 493286711L;
+      $$1.c = $$5 * $$5 * 4392167121L + $$5 * 98761L;
+      $$1.e = (float)$$0.I() - $$2;
+      $$1.d = $$0.J();
+      $$1.f = Math.max($$0.H() - $$2, 0.0F);
+      $$1.g = $$0.w();
+      $$1.h = $$0.n();
+   }
+
+   private static <T extends crq, S extends ham> void a(T $$0, csf $$1, S $$2, float $$3) {
+      if ($$1.o()) {
+         $$2.j = $$1.e($$3);
+         $$2.a = $$1.c($$3);
+         $$2.b = $$1.d($$3);
+      } else {
+         $$2.j = null;
+         $$2.a = $$0.dM();
+         $$2.b = $$0.dK();
+      }
+   }
+
+   private static <T extends crq, S extends ham> void a(T $$0, csg $$1, S $$2, float $$3) {
+      float $$4 = 0.3F;
+      $$2.a = $$0.k($$3);
+      $$2.b = $$0.l($$3);
+      double $$5 = $$2.r;
+      double $$6 = $$2.s;
+      double $$7 = $$2.t;
+      fbx $$8 = $$1.d($$5, $$6, $$7);
+      if ($$8 != null) {
+         $$2.k = $$8;
+         fbx $$9 = $$1.a($$5, $$6, $$7, 0.3F);
+         fbx $$10 = $$1.a($$5, $$6, $$7, -0.3F);
+         $$2.l = Objects.requireNonNullElse($$9, $$8);
+         $$2.m = Objects.requireNonNullElse($$10, $$8);
+      } else {
+         $$2.k = null;
+         $$2.l = null;
+         $$2.m = null;
+      }
+   }
+
+   protected void a(S $$0, dxq $$1, fgr $$2, gmx $$3, int $$4) {
+      this.h.a($$1, $$2, $$3, $$4, hfh.d);
+   }
+
+   protected fbs a(T $$0) {
+      fbs $$1 = super.a($$0);
+      return $$0.y() ? $$1.g((double)Math.abs($$0.w()) / 16.0) : $$1;
+   }
+
+   public fbx a(S $$0) {
+      fbx $$1 = super.a($$0);
+      return $$0.i && $$0.j != null ? $$1.b($$0.j.d - $$0.r, $$0.j.e - $$0.s, $$0.j.f - $$0.t) : $$1;
    }
 }

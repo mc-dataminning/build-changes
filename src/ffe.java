@@ -1,17 +1,22 @@
-public interface ffe {
-   ffe a = new ffe() {
-      @Override
-      public <T> T a(ffg<T> $$0) {
-         return $$0.e();
-      }
+import java.io.File;
+import java.time.Duration;
 
-      @Override
-      public <T> void a(ffg<T> $$0, T $$1) {
-         $$0.a($$1);
-      }
-   };
+public class ffe {
+   private static final Duration a = Duration.ofSeconds(15L);
 
-   <T> T a(ffg<T> var1);
+   public static void a(File $$0, long $$1) {
+      Thread $$2 = new Thread(() -> {
+         try {
+            Thread.sleep(a);
+         } catch (InterruptedException var4) {
+            return;
+         }
 
-   <T> void a(ffg<T> var1, T var2);
+         o $$3 = apw.a("Client shutdown", $$1);
+         fmg.a($$0, $$3);
+      });
+      $$2.setDaemon(true);
+      $$2.setName("Client shutdown watchdog");
+      $$2.start();
+   }
 }

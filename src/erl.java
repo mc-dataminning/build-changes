@@ -1,157 +1,93 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class erl {
-   private dom a;
-   private dqf b;
-   private ji c;
-   private boolean d;
-   @Nullable
-   private enf e;
-   private eqz f;
-   @Nullable
-   private azh g;
-   private int h;
-   private final List<erm> i;
-   private boolean j;
-   private boolean k;
+public class erl extends esi {
+   public static final MapCodec<erl> a = Codec.FLOAT.fieldOf("mossiness").xmap(erl::new, $$0 -> $$0.f);
+   private static final float b = 0.5F;
+   private static final float c = 0.5F;
+   private static final float d = 0.15F;
+   private static final dxq[] e = new dxq[]{dkg.kc.m(), dkg.kj.m()};
+   private final float f;
 
-   public erl() {
-      this.a = dom.a;
-      this.b = dqf.a;
-      this.c = ji.c;
-      this.f = eqz.b;
-      this.i = Lists.newArrayList();
-   }
-
-   public erl a() {
-      erl $$0 = new erl();
-      $$0.a = this.a;
-      $$0.b = this.b;
-      $$0.c = this.c;
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      $$0.g = this.g;
-      $$0.h = this.h;
-      $$0.i.addAll(this.i);
-      $$0.j = this.j;
-      $$0.k = this.k;
-      return $$0;
-   }
-
-   public erl a(dom $$0) {
-      this.a = $$0;
-      return this;
-   }
-
-   public erl a(dqf $$0) {
-      this.b = $$0;
-      return this;
-   }
-
-   public erl a(ji $$0) {
-      this.c = $$0;
-      return this;
-   }
-
-   public erl a(boolean $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   public erl a(enf $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public erl a(@Nullable azh $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public erl a(eqz $$0) {
+   public erl(float $$0) {
       this.f = $$0;
-      return this;
-   }
-
-   public erl b(boolean $$0) {
-      this.j = $$0;
-      return this;
-   }
-
-   public erl b() {
-      this.i.clear();
-      return this;
-   }
-
-   public erl a(erm $$0) {
-      this.i.add($$0);
-      return this;
-   }
-
-   public erl b(erm $$0) {
-      this.i.remove($$0);
-      return this;
-   }
-
-   public dom c() {
-      return this.a;
-   }
-
-   public dqf d() {
-      return this.b;
-   }
-
-   public ji e() {
-      return this.c;
-   }
-
-   public azh b(@Nullable ji $$0) {
-      if (this.g != null) {
-         return this.g;
-      } else {
-         return $$0 == null ? azh.a(af.c()) : azh.a(ayz.a($$0));
-      }
-   }
-
-   public boolean f() {
-      return this.d;
    }
 
    @Nullable
-   public enf g() {
-      return this.e;
+   @Override
+   public esl.d a(dhc $$0, ji $$1, ji $$2, esl.d $$3, esl.d $$4, esh $$5) {
+      azh $$6 = $$5.b($$4.a());
+      dxq $$7 = $$4.b();
+      ji $$8 = $$4.a();
+      dxq $$9 = null;
+      if ($$7.a(dkg.eV) || $$7.a(dkg.b) || $$7.a(dkg.eY)) {
+         $$9 = this.a($$6);
+      } else if ($$7.a(awp.L)) {
+         $$9 = this.a($$6, $$4.b());
+      } else if ($$7.a(awp.M)) {
+         $$9 = this.b($$6);
+      } else if ($$7.a(awp.N)) {
+         $$9 = this.c($$6);
+      } else if ($$7.a(dkg.cv)) {
+         $$9 = this.d($$6);
+      }
+
+      return $$9 != null ? new esl.d($$8, $$9, $$4.c()) : $$4;
    }
 
-   public boolean h() {
-      return this.j;
-   }
-
-   public List<erm> i() {
-      return this.i;
-   }
-
-   public boolean j() {
-      return this.f == eqz.b;
-   }
-
-   public erp.b a(List<erp.b> $$0, @Nullable ji $$1) {
-      int $$2 = $$0.size();
-      if ($$2 == 0) {
-         throw new IllegalStateException("No palettes");
+   @Nullable
+   private dxq a(azh $$0) {
+      if ($$0.i() >= 0.5F) {
+         return null;
       } else {
-         return $$0.get(this.b($$1).a($$2));
+         dxq[] $$1 = new dxq[]{dkg.eX.m(), a($$0, dkg.fy)};
+         dxq[] $$2 = new dxq[]{dkg.eW.m(), a($$0, dkg.nI)};
+         return this.a($$0, $$1, $$2);
       }
    }
 
-   public erl c(boolean $$0) {
-      this.k = $$0;
-      return this;
+   @Nullable
+   private dxq a(azh $$0, dxq $$1) {
+      jn $$2 = $$1.c(dse.b);
+      dyp $$3 = $$1.c(dse.c);
+      if ($$0.i() >= 0.5F) {
+         return null;
+      } else {
+         dxq[] $$4 = new dxq[]{dkg.nI.m().b(dse.b, $$2).b(dse.c, $$3), dkg.nW.m()};
+         return this.a($$0, e, $$4);
+      }
    }
 
-   public boolean k() {
-      return this.k;
+   @Nullable
+   private dxq b(azh $$0) {
+      return $$0.i() < this.f ? dkg.nW.m() : null;
+   }
+
+   @Nullable
+   private dxq c(azh $$0) {
+      return $$0.i() < this.f ? dkg.ok.m() : null;
+   }
+
+   @Nullable
+   private dxq d(azh $$0) {
+      return $$0.i() < 0.15F ? dkg.pM.m() : null;
+   }
+
+   private static dxq a(azh $$0, dke $$1) {
+      return $$1.m().b(dse.b, jn.c.a.a($$0)).b(dse.c, af.a(dyp.values(), $$0));
+   }
+
+   private dxq a(azh $$0, dxq[] $$1, dxq[] $$2) {
+      return $$0.i() < this.f ? a($$0, $$2) : a($$0, $$1);
+   }
+
+   private static dxq a(azh $$0, dxq[] $$1) {
+      return $$1[$$0.a($$1.length)];
+   }
+
+   @Override
+   protected esk<?> a() {
+      return esk.k;
    }
 }

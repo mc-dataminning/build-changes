@@ -1,2 +1,11 @@
-public record bnx<S>(int a, bob<S> b, Object c) {
+public interface bnx {
+   int c();
+
+   int d();
+
+   long a(int var1);
+
+   long a(int var1, int var2);
+
+   void e();
 }

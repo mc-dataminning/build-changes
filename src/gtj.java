@@ -1,36 +1,32 @@
-public class gtj extends gtl<cly, hai, gcs> {
-   private static final akv a = akv.b("textures/entity/slime/magmacube.png");
+public class gtj extends gtc<cqf, gzq> {
+   private final hcl a;
 
-   public gtj(gsf.a $$0) {
-      super($$0, new gcs($$0.a(gfd.bx)), 0.25F);
+   public gtj(gtd.a $$0) {
+      super($$0);
+      this.a = $$0.b();
    }
 
-   protected int a(cly $$0, ji $$1) {
-      return 15;
+   public void a(gzq $$0, fgr $$1, gmx $$2, int $$3) {
+      $$1.a();
+      $$1.a(this.e.b());
+      if ($$0.a) {
+         $$1.a(a.f.rotationDegrees(180.0F));
+         $$1.a(a.d.rotationDegrees(180.0F));
+         $$1.a(a.b.rotationDegrees(90.0F));
+      }
+
+      $$0.b.a($$1, $$2, $$3, hfh.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public akv a(hai $$0) {
-      return a;
+   public gzq a() {
+      return new gzq();
    }
 
-   public hai b() {
-      return new hai();
-   }
-
-   public void a(cly $$0, hai $$1, float $$2) {
+   public void a(cqf $$0, gzq $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = ayz.h($$2, $$0.bY, $$0.bX);
-      $$1.b = $$0.gs();
-   }
-
-   protected float b(hai $$0) {
-      return (float)$$0.b * 0.25F;
-   }
-
-   protected void a(hai $$0, ffv $$1) {
-      int $$2 = $$0.b;
-      float $$3 = $$0.a / ((float)$$2 * 0.5F + 1.0F);
-      float $$4 = 1.0F / ($$3 + 1.0F);
-      $$1.b($$4 * (float)$$2, 1.0F / $$4 * (float)$$2, $$4 * (float)$$2);
+      $$1.a = $$0.g();
+      this.a.a($$1.b, $$0.f(), cxf.h, $$0);
    }
 }

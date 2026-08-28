@@ -25,6 +25,8 @@ public class axv {
    public static final URI s = URI.create("https://aka.ms/MinecraftRealmsTerms");
    public static final URI t = URI.create("https://aka.ms/MinecraftRealmsContentCreator");
    public static final String u = "https://aka.ms/ExtendJavaRealms";
+   public static final String v = "MCPE-28723";
+   public static final URI w = URI.create("https://bugs.mojang.com/browse/MCPE-28723");
 
    public static String a(@Nullable String $$0, UUID $$1, boolean $$2) {
       return $$0 == null ? "https://aka.ms/ExtendJavaRealms" : a($$0, $$1) + "&ref=" + ($$2 ? "expiredTrial" : "expiredRealm");

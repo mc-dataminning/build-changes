@@ -86,7 +86,7 @@ public class so {
                   so.this.k.d().accept(so.this.c);
                   so.this.g.forEach($$0xxx -> $$0xxx.b(so.this.k));
                   LongSet $$0 = new LongArraySet(so.this.c.y());
-                  $$0.forEach($$0xxx -> so.this.c.a(dfp.a($$0xxx), dfp.b($$0xxx), false));
+                  $$0.forEach($$0xxx -> so.this.c.a(dgg.a($$0xxx), dgg.b($$0xxx), false));
                   so.this.a($$0 + 1);
                }
             }
@@ -105,7 +105,7 @@ public class so {
                if (so.this.n) {
                   so.this.k.d().accept(so.this.c);
                   LongSet $$2 = new LongArraySet(so.this.c.y());
-                  $$2.forEach($$0xxx -> so.this.c.a(dfp.a($$0xxx), dfp.b($$0xxx), false));
+                  $$2.forEach($$0xxx -> so.this.c.a(dgg.a($$0xxx), dgg.b($$0xxx), false));
                   sr.a.a();
                } else {
                   this.a();
@@ -146,7 +146,7 @@ public class so {
    }
 
    public static void a(ard $$0) {
-      agd.a($$0);
+      agc.a($$0);
    }
 
    public static class a {

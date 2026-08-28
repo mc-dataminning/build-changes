@@ -1,19 +1,21 @@
-public class gvs extends gwu<gxz, gbm> {
-   private static final akv a = akv.b("textures/entity/breeze/breeze_wind.png");
-   private final gbm b;
+public class gvs extends gsb<cqa, hbo> {
+   public static final aku a = aku.b("textures/entity/projectiles/arrow.png");
+   public static final aku b = aku.b("textures/entity/projectiles/tipped_arrow.png");
 
-   public gvs(gsf.a $$0, guc<gxz, gbm> $$1) {
-      super($$1);
-      this.b = new gbm($$0.a(gfd.L));
+   public gvs(gtd.a $$0) {
+      super($$0);
    }
 
-   public void a(ffv $$0, glz $$1, int $$2, gxz $$3, float $$4, float $$5) {
-      ffz $$6 = $$1.getBuffer(gmj.a(a, this.a($$3.u) % 1.0F, 0.0F));
-      this.b.a($$3);
-      grk.a(this.b, this.b.d()).a($$0, $$6, $$2, hej.d);
+   protected aku a(hbo $$0) {
+      return $$0.d ? b : a;
    }
 
-   private float a(float $$0) {
-      return $$0 * 0.02F;
+   public hbo a() {
+      return new hbo();
+   }
+
+   public void a(cqa $$0, hbo $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.d = $$0.y() > 0;
    }
 }

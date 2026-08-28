@@ -1,65 +1,51 @@
-public class cqp {
-   public static final cqp a = a("core");
-   public static final cqp b = a("idle");
-   public static final cqp c = a("work");
-   public static final cqp d = a("play");
-   public static final cqp e = a("rest");
-   public static final cqp f = a("meet");
-   public static final cqp g = a("panic");
-   public static final cqp h = a("raid");
-   public static final cqp i = a("pre_raid");
-   public static final cqp j = a("hide");
-   public static final cqp k = a("fight");
-   public static final cqp l = a("celebrate");
-   public static final cqp m = a("admire_item");
-   public static final cqp n = a("avoid");
-   public static final cqp o = a("ride");
-   public static final cqp p = a("play_dead");
-   public static final cqp q = a("long_jump");
-   public static final cqp r = a("ram");
-   public static final cqp s = a("tongue");
-   public static final cqp t = a("swim");
-   public static final cqp u = a("lay_spawn");
-   public static final cqp v = a("sniff");
-   public static final cqp w = a("investigate");
-   public static final cqp x = a("roar");
-   public static final cqp y = a("emerge");
-   public static final cqp z = a("dig");
-   private final String A;
-   private final int B;
-
-   private cqp(String $$0) {
-      this.A = $$0;
-      this.B = $$0.hashCode();
+public class cqp extends cqr {
+   public cqp(bvi<? extends cqp> $$0, dgz $$1) {
+      super($$0, $$1);
    }
 
-   public String a() {
-      return this.A;
+   public cqp(dgz $$0, bvy $$1, cxh $$2) {
+      super(bvi.bj, $$1, $$0, $$2);
    }
 
-   private static cqp a(String $$0) {
-      return ke.a(mb.C, $$0, new cqp($$0));
+   public cqp(dgz $$0, double $$1, double $$2, double $$3, cxh $$4) {
+      super(bvi.bj, $$1, $$2, $$3, $$0, $$4);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         cqp $$1 = (cqp)$$0;
-         return this.A.equals($$1.A);
-      } else {
-         return false;
+   protected cxd g() {
+      return cxl.rl;
+   }
+
+   private lr j() {
+      cxh $$0 = this.f();
+      return (lr)($$0.f() ? lt.Z : new lp(lt.U, $$0));
+   }
+
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 3) {
+         lr $$1 = this.j();
+
+         for (int $$2 = 0; $$2 < 8; $$2++) {
+            this.dU().a($$1, this.dz(), this.dB(), this.dF(), 0.0, 0.0, 0.0);
+         }
       }
    }
 
    @Override
-   public int hashCode() {
-      return this.B;
+   protected void a(fbu $$0) {
+      super.a($$0);
+      bva $$1 = $$0.a();
+      int $$2 = $$1 instanceof cmb ? 3 : 0;
+      $$1.a(this.dV().b(this, this.q()), (float)$$2);
    }
 
    @Override
-   public String toString() {
-      return this.a();
+   protected void a(fbv $$0) {
+      super.a($$0);
+      if (!this.dU().C) {
+         this.dU().a(this, (byte)3);
+         this.at();
+      }
    }
 }

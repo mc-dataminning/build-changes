@@ -1,43 +1,26 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
 
 public class bzn {
-   public static <E extends bvk> bxc<E> a(bzn.b<E> $$0) {
-      return a(($$0x, $$1) -> true, $$0);
-   }
+   private static final float b = 0.95F;
+   public static final int a = 3;
 
-   public static <E extends bvk> bxc<E> a(bzn.a<E> $$0, bzn.b<E> $$1) {
-      return cao.a(
-         (Function<cao.b<E>, ? extends App<cao.c<E>, car<E>>>)($$2 -> $$2.group($$2.c(cem.o), $$2.a(cem.E)).apply($$2, ($$2x, $$3) -> ($$4, $$5, $$6) -> {
-                  if (!$$0.test($$4, (E)$$5)) {
-                     return false;
-                  } else {
-                     Optional<? extends bvi> $$7 = $$1.get($$4, (E)$$5);
-                     if ($$7.isEmpty()) {
-                        return false;
-                     } else {
-                        bvi $$8 = $$7.get();
-                        if (!$$5.c($$8)) {
-                           return false;
-                        } else {
-                           $$2x.a($$8);
-                           $$3.b();
-                           return true;
-                        }
+   public static bxs<bvy> a() {
+      return cbe.a((Function<cbe.b<bvy>, ? extends App<cbe.c<bvy>, cbh<bvy>>>)($$0 -> $$0.group($$0.b(cfc.e)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
+               if ($$2.A.i() <= 0.95F) {
+                  return false;
+               } else {
+                  ji $$5 = $$0.<jq>b($$1).b();
+                  if ($$5.a($$3.du(), 3.0)) {
+                     dxq $$6 = $$2.a_($$5);
+                     if ($$6.a(dkg.oF)) {
+                        dka $$7 = (dka)$$6.b();
+                        $$7.a($$3, $$2, $$5, null);
                      }
                   }
-               }))
-      );
-   }
 
-   @FunctionalInterface
-   public interface a<E> {
-      boolean test(ard var1, E var2);
-   }
-
-   @FunctionalInterface
-   public interface b<E> {
-      Optional<? extends bvi> get(ard var1, E var2);
+                  return true;
+               }
+            })));
    }
 }

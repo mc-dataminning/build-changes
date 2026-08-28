@@ -1,13 +1,27 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
 
-public class cgc {
-   @Nullable
-   public static fbb a(bvq $$0, int $$1, int $$2, int $$3, fbb $$4, double $$5) {
-      fbb $$6 = $$4.a($$0.dA(), $$0.dC(), $$0.dG());
-      boolean $$7 = cge.a($$0, $$1);
-      return cgh.a($$0, () -> {
-         ji $$7x = cgb.a($$0, $$1, $$2, $$3, $$6.d, $$6.f, $$5, $$7);
-         return $$7x != null && !cge.a($$0, $$7x) ? $$7x : null;
-      });
+public abstract class cgc extends cgi<bvy> {
+   protected abstract boolean a(ard var1, bvy var2, bvy var3);
+
+   protected abstract cfc<bvy> b();
+
+   @Override
+   public Set<cfc<?>> a() {
+      return ImmutableSet.of(this.b());
+   }
+
+   @Override
+   protected void a(ard $$0, bvy $$1) {
+      $$1.ea().a(this.b(), this.c($$0, $$1));
+   }
+
+   private Optional<bvy> c(ard $$0, bvy $$1) {
+      return this.a($$1).flatMap($$2 -> $$2.a($$2x -> this.a($$0, $$1, $$2x)));
+   }
+
+   protected Optional<cfe> a(bvy $$0) {
+      return $$0.ea().c(cfc.h);
    }
 }

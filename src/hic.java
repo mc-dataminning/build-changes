@@ -1,15 +1,5 @@
-public class hic extends hid {
-   public hic(cha $$0) {
-      super($$0, awa.bR, awb.g);
-   }
+import java.util.function.Supplier;
 
-   @Override
-   protected hhz o() {
-      return new hib(this.n);
-   }
-
-   @Override
-   protected boolean p() {
-      return this.n.ac_();
-   }
+@FunctionalInterface
+public interface hic extends Supplier<String> {
 }

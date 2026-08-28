@@ -1,121 +1,157 @@
 import com.google.common.collect.Lists;
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportChatMessage;
-import com.mojang.authlib.minecraft.report.ReportEvidence;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.nio.ByteBuffer;
-import java.time.Instant;
-import java.util.ArrayList;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.Locale;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class ghc extends ghf {
-   final IntSet g = new IntOpenHashSet();
+public class ghc implements fc {
+   private final ggz a;
+   private final fmg b;
+   private int d = -1;
+   @Nullable
+   private CompletableFuture<Suggestions> e;
+   private final Set<String> f = new HashSet<>();
 
-   ghc(UUID $$0, Instant $$1, UUID $$2) {
-      super($$0, $$1, $$2);
+   public ghc(ggz $$0, fmg $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(int $$0, AbuseReportLimits $$1) {
-      if (this.g.contains($$0)) {
-         this.g.remove($$0);
-      } else if (this.g.size() < $$1.maxReportedMessageCount()) {
-         this.g.add($$0);
+   @Override
+   public Collection<String> q() {
+      List<String> $$0 = Lists.newArrayList();
+
+      for (ghk $$1 : this.a.m()) {
+         $$0.add($$1.a().getName());
       }
-   }
 
-   public ghc a() {
-      ghc $$0 = new ghc(this.a, this.b, this.c);
-      $$0.g.addAll(this.g);
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
       return $$0;
    }
 
    @Override
-   public fum a(fum $$0, ghj $$1) {
-      return new fyt($$0, $$1, this);
+   public Collection<String> y() {
+      if (this.f.isEmpty()) {
+         return this.q();
+      } else {
+         Set<String> $$0 = new HashSet<>(this.q());
+         $$0.addAll(this.f);
+         return $$0;
+      }
    }
 
-   public static class a extends ghf.a<ghc> {
-      public a(ghc $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
+   @Override
+   public Collection<String> z() {
+      return (Collection<String>)(this.b.w != null && this.b.w.d() == fbv.a.c ? Collections.singleton(((fbu)this.b.w).a().cG()) : Collections.emptyList());
+   }
+
+   @Override
+   public Collection<String> r() {
+      return this.a.z().f();
+   }
+
+   @Override
+   public Stream<aku> s() {
+      return this.b.ak().d().stream();
+   }
+
+   @Override
+   public boolean c(int $$0) {
+      glv $$1 = this.b.t;
+      return $$1 != null ? $$1.s($$0) : $$0 == 0;
+   }
+
+   @Override
+   public CompletableFuture<Suggestions> a(akt<? extends ke<?>> $$0, fc.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
+      return this.u().a($$0).map($$2x -> {
+         this.a($$2x, $$1, $$2);
+         return $$2.buildFuture();
+      }).orElseGet(() -> this.a($$3));
+   }
+
+   @Override
+   public CompletableFuture<Suggestions> a(CommandContext<?> $$0) {
+      if (this.e != null) {
+         this.e.cancel(false);
       }
 
-      public a(UUID $$0, AbuseReportLimits $$1) {
-         super(new ghc(UUID.randomUUID(), Instant.now(), $$0), $$1);
-      }
+      this.e = new CompletableFuture<>();
+      int $$1 = ++this.d;
+      this.a.b(new ags($$1, $$0.getInput()));
+      return this.e;
+   }
 
-      public IntSet a() {
-         return this.a.g;
-      }
+   private static String a(double $$0) {
+      return String.format(Locale.ROOT, "%.2f", $$0);
+   }
 
-      public void a(int $$0) {
-         this.a.a($$0, this.b);
-      }
+   private static String a(int $$0) {
+      return Integer.toString($$0);
+   }
 
-      public boolean b(int $$0) {
-         return this.a.g.contains($$0);
+   @Override
+   public Collection<fc.b> A() {
+      fbv $$0 = this.b.w;
+      if ($$0 != null && $$0.d() == fbv.a.b) {
+         ji $$1 = ((fbt)$$0).b();
+         return Collections.singleton(new fc.b(a($$1.u()), a($$1.v()), a($$1.w())));
+      } else {
+         return fc.super.A();
       }
+   }
 
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || !this.a().isEmpty() || this.i() != null;
+   @Override
+   public Collection<fc.b> B() {
+      fbv $$0 = this.b.w;
+      if ($$0 != null && $$0.d() == fbv.a.b) {
+         fbx $$1 = $$0.g();
+         return Collections.singleton(new fc.b(a($$1.d), a($$1.e), a($$1.f)));
+      } else {
+         return fc.super.B();
       }
+   }
 
-      @Nullable
-      @Override
-      public ghf.b c() {
-         if (this.a.g.isEmpty()) {
-            return ghf.b.b;
-         } else if (this.a.g.size() > this.b.maxReportedMessageCount()) {
-            return ghf.b.c;
-         } else if (this.a.e == null) {
-            return ghf.b.a;
-         } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? ghf.b.d : super.c();
-         }
+   @Override
+   public Set<akt<dgz>> t() {
+      return this.a.u();
+   }
+
+   @Override
+   public kf u() {
+      return this.a.v();
+   }
+
+   @Override
+   public csn v() {
+      return this.a.y();
+   }
+
+   public void a(int $$0, Suggestions $$1) {
+      if ($$0 == this.d) {
+         this.e.complete($$1);
+         this.e = null;
+         this.d = -1;
       }
+   }
 
-      @Override
-      public Either<ghf.c, ghf.b> a(ghj $$0) {
-         ghf.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportEvidence $$3 = this.b($$0);
-            ReportedEntity $$4 = new ReportedEntity(this.a.c);
-            AbuseReport $$5 = AbuseReport.chat(this.a.d, $$2, $$3, $$4, this.a.b);
-            return Either.left(new ghf.c(this.a.a, ghi.a, $$5));
-         }
-      }
-
-      private ReportEvidence b(ghj $$0) {
-         List<ReportChatMessage> $$1 = new ArrayList<>();
-         ghd $$2 = new ghd(this.b.leadingContextMessageCount());
-         $$2.a($$0.b(), this.a.g, ($$1x, $$2x) -> $$1.add(this.a($$2x, this.b($$1x))));
-         return new ReportEvidence(Lists.reverse($$1));
-      }
-
-      private ReportChatMessage a(ggy.a $$0, boolean $$1) {
-         xk $$2 = $$0.g().k();
-         xi $$3 = $$0.g().m();
-         List<ByteBuffer> $$4 = $$3.d().a().stream().map(xb::a).toList();
-         ByteBuffer $$5 = x.a($$0.g().l(), xb::a);
-         return new ReportChatMessage($$2.b(), $$2.c(), $$2.d(), $$3.b(), $$3.c(), $$4, $$3.a(), $$5, $$1);
-      }
-
-      public ghc.a d() {
-         return new ghc.a(this.a.a(), this.b);
+   public void a(acj.a $$0, List<String> $$1) {
+      switch ($$0) {
+         case a:
+            this.f.addAll($$1);
+            break;
+         case b:
+            $$1.forEach(this.f::remove);
+            break;
+         case c:
+            this.f.clear();
+            this.f.addAll($$1);
       }
    }
 }

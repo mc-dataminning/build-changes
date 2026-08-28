@@ -1,134 +1,180 @@
-import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntSortedMap;
-import java.util.Collections;
-import java.util.SequencedSet;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class duy {
-   private final Object2IntSortedMap<cwm> a;
+public class duy extends dus implements bsp {
+   private static final int a = 2;
+   private static final int b = 4;
+   private final ka<cxh> c = ka.a(4, cxh.k);
+   private final int[] d = new int[4];
+   private final int[] e = new int[4];
 
-   duy(Object2IntSortedMap<cwm> $$0) {
-      this.a = $$0;
+   public duy(ji $$0, dxq $$1) {
+      super(duu.H, $$0, $$1);
    }
 
-   public boolean a(cwq $$0) {
-      return this.a.containsKey($$0.h());
-   }
+   public static void a(ard $$0, ji $$1, dxq $$2, duy $$3, dcc.a<dco, dbg> $$4) {
+      boolean $$5 = false;
 
-   public SequencedSet<cwm> a() {
-      return Collections.unmodifiableSequencedSet(this.a.keySet());
-   }
-
-   public int b(cwq $$0) {
-      return $$0.f() ? 0 : this.a.getInt($$0.h());
-   }
-
-   public static duy a(jt.a $$0, cru $$1) {
-      return a($$0, $$1, 200);
-   }
-
-   public static duy a(jt.a $$0, cru $$1, int $$2) {
-      return new duy.a($$0, $$1)
-         .a(cwu.rh, $$2 * 100)
-         .a(djp.iZ, $$2 * 8 * 10)
-         .a(cwu.td, $$2 * 12)
-         .a(cwu.pc, $$2 * 8)
-         .a(cwu.pd, $$2 * 8)
-         .a(awy.r, $$2 * 3 / 2)
-         .a(awy.D, $$2 * 3 / 2)
-         .a(awy.b, $$2 * 3 / 2)
-         .a(djp.y, $$2 * 3 / 2)
-         .a(awy.i, $$2 * 3 / 2)
-         .a(djp.is, $$2 * 3 / 2)
-         .a(awy.j, $$2 * 3 / 4)
-         .a(djp.kb, $$2 * 3 / 4)
-         .a(awy.n, $$2 * 3 / 2)
-         .a(awy.m, $$2 * 3 / 2)
-         .a(awy.k, $$2 * 3 / 2)
-         .a(awy.l, $$2 * 3 / 2)
-         .a(djp.bf, $$2 * 3 / 2)
-         .a(djp.cs, $$2 * 3 / 2)
-         .a(djp.ct, $$2 * 3 / 2)
-         .a(djp.oC, $$2 * 3 / 2)
-         .a(djp.eg, $$2 * 3 / 2)
-         .a(djp.cD, $$2 * 3 / 2)
-         .a(djp.hs, $$2 * 3 / 2)
-         .a(djp.cI, $$2 * 3 / 2)
-         .a(djp.hw, $$2 * 3 / 2)
-         .a(awy.F, $$2 * 3 / 2)
-         .a(cwu.pa, $$2 * 3 / 2)
-         .a(cwu.rS, $$2 * 3 / 2)
-         .a(djp.cX, $$2 * 3 / 2)
-         .a(awy.aU, $$2)
-         .a(awy.bu, $$2 * 4)
-         .a(cwu.ps, $$2)
-         .a(cwu.pr, $$2)
-         .a(cwu.pv, $$2)
-         .a(cwu.pu, $$2)
-         .a(cwu.pt, $$2)
-         .a(awy.h, $$2)
-         .a(awy.aR, $$2 * 6)
-         .a(awy.a, $$2 / 2)
-         .a(awy.d, $$2 / 2)
-         .a(cwu.pV, $$2 / 2)
-         .a(awy.p, $$2 / 2)
-         .a(cwu.oY, $$2 / 2)
-         .a(awy.g, 1 + $$2 / 3)
-         .a(djp.mG, 1 + $$2 * 20)
-         .a(cwu.wV, $$2 * 3 / 2)
-         .a(djp.nB, $$2 / 4)
-         .a(djp.bC, $$2 / 2)
-         .a(djp.ou, $$2 / 4)
-         .a(djp.ov, $$2 * 3 / 2)
-         .a(djp.ow, $$2 * 3 / 2)
-         .a(djp.oz, $$2 * 3 / 2)
-         .a(djp.oA, $$2 * 3 / 2)
-         .a(djp.oD, $$2 * 3 / 2)
-         .a(djp.pE, $$2 * 3 / 2)
-         .a(djp.ta, $$2 / 2)
-         .a(djp.tb, $$2 / 2)
-         .a(djp.ag, $$2 * 3 / 2)
-         .a(awy.aL)
-         .a();
-   }
-
-   public static class a {
-      private final jt<cwm> a;
-      private final cru b;
-      private final Object2IntSortedMap<cwm> c = new Object2IntLinkedOpenHashMap();
-
-      public a(jt.a $$0, cru $$1) {
-         this.a = $$0.d(mc.K);
-         this.b = $$1;
-      }
-
-      public duy a() {
-         return new duy(this.c);
-      }
-
-      public duy.a a(axf<cwm> $$0) {
-         this.c.keySet().removeIf($$1 -> $$1.f().a($$0));
-         return this;
-      }
-
-      public duy.a a(axf<cwm> $$0, int $$1) {
-         this.a.a($$0).ifPresent($$1x -> {
-            for (jr<cwm> $$2 : $$1x) {
-               this.a($$1, $$2.a());
+      for (int $$6 = 0; $$6 < $$3.c.size(); $$6++) {
+         cxh $$7 = $$3.c.get($$6);
+         if (!$$7.f()) {
+            $$5 = true;
+            $$3.d[$$6]++;
+            if ($$3.d[$$6] >= $$3.e[$$6]) {
+               dco $$8 = new dco($$7);
+               cxh $$9 = $$4.a($$8, $$0).map($$2x -> ((dbg)$$2x.b()).a($$8, $$0.F_())).orElse($$7);
+               if ($$9.a($$0.K())) {
+                  bsu.a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$9);
+                  $$3.c.set($$6, cxh.k);
+                  $$0.a($$1, $$2, $$2, 3);
+                  $$0.a(ecp.c, $$1, ecp.a.a($$2));
+               }
             }
-         });
-         return this;
-      }
-
-      public duy.a a(dgi $$0, int $$1) {
-         cwm $$2 = $$0.j();
-         this.a($$1, $$2);
-         return this;
-      }
-
-      private void a(int $$0, cwm $$1) {
-         if ($$1.a(this.b)) {
-            this.c.put($$1, $$0);
          }
       }
+
+      if ($$5) {
+         a($$0, $$1, $$2);
+      }
+   }
+
+   public static void a(dgz $$0, ji $$1, dxq $$2, duy $$3) {
+      boolean $$4 = false;
+
+      for (int $$5 = 0; $$5 < $$3.c.size(); $$5++) {
+         if ($$3.d[$$5] > 0) {
+            $$4 = true;
+            $$3.d[$$5] = ayz.a($$3.d[$$5] - 2, 0, $$3.e[$$5]);
+         }
+      }
+
+      if ($$4) {
+         a($$0, $$1, $$2);
+      }
+   }
+
+   public static void b(dgz $$0, ji $$1, dxq $$2, duy $$3) {
+      azh $$4 = $$0.A;
+      if ($$4.i() < 0.11F) {
+         for (int $$5 = 0; $$5 < $$4.a(2) + 2; $$5++) {
+            dkt.a($$0, $$1, $$2.c(dkt.c), false);
+         }
+      }
+
+      int $$6 = $$2.c(dkt.e).e();
+
+      for (int $$7 = 0; $$7 < $$3.c.size(); $$7++) {
+         if (!$$3.c.get($$7).f() && $$4.i() < 0.2F) {
+            jn $$8 = jn.b(Math.floorMod($$7 + $$6, 4));
+            float $$9 = 0.3125F;
+            double $$10 = (double)$$1.u() + 0.5 - (double)((float)$$8.j() * 0.3125F) + (double)((float)$$8.h().j() * 0.3125F);
+            double $$11 = (double)$$1.v() + 0.5;
+            double $$12 = (double)$$1.w() + 0.5 - (double)((float)$$8.l() * 0.3125F) + (double)((float)$$8.h().l() * 0.3125F);
+
+            for (int $$13 = 0; $$13 < 4; $$13++) {
+               $$0.a(lt.ah, $$10, $$11, $$12, 0.0, 5.0E-4, 0.0);
+            }
+         }
+      }
+   }
+
+   public ka<cxh> b() {
+      return this.c;
+   }
+
+   @Override
+   protected void a(tq $$0, jt.a $$1) {
+      super.a($$0, $$1);
+      this.c.clear();
+      bss.b($$0, this.c, $$1);
+      if ($$0.b("CookingTimes", 11)) {
+         int[] $$2 = $$0.n("CookingTimes");
+         System.arraycopy($$2, 0, this.d, 0, Math.min(this.e.length, $$2.length));
+      }
+
+      if ($$0.b("CookingTotalTimes", 11)) {
+         int[] $$3 = $$0.n("CookingTotalTimes");
+         System.arraycopy($$3, 0, this.e, 0, Math.min(this.e.length, $$3.length));
+      }
+   }
+
+   @Override
+   protected void b(tq $$0, jt.a $$1) {
+      super.b($$0, $$1);
+      bss.a($$0, this.c, true, $$1);
+      $$0.a("CookingTimes", this.d);
+      $$0.a("CookingTotalTimes", this.e);
+   }
+
+   public abr c() {
+      return abr.a(this);
+   }
+
+   @Override
+   public tq a(jt.a $$0) {
+      tq $$1 = new tq();
+      bss.a($$1, this.c, true, $$0);
+      return $$1;
+   }
+
+   public boolean a(ard $$0, @Nullable bvy $$1, cxh $$2) {
+      for (int $$3 = 0; $$3 < this.c.size(); $$3++) {
+         cxh $$4 = this.c.get($$3);
+         if ($$4.f()) {
+            Optional<dca<dbg>> $$5 = $$0.t().a(dcg.e, new dco($$2), $$0);
+            if ($$5.isEmpty()) {
+               return false;
+            }
+
+            this.e[$$3] = $$5.get().b().d();
+            this.d[$$3] = 0;
+            this.c.set($$3, $$2.b(1, $$1));
+            $$0.a(ecp.c, this.aA_(), ecp.a.a($$1, this.m()));
+            this.f();
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   private void f() {
+      this.e();
+      this.i().a(this.aA_(), this.m(), this.m(), 3);
+   }
+
+   @Override
+   public void a() {
+      this.c.clear();
+   }
+
+   @Override
+   public void a(ji $$0, dxq $$1, boolean $$2) {
+      if (this.n != null) {
+         bsu.a(this.n, $$0, this.b());
+      }
+   }
+
+   public void d() {
+      if (this.n != null) {
+         this.f();
+      }
+   }
+
+   @Override
+   protected void a(dus.b $$0) {
+      super.a($$0);
+      $$0.a(kv.an, czx.a).a(this.b());
+   }
+
+   @Override
+   protected void a(kr.a $$0) {
+      super.a($$0);
+      $$0.a(kv.an, czx.a(this.b()));
+   }
+
+   @Override
+   public void a(tq $$0) {
+      $$0.r("Items");
    }
 }

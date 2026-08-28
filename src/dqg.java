@@ -1,63 +1,43 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqg extends djx implements djq {
-   public static final MapCodec<dqg> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dwn.a.fieldOf("tree").forGetter($$0x -> $$0x.i), t()).apply($$0, dqg::new)
+public class dqg extends djs {
+   public static final MapCodec<dqg> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dyf.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.b), t()).apply($$0, dqg::new)
    );
-   public static final dxx f = dxo.aX;
-   protected static final float g = 6.0F;
-   protected static final fbv h = djn.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
-   protected final dwn i;
+   public static final dyh d = dyg.A;
 
    @Override
-   public MapCodec<? extends dqg> a() {
-      return e;
+   public MapCodec<dqg> a() {
+      return c;
    }
 
-   protected dqg(dwn $$0, dwx.d $$1) {
-      super($$1);
-      this.i = $$0;
-      this.l(this.F.b().b(f, Integer.valueOf(0)));
+   protected dqg(dyf $$0, dxp.d $$1) {
+      super($$1, $$0);
+      this.l(this.B.b().b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected fbv a(dwy $$0, dfo $$1, ji $$2, fbg $$3) {
-      return h;
+   protected int h(dxq $$0) {
+      return $$0.c(d) ? 15 : 0;
    }
 
    @Override
-   protected void b(dwy $$0, ard $$1, ji $$2, azh $$3) {
-      if ($$1.A($$2.d()) >= 9 && $$3.a(7) == 0) {
-         this.a($$1, $$2, $$0, $$3);
-      }
-   }
-
-   public void a(ard $$0, ji $$1, dwy $$2, azh $$3) {
-      if ($$2.c(f) == 0) {
-         $$0.a($$1, $$2.a(f), 4);
-      } else {
-         this.i.a($$0, $$0.m().g(), $$1, $$2, $$3);
-      }
+   protected dxq a(dxq $$0, int $$1) {
+      return $$0.b(d, Boolean.valueOf($$1 > 0));
    }
 
    @Override
-   public boolean a(dgm $$0, ji $$1, dwy $$2) {
-      return true;
+   protected int b(dgz $$0, ji $$1) {
+      Class<? extends bva> $$2 = switch (this.b.f()) {
+         case a -> bva.class;
+         case b -> bvy.class;
+      };
+      return a($$0, a.a($$1), $$2) > 0 ? 15 : 0;
    }
 
    @Override
-   public boolean a(dgj $$0, azh $$1, ji $$2, dwy $$3) {
-      return (double)$$0.A.i() < 0.45;
-   }
-
-   @Override
-   public void a(ard $$0, azh $$1, ji $$2, dwy $$3) {
-      this.a($$0, $$2, $$3, $$1);
-   }
-
-   @Override
-   protected void a(dwz.a<djn, dwy> $$0) {
-      $$0.a(f);
+   protected void a(dxr.a<dke, dxq> $$0) {
+      $$0.a(d);
    }
 }

@@ -4,16 +4,16 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class jl<T> extends jz<T> implements jm<T> {
-   private final akv b;
+   private final aku b;
    private jr.c<T> c;
 
-   public jl(String $$0, aku<? extends ke<T>> $$1, Lifecycle $$2, boolean $$3) {
+   public jl(String $$0, akt<? extends ke<T>> $$1, Lifecycle $$2, boolean $$3) {
       super($$1, $$2, $$3);
-      this.b = akv.a($$0);
+      this.b = aku.a($$0);
    }
 
    @Override
-   public jr.c<T> a(aku<T> $$0, T $$1, kd $$2) {
+   public jr.c<T> a(akt<T> $$0, T $$1, kd $$2) {
       jr.c<T> $$3 = super.a($$0, $$1, $$2);
       if (this.b.equals($$0.a())) {
          this.c = $$3;
@@ -30,20 +30,20 @@ public class jl<T> extends jz<T> implements jm<T> {
 
    @Nonnull
    @Override
-   public akv b(T $$0) {
-      akv $$1 = super.b($$0);
+   public aku b(T $$0) {
+      aku $$1 = super.b($$0);
       return $$1 == null ? this.b : $$1;
    }
 
    @Nonnull
    @Override
-   public T a(@Nullable akv $$0) {
+   public T a(@Nullable aku $$0) {
       T $$1 = super.a($$0);
       return $$1 == null ? this.c.a() : $$1;
    }
 
    @Override
-   public Optional<T> b(@Nullable akv $$0) {
+   public Optional<T> b(@Nullable aku $$0) {
       return Optional.ofNullable(super.a($$0));
    }
 
@@ -65,7 +65,7 @@ public class jl<T> extends jz<T> implements jm<T> {
    }
 
    @Override
-   public akv b() {
+   public aku b() {
       return this.b;
    }
 }

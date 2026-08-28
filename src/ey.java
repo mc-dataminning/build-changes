@@ -35,105 +35,105 @@ public class ey {
    private final CommandDispatcher<ex> h = new CommandDispatcher();
 
    public ey(ey.a $$0, et $$1) {
-      amd.a(this.h);
-      ame.a(this.h, $$1);
-      amy.a(this.h, $$1);
-      ami.a(this.h, $$1);
+      amc.a(this.h);
+      amd.a(this.h, $$1);
+      amx.a(this.h, $$1);
+      amh.a(this.h, $$1);
+      amj.a(this.h, $$1);
       amk.a(this.h, $$1);
       aml.a(this.h, $$1);
-      amm.a(this.h, $$1);
-      apo.a(this.h);
-      amn.a(this.h);
-      amp.a(this.h);
+      apn.a(this.h);
+      amm.a(this.h);
+      amo.a(this.h);
+      ams.a(this.h);
       amt.a(this.h);
-      amu.a(this.h);
-      amv.a(this.h, $$1);
-      amw.a(this.h);
-      amx.a(this.h, $$1);
-      amz.a(this.h);
-      anb.a(this.h, $$1);
+      amu.a(this.h, $$1);
+      amv.a(this.h);
+      amw.a(this.h, $$1);
+      amy.a(this.h);
       ana.a(this.h, $$1);
+      amz.a(this.h, $$1);
+      anb.a(this.h);
       anc.a(this.h);
       and.a(this.h);
-      ane.a(this.h);
+      ane.a(this.h, $$1);
       anf.a(this.h, $$1);
-      ang.a(this.h, $$1);
-      anh.a(this.h);
-      ani.a(this.h, $$1);
+      ang.a(this.h);
+      anh.a(this.h, $$1);
+      anj.a(this.h);
       ank.a(this.h);
       anl.a(this.h);
-      anm.a(this.h);
-      ann.a(this.h, $$1);
-      anp.a(this.h, $$1);
-      anq.a(this.h);
-      anu.a(this.h, $$1);
+      anm.a(this.h, $$1);
+      ano.a(this.h, $$1);
+      anp.a(this.h);
+      ant.a(this.h, $$1);
+      anv.a(this.h);
       anw.a(this.h);
-      anx.a(this.h);
+      anz.a(this.h);
+      aob.a(this.h);
       aoa.a(this.h);
       aoc.a(this.h);
-      aob.a(this.h);
       aod.a(this.h);
       aoe.a(this.h);
-      aof.a(this.h);
+      aoi.a(this.h);
       aoj.a(this.h);
-      aok.a(this.h);
-      aol.a(this.h, $$1);
-      aom.a(this.h, $$0 != ey.a.c);
-      aoo.a(this.h, $$1);
+      aok.a(this.h, $$1);
+      aol.a(this.h, $$0 != ey.a.c);
+      aon.a(this.h, $$1);
+      aop.a(this.h);
       aoq.a(this.h);
-      aor.a(this.h);
+      aos.a(this.h);
       aot.a(this.h);
-      aou.a(this.h);
-      aow.a(this.h);
-      aox.a(this.h, $$1);
-      aoy.a(this.h);
-      aoz.a(this.h, $$1);
+      aov.a(this.h);
+      aow.a(this.h, $$1);
+      aox.a(this.h);
+      aoy.a(this.h, $$1);
+      aoz.a(this.h);
       apa.a(this.h);
-      apb.a(this.h);
-      apc.a(this.h, $$1);
+      apb.a(this.h, $$1);
+      apc.a(this.h);
       apd.a(this.h);
-      ape.a(this.h);
-      apf.a(this.h, $$1);
-      aph.a(this.h);
-      apj.a(this.h);
-      apl.a(this.h);
-      if (bpc.f.d()) {
-         anj.a(this.h);
+      ape.a(this.h, $$1);
+      apg.a(this.h);
+      api.a(this.h);
+      apk.a(this.h);
+      if (bpr.f.d()) {
+         ani.a(this.h);
       }
 
       if (ab.aU) {
          td.a(this.h);
-         anz.a(this.h, $$1);
-         ams.a(this.h);
+         any.a(this.h, $$1);
          amr.a(this.h);
-         api.a(this.h);
-         aos.a(this.h);
-         aon.a(this.h);
+         amq.a(this.h);
+         aph.a(this.h);
+         aor.a(this.h);
+         aom.a(this.h);
          if ($$0.e) {
-            amq.a(this.h);
+            amp.a(this.h);
          }
       }
 
       if ($$0.e) {
+         ame.a(this.h);
          amf.a(this.h);
          amg.a(this.h);
-         amh.a(this.h);
-         amo.a(this.h);
+         amn.a(this.h);
+         anq.a(this.h);
          anr.a(this.h);
          ans.a(this.h);
-         ant.a(this.h);
-         anv.a(this.h);
+         anu.a(this.h);
+         aof.a(this.h);
          aog.a(this.h);
          aoh.a(this.h);
-         aoi.a(this.h);
-         aop.a(this.h);
-         aov.a(this.h);
-         apg.a(this.h);
-         apk.a(this.h);
+         aoo.a(this.h);
+         aou.a(this.h);
+         apf.a(this.h);
+         apj.a(this.h);
       }
 
       if ($$0.d) {
-         any.a(this.h);
+         anx.a(this.h);
       }
 
       this.h.setConsumer(ez.b_());
@@ -152,7 +152,7 @@ public class ey {
 
    public void a(ParseResults<ex> $$0, String $$1) {
       ex $$2 = (ex)$$0.getContext().getSource();
-      bot.a().a(() -> "/" + $$1);
+      bpi.a().a(() -> "/" + $$1);
       ContextChain<ex> $$3 = a($$0, $$1, $$2);
 
       try {
@@ -170,13 +170,13 @@ public class ey {
             }
          }
 
-         $$2.b(wp.c("command.failed").a($$1x -> $$1x.a(new wv(wv.a.a, $$5))));
+         $$2.b(wp.c("command.failed").a($$1x -> $$1x.a(new wv.e($$5))));
          if (ab.aU) {
             $$2.b(wp.b(af.c(var12)));
             g.error("'/{}' threw an exception", $$1, var12);
          }
       } finally {
-         bot.a().c();
+         bpi.a().c();
       }
    }
 
@@ -190,7 +190,7 @@ public class ey {
          $$2.b(ws.a(var7.getRawMessage()));
          if (var7.getInput() != null && var7.getCursor() >= 0) {
             int $$4 = Math.min(var7.getInput().length(), var7.getCursor());
-            xd $$5 = wp.i().a(n.h).a($$1x -> $$1x.a(new wn(wn.a.d, "/" + $$1)));
+            xd $$5 = wp.i().a(n.h).a($$1x -> $$1x.a(new wn.g("/" + $$1)));
             if ($$4 > 10) {
                $$5.b(wo.u);
             }
@@ -214,10 +214,10 @@ public class ey {
       hx<ex> $$3 = f.get();
       boolean $$4 = $$3 == null;
       if ($$4) {
-         int $$5 = Math.max(1, $$2.aL().c(dgf.y));
-         int $$6 = $$2.aL().c(dgf.z);
+         int $$5 = Math.max(1, $$2.aL().c(dgv.y));
+         int $$6 = $$2.aL().c(dgv.z);
 
-         try (hx<ex> $$7 = new hx<>($$5, $$6, bot.a())) {
+         try (hx<ex> $$7 = new hx<>($$5, $$6, bpi.a())) {
             f.set($$7);
             $$1.accept($$7);
             $$7.a();
@@ -234,7 +234,7 @@ public class ey {
       RootCommandNode<fc> $$2 = new RootCommandNode();
       $$1.put(this.h.getRoot(), $$2);
       this.a(this.h.getRoot(), $$2, $$0.A(), $$1);
-      $$0.f.b(new ace($$2));
+      $$0.f.b(new acd($$2));
    }
 
    private void a(CommandNode<ex> $$0, CommandNode<fc> $$1, ex $$2, Map<CommandNode<ex>, CommandNode<fc>> $$3) {
@@ -313,17 +313,17 @@ public class ey {
    public static et a(final jt.a $$0) {
       return new et() {
          @Override
-         public cru a() {
-            return crw.e.a();
+         public csn a() {
+            return csp.e.a();
          }
 
          @Override
-         public Stream<aku<? extends ke<?>>> b() {
+         public Stream<akt<? extends ke<?>>> b() {
             return $$0.b();
          }
 
          @Override
-         public <T> Optional<jt.b<T>> a(aku<? extends ke<? extends T>> $$0x) {
+         public <T> Optional<jt.b<T>> a(akt<? extends ke<? extends T>> $$0x) {
             return $$0.a($$0).map(this::a);
          }
 

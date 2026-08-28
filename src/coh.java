@@ -1,36 +1,8 @@
-public interface coh {
-   String c_ = "Inventory";
-
-   bss t();
-
-   static void a(ard $$0, bvk $$1, coh $$2, cld $$3) {
-      cwq $$4 = $$3.l();
-      if ($$1.c($$0, $$4)) {
-         bss $$5 = $$2.t();
-         boolean $$6 = $$5.c($$4);
-         if (!$$6) {
-            return;
-         }
-
-         $$1.a($$3);
-         int $$7 = $$4.M();
-         cwq $$8 = $$5.b($$4);
-         $$1.a($$3, $$7 - $$8.M());
-         if ($$8.f()) {
-            $$3.at();
-         } else {
-            $$4.e($$8.M());
-         }
-      }
-   }
-
-   default void a(tq $$0, jt.a $$1) {
-      if ($$0.b("Inventory", 9)) {
-         this.t().a($$0.c("Inventory", 10), $$1);
-      }
-   }
-
-   default void b(tq $$0, jt.a $$1) {
-      $$0.a("Inventory", this.t().a($$1));
-   }
+public enum coh {
+   a,
+   b,
+   c,
+   d,
+   e,
+   f;
 }

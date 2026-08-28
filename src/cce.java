@@ -1,81 +1,64 @@
 import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class cce extends ccg {
-   private final bwf a;
+public class cce extends ccw {
+   private final civ a;
    @Nullable
-   private bvi b;
-   private final double c;
-   private final ceu d;
+   private cpr b;
+   private final ard c;
+   private final float d;
    private int e;
-   private final float f;
-   private final float g;
-   private float h;
+   private final cgp f;
 
-   public cce(bwf $$0, double $$1, float $$2, float $$3) {
+   public cce(civ $$0, float $$1) {
       this.a = $$0;
-      this.c = $$1;
-      this.d = $$0.P();
-      this.g = $$2;
-      this.f = $$3;
-      this.a(EnumSet.of(ccg.a.a, ccg.a.b));
-      if (!($$0.P() instanceof cet) && !($$0.P() instanceof ces)) {
-         throw new IllegalArgumentException("Unsupported mob type for FollowOwnerGoal");
-      }
+      this.c = a($$0);
+      this.d = $$1;
+      this.f = cgp.b().a((double)$$1);
+      this.a(EnumSet.of(ccw.a.b));
    }
 
    @Override
    public boolean b() {
-      bvi $$0 = this.a.ag_();
-      if ($$0 == null) {
-         return false;
-      } else if (this.a.gv()) {
-         return false;
-      } else if (this.a.g((bum)$$0) < (double)(this.g * this.g)) {
-         return false;
-      } else {
-         this.b = $$0;
-         return true;
-      }
+      this.b = this.c.a(this.f, this.a);
+      return this.b == null ? false : this.a(this.b);
    }
 
    @Override
    public boolean c() {
-      if (this.d.k()) {
+      if (!this.b.bJ()) {
          return false;
       } else {
-         return this.a.gv() ? false : !(this.a.g((bum)this.b) <= (double)(this.f * this.f));
+         return this.a.g(this.b) > (double)(this.d * this.d) ? false : this.e > 0 && this.a(this.b);
       }
    }
 
    @Override
    public void d() {
-      this.e = 0;
-      this.h = this.a.a(etr.j);
-      this.a.a(etr.j, 0.0F);
+      this.a.z(true);
+      this.e = this.a(40 + this.a.dX().a(40));
    }
 
    @Override
    public void e() {
+      this.a.z(false);
       this.b = null;
-      this.d.m();
-      this.a.a(etr.j, this.h);
    }
 
    @Override
    public void a() {
-      boolean $$0 = this.a.gu();
-      if (!$$0) {
-         this.a.L().a(this.b, 10.0F, (float)this.a.ad());
-      }
+      this.a.J().a(this.b.dz(), this.b.dD(), this.b.dF(), 10.0F, (float)this.a.ac());
+      this.e--;
+   }
 
-      if (--this.e <= 0) {
-         this.e = this.a(10);
-         if ($$0) {
-            this.a.gt();
-         } else {
-            this.d.a(this.b, this.c);
+   private boolean a(cpr $$0) {
+      for (bsx $$1 : bsx.values()) {
+         cxh $$2 = $$0.b($$1);
+         if ($$2.a(cxl.sy) || this.a.j($$2)) {
+            return true;
          }
       }
+
+      return false;
    }
 }

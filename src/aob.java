@@ -1,80 +1,47 @@
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.logging.LogUtils;
 import java.util.Collection;
-import java.util.Collections;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
 public class aob {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wp.c("commands.recipe.give.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wp.c("commands.recipe.take.failed"));
+   private static final Logger a = LogUtils.getLogger();
+
+   public static void a(Collection<String> $$0, ex $$1) {
+      $$1.l().a($$0).exceptionally($$1x -> {
+         a.warn("Failed to execute reload", $$1x);
+         $$1.b(wp.c("commands.reload.failure"));
+         return null;
+      });
+   }
+
+   private static Collection<String> a(aua $$0, ewi $$1, Collection<String> $$2) {
+      $$0.a();
+      Collection<String> $$3 = Lists.newArrayList($$2);
+      Collection<String> $$4 = $$1.D().a().b();
+
+      for (String $$5 : $$0.c()) {
+         if (!$$4.contains($$5) && !$$3.contains($$5)) {
+            $$3.add($$5);
+         }
+      }
+
+      return $$3;
+   }
 
    public static void a(CommandDispatcher<ex> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("recipe").requires($$0x -> $$0x.c(2)))
-               .then(
-                  ey.a("give")
-                     .then(
-                        ((RequiredArgumentBuilder)ey.a("targets", fk.d())
-                              .then(
-                                 ey.a("recipe", fx.a(mc.bk))
-                                    .executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), Collections.singleton(fx.d($$0x, "recipe"))))
-                              ))
-                           .then(ey.a("*").executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), ((ex)$$0x.getSource()).l().aI().e())))
-                     )
-               ))
-            .then(
-               ey.a("take")
-                  .then(
-                     ((RequiredArgumentBuilder)ey.a("targets", fk.d())
-                           .then(
-                              ey.a("recipe", fx.a(mc.bk))
-                                 .executes($$0x -> b((ex)$$0x.getSource(), fk.f($$0x, "targets"), Collections.singleton(fx.d($$0x, "recipe"))))
-                           ))
-                        .then(ey.a("*").executes($$0x -> b((ex)$$0x.getSource(), fk.f($$0x, "targets"), ((ex)$$0x.getSource()).l().aI().e())))
-                  )
-            )
-      );
-   }
-
-   private static int a(ex $$0, Collection<are> $$1, Collection<dbk<?>> $$2) throws CommandSyntaxException {
-      int $$3 = 0;
-
-      for (are $$4 : $$1) {
-         $$3 += $$4.a($$2);
-      }
-
-      if ($$3 == 0) {
-         throw a.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> wp.a("commands.recipe.give.success.single", $$2.size(), $$1.iterator().next().p_()), true);
-         } else {
-            $$0.a(() -> wp.a("commands.recipe.give.success.multiple", $$2.size(), $$1.size()), true);
-         }
-
-         return $$3;
-      }
-   }
-
-   private static int b(ex $$0, Collection<are> $$1, Collection<dbk<?>> $$2) throws CommandSyntaxException {
-      int $$3 = 0;
-
-      for (are $$4 : $$1) {
-         $$3 += $$4.b($$2);
-      }
-
-      if ($$3 == 0) {
-         throw b.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> wp.a("commands.recipe.take.success.single", $$2.size(), $$1.iterator().next().p_()), true);
-         } else {
-            $$0.a(() -> wp.a("commands.recipe.take.success.multiple", $$2.size(), $$1.size()), true);
-         }
-
-         return $$3;
-      }
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("reload").requires($$0x -> $$0x.c(2))).executes($$0x -> {
+         ex $$1 = (ex)$$0x.getSource();
+         MinecraftServer $$2 = $$1.l();
+         aua $$3 = $$2.aF();
+         ewi $$4 = $$2.aZ();
+         Collection<String> $$5 = $$3.e();
+         Collection<String> $$6 = a($$3, $$4, $$5);
+         $$1.a(() -> wp.c("commands.reload.success"), true);
+         a($$6, $$1);
+         return 0;
+      }));
    }
 }

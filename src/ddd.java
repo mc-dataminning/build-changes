@@ -1,10 +1,9 @@
-public class ddd extends bqv.a {
-   public final jr<dda> a;
-   public final int b;
+import io.netty.buffer.ByteBuf;
 
-   public ddd(jr<dda> $$0, int $$1) {
-      super($$0.a().b());
-      this.a = $$0;
-      this.b = $$1;
+public record ddd(int b) {
+   public static final yn<ByteBuf, ddd> a = yn.a(yl.h, ddd::a, ddd::new);
+
+   public int a() {
+      return this.b;
    }
 }

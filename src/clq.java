@@ -1,103 +1,124 @@
-public class clq extends clz {
-   private static final int a = 2400;
-   private int b;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public clq(but<? extends clq> $$0, dgj $$1) {
+public class clq extends clm {
+   public static final double b = 0.375;
+
+   public clq(bvi<? extends clq> $$0, dgz $$1) {
       super($$0, $$1);
-      this.bN = 3;
+   }
+
+   public clq(dgz $$0, ji $$1) {
+      super(bvi.av, $$0, $$1);
+      this.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
    }
 
    @Override
-   protected void E() {
-      this.bS.a(1, new cca(this));
-      this.bS.a(1, new cbv(this, this.dV()));
-      this.bS.a(2, new ccq(this, 1.0, false));
-      this.bS.a(3, new cdt(this, 1.0));
-      this.bS.a(7, new cco(this, coy.class, 8.0F));
-      this.bS.a(8, new cdb(this));
-      this.bT.a(1, new cdy(this).a());
-      this.bT.a(2, new cdz<>(this, coy.class, true));
-   }
-
-   public static bwp.a m() {
-      return clz.gx().a(bwq.s, 8.0).a(bwq.v, 0.25).a(bwq.c, 2.0);
+   protected void a(akb.a $$0) {
    }
 
    @Override
-   protected bum.c bg() {
-      return bum.c.c;
+   protected void f() {
+      this.o((double)this.a.u() + 0.5, (double)this.a.v() + 0.375, (double)this.a.w() + 0.5);
+      double $$0 = (double)this.aq().l() / 2.0;
+      double $$1 = (double)this.aq().m();
+      this.a(new fbs(this.dz() - $$0, this.dB(), this.dF() - $$0, this.dz() + $$0, this.dB() + $$1, this.dF() + $$0));
    }
 
    @Override
-   protected avz u() {
-      return awa.iK;
+   public boolean a(double $$0) {
+      return $$0 < 1024.0;
    }
 
    @Override
-   protected avz e(btc $$0) {
-      return awa.iM;
-   }
-
-   @Override
-   protected avz o_() {
-      return awa.iL;
-   }
-
-   @Override
-   protected void b(ji $$0, dwy $$1) {
-      this.a(awa.iN, 0.15F, 1.0F);
-   }
-
-   @Override
-   public void a(tq $$0) {
-      super.a($$0);
-      this.b = $$0.h("Lifetime");
+   public void a(ard $$0, @Nullable bva $$1) {
+      this.a(awa.oA, 1.0F, 1.0F);
    }
 
    @Override
    public void b(tq $$0) {
-      super.b($$0);
-      $$0.a("Lifetime", this.b);
    }
 
    @Override
-   public void h() {
-      this.aX = this.dL();
-      super.h();
+   public void a(tq $$0) {
    }
 
    @Override
-   public void r(float $$0) {
-      this.v($$0);
-      super.r($$0);
-   }
-
-   @Override
-   public void d_() {
-      super.d_();
-      if (this.dV().C) {
-         for (int $$0 = 0; $$0 < 2; $$0++) {
-            this.dV().a(lt.ae, this.d(0.5), this.dD(), this.g(0.5), (this.ae.j() - 0.5) * 2.0, -this.ae.j(), (this.ae.j() - 0.5) * 2.0);
-         }
+   public bsy a(cpr $$0, bsx $$1) {
+      if (this.dU().C) {
+         return bsy.a;
       } else {
-         if (!this.fZ()) {
-            this.b++;
+         boolean $$2 = false;
+         List<bvw> $$3 = cxr.a(this.dU(), this.j(), $$1x -> {
+            bva $$2x = $$1x.C();
+            return $$2x == $$0 || $$2x == this;
+         });
+
+         for (bvw $$4 : $$3) {
+            if ($$4.C() == $$0) {
+               $$4.b(this, true);
+               $$2 = true;
+            }
          }
 
-         if (this.b >= 2400) {
+         boolean $$5 = false;
+         if (!$$2) {
             this.at();
+            if ($$0.gm().d) {
+               for (bvw $$6 : $$3) {
+                  if ($$6.O_() && $$6.C() == this) {
+                     $$6.z();
+                     $$5 = true;
+                  }
+               }
+            }
          }
+
+         if ($$2 || $$5) {
+            this.a(ecp.b, $$0);
+         }
+
+         return bsy.a;
       }
    }
 
-   public static boolean b(but<clq> $$0, dgk $$1, bus $$2, ji $$3, azh $$4) {
-      if (!c($$0, $$1, $$2, $$3, $$4)) {
-         return false;
-      } else if (bus.a($$2)) {
-         return true;
-      } else {
-         coy $$5 = $$1.a((double)$$3.u() + 0.5, (double)$$3.v() + 0.5, (double)$$3.w() + 0.5, 5.0, true);
-         return $$5 == null;
+   @Override
+   public boolean g() {
+      return this.dU().a_(this.a).a(awp.U);
+   }
+
+   public static clq a(dgz $$0, ji $$1) {
+      int $$2 = $$1.u();
+      int $$3 = $$1.v();
+      int $$4 = $$1.w();
+
+      for (clq $$6 : $$0.a(clq.class, new fbs((double)$$2 - 1.0, (double)$$3 - 1.0, (double)$$4 - 1.0, (double)$$2 + 1.0, (double)$$3 + 1.0, (double)$$4 + 1.0))) {
+         if ($$6.j().equals($$1)) {
+            return $$6;
+         }
       }
+
+      clq $$7 = new clq($$0, $$1);
+      $$0.b($$7);
+      return $$7;
+   }
+
+   public void m() {
+      this.a(awa.oB, 1.0F, 1.0F);
+   }
+
+   @Override
+   public yw<abl> a(arb $$0) {
+      return new abm(this, 0, this.j());
+   }
+
+   @Override
+   public fbx v(float $$0) {
+      return this.p($$0).b(0.0, 0.2, 0.0);
+   }
+
+   @Override
+   public cxh dH() {
+      return new cxh(cxl.vM);
    }
 }

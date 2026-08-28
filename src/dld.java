@@ -1,43 +1,55 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dld extends div {
-   public static final MapCodec<dld> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dlc.a.forGetter($$0x -> $$0x.c), t()).apply($$0, dld::new));
-   private final djn c;
+public class dld extends dnu implements dlb {
+   public static final MapCodec<dld> c = b(dld::new);
 
    @Override
    public MapCodec<dld> a() {
-      return b;
+      return c;
    }
 
-   protected dld(djn $$0, dwx.d $$1) {
-      super($$1);
-      this.c = $$0;
-   }
-
-   @Override
-   protected void b(dwy $$0, dgj $$1, ji $$2, dwy $$3, boolean $$4) {
-      this.a($$0, $$1, $$1, $$1.A, $$2);
+   public dld(dxp.d $$0) {
+      super($$0, jn.a, s_, false);
+      this.l(this.B.b().b(t_, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dwy $$0, ard $$1, ji $$2, azh $$3) {
-      if (!d($$0, $$1, $$2)) {
-         $$1.a($$2, this.c.m().b(d, Boolean.valueOf(false)), 2);
-      }
+   protected dnv c() {
+      return (dnv)dkg.sX;
    }
 
    @Override
-   protected dwy a(dwy $$0, dgm $$1, dgy $$2, ji $$3, jn $$4, ji $$5, dwy $$6, azh $$7) {
-      if ($$4 == jn.a && !$$0.a($$1, $$3)) {
-         return djp.a.m();
-      } else {
-         this.a($$0, $$1, $$2, $$7, $$3);
-         if ($$0.c(d)) {
-            $$2.a($$3, etb.c, etb.c.a($$1));
-         }
+   protected dxq a(dxq $$0, dxq $$1) {
+      return $$1.b(t_, $$0.c(t_));
+   }
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
+   @Override
+   protected cxh a(dhc $$0, ji $$1, dxq $$2, boolean $$3) {
+      return new cxh(cxl.xy);
+   }
+
+   @Override
+   protected bsy a(dxq $$0, dgz $$1, ji $$2, cpr $$3, fbt $$4) {
+      return dlb.a($$3, $$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(dxr.a<dke, dxq> $$0) {
+      $$0.a(t_);
+   }
+
+   @Override
+   public boolean a(dhc $$0, ji $$1, dxq $$2) {
+      return !$$2.c(t_);
+   }
+
+   @Override
+   public boolean a(dgz $$0, azh $$1, ji $$2, dxq $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(ard $$0, azh $$1, ji $$2, dxq $$3) {
+      $$0.a($$2, $$3.b(t_, Boolean.valueOf(true)), 2);
    }
 }

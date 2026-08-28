@@ -1,28 +1,38 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.util.Pair;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.function.UnaryOperator;
 
-public class bgb extends DataFix {
-   public bgb(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public abstract class bgb extends DataFix {
+   private final String a;
+   private final Predicate<String> b;
+
+   public bgb(Schema $$0, String $$1, Predicate<String> $$2) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update(
-         "pages", $$1 -> (Dynamic)DataFixUtils.orElse($$1.asStreamOpt().map($$0xx -> $$0xx.map(bam::b)).map($$0::createList).result(), $$0.emptyList())
-      );
+   public final TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bic.t);
+      return this.fixTypeEverywhereTyped(this.a, $$0, a($$0, this.b, this::a));
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bhy.t);
-      OpticFinder<?> $$1 = $$0.findField("tag");
-      return this.fixTypeEverywhereTyped(
-         "ItemWrittenBookPagesStrictJsonFix", $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a))
-      );
+   public static UnaryOperator<Typed<?>> a(Type<?> $$0, Predicate<String> $$1, UnaryOperator<Typed<?>> $$2) {
+      OpticFinder<Pair<String, String>> $$3 = DSL.fieldFinder("id", DSL.named(bic.E.typeName(), bju.a()));
+      OpticFinder<?> $$4 = $$0.findField("tag");
+      return $$4x -> {
+         Optional<Pair<String, String>> $$5 = $$4x.getOptional($$3);
+         return $$5.isPresent() && $$1.test((String)$$5.get().getSecond()) ? $$4x.updateTyped($$4, $$2) : $$4x;
+      };
    }
+
+   protected abstract Typed<?> a(Typed<?> var1);
 }

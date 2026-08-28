@@ -24,13 +24,13 @@ public class asx implements AutoCloseable {
    private static final Logger a = LogUtils.getLogger();
    private static final int b = 20;
    private final Path c;
-   private final bnm<asx.e> d;
-   private final brb e = new brb(af.j(), "download-queue");
+   private final bob<asx.e> d;
+   private final bro e = new bro(af.j(), "download-queue");
 
    public asx(Path $$0) throws IOException {
       this.c = $$0;
       v.c($$0);
-      this.d = bnm.a(asx.e.a, $$0.resolve("log.json"));
+      this.d = bob.a(asx.e.a, $$0.resolve("log.json"));
       asw.a($$0, 20);
    }
 

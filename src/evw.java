@@ -1,146 +1,182 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Iterables;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PushbackInputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.BiFunction;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.mutable.MutableInt;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class evw {
-   public static final Codec<evw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ewg.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.b),
-               ezb.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.c),
-               exi.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.e),
-               ezy.a.fieldOf("rolls").forGetter($$0x -> $$0x.g),
-               ezy.a.fieldOf("bonus_rolls").orElse(ezu.a(0.0F)).forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, evw::new)
-   );
-   private final List<ewi> b;
-   private final List<ezb> c;
-   private final Predicate<evs> d;
-   private final List<exg> e;
-   private final BiFunction<cwq, evs, cwq> f;
-   private final ezx g;
-   private final ezx h;
+public class evw implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final Map<String, Optional<evi>> b = new HashMap<>();
+   private final DataFixer c;
+   private final jt.a d;
+   private final Path e;
+   private CompletableFuture<?> f = CompletableFuture.completedFuture(null);
 
-   evw(List<ewi> $$0, List<ezb> $$1, List<exg> $$2, ezx $$3, ezx $$4) {
-      this.b = $$0;
+   public evw(Path $$0, DataFixer $$1, jt.a $$2) {
       this.c = $$1;
-      this.d = af.a($$1);
-      this.e = $$2;
-      this.f = exi.a($$2);
-      this.g = $$3;
-      this.h = $$4;
+      this.e = $$0;
+      this.d = $$2;
    }
 
-   private void b(Consumer<cwq> $$0, evs $$1) {
-      azh $$2 = $$1.b();
-      List<ewh> $$3 = Lists.newArrayList();
-      MutableInt $$4 = new MutableInt();
+   private Path a(String $$0) {
+      return this.e.resolve($$0 + ".dat");
+   }
 
-      for (ewi $$5 : this.b) {
-         $$5.expand($$1, $$3x -> {
-            int $$4x = $$3x.a($$1.c());
-            if ($$4x > 0) {
-               $$3.add($$3x);
-               $$4.add($$4x);
-            }
-         });
+   public <T extends evi> T a(evi.a<T> $$0, String $$1) {
+      T $$2 = this.b($$0, $$1);
+      if ($$2 != null) {
+         return $$2;
+      } else {
+         T $$3 = (T)$$0.a().get();
+         this.a($$1, $$3);
+         return $$3;
+      }
+   }
+
+   @Nullable
+   public <T extends evi> T b(evi.a<T> $$0, String $$1) {
+      Optional<evi> $$2 = this.b.get($$1);
+      if ($$2 == null) {
+         $$2 = Optional.ofNullable(this.a($$0.b(), $$0.c(), $$1));
+         this.b.put($$1, $$2);
       }
 
-      int $$6 = $$3.size();
-      if ($$4.intValue() != 0 && $$6 != 0) {
-         if ($$6 == 1) {
-            $$3.get(0).a($$0, $$1);
+      return (T)$$2.orElse(null);
+   }
+
+   @Nullable
+   private <T extends evi> T a(BiFunction<tq, jt.a, T> $$0, bam $$1, String $$2) {
+      try {
+         Path $$3 = this.a($$2);
+         if (Files.exists($$3)) {
+            tq $$4 = this.a($$2, $$1, ab.b().d().c());
+            return $$0.apply($$4.p("data"), this.d);
+         }
+      } catch (Exception var6) {
+         a.error("Error loading saved data: {}", $$2, var6);
+      }
+
+      return null;
+   }
+
+   public void a(String $$0, evi $$1) {
+      this.b.put($$0, Optional.of($$1));
+      $$1.g();
+   }
+
+   public tq a(String $$0, bam $$1, int $$2) throws IOException {
+      tq var8;
+      try (
+         InputStream $$3 = Files.newInputStream(this.a($$0));
+         PushbackInputStream $$4 = new PushbackInputStream(new ayj($$3), 2);
+      ) {
+         tq $$5;
+         if (this.a($$4)) {
+            $$5 = ud.a($$4, tz.a());
          } else {
-            int $$7 = $$2.a($$4.intValue());
-
-            for (ewh $$8 : $$3) {
-               $$7 -= $$8.a($$1.c());
-               if ($$7 < 0) {
-                  $$8.a($$0, $$1);
-                  return;
-               }
+            try (DataInputStream $$6 = new DataInputStream($$4)) {
+               $$5 = ud.a($$6);
             }
          }
+
+         int $$9 = uf.b($$5, 1343);
+         var8 = $$1.a(this.c, $$5, $$9, $$2);
       }
+
+      return var8;
    }
 
-   public void a(Consumer<cwq> $$0, evs $$1) {
-      if (this.d.test($$1)) {
-         Consumer<cwq> $$2 = exg.a(this.f, $$0, $$1);
-         int $$3 = this.g.a($$1) + ayz.d(this.h.b($$1) * $$1.c());
-
-         for (int $$4 = 0; $$4 < $$3; $$4++) {
-            this.b($$2, $$1);
+   private boolean a(PushbackInputStream $$0) throws IOException {
+      byte[] $$1 = new byte[2];
+      boolean $$2 = false;
+      int $$3 = $$0.read($$1, 0, 2);
+      if ($$3 == 2) {
+         int $$4 = ($$1[1] & 255) << 8 | $$1[0] & 255;
+         if ($$4 == 35615) {
+            $$2 = true;
          }
       }
+
+      if ($$3 != 0) {
+         $$0.unread($$1, 0, $$3);
+      }
+
+      return $$2;
    }
 
-   public void a(evy $$0) {
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".condition[" + $$1 + "]"));
-      }
+   public CompletableFuture<?> a() {
+      Map<Path, tq> $$0 = this.c();
+      if ($$0.isEmpty()) {
+         return CompletableFuture.completedFuture(null);
+      } else {
+         int $$1 = af.g();
+         int $$2 = $$0.size();
+         if ($$2 > $$1) {
+            this.f = this.f.thenCompose($$3 -> {
+               List<CompletableFuture<?>> $$4 = new ArrayList<>($$1);
+               int $$5 = ayz.e($$2, $$1);
 
-      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
-         this.e.get($$2).a($$0.a(".functions[" + $$2 + "]"));
-      }
+               for (List<Entry<Path, tq>> $$6 : Iterables.partition($$0.entrySet(), $$5)) {
+                  $$4.add(CompletableFuture.runAsync(() -> {
+                     for (Entry<Path, tq> $$1xx : $$6) {
+                        a($$1xx.getKey(), $$1xx.getValue());
+                     }
+                  }, af.i()));
+               }
 
-      for (int $$3 = 0; $$3 < this.b.size(); $$3++) {
-         this.b.get($$3).a($$0.a(".entries[" + $$3 + "]"));
-      }
+               return CompletableFuture.allOf($$4.toArray(CompletableFuture[]::new));
+            });
+         } else {
+            this.f = this.f
+               .thenCompose(
+                  $$1x -> CompletableFuture.allOf(
+                        $$0.entrySet()
+                           .stream()
+                           .map($$0xx -> CompletableFuture.runAsync(() -> a((Path)$$0xx.getKey(), (tq)$$0xx.getValue()), af.i()))
+                           .toArray(CompletableFuture[]::new)
+                     )
+               );
+         }
 
-      this.g.a($$0.a(".rolls"));
-      this.h.a($$0.a(".bonusRolls"));
+         return this.f;
+      }
    }
 
-   public static evw.a a() {
-      return new evw.a();
+   private Map<Path, tq> c() {
+      Map<Path, tq> $$0 = new Object2ObjectArrayMap();
+      this.b.forEach(($$1, $$2) -> $$2.filter(evi::h).ifPresent($$2x -> $$0.put(this.a($$1), $$2x.a(this.d))));
+      return $$0;
    }
 
-   public static class a implements exc<evw.a>, eyt<evw.a> {
-      private final Builder<ewi> a = ImmutableList.builder();
-      private final Builder<ezb> b = ImmutableList.builder();
-      private final Builder<exg> c = ImmutableList.builder();
-      private ezx d = ezu.a(1.0F);
-      private ezx e = ezu.a(0.0F);
-
-      public evw.a a(ezx $$0) {
-         this.d = $$0;
-         return this;
+   private static void a(Path $$0, tq $$1) {
+      try {
+         ud.a($$1, $$0);
+      } catch (IOException var3) {
+         a.error("Could not save data to {}", $$0.getFileName(), var3);
       }
+   }
 
-      public evw.a a() {
-         return this;
-      }
+   public void b() {
+      this.a().join();
+   }
 
-      public evw.a b(ezx $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public evw.a a(ewi.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      public evw.a a(ezb.a $$0) {
-         this.b.add($$0.build());
-         return this;
-      }
-
-      public evw.a a(exg.a $$0) {
-         this.c.add($$0.b());
-         return this;
-      }
-
-      public evw b() {
-         return new evw(this.a.build(), this.b.build(), this.c.build(), this.d, this.e);
-      }
+   @Override
+   public void close() {
+      this.b();
    }
 }

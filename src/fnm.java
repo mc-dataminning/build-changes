@@ -1,22 +1,27 @@
-import com.google.gson.JsonPrimitive;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class fnm {
-   public static final fnn<fnm.a> a = new fnn<>("x", $$0 -> new JsonPrimitive($$0.e));
-   public static final fnn<fnm.a> b = new fnn<>("y", $$0 -> new JsonPrimitive($$0.e));
-   public static final fnn<akv> c = new fnn<>("model", $$0 -> new JsonPrimitive($$0.toString()));
-   public static final fnn<Boolean> d = new fnn<>("uvlock", JsonPrimitive::new);
-   public static final fnn<Integer> e = new fnn<>("weight", JsonPrimitive::new);
+public record fnm(int b, int c) implements fnq {
+   public static final MapCodec<fnm> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ayi.l.optionalFieldOf("index", 0).forGetter(fnm::b), ayi.i.fieldOf("default").forGetter(fnm::c)).apply($$0, fnm::new)
+   );
 
-   public static enum a {
-      a(0),
-      b(90),
-      c(180),
-      d(270);
-
-      final int e;
-
-      private a(final int $$0) {
-         this.e = $$0;
+   @Override
+   public int a(cxh $$0, @Nullable ggy $$1, @Nullable bvy $$2) {
+      czp $$3 = $$0.a(kv.p);
+      if ($$3 != null) {
+         Integer $$4 = $$3.d(this.b);
+         if ($$4 != null) {
+            return axk.f($$4);
+         }
       }
+
+      return axk.f(this.c);
+   }
+
+   @Override
+   public MapCodec<fnm> a() {
+      return a;
    }
 }

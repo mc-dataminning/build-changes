@@ -1,23 +1,30 @@
-public interface djq {
-   boolean a(dgm var1, ji var2, dwy var3);
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-   boolean a(dgj var1, azh var2, ji var3, dwy var4);
-
-   void a(ard var1, azh var2, ji var3, dwy var4);
-
-   default ji a(ji $$0) {
-      return switch (this.aq_()) {
-         case a -> $$0.d();
-         case b -> $$0;
-      };
+public abstract class djq extends dke implements dmx {
+   protected djq(dxp.d $$0) {
+      super($$0);
    }
 
-   default djq.a aq_() {
-      return djq.a.b;
+   @Override
+   protected abstract MapCodec<? extends djq> a();
+
+   @Override
+   protected boolean a(dxq $$0, dgz $$1, ji $$2, int $$3, int $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      dus $$5 = $$1.c_($$2);
+      return $$5 == null ? false : $$5.a_($$3, $$4);
    }
 
-   public static enum a {
-      a,
-      b;
+   @Nullable
+   @Override
+   protected bta b(dxq $$0, dgz $$1, ji $$2) {
+      dus $$3 = $$1.c_($$2);
+      return $$3 instanceof bta ? (bta)$$3 : null;
+   }
+
+   @Nullable
+   protected static <E extends dus, A extends dus> dut<A> a(duu<A> $$0, duu<E> $$1, dut<? super E> $$2) {
+      return $$1 == $$0 ? $$2 : null;
    }
 }

@@ -1,42 +1,64 @@
-public class gww extends gwu<hae, gds> {
-   private static final akv a = akv.b("textures/entity/sheep/sheep_fur.png");
-   private final gcc<hae> b;
-   private final gcc<hae> c;
+import java.util.function.Function;
 
-   public gww(guc<hae, gds> $$0, gfa $$1) {
-      super($$0);
-      this.b = new gdr($$1.a(gfd.cC));
-      this.c = new gdr($$1.a(gfd.cB));
+public class gww<S extends haj, M extends gda<S> & gdj> extends gxs<S, M> {
+   private static final float a = 0.625F;
+   private static final float b = 1.1875F;
+   private final gww.a c;
+   private final Function<drm.a, gex> d;
+
+   public gww(gva<S, M> $$0, gfy $$1) {
+      this($$0, $$1, gww.a.a);
    }
 
-   public void a(ffv $$0, glz $$1, int $$2, hae $$3, float $$4, float $$5) {
-      if (!$$3.c) {
-         gcc<hae> $$6 = $$3.aj ? this.c : this.b;
-         if ($$3.z) {
-            if ($$3.ao) {
-               $$6.a($$3);
-               ffz $$7 = $$1.getBuffer(gmj.s(a));
-               $$6.a($$0, $$7, $$2, gtg.a($$3, 0.0F), -16777216);
-            }
-         } else {
-            int $$17;
-            if ($$3.aq != null && "jeb_".equals($$3.aq.getString())) {
-               int $$8 = 25;
-               int $$9 = ayz.d($$3.u);
-               int $$10 = $$9 / 25 + $$3.e;
-               int $$11 = cvn.values().length;
-               int $$12 = $$10 % $$11;
-               int $$13 = ($$10 + 1) % $$11;
-               float $$14 = ((float)($$9 % 25) + ayz.i($$3.u)) / 25.0F;
-               int $$15 = chv.a(cvn.a($$12));
-               int $$16 = chv.a(cvn.a($$13));
-               $$17 = axk.a($$14, $$15, $$16);
-            } else {
-               $$17 = chv.a($$3.d);
-            }
+   public gww(gva<S, M> $$0, gfy $$1, gww.a $$2) {
+      super($$0);
+      this.c = $$2;
+      this.d = af.b($$1x -> gpy.a($$1, $$1x));
+   }
 
-            a($$6, a, $$0, $$1, $$2, $$3, $$17);
+   public void a(fgr $$0, gmx $$1, int $$2, S $$3, float $$4, float $$5) {
+      if (!$$3.as.c() || $$3.au != null) {
+         $$0.a();
+         $$0.b(this.c.c(), 1.0F, this.c.c());
+         M $$6 = this.d();
+         $$6.e().a($$0);
+         $$6.b().a($$0);
+         if ($$3.au != null) {
+            $$0.a(0.0F, this.c.b(), 0.0F);
+            $$0.b(1.1875F, -1.1875F, -1.1875F);
+            $$0.a(-0.5, 0.0, -0.5);
+            drm.a $$7 = $$3.au;
+            gex $$8 = this.d.apply($$7);
+            gnh $$9 = gpy.a($$7, $$3.av);
+            gpy.a(null, 180.0F, $$3.at, $$0, $$1, $$2, $$8, $$9);
+         } else {
+            a($$0, this.c);
+            $$3.as.a($$0, $$1, $$2, hfh.d);
          }
+
+         $$0.b();
+      }
+   }
+
+   public static void a(fgr $$0, gww.a $$1) {
+      $$0.a(0.0F, -0.25F + $$1.a(), 0.0F);
+      $$0.a(a.d.rotationDegrees(180.0F));
+      $$0.b(0.625F, -0.625F, -0.625F);
+   }
+
+   public static record a(float b, float c, float d) {
+      public static final gww.a a = new gww.a(0.0F, 0.0F, 1.0F);
+
+      public float a() {
+         return this.b;
+      }
+
+      public float b() {
+         return this.c;
+      }
+
+      public float c() {
+         return this.d;
       }
    }
 }

@@ -1,57 +1,167 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.Base64;
-import java.util.Map;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
-import org.lwjgl.system.MemoryUtil;
-import org.slf4j.Logger;
 
-public class fjz {
-   private static final Map<String, fjz.a> a = Maps.newHashMap();
-   private static final Logger b = LogUtils.getLogger();
-   private static final akv c = akv.b("textures/gui/presets/isles.png");
+public class fjz extends hmd {
+   private static final aku a = aku.b("icon/unseen_notification");
+   private static final aku b = aku.b("icon/news");
+   private static final aku c = aku.b("icon/invite");
+   private static final aku C = aku.b("icon/trial_available");
+   private final CompletableFuture<Boolean> D = fhb.a().thenApply($$0 -> $$0.a() == fhb.b.a);
+   @Nullable
+   private fko.c E;
+   @Nullable
+   private fjz.a F;
+   private volatile int G;
+   private static boolean H;
+   private static boolean I;
+   private static boolean J;
+   private final fjz.a K = new fjz.a() {
+      @Override
+      public fko.c a(fjg $$0) {
+         fko.c $$1 = $$0.a.a();
+         fjz.this.a($$0, $$1);
+         fjz.this.b($$0, $$1);
+         return $$1;
+      }
 
-   public static akv a(String $$0, @Nullable String $$1) {
-      return $$1 == null ? c : b($$0, $$1);
+      @Override
+      public boolean a() {
+         return true;
+      }
+   };
+   private final fjz.a L = new fjz.a() {
+      @Override
+      public fko.c a(fjg $$0) {
+         fko.c $$1 = $$0.a.a();
+         fjz.this.b($$0, $$1);
+         return $$1;
+      }
+
+      @Override
+      public boolean a() {
+         return false;
+      }
+   };
+
+   public fjz() {
+      super(flx.a);
    }
 
-   private static akv b(String $$0, String $$1) {
-      fjz.a $$2 = a.get($$0);
-      if ($$2 != null && $$2.a().equals($$1)) {
-         return $$2.b;
+   @Override
+   public void aR_() {
+      if (this.E != null) {
+         this.E.a();
+      }
+   }
+
+   @Override
+   public void aJ_() {
+      super.aJ_();
+      this.m.bb().b.a();
+   }
+
+   @Nullable
+   private fjz.a E() {
+      boolean $$0 = this.G() && this.D.getNow(false);
+      if (!$$0) {
+         return null;
       } else {
-         fev $$3 = a($$1);
-         if ($$3 == null) {
-            akv $$4 = hei.c();
-            a.put($$0, new fjz.a($$1, $$4));
-            return $$4;
+         return this.F() ? this.K : this.L;
+      }
+   }
+
+   @Override
+   public void e() {
+      fjz.a $$0 = this.E();
+      if (!Objects.equals(this.F, $$0)) {
+         this.F = $$0;
+         if (this.F != null) {
+            this.E = this.F.a(this.m.bb());
          } else {
-            akv $$5 = akv.a("realms", "dynamic/" + $$0);
-            flk.Q().aa().a($$5, new heg($$3));
-            a.put($$0, new fjz.a($$1, $$5));
-            return $$5;
+            this.E = null;
+         }
+      }
+
+      if (this.E != null) {
+         this.E.b();
+      }
+   }
+
+   private boolean F() {
+      return this.m.n.W().c();
+   }
+
+   private boolean G() {
+      return this.m.z instanceof fvk;
+   }
+
+   @Override
+   public void a(fpc $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.D.getNow(false)) {
+         this.c($$0);
+      }
+   }
+
+   @Override
+   public void b(fpc $$0, int $$1, int $$2, float $$3) {
+   }
+
+   private void c(fpc $$0) {
+      int $$1 = this.G;
+      int $$2 = 24;
+      int $$3 = this.o / 4 + 48;
+      int $$4 = this.n / 2 + 100;
+      int $$5 = $$3 + 48 + 2;
+      int $$6 = $$4 - 3;
+      if (J) {
+         $$0.a(gnh::H, a, $$6 - 12, $$5 + 3, 10, 10);
+         $$6 -= 16;
+      }
+
+      if (this.F != null && this.F.a()) {
+         if (I) {
+            $$0.a(gnh::H, b, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
+         }
+
+         if ($$1 != 0) {
+            $$0.a(gnh::H, c, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
+         }
+
+         if (H) {
+            $$0.a(gnh::H, C, $$6 - 10, $$5 + 4, 8, 8);
          }
       }
    }
 
-   @Nullable
-   private static fev a(String $$0) {
-      byte[] $$1 = Base64.getDecoder().decode($$0);
-      ByteBuffer $$2 = MemoryUtil.memAlloc($$1.length);
-
-      try {
-         return fev.a($$2.put($$1).flip());
-      } catch (IOException var7) {
-         b.warn("Failed to load world image: {}", $$0, var7);
-      } finally {
-         MemoryUtil.memFree($$2);
-      }
-
-      return null;
+   void a(fjg $$0, fko.c $$1) {
+      $$1.a($$0.d, $$0x -> this.G = $$0x);
+      $$1.a($$0.e, $$0x -> H = $$0x);
+      $$1.a($$0.f, $$1x -> {
+         $$0.h.a($$1x);
+         I = $$0.h.a();
+      });
    }
 
-   public static record a(String a, akv b) {
+   void b(fjg $$0, fko.c $$1) {
+      $$1.a($$0.b, $$0x -> {
+         J = false;
+
+         for (fih $$1x : $$0x) {
+            if (!$$1x.a()) {
+               J = true;
+               break;
+            }
+         }
+      });
+   }
+
+   interface a {
+      fko.c a(fjg var1);
+
+      boolean a();
    }
 }

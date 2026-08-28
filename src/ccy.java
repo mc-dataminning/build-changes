@@ -1,32 +1,86 @@
-public class ccy extends cbx {
-   private final boolean a;
-   private int b;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-   public ccy(bvk $$0, boolean $$1) {
-      super($$0);
-      this.d = $$0;
-      this.a = $$1;
+public class ccy extends cdt {
+   private static final int i = 2;
+   private static final int j = 32;
+   private static final int k = 10;
+   private static final int l = 7;
+
+   public ccy(bwg $$0, double $$1) {
+      super($$0, $$1, 240, false);
    }
 
+   @Nullable
    @Override
-   public boolean c() {
-      return this.a && this.b > 0 && super.c();
+   protected fbx h() {
+      float $$0 = this.b.dU().A.i();
+      if (this.b.dU().A.i() < 0.3F) {
+         return this.k();
+      } else {
+         fbx $$1;
+         if ($$0 < 0.7F) {
+            $$1 = this.l();
+            if ($$1 == null) {
+               $$1 = this.m();
+            }
+         } else {
+            $$1 = this.m();
+            if ($$1 == null) {
+               $$1 = this.l();
+            }
+         }
+
+         return $$1 == null ? this.k() : $$1;
+      }
    }
 
-   @Override
-   public void d() {
-      this.b = 20;
-      this.a(true);
+   @Nullable
+   private fbx k() {
+      return cgw.a(this.b, 10, 7);
    }
 
-   @Override
-   public void e() {
-      this.a(false);
+   @Nullable
+   private fbx l() {
+      ard $$0 = (ard)this.b.dU();
+      List<cpd> $$1 = $$0.a(bvi.bC, this.b.cQ().g(32.0), this::a);
+      if ($$1.isEmpty()) {
+         return null;
+      } else {
+         cpd $$2 = $$1.get(this.b.dU().A.a($$1.size()));
+         fbx $$3 = $$2.ds();
+         return cgw.a(this.b, 10, 7, $$3);
+      }
    }
 
-   @Override
-   public void a() {
-      this.b--;
-      super.a();
+   @Nullable
+   private fbx m() {
+      kk $$0 = this.n();
+      if ($$0 == null) {
+         return null;
+      } else {
+         ji $$1 = this.a($$0);
+         return $$1 == null ? null : cgw.a(this.b, 10, 7, fbx.c($$1));
+      }
+   }
+
+   @Nullable
+   private kk n() {
+      ard $$0 = (ard)this.b.dU();
+      List<kk> $$1 = kk.a(kk.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
+      return $$1.isEmpty() ? null : $$1.get($$0.A.a($$1.size()));
+   }
+
+   @Nullable
+   private ji a(kk $$0) {
+      ard $$1 = (ard)this.b.dU();
+      chc $$2 = $$1.A();
+      List<ji> $$3 = $$2.c($$0x -> true, $$0.k(), 8, chc.b.b).map(chd::g).collect(Collectors.toList());
+      return $$3.isEmpty() ? null : $$3.get($$1.A.a($$3.size()));
+   }
+
+   private boolean a(cpd $$0) {
+      return $$0.a(this.b.dU().ae());
    }
 }

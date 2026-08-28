@@ -1,31 +1,50 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import java.util.Date;
+import java.util.Map;
+import java.util.Map.Entry;
+import org.slf4j.Logger;
 
-public class fhx extends fia {
-   public long a;
-   public List<fhw> b = Lists.newArrayList();
+public class fhx extends fiw {
+   private static final Logger f = LogUtils.getLogger();
+   public String a;
+   public Date b;
+   public long c;
+   private boolean g;
+   public Map<String, String> d = Maps.newHashMap();
+   public Map<String, String> e = Maps.newHashMap();
 
-   public static fhx a(String $$0) {
-      fhx $$1 = new fhx();
-      JsonParser $$2 = new JsonParser();
+   public static fhx a(JsonElement $$0) {
+      JsonObject $$1 = $$0.getAsJsonObject();
+      fhx $$2 = new fhx();
 
       try {
-         JsonElement $$3 = $$2.parse($$0);
-         JsonObject $$4 = $$3.getAsJsonObject();
-         $$1.a = fjw.a("periodInMillis", $$4, -1L);
-         JsonElement $$5 = $$4.get("playerActivityDto");
-         if ($$5 != null && $$5.isJsonArray()) {
-            for (JsonElement $$7 : $$5.getAsJsonArray()) {
-               fhw $$8 = fhw.a($$7.getAsJsonObject());
-               $$1.b.add($$8);
+         $$2.a = fks.b("backupId", $$1, "");
+         $$2.b = fks.b("lastModifiedDate", $$1);
+         $$2.c = fks.a("size", $$1, 0L);
+         if ($$1.has("metadata")) {
+            JsonObject $$3 = $$1.getAsJsonObject("metadata");
+
+            for (Entry<String, JsonElement> $$5 : $$3.entrySet()) {
+               if (!$$5.getValue().isJsonNull()) {
+                  $$2.d.put($$5.getKey(), $$5.getValue().getAsString());
+               }
             }
          }
-      } catch (Exception var10) {
+      } catch (Exception var7) {
+         f.error("Could not parse Backup: {}", var7.getMessage());
       }
 
-      return $$1;
+      return $$2;
+   }
+
+   public boolean a() {
+      return this.g;
+   }
+
+   public void a(boolean $$0) {
+      this.g = $$0;
    }
 }

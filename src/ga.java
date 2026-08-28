@@ -21,22 +21,22 @@ public class ga<T> implements ArgumentType<ga.c<T>> {
       ($$0, $$1, $$2) -> wp.b("argument.resource_tag.invalid_type", $$0, $$1, $$2)
    );
    private final jt<T> d;
-   final aku<? extends ke<T>> e;
+   final akt<? extends ke<T>> e;
 
-   public ga(et $$0, aku<? extends ke<T>> $$1) {
+   public ga(et $$0, akt<? extends ke<T>> $$1) {
       this.e = $$1;
       this.d = $$0.d($$1);
    }
 
-   public static <T> ga<T> a(et $$0, aku<? extends ke<T>> $$1) {
+   public static <T> ga<T> a(et $$0, akt<? extends ke<T>> $$1) {
       return new ga<>($$0, $$1);
    }
 
-   public static <T> ga.c<T> a(CommandContext<ex> $$0, String $$1, aku<ke<T>> $$2) throws CommandSyntaxException {
+   public static <T> ga.c<T> a(CommandContext<ex> $$0, String $$1, akt<ke<T>> $$2) throws CommandSyntaxException {
       ga.c<?> $$3 = (ga.c<?>)$$0.getArgument($$1, ga.c.class);
       Optional<ga.c<T>> $$4 = $$3.a($$2);
       return $$4.orElseThrow(() -> (CommandSyntaxException)$$3.a().map($$1xx -> {
-            aku<?> $$2x = $$1xx.h();
+            akt<?> $$2x = $$1xx.h();
             return fw.b.create($$2x.a(), $$2x.b(), $$2.a());
          }, $$1xx -> {
             axf<?> $$2x = $$1xx.h();
@@ -50,7 +50,7 @@ public class ga<T> implements ArgumentType<ga.c<T>> {
 
          try {
             $$0.skip();
-            akv $$2 = akv.a($$0);
+            aku $$2 = aku.a($$0);
             axf<T> $$3 = axf.a(this.e, $$2);
             jv.c<T> $$4 = this.d.a($$3).orElseThrow(() -> b.createWithContext($$0, $$2, this.e.a()));
             return new ga.d<>($$4);
@@ -59,8 +59,8 @@ public class ga<T> implements ArgumentType<ga.c<T>> {
             throw var6;
          }
       } else {
-         akv $$6 = akv.a($$0);
-         aku<T> $$7 = aku.a(this.e, $$6);
+         aku $$6 = aku.a($$0);
+         akt<T> $$7 = akt.a(this.e, $$6);
          jr.c<T> $$8 = this.d.a($$7).orElseThrow(() -> fw.a.createWithContext($$0, $$6, this.e.a()));
          return new ga.b<>($$8);
       }
@@ -68,7 +68,7 @@ public class ga<T> implements ArgumentType<ga.c<T>> {
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
       fc.a(this.d.f().map(axf::b), $$1, "#");
-      return fc.a(this.d.c_().map(aku::a), $$1);
+      return fc.a(this.d.c_().map(akt::a), $$1);
    }
 
    public Collection<String> getExamples() {
@@ -93,9 +93,9 @@ public class ga<T> implements ArgumentType<ga.c<T>> {
       }
 
       public final class a implements it.a<ga<T>> {
-         final aku<? extends ke<T>> b;
+         final akt<? extends ke<T>> b;
 
-         a(final aku<? extends ke<T>> $$1) {
+         a(final akt<? extends ke<T>> $$1) {
             this.b = $$1;
          }
 
@@ -117,7 +117,7 @@ public class ga<T> implements ArgumentType<ga.c<T>> {
       }
 
       @Override
-      public <E> Optional<ga.c<E>> a(aku<? extends ke<E>> $$0) {
+      public <E> Optional<ga.c<E>> a(akt<? extends ke<E>> $$0) {
          return this.a.h().c($$0) ? Optional.of((ga.c<E>)this) : Optional.empty();
       }
 
@@ -138,7 +138,7 @@ public class ga<T> implements ArgumentType<ga.c<T>> {
    public interface c<T> extends Predicate<jr<T>> {
       Either<jr.c<T>, jv.c<T>> a();
 
-      <E> Optional<ga.c<E>> a(aku<? extends ke<E>> var1);
+      <E> Optional<ga.c<E>> a(akt<? extends ke<E>> var1);
 
       String b();
    }
@@ -150,7 +150,7 @@ public class ga<T> implements ArgumentType<ga.c<T>> {
       }
 
       @Override
-      public <E> Optional<ga.c<E>> a(aku<? extends ke<E>> $$0) {
+      public <E> Optional<ga.c<E>> a(akt<? extends ke<E>> $$0) {
          return this.a.h().d($$0) ? Optional.of((ga.c<E>)this) : Optional.empty();
       }
 

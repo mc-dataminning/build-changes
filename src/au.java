@@ -5,10 +5,10 @@ import java.util.Optional;
 public class au {
    public static final Codec<au> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               cwq.c.fieldOf("icon").forGetter(au::c),
+               cxh.d.fieldOf("icon").forGetter(au::c),
                wr.a.fieldOf("title").forGetter(au::a),
                wr.a.fieldOf("description").forGetter(au::b),
-               akv.a.optionalFieldOf("background").forGetter(au::d),
+               aku.a.optionalFieldOf("background").forGetter(au::d),
                ao.d.optionalFieldOf("frame", ao.a).forGetter(au::e),
                Codec.BOOL.optionalFieldOf("show_toast", true).forGetter(au::h),
                Codec.BOOL.optionalFieldOf("announce_to_chat", true).forGetter(au::i),
@@ -19,8 +19,8 @@ public class au {
    public static final yn<wa, au> b = yn.a(au::a, au::b);
    private final wp c;
    private final wp d;
-   private final cwq e;
-   private final Optional<akv> f;
+   private final cxh e;
+   private final Optional<aku> f;
    private final ao g;
    private final boolean h;
    private final boolean i;
@@ -28,7 +28,7 @@ public class au {
    private float k;
    private float l;
 
-   public au(cwq $$0, wp $$1, wp $$2, Optional<akv> $$3, ao $$4, boolean $$5, boolean $$6, boolean $$7) {
+   public au(cxh $$0, wp $$1, wp $$2, Optional<aku> $$3, ao $$4, boolean $$5, boolean $$6, boolean $$7) {
       this.c = $$1;
       this.d = $$2;
       this.e = $$0;
@@ -52,11 +52,11 @@ public class au {
       return this.d;
    }
 
-   public cwq c() {
+   public cxh c() {
       return this.e;
    }
 
-   public Optional<akv> d() {
+   public Optional<aku> d() {
       return this.f;
    }
 
@@ -87,7 +87,7 @@ public class au {
    private void a(wa $$0) {
       wr.d.encode($$0, this.c);
       wr.d.encode($$0, this.d);
-      cwq.h.encode($$0, this.e);
+      cxh.i.encode($$0, this.e);
       $$0.a(this.g);
       int $$1 = 0;
       if (this.f.isPresent()) {
@@ -111,10 +111,10 @@ public class au {
    private static au b(wa $$0) {
       wp $$1 = wr.d.decode($$0);
       wp $$2 = wr.d.decode($$0);
-      cwq $$3 = cwq.h.decode($$0);
+      cxh $$3 = cxh.i.decode($$0);
       ao $$4 = $$0.b(ao.class);
       int $$5 = $$0.readInt();
-      Optional<akv> $$6 = ($$5 & 1) != 0 ? Optional.of($$0.q()) : Optional.empty();
+      Optional<aku> $$6 = ($$5 & 1) != 0 ? Optional.of($$0.q()) : Optional.empty();
       boolean $$7 = ($$5 & 2) != 0;
       boolean $$8 = ($$5 & 4) != 0;
       au $$9 = new au($$3, $$1, $$2, $$6, $$4, $$7, false, $$8);

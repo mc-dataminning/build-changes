@@ -1,26 +1,20 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dem(jr<dda> c, brq d) implements dei {
-   public static final MapCodec<dem> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dda.c.fieldOf("enchantment").forGetter(dem::b), brq.c.fieldOf("level").forGetter(dem::c)).apply($$0, dem::new)
-   );
+public record dem(ddy d) implements dei {
+   public static final MapCodec<dem> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ddy.b.fieldOf("duration").forGetter($$0x -> $$0x.d)).apply($$0, dem::new));
 
    @Override
-   public void a(cwq $$0, ddg.a $$1, azh $$2, bsj $$3) {
-      $$1.b(this.c, ayz.a(this.d.a($$2), this.c.a().d(), this.c.a().e()));
+   public void a(ard $$0, int $$1, ddq $$2, bva $$3, fbx $$4) {
+      $$3.e(this.d.a($$1));
    }
 
    @Override
    public MapCodec<dem> a() {
-      return b;
+      return a;
    }
 
-   public jr<dda> b() {
-      return this.c;
-   }
-
-   public brq c() {
+   public ddy b() {
       return this.d;
    }
 }

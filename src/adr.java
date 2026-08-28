@@ -1,21 +1,23 @@
-public record adr(int b, wp c) implements yw<abl> {
-   public static final yn<wa, adr> a = yn.a(yl.h, adr::b, wr.d, adr::e, adr::new);
+import java.util.List;
+import java.util.UUID;
+
+public record adr(List<UUID> b) implements yw<abl> {
+   public static final yn<vl, adr> a = yw.a(adr::a, adr::new);
+
+   private adr(vl $$0) {
+      this($$0.a(kl.g));
+   }
+
+   private void a(vl $$0) {
+      $$0.a(this.b, kl.g);
+   }
 
    @Override
    public yy<adr> a() {
-      return age.ae;
+      return agd.ae;
    }
 
    public void a(abl $$0) {
       $$0.a(this);
-   }
-
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   public wp e() {
-      return this.c;
    }
 }

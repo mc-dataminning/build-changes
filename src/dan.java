@@ -1,91 +1,36 @@
-public class dan extends dav {
-   public dan(das $$0) {
-      super($$0);
-   }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.stream.Stream;
 
-   public boolean a(dat $$0, dgj $$1) {
-      if ($$0.e() != 2) {
-         return false;
+public record dan(List<arv<String>> g) implements czi<String, dan> {
+   public static final dan a = new dan(List.of());
+   public static final int b = 1024;
+   public static final int c = 100;
+   private static final Codec<arv<String>> h = arv.a(Codec.string(0, 1024));
+   public static final Codec<List<arv<String>>> d = h.sizeLimitedListOf(100);
+   public static final Codec<dan> e = RecordCodecBuilder.create($$0 -> $$0.group(d.optionalFieldOf("pages", List.of()).forGetter(dan::a)).apply($$0, dan::new));
+   public static final yn<ByteBuf, dan> f = arv.a(yl.b(1024)).a(yl.c(100)).a(dan::new, dan::a);
+
+   public dan(List<arv<String>> g) {
+      if (g.size() > 100) {
+         throw new IllegalArgumentException("Got " + g.size() + " pages, but maximum is 100");
       } else {
-         cvn $$2 = null;
-         boolean $$3 = false;
-         boolean $$4 = false;
-
-         for (int $$5 = 0; $$5 < $$0.a(); $$5++) {
-            cwq $$6 = $$0.a($$5);
-            if (!$$6.f()) {
-               cwm $$7 = $$6.h();
-               if (!($$7 instanceof cut)) {
-                  return false;
-               }
-
-               cut $$8 = (cut)$$7;
-               if ($$2 == null) {
-                  $$2 = $$8.b();
-               } else if ($$2 != $$8.b()) {
-                  return false;
-               }
-
-               int $$10 = $$6.a(kv.ai, dtr.a).b().size();
-               if ($$10 > 6) {
-                  return false;
-               }
-
-               if ($$10 > 0) {
-                  if ($$4) {
-                     return false;
-                  }
-
-                  $$4 = true;
-               } else {
-                  if ($$3) {
-                     return false;
-                  }
-
-                  $$3 = true;
-               }
-            }
-         }
-
-         return $$4 && $$3;
+         this.g = g;
       }
    }
 
-   public cwq a(dat $$0, jt.a $$1) {
-      for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
-         cwq $$3 = $$0.a($$2);
-         if (!$$3.f()) {
-            int $$4 = $$3.a(kv.ai, dtr.a).b().size();
-            if ($$4 > 0 && $$4 <= 6) {
-               return $$3.c(1);
-            }
-         }
-      }
+   public Stream<String> a(boolean $$0) {
+      return this.g.stream().map($$1 -> $$1.a($$0));
+   }
 
-      return cwq.j;
+   public dan b(List<arv<String>> $$0) {
+      return new dan($$0);
    }
 
    @Override
-   public ka<cwq> a(dat $$0) {
-      ka<cwq> $$1 = ka.a($$0.a(), cwq.j);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cwq $$3 = $$0.a($$2);
-         if (!$$3.f()) {
-            cwq $$4 = $$3.h().k();
-            if (!$$4.f()) {
-               $$1.set($$2, $$4);
-            } else if (!$$3.a(kv.ai, dtr.a).b().isEmpty()) {
-               $$1.set($$2, $$3.c(1));
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public dbp<dan> a() {
-      return dbp.k;
+   public List<arv<String>> a() {
+      return this.g;
    }
 }

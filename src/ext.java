@@ -1,83 +1,95 @@
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
-public class ext extends exf {
-   public static final MapCodec<ext> a = RecordCodecBuilder.mapCodec(
+public class ext extends eyb {
+   public static final int a = 0;
+   public static final MapCodec<ext> b = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  Codec.unboundedMap(dda.c, ezy.a).optionalFieldOf("enchantments", Map.of()).forGetter($$0x -> $$0x.b),
-                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
+                  ddr.c.fieldOf("enchantment").forGetter($$0x -> $$0x.c),
+                  fau.a.fieldOf("count").forGetter($$0x -> $$0x.d),
+                  Codec.INT.optionalFieldOf("limit", 0).forGetter($$0x -> $$0x.e)
                )
             )
             .apply($$0, ext::new)
    );
-   private final Map<jr<dda>, ezx> b;
-   private final boolean c;
+   private final jr<ddr> c;
+   private final fat d;
+   private final int e;
 
-   ext(List<ezb> $$0, Map<jr<dda>, ezx> $$1, boolean $$2) {
+   ext(List<ezx> $$0, jr<ddr> $$1, fat $$2, int $$3) {
       super($$0);
-      this.b = Map.copyOf($$1);
-      this.c = $$2;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
    @Override
-   public exh<ext> b() {
-      return exi.i;
+   public eyd<ext> b() {
+      return eye.m;
    }
 
    @Override
    public Set<bai<?>> a() {
-      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
+      return Sets.union(ImmutableSet.of(ezi.d), this.d.a());
+   }
+
+   private boolean c() {
+      return this.e > 0;
    }
 
    @Override
-   public cwq a(cwq $$0, evs $$1) {
-      if ($$0.a(cwu.rw)) {
-         $$0 = $$0.a((dgi)cwu.vv);
+   public cxh a(cxh $$0, ewo $$1) {
+      bva $$2 = $$1.c(ezi.d);
+      if ($$2 instanceof bvy $$3) {
+         int $$4 = ddt.a(this.c, $$3);
+         if ($$4 == 0) {
+            return $$0;
+         }
+
+         float $$5 = (float)$$4 * this.d.b($$1);
+         $$0.g(Math.round($$5));
+         if (this.c()) {
+            $$0.f(this.e);
+         }
       }
 
-      ddc.a($$0, $$1x -> {
-         if (this.c) {
-            this.b.forEach(($$2, $$3) -> $$1x.a((jr<dda>)$$2, ayz.a($$1x.a((jr<dda>)$$2) + $$3.a($$1), 0, 255)));
-         } else {
-            this.b.forEach(($$2, $$3) -> $$1x.a((jr<dda>)$$2, ayz.a($$3.a($$1), 0, 255)));
-         }
-      });
       return $$0;
    }
 
-   public static class a extends exf.a<ext.a> {
-      private final Builder<jr<dda>, ezx> a = ImmutableMap.builder();
-      private final boolean b;
+   public static ext.a a(jt.a $$0, fat $$1) {
+      jt.b<ddr> $$2 = $$0.d(mc.aP);
+      return new ext.a($$2.b(ddw.s), $$1);
+   }
 
-      public a() {
-         this(false);
-      }
+   public static class a extends eyb.a<ext.a> {
+      private final jr<ddr> a;
+      private final fat b;
+      private int c = 0;
 
-      public a(boolean $$0) {
-         this.b = $$0;
+      public a(jr<ddr> $$0, fat $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
       protected ext.a a() {
          return this;
       }
 
-      public ext.a a(jr<dda> $$0, ezx $$1) {
-         this.a.put($$0, $$1);
+      public ext.a a(int $$0) {
+         this.c = $$0;
          return this;
       }
 
       @Override
-      public exg b() {
-         return new ext(this.g(), this.a.build(), this.b);
+      public eyc b() {
+         return new ext(this.g(), this.a, this.b, this.c);
       }
    }
 }

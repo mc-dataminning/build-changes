@@ -1,26 +1,38 @@
-import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class flv extends fli {
-   private final BooleanSupplier h;
+public class flv {
+   private final ggz a;
+   private int b = -1;
+   @Nullable
+   private Consumer<tq> c;
 
-   public flv(String $$0, int $$1, String $$2, BooleanSupplier $$3) {
-      super($$0, feq.b.a, $$1, $$2);
-      this.h = $$3;
+   public flv(ggz $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public void a(boolean $$0) {
-      if (this.h.getAsBoolean()) {
-         if ($$0) {
-            super.a(!this.e());
-         }
+   public boolean a(int $$0, @Nullable tq $$1) {
+      if (this.b == $$0 && this.c != null) {
+         this.c.accept($$1);
+         this.c = null;
+         return true;
       } else {
-         super.a($$0);
+         return false;
       }
    }
 
-   @Override
-   protected void n() {
-      super.a(false);
+   private int a(Consumer<tq> $$0) {
+      this.c = $$0;
+      return ++this.b;
+   }
+
+   public void a(int $$0, Consumer<tq> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new aha($$2, $$0));
+   }
+
+   public void a(ji $$0, Consumer<tq> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new agi($$2, $$0));
    }
 }

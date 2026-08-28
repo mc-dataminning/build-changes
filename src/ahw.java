@@ -1,18 +1,29 @@
-import java.util.Optional;
+public class ahw implements yw<agf> {
+   public static final yn<vl, ahw> a = yw.a(ahw::a, ahw::new);
+   private final int b;
 
-public record ahw(Optional<jr<btp>> b, Optional<jr<btp>> c) implements yw<agg> {
-   public static final yn<wa, ahw> a = yn.a(btp.b.a(yl::a), ahw::b, btp.b.a(yl::a), ahw::e, ahw::new);
+   public ahw(int $$0) {
+      this.b = $$0;
+   }
+
+   private ahw(vl $$0) {
+      this.b = $$0.readShort();
+   }
+
+   private void a(vl $$0) {
+      $$0.m(this.b);
+   }
 
    @Override
    public yy<ahw> a() {
-      return age.cb;
+      return agd.cb;
    }
 
-   public void a(agg $$0) {
+   public void a(agf $$0) {
       $$0.a(this);
    }
 
-   public Optional<jr<btp>> e() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 }

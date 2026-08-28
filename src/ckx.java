@@ -1,124 +1,80 @@
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class ckx extends ckt {
-   public static final double b = 0.375;
+public class ckx extends ckr {
+   private static final cgp b = cgp.a().d();
+   @Nullable
+   private euk c;
+   @Nullable
+   private fbx d;
 
-   public ckx(but<? extends ckx> $$0, dgj $$1) {
-      super($$0, $$1);
-   }
-
-   public ckx(dgj $$0, ji $$1) {
-      super(but.av, $$0, $$1);
-      this.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
-   }
-
-   @Override
-   protected void a(akc.a $$0) {
+   public ckx(ckp $$0) {
+      super($$0);
    }
 
    @Override
-   protected void l() {
-      this.o((double)this.a.u() + 0.5, (double)this.a.v() + 0.375, (double)this.a.w() + 0.5);
-      double $$0 = (double)this.aq().l() / 2.0;
-      double $$1 = (double)this.aq().m();
-      this.a(new faw(this.dA() - $$0, this.dC(), this.dG() - $$0, this.dA() + $$0, this.dC() + $$1, this.dG() + $$0));
+   public clf<ckx> h() {
+      return clf.c;
    }
 
    @Override
-   public boolean a(double $$0) {
-      return $$0 < 1024.0;
+   public void c() {
+      this.c = null;
+      this.d = null;
    }
 
    @Override
-   public void a(ard $$0, @Nullable bum $$1) {
-      this.a(awa.oq, 1.0F, 1.0F);
-   }
-
-   @Override
-   public void b(tq $$0) {
-   }
-
-   @Override
-   public void a(tq $$0) {
-   }
-
-   @Override
-   public bsl a(coy $$0, bsk $$1) {
-      if (this.dV().C) {
-         return bsl.a;
-      } else {
-         boolean $$2 = false;
-         List<bvg> $$3 = cxa.a(this.dV(), this.p(), $$1x -> {
-            bum $$2x = $$1x.D();
-            return $$2x == $$0 || $$2x == this;
-         });
-
-         for (bvg $$4 : $$3) {
-            if ($$4.D() == $$0) {
-               $$4.b(this, true);
-               $$2 = true;
-            }
-         }
-
-         boolean $$5 = false;
-         if (!$$2) {
-            this.at();
-            if ($$0.gj().d) {
-               for (bvg $$6 : $$3) {
-                  if ($$6.P_() && $$6.D() == this) {
-                     $$6.A();
-                     $$5 = true;
-                  }
-               }
-            }
-         }
-
-         if ($$2 || $$5) {
-            this.a(ebu.b, $$0);
-         }
-
-         return bsl.a;
+   public void a(ard $$0) {
+      double $$1 = this.d == null ? 0.0 : this.d.c(this.a.dz(), this.a.dB(), this.a.dF());
+      if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
+         this.b($$0);
       }
    }
 
+   @Nullable
    @Override
-   public boolean m() {
-      return this.dV().a_(this.a).a(awp.U);
+   public fbx f() {
+      return this.d;
    }
 
-   public static ckx a(dgj $$0, ji $$1) {
-      int $$2 = $$1.u();
-      int $$3 = $$1.v();
-      int $$4 = $$1.w();
+   private void b(ard $$0) {
+      if (this.c == null || this.c.c()) {
+         int $$1 = this.a.n();
+         ji $$2 = $$0.a(edo.a.f, egt.a(this.a.j()));
+         cpr $$3 = $$0.a(b, this.a, (double)$$2.u(), (double)$$2.v(), (double)$$2.w());
+         int $$5;
+         if ($$3 != null) {
+            fbx $$4 = new fbx($$3.dz(), 0.0, $$3.dF()).d();
+            $$5 = this.a.q(-$$4.d * 40.0, 105.0, -$$4.f * 40.0);
+         } else {
+            $$5 = this.a.q(40.0, (double)$$2.v(), 0.0);
+         }
 
-      for (ckx $$6 : $$0.a(ckx.class, new faw((double)$$2 - 1.0, (double)$$3 - 1.0, (double)$$4 - 1.0, (double)$$2 + 1.0, (double)$$3 + 1.0, (double)$$4 + 1.0))) {
-         if ($$6.p().equals($$1)) {
-            return $$6;
+         eui $$7 = new eui($$2.u(), $$2.v(), $$2.w());
+         this.c = this.a.a($$1, $$5, $$7);
+         if (this.c != null) {
+            this.c.a();
          }
       }
 
-      ckx $$7 = new ckx($$0, $$1);
-      $$0.b($$7);
-      return $$7;
+      this.i();
+      if (this.c != null && this.c.c()) {
+         this.a.t().a(clf.d);
+      }
    }
 
-   public void s() {
-      this.a(awa.or, 1.0F, 1.0F);
-   }
+   private void i() {
+      if (this.c != null && !this.c.c()) {
+         km $$0 = this.c.g();
+         this.c.a();
+         double $$1 = (double)$$0.u();
+         double $$2 = (double)$$0.w();
 
-   @Override
-   public yw<abl> a(arb $$0) {
-      return new abm(this, 0, this.p());
-   }
+         double $$3;
+         do {
+            $$3 = (double)((float)$$0.v() + this.a.dX().i() * 20.0F);
+         } while ($$3 < (double)$$0.v());
 
-   @Override
-   public fbb u(float $$0) {
-      return this.o($$0).b(0.0, 0.2, 0.0);
-   }
-
-   @Override
-   public cwq dI() {
-      return new cwq(cwu.vK);
+         this.d = new fbx($$1, $$3, $$2);
+      }
    }
 }

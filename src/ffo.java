@@ -1,90 +1,53 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import ca.weblite.objc.Client;
+import ca.weblite.objc.NSObject;
+import com.sun.jna.Pointer;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Base64;
+import java.util.Locale;
 import java.util.Optional;
-import javax.annotation.Nullable;
-import org.lwjgl.opengl.ARBTimerQuery;
-import org.lwjgl.opengl.GL;
-import org.lwjgl.opengl.GL32C;
+import org.lwjgl.glfw.GLFWNativeCocoa;
 
 public class ffo {
-   private int a;
+   public static final boolean a = System.getProperty("os.name").toLowerCase(Locale.ROOT).contains("mac");
+   private static final int b = 8;
+   private static final int c = 16384;
 
-   public static Optional<ffo> a() {
-      return ffo.b.a;
+   public static void a(long $$0) {
+      c($$0).filter(ffo::a).ifPresent(ffo::c);
    }
 
-   public void b() {
-      RenderSystem.assertOnRenderThread();
-      if (this.a != 0) {
-         throw new IllegalStateException("Current profile not ended");
-      } else {
-         this.a = GL32C.glGenQueries();
-         GL32C.glBeginQuery(35007, this.a);
-      }
+   public static void b(long $$0) {
+      c($$0).ifPresent($$0x -> {
+         long $$1 = b($$0x);
+         $$0x.send("setStyleMask:", new Object[]{$$1 & -9L});
+      });
    }
 
-   public ffo.a c() {
-      RenderSystem.assertOnRenderThread();
-      if (this.a == 0) {
-         throw new IllegalStateException("endProfile called before beginProfile");
-      } else {
-         GL32C.glEndQuery(35007);
-         ffo.a $$0 = new ffo.a(this.a);
-         this.a = 0;
-         return $$0;
-      }
+   private static Optional<NSObject> c(long $$0) {
+      long $$1 = GLFWNativeCocoa.glfwGetCocoaWindow($$0);
+      return $$1 != 0L ? Optional.of(new NSObject(new Pointer($$1))) : Optional.empty();
    }
 
-   public static class a {
-      private static final long a = 0L;
-      private static final long b = -1L;
-      private final int c;
-      private long d;
-
-      a(int $$0) {
-         this.c = $$0;
-      }
-
-      public void a() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d == 0L) {
-            this.d = -1L;
-            GL32C.glDeleteQueries(this.c);
-         }
-      }
-
-      public boolean b() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d != 0L) {
-            return true;
-         } else if (1 == GL32C.glGetQueryObjecti(this.c, 34919)) {
-            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
-            GL32C.glDeleteQueries(this.c);
-            return true;
-         } else {
-            return false;
-         }
-      }
-
-      public long c() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d == 0L) {
-            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
-            GL32C.glDeleteQueries(this.c);
-         }
-
-         return this.d;
-      }
+   private static boolean a(NSObject $$0) {
+      return (b($$0) & 16384L) != 0L;
    }
 
-   static class b {
-      static final Optional<ffo> a = Optional.ofNullable(a());
+   private static long b(NSObject $$0) {
+      return (Long)$$0.sendRaw("styleMask", new Object[0]);
+   }
 
-      private b() {
-      }
+   private static void c(NSObject $$0) {
+      $$0.send("toggleFullScreen:", new Object[]{Pointer.NULL});
+   }
 
-      @Nullable
-      private static ffo a() {
-         return !GL.getCapabilities().GL_ARB_timer_query ? null : new ffo();
+   public static void a(auh<InputStream> $$0) throws IOException {
+      try (InputStream $$1 = $$0.get()) {
+         String $$2 = Base64.getEncoder().encodeToString($$1.readAllBytes());
+         Client $$3 = Client.getInstance();
+         Object $$4 = $$3.sendProxy("NSData", "alloc", new Object[0]).send("initWithBase64Encoding:", new Object[]{$$2});
+         Object $$5 = $$3.sendProxy("NSImage", "alloc", new Object[0]).send("initWithData:", new Object[]{$$4});
+         $$3.sendProxy("NSApplication", "sharedApplication", new Object[0]).send("setApplicationIconImage:", new Object[]{$$5});
       }
    }
 }

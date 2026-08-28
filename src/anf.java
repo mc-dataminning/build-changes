@@ -1,31 +1,72 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.Collection;
 
 public class anf {
+   public static final int a = 100;
+
    public static void a(CommandDispatcher<ex> $$0, et $$1) {
-      final LiteralArgumentBuilder<ex> $$2 = (LiteralArgumentBuilder<ex>)ey.a("gamerule").requires($$0x -> $$0x.c(2));
-      new dgf($$1.a()).a(new dgf.c() {
-         @Override
-         public <T extends dgf.g<T>> void a(dgf.e<T> $$0, dgf.f<T> $$1) {
-            LiteralArgumentBuilder<ex> $$2 = ey.a($$0.a());
-            $$2.then(((LiteralArgumentBuilder)$$2.executes($$1x -> anf.a((ex)$$1x.getSource(), $$0))).then($$1.a("value").executes($$1x -> anf.a($$1x, $$0))));
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("give").requires($$0x -> $$0x.c(2)))
+            .then(
+               ey.a("targets", fk.d())
+                  .then(
+                     ((RequiredArgumentBuilder)ey.a("item", hg.a($$1)).executes($$0x -> a((ex)$$0x.getSource(), hg.a($$0x, "item"), fk.f($$0x, "targets"), 1)))
+                        .then(
+                           ey.a("count", IntegerArgumentType.integer(1))
+                              .executes(
+                                 $$0x -> a((ex)$$0x.getSource(), hg.a($$0x, "item"), fk.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "count"))
+                              )
+                        )
+                  )
+            )
+      );
+   }
+
+   private static int a(ex $$0, hh $$1, Collection<are> $$2, int $$3) throws CommandSyntaxException {
+      cxh $$4 = $$1.a(1, false);
+      int $$5 = $$4.k();
+      int $$6 = $$5 * 100;
+      if ($$3 > $$6) {
+         $$0.b(wp.a("commands.give.failed.toomanyitems", $$6, $$4.K()));
+         return 0;
+      } else {
+         for (are $$7 : $$2) {
+            int $$8 = $$3;
+
+            while ($$8 > 0) {
+               int $$9 = Math.min($$5, $$8);
+               $$8 -= $$9;
+               cxh $$10 = $$1.a($$9, false);
+               boolean $$11 = $$7.gl().f($$10);
+               if ($$11 && $$10.f()) {
+                  clw $$13 = $$7.a($$4, false);
+                  if ($$13 != null) {
+                     $$13.u();
+                  }
+
+                  $$7.dU().a(null, $$7.dz(), $$7.dB(), $$7.dF(), awa.of, awb.h, 0.2F, (($$7.dX().i() - $$7.dX().i()) * 0.7F + 1.0F) * 2.0F);
+                  $$7.bQ.d();
+               } else {
+                  clw $$12 = $$7.a($$10, false);
+                  if ($$12 != null) {
+                     $$12.m();
+                     $$12.b($$7.cF());
+                  }
+               }
+            }
          }
-      });
-      $$0.register($$2);
-   }
 
-   static <T extends dgf.g<T>> int a(CommandContext<ex> $$0, dgf.e<T> $$1) {
-      ex $$2 = (ex)$$0.getSource();
-      T $$3 = $$2.l().aL().a($$1);
-      $$3.b($$0, "value");
-      $$2.a(() -> wp.a("commands.gamerule.set", $$1.a(), $$3.toString()), true);
-      return $$3.c();
-   }
+         if ($$2.size() == 1) {
+            $$0.a(() -> wp.a("commands.give.success.single", $$3, $$4.K(), $$2.iterator().next().m_()), true);
+         } else {
+            $$0.a(() -> wp.a("commands.give.success.single", $$3, $$4.K(), $$2.size()), true);
+         }
 
-   static <T extends dgf.g<T>> int a(ex $$0, dgf.e<T> $$1) {
-      T $$2 = $$0.l().aL().a($$1);
-      $$0.a(() -> wp.a("commands.gamerule.query", $$1.a(), $$2.toString()), false);
-      return $$2.c();
+         return $$2.size();
+      }
    }
 }

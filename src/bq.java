@@ -9,8 +9,8 @@ public class bq extends dz<bq.a> {
       return bq.a.a;
    }
 
-   public void a(are $$0, @Nullable bum $$1) {
-      evs $$2 = $$1 != null ? bx.b($$0, $$1) : null;
+   public void a(are $$0, @Nullable bva $$1) {
+      ewo $$2 = $$1 != null ? bx.b($$0, $$1) : null;
       this.a($$0, $$2x -> $$2x.a($$0, $$2));
    }
 
@@ -32,8 +32,8 @@ public class bq extends dz<bq.a> {
          return ap.B.a(new bq.a(Optional.empty(), Optional.empty(), Optional.of(bx.a($$0.b()))));
       }
 
-      public boolean a(are $$0, @Nullable evs $$1) {
-         return this.c.isPresent() && !this.c.get().a((bvi)$$0) ? false : !this.d.isPresent() || $$1 != null && this.d.get().a($$1);
+      public boolean a(are $$0, @Nullable ewo $$1) {
+         return this.c.isPresent() && !this.c.get().a((bvy)$$0) ? false : !this.d.isPresent() || $$1 != null && this.d.get().a($$1);
       }
 
       @Override

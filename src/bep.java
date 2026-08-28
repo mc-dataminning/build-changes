@@ -1,19 +1,13 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import java.util.Objects;
 
-public class bep extends bgt {
+public class bep extends bip {
    public bep(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityWolfColorFix", bhy.B, "minecraft:wolf");
-   }
-
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("CollarColor", $$0x -> $$0x.createByte((byte)(15 - $$0x.asInt(0))));
+      super("EntityTippedArrowFix", $$0, $$1);
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   protected String a(String $$0) {
+      return Objects.equals($$0, "TippedArrow") ? "Arrow" : $$0;
    }
 }

@@ -1,27 +1,30 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dly extends djn {
-   public static final MapCodec<dly> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(brq.b(0, 10).fieldOf("experience").forGetter($$0x -> $$0x.b), t()).apply($$0, dly::new)
-   );
-   private final brq b;
+public class dly extends dke {
+   public static final MapCodec<dly> a = b(dly::new);
+   private static final wp b = wp.c("container.crafting");
 
    @Override
    public MapCodec<? extends dly> a() {
       return a;
    }
 
-   public dly(brq $$0, dwx.d $$1) {
-      super($$1);
-      this.b = $$0;
+   protected dly(dxp.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected void a(dwy $$0, ard $$1, ji $$2, cwq $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, this.b);
+   protected bsy a(dxq $$0, dgz $$1, ji $$2, cpr $$3, fbt $$4) {
+      if (!$$1.C) {
+         $$3.a($$0.c($$1, $$2));
+         $$3.a(awk.an);
       }
+
+      return bsy.a;
+   }
+
+   @Override
+   protected bta b(dxq $$0, dgz $$1, ji $$2) {
+      return new btg(($$2x, $$3, $$4) -> new ctp($$2x, $$3, ctj.a($$1, $$2)), b);
    }
 }

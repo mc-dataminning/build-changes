@@ -1,27 +1,13 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-
-public class gwk extends gwu<gzf, gcr> {
-   private static final Map<buj.a, akv> a = ImmutableMap.of(
-      buj.a.b,
-      akv.b("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
-      buj.a.c,
-      akv.b("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
-      buj.a.d,
-      akv.b("textures/entity/iron_golem/iron_golem_crackiness_high.png")
-   );
-
-   public gwk(guc<gzf, gcr> $$0) {
-      super($$0);
+public class gwk extends grw<cnl, hca, gfs<hca>> {
+   public gwk(gtd.a $$0) {
+      this($$0, ggb.dP, ggb.dQ, ggb.dW, ggb.dX, ggb.dR, ggb.dS);
    }
 
-   public void a(ffv $$0, glz $$1, int $$2, gzf $$3, float $$4, float $$5) {
-      if (!$$3.z) {
-         buj.a $$6 = $$3.c;
-         if ($$6 != buj.a.a) {
-            akv $$7 = a.get($$6);
-            b(this.d(), $$7, $$0, $$1, $$2, $$3, -1);
-         }
-      }
+   public hca b() {
+      return new hca();
+   }
+
+   public gwk(gtd.a $$0, gga $$1, gga $$2, gga $$3, gga $$4, gga $$5, gga $$6) {
+      super($$0, new gfs<>($$0.a($$1)), new gfs<>($$0.a($$2)), new gfs<>($$0.a($$3)), new gfs<>($$0.a($$4)), new gfs<>($$0.a($$5)), new gfs<>($$0.a($$6)));
    }
 }

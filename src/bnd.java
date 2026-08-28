@@ -1,66 +1,18 @@
-import com.google.common.collect.Maps;
-import java.util.EnumMap;
-import java.util.LinkedList;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
-import java.util.Queue;
+import java.util.function.Supplier;
 
-public class bnd {
-   public static final int a = 200;
-   public static final int b = 10000;
-   private final avd c;
-   private final EnumMap<bnf, Map<are, bnd.b>> d;
-   private final Queue<bnd.a> e = new LinkedList<>();
-
-   public bnd(avd $$0) {
-      this.c = $$0;
-      this.d = new EnumMap<>(bnf.class);
-
-      for (bnf $$1 : bnf.values()) {
-         this.d.put($$1, Maps.newHashMap());
-      }
+public class bnd extends bju {
+   public bnd(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   public boolean a(bnf $$0) {
-      return !this.d.get($$0).isEmpty();
-   }
-
-   public void a(acm $$0) {
-      for (are $$2 : this.d.get($$0.e()).keySet()) {
-         $$2.f.b($$0);
-      }
-   }
-
-   public void a(are $$0, bnf $$1) {
-      if (this.c.f($$0.gh())) {
-         this.e.add(new bnd.a($$0, $$1));
-      }
-   }
-
-   public void a(int $$0) {
-      long $$1 = af.c();
-      this.a($$1, $$0);
-      this.b($$1, $$0);
-   }
-
-   private void a(long $$0, int $$1) {
-      for (bnd.a $$2 : this.e) {
-         this.d.get($$2.b()).put($$2.a(), new bnd.b($$0, $$1));
-      }
-   }
-
-   private void b(long $$0, int $$1) {
-      for (Map<are, bnd.b> $$2 : this.d.values()) {
-         $$2.entrySet().removeIf($$2x -> {
-            boolean $$3 = !this.c.f(((are)$$2x.getKey()).gh());
-            bnd.b $$4 = (bnd.b)$$2x.getValue();
-            return $$3 || $$1 > $$4.b() + 200 && $$0 > $$4.a() + 10000L;
-         });
-      }
-   }
-
-   static record a(are a, bnf b) {
-   }
-
-   static record b(long a, int b) {
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$0.registerSimple($$1, "minecraft:pale_oak_boat");
+      $$0.register($$1, "minecraft:pale_oak_chest_boat", $$1x -> DSL.optionalFields("Items", DSL.list(bic.t.in($$0))));
+      return $$1;
    }
 }

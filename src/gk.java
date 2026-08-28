@@ -1,15 +1,15 @@
 import com.mojang.brigadier.context.CommandContext;
 
-public class gk extends gh<dom> {
+public class gk extends gh<dpf> {
    private gk() {
-      super(dom.d, dom::values);
+      super(dpf.d, dpf::values);
    }
 
-   public static gh<dom> a() {
+   public static gh<dpf> a() {
       return new gk();
    }
 
-   public static dom a(CommandContext<ex> $$0, String $$1) {
-      return (dom)$$0.getArgument($$1, dom.class);
+   public static dpf a(CommandContext<ex> $$0, String $$1) {
+      return (dpf)$$0.getArgument($$1, dpf.class);
    }
 }

@@ -1,123 +1,63 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.google.common.collect.Sets;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public class hie implements hia {
-   private static final int a = 40;
-   private static final float b = 0.001F;
-   private final gkx c;
-   private final hjw d;
-   private final dhn e;
-   private final azh f;
-   private final Object2ObjectArrayMap<dhl, hie.a> g = new Object2ObjectArrayMap();
-   private Optional<dhj> h = Optional.empty();
-   private Optional<dhi> i = Optional.empty();
-   private float j;
-   @Nullable
-   private dhl k;
+public class hie {
+   static final int a = -1;
+   private static final int b = 0;
 
-   public hie(gkx $$0, hjw $$1, dhn $$2) {
-      this.f = $$0.dV().H_();
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   public float b() {
-      return this.j;
-   }
-
-   @Override
-   public void a() {
-      this.g.values().removeIf(hhz::m);
-      dhl $$0 = this.e.a(this.c.dA(), this.c.dC(), this.c.dG()).a();
-      if ($$0 != this.k) {
-         this.k = $$0;
-         this.h = $$0.m();
-         this.i = $$0.n();
-         this.g.values().forEach(hie.a::o);
-         $$0.l().ifPresent($$1 -> this.g.compute($$0, ($$1x, $$2) -> {
-               if ($$2 == null) {
-                  $$2 = new hie.a((avz)$$1.a());
-                  this.d.a((hiq)$$2);
-               }
-
-               $$2.p();
-               return $$2;
-            }));
-      }
-
-      this.i.ifPresent($$0x -> {
-         if (this.f.j() < $$0x.b()) {
-            this.d.a(hil.b($$0x.a().a()));
-         }
+   public static Object2IntMap<dxq> a(fni $$0, hht.c $$1) {
+      Map<dke, List<dyt<?>>> $$2 = new HashMap<>();
+      Map<hie.a, Set<dxq>> $$3 = new HashMap<>();
+      $$1.c().forEach(($$3x, $$4x) -> {
+         List<dyt<?>> $$5x = $$2.computeIfAbsent($$4x.a().b(), $$1xx -> List.copyOf($$0.a($$1xx)));
+         hie.a $$6x = hie.a.a($$4x.a(), $$4x.b(), $$5x);
+         $$3.computeIfAbsent($$6x, $$0xx -> Sets.newIdentityHashSet()).add($$4x.a());
       });
-      this.h
-         .ifPresent(
-            $$0x -> {
-               dgj $$1 = this.c.dV();
-               int $$2 = $$0x.c() * 2 + 1;
-               ji $$3 = ji.a(
-                  this.c.dA() + (double)this.f.a($$2) - (double)$$0x.c(),
-                  this.c.dE() + (double)this.f.a($$2) - (double)$$0x.c(),
-                  this.c.dG() + (double)this.f.a($$2) - (double)$$0x.c()
-               );
-               int $$4 = $$1.a(dgs.a, $$3);
-               if ($$4 > 0) {
-                  this.j -= (float)$$4 / 15.0F * 0.001F;
-               } else {
-                  this.j = this.j - (float)($$1.a(dgs.b, $$3) - 1) / (float)$$0x.b();
-               }
+      int $$4 = 1;
+      Object2IntMap<dxq> $$5 = new Object2IntOpenHashMap();
+      $$5.defaultReturnValue(-1);
 
-               if (this.j >= 1.0F) {
-                  double $$5 = (double)$$3.u() + 0.5;
-                  double $$6 = (double)$$3.v() + 0.5;
-                  double $$7 = (double)$$3.w() + 0.5;
-                  double $$8 = $$5 - this.c.dA();
-                  double $$9 = $$6 - this.c.dE();
-                  double $$10 = $$7 - this.c.dG();
-                  double $$11 = Math.sqrt($$8 * $$8 + $$9 * $$9 + $$10 * $$10);
-                  double $$12 = $$11 + $$0x.d();
-                  hil $$13 = hil.a($$0x.a().a(), this.f, this.c.dA() + $$8 / $$11 * $$12, this.c.dE() + $$9 / $$11 * $$12, this.c.dG() + $$10 / $$11 * $$12);
-                  this.d.a($$13);
-                  this.j = 0.0F;
-               } else {
-                  this.j = Math.max(this.j, 0.0F);
-               }
+      for (Set<dxq> $$6 : $$3.values()) {
+         Iterator<dxq> $$7 = $$6.iterator();
+
+         while ($$7.hasNext()) {
+            dxq $$8 = $$7.next();
+            if ($$8.o() != dqp.b) {
+               $$7.remove();
+               $$5.put($$8, 0);
             }
-         );
-   }
-
-   public static class a extends hhz {
-      private int n;
-      private int o;
-
-      public a(avz $$0) {
-         super($$0, awb.i, hiq.t());
-         this.i = true;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
-      }
-
-      @Override
-      public void q() {
-         if (this.o < 0) {
-            this.n();
          }
 
-         this.o = this.o + this.n;
-         this.d = ayz.a((float)this.o / 40.0F, 0.0F, 1.0F);
+         if ($$6.size() > 1) {
+            int $$9 = $$4++;
+            $$6.forEach($$2x -> $$5.put($$2x, $$9));
+         }
       }
 
-      public void o() {
-         this.o = Math.min(this.o, 40);
-         this.n = -1;
+      return $$5;
+   }
+
+   static record a(Object a, List<Object> b) {
+      public static hie.a a(dxq $$0, gor $$1, List<dyt<?>> $$2) {
+         List<Object> $$3 = a($$0, $$2);
+         Object $$4 = $$1.a($$0);
+         return new hie.a($$4, $$3);
       }
 
-      public void p() {
-         this.o = Math.max(0, this.o);
-         this.n = 1;
+      private static List<Object> a(dxq $$0, List<dyt<?>> $$1) {
+         Object[] $$2 = new Object[$$1.size()];
+
+         for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
+            $$2[$$3] = $$0.c($$1.get($$3));
+         }
+
+         return List.of($$2);
       }
    }
 }

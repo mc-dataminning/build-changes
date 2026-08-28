@@ -1,38 +1,30 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public class cgd {
-   @Nullable
-   public static fbb a(bvq $$0, int $$1, int $$2) {
-      boolean $$3 = cge.a($$0, $$1);
-      return cgh.a($$0, () -> {
-         ji $$4 = cgh.a($$0.dY(), $$1, $$2);
-         return a($$0, $$1, $$3, $$4);
-      });
+public class cgd extends cgi<bvy> {
+   @Override
+   public Set<cfc<?>> a() {
+      return ImmutableSet.of(cfc.h, cfc.M, cfc.an);
    }
 
-   @Nullable
-   public static fbb a(bvq $$0, int $$1, int $$2, fbb $$3, double $$4) {
-      fbb $$5 = $$3.a($$0.dA(), $$0.dC(), $$0.dG());
-      boolean $$6 = cge.a($$0, $$1);
-      return cgh.a($$0, () -> {
-         ji $$6x = cgh.a($$0.dY(), $$1, $$2, 0, $$5.d, $$5.f, $$4);
-         return $$6x == null ? null : a($$0, $$1, $$6, $$6x);
-      });
-   }
+   @Override
+   protected void a(ard $$0, bvy $$1) {
+      bxa<?> $$2 = $$1.ea();
+      List<coe> $$3 = Lists.newArrayList();
+      cfe $$4 = $$2.c(cfc.h).orElse(cfe.a());
+      Optional<bwa> $$5 = $$4.a($$0x -> $$0x instanceof cnj || $$0x instanceof clj).map(bwa.class::cast);
 
-   @Nullable
-   public static fbb a(bvq $$0, int $$1, int $$2, fbb $$3) {
-      fbb $$4 = $$0.dt().d($$3);
-      boolean $$5 = cge.a($$0, $$1);
-      return cgh.a($$0, () -> {
-         ji $$5x = cgh.a($$0.dY(), $$1, $$2, 0, $$4.d, $$4.f, (float) (Math.PI / 2));
-         return $$5x == null ? null : a($$0, $$1, $$5, $$5x);
-      });
-   }
+      for (bvy $$7 : $$2.c(cfc.g).orElse(ImmutableList.of())) {
+         if ($$7 instanceof coe && ((coe)$$7).t()) {
+            $$3.add((coe)$$7);
+         }
+      }
 
-   @Nullable
-   private static ji a(bvq $$0, int $$1, boolean $$2, ji $$3) {
-      ji $$4 = cgh.a($$0, $$1, $$0.dY(), $$3);
-      return !cge.a($$4, $$0) && !cge.a($$2, $$0, $$4) && !cge.a($$0.P(), $$4) && !cge.b($$0, $$4) ? $$4 : null;
+      $$2.a(cfc.M, $$5);
+      $$2.a(cfc.an, $$3);
    }
 }

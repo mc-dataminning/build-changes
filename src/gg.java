@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class gg implements ArgumentType<cub> {
+public class gg implements ArgumentType<cuu> {
    private static final Collection<String> a = List.of("container.*", "container.5", "weapon");
    private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wp.b("slot.unknown", $$0));
 
@@ -17,13 +17,13 @@ public class gg implements ArgumentType<cub> {
       return new gg();
    }
 
-   public static cub a(CommandContext<ex> $$0, String $$1) {
-      return (cub)$$0.getArgument($$1, cub.class);
+   public static cuu a(CommandContext<ex> $$0, String $$1) {
+      return (cuu)$$0.getArgument($$1, cuu.class);
    }
 
-   public cub a(StringReader $$0) throws CommandSyntaxException {
+   public cuu a(StringReader $$0) throws CommandSyntaxException {
       String $$1 = fb.a($$0, $$0x -> $$0x != ' ');
-      cub $$2 = cuc.a($$1);
+      cuu $$2 = cuv.a($$1);
       if ($$2 == null) {
          throw b.createWithContext($$0, $$1);
       } else {
@@ -32,7 +32,7 @@ public class gg implements ArgumentType<cub> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return fc.b(cuc.a(), $$1);
+      return fc.b(cuv.a(), $$1);
    }
 
    public Collection<String> getExamples() {

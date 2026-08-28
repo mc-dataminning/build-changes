@@ -13,7 +13,7 @@ public interface atc extends AutoCloseable {
    auh<InputStream> a(String... var1);
 
    @Nullable
-   auh<InputStream> a(ate var1, akv var2);
+   auh<InputStream> a(ate var1, aku var2);
 
    void a(ate var1, String var2, String var3, atc.a var4);
 
@@ -36,6 +36,6 @@ public interface atc extends AutoCloseable {
    void close();
 
    @FunctionalInterface
-   public interface a extends BiConsumer<akv, auh<InputStream>> {
+   public interface a extends BiConsumer<aku, auh<InputStream>> {
    }
 }

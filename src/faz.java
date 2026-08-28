@@ -1,26 +1,30 @@
-public abstract class faz {
-   protected final fbb a;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-   protected faz(fbb $$0) {
-      this.a = $$0;
+public record faz(ewo.b c) implements fbc {
+   public static final MapCodec<faz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ewo.b.e.fieldOf("target").forGetter(faz::c)).apply($$0, faz::new));
+   public static final Codec<faz> b = ewo.b.e.xmap(faz::new, faz::c);
+
+   public static fbc a(ewo.b $$0) {
+      return new faz($$0);
    }
 
-   public double a(bum $$0) {
-      double $$1 = this.a.d - $$0.dA();
-      double $$2 = this.a.e - $$0.dC();
-      double $$3 = this.a.f - $$0.dG();
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   @Override
+   public fbb a() {
+      return fbd.c;
    }
 
-   public abstract faz.a d();
-
-   public fbb g() {
-      return this.a;
+   @Nullable
+   @Override
+   public fdb a(ewo $$0) {
+      return $$0.c(this.c.a());
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   @Override
+   public Set<bai<?>> b() {
+      return Set.of(this.c.a());
    }
 }

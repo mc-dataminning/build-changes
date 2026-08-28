@@ -1,10 +1,13 @@
-public enum aqs {
-   a,
-   b,
-   c,
-   d;
+import java.util.concurrent.CompletableFuture;
 
-   public boolean a(aqs $$0) {
-      return this.ordinal() >= $$0.ordinal();
-   }
+public interface aqs {
+   aqt d(long var1);
+
+   void a(aqt var1);
+
+   CompletableFuture<dzm> a(aqt var1, eaq var2, azt<aqt> var3);
+
+   aqe a(ean var1, dgg var2);
+
+   void g();
 }

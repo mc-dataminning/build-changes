@@ -1,19 +1,16 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface eau {
+   void a(Throwable var1, ebf var2, dgg var3);
 
-public record eau(jr<eat> e, dyu f) {
-   public static final Codec<eau> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eat.l.fieldOf("type").forGetter(eau::a), dyu.a.fieldOf("generator").forGetter(eau::b)).apply($$0, $$0.stable(eau::new))
-   );
-   public static final aku<eau> b = aku.a(mc.bf, akv.b("overworld"));
-   public static final aku<eau> c = aku.a(mc.bf, akv.b("the_nether"));
-   public static final aku<eau> d = aku.a(mc.bf, akv.b("the_end"));
+   void b(Throwable var1, ebf var2, dgg var3);
 
-   public jr<eat> a() {
-      return this.e;
+   static z a(dgg $$0, dgg $$1) {
+      o $$2 = o.a(new IllegalStateException("Retrieved chunk position " + $$0 + " does not match requested " + $$1), "Chunk found in invalid location");
+      p $$3 = $$2.a("Misplaced Chunk");
+      $$3.a("Stored Position", $$0::toString);
+      return new z($$2);
    }
 
-   public dyu b() {
-      return this.f;
+   default void a(dgg $$0, dgg $$1, ebf $$2) {
+      this.a(a($$0, $$1), $$2, $$1);
    }
 }

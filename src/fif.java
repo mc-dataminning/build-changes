@@ -1,15 +1,13 @@
-import java.lang.Thread.UncaughtExceptionHandler;
-import org.slf4j.Logger;
+import com.google.gson.annotations.SerializedName;
 
-public class fif implements UncaughtExceptionHandler {
-   private final Logger a;
+public class fif extends fiw implements fiq {
+   @SerializedName("name")
+   public String a;
+   @SerializedName("description")
+   public String b;
 
-   public fif(Logger $$0) {
+   public fif(String $$0, String $$1) {
       this.a = $$0;
-   }
-
-   @Override
-   public void uncaughtException(Thread $$0, Throwable $$1) {
-      this.a.error("Caught previously unhandled exception", $$1);
+      this.b = $$1;
    }
 }

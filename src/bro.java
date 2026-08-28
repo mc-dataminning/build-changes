@@ -1,26 +1,13 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.Executor;
 
-public abstract class bro implements brt {
-   private static final Codec<Either<Float, bro>> a = Codec.either(Codec.FLOAT, mb.J.q().dispatch(bro::c, brp::codec));
-   public static final Codec<bro> c = a.xmap(
-      $$0 -> (bro)$$0.map(brm::a, $$0x -> $$0x), $$0 -> $$0.c() == brp.a ? Either.left(((brm)$$0).d()) : Either.right($$0)
-   );
-
-   public static Codec<bro> a(float $$0, float $$1) {
-      return c.validate($$2 -> {
-         if ($$2.a() < $$0) {
-            return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
-         } else {
-            return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
-         }
-      });
+public class bro extends brm<Runnable> {
+   public bro(Executor $$0, String $$1) {
+      super(new brs.b(new ConcurrentLinkedQueue<>()), $$0, $$1);
    }
 
-   public abstract float a();
-
-   public abstract float b();
-
-   public abstract brp<?> c();
+   @Override
+   public Runnable f(Runnable $$0) {
+      return $$0;
+   }
 }

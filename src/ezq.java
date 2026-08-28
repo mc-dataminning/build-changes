@@ -1,16 +1,32 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public class ezq {
-   private static final Codec<ezp> d = mb.H.q().dispatch(ezp::a, ezo::a);
-   public static final Codec<ezp> a = Codec.lazyInitialized(
-      () -> Codec.either(ezn.c, d).xmap(Either::unwrap, $$0 -> $$0 instanceof ezn $$1 ? Either.left($$1) : Either.right($$0))
-   );
-   public static final ezo b = a("storage", ezr.a);
-   public static final ezo c = a("context", ezn.b);
+public record ezq(Optional<bm> b) implements ezx {
+   public static final MapCodec<ezq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bm.a.optionalFieldOf("predicate").forGetter(ezq::c)).apply($$0, ezq::new));
 
-   private static ezo a(String $$0, MapCodec<? extends ezp> $$1) {
-      return ke.a(mb.H, akv.b($$0), new ezo($$1));
+   @Override
+   public ezy b() {
+      return ezz.m;
+   }
+
+   @Override
+   public Set<bai<?>> a() {
+      return Set.of(ezi.f, ezi.c);
+   }
+
+   public boolean a(ewo $$0) {
+      btp $$1 = $$0.c(ezi.c);
+      fbx $$2 = $$0.c(ezi.f);
+      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
+   }
+
+   public static ezx.a a(bm.a $$0) {
+      return () -> new ezq(Optional.of($$0.b()));
+   }
+
+   public Optional<bm> c() {
+      return this.b;
    }
 }

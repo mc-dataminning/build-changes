@@ -1,22 +1,21 @@
-public class gbd extends gcx {
-   public static final int a = 20;
-   public static final int b = 40;
-   public static final String c = "flag";
-   private static final String d = "pole";
-   private static final String e = "bar";
+import com.google.common.base.MoreObjects;
+import java.util.List;
 
-   public gbd(gfe $$0) {
-      super($$0, gmj::d);
+public class gbd {
+   public static final int a = -1;
+   private final List<gbb> b;
+   private final int c;
+
+   public gbd(List<gbb> $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static gfk a(boolean $$0) {
-      gfm $$1 = new gfm();
-      gfo $$2 = $$1.a();
-      if ($$0) {
-         $$2.a("pole", gfj.c().a(44, 0).a(-1.0F, -42.0F, -1.0F, 2.0F, 42.0F, 2.0F), gfg.a);
-      }
+   public gbb a(int $$0) {
+      return $$0 >= 0 && $$0 < this.b.size() ? (gbb)MoreObjects.firstNonNull(this.b.get($$0), gaz.a) : gaz.a;
+   }
 
-      $$2.a("bar", gfj.c().a(0, 42).a(-10.0F, $$0 ? -44.0F : -20.5F, $$0 ? -1.0F : 9.5F, 20.0F, 2.0F, 2.0F), gfg.a);
-      return gfk.a($$1, 64, 64);
+   public int a() {
+      return this.c;
    }
 }

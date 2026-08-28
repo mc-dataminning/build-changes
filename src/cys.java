@@ -1,52 +1,41 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
+public class cys extends cxd {
+   public static final int a = 1200;
+   public static final float b = 0.1F;
 
-public record cys(Map<String, String> d) {
-   public static final cys a = new cys(Map.of());
-   public static final Codec<cys> b = Codec.unboundedMap(Codec.STRING, Codec.STRING).xmap(cys::new, cys::b);
-   private static final yn<ByteBuf, Map<String, String>> e = yl.a(Object2ObjectOpenHashMap::new, yl.o, yl.o);
-   public static final yn<ByteBuf, cys> c = e.a(cys::new, cys::b);
-
-   public <T extends Comparable<T>> cys a(dya<T> $$0, T $$1) {
-      return new cys(af.a(this.d, $$0.f(), $$0.b($$1)));
+   public cys(cxd.a $$0) {
+      super($$0);
    }
 
-   public <T extends Comparable<T>> cys a(dya<T> $$0, dwy $$1) {
-      return this.a($$0, $$1.c($$0));
+   @Override
+   public int a(cxh $$0, bvy $$1) {
+      return 1200;
    }
 
-   @Nullable
-   public <T extends Comparable<T>> T a(dya<T> $$0) {
-      String $$1 = this.d.get($$0.f());
-      return $$1 == null ? null : $$0.b($$1).orElse(null);
+   @Override
+   public cxj b(cxh $$0) {
+      return cxj.h;
    }
 
-   public dwy a(dwy $$0) {
-      dwz<djn, dwy> $$1 = $$0.b().l();
+   @Override
+   public bsy a(dgz $$0, cpr $$1, bsx $$2) {
+      $$1.a(awa.zV, 1.0F, 1.0F);
+      $$1.b(awk.c.b(this));
+      return cxk.a($$0, $$1, $$2);
+   }
 
-      for (Entry<String, String> $$2 : this.d.entrySet()) {
-         dya<?> $$3 = $$1.a($$2.getKey());
-         if ($$3 != null) {
-            $$0 = a($$0, $$3, $$2.getValue());
-         }
-      }
-
+   @Override
+   public cxh a(cxh $$0, dgz $$1, bvy $$2) {
+      this.b($$2);
       return $$0;
    }
 
-   private static <T extends Comparable<T>> dwy a(dwy $$0, dya<T> $$1, String $$2) {
-      return $$1.b($$2).map($$2x -> $$0.b($$1, $$2x)).orElse($$0);
+   @Override
+   public boolean a(cxh $$0, dgz $$1, bvy $$2, int $$3) {
+      this.b($$2);
+      return true;
    }
 
-   public boolean a() {
-      return this.d.isEmpty();
-   }
-
-   public Map<String, String> b() {
-      return this.d;
+   private void b(bvy $$0) {
+      $$0.a(awa.zW, 1.0F, 1.0F);
    }
 }

@@ -1,13 +1,26 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public abstract class elu {
-   private static final Codec<Either<edn, elu>> a = Codec.either(edn.a, mb.L.q().dispatch(elu::a, elv::codec));
-   public static final Codec<elu> c = a.xmap(
-      $$0 -> (elu)$$0.map(elt::a, $$0x -> $$0x), $$0 -> $$0.a() == elv.a ? Either.left(((elt)$$0).b()) : Either.right($$0)
-   );
+public class elu<P extends elt> {
+   public static final elu<elv> a = a("trunk_vine", elv.a);
+   public static final elu<elq> b = a("leave_vine", elq.a);
+   public static final elu<elr> c = a("pale_moss", elr.a);
+   public static final elu<elp> d = a("creaking_heart", elp.a);
+   public static final elu<elo> e = a("cocoa", elo.a);
+   public static final elu<eln> f = a("beehive", eln.a);
+   public static final elu<ell> g = a("alter_ground", ell.a);
+   public static final elu<elm> h = a("attached_to_leaves", elm.a);
+   public static final elu<els> i = a("place_on_ground", els.a);
+   private final MapCodec<P> j;
 
-   public abstract int a(azh var1, edq var2);
+   private static <P extends elt> elu<P> a(String $$0, MapCodec<P> $$1) {
+      return ke.a(mb.X, $$0, new elu<>($$1));
+   }
 
-   public abstract elv<?> a();
+   private elu(MapCodec<P> $$0) {
+      this.j = $$0;
+   }
+
+   public MapCodec<P> a() {
+      return this.j;
+   }
 }

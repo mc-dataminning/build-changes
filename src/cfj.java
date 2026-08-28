@@ -1,56 +1,125 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+public class cfj extends cfk {
+   private boolean p;
 
-public class cfj extends cfs<bvk> {
-   private static final int a = 40;
-   private static final int b = 5;
-   private static final int c = 20;
-   private final Long2LongMap d = new Long2LongOpenHashMap();
-   private int e;
-   private long f;
-
-   public cfj() {
-      super(20);
+   public cfj(bwa $$0, dgz $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public Set<cem<?>> a() {
-      return ImmutableSet.of(cem.w);
+   protected eum a(int $$0) {
+      this.o = new eus();
+      return new eum(this.o, $$0);
    }
 
-   protected void a(ard $$0, bvk $$1) {
-      if ($$1.e_()) {
-         this.e = 0;
-         this.f = $$0.ad() + (long)$$0.H_().a(20);
-         cgm $$2 = $$0.A();
-         Predicate<ji> $$3 = $$0x -> {
-            long $$1x = $$0x.a();
-            if (this.d.containsKey($$1x)) {
-               return false;
-            } else if (++this.e >= 5) {
-               return false;
-            } else {
-               this.d.put($$1x, this.f + 40L);
-               return true;
+   @Override
+   protected boolean a() {
+      return this.a.aJ() || this.a.bl() || this.a.bY();
+   }
+
+   @Override
+   protected fbx b() {
+      return new fbx(this.a.dz(), (double)this.r(), this.a.dF());
+   }
+
+   @Override
+   public euk a(ji $$0, int $$1) {
+      dzw $$2 = this.b.S().a(kk.a($$0.u()), kk.a($$0.w()));
+      if ($$2 == null) {
+         return null;
+      } else {
+         if ($$2.a_($$0).l()) {
+            ji.a $$3 = $$0.k().c(jn.a);
+
+            while ($$3.v() > this.b.G_() && $$2.a_($$3).l()) {
+               $$3.c(jn.a);
             }
-         };
-         Set<Pair<jr<cgp>, ji>> $$4 = $$2.b($$0x -> $$0x.a(cgq.n), $$3, $$1.dv(), 48, cgm.b.c).collect(Collectors.toSet());
-         eto $$5 = bwu.a($$1, $$4);
-         if ($$5 != null && $$5.j()) {
-            ji $$6 = $$5.l();
-            Optional<jr<cgp>> $$7 = $$2.c($$6);
-            if ($$7.isPresent()) {
-               $$1.eb().a(cem.w, $$6);
+
+            if ($$3.v() > this.b.G_()) {
+               return super.a($$3.d(), $$1);
             }
-         } else if (this.e < 5) {
-            this.d.long2LongEntrySet().removeIf($$0x -> $$0x.getLongValue() < this.f);
+
+            $$3.q($$0.v() + 1);
+
+            while ($$3.v() <= this.b.ao() && $$2.a_($$3).l()) {
+               $$3.c(jn.b);
+            }
+
+            $$0 = $$3;
+         }
+
+         if (!$$2.a_($$0).e()) {
+            return super.a($$0, $$1);
+         } else {
+            ji.a $$4 = $$0.k().c(jn.b);
+
+            while ($$4.v() <= this.b.ao() && $$2.a_($$4).e()) {
+               $$4.c(jn.b);
+            }
+
+            return super.a($$4.j(), $$1);
          }
       }
+   }
+
+   @Override
+   public euk a(bva $$0, int $$1) {
+      return this.a($$0.du(), $$1);
+   }
+
+   private int r() {
+      if (this.a.bj() && this.o()) {
+         int $$0 = this.a.dA();
+         dxq $$1 = this.b.a_(ji.a(this.a.dz(), (double)$$0, this.a.dF()));
+         int $$2 = 0;
+
+         while ($$1.a(dkg.J)) {
+            $$1 = this.b.a_(ji.a(this.a.dz(), (double)(++$$0), this.a.dF()));
+            if (++$$2 > 16) {
+               return this.a.dA();
+            }
+         }
+
+         return $$0;
+      } else {
+         return ayz.a(this.a.dB() + 0.5);
+      }
+   }
+
+   @Override
+   protected void d() {
+      super.d();
+      if (this.p) {
+         if (this.b.h(ji.a(this.a.dz(), this.a.dB() + 0.5, this.a.dF()))) {
+            return;
+         }
+
+         for (int $$0 = 0; $$0 < this.c.e(); $$0++) {
+            eui $$1 = this.c.a($$0);
+            if (this.b.h(new ji($$1.a, $$1.b, $$1.c))) {
+               this.c.b($$0);
+               return;
+            }
+         }
+      }
+   }
+
+   protected boolean a(eun $$0) {
+      if ($$0 == eun.j) {
+         return false;
+      } else {
+         return $$0 == eun.i ? false : $$0 != eun.b;
+      }
+   }
+
+   public void b(boolean $$0) {
+      this.o.b($$0);
+   }
+
+   public void c(boolean $$0) {
+      this.p = $$0;
+   }
+
+   public void d(boolean $$0) {
+      this.o.d($$0);
    }
 }

@@ -27,7 +27,7 @@ public class xj {
       };
    }
 
-   public xj.b a(final cpb $$0) {
+   public xj.b a(final cpu $$0) {
       final azm $$1 = $$0.a();
       return new xj.b() {
          @Override

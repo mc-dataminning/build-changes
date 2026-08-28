@@ -1,24 +1,29 @@
-public record adi(fbb b, float c, float d) implements yw<abl> {
-   public static final yn<vl, adi> a = yn.a(fbb.b, adi::b, yl.l, adi::e, yl.l, adi::f, adi::new);
+public class adi implements yw<abl> {
+   public static final yn<vl, adi> a = yw.a(adi::a, adi::new);
+   private final bsx b;
 
-   public static adi a(bum $$0) {
-      return new adi($$0.dt(), $$0.dL(), $$0.dN());
+   public adi(bsx $$0) {
+      this.b = $$0;
+   }
+
+   private adi(vl $$0) {
+      this.b = $$0.b(bsx.class);
+   }
+
+   private void a(vl $$0) {
+      $$0.a(this.b);
    }
 
    @Override
    public yy<adi> a() {
-      return age.V;
+      return agd.V;
    }
 
    public void a(abl $$0) {
       $$0.a(this);
    }
 
-   public float e() {
-      return this.c;
-   }
-
-   public float f() {
-      return this.d;
+   public bsx b() {
+      return this.b;
    }
 }

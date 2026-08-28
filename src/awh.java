@@ -1,7 +1,7 @@
 import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class awh<T> extends fcj {
+public class awh<T> extends fdf {
    public static final yn<wa, awh<?>> a = yl.a(mc.am).b(awh::a, awj::a);
    private final awi o;
    private final T p;
@@ -18,7 +18,7 @@ public class awh<T> extends fcj {
       return a(mb.v.b($$0)) + ":" + a($$0.b().b($$1));
    }
 
-   private static <T> String a(@Nullable akv $$0) {
+   private static <T> String a(@Nullable aku $$0) {
       return $$0.toString().replace(':', '.');
    }
 

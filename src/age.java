@@ -1,184 +1,200 @@
 public class age {
-   public static final yy<abx> a = a("bundle");
-   public static final yy<abw> b = a("bundle_delimiter");
-   public static final yy<abm> c = a("add_entity");
-   public static final yy<abn> d = a("add_experience_orb");
-   public static final yy<abo> e = a("animate");
-   public static final yy<abp> f = a("award_stats");
-   public static final yy<abq> g = a("block_changed_ack");
-   public static final yy<abr> h = a("block_destruction");
-   public static final yy<abs> i = a("block_entity_data");
-   public static final yy<abt> j = a("block_event");
-   public static final yy<abu> k = a("block_update");
-   public static final yy<abv> l = a("boss_event");
-   public static final yy<aby> m = a("change_difficulty");
-   public static final yy<abz> n = a("chunk_batch_finished");
-   public static final yy<aca> o = a("chunk_batch_start");
-   public static final yy<acb> p = a("chunks_biomes");
-   public static final yy<acc> q = a("clear_titles");
-   public static final yy<acd> r = a("command_suggestions");
-   public static final yy<ace> s = a("commands");
-   public static final yy<acf> t = a("container_close");
-   public static final yy<acg> u = a("container_set_content");
-   public static final yy<ach> v = a("container_set_data");
-   public static final yy<aci> w = a("container_set_slot");
-   public static final yy<acj> x = a("cooldown");
-   public static final yy<ack> y = a("custom_chat_completions");
-   public static final yy<acl> z = a("damage_event");
-   public static final yy<acm> A = a("debug_sample");
-   public static final yy<acn> B = a("delete_chat");
-   public static final yy<aco> C = a("disguised_chat");
-   public static final yy<acp> D = a("entity_event");
-   public static final yy<acr> E = a("explode");
-   public static final yy<acs> F = a("forget_level_chunk");
-   public static final yy<act> G = a("game_event");
-   public static final yy<acu> H = a("horse_screen_open");
-   public static final yy<acv> I = a("hurt_animation");
-   public static final yy<acw> J = a("initialize_border");
-   public static final yy<acy> K = a("level_chunk_with_light");
-   public static final yy<acz> L = a("level_event");
-   public static final yy<ada> M = a("level_particles");
-   public static final yy<adb> N = a("light_update");
-   public static final yy<add> O = a("login");
-   public static final yy<ade> P = a("map_item_data");
-   public static final yy<adf> Q = a("merchant_offers");
-   public static final yy<adg.a> R = a("move_entity_pos");
-   public static final yy<adg.b> S = a("move_entity_pos_rot");
-   public static final yy<adh> T = a("move_minecart_along_track");
-   public static final yy<adg.c> U = a("move_entity_rot");
-   public static final yy<adi> V = a("move_vehicle");
-   public static final yy<adj> W = a("open_book");
-   public static final yy<adk> X = a("open_screen");
-   public static final yy<adl> Y = a("open_sign_editor");
-   public static final yy<adm> Z = a("place_ghost_recipe");
-   public static final yy<adn> aa = a("player_abilities");
-   public static final yy<ado> ab = a("player_chat");
-   public static final yy<adp> ac = a("player_combat_end");
-   public static final yy<adq> ad = a("player_combat_enter");
-   public static final yy<adr> ae = a("player_combat_kill");
-   public static final yy<ads> af = a("player_info_remove");
-   public static final yy<adt> ag = a("player_info_update");
-   public static final yy<adu> ah = a("player_look_at");
-   public static final yy<adv> ai = a("player_position");
-   public static final yy<adw> aj = a("player_rotation");
-   public static final yy<ady> ak = a("recipe_book_add");
-   public static final yy<adz> al = a("recipe_book_remove");
-   public static final yy<aea> am = a("recipe_book_settings");
-   public static final yy<aeb> an = a("remove_entities");
-   public static final yy<aec> ao = a("remove_mob_effect");
-   public static final yy<aee> ap = a("respawn");
-   public static final yy<aef> aq = a("rotate_head");
-   public static final yy<aeg> ar = a("section_blocks_update");
-   public static final yy<aeh> as = a("select_advancements_tab");
-   public static final yy<aei> at = a("server_data");
-   public static final yy<aej> au = a("set_action_bar_text");
-   public static final yy<aek> av = a("set_border_center");
-   public static final yy<ael> aw = a("set_border_lerp_size");
-   public static final yy<aem> ax = a("set_border_size");
-   public static final yy<aen> ay = a("set_border_warning_delay");
-   public static final yy<aeo> az = a("set_border_warning_distance");
-   public static final yy<aep> aA = a("set_camera");
-   public static final yy<aeq> aB = a("set_chunk_cache_center");
-   public static final yy<aer> aC = a("set_chunk_cache_radius");
-   public static final yy<aet> aD = a("set_default_spawn_position");
-   public static final yy<aeu> aE = a("set_display_objective");
-   public static final yy<aev> aF = a("set_entity_data");
-   public static final yy<aew> aG = a("set_entity_link");
-   public static final yy<aex> aH = a("set_entity_motion");
-   public static final yy<aey> aI = a("set_equipment");
-   public static final yy<aez> aJ = a("set_experience");
-   public static final yy<afa> aK = a("set_health");
-   public static final yy<afb> aL = a("set_held_slot");
-   public static final yy<afc> aM = a("set_objective");
-   public static final yy<afd> aN = a("set_passengers");
-   public static final yy<aff> aO = a("set_player_team");
-   public static final yy<afg> aP = a("set_score");
-   public static final yy<afh> aQ = a("set_simulation_distance");
-   public static final yy<afi> aR = a("set_subtitle_text");
-   public static final yy<afj> aS = a("set_time");
-   public static final yy<afk> aT = a("set_title_text");
-   public static final yy<afl> aU = a("set_titles_animation");
-   public static final yy<afm> aV = a("sound_entity");
-   public static final yy<afn> aW = a("sound");
-   public static final yy<afo> aX = a("start_configuration");
-   public static final yy<afp> aY = a("stop_sound");
-   public static final yy<afq> aZ = a("system_chat");
-   public static final yy<afr> ba = a("tab_list");
-   public static final yy<afs> bb = a("tag_query");
-   public static final yy<aft> bc = a("take_item_entity");
-   public static final yy<afu> bd = a("teleport_entity");
-   public static final yy<acq> be = a("entity_position_sync");
-   public static final yy<afx> bf = a("update_advancements");
-   public static final yy<afy> bg = a("update_attributes");
-   public static final yy<afz> bh = a("update_mob_effect");
-   public static final yy<aga> bi = a("update_recipes");
-   public static final yy<adx> bj = a("projectile_power");
-   public static final yy<agi> bk = b("accept_teleportation");
-   public static final yy<agj> bl = b("block_entity_tag_query");
-   public static final yy<ahu> bm = b("bundle_item_selected");
-   public static final yy<agk> bn = b("change_difficulty");
-   public static final yy<agl> bo = b("chat_ack");
-   public static final yy<agm> bp = b("chat_command");
-   public static final yy<agn> bq = b("chat_command_signed");
-   public static final yy<ago> br = b("chat");
-   public static final yy<agp> bs = b("chat_session_update");
-   public static final yy<agq> bt = b("chunk_batch_received");
-   public static final yy<agr> bu = b("client_command");
-   public static final yy<ags> bv = b("client_tick_end");
-   public static final yy<agt> bw = b("command_suggestion");
-   public static final yy<agu> bx = b("configuration_acknowledged");
-   public static final yy<agv> by = b("container_button_click");
-   public static final yy<agw> bz = b("container_click");
-   public static final yy<agx> bA = b("container_close");
-   public static final yy<agy> bB = b("container_slot_state_changed");
-   public static final yy<agz> bC = b("debug_sample_subscription");
-   public static final yy<aha> bD = b("edit_book");
-   public static final yy<ahb> bE = b("entity_tag_query");
-   public static final yy<ahc> bF = b("interact");
-   public static final yy<ahd> bG = b("jigsaw_generate");
-   public static final yy<ahe> bH = b("lock_difficulty");
-   public static final yy<ahf.a> bI = b("move_player_pos");
-   public static final yy<ahf.b> bJ = b("move_player_pos_rot");
-   public static final yy<ahf.c> bK = b("move_player_rot");
-   public static final yy<ahf.d> bL = b("move_player_status_only");
-   public static final yy<ahg> bM = b("move_vehicle");
-   public static final yy<ahh> bN = b("paddle_boat");
-   public static final yy<ahi> bO = b("pick_item_from_block");
-   public static final yy<ahj> bP = b("pick_item_from_entity");
-   public static final yy<ahk> bQ = b("place_recipe");
-   public static final yy<ahl> bR = b("player_abilities");
-   public static final yy<ahm> bS = b("player_action");
-   public static final yy<ahn> bT = b("player_command");
-   public static final yy<aho> bU = b("player_input");
-   public static final yy<ahp> bV = b("player_loaded");
-   public static final yy<ahq> bW = b("recipe_book_change_settings");
-   public static final yy<ahr> bX = b("recipe_book_seen_recipe");
-   public static final yy<ahs> bY = b("rename_item");
-   public static final yy<aht> bZ = b("seen_advancements");
-   public static final yy<ahv> ca = b("select_trade");
-   public static final yy<ahw> cb = b("set_beacon");
-   public static final yy<ahx> cc = b("set_carried_item");
-   public static final yy<ahy> cd = b("set_command_block");
-   public static final yy<ahz> ce = b("set_command_minecart");
-   public static final yy<aia> cf = b("set_creative_mode_slot");
-   public static final yy<aib> cg = b("set_jigsaw_block");
-   public static final yy<aic> ch = b("set_structure_block");
-   public static final yy<aid> ci = b("sign_update");
-   public static final yy<aie> cj = b("swing");
-   public static final yy<aif> ck = b("teleport_to_entity");
-   public static final yy<aig> cl = b("use_item_on");
-   public static final yy<aih> cm = b("use_item");
-   public static final yy<aed> cn = a("reset_score");
-   public static final yy<afv> co = a("ticking_state");
-   public static final yy<afw> cp = a("ticking_step");
-   public static final yy<aes> cq = a("set_cursor_item");
-   public static final yy<afe> cr = a("set_player_inventory");
-
-   private static <T extends yw<abl>> yy<T> a(String $$0) {
-      return new yy<>(yx.b, akv.b($$0));
-   }
-
-   private static <T extends yw<agg>> yy<T> b(String $$0) {
-      return new yy<>(yx.a, akv.b($$0));
-   }
+   public static final vx.a<agf, wa> a = zb.a(
+      vj.b,
+      $$0 -> $$0.a(agd.bj, agh.a)
+            .a(agd.bk, agi.a)
+            .a(agd.bl, aht.a)
+            .a(agd.bm, agj.a)
+            .a(agd.bn, agk.a)
+            .a(agd.bo, agl.a)
+            .a(agd.bp, agm.a)
+            .a(agd.bq, agn.a)
+            .a(agd.br, ago.a)
+            .a(agd.bs, agp.a)
+            .a(agd.bt, agq.a)
+            .a(agd.bu, agr.b)
+            .a(zo.l, zq.a)
+            .a(agd.bv, ags.a)
+            .a(agd.bw, agt.b)
+            .a(agd.bx, agu.a)
+            .a(agd.by, agv.a)
+            .a(agd.bz, agw.a)
+            .a(agd.bA, agx.a)
+            .a(abh.b, abj.a)
+            .a(zo.m, zr.a)
+            .a(agd.bB, agy.a)
+            .a(agd.bC, agz.a)
+            .a(agd.bD, aha.a)
+            .a(agd.bE, ahb.a)
+            .a(agd.bF, ahc.a)
+            .a(zo.n, zs.a)
+            .a(agd.bG, ahd.a)
+            .a(agd.bH, ahe.a.j)
+            .a(agd.bI, ahe.b.j)
+            .a(agd.bJ, ahe.c.j)
+            .a(agd.bK, ahe.d.j)
+            .a(agd.bL, ahf.a)
+            .a(agd.bM, ahg.a)
+            .a(agd.bN, ahh.a)
+            .a(agd.bO, ahi.a)
+            .a(ajl.b, ajn.a)
+            .a(agd.bP, ahj.a)
+            .a(agd.bQ, ahk.a)
+            .a(agd.bR, ahl.a)
+            .a(agd.bS, ahm.a)
+            .a(agd.bT, ahn.a)
+            .a(agd.bU, aho.a)
+            .a(zo.o, zt.a)
+            .a(agd.bV, ahp.a)
+            .a(agd.bW, ahq.a)
+            .a(agd.bX, ahr.a)
+            .a(zo.p, zu.a)
+            .a(agd.bY, ahs.a)
+            .a(agd.bZ, ahu.a)
+            .a(agd.ca, ahv.a)
+            .a(agd.cb, ahw.a)
+            .a(agd.cc, ahx.a)
+            .a(agd.cd, ahy.a)
+            .a(agd.ce, ahz.a)
+            .a(agd.cf, aia.a)
+            .a(agd.cg, aib.a)
+            .a(agd.ch, aic.a)
+            .a(agd.ci, aid.a)
+            .a(agd.cj, aie.a)
+            .a(agd.ck, aif.a)
+            .a(agd.cl, aig.a)
+   );
+   public static final vx.a<abl, wa> b = zb.b(
+      vj.b,
+      $$0 -> $$0.a(agd.a, abw::new, new abv())
+            .a(agd.c, abm.a)
+            .a(agd.d, abn.a)
+            .a(agd.e, abo.a)
+            .a(agd.f, abp.a)
+            .a(agd.g, abq.a)
+            .a(agd.h, abr.a)
+            .a(agd.i, abs.a)
+            .a(agd.j, abt.a)
+            .a(agd.k, abu.a)
+            .a(agd.l, abx.a)
+            .a(agd.m, aby.a)
+            .a(agd.n, abz.b)
+            .a(agd.o, aca.a)
+            .a(agd.p, acb.a)
+            .a(agd.q, acc.a)
+            .a(agd.r, acd.a)
+            .a(agd.s, ace.a)
+            .a(agd.t, acf.a)
+            .a(agd.u, acg.a)
+            .a(agd.v, ach.a)
+            .a(abh.a, abg.a)
+            .a(agd.w, aci.a)
+            .a(agd.x, acj.a)
+            .a(zo.a, zd.a)
+            .a(agd.y, ack.a)
+            .a(agd.z, acl.a)
+            .a(agd.A, acm.a)
+            .a(zo.c, zf.a)
+            .a(agd.B, acn.a)
+            .a(agd.C, aco.a)
+            .a(agd.bd, acp.a)
+            .a(agd.D, acq.a)
+            .a(agd.E, acr.a)
+            .a(agd.F, acs.a)
+            .a(agd.G, act.a)
+            .a(agd.H, acu.a)
+            .a(agd.I, acv.a)
+            .a(zo.d, zg.a)
+            .a(agd.J, acx.a)
+            .a(agd.K, acy.a)
+            .a(agd.L, acz.a)
+            .a(agd.M, ada.a)
+            .a(agd.N, adc.a)
+            .a(agd.O, add.a)
+            .a(agd.P, ade.a)
+            .a(agd.Q, adf.a.j)
+            .a(agd.R, adf.b.j)
+            .a(agd.S, adg.a)
+            .a(agd.T, adf.c.j)
+            .a(agd.U, adh.a)
+            .a(agd.V, adi.a)
+            .a(agd.W, adj.a)
+            .a(agd.X, adk.a)
+            .a(zo.e, zh.a)
+            .a(ajl.a, ajk.a)
+            .a(agd.Y, adl.a)
+            .a(agd.Z, adm.a)
+            .a(agd.aa, adn.a)
+            .a(agd.ab, ado.a)
+            .a(agd.ac, adp.b)
+            .a(agd.ad, adq.a)
+            .a(agd.ae, adr.a)
+            .a(agd.af, ads.a)
+            .a(agd.ag, adt.a)
+            .a(agd.ah, adu.a)
+            .a(agd.ai, adv.a)
+            .a(agd.aj, adx.a)
+            .a(agd.ak, ady.a)
+            .a(agd.al, adz.a)
+            .a(agd.am, aea.a)
+            .a(agd.an, aeb.a)
+            .a(agd.cm, aec.a)
+            .a(zo.f, zi.a)
+            .a(zo.g, zj.b)
+            .a(agd.ao, aed.a)
+            .a(agd.ap, aee.a)
+            .a(agd.aq, aef.a)
+            .a(agd.ar, aeg.a)
+            .a(agd.as, aeh.a)
+            .a(agd.at, aei.a)
+            .a(agd.au, aej.a)
+            .a(agd.av, aek.a)
+            .a(agd.aw, ael.a)
+            .a(agd.ax, aem.a)
+            .a(agd.ay, aen.a)
+            .a(agd.az, aeo.a)
+            .a(agd.aA, aep.a)
+            .a(agd.aB, aeq.a)
+            .a(agd.cp, aer.a)
+            .a(agd.aC, aes.a)
+            .a(agd.aD, aet.a)
+            .a(agd.aE, aeu.a)
+            .a(agd.aF, aev.a)
+            .a(agd.aG, aew.a)
+            .a(agd.aH, aex.a)
+            .a(agd.aI, aey.a)
+            .a(agd.aJ, aez.a)
+            .a(agd.aK, afa.a)
+            .a(agd.aL, afb.a)
+            .a(agd.aM, afc.a)
+            .a(agd.cq, afd.a)
+            .a(agd.aN, afe.a)
+            .a(agd.aO, aff.a)
+            .a(agd.aP, afg.a)
+            .a(agd.aQ, afh.a)
+            .a(agd.aR, afi.a)
+            .a(agd.aS, afj.a)
+            .a(agd.aT, afk.a)
+            .a(agd.aU, afl.a)
+            .a(agd.aV, afm.a)
+            .a(agd.aW, afn.b)
+            .a(agd.aX, afo.a)
+            .a(zo.i, zl.a)
+            .a(agd.aY, afp.a)
+            .a(agd.aZ, afq.a)
+            .a(agd.ba, afr.a)
+            .a(agd.bb, afs.a)
+            .a(agd.bc, aft.a)
+            .a(agd.cn, afu.a)
+            .a(agd.co, afv.a)
+            .a(zo.j, zm.a)
+            .a(agd.be, afw.a)
+            .a(agd.bf, afx.a)
+            .a(agd.bg, afy.a)
+            .a(agd.bh, afz.a)
+            .a(zo.k, zn.a)
+            .a(agd.bi, adw.a)
+            .a(zo.b, ze.a)
+            .a(zo.h, zk.a)
+   );
 }

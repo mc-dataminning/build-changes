@@ -1,74 +1,44 @@
-import java.util.Optional;
+import java.util.List;
 
 public class afc implements yw<abl> {
-   public static final yn<wa, afc> a = yw.a(afc::a, afc::new);
-   public static final int b = 0;
-   public static final int c = 1;
-   public static final int d = 2;
-   private final String e;
-   private final wp f;
-   private final fcj.a g;
-   private final Optional<yf> h;
-   private final int i;
+   public static final yn<vl, afc> a = yw.a(afc::a, afc::new);
+   private final int b;
+   private final int[] c;
 
-   public afc(fby $$0, int $$1) {
-      this.e = $$0.b();
-      this.f = $$0.d();
-      this.g = $$0.h();
-      this.h = Optional.ofNullable($$0.f());
-      this.i = $$1;
-   }
+   public afc(bva $$0) {
+      this.b = $$0.ar();
+      List<bva> $$1 = $$0.cX();
+      this.c = new int[$$1.size()];
 
-   private afc(wa $$0) {
-      this.e = $$0.p();
-      this.i = $$0.readByte();
-      if (this.i != 0 && this.i != 2) {
-         this.f = wo.a;
-         this.g = fcj.a.a;
-         this.h = Optional.empty();
-      } else {
-         this.f = wr.d.decode($$0);
-         this.g = $$0.b(fcj.a.class);
-         this.h = yh.d.decode($$0);
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         this.c[$$2] = $$1.get($$2).ar();
       }
    }
 
-   private void a(wa $$0) {
-      $$0.a(this.e);
-      $$0.l(this.i);
-      if (this.i == 0 || this.i == 2) {
-         wr.d.encode($$0, this.f);
-         $$0.a(this.g);
-         yh.d.encode($$0, this.h);
-      }
+   private afc(vl $$0) {
+      this.b = $$0.l();
+      this.c = $$0.c();
+   }
+
+   private void a(vl $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
    @Override
    public yy<afc> a() {
-      return age.aM;
+      return agd.aM;
    }
 
    public void a(abl $$0) {
       $$0.a(this);
    }
 
-   public String b() {
-      return this.e;
+   public int[] b() {
+      return this.c;
    }
 
-   public wp e() {
-      return this.f;
-   }
-
-   public int f() {
-      return this.i;
-   }
-
-   public fcj.a g() {
-      return this.g;
-   }
-
-   public Optional<yf> h() {
-      return this.h;
+   public int e() {
+      return this.b;
    }
 }

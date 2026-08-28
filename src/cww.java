@@ -1,48 +1,14 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-
-public record cww(jr<avz> e, wp f, float g, int h) {
-   public static final Codec<cww> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               avz.b.fieldOf("sound_event").forGetter(cww::b),
-               wr.a.fieldOf("description").forGetter(cww::c),
-               ayi.o.fieldOf("length_in_seconds").forGetter(cww::d),
-               ayi.a(0, 15).fieldOf("comparator_output").forGetter(cww::e)
-            )
-            .apply($$0, cww::new)
-   );
-   public static final yn<wa, cww> b = yn.a(avz.d, cww::b, wr.b, cww::c, yl.l, cww::d, yl.h, cww::e, cww::new);
-   public static final Codec<jr<cww>> c = aks.a(mc.L);
-   public static final yn<wa, jr<cww>> d = yl.a(mc.L, b);
-   private static final int i = 20;
-
-   public int a() {
-      return ayz.f(this.g * 20.0F);
+public class cww extends cyl {
+   public cww(dke $$0, dke $$1, cxd.a $$2) {
+      super($$2, $$0, $$1, jn.b);
    }
 
-   public boolean a(long $$0) {
-      return $$0 >= (long)(this.a() + 20);
-   }
+   @Override
+   protected boolean a(dhc $$0, dxq $$1, ji $$2) {
+      if ($$1.b() instanceof dtj $$3 && !$$3.b($$1, $$0, $$2)) {
+         return false;
+      }
 
-   public static Optional<jr<cww>> a(jt.a $$0, cwq $$1) {
-      cwv $$2 = $$1.a(kv.ab);
-      return $$2 != null ? $$2.a().a($$0) : Optional.empty();
-   }
-
-   public jr<avz> b() {
-      return this.e;
-   }
-
-   public wp c() {
-      return this.f;
-   }
-
-   public float d() {
-      return this.g;
-   }
-
-   public int e() {
-      return this.h;
+      return super.a($$0, $$1, $$2);
    }
 }

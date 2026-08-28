@@ -1,46 +1,34 @@
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
 
-public class fst<T> {
-   private final T b;
-   private final BiConsumer<Consumer<String>, T> c;
-   public static final fst<?> a = new fst<>(baf.a, ($$0, $$1) -> {
-   });
+public interface fst {
+   MapCodec<fst> b = fsu.f.dispatchMap(fst::a, fsu::a);
 
-   private fst(T $$0, BiConsumer<Consumer<String>, T> $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+   fsu a();
 
-   public static fst<?> a(String $$0) {
-      return new fst<>($$0, Consumer::accept);
-   }
+   Either<fst.b, fst.c> b();
 
-   public static fst<?> a(wp $$0) {
-      return new fst<>($$0, ($$0x, $$1) -> $$0x.accept($$1.getString()));
-   }
+   public static record a(fst b, fsh.a c) {
+      public static final Codec<fst.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(fst.b.forGetter(fst.a::a), fsh.a.a.optionalFieldOf("filter", fsh.a.b).forGetter(fst.a::b)).apply($$0, fst.a::new)
+      );
 
-   public static fst<?> a(List<wp> $$0) {
-      return new fst<>($$0, ($$1, $$2) -> $$0.stream().map(wp::getString).forEach($$1));
-   }
+      public fst a() {
+         return this.b;
+      }
 
-   public void a(Consumer<String> $$0) {
-      this.c.accept($$0, this.b);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof fst<?> $$1) ? false : $$1.c == this.c && $$1.b.equals(this.b);
+      public fsh.a b() {
+         return this.c;
       }
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
+   public interface b {
+      feq load(aup var1) throws IOException;
+   }
+
+   public static record c(aku a) {
    }
 }

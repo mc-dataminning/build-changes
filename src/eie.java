@@ -1,53 +1,172 @@
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.IntStream;
 
-public class eie implements eid {
-   public static final Codec<Double> a = Codec.doubleRange(0.0, 1.0);
-   public static final Codec<eie> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ecq.i.fieldOf("blocks").forGetter($$0x -> $$0x.c),
-               ecs.a.fieldOf("layers").forGetter($$0x -> $$0x.d),
-               ecr.a.fieldOf("crack").forGetter($$0x -> $$0x.e),
-               a.fieldOf("use_potential_placements_chance").orElse(0.35).forGetter($$0x -> $$0x.f),
-               a.fieldOf("use_alternate_layer0_chance").orElse(0.0).forGetter($$0x -> $$0x.g),
-               Codec.BOOL.fieldOf("placements_require_layer0_alternate").orElse(true).forGetter($$0x -> $$0x.h),
-               brq.b(1, 20).fieldOf("outer_wall_distance").orElse(brw.a(4, 5)).forGetter($$0x -> $$0x.i),
-               brq.b(1, 20).fieldOf("distribution_points").orElse(brw.a(3, 4)).forGetter($$0x -> $$0x.j),
-               brq.b(0, 10).fieldOf("point_offset").orElse(brw.a(1, 2)).forGetter($$0x -> $$0x.k),
-               Codec.INT.fieldOf("min_gen_offset").orElse(-16).forGetter($$0x -> $$0x.l),
-               Codec.INT.fieldOf("max_gen_offset").orElse(16).forGetter($$0x -> $$0x.n),
-               a.fieldOf("noise_multiplier").orElse(0.05).forGetter($$0x -> $$0x.o),
-               Codec.INT.fieldOf("invalid_blocks_threshold").forGetter($$0x -> $$0x.p)
-            )
-            .apply($$0, eie::new)
-   );
-   public final ecq c;
-   public final ecs d;
-   public final ecr e;
-   public final double f;
-   public final double g;
-   public final boolean h;
-   public final brq i;
-   public final brq j;
-   public final brq k;
-   public final int l;
-   public final int n;
-   public final double o;
-   public final int p;
+public class eie extends egu<ejs> {
+   public static final int a = 10;
+   private static final int b = 42;
+   private static final LoadingCache<Long, List<eie.a>> c = CacheBuilder.newBuilder().expireAfterWrite(5L, TimeUnit.MINUTES).build(new eie.b());
 
-   public eie(ecq $$0, ecs $$1, ecr $$2, double $$3, double $$4, boolean $$5, brq $$6, brq $$7, brq $$8, int $$9, int $$10, double $$11, int $$12) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-      this.j = $$7;
-      this.k = $$8;
-      this.l = $$9;
-      this.n = $$10;
-      this.o = $$11;
-      this.p = $$12;
+   public eie(Codec<ejs> $$0) {
+      super($$0);
+   }
+
+   public static List<eie.a> a(dhy $$0) {
+      azh $$1 = azh.a($$0.E());
+      long $$2 = $$1.g() & 65535L;
+      return (List<eie.a>)c.getUnchecked($$2);
+   }
+
+   @Override
+   public boolean a(egw<ejs> $$0) {
+      ejs $$1 = $$0.f();
+      dhy $$2 = $$0.b();
+      azh $$3 = $$0.d();
+      ji $$4 = $$0.e();
+      List<eie.a> $$5 = $$1.b();
+      if ($$5.isEmpty()) {
+         $$5 = a($$2);
+      }
+
+      for (eie.a $$6 : $$5) {
+         if ($$6.a($$4)) {
+            this.a($$2, $$3, $$1, $$6);
+         }
+      }
+
+      return true;
+   }
+
+   private void a(dhq $$0, azh $$1, ejs $$2, eie.a $$3) {
+      int $$4 = $$3.c();
+
+      for (ji $$5 : ji.c(new ji($$3.a() - $$4, $$0.G_(), $$3.b() - $$4), new ji($$3.a() + $$4, $$3.d() + 10, $$3.b() + $$4))) {
+         if ($$5.d((double)$$3.a(), (double)$$5.v(), (double)$$3.b()) <= (double)($$4 * $$4 + 1) && $$5.v() < $$3.d()) {
+            this.a($$0, $$5, dkg.cv.m());
+         } else if ($$5.v() > 65) {
+            this.a($$0, $$5, dkg.a.m());
+         }
+      }
+
+      if ($$3.e()) {
+         int $$6 = -2;
+         int $$7 = 2;
+         int $$8 = 3;
+         ji.a $$9 = new ji.a();
+
+         for (int $$10 = -2; $$10 <= 2; $$10++) {
+            for (int $$11 = -2; $$11 <= 2; $$11++) {
+               for (int $$12 = 0; $$12 <= 3; $$12++) {
+                  boolean $$13 = ayz.a($$10) == 2;
+                  boolean $$14 = ayz.a($$11) == 2;
+                  boolean $$15 = $$12 == 3;
+                  if ($$13 || $$14 || $$15) {
+                     boolean $$16 = $$10 == -2 || $$10 == 2 || $$15;
+                     boolean $$17 = $$11 == -2 || $$11 == 2 || $$15;
+                     dxq $$18 = dkg.fk
+                        .m()
+                        .b(doi.a, Boolean.valueOf($$16 && $$11 != -2))
+                        .b(doi.c, Boolean.valueOf($$16 && $$11 != 2))
+                        .b(doi.d, Boolean.valueOf($$17 && $$10 != -2))
+                        .b(doi.b, Boolean.valueOf($$17 && $$10 != 2));
+                     this.a($$0, $$9.d($$3.a() + $$10, $$3.d() + $$12, $$3.b() + $$11), $$18);
+                  }
+               }
+            }
+         }
+      }
+
+      cko $$19 = bvi.R.a($$0.a(), bvh.d);
+      if ($$19 != null) {
+         $$19.a($$2.c());
+         $$19.m($$2.a());
+         $$19.b((double)$$3.a() + 0.5, (double)($$3.d() + 1), (double)$$3.b() + 0.5, $$1.i() * 360.0F, 0.0F);
+         $$0.b($$19);
+         ji $$20 = $$19.du();
+         this.a($$0, $$20.e(), dkg.I.m());
+         this.a($$0, $$20, dnf.a($$0, $$20));
+      }
+   }
+
+   public static class a {
+      public static final Codec<eie.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.INT.fieldOf("centerX").orElse(0).forGetter($$0x -> $$0x.b),
+                  Codec.INT.fieldOf("centerZ").orElse(0).forGetter($$0x -> $$0x.c),
+                  Codec.INT.fieldOf("radius").orElse(0).forGetter($$0x -> $$0x.d),
+                  Codec.INT.fieldOf("height").orElse(0).forGetter($$0x -> $$0x.e),
+                  Codec.BOOL.fieldOf("guarded").orElse(false).forGetter($$0x -> $$0x.f)
+               )
+               .apply($$0, eie.a::new)
+      );
+      private final int b;
+      private final int c;
+      private final int d;
+      private final int e;
+      private final boolean f;
+      private final fbs g;
+
+      public a(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
+         this.g = new fbs((double)($$0 - $$2), (double)ebm.e, (double)($$1 - $$2), (double)($$0 + $$2), (double)ebm.d, (double)($$1 + $$2));
+      }
+
+      public boolean a(ji $$0) {
+         return kk.a($$0.u()) == kk.a(this.b) && kk.a($$0.w()) == kk.a(this.c);
+      }
+
+      public int a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      public int c() {
+         return this.d;
+      }
+
+      public int d() {
+         return this.e;
+      }
+
+      public boolean e() {
+         return this.f;
+      }
+
+      public fbs f() {
+         return this.g;
+      }
+   }
+
+   static class b extends CacheLoader<Long, List<eie.a>> {
+      public List<eie.a> a(Long $$0) {
+         IntArrayList $$1 = af.a(IntStream.range(0, 10), azh.a($$0));
+         List<eie.a> $$2 = Lists.newArrayList();
+
+         for (int $$3 = 0; $$3 < 10; $$3++) {
+            int $$4 = ayz.a(42.0 * Math.cos(2.0 * (-Math.PI + (Math.PI / 10) * (double)$$3)));
+            int $$5 = ayz.a(42.0 * Math.sin(2.0 * (-Math.PI + (Math.PI / 10) * (double)$$3)));
+            int $$6 = $$1.get($$3);
+            int $$7 = 2 + $$6 / 3;
+            int $$8 = 76 + $$6 * 3;
+            boolean $$9 = $$6 == 1 || $$6 == 2;
+            $$2.add(new eie.a($$4, $$5, $$7, $$8, $$9));
+         }
+
+         return $$2;
+      }
    }
 }

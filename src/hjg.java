@@ -1,101 +1,34 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.InetAddress;
-import java.net.MulticastSocket;
-import java.net.SocketTimeoutException;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class hjg extends hix {
+   private static final float n = 0.0F;
+   private static final float o = 1.0F;
+   private static final float p = 0.7F;
+   private static final float q = 0.5F;
+   private final cmo r;
 
-public class hjg {
-   static final AtomicInteger a = new AtomicInteger(0);
-   static final Logger b = LogUtils.getLogger();
-
-   public static class a extends Thread {
-      private final hjg.b a;
-      private final InetAddress b;
-      private final MulticastSocket c;
-
-      public a(hjg.b $$0) throws IOException {
-         super("LanServerDetector #" + hjg.a.incrementAndGet());
-         this.a = $$0;
-         this.setDaemon(true);
-         this.setUncaughtExceptionHandler(new r(hjg.b));
-         this.c = new MulticastSocket(4445);
-         this.b = InetAddress.getByName("224.0.2.60");
-         this.c.setSoTimeout(5000);
-         this.c.joinGroup(this.b);
-      }
-
-      @Override
-      public void run() {
-         byte[] $$0 = new byte[1024];
-
-         while (!this.isInterrupted()) {
-            DatagramPacket $$1 = new DatagramPacket($$0, $$0.length);
-
-            try {
-               this.c.receive($$1);
-            } catch (SocketTimeoutException var5) {
-               continue;
-            } catch (IOException var6) {
-               hjg.b.error("Couldn't ping server", var6);
-               break;
-            }
-
-            String $$4 = new String($$1.getData(), $$1.getOffset(), $$1.getLength(), StandardCharsets.UTF_8);
-            hjg.b.debug("{}: {}", $$1.getAddress(), $$4);
-            this.a.a($$4, $$1.getAddress());
-         }
-
-         try {
-            this.c.leaveGroup(this.b);
-         } catch (IOException var4) {
-         }
-
-         this.c.close();
-      }
+   public hjg(cmo $$0) {
+      super(awa.lQ, awb.f, hjo.t());
+      this.r = $$0;
+      this.k = hjo.a.a;
+      this.i = true;
+      this.j = 0;
    }
 
-   public static class b {
-      private final List<hjf> a = Lists.newArrayList();
-      private boolean b;
+   @Override
+   public boolean s() {
+      return !this.r.bb();
+   }
 
-      @Nullable
-      public synchronized List<hjf> a() {
-         if (this.b) {
-            List<hjf> $$0 = List.copyOf(this.a);
-            this.b = false;
-            return $$0;
-         } else {
-            return null;
-         }
-      }
-
-      public synchronized void a(String $$0, InetAddress $$1) {
-         String $$2 = hjh.a($$0);
-         String $$3 = hjh.b($$0);
-         if ($$3 != null) {
-            $$3 = $$1.getHostAddress() + ":" + $$3;
-            boolean $$4 = false;
-
-            for (hjf $$5 : this.a) {
-               if ($$5.b().equals($$3)) {
-                  $$5.c();
-                  $$4 = true;
-                  break;
-               }
-            }
-
-            if (!$$4) {
-               this.a.add(new hjf($$2, $$3));
-               this.b = true;
-            }
-         }
+   @Override
+   public void q() {
+      if (!this.r.dP() && this.r.f() == null) {
+         this.f = (double)((float)this.r.dz());
+         this.g = (double)((float)this.r.dB());
+         this.h = (double)((float)this.r.dF());
+         float $$0 = this.r.M(0.0F);
+         this.d = 0.0F + 1.0F * $$0 * $$0;
+         this.e = 0.7F + 0.5F * $$0;
+      } else {
+         this.n();
       }
    }
 }

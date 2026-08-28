@@ -1,107 +1,57 @@
-import com.google.common.collect.Maps;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.BitSet;
+import java.util.Set;
 
-public class gqn implements gqa.a {
-   private final flk a;
-   private final Map<aku<dgj>, Map<String, enf>> b = Maps.newIdentityHashMap();
-   private final Map<aku<dgj>, Map<String, aao.a>> c = Maps.newIdentityHashMap();
-   private static final int d = 500;
+public class gqn {
+   private static final int a = jn.values().length;
+   private final BitSet b = new BitSet(a * a);
 
-   public gqn(flk $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public void a(ffv $$0, glz $$1, double $$2, double $$3, double $$4) {
-      fks $$5 = this.a.j.k();
-      aku<dgj> $$6 = this.a.s.ai();
-      ji $$7 = ji.a($$5.b().d, 0.0, $$5.b().f);
-      ffz $$8 = $$1.getBuffer(gmj.y());
-      if (this.b.containsKey($$6)) {
-         for (enf $$9 : this.b.get($$6).values()) {
-            if ($$7.a($$9.g(), 500.0)) {
-               gmt.a(
-                  $$0,
-                  $$8,
-                  (double)$$9.h() - $$2,
-                  (double)$$9.i() - $$3,
-                  (double)$$9.j() - $$4,
-                  (double)($$9.k() + 1) - $$2,
-                  (double)($$9.l() + 1) - $$3,
-                  (double)($$9.m() + 1) - $$4,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F
-               );
-            }
-         }
-      }
-
-      Map<String, aao.a> $$10 = this.c.get($$6);
-      if ($$10 != null) {
-         for (aao.a $$11 : $$10.values()) {
-            enf $$12 = $$11.a();
-            if ($$7.a($$12.g(), 500.0)) {
-               if ($$11.b()) {
-                  gmt.a(
-                     $$0,
-                     $$8,
-                     (double)$$12.h() - $$2,
-                     (double)$$12.i() - $$3,
-                     (double)$$12.j() - $$4,
-                     (double)($$12.k() + 1) - $$2,
-                     (double)($$12.l() + 1) - $$3,
-                     (double)($$12.m() + 1) - $$4,
-                     0.0F,
-                     1.0F,
-                     0.0F,
-                     1.0F,
-                     0.0F,
-                     1.0F,
-                     0.0F
-                  );
-               } else {
-                  gmt.a(
-                     $$0,
-                     $$8,
-                     (double)$$12.h() - $$2,
-                     (double)$$12.i() - $$3,
-                     (double)$$12.j() - $$4,
-                     (double)($$12.k() + 1) - $$2,
-                     (double)($$12.l() + 1) - $$3,
-                     (double)($$12.m() + 1) - $$4,
-                     0.0F,
-                     0.0F,
-                     1.0F,
-                     1.0F,
-                     0.0F,
-                     0.0F,
-                     1.0F
-                  );
-               }
-            }
+   public void a(Set<jn> $$0) {
+      for (jn $$1 : $$0) {
+         for (jn $$2 : $$0) {
+            this.a($$1, $$2, true);
          }
       }
    }
 
-   public void a(enf $$0, List<aao.a> $$1, aku<dgj> $$2) {
-      this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
-      Map<String, aao.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
+   public void a(jn $$0, jn $$1, boolean $$2) {
+      this.b.set($$0.ordinal() + $$1.ordinal() * a, $$2);
+      this.b.set($$1.ordinal() + $$0.ordinal() * a, $$2);
+   }
 
-      for (aao.a $$4 : $$1) {
-         $$3.put($$4.a().toString(), $$4);
-      }
+   public void a(boolean $$0) {
+      this.b.set(0, this.b.size(), $$0);
+   }
+
+   public boolean a(jn $$0, jn $$1) {
+      return this.b.get($$0.ordinal() + $$1.ordinal() * a);
    }
 
    @Override
-   public void a() {
-      this.b.clear();
-      this.c.clear();
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append(' ');
+
+      for (jn $$1 : jn.values()) {
+         $$0.append(' ').append($$1.toString().toUpperCase().charAt(0));
+      }
+
+      $$0.append('\n');
+
+      for (jn $$2 : jn.values()) {
+         $$0.append($$2.toString().toUpperCase().charAt(0));
+
+         for (jn $$3 : jn.values()) {
+            if ($$2 == $$3) {
+               $$0.append("  ");
+            } else {
+               boolean $$4 = this.a($$2, $$3);
+               $$0.append(' ').append((char)($$4 ? 'Y' : 'n'));
+            }
+         }
+
+         $$0.append('\n');
+      }
+
+      return $$0.toString();
    }
 }

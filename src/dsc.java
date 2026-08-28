@@ -1,31 +1,22 @@
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dsc extends djd {
-   protected static final MapCodec<lx> c = mb.i
-      .q()
-      .comapFlatMap($$0 -> $$0 instanceof lx $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a SimpleParticleType: " + $$0), $$0 -> $$0)
-      .fieldOf("particle_options");
-   public static final MapCodec<dsc> d = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), t()).apply($$0, dsc::new));
-   protected final lx e;
+public class dsc extends dsw implements djv {
+   public static final MapCodec<dsc> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cwe.q.fieldOf("color").forGetter(dsc::b), t()).apply($$0, dsc::new));
+   private final cwe c;
 
    @Override
-   public MapCodec<? extends dsc> a() {
-      return d;
+   public MapCodec<dsc> a() {
+      return a;
    }
 
-   protected dsc(lx $$0, dwx.d $$1) {
+   public dsc(cwe $$0, dxp.d $$1) {
       super($$1);
-      this.e = $$0;
+      this.c = $$0;
    }
 
    @Override
-   public void a(dwy $$0, dgj $$1, ji $$2, azh $$3) {
-      double $$4 = (double)$$2.u() + 0.5;
-      double $$5 = (double)$$2.v() + 0.7;
-      double $$6 = (double)$$2.w() + 0.5;
-      $$1.a(lt.ag, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-      $$1.a(this.e, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   public cwe b() {
+      return this.c;
    }
 }

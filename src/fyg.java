@@ -1,51 +1,34 @@
-import java.util.List;
+public class fyg extends fym {
+   private static final wp a = wp.c("options.chat.title");
 
-public class fyg extends fyj<csf> {
-   private static final fqh h = new fqh(
-      akv.b("recipe_book/furnace_filter_enabled"),
-      akv.b("recipe_book/furnace_filter_disabled"),
-      akv.b("recipe_book/furnace_filter_enabled_highlighted"),
-      akv.b("recipe_book/furnace_filter_disabled_highlighted")
-   );
-   private final wp i;
-
-   public fyg(csf $$0, wp $$1, List<fyj.a> $$2) {
-      super($$0, $$2);
-      this.i = $$1;
-   }
-
-   @Override
-   protected void a() {
-      this.e.a(h);
-   }
-
-   @Override
-   protected boolean a(cua $$0) {
-      return switch ($$0.d) {
-         case 0, 1, 2 -> true;
-         default -> false;
+   private static fmj<?>[] a(fmk $$0) {
+      return new fmj[]{
+         $$0.n(),
+         $$0.N(),
+         $$0.O(),
+         $$0.P(),
+         $$0.o(),
+         $$0.s(),
+         $$0.y(),
+         $$0.p(),
+         $$0.C(),
+         $$0.z(),
+         $$0.B(),
+         $$0.A(),
+         $$0.av(),
+         $$0.M(),
+         $$0.ah(),
+         $$0.Y(),
+         $$0.aj()
       };
    }
 
-   @Override
-   protected void a(fyh $$0, dck $$1, bak $$2) {
-      $$0.b(this.f.l(), $$2, $$1.d());
-      if ($$1 instanceof dcj $$3) {
-         $$0.a(this.f.k.get(0), $$2, $$3.b());
-         cua $$4 = this.f.k.get(1);
-         if ($$4.g().f()) {
-            $$0.a($$4, $$2, $$3.c());
-         }
-      }
+   public fyg(fvi $$0, fmk $$1) {
+      super($$0, $$1, a);
    }
 
    @Override
-   protected wp b() {
-      return this.i;
-   }
-
-   @Override
-   protected void a(fyn $$0, cpd $$1) {
-      $$0.a($$1, $$0x -> $$0x instanceof dcj);
+   protected void m() {
+      this.d.a(a(this.c));
    }
 }

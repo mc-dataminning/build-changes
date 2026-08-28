@@ -1,164 +1,99 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import java.util.Arrays;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-import java.util.function.ToIntFunction;
+import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.List;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class fmn {
-   private static final int a = 256;
-   private final ThreadLocal<fmn.b> b = ThreadLocal.withInitial(fmn.b::new);
-   private final Long2ObjectLinkedOpenHashMap<fmn.a> c = new Long2ObjectLinkedOpenHashMap(256, 0.25F);
-   private final ReentrantReadWriteLock d = new ReentrantReadWriteLock();
-   private final ToIntFunction<ji> e;
+   private static final Logger a = LogUtils.getLogger();
+   @Nullable
+   private fmn.c b;
+   private int c;
 
-   public fmn(ToIntFunction<ji> $$0) {
-      this.e = $$0;
+   public void a(fmn.b $$0, List<atc> $$1) {
+      this.c++;
+      if (this.b != null && !this.b.d) {
+         a.warn("Reload already ongoing, replacing");
+      }
+
+      this.b = new fmn.c($$0, $$1.stream().map(atc::b).collect(ImmutableList.toImmutableList()));
    }
 
-   public int a(ji $$0) {
-      int $$1 = kk.a($$0.u());
-      int $$2 = kk.a($$0.w());
-      fmn.b $$3 = this.b.get();
-      if ($$3.a != $$1 || $$3.b != $$2 || $$3.c == null || $$3.c.a()) {
-         $$3.a = $$1;
-         $$3.b = $$2;
-         $$3.c = this.b($$1, $$2);
+   public void a(Throwable $$0) {
+      if (this.b == null) {
+         a.warn("Trying to signal reload recovery, but nothing was started");
+         this.b = new fmn.c(fmn.b.c, ImmutableList.of());
       }
 
-      int[] $$4 = $$3.c.a($$0.v());
-      int $$5 = $$0.u() & 15;
-      int $$6 = $$0.w() & 15;
-      int $$7 = $$6 << 4 | $$5;
-      int $$8 = $$4[$$7];
-      if ($$8 != -1) {
-         return $$8;
-      } else {
-         int $$9 = this.e.applyAsInt($$0);
-         $$4[$$7] = $$9;
-         return $$9;
-      }
-   }
-
-   public void a(int $$0, int $$1) {
-      try {
-         this.d.writeLock().lock();
-
-         for (int $$2 = -1; $$2 <= 1; $$2++) {
-            for (int $$3 = -1; $$3 <= 1; $$3++) {
-               long $$4 = dfp.c($$0 + $$2, $$1 + $$3);
-               fmn.a $$5 = (fmn.a)this.c.remove($$4);
-               if ($$5 != null) {
-                  $$5.b();
-               }
-            }
-         }
-      } finally {
-         this.d.writeLock().unlock();
-      }
+      this.b.c = new fmn.a($$0);
    }
 
    public void a() {
-      try {
-         this.d.writeLock().lock();
-         this.c.values().forEach(fmn.a::b);
-         this.c.clear();
-      } finally {
-         this.d.writeLock().unlock();
+      if (this.b == null) {
+         a.warn("Trying to finish reload, but nothing was started");
+      } else {
+         this.b.d = true;
       }
    }
 
-   private fmn.a b(int $$0, int $$1) {
-      long $$2 = dfp.c($$0, $$1);
-      this.d.readLock().lock();
-
-      try {
-         fmn.a $$3 = (fmn.a)this.c.get($$2);
-         if ($$3 != null) {
-            return $$3;
-         }
-      } finally {
-         this.d.readLock().unlock();
+   public void a(o $$0) {
+      p $$1 = $$0.a("Last reload");
+      $$1.a("Reload number", this.c);
+      if (this.b != null) {
+         this.b.a($$1);
       }
-
-      this.d.writeLock().lock();
-
-      fmn.a $$5;
-      try {
-         fmn.a $$4 = (fmn.a)this.c.get($$2);
-         if ($$4 == null) {
-            $$5 = new fmn.a();
-            if (this.c.size() >= 256) {
-               fmn.a $$6 = (fmn.a)this.c.removeFirst();
-               if ($$6 != null) {
-                  $$6.b();
-               }
-            }
-
-            this.c.put($$2, $$5);
-            return $$5;
-         }
-
-         $$5 = $$4;
-      } finally {
-         this.d.writeLock().unlock();
-      }
-
-      return $$5;
    }
 
    static class a {
-      private final Int2ObjectArrayMap<int[]> a = new Int2ObjectArrayMap(16);
-      private final ReentrantReadWriteLock b = new ReentrantReadWriteLock();
-      private static final int c = ayz.h(16);
-      private volatile boolean d;
+      private final Throwable a;
 
-      public int[] a(int $$0) {
-         this.b.readLock().lock();
-
-         try {
-            int[] $$1 = (int[])this.a.get($$0);
-            if ($$1 != null) {
-               return $$1;
-            }
-         } finally {
-            this.b.readLock().unlock();
-         }
-
-         this.b.writeLock().lock();
-
-         int[] var12;
-         try {
-            var12 = (int[])this.a.computeIfAbsent($$0, $$0x -> this.c());
-         } finally {
-            this.b.writeLock().unlock();
-         }
-
-         return var12;
+      a(Throwable $$0) {
+         this.a = $$0;
       }
 
-      private int[] c() {
-         int[] $$0 = new int[c];
-         Arrays.fill($$0, -1);
-         return $$0;
-      }
-
-      public boolean a() {
-         return this.d;
-      }
-
-      public void b() {
-         this.d = true;
+      public void a(p $$0) {
+         $$0.a("Recovery", "Yes");
+         $$0.a("Recovery reason", () -> {
+            StringWriter $$0x = new StringWriter();
+            this.a.printStackTrace(new PrintWriter($$0x));
+            return $$0x.toString();
+         });
       }
    }
 
-   static class b {
-      public int a = Integer.MIN_VALUE;
-      public int b = Integer.MIN_VALUE;
+   public static enum b {
+      a("initial"),
+      b("manual"),
+      c("unknown");
+
+      final String d;
+
+      private b(final String $$0) {
+         this.d = $$0;
+      }
+   }
+
+   static class c {
+      private final fmn.b a;
+      private final List<String> b;
       @Nullable
       fmn.a c;
+      boolean d;
 
-      private b() {
+      c(fmn.b $$0, List<String> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public void a(p $$0) {
+         $$0.a("Reload reason", this.a.d);
+         $$0.a("Finished", this.d ? "Yes" : "No");
+         $$0.a("Packs", () -> String.join(", ", this.b));
+         if (this.c != null) {
+            this.c.a($$0);
+         }
       }
    }
 }

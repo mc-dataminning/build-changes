@@ -1,27 +1,44 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
-import java.util.Set;
+public class cfm extends cfk {
+   private boolean p;
 
-public abstract class cfm extends cfs<bvi> {
-   protected abstract boolean a(ard var1, bvi var2, bvi var3);
-
-   protected abstract cem<bvi> b();
-
-   @Override
-   public Set<cem<?>> a() {
-      return ImmutableSet.of(this.b());
+   public cfm(bwa $$0, dgz $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected void a(ard $$0, bvi $$1) {
-      $$1.eb().a(this.b(), this.c($$0, $$1));
+   protected eum a(int $$0) {
+      this.p = this.a.aq() == bvi.H;
+      this.o = new euq(this.p);
+      this.o.a(false);
+      return new eum(this.o, $$0);
    }
 
-   private Optional<bvi> c(ard $$0, bvi $$1) {
-      return this.a($$1).flatMap($$2 -> $$2.a($$2x -> this.a($$0, $$1, $$2x)));
+   @Override
+   protected boolean a() {
+      return this.p || this.a.bl();
    }
 
-   protected Optional<ceo> a(bvi $$0) {
-      return $$0.eb().c(cem.h);
+   @Override
+   protected fbx b() {
+      return new fbx(this.a.dz(), this.a.e(0.5), this.a.dF());
+   }
+
+   @Override
+   protected double a(fbx $$0) {
+      return $$0.e;
+   }
+
+   @Override
+   protected boolean a(fbx $$0, fbx $$1) {
+      return a(this.a, $$0, $$1, false);
+   }
+
+   @Override
+   public boolean a(ji $$0) {
+      return !this.b.a_($$0).s();
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

@@ -1,7 +1,4 @@
-public class gzq extends gzl {
-   public chm.a a;
-
-   public gzq() {
-      this.a = chm.a.a;
-   }
+public class gzq extends gzj {
+   public boolean a;
+   public final hcn b = new hcn();
 }

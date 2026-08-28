@@ -1,48 +1,25 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.stream.IntStream;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class efj extends efz<eik> {
-   public efj(Codec<eik> $$0) {
-      super($$0);
+public class efj implements eev {
+   public static final MapCodec<efj> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(km.v(16).optionalFieldOf("offset", km.h).forGetter($$0x -> $$0x.e), dxq.a.fieldOf("state").forGetter($$0x -> $$0x.f))
+            .apply($$0, efj::new)
+   );
+   private final km e;
+   private final dxq f;
+
+   protected efj(km $$0, dxq $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   public boolean a(dhy $$0, ji $$1) {
+      return this.f.a($$0, $$1.a(this.e));
    }
 
    @Override
-   public boolean a(egb<eik> $$0) {
-      azh $$1 = $$0.d();
-      dhh $$2 = $$0.b();
-      dfp $$3 = new dfp($$0.e());
-      IntArrayList $$4 = af.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
-      IntArrayList $$5 = af.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
-      ji.a $$6 = new ji.a();
-      IntListIterator var8 = $$4.iterator();
-
-      while (var8.hasNext()) {
-         Integer $$7 = (Integer)var8.next();
-         IntListIterator var10 = $$5.iterator();
-
-         while (var10.hasNext()) {
-            Integer $$8 = (Integer)var10.next();
-            $$6.d($$7, 0, $$8);
-            ji $$9 = $$2.a(ect.a.f, $$6);
-            if ($$2.u($$9) || $$2.a_($$9).g($$2, $$9).c()) {
-               $$2.a($$9, djp.cD.m(), 2);
-               bsr.a($$2, $$1, $$9, evo.a);
-               dwy $$10 = djp.cw.m();
-
-               for (jn $$11 : jn.c.a) {
-                  ji $$12 = $$9.a($$11);
-                  if ($$10.a($$2, $$12)) {
-                     $$2.a($$12, $$10, 2);
-                  }
-               }
-
-               return true;
-            }
-         }
-      }
-
-      return false;
+   public eew<?> a() {
+      return eew.g;
    }
 }

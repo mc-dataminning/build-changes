@@ -2,9 +2,9 @@ import java.util.Map;
 
 public class zn implements yw<zc> {
    public static final yn<vl, zn> a = yw.a(zn::a, zn::new);
-   private final Map<aku<? extends ke<?>>, axh.a> b;
+   private final Map<akt<? extends ke<?>>, axh.a> b;
 
-   public zn(Map<aku<? extends ke<?>>, axh.a> $$0) {
+   public zn(Map<akt<? extends ke<?>>, axh.a> $$0) {
       this.b = $$0;
    }
 
@@ -25,7 +25,7 @@ public class zn implements yw<zc> {
       $$0.a(this);
    }
 
-   public Map<aku<? extends ke<?>>, axh.a> b() {
+   public Map<akt<? extends ke<?>>, axh.a> b() {
       return this.b;
    }
 }

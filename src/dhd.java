@@ -1,76 +1,78 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.mojang.serialization.Dynamic;
 
-public record dhd(tq d, Optional<dhd.a> e, Optional<buw> f) {
-   public static final String a = "entity";
-   public static final Codec<dhd> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               tq.a.fieldOf("entity").forGetter($$0x -> $$0x.d),
-               dhd.a.a.optionalFieldOf("custom_spawn_rules").forGetter($$0x -> $$0x.e),
-               buw.b.optionalFieldOf("equipment").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dhd::new)
-   );
-   public static final Codec<bqt<dhd>> c = bqt.a(b);
+public final class dhd {
+   private final String a;
+   private final dgw b;
+   private final boolean c;
+   private final bsv d;
+   private final boolean e;
+   private final dgv f;
+   private final dhx g;
 
-   public dhd() {
-      this(new tq(), Optional.empty(), Optional.empty());
+   public dhd(String $$0, dgw $$1, boolean $$2, bsv $$3, boolean $$4, dgv $$5, dhx $$6) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
    }
 
-   public dhd(tq d, Optional<dhd.a> e, Optional<buw> f) {
-      if (d.e("id")) {
-         akv $$3 = akv.c(d.l("id"));
-         if ($$3 != null) {
-            d.a("id", $$3.toString());
-         } else {
-            d.r("id");
-         }
-      }
-
-      this.d = d;
-      this.e = e;
-      this.f = f;
+   public static dhd a(Dynamic<?> $$0, dhx $$1) {
+      dgw $$2 = dgw.a($$0.get("GameType").asInt(0));
+      return new dhd(
+         $$0.get("LevelName").asString(""),
+         $$2,
+         $$0.get("hardcore").asBoolean(false),
+         $$0.get("Difficulty").asNumber().map($$0x -> bsv.a($$0x.byteValue())).result().orElse(bsv.c),
+         $$0.get("allowCommands").asBoolean($$2 == dgw.b),
+         new dgv($$1.b(), $$0.get("GameRules")),
+         $$1
+      );
    }
 
-   public tq a() {
+   public String a() {
+      return this.a;
+   }
+
+   public dgw b() {
+      return this.b;
+   }
+
+   public boolean c() {
+      return this.c;
+   }
+
+   public bsv d() {
       return this.d;
    }
 
-   public Optional<dhd.a> b() {
+   public boolean e() {
       return this.e;
    }
 
-   public Optional<buw> c() {
+   public dgv f() {
       return this.f;
    }
 
-   public static record a(ayr<Integer> b, ayr<Integer> c) {
-      private static final ayr<Integer> d = new ayr<>(0, 15);
-      public static final Codec<dhd.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(a("block_light_limit").forGetter($$0x -> $$0x.b), a("sky_light_limit").forGetter($$0x -> $$0x.c)).apply($$0, dhd.a::new)
-      );
+   public dhx g() {
+      return this.g;
+   }
 
-      private static DataResult<ayr<Integer>> a(ayr<Integer> $$0) {
-         return !d.a($$0) ? DataResult.error(() -> "Light values must be withing range " + d) : DataResult.success($$0);
-      }
+   public dhd a(dgw $$0) {
+      return new dhd(this.a, $$0, this.c, this.d, this.e, this.f, this.g);
+   }
 
-      private static MapCodec<ayr<Integer>> a(String $$0) {
-         return ayr.a.lenientOptionalFieldOf($$0, d).validate(dhd.a::a);
-      }
+   public dhd a(bsv $$0) {
+      return new dhd(this.a, this.b, this.c, $$0, this.e, this.f, this.g);
+   }
 
-      public boolean a(ji $$0, ard $$1) {
-         return this.b.a($$1.a(dgs.b, $$0)) && this.c.a($$1.a(dgs.a, $$0));
-      }
+   public dhd a(dhx $$0) {
+      return new dhd(this.a, this.b, this.c, this.d, this.e, this.f, $$0);
+   }
 
-      public ayr<Integer> a() {
-         return this.b;
-      }
-
-      public ayr<Integer> b() {
-         return this.c;
-      }
+   public dhd h() {
+      return new dhd(this.a, this.b, this.c, this.d, this.e, this.f.a(this.g.b()), this.g);
    }
 }

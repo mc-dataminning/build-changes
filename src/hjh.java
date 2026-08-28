@@ -1,90 +1,49 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.nio.charset.StandardCharsets;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.slf4j.Logger;
+public class hjh extends hix {
+   private static final float n = 0.0F;
+   private static final float o = 0.7F;
+   private static final float p = 0.0F;
+   private static final float q = 1.0F;
+   private static final float r = 0.0025F;
+   private final crq s;
+   private float t = 0.0F;
 
-public class hjh extends Thread {
-   private static final AtomicInteger c = new AtomicInteger(0);
-   private static final Logger d = LogUtils.getLogger();
-   public static final String a = "224.0.2.60";
-   public static final int b = 4445;
-   private static final long e = 1500L;
-   private final String f;
-   private final DatagramSocket g;
-   private boolean h = true;
-   private final String i;
-
-   public hjh(String $$0, String $$1) throws IOException {
-      super("LanServerPinger #" + c.incrementAndGet());
-      this.f = $$0;
-      this.i = $$1;
-      this.setDaemon(true);
-      this.setUncaughtExceptionHandler(new r(d));
-      this.g = new DatagramSocket();
+   public hjh(crq $$0) {
+      super(awa.pv, awb.g, hjo.t());
+      this.s = $$0;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
+      this.f = (double)((float)$$0.dz());
+      this.g = (double)((float)$$0.dB());
+      this.h = (double)((float)$$0.dF());
    }
 
    @Override
-   public void run() {
-      String $$0 = a(this.f, this.i);
-      byte[] $$1 = $$0.getBytes(StandardCharsets.UTF_8);
-
-      while (!this.isInterrupted() && this.h) {
-         try {
-            InetAddress $$2 = InetAddress.getByName("224.0.2.60");
-            DatagramPacket $$3 = new DatagramPacket($$1, $$1.length, $$2, 4445);
-            this.g.send($$3);
-         } catch (IOException var6) {
-            d.warn("LanServerPinger: {}", var6.getMessage());
-            break;
-         }
-
-         try {
-            sleep(1500L);
-         } catch (InterruptedException var5) {
-         }
-      }
+   public boolean s() {
+      return !this.s.bb();
    }
 
    @Override
-   public void interrupt() {
-      super.interrupt();
-      this.h = false;
+   public boolean r() {
+      return true;
    }
 
-   public static String a(String $$0, String $$1) {
-      return "[MOTD]" + $$0 + "[/MOTD][AD]" + $$1 + "[/AD]";
-   }
-
-   public static String a(String $$0) {
-      int $$1 = $$0.indexOf("[MOTD]");
-      if ($$1 < 0) {
-         return "missing no";
+   @Override
+   public void q() {
+      if (this.s.dP()) {
+         this.n();
       } else {
-         int $$2 = $$0.indexOf("[/MOTD]", $$1 + "[MOTD]".length());
-         return $$2 < $$1 ? "missing no" : $$0.substring($$1 + "[MOTD]".length(), $$2);
-      }
-   }
-
-   public static String b(String $$0) {
-      int $$1 = $$0.indexOf("[/MOTD]");
-      if ($$1 < 0) {
-         return null;
-      } else {
-         int $$2 = $$0.indexOf("[/MOTD]", $$1 + "[/MOTD]".length());
-         if ($$2 >= 0) {
-            return null;
+         this.f = (double)((float)this.s.dz());
+         this.g = (double)((float)this.s.dB());
+         this.h = (double)((float)this.s.dF());
+         float $$0 = (float)this.s.dx().i();
+         boolean $$1 = !this.s.cp() && this.s.f() instanceof csf;
+         if ($$0 >= 0.01F && this.s.dU().u().i() && !$$1) {
+            this.t = ayz.a(this.t + 0.0025F, 0.0F, 1.0F);
+            this.d = ayz.h(ayz.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
          } else {
-            int $$3 = $$0.indexOf("[AD]", $$1 + "[/MOTD]".length());
-            if ($$3 < 0) {
-               return null;
-            } else {
-               int $$4 = $$0.indexOf("[/AD]", $$3 + "[AD]".length());
-               return $$4 < $$3 ? null : $$0.substring($$3 + "[AD]".length(), $$4);
-            }
+            this.t = 0.0F;
+            this.d = 0.0F;
          }
       }
    }

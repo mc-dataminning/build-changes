@@ -1,135 +1,120 @@
-import com.mojang.logging.LogUtils;
-import java.text.DateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.TimeZone;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Locale;
 
-public class fjn extends hlf {
-   static final Logger a = LogUtils.getLogger();
-   private static final wp b = wp.c("mco.configure.world.subscription.title");
-   private static final wp c = wp.c("mco.configure.world.subscription.start");
-   private static final wp C = wp.c("mco.configure.world.subscription.timeleft");
-   private static final wp D = wp.c("mco.configure.world.subscription.recurring.daysleft");
-   private static final wp E = wp.c("mco.configure.world.subscription.expired");
-   private static final wp F = wp.c("mco.configure.world.subscription.less_than_a_day");
-   private static final wp G = wp.c("mco.configure.world.subscription.unknown");
-   private static final wp H = wp.c("mco.configure.world.subscription.recurring.info");
-   private final fum I;
-   final fhm J;
-   final fum K;
-   private wp L = G;
-   private wp M = G;
-   @Nullable
-   private fhy.a N;
+public class fjn extends hmd {
+   private static final wp a = wp.c("mco.backup.info.title");
+   private static final wp b = wp.c("mco.backup.unknown");
+   private final fvi c;
+   final fhx C;
+   final fte D = new fte(this);
+   private fjn.a E;
 
-   public fjn(fum $$0, fhm $$1, fum $$2) {
-      super(flb.a);
-      this.I = $$0;
-      this.J = $$1;
-      this.K = $$2;
+   public fjn(fvi $$0, fhx $$1) {
+      super(a);
+      this.c = $$0;
+      this.C = $$1;
    }
 
    @Override
    public void aR_() {
-      this.a(this.J.a);
-      this.c(fou.a(wp.c("mco.configure.world.subscription.extend"), $$0 -> ftj.a(this, axv.a(this.J.b, this.m.X().b()))).a(this.n / 2 - 100, g(6), 200, 20).a());
-      if (this.J.j) {
-         this.c(
-            fou.a(wp.c("mco.configure.world.delete.button"), $$0 -> this.m.a(fjh.b(this, wp.c("mco.configure.world.delete.question.line1"), $$0x -> this.E())))
-               .a(this.n / 2 - 100, g(10), 200, 20)
-               .a()
-         );
-      } else if (fgg.b() && this.J.u != null) {
-         this.c(new fpe(this.n / 2 - 100, g(8), 200, 46, wp.a("mco.snapshot.subscription.info", this.J.u), this.p));
-      } else {
-         this.c(new fpe(this.n / 2 - 100, g(8), 200, 46, H, this.p));
-      }
-
-      this.c(fou.a(wo.k, $$0 -> this.aO_()).a(this.n / 2 - 100, g(12), 200, 20).a());
+      this.D.a(a, this.p);
+      this.E = this.D.c(new fjn.a(this.m));
+      this.D.b(fpq.a(wo.k, $$0 -> this.aO_()).a());
+      this.c();
+      this.D.a($$1 -> {
+         fpo var10000 = this.c($$1);
+      });
    }
 
    @Override
-   public wp i() {
-      return wo.b(b, c, this.M, C, this.L);
-   }
-
-   private void E() {
-      (new Thread("Realms-delete-realm") {
-         @Override
-         public void run() {
-            try {
-               fgl $$0 = fgl.a();
-               $$0.j(fjn.this.J.a);
-            } catch (fih var2) {
-               fjn.a.error("Couldn't delete world", var2);
-            }
-
-            fjn.this.m.execute(() -> fjn.this.m.a(fjn.this.K));
-         }
-      }).start();
-      this.m.a(this);
-   }
-
-   private void a(long $$0) {
-      fgl $$1 = fgl.a();
-
-      try {
-         fhy $$2 = $$1.h($$0);
-         this.L = this.a($$2.b);
-         this.M = b($$2.a);
-         this.N = $$2.c;
-      } catch (fih var5) {
-         a.error("Couldn't get subscription", var5);
-         this.m.a(new fiz(var5, this.I));
-      }
-   }
-
-   private static wp b(long $$0) {
-      Calendar $$1 = new GregorianCalendar(TimeZone.getDefault());
-      $$1.setTimeInMillis($$0);
-      return wp.b(DateFormat.getDateTimeInstance().format($$1.getTime()));
+   protected void c() {
+      this.E.b(this.n, this.D.d());
+      this.D.a();
    }
 
    @Override
    public void aO_() {
-      this.m.a(this.I);
+      this.m.a(this.c);
    }
 
-   @Override
-   public void a(fof $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      int $$4 = this.n / 2 - 100;
-      $$0.a(this.p, b, this.n / 2, 17, -1);
-      $$0.b(this.p, c, $$4, g(0), -6250336);
-      $$0.b(this.p, this.M, $$4, g(1), -1);
-      if (this.N == fhy.a.a) {
-         $$0.b(this.p, C, $$4, g(3), -6250336);
-      } else if (this.N == fhy.a.b) {
-         $$0.b(this.p, D, $$4, g(3), -6250336);
+   wp a(String $$0, String $$1) {
+      String $$2 = $$0.toLowerCase(Locale.ROOT);
+      if ($$2.contains("game") && $$2.contains("mode")) {
+         return this.b($$1);
+      } else {
+         return (wp)($$2.contains("game") && $$2.contains("difficulty") ? this.a($$1) : wp.b($$1));
+      }
+   }
+
+   private wp a(String $$0) {
+      try {
+         return fki.a.get(Integer.parseInt($$0)).b();
+      } catch (Exception var3) {
+         return b;
+      }
+   }
+
+   private wp b(String $$0) {
+      try {
+         return fki.b.get(Integer.parseInt($$0)).e();
+      } catch (Exception var3) {
+         return b;
+      }
+   }
+
+   class a extends fqm<fjn.b> {
+      public a(final fmg $$0) {
+         super($$0, fjn.this.n, fjn.this.D.d(), fjn.this.D.c(), 36);
+         if (fjn.this.C.e != null) {
+            fjn.this.C.e.forEach(($$0x, $$1) -> this.b(fjn.this.new b($$0x, $$1)));
+         }
+      }
+   }
+
+   class b extends fqm.a<fjn.b> {
+      private static final wp b = wp.c("mco.backup.entry.templateName");
+      private static final wp c = wp.c("mco.backup.entry.gameDifficulty");
+      private static final wp d = wp.c("mco.backup.entry.name");
+      private static final wp e = wp.c("mco.backup.entry.gameServerVersion");
+      private static final wp f = wp.c("mco.backup.entry.uploaded");
+      private static final wp g = wp.c("mco.backup.entry.enabledPack");
+      private static final wp h = wp.c("mco.backup.entry.description");
+      private static final wp i = wp.c("mco.backup.entry.gameMode");
+      private static final wp j = wp.c("mco.backup.entry.seed");
+      private static final wp k = wp.c("mco.backup.entry.worldType");
+      private static final wp l = wp.c("mco.backup.entry.undefined");
+      private final String m;
+      private final String n;
+
+      public b(final String $$0, final String $$1) {
+         this.m = $$0;
+         this.n = $$1;
       }
 
-      $$0.b(this.p, this.L, $$4, g(4), -1);
-   }
+      @Override
+      public void a(fpc $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.b(fjn.this.p, this.a(this.m), $$3, $$2, -6250336);
+         $$0.b(fjn.this.p, fjn.this.a(this.m, this.n), $$3, $$2 + 12, -1);
+      }
 
-   private wp a(int $$0) {
-      if ($$0 < 0 && this.J.j) {
-         return E;
-      } else if ($$0 <= 1) {
-         return F;
-      } else {
-         int $$1 = $$0 / 30;
-         int $$2 = $$0 % 30;
-         boolean $$3 = $$1 > 0;
-         boolean $$4 = $$2 > 0;
-         if ($$3 && $$4) {
-            return wp.a("mco.configure.world.subscription.remaining.months.days", $$1, $$2);
-         } else if ($$3) {
-            return wp.a("mco.configure.world.subscription.remaining.months", $$1);
-         } else {
-            return $$4 ? wp.a("mco.configure.world.subscription.remaining.days", $$2) : wp.i();
-         }
+      private wp a(String $$0) {
+         return switch ($$0) {
+            case "template_name" -> b;
+            case "game_difficulty" -> c;
+            case "name" -> d;
+            case "game_server_version" -> e;
+            case "uploaded" -> f;
+            case "enabled_packs" -> g;
+            case "description" -> h;
+            case "game_mode" -> i;
+            case "seed" -> j;
+            case "world_type" -> k;
+            default -> l;
+         };
+      }
+
+      @Override
+      public wp a() {
+         return wp.a("narrator.select", this.m + " " + this.n);
       }
    }
 }

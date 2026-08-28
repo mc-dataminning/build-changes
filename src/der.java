@@ -1,60 +1,62 @@
-import java.util.EnumMap;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public interface der {
-   deq a = new deq(5, af.a(new EnumMap<>(des.class), $$0 -> {
-      $$0.put(des.d, 1);
-      $$0.put(des.c, 2);
-      $$0.put(des.b, 3);
-      $$0.put(des.a, 1);
-      $$0.put(des.e, 3);
-   }), 15, awa.av, 0.0F, 0.0F, awy.bh, deu.b);
-   deq b = new deq(15, af.a(new EnumMap<>(des.class), $$0 -> {
-      $$0.put(des.d, 1);
-      $$0.put(des.c, 4);
-      $$0.put(des.b, 5);
-      $$0.put(des.a, 2);
-      $$0.put(des.e, 4);
-   }), 12, awa.ap, 0.0F, 0.0F, awy.bi, deu.c);
-   deq c = new deq(15, af.a(new EnumMap<>(des.class), $$0 -> {
-      $$0.put(des.d, 2);
-      $$0.put(des.c, 5);
-      $$0.put(des.b, 6);
-      $$0.put(des.a, 2);
-      $$0.put(des.e, 5);
-   }), 9, awa.au, 0.0F, 0.0F, awy.bj, deu.d);
-   deq d = new deq(7, af.a(new EnumMap<>(des.class), $$0 -> {
-      $$0.put(des.d, 1);
-      $$0.put(des.c, 3);
-      $$0.put(des.b, 5);
-      $$0.put(des.a, 2);
-      $$0.put(des.e, 7);
-   }), 25, awa.at, 0.0F, 0.0F, awy.bk, deu.e);
-   deq e = new deq(33, af.a(new EnumMap<>(des.class), $$0 -> {
-      $$0.put(des.d, 3);
-      $$0.put(des.c, 6);
-      $$0.put(des.b, 8);
-      $$0.put(des.a, 3);
-      $$0.put(des.e, 11);
-   }), 10, awa.aq, 2.0F, 0.0F, awy.bl, deu.f);
-   deq f = new deq(25, af.a(new EnumMap<>(des.class), $$0 -> {
-      $$0.put(des.d, 2);
-      $$0.put(des.c, 5);
-      $$0.put(des.b, 6);
-      $$0.put(des.a, 2);
-      $$0.put(des.e, 5);
-   }), 9, awa.ax, 0.0F, 0.0F, awy.bn, deu.g);
-   deq g = new deq(37, af.a(new EnumMap<>(des.class), $$0 -> {
-      $$0.put(des.d, 3);
-      $$0.put(des.c, 6);
-      $$0.put(des.b, 8);
-      $$0.put(des.a, 3);
-      $$0.put(des.e, 11);
-   }), 15, awa.aw, 3.0F, 0.1F, awy.bm, deu.h);
-   deq h = new deq(4, af.a(new EnumMap<>(des.class), $$0 -> {
-      $$0.put(des.d, 3);
-      $$0.put(des.c, 6);
-      $$0.put(des.b, 8);
-      $$0.put(des.a, 3);
-      $$0.put(des.e, 11);
-   }), 10, awa.ay, 0.0F, 0.0F, awy.bo, deu.i);
+public record der(ddy d, ddy e, km f, Optional<eev> g, ekz h, Optional<jr<ecp>> i) implements dei {
+   public static final MapCodec<der> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ddy.b.fieldOf("radius").forGetter(der::b),
+               ddy.b.fieldOf("height").forGetter(der::c),
+               km.g.optionalFieldOf("offset", km.h).forGetter(der::d),
+               eev.b.optionalFieldOf("predicate").forGetter(der::e),
+               ekz.a.fieldOf("block_state").forGetter(der::f),
+               ecp.aj.optionalFieldOf("trigger_game_event").forGetter(der::g)
+            )
+            .apply($$0, der::new)
+   );
+
+   @Override
+   public void a(ard $$0, int $$1, ddq $$2, bva $$3, fbx $$4) {
+      ji $$5 = ji.a((kb)$$4).a(this.f);
+      azh $$6 = $$3.dX();
+      int $$7 = (int)this.d.a($$1);
+      int $$8 = (int)this.e.a($$1);
+
+      for (ji $$9 : ji.c($$5.b(-$$7, 0, -$$7), $$5.b($$7, Math.min($$8 - 1, 0), $$7))) {
+         if ($$9.c($$4.a(), (double)$$9.v() + 0.5, $$4.c()) < (double)ayz.h($$7)
+            && this.g.map($$2x -> $$2x.test($$0, $$9)).orElse(true)
+            && $$0.b($$9, this.h.a($$6, $$9))) {
+            this.i.ifPresent($$3x -> $$0.a($$3, $$3x, $$9));
+         }
+      }
+   }
+
+   @Override
+   public MapCodec<der> a() {
+      return a;
+   }
+
+   public ddy b() {
+      return this.d;
+   }
+
+   public ddy c() {
+      return this.e;
+   }
+
+   public km d() {
+      return this.f;
+   }
+
+   public Optional<eev> e() {
+      return this.g;
+   }
+
+   public ekz f() {
+      return this.h;
+   }
+
+   public Optional<jr<ecp>> g() {
+      return this.i;
+   }
 }

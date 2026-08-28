@@ -1,25 +1,36 @@
-import java.nio.file.Path;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class faq extends Exception {
-   private final Path a;
-   private final List<fas> b;
+public record faq(float c) implements fat {
+   public static final MapCodec<faq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(faq::c)).apply($$0, faq::new));
+   public static final Codec<faq> b = Codec.FLOAT.xmap(faq::new, faq::c);
 
-   public faq(Path $$0, List<fas> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   @Override
+   public fas b() {
+      return fau.b;
    }
 
    @Override
-   public String getMessage() {
-      return a(this.a, this.b);
+   public float b(ewo $$0) {
+      return this.c;
    }
 
-   public static String a(Path $$0, List<fas> $$1) {
-      return "Failed to validate '"
-         + $$0
-         + "'. Found forbidden symlinks: "
-         + $$1.stream().map($$0x -> $$0x.a() + "->" + $$0x.b()).collect(Collectors.joining(", "));
+   public static faq a(float $$0) {
+      return new faq($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((faq)$$0).c, this.c) == 0 : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
    }
 }

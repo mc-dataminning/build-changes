@@ -1,21 +1,16 @@
-public record afq(wp b, boolean c) implements yw<abl> {
-   public static final yn<wa, afq> a = yn.a(wr.d, afq::b, yl.b, afq::e, afq::new);
+public record afq(wp b, wp c) implements yw<abl> {
+   public static final yn<wa, afq> a = yn.a(wr.d, afq::b, wr.d, afq::e, afq::new);
 
    @Override
    public yy<afq> a() {
-      return age.aZ;
+      return agd.aZ;
    }
 
    public void a(abl $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   public boolean e() {
+   public wp e() {
       return this.c;
    }
 }

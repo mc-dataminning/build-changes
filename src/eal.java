@@ -1,98 +1,54 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.io.BufferedOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.zip.DeflaterOutputStream;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;
-import java.util.zip.InflaterInputStream;
-import javax.annotation.Nullable;
-import net.jpountz.lz4.LZ4BlockInputStream;
-import net.jpountz.lz4.LZ4BlockOutputStream;
-import org.slf4j.Logger;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
+import java.util.Locale;
 
-public class eal {
-   private static final Logger g = LogUtils.getLogger();
-   private static final Int2ObjectMap<eal> h = new Int2ObjectOpenHashMap();
-   private static final Object2ObjectMap<String, eal> i = new Object2ObjectOpenHashMap();
-   public static final eal a = a(new eal(1, null, $$0 -> new ayj(new GZIPInputStream($$0)), $$0 -> new BufferedOutputStream(new GZIPOutputStream($$0))));
-   public static final eal b = a(
-      new eal(2, "deflate", $$0 -> new ayj(new InflaterInputStream($$0)), $$0 -> new BufferedOutputStream(new DeflaterOutputStream($$0)))
-   );
-   public static final eal c = a(new eal(3, "none", ayj::new, BufferedOutputStream::new));
-   public static final eal d = a(
-      new eal(4, "lz4", $$0 -> new ayj(new LZ4BlockInputStream($$0)), $$0 -> new BufferedOutputStream(new LZ4BlockOutputStream($$0)))
-   );
-   public static final eal e = a(new eal(127, null, $$0 -> {
-      throw new UnsupportedOperationException();
-   }, $$0 -> {
-      throw new UnsupportedOperationException();
-   }));
-   public static final eal f = b;
-   private static volatile eal j = f;
-   private final int k;
-   @Nullable
-   private final String l;
-   private final eal.a<InputStream> m;
-   private final eal.a<OutputStream> n;
+public final class eal {
+   private final ImmutableList<ean> a;
+   private final int[] b;
 
-   private eal(int $$0, @Nullable String $$1, eal.a<InputStream> $$2, eal.a<OutputStream> $$3) {
-      this.k = $$0;
-      this.l = $$1;
-      this.m = $$2;
-      this.n = $$3;
-   }
+   public eal(ImmutableList<ean> $$0) {
+      this.a = $$0;
+      int $$1 = $$0.isEmpty() ? 0 : ((ean)$$0.getFirst()).b() + 1;
+      this.b = new int[$$1];
 
-   private static eal a(eal $$0) {
-      h.put($$0.k, $$0);
-      if ($$0.l != null) {
-         i.put($$0.l, $$0);
-      }
+      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
+         ean $$3 = (ean)$$0.get($$2);
+         int $$4 = $$3.b();
 
-      return $$0;
-   }
-
-   @Nullable
-   public static eal a(int $$0) {
-      return (eal)h.get($$0);
-   }
-
-   public static void a(String $$0) {
-      eal $$1 = (eal)i.get($$0);
-      if ($$1 != null) {
-         j = $$1;
-      } else {
-         g.error("Invalid `region-file-compression` value `{}` in server.properties. Please use one of: {}", $$0, String.join(", ", i.keySet()));
+         for (int $$5 = 0; $$5 <= $$4; $$5++) {
+            this.b[$$5] = $$2;
+         }
       }
    }
 
-   public static eal a() {
-      return j;
-   }
-
-   public static boolean b(int $$0) {
-      return h.containsKey($$0);
+   @VisibleForTesting
+   public ImmutableList<ean> a() {
+      return this.a;
    }
 
    public int b() {
-      return this.k;
+      return this.a.size();
    }
 
-   public OutputStream a(OutputStream $$0) throws IOException {
-      return this.n.wrap($$0);
+   public int a(ean $$0) {
+      int $$1 = $$0.b();
+      if ($$1 >= this.b.length) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "Requesting a ChunkStatus(%s) outside of dependency range(%s)", $$0, this.a));
+      } else {
+         return this.b[$$1];
+      }
    }
 
-   public InputStream a(InputStream $$0) throws IOException {
-      return this.m.wrap($$0);
+   public int c() {
+      return Math.max(0, this.a.size() - 1);
    }
 
-   @FunctionalInterface
-   interface a<O> {
-      O wrap(O var1) throws IOException;
+   public ean a(int $$0) {
+      return (ean)this.a.get($$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.a.toString();
    }
 }

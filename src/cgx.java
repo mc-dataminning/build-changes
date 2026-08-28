@@ -1,110 +1,118 @@
-import java.util.List;
-import java.util.stream.Stream;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
 import javax.annotation.Nullable;
 
-public abstract class cgx extends cgv {
+public class cgx {
+   private static final int a = 10;
+
+   public static ji a(azh $$0, int $$1, int $$2) {
+      int $$3 = $$0.a(2 * $$1 + 1) - $$1;
+      int $$4 = $$0.a(2 * $$2 + 1) - $$2;
+      int $$5 = $$0.a(2 * $$1 + 1) - $$1;
+      return new ji($$3, $$4, $$5);
+   }
+
    @Nullable
-   private cgx a;
-   private int b = 1;
-
-   public cgx(but<? extends cgx> $$0, dgj $$1) {
-      super($$0, $$1);
+   public static ji a(azh $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      double $$7 = ayz.d($$5, $$4) - (float) (Math.PI / 2);
+      double $$8 = $$7 + (double)(2.0F * $$0.i() - 1.0F) * $$6;
+      double $$9 = Math.sqrt($$0.j()) * (double)ayz.g * (double)$$1;
+      double $$10 = -$$9 * Math.sin($$8);
+      double $$11 = $$9 * Math.cos($$8);
+      if (!(Math.abs($$10) > (double)$$1) && !(Math.abs($$11) > (double)$$1)) {
+         int $$12 = $$0.a(2 * $$2 + 1) - $$2 + $$3;
+         return ji.a($$10, (double)$$12, $$11);
+      } else {
+         return null;
+      }
    }
 
-   @Override
-   protected void E() {
-      super.E();
-      this.bS.a(5, new ccc(this));
+   @VisibleForTesting
+   public static ji a(ji $$0, int $$1, Predicate<ji> $$2) {
+      if (!$$2.test($$0)) {
+         return $$0;
+      } else {
+         ji.a $$3 = $$0.k().c(jn.b);
+
+         while ($$3.v() <= $$1 && $$2.test($$3)) {
+            $$3.c(jn.b);
+         }
+
+         return $$3.j();
+      }
    }
 
-   @Override
-   public int aj() {
-      return this.gt();
+   @VisibleForTesting
+   public static ji a(ji $$0, int $$1, int $$2, Predicate<ji> $$3) {
+      if ($$1 < 0) {
+         throw new IllegalArgumentException("aboveSolidAmount was " + $$1 + ", expected >= 0");
+      } else if (!$$3.test($$0)) {
+         return $$0;
+      } else {
+         ji.a $$4 = $$0.k().c(jn.b);
+
+         while ($$4.v() <= $$2 && $$3.test($$4)) {
+            $$4.c(jn.b);
+         }
+
+         int $$5 = $$4.v();
+
+         while ($$4.v() <= $$2 && $$4.v() - $$5 < $$1) {
+            $$4.c(jn.b);
+            if ($$3.test($$4)) {
+               $$4.c(jn.a);
+               break;
+            }
+         }
+
+         return $$4.j();
+      }
    }
 
-   public int gt() {
-      return super.aj();
+   @Nullable
+   public static fbx a(bwg $$0, Supplier<ji> $$1) {
+      return a($$1, $$0::c);
    }
 
-   @Override
-   protected boolean x() {
-      return !this.gu();
-   }
+   @Nullable
+   public static fbx a(Supplier<ji> $$0, ToDoubleFunction<ji> $$1) {
+      double $$2 = Double.NEGATIVE_INFINITY;
+      ji $$3 = null;
 
-   public boolean gu() {
-      return this.a != null && this.a.bL();
-   }
-
-   public cgx a(cgx $$0) {
-      this.a = $$0;
-      $$0.gA();
-      return $$0;
-   }
-
-   public void gv() {
-      this.a.gB();
-      this.a = null;
-   }
-
-   private void gA() {
-      this.b++;
-   }
-
-   private void gB() {
-      this.b--;
-   }
-
-   public boolean gw() {
-      return this.gx() && this.b < this.gt();
-   }
-
-   @Override
-   public void h() {
-      super.h();
-      if (this.gx() && this.dV().A.a(200) == 1) {
-         List<? extends cgv> $$0 = this.dV().a((Class<? extends cgv>)this.getClass(), this.cR().c(8.0, 8.0, 8.0));
-         if ($$0.size() <= 1) {
-            this.b = 1;
+      for (int $$4 = 0; $$4 < 10; $$4++) {
+         ji $$5 = $$0.get();
+         if ($$5 != null) {
+            double $$6 = $$1.applyAsDouble($$5);
+            if ($$6 > $$2) {
+               $$2 = $$6;
+               $$3 = $$5;
+            }
          }
       }
+
+      return $$3 != null ? fbx.c($$3) : null;
    }
 
-   public boolean gx() {
-      return this.b > 1;
-   }
+   public static ji a(bwg $$0, int $$1, azh $$2, ji $$3) {
+      int $$4 = $$3.u();
+      int $$5 = $$3.w();
+      if ($$0.gg() && $$1 > 1) {
+         ji $$6 = $$0.gd();
+         if ($$0.dz() > (double)$$6.u()) {
+            $$4 -= $$2.a($$1 / 2);
+         } else {
+            $$4 += $$2.a($$1 / 2);
+         }
 
-   public boolean gy() {
-      return this.g(this.a) <= 121.0;
-   }
-
-   public void gz() {
-      if (this.gu()) {
-         this.P().a(this.a, 1.0);
-      }
-   }
-
-   public void a(Stream<? extends cgx> $$0) {
-      $$0.limit((long)(this.gt() - this.b)).filter($$0x -> $$0x != this).forEach($$0x -> $$0x.a(this));
-   }
-
-   @Nullable
-   @Override
-   public bwb a(dha $$0, bsj $$1, bus $$2, @Nullable bwb $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3 == null) {
-         $$3 = new cgx.a(this);
-      } else {
-         this.a(((cgx.a)$$3).a);
+         if ($$0.dF() > (double)$$6.w()) {
+            $$5 -= $$2.a($$1 / 2);
+         } else {
+            $$5 += $$2.a($$1 / 2);
+         }
       }
 
-      return $$3;
-   }
-
-   public static class a implements bwb {
-      public final cgx a;
-
-      public a(cgx $$0) {
-         this.a = $$0;
-      }
+      return ji.a((double)$$4 + $$0.dz(), (double)$$3.v() + $$0.dB(), (double)$$5 + $$0.dF());
    }
 }

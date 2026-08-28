@@ -1,51 +1,71 @@
-public class gdv extends gcc<hag> {
-   public static final String a = "lid";
-   private static final String b = "base";
-   private final gfe c;
-   private final gfe d;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+import org.joml.Vector3f;
 
-   public gdv(gfe $$0) {
-      super($$0, gmj::h);
-      this.c = $$0.b("lid");
-      this.d = $$0.b("head");
+public abstract class gdv {
+   private static final Vector3f a = new Vector3f();
+   protected final ggc v;
+   protected final Function<aku, gnh> w;
+   private final List<ggc> b;
+
+   public gdv(ggc $$0, Function<aku, gnh> $$1) {
+      this.v = $$0;
+      this.w = $$1;
+      this.b = $$0.e().toList();
    }
 
-   private static gfm c() {
-      gfm $$0 = new gfm();
-      gfo $$1 = $$0.a();
-      $$1.a("lid", gfj.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), gfg.a(0.0F, 24.0F, 0.0F));
-      $$1.a("base", gfj.c().a(0, 28).a(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), gfg.a(0.0F, 24.0F, 0.0F));
-      return $$0;
+   public final gnh a(aku $$0) {
+      return this.w.apply($$0);
    }
 
-   public static gfk a() {
-      gfm $$0 = c();
-      $$0.a().a("head", gfj.c().a(0, 52).a(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), gfg.a(0.0F, 12.0F, 0.0F));
-      return gfk.a($$0, 64, 64);
+   public final void a(fgr $$0, fgv $$1, int $$2, int $$3, int $$4) {
+      this.e().a($$0, $$1, $$2, $$3, $$4);
    }
 
-   public static gfk b() {
-      gfm $$0 = c();
-      return gfk.a($$0, 64, 64);
+   public final void a(fgr $$0, fgv $$1, int $$2, int $$3) {
+      this.a($$0, $$1, $$2, $$3, -1);
    }
 
-   public void a(hag $$0) {
-      super.a($$0);
-      float $$1 = (0.5F + $$0.c) * (float) Math.PI;
-      float $$2 = -1.0F + ayz.a($$1);
-      float $$3 = 0.0F;
-      if ($$1 > (float) Math.PI) {
-         $$3 = ayz.a($$0.u * 0.1F) * 0.7F;
+   public final ggc e() {
+      return this.v;
+   }
+
+   public Optional<ggc> a(String $$0) {
+      return $$0.equals("root") ? Optional.of(this.e()) : this.e().e().filter($$1 -> $$1.a($$0)).findFirst().map($$1 -> $$1.b($$0));
+   }
+
+   public final List<ggc> f() {
+      return this.b;
+   }
+
+   public final void g() {
+      for (ggc $$0 : this.b) {
+         $$0.c();
       }
+   }
 
-      this.c.a(0.0F, 16.0F + ayz.a($$1) * 8.0F + $$3, 0.0F);
-      if ($$0.c > 0.3F) {
-         this.c.f = $$2 * $$2 * $$2 * $$2 * (float) Math.PI * 0.125F;
-      } else {
-         this.c.f = 0.0F;
+   protected void a(bur $$0, fmu $$1, float $$2) {
+      this.a($$0, $$1, $$2, 1.0F);
+   }
+
+   protected void a(fmu $$0, float $$1, float $$2, float $$3, float $$4) {
+      long $$5 = (long)($$1 * 50.0F * $$3);
+      float $$6 = Math.min($$2 * $$4, 1.0F);
+      fmw.a(this, $$0, $$5, $$6, a);
+   }
+
+   protected void a(bur $$0, fmu $$1, float $$2, float $$3) {
+      $$0.a($$3x -> fmw.a(this, $$1, (long)((float)$$3x.a($$2) * $$3), 1.0F, a));
+   }
+
+   protected void a(fmu $$0) {
+      fmw.a(this, $$0, 0L, 1.0F, a);
+   }
+
+   public static class a extends gdv {
+      public a(ggc $$0, Function<aku, gnh> $$1) {
+         super($$0, $$1);
       }
-
-      this.d.e = $$0.ab * (float) (Math.PI / 180.0);
-      this.d.f = ($$0.d - 180.0F - $$0.e) * (float) (Math.PI / 180.0);
    }
 }

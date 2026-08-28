@@ -1,12 +1,28 @@
-public class cuu extends cwm {
-   private final axf<dtq> a;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-   public cuu(axf<dtq> $$0, cwm.a $$1) {
-      super($$1);
-      this.a = $$0;
+public interface cuu extends azv {
+   IntList a();
+
+   default int b() {
+      return this.a().size();
    }
 
-   public axf<dtq> b() {
-      return this.a;
+   static cuu a(final String $$0, final IntList $$1) {
+      return new cuu() {
+         @Override
+         public IntList a() {
+            return $$1;
+         }
+
+         @Override
+         public String c() {
+            return $$0;
+         }
+
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      };
    }
 }

@@ -1,8 +1,8 @@
-public interface hhc {
-   hgt a(akv var1, hhj var2);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   hhn a();
-
-   @bag
-   hhe b();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface hhc {
 }

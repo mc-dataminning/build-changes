@@ -1,32 +1,42 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public class biz extends bgt {
-   private static final double a = 16.0;
-   private static final double b = 48.0;
-
+public class biz extends DataFix {
    public biz(Schema $$0) {
-      super($$0, false, "Villager Follow Range Fix", bhy.B, "minecraft:villager");
+      super($$0, false);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), biz::a);
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update(
-         "Attributes",
-         $$1 -> $$0.createList(
-               $$1.asStream()
-                  .map(
-                     $$0xx -> $$0xx.get("Name").asString("").equals("generic.follow_range") && $$0xx.get("Base").asDouble(0.0) == 16.0
-                           ? $$0xx.set("Base", $$0xx.createDouble(48.0))
-                           : $$0xx
-                  )
-            )
+   protected TypeRewriteRule makeRule() {
+      Type<Pair<String, Either<?, Pair<?, Pair<?, Pair<?, Dynamic<?>>>>>>> $$0 = this.getInputSchema().getType(bic.z);
+      return this.fixTypeEverywhere(
+         "TextComponentStringyFlagsFix",
+         $$0,
+         $$0x -> $$0xx -> $$0xx.mapSecond(
+                  $$0xxx -> $$0xxx.mapRight(
+                        $$0xxxx -> $$0xxxx.mapSecond(
+                              $$0xxxxx -> $$0xxxxx.mapSecond(
+                                    $$0xxxxxx -> $$0xxxxxx.mapSecond(
+                                          $$0xxxxxxx -> $$0xxxxxxx.update("bold", biz::a)
+                                                .update("italic", biz::a)
+                                                .update("underlined", biz::a)
+                                                .update("strikethrough", biz::a)
+                                                .update("obfuscated", biz::a)
+                                       )
+                                 )
+                           )
+                     )
+               )
       );
+   }
+
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<String> $$1 = $$0.asString().result();
+      return $$1.isPresent() ? $$0.createBoolean(Boolean.parseBoolean($$1.get())) : $$0;
    }
 }

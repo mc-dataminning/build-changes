@@ -1,63 +1,21 @@
-import javax.annotation.Nullable;
+public class fxh extends fvx<cuq> {
+   private static final aku G = aku.b("textures/gui/container/shulker_box.png");
 
-public abstract class fxh extends fum {
-   private static final int b = 100;
-   private final wp c;
-   @Nullable
-   private final wp d;
-   private final wp s;
-   @Nullable
-   protected fow a;
-   @Nullable
-   private fpf u;
-   private final fsg v;
-
-   protected fxh(wp $$0, wp $$1, wp $$2) {
-      this($$0, $$1, null, $$2);
-   }
-
-   protected fxh(wp $$0, wp $$1, @Nullable wp $$2, wp $$3) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.s = $$3;
-      this.v = new fsg(0, 0, this.n, this.o);
-   }
-
-   protected abstract fsj m();
-
-   @Override
-   protected void aR_() {
-      fsm $$0 = this.v.a(fsm.d().a(8));
-      $$0.c().b();
-      $$0.a(new fqb(this.n(), this.p));
-      this.u = $$0.a(new fpf(this.n - 100, this.c, this.p, 12), $$0x -> $$0x.a(12));
-      this.u.b(false);
-      fsm $$1 = $$0.a(fsm.d().a(8));
-      $$1.c().b();
-      if (this.d != null) {
-         this.a = $$1.a(fow.a(this.d, this.p).a());
-      }
-
-      $$1.a(this.m());
-      this.v.a($$1x -> {
-         fos var10000 = this.c($$1x);
-      });
-      this.c();
+   public fxh(cuq $$0, cpq $$1, wp $$2) {
+      super($$0, $$1, $$2);
+      this.u++;
    }
 
    @Override
-   protected void c() {
-      if (this.u != null) {
-         this.u.d(this.n - 100);
-      }
-
-      this.v.a();
-      fsg.a(this.v, this.J());
+   public void a(fpc $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   public wp i() {
-      return this.s;
+   protected void a(fpc $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(gnh::H, G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
    }
 }

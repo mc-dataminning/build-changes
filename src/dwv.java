@@ -1,185 +1,279 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.UUID;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
 public class dwv {
-   public static final int a = 12;
-   private final dgj b;
-   private final ji c;
-   private final boolean d;
-   private final ji e;
-   private final jn f;
-   private final List<ji> g = Lists.newArrayList();
-   private final List<ji> h = Lists.newArrayList();
-   private final jn i;
+   public static final String a = "spawn_data";
+   private static final String m = "next_mob_spawns_at";
+   private static final int n = 20;
+   private static final int o = 18000;
+   public static MapCodec<dwv> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               kl.b.lenientOptionalFieldOf("registered_players", Sets.newHashSet()).forGetter($$0x -> $$0x.c),
+               kl.b.lenientOptionalFieldOf("current_mobs", Sets.newHashSet()).forGetter($$0x -> $$0x.d),
+               Codec.LONG.lenientOptionalFieldOf("cooldown_ends_at", 0L).forGetter($$0x -> $$0x.e),
+               Codec.LONG.lenientOptionalFieldOf("next_mob_spawns_at", 0L).forGetter($$0x -> $$0x.f),
+               Codec.intRange(0, Integer.MAX_VALUE).lenientOptionalFieldOf("total_mobs_spawned", 0).forGetter($$0x -> $$0x.g),
+               dht.b.lenientOptionalFieldOf("spawn_data").forGetter($$0x -> $$0x.h),
+               akt.a(mc.bi).lenientOptionalFieldOf("ejecting_loot_table").forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, dwv::new)
+   );
+   protected final Set<UUID> c = new HashSet<>();
+   protected final Set<UUID> d = new HashSet<>();
+   protected long e;
+   protected long f;
+   protected int g;
+   protected Optional<dht> h;
+   protected Optional<akt<ewt>> i;
+   @Nullable
+   protected bva j;
+   @Nullable
+   private brj<cxh> p;
+   protected double k;
+   protected double l;
 
-   public dwv(dgj $$0, ji $$1, jn $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.i = $$2;
-      this.d = $$3;
-      if ($$3) {
-         this.f = $$2;
-         this.e = $$1.a($$2);
-      } else {
-         this.f = $$2.g();
-         this.e = $$1.a($$2, 2);
+   public dwv() {
+      this(Collections.emptySet(), Collections.emptySet(), 0L, 0L, 0, Optional.empty(), Optional.empty());
+   }
+
+   public dwv(Set<UUID> $$0, Set<UUID> $$1, long $$2, long $$3, int $$4, Optional<dht> $$5, Optional<akt<ewt>> $$6) {
+      this.c.addAll($$0);
+      this.d.addAll($$1);
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+   }
+
+   public void a() {
+      this.d.clear();
+      this.h = Optional.empty();
+      this.b();
+   }
+
+   public void b() {
+      this.c.clear();
+      this.g = 0;
+      this.f = 0L;
+      this.e = 0L;
+   }
+
+   public boolean a(dws $$0, azh $$1) {
+      boolean $$2 = this.b($$0, $$1).a().b("id", 8);
+      return $$2 || !$$0.b().i().c();
+   }
+
+   public boolean a(dwt $$0, int $$1) {
+      return this.g >= $$0.a($$1);
+   }
+
+   public boolean c() {
+      return this.d.isEmpty();
+   }
+
+   public boolean a(ard $$0, dwt $$1, int $$2) {
+      return $$0.ae() >= this.f && this.d.size() < $$1.b($$2);
+   }
+
+   public int a(ji $$0) {
+      if (this.c.isEmpty()) {
+         af.b("Trial Spawner at " + $$0 + " has no detected players");
       }
+
+      return Math.max(0, this.c.size() - 1);
    }
 
-   public boolean a() {
-      this.g.clear();
-      this.h.clear();
-      dwy $$0 = this.b.a_(this.e);
-      if (!dwr.a($$0, this.b, this.e, this.f, false, this.i)) {
-         if (this.d && $$0.r() == etf.b) {
-            this.h.add(this.e);
-            return true;
-         } else {
-            return false;
-         }
-      } else if (!this.a(this.e, this.f)) {
-         return false;
-      } else {
-         for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
-            ji $$2 = this.g.get($$1);
-            if (a(this.b.a_($$2)) && !this.a($$2)) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   private static boolean a(dwy $$0) {
-      return $$0.a(djp.it) || $$0.a(djp.pI);
-   }
-
-   private static boolean a(dwy $$0, dwy $$1) {
-      if ($$0.a(djp.pI) && $$1.a(djp.it)) {
-         return false;
-      } else {
-         return $$0.a(djp.it) && $$1.a(djp.pI) ? false : a($$0) || a($$1);
-      }
-   }
-
-   private boolean a(ji $$0, jn $$1) {
-      dwy $$2 = this.b.a_($$0);
-      if ($$2.l()) {
-         return true;
-      } else if (!dwr.a($$2, this.b, $$0, this.f, false, $$1)) {
-         return true;
-      } else if ($$0.equals(this.c)) {
-         return true;
-      } else if (this.g.contains($$0)) {
-         return true;
-      } else {
-         int $$3 = 1;
-         if ($$3 + this.g.size() > 12) {
-            return false;
-         } else {
-            while (a($$2)) {
-               ji $$4 = $$0.a(this.f.g(), $$3);
-               dwy $$5 = $$2;
-               $$2 = this.b.a_($$4);
-               if ($$2.l() || !a($$5, $$2) || !dwr.a($$2, this.b, $$4, this.f, false, this.f.g()) || $$4.equals(this.c)) {
-                  break;
-               }
-
-               if (++$$3 + this.g.size() > 12) {
-                  return false;
-               }
-            }
-
-            int $$6 = 0;
-
-            for (int $$7 = $$3 - 1; $$7 >= 0; $$7--) {
-               this.g.add($$0.a(this.f.g(), $$7));
-               $$6++;
-            }
-
-            int $$8 = 1;
-
-            while (true) {
-               ji $$9 = $$0.a(this.f, $$8);
-               int $$10 = this.g.indexOf($$9);
-               if ($$10 > -1) {
-                  this.a($$6, $$10);
-
-                  for (int $$11 = 0; $$11 <= $$10 + $$6; $$11++) {
-                     ji $$12 = this.g.get($$11);
-                     if (a(this.b.a_($$12)) && !this.a($$12)) {
-                        return false;
-                     }
+   public void a(ard $$0, ji $$1, dws $$2) {
+      boolean $$3 = ($$1.a() + $$0.ae()) % 20L != 0L;
+      if (!$$3) {
+         if (!$$2.i().equals(dww.f) || !$$2.e()) {
+            List<UUID> $$4 = $$2.k().detect($$0, $$2.l(), $$1, (double)$$2.h(), true);
+            boolean $$7;
+            if (!$$2.e() && !$$4.isEmpty()) {
+               Optional<Pair<cpr, jr<buc>>> $$6 = a($$0, $$4);
+               $$6.ifPresent($$3x -> {
+                  cpr $$4x = (cpr)$$3x.getFirst();
+                  if ($$3x.getSecond() == bug.E) {
+                     a($$4x);
                   }
 
-                  return true;
-               }
+                  $$0.c(3020, ji.a((kb)$$4x.bD()), 0);
+                  $$2.a($$0, $$1);
+               });
+               $$7 = $$6.isPresent();
+            } else {
+               $$7 = false;
+            }
 
-               $$2 = this.b.a_($$9);
-               if ($$2.l()) {
-                  return true;
+            if (!$$2.i().equals(dww.f) || $$7) {
+               boolean $$8 = $$2.f().c.isEmpty();
+               List<UUID> $$9 = $$8 ? $$4 : $$2.k().detect($$0, $$2.l(), $$1, (double)$$2.h(), false);
+               if (this.c.addAll($$9)) {
+                  this.f = Math.max($$0.ae() + 40L, this.f);
+                  if (!$$7) {
+                     int $$10 = $$2.e() ? 3019 : 3013;
+                     $$0.c($$10, $$1, this.c.size());
+                  }
                }
-
-               if (!dwr.a($$2, this.b, $$9, this.f, true, this.f) || $$9.equals(this.c)) {
-                  return false;
-               }
-
-               if ($$2.r() == etf.b) {
-                  this.h.add($$9);
-                  return true;
-               }
-
-               if (this.g.size() >= 12) {
-                  return false;
-               }
-
-               this.g.add($$9);
-               $$6++;
-               $$8++;
             }
          }
       }
    }
 
-   private void a(int $$0, int $$1) {
-      List<ji> $$2 = Lists.newArrayList();
-      List<ji> $$3 = Lists.newArrayList();
-      List<ji> $$4 = Lists.newArrayList();
-      $$2.addAll(this.g.subList(0, $$1));
-      $$3.addAll(this.g.subList(this.g.size() - $$0, this.g.size()));
-      $$4.addAll(this.g.subList($$1, this.g.size() - $$0));
-      this.g.clear();
-      this.g.addAll($$2);
-      this.g.addAll($$3);
-      this.g.addAll($$4);
-   }
+   private static Optional<Pair<cpr, jr<buc>>> a(ard $$0, List<UUID> $$1) {
+      cpr $$2 = null;
 
-   private boolean a(ji $$0) {
-      dwy $$1 = this.b.a_($$0);
+      for (UUID $$3 : $$1) {
+         cpr $$4 = $$0.a($$3);
+         if ($$4 != null) {
+            jr<buc> $$5 = bug.H;
+            if ($$4.b($$5)) {
+               return Optional.of(Pair.of($$4, $$5));
+            }
 
-      for (jn $$2 : jn.values()) {
-         if ($$2.o() != this.f.o()) {
-            ji $$3 = $$0.a($$2);
-            dwy $$4 = this.b.a_($$3);
-            if (a($$4, $$1) && !this.a($$3, $$2)) {
-               return false;
+            if ($$4.b(bug.E)) {
+               $$2 = $$4;
             }
          }
       }
 
-      return true;
+      return Optional.ofNullable($$2).map($$0x -> Pair.of($$0x, bug.E));
    }
 
-   public jn b() {
-      return this.f;
+   public void a(dws $$0, ard $$1) {
+      this.d.stream().map($$1::b).forEach($$1x -> {
+         if ($$1x != null) {
+            $$1.c(3012, $$1x.du(), dws.a.a.a());
+            if ($$1x instanceof bwa $$2) {
+               $$2.b($$1);
+            }
+
+            $$1x.a(bva.d.b);
+         }
+      });
+      if (!$$0.d().i().c()) {
+         this.h = Optional.empty();
+      }
+
+      this.g = 0;
+      this.d.clear();
+      this.f = $$1.ae() + (long)$$0.d().h();
+      $$0.j();
+      this.e = $$1.ae() + $$0.d().a();
    }
 
-   public List<ji> c() {
-      return this.g;
+   private static void a(cpr $$0) {
+      bue $$1 = $$0.c(bug.E);
+      if ($$1 != null) {
+         int $$2 = $$1.e() + 1;
+         int $$3 = 18000 * $$2;
+         $$0.e(bug.E);
+         $$0.a(new bue(bug.H, $$3, 0));
+      }
    }
 
-   public List<ji> d() {
-      return this.h;
+   public boolean a(ard $$0, float $$1, int $$2) {
+      long $$3 = this.e - (long)$$2;
+      return (float)$$0.ae() >= (float)$$3 + $$1;
+   }
+
+   public boolean b(ard $$0, float $$1, int $$2) {
+      long $$3 = this.e - (long)$$2;
+      return (float)($$0.ae() - $$3) % $$1 == 0.0F;
+   }
+
+   public boolean a(ard $$0) {
+      return $$0.ae() >= this.e;
+   }
+
+   protected dht b(dws $$0, azh $$1) {
+      if (this.h.isPresent()) {
+         return this.h.get();
+      } else {
+         brj<dht> $$2 = $$0.b().i();
+         Optional<dht> $$3 = $$2.c() ? this.h : $$2.a($$1);
+         this.h = Optional.of($$3.orElseGet(dht::new));
+         $$0.j();
+         return this.h.get();
+      }
+   }
+
+   @Nullable
+   public bva a(dws $$0, dgz $$1, dww $$2) {
+      if (!$$2.d()) {
+         return null;
+      } else {
+         if (this.j == null) {
+            tq $$3 = this.b($$0, $$1.C_()).a();
+            if ($$3.b("id", 8)) {
+               this.j = bvi.a($$3, $$1, bvh.q, Function.identity());
+            }
+         }
+
+         return this.j;
+      }
+   }
+
+   public tq a(dww $$0) {
+      tq $$1 = new tq();
+      if ($$0 == dww.c) {
+         $$1.a("next_mob_spawns_at", this.f);
+      }
+
+      this.h
+         .ifPresent($$1x -> $$1.a("spawn_data", (un)dht.b.encodeStart(ue.a, $$1x).result().orElseThrow(() -> new IllegalStateException("Invalid SpawnData"))));
+      return $$1;
+   }
+
+   public double d() {
+      return this.k;
+   }
+
+   public double e() {
+      return this.l;
+   }
+
+   brj<cxh> a(ard $$0, dwt $$1, ji $$2) {
+      if (this.p != null) {
+         return this.p;
+      } else {
+         ewt $$3 = $$0.p().bc().b($$1.k());
+         ewr $$4 = new ewr.a($$0).a(ezh.b);
+         long $$5 = a($$0, $$2);
+         ObjectArrayList<cxh> $$6 = $$3.a($$4, $$5);
+         if ($$6.isEmpty()) {
+            return brj.a();
+         } else {
+            brj.a<cxh> $$7 = brj.b();
+            ObjectListIterator var10 = $$6.iterator();
+
+            while (var10.hasNext()) {
+               cxh $$8 = (cxh)var10.next();
+               $$7.a($$8.c(1), $$8.M());
+            }
+
+            this.p = $$7.a();
+            return this.p;
+         }
+      }
+   }
+
+   private static long a(ard $$0, ji $$1) {
+      ji $$2 = new ji(ayz.d((float)$$1.u() / 30.0F), ayz.d((float)$$1.v() / 20.0F), ayz.d((float)$$1.w() / 30.0F));
+      return $$0.E() + $$2.a();
    }
 }

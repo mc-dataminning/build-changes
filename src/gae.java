@@ -1,7 +1,8 @@
-import java.util.List;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface gae {
-   List<gaf> a();
-
-   wp b();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gae {
 }

@@ -1,64 +1,69 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class ewm extends ewb {
-   public static final MapCodec<ewm> a = a(ewm::new);
-
-   ewm(List<ewi> $$0, List<ezb> $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   public ewj a() {
-      return ewg.h;
-   }
-
-   @Override
-   protected ewa a(List<? extends ewa> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (ewa)$$0.get(0);
-         case 2 -> $$0.get(0).and($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (ewa $$3 : $$0) {
-            if (!$$3.expand($$1, $$2)) {
-               return false;
-            }
-         }
-
-         return true;
-      };
-      };
-   }
-
-   public static ewm.a a(ewi.a<?>... $$0) {
-      return new ewm.a($$0);
-   }
-
-   public static class a extends ewi.a<ewm.a> {
-      private final Builder<ewi> a = ImmutableList.builder();
-
-      public a(ewi.a<?>... $$0) {
-         for (ewi.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
-
-      protected ewm.a a() {
-         return this;
-      }
-
+public interface ewm {
+   ewl<czx> a = new ewl<czx>() {
       @Override
-      public ewm.a c(ewi.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
+      public ku<czx> a() {
+         return kv.an;
       }
 
-      @Override
-      public ewi b() {
-         return new ewm(this.a.build(), this.f());
+      public Stream<cxh> a(czx $$0) {
+         return $$0.b();
       }
-   }
+
+      public czx c() {
+         return czx.a;
+      }
+
+      public czx a(czx $$0, Stream<cxh> $$1) {
+         return czx.a($$1.toList());
+      }
+   };
+   ewl<czj> b = new ewl<czj>() {
+      @Override
+      public ku<czj> a() {
+         return kv.Q;
+      }
+
+      public czj c() {
+         return czj.a;
+      }
+
+      public Stream<cxh> a(czj $$0) {
+         return $$0.b();
+      }
+
+      public czj a(czj $$0, Stream<cxh> $$1) {
+         czj.a $$2 = new czj.a($$0).a();
+         $$1.forEach($$2::a);
+         return $$2.d();
+      }
+   };
+   ewl<czk> c = new ewl<czk>() {
+      @Override
+      public ku<czk> a() {
+         return kv.P;
+      }
+
+      public czk c() {
+         return czk.a;
+      }
+
+      public Stream<cxh> a(czk $$0) {
+         return $$0.a().stream();
+      }
+
+      public czk a(czk $$0, Stream<cxh> $$1) {
+         return czk.a($$1.toList());
+      }
+   };
+   Map<ku<?>, ewl<?>> d = Stream.of(a, b, c).collect(Collectors.toMap(ewl::a, $$0 -> (ewl<?>)$$0));
+   Codec<ewl<?>> e = mb.ao.q().comapFlatMap($$0 -> {
+      ewl<?> $$1 = d.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No items in component");
+   }, ewl::a);
 }

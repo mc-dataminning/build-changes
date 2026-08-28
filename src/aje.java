@@ -1,5 +1,7 @@
-public interface aje {
-   akv a();
+public record aje() implements ajc {
+   public static final aje a = new aje();
 
-   void a(vl var1);
+   @Override
+   public void a(vl $$0) {
+   }
 }

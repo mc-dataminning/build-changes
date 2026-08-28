@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record ay(Optional<jv<djn>> c, Optional<ef> d, Optional<dn> e) {
+public record ay(Optional<jv<dke>> c, Optional<ef> d, Optional<dn> e) {
    public static final Codec<ay> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                kg.a(mc.f).optionalFieldOf("blocks").forGetter(ay::b),
@@ -24,23 +24,23 @@ public record ay(Optional<jv<djn>> c, Optional<ef> d, Optional<dn> e) {
       }
    }
 
-   public boolean a(dxc $$0) {
+   public boolean a(dxu $$0) {
       return !this.a($$0.a()) ? false : !this.e.isPresent() || a($$0.c(), $$0.b(), this.e.get());
    }
 
-   private boolean a(dwy $$0) {
+   private boolean a(dxq $$0) {
       return this.c.isPresent() && !$$0.a(this.c.get()) ? false : !this.d.isPresent() || this.d.get().a($$0);
    }
 
-   private static boolean a(dgm $$0, @Nullable dua $$1, dn $$2) {
-      return $$1 != null && $$2.a($$1.b($$0.K_()));
+   private static boolean a(dhc $$0, @Nullable dus $$1, dn $$2) {
+      return $$1 != null && $$2.a($$1.b($$0.F_()));
    }
 
    public boolean a() {
       return this.e.isPresent();
    }
 
-   public Optional<jv<djn>> b() {
+   public Optional<jv<dke>> b() {
       return this.c;
    }
 
@@ -53,7 +53,7 @@ public record ay(Optional<jv<djn>> c, Optional<ef> d, Optional<dn> e) {
    }
 
    public static class a {
-      private Optional<jv<djn>> a = Optional.empty();
+      private Optional<jv<dke>> a = Optional.empty();
       private Optional<ef> b = Optional.empty();
       private Optional<dn> c = Optional.empty();
 
@@ -64,16 +64,16 @@ public record ay(Optional<jv<djn>> c, Optional<ef> d, Optional<dn> e) {
          return new ay.a();
       }
 
-      public ay.a a(js<djn> $$0, djn... $$1) {
+      public ay.a a(js<dke> $$0, dke... $$1) {
          return this.a($$0, Arrays.asList($$1));
       }
 
-      public ay.a a(js<djn> $$0, Collection<djn> $$1) {
-         this.a = Optional.of(jv.a(djn::p, $$1));
+      public ay.a a(js<dke> $$0, Collection<dke> $$1) {
+         this.a = Optional.of(jv.a(dke::p, $$1));
          return this;
       }
 
-      public ay.a a(js<djn> $$0, axf<djn> $$1) {
+      public ay.a a(js<dke> $$0, axf<dke> $$1) {
          this.a = Optional.of($$0.b($$1));
          return this;
       }

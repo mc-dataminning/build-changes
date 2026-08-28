@@ -1,128 +1,64 @@
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import com.google.common.collect.MapMaker;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
 import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Function;
+import java.util.concurrent.ConcurrentMap;
 
-public class akt<T> extends akm<T> {
-   private final akt.c b;
+public class akt<T> {
+   private static final ConcurrentMap<akt.a, akt<?>> a = new MapMaker().weakValues().makeMap();
+   private final aku b;
+   private final aku c;
 
-   public static <T> akt<T> a(DynamicOps<T> $$0, jt.a $$1) {
-      return a($$0, new akt.a($$1));
+   public static <T> Codec<akt<T>> a(akt<? extends ke<T>> $$0) {
+      return aku.a.xmap($$1 -> a($$0, $$1), akt::a);
    }
 
-   public static <T> akt<T> a(DynamicOps<T> $$0, akt.c $$1) {
-      return new akt<>($$0, $$1);
+   public static <T> yn<ByteBuf, akt<T>> b(akt<? extends ke<T>> $$0) {
+      return aku.b.a($$1 -> a($$0, $$1), akt::a);
    }
 
-   public static <T> Dynamic<T> a(Dynamic<T> $$0, jt.a $$1) {
-      return new Dynamic($$1.a($$0.getOps()), $$0.getValue());
+   public static <T> akt<T> a(akt<? extends ke<T>> $$0, aku $$1) {
+      return a($$0.c, $$1);
    }
 
-   private akt(DynamicOps<T> $$0, akt.c $$1) {
-      super($$0);
-      this.b = $$1;
+   public static <T> akt<ke<T>> a(aku $$0) {
+      return a(mc.a, $$0);
    }
 
-   public <U> akt<U> a(DynamicOps<U> $$0) {
-      return (akt<U>)($$0 == this.a ? this : new akt((DynamicOps<T>)$$0, this.b));
+   private static <T> akt<T> a(aku $$0, aku $$1) {
+      return (akt<T>)a.computeIfAbsent(new akt.a($$0, $$1), $$0x -> new akt($$0x.a, $$0x.b));
    }
 
-   public <E> Optional<ju<E>> a(aku<? extends ke<? extends E>> $$0) {
-      return this.b.a($$0).map(akt.b::a);
-   }
-
-   public <E> Optional<js<E>> b(aku<? extends ke<? extends E>> $$0) {
-      return this.b.a($$0).map(akt.b::b);
+   private akt(aku $$0, aku $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         akt<?> $$1 = (akt<?>)$$0;
-         return this.a.equals($$1.a) && this.b.equals($$1.b);
-      } else {
-         return false;
-      }
+   public String toString() {
+      return "ResourceKey[" + this.b + " / " + this.c + "]";
    }
 
-   @Override
-   public int hashCode() {
-      return this.a.hashCode() * 31 + this.b.hashCode();
+   public boolean c(akt<? extends ke<?>> $$0) {
+      return this.b.equals($$0.a());
    }
 
-   public static <E, O> RecordCodecBuilder<O, js<E>> c(aku<? extends ke<? extends E>> $$0) {
-      return ayi.a(
-            (Function<DynamicOps<?>, DataResult<E>>)($$1 -> $$1 instanceof akt<?> $$2
-                  ? $$2.b.a($$0).map($$0xx -> DataResult.success($$0xx.b(), $$0xx.c())).orElseGet(() -> DataResult.error(() -> "Unknown registry: " + $$0))
-                  : DataResult.error(() -> "Not a registry ops"))
-         )
-         .forGetter($$0x -> null);
+   public <E> Optional<akt<E>> d(akt<? extends ke<E>> $$0) {
+      return this.c($$0) ? Optional.of((akt<E>)this) : Optional.empty();
    }
 
-   public static <E, O> RecordCodecBuilder<O, jr.c<E>> d(aku<E> $$0) {
-      aku<? extends ke<E>> $$1 = aku.a($$0.b());
-      return ayi.a(
-            (Function<DynamicOps<?>, DataResult<E>>)($$2 -> $$2 instanceof akt<?> $$3
-                  ? $$3.b
-                     .a($$1)
-                     .flatMap($$1xx -> $$1xx.b().a($$0))
-                     .<DataResult<E>>map(DataResult::success)
-                     .orElseGet(() -> DataResult.error(() -> "Can't find value: " + $$0))
-                  : DataResult.error(() -> "Not a registry ops"))
-         )
-         .forGetter($$0x -> null);
+   public aku a() {
+      return this.c;
    }
 
-   static final class a implements akt.c {
-      private final jt.a a;
-      private final Map<aku<? extends ke<?>>, Optional<? extends akt.b<?>>> b = new ConcurrentHashMap<>();
-
-      public a(jt.a $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public <E> Optional<akt.b<E>> a(aku<? extends ke<? extends E>> $$0) {
-         return (Optional<akt.b<E>>)this.b.computeIfAbsent($$0, this::b);
-      }
-
-      private Optional<akt.b<Object>> b(aku<? extends ke<?>> $$0) {
-         return this.a.a($$0).map(akt.b::a);
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else {
-            if ($$0 instanceof akt.a $$1 && this.a.equals($$1.a)) {
-               return true;
-            }
-
-            return false;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         return this.a.hashCode();
-      }
+   public aku b() {
+      return this.b;
    }
 
-   public static record b<T>(ju<T> a, js<T> b, Lifecycle c) {
-      public static <T> akt.b<T> a(jt.b<T> $$0) {
-         return new akt.b<>($$0, $$0, $$0.h());
-      }
+   public akt<ke<T>> c() {
+      return a(this.b);
    }
 
-   public interface c {
-      <T> Optional<akt.b<T>> a(aku<? extends ke<? extends T>> var1);
+   static record a(aku a, aku b) {
    }
 }

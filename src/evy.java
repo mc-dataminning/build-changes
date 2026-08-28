@@ -1,67 +1,28 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import java.util.Optional;
-import java.util.Set;
+import java.util.Locale;
 
-public class evy {
-   private final azf a;
-   private final baj b;
-   private final Optional<js.a> c;
-   private final Set<aku<?>> d;
+public interface evy {
+   ji a();
 
-   public evy(azf $$0, baj $$1, js.a $$2) {
-      this($$0, $$1, Optional.of($$2), Set.of());
-   }
+   float b();
 
-   public evy(azf $$0, baj $$1) {
-      this($$0, $$1, Optional.empty(), Set.of());
-   }
+   long c();
 
-   private evy(azf $$0, baj $$1, Optional<js.a> $$2, Set<aku<?>> $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
+   long d();
 
-   public evy a(String $$0) {
-      return new evy(this.a.a($$0), this.b, this.c, this.d);
-   }
+   boolean g();
 
-   public evy a(String $$0, aku<?> $$1) {
-      Set<aku<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
-      return new evy(this.a.a($$0), this.b, this.c, $$2);
-   }
+   boolean i();
 
-   public boolean a(aku<?> $$0) {
-      return this.d.contains($$0);
-   }
+   void b(boolean var1);
 
-   public void b(String $$0) {
-      this.a.b($$0);
-   }
+   boolean l();
 
-   public void a(evt $$0) {
-      Set<bai<?>> $$1 = $$0.a();
-      Set<bai<?>> $$2 = Sets.difference($$1, this.b.b());
-      if (!$$2.isEmpty()) {
-         this.a.b("Parameters " + $$2 + " are not provided in this context");
-      }
-   }
+   bsv q();
 
-   public js.a a() {
-      return this.c.orElseThrow(() -> new UnsupportedOperationException("References not allowed"));
-   }
+   boolean r();
 
-   public boolean b() {
-      return this.c.isPresent();
-   }
-
-   public evy a(baj $$0) {
-      return new evy(this.a, $$0, this.c, this.d);
-   }
-
-   public azf c() {
-      return this.a;
+   default void a(p $$0, dhb $$1) {
+      $$0.a("Level spawn location", () -> p.a($$1, this.a()));
+      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.c(), this.d()));
    }
 }

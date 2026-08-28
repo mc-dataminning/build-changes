@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 
 public class an {
    private static final Logger a = LogUtils.getLogger();
-   private final Map<akv, aj> b = new Object2ObjectOpenHashMap();
+   private final Map<aku, aj> b = new Object2ObjectOpenHashMap();
    private final Set<aj> c = new ObjectLinkedOpenHashSet();
    private final Set<aj> d = new ObjectLinkedOpenHashSet();
    @Nullable
@@ -38,8 +38,8 @@ public class an {
       }
    }
 
-   public void a(Set<akv> $$0) {
-      for (akv $$1 : $$0) {
+   public void a(Set<aku> $$0) {
+      for (aku $$1 : $$0) {
          aj $$2 = this.b.get($$1);
          if ($$2 == null) {
             a.warn("Told to remove advancement {} but I don't know what that is", $$1);
@@ -63,7 +63,7 @@ public class an {
    }
 
    private boolean b(ai $$0) {
-      Optional<akv> $$1 = $$0.b().b();
+      Optional<aku> $$1 = $$0.b().b();
       aj $$2 = $$1.map(this.b::get).orElse(null);
       if ($$2 == null && $$1.isPresent()) {
          return false;
@@ -108,7 +108,7 @@ public class an {
    }
 
    @Nullable
-   public aj a(akv $$0) {
+   public aj a(aku $$0) {
       return this.b.get($$0);
    }
 

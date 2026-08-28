@@ -8,7 +8,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class axh {
-   public static Map<aku<? extends ke<?>>, axh.a> a(jy<ale> $$0) {
+   public static Map<akt<? extends ke<?>>, axh.a> a(jy<ald> $$0) {
       return ki.b($$0)
          .map($$0x -> Pair.of($$0x.a(), a($$0x.b())))
          .filter($$0x -> !((axh.a)$$0x.getSecond()).a())
@@ -16,7 +16,7 @@ public class axh {
    }
 
    private static <T> axh.a a(ke<T> $$0) {
-      Map<akv, IntList> $$1 = new HashMap<>();
+      Map<aku, IntList> $$1 = new HashMap<>();
       $$0.l().forEach($$2 -> {
          IntList $$3 = new IntArrayList($$2.b());
 
@@ -34,7 +34,7 @@ public class axh {
    }
 
    static <T> axg.c<T> a(ke<T> $$0, axh.a $$1) {
-      aku<? extends ke<T>> $$2 = $$0.g();
+      akt<? extends ke<T>> $$2 = $$0.g();
       Map<axf<T>, List<jr<T>>> $$3 = new HashMap<>();
       $$1.b.forEach(($$3x, $$4) -> {
          axf<T> $$5 = axf.a($$2, $$3x);
@@ -46,9 +46,9 @@ public class axh {
 
    public static final class a {
       public static final axh.a a = new axh.a(Map.of());
-      final Map<akv, IntList> b;
+      final Map<aku, IntList> b;
 
-      a(Map<akv, IntList> $$0) {
+      a(Map<aku, IntList> $$0) {
          this.b = $$0;
       }
 

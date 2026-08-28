@@ -1,112 +1,62 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import java.nio.file.Path;
 import javax.annotation.Nullable;
 
-public class frn extends hee implements hef {
-   private static final int d = 256;
-   private final fro e;
-   private final boolean f;
-   private final frn.a g;
+public interface frn extends fra {
+   long t = 250L;
 
-   public frn(fro $$0, boolean $$1) {
-      this.f = $$1;
-      this.g = new frn.a(0, 0, 256, 256);
-      TextureUtil.prepareImage($$1 ? fev.b.a : fev.b.d, this.a(), 256, 256);
-      this.a(false, false);
-      this.e = $$0;
+   default void f(double $$0, double $$1) {
    }
 
-   @Override
-   public void close() {
-      this.b();
+   default boolean a(double $$0, double $$1, int $$2) {
+      return false;
+   }
+
+   default boolean b(double $$0, double $$1, int $$2) {
+      return false;
+   }
+
+   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      return false;
+   }
+
+   default boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return false;
+   }
+
+   default boolean a(int $$0, int $$1, int $$2) {
+      return false;
+   }
+
+   default boolean c(int $$0, int $$1, int $$2) {
+      return false;
+   }
+
+   default boolean a(char $$0, int $$1) {
+      return false;
    }
 
    @Nullable
-   public frq a(fdv $$0) {
-      if ($$0.c() != this.f) {
-         return null;
-      } else {
-         frn.a $$1 = this.g.a($$0);
-         if ($$1 != null) {
-            this.c();
-            $$0.a($$1.a, $$1.b);
-            float $$2 = 256.0F;
-            float $$3 = 256.0F;
-            float $$4 = 0.01F;
-            return new frq(
-               this.e,
-               ((float)$$1.a + 0.01F) / 256.0F,
-               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
-               ((float)$$1.b + 0.01F) / 256.0F,
-               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
-               $$0.e(),
-               $$0.f(),
-               $$0.g(),
-               $$0.h()
-            );
-         } else {
-            return null;
-         }
-      }
+   default foz a(ftt $$0) {
+      return null;
    }
 
-   @Override
-   public void a(akv $$0, Path $$1) {
-      String $$2 = $$0.c();
-      TextureUtil.writeAsPNG($$1, $$2, this.a(), 0, 256, 256, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
+   default boolean a_(double $$0, double $$1) {
+      return false;
    }
 
-   static class a {
-      final int a;
-      final int b;
-      private final int c;
-      private final int d;
-      @Nullable
-      private frn.a e;
-      @Nullable
-      private frn.a f;
-      private boolean g;
+   void a(boolean var1);
 
-      a(int $$0, int $$1, int $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
+   boolean aM_();
 
-      @Nullable
-      frn.a a(fdv $$0) {
-         if (this.e != null && this.f != null) {
-            frn.a $$1 = this.e.a($$0);
-            if ($$1 == null) {
-               $$1 = this.f.a($$0);
-            }
+   @Nullable
+   default foz aN_() {
+      return this.aM_() ? foz.a(this) : null;
+   }
 
-            return $$1;
-         } else if (this.g) {
-            return null;
-         } else {
-            int $$2 = $$0.a();
-            int $$3 = $$0.b();
-            if ($$2 > this.c || $$3 > this.d) {
-               return null;
-            } else if ($$2 == this.c && $$3 == this.d) {
-               this.g = true;
-               return this;
-            } else {
-               int $$4 = this.c - $$2;
-               int $$5 = this.d - $$3;
-               if ($$4 > $$5) {
-                  this.e = new frn.a(this.a, this.b, $$2, this.d);
-                  this.f = new frn.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
-               } else {
-                  this.e = new frn.a(this.a, this.b, this.c, $$3);
-                  this.f = new frn.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
-               }
+   default ftx J() {
+      return ftx.a();
+   }
 
-               return this.e.a($$0);
-            }
-         }
-      }
+   default ftx b(ftv $$0) {
+      return this.J().c($$0);
    }
 }

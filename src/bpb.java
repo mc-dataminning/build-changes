@@ -1,255 +1,196 @@
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.net.SocketAddress;
-import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.text.ParseException;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
-import java.util.Iterator;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
+import it.unimi.dsi.fastutil.objects.Object2LongMap;
+import it.unimi.dsi.fastutil.objects.Object2LongMaps;
+import it.unimi.dsi.fastutil.objects.Object2LongOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectArraySet;
+import java.time.Duration;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Set;
+import java.util.function.BooleanSupplier;
+import java.util.function.IntSupplier;
+import java.util.function.LongSupplier;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import jdk.jfr.Configuration;
-import jdk.jfr.Event;
-import jdk.jfr.FlightRecorder;
-import jdk.jfr.FlightRecorderListener;
-import jdk.jfr.Recording;
-import jdk.jfr.RecordingState;
-import net.minecraft.util.profiling.jfr.event.ChunkGenerationEvent;
-import net.minecraft.util.profiling.jfr.event.ChunkRegionReadEvent;
-import net.minecraft.util.profiling.jfr.event.ChunkRegionWriteEvent;
-import net.minecraft.util.profiling.jfr.event.NetworkSummaryEvent;
-import net.minecraft.util.profiling.jfr.event.PacketReceivedEvent;
-import net.minecraft.util.profiling.jfr.event.PacketSentEvent;
-import net.minecraft.util.profiling.jfr.event.ServerTickTimeEvent;
-import net.minecraft.util.profiling.jfr.event.StructureGenerationEvent;
-import net.minecraft.util.profiling.jfr.event.WorldLoadFinishedEvent;
+import org.apache.commons.lang3.tuple.Pair;
 import org.slf4j.Logger;
 
-public class bpb implements bpc {
-   private static final Logger g = LogUtils.getLogger();
-   public static final String a = "Minecraft";
-   public static final String b = "World Generation";
-   public static final String c = "Ticking";
-   public static final String d = "Network";
-   public static final String e = "Storage";
-   private static final List<Class<? extends Event>> h = List.of(
-      ChunkGenerationEvent.class,
-      ChunkRegionReadEvent.class,
-      ChunkRegionWriteEvent.class,
-      PacketReceivedEvent.class,
-      PacketSentEvent.class,
-      NetworkSummaryEvent.class,
-      ServerTickTimeEvent.class,
-      StructureGenerationEvent.class,
-      WorldLoadFinishedEvent.class
-   );
-   private static final String i = "/flightrecorder-config.jfc";
-   private static final DateTimeFormatter j = new DateTimeFormatterBuilder().appendPattern("yyyy-MM-dd-HHmmss").toFormatter().withZone(ZoneId.systemDefault());
-   private static final bpb k = new bpb();
+public class bpb implements bpg {
+   private static final long a = Duration.ofMillis(100L).toNanos();
+   private static final Logger c = LogUtils.getLogger();
+   private final List<String> d = Lists.newArrayList();
+   private final LongList e = new LongArrayList();
+   private final Map<String, bpb.a> f = Maps.newHashMap();
+   private final IntSupplier g;
+   private final LongSupplier h;
+   private final long i;
+   private final int j;
+   private String k = "";
+   private boolean l;
    @Nullable
-   Recording l;
-   private float m;
-   private final Map<String, NetworkSummaryEvent.b> n = new ConcurrentHashMap<>();
+   private bpb.a m;
+   private final BooleanSupplier n;
+   private final Set<Pair<String, bqs>> o = new ObjectArraySet();
 
-   private bpb() {
-      h.forEach(FlightRecorder::register);
-      FlightRecorder.addPeriodicEvent(ServerTickTimeEvent.class, () -> new ServerTickTimeEvent(this.m).commit());
-      FlightRecorder.addPeriodicEvent(NetworkSummaryEvent.class, () -> {
-         Iterator<NetworkSummaryEvent.b> $$0 = this.n.values().iterator();
-
-         while ($$0.hasNext()) {
-            $$0.next().a();
-            $$0.remove();
-         }
-      });
-   }
-
-   public static bpb a() {
-      return k;
+   public bpb(LongSupplier $$0, IntSupplier $$1, BooleanSupplier $$2) {
+      this.i = $$0.getAsLong();
+      this.h = $$0;
+      this.j = $$1.getAsInt();
+      this.g = $$1;
+      this.n = $$2;
    }
 
    @Override
-   public boolean a(bpa $$0) {
-      URL $$1 = bpb.class.getResource("/flightrecorder-config.jfc");
-      if ($$1 == null) {
-         g.warn("Could not find default flight recorder config at {}", "/flightrecorder-config.jfc");
-         return false;
+   public void a() {
+      if (this.l) {
+         c.error("Profiler tick already started - missing endTick()?");
       } else {
-         try {
-            boolean var4;
-            try (BufferedReader $$2 = new BufferedReader(new InputStreamReader($$1.openStream()))) {
-               var4 = this.a($$2, $$0);
-            }
+         this.l = true;
+         this.k = "";
+         this.d.clear();
+         this.a("root");
+      }
+   }
 
-            return var4;
-         } catch (IOException var8) {
-            g.warn("Failed to start flight recorder using configuration at {}", $$1, var8);
-            return false;
+   @Override
+   public void b() {
+      if (!this.l) {
+         c.error("Profiler tick already ended - missing startTick()?");
+      } else {
+         this.c();
+         this.l = false;
+         if (!this.k.isEmpty()) {
+            c.error("Profiler tick ended before path was fully popped (remainder: '{}'). Mismatched push/pop?", LogUtils.defer(() -> bph.b(this.k)));
          }
       }
    }
 
    @Override
-   public Path b() {
-      if (this.l == null) {
-         throw new IllegalStateException("Not currently profiling");
+   public void a(String $$0) {
+      if (!this.l) {
+         c.error("Cannot push '{}' to profiler if profiler tick hasn't started - missing startTick()?", $$0);
       } else {
-         this.n.clear();
-         Path $$0 = this.l.getDestination();
-         this.l.stop();
-         return $$0;
-      }
-   }
-
-   @Override
-   public boolean c() {
-      return this.l != null;
-   }
-
-   @Override
-   public boolean d() {
-      return FlightRecorder.isAvailable();
-   }
-
-   private boolean a(Reader $$0, bpa $$1) {
-      if (this.c()) {
-         g.warn("Profiling already in progress");
-         return false;
-      } else {
-         try {
-            Configuration $$2 = Configuration.create($$0);
-            String $$3 = j.format(Instant.now());
-            this.l = af.a(new Recording($$2), $$2x -> {
-               h.forEach($$2x::enable);
-               $$2x.setDumpOnExit(true);
-               $$2x.setToDisk(true);
-               $$2x.setName(String.format(Locale.ROOT, "%s-%s-%s", $$1.a(), ab.b().c(), $$3));
-            });
-            Path $$4 = Paths.get(String.format(Locale.ROOT, "debug/%s-%s.jfr", $$1.a(), $$3));
-            v.c($$4.getParent());
-            this.l.setDestination($$4);
-            this.l.start();
-            this.f();
-         } catch (ParseException | IOException var6) {
-            g.warn("Failed to start jfr profiling", var6);
-            return false;
+         if (!this.k.isEmpty()) {
+            this.k = this.k + "\u001e";
          }
 
-         g.info(
-            "Started flight recorder profiling id({}):name({}) - will dump to {} on exit or stop command",
-            new Object[]{this.l.getId(), this.l.getName(), this.l.getDestination()}
-         );
-         return true;
+         this.k = this.k + $$0;
+         this.d.add(this.k);
+         this.e.add(af.d());
+         this.m = null;
       }
    }
 
-   private void f() {
-      FlightRecorder.addListener(new FlightRecorderListener() {
-         final bpe a = new bpe(() -> bpb.this.l = null);
+   @Override
+   public void a(Supplier<String> $$0) {
+      this.a($$0.get());
+   }
 
-         @Override
-         public void recordingStateChanged(Recording $$0) {
-            if ($$0 == bpb.this.l && $$0.getState() == RecordingState.STOPPED) {
-               this.a.a($$0.getDestination());
-               FlightRecorder.removeListener(this);
-            }
+   @Override
+   public void a(bqs $$0) {
+      this.o.add(Pair.of(this.k, $$0));
+   }
+
+   @Override
+   public void c() {
+      if (!this.l) {
+         c.error("Cannot pop from profiler if profiler tick hasn't started - missing startTick()?");
+      } else if (this.e.isEmpty()) {
+         c.error("Tried to pop one too many times! Mismatched push() and pop()?");
+      } else {
+         long $$0 = af.d();
+         long $$1 = this.e.removeLong(this.e.size() - 1);
+         this.d.remove(this.d.size() - 1);
+         long $$2 = $$0 - $$1;
+         bpb.a $$3 = this.f();
+         $$3.c += $$2;
+         $$3.d++;
+         $$3.a = Math.max($$3.a, $$2);
+         $$3.b = Math.min($$3.b, $$2);
+         if ($$2 > a && !this.n.getAsBoolean()) {
+            c.warn("Something's taking too long! '{}' took aprox {} ms", LogUtils.defer(() -> bph.b(this.k)), LogUtils.defer(() -> (double)$$2 / 1000000.0));
          }
-      });
-   }
 
-   @Override
-   public void a(float $$0) {
-      if (ServerTickTimeEvent.TYPE.isEnabled()) {
-         this.m = $$0;
+         this.k = this.d.isEmpty() ? "" : this.d.get(this.d.size() - 1);
+         this.m = null;
       }
    }
 
    @Override
-   public void a(vj $$0, yy<?> $$1, SocketAddress $$2, int $$3) {
-      if (PacketReceivedEvent.TYPE.isEnabled()) {
-         new PacketReceivedEvent($$0.a(), $$1.a().b(), $$1.b().toString(), $$2, $$3).commit();
-      }
-
-      if (NetworkSummaryEvent.TYPE.isEnabled()) {
-         this.a($$2).b($$3);
-      }
+   public void b(String $$0) {
+      this.c();
+      this.a($$0);
    }
 
    @Override
-   public void b(vj $$0, yy<?> $$1, SocketAddress $$2, int $$3) {
-      if (PacketSentEvent.TYPE.isEnabled()) {
-         new PacketSentEvent($$0.a(), $$1.a().b(), $$1.b().toString(), $$2, $$3).commit();
-      }
-
-      if (NetworkSummaryEvent.TYPE.isEnabled()) {
-         this.a($$2).a($$3);
-      }
+   public void b(Supplier<String> $$0) {
+      this.c();
+      this.a($$0);
    }
 
-   private NetworkSummaryEvent.b a(SocketAddress $$0) {
-      return this.n.computeIfAbsent($$0.toString(), NetworkSummaryEvent.b::new);
-   }
-
-   @Override
-   public void a(eam $$0, dfp $$1, eal $$2, int $$3) {
-      if (ChunkRegionReadEvent.TYPE.isEnabled()) {
-         new ChunkRegionReadEvent($$0, $$1, $$2, $$3).commit();
+   private bpb.a f() {
+      if (this.m == null) {
+         this.m = this.f.computeIfAbsent(this.k, $$0 -> new bpb.a());
       }
+
+      return this.m;
    }
 
    @Override
-   public void b(eam $$0, dfp $$1, eal $$2, int $$3) {
-      if (ChunkRegionWriteEvent.TYPE.isEnabled()) {
-         new ChunkRegionWriteEvent($$0, $$1, $$2, $$3).commit();
-      }
+   public void a(String $$0, int $$1) {
+      this.f().e.addTo($$0, (long)$$1);
+   }
+
+   @Override
+   public void a(Supplier<String> $$0, int $$1) {
+      this.f().e.addTo($$0.get(), (long)$$1);
+   }
+
+   @Override
+   public bph d() {
+      return new bpe(this.f, this.i, this.j, this.h.getAsLong(), this.g.getAsInt());
    }
 
    @Nullable
    @Override
-   public bpf e() {
-      if (!WorldLoadFinishedEvent.TYPE.isEnabled()) {
-         return null;
-      } else {
-         WorldLoadFinishedEvent $$0 = new WorldLoadFinishedEvent();
-         $$0.begin();
-         return $$1 -> $$0.commit();
-      }
+   public bpb.a c(String $$0) {
+      return this.f.get($$0);
    }
 
-   @Nullable
    @Override
-   public bpf a(dfp $$0, aku<dgj> $$1, String $$2) {
-      if (!ChunkGenerationEvent.TYPE.isEnabled()) {
-         return null;
-      } else {
-         ChunkGenerationEvent $$3 = new ChunkGenerationEvent($$0, $$1, $$2);
-         $$3.begin();
-         return $$1x -> $$3.commit();
-      }
+   public Set<Pair<String, bqs>> e() {
+      return this.o;
    }
 
-   @Nullable
-   @Override
-   public bpf a(dfp $$0, aku<dgj> $$1, jr<enn> $$2) {
-      if (!StructureGenerationEvent.TYPE.isEnabled()) {
-         return null;
-      } else {
-         StructureGenerationEvent $$3 = new StructureGenerationEvent($$0, $$2, $$1);
-         $$3.begin();
-         return $$1x -> {
-            $$3.success = $$1x;
-            $$3.commit();
-         };
+   public static class a implements bpk {
+      long a = Long.MIN_VALUE;
+      long b = Long.MAX_VALUE;
+      long c;
+      long d;
+      final Object2LongOpenHashMap<String> e = new Object2LongOpenHashMap();
+
+      @Override
+      public long a() {
+         return this.c;
+      }
+
+      @Override
+      public long b() {
+         return this.a;
+      }
+
+      @Override
+      public long c() {
+         return this.d;
+      }
+
+      @Override
+      public Object2LongMap<String> d() {
+         return Object2LongMaps.unmodifiable(this.e);
       }
    }
 }

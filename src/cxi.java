@@ -1,17 +1,20 @@
-public class cxi extends cuw {
-   public cxi(djn $$0, cwm.a $$1) {
-      super($$0, $$1);
-   }
+import it.unimi.dsi.fastutil.Hash.Strategy;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenCustomHashSet;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-   @Override
-   public bsl a(daj $$0) {
-      return bsl.e;
-   }
+public class cxi {
+   private static final Strategy<? super cxh> a = new Strategy<cxh>() {
+      public int a(@Nullable cxh $$0) {
+         return cxh.b($$0);
+      }
 
-   @Override
-   public bsl a(dgj $$0, coy $$1, bsk $$2) {
-      fax $$3 = a($$0, $$1, dfr.b.b);
-      fax $$4 = $$3.a($$3.b().d());
-      return super.a(new daj($$1, $$2, $$4));
+      public boolean a(@Nullable cxh $$0, @Nullable cxh $$1) {
+         return $$0 == $$1 || $$0 != null && $$1 != null && $$0.f() == $$1.f() && cxh.c($$0, $$1);
+      }
+   };
+
+   public static Set<cxh> a() {
+      return new ObjectLinkedOpenCustomHashSet(a);
    }
 }

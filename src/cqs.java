@@ -1,45 +1,88 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
+public abstract class cqs extends cqk {
+   private static final float a = 12.25F;
 
-public class cqs {
-   private final cqr a;
-   private final List<cqs.a> b = Lists.newArrayList();
-
-   public cqs(cqr $$0) {
-      this.a = $$0;
+   protected cqs(bvi<? extends cqs> $$0, dgz $$1) {
+      super($$0, $$1);
    }
 
-   public cqs a(int $$0, cqp $$1) {
-      this.b.add(new cqs.a($$0, $$1));
-      return this;
+   protected cqs(bvi<? extends cqs> $$0, double $$1, double $$2, double $$3, dgz $$4) {
+      this($$0, $$4);
+      this.a_($$1, $$2, $$3);
    }
 
-   public cqr a() {
-      this.b.stream().map(cqs.a::b).collect(Collectors.toSet()).forEach(this.a::a);
-      this.b.forEach($$0 -> {
-         cqp $$1 = $$0.b();
-         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
-         this.a.b($$1).a($$0.a(), 1.0F);
-      });
-      return this.a;
+   @Override
+   public boolean a(double $$0) {
+      if (this.af < 2 && $$0 < 12.25) {
+         return false;
+      } else {
+         double $$1 = this.cQ().a() * 4.0;
+         if (Double.isNaN($$1)) {
+            $$1 = 4.0;
+         }
+
+         $$1 *= 64.0;
+         return $$0 < $$1 * $$1;
+      }
    }
 
-   static class a {
-      private final int a;
-      private final cqp b;
+   @Override
+   public boolean n(boolean $$0) {
+      return true;
+   }
 
-      public a(int $$0, cqp $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   public void h() {
+      this.j();
+      this.bf();
+      this.g();
+      fbv $$0 = cqm.a(this, this::b);
+      fbx $$1;
+      if ($$0.d() != fbv.a.a) {
+         $$1 = $$0.g();
+      } else {
+         $$1 = this.ds().e(this.dx());
       }
 
-      public int a() {
-         return this.a;
+      this.b($$1);
+      this.A();
+      this.aK();
+      super.h();
+      if ($$0.d() != fbv.a.a && this.bJ()) {
+         this.b($$0);
+      }
+   }
+
+   private void g() {
+      fbx $$0 = this.dx();
+      fbx $$1 = this.ds();
+      float $$4;
+      if (this.bj()) {
+         for (int $$2 = 0; $$2 < 4; $$2++) {
+            float $$3 = 0.25F;
+            this.dU().a(lt.d, $$1.d - $$0.d * 0.25, $$1.e - $$0.e * 0.25, $$1.f - $$0.f * 0.25, $$0.d, $$0.e, $$0.f);
+         }
+
+         $$4 = 0.8F;
+      } else {
+         $$4 = 0.99F;
       }
 
-      public cqp b() {
-         return this.b;
+      this.i($$0.c((double)$$4));
+   }
+
+   private void j() {
+      if (this.ak) {
+         for (ji $$0 : ji.a(this.cQ())) {
+            dxq $$1 = this.dU().a_($$0);
+            if ($$1.a(dkg.nF)) {
+               $$1.a(this.dU(), $$0, this);
+            }
+         }
       }
+   }
+
+   @Override
+   protected double bd() {
+      return 0.03;
    }
 }

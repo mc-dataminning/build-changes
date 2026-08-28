@@ -1,23 +1,84 @@
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 
-public class goo<S extends dua> implements dlv.b<S, Int2IntFunction> {
-   public Int2IntFunction a(S $$0, S $$1) {
-      return $$2 -> {
-         int $$3 = glv.a($$0.i(), $$0.aA_());
-         int $$4 = glv.a($$1.i(), $$1.aA_());
-         int $$5 = glx.a($$3);
-         int $$6 = glx.a($$4);
-         int $$7 = glx.b($$3);
-         int $$8 = glx.b($$4);
-         return glx.a(Math.max($$5, $$6), Math.max($$7, $$8));
+public record goo(gon b, gon c, gon d, gon e, gon f, gon g, gon h, gon i) {
+   public static final goo a = new goo(gon.a, gon.a, gon.a, gon.a, gon.a, gon.a, gon.a, gon.a);
+
+   public gon a(cxf $$0) {
+      return switch ($$0) {
+         case b -> this.b;
+         case c -> this.c;
+         case d -> this.d;
+         case e -> this.e;
+         case f -> this.f;
+         case g -> this.g;
+         case h -> this.h;
+         case i -> this.i;
+         default -> gon.a;
       };
    }
 
-   public Int2IntFunction a(S $$0) {
-      return $$0x -> $$0x;
+   public gon a() {
+      return this.b;
    }
 
-   public Int2IntFunction a() {
-      return $$0 -> $$0;
+   public gon b() {
+      return this.c;
+   }
+
+   public gon c() {
+      return this.d;
+   }
+
+   public gon d() {
+      return this.e;
+   }
+
+   public gon e() {
+      return this.f;
+   }
+
+   public gon f() {
+      return this.g;
+   }
+
+   public gon g() {
+      return this.h;
+   }
+
+   public gon h() {
+      return this.i;
+   }
+
+   protected static class a implements JsonDeserializer<goo> {
+      public goo a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         gon $$4 = this.a($$2, $$3, cxf.c);
+         gon $$5 = this.a($$2, $$3, cxf.b);
+         if ($$5 == gon.a) {
+            $$5 = $$4;
+         }
+
+         gon $$6 = this.a($$2, $$3, cxf.e);
+         gon $$7 = this.a($$2, $$3, cxf.d);
+         if ($$7 == gon.a) {
+            $$7 = $$6;
+         }
+
+         gon $$8 = this.a($$2, $$3, cxf.f);
+         gon $$9 = this.a($$2, $$3, cxf.g);
+         gon $$10 = this.a($$2, $$3, cxf.h);
+         gon $$11 = this.a($$2, $$3, cxf.i);
+         return new goo($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
+      }
+
+      private gon a(JsonDeserializationContext $$0, JsonObject $$1, cxf $$2) {
+         String $$3 = $$2.c();
+         return $$1.has($$3) ? (gon)$$0.deserialize($$1.get($$3), gon.class) : gon.a;
+      }
    }
 }

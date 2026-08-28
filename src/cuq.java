@@ -1,42 +1,61 @@
-import java.util.function.Consumer;
+public class cuq extends csw {
+   private static final int m = 27;
+   private final bsr n;
 
-public class cuq extends cwm {
-   public cuq(cwm.a $$0) {
-      super($$0);
+   public cuq(int $$0, cpq $$1) {
+      this($$0, $$1, new btf(27));
+   }
+
+   public cuq(int $$0, cpq $$1, bsr $$2) {
+      super(cuf.u, $$0);
+      a($$2, 27);
+      this.n = $$2;
+      $$2.c_($$1.k);
+      int $$3 = 3;
+      int $$4 = 9;
+
+      for (int $$5 = 0; $$5 < 3; $$5++) {
+         for (int $$6 = 0; $$6 < 9; $$6++) {
+            this.a(new cur($$2, $$6 + $$5 * 9, 8 + $$6 * 18, 18 + $$5 * 18));
+         }
+      }
+
+      this.c($$1, 8, 84);
    }
 
    @Override
-   public bsl a(daj $$0) {
-      jn $$1 = $$0.k();
-      if ($$1 == jn.a) {
-         return bsl.d;
-      } else {
-         dgj $$2 = $$0.q();
-         dah $$3 = new dah($$0);
-         ji $$4 = $$3.a();
-         cwq $$5 = $$0.n();
-         fbb $$6 = fbb.c($$4);
-         faw $$7 = but.f.n().a($$6.a(), $$6.b(), $$6.c());
-         if ($$2.a(null, $$7) && $$2.a_(null, $$7).isEmpty()) {
-            if ($$2 instanceof ard $$8) {
-               Consumer<cks> $$9 = but.a($$8, $$5, $$0.o());
-               cks $$10 = but.f.b($$8, $$9, $$4, bus.m, true, true);
-               if ($$10 == null) {
-                  return bsl.d;
-               }
+   public boolean b(cpr $$0) {
+      return this.n.a($$0);
+   }
 
-               float $$11 = (float)ayz.d((ayz.h($$0.i() - 180.0F) + 22.5F) / 45.0F) * 45.0F;
-               $$10.b($$10.dA(), $$10.dC(), $$10.dG(), $$11, 0.0F);
-               $$8.a_($$10);
-               $$2.a(null, $$10.dA(), $$10.dC(), $$10.dG(), awa.aD, awb.e, 0.75F, 0.8F);
-               $$10.a(ebu.t, $$0.o());
+   @Override
+   public cxh b(cpr $$0, int $$1) {
+      cxh $$2 = cxh.k;
+      cut $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cxh $$4 = $$3.g();
+         $$2 = $$4.v();
+         if ($$1 < this.n.b()) {
+            if (!this.a($$4, this.n.b(), this.k.size(), true)) {
+               return cxh.k;
             }
+         } else if (!this.a($$4, 0, this.n.b(), false)) {
+            return cxh.k;
+         }
 
-            $$5.h(1);
-            return bsl.a;
+         if ($$4.f()) {
+            $$3.e(cxh.k);
          } else {
-            return bsl.d;
+            $$3.c();
          }
       }
+
+      return $$2;
+   }
+
+   @Override
+   public void a(cpr $$0) {
+      super.a($$0);
+      this.n.c($$0);
    }
 }

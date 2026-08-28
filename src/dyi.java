@@ -1,23 +1,24 @@
 public enum dyi implements azv {
-   a("none", true),
-   b("unstable", false),
-   c("partial", true),
-   d("full", true);
+   a("single"),
+   b("left"),
+   c("right");
 
-   private final String e;
-   private final boolean f;
+   private final String d;
 
-   private dyi(final String $$0, final boolean $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   private dyi(final String $$0) {
+      this.d = $$0;
    }
 
    @Override
    public String c() {
-      return this.e;
+      return this.d;
    }
 
-   public boolean a() {
-      return this.f;
+   public dyi a() {
+      return switch (this) {
+         case a -> a;
+         case b -> c;
+         case c -> b;
+      };
    }
 }

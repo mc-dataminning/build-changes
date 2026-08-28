@@ -1,19 +1,32 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record aga(Map<aku<dbo>, dbo> b, dbs.b<dcf> c) implements yw<abl> {
-   public static final yn<wa, aga> a = yn.a(yl.a(HashMap::new, aku.b(dbo.a), dbo.i), aga::b, dbs.b.b(), aga::e, aga::new);
-
-   @Override
-   public yy<aga> a() {
-      return age.bi;
+public record aga(jr<ebm> a, akt<dgz> b, long c, dgw d, @Nullable dgw e, boolean f, boolean g, Optional<jq> h, int i, int j) {
+   public aga(wa $$0) {
+      this(
+         ebm.i.decode($$0),
+         $$0.a(mc.bg),
+         $$0.readLong(),
+         dgw.a($$0.readByte()),
+         dgw.b($$0.readByte()),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         $$0.b(vl::h),
+         $$0.l(),
+         $$0.l()
+      );
    }
 
-   public void a(abl $$0) {
-      $$0.a(this);
-   }
-
-   public dbs.b<dcf> e() {
-      return this.c;
+   public void a(wa $$0) {
+      ebm.i.encode($$0, this.a);
+      $$0.b(this.b);
+      $$0.b(this.c);
+      $$0.l(this.d.a());
+      $$0.l(dgw.a(this.e));
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h, vl::a);
+      $$0.c(this.i);
+      $$0.c(this.j);
    }
 }

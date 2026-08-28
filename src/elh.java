@@ -1,41 +1,49 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
 
-public class elh extends elg {
-   public static final MapCodec<elh> b = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, elh::new));
+public record elh(ekz b, List<elh.a> c) {
+   public static final Codec<elh> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ekz.a.fieldOf("fallback").forGetter(elh::a), elh.a.a.listOf().fieldOf("rules").forGetter(elh::b)).apply($$0, elh::new)
+   );
 
-   public elh(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public static elh a(ekz $$0) {
+      return new elh($$0, List.of());
    }
 
-   @Override
-   protected elk<?> a() {
-      return elk.d;
+   public static elh a(dke $$0) {
+      return a(ekz.a($$0));
    }
 
-   @Override
-   public List<ejp.a> a(dgp $$0, BiConsumer<ji, dwy> $$1, azh $$2, int $$3, ji $$4, eiz $$5) {
-      List<ejp.a> $$6 = Lists.newArrayList();
-      $$6.addAll(super.a($$0, $$1, $$2, $$3, $$4, $$5));
-
-      for (int $$7 = $$3 - 2 - $$2.a(4); $$7 > $$3 / 2; $$7 -= 2 + $$2.a(4)) {
-         float $$8 = $$2.i() * (float) (Math.PI * 2);
-         int $$9 = 0;
-         int $$10 = 0;
-
-         for (int $$11 = 0; $$11 < 5; $$11++) {
-            $$9 = (int)(1.5F + ayz.b($$8) * (float)$$11);
-            $$10 = (int)(1.5F + ayz.a($$8) * (float)$$11);
-            ji $$12 = $$4.b($$9, $$7 - 3 + $$11 / 2, $$10);
-            this.b($$0, $$1, $$2, $$12, $$5);
+   public dxq a(dhy $$0, azh $$1, ji $$2) {
+      for (elh.a $$3 : this.c) {
+         if ($$3.a().test($$0, $$2)) {
+            return $$3.b().a($$1, $$2);
          }
-
-         $$6.add(new ejp.a($$4.b($$9, $$7, $$10), -2, false));
       }
 
-      return $$6;
+      return this.b.a($$1, $$2);
+   }
+
+   public ekz a() {
+      return this.b;
+   }
+
+   public List<elh.a> b() {
+      return this.c;
+   }
+
+   public static record a(eev b, ekz c) {
+      public static final Codec<elh.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(eev.b.fieldOf("if_true").forGetter(elh.a::a), ekz.a.fieldOf("then").forGetter(elh.a::b)).apply($$0, elh.a::new)
+      );
+
+      public eev a() {
+         return this.b;
+      }
+
+      public ekz b() {
+         return this.c;
+      }
    }
 }

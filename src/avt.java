@@ -34,9 +34,9 @@ public class avt extends avs {
    private final Map<SocketAddress, avt.a> s;
    private final avo t;
    private long u;
-   private final alm v;
+   private final all v;
 
-   private avt(alm $$0, int $$1) {
+   private avt(all $$0, int $$1) {
       super("Query Listener");
       this.v = $$0;
       this.j = $$1;
@@ -65,7 +65,7 @@ public class avt extends avs {
    }
 
    @Nullable
-   public static avt a(alm $$0) {
+   public static avt a(all $$0) {
       int $$1 = $$0.a().p;
       if (0 < $$1 && 65535 >= $$1) {
          avt $$2 = new avt($$0, $$1);

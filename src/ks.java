@@ -261,7 +261,7 @@ public final class ks {
             $$0 = $$0.substring("!".length());
          }
 
-         akv $$2 = akv.c($$0);
+         aku $$2 = aku.c($$0);
          ku<?> $$3 = mb.ao.a($$2);
          if ($$3 == null) {
             return DataResult.error(() -> "No component with type: '" + $$2 + "'");
@@ -270,7 +270,7 @@ public final class ks {
          }
       }, $$0 -> {
          ku<?> $$1 = $$0.b();
-         akv $$2 = mb.ao.b($$1);
+         aku $$2 = mb.ao.b($$1);
          return $$2 == null ? DataResult.error(() -> "Unregistered component: " + $$1) : DataResult.success($$0.c() ? "!" + $$2 : $$2.toString());
       });
 

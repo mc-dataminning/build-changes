@@ -1,73 +1,72 @@
-import javax.annotation.Nullable;
+public class ctr extends csw {
+   private static final int m = 9;
+   private static final int n = 9;
+   private static final int o = 36;
+   private static final int p = 36;
+   private static final int q = 45;
+   private final bsr r;
 
-public class ctr extends bss {
-   @Nullable
-   private dux b;
-
-   public ctr() {
-      super(27);
+   public ctr(int $$0, cpq $$1) {
+      this($$0, $$1, new btf(9));
    }
 
-   public void a(dux $$0) {
-      this.b = $$0;
+   public ctr(int $$0, cpq $$1, bsr $$2) {
+      super(cuf.g, $$0);
+      a($$2, 9);
+      this.r = $$2;
+      $$2.c_($$1.k);
+      this.d($$2, 62, 17);
+      this.c($$1, 8, 84);
    }
 
-   public boolean b(dux $$0) {
-      return this.b == $$0;
-   }
-
-   @Override
-   public void a(tw $$0, jt.a $$1) {
-      for (int $$2 = 0; $$2 < this.b(); $$2++) {
-         this.a($$2, cwq.j);
-      }
-
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         tq $$4 = $$0.a($$3);
-         int $$5 = $$4.f("Slot") & 255;
-         if ($$5 >= 0 && $$5 < this.b()) {
-            this.a($$5, cwq.a($$1, (un)$$4).orElse(cwq.j));
+   protected void d(bsr $$0, int $$1, int $$2) {
+      for (int $$3 = 0; $$3 < 3; $$3++) {
+         for (int $$4 = 0; $$4 < 3; $$4++) {
+            int $$5 = $$4 + $$3 * 3;
+            this.a(new cut($$0, $$5, $$1 + $$4 * 18, $$2 + $$3 * 18));
          }
       }
    }
 
    @Override
-   public tw a(jt.a $$0) {
-      tw $$1 = new tw();
+   public boolean b(cpr $$0) {
+      return this.r.a($$0);
+   }
 
-      for (int $$2 = 0; $$2 < this.b(); $$2++) {
-         cwq $$3 = this.a($$2);
-         if (!$$3.f()) {
-            tq $$4 = new tq();
-            $$4.a("Slot", (byte)$$2);
-            $$1.add($$3.b($$0, $$4));
+   @Override
+   public cxh b(cpr $$0, int $$1) {
+      cxh $$2 = cxh.k;
+      cut $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cxh $$4 = $$3.g();
+         $$2 = $$4.v();
+         if ($$1 < 9) {
+            if (!this.a($$4, 9, 45, true)) {
+               return cxh.k;
+            }
+         } else if (!this.a($$4, 0, 9, false)) {
+            return cxh.k;
          }
+
+         if ($$4.f()) {
+            $$3.e(cxh.k);
+         } else {
+            $$3.c();
+         }
+
+         if ($$4.M() == $$2.M()) {
+            return cxh.k;
+         }
+
+         $$3.a($$0, $$4);
       }
 
-      return $$1;
+      return $$2;
    }
 
    @Override
-   public boolean a(coy $$0) {
-      return this.b != null && !this.b.c($$0) ? false : super.a($$0);
-   }
-
-   @Override
-   public void c_(coy $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-
-      super.c_($$0);
-   }
-
-   @Override
-   public void c(coy $$0) {
-      if (this.b != null) {
-         this.b.b($$0);
-      }
-
-      super.c($$0);
-      this.b = null;
+   public void a(cpr $$0) {
+      super.a($$0);
+      this.r.c($$0);
    }
 }

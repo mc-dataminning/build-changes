@@ -1,10 +1,21 @@
-public class ham extends gzl implements hac {
-   public boolean a;
-   public boolean b;
-   public boolean c;
+import javax.annotation.Nullable;
 
-   @Override
-   public boolean a() {
-      return this.a;
-   }
+public class ham extends gzj {
+   public float a;
+   public float b;
+   public long c;
+   public int d;
+   public float e;
+   public float f;
+   public int g;
+   public dxq h = dkg.a.m();
+   public boolean i;
+   @Nullable
+   public fbx j;
+   @Nullable
+   public fbx k;
+   @Nullable
+   public fbx l;
+   @Nullable
+   public fbx m;
 }

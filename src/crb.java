@@ -1,12 +1,16 @@
-import java.util.function.Supplier;
+public class crb extends cra {
+   private static final float f = 3.0F;
 
-public class crb extends cqw {
-   public crb(but<? extends crb> $$0, dgj $$1, Supplier<cwm> $$2) {
-      super($$0, $$1, $$2);
+   public crb(bvi<? extends cra> $$0, dgz $$1) {
+      super($$0, $$1);
+   }
+
+   public crb(cno $$0, dgz $$1) {
+      super(bvi.s, $$1, $$0, $$0.dz(), $$0.x(), $$0.dF());
    }
 
    @Override
-   protected double b(bup $$0) {
-      return (double)($$0.b() * 0.8888889F);
+   protected void a(fbx $$0) {
+      this.dU().a(this, null, d, $$0.a(), $$0.b(), $$0.c(), 3.0F, false, dgz.a.e, lt.A, lt.z, awa.cQ);
    }
 }

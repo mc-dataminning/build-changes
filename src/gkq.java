@@ -1,61 +1,37 @@
-public class gkq extends gki {
-   protected gkq(gga $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.j *= 0.3F;
-      this.k = Math.random() * 0.2F + 0.1F;
-      this.l *= 0.3F;
-      this.b(0.01F, 0.01F);
-      this.u = 0.06F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+public class gkq extends glg {
+   private final glb a;
+
+   gkq(ggy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, glb $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.a = $$7;
+      this.d(1.0F);
+      this.n = false;
+      this.b($$7);
    }
 
    @Override
-   public gjm b() {
-      return gjm.b;
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public gkk b() {
+      return gkk.c;
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
-      } else {
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.98F;
-         this.k *= 0.98F;
-         this.l *= 0.98F;
-         if (this.m) {
-            if (Math.random() < 0.5) {
-               this.k();
-            }
-
-            this.j *= 0.7F;
-            this.l *= 0.7F;
-         }
-
-         ji $$0 = ji.a(this.g, this.h, this.i);
-         double $$1 = Math.max(
-            this.c.a_($$0).g(this.c, $$0).b(jn.a.b, this.g - (double)$$0.u(), this.i - (double)$$0.w()), (double)this.c.b_($$0).a(this.c, $$0)
-         );
-         if ($$1 > 0.0 && this.h < (double)$$0.v() + $$1) {
-            this.k();
-         }
-      }
+      super.a();
+      this.b(this.a);
    }
 
-   public static class a implements gjl<lx> {
-      private final gkd a;
-
-      public a(gkd $$0) {
-         this.a = $$0;
-      }
-
-      public gji a(lx $$0, gga $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gkq $$8 = new gkq($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
+   public static record a(glb a) implements gkj<lx> {
+      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gkq $$8 = new gkq($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.a($$1.A.a(4) + 6);
          return $$8;
       }
    }

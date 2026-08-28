@@ -1,125 +1,41 @@
-enum fut {
-   a(
-      new fut.a(akv.b("advancements/tab_above_left_selected"), akv.b("advancements/tab_above_middle_selected"), akv.b("advancements/tab_above_right_selected")),
-      new fut.a(akv.b("advancements/tab_above_left"), akv.b("advancements/tab_above_middle"), akv.b("advancements/tab_above_right")),
-      28,
-      32,
-      8
-   ),
-   b(
-      new fut.a(akv.b("advancements/tab_below_left_selected"), akv.b("advancements/tab_below_middle_selected"), akv.b("advancements/tab_below_right_selected")),
-      new fut.a(akv.b("advancements/tab_below_left"), akv.b("advancements/tab_below_middle"), akv.b("advancements/tab_below_right")),
-      28,
-      32,
-      8
-   ),
-   c(
-      new fut.a(akv.b("advancements/tab_left_top_selected"), akv.b("advancements/tab_left_middle_selected"), akv.b("advancements/tab_left_bottom_selected")),
-      new fut.a(akv.b("advancements/tab_left_top"), akv.b("advancements/tab_left_middle"), akv.b("advancements/tab_left_bottom")),
-      32,
-      28,
-      5
-   ),
-   d(
-      new fut.a(akv.b("advancements/tab_right_top_selected"), akv.b("advancements/tab_right_middle_selected"), akv.b("advancements/tab_right_bottom_selected")),
-      new fut.a(akv.b("advancements/tab_right_top"), akv.b("advancements/tab_right_middle"), akv.b("advancements/tab_right_bottom")),
-      32,
-      28,
-      5
-   );
+import javax.annotation.Nullable;
 
-   private final fut.a e;
-   private final fut.a f;
-   private final int g;
-   private final int h;
-   private final int i;
+public class fut extends fvi {
+   @Nullable
+   private fqb a;
 
-   private fut(final fut.a $$0, final fut.a $$1, final int $$2, final int $$3, final int $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
+   public fut(wp $$0) {
+      super($$0);
    }
 
-   public int a() {
-      return this.i;
+   @Override
+   protected void aR_() {
+      this.a = this.c(new fqb(this.n, this.l, this.p, 12));
+      this.c();
    }
 
-   public void a(fof $$0, int $$1, int $$2, boolean $$3, int $$4) {
-      fut.a $$5 = $$3 ? this.e : this.f;
-      akv $$6;
-      if ($$4 == 0) {
-         $$6 = $$5.a();
-      } else if ($$4 == this.i - 1) {
-         $$6 = $$5.c();
-      } else {
-         $$6 = $$5.b();
-      }
-
-      $$0.a(gmj::H, $$6, $$1 + this.a($$4), $$2 + this.b($$4), this.g, this.h);
-   }
-
-   public void a(fof $$0, int $$1, int $$2, int $$3, cwq $$4) {
-      int $$5 = $$1 + this.a($$3);
-      int $$6 = $$2 + this.b($$3);
-      switch (this) {
-         case a:
-            $$5 += 6;
-            $$6 += 9;
-            break;
-         case b:
-            $$5 += 6;
-            $$6 += 6;
-            break;
-         case c:
-            $$5 += 10;
-            $$6 += 5;
-            break;
-         case d:
-            $$5 += 6;
-            $$6 += 5;
-      }
-
-      $$0.b($$4, $$5, $$6);
-   }
-
-   public int a(int $$0) {
-      switch (this) {
-         case a:
-            return (this.g + 4) * $$0;
-         case b:
-            return (this.g + 4) * $$0;
-         case c:
-            return -this.g + 4;
-         case d:
-            return 248;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+   @Override
+   protected void c() {
+      if (this.a != null) {
+         this.a.b(this.n);
+         this.a.c(this.n / 2 - this.a.A() / 2, this.o / 2 - 9 / 2);
       }
    }
 
-   public int b(int $$0) {
-      switch (this) {
-         case a:
-            return -this.h + 4;
-         case b:
-            return 136;
-         case c:
-            return this.h * $$0;
-         case d:
-            return this.h * $$0;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
-      }
+   @Override
+   public boolean aG_() {
+      return false;
    }
 
-   public boolean a(int $$0, int $$1, int $$2, double $$3, double $$4) {
-      int $$5 = $$0 + this.a($$2);
-      int $$6 = $$1 + this.b($$2);
-      return $$3 > (double)$$5 && $$3 < (double)($$5 + this.g) && $$4 > (double)$$6 && $$4 < (double)($$6 + this.h);
+   @Override
+   protected boolean aQ_() {
+      return false;
    }
 
-   static record a(akv a, akv b, akv c) {
+   @Override
+   public void b(fpc $$0, int $$1, int $$2, float $$3) {
+      this.a($$0, $$3);
+      this.r();
+      this.a($$0);
    }
 }

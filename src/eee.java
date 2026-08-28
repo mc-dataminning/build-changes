@@ -1,22 +1,40 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class eee implements edd {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private long h;
+   private final edq i = new edq(this);
 
-public class eee implements eea {
-   public static final MapCodec<eee> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(km.v(16).optionalFieldOf("offset", ji.c).forGetter($$0x -> $$0x.e)).apply($$0, eee::new)
-   );
-   private final km e;
-
-   public eee(km $$0) {
-      this.e = $$0;
-   }
-
-   public boolean a(dhh $$0, ji $$1) {
-      return !$$0.s($$1.a(this.e));
+   public eee(long $$0) {
+      this.b($$0);
    }
 
    @Override
-   public eeb<?> a() {
-      return eeb.h;
+   public azh d() {
+      return new eee(this.g());
+   }
+
+   @Override
+   public eeb e() {
+      return new edp.a(this.g());
+   }
+
+   @Override
+   public void b(long $$0) {
+      this.h = ($$0 ^ 25214903917L) & 281474976710655L;
+      this.i.a();
+   }
+
+   @Override
+   public int c(int $$0) {
+      long $$1 = this.h * 25214903917L + 11L & 281474976710655L;
+      this.h = $$1;
+      return (int)($$1 >> 48 - $$0);
+   }
+
+   @Override
+   public double k() {
+      return this.i.b();
    }
 }

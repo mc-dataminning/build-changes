@@ -1,257 +1,280 @@
-import java.util.Collection;
-import java.util.Locale;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Collectors;
+import com.google.common.collect.Lists;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class fze extends fum {
-   private static final wp c = wp.c("gui.socialInteractions.title");
-   private static final akv d = akv.b("social_interactions/background");
-   private static final akv s = akv.b("icon/search");
-   private static final wp u = wp.c("gui.socialInteractions.tab_all");
-   private static final wp v = wp.c("gui.socialInteractions.tab_hidden");
-   private static final wp w = wp.c("gui.socialInteractions.tab_blocked");
-   private static final wp x = u.e().a(n.t);
-   private static final wp y = v.e().a(n.t);
-   private static final wp z = w.e().a(n.t);
-   private static final wp A = wp.c("gui.socialInteractions.search_hint").a(n.u).a(n.h);
-   static final wp B = wp.c("gui.socialInteractions.search_empty").a(n.h);
-   private static final wp C = wp.c("gui.socialInteractions.empty_hidden").a(n.h);
-   private static final wp D = wp.c("gui.socialInteractions.empty_blocked").a(n.h);
-   private static final wp E = wp.c("gui.socialInteractions.blocking_hint");
-   private static final int F = 8;
-   private static final int G = 236;
-   private static final int H = 16;
-   private static final int I = 64;
-   public static final int a = 72;
-   public static final int b = 88;
-   private static final int J = 238;
-   private static final int K = 20;
-   private static final int L = 36;
-   private final fsi M = new fsi(this);
+public class fze implements fqt, frn {
+   private static final aku b = aku.b("recipe_book/overlay_recipe");
+   private static final int c = 4;
+   private static final int d = 5;
+   private static final float e = 0.375F;
+   public static final int a = 25;
+   private final List<fze.b> f = Lists.newArrayList();
+   private boolean g;
+   private int h;
+   private int i;
+   private fzj j = fzj.a;
    @Nullable
-   private final fum N;
-   fzd O;
-   fpd P;
-   private String Q = "";
-   private fze.a R = fze.a.a;
-   private fou S;
-   private fou T;
-   private fou U;
-   private fou V;
-   @Nullable
-   private wp W;
-   private int X;
+   private ddd k;
+   final fzm l;
+   private final boolean m;
 
-   public fze() {
-      this(null);
+   public fze(fzm $$0, boolean $$1) {
+      this.l = $$0;
+      this.m = $$1;
    }
 
-   public fze(@Nullable fum $$0) {
-      super(c);
-      this.N = $$0;
-      this.a(flk.Q());
-   }
-
-   private int m() {
-      return Math.max(52, this.o - 128 - 16);
-   }
-
-   private int E() {
-      return 80 + this.m() - 8;
-   }
-
-   private int F() {
-      return (this.n - 238) / 2;
-   }
-
-   @Override
-   public wp i() {
-      return (wp)(this.W != null ? wo.a(super.i(), this.W) : super.i());
-   }
-
-   @Override
-   protected void aR_() {
-      this.M.a(c, this.p);
-      this.O = new fzd(this, this.m, this.n, this.E() - 88, 88, 36);
-      int $$0 = this.O.a() / 3;
-      int $$1 = this.O.u();
-      int $$2 = this.O.v();
-      this.S = this.c(fou.a(u, $$0x -> this.a(fze.a.a)).a($$1, 45, $$0, 20).a());
-      this.T = this.c(fou.a(v, $$0x -> this.a(fze.a.b)).a(($$1 + $$2 - $$0) / 2 + 1, 45, $$0, 20).a());
-      this.U = this.c(fou.a(w, $$0x -> this.a(fze.a.c)).a($$2 - $$0 + 1, 45, $$0, 20).a());
-      String $$3 = this.P != null ? this.P.a() : "";
-      this.P = new fpd(this.p, this.F() + 28, 74, 200, 15, A) {
-         @Override
-         protected xd d() {
-            return !fze.this.P.a().isEmpty() && fze.this.O.b() ? super.d().f(", ").b(fze.B) : super.d();
-         }
-      };
-      this.P.f(16);
-      this.P.g(true);
-      this.P.m(-1);
-      this.P.a($$3);
-      this.P.c(A);
-      this.P.b(this::a);
-      this.c(this.P);
-      this.d(this.O);
-      this.V = this.c(fou.a(E, ftj.b(this, axv.o)).a(this.n / 2 - 100, 64 + this.m(), 200, 20).a());
-      this.a(this.R);
-      this.M.b(fou.a(wo.d, $$0x -> this.aO_()).a(200).a());
-      this.M.a($$1x -> {
-         fos var10000 = this.c($$1x);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.M.a();
-      this.O.b(this.n, this.E() - 88, 88);
-      this.P.c(this.F() + 28, 74);
-      int $$0 = this.O.u();
-      int $$1 = this.O.v();
-      int $$2 = this.O.a() / 3;
-      this.S.c($$0, 45);
-      this.T.c(($$0 + $$1 - $$2) / 2 + 1, 45);
-      this.U.c($$1 - $$2 + 1, 45);
-      this.V.c(this.n / 2 - 100, 64 + this.m());
-   }
-
-   @Override
-   protected void aF_() {
-      this.b(this.P);
-   }
-
-   @Override
-   public void aO_() {
-      this.m.a(this.N);
-   }
-
-   private void a(fze.a $$0) {
-      this.R = $$0;
-      this.S.b(u);
-      this.T.b(v);
-      this.U.b(w);
-      boolean $$1 = false;
-      switch ($$0) {
-         case a:
-            this.S.b(x);
-            Collection<UUID> $$2 = this.m.t.j.n();
-            this.O.a($$2, this.O.g(), true);
-            break;
-         case b:
-            this.T.b(y);
-            Set<UUID> $$3 = this.m.aN().c();
-            $$1 = $$3.isEmpty();
-            this.O.a($$3, this.O.g(), false);
-            break;
-         case c:
-            this.U.b(z);
-            fzc $$4 = this.m.aN();
-            Set<UUID> $$5 = this.m.t.j.n().stream().filter($$4::e).collect(Collectors.toSet());
-            $$1 = $$5.isEmpty();
-            this.O.a($$5, this.O.g(), false);
+   public void a(fzj $$0, bak $$1, boolean $$2, int $$3, int $$4, int $$5, int $$6, float $$7) {
+      this.j = $$0;
+      List<ddc> $$8 = $$0.a(fzj.a.b);
+      List<ddc> $$9 = $$2 ? Collections.emptyList() : $$0.a(fzj.a.c);
+      int $$10 = $$8.size();
+      int $$11 = $$10 + $$9.size();
+      int $$12 = $$11 <= 16 ? 4 : 5;
+      int $$13 = (int)Math.ceil((double)((float)$$11 / (float)$$12));
+      this.h = $$3;
+      this.i = $$4;
+      float $$14 = (float)(this.h + Math.min($$11, $$12) * 25);
+      float $$15 = (float)($$5 + 50);
+      if ($$14 > $$15) {
+         this.h = (int)((float)this.h - $$7 * (float)((int)(($$14 - $$15) / $$7)));
       }
 
-      flb $$6 = this.m.aY();
-      if (!this.P.a().isEmpty() && this.O.b() && !this.P.aM_()) {
-         $$6.c(B);
-      } else if ($$1) {
-         if ($$0 == fze.a.b) {
-            $$6.c(C);
-         } else if ($$0 == fze.a.c) {
-            $$6.c(D);
+      float $$16 = (float)(this.i + $$13 * 25);
+      float $$17 = (float)($$6 + 50);
+      if ($$16 > $$17) {
+         this.i = (int)((float)this.i - $$7 * (float)ayz.f(($$16 - $$17) / $$7));
+      }
+
+      float $$18 = (float)this.i;
+      float $$19 = (float)($$6 - 100);
+      if ($$18 < $$19) {
+         this.i = (int)((float)this.i - $$7 * (float)ayz.f(($$18 - $$19) / $$7));
+      }
+
+      this.g = true;
+      this.f.clear();
+
+      for (int $$20 = 0; $$20 < $$11; $$20++) {
+         boolean $$21 = $$20 < $$10;
+         ddc $$22 = $$21 ? $$8.get($$20) : $$9.get($$20 - $$10);
+         int $$23 = this.h + 4 + 25 * ($$20 % $$12);
+         int $$24 = this.i + 5 + 25 * ($$20 / $$12);
+         if (this.m) {
+            this.f.add(new fze.c($$23, $$24, $$22.a(), $$22.b(), $$1, $$21));
+         } else {
+            this.f.add(new fze.a($$23, $$24, $$22.a(), $$22.b(), $$1, $$21));
          }
       }
+
+      this.k = null;
+   }
+
+   public fzj a() {
+      return this.j;
+   }
+
+   @Nullable
+   public ddd b() {
+      return this.k;
    }
 
    @Override
-   public void b(fof $$0, int $$1, int $$2, float $$3) {
-      super.b($$0, $$1, $$2, $$3);
-      int $$4 = this.F() + 3;
-      $$0.a(gmj::H, d, $$4, 64, 236, this.m() + 16);
-      $$0.a(gmj::H, s, $$4 + 10, 76, 12, 12);
-   }
-
-   @Override
-   public void a(fof $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a(this.m);
-      if (this.W != null) {
-         $$0.b(this.m.h, this.W, this.F() + 8, 35, -1);
-      }
-
-      if (!this.O.b()) {
-         this.O.a($$0, $$1, $$2, $$3);
-      } else if (!this.P.a().isEmpty()) {
-         $$0.a(this.m.h, B, this.n / 2, (72 + this.E()) / 2, -1);
-      } else if (this.R == fze.a.b) {
-         $$0.a(this.m.h, C, this.n / 2, (72 + this.E()) / 2, -1);
-      } else if (this.R == fze.a.c) {
-         $$0.a(this.m.h, D, this.n / 2, (72 + this.E()) / 2, -1);
-      }
-
-      this.V.k = this.R == fze.a.c;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.P.aM_() && this.m.n.L.a($$0, $$1)) {
-         this.aO_();
-         return true;
+   public boolean a(double $$0, double $$1, int $$2) {
+      if ($$2 != 0) {
+         return false;
       } else {
-         return super.a($$0, $$1, $$2);
+         for (fze.b $$3 : this.f) {
+            if ($$3.a($$0, $$1, $$2)) {
+               this.k = $$3.b;
+               return true;
+            }
+         }
+
+         return false;
       }
    }
 
    @Override
-   public boolean k() {
+   public boolean a_(double $$0, double $$1) {
       return false;
    }
 
-   private void a(String $$0) {
-      $$0 = $$0.toLowerCase(Locale.ROOT);
-      if (!$$0.equals(this.Q)) {
-         this.O.a($$0);
-         this.Q = $$0;
-         this.a(this.R);
+   @Override
+   public void a(fpc $$0, int $$1, int $$2, float $$3) {
+      if (this.g) {
+         $$0.c().a();
+         $$0.c().a(0.0F, 0.0F, 1000.0F);
+         int $$4 = this.f.size() <= 16 ? 4 : 5;
+         int $$5 = Math.min(this.f.size(), $$4);
+         int $$6 = ayz.f((float)this.f.size() / (float)$$4);
+         int $$7 = 4;
+         $$0.a(gnh::H, b, this.h, this.i, $$5 * 25 + 8, $$6 * 25 + 8);
+
+         for (fze.b $$8 : this.f) {
+            $$8.a($$0, $$1, $$2, $$3);
+         }
+
+         $$0.c().b();
       }
    }
 
-   private void a(flk $$0) {
-      int $$1 = $$0.L().m().size();
-      if (this.X != $$1) {
-         String $$2 = "";
-         ggp $$3 = $$0.S();
-         if ($$0.T()) {
-            $$2 = $$0.V().ae();
-         } else if ($$3 != null) {
-            $$2 = $$3.a;
+   public void b(boolean $$0) {
+      this.g = $$0;
+   }
+
+   public boolean c() {
+      return this.g;
+   }
+
+   @Override
+   public void a(boolean $$0) {
+   }
+
+   @Override
+   public boolean aM_() {
+      return false;
+   }
+
+   class a extends fze.b {
+      private static final aku b = aku.b("recipe_book/crafting_overlay");
+      private static final aku c = aku.b("recipe_book/crafting_overlay_highlighted");
+      private static final aku d = aku.b("recipe_book/crafting_overlay_disabled");
+      private static final aku e = aku.b("recipe_book/crafting_overlay_disabled_highlighted");
+      private static final int f = 3;
+      private static final int m = 3;
+
+      public a(final int $$0, final int $$1, final ddd $$2, final ddb $$3, final bak $$4, final boolean $$5) {
+         super($$0, $$1, $$2, $$5, a($$3, $$4));
+      }
+
+      private static List<fze.b.a> a(ddb $$0, bak $$1) {
+         List<fze.b.a> $$2 = new ArrayList<>();
+         Objects.requireNonNull($$0);
+         switch ($$0) {
+            case ddf $$3:
+               akf.a(3, 3, $$3.b(), $$3.c(), $$3.f(), ($$2x, $$3x, $$4x, $$5x) -> {
+                  List<cxh> $$6x = $$2x.a($$1);
+                  if (!$$6x.isEmpty()) {
+                     $$2.add(a($$4x, $$5x, $$6x));
+                  }
+               });
+               break;
+            case ddg $$4:
+               label19: {
+                  List<ddh> $$5 = $$4.b();
+
+                  for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
+                     List<cxh> $$7 = $$5.get($$6).a($$1);
+                     if (!$$7.isEmpty()) {
+                        $$2.add(a($$6 % 3, $$6 / 3, $$7));
+                     }
+                  }
+                  break label19;
+               }
          }
 
-         if ($$1 > 1) {
-            this.W = wp.a("gui.socialInteractions.server_label.multiple", $$2, $$1);
+         return $$2;
+      }
+
+      @Override
+      protected aku b(boolean $$0) {
+         if ($$0) {
+            return this.D() ? c : b;
          } else {
-            this.W = wp.a("gui.socialInteractions.server_label.single", $$2, $$1);
+            return this.D() ? e : d;
          }
-
-         this.X = $$1;
       }
    }
 
-   public void a(ggm $$0) {
-      this.O.a($$0, this.R);
+   abstract class b extends fpo {
+      final ddd b;
+      private final boolean c;
+      private final List<fze.b.a> d;
+
+      public b(final int $$0, final int $$1, final ddd $$2, final boolean $$3, final List<fze.b.a> $$4) {
+         super($$0, $$1, 24, 24, wo.a);
+         this.d = $$4;
+         this.b = $$2;
+         this.c = $$3;
+      }
+
+      protected static fze.b.a a(int $$0, int $$1, List<cxh> $$2) {
+         return new fze.b.a(3 + $$0 * 7, 3 + $$1 * 7, $$2);
+      }
+
+      protected abstract aku b(boolean var1);
+
+      @Override
+      public void a(ftn $$0) {
+         this.c($$0);
+      }
+
+      @Override
+      public void b(fpc $$0, int $$1, int $$2, float $$3) {
+         $$0.a(gnh::H, this.b(this.c), this.F(), this.G(), this.g, this.h);
+         float $$4 = (float)(this.F() + 2);
+         float $$5 = (float)(this.G() + 2);
+         float $$6 = 150.0F;
+
+         for (fze.b.a $$7 : this.d) {
+            $$0.c().a();
+            $$0.c().a($$4 + (float)$$7.a, $$5 + (float)$$7.b, 150.0F);
+            $$0.c().b(0.375F, 0.375F, 1.0F);
+            $$0.c().a(-8.0F, -8.0F, 0.0F);
+            $$0.a($$7.a(fze.this.l.currentIndex()), 0, 0);
+            $$0.c().b();
+         }
+      }
+
+      protected static record a(int a, int b, List<cxh> c) {
+
+         public a(int a, int b, List<cxh> c) {
+            if (c.isEmpty()) {
+               throw new IllegalArgumentException("Ingredient list must be non-empty");
+            } else {
+               this.a = a;
+               this.b = b;
+               this.c = c;
+            }
+         }
+
+         public cxh a(int $$0) {
+            return this.c.get($$0 % this.c.size());
+         }
+      }
    }
 
-   public void a(UUID $$0) {
-      this.O.a($$0);
-   }
+   class c extends fze.b {
+      private static final aku b = aku.b("recipe_book/furnace_overlay");
+      private static final aku c = aku.b("recipe_book/furnace_overlay_highlighted");
+      private static final aku d = aku.b("recipe_book/furnace_overlay_disabled");
+      private static final aku e = aku.b("recipe_book/furnace_overlay_disabled_highlighted");
 
-   public static enum a {
-      a,
-      b,
-      c;
+      public c(final int $$0, final int $$1, final ddd $$2, final ddb $$3, final bak $$4, final boolean $$5) {
+         super($$0, $$1, $$2, $$5, a($$3, $$4));
+      }
+
+      private static List<fze.b.a> a(ddb $$0, bak $$1) {
+         if ($$0 instanceof dda $$2) {
+            List<cxh> $$3 = $$2.b().a($$1);
+            if (!$$3.isEmpty()) {
+               return List.of(a(1, 1, $$3));
+            }
+         }
+
+         return List.of();
+      }
+
+      @Override
+      protected aku b(boolean $$0) {
+         if ($$0) {
+            return this.D() ? c : b;
+         } else {
+            return this.D() ? e : d;
+         }
+      }
    }
 }

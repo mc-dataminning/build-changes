@@ -36,7 +36,7 @@ public enum jn implements azv {
    private final jn.a o;
    private final jn.b p;
    private final km q;
-   private final fbb r;
+   private final fbx r;
    private static final jn[] s = values();
    private static final jn[] t = Arrays.stream(s).sorted(Comparator.comparingInt($$0 -> $$0.k)).toArray(jn[]::new);
    private static final jn[] u = Arrays.stream(s).filter($$0 -> $$0.o().d()).sorted(Comparator.comparingInt($$0 -> $$0.m)).toArray(jn[]::new);
@@ -49,12 +49,12 @@ public enum jn implements azv {
       this.o = $$5;
       this.p = $$4;
       this.q = $$6;
-      this.r = fbb.a($$6);
+      this.r = fbx.a($$6);
    }
 
-   public static jn[] a(bum $$0) {
-      float $$1 = $$0.h(1.0F) * (float) (Math.PI / 180.0);
-      float $$2 = -$$0.i(1.0F) * (float) (Math.PI / 180.0);
+   public static jn[] a(bva $$0) {
+      float $$1 = $$0.i(1.0F) * (float) (Math.PI / 180.0);
+      float $$2 = -$$0.j(1.0F) * (float) (Math.PI / 180.0);
       float $$3 = ayz.a($$1);
       float $$4 = ayz.b($$1);
       float $$5 = ayz.a($$2);
@@ -134,11 +134,11 @@ public enum jn implements azv {
       return this.p;
    }
 
-   public static jn a(bum $$0, jn.a $$1) {
+   public static jn a(bva $$0, jn.a $$1) {
       return switch ($$1) {
-         case a -> f.a($$0.i(1.0F)) ? f : e;
-         case b -> $$0.h(1.0F) < 0.0F ? b : a;
-         case c -> d.a($$0.i(1.0F)) ? d : c;
+         case a -> f.a($$0.j(1.0F)) ? f : e;
+         case b -> $$0.i(1.0F) < 0.0F ? b : a;
+         case c -> d.a($$0.j(1.0F)) ? d : c;
       };
    }
 
@@ -298,7 +298,7 @@ public enum jn implements azv {
       return $$3;
    }
 
-   public static jn a(fbb $$0) {
+   public static jn a(fbx $$0) {
       return a($$0.d, $$0.e, $$0.f);
    }
 
@@ -353,7 +353,7 @@ public enum jn implements azv {
       return this.q;
    }
 
-   public fbb r() {
+   public fbx r() {
       return this.r;
    }
 
@@ -368,6 +368,11 @@ public enum jn implements azv {
       a("x") {
          @Override
          public int a(int $$0, int $$1, int $$2) {
+            return $$0;
+         }
+
+         @Override
+         public boolean a(boolean $$0, boolean $$1, boolean $$2) {
             return $$0;
          }
 
@@ -398,6 +403,11 @@ public enum jn implements azv {
          }
 
          @Override
+         public boolean a(boolean $$0, boolean $$1, boolean $$2) {
+            return $$1;
+         }
+
+         @Override
          public jn e() {
             return jn.b;
          }
@@ -415,6 +425,11 @@ public enum jn implements azv {
 
          @Override
          public double a(double $$0, double $$1, double $$2) {
+            return $$2;
+         }
+
+         @Override
+         public boolean a(boolean $$0, boolean $$1, boolean $$2) {
             return $$2;
          }
 
@@ -490,6 +505,8 @@ public enum jn implements azv {
       public abstract int a(int var1, int var2, int var3);
 
       public abstract double a(double var1, double var3, double var5);
+
+      public abstract boolean a(boolean var1, boolean var2, boolean var3);
    }
 
    public static enum b {

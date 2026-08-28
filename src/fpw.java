@@ -1,153 +1,199 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class fpw extends fum {
-   private static final akv a = akv.b("popup/background");
-   private static final int b = 12;
-   private static final int c = 18;
-   private static final int d = 6;
-   private static final int s = 130;
-   private static final int u = 64;
-   private static final int v = 250;
-   private final fum w;
+public abstract class fpw<E extends fpw.a<E>> extends fpk<E> {
+   public fpw(fmg $$0, int $$1, int $$2, int $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public fpw(fmg $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
    @Nullable
-   private final akv x;
-   private final wp y;
-   private final List<fpw.b> z;
-   @Nullable
-   private final Runnable A;
-   private final int B;
-   private final fsm C = fsm.d();
-
-   fpw(fum $$0, int $$1, @Nullable akv $$2, wp $$3, wp $$4, List<fpw.b> $$5, @Nullable Runnable $$6) {
-      super($$3);
-      this.w = $$0;
-      this.x = $$2;
-      this.y = $$4;
-      this.z = $$5;
-      this.A = $$6;
-      this.B = $$1 - 36;
-   }
-
    @Override
-   public void aJ_() {
-      super.aJ_();
-      this.w.o();
-   }
-
-   @Override
-   protected void aR_() {
-      this.w.b(this.m, this.n, this.o);
-      this.C.a(12).c().b();
-      this.C.a(new fpo(this.l.f().a(n.r), this.p).d(this.B).b(true));
-      if (this.x != null) {
-         this.C.a(fph.a(130, 64, this.x, 130, 64));
-      }
-
-      this.C.a(new fpo(this.y, this.p).d(this.B).b(true));
-      this.C.a(this.m());
-      this.C.a($$1 -> {
-         fos var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   private fsm m() {
-      int $$0 = 6 * (this.z.size() - 1);
-      int $$1 = Math.min((this.B - $$0) / this.z.size(), 150);
-      fsm $$2 = fsm.e();
-      $$2.a(6);
-
-      for (fpw.b $$3 : this.z) {
-         $$2.a(fou.a($$3.a(), $$1x -> $$3.b().accept(this)).a($$1).a());
-      }
-
-      return $$2;
-   }
-
-   @Override
-   protected void c() {
-      this.w.a(this.m, this.n, this.o);
-      this.C.a();
-      fsg.a(this.C, this.J());
-   }
-
-   @Override
-   public void b(fof $$0, int $$1, int $$2, float $$3) {
-      this.w.a($$0, -1, -1, $$3);
-      $$0.d();
-      RenderSystem.clear(256);
-      this.b($$0);
-      $$0.a(gmj::H, a, this.C.F() - 18, this.C.G() - 18, this.C.A() + 36, this.C.y() + 36);
-   }
-
-   @Override
-   public wp i() {
-      return wo.a(this.l, this.y);
-   }
-
-   @Override
-   public void aO_() {
-      if (this.A != null) {
-         this.A.run();
-      }
-
-      this.m.a(this.w);
-   }
-
-   public static class a {
-      private final fum a;
-      private final wp b;
-      private wp c = wo.a;
-      private int d = 250;
-      @Nullable
-      private akv e;
-      private final List<fpw.b> f = new ArrayList<>();
-      @Nullable
-      private Runnable g = null;
-
-      public a(fum $$0, wp $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public fpw.a a(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public fpw.a a(akv $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public fpw.a a(wp $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fpw.a a(wp $$0, Consumer<fpw> $$1) {
-         this.f.add(new fpw.b($$0, $$1));
-         return this;
-      }
-
-      public fpw.a a(Runnable $$0) {
-         this.g = $$0;
-         return this;
-      }
-
-      public fpw a() {
-         if (this.f.isEmpty()) {
-            throw new IllegalStateException("Popup must have at least one button");
+   public foz a(ftt $$0) {
+      if (this.t() == 0) {
+         return null;
+      } else if (!($$0 instanceof ftt.a $$1)) {
+         return super.a($$0);
+      } else {
+         E $$2 = this.r();
+         if ($$1.b().a() == ftu.a && $$2 != null) {
+            return foz.a(this, $$2.a($$0));
          } else {
-            return new fpw(this.a, this.d, this.e, this.b, this.c, List.copyOf(this.f), this.g);
+            int $$3 = -1;
+            ftv $$4 = $$1.b();
+            if ($$2 != null) {
+               $$3 = $$2.aH_().indexOf($$2.aL_());
+            }
+
+            if ($$3 == -1) {
+               switch ($$4) {
+                  case c:
+                     $$3 = Integer.MAX_VALUE;
+                     $$4 = ftv.b;
+                     break;
+                  case d:
+                     $$3 = 0;
+                     $$4 = ftv.b;
+                     break;
+                  default:
+                     $$3 = 0;
+               }
+            }
+
+            E $$5 = $$2;
+
+            foz $$6;
+            do {
+               $$5 = this.a($$4, $$0x -> !$$0x.aH_().isEmpty(), $$5);
+               if ($$5 == null) {
+                  return null;
+               }
+
+               $$6 = $$5.a($$1, $$3);
+            } while ($$6 == null);
+
+            return foz.a(this, $$6);
          }
       }
    }
 
-   static record b(wp a, Consumer<fpw> b) {
+   @Override
+   public void a(@Nullable frn $$0) {
+      if (this.r() != $$0) {
+         super.a($$0);
+         if ($$0 == null) {
+            this.a(null);
+         }
+      }
+   }
+
+   @Override
+   public ftl.a w() {
+      return this.aM_() ? ftl.a.c : super.w();
+   }
+
+   @Override
+   protected boolean c(int $$0) {
+      return false;
+   }
+
+   @Override
+   public void a(ftn $$0) {
+      E $$1 = this.x();
+      if ($$1 != null) {
+         $$1.a($$0.a());
+         this.a($$0, $$1);
+      } else {
+         E $$2 = this.r();
+         if ($$2 != null) {
+            $$2.a($$0.a());
+            this.a($$0, $$2);
+         }
+      }
+
+      $$0.a(ftm.d, wp.c("narration.component_list.usage"));
+   }
+
+   public abstract static class a<E extends fpw.a<E>> extends fpk.a<E> implements frm {
+      @Nullable
+      private frn a;
+      @Nullable
+      private ftl b;
+      private boolean c;
+
+      @Override
+      public boolean aK_() {
+         return this.c;
+      }
+
+      @Override
+      public void b_(boolean $$0) {
+         this.c = $$0;
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         return frm.super.a($$0, $$1, $$2);
+      }
+
+      @Override
+      public void a(@Nullable frn $$0) {
+         if (this.a != null) {
+            this.a.a(false);
+         }
+
+         if ($$0 != null) {
+            $$0.a(true);
+         }
+
+         this.a = $$0;
+      }
+
+      @Nullable
+      @Override
+      public frn aL_() {
+         return this.a;
+      }
+
+      @Nullable
+      public foz a(ftt $$0, int $$1) {
+         if (this.aH_().isEmpty()) {
+            return null;
+         } else {
+            foz $$2 = this.aH_().get(Math.min($$1, this.aH_().size() - 1)).a($$0);
+            return foz.a(this, $$2);
+         }
+      }
+
+      @Nullable
+      @Override
+      public foz a(ftt $$0) {
+         if ($$0 instanceof ftt.a $$1) {
+            int $$2 = switch ($$1.b()) {
+               case c -> -1;
+               case d -> 1;
+               case a, b -> 0;
+            };
+            if ($$2 == 0) {
+               return null;
+            }
+
+            int $$3 = ayz.a($$2 + this.aH_().indexOf(this.aL_()), 0, this.aH_().size() - 1);
+
+            for (int $$4 = $$3; $$4 >= 0 && $$4 < this.aH_().size(); $$4 += $$2) {
+               frn $$5 = this.aH_().get($$4);
+               foz $$6 = $$5.a($$0);
+               if ($$6 != null) {
+                  return foz.a(this, $$6);
+               }
+            }
+         }
+
+         return frm.super.a($$0);
+      }
+
+      public abstract List<? extends ftl> b();
+
+      void a(ftn $$0) {
+         List<? extends ftl> $$1 = this.b();
+         fvi.b $$2 = fvi.a($$1, this.b);
+         if ($$2 != null) {
+            if ($$2.c.a()) {
+               this.b = $$2.a;
+            }
+
+            if ($$1.size() > 1) {
+               $$0.a(ftm.b, wp.a("narrator.position.object_list", $$2.b + 1, $$1.size()));
+               if ($$2.c == ftl.a.c) {
+                  $$0.a(ftm.d, wp.c("narration.component_list.usage"));
+               }
+            }
+
+            $$2.a.b($$0.a());
+         }
+      }
    }
 }

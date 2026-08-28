@@ -1,51 +1,52 @@
-public class cpw extends cpy {
-   public cpw(but<? extends cpw> $$0, dgj $$1) {
-      super($$0, $$1);
-   }
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public cpw(dgj $$0, bvi $$1, cwq $$2) {
-      super(but.bj, $$1, $$0, $$2);
-   }
+public class cpw {
+   private final cpv<jr<cxd>> a = new cpv<>();
 
-   public cpw(dgj $$0, double $$1, double $$2, double $$3, cwq $$4) {
-      super(but.bj, $$1, $$2, $$3, $$0, $$4);
-   }
-
-   @Override
-   protected cwm m() {
-      return cwu.rj;
-   }
-
-   private lr s() {
-      cwq $$0 = this.l();
-      return (lr)($$0.f() ? lt.Y : new lp(lt.T, $$0));
-   }
-
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 3) {
-         lr $$1 = this.s();
-
-         for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dV().a($$1, this.dA(), this.dC(), this.dG(), 0.0, 0.0, 0.0);
-         }
+   public void a(cxh $$0) {
+      if (cpq.d($$0)) {
+         this.b($$0);
       }
    }
 
-   @Override
-   protected void a(fay $$0) {
-      super.a($$0);
-      bum $$1 = $$0.a();
-      int $$2 = $$1 instanceof cli ? 3 : 0;
-      $$1.a(this.dW().b(this, this.p()), (float)$$2);
+   public void b(cxh $$0) {
+      this.a($$0, $$0.k());
    }
 
-   @Override
-   protected void a(faz $$0) {
-      super.a($$0);
-      if (!this.dV().C) {
-         this.dV().a(this, (byte)3);
-         this.at();
+   public void a(cxh $$0, int $$1) {
+      if (!$$0.f()) {
+         int $$2 = Math.min($$1, $$0.M());
+         this.a.a($$0.i(), $$2);
       }
+   }
+
+   public boolean a(dbv<?> $$0, @Nullable cpv.b<jr<cxd>> $$1) {
+      return this.a($$0, 1, $$1);
+   }
+
+   public boolean a(dbv<?> $$0, int $$1, @Nullable cpv.b<jr<cxd>> $$2) {
+      dbu $$3 = $$0.ao_();
+      return $$3.c() ? false : this.a($$3.b(), $$1, $$2);
+   }
+
+   public boolean a(List<? extends cpv.a<jr<cxd>>> $$0, @Nullable cpv.b<jr<cxd>> $$1) {
+      return this.a($$0, 1, $$1);
+   }
+
+   private boolean a(List<? extends cpv.a<jr<cxd>>> $$0, int $$1, @Nullable cpv.b<jr<cxd>> $$2) {
+      return this.a.a($$0, $$1, $$2);
+   }
+
+   public int b(dbv<?> $$0, @Nullable cpv.b<jr<cxd>> $$1) {
+      return this.b($$0, Integer.MAX_VALUE, $$1);
+   }
+
+   public int b(dbv<?> $$0, int $$1, @Nullable cpv.b<jr<cxd>> $$2) {
+      return this.a.b($$0.ao_().b(), $$1, $$2);
+   }
+
+   public void a() {
+      this.a.a();
    }
 }

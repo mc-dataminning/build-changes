@@ -1,50 +1,71 @@
-import com.google.common.collect.Maps;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.mojang.logging.LogUtils;
-import java.util.Date;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fhb extends fia {
-   private static final Logger f = LogUtils.getLogger();
-   public String a;
-   public Date b;
-   public long c;
-   private boolean g;
-   public Map<String, String> d = Maps.newHashMap();
-   public Map<String, String> e = Maps.newHashMap();
+public class fhb {
+   private static final Logger a = LogUtils.getLogger();
+   @Nullable
+   private static CompletableFuture<fhb.a> b;
 
-   public static fhb a(JsonElement $$0) {
-      JsonObject $$1 = $$0.getAsJsonObject();
-      fhb $$2 = new fhb();
-
-      try {
-         $$2.a = fjw.b("backupId", $$1, "");
-         $$2.b = fjw.b("lastModifiedDate", $$1);
-         $$2.c = fjw.a("size", $$1, 0L);
-         if ($$1.has("metadata")) {
-            JsonObject $$3 = $$1.getAsJsonObject("metadata");
-
-            for (Entry<String, JsonElement> $$5 : $$3.entrySet()) {
-               if (!$$5.getValue().isJsonNull()) {
-                  $$2.d.put($$5.getKey(), $$5.getValue().getAsString());
-               }
-            }
-         }
-      } catch (Exception var7) {
-         f.error("Could not parse Backup: {}", var7.getMessage());
+   public static CompletableFuture<fhb.a> a() {
+      if (b == null || a(b)) {
+         b = b();
       }
 
-      return $$2;
+      return b;
    }
 
-   public boolean a() {
-      return this.g;
+   private static boolean a(CompletableFuture<fhb.a> $$0) {
+      fhb.a $$1 = $$0.getNow(null);
+      return $$1 != null && $$1.b() != null;
    }
 
-   public void a(boolean $$0) {
-      this.g = $$0;
+   private static CompletableFuture<fhb.a> b() {
+      fms $$0 = fmg.Q().X();
+      return $$0.g() != fms.a.c ? CompletableFuture.completedFuture(new fhb.a(fhb.b.d)) : CompletableFuture.supplyAsync(() -> {
+         fhh $$0x = fhh.a();
+
+         try {
+            if ($$0x.g() != fhh.a.a) {
+               return new fhb.a(fhb.b.b);
+            } else {
+               return !$$0x.f() ? new fhb.a(fhb.b.c) : new fhb.a(fhb.b.a);
+            }
+         } catch (fjd var2) {
+            a.error("Couldn't connect to realms", var2);
+            return var2.a.a() == 401 ? new fhb.a(fhb.b.d) : new fhb.a(var2);
+         }
+      }, af.i());
+   }
+
+   public static record a(fhb.b a, @Nullable fjd b) {
+      public a(fhb.b $$0) {
+         this($$0, null);
+      }
+
+      public a(fjd $$0) {
+         this(fhb.b.e, $$0);
+      }
+
+      @Nullable
+      public fvi a(fvi $$0) {
+         return (fvi)(switch (this.a) {
+            case a -> null;
+            case b -> new fjq($$0);
+            case c -> new fka($$0);
+            case d -> new fjv(wp.c("mco.error.invalid.session.title"), wp.c("mco.error.invalid.session.message"), $$0);
+            case e -> new fjv(Objects.requireNonNull(this.b), $$0);
+         });
+      }
+   }
+
+   public static enum b {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

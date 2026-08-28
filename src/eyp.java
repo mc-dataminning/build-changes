@@ -1,36 +1,83 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public class eyp extends eyr {
-   public static final MapCodec<eyp> a = a(eyp::new);
+public class eyp extends eyb {
+   public static final MapCodec<eyp> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  Codec.unboundedMap(ddr.c, fau.a).optionalFieldOf("enchantments", Map.of()).forGetter($$0x -> $$0x.b),
+                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
+               )
+            )
+            .apply($$0, eyp::new)
+   );
+   private final Map<jr<ddr>, fat> b;
+   private final boolean c;
 
-   eyp(List<ezb> $$0) {
-      super($$0, af.b($$0));
+   eyp(List<ezx> $$0, Map<jr<ddr>, fat> $$1, boolean $$2) {
+      super($$0);
+      this.b = Map.copyOf($$1);
+      this.c = $$2;
    }
 
    @Override
-   public ezc b() {
-      return ezd.b;
+   public eyd<eyp> b() {
+      return eye.i;
    }
 
-   public static eyp.a a(ezb.a... $$0) {
-      return new eyp.a($$0);
+   @Override
+   public Set<bai<?>> a() {
+      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
    }
 
-   public static class a extends eyr.a {
-      public a(ezb.a... $$0) {
-         super($$0);
+   @Override
+   public cxh a(cxh $$0, ewo $$1) {
+      if ($$0.a(cxl.ry)) {
+         $$0 = $$0.a((dgy)cxl.vx);
       }
 
-      @Override
-      public eyp.a or(ezb.a $$0) {
-         this.a($$0);
+      ddt.a($$0, $$1x -> {
+         if (this.c) {
+            this.b.forEach(($$2, $$3) -> $$1x.a((jr<ddr>)$$2, ayz.a($$1x.a((jr<ddr>)$$2) + $$3.a($$1), 0, 255)));
+         } else {
+            this.b.forEach(($$2, $$3) -> $$1x.a((jr<ddr>)$$2, ayz.a($$3.a($$1), 0, 255)));
+         }
+      });
+      return $$0;
+   }
+
+   public static class a extends eyb.a<eyp.a> {
+      private final Builder<jr<ddr>, fat> a = ImmutableMap.builder();
+      private final boolean b;
+
+      public a() {
+         this(false);
+      }
+
+      public a(boolean $$0) {
+         this.b = $$0;
+      }
+
+      protected eyp.a a() {
+         return this;
+      }
+
+      public eyp.a a(jr<ddr> $$0, fat $$1) {
+         this.a.put($$0, $$1);
          return this;
       }
 
       @Override
-      protected ezb a(List<ezb> $$0) {
-         return new eyp($$0);
+      public eyc b() {
+         return new eyp(this.g(), this.a.build(), this.b);
       }
    }
 }

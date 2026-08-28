@@ -1,5 +1,5 @@
-public class hay extends gza {
-   public int a;
+public class hay extends haj {
+   public float a;
    public boolean b;
-   public boolean c;
+   public cil.g c = cil.g.a;
 }

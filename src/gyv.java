@@ -1,9 +1,10 @@
-public class gyv extends gzl {
-   private static final akv g = akv.b("textures/entity/frog/temperate_frog.png");
-   public boolean a;
-   public final bue b = new bue();
-   public final bue c = new bue();
-   public final bue d = new bue();
-   public final bue e = new bue();
-   public akv f = g;
+public class gyv extends gzj {
+   public float a;
+   public int b;
+   public float c;
+   public float d;
+   public float e;
+   public boolean f;
+   public float g;
+   public float h;
 }

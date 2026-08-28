@@ -1,30 +1,26 @@
-import com.mojang.serialization.MapCodec;
+public enum dsl {
+   a {
+      @Override
+      public boolean a(dxq $$0, dgf $$1, ji $$2, jn $$3) {
+         return dke.a($$0.h($$1, $$2), $$3);
+      }
+   },
+   b {
+      private final fcr d = dke.b(2.0, 0.0, 10.0);
 
-public class dsl extends dnd {
-   public static final MapCodec<dsl> c = b(dsl::new);
-   public static final fbv g = djn.a(4.0, 0.0, 4.0, 12.0, 15.0, 12.0);
+      @Override
+      public boolean a(dxq $$0, dgf $$1, ji $$2, jn $$3) {
+         return !fco.c($$0.h($$1, $$2).a($$3), this.d, fcb.c);
+      }
+   },
+   c {
+      private final fcr d = fco.a(fco.b(), dke.b(12.0, 0.0, 16.0), fcb.e);
 
-   @Override
-   public MapCodec<dsl> a() {
-      return c;
-   }
+      @Override
+      public boolean a(dxq $$0, dgf $$1, ji $$2, jn $$3) {
+         return !fco.c($$0.h($$1, $$2).a($$3), this.d, fcb.c);
+      }
+   };
 
-   public dsl(dwx.d $$0) {
-      super($$0, jn.b, g, false, 0.1);
-   }
-
-   @Override
-   protected int a(azh $$0) {
-      return dow.a($$0);
-   }
-
-   @Override
-   protected djn b() {
-      return djp.pe;
-   }
-
-   @Override
-   protected boolean h(dwy $$0) {
-      return dow.a($$0);
-   }
+   public abstract boolean a(dxq var1, dgf var2, ji var3, jn var4);
 }

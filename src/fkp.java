@@ -1,52 +1,41 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class fkp extends fki {
-   private static final Logger b = LogUtils.getLogger();
-   private static final wp c = wp.c("mco.minigame.world.slot.screen.title");
-   private final long d;
-   private final int e;
-   private final Runnable f;
-
-   public fkp(long $$0, int $$1, Runnable $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   @Override
-   public void run() {
-      fgl $$0 = fgl.a();
-
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            if ($$0.a(this.d, this.e)) {
-               this.f.run();
-               break;
-            }
-         } catch (fii var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't switch world!");
-            this.a(var5);
-         }
+public interface fkp {
+   fkp a = new fkp() {
+      @Override
+      public long a() {
+         return 1L;
       }
-   }
 
-   @Override
-   public wp a() {
-      return c;
+      @Override
+      public long b() {
+         return 1L;
+      }
+   };
+
+   long a();
+
+   long b();
+
+   static fkp a(final int $$0) {
+      return new fkp() {
+         private static final Logger c = LogUtils.getLogger();
+         private int d;
+
+         @Override
+         public long a() {
+            this.d = 0;
+            return 1L;
+         }
+
+         @Override
+         public long b() {
+            this.d++;
+            long $$0 = Math.min(1L << this.d, (long)$$0);
+            c.debug("Skipping for {} extra cycles", $$0);
+            return $$0;
+         }
+      };
    }
 }

@@ -1,37 +1,103 @@
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.nio.file.FileSystem;
+import java.nio.file.Path;
+import java.nio.file.PathMatcher;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
+import org.slf4j.Logger;
 
-public class fbp extends fbl {
-   @Nullable
-   private ji b;
-   @Nullable
-   private ji c;
+public class fbp implements PathMatcher {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "#";
+   private final List<fbp.a> c;
+   private final Map<String, PathMatcher> d = new ConcurrentHashMap<>();
 
-   protected fbp(cqx $$0, boolean $$1) {
-      super($$0, $$1);
-      this.a($$0);
+   public fbp(List<fbp.a> $$0) {
+      this.c = $$0;
    }
 
-   private void a(cqx $$0) {
-      ji $$1 = $$0.p();
-      dwy $$2 = $$0.dV().a_($$1);
-      boolean $$3 = djc.h($$2);
-      if ($$3) {
-         this.b = $$1.e();
-         dyb $$4 = $$2.c(((djc)$$2.b()).c());
-         if ($$4.b()) {
-            this.c = switch ($$4) {
-               case c -> $$1.i();
-               case d -> $$1.h();
-               case e -> $$1.f();
-               case f -> $$1.g();
-               default -> null;
-            };
+   public PathMatcher a(FileSystem $$0) {
+      return this.d.computeIfAbsent($$0.provider().getScheme(), $$1 -> {
+         List<PathMatcher> $$2;
+         try {
+            $$2 = this.c.stream().map($$1x -> $$1x.a($$0)).toList();
+         } catch (Exception var5) {
+            a.error("Failed to compile file pattern list", var5);
+            return $$0xx -> false;
          }
-      }
+         return switch ($$2.size()) {
+            case 0 -> $$0xx -> false;
+            case 1 -> (PathMatcher)$$2.get(0);
+            default -> $$1x -> {
+            for (PathMatcher $$2 : $$2) {
+               if ($$2.matches($$1x)) {
+                  return true;
+               }
+            }
+
+            return false;
+         };
+         };
+      });
    }
 
    @Override
-   public fbv a(dwy $$0, dfs $$1, ji $$2) {
-      return !$$2.equals(this.b) && !$$2.equals(this.c) ? super.a($$0, $$1, $$2) : fbs.a();
+   public boolean matches(Path $$0) {
+      return this.a($$0.getFileSystem()).matches($$0);
+   }
+
+   public static fbp a(BufferedReader $$0) {
+      return new fbp($$0.lines().flatMap($$0x -> fbp.a.a($$0x).stream()).toList());
+   }
+
+   public static record a(fbp.b a, String b) {
+      public PathMatcher a(FileSystem $$0) {
+         return this.a().compile($$0, this.b);
+      }
+
+      static Optional<fbp.a> a(String $$0) {
+         if ($$0.isBlank() || $$0.startsWith("#")) {
+            return Optional.empty();
+         } else if (!$$0.startsWith("[")) {
+            return Optional.of(new fbp.a(fbp.b.b, $$0));
+         } else {
+            int $$1 = $$0.indexOf(93, 1);
+            if ($$1 == -1) {
+               throw new IllegalArgumentException("Unterminated type in line '" + $$0 + "'");
+            } else {
+               String $$2 = $$0.substring(1, $$1);
+               String $$3 = $$0.substring($$1 + 1);
+
+               return switch ($$2) {
+                  case "glob", "regex" -> Optional.of(new fbp.a(fbp.b.a, $$2 + ":" + $$3));
+                  case "prefix" -> Optional.of(new fbp.a(fbp.b.b, $$3));
+                  default -> throw new IllegalArgumentException("Unsupported definition type in line '" + $$0 + "'");
+               };
+            }
+         }
+      }
+
+      static fbp.a b(String $$0) {
+         return new fbp.a(fbp.b.a, "glob:" + $$0);
+      }
+
+      static fbp.a c(String $$0) {
+         return new fbp.a(fbp.b.a, "regex:" + $$0);
+      }
+
+      static fbp.a d(String $$0) {
+         return new fbp.a(fbp.b.b, $$0);
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      fbp.b a = FileSystem::getPathMatcher;
+      fbp.b b = ($$0, $$1) -> $$1x -> $$1x.toString().startsWith($$1);
+
+      PathMatcher compile(FileSystem var1, String var2);
    }
 }

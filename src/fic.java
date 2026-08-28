@@ -1,46 +1,33 @@
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
+import java.util.Iterator;
+import java.util.List;
 import org.slf4j.Logger;
 
-public class fic extends fia {
-   private static final Logger j = LogUtils.getLogger();
-   public String a = "";
-   public String b = "";
-   public String c = "";
-   public String d = "";
-   public String e = "";
-   @Nullable
-   public String f;
-   public String g = "";
-   public String h = "";
-   public fic.a i = fic.a.a;
+public class fic extends fiw {
+   private static final Logger b = LogUtils.getLogger();
+   public List<fib> a = Lists.newArrayList();
 
-   public static fic a(JsonObject $$0) {
+   public static fic a(String $$0) {
       fic $$1 = new fic();
 
       try {
-         $$1.a = fjw.b("id", $$0, "");
-         $$1.b = fjw.b("name", $$0, "");
-         $$1.c = fjw.b("version", $$0, "");
-         $$1.d = fjw.b("author", $$0, "");
-         $$1.e = fjw.b("link", $$0, "");
-         $$1.f = fjw.b("image", $$0, null);
-         $$1.g = fjw.b("trailer", $$0, "");
-         $$1.h = fjw.b("recommendedPlayers", $$0, "");
-         $$1.i = fic.a.valueOf(fjw.b("type", $$0, fic.a.a.name()));
-      } catch (Exception var3) {
-         j.error("Could not parse WorldTemplate: {}", var3.getMessage());
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("invites").isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.get("invites").getAsJsonArray().iterator();
+
+            while ($$4.hasNext()) {
+               $$1.a.add(fib.a($$4.next().getAsJsonObject()));
+            }
+         }
+      } catch (Exception var5) {
+         b.error("Could not parse PendingInvitesList: {}", var5.getMessage());
       }
 
       return $$1;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e;
    }
 }

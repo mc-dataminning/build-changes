@@ -1,72 +1,113 @@
-import java.util.Optional;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public final class byf {
-   public static Optional<fbb> a(bvk $$0, fbb $$1, float $$2, int $$3, boolean $$4) {
-      fbb $$5 = $$0.dt();
-      fbb $$6 = new fbb($$1.d - $$5.d, 0.0, $$1.f - $$5.f).d().c(0.5);
-      fbb $$7 = $$1.d($$6);
-      fbb $$8 = $$7.d($$5);
-      float $$9 = (float)$$3 * (float) Math.PI / 180.0F;
-      double $$10 = Math.atan2($$8.f, $$8.d);
-      double $$11 = $$8.a(0.0, $$8.e, 0.0).h();
-      double $$12 = Math.sqrt($$11);
-      double $$13 = $$8.e;
-      double $$14 = $$0.be();
-      double $$15 = Math.sin((double)(2.0F * $$9));
-      double $$16 = Math.pow(Math.cos((double)$$9), 2.0);
-      double $$17 = Math.sin((double)$$9);
-      double $$18 = Math.cos((double)$$9);
-      double $$19 = Math.sin($$10);
-      double $$20 = Math.cos($$10);
-      double $$21 = $$11 * $$14 / ($$12 * $$15 - 2.0 * $$13 * $$16);
-      if ($$21 < 0.0) {
-         return Optional.empty();
-      } else {
-         double $$22 = Math.sqrt($$21);
-         if ($$22 > (double)$$2) {
-            return Optional.empty();
-         } else {
-            double $$23 = $$22 * $$18;
-            double $$24 = $$22 * $$17;
-            if ($$4) {
-               int $$25 = ayz.c($$12 / $$23) * 2;
-               double $$26 = 0.0;
-               fbb $$27 = null;
-               bup $$28 = $$0.a(bvu.g);
+public class byf<E extends bvy> implements bxs<E> {
+   private final Map<cfc<?>, cfd> a;
+   private final Set<cfc<?>> b;
+   private final byf.a c;
+   private final byf.b d;
+   private final caa<bxs<? super E>> e = new caa<>();
+   private bxr.a f = bxr.a.a;
 
-               for (int $$29 = 0; $$29 < $$25 - 1; $$29++) {
-                  $$26 += $$12 / (double)$$25;
-                  double $$30 = $$17 / $$18 * $$26 - Math.pow($$26, 2.0) * $$14 / (2.0 * $$21 * Math.pow($$18, 2.0));
-                  double $$31 = $$26 * $$20;
-                  double $$32 = $$26 * $$19;
-                  fbb $$33 = new fbb($$5.d + $$31, $$5.e + $$30, $$5.f + $$32);
-                  if ($$27 != null && !a($$0, $$28, $$27, $$33)) {
-                     return Optional.empty();
-                  }
-
-                  $$27 = $$33;
-               }
-            }
-
-            return Optional.of(new fbb($$23 * $$20, $$24, $$23 * $$19).c(0.95F));
-         }
-      }
+   public byf(Map<cfc<?>, cfd> $$0, Set<cfc<?>> $$1, byf.a $$2, byf.b $$3, List<Pair<? extends bxs<? super E>, Integer>> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      $$4.forEach($$0x -> this.e.a((bxs<? super E>)$$0x.getFirst(), (Integer)$$0x.getSecond()));
    }
 
-   private static boolean a(bvk $$0, bup $$1, fbb $$2, fbb $$3) {
-      fbb $$4 = $$3.d($$2);
-      double $$5 = (double)Math.min($$1.a(), $$1.b());
-      int $$6 = ayz.c($$4.g() / $$5);
-      fbb $$7 = $$4.d();
-      fbb $$8 = $$2;
+   @Override
+   public bxr.a a() {
+      return this.f;
+   }
 
-      for (int $$9 = 0; $$9 < $$6; $$9++) {
-         $$8 = $$9 == $$6 - 1 ? $$3 : $$8.e($$7.c($$5 * 0.9F));
-         if (!$$0.dV().a($$0, $$1.a($$8))) {
+   private boolean a(E $$0) {
+      for (Entry<cfc<?>, cfd> $$1 : this.a.entrySet()) {
+         cfc<?> $$2 = $$1.getKey();
+         cfd $$3 = $$1.getValue();
+         if (!$$0.ea().a($$2, $$3)) {
             return false;
          }
       }
 
       return true;
+   }
+
+   @Override
+   public final boolean e(ard $$0, E $$1, long $$2) {
+      if (this.a($$1)) {
+         this.f = bxr.a.b;
+         this.c.a(this.e);
+         this.d.a(this.e.b(), $$0, $$1, $$2);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public final void f(ard $$0, E $$1, long $$2) {
+      this.e.b().filter($$0x -> $$0x.a() == bxr.a.b).forEach($$3 -> $$3.f($$0, $$1, $$2));
+      if (this.e.b().noneMatch($$0x -> $$0x.a() == bxr.a.b)) {
+         this.g($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public final void g(ard $$0, E $$1, long $$2) {
+      this.f = bxr.a.a;
+      this.e.b().filter($$0x -> $$0x.a() == bxr.a.b).forEach($$3 -> $$3.g($$0, $$1, $$2));
+      this.b.forEach($$1.ea()::b);
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
+   }
+
+   @Override
+   public String toString() {
+      Set<? extends bxs<? super E>> $$0 = this.e.b().filter($$0x -> $$0x.a() == bxr.a.b).collect(Collectors.toSet());
+      return "(" + this.getClass().getSimpleName() + "): " + $$0;
+   }
+
+   public static enum a {
+      a($$0 -> {
+      }),
+      b(caa::a);
+
+      private final Consumer<caa<?>> c;
+
+      private a(final Consumer<caa<?>> $$0) {
+         this.c = $$0;
+      }
+
+      public void a(caa<?> $$0) {
+         this.c.accept($$0);
+      }
+   }
+
+   public static enum b {
+      a {
+         @Override
+         public <E extends bvy> void a(Stream<bxs<? super E>> $$0, ard $$1, E $$2, long $$3) {
+            $$0.filter($$0x -> $$0x.a() == bxr.a.a).filter($$3x -> $$3x.e($$1, $$2, $$3)).findFirst();
+         }
+      },
+      b {
+         @Override
+         public <E extends bvy> void a(Stream<bxs<? super E>> $$0, ard $$1, E $$2, long $$3) {
+            $$0.filter($$0x -> $$0x.a() == bxr.a.a).forEach($$3x -> $$3x.e($$1, $$2, $$3));
+         }
+      };
+
+      public abstract <E extends bvy> void a(Stream<bxs<? super E>> var1, ard var2, E var3, long var4);
    }
 }

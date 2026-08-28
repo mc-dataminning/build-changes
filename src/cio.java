@@ -1,21 +1,30 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+public abstract class cio extends bwv {
+   private static final int bJ = 100;
+   private int bK;
 
-public class cio {
-   public static bxc<bvi> a() {
-      return cao.a(
-         (Function<cao.b<bvi>, ? extends App<cao.c<bvi>, car<bvi>>>)($$0 -> $$0.group($$0.b(cem.N), $$0.a(cem.y)).apply($$0, ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                  int $$6 = $$0.<Integer>b($$1);
-                  if ($$6 <= 0) {
-                     $$1.b();
-                     $$2.b();
-                     $$4.eb().f();
-                  } else {
-                     $$1.a($$6 - 1);
-                  }
+   protected cio(bvi<? extends cio> $$0, dgz $$1) {
+      super($$0, $$1);
+   }
 
-                  return true;
-               }))
-      );
+   public boolean b(are $$0) {
+      tq $$1 = new tq();
+      $$1.a("id", this.bI());
+      this.f($$1);
+      if ($$0.h($$1)) {
+         this.at();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public void h() {
+      this.bK++;
+      super.h();
+   }
+
+   public boolean gI() {
+      return this.bK > 100;
    }
 }

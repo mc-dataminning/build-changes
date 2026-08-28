@@ -1,26 +1,34 @@
-import java.util.Optional;
+public record dca<T extends dbv<?>>(akt<dbv<?>> b, T c) {
+   public static final yn<wa, dca<?>> a = yn.a(akt.b(mc.bm), dca::a, dbv.b, dca::b, dca::new);
 
-public interface dca extends dbf<dcb> {
    @Override
-   default dbq<dca> b() {
-      return dbq.g;
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof dca<?> $$1 && this.b == $$1.b) {
+            return true;
+         }
+
+         return false;
+      }
    }
 
    @Override
-   dbp<? extends dca> a();
-
-   default boolean a(dcb $$0, dgj $$1) {
-      return dbb.a(this.c(), $$0.c()) && dbb.a(this.f(), $$0.d()) && dbb.a(this.k(), $$0.e());
+   public int hashCode() {
+      return this.b.hashCode();
    }
 
-   Optional<dbb> c();
-
-   Optional<dbb> f();
-
-   Optional<dbb> k();
-
    @Override
-   default dbi h() {
-      return dbh.l;
+   public String toString() {
+      return this.b.toString();
+   }
+
+   public akt<dbv<?>> a() {
+      return this.b;
+   }
+
+   public T b() {
+      return this.c;
    }
 }

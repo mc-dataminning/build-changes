@@ -1,28 +1,24 @@
-import java.util.EnumMap;
-
 public class ggg {
-   public static final int a = 5000;
-   private final ggb b;
-   private final fpc c;
-   private final EnumMap<bnf, Long> d;
+   public static final ggg a = new ggg(0.0F);
+   final float b;
+   final float c;
+   final float d;
 
-   public ggg(ggb $$0, fpc $$1) {
-      this.c = $$1;
+   public ggg(float $$0, float $$1, float $$2) {
       this.b = $$0;
-      this.d = new EnumMap<>(bnf.class);
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public void a() {
-      if (this.c.g()) {
-         this.a(bnf.a);
-      }
+   public ggg(float $$0) {
+      this($$0, $$0, $$0);
    }
 
-   private void a(bnf $$0) {
-      long $$1 = af.c();
-      if ($$1 > this.d.getOrDefault($$0, Long.valueOf(0L)) + 5000L) {
-         this.b.b(new agz($$0));
-         this.d.put($$0, $$1);
-      }
+   public ggg a(float $$0) {
+      return new ggg(this.b + $$0, this.c + $$0, this.d + $$0);
+   }
+
+   public ggg a(float $$0, float $$1, float $$2) {
+      return new ggg(this.b + $$0, this.c + $$1, this.d + $$2);
    }
 }

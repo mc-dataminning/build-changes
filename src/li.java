@@ -5,16 +5,16 @@ public class li extends lf {
    private static final Logger c = LogUtils.getLogger();
 
    @Override
-   protected cwq a(kz $$0, cwq $$1) {
+   protected cxh a(kz $$0, cxh $$1) {
       this.a(false);
-      cwm $$2 = $$1.h();
-      if ($$2 instanceof cuw) {
-         jn $$3 = $$0.d().c(dlt.b);
+      cxd $$2 = $$1.h();
+      if ($$2 instanceof cvo) {
+         jn $$3 = $$0.d().c(dmk.b);
          ji $$4 = $$0.c().a($$3);
          jn $$5 = $$0.b().u($$4.e()) ? $$3 : jn.b;
 
          try {
-            this.a(((cuw)$$2).a((dah)(new dai($$0.b(), $$4, $$3, $$1, $$5))).a());
+            this.a(((cvo)$$2).a((dax)(new day($$0.b(), $$4, $$3, $$1, $$5))).a());
          } catch (Exception var8) {
             c.error("Error trying to place shulker box at {}", $$4, var8);
          }

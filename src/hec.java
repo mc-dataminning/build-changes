@@ -1,20 +1,15 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class hec {
-   @Nullable
-   public akv a;
-   public final List<hec.a> b = new ArrayList<>();
+public record hec() implements heh<cxf> {
+   public static final heh.a<hec, cxf> a = heh.a.a(MapCodec.unit(new hec()), cxf.j);
 
-   public static class a {
-      @Nullable
-      public het a;
-      public byte b;
-      public byte c;
-      public byte d;
-      public boolean e;
-      @Nullable
-      public wp f;
+   public cxf a(cxh $$0, @Nullable ggy $$1, @Nullable bvy $$2, int $$3, cxf $$4) {
+      return $$4;
+   }
+
+   @Override
+   public heh.a<hec, cxf> a() {
+      return a;
    }
 }

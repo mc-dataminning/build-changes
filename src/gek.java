@@ -1,27 +1,43 @@
-public class gek extends gcc<has> {
-   private final gfe a;
+public class gek<T extends haj> extends gda<T> {
+   protected final ggc b;
+   protected final ggc c;
+   protected final ggc d;
+   protected final ggc e;
+   protected final ggc f;
+   protected final ggc g;
 
-   public gek(gfe $$0) {
+   protected gek(ggc $$0) {
       super($$0);
-      this.a = $$0.b("tail");
+      this.b = $$0.b("head");
+      this.c = $$0.b("body");
+      this.d = $$0.b("right_hind_leg");
+      this.e = $$0.b("left_hind_leg");
+      this.f = $$0.b("right_front_leg");
+      this.g = $$0.b("left_front_leg");
    }
 
-   public static gfk a(gfi $$0) {
-      gfm $$1 = new gfm();
-      gfo $$2 = $$1.a();
-      int $$3 = 19;
-      $$2.a("body", gfj.c().a(0, 20).a(-1.0F, -3.0F, -3.0F, 2.0F, 6.0F, 6.0F, $$0), gfg.a(0.0F, 19.0F, 0.0F));
-      $$2.a("tail", gfj.c().a(21, 16).a(0.0F, -3.0F, 0.0F, 0.0F, 6.0F, 5.0F, $$0), gfg.a(0.0F, 19.0F, 3.0F));
-      $$2.a("right_fin", gfj.c().a(2, 16).a(-2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), gfg.a(-1.0F, 20.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("left_fin", gfj.c().a(2, 12).a(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), gfg.a(1.0F, 20.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("top_fin", gfj.c().a(20, 11).a(0.0F, -4.0F, 0.0F, 0.0F, 4.0F, 6.0F, $$0), gfg.a(0.0F, 16.0F, -3.0F));
-      $$2.a("bottom_fin", gfj.c().a(20, 21).a(0.0F, 0.0F, 0.0F, 0.0F, 4.0F, 6.0F, $$0), gfg.a(0.0F, 22.0F, -3.0F));
-      return gfk.a($$1, 32, 32);
+   public static ggk a(int $$0, ggg $$1) {
+      ggk $$2 = new ggk();
+      ggm $$3 = $$2.a();
+      $$3.a("head", ggh.c().a(0, 0).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F, $$1), gge.a(0.0F, (float)(18 - $$0), -6.0F));
+      $$3.a("body", ggh.c().a(28, 8).a(-5.0F, -10.0F, -7.0F, 10.0F, 16.0F, 8.0F, $$1), gge.a(0.0F, (float)(17 - $$0), 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      ggh $$4 = ggh.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, (float)$$0, 4.0F, $$1);
+      $$3.a("right_hind_leg", $$4, gge.a(-3.0F, (float)(24 - $$0), 7.0F));
+      $$3.a("left_hind_leg", $$4, gge.a(3.0F, (float)(24 - $$0), 7.0F));
+      $$3.a("right_front_leg", $$4, gge.a(-3.0F, (float)(24 - $$0), -5.0F));
+      $$3.a("left_front_leg", $$4, gge.a(3.0F, (float)(24 - $$0), -5.0F));
+      return $$2;
    }
 
-   public void a(has $$0) {
+   public void a(T $$0) {
       super.a($$0);
-      float $$1 = $$0.ak ? 1.0F : 1.5F;
-      this.a.f = -$$1 * 0.45F * ayz.a(0.6F * $$0.u);
+      this.b.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.b.f = $$0.aa * (float) (Math.PI / 180.0);
+      float $$1 = $$0.ad;
+      float $$2 = $$0.ae;
+      this.d.e = ayz.b($$1 * 0.6662F) * 1.4F * $$2;
+      this.e.e = ayz.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.f.e = ayz.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.g.e = ayz.b($$1 * 0.6662F) * 1.4F * $$2;
    }
 }

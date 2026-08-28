@@ -1,18 +1,21 @@
-import io.netty.buffer.ByteBuf;
-
-public class adq implements yw<abl> {
-   public static final adq a = new adq();
-   public static final yn<ByteBuf, adq> b = yn.a(a);
-
-   private adq() {
-   }
+public record adq(int b, wp c) implements yw<abl> {
+   public static final yn<wa, adq> a = yn.a(yl.h, adq::b, wr.d, adq::e, adq::new);
 
    @Override
    public yy<adq> a() {
-      return age.ad;
+      return agd.ad;
    }
 
    public void a(abl $$0) {
       $$0.a(this);
+   }
+
+   @Override
+   public boolean c() {
+      return true;
+   }
+
+   public wp e() {
+      return this.c;
    }
 }

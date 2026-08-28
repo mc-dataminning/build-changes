@@ -1,9 +1,12 @@
-public enum cso {
-   a,
-   b,
-   c,
-   d,
-   e,
-   f,
-   g;
+public class cso {
+   private final String a;
+
+   public cso(String $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.a;
+   }
 }

@@ -1,49 +1,105 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class dqw extends dne {
-   public static final MapCodec<dqw> a = b(dqw::new);
+public enum dqw implements azv {
+   a("none", h.a),
+   b("clockwise_90", h.u),
+   c("180", h.c),
+   d("counterclockwise_90", h.v);
 
-   @Override
-   public MapCodec<dqw> a() {
-      return a;
+   public static final Codec<dqw> e = azv.a(dqw::values);
+   private final String f;
+   private final h g;
+
+   private dqw(final String $$0, final h $$1) {
+      this.f = $$0;
+      this.g = $$1;
    }
 
-   public dqw(dwx.d $$0) {
-      super($$0);
+   public dqw a(dqw $$0) {
+      return switch ($$0) {
+         case b -> {
+            switch (this) {
+               case a:
+                  yield b;
+               case b:
+                  yield c;
+               case c:
+                  yield d;
+               case d:
+                  yield a;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         case c -> {
+            switch (this) {
+               case a:
+                  yield c;
+               case b:
+                  yield d;
+               case c:
+                  yield a;
+               case d:
+                  yield b;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         case d -> {
+            switch (this) {
+               case a:
+                  yield d;
+               case b:
+                  yield a;
+               case c:
+                  yield b;
+               case d:
+                  yield c;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         default -> this;
+      };
    }
 
-   @Override
-   public void a(dgj $$0, dwy $$1, ji $$2, bum $$3, float $$4) {
-      if (!$$3.cf()) {
-         $$3.a($$4, 0.0F, $$0.ak().l());
-      }
+   public h a() {
+      return this.g;
    }
 
-   @Override
-   public void a(dfo $$0, bum $$1) {
-      if ($$1.cf()) {
-         super.a($$0, $$1);
+   public jn a(jn $$0) {
+      if ($$0.o() == jn.a.b) {
+         return $$0;
       } else {
-         this.a($$1);
+         return switch (this) {
+            case b -> $$0.h();
+            case c -> $$0.g();
+            case d -> $$0.i();
+            default -> $$0;
+         };
       }
    }
 
-   private void a(bum $$0) {
-      fbb $$1 = $$0.dy();
-      if ($$1.e < 0.0) {
-         double $$2 = $$0 instanceof bvi ? 1.0 : 0.8;
-         $$0.n($$1.d, -$$1.e * $$2, $$1.f);
-      }
+   public int a(int $$0, int $$1) {
+      return switch (this) {
+         case b -> ($$0 + $$1 / 4) % $$1;
+         case c -> ($$0 + $$1 / 2) % $$1;
+         case d -> ($$0 + $$1 * 3 / 4) % $$1;
+         default -> $$0;
+      };
+   }
+
+   public static dqw a(azh $$0) {
+      return af.a(values(), $$0);
+   }
+
+   public static List<dqw> b(azh $$0) {
+      return af.b(values(), $$0);
    }
 
    @Override
-   public void a(dgj $$0, ji $$1, dwy $$2, bum $$3) {
-      double $$4 = Math.abs($$3.dy().e);
-      if ($$4 < 0.1 && !$$3.ce()) {
-         double $$5 = 0.4 + $$4 * 0.2;
-         $$3.i($$3.dy().d($$5, 1.0, $$5));
-      }
-
-      super.a($$0, $$1, $$2, $$3);
+   public String c() {
+      return this.f;
    }
 }

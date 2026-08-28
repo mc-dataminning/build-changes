@@ -1,17 +1,12 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
 
-public record dab() implements dac {
-   public static final dab a = new dab();
-   public static final MapCodec<dab> b = MapCodec.unit(a);
-   public static final yn<wa, dab> c = yn.a(a);
+public record dab(int d) {
+   public static final Codec<dab> a = Codec.INT.xmap(dab::new, dab::a);
+   public static final yn<ByteBuf, dab> b = yl.g.a(dab::new, dab::a);
+   public static final dab c = new dab(4603950);
 
-   @Override
-   public dac.a<dab> a() {
-      return dac.a.c;
-   }
-
-   @Override
-   public boolean a(dgj $$0, cwq $$1, bvi $$2) {
-      return $$2.ez();
+   public int a() {
+      return this.d;
    }
 }

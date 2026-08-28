@@ -1,23 +1,20 @@
-public class gso extends gtl<cit, gyv, gcg> {
-   public gso(gsf.a $$0) {
-      super($$0, new gcg($$0.a(gfd.aP)), 0.3F);
+public class gso extends grx<chw, haj, gcq> {
+   private static final aku a = aku.b("textures/entity/cow/cow.png");
+
+   public gso(gtd.a $$0) {
+      super($$0, new gcq($$0.a(ggb.ah)), new gcq($$0.a(ggb.ai)), 0.7F);
    }
 
-   public akv a(gyv $$0) {
-      return $$0.f;
+   @Override
+   public aku b(haj $$0) {
+      return a;
    }
 
-   public gyv b() {
-      return new gyv();
+   public haj a() {
+      return new haj();
    }
 
-   public void a(cit $$0, gyv $$1, float $$2) {
+   public void a(chw $$0, haj $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.bm();
-      $$1.b.a($$0.cc);
-      $$1.c.a($$0.cd);
-      $$1.d.a($$0.ce);
-      $$1.e.a($$0.cf);
-      $$1.f = $$0.x().a().a();
    }
 }

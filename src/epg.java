@@ -1,53 +1,151 @@
-public class epg {
-   public static class a extends enr {
-      public a(ji $$0) {
-         super(eoe.aa, 0, new enf($$0));
+import com.mojang.datafixers.Products.P5;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.Optional;
+
+public abstract class epg {
+   public static final Codec<epg> b = mb.P.q().dispatch(epg::e, eph::codec);
+   private static final int a = 10387320;
+   private final km c;
+   private final epg.c d;
+   private final float e;
+   private final int f;
+   private final Optional<epg.a> g;
+
+   protected static <S extends epg> P5<Mu<S>, km, epg.c, Float, Integer, Optional<epg.a>> a(Instance<S> $$0) {
+      return $$0.group(
+         km.v(16).optionalFieldOf("locate_offset", km.h).forGetter(epg::f),
+         epg.c.e.optionalFieldOf("frequency_reduction_method", epg.c.a).forGetter(epg::g),
+         Codec.floatRange(0.0F, 1.0F).optionalFieldOf("frequency", 1.0F).forGetter(epg::h),
+         ayi.l.fieldOf("salt").forGetter(epg::i),
+         epg.a.a.optionalFieldOf("exclusion_zone").forGetter(epg::j)
+      );
+   }
+
+   protected epg(km $$0, epg.c $$1, float $$2, int $$3, Optional<epg.a> $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+   }
+
+   protected km f() {
+      return this.c;
+   }
+
+   protected epg.c g() {
+      return this.d;
+   }
+
+   protected float h() {
+      return this.e;
+   }
+
+   protected int i() {
+      return this.f;
+   }
+
+   protected Optional<epg.a> j() {
+      return this.g;
+   }
+
+   public boolean b(dzo $$0, int $$1, int $$2) {
+      return this.a($$0, $$1, $$2) && this.a($$1, $$2, $$0.d()) && this.c($$0, $$1, $$2);
+   }
+
+   public boolean a(int $$0, int $$1, long $$2) {
+      return !(this.e < 1.0F) || this.d.a($$2, this.f, $$0, $$1, this.e);
+   }
+
+   public boolean c(dzo $$0, int $$1, int $$2) {
+      return !this.g.isPresent() || !this.g.get().a($$0, $$1, $$2);
+   }
+
+   protected abstract boolean a(dzo var1, int var2, int var3);
+
+   public ji a(dgg $$0) {
+      return new ji($$0.d(), 0, $$0.e()).a(this.f());
+   }
+
+   public abstract eph<?> e();
+
+   private static boolean a(long $$0, int $$1, int $$2, int $$3, float $$4) {
+      een $$5 = new een(new edp(0L));
+      $$5.a($$0, $$1, $$2, $$3);
+      return $$5.i() < $$4;
+   }
+
+   private static boolean b(long $$0, int $$1, int $$2, int $$3, float $$4) {
+      een $$5 = new een(new edp(0L));
+      $$5.c($$0, $$2, $$3);
+      return $$5.j() < (double)$$4;
+   }
+
+   private static boolean c(long $$0, int $$1, int $$2, int $$3, float $$4) {
+      een $$5 = new een(new edp(0L));
+      $$5.a($$0, $$2, $$3, 10387320);
+      return $$5.i() < $$4;
+   }
+
+   private static boolean d(long $$0, int $$1, int $$2, int $$3, float $$4) {
+      int $$5 = $$2 >> 4;
+      int $$6 = $$3 >> 4;
+      een $$7 = new een(new edp(0L));
+      $$7.b((long)($$5 ^ $$6 << 4) ^ $$0);
+      $$7.f();
+      return $$7.a((int)(1.0F / $$4)) == 0;
+   }
+
+   @Deprecated
+   public static record a(jr<eop> b, int c) {
+      public static final Codec<epg.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(akq.a(mc.aY, eop.a, false).fieldOf("other_set").forGetter(epg.a::a), Codec.intRange(1, 16).fieldOf("chunk_count").forGetter(epg.a::b))
+               .apply($$0, epg.a::new)
+      );
+
+      boolean a(dzo $$0, int $$1, int $$2) {
+         return $$0.a(this.b, $$1, $$2, this.c);
       }
 
-      public a(tq $$0) {
-         super(eoe.aa, $$0);
+      public jr<eop> a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      boolean shouldGenerate(long var1, int var3, int var4, int var5, float var6);
+   }
+
+   public static enum c implements azv {
+      a("default", epg::a),
+      b("legacy_type_1", epg::d),
+      c("legacy_type_2", epg::c),
+      d("legacy_type_3", epg::b);
+
+      public static final Codec<epg.c> e = azv.a(epg.c::values);
+      private final String f;
+      private final epg.b g;
+
+      private c(final String $$0, final epg.b $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public boolean a(long $$0, int $$1, int $$2, int $$3, float $$4) {
+         return this.g.shouldGenerate($$0, $$1, $$2, $$3, $$4);
       }
 
       @Override
-      protected void a(eod $$0, tq $$1) {
-      }
-
-      @Override
-      public void a(dhh $$0, dhf $$1, dyu $$2, azh $$3, enf $$4, dfp $$5, ji $$6) {
-         int $$7 = $$0.a(ect.a.c, this.f.h(), this.f.j());
-         ji.a $$8 = new ji.a(this.f.h(), $$7, this.f.j());
-
-         while ($$8.v() > $$0.L_()) {
-            dwy $$9 = $$0.a_($$8);
-            dwy $$10 = $$0.a_($$8.e());
-            if ($$10 == djp.bc.m() || $$10 == djp.b.m() || $$10 == djp.g.m() || $$10 == djp.c.m() || $$10 == djp.e.m()) {
-               dwy $$11 = !$$9.l() && !this.b($$9) ? $$9 : djp.L.m();
-
-               for (jn $$12 : jn.values()) {
-                  ji $$13 = $$8.a($$12);
-                  dwy $$14 = $$0.a_($$13);
-                  if ($$14.l() || this.b($$14)) {
-                     ji $$15 = $$13.e();
-                     dwy $$16 = $$0.a_($$15);
-                     if (($$16.l() || this.b($$16)) && $$12 != jn.b) {
-                        $$0.a($$13, $$10, 3);
-                     } else {
-                        $$0.a($$13, $$11, 3);
-                     }
-                  }
-               }
-
-               this.f = new enf($$8);
-               this.a($$0, $$4, $$3, $$8, evo.F, null);
-               return;
-            }
-
-            $$8.e(0, -1, 0);
-         }
-      }
-
-      private boolean b(dwy $$0) {
-         return $$0 == djp.J.m() || $$0 == djp.K.m();
+      public String c() {
+         return this.f;
       }
    }
 }

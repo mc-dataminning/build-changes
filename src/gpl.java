@@ -1,57 +1,51 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
 
 public class gpl {
-   private final Long2ObjectMap<gpl.a> a = new Long2ObjectOpenHashMap();
+   private static final Map<duu<?>, gpk<?>> a = Maps.newHashMap();
 
-   @Nullable
-   public gpk a(dgj $$0, kk $$1) {
-      gpl.a $$2 = this.a($$0, $$1.a(), $$1.c());
-      if ($$2.a().c($$1.b())) {
-         return null;
-      } else {
-         int $$3 = $$1.a() - 1;
-         int $$4 = $$1.c() - 1;
-         int $$5 = $$1.a() + 1;
-         int $$6 = $$1.c() + 1;
-         gpj[] $$7 = new gpj[9];
-
-         for (int $$8 = $$4; $$8 <= $$6; $$8++) {
-            for (int $$9 = $$3; $$9 <= $$5; $$9++) {
-               int $$10 = gpk.a($$3, $$4, $$9, $$8);
-               gpl.a $$11 = $$9 == $$1.a() && $$8 == $$1.c() ? $$2 : this.a($$0, $$9, $$8);
-               $$7[$$10] = $$11.b();
-            }
-         }
-
-         return new gpk($$0, $$3, $$4, $$7);
-      }
+   private static <T extends dus> void a(duu<? extends T> $$0, gpk<T> $$1) {
+      a.put($$0, $$1);
    }
 
-   private gpl.a a(dgj $$0, int $$1, int $$2) {
-      return (gpl.a)this.a.computeIfAbsent(dfp.c($$1, $$2), $$1x -> new gpl.a($$0.d(dfp.a($$1x), dfp.b($$1x))));
+   public static Map<duu<?>, gpj<?>> a(gpk.a $$0) {
+      Builder<duu<?>, gpj<?>> $$1 = ImmutableMap.builder();
+      a.forEach(($$2, $$3) -> {
+         try {
+            $$1.put($$2, $$3.create($$0));
+         } catch (Exception var5) {
+            throw new IllegalStateException("Failed to create model for " + mb.j.b((duu<?>)$$2), var5);
+         }
+      });
+      return $$1.build();
    }
 
-   static final class a {
-      private final dzd a;
-      @Nullable
-      private gpj b;
-
-      a(dzd $$0) {
-         this.a = $$0;
-      }
-
-      public dzd a() {
-         return this.a;
-      }
-
-      public gpj b() {
-         if (this.b == null) {
-            this.b = new gpj(this.a);
-         }
-
-         return this.b;
-      }
+   static {
+      a(duu.h, gpx::new);
+      a(duu.i, gpt::new);
+      a(duu.j, gpz::new);
+      a(duu.l, gpv::new);
+      a(duu.b, gpp::new);
+      a(duu.d, gpp::new);
+      a(duu.c, gpp::new);
+      a(duu.n, gps::new);
+      a(duu.E, gpu::new);
+      a(duu.o, gqc::new);
+      a(duu.w, gqb::new);
+      a(duu.p, gpf::new);
+      a(duu.q, gpy::new);
+      a(duu.u, gpe::new);
+      a(duu.v, gqa::new);
+      a(duu.y, gpw::new);
+      a(duu.z, gpg::new);
+      a(duu.A, gpq::new);
+      a(duu.F, gph::new);
+      a(duu.H, gpo::new);
+      a(duu.O, gpn::new);
+      a(duu.P, gpr::new);
+      a(duu.R, gqd::new);
+      a(duu.S, gqe::new);
    }
 }

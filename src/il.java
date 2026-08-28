@@ -8,7 +8,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 public interface il<T> {
-   akv a();
+   aku a();
 
    in<T> a(@Nullable tq var1, CommandDispatcher<T> var2) throws fa;
 
@@ -17,7 +17,7 @@ public interface il<T> {
       return $$1 > 0 && $$0.charAt($$1 - 1) == '\\';
    }
 
-   static <T extends ez<T>> il<T> a(akv $$0, CommandDispatcher<T> $$1, T $$2, List<String> $$3) {
+   static <T extends ez<T>> il<T> a(aku $$0, CommandDispatcher<T> $$1, T $$2, List<String> $$3) {
       im<T> $$4 = new im<>();
 
       for (int $$5 = 0; $$5 < $$3.size(); $$5++) {

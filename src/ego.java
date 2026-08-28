@@ -1,132 +1,32 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalInt;
 
-@Deprecated
-public class ego extends efz<ego.a> {
-   private static final dwy a = djp.nE.m();
-
-   public ego(Codec<ego.a> $$0) {
+public class ego extends egu<eiw> {
+   public ego(Codec<eiw> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egb<ego.a> $$0) {
-      ji $$1 = $$0.e();
-      dhh $$2 = $$0.b();
-      azh $$3 = $$0.d();
-      ego.a $$4 = $$0.f();
-      if ($$1.v() <= $$2.L_() + 4) {
+   public boolean a(egw<eiw> $$0) {
+      dhy $$1 = $$0.b();
+      ji $$2 = $$0.e();
+      eiw $$3 = $$0.f();
+      azh $$4 = $$0.d();
+      if (!egp.a($$1, $$2)) {
          return false;
       } else {
-         $$1 = $$1.c(4);
-         boolean[] $$5 = new boolean[2048];
-         int $$6 = $$3.a(4) + 4;
+         int $$5 = $$3.c.a($$4);
+         float $$6 = $$3.i.a($$4);
+         float $$7 = $$3.h.a($$4);
+         int $$8 = $$3.d.a($$4);
+         int $$9 = $$3.d.a($$4);
 
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            double $$8 = $$3.j() * 6.0 + 3.0;
-            double $$9 = $$3.j() * 4.0 + 2.0;
-            double $$10 = $$3.j() * 6.0 + 3.0;
-            double $$11 = $$3.j() * (16.0 - $$8 - 2.0) + 1.0 + $$8 / 2.0;
-            double $$12 = $$3.j() * (8.0 - $$9 - 4.0) + 2.0 + $$9 / 2.0;
-            double $$13 = $$3.j() * (16.0 - $$10 - 2.0) + 1.0 + $$10 / 2.0;
-
-            for (int $$14 = 1; $$14 < 15; $$14++) {
-               for (int $$15 = 1; $$15 < 15; $$15++) {
-                  for (int $$16 = 1; $$16 < 7; $$16++) {
-                     double $$17 = ((double)$$14 - $$11) / ($$8 / 2.0);
-                     double $$18 = ((double)$$16 - $$12) / ($$9 / 2.0);
-                     double $$19 = ((double)$$15 - $$13) / ($$10 / 2.0);
-                     double $$20 = $$17 * $$17 + $$18 * $$18 + $$19 * $$19;
-                     if ($$20 < 1.0) {
-                        $$5[($$14 * 16 + $$15) * 8 + $$16] = true;
-                     }
-                  }
-               }
-            }
-         }
-
-         dwy $$21 = $$4.a().a($$3, $$1);
-
-         for (int $$22 = 0; $$22 < 16; $$22++) {
-            for (int $$23 = 0; $$23 < 16; $$23++) {
-               for (int $$24 = 0; $$24 < 8; $$24++) {
-                  boolean $$25 = !$$5[($$22 * 16 + $$23) * 8 + $$24]
-                     && (
-                        $$22 < 15 && $$5[(($$22 + 1) * 16 + $$23) * 8 + $$24]
-                           || $$22 > 0 && $$5[(($$22 - 1) * 16 + $$23) * 8 + $$24]
-                           || $$23 < 15 && $$5[($$22 * 16 + $$23 + 1) * 8 + $$24]
-                           || $$23 > 0 && $$5[($$22 * 16 + ($$23 - 1)) * 8 + $$24]
-                           || $$24 < 7 && $$5[($$22 * 16 + $$23) * 8 + $$24 + 1]
-                           || $$24 > 0 && $$5[($$22 * 16 + $$23) * 8 + ($$24 - 1)]
-                     );
-                  if ($$25) {
-                     dwy $$26 = $$2.a_($$1.b($$22, $$24, $$23));
-                     if ($$24 >= 4 && $$26.n()) {
-                        return false;
-                     }
-
-                     if ($$24 < 4 && !$$26.e() && $$2.a_($$1.b($$22, $$24, $$23)) != $$21) {
-                        return false;
-                     }
-                  }
-               }
-            }
-         }
-
-         for (int $$27 = 0; $$27 < 16; $$27++) {
-            for (int $$28 = 0; $$28 < 16; $$28++) {
-               for (int $$29 = 0; $$29 < 8; $$29++) {
-                  if ($$5[($$27 * 16 + $$28) * 8 + $$29]) {
-                     ji $$30 = $$1.b($$27, $$29, $$28);
-                     if (this.c($$2.a_($$30))) {
-                        boolean $$31 = $$29 >= 4;
-                        $$2.a($$30, $$31 ? a : $$21, 2);
-                        if ($$31) {
-                           $$2.a($$30, a.b(), 0);
-                           this.a($$2, $$30);
-                        }
-                     }
-                  }
-               }
-            }
-         }
-
-         dwy $$32 = $$4.b().a($$3, $$1);
-         if (!$$32.l()) {
-            for (int $$33 = 0; $$33 < 16; $$33++) {
-               for (int $$34 = 0; $$34 < 16; $$34++) {
-                  for (int $$35 = 0; $$35 < 8; $$35++) {
-                     boolean $$36 = !$$5[($$33 * 16 + $$34) * 8 + $$35]
-                        && (
-                           $$33 < 15 && $$5[(($$33 + 1) * 16 + $$34) * 8 + $$35]
-                              || $$33 > 0 && $$5[(($$33 - 1) * 16 + $$34) * 8 + $$35]
-                              || $$34 < 15 && $$5[($$33 * 16 + $$34 + 1) * 8 + $$35]
-                              || $$34 > 0 && $$5[($$33 * 16 + ($$34 - 1)) * 8 + $$35]
-                              || $$35 < 7 && $$5[($$33 * 16 + $$34) * 8 + $$35 + 1]
-                              || $$35 > 0 && $$5[($$33 * 16 + $$34) * 8 + ($$35 - 1)]
-                        );
-                     if ($$36 && ($$35 < 4 || $$3.a(2) != 0)) {
-                        dwy $$37 = $$2.a_($$1.b($$33, $$35, $$34));
-                        if ($$37.e() && !$$37.a(awp.bR)) {
-                           ji $$38 = $$1.b($$33, $$35, $$34);
-                           $$2.a($$38, $$32, 2);
-                           this.a($$2, $$38);
-                        }
-                     }
-                  }
-               }
-            }
-         }
-
-         if ($$21.y().a(awv.a)) {
-            for (int $$39 = 0; $$39 < 16; $$39++) {
-               for (int $$40 = 0; $$40 < 16; $$40++) {
-                  int $$41 = 4;
-                  ji $$42 = $$1.b($$39, 4, $$40);
-                  if ($$2.t($$42).a().a($$2, $$42, false) && this.c($$2.a_($$42))) {
-                     $$2.a($$42, djp.eb.m(), 2);
-                  }
-               }
+         for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
+            for (int $$11 = -$$9; $$11 <= $$9; $$11++) {
+               double $$12 = this.a($$8, $$9, $$10, $$11, $$3);
+               ji $$13 = $$2.b($$10, 0, $$11);
+               this.a($$1, $$4, $$13, $$10, $$11, $$6, $$12, $$5, $$7, $$3);
             }
          }
 
@@ -134,21 +34,140 @@ public class ego extends efz<ego.a> {
       }
    }
 
-   private boolean c(dwy $$0) {
-      return !$$0.a(awp.bQ);
+   private void a(dhy $$0, azh $$1, ji $$2, int $$3, int $$4, float $$5, double $$6, int $$7, float $$8, eiw $$9) {
+      Optional<ede> $$10 = ede.a($$0, $$2, $$9.b, egp::c, egp::d);
+      if (!$$10.isEmpty()) {
+         OptionalInt $$11 = $$10.get().b();
+         OptionalInt $$12 = $$10.get().c();
+         if (!$$11.isEmpty() || !$$12.isEmpty()) {
+            boolean $$13 = $$1.i() < $$5;
+            ede $$15;
+            if ($$13 && $$12.isPresent() && this.b($$0, $$2.h($$12.getAsInt()))) {
+               int $$14 = $$12.getAsInt();
+               $$15 = $$10.get().a(OptionalInt.of($$14 - 1));
+               $$0.a($$2.h($$14), dkg.J.m(), 2);
+            } else {
+               $$15 = $$10.get();
+            }
+
+            OptionalInt $$17 = $$15.c();
+            boolean $$18 = $$1.j() < $$6;
+            int $$22;
+            if ($$11.isPresent() && $$18 && !this.a((dhc)$$0, $$2.h($$11.getAsInt()))) {
+               int $$19 = $$9.g.a($$1);
+               this.a($$0, $$2.h($$11.getAsInt()), $$19, jn.b);
+               int $$20;
+               if ($$17.isPresent()) {
+                  $$20 = Math.min($$7, $$11.getAsInt() - $$17.getAsInt());
+               } else {
+                  $$20 = $$7;
+               }
+
+               $$22 = this.a($$1, $$3, $$4, $$8, $$20, $$9);
+            } else {
+               $$22 = 0;
+            }
+
+            boolean $$24 = $$1.j() < $$6;
+            int $$26;
+            if ($$17.isPresent() && $$24 && !this.a((dhc)$$0, $$2.h($$17.getAsInt()))) {
+               int $$25 = $$9.g.a($$1);
+               this.a($$0, $$2.h($$17.getAsInt()), $$25, jn.a);
+               if ($$11.isPresent()) {
+                  $$26 = Math.max(0, $$22 + ayz.b($$1, -$$9.e, $$9.e));
+               } else {
+                  $$26 = this.a($$1, $$3, $$4, $$8, $$7, $$9);
+               }
+            } else {
+               $$26 = 0;
+            }
+
+            int $$36;
+            int $$35;
+            if ($$11.isPresent() && $$17.isPresent() && $$11.getAsInt() - $$22 <= $$17.getAsInt() + $$26) {
+               int $$29 = $$17.getAsInt();
+               int $$30 = $$11.getAsInt();
+               int $$31 = Math.max($$30 - $$22, $$29 + 1);
+               int $$32 = Math.min($$29 + $$26, $$30 - 1);
+               int $$33 = ayz.b($$1, $$31, $$32 + 1);
+               int $$34 = $$33 - 1;
+               $$35 = $$30 - $$33;
+               $$36 = $$34 - $$29;
+            } else {
+               $$35 = $$22;
+               $$36 = $$26;
+            }
+
+            boolean $$39 = $$1.h() && $$35 > 0 && $$36 > 0 && $$15.d().isPresent() && $$35 + $$36 == $$15.d().getAsInt();
+            if ($$11.isPresent()) {
+               egp.a($$0, $$2.h($$11.getAsInt() - 1), jn.a, $$35, $$39);
+            }
+
+            if ($$17.isPresent()) {
+               egp.a($$0, $$2.h($$17.getAsInt() + 1), jn.b, $$36, $$39);
+            }
+         }
+      }
    }
 
-   public static record a(eke b, eke c) implements eid {
-      public static final Codec<ego.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(eke.a.fieldOf("fluid").forGetter(ego.a::a), eke.a.fieldOf("barrier").forGetter(ego.a::b)).apply($$0, ego.a::new)
-      );
+   private boolean a(dhc $$0, ji $$1) {
+      return $$0.a_($$1).a(dkg.K);
+   }
 
-      public eke a() {
-         return this.b;
+   private int a(azh $$0, int $$1, int $$2, float $$3, int $$4, eiw $$5) {
+      if ($$0.i() > $$3) {
+         return 0;
+      } else {
+         int $$6 = Math.abs($$1) + Math.abs($$2);
+         float $$7 = (float)ayz.a((double)$$6, 0.0, (double)$$5.l, (double)$$4 / 2.0, 0.0);
+         return (int)a($$0, 0.0F, (float)$$4, $$7, (float)$$5.f);
       }
+   }
 
-      public eke b() {
-         return this.c;
+   private boolean b(dhy $$0, ji $$1) {
+      dxq $$2 = $$0.a_($$1);
+      if (!$$2.a(dkg.J) && !$$2.a(dkg.sW) && !$$2.a(dkg.sV)) {
+         if ($$0.a_($$1.d()).y().a(awv.a)) {
+            return false;
+         } else {
+            for (jn $$3 : jn.c.a) {
+               if (!this.a((dha)$$0, $$1.a($$3))) {
+                  return false;
+               }
+            }
+
+            return this.a((dha)$$0, $$1.e());
+         }
+      } else {
+         return false;
       }
+   }
+
+   private boolean a(dha $$0, ji $$1) {
+      dxq $$2 = $$0.a_($$1);
+      return $$2.a(awp.bg) || $$2.y().a(awv.a);
+   }
+
+   private void a(dhy $$0, ji $$1, int $$2, jn $$3) {
+      ji.a $$4 = $$1.k();
+
+      for (int $$5 = 0; $$5 < $$2; $$5++) {
+         if (!egp.c($$0, $$4)) {
+            return;
+         }
+
+         $$4.c($$3);
+      }
+   }
+
+   private double a(int $$0, int $$1, int $$2, int $$3, eiw $$4) {
+      int $$5 = $$0 - Math.abs($$2);
+      int $$6 = $$1 - Math.abs($$3);
+      int $$7 = Math.min($$5, $$6);
+      return (double)ayz.b((float)$$7, 0.0F, (float)$$4.k, $$4.j, 1.0F);
+   }
+
+   private static float a(azh $$0, float $$1, float $$2, float $$3, float $$4) {
+      return brx.a($$0, $$3, $$4, $$1, $$2);
    }
 }

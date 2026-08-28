@@ -1,17 +1,15 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Set;
 
-public record eyy(ezb b) implements ezb {
-   public static final MapCodec<eyy> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ezb.e.fieldOf("term").forGetter(eyy::c)).apply($$0, eyy::new));
+public class eyy extends eyb {
+   static final MapCodec<eyy> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(fau.a.fieldOf("amplifier").forGetter($$0x -> $$0x.b)).apply($$0, eyy::new));
+   private final fat b;
 
-   @Override
-   public ezc b() {
-      return ezd.a;
-   }
-
-   public boolean a(evs $$0) {
-      return !this.b.test($$0);
+   private eyy(List<ezx> $$0, fat $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
@@ -20,17 +18,22 @@ public record eyy(ezb b) implements ezb {
    }
 
    @Override
-   public void a(evy $$0) {
-      ezb.super.a($$0);
-      this.b.a($$0);
+   public eyd<eyy> b() {
+      return eye.Q;
    }
 
-   public static ezb.a a(ezb.a $$0) {
-      eyy $$1 = new eyy($$0.build());
-      return () -> $$1;
+   @Override
+   public cxh a(cxh $$0, ewo $$1) {
+      int $$2 = ayz.a(this.b.a($$1), 0, 4);
+      $$0.b(kv.ac, new dad($$2));
+      return $$0;
    }
 
-   public ezb c() {
+   public fat c() {
       return this.b;
+   }
+
+   public static eyb.a<?> a(fat $$0) {
+      return a($$1 -> new eyy($$1, $$0));
    }
 }

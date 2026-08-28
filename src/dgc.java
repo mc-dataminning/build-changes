@@ -1,27 +1,19 @@
-import java.util.Optional;
+public interface dgc extends dgf {
+   float a(jn var1, boolean var2);
 
-public class dgc {
-   public Optional<Float> a(dgb $$0, dfo $$1, ji $$2, dwy $$3, eta $$4) {
-      return $$3.l() && $$4.c() ? Optional.empty() : Optional.of(Math.max($$3.b().e(), $$4.i()));
+   etl x_();
+
+   int a(ji var1, dgk var2);
+
+   default int a(dhi $$0, ji $$1) {
+      return this.x_().a($$0).b($$1);
    }
 
-   public boolean a(dgb $$0, dfo $$1, ji $$2, dwy $$3, float $$4) {
-      return true;
+   default int b(ji $$0, int $$1) {
+      return this.x_().a($$0, $$1);
    }
 
-   public boolean a(dgb $$0, bum $$1) {
-      return true;
-   }
-
-   public float a(bum $$0) {
-      return 1.0F;
-   }
-
-   public float a(dgb $$0, bum $$1, float $$2) {
-      float $$3 = $$0.e() * 2.0F;
-      fbb $$4 = $$0.f();
-      double $$5 = Math.sqrt($$1.g($$4)) / (double)$$3;
-      double $$6 = (1.0 - $$5) * (double)$$2;
-      return (float)(($$6 * $$6 + $$6) / 2.0 * 7.0 * (double)$$3 + 1.0);
+   default boolean h(ji $$0) {
+      return this.a(dhi.a, $$0) >= 15;
    }
 }

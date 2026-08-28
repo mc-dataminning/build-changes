@@ -1,93 +1,95 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class ewr extends exf {
-   public static final MapCodec<ewr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  mb.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
-                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dya::f).toList())
-               )
-            )
-            .apply($$0, ewr::new)
-   );
-   private final jr<djn> b;
-   private final Set<dya<?>> c;
+public class ewr {
+   private final ard a;
+   private final bak b;
+   private final Map<aku, ewr.b> c;
+   private final float d;
 
-   ewr(List<ezb> $$0, jr<djn> $$1, Set<dya<?>> $$2) {
-      super($$0);
+   public ewr(ard $$0, bak $$1, Map<aku, ewr.b> $$2, float $$3) {
+      this.a = $$0;
       this.b = $$1;
       this.c = $$2;
+      this.d = $$3;
    }
 
-   private ewr(List<ezb> $$0, jr<djn> $$1, List<String> $$2) {
-      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
+   public ard a() {
+      return this.a;
    }
 
-   @Override
-   public exh<ewr> b() {
-      return exi.D;
+   public bak b() {
+      return this.b;
    }
 
-   @Override
-   public Set<bai<?>> a() {
-      return Set.of(eym.g);
-   }
-
-   @Override
-   protected cwq a(cwq $$0, evs $$1) {
-      dwy $$2 = $$1.c(eym.g);
+   public void a(aku $$0, Consumer<cxh> $$1) {
+      ewr.b $$2 = this.c.get($$0);
       if ($$2 != null) {
-         $$0.a(kv.am, cys.a, $$1x -> {
-            for (dya<?> $$2x : this.c) {
-               if ($$2.b($$2x)) {
-                  $$1x = $$1x.a($$2x, $$2);
-               }
-            }
-
-            return $$1x;
-         });
+         $$2.add($$1);
       }
-
-      return $$0;
    }
 
-   public static ewr.a a(djn $$0) {
-      return new ewr.a($$0);
+   public float c() {
+      return this.d;
    }
 
-   public static class a extends exf.a<ewr.a> {
-      private final jr<djn> a;
-      private final Builder<dya<?>> b = ImmutableSet.builder();
+   public static class a {
+      private final ard a;
+      private final bak.a b = new bak.a();
+      private final Map<aku, ewr.b> c = Maps.newHashMap();
+      private float d;
 
-      a(djn $$0) {
-         this.a = $$0.p();
+      public a(ard $$0) {
+         this.a = $$0;
       }
 
-      public ewr.a a(dya<?> $$0) {
-         if (!this.a.a().l().d().contains($$0)) {
-            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
+      public ard a() {
+         return this.a;
+      }
+
+      public <T> ewr.a a(bai<T> $$0, T $$1) {
+         this.b.a($$0, $$1);
+         return this;
+      }
+
+      public <T> ewr.a b(bai<T> $$0, @Nullable T $$1) {
+         this.b.b($$0, $$1);
+         return this;
+      }
+
+      public <T> T a(bai<T> $$0) {
+         return this.b.a($$0);
+      }
+
+      @Nullable
+      public <T> T b(bai<T> $$0) {
+         return this.b.b($$0);
+      }
+
+      public ewr.a a(aku $$0, ewr.b $$1) {
+         ewr.b $$2 = this.c.put($$0, $$1);
+         if ($$2 != null) {
+            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
          } else {
-            this.b.add($$0);
             return this;
          }
       }
 
-      protected ewr.a a() {
+      public ewr.a a(float $$0) {
+         this.d = $$0;
          return this;
       }
 
-      @Override
-      public exg b() {
-         return new ewr(this.g(), this.a, this.b.build());
+      public ewr a(baj $$0) {
+         bak $$1 = this.b.a($$0);
+         return new ewr(this.a, $$1, this.c, this.d);
       }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      void add(Consumer<cxh> var1);
    }
 }

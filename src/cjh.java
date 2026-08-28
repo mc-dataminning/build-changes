@@ -1,24 +1,21 @@
-import java.util.function.IntFunction;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public enum cjh {
-   a(0),
-   b(1),
-   c(2),
-   d(3),
-   e(4);
+public class cjh {
+   public static bxs<bvy> a() {
+      return cbe.a(
+         (Function<cbe.b<bvy>, ? extends App<cbe.c<bvy>, cbh<bvy>>>)($$0 -> $$0.group($$0.b(cfc.N), $$0.a(cfc.y)).apply($$0, ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                  int $$6 = $$0.<Integer>b($$1);
+                  if ($$6 <= 0) {
+                     $$1.b();
+                     $$2.b();
+                     $$4.ea().f();
+                  } else {
+                     $$1.a($$6 - 1);
+                  }
 
-   private static final IntFunction<cjh> f = axq.a(cjh::a, values(), axq.a.b);
-   private final int g;
-
-   private cjh(final int $$0) {
-      this.g = $$0;
-   }
-
-   public int a() {
-      return this.g;
-   }
-
-   public static cjh a(int $$0) {
-      return f.apply($$0);
+                  return true;
+               }))
+      );
    }
 }

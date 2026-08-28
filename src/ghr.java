@@ -1,35 +1,4 @@
-import java.net.InetSocketAddress;
+import java.util.Map;
 
-public interface ghr {
-   String a();
-
-   String b();
-
-   int c();
-
-   InetSocketAddress d();
-
-   static ghr a(final InetSocketAddress $$0) {
-      return new ghr() {
-         @Override
-         public String a() {
-            return $$0.getAddress().getHostName();
-         }
-
-         @Override
-         public String b() {
-            return $$0.getAddress().getHostAddress();
-         }
-
-         @Override
-         public int c() {
-            return $$0.getPort();
-         }
-
-         @Override
-         public InetSocketAddress d() {
-            return $$0;
-         }
-      };
-   }
+public record ghr(Map<aku, byte[]> a) {
 }

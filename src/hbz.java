@@ -1,18 +1,26 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public record hbz(int b) implements hby {
-   public static final MapCodec<hbz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayi.l.optionalFieldOf("index", 0).forGetter(hbz::b)).apply($$0, hbz::new));
+public class hbz extends haj {
+   private static final aku j = aku.b("textures/entity/wolf/wolf.png");
+   public boolean a;
+   public boolean b;
+   public float c = (float) (Math.PI / 5);
+   public float d;
+   public float e;
+   public float f = 1.0F;
+   public aku g = j;
+   @Nullable
+   public cwe h;
+   public cxh i = cxh.k;
 
-   @Override
-   public boolean a(cwq $$0, @Nullable gga $$1, @Nullable bvi $$2, int $$3, cwo $$4) {
-      cza $$5 = $$0.a(kv.p);
-      return $$5 != null ? $$5.b(this.b) == Boolean.TRUE : false;
-   }
+   public float a(float $$0) {
+      float $$1 = (this.e + $$0) / 1.8F;
+      if ($$1 < 0.0F) {
+         $$1 = 0.0F;
+      } else if ($$1 > 1.0F) {
+         $$1 = 1.0F;
+      }
 
-   @Override
-   public MapCodec<hbz> a() {
-      return a;
+      return ayz.a($$1 * (float) Math.PI) * ayz.a($$1 * (float) Math.PI * 11.0F) * 0.15F * (float) Math.PI;
    }
 }

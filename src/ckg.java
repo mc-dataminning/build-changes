@@ -1,26 +1,57 @@
 import javax.annotation.Nullable;
 
-public interface ckg {
-   boolean a();
+public class ckg extends cjw {
+   private static final bvd bF = bvi.bO.n().a(bvc.a().a(bvb.a, 0.0F, bvi.bO.m() - 0.03125F, 0.0F)).a(0.5F);
 
-   void b();
+   public ckg(bvi<? extends ckg> $$0, dgz $$1) {
+      super($$0, $$1);
+   }
 
-   void a(ard var1);
+   public static bxf.a q() {
+      return gU().a(bxg.s, 15.0).a(bxg.v, 0.2F);
+   }
 
-   void a(cjv var1, ji var2, btc var3, @Nullable coy var4);
+   public static boolean c(bvi<? extends chp> $$0, dha $$1, bvh $$2, ji $$3, azh $$4) {
+      return !bvh.a($$2) ? chp.b($$0, $$1, $$2, $$3, $$4) : bvh.b($$2) || a($$1, $$3);
+   }
 
-   void c();
+   @Override
+   protected void a(azh $$0) {
+      this.g(bxg.o).a(a($$0::j));
+   }
 
-   void d();
+   @Override
+   protected avz u() {
+      return awa.Ey;
+   }
 
-   float e();
+   @Override
+   protected avz l_() {
+      return awa.Ez;
+   }
 
-   float g();
-
-   ckm<? extends ckg> h();
+   @Override
+   protected avz e(btp $$0) {
+      return awa.EA;
+   }
 
    @Nullable
-   fbb f();
+   @Override
+   public buq a(ard $$0, buq $$1) {
+      return bvi.bO.a($$0, bvh.e);
+   }
 
-   float a(btc var1, float var2);
+   @Override
+   public bsy b(cpr $$0, bsx $$1) {
+      return (bsy)(!this.gJ() ? bsy.e : super.b($$0, $$1));
+   }
+
+   @Override
+   protected void gK() {
+   }
+
+   @Override
+   public bvd e(bwk $$0) {
+      return this.n_() ? bF : super.e($$0);
+   }
 }

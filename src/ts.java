@@ -65,7 +65,7 @@ public class ts implements un {
 
    @Override
    public String toString() {
-      return this.u_();
+      return this.p_();
    }
 
    public ts e() {

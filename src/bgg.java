@@ -1,28 +1,25 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
 
-public class bgg extends DataFix {
-   public bgg(Schema $$0) {
-      super($$0, false);
+public class bgg extends bgy {
+   public bgg(Schema $$0, boolean $$1) {
+      super($$0, $$1, "JigsawPropertiesFix", bic.s, "minecraft:jigsaw");
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.update("ExitPortalLocation", bap::a);
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      String $$1 = $$0.get("attachement_type").asString("minecraft:empty");
+      String $$2 = $$0.get("target_pool").asString("minecraft:empty");
+      return $$0.set("name", $$0.createString($$1))
+         .set("target", $$0.createString($$1))
+         .remove("attachement_type")
+         .set("pool", $$0.createString($$2))
+         .remove("target_pool");
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("LegacyDragonFightFix", this.getInputSchema().getType(bhy.a), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
-            OptionalDynamic<?> $$1 = $$0x.get("DragonFight");
-            if ($$1.result().isPresent()) {
-               return $$0x;
-            } else {
-               Dynamic<?> $$2 = $$0x.get("DimensionData").get("1").get("DragonFight").orElseEmptyMap();
-               return $$0x.set("DragonFight", a($$2));
-            }
-         }));
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), bgg::a);
    }
 }

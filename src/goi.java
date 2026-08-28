@@ -1,59 +1,90 @@
-public class goi implements gol<dtw> {
-   private final gcx a;
-   private final gcx b;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import javax.annotation.Nullable;
 
-   public goi(gom.a $$0) {
-      this($$0.f());
+public class goi {
+   public float[] a;
+   public final int b;
+
+   public goi(@Nullable float[] $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public goi(gfa $$0) {
-      this.a = new gcx.a($$0.a(gfd.w), gmj::d);
-      this.b = new gcx.a($$0.a(gfd.v), gmj::d);
-   }
-
-   public static gfk b() {
-      gfm $$0 = new gfm();
-      gfo $$1 = $$0.a();
-      $$1.a("main", gfj.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), gfg.a);
-      $$1.a("left_leg", gfj.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), gfg.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
-      $$1.a("right_leg", gfj.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), gfg.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
-      return gfk.a($$0, 64, 64);
-   }
-
-   public static gfk c() {
-      gfm $$0 = new gfm();
-      gfo $$1 = $$0.a();
-      $$1.a("main", gfj.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), gfg.a);
-      $$1.a("left_leg", gfj.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), gfg.b((float) (Math.PI / 2), 0.0F, 0.0F));
-      $$1.a("right_leg", gfj.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), gfg.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
-      return gfk.a($$0, 64, 64);
-   }
-
-   public void a(dtw $$0, float $$1, ffv $$2, glz $$3, int $$4, int $$5) {
-      dgj $$6 = $$0.i();
-      if ($$6 != null) {
-         hha $$7 = gmu.a($$0.c());
-         dwy $$8 = $$0.m();
-         dlv.c<? extends dtw> $$9 = dlv.a(duc.z, djg::i, djg::h, dkq.c, $$8, $$6, $$0.aA_(), ($$0x, $$1x) -> false);
-         int $$10 = $$9.apply(new goo<>()).get($$4);
-         this.a($$2, $$3, $$8.c(djg.b) == dxl.a ? this.a : this.b, $$8.c(djg.aF), $$7, $$10, $$5, false);
+   public float a(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
+      } else {
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
       }
    }
 
-   public void a(ffv $$0, glz $$1, int $$2, int $$3, hha $$4) {
-      this.a($$0, $$1, this.a, jn.d, $$4, $$2, $$3, false);
-      this.a($$0, $$1, this.b, jn.d, $$4, $$2, $$3, true);
+   public float b(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
+      } else {
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
+      }
    }
 
-   private void a(ffv $$0, glz $$1, gcx $$2, jn $$3, hha $$4, int $$5, int $$6, boolean $$7) {
-      $$0.a();
-      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
-      $$0.a(a.b.rotationDegrees(90.0F));
-      $$0.a(0.5F, 0.5F, 0.5F);
-      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
-      $$0.a(-0.5F, -0.5F, -0.5F);
-      ffz $$8 = $$4.a($$1, gmj::d);
-      $$2.a($$0, $$8, $$5, $$6);
-      $$0.b();
+   private int d(int $$0) {
+      return ($$0 + this.b / 90) % 4;
+   }
+
+   public int c(int $$0) {
+      return ($$0 + 4 - this.b / 90) % 4;
+   }
+
+   public void a(float[] $$0) {
+      if (this.a == null) {
+         this.a = $$0;
+      }
+   }
+
+   protected static class a implements JsonDeserializer<goi> {
+      private static final int a = 0;
+
+      public goi a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         float[] $$4 = this.b($$3);
+         int $$5 = this.a($$3);
+         return new goi($$4, $$5);
+      }
+
+      protected int a(JsonObject $$0) {
+         int $$1 = ayp.a($$0, "rotation", 0);
+         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
+            return $$1;
+         } else {
+            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
+         }
+      }
+
+      @Nullable
+      private float[] b(JsonObject $$0) {
+         if (!$$0.has("uv")) {
+            return null;
+         } else {
+            JsonArray $$1 = ayp.v($$0, "uv");
+            if ($$1.size() != 4) {
+               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
+            } else {
+               float[] $$2 = new float[4];
+
+               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+                  $$2[$$3] = ayp.e($$1.get($$3), "uv[" + $$3 + "]");
+               }
+
+               return $$2;
+            }
+         }
+      }
    }
 }

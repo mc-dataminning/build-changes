@@ -1,22 +1,18 @@
-import java.util.Arrays;
-import java.util.function.Function;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public interface exc<T extends exc<T>> {
-   T b(exg.a var1);
+public class exc {
+   public static final Codec<exe> a = mb.D.q().dispatch(exe::a, exf::a);
+   public static final exf b = a("empty", ewz.a);
+   public static final exf c = a("item", exb.a);
+   public static final exf d = a("loot_table", exh.a);
+   public static final exf e = a("dynamic", ewy.a);
+   public static final exf f = a("tag", exj.a);
+   public static final exf g = a("alternatives", ewv.a);
+   public static final exf h = a("sequence", exi.a);
+   public static final exf i = a("group", exa.a);
 
-   default <E> T a(Iterable<E> $$0, Function<E, exg.a> $$1) {
-      T $$2 = this.c();
-
-      for (E $$3 : $$0) {
-         $$2 = $$2.b($$1.apply($$3));
-      }
-
-      return $$2;
+   private static exf a(String $$0, MapCodec<? extends exe> $$1) {
+      return ke.a(mb.D, aku.b($$0), new exf($$1));
    }
-
-   default <E> T a(E[] $$0, Function<E, exg.a> $$1) {
-      return this.a(Arrays.asList($$0), $$1);
-   }
-
-   T c();
 }

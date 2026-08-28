@@ -1,79 +1,43 @@
-public class gjn extends gki {
-   private final gkd a;
+public class gjn extends glg {
+   private final glb a;
 
-   gjn(gga $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gkd $$7) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.96F;
+   protected gjn(ggy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, glb $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.u = -0.1F;
+      this.B = 0.9F;
       this.a = $$7;
-      float $$8 = 2.5F;
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
-      float $$9 = 1.0F - (float)(Math.random() * 0.3F);
-      this.v = $$9;
-      this.w = $$9;
-      this.x = $$9;
-      this.D *= 1.875F;
-      int $$10 = (int)(8.0 / (Math.random() * 0.8 + 0.3));
-      this.t = (int)Math.max((float)$$10 * 2.5F, 1.0F);
-      this.n = false;
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      float $$8 = this.r.i() * 0.3F + 0.7F;
+      this.v = $$8;
+      this.w = $$8;
+      this.x = $$8;
+      this.D = 0.1F * (this.r.i() * this.r.i() * 6.0F + 1.0F);
+      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
       this.b($$7);
    }
 
    @Override
-   public gjm b() {
-      return gjm.c;
-   }
-
-   @Override
-   public float b(float $$0) {
-      return this.D * ayz.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public gkk b() {
+      return gkk.b;
    }
 
    @Override
    public void a() {
       super.a();
-      if (!this.o) {
-         this.b(this.a);
-         coy $$0 = this.c.a(this.g, this.h, this.i, 2.0, false);
-         if ($$0 != null) {
-            double $$1 = $$0.dC();
-            if (this.h > $$1) {
-               this.h = this.h + ($$1 - this.h) * 0.2;
-               this.k = this.k + ($$0.dy().e - this.k) * 0.2;
-               this.c(this.g, this.h, this.i);
-            }
-         }
-      }
+      this.b(this.a);
    }
 
-   public static class a implements gjl<lx> {
-      private final gkd a;
+   public static class a implements gkj<lx> {
+      private final glb a;
 
-      public a(gkd $$0) {
+      public a(glb $$0) {
          this.a = $$0;
       }
 
-      public gji a(lx $$0, gga $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          return new gjn($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
-   }
-
-   public static class b implements gjl<lx> {
-      private final gkd a;
-
-      public b(gkd $$0) {
-         this.a = $$0;
-      }
-
-      public gji a(lx $$0, gga $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gji $$8 = new gjn($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.a(200.0F, 50.0F, 120.0F);
-         $$8.e(0.4F);
-         return $$8;
       }
    }
 }

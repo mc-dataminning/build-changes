@@ -1,159 +1,104 @@
-public class duh extends dvi implements dvg {
-   private static final int d = 1;
-   private ka<cwq> e = ka.a(27, cwq.j);
-   private final dun f = new dun() {
-      @Override
-      protected void a(dgj $$0, ji $$1, dwy $$2) {
-         duh.a($$0, $$1, $$2, awa.eS);
-      }
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-      @Override
-      protected void b(dgj $$0, ji $$1, dwy $$2) {
-         duh.a($$0, $$1, $$2, awa.eQ);
-      }
+public class duh extends dus implements btb {
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = 6;
+   private static final String c = "patterns";
+   @Nullable
+   private wp d;
+   private final cwe e;
+   private duj f = duj.a;
 
-      @Override
-      protected void a(dgj $$0, ji $$1, dwy $$2, int $$3, int $$4) {
-         duh.this.a($$0, $$1, $$2, $$3, $$4);
-      }
-
-      @Override
-      protected boolean a(coy $$0) {
-         if (!($$0.cd instanceof csm)) {
-            return false;
-         } else {
-            bse $$1 = ((csm)$$0.cd).l();
-            return $$1 == duh.this || $$1 instanceof bsd && ((bsd)$$1).a(duh.this);
-         }
-      }
-   };
-   private final dui g = new dui();
-
-   protected duh(duc<?> $$0, ji $$1, dwy $$2) {
-      super($$0, $$1, $$2);
+   public duh(ji $$0, dxq $$1) {
+      this($$0, $$1, ((div)$$1.b()).b());
    }
 
-   public duh(ji $$0, dwy $$1) {
-      this(duc.b, $$0, $$1);
+   public duh(ji $$0, dxq $$1, cwe $$2) {
+      super(duu.u, $$0, $$1);
+      this.e = $$2;
    }
 
    @Override
-   public int b() {
-      return 27;
+   public wp al() {
+      return (wp)(this.d != null ? this.d : wp.c("block.minecraft.banner"));
    }
 
+   @Nullable
    @Override
-   protected wp j() {
-      return wp.c("container.chest");
-   }
-
-   @Override
-   protected void a(tq $$0, jt.a $$1) {
-      super.a($$0, $$1);
-      this.e = ka.a(this.b(), cwq.j);
-      if (!this.b_($$0)) {
-         bsf.b($$0, this.e, $$1);
-      }
+   public wp an() {
+      return this.d;
    }
 
    @Override
    protected void b(tq $$0, jt.a $$1) {
       super.b($$0, $$1);
-      if (!this.c_($$0)) {
-         bsf.a($$0, this.e, $$1);
+      aks<un> $$2 = $$1.a(ue.a);
+      if (!this.f.equals(duj.a)) {
+         $$0.a("patterns", (un)duj.b.encodeStart($$2, this.f).getOrThrow());
       }
-   }
 
-   public static void a(dgj $$0, ji $$1, dwy $$2, duh $$3) {
-      $$3.g.a();
-   }
-
-   static void a(dgj $$0, ji $$1, dwy $$2, avz $$3) {
-      dxq $$4 = $$2.c(dkq.d);
-      if ($$4 != dxq.b) {
-         double $$5 = (double)$$1.u() + 0.5;
-         double $$6 = (double)$$1.v() + 0.5;
-         double $$7 = (double)$$1.w() + 0.5;
-         if ($$4 == dxq.c) {
-            jn $$8 = dkq.i($$2);
-            $$5 += (double)$$8.j() * 0.5;
-            $$7 += (double)$$8.l() * 0.5;
-         }
-
-         $$0.a(null, $$5, $$6, $$7, $$3, awb.e, 0.5F, $$0.A.i() * 0.1F + 0.9F);
+      if (this.d != null) {
+         $$0.a("CustomName", (un)wr.a.encodeStart($$2, this.d).getOrThrow());
       }
    }
 
    @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.g.a($$1 > 0);
-         return true;
-      } else {
-         return super.a_($$0, $$1);
+   protected void a(tq $$0, jt.a $$1) {
+      super.a($$0, $$1);
+      if ($$0.e("CustomName")) {
+         this.d = a($$0.c("CustomName"), $$1);
+      }
+
+      if ($$0.e("patterns")) {
+         duj.b
+            .parse($$1.a(ue.a), $$0.c("patterns"))
+            .resultOrPartial($$0x -> b.error("Failed to parse banner patterns: '{}'", $$0x))
+            .ifPresent($$0x -> this.f = $$0x);
       }
    }
 
-   @Override
-   public void c_(coy $$0) {
-      if (!this.p && !$$0.Z_()) {
-         this.f.a($$0, this.i(), this.aA_(), this.m());
-      }
+   public abr a() {
+      return abr.a(this);
    }
 
    @Override
-   public void c(coy $$0) {
-      if (!this.p && !$$0.Z_()) {
-         this.f.b($$0, this.i(), this.aA_(), this.m());
-      }
+   public tq a(jt.a $$0) {
+      return this.d($$0);
    }
 
-   @Override
-   protected ka<cwq> f() {
+   public duj b() {
+      return this.f;
+   }
+
+   public cxh c() {
+      cxh $$0 = new cxh(djj.a(this.e));
+      $$0.b(this.q());
+      return $$0;
+   }
+
+   public cwe f() {
       return this.e;
    }
 
    @Override
-   protected void a(ka<cwq> $$0) {
-      this.e = $$0;
+   protected void a(dus.b $$0) {
+      super.a($$0);
+      this.f = $$0.a(kv.ak, duj.a);
+      this.d = $$0.a(kv.g);
    }
 
    @Override
-   public float a(float $$0) {
-      return this.g.a($$0);
-   }
-
-   public static int a(dfo $$0, ji $$1) {
-      dwy $$2 = $$0.a_($$1);
-      if ($$2.x()) {
-         dua $$3 = $$0.c_($$1);
-         if ($$3 instanceof duh) {
-            return ((duh)$$3).f.a();
-         }
-      }
-
-      return 0;
-   }
-
-   public static void a(duh $$0, duh $$1) {
-      ka<cwq> $$2 = $$0.f();
-      $$0.a($$1.f());
-      $$1.a($$2);
+   protected void a(kr.a $$0) {
+      super.a($$0);
+      $$0.a(kv.ak, this.f);
+      $$0.a(kv.g, this.d);
    }
 
    @Override
-   protected csd a(int $$0, cox $$1) {
-      return csm.a($$0, $$1, this);
-   }
-
-   public void k() {
-      if (!this.p) {
-         this.f.c(this.i(), this.aA_(), this.m());
-      }
-   }
-
-   protected void a(dgj $$0, ji $$1, dwy $$2, int $$3, int $$4) {
-      djn $$5 = $$2.b();
-      $$0.a($$1, $$5, 1, $$4);
+   public void a(tq $$0) {
+      $$0.r("patterns");
+      $$0.r("CustomName");
    }
 }

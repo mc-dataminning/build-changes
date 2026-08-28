@@ -27,145 +27,145 @@ public class sk {
       return this.a.g();
    }
 
-   public dwy a(ji $$0) {
-      return this.a().a_(this.j($$0));
+   public dxq a(ji $$0) {
+      return this.a().a_(this.k($$0));
    }
 
-   public <T extends dua> T b(ji $$0) {
-      dua $$1 = this.a().c_(this.j($$0));
+   public <T extends dus> T b(ji $$0) {
+      dus $$1 = this.a().c_(this.k($$0));
       if ($$1 == null) {
-         throw new se("Missing block entity", this.j($$0), $$0, this.a.p());
+         throw new se("Missing block entity", this.k($$0), $$0, this.a.p());
       } else {
          return (T)$$1;
       }
    }
 
    public void b() {
-      this.a(bum.class);
+      this.a(bva.class);
    }
 
    public void a(Class $$0) {
-      faw $$1 = this.j();
-      List<bum> $$2 = this.a().a($$0, $$1.g(1.0), $$0x -> !($$0x instanceof coy));
+      fbs $$1 = this.j();
+      List<bva> $$2 = this.a().a($$0, $$1.g(1.0), $$0x -> !($$0x instanceof cpr));
       $$2.forEach($$0x -> $$0x.c(this.a()));
    }
 
-   public cld a(cwm $$0, fbb $$1) {
+   public clw a(cxd $$0, fbx $$1) {
       ard $$2 = this.a();
-      fbb $$3 = this.a($$1);
-      cld $$4 = new cld($$2, $$3.d, $$3.e, $$3.f, new cwq($$0, 1));
+      fbx $$3 = this.a($$1);
+      clw $$4 = new clw($$2, $$3.d, $$3.e, $$3.f, new cxh($$0, 1));
       $$4.n(0.0, 0.0, 0.0);
       $$2.b($$4);
       return $$4;
    }
 
-   public cld a(cwm $$0, float $$1, float $$2, float $$3) {
-      return this.a($$0, new fbb((double)$$1, (double)$$2, (double)$$3));
+   public clw a(cxd $$0, float $$1, float $$2, float $$3) {
+      return this.a($$0, new fbx((double)$$1, (double)$$2, (double)$$3));
    }
 
-   public cld a(cwm $$0, ji $$1) {
+   public clw a(cxd $$0, ji $$1) {
       return this.a($$0, (float)$$1.u(), (float)$$1.v(), (float)$$1.w());
    }
 
-   public <E extends bum> E a(but<E> $$0, ji $$1) {
-      return this.a($$0, fbb.c($$1));
+   public <E extends bva> E a(bvi<E> $$0, ji $$1) {
+      return this.a($$0, fbx.c($$1));
    }
 
-   public <E extends bum> E a(but<E> $$0, fbb $$1) {
+   public <E extends bva> E a(bvi<E> $$0, fbx $$1) {
       ard $$2 = this.a();
-      E $$3 = $$0.a($$2, bus.d);
+      E $$3 = $$0.a($$2, bvh.d);
       if ($$3 == null) {
          throw new NullPointerException("Failed to create entity " + $$0.r().h().a());
       } else {
-         if ($$3 instanceof bvk $$4) {
-            $$4.fY();
+         if ($$3 instanceof bwa $$4) {
+            $$4.ga();
          }
 
-         fbb $$5 = this.a($$1);
-         $$3.b($$5.d, $$5.e, $$5.f, $$3.dL(), $$3.dN());
+         fbx $$5 = this.a($$1);
+         $$3.b($$5.d, $$5.e, $$5.f, $$3.dK(), $$3.dM());
          $$2.b($$3);
          return $$3;
       }
    }
 
-   public void a(bum $$0, btc $$1, float $$2) {
+   public void a(bva $$0, btp $$1, float $$2) {
       $$0.a(this.a(), $$1, $$2);
    }
 
-   public void a(bum $$0) {
+   public void a(bva $$0) {
       $$0.c(this.a());
    }
 
-   public <E extends bum> E a(but<E> $$0) {
+   public <E extends bva> E a(bvi<E> $$0) {
       return this.a($$0, 0, 0, 0, 2.147483647E9);
    }
 
-   public <E extends bum> E a(but<E> $$0, int $$1, int $$2, int $$3, double $$4) {
+   public <E extends bva> E a(bvi<E> $$0, int $$1, int $$2, int $$3, double $$4) {
       List<E> $$5 = this.b($$0, $$1, $$2, $$3, $$4);
       if ($$5.isEmpty()) {
-         throw new sd("Expected " + $$0.j() + " to exist around " + $$1 + "," + $$2 + "," + $$3);
+         throw new sd("Expected " + $$0.i() + " to exist around " + $$1 + "," + $$2 + "," + $$3);
       } else if ($$5.size() > 1) {
-         throw new sd("Expected only one " + $$0.j() + " to exist around " + $$1 + "," + $$2 + "," + $$3 + ", but found " + $$5.size());
+         throw new sd("Expected only one " + $$0.i() + " to exist around " + $$1 + "," + $$2 + "," + $$3 + ", but found " + $$5.size());
       } else {
-         fbb $$6 = this.a(new fbb((double)$$1, (double)$$2, (double)$$3));
+         fbx $$6 = this.a(new fbx((double)$$1, (double)$$2, (double)$$3));
          $$5.sort(($$1x, $$2x) -> {
-            double $$3x = $$1x.dt().f($$6);
-            double $$4x = $$2x.dt().f($$6);
+            double $$3x = $$1x.ds().f($$6);
+            double $$4x = $$2x.ds().f($$6);
             return Double.compare($$3x, $$4x);
          });
          return $$5.get(0);
       }
    }
 
-   public <E extends bum> List<E> b(but<E> $$0, int $$1, int $$2, int $$3, double $$4) {
-      return this.a($$0, fbb.c(new ji($$1, $$2, $$3)), $$4);
+   public <E extends bva> List<E> b(bvi<E> $$0, int $$1, int $$2, int $$3, double $$4) {
+      return this.a($$0, fbx.c(new ji($$1, $$2, $$3)), $$4);
    }
 
-   public <E extends bum> List<E> a(but<E> $$0, fbb $$1, double $$2) {
+   public <E extends bva> List<E> a(bvi<E> $$0, fbx $$1, double $$2) {
       ard $$3 = this.a();
-      fbb $$4 = this.a($$1);
-      faw $$5 = this.a.e();
-      faw $$6 = new faw($$4.b(-$$2, -$$2, -$$2), $$4.b($$2, $$2, $$2));
-      return $$3.a($$0, $$5, $$1x -> $$1x.cR().c($$6) && $$1x.bL());
+      fbx $$4 = this.a($$1);
+      fbs $$5 = this.a.e();
+      fbs $$6 = new fbs($$4.b(-$$2, -$$2, -$$2), $$4.b($$2, $$2, $$2));
+      return $$3.a($$0, $$5, $$1x -> $$1x.cQ().c($$6) && $$1x.bJ());
    }
 
-   public <E extends bum> E a(but<E> $$0, int $$1, int $$2, int $$3) {
+   public <E extends bva> E a(bvi<E> $$0, int $$1, int $$2, int $$3) {
       return this.a($$0, new ji($$1, $$2, $$3));
    }
 
-   public <E extends bum> E a(but<E> $$0, float $$1, float $$2, float $$3) {
-      return this.a($$0, new fbb((double)$$1, (double)$$2, (double)$$3));
+   public <E extends bva> E a(bvi<E> $$0, float $$1, float $$2, float $$3) {
+      return this.a($$0, new fbx((double)$$1, (double)$$2, (double)$$3));
    }
 
-   public <E extends bvk> E b(but<E> $$0, ji $$1) {
+   public <E extends bwa> E b(bvi<E> $$0, ji $$1) {
       E $$2 = (E)this.a($$0, $$1);
-      $$2.gl();
+      $$2.gn();
       return $$2;
    }
 
-   public <E extends bvk> E b(but<E> $$0, int $$1, int $$2, int $$3) {
+   public <E extends bwa> E b(bvi<E> $$0, int $$1, int $$2, int $$3) {
       return this.b($$0, new ji($$1, $$2, $$3));
    }
 
-   public <E extends bvk> E b(but<E> $$0, fbb $$1) {
+   public <E extends bwa> E b(bvi<E> $$0, fbx $$1) {
       E $$2 = (E)this.a($$0, $$1);
-      $$2.gl();
+      $$2.gn();
       return $$2;
    }
 
-   public <E extends bvk> E b(but<E> $$0, float $$1, float $$2, float $$3) {
-      return this.b($$0, new fbb((double)$$1, (double)$$2, (double)$$3));
+   public <E extends bwa> E b(bvi<E> $$0, float $$1, float $$2, float $$3) {
+      return this.b($$0, new fbx((double)$$1, (double)$$2, (double)$$3));
    }
 
-   public void a(bvk $$0, float $$1, float $$2, float $$3) {
-      fbb $$4 = this.a(new fbb((double)$$1, (double)$$2, (double)$$3));
-      $$0.b($$4.d, $$4.e, $$4.f, $$0.dL(), $$0.dN());
+   public void a(bwa $$0, float $$1, float $$2, float $$3) {
+      fbx $$4 = this.a(new fbx((double)$$1, (double)$$2, (double)$$3));
+      $$0.b($$4.d, $$4.e, $$4.f, $$0.dK(), $$0.dM());
    }
 
-   public sp a(bvk $$0, ji $$1, float $$2) {
+   public sp a(bwa $$0, ji $$1, float $$2) {
       return this.g().a(2, () -> {
-         eto $$3 = $$0.P().a(this.j($$1), 0);
-         $$0.P().a($$3, (double)$$2);
+         euk $$3 = $$0.O().a(this.k($$1), 0);
+         $$0.O().a($$3, (double)$$2);
       });
    }
 
@@ -175,50 +175,50 @@ public class sk {
 
    public void c(ji $$0) {
       this.b($$0, $$0x -> $$0x.a(awp.f), () -> "Expected button");
-      ji $$1 = this.j($$0);
-      dwy $$2 = this.a().a_($$1);
-      djy $$3 = (djy)$$2.b();
+      ji $$1 = this.k($$0);
+      dxq $$2 = this.a().a_($$1);
+      dkp $$3 = (dkp)$$2.b();
       $$3.a($$2, this.a(), $$1, null);
    }
 
    public void d(ji $$0) {
-      this.a($$0, this.a(dgg.b));
+      this.a($$0, this.a(dgw.b));
    }
 
-   public void a(ji $$0, coy $$1) {
-      ji $$2 = this.j($$0);
-      this.a($$0, $$1, new fax(fbb.b($$2), jn.c, $$2, true));
+   public void a(ji $$0, cpr $$1) {
+      ji $$2 = this.k($$0);
+      this.a($$0, $$1, new fbt(fbx.b($$2), jn.c, $$2, true));
    }
 
-   public void a(ji $$0, coy $$1, fax $$2) {
-      ji $$3 = this.j($$0);
-      dwy $$4 = this.a().a_($$3);
-      bsk $$5 = bsk.a;
-      bsl $$6 = $$4.a($$1.b($$5), this.a(), $$1, $$5, $$2);
+   public void a(ji $$0, cpr $$1, fbt $$2) {
+      ji $$3 = this.k($$0);
+      dxq $$4 = this.a().a_($$3);
+      bsx $$5 = bsx.a;
+      bsy $$6 = $$4.a($$1.b($$5), this.a(), $$1, $$5, $$2);
       if (!$$6.a()) {
-         if (!($$6 instanceof bsl.f) || !$$4.a(this.a(), $$1, $$2).a()) {
-            daj $$7 = new daj($$1, $$5, $$2);
+         if (!($$6 instanceof bsy.f) || !$$4.a(this.a(), $$1, $$2).a()) {
+            daz $$7 = new daz($$1, $$5, $$2);
             $$1.b($$5).a($$7);
          }
       }
    }
 
-   public bvi a(bvi $$0) {
+   public bvy a(bvy $$0) {
       $$0.j(0);
-      $$0.x(0.25F);
+      $$0.d(0.25F);
       return $$0;
    }
 
-   public bvi b(bvi $$0) {
-      $$0.x(0.25F);
+   public bvy b(bvy $$0) {
+      $$0.d(0.25F);
       return $$0;
    }
 
-   public coy a(final dgg $$0) {
-      return new coy(this.a(), ji.c, 0.0F, new GameProfile(UUID.randomUUID(), "test-mock-player")) {
+   public cpr a(final dgw $$0) {
+      return new cpr(this.a(), ji.c, 0.0F, new GameProfile(UUID.randomUUID(), "test-mock-player")) {
          @Override
-         public boolean Z_() {
-            return $$0 == dgg.d;
+         public boolean U_() {
+            return $$0 == dgw.d;
          }
 
          @Override
@@ -227,8 +227,8 @@ public class sk {
          }
 
          @Override
-         public boolean c() {
-            return true;
+         public boolean L_() {
+            return false;
          }
       };
    }
@@ -240,7 +240,7 @@ public class sk {
       art $$0 = art.a(new GameProfile(UUID.randomUUID(), "test-mock-player"), false);
       are $$1 = new are(this.a().p(), this.a(), $$0.a(), $$0.c()) {
          @Override
-         public boolean Z_() {
+         public boolean U_() {
             return false;
          }
 
@@ -260,36 +260,36 @@ public class sk {
    }
 
    public void e(ji $$0) {
-      this.a(djp.dI, $$0);
-      ji $$1 = this.j($$0);
-      dwy $$2 = this.a().a_($$1);
-      doc $$3 = (doc)$$2.b();
+      this.a(dkg.dI, $$0);
+      ji $$1 = this.k($$0);
+      dxq $$2 = this.a().a_($$1);
+      dov $$3 = (dov)$$2.b();
       $$3.b($$2, this.a(), $$1, null);
    }
 
    public void a(ji $$0, long $$1) {
-      this.a($$0, djp.hx);
-      this.b($$1, () -> this.a($$0, djp.a));
+      this.a($$0, dkg.hx);
+      this.b($$1, () -> this.a($$0, dkg.a));
    }
 
    public void f(ji $$0) {
-      this.a().a(this.j($$0), false, null);
+      this.a().a(this.k($$0), false, null);
    }
 
-   public void a(int $$0, int $$1, int $$2, djn $$3) {
+   public void a(int $$0, int $$1, int $$2, dke $$3) {
       this.a(new ji($$0, $$1, $$2), $$3);
    }
 
-   public void a(int $$0, int $$1, int $$2, dwy $$3) {
+   public void a(int $$0, int $$1, int $$2, dxq $$3) {
       this.a(new ji($$0, $$1, $$2), $$3);
    }
 
-   public void a(ji $$0, djn $$1) {
+   public void a(ji $$0, dke $$1) {
       this.a($$0, $$1.m());
    }
 
-   public void a(ji $$0, dwy $$1) {
-      this.a().a(this.j($$0), $$1, 3);
+   public void a(ji $$0, dxq $$1) {
+      this.a().a(this.k($$0), $$1, 3);
    }
 
    public void d() {
@@ -300,50 +300,50 @@ public class sk {
       this.a().b((long)$$0);
    }
 
-   public void a(djn $$0, int $$1, int $$2, int $$3) {
+   public void a(dke $$0, int $$1, int $$2, int $$3) {
       this.a($$0, new ji($$1, $$2, $$3));
    }
 
-   public void a(djn $$0, ji $$1) {
-      dwy $$2 = this.a($$1);
+   public void a(dke $$0, ji $$1) {
+      dxq $$2 = this.a($$1);
       this.a($$1, $$2x -> $$2.a($$0), "Expected " + $$0.f().getString() + ", got " + $$2.b().f().getString());
    }
 
-   public void b(djn $$0, int $$1, int $$2, int $$3) {
+   public void b(dke $$0, int $$1, int $$2, int $$3) {
       this.b($$0, new ji($$1, $$2, $$3));
    }
 
-   public void b(djn $$0, ji $$1) {
+   public void b(dke $$0, ji $$1) {
       this.a($$1, $$2 -> !this.a($$1).a($$0), "Did not expect " + $$0.f().getString());
    }
 
-   public void c(djn $$0, int $$1, int $$2, int $$3) {
+   public void c(dke $$0, int $$1, int $$2, int $$3) {
       this.c($$0, new ji($$1, $$2, $$3));
    }
 
-   public void c(djn $$0, ji $$1) {
+   public void c(dke $$0, ji $$1) {
       this.b(() -> this.a($$0, $$1));
    }
 
-   public void a(ji $$0, Predicate<djn> $$1, String $$2) {
+   public void a(ji $$0, Predicate<dke> $$1, String $$2) {
       this.a($$0, $$1, () -> $$2);
    }
 
-   public void a(ji $$0, Predicate<djn> $$1, Supplier<String> $$2) {
+   public void a(ji $$0, Predicate<dke> $$1, Supplier<String> $$2) {
       this.b($$0, $$1x -> $$1.test($$1x.b()), $$2);
    }
 
-   public <T extends Comparable<T>> void a(ji $$0, dya<T> $$1, T $$2) {
-      dwy $$3 = this.a($$0);
+   public <T extends Comparable<T>> void a(ji $$0, dyt<T> $$1, T $$2) {
+      dxq $$3 = this.a($$0);
       boolean $$4 = $$3.b($$1);
       if (!$$4 || !$$3.<T>c($$1).equals($$2)) {
          String $$5 = $$4 ? "was " + $$3.c($$1) : "property " + $$1.f() + " is missing";
          String $$6 = String.format(Locale.ROOT, "Expected property %s to be %s, %s", $$1.f(), $$2, $$5);
-         throw new se($$6, this.j($$0), $$0, this.a.p());
+         throw new se($$6, this.k($$0), $$0, this.a.p());
       }
    }
 
-   public <T extends Comparable<T>> void a(ji $$0, dya<T> $$1, Predicate<T> $$2, String $$3) {
+   public <T extends Comparable<T>> void a(ji $$0, dyt<T> $$1, Predicate<T> $$2, String $$3) {
       this.b($$0, $$2x -> {
          if (!$$2x.b($$1)) {
             return false;
@@ -354,106 +354,106 @@ public class sk {
       }, () -> $$3);
    }
 
-   public void b(ji $$0, Predicate<dwy> $$1, Supplier<String> $$2) {
-      dwy $$3 = this.a($$0);
+   public void b(ji $$0, Predicate<dxq> $$1, Supplier<String> $$2) {
+      dxq $$3 = this.a($$0);
       if (!$$1.test($$3)) {
-         throw new se($$2.get(), this.j($$0), $$0, this.a.p());
+         throw new se($$2.get(), this.k($$0), $$0, this.a.p());
       }
    }
 
-   public <T extends dua> void c(ji $$0, Predicate<T> $$1, Supplier<String> $$2) {
+   public <T extends dus> void c(ji $$0, Predicate<T> $$1, Supplier<String> $$2) {
       T $$3 = this.b($$0);
       if (!$$1.test($$3)) {
-         throw new se($$2.get(), this.j($$0), $$0, this.a.p());
+         throw new se($$2.get(), this.k($$0), $$0, this.a.p());
       }
    }
 
    public void a(ji $$0, jn $$1, IntPredicate $$2, Supplier<String> $$3) {
-      ji $$4 = this.j($$0);
+      ji $$4 = this.k($$0);
       ard $$5 = this.a();
-      dwy $$6 = $$5.a_($$4);
+      dxq $$6 = $$5.a_($$4);
       int $$7 = $$6.a($$5, $$4, $$1);
       if (!$$2.test($$7)) {
          throw new se($$3.get(), $$4, $$0, this.a.p());
       }
    }
 
-   public void b(but<?> $$0) {
-      List<? extends bum> $$1 = this.a().a($$0, this.j(), bum::bL);
+   public void b(bvi<?> $$0) {
+      List<? extends bva> $$1 = this.a().a($$0, this.j(), bva::bJ);
       if ($$1.isEmpty()) {
-         throw new sd("Expected " + $$0.j() + " to exist");
+         throw new sd("Expected " + $$0.i() + " to exist");
       }
    }
 
-   public void c(but<?> $$0, int $$1, int $$2, int $$3) {
+   public void c(bvi<?> $$0, int $$1, int $$2, int $$3) {
       this.c($$0, new ji($$1, $$2, $$3));
    }
 
-   public void c(but<?> $$0, ji $$1) {
-      ji $$2 = this.j($$1);
-      List<? extends bum> $$3 = this.a().a($$0, new faw($$2), bum::bL);
+   public void c(bvi<?> $$0, ji $$1) {
+      ji $$2 = this.k($$1);
+      List<? extends bva> $$3 = this.a().a($$0, new fbs($$2), bva::bJ);
       if ($$3.isEmpty()) {
-         throw new se("Expected " + $$0.j(), $$2, $$1, this.a.p());
+         throw new se("Expected " + $$0.i(), $$2, $$1, this.a.p());
       }
    }
 
-   public void a(but<?> $$0, faw $$1) {
-      faw $$2 = this.a($$1);
-      List<? extends bum> $$3 = this.a().a($$0, $$2, bum::bL);
+   public void a(bvi<?> $$0, fbs $$1) {
+      fbs $$2 = this.a($$1);
+      List<? extends bva> $$3 = this.a().a($$0, $$2, bva::bJ);
       if ($$3.isEmpty()) {
-         throw new se("Expected " + $$0.j(), ji.a((kb)$$2.f()), ji.a((kb)$$1.f()), this.a.p());
+         throw new se("Expected " + $$0.i(), ji.a((kb)$$2.f()), ji.a((kb)$$1.f()), this.a.p());
       }
    }
 
-   public void a(but<?> $$0, int $$1) {
-      List<? extends bum> $$2 = this.a().a($$0, this.j(), bum::bL);
+   public void a(bvi<?> $$0, int $$1) {
+      List<? extends bva> $$2 = this.a().a($$0, this.j(), bva::bJ);
       if ($$2.size() != $$1) {
-         throw new sd("Expected " + $$1 + " of type " + $$0.j() + " to exist, found " + $$2.size());
+         throw new sd("Expected " + $$1 + " of type " + $$0.i() + " to exist, found " + $$2.size());
       }
    }
 
-   public void a(but<?> $$0, ji $$1, int $$2, double $$3) {
-      ji $$4 = this.j($$1);
-      List<? extends bum> $$5 = this.b((but<? extends bum>)$$0, $$1, $$3);
+   public void a(bvi<?> $$0, ji $$1, int $$2, double $$3) {
+      ji $$4 = this.k($$1);
+      List<? extends bva> $$5 = this.b((bvi<? extends bva>)$$0, $$1, $$3);
       if ($$5.size() != $$2) {
-         throw new se("Expected " + $$2 + " entities of type " + $$0.j() + ", actual number of entities found=" + $$5.size(), $$4, $$1, this.a.p());
+         throw new se("Expected " + $$2 + " entities of type " + $$0.i() + ", actual number of entities found=" + $$5.size(), $$4, $$1, this.a.p());
       }
    }
 
-   public void a(but<?> $$0, ji $$1, double $$2) {
-      List<? extends bum> $$3 = this.b((but<? extends bum>)$$0, $$1, $$2);
+   public void a(bvi<?> $$0, ji $$1, double $$2) {
+      List<? extends bva> $$3 = this.b((bvi<? extends bva>)$$0, $$1, $$2);
       if ($$3.isEmpty()) {
-         ji $$4 = this.j($$1);
-         throw new se("Expected " + $$0.j(), $$4, $$1, this.a.p());
+         ji $$4 = this.k($$1);
+         throw new se("Expected " + $$0.i(), $$4, $$1, this.a.p());
       }
    }
 
-   public <T extends bum> List<T> b(but<T> $$0, ji $$1, double $$2) {
-      ji $$3 = this.j($$1);
-      return this.a().a($$0, new faw($$3).g($$2), bum::bL);
+   public <T extends bva> List<T> b(bvi<T> $$0, ji $$1, double $$2) {
+      ji $$3 = this.k($$1);
+      return this.a().a($$0, new fbs($$3).g($$2), bva::bJ);
    }
 
-   public <T extends bum> List<T> c(but<T> $$0) {
-      return this.a().a($$0, this.j(), bum::bL);
+   public <T extends bva> List<T> c(bvi<T> $$0) {
+      return this.a().a($$0, this.j(), bva::bJ);
    }
 
-   public void a(bum $$0, int $$1, int $$2, int $$3) {
+   public void a(bva $$0, int $$1, int $$2, int $$3) {
       this.a($$0, new ji($$1, $$2, $$3));
    }
 
-   public void a(bum $$0, ji $$1) {
-      ji $$2 = this.j($$1);
-      List<? extends bum> $$3 = this.a().a($$0.aq(), new faw($$2), bum::bL);
-      $$3.stream().filter($$1x -> $$1x == $$0).findFirst().orElseThrow(() -> new se("Expected " + $$0.aq().j(), $$2, $$1, this.a.p()));
+   public void a(bva $$0, ji $$1) {
+      ji $$2 = this.k($$1);
+      List<? extends bva> $$3 = this.a().a($$0.aq(), new fbs($$2), bva::bJ);
+      $$3.stream().filter($$1x -> $$1x == $$0).findFirst().orElseThrow(() -> new se("Expected " + $$0.aq().i(), $$2, $$1, this.a.p()));
    }
 
-   public void a(cwm $$0, ji $$1, double $$2, int $$3) {
-      ji $$4 = this.j($$1);
-      List<cld> $$5 = this.a().a(but.aq, new faw($$4).g($$2), bum::bL);
+   public void a(cxd $$0, ji $$1, double $$2, int $$3) {
+      ji $$4 = this.k($$1);
+      List<clw> $$5 = this.a().a(bvi.aq, new fbs($$4).g($$2), bva::bJ);
       int $$6 = 0;
 
-      for (cld $$7 : $$5) {
-         cwq $$8 = $$7.l();
+      for (clw $$7 : $$5) {
+         cxh $$8 = $$7.f();
          if ($$8.a($$0)) {
             $$6 += $$8.M();
          }
@@ -464,12 +464,12 @@ public class sk {
       }
    }
 
-   public void a(cwm $$0, ji $$1, double $$2) {
-      ji $$3 = this.j($$1);
+   public void a(cxd $$0, ji $$1, double $$2) {
+      ji $$3 = this.k($$1);
 
-      for (bum $$5 : this.a().a(but.aq, new faw($$3).g($$2), bum::bL)) {
-         cld $$6 = (cld)$$5;
-         if ($$6.l().h().equals($$0)) {
+      for (bva $$5 : this.a().a(bvi.aq, new fbs($$3).g($$2), bva::bJ)) {
+         clw $$6 = (clw)$$5;
+         if ($$6.f().h().equals($$0)) {
             return;
          }
       }
@@ -477,21 +477,21 @@ public class sk {
       throw new se("Expected " + $$0.m().getString() + " item", $$3, $$1, this.a.p());
    }
 
-   public void b(cwm $$0, ji $$1, double $$2) {
-      ji $$3 = this.j($$1);
+   public void b(cxd $$0, ji $$1, double $$2) {
+      ji $$3 = this.k($$1);
 
-      for (bum $$5 : this.a().a(but.aq, new faw($$3).g($$2), bum::bL)) {
-         cld $$6 = (cld)$$5;
-         if ($$6.l().h().equals($$0)) {
+      for (bva $$5 : this.a().a(bvi.aq, new fbs($$3).g($$2), bva::bJ)) {
+         clw $$6 = (clw)$$5;
+         if ($$6.f().h().equals($$0)) {
             throw new se("Did not expect " + $$0.m().getString() + " item", $$3, $$1, this.a.p());
          }
       }
    }
 
-   public void a(cwm $$0) {
-      for (bum $$2 : this.a().a(but.aq, this.j(), bum::bL)) {
-         cld $$3 = (cld)$$2;
-         if ($$3.l().h().equals($$0)) {
+   public void a(cxd $$0) {
+      for (bva $$2 : this.a().a(bvi.aq, this.j(), bva::bJ)) {
+         clw $$3 = (clw)$$2;
+         if ($$3.f().h().equals($$0)) {
             return;
          }
       }
@@ -499,67 +499,67 @@ public class sk {
       throw new sd("Expected " + $$0.m().getString() + " item");
    }
 
-   public void b(cwm $$0) {
-      for (bum $$2 : this.a().a(but.aq, this.j(), bum::bL)) {
-         cld $$3 = (cld)$$2;
-         if ($$3.l().h().equals($$0)) {
+   public void b(cxd $$0) {
+      for (bva $$2 : this.a().a(bvi.aq, this.j(), bva::bJ)) {
+         clw $$3 = (clw)$$2;
+         if ($$3.f().h().equals($$0)) {
             throw new sd("Did not expect " + $$0.m().getString() + " item");
          }
       }
    }
 
-   public void d(but<?> $$0) {
-      List<? extends bum> $$1 = this.a().a($$0, this.j(), bum::bL);
+   public void d(bvi<?> $$0) {
+      List<? extends bva> $$1 = this.a().a($$0, this.j(), bva::bJ);
       if (!$$1.isEmpty()) {
-         throw new sd("Did not expect " + $$0.j() + " to exist");
+         throw new sd("Did not expect " + $$0.i() + " to exist");
       }
    }
 
-   public void d(but<?> $$0, int $$1, int $$2, int $$3) {
+   public void d(bvi<?> $$0, int $$1, int $$2, int $$3) {
       this.d($$0, new ji($$1, $$2, $$3));
    }
 
-   public void d(but<?> $$0, ji $$1) {
-      ji $$2 = this.j($$1);
-      List<? extends bum> $$3 = this.a().a($$0, new faw($$2), bum::bL);
+   public void d(bvi<?> $$0, ji $$1) {
+      ji $$2 = this.k($$1);
+      List<? extends bva> $$3 = this.a().a($$0, new fbs($$2), bva::bJ);
       if (!$$3.isEmpty()) {
-         throw new se("Did not expect " + $$0.j(), $$2, $$1, this.a.p());
+         throw new se("Did not expect " + $$0.i(), $$2, $$1, this.a.p());
       }
    }
 
-   public void b(but<?> $$0, faw $$1) {
-      faw $$2 = this.a($$1);
-      List<? extends bum> $$3 = this.a().a($$0, $$2, bum::bL);
+   public void b(bvi<?> $$0, fbs $$1) {
+      fbs $$2 = this.a($$1);
+      List<? extends bva> $$3 = this.a().a($$0, $$2, bva::bJ);
       if (!$$3.isEmpty()) {
-         throw new se("Did not expect " + $$0.j(), ji.a((kb)$$2.f()), ji.a((kb)$$1.f()), this.a.p());
+         throw new se("Did not expect " + $$0.i(), ji.a((kb)$$2.f()), ji.a((kb)$$1.f()), this.a.p());
       }
    }
 
-   public void a(but<?> $$0, double $$1, double $$2, double $$3) {
-      fbb $$4 = new fbb($$1, $$2, $$3);
-      fbb $$5 = this.a($$4);
-      Predicate<? super bum> $$6 = $$1x -> $$1x.cR().a($$5, $$5);
-      List<? extends bum> $$7 = this.a().a($$0, this.j(), $$6);
+   public void a(bvi<?> $$0, double $$1, double $$2, double $$3) {
+      fbx $$4 = new fbx($$1, $$2, $$3);
+      fbx $$5 = this.a($$4);
+      Predicate<? super bva> $$6 = $$1x -> $$1x.cQ().a($$5, $$5);
+      List<? extends bva> $$7 = this.a().a($$0, this.j(), $$6);
       if ($$7.isEmpty()) {
-         throw new sd("Expected " + $$0.j() + " to touch " + $$5 + " (relative " + $$4 + ")");
+         throw new sd("Expected " + $$0.i() + " to touch " + $$5 + " (relative " + $$4 + ")");
       }
    }
 
-   public void b(but<?> $$0, double $$1, double $$2, double $$3) {
-      fbb $$4 = new fbb($$1, $$2, $$3);
-      fbb $$5 = this.a($$4);
-      Predicate<? super bum> $$6 = $$1x -> !$$1x.cR().a($$5, $$5);
-      List<? extends bum> $$7 = this.a().a($$0, this.j(), $$6);
+   public void b(bvi<?> $$0, double $$1, double $$2, double $$3) {
+      fbx $$4 = new fbx($$1, $$2, $$3);
+      fbx $$5 = this.a($$4);
+      Predicate<? super bva> $$6 = $$1x -> !$$1x.cQ().a($$5, $$5);
+      List<? extends bva> $$7 = this.a().a($$0, this.j(), $$6);
       if ($$7.isEmpty()) {
-         throw new sd("Did not expect " + $$0.j() + " to touch " + $$5 + " (relative " + $$4 + ")");
+         throw new sd("Did not expect " + $$0.i() + " to touch " + $$5 + " (relative " + $$4 + ")");
       }
    }
 
-   public <E extends bum, T> void a(ji $$0, but<E> $$1, Predicate<E> $$2) {
-      ji $$3 = this.j($$0);
-      List<E> $$4 = this.a().a($$1, new faw($$3), bum::bL);
+   public <E extends bva, T> void a(ji $$0, bvi<E> $$1, Predicate<E> $$2) {
+      ji $$3 = this.k($$0);
+      List<E> $$4 = this.a().a($$1, new fbs($$3), bva::bJ);
       if ($$4.isEmpty()) {
-         throw new se("Expected " + $$1.j(), $$3, $$0, this.a.p());
+         throw new se("Expected " + $$1.i(), $$3, $$0, this.a.p());
       } else {
          for (E $$5 : $$4) {
             if (!$$2.test($$5)) {
@@ -569,11 +569,11 @@ public class sk {
       }
    }
 
-   public <E extends bum, T> void a(ji $$0, but<E> $$1, Function<? super E, T> $$2, @Nullable T $$3) {
-      ji $$4 = this.j($$0);
-      List<E> $$5 = this.a().a($$1, new faw($$4), bum::bL);
+   public <E extends bva, T> void a(ji $$0, bvi<E> $$1, Function<? super E, T> $$2, @Nullable T $$3) {
+      ji $$4 = this.k($$0);
+      List<E> $$5 = this.a().a($$1, new fbs($$4), bva::bJ);
       if ($$5.isEmpty()) {
-         throw new se("Expected " + $$1.j(), $$4, $$0, this.a.p());
+         throw new se("Expected " + $$1.i(), $$4, $$0, this.a.p());
       } else {
          for (E $$6 : $$5) {
             T $$7 = $$2.apply($$6);
@@ -584,9 +584,9 @@ public class sk {
       }
    }
 
-   public <E extends bvi> void a(ji $$0, but<E> $$1, cwm $$2) {
-      ji $$3 = this.j($$0);
-      List<E> $$4 = this.a().a($$1, new faw($$3), bum::bL);
+   public <E extends bvy> void a(ji $$0, bvi<E> $$1, cxd $$2) {
+      ji $$3 = this.k($$0);
+      List<E> $$4 = this.a().a($$1, new fbs($$3), bva::bJ);
       if ($$4.isEmpty()) {
          throw new se("Expected entity of type: " + $$1, $$3, $$0, this.i());
       } else {
@@ -600,14 +600,14 @@ public class sk {
       }
    }
 
-   public <E extends bum & coh> void b(ji $$0, but<E> $$1, cwm $$2) {
-      ji $$3 = this.j($$0);
-      List<E> $$4 = this.a().a($$1, new faw($$3), $$0x -> ((bum)$$0x).bL());
+   public <E extends bva & cpb> void b(ji $$0, bvi<E> $$1, cxd $$2) {
+      ji $$3 = this.k($$0);
+      List<E> $$4 = this.a().a($$1, new fbs($$3), $$0x -> ((bva)$$0x).bJ());
       if ($$4.isEmpty()) {
-         throw new se("Expected " + $$1.j() + " to exist", $$3, $$0, this.i());
+         throw new se("Expected " + $$1.i() + " to exist", $$3, $$0, this.i());
       } else {
          for (E $$5 : $$4) {
-            if ($$5.t().a_($$1x -> $$1x.a($$2))) {
+            if ($$5.n().a_($$1x -> $$1x.a($$2))) {
                return;
             }
          }
@@ -617,25 +617,25 @@ public class sk {
    }
 
    public void g(ji $$0) {
-      ji $$1 = this.j($$0);
-      dua $$2 = this.a().c_($$1);
-      if ($$2 instanceof dtu && !((dtu)$$2).c()) {
+      ji $$1 = this.k($$0);
+      dus $$2 = this.a().c_($$1);
+      if ($$2 instanceof dum && !((dum)$$2).c()) {
          throw new sd("Container should be empty");
       }
    }
 
-   public void a(ji $$0, cwm $$1) {
-      ji $$2 = this.j($$0);
-      dua $$3 = this.a().c_($$2);
-      if (!($$3 instanceof dtu)) {
-         akv $$4 = $$3 != null ? mb.j.b($$3.p()) : null;
+   public void a(ji $$0, cxd $$1) {
+      ji $$2 = this.k($$0);
+      dus $$3 = this.a().c_($$2);
+      if (!($$3 instanceof dum)) {
+         aku $$4 = $$3 != null ? mb.j.b($$3.p()) : null;
          throw new sd("Expected a container at " + $$0 + ", found " + $$4);
-      } else if (((dtu)$$3).a_($$1) != 1) {
+      } else if (((dum)$$3).a_($$1) != 1) {
          throw new sd("Container should contain: " + $$1);
       }
    }
 
-   public void a(enf $$0, ji $$1) {
+   public void a(eob $$0, ji $$1) {
       ji.a($$0).forEach($$2 -> {
          ji $$3 = $$1.b($$2.u() - $$0.h(), $$2.v() - $$0.i(), $$2.w() - $$0.j());
          this.a($$2, $$3);
@@ -643,14 +643,14 @@ public class sk {
    }
 
    public void a(ji $$0, ji $$1) {
-      dwy $$2 = this.a($$0);
-      dwy $$3 = this.a($$1);
+      dxq $$2 = this.a($$0);
+      dxq $$3 = this.a($$1);
       if ($$2 != $$3) {
          this.a("Incorrect state. Expected " + $$3 + ", got " + $$2, $$0);
       }
    }
 
-   public void a(long $$0, ji $$1, cwm $$2) {
+   public void a(long $$0, ji $$1, cxd $$2) {
       this.a($$0, () -> this.a($$1, $$2));
    }
 
@@ -658,50 +658,50 @@ public class sk {
       this.a($$0, () -> this.g($$1));
    }
 
-   public <E extends bum, T> void b(ji $$0, but<E> $$1, Function<E, T> $$2, T $$3) {
+   public <E extends bva, T> void b(ji $$0, bvi<E> $$1, Function<E, T> $$2, T $$3) {
       this.b(() -> this.a($$0, $$1, $$2, $$3));
    }
 
-   public void a(bum $$0, faw $$1, String $$2) {
-      if (!$$1.d(this.b($$0.dt()))) {
+   public void a(bva $$0, fbs $$1, String $$2) {
+      if (!$$1.d(this.b($$0.ds()))) {
          this.a($$2);
       }
    }
 
-   public <E extends bum> void a(E $$0, Predicate<E> $$1, String $$2) {
+   public <E extends bva> void a(E $$0, Predicate<E> $$1, String $$2) {
       if (!$$1.test($$0)) {
          throw new sd("Entity " + $$0 + " failed " + $$2 + " test");
       }
    }
 
-   public <E extends bum, T> void a(E $$0, Function<E, T> $$1, String $$2, T $$3) {
+   public <E extends bva, T> void a(E $$0, Function<E, T> $$1, String $$2, T $$3) {
       T $$4 = $$1.apply($$0);
       if (!$$4.equals($$3)) {
          throw new sd("Entity " + $$0 + " value " + $$2 + "=" + $$4 + " is not equal to expected " + $$3);
       }
    }
 
-   public void a(bvi $$0, jr<btp> $$1, int $$2) {
-      btr $$3 = $$0.c($$1);
+   public void a(bvy $$0, jr<buc> $$1, int $$2) {
+      bue $$3 = $$0.c($$1);
       if ($$3 == null || $$3.e() != $$2) {
          int $$4 = $$2 + 1;
-         throw new sd("Entity " + $$0 + " failed has " + $$1.a().d() + " x " + $$4 + " test");
+         throw new sd("Entity " + $$0 + " failed has " + $$1.a().f() + " x " + $$4 + " test");
       }
    }
 
-   public void e(but<?> $$0, int $$1, int $$2, int $$3) {
+   public void e(bvi<?> $$0, int $$1, int $$2, int $$3) {
       this.e($$0, new ji($$1, $$2, $$3));
    }
 
-   public void e(but<?> $$0, ji $$1) {
+   public void e(bvi<?> $$0, ji $$1) {
       this.b(() -> this.c($$0, $$1));
    }
 
-   public void f(but<?> $$0, int $$1, int $$2, int $$3) {
+   public void f(bvi<?> $$0, int $$1, int $$2, int $$3) {
       this.f($$0, new ji($$1, $$2, $$3));
    }
 
-   public void f(but<?> $$0, ji $$1) {
+   public void f(bvi<?> $$0, ji $$1) {
       this.b(() -> this.d($$0, $$1));
    }
 
@@ -741,41 +741,47 @@ public class sk {
    }
 
    public void h(ji $$0) {
-      ji $$1 = this.j($$0);
+      ji $$1 = this.k($$0);
       ard $$2 = this.a();
       $$2.a_($$1).b($$2, $$1, $$2.A);
    }
 
    public void i(ji $$0) {
-      ji $$1 = this.j($$0);
+      ji $$1 = this.k($$0);
+      ard $$2 = this.a();
+      $$2.a_($$1).a($$2, $$1, $$2.A);
+   }
+
+   public void j(ji $$0) {
+      ji $$1 = this.k($$0);
       ard $$2 = this.a();
       $$2.a($$1);
    }
 
    public void f() {
-      faw $$0 = this.l();
+      fbs $$0 = this.l();
       int $$1 = (int)Math.floor($$0.d);
       int $$2 = (int)Math.floor($$0.f);
       int $$3 = (int)Math.floor($$0.e);
 
       for (int $$4 = (int)Math.floor($$0.a); $$4 < $$1; $$4++) {
          for (int $$5 = (int)Math.floor($$0.c); $$5 < $$2; $$5++) {
-            this.i(new ji($$4, $$3, $$5));
+            this.j(new ji($$4, $$3, $$5));
          }
       }
    }
 
-   public int a(ect.a $$0, int $$1, int $$2) {
-      ji $$3 = this.j(new ji($$1, 0, $$2));
-      return this.k(this.a().a($$0, $$3)).v();
+   public int a(edo.a $$0, int $$1, int $$2) {
+      ji $$3 = this.k(new ji($$1, 0, $$2));
+      return this.l(this.a().a($$0, $$3)).v();
    }
 
    public void a(String $$0, ji $$1) {
-      throw new se($$0, this.j($$1), $$1, this.i());
+      throw new se($$0, this.k($$1), $$1, this.i());
    }
 
-   public void a(String $$0, bum $$1) {
-      throw new se($$0, $$1.dv(), this.k($$1.dv()), this.i());
+   public void a(String $$0, bva $$1) {
+      throw new se($$0, $$1.du(), this.l($$1.du()), this.i());
    }
 
    public void a(String $$0) {
@@ -794,42 +800,42 @@ public class sk {
       return this.a.q();
    }
 
-   public ji j(ji $$0) {
-      ji $$1 = this.a.d();
-      ji $$2 = $$1.a((km)$$0);
-      return erp.a($$2, dom.a, this.a.u(), $$1);
-   }
-
    public ji k(ji $$0) {
       ji $$1 = this.a.d();
-      dqf $$2 = this.a.u().a(dqf.c);
-      ji $$3 = erp.a($$0, dom.a, $$2, $$1);
+      ji $$2 = $$1.a((km)$$0);
+      return esl.a($$2, dpf.a, this.a.u(), $$1);
+   }
+
+   public ji l(ji $$0) {
+      ji $$1 = this.a.d();
+      dqw $$2 = this.a.u().a(dqw.c);
+      ji $$3 = esl.a($$0, dpf.a, $$2, $$1);
       return $$3.b($$1);
    }
 
-   public faw a(faw $$0) {
-      fbb $$1 = this.a($$0.h());
-      fbb $$2 = this.a($$0.i());
-      return new faw($$1, $$2);
+   public fbs a(fbs $$0) {
+      fbx $$1 = this.a($$0.h());
+      fbx $$2 = this.a($$0.i());
+      return new fbs($$1, $$2);
    }
 
-   public faw b(faw $$0) {
-      fbb $$1 = this.b($$0.h());
-      fbb $$2 = this.b($$0.i());
-      return new faw($$1, $$2);
+   public fbs b(fbs $$0) {
+      fbx $$1 = this.b($$0.h());
+      fbx $$2 = this.b($$0.i());
+      return new fbs($$1, $$2);
    }
 
-   public fbb a(fbb $$0) {
-      fbb $$1 = fbb.a(this.a.d());
-      return erp.a($$1.e($$0), dom.a, this.a.u(), this.a.d());
+   public fbx a(fbx $$0) {
+      fbx $$1 = fbx.a(this.a.d());
+      return esl.a($$1.e($$0), dpf.a, this.a.u(), this.a.d());
    }
 
-   public fbb b(fbb $$0) {
-      fbb $$1 = fbb.a(this.a.d());
-      return erp.a($$0.d($$1), dom.a, this.a.u(), this.a.d());
+   public fbx b(fbx $$0) {
+      fbx $$1 = fbx.a(this.a.d());
+      return esl.a($$0.d($$1), dpf.a, this.a.u(), this.a.d());
    }
 
-   public dqf h() {
+   public dqw h() {
       return this.a.u();
    }
 
@@ -855,24 +861,24 @@ public class sk {
       return this.a.p();
    }
 
-   public faw j() {
+   public fbs j() {
       return this.a.e();
    }
 
-   private faw l() {
-      faw $$0 = this.a.e();
-      dqf $$1 = this.a.u();
+   private fbs l() {
+      fbs $$0 = this.a.e();
+      dqw $$1 = this.a.u();
       switch ($$1) {
          case d:
          case b:
-            return new faw(0.0, 0.0, 0.0, $$0.d(), $$0.c(), $$0.b());
+            return new fbs(0.0, 0.0, 0.0, $$0.d(), $$0.c(), $$0.b());
          default:
-            return new faw(0.0, 0.0, 0.0, $$0.b(), $$0.c(), $$0.d());
+            return new fbs(0.0, 0.0, 0.0, $$0.b(), $$0.c(), $$0.d());
       }
    }
 
    public void a(Consumer<ji> $$0) {
-      faw $$1 = this.l().a(1.0, 1.0, 1.0);
+      fbs $$1 = this.l().a(1.0, 1.0, 1.0);
       ji.a.b($$1).forEach($$0);
    }
 
@@ -880,18 +886,18 @@ public class sk {
       LongStream.range(this.a.p(), (long)this.a.w()).forEach($$1 -> this.a.a($$1, $$0::run));
    }
 
-   public void a(coy $$0, cwq $$1, ji $$2, jn $$3) {
-      ji $$4 = this.j($$2.a($$3));
-      fax $$5 = new fax(fbb.b($$4), $$3, $$4, false);
-      daj $$6 = new daj($$0, bsk.a, $$5);
+   public void a(cpr $$0, cxh $$1, ji $$2, jn $$3) {
+      ji $$4 = this.k($$2.a($$3));
+      fbt $$5 = new fbt(fbx.b($$4), $$3, $$4, false);
+      daz $$6 = new daz($$0, bsx.a, $$5);
       $$1.a($$6);
    }
 
-   public void a(aku<dhl> $$0) {
-      faw $$1 = this.j();
+   public void a(akt<dic> $$0) {
+      fbs $$1 = this.j();
       ji $$2 = ji.a($$1.a, $$1.b, $$1.c);
       ji $$3 = ji.a($$1.d, $$1.e, $$1.f);
-      Either<Integer, CommandSyntaxException> $$4 = ana.a(this.a(), $$2, $$3, this.a().K_().e(mc.aI).b($$0));
+      Either<Integer, CommandSyntaxException> $$4 = amz.a(this.a(), $$2, $$3, this.a().F_().e(mc.aJ).b($$0));
       if ($$4.right().isPresent()) {
          this.a("Failed to set biome for test");
       }

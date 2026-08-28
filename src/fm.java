@@ -100,7 +100,7 @@ public class fm implements ArgumentType<fm.a> {
             List<GameProfile> $$2 = Lists.newArrayList();
 
             for (are $$3 : $$1) {
-               $$2.add($$3.gh());
+               $$2.add($$3.gk());
             }
 
             return $$2;

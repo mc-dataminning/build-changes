@@ -10,9 +10,9 @@ import org.slf4j.Logger;
 
 public class ary extends ChannelInboundHandlerAdapter {
    private static final Logger a = LogUtils.getLogger();
-   private final all b;
+   private final alk b;
 
-   public ary(all $$0) {
+   public ary(alk $$0) {
       this.b = $$0;
    }
 
@@ -91,11 +91,11 @@ public class ary extends ChannelInboundHandlerAdapter {
       }
    }
 
-   private static String a(all $$0) {
+   private static String a(alk $$0) {
       return String.format(Locale.ROOT, "%s§%d§%d", $$0.ae(), $$0.N(), $$0.O());
    }
 
-   private static String b(all $$0) {
+   private static String b(alk $$0) {
       return String.format(Locale.ROOT, "§1\u0000%d\u0000%s\u0000%s\u0000%d\u0000%d", 127, $$0.M(), $$0.ae(), $$0.N(), $$0.O());
    }
 

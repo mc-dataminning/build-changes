@@ -1,90 +1,47 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Streams;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bcj extends DataFix {
-   public bcj(Schema $$0, boolean $$1) {
-      super($$0, $$1);
-   }
+public final class bcj {
+   public static final ImmutableMap<String, String> a = ImmutableMap.builder()
+      .put("minecraft:badlands_plateau", "minecraft:badlands")
+      .put("minecraft:bamboo_jungle_hills", "minecraft:bamboo_jungle")
+      .put("minecraft:birch_forest_hills", "minecraft:birch_forest")
+      .put("minecraft:dark_forest_hills", "minecraft:dark_forest")
+      .put("minecraft:desert_hills", "minecraft:desert")
+      .put("minecraft:desert_lakes", "minecraft:desert")
+      .put("minecraft:giant_spruce_taiga_hills", "minecraft:old_growth_spruce_taiga")
+      .put("minecraft:giant_spruce_taiga", "minecraft:old_growth_spruce_taiga")
+      .put("minecraft:giant_tree_taiga_hills", "minecraft:old_growth_pine_taiga")
+      .put("minecraft:giant_tree_taiga", "minecraft:old_growth_pine_taiga")
+      .put("minecraft:gravelly_mountains", "minecraft:windswept_gravelly_hills")
+      .put("minecraft:jungle_edge", "minecraft:sparse_jungle")
+      .put("minecraft:jungle_hills", "minecraft:jungle")
+      .put("minecraft:modified_badlands_plateau", "minecraft:badlands")
+      .put("minecraft:modified_gravelly_mountains", "minecraft:windswept_gravelly_hills")
+      .put("minecraft:modified_jungle_edge", "minecraft:sparse_jungle")
+      .put("minecraft:modified_jungle", "minecraft:jungle")
+      .put("minecraft:modified_wooded_badlands_plateau", "minecraft:wooded_badlands")
+      .put("minecraft:mountain_edge", "minecraft:windswept_hills")
+      .put("minecraft:mountains", "minecraft:windswept_hills")
+      .put("minecraft:mushroom_field_shore", "minecraft:mushroom_fields")
+      .put("minecraft:shattered_savanna", "minecraft:windswept_savanna")
+      .put("minecraft:shattered_savanna_plateau", "minecraft:windswept_savanna")
+      .put("minecraft:snowy_mountains", "minecraft:snowy_plains")
+      .put("minecraft:snowy_taiga_hills", "minecraft:snowy_taiga")
+      .put("minecraft:snowy_taiga_mountains", "minecraft:snowy_taiga")
+      .put("minecraft:snowy_tundra", "minecraft:snowy_plains")
+      .put("minecraft:stone_shore", "minecraft:stony_shore")
+      .put("minecraft:swamp_hills", "minecraft:swamp")
+      .put("minecraft:taiga_hills", "minecraft:taiga")
+      .put("minecraft:taiga_mountains", "minecraft:taiga")
+      .put("minecraft:tall_birch_forest", "minecraft:old_growth_birch_forest")
+      .put("minecraft:tall_birch_hills", "minecraft:old_growth_birch_forest")
+      .put("minecraft:wooded_badlands_plateau", "minecraft:wooded_badlands")
+      .put("minecraft:wooded_hills", "minecraft:forest")
+      .put("minecraft:wooded_mountains", "minecraft:windswept_forest")
+      .put("minecraft:lofty_peaks", "minecraft:jagged_peaks")
+      .put("minecraft:snowcapped_peaks", "minecraft:frozen_peaks")
+      .build();
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getOutputSchema().getType(bhy.c);
-      Type<?> $$1 = $$0.findFieldType("Level");
-      if (!($$1.findFieldType("TileEntities") instanceof ListType<?> $$3)) {
-         throw new IllegalStateException("Tile entity type is not a list type.");
-      } else {
-         return this.a($$1, $$3);
-      }
-   }
-
-   private <TE> TypeRewriteRule a(Type<?> $$0, ListType<TE> $$1) {
-      Type<TE> $$2 = $$1.getElement();
-      OpticFinder<?> $$3 = DSL.fieldFinder("Level", $$0);
-      OpticFinder<List<TE>> $$4 = DSL.fieldFinder("TileEntities", $$1);
-      int $$5 = 416;
-      return TypeRewriteRule.seq(
-         this.fixTypeEverywhere(
-            "InjectBedBlockEntityType", this.getInputSchema().findChoiceType(bhy.s), this.getOutputSchema().findChoiceType(bhy.s), $$0x -> $$0xx -> $$0xx
-         ),
-         this.fixTypeEverywhereTyped(
-            "BedBlockEntityInjecter",
-            this.getOutputSchema().getType(bhy.c),
-            $$3x -> {
-               Typed<?> $$4x = $$3x.getTyped($$3);
-               Dynamic<?> $$5x = (Dynamic<?>)$$4x.get(DSL.remainderFinder());
-               int $$6 = $$5x.get("xPos").asInt(0);
-               int $$7 = $$5x.get("zPos").asInt(0);
-               List<TE> $$8 = Lists.newArrayList((Iterable)$$4x.getOrCreate($$4));
-
-               for (Dynamic<?> $$10 : $$5x.get("Sections").asList(Function.identity())) {
-                  int $$11 = $$10.get("Y").asInt(0);
-                  Streams.mapWithIndex($$10.get("Blocks").asIntStream(), ($$4xx, $$5xx) -> {
-                        if (416 == ($$4xx & 0xFF) << 4) {
-                           int $$6x = (int)$$5xx;
-                           int $$7x = $$6x & 15;
-                           int $$8x = $$6x >> 8 & 15;
-                           int $$9 = $$6x >> 4 & 15;
-                           Map<Dynamic<?>, Dynamic<?>> $$10x = Maps.newHashMap();
-                           $$10x.put($$10.createString("id"), $$10.createString("minecraft:bed"));
-                           $$10x.put($$10.createString("x"), $$10.createInt($$7x + ($$6 << 4)));
-                           $$10x.put($$10.createString("y"), $$10.createInt($$8x + ($$11 << 4)));
-                           $$10x.put($$10.createString("z"), $$10.createInt($$9 + ($$7 << 4)));
-                           $$10x.put($$10.createString("color"), $$10.createShort((short)14));
-                           return $$10x;
-                        } else {
-                           return null;
-                        }
-                     })
-                     .forEachOrdered(
-                        $$3xx -> {
-                           if ($$3xx != null) {
-                              $$8.add(
-                                 (TE)((Pair)$$2.read($$10.createMap($$3xx))
-                                       .result()
-                                       .orElseThrow(() -> new IllegalStateException("Could not parse newly created bed block entity.")))
-                                    .getFirst()
-                              );
-                           }
-                        }
-                     );
-               }
-
-               return !$$8.isEmpty() ? $$3x.set($$3, $$4x.set($$4, $$8)) : $$3x;
-            }
-         )
-      );
+   private bcj() {
    }
 }

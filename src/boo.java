@@ -1,45 +1,31 @@
-import java.nio.file.Path;
-import java.util.Collections;
-import java.util.List;
+import java.util.Optional;
 
-public class boo implements bos {
-   public static final boo a = new boo();
+public interface boo<S, T> {
+   Optional<T> a(bon<S> var1);
 
-   private boo() {
+   static <S, T> boo<S, T> a(bor<S> $$0, boo.a<S, T> $$1) {
+      return new boo.c<>($$1, $$0);
    }
 
-   @Override
-   public List<bow> a(String $$0) {
-      return Collections.emptyList();
+   static <S, T> boo<S, T> a(bor<S> $$0, boo.b<T> $$1) {
+      return new boo.c<>(($$1x, $$2) -> Optional.of($$1.run($$2)), $$0);
    }
 
-   @Override
-   public boolean a(Path $$0) {
-      return false;
+   @FunctionalInterface
+   public interface a<S, T> {
+      Optional<T> run(bon<S> var1, bop var2);
    }
 
-   @Override
-   public long a() {
-      return 0L;
+   @FunctionalInterface
+   public interface b<T> {
+      T run(bop var1);
    }
 
-   @Override
-   public int b() {
-      return 0;
-   }
-
-   @Override
-   public long c() {
-      return 0L;
-   }
-
-   @Override
-   public int d() {
-      return 0;
-   }
-
-   @Override
-   public String e() {
-      return "";
+   public static record c<S, T>(boo.a<S, T> a, bor<S> b) implements boo<S, T> {
+      @Override
+      public Optional<T> a(bon<S> $$0) {
+         bop $$1 = new bop();
+         return this.b.a($$0, $$1, boj.a) ? this.a.run($$0, $$1) : Optional.empty();
+      }
    }
 }

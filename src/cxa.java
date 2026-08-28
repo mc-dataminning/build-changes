@@ -1,59 +1,33 @@
-import java.util.List;
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cxa extends cwm {
-   public cxa(cwm.a $$0) {
-      super($$0);
+public record cxa(jr<avz> e, float f, float g, wp h) {
+   public static final Codec<cxa> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               avz.b.fieldOf("sound_event").forGetter(cxa::a),
+               ayi.o.fieldOf("use_duration").forGetter(cxa::b),
+               ayi.o.fieldOf("range").forGetter(cxa::c),
+               wr.a.fieldOf("description").forGetter(cxa::d)
+            )
+            .apply($$0, cxa::new)
+   );
+   public static final yn<wa, cxa> b = yn.a(avz.d, cxa::a, yl.l, cxa::b, yl.l, cxa::c, wr.b, cxa::d, cxa::new);
+   public static final Codec<jr<cxa>> c = akq.a(mc.I, a);
+   public static final yn<wa, jr<cxa>> d = yl.a(mc.I, b);
+
+   public jr<avz> a() {
+      return this.e;
    }
 
-   @Override
-   public bsl a(daj $$0) {
-      dgj $$1 = $$0.q();
-      ji $$2 = $$0.a();
-      dwy $$3 = $$1.a_($$2);
-      if ($$3.a(awp.U)) {
-         coy $$4 = $$0.o();
-         if (!$$1.C && $$4 != null) {
-            return a($$4, $$1, $$2);
-         }
-      }
-
-      return bsl.e;
+   public float b() {
+      return this.f;
    }
 
-   public static bsl a(coy $$0, dgj $$1, ji $$2) {
-      ckx $$3 = null;
-      List<bvg> $$4 = a($$1, $$2, $$1x -> $$1x.D() == $$0);
-
-      for (bvg $$5 : $$4) {
-         if ($$3 == null) {
-            $$3 = ckx.a($$1, $$2);
-            $$3.s();
-         }
-
-         $$5.b($$3, true);
-      }
-
-      if (!$$4.isEmpty()) {
-         $$1.a(ebu.b, $$2, ebu.a.a($$0));
-         return bsl.b;
-      } else {
-         return bsl.e;
-      }
+   public float c() {
+      return this.g;
    }
 
-   public static List<bvg> a(dgj $$0, ji $$1, Predicate<bvg> $$2) {
-      double $$3 = 7.0;
-      int $$4 = $$1.u();
-      int $$5 = $$1.v();
-      int $$6 = $$1.w();
-      faw $$7 = new faw((double)$$4 - 7.0, (double)$$5 - 7.0, (double)$$6 - 7.0, (double)$$4 + 7.0, (double)$$5 + 7.0, (double)$$6 + 7.0);
-      return $$0.a(bum.class, $$7, $$1x -> {
-         if ($$1x instanceof bvg $$2x && $$2.test($$2x)) {
-            return true;
-         }
-
-         return false;
-      }).stream().map(bvg.class::cast).toList();
+   public wp d() {
+      return this.h;
    }
 }

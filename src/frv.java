@@ -1,240 +1,210 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.ints.IntSets;
-import java.io.IOException;
-import java.io.InputStream;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
+import com.google.common.collect.ImmutableList.Builder;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import java.util.function.Function;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class frv implements fdu {
-   static final Logger b = LogUtils.getLogger();
-   private final fev c;
-   private final frj<frv.b> d;
+public class frv extends frl implements fqt, ftl {
+   private static final int a = -1;
+   private static final int b = 400;
+   private static final int c = 24;
+   private static final int d = 14;
+   private static final wp e = wp.c("narration.tab_navigation.usage");
+   private final fti f = fti.e();
+   private int g;
+   private final fru h;
+   private final ImmutableList<frt> i;
+   private final ImmutableList<fqz> j;
 
-   frv(fev $$0, frj<frv.b> $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   frv(int $$0, fru $$1, Iterable<frt> $$2) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = ImmutableList.copyOf($$2);
+      this.f.c().b();
+      Builder<fqz> $$3 = ImmutableList.builder();
+
+      for (frt $$4 : $$2) {
+         $$3.add(this.f.a(new fqz($$1, $$4, 0, 24)));
+      }
+
+      this.j = $$3.build();
+   }
+
+   public static frv.a a(fru $$0, int $$1) {
+      return new frv.a($$0, $$1);
+   }
+
+   public void a(int $$0) {
+      this.g = $$0;
    }
 
    @Override
-   public void close() {
-      this.c.close();
+   public boolean a_(double $$0, double $$1) {
+      return $$0 >= (double)this.f.F() && $$1 >= (double)this.f.G() && $$0 < (double)(this.f.F() + this.f.A()) && $$1 < (double)(this.f.G() + this.f.y());
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      super.a($$0);
+      if (this.aL_() != null) {
+         this.aL_().a($$0);
+      }
+   }
+
+   @Override
+   public void a(@Nullable frn $$0) {
+      super.a($$0);
+      if ($$0 instanceof fqz $$1) {
+         this.h.a($$1.a(), true);
+      }
    }
 
    @Nullable
    @Override
-   public fdt a(int $$0) {
-      return this.d.a($$0);
+   public foz a(ftt $$0) {
+      if (!this.aM_()) {
+         fqz $$1 = this.g();
+         if ($$1 != null) {
+            return foz.a(this, foz.a($$1));
+         }
+      }
+
+      return $$0 instanceof ftt.c ? null : super.a($$0);
    }
 
    @Override
-   public IntSet a() {
-      return IntSets.unmodifiable(this.d.b());
+   public List<? extends frn> aH_() {
+      return this.j;
    }
 
-   public static record a(akv c, int d, int e, int[][] f) implements frx {
-      private static final Codec<int[][]> g = Codec.STRING.listOf().xmap($$0 -> {
-         int $$1 = $$0.size();
-         int[][] $$2 = new int[$$1][];
+   @Override
+   public ftl.a w() {
+      return this.j.stream().map(fpo::w).max(Comparator.naturalOrder()).orElse(ftl.a.a);
+   }
 
-         for (int $$3 = 0; $$3 < $$1; $$3++) {
-            $$2[$$3] = ((String)$$0.get($$3)).codePoints().toArray();
-         }
-
-         return $$2;
-      }, $$0 -> {
-         List<String> $$1 = new ArrayList<>($$0.length);
-
-         for (int[] $$2 : $$0) {
-            $$1.add(new String($$2, 0, $$2.length));
-         }
-
-         return $$1;
-      }).validate(frv.a::a);
-      public static final MapCodec<frv.a> a = RecordCodecBuilder.mapCodec(
-            $$0 -> $$0.group(
-                     akv.a.fieldOf("file").forGetter(frv.a::c),
-                     Codec.INT.optionalFieldOf("height", 8).forGetter(frv.a::d),
-                     Codec.INT.fieldOf("ascent").forGetter(frv.a::e),
-                     g.fieldOf("chars").forGetter(frv.a::f)
-                  )
-                  .apply($$0, frv.a::new)
-         )
-         .validate(frv.a::a);
-
-      private static DataResult<int[][]> a(int[][] $$0) {
-         int $$1 = $$0.length;
-         if ($$1 == 0) {
-            return DataResult.error(() -> "Expected to find data in codepoint grid");
-         } else {
-            int[] $$2 = $$0[0];
-            int $$3 = $$2.length;
-            if ($$3 == 0) {
-               return DataResult.error(() -> "Expected to find data in codepoint grid");
-            } else {
-               for (int $$4 = 1; $$4 < $$1; $$4++) {
-                  int[] $$5 = $$0[$$4];
-                  if ($$5.length != $$3) {
-                     return DataResult.error(
-                        () -> "Lines in codepoint grid have to be the same length (found: "
-                              + $$5.length
-                              + " codepoints, expected: "
-                              + $$3
-                              + "), pad with \\u0000"
-                     );
-                  }
-               }
-
-               return DataResult.success($$0);
-            }
-         }
-      }
-
-      private static DataResult<frv.a> a(frv.a $$0) {
-         return $$0.e > $$0.d ? DataResult.error(() -> "Ascent " + $$0.e + " higher than height " + $$0.d) : DataResult.success($$0);
-      }
-
-      @Override
-      public fry a() {
-         return fry.a;
-      }
-
-      @Override
-      public Either<frx.b, frx.c> b() {
-         return Either.left(this::a);
-      }
-
-      private fdu a(aup $$0) throws IOException {
-         akv $$1 = this.c.f("textures/");
-
-         frv var22;
-         try (InputStream $$2 = $$0.open($$1)) {
-            fev $$3 = fev.a(fev.a.a, $$2);
-            int $$4 = $$3.a();
-            int $$5 = $$3.b();
-            int $$6 = $$4 / this.f[0].length;
-            int $$7 = $$5 / this.f.length;
-            float $$8 = (float)this.d / (float)$$7;
-            frj<frv.b> $$9 = new frj<>(frv.b[]::new, frv.b[][]::new);
-
-            for (int $$10 = 0; $$10 < this.f.length; $$10++) {
-               int $$11 = 0;
-
-               for (int $$12 : this.f[$$10]) {
-                  int $$13 = $$11++;
-                  if ($$12 != 0) {
-                     int $$14 = this.a($$3, $$6, $$7, $$13, $$10);
-                     frv.b $$15 = $$9.a($$12, new frv.b($$8, $$3, $$13 * $$6, $$10 * $$7, $$6, $$7, (int)(0.5 + (double)((float)$$14 * $$8)) + 1, this.e));
-                     if ($$15 != null) {
-                        frv.b.warn("Codepoint '{}' declared multiple times in {}", Integer.toHexString($$12), $$1);
-                     }
-                  }
-               }
-            }
-
-            var22 = new frv($$3, $$9);
-         }
-
-         return var22;
-      }
-
-      private int a(fev $$0, int $$1, int $$2, int $$3, int $$4) {
-         int $$5;
-         for ($$5 = $$1 - 1; $$5 >= 0; $$5--) {
-            int $$6 = $$3 * $$1 + $$5;
-
-            for (int $$7 = 0; $$7 < $$2; $$7++) {
-               int $$8 = $$4 * $$2 + $$7;
-               if ($$0.b($$6, $$8) != 0) {
-                  return $$5 + 1;
-               }
-            }
-         }
-
-         return $$5 + 1;
+   @Override
+   public void b(ftn $$0) {
+      Optional<fqz> $$1 = this.j.stream().filter(fpo::C).findFirst().or(() -> Optional.ofNullable(this.g()));
+      $$1.ifPresent($$1x -> {
+         this.a($$0.a(), $$1x);
+         $$1x.b($$0);
+      });
+      if (this.aM_()) {
+         $$0.a(ftm.d, e);
       }
    }
 
-   static record b(float a, fev b, int c, int d, int e, int f, int g, int h) implements fdt {
+   protected void a(ftn $$0, fqz $$1) {
+      if (this.i.size() > 1) {
+         int $$2 = this.j.indexOf($$1);
+         if ($$2 != -1) {
+            $$0.a(ftm.b, wp.a("narrator.position.tab", $$2 + 1, this.i.size()));
+         }
+      }
+   }
 
-      @Override
-      public float getAdvance() {
-         return (float)this.g;
+   @Override
+   public void a(fpc $$0, int $$1, int $$2, float $$3) {
+      $$0.a(gnh::H, fvi.h, 0, this.f.G() + this.f.y() - 2, 0.0F, 0.0F, ((fqz)this.j.get(0)).F(), 2, 32, 2);
+      int $$4 = ((fqz)this.j.get(this.j.size() - 1)).H();
+      $$0.a(gnh::H, fvi.h, $$4, this.f.G() + this.f.y() - 2, 0.0F, 0.0F, this.g, 2, 32, 2);
+      UnmodifiableIterator var6 = this.j.iterator();
+
+      while (var6.hasNext()) {
+         fqz $$5 = (fqz)var6.next();
+         $$5.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   @Override
+   public ftx J() {
+      return this.f.J();
+   }
+
+   public void b() {
+      int $$0 = Math.min(400, this.g) - 28;
+      int $$1 = ayz.d($$0 / this.i.size(), 2);
+      UnmodifiableIterator var3 = this.j.iterator();
+
+      while (var3.hasNext()) {
+         fqz $$2 = (fqz)var3.next();
+         $$2.h($$1);
       }
 
-      @Override
-      public frq bake(Function<fdv, frq> $$0) {
-         return $$0.apply(new fdv() {
-            @Override
-            public float d() {
-               return 1.0F / b.this.a;
+      this.f.a();
+      this.f.j(ayz.d((this.g - $$0) / 2, 2));
+      this.f.k(0);
+   }
+
+   public void a(int $$0, boolean $$1) {
+      if (this.aM_()) {
+         this.a((frn)this.j.get($$0));
+      } else {
+         this.h.a((frt)this.i.get($$0), $$1);
+      }
+   }
+
+   public boolean b(int $$0) {
+      if (fvi.s()) {
+         int $$1 = this.c($$0);
+         if ($$1 != -1) {
+            this.a(ayz.a($$1, 0, this.i.size() - 1), true);
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   private int c(int $$0) {
+      if ($$0 >= 49 && $$0 <= 57) {
+         return $$0 - 49;
+      } else {
+         if ($$0 == 258) {
+            int $$1 = this.c();
+            if ($$1 != -1) {
+               int $$2 = fvi.t() ? $$1 - 1 : $$1 + 1;
+               return Math.floorMod($$2, this.i.size());
             }
+         }
 
-            @Override
-            public int a() {
-               return b.this.e;
-            }
+         return -1;
+      }
+   }
 
-            @Override
-            public int b() {
-               return b.this.f;
-            }
+   private int c() {
+      frt $$0 = this.h.a();
+      int $$1 = this.i.indexOf($$0);
+      return $$1 != -1 ? $$1 : -1;
+   }
 
-            @Override
-            public float j() {
-               return (float)b.this.h;
-            }
+   @Nullable
+   private fqz g() {
+      int $$0 = this.c();
+      return $$0 != -1 ? (fqz)this.j.get($$0) : null;
+   }
 
-            @Override
-            public void a(int $$0, int $$1) {
-               b.this.b.a(0, $$0, $$1, b.this.c, b.this.d, b.this.e, b.this.f, false);
-            }
+   public static class a {
+      private final int a;
+      private final fru b;
+      private final List<frt> c = new ArrayList<>();
 
-            @Override
-            public boolean c() {
-               return b.this.b.c().a() > 1;
-            }
-         });
+      a(fru $$0, int $$1) {
+         this.b = $$0;
+         this.a = $$1;
       }
 
-      public float c() {
-         return this.a;
+      public frv.a a(frt... $$0) {
+         Collections.addAll(this.c, $$0);
+         return this;
       }
 
-      public fev d() {
-         return this.b;
-      }
-
-      public int e() {
-         return this.c;
-      }
-
-      public int f() {
-         return this.d;
-      }
-
-      public int g() {
-         return this.e;
-      }
-
-      public int h() {
-         return this.f;
-      }
-
-      public int i() {
-         return this.g;
-      }
-
-      public int j() {
-         return this.h;
+      public frv a() {
+         return new frv(this.a, this.b, this.c);
       }
    }
 }

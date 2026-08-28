@@ -1,24 +1,41 @@
-public class fvy extends fvb<ctd> {
-   private static final akv G = akv.b("container/grindstone/error");
-   private static final akv H = akv.b("textures/gui/container/grindstone.png");
+import java.util.List;
 
-   public fvy(ctd $$0, cox $$1, wp $$2) {
-      super($$0, $$1, $$2);
+public abstract class fvy<T extends csy> extends fvz<T> {
+   private final aku G;
+   private final aku H;
+   private final aku I;
+
+   public fvy(T $$0, cpq $$1, wp $$2, wp $$3, aku $$4, aku $$5, aku $$6, List<fzf.a> $$7) {
+      super($$0, new fzc($$0, $$3, $$7), $$1, $$2);
+      this.G = $$4;
+      this.H = $$5;
+      this.I = $$6;
    }
 
    @Override
-   public void a(fof $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   public void aR_() {
+      super.aR_();
+      this.v = (this.s - this.p.a(this.l)) / 2;
    }
 
    @Override
-   protected void a(fof $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.s) / 2;
-      int $$5 = (this.o - this.u) / 2;
-      $$0.a(gmj::H, H, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      if ((this.z.b(0).h() || this.z.b(1).h()) && !this.z.b(2).h()) {
-         $$0.a(gmj::H, G, $$4 + 92, $$5 + 31, 28, 21);
+   protected ftw G() {
+      return new ftw(this.C + 20, this.o / 2 - 49);
+   }
+
+   @Override
+   protected void a(fpc $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.C;
+      int $$5 = this.D;
+      $$0.a(gnh::H, this.G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      if (this.z.o()) {
+         int $$6 = 14;
+         int $$7 = ayz.f(this.z.n() * 13.0F) + 1;
+         $$0.a(gnh::H, this.H, 14, 14, 0, 14 - $$7, $$4 + 56, $$5 + 36 + 14 - $$7, 14, $$7);
       }
+
+      int $$8 = 24;
+      int $$9 = ayz.f(this.z.m() * 24.0F);
+      $$0.a(gnh::H, this.I, 24, 16, 0, 0, $$4 + 79, $$5 + 34, $$9, 16);
    }
 }

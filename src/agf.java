@@ -1,201 +1,110 @@
-public class agf {
-   public static final vx.a<agg, wa> a = zb.a(
-      vj.b,
-      $$0 -> $$0.a(age.bk, agi.a)
-            .a(age.bl, agj.a)
-            .a(age.bm, ahu.a)
-            .a(age.bn, agk.a)
-            .a(age.bo, agl.a)
-            .a(age.bp, agm.a)
-            .a(age.bq, agn.a)
-            .a(age.br, ago.a)
-            .a(age.bs, agp.a)
-            .a(age.bt, agq.a)
-            .a(age.bu, agr.a)
-            .a(age.bv, ags.b)
-            .a(zo.l, zq.a)
-            .a(age.bw, agt.a)
-            .a(age.bx, agu.b)
-            .a(age.by, agv.a)
-            .a(age.bz, agw.a)
-            .a(age.bA, agx.a)
-            .a(age.bB, agy.a)
-            .a(abh.b, abj.a)
-            .a(zo.m, zr.a)
-            .a(age.bC, agz.a)
-            .a(age.bD, aha.a)
-            .a(age.bE, ahb.a)
-            .a(age.bF, ahc.a)
-            .a(age.bG, ahd.a)
-            .a(zo.n, zs.a)
-            .a(age.bH, ahe.a)
-            .a(age.bI, ahf.a.j)
-            .a(age.bJ, ahf.b.j)
-            .a(age.bK, ahf.c.j)
-            .a(age.bL, ahf.d.j)
-            .a(age.bM, ahg.a)
-            .a(age.bN, ahh.a)
-            .a(age.bO, ahi.a)
-            .a(age.bP, ahj.a)
-            .a(ajm.b, ajo.a)
-            .a(age.bQ, ahk.a)
-            .a(age.bR, ahl.a)
-            .a(age.bS, ahm.a)
-            .a(age.bT, ahn.a)
-            .a(age.bU, aho.a)
-            .a(age.bV, ahp.a)
-            .a(zo.o, zt.a)
-            .a(age.bW, ahq.a)
-            .a(age.bX, ahr.a)
-            .a(age.bY, ahs.a)
-            .a(zo.p, zu.a)
-            .a(age.bZ, aht.a)
-            .a(age.ca, ahv.a)
-            .a(age.cb, ahw.a)
-            .a(age.cc, ahx.a)
-            .a(age.cd, ahy.a)
-            .a(age.ce, ahz.a)
-            .a(age.cf, aia.a)
-            .a(age.cg, aib.a)
-            .a(age.ch, aic.a)
-            .a(age.ci, aid.a)
-            .a(age.cj, aie.a)
-            .a(age.ck, aif.a)
-            .a(age.cl, aig.a)
-            .a(age.cm, aih.a)
-   );
-   public static final vx.a<abl, wa> b = zb.b(
-      vj.b,
-      $$0 -> $$0.a(age.a, abx::new, new abw())
-            .a(age.c, abm.a)
-            .a(age.d, abn.a)
-            .a(age.e, abo.a)
-            .a(age.f, abp.a)
-            .a(age.g, abq.a)
-            .a(age.h, abr.a)
-            .a(age.i, abs.a)
-            .a(age.j, abt.a)
-            .a(age.k, abu.a)
-            .a(age.l, abv.a)
-            .a(age.m, aby.a)
-            .a(age.n, abz.a)
-            .a(age.o, aca.b)
-            .a(age.p, acb.a)
-            .a(age.q, acc.a)
-            .a(age.r, acd.a)
-            .a(age.s, ace.a)
-            .a(age.t, acf.a)
-            .a(age.u, acg.a)
-            .a(age.v, ach.a)
-            .a(age.w, aci.a)
-            .a(abh.a, abg.a)
-            .a(age.x, acj.a)
-            .a(age.y, ack.a)
-            .a(zo.a, zd.a)
-            .a(age.z, acl.a)
-            .a(age.A, acm.a)
-            .a(age.B, acn.a)
-            .a(zo.c, zf.a)
-            .a(age.C, aco.a)
-            .a(age.D, acp.a)
-            .a(age.be, acq.a)
-            .a(age.E, acr.a)
-            .a(age.F, acs.a)
-            .a(age.G, act.a)
-            .a(age.H, acu.a)
-            .a(age.I, acv.a)
-            .a(age.J, acw.a)
-            .a(zo.d, zg.a)
-            .a(age.K, acy.a)
-            .a(age.L, acz.a)
-            .a(age.M, ada.a)
-            .a(age.N, adb.a)
-            .a(age.O, add.a)
-            .a(age.P, ade.a)
-            .a(age.Q, adf.a)
-            .a(age.R, adg.a.j)
-            .a(age.S, adg.b.j)
-            .a(age.T, adh.a)
-            .a(age.U, adg.c.j)
-            .a(age.V, adi.a)
-            .a(age.W, adj.a)
-            .a(age.X, adk.a)
-            .a(age.Y, adl.a)
-            .a(zo.e, zh.a)
-            .a(ajm.a, ajl.a)
-            .a(age.Z, adm.a)
-            .a(age.aa, adn.a)
-            .a(age.ab, ado.a)
-            .a(age.ac, adp.a)
-            .a(age.ad, adq.b)
-            .a(age.ae, adr.a)
-            .a(age.af, ads.a)
-            .a(age.ag, adt.a)
-            .a(age.ah, adu.a)
-            .a(age.ai, adv.a)
-            .a(age.aj, adw.a)
-            .a(age.ak, ady.a)
-            .a(age.al, adz.a)
-            .a(age.am, aea.a)
-            .a(age.an, aeb.a)
-            .a(age.ao, aec.a)
-            .a(age.cn, aed.a)
-            .a(zo.f, zi.a)
-            .a(zo.g, zj.b)
-            .a(age.ap, aee.a)
-            .a(age.aq, aef.a)
-            .a(age.ar, aeg.a)
-            .a(age.as, aeh.a)
-            .a(age.at, aei.a)
-            .a(age.au, aej.a)
-            .a(age.av, aek.a)
-            .a(age.aw, ael.a)
-            .a(age.ax, aem.a)
-            .a(age.ay, aen.a)
-            .a(age.az, aeo.a)
-            .a(age.aA, aep.a)
-            .a(age.aB, aeq.a)
-            .a(age.aC, aer.a)
-            .a(age.cq, aes.a)
-            .a(age.aD, aet.a)
-            .a(age.aE, aeu.a)
-            .a(age.aF, aev.a)
-            .a(age.aG, aew.a)
-            .a(age.aH, aex.a)
-            .a(age.aI, aey.a)
-            .a(age.aJ, aez.a)
-            .a(age.aK, afa.a)
-            .a(age.aL, afb.a)
-            .a(age.aM, afc.a)
-            .a(age.aN, afd.a)
-            .a(age.cr, afe.a)
-            .a(age.aO, aff.a)
-            .a(age.aP, afg.a)
-            .a(age.aQ, afh.a)
-            .a(age.aR, afi.a)
-            .a(age.aS, afj.a)
-            .a(age.aT, afk.a)
-            .a(age.aU, afl.a)
-            .a(age.aV, afm.a)
-            .a(age.aW, afn.a)
-            .a(age.aX, afo.b)
-            .a(age.aY, afp.a)
-            .a(zo.i, zl.a)
-            .a(age.aZ, afq.a)
-            .a(age.ba, afr.a)
-            .a(age.bb, afs.a)
-            .a(age.bc, aft.a)
-            .a(age.bd, afu.a)
-            .a(age.co, afv.a)
-            .a(age.cp, afw.a)
-            .a(zo.j, zm.a)
-            .a(age.bf, afx.a)
-            .a(age.bg, afy.a)
-            .a(age.bh, afz.a)
-            .a(age.bi, aga.a)
-            .a(zo.k, zn.a)
-            .a(age.bj, adx.a)
-            .a(zo.b, ze.a)
-            .a(zo.h, zk.a)
-   );
+public interface agf extends ajm, zp {
+   @Override
+   default vj b() {
+      return vj.b;
+   }
+
+   void a(aid var1);
+
+   void a(agn var1);
+
+   void a(agl var1);
+
+   void a(agm var1);
+
+   void a(agk var1);
+
+   void a(agq var1);
+
+   void a(agu var1);
+
+   void a(agv var1);
+
+   void a(ahj var1);
+
+   void a(agw var1);
+
+   void a(ahb var1);
+
+   void a(ahe var1);
+
+   void a(ahk var1);
+
+   void a(ahl var1);
+
+   void a(ahm var1);
+
+   void a(ahn var1);
+
+   void a(ahw var1);
+
+   void a(ahz var1);
+
+   void a(aic var1);
+
+   void a(aif var1);
+
+   void a(aig var1);
+
+   void a(aie var1);
+
+   void a(ahg var1);
+
+   void a(ahf var1);
+
+   void a(agh var1);
+
+   void a(aho var1);
+
+   void a(ahq var1);
+
+   void a(aht var1);
+
+   void a(ahp var1);
+
+   void a(ahs var1);
+
+   void a(ags var1);
+
+   void a(ahx var1);
+
+   void a(ahy var1);
+
+   void a(ahh var1);
+
+   void a(ahi var1);
+
+   void a(ahr var1);
+
+   void a(ahv var1);
+
+   void a(aib var1);
+
+   void a(ahu var1);
+
+   void a(agz var1);
+
+   void a(aha var1);
+
+   void a(agx var1);
+
+   void a(agi var1);
+
+   void a(aia var1);
+
+   void a(ahc var1);
+
+   void a(agj var1);
+
+   void a(ahd var1);
+
+   void a(ago var1);
+
+   void a(agt var1);
+
+   void a(agp var1);
+
+   void a(agy var1);
+
+   void a(agr var1);
 }

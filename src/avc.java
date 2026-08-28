@@ -257,7 +257,7 @@ public class avc {
       }
    }
 
-   public static boolean a(final apu $$0) {
+   public static boolean a(final apt $$0) {
       final File $$1 = g($$0);
       final File $$2 = new File($$1.getParentFile(), "playerdata");
       final File $$3 = new File($$1.getParentFile(), "unknownplayers");
@@ -405,7 +405,7 @@ public class avc {
    }
 
    private static File g(MinecraftServer $$0) {
-      return $$0.a(eve.d).toFile();
+      return $$0.a(ewa.d).toFile();
    }
 
    private static void b(File $$0) {

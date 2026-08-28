@@ -1,4 +1,4 @@
-public record abg(akv b) implements yw<abf> {
+public record abg(aku b) implements yw<abf> {
    public static final yn<vl, abg> a = yw.a(abg::a, abg::new);
 
    private abg(vl $$0) {

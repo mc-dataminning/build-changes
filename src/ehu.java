@@ -1,53 +1,54 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public record ehu(List<ehu.a> b, jn c, eea d, boolean e) implements eid {
-   public static final Codec<ehu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ehu.a.a.listOf().fieldOf("layers").forGetter(ehu::a),
-               jn.g.fieldOf("direction").forGetter(ehu::b),
-               eea.b.fieldOf("allowed_placement").forGetter(ehu::c),
-               Codec.BOOL.fieldOf("prioritize_tip").forGetter(ehu::d)
-            )
-            .apply($$0, ehu::new)
-   );
-
-   public static ehu.a a(brq $$0, eke $$1) {
-      return new ehu.a($$0, $$1);
+public class ehu extends egu<ejn> {
+   public ehu(Codec<ejn> $$0) {
+      super($$0);
    }
 
-   public static ehu b(brq $$0, eke $$1) {
-      return new ehu(List.of(a($$0, $$1)), jn.b, eea.c, false);
+   @Override
+   public boolean a(egw<ejn> $$0) {
+      ejn $$1 = $$0.f();
+      dhy $$2 = $$0.b();
+      azh $$3 = $$0.d();
+      dke $$4 = $$1.b.b();
+      ji $$5 = a($$2, $$0.e().k().a(jn.a.b, $$2.G_() + 1, $$2.ao()), $$4);
+      if ($$5 == null) {
+         return false;
+      } else {
+         int $$6 = $$1.a().a($$3);
+         int $$7 = $$1.a().a($$3);
+         int $$8 = $$1.a().a($$3);
+         int $$9 = Math.max($$6, Math.max($$7, $$8));
+         boolean $$10 = false;
+
+         for (ji $$11 : ji.a($$5, $$6, $$7, $$8)) {
+            if ($$11.k($$5) > $$9) {
+               break;
+            }
+
+            dxq $$12 = $$2.a_($$11);
+            if ($$12.a($$4)) {
+               this.a($$2, $$11, $$1.c);
+               $$10 = true;
+            }
+         }
+
+         return $$10;
+      }
    }
 
-   public List<ehu.a> a() {
-      return this.b;
-   }
+   @Nullable
+   private static ji a(dha $$0, ji.a $$1, dke $$2) {
+      while ($$1.v() > $$0.G_() + 1) {
+         dxq $$3 = $$0.a_($$1);
+         if ($$3.a($$2)) {
+            return $$1;
+         }
 
-   public jn b() {
-      return this.c;
-   }
-
-   public eea c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public static record a(brq b, eke c) {
-      public static final Codec<ehu.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(brq.d.fieldOf("height").forGetter(ehu.a::a), eke.a.fieldOf("provider").forGetter(ehu.a::b)).apply($$0, ehu.a::new)
-      );
-
-      public brq a() {
-         return this.b;
+         $$1.c(jn.a);
       }
 
-      public eke b() {
-         return this.c;
-      }
+      return null;
    }
 }

@@ -1,91 +1,57 @@
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Table;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.Base64;
 import java.util.Map;
-import java.util.OptionalInt;
-import java.util.Set;
+import javax.annotation.Nullable;
+import org.lwjgl.system.MemoryUtil;
+import org.slf4j.Logger;
 
-public class fkv extends awd {
-   private final Map<dcm, dcl> b = new HashMap<>();
-   private final Set<dcm> c = new HashSet<>();
-   private Map<dax, List<fyn>> d = Map.of();
-   private List<fyn> e = List.of();
+public class fkv {
+   private static final Map<String, fkv.a> a = Maps.newHashMap();
+   private static final Logger b = LogUtils.getLogger();
+   private static final aku c = aku.b("textures/gui/presets/isles.png");
 
-   public void a(dcl $$0) {
-      this.b.put($$0.a(), $$0);
+   public static aku a(String $$0, @Nullable String $$1) {
+      return $$1 == null ? c : b($$0, $$1);
    }
 
-   public void a(dcm $$0) {
-      this.b.remove($$0);
-      this.c.remove($$0);
-   }
-
-   public void b() {
-      this.b.clear();
-      this.c.clear();
-   }
-
-   public boolean b(dcm $$0) {
-      return this.c.contains($$0);
-   }
-
-   public void c(dcm $$0) {
-      this.c.remove($$0);
-   }
-
-   public void d(dcm $$0) {
-      this.c.add($$0);
-   }
-
-   public void c() {
-      Map<dbi, List<List<dcl>>> $$0 = a(this.b.values());
-      Map<dax, List<fyn>> $$1 = new HashMap<>();
-      Builder<fyn> $$2 = ImmutableList.builder();
-      $$0.forEach(($$2x, $$3x) -> $$1.put($$2x, $$3x.stream().map(fyn::new).peek($$2::add).collect(ImmutableList.toImmutableList())));
-
-      for (fyp $$3 : fyp.values()) {
-         $$1.put($$3, $$3.a().stream().flatMap($$1x -> $$1.getOrDefault($$1x, List.of()).stream()).collect(ImmutableList.toImmutableList()));
-      }
-
-      this.d = Map.copyOf($$1);
-      this.e = $$2.build();
-   }
-
-   private static Map<dbi, List<List<dcl>>> a(Iterable<dcl> $$0) {
-      Map<dbi, List<List<dcl>>> $$1 = new HashMap<>();
-      Table<dbi, Integer, List<dcl>> $$2 = HashBasedTable.create();
-
-      for (dcl $$3 : $$0) {
-         dbi $$4 = $$3.d();
-         OptionalInt $$5 = $$3.c();
-         if ($$5.isEmpty()) {
-            $$1.computeIfAbsent($$4, $$0x -> new ArrayList<>()).add(List.of($$3));
+   private static aku b(String $$0, String $$1) {
+      fkv.a $$2 = a.get($$0);
+      if ($$2 != null && $$2.a().equals($$1)) {
+         return $$2.b;
+      } else {
+         ffr $$3 = a($$1);
+         if ($$3 == null) {
+            aku $$4 = hfg.c();
+            a.put($$0, new fkv.a($$1, $$4));
+            return $$4;
          } else {
-            List<dcl> $$6 = (List<dcl>)$$2.get($$4, $$5.getAsInt());
-            if ($$6 == null) {
-               $$6 = new ArrayList<>();
-               $$2.put($$4, $$5.getAsInt(), $$6);
-               $$1.computeIfAbsent($$4, $$0x -> new ArrayList<>()).add($$6);
-            }
-
-            $$6.add($$3);
+            aku $$5 = aku.a("realms", "dynamic/" + $$0);
+            fmg.Q().aa().a($$5, new hfe($$3));
+            a.put($$0, new fkv.a($$1, $$5));
+            return $$5;
          }
       }
-
-      return $$1;
    }
 
-   public List<fyn> d() {
-      return this.e;
+   @Nullable
+   private static ffr a(String $$0) {
+      byte[] $$1 = Base64.getDecoder().decode($$0);
+      ByteBuffer $$2 = MemoryUtil.memAlloc($$1.length);
+
+      try {
+         return ffr.a($$2.put($$1).flip());
+      } catch (IOException var7) {
+         b.warn("Failed to load world image: {}", $$0, var7);
+      } finally {
+         MemoryUtil.memFree($$2);
+      }
+
+      return null;
    }
 
-   public List<fyn> a(dax $$0) {
-      return this.d.getOrDefault($$0, Collections.emptyList());
+   public static record a(String a, aku b) {
    }
 }

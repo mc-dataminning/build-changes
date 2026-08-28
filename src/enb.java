@@ -1,8 +1,26 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.serialization.MapCodec;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface enb {
+public class enb extends enp {
+   private static final enb c = new enb();
+   public static MapCodec<enb> a = MapCodec.unit(() -> c);
+
+   private enb() {
+   }
+
+   public static enb a() {
+      return c;
+   }
+
+   @Override
+   protected boolean a(eno $$0, azh $$1, ji $$2) {
+      enn $$3 = $$0.e()
+         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
+      jr<dic> $$4 = $$0.d().t($$2);
+      return $$0.f().a($$4).a($$3);
+   }
+
+   @Override
+   public enr<?> b() {
+      return enr.e;
+   }
 }

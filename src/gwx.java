@@ -1,14 +1,18 @@
-public class gwx<S extends hah, M extends gcc<S>> extends gwu<S, M> {
-   private final gdx<S> a;
-   private final akv b;
+public class gwx extends gxs<hav, gef> {
+   private final gdn<hav> a;
 
-   public gwx(guc<S, M> $$0, gfa $$1, gfc $$2, akv $$3) {
+   public gwx(gva<hav, gef> $$0, gfy $$1) {
       super($$0);
-      this.b = $$3;
-      this.a = new gdx<>($$1.a($$2));
+      this.a = new gee($$1.a(ggb.ci));
    }
 
-   public void a(ffv $$0, glz $$1, int $$2, S $$3, float $$4, float $$5) {
-      a(this.a, this.b, $$0, $$1, $$2, $$3, -1);
+   public void a(fgr $$0, gmx $$1, int $$2, hav $$3, float $$4, float $$5) {
+      if ("deadmau5".equals($$3.aH) && !$$3.z) {
+         fgv $$6 = $$1.getBuffer(gnh.d($$3.a.a()));
+         int $$7 = gue.a($$3, 0.0F);
+         this.d().a(this.a);
+         this.a.a($$3);
+         this.a.a($$0, $$6, $$2, $$7);
+      }
    }
 }

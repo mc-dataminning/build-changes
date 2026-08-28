@@ -1,25 +1,32 @@
-import java.util.Arrays;
+import java.util.Objects;
+import org.joml.Matrix4f;
 
-public class fxs extends fxq {
-   private static final wp a = wp.c("options.sounds.title");
-
-   private static fln<?>[] a(flo $$0) {
-      return new fln[]{$$0.Z(), $$0.aa()};
+public interface fxs {
+   static fxs a(ayl $$0) {
+      return new fxr($$0);
    }
 
-   public fxs(fum $$0, flo $$1) {
-      super($$0, $$1, a);
+   static fxs a(cvd $$0) {
+      Objects.requireNonNull($$0);
+
+      return (fxs)(switch ($$0) {
+         case cvc $$1 -> new fxq($$1.a());
+         case fxp.a $$2 -> new fxp($$2);
+         default -> throw new IllegalArgumentException("Unknown TooltipComponent");
+      });
    }
 
-   @Override
-   protected void m() {
-      this.d.a(this.c.b(awb.a));
-      this.d.a(this.H());
-      this.d.a(this.c.aw());
-      this.d.a(a(this.c));
+   int a(fpa var1);
+
+   int b(fpa var1);
+
+   default boolean a() {
+      return false;
    }
 
-   private fln<?>[] H() {
-      return Arrays.stream(awb.values()).filter($$0 -> $$0 != awb.a).map($$0 -> this.c.b($$0)).toArray(fln[]::new);
+   default void a(fpa $$0, int $$1, int $$2, Matrix4f $$3, gmx.a $$4) {
+   }
+
+   default void a(fpa $$0, int $$1, int $$2, int $$3, int $$4, fpc $$5) {
    }
 }

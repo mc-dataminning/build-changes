@@ -1,24 +1,37 @@
-import java.util.UUID;
-import java.util.stream.Stream;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.ints.IntArraySet;
+import it.unimi.dsi.fastutil.ints.IntCollection;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.BitSet;
 
-public interface ebb {
-   int ar();
+public class ebb {
+   private final BitSet a = new BitSet();
 
-   UUID cG();
+   public void a(int $$0, int $$1) {
+      this.a.set($$0, $$0 + $$1);
+   }
 
-   ji dv();
+   public void b(int $$0, int $$1) {
+      this.a.clear($$0, $$0 + $$1);
+   }
 
-   faw cR();
+   public int a(int $$0) {
+      int $$1 = 0;
 
-   void a(ebc var1);
+      while (true) {
+         int $$2 = this.a.nextClearBit($$1);
+         int $$3 = this.a.nextSetBit($$2);
+         if ($$3 == -1 || $$3 - $$2 >= $$0) {
+            this.a($$2, $$0);
+            return $$2;
+         }
 
-   Stream<? extends ebb> da();
+         $$1 = $$3;
+      }
+   }
 
-   Stream<? extends ebb> db();
-
-   void c(bum.d var1);
-
-   boolean dT();
-
-   boolean dU();
+   @VisibleForTesting
+   public IntSet a() {
+      return this.a.stream().collect(IntArraySet::new, IntCollection::add, IntCollection::addAll);
+   }
 }

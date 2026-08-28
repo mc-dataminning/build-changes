@@ -1,23 +1,23 @@
-public class gwy extends gwu<hai, gea> {
-   private final gea a;
-
-   public gwy(guc<hai, gea> $$0, gfa $$1) {
+public class gwy extends gxs<gze, gct> {
+   public gwy(gva<gze, gct> $$0) {
       super($$0);
-      this.a = new gea($$1.a(gfd.cP));
    }
 
-   public void a(ffv $$0, glz $$1, int $$2, hai $$3, float $$4, float $$5) {
-      boolean $$6 = $$3.ao && $$3.z;
-      if (!$$3.z || $$6) {
-         ffz $$7;
-         if ($$6) {
-            $$7 = $$1.getBuffer(gmj.s(guj.a));
+   public void a(fgr $$0, gmx $$1, int $$2, gze $$3, float $$4, float $$5) {
+      hcn $$6 = $$3.i;
+      if (!$$6.c()) {
+         $$0.a();
+         float $$7 = 1.0F;
+         float $$8 = -1.0F;
+         float $$9 = ayz.e($$3.ab) / 60.0F;
+         if ($$3.ab < 0.0F) {
+            $$0.a(0.0F, 1.0F - $$9 * 0.5F, -1.0F + $$9 * 0.5F);
          } else {
-            $$7 = $$1.getBuffer(gmj.j(guj.a));
+            $$0.a(0.0F, 1.0F + $$9 * 0.8F, -1.0F + $$9 * 0.2F);
          }
 
-         this.a.a($$3);
-         this.a.a($$0, $$7, $$2, gtg.a($$3, 0.0F));
+         $$6.a($$0, $$1, $$2, hfh.d);
+         $$0.b();
       }
    }
 }

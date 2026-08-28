@@ -8,11 +8,11 @@ import java.util.stream.Stream;
 public interface aup extends aus {
    Set<String> a();
 
-   List<aun> a(akv var1);
+   List<aun> a(aku var1);
 
-   Map<akv, aun> b(String var1, Predicate<akv> var2);
+   Map<aku, aun> b(String var1, Predicate<aku> var2);
 
-   Map<akv, List<aun>> c(String var1, Predicate<akv> var2);
+   Map<aku, List<aun>> c(String var1, Predicate<aku> var2);
 
    Stream<atc> b();
 
@@ -25,22 +25,22 @@ public interface aup extends aus {
       }
 
       @Override
-      public Optional<aun> getResource(akv $$0) {
+      public Optional<aun> getResource(aku $$0) {
          return Optional.empty();
       }
 
       @Override
-      public List<aun> a(akv $$0) {
+      public List<aun> a(aku $$0) {
          return List.of();
       }
 
       @Override
-      public Map<akv, aun> b(String $$0, Predicate<akv> $$1) {
+      public Map<aku, aun> b(String $$0, Predicate<aku> $$1) {
          return Map.of();
       }
 
       @Override
-      public Map<akv, List<aun>> c(String $$0, Predicate<akv> $$1) {
+      public Map<aku, List<aun>> c(String $$0, Predicate<aku> $$1) {
          return Map.of();
       }
 

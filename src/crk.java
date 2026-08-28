@@ -1,60 +1,39 @@
-public class crk extends cqx {
-   private final dfk b = new dfk() {
-      @Override
-      public void a(dgj $$0, ji $$1, int $$2) {
-         $$0.a(crk.this, (byte)$$2);
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+
+public class crk {
+   public static final int a = 2000;
+   public static final int b = 7000;
+   public static final crk c = a("empty").a(0, cri.b).a();
+   public static final crk d = a("simple").a(5000, cri.c).a(11000, cri.e).a();
+   public static final crk e = a("villager_baby").a(10, cri.b).a(3000, cri.d).a(6000, cri.b).a(10000, cri.d).a(12000, cri.e).a();
+   public static final crk f = a("villager_default").a(10, cri.b).a(2000, cri.c).a(9000, cri.f).a(11000, cri.b).a(12000, cri.e).a();
+   private final Map<cri, crm> g = Maps.newHashMap();
+
+   protected static crl a(String $$0) {
+      crk $$1 = ke.a(mb.B, $$0, new crk());
+      return new crl($$1);
+   }
+
+   protected void a(cri $$0) {
+      if (!this.g.containsKey($$0)) {
+         this.g.put($$0, new crm());
       }
-   };
-   private final Runnable c;
-
-   public crk(but<? extends crk> $$0, dgj $$1) {
-      super($$0, $$1);
-      this.c = this.c($$1);
    }
 
-   @Override
-   protected cwm u() {
-      return cwu.oo;
+   protected crm b(cri $$0) {
+      return this.g.get($$0);
    }
 
-   @Override
-   public cwq dI() {
-      return new cwq(cwu.oo);
+   protected List<crm> c(cri $$0) {
+      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
    }
 
-   private Runnable c(dgj $$0) {
-      return $$0 instanceof ard ? () -> this.b.a((ard)$$0, this.dv()) : () -> this.b.a($$0, this.dv());
-   }
-
-   @Override
-   public dwy w() {
-      return djp.cA.m();
-   }
-
-   @Override
-   protected void a(tq $$0) {
-      super.a($$0);
-      this.b.a(this.dV(), this.dv(), $$0);
-   }
-
-   @Override
-   protected void b(tq $$0) {
-      super.b($$0);
-      this.b.a($$0);
-   }
-
-   @Override
-   public void b(byte $$0) {
-      this.b.a(this.dV(), $$0);
-   }
-
-   @Override
-   public void h() {
-      super.h();
-      this.c.run();
-   }
-
-   public dfk v() {
-      return this.b;
+   public cri a(int $$0) {
+      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(cri.b);
    }
 }

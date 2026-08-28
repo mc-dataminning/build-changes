@@ -1,21 +1,17 @@
 public enum dye implements azv {
-   a("inactive"),
-   b("active"),
-   c("cooldown");
+   a("floor"),
+   b("ceiling"),
+   c("single_wall"),
+   d("double_wall");
 
-   private final String d;
+   private final String e;
 
    private dye(final String $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.d;
+      this.e = $$0;
    }
 
    @Override
    public String c() {
-      return this.d;
+      return this.e;
    }
 }

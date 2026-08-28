@@ -1,32 +1,22 @@
-import java.util.Objects;
-import org.joml.Matrix4f;
+public class fww extends fvx<ctx> {
+   private static final aku G = aku.b("textures/gui/container/hopper.png");
 
-public interface fww {
-   static fww a(ayl $$0) {
-      return new fwv($$0);
+   public fww(ctx $$0, cpq $$1, wp $$2) {
+      super($$0, $$1, $$2);
+      this.u = 133;
+      this.y = this.u - 94;
    }
 
-   static fww a(cuk $$0) {
-      Objects.requireNonNull($$0);
-
-      return (fww)(switch ($$0) {
-         case cuj $$1 -> new fwu($$1.a());
-         case fwt.a $$2 -> new fwt($$2);
-         default -> throw new IllegalArgumentException("Unknown TooltipComponent");
-      });
+   @Override
+   public void a(fpc $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
-   int a(fod var1);
-
-   int b(fod var1);
-
-   default boolean a() {
-      return false;
-   }
-
-   default void a(fod $$0, int $$1, int $$2, Matrix4f $$3, glz.a $$4) {
-   }
-
-   default void a(fod $$0, int $$1, int $$2, int $$3, int $$4, fof $$5) {
+   @Override
+   protected void a(fpc $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(gnh::H, G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
    }
 }

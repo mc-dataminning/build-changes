@@ -1,7 +1,34 @@
-public interface fcv<T> {
-   void a(fct<T> var1);
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   boolean a(ji var1, T var2);
+public record fcv(String a, int b, @Nullable wp c, @Nullable yf d) {
+   public boolean a() {
+      return this.a.startsWith("#");
+   }
 
-   int a();
+   public wp b() {
+      return (wp)(this.c != null ? this.c : wp.b(this.c()));
+   }
+
+   public xd a(yf $$0) {
+      return Objects.requireNonNullElse(this.d, $$0).a(this.b);
+   }
+
+   public String c() {
+      return this.a;
+   }
+
+   public int d() {
+      return this.b;
+   }
+
+   @Nullable
+   public wp e() {
+      return this.c;
+   }
+
+   @Nullable
+   public yf f() {
+      return this.d;
+   }
 }

@@ -1,95 +1,184 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.UUID;
+import net.minecraft.server.MinecraftServer;
 
-public class evv {
-   private final ard a;
-   private final bak b;
-   private final Map<akv, evv.b> c;
-   private final float d;
+public class evv implements ewh {
+   private final ewi a;
+   private final ewh b;
 
-   public evv(ard $$0, bak $$1, Map<akv, evv.b> $$2, float $$3) {
+   public evv(ewi $$0, ewh $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
    }
 
-   public ard a() {
-      return this.a;
+   @Override
+   public ji a() {
+      return this.b.a();
    }
 
-   public bak b() {
-      return this.b;
+   @Override
+   public float b() {
+      return this.b.b();
    }
 
-   public void a(akv $$0, Consumer<cwq> $$1) {
-      evv.b $$2 = this.c.get($$0);
-      if ($$2 != null) {
-         $$2.add($$1);
-      }
+   @Override
+   public long c() {
+      return this.b.c();
    }
 
-   public float c() {
-      return this.d;
+   @Override
+   public long d() {
+      return this.b.d();
    }
 
-   public static class a {
-      private final ard a;
-      private final bak.a b = new bak.a();
-      private final Map<akv, evv.b> c = Maps.newHashMap();
-      private float d;
-
-      public a(ard $$0) {
-         this.a = $$0;
-      }
-
-      public ard a() {
-         return this.a;
-      }
-
-      public <T> evv.a a(bai<T> $$0, T $$1) {
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      public <T> evv.a b(bai<T> $$0, @Nullable T $$1) {
-         this.b.b($$0, $$1);
-         return this;
-      }
-
-      public <T> T a(bai<T> $$0) {
-         return this.b.a($$0);
-      }
-
-      @Nullable
-      public <T> T b(bai<T> $$0) {
-         return this.b.b($$0);
-      }
-
-      public evv.a a(akv $$0, evv.b $$1) {
-         evv.b $$2 = this.c.put($$0, $$1);
-         if ($$2 != null) {
-            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
-         } else {
-            return this;
-         }
-      }
-
-      public evv.a a(float $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public evv a(baj $$0) {
-         bak $$1 = this.b.a($$0);
-         return new evv(this.a, $$1, this.c, this.d);
-      }
+   @Override
+   public String e() {
+      return this.a.e();
    }
 
-   @FunctionalInterface
-   public interface b {
-      void add(Consumer<cwq> var1);
+   @Override
+   public int f() {
+      return this.b.f();
+   }
+
+   @Override
+   public void a(int $$0) {
+   }
+
+   @Override
+   public boolean g() {
+      return this.b.g();
+   }
+
+   @Override
+   public int h() {
+      return this.b.h();
+   }
+
+   @Override
+   public boolean i() {
+      return this.b.i();
+   }
+
+   @Override
+   public int j() {
+      return this.b.j();
+   }
+
+   @Override
+   public dgw k() {
+      return this.a.k();
+   }
+
+   @Override
+   public void a(long $$0) {
+   }
+
+   @Override
+   public void b(long $$0) {
+   }
+
+   @Override
+   public void a(ji $$0, float $$1) {
+   }
+
+   @Override
+   public void a(boolean $$0) {
+   }
+
+   @Override
+   public void b(int $$0) {
+   }
+
+   @Override
+   public void b(boolean $$0) {
+   }
+
+   @Override
+   public void c(int $$0) {
+   }
+
+   @Override
+   public void a(dgw $$0) {
+   }
+
+   @Override
+   public boolean l() {
+      return this.a.l();
+   }
+
+   @Override
+   public boolean m() {
+      return this.a.m();
+   }
+
+   @Override
+   public boolean n() {
+      return this.b.n();
+   }
+
+   @Override
+   public void c(boolean $$0) {
+   }
+
+   @Override
+   public dgv o() {
+      return this.a.o();
+   }
+
+   @Override
+   public dzh.c p() {
+      return this.b.p();
+   }
+
+   @Override
+   public void a(dzh.c $$0) {
+   }
+
+   @Override
+   public bsv q() {
+      return this.a.q();
+   }
+
+   @Override
+   public boolean r() {
+      return this.a.r();
+   }
+
+   @Override
+   public fbk<MinecraftServer> s() {
+      return this.b.s();
+   }
+
+   @Override
+   public int t() {
+      return 0;
+   }
+
+   @Override
+   public void d(int $$0) {
+   }
+
+   @Override
+   public int u() {
+      return 0;
+   }
+
+   @Override
+   public void e(int $$0) {
+   }
+
+   @Override
+   public UUID v() {
+      return null;
+   }
+
+   @Override
+   public void a(UUID $$0) {
+   }
+
+   @Override
+   public void a(p $$0, dhb $$1) {
+      $$0.a("Derived", true);
+      this.b.a($$0, $$1);
    }
 }

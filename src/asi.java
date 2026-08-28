@@ -17,7 +17,7 @@ import net.minecraft.server.MinecraftServer;
 import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 
-public class asi implements aiy, wd {
+public class asi implements aix, wd {
    private static final AtomicInteger b = new AtomicInteger(0);
    static final Logger c = LogUtils.getLogger();
    private static final int d = 600;
@@ -63,7 +63,7 @@ public class asi implements aiy, wd {
    public void a(wp $$0) {
       try {
          c.info("Disconnecting {}: {}", this.e(), $$0.getString());
-         this.g.a(new aiu($$0));
+         this.g.a(new ait($$0));
          this.g.a($$0);
       } catch (Exception var3) {
          c.error("Error whilst disconnecting player", var3);
@@ -86,7 +86,7 @@ public class asi implements aiy, wd {
    }
 
    @Override
-   public void a(aja $$0) {
+   public void a(aiz $$0) {
       Validate.validState(this.h == asi.a.a, "Unexpected hello packet", new Object[0]);
       Validate.validState(azw.f($$0.b()), "Invalid characters in username", new Object[0]);
       this.j = $$0.b();
@@ -96,7 +96,7 @@ public class asi implements aiy, wd {
       } else {
          if (this.f.aa() && !this.g.e()) {
             this.h = asi.a.b;
-            this.g.a(new ais("", this.f.R().getPublic().getEncoded(), this.e, true));
+            this.g.a(new air("", this.f.R().getPublic().getEncoded(), this.e, true));
          } else {
             this.b(kl.b(this.j));
          }
@@ -115,7 +115,7 @@ public class asi implements aiy, wd {
          this.a($$2);
       } else {
          if (this.f.az() >= 0 && !this.g.e()) {
-            this.g.a(new ait(this.f.az()), vw.a(() -> this.g.a(this.f.az(), true)));
+            this.g.a(new ais(this.f.az()), vw.a(() -> this.g.a(this.f.az(), true)));
          }
 
          boolean $$3 = $$1.e($$0);
@@ -129,11 +129,11 @@ public class asi implements aiy, wd {
 
    private void d(GameProfile $$0) {
       this.h = asi.a.g;
-      this.g.a(new aiv($$0));
+      this.g.a(new aiu($$0));
    }
 
    @Override
-   public void a(ajb $$0) {
+   public void a(aja $$0) {
       Validate.validState(this.h == asi.a.b, "Unexpected key packet", new Object[0]);
 
       final String $$5;
@@ -193,12 +193,12 @@ public class asi implements aiy, wd {
    }
 
    @Override
-   public void a(aiz $$0) {
+   public void a(aiy $$0) {
       this.a(asd.c);
    }
 
    @Override
-   public void a(ajc $$0) {
+   public void a(ajb $$0) {
       Validate.validState(this.h == asi.a.g, "Unexpected login acknowledgement packet", new Object[0]);
       this.g.a(aba.d);
       art $$1 = art.a(Objects.requireNonNull(this.k), this.m);

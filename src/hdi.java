@@ -1,18 +1,16 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class hdi {
-   private static final ayi.b<akv, hdj.a<?, ?>> b = new ayi.b<>();
-   public static final Codec<hdj.a<?, ?>> a = b.a(akv.a);
+public record hdi() implements hds {
+   public static final MapCodec<hdi> a = MapCodec.unit(new hdi());
 
-   public static void a() {
-      b.a(akv.b("custom_model_data"), hdd.a);
-      b.a(akv.b("main_hand"), hdh.a);
-      b.a(akv.b("charge_type"), hda.a);
-      b.a(akv.b("trim_material"), hdk.a);
-      b.a(akv.b("block_state"), hdf.a);
-      b.a(akv.b("display_context"), hde.a);
-      b.a(akv.b("local_time"), hdg.b);
-      b.a(akv.b("context_entity_type"), hdc.a);
-      b.a(akv.b("context_dimension"), hdb.a);
+   @Override
+   public float a(cxh $$0, @Nullable ggy $$1, @Nullable bvy $$2, int $$3) {
+      return cvv.c($$0);
+   }
+
+   @Override
+   public MapCodec<hdi> a() {
+      return a;
    }
 }

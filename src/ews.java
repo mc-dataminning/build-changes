@@ -1,132 +1,146 @@
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class ews extends exf {
-   public static final MapCodec<ews> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  ews.b.b.fieldOf("source").forGetter($$0x -> $$0x.b),
-                  ku.a.listOf().optionalFieldOf("include").forGetter($$0x -> $$0x.c),
-                  ku.a.listOf().optionalFieldOf("exclude").forGetter($$0x -> $$0x.d)
-               )
+public class ews {
+   public static final Codec<ews> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               exc.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.b),
+               ezx.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.c),
+               eye.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.e),
+               fau.a.fieldOf("rolls").forGetter($$0x -> $$0x.g),
+               fau.a.fieldOf("bonus_rolls").orElse(faq.a(0.0F)).forGetter($$0x -> $$0x.h)
             )
             .apply($$0, ews::new)
    );
-   private final ews.b b;
-   private final Optional<List<ku<?>>> c;
-   private final Optional<List<ku<?>>> d;
-   private final Predicate<ku<?>> e;
+   private final List<exe> b;
+   private final List<ezx> c;
+   private final Predicate<ewo> d;
+   private final List<eyc> e;
+   private final BiFunction<cxh, ewo, cxh> f;
+   private final fat g;
+   private final fat h;
 
-   ews(List<ezb> $$0, ews.b $$1, Optional<List<ku<?>>> $$2, Optional<List<ku<?>>> $$3) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2.map(List::copyOf);
-      this.d = $$3.map(List::copyOf);
-      List<Predicate<ku<?>>> $$4 = new ArrayList<>(2);
-      $$3.ifPresent($$1x -> $$4.add($$1xx -> !$$1x.contains($$1xx)));
-      $$2.ifPresent($$1x -> $$4.add($$1x::contains));
-      this.e = af.a($$4);
+   ews(List<exe> $$0, List<ezx> $$1, List<eyc> $$2, fat $$3, fat $$4) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = af.a($$1);
+      this.e = $$2;
+      this.f = eye.a($$2);
+      this.g = $$3;
+      this.h = $$4;
    }
 
-   @Override
-   public exh<ews> b() {
-      return exi.J;
-   }
+   private void b(Consumer<cxh> $$0, ewo $$1) {
+      azh $$2 = $$1.b();
+      List<exd> $$3 = Lists.newArrayList();
+      MutableInt $$4 = new MutableInt();
 
-   @Override
-   public Set<bai<?>> a() {
-      return this.b.a();
-   }
-
-   @Override
-   public cwq a(cwq $$0, evs $$1) {
-      kr $$2 = this.b.a($$1);
-      $$0.b($$2.a(this.e));
-      return $$0;
-   }
-
-   public static ews.a a(ews.b $$0) {
-      return new ews.a($$0);
-   }
-
-   public static class a extends exf.a<ews.a> {
-      private final ews.b a;
-      private Optional<Builder<ku<?>>> b = Optional.empty();
-      private Optional<Builder<ku<?>>> c = Optional.empty();
-
-      a(ews.b $$0) {
-         this.a = $$0;
+      for (exe $$5 : this.b) {
+         $$5.expand($$1, $$3x -> {
+            int $$4x = $$3x.a($$1.c());
+            if ($$4x > 0) {
+               $$3.add($$3x);
+               $$4.add($$4x);
+            }
+         });
       }
 
-      public ews.a a(ku<?> $$0) {
-         if (this.b.isEmpty()) {
-            this.b = Optional.of(ImmutableList.builder());
-         }
+      int $$6 = $$3.size();
+      if ($$4.intValue() != 0 && $$6 != 0) {
+         if ($$6 == 1) {
+            $$3.get(0).a($$0, $$1);
+         } else {
+            int $$7 = $$2.a($$4.intValue());
 
-         this.b.get().add($$0);
+            for (exd $$8 : $$3) {
+               $$7 -= $$8.a($$1.c());
+               if ($$7 < 0) {
+                  $$8.a($$0, $$1);
+                  return;
+               }
+            }
+         }
+      }
+   }
+
+   public void a(Consumer<cxh> $$0, ewo $$1) {
+      if (this.d.test($$1)) {
+         Consumer<cxh> $$2 = eyc.a(this.f, $$0, $$1);
+         int $$3 = this.g.a($$1) + ayz.d(this.h.b($$1) * $$1.c());
+
+         for (int $$4 = 0; $$4 < $$3; $$4++) {
+            this.b($$2, $$1);
+         }
+      }
+   }
+
+   public void a(ewu $$0) {
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+      }
+
+      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
+         this.e.get($$2).a($$0.a(".functions[" + $$2 + "]"));
+      }
+
+      for (int $$3 = 0; $$3 < this.b.size(); $$3++) {
+         this.b.get($$3).a($$0.a(".entries[" + $$3 + "]"));
+      }
+
+      this.g.a($$0.a(".rolls"));
+      this.h.a($$0.a(".bonusRolls"));
+   }
+
+   public static ews.a a() {
+      return new ews.a();
+   }
+
+   public static class a implements exy<ews.a>, ezp<ews.a> {
+      private final Builder<exe> a = ImmutableList.builder();
+      private final Builder<ezx> b = ImmutableList.builder();
+      private final Builder<eyc> c = ImmutableList.builder();
+      private fat d = faq.a(1.0F);
+      private fat e = faq.a(0.0F);
+
+      public ews.a a(fat $$0) {
+         this.d = $$0;
          return this;
       }
 
-      public ews.a b(ku<?> $$0) {
-         if (this.c.isEmpty()) {
-            this.c = Optional.of(ImmutableList.builder());
-         }
-
-         this.c.get().add($$0);
+      public ews.a a() {
          return this;
       }
 
-      protected ews.a a() {
+      public ews.a b(fat $$0) {
+         this.e = $$0;
          return this;
       }
 
-      @Override
-      public exg b() {
-         return new ews(this.g(), this.a, this.b.map(Builder::build), this.c.map(Builder::build));
-      }
-   }
-
-   public static enum b implements azv {
-      a("block_entity");
-
-      public static final Codec<ews.b> b = azv.b(ews.b::values);
-      private final String c;
-
-      private b(final String $$0) {
-         this.c = $$0;
+      public ews.a a(exe.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
       }
 
-      public kr a(evs $$0) {
-         switch (this) {
-            case a:
-               dua $$1 = $$0.c(eym.h);
-               return $$1 != null ? $$1.q() : kr.a;
-            default:
-               throw new MatchException(null, null);
-         }
+      public ews.a a(ezx.a $$0) {
+         this.b.add($$0.build());
+         return this;
       }
 
-      public Set<bai<?>> a() {
-         switch (this) {
-            case a:
-               return Set.of(eym.h);
-            default:
-               throw new MatchException(null, null);
-         }
+      public ews.a a(eyc.a $$0) {
+         this.c.add($$0.b());
+         return this;
       }
 
-      @Override
-      public String c() {
-         return this.c;
+      public ews b() {
+         return new ews(this.a.build(), this.b.build(), this.c.build(), this.d, this.e);
       }
    }
 }

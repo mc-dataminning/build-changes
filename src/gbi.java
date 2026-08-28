@@ -1,88 +1,98 @@
-import java.util.Arrays;
+import com.mojang.authlib.properties.PropertyMap;
+import java.io.File;
+import java.net.Proxy;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
 
-public class gbi extends gcc<gzl> {
-   private final gfe[] a;
-   private final gfe b;
+public class gbi {
+   public final gbi.d a;
+   public final ffh b;
+   public final gbi.a c;
+   public final gbi.b d;
+   public final gbi.c e;
 
-   public gbi(gfe $$0) {
-      super($$0);
-      this.b = $$0.b("head");
-      this.a = new gfe[12];
-      Arrays.setAll(this.a, $$1 -> $$0.b(a($$1)));
+   public gbi(gbi.d $$0, ffh $$1, gbi.a $$2, gbi.b $$3, gbi.c $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   private static String a(int $$0) {
-      return "part" + $$0;
+   public static class a {
+      public final File a;
+      public final File b;
+      public final File c;
+      @Nullable
+      public final String d;
+
+      public a(File $$0, File $$1, File $$2, @Nullable String $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public Path a() {
+         return this.d == null ? this.c.toPath() : hgn.a(this.c.toPath(), this.d);
+      }
    }
 
-   public static gfk a() {
-      gfm $$0 = new gfm();
-      gfo $$1 = $$0.a();
-      $$1.a("head", gfj.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), gfg.a);
-      float $$2 = 0.0F;
-      gfj $$3 = gfj.c().a(0, 16).a(0.0F, 0.0F, 0.0F, 2.0F, 8.0F, 2.0F);
+   public static class b {
+      public final boolean a;
+      public final String b;
+      public final String c;
+      public final boolean d;
+      public final boolean e;
+      public final boolean f;
 
-      for (int $$4 = 0; $$4 < 4; $$4++) {
-         float $$5 = ayz.b($$2) * 9.0F;
-         float $$6 = -2.0F + ayz.b((float)($$4 * 2) * 0.25F);
-         float $$7 = ayz.a($$2) * 9.0F;
-         $$1.a(a($$4), $$3, gfg.a($$5, $$6, $$7));
-         $$2++;
+      public b(boolean $$0, String $$1, String $$2, boolean $$3, boolean $$4, boolean $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
       }
-
-      $$2 = (float) (Math.PI / 4);
-
-      for (int $$8 = 4; $$8 < 8; $$8++) {
-         float $$9 = ayz.b($$2) * 7.0F;
-         float $$10 = 2.0F + ayz.b((float)($$8 * 2) * 0.25F);
-         float $$11 = ayz.a($$2) * 7.0F;
-         $$1.a(a($$8), $$3, gfg.a($$9, $$10, $$11));
-         $$2++;
-      }
-
-      $$2 = 0.47123894F;
-
-      for (int $$12 = 8; $$12 < 12; $$12++) {
-         float $$13 = ayz.b($$2) * 5.0F;
-         float $$14 = 11.0F + ayz.b((float)$$12 * 1.5F * 0.5F);
-         float $$15 = ayz.a($$2) * 5.0F;
-         $$1.a(a($$12), $$3, gfg.a($$13, $$14, $$15));
-         $$2++;
-      }
-
-      return gfk.a($$0, 64, 32);
    }
 
-   public void a(gzl $$0) {
-      super.a($$0);
-      float $$1 = $$0.u * (float) Math.PI * -0.1F;
-
-      for (int $$2 = 0; $$2 < 4; $$2++) {
-         this.a[$$2].c = -2.0F + ayz.b(((float)($$2 * 2) + $$0.u) * 0.25F);
-         this.a[$$2].b = ayz.b($$1) * 9.0F;
-         this.a[$$2].d = ayz.a($$1) * 9.0F;
-         $$1++;
+   public static record c(@Nullable String a, @Nullable String b, @Nullable String c, @Nullable String d) {
+      public boolean a() {
+         return !azw.h(this.b) || !azw.h(this.c) || !azw.h(this.d);
       }
 
-      $$1 = (float) (Math.PI / 4) + $$0.u * (float) Math.PI * 0.03F;
-
-      for (int $$3 = 4; $$3 < 8; $$3++) {
-         this.a[$$3].c = 2.0F + ayz.b(((float)($$3 * 2) + $$0.u) * 0.25F);
-         this.a[$$3].b = ayz.b($$1) * 7.0F;
-         this.a[$$3].d = ayz.a($$1) * 7.0F;
-         $$1++;
+      @Nullable
+      public String b() {
+         return this.a;
       }
 
-      $$1 = 0.47123894F + $$0.u * (float) Math.PI * -0.05F;
-
-      for (int $$4 = 8; $$4 < 12; $$4++) {
-         this.a[$$4].c = 11.0F + ayz.b(((float)$$4 * 1.5F + $$0.u) * 0.5F);
-         this.a[$$4].b = ayz.b($$1) * 5.0F;
-         this.a[$$4].d = ayz.a($$1) * 5.0F;
-         $$1++;
+      @Nullable
+      public String c() {
+         return this.b;
       }
 
-      this.b.f = $$0.aa * (float) (Math.PI / 180.0);
-      this.b.e = $$0.ab * (float) (Math.PI / 180.0);
+      @Nullable
+      public String d() {
+         return this.c;
+      }
+
+      @Nullable
+      public String e() {
+         return this.d;
+      }
+   }
+
+   public static class d {
+      public final fms a;
+      public final PropertyMap b;
+      public final PropertyMap c;
+      public final Proxy d;
+
+      public d(fms $$0, PropertyMap $$1, PropertyMap $$2, Proxy $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
    }
 }

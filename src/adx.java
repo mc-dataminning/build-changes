@@ -1,37 +1,44 @@
-public class adx implements yw<abl> {
-   public static final yn<vl, adx> a = yw.a(adx::a, adx::new);
-   private final int b;
-   private final double c;
+import java.util.List;
 
-   public adx(int $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   private adx(vl $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readDouble();
-   }
-
-   private void a(vl $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-   }
+public record adx(List<adx.a> b, boolean c) implements yw<abl> {
+   public static final yn<wa, adx> a = yn.a(adx.a.c.a(yl.a()), adx::b, yl.b, adx::e, adx::new);
 
    @Override
    public yy<adx> a() {
-      return age.bj;
+      return agd.aj;
    }
 
    public void a(abl $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public boolean e() {
+      return this.c;
    }
 
-   public double e() {
-      return this.c;
+   public static record a(ddc d, byte e) {
+      public static final byte a = 1;
+      public static final byte b = 2;
+      public static final yn<wa, adx.a> c = yn.a(ddc.a, adx.a::c, yl.c, adx.a::d, adx.a::new);
+
+      public a(ddc $$0, boolean $$1, boolean $$2) {
+         this($$0, (byte)(($$1 ? 1 : 0) | ($$2 ? 2 : 0)));
+      }
+
+      public boolean a() {
+         return (this.e & 1) != 0;
+      }
+
+      public boolean b() {
+         return (this.e & 2) != 0;
+      }
+
+      public ddc c() {
+         return this.d;
+      }
+
+      public byte d() {
+         return this.e;
+      }
    }
 }

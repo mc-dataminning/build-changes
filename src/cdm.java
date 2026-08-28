@@ -1,67 +1,65 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class cdm extends ccg {
-   private static final int a = 10;
-   private final bvq b;
-   private final int c;
-   @Nullable
-   private ji d;
+public class cdm extends ccw {
+   private final bwa a;
+   private bvy b;
+   private int c;
 
-   public cdm(bvq $$0, int $$1) {
-      this.b = $$0;
-      this.c = b($$1);
-      this.a(EnumSet.of(ccg.a.a));
+   public cdm(bwa $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(ccw.a.a, ccw.a.b));
    }
 
    @Override
    public boolean b() {
-      if (this.b.cX()) {
-         return false;
-      } else if (this.b.dV().V()) {
-         return false;
-      } else if (this.b.dY().a(this.c) != 0) {
+      bvy $$0 = this.a.f();
+      if ($$0 == null) {
          return false;
       } else {
-         ard $$0 = (ard)this.b.dV();
-         ji $$1 = this.b.dv();
-         if (!$$0.a($$1, 6)) {
-            return false;
-         } else {
-            fbb $$2 = cgg.a(this.b, 15, 7, $$1x -> (double)(-$$0.b(kk.a($$1x))));
-            this.d = $$2 == null ? null : ji.a((kb)$$2);
-            return this.d != null;
-         }
+         this.b = $$0;
+         return true;
       }
    }
 
    @Override
    public boolean c() {
-      return this.d != null && !this.b.P().k() && this.b.P().g().equals(this.d);
+      if (!this.b.bJ()) {
+         return false;
+      } else {
+         return this.a.g(this.b) > 225.0 ? false : !this.a.O().k() || this.b();
+      }
+   }
+
+   @Override
+   public void e() {
+      this.b = null;
+      this.a.O().m();
+   }
+
+   @Override
+   public boolean Q_() {
+      return true;
    }
 
    @Override
    public void a() {
-      if (this.d != null) {
-         ceu $$0 = this.b.P();
-         if ($$0.k() && !this.d.a(this.b.dt(), 10.0)) {
-            fbb $$1 = fbb.c(this.d);
-            fbb $$2 = this.b.dt();
-            fbb $$3 = $$2.d($$1);
-            $$1 = $$3.c(0.4).e($$1);
-            fbb $$4 = $$1.d($$2).d().c(10.0).e($$2);
-            ji $$5 = ji.a((kb)$$4);
-            $$5 = this.b.dV().a(ect.a.f, $$5);
-            if (!$$0.a((double)$$5.u(), (double)$$5.v(), (double)$$5.w(), 1.0)) {
-               this.h();
-            }
+      this.a.J().a(this.b, 30.0F, 30.0F);
+      double $$0 = (double)(this.a.dp() * 2.0F * this.a.dp() * 2.0F);
+      double $$1 = this.a.i(this.b.dz(), this.b.dB(), this.b.dF());
+      double $$2 = 0.8;
+      if ($$1 > $$0 && $$1 < 16.0) {
+         $$2 = 1.33;
+      } else if ($$1 < 225.0) {
+         $$2 = 0.6;
+      }
+
+      this.a.O().a(this.b, $$2);
+      this.c = Math.max(this.c - 1, 0);
+      if (!($$1 > $$0)) {
+         if (this.c <= 0) {
+            this.c = 20;
+            this.a.c(a(this.a), this.b);
          }
       }
-   }
-
-   private void h() {
-      azh $$0 = this.b.dY();
-      ji $$1 = this.b.dV().a(ect.a.f, this.b.dv().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
-      this.b.P().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), 1.0);
    }
 }

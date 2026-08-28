@@ -1,69 +1,51 @@
 import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
 
-public class elb extends elj {
-   public static final MapCodec<elb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  ayi.m.optionalFieldOf("min_height_for_leaves", 1).forGetter($$0x -> $$0x.b), brq.b(1, 64).fieldOf("bend_length").forGetter($$0x -> $$0x.h)
-               )
+public class elb extends eld {
+   public static final MapCodec<elb> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ayr.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
+               esz.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
+               ayi.o.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
             )
+            .and(b($$0))
             .apply($$0, elb::new)
    );
-   private final int b;
-   private final brq h;
+   private final ayr<Integer> i;
+   private final esz.a j;
+   private final float k;
+   private final esz l;
 
-   public elb(int $$0, int $$1, int $$2, int $$3, brq $$4) {
-      super($$0, $$1, $$2);
-      this.b = $$3;
-      this.h = $$4;
+   public elb(ayr<Integer> $$0, esz.a $$1, float $$2, long $$3, esz.a $$4, float $$5, List<dxq> $$6) {
+      super($$3, $$4, $$5, $$6);
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = esz.b(new een(new edp($$3)), $$1);
    }
 
    @Override
-   protected elk<?> a() {
-      return elk.g;
+   protected ela<?> a() {
+      return ela.e;
    }
 
    @Override
-   public List<ejp.a> a(dgp $$0, BiConsumer<ji, dwy> $$1, azh $$2, int $$3, ji $$4, eiz $$5) {
-      jn $$6 = jn.c.a.a($$2);
-      int $$7 = $$3 - 1;
-      ji.a $$8 = $$4.k();
-      ji $$9 = $$8.e();
-      a($$0, $$1, $$2, $$9, $$5);
-      List<ejp.a> $$10 = Lists.newArrayList();
+   public dxq a(azh $$0, ji $$1) {
+      double $$2 = this.a($$1);
+      int $$3 = (int)ayz.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
+      List<dxq> $$4 = Lists.newArrayListWithCapacity($$3);
 
-      for (int $$11 = 0; $$11 <= $$7; $$11++) {
-         if ($$11 + 1 >= $$7 + $$2.a(2)) {
-            $$8.c($$6);
-         }
-
-         if (ehl.c($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         if ($$11 >= this.b) {
-            $$10.add(new ejp.a($$8.j(), 0, false));
-         }
-
-         $$8.c(jn.b);
+      for (int $$5 = 0; $$5 < $$3; $$5++) {
+         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
       }
 
-      int $$12 = this.h.a($$2);
+      return this.a($$4, $$1, (double)this.e);
+   }
 
-      for (int $$13 = 0; $$13 <= $$12; $$13++) {
-         if (ehl.c($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         $$10.add(new ejp.a($$8.j(), 0, false));
-         $$8.c($$6);
-      }
-
-      return $$10;
+   protected double a(ji $$0) {
+      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
    }
 }

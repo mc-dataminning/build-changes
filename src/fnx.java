@@ -1,85 +1,58 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Function;
 
-public class fnx {
-   public static final fnx.a a = a(fnv::a, fnu.c);
-   public static final fnx.a b = a(fnv::a, fnu.d);
-   public static final fnx.a c = a(fnv::a, fnu.e);
-   public static final fnx.a d = a(fnv::n, fnu.j);
-   public static final fnx.a e = a(fnv::n, fnu.k);
-   public static final fnx.a f = a(fnv::t, fnu.n);
-   public static final fnx.a g = a(fnv::o, fnu.m);
-   public static final fnx.a h = a(fnv::E, fnu.p);
-   public static final fnx.a i = a(fnv::D, fnu.q);
-   public static final fnx.a j = a(fnv::i, fnu.ay);
-   public static final fnx.a k = a(fnv::d, fnu.az);
-   public static final fnx.a l = a(fnv::j, fnu.aA);
-   public static final fnx.a m = a(fnv::j, fnu.aB);
-   public static final fnx.a n = a(fnv::j, fnu.aC);
-   public static final fnx.a o = a(fnv::j, fnu.aD);
-   public static final fnx.a p = a(fnv::l, fnu.aG);
-   public static final fnx.a q = a(fnv::m, fnu.aE);
-   public static final fnx.a r = a(fnv::G, fnu.aV);
-   public static final fnx.a s = a(fnv::a, fnu.ad);
-   public static final fnx.a t = a(fnv::A, fnu.bg);
-   public static final fnx.a u = a(fnv::A, fnu.bh);
-   public static final fnx.a v = a(fnv::b, fnu.br);
-   public static final fnx.a w = a(fnv::q, fnu.j);
-   public static final fnx.a x = a(fnv::q, fnu.k);
-   public static final fnx.a y = a(fnv::u, fnu.n);
-   public static final fnx.a z = a(fnv::v, fnu.j);
-   private final fnv A;
-   private final fnt B;
+public class fnx implements mi {
+   private final mk.a d;
 
-   private fnx(fnv $$0, fnt $$1) {
-      this.A = $$0;
-      this.B = $$1;
+   public fnx(mk $$0) {
+      this.d = $$0.a(mk.b.b, "equipment");
    }
 
-   public fnt a() {
-      return this.B;
-   }
+   private static void a(BiConsumer<akt<dfk>, hhx> $$0) {
+      $$0.accept(dfl.b, hhx.a().a(aku.b("leather"), true).a(aku.b("leather_overlay"), false).a(hhx.d.e, hhx.c.a(aku.b("leather"), true)).a());
+      $$0.accept(dfl.c, a("chainmail"));
+      $$0.accept(dfl.d, b("iron"));
+      $$0.accept(dfl.e, b("gold"));
+      $$0.accept(dfl.f, b("diamond"));
+      $$0.accept(dfl.g, hhx.a().b(aku.b("turtle_scute"), false).a());
+      $$0.accept(dfl.h, a("netherite"));
+      $$0.accept(dfl.i, hhx.a().a(hhx.d.d, hhx.c.b(aku.b("armadillo_scute"), false)).a(hhx.d.d, hhx.c.b(aku.b("armadillo_scute_overlay"), true)).a());
+      $$0.accept(dfl.j, hhx.a().a(hhx.d.c, new hhx.c(aku.b("elytra"), Optional.empty(), true)).a());
 
-   public fnv b() {
-      return this.A;
-   }
-
-   public fnx a(Consumer<fnv> $$0) {
-      $$0.accept(this.A);
-      return this;
-   }
-
-   public akv a(djn $$0, BiConsumer<akv, fnr> $$1) {
-      return this.B.a($$0, this.A, $$1);
-   }
-
-   public akv a(djn $$0, String $$1, BiConsumer<akv, fnr> $$2) {
-      return this.B.a($$0, $$1, this.A, $$2);
-   }
-
-   private static fnx.a a(Function<djn, fnv> $$0, fnt $$1) {
-      return $$2 -> new fnx($$0.apply($$2), $$1);
-   }
-
-   public static fnx a(akv $$0) {
-      return new fnx(fnv.b($$0), fnu.c);
-   }
-
-   @FunctionalInterface
-   public interface a {
-      fnx get(djn var1);
-
-      default akv create(djn $$0, BiConsumer<akv, fnr> $$1) {
-         return this.get($$0).a($$0, $$1);
+      for (Entry<cwe, akt<dfk>> $$1 : dfl.k.entrySet()) {
+         cwe $$2 = $$1.getKey();
+         akt<dfk> $$3 = $$1.getValue();
+         $$0.accept($$3, hhx.a().a(hhx.d.f, new hhx.c(aku.b($$2.c()))).a());
       }
 
-      default akv createWithSuffix(djn $$0, String $$1, BiConsumer<akv, fnr> $$2) {
-         return this.get($$0).a($$0, $$1, $$2);
-      }
+      $$0.accept(dfl.l, hhx.a().a(hhx.d.f, new hhx.c(aku.b("trader_llama"))).a());
+   }
 
-      default fnx.a updateTexture(Consumer<fnv> $$0) {
-         return $$1 -> this.get($$1).a($$0);
-      }
+   private static hhx a(String $$0) {
+      return hhx.a().a(aku.b($$0)).a();
+   }
+
+   private static hhx b(String $$0) {
+      return hhx.a().a(aku.b($$0)).a(hhx.d.e, hhx.c.a(aku.b($$0), false)).a();
+   }
+
+   @Override
+   public CompletableFuture<?> a(mg $$0) {
+      Map<akt<dfk>, hhx> $$1 = new HashMap<>();
+      a(($$1x, $$2) -> {
+         if ($$1.putIfAbsent($$1x, $$2) != null) {
+            throw new IllegalStateException("Tried to register equipment asset twice for id: " + $$1x);
+         }
+      });
+      return mi.a($$0, hhx.a, this.d::a, $$1);
+   }
+
+   @Override
+   public String a() {
+      return "Equipment Asset Definitions";
    }
 }

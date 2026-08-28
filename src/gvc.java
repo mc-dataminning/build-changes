@@ -1,22 +1,25 @@
-public class gvc extends gsy<cmo, gzd> {
-   private static final akv a = akv.b("textures/entity/illager/vindicator.png");
+public class gvc extends grx<cin, hbc, geq> {
+   private static final aku a = aku.b("textures/entity/sheep/sheep.png");
 
-   public gvc(gsf.a $$0) {
-      super($$0, new gcq<>($$0.a(gfd.dv)), 0.5F);
-      this.a(new gwm<gzd, gcq<gzd>>(this) {
-         public void a(ffv $$0, glz $$1, int $$2, gzd $$3, float $$4, float $$5) {
-            if ($$3.c) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5);
-            }
-         }
-      });
+   public gvc(gtd.a $$0) {
+      super($$0, new geq($$0.a(ggb.cB)), new geq($$0.a(ggb.cC)), 0.7F);
+      this.a(new gxu(this, $$0.f()));
    }
 
-   public akv a(gzd $$0) {
+   public aku a(hbc $$0) {
       return a;
    }
 
-   public gzd b() {
-      return new gzd();
+   public hbc b() {
+      return new hbc();
+   }
+
+   public void a(cin $$0, hbc $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b = $$0.L($$2);
+      $$1.a = $$0.K($$2);
+      $$1.c = $$0.x();
+      $$1.d = $$0.t();
+      $$1.e = $$0.ar();
    }
 }

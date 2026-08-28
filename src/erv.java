@@ -1,17 +1,18 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public class erv implements erx {
-   private static final erv b = new erv();
-   public static final MapCodec<erv> a = MapCodec.unit(b);
+public enum erv implements azv {
+   a("ignore_waterlogging"),
+   b("apply_waterlogging");
 
-   @Override
-   public tq a(azh $$0, @Nullable tq $$1) {
-      return new tq();
+   public static Codec<erv> c = azv.b(erv::values);
+   private final String d;
+
+   private erv(final String $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public ery<?> a() {
-      return ery.a;
+   public String c() {
+      return this.d;
    }
 }

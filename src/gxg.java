@@ -1,20 +1,32 @@
-public class gxg extends gvx<hay, ger> {
-   public gxg(guc<hay, ger> $$0) {
+import com.google.common.collect.Maps;
+import java.util.Map;
+
+public class gxg extends gxs<gzz, gdl> {
+   private static final aku a = aku.b("invisible");
+   private static final Map<cka, aku> b = Maps.newEnumMap(
+      Map.of(
+         cka.a,
+         a,
+         cka.b,
+         aku.b("textures/entity/horse/horse_markings_white.png"),
+         cka.c,
+         aku.b("textures/entity/horse/horse_markings_whitefield.png"),
+         cka.d,
+         aku.b("textures/entity/horse/horse_markings_whitedots.png"),
+         cka.e,
+         aku.b("textures/entity/horse/horse_markings_blackdots.png")
+      )
+   );
+
+   public gxg(gva<gzz, gdl> $$0) {
       super($$0);
    }
 
-   protected void a(hay $$0, ffv $$1) {
-      if ($$0.c) {
-         this.d().e().a($$1);
-         this.d().b().a($$1);
-         this.d().c().a($$1);
-         $$1.a(0.0625F, 0.25F, 0.0F);
-         $$1.a(a.f.rotationDegrees(180.0F));
-         $$1.a(a.b.rotationDegrees(140.0F));
-         $$1.a(a.f.rotationDegrees(10.0F));
-         $$1.a(a.b.rotationDegrees(180.0F));
-      } else {
-         super.a($$0, $$1);
+   public void a(fgr $$0, gmx $$1, int $$2, gzz $$3, float $$4, float $$5) {
+      aku $$6 = b.get($$3.h);
+      if ($$6 != a && !$$3.z) {
+         fgv $$7 = $$1.getBuffer(gnh.j($$6));
+         this.d().a($$0, $$7, $$2, gue.a($$3, 0.0F));
       }
    }
 }

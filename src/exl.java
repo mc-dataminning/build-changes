@@ -1,151 +1,145 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.EnumSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class exl extends exf {
+public class exl extends eyb {
+   private static final Map<aku, exl.c> b = Stream.of(exl.a.a, exl.d.b, exl.e.b).collect(Collectors.toMap(exl.c::a, Function.identity()));
+   private static final Codec<exl.c> c = aku.a.comapFlatMap($$0 -> {
+      exl.c $$1 = b.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No formula type with id: '" + $$0 + "'");
+   }, exl.c::a);
+   private static final MapCodec<exl.b> d = ayi.a("formula", "parameters", c, exl.b::a, exl.c::b);
    public static final MapCodec<exl> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(exl.b.a.listOf().fieldOf("modifiers").forGetter($$0x -> $$0x.b), Codec.BOOL.optionalFieldOf("replace", true).forGetter($$0x -> $$0x.c))
-            )
-            .apply($$0, exl::new)
+      $$0 -> a($$0).and($$0.group(ddr.c.fieldOf("enchantment").forGetter($$0x -> $$0x.e), d.forGetter($$0x -> $$0x.f))).apply($$0, exl::new)
    );
-   private final List<exl.b> b;
-   private final boolean c;
+   private final jr<ddr> e;
+   private final exl.b f;
 
-   exl(List<ezb> $$0, List<exl.b> $$1, boolean $$2) {
+   private exl(List<ezx> $$0, jr<ddr> $$1, exl.b $$2) {
       super($$0);
-      this.b = List.copyOf($$1);
-      this.c = $$2;
+      this.e = $$1;
+      this.f = $$2;
    }
 
    @Override
-   public exh<exl> b() {
-      return exi.o;
+   public eyd<exl> b() {
+      return eye.x;
    }
 
    @Override
    public Set<bai<?>> a() {
-      return this.b.stream().flatMap($$0 -> $$0.e.a().stream()).collect(ImmutableSet.toImmutableSet());
+      return Set.of(ezi.i);
    }
 
    @Override
-   public cwq a(cwq $$0, evs $$1) {
-      if (this.c) {
-         $$0.b(kv.o, this.a($$1, czh.a));
-      } else {
-         $$0.a(kv.o, czh.a, $$1x -> this.a($$1, $$1x));
+   public cxh a(cxh $$0, ewo $$1) {
+      cxh $$2 = $$1.c(ezi.i);
+      if ($$2 != null) {
+         int $$3 = ddt.a(this.e, $$2);
+         int $$4 = this.f.a($$1.b(), $$0.M(), $$3);
+         $$0.e($$4);
       }
 
       return $$0;
    }
 
-   private czh a(evs $$0, czh $$1) {
-      azh $$2 = $$0.b();
-
-      for (exl.b $$3 : this.b) {
-         buv $$4 = af.a($$3.f, $$2);
-         $$1 = $$1.a($$3.c, new bwo($$3.b, (double)$$3.e.b($$0), $$3.d), $$4);
-      }
-
-      return $$1;
+   public static eyb.a<?> a(jr<ddr> $$0, float $$1, int $$2) {
+      return a($$3 -> new exl($$3, $$0, new exl.a($$2, $$1)));
    }
 
-   public static exl.c a(akv $$0, jr<bwl> $$1, bwo.a $$2, ezx $$3) {
-      return new exl.c($$0, $$1, $$2, $$3);
+   public static eyb.a<?> a(jr<ddr> $$0) {
+      return a($$1 -> new exl($$1, $$0, new exl.d()));
    }
 
-   public static exl.a c() {
-      return new exl.a();
+   public static eyb.a<?> b(jr<ddr> $$0) {
+      return a($$1 -> new exl($$1, $$0, new exl.e(1)));
    }
 
-   public static class a extends exf.a<exl.a> {
-      private final boolean a;
-      private final List<exl.b> b = Lists.newArrayList();
+   public static eyb.a<?> a(jr<ddr> $$0, int $$1) {
+      return a($$2 -> new exl($$2, $$0, new exl.e($$1)));
+   }
 
-      public a(boolean $$0) {
-         this.a = $$0;
-      }
+   static record a(int b, float c) implements exl.b {
+      private static final Codec<exl.a> d = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("extra").forGetter(exl.a::b), Codec.FLOAT.fieldOf("probability").forGetter(exl.a::c)).apply($$0, exl.a::new)
+      );
+      public static final exl.c a = new exl.c(aku.b("binomial_with_bonus_count"), d);
 
-      public a() {
-         this(false);
-      }
+      @Override
+      public int a(azh $$0, int $$1, int $$2) {
+         for (int $$3 = 0; $$3 < $$2 + this.b; $$3++) {
+            if ($$0.i() < this.c) {
+               $$1++;
+            }
+         }
 
-      protected exl.a a() {
-         return this;
-      }
-
-      public exl.a a(exl.c $$0) {
-         this.b.add($$0.a());
-         return this;
+         return $$1;
       }
 
       @Override
-      public exg b() {
-         return new exl(this.g(), this.b, this.a);
+      public exl.c a() {
+         return a;
       }
    }
 
-   static record b(akv b, jr<bwl> c, bwo.a d, ezx e, List<buv> f) {
-      private static final Codec<List<buv>> g = ayi.b(ayi.a(buv.l));
-      public static final Codec<exl.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  akv.a.fieldOf("id").forGetter(exl.b::a),
-                  bwl.a.fieldOf("attribute").forGetter(exl.b::b),
-                  bwo.a.f.fieldOf("operation").forGetter(exl.b::c),
-                  ezy.a.fieldOf("amount").forGetter(exl.b::d),
-                  g.fieldOf("slot").forGetter(exl.b::e)
-               )
-               .apply($$0, exl.b::new)
+   interface b {
+      int a(azh var1, int var2, int var3);
+
+      exl.c a();
+   }
+
+   static record c(aku a, Codec<? extends exl.b> b) {
+   }
+
+   static record d() implements exl.b {
+      public static final Codec<exl.d> a = Codec.unit(exl.d::new);
+      public static final exl.c b = new exl.c(aku.b("ore_drops"), a);
+
+      @Override
+      public int a(azh $$0, int $$1, int $$2) {
+         if ($$2 > 0) {
+            int $$3 = $$0.a($$2 + 2) - 1;
+            if ($$3 < 0) {
+               $$3 = 0;
+            }
+
+            return $$1 * ($$3 + 1);
+         } else {
+            return $$1;
+         }
+      }
+
+      @Override
+      public exl.c a() {
+         return b;
+      }
+   }
+
+   static record e(int c) implements exl.b {
+      public static final Codec<exl.e> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("bonusMultiplier").forGetter(exl.e::b)).apply($$0, exl.e::new)
       );
+      public static final exl.c b = new exl.c(aku.b("uniform_bonus_count"), a);
 
-      public akv a() {
-         return this.b;
+      @Override
+      public int a(azh $$0, int $$1, int $$2) {
+         return $$1 + $$0.a(this.c * $$2 + 1);
       }
 
-      public jr<bwl> b() {
+      @Override
+      public exl.c a() {
+         return b;
+      }
+
+      public int b() {
          return this.c;
-      }
-
-      public bwo.a c() {
-         return this.d;
-      }
-
-      public ezx d() {
-         return this.e;
-      }
-
-      public List<buv> e() {
-         return this.f;
-      }
-   }
-
-   public static class c {
-      private final akv a;
-      private final jr<bwl> b;
-      private final bwo.a c;
-      private final ezx d;
-      private final Set<buv> e = EnumSet.noneOf(buv.class);
-
-      public c(akv $$0, jr<bwl> $$1, bwo.a $$2, ezx $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      public exl.c a(buv $$0) {
-         this.e.add($$0);
-         return this;
-      }
-
-      public exl.b a() {
-         return new exl.b(this.a, this.b, this.c, this.d, List.copyOf(this.e));
       }
    }
 }

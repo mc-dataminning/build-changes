@@ -1,65 +1,77 @@
-import java.util.EnumSet;
+import java.util.function.Predicate;
 
-public abstract class ccg {
-   private final EnumSet<ccg.a> a = EnumSet.noneOf(ccg.a.class);
+public class ccg extends ccn {
+   private static final int g = 240;
+   private final Predicate<bsv> h;
+   protected int a;
+   protected int b = -1;
+   protected int c = -1;
 
-   public abstract boolean b();
-
-   public boolean c() {
-      return this.b();
+   public ccg(bwa $$0, Predicate<bsv> $$1) {
+      super($$0);
+      this.h = $$1;
    }
 
-   public boolean U_() {
-      return true;
+   public ccg(bwa $$0, int $$1, Predicate<bsv> $$2) {
+      this($$0, $$2);
+      this.c = $$1;
    }
 
-   public void d() {
-   }
-
-   public void e() {
-   }
-
-   public boolean V_() {
-      return false;
-   }
-
-   public void a() {
-   }
-
-   public void a(EnumSet<ccg.a> $$0) {
-      this.a.clear();
-      this.a.addAll($$0);
+   protected int f() {
+      return Math.max(240, this.c);
    }
 
    @Override
-   public String toString() {
-      return this.getClass().getSimpleName();
+   public boolean b() {
+      if (!super.b()) {
+         return false;
+      } else {
+         return !a(this.d).O().b(dgv.c) ? false : this.a(this.d.dU().an()) && !this.h();
+      }
    }
 
-   public EnumSet<ccg.a> j() {
-      return this.a;
+   @Override
+   public void d() {
+      super.d();
+      this.a = 0;
    }
 
-   protected int a(int $$0) {
-      return this.V_() ? $$0 : b($$0);
+   @Override
+   public boolean c() {
+      return this.a <= this.f() && !this.h() && this.e.a(this.d.ds(), 2.0) && this.a(this.d.dU().an());
    }
 
-   protected static int b(int $$0) {
-      return ayz.e($$0, 2);
+   @Override
+   public void e() {
+      super.e();
+      this.d.dU().a(this.d.ar(), this.e, -1);
    }
 
-   protected static ard a(bum $$0) {
-      return (ard)$$0.dV();
+   @Override
+   public void a() {
+      super.a();
+      if (this.d.dX().a(20) == 0) {
+         this.d.dU().c(1019, this.e, 0);
+         if (!this.d.aI) {
+            this.d.a(this.d.fC());
+         }
+      }
+
+      this.a++;
+      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
+      if ($$0 != this.b) {
+         this.d.dU().a(this.d.ar(), this.e, $$0);
+         this.b = $$0;
+      }
+
+      if (this.a == this.f() && this.a(this.d.dU().an())) {
+         this.d.dU().a(this.e, false);
+         this.d.dU().c(1021, this.e, 0);
+         this.d.dU().c(2001, this.e, dke.j(this.d.dU().a_(this.e)));
+      }
    }
 
-   protected static ard a(dgj $$0) {
-      return (ard)$$0;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   private boolean a(bsv $$0) {
+      return this.h.test($$0);
    }
 }

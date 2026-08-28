@@ -1,29 +1,60 @@
-public class cyf extends cxk implements cxl {
-   public static float a = 0.5F;
+import javax.annotation.Nullable;
 
-   public cyf(cwm.a $$0) {
-      super($$0);
+public class cyf extends cvo {
+   public cyf(dke $$0, cxd.a $$1) {
+      super($$0, $$1);
    }
 
+   @Nullable
    @Override
-   public bsl a(dgj $$0, coy $$1, bsk $$2) {
-      cwq $$3 = $$1.b($$2);
-      if ($$0 instanceof ard $$4) {
-         cpr.a(cqd::new, $$4, $$3, $$1, -20.0F, a, 1.0F);
+   public dax b(dax $$0) {
+      ji $$1 = $$0.a();
+      dgz $$2 = $$0.q();
+      dxq $$3 = $$2.a_($$1);
+      dke $$4 = this.d();
+      if (!$$3.a($$4)) {
+         return dqy.a($$2, $$1) == 7 ? null : $$0;
+      } else {
+         jn $$5;
+         if ($$0.h()) {
+            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
+         } else {
+            $$5 = $$0.k() == jn.b ? $$0.g() : jn.b;
+         }
+
+         int $$7 = 0;
+         ji.a $$8 = $$1.k().c($$5);
+
+         while ($$7 < 7) {
+            if (!$$2.C && !$$2.k($$8)) {
+               cpr $$9 = $$0.o();
+               int $$10 = $$2.ao();
+               if ($$9 instanceof are && $$8.v() > $$10) {
+                  ((are)$$9).b(wp.a("build.tooHigh", $$10).a(n.m), true);
+               }
+               break;
+            }
+
+            $$3 = $$2.a_($$8);
+            if (!$$3.a(this.d())) {
+               if ($$3.a($$0)) {
+                  return dax.a($$0, $$8, $$5);
+               }
+               break;
+            }
+
+            $$8.c($$5);
+            if ($$5.o().d()) {
+               $$7++;
+            }
+         }
+
+         return null;
       }
-
-      $$1.b(awk.c.b(this));
-      $$3.a(1, $$1);
-      return bsl.a;
    }
 
    @Override
-   public cpr a(dgj $$0, kb $$1, cwq $$2, jn $$3) {
-      return new cqd($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
-   }
-
-   @Override
-   public cxl.a b() {
-      return cxl.a.a().a(cxl.a.a.c() * 0.5F).b(cxl.a.a.d() * 1.25F).a();
+   protected boolean c() {
+      return false;
    }
 }

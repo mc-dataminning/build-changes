@@ -1,26 +1,23 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eis implements eid {
+public class eis implements eiy {
    public static final Codec<eis> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dwy.a.fieldOf("target").forGetter($$0x -> $$0x.b),
-               dwy.a.fieldOf("state").forGetter($$0x -> $$0x.c),
-               brq.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, eis::new)
+      $$0 -> $$0.group(bsd.b(0, 3).fieldOf("reach").forGetter($$0x -> $$0x.b), bsd.b(1, 10).fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, eis::new)
    );
-   public final dwy b;
-   public final dwy c;
-   private final brq d;
+   private final bsd b;
+   private final bsd c;
 
-   public eis(dwy $$0, dwy $$1, brq $$2) {
+   public eis(bsd $$0, bsd $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
    }
 
-   public brq a() {
-      return this.d;
+   public bsd a() {
+      return this.b;
+   }
+
+   public bsd b() {
+      return this.c;
    }
 }

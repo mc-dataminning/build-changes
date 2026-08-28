@@ -1,20 +1,8 @@
-public interface fbf {
-   fbf a = ($$0, $$1) -> false;
-   fbf b = ($$0, $$1) -> !$$0 && !$$1;
-   fbf c = ($$0, $$1) -> $$1 && !$$0;
-   fbf d = ($$0, $$1) -> !$$0;
-   fbf e = ($$0, $$1) -> $$0 && !$$1;
-   fbf f = ($$0, $$1) -> !$$1;
-   fbf g = ($$0, $$1) -> $$0 != $$1;
-   fbf h = ($$0, $$1) -> !$$0 || !$$1;
-   fbf i = ($$0, $$1) -> $$0 && $$1;
-   fbf j = ($$0, $$1) -> $$0 == $$1;
-   fbf k = ($$0, $$1) -> $$1;
-   fbf l = ($$0, $$1) -> !$$0 || $$1;
-   fbf m = ($$0, $$1) -> $$0;
-   fbf n = ($$0, $$1) -> $$0 || !$$1;
-   fbf o = ($$0, $$1) -> $$0 || $$1;
-   fbf p = ($$0, $$1) -> true;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   boolean apply(boolean var1, boolean var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fbf {
 }

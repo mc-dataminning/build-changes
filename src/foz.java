@@ -1,25 +1,54 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class foz {
-   private static final ayl a = ayl.codepoint(32, xm.a);
-
-   private static String a(String $$0) {
-      return flk.Q().n.N().c() ? $$0 : n.a($$0);
+public interface foz {
+   static foz a(frn $$0) {
+      return new foz.a($$0);
    }
 
-   public static List<ayl> a(wu $$0, int $$1, fod $$2) {
-      fky $$3 = new fky();
-      $$0.a(($$1x, $$2x) -> {
-         $$3.a(wu.a(a($$2x), $$1x));
-         return Optional.empty();
-      }, xm.a);
-      List<ayl> $$4 = Lists.newArrayList();
-      $$2.b().a($$3.b(), $$1, xm.a, ($$1x, $$2x) -> {
-         ayl $$3x = tl.a().a($$1x);
-         $$4.add($$2x ? ayl.composite(a, $$3x) : $$3x);
-      });
-      return (List<ayl>)($$4.isEmpty() ? Lists.newArrayList(new ayl[]{ayl.a}) : $$4);
+   @Nullable
+   static foz a(frm $$0, @Nullable foz $$1) {
+      return $$1 == null ? null : new foz.b($$0, $$1);
+   }
+
+   static foz a(frn $$0, frm... $$1) {
+      foz $$2 = a($$0);
+
+      for (frm $$3 : $$1) {
+         $$2 = a($$3, $$2);
+      }
+
+      return $$2;
+   }
+
+   frn a();
+
+   void a(boolean var1);
+
+   public static record a(frn a) implements foz {
+      @Override
+      public void a(boolean $$0) {
+         this.a.a($$0);
+      }
+   }
+
+   public static record b(frm a, foz b) implements foz {
+      @Override
+      public void a(boolean $$0) {
+         if (!$$0) {
+            this.a.a(null);
+         } else {
+            this.a.a(this.b.a());
+         }
+
+         this.b.a($$0);
+      }
+
+      public frm b() {
+         return this.a;
+      }
+
+      public foz c() {
+         return this.b;
+      }
    }
 }

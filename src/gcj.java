@@ -1,44 +1,94 @@
-import java.util.Set;
+public class gcj extends gda<gyx> {
+   private static final float a = 0.6F;
+   private static final float b = 0.8F;
+   private static final float c = 1.0F;
+   private final ggc d;
+   private final ggc e;
+   private final ggc f;
+   private final ggc g;
+   private final ggc i;
+   private final ggc j;
+   private final ggc k;
 
-public class gcj extends gdm<gyx> {
-   public static final gfn a = new gbb(true, 19.0F, 1.0F, 2.5F, 2.0F, 24.0F, Set.of("head"));
-
-   public gcj(gfe $$0) {
-      super($$0);
+   public gcj(ggc $$0) {
+      super($$0, gnh::j);
+      this.f = $$0.b("wind_body");
+      this.j = this.f.b("wind_bottom");
+      this.i = this.j.b("wind_mid");
+      this.g = this.i.b("wind_top");
+      this.d = $$0.b("body").b("head");
+      this.e = this.d.b("eyes");
+      this.k = $$0.b("body").b("rods");
    }
 
-   public static gfk a() {
-      gfm $$0 = new gfm();
-      gfo $$1 = $$0.a();
-      gfo $$2 = $$1.a(
+   public static ggi a(int $$0, int $$1) {
+      ggk $$2 = new ggk();
+      ggm $$3 = $$2.a();
+      ggm $$4 = $$3.a("body", ggh.c(), gge.a(0.0F, 0.0F, 0.0F));
+      ggm $$5 = $$4.a("rods", ggh.c(), gge.a(0.0F, 8.0F, 0.0F));
+      $$5.a("rod_1", ggh.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new ggg(0.0F)), gge.a(2.5981F, -3.0F, 1.5F, -2.7489F, -1.0472F, 3.1416F));
+      $$5.a("rod_2", ggh.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new ggg(0.0F)), gge.a(-2.5981F, -3.0F, 1.5F, -2.7489F, 1.0472F, 3.1416F));
+      $$5.a("rod_3", ggh.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new ggg(0.0F)), gge.a(0.0F, -3.0F, -3.0F, 0.3927F, 0.0F, 0.0F));
+      ggm $$6 = $$4.a(
          "head",
-         gfj.c()
-            .a(2, 61)
-            .a("right ear", -6.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
-            .a(2, 61)
-            .a()
-            .a("left ear", 2.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
-            .a(23, 52)
-            .a("goatee", -0.5F, -3.0F, -14.0F, 0.0F, 7.0F, 5.0F),
-         gfg.a(1.0F, 14.0F, 0.0F)
+         ggh.c().a(4, 24).a(-5.0F, -5.0F, -4.2F, 10.0F, 3.0F, 4.0F, new ggg(0.0F)).a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new ggg(0.0F)),
+         gge.a(0.0F, 4.0F, 0.0F)
       );
-      $$2.a("left_horn", gfj.c().a(12, 55).a(-0.01F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), gfg.a(0.0F, 0.0F, 0.0F));
-      $$2.a("right_horn", gfj.c().a(12, 55).a(-2.99F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), gfg.a(0.0F, 0.0F, 0.0F));
-      $$2.a("nose", gfj.c().a(34, 46).a(-3.0F, -4.0F, -8.0F, 5.0F, 7.0F, 10.0F), gfg.a(0.0F, -8.0F, -8.0F, 0.9599F, 0.0F, 0.0F));
-      $$1.a("body", gfj.c().a(1, 1).a(-4.0F, -17.0F, -7.0F, 9.0F, 11.0F, 16.0F).a(0, 28).a(-5.0F, -18.0F, -8.0F, 11.0F, 14.0F, 11.0F), gfg.a(0.0F, 24.0F, 0.0F));
-      $$1.a("left_hind_leg", gfj.c().a(36, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), gfg.a(1.0F, 14.0F, 4.0F));
-      $$1.a("right_hind_leg", gfj.c().a(49, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), gfg.a(-3.0F, 14.0F, 4.0F));
-      $$1.a("left_front_leg", gfj.c().a(49, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), gfg.a(1.0F, 14.0F, -6.0F));
-      $$1.a("right_front_leg", gfj.c().a(35, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), gfg.a(-3.0F, 14.0F, -6.0F));
-      return gfk.a($$0, 64, 64);
+      $$6.a(
+         "eyes",
+         ggh.c().a(4, 24).a(-5.0F, -5.0F, -4.2F, 10.0F, 3.0F, 4.0F, new ggg(0.0F)).a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new ggg(0.0F)),
+         gge.a(0.0F, 0.0F, 0.0F)
+      );
+      ggm $$7 = $$3.a("wind_body", ggh.c(), gge.a(0.0F, 0.0F, 0.0F));
+      ggm $$8 = $$7.a("wind_bottom", ggh.c().a(1, 83).a(-2.5F, -7.0F, -2.5F, 5.0F, 7.0F, 5.0F, new ggg(0.0F)), gge.a(0.0F, 24.0F, 0.0F));
+      ggm $$9 = $$8.a(
+         "wind_mid",
+         ggh.c()
+            .a(74, 28)
+            .a(-6.0F, -6.0F, -6.0F, 12.0F, 6.0F, 12.0F, new ggg(0.0F))
+            .a(78, 32)
+            .a(-4.0F, -6.0F, -4.0F, 8.0F, 6.0F, 8.0F, new ggg(0.0F))
+            .a(49, 71)
+            .a(-2.5F, -6.0F, -2.5F, 5.0F, 6.0F, 5.0F, new ggg(0.0F)),
+         gge.a(0.0F, -7.0F, 0.0F)
+      );
+      $$9.a(
+         "wind_top",
+         ggh.c()
+            .a(0, 0)
+            .a(-9.0F, -8.0F, -9.0F, 18.0F, 8.0F, 18.0F, new ggg(0.0F))
+            .a(6, 6)
+            .a(-6.0F, -8.0F, -6.0F, 12.0F, 8.0F, 12.0F, new ggg(0.0F))
+            .a(105, 57)
+            .a(-2.5F, -8.0F, -2.5F, 5.0F, 8.0F, 5.0F, new ggg(0.0F)),
+         gge.a(0.0F, -6.0F, 0.0F)
+      );
+      return ggi.a($$2, $$0, $$1);
    }
 
    public void a(gyx $$0) {
       super.a($$0);
-      this.b.b("left_horn").k = $$0.a;
-      this.b.b("right_horn").k = $$0.b;
-      if ($$0.c != 0.0F) {
-         this.b.e = $$0.c;
-      }
+      this.a($$0.a, fmz.a, $$0.u);
+      this.a($$0.b, fmz.b, $$0.u);
+      this.a($$0.c, fmz.e, $$0.u);
+      this.a($$0.d, fmz.f, $$0.u);
+      this.a($$0.e, fmz.d, $$0.u);
+      this.a($$0.f, fmz.c, $$0.u);
+   }
+
+   public ggc a() {
+      return this.d;
+   }
+
+   public ggc b() {
+      return this.e;
+   }
+
+   public ggc c() {
+      return this.k;
+   }
+
+   public ggc d() {
+      return this.f;
    }
 }

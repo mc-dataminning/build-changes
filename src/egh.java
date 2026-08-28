@@ -1,46 +1,57 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class egh extends efb {
-   public egh(Codec<eif> $$0) {
+public class egh extends egi {
+   public egh(Codec<ejf> $$0) {
       super($$0);
    }
 
    @Override
-   protected void a(dgk $$0, azh $$1, ji $$2, int $$3, ji.a $$4, eif $$5) {
-      int $$6 = $$5.d;
+   protected boolean a(dha $$0, azh $$1, ji $$2, dxq $$3) {
+      if (!this.b($$0, $$1, $$2, $$3)) {
+         return false;
+      } else {
+         jn $$4 = jn.c.a.a($$1);
+         int $$5 = $$1.a(2) + 2;
+         List<jn> $$6 = af.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
 
-      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
-         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
-            boolean $$9 = $$7 == -$$6;
-            boolean $$10 = $$7 == $$6;
-            boolean $$11 = $$8 == -$$6;
-            boolean $$12 = $$8 == $$6;
-            boolean $$13 = $$9 || $$10;
-            boolean $$14 = $$11 || $$12;
-            if (!$$13 || !$$14) {
-               $$4.a($$2, $$7, $$3, $$8);
-               if (!$$0.a_($$4).s()) {
-                  boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
-                  boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
-                  boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
-                  boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
-                  dwy $$19 = $$5.b.a($$1, $$2);
-                  if ($$19.b(dnm.e) && $$19.b(dnm.c) && $$19.b(dnm.b) && $$19.b(dnm.d)) {
-                     $$19 = $$19.b(dnm.e, Boolean.valueOf($$15))
-                        .b(dnm.c, Boolean.valueOf($$16))
-                        .b(dnm.b, Boolean.valueOf($$17))
-                        .b(dnm.d, Boolean.valueOf($$18));
-                  }
+         for (jn $$8 : $$6.subList(0, $$5)) {
+            ji.a $$9 = $$2.k();
+            int $$10 = $$1.a(2) + 1;
+            $$9.c($$8);
+            int $$12;
+            jn $$11;
+            if ($$8 == $$4) {
+               $$11 = $$4;
+               $$12 = $$1.a(3) + 2;
+            } else {
+               $$9.c(jn.b);
+               jn[] $$13 = new jn[]{$$8, jn.b};
+               $$11 = af.a($$13, $$1);
+               $$12 = $$1.a(3) + 3;
+            }
 
-                  this.a($$0, $$4, $$19);
+            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
+               $$9.c($$11);
+            }
+
+            $$9.c($$11.g());
+            $$9.c(jn.b);
+
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               $$9.c($$4);
+               if (!this.b($$0, $$1, $$9, $$3)) {
+                  break;
+               }
+
+               if ($$1.i() < 0.25F) {
+                  $$9.c(jn.b);
                }
             }
          }
-      }
-   }
 
-   @Override
-   protected int a(int $$0, int $$1, int $$2, int $$3) {
-      return $$3 <= 3 ? 0 : $$2;
+         return true;
+      }
    }
 }

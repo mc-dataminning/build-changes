@@ -1,118 +1,61 @@
-import com.google.common.annotations.VisibleForTesting;
+import java.util.List;
 
-public class cmh extends clh {
-   private static final int b = 300;
-   private static final ajy<Boolean> c = akc.a(cmh.class, aka.k);
-   public static final String a = "StrayConversionTime";
-   private int d;
-   private int bY;
+public class cmh extends cmo {
+   public static final float a = bvi.M.l() / bvi.ai.l();
+   private static final int d = 1200;
+   private static final int bF = 50;
+   private static final int bG = 6000;
+   private static final int bH = 2;
+   private static final int bI = 1200;
 
-   public cmh(but<? extends cmh> $$0, dgj $$1) {
+   public cmh(bvi<? extends cmh> $$0, dgz $$1) {
       super($$0, $$1);
-   }
-
-   @Override
-   protected void a(akc.a $$0) {
-      super.a($$0);
-      $$0.a(c, false);
-   }
-
-   public boolean gu() {
-      return this.au().a(c);
-   }
-
-   public void x(boolean $$0) {
-      this.al.a(c, $$0);
-   }
-
-   @Override
-   public boolean gt() {
-      return this.gu();
-   }
-
-   @Override
-   public void h() {
-      if (!this.dV().C && this.bL() && !this.gf()) {
-         if (this.av) {
-            if (this.gu()) {
-               this.bY--;
-               if (this.bY < 0) {
-                  this.gv();
-               }
-            } else {
-               this.d++;
-               if (this.d >= 140) {
-                  this.b(300);
-               }
-            }
-         } else {
-            this.d = -1;
-            this.x(false);
-         }
-      }
-
-      super.h();
-   }
-
-   @Override
-   public void b(tq $$0) {
-      super.b($$0);
-      $$0.a("StrayConversionTime", this.gu() ? this.bY : -1);
-   }
-
-   @Override
-   public void a(tq $$0) {
-      super.a($$0);
-      if ($$0.b("StrayConversionTime", 99) && $$0.h("StrayConversionTime") > -1) {
-         this.b($$0.h("StrayConversionTime"));
+      this.ga();
+      if (this.c != null) {
+         this.c.c(400);
       }
    }
 
-   @VisibleForTesting
-   public void b(int $$0) {
-      this.bY = $$0;
-      this.x(true);
-   }
-
-   protected void gv() {
-      this.a(but.br, buh.a(this, true, true), $$0 -> {
-         if (!this.bb()) {
-            this.dV().a(null, 1048, this.dv(), 0);
-         }
-      });
+   public static bxf.a j() {
+      return cmo.q().a(bxg.v, 0.3F).a(bxg.c, 8.0).a(bxg.s, 80.0);
    }
 
    @Override
-   public boolean dJ() {
-      return false;
+   public int m() {
+      return 60;
    }
 
    @Override
    protected avz u() {
-      return awa.xB;
+      return this.bj() ? awa.ij : awa.ik;
    }
 
    @Override
-   protected avz e(btc $$0) {
-      return awa.xM;
+   protected avz e(btp $$0) {
+      return this.bj() ? awa.ip : awa.iq;
    }
 
    @Override
-   protected avz o_() {
-      return awa.xD;
+   protected avz l_() {
+      return this.bj() ? awa.im : awa.in;
    }
 
    @Override
-   avz p() {
-      return awa.xO;
+   protected avz n() {
+      return awa.io;
    }
 
    @Override
-   protected void a(ard $$0, btc $$1, boolean $$2) {
-      super.a($$0, $$1, $$2);
-      if ($$1.d() instanceof cll $$4 && $$4.gt()) {
-         $$4.gu();
-         this.a($$0, cwu.vk);
+   protected void a(ard $$0) {
+      super.a($$0);
+      if ((this.af + this.ar()) % 1200 == 0) {
+         bue $$1 = new bue(bug.d, 6000, 2);
+         List<are> $$2 = buf.a($$0, this, this.ds(), 50.0, $$1, 1200);
+         $$2.forEach($$0x -> $$0x.f.b(new acs(acs.l, this.bb() ? 0.0F : 1.0F)));
+      }
+
+      if (!this.gg()) {
+         this.a(this.du(), 16);
       }
    }
 }

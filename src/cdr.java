@@ -1,41 +1,42 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class cdr<T extends bvk> extends ccg {
-   private final T a;
-   private final cwq b;
-   private final Predicate<? super T> c;
-   @Nullable
-   private final avz d;
+public class cdr extends ccw {
+   private final bwa a;
+   private double b;
+   private double c;
+   private int d;
 
-   public cdr(T $$0, cwq $$1, @Nullable avz $$2, Predicate<? super T> $$3) {
+   public cdr(bwa $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.d = $$2;
-      this.c = $$3;
+      this.a(EnumSet.of(ccw.a.a, ccw.a.b));
    }
 
    @Override
    public boolean b() {
-      return this.c.test(this.a);
+      return this.a.dX().i() < 0.02F;
    }
 
    @Override
    public boolean c() {
-      return this.a.fz();
+      return this.d >= 0;
    }
 
    @Override
    public void d() {
-      this.a.a(buu.a, this.b.v());
-      this.a.c(bsk.a);
+      double $$0 = (Math.PI * 2) * this.a.dX().j();
+      this.b = Math.cos($$0);
+      this.c = Math.sin($$0);
+      this.d = 20 + this.a.dX().a(20);
    }
 
    @Override
-   public void e() {
-      this.a.a(buu.a, cwq.j);
-      if (this.d != null) {
-         this.a.a(this.d, 1.0F, this.a.dY().i() * 0.2F + 0.9F);
-      }
+   public boolean Q_() {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.d--;
+      this.a.J().a(this.a.dz() + this.b, this.a.dD(), this.a.dF() + this.c);
    }
 }

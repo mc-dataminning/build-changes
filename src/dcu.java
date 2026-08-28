@@ -1,30 +1,25 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record dcu(dcq f, dcq g, dcq h) implements dck {
-   public static final MapCodec<dcu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dcq.a.fieldOf("input").forGetter(dcu::b), dcq.a.fieldOf("result").forGetter(dcu::d), dcq.a.fieldOf("crafting_station").forGetter(dcu::e))
-            .apply($$0, dcu::new)
-   );
-   public static final yn<wa, dcu> b = yn.a(dcq.b, dcu::b, dcq.b, dcu::d, dcq.b, dcu::e, dcu::new);
-   public static final dck.a<dcu> c = new dck.a<>(a, b);
-
-   @Override
-   public dck.a<dcu> a() {
-      return c;
-   }
-
-   public dcq b() {
-      return this.f;
+public class dcu extends dbb {
+   public dcu(String $$0, dbh $$1, dbr $$2, cxh $$3, float $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public dcq d() {
-      return this.g;
+   protected cxd f() {
+      return cxl.xn;
    }
 
    @Override
-   public dcq e() {
-      return this.h;
+   public dcg<dcu> b() {
+      return dcg.d;
+   }
+
+   @Override
+   public dcf<dcu> a() {
+      return dcf.q;
+   }
+
+   @Override
+   public dby h() {
+      return dbx.j;
    }
 }

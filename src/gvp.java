@@ -1,10 +1,16 @@
-public class gvp<M extends gdh> extends gxc<M> {
-   public gvp(gtg<?, gzx, M> $$0, gsf.a $$1) {
-      super($$0, new gaz($$1.a(gfd.l)), guu.a, gxc.a.a);
+public class gvp extends guj<cjp, haj, gff> {
+   private static final aku a = aku.b("textures/entity/tadpole/tadpole.png");
+
+   public gvp(gtd.a $$0) {
+      super($$0, new gff($$0.a(ggb.dj)), 0.14F);
    }
 
    @Override
-   protected int a(gzx $$0) {
-      return $$0.j;
+   public aku b(haj $$0) {
+      return a;
+   }
+
+   public haj b() {
+      return new haj();
    }
 }

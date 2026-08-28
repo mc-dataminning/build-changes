@@ -1,293 +1,127 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
-import java.util.UUID;
+import java.util.Optional;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dwg extends dua {
-   private static final Logger a = LogUtils.getLogger();
-   private final dwj b = new dwj();
-   private final dwk c = new dwk();
-   private final dwh d = new dwh();
-   private dwi e = dwi.b;
-
-   public dwg(ji $$0, dwy $$1) {
-      super(duc.S, $$0, $$1);
-   }
-
+public class dwg {
+   private static final Codec<wp[]> c = wr.a
+      .listOf()
+      .comapFlatMap(
+         $$0 -> af.a($$0, 4).map($$0x -> new wp[]{(wp)$$0x.get(0), (wp)$$0x.get(1), (wp)$$0x.get(2), (wp)$$0x.get(3)}),
+         $$0 -> List.of($$0[0], $$0[1], $$0[2], $$0[3])
+      );
+   public static final Codec<dwg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               c.fieldOf("messages").forGetter($$0x -> $$0x.d),
+               c.lenientOptionalFieldOf("filtered_messages").forGetter(dwg::d),
+               cwe.q.fieldOf("color").orElse(cwe.p).forGetter($$0x -> $$0x.f),
+               Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, dwg::a)
+   );
+   public static final int b = 4;
+   private final wp[] d;
+   private final wp[] e;
+   private final cwe f;
+   private final boolean g;
    @Nullable
-   @Override
-   public yw<abl> ax_() {
-      return abs.a(this);
+   private ayl[] h;
+   private boolean i;
+
+   public dwg() {
+      this(c(), c(), cwe.p, false);
    }
 
-   @Override
-   public tq a(jt.a $$0) {
-      return af.a(new tq(), $$1 -> $$1.a("shared_data", a(dwk.b, this.c, $$0)));
+   public dwg(wp[] $$0, wp[] $$1, cwe $$2, boolean $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
-   @Override
-   protected void b(tq $$0, jt.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("config", a(dwi.c, this.e, $$1));
-      $$0.a("shared_data", a(dwk.b, this.c, $$1));
-      $$0.a("server_data", a(dwj.b, this.b, $$1));
+   private static wp[] c() {
+      return new wp[]{wo.a, wo.a, wo.a, wo.a};
    }
 
-   private static <T> un a(Codec<T> $$0, T $$1, jt.a $$2) {
-      return (un)$$0.encodeStart($$2.a(ue.a), $$1).getOrThrow();
+   private static dwg a(wp[] $$0, Optional<wp[]> $$1, cwe $$2, boolean $$3) {
+      return new dwg($$0, $$1.orElse(Arrays.copyOf($$0, $$0.length)), $$2, $$3);
    }
 
-   @Override
-   protected void a(tq $$0, jt.a $$1) {
-      super.a($$0, $$1);
-      DynamicOps<un> $$2 = $$1.a(ue.a);
-      if ($$0.e("server_data")) {
-         dwj.b.parse($$2, $$0.c("server_data")).resultOrPartial(a::error).ifPresent(this.b::a);
-      }
-
-      if ($$0.e("config")) {
-         dwi.c.parse($$2, $$0.c("config")).resultOrPartial(a::error).ifPresent($$0x -> this.e = $$0x);
-      }
-
-      if ($$0.e("shared_data")) {
-         dwk.b.parse($$2, $$0.c("shared_data")).resultOrPartial(a::error).ifPresent(this.c::a);
-      }
+   public boolean a() {
+      return this.g;
    }
 
-   @Nullable
-   public dwj b() {
-      return this.n != null && !this.n.C ? this.b : null;
+   public dwg a(boolean $$0) {
+      return $$0 == this.g ? this : new dwg(this.d, this.e, this.f, $$0);
    }
 
-   public dwk c() {
-      return this.c;
+   public cwe b() {
+      return this.f;
    }
 
-   public dwh d() {
-      return this.d;
+   public dwg a(cwe $$0) {
+      return $$0 == this.b() ? this : new dwg(this.d, this.e, $$0, this.g);
    }
 
-   public dwi f() {
-      return this.e;
+   public wp a(int $$0, boolean $$1) {
+      return this.b($$1)[$$0];
    }
 
-   @VisibleForTesting
-   public void a(dwi $$0) {
-      this.e = $$0;
+   public dwg a(int $$0, wp $$1) {
+      return this.a($$0, $$1, $$1);
    }
 
-   public static final class a {
-      private static final int a = 20;
-      private static final float b = 0.5F;
-      private static final float c = 0.02F;
-      private static final int d = 20;
-      private static final int e = 20;
-
-      public static void a(dgj $$0, ji $$1, dwy $$2, dwh $$3, dwk $$4) {
-         $$3.c();
-         if ($$0.ad() % 20L == 0L) {
-            a($$0, $$1, $$2, $$4);
-         }
-
-         a($$0, $$1, $$4, $$2.c(dsn.d) ? lt.M : lt.aL);
-         a($$0, $$1, $$4);
-      }
-
-      public static void a(dgj $$0, ji $$1, dwy $$2, dwk $$3, lr $$4) {
-         a($$0, $$1, $$2, $$3);
-         azh $$5 = $$0.A;
-
-         for (int $$6 = 0; $$6 < 20; $$6++) {
-            fbb $$7 = b($$1, $$5);
-            $$0.a(lt.ag, $$7.a(), $$7.b(), $$7.c(), 0.0, 0.0, 0.0);
-            $$0.a($$4, $$7.a(), $$7.b(), $$7.c(), 0.0, 0.0, 0.0);
-         }
-      }
-
-      public static void a(dgj $$0, ji $$1, lr $$2) {
-         azh $$3 = $$0.A;
-
-         for (int $$4 = 0; $$4 < 20; $$4++) {
-            fbb $$5 = a($$1, $$3);
-            fbb $$6 = new fbb($$3.k() * 0.02, $$3.k() * 0.02, $$3.k() * 0.02);
-            $$0.a($$2, $$5.a(), $$5.b(), $$5.c(), $$6.a(), $$6.b(), $$6.c());
-         }
-      }
-
-      private static void a(dgj $$0, ji $$1, dwk $$2, lr $$3) {
-         azh $$4 = $$0.H_();
-         if ($$4.i() <= 0.5F) {
-            fbb $$5 = b($$1, $$4);
-            $$0.a(lt.ag, $$5.a(), $$5.b(), $$5.c(), 0.0, 0.0, 0.0);
-            if (a($$2)) {
-               $$0.a($$3, $$5.a(), $$5.b(), $$5.c(), 0.0, 0.0, 0.0);
-            }
-         }
-      }
-
-      private static void a(dgj $$0, fbb $$1, coy $$2) {
-         azh $$3 = $$0.A;
-         fbb $$4 = $$1.a($$2.dt().b(0.0, (double)($$2.dr() / 2.0F), 0.0));
-         int $$5 = ayz.a($$3, 2, 5);
-
-         for (int $$6 = 0; $$6 < $$5; $$6++) {
-            fbb $$7 = $$4.a($$3, 1.0F);
-            $$0.a(lt.bc, $$1.a(), $$1.b(), $$1.c(), $$7.a(), $$7.b(), $$7.c());
-         }
-      }
-
-      private static void a(dgj $$0, ji $$1, dwy $$2, dwk $$3) {
-         Set<UUID> $$4 = $$3.d();
-         if (!$$4.isEmpty()) {
-            fbb $$5 = a($$1, $$2.c(dsn.c));
-
-            for (UUID $$6 : $$4) {
-               coy $$7 = $$0.b($$6);
-               if ($$7 != null && a($$1, $$3, $$7)) {
-                  a($$0, $$5, $$7);
-               }
-            }
-         }
-      }
-
-      private static boolean a(ji $$0, dwk $$1, coy $$2) {
-         return $$2.dv().j($$0) <= ayz.k($$1.e());
-      }
-
-      private static void a(dgj $$0, ji $$1, dwk $$2) {
-         if (a($$2)) {
-            azh $$3 = $$0.H_();
-            if ($$3.i() <= 0.02F) {
-               $$0.a($$1, awa.Bp, awb.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
-            }
-         }
-      }
-
-      public static boolean a(dwk $$0) {
-         return $$0.b();
-      }
-
-      private static fbb a(ji $$0, azh $$1) {
-         return fbb.a($$0).b(ayz.a($$1, 0.4, 0.6), ayz.a($$1, 0.4, 0.6), ayz.a($$1, 0.4, 0.6));
-      }
-
-      private static fbb b(ji $$0, azh $$1) {
-         return fbb.a($$0).b(ayz.a($$1, 0.1, 0.9), ayz.a($$1, 0.25, 0.75), ayz.a($$1, 0.1, 0.9));
-      }
-
-      private static fbb a(ji $$0, jn $$1) {
-         return fbb.c($$0).b((double)$$1.j() * 0.5, 1.75, (double)$$1.l() * 0.5);
-      }
+   public dwg a(int $$0, wp $$1, wp $$2) {
+      wp[] $$3 = Arrays.copyOf(this.d, this.d.length);
+      wp[] $$4 = Arrays.copyOf(this.e, this.e.length);
+      $$3[$$0] = $$1;
+      $$4[$$0] = $$2;
+      return new dwg($$3, $$4, this.f, this.g);
    }
 
-   public static final class b {
-      private static final int a = 14;
-      private static final int b = 20;
-      private static final int c = 15;
+   public boolean a(cpr $$0) {
+      return Arrays.stream(this.b($$0.aa())).anyMatch($$0x -> !$$0x.getString().isEmpty());
+   }
 
-      public static void a(ard $$0, ji $$1, dwy $$2, dwi $$3, dwj $$4, dwk $$5) {
-         dwl $$6 = $$2.c(dsn.b);
-         if (a($$0.ad(), $$6)) {
-            a($$0, $$6, $$3, $$5, $$1);
-         }
+   public wp[] b(boolean $$0) {
+      return $$0 ? this.e : this.d;
+   }
 
-         dwy $$7 = $$2;
-         if ($$0.ad() >= $$4.c()) {
-            $$7 = $$2.b(dsn.b, $$6.a($$0, $$1, $$3, $$4, $$5));
-            if (!$$2.equals($$7)) {
-               a($$0, $$1, $$2, $$7, $$3, $$5);
-            }
-         }
+   public ayl[] a(boolean $$0, Function<wp, ayl> $$1) {
+      if (this.h == null || this.i != $$0) {
+         this.i = $$0;
+         this.h = new ayl[4];
 
-         if ($$4.c || $$5.c) {
-            dwg.a($$0, $$1, $$2);
-            if ($$5.c) {
-               $$0.a($$1, $$2, $$7, 2);
-            }
-
-            $$4.c = false;
-            $$5.c = false;
+         for (int $$2 = 0; $$2 < 4; $$2++) {
+            this.h[$$2] = $$1.apply(this.a($$2, $$0));
          }
       }
 
-      public static void a(ard $$0, ji $$1, dwy $$2, dwi $$3, dwj $$4, dwk $$5, coy $$6, cwq $$7) {
-         dwl $$8 = $$2.c(dsn.b);
-         if (a($$3, $$8)) {
-            if (!a($$3, $$7)) {
-               a($$0, $$4, $$1, awa.By);
-            } else if ($$4.a($$6)) {
-               a($$0, $$4, $$1, awa.Bu);
-            } else {
-               List<cwq> $$9 = a($$0, $$3, $$1, $$6, $$7);
-               if (!$$9.isEmpty()) {
-                  $$6.b(awk.c.b($$7.h()));
-                  $$7.a($$3.e().M(), (bvi)$$6);
-                  a($$0, $$2, $$1, $$3, $$4, $$5, $$9);
-                  $$4.b($$6);
-                  $$5.a($$0, $$1, $$4, $$3, $$3.d());
-               }
-            }
+      return this.h;
+   }
+
+   private Optional<wp[]> d() {
+      for (int $$0 = 0; $$0 < 4; $$0++) {
+         if (!this.e[$$0].equals(this.d[$$0])) {
+            return Optional.of(this.e);
          }
       }
 
-      static void a(ard $$0, ji $$1, dwy $$2, dwy $$3, dwi $$4, dwk $$5) {
-         dwl $$6 = $$2.c(dsn.b);
-         dwl $$7 = $$3.c(dsn.b);
-         $$0.a($$1, $$3, 3);
-         $$6.a($$0, $$1, $$7, $$4, $$5, $$3.c(dsn.d));
-      }
+      return Optional.empty();
+   }
 
-      static void a(ard $$0, dwl $$1, dwi $$2, dwk $$3, ji $$4) {
-         if (!a($$2, $$1)) {
-            $$3.a(cwq.j);
-         } else {
-            cwq $$5 = a($$0, $$4, $$2.f().orElse($$2.b()));
-            $$3.a($$5);
+   public boolean b(cpr $$0) {
+      for (wp $$1 : this.b($$0.aa())) {
+         xm $$2 = $$1.a();
+         wn $$3 = $$2.i();
+         if ($$3 != null && $$3.a() == wn.a.c) {
+            return true;
          }
       }
 
-      private static cwq a(ard $$0, ji $$1, aku<evx> $$2) {
-         evx $$3 = $$0.p().bc().b($$2);
-         evv $$4 = new evv.a($$0).a(eym.f, fbb.b($$1)).a(eyl.l);
-         List<cwq> $$5 = $$3.a($$4, $$0.H_());
-         return $$5.isEmpty() ? cwq.j : af.a($$5, $$0.H_());
-      }
-
-      private static void a(ard $$0, dwy $$1, ji $$2, dwi $$3, dwj $$4, dwk $$5, List<cwq> $$6) {
-         $$4.a($$6);
-         $$5.a($$4.f());
-         $$4.b($$0.ad() + 14L);
-         a($$0, $$2, $$1, $$1.b(dsn.b, dwl.c), $$3, $$5);
-      }
-
-      private static List<cwq> a(ard $$0, dwi $$1, ji $$2, coy $$3, cwq $$4) {
-         evx $$5 = $$0.p().bc().b($$1.b());
-         evv $$6 = new evv.a($$0).a(eym.f, fbb.b($$2)).a($$3.gF()).a(eym.a, $$3).a(eym.i, $$4).a(eyl.l);
-         return $$5.a($$6);
-      }
-
-      private static boolean a(dwi $$0, dwl $$1) {
-         return !$$0.e().f() && $$1 != dwl.a;
-      }
-
-      private static boolean a(dwi $$0, cwq $$1) {
-         return cwq.c($$1, $$0.e()) && $$1.M() >= $$0.e().M();
-      }
-
-      private static boolean a(long $$0, dwl $$1) {
-         return $$0 % 20L == 0L && $$1 == dwl.b;
-      }
-
-      private static void a(ard $$0, dwj $$1, ji $$2, avz $$3) {
-         if ($$0.ad() >= $$1.a() + 15L) {
-            $$0.a(null, $$2, $$3, awb.e);
-            $$1.a($$0.ad());
-         }
-      }
+      return false;
    }
 }

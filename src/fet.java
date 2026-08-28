@@ -1,89 +1,219 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import it.unimi.dsi.fastutil.ints.IntArraySet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
 import java.util.Locale;
-import java.util.Optional;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWVidMode;
-import org.lwjgl.glfw.GLFWVidMode.Buffer;
+import java.util.function.Function;
+import javax.annotation.Nullable;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.system.MemoryUtil;
+import org.lwjgl.util.freetype.FT_Bitmap;
+import org.lwjgl.util.freetype.FT_Face;
+import org.lwjgl.util.freetype.FT_GlyphSlot;
+import org.lwjgl.util.freetype.FT_Vector;
+import org.lwjgl.util.freetype.FreeType;
 
-public final class fet {
-   private final long a;
-   private final List<fex> b;
-   private fex c;
-   private int d;
-   private int e;
+public class fet implements feq {
+   @Nullable
+   private ByteBuffer b;
+   @Nullable
+   private FT_Face c;
+   final float d;
+   private final fsf<fet.b> e = new fsf<>(fet.b[]::new, fet.b[][]::new);
 
-   public fet(long $$0) {
-      this.a = $$0;
-      this.b = Lists.newArrayList();
-      this.a();
-   }
+   public fet(ByteBuffer $$0, FT_Face $$1, float $$2, float $$3, float $$4, float $$5, String $$6) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$3;
+      IntSet $$7 = new IntArraySet();
+      $$6.codePoints().forEach($$7::add);
+      int $$8 = Math.round($$2 * $$3);
+      FreeType.FT_Set_Pixel_Sizes($$1, $$8, $$8);
+      float $$9 = $$4 * $$3;
+      float $$10 = -$$5 * $$3;
+      MemoryStack $$11 = MemoryStack.stackPush();
 
-   public void a() {
-      this.b.clear();
-      Buffer $$0 = GLFW.glfwGetVideoModes(this.a);
+      try {
+         FT_Vector $$12 = fss.a(FT_Vector.malloc($$11), $$9, $$10);
+         FreeType.FT_Set_Transform($$1, null, $$12);
+         IntBuffer $$13 = $$11.mallocInt(1);
+         int $$14 = (int)FreeType.FT_Get_First_Char($$1, $$13);
 
-      for (int $$1 = $$0.limit() - 1; $$1 >= 0; $$1--) {
-         $$0.position($$1);
-         fex $$2 = new fex($$0);
-         if ($$2.c() >= 8 && $$2.d() >= 8 && $$2.e() >= 8) {
-            this.b.add($$2);
+         while (true) {
+            int $$15 = $$13.get(0);
+            if ($$15 == 0) {
+               break;
+            }
+
+            if (!$$7.contains($$14)) {
+               this.e.a($$14, new fet.b($$15));
+            }
+
+            $$14 = (int)FreeType.FT_Get_Next_Char($$1, (long)$$14, $$13);
          }
+      } catch (Throwable var18) {
+         if ($$11 != null) {
+            try {
+               $$11.close();
+            } catch (Throwable var17) {
+               var18.addSuppressed(var17);
+            }
+         }
+
+         throw var18;
       }
 
-      int[] $$3 = new int[1];
-      int[] $$4 = new int[1];
-      GLFW.glfwGetMonitorPos(this.a, $$3, $$4);
-      this.d = $$3[0];
-      this.e = $$4[0];
-      GLFWVidMode $$5 = GLFW.glfwGetVideoMode(this.a);
-      this.c = new fex($$5);
+      if ($$11 != null) {
+         $$11.close();
+      }
    }
 
-   public fex a(Optional<fex> $$0) {
-      if ($$0.isPresent()) {
-         fex $$1 = $$0.get();
+   @Nullable
+   @Override
+   public fep a(int $$0) {
+      fet.b $$1 = this.e.a($$0);
+      return $$1 != null ? this.a($$0, $$1) : null;
+   }
 
-         for (fex $$2 : this.b) {
-            if ($$2.equals($$1)) {
-               return $$2;
+   private fep a(int $$0, fet.b $$1) {
+      fep $$2 = $$1.b;
+      if ($$2 == null) {
+         FT_Face $$3 = this.b();
+         synchronized ($$3) {
+            $$2 = $$1.b;
+            if ($$2 == null) {
+               $$2 = this.a($$0, $$3, $$1.a);
+               $$1.b = $$2;
             }
          }
       }
 
-      return this.b();
+      return $$2;
    }
 
-   public int a(fex $$0) {
-      return this.b.indexOf($$0);
+   private fep a(int $$0, FT_Face $$1, int $$2) {
+      int $$3 = FreeType.FT_Load_Glyph($$1, $$2, 4194312);
+      if ($$3 != 0) {
+         fss.a($$3, String.format(Locale.ROOT, "Loading glyph U+%06X", $$0));
+      }
+
+      FT_GlyphSlot $$4 = $$1.glyph();
+      if ($$4 == null) {
+         throw new NullPointerException(String.format(Locale.ROOT, "Glyph U+%06X not initialized", $$0));
+      } else {
+         float $$5 = fss.a($$4.advance());
+         FT_Bitmap $$6 = $$4.bitmap();
+         int $$7 = $$4.bitmap_left();
+         int $$8 = $$4.bitmap_top();
+         int $$9 = $$6.width();
+         int $$10 = $$6.rows();
+         return (fep)($$9 > 0 && $$10 > 0 ? new fet.a((float)$$7, (float)$$8, $$9, $$10, $$5, $$2) : () -> $$5 / this.d);
+      }
    }
 
-   public fex b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
-   }
-
-   public fex a(int $$0) {
-      return this.b.get($$0);
-   }
-
-   public int e() {
-      return this.b.size();
-   }
-
-   public long f() {
-      return this.a;
+   FT_Face b() {
+      if (this.b != null && this.c != null) {
+         return this.c;
+      } else {
+         throw new IllegalStateException("Provider already closed");
+      }
    }
 
    @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "Monitor[%s %sx%s %s]", this.a, this.d, this.e, this.c);
+   public void close() {
+      if (this.c != null) {
+         synchronized (fss.a) {
+            fss.b(FreeType.FT_Done_Face(this.c), "Deleting face");
+         }
+
+         this.c = null;
+      }
+
+      MemoryUtil.memFree(this.b);
+      this.b = null;
+   }
+
+   @Override
+   public IntSet a() {
+      return this.e.b();
+   }
+
+   class a implements fep {
+      final int b;
+      final int c;
+      final float d;
+      final float e;
+      private final float f;
+      final int g;
+
+      a(final float $$0, final float $$1, final int $$2, final int $$3, final float $$4, final int $$5) {
+         this.b = $$2;
+         this.c = $$3;
+         this.f = $$4 / fet.this.d;
+         this.d = $$0 / fet.this.d;
+         this.e = $$1 / fet.this.d;
+         this.g = $$5;
+      }
+
+      @Override
+      public float getAdvance() {
+         return this.f;
+      }
+
+      @Override
+      public fsm bake(Function<fer, fsm> $$0) {
+         return $$0.apply(new fer() {
+            @Override
+            public int a() {
+               return a.this.b;
+            }
+
+            @Override
+            public int b() {
+               return a.this.c;
+            }
+
+            @Override
+            public float d() {
+               return fet.this.d;
+            }
+
+            @Override
+            public float i() {
+               return a.this.d;
+            }
+
+            @Override
+            public float j() {
+               return a.this.e;
+            }
+
+            @Override
+            public void a(int $$0, int $$1) {
+               FT_Face $$2 = fet.this.b();
+               ffr $$3 = new ffr(ffr.a.d, a.this.b, a.this.c, false);
+               if ($$3.a($$2, a.this.g)) {
+                  $$3.a(0, $$0, $$1, 0, 0, a.this.b, a.this.c, true);
+               } else {
+                  $$3.close();
+               }
+            }
+
+            @Override
+            public boolean c() {
+               return false;
+            }
+         });
+      }
+   }
+
+   static class b {
+      final int a;
+      @Nullable
+      volatile fep b;
+
+      b(int $$0) {
+         this.a = $$0;
+      }
    }
 }

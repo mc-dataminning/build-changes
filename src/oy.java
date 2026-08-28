@@ -1,6 +1,6 @@
 import java.util.concurrent.CompletableFuture;
 
-public class oy extends pn<dtq> {
+public class oy extends pn<dui> {
    public oy(mk $$0, CompletableFuture<jt.a> $$1) {
       super($$0, mc.d, $$1);
    }
@@ -9,48 +9,48 @@ public class oy extends pn<dtq> {
    protected void a(jt.a $$0) {
       this.b(awn.a)
          .a(
-            dts.b,
-            dts.c,
-            dts.d,
-            dts.e,
-            dts.f,
-            dts.g,
-            dts.h,
-            dts.i,
-            dts.j,
-            dts.k,
-            dts.l,
-            dts.m,
-            dts.n,
-            dts.o,
-            dts.p,
-            dts.q,
-            dts.r,
-            dts.s,
-            dts.t,
-            dts.u,
-            dts.v,
-            dts.w,
-            dts.x,
-            dts.y,
-            dts.z,
-            dts.A,
-            dts.B,
-            dts.C,
-            dts.D,
-            dts.E,
-            dts.G,
-            dts.H
+            duk.b,
+            duk.c,
+            duk.d,
+            duk.e,
+            duk.f,
+            duk.g,
+            duk.h,
+            duk.i,
+            duk.j,
+            duk.k,
+            duk.l,
+            duk.m,
+            duk.n,
+            duk.o,
+            duk.p,
+            duk.q,
+            duk.r,
+            duk.s,
+            duk.t,
+            duk.u,
+            duk.v,
+            duk.w,
+            duk.x,
+            duk.y,
+            duk.z,
+            duk.A,
+            duk.B,
+            duk.C,
+            duk.D,
+            duk.E,
+            duk.G,
+            duk.H
          );
-      this.b(awn.b).a(dts.M);
-      this.b(awn.c).a(dts.K);
-      this.b(awn.d).a(dts.L);
-      this.b(awn.e).a(dts.N);
-      this.b(awn.f).a(dts.J);
-      this.b(awn.g).a(dts.O);
-      this.b(awn.h).a(dts.P);
-      this.b(awn.i).a(dts.Q);
-      this.b(awn.j).a(dts.I);
-      this.b(awn.k).a(dts.F);
+      this.b(awn.b).a(duk.M);
+      this.b(awn.c).a(duk.K);
+      this.b(awn.d).a(duk.L);
+      this.b(awn.e).a(duk.N);
+      this.b(awn.f).a(duk.J);
+      this.b(awn.g).a(duk.O);
+      this.b(awn.h).a(duk.P);
+      this.b(awn.i).a(duk.Q);
+      this.b(awn.j).a(duk.I);
+      this.b(awn.k).a(duk.F);
    }
 }

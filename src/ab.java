@@ -6,24 +6,24 @@ import javax.annotation.Nullable;
 
 public class ab {
    @Deprecated
-   public static final boolean a = false;
+   public static final boolean a = true;
    @Deprecated
-   public static final int b = 4189;
+   public static final int b = 4298;
    @Deprecated
    public static final String c = "main";
    @Deprecated
-   public static final String d = "1.21.4";
+   public static final String d = "25w02a";
    @Deprecated
-   public static final int e = 769;
+   public static final int e = 770;
    @Deprecated
-   public static final int f = 228;
-   public static final int g = 4173;
+   public static final int f = 229;
+   public static final int g = 4292;
    private static final int bl = 30;
-   public static final boolean h = false;
+   public static final boolean h = true;
    @Deprecated
-   public static final int i = 46;
+   public static final int i = 47;
    @Deprecated
-   public static final int j = 61;
+   public static final int j = 62;
    @Deprecated
    public static final int k = 1;
    public static final int l = 1;
@@ -156,10 +156,10 @@ public class ab {
    }
 
    public static int c() {
-      return 769;
+      return 1073742053;
    }
 
-   public static boolean a(dfp $$0) {
+   public static boolean a(dgg $$0) {
       int $$1 = $$0.d();
       int $$2 = $$0.e();
       return !ar ? false : $$1 > 8192 || $$1 < 0 || $$2 > 1024 || $$2 < 0;

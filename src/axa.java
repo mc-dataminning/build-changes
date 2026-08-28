@@ -1,12 +1,12 @@
 public class axa {
-   public static final axf<cgp> a = a("acquirable_job_site");
-   public static final axf<cgp> b = a("village");
-   public static final axf<cgp> c = a("bee_home");
+   public static final axf<chf> a = a("acquirable_job_site");
+   public static final axf<chf> b = a("village");
+   public static final axf<chf> c = a("bee_home");
 
    private axa() {
    }
 
-   private static axf<cgp> a(String $$0) {
-      return axf.a(mc.aa, akv.b($$0));
+   private static axf<chf> a(String $$0) {
+      return axf.a(mc.aa, aku.b($$0));
    }
 }

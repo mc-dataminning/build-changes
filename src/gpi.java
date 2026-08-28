@@ -1,69 +1,83 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
-import java.util.ListIterator;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class gpi {
-   private static final int a = 2;
-   private int b = 2;
-   private final List<gpn.b.a> c = new ObjectArrayList();
+public class gpi implements auq {
+   private Map<duu<?>, gpj<?>> d = ImmutableMap.of();
+   private final fpa e;
+   private final Supplier<gfy> f;
+   public dgz a;
+   public flo b;
+   public fbv c;
+   private final gob g;
+   private final hcl h;
+   private final gub i;
+   private final gtb j;
 
-   public synchronized void a(gpn.b.a $$0) {
-      this.c.add($$0);
+   public gpi(fpa $$0, Supplier<gfy> $$1, gob $$2, hcl $$3, gub $$4, gtb $$5) {
+      this.i = $$4;
+      this.h = $$3;
+      this.j = $$5;
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
    @Nullable
-   public synchronized gpn.b.a a(fbb $$0) {
-      int $$1 = -1;
-      int $$2 = -1;
-      double $$3 = Double.MAX_VALUE;
-      double $$4 = Double.MAX_VALUE;
-      ListIterator<gpn.b.a> $$5 = this.c.listIterator();
+   public <E extends dus> gpj<E> a(E $$0) {
+      return (gpj<E>)this.d.get($$0.p());
+   }
 
-      while ($$5.hasNext()) {
-         int $$6 = $$5.nextIndex();
-         gpn.b.a $$7 = $$5.next();
-         if ($$7.a.get()) {
-            $$5.remove();
-         } else {
-            double $$8 = $$7.d().b($$0);
-            if (!$$7.c() && $$8 < $$3) {
-               $$3 = $$8;
-               $$1 = $$6;
-            }
+   public void a(dgz $$0, flo $$1, fbv $$2) {
+      if (this.a != $$0) {
+         this.a($$0);
+      }
 
-            if ($$7.c() && $$8 < $$4) {
-               $$4 = $$8;
-               $$2 = $$6;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public <E extends dus> void a(E $$0, float $$1, fgr $$2, gmx $$3) {
+      gpj<E> $$4 = this.a($$0);
+      if ($$4 != null) {
+         if ($$0.l() && $$0.p().a($$0.m())) {
+            if ($$4.a($$0, this.b.b())) {
+               try {
+                  a($$4, $$0, $$1, $$2, $$3);
+               } catch (Throwable var9) {
+                  o $$6 = o.a(var9, "Rendering Block Entity");
+                  p $$7 = $$6.a("Block Entity Details");
+                  $$0.a($$7);
+                  throw new z($$6);
+               }
             }
          }
       }
+   }
 
-      boolean $$9 = $$2 >= 0;
-      boolean $$10 = $$1 >= 0;
-      if (!$$9 || $$10 && (this.b <= 0 || !($$4 < $$3))) {
-         this.b = 2;
-         return this.a($$1);
+   private static <T extends dus> void a(gpj<T> $$0, T $$1, float $$2, fgr $$3, gmx $$4) {
+      dgz $$5 = $$1.i();
+      int $$6;
+      if ($$5 != null) {
+         $$6 = gmt.a($$5, $$1.aA_());
       } else {
-         this.b--;
-         return this.a($$2);
+         $$6 = 15728880;
+      }
+
+      $$0.a($$1, $$2, $$3, $$4, $$6, hfh.d);
+   }
+
+   public void a(@Nullable dgz $$0) {
+      this.a = $$0;
+      if ($$0 == null) {
+         this.b = null;
       }
    }
 
-   public int a() {
-      return this.c.size();
-   }
-
-   @Nullable
-   private gpn.b.a a(int $$0) {
-      return $$0 >= 0 ? this.c.remove($$0) : null;
-   }
-
-   public synchronized void b() {
-      for (gpn.b.a $$0 : this.c) {
-         $$0.a();
-      }
-
-      this.c.clear();
+   @Override
+   public void a(aup $$0) {
+      gpk.a $$1 = new gpk.a(this, this.g, this.h, this.i, this.j, this.f.get(), this.e);
+      this.d = gpl.a($$1);
    }
 }

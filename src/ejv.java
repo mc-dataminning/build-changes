@@ -1,48 +1,23 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejv extends ejp {
-   public static final MapCodec<ejv> a = RecordCodecBuilder.mapCodec(
-      $$0 -> b($$0).and(brq.b(0, 24).fieldOf("trunk_height").forGetter($$0x -> $$0x.b)).apply($$0, ejv::new)
+public record ejv(int b, int c, int d) implements eiy {
+   public static final Codec<ejv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayi.m.fieldOf("spread_width").forGetter(ejv::a), ayi.m.fieldOf("spread_height").forGetter(ejv::b), ayi.m.fieldOf("max_height").forGetter(ejv::c)
+            )
+            .apply($$0, ejv::new)
    );
-   private final brq b;
 
-   public ejv(brq $$0, brq $$1, brq $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+   public int a() {
+      return this.b;
    }
 
-   @Override
-   protected ejq<?> a() {
-      return ejq.b;
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   protected void a(dgp $$0, ejp.b $$1, azh $$2, eiz $$3, int $$4, ejp.a $$5, int $$6, int $$7, int $$8) {
-      ji $$9 = $$5.a();
-      int $$10 = $$2.a(2);
-      int $$11 = 1;
-      int $$12 = 0;
-
-      for (int $$13 = $$8; $$13 >= -$$6; $$13--) {
-         this.a($$0, $$1, $$2, $$3, $$9, $$10, $$13, $$5.c());
-         if ($$10 >= $$11) {
-            $$10 = $$12;
-            $$12 = 1;
-            $$11 = Math.min($$11 + 1, $$7 + $$5.b());
-         } else {
-            $$10++;
-         }
-      }
-   }
-
-   @Override
-   public int a(azh $$0, int $$1, eiz $$2) {
-      return Math.max(4, $$1 - this.b.a($$0));
-   }
-
-   @Override
-   protected boolean a(azh $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   public int c() {
+      return this.d;
    }
 }

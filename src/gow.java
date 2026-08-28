@@ -1,23 +1,59 @@
-public class gow implements gol<dvf> {
-   private final gbl a;
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Splitter;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.function.Predicate;
 
-   public gow(gom.a $$0) {
-      this.a = new gbl($$0.a(gfd.J));
+public class gow implements gov {
+   private static final Splitter a = Splitter.on('|').omitEmptyStrings();
+   private final String d;
+   private final String e;
+
+   public gow(String $$0, String $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public void a(dvf $$0, float $$1, ffv $$2, glz $$3, int $$4, int $$5) {
-      dwy $$6 = $$0.m();
-      if ($$6.c(doa.d)) {
-         $$2.a();
-         $$2.a(0.5F, 1.0625F, 0.5F);
-         float $$7 = $$6.c(doa.b).h().p();
-         $$2.a(a.d.rotationDegrees(-$$7));
-         $$2.a(a.f.rotationDegrees(67.5F));
-         $$2.a(0.0F, -0.125F, 0.0F);
-         this.a.a(0.0F, 0.1F, 0.9F, 1.2F);
-         ffz $$8 = gou.a.a($$3, gmj::d);
-         this.a.a($$2, $$8, $$4, $$5);
-         $$2.b();
+   @Override
+   public Predicate<dxq> getPredicate(dxr<dke, dxq> $$0) {
+      dyt<?> $$1 = $$0.a(this.d);
+      if ($$1 == null) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown property '%s' on '%s'", this.d, $$0.c()));
+      } else {
+         String $$2 = this.e;
+         boolean $$3 = !$$2.isEmpty() && $$2.charAt(0) == '!';
+         if ($$3) {
+            $$2 = $$2.substring(1);
+         }
+
+         List<String> $$4 = a.splitToList($$2);
+         if ($$4.isEmpty()) {
+            throw new RuntimeException(String.format(Locale.ROOT, "Empty value '%s' for property '%s' on '%s'", this.e, this.d, $$0.c()));
+         } else {
+            Predicate<dxq> $$5;
+            if ($$4.size() == 1) {
+               $$5 = this.a($$0, $$1, $$2);
+            } else {
+               $$5 = af.b($$4.stream().map($$2x -> this.a($$0, $$1, $$2x)).toList());
+            }
+
+            return $$3 ? $$5.negate() : $$5;
+         }
       }
+   }
+
+   private Predicate<dxq> a(dxr<dke, dxq> $$0, dyt<?> $$1, String $$2) {
+      Optional<?> $$3 = $$1.b($$2);
+      if ($$3.isEmpty()) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown value '%s' for property '%s' on '%s' in '%s'", $$2, this.d, $$0.c(), this.e));
+      } else {
+         return $$2x -> $$2x.c($$1).equals($$3.get());
+      }
+   }
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this).add("key", this.d).add("value", this.e).toString();
    }
 }

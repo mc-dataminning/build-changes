@@ -1,5 +1,25 @@
-public interface dbg {
-   dbo a(aku<dbo> var1);
+public class dbg extends dbb {
+   public dbg(String $$0, dbh $$1, dbr $$2, cxh $$3, float $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-   dbs.b<dcf> a();
+   @Override
+   protected cxd f() {
+      return cxl.xz;
+   }
+
+   @Override
+   public dcf<dbg> a() {
+      return dcf.r;
+   }
+
+   @Override
+   public dcg<dbg> b() {
+      return dcg.e;
+   }
+
+   @Override
+   public dby h() {
+      return dbx.m;
+   }
 }

@@ -1,20 +1,20 @@
-public class dtz extends dto {
-   public dtz(ji $$0, dwy $$1) {
-      super(duc.D, $$0, $$1, dbq.c);
+import com.mojang.serialization.MapCodec;
+
+public class dtz extends dnu {
+   public static final MapCodec<dtz> c = b(dtz::new);
+   private static final fcr e = dke.b(14.0, 0.0, 16.0);
+
+   @Override
+   public MapCodec<dtz> a() {
+      return c;
+   }
+
+   public dtz(dxp.d $$0) {
+      super($$0, jn.a, e, false);
    }
 
    @Override
-   protected wp j() {
-      return wp.c("container.blast_furnace");
-   }
-
-   @Override
-   protected int a(duy $$0, cwq $$1) {
-      return super.a($$0, $$1) / 2;
-   }
-
-   @Override
-   protected csd a(int $$0, cox $$1) {
-      return new csj($$0, $$1, this, this.m);
+   protected dnv c() {
+      return (dnv)dkg.pb;
    }
 }

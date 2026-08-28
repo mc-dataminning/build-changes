@@ -1,53 +1,51 @@
-public class aih implements yw<agg> {
-   public static final yn<vl, aih> a = yw.a(aih::a, aih::new);
-   private final bsk b;
-   private final int c;
-   private final float d;
-   private final float e;
+import org.jetbrains.annotations.VisibleForTesting;
 
-   public aih(bsk $$0, int $$1, float $$2, float $$3) {
+public class aih {
+   private static final double a = 4096.0;
+   private fbx b = fbx.c;
+
+   @VisibleForTesting
+   static long a(double $$0) {
+      return Math.round($$0 * 4096.0);
+   }
+
+   @VisibleForTesting
+   static double a(long $$0) {
+      return (double)$$0 / 4096.0;
+   }
+
+   public fbx a(long $$0, long $$1, long $$2) {
+      if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
+         return this.b;
+      } else {
+         double $$3 = $$0 == 0L ? this.b.d : a(a(this.b.d) + $$0);
+         double $$4 = $$1 == 0L ? this.b.e : a(a(this.b.e) + $$1);
+         double $$5 = $$2 == 0L ? this.b.f : a(a(this.b.f) + $$2);
+         return new fbx($$3, $$4, $$5);
+      }
+   }
+
+   public long a(fbx $$0) {
+      return a($$0.d) - a(this.b.d);
+   }
+
+   public long b(fbx $$0) {
+      return a($$0.e) - a(this.b.e);
+   }
+
+   public long c(fbx $$0) {
+      return a($$0.f) - a(this.b.f);
+   }
+
+   public fbx d(fbx $$0) {
+      return $$0.d(this.b);
+   }
+
+   public void e(fbx $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
    }
 
-   private aih(vl $$0) {
-      this.b = $$0.b(bsk.class);
-      this.c = $$0.l();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
-   }
-
-   private void a(vl $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-   }
-
-   @Override
-   public yy<aih> a() {
-      return age.cm;
-   }
-
-   public void a(agg $$0) {
-      $$0.a(this);
-   }
-
-   public bsk b() {
+   public fbx a() {
       return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public float f() {
-      return this.d;
-   }
-
-   public float g() {
-      return this.e;
    }
 }

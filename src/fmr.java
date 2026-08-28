@@ -1,17 +1,26 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import java.util.function.BooleanSupplier;
 
-public record fmr(int b) implements fmu {
-   public static final MapCodec<fmr> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayi.i.fieldOf("default").forGetter(fmr::b)).apply($$0, fmr::new));
+public class fmr extends fme {
+   private final BooleanSupplier h;
 
-   @Override
-   public int a(cwq $$0, @Nullable gga $$1, @Nullable bvi $$2) {
-      return cze.a($$0, this.b);
+   public fmr(String $$0, int $$1, String $$2, BooleanSupplier $$3) {
+      super($$0, ffm.b.a, $$1, $$2);
+      this.h = $$3;
    }
 
    @Override
-   public MapCodec<fmr> a() {
-      return a;
+   public void a(boolean $$0) {
+      if (this.h.getAsBoolean()) {
+         if ($$0) {
+            super.a(!this.e());
+         }
+      } else {
+         super.a($$0);
+      }
+   }
+
+   @Override
+   protected void n() {
+      super.a(false);
    }
 }

@@ -1,43 +1,40 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eku extends ekx {
-   public static final MapCodec<eku> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(eku::new, $$0 -> $$0.b);
-   private final float b;
+public record eku(jv<dke> b, jv<dke> c, ekz d, int e, int f, float g) {
+   public static final Codec<eku> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               kg.a(mc.f).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
+               kg.a(mc.f).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
+               ekz.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
+               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, eku::new)
+   );
 
-   public eku(float $$0) {
-      this.b = $$0;
+   public jv<dke> a() {
+      return this.b;
    }
 
-   @Override
-   protected eky<?> a() {
-      return eky.d;
+   public jv<dke> b() {
+      return this.c;
    }
 
-   @Override
-   public void a(ekx.a $$0) {
-      azh $$1 = $$0.b();
-      List<ji> $$2 = $$0.c();
-      if (!$$2.isEmpty()) {
-         if (!($$1.i() >= this.b)) {
-            List<ji> $$3 = new ArrayList<>($$2);
-            af.c($$3, $$1);
-            Optional<ji> $$4 = $$3.stream().filter($$1x -> {
-               for (jn $$2x : jn.values()) {
-                  if (!$$0.a($$1x.a($$2x), $$0xx -> $$0xx.a(awp.u))) {
-                     return false;
-                  }
-               }
+   public ekz c() {
+      return this.d;
+   }
 
-               return true;
-            }).findFirst();
-            if (!$$4.isEmpty()) {
-               $$0.a($$4.get(), djp.cB.m().b(dli.c, Boolean.valueOf(true)).b(dli.d, Boolean.valueOf(true)));
-            }
-         }
-      }
+   public int d() {
+      return this.e;
+   }
+
+   public int e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
    }
 }

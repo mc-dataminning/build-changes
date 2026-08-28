@@ -1,31 +1,25 @@
-import java.util.Optional;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-public class eeu extends edq {
-   private final kf a;
-   private final ecx b;
-   private final edh c;
-   private final edk.o d;
+class eeu extends eex {
+   public static final MapCodec<eeu> a = a(eeu::new);
 
-   public eeu(ecw $$0, kf $$1, dgl $$2, ecx $$3, edh $$4, edk.o $$5) {
-      super($$0, $$2);
-      this.a = $$1;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
+   public eeu(List<eev> $$0) {
+      super($$0);
    }
 
-   @Deprecated
-   public Optional<dwy> a(Function<ji, jr<dhl>> $$0, dyt $$1, ji $$2, boolean $$3) {
-      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
+   public boolean a(dhy $$0, ji $$1) {
+      for (eev $$2 : this.e) {
+         if ($$2.test($$0, $$1)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   @Deprecated
-   public kf c() {
-      return this.a;
-   }
-
-   public edh d() {
-      return this.c;
+   @Override
+   public eew<?> a() {
+      return eew.i;
    }
 }

@@ -1,69 +1,87 @@
-import com.mojang.datafixers.util.Pair;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.Arrays;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public class dbr extends dav {
-   public dbr(das $$0) {
-      super($$0);
-   }
+public final class dbr implements cpv.a<jr<cxd>>, Predicate<cxh> {
+   public static final yn<wa, dbr> a = yl.c(mc.K).a(dbr::new, $$0 -> $$0.e);
+   public static final yn<wa, Optional<dbr>> b = yl.c(mc.K)
+      .a($$0 -> $$0.b() == 0 ? Optional.empty() : Optional.of(new dbr((jv<cxd>)$$0)), $$0 -> $$0.<jv.a<cxd>>map($$0x -> $$0x.e).orElse(jv.a()));
+   public static final Codec<jv<cxd>> c = ako.a(mc.K, cxd.e, false);
+   public static final Codec<dbr> d = ayi.c(c).xmap(dbr::new, $$0 -> $$0.e);
+   private final jv<cxd> e;
 
-   @Nullable
-   private static Pair<cwq, cwq> c(dat $$0) {
-      if ($$0.e() != 2) {
-         return null;
-      } else {
-         cwq $$1 = null;
-
-         for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
-            cwq $$3 = $$0.a($$2);
-            if (!$$3.f()) {
-               if ($$1 != null) {
-                  return a($$1, $$3) ? Pair.of($$1, $$3) : null;
-               }
-
-               $$1 = $$3;
-            }
+   private dbr(jv<cxd> $$0) {
+      $$0.d().ifRight($$0x -> {
+         if ($$0x.isEmpty()) {
+            throw new UnsupportedOperationException("Ingredients can't be empty");
+         } else if ($$0x.contains(cxl.a.f())) {
+            throw new UnsupportedOperationException("Ingredient can't contain air");
          }
-
-         return null;
-      }
+      });
+      this.e = $$0;
    }
 
-   private static boolean a(cwq $$0, cwq $$1) {
-      return $$1.a($$0.h()) && $$0.M() == 1 && $$1.M() == 1 && $$0.b(kv.d) && $$1.b(kv.d) && $$0.b(kv.e) && $$1.b(kv.e);
+   public static boolean a(Optional<dbr> $$0, cxh $$1) {
+      return $$0.<Boolean>map($$1x -> $$1x.a($$1)).orElseGet($$1::f);
    }
 
-   public boolean a(dat $$0, dgj $$1) {
-      return c($$0) != null;
+   @Deprecated
+   public Stream<jr<cxd>> a() {
+      return this.e.a();
    }
 
-   public cwq a(dat $$0, jt.a $$1) {
-      Pair<cwq, cwq> $$2 = c($$0);
-      if ($$2 == null) {
-         return cwq.j;
-      } else {
-         cwq $$3 = (cwq)$$2.getFirst();
-         cwq $$4 = (cwq)$$2.getSecond();
-         int $$5 = Math.max($$3.p(), $$4.p());
-         int $$6 = $$3.p() - $$3.o();
-         int $$7 = $$4.p() - $$4.o();
-         int $$8 = $$6 + $$7 + $$5 * 5 / 100;
-         cwq $$9 = new cwq($$3.h());
-         $$9.b(kv.d, $$5);
-         $$9.b(Math.max($$5 - $$8, 0));
-         ddg $$10 = ddc.b($$3);
-         ddg $$11 = ddc.b($$4);
-         ddc.a($$9, $$3x -> $$1.d(mc.aO).c().filter($$0xx -> $$0xx.a(aws.o)).forEach($$3xx -> {
-               int $$4x = Math.max($$10.a($$3xx), $$11.a($$3xx));
-               if ($$4x > 0) {
-                  $$3x.b($$3xx, $$4x);
-               }
-            }));
-         return $$9;
-      }
+   public boolean b() {
+      return this.e.b() == 0;
+   }
+
+   public boolean a(cxh $$0) {
+      return $$0.a(this.e);
+   }
+
+   public boolean a(jr<cxd> $$0) {
+      return this.e.a($$0);
    }
 
    @Override
-   public dbp<dbr> a() {
-      return dbp.n;
+   public boolean equals(Object $$0) {
+      return $$0 instanceof dbr $$1 ? Objects.equals(this.e, $$1.e) : false;
+   }
+
+   public static dbr a(dgy $$0) {
+      return new dbr(jv.a($$0.i().f()));
+   }
+
+   public static dbr a(dgy... $$0) {
+      return a(Arrays.stream($$0));
+   }
+
+   public static dbr a(Stream<? extends dgy> $$0) {
+      return new dbr(jv.a($$0.map($$0x -> $$0x.i().f()).toList()));
+   }
+
+   public static dbr a(jv<cxd> $$0) {
+      return new dbr($$0);
+   }
+
+   public ddh c() {
+      return (ddh)this.e.d().map(ddh.h::new, $$0 -> new ddh.b($$0.stream().map(dbr::b).toList()));
+   }
+
+   public static ddh a(Optional<dbr> $$0) {
+      return $$0.<ddh>map(dbr::c).orElse(ddh.c.c);
+   }
+
+   private static ddh b(jr<cxd> $$0) {
+      ddh $$1 = new ddh.d($$0);
+      cxh $$2 = $$0.a().j();
+      if (!$$2.f()) {
+         ddh $$3 = new ddh.f($$2);
+         return new ddh.j($$1, $$3);
+      } else {
+         return $$1;
+      }
    }
 }

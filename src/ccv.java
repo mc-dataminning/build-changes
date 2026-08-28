@@ -1,38 +1,46 @@
-import java.util.EnumSet;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class ccv extends ccg {
-   private final bvq a;
+public class ccv extends ccw {
+   public static final int a = 8;
+   public static final int b = 4;
+   public static final int c = 3;
+   private final chp d;
    @Nullable
-   private bvi b;
-   private double c;
-   private double d;
-   private double e;
+   private chp e;
    private final double f;
-   private final float g;
+   private int g;
 
-   public ccv(bvq $$0, double $$1, float $$2) {
-      this.a = $$0;
+   public ccv(chp $$0, double $$1) {
+      this.d = $$0;
       this.f = $$1;
-      this.g = $$2;
-      this.a(EnumSet.of(ccg.a.a));
    }
 
    @Override
    public boolean b() {
-      this.b = this.a.O_();
-      if (this.b == null) {
-         return false;
-      } else if (this.b.g(this.a) > (double)(this.g * this.g)) {
+      if (this.d.g() >= 0) {
          return false;
       } else {
-         fbb $$0 = cgd.a(this.a, 16, 7, this.b.dt(), (float) (Math.PI / 2));
-         if ($$0 == null) {
+         List<? extends chp> $$0 = this.d.dU().a((Class<? extends chp>)this.d.getClass(), this.d.cQ().c(8.0, 4.0, 8.0));
+         chp $$1 = null;
+         double $$2 = Double.MAX_VALUE;
+
+         for (chp $$3 : $$0) {
+            if ($$3.g() >= 0) {
+               double $$4 = this.d.g($$3);
+               if (!($$4 > $$2)) {
+                  $$2 = $$4;
+                  $$1 = $$3;
+               }
+            }
+         }
+
+         if ($$1 == null) {
+            return false;
+         } else if ($$2 < 9.0) {
             return false;
          } else {
-            this.c = $$0.d;
-            this.d = $$0.e;
-            this.e = $$0.f;
+            this.e = $$1;
             return true;
          }
       }
@@ -40,16 +48,31 @@ public class ccv extends ccg {
 
    @Override
    public boolean c() {
-      return !this.a.P().k() && this.b.bL() && this.b.g(this.a) < (double)(this.g * this.g);
-   }
-
-   @Override
-   public void e() {
-      this.b = null;
+      if (this.d.g() >= 0) {
+         return false;
+      } else if (!this.e.bJ()) {
+         return false;
+      } else {
+         double $$0 = this.d.g(this.e);
+         return !($$0 < 9.0) && !($$0 > 256.0);
+      }
    }
 
    @Override
    public void d() {
-      this.a.P().a(this.c, this.d, this.e, this.f);
+      this.g = 0;
+   }
+
+   @Override
+   public void e() {
+      this.e = null;
+   }
+
+   @Override
+   public void a() {
+      if (--this.g <= 0) {
+         this.g = this.a(10);
+         this.d.O().a(this.e, this.f);
+      }
    }
 }

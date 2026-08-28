@@ -1,20 +1,43 @@
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import javax.annotation.Nullable;
+import java.util.Locale;
 
-public class fhd {
-   private final Gson a = new Gson();
+public enum fhd {
+   a,
+   b,
+   c,
+   d;
 
-   public String a(fhu $$0) {
-      return this.a.toJson($$0);
+   private static final int e = 1024;
+
+   public static fhd a(long $$0) {
+      if ($$0 < 1024L) {
+         return a;
+      } else {
+         try {
+            int $$1 = (int)(Math.log((double)$$0) / Math.log(1024.0));
+            String $$2 = String.valueOf("KMGTPE".charAt($$1 - 1));
+            return valueOf($$2 + "B");
+         } catch (Exception var4) {
+            return d;
+         }
+      }
    }
 
-   public String a(JsonElement $$0) {
-      return this.a.toJson($$0);
+   public static double a(long $$0, fhd $$1) {
+      return $$1 == a ? (double)$$0 : (double)$$0 / Math.pow(1024.0, (double)$$1.ordinal());
    }
 
-   @Nullable
-   public <T extends fhu> T a(String $$0, Class<T> $$1) {
-      return (T)this.a.fromJson($$0, $$1);
+   public static String b(long $$0) {
+      int $$1 = 1024;
+      if ($$0 < 1024L) {
+         return $$0 + " B";
+      } else {
+         int $$2 = (int)(Math.log((double)$$0) / Math.log(1024.0));
+         String $$3 = "KMGTPE".charAt($$2 - 1) + "";
+         return String.format(Locale.ROOT, "%.1f %sB", (double)$$0 / Math.pow(1024.0, (double)$$2), $$3);
+      }
+   }
+
+   public static String b(long $$0, fhd $$1) {
+      return String.format(Locale.ROOT, "%." + ($$1 == d ? "1" : "0") + "f %s", a($$0, $$1), $$1.name());
    }
 }

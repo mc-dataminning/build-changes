@@ -1,42 +1,83 @@
-public class gjf extends gji {
-   private final gcx a;
-   private final gmj b = gmj.j(gry.a);
-
-   gjf(gga $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a = new gck(flk.Q().aS().a(gfd.aE));
-      this.u = 0.0F;
-      this.t = 30;
+public class gjf extends glg {
+   gjf(ggy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.7F;
+      this.u = 0.5F;
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4 * 0.4;
+      this.k += $$5 * 0.4;
+      this.l += $$6 * 0.4;
+      float $$7 = (float)(Math.random() * 0.3F + 0.6F);
+      this.v = $$7;
+      this.w = $$7;
+      this.x = $$7;
+      this.D *= 0.75F;
+      this.t = Math.max((int)(6.0 / (Math.random() * 0.8 + 0.6)), 1);
+      this.n = false;
+      this.a();
    }
 
    @Override
-   public gjm b() {
-      return gjm.d;
+   public float b(float $$0) {
+      return this.D * ayz.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
-   public void a(ffv $$0, glz $$1, fks $$2, float $$3) {
-      float $$4 = ((float)this.s + $$3) / (float)this.t;
-      float $$5 = 0.05F + 0.5F * ayz.a($$4 * (float) Math.PI);
-      int $$6 = axk.a($$5, 1.0F, 1.0F, 1.0F);
-      $$0.a();
-      $$0.a($$2.f());
-      $$0.a(a.b.rotationDegrees(60.0F - 150.0F * $$4));
-      float $$7 = 0.42553192F;
-      $$0.b(0.42553192F, -0.42553192F, -0.42553192F);
-      $$0.a(0.0F, -0.56F, 3.5F);
-      ffz $$8 = $$1.getBuffer(this.b);
-      this.a.a($$0, $$8, 15728880, hej.d, $$6);
-      $$0.b();
+   public void a() {
+      super.a();
+      this.w *= 0.96F;
+      this.x *= 0.9F;
    }
 
    @Override
-   public void a(ffz $$0, fks $$1, float $$2) {
+   public gkk b() {
+      return gkk.b;
    }
 
-   public static class a implements gjl<lx> {
-      public gji a(lx $$0, gga $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gjf($$1, $$2, $$3, $$4);
+   public static class a implements gkj<lx> {
+      private final glb a;
+
+      public a(glb $$0) {
+         this.a = $$0;
+      }
+
+      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gjf $$8 = new gjf($$1, $$2, $$3, $$4, $$5, $$6 + 1.0, $$7);
+         $$8.a(20);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements gkj<lx> {
+      private final glb a;
+
+      public b(glb $$0) {
+         this.a = $$0;
+      }
+
+      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gjf $$8 = new gjf($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.v *= 0.3F;
+         $$8.w *= 0.8F;
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class c implements gkj<lx> {
+      private final glb a;
+
+      public c(glb $$0) {
+         this.a = $$0;
+      }
+
+      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gjf $$8 = new gjf($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

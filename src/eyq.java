@@ -1,47 +1,52 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.List;
-import java.util.Set;
+import java.util.Optional;
 
-public record eyq(jr<dda> b, List<Float> c) implements ezb {
+public class eyq extends eyb {
    public static final MapCodec<eyq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dda.c.fieldOf("enchantment").forGetter(eyq::c), ayi.b(Codec.FLOAT.listOf()).fieldOf("chances").forGetter(eyq::d)).apply($$0, eyq::new)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  czu.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
+                  czu.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
+                  czu.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
+                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
+                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
+               )
+            )
+            .apply($$0, eyq::new)
    );
+   public static final czu b = new czu(czu.a.a, IntList.of(), IntList.of(), false, false);
+   final Optional<czu.a> c;
+   final Optional<IntList> d;
+   final Optional<IntList> e;
+   final Optional<Boolean> f;
+   final Optional<Boolean> h;
 
-   @Override
-   public ezc b() {
-      return ezd.k;
+   public eyq(List<ezx> $$0, Optional<czu.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.h = $$5;
    }
 
    @Override
-   public Set<bai<?>> a() {
-      return Set.of(eym.i);
+   protected cxh a(cxh $$0, ewo $$1) {
+      $$0.a(kv.ag, b, this::a);
+      return $$0;
    }
 
-   public boolean a(evs $$0) {
-      cwq $$1 = $$0.c(eym.i);
-      int $$2 = $$1 != null ? ddc.a(this.b, $$1) : 0;
-      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
-      return $$0.b().i() < $$3;
+   private czu a(czu $$0) {
+      return new czu(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
    }
 
-   public static ezb.a a(jr<dda> $$0, float... $$1) {
-      List<Float> $$2 = new ArrayList<>($$1.length);
-
-      for (float $$3 : $$1) {
-         $$2.add($$3);
-      }
-
-      return () -> new eyq($$0, $$2);
-   }
-
-   public jr<dda> c() {
-      return this.b;
-   }
-
-   public List<Float> d() {
-      return this.c;
+   @Override
+   public eyd<eyq> b() {
+      return eye.L;
    }
 }

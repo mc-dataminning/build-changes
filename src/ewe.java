@@ -1,70 +1,54 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
 
-public class ewe extends ewb {
-   public static final MapCodec<ewe> a = a(ewe::new);
+public class ewe {
+   private final int a;
+   private final long b;
+   private final String c;
+   private final evu d;
+   private final boolean e;
 
-   ewe(List<ewi> $$0, List<ezb> $$1) {
-      super($$0, $$1);
+   private ewe(int $$0, long $$1, String $$2, int $$3, String $$4, boolean $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = new evu($$3, $$4);
+      this.e = $$5;
    }
 
-   @Override
-   public ewj a() {
-      return ewg.i;
+   public static ewe a(Dynamic<?> $$0) {
+      int $$1 = $$0.get("version").asInt(0);
+      long $$2 = $$0.get("LastPlayed").asLong(0L);
+      OptionalDynamic<?> $$3 = $$0.get("Version");
+      return $$3.result().isPresent()
+         ? new ewe(
+            $$1,
+            $$2,
+            $$3.get("Name").asString(ab.b().c()),
+            $$3.get("Id").asInt(ab.b().d().c()),
+            $$3.get("Series").asString(evu.a),
+            $$3.get("Snapshot").asBoolean(!ab.b().g())
+         )
+         : new ewe($$1, $$2, "", 0, evu.a, false);
    }
 
-   @Override
-   protected ewa a(List<? extends ewa> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (ewa)$$0.get(0);
-         case 2 -> {
-            ewa $$1 = $$0.get(0);
-            ewa $$2 = $$0.get(1);
-            yield ($$2x, $$3) -> {
-               $$1.expand($$2x, $$3);
-               $$2.expand($$2x, $$3);
-               return true;
-            };
-         }
-         default -> ($$1x, $$2x) -> {
-         for (ewa $$3 : $$0) {
-            $$3.expand($$1x, $$2x);
-         }
-
-         return true;
-      };
-      };
+   public int a() {
+      return this.a;
    }
 
-   public static ewe.a a(ewi.a<?>... $$0) {
-      return new ewe.a($$0);
+   public long b() {
+      return this.b;
    }
 
-   public static class a extends ewi.a<ewe.a> {
-      private final Builder<ewi> a = ImmutableList.builder();
+   public String c() {
+      return this.c;
+   }
 
-      public a(ewi.a<?>... $$0) {
-         for (ewi.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
+   public evu d() {
+      return this.d;
+   }
 
-      protected ewe.a a() {
-         return this;
-      }
-
-      @Override
-      public ewe.a b(ewi.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public ewi b() {
-         return new ewe(this.a.build(), this.f());
-      }
+   public boolean e() {
+      return this.e;
    }
 }

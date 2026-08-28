@@ -7,6 +7,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSyntaxException;
+import com.google.gson.internal.Streams;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
@@ -14,6 +15,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.io.UncheckedIOException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -99,16 +101,16 @@ public class ayp {
       return $$0.has($$1) ? a($$0.get($$1), $$1) : $$2;
    }
 
-   public static jr<cwm> b(JsonElement $$0, String $$1) {
+   public static jr<cxd> b(JsonElement $$0, String $$1) {
       if ($$0.isJsonPrimitive()) {
          String $$2 = $$0.getAsString();
-         return mb.g.c(akv.a($$2)).orElseThrow(() -> new JsonSyntaxException("Expected " + $$1 + " to be an item, was unknown string '" + $$2 + "'"));
+         return mb.g.c(aku.a($$2)).orElseThrow(() -> new JsonSyntaxException("Expected " + $$1 + " to be an item, was unknown string '" + $$2 + "'"));
       } else {
          throw new JsonSyntaxException("Expected " + $$1 + " to be an item, was " + d($$0));
       }
    }
 
-   public static jr<cwm> j(JsonObject $$0, String $$1) {
+   public static jr<cxd> j(JsonObject $$0, String $$1) {
       if ($$0.has($$1)) {
          return b($$0.get($$1), $$1);
       } else {
@@ -118,7 +120,7 @@ public class ayp {
 
    @Nullable
    @Contract("_,_,!null->!null;_,_,null->_")
-   public static jr<cwm> a(JsonObject $$0, String $$1, @Nullable jr<cwm> $$2) {
+   public static jr<cxd> a(JsonObject $$0, String $$1, @Nullable jr<cxd> $$2) {
       return $$0.has($$1) ? b($$0.get($$1), $$1) : $$2;
    }
 
@@ -565,6 +567,50 @@ public class ayp {
          List<Entry<String, JsonElement>> $$2 = new ArrayList<>($$0);
          $$2.sort(Entry.comparingByKey($$1));
          return $$2;
+      }
+   }
+
+   public static boolean a(JsonElement $$0, int $$1) {
+      try {
+         Streams.write($$0, new JsonWriter(Streams.writerForAppendable(new ayp.a($$1))));
+         return false;
+      } catch (IllegalStateException var3) {
+         return true;
+      } catch (IOException var4) {
+         throw new UncheckedIOException(var4);
+      }
+   }
+
+   static class a implements Appendable {
+      private int a;
+      private final int b;
+
+      public a(int $$0) {
+         this.b = $$0;
+      }
+
+      private Appendable a(int $$0) {
+         this.a += $$0;
+         if (this.a > this.b) {
+            throw new IllegalStateException("Character count over limit: " + this.a + " > " + this.b);
+         } else {
+            return this;
+         }
+      }
+
+      @Override
+      public Appendable append(CharSequence $$0) {
+         return this.a($$0.length());
+      }
+
+      @Override
+      public Appendable append(CharSequence $$0, int $$1, int $$2) {
+         return this.a($$2 - $$1);
+      }
+
+      @Override
+      public Appendable append(char $$0) {
+         return this.a(1);
       }
    }
 }

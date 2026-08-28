@@ -1,65 +1,46 @@
-import java.time.Duration;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.floats.FloatConsumer;
+import java.nio.ByteBuffer;
+import java.util.List;
+import org.lwjgl.BufferUtils;
 
-public class hkj {
-   private final UUID a = UUID.randomUUID();
-   private final hke b;
-   private final hkn c;
-   private final hkp d = new hkp();
-   private final hkm e;
-   private final hko f;
+public class hkj implements FloatConsumer {
+   private final List<ByteBuffer> a = Lists.newArrayList();
+   private final int b;
+   private int c;
+   private ByteBuffer d;
 
-   public hkj(hke $$0, boolean $$1, @Nullable Duration $$2, @Nullable String $$3) {
-      this.c = new hkn($$3);
-      this.e = new hkm();
-      this.f = new hko($$1, $$2);
-      this.b = $$0.decorate($$0x -> {
-         this.c.a($$0x);
-         $$0x.a(hkh.i, this.a);
-      });
+   public hkj(int $$0) {
+      this.b = $$0 + 1 & -2;
+      this.d = BufferUtils.createByteBuffer($$0);
    }
 
-   public void a() {
-      this.e.a(this.b);
+   public void accept(float $$0) {
+      if (this.d.remaining() == 0) {
+         this.d.flip();
+         this.a.add(this.d);
+         this.d = BufferUtils.createByteBuffer(this.b);
+      }
+
+      int $$1 = ayz.a((int)($$0 * 32767.5F - 0.5F), -32768, 32767);
+      this.d.putShort((short)$$1);
+      this.c += 2;
    }
 
-   public void a(dgg $$0, boolean $$1) {
-      this.c.a($$0, $$1);
-      this.d.a();
-      this.b();
-   }
-
-   public void a(String $$0) {
-      this.c.a($$0);
-      this.b();
-   }
-
-   public void a(long $$0) {
-      this.d.a($$0);
-   }
-
-   public void b() {
-      if (this.c.a(this.b)) {
-         this.f.a(this.b);
-         this.e.a();
+   public ByteBuffer a() {
+      this.d.flip();
+      if (this.a.isEmpty()) {
+         return this.d;
+      } else {
+         ByteBuffer $$0 = BufferUtils.createByteBuffer(this.c);
+         this.a.forEach($$0::put);
+         $$0.put(this.d);
+         $$0.flip();
+         return $$0;
       }
    }
 
-   public void c() {
-      this.c.a(this.b);
-      this.e.d();
-      this.d.a(this.b);
-   }
-
-   public void a(dgj $$0, ai $$1) {
-      akv $$2 = $$1.a();
-      if ($$1.b().g() && "minecraft".equals($$2.b())) {
-         long $$3 = $$0.ad();
-         this.b.send(hkf.f, $$2x -> {
-            $$2x.a(hkh.D, $$2.toString());
-            $$2x.a(hkh.E, $$3);
-         });
-      }
+   public int b() {
+      return this.c;
    }
 }

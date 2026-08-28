@@ -1,66 +1,56 @@
-import javax.annotation.Nullable;
+@FunctionalInterface
+public interface gpk<T extends dus> {
+   gpj<T> create(gpk.a var1);
 
-public class gpk implements dfl {
-   public static final int a = 1;
-   public static final int b = 3;
-   private final int e;
-   private final int f;
-   protected final gpj[] c;
-   protected final dgj d;
+   public static class a {
+      private final gpi a;
+      private final gob b;
+      private final hcl c;
+      private final gub d;
+      private final gtb e;
+      private final gfy f;
+      private final fpa g;
 
-   gpk(dgj $$0, int $$1, int $$2, gpj[] $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.c = $$3;
-   }
+      public a(gpi $$0, gob $$1, hcl $$2, gub $$3, gtb $$4, gfy $$5, fpa $$6) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+      }
 
-   @Override
-   public dwy a_(ji $$0) {
-      return this.a(kk.a($$0.u()), kk.a($$0.w())).b($$0);
-   }
+      public gpi a() {
+         return this.a;
+      }
 
-   @Override
-   public eta b_(ji $$0) {
-      return this.a(kk.a($$0.u()), kk.a($$0.w())).b($$0).y();
-   }
+      public gob b() {
+         return this.b;
+      }
 
-   @Override
-   public float a(jn $$0, boolean $$1) {
-      return this.d.a($$0, $$1);
-   }
+      public gtb c() {
+         return this.e;
+      }
 
-   @Override
-   public esp C_() {
-      return this.d.C_();
-   }
+      public hcl d() {
+         return this.c;
+      }
 
-   @Nullable
-   @Override
-   public dua c_(ji $$0) {
-      return this.a(kk.a($$0.u()), kk.a($$0.w())).a($$0);
-   }
+      public gub e() {
+         return this.d;
+      }
 
-   private gpj a(int $$0, int $$1) {
-      return this.c[a(this.e, this.f, $$0, $$1)];
-   }
+      public gfy f() {
+         return this.f;
+      }
 
-   @Override
-   public int a(ji $$0, dft $$1) {
-      return this.d.a($$0, $$1);
-   }
+      public ggc a(gga $$0) {
+         return this.f.a($$0);
+      }
 
-   @Override
-   public int L_() {
-      return this.d.L_();
-   }
-
-   @Override
-   public int M_() {
-      return this.d.M_();
-   }
-
-   public static int a(int $$0, int $$1, int $$2, int $$3) {
-      return $$2 - $$0 + ($$3 - $$1) * 3;
+      public fpa g() {
+         return this.g;
+      }
    }
 }

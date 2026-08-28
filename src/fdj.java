@@ -1,32 +1,59 @@
-import org.lwjgl.openal.AL10;
+public interface fdj extends bsr {
+   cxh f();
 
-public class fdj {
-   private float a = 1.0F;
-   private fdk b = fdk.a;
-
-   public void a(fdk $$0) {
-      this.b = $$0;
-      fbb $$1 = $$0.b();
-      fbb $$2 = $$0.c();
-      fbb $$3 = $$0.d();
-      AL10.alListener3f(4100, (float)$$1.d, (float)$$1.e, (float)$$1.f);
-      AL10.alListenerfv(4111, new float[]{(float)$$2.d, (float)$$2.e, (float)$$2.f, (float)$$3.a(), (float)$$3.b(), (float)$$3.c()});
+   default cxh c(int $$0) {
+      return this.f().a($$0);
    }
 
-   public void a(float $$0) {
-      AL10.alListenerf(4106, $$0);
-      this.a = $$0;
+   void b(cxh var1);
+
+   default cxh h() {
+      return this.c(this.an_());
    }
 
-   public float a() {
-      return this.a;
+   @Override
+   default int b() {
+      return 1;
    }
 
-   public void b() {
-      this.a(fdk.a);
+   @Override
+   default boolean c() {
+      return this.f().f();
    }
 
-   public fdk c() {
-      return this.b;
+   @Override
+   default void a() {
+      this.h();
+   }
+
+   @Override
+   default cxh b(int $$0) {
+      return this.a($$0, this.an_());
+   }
+
+   @Override
+   default cxh a(int $$0) {
+      return $$0 == 0 ? this.f() : cxh.k;
+   }
+
+   @Override
+   default cxh a(int $$0, int $$1) {
+      return $$0 != 0 ? cxh.k : this.c($$1);
+   }
+
+   @Override
+   default void a(int $$0, cxh $$1) {
+      if ($$0 == 0) {
+         this.b($$1);
+      }
+   }
+
+   public interface a extends fdj {
+      dus t();
+
+      @Override
+      default boolean a(cpr $$0) {
+         return bsr.a(this.t(), $$0);
+      }
    }
 }

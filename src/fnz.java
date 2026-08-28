@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface fnz {
+   void a(cxd var1, hck.b var2);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fnz {
+   void a(cxd var1, cxd var2);
 }

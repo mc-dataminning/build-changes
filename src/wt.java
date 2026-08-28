@@ -9,7 +9,7 @@ public class wt {
    public static final Codec<wt> a = azv.a(wt.a::values).dispatch(wt::c, wt.a::a);
    public static final wt b = new wt(new BitSet(0), wt.a.b);
    public static final wt c = new wt(new BitSet(0), wt.a.a);
-   public static final xm d = xm.a.a(n.i).a(new wv(wv.a.a, wp.c("chat.filtered")));
+   public static final xm d = xm.a.a(n.i).a(new wv.e(wp.c("chat.filtered")));
    static final MapCodec<wt> e = MapCodec.unit(c);
    static final MapCodec<wt> f = MapCodec.unit(b);
    static final MapCodec<wt> g = ayi.w.xmap(wt::new, wt::d).fieldOf("value");

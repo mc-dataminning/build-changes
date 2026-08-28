@@ -1,3 +1,3 @@
-public class gyw extends gzl {
+public class gyw extends hbf {
    public boolean a;
 }

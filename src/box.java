@@ -1,47 +1,50 @@
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.util.function.LongSupplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.stream.Stream;
 
-public class box {
-   private static final Logger a = LogUtils.getLogger();
-   private final LongSupplier b;
-   private final long c;
-   private int d;
-   private final File e;
-   private bor f = boq.a;
-
-   public box(LongSupplier $$0, String $$1, long $$2) {
-      this.b = $$0;
-      this.e = new File("debug", $$1);
-      this.c = $$2;
+public interface box {
+   static bor<StringReader> a(String $$0) {
+      return new box.b($$0);
    }
 
-   public bou a() {
-      this.f = new bom(this.b, () -> this.d, false);
-      this.d++;
-      return this.f;
+   static bor<StringReader> a(char $$0) {
+      return new box.a($$0);
    }
 
-   public void b() {
-      if (this.f != boq.a) {
-         bos $$0 = this.f.d();
-         this.f = boq.a;
-         if ($$0.g() >= this.c) {
-            File $$1 = new File(this.e, "tick-results-" + af.f() + ".txt");
-            $$0.a($$1.toPath());
-            a.info("Recorded long tick -- wrote info to: {}", $$1.getAbsolutePath());
+   public static record a(char a) implements bor<StringReader> {
+      @Override
+      public boolean a(bon<StringReader> $$0, bop $$1, boj $$2) {
+         $$0.b().skipWhitespace();
+         int $$3 = $$0.c();
+         if ($$0.b().canRead() && $$0.b().read() == this.a) {
+            return true;
+         } else {
+            $$0.a().a($$3, $$0x -> Stream.of(String.valueOf(this.a)), CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect().create(this.a));
+            return false;
          }
+      }
+
+      public char c() {
+         return this.a;
       }
    }
 
-   @Nullable
-   public static box a(String $$0) {
-      return null;
-   }
+   public static record b(String a) implements bor<StringReader> {
+      @Override
+      public boolean a(bon<StringReader> $$0, bop $$1, boj $$2) {
+         $$0.b().skipWhitespace();
+         int $$3 = $$0.c();
+         String $$4 = $$0.b().readUnquotedString();
+         if (!$$4.equals(this.a)) {
+            $$0.a().a($$3, $$0x -> Stream.of(this.a), CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect().create(this.a));
+            return false;
+         } else {
+            return true;
+         }
+      }
 
-   public static bou a(bou $$0, @Nullable box $$1) {
-      return $$1 != null ? bou.a($$1.a(), $$0) : $$0;
+      public String c() {
+         return this.a;
+      }
    }
 }

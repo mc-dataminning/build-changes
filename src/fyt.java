@@ -1,64 +1,88 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class fyt extends fys<ghc.a> {
-   private static final wp C = wp.c("gui.chatReport.title");
-   private static final wp D = wp.c("gui.chatReport.select_chat");
-   private fpm E;
-   private fou F;
-   private fou G;
+public class fyt extends fym {
+   private static final wp v = wp.c("controls.keybinds.title");
+   @Nullable
+   public fme a;
+   public long u;
+   private fys w;
+   private fpq x;
 
-   private fyt(fum $$0, ghj $$1, ghc.a $$2) {
-      super(C, $$0, $$1, $$2);
+   public fyt(fvi $$0, fmk $$1) {
+      super($$0, $$1, v);
    }
 
-   public fyt(fum $$0, ghj $$1, UUID $$2) {
-      this($$0, $$1, new ghc.a($$2, $$1.a().b()));
+   @Override
+   protected void F() {
+      this.w = this.s.c(new fys(this, this.m));
    }
 
-   public fyt(fum $$0, ghj $$1, ghc $$2) {
-      this($$0, $$1, new ghc.a($$2, $$1.a().b()));
+   @Override
+   protected void m() {
    }
 
    @Override
    protected void E() {
-      this.F = this.z.a(fou.a(D, $$0 -> this.m.a(new fyv(this, this.y, this.A, $$0x -> {
-            this.A = $$0x;
-            this.G();
-         }))).a(280).a());
-      this.G = fou.a(c, $$0 -> this.m.a(new fyy(this, this.A.i(), ghi.a, $$0x -> {
-            this.A.a($$0x);
-            this.G();
-         }))).a(280).a();
-      this.z.a(fse.a(this.p, this.G, b));
-      this.E = this.a(280, 9 * 8, $$0 -> {
-         this.A.a($$0);
-         this.G();
-      });
-      this.z.a(fse.a(this.p, this.E, d, $$0 -> $$0.e(12)));
+      this.x = fpq.a(wp.c("controls.resetAll"), $$0x -> {
+         for (fme $$1 : this.c.V) {
+            $$1.b($$1.i());
+         }
+
+         this.w.b();
+      }).a();
+      fti $$0 = this.s.b(fti.e().a(8));
+      $$0.a(this.x);
+      $$0.a(fpq.a(wo.d, $$0x -> this.aO_()).a());
    }
 
    @Override
-   protected void G() {
-      IntSet $$0 = this.A.a();
-      if ($$0.isEmpty()) {
-         this.F.b(D);
-      } else {
-         this.F.b(wp.a("gui.chatReport.selected_chat", $$0.size()));
-      }
-
-      ghh $$1 = this.A.i();
-      if ($$1 != null) {
-         this.G.b($$1.b());
-      } else {
-         this.G.b(c);
-      }
-
-      super.G();
+   protected void c() {
+      this.s.a();
+      this.w.a(this.n, this.s);
    }
 
    @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return super.b($$0, $$1, $$2) ? true : this.E.b($$0, $$1, $$2);
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.a != null) {
+         this.a.b(ffm.b.c.a($$2));
+         this.a = null;
+         this.w.b();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.a != null) {
+         if ($$0 == 256) {
+            this.a.b(ffm.bv);
+         } else {
+            this.a.b(ffm.a($$0, $$1));
+         }
+
+         this.a = null;
+         this.u = af.c();
+         this.w.b();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public void a(fpc $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      boolean $$4 = false;
+
+      for (fme $$5 : this.c.V) {
+         if (!$$5.l()) {
+            $$4 = true;
+            break;
+         }
+      }
+
+      this.x.j = $$4;
    }
 }

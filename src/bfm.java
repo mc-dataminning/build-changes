@@ -1,41 +1,34 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.stream.Stream;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class bfm extends DataFix {
-   public bfm(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class bfm extends bdc {
+   private static final Optional<String> a = Optional.of("\"\"");
+
+   public bfm(Schema $$0) {
+      super($$0, "InvalidLockComponentPredicateFix", "minecraft:lock");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bhy.t);
-      OpticFinder<?> $$1 = $$0.findField("tag");
-      return this.fixTypeEverywhereTyped(
-         "Item Lore componentize",
-         $$0,
-         $$1x -> $$1x.updateTyped(
-               $$1,
-               $$0xx -> $$0xx.update(
-                     DSL.remainderFinder(),
-                     $$0xxx -> $$0xxx.update(
-                           "display",
-                           $$0xxxx -> $$0xxxx.update(
-                                 "Lore",
-                                 $$0xxxxx -> (Dynamic)DataFixUtils.orElse($$0xxxxx.asStreamOpt().map(bfm::a).map($$0xxxxx::createList).result(), $$0xxxxx)
-                              )
-                        )
-                  )
-            )
-      );
+   @Nullable
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return b($$0);
    }
 
-   private static <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
-      return $$0.map(bam::a);
+   @Nullable
+   public static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      return c($$0) ? null : $$0;
+   }
+
+   private static <T> boolean c(Dynamic<T> $$0) {
+      return a($$0, "components", $$0x -> a($$0x, "minecraft:custom_name", $$0xx -> $$0xx.asString().result().equals(a)));
+   }
+
+   private static <T> boolean a(Dynamic<T> $$0, String $$1, Predicate<Dynamic<T>> $$2) {
+      Optional<Map<Dynamic<T>, Dynamic<T>>> $$3 = $$0.getMapValues().result();
+      return !$$3.isEmpty() && $$3.get().size() == 1 ? $$0.get($$1).result().filter($$2).isPresent() : false;
    }
 }

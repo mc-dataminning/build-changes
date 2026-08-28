@@ -1,26 +1,82 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.concurrent.atomic.AtomicLong;
 
-public record edp(edr b, edo c) {
-   public static final Codec<edp> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(edr.a.forGetter(edp::a), edo.a.forGetter(edp::b)).apply($$0, $$0.stable(edp::new))
-   );
+public class edp implements edd {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private final AtomicLong h = new AtomicLong();
+   private final edq i = new edq(this);
 
-   public static <T> DataResult<T> a(DynamicOps<T> $$0, edr $$1, edo $$2) {
-      return a.encodeStart($$0, new edp($$1, $$2));
+   public edp(long $$0) {
+      this.b($$0);
    }
 
-   public static <T> DataResult<T> a(DynamicOps<T> $$0, edr $$1, kf $$2) {
-      return a($$0, $$1, new edo($$2.e(mc.bf)));
+   @Override
+   public azh d() {
+      return new edp(this.g());
    }
 
-   public edr a() {
-      return this.b;
+   @Override
+   public eeb e() {
+      return new edp.a(this.g());
    }
 
-   public edo b() {
-      return this.c;
+   @Override
+   public void b(long $$0) {
+      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
+         throw azy.a("LegacyRandomSource", null);
+      } else {
+         this.i.a();
+      }
+   }
+
+   @Override
+   public int c(int $$0) {
+      long $$1 = this.h.get();
+      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
+      if (!this.h.compareAndSet($$1, $$2)) {
+         throw azy.a("LegacyRandomSource", null);
+      } else {
+         return (int)($$2 >> 48 - $$0);
+      }
+   }
+
+   @Override
+   public double k() {
+      return this.i.b();
+   }
+
+   public static class a implements eeb {
+      private final long a;
+
+      public a(long $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public azh a(int $$0, int $$1, int $$2) {
+         long $$3 = ayz.b($$0, $$1, $$2);
+         long $$4 = $$3 ^ this.a;
+         return new edp($$4);
+      }
+
+      @Override
+      public azh a(String $$0) {
+         int $$1 = $$0.hashCode();
+         return new edp((long)$$1 ^ this.a);
+      }
+
+      @Override
+      public azh a(long $$0) {
+         return new edp($$0);
+      }
+
+      @VisibleForTesting
+      @Override
+      public void a(StringBuilder $$0) {
+         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
+      }
    }
 }

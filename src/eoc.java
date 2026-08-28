@@ -1,78 +1,26 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import org.slf4j.Logger;
+public interface eoc {
+   akt<eop> a = a("villages");
+   akt<eop> b = a("desert_pyramids");
+   akt<eop> c = a("igloos");
+   akt<eop> d = a("jungle_temples");
+   akt<eop> e = a("swamp_huts");
+   akt<eop> f = a("pillager_outposts");
+   akt<eop> g = a("ocean_monuments");
+   akt<eop> h = a("woodland_mansions");
+   akt<eop> i = a("buried_treasures");
+   akt<eop> j = a("mineshafts");
+   akt<eop> k = a("ruined_portals");
+   akt<eop> l = a("shipwrecks");
+   akt<eop> m = a("ocean_ruins");
+   akt<eop> n = a("nether_complexes");
+   akt<eop> o = a("nether_fossils");
+   akt<eop> p = a("end_cities");
+   akt<eop> q = a("ancient_cities");
+   akt<eop> r = a("strongholds");
+   akt<eop> s = a("trail_ruins");
+   akt<eop> t = a("trial_chambers");
 
-public record eoc(List<enr> a) {
-   private static final Logger b = LogUtils.getLogger();
-   private static final akv c = akv.b("jigsaw");
-   private static final Map<akv, akv> d = ImmutableMap.builder()
-      .put(akv.b("nvi"), c)
-      .put(akv.b("pcp"), c)
-      .put(akv.b("bastionremnant"), c)
-      .put(akv.b("runtime"), c)
-      .build();
-
-   public eoc(final List<enr> a) {
-      this.a = List.copyOf(a);
-   }
-
-   public boolean a() {
-      return this.a.isEmpty();
-   }
-
-   public boolean a(ji $$0) {
-      for (enr $$1 : this.a) {
-         if ($$1.f().b($$0)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public un a(eod $$0) {
-      tw $$1 = new tw();
-
-      for (enr $$2 : this.a) {
-         $$1.add($$2.a($$0));
-      }
-
-      return $$1;
-   }
-
-   public static eoc a(tw $$0, eod $$1) {
-      List<enr> $$2 = Lists.newArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         tq $$4 = $$0.a($$3);
-         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
-         akv $$6 = akv.a($$5);
-         akv $$7 = d.getOrDefault($$6, $$6);
-         eoe $$8 = mb.Q.a($$7);
-         if ($$8 == null) {
-            b.error("Unknown structure piece id: {}", $$7);
-         } else {
-            try {
-               enr $$9 = $$8.load($$1, $$4);
-               $$2.add($$9);
-            } catch (Exception var10) {
-               b.error("Exception loading structure piece with id {}", $$7, var10);
-            }
-         }
-      }
-
-      return new eoc($$2);
-   }
-
-   public enf b() {
-      return enr.a(this.a.stream());
-   }
-
-   public List<enr> c() {
-      return this.a;
+   private static akt<eop> a(String $$0) {
+      return akt.a(mc.aY, aku.b($$0));
    }
 }

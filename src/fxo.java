@@ -1,58 +1,26 @@
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-public class fxo extends fxq {
-   private static final wp a = wp.c("options.online.title");
-   @Nullable
-   private fln<Unit> u;
+public class fxo implements fxt {
+   private final ftx a;
 
-   public fxo(fum $$0, flo $$1) {
-      super($$0, $$1, a);
+   public fxo(ftx $$0) {
+      this.a = $$0;
    }
 
    @Override
-   protected void aR_() {
-      super.aR_();
-      if (this.u != null) {
-         fos $$0 = this.d.b(this.u);
-         if ($$0 != null) {
-            $$0.j = false;
-         }
-      }
-   }
-
-   private fln<?>[] a(flo $$0, flk $$1) {
-      List<fln<?>> $$2 = new ArrayList<>();
-      $$2.add($$0.W());
-      $$2.add($$0.X());
-      fln<Unit> $$3 = x.a(
-         $$1.s,
-         $$0x -> {
-            bsi $$1x = $$0x.am();
-            return new fln<>(
-               "options.difficulty.online",
-               fln.a(),
-               ($$1xx, $$2x) -> $$1x.b(),
-               new fln.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
-               Unit.INSTANCE,
-               $$0xx -> {
-               }
-            );
-         }
-      );
-      if ($$3 != null) {
-         this.u = $$3;
-         $$2.add($$3);
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i();
+      $$6.x = this.a.d() + 3;
+      $$6.y = this.a.c() + 3 + 1;
+      if ($$6.y + $$5 + 3 > $$1) {
+         $$6.y = this.a.b() - $$5 - 3 - 1;
       }
 
-      return $$2.toArray(new fln[0]);
-   }
+      if ($$6.x + $$4 > $$0) {
+         $$6.x = Math.max(this.a.e() - $$4 - 3, 4);
+      }
 
-   @Override
-   protected void m() {
-      this.d.a(this.a(this.c, this.m));
+      return $$6;
    }
 }

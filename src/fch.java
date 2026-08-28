@@ -1,197 +1,110 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class fch extends eum {
-   private static final Logger b = LogUtils.getLogger();
-   public static final String a = "scoreboard";
-   private final fcg c;
+public class fch implements fcc {
+   protected static final fcc a = new fch(false, -Double.MAX_VALUE, cxh.k, $$0 -> false, null) {
+      @Override
+      public boolean a(fcr $$0, ji $$1, boolean $$2) {
+         return $$2;
+      }
+   };
+   private final boolean b;
+   private final double c;
+   private final cxh d;
+   private final Predicate<etw> e;
+   @Nullable
+   private final bva f;
 
-   public fch(fcg $$0) {
-      this.c = $$0;
+   protected fch(boolean $$0, double $$1, cxh $$2, Predicate<etw> $$3, @Nullable bva $$4) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
    }
 
-   public fch b(tq $$0, jt.a $$1) {
-      this.b($$0.c("Objectives", 10), $$1);
-      this.c.a($$0.c("PlayerScores", 10), $$1);
-      if ($$0.b("DisplaySlots", 10)) {
-         this.a($$0.p("DisplaySlots"));
-      }
-
-      if ($$0.b("Teams", 9)) {
-         this.a($$0.c("Teams", 10), $$1);
-      }
-
-      return this;
-   }
-
-   private void a(tw $$0, jt.a $$1) {
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         tq $$3 = $$0.a($$2);
-         String $$4 = $$3.l("Name");
-         fcb $$5 = this.c.c($$4);
-         wp $$6 = wp.a.a($$3.l("DisplayName"), $$1);
-         if ($$6 != null) {
-            $$5.a($$6);
-         }
-
-         if ($$3.b("TeamColor", 8)) {
-            $$5.a(n.b($$3.l("TeamColor")));
-         }
-
-         if ($$3.b("AllowFriendlyFire", 99)) {
-            $$5.a($$3.q("AllowFriendlyFire"));
-         }
-
-         if ($$3.b("SeeFriendlyInvisibles", 99)) {
-            $$5.b($$3.q("SeeFriendlyInvisibles"));
-         }
-
-         if ($$3.b("MemberNamePrefix", 8)) {
-            wp $$7 = wp.a.a($$3.l("MemberNamePrefix"), $$1);
-            if ($$7 != null) {
-               $$5.b($$7);
-            }
-         }
-
-         if ($$3.b("MemberNameSuffix", 8)) {
-            wp $$8 = wp.a.a($$3.l("MemberNameSuffix"), $$1);
-            if ($$8 != null) {
-               $$5.c($$8);
-            }
-         }
-
-         if ($$3.b("NameTagVisibility", 8)) {
-            fci.b $$9 = fci.b.a($$3.l("NameTagVisibility"));
-            if ($$9 != null) {
-               $$5.a($$9);
-            }
-         }
-
-         if ($$3.b("DeathMessageVisibility", 8)) {
-            fci.b $$10 = fci.b.a($$3.l("DeathMessageVisibility"));
-            if ($$10 != null) {
-               $$5.b($$10);
-            }
-         }
-
-         if ($$3.b("CollisionRule", 8)) {
-            fci.a $$11 = fci.a.a($$3.l("CollisionRule"));
-            if ($$11 != null) {
-               $$5.a($$11);
-            }
-         }
-
-         this.a($$5, $$3.c("Players", 8));
-      }
-   }
-
-   private void a(fcb $$0, tw $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.c.a($$1.j($$2), $$0);
-      }
-   }
-
-   private void a(tq $$0) {
-      for (String $$1 : $$0.e()) {
-         fbx $$2 = fbx.t.a($$1);
-         if ($$2 != null) {
-            String $$3 = $$0.l($$1);
-            fby $$4 = this.c.a($$3);
-            this.c.a($$2, $$4);
-         }
-      }
-   }
-
-   private void b(tw $$0, jt.a $$1) {
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         tq $$3 = $$0.a($$2);
-         String $$4 = $$3.l("CriteriaName");
-         fcj $$5 = fcj.a($$4).orElseGet(() -> {
-            b.warn("Unknown scoreboard criteria {}, replacing with {}", $$4, fcj.b.d());
-            return fcj.b;
-         });
-         String $$6 = $$3.l("Name");
-         wp $$7 = wp.a.a($$3.l("DisplayName"), $$1);
-         fcj.a $$8 = fcj.a.a($$3.l("RenderType"));
-         boolean $$9 = $$3.q("display_auto_update");
-         yf $$10 = (yf)yh.b.parse($$1.a(ue.a), $$3.c("format")).result().orElse(null);
-         this.c.a($$6, $$5, $$7, $$8, $$9, $$10);
-      }
+   @Deprecated
+   protected fch(bva $$0, boolean $$1) {
+      // $VF: Couldn't be decompiled
+      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+      // java.lang.NullPointerException: Cannot invoke "org.jetbrains.java.decompiler.struct.gen.VarType.equals(Object)" because "curType" is null
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.setLambdaGenericTypes(NewExprent.java:668)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.toJava(NewExprent.java:401)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:745)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:714)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.toJava(FunctionExprent.java:625)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:745)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:714)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.toJava(FunctionExprent.java:627)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.getCastedExprent(ExprProcessor.java:1018)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.appendParamList(InvocationExprent.java:1153)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.toJava(InvocationExprent.java:902)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.listToJava(ExprProcessor.java:895)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.BasicBlockStatement.toJava(BasicBlockStatement.java:90)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.RootStatement.toJava(RootStatement.java:36)
+      //   at org.jetbrains.java.decompiler.main.ClassWriter.writeMethod(ClassWriter.java:1283)
+      //
+      // Bytecode:
+      // 00: aload 0
+      // 01: aload 1
+      // 02: invokevirtual bva.cg ()Z
+      // 05: aload 1
+      // 06: invokevirtual bva.dB ()D
+      // 09: aload 1
+      // 0a: instanceof bvy
+      // 0d: ifeq 1a
+      // 10: aload 1
+      // 11: checkcast bvy
+      // 14: invokevirtual bvy.eZ ()Lcxh;
+      // 17: goto 1d
+      // 1a: getstatic cxh.k Lcxh;
+      // 1d: iload 2
+      // 1e: ifeq 29
+      // 21: invokedynamic test ()Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, fch.b (Letw;)Z, (Letw;)Z ]
+      // 26: goto 46
+      // 29: aload 1
+      // 2a: instanceof bvy
+      // 2d: ifeq 41
+      // 30: aload 1
+      // 31: checkcast bvy
+      // 34: dup
+      // 35: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
+      // 38: pop
+      // 39: invokedynamic test (Lbvy;)Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, bvy.a (Letw;)Z, (Letw;)Z ]
+      // 3e: goto 46
+      // 41: invokedynamic test ()Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, fch.a (Letw;)Z, (Letw;)Z ]
+      // 46: aload 1
+      // 47: invokespecial fch.<init> (ZDLcxh;Ljava/util/function/Predicate;Lbva;)V
+      // 4a: return
    }
 
    @Override
-   public tq a(tq $$0, jt.a $$1) {
-      $$0.a("Objectives", this.c($$1));
-      $$0.a("PlayerScores", this.c.a($$1));
-      $$0.a("Teams", this.b($$1));
-      this.b($$0);
-      return $$0;
+   public boolean a(cxd $$0) {
+      return this.d.a($$0);
    }
 
-   private tw b(jt.a $$0) {
-      tw $$1 = new tw();
-
-      for (fcb $$3 : this.c.g()) {
-         tq $$4 = new tq();
-         $$4.a("Name", $$3.b());
-         $$4.a("DisplayName", wp.a.a($$3.c(), $$0));
-         if ($$3.n().b() >= 0) {
-            $$4.a("TeamColor", $$3.n().g());
-         }
-
-         $$4.a("AllowFriendlyFire", $$3.h());
-         $$4.a("SeeFriendlyInvisibles", $$3.i());
-         $$4.a("MemberNamePrefix", wp.a.a($$3.e(), $$0));
-         $$4.a("MemberNameSuffix", wp.a.a($$3.f(), $$0));
-         $$4.a("NameTagVisibility", $$3.j().e);
-         $$4.a("DeathMessageVisibility", $$3.k().e);
-         $$4.a("CollisionRule", $$3.l().e);
-         tw $$5 = new tw();
-
-         for (String $$6 : $$3.g()) {
-            $$5.add(ul.a($$6));
-         }
-
-         $$4.a("Players", $$5);
-         $$1.add($$4);
-      }
-
-      return $$1;
+   @Override
+   public boolean a(etw $$0, etw $$1) {
+      return this.e.test($$1) && !$$0.a().a($$1.a());
    }
 
-   private void b(tq $$0) {
-      tq $$1 = new tq();
-
-      for (fbx $$2 : fbx.values()) {
-         fby $$3 = this.c.a($$2);
-         if ($$3 != null) {
-            $$1.a($$2.c(), $$3.b());
-         }
-      }
-
-      if (!$$1.g()) {
-         $$0.a("DisplaySlots", $$1);
-      }
+   @Override
+   public fcr a(dxq $$0, dgj $$1, ji $$2) {
+      return $$0.b($$1, $$2, this);
    }
 
-   private tw c(jt.a $$0) {
-      tw $$1 = new tw();
+   @Override
+   public boolean b() {
+      return this.b;
+   }
 
-      for (fby $$3 : this.c.c()) {
-         tq $$4 = new tq();
-         $$4.a("Name", $$3.b());
-         $$4.a("CriteriaName", $$3.c().d());
-         $$4.a("DisplayName", wp.a.a($$3.d(), $$0));
-         $$4.a("RenderType", $$3.h().a());
-         $$4.a("display_auto_update", $$3.e());
-         yf $$5 = $$3.f();
-         if ($$5 != null) {
-            yh.b.encodeStart($$0.a(ue.a), $$5).ifSuccess($$1x -> $$4.a("format", $$1x));
-         }
+   @Override
+   public boolean a(fcr $$0, ji $$1, boolean $$2) {
+      return this.c > (double)$$1.v() + $$0.c(jn.a.b) - 1.0E-5F;
+   }
 
-         $$1.add($$4);
-      }
-
-      return $$1;
+   @Nullable
+   public bva c() {
+      return this.f;
    }
 }

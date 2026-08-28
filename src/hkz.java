@@ -1,25 +1,29 @@
-public interface hkz {
-   default void b() {
+import com.mojang.authlib.minecraft.TelemetryEvent;
+import com.mojang.authlib.minecraft.TelemetrySession;
+import com.mojang.serialization.Codec;
+
+public record hkz(hld b, hlg c) {
+   public static final Codec<hkz> a = hld.a.dispatchStable(hkz::a, hld::c);
+
+   public hkz(hld b, hlg c) {
+      c.b().forEach($$1x -> {
+         if (!$$0.a($$1x)) {
+            throw new IllegalArgumentException("Property '" + $$1x.b() + "' not expected for event: '" + $$0.a() + "'");
+         }
+      });
+      this.b = b;
+      this.c = c;
    }
 
-   default void a() {
+   public TelemetryEvent a(TelemetrySession $$0) {
+      return this.b.a($$0, this.c);
    }
 
-   default void a(gkv $$0) {
+   public hld a() {
+      return this.b;
    }
 
-   default void a(double $$0, double $$1) {
-   }
-
-   default void a(gga $$0, faz $$1) {
-   }
-
-   default void a(gga $$0, ji $$1, dwy $$2, float $$3) {
-   }
-
-   default void c() {
-   }
-
-   default void a(cwq $$0) {
+   public hlg b() {
+      return this.c;
    }
 }

@@ -1,34 +1,165 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.mojang.authlib.minecraft.TelemetryPropertyContainer;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.util.UUID;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public abstract class hlf extends fum {
-   protected static final int d = 17;
-   protected static final int s = 7;
-   protected static final long u = 5368709120L;
-   protected static final int v = 5000268;
-   protected static final int w = 7105644;
-   protected static final int x = 8388479;
-   protected static final int y = 3368635;
-   protected static final int z = 7107012;
-   protected static final int A = 32;
-   protected static final int B = 8;
-   private final List<hle> a = Lists.newArrayList();
+public record hlf<T>(String F, String G, Codec<T> H, hlf.a<T> I) {
+   private static final DateTimeFormatter J = DateTimeFormatter.ISO_OFFSET_DATE_TIME.withZone(ZoneId.from(ZoneOffset.UTC));
+   public static final hlf<String> a = b("user_id", "userId");
+   public static final hlf<String> b = b("client_id", "clientId");
+   public static final hlf<UUID> c = e("minecraft_session_id", "deviceSessionId");
+   public static final hlf<String> d = b("game_version", "buildDisplayName");
+   public static final hlf<String> e = b("operating_system", "buildPlatform");
+   public static final hlf<String> f = b("platform", "platform");
+   public static final hlf<Boolean> g = a("client_modded", "clientModded");
+   public static final hlf<String> h = b("launcher_name", "launcherName");
+   public static final hlf<UUID> i = e("world_session_id", "worldSessionId");
+   public static final hlf<Boolean> j = a("server_modded", "serverModded");
+   public static final hlf<hlf.c> k = a("server_type", "serverType", hlf.c.d, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.c()));
+   public static final hlf<Boolean> l = a("opt_in", "isOptional");
+   public static final hlf<Instant> m = a("event_timestamp_utc", "eventTimestampUtc", ayi.q, ($$0, $$1, $$2) -> $$0.addProperty($$1, J.format($$2)));
+   public static final hlf<hlf.b> n = a("game_mode", "playerGameMode", hlf.b.f, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.a()));
+   public static final hlf<String> o = b("realms_map_content", "realmsMapContent");
+   public static final hlf<Integer> p = c("seconds_since_load", "secondsSinceLoad");
+   public static final hlf<Integer> q = c("ticks_since_load", "ticksSinceLoad");
+   public static final hlf<LongList> r = g("frame_rate_samples", "serializedFpsSamples");
+   public static final hlf<LongList> s = g("render_time_samples", "serializedRenderTimeSamples");
+   public static final hlf<LongList> t = g("used_memory_samples", "serializedUsedMemoryKbSamples");
+   public static final hlf<Integer> u = c("number_of_samples", "numSamples");
+   public static final hlf<Integer> v = c("render_distance", "renderDistance");
+   public static final hlf<Integer> w = c("dedicated_memory_kb", "dedicatedMemoryKb");
+   public static final hlf<Integer> x = c("world_load_time_ms", "worldLoadTimeMs");
+   public static final hlf<Boolean> y = a("new_world", "newWorld");
+   public static final hlf<hlj.a> z = f("load_time_total_time_ms", "loadTimeTotalTimeMs");
+   public static final hlf<hlj.a> A = f("load_time_pre_window_ms", "loadTimePreWindowMs");
+   public static final hlf<hlj.a> B = f("load_time_bootstrap_ms", "loadTimeBootstrapMs");
+   public static final hlf<hlj.a> C = f("load_time_loading_overlay_ms", "loadTimeLoadingOverlayMs");
+   public static final hlf<String> D = b("advancement_id", "advancementId");
+   public static final hlf<Long> E = d("advancement_game_time", "advancementGameTime");
 
-   public hlf(wp $$0) {
-      super($$0);
+   public static <T> hlf<T> a(String $$0, String $$1, Codec<T> $$2, hlf.a<T> $$3) {
+      return new hlf<>($$0, $$1, $$2, $$3);
    }
 
-   protected static int g(int $$0) {
-      return 40 + $$0 * 13;
+   public static hlf<Boolean> a(String $$0, String $$1) {
+      return a($$0, $$1, Codec.BOOL, TelemetryPropertyContainer::addProperty);
    }
 
-   protected hle a(hle $$0) {
-      this.a.add($$0);
-      return this.a($$0);
+   public static hlf<String> b(String $$0, String $$1) {
+      return a($$0, $$1, Codec.STRING, TelemetryPropertyContainer::addProperty);
    }
 
-   public wp m() {
-      return wo.a(this.a.stream().map(hle::a).collect(Collectors.toList()));
+   public static hlf<Integer> c(String $$0, String $$1) {
+      return a($$0, $$1, Codec.INT, TelemetryPropertyContainer::addProperty);
+   }
+
+   public static hlf<Long> d(String $$0, String $$1) {
+      return a($$0, $$1, Codec.LONG, TelemetryPropertyContainer::addProperty);
+   }
+
+   public static hlf<UUID> e(String $$0, String $$1) {
+      return a($$0, $$1, kl.d, ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.toString()));
+   }
+
+   public static hlf<hlj.a> f(String $$0, String $$1) {
+      return a($$0, $$1, hlj.a.a, ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.a()));
+   }
+
+   public static hlf<LongList> g(String $$0, String $$1) {
+      return a(
+         $$0,
+         $$1,
+         Codec.LONG.listOf().xmap(LongArrayList::new, Function.identity()),
+         ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.longStream().mapToObj(String::valueOf).collect(Collectors.joining(";")))
+      );
+   }
+
+   public void a(hlg $$0, TelemetryPropertyContainer $$1) {
+      T $$2 = $$0.a(this);
+      if ($$2 != null) {
+         this.I.apply($$1, this.G, $$2);
+      } else {
+         $$1.addNullProperty(this.G);
+      }
+   }
+
+   public xd a() {
+      return wp.c("telemetry.property." + this.F + ".title");
+   }
+
+   @Override
+   public String toString() {
+      return "TelemetryProperty[" + this.F + "]";
+   }
+
+   public String b() {
+      return this.F;
+   }
+
+   public String c() {
+      return this.G;
+   }
+
+   public Codec<T> d() {
+      return this.H;
+   }
+
+   public hlf.a<T> e() {
+      return this.I;
+   }
+
+   public interface a<T> {
+      void apply(TelemetryPropertyContainer var1, String var2, T var3);
+   }
+
+   public static enum b implements azv {
+      a("survival", 0),
+      b("creative", 1),
+      c("adventure", 2),
+      d("spectator", 6),
+      e("hardcore", 99);
+
+      public static final Codec<hlf.b> f = azv.a(hlf.b::values);
+      private final String g;
+      private final int h;
+
+      private b(final String $$0, final int $$1) {
+         this.g = $$0;
+         this.h = $$1;
+      }
+
+      public int a() {
+         return this.h;
+      }
+
+      @Override
+      public String c() {
+         return this.g;
+      }
+   }
+
+   public static enum c implements azv {
+      a("realm"),
+      b("local"),
+      c("server");
+
+      public static final Codec<hlf.c> d = azv.a(hlf.c::values);
+      private final String e;
+
+      private c(final String $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
    }
 }

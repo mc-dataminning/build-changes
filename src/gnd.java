@@ -1,78 +1,144 @@
-import java.util.function.Supplier;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import org.joml.Matrix4f;
 
-public class gnd implements auq {
-   private final gnc a;
-   private final gnf b;
-   private final Supplier<gmw> c;
-   private final gne d;
-   private final azh e = azh.a();
-   private final fmm f;
+public class gnd {
+   private final String a;
+   private final gmh b;
+   private final aku c;
+   private final List<gnc.h> d;
+   private final List<gnd.a> e = new ArrayList<>();
 
-   public gnd(gnc $$0, Supplier<gmw> $$1, fmm $$2) {
+   public gnd(String $$0, gmh $$1, aku $$2, List<gnc.h> $$3) {
       this.a = $$0;
-      this.c = $$1;
-      this.f = $$2;
-      this.b = new gnf(this.f);
-      this.d = new gne();
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public gnc a() {
-      return this.a;
+   public void a(gnd.a $$0) {
+      this.e.add($$0);
    }
 
-   public void a(dwy $$0, ji $$1, dfl $$2, ffv $$3, ffz $$4) {
-      if ($$0.o() == dpy.b) {
-         hgt $$5 = this.a.b($$0);
-         long $$6 = $$0.b($$1);
-         this.b.a($$2, $$5, $$0, $$1, $$3, $$4, true, this.e, $$6, hej.d);
+   public void a(fev $$0, Map<aku, fgd<ffb>> $$1, Matrix4f $$2) {
+      few $$3 = $$0.a(this.a);
+
+      for (gnd.a $$4 : this.e) {
+         $$4.a($$3, $$1);
+      }
+
+      fgd<ffb> $$5 = $$1.computeIfPresent(this.c, ($$1x, $$2x) -> $$3.b($$2x));
+      if ($$5 == null) {
+         throw new IllegalStateException("Missing handle for target " + this.c);
+      } else {
+         $$3.a(() -> {
+            ffb $$3x = $$5.get();
+            RenderSystem.viewport(0, 0, $$3x.c, $$3x.d);
+
+            for (gnd.a $$4x : this.e) {
+               $$4x.a(this.b, $$1);
+            }
+
+            this.b.c("OutSize").a((float)$$3x.c, (float)$$3x.d);
+
+            for (gnc.h $$5x : this.d) {
+               fgi $$6 = this.b.a($$5x.a());
+               if ($$6 != null) {
+                  $$6.a($$5x.b(), $$5x.b().size());
+               }
+            }
+
+            $$3x.a(false);
+            RenderSystem.depthFunc(519);
+            RenderSystem.setShader(this.b);
+            RenderSystem.backupProjectionMatrix();
+            RenderSystem.setProjectionMatrix($$2, fea.b);
+            fgm $$7 = fgt.b().a(fgw.c.h, fgp.e);
+            $$7.a(0.0F, 0.0F, 500.0F);
+            $$7.a((float)$$3x.c, 0.0F, 500.0F);
+            $$7.a((float)$$3x.c, (float)$$3x.d, 500.0F);
+            $$7.a(0.0F, (float)$$3x.d, 500.0F);
+            fgn.a($$7.b());
+            RenderSystem.depthFunc(515);
+            RenderSystem.restoreProjectionMatrix();
+            $$3x.e();
+
+            for (gnd.a $$8 : this.e) {
+               $$8.a($$1);
+            }
+
+            this.b();
+         });
       }
    }
 
-   public void a(dwy $$0, ji $$1, dfl $$2, ffv $$3, ffz $$4, boolean $$5, azh $$6) {
-      try {
-         this.b.a($$2, this.a($$0), $$0, $$1, $$3, $$4, $$5, $$6, $$0.b($$1), hej.d);
-      } catch (Throwable var11) {
-         o $$8 = o.a(var11, "Tesselating block in world");
-         p $$9 = $$8.a("Block being tesselated");
-         p.a($$9, $$2, $$1, $$0);
-         throw new z($$8);
+   private void b() {
+      for (gnc.h $$0 : this.d) {
+         String $$1 = $$0.a();
+         fgi $$2 = this.b.a($$1);
+         gnq.b $$3 = this.b.b($$1);
+         if ($$2 != null && $$3 != null && !$$0.b().equals($$3.d())) {
+            $$2.a($$3);
+         }
       }
    }
 
-   public void a(ji $$0, dfl $$1, ffz $$2, dwy $$3, eta $$4) {
-      try {
-         this.d.a($$1, $$0, $$2, $$3, $$4);
-      } catch (Throwable var9) {
-         o $$6 = o.a(var9, "Tesselating liquid in world");
-         p $$7 = $$6.a("Block being tesselated");
-         p.a($$7, $$1, $$0, null);
-         throw new z($$6);
-      }
-   }
-
-   public gnf b() {
+   public gmh a() {
       return this.b;
    }
 
-   public hgt a(dwy $$0) {
-      return this.a.b($$0);
-   }
+   public interface a {
+      void a(few var1, Map<aku, fgd<ffb>> var2);
 
-   public void a(dwy $$0, ffv $$1, glz $$2, int $$3, int $$4) {
-      dpy $$5 = $$0.o();
-      if ($$5 != dpy.a) {
-         hgt $$6 = this.a($$0);
-         int $$7 = this.f.a($$0, null, null, 0);
-         float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
-         float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
-         float $$10 = (float)($$7 & 0xFF) / 255.0F;
-         this.b.a($$1.c(), $$2.getBuffer(gls.c($$0)), $$0, $$6, $$8, $$9, $$10, $$3, $$4);
-         this.c.get().a($$0.b(), cwo.a, $$1, $$2, $$3, $$4);
+      void a(gmh var1, Map<aku, fgd<ffb>> var2);
+
+      default void a(Map<aku, fgd<ffb>> $$0) {
       }
    }
 
-   @Override
-   public void a(aup $$0) {
-      this.d.a();
+   public static record b(String a, aku b, boolean c, boolean d) implements gnd.a {
+      private fgd<ffb> b(Map<aku, fgd<ffb>> $$0) {
+         fgd<ffb> $$1 = $$0.get(this.b);
+         if ($$1 == null) {
+            throw new IllegalStateException("Missing handle for target " + this.b);
+         } else {
+            return $$1;
+         }
+      }
+
+      @Override
+      public void a(few $$0, Map<aku, fgd<ffb>> $$1) {
+         $$0.a(this.b($$1));
+      }
+
+      @Override
+      public void a(gmh $$0, Map<aku, fgd<ffb>> $$1) {
+         fgd<ffb> $$2 = this.b($$1);
+         ffb $$3 = $$2.get();
+         $$3.a(this.d ? 9729 : 9728);
+         $$0.a(this.a + "Sampler", this.c ? $$3.h() : $$3.g());
+         $$0.c(this.a + "Size").a((float)$$3.c, (float)$$3.d);
+      }
+
+      @Override
+      public void a(Map<aku, fgd<ffb>> $$0) {
+         if (this.d) {
+            this.b($$0).get().a(9728);
+         }
+      }
+   }
+
+   public static record c(String a, hfc b, int c, int d) implements gnd.a {
+      @Override
+      public void a(few $$0, Map<aku, fgd<ffb>> $$1) {
+      }
+
+      @Override
+      public void a(gmh $$0, Map<aku, fgd<ffb>> $$1) {
+         $$0.a(this.a + "Sampler", this.b.a());
+         $$0.c(this.a + "Size").a((float)this.c, (float)this.d);
+      }
    }
 }

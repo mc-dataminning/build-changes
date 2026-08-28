@@ -1,32 +1,56 @@
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
 import java.util.Set;
+import org.slf4j.Logger;
 
-public record eyu(Optional<bm> b) implements ezb {
-   public static final MapCodec<eyu> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bm.a.optionalFieldOf("predicate").forGetter(eyu::c)).apply($$0, eyu::new));
+public class eyu extends eyb {
+   private static final Logger b = LogUtils.getLogger();
+   public static final MapCodec<eyu> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and($$0.group(fau.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
+            .apply($$0, eyu::new)
+   );
+   private final fat c;
+   private final boolean d;
+
+   private eyu(List<ezx> $$0, fat $$1, boolean $$2) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
+   }
 
    @Override
-   public ezc b() {
-      return ezd.m;
+   public eyd<eyu> b() {
+      return eye.n;
    }
 
    @Override
    public Set<bai<?>> a() {
-      return Set.of(eym.f, eym.c);
+      return this.c.a();
    }
 
-   public boolean a(evs $$0) {
-      btc $$1 = $$0.c(eym.c);
-      fbb $$2 = $$0.c(eym.f);
-      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
+   @Override
+   public cxh a(cxh $$0, ewo $$1) {
+      if ($$0.m()) {
+         int $$2 = $$0.p();
+         float $$3 = this.d ? 1.0F - (float)$$0.o() / (float)$$2 : 0.0F;
+         float $$4 = 1.0F - ayz.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
+         $$0.b(ayz.d($$4 * (float)$$2));
+      } else {
+         b.warn("Couldn't set damage of loot item {}", $$0);
+      }
+
+      return $$0;
    }
 
-   public static ezb.a a(bm.a $$0) {
-      return () -> new eyu(Optional.of($$0.b()));
+   public static eyb.a<?> a(fat $$0) {
+      return a($$1 -> new eyu($$1, $$0, false));
    }
 
-   public Optional<bm> c() {
-      return this.b;
+   public static eyb.a<?> a(fat $$0, boolean $$1) {
+      return a($$2 -> new eyu($$2, $$0, $$1));
    }
 }

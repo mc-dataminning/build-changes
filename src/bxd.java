@@ -1,133 +1,157 @@
-import java.util.Comparator;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Predicate;
+import com.google.common.collect.Multimap;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class bxd {
-   private bxd() {
+   private static final Logger a = LogUtils.getLogger();
+   private final Map<jr<bxb>, bxc> b = new Object2ObjectOpenHashMap();
+   private final Set<bxc> c = new ObjectOpenHashSet();
+   private final Set<bxc> d = new ObjectOpenHashSet();
+   private final bxf e;
+
+   public bxd(bxf $$0) {
+      this.e = $$0;
    }
 
-   public static void a(bvi $$0, bvi $$1, float $$2, int $$3) {
-      c($$0, $$1);
-      b($$0, $$1, $$2, $$3);
-   }
-
-   public static boolean a(bwk<?> $$0, bvi $$1) {
-      Optional<ceo> $$2 = $$0.c(cem.h);
-      return $$2.isPresent() && $$2.get().a($$1);
-   }
-
-   public static boolean a(bwk<?> $$0, cem<? extends bvi> $$1, but<?> $$2) {
-      return a($$0, $$1, $$1x -> $$1x.aq() == $$2);
-   }
-
-   private static boolean a(bwk<?> $$0, cem<? extends bvi> $$1, Predicate<bvi> $$2) {
-      return $$0.c($$1).filter($$2).filter(bvi::bL).filter($$1x -> a($$0, $$1x)).isPresent();
-   }
-
-   private static void c(bvi $$0, bvi $$1) {
-      a($$0, $$1);
-      a($$1, $$0);
-   }
-
-   public static void a(bvi $$0, bvi $$1) {
-      $$0.eb().a(cem.n, new bxm($$1, true));
-   }
-
-   private static void b(bvi $$0, bvi $$1, float $$2, int $$3) {
-      a($$0, (bum)$$1, $$2, $$3);
-      a($$1, (bum)$$0, $$2, $$3);
-   }
-
-   public static void a(bvi $$0, bum $$1, float $$2, int $$3) {
-      a($$0, new bxm($$1, true), $$2, $$3);
-   }
-
-   public static void a(bvi $$0, ji $$1, float $$2, int $$3) {
-      a($$0, new bxe($$1), $$2, $$3);
-   }
-
-   public static void a(bvi $$0, byp $$1, float $$2, int $$3) {
-      cep $$4 = new cep($$1, $$2, $$3);
-      $$0.eb().a(cem.n, $$1);
-      $$0.eb().a(cem.m, $$4);
-   }
-
-   public static void a(bvi $$0, cwq $$1, fbb $$2) {
-      fbb $$3 = new fbb(0.3F, 0.3F, 0.3F);
-      a($$0, $$1, $$2, $$3, 0.3F);
-   }
-
-   public static void a(bvi $$0, cwq $$1, fbb $$2, fbb $$3, float $$4) {
-      double $$5 = $$0.dE() - (double)$$4;
-      cld $$6 = new cld($$0.dV(), $$0.dA(), $$5, $$0.dG(), $$1);
-      $$6.b($$0);
-      fbb $$7 = $$2.d($$0.dt());
-      $$7 = $$7.d().d($$3.d, $$3.e, $$3.f);
-      $$6.i($$7);
-      $$6.s();
-      $$0.dV().b($$6);
-   }
-
-   public static kk a(ard $$0, kk $$1, int $$2) {
-      int $$3 = $$0.b($$1);
-      return kk.a($$1, $$2).filter($$2x -> $$0.b($$2x) < $$3).min(Comparator.comparingInt($$0::b)).orElse($$1);
-   }
-
-   public static boolean a(bvk $$0, bvi $$1, int $$2) {
-      if ($$0.eZ().h() instanceof cxm $$3 && $$0.a($$3)) {
-         int $$4 = $$3.c() - $$2;
-         return $$0.a($$1, (double)$$4);
-      }
-
-      return $$0.i($$1);
-   }
-
-   public static boolean a(bvi $$0, bvi $$1, double $$2) {
-      Optional<bvi> $$3 = $$0.eb().c(cem.o);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         double $$4 = $$0.g($$3.get().dt());
-         double $$5 = $$0.g($$1.dt());
-         return $$5 > $$4 + $$2 * $$2;
+   private void a(bxc $$0) {
+      this.d.add($$0);
+      if ($$0.a().a().b()) {
+         this.c.add($$0);
       }
    }
 
-   public static boolean b(bvi $$0, bvi $$1) {
-      bwk<?> $$2 = $$0.eb();
-      return !$$2.a(cem.h) ? false : $$2.c(cem.h).get().a($$1);
+   public Set<bxc> a() {
+      return this.c;
    }
 
-   public static bvi a(bvi $$0, Optional<bvi> $$1, bvi $$2) {
-      return $$1.isEmpty() ? $$2 : a($$0, $$1.get(), $$2);
+   public Set<bxc> b() {
+      return this.d;
    }
 
-   public static bvi a(bvi $$0, bvi $$1, bvi $$2) {
-      fbb $$3 = $$1.dt();
-      fbb $$4 = $$2.dt();
-      return $$0.g($$3) < $$0.g($$4) ? $$1 : $$2;
-   }
-
-   public static Optional<bvi> a(bvi $$0, cem<UUID> $$1) {
-      Optional<UUID> $$2 = $$0.eb().c($$1);
-      return $$2.<bum>map($$1x -> ((ard)$$0.dV()).a($$1x)).map($$0x -> $$0x instanceof bvi $$1x ? $$1x : null);
+   public Collection<bxc> c() {
+      return this.b.values().stream().filter($$0 -> $$0.a().a().b()).collect(Collectors.toList());
    }
 
    @Nullable
-   public static fbb a(bvq $$0, int $$1, int $$2) {
-      fbb $$3 = cgd.a($$0, $$1, $$2);
-      int $$4 = 0;
-
-      while ($$3 != null && !$$0.dV().a_(ji.a((kb)$$3)).a(etp.b) && $$4++ < 10) {
-         $$3 = cgd.a($$0, $$1, $$2);
-      }
-
-      return $$3;
+   public bxc a(jr<bxb> $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> this.e.a(this::a, $$0x));
    }
 
-   public static boolean a(bvi $$0) {
-      return $$0.eb().a(cem.r);
+   public boolean b(jr<bxb> $$0) {
+      return this.b.get($$0) != null || this.e.c($$0);
+   }
+
+   public boolean a(jr<bxb> $$0, aku $$1) {
+      bxc $$2 = this.b.get($$0);
+      return $$2 != null ? $$2.a($$1) != null : this.e.b($$0, $$1);
+   }
+
+   public double c(jr<bxb> $$0) {
+      bxc $$1 = this.b.get($$0);
+      return $$1 != null ? $$1.g() : this.e.a($$0);
+   }
+
+   public double d(jr<bxb> $$0) {
+      bxc $$1 = this.b.get($$0);
+      return $$1 != null ? $$1.b() : this.e.b($$0);
+   }
+
+   public double b(jr<bxb> $$0, aku $$1) {
+      bxc $$2 = this.b.get($$0);
+      return $$2 != null ? $$2.a($$1).c() : this.e.a($$0, $$1);
+   }
+
+   public void a(Multimap<jr<bxb>, bxe> $$0) {
+      $$0.forEach(($$0x, $$1) -> {
+         bxc $$2 = this.a($$0x);
+         if ($$2 != null) {
+            $$2.c($$1.b());
+            $$2.b($$1);
+         }
+      });
+   }
+
+   public void b(Multimap<jr<bxb>, bxe> $$0) {
+      $$0.asMap().forEach(($$0x, $$1) -> {
+         bxc $$2 = this.b.get($$0x);
+         if ($$2 != null) {
+            $$1.forEach($$1x -> $$2.c($$1x.b()));
+         }
+      });
+   }
+
+   public void a(bxd $$0) {
+      $$0.b.values().forEach($$0x -> {
+         bxc $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x);
+         }
+      });
+   }
+
+   public void b(bxd $$0) {
+      $$0.b.values().forEach($$0x -> {
+         bxc $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x.b());
+         }
+      });
+   }
+
+   public void c(bxd $$0) {
+      $$0.b.values().forEach($$0x -> {
+         bxc $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x.d());
+         }
+      });
+   }
+
+   public boolean e(jr<bxb> $$0) {
+      if (!this.e.c($$0)) {
+         return false;
+      } else {
+         bxc $$1 = this.b.get($$0);
+         if ($$1 != null) {
+            $$1.a(this.e.b($$0));
+         }
+
+         return true;
+      }
+   }
+
+   public tw d() {
+      tw $$0 = new tw();
+
+      for (bxc $$1 : this.b.values()) {
+         $$0.add($$1.h());
+      }
+
+      return $$0;
+   }
+
+   public void a(tw $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         tq $$2 = $$0.a($$1);
+         String $$3 = $$2.l("id");
+         aku $$4 = aku.c($$3);
+         if ($$4 != null) {
+            af.a(mb.s.c($$4), $$1x -> {
+               bxc $$2x = this.a($$1x);
+               if ($$2x != null) {
+                  $$2x.a($$2);
+               }
+            }, () -> a.warn("Ignoring unknown attribute '{}'", $$4));
+         } else {
+            a.warn("Ignoring malformed attribute '{}'", $$3);
+         }
+      }
    }
 }

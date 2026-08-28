@@ -1,16 +1,52 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class fah {
-   private static final Codec<fag> d = mb.I.q().dispatch(fag::a, faf::a);
-   public static final Codec<fag> a = Codec.lazyInitialized(
-      () -> Codec.either(fad.b, d).xmap(Either::unwrap, $$0 -> $$0 instanceof fad $$1 ? Either.left($$1) : Either.right($$0))
+public record fah(Optional<Boolean> b, Optional<Boolean> c) implements ezx {
+   public static final MapCodec<fah> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("raining").forGetter(fah::d), Codec.BOOL.optionalFieldOf("thundering").forGetter(fah::e))
+            .apply($$0, fah::new)
    );
-   public static final faf b = a("fixed", fae.a);
-   public static final faf c = a("context", fad.a);
 
-   private static faf a(String $$0, MapCodec<? extends fag> $$1) {
-      return ke.a(mb.I, akv.b($$0), new faf($$1));
+   @Override
+   public ezy b() {
+      return ezz.o;
+   }
+
+   public boolean a(ewo $$0) {
+      ard $$1 = $$0.d();
+      return this.b.isPresent() && this.b.get() != $$1.ah() ? false : !this.c.isPresent() || this.c.get() == $$1.ag();
+   }
+
+   public static fah.a c() {
+      return new fah.a();
+   }
+
+   public Optional<Boolean> d() {
+      return this.b;
+   }
+
+   public Optional<Boolean> e() {
+      return this.c;
+   }
+
+   public static class a implements ezx.a {
+      private Optional<Boolean> a = Optional.empty();
+      private Optional<Boolean> b = Optional.empty();
+
+      public fah.a a(boolean $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public fah.a b(boolean $$0) {
+         this.b = Optional.of($$0);
+         return this;
+      }
+
+      public fah a() {
+         return new fah(this.a, this.b);
+      }
    }
 }

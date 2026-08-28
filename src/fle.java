@@ -1,74 +1,56 @@
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public record fle(int a, @Nullable fle.a b, @Nullable wp c, @Nullable String d) {
-   private static final wp e = wp.c("chat.tag.system");
-   private static final wp f = wp.c("chat.tag.system_single_player");
-   private static final wp g = wp.c("chat.tag.not_secure");
-   private static final wp h = wp.c("chat.tag.modified");
-   private static final wp i = wp.c("chat.tag.error");
-   private static final int j = 13684944;
-   private static final int k = 6316128;
-   private static final fle l = new fle(13684944, null, e, "System");
-   private static final fle m = new fle(13684944, null, f, "System");
-   private static final fle n = new fle(13684944, null, g, "Not Secure");
-   private static final fle o = new fle(16733525, null, i, "Chat Error");
+public abstract class fle implements Runnable {
+   protected static final int a = 25;
+   private static final Logger b = LogUtils.getLogger();
+   private boolean c = false;
 
-   public static fle a() {
-      return l;
+   protected static void a(long $$0) {
+      try {
+         Thread.sleep($$0 * 1000L);
+      } catch (InterruptedException var3) {
+         Thread.currentThread().interrupt();
+         b.error("", var3);
+      }
    }
 
-   public static fle b() {
-      return m;
+   public static void a(fvi $$0) {
+      fmg $$1 = fmg.Q();
+      $$1.execute(() -> $$1.a($$0));
    }
 
-   public static fle c() {
-      return n;
+   protected void a(wp $$0) {
+      this.b();
+      fmg $$1 = fmg.Q();
+      $$1.execute(() -> $$1.a(new fjv($$0, new fhc(new fvk()))));
    }
 
-   public static fle a(String $$0) {
-      wp $$1 = wp.b($$0).a(n.h);
-      wp $$2 = wp.i().b(h).b(wo.s).b($$1);
-      return new fle(6316128, fle.a.a, $$2, "Modified");
+   protected void a(Exception $$0) {
+      if ($$0 instanceof fjd $$1) {
+         this.a($$1.a.b());
+      } else {
+         this.a(wp.b($$0.getMessage()));
+      }
    }
 
-   public static fle d() {
-      return o;
+   protected void a(fjd $$0) {
+      this.a($$0.a.b());
    }
 
-   public int e() {
-      return this.a;
-   }
+   public abstract wp a();
 
-   @Nullable
-   public fle.a f() {
-      return this.b;
-   }
-
-   @Nullable
-   public wp g() {
+   public boolean d() {
       return this.c;
    }
 
-   @Nullable
-   public String h() {
-      return this.d;
+   public void c() {
    }
 
-   public static enum a {
-      a(akv.b("icon/chat_modified"), 9, 9);
+   public void e() {
+   }
 
-      public final akv b;
-      public final int c;
-      public final int d;
-
-      private a(final akv $$0, final int $$1, final int $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      public void a(fof $$0, int $$1, int $$2) {
-         $$0.a(gmj::H, this.b, $$1, $$2, this.c, this.d);
-      }
+   public void b() {
+      this.c = true;
    }
 }

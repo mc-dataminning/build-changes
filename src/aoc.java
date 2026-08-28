@@ -1,47 +1,52 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.ContextChain;
+import java.util.List;
 
 public class aoc {
-   private static final Logger a = LogUtils.getLogger();
-
-   public static void a(Collection<String> $$0, ex $$1) {
-      $$1.l().a($$0).exceptionally($$1x -> {
-         a.warn("Failed to execute reload", $$1x);
-         $$1.b(wp.c("commands.reload.failure"));
-         return null;
-      });
+   public static <T extends ez<T>> void a(CommandDispatcher<T> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)LiteralArgumentBuilder.literal("return")
+                     .requires($$0x -> $$0x.c(2)))
+                  .then(RequiredArgumentBuilder.argument("value", IntegerArgumentType.integer()).executes(new aoc.c())))
+               .then(LiteralArgumentBuilder.literal("fail").executes(new aoc.a())))
+            .then(LiteralArgumentBuilder.literal("run").forward($$0.getRoot(), new aoc.b(), false))
+      );
    }
 
-   private static Collection<String> a(aua $$0, evm $$1, Collection<String> $$2) {
-      $$0.a();
-      Collection<String> $$3 = Lists.newArrayList($$2);
-      Collection<String> $$4 = $$1.D().a().b();
+   static class a<T extends ez<T>> implements hu.a<T> {
+      public void a(T $$0, ContextChain<T> $$1, hs $$2, hy<T> $$3) {
+         $$0.p().onFailure();
+         hz $$4 = $$3.b();
+         $$4.a();
+         $$4.b();
+      }
+   }
 
-      for (String $$5 : $$0.c()) {
-         if (!$$4.contains($$5) && !$$3.contains($$5)) {
-            $$3.add($$5);
+   static class b<T extends ez<T>> implements hv.a<T> {
+      public void a(T $$0, List<T> $$1, ContextChain<T> $$2, hs $$3, hy<T> $$4) {
+         if ($$1.isEmpty()) {
+            if ($$3.c()) {
+               $$4.a(ii.a());
+            }
+         } else {
+            $$4.b().b();
+            ContextChain<T> $$5 = $$2.nextStage();
+            String $$6 = $$5.getTopContext().getInput();
+            $$4.a(new id.a<>($$6, $$5, $$3.d(), $$0, $$1));
          }
       }
-
-      return $$3;
    }
 
-   public static void a(CommandDispatcher<ex> $$0) {
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("reload").requires($$0x -> $$0x.c(2))).executes($$0x -> {
-         ex $$1 = (ex)$$0x.getSource();
-         MinecraftServer $$2 = $$1.l();
-         aua $$3 = $$2.aF();
-         evm $$4 = $$2.aZ();
-         Collection<String> $$5 = $$3.e();
-         Collection<String> $$6 = a($$3, $$4, $$5);
-         $$1.a(() -> wp.c("commands.reload.success"), true);
-         a($$6, $$1);
-         return 0;
-      }));
+   static class c<T extends ez<T>> implements hu.a<T> {
+      public void a(T $$0, ContextChain<T> $$1, hs $$2, hy<T> $$3) {
+         int $$4 = IntegerArgumentType.getInteger($$1.getTopContext(), "value");
+         $$0.p().onSuccess($$4);
+         hz $$5 = $$3.b();
+         $$5.a($$4);
+         $$5.b();
+      }
    }
 }

@@ -1,3 +1,8 @@
-public interface feu {
-   fet createMonitor(long var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@fdz
+@fdy
+interface feu {
 }

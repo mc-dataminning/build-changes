@@ -1,46 +1,72 @@
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class hfe {
-   private final akv a;
-   private final aun b;
-   private final AtomicReference<fev> c = new AtomicReference<>();
-   private final AtomicInteger d;
+public class hfe extends hfc implements hfd {
+   private static final Logger d = LogUtils.getLogger();
+   @Nullable
+   private ffr e;
 
-   public hfe(akv $$0, aun $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.d = new AtomicInteger($$2);
+   public hfe(ffr $$0) {
+      this.e = $$0;
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> {
+            TextureUtil.prepareImage(this.a(), this.e.a(), this.e.b());
+            this.d();
+         });
+      } else {
+         TextureUtil.prepareImage(this.a(), this.e.a(), this.e.b());
+         this.d();
+      }
    }
 
-   public fev a() throws IOException {
-      fev $$0 = this.c.get();
-      if ($$0 == null) {
-         synchronized (this) {
-            $$0 = this.c.get();
-            if ($$0 == null) {
-               try (InputStream $$1 = this.b.d()) {
-                  $$0 = fev.a($$1);
-                  this.c.set($$0);
-               } catch (IOException var9) {
-                  throw new IOException("Failed to load image " + this.a, var9);
-               }
-            }
-         }
+   public hfe(int $$0, int $$1, boolean $$2) {
+      this.e = new ffr($$0, $$1, $$2);
+      TextureUtil.prepareImage(this.a(), this.e.a(), this.e.b());
+   }
+
+   @Override
+   public void d() {
+      if (this.e != null) {
+         this.c();
+         this.e.a(0, 0, 0, false);
+      } else {
+         d.warn("Trying to upload disposed texture {}", this.a());
+      }
+   }
+
+   @Nullable
+   public ffr e() {
+      return this.e;
+   }
+
+   public void a(ffr $$0) {
+      if (this.e != null) {
+         this.e.close();
       }
 
-      return $$0;
+      this.e = $$0;
    }
 
-   public void b() {
-      int $$0 = this.d.decrementAndGet();
-      if ($$0 <= 0) {
-         fev $$1 = this.c.getAndSet(null);
-         if ($$1 != null) {
-            $$1.close();
-         }
+   @Override
+   public void close() {
+      if (this.e != null) {
+         this.e.close();
+         this.b();
+         this.e = null;
+      }
+   }
+
+   @Override
+   public void a(aku $$0, Path $$1) throws IOException {
+      if (this.e != null) {
+         String $$2 = $$0.c() + ".png";
+         Path $$3 = $$1.resolve($$2);
+         this.e.a($$3);
       }
    }
 }

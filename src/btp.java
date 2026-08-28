@@ -1,157 +1,125 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class btp implements crr {
-   public static final Codec<jr<btp>> a = mb.d.r();
-   public static final yn<wa, jr<btp>> b = yl.b(mc.W);
-   private static final int c = ayz.d(38.25F);
-   private final Map<jr<bwl>, btp.a> d = new Object2ObjectOpenHashMap();
-   private final btq e;
-   private final int f;
-   private final Function<btr, lr> g;
+public class btp {
+   private final jr<btr> a;
    @Nullable
-   private String h;
-   private int i;
-   private Optional<avz> j = Optional.empty();
-   private cru k = crw.g;
+   private final bva b;
+   @Nullable
+   private final bva c;
+   @Nullable
+   private final fbx d;
 
-   protected btp(btq $$0, int $$1) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$1x -> {
-         int $$2 = $$1x.f() ? c : 255;
-         return lm.a(lt.u, axk.c($$2, $$1));
+   @Override
+   public String toString() {
+      return "DamageSource (" + this.k().a() + ")";
+   }
+
+   public float a() {
+      return this.k().c();
+   }
+
+   public boolean b() {
+      return this.b == this.c;
+   }
+
+   private btp(jr<btr> $$0, @Nullable bva $$1, @Nullable bva $$2, @Nullable fbx $$3) {
+      this.a = $$0;
+      this.b = $$2;
+      this.c = $$1;
+      this.d = $$3;
+   }
+
+   public btp(jr<btr> $$0, @Nullable bva $$1, @Nullable bva $$2) {
+      this($$0, $$1, $$2, null);
+   }
+
+   public btp(jr<btr> $$0, fbx $$1) {
+      this($$0, null, null, $$1);
+   }
+
+   public btp(jr<btr> $$0, @Nullable bva $$1) {
+      this($$0, $$1, $$1);
+   }
+
+   public btp(jr<btr> $$0) {
+      this($$0, null, null, null);
+   }
+
+   @Nullable
+   public bva c() {
+      return this.c;
+   }
+
+   @Nullable
+   public bva d() {
+      return this.b;
+   }
+
+   @Nullable
+   public cxh e() {
+      return this.c != null ? this.c.dY() : null;
+   }
+
+   public wp a(bvy $$0) {
+      String $$1 = "death.attack." + this.k().a();
+      if (this.b == null && this.c == null) {
+         bvy $$5 = $$0.eR();
+         String $$6 = $$1 + ".player";
+         return $$5 != null ? wp.a($$6, $$0.m_(), $$5.m_()) : wp.a($$1, $$0.m_());
+      } else {
+         wp $$2 = this.b == null ? this.c.m_() : this.b.m_();
+         cxh $$4 = this.b instanceof bvy $$3 ? $$3.eZ() : cxh.k;
+         return !$$4.f() && $$4.b(kv.g) ? wp.a($$1 + ".item", $$0.m_(), $$2, $$4.K()) : wp.a($$1, $$0.m_(), $$2);
+      }
+   }
+
+   public String f() {
+      return this.k().a();
+   }
+
+   public boolean g() {
+      return switch (this.k().b()) {
+         case a -> false;
+         case b -> this.b instanceof bvy && !(this.b instanceof cpr);
+         case c -> true;
       };
    }
 
-   protected btp(btq $$0, int $$1, lr $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$1x -> $$2;
-   }
-
-   public int b() {
-      return this.i;
-   }
-
-   public boolean a(ard $$0, bvi $$1, int $$2) {
-      return true;
-   }
-
-   public void a(ard $$0, @Nullable bum $$1, @Nullable bum $$2, bvi $$3, int $$4, double $$5) {
-      this.a($$0, $$3, $$4);
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return false;
-   }
-
-   public void a(bvi $$0, int $$1) {
-   }
-
-   public void b(bvi $$0, int $$1) {
-      this.j.ifPresent($$1x -> $$0.dV().a(null, $$0.dA(), $$0.dC(), $$0.dG(), $$1x, $$0.dm(), 1.0F, 1.0F));
-   }
-
-   public void a(ard $$0, bvi $$1, int $$2, bum.d $$3) {
-   }
-
-   public void a(ard $$0, bvi $$1, int $$2, btc $$3, float $$4) {
-   }
-
-   public boolean a() {
-      return false;
-   }
-
-   protected String c() {
-      if (this.h == null) {
-         this.h = af.a("effect", mb.d.b(this));
-      }
-
-      return this.h;
-   }
-
-   public String d() {
-      return this.c();
-   }
-
-   public wp e() {
-      return wp.c(this.d());
-   }
-
-   public btq f() {
-      return this.e;
-   }
-
-   public int g() {
-      return this.f;
-   }
-
-   public btp a(jr<bwl> $$0, akv $$1, double $$2, bwo.a $$3) {
-      this.d.put($$0, new btp.a($$1, $$2, $$3));
-      return this;
-   }
-
-   public btp a(int $$0) {
-      this.i = $$0;
-      return this;
-   }
-
-   public void a(int $$0, BiConsumer<jr<bwl>, bwo> $$1) {
-      this.d.forEach(($$2, $$3) -> $$1.accept((jr<bwl>)$$2, $$3.a($$0)));
-   }
-
-   public void a(bwn $$0) {
-      for (Entry<jr<bwl>, btp.a> $$1 : this.d.entrySet()) {
-         bwm $$2 = $$0.a($$1.getKey());
-         if ($$2 != null) {
-            $$2.c($$1.getValue().a());
-         }
-      }
-   }
-
-   public void a(bwn $$0, int $$1) {
-      for (Entry<jr<bwl>, btp.a> $$2 : this.d.entrySet()) {
-         bwm $$3 = $$0.a($$2.getKey());
-         if ($$3 != null) {
-            $$3.c($$2.getValue().a());
-            $$3.d($$2.getValue().a($$1));
-         }
-      }
-   }
-
    public boolean h() {
-      return this.e == btq.a;
-   }
-
-   public lr a(btr $$0) {
-      return this.g.apply($$0);
-   }
-
-   public btp a(avz $$0) {
-      this.j = Optional.of($$0);
-      return this;
-   }
-
-   public btp a(crs... $$0) {
-      this.k = crw.e.a($$0);
-      return this;
-   }
-
-   @Override
-   public cru i() {
-      return this.k;
-   }
-
-   static record a(akv a, double b, bwo.a c) {
-      public bwo a(int $$0) {
-         return new bwo(this.a, this.b * (double)($$0 + 1), this.c);
+      if (this.d() instanceof cpr $$0 && $$0.gm().d) {
+         return true;
       }
+
+      return false;
+   }
+
+   @Nullable
+   public fbx i() {
+      if (this.d != null) {
+         return this.d;
+      } else {
+         return this.c != null ? this.c.ds() : null;
+      }
+   }
+
+   @Nullable
+   public fbx j() {
+      return this.d;
+   }
+
+   public boolean a(axf<btr> $$0) {
+      return this.a.a($$0);
+   }
+
+   public boolean a(akt<btr> $$0) {
+      return this.a.a($$0);
+   }
+
+   public btr k() {
+      return this.a.a();
+   }
+
+   public jr<btr> l() {
+      return this.a;
    }
 }

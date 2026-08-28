@@ -1,141 +1,138 @@
-import com.google.common.base.Charsets;
 import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.StringReader;
+import java.io.OutputStream;
+import java.net.InetAddress;
+import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.channels.ClosedByInterruptException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Locale;
-import java.util.NoSuchElementException;
-import java.util.Optional;
-import java.util.Scanner;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 
 public class ama {
    private static final Logger a = LogUtils.getLogger();
-   private static final int b = 5;
-   private final String c;
-   private final int d;
-   private final MinecraftServer e;
+   private final String b;
+   private final int c;
+   private final avd d;
+   private final int e;
    private volatile boolean f;
    @Nullable
-   private Socket g;
-   @Nullable
-   private Thread h;
+   private ServerSocket g;
+   private final CopyOnWriteArrayList<Socket> h = new CopyOnWriteArrayList<>();
 
-   public ama(String $$0, int $$1, MinecraftServer $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public ama(String $$0, int $$1, avd $$2, int $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   public void a() {
-      if (this.h != null && this.h.isAlive()) {
-         a.warn("Remote control client was asked to start, but it is already running. Will ignore.");
+   public void a() throws IOException {
+      if (this.g != null && !this.g.isClosed()) {
+         a.warn("Remote control server was asked to start, but it is already running. Will ignore.");
+      } else {
+         this.f = true;
+         this.g = new ServerSocket(this.c, 50, InetAddress.getByName(this.b));
+         Thread $$0 = new Thread(this::d, "chase-server-acceptor");
+         $$0.setDaemon(true);
+         $$0.start();
+         Thread $$1 = new Thread(this::c, "chase-server-sender");
+         $$1.setDaemon(true);
+         $$1.start();
       }
+   }
 
-      this.f = true;
-      this.h = new Thread(this::c, "chase-client");
-      this.h.setDaemon(true);
-      this.h.start();
+   private void c() {
+      ama.a $$0 = null;
+
+      while (this.f) {
+         if (!this.h.isEmpty()) {
+            ama.a $$1 = this.e();
+            if ($$1 != null && !$$1.equals($$0)) {
+               $$0 = $$1;
+               byte[] $$2 = $$1.g().getBytes(StandardCharsets.US_ASCII);
+
+               for (Socket $$3 : this.h) {
+                  if (!$$3.isClosed()) {
+                     af.i().execute(() -> {
+                        try {
+                           OutputStream $$2x = $$3.getOutputStream();
+                           $$2x.write($$2);
+                           $$2x.flush();
+                        } catch (IOException var3x) {
+                           a.info("Remote control client socket got an IO exception and will be closed", var3x);
+                           IOUtils.closeQuietly($$3);
+                        }
+                     });
+                  }
+               }
+            }
+
+            List<Socket> $$4 = this.h.stream().filter(Socket::isClosed).collect(Collectors.toList());
+            this.h.removeAll($$4);
+         }
+
+         if (this.f) {
+            try {
+               Thread.sleep((long)this.e);
+            } catch (InterruptedException var6) {
+            }
+         }
+      }
    }
 
    public void b() {
       this.f = false;
       IOUtils.closeQuietly(this.g);
       this.g = null;
-      this.h = null;
    }
 
-   public void c() {
-      String $$0 = this.c + ":" + this.d;
-
-      while (this.f) {
-         try {
-            a.info("Connecting to remote control server {}", $$0);
-            this.g = new Socket(this.c, this.d);
-            a.info("Connected to remote control server! Will continuously execute the command broadcasted by that server.");
-
-            try (BufferedReader $$1 = new BufferedReader(new InputStreamReader(this.g.getInputStream(), Charsets.US_ASCII))) {
-               while (this.f) {
-                  String $$2 = $$1.readLine();
-                  if ($$2 == null) {
-                     a.warn("Lost connection to remote control server {}. Will retry in {}s.", $$0, 5);
-                     break;
-                  }
-
-                  this.a($$2);
-               }
-            } catch (IOException var8) {
-               a.warn("Lost connection to remote control server {}. Will retry in {}s.", $$0, 5);
+   private void d() {
+      try {
+         while (this.f) {
+            if (this.g != null) {
+               a.info("Remote control server is listening for connections on port {}", this.c);
+               Socket $$0 = this.g.accept();
+               a.info("Remote control server received client connection on port {}", $$0.getPort());
+               this.h.add($$0);
             }
-         } catch (IOException var9) {
-            a.warn("Failed to connect to remote control server {}. Will retry in {}s.", $$0, 5);
          }
-
+      } catch (ClosedByInterruptException var6) {
          if (this.f) {
-            try {
-               Thread.sleep(5000L);
-            } catch (InterruptedException var5) {
-            }
+            a.info("Remote control server closed by interrupt");
          }
-      }
-   }
-
-   private void a(String $$0) {
-      try (Scanner $$1 = new Scanner(new StringReader($$0))) {
-         $$1.useLocale(Locale.ROOT);
-         String $$2 = $$1.next();
-         if ("t".equals($$2)) {
-            this.a($$1);
-         } else {
-            a.warn("Unknown message type '{}'", $$2);
+      } catch (IOException var7) {
+         if (this.f) {
+            a.error("Remote control server closed because of an IO exception", var7);
          }
-      } catch (NoSuchElementException var7) {
-         a.warn("Could not parse message '{}', ignoring", $$0);
+      } finally {
+         IOUtils.closeQuietly(this.g);
       }
+
+      a.info("Remote control server is now stopped");
+      this.f = false;
    }
 
-   private void a(Scanner $$0) {
-      this.b($$0)
-         .ifPresent(
-            $$0x -> this.b(
-                  String.format(Locale.ROOT, "execute in %s run tp @s %.3f %.3f %.3f %.3f %.3f", $$0x.a.a(), $$0x.b.d, $$0x.b.e, $$0x.b.f, $$0x.c.j, $$0x.c.i)
-               )
-         );
-   }
-
-   private Optional<ama.a> b(Scanner $$0) {
-      aku<dgj> $$1 = (aku<dgj>)amj.a.get($$0.next());
-      if ($$1 == null) {
-         return Optional.empty();
+   @Nullable
+   private ama.a e() {
+      List<are> $$0 = this.d.t();
+      if ($$0.isEmpty()) {
+         return null;
       } else {
-         float $$2 = $$0.nextFloat();
-         float $$3 = $$0.nextFloat();
-         float $$4 = $$0.nextFloat();
-         float $$5 = $$0.nextFloat();
-         float $$6 = $$0.nextFloat();
-         return Optional.of(new ama.a($$1, new fbb((double)$$2, (double)$$3, (double)$$4), new fba($$6, $$5)));
+         are $$1 = $$0.get(0);
+         String $$2 = (String)ami.a.inverse().get($$1.dU().aj());
+         return $$2 == null ? null : new ama.a($$2, $$1.dz(), $$1.dB(), $$1.dF(), $$1.dK(), $$1.dM());
       }
    }
 
-   private void b(String $$0) {
-      this.e.execute(() -> {
-         List<are> $$1 = this.e.ag().t();
-         if (!$$1.isEmpty()) {
-            are $$2 = $$1.get(0);
-            ard $$3 = this.e.J();
-            ex $$4 = new ex($$2.z(), fbb.a($$3.Z()), fba.a, $$3, 4, "", wo.a, this.e, $$2);
-            ey $$5 = this.e.aG();
-            $$5.a($$4, $$0);
-         }
-      });
-   }
-
-   static record a(aku<dgj> a, fbb b, fba c) {
+   static record a(String a, double b, double c, double d, float e, float f) {
+      String g() {
+         return String.format(Locale.ROOT, "t %s %.2f %.2f %.2f %.2f %.2f\n", this.a, this.b, this.c, this.d, this.e, this.f);
+      }
    }
 }

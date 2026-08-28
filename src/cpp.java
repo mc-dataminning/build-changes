@@ -1,48 +1,63 @@
-public class cpp extends cpl {
-   private int d = 1;
-
-   public cpp(but<? extends cpp> $$0, dgj $$1) {
-      super($$0, $$1);
-   }
-
-   public cpp(dgj $$0, bvi $$1, fbb $$2, int $$3) {
-      super(but.Y, $$1, $$2, $$0);
-      this.d = $$3;
-   }
-
-   @Override
-   protected void a(faz $$0) {
-      super.a($$0);
-      if (this.dV() instanceof ard $$1) {
-         boolean $$2 = $$1.O().b(dgf.c);
-         this.dV().a(this, this.dA(), this.dC(), this.dG(), (float)this.d, $$2, dgj.a.c);
-         this.at();
+public record cpp(boolean c, boolean d, boolean e, boolean f, boolean g, boolean h, boolean i) {
+   private static final byte j = 1;
+   private static final byte k = 2;
+   private static final byte l = 4;
+   private static final byte m = 8;
+   private static final byte n = 16;
+   private static final byte o = 32;
+   private static final byte p = 64;
+   public static final yn<vl, cpp> a = new yn<vl, cpp>() {
+      public void a(vl $$0, cpp $$1) {
+         byte $$2 = 0;
+         $$2 = (byte)($$2 | ($$1.a() ? 1 : 0));
+         $$2 = (byte)($$2 | ($$1.b() ? 2 : 0));
+         $$2 = (byte)($$2 | ($$1.c() ? 4 : 0));
+         $$2 = (byte)($$2 | ($$1.d() ? 8 : 0));
+         $$2 = (byte)($$2 | ($$1.e() ? 16 : 0));
+         $$2 = (byte)($$2 | ($$1.f() ? 32 : 0));
+         $$2 = (byte)($$2 | ($$1.g() ? 64 : 0));
+         $$0.l($$2);
       }
-   }
 
-   @Override
-   protected void a(fay $$0) {
-      super.a($$0);
-      if (this.dV() instanceof ard $$1) {
-         bum var6 = $$0.a();
-         bum $$4 = this.p();
-         btc $$5 = this.dW().a((cpl)this, $$4);
-         var6.a($$1, $$5, 6.0F);
-         ddc.a($$1, var6, $$5);
+      public cpp a(vl $$0) {
+         byte $$1 = $$0.readByte();
+         boolean $$2 = ($$1 & 1) != 0;
+         boolean $$3 = ($$1 & 2) != 0;
+         boolean $$4 = ($$1 & 4) != 0;
+         boolean $$5 = ($$1 & 8) != 0;
+         boolean $$6 = ($$1 & 16) != 0;
+         boolean $$7 = ($$1 & 32) != 0;
+         boolean $$8 = ($$1 & 64) != 0;
+         return new cpp($$2, $$3, $$4, $$5, $$6, $$7, $$8);
       }
+   };
+   public static cpp b = new cpp(false, false, false, false, false, false, false);
+
+   public boolean a() {
+      return this.c;
    }
 
-   @Override
-   public void b(tq $$0) {
-      super.b($$0);
-      $$0.a("ExplosionPower", (byte)this.d);
+   public boolean b() {
+      return this.d;
    }
 
-   @Override
-   public void a(tq $$0) {
-      super.a($$0);
-      if ($$0.b("ExplosionPower", 99)) {
-         this.d = $$0.f("ExplosionPower");
-      }
+   public boolean c() {
+      return this.e;
+   }
+
+   public boolean d() {
+      return this.f;
+   }
+
+   public boolean e() {
+      return this.g;
+   }
+
+   public boolean f() {
+      return this.h;
+   }
+
+   public boolean g() {
+      return this.i;
    }
 }

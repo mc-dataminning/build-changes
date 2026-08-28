@@ -1,44 +1,13 @@
-import com.mojang.authlib.yggdrasil.ProfileResult;
 import java.util.List;
 
-public class fwt implements fww {
-   private static final int a = 10;
-   private static final int b = 2;
-   private final List<ProfileResult> c;
+public class fwt extends fvy<ctu> {
+   private static final aku G = aku.b("container/furnace/lit_progress");
+   private static final aku H = aku.b("container/furnace/burn_progress");
+   private static final aku I = aku.b("textures/gui/container/furnace.png");
+   private static final wp J = wp.c("gui.recipebook.toggleRecipes.smeltable");
+   private static final List<fzf.a> K = List.of(new fzf.a(fzl.b), new fzf.a(cxl.qE, dbx.e), new fzf.a(cxl.b, dbx.f), new fzf.a(cxl.rj, cxl.ph, dbx.g));
 
-   public fwt(fwt.a $$0) {
-      this.c = $$0.a();
-   }
-
-   @Override
-   public int a(fod $$0) {
-      return this.c.size() * 12 + 2;
-   }
-
-   @Override
-   public int b(fod $$0) {
-      int $$1 = 0;
-
-      for (ProfileResult $$2 : this.c) {
-         int $$3 = $$0.b($$2.profile().getName());
-         if ($$3 > $$1) {
-            $$1 = $$3;
-         }
-      }
-
-      return $$1 + 10 + 6;
-   }
-
-   @Override
-   public void a(fod $$0, int $$1, int $$2, int $$3, int $$4, fof $$5) {
-      for (int $$6 = 0; $$6 < this.c.size(); $$6++) {
-         ProfileResult $$7 = this.c.get($$6);
-         int $$8 = $$2 + 2 + $$6 * 12;
-         fpt.a($$5, flk.Q().an().b($$7.profile()), $$1 + 2, $$8, 10);
-         $$5.b($$0, $$7.profile().getName(), $$1 + 10 + 4, $$8 + 2, -1);
-      }
-   }
-
-   public static record a(List<ProfileResult> a) implements cuk {
+   public fwt(ctu $$0, cpq $$1, wp $$2) {
+      super($$0, $$1, $$2, J, I, G, H, K);
    }
 }

@@ -1,45 +1,52 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
-public class aeu implements yw<abl> {
-   public static final yn<vl, aeu> a = yw.a(aeu::a, aeu::new);
-   private final fbx b;
-   private final String c;
+public record aeu(int c, List<akb.c<?>> d) implements yw<abl> {
+   public static final yn<wa, aeu> a = yw.a(aeu::b, aeu::new);
+   public static final int b = 255;
 
-   public aeu(fbx $$0, @Nullable fby $$1) {
-      this.b = $$0;
-      if ($$1 == null) {
-         this.c = "";
-      } else {
-         this.c = $$1.b();
+   private aeu(wa $$0) {
+      this($$0.l(), a($$0));
+   }
+
+   private static void a(List<akb.c<?>> $$0, wa $$1) {
+      for (akb.c<?> $$2 : $$0) {
+         $$2.a($$1);
       }
+
+      $$1.l(255);
    }
 
-   private aeu(vl $$0) {
-      this.b = $$0.a(fbx.u);
-      this.c = $$0.p();
+   private static List<akb.c<?>> a(wa $$0) {
+      List<akb.c<?>> $$1 = new ArrayList<>();
+
+      int $$2;
+      while (($$2 = $$0.readUnsignedByte()) != 255) {
+         $$1.add(akb.c.a($$0, $$2));
+      }
+
+      return $$1;
    }
 
-   private void a(vl $$0) {
-      $$0.a(fbx::a, this.b);
-      $$0.a(this.c);
+   private void b(wa $$0) {
+      $$0.c(this.c);
+      a(this.d, $$0);
    }
 
    @Override
    public yy<aeu> a() {
-      return age.aE;
+      return agd.aE;
    }
 
    public void a(abl $$0) {
       $$0.a(this);
    }
 
-   public fbx b() {
-      return this.b;
+   public int b() {
+      return this.c;
    }
 
-   @Nullable
-   public String e() {
-      return Objects.equals(this.c, "") ? null : this.c;
+   public List<akb.c<?>> e() {
+      return this.d;
    }
 }

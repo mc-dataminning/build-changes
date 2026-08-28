@@ -1,48 +1,24 @@
 import com.mojang.serialization.MapCodec;
 
-public class dqe extends djn {
-   public static final MapCodec<dqe> h = b(dqe::new);
-   public static final dxv<jn.a> i = dxo.L;
+public class dqe extends dke {
+   public static final MapCodec<dqe> a = b(dqe::new);
 
    @Override
-   public MapCodec<? extends dqe> a() {
-      return h;
+   public MapCodec<dqe> a() {
+      return a;
    }
 
-   public dqe(dwx.d $$0) {
+   public dqe(dxp.d $$0) {
       super($$0);
-      this.l(this.m().b(i, jn.a.b));
    }
 
    @Override
-   protected dwy a(dwy $$0, dqf $$1) {
-      return b($$0, $$1);
-   }
-
-   public static dwy b(dwy $$0, dqf $$1) {
-      switch ($$1) {
-         case d:
-         case b:
-            switch ((jn.a)$$0.c(i)) {
-               case a:
-                  return $$0.b(i, jn.a.c);
-               case c:
-                  return $$0.b(i, jn.a.a);
-               default:
-                  return $$0;
-            }
-         default:
-            return $$0;
-      }
+   protected boolean f_(dxq $$0) {
+      return true;
    }
 
    @Override
-   protected void a(dwz.a<djn, dwy> $$0) {
-      $$0.a(i);
-   }
-
-   @Override
-   public dwy a(dah $$0) {
-      return this.m().b(i, $$0.k().o());
+   protected int a(dxq $$0, dgf $$1, ji $$2, jn $$3) {
+      return 15;
    }
 }

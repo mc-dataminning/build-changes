@@ -1,52 +1,165 @@
-import java.util.Collection;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dqi {
-   dqi u_ = new dqi() {
-      @Override
-      public boolean a(dgk $$0, ji $$1, dwy $$2, @Nullable Collection<jn> $$3, boolean $$4) {
-         if ($$3 == null) {
-            return ((dqo)djp.rv).q().a($$0.a_($$1), $$0, $$1, $$4) > 0L;
-         } else if (!$$3.isEmpty()) {
-            return !$$2.l() && !$$2.y().b(etb.c) ? false : dqo.a($$0, $$1, $$2, $$3);
-         } else {
-            return dqi.super.a($$0, $$1, $$2, $$3, $$4);
+public class dqi extends djt {
+   public static final MapCodec<dqi> b = b(dqi::new);
+   public static final dyo<dyu> c = dyg.aj;
+
+   @Override
+   public MapCodec<dqi> a() {
+      return b;
+   }
+
+   protected dqi(dxp.d $$0) {
+      super(false, $$0);
+      this.l(this.B.b().b(c, dyu.a).b(a, Boolean.valueOf(false)));
+   }
+
+   @Override
+   protected void a(dxq $$0, dgz $$1, ji $$2, dke $$3) {
+      if ($$3.m().p() && new dqj($$1, $$2, $$0).b() == 3) {
+         this.a($$1, $$2, $$0, false);
+      }
+   }
+
+   @Override
+   public dyt<dyu> c() {
+      return c;
+   }
+
+   @Override
+   protected dxq a(dxq $$0, dqw $$1) {
+      dyu $$2 = $$0.c(c);
+
+      return $$0.b(c, switch ($$1) {
+         case c -> {
+            switch ($$2) {
+               case a:
+                  yield dyu.a;
+               case b:
+                  yield dyu.b;
+               case c:
+                  yield dyu.d;
+               case d:
+                  yield dyu.c;
+               case e:
+                  yield dyu.f;
+               case f:
+                  yield dyu.e;
+               case g:
+                  yield dyu.i;
+               case h:
+                  yield dyu.j;
+               case i:
+                  yield dyu.g;
+               case j:
+                  yield dyu.h;
+               default:
+                  throw new MatchException(null, null);
+            }
          }
+         case d -> {
+            switch ($$2) {
+               case a:
+                  yield dyu.b;
+               case b:
+                  yield dyu.a;
+               case c:
+                  yield dyu.e;
+               case d:
+                  yield dyu.f;
+               case e:
+                  yield dyu.d;
+               case f:
+                  yield dyu.c;
+               case g:
+                  yield dyu.j;
+               case h:
+                  yield dyu.g;
+               case i:
+                  yield dyu.h;
+               case j:
+                  yield dyu.i;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         case b -> {
+            switch ($$2) {
+               case a:
+                  yield dyu.b;
+               case b:
+                  yield dyu.a;
+               case c:
+                  yield dyu.f;
+               case d:
+                  yield dyu.e;
+               case e:
+                  yield dyu.c;
+               case f:
+                  yield dyu.d;
+               case g:
+                  yield dyu.h;
+               case h:
+                  yield dyu.i;
+               case i:
+                  yield dyu.j;
+               case j:
+                  yield dyu.g;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         default -> $$2;
+      });
+   }
+
+   @Override
+   protected dxq a(dxq $$0, dpf $$1) {
+      dyu $$2 = $$0.c(c);
+      switch ($$1) {
+         case b:
+            switch ($$2) {
+               case e:
+                  return $$0.b(c, dyu.f);
+               case f:
+                  return $$0.b(c, dyu.e);
+               case g:
+                  return $$0.b(c, dyu.j);
+               case h:
+                  return $$0.b(c, dyu.i);
+               case i:
+                  return $$0.b(c, dyu.h);
+               case j:
+                  return $$0.b(c, dyu.g);
+               default:
+                  return super.a($$0, $$1);
+            }
+         case c:
+            switch ($$2) {
+               case c:
+                  return $$0.b(c, dyu.d);
+               case d:
+                  return $$0.b(c, dyu.c);
+               case e:
+               case f:
+               default:
+                  break;
+               case g:
+                  return $$0.b(c, dyu.h);
+               case h:
+                  return $$0.b(c, dyu.g);
+               case i:
+                  return $$0.b(c, dyu.j);
+               case j:
+                  return $$0.b(c, dyu.i);
+            }
       }
 
-      @Override
-      public int a(dqn.a $$0, dgk $$1, ji $$2, azh $$3, dqn $$4, boolean $$5) {
-         return $$0.c() > 0 ? $$0.b() : 0;
-      }
-
-      @Override
-      public int j_(int $$0) {
-         return Math.max($$0 - 1, 0);
-      }
-   };
-
-   default byte b() {
-      return 1;
+      return super.a($$0, $$1);
    }
 
-   default void a(dgk $$0, dwy $$1, ji $$2, azh $$3) {
+   @Override
+   protected void a(dxr.a<dke, dxq> $$0) {
+      $$0.a(c, a);
    }
-
-   default boolean a(dgk $$0, ji $$1, azh $$2) {
-      return false;
-   }
-
-   default boolean a(dgk $$0, ji $$1, dwy $$2, @Nullable Collection<jn> $$3, boolean $$4) {
-      return ((doq)djp.rv).c().a($$2, $$0, $$1, $$4) > 0L;
-   }
-
-   default boolean d() {
-      return true;
-   }
-
-   default int j_(int $$0) {
-      return 1;
-   }
-
-   int a(dqn.a var1, dgk var2, ji var3, azh var4, dqn var5, boolean var6);
 }

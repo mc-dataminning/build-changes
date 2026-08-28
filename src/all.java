@@ -1,9 +1,17 @@
-public interface all {
-   String ae();
+public interface all extends alk {
+   apu a();
 
-   String M();
+   String b();
 
-   int N();
+   int d();
 
-   int O();
+   String h();
+
+   String[] P();
+
+   String j();
+
+   String s();
+
+   String a(String var1);
 }

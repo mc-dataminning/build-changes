@@ -1,94 +1,91 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
 
-public class dmb extends diz implements dpk {
-   public static final MapCodec<dmb> a = b(dmb::new);
+public abstract class dmb extends dke implements drl {
+   public static final dyh a = dpw.b;
+   public static final dyh b = dpw.c;
+   public static final dyh c = dpw.d;
+   public static final dyh d = dpw.e;
+   public static final dyh e = dyg.I;
+   public static final Map<jn, dyh> f = dpw.h.entrySet().stream().filter($$0 -> $$0.getKey().o().d()).collect(af.a());
+   private final Function<dxq, fcr> g;
+   private final Function<dxq, fcr> h;
 
-   @Override
-   public MapCodec<dmb> a() {
-      return a;
-   }
-
-   protected dmb(dwx.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public dua a(ji $$0, dwy $$1) {
-      return new dvt($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dua> dub<T> a(dgj $$0, dwy $$1, duc<T> $$2) {
-      return a($$2, duc.w, $$0.C ? dvt::a : dvt::b);
+   protected dmb(float $$0, float $$1, float $$2, float $$3, float $$4, dxp.d $$5) {
+      super($$5);
+      this.g = this.a($$0, $$4, $$2, 0.0F, $$4);
+      this.h = this.a($$0, $$1, $$2, 0.0F, $$3);
    }
 
    @Override
-   public void a(dwy $$0, dgj $$1, ji $$2, azh $$3) {
-      dua $$4 = $$1.c_($$2);
-      if ($$4 instanceof dvt) {
-         int $$5 = ((dvt)$$4).f();
+   protected abstract MapCodec<? extends dmb> a();
 
-         for (int $$6 = 0; $$6 < $$5; $$6++) {
-            double $$7 = (double)$$2.u() + $$3.j();
-            double $$8 = (double)$$2.v() + $$3.j();
-            double $$9 = (double)$$2.w() + $$3.j();
-            double $$10 = ($$3.j() - 0.5) * 0.5;
-            double $$11 = ($$3.j() - 0.5) * 0.5;
-            double $$12 = ($$3.j() - 0.5) * 0.5;
-            int $$13 = $$3.a(2) * 2 - 1;
-            if ($$3.h()) {
-               $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$13;
-               $$12 = (double)($$3.i() * 2.0F * (float)$$13);
-            } else {
-               $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$13;
-               $$10 = (double)($$3.i() * 2.0F * (float)$$13);
+   protected Function<dxq, fcr> a(float $$0, float $$1, float $$2, float $$3, float $$4) {
+      fcr $$5 = dke.b((double)$$0, 0.0, (double)$$1);
+      Map<jn, fcr> $$6 = fco.c(dke.a((double)$$2, (double)$$3, (double)$$4, 0.0, 8.0));
+      return this.a($$2x -> {
+         fcr $$3x = $$5;
+
+         for (Entry<jn, dyh> $$4x : f.entrySet()) {
+            if ($$2x.c($$4x.getValue())) {
+               $$3x = fco.a($$3x, $$6.get($$4x.getKey()));
             }
-
-            $$1.a(lt.ae, $$7, $$8, $$9, $$10, $$11, $$12);
          }
-      }
+
+         return $$3x;
+      }, new dyt[]{e});
    }
 
    @Override
-   protected cwq a(dgm $$0, ji $$1, dwy $$2, boolean $$3) {
-      return cwq.j;
+   protected boolean e_(dxq $$0) {
+      return !$$0.c(e);
    }
 
    @Override
-   protected boolean a(dwy $$0, esz $$1) {
+   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
+      return this.h.apply($$0);
+   }
+
+   @Override
+   protected fcr b(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
+      return this.g.apply($$0);
+   }
+
+   @Override
+   protected etw b_(dxq $$0) {
+      return $$0.c(e) ? etx.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected boolean a(dxq $$0, eul $$1) {
       return false;
    }
 
    @Override
-   protected void a(dwy $$0, dgj $$1, ji $$2, bum $$3) {
-      if ($$3.o(false) && !$$1.C && $$1.c_($$2) instanceof dvt $$5 && !$$5.c()) {
-         $$3.a(this, $$2);
-         dvt.c($$1, $$2, $$0, $$5);
-      }
-   }
-
-   @Nullable
-   @Override
-   public eua a(ard $$0, bum $$1, ji $$2) {
-      if ($$0.c_($$2) instanceof dvt $$4) {
-         fbb $$6 = $$4.a($$0, $$2);
-         if ($$6 == null) {
-            return null;
-         } else {
-            return $$1 instanceof cqb
-               ? new eua($$0, $$6, fbb.c, 0.0F, 0.0F, Set.of(), eua.c)
-               : new eua($$0, $$6, fbb.c, 0.0F, 0.0F, bvw.a(bvw.l, bvw.k), eua.c);
-         }
-      } else {
-         return null;
+   protected dxq a(dxq $$0, dqw $$1) {
+      switch ($$1) {
+         case c:
+            return $$0.b(a, $$0.c(c)).b(b, $$0.c(d)).b(c, $$0.c(a)).b(d, $$0.c(b));
+         case d:
+            return $$0.b(a, $$0.c(b)).b(b, $$0.c(c)).b(c, $$0.c(d)).b(d, $$0.c(a));
+         case b:
+            return $$0.b(a, $$0.c(d)).b(b, $$0.c(a)).b(c, $$0.c(b)).b(d, $$0.c(c));
+         default:
+            return $$0;
       }
    }
 
    @Override
-   protected dpy a_(dwy $$0) {
-      return dpy.a;
+   protected dxq a(dxq $$0, dpf $$1) {
+      switch ($$1) {
+         case b:
+            return $$0.b(a, $$0.c(c)).b(c, $$0.c(a));
+         case c:
+            return $$0.b(b, $$0.c(d)).b(d, $$0.c(b));
+         default:
+            return super.a($$0, $$1);
+      }
    }
 }

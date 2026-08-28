@@ -1,6 +1,4 @@
 import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonParser;
 import com.mojang.datafixers.util.Either;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
@@ -27,36 +25,30 @@ public class wr {
    public static final yn<wa, wp> d = yl.c(a);
    public static final yn<wa, Optional<wp>> e = d.a(yl::a);
    public static final yn<ByteBuf, wp> f = yl.a(a);
-   public static final Codec<wp> g = a(Integer.MAX_VALUE);
 
-   public static Codec<wp> a(int $$0) {
-      final Codec<String> $$1 = Codec.string(0, $$0);
+   public static Codec<wp> a(final int $$0) {
       return new Codec<wp>() {
-         public <T> DataResult<Pair<wp, T>> decode(DynamicOps<T> $$0, T $$1x) {
-            DynamicOps<JsonElement> $$2 = a($$0);
-            return $$1.decode($$0, $$1).flatMap($$1xxx -> {
-               try {
-                  JsonElement $$2x = JsonParser.parseString((String)$$1xxx.getFirst());
-                  return wr.a.parse($$2, $$2x).map($$1xxxxx -> Pair.of($$1xxxxx, $$1xxx.getSecond()));
-               } catch (JsonParseException var3x) {
-                  return DataResult.error(var3x::getMessage);
-               }
-            });
+         public <T> DataResult<Pair<wp, T>> decode(DynamicOps<T> $$0x, T $$1) {
+            return wr.a
+               .decode($$0, $$1)
+               .flatMap(
+                  $$2 -> this.a($$0, (wp)$$2.getFirst())
+                        ? DataResult.error(() -> "Component was too large: greater than max size " + $$0)
+                        : DataResult.success($$2)
+               );
          }
 
-         public <T> DataResult<T> a(wp $$0, DynamicOps<T> $$1x, T $$2) {
-            DynamicOps<JsonElement> $$3 = a($$1);
-            return wr.a.encodeStart($$3, $$0).flatMap($$2x -> {
-               try {
-                  return $$1.encodeStart($$1, ayp.e($$2x));
-               } catch (IllegalArgumentException var4x) {
-                  return DataResult.error(var4x::getMessage);
-               }
-            });
+         public <T> DataResult<T> a(wp $$0x, DynamicOps<T> $$1, T $$2) {
+            return wr.a.encodeStart($$1, $$0);
          }
 
-         private static <T> DynamicOps<JsonElement> a(DynamicOps<T> $$0) {
-            return (DynamicOps<JsonElement>)($$0 instanceof akt<T> $$1 ? $$1.a(JsonOps.INSTANCE) : JsonOps.INSTANCE);
+         private <T> boolean a(DynamicOps<T> $$0x, wp $$1) {
+            DataResult<JsonElement> $$2 = wr.a.encodeStart(a($$0), $$1);
+            return $$2.isSuccess() && ayp.a((JsonElement)$$2.getOrThrow(), $$0);
+         }
+
+         private static <T> DynamicOps<JsonElement> a(DynamicOps<T> $$0x) {
+            return (DynamicOps<JsonElement>)($$0 instanceof aks<T> $$1 ? $$1.a(JsonOps.INSTANCE) : JsonOps.INSTANCE);
          }
       };
    }

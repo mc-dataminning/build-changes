@@ -8,10 +8,10 @@ public class aaz {
    public static final yy<abd> g = b("select_known_packs");
 
    private static <T extends yw<aat>> yy<T> a(String $$0) {
-      return new yy<>(yx.b, akv.b($$0));
+      return new yy<>(yx.b, aku.b($$0));
    }
 
    private static <T extends yw<abb>> yy<T> b(String $$0) {
-      return new yy<>(yx.a, akv.b($$0));
+      return new yy<>(yx.a, aku.b($$0));
    }
 }

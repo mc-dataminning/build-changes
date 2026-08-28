@@ -1,9 +1,7 @@
-public class cue extends csf {
-   public cue(int $$0, cox $$1) {
-      super(ctm.w, dbq.d, dbo.g, ctt.d, $$0, $$1);
-   }
+import javax.annotation.Nullable;
 
-   public cue(int $$0, cox $$1, bse $$2, csp $$3) {
-      super(ctm.w, dbq.d, dbo.g, ctt.d, $$0, $$1, $$2, $$3);
-   }
+@FunctionalInterface
+public interface cue {
+   @Nullable
+   csw createMenu(int var1, cpq var2, cpr var3);
 }

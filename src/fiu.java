@@ -1,38 +1,40 @@
-public class fiu extends hlf {
-   private static final wp a = wp.c("mco.client.incompatible.title").b(-65536);
-   private static final wp b = wp.b(ab.b().c()).b(-65536);
-   private static final wp c = wp.a("mco.client.unsupported.snapshot.version", b);
-   private static final wp C = wp.a("mco.client.outdated.stable.version", b);
-   private final fum D;
-   private final fsi E = new fsi(this);
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public fiu(fum $$0) {
-      super(a);
-      this.D = $$0;
+public class fiu extends fiw {
+   private static final Logger d = LogUtils.getLogger();
+   public long a;
+   public int b;
+   public fiu.a c = fiu.a.a;
+
+   public static fiu a(String $$0) {
+      fiu $$1 = new fiu();
+
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         $$1.a = fks.a("startDate", $$3, 0L);
+         $$1.b = fks.a("daysLeft", $$3, 0);
+         $$1.c = b(fks.b("subscriptionType", $$3, fiu.a.a.name()));
+      } catch (Exception var4) {
+         d.error("Could not parse Subscription: {}", var4.getMessage());
+      }
+
+      return $$1;
    }
 
-   @Override
-   public void aR_() {
-      this.E.a(a, this.p);
-      this.E.c(new fpo(this.E(), this.p).b(true));
-      this.E.b(fou.a(wo.k, $$0 -> this.aO_()).a(200).a());
-      this.E.a($$1 -> {
-         fos var10000 = this.c($$1);
-      });
-      this.c();
+   private static fiu.a b(String $$0) {
+      try {
+         return fiu.a.valueOf($$0);
+      } catch (Exception var2) {
+         return fiu.a.a;
+      }
    }
 
-   @Override
-   protected void c() {
-      this.E.a();
-   }
-
-   @Override
-   public void aO_() {
-      this.m.a(this.D);
-   }
-
-   private wp E() {
-      return ab.b().g() ? C : c;
+   public static enum a {
+      a,
+      b;
    }
 }

@@ -1,83 +1,21 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
+import java.util.Map;
 
-public record gnu(akv a, j b, boolean c, int d) implements hhj {
-   @Override
-   public j a() {
-      return this.b;
+public class gnu {
+   public static final gnu a = new gnu(Map.of());
+   private final Map<dke, hev<?>> b;
+
+   public gnu(Map<dke, hev<?>> $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public boolean b() {
-      return this.c;
+   public static gnu a(gfy $$0) {
+      return new gnu(hew.a($$0));
    }
 
-   public akv c() {
-      return this.a;
-   }
-
-   public j d() {
-      return this.b;
-   }
-
-   public boolean e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public static class a implements JsonDeserializer<gnu> {
-      @VisibleForTesting
-      static final boolean a = false;
-      @VisibleForTesting
-      static final int b = 1;
-      @VisibleForTesting
-      static final int c = 0;
-      @VisibleForTesting
-      static final int d = 0;
-
-      public gnu a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         akv $$4 = this.b($$3);
-         hgu $$5 = this.a($$3);
-         boolean $$6 = this.d($$3);
-         int $$7 = this.c($$3);
-         return new gnu($$4, $$5.a(), $$6, $$7);
-      }
-
-      private boolean d(JsonObject $$0) {
-         return ayp.a($$0, "uvlock", false);
-      }
-
-      protected hgu a(JsonObject $$0) {
-         int $$1 = ayp.a($$0, "x", 0);
-         int $$2 = ayp.a($$0, "y", 0);
-         hgu $$3 = hgu.a($$1, $$2);
-         if ($$3 == null) {
-            throw new JsonParseException("Invalid BlockModelRotation x: " + $$1 + ", y: " + $$2);
-         } else {
-            return $$3;
-         }
-      }
-
-      protected akv b(JsonObject $$0) {
-         return akv.a(ayp.i($$0, "model"));
-      }
-
-      protected int c(JsonObject $$0) {
-         int $$1 = ayp.a($$0, "weight", 1);
-         if ($$1 < 1) {
-            throw new JsonParseException("Invalid weight " + $$1 + " found, expected integer >= 1");
-         } else {
-            return $$1;
-         }
+   public void a(dke $$0, cxf $$1, fgr $$2, gmx $$3, int $$4, int $$5) {
+      hev<?> $$6 = this.b.get($$0);
+      if ($$6 != null) {
+         $$6.a(null, $$1, $$2, $$3, $$4, $$5, false);
       }
    }
 }

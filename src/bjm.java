@@ -1,42 +1,22 @@
-import com.mojang.datafixers.DSL.TypeReference;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.Const.PrimitiveType;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.codecs.PrimitiveCodec;
 
-public class bjm extends Schema {
-   public static final PrimitiveCodec<String> a = new PrimitiveCodec<String>() {
-      public <T> DataResult<String> read(DynamicOps<T> $$0, T $$1) {
-         return $$0.getStringValue($$1).map(bjm::a);
-      }
-
-      public <T> T a(DynamicOps<T> $$0, String $$1) {
-         return (T)$$0.createString($$1);
-      }
-
-      @Override
-      public String toString() {
-         return "NamespacedString";
-      }
-   };
-   private static final Type<String> b = new PrimitiveType(a);
-
-   public bjm(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class bjm extends bgy {
+   public bjm(Schema $$0, boolean $$1) {
+      super($$0, $$1, "WeaponSmithChestLootTableFix", bic.s, "minecraft:chest");
    }
 
-   public static String a(String $$0) {
-      akv $$1 = akv.c($$0);
-      return $$1 != null ? $$1.toString() : $$0;
-   }
-
-   public static Type<String> a() {
-      return b;
-   }
-
-   public Type<?> getChoiceType(TypeReference $$0, String $$1) {
-      return super.getChoiceType($$0, a($$1));
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> {
+            String $$1 = $$0x.get("LootTable").asString("");
+            return $$1.equals("minecraft:chests/village_blacksmith")
+               ? $$0x.set("LootTable", $$0x.createString("minecraft:chests/village/village_weaponsmith"))
+               : $$0x;
+         }
+      );
    }
 }

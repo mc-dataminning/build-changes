@@ -1,34 +1,21 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class duf extends dvk {
-   public duf(ji $$0, dwy $$1) {
-      super(duc.K, $$0, $$1);
-   }
+public class duf extends dkw {
+   public static final MapCodec<duf> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cwe.q.fieldOf("color").forGetter(duf::b), t()).apply($$0, duf::new));
+   private final cwe c;
 
    @Override
-   public ecd.d b() {
-      return new duf.a(this.aA_());
+   public MapCodec<duf> a() {
+      return b;
    }
 
-   protected class a extends dvk.a {
-      public a(final ji $$1) {
-         super($$1);
-      }
+   protected duf(cwe $$0, dxp.d $$1) {
+      super($$1);
+      this.c = $$0;
+   }
 
-      @Override
-      public int a() {
-         return 16;
-      }
-
-      @Override
-      public boolean a(ard $$0, ji $$1, jr<ebu> $$2, @Nullable ebu.a $$3) {
-         int $$4 = this.a($$0, this.c, duf.this.m());
-         return $$4 != 0 && ecd.a_($$2) != $$4 ? false : super.a($$0, $$1, $$2, $$3);
-      }
-
-      private int a(dgj $$0, ji $$1, dwy $$2) {
-         jn $$3 = $$2.c(dkb.b).g();
-         return $$0.c($$1.a($$3), $$3);
-      }
+   public cwe b() {
+      return this.c;
    }
 }

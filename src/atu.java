@@ -17,10 +17,10 @@ public abstract class atu implements auc {
    public static final atw b = atw.a("core");
    private final ate d;
    private final atg e;
-   private final akv f;
-   private final far g;
+   private final aku f;
+   private final fbn g;
 
-   public atu(ate $$0, atg $$1, akv $$2, far $$3) {
+   public atu(ate $$0, atg $$1, aku $$2, fbn $$3) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;

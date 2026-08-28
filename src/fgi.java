@@ -1,392 +1,523 @@
-import com.google.common.hash.Hashing;
-import com.google.common.io.Files;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.annotation.Nullable;
-import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
-import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
-import org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.io.output.CountingOutputStream;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
+import java.nio.FloatBuffer;
+import java.nio.IntBuffer;
+import java.util.Arrays;
+import java.util.List;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
+import org.lwjgl.system.MemoryUtil;
 import org.slf4j.Logger;
 
-public class fgi {
-   static final Logger a = LogUtils.getLogger();
-   volatile boolean b;
-   volatile boolean c;
-   volatile boolean d;
-   volatile boolean e;
-   @Nullable
-   private volatile File f;
-   volatile File g;
-   @Nullable
-   private volatile HttpGet h;
-   @Nullable
-   private Thread i;
-   private final RequestConfig j = RequestConfig.custom().setSocketTimeout(120000).setConnectTimeout(120000).build();
-   private static final String[] k = new String[]{
-      "CON",
-      "COM",
-      "PRN",
-      "AUX",
-      "CLOCK$",
-      "NUL",
-      "COM1",
-      "COM2",
-      "COM3",
-      "COM4",
-      "COM5",
-      "COM6",
-      "COM7",
-      "COM8",
-      "COM9",
-      "LPT1",
-      "LPT2",
-      "LPT3",
-      "LPT4",
-      "LPT5",
-      "LPT6",
-      "LPT7",
-      "LPT8",
-      "LPT9"
-   };
+public class fgi extends fgf implements AutoCloseable {
+   private static final Logger l = LogUtils.getLogger();
+   public static final int a = 0;
+   public static final int b = 1;
+   public static final int c = 2;
+   public static final int d = 3;
+   public static final int e = 4;
+   public static final int f = 5;
+   public static final int g = 6;
+   public static final int h = 7;
+   public static final int i = 8;
+   public static final int j = 9;
+   public static final int k = 10;
+   private static final boolean m = false;
+   private int n;
+   private final int o;
+   private final int p;
+   private final IntBuffer q;
+   private final FloatBuffer r;
+   private final String s;
 
-   public long a(String $$0) {
-      CloseableHttpClient $$1 = null;
-      HttpGet $$2 = null;
-
-      long var5;
-      try {
-         $$2 = new HttpGet($$0);
-         $$1 = HttpClientBuilder.create().setDefaultRequestConfig(this.j).build();
-         CloseableHttpResponse $$3 = $$1.execute($$2);
-         return Long.parseLong($$3.getFirstHeader("Content-Length").getValue());
-      } catch (Throwable var16) {
-         a.error("Unable to get content length for download");
-         var5 = 0L;
-      } finally {
-         if ($$2 != null) {
-            $$2.releaseConnection();
-         }
-
-         if ($$1 != null) {
-            try {
-               $$1.close();
-            } catch (IOException var15) {
-               a.error("Could not close http client", var15);
-            }
-         }
-      }
-
-      return var5;
-   }
-
-   public void a(fib $$0, String $$1, fiy.a $$2, evg $$3) {
-      if (this.i == null) {
-         this.i = new Thread(() -> {
-            CloseableHttpClient $$4 = null;
-
-            try {
-               this.f = File.createTempFile("backup", ".tar.gz");
-               this.h = new HttpGet($$0.a);
-               $$4 = HttpClientBuilder.create().setDefaultRequestConfig(this.j).build();
-               HttpResponse $$5 = $$4.execute(this.h);
-               $$2.b = Long.parseLong($$5.getFirstHeader("Content-Length").getValue());
-               if ($$5.getStatusLine().getStatusCode() == 200) {
-                  OutputStream $$12 = new FileOutputStream(this.f);
-                  fgi.b $$13 = new fgi.b($$1.trim(), this.f, $$3, $$2);
-                  fgi.a $$14 = new fgi.a($$12);
-                  $$14.a($$13);
-                  IOUtils.copy($$5.getEntity().getContent(), $$14);
-                  return;
-               }
-
-               this.d = true;
-               this.h.abort();
-            } catch (Exception var93) {
-               a.error("Caught exception while downloading: {}", var93.getMessage());
-               this.d = true;
-               return;
-            } finally {
-               this.h.releaseConnection();
-               if (this.f != null) {
-                  this.f.delete();
-               }
-
-               if (!this.d) {
-                  if (!$$0.b.isEmpty() && !$$0.c.isEmpty()) {
-                     try {
-                        this.f = File.createTempFile("resources", ".tar.gz");
-                        this.h = new HttpGet($$0.b);
-                        HttpResponse $$28 = $$4.execute(this.h);
-                        $$2.b = Long.parseLong($$28.getFirstHeader("Content-Length").getValue());
-                        if ($$28.getStatusLine().getStatusCode() != 200) {
-                           this.d = true;
-                           this.h.abort();
-                           return;
-                        }
-
-                        OutputStream $$29 = new FileOutputStream(this.f);
-                        fgi.c $$30 = new fgi.c(this.f, $$2, $$0);
-                        fgi.a $$31 = new fgi.a($$29);
-                        $$31.a($$30);
-                        IOUtils.copy($$28.getEntity().getContent(), $$31);
-                     } catch (Exception var91) {
-                        a.error("Caught exception while downloading: {}", var91.getMessage());
-                        this.d = true;
-                     } finally {
-                        this.h.releaseConnection();
-                        if (this.f != null) {
-                           this.f.delete();
-                        }
-                     }
-                  } else {
-                     this.c = true;
-                  }
-               }
-
-               if ($$4 != null) {
-                  try {
-                     $$4.close();
-                  } catch (IOException var90) {
-                     a.error("Failed to close Realms download client");
-                  }
-               }
-            }
-         });
-         this.i.setUncaughtExceptionHandler(new fif(a));
-         this.i.start();
-      }
-   }
-
-   public void a() {
-      if (this.h != null) {
-         this.h.abort();
-      }
-
-      if (this.f != null) {
-         this.f.delete();
-      }
-
-      this.b = true;
-   }
-
-   public boolean b() {
-      return this.c;
-   }
-
-   public boolean c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public static String b(String $$0) {
-      $$0 = $$0.replaceAll("[\\./\"]", "_");
-
-      for (String $$1 : k) {
-         if ($$0.equalsIgnoreCase($$1)) {
-            $$0 = "_" + $$0 + "_";
-         }
-      }
-
-      return $$0;
-   }
-
-   void a(String $$0, @Nullable File $$1, evg $$2) throws IOException {
-      Pattern $$3 = Pattern.compile(".*-([0-9]+)$");
-      int $$4 = 1;
-
-      for (char $$5 : ab.bc) {
-         $$0 = $$0.replace($$5, '_');
-      }
-
-      if (StringUtils.isEmpty($$0)) {
-         $$0 = "Realm";
-      }
-
-      $$0 = b($$0);
-
-      try {
-         for (evg.b $$6 : $$2.b()) {
-            String $$7 = $$6.a();
-            if ($$7.toLowerCase(Locale.ROOT).startsWith($$0.toLowerCase(Locale.ROOT))) {
-               Matcher $$8 = $$3.matcher($$7);
-               if ($$8.matches()) {
-                  int $$9 = Integer.parseInt($$8.group(1));
-                  if ($$9 > $$4) {
-                     $$4 = $$9;
-                  }
-               } else {
-                  $$4++;
-               }
-            }
-         }
-      } catch (Exception var43) {
-         a.error("Error getting level list", var43);
-         this.d = true;
-         return;
-      }
-
-      String $$13;
-      if ($$2.a($$0) && $$4 <= 1) {
-         $$13 = $$0;
+   public fgi(String $$0, int $$1, int $$2) {
+      this.s = $$0;
+      this.o = $$2;
+      this.p = $$1;
+      if ($$1 <= 3) {
+         this.q = MemoryUtil.memAllocInt($$2);
+         this.r = null;
       } else {
-         $$13 = $$0 + ($$4 == 1 ? "" : "-" + $$4);
-         if (!$$2.a($$13)) {
-            boolean $$12 = false;
+         this.q = null;
+         this.r = MemoryUtil.memAllocFloat($$2);
+      }
 
-            while (!$$12) {
-               $$4++;
-               $$13 = $$0 + ($$4 == 1 ? "" : "-" + $$4);
-               if ($$2.a($$13)) {
-                  $$12 = true;
-               }
-            }
+      this.n = -1;
+      this.h();
+   }
+
+   public static int a(int $$0, CharSequence $$1) {
+      return GlStateManager._glGetUniformLocation($$0, $$1);
+   }
+
+   public static void b(int $$0, int $$1) {
+      RenderSystem.glUniform1i($$0, $$1);
+   }
+
+   public void a(gnq.b $$0) {
+      this.a($$0.d(), $$0.c());
+   }
+
+   public void a(List<Float> $$0, int $$1) {
+      float[] $$2 = new float[Math.max($$1, 16)];
+      if ($$0.size() == 1) {
+         Arrays.fill($$2, $$0.getFirst().floatValue());
+      } else {
+         for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+            $$2[$$3] = $$0.get($$3);
          }
       }
 
-      TarArchiveInputStream $$14 = null;
-      File $$15 = new File(flk.Q().q.getAbsolutePath(), "saves");
-
-      try {
-         $$15.mkdir();
-         $$14 = new TarArchiveInputStream(new GzipCompressorInputStream(new BufferedInputStream(new FileInputStream($$1))));
-
-         for (TarArchiveEntry $$16 = $$14.getNextTarEntry(); $$16 != null; $$16 = $$14.getNextTarEntry()) {
-            File $$17 = new File($$15, $$16.getName().replace("world", $$13));
-            if ($$16.isDirectory()) {
-               $$17.mkdirs();
-            } else {
-               $$17.createNewFile();
-
-               try (FileOutputStream $$18 = new FileOutputStream($$17)) {
-                  IOUtils.copy($$14, $$18);
-               }
-            }
-         }
-      } catch (Exception var41) {
-         a.error("Error extracting world", var41);
-         this.d = true;
-      } finally {
-         if ($$14 != null) {
-            $$14.close();
-         }
-
-         if ($$1 != null) {
-            $$1.delete();
-         }
-
-         try (evg.c $$26 = $$2.d($$13)) {
-            $$26.b($$13);
-         } catch (ub | uh | IOException var39) {
-            a.error("Failed to modify unpacked realms level {}", $$13, var39);
-         } catch (faq var40) {
-            a.warn("{}", var40.getMessage());
-         }
-
-         this.g = new File($$15, $$13 + File.separator + "resources.zip");
+      if (this.p <= 3) {
+         this.a((int)$$2[0], (int)$$2[1], (int)$$2[2], (int)$$2[3]);
+      } else if (this.p <= 7) {
+         this.b($$2[0], $$2[1], $$2[2], $$2[3]);
+      } else {
+         this.a(Arrays.copyOfRange($$2, 0, $$1));
       }
    }
 
-   static class a extends CountingOutputStream {
-      @Nullable
-      private ActionListener a;
-
-      public a(OutputStream $$0) {
-         super($$0);
+   @Override
+   public void close() {
+      if (this.q != null) {
+         MemoryUtil.memFree(this.q);
       }
 
-      public void a(ActionListener $$0) {
-         this.a = $$0;
-      }
-
-      protected void afterWrite(int $$0) throws IOException {
-         super.afterWrite($$0);
-         if (this.a != null) {
-            this.a.actionPerformed(new ActionEvent(this, 0, null));
-         }
+      if (this.r != null) {
+         MemoryUtil.memFree(this.r);
       }
    }
 
-   class b implements ActionListener {
-      private final String b;
-      private final File c;
-      private final evg d;
-      private final fiy.a e;
+   private void h() {
+   }
 
-      b(final String $$0, final File $$1, final evg $$2, final fiy.a $$3) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
+   public static int a(String $$0) {
+      int $$1 = -1;
+      if ("int".equals($$0)) {
+         $$1 = 0;
+      } else if ("float".equals($$0)) {
+         $$1 = 4;
+      } else if ($$0.startsWith("matrix")) {
+         if ($$0.endsWith("2x2")) {
+            $$1 = 8;
+         } else if ($$0.endsWith("3x3")) {
+            $$1 = 9;
+         } else if ($$0.endsWith("4x4")) {
+            $$1 = 10;
+         }
       }
 
-      @Override
-      public void actionPerformed(ActionEvent $$0) {
-         this.e.a = ((fgi.a)$$0.getSource()).getByteCount();
-         if (this.e.a >= this.e.b && !fgi.this.b && !fgi.this.d) {
-            try {
-               fgi.this.e = true;
-               fgi.this.a(this.b, this.c, this.d);
-            } catch (IOException var3) {
-               fgi.a.error("Error extracting archive", var3);
-               fgi.this.d = true;
-            }
-         }
+      return $$1;
+   }
+
+   public void b(int $$0) {
+      this.n = $$0;
+   }
+
+   public String a() {
+      return this.s;
+   }
+
+   @Override
+   public final void a(float $$0) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.h();
+   }
+
+   @Override
+   public final void a(float $$0, float $$1) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.h();
+   }
+
+   public final void a(int $$0, float $$1) {
+      this.r.position(0);
+      this.r.put($$0, $$1);
+      this.h();
+   }
+
+   @Override
+   public final void a(float $$0, float $$1, float $$2) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.h();
+   }
+
+   @Override
+   public final void a(Vector3f $$0) {
+      this.r.position(0);
+      $$0.get(this.r);
+      this.h();
+   }
+
+   @Override
+   public final void a(float $$0, float $$1, float $$2, float $$3) {
+      this.r.position(0);
+      this.r.put($$0);
+      this.r.put($$1);
+      this.r.put($$2);
+      this.r.put($$3);
+      this.r.flip();
+      this.h();
+   }
+
+   @Override
+   public final void a(Vector4f $$0) {
+      this.r.position(0);
+      $$0.get(this.r);
+      this.h();
+   }
+
+   @Override
+   public final void b(float $$0, float $$1, float $$2, float $$3) {
+      this.r.position(0);
+      if (this.p >= 4) {
+         this.r.put(0, $$0);
+      }
+
+      if (this.p >= 5) {
+         this.r.put(1, $$1);
+      }
+
+      if (this.p >= 6) {
+         this.r.put(2, $$2);
+      }
+
+      if (this.p >= 7) {
+         this.r.put(3, $$3);
+      }
+
+      this.h();
+   }
+
+   @Override
+   public final void a(int $$0, int $$1, int $$2, int $$3) {
+      this.q.position(0);
+      if (this.p >= 0) {
+         this.q.put(0, $$0);
+      }
+
+      if (this.p >= 1) {
+         this.q.put(1, $$1);
+      }
+
+      if (this.p >= 2) {
+         this.q.put(2, $$2);
+      }
+
+      if (this.p >= 3) {
+         this.q.put(3, $$3);
+      }
+
+      this.h();
+   }
+
+   @Override
+   public final void a(int $$0) {
+      this.q.position(0);
+      this.q.put(0, $$0);
+      this.h();
+   }
+
+   @Override
+   public final void a(int $$0, int $$1) {
+      this.q.position(0);
+      this.q.put(0, $$0);
+      this.q.put(1, $$1);
+      this.h();
+   }
+
+   @Override
+   public final void a(int $$0, int $$1, int $$2) {
+      this.q.position(0);
+      this.q.put(0, $$0);
+      this.q.put(1, $$1);
+      this.q.put(2, $$2);
+      this.h();
+   }
+
+   @Override
+   public final void b(int $$0, int $$1, int $$2, int $$3) {
+      this.q.position(0);
+      this.q.put(0, $$0);
+      this.q.put(1, $$1);
+      this.q.put(2, $$2);
+      this.q.put(3, $$3);
+      this.h();
+   }
+
+   @Override
+   public final void a(float[] $$0) {
+      if ($$0.length < this.o) {
+         l.warn("Uniform.set called with a too-small value array (expected {}, got {}). Ignoring.", this.o, $$0.length);
+      } else {
+         this.r.position(0);
+         this.r.put($$0);
+         this.r.position(0);
+         this.h();
       }
    }
 
-   class c implements ActionListener {
-      private final File b;
-      private final fiy.a c;
-      private final fib d;
+   @Override
+   public final void c(float $$0, float $$1, float $$2, float $$3) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.h();
+   }
 
-      c(final File $$0, final fiy.a $$1, final fib $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
+   @Override
+   public final void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.r.put(4, $$4);
+      this.r.put(5, $$5);
+      this.h();
+   }
 
-      @Override
-      public void actionPerformed(ActionEvent $$0) {
-         this.c.a = ((fgi.a)$$0.getSource()).getByteCount();
-         if (this.c.a >= this.c.b && !fgi.this.b) {
-            try {
-               String $$1 = Hashing.sha1().hashBytes(Files.toByteArray(this.b)).toString();
-               if ($$1.equals(this.d.c)) {
-                  FileUtils.copyFile(this.b, fgi.this.g);
-                  fgi.this.c = true;
-               } else {
-                  fgi.a.error("Resourcepack had wrong hash (expected {}, found {}). Deleting it.", this.d.c, $$1);
-                  FileUtils.deleteQuietly(this.b);
-                  fgi.this.d = true;
-               }
-            } catch (IOException var3) {
-               fgi.a.error("Error copying resourcepack file: {}", var3.getMessage());
-               fgi.this.d = true;
-            }
+   @Override
+   public final void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.r.put(4, $$4);
+      this.r.put(5, $$5);
+      this.r.put(6, $$6);
+      this.r.put(7, $$7);
+      this.h();
+   }
+
+   @Override
+   public final void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.r.put(4, $$4);
+      this.r.put(5, $$5);
+      this.h();
+   }
+
+   @Override
+   public final void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.r.put(4, $$4);
+      this.r.put(5, $$5);
+      this.r.put(6, $$6);
+      this.r.put(7, $$7);
+      this.r.put(8, $$8);
+      this.h();
+   }
+
+   @Override
+   public final void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.r.put(4, $$4);
+      this.r.put(5, $$5);
+      this.r.put(6, $$6);
+      this.r.put(7, $$7);
+      this.r.put(8, $$8);
+      this.r.put(9, $$9);
+      this.r.put(10, $$10);
+      this.r.put(11, $$11);
+      this.h();
+   }
+
+   @Override
+   public final void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.r.put(4, $$4);
+      this.r.put(5, $$5);
+      this.r.put(6, $$6);
+      this.r.put(7, $$7);
+      this.h();
+   }
+
+   @Override
+   public final void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.r.put(4, $$4);
+      this.r.put(5, $$5);
+      this.r.put(6, $$6);
+      this.r.put(7, $$7);
+      this.r.put(8, $$8);
+      this.r.put(9, $$9);
+      this.r.put(10, $$10);
+      this.r.put(11, $$11);
+      this.h();
+   }
+
+   @Override
+   public final void a(
+      float $$0,
+      float $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15
+   ) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.r.put(4, $$4);
+      this.r.put(5, $$5);
+      this.r.put(6, $$6);
+      this.r.put(7, $$7);
+      this.r.put(8, $$8);
+      this.r.put(9, $$9);
+      this.r.put(10, $$10);
+      this.r.put(11, $$11);
+      this.r.put(12, $$12);
+      this.r.put(13, $$13);
+      this.r.put(14, $$14);
+      this.r.put(15, $$15);
+      this.h();
+   }
+
+   @Override
+   public final void a(Matrix4f $$0) {
+      this.r.position(0);
+      $$0.get(this.r);
+      this.h();
+   }
+
+   @Override
+   public final void a(Matrix3f $$0) {
+      this.r.position(0);
+      $$0.get(this.r);
+      this.h();
+   }
+
+   public void b() {
+      if (this.p <= 3) {
+         this.i();
+      } else if (this.p <= 7) {
+         this.j();
+      } else {
+         if (this.p > 10) {
+            l.warn("Uniform.upload called, but type value ({}) is not a valid type. Ignoring.", this.p);
+            return;
          }
+
+         this.k();
       }
+   }
+
+   private void i() {
+      this.q.rewind();
+      switch (this.p) {
+         case 0:
+            RenderSystem.glUniform1(this.n, this.q);
+            break;
+         case 1:
+            RenderSystem.glUniform2(this.n, this.q);
+            break;
+         case 2:
+            RenderSystem.glUniform3(this.n, this.q);
+            break;
+         case 3:
+            RenderSystem.glUniform4(this.n, this.q);
+            break;
+         default:
+            l.warn("Uniform.upload called, but count value ({}) is  not in the range of 1 to 4. Ignoring.", this.o);
+      }
+   }
+
+   private void j() {
+      this.r.rewind();
+      switch (this.p) {
+         case 4:
+            RenderSystem.glUniform1(this.n, this.r);
+            break;
+         case 5:
+            RenderSystem.glUniform2(this.n, this.r);
+            break;
+         case 6:
+            RenderSystem.glUniform3(this.n, this.r);
+            break;
+         case 7:
+            RenderSystem.glUniform4(this.n, this.r);
+            break;
+         default:
+            l.warn("Uniform.upload called, but count value ({}) is not in the range of 1 to 4. Ignoring.", this.o);
+      }
+   }
+
+   private void k() {
+      this.r.clear();
+      switch (this.p) {
+         case 8:
+            RenderSystem.glUniformMatrix2(this.n, false, this.r);
+            break;
+         case 9:
+            RenderSystem.glUniformMatrix3(this.n, false, this.r);
+            break;
+         case 10:
+            RenderSystem.glUniformMatrix4(this.n, false, this.r);
+      }
+   }
+
+   public int c() {
+      return this.n;
+   }
+
+   public int d() {
+      return this.o;
+   }
+
+   public int e() {
+      return this.p;
+   }
+
+   public IntBuffer f() {
+      return this.q;
+   }
+
+   public FloatBuffer g() {
+      return this.r;
    }
 }

@@ -1,25 +1,12 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
 
-public class eph extends enn {
-   public static final MapCodec<eph> d = a(eph::new);
+public interface eph<SP extends epg> {
+   eph<epe> a = a("random_spread", epe.a);
+   eph<epd> b = a("concentric_rings", epd.a);
 
-   public eph(enn.c $$0) {
-      super($$0);
-   }
+   MapCodec<SP> codec();
 
-   @Override
-   public Optional<enn.b> a(enn.a $$0) {
-      return a($$0, ect.a.c, $$1 -> a($$1, $$0));
-   }
-
-   private static void a(eof $$0, enn.a $$1) {
-      ji $$2 = new ji($$1.h().a(9), 90, $$1.h().b(9));
-      $$0.a(new epg.a($$2));
-   }
-
-   @Override
-   public enw<?> e() {
-      return enw.a;
+   private static <SP extends epg> eph<SP> a(String $$0, MapCodec<SP> $$1) {
+      return ke.a(mb.P, $$0, () -> $$1);
    }
 }

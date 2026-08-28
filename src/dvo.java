@@ -1,127 +1,127 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class dvo {
-   private static final Codec<wp[]> c = wr.g
-      .listOf()
-      .comapFlatMap(
-         $$0 -> af.a($$0, 4).map($$0x -> new wp[]{(wp)$$0x.get(0), (wp)$$0x.get(1), (wp)$$0x.get(2), (wp)$$0x.get(3)}),
-         $$0 -> List.of($$0[0], $$0[1], $$0[2], $$0[3])
-      );
-   public static final Codec<dvo> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               c.fieldOf("messages").forGetter($$0x -> $$0x.d),
-               c.lenientOptionalFieldOf("filtered_messages").forGetter(dvo::d),
-               cvn.q.fieldOf("color").orElse(cvn.p).forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dvo::a)
-   );
-   public static final int b = 4;
-   private final wp[] d;
-   private final wp[] e;
-   private final cvn f;
-   private final boolean g;
+public class dvo extends dus implements btb {
+   public int a;
+   public float b;
+   public float c;
+   public float d;
+   public float e;
+   public float f;
+   public float g;
+   public float h;
+   public float i;
+   public float j;
+   private static final azh k = azh.a();
    @Nullable
-   private ayl[] h;
-   private boolean i;
+   private wp l;
 
-   public dvo() {
-      this(c(), c(), cvn.p, false);
+   public dvo(ji $$0, dxq $$1) {
+      super(duu.n, $$0, $$1);
    }
 
-   public dvo(wp[] $$0, wp[] $$1, cvn $$2, boolean $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   @Override
+   protected void b(tq $$0, jt.a $$1) {
+      super.b($$0, $$1);
+      if (this.h_()) {
+         $$0.a("CustomName", (un)wr.a.encodeStart($$1.a(ue.a), this.l).getOrThrow());
+      }
    }
 
-   private static wp[] c() {
-      return new wp[]{wo.a, wo.a, wo.a, wo.a};
+   @Override
+   protected void a(tq $$0, jt.a $$1) {
+      super.a($$0, $$1);
+      if ($$0.e("CustomName")) {
+         this.l = a($$0.c("CustomName"), $$1);
+      }
    }
 
-   private static dvo a(wp[] $$0, Optional<wp[]> $$1, cvn $$2, boolean $$3) {
-      return new dvo($$0, $$1.orElse(Arrays.copyOf($$0, $$0.length)), $$2, $$3);
-   }
+   public static void a(dgz $$0, ji $$1, dxq $$2, dvo $$3) {
+      $$3.g = $$3.f;
+      $$3.i = $$3.h;
+      cpr $$4 = $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 3.0, false);
+      if ($$4 != null) {
+         double $$5 = $$4.dz() - ((double)$$1.u() + 0.5);
+         double $$6 = $$4.dF() - ((double)$$1.w() + 0.5);
+         $$3.j = (float)ayz.d($$6, $$5);
+         $$3.f += 0.1F;
+         if ($$3.f < 0.5F || k.a(40) == 0) {
+            float $$7 = $$3.d;
 
-   public boolean a() {
-      return this.g;
-   }
-
-   public dvo a(boolean $$0) {
-      return $$0 == this.g ? this : new dvo(this.d, this.e, this.f, $$0);
-   }
-
-   public cvn b() {
-      return this.f;
-   }
-
-   public dvo a(cvn $$0) {
-      return $$0 == this.b() ? this : new dvo(this.d, this.e, $$0, this.g);
-   }
-
-   public wp a(int $$0, boolean $$1) {
-      return this.b($$1)[$$0];
-   }
-
-   public dvo a(int $$0, wp $$1) {
-      return this.a($$0, $$1, $$1);
-   }
-
-   public dvo a(int $$0, wp $$1, wp $$2) {
-      wp[] $$3 = Arrays.copyOf(this.d, this.d.length);
-      wp[] $$4 = Arrays.copyOf(this.e, this.e.length);
-      $$3[$$0] = $$1;
-      $$4[$$0] = $$2;
-      return new dvo($$3, $$4, this.f, this.g);
-   }
-
-   public boolean a(coy $$0) {
-      return Arrays.stream(this.b($$0.aa())).anyMatch($$0x -> !$$0x.getString().isEmpty());
-   }
-
-   public wp[] b(boolean $$0) {
-      return $$0 ? this.e : this.d;
-   }
-
-   public ayl[] a(boolean $$0, Function<wp, ayl> $$1) {
-      if (this.h == null || this.i != $$0) {
-         this.i = $$0;
-         this.h = new ayl[4];
-
-         for (int $$2 = 0; $$2 < 4; $$2++) {
-            this.h[$$2] = $$1.apply(this.a($$2, $$0));
+            do {
+               $$3.d = $$3.d + (float)(k.a(4) - k.a(4));
+            } while ($$7 == $$3.d);
          }
+      } else {
+         $$3.j += 0.02F;
+         $$3.f -= 0.1F;
       }
 
-      return this.h;
-   }
-
-   private Optional<wp[]> d() {
-      for (int $$0 = 0; $$0 < 4; $$0++) {
-         if (!this.e[$$0].equals(this.d[$$0])) {
-            return Optional.of(this.e);
-         }
+      while ($$3.h >= (float) Math.PI) {
+         $$3.h -= (float) (Math.PI * 2);
       }
 
-      return Optional.empty();
-   }
-
-   public boolean b(coy $$0) {
-      for (wp $$1 : this.b($$0.aa())) {
-         xm $$2 = $$1.a();
-         wn $$3 = $$2.i();
-         if ($$3 != null && $$3.a() == wn.a.c) {
-            return true;
-         }
+      while ($$3.h < (float) -Math.PI) {
+         $$3.h += (float) (Math.PI * 2);
       }
 
-      return false;
+      while ($$3.j >= (float) Math.PI) {
+         $$3.j -= (float) (Math.PI * 2);
+      }
+
+      while ($$3.j < (float) -Math.PI) {
+         $$3.j += (float) (Math.PI * 2);
+      }
+
+      float $$8 = $$3.j - $$3.h;
+
+      while ($$8 >= (float) Math.PI) {
+         $$8 -= (float) (Math.PI * 2);
+      }
+
+      while ($$8 < (float) -Math.PI) {
+         $$8 += (float) (Math.PI * 2);
+      }
+
+      $$3.h += $$8 * 0.4F;
+      $$3.f = ayz.a($$3.f, 0.0F, 1.0F);
+      $$3.a++;
+      $$3.c = $$3.b;
+      float $$9 = ($$3.d - $$3.b) * 0.4F;
+      float $$10 = 0.2F;
+      $$9 = ayz.a($$9, -0.2F, 0.2F);
+      $$3.e = $$3.e + ($$9 - $$3.e) * 0.9F;
+      $$3.b = $$3.b + $$3.e;
+   }
+
+   @Override
+   public wp al() {
+      return (wp)(this.l != null ? this.l : wp.c("container.enchant"));
+   }
+
+   public void a(@Nullable wp $$0) {
+      this.l = $$0;
+   }
+
+   @Nullable
+   @Override
+   public wp an() {
+      return this.l;
+   }
+
+   @Override
+   protected void a(dus.b $$0) {
+      super.a($$0);
+      this.l = $$0.a(kv.g);
+   }
+
+   @Override
+   protected void a(kr.a $$0) {
+      super.a($$0);
+      $$0.a(kv.g, this.l);
+   }
+
+   @Override
+   public void a(tq $$0) {
+      $$0.r("CustomName");
    }
 }

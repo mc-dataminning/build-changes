@@ -1,94 +1,233 @@
-import com.mojang.datafixers.util.Either;
-import io.netty.buffer.ByteBuf;
-import java.net.URI;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.IntFunction;
+import java.util.Set;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public record aln(List<aln.a> d) {
-   public static final aln a = new aln(List.of());
-   public static final yn<ByteBuf, Either<aln.b, wp>> b = yl.a(aln.b.k, wr.f);
-   public static final yn<ByteBuf, List<aln.c>> c = aln.c.a.a(yl.a());
+public class aln extends fdc {
+   private final MinecraftServer b;
+   private final Set<fcu> c = Sets.newHashSet();
+   private final List<Runnable> d = Lists.newArrayList();
 
-   public boolean a() {
-      return this.d.isEmpty();
+   public aln(MinecraftServer $$0) {
+      this.b = $$0;
    }
 
-   public Optional<aln.a> a(aln.b $$0) {
-      return this.d.stream().filter($$1 -> (Boolean)$$1.a.map($$1x -> $$1x == $$0, $$0xx -> false)).findFirst();
+   @Override
+   protected void a(fdb $$0, fcu $$1, fcz $$2) {
+      super.a($$0, $$1, $$2);
+      if (this.c.contains($$1)) {
+         this.b.ag().a(new aff($$0.cH(), $$1.b(), $$2.a(), Optional.ofNullable($$2.d()), Optional.ofNullable($$2.c())));
+      }
+
+      this.a();
    }
 
-   public List<aln.c> b() {
-      return this.d.stream().map($$0 -> new aln.c($$0.a, $$0.b.toString())).toList();
+   @Override
+   protected void a(fdb $$0, fcu $$1) {
+      super.a($$0, $$1);
+      this.a();
    }
 
-   public List<aln.a> c() {
-      return this.d;
+   @Override
+   public void a(fdb $$0) {
+      super.a($$0);
+      this.b.ag().a(new aec($$0.cH(), null));
+      this.a();
    }
 
-   public static record a(Either<aln.b, wp> a, URI b) {
-
-      public static aln.a a(aln.b $$0, URI $$1) {
-         return new aln.a(Either.left($$0), $$1);
+   @Override
+   public void b(fdb $$0, fcu $$1) {
+      super.b($$0, $$1);
+      if (this.c.contains($$1)) {
+         this.b.ag().a(new aec($$0.cH(), $$1.b()));
       }
 
-      public static aln.a a(wp $$0, URI $$1) {
-         return new aln.a(Either.right($$0), $$1);
-      }
-
-      public wp a() {
-         return (wp)this.a.map(aln.b::a, $$0 -> $$0);
-      }
-
-      public Either<aln.b, wp> b() {
-         return this.a;
-      }
-
-      public URI c() {
-         return this.b;
-      }
+      this.a();
    }
 
-   public static enum b {
-      a(0, "report_bug"),
-      b(1, "community_guidelines"),
-      c(2, "support"),
-      d(3, "status"),
-      e(4, "feedback"),
-      f(5, "community"),
-      g(6, "website"),
-      h(7, "forums"),
-      i(8, "news"),
-      j(9, "announcements");
-
-      private static final IntFunction<aln.b> l = axq.a($$0 -> $$0.m, values(), axq.a.a);
-      public static final yn<ByteBuf, aln.b> k = yl.a(l, $$0 -> $$0.m);
-      private final int m;
-      private final String n;
-
-      private b(final int $$0, final String $$1) {
-         this.m = $$0;
-         this.n = $$1;
+   @Override
+   public void a(fct $$0, @Nullable fcu $$1) {
+      fcu $$2 = this.a($$0);
+      super.a($$0, $$1);
+      if ($$2 != $$1 && $$2 != null) {
+         if (this.h($$2) > 0) {
+            this.b.ag().a(new aet($$0, $$1));
+         } else {
+            this.g($$2);
+         }
       }
 
-      private wp a() {
-         return wp.c("known_server_link." + this.n);
+      if ($$1 != null) {
+         if (this.c.contains($$1)) {
+            this.b.ag().a(new aet($$0, $$1));
+         } else {
+            this.e($$1);
+         }
       }
 
-      public aln.a a(URI $$0) {
-         return aln.a.a(this, $$0);
+      this.a();
+   }
+
+   @Override
+   public boolean a(String $$0, fcx $$1) {
+      if (super.a($$0, $$1)) {
+         this.b.ag().a(afe.a($$1, $$0, afe.a.a));
+         this.a();
+         return true;
+      } else {
+         return false;
       }
    }
 
-   public static record c(Either<aln.b, wp> b, String c) {
-      public static final yn<ByteBuf, aln.c> a = yn.a(aln.b, aln.c::a, yl.o, aln.c::b, aln.c::new);
+   @Override
+   public void b(String $$0, fcx $$1) {
+      super.b($$0, $$1);
+      this.b.ag().a(afe.a($$1, $$0, afe.a.b));
+      this.a();
+   }
 
-      public Either<aln.b, wp> a() {
-         return this.b;
+   @Override
+   public void a(fcu $$0) {
+      super.a($$0);
+      this.a();
+   }
+
+   @Override
+   public void b(fcu $$0) {
+      super.b($$0);
+      if (this.c.contains($$0)) {
+         this.b.ag().a(new afb($$0, 2));
       }
 
-      public String b() {
-         return this.c;
+      this.a();
+   }
+
+   @Override
+   public void c(fcu $$0) {
+      super.c($$0);
+      if (this.c.contains($$0)) {
+         this.g($$0);
       }
+
+      this.a();
+   }
+
+   @Override
+   public void a(fcx $$0) {
+      super.a($$0);
+      this.b.ag().a(afe.a($$0, true));
+      this.a();
+   }
+
+   @Override
+   public void b(fcx $$0) {
+      super.b($$0);
+      this.b.ag().a(afe.a($$0, false));
+      this.a();
+   }
+
+   @Override
+   public void c(fcx $$0) {
+      super.c($$0);
+      this.b.ag().a(afe.a($$0));
+      this.a();
+   }
+
+   public void a(Runnable $$0) {
+      this.d.add($$0);
+   }
+
+   protected void a() {
+      for (Runnable $$0 : this.d) {
+         $$0.run();
+      }
+   }
+
+   public List<yw<?>> d(fcu $$0) {
+      List<yw<?>> $$1 = Lists.newArrayList();
+      $$1.add(new afb($$0, 0));
+
+      for (fct $$2 : fct.values()) {
+         if (this.a($$2) == $$0) {
+            $$1.add(new aet($$2, $$0));
+         }
+      }
+
+      for (fcv $$3 : this.i($$0)) {
+         $$1.add(new aff($$3.c(), $$0.b(), $$3.d(), Optional.ofNullable($$3.e()), Optional.ofNullable($$3.f())));
+      }
+
+      return $$1;
+   }
+
+   public void e(fcu $$0) {
+      List<yw<?>> $$1 = this.d($$0);
+
+      for (are $$2 : this.b.ag().t()) {
+         for (yw<?> $$3 : $$1) {
+            $$2.f.b($$3);
+         }
+      }
+
+      this.c.add($$0);
+   }
+
+   public List<yw<?>> f(fcu $$0) {
+      List<yw<?>> $$1 = Lists.newArrayList();
+      $$1.add(new afb($$0, 1));
+
+      for (fct $$2 : fct.values()) {
+         if (this.a($$2) == $$0) {
+            $$1.add(new aet($$2, $$0));
+         }
+      }
+
+      return $$1;
+   }
+
+   public void g(fcu $$0) {
+      List<yw<?>> $$1 = this.f($$0);
+
+      for (are $$2 : this.b.ag().t()) {
+         for (yw<?> $$3 : $$1) {
+            $$2.f.b($$3);
+         }
+      }
+
+      this.c.remove($$0);
+   }
+
+   public int h(fcu $$0) {
+      int $$1 = 0;
+
+      for (fct $$2 : fct.values()) {
+         if (this.a($$2) == $$0) {
+            $$1++;
+         }
+      }
+
+      return $$1;
+   }
+
+   public evi.a<fdd> b() {
+      return new evi.a<>(this::h, this::a, bam.n);
+   }
+
+   private fdd h() {
+      fdd $$0 = new fdd(this);
+      this.a($$0::g);
+      return $$0;
+   }
+
+   private fdd a(tq $$0, jt.a $$1) {
+      return this.h().b($$0, $$1);
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

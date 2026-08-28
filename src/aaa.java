@@ -1,5 +1,5 @@
-public record aaa(akv a) implements zz {
-   public static <T extends vl> yn<T, aaa> a(akv $$0, int $$1) {
+public record aaa(aku a) implements zz {
+   public static <T extends vl> yn<T, aaa> a(aku $$0, int $$1) {
       return zz.a(($$0x, $$1x) -> {
       }, $$2 -> {
          int $$3 = $$2.readableBytes();
@@ -17,7 +17,7 @@ public record aaa(akv a) implements zz {
       return new zz.b<>(this.a);
    }
 
-   public akv b() {
+   public aku b() {
       return this.a;
    }
 }

@@ -1,56 +1,41 @@
-import com.google.common.collect.Streams;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class bdc extends bgt {
-   private static final String[] a = new String[]{
-      "Text1", "Text2", "Text3", "Text4", "FilteredText1", "FilteredText2", "FilteredText3", "FilteredText4", "Color", "GlowingText"
-   };
+public abstract class bdc extends DataFix {
+   private final String a;
+   private final String b;
+   private final String c;
 
    public bdc(Schema $$0, String $$1, String $$2) {
-      super($$0, false, $$1, bhy.s, $$2);
+      this($$0, $$1, $$2, $$2);
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      $$0 = $$0.update("front_text", bdc::b);
-      $$0 = $$0.update("back_text", bdc::b);
-
-      for (String $$1 : a) {
-         $$0 = $$0.remove($$1);
-      }
-
-      return $$0;
+   public bdc(Schema $$0, String $$1, String $$2, String $$3) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      boolean $$1 = $$0.get("_filtered_correct").asBoolean(false);
-      if ($$1) {
-         return $$0.remove("_filtered_correct");
-      } else {
-         Optional<Stream<Dynamic<T>>> $$2 = $$0.get("filtered_messages").asStreamOpt().result();
-         if ($$2.isEmpty()) {
-            return $$0;
-         } else {
-            Dynamic<T> $$3 = bam.a($$0.getOps());
-            List<Dynamic<T>> $$4 = $$0.get("messages").asStreamOpt().result().orElse(Stream.of()).toList();
-            List<Dynamic<T>> $$5 = Streams.mapWithIndex($$2.get(), ($$2x, $$3x) -> {
-               Dynamic<T> $$4x = $$3x < (long)$$4.size() ? $$4.get((int)$$3x) : $$3;
-               return $$2x.equals($$3) ? $$4x : $$2x;
-            }).toList();
-            return $$5.stream().allMatch($$1x -> $$1x.equals($$3))
-               ? $$0.remove("filtered_messages")
-               : $$0.set("filtered_messages", $$0.createList($$5.stream()));
-         }
-      }
+   public final TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bic.w);
+      return this.fixTypeEverywhereTyped(this.a, $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> {
+            Optional<? extends Dynamic<?>> $$1 = $$0xx.get(this.b).result();
+            if ($$1.isEmpty()) {
+               return $$0xx;
+            } else {
+               Dynamic<?> $$2 = this.a($$1.get());
+               return $$0xx.remove(this.b).setFieldIfPresent(this.c, Optional.ofNullable($$2));
+            }
+         }));
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), bdc::a);
-   }
+   @Nullable
+   protected abstract <T> Dynamic<T> a(Dynamic<T> var1);
 }

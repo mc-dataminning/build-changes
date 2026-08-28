@@ -1,9 +1,11 @@
+import javax.annotation.Nullable;
+
 public class aeo implements yw<abl> {
    public static final yn<vl, aeo> a = yw.a(aeo::a, aeo::new);
    private final int b;
 
-   public aeo(dyo $$0) {
-      this.b = $$0.r();
+   public aeo(bva $$0) {
+      this.b = $$0.ar();
    }
 
    private aeo(vl $$0) {
@@ -16,14 +18,15 @@ public class aeo implements yw<abl> {
 
    @Override
    public yy<aeo> a() {
-      return age.az;
+      return agd.az;
    }
 
    public void a(abl $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   @Nullable
+   public bva a(dgz $$0) {
+      return $$0.a(this.b);
    }
 }

@@ -1,79 +1,85 @@
-import javax.annotation.Nullable;
+import com.google.common.net.HostAndPort;
+import com.mojang.logging.LogUtils;
+import java.net.IDN;
+import org.slf4j.Logger;
 
-public class giq extends gki {
-   private final float a;
-   private final gkd b;
+public final class giq {
+   private static final Logger a = LogUtils.getLogger();
+   private final HostAndPort b;
+   private static final giq c = new giq(HostAndPort.fromParts("server.invalid", 25565));
 
-   giq(gga $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, gkd $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.b = $$7;
-      this.v = $$4;
-      this.w = $$5;
-      this.x = $$6;
-      float $$8 = 0.9F;
-      this.D *= 0.67499995F;
-      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
-      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
-      this.b($$7);
-      this.a = ((float)Math.random() - 0.5F) * 0.1F;
-      this.z = (float)Math.random() * (float) (Math.PI * 2);
+   public giq(String $$0, int $$1) {
+      this(HostAndPort.fromParts($$0, $$1));
    }
 
-   @Override
-   public gjm b() {
-      return gjm.b;
+   private giq(HostAndPort $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * ayz.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public String a() {
+      try {
+         return IDN.toASCII(this.b.getHost());
+      } catch (IllegalArgumentException var2) {
+         return "";
+      }
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
+   public int b() {
+      return this.b.getPort();
+   }
+
+   public static giq a(String $$0) {
+      if ($$0 == null) {
+         return c;
       } else {
-         this.b(this.b);
-         this.A = this.z;
-         this.z = this.z + (float) Math.PI * this.a * 2.0F;
-         if (this.m) {
-            this.A = this.z = 0.0F;
+         try {
+            HostAndPort $$1 = HostAndPort.fromString($$0).withDefaultPort(25565);
+            return $$1.getHost().isEmpty() ? c : new giq($$1);
+         } catch (IllegalArgumentException var2) {
+            a.info("Failed to parse URL {}", $$0, var2);
+            return c;
          }
-
-         this.a(this.j, this.k, this.l);
-         this.k -= 0.003F;
-         this.k = Math.max(this.k, -0.14F);
       }
    }
 
-   public static class a implements gjl<ll> {
-      private final gkd a;
-
-      public a(gkd $$0) {
-         this.a = $$0;
-      }
-
-      @Nullable
-      public gji a(ll $$0, gga $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         dwy $$8 = $$0.b();
-         if (!$$8.l() && $$8.o() == dpy.a) {
-            return null;
-         } else {
-            ji $$9 = ji.a($$2, $$3, $$4);
-            int $$10 = flk.Q().aw().a($$8, $$1, $$9);
-            if ($$8.b() instanceof dmk) {
-               $$10 = ((dmk)$$8.b()).b($$8, $$1, $$9);
-            }
-
-            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
-            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
-            float $$13 = (float)($$10 & 0xFF) / 255.0F;
-            return new giq($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
+   public static boolean b(String $$0) {
+      try {
+         HostAndPort $$1 = HostAndPort.fromString($$0);
+         String $$2 = $$1.getHost();
+         if (!$$2.isEmpty()) {
+            IDN.toASCII($$2);
+            return true;
          }
+      } catch (IllegalArgumentException var3) {
       }
+
+      return false;
+   }
+
+   static int c(String $$0) {
+      try {
+         return Integer.parseInt($$0.trim());
+      } catch (Exception var2) {
+         return 25565;
+      }
+   }
+
+   @Override
+   public String toString() {
+      return this.b.toString();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 instanceof giq ? this.b.equals(((giq)$$0).b) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
    }
 }

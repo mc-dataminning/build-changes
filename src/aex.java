@@ -1,42 +1,48 @@
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+
 public class aex implements yw<abl> {
-   public static final yn<vl, aex> a = yw.a(aex::a, aex::new);
-   private final int b;
+   public static final yn<wa, aex> a = yw.a(aex::a, aex::new);
+   private static final byte b = -128;
    private final int c;
-   private final int d;
-   private final int e;
+   private final List<Pair<bvj, cxh>> d;
 
-   public aex(bum $$0) {
-      this($$0.ar(), $$0.dy());
+   public aex(int $$0, List<Pair<bvj, cxh>> $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public aex(int $$0, fbb $$1) {
-      this.b = $$0;
-      double $$2 = 3.9;
-      double $$3 = ayz.a($$1.d, -3.9, 3.9);
-      double $$4 = ayz.a($$1.e, -3.9, 3.9);
-      double $$5 = ayz.a($$1.f, -3.9, 3.9);
-      this.c = (int)($$3 * 8000.0);
-      this.d = (int)($$4 * 8000.0);
-      this.e = (int)($$5 * 8000.0);
+   private aex(wa $$0) {
+      this.c = $$0.l();
+      this.d = Lists.newArrayList();
+
+      int $$1;
+      do {
+         $$1 = $$0.readByte();
+         bvj $$2 = bvj.i.get($$1 & 127);
+         cxh $$3 = cxh.h.decode($$0);
+         this.d.add(Pair.of($$2, $$3));
+      } while (($$1 & -128) != 0);
    }
 
-   private aex(vl $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readShort();
-      this.d = $$0.readShort();
-      this.e = $$0.readShort();
-   }
+   private void a(wa $$0) {
+      $$0.c(this.c);
+      int $$1 = this.d.size();
 
-   private void a(vl $$0) {
-      $$0.c(this.b);
-      $$0.m(this.c);
-      $$0.m(this.d);
-      $$0.m(this.e);
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         Pair<bvj, cxh> $$3 = this.d.get($$2);
+         bvj $$4 = (bvj)$$3.getFirst();
+         boolean $$5 = $$2 != $$1 - 1;
+         int $$6 = $$4.ordinal();
+         $$0.l($$5 ? $$6 | -128 : $$6);
+         cxh.h.encode($$0, (cxh)$$3.getSecond());
+      }
    }
 
    @Override
    public yy<aex> a() {
-      return age.aH;
+      return agd.aH;
    }
 
    public void a(abl $$0) {
@@ -44,18 +50,10 @@ public class aex implements yw<abl> {
    }
 
    public int b() {
-      return this.b;
+      return this.c;
    }
 
-   public double e() {
-      return (double)this.c / 8000.0;
-   }
-
-   public double f() {
-      return (double)this.d / 8000.0;
-   }
-
-   public double g() {
-      return (double)this.e / 8000.0;
+   public List<Pair<bvj, cxh>> e() {
+      return this.d;
    }
 }

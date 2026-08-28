@@ -1,23 +1,38 @@
-public enum dyh implements azv {
-   a("save"),
-   b("load"),
-   c("corner"),
-   d("data");
+import java.util.List;
+import java.util.Optional;
 
-   private final String e;
-   private final wp f;
+public final class dyh extends dyt<Boolean> {
+   private static final List<Boolean> a = List.of(true, false);
+   private static final int b = 0;
+   private static final int c = 1;
 
-   private dyh(final String $$0) {
-      this.e = $$0;
-      this.f = wp.c("structure_block.mode_info." + $$0);
+   private dyh(String $$0) {
+      super($$0, Boolean.class);
    }
 
    @Override
-   public String c() {
-      return this.e;
+   public List<Boolean> a() {
+      return a;
    }
 
-   public wp a() {
-      return this.f;
+   public static dyh a(String $$0) {
+      return new dyh($$0);
+   }
+
+   @Override
+   public Optional<Boolean> b(String $$0) {
+      return switch ($$0) {
+         case "true" -> Optional.of(true);
+         case "false" -> Optional.of(false);
+         default -> Optional.empty();
+      };
+   }
+
+   public String a(Boolean $$0) {
+      return $$0.toString();
+   }
+
+   public int b(Boolean $$0) {
+      return $$0 ? 0 : 1;
    }
 }

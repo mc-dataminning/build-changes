@@ -1,51 +1,29 @@
 import com.mojang.logging.LogUtils;
-import java.io.InputStream;
 import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Properties;
+import java.io.PrintStream;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class alb {
-   private static final Logger a = LogUtils.getLogger();
-   private final Path b;
-   private final boolean c;
+public class alb extends PrintStream {
+   private static final Logger b = LogUtils.getLogger();
+   protected final String a;
 
-   public alb(Path $$0) {
-      this.b = $$0;
-      this.c = ab.aU || this.b();
+   public alb(String $$0, OutputStream $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
-   private boolean b() {
-      try {
-         boolean var3;
-         try (InputStream $$0 = Files.newInputStream(this.b)) {
-            Properties $$1 = new Properties();
-            $$1.load($$0);
-            var3 = Boolean.parseBoolean($$1.getProperty("eula", "false"));
-         }
-
-         return var3;
-      } catch (Exception var6) {
-         a.warn("Failed to load {}", this.b);
-         this.c();
-         return false;
-      }
+   @Override
+   public void println(@Nullable String $$0) {
+      this.a($$0);
    }
 
-   public boolean a() {
-      return this.c;
+   @Override
+   public void println(Object $$0) {
+      this.a(String.valueOf($$0));
    }
 
-   private void c() {
-      if (!ab.aU) {
-         try (OutputStream $$0 = Files.newOutputStream(this.b)) {
-            Properties $$1 = new Properties();
-            $$1.setProperty("eula", "false");
-            $$1.store($$0, "By changing the setting below to TRUE you are indicating your agreement to our EULA (" + axv.b + ").");
-         } catch (Exception var6) {
-            a.warn("Failed to save {}", this.b, var6);
-         }
-      }
+   protected void a(@Nullable String $$0) {
+      b.info("[{}]: {}", this.a, $$0);
    }
 }

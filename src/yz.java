@@ -5,11 +5,11 @@ import org.slf4j.Logger;
 public class yz {
    private static final Logger a = LogUtils.getLogger();
 
-   public static <T extends vv> void a(yw<T> $$0, T $$1, ard $$2) throws alh {
+   public static <T extends vv> void a(yw<T> $$0, T $$1, ard $$2) throws alg {
       a($$0, $$1, $$2.p());
    }
 
-   public static <T extends vv> void a(yw<T> $$0, T $$1, bra<?> $$2) throws alh {
+   public static <T extends vv> void a(yw<T> $$0, T $$1, brn<?> $$2) throws alg {
       if (!$$2.bx()) {
          $$2.c(() -> {
             if ($$1.a($$0)) {
@@ -26,7 +26,7 @@ public class yz {
                a.debug("Ignoring packet due to disconnection: {}", $$0);
             }
          });
-         throw alh.a;
+         throw alg.a;
       }
    }
 

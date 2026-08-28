@@ -1,81 +1,86 @@
-import javax.annotation.Nullable;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public interface bsr extends bse {
-   String b = "LootTable";
-   String c = "LootTableSeed";
+public interface bsr extends bsp {
+   float r_ = 4.0F;
 
-   @Nullable
-   aku<evx> aw_();
+   int b();
 
-   void a(@Nullable aku<evx> var1);
+   boolean c();
 
-   default void a(aku<evx> $$0, long $$1) {
-      this.a($$0);
-      this.a($$1);
+   cxh a(int var1);
+
+   cxh a(int var1, int var2);
+
+   cxh b(int var1);
+
+   void a(int var1, cxh var2);
+
+   default int an_() {
+      return 99;
    }
 
-   long az_();
-
-   void a(long var1);
-
-   ji aA_();
-
-   @Nullable
-   dgj i();
-
-   static void a(dfo $$0, azh $$1, ji $$2, aku<evx> $$3) {
-      if ($$0.c_($$2) instanceof bsr $$5) {
-         $$5.a($$3, $$1.g());
-      }
+   default int e_(cxh $$0) {
+      return Math.min(this.an_(), $$0.k());
    }
 
-   default boolean b_(tq $$0) {
-      if ($$0.b("LootTable", 8)) {
-         this.a(aku.a(mc.bg, akv.a($$0.l("LootTable"))));
-         if ($$0.b("LootTableSeed", 4)) {
-            this.a($$0.i("LootTableSeed"));
-         } else {
-            this.a(0L);
+   void e();
+
+   boolean a(cpr var1);
+
+   default void c_(cpr $$0) {
+   }
+
+   default void c(cpr $$0) {
+   }
+
+   default boolean b(int $$0, cxh $$1) {
+      return true;
+   }
+
+   default boolean a(bsr $$0, int $$1, cxh $$2) {
+      return true;
+   }
+
+   default int a_(cxd $$0) {
+      int $$1 = 0;
+
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         cxh $$3 = this.a($$2);
+         if ($$3.h().equals($$0)) {
+            $$1 += $$3.M();
          }
+      }
 
-         return true;
-      } else {
+      return $$1;
+   }
+
+   default boolean a(Set<cxd> $$0) {
+      return this.a_($$1 -> !$$1.f() && $$0.contains($$1.h()));
+   }
+
+   default boolean a_(Predicate<cxh> $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         cxh $$2 = this.a($$1);
+         if ($$0.test($$2)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   static boolean a(dus $$0, cpr $$1) {
+      return a($$0, $$1, 4.0F);
+   }
+
+   static boolean a(dus $$0, cpr $$1, float $$2) {
+      dgz $$3 = $$0.i();
+      ji $$4 = $$0.aA_();
+      if ($$3 == null) {
          return false;
-      }
-   }
-
-   default boolean c_(tq $$0) {
-      aku<evx> $$1 = this.aw_();
-      if ($$1 == null) {
-         return false;
       } else {
-         $$0.a("LootTable", $$1.a().toString());
-         long $$2 = this.az_();
-         if ($$2 != 0L) {
-            $$0.a("LootTableSeed", $$2);
-         }
-
-         return true;
-      }
-   }
-
-   default void d_(@Nullable coy $$0) {
-      dgj $$1 = this.i();
-      ji $$2 = this.aA_();
-      aku<evx> $$3 = this.aw_();
-      if ($$3 != null && $$1 != null && $$1.p() != null) {
-         evx $$4 = $$1.p().bc().b($$3);
-         if ($$0 instanceof are) {
-            ap.Q.a((are)$$0, $$3);
-         }
-
-         this.a(null);
-         evv.a $$5 = new evv.a((ard)$$1).a(eym.f, fbb.b($$2));
-         if ($$0 != null) {
-            $$5.a($$0.gF()).a(eym.a, $$0);
-         }
-
-         $$4.a(this, $$5.a(eyl.c), this.az_());
+         return $$3.c_($$4) != $$0 ? false : $$1.a($$4, (double)$$2);
       }
    }
 }

@@ -1,43 +1,56 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dlf extends diy {
-   public static final MapCodec<dlf> e = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dlc.a.forGetter($$0x -> $$0x.f), t()).apply($$0, dlf::new));
-   private final djn f;
+public class dlf extends dqv implements drl {
+   public static final MapCodec<dlf> a = b(dlf::new);
+   public static final dyh b = dyg.I;
+   private static final Map<jn.a, fcr> e = fco.b(dke.a(3.0, 3.0, 16.0));
 
    @Override
    public MapCodec<dlf> a() {
-      return e;
+      return a;
    }
 
-   protected dlf(djn $$0, dwx.d $$1) {
-      super($$1);
-      this.f = $$0;
-   }
-
-   @Override
-   protected void b(dwy $$0, dgj $$1, ji $$2, dwy $$3, boolean $$4) {
-      this.a($$0, $$1, $$1, $$1.A, $$2);
+   public dlf(dxp.d $$0) {
+      super($$0);
+      this.l(this.B.b().b(b, Boolean.valueOf(false)).b(d, jn.a.b));
    }
 
    @Override
-   protected void a(dwy $$0, ard $$1, ji $$2, azh $$3) {
-      if (!d($$0, $$1, $$2)) {
-         $$1.a($$2, this.f.m().b(d, Boolean.valueOf(false)).b(c, $$0.c(c)), 2);
+   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
+      return e.get($$0.c(d));
+   }
+
+   @Nullable
+   @Override
+   public dxq a(dax $$0) {
+      etw $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == etx.c;
+      return super.a($$0).b(b, Boolean.valueOf($$2));
+   }
+
+   @Override
+   protected dxq a(dxq $$0, dhc $$1, dho $$2, ji $$3, jn $$4, ji $$5, dxq $$6, azh $$7) {
+      if ($$0.c(b)) {
+         $$2.a($$3, etx.c, etx.c.a($$1));
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected dwy a(dwy $$0, dgm $$1, dgy $$2, ji $$3, jn $$4, ji $$5, dwy $$6, azh $$7) {
-      if ($$4.g() == $$0.c(c) && !$$0.a($$1, $$3)) {
-         return djp.a.m();
-      } else {
-         if ($$0.c(d)) {
-            $$2.a($$3, etb.c, etb.c.a($$1));
-         }
+   protected void a(dxr.a<dke, dxq> $$0) {
+      $$0.a(b).a(d);
+   }
 
-         this.a($$0, $$1, $$2, $$7, $$3);
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
+   @Override
+   protected etw b_(dxq $$0) {
+      return $$0.c(b) ? etx.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected boolean a(dxq $$0, eul $$1) {
+      return false;
    }
 }

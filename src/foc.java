@@ -1,54 +1,115 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public interface foc {
-   static foc a(fqr $$0) {
-      return new foc.a($$0);
+public interface foc extends Supplier<JsonElement> {
+   void a(dxr<?, ?> var1);
+
+   static foc.c a() {
+      return new foc.c();
    }
 
-   @Nullable
-   static foc a(fqq $$0, @Nullable foc $$1) {
-      return $$1 == null ? null : new foc.b($$0, $$1);
+   static foc a(foc... $$0) {
+      return new foc.a(foc.b.a, Arrays.asList($$0));
    }
 
-   static foc a(fqr $$0, fqq... $$1) {
-      foc $$2 = a($$0);
+   static foc b(foc... $$0) {
+      return new foc.a(foc.b.b, Arrays.asList($$0));
+   }
 
-      for (fqq $$3 : $$1) {
-         $$2 = a($$3, $$2);
+   public static class a implements foc {
+      private final foc.b a;
+      private final List<foc> b;
+
+      a(foc.b $$0, List<foc> $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      return $$2;
-   }
-
-   fqr a();
-
-   void a(boolean var1);
-
-   public static record a(fqr a) implements foc {
       @Override
-      public void a(boolean $$0) {
-         this.a.a($$0);
+      public void a(dxr<?, ?> $$0) {
+         this.b.forEach($$1 -> $$1.a($$0));
+      }
+
+      public JsonElement b() {
+         JsonArray $$0 = new JsonArray();
+         this.b.stream().map(Supplier::get).forEach($$0::add);
+         JsonObject $$1 = new JsonObject();
+         $$1.add(this.a.c, $$0);
+         return $$1;
       }
    }
 
-   public static record b(fqq a, foc b) implements foc {
-      @Override
-      public void a(boolean $$0) {
-         if (!$$0) {
-            this.a.a(null);
-         } else {
-            this.a.a(this.b.a());
+   public static enum b {
+      a("AND"),
+      b("OR");
+
+      final String c;
+
+      private b(final String $$0) {
+         this.c = $$0;
+      }
+   }
+
+   public static class c implements foc {
+      private final Map<dyt<?>, String> a = Maps.newHashMap();
+
+      private static <T extends Comparable<T>> String a(dyt<T> $$0, Stream<T> $$1) {
+         return $$1.<CharSequence>map($$0::b).collect(Collectors.joining("|"));
+      }
+
+      private static <T extends Comparable<T>> String c(dyt<T> $$0, T $$1, T[] $$2) {
+         return a($$0, Stream.concat(Stream.of($$1), Stream.of($$2)));
+      }
+
+      private <T extends Comparable<T>> void a(dyt<T> $$0, String $$1) {
+         String $$2 = this.a.put($$0, $$1);
+         if ($$2 != null) {
+            throw new IllegalStateException("Tried to replace " + $$0 + " value from " + $$2 + " to " + $$1);
          }
-
-         this.b.a($$0);
       }
 
-      public fqq b() {
-         return this.a;
+      public final <T extends Comparable<T>> foc.c a(dyt<T> $$0, T $$1) {
+         this.a($$0, $$0.b($$1));
+         return this;
       }
 
-      public foc c() {
-         return this.b;
+      @SafeVarargs
+      public final <T extends Comparable<T>> foc.c a(dyt<T> $$0, T $$1, T... $$2) {
+         this.a($$0, c($$0, $$1, $$2));
+         return this;
+      }
+
+      public final <T extends Comparable<T>> foc.c b(dyt<T> $$0, T $$1) {
+         this.a($$0, "!" + $$0.b($$1));
+         return this;
+      }
+
+      @SafeVarargs
+      public final <T extends Comparable<T>> foc.c b(dyt<T> $$0, T $$1, T... $$2) {
+         this.a($$0, "!" + c($$0, $$1, $$2));
+         return this;
+      }
+
+      public JsonElement b() {
+         JsonObject $$0 = new JsonObject();
+         this.a.forEach(($$1, $$2) -> $$0.addProperty($$1.f(), $$2));
+         return $$0;
+      }
+
+      @Override
+      public void a(dxr<?, ?> $$0) {
+         List<dyt<?>> $$1 = this.a.keySet().stream().filter($$1x -> $$0.a($$1x.f()) != $$1x).collect(Collectors.toList());
+         if (!$$1.isEmpty()) {
+            throw new IllegalStateException("Properties " + $$1 + " are missing from " + $$0);
+         }
       }
    }
 }

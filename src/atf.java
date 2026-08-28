@@ -40,13 +40,13 @@ public class atf extends ast {
 
    @Nullable
    @Override
-   public auh<InputStream> a(ate $$0, akv $$1) {
+   public auh<InputStream> a(ate $$0, aku $$1) {
       Path $$2 = this.e.resolve($$0.a()).resolve($$1.b());
       return a($$1, $$2);
    }
 
    @Nullable
-   public static auh<InputStream> a(akv $$0, Path $$1) {
+   public static auh<InputStream> a(aku $$0, Path $$1) {
       return (auh<InputStream>)v.d($$0.a()).mapOrElse($$1x -> {
          Path $$2 = v.a($$1, $$1x);
          return b($$2);
@@ -75,7 +75,7 @@ public class atf extends ast {
       try (Stream<Path> $$5 = Files.find($$4, Integer.MAX_VALUE, ($$0x, $$1x) -> $$1x.isRegularFile())) {
          $$5.forEach($$3x -> {
             String $$4x = d.join($$1.relativize($$3x));
-            akv $$5x = akv.b($$0, $$4x);
+            aku $$5x = aku.b($$0, $$4x);
             if ($$5x == null) {
                af.b(String.format(Locale.ROOT, "Invalid path in pack: %s:%s, ignoring", $$0, $$4x));
             } else {
@@ -96,7 +96,7 @@ public class atf extends ast {
       try (DirectoryStream<Path> $$3 = Files.newDirectoryStream($$2)) {
          for (Path $$4 : $$3) {
             String $$5 = $$4.getFileName().toString();
-            if (akv.j($$5)) {
+            if (aku.j($$5)) {
                $$1.add($$5);
             } else {
                c.warn("Non [a-z0-9_.-] character in namespace {} in pack {}, ignoring", $$5, this.e);

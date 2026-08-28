@@ -30,6 +30,6 @@ public enum ao implements azv {
    }
 
    public xd a(ai $$0, are $$1) {
-      return wp.a("chat.type.advancement." + this.e, $$1.p_(), ah.a($$0));
+      return wp.a("chat.type.advancement." + this.e, $$1.m_(), ah.a($$0));
    }
 }

@@ -1,61 +1,66 @@
-import java.util.List;
-import java.util.Optional;
-
-public record dbs<T extends dbf<?>>(dcq a, Optional<dbk<T>> b) {
-   public static <T extends dbf<?>> yn<wa, dbs<T>> a() {
-      return yn.a(dcq.b, dbs::b, $$0 -> new dbs<>($$0, Optional.empty()));
+public class dbs extends dbl {
+   public dbs(dbi $$0) {
+      super($$0);
    }
 
-   public dcq b() {
-      return this.a;
+   public boolean a(dbj $$0, dgz $$1) {
+      if ($$0.e() < 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         boolean $$3 = false;
+
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            cxh $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if ($$5.b(kv.M)) {
+                  if ($$3) {
+                     return false;
+                  }
+
+                  $$3 = true;
+               } else {
+                  if (!$$5.a(cxl.vk)) {
+                     return false;
+                  }
+
+                  $$2 = true;
+               }
+            }
+         }
+
+         return $$3 && $$2;
+      }
    }
 
-   public Optional<dbk<T>> c() {
-      return this.b;
+   public cxh a(dbj $$0, jt.a $$1) {
+      int $$2 = 0;
+      cxh $$3 = cxh.k;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cxh $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.b(kv.M)) {
+               if (!$$3.f()) {
+                  return cxh.k;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cxl.vk)) {
+                  return cxh.k;
+               }
+
+               $$2++;
+            }
+         }
+      }
+
+      return !$$3.f() && $$2 >= 1 ? $$3.c($$2 + 1) : cxh.k;
    }
 
-   public static record a<T extends dbf<?>>(dbb a, dbs<T> b) {
-
-      public static <T extends dbf<?>> yn<wa, dbs.a<T>> a() {
-         return yn.a(dbb.a, dbs.a::b, dbs.a(), dbs.a::c, dbs.a::new);
-      }
-
-      public dbb b() {
-         return this.a;
-      }
-
-      public dbs<T> c() {
-         return this.b;
-      }
-   }
-
-   public static record b<T extends dbf<?>>(List<dbs.a<T>> a) {
-      public static <T extends dbf<?>> dbs.b<T> a() {
-         return new dbs.b<>(List.of());
-      }
-
-      public static <T extends dbf<?>> yn<wa, dbs.b<T>> b() {
-         return yn.a(dbs.a.<T>a().a(yl.a()), dbs.b::e, dbs.b::new);
-      }
-
-      public boolean a(cwq $$0) {
-         return this.a.stream().anyMatch($$1 -> $$1.a.a($$0));
-      }
-
-      public dbs.b<T> b(cwq $$0) {
-         return new dbs.b<>(this.a.stream().filter($$1 -> $$1.a.a($$0)).toList());
-      }
-
-      public boolean c() {
-         return this.a.isEmpty();
-      }
-
-      public int d() {
-         return this.a.size();
-      }
-
-      public List<dbs.a<T>> e() {
-         return this.a;
-      }
+   @Override
+   public dcf<dbs> a() {
+      return dcf.e;
    }
 }

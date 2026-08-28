@@ -1,71 +1,64 @@
-import javax.annotation.Nullable;
+import java.util.Map.Entry;
+import org.joml.Vector3f;
 
-public class grc extends gtg<cks, gxr, gax> {
-   public static final akv a = akv.b("textures/entity/armorstand/wood.png");
-   private final gax b = this.c();
-   private final gax k;
+public class grc implements gqy.a {
+   private final fmg a;
+   private static final int b = 2;
+   private static final float c = 0.09375F;
 
-   public grc(gsf.a $$0) {
-      super($$0, new gay($$0.a(gfd.f)), 0.0F);
-      this.k = new gay($$0.a(gfd.i));
-      this.a(new gwj<>(this, new gax($$0.a(gfd.g)), new gax($$0.a(gfd.h)), new gax($$0.a(gfd.j)), new gax($$0.a(gfd.k)), $$0.h()));
-      this.a(new gwm<>(this));
-      this.a(new gxf<>(this, $$0.f(), $$0.h()));
-      this.a(new gvy<>(this, $$0.f()));
+   public grc(fmg $$0) {
+      this.a = $$0;
    }
 
-   public akv a(gxr $$0) {
-      return a;
-   }
+   @Override
+   public void a(fgr $$0, gmx $$1, double $$2, double $$3, double $$4) {
+      dha $$5 = this.a.s;
+      fgv $$6 = $$1.getBuffer(gnh.B());
+      ji $$7 = ji.a($$2, 0.0, $$4);
 
-   public gxr a() {
-      return new gxr();
-   }
+      for (int $$8 = -2; $$8 <= 2; $$8++) {
+         for (int $$9 = -2; $$9 <= 2; $$9++) {
+            dzm $$10 = $$5.y($$7.b($$8 * 16, 0, $$9 * 16));
 
-   public void a(cks $$0, gxr $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      gsw.a($$0, $$1, $$2, this.i);
-      $$1.a = ayz.i($$2, $$0.N, $$0.dL());
-      $$1.c = $$0.x();
-      $$1.d = $$0.p();
-      $$1.j = $$0.t();
-      $$1.k = $$0.u();
-      $$1.m = $$0.z();
-      $$1.l = $$0.y();
-      $$1.n = $$0.A();
-      $$1.o = $$0.B();
-      $$1.p = $$0.C();
-      $$1.q = $$0.D();
-      $$1.b = (float)($$0.dV().ad() - $$0.bP) + $$2;
-   }
+            for (Entry<edo.a, edo> $$11 : $$10.e()) {
+               edo.a $$12 = $$11.getKey();
+               dgg $$13 = $$10.f();
+               Vector3f $$14 = this.a($$12);
 
-   public void a(gxr $$0, ffv $$1, glz $$2, int $$3) {
-      this.h = $$0.d ? this.k : this.b;
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected void a(gxr $$0, ffv $$1, float $$2, float $$3) {
-      $$1.a(a.d.rotationDegrees(180.0F - $$2));
-      if ($$0.b < 5.0F) {
-         $$1.a(a.d.rotationDegrees(ayz.a($$0.b / 1.5F * (float) Math.PI) * 3.0F));
-      }
-   }
-
-   protected boolean a(cks $$0, double $$1) {
-      return $$0.cL();
-   }
-
-   @Nullable
-   protected gmj a(gxr $$0, boolean $$1, boolean $$2, boolean $$3) {
-      if (!$$0.c) {
-         return super.a($$0, $$1, $$2, $$3);
-      } else {
-         akv $$4 = this.a($$0);
-         if ($$2) {
-            return gmj.c($$4, false);
-         } else {
-            return $$1 ? gmj.a($$4, false) : null;
+               for (int $$15 = 0; $$15 < 16; $$15++) {
+                  for (int $$16 = 0; $$16 < 16; $$16++) {
+                     int $$17 = kk.a($$13.h, $$15);
+                     int $$18 = kk.a($$13.i, $$16);
+                     float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
+                     gnr.b(
+                        $$0,
+                        $$6,
+                        (double)((float)$$17 + 0.25F) - $$2,
+                        (double)$$19,
+                        (double)((float)$$18 + 0.25F) - $$4,
+                        (double)((float)$$17 + 0.75F) - $$2,
+                        (double)($$19 + 0.09375F),
+                        (double)((float)$$18 + 0.75F) - $$4,
+                        $$14.x(),
+                        $$14.y(),
+                        $$14.z(),
+                        1.0F
+                     );
+                  }
+               }
+            }
          }
       }
+   }
+
+   private Vector3f a(edo.a $$0) {
+      return switch ($$0) {
+         case a -> new Vector3f(1.0F, 1.0F, 0.0F);
+         case c -> new Vector3f(1.0F, 0.0F, 1.0F);
+         case b -> new Vector3f(0.0F, 0.7F, 0.0F);
+         case d -> new Vector3f(0.0F, 0.0F, 0.5F);
+         case e -> new Vector3f(0.0F, 0.3F, 0.3F);
+         case f -> new Vector3f(0.0F, 0.5F, 0.5F);
+      };
    }
 }

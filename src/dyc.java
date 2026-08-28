@@ -1,7 +1,7 @@
 public enum dyc implements azv {
-   a("up"),
-   b("side"),
-   c("none");
+   a("none"),
+   b("small"),
+   c("large");
 
    private final String d;
 
@@ -11,15 +11,11 @@ public enum dyc implements azv {
 
    @Override
    public String toString() {
-      return this.c();
+      return this.d;
    }
 
    @Override
    public String c() {
       return this.d;
-   }
-
-   public boolean a() {
-      return this != c;
    }
 }

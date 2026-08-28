@@ -1,83 +1,78 @@
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-
-public class cwk extends cwm {
-   private final axf<cwj> a;
-
-   public cwk(axf<cwj> $$0, cwm.a $$1) {
-      super($$1);
-      this.a = $$0;
+public class cwk extends cxd {
+   public cwk(cxd.a $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(cwq $$0, cwm.b $$1, List<wp> $$2, cyi $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      jt.a $$4 = $$1.a();
-      if ($$4 != null) {
-         Optional<jr<cwj>> $$5 = this.a($$0, $$4);
-         if ($$5.isPresent()) {
-            xd $$6 = $$5.get().a().d().f();
-            ws.a($$6, xm.a.a(n.h));
-            $$2.add($$6);
-         }
-      }
-   }
-
-   public static cwq a(cwm $$0, jr<cwj> $$1) {
-      cwq $$2 = new cwq($$0);
-      $$2.b(kv.Z, $$1);
-      return $$2;
-   }
-
-   @Override
-   public bsl a(dgj $$0, coy $$1, bsk $$2) {
-      cwq $$3 = $$1.b($$2);
-      Optional<? extends jr<cwj>> $$4 = this.a($$3, $$1.dX());
-      if ($$4.isPresent()) {
-         cwj $$5 = $$4.get().a();
-         $$1.c($$2);
-         a($$0, $$1, $$5);
-         $$1.gE().a($$3, ayz.d($$5.b() * 20.0F));
-         $$1.b(awk.c.b(this));
-         return bsl.c;
+   public bsy a(daz $$0) {
+      dgz $$1 = $$0.q();
+      ji $$2 = $$0.a();
+      dxq $$3 = $$1.a_($$2);
+      if (!$$3.a(dkg.fT) || $$3.c(dmu.c)) {
+         return bsy.e;
+      } else if ($$1.C) {
+         return bsy.a;
       } else {
-         return bsl.d;
-      }
-   }
+         dxq $$4 = $$3.b(dmu.c, Boolean.valueOf(true));
+         dke.a($$3, $$4, $$1, $$2);
+         $$1.a($$2, $$4, 2);
+         $$1.b($$2, dkg.fT);
+         $$0.n().h(1);
+         $$1.c(1503, $$2, 0);
+         dxv.b $$5 = dmu.b().a($$1, $$2);
+         if ($$5 != null) {
+            ji $$6 = $$5.a().b(-3, 0, -3);
 
-   @Override
-   public int a(cwq $$0, bvi $$1) {
-      Optional<jr<cwj>> $$2 = this.a($$0, $$1.dX());
-      return $$2.<Integer>map($$0x -> ayz.d(((cwj)$$0x.a()).b() * 20.0F)).orElse(0);
-   }
-
-   private Optional<jr<cwj>> a(cwq $$0, jt.a $$1) {
-      jr<cwj> $$2 = $$0.a(kv.Z);
-      if ($$2 != null) {
-         return Optional.of($$2);
-      } else {
-         Optional<jv.c<cwj>> $$3 = $$1.d(mc.I).a(this.a);
-         if ($$3.isPresent()) {
-            Iterator<jr<cwj>> $$4 = $$3.get().iterator();
-            if ($$4.hasNext()) {
-               return Optional.of($$4.next());
+            for (int $$7 = 0; $$7 < 3; $$7++) {
+               for (int $$8 = 0; $$8 < 3; $$8++) {
+                  ji $$9 = $$6.b($$7, 0, $$8);
+                  $$1.a($$9, true, null);
+                  $$1.a($$9, dkg.fS.m(), 2);
+               }
             }
+
+            $$1.b(1038, $$6.b(1, 0, 1), 0);
          }
 
-         return Optional.empty();
+         return bsy.a;
       }
    }
 
    @Override
-   public cws b(cwq $$0) {
-      return cws.i;
+   public int a(cxh $$0, bvy $$1) {
+      return 0;
    }
 
-   private static void a(dgj $$0, coy $$1, cwj $$2) {
-      avz $$3 = $$2.a().a();
-      float $$4 = $$2.c() / 16.0F;
-      $$0.a($$1, $$1, $$3, awb.c, $$4, 1.0F);
-      $$0.a(ebu.B, $$1.dt(), ebu.a.a($$1));
+   @Override
+   public bsy a(dgz $$0, cpr $$1, bsx $$2) {
+      cxh $$3 = $$1.b($$2);
+      fbt $$4 = a($$0, $$1, dgi.b.a);
+      if ($$4.d() == fbv.a.b && $$0.a_($$4.b()).a(dkg.fT)) {
+         return bsy.e;
+      } else {
+         $$1.c($$2);
+         if ($$0 instanceof ard $$5) {
+            ji $$6 = $$5.a(axb.a, $$1.du(), 100, false);
+            if ($$6 == null) {
+               return bsy.c;
+            }
+
+            cqd $$7 = new cqd($$0, $$1.dz(), $$1.e(0.5), $$1.dF());
+            $$7.a($$3);
+            $$7.a($$6);
+            $$0.a(ecp.K, $$7.ds(), ecp.a.a($$1));
+            $$0.b($$7);
+            if ($$1 instanceof are $$8) {
+               ap.n.a($$8, $$6);
+            }
+
+            float $$9 = ayz.h($$0.A.i(), 0.33F, 0.5F);
+            $$0.a(null, $$1.dz(), $$1.dB(), $$1.dF(), awa.iD, awb.g, 1.0F, $$9);
+            $$3.a(1, $$1);
+            $$1.b(awk.c.b(this));
+         }
+
+         return bsy.b;
+      }
    }
 }

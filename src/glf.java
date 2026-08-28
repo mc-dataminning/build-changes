@@ -1,125 +1,101 @@
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.time.Instant;
-import java.util.List;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class glf {
-   private static final glf a = new glf("") {
-      @Override
-      public void a(flk $$0) {
+public class glf extends glg {
+   private final ji a;
+   private final float b;
+   private final float F;
+
+   public glf(ggy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dxq $$7) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, ji.a($$1, $$2, $$3));
+   }
+
+   public glf(ggy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dxq $$7, ji $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.a = $$8;
+      this.a(fmg.Q().ap().a().a($$7));
+      this.u = 1.0F;
+      this.v = 0.6F;
+      this.w = 0.6F;
+      this.x = 0.6F;
+      if (!$$7.a(dkg.i)) {
+         int $$9 = fmg.Q().aw().a($$7, $$0, $$8, 0);
+         this.v *= (float)($$9 >> 16 & 0xFF) / 255.0F;
+         this.w *= (float)($$9 >> 8 & 0xFF) / 255.0F;
+         this.x *= (float)($$9 & 0xFF) / 255.0F;
       }
 
-      @Override
-      public void a(glf.c $$0, String $$1, String $$2) {
-      }
-   };
-   private static final Logger b = LogUtils.getLogger();
-   private static final Gson c = new GsonBuilder().create();
-   private final Path d;
+      this.D /= 2.0F;
+      this.b = this.r.i() * 3.0F;
+      this.F = this.r.i() * 3.0F;
+   }
+
+   @Override
+   public gkk b() {
+      return gkk.a;
+   }
+
+   @Override
+   protected float c() {
+      return this.E.a((this.b + 1.0F) / 4.0F);
+   }
+
+   @Override
+   protected float d() {
+      return this.E.a(this.b / 4.0F);
+   }
+
+   @Override
+   protected float e() {
+      return this.E.c(this.F / 4.0F);
+   }
+
+   @Override
+   protected float f() {
+      return this.E.c((this.F + 1.0F) / 4.0F);
+   }
+
+   @Override
+   public int a(float $$0) {
+      int $$1 = super.a($$0);
+      return $$1 == 0 && this.c.B(this.a) ? gmt.a(this.c, this.a) : $$1;
+   }
+
    @Nullable
-   private glf.b e;
-
-   glf(String $$0) {
-      this.d = flk.Q().q.toPath().resolve($$0);
+   static glf a(ll $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      dxq $$8 = $$0.b();
+      return !$$8.l() && !$$8.a(dkg.bX) && $$8.D() ? new glf($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) : null;
    }
 
-   public static glf a(@Nullable String $$0) {
-      return $$0 == null ? a : new glf($$0);
-   }
+   public static class a implements gkj<ll> {
+      @Nullable
+      public gkg a(ll $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gkg $$8 = glf.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         if ($$8 != null) {
+            $$8.b(0.0, 0.0, 0.0);
+            $$8.a($$1.A.a(10) + 1);
+         }
 
-   public void a(glf.c $$0, String $$1, String $$2) {
-      this.e = new glf.b($$0, $$1, $$2);
-   }
-
-   public void a(flk $$0) {
-      if ($$0.r != null && this.e != null) {
-         af.i().execute(() -> {
-            try {
-               Files.deleteIfExists(this.d);
-            } catch (IOException var3) {
-               b.error("Failed to delete quickplay log file {}", this.d, var3);
-            }
-
-            glf.a $$2 = new glf.a(this.e, Instant.now(), $$0.r.j());
-            Codec.list(glf.a.a).encodeStart(JsonOps.INSTANCE, List.of($$2)).resultOrPartial(af.a("Quick Play: ", b::error)).ifPresent($$0xx -> {
-               try {
-                  Files.createDirectories(this.d.getParent());
-                  Files.writeString(this.d, c.toJson($$0xx));
-               } catch (IOException var3x) {
-                  b.error("Failed to write to quickplay log file {}", this.d, var3x);
-               }
-            });
-         });
-      } else {
-         b.error("Failed to log session for quickplay. Missing world data or gamemode");
+         return $$8;
       }
    }
 
-   static record a(glf.b b, Instant c, dgg d) {
-      public static final Codec<glf.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(glf.b.a.forGetter(glf.a::a), ayi.q.fieldOf("lastPlayedTime").forGetter(glf.a::b), dgg.f.fieldOf("gamemode").forGetter(glf.a::c))
-               .apply($$0, glf.a::new)
-      );
+   public static class b implements gkj<ll> {
+      @Nullable
+      public gkg a(ll $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gkg $$8 = glf.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         if ($$8 != null) {
+            $$8.b($$1.A.k() / 30.0, $$6 + $$1.A.k() / 2.0, $$1.A.k() / 30.0);
+            $$8.a($$1.A.a(20) + 20);
+         }
 
-      public glf.b a() {
-         return this.b;
-      }
-
-      public Instant b() {
-         return this.c;
-      }
-
-      public dgg c() {
-         return this.d;
+         return $$8;
       }
    }
 
-   static record b(glf.c b, String c, String d) {
-      public static final MapCodec<glf.b> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  glf.c.d.fieldOf("type").forGetter(glf.b::a), ayi.s.fieldOf("id").forGetter(glf.b::b), Codec.STRING.fieldOf("name").forGetter(glf.b::c)
-               )
-               .apply($$0, glf.b::new)
-      );
-
-      public glf.c a() {
-         return this.b;
-      }
-
-      public String b() {
-         return this.c;
-      }
-
-      public String c() {
-         return this.d;
-      }
-   }
-
-   public static enum c implements azv {
-      a("singleplayer"),
-      b("multiplayer"),
-      c("realms");
-
-      static final Codec<glf.c> d = azv.a(glf.c::values);
-      private final String e;
-
-      private c(final String $$0) {
-         this.e = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.e;
+   public static class c implements gkj<ll> {
+      @Nullable
+      public gkg a(ll $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return glf.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       }
    }
 }

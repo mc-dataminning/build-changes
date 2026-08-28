@@ -1,57 +1,78 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
+public interface dfe {
+   akt<dez> a = dff.a("trades/desert_armorer_boots_4");
+   akt<dez> b = dff.a("trades/desert_armorer_leggings_4");
+   akt<dez> c = dff.a("trades/desert_armorer_chestplate_4");
+   akt<dez> d = dff.a("trades/desert_armorer_helmet_4");
+   akt<dez> e = dff.a("trades/desert_armorer_leggings_5");
+   akt<dez> f = dff.a("trades/desert_armorer_chestplate_5");
+   akt<dez> g = dff.a("trades/plains_armorer_boots_4");
+   akt<dez> h = dff.a("trades/plains_armorer_leggings_4");
+   akt<dez> i = dff.a("trades/plains_armorer_chestplate_4");
+   akt<dez> j = dff.a("trades/plains_armorer_helmet_4");
+   akt<dez> k = dff.a("trades/plains_armorer_boots_5");
+   akt<dez> l = dff.a("trades/plains_armorer_leggings_5");
+   akt<dez> m = dff.a("trades/savanna_armorer_boots_4");
+   akt<dez> n = dff.a("trades/savanna_armorer_leggings_4");
+   akt<dez> o = dff.a("trades/savanna_armorer_chestplate_4");
+   akt<dez> p = dff.a("trades/savanna_armorer_helmet_4");
+   akt<dez> q = dff.a("trades/savanna_armorer_chestplate_5");
+   akt<dez> r = dff.a("trades/savanna_armorer_helmet_5");
+   akt<dez> s = dff.a("trades/snow_armorer_boots_4");
+   akt<dez> t = dff.a("trades/snow_armorer_helmet_4");
+   akt<dez> u = dff.a("trades/snow_armorer_boots_5");
+   akt<dez> v = dff.a("trades/snow_armorer_helmet_5");
+   akt<dez> w = dff.a("trades/jungle_armorer_boots_4");
+   akt<dez> x = dff.a("trades/jungle_armorer_leggings_4");
+   akt<dez> y = dff.a("trades/jungle_armorer_chestplate_4");
+   akt<dez> z = dff.a("trades/jungle_armorer_helmet_4");
+   akt<dez> A = dff.a("trades/jungle_armorer_boots_5");
+   akt<dez> B = dff.a("trades/jungle_armorer_helmet_5");
+   akt<dez> C = dff.a("trades/swamp_armorer_boots_4");
+   akt<dez> D = dff.a("trades/swamp_armorer_leggings_4");
+   akt<dez> E = dff.a("trades/swamp_armorer_chestplate_4");
+   akt<dez> F = dff.a("trades/swamp_armorer_helmet_4");
+   akt<dez> G = dff.a("trades/swamp_armorer_boots_5");
+   akt<dez> H = dff.a("trades/swamp_armorer_helmet_5");
+   akt<dez> I = dff.a("trades/taiga_armorer_leggings_5");
+   akt<dez> J = dff.a("trades/taiga_armorer_chestplate_5");
 
-public record dfe(jr<cwm> d, int e, kt f, cwq g) {
-   public static final Codec<dfe> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               cwm.e.fieldOf("id").forGetter(dfe::a),
-               ayi.m.fieldOf("count").orElse(1).forGetter(dfe::b),
-               kt.a.optionalFieldOf("components", kt.c).forGetter(dfe::c)
-            )
-            .apply($$0, dfe::new)
-   );
-   public static final yn<wa, dfe> b = yn.a(yl.b(mc.K), dfe::a, yl.h, dfe::b, kt.b, dfe::c, dfe::new);
-   public static final yn<wa, Optional<dfe>> c = b.a(yl::a);
-
-   public dfe(dgi $$0) {
-      this($$0, 1);
-   }
-
-   public dfe(dgi $$0, int $$1) {
-      this($$0.j().f(), $$1, kt.c);
-   }
-
-   public dfe(jr<cwm> $$0, int $$1, kt $$2) {
-      this($$0, $$1, $$2, a($$0, $$1, $$2));
-   }
-
-   public dfe a(UnaryOperator<kt.a> $$0) {
-      return new dfe(this.d, this.e, $$0.apply(kt.a()).a());
-   }
-
-   private static cwq a(jr<cwm> $$0, int $$1, kt $$2) {
-      return new cwq($$0, $$1, $$2.c());
-   }
-
-   public boolean a(cwq $$0) {
-      return $$0.a(this.d) && this.f.a($$0);
-   }
-
-   public jr<cwm> a() {
-      return this.d;
-   }
-
-   public int b() {
-      return this.e;
-   }
-
-   public kt c() {
-      return this.f;
-   }
-
-   public cwq d() {
-      return this.g;
+   static void a(qe<dez> $$0) {
+      js<ddr> $$1 = $$0.a(mc.aP);
+      $$0.a(a, new dfd($$1.b(ddw.h), bsa.a(1)));
+      $$0.a(b, new dfd($$1.b(ddw.h), bsa.a(1)));
+      $$0.a(c, new dfd($$1.b(ddw.h), bsa.a(1)));
+      $$0.a(d, new dfd($$1.b(ddw.h), bsa.a(1)));
+      $$0.a(e, new dfd($$1.b(ddw.h), bsa.a(1)));
+      $$0.a(f, new dfd($$1.b(ddw.h), bsa.a(1)));
+      $$0.a(g, new dfd($$1.b(ddw.a), bsa.a(1)));
+      $$0.a(h, new dfd($$1.b(ddw.a), bsa.a(1)));
+      $$0.a(i, new dfd($$1.b(ddw.a), bsa.a(1)));
+      $$0.a(j, new dfd($$1.b(ddw.a), bsa.a(1)));
+      $$0.a(k, new dfd($$1.b(ddw.a), bsa.a(1)));
+      $$0.a(l, new dfd($$1.b(ddw.a), bsa.a(1)));
+      $$0.a(m, new dfd($$1.b(ddw.k), bsa.a(1)));
+      $$0.a(n, new dfd($$1.b(ddw.k), bsa.a(1)));
+      $$0.a(o, new dfd($$1.b(ddw.k), bsa.a(1)));
+      $$0.a(p, new dfd($$1.b(ddw.k), bsa.a(1)));
+      $$0.a(q, new dfd($$1.b(ddw.k), bsa.a(1)));
+      $$0.a(r, new dfd($$1.b(ddw.k), bsa.a(1)));
+      $$0.a(s, new dfd($$1.b(ddw.j), bsa.a(1)));
+      $$0.a(t, new dfd($$1.b(ddw.g), bsa.a(1)));
+      $$0.a(u, new dfd($$1.b(ddw.j), bsa.a(1)));
+      $$0.a(v, new dfd($$1.b(ddw.g), bsa.a(1)));
+      $$0.a(w, new dfd($$1.b(ddw.w), bsa.a(1)));
+      $$0.a(x, new dfd($$1.b(ddw.w), bsa.a(1)));
+      $$0.a(y, new dfd($$1.b(ddw.w), bsa.a(1)));
+      $$0.a(z, new dfd($$1.b(ddw.w), bsa.a(1)));
+      $$0.a(A, new dfd($$1.b(ddw.c), bsa.a(1)));
+      $$0.a(B, new dfd($$1.b(ddw.e), bsa.a(1)));
+      $$0.a(C, new dfd($$1.b(ddw.O), bsa.a(1)));
+      $$0.a(D, new dfd($$1.b(ddw.O), bsa.a(1)));
+      $$0.a(E, new dfd($$1.b(ddw.O), bsa.a(1)));
+      $$0.a(F, new dfd($$1.b(ddw.O), bsa.a(1)));
+      $$0.a(G, new dfd($$1.b(ddw.i), bsa.a(1)));
+      $$0.a(H, new dfd($$1.b(ddw.f), bsa.a(1)));
+      $$0.a(I, new dfd($$1.b(ddw.d), bsa.a(1)));
+      $$0.a(J, new dfd($$1.b(ddw.d), bsa.a(1)));
    }
 }

@@ -1,62 +1,56 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public class eii implements eid {
-   public static final Codec<eii> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               mb.e.q().fieldOf("block").flatXmap(eii::a, DataResult::success).orElse((doq)djp.fu).forGetter($$0x -> $$0x.b),
-               Codec.intRange(1, 64).fieldOf("search_range").orElse(10).forGetter($$0x -> $$0x.c),
-               Codec.BOOL.fieldOf("can_place_on_floor").orElse(false).forGetter($$0x -> $$0x.d),
-               Codec.BOOL.fieldOf("can_place_on_ceiling").orElse(false).forGetter($$0x -> $$0x.e),
-               Codec.BOOL.fieldOf("can_place_on_wall").orElse(false).forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spreading").orElse(0.5F).forGetter($$0x -> $$0x.g),
-               kg.a(mc.f).fieldOf("can_be_placed_on").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, eii::new)
-   );
-   public final doq b;
-   public final int c;
-   public final boolean d;
-   public final boolean e;
-   public final boolean f;
-   public final float g;
-   public final jv<djn> h;
-   private final ObjectArrayList<jn> i;
-
-   private static DataResult<doq> a(djn $$0) {
-      return $$0 instanceof doq $$1 ? DataResult.success($$1) : DataResult.error(() -> "Growth block should be a multiface spreadeable block");
+public class eii extends egu<ejw> {
+   public eii(Codec<ejw> $$0) {
+      super($$0);
    }
 
-   public eii(doq $$0, int $$1, boolean $$2, boolean $$3, boolean $$4, float $$5, jv<djn> $$6) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = new ObjectArrayList(6);
-      if ($$3) {
-         this.i.add(jn.b);
-      }
-
-      if ($$2) {
-         this.i.add(jn.a);
-      }
-
-      if ($$4) {
-         jn.c.a.forEach(this.i::add);
+   @Override
+   public boolean a(egw<ejw> $$0) {
+      dhy $$1 = $$0.b();
+      ji $$2 = $$0.e();
+      ejw $$3 = $$0.f();
+      azh $$4 = $$0.d();
+      OptionalInt $$5 = a($$1, $$2, $$3);
+      if ($$5.isEmpty()) {
+         return false;
+      } else {
+         ji $$6 = $$2.h($$5.getAsInt());
+         km $$7 = new km($$3.c, $$3.c, $$3.c);
+         eob $$8 = eob.a($$6.b($$7), $$6.a($$7));
+         return ji.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
+            $$1.a($$1x, dkg.ll.m(), 2);
+            return 1;
+         }).sum() > 0;
       }
    }
 
-   public List<jn> a(azh $$0, jn $$1) {
-      return af.a(this.i.stream().filter($$1x -> $$1x != $$1), $$0);
+   private static OptionalInt a(dhy $$0, ji $$1, ejw $$2) {
+      Predicate<dxq> $$3 = $$0x -> $$0x.a(dkg.J);
+      Predicate<dxq> $$4 = $$0x -> !$$0x.a(dkg.J);
+      Optional<ede> $$5 = ede.a($$0, $$1, $$2.b, $$3, $$4);
+      return $$5.<OptionalInt>map(ede::c).orElseGet(OptionalInt::empty);
    }
 
-   public List<jn> a(azh $$0) {
-      return af.a(this.i, $$0);
+   private boolean b(dhy $$0, ji $$1) {
+      if (!this.a($$0, $$1) && !this.a($$0, $$1.e())) {
+         for (jn $$2 : jn.c.a) {
+            if (this.a($$0, $$1.a($$2))) {
+               return false;
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private boolean a(dha $$0, ji $$1) {
+      dxq $$2 = $$0.a_($$1);
+      return $$2.a(dkg.J) || $$2.l();
    }
 }

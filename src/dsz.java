@@ -1,35 +1,44 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class dsz extends dlu implements dsx {
-   public static final MapCodec<dsz> l = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dxn.a.fieldOf("block_set_type").forGetter(dlu::b), dsx.a.e.fieldOf("weathering_state").forGetter(dsz::q), t()).apply($$0, dsz::new)
-   );
-   private final dsx.a m;
+public class dsz extends djq {
+   public static final MapCodec<dsz> a = b(dsz::new);
+   public static final dyo<dww> b = dyg.bB;
+   public static final dyh c = dyg.bE;
 
    @Override
    public MapCodec<dsz> a() {
-      return l;
+      return a;
    }
 
-   protected dsz(dxn $$0, dsx.a $$1, dwx.d $$2) {
-      super($$0, $$2);
-      this.m = $$1;
-   }
-
-   @Override
-   protected void b(dwy $$0, ard $$1, ji $$2, azh $$3) {
-      if ($$0.c(dlu.f) == dxt.b) {
-         this.a_($$0, $$1, $$2, $$3);
-      }
+   public dsz(dxp.d $$0) {
+      super($$0);
+      this.l(this.B.b().b(b, dww.a).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean f(dwy $$0) {
-      return dsx.c($$0.b()).isPresent();
+   protected void a(dxr.a<dke, dxq> $$0) {
+      $$0.a(b, c);
    }
 
-   public dsx.a q() {
-      return this.m;
+   @Nullable
+   @Override
+   public dus a(ji $$0, dxq $$1) {
+      return new dwp($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dus> dut<T> a(dgz $$0, dxq $$1, duu<T> $$2) {
+      return $$0 instanceof ard $$3
+         ? a($$2, duu.R, ($$1x, $$2x, $$3x, $$4) -> $$4.c().a($$3, $$2x, $$3x.d(dyg.bE).orElse(false)))
+         : a($$2, duu.R, ($$0x, $$1x, $$2x, $$3x) -> $$3x.c().a($$0x, $$1x, $$2x.d(dyg.bE).orElse(false)));
+   }
+
+   @Override
+   public void a(cxh $$0, cxd.b $$1, List<wp> $$2, cyx $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      dhu.a($$0, $$2, "spawn_data");
    }
 }

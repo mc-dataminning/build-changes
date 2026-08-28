@@ -1,75 +1,59 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class fzt extends fvi {
+   private static final wp a = wp.c("gui.abuseReport.title");
+   private static final wp b = wp.c("gui.abuseReport.message");
+   private static final wp c = wp.c("gui.abuseReport.type.chat");
+   private static final wp d = wp.c("gui.abuseReport.type.skin");
+   private static final wp s = wp.c("gui.abuseReport.type.name");
+   private static final int u = 6;
+   private final fvi v;
+   private final gih w;
+   private final fzx x;
+   private final fti y = fti.d().a(6);
 
-public class fzt extends fum {
-   private static final Logger d = LogUtils.getLogger();
-   public static final edr a = new edr((long)"test1".hashCode(), true, false);
-   protected final fum b;
-   private fou s;
-   private fou u;
-   private fou v;
-   private fou w;
-   protected fpd c;
-   private fzz x;
+   public fzt(fvi $$0, gih $$1, fzx $$2) {
+      super(a);
+      this.v = $$0;
+      this.w = $$1;
+      this.x = $$2;
+   }
 
-   public fzt(fum $$0) {
-      super(wp.c("selectWorld.title"));
-      this.b = $$0;
+   @Override
+   public wp i() {
+      return wo.a(super.i(), b);
    }
 
    @Override
    protected void aR_() {
-      this.c = new fpd(this.p, this.n / 2 - 100, 22, 200, 20, this.c, wp.c("selectWorld.search"));
-      this.c.b($$0 -> this.x.a($$0));
-      this.d(this.c);
-      this.x = this.c(new fzz(this, this.m, this.n, this.o - 112, 48, 36, this.c.a(), this.x));
-      this.u = this.c(fou.a(evh.a, $$0 -> this.x.b().ifPresent(fzz.c::c)).a(this.n / 2 - 154, this.o - 52, 150, 20).a());
-      this.c(fou.a(wp.c("selectWorld.create"), $$0 -> fzl.a(this.m, this)).a(this.n / 2 + 4, this.o - 52, 150, 20).a());
-      this.v = this.c(fou.a(wp.c("selectWorld.edit"), $$0 -> this.x.b().ifPresent(fzz.c::g)).a(this.n / 2 - 154, this.o - 28, 72, 20).a());
-      this.s = this.c(fou.a(wp.c("selectWorld.delete"), $$0 -> this.x.b().ifPresent(fzz.c::d)).a(this.n / 2 - 76, this.o - 28, 72, 20).a());
-      this.w = this.c(fou.a(wp.c("selectWorld.recreate"), $$0 -> this.x.b().ifPresent(fzz.c::h)).a(this.n / 2 + 4, this.o - 28, 72, 20).a());
-      this.c(fou.a(wo.k, $$0 -> this.m.a(this.b)).a(this.n / 2 + 82, this.o - 28, 72, 20).a());
-      this.a(null);
+      this.y.c().b();
+      this.y.a(new fqx(this.l, this.p), this.y.b().e(6));
+      this.y.a(new fqk(b, this.p).b(true), this.y.b().e(6));
+      fpq $$0 = this.y.a(fpq.a(c, $$0x -> this.m.a(new fzp(this.v, this.w, this.x.g()))).a());
+      if (!this.x.l()) {
+         $$0.j = false;
+         $$0.a(frb.a(wp.c("gui.socialInteractions.tooltip.report.not_reportable")));
+      } else if (!this.x.k()) {
+         $$0.j = false;
+         $$0.a(frb.a(wp.a("gui.socialInteractions.tooltip.report.no_messages", this.x.c())));
+      }
+
+      this.y.a(fpq.a(d, $$0x -> this.m.a(new fzv(this.v, this.w, this.x.g(), this.x.h()))).a());
+      this.y.a(fpq.a(s, $$0x -> this.m.a(new fzs(this.v, this.w, this.x.g(), this.x.c()))).a());
+      this.y.a(ftj.b(20));
+      this.y.a(fpq.a(wo.e, $$0x -> this.aO_()).a());
+      this.y.a($$1 -> {
+         fpo var10000 = this.c($$1);
+      });
+      this.c();
    }
 
    @Override
-   protected void aF_() {
-      this.b(this.c);
+   protected void c() {
+      this.y.a();
+      ftc.a(this.y, this.J());
    }
 
    @Override
    public void aO_() {
-      this.m.a(this.b);
-   }
-
-   @Override
-   public void a(fof $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 8, 16777215);
-   }
-
-   public void a(@Nullable evh $$0) {
-      if ($$0 == null) {
-         this.u.b(evh.a);
-         this.u.j = false;
-         this.v.j = false;
-         this.w.j = false;
-         this.s.j = false;
-      } else {
-         this.u.b($$0.t());
-         this.u.j = $$0.u();
-         this.v.j = $$0.w();
-         this.w.j = $$0.x();
-         this.s.j = $$0.y();
-      }
-   }
-
-   @Override
-   public void aI_() {
-      if (this.x != null) {
-         this.x.aH_().forEach(fzz.a::close);
-      }
+      this.m.a(this.v);
    }
 }

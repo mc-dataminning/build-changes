@@ -1,41 +1,30 @@
-import java.util.List;
-
 public class acg implements yw<abl> {
-   public static final yn<wa, acg> a = yw.a(acg::a, acg::new);
+   public static final yn<vl, acg> a = yw.a(acg::a, acg::new);
    private final int b;
    private final int c;
-   private final List<cwq> d;
-   private final cwq e;
+   private final int d;
 
-   public acg(int $$0, int $$1, ka<cwq> $$2, cwq $$3) {
+   public acg(int $$0, int $$1, int $$2) {
       this.b = $$0;
       this.c = $$1;
-      this.d = ka.a($$2.size(), cwq.j);
-
-      for (int $$4 = 0; $$4 < $$2.size(); $$4++) {
-         this.d.set($$4, $$2.get($$4).v());
-      }
-
-      this.e = $$3.v();
+      this.d = $$2;
    }
 
-   private acg(wa $$0) {
+   private acg(vl $$0) {
       this.b = $$0.x();
-      this.c = $$0.l();
-      this.d = cwq.i.decode($$0);
-      this.e = cwq.g.decode($$0);
+      this.c = $$0.readShort();
+      this.d = $$0.readShort();
    }
 
-   private void a(wa $$0) {
+   private void a(vl $$0) {
       $$0.f(this.b);
-      $$0.c(this.c);
-      cwq.i.encode($$0, this.d);
-      cwq.g.encode($$0, this.e);
+      $$0.m(this.c);
+      $$0.m(this.d);
    }
 
    @Override
    public yy<acg> a() {
-      return age.u;
+      return agd.u;
    }
 
    public void a(abl $$0) {
@@ -46,15 +35,11 @@ public class acg implements yw<abl> {
       return this.b;
    }
 
-   public List<cwq> e() {
-      return this.d;
-   }
-
-   public cwq f() {
-      return this.e;
-   }
-
-   public int g() {
+   public int e() {
       return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

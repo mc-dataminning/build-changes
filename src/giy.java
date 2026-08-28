@@ -1,43 +1,59 @@
-public class giy extends gjg {
-   private final double a;
-   private final int b;
+public class giy extends glg {
+   private final glb a;
 
-   giy(gga $$0, double $$1, double $$2, double $$3, double $$4, int $$5, int $$6) {
+   protected giy(
+      ggy $$0,
+      double $$1,
+      double $$2,
+      double $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      double $$7,
+      double $$8,
+      double $$9,
+      float $$10,
+      glb $$11,
+      float $$12,
+      int $$13,
+      float $$14,
+      boolean $$15
+   ) {
       super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$4;
-      this.t = $$5;
-      this.b = $$6;
+      this.B = 0.96F;
+      this.u = $$14;
+      this.C = true;
+      this.a = $$11;
+      this.j *= (double)$$4;
+      this.k *= (double)$$5;
+      this.l *= (double)$$6;
+      this.j += $$7;
+      this.k += $$8;
+      this.l += $$9;
+      float $$16 = $$0.A.i() * $$12;
+      this.v = $$16;
+      this.w = $$16;
+      this.x = $$16;
+      this.D *= 0.75F * $$10;
+      this.t = (int)((double)$$13 / ((double)$$0.A.i() * 0.8 + 0.2) * (double)$$10);
+      this.t = Math.max(this.t, 1);
+      this.b($$11);
+      this.n = $$15;
+   }
+
+   @Override
+   public gkk b() {
+      return gkk.b;
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * ayz.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
    public void a() {
-      if (this.s % (this.b + 1) == 0) {
-         for (int $$0 = 0; $$0 < 3; $$0++) {
-            double $$1 = this.g + (this.r.j() - this.r.j()) * this.a;
-            double $$2 = this.h + (this.r.j() - this.r.j()) * this.a;
-            double $$3 = this.i + (this.r.j() - this.r.j()) * this.a;
-            this.c.a(lt.x, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
-         }
-      }
-
-      if (this.s++ == this.t) {
-         this.k();
-      }
-   }
-
-   public static class a implements gjl<lx> {
-      private final double a;
-      private final int b;
-      private final int c;
-
-      public a(double $$0, int $$1, int $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      public gji a(lx $$0, gga $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new giy($$1, $$2, $$3, $$4, this.a, this.b, this.c);
-      }
+      super.a();
+      this.b(this.a);
    }
 }

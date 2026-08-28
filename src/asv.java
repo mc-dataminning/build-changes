@@ -29,7 +29,7 @@ public class asv implements atc {
 
    @Nullable
    @Override
-   public auh<InputStream> a(ate $$0, akv $$1) {
+   public auh<InputStream> a(ate $$0, aku $$1) {
       for (atc $$2 : this.d) {
          auh<InputStream> $$3 = $$2.a($$0, $$1);
          if ($$3 != null) {
@@ -42,7 +42,7 @@ public class asv implements atc {
 
    @Override
    public void a(ate $$0, String $$1, String $$2, atc.a $$3) {
-      Map<akv, auh<InputStream>> $$4 = new HashMap<>();
+      Map<aku, auh<InputStream>> $$4 = new HashMap<>();
 
       for (atc $$5 : this.d) {
          $$5.a($$0, $$1, $$2, $$4::putIfAbsent);

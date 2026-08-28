@@ -1,11 +1,19 @@
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface erx {
-   Codec<erx> c = mb.n.q().dispatch(erx::a, ery::codec);
+public class erx extends ery {
+   public static final MapCodec<erx> a = MapCodec.unit(() -> erx.b);
+   public static final erx b = new erx();
 
-   @Nullable
-   tq a(azh var1, @Nullable tq var2);
+   private erx() {
+   }
 
-   ery<?> a();
+   @Override
+   public boolean a(ji $$0, ji $$1, ji $$2, azh $$3) {
+      return true;
+   }
+
+   @Override
+   protected erz<?> a() {
+      return erz.a;
+   }
 }

@@ -1,42 +1,16 @@
-public class abo implements yw<abl> {
-   public static final yn<vl, abo> a = yw.a(abo::a, abo::new);
-   public static final int b = 0;
-   public static final int c = 2;
-   public static final int d = 3;
-   public static final int e = 4;
-   public static final int f = 5;
-   private final int g;
-   private final int h;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-   public abo(bum $$0, int $$1) {
-      this.g = $$0.ar();
-      this.h = $$1;
-   }
-
-   private abo(vl $$0) {
-      this.g = $$0.l();
-      this.h = $$0.readUnsignedByte();
-   }
-
-   private void a(vl $$0) {
-      $$0.c(this.g);
-      $$0.l(this.h);
-   }
+public record abo(Object2IntMap<awh<?>> b) implements yw<abl> {
+   private static final yn<wa, Object2IntMap<awh<?>>> c = yl.a(Object2IntOpenHashMap::new, awh.a, yl.h);
+   public static final yn<wa, abo> a = c.a(abo::new, abo::b);
 
    @Override
    public yy<abo> a() {
-      return age.e;
+      return agd.e;
    }
 
    public void a(abl $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.g;
-   }
-
-   public int e() {
-      return this.h;
    }
 }

@@ -1,34 +1,44 @@
-import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class byc extends bxb<bvk> {
-   public static final int c = 100;
-   private final brw d;
-   private final avz e;
+public class byc implements bzf {
+   private final bva a;
+   private final boolean b;
 
-   public byc(brw $$0, avz $$1) {
-      super(ImmutableMap.of(cem.n, cen.c, cem.T, cen.a), 100);
-      this.d = $$0;
-      this.e = $$1;
+   public byc(bva $$0, boolean $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   protected boolean a(ard $$0, bvk $$1, long $$2) {
-      return !$$1.aJ();
+   @Override
+   public fbx a() {
+      return this.b ? this.a.ds().b(0.0, (double)this.a.cR(), 0.0) : this.a.ds();
    }
 
-   protected void b(ard $$0, bvk $$1, long $$2) {
-      $$1.r(true);
-      $$1.b(bvu.g);
+   @Override
+   public ji b() {
+      return this.a.du();
    }
 
-   protected void c(ard $$0, bvk $$1, long $$2) {
-      if ($$1.aJ()) {
-         $$1.i($$1.dy().d(0.1F, 1.0, 0.1F));
-         $$0.a(null, $$1, this.e, awb.g, 2.0F, 1.0F);
+   @Override
+   public boolean a(bvy $$0) {
+      if (this.a instanceof bvy $$1) {
+         if (!$$1.bJ()) {
+            return false;
+         } else {
+            Optional<cfe> $$3 = $$0.ea().c(cfc.h);
+            return $$3.isPresent() && $$3.get().a($$1);
+         }
+      } else {
+         return true;
       }
+   }
 
-      $$1.r(false);
-      $$1.b(bvu.a);
-      $$1.eb().b(cem.T);
-      $$1.eb().a(cem.S, this.d.a($$0.A));
+   public bva c() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "EntityTracker for " + this.a;
    }
 }

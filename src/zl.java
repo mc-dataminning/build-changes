@@ -1,6 +1,6 @@
 import io.netty.buffer.ByteBuf;
 
-public record zl(akv c, byte[] d) implements yw<zc> {
+public record zl(aku c, byte[] d) implements yw<zc> {
    public static final yn<vl, zl> a = yw.a(zl::a, zl::new);
    private static final int e = 5120;
    public static final yn<ByteBuf, byte[]> b = yl.a(5120);
@@ -23,7 +23,7 @@ public record zl(akv c, byte[] d) implements yw<zc> {
       $$0.a(this);
    }
 
-   public akv b() {
+   public aku b() {
       return this.c;
    }
 

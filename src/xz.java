@@ -2,8 +2,8 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.stream.Stream;
 
-public record xz(akv d) implements xr {
-   public static final MapCodec<xz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(akv.a.fieldOf("storage").forGetter(xz::b)).apply($$0, xz::new));
+public record xz(aku d) implements xr {
+   public static final MapCodec<xz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(aku.a.fieldOf("storage").forGetter(xz::b)).apply($$0, xz::new));
    public static final xr.a<xz> b = new xr.a<>(a, "storage");
 
    @Override
@@ -22,7 +22,7 @@ public record xz(akv d) implements xr {
       return "storage=" + this.d;
    }
 
-   public akv b() {
+   public aku b() {
       return this.d;
    }
 }

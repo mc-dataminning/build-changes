@@ -14,11 +14,11 @@ public class my implements mi {
    private static final my.b f = new my.b(true, true, true);
    private static final my.b g = new my.b(true, true, false);
    private static final my.b h = new my.b(false, true, true);
-   private static final Map<aku<? extends ke<?>>, my.b> i = Map.of(mc.bk, e, mc.bj, e, mc.bg, f, mc.bh, f, mc.bi, f);
+   private static final Map<akt<? extends ke<?>>, my.b> i = Map.of(mc.bm, e, mc.bl, e, mc.bi, f, mc.bj, f, mc.bk, f);
    private static final Map<String, my.a> j = Map.of(
       "structure", new my.a(my.c.a, new my.b(true, false, true)), "function", new my.a(my.c.b, new my.b(true, true, true))
    );
-   static final Codec<aku<? extends ke<?>>> k = akv.a.xmap(aku::a, aku::a);
+   static final Codec<akt<? extends ke<?>>> k = aku.a.xmap(akt::a, akt::a);
 
    public my(mk $$0) {
       this.d = $$0;
@@ -36,19 +36,19 @@ public class my implements mi {
       return "Datapack Structure";
    }
 
-   private void a(Map<aku<? extends ke<?>>, my.b> $$0, aku<? extends ke<?>> $$1, my.b $$2) {
+   private void a(Map<akt<? extends ke<?>>, my.b> $$0, akt<? extends ke<?>> $$1, my.b $$2) {
       my.b $$3 = $$0.putIfAbsent($$1, $$2);
       if ($$3 != null) {
          throw new IllegalStateException("Duplicate entry for key " + $$1.a());
       }
    }
 
-   private Map<aku<? extends ke<?>>, my.b> b() {
-      Map<aku<? extends ke<?>>, my.b> $$0 = new HashMap<>();
-      mb.aC.forEach($$1 -> this.a($$0, $$1.g(), h));
-      akq.a.forEach($$1 -> this.a($$0, $$1.a(), g));
-      akq.b.forEach($$1 -> this.a($$0, $$1.a(), g));
-      i.forEach(($$1, $$2) -> this.a($$0, (aku<? extends ke<?>>)$$1, $$2));
+   private Map<akt<? extends ke<?>>, my.b> b() {
+      Map<akt<? extends ke<?>>, my.b> $$0 = new HashMap<>();
+      mb.aD.forEach($$1 -> this.a($$0, $$1.g(), h));
+      akp.a.forEach($$1 -> this.a($$0, $$1.a(), g));
+      akp.b.forEach($$1 -> this.a($$0, $$1.a(), g));
+      i.forEach(($$1, $$2) -> this.a($$0, (akt<? extends ke<?>>)$$1, $$2));
       return $$0;
    }
 
@@ -107,7 +107,7 @@ public class my implements mi {
       }
    }
 
-   static record d(Map<aku<? extends ke<?>>, my.b> b, Map<String, my.a> c) {
+   static record d(Map<akt<? extends ke<?>>, my.b> b, Map<String, my.a> c) {
       public static final Codec<my.d> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   Codec.unboundedMap(my.k, my.b.b).fieldOf("registries").forGetter(my.d::a),
@@ -116,7 +116,7 @@ public class my implements mi {
                .apply($$0, my.d::new)
       );
 
-      public Map<aku<? extends ke<?>>, my.b> a() {
+      public Map<akt<? extends ke<?>>, my.b> a() {
          return this.b;
       }
 

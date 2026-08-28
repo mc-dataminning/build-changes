@@ -1,151 +1,179 @@
-import com.mojang.datafixers.Products.P5;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.Optional;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.Long2BooleanMap;
+import it.unimi.dsi.fastutil.longs.Long2BooleanOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.HashMap;
+import java.util.Map;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class eok {
-   public static final Codec<eok> b = mb.P.q().dispatch(eok::e, eol::codec);
-   private static final int a = 10387320;
-   private final km c;
-   private final eok.c d;
-   private final float e;
-   private final int f;
-   private final Optional<eok.a> g;
+public class eok {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = -1;
+   private final eav c;
+   private final kf d;
+   private final esm e;
+   private final akt<dgz> f;
+   private final dzn g;
+   private final eec h;
+   private final dhb i;
+   private final dig j;
+   private final long k;
+   private final DataFixer l;
+   private final Long2ObjectMap<Object2IntMap<eoj>> m = new Long2ObjectOpenHashMap();
+   private final Map<eoj, Long2BooleanMap> n = new HashMap<>();
 
-   protected static <S extends eok> P5<Mu<S>, km, eok.c, Float, Integer, Optional<eok.a>> a(Instance<S> $$0) {
-      return $$0.group(
-         km.v(16).optionalFieldOf("locate_offset", km.h).forGetter(eok::f),
-         eok.c.e.optionalFieldOf("frequency_reduction_method", eok.c.a).forGetter(eok::g),
-         Codec.floatRange(0.0F, 1.0F).optionalFieldOf("frequency", 1.0F).forGetter(eok::h),
-         ayi.l.fieldOf("salt").forGetter(eok::i),
-         eok.a.a.optionalFieldOf("exclusion_zone").forGetter(eok::j)
-      );
-   }
-
-   protected eok(km $$0, eok.c $$1, float $$2, int $$3, Optional<eok.a> $$4) {
+   public eok(eav $$0, kf $$1, esm $$2, akt<dgz> $$3, dzn $$4, eec $$5, dhb $$6, dig $$7, long $$8, DataFixer $$9) {
       this.c = $$0;
       this.d = $$1;
       this.e = $$2;
       this.f = $$3;
       this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
+      this.k = $$8;
+      this.l = $$9;
    }
 
-   protected km f() {
-      return this.c;
-   }
-
-   protected eok.c g() {
-      return this.d;
-   }
-
-   protected float h() {
-      return this.e;
-   }
-
-   protected int i() {
-      return this.f;
-   }
-
-   protected Optional<eok.a> j() {
-      return this.g;
-   }
-
-   public boolean b(dyv $$0, int $$1, int $$2) {
-      return this.a($$0, $$1, $$2) && this.a($$1, $$2, $$0.d()) && this.c($$0, $$1, $$2);
-   }
-
-   public boolean a(int $$0, int $$1, long $$2) {
-      return !(this.e < 1.0F) || this.d.a($$2, this.f, $$0, $$1, this.e);
-   }
-
-   public boolean c(dyv $$0, int $$1, int $$2) {
-      return !this.g.isPresent() || !this.g.get().a($$0, $$1, $$2);
-   }
-
-   protected abstract boolean a(dyv var1, int var2, int var3);
-
-   public ji a(dfp $$0) {
-      return new ji($$0.d(), 0, $$0.e()).a(this.f());
-   }
-
-   public abstract eol<?> e();
-
-   private static boolean a(long $$0, int $$1, int $$2, int $$3, float $$4) {
-      eds $$5 = new eds(new ecu(0L));
-      $$5.a($$0, $$1, $$2, $$3);
-      return $$5.i() < $$4;
-   }
-
-   private static boolean b(long $$0, int $$1, int $$2, int $$3, float $$4) {
-      eds $$5 = new eds(new ecu(0L));
-      $$5.c($$0, $$2, $$3);
-      return $$5.j() < (double)$$4;
-   }
-
-   private static boolean c(long $$0, int $$1, int $$2, int $$3, float $$4) {
-      eds $$5 = new eds(new ecu(0L));
-      $$5.a($$0, $$2, $$3, 10387320);
-      return $$5.i() < $$4;
-   }
-
-   private static boolean d(long $$0, int $$1, int $$2, int $$3, float $$4) {
-      int $$5 = $$2 >> 4;
-      int $$6 = $$3 >> 4;
-      eds $$7 = new eds(new ecu(0L));
-      $$7.b((long)($$5 ^ $$6 << 4) ^ $$0);
-      $$7.f();
-      return $$7.a((int)(1.0F / $$4)) == 0;
-   }
-
-   @Deprecated
-   public static record a(jr<ent> b, int c) {
-      public static final Codec<eok.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(akr.a(mc.aW, ent.a, false).fieldOf("other_set").forGetter(eok.a::a), Codec.intRange(1, 16).fieldOf("chunk_count").forGetter(eok.a::b))
-               .apply($$0, eok.a::new)
-      );
-
-      boolean a(dyv $$0, int $$1, int $$2) {
-         return $$0.a(this.b, $$1, $$2, this.c);
-      }
-
-      public jr<ent> a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
+   public eol a(dgg $$0, eoj $$1, epg $$2, boolean $$3) {
+      long $$4 = $$0.a();
+      Object2IntMap<eoj> $$5 = (Object2IntMap<eoj>)this.m.get($$4);
+      if ($$5 != null) {
+         return this.a($$5, $$1, $$3);
+      } else {
+         eol $$6 = this.a($$0, $$1, $$3, $$4);
+         if ($$6 != null) {
+            return $$6;
+         } else if (!$$2.a($$0.h, $$0.i, this.k)) {
+            return eol.b;
+         } else {
+            boolean $$7 = this.n.computeIfAbsent($$1, $$0x -> new Long2BooleanOpenHashMap()).computeIfAbsent($$4, $$2x -> this.b($$0, $$1));
+            return !$$7 ? eol.b : eol.c;
+         }
       }
    }
 
-   @FunctionalInterface
-   public interface b {
-      boolean shouldGenerate(long var1, int var3, int var4, int var5, float var6);
+   private boolean b(dgg $$0, eoj $$1) {
+      return $$1.b(new eoj.a(this.d, this.g, this.j, this.h, this.e, this.k, $$0, this.i, $$1.a()::a)).isPresent();
    }
 
-   public static enum c implements azv {
-      a("default", eok::a),
-      b("legacy_type_1", eok::d),
-      c("legacy_type_2", eok::c),
-      d("legacy_type_3", eok::b);
+   @Nullable
+   private eol a(dgg $$0, eoj $$1, boolean $$2, long $$3) {
+      uu $$4 = new uu(new uw(tv.a, "DataVersion"), new uw("Level", "Structures", tq.b, "Starts"), new uw("structures", tq.b, "starts"));
 
-      public static final Codec<eok.c> e = azv.a(eok.c::values);
-      private final String f;
-      private final eok.b g;
-
-      private c(final String $$0, final eok.b $$1) {
-         this.f = $$0;
-         this.g = $$1;
+      try {
+         this.c.a($$0, $$4).join();
+      } catch (Exception var13) {
+         a.warn("Failed to read chunk {}", $$0, var13);
+         return eol.c;
       }
 
-      public boolean a(long $$0, int $$1, int $$2, int $$3, float $$4) {
-         return this.g.shouldGenerate($$0, $$1, $$2, $$3, $$4);
-      }
+      if (!($$4.d() instanceof tq $$7)) {
+         return null;
+      } else {
+         int $$8 = eaw.a($$7);
+         if ($$8 <= 1493) {
+            return eol.c;
+         } else {
+            eaw.a($$7, this.f, this.g.c());
 
-      @Override
-      public String c() {
-         return this.f;
+            tq $$9;
+            try {
+               $$9 = bam.c.a(this.l, $$7, $$8);
+            } catch (Exception var12) {
+               a.warn("Failed to partially datafix chunk {}", $$0, var12);
+               return eol.c;
+            }
+
+            Object2IntMap<eoj> $$12 = this.a($$9);
+            if ($$12 == null) {
+               return null;
+            } else {
+               this.a($$3, $$12);
+               return this.a($$12, $$1, $$2);
+            }
+         }
       }
+   }
+
+   @Nullable
+   private Object2IntMap<eoj> a(tq $$0) {
+      if (!$$0.b("structures", 10)) {
+         return null;
+      } else {
+         tq $$1 = $$0.p("structures");
+         if (!$$1.b("starts", 10)) {
+            return null;
+         } else {
+            tq $$2 = $$1.p("starts");
+            if ($$2.g()) {
+               return Object2IntMaps.emptyMap();
+            } else {
+               Object2IntMap<eoj> $$3 = new Object2IntOpenHashMap();
+               ke<eoj> $$4 = this.d.e(mc.aW);
+
+               for (String $$5 : $$2.e()) {
+                  aku $$6 = aku.c($$5);
+                  if ($$6 != null) {
+                     eoj $$7 = $$4.a($$6);
+                     if ($$7 != null) {
+                        tq $$8 = $$2.p($$5);
+                        if (!$$8.g()) {
+                           String $$9 = $$8.l("id");
+                           if (!"INVALID".equals($$9)) {
+                              int $$10 = $$8.h("references");
+                              $$3.put($$7, $$10);
+                           }
+                        }
+                     }
+                  }
+               }
+
+               return $$3;
+            }
+         }
+      }
+   }
+
+   private static Object2IntMap<eoj> a(Object2IntMap<eoj> $$0) {
+      return $$0.isEmpty() ? Object2IntMaps.emptyMap() : $$0;
+   }
+
+   private eol a(Object2IntMap<eoj> $$0, eoj $$1, boolean $$2) {
+      int $$3 = $$0.getOrDefault($$1, -1);
+      return $$3 == -1 || $$2 && $$3 != 0 ? eol.b : eol.a;
+   }
+
+   public void a(dgg $$0, Map<eoj, eor> $$1) {
+      long $$2 = $$0.a();
+      Object2IntMap<eoj> $$3 = new Object2IntOpenHashMap();
+      $$1.forEach(($$1x, $$2x) -> {
+         if ($$2x.b()) {
+            $$3.put($$1x, $$2x.f());
+         }
+      });
+      this.a($$2, $$3);
+   }
+
+   private void a(long $$0, Object2IntMap<eoj> $$1) {
+      this.m.put($$0, a($$1));
+      this.n.values().forEach($$1x -> $$1x.remove($$0));
+   }
+
+   public void a(dgg $$0, eoj $$1) {
+      this.m.compute($$0.a(), ($$1x, $$2) -> {
+         if ($$2 == null || $$2.isEmpty()) {
+            $$2 = new Object2IntOpenHashMap();
+         }
+
+         $$2.computeInt($$1, ($$0xx, $$1xx) -> $$1xx == null ? 1 : $$1xx + 1);
+         return $$2;
+      });
    }
 }

@@ -1,33 +1,45 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
-
-public class aif implements yw<agg> {
+public class aif implements yw<agf> {
    public static final yn<vl, aif> a = yw.a(aif::a, aif::new);
-   private final UUID b;
+   private final fbt b;
+   private final bsx c;
+   private final int d;
 
-   public aif(UUID $$0) {
-      this.b = $$0;
+   public aif(bsx $$0, fbt $$1, int $$2) {
+      this.c = $$0;
+      this.b = $$1;
+      this.d = $$2;
    }
 
    private aif(vl $$0) {
-      this.b = $$0.n();
+      this.c = $$0.b(bsx.class);
+      this.b = $$0.v();
+      this.d = $$0.l();
    }
 
    private void a(vl $$0) {
+      $$0.a(this.c);
       $$0.a(this.b);
+      $$0.c(this.d);
    }
 
    @Override
    public yy<aif> a() {
-      return age.ck;
+      return agd.ck;
    }
 
-   public void a(agg $$0) {
+   public void a(agf $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bum a(ard $$0) {
-      return $$0.a(this.b);
+   public bsx b() {
+      return this.c;
+   }
+
+   public fbt e() {
+      return this.b;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

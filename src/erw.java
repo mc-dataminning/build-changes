@@ -1,18 +1,14 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class erw implements erx {
-   public static final erw a = new erw();
-   public static final MapCodec<erw> b = MapCodec.unit(a);
+public class erw extends esi {
+   public static final MapCodec<erw> a = MapCodec.unit(() -> erw.b);
+   public static final erw b = new erw();
 
-   @Nullable
-   @Override
-   public tq a(azh $$0, @Nullable tq $$1) {
-      return $$1;
+   private erw() {
    }
 
    @Override
-   public ery<?> a() {
-      return ery.b;
+   protected esk<?> a() {
+      return esk.j;
    }
 }

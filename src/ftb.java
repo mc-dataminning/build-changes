@@ -1,113 +1,163 @@
-import javax.annotation.Nullable;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.function.Consumer;
 
-public record ftb(fta a, int b, int c) {
-   private static final ftb d = new ftb(0, 0, 0, 0);
+public class ftb extends fsz {
+   private final ftb.b c;
+   private final List<ftb.a> d = new ArrayList<>();
+   private final fth e = fth.i();
 
-   public ftb(int $$0, int $$1, int $$2, int $$3) {
-      this(new fta($$0, $$1), $$2, $$3);
+   public ftb(int $$0, int $$1, ftb.b $$2) {
+      this(0, 0, $$0, $$1, $$2);
    }
 
-   public static ftb a() {
-      return d;
+   public ftb(int $$0, int $$1, int $$2, int $$3, ftb.b $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.c = $$4;
    }
 
-   public static ftb a(fsy $$0, int $$1, int $$2, int $$3, int $$4) {
-      return switch ($$0) {
-         case a -> new ftb($$1, $$2, $$3, $$4);
-         case b -> new ftb($$2, $$1, $$4, $$3);
-      };
-   }
+   @Override
+   public void a() {
+      super.a();
+      if (!this.d.isEmpty()) {
+         int $$0 = 0;
+         int $$1 = this.c.b(this);
 
-   public ftb a(fsz $$0) {
-      return new ftb(this.a.a($$0), this.b, this.c);
-   }
+         for (ftb.a $$2 : this.d) {
+            $$0 += this.c.a($$2);
+            $$1 = Math.max($$1, this.c.b($$2));
+         }
 
-   public int a(fsy $$0) {
-      return switch ($$0) {
-         case a -> this.b;
-         case b -> this.c;
-      };
-   }
+         int $$3 = this.c.a(this) - $$0;
+         int $$4 = this.c.c(this);
+         Iterator<ftb.a> $$5 = this.d.iterator();
+         ftb.a $$6 = $$5.next();
+         this.c.a($$6, $$4);
+         $$4 += this.c.a($$6);
+         if (this.d.size() >= 2) {
+            c $$7 = new c($$3, this.d.size() - 1);
 
-   public int b(fsz $$0) {
-      fsy $$1 = $$0.a();
-      return $$0.c() ? this.a.a($$1) + this.a($$1) - 1 : this.a.a($$1);
-   }
+            while ($$7.hasNext()) {
+               $$4 += $$7.nextInt();
+               ftb.a $$8 = $$5.next();
+               this.c.a($$8, $$4);
+               $$4 += this.c.a($$8);
+            }
+         }
 
-   public ftb c(fsz $$0) {
-      int $$1 = this.b($$0);
-      fsy $$2 = $$0.a().a();
-      int $$3 = this.b($$2.c());
-      int $$4 = this.a($$2);
-      return a($$0.a(), $$1, $$3, 1, $$4).a($$0);
-   }
+         int $$9 = this.c.d(this);
 
-   public boolean a(ftb $$0) {
-      return this.a($$0, fsy.a) && this.a($$0, fsy.b);
-   }
+         for (ftb.a $$10 : this.d) {
+            this.c.a($$10, $$9, $$1);
+         }
 
-   public boolean a(ftb $$0, fsy $$1) {
-      int $$2 = this.b($$1.c());
-      int $$3 = $$0.b($$1.c());
-      int $$4 = this.b($$1.b());
-      int $$5 = $$0.b($$1.b());
-      return Math.max($$2, $$3) <= Math.min($$4, $$5);
-   }
-
-   public int b(fsy $$0) {
-      return (this.b($$0.b()) + this.b($$0.c())) / 2;
-   }
-
-   @Nullable
-   public ftb b(ftb $$0) {
-      int $$1 = Math.max(this.d(), $$0.d());
-      int $$2 = Math.max(this.b(), $$0.b());
-      int $$3 = Math.min(this.e(), $$0.e());
-      int $$4 = Math.min(this.c(), $$0.c());
-      return $$1 < $$3 && $$2 < $$4 ? new ftb($$1, $$2, $$3 - $$1, $$4 - $$2) : null;
-   }
-
-   public int b() {
-      return this.a.b();
-   }
-
-   public int c() {
-      return this.a.b() + this.c;
-   }
-
-   public int d() {
-      return this.a.a();
-   }
-
-   public int e() {
-      return this.a.a() + this.b;
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= this.d() && $$0 < this.e() && $$1 >= this.b() && $$1 < this.c();
-   }
-
-   public ftb a(Matrix4f $$0) {
-      if (f.a($$0)) {
-         return this;
-      } else {
-         Vector3f $$1 = $$0.transformPosition((float)this.d(), (float)this.b(), 0.0F, new Vector3f());
-         Vector3f $$2 = $$0.transformPosition((float)this.e(), (float)this.c(), 0.0F, new Vector3f());
-         return new ftb(ayz.d($$1.x), ayz.d($$1.y), ayz.d($$2.x - $$1.x), ayz.d($$2.y - $$1.y));
+         switch (this.c) {
+            case a:
+               this.b = $$1;
+               break;
+            case b:
+               this.a = $$1;
+         }
       }
    }
 
-   public fta f() {
-      return this.a;
+   @Override
+   public void b(Consumer<ftg> $$0) {
+      this.d.forEach($$1 -> $$0.accept($$1.a));
    }
 
-   public int g() {
-      return this.b;
+   public fth b() {
+      return this.e.g();
    }
 
-   public int h() {
-      return this.c;
+   public fth c() {
+      return this.e;
+   }
+
+   public <T extends ftg> T a(T $$0) {
+      return this.a($$0, this.b());
+   }
+
+   public <T extends ftg> T a(T $$0, fth $$1) {
+      this.d.add(new ftb.a($$0, $$1));
+      return $$0;
+   }
+
+   public <T extends ftg> T a(T $$0, Consumer<fth> $$1) {
+      return this.a($$0, af.a(this.b(), $$1));
+   }
+
+   static class a extends fsz.a {
+      protected a(ftg $$0, fth $$1) {
+         super($$0, $$1);
+      }
+   }
+
+   public static enum b {
+      a,
+      b;
+
+      int a(ftg $$0) {
+         return switch (this) {
+            case a -> $$0.A();
+            case b -> $$0.y();
+         };
+      }
+
+      int a(ftb.a $$0) {
+         return switch (this) {
+            case a -> $$0.b();
+            case b -> $$0.a();
+         };
+      }
+
+      int b(ftg $$0) {
+         return switch (this) {
+            case a -> $$0.y();
+            case b -> $$0.A();
+         };
+      }
+
+      int b(ftb.a $$0) {
+         return switch (this) {
+            case a -> $$0.a();
+            case b -> $$0.b();
+         };
+      }
+
+      void a(ftb.a $$0, int $$1) {
+         switch (this) {
+            case a:
+               $$0.a($$1, $$0.b());
+               break;
+            case b:
+               $$0.b($$1, $$0.a());
+         }
+      }
+
+      void a(ftb.a $$0, int $$1, int $$2) {
+         switch (this) {
+            case a:
+               $$0.b($$1, $$2);
+               break;
+            case b:
+               $$0.a($$1, $$2);
+         }
+      }
+
+      int c(ftg $$0) {
+         return switch (this) {
+            case a -> $$0.F();
+            case b -> $$0.G();
+         };
+      }
+
+      int d(ftg $$0) {
+         return switch (this) {
+            case a -> $$0.G();
+            case b -> $$0.F();
+         };
+      }
    }
 }

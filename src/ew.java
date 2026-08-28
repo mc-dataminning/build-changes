@@ -5,12 +5,12 @@ public interface ew {
       }
 
       @Override
-      public boolean y_() {
+      public boolean t_() {
          return false;
       }
 
       @Override
-      public boolean z_() {
+      public boolean u_() {
          return false;
       }
 
@@ -22,13 +22,13 @@ public interface ew {
 
    void a(wp var1);
 
-   boolean y_();
+   boolean t_();
 
-   boolean z_();
+   boolean u_();
 
    boolean c();
 
-   default boolean t_() {
+   default boolean o_() {
       return false;
    }
 }

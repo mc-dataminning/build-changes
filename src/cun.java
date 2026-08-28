@@ -1,21 +1,30 @@
+import java.util.Collections;
 import java.util.List;
+import javax.annotation.Nullable;
 
-public class cun extends cwm {
-   private final djn a;
+public interface cun {
+   void a(@Nullable dca<?> var1);
 
-   public cun(djn $$0, cwm.a $$1) {
-      super($$1);
-      this.a = $$0;
+   @Nullable
+   dca<?> d();
+
+   default void a(cpr $$0, List<cxh> $$1) {
+      dca<?> $$2 = this.d();
+      if ($$2 != null) {
+         $$0.a($$2, $$1);
+         if (!$$2.b().ap_()) {
+            $$0.a(Collections.singleton($$2));
+            this.a(null);
+         }
+      }
    }
 
-   @Override
-   public void a(cwq $$0, cwm.b $$1, List<wp> $$2, cyi $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public wp a(cwq $$0) {
-      return this.m();
+   default boolean a(are $$0, dca<?> $$1) {
+      if (!$$1.b().ap_() && $$0.y().O().b(dgv.x) && !$$0.J().b($$1.a())) {
+         return false;
+      } else {
+         this.a($$1);
+         return true;
+      }
    }
 }

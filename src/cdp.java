@@ -1,40 +1,90 @@
 import java.util.EnumSet;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class cdp extends ccg {
-   private final coe a;
+public class cdp extends ccw {
+   public static final int b = 1;
+   protected final bwg c;
+   protected final double d;
+   protected double e;
+   protected double f;
+   protected double g;
+   protected boolean h;
+   private final Function<bwg, axf<btr>> a;
 
-   public cdp(coe $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(ccg.a.c, ccg.a.a));
+   public cdp(bwg $$0, double $$1) {
+      this($$0, $$1, awr.F);
+   }
+
+   public cdp(bwg $$0, double $$1, axf<btr> $$2) {
+      this($$0, $$1, $$1x -> $$2);
+   }
+
+   public cdp(bwg $$0, double $$1, Function<bwg, axf<btr>> $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.a(EnumSet.of(ccw.a.a));
    }
 
    @Override
    public boolean b() {
-      if (!this.a.bL()) {
-         return false;
-      } else if (this.a.bj()) {
-         return false;
-      } else if (!this.a.aJ()) {
-         return false;
-      } else if (this.a.T) {
+      if (!this.h()) {
          return false;
       } else {
-         coy $$0 = this.a.gs();
-         if ($$0 == null) {
-            return false;
-         } else {
-            return this.a.g($$0) > 16.0 ? false : $$0.cd != null;
+         if (this.c.bX()) {
+            ji $$0 = this.a(this.c.dU(), this.c, 5);
+            if ($$0 != null) {
+               this.e = (double)$$0.u();
+               this.f = (double)$$0.v();
+               this.g = (double)$$0.w();
+               return true;
+            }
          }
+
+         return this.i();
       }
+   }
+
+   protected boolean h() {
+      return this.c.eG() != null && this.c.eG().a(this.a.apply(this.c));
+   }
+
+   protected boolean i() {
+      fbx $$0 = cgt.a(this.c, 5, 4);
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.e = $$0.d;
+         this.f = $$0.e;
+         this.g = $$0.f;
+         return true;
+      }
+   }
+
+   public boolean k() {
+      return this.h;
    }
 
    @Override
    public void d() {
-      this.a.P().m();
+      this.c.O().a(this.e, this.f, this.g, this.d);
+      this.h = true;
    }
 
    @Override
    public void e() {
-      this.a.a(null);
+      this.h = false;
+   }
+
+   @Override
+   public boolean c() {
+      return !this.c.O().k();
+   }
+
+   @Nullable
+   protected ji a(dgf $$0, bva $$1, int $$2) {
+      ji $$3 = $$1.du();
+      return !$$0.a_($$3).g($$0, $$3).c() ? null : ji.a($$1.du(), $$2, 1, $$1x -> $$0.b_($$1x).a(awv.a)).orElse(null);
    }
 }

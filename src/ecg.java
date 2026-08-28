@@ -1,150 +1,133 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import org.slf4j.Logger;
 
-public class ecg implements ecn.c {
-   public static final int a = 12;
-   private static final int f = 24;
-   private static final float[] g = af.a(new float[13824], $$0 -> {
-      for (int $$1 = 0; $$1 < 24; $$1++) {
-         for (int $$2 = 0; $$2 < 24; $$2++) {
-            for (int $$3 = 0; $$3 < 24; $$3++) {
-               $$0[$$1 * 24 * 24 + $$2 * 24 + $$3] = (float)a($$2 - 12, $$3 - 12, $$1 - 12);
-            }
+public class ecg<T extends ebu> {
+   static final Logger a = LogUtils.getLogger();
+   final ecc<T> b;
+   final ebw<T> c;
+   final ebz<T> d;
+   private final LongSet e = new LongOpenHashSet();
+   private final ecd<T> f;
+
+   public ecg(Class<T> $$0, ecc<T> $$1) {
+      this.c = new ebw<>();
+      this.d = new ebz<>($$0, $$0x -> this.e.contains($$0x) ? ecj.c : ecj.b);
+      this.b = $$1;
+      this.f = new ece<>(this.c, this.d);
+   }
+
+   public void a(dgg $$0) {
+      long $$1 = $$0.a();
+      this.e.add($$1);
+      this.d.b($$1).forEach($$0x -> {
+         ecj $$1x = $$0x.a(ecj.c);
+         if (!$$1x.a()) {
+            $$0x.b().filter($$0xx -> !$$0xx.dT()).forEach(this.b::e);
          }
+      });
+   }
+
+   public void b(dgg $$0) {
+      long $$1 = $$0.a();
+      this.e.remove($$1);
+      this.d.b($$1).forEach($$0x -> {
+         ecj $$1x = $$0x.a(ecj.b);
+         if ($$1x.a()) {
+            $$0x.b().filter($$0xx -> !$$0xx.dT()).forEach(this.b::d);
+         }
+      });
+   }
+
+   public ecd<T> a() {
+      return this.f;
+   }
+
+   public void a(T $$0) {
+      this.c.a($$0);
+      long $$1 = kk.c($$0.du());
+      eby<T> $$2 = this.d.c($$1);
+      $$2.a($$0);
+      $$0.a(new ecg.a($$0, $$1, $$2));
+      this.b.g($$0);
+      this.b.c($$0);
+      if ($$0.dT() || $$2.c().a()) {
+         this.b.e($$0);
       }
-   });
-   private final ObjectListIterator<ecg.a> h;
-   private final ObjectListIterator<eoq> i;
+   }
 
-   public static ecg a(dhf $$0, dfp $$1) {
-      int $$2 = $$1.d();
-      int $$3 = $$1.e();
-      ObjectList<ecg.a> $$4 = new ObjectArrayList(10);
-      ObjectList<eoq> $$5 = new ObjectArrayList(32);
-      $$0.a($$1, $$0x -> $$0x.d() != eny.a).forEach($$5x -> {
-         eny $$6 = $$5x.h().d();
+   @bag
+   public int b() {
+      return this.c.b();
+   }
 
-         for (enr $$7 : $$5x.i()) {
-            if ($$7.a($$1, 12)) {
-               if ($$7 instanceof enj) {
-                  enj $$8 = (enj)$$7;
-                  eox.a $$9 = $$8.b().f();
-                  if ($$9 == eox.a.b) {
-                     $$4.add(new ecg.a($$8.f(), $$6, $$8.d()));
-                  }
+   void a(long $$0, eby<T> $$1) {
+      if ($$1.a()) {
+         this.d.e($$0);
+      }
+   }
 
-                  for (eoq $$10 : $$8.e()) {
-                     int $$11 = $$10.a();
-                     int $$12 = $$10.c();
-                     if ($$11 > $$2 - 12 && $$12 > $$3 - 12 && $$11 < $$2 + 15 + 12 && $$12 < $$3 + 15 + 12) {
-                        $$5.add($$10);
-                     }
-                  }
-               } else {
-                  $$4.add(new ecg.a($$7.f(), $$6, 0));
+   @bag
+   public String c() {
+      return this.c.b() + "," + this.d.b() + "," + this.e.size();
+   }
+
+   class a implements ebv {
+      private final T c;
+      private long d;
+      private eby<T> e;
+
+      a(final T $$0, final long $$1, final eby<T> $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+      }
+
+      @Override
+      public void a() {
+         ji $$0 = this.c.du();
+         long $$1 = kk.c($$0);
+         if ($$1 != this.d) {
+            ecj $$2 = this.e.c();
+            if (!this.e.b(this.c)) {
+               ecg.a.warn("Entity {} wasn't found in section {} (moving to {})", new Object[]{this.c, kk.a(this.d), $$1});
+            }
+
+            ecg.this.a(this.d, this.e);
+            eby<T> $$3 = ecg.this.d.c($$1);
+            $$3.a(this.c);
+            this.e = $$3;
+            this.d = $$1;
+            ecg.this.b.a(this.c);
+            if (!this.c.dT()) {
+               boolean $$4 = $$2.a();
+               boolean $$5 = $$3.c().a();
+               if ($$4 && !$$5) {
+                  ecg.this.b.d(this.c);
+               } else if (!$$4 && $$5) {
+                  ecg.this.b.e(this.c);
                }
             }
          }
-      });
-      return new ecg($$4.iterator(), $$5.iterator());
-   }
-
-   @VisibleForTesting
-   public ecg(ObjectListIterator<ecg.a> $$0, ObjectListIterator<eoq> $$1) {
-      this.h = $$0;
-      this.i = $$1;
-   }
-
-   @Override
-   public double a(ecm.b $$0) {
-      int $$1 = $$0.a();
-      int $$2 = $$0.b();
-      int $$3 = $$0.c();
-      double $$4 = 0.0;
-
-      while (this.h.hasNext()) {
-         ecg.a $$5 = (ecg.a)this.h.next();
-         enf $$6 = $$5.a();
-         int $$7 = $$5.c();
-         int $$8 = Math.max(0, Math.max($$6.h() - $$1, $$1 - $$6.k()));
-         int $$9 = Math.max(0, Math.max($$6.j() - $$3, $$3 - $$6.m()));
-         int $$10 = $$6.i() + $$7;
-         int $$11 = $$2 - $$10;
-
-         int $$12 = switch ($$5.b()) {
-            case a -> 0;
-            case b, c -> $$11;
-            case d -> Math.max(0, Math.max($$10 - $$2, $$2 - $$6.l()));
-            case e -> Math.max(0, Math.max($$6.i() - $$2, $$2 - $$6.l()));
-         };
-
-         $$4 += switch ($$5.b()) {
-            case a -> 0.0;
-            case b -> a((double)$$8, (double)$$12 / 2.0, (double)$$9);
-            case c, d -> a($$8, $$12, $$9, $$11) * 0.8;
-            case e -> a((double)$$8 / 2.0, (double)$$12 / 2.0, (double)$$9 / 2.0) * 0.8;
-         };
       }
 
-      this.h.back(Integer.MAX_VALUE);
+      @Override
+      public void a(bva.d $$0) {
+         if (!this.e.b(this.c)) {
+            ecg.a.warn("Entity {} wasn't found in section {} (destroying due to {})", new Object[]{this.c, kk.a(this.d), $$0});
+         }
 
-      while (this.i.hasNext()) {
-         eoq $$13 = (eoq)this.i.next();
-         int $$14 = $$1 - $$13.a();
-         int $$15 = $$2 - $$13.b();
-         int $$16 = $$3 - $$13.c();
-         $$4 += a($$14, $$15, $$16, $$15) * 0.4;
+         ecj $$1 = this.e.c();
+         if ($$1.a() || this.c.dT()) {
+            ecg.this.b.d(this.c);
+         }
+
+         ecg.this.b.b(this.c);
+         ecg.this.b.f(this.c);
+         ecg.this.c.b(this.c);
+         this.c.a(a);
+         ecg.this.a(this.d, this.e);
       }
-
-      this.i.back(Integer.MAX_VALUE);
-      return $$4;
-   }
-
-   @Override
-   public double a() {
-      return Double.NEGATIVE_INFINITY;
-   }
-
-   @Override
-   public double b() {
-      return Double.POSITIVE_INFINITY;
-   }
-
-   private static double a(double $$0, double $$1, double $$2) {
-      double $$3 = ayz.g($$0, $$1, $$2);
-      return ayz.a($$3, 0.0, 6.0, 1.0, 0.0);
-   }
-
-   private static double a(int $$0, int $$1, int $$2, int $$3) {
-      int $$4 = $$0 + 12;
-      int $$5 = $$1 + 12;
-      int $$6 = $$2 + 12;
-      if (a($$4) && a($$5) && a($$6)) {
-         double $$7 = (double)$$3 + 0.5;
-         double $$8 = ayz.f((double)$$0, $$7, (double)$$2);
-         double $$9 = -$$7 * ayz.g($$8 / 2.0) / 2.0;
-         return $$9 * (double)g[$$6 * 24 * 24 + $$4 * 24 + $$5];
-      } else {
-         return 0.0;
-      }
-   }
-
-   private static boolean a(int $$0) {
-      return $$0 >= 0 && $$0 < 24;
-   }
-
-   private static double a(int $$0, int $$1, int $$2) {
-      return a($$0, (double)$$1 + 0.5, $$2);
-   }
-
-   private static double a(int $$0, double $$1, int $$2) {
-      double $$3 = ayz.f((double)$$0, $$1, (double)$$2);
-      return Math.pow(Math.E, -$$3 / 16.0);
-   }
-
-   @VisibleForTesting
-   public static record a(enf a, eny b, int c) {
    }
 }

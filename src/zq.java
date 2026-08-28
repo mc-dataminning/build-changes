@@ -1,8 +1,8 @@
-public record zq(aqo b) implements yw<zp> {
+public record zq(aqn b) implements yw<zp> {
    public static final yn<vl, zq> a = yw.a(zq::a, zq::new);
 
    private zq(vl $$0) {
-      this(new aqo($$0));
+      this(new aqn($$0));
    }
 
    private void a(vl $$0) {

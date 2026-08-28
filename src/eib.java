@@ -1,46 +1,36 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eib implements eid {
-   public static final Codec<eib> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").forGetter($$0x -> $$0x.b),
-               brq.b(1, 128).fieldOf("height").forGetter($$0x -> $$0x.c),
-               brq.b(1, 128).fieldOf("radius").forGetter($$0x -> $$0x.d),
-               Codec.intRange(0, 64).fieldOf("max_stalagmite_stalactite_height_diff").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 64).fieldOf("height_deviation").forGetter($$0x -> $$0x.f),
-               brq.b(0, 128).fieldOf("dripstone_block_layer_thickness").forGetter($$0x -> $$0x.g),
-               bro.a(0.0F, 2.0F).fieldOf("density").forGetter($$0x -> $$0x.h),
-               bro.a(0.0F, 2.0F).fieldOf("wetness").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_dripstone_column_at_max_distance_from_center").forGetter($$0x -> $$0x.j),
-               Codec.intRange(1, 64).fieldOf("max_distance_from_edge_affecting_chance_of_dripstone_column").forGetter($$0x -> $$0x.k),
-               Codec.intRange(1, 64).fieldOf("max_distance_from_center_affecting_height_bias").forGetter($$0x -> $$0x.l)
-            )
-            .apply($$0, eib::new)
-   );
-   public final int b;
-   public final brq c;
-   public final brq d;
-   public final int e;
-   public final int f;
-   public final brq g;
-   public final bro h;
-   public final bro i;
-   public final float j;
-   public final int k;
-   public final int l;
+public class eib extends egu<ejq> {
+   public eib(Codec<ejq> $$0) {
+      super($$0);
+   }
 
-   public eib(int $$0, brq $$1, brq $$2, int $$3, int $$4, brq $$5, bro $$6, bro $$7, float $$8, int $$9, int $$10) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
+   @Override
+   public boolean a(egw<ejq> $$0) {
+      ejq $$1 = $$0.f();
+      dhy $$2 = $$0.b();
+      ji $$3 = $$0.e();
+      dxq $$4 = $$1.a().a($$0.d(), $$3);
+      if ($$4.a($$2, $$3)) {
+         if ($$4.b() instanceof dmn) {
+            if (!$$2.u($$3.d())) {
+               return false;
+            }
+
+            dmn.a($$2, $$4, $$3, 2);
+         } else if ($$4.b() instanceof dpg) {
+            dpg.a($$2, $$3, $$2.C_(), 2);
+         } else {
+            $$2.a($$3, $$4, 2);
+         }
+
+         if ($$1.b()) {
+            $$2.a($$3, $$2.a_($$3).b(), 1);
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 }

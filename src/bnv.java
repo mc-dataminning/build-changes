@@ -1,27 +1,19 @@
-import java.util.HashMap;
-import java.util.Map;
-import javax.annotation.Nullable;
+public class bnv extends bnr {
+   private final bns c;
+   private final bnu d;
 
-public class bnv<S> {
-   private final Map<bnt<?>, bnz<S, ?>> a = new HashMap<>();
-
-   public <T> void a(bnt<T> $$0, bnz<S, T> $$1) {
-      bnz<S, ?> $$2 = this.a.putIfAbsent($$0, $$1);
-      if ($$2 != null) {
-         throw new IllegalArgumentException("Trying to override rule: " + $$0);
-      }
+   public bnv(int $$0, bns $$1, bnu $$2) {
+      this($$0, $$1, $$2, new long[$$0]);
    }
 
-   public <T> void a(bnt<T> $$0, boc<S> $$1, bnz.a<S, T> $$2) {
-      this.a($$0, bnz.a($$1, $$2));
+   public bnv(int $$0, bns $$1, bnu $$2, long[] $$3) {
+      super($$0, $$3);
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public <T> void a(bnt<T> $$0, boc<S> $$1, bnz.b<T> $$2) {
-      this.a($$0, bnz.a($$1, $$2));
-   }
-
-   @Nullable
-   public <T> bnz<S, T> a(bnt<T> $$0) {
-      return (bnz<S, T>)this.a.get($$0);
+   @Override
+   protected void a() {
+      this.c.a(new acl((long[])this.b.clone(), this.d));
    }
 }

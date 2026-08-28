@@ -1,71 +1,100 @@
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public abstract class fpq<E extends fpq.a<E>> extends fon<E> {
-   private static final wp a = wp.c("narration.selection.usage");
+public class fpq extends fpg {
+   public static final int f = 120;
+   public static final int m = 150;
+   public static final int n = 200;
+   public static final int o = 20;
+   public static final int p = 8;
+   protected static final fpq.b q = $$0 -> $$0.get();
+   protected final fpq.c r;
+   protected final fpq.b s;
 
-   public fpq(flk $$0, int $$1, int $$2, int $$3, int $$4) {
+   public static fpq.a a(wp $$0, fpq.c $$1) {
+      return new fpq.a($$0, $$1);
+   }
+
+   protected fpq(int $$0, int $$1, int $$2, int $$3, wp $$4, fpq.c $$5, fpq.b $$6) {
       super($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public fpq(flk $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Nullable
-   @Override
-   public foc a(fsx $$0) {
-      if (this.t() == 0) {
-         return null;
-      } else if (this.aM_() && $$0 instanceof fsx.a $$1) {
-         E $$2 = this.a($$1.b());
-         if ($$2 != null) {
-            return foc.a(this, foc.a($$2));
-         } else {
-            this.a(null);
-            return null;
-         }
-      } else if (!this.aM_()) {
-         E $$3 = this.p();
-         if ($$3 == null) {
-            $$3 = this.a($$0.a());
-         }
-
-         return $$3 == null ? null : foc.a(this, foc.a($$3));
-      } else {
-         return null;
-      }
+      this.r = $$5;
+      this.s = $$6;
    }
 
    @Override
-   public void a(fsr $$0) {
-      E $$1 = this.x();
-      if ($$1 != null) {
-         this.a($$0.a(), $$1);
-         $$1.b($$0);
-      } else {
-         E $$2 = this.p();
-         if ($$2 != null) {
-            this.a($$0.a(), $$2);
-            $$2.b($$0);
-         }
+   public void b() {
+      this.r.onPress(this);
+   }
+
+   @Override
+   protected xd d() {
+      return this.s.createNarrationMessage(() -> super.d());
+   }
+
+   @Override
+   public void a(ftn $$0) {
+      this.c($$0);
+   }
+
+   public static class a {
+      private final wp a;
+      private final fpq.c b;
+      @Nullable
+      private frb c;
+      private int d;
+      private int e;
+      private int f = 150;
+      private int g = 20;
+      private fpq.b h = fpq.q;
+
+      public a(wp $$0, fpq.c $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      if (this.aM_()) {
-         $$0.a(fsq.d, a);
+      public fpq.a a(int $$0, int $$1) {
+         this.d = $$0;
+         this.e = $$1;
+         return this;
+      }
+
+      public fpq.a a(int $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public fpq.a b(int $$0, int $$1) {
+         this.f = $$0;
+         this.g = $$1;
+         return this;
+      }
+
+      public fpq.a a(int $$0, int $$1, int $$2, int $$3) {
+         return this.a($$0, $$1).b($$2, $$3);
+      }
+
+      public fpq.a a(@Nullable frb $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public fpq.a a(fpq.b $$0) {
+         this.h = $$0;
+         return this;
+      }
+
+      public fpq a() {
+         fpq $$0 = new fpq(this.d, this.e, this.f, this.g, this.a, this.b, this.h);
+         $$0.a(this.c);
+         return $$0;
       }
    }
 
-   public abstract static class a<E extends fpq.a<E>> extends fon.a<E> implements fss {
-      public abstract wp a();
+   public interface b {
+      xd createNarrationMessage(Supplier<xd> var1);
+   }
 
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         return true;
-      }
-
-      @Override
-      public void b(fsr $$0) {
-         $$0.a(fsq.a, this.a());
-      }
+   public interface c {
+      void onPress(fpq var1);
    }
 }

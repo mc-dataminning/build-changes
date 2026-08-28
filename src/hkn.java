@@ -1,60 +1,58 @@
-import javax.annotation.Nullable;
+import java.io.BufferedInputStream;
+import java.io.FilterInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import javax.sound.sampled.AudioFormat;
 
-public class hkn {
-   private boolean a;
-   @Nullable
-   private hkh.b b;
-   @Nullable
-   private String c;
-   @Nullable
-   private final String d;
+public class hkn implements hkh {
+   private final hkn.a a;
+   private hkh b;
+   private final BufferedInputStream c;
 
-   public hkn(@Nullable String $$0) {
-      this.d = $$0;
+   public hkn(hkn.a $$0, InputStream $$1) throws IOException {
+      this.a = $$0;
+      this.c = new BufferedInputStream($$1);
+      this.c.mark(Integer.MAX_VALUE);
+      this.b = $$0.create(new hkn.b(this.c));
    }
 
-   public void a(hki.a $$0) {
-      if (this.c != null) {
-         $$0.a(hkh.j, !this.c.equals("vanilla"));
+   @Override
+   public AudioFormat a() {
+      return this.b.a();
+   }
+
+   @Override
+   public ByteBuffer a(int $$0) throws IOException {
+      ByteBuffer $$1 = this.b.a($$0);
+      if (!$$1.hasRemaining()) {
+         this.b.close();
+         this.c.reset();
+         this.b = this.a.create(new hkn.b(this.c));
+         $$1 = this.b.a($$0);
       }
 
-      $$0.a(hkh.k, this.a());
+      return $$1;
    }
 
-   private hkh.c a() {
-      ggp $$0 = flk.Q().S();
-      if ($$0 != null && $$0.e()) {
-         return hkh.c.a;
-      } else {
-         return flk.Q().U() ? hkh.c.b : hkh.c.c;
+   @Override
+   public void close() throws IOException {
+      this.b.close();
+      this.c.close();
+   }
+
+   @FunctionalInterface
+   public interface a {
+      hkh create(InputStream var1) throws IOException;
+   }
+
+   static class b extends FilterInputStream {
+      b(InputStream $$0) {
+         super($$0);
       }
-   }
 
-   public boolean a(hke $$0) {
-      if (!this.a && this.b != null && this.c != null) {
-         this.a = true;
-         $$0.send(hkf.b, $$0x -> {
-            $$0x.a(hkh.n, this.b);
-            if (this.d != null) {
-               $$0x.a(hkh.o, this.d);
-            }
-         });
-         return true;
-      } else {
-         return false;
+      @Override
+      public void close() {
       }
-   }
-
-   public void a(dgg $$0, boolean $$1) {
-      this.b = switch ($$0) {
-         case a -> $$1 ? hkh.b.e : hkh.b.a;
-         case b -> hkh.b.b;
-         case c -> hkh.b.c;
-         case d -> hkh.b.d;
-      };
-   }
-
-   public void a(String $$0) {
-      this.c = $$0;
    }
 }

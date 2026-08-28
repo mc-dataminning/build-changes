@@ -1,70 +1,113 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dsn extends diz {
+public class dsn extends dko implements dkh {
    public static final MapCodec<dsn> a = b(dsn::new);
-   public static final dya<dwl> b = dxo.bC;
-   public static final dxv<jn> c = dnl.aF;
-   public static final dxp d = dxo.bD;
+   private static final float d = 0.003F;
+   public static final int b = 3;
+   public static final dyq c = dyg.av;
+   private static final fcr e = dke.b(10.0, 0.0, 8.0);
+   private static final fcr f = dke.b(14.0, 0.0, 16.0);
 
    @Override
    public MapCodec<dsn> a() {
       return a;
    }
 
-   public dsn(dwx.d $$0) {
+   public dsn(dxp.d $$0) {
       super($$0);
-      this.l(this.F.b().b(c, jn.c).b(b, dwl.a).b(d, Boolean.valueOf(false)));
+      this.l(this.B.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   public bsl a(cwq $$0, dwy $$1, dgj $$2, ji $$3, coy $$4, bsk $$5, fax $$6) {
-      if (!$$0.f() && $$1.c(b) == dwl.b) {
-         if ($$2 instanceof ard $$7) {
-            if (!($$7.c_($$3) instanceof dwg $$8)) {
-               return bsl.f;
-            }
+   protected cxh a(dhc $$0, ji $$1, dxq $$2, boolean $$3) {
+      return new cxh(cxl.xx);
+   }
 
-            dwg.b.a($$7, $$3, $$1, $$8.f(), $$8.b(), $$8.c(), $$4, $$0);
-         }
+   @Override
+   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
+      return switch ($$0.c(c)) {
+         case 0 -> e;
+         case 3 -> fco.b();
+         default -> f;
+      };
+   }
 
-         return bsl.b;
-      } else {
-         return bsl.f;
+   @Override
+   protected boolean f(dxq $$0) {
+      return $$0.c(c) < 3;
+   }
+
+   @Override
+   protected void b(dxq $$0, ard $$1, ji $$2, azh $$3) {
+      int $$4 = $$0.c(c);
+      if ($$4 < 3 && $$3.a(5) == 0 && $$1.b($$2.d(), 0) >= 9) {
+         dxq $$5 = $$0.b(c, Integer.valueOf($$4 + 1));
+         $$1.a($$2, $$5, 2);
+         $$1.a(ecp.c, $$2, ecp.a.a($$5));
       }
    }
 
-   @Nullable
    @Override
-   public dua a(ji $$0, dwy $$1) {
-      return new dwg($$0, $$1);
+   protected void a(dxq $$0, dgz $$1, ji $$2, bva $$3) {
+      if ($$3 instanceof bvy && $$3.aq() != bvi.aa && $$3.aq() != bvi.l) {
+         $$3.a($$0, new fbx(0.8F, 0.75, 0.8F));
+         if ($$1 instanceof ard $$4 && $$0.c(c) != 0) {
+            fbx $$6 = $$3.L_() ? $$3.ah() : $$3.bA().d($$3.ds());
+            if ($$6.j() > 0.0) {
+               double $$7 = Math.abs($$6.a());
+               double $$8 = Math.abs($$6.c());
+               if ($$7 >= 0.003F || $$8 >= 0.003F) {
+                  $$3.a($$4, $$1.al().u(), 1.0F);
+               }
+            }
+
+            return;
+         }
+      }
    }
 
    @Override
-   protected void a(dwz.a<djn, dwy> $$0) {
-      $$0.a(c, b, d);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dua> dub<T> a(dgj $$0, dwy $$1, duc<T> $$2) {
-      return $$0 instanceof ard $$3
-         ? a($$2, duc.S, ($$1x, $$2x, $$3x, $$4) -> dwg.b.a($$3, $$2x, $$3x, $$4.f(), $$4.b(), $$4.c()))
-         : a($$2, duc.S, ($$0x, $$1x, $$2x, $$3x) -> dwg.a.a($$0x, $$1x, $$2x, $$3x.d(), $$3x.c()));
+   protected bsy a(cxh $$0, dxq $$1, dgz $$2, ji $$3, cpr $$4, bsx $$5, fbt $$6) {
+      int $$7 = $$1.c(c);
+      boolean $$8 = $$7 == 3;
+      return (bsy)(!$$8 && $$0.a(cxl.sx) ? bsy.e : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6));
    }
 
    @Override
-   public dwy a(dah $$0) {
-      return this.m().b(c, $$0.g().g());
+   protected bsy a(dxq $$0, dgz $$1, ji $$2, cpr $$3, fbt $$4) {
+      int $$5 = $$0.c(c);
+      boolean $$6 = $$5 == 3;
+      if ($$5 > 1) {
+         int $$7 = 1 + $$1.A.a(2);
+         a($$1, $$2, new cxh(cxl.xx, $$7 + ($$6 ? 1 : 0)));
+         $$1.a(null, $$2, awa.Aq, awb.e, 1.0F, 0.8F + $$1.A.i() * 0.4F);
+         dxq $$8 = $$0.b(c, Integer.valueOf(1));
+         $$1.a($$2, $$8, 2);
+         $$1.a(ecp.c, $$2, ecp.a.a($$3, $$8));
+         return bsy.a;
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
+      }
    }
 
    @Override
-   public dwy a(dwy $$0, dqf $$1) {
-      return $$0.b(c, $$1.a($$0.c(c)));
+   protected void a(dxr.a<dke, dxq> $$0) {
+      $$0.a(c);
    }
 
    @Override
-   public dwy a(dwy $$0, dom $$1) {
-      return $$0.a($$1.a($$0.c(c)));
+   public boolean a(dhc $$0, ji $$1, dxq $$2) {
+      return $$2.c(c) < 3;
+   }
+
+   @Override
+   public boolean a(dgz $$0, azh $$1, ji $$2, dxq $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(ard $$0, azh $$1, ji $$2, dxq $$3) {
+      int $$4 = Math.min(3, $$3.c(c) + 1);
+      $$0.a($$2, $$3.b(c, Integer.valueOf($$4)), 2);
    }
 }

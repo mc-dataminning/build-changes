@@ -1,52 +1,36 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
 
-public record ezl(Optional<Boolean> b, Optional<Boolean> c) implements ezb {
-   public static final MapCodec<ezl> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("raining").forGetter(ezl::d), Codec.BOOL.optionalFieldOf("thundering").forGetter(ezl::e))
-            .apply($$0, ezl::new)
-   );
+public class ezl extends ezn {
+   public static final MapCodec<ezl> a = a(ezl::new);
+
+   ezl(List<ezx> $$0) {
+      super($$0, af.b($$0));
+   }
 
    @Override
-   public ezc b() {
-      return ezd.o;
+   public ezy b() {
+      return ezz.b;
    }
 
-   public boolean a(evs $$0) {
-      ard $$1 = $$0.d();
-      return this.b.isPresent() && this.b.get() != $$1.ag() ? false : !this.c.isPresent() || this.c.get() == $$1.af();
+   public static ezl.a a(ezx.a... $$0) {
+      return new ezl.a($$0);
    }
 
-   public static ezl.a c() {
-      return new ezl.a();
-   }
+   public static class a extends ezn.a {
+      public a(ezx.a... $$0) {
+         super($$0);
+      }
 
-   public Optional<Boolean> d() {
-      return this.b;
-   }
-
-   public Optional<Boolean> e() {
-      return this.c;
-   }
-
-   public static class a implements ezb.a {
-      private Optional<Boolean> a = Optional.empty();
-      private Optional<Boolean> b = Optional.empty();
-
-      public ezl.a a(boolean $$0) {
-         this.a = Optional.of($$0);
+      @Override
+      public ezl.a or(ezx.a $$0) {
+         this.a($$0);
          return this;
       }
 
-      public ezl.a b(boolean $$0) {
-         this.b = Optional.of($$0);
-         return this;
-      }
-
-      public ezl a() {
-         return new ezl(this.a, this.b);
+      @Override
+      protected ezx a(List<ezx> $$0) {
+         return new ezl($$0);
       }
    }
 }

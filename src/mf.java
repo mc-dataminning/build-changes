@@ -4,8 +4,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 public class mf {
-   private final djn a;
-   final Map<mf.b, djn> b = Maps.newHashMap();
+   private final dke a;
+   final Map<mf.b, dke> b = Maps.newHashMap();
    boolean c = true;
    boolean d = true;
    @Nullable
@@ -13,19 +13,19 @@ public class mf {
    @Nullable
    String f;
 
-   mf(djn $$0) {
+   mf(dke $$0) {
       this.a = $$0;
    }
 
-   public djn a() {
+   public dke a() {
       return this.a;
    }
 
-   public Map<mf.b, djn> b() {
+   public Map<mf.b, dke> b() {
       return this.b;
    }
 
-   public djn a(mf.b $$0) {
+   public dke a(mf.b $$0) {
       return this.b.get($$0);
    }
 
@@ -48,7 +48,7 @@ public class mf {
    public static class a {
       private final mf a;
 
-      public a(djn $$0) {
+      public a(dke $$0) {
          this.a = new mf($$0);
       }
 
@@ -56,88 +56,88 @@ public class mf {
          return this.a;
       }
 
-      public mf.a a(djn $$0) {
+      public mf.a a(dke $$0) {
          this.a.b.put(mf.b.a, $$0);
          return this;
       }
 
-      public mf.a b(djn $$0) {
+      public mf.a b(dke $$0) {
          this.a.b.put(mf.b.b, $$0);
          return this;
       }
 
-      public mf.a c(djn $$0) {
+      public mf.a c(dke $$0) {
          this.a.b.put(mf.b.j, $$0);
          return this;
       }
 
-      public mf.a d(djn $$0) {
+      public mf.a d(dke $$0) {
          this.a.b.put(mf.b.c, $$0);
          return this;
       }
 
-      public mf.a e(djn $$0) {
+      public mf.a e(dke $$0) {
          this.a.b.put(mf.b.d, $$0);
          return this;
       }
 
-      public mf.a f(djn $$0) {
+      public mf.a f(dke $$0) {
          this.a.b.put(mf.b.e, $$0);
          return this;
       }
 
-      public mf.a g(djn $$0) {
+      public mf.a g(dke $$0) {
          this.a.b.put(mf.b.f, $$0);
          return this;
       }
 
-      public mf.a h(djn $$0) {
+      public mf.a h(dke $$0) {
          this.a.b.put(mf.b.g, $$0);
          return this;
       }
 
-      public mf.a i(djn $$0) {
+      public mf.a i(dke $$0) {
          this.a.b.put(mf.b.h, $$0);
          return this;
       }
 
-      public mf.a j(djn $$0) {
+      public mf.a j(dke $$0) {
          this.a.b.put(mf.b.i, $$0);
          return this;
       }
 
-      public mf.a a(djn $$0, djn $$1) {
+      public mf.a a(dke $$0, dke $$1) {
          this.a.b.put(mf.b.k, $$0);
          this.a.b.put(mf.b.r, $$1);
          return this;
       }
 
-      public mf.a k(djn $$0) {
+      public mf.a k(dke $$0) {
          this.a.b.put(mf.b.l, $$0);
          return this;
       }
 
-      public mf.a l(djn $$0) {
+      public mf.a l(dke $$0) {
          this.a.b.put(mf.b.m, $$0);
          return this;
       }
 
-      public mf.a m(djn $$0) {
+      public mf.a m(dke $$0) {
          this.a.b.put(mf.b.n, $$0);
          return this;
       }
 
-      public mf.a n(djn $$0) {
+      public mf.a n(dke $$0) {
          this.a.b.put(mf.b.o, $$0);
          return this;
       }
 
-      public mf.a o(djn $$0) {
+      public mf.a o(dke $$0) {
          this.a.b.put(mf.b.p, $$0);
          return this;
       }
 
-      public mf.a p(djn $$0) {
+      public mf.a p(dke $$0) {
          this.a.b.put(mf.b.q, $$0);
          return this;
       }

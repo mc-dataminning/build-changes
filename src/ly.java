@@ -1,19 +1,19 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ly(fbb c, int d, int e) implements lr {
+public record ly(fbx c, int d, int e) implements lr {
    public static final MapCodec<ly> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(fbb.a.fieldOf("target").forGetter(ly::b), ayi.i.fieldOf("color").forGetter(ly::c), ayi.m.fieldOf("duration").forGetter(ly::d))
+      $$0 -> $$0.group(fbx.a.fieldOf("target").forGetter(ly::b), ayi.i.fieldOf("color").forGetter(ly::c), ayi.m.fieldOf("duration").forGetter(ly::d))
             .apply($$0, ly::new)
    );
-   public static final yn<wa, ly> b = yn.a(fbb.b, ly::b, yl.g, ly::c, yl.h, ly::d, ly::new);
+   public static final yn<wa, ly> b = yn.a(fbx.b, ly::b, yl.g, ly::c, yl.h, ly::d, ly::new);
 
    @Override
    public ls<ly> a() {
-      return lt.V;
+      return lt.W;
    }
 
-   public fbb b() {
+   public fbx b() {
       return this.c;
    }
 

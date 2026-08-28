@@ -1,248 +1,96 @@
-import java.util.Collections;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class fvj extends fum {
-   public static final int a = 16;
-   public static final int b = 36;
-   public static final int c = 30;
-   private static final int y = 256;
-   private static final int z = 256;
-   public static final fvj.a d = new fvj.a(List.of());
-   public static final akv s = akv.b("textures/gui/book.png");
-   protected static final int u = 114;
-   protected static final int v = 128;
-   protected static final int w = 192;
-   protected static final int x = 192;
-   private fvj.a A;
-   private int B;
-   private List<ayl> C = Collections.emptyList();
-   private int D = -1;
-   private wp E = wo.a;
-   private fwk F;
-   private fwk G;
-   private final boolean H;
+public class fvj extends fvi {
+   private static final int a = 1024;
+   private static final int b = 65535;
+   private static final wp c = wp.c("selectWorld.allowCommands");
+   private static final wp d = wp.c("selectWorld.gameMode");
+   private static final wp s = wp.c("lanServer.otherPlayers");
+   private static final wp u = wp.c("lanServer.port");
+   private static final wp v = wp.a("lanServer.port.unavailable", 1024, 65535);
+   private static final wp w = wp.a("lanServer.port.invalid", 1024, 65535);
+   private static final int x = 16733525;
+   private final fvi y;
+   private dgw z = dgw.a;
+   private boolean A;
+   private int B = ayq.a();
+   @Nullable
+   private fpz C;
 
-   public fvj(fvj.a $$0) {
-      this($$0, true);
-   }
-
-   public fvj() {
-      this(d, false);
-   }
-
-   private fvj(fvj.a $$0, boolean $$1) {
-      super(flb.a);
-      this.A = $$0;
-      this.H = $$1;
-   }
-
-   public void a(fvj.a $$0) {
-      this.A = $$0;
-      this.B = ayz.a(this.B, 0, $$0.a());
-      this.L();
-      this.D = -1;
-   }
-
-   public boolean a(int $$0) {
-      int $$1 = ayz.a($$0, 0, this.A.a() - 1);
-      if ($$1 != this.B) {
-         this.B = $$1;
-         this.L();
-         this.D = -1;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected boolean b(int $$0) {
-      return this.a($$0);
+   public fvj(fvi $$0) {
+      super(wp.c("lanServer.title"));
+      this.y = $$0;
    }
 
    @Override
    protected void aR_() {
-      this.m();
-      this.E();
-   }
-
-   protected void m() {
-      this.c(fou.a(wo.d, $$0 -> this.aO_()).a(this.n / 2 - 100, 196, 200, 20).a());
-   }
-
-   protected void E() {
-      int $$0 = (this.n - 192) / 2;
-      int $$1 = 2;
-      this.F = this.c(new fwk($$0 + 116, 159, true, $$0x -> this.H(), this.H));
-      this.G = this.c(new fwk($$0 + 43, 159, false, $$0x -> this.G(), this.H));
-      this.L();
-   }
-
-   private int F() {
-      return this.A.a();
-   }
-
-   protected void G() {
-      if (this.B > 0) {
-         this.B--;
-      }
-
-      this.L();
-   }
-
-   protected void H() {
-      if (this.B < this.F() - 1) {
-         this.B++;
-      }
-
-      this.L();
-   }
-
-   private void L() {
-      this.F.k = this.B < this.F() - 1;
-      this.G.k = this.B > 0;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else {
-         switch ($$0) {
-            case 266:
-               this.G.b();
-               return true;
-            case 267:
-               this.F.b();
-               return true;
-            default:
-               return false;
-         }
-      }
-   }
-
-   @Override
-   public void a(fof $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      int $$4 = (this.n - 192) / 2;
-      int $$5 = 2;
-      if (this.D != this.B) {
-         wu $$6 = this.A.a(this.B);
-         this.C = this.p.c($$6, 114);
-         this.E = wp.a("book.pageIndicator", this.B + 1, Math.max(this.F(), 1));
-      }
-
-      this.D = this.B;
-      int $$7 = this.p.a(this.E);
-      $$0.a(this.p, this.E, $$4 - $$7 + 192 - 44, 18, 0, false);
-      int $$8 = Math.min(128 / 9, this.C.size());
-
-      for (int $$9 = 0; $$9 < $$8; $$9++) {
-         ayl $$10 = this.C.get($$9);
-         $$0.a(this.p, $$10, $$4 + 36, 32 + $$9 * 9, 0, false);
-      }
-
-      xm $$11 = this.b((double)$$1, (double)$$2);
-      if ($$11 != null) {
-         $$0.a(this.p, $$11, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void b(fof $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-      $$0.a(gmj::H, s, (this.n - 192) / 2, 2, 0.0F, 0.0F, 192, 192, 256, 256);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if ($$2 == 0) {
-         xm $$3 = this.b($$0, $$1);
-         if ($$3 != null && this.a($$3)) {
-            return true;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(xm $$0) {
-      wn $$1 = $$0.i();
-      if ($$1 == null) {
-         return false;
-      } else if ($$1.a() == wn.a.e) {
-         String $$2 = $$1.b();
-
-         try {
-            int $$3 = Integer.parseInt($$2) - 1;
-            return this.b($$3);
-         } catch (Exception var5) {
-            return false;
-         }
-      } else {
-         boolean $$4 = super.a($$0);
-         if ($$4 && $$1.a() == wn.a.c) {
-            this.I();
+      hkc $$0 = this.m.V();
+      this.z = $$0.u();
+      this.A = $$0.aZ().m();
+      this.c(fpx.a(dgw::e).a(dgw.a, dgw.d, dgw.b, dgw.c).a(this.z).a(this.n / 2 - 155, 100, 150, 20, d, ($$0x, $$1x) -> this.z = $$1x));
+      this.c(fpx.b(this.A).a(this.n / 2 + 5, 100, 150, 20, c, ($$0x, $$1x) -> this.A = $$1x));
+      fpq $$1 = fpq.a(wp.c("lanServer.start"), $$1x -> {
+         this.m.a(null);
+         wp $$2;
+         if ($$0.a(this.z, this.A, this.B)) {
+            $$2 = anx.a(this.B);
+         } else {
+            $$2 = wp.c("commands.publish.failed");
          }
 
-         return $$4;
-      }
+         this.m.m.d().a($$2);
+         this.m.d();
+      }).a(this.n / 2 - 155, this.o - 28, 150, 20).a();
+      this.C = new fpz(this.p, this.n / 2 - 75, 160, 150, 20, wp.c("lanServer.port"));
+      this.C.b($$1x -> {
+         wp $$2 = this.a($$1x);
+         this.C.c(wp.b(this.B + "").a(n.i));
+         if ($$2 == null) {
+            this.C.m(14737632);
+            this.C.a(null);
+            $$1.j = true;
+         } else {
+            this.C.m(16733525);
+            this.C.a(frb.a($$2));
+            $$1.j = false;
+         }
+      });
+      this.C.c(wp.b(this.B + "").a(n.i));
+      this.c(this.C);
+      this.c($$1);
+      this.c(fpq.a(wo.e, $$0x -> this.aO_()).a(this.n / 2 + 5, this.o - 28, 150, 20).a());
    }
 
-   protected void I() {
-      this.m.a(null);
+   @Override
+   public void aO_() {
+      this.m.a(this.y);
    }
 
    @Nullable
-   public xm b(double $$0, double $$1) {
-      if (this.C.isEmpty()) {
+   private wp a(String $$0) {
+      if ($$0.isBlank()) {
+         this.B = ayq.a();
          return null;
       } else {
-         int $$2 = ayz.a($$0 - (double)((this.n - 192) / 2) - 36.0);
-         int $$3 = ayz.a($$1 - 2.0 - 30.0);
-         if ($$2 >= 0 && $$3 >= 0) {
-            int $$4 = Math.min(128 / 9, this.C.size());
-            if ($$2 <= 114 && $$3 < 9 * $$4 + $$4) {
-               int $$5 = $$3 / 9;
-               if ($$5 >= 0 && $$5 < this.C.size()) {
-                  ayl $$6 = this.C.get($$5);
-                  return this.m.h.b().a($$6, $$2);
-               } else {
-                  return null;
-               }
+         try {
+            this.B = Integer.parseInt($$0);
+            if (this.B < 1024 || this.B > 65535) {
+               return w;
             } else {
-               return null;
+               return !ayq.a(this.B) ? v : null;
             }
-         } else {
-            return null;
+         } catch (NumberFormatException var3) {
+            this.B = ayq.a();
+            return w;
          }
       }
    }
 
-   public static record a(List<wp> a) {
-      public int a() {
-         return this.a.size();
-      }
-
-      public wu a(int $$0) {
-         return $$0 >= 0 && $$0 < this.a() ? this.a.get($$0) : wu.b;
-      }
-
-      @Nullable
-      public static fvj.a a(cwq $$0) {
-         boolean $$1 = flk.Q().aT();
-         czy $$2 = $$0.a(kv.T);
-         if ($$2 != null) {
-            return new fvj.a($$2.a($$1));
-         } else {
-            czx $$3 = $$0.a(kv.S);
-            return $$3 != null ? new fvj.a($$3.a($$1).map(wp::b).toList()) : null;
-         }
-      }
-
-      public List<wp> b() {
-         return this.a;
-      }
+   @Override
+   public void a(fpc $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 50, 16777215);
+      $$0.a(this.p, s, this.n / 2, 82, 16777215);
+      $$0.a(this.p, u, this.n / 2, 142, 16777215);
    }
 }

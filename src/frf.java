@@ -1,177 +1,93 @@
-import com.google.common.collect.Queues;
-import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.Deque;
-import java.util.List;
-import javax.annotation.Nullable;
+public abstract class frf {
+   protected static final int a = 14737632;
+   protected static final int b = 60;
+   protected static final int c = 1;
+   protected final fpa d;
+   protected final bnx e;
 
-public class frf {
-   private static final int a = 5;
-   private static final int b = -1;
-   final flk c;
-   private final List<frf.a<?>> d = new ArrayList<>();
-   private final BitSet e = new BitSet(5);
-   private final Deque<fre> f = Queues.newArrayDeque();
-
-   public frf(flk $$0) {
-      this.c = $$0;
+   protected frf(fpa $$0, bnx $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public void a() {
-      this.d.removeIf($$0 -> {
-         $$0.c();
-         if ($$0.b()) {
-            this.e.clear($$0.d, $$0.d + $$0.e);
-            return true;
-         } else {
-            return false;
-         }
-      });
-      if (!this.f.isEmpty() && this.e() > 0) {
-         this.f.removeIf($$0 -> {
-            int $$1 = $$0.g();
-            int $$2 = this.a($$1);
-            if ($$2 == -1) {
-               return false;
-            } else {
-               this.d.add(new frf.a<>($$0, $$2, $$1));
-               this.e.set($$2, $$2 + $$1);
-               return true;
-            }
-         });
-      }
+   public int a(int $$0) {
+      return Math.min(this.e.c() + 2, $$0);
    }
 
-   public void a(fof $$0) {
-      if (!this.c.n.X) {
-         int $$1 = $$0.a();
-
-         for (frf.a<?> $$2 : this.d) {
-            $$2.a($$0, $$1);
-         }
-      }
+   public int a() {
+      return 60 + 9;
    }
 
-   private int a(int $$0) {
-      if (this.e() >= $$0) {
-         int $$1 = 0;
+   public void a(fpc $$0, int $$1, int $$2) {
+      int $$3 = $$0.b();
+      $$0.a(gnh.L(), $$1, $$3 - 60, $$1 + $$2, $$3, -1873784752);
+      long $$4 = 0L;
+      long $$5 = 2147483647L;
+      long $$6 = -2147483648L;
+      int $$7 = Math.max(0, this.e.c() - ($$2 - 2));
+      int $$8 = this.e.d() - $$7;
 
-         for (int $$2 = 0; $$2 < 5; $$2++) {
-            if (this.e.get($$2)) {
-               $$1 = 0;
-            } else if (++$$1 == $$0) {
-               return $$2 + 1 - $$1;
-            }
-         }
+      for (int $$9 = 0; $$9 < $$8; $$9++) {
+         int $$10 = $$1 + $$9 + 1;
+         int $$11 = $$7 + $$9;
+         long $$12 = this.b($$11);
+         $$5 = Math.min($$5, $$12);
+         $$6 = Math.max($$6, $$12);
+         $$4 += $$12;
+         this.a($$0, $$3, $$10, $$11);
       }
 
-      return -1;
+      $$0.a(gnh.L(), $$1, $$1 + $$2 - 1, $$3 - 60, -1);
+      $$0.a(gnh.L(), $$1, $$1 + $$2 - 1, $$3 - 1, -1);
+      $$0.b(gnh.L(), $$1, $$3 - 60, $$3, -1);
+      $$0.b(gnh.L(), $$1 + $$2 - 1, $$3 - 60, $$3, -1);
+      if ($$8 > 0) {
+         String $$13 = this.a((double)$$5) + " min";
+         String $$14 = this.a((double)$$4 / (double)$$8) + " avg";
+         String $$15 = this.a((double)$$6) + " max";
+         $$0.b(this.d, $$13, $$1 + 2, $$3 - 60 - 9, 14737632);
+         $$0.a(this.d, $$14, $$1 + $$2 / 2, $$3 - 60 - 9, 14737632);
+         $$0.b(this.d, $$15, $$1 + $$2 - this.d.b($$15) - 2, $$3 - 60 - 9, 14737632);
+      }
+
+      this.d($$0, $$1, $$2, $$3);
    }
 
-   private int e() {
-      return 5 - this.e.cardinality();
+   protected void a(fpc $$0, int $$1, int $$2, int $$3) {
+      this.b($$0, $$1, $$2, $$3);
+      this.c($$0, $$1, $$2, $$3);
    }
 
-   @Nullable
-   public <T extends fre> T a(Class<? extends T> $$0, Object $$1) {
-      for (frf.a<?> $$2 : this.d) {
-         if ($$2 != null && $$0.isAssignableFrom($$2.a().getClass()) && $$2.a().f().equals($$1)) {
-            return (T)$$2.a();
-         }
-      }
-
-      for (fre $$3 : this.f) {
-         if ($$0.isAssignableFrom($$3.getClass()) && $$3.f().equals($$1)) {
-            return (T)$$3;
-         }
-      }
-
-      return null;
+   protected void b(fpc $$0, int $$1, int $$2, int $$3) {
+      long $$4 = this.e.a($$3);
+      int $$5 = this.b((double)$$4);
+      int $$6 = this.a($$4);
+      $$0.a(gnh.L(), $$2, $$1 - $$5, $$2 + 1, $$1, $$6);
    }
 
-   public void b() {
-      this.e.clear();
-      this.d.clear();
-      this.f.clear();
+   protected void c(fpc $$0, int $$1, int $$2, int $$3) {
    }
 
-   public void a(fre $$0) {
-      this.f.add($$0);
+   protected long b(int $$0) {
+      return this.e.a($$0);
    }
 
-   public flk c() {
-      return this.c;
+   protected void d(fpc $$0, int $$1, int $$2, int $$3) {
    }
 
-   public double d() {
-      return this.c.n.D().c();
+   protected void a(fpc $$0, String $$1, int $$2, int $$3) {
+      $$0.a(gnh.L(), $$2, $$3, $$2 + this.d.b($$1) + 1, $$3 + 9, -1873784752);
+      $$0.a(this.d, $$1, $$2 + 1, $$3 + 1, 14737632, false);
    }
 
-   class a<T extends fre> {
-      private static final long b = 600L;
-      private final T c;
-      final int d;
-      final int e;
-      private long f = -1L;
-      private long g = -1L;
-      private fre.a h = fre.a.a;
-      private long i;
-      private float j;
-      private boolean k;
+   protected abstract String a(double var1);
 
-      a(final T $$0, final int $$1, final int $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-      }
+   protected abstract int b(double var1);
 
-      public T a() {
-         return this.c;
-      }
+   protected abstract int a(long var1);
 
-      public boolean b() {
-         return this.k;
-      }
-
-      private void a(long $$0) {
-         float $$1 = ayz.a((float)($$0 - this.f) / 600.0F, 0.0F, 1.0F);
-         $$1 *= $$1;
-         if (this.h == fre.a.b) {
-            this.j = 1.0F - $$1;
-         } else {
-            this.j = $$1;
-         }
-      }
-
-      public void c() {
-         long $$0 = af.c();
-         if (this.f == -1L) {
-            this.f = $$0;
-            this.h.a(frf.this.c.ak());
-         }
-
-         if (this.h == fre.a.a && $$0 - this.f <= 600L) {
-            this.g = $$0;
-         }
-
-         this.i = $$0 - this.g;
-         this.a($$0);
-         this.c.a(frf.this, this.i);
-         fre.a $$1 = this.c.a();
-         if ($$1 != this.h) {
-            this.f = $$0 - (long)((int)((1.0F - this.j) * 600.0F));
-            this.h = $$1;
-            this.h.a(frf.this.c.ak());
-         }
-
-         this.k = this.h == fre.a.b && $$0 - this.f > 600L;
-      }
-
-      public void a(fof $$0, int $$1) {
-         $$0.c().a();
-         $$0.c().a((float)$$1 - (float)this.c.b() * this.j, (float)(this.d * 32), 800.0F);
-         this.c.a($$0, frf.this.c.h, this.i);
-         $$0.c().b();
-      }
+   protected int a(double $$0, double $$1, int $$2, double $$3, int $$4, double $$5, int $$6) {
+      $$0 = ayz.a($$0, $$1, $$5);
+      return $$0 < $$3 ? axk.a((float)(($$0 - $$1) / ($$3 - $$1)), $$2, $$4) : axk.a((float)(($$0 - $$3) / ($$5 - $$3)), $$4, $$6);
    }
 }

@@ -1,72 +1,20 @@
-@FunctionalInterface
-public interface gsf<T extends bum> {
-   gse<T, ?> create(gsf.a var1);
+public class gsf extends guj<cmb, haj, gcf> {
+   private static final aku a = aku.b("textures/entity/blaze.png");
 
-   public static class a {
-      private final gsd a;
-      private final hbn b;
-      private final gly c;
-      private final gnd d;
-      private final aup e;
-      private final gfa f;
-      private final hgy g;
-      private final fod h;
-      private final gwe i;
+   public gsf(gtd.a $$0) {
+      super($$0, new gcf($$0.a(ggb.D)), 0.5F);
+   }
 
-      public a(gsd $$0, hbn $$1, gly $$2, gnd $$3, aup $$4, gfa $$5, hgy $$6, fod $$7) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-         this.h = $$7;
-         this.i = new gwe($$6, this.i().c(gmu.g));
-      }
+   protected int a(cmb $$0, ji $$1) {
+      return 15;
+   }
 
-      public gsd a() {
-         return this.a;
-      }
+   @Override
+   public aku b(haj $$0) {
+      return a;
+   }
 
-      public hbn b() {
-         return this.b;
-      }
-
-      public gly c() {
-         return this.c;
-      }
-
-      public gnd d() {
-         return this.d;
-      }
-
-      public aup e() {
-         return this.e;
-      }
-
-      public gfa f() {
-         return this.f;
-      }
-
-      public hgy g() {
-         return this.g;
-      }
-
-      public gwe h() {
-         return this.i;
-      }
-
-      public hhh i() {
-         return this.d.a().a();
-      }
-
-      public gfe a(gfc $$0) {
-         return this.f.a($$0);
-      }
-
-      public fod j() {
-         return this.h;
-      }
+   public haj a() {
+      return new haj();
    }
 }

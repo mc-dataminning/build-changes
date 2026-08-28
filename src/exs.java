@@ -1,65 +1,65 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class exs extends exf {
-   private static final Codec<ezx> b = Codec.withAlternative(ezy.a, ayi.i, ezu::new);
+public class exs extends eyb {
    public static final MapCodec<exs> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  exe.e.a(ezy.a, Integer.MAX_VALUE).optionalFieldOf("floats").forGetter($$0x -> $$0x.c),
-                  exe.e.a(Codec.BOOL, Integer.MAX_VALUE).optionalFieldOf("flags").forGetter($$0x -> $$0x.d),
-                  exe.e.a(Codec.STRING, Integer.MAX_VALUE).optionalFieldOf("strings").forGetter($$0x -> $$0x.e),
-                  exe.e.a(b, Integer.MAX_VALUE).optionalFieldOf("colors").forGetter($$0x -> $$0x.f)
-               )
-            )
+            .and($$0.group(fau.a.fieldOf("levels").forGetter($$0x -> $$0x.b), kg.a(mc.aP).optionalFieldOf("options").forGetter($$0x -> $$0x.c)))
             .apply($$0, exs::new)
    );
-   private final Optional<exe.e<ezx>> c;
-   private final Optional<exe.e<Boolean>> d;
-   private final Optional<exe.e<String>> e;
-   private final Optional<exe.e<ezx>> f;
+   private final fat b;
+   private final Optional<jv<ddr>> c;
 
-   public exs(List<ezb> $$0, Optional<exe.e<ezx>> $$1, Optional<exe.e<Boolean>> $$2, Optional<exe.e<String>> $$3, Optional<exe.e<ezx>> $$4) {
+   exs(List<ezx> $$0, fat $$1, Optional<jv<ddr>> $$2) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   @Override
+   public eyd<exs> b() {
+      return eye.g;
    }
 
    @Override
    public Set<bai<?>> a() {
-      return Stream.concat(this.c.stream(), this.f.stream()).flatMap($$0 -> $$0.a().stream()).flatMap($$0 -> $$0.a().stream()).collect(Collectors.toSet());
+      return this.b.a();
    }
 
    @Override
-   public exh<exs> b() {
-      return exi.R;
+   public cxh a(cxh $$0, ewo $$1) {
+      azh $$2 = $$1.b();
+      kf $$3 = $$1.d().F_();
+      return ddt.a($$2, $$0, this.b.a($$1), $$3, this.c);
    }
 
-   private static <T> List<T> a(Optional<exe.e<T>> $$0, List<T> $$1) {
-      return $$0.<List<T>>map($$1x -> $$1x.a($$1)).orElse($$1);
+   public static exs.a a(jt.a $$0, fat $$1) {
+      return new exs.a($$1).a($$0.d(mc.aP).b(aws.n));
    }
 
-   private static <T, E> List<E> a(Optional<exe.e<T>> $$0, List<E> $$1, Function<T, E> $$2) {
-      return $$0.<List<E>>map($$2x -> {
-         List<E> $$3 = $$2x.a().stream().map($$2).toList();
-         return $$2x.b().a($$1, $$3);
-      }).orElse($$1);
-   }
+   public static class a extends eyb.a<exs.a> {
+      private final fat a;
+      private Optional<jv<ddr>> b = Optional.empty();
 
-   @Override
-   public cwq a(cwq $$0, evs $$1) {
-      cza $$2 = $$0.a(kv.p, cza.a);
-      $$0.b(kv.p, new cza(a(this.c, $$2.a(), $$1x -> $$1x.b($$1)), a(this.d, $$2.b()), a(this.e, $$2.c()), a(this.f, $$2.d(), $$1x -> $$1x.a($$1))));
-      return $$0;
+      public a(fat $$0) {
+         this.a = $$0;
+      }
+
+      protected exs.a a() {
+         return this;
+      }
+
+      public exs.a a(jv<ddr> $$0) {
+         this.b = Optional.of($$0);
+         return this;
+      }
+
+      @Override
+      public eyc b() {
+         return new exs(this.g(), this.a, this.b);
+      }
    }
 }

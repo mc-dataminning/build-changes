@@ -1,15 +1,14 @@
-import java.util.Collection;
-import java.util.Locale;
+import javax.annotation.Nullable;
 
-public class her extends RuntimeException {
-   private final Collection<heq.a> a;
-
-   public her(heq.a $$0, Collection<heq.a> $$1) {
-      super(String.format(Locale.ROOT, "Unable to fit: %s - size: %dx%d - Maybe try a lower resolution resourcepack?", $$0.c(), $$0.a(), $$0.b()));
-      this.a = $$1;
+public interface her extends hev<Void> {
+   @Nullable
+   default Void a(cxh $$0) {
+      return null;
    }
 
-   public Collection<heq.a> a() {
-      return this.a;
+   default void a(@Nullable Void $$0, cxf $$1, fgr $$2, gmx $$3, int $$4, int $$5, boolean $$6) {
+      this.a($$1, $$2, $$3, $$4, $$5, $$6);
    }
+
+   void a(cxf var1, fgr var2, gmx var3, int var4, int var5, boolean var6);
 }

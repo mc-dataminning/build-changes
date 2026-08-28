@@ -1,65 +1,84 @@
-public abstract class hid extends hhz {
-   private static final float o = 0.0F;
-   private static final float p = 1.2F;
-   private static final float q = 0.0F;
-   protected final cha n;
-   private boolean r;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
-   public hid(cha $$0, avz $$1, awb $$2) {
-      super($$1, $$2, hiq.t());
-      this.n = $$0;
-      this.f = (double)((float)$$0.dA());
-      this.g = (double)((float)$$0.dC());
-      this.h = (double)((float)$$0.dG());
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
+public class hid {
+   static final Logger a = LogUtils.getLogger();
+   private final Map<aku, him> b;
+   final him c;
+   private final List<hij> d = new ArrayList<>();
+   private final Map<aku, him> e = new HashMap<>();
+
+   public hid(Map<aku, him> $$0, him $$1) {
+      this.b = $$0;
+      this.c = $$1;
+      this.e.put(hhz.a, $$1);
    }
 
-   @Override
-   public void q() {
-      boolean $$0 = this.p();
-      if ($$0 && !this.m()) {
-         flk.Q().ak().a((hir)this.o());
-         this.r = true;
-      }
+   public void a() {
+      this.e.put(gom.a, new gom());
+   }
 
-      if (!this.n.dQ() && !this.r) {
-         this.f = (double)((float)this.n.dA());
-         this.g = (double)((float)this.n.dC());
-         this.h = (double)((float)this.n.dG());
-         float $$1 = (float)this.n.dy().i();
-         if ($$1 >= 0.01F) {
-            this.e = ayz.h(ayz.a($$1, this.u(), this.v()), this.u(), this.v());
-            this.d = ayz.h(ayz.a($$1, 0.0F, 0.5F), 0.0F, 1.2F);
-         } else {
-            this.e = 0.0F;
-            this.d = 0.0F;
-         }
+   public void a(hij $$0) {
+      this.d.add($$0);
+   }
+
+   public void b() {
+      this.d.forEach($$0 -> $$0.a(new hid.a()));
+   }
+
+   public Map<aku, him> c() {
+      return this.e;
+   }
+
+   public Set<aku> d() {
+      return Sets.difference(this.b.keySet(), this.e.keySet());
+   }
+
+   him a(aku $$0) {
+      return this.e.computeIfAbsent($$0, this::b);
+   }
+
+   private him b(aku $$0) {
+      him $$1 = this.b.get($$0);
+      if ($$1 == null) {
+         a.warn("Missing block model: '{}'", $$0);
+         return this.c;
       } else {
-         this.n();
+         return $$1;
       }
    }
 
-   private float u() {
-      return this.n.e_() ? 1.1F : 0.7F;
+   class a implements hij.a {
+      private final List<aku> b = new ArrayList<>();
+      private final Set<aku> c = new HashSet<>();
+
+      @Override
+      public him a(aku $$0) {
+         if (this.b.contains($$0)) {
+            hid.a.warn("Detected model loading loop: {}->{}", this.a(), $$0);
+            return hid.this.c;
+         } else {
+            him $$1 = hid.this.a($$0);
+            if (this.c.add($$0)) {
+               this.b.add($$0);
+               $$1.a(this);
+               this.b.remove($$0);
+            }
+
+            return $$1;
+         }
+      }
+
+      private String a() {
+         return this.b.stream().map(aku::toString).collect(Collectors.joining("->"));
+      }
    }
-
-   private float v() {
-      return this.n.e_() ? 1.5F : 1.1F;
-   }
-
-   @Override
-   public boolean r() {
-      return true;
-   }
-
-   @Override
-   public boolean s() {
-      return !this.n.bb();
-   }
-
-   protected abstract hhz o();
-
-   protected abstract boolean p();
 }

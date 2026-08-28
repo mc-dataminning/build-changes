@@ -1,71 +1,95 @@
-import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
 
 public class fgf {
-   private static final Logger a = LogUtils.getLogger();
-   @Nullable
-   private static CompletableFuture<fgf.a> b;
-
-   public static CompletableFuture<fgf.a> a() {
-      if (b == null || a(b)) {
-         b = b();
-      }
-
-      return b;
+   public void a(float $$0) {
    }
 
-   private static boolean a(CompletableFuture<fgf.a> $$0) {
-      fgf.a $$1 = $$0.getNow(null);
-      return $$1 != null && $$1.b() != null;
+   public void a(float $$0, float $$1) {
    }
 
-   private static CompletableFuture<fgf.a> b() {
-      flw $$0 = flk.Q().X();
-      return $$0.g() != flw.a.c ? CompletableFuture.completedFuture(new fgf.a(fgf.b.d)) : CompletableFuture.supplyAsync(() -> {
-         fgl $$0x = fgl.a();
-
-         try {
-            if ($$0x.g() != fgl.a.a) {
-               return new fgf.a(fgf.b.b);
-            } else {
-               return !$$0x.f() ? new fgf.a(fgf.b.c) : new fgf.a(fgf.b.a);
-            }
-         } catch (fih var2) {
-            a.error("Couldn't connect to realms", var2);
-            return var2.a.a() == 401 ? new fgf.a(fgf.b.d) : new fgf.a(var2);
-         }
-      }, af.i());
+   public void a(float $$0, float $$1, float $$2) {
    }
 
-   public static record a(fgf.b a, @Nullable fih b) {
-      public a(fgf.b $$0) {
-         this($$0, null);
-      }
-
-      public a(fih $$0) {
-         this(fgf.b.e, $$0);
-      }
-
-      @Nullable
-      public fum a(fum $$0) {
-         return (fum)(switch (this.a) {
-            case a -> null;
-            case b -> new fiu($$0);
-            case c -> new fje($$0);
-            case d -> new fiz(wp.c("mco.error.invalid.session.title"), wp.c("mco.error.invalid.session.message"), $$0);
-            case e -> new fiz(Objects.requireNonNull(this.b), $$0);
-         });
-      }
+   public void a(float $$0, float $$1, float $$2, float $$3) {
    }
 
-   public static enum b {
-      a,
-      b,
-      c,
-      d,
-      e;
+   public void b(float $$0, float $$1, float $$2, float $$3) {
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+   }
+
+   public void a(int $$0) {
+   }
+
+   public void a(int $$0, int $$1) {
+   }
+
+   public void a(int $$0, int $$1, int $$2) {
+   }
+
+   public void b(int $$0, int $$1, int $$2, int $$3) {
+   }
+
+   public void a(float[] $$0) {
+   }
+
+   public void a(Vector3f $$0) {
+   }
+
+   public void a(Vector4f $$0) {
+   }
+
+   public void c(float $$0, float $$1, float $$2, float $$3) {
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
+   }
+
+   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
+   }
+
+   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
+   }
+
+   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
+   }
+
+   public void a(
+      float $$0,
+      float $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15
+   ) {
+   }
+
+   public void a(Matrix4f $$0) {
+   }
+
+   public void a(Matrix3f $$0) {
    }
 }

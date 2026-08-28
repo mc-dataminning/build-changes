@@ -1,34 +1,26 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.util.Pair;
 
-public class bhd extends DataFix {
+public class bhd extends bgy {
    public bhd(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+      super($$0, $$1, "OminousBannerBlockEntityRenameFix", bic.s, "minecraft:banner");
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "OptionsAddTextBackgroundFix",
-         this.getInputSchema().getType(bhy.e),
-         $$0 -> $$0.update(
-               DSL.remainderFinder(),
-               $$0x -> (Dynamic)DataFixUtils.orElse(
-                     $$0x.get("chatOpacity").asString().map($$1 -> $$0x.set("textBackgroundOpacity", $$0x.createDouble(this.a($$1)))).result(), $$0x
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      OpticFinder<?> $$1 = $$0.getType().findField("CustomName");
+      OpticFinder<Pair<String, String>> $$2 = DSL.typeFinder(this.getInputSchema().getType(bic.z));
+      return $$0.updateTyped(
+         $$1,
+         $$1x -> $$1x.update(
+               $$2,
+               $$0xx -> $$0xx.mapSecond(
+                     $$0xxx -> $$0xxx.replace("\"translate\":\"block.minecraft.illager_banner\"", "\"translate\":\"block.minecraft.ominous_banner\"")
                   )
             )
       );
-   }
-
-   private double a(String $$0) {
-      try {
-         double $$1 = 0.9 * Double.parseDouble($$0) + 0.1;
-         return $$1 / 2.0;
-      } catch (NumberFormatException var4) {
-         return 0.5;
-      }
    }
 }

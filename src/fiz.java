@@ -1,62 +1,56 @@
-public class fiz extends hlf {
-   private final fum a;
-   private final fiz.a b;
-   private fpn c = fpn.a;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import org.slf4j.Logger;
 
-   public fiz(fih $$0, fum $$1) {
-      super(flb.a);
-      this.a = $$1;
-      this.b = a($$0);
+public class fiz extends fiw {
+   private static final Logger e = LogUtils.getLogger();
+   public List<fiy> a;
+   public int b;
+   public int c;
+   public int d;
+
+   public fiz() {
    }
 
-   public fiz(wp $$0, fum $$1) {
-      super(flb.a);
-      this.a = $$1;
-      this.b = a($$0);
+   public fiz(int $$0) {
+      this.a = Collections.emptyList();
+      this.b = 0;
+      this.c = $$0;
+      this.d = -1;
    }
 
-   public fiz(wp $$0, wp $$1, fum $$2) {
-      super(flb.a);
-      this.a = $$2;
-      this.b = a($$0, $$1);
+   public boolean a() {
+      return this.b * this.c >= this.d && this.b > 0 && this.d > 0 && this.c > 0;
    }
 
-   private static fiz.a a(fih $$0) {
-      fgn $$1 = $$0.a;
-      return a(wp.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
-   }
+   public static fiz a(String $$0) {
+      fiz $$1 = new fiz();
+      $$1.a = Lists.newArrayList();
 
-   private static fiz.a a(wp $$0) {
-      return a(wp.c("mco.errorMessage.generic"), $$0);
-   }
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("templates").isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.get("templates").getAsJsonArray().iterator();
 
-   private static fiz.a a(wp $$0, wp $$1) {
-      return new fiz.a($$0, $$1);
-   }
+            while ($$4.hasNext()) {
+               $$1.a.add(fiy.a($$4.next().getAsJsonObject()));
+            }
+         }
 
-   @Override
-   public void aR_() {
-      this.c(fou.a(wo.h, $$0 -> this.aO_()).a(this.n / 2 - 100, this.o - 52, 200, 20).a());
-      this.c = fpn.a(this.p, this.b.b, this.n * 3 / 4);
-   }
+         $$1.b = fks.a("page", $$3, 0);
+         $$1.c = fks.a("size", $$3, 0);
+         $$1.d = fks.a("total", $$3, 0);
+      } catch (Exception var5) {
+         e.error("Could not parse WorldTemplatePaginatedList: {}", var5.getMessage());
+      }
 
-   @Override
-   public void aO_() {
-      this.m.a(this.a);
-   }
-
-   @Override
-   public wp i() {
-      return wp.i().b(this.b.a).f(": ").b(this.b.b);
-   }
-
-   @Override
-   public void a(fof $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.b.a, this.n / 2, 80, -1);
-      this.c.a($$0, this.n / 2, 100, 9, -2142128);
-   }
-
-   static record a(wp a, wp b) {
+      return $$1;
    }
 }

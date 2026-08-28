@@ -1,10 +1,9 @@
-public class gzt extends gzl {
-   public chp.b a;
-   public float b;
-   public gda.a c;
-
-   public gzt() {
-      this.a = chp.b.a;
-      this.c = gda.a.a;
-   }
+public class gzt extends haj {
+   private static final aku g = aku.b("textures/entity/frog/temperate_frog.png");
+   public boolean a;
+   public final bur b = new bur();
+   public final bur c = new bur();
+   public final bur d = new bur();
+   public final bur e = new bur();
+   public aku f = g;
 }

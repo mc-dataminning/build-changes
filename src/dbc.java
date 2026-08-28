@@ -1,9 +1,12 @@
-public class dbc extends dav {
-   public dbc(das $$0) {
+import java.util.ArrayList;
+import java.util.List;
+
+public class dbc extends dbl {
+   public dbc(dbi $$0) {
       super($$0);
    }
 
-   public boolean a(dat $$0, dgj $$1) {
+   public boolean a(dbj $$0, dgz $$1) {
       if ($$0.e() < 2) {
          return false;
       } else {
@@ -11,20 +14,20 @@ public class dbc extends dav {
          boolean $$3 = false;
 
          for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            cwq $$5 = $$0.a($$4);
+            cxh $$5 = $$0.a($$4);
             if (!$$5.f()) {
-               if ($$5.b(kv.L)) {
-                  if ($$3) {
-                     return false;
-                  }
-
-                  $$3 = true;
-               } else {
-                  if (!$$5.a(cwu.vi)) {
+               if ($$5.a(awy.bO)) {
+                  if ($$2) {
                      return false;
                   }
 
                   $$2 = true;
+               } else {
+                  if (!($$5.h() instanceof cwf)) {
+                     return false;
+                  }
+
+                  $$3 = true;
                }
             }
          }
@@ -33,34 +36,34 @@ public class dbc extends dav {
       }
    }
 
-   public cwq a(dat $$0, jt.a $$1) {
-      int $$2 = 0;
-      cwq $$3 = cwq.j;
+   public cxh a(dbj $$0, jt.a $$1) {
+      List<cwf> $$2 = new ArrayList<>();
+      cxh $$3 = cxh.k;
 
       for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cwq $$5 = $$0.a($$4);
+         cxh $$5 = $$0.a($$4);
          if (!$$5.f()) {
-            if ($$5.b(kv.L)) {
+            if ($$5.a(awy.bO)) {
                if (!$$3.f()) {
-                  return cwq.j;
+                  return cxh.k;
                }
 
-               $$3 = $$5;
+               $$3 = $$5.v();
             } else {
-               if (!$$5.a(cwu.vi)) {
-                  return cwq.j;
+               if (!($$5.h() instanceof cwf $$6)) {
+                  return cxh.k;
                }
 
-               $$2++;
+               $$2.add($$6);
             }
          }
       }
 
-      return !$$3.f() && $$2 >= 1 ? $$3.c($$2 + 1) : cwq.j;
+      return !$$3.f() && !$$2.isEmpty() ? czt.a($$3, $$2) : cxh.k;
    }
 
    @Override
-   public dbp<dbc> a() {
-      return dbp.e;
+   public dcf<dbc> a() {
+      return dcf.c;
    }
 }

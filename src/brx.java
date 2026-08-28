@@ -1,49 +1,61 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class brx extends brq {
+public class brx extends bsb {
    public static final MapCodec<brx> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bqt.b(brq.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, brx::new)
-   );
-   private final bqt<brq> b;
-   private final int f;
-   private final int g;
+         $$0 -> $$0.group(
+                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.d),
+                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.e),
+                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.f)
+               )
+               .apply($$0, brx::new)
+      )
+      .validate($$0 -> $$0.f < $$0.e ? DataResult.error(() -> "Max must be larger than min: [" + $$0.e + ", " + $$0.f + "]") : DataResult.success($$0));
+   private final float b;
+   private final float d;
+   private final float e;
+   private final float f;
 
-   public brx(bqt<brq> $$0) {
+   public static brx a(float $$0, float $$1, float $$2, float $$3) {
+      return new brx($$0, $$1, $$2, $$3);
+   }
+
+   private brx(float $$0, float $$1, float $$2, float $$3) {
       this.b = $$0;
-      List<bqv.b<brq>> $$1 = $$0.e();
-      int $$2 = Integer.MAX_VALUE;
-      int $$3 = Integer.MIN_VALUE;
-
-      for (bqv.b<brq> $$4 : $$1) {
-         int $$5 = $$4.b().a();
-         int $$6 = $$4.b().b();
-         $$2 = Math.min($$2, $$5);
-         $$3 = Math.max($$3, $$6);
-      }
-
-      this.f = $$2;
-      this.g = $$3;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
    @Override
-   public int a(azh $$0) {
-      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0);
+   public float a(azh $$0) {
+      return a($$0, this.b, this.d, this.e, this.f);
+   }
+
+   public static float a(azh $$0, float $$1, float $$2, float $$3, float $$4) {
+      return ayz.a(ayz.c($$0, $$1, $$2), $$3, $$4);
    }
 
    @Override
-   public int a() {
+   public float a() {
+      return this.e;
+   }
+
+   @Override
+   public float b() {
       return this.f;
    }
 
    @Override
-   public int b() {
-      return this.g;
+   public bsc<?> c() {
+      return bsc.c;
    }
 
    @Override
-   public brr<?> c() {
-      return brr.e;
+   public String toString() {
+      return "normal(" + this.b + ", " + this.d + ") in [" + this.e + "-" + this.f + "]";
    }
 }

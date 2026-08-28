@@ -1,87 +1,107 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import java.util.function.Predicate;
 
-public class cjk extends ccg {
-   private final cjj a;
+public class cjk {
+   private static final float a = 4.0F;
+   private static final float b = 2.0F;
+   private static final float c = 2.5F;
+   private static final float d = 2.5F;
+   private static final float e = 1.0F;
+   private static final bsj f = bsj.a(5, 16);
+   private static final ImmutableList<cgj<? extends cgi<? super cjj>>> g = ImmutableList.of(cgj.c, cgj.f, cgj.t, cgj.o);
+   private static final ImmutableList<cfc<?>> h = ImmutableList.of(
+      cfc.Z, cfc.x, cfc.y, cfc.m, cfc.n, cfc.E, cfc.t, cfc.h, cfc.O, cfc.P, cfc.Q, cfc.R, new cfc[]{cfc.r, cfc.K}
+   );
 
-   public cjk(cjj $$0) {
-      this.a = $$0;
+   protected static void a(cjj $$0, azh $$1) {
    }
 
-   @Override
-   public boolean b() {
-      return this.a.dV().a(this.a.dA(), this.a.dC(), this.a.dG(), 10.0);
+   public static bxa.b<cjj> a() {
+      return bxa.a(h, g);
    }
 
-   @Override
-   public void a() {
-      ard $$0 = (ard)this.a.dV();
-      bsj $$1 = $$0.d_(this.a.dv());
-      this.a.x(false);
-      this.a.y(true);
-      this.a.c_(0);
-      bvh $$2 = but.aw.a($$0, bus.k);
-      if ($$2 != null) {
-         $$2.e(this.a.dA(), this.a.dC(), this.a.dG());
-         $$2.a(true);
-         $$0.b($$2);
-         cmh $$3 = this.a($$1, this.a);
-         if ($$3 != null) {
-            $$3.n(this.a);
-            $$0.a_($$3);
+   protected static bxa<?> a(bxa<cjj> $$0) {
+      b($$0);
+      c($$0);
+      $$0.a(ImmutableSet.of(cri.a));
+      $$0.b(cri.b);
+      $$0.f();
+      return $$0;
+   }
 
-            for (int $$4 = 0; $$4 < 3; $$4++) {
-               cjd $$5 = this.a($$1);
-               if ($$5 != null) {
-                  cmh $$6 = this.a($$1, $$5);
-                  if ($$6 != null) {
-                     $$6.n($$5);
-                     $$5.j(this.a.dY().a(0.0, 1.1485), 0.0, this.a.dY().a(0.0, 1.1485));
-                     $$0.a_($$5);
-                  }
-               }
-            }
+   private static void b(bxa<cjj> $$0) {
+      $$0.a(cri.a, 0, ImmutableList.of(new cal(0.8F), new cjk.a(4.0F), new byx(45, 90), new bzb(), new bxx(cfc.P), new bxx(cfc.Q)));
+   }
+
+   private static void c(bxa<cjj> $$0) {
+      $$0.a(
+         cri.b,
+         ImmutableList.of(
+            Pair.of(0, bzr.a(bvi.bR, 6.0F, bsj.a(30, 60))),
+            Pair.of(1, new bxl(bvi.t)),
+            Pair.of(
+               2,
+               new bzo(
+                  ImmutableList.of(Pair.of(new bye($$0x -> 2.5F, $$0x -> $$0x.n_() ? 2.5 : 3.5), 1), Pair.of(cbe.a(Predicate.not(cjj::t), bxo.a(f, 2.5F)), 1))
+               )
+            ),
+            Pair.of(3, new bzi(bsj.a(150, 250), 30.0F, 0.0F, 0.0F)),
+            Pair.of(
+               4,
+               new bzo(
+                  ImmutableMap.of(cfc.m, cfd.b),
+                  ImmutableList.of(
+                     Pair.of(cbe.a(Predicate.not(cjj::t), bzj.a(2.0F)), 1),
+                     Pair.of(cbe.a(Predicate.not(cjj::t), bzy.a(2.0F, 3)), 1),
+                     Pair.of(new cjk.b(20), 1),
+                     Pair.of(new byb(30, 60), 1)
+                  )
+               )
+            )
+         )
+      );
+   }
+
+   public static void a(cjj $$0) {
+      $$0.ea().a(ImmutableList.of(cri.b));
+   }
+
+   public static Predicate<cxh> b() {
+      return $$0 -> $$0.a(awy.ak);
+   }
+
+   public static class a extends bxm<cjj> {
+      public a(float $$0) {
+         super($$0);
+      }
+
+      protected void a(ard $$0, cjj $$1, long $$2) {
+         $$1.gH();
+         super.b($$0, $$1, $$2);
+      }
+   }
+
+   public static class b extends bxr<cjj> {
+      private final int c;
+
+      public b(int $$0) {
+         super(ImmutableMap.of());
+         this.c = $$0 * 20;
+      }
+
+      protected boolean a(ard $$0, cjj $$1) {
+         return !$$1.bj() && $$1.gI() >= (long)this.c && !$$1.O_() && $$1.aJ() && !$$1.cW() && $$1.gs();
+      }
+
+      protected void a(ard $$0, cjj $$1, long $$2) {
+         if ($$1.gv()) {
+            $$1.gG();
+         } else if (!$$1.gp()) {
+            $$1.gF();
          }
       }
-   }
-
-   @Nullable
-   private cjd a(bsj $$0) {
-      cjj $$1 = but.bf.a(this.a.dV(), bus.k);
-      if ($$1 != null) {
-         $$1.a((ard)this.a.dV(), $$0, bus.k, null);
-         $$1.a_(this.a.dA(), this.a.dC(), this.a.dG());
-         $$1.aj = 60;
-         $$1.fY();
-         $$1.y(true);
-         $$1.c_(0);
-      }
-
-      return $$1;
-   }
-
-   @Nullable
-   private cmh a(bsj $$0, cjd $$1) {
-      cmh $$2 = but.be.a($$1.dV(), bus.k);
-      if ($$2 != null) {
-         $$2.a((ard)$$1.dV(), $$0, bus.k, null);
-         $$2.a_($$1.dA(), $$1.dC(), $$1.dG());
-         $$2.aj = 60;
-         $$2.fY();
-         if ($$2.a(buu.f).f()) {
-            $$2.a(buu.f, new cwq(cwu.ql));
-         }
-
-         this.a($$2, buu.a, $$0);
-         this.a($$2, buu.f, $$0);
-      }
-
-      return $$2;
-   }
-
-   private void a(cmh $$0, buu $$1, bsj $$2) {
-      cwq $$3 = $$0.a($$1);
-      $$3.b(kv.l, ddg.a);
-      ddc.a($$3, $$0.dV().K_(), deo.a, $$2, $$0.dY());
-      $$0.a($$1, $$3);
    }
 }

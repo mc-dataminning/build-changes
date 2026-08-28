@@ -1,62 +1,27 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
 
-public record ezz(fag b, String c, float d) implements ezx {
-   public static final MapCodec<ezz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               fah.a.fieldOf("target").forGetter(ezz::c),
-               Codec.STRING.fieldOf("score").forGetter(ezz::d),
-               Codec.FLOAT.fieldOf("scale").orElse(1.0F).forGetter(ezz::e)
-            )
-            .apply($$0, ezz::new)
-   );
+public class ezz {
+   public static final ezy a = a("inverted", ezu.a);
+   public static final ezy b = a("any_of", ezl.a);
+   public static final ezy c = a("all_of", ezk.a);
+   public static final ezy d = a("random_chance", fac.a);
+   public static final ezy e = a("random_chance_with_enchanted_bonus", fad.a);
+   public static final ezy f = a("entity_properties", faa.a);
+   public static final ezy g = a("killed_by_player", fab.a);
+   public static final ezy h = a("entity_scores", ezs.a);
+   public static final ezy i = a("block_state_property", ezw.a);
+   public static final ezy j = a("match_tool", fae.a);
+   public static final ezy k = a("table_bonus", ezm.a);
+   public static final ezy l = a("survives_explosion", ezt.a);
+   public static final ezy m = a("damage_source_properties", ezq.a);
+   public static final ezy n = a("location_check", ezv.a);
+   public static final ezy o = a("weather_check", fah.a);
+   public static final ezy p = a("reference", ezo.a);
+   public static final ezy q = a("time_check", faf.a);
+   public static final ezy r = a("value_check", fag.a);
+   public static final ezy s = a("enchantment_active_check", ezr.a);
 
-   @Override
-   public ezw b() {
-      return ezy.e;
-   }
-
-   @Override
-   public Set<bai<?>> a() {
-      return this.b.b();
-   }
-
-   public static ezz a(evs.b $$0, String $$1) {
-      return a($$0, $$1, 1.0F);
-   }
-
-   public static ezz a(evs.b $$0, String $$1, float $$2) {
-      return new ezz(fad.a($$0), $$1, $$2);
-   }
-
-   @Override
-   public float b(evs $$0) {
-      fcf $$1 = this.b.a($$0);
-      if ($$1 == null) {
-         return 0.0F;
-      } else {
-         fcg $$2 = $$0.d().g();
-         fby $$3 = $$2.a(this.c);
-         if ($$3 == null) {
-            return 0.0F;
-         } else {
-            fcc $$4 = $$2.d($$1, $$3);
-            return $$4 == null ? 0.0F : (float)$$4.a() * this.d;
-         }
-      }
-   }
-
-   public fag c() {
-      return this.b;
-   }
-
-   public String d() {
-      return this.c;
-   }
-
-   public float e() {
-      return this.d;
+   private static ezy a(String $$0, MapCodec<? extends ezx> $$1) {
+      return ke.a(mb.F, aku.b($$0), new ezy($$1));
    }
 }

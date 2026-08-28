@@ -1,20 +1,20 @@
-import java.util.Map;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface deu {
-   aku<? extends ke<det>> a = aku.a(akv.b("equipment_asset"));
-   aku<det> b = a("leather");
-   aku<det> c = a("chainmail");
-   aku<det> d = a("iron");
-   aku<det> e = a("gold");
-   aku<det> f = a("diamond");
-   aku<det> g = a("turtle_scute");
-   aku<det> h = a("netherite");
-   aku<det> i = a("armadillo_scute");
-   aku<det> j = a("elytra");
-   Map<cvn, aku<det>> k = af.a(cvn.class, $$0 -> a($$0.c() + "_carpet"));
-   aku<det> l = a("trader_llama");
+public record deu(ddy c) implements dek {
+   public static final MapCodec<deu> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ddy.b.fieldOf("value").forGetter(deu::b)).apply($$0, deu::new));
 
-   static aku<det> a(String $$0) {
-      return aku.a(a, akv.b($$0));
+   @Override
+   public float a(int $$0, azh $$1, float $$2) {
+      return this.c.a($$0);
+   }
+
+   @Override
+   public MapCodec<deu> a() {
+      return a;
+   }
+
+   public ddy b() {
+      return this.c;
    }
 }

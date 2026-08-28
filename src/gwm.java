@@ -1,23 +1,21 @@
-public class gwm<S extends gxq, M extends gcc<S> & gaw> extends gwu<S, M> {
-   public gwm(guc<S, M> $$0) {
-      super($$0);
+public class gwm extends gtu<cnn, hcc, gfu> {
+   private static final aku a = aku.b("textures/entity/piglin/zombified_piglin.png");
+
+   public gwm(gtd.a $$0, gga $$1, gga $$2, gga $$3, gga $$4, gga $$5, gga $$6) {
+      super($$0, new gfu($$0.a($$1)), new gfu($$0.a($$2)), 0.5F, gut.a);
+      this.a(new gxh<>(this, new gdm($$0.a($$3)), new gdm($$0.a($$4)), new gdm($$0.a($$5)), new gdm($$0.a($$5)), $$0.h()));
    }
 
-   public void a(ffv $$0, glz $$1, int $$2, S $$3, float $$4, float $$5) {
-      this.a($$3, $$3.g, bvc.b, $$0, $$1, $$2);
-      this.a($$3, $$3.i, bvc.a, $$0, $$1, $$2);
+   public aku a(hcc $$0) {
+      return a;
    }
 
-   protected void a(S $$0, hbp $$1, bvc $$2, ffv $$3, glz $$4, int $$5) {
-      if (!$$1.c()) {
-         $$3.a();
-         this.d().a($$2, $$3);
-         $$3.a(a.b.rotationDegrees(-90.0F));
-         $$3.a(a.d.rotationDegrees(180.0F));
-         boolean $$6 = $$2 == bvc.a;
-         $$3.a((float)($$6 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
-         $$1.a($$3, $$4, $$5, hej.d);
-         $$3.b();
-      }
+   public hcc b() {
+      return new hcc();
+   }
+
+   public void a(cnn $$0, hcc $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.gj();
    }
 }

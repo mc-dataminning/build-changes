@@ -1,24 +1,59 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class cfb extends cfl<cmv> {
-   @Override
-   public Set<cem<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cem.B)));
+public class cfb<T> {
+   private final T a;
+   private long b;
+
+   public cfb(T $$0, long $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   protected void a(ard $$0, cmv $$1) {
-      super.a($$0, $$1);
-      $$1.eb()
-         .c(cem.g)
-         .stream()
-         .flatMap(Collection::stream)
-         .filter(bur.e)
-         .filter($$2 -> cfs.c($$0, $$1, $$2))
-         .findFirst()
-         .ifPresentOrElse($$1x -> $$1.eb().a(cem.B, $$1x), () -> $$1.eb().b(cem.B));
+   public void a() {
+      if (this.e()) {
+         this.b--;
+      }
+   }
+
+   public static <T> cfb<T> a(T $$0) {
+      return new cfb<>($$0, Long.MAX_VALUE);
+   }
+
+   public static <T> cfb<T> a(T $$0, long $$1) {
+      return new cfb<>($$0, $$1);
+   }
+
+   public long b() {
+      return this.b;
+   }
+
+   public T c() {
+      return this.a;
+   }
+
+   public boolean d() {
+      return this.b <= 0L;
+   }
+
+   @Override
+   public String toString() {
+      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
+   }
+
+   @bag
+   public boolean e() {
+      return this.b != Long.MAX_VALUE;
+   }
+
+   public static <T> Codec<cfb<T>> a(Codec<T> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(
+                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
+                  Codec.LONG.lenientOptionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
+               )
+               .apply($$1, ($$0xx, $$1x) -> new cfb<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
+      );
    }
 }

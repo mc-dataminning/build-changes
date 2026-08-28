@@ -1,21 +1,17 @@
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+public class eel {
+   private final int a;
+   private final int b;
 
-public abstract class eel implements eea {
-   protected final km f;
-
-   protected static <P extends eel> P1<Mu<P>, km> a(Instance<P> $$0) {
-      return $$0.group(km.v(16).optionalFieldOf("offset", km.h).forGetter($$0x -> $$0x.f));
+   public eel(dzn $$0, dhb $$1) {
+      this.a = Math.max($$1.G_(), $$0.g());
+      this.b = Math.min($$1.H_(), $$0.e());
    }
 
-   protected eel(km $$0) {
-      this.f = $$0;
+   public int a() {
+      return this.a;
    }
 
-   public final boolean a(dhh $$0, ji $$1) {
-      return this.a($$0.a_($$1.a(this.f)));
+   public int b() {
+      return this.b;
    }
-
-   protected abstract boolean a(dwy var1);
 }

@@ -1,92 +1,48 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import java.util.Optional;
-import java.util.function.Supplier;
+import java.util.function.Function;
 
-public class cwh extends cwm implements cxu {
-   public static final Supplier<BiMap<djn, djn>> a = Suppliers.memoize(
-      () -> ImmutableBiMap.builder()
-            .put(djp.ry, djp.rY)
-            .put(djp.rz, djp.sa)
-            .put(djp.rA, djp.rZ)
-            .put(djp.rB, djp.sb)
-            .put(djp.rH, djp.sf)
-            .put(djp.rG, djp.se)
-            .put(djp.rF, djp.sd)
-            .put(djp.rE, djp.sc)
-            .put(djp.rX, djp.sn)
-            .put(djp.rW, djp.sm)
-            .put(djp.rV, djp.sl)
-            .put(djp.rU, djp.sk)
-            .put(djp.rT, djp.sj)
-            .put(djp.rS, djp.si)
-            .put(djp.rR, djp.sh)
-            .put(djp.rQ, djp.sg)
-            .put(djp.rL, djp.rP)
-            .put(djp.rK, djp.rO)
-            .put(djp.rJ, djp.rN)
-            .put(djp.rI, djp.rM)
-            .put(djp.so, djp.ss)
-            .put(djp.sp, djp.st)
-            .put(djp.sr, djp.sv)
-            .put(djp.sq, djp.su)
-            .put(djp.sw, djp.sA)
-            .put(djp.sx, djp.sB)
-            .put(djp.sz, djp.sD)
-            .put(djp.sy, djp.sC)
-            .put(djp.sE, djp.sI)
-            .put(djp.sF, djp.sJ)
-            .put(djp.sG, djp.sK)
-            .put(djp.sH, djp.sL)
-            .put(djp.sM, djp.sQ)
-            .put(djp.sN, djp.sR)
-            .put(djp.sO, djp.sS)
-            .put(djp.sP, djp.sT)
-            .build()
-   );
-   public static final Supplier<BiMap<djn, djn>> b = Suppliers.memoize(() -> a.get().inverse());
-
-   public cwh(cwm.a $$0) {
-      super($$0);
+public record cwh<T>(Optional<jr<T>> a, akt<T> b) {
+   public cwh(jr<T> $$0) {
+      this(Optional.of($$0), $$0.e().orElseThrow());
    }
 
-   @Override
-   public bsl a(daj $$0) {
-      dgj $$1 = $$0.q();
-      ji $$2 = $$0.a();
-      dwy $$3 = $$1.a_($$2);
-      return a($$3).map($$3x -> {
-         coy $$4 = $$0.o();
-         cwq $$5 = $$0.n();
-         if ($$4 instanceof are $$6) {
-            ap.N.a($$6, $$2, $$5);
-         }
-
-         $$5.h(1);
-         $$1.a($$2, $$3x, 11);
-         $$1.a(ebu.c, $$2, ebu.a.a($$4, $$3x));
-         $$1.a($$4, 3003, $$2, 0);
-         return bsl.a;
-      }).orElse(bsl.e);
+   public cwh(akt<T> $$0) {
+      this(Optional.empty(), $$0);
    }
 
-   public static Optional<dwy> a(dwy $$0) {
-      return Optional.ofNullable((djn)a.get().get($$0.b())).map($$1 -> ((djn)$$1).m($$0));
+   public static <T> Codec<cwh<T>> a(akt<ke<T>> $$0, Codec<jr<T>> $$1) {
+      return Codec.either($$1, akt.a($$0).comapFlatMap($$0x -> DataResult.error(() -> "Cannot parse as key without registry"), Function.identity()))
+         .xmap(cwh::a, cwh::a);
    }
 
-   @Override
-   public boolean a(dgj $$0, dvn $$1, boolean $$2, coy $$3) {
-      if ($$1.b(true)) {
-         $$0.a(null, 3003, $$1.aA_(), 0);
-         return true;
-      } else {
-         return false;
-      }
+   public static <T> yn<wa, cwh<T>> a(akt<ke<T>> $$0, yn<wa, jr<T>> $$1) {
+      return yn.a(yl.a($$1, akt.b($$0)), cwh::a, cwh::a);
    }
 
-   @Override
-   public boolean a(dvo $$0, coy $$1) {
-      return true;
+   public Either<jr<T>, akt<T>> a() {
+      return this.a.<Either<jr<T>, akt<T>>>map(Either::left).orElseGet(() -> Either.right(this.b));
+   }
+
+   public static <T> cwh<T> a(Either<jr<T>, akt<T>> $$0) {
+      return (cwh<T>)$$0.map(cwh::new, cwh::new);
+   }
+
+   public Optional<T> a(ke<T> $$0) {
+      return this.a.<T>map(jr::a).or(() -> $$0.f(this.b));
+   }
+
+   public Optional<jr<T>> a(jt.a $$0) {
+      return this.a.or(() -> $$0.d(this.b.c()).a(this.b));
+   }
+
+   public Optional<jr<T>> b() {
+      return this.a;
+   }
+
+   public akt<T> c() {
+      return this.b;
    }
 }

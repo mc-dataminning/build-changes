@@ -1,11 +1,11 @@
 import java.util.List;
 
-public record aao(aku<dgj> c, enf d, List<aao.a> e) implements zz {
+public record aao(akt<dgz> c, eob d, List<aao.a> e) implements zz {
    public static final yn<vl, aao> a = zz.a(aao::a, aao::new);
    public static final zz.b<aao> b = zz.a("debug/structures");
 
    private aao(vl $$0) {
-      this($$0.a(mc.be), b($$0), $$0.a(aao.a::new));
+      this($$0.a(mc.bg), b($$0), $$0.a(aao.a::new));
    }
 
    private void a(vl $$0) {
@@ -19,11 +19,11 @@ public record aao(aku<dgj> c, enf d, List<aao.a> e) implements zz {
       return b;
    }
 
-   static enf b(vl $$0) {
-      return new enf($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
+   static eob b(vl $$0) {
+      return new eob($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
    }
 
-   static void a(vl $$0, enf $$1) {
+   static void a(vl $$0, eob $$1) {
       $$0.q($$1.h());
       $$0.q($$1.i());
       $$0.q($$1.j());
@@ -32,11 +32,11 @@ public record aao(aku<dgj> c, enf d, List<aao.a> e) implements zz {
       $$0.q($$1.m());
    }
 
-   public aku<dgj> b() {
+   public akt<dgz> b() {
       return this.c;
    }
 
-   public enf c() {
+   public eob c() {
       return this.d;
    }
 
@@ -44,7 +44,7 @@ public record aao(aku<dgj> c, enf d, List<aao.a> e) implements zz {
       return this.e;
    }
 
-   public static record a(enf a, boolean b) {
+   public static record a(eob a, boolean b) {
       public a(vl $$0) {
          this(aao.b($$0), $$0.readBoolean());
       }

@@ -1,50 +1,40 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Collection;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-@FunctionalInterface
-public interface hex {
-   Logger a = LogUtils.getLogger();
+public class hex implements her {
+   private final gdv a;
+   private final hhy b;
 
-   static hex create(Collection<atp<?>> $$0) {
-      return ($$1, $$2) -> {
-         aur $$3;
-         try {
-            $$3 = $$2.f().a($$0);
-         } catch (Exception var9) {
-            a.error("Unable to parse metadata from {}", $$1, var9);
-            return null;
-         }
-
-         fev $$7;
-         try (InputStream $$6 = $$2.d()) {
-            $$7 = fev.a($$6);
-         } catch (IOException var11) {
-            a.error("Using missing texture, unable to load {}", $$1, var11);
-            return null;
-         }
-
-         Optional<hgg> $$11 = $$3.a(hgg.b);
-         hgh $$12;
-         if ($$11.isPresent()) {
-            $$12 = $$11.get().a($$7.a(), $$7.b());
-            if (!ayz.c($$7.a(), $$12.a()) || !ayz.c($$7.b(), $$12.b())) {
-               a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
-               $$7.close();
-               return null;
-            }
-         } else {
-            $$12 = new hgh($$7.a(), $$7.b());
-         }
-
-         return new hen($$1, $$12, $$7, $$3);
-      };
+   public hex(gdv $$0, hhy $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Nullable
-   hen loadSprite(akv var1, aun var2);
+   @Override
+   public void a(cxf $$0, fgr $$1, gmx $$2, int $$3, int $$4, boolean $$5) {
+      gpx.a($$1, $$2, $$3, $$4, this.a, this.b);
+   }
+
+   public static record a(dzd b, Optional<aku> c) implements hev.a {
+      public static final MapCodec<hex.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(dzd.a.fieldOf("wood_type").forGetter(hex.a::b), aku.a.optionalFieldOf("texture").forGetter(hex.a::c)).apply($$0, hex.a::new)
+      );
+
+      public a(dzd $$0) {
+         this($$0, Optional.empty());
+      }
+
+      @Override
+      public MapCodec<hex.a> a() {
+         return a;
+      }
+
+      @Override
+      public hev<?> a(gfy $$0) {
+         gdv $$1 = gpx.a($$0, this.b, true);
+         hhy $$2 = this.c.<hhy>map(gns::c).orElseGet(() -> gns.a(this.b));
+         return new hex($$1, $$2);
+      }
+   }
 }

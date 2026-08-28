@@ -1,30 +1,34 @@
 public class ach implements yw<abl> {
-   public static final yn<vl, ach> a = yw.a(ach::a, ach::new);
+   public static final yn<wa, ach> a = yw.a(ach::a, ach::new);
    private final int b;
    private final int c;
    private final int d;
+   private final cxh e;
 
-   public ach(int $$0, int $$1, int $$2) {
+   public ach(int $$0, int $$1, int $$2, cxh $$3) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
+      this.e = $$3.v();
    }
 
-   private ach(vl $$0) {
+   private ach(wa $$0) {
       this.b = $$0.x();
-      this.c = $$0.readShort();
+      this.c = $$0.l();
       this.d = $$0.readShort();
+      this.e = cxh.h.decode($$0);
    }
 
-   private void a(vl $$0) {
+   private void a(wa $$0) {
       $$0.f(this.b);
-      $$0.m(this.c);
+      $$0.c(this.c);
       $$0.m(this.d);
+      cxh.h.encode($$0, this.e);
    }
 
    @Override
    public yy<ach> a() {
-      return age.v;
+      return agd.v;
    }
 
    public void a(abl $$0) {
@@ -36,10 +40,14 @@ public class ach implements yw<abl> {
    }
 
    public int e() {
-      return this.c;
+      return this.d;
    }
 
-   public int f() {
-      return this.d;
+   public cxh f() {
+      return this.e;
+   }
+
+   public int g() {
+      return this.c;
    }
 }

@@ -1,31 +1,46 @@
-public class ftp extends fum {
-   private fpn a;
-   private final Runnable b;
-   private final Runnable c;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
-   public ftp(Runnable $$0, Runnable $$1) {
-      super(wp.c("datapackFailure.title"));
-      this.a = fpn.a;
+public class ftp<T> {
+   private final T b;
+   private final BiConsumer<Consumer<String>, T> c;
+   public static final ftp<?> a = new ftp<>(baf.a, ($$0, $$1) -> {
+   });
+
+   private ftp(T $$0, BiConsumer<Consumer<String>, T> $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   @Override
-   protected void aR_() {
-      super.aR_();
-      this.a = fpn.a(this.p, this.n(), this.n - 50);
-      this.c(fou.a(wp.c("datapackFailure.safeMode"), $$0 -> this.c.run()).a(this.n / 2 - 155, this.o / 6 + 96, 150, 20).a());
-      this.c(fou.a(wo.k, $$0 -> this.b.run()).a(this.n / 2 - 155 + 160, this.o / 6 + 96, 150, 20).a());
+   public static ftp<?> a(String $$0) {
+      return new ftp<>($$0, Consumer::accept);
+   }
+
+   public static ftp<?> a(wp $$0) {
+      return new ftp<>($$0, ($$0x, $$1) -> $$0x.accept($$1.getString()));
+   }
+
+   public static ftp<?> a(List<wp> $$0) {
+      return new ftp<>($$0, ($$1, $$2) -> $$0.stream().map(wp::getString).forEach($$1));
+   }
+
+   public void a(Consumer<String> $$0) {
+      this.c.accept($$0, this.b);
    }
 
    @Override
-   public void a(fof $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a.a($$0, this.n / 2, 70);
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof ftp<?> $$1) ? false : $$1.c == this.c && $$1.b.equals(this.b);
+      }
    }
 
    @Override
-   public boolean aG_() {
-      return false;
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      return 31 * $$0 + this.c.hashCode();
    }
 }

@@ -1,43 +1,127 @@
 import java.util.EnumSet;
-import java.util.List;
-import javax.annotation.Nullable;
 
-public class cdx extends ceg {
-   private final chl a;
-   @Nullable
-   private bvi b;
-   private final cfz c = cfz.a().a(64.0);
+public class cdx<T extends cms & cmw & cmf> extends ccw {
+   public static final bsj a = bab.a(1, 2);
+   private final T b;
+   private cdx.a c = cdx.a.a;
+   private final double d;
+   private final float e;
+   private int f;
+   private int g;
+   private int h;
 
-   public cdx(chl $$0) {
-      super($$0, false, true);
-      this.a = $$0;
-      this.a(EnumSet.of(ccg.a.d));
+   public cdx(T $$0, double $$1, float $$2) {
+      this.b = $$0;
+      this.d = $$1;
+      this.e = $$2 * $$2;
+      this.a(EnumSet.of(ccw.a.a, ccw.a.b));
    }
 
    @Override
    public boolean b() {
-      faw $$0 = this.a.cR().c(10.0, 8.0, 10.0);
-      ard $$1 = a(this.a);
-      List<? extends bvi> $$2 = $$1.a(coj.class, this.c, this.a, $$0);
-      List<coy> $$3 = $$1.a(this.c, this.a, $$0);
+      return this.i() && this.h();
+   }
 
-      for (bvi $$4 : $$2) {
-         coj $$5 = (coj)$$4;
-
-         for (coy $$6 : $$3) {
-            int $$7 = $$5.g($$6);
-            if ($$7 <= -100) {
-               this.b = $$6;
-            }
-         }
-      }
-
-      return this.b == null ? false : !(this.b instanceof coy) || !this.b.Z_() && !((coy)this.b).b();
+   private boolean h() {
+      return this.b.b(cxl.wX);
    }
 
    @Override
-   public void d() {
-      this.a.h(this.b);
-      super.d();
+   public boolean c() {
+      return this.i() && (this.b() || !this.b.O().k()) && this.h();
+   }
+
+   private boolean i() {
+      return this.b.f() != null && this.b.f().bJ();
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.b.v(false);
+      this.b.h(null);
+      this.f = 0;
+      if (this.b.fB()) {
+         this.b.fH();
+         this.b.b(false);
+         this.b.fD().b(kv.P, czk.a);
+      }
+   }
+
+   @Override
+   public boolean Q_() {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      bvy $$0 = this.b.f();
+      if ($$0 != null) {
+         boolean $$1 = this.b.P().a($$0);
+         boolean $$2 = this.f > 0;
+         if ($$1 != $$2) {
+            this.f = 0;
+         }
+
+         if ($$1) {
+            this.f++;
+         } else {
+            this.f--;
+         }
+
+         double $$3 = this.b.g((bva)$$0);
+         boolean $$4 = ($$3 > (double)this.e || this.f < 5) && this.g == 0;
+         if ($$4) {
+            this.h--;
+            if (this.h <= 0) {
+               this.b.O().a($$0, this.k() ? this.d : this.d * 0.5);
+               this.h = a.a(this.b.dX());
+            }
+         } else {
+            this.h = 0;
+            this.b.O().m();
+         }
+
+         this.b.J().a($$0, 30.0F, 30.0F);
+         if (this.c == cdx.a.a) {
+            if (!$$4) {
+               this.b.c(cqm.a(this.b, cxl.wX));
+               this.c = cdx.a.b;
+               this.b.b(true);
+            }
+         } else if (this.c == cdx.a.b) {
+            if (!this.b.fB()) {
+               this.c = cdx.a.a;
+            }
+
+            int $$5 = this.b.fF();
+            cxh $$6 = this.b.fD();
+            if ($$5 >= cvz.b($$6, this.b)) {
+               this.b.fG();
+               this.c = cdx.a.c;
+               this.g = 20 + this.b.dX().a(20);
+               this.b.b(false);
+            }
+         } else if (this.c == cdx.a.c) {
+            this.g--;
+            if (this.g == 0) {
+               this.c = cdx.a.d;
+            }
+         } else if (this.c == cdx.a.d && $$1) {
+            this.b.a($$0, 1.0F);
+            this.c = cdx.a.a;
+         }
+      }
+   }
+
+   private boolean k() {
+      return this.c == cdx.a.a;
+   }
+
+   static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

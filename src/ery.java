@@ -1,14 +1,9 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public interface ery<P extends erx> {
-   ery<erv> a = a("clear", erv.a);
-   ery<erw> b = a("passthrough", erw.b);
-   ery<eru> c = a("append_static", eru.a);
-   ery<ert> d = a("append_loot", ert.a);
+public abstract class ery {
+   public static final Codec<ery> c = mb.o.q().dispatch("predicate_type", ery::a, erz::codec);
 
-   MapCodec<P> codec();
+   public abstract boolean a(ji var1, ji var2, ji var3, azh var4);
 
-   private static <P extends erx> ery<P> a(String $$0, MapCodec<P> $$1) {
-      return ke.a(mb.n, $$0, () -> $$1);
-   }
+   protected abstract erz<?> a();
 }

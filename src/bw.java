@@ -8,7 +8,7 @@ public class bw extends dz<bw.a> {
       return bw.a.a;
    }
 
-   public void a(are $$0, btc $$1, float $$2, float $$3, boolean $$4) {
+   public void a(are $$0, btp $$1, float $$2, float $$3, boolean $$4) {
       this.a($$0, $$5 -> $$5.a($$0, $$1, $$2, $$3, $$4));
    }
 
@@ -29,7 +29,7 @@ public class bw extends dz<bw.a> {
          return ap.i.a(new bw.a(Optional.empty(), Optional.of($$0.b())));
       }
 
-      public boolean a(are $$0, btc $$1, float $$2, float $$3, boolean $$4) {
+      public boolean a(are $$0, btp $$1, float $$2, float $$3, boolean $$4) {
          return !this.c.isPresent() || this.c.get().a($$0, $$1, $$2, $$3, $$4);
       }
 

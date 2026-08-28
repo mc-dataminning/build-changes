@@ -1,22 +1,11 @@
-import java.time.Duration;
 import javax.annotation.Nullable;
 
-public class hko {
-   private final boolean a;
-   @Nullable
-   private final Duration b;
-
-   public hko(boolean $$0, @Nullable Duration $$1) {
-      this.b = $$1;
-      this.a = $$0;
+public record hko(@Nullable avx a, float b) {
+   public hko(avx $$0) {
+      this($$0, 1.0F);
    }
 
-   public void a(hke $$0) {
-      if (this.b != null) {
-         $$0.send(hkf.d, $$0x -> {
-            $$0x.a(hkh.x, (int)this.b.toMillis());
-            $$0x.a(hkh.y, this.a);
-         });
-      }
+   public boolean a(hjo $$0) {
+      return this.a == null ? false : this.a.d() && !this.a.a().a().a().equals($$0.a());
    }
 }

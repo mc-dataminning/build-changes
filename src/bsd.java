@@ -1,86 +1,36 @@
-public class bsd implements bse {
-   private final bse b;
-   private final bse c;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 
-   public bsd(bse $$0, bse $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public abstract class bsd {
+   private static final Codec<Either<Integer, bsd>> a = Codec.either(Codec.INT, mb.K.q().dispatch(bsd::c, bse::codec));
+   public static final Codec<bsd> c = a.xmap(
+      $$0 -> (bsd)$$0.map(bsa::a, $$0x -> $$0x), $$0 -> $$0.c() == bse.a ? Either.left(((bsa)$$0).d()) : Either.right($$0)
+   );
+   public static final Codec<bsd> d = b(0, Integer.MAX_VALUE);
+   public static final Codec<bsd> e = b(1, Integer.MAX_VALUE);
+
+   public static Codec<bsd> b(int $$0, int $$1) {
+      return a($$0, $$1, c);
    }
 
-   @Override
-   public int b() {
-      return this.b.b() + this.c.b();
+   public static <T extends bsd> Codec<T> a(int $$0, int $$1, Codec<T> $$2) {
+      return $$2.validate($$2x -> a($$0, $$1, $$2x));
    }
 
-   @Override
-   public boolean c() {
-      return this.b.c() && this.c.c();
-   }
-
-   public boolean a(bse $$0) {
-      return this.b == $$0 || this.c == $$0;
-   }
-
-   @Override
-   public cwq a(int $$0) {
-      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b()) : this.b.a($$0);
-   }
-
-   @Override
-   public cwq a(int $$0, int $$1) {
-      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b(), $$1) : this.b.a($$0, $$1);
-   }
-
-   @Override
-   public cwq b(int $$0) {
-      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b()) : this.b.b($$0);
-   }
-
-   @Override
-   public void a(int $$0, cwq $$1) {
-      if ($$0 >= this.b.b()) {
-         this.c.a($$0 - this.b.b(), $$1);
+   private static <T extends bsd> DataResult<T> a(int $$0, int $$1, T $$2) {
+      if ($$2.a() < $$0) {
+         return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
       } else {
-         this.b.a($$0, $$1);
+         return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
       }
    }
 
-   @Override
-   public int an_() {
-      return this.b.an_();
-   }
+   public abstract int a(azh var1);
 
-   @Override
-   public void e() {
-      this.b.e();
-      this.c.e();
-   }
+   public abstract int a();
 
-   @Override
-   public boolean a(coy $$0) {
-      return this.b.a($$0) && this.c.a($$0);
-   }
+   public abstract int b();
 
-   @Override
-   public void c_(coy $$0) {
-      this.b.c_($$0);
-      this.c.c_($$0);
-   }
-
-   @Override
-   public void c(coy $$0) {
-      this.b.c($$0);
-      this.c.c($$0);
-   }
-
-   @Override
-   public boolean b(int $$0, cwq $$1) {
-      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b(), $$1) : this.b.b($$0, $$1);
-   }
-
-   @Override
-   public void a() {
-      this.b.a();
-      this.c.a();
-   }
+   public abstract bse<?> c();
 }

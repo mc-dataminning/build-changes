@@ -1,91 +1,130 @@
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
-import com.mojang.datafixers.DataFixUtils;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
-import java.util.Optional;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dio extends djx {
-   public static final MapCodec<dio> a = RecordCodecBuilder.mapCodec(
+public class dio {
+   private static final Logger d = LogUtils.getLogger();
+   private static final float e = 0.1F;
+   public static final brj<dio.c> a = brj.a();
+   public static final dio b = new dio.a().a();
+   public static final MapCodec<dio> c = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               aku.a(mc.f).fieldOf("fruit").forGetter($$0x -> $$0x.e),
-               aku.a(mc.f).fieldOf("stem").forGetter($$0x -> $$0x.f),
-               aku.a(mc.K).fieldOf("seed").forGetter($$0x -> $$0x.g),
-               t()
+               Codec.floatRange(0.0F, 0.9999999F).optionalFieldOf("creature_spawn_probability", 0.1F).forGetter($$0x -> $$0x.f),
+               Codec.simpleMap(bwb.i, brj.a(dio.c.a).promotePartial(af.a("Spawn data: ", d::error)), azv.a(bwb.values()))
+                  .fieldOf("spawners")
+                  .forGetter($$0x -> $$0x.g),
+               Codec.simpleMap(mb.f.q(), dio.b.a, mb.f).fieldOf("spawn_costs").forGetter($$0x -> $$0x.h)
             )
             .apply($$0, dio::new)
    );
-   public static final dxv<jn> b = dnl.aF;
-   protected static final float c = 2.0F;
-   private static final Map<jn, fbv> d = Maps.newEnumMap(
-      ImmutableMap.of(
-         jn.d,
-         djn.a(6.0, 0.0, 6.0, 10.0, 10.0, 16.0),
-         jn.e,
-         djn.a(0.0, 0.0, 6.0, 10.0, 10.0, 10.0),
-         jn.c,
-         djn.a(6.0, 0.0, 0.0, 10.0, 10.0, 10.0),
-         jn.f,
-         djn.a(6.0, 0.0, 6.0, 16.0, 10.0, 10.0)
-      )
-   );
-   private final aku<djn> e;
-   private final aku<djn> f;
-   private final aku<cwm> g;
+   private final float f;
+   private final Map<bwb, brj<dio.c>> g;
+   private final Map<bvi<?>, dio.b> h;
 
-   @Override
-   public MapCodec<dio> a() {
-      return a;
-   }
-
-   protected dio(aku<djn> $$0, aku<djn> $$1, aku<cwm> $$2, dwx.d $$3) {
-      super($$3);
-      this.l(this.F.b().b(b, jn.c));
+   dio(float $$0, Map<bwb, brj<dio.c>> $$1, Map<bvi<?>, dio.b> $$2) {
       this.f = $$0;
-      this.e = $$1;
-      this.g = $$2;
+      this.g = ImmutableMap.copyOf($$1);
+      this.h = ImmutableMap.copyOf($$2);
    }
 
-   @Override
-   protected fbv a(dwy $$0, dfo $$1, ji $$2, fbg $$3) {
-      return d.get($$0.c(b));
+   public brj<dio.c> a(bwb $$0) {
+      return this.g.getOrDefault($$0, a);
    }
 
-   @Override
-   protected dwy a(dwy $$0, dgm $$1, dgy $$2, ji $$3, jn $$4, ji $$5, dwy $$6, azh $$7) {
-      if (!$$6.a(this.e) && $$4 == $$0.c(b)) {
-         Optional<djn> $$8 = $$1.K_().e(mc.f).f(this.f);
-         if ($$8.isPresent()) {
-            return $$8.get().m().c(dro.c, Integer.valueOf(7));
-         }
+   @Nullable
+   public dio.b a(bvi<?> $$0) {
+      return this.h.get($$0);
+   }
+
+   public float a() {
+      return this.f;
+   }
+
+   public static class a {
+      private final Map<bwb, brj.a<dio.c>> a = af.a(bwb.class, $$0 -> brj.b());
+      private final Map<bvi<?>, dio.b> b = Maps.newLinkedHashMap();
+      private float c = 0.1F;
+
+      public dio.a a(bwb $$0, int $$1, dio.c $$2) {
+         this.a.get($$0).a($$2, $$1);
+         return this;
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      public dio.a a(bvi<?> $$0, double $$1, double $$2) {
+         this.b.put($$0, new dio.b($$2, $$1));
+         return this;
+      }
+
+      public dio.a a(float $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public dio a() {
+         return new dio(
+            this.c,
+            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> ((brj.a)$$0.getValue()).a())),
+            ImmutableMap.copyOf(this.b)
+         );
+      }
    }
 
-   @Override
-   protected boolean b(dwy $$0, dfo $$1, ji $$2) {
-      return $$0.a(djp.cK);
+   public static record b(double b, double c) {
+      public static final Codec<dio.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.DOUBLE.fieldOf("energy_budget").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("charge").forGetter($$0x -> $$0x.c))
+               .apply($$0, dio.b::new)
+      );
+
+      public double a() {
+         return this.b;
+      }
+
+      public double b() {
+         return this.c;
+      }
    }
 
-   @Override
-   protected cwq a(dgm $$0, ji $$1, dwy $$2, boolean $$3) {
-      return new cwq((dgi)DataFixUtils.orElse($$0.K_().e(mc.K).f(this.g), this));
-   }
+   public static record c(bvi<?> b, int c, int d) {
+      public static final MapCodec<dio.c> a = RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     mb.f.q().fieldOf("type").forGetter($$0x -> $$0x.b),
+                     ayi.m.fieldOf("minCount").forGetter($$0x -> $$0x.c),
+                     ayi.m.fieldOf("maxCount").forGetter($$0x -> $$0x.d)
+                  )
+                  .apply($$0, dio.c::new)
+         )
+         .validate($$0 -> $$0.c > $$0.d ? DataResult.error(() -> "minCount needs to be smaller or equal to maxCount") : DataResult.success($$0));
 
-   @Override
-   protected dwy a(dwy $$0, dqf $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
+      public c(bvi<?> b, int c, int d) {
+         b = b.f() == bwb.h ? bvi.aQ : b;
+         this.b = b;
+         this.c = c;
+         this.d = d;
+      }
 
-   @Override
-   protected dwy a(dwy $$0, dom $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
+      @Override
+      public String toString() {
+         return bvi.a(this.b) + "*(" + this.c + "-" + this.d + ")";
+      }
 
-   @Override
-   protected void a(dwz.a<djn, dwy> $$0) {
-      $$0.a(b);
+      public bvi<?> a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      public int c() {
+         return this.d;
+      }
    }
 }

@@ -1,43 +1,19 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class dpp {
+   private static final double b = 0.826;
+   public static final double a = 0.1;
 
-public class dpp extends djb {
-   public static final MapCodec<dpp> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dxn.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), t()).apply($$0, dpp::new)
-   );
-   public static final dxp f = dxo.B;
-
-   @Override
-   public MapCodec<dpp> a() {
-      return e;
+   public static boolean a(dxq $$0) {
+      return $$0.l();
    }
 
-   protected dpp(dxn $$0, dwx.d $$1) {
-      super($$1, $$0);
-      this.l(this.F.b().b(f, Boolean.valueOf(false)));
-   }
+   public static int a(azh $$0) {
+      double $$1 = 1.0;
 
-   @Override
-   protected int h(dwy $$0) {
-      return $$0.c(f) ? 15 : 0;
-   }
+      int $$2;
+      for ($$2 = 0; $$0.j() < $$1; $$2++) {
+         $$1 *= 0.826;
+      }
 
-   @Override
-   protected dwy a(dwy $$0, int $$1) {
-      return $$0.b(f, Boolean.valueOf($$1 > 0));
-   }
-
-   @Override
-   protected int b(dgj $$0, ji $$1) {
-      Class<? extends bum> $$2 = switch (this.d.f()) {
-         case a -> bum.class;
-         case b -> bvi.class;
-      };
-      return a($$0, c.a($$1), $$2) > 0 ? 15 : 0;
-   }
-
-   @Override
-   protected void a(dwz.a<djn, dwy> $$0) {
-      $$0.a(f);
+      return $$2;
    }
 }

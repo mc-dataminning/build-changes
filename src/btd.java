@@ -1,263 +1,171 @@
-import javax.annotation.Nullable;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import org.slf4j.Logger;
 
-public class btd {
-   private final ke<bte> a;
-   private final btc b;
-   private final btc c;
-   private final btc d;
-   private final btc e;
-   private final btc f;
-   private final btc g;
-   private final btc h;
-   private final btc i;
-   private final btc j;
-   private final btc k;
-   private final btc l;
-   private final btc m;
-   private final btc n;
-   private final btc o;
-   private final btc p;
-   private final btc q;
-   private final btc r;
-   private final btc s;
-   private final btc t;
-   private final btc u;
-   private final btc v;
-   private final btc w;
-   private final btc x;
-   private final btc y;
-   private final btc z;
+public class btd extends evi {
+   private static final Logger a = LogUtils.getLogger();
+   private final long b;
+   private int c;
+   private boolean d = true;
+   private boolean e = true;
+   private final Map<aku, btc> f = new Object2ObjectOpenHashMap();
 
-   public btd(kf $$0) {
-      this.a = $$0.e(mc.s);
-      this.b = this.a(btf.a);
-      this.c = this.a(btf.b);
-      this.d = this.a(btf.c);
-      this.e = this.a(btf.d);
-      this.f = this.a(btf.e);
-      this.g = this.a(btf.f);
-      this.h = this.a(btf.g);
-      this.i = this.a(btf.h);
-      this.j = this.a(btf.i);
-      this.k = this.a(btf.j);
-      this.l = this.a(btf.k);
-      this.m = this.a(btf.l);
-      this.n = this.a(btf.m);
-      this.o = this.a(btf.n);
-      this.p = this.a(btf.o);
-      this.q = this.a(btf.p);
-      this.r = this.a(btf.q);
-      this.s = this.a(btf.r);
-      this.t = this.a(btf.s);
-      this.u = this.a(btf.t);
-      this.v = this.a(btf.u);
-      this.w = this.a(btf.v);
-      this.x = this.a(btf.w);
-      this.y = this.a(btf.U);
-      this.z = this.a(btf.V);
+   public static evi.a<btd> a(long $$0) {
+      return new evi.a<>(() -> new btd($$0), ($$1, $$2) -> a($$0, $$1), bam.m);
    }
 
-   private btc a(aku<bte> $$0) {
-      return new btc(this.a.b($$0));
+   public btd(long $$0) {
+      this.b = $$0;
    }
 
-   private btc a(aku<bte> $$0, @Nullable bum $$1) {
-      return new btc(this.a.b($$0), $$1);
+   public azh a(aku $$0) {
+      azh $$1 = this.f.computeIfAbsent($$0, this::c).a();
+      return new btd.a($$1);
    }
 
-   private btc a(aku<bte> $$0, @Nullable bum $$1, @Nullable bum $$2) {
-      return new btc(this.a.b($$0), $$1, $$2);
+   private btc c(aku $$0) {
+      return this.b($$0, this.c, this.d, this.e);
    }
 
-   public btc a() {
-      return this.b;
+   private btc b(aku $$0, int $$1, boolean $$2, boolean $$3) {
+      long $$4 = ($$2 ? this.b : 0L) ^ (long)$$1;
+      return new btc($$4, $$3 ? Optional.of($$0) : Optional.empty());
    }
 
-   public btc b() {
-      return this.c;
+   public void a(BiConsumer<aku, btc> $$0) {
+      this.f.forEach($$0);
    }
 
-   public btc c() {
-      return this.d;
+   public void a(int $$0, boolean $$1, boolean $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public btc d() {
-      return this.e;
+   @Override
+   public tq a(tq $$0, jt.a $$1) {
+      $$0.a("salt", this.c);
+      $$0.a("include_world_seed", this.d);
+      $$0.a("include_sequence_id", this.e);
+      tq $$2 = new tq();
+      this.f.forEach(($$1x, $$2x) -> $$2.a($$1x.toString(), (un)btc.a.encodeStart(ue.a, $$2x).result().orElseThrow()));
+      $$0.a("sequences", $$2);
+      return $$0;
    }
 
-   public btc e() {
-      return this.f;
+   private static boolean a(tq $$0, String $$1, boolean $$2) {
+      return $$0.b($$1, 1) ? $$0.q($$1) : $$2;
    }
 
-   public btc f() {
-      return this.g;
+   public static btd a(long $$0, tq $$1) {
+      btd $$2 = new btd($$0);
+      $$2.a($$1.h("salt"), a($$1, "include_world_seed", true), a($$1, "include_sequence_id", true));
+      tq $$3 = $$1.p("sequences");
+
+      for (String $$5 : $$3.e()) {
+         try {
+            btc $$6 = (btc)((Pair)btc.a.decode(ue.a, $$3.c($$5)).result().get()).getFirst();
+            $$2.f.put(aku.a($$5), $$6);
+         } catch (Exception var9) {
+            a.error("Failed to load random sequence {}", $$5, var9);
+         }
+      }
+
+      return $$2;
    }
 
-   public btc g() {
-      return this.h;
+   public int a() {
+      int $$0 = this.f.size();
+      this.f.clear();
+      return $$0;
    }
 
-   public btc h() {
-      return this.i;
+   public void b(aku $$0) {
+      this.f.put($$0, this.c($$0));
    }
 
-   public btc i() {
-      return this.j;
+   public void a(aku $$0, int $$1, boolean $$2, boolean $$3) {
+      this.f.put($$0, this.b($$0, $$1, $$2, $$3));
    }
 
-   public btc j() {
-      return this.k;
-   }
+   class a implements azh {
+      private final azh c;
 
-   public btc k() {
-      return this.l;
-   }
+      a(final azh $$0) {
+         this.c = $$0;
+      }
 
-   public btc l() {
-      return this.m;
-   }
+      @Override
+      public azh d() {
+         btd.this.g();
+         return this.c.d();
+      }
 
-   public btc m() {
-      return this.n;
-   }
+      @Override
+      public eeb e() {
+         btd.this.g();
+         return this.c.e();
+      }
 
-   public btc n() {
-      return this.o;
-   }
+      @Override
+      public void b(long $$0) {
+         btd.this.g();
+         this.c.b($$0);
+      }
 
-   public btc o() {
-      return this.p;
-   }
+      @Override
+      public int f() {
+         btd.this.g();
+         return this.c.f();
+      }
 
-   public btc p() {
-      return this.q;
-   }
+      @Override
+      public int a(int $$0) {
+         btd.this.g();
+         return this.c.a($$0);
+      }
 
-   public btc q() {
-      return this.r;
-   }
+      @Override
+      public long g() {
+         btd.this.g();
+         return this.c.g();
+      }
 
-   public btc r() {
-      return this.s;
-   }
+      @Override
+      public boolean h() {
+         btd.this.g();
+         return this.c.h();
+      }
 
-   public btc s() {
-      return this.t;
-   }
+      @Override
+      public float i() {
+         btd.this.g();
+         return this.c.i();
+      }
 
-   public btc t() {
-      return this.u;
-   }
+      @Override
+      public double j() {
+         btd.this.g();
+         return this.c.j();
+      }
 
-   public btc u() {
-      return this.v;
-   }
+      @Override
+      public double k() {
+         btd.this.g();
+         return this.c.k();
+      }
 
-   public btc v() {
-      return this.w;
-   }
-
-   public btc w() {
-      return this.x;
-   }
-
-   public btc a(bum $$0) {
-      return this.a(btf.x, $$0);
-   }
-
-   public btc b(bum $$0) {
-      return this.a(btf.y, $$0);
-   }
-
-   public btc c(bum $$0) {
-      return this.a(btf.z, $$0);
-   }
-
-   public btc a(bvi $$0) {
-      return this.a(btf.A, $$0);
-   }
-
-   public btc b(bvi $$0) {
-      return this.a(btf.B, $$0);
-   }
-
-   public btc c(bvi $$0) {
-      return this.a(btf.C, $$0);
-   }
-
-   public btc a(coy $$0) {
-      return this.a(btf.D, $$0);
-   }
-
-   public btc a(cpf $$0, @Nullable bum $$1) {
-      return this.a(btf.E, $$0, $$1);
-   }
-
-   public btc a(bum $$0, @Nullable bum $$1) {
-      return this.a(btf.F, $$0, $$1);
-   }
-
-   public btc a(bum $$0, @Nullable bvi $$1) {
-      return this.a(btf.G, $$0, $$1);
-   }
-
-   public btc b(bum $$0, @Nullable bvi $$1) {
-      return this.a(btf.H, $$0, $$1);
-   }
-
-   public btc c(bum $$0, @Nullable bvi $$1) {
-      return this.a(btf.I, $$0, $$1);
-   }
-
-   public btc a(cpm $$0, @Nullable bum $$1) {
-      return this.a(btf.J, $$0, $$1);
-   }
-
-   public btc a(cpl $$0, @Nullable bum $$1) {
-      return $$1 == null ? this.a(btf.L, $$0) : this.a(btf.K, $$0, $$1);
-   }
-
-   public btc a(cqf $$0, bum $$1) {
-      return this.a(btf.M, $$0, $$1);
-   }
-
-   public btc b(bum $$0, @Nullable bum $$1) {
-      return this.a(btf.N, $$0, $$1);
-   }
-
-   public btc c(bum $$0, @Nullable bum $$1) {
-      return this.a(btf.O, $$0, $$1);
-   }
-
-   public btc d(bum $$0) {
-      return this.a(btf.P, $$0);
-   }
-
-   public btc a(@Nullable dgb $$0) {
-      return $$0 != null ? this.d($$0.d(), $$0.c()) : this.d(null, null);
-   }
-
-   public btc d(@Nullable bum $$0, @Nullable bum $$1) {
-      return this.a($$1 != null && $$0 != null ? btf.R : btf.Q, $$0, $$1);
-   }
-
-   public btc e(bum $$0) {
-      return this.a(btf.S, $$0);
-   }
-
-   public btc a(fbb $$0) {
-      return new btc(this.a.b(btf.T), $$0);
-   }
-
-   public btc x() {
-      return this.y;
-   }
-
-   public btc y() {
-      return this.z;
-   }
-
-   public btc f(bum $$0) {
-      return this.a(btf.W, $$0);
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else {
+            return $$0 instanceof btd.a $$1 ? this.c.equals($$1.c) : false;
+         }
+      }
    }
 }

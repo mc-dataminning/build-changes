@@ -1,37 +1,11 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+public interface bxs<E extends bvy> {
+   bxr.a a();
 
-public class bxs {
-   public static bxc<coj> a(float $$0, int $$1) {
-      return cao.a((Function<cao.b<coj>, ? extends App<cao.c<coj>, car<coj>>>)($$2 -> $$2.group($$2.c(cem.m)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
-               if ($$3.c($$4.dv())) {
-                  return false;
-               } else {
-                  cgm $$6 = $$3.A();
-                  int $$7 = $$6.a(kk.a($$4.dv()));
-                  fbb $$8 = null;
+   boolean e(ard var1, E var2, long var3);
 
-                  for (int $$9 = 0; $$9 < 5; $$9++) {
-                     fbb $$10 = cgg.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(kk.a($$1xxxx))));
-                     if ($$10 != null) {
-                        int $$11 = $$6.a(kk.a(ji.a((kb)$$10)));
-                        if ($$11 < $$7) {
-                           $$8 = $$10;
-                           break;
-                        }
+   void f(ard var1, E var2, long var3);
 
-                        if ($$11 == $$7) {
-                           $$8 = $$10;
-                        }
-                     }
-                  }
+   void g(ard var1, E var2, long var3);
 
-                  if ($$8 != null) {
-                     $$2x.a(new cep($$8, $$0, $$1));
-                  }
-
-                  return true;
-               }
-            })));
-   }
+   String b();
 }

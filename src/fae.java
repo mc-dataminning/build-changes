@@ -1,31 +1,31 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import java.util.Set;
 
-public record fae(String b) implements fag {
-   public static final MapCodec<fae> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(fae::c)).apply($$0, fae::new));
+public record fae(Optional<cv> b) implements ezx {
+   public static final MapCodec<fae> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cv.a.optionalFieldOf("predicate").forGetter(fae::c)).apply($$0, fae::new));
 
-   public static fag a(String $$0) {
-      return new fae($$0);
+   @Override
+   public ezy b() {
+      return ezz.j;
    }
 
    @Override
-   public faf a() {
-      return fah.b;
+   public Set<bai<?>> a() {
+      return Set.of(ezi.i);
    }
 
-   @Override
-   public fcf a(evs $$0) {
-      return fcf.c(this.b);
+   public boolean a(ewo $$0) {
+      cxh $$1 = $$0.c(ezi.i);
+      return $$1 != null && (this.b.isEmpty() || this.b.get().a($$1));
    }
 
-   @Override
-   public Set<bai<?>> b() {
-      return Set.of();
+   public static ezx.a a(cv.a $$0) {
+      return () -> new fae(Optional.of($$0.b()));
    }
 
-   public String c() {
+   public Optional<cv> c() {
       return this.b;
    }
 }

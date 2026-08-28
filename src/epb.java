@@ -1,24 +1,70 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.google.common.collect.Lists;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import javax.annotation.Nullable;
 
-@FunctionalInterface
-public interface epb {
-   epb a = $$0 -> $$0;
+public class epb implements eoo {
+   private final List<eon> a = Lists.newArrayList();
 
-   aku<eox> lookup(aku<eox> var1);
+   @Override
+   public void a(eon $$0) {
+      this.a.add($$0);
+   }
 
-   static epb create(List<eoz> $$0, ji $$1, long $$2) {
-      if ($$0.isEmpty()) {
-         return a;
-      } else {
-         azh $$3 = azh.a($$2).e().a($$1);
-         Builder<aku<eox>, aku<eox>> $$4 = ImmutableMap.builder();
-         $$0.forEach($$2x -> $$2x.a($$3, $$4::put));
-         Map<aku<eox>, aku<eox>> $$5 = $$4.build();
-         return $$1x -> Objects.requireNonNull($$5.getOrDefault($$1x, $$1x), () -> "alias " + $$1x.a() + " was mapped to null value");
+   @Nullable
+   @Override
+   public eon a(eob $$0) {
+      return eon.a(this.a, $$0);
+   }
+
+   @Deprecated
+   public void a(int $$0) {
+      for (eon $$1 : this.a) {
+         $$1.a(0, $$0, 0);
       }
+   }
+
+   @Deprecated
+   public int a(int $$0, int $$1, azh $$2, int $$3) {
+      int $$4 = $$0 - $$3;
+      eob $$5 = this.d();
+      int $$6 = $$5.e() + $$1 + 1;
+      if ($$6 < $$4) {
+         $$6 += $$2.a($$4 - $$6);
+      }
+
+      int $$7 = $$6 - $$5.l();
+      this.a($$7);
+      return $$7;
+   }
+
+   /** @deprecated */
+   public void a(azh $$0, int $$1, int $$2) {
+      eob $$3 = this.d();
+      int $$4 = $$2 - $$1 + 1 - $$3.e();
+      int $$5;
+      if ($$4 > 1) {
+         $$5 = $$1 + $$0.a($$4);
+      } else {
+         $$5 = $$1;
+      }
+
+      int $$7 = $$5 - $$3.i();
+      this.a($$7);
+   }
+
+   public eoy a() {
+      return new eoy(this.a);
+   }
+
+   public void b() {
+      this.a.clear();
+   }
+
+   public boolean c() {
+      return this.a.isEmpty();
+   }
+
+   public eob d() {
+      return eon.a(this.a.stream());
    }
 }

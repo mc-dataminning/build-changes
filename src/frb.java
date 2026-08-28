@@ -1,66 +1,47 @@
 import java.util.List;
+import javax.annotation.Nullable;
 
-public class frb implements fre {
-   private static final akv e = akv.b("toast/advancement");
-   public static final int a = 5000;
-   private final ai f;
-   private boolean g;
-   private fre.a h = fre.a.b;
+public class frb implements fto {
+   private static final int a = 170;
+   private final wp b;
+   @Nullable
+   private List<ayl> c;
+   @Nullable
+   private tl d;
+   @Nullable
+   private final wp e;
 
-   public frb(ai $$0) {
-      this.f = $$0;
+   private frb(wp $$0, @Nullable wp $$1) {
+      this.b = $$0;
+      this.e = $$1;
+   }
+
+   public static frb a(wp $$0, @Nullable wp $$1) {
+      return new frb($$0, $$1);
+   }
+
+   public static frb a(wp $$0) {
+      return new frb($$0, $$0);
    }
 
    @Override
-   public fre.a a() {
-      return this.h;
-   }
-
-   @Override
-   public void a(frf $$0, long $$1) {
-      au $$2 = this.f.b().c().orElse(null);
-      if ($$2 == null) {
-         this.h = fre.a.b;
-      } else {
-         if (!this.g && $$1 > 0L) {
-            this.g = true;
-            if ($$2.e() == ao.b) {
-               $$0.c().ak().a(hil.a(awa.Bl, 1.0F, 1.0F));
-            }
-         }
-
-         this.h = (double)$$1 >= 5000.0 * $$0.d() ? fre.a.b : fre.a.a;
+   public void b(ftn $$0) {
+      if (this.e != null) {
+         $$0.a(ftm.c, this.e);
       }
    }
 
-   @Override
-   public void a(fof $$0, fod $$1, long $$2) {
-      au $$3 = this.f.b().c().orElse(null);
-      $$0.a(gmj::H, e, 0, 0, this.b(), this.c());
-      if ($$3 != null) {
-         List<ayl> $$4 = $$1.c($$3.a(), 125);
-         int $$5 = $$3.e() == ao.b ? -30465 : -256;
-         if ($$4.size() == 1) {
-            $$0.a($$1, $$3.e().b(), 30, 7, $$5, false);
-            $$0.a($$1, $$4.get(0), 30, 18, -1, false);
-         } else {
-            int $$6 = 1500;
-            float $$7 = 300.0F;
-            if ($$2 < 1500L) {
-               int $$8 = ayz.d(ayz.a((float)(1500L - $$2) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
-               $$0.a($$1, $$3.e().b(), 30, 11, $$5 | $$8, false);
-            } else {
-               int $$9 = ayz.d(ayz.a((float)($$2 - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
-               int $$10 = this.c() / 2 - $$4.size() * 9 / 2;
-
-               for (ayl $$11 : $$4) {
-                  $$0.a($$1, $$11, 30, $$10, 16777215 | $$9, false);
-                  $$10 += 9;
-               }
-            }
-         }
-
-         $$0.b($$3.c(), 8, 8);
+   public List<ayl> a(fmg $$0) {
+      tl $$1 = tl.a();
+      if (this.c == null || $$1 != this.d) {
+         this.c = a($$0, this.b);
+         this.d = $$1;
       }
+
+      return this.c;
+   }
+
+   public static List<ayl> a(fmg $$0, wp $$1) {
+      return $$0.h.c($$1, 170);
    }
 }

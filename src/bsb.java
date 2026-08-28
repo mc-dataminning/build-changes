@@ -1,147 +1,26 @@
-import java.util.UUID;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 
-public abstract class bsb {
-   private final UUID h;
-   protected wp a;
-   protected float b;
-   protected bsb.a c;
-   protected bsb.b d;
-   protected boolean e;
-   protected boolean f;
-   protected boolean g;
+public abstract class bsb implements bsg {
+   private static final Codec<Either<Float, bsb>> a = Codec.either(Codec.FLOAT, mb.J.q().dispatch(bsb::c, bsc::codec));
+   public static final Codec<bsb> c = a.xmap(
+      $$0 -> (bsb)$$0.map(brz::a, $$0x -> $$0x), $$0 -> $$0.c() == bsc.a ? Either.left(((brz)$$0).d()) : Either.right($$0)
+   );
 
-   public bsb(UUID $$0, wp $$1, bsb.a $$2, bsb.b $$3) {
-      this.h = $$0;
-      this.a = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.b = 1.0F;
-   }
-
-   public UUID h() {
-      return this.h;
-   }
-
-   public wp i() {
-      return this.a;
-   }
-
-   public void a(wp $$0) {
-      this.a = $$0;
-   }
-
-   public float j() {
-      return this.b;
-   }
-
-   public void a(float $$0) {
-      this.b = $$0;
-   }
-
-   public bsb.a k() {
-      return this.c;
-   }
-
-   public void a(bsb.a $$0) {
-      this.c = $$0;
-   }
-
-   public bsb.b l() {
-      return this.d;
-   }
-
-   public void a(bsb.b $$0) {
-      this.d = $$0;
-   }
-
-   public boolean m() {
-      return this.e;
-   }
-
-   public bsb a(boolean $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public boolean n() {
-      return this.f;
-   }
-
-   public bsb b(boolean $$0) {
-      this.f = $$0;
-      return this;
-   }
-
-   public bsb c(boolean $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public boolean o() {
-      return this.g;
-   }
-
-   public static enum a {
-      a("pink", n.m),
-      b("blue", n.j),
-      c("red", n.e),
-      d("green", n.k),
-      e("yellow", n.o),
-      f("purple", n.b),
-      g("white", n.p);
-
-      private final String h;
-      private final n i;
-
-      private a(final String $$0, final n $$1) {
-         this.h = $$0;
-         this.i = $$1;
-      }
-
-      public n a() {
-         return this.i;
-      }
-
-      public String b() {
-         return this.h;
-      }
-
-      public static bsb.a a(String $$0) {
-         for (bsb.a $$1 : values()) {
-            if ($$1.h.equals($$0)) {
-               return $$1;
-            }
+   public static Codec<bsb> a(float $$0, float $$1) {
+      return c.validate($$2 -> {
+         if ($$2.a() < $$0) {
+            return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
+         } else {
+            return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
          }
-
-         return g;
-      }
+      });
    }
 
-   public static enum b {
-      a("progress"),
-      b("notched_6"),
-      c("notched_10"),
-      d("notched_12"),
-      e("notched_20");
+   public abstract float a();
 
-      private final String f;
+   public abstract float b();
 
-      private b(final String $$0) {
-         this.f = $$0;
-      }
-
-      public String a() {
-         return this.f;
-      }
-
-      public static bsb.b a(String $$0) {
-         for (bsb.b $$1 : values()) {
-            if ($$1.f.equals($$0)) {
-               return $$1;
-            }
-         }
-
-         return a;
-      }
-   }
+   public abstract bsc<?> c();
 }

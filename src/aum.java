@@ -39,7 +39,7 @@ public class aum implements aup, AutoCloseable {
    }
 
    @Override
-   public Optional<aun> getResource(akv $$0) {
+   public Optional<aun> getResource(aku $$0) {
       return this.c.getResource($$0);
    }
 
@@ -49,17 +49,17 @@ public class aum implements aup, AutoCloseable {
    }
 
    @Override
-   public List<aun> a(akv $$0) {
+   public List<aun> a(aku $$0) {
       return this.c.a($$0);
    }
 
    @Override
-   public Map<akv, aun> b(String $$0, Predicate<akv> $$1) {
+   public Map<aku, aun> b(String $$0, Predicate<aku> $$1) {
       return this.c.b($$0, $$1);
    }
 
    @Override
-   public Map<akv, List<aun>> c(String $$0, Predicate<akv> $$1) {
+   public Map<aku, List<aun>> c(String $$0, Predicate<aku> $$1) {
       return this.c.c($$0, $$1);
    }
 

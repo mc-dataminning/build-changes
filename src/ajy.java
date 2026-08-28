@@ -1,23 +1,20 @@
-public record ajy<T>(int a, ajz<T> b) {
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         ajy<?> $$1 = (ajy<?>)$$0;
-         return this.a == $$1.a;
-      } else {
-         return false;
+public interface ajy<T> {
+   yn<? super wa, T> codec();
+
+   default ajx<T> a(int $$0) {
+      return new ajx<>($$0, this);
+   }
+
+   T copy(T var1);
+
+   static <T> ajy<T> a(yn<? super wa, T> $$0) {
+      return () -> $$0;
+   }
+
+   public interface a<T> extends ajy<T> {
+      @Override
+      default T copy(T $$0) {
+         return $$0;
       }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "<entity data: " + this.a + ">";
    }
 }

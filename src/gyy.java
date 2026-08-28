@@ -1,19 +1,10 @@
-import javax.annotation.Nullable;
-
-public class gyy extends gzl {
-   public float a;
-   public float b;
-   public fbb c;
-   @Nullable
-   public fbb d;
-   @Nullable
-   public fbb e;
-   @Nullable
-   public fbb f;
-   public float g;
-   public float h;
-
-   public gyy() {
-      this.c = fbb.c;
-   }
+public class gyy extends haj {
+   public boolean a;
+   public boolean b;
+   public float c;
+   public final bur d = new bur();
+   public final bur e = new bur();
+   public final bur f = new bur();
+   public final bur g = new bur();
+   public final bur h = new bur();
 }

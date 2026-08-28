@@ -1,108 +1,76 @@
-public class gka extends gki {
-   private static final azh a = azh.a();
-   private final gkd b;
-   private float F = 1.0F;
+public class gka extends gkg {
+   private static final int a = 3;
+   private final bva b;
+   private final bva D;
+   private int E;
+   private final gtb F;
+   private double G;
+   private double H;
+   private double I;
+   private double J;
+   private double K;
+   private double L;
 
-   gka(gga $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gkd $$7) {
-      super($$0, $$1, $$2, $$3, 0.5 - a.j(), $$5, 0.5 - a.j());
-      this.B = 0.96F;
-      this.u = -0.1F;
-      this.C = true;
-      this.b = $$7;
-      this.k *= 0.2F;
-      if ($$4 == 0.0 && $$6 == 0.0) {
-         this.j *= 0.1F;
-         this.l *= 0.1F;
-      }
+   public gka(gtb $$0, ggy $$1, bva $$2, bva $$3) {
+      this($$0, $$1, $$2, $$3, $$2.dx());
+   }
 
-      this.D *= 0.75F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
-      this.n = false;
-      this.b($$7);
-      if (this.g()) {
-         this.e(0.0F);
-      }
+   private gka(gtb $$0, ggy $$1, bva $$2, bva $$3, fbx $$4) {
+      super($$1, $$2.dz(), $$2.dB(), $$2.dF(), $$4.d, $$4.e, $$4.f);
+      this.b = this.a($$2);
+      this.D = $$3;
+      this.F = $$0;
+      this.c();
+      this.d();
+   }
+
+   private bva a(bva $$0) {
+      return (bva)(!($$0 instanceof clw) ? $$0 : ((clw)$$0).v());
    }
 
    @Override
-   public gjm b() {
-      return gjm.c;
+   public gkk b() {
+      return gkk.d;
+   }
+
+   @Override
+   public void a(fgr $$0, gmx $$1, flo $$2, float $$3) {
+      float $$4 = ((float)this.E + $$3) / 3.0F;
+      $$4 *= $$4;
+      double $$5 = ayz.d((double)$$3, this.J, this.G);
+      double $$6 = ayz.d((double)$$3, this.K, this.H);
+      double $$7 = ayz.d((double)$$3, this.L, this.I);
+      double $$8 = ayz.d((double)$$4, this.b.dz(), $$5);
+      double $$9 = ayz.d((double)$$4, this.b.dB(), $$6);
+      double $$10 = ayz.d((double)$$4, this.b.dF(), $$7);
+      fbx $$11 = $$2.b();
+      this.F.a(this.b, $$8 - $$11.a(), $$9 - $$11.b(), $$10 - $$11.c(), $$3, new fgr(), $$1, this.F.a(this.b, $$3));
+   }
+
+   @Override
+   public void a(fgv $$0, flo $$1, float $$2) {
    }
 
    @Override
    public void a() {
-      super.a();
-      this.b(this.b);
-      if (this.g()) {
-         this.y = 0.0F;
-      } else {
-         this.y = ayz.h(0.05F, this.y, this.F);
+      this.E++;
+      if (this.E == 3) {
+         this.k();
       }
+
+      this.d();
+      this.c();
    }
 
-   @Override
-   protected void e(float $$0) {
-      super.e($$0);
-      this.F = $$0;
+   private void c() {
+      this.G = this.D.dz();
+      this.H = (this.D.dB() + this.D.dD()) / 2.0;
+      this.I = this.D.dF();
    }
 
-   private boolean g() {
-      flk $$0 = flk.Q();
-      gkx $$1 = $$0.t;
-      return $$1 != null && $$1.bF().c(this.g, this.h, this.i) <= 9.0 && $$0.n.aE().a() && $$1.gH();
-   }
-
-   public static class a implements gjl<lx> {
-      private final gkd a;
-
-      public a(gkd $$0) {
-         this.a = $$0;
-      }
-
-      public gji a(lx $$0, gga $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gka($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
-   }
-
-   public static class b implements gjl<lm> {
-      private final gkd a;
-
-      public b(gkd $$0) {
-         this.a = $$0;
-      }
-
-      public gji a(lm $$0, gga $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gji $$8 = new gka($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.a($$0.b(), $$0.c(), $$0.d());
-         $$8.e($$0.e());
-         return $$8;
-      }
-   }
-
-   public static class c implements gjl<lx> {
-      private final gkd a;
-
-      public c(gkd $$0) {
-         this.a = $$0;
-      }
-
-      public gji a(lx $$0, gga $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gka($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
-   }
-
-   public static class d implements gjl<lx> {
-      private final gkd a;
-
-      public d(gkd $$0) {
-         this.a = $$0;
-      }
-
-      public gji a(lx $$0, gga $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gka $$8 = new gka($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         float $$9 = $$1.A.i() * 0.5F + 0.35F;
-         $$8.a(1.0F * $$9, 0.0F * $$9, 1.0F * $$9);
-         return $$8;
-      }
+   private void d() {
+      this.J = this.G;
+      this.K = this.H;
+      this.L = this.I;
    }
 }

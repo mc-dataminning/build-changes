@@ -1,165 +1,68 @@
 import com.mojang.serialization.MapCodec;
 
-public class dpr extends djc {
-   public static final MapCodec<dpr> d = b(dpr::new);
-   public static final dxv<dyb> e = dxo.aj;
+public class dpr extends dke implements dkh {
+   public static final MapCodec<dpr> a = b(dpr::new);
 
    @Override
    public MapCodec<dpr> a() {
-      return d;
+      return a;
    }
 
-   protected dpr(dwx.d $$0) {
-      super(false, $$0);
-      this.l(this.F.b().b(e, dyb.a).b(c, Boolean.valueOf(false)));
+   public dpr(dxp.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected void a(dwy $$0, dgj $$1, ji $$2, djn $$3) {
-      if ($$3.m().p() && new dps($$1, $$2, $$0).b() == 3) {
-         this.a($$1, $$2, $$0, false);
+   public boolean a(dhc $$0, ji $$1, dxq $$2) {
+      if (!$$0.a_($$1.d()).f()) {
+         return false;
+      } else {
+         for (ji $$3 : ji.c($$1.b(-1, -1, -1), $$1.b(1, 1, 1))) {
+            if ($$0.a_($$3).a(awp.aO)) {
+               return true;
+            }
+         }
+
+         return false;
       }
    }
 
    @Override
-   public dya<dyb> c() {
-      return e;
+   public boolean a(dgz $$0, azh $$1, ji $$2, dxq $$3) {
+      return true;
    }
 
    @Override
-   protected dwy a(dwy $$0, dqf $$1) {
-      dyb $$2 = $$0.c(e);
+   public void a(ard $$0, azh $$1, ji $$2, dxq $$3) {
+      boolean $$4 = false;
+      boolean $$5 = false;
 
-      return $$0.b(e, switch ($$1) {
-         case c -> {
-            switch ($$2) {
-               case a:
-                  yield dyb.a;
-               case b:
-                  yield dyb.b;
-               case c:
-                  yield dyb.d;
-               case d:
-                  yield dyb.c;
-               case e:
-                  yield dyb.f;
-               case f:
-                  yield dyb.e;
-               case g:
-                  yield dyb.i;
-               case h:
-                  yield dyb.j;
-               case i:
-                  yield dyb.g;
-               case j:
-                  yield dyb.h;
-               default:
-                  throw new MatchException(null, null);
-            }
+      for (ji $$6 : ji.c($$2.b(-1, -1, -1), $$2.b(1, 1, 1))) {
+         dxq $$7 = $$0.a_($$6);
+         if ($$7.a(dkg.oP)) {
+            $$5 = true;
          }
-         case d -> {
-            switch ($$2) {
-               case a:
-                  yield dyb.b;
-               case b:
-                  yield dyb.a;
-               case c:
-                  yield dyb.e;
-               case d:
-                  yield dyb.f;
-               case e:
-                  yield dyb.d;
-               case f:
-                  yield dyb.c;
-               case g:
-                  yield dyb.j;
-               case h:
-                  yield dyb.g;
-               case i:
-                  yield dyb.h;
-               case j:
-                  yield dyb.i;
-               default:
-                  throw new MatchException(null, null);
-            }
-         }
-         case b -> {
-            switch ($$2) {
-               case a:
-                  yield dyb.b;
-               case b:
-                  yield dyb.a;
-               case c:
-                  yield dyb.f;
-               case d:
-                  yield dyb.e;
-               case e:
-                  yield dyb.c;
-               case f:
-                  yield dyb.d;
-               case g:
-                  yield dyb.h;
-               case h:
-                  yield dyb.i;
-               case i:
-                  yield dyb.j;
-               case j:
-                  yield dyb.g;
-               default:
-                  throw new MatchException(null, null);
-            }
-         }
-         default -> $$2;
-      });
-   }
 
-   @Override
-   protected dwy a(dwy $$0, dom $$1) {
-      dyb $$2 = $$0.c(e);
-      switch ($$1) {
-         case b:
-            switch ($$2) {
-               case e:
-                  return $$0.b(e, dyb.f);
-               case f:
-                  return $$0.b(e, dyb.e);
-               case g:
-                  return $$0.b(e, dyb.j);
-               case h:
-                  return $$0.b(e, dyb.i);
-               case i:
-                  return $$0.b(e, dyb.h);
-               case j:
-                  return $$0.b(e, dyb.g);
-               default:
-                  return super.a($$0, $$1);
-            }
-         case c:
-            switch ($$2) {
-               case c:
-                  return $$0.b(e, dyb.d);
-               case d:
-                  return $$0.b(e, dyb.c);
-               case e:
-               case f:
-               default:
-                  break;
-               case g:
-                  return $$0.b(e, dyb.h);
-               case h:
-                  return $$0.b(e, dyb.g);
-               case i:
-                  return $$0.b(e, dyb.j);
-               case j:
-                  return $$0.b(e, dyb.i);
-            }
+         if ($$7.a(dkg.oY)) {
+            $$4 = true;
+         }
+
+         if ($$5 && $$4) {
+            break;
+         }
       }
 
-      return super.a($$0, $$1);
+      if ($$5 && $$4) {
+         $$0.a($$2, $$1.h() ? dkg.oP.m() : dkg.oY.m(), 3);
+      } else if ($$5) {
+         $$0.a($$2, dkg.oP.m(), 3);
+      } else if ($$4) {
+         $$0.a($$2, dkg.oY.m(), 3);
+      }
    }
 
    @Override
-   protected void a(dwz.a<djn, dwy> $$0) {
-      $$0.a(e, c);
+   public dkh.a aq_() {
+      return dkh.a.a;
    }
 }

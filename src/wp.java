@@ -200,11 +200,11 @@ public interface wp extends Message, wu {
       return b($$0.toString());
    }
 
-   static wp a(akv $$0) {
+   static wp a(aku $$0) {
       return b($$0.toString());
    }
 
-   static wp a(dfp $$0) {
+   static wp a(dgg $$0) {
       return b($$0.toString());
    }
 

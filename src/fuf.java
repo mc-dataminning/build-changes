@@ -1,31 +1,109 @@
-public class fuf extends fum {
-   private static final wp a = wp.c("outOfMemory.title");
-   private static final wp b = wp.c("outOfMemory.message");
-   private static final int c = 300;
-   private final fsi d = new fsi(this);
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.net.URI;
 
-   public fuf() {
-      super(a);
+public class fuf extends fug {
+   private static final wp d = wp.c("chat.copy");
+   private static final wp s = wp.c("chat.link.warning");
+   private final String u;
+   private final boolean v;
+
+   public fuf(BooleanConsumer $$0, String $$1, boolean $$2) {
+      this($$0, c($$2), wp.b($$1), $$1, $$2 ? wo.e : wo.g, $$2);
+   }
+
+   public fuf(BooleanConsumer $$0, wp $$1, String $$2, boolean $$3) {
+      this($$0, $$1, a($$3, $$2), $$2, $$3 ? wo.e : wo.g, $$3);
+   }
+
+   public fuf(BooleanConsumer $$0, wp $$1, URI $$2, boolean $$3) {
+      this($$0, $$1, $$2.toString(), $$3);
+   }
+
+   public fuf(BooleanConsumer $$0, wp $$1, wp $$2, URI $$3, wp $$4, boolean $$5) {
+      this($$0, $$1, $$2, $$3.toString(), $$4, true);
+   }
+
+   public fuf(BooleanConsumer $$0, wp $$1, wp $$2, String $$3, wp $$4, boolean $$5) {
+      super($$0, $$1, $$2);
+      this.a = (wp)($$5 ? wp.c("chat.link.open") : wo.f);
+      this.b = $$4;
+      this.v = !$$5;
+      this.u = $$3;
+   }
+
+   protected static xd a(boolean $$0, String $$1) {
+      return c($$0).b(wo.v).b(wp.b($$1));
+   }
+
+   protected static xd c(boolean $$0) {
+      return wp.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
    }
 
    @Override
-   protected void aR_() {
-      this.d.a(a, this.p);
-      this.d.c(new fpf(300, b, this.p));
-      fsm $$0 = this.d.b(fsm.e().a(8));
-      $$0.a(fou.a(wo.l, $$0x -> this.m.a(new fuo())).a());
-      $$0.a(fou.a(wp.c("menu.quit"), $$0x -> this.m.q()).a());
-      this.d.a(this::c);
-      this.c();
+   protected void a(int $$0) {
+      this.c(fpq.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 50 - 105, $$0, 100, 20).a());
+      this.c(fpq.a(d, $$0x -> {
+         this.l();
+         this.c.accept(false);
+      }).a(this.n / 2 - 50, $$0, 100, 20).a());
+      this.c(fpq.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 50 + 105, $$0, 100, 20).a());
+   }
+
+   public void l() {
+      this.m.p.a(this.u);
    }
 
    @Override
-   protected void c() {
-      this.d.a();
+   public void a(fpc $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.v) {
+         $$0.a(this.p, s, this.n / 2, 110, 16764108);
+      }
    }
 
-   @Override
-   public boolean aG_() {
-      return false;
+   public static void a(fvi $$0, String $$1, boolean $$2) {
+      fmg $$3 = fmg.Q();
+      $$3.a(new fuf($$3x -> {
+         if ($$3x) {
+            af.n().a($$1);
+         }
+
+         $$3.a($$0);
+      }, $$1, $$2));
+   }
+
+   public static void a(fvi $$0, URI $$1, boolean $$2) {
+      fmg $$3 = fmg.Q();
+      $$3.a(new fuf($$3x -> {
+         if ($$3x) {
+            af.n().a($$1);
+         }
+
+         $$3.a($$0);
+      }, $$1.toString(), $$2));
+   }
+
+   public static void a(fvi $$0, URI $$1) {
+      a($$0, $$1, true);
+   }
+
+   public static void a(fvi $$0, String $$1) {
+      a($$0, $$1, true);
+   }
+
+   public static fpq.c b(fvi $$0, String $$1, boolean $$2) {
+      return $$3 -> a($$0, $$1, $$2);
+   }
+
+   public static fpq.c b(fvi $$0, URI $$1, boolean $$2) {
+      return $$3 -> a($$0, $$1, $$2);
+   }
+
+   public static fpq.c b(fvi $$0, String $$1) {
+      return b($$0, $$1, true);
+   }
+
+   public static fpq.c b(fvi $$0, URI $$1) {
+      return b($$0, $$1, true);
    }
 }

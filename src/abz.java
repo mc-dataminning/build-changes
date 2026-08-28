@@ -1,17 +1,15 @@
-public record abz(int b) implements yw<abl> {
-   public static final yn<vl, abz> a = yw.a(abz::a, abz::new);
+import io.netty.buffer.ByteBuf;
 
-   private abz(vl $$0) {
-      this($$0.l());
-   }
+public class abz implements yw<abl> {
+   public static final abz a = new abz();
+   public static final yn<ByteBuf, abz> b = yn.a(a);
 
-   private void a(vl $$0) {
-      $$0.c(this.b);
+   private abz() {
    }
 
    @Override
    public yy<abz> a() {
-      return age.n;
+      return agd.n;
    }
 
    public void a(abl $$0) {

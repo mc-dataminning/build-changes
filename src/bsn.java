@@ -1,3 +1,8 @@
-public interface bsn extends ctl {
-   wp p_();
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bsn {
 }

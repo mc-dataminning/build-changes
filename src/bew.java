@@ -1,14 +1,22 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 
-public class bew extends bgt {
+public class bew extends DataFix {
    public bew(Schema $$0) {
-      super($$0, false, "Remove filtered text from signs", bhy.s, "minecraft:sign");
+      super($$0, true);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), $$0x -> $$0x.remove("FilteredText1").remove("FilteredText2").remove("FilteredText3").remove("FilteredText4"));
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bic.w);
+      OpticFinder<?> $$1 = $$0.findField("minecraft:equippable");
+      return this.fixTypeEverywhereTyped(
+         "equippable asset rename fix",
+         $$0,
+         $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.renameField("model", "asset_id")))
+      );
    }
 }

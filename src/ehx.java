@@ -1,23 +1,44 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehx implements eid {
-   public static final Codec<ehx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(brq.b(0, 3).fieldOf("reach").forGetter($$0x -> $$0x.b), brq.b(1, 10).fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, ehx::new)
-   );
-   private final brq b;
-   private final brq c;
+public class ehx extends egu<ejg> {
+   private static final int a = 7;
 
-   public ehx(brq $$0, brq $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   ehx(Codec<ejg> $$0) {
+      super($$0);
    }
 
-   public brq a() {
-      return this.b;
+   @Override
+   public boolean a(egw<ejg> $$0) {
+      dhy $$1 = $$0.b();
+      azh $$2 = $$0.d();
+      ejg $$3 = $$0.f();
+      ji $$4 = $$0.e();
+      int $$5 = $$2.a($$3.c + 1);
+      ji.a $$6 = new ji.a();
+
+      for (int $$7 = 0; $$7 < $$5; $$7++) {
+         this.a($$6, $$2, $$4, Math.min($$7, 7));
+         dxq $$8 = $$1.a_($$6);
+
+         for (ejg.a $$9 : $$3.b) {
+            if (ehp.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
+               $$1.a($$6, $$9.c, 2);
+               break;
+            }
+         }
+      }
+
+      return true;
    }
 
-   public brq b() {
-      return this.c;
+   private void a(ji.a $$0, azh $$1, ji $$2, int $$3) {
+      int $$4 = this.a($$1, $$3);
+      int $$5 = this.a($$1, $$3);
+      int $$6 = this.a($$1, $$3);
+      $$0.a($$2, $$4, $$5, $$6);
+   }
+
+   private int a(azh $$0, int $$1) {
+      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
    }
 }

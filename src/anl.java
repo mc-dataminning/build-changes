@@ -1,28 +1,29 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.Collection;
+import java.util.List;
+import java.util.function.Function;
 
 public class anl {
    public static void a(CommandDispatcher<ex> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("kill").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((ex)$$0x.getSource(), ImmutableList.of(((ex)$$0x.getSource()).g()))))
-            .then(ey.a("targets", fk.b()).executes($$0x -> a((ex)$$0x.getSource(), fk.b($$0x, "targets"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("list").executes($$0x -> a((ex)$$0x.getSource())))
+            .then(ey.a("uuids").executes($$0x -> b((ex)$$0x.getSource())))
       );
    }
 
-   private static int a(ex $$0, Collection<? extends bum> $$1) {
-      for (bum $$2 : $$1) {
-         $$2.c($$0.e());
-      }
+   private static int a(ex $$0) {
+      return a($$0, cpr::m_);
+   }
 
-      if ($$1.size() == 1) {
-         $$0.a(() -> wp.a("commands.kill.success.single", $$1.iterator().next().p_()), true);
-      } else {
-         $$0.a(() -> wp.a("commands.kill.success.multiple", $$1.size()), true);
-      }
+   private static int b(ex $$0) {
+      return a($$0, $$0x -> wp.a("commands.list.nameAndId", $$0x.al(), wp.a($$0x.gk().getId())));
+   }
 
-      return $$1.size();
+   private static int a(ex $$0, Function<are, wp> $$1) {
+      avd $$2 = $$0.l().ag();
+      List<are> $$3 = $$2.t();
+      wp $$4 = ws.b($$3, $$1);
+      $$0.a(() -> wp.a("commands.list.players", $$3.size(), $$2.n(), $$4), false);
+      return $$3.size();
    }
 }

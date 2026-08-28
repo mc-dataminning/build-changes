@@ -1,27 +1,24 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Streams;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import java.util.List;
+import org.joml.Vector3f;
 
-public class gjj {
-   private final List<akv> a;
-
-   private gjj(List<akv> $$0) {
-      this.a = $$0;
+public class gjj extends gjk<lo> {
+   protected gjj(ggy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, lo $$7, glb $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
+      float $$9 = this.r.i() * 0.4F + 0.6F;
+      Vector3f $$10 = $$7.b();
+      this.v = this.a($$10.x(), $$9);
+      this.w = this.a($$10.y(), $$9);
+      this.x = this.a($$10.z(), $$9);
    }
 
-   public List<akv> a() {
-      return this.a;
-   }
+   public static class a implements gkj<lo> {
+      private final glb a;
 
-   public static gjj a(JsonObject $$0) {
-      JsonArray $$1 = ayp.a($$0, "textures", null);
-      if ($$1 == null) {
-         return new gjj(List.of());
-      } else {
-         List<akv> $$2 = Streams.stream($$1).map($$0x -> ayp.a($$0x, "texture")).map(akv::a).collect(ImmutableList.toImmutableList());
-         return new gjj($$2);
+      public a(glb $$0) {
+         this.a = $$0;
+      }
+
+      public gkg a(lo $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gjj($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
       }
    }
 }

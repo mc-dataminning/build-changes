@@ -1,44 +1,55 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cdl extends ccg {
-   private final bwf a;
+public class cdl extends ccw {
+   private final bwg a;
+   @Nullable
+   private bvy b;
+   private double c;
+   private double d;
+   private double e;
+   private final double f;
+   private final float g;
 
-   public cdl(bwf $$0) {
+   public cdl(bwg $$0, double $$1, float $$2) {
       this.a = $$0;
-      this.a(EnumSet.of(ccg.a.c, ccg.a.a));
-   }
-
-   @Override
-   public boolean c() {
-      return this.a.gs();
+      this.f = $$1;
+      this.g = $$2;
+      this.a(EnumSet.of(ccw.a.a));
    }
 
    @Override
    public boolean b() {
-      if (!this.a.p()) {
+      this.b = this.a.f();
+      if (this.b == null) {
          return false;
-      } else if (this.a.bm()) {
-         return false;
-      } else if (!this.a.aJ()) {
+      } else if (this.b.g(this.a) > (double)(this.g * this.g)) {
          return false;
       } else {
-         bvi $$0 = this.a.ag_();
+         fbx $$0 = cgt.a(this.a, 16, 7, this.b.ds(), (float) (Math.PI / 2));
          if ($$0 == null) {
-            return true;
+            return false;
          } else {
-            return this.a.g((bum)$$0) < 144.0 && $$0.ep() != null ? false : this.a.gs();
+            this.c = $$0.d;
+            this.d = $$0.e;
+            this.e = $$0.f;
+            return true;
          }
       }
    }
 
    @Override
-   public void d() {
-      this.a.P().m();
-      this.a.y(true);
+   public boolean c() {
+      return !this.a.O().k() && this.b.bJ() && this.b.g(this.a) < (double)(this.g * this.g);
    }
 
    @Override
    public void e() {
-      this.a.y(false);
+      this.b = null;
+   }
+
+   @Override
+   public void d() {
+      this.a.O().a(this.c, this.d, this.e, this.f);
    }
 }

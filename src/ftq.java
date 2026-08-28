@@ -1,156 +1,88 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.function.Consumer;
 
-public class ftq extends fum {
-   private static final akv a = akv.b("icon/draft_report");
-   private int b;
-   private final wp c;
-   private final boolean d;
-   private wp s;
-   private final List<fou> u = Lists.newArrayList();
-   @Nullable
-   private fou v;
+public class ftq {
+   int a;
+   final Map<ftq.a, ftq.b> b = Maps.newTreeMap(Comparator.<ftq.a, ftm>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
 
-   public ftq(@Nullable wp $$0, boolean $$1) {
-      super(wp.c($$1 ? "deathScreen.title.hardcore" : "deathScreen.title"));
-      this.c = $$0;
-      this.d = $$1;
+   public void a(Consumer<ftn> $$0) {
+      this.a++;
+      $$0.accept(new ftq.c(0));
    }
 
-   @Override
-   protected void aR_() {
-      this.b = 0;
-      this.u.clear();
-      wp $$0 = this.d ? wp.c("deathScreen.spectate") : wp.c("deathScreen.respawn");
-      this.u.add(this.c(fou.a($$0, $$0x -> {
-         this.m.t.gg();
-         $$0x.j = false;
-      }).a(this.n / 2 - 100, this.o / 4 + 72, 200, 20).a()));
-      this.v = this.c(
-         fou.a(wp.c("deathScreen.titleScreen"), $$0x -> this.m.ba().a(this.m, this, this::m, true)).a(this.n / 2 - 100, this.o / 4 + 96, 200, 20).a()
-      );
-      this.u.add(this.v);
-      this.c(false);
-      this.s = wp.a("deathScreen.score.value", wp.b(Integer.toString(this.m.t.gd())).a(n.o));
-   }
+   public String a(boolean $$0) {
+      final StringBuilder $$1 = new StringBuilder();
+      Consumer<String> $$2 = new Consumer<String>() {
+         private boolean b = true;
 
-   @Override
-   public boolean aG_() {
-      return false;
-   }
-
-   private void m() {
-      if (this.d) {
-         this.E();
-      } else {
-         ftk $$0 = new ftq.a($$0x -> {
-            if ($$0x) {
-               this.E();
-            } else {
-               this.m.t.gg();
-               this.m.a(null);
+         public void a(String $$0) {
+            if (!this.b) {
+               $$1.append(". ");
             }
-         }, wp.c("deathScreen.quit.confirm"), wo.a, wp.c("deathScreen.titleScreen"), wp.c("deathScreen.respawn"));
-         this.m.a($$0);
-         $$0.b(20);
-      }
-   }
 
-   private void E() {
-      if (this.m.s != null) {
-         this.m.s.ac();
-      }
-
-      this.m.b(new ftx(wp.c("menu.savingLevel")));
-      this.m.a(new fuo());
-   }
-
-   @Override
-   public void a(fof $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.c().a();
-      $$0.c().b(2.0F, 2.0F, 2.0F);
-      $$0.a(this.p, this.l, this.n / 2 / 2, 30, 16777215);
-      $$0.c().b();
-      if (this.c != null) {
-         $$0.a(this.p, this.c, this.n / 2, 85, 16777215);
-      }
-
-      $$0.a(this.p, this.s, this.n / 2, 100, 16777215);
-      if (this.c != null && $$2 > 85 && $$2 < 85 + 9) {
-         xm $$4 = this.a($$1);
-         $$0.a(this.p, $$4, $$1, $$2);
-      }
-
-      if (this.v != null && this.m.ba().c()) {
-         $$0.a(gmj::H, a, this.v.F() + this.v.A() - 17, this.v.G() + 3, 15, 15);
-      }
-   }
-
-   @Override
-   public void b(fof $$0, int $$1, int $$2, float $$3) {
-      a($$0, this.n, this.o);
-   }
-
-   static void a(fof $$0, int $$1, int $$2) {
-      $$0.b(0, 0, $$1, $$2, 1615855616, -1602211792);
-   }
-
-   @Nullable
-   private xm a(int $$0) {
-      if (this.c == null) {
-         return null;
-      } else {
-         int $$1 = this.m.h.a(this.c);
-         int $$2 = this.n / 2 - $$1 / 2;
-         int $$3 = this.n / 2 + $$1 / 2;
-         return $$0 >= $$2 && $$0 <= $$3 ? this.m.h.b().a(this.c, $$0 - $$2) : null;
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.c != null && $$1 > 85.0 && $$1 < (double)(85 + 9)) {
-         xm $$3 = this.a((int)$$0);
-         if ($$3 != null && $$3.i() != null && $$3.i().a() == wn.a.a) {
-            this.a($$3);
-            return false;
+            this.b = false;
+            $$1.append($$0);
          }
-      }
-
-      return super.a($$0, $$1, $$2);
+      };
+      this.b.forEach(($$2x, $$3) -> {
+         if ($$3.b == this.a && ($$0 || !$$3.c)) {
+            $$3.a.a($$2);
+            $$3.c = true;
+         }
+      });
+      return $$1.toString();
    }
 
-   @Override
-   public boolean k() {
-      return false;
-   }
+   static class a {
+      final ftm a;
+      final int b;
 
-   @Override
-   public void e() {
-      super.e();
-      this.b++;
-      if (this.b == 20) {
-         this.c(true);
-      }
-   }
-
-   private void c(boolean $$0) {
-      for (fou $$1 : this.u) {
-         $$1.j = $$0;
+      a(ftm $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 
-   public static class a extends ftk {
-      public a(BooleanConsumer $$0, wp $$1, wp $$2, wp $$3, wp $$4) {
-         super($$0, $$1, $$2, $$3, $$4);
+   static class b {
+      ftp<?> a;
+      int b;
+      boolean c;
+
+      b() {
+         this.a = ftp.a;
+         this.b = -1;
+      }
+
+      public ftq.b a(int $$0, ftp<?> $$1) {
+         if (!this.a.equals($$1)) {
+            this.a = $$1;
+            this.c = false;
+         } else if (this.b + 1 != $$0) {
+            this.c = false;
+         }
+
+         this.b = $$0;
+         return this;
+      }
+   }
+
+   class c implements ftn {
+      private final int b;
+
+      c(final int $$0) {
+         this.b = $$0;
       }
 
       @Override
-      public void b(fof $$0, int $$1, int $$2, float $$3) {
-         ftq.a($$0, this.n, this.o);
+      public void a(ftm $$0, ftp<?> $$1) {
+         ftq.this.b.computeIfAbsent(new ftq.a($$0, this.b), $$0x -> new ftq.b()).a(ftq.this.a, $$1);
+      }
+
+      @Override
+      public ftn a() {
+         return ftq.this.new c(this.b + 1);
       }
    }
 }

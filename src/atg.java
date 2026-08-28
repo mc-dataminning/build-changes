@@ -44,7 +44,7 @@ public class atg implements atc {
       return null;
    }
 
-   public void a(ate $$0, akv $$1, Consumer<Path> $$2) {
+   public void a(ate $$0, aku $$1, Consumer<Path> $$2) {
       v.d($$1.a()).ifSuccess($$3 -> {
          String $$4 = $$1.b();
 
@@ -63,7 +63,7 @@ public class atg implements atc {
          if ($$5 == 1) {
             a($$3, $$1, $$4.get(0), $$3x);
          } else if ($$5 > 1) {
-            Map<akv, auh<InputStream>> $$6 = new HashMap<>();
+            Map<aku, auh<InputStream>> $$6 = new HashMap<>();
 
             for (int $$7 = 0; $$7 < $$5 - 1; $$7++) {
                a($$6::putIfAbsent, $$1, $$4.get($$7), $$3x);
@@ -87,7 +87,7 @@ public class atg implements atc {
 
    @Nullable
    @Override
-   public auh<InputStream> a(ate $$0, akv $$1) {
+   public auh<InputStream> a(ate $$0, aku $$1) {
       return (auh<InputStream>)v.d($$1.a()).mapOrElse($$2 -> {
          String $$3 = $$1.b();
 

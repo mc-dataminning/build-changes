@@ -1,85 +1,93 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
-import java.util.Map.Entry;
-import java.util.stream.Stream;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public record eyw(Map<String, evr> b, evs.b c) implements ezb {
+public class eyw extends eyb {
    public static final MapCodec<eyw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.unboundedMap(Codec.STRING, evr.a).fieldOf("scores").forGetter(eyw::c), evs.b.e.fieldOf("entity").forGetter(eyw::d))
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  wr.a.sizeLimitedListOf(256).fieldOf("lore").forGetter($$0x -> $$0x.b),
+                  eya.a(256).forGetter($$0x -> $$0x.c),
+                  ewo.b.e.optionalFieldOf("entity").forGetter($$0x -> $$0x.d)
+               )
+            )
             .apply($$0, eyw::new)
    );
+   private final List<wp> b;
+   private final eya c;
+   private final Optional<ewo.b> d;
+
+   public eyw(List<ezx> $$0, List<wp> $$1, eya $$2, Optional<ewo.b> $$3) {
+      super($$0);
+      this.b = List.copyOf($$1);
+      this.c = $$2;
+      this.d = $$3;
+   }
 
    @Override
-   public ezc b() {
-      return ezd.h;
+   public eyd<eyw> b() {
+      return eye.A;
    }
 
    @Override
    public Set<bai<?>> a() {
-      return Stream.concat(Stream.of(this.c.a()), this.b.values().stream().flatMap($$0 -> $$0.a().stream())).collect(ImmutableSet.toImmutableSet());
+      return this.d.<Set<bai<?>>>map($$0 -> Set.of($$0.a())).orElseGet(Set::of);
    }
 
-   public boolean a(evs $$0) {
-      bum $$1 = $$0.c(this.c.a());
-      if ($$1 == null) {
-         return false;
+   @Override
+   public cxh a(cxh $$0, ewo $$1) {
+      $$0.a(kv.j, czy.a, $$1x -> new czy(this.a($$1x, $$1)));
+      return $$0;
+   }
+
+   private List<wp> a(@Nullable czy $$0, ewo $$1) {
+      if ($$0 == null && this.b.isEmpty()) {
+         return List.of();
       } else {
-         fcg $$2 = $$0.d().g();
-
-         for (Entry<String, evr> $$3 : this.b.entrySet()) {
-            if (!this.a($$0, $$1, $$2, $$3.getKey(), $$3.getValue())) {
-               return false;
-            }
-         }
-
-         return true;
+         UnaryOperator<wp> $$2 = eyx.a($$1, this.d.orElse(null));
+         List<wp> $$3 = this.b.stream().map($$2).toList();
+         return this.c.a($$0.a(), $$3, 256);
       }
    }
 
-   protected boolean a(evs $$0, bum $$1, fcg $$2, String $$3, evr $$4) {
-      fby $$5 = $$2.a($$3);
-      if ($$5 == null) {
-         return false;
-      } else {
-         fcc $$6 = $$2.d($$1, $$5);
-         return $$6 == null ? false : $$4.b($$0, $$6.a());
-      }
+   public static eyw.a c() {
+      return new eyw.a();
    }
 
-   public static eyw.a a(evs.b $$0) {
-      return new eyw.a($$0);
-   }
+   public static class a extends eyb.a<eyw.a> {
+      private Optional<ewo.b> a = Optional.empty();
+      private final Builder<wp> b = ImmutableList.builder();
+      private eya c = eya.a.b;
 
-   public Map<String, evr> c() {
-      return this.b;
-   }
-
-   public evs.b d() {
-      return this.c;
-   }
-
-   public static class a implements ezb.a {
-      private final Builder<String, evr> a = ImmutableMap.builder();
-      private final evs.b b;
-
-      public a(evs.b $$0) {
-         this.b = $$0;
+      public eyw.a a(eya $$0) {
+         this.c = $$0;
+         return this;
       }
 
-      public eyw.a a(String $$0, evr $$1) {
-         this.a.put($$0, $$1);
+      public eyw.a a(ewo.b $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public eyw.a a(wp $$0) {
+         this.b.add($$0);
+         return this;
+      }
+
+      protected eyw.a a() {
          return this;
       }
 
       @Override
-      public ezb build() {
-         return new eyw(this.a.build(), this.b);
+      public eyc b() {
+         return new eyw(this.g(), this.b.build(), this.c, this.a);
       }
    }
 }

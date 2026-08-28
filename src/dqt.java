@@ -1,42 +1,34 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dqt extends djv, dog {
+public class dqt extends dke implements dkh {
+   public static final MapCodec<dqt> a = b(dqt::new);
+
    @Override
-   default boolean a(@Nullable coy $$0, dfo $$1, ji $$2, dwy $$3, esz $$4) {
-      return $$4 == etb.c;
+   public MapCodec<dqt> a() {
+      return a;
+   }
+
+   public dqt(dxp.d $$0) {
+      super($$0);
    }
 
    @Override
-   default boolean a(dgk $$0, ji $$1, dwy $$2, eta $$3) {
-      if (!$$2.c(dxo.J) && $$3.a() == etb.c) {
-         if (!$$0.B_()) {
-            $$0.a($$1, $$2.b(dxo.J, Boolean.valueOf(true)), 3);
-            $$0.a($$1, $$3.a(), $$3.a().a($$0));
-         }
-
-         return true;
-      } else {
-         return false;
-      }
+   public boolean a(dhc $$0, ji $$1, dxq $$2) {
+      return $$0.a_($$1.e()).l();
    }
 
    @Override
-   default cwq a(@Nullable coy $$0, dgk $$1, ji $$2, dwy $$3) {
-      if ($$3.c(dxo.J)) {
-         $$1.a($$2, $$3.b(dxo.J, Boolean.valueOf(false)), 3);
-         if (!$$3.a($$1, $$2)) {
-            $$1.b($$2, true);
-         }
-
-         return new cwq(cwu.rg);
-      } else {
-         return cwq.j;
-      }
+   public boolean a(dgz $$0, azh $$1, ji $$2, dxq $$3) {
+      return true;
    }
 
    @Override
-   default Optional<avz> as_() {
-      return etb.c.j();
+   public void a(ard $$0, azh $$1, ji $$2, dxq $$3) {
+      $$0.b($$2.e(), dkg.tk.m());
+   }
+
+   @Override
+   public ji a(ji $$0) {
+      return $$0.e();
    }
 }

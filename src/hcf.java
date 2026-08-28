@@ -1,23 +1,32 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public record hcf(fli b) implements hby {
-   private static final Codec<fli> c = Codec.STRING.comapFlatMap($$0 -> {
-      fli $$1 = fli.b($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Invalid keybind: " + $$0);
-   }, fli::h);
-   public static final MapCodec<hcf> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.fieldOf("keybind").forGetter(hcf::b)).apply($$0, hcf::new));
+public class hcf implements hck {
+   static final hck a = new hcf();
 
    @Override
-   public boolean a(cwq $$0, @Nullable gga $$1, @Nullable bvi $$2, int $$3, cwo $$4) {
-      return this.b.e();
+   public void a(hcn $$0, cxh $$1, hcl $$2, cxf $$3, @Nullable ggy $$4, @Nullable bvy $$5, int $$6) {
+      cxh $$7 = cvv.i($$1);
+      if (!$$7.f()) {
+         $$2.a($$0, $$7, $$3, $$4, $$5, $$6);
+      }
    }
 
-   @Override
-   public MapCodec<hcf> a() {
-      return a;
+   public static record a() implements hck.b {
+      public static final MapCodec<hcf.a> a = MapCodec.unit(new hcf.a());
+
+      @Override
+      public MapCodec<hcf.a> a() {
+         return a;
+      }
+
+      @Override
+      public hck a(hck.a $$0) {
+         return hcf.a;
+      }
+
+      @Override
+      public void a(hij.a $$0) {
+      }
    }
 }

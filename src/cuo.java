@@ -1,31 +1,68 @@
-public class cuo extends cwm {
-   private final cuo.a a;
+import javax.annotation.Nullable;
 
-   public cuo(deq $$0, cuo.a $$1, cwm.a $$2) {
-      super($$0.a($$2, $$1.d));
-      this.a = $$1;
-   }
+public class cuo implements bsr, cun {
+   private final ka<cxh> b = ka.a(1, cxh.k);
+   @Nullable
+   private dca<?> c;
 
-   public cuo(deq $$0, cuo.a $$1, jr<avz> $$2, boolean $$3, cwm.a $$4) {
-      super($$0.a($$4, $$2, $$3, $$1.d));
-      this.a = $$1;
+   @Override
+   public int b() {
+      return 1;
    }
 
    @Override
-   public avz a() {
-      return this.a.c;
+   public boolean c() {
+      for (cxh $$0 : this.b) {
+         if (!$$0.f()) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   public static enum a {
-      a(awa.nZ, but.al),
-      b(awa.Dw, but.bL);
+   @Override
+   public cxh a(int $$0) {
+      return this.b.get(0);
+   }
 
-      final avz c;
-      final jv<but<?>> d;
+   @Override
+   public cxh a(int $$0, int $$1) {
+      return bss.a(this.b, 0);
+   }
 
-      private a(final avz $$0, final but<?>... $$1) {
-         this.c = $$0;
-         this.d = jv.a(but::r, $$1);
-      }
+   @Override
+   public cxh b(int $$0) {
+      return bss.a(this.b, 0);
+   }
+
+   @Override
+   public void a(int $$0, cxh $$1) {
+      this.b.set(0, $$1);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cpr $$0) {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.b.clear();
+   }
+
+   @Override
+   public void a(@Nullable dca<?> $$0) {
+      this.c = $$0;
+   }
+
+   @Nullable
+   @Override
+   public dca<?> d() {
+      return this.c;
    }
 }

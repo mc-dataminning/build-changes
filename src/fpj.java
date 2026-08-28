@@ -1,39 +1,97 @@
-import javax.annotation.Nullable;
+public abstract class fpj extends fpo {
+   public static final int b = 6;
+   private double a;
+   private static final aku c = aku.b("widget/scroller");
+   private static final aku d = aku.b("widget/scroller_background");
+   private boolean e;
 
-public class fpj extends fos {
-   private final fod a;
-
-   public fpj(fod $$0, wp $$1) {
-      super(0, 0, $$0.a($$1), 9 * 3, $$1);
-      this.a = $$0;
+   public fpj(int $$0, int $$1, int $$2, int $$3, wp $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   protected void b(fof $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.F() + this.A() / 2;
-      int $$5 = this.G() + this.y() / 2;
-      wp $$6 = this.B();
-      $$0.b(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1);
-      String $$7 = fub.a(af.c());
-      $$0.b(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712);
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (!this.k) {
+         return false;
+      } else {
+         this.a(this.g() - $$3 * this.o());
+         return true;
+      }
    }
 
    @Override
-   protected void a(fsr $$0) {
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      if (this.e) {
+         if ($$1 < (double)this.G()) {
+            this.a(0.0);
+         } else if ($$1 > (double)this.I()) {
+            this.a((double)this.i());
+         } else {
+            double $$5 = (double)Math.max(1, this.i());
+            int $$6 = this.k();
+            double $$7 = Math.max(1.0, $$5 / (double)(this.h - $$6));
+            this.a(this.g() + $$4 * $$7);
+         }
+
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
+      }
    }
 
    @Override
-   public void a(hjw $$0) {
+   public void b(double $$0, double $$1) {
+      this.e = false;
    }
 
-   @Override
-   public boolean E() {
-      return false;
+   public double g() {
+      return this.a;
    }
 
-   @Nullable
-   @Override
-   public foc a(fsx $$0) {
-      return null;
+   public void a(double $$0) {
+      this.a = ayz.a($$0, 0.0, (double)this.i());
    }
+
+   public boolean c(double $$0, double $$1, int $$2) {
+      this.e = this.j() && this.g($$2) && $$0 >= (double)this.l() && $$0 <= (double)(this.l() + 6) && $$1 >= (double)this.G() && $$1 < (double)this.I();
+      return this.e;
+   }
+
+   public void h() {
+      this.a(this.a);
+   }
+
+   public int i() {
+      return Math.max(0, this.n() - this.h);
+   }
+
+   protected boolean j() {
+      return this.i() > 0;
+   }
+
+   protected int k() {
+      return ayz.a((int)((float)(this.h * this.h) / (float)this.n()), 32, this.h - 8);
+   }
+
+   protected int l() {
+      return this.H() - 6;
+   }
+
+   protected int m() {
+      return Math.max(this.G(), (int)this.a * (this.h - this.k()) / this.i() + this.G());
+   }
+
+   protected void a(fpc $$0) {
+      if (this.j()) {
+         int $$1 = this.l();
+         int $$2 = this.k();
+         int $$3 = this.m();
+         $$0.a(gnh::H, d, $$1, this.G(), 6, this.y());
+         $$0.a(gnh::H, c, $$1, $$3, 6, $$2);
+      }
+   }
+
+   protected abstract int n();
+
+   protected abstract double o();
 }

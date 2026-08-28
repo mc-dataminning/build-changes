@@ -8,7 +8,7 @@ public class bh extends dz<bh.a> {
       return bh.a.a;
    }
 
-   public void a(are $$0, cwq $$1) {
+   public void a(are $$0, cxh $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -21,15 +21,15 @@ public class bh extends dz<bh.a> {
          return ap.A.a(new bh.a(Optional.empty(), Optional.empty()));
       }
 
-      public static aq<bh.a> a(js<cwm> $$0, dgi $$1) {
-         return a(cv.a.a().a($$0, $$1.j()));
+      public static aq<bh.a> a(js<cxd> $$0, dgy $$1) {
+         return a(cv.a.a().a($$0, $$1.i()));
       }
 
       public static aq<bh.a> a(cv.a $$0) {
          return ap.A.a(new bh.a(Optional.empty(), Optional.of($$0.b())));
       }
 
-      public boolean a(cwq $$0) {
+      public boolean a(cxh $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 

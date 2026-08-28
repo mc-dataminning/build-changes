@@ -1,49 +1,87 @@
-public class gja extends gki {
-   private final gkd a;
+public class gja extends glg {
+   private final float a;
+   private final float b;
 
-   protected gja(gga $$0, double $$1, double $$2, double $$3, double $$4, gkd $$5) {
+   gja(ggy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, hcn $$7) {
+      this($$0, $$1, $$2, $$3, $$7);
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
+   }
+
+   @Override
+   public gkk b() {
+      return gkk.a;
+   }
+
+   protected gja(ggy $$0, double $$1, double $$2, double $$3, hcn $$4) {
       super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 6 + this.r.a(4);
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
-      this.a = $$5;
-      this.b($$5);
-   }
-
-   @Override
-   public int a(float $$0) {
-      return 15728880;
-   }
-
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
+      hfr $$5 = $$4.a(this.r);
+      if ($$5 != null) {
+         this.a($$5);
       } else {
-         this.b(this.a);
+         this.a(fmg.Q().a(hfq.d).apply(hfg.c()));
       }
+
+      this.u = 1.0F;
+      this.D /= 2.0F;
+      this.a = this.r.i() * 3.0F;
+      this.b = this.r.i() * 3.0F;
    }
 
    @Override
-   public gjm b() {
-      return gjm.b;
+   protected float c() {
+      return this.E.a((this.a + 1.0F) / 4.0F);
    }
 
-   public static class a implements gjl<lx> {
-      private final gkd a;
+   @Override
+   protected float d() {
+      return this.E.a(this.a / 4.0F);
+   }
 
-      public a(gkd $$0) {
-         this.a = $$0;
+   @Override
+   protected float e() {
+      return this.E.c(this.b / 4.0F);
+   }
+
+   @Override
+   protected float f() {
+      return this.E.c((this.b + 1.0F) / 4.0F);
+   }
+
+   public static class a extends gja.b<lx> {
+      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gja($$1, $$2, $$3, $$4, this.a(new cxh(cxl.cT), $$1));
       }
+   }
 
-      public gji a(lx $$0, gga $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gja($$1, $$2, $$3, $$4, $$5, this.a);
+   public abstract static class b<T extends lr> implements gkj<T> {
+      private final hcn a = new hcn();
+
+      protected hcn a(cxh $$0, ggy $$1) {
+         fmg.Q().bf().a(this.a, $$0, cxf.h, false, $$1, null, 0);
+         return this.a;
+      }
+   }
+
+   public static class c extends gja.b<lp> {
+      public gkg a(lp $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gja($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a($$0.b(), $$1));
+      }
+   }
+
+   public static class d extends gja.b<lx> {
+      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gja($$1, $$2, $$3, $$4, this.a(new cxh(cxl.rz), $$1));
+      }
+   }
+
+   public static class e extends gja.b<lx> {
+      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gja($$1, $$2, $$3, $$4, this.a(new cxh(cxl.rl), $$1));
       }
    }
 }

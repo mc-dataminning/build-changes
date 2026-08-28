@@ -1,71 +1,43 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import org.joml.Vector3f;
+import org.joml.Quaternionf;
 
-public abstract class gcx {
-   private static final Vector3f a = new Vector3f();
-   protected final gfe v;
-   protected final Function<akv, gmj> w;
-   private final List<gfe> b;
+public class gcx extends gda<gzg> {
+   private static final String e = "outer_glass";
+   private static final String f = "inner_glass";
+   private static final String g = "base";
+   private static final float i = (float)Math.sin(Math.PI / 4);
+   public final ggc a;
+   public final ggc b;
+   public final ggc c;
+   public final ggc d;
 
-   public gcx(gfe $$0, Function<akv, gmj> $$1) {
-      this.v = $$0;
-      this.w = $$1;
-      this.b = $$0.e().toList();
+   public gcx(ggc $$0) {
+      super($$0);
+      this.a = $$0.b("base");
+      this.b = $$0.b("outer_glass");
+      this.c = this.b.b("inner_glass");
+      this.d = this.c.b("cube");
    }
 
-   public final gmj a(akv $$0) {
-      return this.w.apply($$0);
+   public static ggi a() {
+      ggk $$0 = new ggk();
+      ggm $$1 = $$0.a();
+      float $$2 = 0.875F;
+      ggh $$3 = ggh.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F);
+      ggm $$4 = $$1.a("outer_glass", $$3, gge.a(0.0F, 24.0F, 0.0F));
+      ggm $$5 = $$4.a("inner_glass", $$3, gge.a.a(0.875F));
+      $$5.a("cube", ggh.c().a(32, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), gge.a.a(0.765625F));
+      $$1.a("base", ggh.c().a(0, 16).a(-6.0F, 0.0F, -6.0F, 12.0F, 4.0F, 12.0F), gge.a);
+      return ggi.a($$0, 64, 32);
    }
 
-   public final void a(ffv $$0, ffz $$1, int $$2, int $$3, int $$4) {
-      this.e().a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public final void a(ffv $$0, ffz $$1, int $$2, int $$3) {
-      this.a($$0, $$1, $$2, $$3, -1);
-   }
-
-   public final gfe e() {
-      return this.v;
-   }
-
-   public Optional<gfe> a(String $$0) {
-      return $$0.equals("root") ? Optional.of(this.e()) : this.e().e().filter($$1 -> $$1.a($$0)).findFirst().map($$1 -> $$1.b($$0));
-   }
-
-   public final List<gfe> f() {
-      return this.b;
-   }
-
-   public final void g() {
-      for (gfe $$0 : this.b) {
-         $$0.c();
-      }
-   }
-
-   protected void a(bue $$0, fly $$1, float $$2) {
-      this.a($$0, $$1, $$2, 1.0F);
-   }
-
-   protected void a(fly $$0, float $$1, float $$2, float $$3, float $$4) {
-      long $$5 = (long)($$1 * 50.0F * $$3);
-      float $$6 = Math.min($$2 * $$4, 1.0F);
-      fma.a(this, $$0, $$5, $$6, a);
-   }
-
-   protected void a(bue $$0, fly $$1, float $$2, float $$3) {
-      $$0.a($$3x -> fma.a(this, $$1, (long)((float)$$3x.a($$2) * $$3), 1.0F, a));
-   }
-
-   protected void a(fly $$0) {
-      fma.a(this, $$0, 0L, 1.0F, a);
-   }
-
-   public static class a extends gcx {
-      public a(gfe $$0, Function<akv, gmj> $$1) {
-         super($$0, $$1);
-      }
+   public void a(gzg $$0) {
+      super.a($$0);
+      this.a.k = $$0.a;
+      float $$1 = $$0.u * 3.0F;
+      float $$2 = gsx.a($$0.u) * 16.0F;
+      this.b.c += $$2 / 2.0F;
+      this.b.a(a.d.rotationDegrees($$1).rotateAxis((float) (Math.PI / 3), i, 0.0F, i));
+      this.c.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), i, 0.0F, i).rotateY($$1 * (float) (Math.PI / 180.0)));
+      this.d.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), i, 0.0F, i).rotateY($$1 * (float) (Math.PI / 180.0)));
    }
 }

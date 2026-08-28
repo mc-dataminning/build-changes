@@ -1,26 +1,22 @@
-import com.mojang.authlib.minecraft.UserApiService;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
+public class ggn {
+   private final float a;
+   private final float b;
 
-public interface ggn {
-   ggn a = new ggn() {
-      @Override
-      public CompletableFuture<Optional<cpa>> a() {
-         return CompletableFuture.completedFuture(Optional.empty());
-      }
-
-      @Override
-      public boolean b() {
-         return false;
-      }
-   };
-
-   static ggn a(UserApiService $$0, flw $$1, Path $$2) {
-      return (ggn)($$1.g() == flw.a.c ? new gft($$0, $$1.b(), $$2) : a);
+   public ggn(float $$0, float $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   CompletableFuture<Optional<cpa>> a();
+   public float a() {
+      return this.a;
+   }
 
-   boolean b();
+   public float b() {
+      return this.b;
+   }
+
+   @Override
+   public String toString() {
+      return "(" + this.a + "," + this.b + ")";
+   }
 }

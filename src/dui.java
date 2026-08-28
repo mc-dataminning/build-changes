@@ -1,23 +1,19 @@
-public class dui {
-   private boolean a;
-   private float b;
-   private float c;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public void a() {
-      this.c = this.b;
-      float $$0 = 0.1F;
-      if (!this.a && this.b > 0.0F) {
-         this.b = Math.max(this.b - 0.1F, 0.0F);
-      } else if (this.a && this.b < 1.0F) {
-         this.b = Math.min(this.b + 0.1F, 1.0F);
-      }
+public record dui(aku e, String f) {
+   public static final Codec<dui> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aku.a.fieldOf("asset_id").forGetter(dui::a), Codec.STRING.fieldOf("translation_key").forGetter(dui::b)).apply($$0, dui::new)
+   );
+   public static final yn<wa, dui> b = yn.a(aku.b, dui::a, yl.o, dui::b, dui::new);
+   public static final Codec<jr<dui>> c = akq.a(mc.d, a);
+   public static final yn<wa, jr<dui>> d = yl.a(mc.d, b);
+
+   public aku a() {
+      return this.e;
    }
 
-   public float a(float $$0) {
-      return ayz.h($$0, this.c, this.b);
-   }
-
-   public void a(boolean $$0) {
-      this.a = $$0;
+   public String b() {
+      return this.f;
    }
 }

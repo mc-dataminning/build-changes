@@ -1,143 +1,123 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import java.util.Collection;
-import java.util.function.BiConsumer;
-import java.util.function.BiPredicate;
-import java.util.function.ToIntFunction;
+import com.mojang.datafixers.util.Either;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class amz {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wp.c("commands.experience.set.points.invalid"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wp.c("argument.pos.unloaded"));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> wp.b("commands.fillbiome.toobig", $$0, $$1));
 
-   public static void a(CommandDispatcher<ex> $$0) {
-      LiteralCommandNode<ex> $$1 = $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("experience").requires($$0x -> $$0x.c(2)))
+   public static void a(CommandDispatcher<ex> $$0, et $$1) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("fillbiome").requires($$0x -> $$0x.c(2)))
+            .then(
+               ey.a("from", gt.a())
                   .then(
-                     ey.a("add")
+                     ey.a("to", gt.a())
                         .then(
-                           ey.a("target", fk.d())
+                           ((RequiredArgumentBuilder)ey.a("biome", fw.a($$1, mc.aJ))
+                                 .executes($$0x -> a((ex)$$0x.getSource(), gt.a($$0x, "from"), gt.a($$0x, "to"), fw.a($$0x, "biome", mc.aJ), $$0xx -> true)))
                               .then(
-                                 ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ey.a("amount", IntegerArgumentType.integer())
-                                          .executes(
-                                             $$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), amz.a.a)
-                                          ))
-                                       .then(
-                                          ey.a("points")
-                                             .executes(
-                                                $$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), amz.a.a)
-                                             )
-                                       ))
+                                 ey.a("replace")
                                     .then(
-                                       ey.a("levels")
+                                       ey.a("filter", ga.a($$1, mc.aJ))
                                           .executes(
-                                             $$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), amz.a.b)
+                                             $$0x -> a(
+                                                   (ex)$$0x.getSource(),
+                                                   gt.a($$0x, "from"),
+                                                   gt.a($$0x, "to"),
+                                                   fw.a($$0x, "biome", mc.aJ),
+                                                   ga.a($$0x, "filter", mc.aJ)::test
+                                                )
                                           )
                                     )
                               )
                         )
-                  ))
-               .then(
-                  ey.a("set")
-                     .then(
-                        ey.a("target", fk.d())
-                           .then(
-                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ey.a("amount", IntegerArgumentType.integer(0))
-                                       .executes($$0x -> b((ex)$$0x.getSource(), fk.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), amz.a.a)))
-                                    .then(
-                                       ey.a("points")
-                                          .executes(
-                                             $$0x -> b((ex)$$0x.getSource(), fk.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), amz.a.a)
-                                          )
-                                    ))
-                                 .then(
-                                    ey.a("levels")
-                                       .executes($$0x -> b((ex)$$0x.getSource(), fk.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), amz.a.b))
-                                 )
-                           )
-                     )
-               ))
-            .then(
-               ey.a("query")
-                  .then(
-                     ((RequiredArgumentBuilder)ey.a("target", fk.c())
-                           .then(ey.a("points").executes($$0x -> a((ex)$$0x.getSource(), fk.e($$0x, "target"), amz.a.a))))
-                        .then(ey.a("levels").executes($$0x -> a((ex)$$0x.getSource(), fk.e($$0x, "target"), amz.a.b)))
                   )
             )
       );
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("xp").requires($$0x -> $$0x.c(2))).redirect($$1));
    }
 
-   private static int a(ex $$0, are $$1, amz.a $$2) {
-      int $$3 = $$2.f.applyAsInt($$1);
-      $$0.a(() -> wp.a("commands.experience.query." + $$2.e, $$1.p_(), $$3), false);
-      return $$3;
+   private static int a(int $$0) {
+      return kc.c(kc.a($$0));
    }
 
-   private static int a(ex $$0, Collection<? extends are> $$1, int $$2, amz.a $$3) {
-      for (are $$4 : $$1) {
-         $$3.c.accept($$4, $$2);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> wp.a("commands.experience.add." + $$3.e + ".success.single", $$2, $$1.iterator().next().p_()), true);
-      } else {
-         $$0.a(() -> wp.a("commands.experience.add." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
-      }
-
-      return $$1.size();
+   private static ji a(ji $$0) {
+      return new ji(a($$0.u()), a($$0.v()), a($$0.w()));
    }
 
-   private static int b(ex $$0, Collection<? extends are> $$1, int $$2, amz.a $$3) throws CommandSyntaxException {
-      int $$4 = 0;
-
-      for (are $$5 : $$1) {
-         if ($$3.d.test($$5, $$2)) {
-            $$4++;
-         }
-      }
-
-      if ($$4 == 0) {
-         throw a.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> wp.a("commands.experience.set." + $$3.e + ".success.single", $$2, $$1.iterator().next().p_()), true);
+   private static dif a(MutableInt $$0, dzm $$1, eob $$2, jr<dic> $$3, Predicate<jr<dic>> $$4) {
+      return ($$5, $$6, $$7, $$8) -> {
+         int $$9 = kc.c($$5);
+         int $$10 = kc.c($$6);
+         int $$11 = kc.c($$7);
+         jr<dic> $$12 = $$1.getNoiseBiome($$5, $$6, $$7);
+         if ($$2.d($$9, $$10, $$11) && $$4.test($$12)) {
+            $$0.increment();
+            return $$3;
          } else {
-            $$0.a(() -> wp.a("commands.experience.set." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
+            return $$12;
+         }
+      };
+   }
+
+   public static Either<Integer, CommandSyntaxException> a(ard $$0, ji $$1, ji $$2, jr<dic> $$3) {
+      return a($$0, $$1, $$2, $$3, $$0x -> true, $$0x -> {
+      });
+   }
+
+   public static Either<Integer, CommandSyntaxException> a(ard $$0, ji $$1, ji $$2, jr<dic> $$3, Predicate<jr<dic>> $$4, Consumer<Supplier<wp>> $$5) {
+      ji $$6 = a($$1);
+      ji $$7 = a($$2);
+      eob $$8 = eob.a($$6, $$7);
+      int $$9 = $$8.d() * $$8.e() * $$8.f();
+      int $$10 = $$0.O().c(dgv.A);
+      if ($$9 > $$10) {
+         return Either.right(b.create($$10, $$9));
+      } else {
+         List<dzm> $$11 = new ArrayList<>();
+
+         for (int $$12 = kk.a($$8.j()); $$12 <= kk.a($$8.m()); $$12++) {
+            for (int $$13 = kk.a($$8.h()); $$13 <= kk.a($$8.k()); $$13++) {
+               dzm $$14 = $$0.a($$13, $$12, ean.n, false);
+               if ($$14 == null) {
+                  return Either.right(a.create());
+               }
+
+               $$11.add($$14);
+            }
          }
 
-         return $$1.size();
+         MutableInt $$15 = new MutableInt(0);
+
+         for (dzm $$16 : $$11) {
+            $$16.a(a($$15, $$16, $$8, $$3, $$4), $$0.m().i().b());
+            $$16.i();
+         }
+
+         $$0.m().a.a($$11);
+         $$5.accept(() -> wp.a("commands.fillbiome.success.count", $$15.getValue(), $$8.h(), $$8.i(), $$8.j(), $$8.k(), $$8.l(), $$8.m()));
+         return Either.left($$15.getValue());
       }
    }
 
-   static enum a {
-      a("points", coy::d, ($$0, $$1) -> {
-         if ($$1 >= $$0.gs()) {
-            return false;
-         } else {
-            $$0.a($$1);
-            return true;
-         }
-      }, $$0 -> ayz.d($$0.ct * (float)$$0.gs())),
-      b("levels", are::c, ($$0, $$1) -> {
-         $$0.b($$1);
-         return true;
-      }, $$0 -> $$0.cr);
-
-      public final BiConsumer<are, Integer> c;
-      public final BiPredicate<are, Integer> d;
-      public final String e;
-      final ToIntFunction<are> f;
-
-      private a(final String $$0, final BiConsumer<are, Integer> $$1, final BiPredicate<are, Integer> $$2, final ToIntFunction<are> $$3) {
-         this.c = $$1;
-         this.e = $$0;
-         this.d = $$2;
-         this.f = $$3;
+   private static int a(ex $$0, ji $$1, ji $$2, jr.c<dic> $$3, Predicate<jr<dic>> $$4) throws CommandSyntaxException {
+      Either<Integer, CommandSyntaxException> $$5 = a($$0.e(), $$1, $$2, $$3, $$4, $$1x -> $$0.a($$1x, true));
+      Optional<CommandSyntaxException> $$6 = $$5.right();
+      if ($$6.isPresent()) {
+         throw (CommandSyntaxException)$$6.get();
+      } else {
+         return (Integer)$$5.left().get();
       }
    }
 }

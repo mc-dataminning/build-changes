@@ -1,15 +1,19 @@
-public interface dgq extends dgm {
-   long al();
+import java.util.Optional;
 
-   default float ar() {
-      return eat.k[this.G_().b(this.al())];
+public class dgq extends dgt {
+   private final bva a;
+
+   public dgq(bva $$0) {
+      this.a = $$0;
    }
 
-   default float f(float $$0) {
-      return this.G_().a(this.al());
+   @Override
+   public Optional<Float> a(dgs $$0, dgf $$1, ji $$2, dxq $$3, etw $$4) {
+      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
    }
 
-   default int as() {
-      return this.G_().b(this.al());
+   @Override
+   public boolean a(dgs $$0, dgf $$1, ji $$2, dxq $$3, float $$4) {
+      return this.a.a($$0, $$1, $$2, $$3, $$4);
    }
 }

@@ -1,41 +1,28 @@
-import java.util.ArrayList;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public record aev(int c, List<akc.c<?>> d) implements yw<abl> {
-   public static final yn<wa, aev> a = yw.a(aev::b, aev::new);
-   public static final int b = 255;
+public class aev implements yw<abl> {
+   public static final yn<vl, aev> a = yw.a(aev::a, aev::new);
+   private final int b;
+   private final int c;
 
-   private aev(wa $$0) {
-      this($$0.l(), a($$0));
+   public aev(bva $$0, @Nullable bva $$1) {
+      this.b = $$0.ar();
+      this.c = $$1 != null ? $$1.ar() : 0;
    }
 
-   private static void a(List<akc.c<?>> $$0, wa $$1) {
-      for (akc.c<?> $$2 : $$0) {
-         $$2.a($$1);
-      }
-
-      $$1.l(255);
+   private aev(vl $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
    }
 
-   private static List<akc.c<?>> a(wa $$0) {
-      List<akc.c<?>> $$1 = new ArrayList<>();
-
-      int $$2;
-      while (($$2 = $$0.readUnsignedByte()) != 255) {
-         $$1.add(akc.c.a($$0, $$2));
-      }
-
-      return $$1;
-   }
-
-   private void b(wa $$0) {
-      $$0.c(this.c);
-      a(this.d, $$0);
+   private void a(vl $$0) {
+      $$0.q(this.b);
+      $$0.q(this.c);
    }
 
    @Override
    public yy<aev> a() {
-      return age.aF;
+      return agd.aF;
    }
 
    public void a(abl $$0) {
@@ -43,10 +30,10 @@ public record aev(int c, List<akc.c<?>> d) implements yw<abl> {
    }
 
    public int b() {
-      return this.c;
+      return this.b;
    }
 
-   public List<akc.c<?>> e() {
-      return this.d;
+   public int e() {
+      return this.c;
    }
 }

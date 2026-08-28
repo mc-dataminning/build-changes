@@ -1,19 +1,18 @@
-import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public enum btb implements azv {
-   a("never"),
-   b("when_caused_by_living_non_player"),
-   c("always");
+public interface btb {
+   wp al();
 
-   public static final Codec<btb> d = azv.a(btb::values);
-   private final String e;
-
-   private btb(final String $$0) {
-      this.e = $$0;
+   default boolean h_() {
+      return this.an() != null;
    }
 
-   @Override
-   public String c() {
-      return this.e;
+   default wp m_() {
+      return this.al();
+   }
+
+   @Nullable
+   default wp an() {
+      return null;
    }
 }

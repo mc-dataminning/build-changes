@@ -1,61 +1,109 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.Set;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class ewn extends ewk {
-   public static final MapCodec<ewn> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(axf.a(mc.K).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
-            .and(b($$0))
+public class ewn {
+   private static final Codec<ewn> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               fau.a.optionalFieldOf("min").forGetter($$0x -> Optional.ofNullable($$0x.c)),
+               fau.a.optionalFieldOf("max").forGetter($$0x -> Optional.ofNullable($$0x.d))
+            )
             .apply($$0, ewn::new)
    );
-   private final axf<cwm> j;
-   private final boolean k;
+   public static final Codec<ewn> a = Codec.either(Codec.INT, b).xmap($$0 -> (ewn)$$0.map(ewn::a, Function.identity()), $$0 -> {
+      OptionalInt $$1 = $$0.b();
+      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
+   });
+   @Nullable
+   private final fat c;
+   @Nullable
+   private final fat d;
+   private final ewn.b e;
+   private final ewn.a f;
 
-   private ewn(axf<cwm> $$0, boolean $$1, int $$2, int $$3, List<ezb> $$4, List<exg> $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.j = $$0;
-      this.k = $$1;
+   public Set<bai<?>> a() {
+      Builder<bai<?>> $$0 = ImmutableSet.builder();
+      if (this.c != null) {
+         $$0.addAll(this.c.a());
+      }
+
+      if (this.d != null) {
+         $$0.addAll(this.d.a());
+      }
+
+      return $$0.build();
    }
 
-   @Override
-   public ewj a() {
-      return ewg.f;
+   private ewn(Optional<fat> $$0, Optional<fat> $$1) {
+      this($$0.orElse(null), $$1.orElse(null));
    }
 
-   @Override
-   public void a(Consumer<cwq> $$0, evs $$1) {
-      mb.g.c(this.j).forEach($$1x -> $$0.accept(new cwq($$1x)));
-   }
-
-   private boolean a(evs $$0, Consumer<ewh> $$1) {
-      if (!this.a($$0)) {
-         return false;
-      } else {
-         for (final jr<cwm> $$2 : mb.g.c(this.j)) {
-            $$1.accept(new ewk.c() {
-               @Override
-               public void a(Consumer<cwq> $$0, evs $$1) {
-                  $$0.accept(new cwq($$2));
-               }
-            });
+   private ewn(@Nullable fat $$0, @Nullable fat $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      if ($$0 == null) {
+         if ($$1 == null) {
+            this.e = ($$0x, $$1x) -> $$1x;
+            this.f = ($$0x, $$1x) -> true;
+         } else {
+            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
+            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
          }
-
-         return true;
+      } else if ($$1 == null) {
+         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
+         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
+      } else {
+         this.e = ($$2, $$3) -> ayz.a($$3, $$0.a($$2), $$1.a($$2));
+         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
       }
    }
 
-   @Override
-   public boolean expand(evs $$0, Consumer<ewh> $$1) {
-      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
+   public static ewn a(int $$0) {
+      faq $$1 = faq.a((float)$$0);
+      return new ewn(Optional.of($$1), Optional.of($$1));
    }
 
-   public static ewk.a<?> a(axf<cwm> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new ewn($$0, false, $$1, $$2, $$3, $$4));
+   public static ewn a(int $$0, int $$1) {
+      return new ewn(Optional.of(faq.a((float)$$0)), Optional.of(faq.a((float)$$1)));
    }
 
-   public static ewk.a<?> b(axf<cwm> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new ewn($$0, true, $$1, $$2, $$3, $$4));
+   public static ewn b(int $$0) {
+      return new ewn(Optional.of(faq.a((float)$$0)), Optional.empty());
+   }
+
+   public static ewn c(int $$0) {
+      return new ewn(Optional.empty(), Optional.of(faq.a((float)$$0)));
+   }
+
+   public int a(ewo $$0, int $$1) {
+      return this.e.apply($$0, $$1);
+   }
+
+   public boolean b(ewo $$0, int $$1) {
+      return this.f.test($$0, $$1);
+   }
+
+   private OptionalInt b() {
+      return Objects.equals(this.c, this.d) && this.c instanceof faq $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
+         ? OptionalInt.of((int)$$0.c())
+         : OptionalInt.empty();
+   }
+
+   @FunctionalInterface
+   interface a {
+      boolean test(ewo var1, int var2);
+   }
+
+   @FunctionalInterface
+   interface b {
+      int apply(ewo var1, int var2);
    }
 }

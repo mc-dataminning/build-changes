@@ -30,13 +30,13 @@ public class axg<T> {
       this.c = $$1;
    }
 
-   public Map<akv, List<axg.b>> a(aup $$0) {
-      Map<akv, List<axg.b>> $$1 = new HashMap<>();
-      ako $$2 = ako.a(this.c);
+   public Map<aku, List<axg.b>> a(aup $$0) {
+      Map<aku, List<axg.b>> $$1 = new HashMap<>();
+      akn $$2 = akn.a(this.c);
 
-      for (Entry<akv, List<aun>> $$3 : $$2.b($$0).entrySet()) {
-         akv $$4 = $$3.getKey();
-         akv $$5 = $$2.b($$4);
+      for (Entry<aku, List<aun>> $$3 : $$2.b($$0).entrySet()) {
+         aku $$4 = $$3.getKey();
+         aku $$5 = $$2.b($$4);
 
          for (aun $$6 : $$3.getValue()) {
             try (Reader $$7 = $$6.e()) {
@@ -71,22 +71,22 @@ public class axg<T> {
       return $$3.isEmpty() ? Either.right(List.copyOf($$2)) : Either.left($$3);
    }
 
-   public Map<akv, List<T>> a(Map<akv, List<axg.b>> $$0) {
-      final Map<akv, List<T>> $$1 = new HashMap<>();
+   public Map<aku, List<T>> a(Map<aku, List<axg.b>> $$0) {
+      final Map<aku, List<T>> $$1 = new HashMap<>();
       axd.a<T> $$2 = new axd.a<T>() {
          @Nullable
          @Override
-         public T a(akv $$0, boolean $$1x) {
+         public T a(aku $$0, boolean $$1x) {
             return (T)axg.this.b.get($$0, $$1).orElse(null);
          }
 
          @Nullable
          @Override
-         public Collection<T> a(akv $$0) {
+         public Collection<T> a(aku $$0) {
             return $$1.get($$0);
          }
       };
-      aye<akv, axg.d> $$3 = new aye<>();
+      aye<aku, axg.d> $$3 = new aye<>();
       $$0.forEach(($$1x, $$2x) -> $$3.a($$1x, new axg.d($$2x)));
       $$3.a(
          ($$2x, $$3x) -> this.a($$2, $$3x.a)
@@ -111,17 +111,17 @@ public class axg<T> {
    }
 
    public static <T> void a(aup $$0, kn<T> $$1) {
-      aku<? extends ke<T>> $$2 = $$1.g();
+      akt<? extends ke<T>> $$2 = $$1.g();
       axg<jr<T>> $$3 = new axg<>(axg.a.a($$1), mc.d($$2));
       $$3.a($$3.a($$0)).forEach(($$2x, $$3x) -> $$1.a(axf.a($$2, $$2x), $$3x));
    }
 
-   private static <T> Map<axf<T>, List<jr<T>>> a(aku<? extends ke<T>> $$0, Map<akv, List<jr<T>>> $$1) {
-      return $$1.entrySet().stream().collect(Collectors.toUnmodifiableMap($$1x -> axf.a($$0, (akv)$$1x.getKey()), Entry::getValue));
+   private static <T> Map<axf<T>, List<jr<T>>> a(akt<? extends ke<T>> $$0, Map<aku, List<jr<T>>> $$1) {
+      return $$1.entrySet().stream().collect(Collectors.toUnmodifiableMap($$1x -> axf.a($$0, (aku)$$1x.getKey()), Entry::getValue));
    }
 
    private static <T> Optional<ke.a<T>> a(aup $$0, ke<T> $$1) {
-      aku<? extends ke<T>> $$2 = $$1.g();
+      akt<? extends ke<T>> $$2 = $$1.g();
       axg<jr<T>> $$3 = new axg<>((axg.a<jr<T>>)axg.a.a($$1), mc.d($$2));
       axg.c<T> $$4 = new axg.c<>($$2, a($$1.g(), $$3.a($$3.a($$0))));
       return $$4.b().isEmpty() ? Optional.empty() : Optional.of($$1.a($$4));
@@ -137,7 +137,7 @@ public class axg<T> {
    }
 
    @Nullable
-   private static ke.a<?> a(List<ke.a<?>> $$0, aku<? extends ke<?>> $$1) {
+   private static ke.a<?> a(List<ke.a<?>> $$0, akt<? extends ke<?>> $$1) {
       for (ke.a<?> $$2 : $$0) {
          if ($$2.a() == $$1) {
             return $$2;
@@ -148,7 +148,7 @@ public class axg<T> {
    }
 
    public interface a<T> {
-      Optional<? extends T> get(akv var1, boolean var2);
+      Optional<? extends T> get(aku var1, boolean var2);
 
       static <T> axg.a<? extends jr<T>> a(ke<T> $$0) {
          return ($$1, $$2) -> $$0.c($$1);
@@ -156,7 +156,7 @@ public class axg<T> {
 
       static <T> axg.a<jr<T>> a(kn<T> $$0) {
          js<T> $$1 = $$0.p();
-         return ($$2, $$3) -> ((js<T>)($$3 ? $$1 : $$0)).a(aku.a($$0.g(), $$2));
+         return ($$2, $$3) -> ((js<T>)($$3 ? $$1 : $$0)).a(akt.a($$0.g(), $$2));
       }
    }
 
@@ -168,18 +168,18 @@ public class axg<T> {
       }
    }
 
-   public static record c<T>(aku<? extends ke<T>> a, Map<axf<T>, List<jr<T>>> b) {
+   public static record c<T>(akt<? extends ke<T>> a, Map<axf<T>, List<jr<T>>> b) {
    }
 
-   static record d(List<axg.b> a) implements aye.a<akv> {
+   static record d(List<axg.b> a) implements aye.a<aku> {
 
       @Override
-      public void a(Consumer<akv> $$0) {
+      public void a(Consumer<aku> $$0) {
          this.a.forEach($$1 -> $$1.a.a($$0));
       }
 
       @Override
-      public void b(Consumer<akv> $$0) {
+      public void b(Consumer<aku> $$0) {
          this.a.forEach($$1 -> $$1.a.b($$0));
       }
    }

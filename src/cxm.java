@@ -1,103 +1,59 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Consumer;
 
-public abstract class cxm extends cwm {
-   public static final Predicate<cwq> c = $$0 -> $$0.a(awy.aX);
-   public static final Predicate<cwq> d = c.or($$0 -> $$0.a(cwu.vt));
+public record cxm(cwh<cxn> c, boolean d) implements dai {
+   public static final Codec<cxm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cwh.a(mc.L, cxn.c).fieldOf("song").forGetter(cxm::a), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cxm::b))
+            .apply($$0, cxm::new)
+   );
+   public static final yn<wa, cxm> b = yn.a(cwh.a(mc.L, cxn.d), cxm::a, yl.b, cxm::b, cxm::new);
 
-   public cxm(cwm.a $$0) {
-      super($$0);
-   }
-
-   public Predicate<cwq> d() {
-      return this.b();
-   }
-
-   public abstract Predicate<cwq> b();
-
-   public static cwq a(bvi $$0, Predicate<cwq> $$1) {
-      if ($$1.test($$0.b(bsk.b))) {
-         return $$0.b(bsk.b);
-      } else {
-         return $$1.test($$0.b(bsk.a)) ? $$0.b(bsk.a) : cwq.j;
+   @Override
+   public void a(cxd.b $$0, Consumer<wp> $$1, cyx $$2) {
+      jt.a $$3 = $$0.a();
+      if (this.d && $$3 != null) {
+         this.c.a($$3).ifPresent($$1x -> {
+            xd $$2x = ((cxn)$$1x.a()).c().f();
+            ws.a($$2x, xm.a.a(n.h));
+            $$1.accept($$2x);
+         });
       }
    }
 
-   public abstract int c();
+   public cxm a(boolean $$0) {
+      return new cxm(this.c, $$0);
+   }
 
-   protected void a(ard $$0, bvi $$1, bsk $$2, cwq $$3, List<cwq> $$4, float $$5, float $$6, boolean $$7, @Nullable bvi $$8) {
-      float $$9 = ddc.a($$0, $$3, $$1, 0.0F);
-      float $$10 = $$4.size() == 1 ? 0.0F : 2.0F * $$9 / (float)($$4.size() - 1);
-      float $$11 = (float)(($$4.size() - 1) % 2) * $$10 / 2.0F;
-      float $$12 = 1.0F;
+   public static bsy a(dgz $$0, ji $$1, cxh $$2, cpr $$3) {
+      cxm $$4 = $$2.a(kv.ad);
+      if ($$4 == null) {
+         return bsy.f;
+      } else {
+         dxq $$5 = $$0.a_($$1);
+         if ($$5.a(dkg.eg) && !$$5.c(dok.b)) {
+            if (!$$0.C) {
+               cxh $$6 = $$2.b(1, $$3);
+               if ($$0.c_($$1) instanceof dvw $$7) {
+                  $$7.b($$6);
+                  $$0.a(ecp.c, $$1, ecp.a.a($$3, $$5));
+               }
 
-      for (int $$13 = 0; $$13 < $$4.size(); $$13++) {
-         cwq $$14 = $$4.get($$13);
-         if (!$$14.f()) {
-            float $$15 = $$11 + $$12 * (float)(($$13 + 1) / 2) * $$10;
-            $$12 = -$$12;
-            int $$16 = $$13;
-            cpr.a(this.a($$0, $$1, $$3, $$14, $$7), $$0, $$14, $$6x -> this.a($$1, $$6x, $$16, $$5, $$6, $$15, $$8));
-            $$3.a(this.h($$14), $$1, bvi.d($$2));
-            if ($$3.f()) {
-               break;
+               $$3.a(awk.al);
             }
+
+            return bsy.a;
+         } else {
+            return bsy.f;
          }
       }
    }
 
-   protected int h(cwq $$0) {
-      return 1;
+   public cwh<cxn> a() {
+      return this.c;
    }
 
-   protected abstract void a(bvi var1, cpr var2, int var3, float var4, float var5, float var6, @Nullable bvi var7);
-
-   protected cpr a(dgj $$0, bvi $$1, cwq $$2, cwq $$3, boolean $$4) {
-      cur $$6 = $$3.h() instanceof cur $$5 ? $$5 : (cur)cwu.pb;
-      cpf $$7 = $$6.a($$0, $$3, $$1, $$2);
-      if ($$4) {
-         $$7.b(true);
-      }
-
-      return $$7;
-   }
-
-   protected static List<cwq> a(cwq $$0, cwq $$1, bvi $$2) {
-      if ($$1.f()) {
-         return List.of();
-      } else {
-         int $$4 = $$2.dV() instanceof ard $$3 ? ddc.a($$3, $$0, $$2, 1) : 1;
-         List<cwq> $$5 = new ArrayList<>($$4);
-         cwq $$6 = $$1.v();
-
-         for (int $$7 = 0; $$7 < $$4; $$7++) {
-            cwq $$8 = a($$0, $$7 == 0 ? $$1 : $$6, $$2, $$7 > 0);
-            if (!$$8.f()) {
-               $$5.add($$8);
-            }
-         }
-
-         return $$5;
-      }
-   }
-
-   protected static cwq a(cwq $$0, cwq $$1, bvi $$2, boolean $$3) {
-      int $$5 = !$$3 && !$$2.fV() && $$2.dV() instanceof ard $$4 ? ddc.a($$4, $$0, $$1, 1) : 0;
-      if ($$5 > $$1.M()) {
-         return cwq.j;
-      } else if ($$5 == 0) {
-         cwq $$6 = $$1.c(1);
-         $$6.b(kv.v, baf.a);
-         return $$6;
-      } else {
-         cwq $$7 = $$1.a($$5);
-         if ($$1.f() && $$2 instanceof coy $$8) {
-            $$8.gi().h($$1);
-         }
-
-         return $$7;
-      }
+   public boolean b() {
+      return this.d;
    }
 }

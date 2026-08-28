@@ -1,121 +1,71 @@
-public class fvf extends fwd<csg> {
-   private static final akv G = akv.b("container/anvil/text_field");
-   private static final akv H = akv.b("container/anvil/text_field_disabled");
-   private static final akv I = akv.b("container/anvil/error");
-   private static final akv J = akv.b("textures/gui/container/anvil.png");
-   private static final wp K = wp.c("container.repair.expensive");
-   private fpd L;
-   private final coy M;
+import javax.annotation.Nullable;
 
-   public fvf(csg $$0, cox $$1, wp $$2) {
-      super($$0, $$1, $$2, J);
-      this.M = $$1.k;
-      this.v = 60;
+public class fvf extends fvi implements azg {
+   @Nullable
+   private wp a;
+   @Nullable
+   private wp b;
+   private int c;
+   private boolean d;
+   private final boolean s;
+
+   public fvf(boolean $$0) {
+      super(flx.a);
+      this.s = $$0;
    }
 
    @Override
-   protected void G() {
-      int $$0 = (this.n - this.s) / 2;
-      int $$1 = (this.o - this.u) / 2;
-      this.L = new fpd(this.p, $$0 + 62, $$1 + 24, 103, 12, wp.c("container.repair"));
-      this.L.f(false);
-      this.L.m(-1);
-      this.L.n(-1);
-      this.L.d(false);
-      this.L.f(50);
-      this.L.b(this::a);
-      this.L.a("");
-      this.d(this.L);
-      this.L.e(this.z.b(0).h());
+   public boolean aG_() {
+      return false;
    }
 
    @Override
-   protected void aF_() {
-      this.b(this.L);
+   protected boolean aQ_() {
+      return false;
    }
 
    @Override
-   public void a(flk $$0, int $$1, int $$2) {
-      String $$3 = this.L.a();
-      this.b($$0, $$1, $$2);
-      this.L.a($$3);
+   public void a(wp $$0) {
+      this.b($$0);
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.m.t.p();
-      }
-
-      return !this.L.a($$0, $$1, $$2) && !this.L.c() ? super.a($$0, $$1, $$2) : true;
+   public void b(wp $$0) {
+      this.a = $$0;
+      this.c(wp.c("menu.working"));
    }
 
-   private void a(String $$0) {
-      cua $$1 = this.z.b(0);
-      if ($$1.h()) {
-         String $$2 = $$0;
-         if (!$$1.g().b(kv.g) && $$0.equals($$1.g().y().getString())) {
-            $$2 = "";
+   @Override
+   public void c(wp $$0) {
+      this.b = $$0;
+      this.a(0);
+   }
+
+   @Override
+   public void a(int $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public void a() {
+      this.d = true;
+   }
+
+   @Override
+   public void a(fpc $$0, int $$1, int $$2, float $$3) {
+      if (this.d) {
+         if (this.s) {
+            this.m.a(null);
+         }
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+         if (this.a != null) {
+            $$0.a(this.p, this.a, this.n / 2, 70, 16777215);
          }
 
-         if (this.z.a($$2)) {
-            this.m.t.j.b(new ahs($$2));
+         if (this.b != null && this.c != 0) {
+            $$0.a(this.p, wp.i().b(this.b).f(" " + this.c + "%"), this.n / 2, 90, 16777215);
          }
-      }
-   }
-
-   @Override
-   protected void b(fof $$0, int $$1, int $$2) {
-      super.b($$0, $$1, $$2);
-      int $$3 = this.z.m();
-      if ($$3 > 0) {
-         int $$4 = 8453920;
-         wp $$5;
-         if ($$3 >= 40 && !this.m.t.gj().d) {
-            $$5 = K;
-            $$4 = 16736352;
-         } else if (!this.z.b(2).h()) {
-            $$5 = null;
-         } else {
-            $$5 = wp.a("container.repair.cost", $$3);
-            if (!this.z.b(2).a(this.M)) {
-               $$4 = 16736352;
-            }
-         }
-
-         if ($$5 != null) {
-            int $$8 = this.s - 8 - this.p.a($$5) - 2;
-            int $$9 = 69;
-            $$0.a($$8 - 2, 67, this.s - 8, 79, 1325400064);
-            $$0.b(this.p, $$5, $$8, 69, $$4);
-         }
-      }
-   }
-
-   @Override
-   protected void a(fof $$0, float $$1, int $$2, int $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(gmj::H, this.z.b(0).h() ? G : H, this.C + 59, this.D + 20, 110, 16);
-   }
-
-   @Override
-   public void d(fof $$0, int $$1, int $$2, float $$3) {
-      this.L.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   protected void c(fof $$0, int $$1, int $$2) {
-      if ((this.z.b(0).h() || this.z.b(1).h()) && !this.z.b(this.z.n()).h()) {
-         $$0.a(gmj::H, I, $$1 + 99, $$2 + 45, 28, 21);
-      }
-   }
-
-   @Override
-   public void a(csd $$0, int $$1, cwq $$2) {
-      if ($$1 == 0) {
-         this.L.a($$2.f() ? "" : $$2.y().getString());
-         this.L.e(!$$2.f());
-         this.a(this.L);
       }
    }
 }

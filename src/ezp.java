@@ -1,11 +1,17 @@
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.function.Function;
 
-public interface ezp {
-   @Nullable
-   un a(evs var1);
+public interface ezp<T extends ezp<T>> {
+   T b(ezx.a var1);
 
-   Set<bai<?>> b();
+   default <E> T a_(Iterable<E> $$0, Function<E, ezx.a> $$1) {
+      T $$2 = this.d();
 
-   ezo a();
+      for (E $$3 : $$0) {
+         $$2 = $$2.b($$1.apply($$3));
+      }
+
+      return $$2;
+   }
+
+   T d();
 }

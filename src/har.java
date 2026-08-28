@@ -1,7 +1,10 @@
-import javax.annotation.Nullable;
+public class har extends haj {
+   public cif.b a;
+   public float b;
+   public gdy.a c;
 
-public class har extends gyl {
-   public float a;
-   @Nullable
-   public dwy b;
+   public har() {
+      this.a = cif.b.a;
+      this.c = gdy.a.a;
+   }
 }

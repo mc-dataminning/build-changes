@@ -1,54 +1,74 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
-import java.util.Locale;
+import javax.annotation.Nullable;
 
-public final class dzs {
-   private final ImmutableList<dzu> a;
-   private final int[] b;
+public class dzs extends dzw {
+   private final jr<dic> n;
 
-   public dzs(ImmutableList<dzu> $$0) {
-      this.a = $$0;
-      int $$1 = $$0.isEmpty() ? 0 : ((dzu)$$0.getFirst()).b() + 1;
-      this.b = new int[$$1];
-
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         dzu $$3 = (dzu)$$0.get($$2);
-         int $$4 = $$3.b();
-
-         for (int $$5 = 0; $$5 <= $$4; $$5++) {
-            this.b[$$5] = $$2;
-         }
-      }
-   }
-
-   @VisibleForTesting
-   public ImmutableList<dzu> a() {
-      return this.a;
-   }
-
-   public int b() {
-      return this.a.size();
-   }
-
-   public int a(dzu $$0) {
-      int $$1 = $$0.b();
-      if ($$1 >= this.b.length) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "Requesting a ChunkStatus(%s) outside of dependency range(%s)", $$0, this.a));
-      } else {
-         return this.b[$$1];
-      }
-   }
-
-   public int c() {
-      return Math.max(0, this.a.size() - 1);
-   }
-
-   public dzu a(int $$0) {
-      return (dzu)this.a.get($$0);
+   public dzs(dgz $$0, dgg $$1, jr<dic> $$2) {
+      super($$0, $$1);
+      this.n = $$2;
    }
 
    @Override
-   public String toString() {
-      return this.a.toString();
+   public dxq a_(ji $$0) {
+      return dkg.nD.m();
+   }
+
+   @Nullable
+   @Override
+   public dxq a(ji $$0, dxq $$1, int $$2) {
+      return null;
+   }
+
+   @Override
+   public etw b_(ji $$0) {
+      return etx.a.g();
+   }
+
+   @Override
+   public int i(ji $$0) {
+      return 0;
+   }
+
+   @Nullable
+   @Override
+   public dus a(ji $$0, dzw.b $$1) {
+      return null;
+   }
+
+   @Override
+   public void b(dus $$0) {
+   }
+
+   @Override
+   public void a(dus $$0) {
+   }
+
+   @Override
+   public void d(ji $$0) {
+   }
+
+   @Override
+   public boolean E() {
+      return true;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return true;
+   }
+
+   @Override
+   public boolean c(int $$0) {
+      return true;
+   }
+
+   @Override
+   public aqr F() {
+      return aqr.b;
+   }
+
+   @Override
+   public jr<dic> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.n;
    }
 }

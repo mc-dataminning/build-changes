@@ -13,7 +13,7 @@ public class azi {
    private final Predicate<String> c;
    private final Optional<Pattern> d;
    private final Predicate<String> e;
-   private final Predicate<akv> f;
+   private final Predicate<aku> f;
 
    private azi(Optional<Pattern> $$0, Optional<Pattern> $$1) {
       this.b = $$0;
@@ -31,7 +31,7 @@ public class azi {
       return this.e;
    }
 
-   public Predicate<akv> c() {
+   public Predicate<aku> c() {
       return this.f;
    }
 }

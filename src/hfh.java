@@ -1,21 +1,61 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public class hfh implements hey {
-   public static final MapCodec<hfh> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(azi.a.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, hfh::new));
-   private final azi c;
+public class hfh implements AutoCloseable {
+   private static final int e = 16;
+   public static final int a = 0;
+   public static final int b = 3;
+   public static final int c = 10;
+   public static final int d = a(0, 10);
+   private final hfe f = new hfe(16, 16, false);
 
-   public hfh(azi $$0) {
-      this.c = $$0;
+   public hfh() {
+      ffr $$0 = this.f.e();
+
+      for (int $$1 = 0; $$1 < 16; $$1++) {
+         for (int $$2 = 0; $$2 < 16; $$2++) {
+            if ($$1 < 8) {
+               $$0.a($$2, $$1, -1291911168);
+            } else {
+               int $$3 = (int)((1.0F - (float)$$2 / 15.0F * 0.75F) * 255.0F);
+               $$0.a($$2, $$1, axk.c($$3, -1));
+            }
+         }
+      }
+
+      RenderSystem.activeTexture(33985);
+      this.f.c();
+      this.f.a(false, false);
+      this.f.a(true);
+      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), false);
+      RenderSystem.activeTexture(33984);
    }
 
    @Override
-   public void a(aup $$0, hey.a $$1) {
-      $$1.a(this.c.c());
+   public void close() {
+      this.f.close();
    }
 
-   @Override
-   public hfa a() {
-      return hfb.c;
+   public void a() {
+      RenderSystem.setupOverlayColor(this.f.a(), 16);
+   }
+
+   public static int a(float $$0) {
+      return (int)($$0 * 15.0F);
+   }
+
+   public static int a(boolean $$0) {
+      return $$0 ? 3 : 10;
+   }
+
+   public static int a(int $$0, int $$1) {
+      return $$0 | $$1 << 16;
+   }
+
+   public static int a(float $$0, boolean $$1) {
+      return a(a($$0), a($$1));
+   }
+
+   public void b() {
+      RenderSystem.teardownOverlayColor();
    }
 }

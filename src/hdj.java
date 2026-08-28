@@ -1,51 +1,25 @@
-import com.google.common.collect.HashMultiset;
-import com.google.common.collect.Multiset;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public interface hdj<T> {
-   @Nullable
-   T b(cwq var1, @Nullable gga var2, @Nullable bvi var3, int var4, cwo var5);
+public class hdj implements hds {
+   public static final MapCodec<hdj> a = hdk.a.xmap(hdj::new, $$0 -> $$0.b);
+   private final hdk b;
 
-   hdj.a<? extends hdj<T>, T> a();
+   public hdj(boolean $$0, hdk.a $$1) {
+      this(new hdk($$0, $$1));
+   }
 
-   public static record a<P extends hdj<T>, T>(MapCodec<hbs.c<P, T>> a) {
-      public static <P extends hdj<T>, T> hdj.a<P, T> a(MapCodec<P> $$0, Codec<T> $$1) {
-         Codec<List<hbs.a<T>>> $$2 = hbs.a.a($$1)
-            .listOf()
-            .validate(
-               $$0x -> {
-                  if ($$0x.isEmpty()) {
-                     return DataResult.error(() -> "Empty case list");
-                  } else {
-                     Multiset<T> $$1x = HashMultiset.create();
+   private hdj(hdk $$0) {
+      this.b = $$0;
+   }
 
-                     for (hbs.a<T> $$2x : $$0x) {
-                        $$1x.addAll($$2x.a());
-                     }
+   @Override
+   public float a(cxh $$0, @Nullable ggy $$1, @Nullable bvy $$2, int $$3) {
+      return this.b.a($$0, $$1, $$2, $$3);
+   }
 
-                     return $$1x.size() != $$1x.entrySet().size()
-                        ? DataResult.error(
-                           () -> "Duplicate case conditions: "
-                                 + $$1x.entrySet()
-                                    .stream()
-                                    .filter($$0xxx -> $$0xxx.getCount() > 1)
-                                    .map($$0xxx -> $$0xxx.getElement().toString())
-                                    .collect(Collectors.joining(", "))
-                        )
-                        : DataResult.success($$0x);
-                  }
-               }
-            );
-         MapCodec<hbs.c<P, T>> $$3 = RecordCodecBuilder.mapCodec(
-            $$2x -> $$2x.group($$0.forGetter(hbs.c::a), $$2.fieldOf("cases").forGetter(hbs.c::b)).apply($$2x, hbs.c::new)
-         );
-         return new hdj.a<>($$3);
-      }
+   @Override
+   public MapCodec<hdj> a() {
+      return a;
    }
 }

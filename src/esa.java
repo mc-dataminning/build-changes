@@ -1,159 +1,51 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Locale;
-import java.util.stream.IntStream;
+import javax.annotation.Nullable;
 
-public class esa implements ecm.d {
-   private static final Codec<Double> e = Codec.doubleRange(0.001, 1000.0);
-   private static final MapCodec<esa> f = RecordCodecBuilder.mapCodec(
+public class esa {
+   public static final ess a = ess.a;
+   public static final Codec<esa> b = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               e.fieldOf("xz_scale").forGetter($$0x -> $$0x.p),
-               e.fieldOf("y_scale").forGetter($$0x -> $$0x.q),
-               e.fieldOf("xz_factor").forGetter($$0x -> $$0x.l),
-               e.fieldOf("y_factor").forGetter($$0x -> $$0x.m),
-               Codec.doubleRange(1.0, 8.0).fieldOf("smear_scale_multiplier").forGetter($$0x -> $$0x.n)
+               esf.c.fieldOf("input_predicate").forGetter($$0x -> $$0x.c),
+               esf.c.fieldOf("location_predicate").forGetter($$0x -> $$0x.d),
+               ery.c.lenientOptionalFieldOf("position_predicate", erx.b).forGetter($$0x -> $$0x.e),
+               dxq.a.fieldOf("output_state").forGetter($$0x -> $$0x.f),
+               est.c.lenientOptionalFieldOf("block_entity_modifier", a).forGetter($$0x -> $$0x.g)
             )
-            .apply($$0, esa::a)
+            .apply($$0, esa::new)
    );
-   public static final ays<esa> a = ays.a(f);
-   private final ese g;
-   private final ese h;
-   private final ese i;
-   private final double j;
-   private final double k;
-   private final double l;
-   private final double m;
-   private final double n;
-   private final double o;
-   private final double p;
-   private final double q;
+   private final esf c;
+   private final esf d;
+   private final ery e;
+   private final dxq f;
+   private final est g;
 
-   public static esa a(double $$0, double $$1, double $$2, double $$3, double $$4) {
-      return new esa(new edu(0L), $$0, $$1, $$2, $$3, $$4);
+   public esa(esf $$0, esf $$1, dxq $$2) {
+      this($$0, $$1, erx.b, $$2);
    }
 
-   private esa(ese $$0, ese $$1, ese $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.p = $$3;
-      this.q = $$4;
-      this.l = $$5;
-      this.m = $$6;
-      this.n = $$7;
-      this.j = 684.412 * this.p;
-      this.k = 684.412 * this.q;
-      this.o = $$0.a(this.k);
+   public esa(esf $$0, esf $$1, ery $$2, dxq $$3) {
+      this($$0, $$1, $$2, $$3, a);
    }
 
-   @VisibleForTesting
-   public esa(azh $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      this(
-         ese.a($$0, IntStream.rangeClosed(-15, 0)),
-         ese.a($$0, IntStream.rangeClosed(-15, 0)),
-         ese.a($$0, IntStream.rangeClosed(-7, 0)),
-         $$1,
-         $$2,
-         $$3,
-         $$4,
-         $$5
-      );
+   public esa(esf $$0, esf $$1, ery $$2, dxq $$3, est $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
-   public esa a(azh $$0) {
-      return new esa($$0, this.p, this.q, this.l, this.m, this.n);
+   public boolean a(dxq $$0, dxq $$1, ji $$2, ji $$3, ji $$4, azh $$5) {
+      return this.c.a($$0, $$5) && this.d.a($$1, $$5) && this.e.a($$2, $$3, $$4, $$5);
    }
 
-   @Override
-   public double a(ecm.b $$0) {
-      double $$1 = (double)$$0.a() * this.j;
-      double $$2 = (double)$$0.b() * this.k;
-      double $$3 = (double)$$0.c() * this.j;
-      double $$4 = $$1 / this.l;
-      double $$5 = $$2 / this.m;
-      double $$6 = $$3 / this.l;
-      double $$7 = this.k * this.n;
-      double $$8 = $$7 / this.m;
-      double $$9 = 0.0;
-      double $$10 = 0.0;
-      double $$11 = 0.0;
-      boolean $$12 = true;
-      double $$13 = 1.0;
-
-      for (int $$14 = 0; $$14 < 8; $$14++) {
-         esb $$15 = this.i.a($$14);
-         if ($$15 != null) {
-            $$11 += $$15.a(ese.b($$4 * $$13), ese.b($$5 * $$13), ese.b($$6 * $$13), $$8 * $$13, $$5 * $$13) / $$13;
-         }
-
-         $$13 /= 2.0;
-      }
-
-      double $$16 = ($$11 / 10.0 + 1.0) / 2.0;
-      boolean $$17 = $$16 >= 1.0;
-      boolean $$18 = $$16 <= 0.0;
-      $$13 = 1.0;
-
-      for (int $$19 = 0; $$19 < 16; $$19++) {
-         double $$20 = ese.b($$1 * $$13);
-         double $$21 = ese.b($$2 * $$13);
-         double $$22 = ese.b($$3 * $$13);
-         double $$23 = $$7 * $$13;
-         if (!$$17) {
-            esb $$24 = this.g.a($$19);
-            if ($$24 != null) {
-               $$9 += $$24.a($$20, $$21, $$22, $$23, $$2 * $$13) / $$13;
-            }
-         }
-
-         if (!$$18) {
-            esb $$25 = this.h.a($$19);
-            if ($$25 != null) {
-               $$10 += $$25.a($$20, $$21, $$22, $$23, $$2 * $$13) / $$13;
-            }
-         }
-
-         $$13 /= 2.0;
-      }
-
-      return ayz.b($$9 / 512.0, $$10 / 512.0, $$16) / 128.0;
+   public dxq a() {
+      return this.f;
    }
 
-   @Override
-   public double a() {
-      return -this.b();
-   }
-
-   @Override
-   public double b() {
-      return this.o;
-   }
-
-   @VisibleForTesting
-   public void a(StringBuilder $$0) {
-      $$0.append("BlendedNoise{minLimitNoise=");
-      this.g.a($$0);
-      $$0.append(", maxLimitNoise=");
-      this.h.a($$0);
-      $$0.append(", mainNoise=");
-      this.i.a($$0);
-      $$0.append(
-            String.format(
-               Locale.ROOT,
-               ", xzScale=%.3f, yScale=%.3f, xzMainScale=%.3f, yMainScale=%.3f, cellWidth=4, cellHeight=8",
-               684.412,
-               684.412,
-               8.555150000000001,
-               4.277575000000001
-            )
-         )
-         .append('}');
-   }
-
-   @Override
-   public ays<? extends ecm> c() {
-      return a;
+   @Nullable
+   public tq a(azh $$0, @Nullable tq $$1) {
+      return this.g.a($$0, $$1);
    }
 }

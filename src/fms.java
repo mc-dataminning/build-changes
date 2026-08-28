@@ -1,42 +1,77 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntList;
+import com.mojang.util.UndashedUuid;
+import java.util.Arrays;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public record fms(int b) implements fmu {
-   public static final MapCodec<fms> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayi.i.fieldOf("default").forGetter(fms::b)).apply($$0, fms::new));
+public class fms {
+   private final String a;
+   private final UUID b;
+   private final String c;
+   private final Optional<String> d;
+   private final Optional<String> e;
+   private final fms.a f;
 
-   public fms() {
-      this(-7697782);
+   public fms(String $$0, UUID $$1, String $$2, Optional<String> $$3, Optional<String> $$4, fms.a $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   @Override
-   public int a(cwq $$0, @Nullable gga $$1, @Nullable bvi $$2) {
-      czf $$3 = $$0.a(kv.ae);
-      IntList $$4 = $$3 != null ? $$3.b() : IntList.of();
-      int $$5 = $$4.size();
-      if ($$5 == 0) {
-         return this.b;
-      } else if ($$5 == 1) {
-         return axk.f($$4.getInt(0));
-      } else {
-         int $$6 = 0;
-         int $$7 = 0;
-         int $$8 = 0;
+   public String a() {
+      return "token:" + this.c + ":" + UndashedUuid.toString(this.b);
+   }
 
-         for (int $$9 = 0; $$9 < $$5; $$9++) {
-            int $$10 = $$4.getInt($$9);
-            $$6 += axk.b($$10);
-            $$7 += axk.c($$10);
-            $$8 += axk.d($$10);
-         }
+   public UUID b() {
+      return this.b;
+   }
 
-         return axk.a($$6 / $$5, $$7 / $$5, $$8 / $$5);
+   public String c() {
+      return this.a;
+   }
+
+   public String d() {
+      return this.c;
+   }
+
+   public Optional<String> e() {
+      return this.e;
+   }
+
+   public Optional<String> f() {
+      return this.d;
+   }
+
+   public fms.a g() {
+      return this.f;
+   }
+
+   public static enum a {
+      a("legacy"),
+      b("mojang"),
+      c("msa");
+
+      private static final Map<String, fms.a> d = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, Function.identity()));
+      private final String e;
+
+      private a(final String $$0) {
+         this.e = $$0;
       }
-   }
 
-   @Override
-   public MapCodec<fms> a() {
-      return a;
+      @Nullable
+      public static fms.a a(String $$0) {
+         return d.get($$0.toLowerCase(Locale.ROOT));
+      }
+
+      public String a() {
+         return this.e;
+      }
    }
 }

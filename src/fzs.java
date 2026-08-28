@@ -1,32 +1,41 @@
-import java.util.Map;
-import java.util.Optional;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public interface fzs {
-   Map<Optional<aku<enc>>, fzs> a = Map.of(Optional.of(end.b), ($$0, $$1) -> {
-      dyu $$2 = $$1.e().a();
-      kf $$3 = $$1.a();
-      js<dhl> $$4 = $$3.e(mc.aI);
-      js<ent> $$5 = $$3.e(mc.aW);
-      js<emr> $$6 = $$3.e(mc.aT);
-      return new ftn($$0, $$1x -> $$0.m().a(a($$1x)), $$2 instanceof eco ? ((eco)$$2).h() : elq.a($$4, $$5, $$6));
-   }, Optional.of(end.e), ($$0, $$1) -> new ftm($$0, $$1, $$1x -> $$0.m().a(a($$1x))));
+public class fzs extends fzo<gic.a> {
+   private static final wp C = wp.c("gui.abuseReport.name.title");
+   private static final wp D = wp.c("gui.abuseReport.name.comment_box_label");
+   @Nullable
+   private fqi E;
 
-   fum createEditScreen(fzl var1, fzv var2);
-
-   static fzv.a a(elq $$0) {
-      return ($$1, $$2) -> {
-         dyu $$3 = new eco($$0);
-         return $$2.a($$1, $$3);
-      };
+   private fzs(fvi $$0, gih $$1, gic.a $$2) {
+      super(C, $$0, $$1, $$2);
    }
 
-   private static fzv.a a(jr<dhl> $$0) {
-      return ($$1, $$2) -> {
-         ke<ecy> $$3 = $$1.e(mc.aR);
-         jr<ecy> $$4 = $$3.b(ecy.c);
-         dhp $$5 = new dhw($$0);
-         dyu $$6 = new ecw($$5, $$4);
-         return $$2.a($$1, $$6);
-      };
+   public fzs(fvi $$0, gih $$1, UUID $$2, String $$3) {
+      this($$0, $$1, new gic.a($$2, $$3, $$1.a().b()));
+   }
+
+   public fzs(fvi $$0, gih $$1, gic $$2) {
+      this($$0, $$1, new gic.a($$2, $$1.a().b()));
+   }
+
+   @Override
+   protected void E() {
+      wp $$0 = wp.b(this.A.e().a()).a(n.o);
+      this.z.a(new fqx(wp.a("gui.abuseReport.name.reporting", $$0), this.p), $$0x -> $$0x.b().a(0, 8));
+      this.E = this.a(280, 9 * 8, $$0x -> {
+         this.A.a($$0x);
+         this.G();
+      });
+      this.z.a(fta.a(this.p, this.E, D, $$0x -> $$0x.e(12)));
+   }
+
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      if (super.b($$0, $$1, $$2)) {
+         return true;
+      } else {
+         return this.E != null ? this.E.b($$0, $$1, $$2) : false;
+      }
    }
 }

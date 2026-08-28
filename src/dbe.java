@@ -1,72 +1,28 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
-public class dbe {
-   public static final int a = -1;
-   public static final dbe b = new dbe(List.of(), IntList.of());
-   private final List<dbb> c;
-   private final IntList d;
-
-   private dbe(List<dbb> $$0, IntList $$1) {
-      this.c = $$0;
-      this.d = $$1;
+public class dbe extends dbb {
+   public dbe(String $$0, dbh $$1, dbr $$2, cxh $$3, float $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public static dbe a(dbb $$0) {
-      return $$0.b() ? b : new dbe(List.of($$0), IntList.of(0));
+   @Override
+   protected cxd f() {
+      return cxl.xo;
    }
 
-   public static dbe a(List<Optional<dbb>> $$0) {
-      int $$1 = $$0.size();
-      List<dbb> $$2 = new ArrayList<>($$1);
-      IntList $$3 = new IntArrayList($$1);
-      int $$4 = 0;
-
-      for (Optional<dbb> $$5 : $$0) {
-         if ($$5.isPresent()) {
-            dbb $$6 = $$5.get();
-            if ($$6.b()) {
-               return b;
-            }
-
-            $$2.add($$6);
-            $$3.add($$4++);
-         } else {
-            $$3.add(-1);
-         }
-      }
-
-      return new dbe($$2, $$3);
+   @Override
+   public dcf<dbe> a() {
+      return dcf.p;
    }
 
-   public static dbe b(List<dbb> $$0) {
-      int $$1 = $$0.size();
-      IntList $$2 = new IntArrayList($$1);
-
-      for (int $$3 = 0; $$3 < $$1; $$3++) {
-         dbb $$4 = $$0.get($$3);
-         if ($$4.b()) {
-            return b;
-         }
-
-         $$2.add($$3);
-      }
-
-      return new dbe($$0, $$2);
+   @Override
+   public dcg<dbe> b() {
+      return dcg.c;
    }
 
-   public IntList a() {
-      return this.d;
-   }
-
-   public List<dbb> b() {
-      return this.c;
-   }
-
-   public boolean c() {
-      return this.d.isEmpty();
+   @Override
+   public dby h() {
+      return switch (this.e()) {
+         case b -> dbx.h;
+         case a, c -> dbx.i;
+      };
    }
 }

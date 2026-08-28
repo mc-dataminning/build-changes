@@ -18,6 +18,6 @@ public abstract class ug implements un {
 
    @Override
    public String toString() {
-      return this.u_();
+      return this.p_();
    }
 }

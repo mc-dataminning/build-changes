@@ -1,49 +1,56 @@
-import java.net.SocketAddress;
-import jdk.jfr.Category;
-import jdk.jfr.DataAmount;
-import jdk.jfr.Enabled;
-import jdk.jfr.Event;
-import jdk.jfr.Label;
-import jdk.jfr.Name;
-import jdk.jfr.StackTrace;
+import com.mojang.jtracy.TracyClient;
+import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 
-@Category({"Minecraft", "Network"})
-@StackTrace(false)
-@Enabled(false)
-public abstract class bpi extends Event {
-   @Name("protocolId")
-   @Label("Protocol Id")
-   public final String protocolId;
-   @Name("packetDirection")
-   @Label("Packet Direction")
-   public final String packetDirection;
-   @Name("packetId")
-   @Label("Packet Id")
-   public final String packetId;
-   @Name("remoteAddress")
-   @Label("Remote Address")
-   public final String remoteAddress;
-   @Name("bytes")
-   @Label("Bytes")
-   @DataAmount
-   public final int bytes;
+public final class bpi {
+   private static final ThreadLocal<bpn> a = ThreadLocal.withInitial(bpn::new);
+   private static final ThreadLocal<bpj> b = new ThreadLocal<>();
+   private static final AtomicInteger c = new AtomicInteger();
 
-   public bpi(String $$0, String $$1, String $$2, SocketAddress $$3, int $$4) {
-      this.protocolId = $$0;
-      this.packetDirection = $$1;
-      this.packetId = $$2;
-      this.remoteAddress = $$3.toString();
-      this.bytes = $$4;
+   private bpi() {
    }
 
-   public static final class a {
-      public static final String a = "remoteAddress";
-      public static final String b = "protocolId";
-      public static final String c = "packetDirection";
-      public static final String d = "packetId";
-      public static final String e = "bytes";
+   public static bpi.a a(bpj $$0) {
+      b($$0);
+      return bpi::b;
+   }
 
-      private a() {
+   private static void b(bpj $$0) {
+      if (b.get() != null) {
+         throw new IllegalStateException("Profiler is already active");
+      } else {
+         bpj $$1 = c($$0);
+         b.set($$1);
+         c.incrementAndGet();
+         $$1.a();
       }
+   }
+
+   private static void b() {
+      bpj $$0 = b.get();
+      if ($$0 == null) {
+         throw new IllegalStateException("Profiler was not active");
+      } else {
+         b.remove();
+         c.decrementAndGet();
+         $$0.b();
+      }
+   }
+
+   private static bpj c(bpj $$0) {
+      return bpj.a(c(), $$0);
+   }
+
+   public static bpj a() {
+      return c.get() == 0 ? c() : Objects.requireNonNullElseGet(b.get(), bpi::c);
+   }
+
+   private static bpj c() {
+      return (bpj)(TracyClient.isAvailable() ? a.get() : bpf.a);
+   }
+
+   public interface a extends AutoCloseable {
+      @Override
+      void close();
    }
 }

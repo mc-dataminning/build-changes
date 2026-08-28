@@ -1,33 +1,59 @@
 import com.mojang.serialization.Codec;
 
-public class efx extends efz<eik> {
-   public efx(Codec<eik> $$0) {
+public class efx extends egu<eji> {
+   private static final dxq a = dkg.nB.m().b(dji.b, Integer.valueOf(1)).b(dji.c, dyc.a).b(dji.d, Integer.valueOf(0));
+   private static final dxq b = a.b(dji.c, dyc.c).b(dji.d, Integer.valueOf(1));
+   private static final dxq c = a.b(dji.c, dyc.c);
+   private static final dxq d = a.b(dji.c, dyc.b);
+
+   public efx(Codec<eji> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egb<eik> $$0) {
-      a($$0.b(), $$0.e(), false);
-      return true;
-   }
+   public boolean a(egw<eji> $$0) {
+      int $$1 = 0;
+      ji $$2 = $$0.e();
+      dhy $$3 = $$0.b();
+      azh $$4 = $$0.d();
+      eji $$5 = $$0.f();
+      ji.a $$6 = $$2.k();
+      ji.a $$7 = $$2.k();
+      if ($$3.u($$6)) {
+         if (dkg.nB.m().a($$3, $$6)) {
+            int $$8 = $$4.a(12) + 5;
+            if ($$4.i() < $$5.l) {
+               int $$9 = $$4.a(4) + 1;
 
-   public static void a(dha $$0, ji $$1, boolean $$2) {
-      ji.a $$3 = $$1.k();
-
-      for (int $$4 = -2; $$4 <= 2; $$4++) {
-         for (int $$5 = -2; $$5 <= 2; $$5++) {
-            for (int $$6 = -1; $$6 < 3; $$6++) {
-               ji $$7 = $$3.g($$1).e($$5, $$6, $$4);
-               djn $$8 = $$6 == -1 ? djp.cv : djp.a;
-               if (!$$0.a_($$7).a($$8)) {
-                  if ($$2) {
-                     $$0.a($$7, true, null);
+               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
+                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
+                     int $$12 = $$10 - $$2.u();
+                     int $$13 = $$11 - $$2.w();
+                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+                        $$7.d($$10, $$3.a(edo.a.b, $$10, $$11) - 1, $$11);
+                        if (b($$3.a_($$7))) {
+                           $$3.a($$7, dkg.l.m(), 2);
+                        }
+                     }
                   }
-
-                  $$0.a($$7, $$8.m(), 3);
                }
             }
+
+            for (int $$14 = 0; $$14 < $$8 && $$3.u($$6); $$14++) {
+               $$3.a($$6, a, 2);
+               $$6.c(jn.b, 1);
+            }
+
+            if ($$6.v() - $$2.v() >= 3) {
+               $$3.a($$6, b, 2);
+               $$3.a($$6.c(jn.a, 1), c, 2);
+               $$3.a($$6.c(jn.a, 1), d, 2);
+            }
          }
+
+         $$1++;
       }
+
+      return $$1 > 0;
    }
 }

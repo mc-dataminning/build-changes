@@ -24,7 +24,7 @@ public class aui implements auf {
       for (atc $$4 : $$1) {
          auo $$5 = this.a($$4);
          Set<String> $$6 = $$4.a($$0);
-         Predicate<akv> $$7 = $$5 != null ? $$1x -> $$5.b($$1x.a()) : null;
+         Predicate<aku> $$7 = $$5 != null ? $$1x -> $$5.b($$1x.a()) : null;
 
          for (String $$8 : $$3) {
             boolean $$9 = $$6.contains($$8);
@@ -66,21 +66,21 @@ public class aui implements auf {
    }
 
    @Override
-   public Optional<aun> getResource(akv $$0) {
+   public Optional<aun> getResource(aku $$0) {
       aup $$1 = this.c.get($$0.b());
       return $$1 != null ? $$1.getResource($$0) : Optional.empty();
    }
 
    @Override
-   public List<aun> a(akv $$0) {
+   public List<aun> a(aku $$0) {
       aup $$1 = this.c.get($$0.b());
       return $$1 != null ? $$1.a($$0) : List.of();
    }
 
    @Override
-   public Map<akv, aun> b(String $$0, Predicate<akv> $$1) {
+   public Map<aku, aun> b(String $$0, Predicate<aku> $$1) {
       a($$0);
-      Map<akv, aun> $$2 = new TreeMap<>();
+      Map<aku, aun> $$2 = new TreeMap<>();
 
       for (aug $$3 : this.c.values()) {
          $$2.putAll($$3.b($$0, $$1));
@@ -90,9 +90,9 @@ public class aui implements auf {
    }
 
    @Override
-   public Map<akv, List<aun>> c(String $$0, Predicate<akv> $$1) {
+   public Map<aku, List<aun>> c(String $$0, Predicate<aku> $$1) {
       a($$0);
-      Map<akv, List<aun>> $$2 = new TreeMap<>();
+      Map<aku, List<aun>> $$2 = new TreeMap<>();
 
       for (aug $$3 : this.c.values()) {
          $$2.putAll($$3.c($$0, $$1));

@@ -1,21 +1,44 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class byw {
-   public static bxc<bvi> a() {
-      return cao.a((Function<cao.b<bvi>, ? extends App<cao.c<bvi>, car<bvi>>>)($$0 -> $$0.a((car<bvi>)(($$0x, $$1, $$2) -> {
-            if ($$0x.A.a(20) != 0) {
-               return false;
-            } else {
-               bwk<?> $$3 = $$1.eb();
-               cql $$4 = $$0x.d($$1.dv());
-               if ($$4 == null || $$4.d() || $$4.f()) {
-                  $$3.b(cqp.b);
-                  $$3.a($$0x.ae(), $$0x.ad());
-               }
+public class byw extends bxr<cpd> {
+   private final float c;
 
-               return true;
-            }
-         }))));
+   public byw(float $$0) {
+      super(ImmutableMap.of(cfc.m, cfd.c, cfc.n, cfd.c), Integer.MAX_VALUE);
+      this.c = $$0;
+   }
+
+   protected boolean a(ard $$0, cpd $$1) {
+      cpr $$2 = $$1.x();
+      return $$1.bJ() && $$2 != null && !$$1.bj() && !$$1.T && $$1.g($$2) <= 16.0 && $$2.bQ != null;
+   }
+
+   protected boolean a(ard $$0, cpd $$1, long $$2) {
+      return this.a($$0, $$1);
+   }
+
+   protected void b(ard $$0, cpd $$1, long $$2) {
+      this.a($$1);
+   }
+
+   protected void c(ard $$0, cpd $$1, long $$2) {
+      bxa<?> $$3 = $$1.ea();
+      $$3.b(cfc.m);
+      $$3.b(cfc.n);
+   }
+
+   protected void d(ard $$0, cpd $$1, long $$2) {
+      this.a($$1);
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   private void a(cpd $$0) {
+      bxa<?> $$1 = $$0.ea();
+      $$1.a(cfc.m, new cff(new byc($$0.x(), false), this.c, 2));
+      $$1.a(cfc.n, new byc($$0.x(), true));
    }
 }

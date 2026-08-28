@@ -3,50 +3,51 @@ import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class brw extends brq {
+public class brw extends bsd {
    public static final MapCodec<brw> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
+         $$0 -> $$0.group(
+                  bsd.c.fieldOf("source").forGetter($$0x -> $$0x.b),
+                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.f),
+                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.g)
+               )
                .apply($$0, brw::new)
       )
       .validate(
-         $$0 -> $$0.f < $$0.b
-               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
+         $$0 -> $$0.g < $$0.f
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.f + ", max_inclusive: " + $$0.g)
                : DataResult.success($$0)
       );
-   private final int b;
+   private final bsd b;
    private final int f;
+   private final int g;
 
-   private brw(int $$0, int $$1) {
-      this.b = $$0;
-      this.f = $$1;
+   public static brw a(bsd $$0, int $$1, int $$2) {
+      return new brw($$0, $$1, $$2);
    }
 
-   public static brw a(int $$0, int $$1) {
-      return new brw($$0, $$1);
+   public brw(bsd $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
    @Override
    public int a(azh $$0) {
-      return ayz.b($$0, this.b, this.f);
+      return ayz.a(this.b.a($$0), this.f, this.g);
    }
 
    @Override
    public int a() {
-      return this.b;
+      return Math.max(this.f, this.b.a());
    }
 
    @Override
    public int b() {
-      return this.f;
+      return Math.min(this.g, this.b.b());
    }
 
    @Override
-   public brr<?> c() {
-      return brr.b;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.b + "-" + this.f + "]";
+   public bse<?> c() {
+      return bse.d;
    }
 }

@@ -1,3 +1,8 @@
 public interface hia {
-   void a();
+   hhr a(aku var1, hih var2);
+
+   hil a();
+
+   @bag
+   hic b();
 }

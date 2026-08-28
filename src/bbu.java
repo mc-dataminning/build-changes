@@ -1,14 +1,19 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
 
-public class bbu extends bgt {
+public class bbu extends bgy {
    public bbu(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityShulkerBoxColorFix", bhy.s, "minecraft:shulker_box");
+      super($$0, $$1, "BlockEntityKeepPacked", bic.s, "DUMMY");
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.set("keepPacked", $$0.createBoolean(true));
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), $$0x -> $$0x.remove("Color"));
+      return $$0.update(DSL.remainderFinder(), bbu::a);
    }
 }

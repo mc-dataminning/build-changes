@@ -1,59 +1,24 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class efc extends efz<ein> {
-   private static final dwy a = djp.nB.m().b(dir.h, Integer.valueOf(1)).b(dir.i, dxk.a).b(dir.j, Integer.valueOf(0));
-   private static final dwy b = a.b(dir.i, dxk.c).b(dir.j, Integer.valueOf(1));
-   private static final dwy c = a.b(dir.i, dxk.c);
-   private static final dwy d = a.b(dir.i, dxk.b);
+class efc extends efg {
+   private final jv<etv> e;
+   public static final MapCodec<efc> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(kg.a(mc.D).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, efc::new)
+   );
 
-   public efc(Codec<ein> $$0) {
+   public efc(km $$0, jv<etv> $$1) {
       super($$0);
+      this.e = $$1;
    }
 
    @Override
-   public boolean a(egb<ein> $$0) {
-      int $$1 = 0;
-      ji $$2 = $$0.e();
-      dhh $$3 = $$0.b();
-      azh $$4 = $$0.d();
-      ein $$5 = $$0.f();
-      ji.a $$6 = $$2.k();
-      ji.a $$7 = $$2.k();
-      if ($$3.u($$6)) {
-         if (djp.nB.m().a($$3, $$6)) {
-            int $$8 = $$4.a(12) + 5;
-            if ($$4.i() < $$5.l) {
-               int $$9 = $$4.a(4) + 1;
+   protected boolean a(dxq $$0) {
+      return $$0.y().a(this.e);
+   }
 
-               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
-                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
-                     int $$12 = $$10 - $$2.u();
-                     int $$13 = $$11 - $$2.w();
-                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-                        $$7.d($$10, $$3.a(ect.a.b, $$10, $$11) - 1, $$11);
-                        if (b($$3.a_($$7))) {
-                           $$3.a($$7, djp.l.m(), 2);
-                        }
-                     }
-                  }
-               }
-            }
-
-            for (int $$14 = 0; $$14 < $$8 && $$3.u($$6); $$14++) {
-               $$3.a($$6, a, 2);
-               $$6.c(jn.b, 1);
-            }
-
-            if ($$6.v() - $$2.v() >= 3) {
-               $$3.a($$6, b, 2);
-               $$3.a($$6.c(jn.a, 1), c, 2);
-               $$3.a($$6.c(jn.a, 1), d, 2);
-            }
-         }
-
-         $$1++;
-      }
-
-      return $$1 > 0;
+   @Override
+   public eew<?> a() {
+      return eew.c;
    }
 }

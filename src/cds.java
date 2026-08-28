@@ -1,16 +1,47 @@
-import javax.annotation.Nullable;
+public class cds extends ccw {
+   private final cjw a;
+   private int b;
 
-public class cds extends cdt {
-   public cds(bvq $$0, double $$1) {
-      super($$0, $$1);
+   public cds(cjw $$0) {
+      this.a = $$0;
+      this.a($$0);
    }
 
-   @Nullable
    @Override
-   protected fbb h() {
-      fbb $$0 = this.b.g(0.0F);
-      int $$1 = 8;
-      fbb $$2 = cgf.a(this.b, 8, 7, $$0.d, $$0.f, (float) (Math.PI / 2), 3, 1);
-      return $$2 != null ? $$2 : cgb.a(this.b, 8, 4, -2, $$0.d, $$0.f, (float) (Math.PI / 2));
+   public void d() {
+      this.a.gY();
+      this.h();
+   }
+
+   private void h() {
+      avz $$0 = this.a.gX();
+      if ($$0 != null) {
+         this.a.a($$0);
+      }
+   }
+
+   @Override
+   public boolean c() {
+      return false;
+   }
+
+   @Override
+   public boolean b() {
+      this.b++;
+      if (this.b > 0 && this.a.dX().a(1000) < this.b) {
+         this.a(this.a);
+         return !this.a.fi() && this.a.dX().a(10) == 0;
+      } else {
+         return false;
+      }
+   }
+
+   private void a(cjw $$0) {
+      this.b = -$$0.hc();
+   }
+
+   @Override
+   public boolean Q_() {
+      return true;
    }
 }

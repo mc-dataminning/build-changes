@@ -43,7 +43,7 @@ public class ue implements DynamicOps<un> {
          case 5 -> (Object)$$0.createFloat(((ug)$$1).k());
          case 6 -> (Object)$$0.createDouble(((ug)$$1).j());
          case 7 -> (Object)$$0.createByteList(ByteBuffer.wrap(((tn)$$1).e()));
-         case 8 -> (Object)$$0.createString($$1.u_());
+         case 8 -> (Object)$$0.createString($$1.p_());
          case 9 -> (Object)this.convertList($$0, $$1);
          case 10 -> (Object)this.convertMap($$0, $$1);
          case 11 -> (Object)$$0.createIntList(Arrays.stream(((tu)$$1).g()));
@@ -89,7 +89,7 @@ public class ue implements DynamicOps<un> {
    }
 
    public DataResult<String> b(un $$0) {
-      return $$0 instanceof ul $$1 ? DataResult.success($$1.u_()) : DataResult.error(() -> "Not a string");
+      return $$0 instanceof ul $$1 ? DataResult.success($$1.p_()) : DataResult.error(() -> "Not a string");
    }
 
    public un a(String $$0) {
@@ -111,7 +111,7 @@ public class ue implements DynamicOps<un> {
          return DataResult.error(() -> "key is not a string: " + $$1, $$0);
       } else {
          tq $$4 = $$0 instanceof tq $$3 ? $$3.h() : new tq();
-         $$4.a($$1.u_(), $$2);
+         $$4.a($$1.p_(), $$2);
          return DataResult.success($$4);
       }
    }
@@ -127,7 +127,7 @@ public class ue implements DynamicOps<un> {
             if (!($$3x instanceof ul)) {
                $$4.add($$3x);
             } else {
-               $$3.a($$3x.u_(), (un)$$2x.getSecond());
+               $$3.a($$3x.p_(), (un)$$2x.getSecond());
             }
          });
          return !$$4.isEmpty() ? DataResult.error(() -> "some keys are not strings: " + $$4, $$3) : DataResult.success($$3);
@@ -144,7 +144,7 @@ public class ue implements DynamicOps<un> {
          for (Entry<un, un> $$5 : $$1.entrySet()) {
             un $$6 = $$5.getKey();
             if ($$6 instanceof ul) {
-               $$3.a($$6.u_(), $$5.getValue());
+               $$3.a($$6.p_(), $$5.getValue());
             } else {
                $$4.add($$6);
             }
@@ -172,7 +172,7 @@ public class ue implements DynamicOps<un> {
       return $$0 instanceof tq $$1 ? DataResult.success(new MapLike<un>() {
          @Nullable
          public un a(un $$0) {
-            return $$1.c($$0.u_());
+            return $$1.c($$0.p_());
          }
 
          @Nullable
@@ -193,7 +193,7 @@ public class ue implements DynamicOps<un> {
 
    public un a(Stream<Pair<un, un>> $$0) {
       tq $$1 = new tq();
-      $$0.forEach($$1x -> $$1.a(((un)$$1x.getFirst()).u_(), (un)$$1x.getSecond()));
+      $$0.forEach($$1x -> $$1.a(((un)$$1x.getFirst()).p_(), (un)$$1x.getSecond()));
       return $$1;
    }
 

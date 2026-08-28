@@ -1,76 +1,120 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
-import java.util.Objects;
-import java.util.UUID;
+import com.google.common.base.Suppliers;
+import com.mojang.authlib.GameProfile;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class ghk extends ghf {
-   final Supplier<hfv> g;
+public class ghk {
+   private final GameProfile a;
+   private final Supplier<hgt> b;
+   private dgw c = dgw.e;
+   private int d;
+   @Nullable
+   private wp e;
+   private boolean f = true;
+   @Nullable
+   private xg g;
+   private xl h;
+   private int i;
 
-   ghk(UUID $$0, Instant $$1, UUID $$2, Supplier<hfv> $$3) {
-      super($$0, $$1, $$2);
-      this.g = $$3;
+   public ghk(GameProfile $$0, boolean $$1) {
+      this.a = $$0;
+      this.h = c($$1);
+      Supplier<Supplier<hgt>> $$2 = Suppliers.memoize(() -> a($$0));
+      this.b = () -> $$2.get().get();
    }
 
-   public Supplier<hfv> a() {
+   private static Supplier<hgt> a(GameProfile $$0) {
+      fmg $$1 = fmg.Q();
+      hgu $$2 = $$1.an();
+      CompletableFuture<Optional<hgt>> $$3 = $$2.c($$0);
+      boolean $$4 = !$$1.b($$0.getId());
+      hgt $$5 = hgk.a($$0);
+      return () -> {
+         hgt $$3x = $$3.getNow(Optional.empty()).orElse($$5);
+         return $$4 && !$$3x.f() ? $$5 : $$3x;
+      };
+   }
+
+   public GameProfile a() {
+      return this.a;
+   }
+
+   @Nullable
+   public xg b() {
       return this.g;
    }
 
-   public ghk c() {
-      ghk $$0 = new ghk(this.a, this.b, this.c, this.g);
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      return $$0;
+   public xl c() {
+      return this.h;
    }
 
-   @Override
-   public fum a(fum $$0, ghj $$1) {
-      return new fyz($$0, $$1, this);
+   public boolean d() {
+      return this.g != null;
    }
 
-   public static class a extends ghf.a<ghk> {
-      public a(ghk $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
-      }
+   protected void a(xg $$0) {
+      this.g = $$0;
+      this.h = $$0.a(cpu.b);
+   }
 
-      public a(UUID $$0, Supplier<hfv> $$1, AbuseReportLimits $$2) {
-         super(new ghk(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
-      }
+   protected void a(boolean $$0) {
+      this.g = null;
+      this.h = c($$0);
+   }
 
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || this.i() != null;
-      }
+   private static xl c(boolean $$0) {
+      return $$0 ? xl.c : xl.b;
+   }
 
-      @Nullable
-      @Override
-      public ghf.b c() {
-         if (this.a.e == null) {
-            return ghf.b.a;
-         } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? ghf.b.d : super.c();
-         }
-      }
+   public dgw e() {
+      return this.c;
+   }
 
-      @Override
-      public Either<ghf.c, ghf.b> a(ghj $$0) {
-         ghf.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportedEntity $$3 = new ReportedEntity(this.a.c);
-            hfv $$4 = this.a.g.get();
-            String $$5 = $$4.b();
-            AbuseReport $$6 = AbuseReport.skin(this.a.d, $$2, $$5, $$3, this.a.b);
-            return Either.left(new ghf.c(this.a.a, ghi.b, $$6));
-         }
-      }
+   protected void a(dgw $$0) {
+      this.c = $$0;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   protected void a(int $$0) {
+      this.d = $$0;
+   }
+
+   public hgt g() {
+      return this.b.get();
+   }
+
+   @Nullable
+   public fcx h() {
+      return fmg.Q().s.R().e(this.a().getName());
+   }
+
+   public void a(@Nullable wp $$0) {
+      this.e = $$0;
+   }
+
+   @Nullable
+   public wp i() {
+      return this.e;
+   }
+
+   public void b(boolean $$0) {
+      this.f = $$0;
+   }
+
+   public boolean j() {
+      return this.f;
+   }
+
+   public void b(int $$0) {
+      this.i = $$0;
+   }
+
+   public int k() {
+      return this.i;
    }
 }

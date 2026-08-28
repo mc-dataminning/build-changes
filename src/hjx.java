@@ -1,58 +1,54 @@
-import com.google.common.collect.Lists;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Locale;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class hjx implements hjy<hin> {
-   private final List<hjy<hin>> a = Lists.newArrayList();
-   @Nullable
-   private final wp b;
-
-   public hjx(akv $$0, @Nullable String $$1) {
-      this.b = $$1 == null ? null : wp.c($$1);
-   }
-
-   @Override
-   public int e() {
-      int $$0 = 0;
-
-      for (hjy<hin> $$1 : this.a) {
-         $$0 += $$1.e();
-      }
-
-      return $$0;
-   }
-
-   public hin a(azh $$0) {
-      int $$1 = this.e();
-      if (!this.a.isEmpty() && $$1 != 0) {
-         int $$2 = $$0.a($$1);
-
-         for (hjy<hin> $$3 : this.a) {
-            $$2 -= $$3.e();
-            if ($$2 < 0) {
-               return $$3.b($$0);
-            }
+public interface hjx<T> {
+   static <T> hjx<T> a() {
+      return new hjx<T>() {
+         @Override
+         public List<T> a(String $$0) {
+            return List.of();
          }
 
-         return hjw.b;
+         @Override
+         public List<T> b(String $$0) {
+            return List.of();
+         }
+      };
+   }
+
+   static <T> hjx<T> a(List<T> $$0, Function<T, Stream<aku>> $$1) {
+      if ($$0.isEmpty()) {
+         return a();
       } else {
-         return hjw.b;
+         final hjz<T> $$2 = new hjz<>();
+         final hjz<T> $$3 = new hjz<>();
+
+         for (T $$4 : $$0) {
+            $$1.apply($$4).forEach($$3x -> {
+               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
+               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
+            });
+         }
+
+         $$2.a();
+         $$3.a();
+         return new hjx<T>() {
+            @Override
+            public List<T> a(String $$0) {
+               return $$2.a($$0);
+            }
+
+            @Override
+            public List<T> b(String $$0) {
+               return $$3.a($$0);
+            }
+         };
       }
    }
 
-   public void a(hjy<hin> $$0) {
-      this.a.add($$0);
-   }
+   List<T> a(String var1);
 
-   @Nullable
-   public wp a() {
-      return this.b;
-   }
-
-   @Override
-   public void a(hjt $$0) {
-      for (hjy<hin> $$1 : this.a) {
-         $$1.a($$0);
-      }
-   }
+   List<T> b(String var1);
 }

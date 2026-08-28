@@ -1,33 +1,44 @@
-public class gtt extends gtl<cmb, gzu, gdb> {
-   private static final akv a = akv.b("textures/entity/phantom.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gtt(gsf.a $$0) {
-      super($$0, new gdb($$0.a(gfd.bO)), 0.75F);
-      this.a(new gws(this));
+public final class gtt extends grt<cjy, gzz, gdl> {
+   private static final Map<ckf, aku> a = Maps.newEnumMap(
+      Map.of(
+         ckf.a,
+         aku.b("textures/entity/horse/horse_white.png"),
+         ckf.b,
+         aku.b("textures/entity/horse/horse_creamy.png"),
+         ckf.c,
+         aku.b("textures/entity/horse/horse_chestnut.png"),
+         ckf.d,
+         aku.b("textures/entity/horse/horse_brown.png"),
+         ckf.e,
+         aku.b("textures/entity/horse/horse_black.png"),
+         ckf.f,
+         aku.b("textures/entity/horse/horse_gray.png"),
+         ckf.g,
+         aku.b("textures/entity/horse/horse_darkbrown.png")
+      )
+   );
+
+   public gtt(gtd.a $$0) {
+      super($$0, new gdl($$0.a(ggb.bf)), new gdl($$0.a(ggb.bh)));
+      this.a(new gxg(this));
+      this.a(new gxf(this, $$0.f(), $$0.h()));
    }
 
-   public akv a(gzu $$0) {
-      return a;
+   public aku a(gzz $$0) {
+      return a.get($$0.a);
    }
 
-   public gzu b() {
-      return new gzu();
+   public gzz b() {
+      return new gzz();
    }
 
-   public void a(cmb $$0, gzu $$1, float $$2) {
+   public void a(cjy $$0, gzz $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = (float)$$0.p() + $$1.u;
-      $$1.b = $$0.m();
-   }
-
-   protected void a(gzu $$0, ffv $$1) {
-      float $$2 = 1.0F + 0.15F * (float)$$0.b;
-      $$1.b($$2, $$2, $$2);
-      $$1.a(0.0F, 1.3125F, 0.1875F);
-   }
-
-   protected void a(gzu $$0, ffv $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$1.a(a.b.rotationDegrees($$0.ab));
+      $$1.a = $$0.q();
+      $$1.h = $$0.t();
+      $$1.i = $$0.aj().v();
    }
 }

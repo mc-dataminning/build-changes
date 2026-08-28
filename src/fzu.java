@@ -1,178 +1,169 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-class fzu {
-   private static final int a = 44;
-   private final List<fzu.c> b;
-   private final fsj c;
+public class fzu extends fvi {
+   private static final wp a = wp.c("gui.abuseReport.reason.title");
+   private static final wp b = wp.c("gui.abuseReport.reason.description");
+   private static final wp c = wp.c("gui.abuseReport.read_info");
+   private static final int d = 320;
+   private static final int s = 62;
+   private static final int u = 4;
+   @Nullable
+   private final fvi v;
+   @Nullable
+   private fzu.a w;
+   @Nullable
+   gif x;
+   private final Consumer<gif> y;
+   final fte z = new fte(this);
+   final gig A;
 
-   fzu(List<fzu.c> $$0, fsj $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public fzu(@Nullable fvi $$0, @Nullable gif $$1, gig $$2, Consumer<gif> $$3) {
+      super(a);
+      this.v = $$0;
+      this.x = $$1;
+      this.y = $$3;
+      this.A = $$2;
    }
 
-   public fsj a() {
-      return this.c;
-   }
-
-   public void b() {
-      this.b.forEach(fzu.c::a);
-   }
-
-   public static fzu.a a(int $$0) {
-      return new fzu.a($$0);
-   }
-
-   public static class a {
-      final int a;
-      private final List<fzu.d> b = new ArrayList<>();
-      int c;
-      int d = 4;
-      int e;
-      Optional<fzu.b> f = Optional.empty();
-
-      public a(int $$0) {
-         this.a = $$0;
-      }
-
-      void b() {
-         this.e++;
-      }
-
-      public fzu.d a(wp $$0, BooleanSupplier $$1, Consumer<Boolean> $$2) {
-         fzu.d $$3 = new fzu.d($$0, $$1, $$2, 44);
-         this.b.add($$3);
-         return $$3;
-      }
-
-      public fzu.a a(int $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fzu.a b(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public fzu a() {
-         fsh $$0 = new fsh().b(this.d);
-         $$0.a(fsn.a(this.a - 44), 0, 0);
-         $$0.a(fsn.a(44), 0, 1);
-         List<fzu.c> $$1 = new ArrayList<>();
-         this.e = 0;
-
-         for (fzu.d $$2 : this.b) {
-            $$1.add($$2.a(this, $$0, 0));
+   @Override
+   protected void aR_() {
+      this.z.a(a, this.p);
+      fti $$0 = this.z.c(fti.d().a(4));
+      this.w = $$0.a(new fzu.a(this.m));
+      fzu.a.a $$1 = x.a(this.x, this.w::a);
+      this.w.a($$1);
+      $$0.a(ftj.b(this.I()));
+      fti $$2 = this.z.b(fti.e().a(8));
+      $$2.a(fpq.a(c, fuf.b(this, axv.m)).a());
+      $$2.a(fpq.a(wo.d, $$0x -> {
+         fzu.a.a $$1x = this.w.p();
+         if ($$1x != null) {
+            this.y.accept($$1x.b());
          }
 
-         $$0.a();
-         fzu $$3 = new fzu($$1, $$0);
-         $$3.b();
-         return $$3;
-      }
+         this.m.a(this.v);
+      }).a());
+      this.z.a($$1x -> {
+         fpo var10000 = this.c($$1x);
+      });
+      this.c();
+   }
 
-      public fzu.a a(int $$0, boolean $$1) {
-         this.f = Optional.of(new fzu.b($$0, $$1));
-         return this;
+   @Override
+   protected void c() {
+      this.z.a();
+      if (this.w != null) {
+         this.w.b(this.n, this.L(), this.z.c());
       }
    }
 
-   static record b(int a, boolean b) {
+   @Override
+   public void a(fpc $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.m(), this.F(), this.E(), this.G(), -16777216);
+      $$0.b(this.m(), this.F(), this.H(), this.I(), -1);
+      $$0.b(this.p, b, this.m() + 4, this.F() + 4, -1);
+      fzu.a.a $$4 = this.w.p();
+      if ($$4 != null) {
+         int $$5 = this.m() + 4 + 16;
+         int $$6 = this.E() - 4;
+         int $$7 = this.F() + 4 + 9 + 2;
+         int $$8 = this.G() - 4;
+         int $$9 = $$6 - $$5;
+         int $$10 = $$8 - $$7;
+         int $$11 = this.p.b($$4.b.c(), $$9);
+         $$0.a(this.p, $$4.b.c(), $$5, $$7 + ($$10 - $$11) / 2, $$9, -1);
+      }
    }
 
-   static record c(fpb<Boolean> a, BooleanSupplier b, @Nullable BooleanSupplier c) {
-      public void a() {
-         this.a.a(this.b.getAsBoolean());
-         if (this.c != null) {
-            this.a.j = this.c.getAsBoolean();
+   private int m() {
+      return (this.n - 320) / 2;
+   }
+
+   private int E() {
+      return (this.n + 320) / 2;
+   }
+
+   private int F() {
+      return this.G() - this.I();
+   }
+
+   private int G() {
+      return this.o - this.z.b() - 4;
+   }
+
+   private int H() {
+      return 320;
+   }
+
+   private int I() {
+      return 62;
+   }
+
+   int L() {
+      return this.z.d() - this.I() - 8;
+   }
+
+   @Override
+   public void aO_() {
+      this.m.a(this.v);
+   }
+
+   public class a extends fqm<fzu.a.a> {
+      public a(final fmg $$1) {
+         super($$1, fzu.this.n, fzu.this.L(), fzu.this.z.c(), 18);
+
+         for (gif $$2 : gif.values()) {
+            if (!gif.a(fzu.this.A).contains($$2)) {
+               this.b(new fzu.a.a($$2));
+            }
          }
-      }
-
-      public fpb<Boolean> b() {
-         return this.a;
-      }
-
-      public BooleanSupplier c() {
-         return this.b;
       }
 
       @Nullable
-      public BooleanSupplier d() {
-         return this.c;
-      }
-   }
-
-   public static class d {
-      private final wp a;
-      private final BooleanSupplier b;
-      private final Consumer<Boolean> c;
-      @Nullable
-      private wp d;
-      @Nullable
-      private BooleanSupplier e;
-      private final int f;
-
-      d(wp $$0, BooleanSupplier $$1, Consumer<Boolean> $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = $$3;
+      public fzu.a.a a(gif $$0) {
+         return this.aH_().stream().filter($$1 -> $$1.b == $$0).findFirst().orElse(null);
       }
 
-      public fzu.d a(BooleanSupplier $$0) {
-         this.e = $$0;
-         return this;
+      @Override
+      public int a() {
+         return 320;
       }
 
-      public fzu.d a(wp $$0) {
-         this.d = $$0;
-         return this;
+      public void a(@Nullable fzu.a.a $$0) {
+         super.a($$0);
+         fzu.this.x = $$0 != null ? $$0.b() : null;
       }
 
-      fzu.c a(fzu.a $$0, fsh $$1, int $$2) {
-         $$0.b();
-         fqb $$3 = new fqb(this.a, flk.Q().h).c();
-         $$1.a($$3, $$0.e, $$2, $$1.b().a(0.0F, 0.5F).b($$0.c));
-         Optional<fzu.b> $$4 = $$0.f;
-         fpb.a<Boolean> $$5 = fpb.b(this.b.getAsBoolean());
-         $$5.a();
-         boolean $$6 = this.d != null && $$4.isEmpty();
-         if ($$6) {
-            fqf $$7 = fqf.a(this.d);
-            $$5.a($$1x -> $$7);
+      public class a extends fqm.a<fzu.a.a> {
+         final gif b;
+
+         public a(final gif $$1) {
+            this.b = $$1;
          }
 
-         if (this.d != null && !$$6) {
-            $$5.a($$0x -> wo.a(this.a, $$0x.c(), this.d));
-         } else {
-            $$5.a($$0x -> wo.a(this.a, $$0x.c()));
+         @Override
+         public void a(fpc $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            int $$10 = $$3 + 1;
+            int $$11 = $$2 + ($$5 - 9) / 2 + 1;
+            $$0.b(fzu.this.p, this.b.b(), $$10, $$11, -1);
          }
 
-         fpb<Boolean> $$8 = $$5.a(0, 0, this.f, 20, wp.i(), ($$0x, $$1x) -> this.c.accept($$1x));
-         if (this.e != null) {
-            $$8.j = this.e.getAsBoolean();
+         @Override
+         public wp a() {
+            return wp.a("gui.abuseReport.reason.narration", this.b.b(), this.b.c());
          }
 
-         $$1.a($$8, $$0.e, $$2 + 1, $$1.b().c());
-         if (this.d != null) {
-            $$4.ifPresent($$3x -> {
-               wp $$4x = this.d.f().a(n.h);
-               fod $$5x = flk.Q().h;
-               fpo $$6x = new fpo($$4x, $$5x);
-               $$6x.d($$0.a - $$0.c - this.f);
-               $$6x.e($$3x.a());
-               $$0.b();
-               int $$7 = $$3x.b ? 9 * $$3x.a - $$6x.y() : 0;
-               $$1.a($$6x, $$0.e, $$2, $$1.b().c(-$$0.d).e($$7));
-            });
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(this);
+            return super.a($$0, $$1, $$2);
          }
 
-         return new fzu.c($$8, this.b, this.e);
+         public gif b() {
+            return this.b;
+         }
       }
    }
 }

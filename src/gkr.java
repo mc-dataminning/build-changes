@@ -1,26 +1,68 @@
-public class gkr extends gia {
-   private static final int a = 12235202;
+import org.joml.Quaternionf;
 
-   protected gkr(gga $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gkd $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
-      this.v = (float)axk.b(12235202) / 255.0F;
-      this.w = (float)axk.c(12235202) / 255.0F;
-      this.x = (float)axk.d(12235202) / 255.0F;
+public class gkr extends glg {
+   private static final float a = 1.0472F;
+   private int b;
+
+   gkr(ggy $$0, double $$1, double $$2, double $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.D = 0.85F;
+      this.b = $$4;
+      this.t = 30;
+      this.u = 0.0F;
+      this.j = 0.0;
+      this.k = 0.1;
+      this.l = 0.0;
    }
 
-   public static class a implements gjl<lx> {
-      private final gkd a;
+   @Override
+   public float b(float $$0) {
+      return this.D * ayz.a(((float)this.s + $$0) / (float)this.t * 0.75F, 0.0F, 1.0F);
+   }
 
-      public a(gkd $$0) {
+   @Override
+   public void a(fgv $$0, flo $$1, float $$2) {
+      if (this.b <= 0) {
+         this.y = 1.0F - ayz.a(((float)this.s + $$2) / (float)this.t, 0.0F, 1.0F);
+         Quaternionf $$3 = new Quaternionf();
+         $$3.rotationX(-1.0472F);
+         this.a($$0, $$1, $$3, $$2);
+         $$3.rotationYXZ((float) -Math.PI, 1.0472F, 0.0F);
+         this.a($$0, $$1, $$3, $$2);
+      }
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public gkk b() {
+      return gkk.c;
+   }
+
+   @Override
+   public void a() {
+      if (this.b > 0) {
+         this.b--;
+      } else {
+         super.a();
+      }
+   }
+
+   public static class a implements gkj<lw> {
+      private final glb a;
+
+      public a(glb $$0) {
          this.a = $$0;
       }
 
-      public gji a(lx $$0, gga $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         azh $$8 = $$1.A;
-         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
-         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         return new gkr($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
+      public gkg a(lw $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gkr $$8 = new gkr($$1, $$2, $$3, $$4, $$0.b());
+         $$8.a(this.a);
+         $$8.e(1.0F);
+         return $$8;
       }
    }
 }

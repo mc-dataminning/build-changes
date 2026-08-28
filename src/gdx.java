@@ -1,47 +1,98 @@
-public class gdx<S extends hah> extends gcp<S> {
-   public gdx(gfe $$0) {
+import java.util.Set;
+
+public class gdx extends gek<haq> {
+   public static final ggl a = new gby(true, 23.0F, 4.8F, 2.7F, 3.0F, 49.0F, Set.of("head"));
+
+   public gdx(ggc $$0) {
       super($$0);
    }
 
-   public static gfk c() {
-      gfm $$0 = gcp.a(gfi.a, 0.0F);
-      gfo $$1 = $$0.a();
-      a($$1);
-      return gfk.a($$0, 64, 32);
+   public static ggi a() {
+      ggk $$0 = new ggk();
+      ggm $$1 = $$0.a();
+      $$1.a(
+         "head",
+         ggh.c()
+            .a(0, 6)
+            .a(-6.5F, -5.0F, -4.0F, 13.0F, 10.0F, 9.0F)
+            .a(45, 16)
+            .a("nose", -3.5F, 0.0F, -6.0F, 7.0F, 5.0F, 2.0F)
+            .a(52, 25)
+            .a("left_ear", 3.5F, -8.0F, -1.0F, 5.0F, 4.0F, 1.0F)
+            .a(52, 25)
+            .a("right_ear", -8.5F, -8.0F, -1.0F, 5.0F, 4.0F, 1.0F),
+         gge.a(0.0F, 11.5F, -17.0F)
+      );
+      $$1.a("body", ggh.c().a(0, 25).a(-9.5F, -13.0F, -6.5F, 19.0F, 26.0F, 13.0F), gge.a(0.0F, 10.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      int $$2 = 9;
+      int $$3 = 6;
+      ggh $$4 = ggh.c().a(40, 0).a(-3.0F, 0.0F, -3.0F, 6.0F, 9.0F, 6.0F);
+      $$1.a("right_hind_leg", $$4, gge.a(-5.5F, 15.0F, 9.0F));
+      $$1.a("left_hind_leg", $$4, gge.a(5.5F, 15.0F, 9.0F));
+      $$1.a("right_front_leg", $$4, gge.a(-5.5F, 15.0F, -9.0F));
+      $$1.a("left_front_leg", $$4, gge.a(5.5F, 15.0F, -9.0F));
+      return ggi.a($$0, 64, 64);
    }
 
-   protected static void a(gfo $$0) {
-      $$0.a("right_arm", gfj.c().a(40, 16).a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), gfg.a(-5.0F, 2.0F, 0.0F));
-      $$0.a("left_arm", gfj.c().a(40, 16).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), gfg.a(5.0F, 2.0F, 0.0F));
-      $$0.a("right_leg", gfj.c().a(0, 16).a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), gfg.a(-2.0F, 12.0F, 0.0F));
-      $$0.a("left_leg", gfj.c().a(0, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), gfg.a(2.0F, 12.0F, 0.0F));
-   }
-
-   public void a(S $$0) {
+   public void a(haq $$0) {
       super.a($$0);
-      if ($$0.b && !$$0.d) {
-         float $$1 = $$0.H;
-         float $$2 = ayz.a($$1 * (float) Math.PI);
-         float $$3 = ayz.a((1.0F - (1.0F - $$1) * (1.0F - $$1)) * (float) Math.PI);
-         this.r.g = 0.0F;
-         this.s.g = 0.0F;
-         this.r.f = -(0.1F - $$2 * 0.6F);
-         this.s.f = 0.1F - $$2 * 0.6F;
-         this.r.e = (float) (-Math.PI / 2);
-         this.s.e = (float) (-Math.PI / 2);
-         this.r.e -= $$2 * 1.2F - $$3 * 0.4F;
-         this.s.e -= $$2 * 1.2F - $$3 * 0.4F;
-         gau.a(this.r, this.s, $$0.u);
+      if ($$0.b) {
+         this.b.f = 0.35F * ayz.a(0.6F * $$0.u);
+         this.b.g = 0.35F * ayz.a(0.6F * $$0.u);
+         this.f.e = -0.75F * ayz.a(0.3F * $$0.u);
+         this.g.e = 0.75F * ayz.a(0.3F * $$0.u);
+      } else {
+         this.b.g = 0.0F;
       }
-   }
 
-   @Override
-   public void a(bvc $$0, ffv $$1) {
-      this.e().a($$1);
-      float $$2 = $$0 == bvc.b ? 1.0F : -1.0F;
-      gfe $$3 = this.a($$0);
-      $$3.b += $$2;
-      $$3.a($$1);
-      $$3.b -= $$2;
+      if ($$0.c) {
+         if ($$0.d < 15) {
+            this.b.e = (float) (-Math.PI / 4) * (float)$$0.d / 14.0F;
+         } else if ($$0.d < 20) {
+            float $$1 = (float)(($$0.d - 15) / 5);
+            this.b.e = (float) (-Math.PI / 4) + (float) (Math.PI / 4) * $$1;
+         }
+      }
+
+      if ($$0.h > 0.0F) {
+         this.c.e = ayz.j($$0.h, this.c.e, 1.7407963F);
+         this.b.e = ayz.j($$0.h, this.b.e, (float) (Math.PI / 2));
+         this.f.g = -0.27079642F;
+         this.g.g = 0.27079642F;
+         this.d.g = 0.5707964F;
+         this.e.g = -0.5707964F;
+         if ($$0.e) {
+            this.b.e = (float) (Math.PI / 2) + 0.2F * ayz.a($$0.u * 0.6F);
+            this.f.e = -0.4F - 0.2F * ayz.a($$0.u * 0.6F);
+            this.g.e = -0.4F - 0.2F * ayz.a($$0.u * 0.6F);
+         }
+
+         if ($$0.f) {
+            this.b.e = 2.1707964F;
+            this.f.e = -0.9F;
+            this.g.e = -0.9F;
+         }
+      } else {
+         this.d.g = 0.0F;
+         this.e.g = 0.0F;
+         this.f.g = 0.0F;
+         this.g.g = 0.0F;
+      }
+
+      if ($$0.j > 0.0F) {
+         this.d.e = -0.6F * ayz.a($$0.u * 0.15F);
+         this.e.e = 0.6F * ayz.a($$0.u * 0.15F);
+         this.f.e = 0.3F * ayz.a($$0.u * 0.25F);
+         this.g.e = -0.3F * ayz.a($$0.u * 0.25F);
+         this.b.e = ayz.j($$0.j, this.b.e, (float) (Math.PI / 2));
+      }
+
+      if ($$0.k > 0.0F) {
+         this.b.e = ayz.j($$0.k, this.b.e, 2.0561945F);
+         this.d.e = -0.5F * ayz.a($$0.u * 0.5F);
+         this.e.e = 0.5F * ayz.a($$0.u * 0.5F);
+         this.f.e = 0.5F * ayz.a($$0.u * 0.5F);
+         this.g.e = -0.5F * ayz.a($$0.u * 0.5F);
+      }
    }
 }

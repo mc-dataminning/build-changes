@@ -1,66 +1,94 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
-import java.util.function.Predicate;
+import com.mojang.serialization.Lifecycle;
+import java.util.Locale;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public abstract class ewi implements ewa {
-   protected final List<ezb> e;
-   private final Predicate<evs> a;
+public interface ewi {
+   int d = 19133;
+   int e = 19132;
 
-   protected ewi(List<ezb> $$0) {
-      this.e = $$0;
-      this.a = af.a($$0);
+   dhx D();
+
+   void a(dhx var1);
+
+   boolean F();
+
+   Set<String> G();
+
+   Set<String> H();
+
+   void a(String var1, boolean var2);
+
+   default void a(p $$0) {
+      $$0.a("Known server brands", () -> String.join(", ", this.G()));
+      $$0.a("Removed feature flags", () -> String.join(", ", this.H()));
+      $$0.a("Level was modded", () -> Boolean.toString(this.F()));
+      $$0.a("Level storage version", () -> {
+         int $$0x = this.x();
+         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.f($$0x));
+      });
    }
 
-   protected static <T extends ewi> P1<Mu<T>, List<ezb>> a(Instance<T> $$0) {
-      return $$0.group(ezb.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.e));
-   }
-
-   public void a(evy $$0) {
-      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
-         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+   default String f(int $$0) {
+      switch ($$0) {
+         case 19132:
+            return "McRegion";
+         case 19133:
+            return "Anvil";
+         default:
+            return "Unknown?";
       }
    }
 
-   protected final boolean a(evs $$0) {
-      return this.a.test($$0);
-   }
+   @Nullable
+   tq E();
 
-   public abstract ewj a();
+   void a(@Nullable tq var1);
 
-   public abstract static class a<T extends ewi.a<T>> implements eyt<T> {
-      private final Builder<ezb> a = ImmutableList.builder();
+   ewh I();
 
-      protected abstract T aE_();
+   dhd J();
 
-      public T a(ezb.a $$0) {
-         this.a.add($$0.build());
-         return this.aE_();
-      }
+   tq a(kf var1, @Nullable tq var2);
 
-      public final T e() {
-         return this.aE_();
-      }
+   boolean l();
 
-      protected List<ezb> f() {
-         return this.a.build();
-      }
+   int x();
 
-      public evz.a a(ewi.a<?> $$0) {
-         return new evz.a(this, $$0);
-      }
+   String e();
 
-      public ewe.a b(ewi.a<?> $$0) {
-         return new ewe.a(this, $$0);
-      }
+   dgw k();
 
-      public ewm.a c(ewi.a<?> $$0) {
-         return new ewm.a(this, $$0);
-      }
+   void a(dgw var1);
 
-      public abstract ewi b();
+   boolean m();
+
+   bsv q();
+
+   void a(bsv var1);
+
+   boolean r();
+
+   void d(boolean var1);
+
+   dgv o();
+
+   @Nullable
+   tq w();
+
+   ebp.a C();
+
+   void a(ebp.a var1);
+
+   eem y();
+
+   boolean z();
+
+   boolean A();
+
+   Lifecycle B();
+
+   default csn K() {
+      return this.D().b();
    }
 }

@@ -3,14 +3,14 @@ import java.util.function.Function;
 import java.util.stream.Stream;
 
 public abstract class pi<T> extends pn<T> {
-   private final Function<T, aku<T>> d;
+   private final Function<T, akt<T>> d;
 
-   public pi(mk $$0, aku<? extends ke<T>> $$1, CompletableFuture<jt.a> $$2, Function<T, aku<T>> $$3) {
+   public pi(mk $$0, akt<? extends ke<T>> $$1, CompletableFuture<jt.a> $$2, Function<T, akt<T>> $$3) {
       super($$0, $$1, $$2);
       this.d = $$3;
    }
 
-   public pi(mk $$0, aku<? extends ke<T>> $$1, CompletableFuture<jt.a> $$2, CompletableFuture<pn.c<T>> $$3, Function<T, aku<T>> $$4) {
+   public pi(mk $$0, akt<? extends ke<T>> $$1, CompletableFuture<jt.a> $$2, CompletableFuture<pn.c<T>> $$3, Function<T, akt<T>> $$4) {
       super($$0, $$1, $$2, $$3);
       this.d = $$4;
    }
@@ -21,9 +21,9 @@ public abstract class pi<T> extends pn<T> {
    }
 
    protected static class a<T> extends pn.b<T> {
-      private final Function<T, aku<T>> a;
+      private final Function<T, akt<T>> a;
 
-      a(axc $$0, Function<T, aku<T>> $$1) {
+      a(axc $$0, Function<T, akt<T>> $$1) {
          super($$0);
          this.a = $$1;
       }

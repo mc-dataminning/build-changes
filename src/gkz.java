@@ -1,64 +1,18 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
-
-public class gkz {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = cox.g();
-   public static final Codec<gkz> a = Codec.PASSTHROUGH.listOf().validate($$0 -> af.a($$0, c)).xmap(gkz::new, $$0 -> $$0.f);
-   private static final DynamicOps<un> d = ue.a;
-   private static final Dynamic<?> e = new Dynamic(d, (un)cwq.e.encodeStart(d, cwq.j).getOrThrow());
-   private List<Dynamic<?>> f;
-
-   private gkz(List<Dynamic<?>> $$0) {
-      this.f = $$0;
+public class gkz extends gjn {
+   gkz(ggy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, glb $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      this.u = 0.5F;
    }
 
-   public gkz() {
-      this(Collections.nCopies(c, e));
-   }
+   public static class a implements gkj<lx> {
+      private final glb a;
 
-   public List<cwq> a(jt.a $$0) {
-      return this.f
-         .stream()
-         .map($$1 -> cwq.e.parse(akt.a($$1, $$0)).resultOrPartial($$0xx -> b.warn("Could not parse hotbar item: {}", $$0xx)).orElse(cwq.j))
-         .toList();
-   }
-
-   public void a(cox $$0, kf $$1) {
-      akt<un> $$2 = $$1.a(d);
-      Builder<Dynamic<?>> $$3 = ImmutableList.builderWithExpectedSize(c);
-
-      for (int $$4 = 0; $$4 < c; $$4++) {
-         cwq $$5 = $$0.a($$4);
-         Optional<Dynamic<?>> $$6 = cwq.e
-            .encodeStart($$2, $$5)
-            .resultOrPartial($$0x -> b.warn("Could not encode hotbar item: {}", $$0x))
-            .map($$0x -> new Dynamic(d, $$0x));
-         $$3.add($$6.orElse(e));
+      public a(glb $$0) {
+         this.a = $$0;
       }
 
-      this.f = $$3.build();
-   }
-
-   public boolean a() {
-      for (Dynamic<?> $$0 : this.f) {
-         if (!a($$0)) {
-            return false;
-         }
+      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gkz($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
-
-      return true;
-   }
-
-   private static boolean a(Dynamic<?> $$0) {
-      return e.equals($$0);
    }
 }

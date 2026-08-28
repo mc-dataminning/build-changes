@@ -27,7 +27,7 @@ public class asz extends ast {
       this.e = $$2;
    }
 
-   private static String b(ate $$0, akv $$1) {
+   private static String b(ate $$0, aku $$1) {
       return String.format(Locale.ROOT, "%s/%s/%s", $$0.a(), $$1.b(), $$1.a());
    }
 
@@ -38,7 +38,7 @@ public class asz extends ast {
    }
 
    @Override
-   public auh<InputStream> a(ate $$0, akv $$1) {
+   public auh<InputStream> a(ate $$0, aku $$1) {
       return this.b(b($$0, $$1));
    }
 
@@ -72,7 +72,7 @@ public class asz extends ast {
             String $$6 = $$5.getName();
             String $$7 = a($$4, $$6);
             if (!$$7.isEmpty()) {
-               if (akv.j($$7)) {
+               if (aku.j($$7)) {
                   $$3.add($$7);
                } else {
                   c.warn("Non [a-z0-9_.-] character in namespace {} in pack {}, ignoring", $$7, this.d.a);
@@ -114,7 +114,7 @@ public class asz extends ast {
                String $$9 = $$8.getName();
                if ($$9.startsWith($$7)) {
                   String $$10 = $$9.substring($$6.length());
-                  akv $$11 = akv.b($$1, $$10);
+                  aku $$11 = aku.b($$1, $$10);
                   if ($$11 != null) {
                      $$3.accept($$11, auh.create($$4, $$8));
                   } else {

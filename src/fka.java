@@ -1,41 +1,50 @@
-import com.mojang.authlib.yggdrasil.ProfileResult;
-import java.util.Date;
-import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class fka {
-   private static final wp a = wp.c("mco.util.time.now");
-   private static final int b = 60;
-   private static final int c = 3600;
-   private static final int d = 86400;
+public class fka extends hmd {
+   private static final wp a = wp.c("mco.account.privacy.information");
+   private static final int b = 15;
+   private final fti c = fti.d();
+   private final fvi C;
+   @Nullable
+   private fqk D;
 
-   public static wp a(long $$0) {
-      if ($$0 < 0L) {
-         return a;
-      } else {
-         long $$1 = $$0 / 1000L;
-         if ($$1 < 60L) {
-            return wp.a("mco.time.secondsAgo", $$1);
-         } else if ($$1 < 3600L) {
-            long $$2 = $$1 / 60L;
-            return wp.a("mco.time.minutesAgo", $$2);
-         } else if ($$1 < 86400L) {
-            long $$3 = $$1 / 3600L;
-            return wp.a("mco.time.hoursAgo", $$3);
-         } else {
-            long $$4 = $$1 / 86400L;
-            return wp.a("mco.time.daysAgo", $$4);
-         }
+   public fka(fvi $$0) {
+      super(flx.a);
+      this.C = $$0;
+   }
+
+   @Override
+   public void aR_() {
+      this.c.a(15).c().b();
+      this.D = new fqk(a, this.p).b(true);
+      this.c.a(this.D);
+      fti $$0 = this.c.a(fti.e().a(8));
+      wp $$1 = wp.c("mco.account.privacy.info.button");
+      $$0.a(fpq.a($$1, fuf.b(this, axv.a)).a());
+      $$0.a(fpq.a(wo.k, $$0x -> this.aO_()).a());
+      this.c.a($$1x -> {
+         fpo var10000 = this.c($$1x);
+      });
+      this.c();
+   }
+
+   @Override
+   public void aO_() {
+      this.m.a(this.C);
+   }
+
+   @Override
+   protected void c() {
+      if (this.D != null) {
+         this.D.d(this.n - 15);
       }
+
+      this.c.a();
+      ftc.a(this.c, this.J());
    }
 
-   public static wp a(Date $$0) {
-      return a(System.currentTimeMillis() - $$0.getTime());
-   }
-
-   public static void a(fof $$0, int $$1, int $$2, int $$3, UUID $$4) {
-      flk $$5 = flk.Q();
-      ProfileResult $$6 = $$5.am().fetchProfile($$4, false);
-      hfv $$7 = $$6 != null ? $$5.an().b($$6.profile()) : hfm.a($$4);
-      fpt.a($$0, $$7, $$1, $$2, $$3);
+   @Override
+   public wp i() {
+      return a;
    }
 }

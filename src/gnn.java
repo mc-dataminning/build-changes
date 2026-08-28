@@ -1,261 +1,103 @@
-import javax.annotation.Nullable;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
-public class gnn {
-   public static final int a = 8;
-   private static final float d = 1.0F / (float)Math.cos((float) (Math.PI / 8)) - 1.0F;
-   private static final float e = 1.0F / (float)Math.cos((float) (Math.PI / 4)) - 1.0F;
-   public static final int b = 4;
-   private static final int f = 3;
-   public static final int c = 4;
+public record gnn(Map<String, String> c, Set<String> d) {
+   public static final gnn a = new gnn(Map.of(), Set.of());
+   public static final Codec<gnn> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.unboundedMap(Codec.STRING, Codec.STRING).optionalFieldOf("values", Map.of()).forGetter(gnn::d),
+               Codec.STRING.listOf().xmap(Set::copyOf, List::copyOf).optionalFieldOf("flags", Set.of()).forGetter(gnn::e)
+            )
+            .apply($$0, gnn::new)
+   );
 
-   public static gng a(Vector3f $$0, Vector3f $$1, gni $$2, het $$3, jn $$4, hhj $$5, @Nullable gnj $$6, boolean $$7, int $$8) {
-      gnk $$9 = $$2.d();
-      if ($$5.b()) {
-         $$9 = a($$2.d(), $$4, $$5.a());
-      }
-
-      float[] $$10 = new float[$$9.a.length];
-      System.arraycopy($$9.a, 0, $$10, 0, $$10.length);
-      float $$11 = $$3.k();
-      float $$12 = ($$9.a[0] + $$9.a[0] + $$9.a[2] + $$9.a[2]) / 4.0F;
-      float $$13 = ($$9.a[1] + $$9.a[1] + $$9.a[3] + $$9.a[3]) / 4.0F;
-      $$9.a[0] = ayz.h($$11, $$9.a[0], $$12);
-      $$9.a[2] = ayz.h($$11, $$9.a[2], $$12);
-      $$9.a[1] = ayz.h($$11, $$9.a[1], $$13);
-      $$9.a[3] = ayz.h($$11, $$9.a[3], $$13);
-      int[] $$14 = a($$9, $$3, $$4, a($$0, $$1), $$5.a(), $$6);
-      jn $$15 = a($$14);
-      System.arraycopy($$10, 0, $$9.a, 0, $$10.length);
-      if ($$6 == null) {
-         a($$14, $$15);
-      }
-
-      return new gng($$14, $$2.b(), $$15, $$3, $$7, $$8);
+   public static gnn.a a() {
+      return new gnn.a();
    }
 
-   public static gnk a(gnk $$0, jn $$1, j $$2) {
-      Matrix4f $$3 = jh.a($$2, $$1).c();
-      float $$4 = $$0.a($$0.c(0));
-      float $$5 = $$0.b($$0.c(0));
-      Vector4f $$6 = $$3.transform(new Vector4f($$4 / 16.0F, $$5 / 16.0F, 0.0F, 1.0F));
-      float $$7 = 16.0F * $$6.x();
-      float $$8 = 16.0F * $$6.y();
-      float $$9 = $$0.a($$0.c(2));
-      float $$10 = $$0.b($$0.c(2));
-      Vector4f $$11 = $$3.transform(new Vector4f($$9 / 16.0F, $$10 / 16.0F, 0.0F, 1.0F));
-      float $$12 = 16.0F * $$11.x();
-      float $$13 = 16.0F * $$11.y();
-      float $$14;
-      float $$15;
-      if (Math.signum($$9 - $$4) == Math.signum($$12 - $$7)) {
-         $$14 = $$7;
-         $$15 = $$12;
+   public gnn a(gnn $$0) {
+      if (this.c()) {
+         return $$0;
+      } else if ($$0.c()) {
+         return this;
       } else {
-         $$14 = $$12;
-         $$15 = $$7;
+         Builder<String, String> $$1 = ImmutableMap.builderWithExpectedSize(this.c.size() + $$0.c.size());
+         $$1.putAll(this.c);
+         $$1.putAll($$0.c);
+         com.google.common.collect.ImmutableSet.Builder<String> $$2 = ImmutableSet.builderWithExpectedSize(this.d.size() + $$0.d.size());
+         $$2.addAll(this.d);
+         $$2.addAll($$0.d);
+         return new gnn($$1.buildKeepingLast(), $$2.build());
+      }
+   }
+
+   public String b() {
+      StringBuilder $$0 = new StringBuilder();
+
+      for (Entry<String, String> $$1 : this.c.entrySet()) {
+         String $$2 = $$1.getKey();
+         String $$3 = $$1.getValue();
+         $$0.append("#define ").append($$2).append(" ").append($$3).append('\n');
       }
 
-      float $$18;
-      float $$19;
-      if (Math.signum($$10 - $$5) == Math.signum($$13 - $$8)) {
-         $$18 = $$8;
-         $$19 = $$13;
-      } else {
-         $$18 = $$13;
-         $$19 = $$8;
+      for (String $$4 : this.d) {
+         $$0.append("#define ").append($$4).append('\n');
       }
 
-      float $$22 = (float)Math.toRadians((double)$$0.b);
-      Matrix3f $$23 = new Matrix3f($$3);
-      Vector3f $$24 = $$23.transform(new Vector3f(ayz.b($$22), ayz.a($$22), 0.0F));
-      int $$25 = Math.floorMod(-((int)Math.round(Math.toDegrees(Math.atan2((double)$$24.y(), (double)$$24.x())) / 90.0)) * 90, 360);
-      return new gnk(new float[]{$$14, $$18, $$15, $$19}, $$25);
+      return $$0.toString();
    }
 
-   private static int[] a(gnk $$0, het $$1, jn $$2, float[] $$3, j $$4, @Nullable gnj $$5) {
-      int[] $$6 = new int[32];
+   public boolean c() {
+      return this.c.isEmpty() && this.d.isEmpty();
+   }
 
-      for (int $$7 = 0; $$7 < 4; $$7++) {
-         a($$6, $$7, $$2, $$0, $$3, $$1, $$4, $$5);
+   public Map<String, String> d() {
+      return this.c;
+   }
+
+   public Set<String> e() {
+      return this.d;
+   }
+
+   public static class a {
+      private final Builder<String, String> a = ImmutableMap.builder();
+      private final com.google.common.collect.ImmutableSet.Builder<String> b = ImmutableSet.builder();
+
+      a() {
       }
 
-      return $$6;
-   }
-
-   private static float[] a(Vector3f $$0, Vector3f $$1) {
-      float[] $$2 = new float[jn.values().length];
-      $$2[gln.a.f] = $$0.x() / 16.0F;
-      $$2[gln.a.e] = $$0.y() / 16.0F;
-      $$2[gln.a.d] = $$0.z() / 16.0F;
-      $$2[gln.a.c] = $$1.x() / 16.0F;
-      $$2[gln.a.b] = $$1.y() / 16.0F;
-      $$2[gln.a.a] = $$1.z() / 16.0F;
-      return $$2;
-   }
-
-   private static void a(int[] $$0, int $$1, jn $$2, gnk $$3, float[] $$4, het $$5, j $$6, @Nullable gnj $$7) {
-      gln.b $$8 = gln.a($$2).a($$1);
-      Vector3f $$9 = new Vector3f($$4[$$8.a], $$4[$$8.b], $$4[$$8.c]);
-      a($$9, $$7);
-      a($$9, $$6);
-      a($$0, $$1, $$9, $$5, $$3);
-   }
-
-   private static void a(int[] $$0, int $$1, Vector3f $$2, het $$3, gnk $$4) {
-      int $$5 = $$1 * 8;
-      $$0[$$5] = Float.floatToRawIntBits($$2.x());
-      $$0[$$5 + 1] = Float.floatToRawIntBits($$2.y());
-      $$0[$$5 + 2] = Float.floatToRawIntBits($$2.z());
-      $$0[$$5 + 3] = -1;
-      $$0[$$5 + 4] = Float.floatToRawIntBits($$3.a($$4.a($$1) / 16.0F));
-      $$0[$$5 + 4 + 1] = Float.floatToRawIntBits($$3.c($$4.b($$1) / 16.0F));
-   }
-
-   private static void a(Vector3f $$0, @Nullable gnj $$1) {
-      if ($$1 != null) {
-         Vector3f $$2;
-         Vector3f $$3;
-         switch ($$1.b()) {
-            case a:
-               $$2 = new Vector3f(1.0F, 0.0F, 0.0F);
-               $$3 = new Vector3f(0.0F, 1.0F, 1.0F);
-               break;
-            case b:
-               $$2 = new Vector3f(0.0F, 1.0F, 0.0F);
-               $$3 = new Vector3f(1.0F, 0.0F, 1.0F);
-               break;
-            case c:
-               $$2 = new Vector3f(0.0F, 0.0F, 1.0F);
-               $$3 = new Vector3f(1.0F, 1.0F, 0.0F);
-               break;
-            default:
-               throw new IllegalArgumentException("There are only 3 axes");
-         }
-
-         Quaternionf $$10 = new Quaternionf().rotationAxis($$1.c() * (float) (Math.PI / 180.0), $$2);
-         if ($$1.d()) {
-            if (Math.abs($$1.c()) == 22.5F) {
-               $$3.mul(d);
-            } else {
-               $$3.mul(e);
-            }
-
-            $$3.add(1.0F, 1.0F, 1.0F);
+      public gnn.a a(String $$0, String $$1) {
+         if ($$1.isBlank()) {
+            throw new IllegalArgumentException("Cannot define empty string");
          } else {
-            $$3.set(1.0F, 1.0F, 1.0F);
-         }
-
-         a($$0, new Vector3f($$1.a()), new Matrix4f().rotation($$10), $$3);
-      }
-   }
-
-   private static void a(Vector3f $$0, j $$1) {
-      if ($$1 != j.a()) {
-         a($$0, new Vector3f(0.5F, 0.5F, 0.5F), $$1.c(), new Vector3f(1.0F, 1.0F, 1.0F));
-      }
-   }
-
-   private static void a(Vector3f $$0, Vector3f $$1, Matrix4f $$2, Vector3f $$3) {
-      Vector4f $$4 = $$2.transform(new Vector4f($$0.x() - $$1.x(), $$0.y() - $$1.y(), $$0.z() - $$1.z(), 1.0F));
-      $$4.mul(new Vector4f($$3, 1.0F));
-      $$0.set($$4.x() + $$1.x(), $$4.y() + $$1.y(), $$4.z() + $$1.z());
-   }
-
-   private static jn a(int[] $$0) {
-      Vector3f $$1 = new Vector3f(Float.intBitsToFloat($$0[0]), Float.intBitsToFloat($$0[1]), Float.intBitsToFloat($$0[2]));
-      Vector3f $$2 = new Vector3f(Float.intBitsToFloat($$0[8]), Float.intBitsToFloat($$0[9]), Float.intBitsToFloat($$0[10]));
-      Vector3f $$3 = new Vector3f(Float.intBitsToFloat($$0[16]), Float.intBitsToFloat($$0[17]), Float.intBitsToFloat($$0[18]));
-      Vector3f $$4 = new Vector3f($$1).sub($$2);
-      Vector3f $$5 = new Vector3f($$3).sub($$2);
-      Vector3f $$6 = new Vector3f($$5).cross($$4).normalize();
-      if (!$$6.isFinite()) {
-         return jn.b;
-      } else {
-         jn $$7 = null;
-         float $$8 = 0.0F;
-
-         for (jn $$9 : jn.values()) {
-            km $$10 = $$9.q();
-            Vector3f $$11 = new Vector3f((float)$$10.u(), (float)$$10.v(), (float)$$10.w());
-            float $$12 = $$6.dot($$11);
-            if ($$12 >= 0.0F && $$12 > $$8) {
-               $$8 = $$12;
-               $$7 = $$9;
-            }
-         }
-
-         return $$7 == null ? jn.b : $$7;
-      }
-   }
-
-   private static void a(int[] $$0, jn $$1) {
-      int[] $$2 = new int[$$0.length];
-      System.arraycopy($$0, 0, $$2, 0, $$0.length);
-      float[] $$3 = new float[jn.values().length];
-      $$3[gln.a.f] = 999.0F;
-      $$3[gln.a.e] = 999.0F;
-      $$3[gln.a.d] = 999.0F;
-      $$3[gln.a.c] = -999.0F;
-      $$3[gln.a.b] = -999.0F;
-      $$3[gln.a.a] = -999.0F;
-
-      for (int $$4 = 0; $$4 < 4; $$4++) {
-         int $$5 = 8 * $$4;
-         float $$6 = Float.intBitsToFloat($$2[$$5]);
-         float $$7 = Float.intBitsToFloat($$2[$$5 + 1]);
-         float $$8 = Float.intBitsToFloat($$2[$$5 + 2]);
-         if ($$6 < $$3[gln.a.f]) {
-            $$3[gln.a.f] = $$6;
-         }
-
-         if ($$7 < $$3[gln.a.e]) {
-            $$3[gln.a.e] = $$7;
-         }
-
-         if ($$8 < $$3[gln.a.d]) {
-            $$3[gln.a.d] = $$8;
-         }
-
-         if ($$6 > $$3[gln.a.c]) {
-            $$3[gln.a.c] = $$6;
-         }
-
-         if ($$7 > $$3[gln.a.b]) {
-            $$3[gln.a.b] = $$7;
-         }
-
-         if ($$8 > $$3[gln.a.a]) {
-            $$3[gln.a.a] = $$8;
+            this.a.put($$0, b($$1));
+            return this;
          }
       }
 
-      gln $$9 = gln.a($$1);
+      private static String b(String $$0) {
+         return $$0.replaceAll("\n", "\\\\\n");
+      }
 
-      for (int $$10 = 0; $$10 < 4; $$10++) {
-         int $$11 = 8 * $$10;
-         gln.b $$12 = $$9.a($$10);
-         float $$13 = $$3[$$12.a];
-         float $$14 = $$3[$$12.b];
-         float $$15 = $$3[$$12.c];
-         $$0[$$11] = Float.floatToRawIntBits($$13);
-         $$0[$$11 + 1] = Float.floatToRawIntBits($$14);
-         $$0[$$11 + 2] = Float.floatToRawIntBits($$15);
+      public gnn.a a(String $$0, float $$1) {
+         this.a.put($$0, String.valueOf($$1));
+         return this;
+      }
 
-         for (int $$16 = 0; $$16 < 4; $$16++) {
-            int $$17 = 8 * $$16;
-            float $$18 = Float.intBitsToFloat($$2[$$17]);
-            float $$19 = Float.intBitsToFloat($$2[$$17 + 1]);
-            float $$20 = Float.intBitsToFloat($$2[$$17 + 2]);
-            if (ayz.a($$13, $$18) && ayz.a($$14, $$19) && ayz.a($$15, $$20)) {
-               $$0[$$11 + 4] = $$2[$$17 + 4];
-               $$0[$$11 + 4 + 1] = $$2[$$17 + 4 + 1];
-            }
-         }
+      public gnn.a a(String $$0) {
+         this.b.add($$0);
+         return this;
+      }
+
+      public gnn a() {
+         return new gnn(this.a.build(), this.b.build());
       }
    }
 }

@@ -1,26 +1,36 @@
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class fqw implements fqx {
-   private final wp b;
-   protected final fsh a = new fsh();
+public class fqw extends fpo {
+   @Nullable
+   protected frd a;
+   protected boolean b;
 
-   public fqw(wp $$0) {
+   public fqw(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      super($$0, $$1, $$2, $$3, wo.a);
+      this.b = $$4;
+   }
+
+   public void a(frd $$0) {
+      this.a = $$0;
+   }
+
+   public void b(boolean $$0) {
       this.b = $$0;
    }
 
-   @Override
-   public wp a() {
+   public boolean a() {
       return this.b;
    }
 
    @Override
-   public void a(Consumer<fos> $$0) {
-      this.a.a($$0);
+   public void a(ftn $$0) {
+      this.c($$0);
    }
 
    @Override
-   public void a(ftb $$0) {
-      this.a.a();
-      fsg.a(this.a, $$0, 0.5F, 0.16666667F);
+   public void b(fpc $$0, int $$1, int $$2, float $$3) {
+      if (this.a != null) {
+         $$0.a(gnh::H, this.a.a(this.b, this.D()), this.F(), this.G(), this.g, this.h);
+      }
    }
 }

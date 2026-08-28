@@ -1,24 +1,24 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public record adh(fbx b, float c, float d) implements yw<abl> {
+   public static final yn<vl, adh> a = yn.a(fbx.b, adh::b, yl.l, adh::e, yl.l, adh::f, adh::new);
 
-public record adh(int b, List<crm.a> c) implements yw<abl> {
-   public static final yn<vl, adh> a = yn.a(yl.h, adh::b, crm.a.a.a(yl.a()), adh::e, adh::new);
+   public static adh a(bva $$0) {
+      return new adh($$0.ds(), $$0.dK(), $$0.dM());
+   }
 
    @Override
    public yy<adh> a() {
-      return age.T;
+      return agd.U;
    }
 
    public void a(abl $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bum a(dgj $$0) {
-      return $$0.a(this.b);
+   public float e() {
+      return this.c;
    }
 
-   public List<crm.a> e() {
-      return this.c;
+   public float f() {
+      return this.d;
    }
 }

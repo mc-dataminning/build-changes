@@ -4,9 +4,9 @@ import java.util.Optional;
 
 public record di(
    Optional<di.b> b,
-   Optional<jv<dhl>> c,
-   Optional<jv<enn>> d,
-   Optional<aku<dgj>> e,
+   Optional<jv<dic>> c,
+   Optional<jv<eoj>> d,
+   Optional<akt<dgz>> e,
    Optional<Boolean> f,
    Optional<df> g,
    Optional<ay> h,
@@ -16,9 +16,9 @@ public record di(
    public static final Codec<di> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                di.b.a.optionalFieldOf("position").forGetter(di::a),
-               kg.a(mc.aI).optionalFieldOf("biomes").forGetter(di::b),
-               kg.a(mc.aU).optionalFieldOf("structures").forGetter(di::c),
-               aku.a(mc.be).optionalFieldOf("dimension").forGetter(di::d),
+               kg.a(mc.aJ).optionalFieldOf("biomes").forGetter(di::b),
+               kg.a(mc.aW).optionalFieldOf("structures").forGetter(di::c),
+               akt.a(mc.bg).optionalFieldOf("dimension").forGetter(di::d),
                Codec.BOOL.optionalFieldOf("smokey").forGetter(di::e),
                df.a.optionalFieldOf("light").forGetter(di::f),
                ay.a.optionalFieldOf("block").forGetter(di::g),
@@ -31,14 +31,14 @@ public record di(
    public boolean a(ard $$0, double $$1, double $$2, double $$3) {
       if (this.b.isPresent() && !this.b.get().a($$1, $$2, $$3)) {
          return false;
-      } else if (this.e.isPresent() && this.e.get() != $$0.ai()) {
+      } else if (this.e.isPresent() && this.e.get() != $$0.aj()) {
          return false;
       } else {
          ji $$4 = ji.a($$1, $$2, $$3);
          boolean $$5 = $$0.p($$4);
          if (!this.c.isPresent() || $$5 && this.c.get().a($$0.t($$4))) {
             if (!this.d.isPresent() || $$5 && $$0.b().a($$4, this.d.get()).b()) {
-               if (!this.f.isPresent() || $$5 && this.f.get() == dkc.a($$0, $$4)) {
+               if (!this.f.isPresent() || $$5 && this.f.get() == dkt.a($$0, $$4)) {
                   if (this.g.isPresent() && !this.g.get().a($$0, $$4)) {
                      return false;
                   } else if (this.h.isPresent() && !this.h.get().a($$0, $$4)) {
@@ -62,15 +62,15 @@ public record di(
       return this.b;
    }
 
-   public Optional<jv<dhl>> b() {
+   public Optional<jv<dic>> b() {
       return this.c;
    }
 
-   public Optional<jv<enn>> c() {
+   public Optional<jv<eoj>> c() {
       return this.d;
    }
 
-   public Optional<aku<dgj>> d() {
+   public Optional<akt<dgz>> d() {
       return this.e;
    }
 
@@ -98,9 +98,9 @@ public record di(
       private dk.c a;
       private dk.c b;
       private dk.c c;
-      private Optional<jv<dhl>> d;
-      private Optional<jv<enn>> e;
-      private Optional<aku<dgj>> f;
+      private Optional<jv<dic>> d;
+      private Optional<jv<eoj>> e;
+      private Optional<akt<dgz>> f;
       private Optional<Boolean> g;
       private Optional<df> h;
       private Optional<ay> i;
@@ -125,15 +125,15 @@ public record di(
          return new di.a();
       }
 
-      public static di.a a(jr<dhl> $$0) {
+      public static di.a a(jr<dic> $$0) {
          return a().a(jv.a($$0));
       }
 
-      public static di.a a(aku<dgj> $$0) {
+      public static di.a a(akt<dgz> $$0) {
          return a().b($$0);
       }
 
-      public static di.a b(jr<enn> $$0) {
+      public static di.a b(jr<eoj> $$0) {
          return a().b(jv.a($$0));
       }
 
@@ -156,17 +156,17 @@ public record di(
          return this;
       }
 
-      public di.a a(jv<dhl> $$0) {
+      public di.a a(jv<dic> $$0) {
          this.d = Optional.of($$0);
          return this;
       }
 
-      public di.a b(jv<enn> $$0) {
+      public di.a b(jv<eoj> $$0) {
          this.e = Optional.of($$0);
          return this;
       }
 
-      public di.a b(aku<dgj> $$0) {
+      public di.a b(akt<dgz> $$0) {
          this.f = Optional.of($$0);
          return this;
       }

@@ -1,57 +1,46 @@
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 
-public enum bvl implements azv {
-   a("monster", 70, false, false, 128),
-   b("creature", 10, true, true, 128),
-   c("ambient", 15, true, false, 128),
-   d("axolotls", 5, true, false, 128),
-   e("underground_water_creature", 5, true, false, 128),
-   f("water_creature", 5, true, false, 128),
-   g("water_ambient", 20, true, false, 64),
-   h("misc", -1, true, true, 128);
+public record bvl(akt<ewt> c, Map<bvj, Float> d) {
+   public static final Codec<Map<bvj, Float>> a = Codec.either(Codec.FLOAT, Codec.unboundedMap(bvj.k, Codec.FLOAT))
+      .xmap($$0 -> (Map)$$0.map(bvl::a, Function.identity()), $$0 -> {
+         boolean $$1 = $$0.values().stream().distinct().count() == 1L;
+         boolean $$2 = $$0.keySet().containsAll(bvj.i);
+         return $$1 && $$2 ? Either.left($$0.values().stream().findFirst().orElse(0.0F)) : Either.right($$0);
+      });
+   public static final Codec<bvl> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(akt.a(mc.bi).fieldOf("loot_table").forGetter(bvl::a), a.optionalFieldOf("slot_drop_chances", Map.of()).forGetter(bvl::b))
+            .apply($$0, bvl::new)
+   );
 
-   public static final Codec<bvl> i = azv.a(bvl::values);
-   private final int j;
-   private final boolean k;
-   private final boolean l;
-   private final String m;
-   private final int n = 32;
-   private final int o;
-
-   private bvl(final String $$0, final int $$1, final boolean $$2, final boolean $$3, final int $$4) {
-      this.m = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.o = $$4;
+   public bvl(akt<ewt> $$0, float $$1) {
+      this($$0, a($$1));
    }
 
-   public String a() {
-      return this.m;
+   private static Map<bvj, Float> a(float $$0) {
+      return a(List.of(bvj.values()), $$0);
    }
 
-   @Override
-   public String c() {
-      return this.m;
+   private static Map<bvj, Float> a(List<bvj> $$0, float $$1) {
+      Map<bvj, Float> $$2 = Maps.newHashMap();
+
+      for (bvj $$3 : $$0) {
+         $$2.put($$3, $$1);
+      }
+
+      return $$2;
    }
 
-   public int b() {
-      return this.j;
+   public akt<ewt> a() {
+      return this.c;
    }
 
-   public boolean d() {
-      return this.k;
-   }
-
-   public boolean e() {
-      return this.l;
-   }
-
-   public int f() {
-      return this.o;
-   }
-
-   public int g() {
-      return 32;
+   public Map<bvj, Float> b() {
+      return this.d;
    }
 }

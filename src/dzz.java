@@ -1,4 +1,11 @@
-import java.util.concurrent.Executor;
+import javax.annotation.Nullable;
 
-public record dzz(ard a, dyu b, erq c, arg d, Executor e, dzd.e f) {
+public interface dzz {
+   @Nullable
+   dzy c(int var1, int var2);
+
+   default void a(dhi $$0, kk $$1) {
+   }
+
+   dgf r();
 }

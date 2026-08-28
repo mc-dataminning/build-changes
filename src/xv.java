@@ -94,30 +94,32 @@ public class xv implements wq {
    }
 
    @Override
-   public xd a(@Nullable ex $$0, @Nullable bum $$1, int $$2) throws CommandSyntaxException {
+   public xd a(@Nullable ex $$0, @Nullable bva $$1, int $$2) throws CommandSyntaxException {
       if ($$0 != null && this.c != null) {
-         Stream<String> $$3 = this.h.a($$0).flatMap($$0x -> {
+         Stream<un> $$3 = this.h.a($$0).flatMap($$0x -> {
             try {
                return this.c.a($$0x).stream();
             } catch (CommandSyntaxException var3x) {
                return Stream.empty();
             }
-         }).map(un::u_);
+         });
          if (this.e) {
-            wp $$4 = (wp)DataFixUtils.orElse(ws.a($$0, this.f, $$1, $$2), ws.c);
-            return $$3.flatMap($$3x -> {
+            aks<un> $$4 = $$0.u().a(ue.a);
+            wp $$5 = (wp)DataFixUtils.orElse(ws.a($$0, this.f, $$1, $$2), ws.c);
+            return $$3.flatMap($$4x -> {
                try {
-                  xd $$4x = wp.a.a($$3x, $$0.u());
-                  return Stream.of(ws.a($$0, $$4x, $$1, $$2));
-               } catch (Exception var5x) {
-                  d.warn("Failed to parse component: {}", $$3x, var5x);
+                  wp $$5x = (wp)wr.a.parse($$4, $$4x).getOrThrow();
+                  return Stream.of(ws.a($$0, $$5x, $$1, $$2));
+               } catch (Exception var6x) {
+                  d.warn("Failed to parse component: {}", $$4x, var6x);
                   return Stream.of();
                }
-            }).reduce(($$1x, $$2x) -> $$1x.b($$4).b($$2x)).orElseGet(wp::i);
+            }).reduce(($$1x, $$2x) -> $$1x.b($$5).b($$2x)).orElseGet(wp::i);
          } else {
+            Stream<String> $$6 = $$3.map(un::p_);
             return ws.a($$0, this.f, $$1, $$2)
-               .map($$1x -> $$3.map(wp::b).reduce(($$1xx, $$2x) -> $$1xx.b($$1x).b($$2x)).orElseGet(wp::i))
-               .orElseGet(() -> wp.b($$3.collect(Collectors.joining(", "))));
+               .map($$1x -> $$6.map(wp::b).reduce(($$1xx, $$2x) -> $$1xx.b($$1x).b($$2x)).orElseGet(wp::i))
+               .orElseGet(() -> wp.b($$6.collect(Collectors.joining(", "))));
          }
       } else {
          return wp.i();

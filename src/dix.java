@@ -1,72 +1,75 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public abstract class dix extends djn implements dqt {
-   public static final dxp d = dxo.J;
-   private static final fbv a = djn.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
-
-   protected dix(dwx.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(d, Boolean.valueOf(true)));
-   }
+public abstract class dix extends dke {
+   protected static final int a = 4;
+   private static final fcr c = dke.b(12.0, 4.0, 16.0);
+   private static final fcr d = af.a(() -> {
+      int $$0 = 4;
+      int $$1 = 3;
+      int $$2 = 2;
+      return fco.a(fco.b(), fco.a(dke.a(16.0, 8.0, 0.0, 3.0), dke.a(8.0, 16.0, 0.0, 3.0), dke.b(12.0, 0.0, 3.0), c), fcb.e);
+   });
+   protected final ko.a b;
 
    @Override
    protected abstract MapCodec<? extends dix> a();
 
-   protected void a(dwy $$0, dfo $$1, dgy $$2, azh $$3, ji $$4) {
-      if (!d($$0, $$1, $$4)) {
-         $$2.a($$4, this, 60 + $$3.a(40));
-      }
+   public dix(dxp.d $$0, ko.a $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
-   protected static boolean d(dwy $$0, dfo $$1, ji $$2) {
-      if ($$0.c(d)) {
-         return true;
-      } else {
-         for (jn $$3 : jn.values()) {
-            if ($$1.b_($$2.a($$3)).a(awv.a)) {
-               return true;
-            }
+   protected double b(dxq $$0) {
+      return 0.0;
+   }
+
+   protected boolean a(dxq $$0, ji $$1, bva $$2) {
+      return $$2.dB() < (double)$$1.v() + this.b($$0) && $$2.cQ().e > (double)$$1.v() + 0.25;
+   }
+
+   @Override
+   protected bsy a(cxh $$0, dxq $$1, dgz $$2, ji $$3, cpr $$4, bsx $$5, fbt $$6) {
+      ko $$7 = this.b.b().get($$0.h());
+      return $$7.interact($$1, $$2, $$3, $$4, $$5, $$0);
+   }
+
+   @Override
+   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
+      return d;
+   }
+
+   @Override
+   protected fcr a(dxq $$0, dgf $$1, ji $$2) {
+      return c;
+   }
+
+   @Override
+   protected boolean c_(dxq $$0) {
+      return true;
+   }
+
+   @Override
+   protected boolean a(dxq $$0, eul $$1) {
+      return false;
+   }
+
+   public abstract boolean d(dxq var1);
+
+   @Override
+   protected void a(dxq $$0, ard $$1, ji $$2, azh $$3) {
+      ji $$4 = dqa.a((dgz)$$1, $$2);
+      if ($$4 != null) {
+         etv $$5 = dqa.a($$1, $$4);
+         if ($$5 != etx.a && this.a($$5)) {
+            this.a($$0, $$1, $$2, $$5);
          }
-
-         return false;
       }
    }
 
-   @Nullable
-   @Override
-   public dwy a(dah $$0) {
-      eta $$1 = $$0.q().b_($$0.a());
-      return this.m().b(d, Boolean.valueOf($$1.a(awv.a) && $$1.e() == 8));
+   protected boolean a(etv $$0) {
+      return false;
    }
 
-   @Override
-   protected fbv a(dwy $$0, dfo $$1, ji $$2, fbg $$3) {
-      return a;
-   }
-
-   @Override
-   protected dwy a(dwy $$0, dgm $$1, dgy $$2, ji $$3, jn $$4, ji $$5, dwy $$6, azh $$7) {
-      if ($$0.c(d)) {
-         $$2.a($$3, etb.c, etb.c.a($$1));
-      }
-
-      return $$4 == jn.a && !this.a($$0, $$1, $$3) ? djp.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected boolean a(dwy $$0, dgm $$1, ji $$2) {
-      ji $$3 = $$2.e();
-      return $$1.a_($$3).c($$1, $$3, jn.b);
-   }
-
-   @Override
-   protected void a(dwz.a<djn, dwy> $$0) {
-      $$0.a(d);
-   }
-
-   @Override
-   protected eta b_(dwy $$0) {
-      return $$0.c(d) ? etb.c.a(false) : super.b_($$0);
+   protected void a(dxq $$0, dgz $$1, ji $$2, etv $$3) {
    }
 }

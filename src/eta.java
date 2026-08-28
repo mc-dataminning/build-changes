@@ -1,118 +1,217 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import java.util.stream.Stream;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import it.unimi.dsi.fastutil.ints.IntBidirectionalIterator;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.stream.IntStream;
 import javax.annotation.Nullable;
 
-public final class eta extends dxa<esz, eta> {
-   public static final Codec<eta> a = a(mb.c.q(), esz::g).stable();
-   public static final int f = 9;
-   public static final int g = 8;
+public class eta {
+   private static final int a = 33554432;
+   private final esx[] b;
+   private final int c;
+   private final DoubleList d;
+   private final double e;
+   private final double f;
+   private final double g;
 
-   public eta(esz $$0, Reference2ObjectArrayMap<dya<?>, Comparable<?>> $$1, MapCodec<eta> $$2) {
-      super($$0, $$1, $$2);
+   @Deprecated
+   public static eta a(azh $$0, IntStream $$1) {
+      return new eta($$0, a(new IntRBTreeSet($$1.boxed().collect(ImmutableList.toImmutableList()))), false);
    }
 
-   public esz a() {
-      return this.d;
+   @Deprecated
+   public static eta a(azh $$0, int $$1, DoubleList $$2) {
+      return new eta($$0, Pair.of($$1, $$2), false);
    }
 
-   public boolean b() {
-      return this.a().c(this);
+   public static eta b(azh $$0, IntStream $$1) {
+      return a($$0, $$1.boxed().collect(ImmutableList.toImmutableList()));
    }
 
-   public boolean a(esz $$0) {
-      return this.d == $$0 && this.d.c(this);
+   public static eta a(azh $$0, List<Integer> $$1) {
+      return new eta($$0, a(new IntRBTreeSet($$1)), true);
    }
 
-   public boolean c() {
-      return this.a().b();
+   public static eta a(azh $$0, int $$1, double $$2, double... $$3) {
+      DoubleArrayList $$4 = new DoubleArrayList($$3);
+      $$4.add(0, $$2);
+      return new eta($$0, Pair.of($$1, $$4), true);
    }
 
-   public float a(dfo $$0, ji $$1) {
-      return this.a().a(this, $$0, $$1);
+   public static eta b(azh $$0, int $$1, DoubleList $$2) {
+      return new eta($$0, Pair.of($$1, $$2), true);
    }
 
-   public float d() {
-      return this.a().a(this);
-   }
+   private static Pair<Integer, DoubleList> a(IntSortedSet $$0) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Need some octaves!");
+      } else {
+         int $$1 = -$$0.firstInt();
+         int $$2 = $$0.lastInt();
+         int $$3 = $$1 + $$2 + 1;
+         if ($$3 < 1) {
+            throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
+         } else {
+            DoubleList $$4 = new DoubleArrayList(new double[$$3]);
+            IntBidirectionalIterator $$5 = $$0.iterator();
 
-   public int e() {
-      return this.a().d(this);
-   }
-
-   public boolean b(dfo $$0, ji $$1) {
-      for (int $$2 = -1; $$2 <= 1; $$2++) {
-         for (int $$3 = -1; $$3 <= 1; $$3++) {
-            ji $$4 = $$1.b($$2, 0, $$3);
-            eta $$5 = $$0.b_($$4);
-            if (!$$5.a().a(this.a()) && !$$0.a_($$4).s()) {
-               return true;
+            while ($$5.hasNext()) {
+               int $$6 = $$5.nextInt();
+               $$4.set($$6 + $$1, 1.0);
             }
+
+            return Pair.of(-$$1, $$4);
+         }
+      }
+   }
+
+   protected eta(azh $$0, Pair<Integer, DoubleList> $$1, boolean $$2) {
+      this.c = (Integer)$$1.getFirst();
+      this.d = (DoubleList)$$1.getSecond();
+      int $$3 = this.d.size();
+      int $$4 = -this.c;
+      this.b = new esx[$$3];
+      if ($$2) {
+         eeb $$5 = $$0.e();
+
+         for (int $$6 = 0; $$6 < $$3; $$6++) {
+            if (this.d.getDouble($$6) != 0.0) {
+               int $$7 = this.c + $$6;
+               this.b[$$6] = new esx($$5.a("octave_" + $$7));
+            }
+         }
+      } else {
+         esx $$8 = new esx($$0);
+         if ($$4 >= 0 && $$4 < $$3) {
+            double $$9 = this.d.getDouble($$4);
+            if ($$9 != 0.0) {
+               this.b[$$4] = $$8;
+            }
+         }
+
+         for (int $$10 = $$4 - 1; $$10 >= 0; $$10--) {
+            if ($$10 < $$3) {
+               double $$11 = this.d.getDouble($$10);
+               if ($$11 != 0.0) {
+                  this.b[$$10] = new esx($$0);
+               } else {
+                  a($$0);
+               }
+            } else {
+               a($$0);
+            }
+         }
+
+         if (Arrays.stream(this.b).filter(Objects::nonNull).count() != this.d.stream().filter($$0x -> $$0x != 0.0).count()) {
+            throw new IllegalStateException("Failed to create correct number of noise levels for given non-zero amplitudes");
+         }
+
+         if ($$4 < $$3 - 1) {
+            throw new IllegalArgumentException("Positive octaves are temporarily disabled");
          }
       }
 
-      return false;
+      this.f = Math.pow(2.0, (double)(-$$4));
+      this.e = Math.pow(2.0, (double)($$3 - 1)) / (Math.pow(2.0, (double)$$3) - 1.0);
+      this.g = this.c(2.0);
    }
 
-   public void a(ard $$0, ji $$1, dwy $$2) {
-      this.a().b($$0, $$1, $$2, this);
+   protected double a() {
+      return this.g;
    }
 
-   public void a(dgj $$0, ji $$1, azh $$2) {
-      this.a().a($$0, $$1, this, $$2);
+   private static void a(azh $$0) {
+      $$0.b(262);
    }
 
-   public boolean f() {
-      return this.a().i();
+   public double a(double $$0, double $$1, double $$2) {
+      return this.a($$0, $$1, $$2, 0.0, 0.0, false);
    }
 
-   public void a(ard $$0, ji $$1, azh $$2) {
-      this.a().a($$0, $$1, this, $$2);
+   @Deprecated
+   public double a(double $$0, double $$1, double $$2, double $$3, double $$4, boolean $$5) {
+      double $$6 = 0.0;
+      double $$7 = this.f;
+      double $$8 = this.e;
+
+      for (int $$9 = 0; $$9 < this.b.length; $$9++) {
+         esx $$10 = this.b[$$9];
+         if ($$10 != null) {
+            double $$11 = $$10.a(b($$0 * $$7), $$5 ? -$$10.b : b($$1 * $$7), b($$2 * $$7), $$3 * $$7, $$4 * $$7);
+            $$6 += this.d.getDouble($$9) * $$11 * $$8;
+         }
+
+         $$7 *= 2.0;
+         $$8 /= 2.0;
+      }
+
+      return $$6;
    }
 
-   public fbb c(dfo $$0, ji $$1) {
-      return this.a().a($$0, $$1, this);
+   public double a(double $$0) {
+      return this.c($$0 + 2.0);
    }
 
-   public dwy g() {
-      return this.a().b(this);
+   private double c(double $$0) {
+      double $$1 = 0.0;
+      double $$2 = this.e;
+
+      for (int $$3 = 0; $$3 < this.b.length; $$3++) {
+         esx $$4 = this.b[$$3];
+         if ($$4 != null) {
+            $$1 += this.d.getDouble($$3) * $$0 * $$2;
+         }
+
+         $$2 /= 2.0;
+      }
+
+      return $$1;
    }
 
    @Nullable
-   public lr h() {
-      return this.a().h();
+   public esx a(int $$0) {
+      return this.b[this.b.length - 1 - $$0];
    }
 
-   public boolean a(axf<esz> $$0) {
-      return this.a().k().a($$0);
+   public static double b(double $$0) {
+      return $$0 - (double)ayz.b($$0 / 3.3554432E7 + 0.5) * 3.3554432E7;
    }
 
-   public boolean a(jv<esz> $$0) {
-      return $$0.a(this.a().k());
+   protected int b() {
+      return this.c;
    }
 
-   public boolean b(esz $$0) {
-      return this.a() == $$0;
+   protected DoubleList c() {
+      return this.d;
    }
 
-   public float i() {
-      return this.a().c();
-   }
+   @VisibleForTesting
+   public void a(StringBuilder $$0) {
+      $$0.append("PerlinNoise{");
+      List<String> $$1 = this.d.stream().map($$0x -> String.format(Locale.ROOT, "%.2f", $$0x)).toList();
+      $$0.append("first octave: ").append(this.c).append(", amplitudes: ").append($$1).append(", noise levels: [");
 
-   public boolean a(dfo $$0, ji $$1, esz $$2, jn $$3) {
-      return this.a().a(this, $$0, $$1, $$2, $$3);
-   }
+      for (int $$2 = 0; $$2 < this.b.length; $$2++) {
+         $$0.append($$2).append(": ");
+         esx $$3 = this.b[$$2];
+         if ($$3 == null) {
+            $$0.append("null");
+         } else {
+            $$3.a($$0);
+         }
 
-   public fbv d(dfo $$0, ji $$1) {
-      return this.a().b(this, $$0, $$1);
-   }
+         $$0.append(", ");
+      }
 
-   public jr<esz> j() {
-      return this.d.k();
-   }
-
-   public Stream<axf<esz>> k() {
-      return this.d.k().c();
+      $$0.append("]");
+      $$0.append("}");
    }
 }

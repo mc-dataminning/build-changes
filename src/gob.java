@@ -1,66 +1,78 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Streams;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import java.util.function.Supplier;
 
-public class gob {
-   private final gnx a;
-   private final gnr b;
+public class gob implements auq {
+   private final goa a;
+   private final god b;
+   private final Supplier<gnu> c;
+   private final goc d;
+   private final azh e = azh.a();
+   private final fni f;
 
-   public gob(gnx $$0, gnr $$1) {
+   public gob(goa $$0, Supplier<gnu> $$1, fni $$2) {
       this.a = $$0;
-      this.b = $$1;
+      this.c = $$1;
+      this.f = $$2;
+      this.b = new god(this.f);
+      this.d = new goc();
    }
 
-   public gnr a() {
+   public goa a() {
+      return this.a;
+   }
+
+   public void a(dxq $$0, ji $$1, dgc $$2, fgr $$3, fgv $$4) {
+      if ($$0.o() == dqp.b) {
+         hhr $$5 = this.a.b($$0);
+         long $$6 = $$0.b($$1);
+         this.b.a($$2, $$5, $$0, $$1, $$3, $$4, true, this.e, $$6, hfh.d);
+      }
+   }
+
+   public void a(dxq $$0, ji $$1, dgc $$2, fgr $$3, fgv $$4, boolean $$5, azh $$6) {
+      try {
+         this.b.a($$2, this.a($$0), $$0, $$1, $$3, $$4, $$5, $$6, $$0.b($$1), hfh.d);
+      } catch (Throwable var11) {
+         o $$8 = o.a(var11, "Tesselating block in world");
+         p $$9 = $$8.a("Block being tesselated");
+         p.a($$9, $$2, $$1, $$0);
+         throw new z($$8);
+      }
+   }
+
+   public void a(ji $$0, dgc $$1, fgv $$2, dxq $$3, etw $$4) {
+      try {
+         this.d.a($$1, $$0, $$2, $$3, $$4);
+      } catch (Throwable var9) {
+         o $$6 = o.a(var9, "Tesselating liquid in world");
+         p $$7 = $$6.a("Block being tesselated");
+         p.a($$7, $$1, $$0, null);
+         throw new z($$6);
+      }
+   }
+
+   public god b() {
       return this.b;
    }
 
-   public Predicate<dwy> a(dwz<djn, dwy> $$0) {
-      return this.a.getPredicate($$0);
+   public hhr a(dxq $$0) {
+      return this.a.b($$0);
    }
 
-   public static class a implements JsonDeserializer<gob> {
-      public gob a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         return new gob(this.b($$3), (gnr)$$2.deserialize($$3.get("apply"), gnr.class));
+   public void a(dxq $$0, fgr $$1, gmx $$2, int $$3, int $$4) {
+      dqp $$5 = $$0.o();
+      if ($$5 != dqp.a) {
+         hhr $$6 = this.a($$0);
+         int $$7 = this.f.a($$0, null, null, 0);
+         float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
+         float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
+         float $$10 = (float)($$7 & 0xFF) / 255.0F;
+         this.b.a($$1.c(), $$2.getBuffer(gmq.c($$0)), $$0, $$6, $$8, $$9, $$10, $$3, $$4);
+         this.c.get().a($$0.b(), cxf.a, $$1, $$2, $$3, $$4);
       }
+   }
 
-      private gnx b(JsonObject $$0) {
-         return $$0.has("when") ? a(ayp.u($$0, "when")) : gnx.b;
-      }
-
-      @VisibleForTesting
-      static gnx a(JsonObject $$0) {
-         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
-         if ($$1.isEmpty()) {
-            throw new JsonParseException("No elements found in selector");
-         } else if ($$1.size() == 1) {
-            if ($$0.has("OR")) {
-               List<gnx> $$2 = Streams.stream(ayp.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
-               return new goa($$2);
-            } else if ($$0.has("AND")) {
-               List<gnx> $$3 = Streams.stream(ayp.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
-               return new gnw($$3);
-            } else {
-               return a($$1.iterator().next());
-            }
-         } else {
-            return new gnw($$1.stream().map(gob.a::a).collect(Collectors.toList()));
-         }
-      }
-
-      private static gnx a(Entry<String, JsonElement> $$0) {
-         return new gny($$0.getKey(), $$0.getValue().getAsString());
-      }
+   @Override
+   public void a(aup $$0) {
+      this.d.a();
    }
 }

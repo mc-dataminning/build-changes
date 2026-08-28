@@ -2,23 +2,23 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class pv {
-   public static final aku<eox> a = ql.a("ancient_city/city_center");
+   public static final akt<ept> a = ql.a("ancient_city/city_center");
 
-   public static void a(qe<eox> $$0) {
-      js<ern> $$1 = $$0.a(mc.aV);
-      jr<ern> $$2 = $$1.b(qm.G);
-      js<eox> $$3 = $$0.a(mc.aX);
-      jr<eox> $$4 = $$3.b(ql.a);
+   public static void a(qe<ept> $$0) {
+      js<esj> $$1 = $$0.a(mc.aX);
+      jr<esj> $$2 = $$1.b(qm.G);
+      js<ept> $$3 = $$0.a(mc.aZ);
+      jr<ept> $$4 = $$3.b(ql.a);
       $$0.a(
          a,
-         new eox(
+         new ept(
             $$4,
             ImmutableList.of(
-               Pair.of(eov.b("ancient_city/city_center/city_center_1", $$2), 1),
-               Pair.of(eov.b("ancient_city/city_center/city_center_2", $$2), 1),
-               Pair.of(eov.b("ancient_city/city_center/city_center_3", $$2), 1)
+               Pair.of(epr.b("ancient_city/city_center/city_center_1", $$2), 1),
+               Pair.of(epr.b("ancient_city/city_center/city_center_2", $$2), 1),
+               Pair.of(epr.b("ancient_city/city_center/city_center_3", $$2), 1)
             ),
-            eox.a.b
+            ept.a.b
          )
       );
       pw.a($$0);

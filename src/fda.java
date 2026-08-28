@@ -1,15 +1,34 @@
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.system.MemoryUtil;
+import javax.annotation.Nullable;
 
-public class fda {
-   public static void a() {
-      MemoryUtil.memSet(0L, 0, 1L);
+public interface fda {
+   int a();
+
+   void a(int var1);
+
+   default int b(int $$0) {
+      int $$1 = this.a() + $$0;
+      this.a($$1);
+      return $$1;
    }
 
-   public static double b() {
-      return GLFW.glfwGetTime();
+   default int b() {
+      return this.b(1);
    }
 
-   private fda() {
+   default void c() {
+      this.a(0);
    }
+
+   boolean d();
+
+   void e();
+
+   void f();
+
+   @Nullable
+   wp g();
+
+   void a(@Nullable wp var1);
+
+   void a(@Nullable yf var1);
 }

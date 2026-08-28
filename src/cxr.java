@@ -1,59 +1,59 @@
 import java.util.List;
+import java.util.function.Predicate;
 
-public class cxr extends cwm {
-   public cxr(cwm.a $$0) {
+public class cxr extends cxd {
+   public cxr(cxd.a $$0) {
       super($$0);
    }
 
-   public static czs b() {
-      js<djn> $$0 = mb.a(mb.e);
-      return new czs(
-         List.of(czs.a.a(jv.a(djp.bz.p()), 15.0F), czs.a.b($$0.b(awp.Q), 15.0F), czs.a.b($$0.b(awp.a), 5.0F), czs.a.b(jv.a(djp.ft.p(), djp.fu.p()), 2.0F)),
-         1.0F,
-         1
-      );
-   }
-
    @Override
-   public boolean a(cwq $$0, dgj $$1, dwy $$2, ji $$3, bvi $$4) {
-      if (!$$1.C && !$$2.a(awp.aN)) {
-         $$0.a(1, $$4, buu.a);
-      }
-
-      return $$2.a(awp.Q)
-         || $$2.a(djp.bz)
-         || $$2.a(djp.bA)
-         || $$2.a(djp.bB)
-         || $$2.a(djp.bC)
-         || $$2.a(djp.ti)
-         || $$2.a(djp.ft)
-         || $$2.a(djp.gd)
-         || $$2.a(awp.a);
-   }
-
-   @Override
-   public bsl a(daj $$0) {
-      dgj $$1 = $$0.q();
+   public bsy a(daz $$0) {
+      dgz $$1 = $$0.q();
       ji $$2 = $$0.a();
-      dwy $$3 = $$1.a_($$2);
-      if ($$3.b() instanceof dnd $$5 && !$$5.q($$3)) {
-         coy $$6 = $$0.o();
-         cwq $$7 = $$0.n();
-         if ($$6 instanceof are) {
-            ap.N.a((are)$$6, $$2, $$7);
+      dxq $$3 = $$1.a_($$2);
+      if ($$3.a(awp.U)) {
+         cpr $$4 = $$0.o();
+         if (!$$1.C && $$4 != null) {
+            return a($$4, $$1, $$2);
          }
-
-         $$1.a($$6, $$2, awa.lN, awb.e, 1.0F, 1.0F);
-         dwy $$8 = $$5.p($$3);
-         $$1.b($$2, $$8);
-         $$1.a(ebu.c, $$2, ebu.a.a($$0.o(), $$8));
-         if ($$6 != null) {
-            $$7.a(1, $$6, bvi.d($$0.p()));
-         }
-
-         return bsl.a;
       }
 
-      return super.a($$0);
+      return bsy.e;
+   }
+
+   public static bsy a(cpr $$0, dgz $$1, ji $$2) {
+      clq $$3 = null;
+      List<bvw> $$4 = a($$1, $$2, $$1x -> $$1x.C() == $$0);
+
+      for (bvw $$5 : $$4) {
+         if ($$3 == null) {
+            $$3 = clq.a($$1, $$2);
+            $$3.m();
+         }
+
+         $$5.b($$3, true);
+      }
+
+      if (!$$4.isEmpty()) {
+         $$1.a(ecp.b, $$2, ecp.a.a($$0));
+         return bsy.b;
+      } else {
+         return bsy.e;
+      }
+   }
+
+   public static List<bvw> a(dgz $$0, ji $$1, Predicate<bvw> $$2) {
+      double $$3 = 7.0;
+      int $$4 = $$1.u();
+      int $$5 = $$1.v();
+      int $$6 = $$1.w();
+      fbs $$7 = new fbs((double)$$4 - 7.0, (double)$$5 - 7.0, (double)$$6 - 7.0, (double)$$4 + 7.0, (double)$$5 + 7.0, (double)$$6 + 7.0);
+      return $$0.a(bva.class, $$7, $$1x -> {
+         if ($$1x instanceof bvw $$2x && $$2.test($$2x)) {
+            return true;
+         }
+
+         return false;
+      }).stream().map(bvw.class::cast).toList();
    }
 }

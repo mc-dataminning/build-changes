@@ -1,30 +1,37 @@
-import java.util.List;
-import java.util.Optional;
+public class aha implements yw<agf> {
+   public static final yn<vl, aha> a = yw.a(aha::a, aha::new);
+   private final int b;
+   private final int c;
 
-public record aha(int b, List<String> c, Optional<String> d) implements yw<agg> {
-   public static final yn<vl, aha> a = yn.a(yl.h, aha::b, yl.b(1024).a(yl.c(100)), aha::e, yl.b(32).a(yl::a), aha::f, aha::new);
+   public aha(int $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
 
-   public aha(int b, List<String> c, Optional<String> d) {
-      c = List.copyOf(c);
-      this.b = b;
-      this.c = c;
-      this.d = d;
+   private aha(vl $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
+   }
+
+   private void a(vl $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
    }
 
    @Override
    public yy<aha> a() {
-      return age.bD;
+      return agd.bD;
    }
 
-   public void a(agg $$0) {
+   public void a(agf $$0) {
       $$0.a(this);
    }
 
-   public List<String> e() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 
-   public Optional<String> f() {
-      return this.d;
+   public int e() {
+      return this.c;
    }
 }

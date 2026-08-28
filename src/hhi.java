@@ -1,30 +1,14 @@
-import java.util.Locale;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record hhi(akv a, String b) {
-   public hhi(akv a, String b) {
-      b = a(b);
-      this.a = a;
-      this.b = b;
-   }
+public record hhi(hhj d) {
+   public static final hhi a = new hhi(hhj.b);
+   public static final Codec<hhi> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(hhj.a.optionalFieldOf("scaling", hhj.b).forGetter(hhi::a)).apply($$0, hhi::new)
+   );
+   public static final atp<hhi> c = new atp<>("gui", b);
 
-   private static String a(String $$0) {
-      return $$0.toLowerCase(Locale.ROOT);
-   }
-
-   public String a() {
-      return this.b;
-   }
-
-   @Override
-   public String toString() {
-      return this.a + "#" + this.b;
-   }
-
-   public akv b() {
-      return this.a;
-   }
-
-   public String c() {
-      return this.b;
+   public hhj a() {
+      return this.d;
    }
 }

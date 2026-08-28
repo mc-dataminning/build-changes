@@ -1,32 +1,63 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+import java.util.List;
 
-public record czk(Optional<jq> c, boolean d) {
-   public static final Codec<czk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jq.b.optionalFieldOf("target").forGetter(czk::a), Codec.BOOL.optionalFieldOf("tracked", true).forGetter(czk::b)).apply($$0, czk::new)
-   );
-   public static final yn<ByteBuf, czk> b = yn.a(jq.c.a(yl::a), czk::a, yl.b, czk::b, czk::new);
+public final class czk {
+   public static final czk a = new czk(List.of());
+   public static final Codec<czk> b = cxh.b.listOf().xmap(czk::new, $$0 -> $$0.d);
+   public static final yn<wa, czk> c = cxh.i.a(yl.a()).a(czk::new, $$0 -> $$0.d);
+   private final List<cxh> d;
 
-   public czk a(ard $$0) {
-      if (this.d && !this.c.isEmpty()) {
-         if (this.c.get().a() != $$0.ai()) {
-            return this;
-         } else {
-            ji $$1 = this.c.get().b();
-            return $$0.k($$1) && $$0.A().a(cgq.s, $$1) ? this : new czk(Optional.empty(), true);
-         }
-      } else {
-         return this;
-      }
+   private czk(List<cxh> $$0) {
+      this.d = $$0;
    }
 
-   public Optional<jq> a() {
-      return this.c;
+   public static czk a(cxh $$0) {
+      return new czk(List.of($$0.v()));
+   }
+
+   public static czk a(List<cxh> $$0) {
+      return new czk(List.copyOf(Lists.transform($$0, cxh::v)));
+   }
+
+   public boolean a(cxd $$0) {
+      for (cxh $$1 : this.d) {
+         if ($$1.a($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public List<cxh> a() {
+      return Lists.transform(this.d, cxh::v);
    }
 
    public boolean b() {
-      return this.d;
+      return this.d.isEmpty();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof czk $$1 && cxh.a(this.d, $$1.d)) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return cxh.a(this.d);
+   }
+
+   @Override
+   public String toString() {
+      return "ChargedProjectiles[items=" + this.d + "]";
    }
 }

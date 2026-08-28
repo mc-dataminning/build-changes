@@ -1,28 +1,29 @@
 import com.mojang.serialization.Codec;
 
-public class egx extends efz<eiq> {
-   public egx(Codec<eiq> $$0) {
+public class egx extends egu<ejc> {
+   public egx(Codec<ejc> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egb<eiq> $$0) {
-      eiq $$1 = $$0.f();
-      azh $$2 = $$0.d();
-      ji $$3 = $$0.e();
-      dhh $$4 = $$0.b();
-      int $$5 = 0;
-      ji.a $$6 = new ji.a();
-      int $$7 = $$1.b() + 1;
-      int $$8 = $$1.c() + 1;
+   public boolean a(egw<ejc> $$0) {
+      ji $$1 = $$0.e();
+      ejc $$2 = $$0.f();
+      dhy $$3 = $$0.b();
+      ji.a $$4 = new ji.a();
 
-      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
-         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
-         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
-            $$5++;
+      for (int $$5 = 0; $$5 < 16; $$5++) {
+         for (int $$6 = 0; $$6 < 16; $$6++) {
+            int $$7 = $$1.u() + $$5;
+            int $$8 = $$1.w() + $$6;
+            int $$9 = $$3.G_() + $$2.b;
+            $$4.d($$7, $$9, $$8);
+            if ($$3.a_($$4).l()) {
+               $$3.a($$4, $$2.c, 2);
+            }
          }
       }
 
-      return $$5 > 0;
+      return true;
    }
 }

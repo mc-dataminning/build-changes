@@ -1,3 +1,8 @@
-public interface gaw {
-   void a(bvc var1, ffv var2);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gaw {
 }

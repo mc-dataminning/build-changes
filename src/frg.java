@@ -1,123 +1,62 @@
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Locale;
 
-public class frg implements fre {
-   private static final akv h = akv.b("toast/tutorial");
-   public static final int a = 154;
-   public static final int e = 1;
-   public static final int f = 3;
-   public static final int g = 4;
-   private static final int i = 7;
-   private static final int j = 3;
-   private static final int k = 11;
-   private static final int l = 30;
-   private static final int m = 126;
-   private final frg.a n;
-   private final List<ayl> o;
-   private fre.a p = fre.a.a;
-   private long q;
-   private float r;
-   private float s;
-   private final boolean t;
-   private final int u;
+public class frg extends frf {
+   private static final int f = -16711681;
+   private static final int g = -6250241;
+   private static final int h = -65536;
+   private static final int i = 1024;
+   private static final int j = 1048576;
+   private static final int k = 1048576;
 
-   public frg(fod $$0, frg.a $$1, wp $$2, @Nullable wp $$3, boolean $$4, int $$5) {
-      this.n = $$1;
-      this.o = new ArrayList<>(2);
-      this.o.addAll($$0.c($$2.f().b(-11534256), 126));
-      if ($$3 != null) {
-         this.o.addAll($$0.c($$3, 126));
-      }
-
-      this.t = $$4;
-      this.u = $$5;
-   }
-
-   public frg(fod $$0, frg.a $$1, wp $$2, @Nullable wp $$3, boolean $$4) {
-      this($$0, $$1, $$2, $$3, $$4, 0);
+   public frg(fpa $$0, bnx $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public fre.a a() {
-      return this.p;
+   protected void d(fpc $$0, int $$1, int $$2, int $$3) {
+      this.a($$0, $$1, $$2, $$3, 64);
+      this.a($$0, $$1, $$2, $$3, 1024);
+      this.a($$0, $$1, $$2, $$3, 16384);
+      this.a($$0, c(1048576.0), $$1 + 1, $$3 - d(1048576.0) + 1);
+   }
+
+   private void a(fpc $$0, int $$1, int $$2, int $$3, int $$4) {
+      this.a($$0, $$1, $$2, $$3 - d((double)$$4), c((double)$$4));
+   }
+
+   private void a(fpc $$0, int $$1, int $$2, int $$3, String $$4) {
+      this.a($$0, $$4, $$1 + 1, $$3 + 1);
+      $$0.a(gnh.L(), $$1, $$1 + $$2 - 1, $$3, -1);
    }
 
    @Override
-   public void a(frf $$0, long $$1) {
-      if (this.u > 0) {
-         this.s = Math.min((float)$$1 / (float)this.u, 1.0F);
-         this.r = this.s;
-         this.q = $$1;
-         if ($$1 > (long)this.u) {
-            this.d();
-         }
-      } else if (this.t) {
-         this.r = ayz.b(this.r, this.s, (float)($$1 - this.q) / 100.0F);
-         this.q = $$1;
+   protected String a(double $$0) {
+      return c(e($$0));
+   }
+
+   private static String c(double $$0) {
+      if ($$0 >= 1048576.0) {
+         return String.format(Locale.ROOT, "%.1f MiB/s", $$0 / 1048576.0);
+      } else {
+         return $$0 >= 1024.0 ? String.format(Locale.ROOT, "%.1f KiB/s", $$0 / 1024.0) : String.format(Locale.ROOT, "%d B/s", ayz.a($$0));
       }
    }
 
    @Override
-   public int c() {
-      return 7 + this.e() + 3;
+   protected int b(double $$0) {
+      return d(e($$0));
    }
 
-   private int e() {
-      return Math.max(this.o.size(), 2) * 11;
+   private static int d(double $$0) {
+      return (int)Math.round(Math.log($$0 + 1.0) * 60.0 / Math.log(1048576.0));
    }
 
    @Override
-   public void a(fof $$0, fod $$1, long $$2) {
-      int $$3 = this.c();
-      $$0.a(gmj::H, h, 0, 0, this.b(), $$3);
-      this.n.a($$0, 6, 6);
-      int $$4 = this.o.size() * 11;
-      int $$5 = 7 + (this.e() - $$4) / 2;
-
-      for (int $$6 = 0; $$6 < this.o.size(); $$6++) {
-         $$0.a($$1, this.o.get($$6), 30, $$5 + $$6 * 11, -16777216, false);
-      }
-
-      if (this.t) {
-         int $$7 = $$3 - 4;
-         $$0.a(3, $$7, 157, $$7 + 1, -1);
-         int $$8;
-         if (this.s >= this.r) {
-            $$8 = -16755456;
-         } else {
-            $$8 = -11206656;
-         }
-
-         $$0.a(3, $$7, (int)(3.0F + 154.0F * this.r), $$7 + 1, $$8);
-      }
+   protected int a(long $$0) {
+      return this.a(e((double)$$0), 0.0, -16711681, 8192.0, -6250241, 1.048576E7, -65536);
    }
 
-   public void d() {
-      this.p = fre.a.b;
-   }
-
-   public void a(float $$0) {
-      this.s = $$0;
-   }
-
-   public static enum a {
-      a(akv.b("toast/movement_keys")),
-      b(akv.b("toast/mouse")),
-      c(akv.b("toast/tree")),
-      d(akv.b("toast/recipe_book")),
-      e(akv.b("toast/wooden_planks")),
-      f(akv.b("toast/social_interactions")),
-      g(akv.b("toast/right_click"));
-
-      private final akv h;
-
-      private a(final akv $$0) {
-         this.h = $$0;
-      }
-
-      public void a(fof $$0, int $$1, int $$2) {
-         $$0.a(gmj::H, this.h, $$1, $$2, 20, 20);
-      }
+   private static double e(double $$0) {
+      return $$0 * 20.0;
    }
 }

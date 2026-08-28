@@ -1,42 +1,40 @@
-import java.util.Optional;
+import it.unimi.dsi.fastutil.HashCommon;
+import javax.annotation.Nullable;
 
-public record euo(jr<eup> b, byte c, byte d, byte e, Optional<wp> f) {
-   public static final yn<wa, euo> a = yn.a(eup.c, euo::c, yl.c, euo::d, yl.c, euo::e, yl.c, euo::f, wr.c, euo::g, euo::new);
+public class euo {
+   private static final int a = 4096;
+   private static final int b = 4095;
+   private final long[] c = new long[4096];
+   private final eun[] d = new eun[4096];
 
-   public euo(jr<eup> b, byte c, byte d, byte e, Optional<wp> f) {
-      e = (byte)(e & 15);
-      this.b = b;
-      this.c = c;
-      this.d = d;
-      this.e = e;
-      this.f = f;
+   public eun a(dgf $$0, ji $$1) {
+      long $$2 = $$1.a();
+      int $$3 = a($$2);
+      eun $$4 = this.a($$3, $$2);
+      return $$4 != null ? $$4 : this.a($$0, $$1, $$3, $$2);
    }
 
-   public akv a() {
-      return this.b.a().b();
+   @Nullable
+   private eun a(int $$0, long $$1) {
+      return this.c[$$0] == $$1 ? this.d[$$0] : null;
    }
 
-   public boolean b() {
-      return this.b.a().c();
+   private eun a(dgf $$0, ji $$1, int $$2, long $$3) {
+      eun $$4 = eus.b($$0, $$1);
+      this.c[$$2] = $$3;
+      this.d[$$2] = $$4;
+      return $$4;
    }
 
-   public jr<eup> c() {
-      return this.b;
+   public void a(ji $$0) {
+      long $$1 = $$0.a();
+      int $$2 = a($$1);
+      if (this.c[$$2] == $$1) {
+         this.d[$$2] = null;
+      }
    }
 
-   public byte d() {
-      return this.c;
-   }
-
-   public byte e() {
-      return this.d;
-   }
-
-   public byte f() {
-      return this.e;
-   }
-
-   public Optional<wp> g() {
-      return this.f;
+   private static int a(long $$0) {
+      return (int)HashCommon.mix($$0) & 4095;
    }
 }

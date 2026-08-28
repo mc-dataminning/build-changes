@@ -1,44 +1,70 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class dsh extends diz {
+public class dsh extends dke {
    public static final MapCodec<dsh> a = b(dsh::new);
-   public static final dxv<dwe> b = dxo.bB;
-   public static final dxp c = dxo.bD;
+   private static final wp c = wp.c("container.stonecutter");
+   public static final dyo<jn> b = dod.e;
+   private static final fcr d = dke.b(16.0, 0.0, 9.0);
 
    @Override
    public MapCodec<dsh> a() {
       return a;
    }
 
-   public dsh(dwx.d $$0) {
+   public dsh(dxp.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, dwe.a).b(c, Boolean.valueOf(false)));
+      this.l(this.B.b().b(b, jn.c));
    }
 
    @Override
-   protected void a(dwz.a<djn, dwy> $$0) {
-      $$0.a(b, c);
+   public dxq a(dax $$0) {
+      return this.m().b(b, $$0.g().g());
+   }
+
+   @Override
+   protected bsy a(dxq $$0, dgz $$1, ji $$2, cpr $$3, fbt $$4) {
+      if (!$$1.C) {
+         $$3.a($$0.c($$1, $$2));
+         $$3.a(awk.ay);
+      }
+
+      return bsy.a;
    }
 
    @Nullable
    @Override
-   public dua a(ji $$0, dwy $$1) {
-      return new dvx($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dua> dub<T> a(dgj $$0, dwy $$1, duc<T> $$2) {
-      return $$0 instanceof ard $$3
-         ? a($$2, duc.R, ($$1x, $$2x, $$3x, $$4) -> $$4.c().a($$3, $$2x, $$3x.d(dxo.bD).orElse(false)))
-         : a($$2, duc.R, ($$0x, $$1x, $$2x, $$3x) -> $$3x.c().a($$0x, $$1x, $$2x.d(dxo.bD).orElse(false)));
+   protected bta b(dxq $$0, dgz $$1, ji $$2) {
+      return new btg(($$2x, $$3, $$4) -> new cuz($$2x, $$3, ctj.a($$1, $$2)), c);
    }
 
    @Override
-   public void a(cwq $$0, cwm.b $$1, List<wp> $$2, cyi $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      dhe.a($$0, $$2, "spawn_data");
+   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
+      return d;
+   }
+
+   @Override
+   protected boolean g_(dxq $$0) {
+      return true;
+   }
+
+   @Override
+   protected dxq a(dxq $$0, dqw $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dxq a(dxq $$0, dpf $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dxr.a<dke, dxq> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected boolean a(dxq $$0, eul $$1) {
+      return false;
    }
 }

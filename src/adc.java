@@ -1,88 +1,85 @@
-import com.google.common.collect.Lists;
-import io.netty.buffer.ByteBuf;
-import java.util.BitSet;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-public class adc {
-   private static final yn<ByteBuf, byte[]> a = yl.a(2048);
-   private final BitSet b;
-   private final BitSet c;
-   private final BitSet d;
-   private final BitSet e;
-   private final List<byte[]> f;
-   private final List<byte[]> g;
+public record adc(int b, boolean c, Set<akt<dgz>> d, int e, int f, int g, boolean h, boolean i, boolean j, aga k, boolean l) implements yw<abl> {
+   public static final yn<wa, adc> a = yw.a(adc::a, adc::new);
 
-   public adc(dfp $$0, esp $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      this.b = new BitSet();
-      this.c = new BitSet();
-      this.d = new BitSet();
-      this.e = new BitSet();
-      this.f = Lists.newArrayList();
-      this.g = Lists.newArrayList();
-
-      for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
-         if ($$2 == null || $$2.get($$4)) {
-            this.a($$0, $$1, dgs.a, $$4, this.b, this.d, this.f);
-         }
-
-         if ($$3 == null || $$3.get($$4)) {
-            this.a($$0, $$1, dgs.b, $$4, this.c, this.e, this.g);
-         }
-      }
+   private adc(wa $$0) {
+      this(
+         $$0.readInt(),
+         $$0.readBoolean(),
+         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(mc.bg)),
+         $$0.l(),
+         $$0.l(),
+         $$0.l(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         new aga($$0),
+         $$0.readBoolean()
+      );
    }
 
-   public adc(vl $$0, int $$1, int $$2) {
-      this.b = $$0.w();
-      this.c = $$0.w();
-      this.d = $$0.w();
-      this.e = $$0.w();
-      this.f = $$0.a(a);
-      this.g = $$0.a(a);
-   }
-
-   public void a(vl $$0) {
-      $$0.a(this.b);
+   private void a(wa $$0) {
+      $$0.q(this.b);
       $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f, a);
-      $$0.a(this.g, a);
+      $$0.a(this.d, vl::b);
+      $$0.c(this.e);
+      $$0.c(this.f);
+      $$0.c(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
+      $$0.a(this.j);
+      this.k.a($$0);
+      $$0.a(this.l);
    }
 
-   private void a(dfp $$0, esp $$1, dgs $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
-      dyy $$7 = $$1.a($$2).a(kk.a($$0, $$1.d() + $$3));
-      if ($$7 != null) {
-         if ($$7.d()) {
-            $$5.set($$3);
-         } else {
-            $$4.set($$3);
-            $$6.add($$7.b().a());
-         }
-      }
+   @Override
+   public yy<adc> a() {
+      return agd.N;
    }
 
-   public BitSet a() {
-      return this.b;
+   public void a(abl $$0) {
+      $$0.a(this);
    }
 
-   public BitSet b() {
-      return this.d;
-   }
-
-   public List<byte[]> c() {
-      return this.f;
-   }
-
-   public BitSet d() {
+   public boolean e() {
       return this.c;
    }
 
-   public BitSet e() {
+   public Set<akt<dgz>> f() {
+      return this.d;
+   }
+
+   public int g() {
       return this.e;
    }
 
-   public List<byte[]> f() {
+   public int h() {
+      return this.f;
+   }
+
+   public int i() {
       return this.g;
+   }
+
+   public boolean j() {
+      return this.h;
+   }
+
+   public boolean k() {
+      return this.i;
+   }
+
+   public boolean l() {
+      return this.j;
+   }
+
+   public aga m() {
+      return this.k;
+   }
+
+   public boolean n() {
+      return this.l;
    }
 }

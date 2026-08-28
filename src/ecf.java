@@ -1,438 +1,415 @@
-import java.util.Arrays;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableDouble;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Queues;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.io.Writer;
+import java.util.List;
+import java.util.Queue;
+import java.util.Set;
+import java.util.UUID;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public interface ecf {
-   static ecf a(ecx $$0, dfp $$1, ecz $$2, edg $$3, int $$4, int $$5, ecf.a $$6) {
-      return new ecf.c($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+public class ecf<T extends ebu> implements AutoCloseable {
+   static final Logger a = LogUtils.getLogger();
+   final Set<UUID> b = Sets.newHashSet();
+   final ecc<T> c;
+   private final ebx<T> d;
+   private final ebw<T> e;
+   final ebz<T> f;
+   private final ecd<T> g;
+   private final Long2ObjectMap<ecj> h = new Long2ObjectOpenHashMap();
+   private final Long2ObjectMap<ecf.b> i = new Long2ObjectOpenHashMap();
+   private final LongSet j = new LongOpenHashSet();
+   private final Queue<ebs<T>> k = Queues.newConcurrentLinkedQueue();
+
+   public ecf(Class<T> $$0, ecc<T> $$1, ebx<T> $$2) {
+      this.e = new ebw<>();
+      this.f = new ebz<>($$0, this.h);
+      this.h.defaultReturnValue(ecj.a);
+      this.i.defaultReturnValue(ecf.b.a);
+      this.c = $$1;
+      this.d = $$2;
+      this.g = new ece<>(this.e, this.f);
    }
 
-   static ecf a(final ecf.a $$0) {
-      return new ecf() {
-         @Nullable
-         @Override
-         public dwy a(ecm.b $$0x, double $$1) {
-            return $$1 > 0.0 ? null : $$0.computeFluid($$0.a(), $$0.b(), $$0.c()).a($$0.b());
+   void a(long $$0, eby<T> $$1) {
+      if ($$1.a()) {
+         this.f.e($$0);
+      }
+   }
+
+   private boolean b(T $$0) {
+      if (!this.b.add($$0.cF())) {
+         a.warn("UUID of added entity already exists: {}", $$0);
+         return false;
+      } else {
+         return true;
+      }
+   }
+
+   public boolean a(T $$0) {
+      return this.a($$0, false);
+   }
+
+   private boolean a(T $$0, boolean $$1) {
+      if (!this.b($$0)) {
+         return false;
+      } else {
+         long $$2 = kk.c($$0.du());
+         eby<T> $$3 = this.f.c($$2);
+         $$3.a($$0);
+         $$0.a(new ecf.a($$0, $$2, $$3));
+         if (!$$1) {
+            this.c.g($$0);
          }
 
-         @Override
-         public boolean a() {
+         ecj $$4 = a($$0, $$3.c());
+         if ($$4.b()) {
+            this.e($$0);
+         }
+
+         if ($$4.a()) {
+            this.c($$0);
+         }
+
+         return true;
+      }
+   }
+
+   static <T extends ebu> ecj a(T $$0, ecj $$1) {
+      return $$0.dT() ? ecj.c : $$1;
+   }
+
+   public void a(Stream<T> $$0) {
+      $$0.forEach($$0x -> this.a((T)$$0x, true));
+   }
+
+   public void b(Stream<T> $$0) {
+      $$0.forEach($$0x -> this.a((T)$$0x, false));
+   }
+
+   void c(T $$0) {
+      this.c.e($$0);
+   }
+
+   void d(T $$0) {
+      this.c.d($$0);
+   }
+
+   void e(T $$0) {
+      this.e.a($$0);
+      this.c.c($$0);
+   }
+
+   void f(T $$0) {
+      this.c.b($$0);
+      this.e.b($$0);
+   }
+
+   public void a(dgg $$0, aqr $$1) {
+      ecj $$2 = ecj.a($$1);
+      this.a($$0, $$2);
+   }
+
+   public void a(dgg $$0, ecj $$1) {
+      long $$2 = $$0.a();
+      if ($$1 == ecj.a) {
+         this.h.remove($$2);
+         this.j.add($$2);
+      } else {
+         this.h.put($$2, $$1);
+         this.j.remove($$2);
+         this.b($$2);
+      }
+
+      this.f.b($$2).forEach($$1x -> {
+         ecj $$2x = $$1x.a($$1);
+         boolean $$3 = $$2x.b();
+         boolean $$4 = $$1.b();
+         boolean $$5 = $$2x.a();
+         boolean $$6 = $$1.a();
+         if ($$5 && !$$6) {
+            $$1x.b().filter($$0xx -> !$$0xx.dT()).forEach(this::d);
+         }
+
+         if ($$3 && !$$4) {
+            $$1x.b().filter($$0xx -> !$$0xx.dT()).forEach(this::f);
+         } else if (!$$3 && $$4) {
+            $$1x.b().filter($$0xx -> !$$0xx.dT()).forEach(this::e);
+         }
+
+         if (!$$5 && $$6) {
+            $$1x.b().filter($$0xx -> !$$0xx.dT()).forEach(this::c);
+         }
+      });
+   }
+
+   private void b(long $$0) {
+      ecf.b $$1 = (ecf.b)this.i.get($$0);
+      if ($$1 == ecf.b.a) {
+         this.c($$0);
+      }
+   }
+
+   private boolean a(long $$0, Consumer<T> $$1) {
+      ecf.b $$2 = (ecf.b)this.i.get($$0);
+      if ($$2 == ecf.b.b) {
+         return false;
+      } else {
+         List<T> $$3 = this.f.b($$0).flatMap($$0x -> $$0x.b().filter(ebu::dS)).collect(Collectors.toList());
+         if ($$3.isEmpty()) {
+            if ($$2 == ecf.b.c) {
+               this.d.a(new ebs<>(new dgg($$0), ImmutableList.of()));
+            }
+
+            return true;
+         } else if ($$2 == ecf.b.a) {
+            this.c($$0);
             return false;
-         }
-      };
-   }
-
-   @Nullable
-   dwy a(ecm.b var1, double var2);
-
-   boolean a();
-
-   public interface a {
-      ecf.b computeFluid(int var1, int var2, int var3);
-   }
-
-   public static record b(int a, dwy b) {
-
-      public dwy a(int $$0) {
-         return $$0 < this.a ? this.b : djp.a.m();
-      }
-   }
-
-   public static class c implements ecf {
-      private static final int a = 10;
-      private static final int b = 9;
-      private static final int c = 10;
-      private static final int d = 6;
-      private static final int e = 3;
-      private static final int f = 6;
-      private static final int g = 16;
-      private static final int h = 12;
-      private static final int i = 16;
-      private static final int j = 11;
-      private static final double k = a(ayz.h(10), ayz.h(12));
-      private final ecx l;
-      private final ecm m;
-      private final ecm n;
-      private final ecm o;
-      private final ecm p;
-      private final edg q;
-      private final ecf.b[] r;
-      private final long[] s;
-      private final ecf.a t;
-      private final ecm u;
-      private final ecm v;
-      private boolean w;
-      private final int x;
-      private final int y;
-      private final int z;
-      private final int A;
-      private final int B;
-      private static final int[][] C = new int[][]{
-         {0, 0}, {-2, -1}, {-1, -1}, {0, -1}, {1, -1}, {-3, 0}, {-2, 0}, {-1, 0}, {1, 0}, {-2, 1}, {-1, 1}, {0, 1}, {1, 1}
-      };
-
-      c(ecx $$0, dfp $$1, ecz $$2, edg $$3, int $$4, int $$5, ecf.a $$6) {
-         this.l = $$0;
-         this.m = $$2.a();
-         this.n = $$2.b();
-         this.o = $$2.c();
-         this.p = $$2.d();
-         this.u = $$2.h();
-         this.v = $$2.i();
-         this.q = $$3;
-         this.x = this.a($$1.d()) - 1;
-         this.t = $$6;
-         int $$7 = this.a($$1.f()) + 1;
-         this.A = $$7 - this.x + 1;
-         this.y = this.b($$4) - 1;
-         int $$8 = this.b($$4 + $$5) + 1;
-         int $$9 = $$8 - this.y + 1;
-         this.z = this.c($$1.e()) - 1;
-         int $$10 = this.c($$1.g()) + 1;
-         this.B = $$10 - this.z + 1;
-         int $$11 = this.A * $$9 * this.B;
-         this.r = new ecf.b[$$11];
-         this.s = new long[$$11];
-         Arrays.fill(this.s, Long.MAX_VALUE);
-      }
-
-      private int a(int $$0, int $$1, int $$2) {
-         int $$3 = $$0 - this.x;
-         int $$4 = $$1 - this.y;
-         int $$5 = $$2 - this.z;
-         return ($$4 * this.B + $$5) * this.A + $$3;
-      }
-
-      @Nullable
-      @Override
-      public dwy a(ecm.b $$0, double $$1) {
-         int $$2 = $$0.a();
-         int $$3 = $$0.b();
-         int $$4 = $$0.c();
-         if ($$1 > 0.0) {
-            this.w = false;
-            return null;
          } else {
-            ecf.b $$5 = this.t.computeFluid($$2, $$3, $$4);
-            if ($$5.a($$3).a(djp.K)) {
-               this.w = false;
-               return djp.K.m();
-            } else {
-               int $$6 = Math.floorDiv($$2 - 5, 16);
-               int $$7 = Math.floorDiv($$3 + 1, 12);
-               int $$8 = Math.floorDiv($$4 - 5, 16);
-               int $$9 = Integer.MAX_VALUE;
-               int $$10 = Integer.MAX_VALUE;
-               int $$11 = Integer.MAX_VALUE;
-               int $$12 = Integer.MAX_VALUE;
-               long $$13 = 0L;
-               long $$14 = 0L;
-               long $$15 = 0L;
-               long $$16 = 0L;
+            this.d.a(new ebs<>(new dgg($$0), $$3));
+            $$3.forEach($$1);
+            return true;
+         }
+      }
+   }
 
-               for (int $$17 = 0; $$17 <= 1; $$17++) {
-                  for (int $$18 = -1; $$18 <= 1; $$18++) {
-                     for (int $$19 = 0; $$19 <= 1; $$19++) {
-                        int $$20 = $$6 + $$17;
-                        int $$21 = $$7 + $$18;
-                        int $$22 = $$8 + $$19;
-                        int $$23 = this.a($$20, $$21, $$22);
-                        long $$24 = this.s[$$23];
-                        long $$25;
-                        if ($$24 != Long.MAX_VALUE) {
-                           $$25 = $$24;
-                        } else {
-                           azh $$26 = this.q.a($$20, $$21, $$22);
-                           $$25 = ji.a($$20 * 16 + $$26.a(10), $$21 * 12 + $$26.a(9), $$22 * 16 + $$26.a(10));
-                           this.s[$$23] = $$25;
-                        }
+   private void c(long $$0) {
+      this.i.put($$0, ecf.b.b);
+      dgg $$1 = new dgg($$0);
+      this.d.a($$1).thenAccept(this.k::add).exceptionally($$1x -> {
+         a.error("Failed to read chunk {}", $$1, $$1x);
+         return null;
+      });
+   }
 
-                        int $$28 = ji.a($$25) - $$2;
-                        int $$29 = ji.b($$25) - $$3;
-                        int $$30 = ji.c($$25) - $$4;
-                        int $$31 = $$28 * $$28 + $$29 * $$29 + $$30 * $$30;
-                        if ($$9 >= $$31) {
-                           $$16 = $$15;
-                           $$15 = $$14;
-                           $$14 = $$13;
-                           $$13 = $$25;
-                           $$12 = $$11;
-                           $$11 = $$10;
-                           $$10 = $$9;
-                           $$9 = $$31;
-                        } else if ($$10 >= $$31) {
-                           $$16 = $$15;
-                           $$15 = $$14;
-                           $$14 = $$25;
-                           $$12 = $$11;
-                           $$11 = $$10;
-                           $$10 = $$31;
-                        } else if ($$11 >= $$31) {
-                           $$16 = $$15;
-                           $$15 = $$25;
-                           $$12 = $$11;
-                           $$11 = $$31;
-                        } else if ($$12 >= $$31) {
-                           $$16 = $$25;
-                           $$12 = $$31;
-                        }
-                     }
-                  }
+   private boolean d(long $$0) {
+      boolean $$1 = this.a($$0, $$0x -> $$0x.da().forEach(this::g));
+      if (!$$1) {
+         return false;
+      } else {
+         this.i.remove($$0);
+         return true;
+      }
+   }
+
+   private void g(ebu $$0) {
+      $$0.c(bva.d.c);
+      $$0.a(ebv.a);
+   }
+
+   private void g() {
+      this.j.removeIf($$0 -> this.h.get($$0) != ecj.a ? true : this.d($$0));
+   }
+
+   private void h() {
+      ebs<T> $$0;
+      while (($$0 = this.k.poll()) != null) {
+         $$0.b().forEach($$0x -> this.a((T)$$0x, true));
+         this.i.put($$0.a().a(), ecf.b.c);
+      }
+   }
+
+   public void a() {
+      this.h();
+      this.g();
+   }
+
+   private LongSet i() {
+      LongSet $$0 = this.f.a();
+      ObjectIterator var2 = Long2ObjectMaps.fastIterable(this.i).iterator();
+
+      while (var2.hasNext()) {
+         Entry<ecf.b> $$1 = (Entry<ecf.b>)var2.next();
+         if ($$1.getValue() == ecf.b.c) {
+            $$0.add($$1.getLongKey());
+         }
+      }
+
+      return $$0;
+   }
+
+   public void b() {
+      this.i().forEach($$0 -> {
+         boolean $$1 = this.h.get($$0) == ecj.a;
+         if ($$1) {
+            this.d($$0);
+         } else {
+            this.a($$0, $$0x -> {
+            });
+         }
+      });
+   }
+
+   public void c() {
+      LongSet $$0 = this.i();
+
+      while (!$$0.isEmpty()) {
+         this.d.a(false);
+         this.h();
+         $$0.removeIf($$0x -> {
+            boolean $$1 = this.h.get($$0x) == ecj.a;
+            return $$1 ? this.d($$0x) : this.a($$0x, $$0xx -> {
+            });
+         });
+      }
+
+      this.d.a(true);
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.c();
+      this.d.close();
+   }
+
+   public boolean a(UUID $$0) {
+      return this.b.contains($$0);
+   }
+
+   public ecd<T> d() {
+      return this.g;
+   }
+
+   public boolean a(ji $$0) {
+      return ((ecj)this.h.get(dgg.a($$0))).a();
+   }
+
+   public boolean a(dgg $$0) {
+      return ((ecj)this.h.get($$0.a())).a();
+   }
+
+   public boolean a(long $$0) {
+      return this.i.get($$0) == ecf.b.c;
+   }
+
+   public void a(Writer $$0) throws IOException {
+      axz $$1 = axz.a().a("x").a("y").a("z").a("visibility").a("load_status").a("entity_count").a($$0);
+      this.f.a().forEach($$1x -> {
+         ecf.b $$2 = (ecf.b)this.i.get($$1x);
+         this.f.a($$1x).forEach($$2x -> {
+            eby<T> $$3 = this.f.d($$2x);
+            if ($$3 != null) {
+               try {
+                  $$1.a(kk.b($$2x), kk.c($$2x), kk.d($$2x), $$3.c(), $$2, $$3.d());
+               } catch (IOException var7) {
+                  throw new UncheckedIOException(var7);
                }
+            }
+         });
+      });
+   }
 
-               ecf.b $$32 = this.a($$13);
-               double $$33 = a($$9, $$10);
-               dwy $$34 = $$32.a($$3);
-               if ($$33 <= 0.0) {
-                  if ($$33 >= k) {
-                     ecf.b $$36 = this.a($$14);
-                     this.w = !$$32.equals($$36);
-                  } else {
-                     this.w = false;
-                  }
+   @bag
+   public String e() {
+      return this.b.size() + "," + this.e.b() + "," + this.f.b() + "," + this.i.size() + "," + this.h.size() + "," + this.k.size() + "," + this.j.size();
+   }
 
-                  return $$34;
-               } else if ($$34.a(djp.J) && this.t.computeFluid($$2, $$3 - 1, $$4).a($$3 - 1).a(djp.K)) {
-                  this.w = true;
-                  return $$34;
-               } else {
-                  MutableDouble $$37 = new MutableDouble(Double.NaN);
-                  ecf.b $$38 = this.a($$14);
-                  double $$39 = $$33 * this.a($$0, $$37, $$32, $$38);
-                  if ($$1 + $$39 > 0.0) {
-                     this.w = false;
-                     return null;
-                  } else {
-                     ecf.b $$40 = this.a($$15);
-                     double $$41 = a($$9, $$11);
-                     if ($$41 > 0.0) {
-                        double $$42 = $$33 * $$41 * this.a($$0, $$37, $$32, $$40);
-                        if ($$1 + $$42 > 0.0) {
-                           this.w = false;
-                           return null;
-                        }
-                     }
+   @bag
+   public int f() {
+      return this.e.b();
+   }
 
-                     double $$43 = a($$10, $$11);
-                     if ($$43 > 0.0) {
-                        double $$44 = $$33 * $$43 * this.a($$0, $$37, $$38, $$40);
-                        if ($$1 + $$44 > 0.0) {
-                           this.w = false;
-                           return null;
-                        }
-                     }
+   class a implements ebv {
+      private final T c;
+      private long d;
+      private eby<T> e;
 
-                     boolean $$45 = !$$32.equals($$38);
-                     boolean $$46 = $$43 >= k && !$$38.equals($$40);
-                     boolean $$47 = $$41 >= k && !$$32.equals($$40);
-                     if (!$$45 && !$$46 && !$$47) {
-                        this.w = $$41 >= k && a($$9, $$12) >= k && !$$32.equals(this.a($$16));
-                     } else {
-                        this.w = true;
-                     }
+      a(final T $$0, final long $$1, final eby<T> $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+      }
 
-                     return $$34;
-                  }
-               }
+      @Override
+      public void a() {
+         ji $$0 = this.c.du();
+         long $$1 = kk.c($$0);
+         if ($$1 != this.d) {
+            ecj $$2 = this.e.c();
+            if (!this.e.b(this.c)) {
+               ecf.a.warn("Entity {} wasn't found in section {} (moving to {})", new Object[]{this.c, kk.a(this.d), $$1});
+            }
+
+            ecf.this.a(this.d, this.e);
+            eby<T> $$3 = ecf.this.f.c($$1);
+            $$3.a(this.c);
+            this.e = $$3;
+            this.d = $$1;
+            this.a($$2, $$3.c());
+         }
+      }
+
+      private void a(ecj $$0, ecj $$1) {
+         ecj $$2 = ecf.a(this.c, $$0);
+         ecj $$3 = ecf.a(this.c, $$1);
+         if ($$2 == $$3) {
+            if ($$3.b()) {
+               ecf.this.c.a(this.c);
+            }
+         } else {
+            boolean $$4 = $$2.b();
+            boolean $$5 = $$3.b();
+            if ($$4 && !$$5) {
+               ecf.this.f(this.c);
+            } else if (!$$4 && $$5) {
+               ecf.this.e(this.c);
+            }
+
+            boolean $$6 = $$2.a();
+            boolean $$7 = $$3.a();
+            if ($$6 && !$$7) {
+               ecf.this.d(this.c);
+            } else if (!$$6 && $$7) {
+               ecf.this.c(this.c);
+            }
+
+            if ($$5) {
+               ecf.this.c.a(this.c);
             }
          }
       }
 
       @Override
-      public boolean a() {
-         return this.w;
-      }
-
-      private static double a(int $$0, int $$1) {
-         double $$2 = 25.0;
-         return 1.0 - (double)Math.abs($$1 - $$0) / 25.0;
-      }
-
-      private double a(ecm.b $$0, MutableDouble $$1, ecf.b $$2, ecf.b $$3) {
-         int $$4 = $$0.b();
-         dwy $$5 = $$2.a($$4);
-         dwy $$6 = $$3.a($$4);
-         if ((!$$5.a(djp.K) || !$$6.a(djp.J)) && (!$$5.a(djp.J) || !$$6.a(djp.K))) {
-            int $$7 = Math.abs($$2.a - $$3.a);
-            if ($$7 == 0) {
-               return 0.0;
-            } else {
-               double $$8 = 0.5 * (double)($$2.a + $$3.a);
-               double $$9 = (double)$$4 + 0.5 - $$8;
-               double $$10 = (double)$$7 / 2.0;
-               double $$11 = 0.0;
-               double $$12 = 2.5;
-               double $$13 = 1.5;
-               double $$14 = 3.0;
-               double $$15 = 10.0;
-               double $$16 = 3.0;
-               double $$17 = $$10 - Math.abs($$9);
-               double $$19;
-               if ($$9 > 0.0) {
-                  double $$18 = 0.0 + $$17;
-                  if ($$18 > 0.0) {
-                     $$19 = $$18 / 1.5;
-                  } else {
-                     $$19 = $$18 / 2.5;
-                  }
-               } else {
-                  double $$21 = 3.0 + $$17;
-                  if ($$21 > 0.0) {
-                     $$19 = $$21 / 3.0;
-                  } else {
-                     $$19 = $$21 / 10.0;
-                  }
-               }
-
-               double $$24 = 2.0;
-               double $$28;
-               if (!($$19 < -2.0) && !($$19 > 2.0)) {
-                  double $$26 = $$1.getValue();
-                  if (Double.isNaN($$26)) {
-                     double $$27 = this.m.a($$0);
-                     $$1.setValue($$27);
-                     $$28 = $$27;
-                  } else {
-                     $$28 = $$26;
-                  }
-               } else {
-                  $$28 = 0.0;
-               }
-
-               return 2.0 * ($$28 + $$19);
-            }
-         } else {
-            return 2.0;
-         }
-      }
-
-      private int a(int $$0) {
-         return Math.floorDiv($$0, 16);
-      }
-
-      private int b(int $$0) {
-         return Math.floorDiv($$0, 12);
-      }
-
-      private int c(int $$0) {
-         return Math.floorDiv($$0, 16);
-      }
-
-      private ecf.b a(long $$0) {
-         int $$1 = ji.a($$0);
-         int $$2 = ji.b($$0);
-         int $$3 = ji.c($$0);
-         int $$4 = this.a($$1);
-         int $$5 = this.b($$2);
-         int $$6 = this.c($$3);
-         int $$7 = this.a($$4, $$5, $$6);
-         ecf.b $$8 = this.r[$$7];
-         if ($$8 != null) {
-            return $$8;
-         } else {
-            ecf.b $$9 = this.b($$1, $$2, $$3);
-            this.r[$$7] = $$9;
-            return $$9;
-         }
-      }
-
-      private ecf.b b(int $$0, int $$1, int $$2) {
-         ecf.b $$3 = this.t.computeFluid($$0, $$1, $$2);
-         int $$4 = Integer.MAX_VALUE;
-         int $$5 = $$1 + 12;
-         int $$6 = $$1 - 12;
-         boolean $$7 = false;
-
-         for (int[] $$8 : C) {
-            int $$9 = $$0 + kk.c($$8[0]);
-            int $$10 = $$2 + kk.c($$8[1]);
-            int $$11 = this.l.a($$9, $$10);
-            int $$12 = $$11 + 8;
-            boolean $$13 = $$8[0] == 0 && $$8[1] == 0;
-            if ($$13 && $$6 > $$12) {
-               return $$3;
-            }
-
-            boolean $$14 = $$5 > $$12;
-            if ($$14 || $$13) {
-               ecf.b $$15 = this.t.computeFluid($$9, $$12, $$10);
-               if (!$$15.a($$12).l()) {
-                  if ($$13) {
-                     $$7 = true;
-                  }
-
-                  if ($$14) {
-                     return $$15;
-                  }
-               }
-            }
-
-            $$4 = Math.min($$4, $$11);
+      public void a(bva.d $$0) {
+         if (!this.e.b(this.c)) {
+            ecf.a.warn("Entity {} wasn't found in section {} (destroying due to {})", new Object[]{this.c, kk.a(this.d), $$0});
          }
 
-         int $$16 = this.a($$0, $$1, $$2, $$3, $$4, $$7);
-         return new ecf.b($$16, this.a($$0, $$1, $$2, $$3, $$16));
-      }
-
-      private int a(int $$0, int $$1, int $$2, ecf.b $$3, int $$4, boolean $$5) {
-         ecm.e $$6 = new ecm.e($$0, $$1, $$2);
-         double $$7;
-         double $$8;
-         if (dib.a(this.u, this.v, $$6)) {
-            $$7 = -1.0;
-            $$8 = -1.0;
-         } else {
-            int $$9 = $$4 + 8 - $$1;
-            int $$10 = 64;
-            double $$11 = $$5 ? ayz.a((double)$$9, 0.0, 64.0, 1.0, 0.0) : 0.0;
-            double $$12 = ayz.a(this.n.a($$6), -1.0, 1.0);
-            double $$13 = ayz.b($$11, 1.0, 0.0, -0.3, 0.8);
-            double $$14 = ayz.b($$11, 1.0, 0.0, -0.8, 0.4);
-            $$7 = $$12 - $$14;
-            $$8 = $$12 - $$13;
+         ecj $$1 = ecf.a(this.c, this.e.c());
+         if ($$1.a()) {
+            ecf.this.d(this.c);
          }
 
-         int $$17;
-         if ($$8 > 0.0) {
-            $$17 = $$3.a;
-         } else if ($$7 > 0.0) {
-            $$17 = this.a($$0, $$1, $$2, $$4);
-         } else {
-            $$17 = eat.g;
+         if ($$1.b()) {
+            ecf.this.f(this.c);
          }
 
-         return $$17;
-      }
-
-      private int a(int $$0, int $$1, int $$2, int $$3) {
-         int $$4 = 16;
-         int $$5 = 40;
-         int $$6 = Math.floorDiv($$0, 16);
-         int $$7 = Math.floorDiv($$1, 40);
-         int $$8 = Math.floorDiv($$2, 16);
-         int $$9 = $$7 * 40 + 20;
-         int $$10 = 10;
-         double $$11 = this.o.a(new ecm.e($$6, $$7, $$8)) * 10.0;
-         int $$12 = ayz.a($$11, 3);
-         int $$13 = $$9 + $$12;
-         return Math.min($$3, $$13);
-      }
-
-      private dwy a(int $$0, int $$1, int $$2, ecf.b $$3, int $$4) {
-         dwy $$5 = $$3.b;
-         if ($$4 <= -10 && $$4 != eat.g && $$3.b != djp.K.m()) {
-            int $$6 = 64;
-            int $$7 = 40;
-            int $$8 = Math.floorDiv($$0, 64);
-            int $$9 = Math.floorDiv($$1, 40);
-            int $$10 = Math.floorDiv($$2, 64);
-            double $$11 = this.p.a(new ecm.e($$8, $$9, $$10));
-            if (Math.abs($$11) > 0.3) {
-               $$5 = djp.K.m();
-            }
+         if ($$0.a()) {
+            ecf.this.c.f(this.c);
          }
 
-         return $$5;
+         ecf.this.b.remove(this.c.cF());
+         this.c.a(a);
+         ecf.this.a(this.d, this.e);
       }
+   }
+
+   static enum b {
+      a,
+      b,
+      c;
    }
 }

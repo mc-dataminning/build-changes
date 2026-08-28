@@ -1,26 +1,34 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public record ezr(akv b) implements ezp {
-   public static final MapCodec<ezr> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(akv.a.fieldOf("source").forGetter(ezr::c)).apply($$0, ezr::new));
+public record ezr(boolean b) implements ezx {
+   public static final MapCodec<ezr> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.BOOL.fieldOf("active").forGetter(ezr::e)).apply($$0, ezr::new));
 
-   @Override
-   public ezo a() {
-      return ezq.b;
+   public boolean a(ewo $$0) {
+      return $$0.b(ezi.l) == this.b;
    }
 
    @Override
-   public un a(evs $$0) {
-      return $$0.d().p().aK().a(this.b);
+   public ezy b() {
+      return ezz.s;
    }
 
    @Override
-   public Set<bai<?>> b() {
-      return Set.of();
+   public Set<bai<?>> a() {
+      return Set.of(ezi.l);
    }
 
-   public akv c() {
+   public static ezx.a c() {
+      return () -> new ezr(true);
+   }
+
+   public static ezx.a d() {
+      return () -> new ezr(false);
+   }
+
+   public boolean e() {
       return this.b;
    }
 }

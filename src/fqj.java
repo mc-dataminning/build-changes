@@ -1,93 +1,139 @@
-public abstract class fqj {
-   protected static final int a = 14737632;
-   protected static final int b = 60;
-   protected static final int c = 1;
-   protected final fod d;
-   protected final bni e;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   protected fqj(fod $$0, bni $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   public int a(int $$0) {
-      return Math.min(this.e.c() + 2, $$0);
-   }
-
-   public int a() {
-      return 60 + 9;
-   }
-
-   public void a(fof $$0, int $$1, int $$2) {
-      int $$3 = $$0.b();
-      $$0.a(gmj.L(), $$1, $$3 - 60, $$1 + $$2, $$3, -1873784752);
-      long $$4 = 0L;
-      long $$5 = 2147483647L;
-      long $$6 = -2147483648L;
-      int $$7 = Math.max(0, this.e.c() - ($$2 - 2));
-      int $$8 = this.e.d() - $$7;
-
-      for (int $$9 = 0; $$9 < $$8; $$9++) {
-         int $$10 = $$1 + $$9 + 1;
-         int $$11 = $$7 + $$9;
-         long $$12 = this.b($$11);
-         $$5 = Math.min($$5, $$12);
-         $$6 = Math.max($$6, $$12);
-         $$4 += $$12;
-         this.a($$0, $$3, $$10, $$11);
+public interface fqj {
+   fqj a = new fqj() {
+      @Override
+      public void a(fpc $$0, int $$1, int $$2) {
       }
 
-      $$0.a(gmj.L(), $$1, $$1 + $$2 - 1, $$3 - 60, -1);
-      $$0.a(gmj.L(), $$1, $$1 + $$2 - 1, $$3 - 1, -1);
-      $$0.b(gmj.L(), $$1, $$3 - 60, $$3, -1);
-      $$0.b(gmj.L(), $$1 + $$2 - 1, $$3 - 60, $$3, -1);
-      if ($$8 > 0) {
-         String $$13 = this.a((double)$$5) + " min";
-         String $$14 = this.a((double)$$4 / (double)$$8) + " avg";
-         String $$15 = this.a((double)$$6) + " max";
-         $$0.b(this.d, $$13, $$1 + 2, $$3 - 60 - 9, 14737632);
-         $$0.a(this.d, $$14, $$1 + $$2 / 2, $$3 - 60 - 9, 14737632);
-         $$0.b(this.d, $$15, $$1 + $$2 - this.d.b($$15) - 2, $$3 - 60 - 9, 14737632);
+      @Override
+      public void a(fpc $$0, int $$1, int $$2, int $$3, int $$4) {
       }
 
-      this.d($$0, $$1, $$2, $$3);
+      @Override
+      public void b(fpc $$0, int $$1, int $$2, int $$3, int $$4) {
+      }
+
+      @Override
+      public int c(fpc $$0, int $$1, int $$2, int $$3, int $$4) {
+         return $$2;
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+
+      @Override
+      public int b() {
+         return 0;
+      }
+   };
+
+   static fqj a(fpa $$0, wp... $$1) {
+      return a($$0, Integer.MAX_VALUE, Integer.MAX_VALUE, $$1);
    }
 
-   protected void a(fof $$0, int $$1, int $$2, int $$3) {
-      this.b($$0, $$1, $$2, $$3);
-      this.c($$0, $$1, $$2, $$3);
+   static fqj a(fpa $$0, int $$1, wp... $$2) {
+      return a($$0, $$1, Integer.MAX_VALUE, $$2);
    }
 
-   protected void b(fof $$0, int $$1, int $$2, int $$3) {
-      long $$4 = this.e.a($$3);
-      int $$5 = this.b((double)$$4);
-      int $$6 = this.a($$4);
-      $$0.a(gmj.L(), $$2, $$1 - $$5, $$2 + 1, $$1, $$6);
+   static fqj a(fpa $$0, wp $$1, int $$2) {
+      return a($$0, $$2, Integer.MAX_VALUE, $$1);
    }
 
-   protected void c(fof $$0, int $$1, int $$2, int $$3) {
+   static fqj a(final fpa $$0, final int $$1, final int $$2, final wp... $$3) {
+      return $$3.length == 0 ? a : new fqj() {
+         @Nullable
+         private List<fqj.a> f;
+         @Nullable
+         private tl g;
+
+         @Override
+         public void a(fpc $$0x, int $$1x, int $$2x) {
+            this.a($$0, $$1, $$2, 9, -1);
+         }
+
+         @Override
+         public void a(fpc $$0x, int $$1x, int $$2x, int $$3x, int $$4) {
+            int $$5 = $$2;
+
+            for (fqj.a $$6 : this.c()) {
+               $$0.a($$0, $$6.a, $$1, $$5, $$4);
+               $$5 += $$3;
+            }
+         }
+
+         @Override
+         public void b(fpc $$0x, int $$1x, int $$2x, int $$3x, int $$4) {
+            int $$5 = $$2;
+
+            for (fqj.a $$6 : this.c()) {
+               $$0.b($$0, $$6.a, $$1, $$5, $$4);
+               $$5 += $$3;
+            }
+         }
+
+         @Override
+         public int c(fpc $$0x, int $$1x, int $$2x, int $$3x, int $$4) {
+            int $$5 = $$2;
+
+            for (fqj.a $$6 : this.c()) {
+               $$0.a($$0, $$6.a, $$1, $$5, $$4, false);
+               $$5 += $$3;
+            }
+
+            return $$5;
+         }
+
+         private List<fqj.a> c() {
+            tl $$0 = tl.a();
+            if (this.f != null && $$0 == this.g) {
+               return this.f;
+            } else {
+               this.g = $$0;
+               List<ayl> $$1 = new ArrayList<>();
+
+               for (wp $$2 : $$3) {
+                  $$1.addAll($$0.c($$2, $$1));
+               }
+
+               this.f = new ArrayList<>();
+
+               for (ayl $$3 : $$1.subList(0, Math.min($$1.size(), $$2))) {
+                  this.f.add(new fqj.a($$3, $$0.a($$3)));
+               }
+
+               return this.f;
+            }
+         }
+
+         @Override
+         public int a() {
+            return this.c().size();
+         }
+
+         @Override
+         public int b() {
+            return Math.min($$1, this.c().stream().mapToInt(fqj.a::b).max().orElse(0));
+         }
+      };
    }
 
-   protected long b(int $$0) {
-      return this.e.a($$0);
-   }
+   void a(fpc var1, int var2, int var3);
 
-   protected void d(fof $$0, int $$1, int $$2, int $$3) {
-   }
+   void a(fpc var1, int var2, int var3, int var4, int var5);
 
-   protected void a(fof $$0, String $$1, int $$2, int $$3) {
-      $$0.a(gmj.L(), $$2, $$3, $$2 + this.d.b($$1) + 1, $$3 + 9, -1873784752);
-      $$0.a(this.d, $$1, $$2 + 1, $$3 + 1, 14737632, false);
-   }
+   void b(fpc var1, int var2, int var3, int var4, int var5);
 
-   protected abstract String a(double var1);
+   int c(fpc var1, int var2, int var3, int var4, int var5);
 
-   protected abstract int b(double var1);
+   int a();
 
-   protected abstract int a(long var1);
+   int b();
 
-   protected int a(double $$0, double $$1, int $$2, double $$3, int $$4, double $$5, int $$6) {
-      $$0 = ayz.a($$0, $$1, $$5);
-      return $$0 < $$3 ? axk.a((float)(($$0 - $$1) / ($$3 - $$1)), $$2, $$4) : axk.a((float)(($$0 - $$3) / ($$5 - $$3)), $$4, $$6);
+   public static record a(ayl a, int b) {
    }
 }

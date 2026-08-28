@@ -1,61 +1,42 @@
-public class fax extends faz {
-   private final jn b;
-   private final ji c;
-   private final boolean d;
-   private final boolean e;
-   private final boolean f;
+import com.google.common.collect.Sets;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-   public static fax a(fbb $$0, jn $$1, ji $$2) {
-      return new fax(true, $$0, $$1, $$2, false, false);
+public record fax(fat b, fat c) implements fat {
+   public static final MapCodec<fax> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(fau.a.fieldOf("min").forGetter(fax::c), fau.a.fieldOf("max").forGetter(fax::d)).apply($$0, fax::new)
+   );
+
+   @Override
+   public fas b() {
+      return fau.c;
    }
 
-   public fax(fbb $$0, jn $$1, ji $$2, boolean $$3) {
-      this(false, $$0, $$1, $$2, $$3, false);
-   }
-
-   public fax(fbb $$0, jn $$1, ji $$2, boolean $$3, boolean $$4) {
-      this(false, $$0, $$1, $$2, $$3, $$4);
-   }
-
-   private fax(boolean $$0, fbb $$1, jn $$2, ji $$3, boolean $$4, boolean $$5) {
-      super($$1);
-      this.d = $$0;
-      this.b = $$2;
-      this.c = $$3;
-      this.e = $$4;
-      this.f = $$5;
-   }
-
-   public fax a(jn $$0) {
-      return new fax(this.d, this.a, $$0, this.c, this.e, this.f);
-   }
-
-   public fax a(ji $$0) {
-      return new fax(this.d, this.a, this.b, $$0, this.e, this.f);
-   }
-
-   public fax a() {
-      return new fax(this.d, this.a, this.b, this.c, this.e, true);
-   }
-
-   public ji b() {
-      return this.c;
-   }
-
-   public jn c() {
-      return this.b;
+   public static fax a(float $$0, float $$1) {
+      return new fax(faq.a($$0), faq.a($$1));
    }
 
    @Override
-   public faz.a d() {
-      return this.d ? faz.a.a : faz.a.b;
+   public int a(ewo $$0) {
+      return ayz.a($$0.b(), this.b.a($$0), this.c.a($$0));
    }
 
-   public boolean e() {
-      return this.e;
+   @Override
+   public float b(ewo $$0) {
+      return ayz.a($$0.b(), this.b.b($$0), this.c.b($$0));
    }
 
-   public boolean f() {
-      return this.f;
+   @Override
+   public Set<bai<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public fat c() {
+      return this.b;
+   }
+
+   public fat d() {
+      return this.c;
    }
 }

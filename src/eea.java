@@ -1,127 +1,60 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.BiPredicate;
+public class eea implements dgm {
+   private int a;
 
-public interface eea extends BiPredicate<dhh, ji> {
-   Codec<eea> b = mb.M.q().dispatch(eea::a, eeb::codec);
-   eea c = a(djp.a);
-   eea d = a(djp.a, djp.J);
+   @Override
+   public int a(ard $$0, boolean $$1, boolean $$2) {
+      if (!$$1) {
+         return 0;
+      } else if (!$$0.O().b(dgv.D)) {
+         return 0;
+      } else {
+         azh $$3 = $$0.A;
+         this.a--;
+         if (this.a > 0) {
+            return 0;
+         } else {
+            this.a = this.a + (60 + $$3.a(60)) * 20;
+            if ($$0.z_() < 5 && $$0.B_().g()) {
+               return 0;
+            } else {
+               int $$4 = 0;
 
-   eeb<?> a();
+               for (are $$5 : $$0.z()) {
+                  if (!$$5.U_()) {
+                     ji $$6 = $$5.du();
+                     if (!$$0.B_().g() || $$6.v() >= $$0.P() && $$0.h($$6)) {
+                        bsw $$7 = $$0.d_($$6);
+                        if ($$7.a($$3.i() * 3.0F)) {
+                           awg $$8 = $$5.I();
+                           int $$9 = ayz.a($$8.a(awk.i.b(awk.n)), 1, Integer.MAX_VALUE);
+                           int $$10 = 24000;
+                           if ($$3.a($$9) >= 72000) {
+                              ji $$11 = $$6.b(20 + $$3.a(15)).g(-10 + $$3.a(21)).e(-10 + $$3.a(21));
+                              dxq $$12 = $$0.a_($$11);
+                              etw $$13 = $$0.b_($$11);
+                              if (dhk.a($$0, $$11, $$12, $$13, bvi.aP)) {
+                                 bwr $$14 = null;
+                                 int $$15 = 1 + $$3.a($$7.a().a() + 1);
 
-   static eea a(List<eea> $$0) {
-      return new edy($$0);
-   }
+                                 for (int $$16 = 0; $$16 < $$15; $$16++) {
+                                    cmu $$17 = bvi.aP.a($$0, bvh.a);
+                                    if ($$17 != null) {
+                                       $$17.a($$11, 0.0F, 0.0F);
+                                       $$14 = $$17.a($$0, $$7, bvh.a, $$14);
+                                       $$0.a_($$17);
+                                       $$4++;
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
 
-   static eea a(eea... $$0) {
-      return a(List.of($$0));
-   }
-
-   static eea a(eea $$0, eea $$1) {
-      return a(List.of($$0, $$1));
-   }
-
-   static eea b(List<eea> $$0) {
-      return new edz($$0);
-   }
-
-   static eea b(eea... $$0) {
-      return b(List.of($$0));
-   }
-
-   static eea b(eea $$0, eea $$1) {
-      return b(List.of($$0, $$1));
-   }
-
-   static eea a(km $$0, List<djn> $$1) {
-      return new eeg($$0, jv.a(djn::p, $$1));
-   }
-
-   static eea c(List<djn> $$0) {
-      return a(km.h, $$0);
-   }
-
-   static eea a(km $$0, djn... $$1) {
-      return a($$0, List.of($$1));
-   }
-
-   static eea a(djn... $$0) {
-      return a(km.h, $$0);
-   }
-
-   static eea a(km $$0, axf<djn> $$1) {
-      return new eef($$0, $$1);
-   }
-
-   static eea a(axf<djn> $$0) {
-      return a(km.h, $$0);
-   }
-
-   static eea b(km $$0, List<esz> $$1) {
-      return new eeh($$0, jv.a(esz::k, $$1));
-   }
-
-   static eea a(km $$0, esz... $$1) {
-      return b($$0, List.of($$1));
-   }
-
-   static eea a(esz... $$0) {
-      return a(km.h, $$0);
-   }
-
-   static eea a(eea $$0) {
-      return new eei($$0);
-   }
-
-   static eea a(km $$0) {
-      return new eej($$0);
-   }
-
-   static eea b() {
-      return a(km.h);
-   }
-
-   static eea a(dwy $$0, km $$1) {
-      return new eeo($$1, $$0);
-   }
-
-   static eea a(km $$0, jn $$1) {
-      return new eed($$0, $$1);
-   }
-
-   static eea a(jn $$0) {
-      return a(km.h, $$0);
-   }
-
-   static eea b(km $$0) {
-      return new eek($$0);
-   }
-
-   static eea c() {
-      return b(km.h);
-   }
-
-   static eea d() {
-      return c(km.h);
-   }
-
-   static eea c(km $$0) {
-      return a($$0, etb.a);
-   }
-
-   static eea d(km $$0) {
-      return new eee($$0);
-   }
-
-   static eea e() {
-      return eem.a;
-   }
-
-   static eea e(km $$0) {
-      return new een($$0);
-   }
-
-   static eea f() {
-      return e(km.h);
+               return $$4;
+            }
+         }
+      }
    }
 }

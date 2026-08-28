@@ -1,7 +1,7 @@
 import java.util.HashSet;
 import java.util.Set;
 
-public record aay(Set<akv> b) implements yw<aat> {
+public record aay(Set<aku> b) implements yw<aat> {
    public static final yn<vl, aay> a = yw.a(aay::a, aay::new);
 
    private aay(vl $$0) {

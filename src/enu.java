@@ -1,33 +1,11 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
-public record enu(enu.a b, bqx<dhx.c> c) {
-   public static final Codec<enu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(enu.a.c.fieldOf("bounding_box").forGetter(enu::a), bqx.c(dhx.c.a).fieldOf("spawns").forGetter(enu::b)).apply($$0, enu::new)
-   );
+public abstract class enu extends enq {
+   protected abstract int a(azh var1, ji var2);
 
-   public enu.a a() {
-      return this.b;
-   }
-
-   public bqx<dhx.c> b() {
-      return this.c;
-   }
-
-   public static enum a implements azv {
-      a("piece"),
-      b("full");
-
-      public static final Codec<enu.a> c = azv.a(enu.a::values);
-      private final String d;
-
-      private a(final String $$0) {
-         this.d = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
+   @Override
+   public Stream<ji> a_(eno $$0, azh $$1, ji $$2) {
+      return IntStream.range(0, this.a($$1, $$2)).mapToObj($$1x -> $$2);
    }
 }

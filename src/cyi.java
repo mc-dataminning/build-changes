@@ -1,32 +1,37 @@
-public interface cyi {
-   cyi.a a = new cyi.a(false, false);
-   cyi.a b = new cyi.a(true, false);
+import java.util.List;
 
-   boolean a();
+public class cyi extends cxd {
+   public static final int a = 5;
+   public static final float b = 3.0F;
 
-   boolean b();
+   public cyi(cxd.a $$0) {
+      super($$0);
+   }
 
-   public static record a(boolean c, boolean d) implements cyi {
-      @Override
-      public boolean a() {
-         return this.c;
-      }
+   @Override
+   public wp a(cxh $$0) {
+      cwe $$1 = $$0.a(kv.al);
+      return (wp)($$1 != null ? wp.c(this.m + "." + $$1.b()) : super.a($$0));
+   }
 
-      @Override
-      public boolean b() {
-         return this.d;
-      }
+   @Override
+   public void a(cxh $$0, cxd.b $$1, List<wp> $$2, cyx $$3) {
+      cvl.a($$0, $$2);
+   }
 
-      public cyi.a c() {
-         return new cyi.a(this.c, true);
-      }
+   @Override
+   public cxj b(cxh $$0) {
+      return cxj.d;
+   }
 
-      public boolean d() {
-         return this.c;
-      }
+   @Override
+   public int a(cxh $$0, bvy $$1) {
+      return 72000;
+   }
 
-      public boolean e() {
-         return this.d;
-      }
+   @Override
+   public bsy a(dgz $$0, cpr $$1, bsx $$2) {
+      $$1.c($$2);
+      return bsy.c;
    }
 }

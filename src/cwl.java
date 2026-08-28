@@ -1,32 +1,20 @@
-public interface cwl {
-   int a = 256;
-   float b = 7.0F;
-   aku<cwj> c = a("ponder_goat_horn");
-   aku<cwj> d = a("sing_goat_horn");
-   aku<cwj> e = a("seek_goat_horn");
-   aku<cwj> f = a("feel_goat_horn");
-   aku<cwj> g = a("admire_goat_horn");
-   aku<cwj> h = a("call_goat_horn");
-   aku<cwj> i = a("yearn_goat_horn");
-   aku<cwj> j = a("dream_goat_horn");
+public class cwl extends cxd {
+   public static float a = 1.5F;
 
-   private static aku<cwj> a(String $$0) {
-      return aku.a(mc.I, akv.b($$0));
+   public cwl(cxd.a $$0) {
+      super($$0);
    }
 
-   static void a(qe<cwj> $$0) {
-      a($$0, c, (jr<avz>)awa.nd.get(0), 7.0F, 256.0F);
-      a($$0, d, (jr<avz>)awa.nd.get(1), 7.0F, 256.0F);
-      a($$0, e, (jr<avz>)awa.nd.get(2), 7.0F, 256.0F);
-      a($$0, f, (jr<avz>)awa.nd.get(3), 7.0F, 256.0F);
-      a($$0, g, (jr<avz>)awa.nd.get(4), 7.0F, 256.0F);
-      a($$0, h, (jr<avz>)awa.nd.get(5), 7.0F, 256.0F);
-      a($$0, i, (jr<avz>)awa.nd.get(6), 7.0F, 256.0F);
-      a($$0, j, (jr<avz>)awa.nd.get(7), 7.0F, 256.0F);
-   }
+   @Override
+   public bsy a(dgz $$0, cpr $$1, bsx $$2) {
+      cxh $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dz(), $$1.dB(), $$1.dF(), awa.iO, awb.g, 0.5F, 0.4F / ($$0.C_().i() * 0.4F + 0.8F));
+      if ($$0 instanceof ard $$4) {
+         cqk.a(cqu::new, $$4, $$3, $$1, 0.0F, a, 1.0F);
+      }
 
-   static void a(qe<cwj> $$0, aku<cwj> $$1, jr<avz> $$2, float $$3, float $$4) {
-      xd $$5 = wp.c(af.a("instrument", $$1.a()));
-      $$0.a($$1, new cwj($$2, $$3, $$4, $$5));
+      $$1.b(awk.c.b(this));
+      $$3.a(1, $$1);
+      return bsy.a;
    }
 }

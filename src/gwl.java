@@ -1,24 +1,28 @@
-public class gwl extends gwu<gzf, gcr> {
-   private final gnd a;
+public class gwl extends gtu<cnm, hcb, gft<hcb>> {
+   private static final aku a = aku.b("textures/entity/zombie_villager/zombie_villager.png");
 
-   public gwl(guc<gzf, gcr> $$0, gnd $$1) {
-      super($$0);
-      this.a = $$1;
+   public gwl(gtd.a $$0) {
+      super($$0, new gft<>($$0.a(ggb.dY)), new gft<>($$0.a(ggb.dZ)), 0.5F, gvz.a);
+      this.a(new gxh<>(this, new gft($$0.a(ggb.ec)), new gft($$0.a(ggb.ed)), new gft($$0.a(ggb.ea)), new gft($$0.a(ggb.eb)), $$0.h()));
+      this.a(new gyc<>(this, $$0.e(), "zombie_villager"));
    }
 
-   public void a(ffv $$0, glz $$1, int $$2, gzf $$3, float $$4, float $$5) {
-      if ($$3.b != 0) {
-         $$0.a();
-         gfe $$6 = this.d().b();
-         $$6.a($$0);
-         $$0.a(-1.1875F, 1.0625F, -0.9375F);
-         $$0.a(0.5F, 0.5F, 0.5F);
-         float $$7 = 0.5F;
-         $$0.b(0.5F, 0.5F, 0.5F);
-         $$0.a(a.b.rotationDegrees(-90.0F));
-         $$0.a(-0.5F, -0.5F, -0.5F);
-         this.a.a(djp.ca.m(), $$0, $$1, $$2, hej.d);
-         $$0.b();
-      }
+   public aku a(hcb $$0) {
+      return a;
+   }
+
+   public hcb b() {
+      return new hcb();
+   }
+
+   public void a(cnm $$0, hcb $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b = $$0.gz();
+      $$1.c = $$0.gA();
+      $$1.a = $$0.gj();
+   }
+
+   protected boolean b(hcb $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

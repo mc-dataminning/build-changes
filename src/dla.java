@@ -1,66 +1,62 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dla extends diz implements dqt {
-   public static final MapCodec<dla> a = b(dla::new);
-   public static final dxp b = dxo.J;
-   private static final int d = 3;
-   protected static final fbv c = djn.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
+public class dla extends dix {
+   public static final MapCodec<dla> c = b(dla::new);
+   private static final float d = 0.05F;
+   private static final float e = 0.1F;
 
    @Override
    public MapCodec<dla> a() {
-      return a;
-   }
-
-   public dla(dwx.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, Boolean.valueOf(true)));
-   }
-
-   @Override
-   protected void a(dwz.a<djn, dwy> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public dua a(ji $$0, dwy $$1) {
-      return new dum($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dua> dub<T> a(dgj $$0, dwy $$1, duc<T> $$2) {
-      return a($$2, duc.A, $$0.C ? dum::a : dum::b);
-   }
-
-   @Override
-   protected eta b_(dwy $$0) {
-      return $$0.c(b) ? etb.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected dwy a(dwy $$0, dgm $$1, dgy $$2, ji $$3, jn $$4, ji $$5, dwy $$6, azh $$7) {
-      if ($$0.c(b)) {
-         $$2.a($$3, etb.c, etb.c.a($$1));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected fbv a(dwy $$0, dfo $$1, ji $$2, fbg $$3) {
       return c;
    }
 
-   @Nullable
-   @Override
-   public dwy a(dah $$0) {
-      eta $$1 = $$0.q().b_($$0.a());
-      return this.m().b(b, Boolean.valueOf($$1.a(awv.a) && $$1.e() == 8));
+   public dla(dxp.d $$0) {
+      super($$0, ko.c);
    }
 
    @Override
-   protected boolean a(dwy $$0, etp $$1) {
+   public boolean d(dxq $$0) {
       return false;
+   }
+
+   protected static boolean a(dgz $$0, dic.c $$1) {
+      if ($$1 == dic.c.b) {
+         return $$0.C_().i() < 0.05F;
+      } else {
+         return $$1 == dic.c.c ? $$0.C_().i() < 0.1F : false;
+      }
+   }
+
+   @Override
+   public void a(dxq $$0, dgz $$1, ji $$2, dic.c $$3) {
+      if (a($$1, $$3)) {
+         if ($$3 == dic.c.b) {
+            $$1.b($$2, dkg.fP.m());
+            $$1.a(null, ecp.c, $$2);
+         } else if ($$3 == dic.c.c) {
+            $$1.b($$2, dkg.fR.m());
+            $$1.a(null, ecp.c, $$2);
+         }
+      }
+   }
+
+   @Override
+   protected boolean a(etv $$0) {
+      return true;
+   }
+
+   @Override
+   protected void a(dxq $$0, dgz $$1, ji $$2, etv $$3) {
+      if ($$3 == etx.c) {
+         dxq $$4 = dkg.fP.m();
+         $$1.b($$2, $$4);
+         $$1.a(ecp.c, $$2, ecp.a.a($$4));
+         $$1.c(1047, $$2, 0);
+      } else if ($$3 == etx.e) {
+         dxq $$5 = dkg.fQ.m();
+         $$1.b($$2, $$5);
+         $$1.a(ecp.c, $$2, ecp.a.a($$5));
+         $$1.c(1046, $$2, 0);
+      }
    }
 }

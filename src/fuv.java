@@ -1,38 +1,64 @@
-public enum fuv {
-   a(
-      akv.b("advancements/box_obtained"),
-      akv.b("advancements/task_frame_obtained"),
-      akv.b("advancements/challenge_frame_obtained"),
-      akv.b("advancements/goal_frame_obtained")
-   ),
-   b(
-      akv.b("advancements/box_unobtained"),
-      akv.b("advancements/task_frame_unobtained"),
-      akv.b("advancements/challenge_frame_unobtained"),
-      akv.b("advancements/goal_frame_unobtained")
-   );
+public class fuv extends fue {
+   private fpq c;
 
-   private final akv c;
-   private final akv d;
-   private final akv e;
-   private final akv f;
-
-   private fuv(final akv $$0, final akv $$1, final akv $$2, final akv $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public fuv() {
+      super("");
    }
 
-   public akv a() {
-      return this.c;
+   @Override
+   protected void aR_() {
+      super.aR_();
+      this.c = fpq.a(wp.c("multiplayer.stopSleeping"), $$0 -> this.E()).a(this.n / 2 - 100, this.o - 40, 200, 20).a();
+      this.c(this.c);
    }
 
-   public akv a(ao $$0) {
-      return switch ($$0) {
-         case a -> this.d;
-         case b -> this.e;
-         case c -> this.f;
-      };
+   @Override
+   public void a(fpc $$0, int $$1, int $$2, float $$3) {
+      if (!this.m.J().a(this.m.T())) {
+         this.c.a($$0, $$1, $$2, $$3);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   @Override
+   public void aO_() {
+      this.E();
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return !this.m.J().a(this.m.T()) ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.E();
+      }
+
+      if (!this.m.J().a(this.m.T())) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         this.b(this.b.a(), true);
+         this.b.a("");
+         this.m.m.d().d();
+         return true;
+      }
+   }
+
+   private void E() {
+      ggz $$0 = this.m.t.j;
+      $$0.b(new ahm(this.m.t, ahm.a.c));
+   }
+
+   public void m() {
+      if (this.b.a().isEmpty()) {
+         this.m.a(null);
+      } else {
+         this.m.a(new fue(this.b.a()));
+      }
    }
 }

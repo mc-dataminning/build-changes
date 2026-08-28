@@ -1,92 +1,143 @@
-import com.mojang.authlib.minecraft.BanDetails;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.net.URI;
-import java.time.Duration;
-import java.time.Instant;
-import org.apache.commons.lang3.StringUtils;
+public interface fth {
+   fth a(int var1);
 
-public class fth {
-   private static final wp b = wp.c("gui.banned.title.temporary").a(n.r);
-   private static final wp c = wp.c("gui.banned.title.permanent").a(n.r);
-   public static final wp a = wp.c("gui.banned.name.title").a(n.r);
-   private static final wp d = wp.c("gui.banned.skin.title").a(n.r);
-   private static final wp e = wp.a("gui.banned.skin.description", wp.a(axv.n));
+   fth a(int var1, int var2);
 
-   public static ftj a(BooleanConsumer $$0, BanDetails $$1) {
-      return new ftj($$0, a($$1), b($$1), axv.n, wo.m, true);
+   fth a(int var1, int var2, int var3, int var4);
+
+   fth b(int var1);
+
+   fth c(int var1);
+
+   fth d(int var1);
+
+   fth e(int var1);
+
+   fth f(int var1);
+
+   fth g(int var1);
+
+   fth a(float var1, float var2);
+
+   fth a(float var1);
+
+   fth b(float var1);
+
+   default fth a() {
+      return this.a(0.0F);
    }
 
-   public static ftj a(Runnable $$0) {
-      URI $$1 = axv.n;
-      return new ftj($$2 -> {
-         if ($$2) {
-            af.n().a($$1);
-         }
-
-         $$0.run();
-      }, d, e, $$1, wo.m, true);
+   default fth b() {
+      return this.a(0.5F);
    }
 
-   public static ftj a(String $$0, Runnable $$1) {
-      URI $$2 = axv.n;
-      return new ftj($$2x -> {
-         if ($$2x) {
-            af.n().a($$2);
-         }
-
-         $$1.run();
-      }, a, wp.a("gui.banned.name.description", wp.b($$0).a(n.o), wp.a(axv.n)), $$2, wo.m, true);
+   default fth c() {
+      return this.a(1.0F);
    }
 
-   private static wp a(BanDetails $$0) {
-      return f($$0) ? b : c;
+   default fth d() {
+      return this.b(0.0F);
    }
 
-   private static wp b(BanDetails $$0) {
-      return wp.a("gui.banned.description", c($$0), d($$0), wp.a(axv.n));
+   default fth e() {
+      return this.b(0.5F);
    }
 
-   private static wp c(BanDetails $$0) {
-      String $$1 = $$0.reason();
-      String $$2 = $$0.reasonMessage();
-      if (StringUtils.isNumeric($$1)) {
-         int $$3 = Integer.parseInt($$1);
-         ghb $$4 = ghb.a($$3);
-         wp $$5;
-         if ($$4 != null) {
-            $$5 = ws.a($$4.a().f(), xm.a.a(true));
-         } else if ($$2 != null) {
-            $$5 = wp.a("gui.banned.description.reason_id_message", $$3, $$2).a(n.r);
-         } else {
-            $$5 = wp.a("gui.banned.description.reason_id", $$3).a(n.r);
-         }
+   default fth f() {
+      return this.b(1.0F);
+   }
 
-         return wp.a("gui.banned.description.reason", $$5);
-      } else {
-         return wp.c("gui.banned.description.unknownreason");
+   fth g();
+
+   fth.a h();
+
+   static fth i() {
+      return new fth.a();
+   }
+
+   public static class a implements fth {
+      public int a;
+      public int b;
+      public int c;
+      public int d;
+      public float e;
+      public float f;
+
+      public a() {
       }
-   }
 
-   private static wp d(BanDetails $$0) {
-      if (f($$0)) {
-         wp $$1 = e($$0);
-         return wp.a("gui.banned.description.temporary", wp.a("gui.banned.description.temporary.duration", $$1).a(n.r));
-      } else {
-         return wp.c("gui.banned.description.permanent").a(n.r);
+      public a(fth.a $$0) {
+         this.a = $$0.a;
+         this.b = $$0.b;
+         this.c = $$0.c;
+         this.d = $$0.d;
+         this.e = $$0.e;
+         this.f = $$0.f;
       }
-   }
 
-   private static wp e(BanDetails $$0) {
-      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
-      long $$2 = $$1.toHours();
-      if ($$2 > 72L) {
-         return wo.a($$1.toDays());
-      } else {
-         return $$2 < 1L ? wo.c($$1.toMinutes()) : wo.b($$1.toHours());
+      public fth.a h(int $$0) {
+         return this.b($$0, $$0);
       }
-   }
 
-   private static boolean f(BanDetails $$0) {
-      return $$0.expires() != null;
+      public fth.a b(int $$0, int $$1) {
+         return this.m($$0).n($$1);
+      }
+
+      public fth.a b(int $$0, int $$1, int $$2, int $$3) {
+         return this.i($$0).k($$2).j($$1).l($$3);
+      }
+
+      public fth.a i(int $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public fth.a j(int $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public fth.a k(int $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public fth.a l(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public fth.a m(int $$0) {
+         return this.i($$0).k($$0);
+      }
+
+      public fth.a n(int $$0) {
+         return this.j($$0).l($$0);
+      }
+
+      public fth.a b(float $$0, float $$1) {
+         this.e = $$0;
+         this.f = $$1;
+         return this;
+      }
+
+      public fth.a c(float $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public fth.a d(float $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public fth.a j() {
+         return new fth.a(this);
+      }
+
+      @Override
+      public fth.a h() {
+         return this;
+      }
    }
 }

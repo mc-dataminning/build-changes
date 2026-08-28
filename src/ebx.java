@@ -1,34 +1,14 @@
-public interface ebx {
-   ebx a = new ebx() {
-      @Override
-      public boolean a() {
-         return true;
-      }
+import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
 
-      @Override
-      public void a(ebw $$0) {
-      }
+public interface ebx<T> extends AutoCloseable {
+   CompletableFuture<ebs<T>> a(dgg var1);
 
-      @Override
-      public void b(ebw $$0) {
-      }
+   void a(ebs<T> var1);
 
-      @Override
-      public boolean a(jr<ebu> $$0, fbb $$1, ebu.a $$2, ebx.a $$3) {
-         return false;
-      }
-   };
+   void a(boolean var1);
 
-   boolean a();
-
-   void a(ebw var1);
-
-   void b(ebw var1);
-
-   boolean a(jr<ebu> var1, fbb var2, ebu.a var3, ebx.a var4);
-
-   @FunctionalInterface
-   public interface a {
-      void visit(ebw var1, fbb var2);
+   @Override
+   default void close() throws IOException {
    }
 }

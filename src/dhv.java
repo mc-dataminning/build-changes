@@ -1,108 +1,154 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
 import com.google.common.collect.ImmutableList.Builder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongSet;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.TreeSet;
-import java.util.function.Function;
-import java.util.function.ToIntFunction;
-import java.util.stream.Collectors;
-import org.apache.commons.lang3.mutable.MutableInt;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
 public class dhv {
-   public static <T> List<dhv.b> a(List<T> $$0, Function<T, List<jv<emr>>> $$1, boolean $$2) {
-      Object2IntMap<emr> $$3 = new Object2IntOpenHashMap();
-      MutableInt $$4 = new MutableInt(0);
+   private final dha a;
+   private final eem b;
+   private final eok c;
 
-      record a(int a, int b, emr c) {
-      }
-
-      Comparator<a> $$5 = Comparator.comparingInt(a::b).thenComparingInt(a::a);
-      Map<a, Set<a>> $$6 = new TreeMap<>($$5);
-      int $$7 = 0;
-
-      for (T $$8 : $$0) {
-         List<a> $$9 = Lists.newArrayList();
-         List<jv<emr>> $$10 = $$1.apply($$8);
-         $$7 = Math.max($$7, $$10.size());
-
-         for (int $$11 = 0; $$11 < $$10.size(); $$11++) {
-            for (jr<emr> $$12 : $$10.get($$11)) {
-               emr $$13 = $$12.a();
-               $$9.add(new a($$3.computeIfAbsent($$13, $$1x -> $$4.getAndIncrement()), $$11, $$13));
-            }
-         }
-
-         for (int $$14 = 0; $$14 < $$9.size(); $$14++) {
-            Set<a> $$15 = $$6.computeIfAbsent($$9.get($$14), $$1x -> new TreeSet<>($$5));
-            if ($$14 < $$9.size() - 1) {
-               $$15.add($$9.get($$14 + 1));
-            }
-         }
-      }
-
-      Set<a> $$16 = new TreeSet<>($$5);
-      Set<a> $$17 = new TreeSet<>($$5);
-      List<a> $$18 = Lists.newArrayList();
-
-      for (a $$19 : $$6.keySet()) {
-         if (!$$17.isEmpty()) {
-            throw new IllegalStateException("You somehow broke the universe; DFS bork (iteration finished with non-empty in-progress vertex set");
-         }
-
-         if (!$$16.contains($$19) && ayo.a($$6, $$16, $$17, $$18::add, $$19)) {
-            if (!$$2) {
-               throw new IllegalStateException("Feature order cycle found");
-            }
-
-            List<T> $$20 = new ArrayList<>($$0);
-
-            int $$21;
-            do {
-               $$21 = $$20.size();
-               ListIterator<T> $$22 = $$20.listIterator();
-
-               while ($$22.hasNext()) {
-                  T $$23 = $$22.next();
-                  $$22.remove();
-
-                  try {
-                     a($$20, $$1, false);
-                  } catch (IllegalStateException var18) {
-                     continue;
-                  }
-
-                  $$22.add($$23);
-               }
-            } while ($$21 != $$20.size());
-
-            throw new IllegalStateException("Feature order cycle found, involved sources: " + $$20);
-         }
-      }
-
-      Collections.reverse($$18);
-      Builder<dhv.b> $$25 = ImmutableList.builder();
-
-      for (int $$26 = 0; $$26 < $$7; $$26++) {
-         int $$27 = $$26;
-         List<emr> $$28 = $$18.stream().filter($$1x -> $$1x.b() == $$27).map(a::c).collect(Collectors.toList());
-         $$25.add(new dhv.b($$28));
-      }
-
-      return $$25.build();
+   public dhv(dha $$0, eem $$1, eok $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static record b(List<emr> a, ToIntFunction<emr> b) {
-      b(List<emr> $$0) {
-         this($$0, af.h($$0));
+   public dhv a(arl $$0) {
+      if ($$0.a() != this.a) {
+         throw new IllegalStateException("Using invalid structure manager (source level: " + $$0.a() + ", region: " + $$0);
+      } else {
+         return new dhv($$0, this.b, this.c);
       }
+   }
+
+   public List<eor> a(dgg $$0, Predicate<eoj> $$1) {
+      Map<eoj, LongSet> $$2 = this.a.a($$0.h, $$0.i, ean.e).h();
+      Builder<eor> $$3 = ImmutableList.builder();
+
+      for (Entry<eoj, LongSet> $$4 : $$2.entrySet()) {
+         eoj $$5 = $$4.getKey();
+         if ($$1.test($$5)) {
+            this.a($$5, $$4.getValue(), $$3::add);
+         }
+      }
+
+      return $$3.build();
+   }
+
+   public List<eor> a(kk $$0, eoj $$1) {
+      LongSet $$2 = this.a.a($$0.a(), $$0.c(), ean.e).b($$1);
+      Builder<eor> $$3 = ImmutableList.builder();
+      this.a($$1, $$2, $$3::add);
+      return $$3.build();
+   }
+
+   public void a(eoj $$0, LongSet $$1, Consumer<eor> $$2) {
+      LongIterator var4 = $$1.iterator();
+
+      while (var4.hasNext()) {
+         long $$3 = (Long)var4.next();
+         kk $$4 = kk.a(new dgg($$3), this.a.aq());
+         eor $$5 = this.a($$4, $$0, this.a.a($$4.a(), $$4.c(), ean.d));
+         if ($$5 != null && $$5.b()) {
+            $$2.accept($$5);
+         }
+      }
+   }
+
+   @Nullable
+   public eor a(kk $$0, eoj $$1, eai $$2) {
+      return $$2.a($$1);
+   }
+
+   public void a(kk $$0, eoj $$1, eor $$2, eai $$3) {
+      $$3.a($$1, $$2);
+   }
+
+   public void a(kk $$0, eoj $$1, long $$2, eai $$3) {
+      $$3.a($$1, $$2);
+   }
+
+   public boolean a() {
+      return this.b.d();
+   }
+
+   public eor a(ji $$0, eoj $$1) {
+      for (eor $$2 : this.a(kk.a($$0), $$1)) {
+         if ($$2.a().b($$0)) {
+            return $$2;
+         }
+      }
+
+      return eor.b;
+   }
+
+   public eor a(ji $$0, axf<eoj> $$1) {
+      return this.a($$0, $$1x -> $$1x.a($$1));
+   }
+
+   public eor a(ji $$0, jv<eoj> $$1) {
+      return this.a($$0, $$1::a);
+   }
+
+   public eor a(ji $$0, Predicate<jr<eoj>> $$1) {
+      ke<eoj> $$2 = this.b().e(mc.aW);
+
+      for (eor $$3 : this.a(new dgg($$0), $$2x -> $$2.c($$2.a($$2x)).map($$1::test).orElse(false))) {
+         if (this.a($$0, $$3)) {
+            return $$3;
+         }
+      }
+
+      return eor.b;
+   }
+
+   public eor b(ji $$0, eoj $$1) {
+      for (eor $$2 : this.a(kk.a($$0), $$1)) {
+         if (this.a($$0, $$2)) {
+            return $$2;
+         }
+      }
+
+      return eor.b;
+   }
+
+   public boolean a(ji $$0, eor $$1) {
+      for (eon $$2 : $$1.i()) {
+         if ($$2.f().b($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public boolean a(ji $$0) {
+      kk $$1 = kk.a($$0);
+      return this.a.a($$1.a(), $$1.c(), ean.e).y();
+   }
+
+   public Map<eoj, LongSet> b(ji $$0) {
+      kk $$1 = kk.a($$0);
+      return this.a.a($$1.a(), $$1.c(), ean.e).h();
+   }
+
+   public eol a(dgg $$0, eoj $$1, epg $$2, boolean $$3) {
+      return this.c.a($$0, $$1, $$2, $$3);
+   }
+
+   public void a(eor $$0) {
+      $$0.e();
+      this.c.a($$0.c(), $$0.h());
+   }
+
+   public kf b() {
+      return this.a.F_();
    }
 }

@@ -1,40 +1,36 @@
-public class gvh extends gtl<ckq, haz, ges> {
-   private static final akv a = akv.b("textures/entity/wither/wither_invulnerable.png");
-   private static final akv b = akv.b("textures/entity/wither/wither.png");
+public class gvh extends guj<cnb, hbg, gey> {
+   public static final aku a = aku.b("textures/entity/slime/slime.png");
 
-   public gvh(gsf.a $$0) {
-      super($$0, new ges($$0.a(gfd.dA)), 1.0F);
-      this.a(new gxh(this, $$0.f()));
+   public gvh(gtd.a $$0) {
+      super($$0, new gey($$0.a(ggb.cQ)), 0.25F);
+      this.a(new gxw(this, $$0.f()));
    }
 
-   protected int a(ckq $$0, ji $$1) {
-      return 15;
+   protected float a(hbg $$0) {
+      return (float)$$0.b * 0.25F;
    }
 
-   public akv a(haz $$0) {
-      int $$1 = ayz.d($$0.c);
-      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : b;
+   protected void a(hbg $$0, fgr $$1) {
+      float $$2 = 0.999F;
+      $$1.b(0.999F, 0.999F, 0.999F);
+      $$1.a(0.0F, 0.001F, 0.0F);
+      float $$3 = (float)$$0.b;
+      float $$4 = $$0.a / ($$3 * 0.5F + 1.0F);
+      float $$5 = 1.0F / ($$4 + 1.0F);
+      $$1.b($$5 * $$3, 1.0F / $$5 * $$3, $$5 * $$3);
    }
 
-   public haz b() {
-      return new haz();
+   public aku b(hbg $$0) {
+      return a;
    }
 
-   protected void a(haz $$0, ffv $$1) {
-      float $$2 = 2.0F;
-      if ($$0.c > 0.0F) {
-         $$2 -= $$0.c / 220.0F * 0.5F;
-      }
-
-      $$1.b($$2, $$2, $$2);
+   public hbg b() {
+      return new hbg();
    }
 
-   public void a(ckq $$0, haz $$1, float $$2) {
+   public void a(cnb $$0, hbg $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      int $$3 = $$0.gs();
-      $$1.c = $$3 > 0 ? (float)$$3 - $$2 : 0.0F;
-      System.arraycopy($$0.x(), 0, $$1.a, 0, $$1.a.length);
-      System.arraycopy($$0.t(), 0, $$1.b, 0, $$1.b.length);
-      $$1.d = $$0.gt();
+      $$1.a = ayz.h($$2, $$0.bF, $$0.bE);
+      $$1.b = $$0.gq();
    }
 }

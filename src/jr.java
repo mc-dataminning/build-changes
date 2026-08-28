@@ -11,11 +11,11 @@ public interface jr<T> {
 
    boolean b();
 
-   boolean a(akv var1);
+   boolean a(aku var1);
 
-   boolean a(aku<T> var1);
+   boolean a(akt<T> var1);
 
-   boolean a(Predicate<aku<T>> var1);
+   boolean a(Predicate<akt<T>> var1);
 
    boolean a(axf<T> var1);
 
@@ -24,9 +24,9 @@ public interface jr<T> {
 
    Stream<axf<T>> c();
 
-   Either<aku<T>, T> d();
+   Either<akt<T>, T> d();
 
-   Optional<aku<T>> e();
+   Optional<akt<T>> e();
 
    jr.b f();
 
@@ -47,12 +47,12 @@ public interface jr<T> {
       }
 
       @Override
-      public boolean a(akv $$0) {
+      public boolean a(aku $$0) {
          return false;
       }
 
       @Override
-      public boolean a(aku<T> $$0) {
+      public boolean a(akt<T> $$0) {
          return false;
       }
 
@@ -67,17 +67,17 @@ public interface jr<T> {
       }
 
       @Override
-      public boolean a(Predicate<aku<T>> $$0) {
+      public boolean a(Predicate<akt<T>> $$0) {
          return false;
       }
 
       @Override
-      public Either<aku<T>, T> d() {
+      public Either<akt<T>, T> d() {
          return Either.right(this.a);
       }
 
       @Override
-      public Optional<aku<T>> e() {
+      public Optional<akt<T>> e() {
          return Optional.empty();
       }
 
@@ -113,18 +113,18 @@ public interface jr<T> {
       private Set<axf<T>> b;
       private final jr.c.a c;
       @Nullable
-      private aku<T> d;
+      private akt<T> d;
       @Nullable
       private T e;
 
-      protected c(jr.c.a $$0, ju<T> $$1, @Nullable aku<T> $$2, @Nullable T $$3) {
+      protected c(jr.c.a $$0, ju<T> $$1, @Nullable akt<T> $$2, @Nullable T $$3) {
          this.a = $$1;
          this.c = $$0;
          this.d = $$2;
          this.e = $$3;
       }
 
-      public static <T> jr.c<T> a(ju<T> $$0, aku<T> $$1) {
+      public static <T> jr.c<T> a(ju<T> $$0, akt<T> $$1) {
          return new jr.c<>(jr.c.a.a, $$0, $$1, null);
       }
 
@@ -133,7 +133,7 @@ public interface jr<T> {
          return new jr.c<>(jr.c.a.b, $$0, null, $$1);
       }
 
-      public aku<T> h() {
+      public akt<T> h() {
          if (this.d == null) {
             throw new IllegalStateException("Trying to access unbound value '" + this.e + "' from registry " + this.a);
          } else {
@@ -151,12 +151,12 @@ public interface jr<T> {
       }
 
       @Override
-      public boolean a(akv $$0) {
+      public boolean a(aku $$0) {
          return this.h().a().equals($$0);
       }
 
       @Override
-      public boolean a(aku<T> $$0) {
+      public boolean a(akt<T> $$0) {
          return this.h() == $$0;
       }
 
@@ -179,7 +179,7 @@ public interface jr<T> {
       }
 
       @Override
-      public boolean a(Predicate<aku<T>> $$0) {
+      public boolean a(Predicate<akt<T>> $$0) {
          return $$0.test(this.h());
       }
 
@@ -189,12 +189,12 @@ public interface jr<T> {
       }
 
       @Override
-      public Either<aku<T>, T> d() {
+      public Either<akt<T>, T> d() {
          return Either.left(this.h());
       }
 
       @Override
-      public Optional<aku<T>> e() {
+      public Optional<akt<T>> e() {
          return Optional.of(this.h());
       }
 
@@ -208,7 +208,7 @@ public interface jr<T> {
          return this.d != null && this.e != null;
       }
 
-      void b(aku<T> $$0) {
+      void b(akt<T> $$0) {
          if (this.d != null && $$0 != this.d) {
             throw new IllegalStateException("Can't change holder key: existing=" + this.d + ", new=" + $$0);
          } else {

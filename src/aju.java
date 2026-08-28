@@ -1,18 +1,12 @@
-import io.netty.buffer.ByteBuf;
+public class aju {
+   public static final yy<ajq> a = a("status_response");
+   public static final yy<ajt> b = b("status_request");
 
-public class aju implements yw<ajt> {
-   public static final aju a = new aju();
-   public static final yn<ByteBuf, aju> b = yn.a(a);
-
-   private aju() {
+   private static <T extends yw<ajp>> yy<T> a(String $$0) {
+      return new yy<>(yx.b, aku.b($$0));
    }
 
-   @Override
-   public yy<aju> a() {
-      return ajv.b;
-   }
-
-   public void a(ajt $$0) {
-      $$0.a(this);
+   private static <T extends yw<ajs>> yy<T> b(String $$0) {
+      return new yy<>(yx.a, aku.b($$0));
    }
 }

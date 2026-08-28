@@ -1,148 +1,33 @@
-import java.util.function.Supplier;
+import com.mojang.brigadier.ImmutableStringReader;
+import com.mojang.brigadier.StringReader;
+import java.util.Optional;
 
-public interface bou {
-   String b = "root";
+public abstract class bou<C, V> implements boo<StringReader, V>, bov {
+   private final boi<aku> b;
+   protected final C a;
 
-   void a();
-
-   void b();
-
-   void a(String var1);
-
-   void a(Supplier<String> var1);
-
-   void c();
-
-   void b(String var1);
-
-   void b(Supplier<String> var1);
-
-   default void e(String $$0) {
+   protected bou(boi<aku> $$0, C $$1) {
+      this.b = $$0;
+      this.a = $$1;
    }
 
-   default void a(long $$0) {
-   }
-
-   default void a(int $$0) {
-   }
-
-   default boz d(String $$0) {
-      this.a($$0);
-      return new boz(this);
-   }
-
-   default boz c(Supplier<String> $$0) {
-      this.a($$0);
-      return new boz(this);
-   }
-
-   void a(bqd var1);
-
-   default void f(String $$0) {
-      this.a($$0, 1);
-   }
-
-   void a(String var1, int var2);
-
-   default void d(Supplier<String> $$0) {
-      this.a($$0, 1);
-   }
-
-   void a(Supplier<String> var1, int var2);
-
-   static bou a(bou $$0, bou $$1) {
-      if ($$0 == boq.a) {
-         return $$1;
+   @Override
+   public Optional<V> a(bon<StringReader> $$0) {
+      $$0.b().skipWhitespace();
+      int $$1 = $$0.c();
+      Optional<aku> $$2 = $$0.b(this.b);
+      if ($$2.isPresent()) {
+         try {
+            return Optional.of(this.a((ImmutableStringReader)$$0.b(), $$2.get()));
+         } catch (Exception var5) {
+            $$0.a().a($$1, this, var5);
+            return Optional.empty();
+         }
       } else {
-         return (bou)($$1 == boq.a ? $$0 : new bou.a($$0, $$1));
+         $$0.a().a($$1, this, aku.c.createWithContext((ImmutableStringReader)$$0.b()));
+         return Optional.empty();
       }
    }
 
-   public static class a implements bou {
-      private final bou a;
-      private final bou c;
-
-      public a(bou $$0, bou $$1) {
-         this.a = $$0;
-         this.c = $$1;
-      }
-
-      @Override
-      public void a() {
-         this.a.a();
-         this.c.a();
-      }
-
-      @Override
-      public void b() {
-         this.a.b();
-         this.c.b();
-      }
-
-      @Override
-      public void a(String $$0) {
-         this.a.a($$0);
-         this.c.a($$0);
-      }
-
-      @Override
-      public void a(Supplier<String> $$0) {
-         this.a.a($$0);
-         this.c.a($$0);
-      }
-
-      @Override
-      public void a(bqd $$0) {
-         this.a.a($$0);
-         this.c.a($$0);
-      }
-
-      @Override
-      public void c() {
-         this.a.c();
-         this.c.c();
-      }
-
-      @Override
-      public void b(String $$0) {
-         this.a.b($$0);
-         this.c.b($$0);
-      }
-
-      @Override
-      public void b(Supplier<String> $$0) {
-         this.a.b($$0);
-         this.c.b($$0);
-      }
-
-      @Override
-      public void a(String $$0, int $$1) {
-         this.a.a($$0, $$1);
-         this.c.a($$0, $$1);
-      }
-
-      @Override
-      public void a(Supplier<String> $$0, int $$1) {
-         this.a.a($$0, $$1);
-         this.c.a($$0, $$1);
-      }
-
-      @Override
-      public void e(String $$0) {
-         this.a.e($$0);
-         this.c.e($$0);
-      }
-
-      @Override
-      public void a(long $$0) {
-         this.a.a($$0);
-         this.c.a($$0);
-      }
-
-      @Override
-      public void a(int $$0) {
-         this.a.a($$0);
-         this.c.a($$0);
-      }
-   }
+   protected abstract V a(ImmutableStringReader var1, aku var2) throws Exception;
 }

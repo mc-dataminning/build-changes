@@ -1,41 +1,122 @@
-public class gpd extends gpe<dvt> {
-   private static final akv c = akv.b("textures/entity/end_gateway_beam.png");
+import java.util.List;
 
-   public gpd(gom.a $$0) {
-      super($$0);
+public abstract class gpd implements gpj<dwf> {
+   private static final int a = -988212;
+   private static final int b = ayz.h(16);
+   private final fpa c;
+
+   public gpd(gpk.a $$0) {
+      this.c = $$0.g();
    }
 
-   public void a(dvt $$0, float $$1, ffv $$2, glz $$3, int $$4, int $$5) {
-      if ($$0.b() || $$0.c()) {
-         float $$6 = $$0.b() ? $$0.a($$1) : $$0.b($$1);
-         double $$7 = $$0.b() ? (double)$$0.i().an() : 50.0;
-         $$6 = ayz.a($$6 * (float) Math.PI);
-         int $$8 = ayz.a((double)$$6 * $$7);
-         int $$9 = $$0.b() ? cvn.c.d() : cvn.k.d();
-         long $$10 = $$0.i().ad();
-         goh.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
+   protected abstract gdv a(dxq var1, dzd var2);
+
+   protected abstract hhy a(dzd var1);
+
+   protected abstract float a();
+
+   protected abstract float b();
+
+   protected abstract fbx c();
+
+   protected abstract void a(fgr var1, float var2, dxq var3);
+
+   public void a(dwf $$0, float $$1, fgr $$2, gmx $$3, int $$4, int $$5) {
+      dxq $$6 = $$0.m();
+      drk $$7 = (drk)$$6.b();
+      gdv $$8 = this.a($$6, $$7.d());
+      this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$7.d(), $$8);
+   }
+
+   private void a(dwf $$0, fgr $$1, gmx $$2, int $$3, int $$4, dxq $$5, drk $$6, dzd $$7, gdv $$8) {
+      $$1.a();
+      this.a($$1, -$$6.h($$5), $$5);
+      this.a($$1, $$2, $$3, $$4, $$7, $$8);
+      this.a($$0.aA_(), $$0.j(), $$1, $$2, $$3, $$0.b(), $$0.c(), true);
+      this.a($$0.aA_(), $$0.k(), $$1, $$2, $$3, $$0.b(), $$0.c(), false);
+      $$1.b();
+   }
+
+   protected void a(fgr $$0, gmx $$1, int $$2, int $$3, dzd $$4, gdv $$5) {
+      $$0.a();
+      float $$6 = this.a();
+      $$0.b($$6, -$$6, -$$6);
+      hhy $$7 = this.a($$4);
+      fgv $$8 = $$7.a($$1, $$5::a);
+      $$5.a($$0, $$8, $$2, $$3);
+      $$0.b();
+   }
+
+   private void a(ji $$0, dwg $$1, fgr $$2, gmx $$3, int $$4, int $$5, int $$6, boolean $$7) {
+      $$2.a();
+      this.a($$2, $$7, this.c());
+      int $$8 = a($$1);
+      int $$9 = 4 * $$5 / 2;
+      ayl[] $$10 = $$1.a(fmg.Q().aT(), $$1x -> {
+         List<ayl> $$2x = this.c.c($$1x, $$6);
+         return $$2x.isEmpty() ? ayl.a : $$2x.get(0);
+      });
+      int $$11;
+      boolean $$12;
+      int $$13;
+      if ($$1.a()) {
+         $$11 = $$1.b().g();
+         $$12 = a($$0, $$11);
+         $$13 = 15728880;
+      } else {
+         $$11 = $$8;
+         $$12 = false;
+         $$13 = $$4;
       }
 
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      for (int $$17 = 0; $$17 < 4; $$17++) {
+         ayl $$18 = $$10[$$17];
+         float $$19 = (float)(-this.c.a($$18) / 2);
+         if ($$12) {
+            this.c.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, $$8, $$2.c().a(), $$3, $$13);
+         } else {
+            this.c.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, false, $$2.c().a(), $$3, fpa.a.c, 0, $$13);
+         }
+      }
+
+      $$2.b();
    }
 
-   @Override
-   protected float b() {
-      return 1.0F;
+   private void a(fgr $$0, boolean $$1, fbx $$2) {
+      if (!$$1) {
+         $$0.a(a.d.rotationDegrees(180.0F));
+      }
+
+      float $$3 = 0.015625F * this.b();
+      $$0.a($$2);
+      $$0.b($$3, -$$3, $$3);
    }
 
-   @Override
-   protected float c() {
-      return 0.0F;
+   private static boolean a(ji $$0, int $$1) {
+      if ($$1 == cwe.p.g()) {
+         return true;
+      } else {
+         fmg $$2 = fmg.Q();
+         glv $$3 = $$2.t;
+         if ($$3 != null && $$2.n.aE().a() && $$3.gJ()) {
+            return true;
+         } else {
+            bva $$4 = $$2.ao();
+            return $$4 != null && $$4.g(fbx.b($$0)) < (double)b;
+         }
+      }
    }
 
-   @Override
-   protected gmj d() {
-      return gmj.u();
-   }
-
-   @Override
-   public int aU_() {
-      return 256;
+   public static int a(dwg $$0) {
+      int $$1 = $$0.b().g();
+      if ($$1 == cwe.p.g() && $$0.a()) {
+         return -988212;
+      } else {
+         double $$2 = 0.4;
+         int $$3 = (int)((double)axk.b($$1) * 0.4);
+         int $$4 = (int)((double)axk.c($$1) * 0.4);
+         int $$5 = (int)((double)axk.d($$1) * 0.4);
+         return axk.a(0, $$3, $$4, $$5);
+      }
    }
 }

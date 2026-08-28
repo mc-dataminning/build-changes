@@ -1,69 +1,31 @@
-import java.util.Locale;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.serialization.Codec;
 
-public interface evl extends evn {
-   @Override
-   String e();
+public record evl(aku d, boolean e, int f, boolean g, boolean h) {
+   public static final int a = -1;
+   public static final Codec<jr<evl>> b = mb.ar.r();
+   public static final yn<wa, jr<evl>> c = yl.b(mc.aC);
 
-   void a(boolean var1);
-
-   int j();
-
-   void c(int var1);
-
-   void b(int var1);
-
-   int h();
-
-   @Override
-   default void a(p $$0, dgl $$1) {
-      evn.super.a($$0, $$1);
-      $$0.a("Level name", this::e);
-      $$0.a(
-         "Level game mode",
-         () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Commands: %b", this.k().b(), this.k().a(), this.l(), this.m())
-      );
-      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
+   public boolean a() {
+      return this.f != -1;
    }
 
-   int f();
+   public aku b() {
+      return this.d;
+   }
 
-   void a(int var1);
+   public boolean c() {
+      return this.e;
+   }
 
-   int t();
+   public int d() {
+      return this.f;
+   }
 
-   void d(int var1);
+   public boolean e() {
+      return this.g;
+   }
 
-   int u();
-
-   void e(int var1);
-
-   @Nullable
-   UUID v();
-
-   void a(UUID var1);
-
-   dgg k();
-
-   void a(dyo.c var1);
-
-   dyo.c p();
-
-   boolean n();
-
-   void c(boolean var1);
-
-   boolean m();
-
-   void a(dgg var1);
-
-   fao<MinecraftServer> s();
-
-   void a(long var1);
-
-   void b(long var1);
-
-   dgf o();
+   public boolean f() {
+      return this.h;
+   }
 }

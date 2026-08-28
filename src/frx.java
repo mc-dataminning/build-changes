@@ -1,34 +1,71 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public interface frx {
-   MapCodec<frx> b = fry.f.dispatchMap(frx::a, fry::a);
+public class frx implements fsa {
+   private static final aku e = aku.b("toast/advancement");
+   public static final int a = 5000;
+   private final ai f;
+   private fsa.a g = fsa.a.b;
 
-   fry a();
+   public frx(ai $$0) {
+      this.f = $$0;
+   }
 
-   Either<frx.b, frx.c> b();
+   @Override
+   public fsa.a a() {
+      return this.g;
+   }
 
-   public static record a(frx b, frl.a c) {
-      public static final Codec<frx.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(frx.b.forGetter(frx.a::a), frl.a.a.optionalFieldOf("filter", frl.a.b).forGetter(frx.a::b)).apply($$0, frx.a::new)
-      );
-
-      public frx a() {
-         return this.b;
-      }
-
-      public frl.a b() {
-         return this.c;
+   @Override
+   public void a(fsb $$0, long $$1) {
+      au $$2 = this.f.b().c().orElse(null);
+      if ($$2 == null) {
+         this.g = fsa.a.b;
+      } else {
+         this.g = (double)$$1 >= 5000.0 * $$0.d() ? fsa.a.b : fsa.a.a;
       }
    }
 
-   public interface b {
-      fdu load(aup var1) throws IOException;
+   @Nullable
+   @Override
+   public avz b() {
+      return this.e() ? awa.Bv : null;
    }
 
-   public static record c(akv a) {
+   private boolean e() {
+      Optional<au> $$0 = this.f.b().c();
+      return $$0.isPresent() && $$0.get().e().equals(ao.b);
+   }
+
+   @Override
+   public void a(fpc $$0, fpa $$1, long $$2) {
+      au $$3 = this.f.b().c().orElse(null);
+      $$0.a(gnh::H, e, 0, 0, this.c(), this.d());
+      if ($$3 != null) {
+         List<ayl> $$4 = $$1.c($$3.a(), 125);
+         int $$5 = $$3.e() == ao.b ? -30465 : -256;
+         if ($$4.size() == 1) {
+            $$0.a($$1, $$3.e().b(), 30, 7, $$5, false);
+            $$0.a($$1, $$4.get(0), 30, 18, -1, false);
+         } else {
+            int $$6 = 1500;
+            float $$7 = 300.0F;
+            if ($$2 < 1500L) {
+               int $$8 = ayz.d(ayz.a((float)(1500L - $$2) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
+               $$0.a($$1, $$3.e().b(), 30, 11, $$5 | $$8, false);
+            } else {
+               int $$9 = ayz.d(ayz.a((float)($$2 - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
+               int $$10 = this.d() / 2 - $$4.size() * 9 / 2;
+
+               for (ayl $$11 : $$4) {
+                  $$0.a($$1, $$11, 30, $$10, 16777215 | $$9, false);
+                  $$10 += 9;
+               }
+            }
+         }
+
+         $$0.b($$3.c(), 8, 8);
+      }
    }
 }

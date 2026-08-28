@@ -1,35 +1,70 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class exa extends exf {
-   public static final MapCodec<exa> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(cv.a.fieldOf("item_filter").forGetter($$0x -> $$0x.b), exi.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
-            .apply($$0, exa::new)
-   );
-   private final cv b;
-   private final exg c;
+public class exa extends ewx {
+   public static final MapCodec<exa> a = a(exa::new);
 
-   private exa(List<ezb> $$0, cv $$1, exg $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   exa(List<exe> $$0, List<ezx> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public exh<exa> b() {
-      return exi.v;
+   public exf a() {
+      return exc.i;
    }
 
    @Override
-   public cwq a(cwq $$0, evs $$1) {
-      return this.b.a($$0) ? this.c.apply($$0, $$1) : $$0;
+   protected eww a(List<? extends eww> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (eww)$$0.get(0);
+         case 2 -> {
+            eww $$1 = $$0.get(0);
+            eww $$2 = $$0.get(1);
+            yield ($$2x, $$3) -> {
+               $$1.expand($$2x, $$3);
+               $$2.expand($$2x, $$3);
+               return true;
+            };
+         }
+         default -> ($$1x, $$2x) -> {
+         for (eww $$3 : $$0) {
+            $$3.expand($$1x, $$2x);
+         }
+
+         return true;
+      };
+      };
    }
 
-   @Override
-   public void a(evy $$0) {
-      super.a($$0);
-      this.c.a($$0.a(".modifier"));
+   public static exa.a a(exe.a<?>... $$0) {
+      return new exa.a($$0);
+   }
+
+   public static class a extends exe.a<exa.a> {
+      private final Builder<exe> a = ImmutableList.builder();
+
+      public a(exe.a<?>... $$0) {
+         for (exe.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
+      }
+
+      protected exa.a a() {
+         return this;
+      }
+
+      @Override
+      public exa.a b(exe.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public exe b() {
+         return new exa(this.a.build(), this.f());
+      }
    }
 }

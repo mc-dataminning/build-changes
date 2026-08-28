@@ -14,9 +14,9 @@ public class avv extends avs {
    private final ServerSocket e;
    private final String f;
    private final List<avu> g = Lists.newArrayList();
-   private final alm h;
+   private final all h;
 
-   private avv(alm $$0, ServerSocket $$1, String $$2) {
+   private avv(all $$0, ServerSocket $$1, String $$2) {
       super("RCON Listener");
       this.h = $$0;
       this.e = $$1;
@@ -51,8 +51,8 @@ public class avv extends avs {
    }
 
    @Nullable
-   public static avv a(alm $$0) {
-      apv $$1 = $$0.a();
+   public static avv a(all $$0) {
+      apu $$1 = $$0.a();
       String $$2 = $$0.b();
       if ($$2.isEmpty()) {
          $$2 = "0.0.0.0";

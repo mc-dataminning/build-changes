@@ -1,34 +1,30 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record ddo(ddh d, ddh e, jr<bte> f) implements ddr {
-   public static final MapCodec<ddo> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ddh.b.fieldOf("min_damage").forGetter(ddo::b), ddh.b.fieldOf("max_damage").forGetter(ddo::c), bte.b.fieldOf("damage_type").forGetter(ddo::d)
-            )
-            .apply($$0, ddo::new)
-   );
-
-   @Override
-   public void a(ard $$0, int $$1, dcz $$2, bum $$3, fbb $$4) {
-      float $$5 = ayz.b($$3.dY(), this.d.a($$1), this.e.a($$1));
-      $$3.a($$0, new btc(this.f, $$2.c()), $$5);
+public record ddo<T>(T a, Optional<ezx> b) {
+   public static Codec<ezx> a(baj $$0) {
+      return ezx.e
+         .validate(
+            $$1 -> {
+               azf.a $$2 = new azf.a();
+               ewu $$3 = new ewu($$2, $$0);
+               $$1.a($$3);
+               return $$2.b()
+                  .map($$0xx -> DataResult.error(() -> "Validation error in enchantment effect condition: " + $$0xx))
+                  .orElseGet(() -> DataResult.success($$1));
+            }
+         );
    }
 
-   @Override
-   public MapCodec<ddo> a() {
-      return a;
+   public static <T> Codec<ddo<T>> a(Codec<T> $$0, baj $$1) {
+      return RecordCodecBuilder.create(
+         $$2 -> $$2.group($$0.fieldOf("effect").forGetter(ddo::a), a($$1).optionalFieldOf("requirements").forGetter(ddo::b)).apply($$2, ddo::new)
+      );
    }
 
-   public ddh b() {
-      return this.d;
-   }
-
-   public ddh c() {
-      return this.e;
-   }
-
-   public jr<bte> d() {
-      return this.f;
+   public boolean a(ewo $$0) {
+      return this.b.isEmpty() ? true : this.b.get().test($$0);
    }
 }

@@ -1,18 +1,30 @@
-import javax.annotation.Nullable;
-
-public record gjm(String f, @Nullable gmj g) {
-   public static final gjm a = new gjm("TERRAIN_SHEET", gmj.B(hes.d));
-   public static final gjm b = new gjm("PARTICLE_SHEET_OPAQUE", gmj.A(hes.e));
-   public static final gjm c = new gjm("PARTICLE_SHEET_TRANSLUCENT", gmj.B(hes.e));
-   public static final gjm d = new gjm("CUSTOM", null);
-   public static final gjm e = new gjm("NO_RENDER", null);
-
-   public String a() {
-      return this.f;
+public class gjm extends gks {
+   gjm(ggy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, glb $$7) {
+      super($$0, $$1, $$2, $$3, $$7, 0.0125F);
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.D *= 0.75F;
+      this.t = 60 + this.r.a(12);
+      this.c(15916745);
+      this.b($$7);
    }
 
-   @Nullable
-   public gmj b() {
-      return this.g;
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
+   }
+
+   public static class a implements gkj<lx> {
+      private final glb a;
+
+      public a(glb $$0) {
+         this.a = $$0;
+      }
+
+      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gjm($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
    }
 }

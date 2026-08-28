@@ -1,131 +1,64 @@
-import com.mojang.logging.LogUtils;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.util.Objects;
-import java.util.UUID;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeoutException;
-import java.util.function.Function;
-import org.slf4j.Logger;
 
-public class fkh extends fki {
-   private static final wp b = wp.c("multiplayer.applyingPack");
-   private static final Logger c = LogUtils.getLogger();
-   private static final wp d = wp.c("mco.connect.connecting");
-   private final fhm e;
-   private final fum f;
+public class fkh extends hmd {
+   private static final int a = 212;
+   private static final wp b = wp.c("mco.configure.world.name");
+   private static final wp c = wp.c("mco.configure.world.description");
+   private final fjr C;
+   private final fii D;
+   private fpz E;
+   private fpz F;
 
-   public fkh(fum $$0, fhm $$1) {
-      this.f = $$0;
-      this.e = $$1;
+   public fkh(fjr $$0, fii $$1) {
+      super(wp.c("mco.configure.world.settings.title"));
+      this.C = $$0;
+      this.D = $$1;
    }
 
    @Override
-   public void run() {
-      fhn $$0;
-      try {
-         $$0 = this.f();
-      } catch (CancellationException var4) {
-         c.info("User aborted connecting to realms");
-         return;
-      } catch (fih var5) {
-         switch (var5.a.a()) {
-            case 6002:
-               a(new fjo(this.f, this.e));
-               return;
-            case 6006:
-               boolean $$3 = flk.Q().b(this.e.g);
-               a(
-                  (fum)($$3
-                     ? new fit(this.f, this.e.a, this.e.i())
-                     : new fiz(wp.c("mco.brokenworld.nonowner.title"), wp.c("mco.brokenworld.nonowner.error"), this.f))
-               );
-               return;
-            default:
-               this.a(var5);
-               c.error("Couldn't connect to world", var5);
-               return;
-         }
-      } catch (TimeoutException var6) {
-         this.a(wp.c("mco.errorMessage.connectionFailure"));
-         return;
-      } catch (Exception var7) {
-         c.error("Couldn't connect to world", var7);
-         this.a(var7);
-         return;
-      }
-
-      if ($$0.a == null) {
-         this.a(wp.c("mco.errorMessage.connectionFailure"));
-      } else {
-         boolean $$7 = $$0.b != null && $$0.c != null;
-         fum $$8 = (fum)($$7 ? this.a($$0, a(this.e), this::a) : this.a($$0));
-         a($$8);
-      }
-   }
-
-   private static UUID a(fhm $$0) {
-      return $$0.q != null
-         ? UUID.nameUUIDFromBytes(("minigame:" + $$0.q).getBytes(StandardCharsets.UTF_8))
-         : UUID.nameUUIDFromBytes(("realms:" + Objects.requireNonNullElse($$0.c, "") + ":" + $$0.p).getBytes(StandardCharsets.UTF_8));
-   }
-
-   @Override
-   public wp a() {
-      return d;
-   }
-
-   private fhn f() throws fih, TimeoutException, CancellationException {
-      fgl $$0 = fgl.a();
-
-      for (int $$1 = 0; $$1 < 40; $$1++) {
-         if (this.d()) {
-            throw new CancellationException();
-         }
-
-         try {
-            return $$0.c(this.e.a);
-         } catch (fii var4) {
-            a((long)var4.c);
-         }
-      }
-
-      throw new TimeoutException();
-   }
-
-   public fjb a(fhn $$0) {
-      return new fjc(this.f, new fkf(this.f, this.e, $$0));
-   }
-
-   private fpw a(fhn $$0, UUID $$1, Function<fhn, fum> $$2) {
-      wp $$3 = wp.c("mco.configure.world.resourcepack.question");
-      return fjh.a(this.f, $$3, $$3x -> {
-         a(new ftx(b));
-         this.a($$0, $$1).thenRun(() -> a($$2.apply($$0))).exceptionally($$1xx -> {
-            flk.Q().af().i();
-            c.error("Failed to download resource pack from {}", $$0, $$1xx);
-            a(new fiz(wp.c("mco.download.resourcePack.fail"), this.f));
-            return null;
-         });
-      });
-   }
-
-   private CompletableFuture<?> a(fhn $$0, UUID $$1) {
-      try {
-         if ($$0.b == null) {
-            return CompletableFuture.failedFuture(new IllegalStateException("resourcePackUrl was null"));
-         } else if ($$0.c == null) {
-            return CompletableFuture.failedFuture(new IllegalStateException("resourcePackHash was null"));
+   public void aR_() {
+      int $$0 = this.n / 2 - 106;
+      String $$1 = this.D.e == fii.c.b ? "mco.configure.world.buttons.close" : "mco.configure.world.buttons.open";
+      fpq $$2 = fpq.a(wp.c($$1), $$0x -> {
+         if (this.D.e == fii.c.b) {
+            this.m.a(fkd.a(this, wp.c("mco.configure.world.close.question.line1"), $$0xx -> this.C.b()));
          } else {
-            hhs $$2 = flk.Q().af();
-            CompletableFuture<Void> $$3 = $$2.b($$1);
-            $$2.g();
-            $$2.a($$1, new URL($$0.b), $$0.c);
-            return $$3;
+            this.C.b(false);
          }
-      } catch (Exception var5) {
-         return CompletableFuture.failedFuture(var5);
-      }
+      }).a(this.n / 2 - 53, g(0), 106, 20).a();
+      this.c($$2);
+      this.F = new fpz(this.m.h, $$0, g(4), 212, 20, wp.c("mco.configure.world.name"));
+      this.F.f(32);
+      this.F.a(Objects.requireNonNullElse(this.D.b(), ""));
+      this.c(this.F);
+      this.E = new fpz(this.m.h, $$0, g(8), 212, 20, wp.c("mco.configure.world.description"));
+      this.E.f(32);
+      this.E.a(this.D.a());
+      this.c(this.E);
+      fpq $$3 = this.c(fpq.a(wp.c("mco.configure.world.buttons.done"), $$0x -> this.g()).a($$0 - 2, g(12), 106, 20).a());
+      this.F.b($$1x -> $$3.j = !azw.h($$1x));
+      this.c(fpq.a(wo.e, $$0x -> this.aO_()).a(this.n / 2 + 2, g(12), 106, 20).a());
+   }
+
+   @Override
+   protected void aF_() {
+      this.b(this.F);
+   }
+
+   @Override
+   public void aO_() {
+      this.m.a(this.C);
+   }
+
+   @Override
+   public void a(fpc $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 17, -1);
+      $$0.b(this.p, b, this.n / 2 - 106, g(3), -1);
+      $$0.b(this.p, c, this.n / 2 - 106, g(7), -1);
+   }
+
+   public void g() {
+      this.C.a(this.F.a(), this.E.a());
    }
 }

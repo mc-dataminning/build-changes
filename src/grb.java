@@ -1,23 +1,52 @@
-public class grb extends gqz<cii, gxp, gav> {
-   private static final akv a = akv.b("textures/entity/armadillo.png");
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.List;
 
-   public grb(gsf.a $$0) {
-      super($$0, new gav($$0.a(gfd.d)), new gav($$0.a(gfd.e)), 0.4F);
+public class grb implements gqy.a {
+   private static final int a = 160;
+   private final fmg b;
+   private final Int2ObjectMap<grb.a> c = new Int2ObjectOpenHashMap();
+
+   @Override
+   public void a() {
+      this.c.clear();
    }
 
-   public akv a(gxp $$0) {
-      return a;
+   public void a(int $$0, ji $$1, List<aaf.a> $$2) {
+      this.c.put($$0, new grb.a($$1, $$2));
    }
 
-   public gxp a() {
-      return new gxp();
+   public void a(int $$0) {
+      this.c.remove($$0);
    }
 
-   public void a(cii $$0, gxp $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.x();
-      $$1.d.a($$0.ce);
-      $$1.b.a($$0.cc);
-      $$1.c.a($$0.cd);
+   public grb(fmg $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   public void a(fgr $$0, gmx $$1, double $$2, double $$3, double $$4) {
+      flo $$5 = this.b.j.k();
+      ji $$6 = ji.a($$5.b().d, 0.0, $$5.b().f);
+      ObjectIterator var11 = this.c.values().iterator();
+
+      while (var11.hasNext()) {
+         grb.a $$7 = (grb.a)var11.next();
+         ji $$8 = $$7.a;
+         if ($$6.a($$8, 160.0)) {
+            for (int $$9 = 0; $$9 < $$7.b.size(); $$9++) {
+               aaf.a $$10 = $$7.b.get($$9);
+               double $$11 = (double)$$8.u() + 0.5;
+               double $$12 = (double)$$8.v() + 2.0 + (double)$$9 * 0.25;
+               double $$13 = (double)$$8.w() + 0.5;
+               int $$14 = $$10.b() ? -16711936 : -3355444;
+               gqy.a($$0, $$1, $$10.c(), $$11, $$12, $$13, $$14);
+            }
+         }
+      }
+   }
+
+   static record a(ji a, List<aaf.a> b) {
    }
 }

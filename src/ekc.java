@@ -1,18 +1,40 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.OptionalInt;
 
-public class ekc<P extends ekb> {
-   public static final ekc<eka> a = a("mangrove_root_placer", eka.c);
-   private final MapCodec<P> b;
+public class ekc extends ejz {
+   public static final MapCodec<ekc> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.f),
+               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.g),
+               a()
+            )
+            .apply($$0, ekc::new)
+   );
+   private final int e;
+   private final int f;
+   private final int g;
 
-   private static <P extends ekb> ekc<P> a(String $$0, MapCodec<P> $$1) {
-      return ke.a(mb.W, $$0, new ekc<>($$1));
+   public ekc(int $$0, int $$1, int $$2) {
+      this($$0, $$1, $$2, OptionalInt.empty());
    }
 
-   private ekc(MapCodec<P> $$0) {
-      this.b = $$0;
+   public ekc(int $$0, int $$1, int $$2, OptionalInt $$3) {
+      super($$3);
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public MapCodec<P> a() {
-      return this.b;
+   @Override
+   protected eka<?> b() {
+      return eka.a;
+   }
+
+   @Override
+   public int a(int $$0, int $$1) {
+      return $$1 < this.e ? this.f : this.g;
    }
 }

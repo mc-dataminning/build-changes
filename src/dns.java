@@ -1,98 +1,82 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.function.Function;
 
-public class dns extends diz {
+public class dns extends dmz {
    public static final MapCodec<dns> a = b(dns::new);
-   public static final dxp b = dxo.r;
+   private static final wp b = wp.c("container.grindstone_title");
+   private final Function<dxq, fcr> d;
 
    @Override
    public MapCodec<dns> a() {
       return a;
    }
 
-   protected dns(dwx.d $$0) {
+   protected dns(dxp.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, Boolean.valueOf(false)));
+      this.l(this.B.b().b(e, jn.c).b(c, dyb.b));
+      this.d = this.b();
+   }
+
+   private Function<dxq, fcr> b() {
+      fcr $$0 = fco.a(dke.a(2.0, 6.0, 7.0, 4.0, 10.0, 16.0), dke.a(2.0, 5.0, 3.0, 4.0, 11.0, 9.0));
+      fcr $$1 = fco.a($$0, h.z);
+      fcr $$2 = fco.a(dke.a(8.0, 2.0, 14.0, 0.0, 12.0), $$0, $$1);
+      Map<dyb, Map<jn, fcr>> $$3 = fco.e($$2);
+      return this.a($$1x -> $$3.get($$1x.c(c)).get($$1x.c(e)));
+   }
+
+   private fcr o(dxq $$0) {
+      return this.d.apply($$0);
    }
 
    @Override
-   public void a(dgj $$0, ji $$1, dwy $$2, @Nullable bvi $$3, cwq $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      cyz $$5 = $$4.a(kv.Y, cyz.a);
-      if ($$5.a("RecordItem")) {
-         $$0.a($$1, $$2.b(b, Boolean.valueOf(true)), 2);
-      }
+   protected fcr b(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
+      return this.o($$0);
    }
 
    @Override
-   protected bsl a(dwy $$0, dgj $$1, ji $$2, coy $$3, fax $$4) {
-      if ($$0.c(b) && $$1.c_($$2) instanceof dve $$5) {
-         $$5.s();
-         return bsl.a;
-      } else {
-         return bsl.e;
-      }
+   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
+      return this.o($$0);
    }
 
    @Override
-   protected bsl a(cwq $$0, dwy $$1, dgj $$2, ji $$3, coy $$4, bsk $$5, fax $$6) {
-      if ($$1.c(b)) {
-         return bsl.f;
-      } else {
-         cwq $$7 = $$4.b($$5);
-         bsl $$8 = cwv.a($$2, $$3, $$7, $$4);
-         return (bsl)(!$$8.a() ? bsl.f : $$8);
-      }
-   }
-
-   @Override
-   protected void a(dwy $$0, dgj $$1, ji $$2, dwy $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$1.c_($$2) instanceof dve $$5) {
-            $$5.s();
-         }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   public dua a(ji $$0, dwy $$1) {
-      return new dve($$0, $$1);
-   }
-
-   @Override
-   public boolean f_(dwy $$0) {
+   protected boolean a(dxq $$0, dhc $$1, ji $$2) {
       return true;
    }
 
    @Override
-   public int a(dwy $$0, dfo $$1, ji $$2, jn $$3) {
-      if ($$1.c_($$2) instanceof dve $$4 && $$4.j().a()) {
-         return 15;
+   protected bsy a(dxq $$0, dgz $$1, ji $$2, cpr $$3, fbt $$4) {
+      if (!$$1.C) {
+         $$3.a($$0.c($$1, $$2));
+         $$3.a(awk.aD);
       }
 
-      return 0;
+      return bsy.a;
    }
 
    @Override
-   protected boolean c_(dwy $$0) {
-      return true;
+   protected bta b(dxq $$0, dgz $$1, ji $$2) {
+      return new btg(($$2x, $$3, $$4) -> new ctw($$2x, $$3, ctj.a($$1, $$2)), b);
    }
 
    @Override
-   protected int a(dwy $$0, dgj $$1, ji $$2) {
-      return $$1.c_($$2) instanceof dve $$3 ? $$3.u() : 0;
+   protected dxq a(dxq $$0, dqw $$1) {
+      return $$0.b(e, $$1.a($$0.c(e)));
    }
 
    @Override
-   protected void a(dwz.a<djn, dwy> $$0) {
-      $$0.a(b);
+   protected dxq a(dxq $$0, dpf $$1) {
+      return $$0.a($$1.a($$0.c(e)));
    }
 
-   @Nullable
    @Override
-   public <T extends dua> dub<T> a(dgj $$0, dwy $$1, duc<T> $$2) {
-      return $$1.c(b) ? a($$2, duc.e, dve::a) : null;
+   protected void a(dxr.a<dke, dxq> $$0) {
+      $$0.a(e, c);
+   }
+
+   @Override
+   protected boolean a(dxq $$0, eul $$1) {
+      return false;
    }
 }

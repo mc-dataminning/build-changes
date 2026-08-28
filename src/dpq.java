@@ -1,37 +1,52 @@
 import com.mojang.serialization.MapCodec;
 
-public class dpq extends djn {
+public class dpq extends dko {
    public static final MapCodec<dpq> a = b(dpq::new);
+   public static final int b = 3;
+   public static final dyq c = dyg.av;
+   private static final fcr[] d = dke.a(3, $$0 -> dke.b(16.0, 0.0, (double)(5 + $$0 * 3)));
 
    @Override
    public MapCodec<dpq> a() {
       return a;
    }
 
-   protected dpq(dwx.d $$0) {
+   protected dpq(dxp.d $$0) {
       super($$0);
+      this.l(this.B.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected bsl a(cwq $$0, dwy $$1, dgj $$2, ji $$3, coy $$4, bsk $$5, fax $$6) {
-      if (!$$0.a(cwu.sS)) {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      } else if ($$2.C) {
-         return bsl.a;
-      } else {
-         jn $$7 = $$6.c();
-         jn $$8 = $$7.o() == jn.a.b ? $$4.cO().g() : $$7;
-         $$2.a(null, $$3, awa.vw, awb.e, 1.0F, 1.0F);
-         $$2.a($$3, djp.er.m().b(dki.b, $$8), 11);
-         cld $$9 = new cld(
-            $$2, (double)$$3.u() + 0.5 + (double)$$8.j() * 0.65, (double)$$3.v() + 0.1, (double)$$3.w() + 0.5 + (double)$$8.l() * 0.65, new cwq(cwu.sV, 4)
-         );
-         $$9.n(0.05 * (double)$$8.j() + $$2.A.j() * 0.02, 0.05, 0.05 * (double)$$8.l() + $$2.A.j() * 0.02);
-         $$2.b($$9);
-         $$0.a(1, $$4, bvi.d($$5));
-         $$2.a($$4, ebu.M, $$3);
-         $$4.b(awk.c.b(cwu.sS));
-         return bsl.a;
+   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
+      return d[$$0.c(c)];
+   }
+
+   @Override
+   protected boolean b(dxq $$0, dgf $$1, ji $$2) {
+      return $$0.a(dkg.ej);
+   }
+
+   @Override
+   protected boolean f(dxq $$0) {
+      return $$0.c(c) < 3;
+   }
+
+   @Override
+   protected void b(dxq $$0, ard $$1, ji $$2, azh $$3) {
+      int $$4 = $$0.c(c);
+      if ($$4 < 3 && $$3.a(10) == 0) {
+         $$0 = $$0.b(c, Integer.valueOf($$4 + 1));
+         $$1.a($$2, $$0, 2);
       }
+   }
+
+   @Override
+   protected cxh a(dhc $$0, ji $$1, dxq $$2, boolean $$3) {
+      return new cxh(cxl.ti);
+   }
+
+   @Override
+   protected void a(dxr.a<dke, dxq> $$0) {
+      $$0.a(c);
    }
 }

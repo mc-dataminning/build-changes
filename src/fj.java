@@ -47,7 +47,7 @@ public class fj implements ArgumentType<fj.a> {
 
    public static enum a {
       a("feet", ($$0, $$1) -> $$0),
-      b("eyes", ($$0, $$1) -> new fbb($$0.d, $$0.e + (double)$$1.cS(), $$0.f));
+      b("eyes", ($$0, $$1) -> new fbx($$0.d, $$0.e + (double)$$1.cR(), $$0.f));
 
       static final Map<String, fj.a> c = af.a(Maps.newHashMap(), $$0 -> {
          for (fj.a $$1 : values()) {
@@ -55,9 +55,9 @@ public class fj implements ArgumentType<fj.a> {
          }
       });
       private final String d;
-      private final BiFunction<fbb, bum, fbb> e;
+      private final BiFunction<fbx, bva, fbx> e;
 
-      private a(final String $$0, final BiFunction<fbb, bum, fbb> $$1) {
+      private a(final String $$0, final BiFunction<fbx, bva, fbx> $$1) {
          this.d = $$0;
          this.e = $$1;
       }
@@ -67,12 +67,12 @@ public class fj implements ArgumentType<fj.a> {
          return c.get($$0);
       }
 
-      public fbb a(bum $$0) {
-         return this.e.apply($$0.dt(), $$0);
+      public fbx a(bva $$0) {
+         return this.e.apply($$0.ds(), $$0);
       }
 
-      public fbb a(ex $$0) {
-         bum $$1 = $$0.f();
+      public fbx a(ex $$0) {
+         bva $$1 = $$0.f();
          return $$1 == null ? $$0.d() : this.e.apply($$0.d(), $$1);
       }
    }

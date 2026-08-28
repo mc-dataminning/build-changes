@@ -1,28 +1,75 @@
-public class bsy {
-   public static final float a = 20.0F;
-   public static final float b = 25.0F;
-   public static final float c = 2.0F;
-   public static final float d = 0.2F;
-   private static final int e = 4;
+import javax.annotation.Nullable;
 
-   public static float a(bvi $$0, float $$1, btc $$2, float $$3, float $$4) {
-      float $$5 = 2.0F + $$4 / 4.0F;
-      float $$6 = ayz.a($$3 - $$1 / $$5, $$3 * 0.2F, 20.0F);
-      float $$7 = $$6 / 25.0F;
-      cwq $$8 = $$2.e();
-      float $$10;
-      if ($$8 != null && $$0.dV() instanceof ard $$9) {
-         $$10 = ayz.a(ddc.c($$9, $$8, $$0, $$2, $$7), 0.0F, 1.0F);
-      } else {
-         $$10 = $$7;
-      }
+public sealed interface bsy permits bsy.d, bsy.a, bsy.c, bsy.f {
+   bsy.d a = new bsy.d(bsy.e.b, bsy.b.b);
+   bsy.d b = new bsy.d(bsy.e.c, bsy.b.b);
+   bsy.d c = new bsy.d(bsy.e.a, bsy.b.b);
+   bsy.a d = new bsy.a();
+   bsy.c e = new bsy.c();
+   bsy.f f = new bsy.f();
 
-      float $$12 = 1.0F - $$10;
-      return $$1 * $$12;
+   default boolean a() {
+      return false;
    }
 
-   public static float a(float $$0, float $$1) {
-      float $$2 = ayz.a($$1, 0.0F, 20.0F);
-      return $$0 * (1.0F - $$2 / 25.0F);
+   public static record a() implements bsy {
+   }
+
+   public static record b(boolean c, @Nullable cxh d) {
+      static bsy.b a = new bsy.b(false, null);
+      static bsy.b b = new bsy.b(true, null);
+
+      public boolean a() {
+         return this.c;
+      }
+
+      @Nullable
+      public cxh b() {
+         return this.d;
+      }
+   }
+
+   public static record c() implements bsy {
+   }
+
+   public static record d(bsy.e g, bsy.b h) implements bsy {
+      @Override
+      public boolean a() {
+         return true;
+      }
+
+      public bsy.d a(cxh $$0) {
+         return new bsy.d(this.g, new bsy.b(true, $$0));
+      }
+
+      public bsy.d b() {
+         return new bsy.d(this.g, bsy.b.a);
+      }
+
+      public boolean c() {
+         return this.h.c;
+      }
+
+      @Nullable
+      public cxh d() {
+         return this.h.d;
+      }
+
+      public bsy.e e() {
+         return this.g;
+      }
+
+      public bsy.b f() {
+         return this.h;
+      }
+   }
+
+   public static enum e {
+      a,
+      b,
+      c;
+   }
+
+   public static record f() implements bsy {
    }
 }

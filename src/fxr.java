@@ -1,22 +1,24 @@
-import java.util.ArrayList;
-import java.util.List;
+import org.joml.Matrix4f;
 
-public class fxr extends fxq {
-   private static final wp a = wp.c("options.skinCustomisation.title");
+public class fxr implements fxs {
+   private final ayl a;
 
-   public fxr(fum $$0, flo $$1) {
-      super($$0, $$1, a);
+   public fxr(ayl $$0) {
+      this.a = $$0;
    }
 
    @Override
-   protected void m() {
-      List<fos> $$0 = new ArrayList<>();
+   public int b(fpa $$0) {
+      return $$0.a(this.a);
+   }
 
-      for (coz $$1 : coz.values()) {
-         $$0.add(fpb.b(this.c.a($$1)).a($$1.d(), ($$1x, $$2) -> this.c.a($$1, $$2)));
-      }
+   @Override
+   public int a(fpa $$0) {
+      return 10;
+   }
 
-      $$0.add(this.c.x().a(this.c));
-      this.d.a($$0);
+   @Override
+   public void a(fpa $$0, int $$1, int $$2, Matrix4f $$3, gmx.a $$4) {
+      $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, fpa.a.a, 0, 15728880);
    }
 }

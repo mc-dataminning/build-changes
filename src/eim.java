@@ -1,25 +1,52 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class eim implements eid {
-   public static final Codec<eim> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_taller_dripstone").orElse(0.2F).forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_directional_spread").orElse(0.7F).forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius2").orElse(0.5F).forGetter($$0x -> $$0x.d),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius3").orElse(0.5F).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, eim::new)
-   );
-   public final float b;
-   public final float c;
-   public final float d;
-   public final float e;
+public class eim extends eij {
+   public eim(Codec<ejx> $$0) {
+      super($$0);
+   }
 
-   public eim(float $$0, float $$1, float $$2, float $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   @Override
+   protected Set<ji> a(dhy $$0, ejx $$1, azh $$2, ji $$3, Predicate<dxq> $$4, int $$5, int $$6) {
+      Set<ji> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      Set<ji> $$8 = new HashSet<>();
+      ji.a $$9 = new ji.a();
+
+      for (ji $$10 : $$7) {
+         if (!a($$0, $$7, $$10, $$9)) {
+            $$8.add($$10);
+         }
+      }
+
+      for (ji $$11 : $$8) {
+         $$0.a($$11, dkg.J.m(), 2);
+      }
+
+      return $$8;
+   }
+
+   private static boolean a(dhy $$0, Set<ji> $$1, ji $$2, ji.a $$3) {
+      return a($$0, $$2, $$3, jn.c) || a($$0, $$2, $$3, jn.f) || a($$0, $$2, $$3, jn.d) || a($$0, $$2, $$3, jn.e) || a($$0, $$2, $$3, jn.a);
+   }
+
+   private static boolean a(dhy $$0, ji $$1, ji.a $$2, jn $$3) {
+      $$2.a($$1, $$3);
+      return !$$0.a_($$2).c($$0, $$2, $$3.g());
+   }
+
+   @Override
+   protected boolean a(dhy $$0, ejx $$1, dzn $$2, azh $$3, ji $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4.e())) {
+         dxq $$5 = $$0.a_($$4);
+         if ($$5.b(dyg.I) && !$$5.c(dyg.I)) {
+            $$0.a($$4, $$5.b(dyg.I, Boolean.valueOf(true)), 2);
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 }

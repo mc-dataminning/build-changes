@@ -1,21 +1,10 @@
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public class bdg extends DataFix {
-   public bdg(Schema $$0) {
-      super($$0, false);
-   }
-
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bhy.x);
-      return this.writeFixAndRead("EmptyItemInVillagerTradeFix", $$0, $$0, $$0x -> {
-         Dynamic<?> $$1 = $$0x.get("buyB").orElseEmptyMap();
-         String $$2 = bjm.a($$1.get("id").asString("minecraft:air"));
-         int $$3 = $$1.get("count").asInt(0);
-         return !$$2.equals("minecraft:air") && $$3 != 0 ? $$0x : $$0x.remove("buyB");
-      });
-   }
+public class bdg {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:cactus_green", "minecraft:green_dye")
+      .put("minecraft:rose_red", "minecraft:red_dye")
+      .put("minecraft:dandelion_yellow", "minecraft:yellow_dye")
+      .build();
 }

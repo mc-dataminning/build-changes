@@ -1,33 +1,19 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-public class cfp extends cfs<bvi> {
+public class cfp extends cgi<buq> {
    @Override
-   public Set<cem<?>> a() {
-      return ImmutableSet.of(cem.j, cem.k, cem.l);
+   public Set<cfc<?>> a() {
+      return ImmutableSet.of(cfc.K, cfc.h);
    }
 
-   @Override
-   protected void a(ard $$0, bvi $$1) {
-      List<coy> $$2 = $$0.z()
-         .stream()
-         .filter(bur.f)
-         .filter($$1x -> $$1.a($$1x, this.a($$1)))
-         .sorted(Comparator.comparingDouble($$1::g))
-         .collect(Collectors.toList());
-      bwk<?> $$3 = $$1.eb();
-      $$3.a(cem.j, $$2);
-      List<coy> $$4 = $$2.stream().filter($$2x -> b($$0, $$1, $$2x)).collect(Collectors.toList());
-      $$3.a(cem.k, $$4.isEmpty() ? null : $$4.get(0));
-      Optional<coy> $$5 = $$4.stream().filter($$2x -> c($$0, $$1, $$2x)).findFirst();
-      $$3.a(cem.l, $$5);
+   protected void a(ard $$0, buq $$1) {
+      $$1.ea().c(cfc.h).ifPresent($$1x -> this.a($$1, $$1x));
    }
 
-   protected double a(bvi $$0) {
-      return $$0.h(bwq.m);
+   private void a(buq $$0, cfe $$1) {
+      Optional<buq> $$2 = $$1.a($$1x -> $$1x.aq() == $$0.aq() && !$$1x.n_()).map(buq.class::cast);
+      $$0.ea().a(cfc.K, $$2);
    }
 }

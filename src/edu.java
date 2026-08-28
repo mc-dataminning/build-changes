@@ -1,137 +1,110 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public class edu implements azh {
-   private static final float c = 5.9604645E-8F;
-   private static final double d = 1.110223E-16F;
-   public static final Codec<edu> b = edt.a.xmap($$0 -> new edu($$0), $$0 -> $$0.e);
-   private edt e;
-   private final ecv f = new ecv(this);
+public record edu(edh b, edh c, edh d, edh e, edh f, edh g, edh h, edh i, edh j, edh k, edh l, edh m, edh n, edh o, edh p) {
+   public static final Codec<edu> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               a("barrier", edu::a),
+               a("fluid_level_floodedness", edu::b),
+               a("fluid_level_spread", edu::c),
+               a("lava", edu::d),
+               a("temperature", edu::e),
+               a("vegetation", edu::f),
+               a("continents", edu::g),
+               a("erosion", edu::h),
+               a("depth", edu::i),
+               a("ridges", edu::j),
+               a("initial_density_without_jaggedness", edu::k),
+               a("final_density", edu::l),
+               a("vein_toggle", edu::m),
+               a("vein_ridged", edu::n),
+               a("vein_gap", edu::o)
+            )
+            .apply($$0, edu::new)
+   );
 
-   public edu(long $$0) {
-      this.e = new edt(edi.c($$0));
+   private static RecordCodecBuilder<edu, edh> a(String $$0, Function<edu, edh> $$1) {
+      return edh.d.fieldOf($$0).forGetter($$1);
    }
 
-   public edu(edi.a $$0) {
-      this.e = new edt($$0);
+   public edu a(edh.f $$0) {
+      return new edu(
+         this.b.a($$0),
+         this.c.a($$0),
+         this.d.a($$0),
+         this.e.a($$0),
+         this.f.a($$0),
+         this.g.a($$0),
+         this.h.a($$0),
+         this.i.a($$0),
+         this.j.a($$0),
+         this.k.a($$0),
+         this.l.a($$0),
+         this.m.a($$0),
+         this.n.a($$0),
+         this.o.a($$0),
+         this.p.a($$0)
+      );
    }
 
-   public edu(long $$0, long $$1) {
-      this.e = new edt($$0, $$1);
+   public edh a() {
+      return this.b;
    }
 
-   private edu(edt $$0) {
-      this.e = $$0;
+   public edh b() {
+      return this.c;
    }
 
-   @Override
-   public azh d() {
-      return new edu(this.e.a(), this.e.a());
+   public edh c() {
+      return this.d;
    }
 
-   @Override
-   public edg e() {
-      return new edu.a(this.e.a(), this.e.a());
+   public edh d() {
+      return this.e;
    }
 
-   @Override
-   public void b(long $$0) {
-      this.e = new edt(edi.c($$0));
-      this.f.a();
+   public edh e() {
+      return this.f;
    }
 
-   @Override
-   public int f() {
-      return (int)this.e.a();
+   public edh f() {
+      return this.g;
    }
 
-   @Override
-   public int a(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Bound must be positive");
-      } else {
-         long $$1 = Integer.toUnsignedLong(this.f());
-         long $$2 = $$1 * (long)$$0;
-         long $$3 = $$2 & 4294967295L;
-         if ($$3 < (long)$$0) {
-            for (int $$4 = Integer.remainderUnsigned(~$$0 + 1, $$0); $$3 < (long)$$4; $$3 = $$2 & 4294967295L) {
-               $$1 = Integer.toUnsignedLong(this.f());
-               $$2 = $$1 * (long)$$0;
-            }
-         }
-
-         long $$5 = $$2 >> 32;
-         return (int)$$5;
-      }
+   public edh g() {
+      return this.h;
    }
 
-   @Override
-   public long g() {
-      return this.e.a();
+   public edh h() {
+      return this.i;
    }
 
-   @Override
-   public boolean h() {
-      return (this.e.a() & 1L) != 0L;
+   public edh i() {
+      return this.j;
    }
 
-   @Override
-   public float i() {
-      return (float)this.c(24) * 5.9604645E-8F;
+   public edh j() {
+      return this.k;
    }
 
-   @Override
-   public double j() {
-      return (double)this.c(53) * 1.110223E-16F;
+   public edh k() {
+      return this.l;
    }
 
-   @Override
-   public double k() {
-      return this.f.b();
+   public edh l() {
+      return this.m;
    }
 
-   @Override
-   public void b(int $$0) {
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.e.a();
-      }
+   public edh m() {
+      return this.n;
    }
 
-   private long c(int $$0) {
-      return this.e.a() >>> 64 - $$0;
+   public edh n() {
+      return this.o;
    }
 
-   public static class a implements edg {
-      private final long a;
-      private final long b;
-
-      public a(long $$0, long $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public azh a(int $$0, int $$1, int $$2) {
-         long $$3 = ayz.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new edu($$4, this.b);
-      }
-
-      @Override
-      public azh a(String $$0) {
-         edi.a $$1 = edi.a($$0);
-         return new edu($$1.a(this.a, this.b));
-      }
-
-      @Override
-      public azh a(long $$0) {
-         return new edu($$0 ^ this.a, $$0 ^ this.b);
-      }
-
-      @VisibleForTesting
-      @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("seedLo: ").append(this.a).append(", seedHi: ").append(this.b);
-      }
+   public edh o() {
+      return this.p;
    }
 }

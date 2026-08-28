@@ -1,72 +1,40 @@
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class hgw {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ako b = ako.a("items");
+public abstract class hgw implements auj, AutoCloseable {
+   private final hfq a;
+   private final aku b;
+   private final Set<atp<?>> c;
 
-   public static CompletableFuture<hgw.a> a(aup $$0, Executor $$1) {
-      return CompletableFuture.<Map<akv, aun>>supplyAsync(() -> b.a($$0), $$1)
-         .thenCompose(
-            $$1x -> {
-               List<CompletableFuture<hgw.b>> $$2 = new ArrayList<>($$1x.size());
-               $$1x.forEach(
-                  ($$2x, $$3) -> $$2.add(
-                        CompletableFuture.supplyAsync(
-                           () -> {
-                              akv $$2xx = b.b($$2x);
-
-                              try {
-                                 hgw.b var5;
-                                 try (Reader $$3x = $$3.e()) {
-                                    hbi $$4 = (hbi)hbi.a
-                                       .parse(JsonOps.INSTANCE, JsonParser.parseReader($$3x))
-                                       .ifError(
-                                          $$2xxx -> a.error("Couldn't parse item model '{}' from pack '{}': {}", new Object[]{$$2xx, $$3.b(), $$2xxx.message()})
-                                       )
-                                       .result()
-                                       .orElse(null);
-                                    var5 = new hgw.b($$2xx, $$4);
-                                 }
-
-                                 return var5;
-                              } catch (Exception var8) {
-                                 a.error("Failed to open item model {} from pack '{}'", new Object[]{$$2x, $$3.b(), var8});
-                                 return new hgw.b($$2xx, null);
-                              }
-                           },
-                           $$1
-                        )
-                     )
-               );
-               return af.d($$2).thenApply($$0xx -> {
-                  Map<akv, hbi> $$1xx = new HashMap<>();
-
-                  for (hgw.b $$2x : $$0xx) {
-                     if ($$2x.b != null) {
-                        $$1xx.put($$2x.a, $$2x.b);
-                     }
-                  }
-
-                  return new hgw.a($$1xx);
-               });
-            }
-         );
+   public hgw(hft $$0, aku $$1, aku $$2) {
+      this($$0, $$1, $$2, hfm.a);
    }
 
-   public static record a(Map<akv, hbi> a) {
+   public hgw(hft $$0, aku $$1, aku $$2, Set<atp<?>> $$3) {
+      this.b = $$2;
+      this.a = new hfq($$1);
+      $$0.a(this.a.g(), this.a);
+      this.c = $$3;
    }
 
-   static record b(akv a, @Nullable hbi b) {
+   protected hfr a(aku $$0) {
+      return this.a.a($$0);
+   }
+
+   @Override
+   public final CompletableFuture<Void> a(auj.a $$0, aup $$1, Executor $$2, Executor $$3) {
+      return hfm.a(this.a).a($$1, this.b, 0, $$2, this.c).thenCompose(hfm.a::a).thenCompose($$0::a).thenAcceptAsync(this::a, $$3);
+   }
+
+   private void a(hfm.a $$0) {
+      try (bpo $$1 = bpi.a().d("upload")) {
+         this.a.a($$0);
+      }
+   }
+
+   @Override
+   public void close() {
+      this.a.f();
    }
 }

@@ -20,17 +20,17 @@ public class io<T extends ez<T>> implements il<T> {
    private static final int b = 8;
    private final List<String> c;
    private final Object2ObjectLinkedOpenHashMap<List<String>, in<T>> d = new Object2ObjectLinkedOpenHashMap(8, 0.25F);
-   private final akv e;
+   private final aku e;
    private final List<io.a<T>> f;
 
-   public io(akv $$0, List<io.a<T>> $$1, List<String> $$2) {
+   public io(aku $$0, List<io.a<T>> $$1, List<String> $$2) {
       this.e = $$0;
       this.f = $$1;
       this.c = $$2;
    }
 
    @Override
-   public akv a() {
+   public aku a() {
       return this.e;
    }
 
@@ -75,7 +75,7 @@ public class io<T extends ez<T>> implements il<T> {
       } else if ($$0 instanceof ui $$4) {
          return String.valueOf($$4.h());
       } else {
-         return $$0 instanceof ty $$5 ? String.valueOf($$5.f()) : $$0.u_();
+         return $$0 instanceof ty $$5 ? String.valueOf($$5.f()) : $$0.p_();
       }
    }
 
@@ -99,7 +99,7 @@ public class io<T extends ez<T>> implements il<T> {
    interface a<T> {
       IntList a();
 
-      ib<T> a(List<String> var1, CommandDispatcher<T> var2, akv var3) throws fa;
+      ib<T> a(List<String> var1, CommandDispatcher<T> var2, aku var3) throws fa;
    }
 
    static class b<T extends ez<T>> implements io.a<T> {
@@ -119,7 +119,7 @@ public class io<T extends ez<T>> implements il<T> {
       }
 
       @Override
-      public ib<T> a(List<String> $$0, CommandDispatcher<T> $$1, akv $$2) throws fa {
+      public ib<T> a(List<String> $$0, CommandDispatcher<T> $$1, aku $$2) throws fa {
          String $$3 = this.a.a($$0);
 
          try {
@@ -143,7 +143,7 @@ public class io<T extends ez<T>> implements il<T> {
       }
 
       @Override
-      public ib<T> a(List<String> $$0, CommandDispatcher<T> $$1, akv $$2) {
+      public ib<T> a(List<String> $$0, CommandDispatcher<T> $$1, aku $$2) {
          return this.a;
       }
    }

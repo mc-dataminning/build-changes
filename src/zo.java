@@ -17,10 +17,10 @@ public class zo {
    public static final yy<zu> p = b("resource_pack");
 
    private static <T extends yw<zc>> yy<T> a(String $$0) {
-      return new yy<>(yx.b, akv.b($$0));
+      return new yy<>(yx.b, aku.b($$0));
    }
 
    private static <T extends yw<zp>> yy<T> b(String $$0) {
-      return new yy<>(yx.a, akv.b($$0));
+      return new yy<>(yx.a, aku.b($$0));
    }
 }

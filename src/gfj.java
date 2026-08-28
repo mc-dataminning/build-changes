@@ -1,83 +1,59 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.EnumSet;
-import java.util.List;
 import java.util.Set;
 
-public class gfj {
-   private static final Set<jn> a = EnumSet.allOf(jn.class);
-   private final List<gfh> b = Lists.newArrayList();
-   private int c;
-   private int d;
-   private boolean e;
+public class gfj extends gek<hbr> {
+   private static final String i = "egg_belly";
+   public static final ggl a = new gby(true, 120.0F, 0.0F, 9.0F, 6.0F, 120.0F, Set.of("head"));
+   private final ggc j;
 
-   public gfj a(int $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      return this;
+   public gfj(ggc $$0) {
+      super($$0);
+      this.j = $$0.b("egg_belly");
    }
 
-   public gfj a() {
-      return this.a(true);
+   public static ggi a() {
+      ggk $$0 = new ggk();
+      ggm $$1 = $$0.a();
+      $$1.a("head", ggh.c().a(3, 0).a(-3.0F, -1.0F, -3.0F, 6.0F, 5.0F, 6.0F), gge.a(0.0F, 19.0F, -10.0F));
+      $$1.a(
+         "body",
+         ggh.c().a(7, 37).a("shell", -9.5F, 3.0F, -10.0F, 19.0F, 20.0F, 6.0F).a(31, 1).a("belly", -5.5F, 3.0F, -13.0F, 11.0F, 18.0F, 3.0F),
+         gge.a(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+      );
+      $$1.a("egg_belly", ggh.c().a(70, 33).a(-4.5F, 3.0F, -14.0F, 9.0F, 18.0F, 1.0F), gge.a(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      int $$2 = 1;
+      $$1.a("right_hind_leg", ggh.c().a(1, 23).a(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), gge.a(-3.5F, 22.0F, 11.0F));
+      $$1.a("left_hind_leg", ggh.c().a(1, 12).a(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), gge.a(3.5F, 22.0F, 11.0F));
+      $$1.a("right_front_leg", ggh.c().a(27, 30).a(-13.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), gge.a(-5.0F, 21.0F, -4.0F));
+      $$1.a("left_front_leg", ggh.c().a(27, 24).a(0.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), gge.a(5.0F, 21.0F, -4.0F));
+      return ggi.a($$0, 128, 64);
    }
 
-   public gfj a(boolean $$0) {
-      this.e = $$0;
-      return this;
-   }
+   public void a(hbr $$0) {
+      super.a($$0);
+      float $$1 = $$0.ad;
+      float $$2 = $$0.ae;
+      if ($$0.a) {
+         float $$3 = $$0.b ? 4.0F : 1.0F;
+         float $$4 = $$0.b ? 2.0F : 1.0F;
+         float $$5 = $$1 * 5.0F;
+         float $$6 = ayz.b($$3 * $$5);
+         float $$7 = ayz.b($$5);
+         this.f.f = -$$6 * 8.0F * $$2 * $$4;
+         this.g.f = $$6 * 8.0F * $$2 * $$4;
+         this.d.f = -$$7 * 3.0F * $$2;
+         this.e.f = $$7 * 3.0F * $$2;
+      } else {
+         float $$8 = 0.5F * $$2;
+         float $$9 = ayz.b($$1 * 0.6662F * 0.6F) * $$8;
+         this.d.e = $$9;
+         this.e.e = -$$9;
+         this.f.g = -$$9;
+         this.g.g = $$9;
+      }
 
-   public gfj a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, gfi $$7, int $$8, int $$9) {
-      this.a($$8, $$9);
-      this.b.add(new gfh($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, $$7, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public gfj a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
-      this.a($$7, $$8);
-      this.b.add(new gfh($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, gfi.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public gfj a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.add(new gfh(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, gfi.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public gfj a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, Set<jn> $$6) {
-      this.b.add(new gfh(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, gfi.a, this.e, 1.0F, 1.0F, $$6));
-      return this;
-   }
-
-   public gfj a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
-      this.b.add(new gfh($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, gfi.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public gfj a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, gfi $$7) {
-      this.b.add(new gfh($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public gfj a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, boolean $$6) {
-      this.b.add(new gfh(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, gfi.a, $$6, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public gfj a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, gfi $$6, float $$7, float $$8) {
-      this.b.add(new gfh(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, $$7, $$8, a));
-      return this;
-   }
-
-   public gfj a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, gfi $$6) {
-      this.b.add(new gfh(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public List<gfh> b() {
-      return ImmutableList.copyOf(this.b);
-   }
-
-   public static gfj c() {
-      return new gfj();
+      this.j.k = $$0.c;
+      if (this.j.k) {
+         this.v.c--;
+      }
    }
 }

@@ -1,42 +1,69 @@
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class ade implements yw<abl> {
+   public static final yn<wa, ade> a = yw.a(ade::a, ade::new);
+   private final int b;
+   private final dfy c;
+   private final int d;
+   private final int e;
+   private final boolean f;
+   private final boolean g;
 
-public record ade(eus b, byte c, boolean d, Optional<List<euo>> e, Optional<euu.c> f) implements yw<abl> {
-   public static final yn<wa, ade> a = yn.a(eus.b, ade::b, yl.c, ade::e, yl.b, ade::f, euo.a.a(yl.a()).a(yl::a), ade::g, euu.c.a, ade::h, ade::new);
+   public ade(int $$0, dfy $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
+      this.b = $$0;
+      this.c = $$1.a();
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+   }
 
-   public ade(eus $$0, byte $$1, boolean $$2, @Nullable Collection<euo> $$3, @Nullable euu.c $$4) {
-      this($$0, $$1, $$2, $$3 != null ? Optional.of(List.copyOf($$3)) : Optional.empty(), Optional.ofNullable($$4));
+   private ade(wa $$0) {
+      this.b = $$0.x();
+      this.c = dfy.b.decode($$0);
+      this.d = $$0.l();
+      this.e = $$0.l();
+      this.f = $$0.readBoolean();
+      this.g = $$0.readBoolean();
+   }
+
+   private void a(wa $$0) {
+      $$0.f(this.b);
+      dfy.b.encode($$0, this.c);
+      $$0.c(this.d);
+      $$0.c(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g);
    }
 
    @Override
    public yy<ade> a() {
-      return age.P;
+      return agd.P;
    }
 
    public void a(abl $$0) {
       $$0.a(this);
    }
 
-   public void a(euu $$0) {
-      this.e.ifPresent($$0::a);
-      this.f.ifPresent($$1 -> $$1.a($$0));
+   public int b() {
+      return this.b;
    }
 
-   public byte e() {
+   public dfy e() {
       return this.c;
    }
 
-   public boolean f() {
+   public int f() {
       return this.d;
    }
 
-   public Optional<List<euo>> g() {
+   public int g() {
       return this.e;
    }
 
-   public Optional<euu.c> h() {
+   public boolean h() {
       return this.f;
+   }
+
+   public boolean i() {
+      return this.g;
    }
 }

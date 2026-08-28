@@ -1,37 +1,45 @@
+import java.util.Objects;
+import javax.annotation.Nullable;
+
 public class aet implements yw<abl> {
    public static final yn<vl, aet> a = yw.a(aet::a, aet::new);
-   private final ji b;
-   private final float c;
+   private final fct b;
+   private final String c;
 
-   public aet(ji $$0, float $$1) {
+   public aet(fct $$0, @Nullable fcu $$1) {
       this.b = $$0;
-      this.c = $$1;
+      if ($$1 == null) {
+         this.c = "";
+      } else {
+         this.c = $$1.b();
+      }
    }
 
    private aet(vl $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readFloat();
+      this.b = $$0.a(fct.u);
+      this.c = $$0.p();
    }
 
    private void a(vl $$0) {
-      $$0.a(this.b);
+      $$0.a(fct::a, this.b);
       $$0.a(this.c);
    }
 
    @Override
    public yy<aet> a() {
-      return age.aD;
+      return agd.aD;
    }
 
    public void a(abl $$0) {
       $$0.a(this);
    }
 
-   public ji b() {
+   public fct b() {
       return this.b;
    }
 
-   public float e() {
-      return this.c;
+   @Nullable
+   public String e() {
+      return Objects.equals(this.c, "") ? null : this.c;
    }
 }

@@ -1,6 +1,5 @@
-public class haz extends gzl {
-   public float[] a = new float[2];
-   public float[] b = new float[2];
+public class haz extends haj {
+   public float a;
+   public float b;
    public float c;
-   public boolean d;
 }

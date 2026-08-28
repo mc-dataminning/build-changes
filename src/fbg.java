@@ -1,30 +1,29 @@
-import java.util.Objects;
+import net.minecraft.server.MinecraftServer;
 
-public interface fbg {
-   static fbg a() {
-      return fbl.a;
+public class fbg implements fbi<MinecraftServer> {
+   final aku a;
+
+   public fbg(aku $$0) {
+      this.a = $$0;
    }
 
-   static fbg a(bum $$0) {
-      Objects.requireNonNull($$0);
-
-      return (fbg)(switch ($$0) {
-         case cqx $$1 -> cqx.b($$1.dV()) ? new fbp($$1, false) : new fbl($$0, false);
-         default -> new fbl($$0, false);
-      });
+   public void a(MinecraftServer $$0, fbk<MinecraftServer> $$1, long $$2) {
+      alj $$3 = $$0.aE();
+      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
    }
 
-   static fbg a(bum $$0, boolean $$1) {
-      return new fbl($$0, $$1);
+   public static class a extends fbi.a<MinecraftServer, fbg> {
+      public a() {
+         super(aku.b("function"), fbg.class);
+      }
+
+      public void a(tq $$0, fbg $$1) {
+         $$0.a("Name", $$1.a.toString());
+      }
+
+      public fbg a(tq $$0) {
+         aku $$1 = aku.a($$0.l("Name"));
+         return new fbg($$1);
+      }
    }
-
-   boolean b();
-
-   boolean a(fbv var1, ji var2, boolean var3);
-
-   boolean a(cwm var1);
-
-   boolean a(eta var1, eta var2);
-
-   fbv a(dwy var1, dfs var2, ji var3);
 }

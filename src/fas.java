@@ -1,4 +1,4 @@
-import java.nio.file.Path;
+import com.mojang.serialization.MapCodec;
 
-public record fas(Path a, Path b) {
+public record fas(MapCodec<? extends fat> a) {
 }

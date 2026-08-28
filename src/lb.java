@@ -2,22 +2,22 @@ public class lb implements lc {
    private static final int c = 6;
 
    @Override
-   public final cwq dispense(kz $$0, cwq $$1) {
-      cwq $$2 = this.a($$0, $$1);
+   public final cxh dispense(kz $$0, cxh $$1) {
+      cxh $$2 = this.a($$0, $$1);
       this.a($$0);
-      this.a($$0, $$0.d().c(dlt.b));
+      this.a($$0, $$0.d().c(dmk.b));
       return $$2;
    }
 
-   protected cwq a(kz $$0, cwq $$1) {
-      jn $$2 = $$0.d().c(dlt.b);
-      kb $$3 = dlt.a($$0);
-      cwq $$4 = $$1.a(1);
+   protected cxh a(kz $$0, cxh $$1) {
+      jn $$2 = $$0.d().c(dmk.b);
+      kb $$3 = dmk.a($$0);
+      cxh $$4 = $$1.a(1);
       a($$0.b(), $$4, 6, $$2, $$3);
       return $$1;
    }
 
-   public static void a(dgj $$0, cwq $$1, int $$2, jn $$3, kb $$4) {
+   public static void a(dgz $$0, cxh $$1, int $$2, jn $$3, kb $$4) {
       double $$5 = $$4.a();
       double $$6 = $$4.b();
       double $$7 = $$4.c();
@@ -27,7 +27,7 @@ public class lb implements lc {
          $$6 -= 0.15625;
       }
 
-      cld $$8 = new cld($$0, $$5, $$6, $$7, $$1);
+      clw $$8 = new clw($$0, $$5, $$6, $$7, $$1);
       double $$9 = $$0.A.j() * 0.1 + 0.2;
       $$8.n(
          $$0.A.a((double)$$3.j() * $$9, 0.0172275 * (double)$$2),
@@ -53,7 +53,7 @@ public class lb implements lc {
       $$0.b().c(2000, $$0.c(), $$1.d());
    }
 
-   protected cwq a(kz $$0, cwq $$1, cwq $$2) {
+   protected cxh a(kz $$0, cxh $$1, cxh $$2) {
       $$1.h(1);
       if ($$1.f()) {
          return $$2;
@@ -63,11 +63,11 @@ public class lb implements lc {
       }
    }
 
-   private void b(kz $$0, cwq $$1) {
-      cwq $$2 = $$0.e().b($$1);
+   private void b(kz $$0, cxh $$1) {
+      cxh $$2 = $$0.e().b($$1);
       if (!$$2.f()) {
-         jn $$3 = $$0.d().c(dlt.b);
-         a($$0.b(), $$2, 6, $$3, dlt.a($$0));
+         jn $$3 = $$0.d().c(dmk.b);
+         a($$0.b(), $$2, 6, $$3, dmk.a($$0));
          b($$0);
          b($$0, $$3);
       }

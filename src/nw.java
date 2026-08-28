@@ -36,7 +36,7 @@ public class nw implements mi {
       return new nw($$0).a(atq.b, new atq($$1, t.a.a(ate.b), Optional.empty()));
    }
 
-   public static nw a(mk $$0, wp $$1, cru $$2) {
+   public static nw a(mk $$0, wp $$1, csn $$2) {
       return a($$0, $$1).a(asy.a, new asy($$2));
    }
 }

@@ -1,46 +1,21 @@
-public final class fbu extends fbk {
-   private final fbk d;
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
-   private final int j;
+public class fbu extends fbv {
+   private final bva b;
 
-   protected fbu(fbk $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      super($$4 - $$1, $$5 - $$2, $$6 - $$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
+   public fbu(bva $$0) {
+      this($$0, $$0.ds());
+   }
+
+   public fbu(bva $$0, fbx $$1) {
+      super($$1);
+      this.b = $$0;
+   }
+
+   public bva a() {
+      return this.b;
    }
 
    @Override
-   public boolean b(int $$0, int $$1, int $$2) {
-      return this.d.b(this.e + $$0, this.f + $$1, this.g + $$2);
-   }
-
-   @Override
-   public void c(int $$0, int $$1, int $$2) {
-      this.d.c(this.e + $$0, this.f + $$1, this.g + $$2);
-   }
-
-   @Override
-   public int a(jn.a $$0) {
-      return this.a($$0, this.d.a($$0));
-   }
-
-   @Override
-   public int b(jn.a $$0) {
-      return this.a($$0, this.d.b($$0));
-   }
-
-   private int a(jn.a $$0, int $$1) {
-      int $$2 = $$0.a(this.e, this.f, this.g);
-      int $$3 = $$0.a(this.h, this.i, this.j);
-      return ayz.a($$1, $$2, $$3) - $$2;
+   public fbv.a d() {
+      return fbv.a.c;
    }
 }

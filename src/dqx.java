@@ -1,113 +1,62 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqx extends dlw implements djq, dqt {
-   public static final MapCodec<dqx> c = b(dqx::new);
-   private static final dxp g = dxo.J;
-   public static final dxv<jn> d = dxo.U;
-   protected static final float e = 6.0F;
-   protected static final fbv f = djn.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
-
-   @Override
-   public MapCodec<dqx> a() {
-      return c;
-   }
-
-   public dqx(dwx.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, dxt.b).b(g, Boolean.valueOf(false)).b(d, jn.c));
-   }
+public class dqx extends dko implements dkh {
+   public static final MapCodec<dqx> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dxf.a.fieldOf("tree").forGetter($$0x -> $$0x.g), t()).apply($$0, dqx::new)
+   );
+   public static final dyq f = dyg.aX;
+   private static final fcr a = dke.b(12.0, 0.0, 12.0);
+   protected final dxf g;
 
    @Override
-   protected fbv a(dwy $$0, dfo $$1, ji $$2, fbg $$3) {
-      return f;
+   public MapCodec<? extends dqx> a() {
+      return e;
+   }
+
+   protected dqx(dxf $$0, dxp.d $$1) {
+      super($$1);
+      this.g = $$0;
+      this.l(this.B.b().b(f, Integer.valueOf(0)));
    }
 
    @Override
-   protected boolean b(dwy $$0, dfo $$1, ji $$2) {
-      return $$0.a(awp.bz) || $$1.b_($$2.d()).a(etb.c) && super.b($$0, $$1, $$2);
-   }
-
-   @Nullable
-   @Override
-   public dwy a(dah $$0) {
-      dwy $$1 = super.a($$0);
-      return $$1 != null ? b($$0.q(), $$0.a(), $$1.b(d, $$0.g().g())) : null;
+   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
+      return a;
    }
 
    @Override
-   public void a(dgj $$0, ji $$1, dwy $$2, bvi $$3, cwq $$4) {
-      if (!$$0.B_()) {
-         ji $$5 = $$1.d();
-         dwy $$6 = dlw.b($$0, $$5, this.m().b(b, dxt.a).b(d, $$2.c(d)));
-         $$0.a($$5, $$6, 3);
+   protected void b(dxq $$0, ard $$1, ji $$2, azh $$3) {
+      if ($$1.A($$2.d()) >= 9 && $$3.a(7) == 0) {
+         this.a($$1, $$2, $$0, $$3);
       }
    }
 
-   @Override
-   protected eta b_(dwy $$0) {
-      return $$0.c(g) ? etb.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean a(dwy $$0, dgm $$1, ji $$2) {
-      if ($$0.c(b) == dxt.a) {
-         return super.a($$0, $$1, $$2);
+   public void a(ard $$0, ji $$1, dxq $$2, azh $$3) {
+      if ($$2.c(f) == 0) {
+         $$0.a($$1, $$2.a(f), 260);
       } else {
-         ji $$3 = $$2.e();
-         dwy $$4 = $$1.a_($$3);
-         return this.b($$4, $$1, $$3);
+         this.g.a($$0, $$0.m().g(), $$1, $$2, $$3);
       }
    }
 
    @Override
-   protected dwy a(dwy $$0, dgm $$1, dgy $$2, ji $$3, jn $$4, ji $$5, dwy $$6, azh $$7) {
-      if ($$0.c(g)) {
-         $$2.a($$3, etb.c, etb.c.a($$1));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected void a(dwz.a<djn, dwy> $$0) {
-      $$0.a(b, g, d);
-   }
-
-   @Override
-   public boolean a(dgm $$0, ji $$1, dwy $$2) {
+   public boolean a(dhc $$0, ji $$1, dxq $$2) {
       return true;
    }
 
    @Override
-   public boolean a(dgj $$0, azh $$1, ji $$2, dwy $$3) {
-      return true;
+   public boolean a(dgz $$0, azh $$1, ji $$2, dxq $$3) {
+      return (double)$$0.A.i() < 0.45;
    }
 
    @Override
-   public void a(ard $$0, azh $$1, ji $$2, dwy $$3) {
-      if ($$3.c(dlw.b) == dxt.b) {
-         ji $$4 = $$2.d();
-         $$0.a($$4, $$0.b_($$4).g(), 18);
-         djk.a($$0, $$1, $$2, $$3.c(d));
-      } else {
-         ji $$5 = $$2.e();
-         this.a($$0, $$1, $$5, $$0.a_($$5));
-      }
+   public void a(ard $$0, azh $$1, ji $$2, dxq $$3) {
+      this.a($$0, $$2, $$3, $$1);
    }
 
    @Override
-   protected dwy a(dwy $$0, dqf $$1) {
-      return $$0.b(d, $$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected dwy a(dwy $$0, dom $$1) {
-      return $$0.a($$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected float at_() {
-      return 0.1F;
+   protected void a(dxr.a<dke, dxq> $$0) {
+      $$0.a(f);
    }
 }

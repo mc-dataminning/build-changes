@@ -13,7 +13,7 @@ public class nb implements mi {
    @Override
    public CompletableFuture<?> a(mg $$0) {
       JsonObject $$1 = new JsonObject();
-      mb.aC.c().forEach($$1x -> $$1.add($$1x.h().a().toString(), a((ke)$$1x.a())));
+      mb.aD.c().forEach($$1x -> $$1.add($$1x.h().a().toString(), a((ke)$$1x.a())));
       Path $$2 = this.d.a(mk.b.c).resolve("registries.json");
       return mi.a($$0, $$1, $$2);
    }
@@ -21,11 +21,11 @@ public class nb implements mi {
    private static <T> JsonElement a(ke<T> $$0) {
       JsonObject $$1 = new JsonObject();
       if ($$0 instanceof jm) {
-         akv $$2 = ((jm)$$0).b();
+         aku $$2 = ((jm)$$0).b();
          $$1.addProperty("default", $$2.toString());
       }
 
-      int $$3 = mb.aC.a($$0);
+      int $$3 = mb.aD.a($$0);
       $$1.addProperty("protocol_id", $$3);
       JsonObject $$4 = new JsonObject();
       $$0.c().forEach($$2 -> {

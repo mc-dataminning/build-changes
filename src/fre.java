@@ -1,42 +1,55 @@
-public interface fre {
-   Object b = new Object();
-   int c = 160;
-   int d = 32;
+import java.time.Duration;
+import javax.annotation.Nullable;
 
-   fre.a a();
+public class fre {
+   @Nullable
+   private frb a;
+   private Duration b = Duration.ZERO;
+   private long c;
+   private boolean d;
 
-   void a(frf var1, long var2);
-
-   void a(fof var1, fod var2, long var3);
-
-   default Object f() {
-      return b;
+   public void a(Duration $$0) {
+      this.b = $$0;
    }
 
-   default int b() {
-      return 160;
+   public void a(@Nullable frb $$0) {
+      this.a = $$0;
    }
 
-   default int c() {
-      return 32;
+   @Nullable
+   public frb a() {
+      return this.a;
    }
 
-   default int g() {
-      return ayz.e(this.c(), 32);
-   }
+   public void a(boolean $$0, boolean $$1, ftx $$2) {
+      if (this.a == null) {
+         this.d = false;
+      } else {
+         boolean $$3 = $$0 || $$1 && fmg.Q().aX().b();
+         if ($$3 != this.d) {
+            if ($$3) {
+               this.c = af.c();
+            }
 
-   public static enum a {
-      a(awa.Bm),
-      b(awa.Bn);
+            this.d = $$3;
+         }
 
-      private final avz c;
-
-      private a(final avz $$0) {
-         this.c = $$0;
+         if ($$3 && af.c() - this.c > this.b.toMillis()) {
+            fvi $$4 = fmg.Q().z;
+            if ($$4 != null) {
+               $$4.a(this.a, this.a($$2, $$0, $$1), $$1);
+            }
+         }
       }
+   }
 
-      public void a(hjw $$0) {
-         $$0.a(hil.a(this.c, 1.0F, 1.0F));
+   private fxt a(ftx $$0, boolean $$1, boolean $$2) {
+      return (fxt)(!$$1 && $$2 && fmg.Q().aX().b() ? new fxo($$0) : new fxv($$0));
+   }
+
+   public void a(ftn $$0) {
+      if (this.a != null) {
+         this.a.b($$0);
       }
    }
 }

@@ -1,13 +1,30 @@
-public class gvm extends gqy<cms, hbc, geu<hbc>> {
-   public gvm(gsf.a $$0) {
-      this($$0, gfd.dN, gfd.dO, gfd.dU, gfd.dV, gfd.dP, gfd.dQ);
+public class gvm<T extends ciq> extends grx<T, hbj, gfd> {
+   private static final aku a = aku.b("textures/entity/squid/squid.png");
+
+   public gvm(gtd.a $$0, gfd $$1, gfd $$2) {
+      super($$0, $$1, $$2, 0.7F);
    }
 
-   public hbc b() {
-      return new hbc();
+   public aku a(hbj $$0) {
+      return a;
    }
 
-   public gvm(gsf.a $$0, gfc $$1, gfc $$2, gfc $$3, gfc $$4, gfc $$5, gfc $$6) {
-      super($$0, new geu<>($$0.a($$1)), new geu<>($$0.a($$2)), new geu<>($$0.a($$3)), new geu<>($$0.a($$4)), new geu<>($$0.a($$5)), new geu<>($$0.a($$6)));
+   public hbj b() {
+      return new hbj();
+   }
+
+   public void a(T $$0, hbj $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = ayz.h($$2, $$0.bM, $$0.bL);
+      $$1.b = ayz.h($$2, $$0.bG, $$0.bF);
+      $$1.c = ayz.h($$2, $$0.bI, $$0.bH);
+   }
+
+   protected void a(hbj $$0, fgr $$1, float $$2, float $$3) {
+      $$1.a(0.0F, $$0.aj ? 0.25F : 0.5F, 0.0F);
+      $$1.a(a.d.rotationDegrees(180.0F - $$2));
+      $$1.a(a.b.rotationDegrees($$0.b));
+      $$1.a(a.d.rotationDegrees($$0.c));
+      $$1.a(0.0F, $$0.aj ? -0.6F : -1.2F, 0.0F);
    }
 }

@@ -1,110 +1,145 @@
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.Arrays;
-import java.util.function.IntFunction;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.List;
+import java.util.Locale;
 import javax.annotation.Nullable;
 
-public class frj<T> {
-   private static final int a = 8;
-   private static final int b = 256;
-   private static final int c = 255;
-   private static final int d = 4351;
-   private static final int e = 4352;
-   private final T[] f;
-   private final T[][] g;
-   private final IntFunction<T[]> h;
-
-   public frj(IntFunction<T[]> $$0, IntFunction<T[][]> $$1) {
-      this.f = (T[])((Object[])$$0.apply(256));
-      this.g = (T[][])((Object[][])$$1.apply(4352));
-      Arrays.fill(this.g, this.f);
-      this.h = $$0;
-   }
-
-   public void a() {
-      Arrays.fill(this.g, this.f);
-   }
-
+public class frj {
+   private static final int a = 105;
+   private static final int b = 5;
+   private static final int c = 10;
+   private final fpa d;
    @Nullable
-   public T a(int $$0) {
-      int $$1 = $$0 >> 8;
-      int $$2 = $$0 & 0xFF;
-      return this.g[$$1][$$2];
+   private bph e;
+   private String f = "root";
+   private int g = 0;
+
+   public frj(fpa $$0) {
+      this.d = $$0;
    }
 
-   @Nullable
-   public T a(int $$0, T $$1) {
-      int $$2 = $$0 >> 8;
-      int $$3 = $$0 & 0xFF;
-      T[] $$4 = this.g[$$2];
-      if ($$4 == this.f) {
-         $$4 = (T[])((Object[])this.h.apply(256));
-         this.g[$$2] = $$4;
-         $$4[$$3] = $$1;
-         return null;
-      } else {
-         T $$5 = $$4[$$3];
-         $$4[$$3] = $$1;
-         return $$5;
-      }
+   public void a(@Nullable bph $$0) {
+      this.e = $$0;
    }
 
-   public T a(int $$0, IntFunction<T> $$1) {
-      int $$2 = $$0 >> 8;
-      int $$3 = $$0 & 0xFF;
-      T[] $$4 = this.g[$$2];
-      T $$5 = $$4[$$3];
-      if ($$5 != null) {
-         return $$5;
-      } else {
-         if ($$4 == this.f) {
-            $$4 = (T[])((Object[])this.h.apply(256));
-            this.g[$$2] = $$4;
+   public void a(int $$0) {
+      this.g = $$0;
+   }
+
+   public void a(fpc $$0) {
+      if (this.e != null) {
+         List<bpl> $$1 = this.e.a(this.f);
+         bpl $$2 = $$1.removeFirst();
+         int $$3 = $$0.a() - 105 - 10;
+         int $$4 = $$3 - 105;
+         int $$5 = $$3 + 105;
+         int $$6 = $$1.size() * 9;
+         int $$7 = $$0.b() - this.g - 5;
+         int $$8 = $$7 - $$6;
+         int $$9 = 62;
+         int $$10 = $$8 - 62 - 5;
+         $$0.a($$4 - 5, $$10 - 62 - 5, $$5 + 5, $$7 + 5, -1873784752);
+         $$0.a($$4x -> {
+            double $$5x = 0.0;
+
+            for (bpl $$6x : $$1) {
+               int $$7x = ayz.a($$6x.a / 4.0) + 1;
+               fgv $$8x = $$4x.getBuffer(gnh.D());
+               int $$9x = axk.f($$6x.a());
+               int $$10x = axk.a($$9x, -8355712);
+               fgr.a $$11x = $$0.c().c();
+               $$8x.a($$11x, (float)$$3, (float)$$10, 10.0F).a($$9x);
+
+               for (int $$12x = $$7x; $$12x >= 0; $$12x--) {
+                  float $$13x = (float)(($$5x + $$6x.a * (double)$$12x / (double)$$7x) * (float) (Math.PI * 2) / 100.0);
+                  float $$14x = ayz.a($$13x) * 105.0F;
+                  float $$15x = ayz.b($$13x) * 105.0F * 0.5F;
+                  $$8x.a($$11x, (float)$$3 + $$14x, (float)$$10 - $$15x, 10.0F).a($$9x);
+               }
+
+               $$8x = $$4x.getBuffer(gnh.C());
+
+               for (int $$16x = $$7x; $$16x > 0; $$16x--) {
+                  float $$17x = (float)(($$5x + $$6x.a * (double)$$16x / (double)$$7x) * (float) (Math.PI * 2) / 100.0);
+                  float $$18x = ayz.a($$17x) * 105.0F;
+                  float $$19x = ayz.b($$17x) * 105.0F * 0.5F;
+                  float $$20x = (float)(($$5x + $$6x.a * (double)($$16x - 1) / (double)$$7x) * (float) (Math.PI * 2) / 100.0);
+                  float $$21 = ayz.a($$20x) * 105.0F;
+                  float $$22 = ayz.b($$20x) * 105.0F * 0.5F;
+                  if (!(($$19x + $$22) / 2.0F > 0.0F)) {
+                     $$8x.a($$11x, (float)$$3 + $$18x, (float)$$10 - $$19x, 10.0F).a($$10x);
+                     $$8x.a($$11x, (float)$$3 + $$18x, (float)$$10 - $$19x + 10.0F, 10.0F).a($$10x);
+                     $$8x.a($$11x, (float)$$3 + $$21, (float)$$10 - $$22 + 10.0F, 10.0F).a($$10x);
+                     $$8x.a($$11x, (float)$$3 + $$21, (float)$$10 - $$22, 10.0F).a($$10x);
+                  }
+               }
+
+               $$5x += $$6x.a;
+            }
+         });
+         DecimalFormat $$11 = new DecimalFormat("##0.00");
+         $$11.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT));
+         String $$12 = bph.b($$2.d);
+         String $$13 = "";
+         if (!"unspecified".equals($$12)) {
+            $$13 = $$13 + "[0] ";
          }
 
-         T $$6 = $$1.apply($$0);
-         $$4[$$3] = $$6;
-         return $$6;
+         if ($$12.isEmpty()) {
+            $$13 = $$13 + "ROOT ";
+         } else {
+            $$13 = $$13 + $$12 + " ";
+         }
+
+         int $$14 = 16777215;
+         int $$15 = $$10 - 62;
+         $$0.b(this.d, $$13, $$4, $$15, 16777215);
+         $$13 = $$11.format($$2.b) + "%";
+         $$0.b(this.d, $$13, $$5 - this.d.b($$13), $$15, 16777215);
+
+         for (int $$16 = 0; $$16 < $$1.size(); $$16++) {
+            bpl $$17 = $$1.get($$16);
+            StringBuilder $$18 = new StringBuilder();
+            if ("unspecified".equals($$17.d)) {
+               $$18.append("[?] ");
+            } else {
+               $$18.append("[").append($$16 + 1).append("] ");
+            }
+
+            String $$19 = $$18.append($$17.d).toString();
+            int $$20 = $$8 + $$16 * 9;
+            $$0.b(this.d, $$19, $$4, $$20, $$17.a());
+            $$19 = $$11.format($$17.a) + "%";
+            $$0.b(this.d, $$19, $$5 - 50 - this.d.b($$19), $$20, $$17.a());
+            $$19 = $$11.format($$17.b) + "%";
+            $$0.b(this.d, $$19, $$5 - this.d.b($$19), $$20, $$17.a());
+         }
       }
    }
 
-   @Nullable
-   public T b(int $$0) {
-      int $$1 = $$0 >> 8;
-      int $$2 = $$0 & 0xFF;
-      T[] $$3 = this.g[$$1];
-      if ($$3 == this.f) {
-         return null;
-      } else {
-         T $$4 = $$3[$$2];
-         $$3[$$2] = null;
-         return $$4;
-      }
-   }
+   public void b(int $$0) {
+      if (this.e != null) {
+         List<bpl> $$1 = this.e.a(this.f);
+         if (!$$1.isEmpty()) {
+            bpl $$2 = $$1.remove(0);
+            if ($$0 == 0) {
+               if (!$$2.d.isEmpty()) {
+                  int $$3 = this.f.lastIndexOf(30);
+                  if ($$3 >= 0) {
+                     this.f = this.f.substring(0, $$3);
+                  }
+               }
+            } else {
+               $$0--;
+               if ($$0 < $$1.size() && !"unspecified".equals($$1.get($$0).d)) {
+                  if (!this.f.isEmpty()) {
+                     this.f = this.f + "\u001e";
+                  }
 
-   public void a(frj.a<T> $$0) {
-      for (int $$1 = 0; $$1 < this.g.length; $$1++) {
-         T[] $$2 = this.g[$$1];
-         if ($$2 != this.f) {
-            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-               T $$4 = $$2[$$3];
-               if ($$4 != null) {
-                  int $$5 = $$1 << 8 | $$3;
-                  $$0.accept($$5, $$4);
+                  this.f = this.f + $$1.get($$0).d;
                }
             }
          }
       }
-   }
-
-   public IntSet b() {
-      IntOpenHashSet $$0 = new IntOpenHashSet();
-      this.a(($$1, $$2) -> $$0.add($$1));
-      return $$0;
-   }
-
-   @FunctionalInterface
-   public interface a<T> {
-      void accept(int var1, T var2);
    }
 }

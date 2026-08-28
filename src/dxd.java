@@ -1,174 +1,116 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.MoreObjects;
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
-
-public class dxd {
-   private final Predicate<dxc>[][][] a;
-   private final int b;
-   private final int c;
-   private final int d;
-
-   public dxd(Predicate<dxc>[][][] $$0) {
-      this.a = $$0;
-      this.b = $$0.length;
-      if (this.b > 0) {
-         this.c = $$0[0].length;
-         if (this.c > 0) {
-            this.d = $$0[0][0].length;
-         } else {
-            this.d = 0;
+public enum dxd implements azv {
+   a("inactive", dxd.a.a) {
+      @Override
+      protected void a(ard $$0, ji $$1, dxa $$2, dxc $$3, boolean $$4) {
+         $$3.a(cxh.k);
+         $$0.c(3016, $$1, $$4 ? 1 : 0);
+      }
+   },
+   b("active", dxd.a.b) {
+      @Override
+      protected void a(ard $$0, ji $$1, dxa $$2, dxc $$3, boolean $$4) {
+         if (!$$3.b()) {
+            dwy.b.a($$0, this, $$2, $$3, $$1);
          }
-      } else {
-         this.c = 0;
-         this.d = 0;
+
+         $$0.c(3015, $$1, $$4 ? 1 : 0);
       }
-   }
-
-   public int a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   @VisibleForTesting
-   public Predicate<dxc>[][][] d() {
-      return this.a;
-   }
-
-   @Nullable
-   @VisibleForTesting
-   public dxd.b a(dgm $$0, ji $$1, jn $$2, jn $$3) {
-      LoadingCache<ji, dxc> $$4 = a($$0, false);
-      return this.a($$1, $$2, $$3, $$4);
-   }
-
-   @Nullable
-   private dxd.b a(ji $$0, jn $$1, jn $$2, LoadingCache<ji, dxc> $$3) {
-      for (int $$4 = 0; $$4 < this.d; $$4++) {
-         for (int $$5 = 0; $$5 < this.c; $$5++) {
-            for (int $$6 = 0; $$6 < this.b; $$6++) {
-               if (!this.a[$$6][$$5][$$4].test((dxc)$$3.getUnchecked(a($$0, $$1, $$2, $$4, $$5, $$6)))) {
-                  return null;
-               }
-            }
-         }
+   },
+   c("unlocking", dxd.a.b) {
+      @Override
+      protected void a(ard $$0, ji $$1, dxa $$2, dxc $$3, boolean $$4) {
+         $$0.a(null, $$1, awa.BH, awb.e);
       }
-
-      return new dxd.b($$0, $$1, $$2, $$3, this.d, this.c, this.b);
-   }
-
-   @Nullable
-   public dxd.b a(dgm $$0, ji $$1) {
-      LoadingCache<ji, dxc> $$2 = a($$0, false);
-      int $$3 = Math.max(Math.max(this.d, this.c), this.b);
-
-      for (ji $$4 : ji.c($$1, $$1.b($$3 - 1, $$3 - 1, $$3 - 1))) {
-         for (jn $$5 : jn.values()) {
-            for (jn $$6 : jn.values()) {
-               if ($$6 != $$5 && $$6 != $$5.g()) {
-                  dxd.b $$7 = this.a($$4, $$5, $$6, $$2);
-                  if ($$7 != null) {
-                     return $$7;
-                  }
-               }
-            }
-         }
-      }
-
-      return null;
-   }
-
-   public static LoadingCache<ji, dxc> a(dgm $$0, boolean $$1) {
-      return CacheBuilder.newBuilder().build(new dxd.a($$0, $$1));
-   }
-
-   protected static ji a(ji $$0, jn $$1, jn $$2, int $$3, int $$4, int $$5) {
-      if ($$1 != $$2 && $$1 != $$2.g()) {
-         km $$6 = new km($$1.j(), $$1.k(), $$1.l());
-         km $$7 = new km($$2.j(), $$2.k(), $$2.l());
-         km $$8 = $$6.d($$7);
-         return $$0.b(
-            $$7.u() * -$$4 + $$8.u() * $$3 + $$6.u() * $$5, $$7.v() * -$$4 + $$8.v() * $$3 + $$6.v() * $$5, $$7.w() * -$$4 + $$8.w() * $$3 + $$6.w() * $$5
-         );
-      } else {
-         throw new IllegalArgumentException("Invalid forwards & up combination");
-      }
-   }
-
-   static class a extends CacheLoader<ji, dxc> {
-      private final dgm a;
-      private final boolean b;
-
-      public a(dgm $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public dxc a(ji $$0) {
-         return new dxc(this.a, $$0, this.b);
-      }
-   }
-
-   public static class b {
-      private final ji a;
-      private final jn b;
-      private final jn c;
-      private final LoadingCache<ji, dxc> d;
-      private final int e;
-      private final int f;
-      private final int g;
-
-      public b(ji $$0, jn $$1, jn $$2, LoadingCache<ji, dxc> $$3, int $$4, int $$5, int $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-      }
-
-      public ji a() {
-         return this.a;
-      }
-
-      public jn b() {
-         return this.b;
-      }
-
-      public jn c() {
-         return this.c;
-      }
-
-      public int d() {
-         return this.e;
-      }
-
-      public int e() {
-         return this.f;
-      }
-
-      public int f() {
-         return this.g;
-      }
-
-      public dxc a(int $$0, int $$1, int $$2) {
-         return (dxc)this.d.getUnchecked(dxd.a(this.a, this.b(), this.c(), $$0, $$1, $$2));
+   },
+   d("ejecting", dxd.a.b) {
+      @Override
+      protected void a(ard $$0, ji $$1, dxa $$2, dxc $$3, boolean $$4) {
+         $$0.a(null, $$1, awa.BJ, awb.e);
       }
 
       @Override
-      public String toString() {
-         return MoreObjects.toStringHelper(this).add("up", this.c).add("forwards", this.b).add("frontTopLeft", this.a).toString();
+      protected void a(ard $$0, ji $$1, dxa $$2, dxc $$3) {
+         $$0.a(null, $$1, awa.BB, awb.e);
+      }
+   };
+
+   private static final int e = 20;
+   private static final int f = 20;
+   private static final int g = 20;
+   private static final int h = 20;
+   private final String i;
+   private final dxd.a j;
+
+   dxd(final String $$0, final dxd.a $$1) {
+      this.i = $$0;
+      this.j = $$1;
+   }
+
+   @Override
+   public String c() {
+      return this.i;
+   }
+
+   public int a() {
+      return this.j.c;
+   }
+
+   public dxd a(ard $$0, ji $$1, dxa $$2, dxb $$3, dxc $$4) {
+      return switch (this) {
+         case a -> a($$0, $$1, $$2, $$3, $$4, $$2.c());
+         case b -> a($$0, $$1, $$2, $$3, $$4, $$2.d());
+         case c -> {
+            $$3.b($$0.ae() + 20L);
+            yield d;
+         }
+         case d -> {
+            if ($$3.d().isEmpty()) {
+               $$3.e();
+               yield a($$0, $$1, $$2, $$3, $$4, $$2.d());
+            } else {
+               float $$5 = $$3.h();
+               this.a($$0, $$1, $$3.g(), $$5);
+               $$4.a($$3.f());
+               boolean $$6 = $$3.d().isEmpty();
+               int $$7 = $$6 ? 20 : 20;
+               $$3.b($$0.ae() + (long)$$7);
+               yield d;
+            }
+         }
+      };
+   }
+
+   private static dxd a(ard $$0, ji $$1, dxa $$2, dxb $$3, dxc $$4, double $$5) {
+      $$4.a($$0, $$1, $$3, $$2, $$5);
+      $$3.b($$0.ae() + 20L);
+      return $$4.c() ? b : a;
+   }
+
+   public void a(ard $$0, ji $$1, dxd $$2, dxa $$3, dxc $$4, boolean $$5) {
+      this.a($$0, $$1, $$3, $$4);
+      $$2.a($$0, $$1, $$3, $$4, $$5);
+   }
+
+   protected void a(ard $$0, ji $$1, dxa $$2, dxc $$3, boolean $$4) {
+   }
+
+   protected void a(ard $$0, ji $$1, dxa $$2, dxc $$3) {
+   }
+
+   private void a(ard $$0, ji $$1, cxh $$2, float $$3) {
+      lb.a($$0, $$2, 2, jn.b, fbx.c($$1).a(jn.b, 1.2));
+      $$0.c(3017, $$1, 0);
+      $$0.a(null, $$1, awa.BD, awb.e, 1.0F, 0.8F + 0.4F * $$3);
+   }
+
+   static enum a {
+      a(6),
+      b(12);
+
+      final int c;
+
+      private a(final int $$0) {
+         this.c = $$0;
       }
    }
 }

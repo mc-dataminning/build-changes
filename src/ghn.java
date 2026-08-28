@@ -1,77 +1,169 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.Base64;
+import java.util.Collections;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ghn implements AutoCloseable {
-   private final Long2ObjectOpenHashMap<ghn.a> a = new Long2ObjectOpenHashMap();
-   private int b;
-   private boolean c;
+public class ghn {
+   private static final Logger j = LogUtils.getLogger();
+   private static final int k = 1024;
+   public String a;
+   public String b;
+   public wp c;
+   public wp d;
+   @Nullable
+   public ajr.b e;
+   public long f;
+   public int g = ab.b().e();
+   public wp h = wp.b(ab.b().c());
+   public List<wp> i = Collections.emptyList();
+   private ghn.a l = ghn.a.c;
+   @Nullable
+   private byte[] m;
+   private ghn.c n;
+   private ghn.b o = ghn.b.a;
 
-   public void a(ji $$0, dwy $$1, gkx $$2) {
-      this.a.compute($$0.a(), ($$2x, $$3) -> $$3 != null ? $$3.a(this.b) : new ghn.a(this.b, $$1, $$2.dt()));
+   public ghn(String $$0, String $$1, ghn.c $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.n = $$2;
    }
 
-   public boolean a(ji $$0, dwy $$1) {
-      ghn.a $$2 = (ghn.a)this.a.get($$0.a());
-      if ($$2 == null) {
-         return false;
-      } else {
-         $$2.a($$1);
-         return true;
+   public tq a() {
+      tq $$0 = new tq();
+      $$0.a("name", this.a);
+      $$0.a("ip", this.b);
+      if (this.m != null) {
+         $$0.a("icon", Base64.getEncoder().encodeToString(this.m));
       }
+
+      if (this.l == ghn.a.a) {
+         $$0.a("acceptTextures", true);
+      } else if (this.l == ghn.a.b) {
+         $$0.a("acceptTextures", false);
+      }
+
+      return $$0;
    }
 
-   public void a(int $$0, gga $$1) {
-      ObjectIterator<Entry<ghn.a>> $$2 = this.a.long2ObjectEntrySet().iterator();
+   public ghn.a b() {
+      return this.l;
+   }
 
-      while ($$2.hasNext()) {
-         Entry<ghn.a> $$3 = (Entry<ghn.a>)$$2.next();
-         ghn.a $$4 = (ghn.a)$$3.getValue();
-         if ($$4.b <= $$0) {
-            ji $$5 = ji.d($$3.getLongKey());
-            $$2.remove();
-            $$1.a($$5, $$4.c, $$4.a);
+   public void a(ghn.a $$0) {
+      this.l = $$0;
+   }
+
+   public static ghn a(tq $$0) {
+      ghn $$1 = new ghn($$0.l("name"), $$0.l("ip"), ghn.c.c);
+      if ($$0.b("icon", 8)) {
+         try {
+            byte[] $$2 = Base64.getDecoder().decode($$0.l("icon"));
+            $$1.a(b($$2));
+         } catch (IllegalArgumentException var3) {
+            j.warn("Malformed base64 server icon", var3);
          }
       }
-   }
 
-   public ghn a() {
-      this.b++;
-      this.c = true;
-      return this;
-   }
-
-   @Override
-   public void close() {
-      this.c = false;
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public boolean c() {
-      return this.c;
-   }
-
-   static class a {
-      final fbb a;
-      int b;
-      dwy c;
-
-      a(int $$0, dwy $$1, fbb $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.a = $$2;
+      if ($$0.b("acceptTextures", 99)) {
+         if ($$0.q("acceptTextures")) {
+            $$1.a(ghn.a.a);
+         } else {
+            $$1.a(ghn.a.b);
+         }
+      } else {
+         $$1.a(ghn.a.c);
       }
 
-      ghn.a a(int $$0) {
-         this.b = $$0;
-         return this;
+      return $$1;
+   }
+
+   @Nullable
+   public byte[] c() {
+      return this.m;
+   }
+
+   public void a(@Nullable byte[] $$0) {
+      this.m = $$0;
+   }
+
+   public boolean d() {
+      return this.n == ghn.c.a;
+   }
+
+   public boolean e() {
+      return this.n == ghn.c.b;
+   }
+
+   public ghn.c f() {
+      return this.n;
+   }
+
+   public void a(ghn $$0) {
+      this.b = $$0.b;
+      this.a = $$0.a;
+      this.m = $$0.m;
+   }
+
+   public void b(ghn $$0) {
+      this.a($$0);
+      this.a($$0.b());
+      this.n = $$0.n;
+   }
+
+   public ghn.b g() {
+      return this.o;
+   }
+
+   public void a(ghn.b $$0) {
+      this.o = $$0;
+   }
+
+   @Nullable
+   public static byte[] b(@Nullable byte[] $$0) {
+      if ($$0 != null) {
+         try {
+            aze $$1 = aze.a($$0);
+            if ($$1.a() <= 1024 && $$1.b() <= 1024) {
+               return $$0;
+            }
+         } catch (IOException var2) {
+            j.warn("Failed to decode server icon", var2);
+         }
       }
 
-      void a(dwy $$0) {
-         this.c = $$0;
+      return null;
+   }
+
+   public static enum a {
+      a("enabled"),
+      b("disabled"),
+      c("prompt");
+
+      private final wp d;
+
+      private a(final String $$0) {
+         this.d = wp.c("addServer.resourcePack." + $$0);
       }
+
+      public wp a() {
+         return this.d;
+      }
+   }
+
+   public static enum b {
+      a,
+      b,
+      c,
+      d,
+      e;
+   }
+
+   public static enum c {
+      a,
+      b,
+      c;
    }
 }

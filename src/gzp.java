@@ -1,3 +1,8 @@
-public class gzp extends gzo {
-   public float n = -1.0F;
+public class gzp extends haj {
+   public boolean d;
+   public boolean e;
+   public boolean f;
+   public float g;
+   public float h;
+   public float i;
 }

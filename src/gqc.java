@@ -1,61 +1,46 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import org.joml.Matrix4f;
 
-public class gqc implements gqa.a {
-   private static final float a = 0.02F;
-   private final Map<ji, gqc.a> b = Maps.newHashMap();
+public class gqc<T extends dwm> implements gpj<T> {
+   public static final aku a = aku.b("textures/environment/end_sky.png");
+   public static final aku b = aku.b("textures/entity/end_portal.png");
 
-   public void a(ji $$0, int $$1, String $$2, int $$3) {
-      this.b.put($$0, new gqc.a($$1, $$2, af.c() + (long)$$3));
+   public gqc(gpk.a $$0) {
    }
 
-   @Override
-   public void a() {
-      this.b.clear();
+   public void a(T $$0, float $$1, fgr $$2, gmx $$3, int $$4, int $$5) {
+      Matrix4f $$6 = $$2.c().a();
+      this.a($$0, $$6, $$3.getBuffer(this.d()));
    }
 
-   @Override
-   public void a(ffv $$0, glz $$1, double $$2, double $$3, double $$4) {
-      long $$5 = af.c();
-      this.b.entrySet().removeIf($$1x -> $$5 > ((gqc.a)$$1x.getValue()).c);
-      this.b.forEach(($$2x, $$3x) -> this.a($$0, $$1, $$2x, $$3x));
+   private void a(T $$0, Matrix4f $$1, fgv $$2) {
+      float $$3 = this.c();
+      float $$4 = this.b();
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, jn.d);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, jn.c);
+      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, jn.f);
+      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, jn.e);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, jn.a);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, jn.b);
    }
 
-   private void a(ffv $$0, glz $$1, ji $$2, gqc.a $$3) {
-      gqa.a($$0, $$1, $$2, 0.02F, $$3.a(), $$3.b(), $$3.c(), $$3.d() * 0.75F);
-      if (!$$3.b.isEmpty()) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v() + 1.2;
-         double $$6 = (double)$$2.w() + 0.5;
-         gqa.a($$0, $$1, $$3.b, $$4, $$5, $$6, -1, 0.01F, true, 0.0F, true);
+   private void a(T $$0, Matrix4f $$1, fgv $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, jn $$11) {
+      if ($$0.a($$11)) {
+         $$2.a($$1, $$3, $$5, $$7);
+         $$2.a($$1, $$4, $$5, $$8);
+         $$2.a($$1, $$4, $$6, $$9);
+         $$2.a($$1, $$3, $$6, $$10);
       }
    }
 
-   static class a {
-      public int a;
-      public String b;
-      public long c;
+   protected float b() {
+      return 0.75F;
+   }
 
-      public a(int $$0, String $$1, long $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
+   protected float c() {
+      return 0.375F;
+   }
 
-      public float a() {
-         return (float)(this.a >> 16 & 0xFF) / 255.0F;
-      }
-
-      public float b() {
-         return (float)(this.a >> 8 & 0xFF) / 255.0F;
-      }
-
-      public float c() {
-         return (float)(this.a & 0xFF) / 255.0F;
-      }
-
-      public float d() {
-         return (float)(this.a >> 24 & 0xFF) / 255.0F;
-      }
+   protected gnh d() {
+      return gnh.t();
    }
 }

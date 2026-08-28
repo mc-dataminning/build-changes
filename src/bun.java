@@ -1,27 +1,16 @@
-import java.util.List;
-
-public enum bun {
-   a(bun.a.c),
-   b(bun.a.b),
-   c(bun.a.c),
-   d(bun.a.d);
-
-   private final bun.a e;
-
-   private bun(final bun.a $$0) {
-      this.e = $$0;
+class bun extends buc {
+   protected bun(bud $$0, int $$1) {
+      super($$0, $$1, lt.y);
    }
 
-   public List<fbb> a(float $$0, float $$1) {
-      return this.e.create($$0, $$1);
-   }
-
-   public interface a {
-      List<fbb> a = List.of(fbb.c);
-      bun.a b = ($$0, $$1) -> a;
-      bun.a c = ($$0, $$1) -> List.of(new fbb(0.0, (double)$$1, 0.0));
-      bun.a d = ($$0, $$1) -> List.of(new fbb(0.0, (double)$$1 / 2.0, 0.0));
-
-      List<fbb> create(float var1, float var2);
+   @Override
+   public void a(ard $$0, bvy $$1, int $$2, bva.d $$3) {
+      if ($$3 == bva.d.a) {
+         double $$4 = $$1.dz();
+         double $$5 = $$1.dB() + (double)($$1.dq() / 2.0F);
+         double $$6 = $$1.dF();
+         float $$7 = 3.0F + $$1.dX().i() * 2.0F;
+         $$0.a($$1, null, cra.d, $$4, $$5, $$6, $$7, false, dgz.a.e, lt.A, lt.z, awa.cQ);
+      }
    }
 }

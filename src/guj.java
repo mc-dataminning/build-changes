@@ -1,36 +1,14 @@
-public class guj extends gtl<cmi, hai, gea> {
-   public static final akv a = akv.b("textures/entity/slime/slime.png");
-
-   public guj(gsf.a $$0) {
-      super($$0, new gea($$0.a(gfd.cO)), 0.25F);
-      this.a(new gwy(this, $$0.f()));
+public abstract class guj<T extends bwa, S extends haj, M extends gda<? super S>> extends gue<T, S, M> {
+   public guj(gtd.a $$0, M $$1, float $$2) {
+      super($$0, $$1, $$2);
    }
 
-   protected float a(hai $$0) {
-      return (float)$$0.b * 0.25F;
+   protected boolean a(T $$0, double $$1) {
+      return super.a($$0, $$1) && ($$0.cL() || $$0.h_() && $$0 == this.e.c);
    }
 
-   protected void a(hai $$0, ffv $$1) {
-      float $$2 = 0.999F;
-      $$1.b(0.999F, 0.999F, 0.999F);
-      $$1.a(0.0F, 0.001F, 0.0F);
-      float $$3 = (float)$$0.b;
-      float $$4 = $$0.a / ($$3 * 0.5F + 1.0F);
-      float $$5 = 1.0F / ($$4 + 1.0F);
-      $$1.b($$5 * $$3, 1.0F / $$5 * $$3, $$5 * $$3);
-   }
-
-   public akv b(hai $$0) {
-      return a;
-   }
-
-   public hai b() {
-      return new hai();
-   }
-
-   public void a(cmi $$0, hai $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = ayz.h($$2, $$0.bY, $$0.bX);
-      $$1.b = $$0.gs();
+   @Override
+   protected float g(S $$0) {
+      return super.g($$0) * $$0.ag;
    }
 }

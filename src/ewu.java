@@ -1,61 +1,67 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import java.util.Optional;
 import java.util.Set;
 
-public class ewu extends exf {
-   public static final MapCodec<ewu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(ewu.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, ewu::new)
-   );
-   private final ewu.a b;
+public class ewu {
+   private final azf a;
+   private final baj b;
+   private final Optional<js.a> c;
+   private final Set<akt<?>> d;
 
-   private ewu(List<ezb> $$0, ewu.a $$1) {
-      super($$0);
+   public ewu(azf $$0, baj $$1, js.a $$2) {
+      this($$0, $$1, Optional.of($$2), Set.of());
+   }
+
+   public ewu(azf $$0, baj $$1) {
+      this($$0, $$1, Optional.empty(), Set.of());
+   }
+
+   private ewu(azf $$0, baj $$1, Optional<js.a> $$2, Set<akt<?>> $$3) {
+      this.a = $$0;
       this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   public exh<ewu> b() {
-      return exi.s;
+   public ewu a(String $$0) {
+      return new ewu(this.a.a($$0), this.b, this.c, this.d);
    }
 
-   @Override
-   public Set<bai<?>> a() {
-      return Set.of(this.b.g);
+   public ewu a(String $$0, akt<?> $$1) {
+      Set<akt<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
+      return new ewu(this.a.a($$0), this.b, this.c, $$2);
    }
 
-   @Override
-   public cwq a(cwq $$0, evs $$1) {
-      if ($$1.c(this.b.g) instanceof bso $$3) {
-         $$0.b(kv.g, $$3.an());
+   public boolean a(akt<?> $$0) {
+      return this.d.contains($$0);
+   }
+
+   public void b(String $$0) {
+      this.a.b($$0);
+   }
+
+   public void a(ewp $$0) {
+      Set<bai<?>> $$1 = $$0.a();
+      Set<bai<?>> $$2 = Sets.difference($$1, this.b.b());
+      if (!$$2.isEmpty()) {
+         this.a.b("Parameters " + $$2 + " are not provided in this context");
       }
-
-      return $$0;
    }
 
-   public static exf.a<?> a(ewu.a $$0) {
-      return a($$1 -> new ewu($$1, $$0));
+   public js.a a() {
+      return this.c.orElseThrow(() -> new UnsupportedOperationException("References not allowed"));
    }
 
-   public static enum a implements azv {
-      a("this", eym.a),
-      b("attacking_entity", eym.d),
-      c("last_damage_player", eym.b),
-      d("block_entity", eym.h);
+   public boolean b() {
+      return this.c.isPresent();
+   }
 
-      public static final Codec<ewu.a> e = azv.a(ewu.a::values);
-      private final String f;
-      final bai<?> g;
+   public ewu a(baj $$0) {
+      return new ewu(this.a, $$0, this.c, this.d);
+   }
 
-      private a(final String $$0, final bai<?> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      @Override
-      public String c() {
-         return this.f;
-      }
+   public azf c() {
+      return this.a;
    }
 }

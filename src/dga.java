@@ -1,114 +1,193 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.List;
-import java.util.UUID;
-import java.util.function.Predicate;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public interface dga {
-   List<bum> a(@Nullable bum var1, faw var2, Predicate<? super bum> var3);
+public abstract class dga implements ew {
+   private static final SimpleDateFormat b = new SimpleDateFormat("HH:mm:ss");
+   private static final wp c = wp.b("@");
+   private long d = -1L;
+   private boolean e = true;
+   private int f;
+   private boolean g = true;
+   @Nullable
+   private wp h;
+   private String i = "";
+   @Nullable
+   private wp j;
 
-   <T extends bum> List<T> a(ebi<bum, T> var1, faw var2, Predicate<? super T> var3);
-
-   default <T extends bum> List<T> a(Class<T> $$0, faw $$1, Predicate<? super T> $$2) {
-      return this.a(ebi.a($$0), $$1, $$2);
+   public int k() {
+      return this.f;
    }
 
-   List<? extends coy> z();
-
-   default List<bum> a_(@Nullable bum $$0, faw $$1) {
-      return this.a($$0, $$1, bur.f);
+   public void a(int $$0) {
+      this.f = $$0;
    }
 
-   default boolean a(@Nullable bum $$0, fbv $$1) {
-      if ($$1.c()) {
-         return true;
+   public wp l() {
+      return this.h == null ? wo.a : this.h;
+   }
+
+   public tq a(tq $$0, jt.a $$1) {
+      $$0.a("Command", this.i);
+      $$0.a("SuccessCount", this.f);
+      aks<un> $$2 = $$1.a(ue.a);
+      if (this.j != null) {
+         $$0.a("CustomName", (un)wr.a.encodeStart($$2, this.j).getOrThrow());
+      }
+
+      $$0.a("TrackOutput", this.g);
+      if (this.h != null && this.g) {
+         $$0.a("LastOutput", (un)wr.a.encodeStart($$2, this.h).getOrThrow());
+      }
+
+      $$0.a("UpdateLastExecution", this.e);
+      if (this.e && this.d > 0L) {
+         $$0.a("LastExecution", this.d);
+      }
+
+      return $$0;
+   }
+
+   public void b(tq $$0, jt.a $$1) {
+      this.i = $$0.l("Command");
+      this.f = $$0.h("SuccessCount");
+      this.b(dus.a($$0.c("CustomName"), $$1));
+      if ($$0.b("TrackOutput", 1)) {
+         this.g = $$0.q("TrackOutput");
+      }
+
+      if ($$0.e("LastOutput") && this.g) {
+         this.h = dus.a($$0.c("LastOutput"), $$1);
       } else {
-         for (bum $$2 : this.a_($$0, $$1.a())) {
-            if (!$$2.dQ() && $$2.I && ($$0 == null || !$$2.z($$0)) && fbs.c($$1, fbs.a($$2.cR()), fbf.i)) {
-               return false;
-            }
-         }
+         this.h = null;
+      }
 
-         return true;
+      if ($$0.e("UpdateLastExecution")) {
+         this.e = $$0.q("UpdateLastExecution");
+      }
+
+      if (this.e && $$0.e("LastExecution")) {
+         this.d = $$0.i("LastExecution");
+      } else {
+         this.d = -1L;
       }
    }
 
-   default <T extends bum> List<T> a(Class<T> $$0, faw $$1) {
-      return this.a($$0, $$1, bur.f);
+   public void a(String $$0) {
+      this.i = $$0;
+      this.f = 0;
    }
 
-   default List<fbv> c(@Nullable bum $$0, faw $$1) {
-      if ($$1.a() < 1.0E-7) {
-         return List.of();
+   public String m() {
+      return this.i;
+   }
+
+   public boolean a(dgz $$0) {
+      if ($$0.C || $$0.ae() == this.d) {
+         return false;
+      } else if ("Searge".equalsIgnoreCase(this.i)) {
+         this.h = wp.b("#itzlipofutzli");
+         this.f = 1;
+         return true;
       } else {
-         Predicate<bum> $$2 = $$0 == null ? bur.g : bur.f.and($$0::i);
-         List<bum> $$3 = this.a($$0, $$1.g(1.0E-7), $$2);
-         if ($$3.isEmpty()) {
-            return List.of();
+         this.f = 0;
+         MinecraftServer $$1 = this.e().p();
+         if ($$1.q() && !azw.b(this.i)) {
+            try {
+               this.h = null;
+               ex $$2 = this.i().a((eu)(($$0x, $$1x) -> {
+                  if ($$0x) {
+                     this.f++;
+                  }
+               }));
+               $$1.aG().a($$2, this.i);
+            } catch (Throwable var6) {
+               o $$4 = o.a(var6, "Executing command block");
+               p $$5 = $$4.a("Command to be executed");
+               $$5.a("Command", this::m);
+               $$5.a("Name", () -> this.n().getString());
+               throw new z($$4);
+            }
+         }
+
+         if (this.e) {
+            this.d = $$0.ae();
          } else {
-            Builder<fbv> $$4 = ImmutableList.builderWithExpectedSize($$3.size());
-
-            for (bum $$5 : $$3) {
-               $$4.add(fbs.a($$5.cR()));
-            }
-
-            return $$4.build();
+            this.d = -1L;
          }
+
+         return true;
       }
    }
 
-   @Nullable
-   default coy a(double $$0, double $$1, double $$2, double $$3, @Nullable Predicate<bum> $$4) {
-      double $$5 = -1.0;
-      coy $$6 = null;
+   public wp n() {
+      return this.j != null ? this.j : c;
+   }
 
-      for (coy $$7 : this.z()) {
-         if ($$4 == null || $$4.test($$7)) {
-            double $$8 = $$7.i($$0, $$1, $$2);
-            if (($$3 < 0.0 || $$8 < $$3 * $$3) && ($$5 == -1.0 || $$8 < $$5)) {
-               $$5 = $$8;
-               $$6 = $$7;
-            }
-         }
+   @Nullable
+   public wp o() {
+      return this.j;
+   }
+
+   public void b(@Nullable wp $$0) {
+      this.j = $$0;
+   }
+
+   @Override
+   public void a(wp $$0) {
+      if (this.g) {
+         this.h = wp.b("[" + b.format(new Date()) + "] ").b($$0);
+         this.f();
       }
-
-      return $$6;
    }
 
-   @Nullable
-   default coy a(bum $$0, double $$1) {
-      return this.a($$0.dA(), $$0.dC(), $$0.dG(), $$1, false);
+   public abstract ard e();
+
+   public abstract void f();
+
+   public void c(@Nullable wp $$0) {
+      this.h = $$0;
    }
 
-   @Nullable
-   default coy a(double $$0, double $$1, double $$2, double $$3, boolean $$4) {
-      Predicate<bum> $$5 = $$4 ? bur.e : bur.f;
-      return this.a($$0, $$1, $$2, $$3, $$5);
+   public void a(boolean $$0) {
+      this.g = $$0;
    }
 
-   default boolean a(double $$0, double $$1, double $$2, double $$3) {
-      for (coy $$4 : this.z()) {
-         if (bur.f.test($$4) && bur.b.test($$4)) {
-            double $$5 = $$4.i($$0, $$1, $$2);
-            if ($$3 < 0.0 || $$5 < $$3 * $$3) {
-               return true;
-            }
+   public boolean p() {
+      return this.g;
+   }
+
+   public bsy a(cpr $$0) {
+      if (!$$0.gI()) {
+         return bsy.e;
+      } else {
+         if ($$0.cT().C) {
+            $$0.a(this);
          }
-      }
 
-      return false;
+         return bsy.a;
+      }
    }
 
-   @Nullable
-   default coy b(UUID $$0) {
-      for (int $$1 = 0; $$1 < this.z().size(); $$1++) {
-         coy $$2 = this.z().get($$1);
-         if ($$0.equals($$2.cG())) {
-            return $$2;
-         }
-      }
+   public abstract fbx g();
 
-      return null;
+   public abstract ex i();
+
+   @Override
+   public boolean t_() {
+      return this.e().O().b(dgv.p) && this.g;
    }
+
+   @Override
+   public boolean u_() {
+      return this.g;
+   }
+
+   @Override
+   public boolean c() {
+      return this.e().O().b(dgv.j);
+   }
+
+   public abstract boolean j();
 }

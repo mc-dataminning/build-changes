@@ -1,103 +1,169 @@
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
 import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.Reader;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record gmp(Map<String, String> c, Set<String> d) {
-   public static final gmp a = new gmp(Map.of(), Set.of());
-   public static final Codec<gmp> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.unboundedMap(Codec.STRING, Codec.STRING).optionalFieldOf("values", Map.of()).forGetter(gmp::d),
-               Codec.STRING.listOf().xmap(Set::copyOf, List::copyOf).optionalFieldOf("flags", Set.of()).forGetter(gmp::e)
-            )
-            .apply($$0, gmp::new)
-   );
+public class gmp extends auu<gmp.a> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final aku b = aku.b("gpu_warnlist.json");
+   private ImmutableMap<String, String> c = ImmutableMap.of();
+   private boolean d;
+   private boolean e;
+   private boolean f;
 
-   public static gmp.a a() {
-      return new gmp.a();
+   public boolean a() {
+      return !this.c.isEmpty();
    }
 
-   public gmp a(gmp $$0) {
-      if (this.c()) {
-         return $$0;
-      } else if ($$0.c()) {
-         return this;
-      } else {
-         Builder<String, String> $$1 = ImmutableMap.builderWithExpectedSize(this.c.size() + $$0.c.size());
-         $$1.putAll(this.c);
-         $$1.putAll($$0.c);
-         com.google.common.collect.ImmutableSet.Builder<String> $$2 = ImmutableSet.builderWithExpectedSize(this.d.size() + $$0.d.size());
-         $$2.addAll(this.d);
-         $$2.addAll($$0.d);
-         return new gmp($$1.buildKeepingLast(), $$2.build());
-      }
+   public boolean b() {
+      return this.a() && !this.e;
    }
 
-   public String b() {
+   public void d() {
+      this.d = true;
+   }
+
+   public void e() {
+      this.e = true;
+   }
+
+   public void f() {
+      this.e = true;
+      this.f = true;
+   }
+
+   public boolean g() {
+      return this.d && !this.e;
+   }
+
+   public boolean h() {
+      return this.f;
+   }
+
+   public void i() {
+      this.d = false;
+      this.e = false;
+      this.f = false;
+   }
+
+   @Nullable
+   public String j() {
+      return (String)this.c.get("renderer");
+   }
+
+   @Nullable
+   public String k() {
+      return (String)this.c.get("version");
+   }
+
+   @Nullable
+   public String l() {
+      return (String)this.c.get("vendor");
+   }
+
+   @Nullable
+   public String m() {
       StringBuilder $$0 = new StringBuilder();
-
-      for (Entry<String, String> $$1 : this.c.entrySet()) {
-         String $$2 = $$1.getKey();
-         String $$3 = $$1.getValue();
-         $$0.append("#define ").append($$2).append(" ").append($$3).append('\n');
-      }
-
-      for (String $$4 : this.d) {
-         $$0.append("#define ").append($$4).append('\n');
-      }
-
-      return $$0.toString();
+      this.c.forEach(($$1, $$2) -> $$0.append($$1).append(": ").append($$2));
+      return $$0.length() == 0 ? null : $$0.toString();
    }
 
-   public boolean c() {
-      return this.c.isEmpty() && this.d.isEmpty();
-   }
-
-   public Map<String, String> d() {
-      return this.c;
-   }
-
-   public Set<String> e() {
-      return this.d;
-   }
-
-   public static class a {
-      private final Builder<String, String> a = ImmutableMap.builder();
-      private final com.google.common.collect.ImmutableSet.Builder<String> b = ImmutableSet.builder();
-
-      a() {
-      }
-
-      public gmp.a a(String $$0, String $$1) {
-         if ($$1.isBlank()) {
-            throw new IllegalArgumentException("Cannot define empty string");
-         } else {
-            this.a.put($$0, b($$1));
-            return this;
+   protected gmp.a a(aup $$0, bpj $$1) {
+      List<Pattern> $$2 = Lists.newArrayList();
+      List<Pattern> $$3 = Lists.newArrayList();
+      List<Pattern> $$4 = Lists.newArrayList();
+      JsonObject $$5 = c($$0, $$1);
+      if ($$5 != null) {
+         try (bpo $$6 = $$1.d("compile_regex")) {
+            a($$5.getAsJsonArray("renderer"), $$2);
+            a($$5.getAsJsonArray("version"), $$3);
+            a($$5.getAsJsonArray("vendor"), $$4);
          }
       }
 
-      private static String b(String $$0) {
-         return $$0.replaceAll("\n", "\\\\\n");
+      return new gmp.a($$2, $$3, $$4);
+   }
+
+   protected void a(gmp.a $$0, aup $$1, bpj $$2) {
+      this.c = $$0.a();
+   }
+
+   private static void a(JsonArray $$0, List<Pattern> $$1) {
+      $$0.forEach($$1x -> $$1.add(Pattern.compile($$1x.getAsString(), 2)));
+   }
+
+   @Nullable
+   private static JsonObject c(aup $$0, bpj $$1) {
+      try {
+         JsonObject var4;
+         try (
+            bpo $$2 = $$1.d("parse_json");
+            Reader $$3 = $$0.openAsReader(b);
+         ) {
+            var4 = JsonParser.parseReader($$3).getAsJsonObject();
+         }
+
+         return var4;
+      } catch (JsonSyntaxException | IOException var10) {
+         a.warn("Failed to load GPU warnlist");
+         return null;
+      }
+   }
+
+   protected static final class a {
+      private final List<Pattern> a;
+      private final List<Pattern> b;
+      private final List<Pattern> c;
+
+      a(List<Pattern> $$0, List<Pattern> $$1, List<Pattern> $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
 
-      public gmp.a a(String $$0, float $$1) {
-         this.a.put($$0, String.valueOf($$1));
-         return this;
+      private static String a(List<Pattern> $$0, String $$1) {
+         List<String> $$2 = Lists.newArrayList();
+
+         for (Pattern $$3 : $$0) {
+            Matcher $$4 = $$3.matcher($$1);
+
+            while ($$4.find()) {
+               $$2.add($$4.group());
+            }
+         }
+
+         return String.join(", ", $$2);
       }
 
-      public gmp.a a(String $$0) {
-         this.b.add($$0);
-         return this;
-      }
+      ImmutableMap<String, String> a() {
+         Builder<String, String> $$0 = new Builder();
+         String $$1 = a(this.a, ffk.c());
+         if (!$$1.isEmpty()) {
+            $$0.put("renderer", $$1);
+         }
 
-      public gmp a() {
-         return new gmp(this.a.build(), this.b.build());
+         String $$2 = a(this.b, ffk.d());
+         if (!$$2.isEmpty()) {
+            $$0.put("version", $$2);
+         }
+
+         String $$3 = a(this.c, ffk.a());
+         if (!$$3.isEmpty()) {
+            $$0.put("vendor", $$3);
+         }
+
+         return $$0.build();
       }
    }
 }

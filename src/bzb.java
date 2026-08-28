@@ -1,56 +1,124 @@
-import com.mojang.datafixers.kinds.App;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-@Deprecated
-public class bzb {
-   public static bxc<bvi> a(float $$0, brw $$1) {
-      return a($$0, $$1, $$0x -> true);
+public class bzb extends bxr<bwa> {
+   private static final int c = 40;
+   private int d;
+   @Nullable
+   private euk e;
+   @Nullable
+   private ji f;
+   private float g;
+
+   public bzb() {
+      this(150, 250);
    }
 
-   public static bxc<bvi> a(but<?> $$0, float $$1, brw $$2) {
-      return a($$1, $$2, $$1x -> $$0.equals($$1x.aq()));
+   public bzb(int $$0, int $$1) {
+      super(ImmutableMap.of(cfc.E, cfd.c, cfc.t, cfd.b, cfc.m, cfd.a), $$0, $$1);
    }
 
-   private static bxc<bvi> a(float $$0, brw $$1, Predicate<bvi> $$2) {
-      float $$3 = $$0 * $$0;
-      bzb.a $$4 = new bzb.a($$1);
-      return cao.a(
-         (Function<cao.b<bvi>, ? extends App<cao.c<bvi>, car<bvi>>>)($$3x -> $$3x.group($$3x.c(cem.n), $$3x.b(cem.h))
-               .apply($$3x, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
-                     Optional<bvi> $$9 = $$3x.<ceo>b($$5).a($$2.and($$2xxxx -> $$2xxxx.g((bum)$$7) <= (double)$$3));
-                     if ($$9.isEmpty()) {
-                        return false;
-                     } else if (!$$4.a($$6.A)) {
-                        return false;
-                     } else {
-                        $$4x.a(new bxm($$9.get(), true));
-                        return true;
-                     }
-                  }))
-      );
-   }
-
-   public static final class a {
-      private final brw a;
-      private int b;
-
-      public a(brw $$0) {
-         if ($$0.a() <= 1) {
-            throw new IllegalArgumentException();
+   protected boolean a(ard $$0, bwa $$1) {
+      if (this.d > 0) {
+         this.d--;
+         return false;
+      } else {
+         bxa<?> $$2 = $$1.ea();
+         cff $$3 = $$2.c(cfc.m).get();
+         boolean $$4 = this.a($$1, $$3);
+         if (!$$4 && this.a($$1, $$3, $$0.ae())) {
+            this.f = $$3.a().b();
+            return true;
          } else {
-            this.a = $$0;
-         }
-      }
+            $$2.b(cfc.m);
+            if ($$4) {
+               $$2.b(cfc.E);
+            }
 
-      public boolean a(azh $$0) {
-         if (this.b == 0) {
-            this.b = this.a.a($$0) - 1;
             return false;
-         } else {
-            return --this.b == 0;
          }
       }
+   }
+
+   protected boolean a(ard $$0, bwa $$1, long $$2) {
+      if (this.e != null && this.f != null) {
+         Optional<cff> $$3 = $$1.ea().c(cfc.m);
+         boolean $$4 = $$3.<Boolean>map(bzb::a).orElse(false);
+         cfk $$5 = $$1.O();
+         return !$$5.k() && $$3.isPresent() && !this.a($$1, $$3.get()) && !$$4;
+      } else {
+         return false;
+      }
+   }
+
+   protected void b(ard $$0, bwa $$1, long $$2) {
+      if ($$1.ea().a(cfc.m) && !this.a($$1, $$1.ea().c(cfc.m).get()) && $$1.O().q()) {
+         this.d = $$0.C_().a(40);
+      }
+
+      $$1.O().m();
+      $$1.ea().b(cfc.m);
+      $$1.ea().b(cfc.t);
+      this.e = null;
+   }
+
+   protected void c(ard $$0, bwa $$1, long $$2) {
+      $$1.ea().a(cfc.t, this.e);
+      $$1.O().a(this.e, (double)this.g);
+   }
+
+   protected void d(ard $$0, bwa $$1, long $$2) {
+      euk $$3 = $$1.O().i();
+      bxa<?> $$4 = $$1.ea();
+      if (this.e != $$3) {
+         this.e = $$3;
+         $$4.a(cfc.t, $$3);
+      }
+
+      if ($$3 != null && this.f != null) {
+         cff $$5 = $$4.c(cfc.m).get();
+         if ($$5.a().b().j(this.f) > 4.0 && this.a($$1, $$5, $$0.ae())) {
+            this.f = $$5.a().b();
+            this.c($$0, $$1, $$2);
+         }
+      }
+   }
+
+   private boolean a(bwa $$0, cff $$1, long $$2) {
+      ji $$3 = $$1.a().b();
+      this.e = $$0.O().a($$3, 0);
+      this.g = $$1.b();
+      bxa<?> $$4 = $$0.ea();
+      if (this.a($$0, $$1)) {
+         $$4.b(cfc.E);
+      } else {
+         boolean $$5 = this.e != null && this.e.j();
+         if ($$5) {
+            $$4.b(cfc.E);
+         } else if (!$$4.a(cfc.E)) {
+            $$4.a(cfc.E, $$2);
+         }
+
+         if (this.e != null) {
+            return true;
+         }
+
+         fbx $$6 = cgt.a((bwg)$$0, 10, 7, fbx.c($$3), (float) (Math.PI / 2));
+         if ($$6 != null) {
+            this.e = $$0.O().a($$6.d, $$6.e, $$6.f, 0);
+            return this.e != null;
+         }
+      }
+
+      return false;
+   }
+
+   private boolean a(bwa $$0, cff $$1) {
+      return $$1.a().b().k($$0.du()) <= $$1.c();
+   }
+
+   private static boolean a(cff $$0) {
+      return $$0.a() instanceof byc $$2 ? $$2.c().U_() : false;
    }
 }

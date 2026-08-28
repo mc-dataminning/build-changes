@@ -1,23 +1,25 @@
-public class dbh {
-   public static final dbi a = a("crafting_building_blocks");
-   public static final dbi b = a("crafting_redstone");
-   public static final dbi c = a("crafting_equipment");
-   public static final dbi d = a("crafting_misc");
-   public static final dbi e = a("furnace_food");
-   public static final dbi f = a("furnace_blocks");
-   public static final dbi g = a("furnace_misc");
-   public static final dbi h = a("blast_furnace_blocks");
-   public static final dbi i = a("blast_furnace_misc");
-   public static final dbi j = a("smoker_food");
-   public static final dbi k = a("stonecutter");
-   public static final dbi l = a("smithing");
-   public static final dbi m = a("campfire");
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-   private static dbi a(String $$0) {
-      return ke.a(mb.aB, $$0, new dbi());
+public enum dbh implements azv {
+   a(0, "food"),
+   b(1, "blocks"),
+   c(2, "misc");
+
+   private static final IntFunction<dbh> f = axq.a($$0 -> $$0.g, values(), axq.a.a);
+   public static final Codec<dbh> d = azv.a(dbh::values);
+   public static final yn<ByteBuf, dbh> e = yl.a(f, $$0 -> $$0.g);
+   private final int g;
+   private final String h;
+
+   private dbh(final int $$0, final String $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   public static dbi a(ke<dbi> $$0) {
-      return m;
+   @Override
+   public String c() {
+      return this.h;
    }
 }

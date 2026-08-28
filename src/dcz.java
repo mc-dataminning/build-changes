@@ -1,8 +1,19 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public record dcz(cwq a, @Nullable buu b, @Nullable bvi c, Consumer<cwm> d) {
-   public dcz(cwq $$0, buu $$1, bvi $$2) {
-      this($$0, $$1, $$2, $$2x -> $$2.a($$2x, $$1));
+public interface dcz<T> {
+   public interface a<T> extends dcz<T> {
+      T a(T var1, List<T> var2);
+   }
+
+   public interface b<T> extends dcz<T> {
+      default T a(jr<cxd> $$0) {
+         return this.a(new cxh($$0));
+      }
+
+      default T a(cxd $$0) {
+         return this.a(new cxh($$0));
+      }
+
+      T a(cxh var1);
    }
 }

@@ -1,38 +1,21 @@
-public class gee extends gcc<gzx> {
-   private static final int a = 2;
-   private final gfe[] b = new gfe[2];
-
-   public gee(gfe $$0) {
+public class gee extends gdn<hav> {
+   public gee(ggc $$0) {
       super($$0);
-
-      for (int $$1 = 0; $$1 < 2; $$1++) {
-         this.b[$$1] = $$0.b(a($$1));
-      }
    }
 
-   private static String a(int $$0) {
-      return "box" + $$0;
-   }
-
-   public static gfk a() {
-      gfm $$0 = new gfm();
-      gfo $$1 = $$0.a();
-
-      for (int $$2 = 0; $$2 < 2; $$2++) {
-         float $$3 = -3.2F + 9.6F * (float)($$2 + 1);
-         float $$4 = 0.75F * (float)($$2 + 1);
-         $$1.a(a($$2), gfj.c().a(0, 0).a(-8.0F, -16.0F + $$3, -8.0F, 16.0F, 32.0F, 16.0F), gfg.a.a($$4));
-      }
-
-      return gfk.a($$0, 64, 64);
-   }
-
-   public void a(gzx $$0) {
-      super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
-         float $$2 = $$0.u * (float)(-(45 + ($$1 + 1) * 5));
-         this.b[$$1].f = ayz.h($$2) * (float) (Math.PI / 180.0);
-      }
+   public static ggi a() {
+      ggk $$0 = gdn.a(ggg.a, 0.0F);
+      ggm $$1 = $$0.a();
+      ggm $$2 = $$1.a("head");
+      $$2.a("hat");
+      $$1.a("body");
+      $$1.a("left_arm");
+      $$1.a("right_arm");
+      $$1.a("left_leg");
+      $$1.a("right_leg");
+      ggh $$3 = ggh.c().a(24, 0).a(-3.0F, -6.0F, -1.0F, 6.0F, 6.0F, 1.0F, new ggg(1.0F));
+      $$2.a("left_ear", $$3, gge.a(-6.0F, -6.0F, 0.0F));
+      $$2.a("right_ear", $$3, gge.a(6.0F, -6.0F, 0.0F));
+      return ggi.a($$0, 64, 64);
    }
 }

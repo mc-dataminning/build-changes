@@ -1,26 +1,30 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface enw<S extends enn> {
-   enw<eph> a = a("buried_treasure", eph.d);
-   enw<epj> b = a("desert_pyramid", epj.d);
-   enw<epl> c = a("end_city", epl.d);
-   enw<epu> d = a("fortress", epu.e);
-   enw<epn> e = a("igloo", epn.d);
-   enw<epo> f = a("jigsaw", epo.i);
-   enw<epq> g = a("jungle_temple", epq.d);
-   enw<eps> h = a("mineshaft", eps.d);
-   enw<epw> i = a("nether_fossil", epw.d);
-   enw<epy> j = a("ocean_monument", epy.d);
-   enw<eqa> k = a("ocean_ruin", eqa.d);
-   enw<eqc> l = a("ruined_portal", eqc.d);
-   enw<eqe> m = a("shipwreck", eqe.d);
-   enw<eqg> n = a("stronghold", eqg.d);
-   enw<eqi> o = a("swamp_hut", eqi.d);
-   enw<eqk> p = a("woodland_mansion", eqk.d);
+public class enw extends enp {
+   public static final MapCodec<enw> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.INT.fieldOf("max_water_depth").forGetter($$0x -> $$0x.c)).apply($$0, enw::new)
+   );
+   private final int c;
 
-   MapCodec<S> codec();
+   private enw(int $$0) {
+      this.c = $$0;
+   }
 
-   private static <S extends enn> enw<S> a(String $$0, MapCodec<S> $$1) {
-      return ke.a(mb.R, $$0, () -> $$1);
+   public static enw a(int $$0) {
+      return new enw($$0);
+   }
+
+   @Override
+   protected boolean a(eno $$0, azh $$1, ji $$2) {
+      int $$3 = $$0.a(edo.a.d, $$2.u(), $$2.w());
+      int $$4 = $$0.a(edo.a.b, $$2.u(), $$2.w());
+      return $$4 - $$3 <= this.c;
+   }
+
+   @Override
+   public enr<?> b() {
+      return enr.d;
    }
 }

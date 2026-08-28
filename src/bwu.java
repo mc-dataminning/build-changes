@@ -1,137 +1,121 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import com.google.common.collect.Maps;
+import java.util.Map;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bwu {
-   public static final int a = 48;
+   private static final Map<bvi<?>, bwu.a> a = Maps.newHashMap();
 
-   public static bxc<bvq> a(Predicate<jr<cgp>> $$0, cem<jq> $$1, boolean $$2, Optional<Byte> $$3, BiPredicate<ard, ji> $$4) {
-      return a($$0, $$1, $$1, $$2, $$3, $$4);
-   }
-
-   public static bxc<bvq> a(Predicate<jr<cgp>> $$0, cem<jq> $$1, boolean $$2, Optional<Byte> $$3) {
-      return a($$0, $$1, $$1, $$2, $$3, ($$0x, $$1x) -> true);
-   }
-
-   public static bxc<bvq> a(Predicate<jr<cgp>> $$0, cem<jq> $$1, cem<jq> $$2, boolean $$3, Optional<Byte> $$4, BiPredicate<ard, ji> $$5) {
-      int $$6 = 5;
-      int $$7 = 20;
-      MutableLong $$8 = new MutableLong(0L);
-      Long2ObjectMap<bwu.a> $$9 = new Long2ObjectOpenHashMap();
-      bym<bvq> $$10 = cao.a(
-         (Function<cao.b<bvq>, ? extends App<cao.c<bvq>, car<bvq>>>)($$7x -> $$7x.group($$7x.c($$2))
-               .apply(
-                  $$7x,
-                  $$6xx -> ($$7xx, $$8x, $$9x) -> {
-                        if ($$3 && $$8x.e_()) {
-                           return false;
-                        } else if ($$8.getValue() == 0L) {
-                           $$8.setValue($$7xx.ad() + (long)$$7xx.A.a(20));
-                           return false;
-                        } else if ($$7xx.ad() < $$8.getValue()) {
-                           return false;
-                        } else {
-                           $$8.setValue($$9x + 20L + (long)$$7xx.H_().a(20));
-                           cgm $$10x = $$7xx.A();
-                           $$9.long2ObjectEntrySet().removeIf($$1xxxx -> !((bwu.a)$$1xxxx.getValue()).b($$9x));
-                           Predicate<ji> $$11 = $$2xxxx -> {
-                              bwu.a $$3xxxx = (bwu.a)$$9.get($$2xxxx.a());
-                              if ($$3xxxx == null) {
-                                 return true;
-                              } else if (!$$3xxxx.c($$9x)) {
-                                 return false;
-                              } else {
-                                 $$3xxxx.a($$9x);
-                                 return true;
-                              }
-                           };
-                           Set<Pair<jr<cgp>, ji>> $$12 = $$10x.c($$0, $$11, $$8x.dv(), 48, cgm.b.a)
-                              .limit(5L)
-                              .filter($$2xxxx -> $$5.test($$7xx, (ji)$$2xxxx.getSecond()))
-                              .collect(Collectors.toSet());
-                           eto $$13 = a($$8x, $$12);
-                           if ($$13 != null && $$13.j()) {
-                              ji $$14 = $$13.l();
-                              $$10x.c($$14).ifPresent($$8xx -> {
-                                 $$10x.a($$0, ($$1xxxxx, $$2xxxxx) -> $$2xxxxx.equals($$14), $$14, 1);
-                                 $$6xx.a(jq.a($$7xx.ai(), $$14));
-                                 $$4.ifPresent($$2xxxxx -> $$7xx.a($$8x, $$2xxxxx));
-                                 $$9.clear();
-                                 agd.c($$7xx, $$14);
-                              });
-                           } else {
-                              for (Pair<jr<cgp>, ji> $$15 : $$12) {
-                                 $$9.computeIfAbsent(((ji)$$15.getSecond()).a(), $$2xxxx -> new bwu.a($$7xx.A, $$9x));
-                              }
-                           }
-
-                           return true;
-                        }
-                     }
-               ))
-      );
-      return $$2 == $$1 ? $$10 : cao.a((Function<cao.b<bvq>, ? extends App<cao.c<bvq>, car<bvq>>>)($$2x -> $$2x.group($$2x.c($$1)).apply($$2x, $$1xx -> $$10)));
-   }
-
-   @Nullable
-   public static eto a(bvk $$0, Set<Pair<jr<cgp>, ji>> $$1) {
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         Set<ji> $$2 = new HashSet<>();
-         int $$3 = 1;
-
-         for (Pair<jr<cgp>, ji> $$4 : $$1) {
-            $$3 = Math.max($$3, ((cgp)((jr)$$4.getFirst()).a()).c());
-            $$2.add((ji)$$4.getSecond());
-         }
-
-         return $$0.P().a($$2, $$3);
+   private static <T extends bwa> void a(bvi<T> $$0, bws $$1, edo.a $$2, bwu.b<T> $$3) {
+      bwu.a $$4 = a.put($$0, new bwu.a($$2, $$1, $$3));
+      if ($$4 != null) {
+         throw new IllegalStateException("Duplicate registration for type " + mb.f.b($$0));
       }
    }
 
-   static class a {
-      private static final int a = 40;
-      private static final int b = 80;
-      private static final int c = 400;
-      private final azh d;
-      private long e;
-      private long f;
-      private int g;
+   public static bws a(bvi<?> $$0) {
+      bwu.a $$1 = a.get($$0);
+      return $$1 == null ? bwt.a : $$1.b;
+   }
 
-      a(azh $$0, long $$1) {
-         this.d = $$0;
-         this.a($$1);
-      }
+   public static boolean a(bvi<?> $$0, dhc $$1, ji $$2) {
+      return a($$0).isSpawnPositionOk($$1, $$2, $$0);
+   }
 
-      public void a(long $$0) {
-         this.e = $$0;
-         int $$1 = this.g + this.d.a(40) + 40;
-         this.g = Math.min($$1, 400);
-         this.f = $$0 + (long)this.g;
-      }
+   public static edo.a b(@Nullable bvi<?> $$0) {
+      bwu.a $$1 = a.get($$0);
+      return $$1 == null ? edo.a.f : $$1.a;
+   }
 
-      public boolean b(long $$0) {
-         return $$0 - this.e < 400L;
-      }
+   public static <T extends bva> boolean a(bvi<T> $$0, dhq $$1, bvh $$2, ji $$3, azh $$4) {
+      bwu.a $$5 = a.get($$0);
+      return $$5 == null || $$5.c.test($$0, $$1, $$2, $$3, $$4);
+   }
 
-      public boolean c(long $$0) {
-         return $$0 >= this.f;
-      }
+   static {
+      a(bvi.h, bwt.b, edo.a.f, cje::a);
+      a(bvi.A, bwt.b, edo.a.f, ciu::c);
+      a(bvi.H, bwt.b, edo.a.f, cho::b);
+      a(bvi.K, bwt.b, edo.a.f, cmg::a);
+      a(bvi.ai, bwt.b, edo.a.f, cmo::b);
+      a(bvi.aW, bwt.b, edo.a.f, ciu::c);
+      a(bvi.aZ, bwt.b, edo.a.f, ciu::c);
+      a(bvi.bq, bwt.b, edo.a.f, cho::b);
+      a(bvi.bz, bwt.b, edo.a.f, cis::b);
+      a(bvi.e, bwt.d, edo.a.f, cjb::c);
+      a(bvi.k, bwt.d, edo.a.f, chj::b);
+      a(bvi.o, bwt.d, edo.a.f, cms::c);
+      a(bvi.q, bwt.d, edo.a.f, cms::b);
+      a(bvi.r, bwt.d, edo.a.f, cms::c);
+      a(bvi.v, bwt.d, edo.a.f, cms::b);
+      a(bvi.z, bwt.d, edo.a.f, chp::b);
+      a(bvi.C, bwt.d, edo.a.f, chp::b);
+      a(bvi.E, bwt.d, edo.a.f, cms::b);
+      a(bvi.I, bwt.d, edo.a.f, chp::b);
+      a(bvi.N, bwt.d, edo.a.f, cms::b);
+      a(bvi.O, bwt.d, edo.a.f, cmj::b);
+      a(bvi.P, bwt.d, edo.a.f, bwa::a);
+      a(bvi.ab, bwt.d, edo.a.f, cjm::c);
+      a(bvi.ad, bwt.d, edo.a.f, cmm::b);
+      a(bvi.ae, bwt.d, edo.a.f, cms::b);
+      a(bvi.ag, bwt.b, edo.a.f, bvp::a);
+      a(bvi.ah, bwt.d, edo.a.f, cjs::c);
+      a(bvi.al, bwt.d, edo.a.f, chp::b);
+      a(bvi.am, bwt.d, edo.a.f, cmp::a);
+      a(bvi.ap, bwt.d, edo.a.f, bwa::a);
+      a(bvi.ax, bwt.d, edo.a.f, chp::b);
+      a(bvi.az, bwt.d, edo.a.f, cmr::b);
+      a(bvi.aE, bwt.d, edo.a.f, cic::c);
+      a(bvi.aF, bwt.d, edo.a.f, chp::b);
+      a(bvi.aI, bwt.d, edo.a.e, cid::c);
+      a(bvi.aO, bwt.d, edo.a.e, cif::c);
+      a(bvi.aQ, bwt.d, edo.a.f, chp::b);
+      a(bvi.aj, bwt.d, edo.a.f, cnz::c);
+      a(bvi.aR, bwt.d, edo.a.f, cof::b);
+      a(bvi.aT, bwt.d, edo.a.f, cmt::b);
+      a(bvi.aU, bwt.d, edo.a.f, cij::c);
+      a(bvi.aX, bwt.d, edo.a.f, cil::c);
+      a(bvi.ba, bwt.d, edo.a.f, chp::b);
+      a(bvi.bd, bwt.d, edo.a.f, cmz::b);
+      a(bvi.be, bwt.d, edo.a.f, cms::b);
+      a(bvi.bf, bwt.d, edo.a.f, ckc::c);
+      a(bvi.bg, bwt.d, edo.a.f, cnb::c);
+      a(bvi.bk, bwt.d, edo.a.f, bwa::a);
+      a(bvi.bn, bwt.d, edo.a.f, cms::b);
+      a(bvi.br, bwt.d, edo.a.f, cne::a);
+      a(bvi.bs, bwt.c, edo.a.f, cnf::c);
+      a(bvi.bA, bwt.d, edo.a.f, cit::c);
+      a(bvi.bC, bwt.d, edo.a.f, bwa::a);
+      a(bvi.bH, bwt.d, edo.a.f, cms::b);
+      a(bvi.bI, bwt.d, edo.a.f, cms::b);
+      a(bvi.bJ, bwt.d, edo.a.f, cms::b);
+      a(bvi.bL, bwt.d, edo.a.f, civ::c);
+      a(bvi.bM, bwt.d, edo.a.f, cms::c);
+      a(bvi.D, bwt.d, edo.a.f, cms::b);
+      a(bvi.bN, bwt.d, edo.a.f, cms::b);
+      a(bvi.bO, bwt.d, edo.a.f, ckg::c);
+      a(bvi.bQ, bwt.d, edo.a.f, cnn::b);
+      a(bvi.bP, bwt.d, edo.a.f, cms::b);
+      a(bvi.u, bwt.d, edo.a.f, chp::b);
+      a(bvi.M, bwt.b, edo.a.f, cmo::b);
+      a(bvi.S, bwt.a, edo.a.f, cms::b);
+      a(bvi.aa, bwt.a, edo.a.f, chz::c);
+      a(bvi.an, bwt.a, edo.a.f, cms::b);
+      a(bvi.aN, bwt.a, edo.a.f, chp::b);
+      a(bvi.aP, bwt.a, edo.a.f, bwa::a);
+      a(bvi.aY, bwt.d, edo.a.f, cms::b);
+      a(bvi.bb, bwt.a, edo.a.f, bwa::a);
+      a(bvi.bx, bwt.a, edo.a.f, chp::b);
+      a(bvi.bB, bwt.a, edo.a.f, cms::b);
+      a(bvi.bD, bwt.a, edo.a.f, cms::b);
+      a(bvi.bE, bwt.d, edo.a.f, bwa::a);
+      a(bvi.bF, bwt.a, edo.a.f, cms::b);
+   }
 
-      @Override
-      public String toString() {
-         return "RetryMarker{, previousAttemptAt=" + this.e + ", nextScheduledAttemptAt=" + this.f + ", currentDelay=" + this.g + "}";
-      }
+   static record a(edo.a a, bws b, bwu.b<?> c) {
+   }
+
+   @FunctionalInterface
+   public interface b<T extends bva> {
+      boolean test(bvi<T> var1, dhq var2, bvh var3, ji var4, azh var5);
    }
 }

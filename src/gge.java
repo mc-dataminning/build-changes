@@ -1,157 +1,67 @@
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+public record gge(float b, float c, float d, float e, float f, float g, float h, float i, float j) {
+   public static final gge a = a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
 
-public class gge implements fc {
-   private final ggb a;
-   private final flk b;
-   private int d = -1;
-   @Nullable
-   private CompletableFuture<Suggestions> e;
-   private final Set<String> f = new HashSet<>();
-
-   public gge(ggb $$0, flk $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public static gge a(float $$0, float $$1, float $$2) {
+      return a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F);
    }
 
-   @Override
-   public Collection<String> q() {
-      List<String> $$0 = Lists.newArrayList();
-
-      for (ggm $$1 : this.a.m()) {
-         $$0.add($$1.a().getName());
-      }
-
-      return $$0;
+   public static gge b(float $$0, float $$1, float $$2) {
+      return a(0.0F, 0.0F, 0.0F, $$0, $$1, $$2);
    }
 
-   @Override
-   public Collection<String> y() {
-      if (this.f.isEmpty()) {
-         return this.q();
-      } else {
-         Set<String> $$0 = new HashSet<>(this.q());
-         $$0.addAll(this.f);
-         return $$0;
-      }
+   public static gge a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      return new gge($$0, $$1, $$2, $$3, $$4, $$5, 1.0F, 1.0F, 1.0F);
    }
 
-   @Override
-   public Collection<String> z() {
-      return (Collection<String>)(this.b.w != null && this.b.w.d() == faz.a.c ? Collections.singleton(((fay)this.b.w).a().cH()) : Collections.emptyList());
+   public gge c(float $$0, float $$1, float $$2) {
+      return new gge(this.b + $$0, this.c + $$1, this.d + $$2, this.e, this.f, this.g, this.h, this.i, this.j);
    }
 
-   @Override
-   public Collection<String> r() {
-      return this.a.z().f();
+   public gge a(float $$0) {
+      return new gge(this.b, this.c, this.d, this.e, this.f, this.g, $$0, $$0, $$0);
    }
 
-   @Override
-   public Stream<akv> s() {
-      return this.b.ak().d().stream();
+   public gge b(float $$0) {
+      return $$0 == 1.0F ? this : this.d($$0, $$0, $$0);
    }
 
-   @Override
-   public boolean c(int $$0) {
-      gkx $$1 = this.b.t;
-      return $$1 != null ? $$1.s($$0) : $$0 == 0;
+   public gge d(float $$0, float $$1, float $$2) {
+      return new gge(this.b * $$0, this.c * $$1, this.d * $$2, this.e, this.f, this.g, this.h * $$0, this.i * $$1, this.j * $$2);
    }
 
-   @Override
-   public CompletableFuture<Suggestions> a(aku<? extends ke<?>> $$0, fc.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
-      return this.u().a($$0).map($$2x -> {
-         this.a($$2x, $$1, $$2);
-         return $$2.buildFuture();
-      }).orElseGet(() -> this.a($$3));
+   public float a() {
+      return this.b;
    }
 
-   @Override
-   public CompletableFuture<Suggestions> a(CommandContext<?> $$0) {
-      if (this.e != null) {
-         this.e.cancel(false);
-      }
+   public float b() {
+      return this.c;
+   }
 
-      this.e = new CompletableFuture<>();
-      int $$1 = ++this.d;
-      this.a.b(new agt($$1, $$0.getInput()));
+   public float c() {
+      return this.d;
+   }
+
+   public float d() {
       return this.e;
    }
 
-   private static String a(double $$0) {
-      return String.format(Locale.ROOT, "%.2f", $$0);
+   public float e() {
+      return this.f;
    }
 
-   private static String a(int $$0) {
-      return Integer.toString($$0);
+   public float f() {
+      return this.g;
    }
 
-   @Override
-   public Collection<fc.b> A() {
-      faz $$0 = this.b.w;
-      if ($$0 != null && $$0.d() == faz.a.b) {
-         ji $$1 = ((fax)$$0).b();
-         return Collections.singleton(new fc.b(a($$1.u()), a($$1.v()), a($$1.w())));
-      } else {
-         return fc.super.A();
-      }
+   public float g() {
+      return this.h;
    }
 
-   @Override
-   public Collection<fc.b> B() {
-      faz $$0 = this.b.w;
-      if ($$0 != null && $$0.d() == faz.a.b) {
-         fbb $$1 = $$0.g();
-         return Collections.singleton(new fc.b(a($$1.d), a($$1.e), a($$1.f)));
-      } else {
-         return fc.super.B();
-      }
+   public float h() {
+      return this.i;
    }
 
-   @Override
-   public Set<aku<dgj>> t() {
-      return this.a.u();
-   }
-
-   @Override
-   public kf u() {
-      return this.a.v();
-   }
-
-   @Override
-   public cru v() {
-      return this.a.y();
-   }
-
-   public void a(int $$0, Suggestions $$1) {
-      if ($$0 == this.d) {
-         this.e.complete($$1);
-         this.e = null;
-         this.d = -1;
-      }
-   }
-
-   public void a(ack.a $$0, List<String> $$1) {
-      switch ($$0) {
-         case a:
-            this.f.addAll($$1);
-            break;
-         case b:
-            $$1.forEach(this.f::remove);
-            break;
-         case c:
-            this.f.clear();
-            this.f.addAll($$1);
-      }
+   public float i() {
+      return this.j;
    }
 }

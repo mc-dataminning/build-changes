@@ -1,31 +1,41 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class cau<E extends coa> extends bxb<E> {
-   public cau(int $$0) {
-      super(ImmutableMap.of(cem.o, cen.b, cem.m, cen.b), $$0);
+public class cau {
+   private static final int a = 16;
+
+   public static bxs<bvy> a(Predicate<jr<chf>> $$0, cfc<jq> $$1) {
+      return cbe.a((Function<cbe.b<bvy>, ? extends App<cbe.c<bvy>, cbh<bvy>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               jq $$6 = $$2.b($$2x);
+               ji $$7 = $$6.b();
+               if ($$3.aj() == $$6.a() && $$7.a($$4.ds(), 16.0)) {
+                  ard $$8 = $$3.p().a($$6.a());
+                  if ($$8 == null || !$$8.A().a($$7, $$0)) {
+                     $$2x.b();
+                  } else if (a($$8, $$7, $$4)) {
+                     $$2x.b();
+                     if (!a($$8, $$7)) {
+                        $$3.A().b($$7);
+                        agc.c($$3, $$7);
+                     }
+                  }
+
+                  return true;
+               } else {
+                  return false;
+               }
+            })));
    }
 
-   protected boolean a(ard $$0, E $$1, long $$2) {
-      return $$1.dR() == null;
+   private static boolean a(ard $$0, ji $$1, bvy $$2) {
+      dxq $$3 = $$0.a_($$1);
+      return $$3.a(awp.T) && $$3.c(djx.c) && !$$2.fT();
    }
 
-   protected boolean a(ard $$0, E $$1) {
-      return $$1.aJ() || $$1.bj() || $$1.bx();
-   }
-
-   protected void b(ard $$0, E $$1, long $$2) {
-      if ($$1.aJ()) {
-         $$1.b(bvu.o);
-         $$1.a(awa.Cz, 5.0F, 1.0F);
-      } else {
-         $$1.a(awa.Cu, 5.0F, 1.0F);
-         this.c($$0, $$1, $$2);
-      }
-   }
-
-   protected void c(ard $$0, E $$1, long $$2) {
-      if ($$1.dR() == null) {
-         $$1.a(bum.d.b);
-      }
+   private static boolean a(ard $$0, ji $$1) {
+      List<cpd> $$2 = $$0.a(cpd.class, new fbs($$1), bvy::fT);
+      return !$$2.isEmpty();
    }
 }

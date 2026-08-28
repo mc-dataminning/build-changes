@@ -1,78 +1,58 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dmz extends drj implements djq {
-   public static final MapCodec<dmz> a = b(dmz::new);
+public abstract class dmz extends dod {
+   public static final dyo<dyb> c = dyg.X;
 
-   @Override
-   public MapCodec<dmz> a() {
-      return a;
-   }
-
-   public dmz(dwx.d $$0) {
+   protected dmz(dxp.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dgm $$0, ji $$1, dwy $$2) {
-      return $$0.a_($$1.d()).l();
-   }
+   protected abstract MapCodec<? extends dmz> a();
 
    @Override
-   public boolean a(dgj $$0, azh $$1, ji $$2, dwy $$3) {
-      return true;
+   protected boolean a(dxq $$0, dhc $$1, ji $$2) {
+      return b($$1, $$2, n($$0).g());
    }
 
+   public static boolean b(dhc $$0, ji $$1, jn $$2) {
+      ji $$3 = $$1.a($$2);
+      return $$0.a_($$3).c($$0, $$3, $$2.g());
+   }
+
+   @Nullable
    @Override
-   public void a(ard $$0, azh $$1, ji $$2, dwy $$3) {
-      ji $$4 = $$2.d();
-      dwy $$5 = djp.bA.m();
-      Optional<jr.c<emr>> $$6 = $$0.K_().e(mc.aT).a(rw.n);
-
-      label51:
-      for (int $$7 = 0; $$7 < 128; $$7++) {
-         ji $$8 = $$4;
-
-         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
-            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
-            if (!$$0.a_($$8.e()).a(this) || $$0.a_($$8).m($$0, $$8)) {
-               continue label51;
-            }
+   public dxq a(dax $$0) {
+      for (jn $$1 : $$0.f()) {
+         dxq $$2;
+         if ($$1.o() == jn.a.b) {
+            $$2 = this.m().b(c, $$1 == jn.b ? dyb.c : dyb.a).b(e, $$0.g());
+         } else {
+            $$2 = this.m().b(c, dyb.b).b(e, $$1.g());
          }
 
-         dwy $$10 = $$0.a_($$8);
-         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
-            djq $$11 = (djq)$$5.b();
-            if ($$11.a($$0, $$8, $$10)) {
-               $$11.a($$0, $$1, $$8, $$10);
-            }
-         }
-
-         if ($$10.l()) {
-            jr<emr> $$13;
-            if ($$1.a(8) == 0) {
-               List<efl<?, ?>> $$12 = $$0.t($$8).a().d().b();
-               if ($$12.isEmpty()) {
-                  continue;
-               }
-
-               $$13 = ((eiq)$$12.get(0).c()).d();
-            } else {
-               if (!$$6.isPresent()) {
-                  continue;
-               }
-
-               $$13 = $$6.get();
-            }
-
-            $$13.a().a($$0, $$0.m().g(), $$1, $$8);
+         if ($$2.a((dhc)$$0.q(), $$0.a())) {
+            return $$2;
          }
       }
+
+      return null;
    }
 
    @Override
-   public djq.a aq_() {
-      return djq.a.a;
+   protected dxq a(dxq $$0, dhc $$1, dho $$2, ji $$3, jn $$4, ji $$5, dxq $$6, azh $$7) {
+      return n($$0).g() == $$4 && !$$0.a($$1, $$3) ? dkg.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   protected static jn n(dxq $$0) {
+      switch ((dyb)$$0.c(c)) {
+         case c:
+            return jn.a;
+         case a:
+            return jn.b;
+         default:
+            return $$0.c(e);
+      }
    }
 }

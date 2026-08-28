@@ -1,3 +1,3 @@
-public interface abi extends agh {
+public interface abi extends agg {
    void a(abj var1);
 }

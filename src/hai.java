@@ -1,4 +1,3 @@
-public class hai extends gzl {
-   public float a;
-   public int b = 1;
+public class hai extends gzj {
+   public long a;
 }

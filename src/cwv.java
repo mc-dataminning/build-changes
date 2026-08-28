@@ -1,59 +1,83 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Consumer;
+import java.util.List;
+import java.util.Optional;
 
-public record cwv(cvq<cww> c, boolean d) implements czt {
-   public static final Codec<cwv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cvq.a(mc.L, cww.c).fieldOf("song").forGetter(cwv::a), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cwv::b))
-            .apply($$0, cwv::new)
-   );
-   public static final yn<wa, cwv> b = yn.a(cvq.a(mc.L, cww.d), cwv::a, yl.b, cwv::b, cwv::new);
+public class cwv extends cxd {
+   private static final wp a = wp.c("painting.random").a(n.h);
+   private final bvi<? extends clo> b;
+
+   public cwv(bvi<? extends clo> $$0, cxd.a $$1) {
+      super($$1);
+      this.b = $$0;
+   }
 
    @Override
-   public void a(cwm.b $$0, Consumer<wp> $$1, cyi $$2) {
-      jt.a $$3 = $$0.a();
-      if (this.d && $$3 != null) {
-         this.c.a($$3).ifPresent($$1x -> {
-            xd $$2x = ((cww)$$1x.a()).c().f();
-            ws.a($$2x, xm.a.a(n.h));
-            $$1.accept($$2x);
-         });
-      }
-   }
-
-   public cwv a(boolean $$0) {
-      return new cwv(this.c, $$0);
-   }
-
-   public static bsl a(dgj $$0, ji $$1, cwq $$2, coy $$3) {
-      cwv $$4 = $$2.a(kv.ab);
-      if ($$4 == null) {
-         return bsl.f;
+   public bsy a(daz $$0) {
+      ji $$1 = $$0.a();
+      jn $$2 = $$0.k();
+      ji $$3 = $$1.a($$2);
+      cpr $$4 = $$0.o();
+      cxh $$5 = $$0.n();
+      if ($$4 != null && !this.a($$4, $$2, $$5, $$3)) {
+         return bsy.d;
       } else {
-         dwy $$5 = $$0.a_($$1);
-         if ($$5.a(djp.eg) && !$$5.c(dns.b)) {
-            if (!$$0.C) {
-               cwq $$6 = $$2.b(1, $$3);
-               if ($$0.c_($$1) instanceof dve $$7) {
-                  $$7.b($$6);
-                  $$0.a(ebu.c, $$1, ebu.a.a($$3, $$5));
-               }
-
-               $$3.a(awk.al);
+         dgz $$6 = $$0.q();
+         clo $$8;
+         if (this.b == bvi.aK) {
+            Optional<clr> $$7 = clr.a($$6, $$3, $$2);
+            if ($$7.isEmpty()) {
+               return bsy.c;
             }
 
-            return bsl.a;
+            $$8 = $$7.get();
+         } else if (this.b == bvi.as) {
+            $$8 = new clp($$6, $$3, $$2);
          } else {
-            return bsl.f;
+            if (this.b != bvi.af) {
+               return bsy.a;
+            }
+
+            $$8 = new cln($$6, $$3, $$2);
+         }
+
+         czo $$12 = $$5.a(kv.Y, czo.a);
+         if (!$$12.c()) {
+            bvi.a($$6, $$4, $$8, $$12);
+         }
+
+         if ($$8.g()) {
+            if (!$$6.C) {
+               $$8.v();
+               $$6.a($$4, ecp.t, $$8.ds());
+               $$6.b($$8);
+            }
+
+            $$5.h(1);
+            return bsy.a;
+         } else {
+            return bsy.c;
          }
       }
    }
 
-   public cvq<cww> a() {
-      return this.c;
+   protected boolean a(cpr $$0, jn $$1, cxh $$2, ji $$3) {
+      return !$$1.o().b() && $$0.a($$3, $$1, $$2);
    }
 
-   public boolean b() {
-      return this.d;
+   @Override
+   public void a(cxh $$0, cxd.b $$1, List<wp> $$2, cyx $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      jt.a $$4 = $$1.a();
+      if ($$4 != null && this.b == bvi.aK) {
+         czo $$5 = $$0.a(kv.Y, czo.a);
+         if (!$$5.c()) {
+            $$5.a($$4.a(ue.a), clr.d).result().ifPresentOrElse($$1x -> {
+               ((cls)$$1x.a()).e().ifPresent($$2::add);
+               ((cls)$$1x.a()).f().ifPresent($$2::add);
+               $$2.add(wp.a("painting.dimensions", ((cls)$$1x.a()).b(), ((cls)$$1x.a()).c()));
+            }, () -> $$2.add(a));
+         } else if ($$3.b()) {
+            $$2.add(a);
+         }
+      }
    }
 }

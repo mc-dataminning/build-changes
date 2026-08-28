@@ -1,44 +1,54 @@
 import com.mojang.serialization.Codec;
 
-public class egn extends efz<eik> {
-   public egn(Codec<eik> $$0) {
+public class egn extends egu<eiv> {
+   public egn(Codec<eiv> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egb<eik> $$0) {
-      int $$1 = 0;
-      dhh $$2 = $$0.b();
-      ji $$3 = $$0.e();
+   public boolean a(egw<eiv> $$0) {
+      eiv $$1 = $$0.f();
+      ji $$2 = $$0.e();
+      dhy $$3 = $$0.b();
       azh $$4 = $$0.d();
-      int $$5 = $$2.a(ect.a.d, $$3.u(), $$3.w());
-      ji $$6 = new ji($$3.u(), $$5, $$3.w());
-      if ($$2.a_($$6).a(djp.J)) {
-         dwy $$7 = djp.mE.m();
-         dwy $$8 = djp.mF.m();
-         int $$9 = 1 + $$4.a(10);
+      boolean $$5 = false;
+      int $$6 = $$2.v();
+      int $$7 = $$6 + $$1.d();
+      int $$8 = $$6 - $$1.d() - 1;
+      int $$9 = $$1.c().a($$4);
+      ji.a $$10 = new ji.a();
 
-         for (int $$10 = 0; $$10 <= $$9; $$10++) {
-            if ($$2.a_($$6).a(djp.J) && $$2.a_($$6.d()).a(djp.J) && $$8.a($$2, $$6)) {
-               if ($$10 == $$9) {
-                  $$2.a($$6, $$7.b(dnt.e, Integer.valueOf($$4.a(4) + 20)), 2);
-                  $$1++;
-               } else {
-                  $$2.a($$6, $$8, 2);
-               }
-            } else if ($$10 > 0) {
-               ji $$11 = $$6.e();
-               if ($$7.a($$2, $$11) && !$$2.a_($$11.e()).a(djp.mE)) {
-                  $$2.a($$11, $$7.b(dnt.e, Integer.valueOf($$4.a(4) + 20)), 2);
-                  $$1++;
-               }
-               break;
-            }
-
-            $$6 = $$6.d();
+      for (ji $$11 : ji.c($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
+         int $$12 = $$11.u() - $$2.u();
+         int $$13 = $$11.w() - $$2.w();
+         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
          }
       }
 
-      return $$1 > 0;
+      return $$5;
+   }
+
+   protected boolean a(eiv $$0, dhy $$1, azh $$2, int $$3, int $$4, ji.a $$5) {
+      boolean $$6 = false;
+      boolean $$7 = false;
+
+      for (int $$8 = $$3; $$8 > $$4; $$8--) {
+         $$5.q($$8);
+         if ($$0.b().test($$1, $$5)) {
+            dxq $$9 = $$0.a().a($$1, $$2, $$5);
+            $$1.a($$5, $$9, 2);
+            if (!$$7) {
+               this.a($$1, $$5);
+            }
+
+            $$6 = true;
+            $$7 = true;
+         } else {
+            $$7 = false;
+         }
+      }
+
+      return $$6;
    }
 }

@@ -1,59 +1,75 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
-import java.util.Collection;
-import java.util.List;
+public class cqt extends cqr {
+   private static final bvd a = bvd.c(0.0F, 0.0F);
 
-public class cqt {
-   private final List<cqq> a = Lists.newArrayList();
-   private int b;
-
-   public ImmutableList<cqq> a() {
-      return ImmutableList.copyOf(this.a);
+   public cqt(bvi<? extends cqt> $$0, dgz $$1) {
+      super($$0, $$1);
    }
 
-   public cqt a(int $$0, float $$1) {
-      this.a.add(new cqq($$0, $$1));
-      this.b();
-      return this;
+   public cqt(dgz $$0, bvy $$1, cxh $$2) {
+      super(bvi.L, $$1, $$0, $$2);
    }
 
-   public cqt a(Collection<cqq> $$0) {
-      this.a.addAll($$0);
-      this.b();
-      return this;
+   public cqt(dgz $$0, double $$1, double $$2, double $$3, cxh $$4) {
+      super(bvi.L, $$1, $$2, $$3, $$0, $$4);
    }
 
-   private void b() {
-      Int2ObjectSortedMap<cqq> $$0 = new Int2ObjectAVLTreeMap();
-      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
-      this.a.clear();
-      this.a.addAll($$0.values());
-      this.b = 0;
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 3) {
+         double $$1 = 0.08;
+
+         for (int $$2 = 0; $$2 < 8; $$2++) {
+            this.dU()
+               .a(
+                  new lp(lt.U, this.f()),
+                  this.dz(),
+                  this.dB(),
+                  this.dF(),
+                  ((double)this.ae.i() - 0.5) * 0.08,
+                  ((double)this.ae.i() - 0.5) * 0.08,
+                  ((double)this.ae.i() - 0.5) * 0.08
+               );
+         }
+      }
    }
 
-   public float a(int $$0) {
-      if (this.a.size() <= 0) {
-         return 0.0F;
-      } else {
-         cqq $$1 = this.a.get(this.b);
-         cqq $$2 = this.a.get(this.a.size() - 1);
-         boolean $$3 = $$0 < $$1.a();
-         int $$4 = $$3 ? 0 : this.b;
-         float $$5 = $$3 ? $$2.b() : $$1.b();
+   @Override
+   protected void a(fbu $$0) {
+      super.a($$0);
+      $$0.a().a(this.dV().b(this, this.q()), 0.0F);
+   }
 
-         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
-            cqq $$7 = this.a.get($$6);
-            if ($$7.a() > $$0) {
-               break;
+   @Override
+   protected void a(fbv $$0) {
+      super.a($$0);
+      if (!this.dU().C) {
+         if (this.ae.a(8) == 0) {
+            int $$1 = 1;
+            if (this.ae.a(32) == 0) {
+               $$1 = 4;
             }
 
-            this.b = $$6;
-            $$5 = $$7.b();
+            for (int $$2 = 0; $$2 < $$1; $$2++) {
+               chu $$3 = bvi.z.a(this.dU(), bvh.k);
+               if ($$3 != null) {
+                  $$3.c_(-24000);
+                  $$3.b(this.dz(), this.dB(), this.dF(), this.dK(), 0.0F);
+                  if (!$$3.a(a)) {
+                     break;
+                  }
+
+                  this.dU().b($$3);
+               }
+            }
          }
 
-         return $$5;
+         this.dU().a(this, (byte)3);
+         this.at();
       }
+   }
+
+   @Override
+   protected cxd g() {
+      return cxl.rA;
    }
 }

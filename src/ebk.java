@@ -1,19 +1,13 @@
-import java.util.UUID;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public class ebk {
+   public static final akt<ebm> a = a("overworld");
+   public static final akt<ebm> b = a("the_nether");
+   public static final akt<ebm> c = a("the_end");
+   public static final akt<ebm> d = a("overworld_caves");
+   public static final aku e = aku.b("overworld");
+   public static final aku f = aku.b("the_nether");
+   public static final aku g = aku.b("the_end");
 
-public interface ebk<T extends ebb> {
-   @Nullable
-   T a(int var1);
-
-   @Nullable
-   T a(UUID var1);
-
-   Iterable<T> a();
-
-   <U extends T> void a(ebi<T, U> var1, axl<U> var2);
-
-   void a(faw var1, Consumer<T> var2);
-
-   <U extends T> void a(ebi<T, U> var1, faw var2, axl<U> var3);
+   private static akt<ebm> a(String $$0) {
+      return akt.a(mc.aO, aku.b($$0));
+   }
 }

@@ -1,18 +1,35 @@
-public class gei extends gcx {
-   public static final akv a = akv.b("textures/entity/trident.png");
+public class gei extends gda<gzj> {
+   private final ggc a;
+   private final ggc b;
 
-   public gei(gfe $$0) {
-      super($$0, gmj::d);
+   public gei(ggc $$0) {
+      super($$0);
+      this.a = $$0.b("left_blue_fin");
+      this.b = $$0.b("right_blue_fin");
    }
 
-   public static gfk a() {
-      gfm $$0 = new gfm();
-      gfo $$1 = $$0.a();
-      gfo $$2 = $$1.a("pole", gfj.c().a(0, 6).a(-0.5F, 2.0F, -0.5F, 1.0F, 25.0F, 1.0F), gfg.a);
-      $$2.a("base", gfj.c().a(4, 0).a(-1.5F, 0.0F, -0.5F, 3.0F, 2.0F, 1.0F), gfg.a);
-      $$2.a("left_spike", gfj.c().a(4, 3).a(-2.5F, -3.0F, -0.5F, 1.0F, 4.0F, 1.0F), gfg.a);
-      $$2.a("middle_spike", gfj.c().a(0, 0).a(-0.5F, -4.0F, -0.5F, 1.0F, 4.0F, 1.0F), gfg.a);
-      $$2.a("right_spike", gfj.c().a(4, 3).a().a(1.5F, -3.0F, -0.5F, 1.0F, 4.0F, 1.0F), gfg.a);
-      return gfk.a($$0, 32, 32);
+   public static ggi a() {
+      ggk $$0 = new ggk();
+      ggm $$1 = $$0.a();
+      int $$2 = 22;
+      $$1.a("body", ggh.c().a(12, 22).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F), gge.a(0.0F, 22.0F, 0.0F));
+      $$1.a("right_blue_fin", ggh.c().a(24, 0).a(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), gge.a(-2.5F, 18.0F, -1.5F));
+      $$1.a("left_blue_fin", ggh.c().a(24, 3).a(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), gge.a(2.5F, 18.0F, -1.5F));
+      $$1.a("top_front_fin", ggh.c().a(19, 17).a(-2.5F, -1.0F, 0.0F, 5.0F, 1.0F, 0.0F), gge.a(0.0F, 17.0F, -2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("top_back_fin", ggh.c().a(11, 17).a(-2.5F, -1.0F, 0.0F, 5.0F, 1.0F, 0.0F), gge.a(0.0F, 17.0F, 2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_front_fin", ggh.c().a(5, 17).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F), gge.a(-2.5F, 22.0F, -2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("right_back_fin", ggh.c().a(9, 17).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F), gge.a(-2.5F, 22.0F, 2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("left_back_fin", ggh.c().a(1, 17).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F), gge.a(2.5F, 22.0F, 2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("left_front_fin", ggh.c().a(1, 17).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F), gge.a(2.5F, 22.0F, -2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("bottom_back_fin", ggh.c().a(18, 20).a(0.0F, 0.0F, 0.0F, 5.0F, 1.0F, 0.0F), gge.a(-2.5F, 22.0F, 2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("bottom_front_fin", ggh.c().a(17, 19).a(-2.5F, 0.0F, 0.0F, 5.0F, 1.0F, 1.0F), gge.a(0.0F, 22.0F, -2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      return ggi.a($$0, 32, 32);
+   }
+
+   @Override
+   public void a(gzj $$0) {
+      super.a($$0);
+      this.b.g = -0.2F + 0.4F * ayz.a($$0.u * 0.2F);
+      this.a.g = 0.2F - 0.4F * ayz.a($$0.u * 0.2F);
    }
 }

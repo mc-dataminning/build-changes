@@ -1,19 +1,14 @@
 import com.mojang.serialization.MapCodec;
 
-public class eqm extends erj {
-   public static final MapCodec<eqm> a = MapCodec.unit(() -> eqm.b);
-   public static final eqm b = new eqm();
+public class eqm extends eoi {
+   public static final MapCodec<eqm> d = a(eqm::new);
 
-   private eqm() {
+   public eqm(eoj.c $$0) {
+      super(eql::new, 12, 15, $$0);
    }
 
    @Override
-   public boolean a(dwy $$0, azh $$1) {
-      return true;
-   }
-
-   @Override
-   protected erk<?> a() {
-      return erk.a;
+   public eos<?> e() {
+      return eos.g;
    }
 }

@@ -1,167 +1,27 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class fjs {
-   static final Logger a = LogUtils.getLogger();
-   final Executor b;
-   final TimeUnit c;
-   final baa d;
+public class fjs extends hmd {
+   protected BooleanConsumer a;
+   private final wp b;
+   private final wp c;
 
-   public fjs(Executor $$0, TimeUnit $$1, baa $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public fjs(BooleanConsumer $$0, wp $$1, wp $$2) {
+      super(flx.a);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public <T> fjs.e<T> a(String $$0, Callable<T> $$1, Duration $$2, fjt $$3) {
-      long $$4 = this.c.convert($$2);
-      if ($$4 == 0L) {
-         throw new IllegalArgumentException("Period of " + $$2 + " too short for selected resolution of " + this.c);
-      } else {
-         return new fjs.e<>($$0, $$1, $$4, $$3);
-      }
+   @Override
+   public void aR_() {
+      this.c(fpq.a(wo.f, $$0 -> this.a.accept(true)).a(this.n / 2 - 105, g(9), 100, 20).a());
+      this.c(fpq.a(wo.g, $$0 -> this.a.accept(false)).a(this.n / 2 + 5, g(9), 100, 20).a());
    }
 
-   public fjs.c a() {
-      return new fjs.c();
-   }
-
-   static record a<T>(Either<T, Exception> a, long b) {
-   }
-
-   class b<T> {
-      private final fjs.e<T> a;
-      private final Consumer<T> b;
-      private long c = -1L;
-
-      b(final fjs.e<T> $$0, final Consumer<T> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      void a(long $$0) {
-         this.a.a($$0);
-         this.a();
-      }
-
-      void a() {
-         fjs.d<T> $$0 = this.a.g;
-         if ($$0 != null && this.c < $$0.b) {
-            this.b.accept($$0.a);
-            this.c = $$0.b;
-         }
-      }
-
-      void b() {
-         fjs.d<T> $$0 = this.a.g;
-         if ($$0 != null) {
-            this.b.accept($$0.a);
-            this.c = $$0.b;
-         }
-      }
-
-      void c() {
-         this.a.a();
-         this.c = -1L;
-      }
-   }
-
-   public class c {
-      private final List<fjs.b<?>> b = new ArrayList<>();
-
-      public <T> void a(fjs.e<T> $$0, Consumer<T> $$1) {
-         fjs.b<T> $$2 = fjs.this.new b<>($$0, $$1);
-         this.b.add($$2);
-         $$2.a();
-      }
-
-      public void a() {
-         for (fjs.b<?> $$0 : this.b) {
-            $$0.b();
-         }
-      }
-
-      public void b() {
-         for (fjs.b<?> $$0 : this.b) {
-            $$0.a(fjs.this.d.get(fjs.this.c));
-         }
-      }
-
-      public void c() {
-         for (fjs.b<?> $$0 : this.b) {
-            $$0.c();
-         }
-      }
-   }
-
-   static record d<T>(T a, long b) {
-   }
-
-   public class e<T> {
-      private final String b;
-      private final Callable<T> c;
-      private final long d;
-      private final fjt e;
-      @Nullable
-      private CompletableFuture<fjs.a<T>> f;
-      @Nullable
-      fjs.d<T> g;
-      private long h = -1L;
-
-      e(final String $$1, final Callable<T> $$2, final long $$3, final fjt $$4) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-      }
-
-      void a(long $$0) {
-         if (this.f != null) {
-            fjs.a<T> $$1 = this.f.getNow(null);
-            if ($$1 == null) {
-               return;
-            }
-
-            this.f = null;
-            long $$2 = $$1.b;
-            $$1.a().ifLeft($$1x -> {
-               this.g = new fjs.d<>((T)$$1x, $$2);
-               this.h = $$2 + this.d * this.e.a();
-            }).ifRight($$1x -> {
-               long $$2x = this.e.b();
-               fjs.a.warn("Failed to process task {}, will repeat after {} cycles", new Object[]{this.b, $$2x, $$1x});
-               this.h = $$2 + this.d * $$2x;
-            });
-         }
-
-         if (this.h <= $$0) {
-            this.f = CompletableFuture.supplyAsync(() -> {
-               try {
-                  T $$0x = this.c.call();
-                  long $$1x = fjs.this.d.get(fjs.this.c);
-                  return new fjs.a<>(Either.left($$0x), $$1x);
-               } catch (Exception var4x) {
-                  long $$3 = fjs.this.d.get(fjs.this.c);
-                  return new fjs.a<>(Either.right(var4x), $$3);
-               }
-            }, fjs.this.b);
-         }
-      }
-
-      public void a() {
-         this.f = null;
-         this.g = null;
-         this.h = -1L;
-      }
+   @Override
+   public void a(fpc $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.b, this.n / 2, g(3), -1);
+      $$0.a(this.p, this.c, this.n / 2, g(5), -1);
    }
 }

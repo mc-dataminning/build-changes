@@ -1,91 +1,74 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class drz extends djn {
+public class drz extends dke {
    public static final MapCodec<drz> a = b(drz::new);
-   private static final dxx b = dxo.aW;
-   private static final int c = 20;
-   private static final int d = 8;
+   public static final int b = 6;
+   public static final int c = 64;
+   private static final jn[] d = jn.values();
 
    @Override
    public MapCodec<drz> a() {
       return a;
    }
 
-   public drz(dwx.d $$0) {
+   protected drz(dxp.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(dgj $$0, dwy $$1, fax $$2, cpr $$3) {
-      int $$4 = a((dgk)$$0, $$1, $$2, (bum)$$3);
-      if ($$3.p() instanceof are $$6) {
-         $$6.a(awk.aE);
-         ap.M.a($$6, $$3, $$2.g(), $$4);
-      }
-   }
-
-   private static int a(dgk $$0, dwy $$1, fax $$2, bum $$3) {
-      int $$4 = a($$2, $$2.g());
-      int $$5 = $$3 instanceof cpf ? 20 : 8;
-      if (!$$0.U().a($$2.b(), $$1.b())) {
-         a($$0, $$1, $$4, $$2.b(), $$5);
-      }
-
-      return $$4;
-   }
-
-   private static int a(fax $$0, fbb $$1) {
-      jn $$2 = $$0.c();
-      double $$3 = Math.abs(ayz.e($$1.d) - 0.5);
-      double $$4 = Math.abs(ayz.e($$1.e) - 0.5);
-      double $$5 = Math.abs(ayz.e($$1.f) - 0.5);
-      jn.a $$6 = $$2.o();
-      double $$7;
-      if ($$6 == jn.a.b) {
-         $$7 = Math.max($$3, $$5);
-      } else if ($$6 == jn.a.c) {
-         $$7 = Math.max($$3, $$4);
-      } else {
-         $$7 = Math.max($$4, $$5);
-      }
-
-      return Math.max(1, ayz.c(15.0 * ayz.a((0.5 - $$7) / 0.5, 0.0, 1.0)));
-   }
-
-   private static void a(dgk $$0, dwy $$1, int $$2, ji $$3, int $$4) {
-      $$0.a($$3, $$1.b(b, Integer.valueOf($$2)), 3);
-      $$0.a($$3, $$1.b(), $$4);
-   }
-
-   @Override
-   protected void a(dwy $$0, ard $$1, ji $$2, azh $$3) {
-      if ($$0.c(b) != 0) {
-         $$1.a($$2, $$0.b(b, Integer.valueOf(0)), 3);
+   protected void a(dxq $$0, dgz $$1, ji $$2, dxq $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2);
       }
    }
 
    @Override
-   protected int a(dwy $$0, dfo $$1, ji $$2, jn $$3) {
-      return $$0.c(b);
+   protected void a(dxq $$0, dgz $$1, ji $$2, dke $$3, @Nullable eve $$4, boolean $$5) {
+      this.a($$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   protected boolean f_(dwy $$0) {
-      return true;
+   protected void a(dgz $$0, ji $$1) {
+      if (this.b($$0, $$1)) {
+         $$0.a($$1, dkg.aW.m(), 2);
+         $$0.a(null, $$1, awa.zU, awb.e, 1.0F, 1.0F);
+      }
    }
 
-   @Override
-   protected void a(dwz.a<djn, dwy> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected void b(dwy $$0, dgj $$1, ji $$2, dwy $$3, boolean $$4) {
-      if (!$$1.B_() && !$$0.a($$3.b())) {
-         if ($$0.c(b) > 0 && !$$1.U().a($$2, this)) {
-            $$1.a($$2, $$0.b(b, Integer.valueOf(0)), 18);
+   private boolean b(dgz $$0, ji $$1) {
+      return ji.a($$1, 6, 65, ($$0x, $$1x) -> {
+         for (jn $$2 : d) {
+            $$1x.accept($$0x.a($$2));
          }
-      }
+      }, $$2 -> {
+         if ($$2.equals($$1)) {
+            return ji.b.a;
+         } else {
+            dxq $$3 = $$0.a_($$2);
+            etw $$4 = $$0.b_($$2);
+            if (!$$4.a(awv.a)) {
+               return ji.b.b;
+            } else {
+               if ($$3.b() instanceof dkm $$6 && !$$6.a(null, $$0, $$2, $$3).f()) {
+                  return ji.b.a;
+               }
+
+               if ($$3.b() instanceof doy) {
+                  $$0.a($$2, dkg.a.m(), 3);
+               } else {
+                  if (!$$3.a(dkg.mE) && !$$3.a(dkg.mF) && !$$3.a(dkg.bD) && !$$3.a(dkg.bE)) {
+                     return ji.b.b;
+                  }
+
+                  dus $$7 = $$3.x() ? $$0.c_($$2) : null;
+                  a($$3, $$0, $$2, $$7);
+                  $$0.a($$2, dkg.a.m(), 3);
+               }
+
+               return ji.b.a;
+            }
+         }
+      }) > 1;
    }
 }

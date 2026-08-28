@@ -1,195 +1,111 @@
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public class egp extends efz<eig> {
-   public egp(Codec<eig> $$0) {
-      super($$0);
+public class egp {
+   protected static double a(double $$0, double $$1, double $$2, double $$3) {
+      if ($$0 < $$3) {
+         $$0 = $$3;
+      }
+
+      double $$4 = 0.384;
+      double $$5 = $$0 / $$1 * 0.384;
+      double $$6 = 0.75 * Math.pow($$5, 1.3333333333333333);
+      double $$7 = Math.pow($$5, 0.6666666666666666);
+      double $$8 = 0.3333333333333333 * Math.log($$5);
+      double $$9 = $$2 * ($$6 - $$7 - $$8);
+      $$9 = Math.max($$9, 0.0);
+      return $$9 / 0.384 * $$1;
    }
 
-   @Override
-   public boolean a(egb<eig> $$0) {
-      dhh $$1 = $$0.b();
-      ji $$2 = $$0.e();
-      eig $$3 = $$0.f();
-      azh $$4 = $$0.d();
-      if (!efu.a($$1, $$2)) {
+   protected static boolean a(dhy $$0, ji $$1, int $$2) {
+      if (b($$0, $$1)) {
          return false;
       } else {
-         Optional<ecj> $$5 = ecj.a($$1, $$2, $$3.b, efu::c, efu::a);
-         if (!$$5.isEmpty() && $$5.get() instanceof ecj.b) {
-            ecj.b $$6 = (ecj.b)$$5.get();
-            if ($$6.g() < 4) {
+         float $$3 = 6.0F;
+         float $$4 = 6.0F / (float)$$2;
+
+         for (float $$5 = 0.0F; $$5 < (float) (Math.PI * 2); $$5 += $$4) {
+            int $$6 = (int)(ayz.b($$5) * (float)$$2);
+            int $$7 = (int)(ayz.a($$5) * (float)$$2);
+            if (b($$0, $$1.b($$6, 0, $$7))) {
                return false;
-            } else {
-               int $$7 = (int)((float)$$6.g() * $$3.e);
-               int $$8 = ayz.a($$7, $$3.c.a(), $$3.c.b());
-               int $$9 = ayz.b($$4, $$3.c.a(), $$8);
-               egp.a $$10 = a($$2.h($$6.e() - 1), false, $$4, $$9, $$3.f, $$3.d);
-               egp.a $$11 = a($$2.h($$6.f() + 1), true, $$4, $$9, $$3.g, $$3.d);
-               egp.b $$12;
-               if ($$10.a($$3) && $$11.a($$3)) {
-                  $$12 = new egp.b($$2.v(), $$4, $$3.h);
-               } else {
-                  $$12 = egp.b.a();
-               }
-
-               boolean $$14 = $$10.a($$1, $$12);
-               boolean $$15 = $$11.a($$1, $$12);
-               if ($$14) {
-                  $$10.a($$1, $$4, $$12);
-               }
-
-               if ($$15) {
-                  $$11.a($$1, $$4, $$12);
-               }
-
-               return true;
             }
-         } else {
-            return false;
+         }
+
+         return true;
+      }
+   }
+
+   protected static boolean a(dha $$0, ji $$1) {
+      return $$0.a($$1, egp::c);
+   }
+
+   protected static boolean b(dha $$0, ji $$1) {
+      return $$0.a($$1, egp::e);
+   }
+
+   protected static void a(jn $$0, int $$1, boolean $$2, Consumer<dxq> $$3) {
+      if ($$1 >= 3) {
+         $$3.accept(a($$0, dyn.e));
+
+         for (int $$4 = 0; $$4 < $$1 - 3; $$4++) {
+            $$3.accept(a($$0, dyn.d));
          }
       }
-   }
 
-   private static egp.a a(ji $$0, boolean $$1, azh $$2, int $$3, bro $$4, bro $$5) {
-      return new egp.a($$0, $$1, $$3, (double)$$4.a($$2), (double)$$5.a($$2));
-   }
+      if ($$1 >= 2) {
+         $$3.accept(a($$0, dyn.c));
+      }
 
-   private void a(dhh $$0, ji $$1, ecj.b $$2, egp.b $$3) {
-      $$0.a($$3.a($$1.h($$2.e() - 1)), djp.cH.m(), 2);
-      $$0.a($$3.a($$1.h($$2.f() + 1)), djp.co.m(), 2);
-
-      for (ji.a $$4 = $$1.h($$2.f() + 2).k(); $$4.v() < $$2.e() - 1; $$4.c(jn.b)) {
-         ji $$5 = $$3.a($$4);
-         if (efu.a($$0, $$5) || $$0.a_($$5).a(djp.sW)) {
-            $$0.a($$5, djp.hj.m(), 2);
-         }
+      if ($$1 >= 1) {
+         $$3.accept(a($$0, $$2 ? dyn.a : dyn.b));
       }
    }
 
-   static final class a {
-      private ji a;
-      private final boolean b;
-      private int c;
-      private final double d;
-      private final double e;
-
-      a(ji $$0, boolean $$1, int $$2, double $$3, double $$4) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-      }
-
-      private int a() {
-         return this.a(0.0F);
-      }
-
-      private int b() {
-         return this.b ? this.a.v() : this.a.v() - this.a();
-      }
-
-      private int c() {
-         return !this.b ? this.a.v() : this.a.v() + this.a();
-      }
-
-      boolean a(dhh $$0, egp.b $$1) {
-         while (this.c > 1) {
-            ji.a $$2 = this.a.k();
-            int $$3 = Math.min(10, this.a());
-
-            for (int $$4 = 0; $$4 < $$3; $$4++) {
-               if ($$0.a_($$2).a(djp.K)) {
-                  return false;
-               }
-
-               if (efu.a($$0, $$1.a($$2), this.c)) {
-                  this.a = $$2;
-                  return true;
-               }
-
-               $$2.c(this.b ? jn.a : jn.b);
+   protected static void a(dha $$0, ji $$1, jn $$2, int $$3, boolean $$4) {
+      if (b($$0.a_($$1.a($$2.g())))) {
+         ji.a $$5 = $$1.k();
+         a($$2, $$3, $$4, $$3x -> {
+            if ($$3x.a(dkg.sV)) {
+               $$3x = $$3x.b(dqa.d, Boolean.valueOf($$0.z($$5)));
             }
 
-            this.c /= 2;
-         }
+            $$0.a($$5, $$3x, 2);
+            $$5.c($$2);
+         });
+      }
+   }
 
+   protected static boolean c(dha $$0, ji $$1) {
+      dxq $$2 = $$0.a_($$1);
+      if ($$2.a(awp.bu)) {
+         $$0.a($$1, dkg.sW.m(), 2);
+         return true;
+      } else {
          return false;
       }
-
-      private int a(float $$0) {
-         return (int)efu.a((double)$$0, (double)this.c, this.e, this.d);
-      }
-
-      void a(dhh $$0, azh $$1, egp.b $$2) {
-         for (int $$3 = -this.c; $$3 <= this.c; $$3++) {
-            for (int $$4 = -this.c; $$4 <= this.c; $$4++) {
-               float $$5 = ayz.c((float)($$3 * $$3 + $$4 * $$4));
-               if (!($$5 > (float)this.c)) {
-                  int $$6 = this.a($$5);
-                  if ($$6 > 0) {
-                     if ((double)$$1.i() < 0.2) {
-                        $$6 = (int)((float)$$6 * ayz.b($$1, 0.8F, 1.0F));
-                     }
-
-                     ji.a $$7 = this.a.b($$3, 0, $$4).k();
-                     boolean $$8 = false;
-                     int $$9 = this.b ? $$0.a(ect.a.a, $$7.u(), $$7.w()) : Integer.MAX_VALUE;
-
-                     for (int $$10 = 0; $$10 < $$6 && $$7.v() < $$9; $$10++) {
-                        ji $$11 = $$2.a($$7);
-                        if (efu.b($$0, $$11)) {
-                           $$8 = true;
-                           djn $$12 = djp.sW;
-                           $$0.a($$11, $$12.m(), 2);
-                        } else if ($$8 && $$0.a_($$11).a(awp.bg)) {
-                           break;
-                        }
-
-                        $$7.c(this.b ? jn.b : jn.a);
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      boolean a(eig $$0) {
-         return this.c >= $$0.i && this.d >= (double)$$0.j;
-      }
    }
 
-   static final class b {
-      private final int a;
-      @Nullable
-      private final fbb b;
+   private static dxq a(jn $$0, dyn $$1) {
+      return dkg.sV.m().b(dqa.b, $$0).b(dqa.c, $$1);
+   }
 
-      b(int $$0, azh $$1, bro $$2) {
-         this.a = $$0;
-         float $$3 = $$2.a($$1);
-         float $$4 = ayz.b($$1, 0.0F, (float) Math.PI);
-         this.b = new fbb((double)(ayz.b($$4) * $$3), 0.0, (double)(ayz.a($$4) * $$3));
-      }
+   public static boolean a(dxq $$0) {
+      return b($$0) || $$0.a(dkg.K);
+   }
 
-      private b() {
-         this.a = 0;
-         this.b = null;
-      }
+   public static boolean b(dxq $$0) {
+      return $$0.a(dkg.sW) || $$0.a(awp.bu);
+   }
 
-      static egp.b a() {
-         return new egp.b();
-      }
+   public static boolean c(dxq $$0) {
+      return $$0.l() || $$0.a(dkg.J);
+   }
 
-      ji a(ji $$0) {
-         if (this.b == null) {
-            return $$0;
-         } else {
-            int $$1 = this.a - $$0.v();
-            fbb $$2 = this.b.c((double)$$1);
-            return $$0.b(ayz.a($$2.d), 0, ayz.a($$2.f));
-         }
-      }
+   public static boolean d(dxq $$0) {
+      return !$$0.l() && !$$0.a(dkg.J);
+   }
+
+   public static boolean e(dxq $$0) {
+      return $$0.l() || $$0.a(dkg.J) || $$0.a(dkg.K);
    }
 }

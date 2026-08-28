@@ -1,47 +1,22 @@
-import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class fnl implements Supplier<JsonElement> {
-   private final Map<fnn<?>, fnn<?>.a> a = Maps.newLinkedHashMap();
+public record fnl(int b) implements fnq {
+   public static final MapCodec<fnl> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayi.i.fieldOf("value").forGetter(fnl::b)).apply($$0, fnl::new));
 
-   public <T> fnl a(fnn<T> $$0, T $$1) {
-      fnn<?>.a $$2 = this.a.put($$0, $$0.a($$1));
-      if ($$2 != null) {
-         throw new IllegalStateException("Replacing value of " + $$2 + " with " + $$1);
-      } else {
-         return this;
-      }
+   public fnl(int b) {
+      b = axk.f(b);
+      this.b = b;
    }
 
-   public static fnl a() {
-      return new fnl();
+   @Override
+   public int a(cxh $$0, @Nullable ggy $$1, @Nullable bvy $$2) {
+      return this.b;
    }
 
-   public static fnl a(fnl $$0, fnl $$1) {
-      fnl $$2 = new fnl();
-      $$2.a.putAll($$0.a);
-      $$2.a.putAll($$1.a);
-      return $$2;
-   }
-
-   public JsonElement b() {
-      JsonObject $$0 = new JsonObject();
-      this.a.values().forEach($$1 -> $$1.a($$0));
-      return $$0;
-   }
-
-   public static JsonElement a(List<fnl> $$0) {
-      if ($$0.size() == 1) {
-         return $$0.get(0).b();
-      } else {
-         JsonArray $$1 = new JsonArray();
-         $$0.forEach($$1x -> $$1.add($$1x.b()));
-         return $$1;
-      }
+   @Override
+   public MapCodec<fnl> a() {
+      return a;
    }
 }

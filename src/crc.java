@@ -1,145 +1,45 @@
+import java.util.Optional;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
-public interface crc extends bse, bsn {
-   fbb dt();
+public class crc extends cra {
+   private static final dgt f = new dhs(true, false, Optional.of(1.22F), mb.e.a(awp.cD).map(Function.identity()));
+   private static final float g = 1.2F;
+   private static final float h = ayz.l(3.5F);
+   private int i = 5;
 
-   faw cR();
+   public crc(bvi<? extends cra> $$0, dgz $$1) {
+      super($$0, $$1);
+   }
 
-   @Nullable
-   aku<evx> v();
+   public crc(cpr $$0, dgz $$1, double $$2, double $$3, double $$4) {
+      super(bvi.bG, $$1, $$0, $$2, $$3, $$4);
+   }
 
-   void a(@Nullable aku<evx> var1);
-
-   long x();
-
-   void a(long var1);
-
-   ka<cwq> E();
-
-   void F();
-
-   dgj dV();
-
-   boolean dQ();
+   public crc(dgz $$0, double $$1, double $$2, double $$3, fbx $$4) {
+      super(bvi.bG, $$1, $$2, $$3, $$4, $$0);
+   }
 
    @Override
-   default boolean c() {
-      return this.g();
-   }
-
-   default void a(tq $$0, jt.a $$1) {
-      if (this.v() != null) {
-         $$0.a("LootTable", this.v().a().toString());
-         if (this.x() != 0L) {
-            $$0.a("LootTableSeed", this.x());
-         }
-      } else {
-         bsf.a($$0, this.E(), $$1);
+   public void h() {
+      super.h();
+      if (this.i > 0) {
+         this.i--;
       }
    }
 
-   default void b(tq $$0, jt.a $$1) {
-      this.F();
-      if ($$0.b("LootTable", 8)) {
-         this.a(aku.a(mc.bg, akv.a($$0.l("LootTable"))));
-         this.a($$0.i("LootTableSeed"));
-      } else {
-         bsf.b($$0, this.E(), $$1);
-      }
+   @Override
+   public boolean a(cql $$0, @Nullable bva $$1, @Nullable bva $$2, boolean $$3) {
+      return this.i > 0 ? false : super.a($$0, $$1, $$2, $$3);
    }
 
-   default void a(btc $$0, ard $$1, bum $$2) {
-      if ($$1.O().b(dgf.i)) {
-         bsh.a($$1, $$2, this);
-         bum $$3 = $$0.c();
-         if ($$3 != null && $$3.aq() == but.bR) {
-            cnn.a($$1, (coy)$$3, true);
-         }
-      }
+   @Override
+   protected void a(fbx $$0) {
+      this.dU().a(this, null, f, $$0.a(), $$0.b(), $$0.c(), 1.2F, false, dgz.a.e, lt.A, lt.z, awa.Do);
    }
 
-   default bsl b_(coy $$0) {
-      $$0.a(this);
-      return bsl.a;
-   }
-
-   default void f(@Nullable coy $$0) {
-      MinecraftServer $$1 = this.dV().p();
-      if (this.v() != null && $$1 != null) {
-         evx $$2 = $$1.bc().b(this.v());
-         if ($$0 != null) {
-            ap.Q.a((are)$$0, this.v());
-         }
-
-         this.a(null);
-         evv.a $$3 = new evv.a((ard)this.dV()).a(eym.f, this.dt());
-         if ($$0 != null) {
-            $$3.a($$0.gF()).a(eym.a, $$0);
-         }
-
-         $$2.a(this, $$3.a(eyl.c), this.x());
-      }
-   }
-
-   default void f() {
-      this.f(null);
-      this.E().clear();
-   }
-
-   default boolean g() {
-      for (cwq $$0 : this.E()) {
-         if (!$$0.f()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   default cwq f_(int $$0) {
-      this.f(null);
-      cwq $$1 = this.E().get($$0);
-      if ($$1.f()) {
-         return cwq.j;
-      } else {
-         this.E().set($$0, cwq.j);
-         return $$1;
-      }
-   }
-
-   default cwq g_(int $$0) {
-      this.f(null);
-      return this.E().get($$0);
-   }
-
-   default cwq b(int $$0, int $$1) {
-      this.f(null);
-      return bsf.a(this.E(), $$0, $$1);
-   }
-
-   default void c(int $$0, cwq $$1) {
-      this.f(null);
-      this.E().set($$0, $$1);
-      $$1.f(this.e_($$1));
-   }
-
-   default bwa h_(final int $$0) {
-      return $$0 >= 0 && $$0 < this.b() ? new bwa() {
-         @Override
-         public cwq a() {
-            return crc.this.g_($$0);
-         }
-
-         @Override
-         public boolean a(cwq $$0x) {
-            crc.this.c($$0, $$0);
-            return true;
-         }
-      } : bwa.a;
-   }
-
-   default boolean g(coy $$0) {
-      return !this.dQ() && $$0.a(this.cR(), 4.0);
+   @Override
+   public boolean a(double $$0) {
+      return this.af < 2 && $$0 < (double)h ? false : super.a($$0);
    }
 }

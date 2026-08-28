@@ -59,7 +59,7 @@ public abstract class asl implements AutoCloseable {
    }
 
    @Nullable
-   public static asl a(apv $$0) {
+   public static asl a(apu $$0) {
       String $$1 = $$0.R;
       if (azw.h($$1)) {
          return null;
@@ -233,7 +233,7 @@ public abstract class asl implements AutoCloseable {
 
       protected c(final GameProfile $$1) {
          this.b = $$1;
-         brb $$2 = new brb(asl.this.g, "chat stream for " + $$1.getName());
+         bro $$2 = new bro(asl.this.g, "chat stream for " + $$1.getName());
          this.c = $$2::a_;
       }
 

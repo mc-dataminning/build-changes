@@ -1,293 +1,128 @@
-import java.util.EnumSet;
+import java.util.Optional;
 
-public class clt extends buz implements clr {
-   private static final ajy<Boolean> a = akc.a(clt.class, aka.k);
-   private int b = 1;
+public class clt {
+   public static final akt<cls> a = a("kebab");
+   public static final akt<cls> b = a("aztec");
+   public static final akt<cls> c = a("alban");
+   public static final akt<cls> d = a("aztec2");
+   public static final akt<cls> e = a("bomb");
+   public static final akt<cls> f = a("plant");
+   public static final akt<cls> g = a("wasteland");
+   public static final akt<cls> h = a("pool");
+   public static final akt<cls> i = a("courbet");
+   public static final akt<cls> j = a("sea");
+   public static final akt<cls> k = a("sunset");
+   public static final akt<cls> l = a("creebet");
+   public static final akt<cls> m = a("wanderer");
+   public static final akt<cls> n = a("graham");
+   public static final akt<cls> o = a("match");
+   public static final akt<cls> p = a("bust");
+   public static final akt<cls> q = a("stage");
+   public static final akt<cls> r = a("void");
+   public static final akt<cls> s = a("skull_and_roses");
+   public static final akt<cls> t = a("wither");
+   public static final akt<cls> u = a("fighters");
+   public static final akt<cls> v = a("pointer");
+   public static final akt<cls> w = a("pigscene");
+   public static final akt<cls> x = a("burning_skull");
+   public static final akt<cls> y = a("skeleton");
+   public static final akt<cls> z = a("donkey_kong");
+   public static final akt<cls> A = a("earth");
+   public static final akt<cls> B = a("wind");
+   public static final akt<cls> C = a("water");
+   public static final akt<cls> D = a("fire");
+   public static final akt<cls> E = a("baroque");
+   public static final akt<cls> F = a("humble");
+   public static final akt<cls> G = a("meditative");
+   public static final akt<cls> H = a("prairie_ride");
+   public static final akt<cls> I = a("unpacked");
+   public static final akt<cls> J = a("backyard");
+   public static final akt<cls> K = a("bouquet");
+   public static final akt<cls> L = a("cavebird");
+   public static final akt<cls> M = a("changing");
+   public static final akt<cls> N = a("cotan");
+   public static final akt<cls> O = a("endboss");
+   public static final akt<cls> P = a("fern");
+   public static final akt<cls> Q = a("finding");
+   public static final akt<cls> R = a("lowmist");
+   public static final akt<cls> S = a("orb");
+   public static final akt<cls> T = a("owlemons");
+   public static final akt<cls> U = a("passage");
+   public static final akt<cls> V = a("pond");
+   public static final akt<cls> W = a("sunflowers");
+   public static final akt<cls> X = a("tides");
 
-   public clt(but<? extends clt> $$0, dgj $$1) {
-      super($$0, $$1);
-      this.bN = 5;
-      this.bP = new clt.b(this);
+   public static void a(qe<cls> $$0) {
+      a($$0, a, 1, 1);
+      a($$0, b, 1, 1);
+      a($$0, c, 1, 1);
+      a($$0, d, 1, 1);
+      a($$0, e, 1, 1);
+      a($$0, f, 1, 1);
+      a($$0, g, 1, 1);
+      a($$0, h, 2, 1);
+      a($$0, i, 2, 1);
+      a($$0, j, 2, 1);
+      a($$0, k, 2, 1);
+      a($$0, l, 2, 1);
+      a($$0, m, 1, 2);
+      a($$0, n, 1, 2);
+      a($$0, o, 2, 2);
+      a($$0, p, 2, 2);
+      a($$0, q, 2, 2);
+      a($$0, r, 2, 2);
+      a($$0, s, 2, 2);
+      a($$0, t, 2, 2, false);
+      a($$0, u, 4, 2);
+      a($$0, v, 4, 4);
+      a($$0, w, 4, 4);
+      a($$0, x, 4, 4);
+      a($$0, y, 4, 3);
+      a($$0, A, 2, 2, false);
+      a($$0, B, 2, 2, false);
+      a($$0, C, 2, 2, false);
+      a($$0, D, 2, 2, false);
+      a($$0, z, 4, 3);
+      a($$0, E, 2, 2);
+      a($$0, F, 2, 2);
+      a($$0, G, 1, 1);
+      a($$0, H, 1, 2);
+      a($$0, I, 4, 4);
+      a($$0, J, 3, 4);
+      a($$0, K, 3, 3);
+      a($$0, L, 3, 3);
+      a($$0, M, 4, 2);
+      a($$0, N, 3, 3);
+      a($$0, O, 3, 3);
+      a($$0, P, 3, 3);
+      a($$0, Q, 4, 2);
+      a($$0, R, 4, 2);
+      a($$0, S, 4, 4);
+      a($$0, T, 3, 3);
+      a($$0, U, 4, 2);
+      a($$0, V, 3, 4);
+      a($$0, W, 3, 3);
+      a($$0, X, 3, 3);
    }
 
-   @Override
-   protected void E() {
-      this.bS.a(5, new clt.d(this));
-      this.bS.a(7, new clt.a(this));
-      this.bS.a(7, new clt.c(this));
-      this.bT.a(1, new cdz<>(this, coy.class, 10, true, false, ($$0, $$1) -> Math.abs($$0.dC() - this.dC()) <= 4.0));
+   private static void a(qe<cls> $$0, akt<cls> $$1, int $$2, int $$3) {
+      a($$0, $$1, $$2, $$3, true);
    }
 
-   public boolean m() {
-      return this.al.a(a);
+   private static void a(qe<cls> $$0, akt<cls> $$1, int $$2, int $$3, boolean $$4) {
+      $$0.a(
+         $$1,
+         new cls(
+            $$2,
+            $$3,
+            $$1.a(),
+            Optional.of(wp.c($$1.a().c("painting", "title")).a(n.o)),
+            $$4 ? Optional.of(wp.c($$1.a().c("painting", "author")).a(n.h)) : Optional.empty()
+         )
+      );
    }
 
-   public void x(boolean $$0) {
-      this.al.a(a, $$0);
-   }
-
-   public int p() {
-      return this.b;
-   }
-
-   @Override
-   protected boolean ab() {
-      return true;
-   }
-
-   private static boolean j(btc $$0) {
-      return $$0.c() instanceof cpp && $$0.d() instanceof coy;
-   }
-
-   @Override
-   public boolean a(ard $$0, btc $$1) {
-      return this.cC() && !$$1.a(awr.d) || !j($$1) && super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(ard $$0, btc $$1, float $$2) {
-      if (j($$1)) {
-         super.a($$0, $$1, 1000.0F);
-         return true;
-      } else {
-         return this.a($$0, $$1) ? false : super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   protected void a(akc.a $$0) {
-      super.a($$0);
-      $$0.a(a, false);
-   }
-
-   public static bwp.a t() {
-      return bvk.F().a(bwq.s, 10.0).a(bwq.m, 100.0);
-   }
-
-   @Override
-   public awb dm() {
-      return awb.f;
-   }
-
-   @Override
-   protected avz u() {
-      return awa.kK;
-   }
-
-   @Override
-   protected avz e(btc $$0) {
-      return awa.kM;
-   }
-
-   @Override
-   protected avz o_() {
-      return awa.kL;
-   }
-
-   @Override
-   protected float fg() {
-      return 5.0F;
-   }
-
-   public static boolean b(but<clt> $$0, dgk $$1, bus $$2, ji $$3, azh $$4) {
-      return $$1.am() != bsi.a && $$4.a(20) == 0 && a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   public int aj() {
-      return 1;
-   }
-
-   @Override
-   public void b(tq $$0) {
-      super.b($$0);
-      $$0.a("ExplosionPower", (byte)this.b);
-   }
-
-   @Override
-   public void a(tq $$0) {
-      super.a($$0);
-      if ($$0.b("ExplosionPower", 99)) {
-         this.b = $$0.f("ExplosionPower");
-      }
-   }
-
-   static class a extends ccg {
-      private final clt a;
-
-      public a(clt $$0) {
-         this.a = $$0;
-         this.a(EnumSet.of(ccg.a.b));
-      }
-
-      @Override
-      public boolean b() {
-         return true;
-      }
-
-      @Override
-      public boolean V_() {
-         return true;
-      }
-
-      @Override
-      public void a() {
-         if (this.a.O_() == null) {
-            fbb $$0 = this.a.dy();
-            this.a.v(-((float)ayz.d($$0.d, $$0.f)) * (180.0F / (float)Math.PI));
-            this.a.aX = this.a.dL();
-         } else {
-            bvi $$1 = this.a.O_();
-            double $$2 = 64.0;
-            if ($$1.g(this.a) < 4096.0) {
-               double $$3 = $$1.dA() - this.a.dA();
-               double $$4 = $$1.dG() - this.a.dG();
-               this.a.v(-((float)ayz.d($$3, $$4)) * (180.0F / (float)Math.PI));
-               this.a.aX = this.a.dL();
-            }
-         }
-      }
-   }
-
-   static class b extends cbj {
-      private final clt l;
-      private int m;
-
-      public b(clt $$0) {
-         super($$0);
-         this.l = $$0;
-      }
-
-      @Override
-      public void a() {
-         if (this.k == cbj.a.b) {
-            if (this.m-- <= 0) {
-               this.m = this.m + this.l.dY().a(5) + 2;
-               fbb $$0 = new fbb(this.e - this.l.dA(), this.f - this.l.dC(), this.g - this.l.dG());
-               double $$1 = $$0.g();
-               $$0 = $$0.d();
-               if (this.a($$0, ayz.c($$1))) {
-                  this.l.i(this.l.dy().e($$0.c(0.1)));
-               } else {
-                  this.k = cbj.a.a;
-               }
-            }
-         }
-      }
-
-      private boolean a(fbb $$0, int $$1) {
-         faw $$2 = this.l.cR();
-
-         for (int $$3 = 1; $$3 < $$1; $$3++) {
-            $$2 = $$2.c($$0);
-            if (!this.l.dV().a(this.l, $$2)) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   static class c extends ccg {
-      private final clt b;
-      public int a;
-
-      public c(clt $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public boolean b() {
-         return this.b.O_() != null;
-      }
-
-      @Override
-      public void d() {
-         this.a = 0;
-      }
-
-      @Override
-      public void e() {
-         this.b.x(false);
-      }
-
-      @Override
-      public boolean V_() {
-         return true;
-      }
-
-      @Override
-      public void a() {
-         bvi $$0 = this.b.O_();
-         if ($$0 != null) {
-            double $$1 = 64.0;
-            if ($$0.g(this.b) < 4096.0 && this.b.E($$0)) {
-               dgj $$2 = this.b.dV();
-               this.a++;
-               if (this.a == 10 && !this.b.bb()) {
-                  $$2.a(null, 1015, this.b.dv(), 0);
-               }
-
-               if (this.a == 20) {
-                  double $$3 = 4.0;
-                  fbb $$4 = this.b.g(1.0F);
-                  double $$5 = $$0.dA() - (this.b.dA() + $$4.d * 4.0);
-                  double $$6 = $$0.e(0.5) - (0.5 + this.b.e(0.5));
-                  double $$7 = $$0.dG() - (this.b.dG() + $$4.f * 4.0);
-                  fbb $$8 = new fbb($$5, $$6, $$7);
-                  if (!this.b.bb()) {
-                     $$2.a(null, 1016, this.b.dv(), 0);
-                  }
-
-                  cpp $$9 = new cpp($$2, this.b, $$8.d(), this.b.p());
-                  $$9.a_(this.b.dA() + $$4.d * 4.0, this.b.e(0.5) + 0.5, $$9.dG() + $$4.f * 4.0);
-                  $$2.b($$9);
-                  this.a = -40;
-               }
-            } else if (this.a > 0) {
-               this.a--;
-            }
-
-            this.b.x(this.a > 10);
-         }
-      }
-   }
-
-   static class d extends ccg {
-      private final clt a;
-
-      public d(clt $$0) {
-         this.a = $$0;
-         this.a(EnumSet.of(ccg.a.a));
-      }
-
-      @Override
-      public boolean b() {
-         cbj $$0 = this.a.N();
-         if (!$$0.b()) {
-            return true;
-         } else {
-            double $$1 = $$0.d() - this.a.dA();
-            double $$2 = $$0.e() - this.a.dC();
-            double $$3 = $$0.f() - this.a.dG();
-            double $$4 = $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
-            return $$4 < 1.0 || $$4 > 3600.0;
-         }
-      }
-
-      @Override
-      public boolean c() {
-         return false;
-      }
-
-      @Override
-      public void d() {
-         azh $$0 = this.a.dY();
-         double $$1 = this.a.dA() + (double)(($$0.i() * 2.0F - 1.0F) * 16.0F);
-         double $$2 = this.a.dC() + (double)(($$0.i() * 2.0F - 1.0F) * 16.0F);
-         double $$3 = this.a.dG() + (double)(($$0.i() * 2.0F - 1.0F) * 16.0F);
-         this.a.N().a($$1, $$2, $$3, 1.0);
-      }
+   private static akt<cls> a(String $$0) {
+      return akt.a(mc.X, aku.b($$0));
    }
 }

@@ -1,15 +1,18 @@
-public class cvj extends cwm {
-   protected cvj(cyh $$0, axf<djn> $$1, float $$2, float $$3, cwm.a $$4) {
-      super($$0.a($$4, $$1, $$2, $$3));
+import javax.annotation.Nullable;
+
+public class cvj extends cxd implements cyb {
+   public cvj(cxd.a $$0) {
+      super($$0);
+   }
+
+   public cpy a(dgz $$0, cxh $$1, bvy $$2, @Nullable cxh $$3) {
+      return new cqa($$0, $$2, $$1.c(1), $$3);
    }
 
    @Override
-   public boolean a(cwq $$0, bvi $$1, bvi $$2) {
-      return true;
-   }
-
-   @Override
-   public void b(cwq $$0, bvi $$1, bvi $$2) {
-      $$0.a(2, $$2, buu.a);
+   public cqk a(dgz $$0, kb $$1, cxh $$2, jn $$3) {
+      cqa $$4 = new cqa($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1), null);
+      $$4.b = cpy.a.b;
+      return $$4;
    }
 }

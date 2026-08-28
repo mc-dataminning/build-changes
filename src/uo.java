@@ -86,46 +86,52 @@ public class uo {
    }
 
    private un b(String $$0) {
-      try {
-         if (q.matcher($$0).matches()) {
-            return tt.a(Float.parseFloat($$0.substring(0, $$0.length() - 1)));
+      if ("true".equalsIgnoreCase($$0)) {
+         return to.c;
+      } else if ("false".equalsIgnoreCase($$0)) {
+         return to.b;
+      } else {
+         try {
+            char $$1 = Character.toLowerCase($$0.charAt($$0.length() - 1));
+            switch ($$1) {
+               case 'b':
+                  if (r.matcher($$0).matches()) {
+                     return to.a(Byte.parseByte($$0.substring(0, $$0.length() - 1)));
+                  }
+                  break;
+               case 'd':
+                  if (p.matcher($$0).matches()) {
+                     return tr.a(Double.parseDouble($$0.substring(0, $$0.length() - 1)));
+                  }
+                  break;
+               case 'f':
+                  if (q.matcher($$0).matches()) {
+                     return tt.a(Float.parseFloat($$0.substring(0, $$0.length() - 1)));
+                  }
+                  break;
+               case 'l':
+                  if (s.matcher($$0).matches()) {
+                     return ty.a(Long.parseLong($$0.substring(0, $$0.length() - 1)));
+                  }
+                  break;
+               case 's':
+                  if (t.matcher($$0).matches()) {
+                     return ui.a(Short.parseShort($$0.substring(0, $$0.length() - 1)));
+                  }
+            }
+
+            if (u.matcher($$0).matches()) {
+               return tv.a(Integer.parseInt($$0));
+            }
+
+            if (o.matcher($$0).matches()) {
+               return tr.a(Double.parseDouble($$0));
+            }
+         } catch (NumberFormatException var3) {
          }
 
-         if (r.matcher($$0).matches()) {
-            return to.a(Byte.parseByte($$0.substring(0, $$0.length() - 1)));
-         }
-
-         if (s.matcher($$0).matches()) {
-            return ty.a(Long.parseLong($$0.substring(0, $$0.length() - 1)));
-         }
-
-         if (t.matcher($$0).matches()) {
-            return ui.a(Short.parseShort($$0.substring(0, $$0.length() - 1)));
-         }
-
-         if (u.matcher($$0).matches()) {
-            return tv.a(Integer.parseInt($$0));
-         }
-
-         if (p.matcher($$0).matches()) {
-            return tr.a(Double.parseDouble($$0.substring(0, $$0.length() - 1)));
-         }
-
-         if (o.matcher($$0).matches()) {
-            return tr.a(Double.parseDouble($$0));
-         }
-
-         if ("true".equalsIgnoreCase($$0)) {
-            return to.c;
-         }
-
-         if ("false".equalsIgnoreCase($$0)) {
-            return to.b;
-         }
-      } catch (NumberFormatException var3) {
+         return ul.a($$0);
       }
-
-      return ul.a($$0);
    }
 
    public un d() throws CommandSyntaxException {

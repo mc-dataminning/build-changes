@@ -1,30 +1,37 @@
-import javax.annotation.Nullable;
+public enum cps {
+   a(0, "cape"),
+   b(1, "jacket"),
+   c(2, "left_sleeve"),
+   d(3, "right_sleeve"),
+   e(4, "left_pants_leg"),
+   f(5, "right_pants_leg"),
+   g(6, "hat");
 
-@FunctionalInterface
-public interface cps {
-   cps a = ($$0, $$1, $$2) -> {
-   };
-   cps b = ($$0, $$1, $$2) -> {
-      float $$3 = 170.0F + $$2.i() * 20.0F;
-      $$0.i($$0.dy().c(-0.5));
-      $$0.v($$0.dL() + $$3);
-      $$0.N += $$3;
-      $$0.ar = true;
-   };
-   cps c = ($$0, $$1, $$2) -> {
-      if ($$1 != null) {
-         fbb $$3 = $$1.bT().d();
-         $$0.i($$3);
-         $$0.ar = true;
-      }
-   };
-   cps d = ($$0, $$1, $$2) -> {
-      if ($$1 != null) {
-         fbb $$3 = $$1.dy().d();
-         $$0.i($$3);
-         $$0.ar = true;
-      }
-   };
+   private final int h;
+   private final int i;
+   private final String j;
+   private final wp k;
 
-   void deflect(cpr var1, @Nullable bum var2, azh var3);
+   private cps(final int $$0, final String $$1) {
+      this.h = $$0;
+      this.i = 1 << $$0;
+      this.j = $$1;
+      this.k = wp.c("options.modelPart." + $$1);
+   }
+
+   public int a() {
+      return this.i;
+   }
+
+   public int b() {
+      return this.h;
+   }
+
+   public String c() {
+      return this.j;
+   }
+
+   public wp d() {
+      return this.k;
+   }
 }

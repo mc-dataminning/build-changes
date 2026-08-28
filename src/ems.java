@@ -1,42 +1,63 @@
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public class ems extends edq {
-   private final dhh a;
-   private final dyu b;
-   private final Optional<emr> c;
+public class ems extends emq {
+   public static final MapCodec<ems> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               eei.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               eei.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.INT.optionalFieldOf("plateau", 0).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, ems::new)
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final eei d;
+   private final eei e;
+   private final int f;
 
-   public ems(dhh $$0, dyu $$1, Optional<emr> $$2) {
-      super($$1, $$0);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   private ems(eei $$0, eei $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public int a(ect.a $$0, int $$1, int $$2) {
-      return this.a.a($$0, $$1, $$2);
+   public static ems a(eei $$0, eei $$1, int $$2) {
+      return new ems($$0, $$1, $$2);
    }
 
-   public dys a(dfp $$0) {
-      return ((dzn)this.a.a($$0.h, $$0.i)).F();
+   public static ems a(eei $$0, eei $$1) {
+      return a($$0, $$1, 0);
    }
 
-   public dwy a(ji $$0) {
-      return this.a.a_($$0);
+   @Override
+   public int a(azh $$0, eel $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$2 > $$3) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
+      } else {
+         int $$4 = $$3 - $$2;
+         if (this.f >= $$4) {
+            return ayz.b($$0, $$2, $$3);
+         } else {
+            int $$5 = ($$4 - this.f) / 2;
+            int $$6 = $$4 - $$5;
+            return $$2 + ayz.b($$0, 0, $$6) + ayz.b($$0, 0, $$5);
+         }
+      }
    }
 
-   public int c() {
-      return this.a.L_();
+   @Override
+   public emr<?> a() {
+      return emr.e;
    }
 
-   public dhh d() {
-      return this.a;
-   }
-
-   public Optional<emr> e() {
-      return this.c;
-   }
-
-   public dyu f() {
-      return this.b;
+   @Override
+   public String toString() {
+      return this.f == 0 ? "triangle (" + this.d + "-" + this.e + ")" : "trapezoid(" + this.f + ") in [" + this.d + "-" + this.e + "]";
    }
 }

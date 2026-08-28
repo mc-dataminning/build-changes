@@ -1,87 +1,66 @@
-public class gic extends gki {
-   private final float a;
-   private final float b;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.minecraft.report.ReportedEntity;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-   gic(gga $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, hbp $$7) {
-      this($$0, $$1, $$2, $$3, $$7);
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
+public class gic extends gid {
+   private final String g;
+
+   gic(UUID $$0, Instant $$1, UUID $$2, String $$3) {
+      super($$0, $$1, $$2);
+      this.g = $$3;
+   }
+
+   public String a() {
+      return this.g;
+   }
+
+   public gic c() {
+      gic $$0 = new gic(this.a, this.b, this.c, this.g);
+      $$0.d = this.d;
+      $$0.f = this.f;
+      return $$0;
    }
 
    @Override
-   public gjm b() {
-      return gjm.a;
+   public fvi a(fvi $$0, gih $$1) {
+      return new fzs($$0, $$1, this);
    }
 
-   protected gic(gga $$0, double $$1, double $$2, double $$3, hbp $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      het $$5 = $$4.a(this.r);
-      if ($$5 != null) {
-         this.a($$5);
-      } else {
-         this.a(flk.Q().a(hes.d).apply(hei.c()));
+   public static class a extends gid.a<gic> {
+      public a(gic $$0, AbuseReportLimits $$1) {
+         super($$0, $$1);
       }
 
-      this.u = 1.0F;
-      this.D /= 2.0F;
-      this.a = this.r.i() * 3.0F;
-      this.b = this.r.i() * 3.0F;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.a((this.a + 1.0F) / 4.0F);
-   }
-
-   @Override
-   protected float d() {
-      return this.E.a(this.a / 4.0F);
-   }
-
-   @Override
-   protected float e() {
-      return this.E.c(this.b / 4.0F);
-   }
-
-   @Override
-   protected float f() {
-      return this.E.c((this.b + 1.0F) / 4.0F);
-   }
-
-   public static class a extends gic.b<lx> {
-      public gji a(lx $$0, gga $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gic($$1, $$2, $$3, $$4, this.a(new cwq(cwu.cT), $$1));
+      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
+         super(new gic(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
       }
-   }
 
-   public abstract static class b<T extends lr> implements gjl<T> {
-      private final hbp a = new hbp();
-
-      protected hbp a(cwq $$0, gga $$1) {
-         flk.Q().bf().a(this.a, $$0, cwo.h, false, $$1, null, 0);
-         return this.a;
+      @Override
+      public boolean b() {
+         return StringUtils.isNotEmpty(this.g());
       }
-   }
 
-   public static class c extends gic.b<lp> {
-      public gji a(lp $$0, gga $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gic($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a($$0.b(), $$1));
+      @Nullable
+      @Override
+      public gid.b c() {
+         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? gid.b.d : super.c();
       }
-   }
 
-   public static class d extends gic.b<lx> {
-      public gji a(lx $$0, gga $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gic($$1, $$2, $$3, $$4, this.a(new cwq(cwu.rx), $$1));
-      }
-   }
-
-   public static class e extends gic.b<lx> {
-      public gji a(lx $$0, gga $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gic($$1, $$2, $$3, $$4, this.a(new cwq(cwu.rj), $$1));
+      @Override
+      public Either<gid.c, gid.b> a(gih $$0) {
+         gid.b $$1 = this.c();
+         if ($$1 != null) {
+            return Either.right($$1);
+         } else {
+            ReportedEntity $$2 = new ReportedEntity(this.a.c);
+            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
+            return Either.left(new gid.c(this.a.a, gig.c, $$3));
+         }
       }
    }
 }

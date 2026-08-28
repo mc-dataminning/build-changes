@@ -6,7 +6,7 @@ public class abm implements yw<abl> {
    private static final double c = 3.9;
    private final int d;
    private final UUID e;
-   private final but<?> f;
+   private final bvi<?> f;
    private final double g;
    private final double h;
    private final double i;
@@ -18,19 +18,19 @@ public class abm implements yw<abl> {
    private final byte o;
    private final int p;
 
-   public abm(bum $$0, arb $$1) {
+   public abm(bva $$0, arb $$1) {
       this($$0, $$1, 0);
    }
 
-   public abm(bum $$0, arb $$1, int $$2) {
-      this($$0.ar(), $$0.cG(), $$1.b().a(), $$1.b().b(), $$1.b().c(), $$1.d(), $$1.e(), $$0.aq(), $$2, $$1.c(), (double)$$1.f());
+   public abm(bva $$0, arb $$1, int $$2) {
+      this($$0.ar(), $$0.cF(), $$1.b().a(), $$1.b().b(), $$1.b().c(), $$1.d(), $$1.e(), $$0.aq(), $$2, $$1.c(), (double)$$1.f());
    }
 
-   public abm(bum $$0, int $$1, ji $$2) {
-      this($$0.ar(), $$0.cG(), (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$0.dN(), $$0.dL(), $$0.aq(), $$1, $$0.dy(), (double)$$0.cA());
+   public abm(bva $$0, int $$1, ji $$2) {
+      this($$0.ar(), $$0.cF(), (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$0.dM(), $$0.dK(), $$0.aq(), $$1, $$0.dx(), (double)$$0.cz());
    }
 
-   public abm(int $$0, UUID $$1, double $$2, double $$3, double $$4, float $$5, float $$6, but<?> $$7, int $$8, fbb $$9, double $$10) {
+   public abm(int $$0, UUID $$1, double $$2, double $$3, double $$4, float $$5, float $$6, bvi<?> $$7, int $$8, fbx $$9, double $$10) {
       this.d = $$0;
       this.e = $$1;
       this.g = $$2;
@@ -80,7 +80,7 @@ public class abm implements yw<abl> {
 
    @Override
    public yy<abm> a() {
-      return age.c;
+      return agd.c;
    }
 
    public void a(abl $$0) {
@@ -95,7 +95,7 @@ public class abm implements yw<abl> {
       return this.e;
    }
 
-   public but<?> f() {
+   public bvi<?> f() {
       return this.f;
    }
 

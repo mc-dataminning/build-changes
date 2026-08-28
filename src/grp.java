@@ -1,27 +1,45 @@
-public class grp extends gtl<chf, gzl, gbr> {
-   private static final akv a = akv.b("textures/entity/fish/cod.png");
+import com.google.common.collect.Lists;
+import java.util.List;
 
-   public grp(gsf.a $$0) {
-      super($$0, new gbr($$0.a(gfd.Z)), 0.3F);
+public class grp implements gqy.a {
+   private final List<ji> a = Lists.newArrayList();
+   private final List<Float> b = Lists.newArrayList();
+   private final List<Float> c = Lists.newArrayList();
+   private final List<Float> d = Lists.newArrayList();
+   private final List<Float> e = Lists.newArrayList();
+   private final List<Float> f = Lists.newArrayList();
+
+   public void a(ji $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a.add($$0);
+      this.b.add($$1);
+      this.c.add($$5);
+      this.d.add($$2);
+      this.e.add($$3);
+      this.f.add($$4);
    }
 
    @Override
-   public akv b(gzl $$0) {
-      return a;
-   }
+   public void a(fgr $$0, gmx $$1, double $$2, double $$3, double $$4) {
+      fgv $$5 = $$1.getBuffer(gnh.B());
 
-   public gzl a() {
-      return new gzl();
-   }
-
-   @Override
-   protected void a(gzl $$0, ffv $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = 4.3F * ayz.a(0.6F * $$0.u);
-      $$1.a(a.d.rotationDegrees($$4));
-      if (!$$0.ak) {
-         $$1.a(0.1F, 0.1F, -0.1F);
-         $$1.a(a.f.rotationDegrees(90.0F));
+      for (int $$6 = 0; $$6 < this.a.size(); $$6++) {
+         ji $$7 = this.a.get($$6);
+         Float $$8 = this.b.get($$6);
+         float $$9 = $$8 / 2.0F;
+         gnr.b(
+            $$0,
+            $$5,
+            (double)((float)$$7.u() + 0.5F - $$9) - $$2,
+            (double)((float)$$7.v() + 0.5F - $$9) - $$3,
+            (double)((float)$$7.w() + 0.5F - $$9) - $$4,
+            (double)((float)$$7.u() + 0.5F + $$9) - $$2,
+            (double)((float)$$7.v() + 0.5F + $$9) - $$3,
+            (double)((float)$$7.w() + 0.5F + $$9) - $$4,
+            this.d.get($$6),
+            this.e.get($$6),
+            this.f.get($$6),
+            this.c.get($$6)
+         );
       }
    }
 }

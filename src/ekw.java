@@ -1,76 +1,61 @@
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import org.apache.commons.lang3.mutable.Mutable;
-import org.apache.commons.lang3.mutable.MutableObject;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.Optional;
+import java.util.function.BiConsumer;
 
-public class ekw extends ekx {
-   public static final MapCodec<ekw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("leaves_probability").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("trunk_probability").forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("ground_probability").forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, ekw::new)
-   );
-   private final float b;
-   private final float c;
-   private final float d;
+public abstract class ekw {
+   public static final Codec<ekw> d = mb.W.q().dispatch(ekw::a, ekx::a);
+   protected final bsd e;
+   protected final ekz f;
+   protected final Optional<ekt> g;
 
-   @Override
-   protected eky<?> a() {
-      return eky.c;
+   protected static <P extends ekw> P3<Mu<P>, bsd, ekz, Optional<ekt>> a(Instance<P> $$0) {
+      return $$0.group(
+         bsd.c.fieldOf("trunk_offset_y").forGetter($$0x -> $$0x.e),
+         ekz.a.fieldOf("root_provider").forGetter($$0x -> $$0x.f),
+         ekt.a.optionalFieldOf("above_root_placement").forGetter($$0x -> $$0x.g)
+      );
    }
 
-   public ekw(float $$0, float $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public ekw(bsd $$0, ekz $$1, Optional<ekt> $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Override
-   public void a(ekx.a $$0) {
-      azh $$1 = $$0.b();
-      dhh $$2 = (dhh)$$0.a();
-      List<ji> $$3 = af.a($$0.c(), $$1);
-      if (!$$3.isEmpty()) {
-         Mutable<ji> $$4 = new MutableObject($$3.getFirst());
-         $$3.forEach($$1x -> {
-            if ($$1x.v() < ((ji)$$4.getValue()).v()) {
-               $$4.setValue($$1x);
+   protected abstract ekx<?> a();
+
+   public abstract boolean a(dhf var1, BiConsumer<ji, dxq> var2, azh var3, ji var4, ji var5, eju var6);
+
+   protected boolean a(dhf $$0, ji $$1) {
+      return eig.d($$0, $$1);
+   }
+
+   protected void a(dhf $$0, BiConsumer<ji, dxq> $$1, azh $$2, ji $$3, eju $$4) {
+      if (this.a($$0, $$3)) {
+         $$1.accept($$3, this.a($$0, $$3, this.f.a($$2, $$3)));
+         if (this.g.isPresent()) {
+            ekt $$5 = this.g.get();
+            ji $$6 = $$3.d();
+            if ($$2.i() < $$5.b() && $$0.a($$6, dxp.a::l)) {
+               $$1.accept($$6, this.a($$0, $$6, $$5.a().a($$2, $$6)));
             }
-         });
-         ji $$5 = (ji)$$4.getValue();
-         if ($$1.i() < this.d) {
-            $$2.K_().a(mc.aL).flatMap($$0x -> $$0x.a(rl.F)).ifPresent($$3x -> ((efl)$$3x.a()).a($$2, $$2.a().m().g(), $$1, $$5.d()));
          }
-
-         $$0.c().forEach($$2x -> {
-            if ($$1.i() < this.c) {
-               ji $$3x = $$2x.e();
-               if ($$0.a($$3x)) {
-                  a($$3x, $$0);
-               }
-            }
-         });
-         $$0.d().forEach($$2x -> {
-            if ($$1.i() < this.b) {
-               ji $$3x = $$2x.e();
-               if ($$0.a($$3x)) {
-                  a($$3x, $$0);
-               }
-            }
-         });
       }
    }
 
-   private static void a(ji $$0, ekx.a $$1) {
-      while ($$1.a($$0.e()) && !((double)$$1.b().i() < 0.5)) {
-         $$1.a($$0, djp.tY.m().b(dnf.b, Boolean.valueOf(false)));
-         $$0 = $$0.e();
+   protected dxq a(dhf $$0, ji $$1, dxq $$2) {
+      if ($$2.b(dyg.I)) {
+         boolean $$3 = $$0.b($$1, $$0x -> $$0x.a(awv.a));
+         return $$2.b(dyg.I, Boolean.valueOf($$3));
+      } else {
+         return $$2;
       }
+   }
 
-      $$1.a($$0, djp.tY.m().b(dnf.b, Boolean.valueOf(true)));
+   public ji a(ji $$0, azh $$1) {
+      return $$0.b(this.e.a($$1));
    }
 }

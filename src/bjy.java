@@ -4,32 +4,13 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bjy extends bjm {
+public class bjy extends Schema {
    public bjy(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.registerSimple($$1, "minecraft:egg");
-      $$0.registerSimple($$1, "minecraft:ender_pearl");
-      $$0.registerSimple($$1, "minecraft:fireball");
-      $$0.register($$1, "minecraft:potion", $$1x -> DSL.optionalFields("Potion", bhy.t.in($$0)));
-      $$0.registerSimple($$1, "minecraft:small_fireball");
-      $$0.registerSimple($$1, "minecraft:snowball");
-      $$0.registerSimple($$1, "minecraft:wither_skull");
-      $$0.registerSimple($$1, "minecraft:xp_bottle");
-      $$0.register($$1, "minecraft:arrow", () -> DSL.optionalFields("inBlockState", bhy.u.in($$0)));
-      $$0.register($$1, "minecraft:enderman", () -> DSL.optionalFields("carriedBlockState", bhy.u.in($$0), bjn.a($$0)));
-      $$0.register($$1, "minecraft:falling_block", () -> DSL.optionalFields("BlockState", bhy.u.in($$0), "TileEntityData", bhy.s.in($$0)));
-      $$0.register($$1, "minecraft:spectral_arrow", () -> DSL.optionalFields("inBlockState", bhy.u.in($$0)));
-      $$0.register($$1, "minecraft:chest_minecart", () -> DSL.optionalFields("DisplayState", bhy.u.in($$0), "Items", DSL.list(bhy.t.in($$0))));
-      $$0.register($$1, "minecraft:commandblock_minecart", () -> DSL.optionalFields("DisplayState", bhy.u.in($$0)));
-      $$0.register($$1, "minecraft:furnace_minecart", () -> DSL.optionalFields("DisplayState", bhy.u.in($$0)));
-      $$0.register($$1, "minecraft:hopper_minecart", () -> DSL.optionalFields("DisplayState", bhy.u.in($$0), "Items", DSL.list(bhy.t.in($$0))));
-      $$0.register($$1, "minecraft:minecart", () -> DSL.optionalFields("DisplayState", bhy.u.in($$0)));
-      $$0.register($$1, "minecraft:spawner_minecart", () -> DSL.optionalFields("DisplayState", bhy.u.in($$0), bhy.F.in($$0)));
-      $$0.register($$1, "minecraft:tnt_minecart", () -> DSL.optionalFields("DisplayState", bhy.u.in($$0)));
-      return $$1;
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(true, bic.G, () -> DSL.optionalFields("SpawnPotentials", DSL.list(DSL.fields("Entity", bic.B.in($$0))), "SpawnData", bic.B.in($$0)));
    }
 }

@@ -1,24 +1,21 @@
-class btw extends btp {
-   protected btw(btq $$0, int $$1, lr $$2) {
-      super($$0, $$1, $$2);
+class btw extends buc {
+   protected btw(bud $$0, int $$1) {
+      super($$0, $$1);
+   }
+
+   @Override
+   public boolean a(ard $$0, bvy $$1, int $$2) {
+      return $$1.fy() > 0.0F;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 == 1;
+      return true;
    }
 
    @Override
-   public boolean a(ard $$0, bvi $$1, int $$2) {
-      if ($$1 instanceof are $$3 && !$$1.Z_()) {
-         ji $$4 = $$3.ag();
-         if ($$4 != null) {
-            $$0.B().a($$3, $$4);
-            $$3.af();
-            return false;
-         }
-      }
-
-      return true;
+   public void a(bvy $$0, int $$1) {
+      super.a($$0, $$1);
+      $$0.F(Math.max($$0.fy(), (float)(4 * (1 + $$1))));
    }
 }

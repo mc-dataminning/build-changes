@@ -1,25 +1,32 @@
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.mojang.serialization.MapCodec;
 
-public interface hey {
-   ako a = new ako("textures", ".png");
+public class hey implements her {
+   private final gfg a;
 
-   void a(aup var1, hey.a var2);
-
-   hfa a();
-
-   public interface a {
-      default void a(akv $$0, aun $$1) {
-         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
-      }
-
-      void a(akv var1, hey.b var2);
-
-      void a(Predicate<akv> var1);
+   public hey(gfg $$0) {
+      this.a = $$0;
    }
 
-   public interface b extends Function<hex, hen> {
-      default void a() {
+   @Override
+   public void a(cxf $$0, fgr $$1, gmx $$2, int $$3, int $$4, boolean $$5) {
+      $$1.a();
+      $$1.b(1.0F, -1.0F, -1.0F);
+      fgv $$6 = gub.a($$2, this.a.a(gfg.a), false, $$5);
+      this.a.a($$1, $$6, $$3, $$4);
+      $$1.b();
+   }
+
+   public static record a() implements hev.a {
+      public static final MapCodec<hey.a> a = MapCodec.unit(new hey.a());
+
+      @Override
+      public MapCodec<hey.a> a() {
+         return a;
+      }
+
+      @Override
+      public hev<?> a(gfy $$0) {
+         return new hey(new gfg($$0.a(ggb.dn)));
       }
    }
 }

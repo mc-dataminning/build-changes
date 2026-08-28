@@ -1,47 +1,15 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.ints.IntSets;
-import java.util.Map;
-import javax.annotation.Nullable;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.system.MemoryUtil;
 
-public class fdw implements fdu {
-   private final Int2ObjectMap<fdt.a> b;
-
-   public fdw(Map<Integer, Float> $$0) {
-      this.b = new Int2ObjectOpenHashMap($$0.size());
-      $$0.forEach(($$0x, $$1) -> this.b.put($$0x, (fdt.a)() -> $$1));
+public class fdw {
+   public static void a() {
+      MemoryUtil.memSet(0L, 0, 1L);
    }
 
-   @Nullable
-   @Override
-   public fdt a(int $$0) {
-      return (fdt)this.b.get($$0);
+   public static double b() {
+      return GLFW.glfwGetTime();
    }
 
-   @Override
-   public IntSet a() {
-      return IntSets.unmodifiable(this.b.keySet());
-   }
-
-   public static record a(Map<Integer, Float> c) implements frx {
-      public static final MapCodec<fdw.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.unboundedMap(ayi.B, Codec.FLOAT).fieldOf("advances").forGetter(fdw.a::c)).apply($$0, fdw.a::new)
-      );
-
-      @Override
-      public fry a() {
-         return fry.c;
-      }
-
-      @Override
-      public Either<frx.b, frx.c> b() {
-         frx.b $$0 = $$0x -> new fdw(this.c);
-         return Either.left($$0);
-      }
+   private fdw() {
    }
 }

@@ -1,20 +1,40 @@
-public class gcw extends gcc<gzo> {
-   public gcw(gfe $$0) {
+public class gcw extends gda<haa> {
+   public static final ggl a = ggl.scaling(0.5F);
+   private final ggc b;
+   private final ggc c;
+
+   public gcw(ggc $$0) {
       super($$0);
+      this.c = $$0.b("left_wing");
+      this.b = $$0.b("right_wing");
    }
 
-   public static gfk a() {
-      gfm $$0 = new gfm();
-      gfo $$1 = $$0.a();
-      int $$2 = 20;
-      int $$3 = 8;
-      int $$4 = 16;
-      int $$5 = 4;
-      $$1.a("bottom", gfj.c().a(0, 10).a(-10.0F, -8.0F, -1.0F, 20.0F, 16.0F, 2.0F), gfg.a(0.0F, 4.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      $$1.a("front", gfj.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), gfg.a(-9.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
-      $$1.a("back", gfj.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), gfg.a(9.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      $$1.a("left", gfj.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), gfg.a(0.0F, 4.0F, -7.0F, 0.0F, (float) Math.PI, 0.0F));
-      $$1.a("right", gfj.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), gfg.a(0.0F, 4.0F, 7.0F));
-      return gfk.a($$0, 64, 32);
+   public static ggi a() {
+      ggk $$0 = new ggk();
+      ggm $$1 = $$0.a();
+      ggg $$2 = new ggg(1.0F);
+      $$1.a(
+         "left_wing",
+         ggh.c().a(22, 0).a(-10.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
+         gge.a(5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12))
+      );
+      $$1.a(
+         "right_wing",
+         ggh.c().a(22, 0).a().a(0.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
+         gge.a(-5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12))
+      );
+      return ggi.a($$0, 64, 32);
+   }
+
+   public void a(haa $$0) {
+      super.a($$0);
+      this.c.c = $$0.N ? 3.0F : 0.0F;
+      this.c.e = $$0.S;
+      this.c.g = $$0.U;
+      this.c.f = $$0.T;
+      this.b.f = -this.c.f;
+      this.b.c = this.c.c;
+      this.b.e = this.c.e;
+      this.b.g = -this.c.g;
    }
 }

@@ -1,11 +1,15 @@
-import javax.annotation.Nullable;
+public enum dzg {
+   a(4259712),
+   b(16724016),
+   c(2138367);
 
-public interface dzg {
-   @Nullable
-   dzf c(int var1, int var2);
+   private final int d;
 
-   default void a(dgs $$0, kk $$1) {
+   private dzg(final int $$0) {
+      this.d = $$0;
    }
 
-   dfo q();
+   public int a() {
+      return this.d;
+   }
 }

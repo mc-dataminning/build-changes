@@ -1,77 +1,35 @@
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap;
 
-public class cbq extends cbx {
-   private static final int g = 240;
-   private final Predicate<bsi> h;
-   protected int a;
-   protected int b = -1;
-   protected int c = -1;
+public class cbq<E extends cou> extends bxr<E> {
+   private static final double c = 6.0;
+   private static final double d = 20.0;
 
-   public cbq(bvk $$0, Predicate<bsi> $$1) {
-      super($$0);
-      this.h = $$1;
+   public cbq(int $$0) {
+      super(ImmutableMap.of(cfc.aB, cfd.a, cfc.o, cfd.b, cfc.m, cfd.b, cfc.n, cfd.c, cfc.B, cfd.c, cfc.az, cfd.c, cfc.aG, cfd.c), $$0);
    }
 
-   public cbq(bvk $$0, int $$1, Predicate<bsi> $$2) {
-      this($$0, $$2);
-      this.c = $$1;
+   protected boolean a(ard $$0, E $$1, long $$2) {
+      return true;
    }
 
-   protected int f() {
-      return Math.max(240, this.c);
+   protected void b(ard $$0, E $$1, long $$2) {
+      $$1.a(awa.CT, 5.0F, 1.0F);
    }
 
-   @Override
-   public boolean b() {
-      if (!super.b()) {
-         return false;
-      } else {
-         return !a(this.d).O().b(dgf.c) ? false : this.a(this.d.dV().am()) && !this.h();
+   protected void c(ard $$0, E $$1, long $$2) {
+      if ($$1.c(bwk.m)) {
+         $$1.b(bwk.a);
       }
-   }
 
-   @Override
-   public void d() {
-      super.d();
-      this.a = 0;
-   }
-
-   @Override
-   public boolean c() {
-      return this.a <= this.f() && !this.h() && this.e.a(this.d.dt(), 2.0) && this.a(this.d.dV().am());
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.d.dV().a(this.d.ar(), this.e, -1);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      if (this.d.dY().a(20) == 0) {
-         this.d.dV().c(1019, this.e, 0);
-         if (!this.d.aI) {
-            this.d.a(this.d.fA());
+      $$1.ea().b(cfc.aB);
+      $$1.ea().c(cfc.B).filter($$1::b).ifPresent($$1x -> {
+         if ($$1.a($$1x, 6.0, 20.0)) {
+            $$1.d($$1x);
          }
-      }
 
-      this.a++;
-      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
-      if ($$0 != this.b) {
-         this.d.dV().a(this.d.ar(), this.e, $$0);
-         this.b = $$0;
-      }
-
-      if (this.a == this.f() && this.a(this.d.dV().am())) {
-         this.d.dV().a(this.e, false);
-         this.d.dV().c(1021, this.e, 0);
-         this.d.dV().c(2001, this.e, djn.j(this.d.dV().a_(this.e)));
-      }
-   }
-
-   private boolean a(bsi $$0) {
-      return this.h.test($$0);
+         if (!$$1.ea().a(cfc.az)) {
+            cov.a($$1, $$1x.du());
+         }
+      });
    }
 }

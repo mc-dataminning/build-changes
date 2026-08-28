@@ -1,31 +1,37 @@
-import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public record eup(akv d, boolean e, int f, boolean g, boolean h) {
-   public static final int a = -1;
-   public static final Codec<jr<eup>> b = mb.ar.r();
-   public static final yn<wa, jr<eup>> c = yl.b(mc.aC);
+public class eup {
+   private final dgj a;
+   @Nullable
+   private final euo b;
+   private final ji c;
+   private final ji.a d = new ji.a();
 
-   public boolean a() {
-      return this.f != -1;
+   public eup(dgj $$0, bwa $$1) {
+      this.a = $$0;
+      if ($$1.dU() instanceof ard $$2) {
+         this.b = $$2.I();
+      } else {
+         this.b = null;
+      }
+
+      this.c = $$1.du();
    }
 
-   public akv b() {
-      return this.d;
+   public eun a(int $$0, int $$1, int $$2) {
+      ji $$3 = this.d.d($$0, $$1, $$2);
+      return this.b == null ? eus.b(this.a, $$3) : this.b.a(this.a, $$3);
    }
 
-   public boolean c() {
-      return this.e;
+   public dxq a(ji $$0) {
+      return this.a.a_($$0);
    }
 
-   public int d() {
-      return this.f;
+   public dgj a() {
+      return this.a;
    }
 
-   public boolean e() {
-      return this.g;
-   }
-
-   public boolean f() {
-      return this.h;
+   public ji b() {
+      return this.c;
    }
 }

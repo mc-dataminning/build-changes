@@ -1,6 +1,3 @@
-public interface bnu {
-   bnu a = () -> {
-   };
-
-   void cut();
+public enum bnu {
+   a;
 }

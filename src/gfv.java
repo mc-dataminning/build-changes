@@ -1,103 +1,38 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class gfv extends gex {
+   private final ggc a;
+   private final ggc b;
 
-public class gfv {
-   private static final Logger a = LogUtils.getLogger();
-   private final flk b;
-   private final hkj c;
-   private final an d = new an();
-   private final Map<ai, ak> e = new Object2ObjectOpenHashMap();
-   @Nullable
-   private gfv.a f;
-   @Nullable
-   private ai g;
-
-   public gfv(flk $$0, hkj $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public gfv(ggc $$0) {
+      super($$0);
+      this.a = $$0.b("head");
+      this.b = this.a.b("jaw");
    }
 
-   public void a(afx $$0) {
-      if ($$0.g()) {
-         this.d.a();
-         this.e.clear();
-      }
-
-      this.d.a($$0.e());
-      this.d.a($$0.b());
-
-      for (Entry<akv, ak> $$1 : $$0.f().entrySet()) {
-         aj $$2 = this.d.a($$1.getKey());
-         if ($$2 != null) {
-            ak $$3 = $$1.getValue();
-            $$3.a($$2.a().f());
-            this.e.put($$2.b(), $$3);
-            if (this.f != null) {
-               this.f.a($$2, $$3);
-            }
-
-            if (!$$0.g() && $$3.a()) {
-               if (this.b.s != null) {
-                  this.c.a(this.b.s, $$2.b());
-               }
-
-               Optional<au> $$4 = $$2.a().c();
-               if ($$4.isPresent() && $$4.get().h()) {
-                  this.b.aA().a(new frb($$2.b()));
-               }
-            }
-         } else {
-            a.warn("Server informed client about progress for unknown advancement {}", $$1.getKey());
-         }
-      }
+   public static ggi a() {
+      ggk $$0 = new ggk();
+      ggm $$1 = $$0.a();
+      float $$2 = -16.0F;
+      ggm $$3 = $$1.a(
+         "head",
+         ggh.c()
+            .a("upper_lip", -6.0F, -1.0F, -24.0F, 12, 5, 16, 176, 44)
+            .a("upper_head", -8.0F, -8.0F, -10.0F, 16, 16, 16, 112, 30)
+            .a(true)
+            .a("scale", -5.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
+            .a("nostril", -5.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0)
+            .a(false)
+            .a("scale", 3.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
+            .a("nostril", 3.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0),
+         gge.a(0.0F, -7.986666F, 0.0F).b(0.75F)
+      );
+      $$3.a("jaw", ggh.c().a(176, 65).a("jaw", -6.0F, 0.0F, -16.0F, 12.0F, 4.0F, 16.0F), gge.a(0.0F, 4.0F, -8.0F));
+      return ggi.a($$0, 256, 256);
    }
 
-   public an a() {
-      return this.d;
-   }
-
-   public void a(@Nullable ai $$0, boolean $$1) {
-      ggb $$2 = this.b.L();
-      if ($$2 != null && $$0 != null && $$1) {
-         $$2.b(aht.a($$0));
-      }
-
-      if (this.g != $$0) {
-         this.g = $$0;
-         if (this.f != null) {
-            this.f.a($$0);
-         }
-      }
-   }
-
-   public void a(@Nullable gfv.a $$0) {
-      this.f = $$0;
-      this.d.a($$0);
-      if ($$0 != null) {
-         this.e.forEach(($$1, $$2) -> {
-            aj $$3 = this.d.a($$1);
-            if ($$3 != null) {
-               $$0.a($$3, $$2);
-            }
-         });
-         $$0.a(this.g);
-      }
-   }
-
-   @Nullable
-   public ai a(akv $$0) {
-      aj $$1 = this.d.a($$0);
-      return $$1 != null ? $$1.b() : null;
-   }
-
-   public interface a extends an.a {
-      void a(aj var1, ak var2);
-
-      void a(@Nullable ai var1);
+   @Override
+   public void a(float $$0, float $$1, float $$2) {
+      this.b.e = (float)(Math.sin((double)($$0 * (float) Math.PI * 0.2F)) + 1.0) * 0.2F;
+      this.a.f = $$1 * (float) (Math.PI / 180.0);
+      this.a.e = $$2 * (float) (Math.PI / 180.0);
    }
 }

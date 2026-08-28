@@ -1,7 +1,7 @@
 import java.util.UUID;
 
-public record xa(UUID a, cpa b) {
-   public static xa a(cpa $$0) {
+public record xa(UUID a, cpt b) {
+   public static xa a(cpt $$0) {
       return new xa(UUID.randomUUID(), $$0);
    }
 
@@ -17,7 +17,7 @@ public record xa(UUID a, cpa b) {
       return this.a;
    }
 
-   public cpa c() {
+   public cpt c() {
       return this.b;
    }
 }

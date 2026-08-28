@@ -1,51 +1,53 @@
-public class cbg extends cbj {
-   private final int l;
-   private final boolean m;
+import com.mojang.datafixers.kinds.Const;
+import com.mojang.datafixers.kinds.IdF;
+import com.mojang.datafixers.kinds.K1;
+import com.mojang.datafixers.kinds.OptionalBox;
+import com.mojang.datafixers.kinds.Const.Mu;
+import com.mojang.datafixers.util.Unit;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public cbg(bvk $$0, int $$1, boolean $$2) {
-      super($$0);
-      this.l = $$1;
-      this.m = $$2;
+public interface cbg<F extends K1, Value> {
+   cfc<Value> a();
+
+   cfd b();
+
+   @Nullable
+   cbf<F, Value> a(bxa<?> var1, Optional<Value> var2);
+
+   public static record a<Value>(cfc<Value> a) implements cbg<Mu<Unit>, Value> {
+      @Override
+      public cfd b() {
+         return cfd.b;
+      }
+
+      @Override
+      public cbf<Mu<Unit>, Value> a(bxa<?> $$0, Optional<Value> $$1) {
+         return $$1.isPresent() ? null : new cbf<>($$0, this.a, Const.create(Unit.INSTANCE));
+      }
    }
 
-   @Override
-   public void a() {
-      if (this.k == cbj.a.b) {
-         this.k = cbj.a.a;
-         this.d.f(true);
-         double $$0 = this.e - this.d.dA();
-         double $$1 = this.f - this.d.dC();
-         double $$2 = this.g - this.d.dG();
-         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
-         if ($$3 < 2.5000003E-7F) {
-            this.d.H(0.0F);
-            this.d.G(0.0F);
-            return;
-         }
+   public static record b<Value>(cfc<Value> a) implements cbg<com.mojang.datafixers.kinds.IdF.Mu, Value> {
+      @Override
+      public cfd b() {
+         return cfd.a;
+      }
 
-         float $$4 = (float)(ayz.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
-         this.d.v(this.b(this.d.dL(), $$4, 90.0F));
-         float $$5;
-         if (this.d.aJ()) {
-            $$5 = (float)(this.h * this.d.h(bwq.v));
-         } else {
-            $$5 = (float)(this.h * this.d.h(bwq.l));
-         }
+      @Override
+      public cbf<com.mojang.datafixers.kinds.IdF.Mu, Value> a(bxa<?> $$0, Optional<Value> $$1) {
+         return $$1.isEmpty() ? null : new cbf<>($$0, this.a, IdF.create($$1.get()));
+      }
+   }
 
-         this.d.C($$5);
-         double $$7 = Math.sqrt($$0 * $$0 + $$2 * $$2);
-         if (Math.abs($$1) > 1.0E-5F || Math.abs($$7) > 1.0E-5F) {
-            float $$8 = (float)(-(ayz.d($$1, $$7) * 180.0F / (float)Math.PI));
-            this.d.w(this.b(this.d.dN(), $$8, (float)this.l));
-            this.d.H($$1 > 0.0 ? $$5 : -$$5);
-         }
-      } else {
-         if (!this.m) {
-            this.d.f(false);
-         }
+   public static record c<Value>(cfc<Value> a) implements cbg<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
+      @Override
+      public cfd b() {
+         return cfd.c;
+      }
 
-         this.d.H(0.0F);
-         this.d.G(0.0F);
+      @Override
+      public cbf<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> a(bxa<?> $$0, Optional<Value> $$1) {
+         return new cbf<>($$0, this.a, OptionalBox.create($$1));
       }
    }
 }

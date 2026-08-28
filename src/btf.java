@@ -1,103 +1,229 @@
-public interface btf {
-   aku<bte> a = aku.a(mc.s, akv.b("in_fire"));
-   aku<bte> b = aku.a(mc.s, akv.b("campfire"));
-   aku<bte> c = aku.a(mc.s, akv.b("lightning_bolt"));
-   aku<bte> d = aku.a(mc.s, akv.b("on_fire"));
-   aku<bte> e = aku.a(mc.s, akv.b("lava"));
-   aku<bte> f = aku.a(mc.s, akv.b("hot_floor"));
-   aku<bte> g = aku.a(mc.s, akv.b("in_wall"));
-   aku<bte> h = aku.a(mc.s, akv.b("cramming"));
-   aku<bte> i = aku.a(mc.s, akv.b("drown"));
-   aku<bte> j = aku.a(mc.s, akv.b("starve"));
-   aku<bte> k = aku.a(mc.s, akv.b("cactus"));
-   aku<bte> l = aku.a(mc.s, akv.b("fall"));
-   aku<bte> m = aku.a(mc.s, akv.b("ender_pearl"));
-   aku<bte> n = aku.a(mc.s, akv.b("fly_into_wall"));
-   aku<bte> o = aku.a(mc.s, akv.b("out_of_world"));
-   aku<bte> p = aku.a(mc.s, akv.b("generic"));
-   aku<bte> q = aku.a(mc.s, akv.b("magic"));
-   aku<bte> r = aku.a(mc.s, akv.b("wither"));
-   aku<bte> s = aku.a(mc.s, akv.b("dragon_breath"));
-   aku<bte> t = aku.a(mc.s, akv.b("dry_out"));
-   aku<bte> u = aku.a(mc.s, akv.b("sweet_berry_bush"));
-   aku<bte> v = aku.a(mc.s, akv.b("freeze"));
-   aku<bte> w = aku.a(mc.s, akv.b("stalagmite"));
-   aku<bte> x = aku.a(mc.s, akv.b("falling_block"));
-   aku<bte> y = aku.a(mc.s, akv.b("falling_anvil"));
-   aku<bte> z = aku.a(mc.s, akv.b("falling_stalactite"));
-   aku<bte> A = aku.a(mc.s, akv.b("sting"));
-   aku<bte> B = aku.a(mc.s, akv.b("mob_attack"));
-   aku<bte> C = aku.a(mc.s, akv.b("mob_attack_no_aggro"));
-   aku<bte> D = aku.a(mc.s, akv.b("player_attack"));
-   aku<bte> E = aku.a(mc.s, akv.b("arrow"));
-   aku<bte> F = aku.a(mc.s, akv.b("trident"));
-   aku<bte> G = aku.a(mc.s, akv.b("mob_projectile"));
-   aku<bte> H = aku.a(mc.s, akv.b("spit"));
-   aku<bte> I = aku.a(mc.s, akv.b("wind_charge"));
-   aku<bte> J = aku.a(mc.s, akv.b("fireworks"));
-   aku<bte> K = aku.a(mc.s, akv.b("fireball"));
-   aku<bte> L = aku.a(mc.s, akv.b("unattributed_fireball"));
-   aku<bte> M = aku.a(mc.s, akv.b("wither_skull"));
-   aku<bte> N = aku.a(mc.s, akv.b("thrown"));
-   aku<bte> O = aku.a(mc.s, akv.b("indirect_magic"));
-   aku<bte> P = aku.a(mc.s, akv.b("thorns"));
-   aku<bte> Q = aku.a(mc.s, akv.b("explosion"));
-   aku<bte> R = aku.a(mc.s, akv.b("player_explosion"));
-   aku<bte> S = aku.a(mc.s, akv.b("sonic_boom"));
-   aku<bte> T = aku.a(mc.s, akv.b("bad_respawn_point"));
-   aku<bte> U = aku.a(mc.s, akv.b("outside_border"));
-   aku<bte> V = aku.a(mc.s, akv.b("generic_kill"));
-   aku<bte> W = aku.a(mc.s, akv.b("mace_smash"));
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-   static void a(qe<bte> $$0) {
-      $$0.a(a, new bte("inFire", 0.1F, bta.d));
-      $$0.a(b, new bte("inFire", 0.1F, bta.d));
-      $$0.a(c, new bte("lightningBolt", 0.1F));
-      $$0.a(d, new bte("onFire", 0.0F, bta.d));
-      $$0.a(e, new bte("lava", 0.1F, bta.d));
-      $$0.a(f, new bte("hotFloor", 0.1F, bta.d));
-      $$0.a(g, new bte("inWall", 0.0F));
-      $$0.a(h, new bte("cramming", 0.0F));
-      $$0.a(i, new bte("drown", 0.0F, bta.c));
-      $$0.a(j, new bte("starve", 0.0F));
-      $$0.a(k, new bte("cactus", 0.1F));
-      $$0.a(l, new bte("fall", btb.b, 0.0F, bta.a, btg.b));
-      $$0.a(m, new bte("fall", btb.b, 0.0F, bta.a, btg.b));
-      $$0.a(n, new bte("flyIntoWall", 0.0F));
-      $$0.a(o, new bte("outOfWorld", 0.0F));
-      $$0.a(p, new bte("generic", 0.0F));
-      $$0.a(q, new bte("magic", 0.0F));
-      $$0.a(r, new bte("wither", 0.0F));
-      $$0.a(s, new bte("dragonBreath", 0.0F));
-      $$0.a(t, new bte("dryout", 0.1F));
-      $$0.a(u, new bte("sweetBerryBush", 0.1F, bta.e));
-      $$0.a(v, new bte("freeze", 0.0F, bta.f));
-      $$0.a(w, new bte("stalagmite", 0.0F));
-      $$0.a(x, new bte("fallingBlock", 0.1F));
-      $$0.a(y, new bte("anvil", 0.1F));
-      $$0.a(z, new bte("fallingStalactite", 0.1F));
-      $$0.a(A, new bte("sting", 0.1F));
-      $$0.a(B, new bte("mob", 0.1F));
-      $$0.a(C, new bte("mob", 0.1F));
-      $$0.a(D, new bte("player", 0.1F));
-      $$0.a(E, new bte("arrow", 0.1F));
-      $$0.a(F, new bte("trident", 0.1F));
-      $$0.a(G, new bte("mob", 0.1F));
-      $$0.a(H, new bte("mob", 0.1F));
-      $$0.a(J, new bte("fireworks", 0.1F));
-      $$0.a(L, new bte("onFire", 0.1F, bta.d));
-      $$0.a(K, new bte("fireball", 0.1F, bta.d));
-      $$0.a(M, new bte("witherSkull", 0.1F));
-      $$0.a(N, new bte("thrown", 0.1F));
-      $$0.a(O, new bte("indirectMagic", 0.0F));
-      $$0.a(P, new bte("thorns", 0.1F, bta.b));
-      $$0.a(Q, new bte("explosion", btb.c, 0.1F));
-      $$0.a(R, new bte("explosion.player", btb.c, 0.1F));
-      $$0.a(S, new bte("sonic_boom", btb.c, 0.0F));
-      $$0.a(T, new bte("badRespawnPoint", btb.c, 0.1F, bta.a, btg.c));
-      $$0.a(U, new bte("outsideBorder", 0.0F));
-      $$0.a(V, new bte("genericKill", 0.0F));
-      $$0.a(I, new bte("mob", 0.1F));
-      $$0.a(W, new bte("mace_smash", 0.1F));
+public class btf implements bsr, cuy {
+   private final int b;
+   private final ka<cxh> c;
+   @Nullable
+   private List<bst> d;
+
+   public btf(int $$0) {
+      this.b = $$0;
+      this.c = ka.a($$0, cxh.k);
+   }
+
+   public btf(cxh... $$0) {
+      this.b = $$0.length;
+      this.c = ka.a(cxh.k, $$0);
+   }
+
+   public void a(bst $$0) {
+      if (this.d == null) {
+         this.d = Lists.newArrayList();
+      }
+
+      this.d.add($$0);
+   }
+
+   public void b(bst $$0) {
+      if (this.d != null) {
+         this.d.remove($$0);
+      }
+   }
+
+   @Override
+   public cxh a(int $$0) {
+      return $$0 >= 0 && $$0 < this.c.size() ? this.c.get($$0) : cxh.k;
+   }
+
+   public List<cxh> f() {
+      List<cxh> $$0 = this.c.stream().filter($$0x -> !$$0x.f()).collect(Collectors.toList());
+      this.a();
+      return $$0;
+   }
+
+   @Override
+   public cxh a(int $$0, int $$1) {
+      cxh $$2 = bss.a(this.c, $$0, $$1);
+      if (!$$2.f()) {
+         this.e();
+      }
+
+      return $$2;
+   }
+
+   public cxh a(cxd $$0, int $$1) {
+      cxh $$2 = new cxh($$0, 0);
+
+      for (int $$3 = this.b - 1; $$3 >= 0; $$3--) {
+         cxh $$4 = this.a($$3);
+         if ($$4.h().equals($$0)) {
+            int $$5 = $$1 - $$2.M();
+            cxh $$6 = $$4.a($$5);
+            $$2.g($$6.M());
+            if ($$2.M() == $$1) {
+               break;
+            }
+         }
+      }
+
+      if (!$$2.f()) {
+         this.e();
+      }
+
+      return $$2;
+   }
+
+   public cxh b(cxh $$0) {
+      if ($$0.f()) {
+         return cxh.k;
+      } else {
+         cxh $$1 = $$0.v();
+         this.e($$1);
+         if ($$1.f()) {
+            return cxh.k;
+         } else {
+            this.d($$1);
+            return $$1.f() ? cxh.k : $$1;
+         }
+      }
+   }
+
+   public boolean c(cxh $$0) {
+      boolean $$1 = false;
+
+      for (cxh $$2 : this.c) {
+         if ($$2.f() || cxh.c($$2, $$0) && $$2.M() < $$2.k()) {
+            $$1 = true;
+            break;
+         }
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public cxh b(int $$0) {
+      cxh $$1 = this.c.get($$0);
+      if ($$1.f()) {
+         return cxh.k;
+      } else {
+         this.c.set($$0, cxh.k);
+         return $$1;
+      }
+   }
+
+   @Override
+   public void a(int $$0, cxh $$1) {
+      this.c.set($$0, $$1);
+      $$1.f(this.e_($$1));
+      this.e();
+   }
+
+   @Override
+   public int b() {
+      return this.b;
+   }
+
+   @Override
+   public boolean c() {
+      for (cxh $$0 : this.c) {
+         if (!$$0.f()) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public void e() {
+      if (this.d != null) {
+         for (bst $$0 : this.d) {
+            $$0.a(this);
+         }
+      }
+   }
+
+   @Override
+   public boolean a(cpr $$0) {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.c.clear();
+      this.e();
+   }
+
+   @Override
+   public void fillStackedContents(cpw $$0) {
+      for (cxh $$1 : this.c) {
+         $$0.b($$1);
+      }
+   }
+
+   @Override
+   public String toString() {
+      return this.c.stream().filter($$0 -> !$$0.f()).collect(Collectors.toList()).toString();
+   }
+
+   private void d(cxh $$0) {
+      for (int $$1 = 0; $$1 < this.b; $$1++) {
+         cxh $$2 = this.a($$1);
+         if ($$2.f()) {
+            this.a($$1, $$0.g());
+            return;
+         }
+      }
+   }
+
+   private void e(cxh $$0) {
+      for (int $$1 = 0; $$1 < this.b; $$1++) {
+         cxh $$2 = this.a($$1);
+         if (cxh.c($$2, $$0)) {
+            this.a($$0, $$2);
+            if ($$0.f()) {
+               return;
+            }
+         }
+      }
+   }
+
+   private void a(cxh $$0, cxh $$1) {
+      int $$2 = this.e_($$1);
+      int $$3 = Math.min($$0.M(), $$2 - $$1.M());
+      if ($$3 > 0) {
+         $$1.g($$3);
+         $$0.h($$3);
+         this.e();
+      }
+   }
+
+   public void a(tw $$0, jt.a $$1) {
+      this.a();
+
+      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
+         cxh.a($$1, (un)$$0.a($$2)).ifPresent(this::b);
+      }
+   }
+
+   public tw a(jt.a $$0) {
+      tw $$1 = new tw();
+
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         cxh $$3 = this.a($$2);
+         if (!$$3.f()) {
+            $$1.add($$3.a($$0));
+         }
+      }
+
+      return $$1;
+   }
+
+   public ka<cxh> g() {
+      return this.c;
    }
 }

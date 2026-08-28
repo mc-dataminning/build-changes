@@ -1,44 +1,54 @@
-import org.joml.Vector2i;
+import com.google.common.base.Charsets;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Collection;
+import org.slf4j.Logger;
 
 public class flt {
-   private double a;
-   private double b;
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 50;
+   private static final String c = "command_history.txt";
+   private final Path d;
+   private final axm<String> e = new axm<>(50);
 
-   public Vector2i a(double $$0, double $$1) {
-      if (this.a != 0.0 && Math.signum($$0) != Math.signum(this.a)) {
-         this.a = 0.0;
-      }
-
-      if (this.b != 0.0 && Math.signum($$1) != Math.signum(this.b)) {
-         this.b = 0.0;
-      }
-
-      this.a += $$0;
-      this.b += $$1;
-      int $$2 = (int)this.a;
-      int $$3 = (int)this.b;
-      if ($$2 == 0 && $$3 == 0) {
-         return new Vector2i(0, 0);
-      } else {
-         this.a -= (double)$$2;
-         this.b -= (double)$$3;
-         return new Vector2i($$2, $$3);
+   public flt(Path $$0) {
+      this.d = $$0.resolve("command_history.txt");
+      if (Files.exists(this.d)) {
+         try (BufferedReader $$1 = Files.newBufferedReader(this.d, Charsets.UTF_8)) {
+            this.e.addAll($$1.lines().toList());
+         } catch (Exception var7) {
+            a.error("Failed to read {}, command history will be missing", "command_history.txt", var7);
+         }
       }
    }
 
-   public static int a(double $$0, int $$1, int $$2) {
-      int $$3 = (int)Math.signum($$0);
-      $$1 -= $$3;
-      $$1 = Math.max(-1, $$1);
+   public void a(String $$0) {
+      if (!$$0.equals(this.e.peekLast())) {
+         if (this.e.size() >= 50) {
+            this.e.removeFirst();
+         }
 
-      while ($$1 < 0) {
-         $$1 += $$2;
+         this.e.addLast($$0);
+         this.b();
       }
+   }
 
-      while ($$1 >= $$2) {
-         $$1 -= $$2;
+   private void b() {
+      try (BufferedWriter $$0 = Files.newBufferedWriter(this.d, Charsets.UTF_8)) {
+         for (String $$1 : this.e) {
+            $$0.write($$1);
+            $$0.newLine();
+         }
+      } catch (IOException var6) {
+         a.error("Failed to write {}, command history will be missing", "command_history.txt", var6);
       }
+   }
 
-      return $$1;
+   public Collection<String> a() {
+      return this.e;
    }
 }

@@ -1,35 +1,70 @@
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
-public class dbo {
-   public static final aku<? extends ke<dbo>> a = aku.a(akv.b("recipe_property_set"));
-   public static final aku<dbo> b = a("smithing_base");
-   public static final aku<dbo> c = a("smithing_template");
-   public static final aku<dbo> d = a("smithing_addition");
-   public static final aku<dbo> e = a("furnace_input");
-   public static final aku<dbo> f = a("blast_furnace_input");
-   public static final aku<dbo> g = a("smoker_input");
-   public static final aku<dbo> h = a("campfire_input");
-   public static final yn<wa, dbo> i = yl.b(mc.K).a(yl.a()).a($$0 -> new dbo(Set.copyOf($$0)), $$0 -> List.copyOf($$0.k));
-   public static final dbo j = new dbo(Set.of());
-   private final Set<jr<cwm>> k;
+public class dbo extends dbl {
+   private static final dbr c = dbr.a(cxl.rx);
+   private static final dbr d = dbr.a(cxl.qb);
+   private static final dbr e = dbr.a(cxl.vw);
 
-   private dbo(Set<jr<cwm>> $$0) {
-      this.k = $$0;
+   public dbo(dbi $$0) {
+      super($$0);
    }
 
-   private static aku<dbo> a(String $$0) {
-      return aku.a(a, akv.b($$0));
+   public boolean a(dbj $$0, dgz $$1) {
+      if ($$0.e() < 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         int $$3 = 0;
+
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            cxh $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if (c.a($$5)) {
+                  if ($$2) {
+                     return false;
+                  }
+
+                  $$2 = true;
+               } else if (d.a($$5)) {
+                  if (++$$3 > 3) {
+                     return false;
+                  }
+               } else if (!e.a($$5)) {
+                  return false;
+               }
+            }
+         }
+
+         return $$2 && $$3 >= 1;
+      }
    }
 
-   public boolean a(cwq $$0) {
-      return this.k.contains($$0.i());
+   public cxh a(dbj $$0, jt.a $$1) {
+      List<czu> $$2 = new ArrayList<>();
+      int $$3 = 0;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cxh $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if (d.a($$5)) {
+               $$3++;
+            } else if (e.a($$5)) {
+               czu $$6 = $$5.a(kv.ag);
+               if ($$6 != null) {
+                  $$2.add($$6);
+               }
+            }
+         }
+      }
+
+      cxh $$7 = new cxh(cxl.vv, 3);
+      $$7.b(kv.ah, new czv($$3, $$2));
+      return $$7;
    }
 
-   static dbo a(Collection<dbb> $$0) {
-      Set<jr<cwm>> $$1 = $$0.stream().flatMap(dbb::a).collect(Collectors.toUnmodifiableSet());
-      return new dbo($$1);
+   @Override
+   public dcf<dbo> a() {
+      return dcf.g;
    }
 }

@@ -1,38 +1,39 @@
-public class gsk extends gse<clc, gyq> {
-   private final gnd a;
-
-   public gsk(gsf.a $$0) {
-      super($$0);
-      this.f = 0.5F;
-      this.a = $$0.d();
+public class gsk extends grx<chs, gyz, gcl> {
+   public gsk(gtd.a $$0) {
+      super($$0, new gcl($$0.a(ggb.O)), new gcl($$0.a(ggb.P)), 0.4F);
+      this.a(new gwt(this, $$0.f()));
    }
 
-   public boolean a(clc $$0, gpr $$1, double $$2, double $$3, double $$4) {
-      return !super.a($$0, $$1, $$2, $$3, $$4) ? false : $$0.p() != $$0.dV().a_($$0.dv());
+   public aku a(gyz $$0) {
+      return $$0.a;
    }
 
-   public void a(gyq $$0, ffv $$1, glz $$2, int $$3) {
-      dwy $$4 = $$0.c;
-      if ($$4.o() == dpy.b) {
-         $$1.a();
-         $$1.a(-0.5, 0.0, -0.5);
-         this.a.b().a($$0, this.a.a($$4), $$4, $$0.b, $$1, $$2.getBuffer(gls.b($$4)), false, azh.a(), $$4.b($$0.a), hej.d);
-         $$1.b();
-         super.a($$0, $$1, $$2, $$3);
-      }
+   public gyz a() {
+      return new gyz();
    }
 
-   public gyq a() {
-      return new gyq();
-   }
-
-   public void a(clc $$0, gyq $$1, float $$2) {
+   public void a(chs $$0, gyz $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      ji $$3 = ji.a($$0.dA(), $$0.cR().e, $$0.dG());
-      $$1.a = $$0.l();
-      $$1.b = $$3;
-      $$1.c = $$0.p();
-      $$1.d = $$0.dV().t($$3);
-      $$1.e = $$0.dV();
+      $$1.a = $$0.gE().a().a();
+      $$1.d = $$0.ch();
+      $$1.e = $$0.ci();
+      $$1.f = $$0.x();
+      $$1.g = $$0.K($$2);
+      $$1.h = $$0.L($$2);
+      $$1.i = $$0.M($$2);
+      $$1.b = $$0.gJ();
+      $$1.c = $$0.q() ? $$0.gG() : null;
+   }
+
+   protected void a(gyz $$0, fgr $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      float $$4 = $$0.g;
+      if ($$4 > 0.0F) {
+         $$1.a(0.4F * $$4, 0.15F * $$4, 0.1F * $$4);
+         $$1.a(a.f.rotationDegrees(ayz.i($$4, 0.0F, 90.0F)));
+         if ($$0.b) {
+            $$1.a(0.15F * $$4, 0.0F, 0.0F);
+         }
+      }
    }
 }

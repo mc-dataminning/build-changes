@@ -1,59 +1,33 @@
-import java.util.concurrent.locks.LockSupport;
+import com.google.common.collect.ImmutableList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.ToIntFunction;
+import java.util.stream.Stream;
 
-public class hju extends bra<Runnable> {
-   private Thread a = this.b();
-   private volatile boolean b;
+public class hju<T> implements hjy<T> {
+   protected final Comparator<T> a;
+   protected final hjx<T> b;
 
-   public hju() {
-      super("Sound executor");
-   }
-
-   private Thread b() {
-      Thread $$0 = new Thread(this::c);
-      $$0.setDaemon(true);
-      $$0.setName("Sound engine");
-      $$0.start();
-      return $$0;
-   }
-
-   @Override
-   public Runnable f(Runnable $$0) {
-      return $$0;
+   public hju(Function<T, Stream<aku>> $$0, List<T> $$1) {
+      ToIntFunction<T> $$2 = af.g($$1);
+      this.a = Comparator.comparingInt($$2);
+      this.b = hjx.a($$1, $$0);
    }
 
    @Override
-   protected boolean e(Runnable $$0) {
-      return !this.b;
+   public List<T> search(String $$0) {
+      int $$1 = $$0.indexOf(58);
+      return $$1 == -1 ? this.a($$0) : this.a($$0.substring(0, $$1).trim(), $$0.substring($$1 + 1).trim());
    }
 
-   @Override
-   protected Thread ay() {
-      return this.a;
+   protected List<T> a(String $$0) {
+      return this.b.b($$0);
    }
 
-   private void c() {
-      while (!this.b) {
-         this.b(() -> this.b);
-      }
-   }
-
-   @Override
-   protected void A() {
-      LockSupport.park("waiting for tasks");
-   }
-
-   public void a() {
-      this.b = true;
-      this.a.interrupt();
-
-      try {
-         this.a.join();
-      } catch (InterruptedException var2) {
-         Thread.currentThread().interrupt();
-      }
-
-      this.bz();
-      this.b = false;
-      this.a = this.b();
+   protected List<T> a(String $$0, String $$1) {
+      List<T> $$2 = this.b.a($$0);
+      List<T> $$3 = this.b.b($$1);
+      return ImmutableList.copyOf(new hjv<T>($$2.iterator(), $$3.iterator(), this.a));
    }
 }

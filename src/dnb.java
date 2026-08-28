@@ -1,56 +1,54 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public abstract class dnb extends djn {
-   protected final jn a;
-   protected final boolean b;
-   protected final fbv d;
-
-   protected dnb(dwx.d $$0, jn $$1, fbv $$2, boolean $$3) {
+public abstract class dnb extends dke implements dna {
+   public dnb(dxp.d $$0) {
       super($$0);
-      this.a = $$1;
-      this.d = $$2;
-      this.b = $$3;
    }
 
    @Override
    protected abstract MapCodec<? extends dnb> a();
 
-   @Nullable
    @Override
-   public dwy a(dah $$0) {
-      dwy $$1 = $$0.q().a_($$0.a().a(this.a));
-      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.b($$0.q().A) : this.b().m();
-   }
-
-   public dwy b(azh $$0) {
-      return this.m();
+   protected void a(dxq $$0, dgz $$1, ji $$2, dxq $$3, boolean $$4) {
+      $$1.a($$2, this, this.b());
    }
 
    @Override
-   protected boolean a(dwy $$0, dgm $$1, ji $$2) {
-      ji $$3 = $$2.a(this.a.g());
-      dwy $$4 = $$1.a_($$3);
-      return !this.o($$4) ? false : $$4.a(this.c()) || $$4.a(this.b()) || $$4.c($$1, $$3, this.a);
+   protected dxq a(dxq $$0, dhc $$1, dho $$2, ji $$3, jn $$4, ji $$5, dxq $$6, azh $$7) {
+      $$2.a($$3, this, this.b());
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected void a(dwy $$0, ard $$1, ji $$2, azh $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
+   protected void a(dxq $$0, ard $$1, ji $$2, azh $$3) {
+      if (n($$1.a_($$2.e())) && $$2.v() >= $$1.G_()) {
+         clv $$4 = clv.a($$1, $$2, $$0);
+         this.a($$4);
       }
    }
 
-   protected boolean o(dwy $$0) {
-      return true;
+   protected void a(clv $$0) {
+   }
+
+   protected int b() {
+      return 2;
+   }
+
+   public static boolean n(dxq $$0) {
+      return $$0.l() || $$0.a(awp.aN) || $$0.n() || $$0.v();
    }
 
    @Override
-   protected fbv a(dwy $$0, dfo $$1, ji $$2, fbg $$3) {
-      return this.d;
+   public void a(dxq $$0, dgz $$1, ji $$2, azh $$3) {
+      if ($$3.a(16) == 0) {
+         ji $$4 = $$2.e();
+         if (n($$1.a_($$4))) {
+            azd.a($$1, $$2, $$3, new ll(lt.C, $$0));
+         }
+      }
    }
 
-   protected abstract dnd c();
-
-   protected abstract djn b();
+   public int b(dxq $$0, dgf $$1, ji $$2) {
+      return -16777216;
+   }
 }

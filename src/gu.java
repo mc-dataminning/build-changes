@@ -18,9 +18,9 @@ public class gu implements ArgumentType<gv> {
       return new gu();
    }
 
-   public static aqp a(CommandContext<ex> $$0, String $$1) {
+   public static aqo a(CommandContext<ex> $$0, String $$1) {
       ji $$2 = ((gv)$$0.getArgument($$1, gv.class)).c((ex)$$0.getSource());
-      return new aqp($$2.u(), $$2.w());
+      return new aqo($$2.u(), $$2.w());
    }
 
    public gv a(StringReader $$0) throws CommandSyntaxException {

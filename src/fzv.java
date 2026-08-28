@@ -1,70 +1,57 @@
-import java.util.Set;
-import java.util.function.BiFunction;
-import java.util.function.UnaryOperator;
+import java.util.UUID;
+import java.util.function.Supplier;
 
-public record fzv(edr a, ke<eau> b, edo c, jy<ale> d, alg e, dhg f, fzq g) {
-   public fzv(edp $$0, jy<ale> $$1, alg $$2, dhg $$3) {
-      this($$0.a(), $$0.b(), $$1, $$2, $$3, new fzq(fzx.a.a, Set.of(), null));
+public class fzv extends fzo<gii.a> {
+   private static final int C = 85;
+   private static final int D = 178;
+   private static final wp E = wp.c("gui.abuseReport.skin.title");
+   private fqi F;
+   private fpq G;
+
+   private fzv(fvi $$0, gih $$1, gii.a $$2) {
+      super(E, $$0, $$1, $$2);
    }
 
-   public fzv(edr $$0, edo $$1, jy<ale> $$2, alg $$3, dhg $$4, fzq $$5) {
-      this($$0, $$2.a(ale.c).e(mc.bf), $$1, $$2.a(ale.c), $$3, $$4, $$5);
+   public fzv(fvi $$0, gih $$1, UUID $$2, Supplier<hgt> $$3) {
+      this($$0, $$1, new gii.a($$2, $$3, $$1.a().b()));
    }
 
-   public fzv a(edr $$0, edo $$1) {
-      return new fzv($$0, this.b, $$1, this.d, this.e, this.f, this.g);
+   public fzv(fvi $$0, gih $$1, gii $$2) {
+      this($$0, $$1, new gii.a($$2, $$1.a().b()));
    }
 
-   public fzv a(fzv.b $$0) {
-      return new fzv($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f, this.g);
+   @Override
+   protected void E() {
+      fti $$0 = this.z.a(fti.e().a(8));
+      $$0.c().e();
+      $$0.a(new fqq(85, 120, this.m.aS(), this.A.e().a()));
+      fti $$1 = $$0.a(fti.d().a(8));
+      this.G = fpq.a(c, $$0x -> this.m.a(new fzu(this, this.A.i(), gig.b, $$0xx -> {
+            this.A.a($$0xx);
+            this.G();
+         }))).a(178).a();
+      $$1.a(fta.a(this.p, this.G, b));
+      this.F = this.a(178, 9 * 8, $$0x -> {
+         this.A.a($$0x);
+         this.G();
+      });
+      $$1.a(fta.a(this.p, this.F, d, $$0x -> $$0x.e(12)));
    }
 
-   public fzv a(fzv.a $$0) {
-      return new fzv(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f, this.g);
-   }
-
-   public kf.b a() {
-      return this.d.a();
-   }
-
-   public void b() {
-      for (eau $$0 : this.d()) {
-         $$0.b().a();
+   @Override
+   protected void G() {
+      gif $$0 = this.A.i();
+      if ($$0 != null) {
+         this.G.b($$0.b());
+      } else {
+         this.G.b(c);
       }
+
+      super.G();
    }
 
-   public edr c() {
-      return this.a;
-   }
-
-   public ke<eau> d() {
-      return this.b;
-   }
-
-   public edo e() {
-      return this.c;
-   }
-
-   public jy<ale> f() {
-      return this.d;
-   }
-
-   public alg g() {
-      return this.e;
-   }
-
-   public dhg h() {
-      return this.f;
-   }
-
-   public fzq i() {
-      return this.g;
-   }
-
-   @FunctionalInterface
-   public interface a extends BiFunction<kf.b, edo, edo> {
-   }
-
-   public interface b extends UnaryOperator<edr> {
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.F.b($$0, $$1, $$2);
    }
 }

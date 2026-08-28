@@ -1,71 +1,130 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class dkz extends dmk {
-   public static final MapCodec<dkz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(mb.e.q().fieldOf("concrete").forGetter($$0x -> $$0x.b), t()).apply($$0, dkz::new)
-   );
-   private final djn b;
+public class dkz extends dod {
+   public static final MapCodec<dkz> a = b(dkz::new);
+   public static final dyo<jn> b = dod.e;
+   @Nullable
+   private dxv c;
+   @Nullable
+   private dxv d;
+   @Nullable
+   private dxv f;
+   @Nullable
+   private dxv g;
+   private static final Predicate<dxq> h = $$0 -> $$0 != null && ($$0.a(dkg.er) || $$0.a(dkg.es));
 
    @Override
-   public MapCodec<dkz> a() {
+   public MapCodec<? extends dkz> a() {
       return a;
    }
 
-   public dkz(djn $$0, dwx.d $$1) {
-      super($$1);
-      this.b = $$0;
+   protected dkz(dxp.d $$0) {
+      super($$0);
+      this.l(this.B.b().b(b, jn.c));
    }
 
    @Override
-   public void a(dgj $$0, ji $$1, dwy $$2, dwy $$3, clc $$4) {
-      if (a($$0, $$1, $$3)) {
-         $$0.a($$1, this.b.m(), 3);
+   protected void a(dxq $$0, dgz $$1, ji $$2, dxq $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2);
       }
    }
 
-   @Override
-   public dwy a(dah $$0) {
-      dfo $$1 = $$0.q();
-      ji $$2 = $$0.a();
-      dwy $$3 = $$1.a_($$2);
-      return a($$1, $$2, $$3) ? this.b.m() : super.a($$0);
+   public boolean a(dhc $$0, ji $$1) {
+      return this.b().a($$0, $$1) != null || this.r().a($$0, $$1) != null;
    }
 
-   private static boolean a(dfo $$0, ji $$1, dwy $$2) {
-      return o($$2) || a($$0, $$1);
-   }
-
-   private static boolean a(dfo $$0, ji $$1) {
-      boolean $$2 = false;
-      ji.a $$3 = $$1.k();
-
-      for (jn $$4 : jn.values()) {
-         dwy $$5 = $$0.a_($$3);
-         if ($$4 != jn.a || o($$5)) {
-            $$3.a($$1, $$4);
-            $$5 = $$0.a_($$3);
-            if (o($$5) && !$$5.c($$0, $$1, $$4.g())) {
-               $$2 = true;
-               break;
+   private void a(dgz $$0, ji $$1) {
+      dxv.b $$2 = this.q().a($$0, $$1);
+      if ($$2 != null) {
+         cip $$3 = bvi.bk.a($$0, bvh.k);
+         if ($$3 != null) {
+            a($$0, $$2, $$3, $$2.a(0, 2, 0).d());
+         }
+      } else {
+         dxv.b $$4 = this.y().a($$0, $$1);
+         if ($$4 != null) {
+            cib $$5 = bvi.ap.a($$0, bvh.k);
+            if ($$5 != null) {
+               $$5.x(true);
+               a($$0, $$4, $$5, $$4.a(1, 2, 0).d());
             }
          }
       }
-
-      return $$2;
    }
 
-   private static boolean o(dwy $$0) {
-      return $$0.y().a(awv.a);
+   private static void a(dgz $$0, dxv.b $$1, bva $$2, ji $$3) {
+      a($$0, $$1);
+      $$2.b((double)$$3.u() + 0.5, (double)$$3.v() + 0.05, (double)$$3.w() + 0.5, 0.0F, 0.0F);
+      $$0.b($$2);
+
+      for (are $$4 : $$0.a(are.class, $$2.cQ().g(5.0))) {
+         ap.o.a($$4, $$2);
+      }
+
+      b($$0, $$1);
+   }
+
+   public static void a(dgz $$0, dxv.b $$1) {
+      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
+         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
+            dxu $$4 = $$1.a($$2, $$3, 0);
+            $$0.a($$4.d(), dkg.a.m(), 2);
+            $$0.c(2001, $$4.d(), dke.j($$4.a()));
+         }
+      }
+   }
+
+   public static void b(dgz $$0, dxv.b $$1) {
+      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
+         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
+            dxu $$4 = $$1.a($$2, $$3, 0);
+            $$0.a($$4.d(), dkg.a);
+         }
+      }
    }
 
    @Override
-   protected dwy a(dwy $$0, dgm $$1, dgy $$2, ji $$3, jn $$4, ji $$5, dwy $$6, azh $$7) {
-      return a($$1, $$3) ? this.b.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public dxq a(dax $$0) {
+      return this.m().b(b, $$0.g().g());
    }
 
    @Override
-   public int b(dwy $$0, dfo $$1, ji $$2) {
-      return $$0.a($$1, $$2).ak;
+   protected void a(dxr.a<dke, dxq> $$0) {
+      $$0.a(b);
+   }
+
+   private dxv b() {
+      if (this.c == null) {
+         this.c = dxw.a().a(" ", "#", "#").a('#', dxu.a(dxz.a(dkg.ec))).b();
+      }
+
+      return this.c;
+   }
+
+   private dxv q() {
+      if (this.d == null) {
+         this.d = dxw.a().a("^", "#", "#").a('^', dxu.a(h)).a('#', dxu.a(dxz.a(dkg.ec))).b();
+      }
+
+      return this.d;
+   }
+
+   private dxv r() {
+      if (this.f == null) {
+         this.f = dxw.a().a("~ ~", "###", "~#~").a('#', dxu.a(dxz.a(dkg.cp))).a('~', $$0 -> $$0.a().l()).b();
+      }
+
+      return this.f;
+   }
+
+   private dxv y() {
+      if (this.g == null) {
+         this.g = dxw.a().a("~^~", "###", "~#~").a('^', dxu.a(h)).a('#', dxu.a(dxz.a(dkg.cp))).a('~', $$0 -> $$0.a().l()).b();
+      }
+
+      return this.g;
    }
 }

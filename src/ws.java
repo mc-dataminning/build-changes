@@ -26,11 +26,11 @@ public class ws {
       }
    }
 
-   public static Optional<xd> a(@Nullable ex $$0, Optional<wp> $$1, @Nullable bum $$2, int $$3) throws CommandSyntaxException {
+   public static Optional<xd> a(@Nullable ex $$0, Optional<wp> $$1, @Nullable bva $$2, int $$3) throws CommandSyntaxException {
       return $$1.isPresent() ? Optional.of(a($$0, $$1.get(), $$2, $$3)) : Optional.empty();
    }
 
-   public static xd a(@Nullable ex $$0, wp $$1, @Nullable bum $$2, int $$3) throws CommandSyntaxException {
+   public static xd a(@Nullable ex $$0, wp $$1, @Nullable bva $$2, int $$3) throws CommandSyntaxException {
       if ($$3 > 100) {
          return $$1.f();
       } else {
@@ -44,17 +44,22 @@ public class ws {
       }
    }
 
-   private static xm a(@Nullable ex $$0, xm $$1, @Nullable bum $$2, int $$3) throws CommandSyntaxException {
-      wv $$4 = $$1.j();
-      if ($$4 != null) {
-         wp $$5 = $$4.a(wv.a.a);
-         if ($$5 != null) {
-            wv $$6 = new wv(wv.a.a, a($$0, $$5, $$2, $$3 + 1));
-            return $$1.a($$6);
-         }
-      }
+   private static xm a(@Nullable ex $$0, xm $$1, @Nullable bva $$2, int $$3) throws CommandSyntaxException {
+      if ($$1.j() instanceof wv.e var5) {
+         wv.e var10000 = var5;
 
-      return $$1;
+         try {
+            var10 = var10000.b();
+         } catch (Throwable var8) {
+            throw new MatchException(var8.toString(), var8);
+         }
+
+         wv $$6 = var10;
+         $$6 = new wv.e(a($$0, $$6, $$2, $$3 + 1));
+         return $$1.a($$6);
+      } else {
+         return $$1;
+      }
    }
 
    public static wp a(Collection<String> $$0) {
@@ -126,6 +131,6 @@ public class ws {
    }
 
    public static xd a(String $$0) {
-      return a((wp)wp.b($$0).a($$1 -> $$1.a(n.k).a(new wn(wn.a.f, $$0)).a(new wv(wv.a.a, wp.c("chat.copy.click"))).a($$0)));
+      return a((wp)wp.b($$0).a($$1 -> $$1.a(n.k).a(new wn.c($$0)).a(new wv.e(wp.c("chat.copy.click"))).a($$0)));
    }
 }

@@ -1,19 +1,44 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
 
-public abstract class bij extends bee {
-   public bij(String $$0, Schema $$1, boolean $$2) {
-      super($$0, $$1, $$2);
+public class bij extends DataFix {
+   public bij(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
-      Pair<String, Dynamic<?>> $$2 = this.a($$0, (Dynamic<?>)$$1.getOrCreate(DSL.remainderFinder()));
-      return Pair.of((String)$$2.getFirst(), $$1.set(DSL.remainderFinder(), (Dynamic)$$2.getSecond()));
+   protected TypeRewriteRule makeRule() {
+      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bic.q.typeName(), DSL.remainderType());
+      if (!Objects.equals($$0, this.getInputSchema().getType(bic.q))) {
+         throw new IllegalStateException("Poi type is not what was expected.");
+      } else {
+         return this.fixTypeEverywhere("POI reorganization", $$0, $$0x -> $$0xx -> $$0xx.mapSecond(bij::a));
+      }
    }
 
-   protected abstract Pair<String, Dynamic<?>> a(String var1, Dynamic<?> var2);
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Map<Dynamic<T>, Dynamic<T>> $$1 = Maps.newHashMap();
+
+      for (int $$2 = 0; $$2 < 16; $$2++) {
+         String $$3 = String.valueOf($$2);
+         Optional<Dynamic<T>> $$4 = $$0.get($$3).result();
+         if ($$4.isPresent()) {
+            Dynamic<T> $$5 = $$4.get();
+            Dynamic<T> $$6 = $$0.createMap(ImmutableMap.of($$0.createString("Records"), $$5));
+            $$1.put($$0.createInt($$2), $$6);
+            $$0 = $$0.remove($$3);
+         }
+      }
+
+      return $$0.set("Sections", $$0.createMap($$1));
+   }
 }

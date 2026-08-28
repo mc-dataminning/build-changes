@@ -1,65 +1,30 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
 
-public class exb extends exf {
-   private static final Logger b = LogUtils.getLogger();
+public class exb extends exg {
    public static final MapCodec<exb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(aku.a(mc.bh).fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, exb::new)
+      $$0 -> $$0.group(cxd.e.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, exb::new)
    );
-   private final aku<exg> c;
+   private final jr<cxd> j;
 
-   private exb(List<ezb> $$0, aku<exg> $$1) {
-      super($$0);
-      this.c = $$1;
+   private exb(jr<cxd> $$0, int $$1, int $$2, List<ezx> $$3, List<eyc> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public exh<exb> b() {
-      return exi.H;
+   public exf a() {
+      return exc.c;
    }
 
    @Override
-   public void a(evy $$0) {
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.c.a() + ", but references are not allowed");
-      } else if ($$0.a(this.c)) {
-         $$0.b("Function " + this.c.a() + " is recursively called");
-      } else {
-         super.a($$0);
-         $$0.a()
-            .c(this.c)
-            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.c.a() + "}", this.c)), () -> $$0.b("Unknown function table called " + this.c.a()));
-      }
+   public void a(Consumer<cxh> $$0, ewo $$1) {
+      $$0.accept(new cxh(this.j));
    }
 
-   @Override
-   protected cwq a(cwq $$0, evs $$1) {
-      exg $$2 = $$1.a().c(this.c).map(jr::a).orElse(null);
-      if ($$2 == null) {
-         b.warn("Unknown function: {}", this.c.a());
-         return $$0;
-      } else {
-         evs.c<?> $$3 = evs.a($$2);
-         if ($$1.b($$3)) {
-            cwq var5;
-            try {
-               var5 = $$2.apply($$0, $$1);
-            } finally {
-               $$1.c($$3);
-            }
-
-            return var5;
-         } else {
-            b.warn("Detected infinite loop in loot tables");
-            return $$0;
-         }
-      }
-   }
-
-   public static exf.a<?> a(aku<exg> $$0) {
-      return a($$1 -> new exb($$1, $$0));
+   public static exg.a<?> a(dgy $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new exb($$0.i().f(), $$1, $$2, $$3, $$4));
    }
 }

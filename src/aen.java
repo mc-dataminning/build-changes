@@ -2,8 +2,8 @@ public class aen implements yw<abl> {
    public static final yn<vl, aen> a = yw.a(aen::a, aen::new);
    private final int b;
 
-   public aen(dyo $$0) {
-      this.b = $$0.q();
+   public aen(dzh $$0) {
+      this.b = $$0.r();
    }
 
    private aen(vl $$0) {
@@ -16,7 +16,7 @@ public class aen implements yw<abl> {
 
    @Override
    public yy<aen> a() {
-      return age.ay;
+      return agd.ay;
    }
 
    public void a(abl $$0) {

@@ -84,7 +84,7 @@ public class ul implements un {
 
    @Override
    public String toString() {
-      return un.super.u_();
+      return un.super.p_();
    }
 
    public ul e() {
@@ -102,7 +102,7 @@ public class ul implements un {
    }
 
    @Override
-   public String u_() {
+   public String p_() {
       return this.A;
    }
 

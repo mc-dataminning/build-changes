@@ -1,33 +1,19 @@
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-public class aeh implements yw<abl> {
-   public static final yn<vl, aeh> a = yw.a(aeh::a, aeh::new);
-   @Nullable
-   private final akv b;
-
-   public aeh(@Nullable akv $$0) {
-      this.b = $$0;
-   }
-
-   private aeh(vl $$0) {
-      this.b = $$0.c(vl::q);
-   }
-
-   private void a(vl $$0) {
-      $$0.a(this.b, vl::a);
-   }
+public record aeh(wp b, Optional<byte[]> c) implements yw<abl> {
+   public static final yn<ByteBuf, aeh> a = yn.a(wr.f, aeh::b, yl.n.a(yl::a), aeh::e, aeh::new);
 
    @Override
    public yy<aeh> a() {
-      return age.as;
+      return agd.as;
    }
 
    public void a(abl $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public akv b() {
-      return this.b;
+   public Optional<byte[]> e() {
+      return this.c;
    }
 }

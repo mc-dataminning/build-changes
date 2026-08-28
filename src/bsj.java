@@ -1,59 +1,52 @@
-import javax.annotation.concurrent.Immutable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-@Immutable
-public class bsj {
-   private static final float a = -72000.0F;
-   private static final float b = 1440000.0F;
-   private static final float c = 3600000.0F;
-   private final bsi d;
-   private final float e;
+public class bsj extends bsd {
+   public static final MapCodec<bsj> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
+               .apply($$0, bsj::new)
+      )
+      .validate(
+         $$0 -> $$0.f < $$0.b
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
+               : DataResult.success($$0)
+      );
+   private final int b;
+   private final int f;
 
-   public bsj(bsi $$0, long $$1, long $$2, float $$3) {
-      this.d = $$0;
-      this.e = this.a($$0, $$1, $$2, $$3);
+   private bsj(int $$0, int $$1) {
+      this.b = $$0;
+      this.f = $$1;
    }
 
-   public bsi a() {
-      return this.d;
+   public static bsj a(int $$0, int $$1) {
+      return new bsj($$0, $$1);
    }
 
-   public float b() {
-      return this.e;
+   @Override
+   public int a(azh $$0) {
+      return ayz.b($$0, this.b, this.f);
    }
 
-   public boolean c() {
-      return this.e >= (float)bsi.d.ordinal();
+   @Override
+   public int a() {
+      return this.b;
    }
 
-   public boolean a(float $$0) {
-      return this.e > $$0;
+   @Override
+   public int b() {
+      return this.f;
    }
 
-   public float d() {
-      if (this.e < 2.0F) {
-         return 0.0F;
-      } else {
-         return this.e > 4.0F ? 1.0F : (this.e - 2.0F) / 2.0F;
-      }
+   @Override
+   public bse<?> c() {
+      return bse.b;
    }
 
-   private float a(bsi $$0, long $$1, long $$2, float $$3) {
-      if ($$0 == bsi.a) {
-         return 0.0F;
-      } else {
-         boolean $$4 = $$0 == bsi.d;
-         float $$5 = 0.75F;
-         float $$6 = ayz.a(((float)$$1 + -72000.0F) / 1440000.0F, 0.0F, 1.0F) * 0.25F;
-         $$5 += $$6;
-         float $$7 = 0.0F;
-         $$7 += ayz.a((float)$$2 / 3600000.0F, 0.0F, 1.0F) * ($$4 ? 1.0F : 0.75F);
-         $$7 += ayz.a($$3 * 0.25F, 0.0F, $$6);
-         if ($$0 == bsi.b) {
-            $$7 *= 0.5F;
-         }
-
-         $$5 += $$7;
-         return (float)$$0.a() * $$5;
-      }
+   @Override
+   public String toString() {
+      return "[" + this.b + "-" + this.f + "]";
    }
 }

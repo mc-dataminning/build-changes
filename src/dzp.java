@@ -1,18 +1,9 @@
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dzp {
-   @Nullable
-   env a(enn var1);
-
-   void a(enn var1, env var2);
-
-   LongSet b(enn var1);
-
-   void a(enn var1, long var2);
-
-   Map<enn, LongSet> h();
-
-   void b(Map<enn, LongSet> var1);
+public class dzp {
+   public static MapCodec<? extends dzn> a(ke<MapCodec<? extends dzn>> $$0) {
+      ke.a($$0, "noise", edr.c);
+      ke.a($$0, "flat", edj.c);
+      return ke.a($$0, "debug", edf.c);
+   }
 }

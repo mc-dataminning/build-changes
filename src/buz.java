@@ -1,44 +1,60 @@
-public abstract class buz extends bvk {
-   protected buz(but<? extends buz> $$0, dgj $$1) {
-      super($$0, $$1);
+public class buz {
+   private static final float a = (float) (Math.PI / 12);
+   private static final float b = (float) (-Math.PI / 12);
+   private float c;
+   private float d;
+   private float e;
+   private float f;
+   private float g;
+   private float h;
+   private final bvy i;
+
+   public buz(bvy $$0) {
+      this.i = $$0;
    }
 
-   @Override
-   protected void a(double $$0, boolean $$1, dwy $$2, ji $$3) {
-   }
-
-   @Override
-   public void a_(fbb $$0) {
-      if (this.dh()) {
-         if (this.bj()) {
-            this.a(0.02F, $$0);
-            this.a(bvm.a, this.dy());
-            this.i(this.dy().c(0.8F));
-         } else if (this.bx()) {
-            this.a(0.02F, $$0);
-            this.a(bvm.a, this.dy());
-            this.i(this.dy().c(0.5));
-         } else {
-            float $$1 = 0.91F;
-            if (this.aJ()) {
-               $$1 = this.dV().a_(this.aQ()).b().g() * 0.91F;
-            }
-
-            float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
-            $$1 = 0.91F;
-            if (this.aJ()) {
-               $$1 = this.dV().a_(this.aQ()).b().g() * 0.91F;
-            }
-
-            this.a(this.aJ() ? 0.1F * $$2 : 0.02F, $$0);
-            this.a(bvm.a, this.dy());
-            this.i(this.dy().c((double)$$1));
+   public void a() {
+      this.f = this.c;
+      this.g = this.d;
+      this.h = this.e;
+      float $$3;
+      float $$4;
+      float $$5;
+      if (this.i.fL()) {
+         float $$0 = 1.0F;
+         fbx $$1 = this.i.dx();
+         if ($$1.e < 0.0) {
+            fbx $$2 = $$1.d();
+            $$0 = 1.0F - (float)Math.pow(-$$2.e, 1.5);
          }
+
+         $$3 = ayz.h($$0, (float) (Math.PI / 12), (float) (Math.PI / 9));
+         $$4 = ayz.h($$0, (float) (-Math.PI / 12), (float) (-Math.PI / 2));
+         $$5 = 0.0F;
+      } else if (this.i.ch()) {
+         $$3 = (float) (Math.PI * 2.0 / 9.0);
+         $$4 = (float) (-Math.PI / 4);
+         $$5 = 0.08726646F;
+      } else {
+         $$3 = (float) (Math.PI / 12);
+         $$4 = (float) (-Math.PI / 12);
+         $$5 = 0.0F;
       }
+
+      this.c = this.c + ($$3 - this.c) * 0.3F;
+      this.d = this.d + ($$5 - this.d) * 0.3F;
+      this.e = this.e + ($$4 - this.e) * 0.3F;
    }
 
-   @Override
-   public boolean q_() {
-      return false;
+   public float a(float $$0) {
+      return ayz.h($$0, this.f, this.c);
+   }
+
+   public float b(float $$0) {
+      return ayz.h($$0, this.g, this.d);
+   }
+
+   public float c(float $$0) {
+      return ayz.h($$0, this.h, this.e);
    }
 }

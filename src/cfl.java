@@ -1,22 +1,50 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class cfl<T extends bvi> extends cfs<T> {
-   @Override
-   protected void a(ard $$0, T $$1) {
-      double $$2 = $$1.h(bwq.m);
-      faw $$3 = $$1.cR().c($$2, $$2, $$2);
-      List<bvi> $$4 = $$0.a(bvi.class, $$3, $$1x -> $$1x != $$1 && $$1x.bL());
-      $$4.sort(Comparator.comparingDouble($$1::g));
-      bwk<?> $$5 = $$1.eb();
-      $$5.a(cem.g, $$4);
-      $$5.a(cem.h, new ceo($$0, $$1, $$4));
+public class cfl extends cfj {
+   @Nullable
+   private ji p;
+
+   public cfl(bwa $$0, dgz $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public Set<cem<?>> a() {
-      return ImmutableSet.of(cem.g, cem.h);
+   public euk a(ji $$0, int $$1) {
+      this.p = $$0;
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public euk a(bva $$0, int $$1) {
+      this.p = $$0.du();
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(bva $$0, double $$1) {
+      euk $$2 = this.a($$0, 0);
+      if ($$2 != null) {
+         return this.a($$2, $$1);
+      } else {
+         this.p = $$0.du();
+         this.d = $$1;
+         return true;
+      }
+   }
+
+   @Override
+   public void c() {
+      if (!this.k()) {
+         super.c();
+      } else {
+         if (this.p != null) {
+            if (!this.p.a(this.a.ds(), (double)this.a.dp())
+               && (!(this.a.dB() > (double)this.p.v()) || !ji.a((double)this.p.u(), this.a.dB(), (double)this.p.w()).a(this.a.ds(), (double)this.a.dp()))) {
+               this.a.L().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
+            } else {
+               this.p = null;
+            }
+         }
+      }
    }
 }

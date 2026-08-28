@@ -1,48 +1,67 @@
-public class gec extends gcc<gzl> {
-   private static final String a = "upper_body";
-   private final gfe b;
-   private final gfe c;
-   private final gfe d;
-   private final gfe e;
-
-   public gec(gfe $$0) {
+public class gec extends gbn<hau> {
+   public gec(ggc $$0) {
       super($$0);
-      this.c = $$0.b("head");
-      this.d = $$0.b("left_arm");
-      this.e = $$0.b("right_arm");
-      this.b = $$0.b("upper_body");
    }
 
-   public static gfk a() {
-      gfm $$0 = new gfm();
-      gfo $$1 = $$0.a();
-      float $$2 = 4.0F;
-      gfi $$3 = new gfi(-0.5F);
-      $$1.a("head", gfj.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$3), gfg.a(0.0F, 4.0F, 0.0F));
-      gfj $$4 = gfj.c().a(32, 0).a(-1.0F, 0.0F, -1.0F, 12.0F, 2.0F, 2.0F, $$3);
-      $$1.a("left_arm", $$4, gfg.a(5.0F, 6.0F, 1.0F, 0.0F, 0.0F, 1.0F));
-      $$1.a("right_arm", $$4, gfg.a(-5.0F, 6.0F, -1.0F, 0.0F, (float) Math.PI, -1.0F));
-      $$1.a("upper_body", gfj.c().a(0, 16).a(-5.0F, -10.0F, -5.0F, 10.0F, 10.0F, 10.0F, $$3), gfg.a(0.0F, 13.0F, 0.0F));
-      $$1.a("lower_body", gfj.c().a(0, 36).a(-6.0F, -12.0F, -6.0F, 12.0F, 12.0F, 12.0F, $$3), gfg.a(0.0F, 24.0F, 0.0F));
-      return gfk.a($$0, 64, 64);
-   }
-
-   public void a(gzl $$0) {
+   public void a(hau $$0) {
       super.a($$0);
-      this.c.f = $$0.aa * (float) (Math.PI / 180.0);
-      this.c.e = $$0.ab * (float) (Math.PI / 180.0);
-      this.b.f = $$0.aa * (float) (Math.PI / 180.0) * 0.25F;
-      float $$1 = ayz.a(this.b.f);
-      float $$2 = ayz.b(this.b.f);
-      this.d.f = this.b.f;
-      this.e.f = this.b.f + (float) Math.PI;
-      this.d.b = $$2 * 5.0F;
-      this.d.d = -$$1 * 5.0F;
-      this.e.b = -$$2 * 5.0F;
-      this.e.d = $$1 * 5.0F;
+      float $$1 = (float) (Math.PI / 6);
+      float $$2 = $$0.H;
+      coh $$3 = $$0.d;
+      if ($$3 == coh.e) {
+         float $$4 = $$0.u / 60.0F;
+         this.f.g = (float) (Math.PI / 6) + (float) (Math.PI / 180.0) * ayz.a($$4 * 30.0F) * 10.0F;
+         this.g.g = (float) (-Math.PI / 6) - (float) (Math.PI / 180.0) * ayz.b($$4 * 30.0F) * 10.0F;
+         this.o.b = this.o.b + ayz.a($$4 * 10.0F);
+         this.o.c = this.o.c + ayz.a($$4 * 40.0F) + 0.4F;
+         this.r.g = (float) (Math.PI / 180.0) * (70.0F + ayz.b($$4 * 40.0F) * 10.0F);
+         this.s.g = this.r.g * -1.0F;
+         this.r.c = this.r.c + (ayz.a($$4 * 40.0F) * 0.5F - 0.5F);
+         this.s.c = this.s.c + ayz.a($$4 * 40.0F) * 0.5F + 0.5F;
+         this.q.c = this.q.c + ayz.a($$4 * 40.0F) * 0.35F;
+      } else if ($$3 == coh.a && $$2 == 0.0F) {
+         this.b($$0);
+      } else if ($$3 == coh.b) {
+         gbr.a(this.r, this.s, this.o, $$0.e == bvr.b);
+      } else if ($$3 == coh.c) {
+         gbr.a(this.r, this.s, $$0.c, $$0.K, $$0.e == bvr.b);
+      } else if ($$3 == coh.d) {
+         this.o.e = 0.5F;
+         this.o.f = 0.0F;
+         if ($$0.e == bvr.a) {
+            this.r.f = -0.5F;
+            this.r.e = -0.9F;
+         } else {
+            this.s.f = 0.5F;
+            this.s.e = -0.9F;
+         }
+      }
    }
 
-   public gfe b() {
-      return this.c;
+   protected void a(hau $$0, float $$1) {
+      float $$2 = $$0.H;
+      if ($$2 > 0.0F && $$0.d == coh.a) {
+         gbr.a(this.r, this.s, $$0.e, $$2, $$0.u);
+      } else {
+         super.a($$0, $$1);
+      }
+   }
+
+   private void b(hau $$0) {
+      if ($$0.e == bvr.a) {
+         this.s.e = -1.8F;
+      } else {
+         this.r.e = -1.8F;
+      }
+   }
+
+   @Override
+   public void c_(boolean $$0) {
+      super.c_($$0);
+      this.a.k = $$0;
+      this.b.k = $$0;
+      this.c.k = $$0;
+      this.d.k = $$0;
+      this.e.k = $$0;
    }
 }

@@ -1,16 +1,24 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class fnp implements fnr {
-   private final akv a;
+public record fnp(float b, float c) implements fnq {
+   public static final MapCodec<fnp> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ayi.a(0.0F, 1.0F).fieldOf("temperature").forGetter(fnp::b), ayi.a(0.0F, 1.0F).fieldOf("downfall").forGetter(fnp::c))
+            .apply($$0, fnp::new)
+   );
 
-   public fnp(akv $$0) {
-      this.a = $$0;
+   public fnp() {
+      this(0.5F, 1.0F);
    }
 
-   public JsonElement a() {
-      JsonObject $$0 = new JsonObject();
-      $$0.addProperty("parent", this.a.toString());
-      return $$0;
+   @Override
+   public int a(cxh $$0, @Nullable ggy $$1, @Nullable bvy $$2) {
+      return dgx.a((double)this.b, (double)this.c);
+   }
+
+   @Override
+   public MapCodec<fnp> a() {
+      return a;
    }
 }

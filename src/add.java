@@ -1,85 +1,42 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record add(int b, boolean c, Set<aku<dgj>> d, int e, int f, int g, boolean h, boolean i, boolean j, agb k, boolean l) implements yw<abl> {
-   public static final yn<wa, add> a = yw.a(add::a, add::new);
+public record add(evo b, byte c, boolean d, Optional<List<evk>> e, Optional<evq.c> f) implements yw<abl> {
+   public static final yn<wa, add> a = yn.a(evo.b, add::b, yl.c, add::e, yl.b, add::f, evk.a.a(yl.a()).a(yl::a), add::g, evq.c.a, add::h, add::new);
 
-   private add(wa $$0) {
-      this(
-         $$0.readInt(),
-         $$0.readBoolean(),
-         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(mc.be)),
-         $$0.l(),
-         $$0.l(),
-         $$0.l(),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         new agb($$0),
-         $$0.readBoolean()
-      );
-   }
-
-   private void a(wa $$0) {
-      $$0.q(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d, vl::b);
-      $$0.c(this.e);
-      $$0.c(this.f);
-      $$0.c(this.g);
-      $$0.a(this.h);
-      $$0.a(this.i);
-      $$0.a(this.j);
-      this.k.a($$0);
-      $$0.a(this.l);
+   public add(evo $$0, byte $$1, boolean $$2, @Nullable Collection<evk> $$3, @Nullable evq.c $$4) {
+      this($$0, $$1, $$2, $$3 != null ? Optional.of(List.copyOf($$3)) : Optional.empty(), Optional.ofNullable($$4));
    }
 
    @Override
    public yy<add> a() {
-      return age.O;
+      return agd.O;
    }
 
    public void a(abl $$0) {
       $$0.a(this);
    }
 
-   public boolean e() {
+   public void a(evq $$0) {
+      this.e.ifPresent($$0::a);
+      this.f.ifPresent($$1 -> $$1.a($$0));
+   }
+
+   public byte e() {
       return this.c;
    }
 
-   public Set<aku<dgj>> f() {
+   public boolean f() {
       return this.d;
    }
 
-   public int g() {
+   public Optional<List<evk>> g() {
       return this.e;
    }
 
-   public int h() {
+   public Optional<evq.c> h() {
       return this.f;
-   }
-
-   public int i() {
-      return this.g;
-   }
-
-   public boolean j() {
-      return this.h;
-   }
-
-   public boolean k() {
-      return this.i;
-   }
-
-   public boolean l() {
-      return this.j;
-   }
-
-   public agb m() {
-      return this.k;
-   }
-
-   public boolean n() {
-      return this.l;
    }
 }

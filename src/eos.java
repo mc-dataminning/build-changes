@@ -1,30 +1,26 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class eos extends eou {
-   public static final MapCodec<eos> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(d(), b(), e(), c()).apply($$0, eos::new));
+public interface eos<S extends eoj> {
+   eos<eqd> a = a("buried_treasure", eqd.d);
+   eos<eqf> b = a("desert_pyramid", eqf.d);
+   eos<eqh> c = a("end_city", eqh.d);
+   eos<eqq> d = a("fortress", eqq.e);
+   eos<eqj> e = a("igloo", eqj.d);
+   eos<eqk> f = a("jigsaw", eqk.i);
+   eos<eqm> g = a("jungle_temple", eqm.d);
+   eos<eqo> h = a("mineshaft", eqo.d);
+   eos<eqs> i = a("nether_fossil", eqs.d);
+   eos<equ> j = a("ocean_monument", equ.d);
+   eos<eqw> k = a("ocean_ruin", eqw.d);
+   eos<eqy> l = a("ruined_portal", eqy.d);
+   eos<era> m = a("shipwreck", era.d);
+   eos<erc> n = a("stronghold", erc.d);
+   eos<ere> o = a("swamp_hut", ere.d);
+   eos<erg> p = a("woodland_mansion", erg.d);
 
-   protected eos(Either<akv, erp> $$0, jr<ern> $$1, eox.a $$2, Optional<eqz> $$3) {
-      super($$0, $$1, $$2, $$3);
-   }
+   MapCodec<S> codec();
 
-   @Override
-   protected erl a(dqf $$0, enf $$1, eqz $$2, boolean $$3) {
-      erl $$4 = super.a($$0, $$1, $$2, $$3);
-      $$4.b(eqq.b);
-      $$4.a(eqq.d);
-      return $$4;
-   }
-
-   @Override
-   public eow<?> a() {
-      return eow.e;
-   }
-
-   @Override
-   public String toString() {
-      return "LegacySingle[" + this.c + "]";
+   private static <S extends eoj> eos<S> a(String $$0, MapCodec<S> $$1) {
+      return ke.a(mb.R, $$0, () -> $$1);
    }
 }

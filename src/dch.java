@@ -1,117 +1,69 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.datafixers.util.Pair;
 import javax.annotation.Nullable;
 
-public class dch implements dau {
-   final String c;
-   final das d;
-   final dbb e;
-   final dbb f;
-   final jr<cwm> g;
-   @Nullable
-   private dbe h;
-
-   public dch(String $$0, das $$1, dbb $$2, dbb $$3, jr<cwm> $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
+public class dch extends dbl {
+   public dch(dbi $$0) {
+      super($$0);
    }
 
-   public boolean a(dat $$0, dgj $$1) {
+   @Nullable
+   private static Pair<cxh, cxh> c(dbj $$0) {
       if ($$0.e() != 2) {
-         return false;
+         return null;
       } else {
-         boolean $$2 = false;
-         boolean $$3 = false;
+         cxh $$1 = null;
 
-         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            cwq $$5 = $$0.a($$4);
-            if (!$$5.f()) {
-               if (!$$2 && this.e.a($$5) && $$5.h() != this.g.a()) {
-                  $$2 = true;
-               } else {
-                  if ($$3 || !this.f.a($$5)) {
-                     return false;
-                  }
-
-                  $$3 = true;
+         for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
+            cxh $$3 = $$0.a($$2);
+            if (!$$3.f()) {
+               if ($$1 != null) {
+                  return a($$1, $$3) ? Pair.of($$1, $$3) : null;
                }
+
+               $$1 = $$3;
             }
          }
 
-         return $$2 && $$3;
+         return null;
       }
    }
 
-   public cwq a(dat $$0, jt.a $$1) {
-      cwq $$2 = cwq.j;
+   private static boolean a(cxh $$0, cxh $$1) {
+      return $$1.a($$0.h()) && $$0.M() == 1 && $$1.M() == 1 && $$0.b(kv.d) && $$1.b(kv.d) && $$0.b(kv.e) && $$1.b(kv.e);
+   }
 
-      for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
-         cwq $$4 = $$0.a($$3);
-         if (!$$4.f() && this.e.a($$4) && $$4.h() != this.g.a()) {
-            $$2 = $$4;
-         }
+   public boolean a(dbj $$0, dgz $$1) {
+      return c($$0) != null;
+   }
+
+   public cxh a(dbj $$0, jt.a $$1) {
+      Pair<cxh, cxh> $$2 = c($$0);
+      if ($$2 == null) {
+         return cxh.k;
+      } else {
+         cxh $$3 = (cxh)$$2.getFirst();
+         cxh $$4 = (cxh)$$2.getSecond();
+         int $$5 = Math.max($$3.p(), $$4.p());
+         int $$6 = $$3.p() - $$3.o();
+         int $$7 = $$4.p() - $$4.o();
+         int $$8 = $$6 + $$7 + $$5 * 5 / 100;
+         cxh $$9 = new cxh($$3.h());
+         $$9.b(kv.d, $$5);
+         $$9.b(Math.max($$5 - $$8, 0));
+         ddx $$10 = ddt.b($$3);
+         ddx $$11 = ddt.b($$4);
+         ddt.a($$9, $$3x -> $$1.d(mc.aP).c().filter($$0xx -> $$0xx.a(aws.o)).forEach($$3xx -> {
+               int $$4x = Math.max($$10.a($$3xx), $$11.a($$3xx));
+               if ($$4x > 0) {
+                  $$3x.b($$3xx, $$4x);
+               }
+            }));
+         return $$9;
       }
-
-      return $$2.a(this.g.a(), 1);
    }
 
    @Override
-   public List<dck> g() {
-      return List.of(new dcp(List.of(this.e.c(), this.f.c()), new dcq.d(this.g), new dcq.d(cwu.fc)));
-   }
-
-   @Override
-   public dbp<dch> a() {
-      return dbp.m;
-   }
-
-   @Override
-   public String j() {
-      return this.c;
-   }
-
-   @Override
-   public dbe ao_() {
-      if (this.h == null) {
-         this.h = dbe.b(List.of(this.e, this.f));
-      }
-
-      return this.h;
-   }
-
-   @Override
-   public das c() {
-      return this.d;
-   }
-
-   public static class a implements dbp<dch> {
-      private static final MapCodec<dch> x = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.c),
-                  das.e.fieldOf("category").orElse(das.d).forGetter($$0x -> $$0x.d),
-                  dbb.d.fieldOf("input").forGetter($$0x -> $$0x.e),
-                  dbb.d.fieldOf("material").forGetter($$0x -> $$0x.f),
-                  cwm.e.fieldOf("result").forGetter($$0x -> $$0x.g)
-               )
-               .apply($$0, dch::new)
-      );
-      public static final yn<wa, dch> w = yn.a(
-         yl.o, $$0 -> $$0.c, das.g, $$0 -> $$0.d, dbb.a, $$0 -> $$0.e, dbb.a, $$0 -> $$0.f, yl.b(mc.K), $$0 -> $$0.g, dch::new
-      );
-
-      @Override
-      public MapCodec<dch> a() {
-         return x;
-      }
-
-      @Override
-      public yn<wa, dch> b() {
-         return w;
-      }
+   public dcf<dch> a() {
+      return dcf.n;
    }
 }

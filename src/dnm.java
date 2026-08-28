@@ -1,75 +1,55 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dnm extends djn {
-   public static final MapCodec<dnm> a = b(dnm::new);
-   public static final dxp b = dpf.b;
-   public static final dxp c = dpf.c;
-   public static final dxp d = dpf.d;
-   public static final dxp e = dpf.e;
-   public static final dxp f = dpf.f;
-   public static final dxp g = dpf.g;
-   private static final Map<jn, dxp> h = dpf.h;
+public class dnm extends dko implements dkh {
+   public static final MapCodec<dnm> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(akt.a(mc.aM).fieldOf("feature").forGetter($$0x -> $$0x.e), mb.e.q().fieldOf("grows_on").forGetter($$0x -> $$0x.d), t())
+            .apply($$0, dnm::new)
+   );
+   private static final double b = 0.4;
+   private static final fcr c = dke.b(8.0, 0.0, 9.0);
+   private final dke d;
+   private final akt<egg<?, ?>> e;
 
    @Override
    public MapCodec<dnm> a() {
       return a;
    }
 
-   public dnm(dwx.d $$0) {
-      super($$0);
-      this.l(
-         this.F
-            .b()
-            .b(b, Boolean.valueOf(true))
-            .b(c, Boolean.valueOf(true))
-            .b(d, Boolean.valueOf(true))
-            .b(e, Boolean.valueOf(true))
-            .b(f, Boolean.valueOf(true))
-            .b(g, Boolean.valueOf(true))
-      );
+   protected dnm(akt<egg<?, ?>> $$0, dke $$1, dxp.d $$2) {
+      super($$2);
+      this.e = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public dwy a(dah $$0) {
-      dfo $$1 = $$0.q();
-      ji $$2 = $$0.a();
-      return this.m()
-         .b(g, Boolean.valueOf(!$$1.a_($$2.e()).a(this)))
-         .b(f, Boolean.valueOf(!$$1.a_($$2.d()).a(this)))
-         .b(b, Boolean.valueOf(!$$1.a_($$2.f()).a(this)))
-         .b(c, Boolean.valueOf(!$$1.a_($$2.i()).a(this)))
-         .b(d, Boolean.valueOf(!$$1.a_($$2.g()).a(this)))
-         .b(e, Boolean.valueOf(!$$1.a_($$2.h()).a(this)));
+   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
+      return c;
    }
 
    @Override
-   protected dwy a(dwy $$0, dgm $$1, dgy $$2, ji $$3, jn $$4, ji $$5, dwy $$6, azh $$7) {
-      return $$6.a(this) ? $$0.b(h.get($$4), Boolean.valueOf(false)) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected boolean b(dxq $$0, dgf $$1, ji $$2) {
+      return $$0.a(awp.aO) || $$0.a(dkg.fA) || $$0.a(dkg.ek) || super.b($$0, $$1, $$2);
+   }
+
+   private Optional<? extends jr<egg<?, ?>>> a(dhc $$0) {
+      return $$0.F_().e(mc.aM).a(this.e);
    }
 
    @Override
-   protected dwy a(dwy $$0, dqf $$1) {
-      return $$0.b(h.get($$1.a(jn.c)), $$0.c(b))
-         .b(h.get($$1.a(jn.d)), $$0.c(d))
-         .b(h.get($$1.a(jn.f)), $$0.c(c))
-         .b(h.get($$1.a(jn.e)), $$0.c(e))
-         .b(h.get($$1.a(jn.b)), $$0.c(f))
-         .b(h.get($$1.a(jn.a)), $$0.c(g));
+   public boolean a(dhc $$0, ji $$1, dxq $$2) {
+      dxq $$3 = $$0.a_($$1.e());
+      return $$3.a(this.d);
    }
 
    @Override
-   protected dwy a(dwy $$0, dom $$1) {
-      return $$0.b(h.get($$1.b(jn.c)), $$0.c(b))
-         .b(h.get($$1.b(jn.d)), $$0.c(d))
-         .b(h.get($$1.b(jn.f)), $$0.c(c))
-         .b(h.get($$1.b(jn.e)), $$0.c(e))
-         .b(h.get($$1.b(jn.b)), $$0.c(f))
-         .b(h.get($$1.b(jn.a)), $$0.c(g));
+   public boolean a(dgz $$0, azh $$1, ji $$2, dxq $$3) {
+      return (double)$$1.i() < 0.4;
    }
 
    @Override
-   protected void a(dwz.a<djn, dwy> $$0) {
-      $$0.a(f, g, b, c, d, e);
+   public void a(ard $$0, azh $$1, ji $$2, dxq $$3) {
+      this.a($$0).ifPresent($$3x -> ((egg)$$3x.a()).a($$0, $$0.m().g(), $$1, $$2));
    }
 }

@@ -1,44 +1,58 @@
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.ArgumentBuilder;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.datafixers.util.Either;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
 import java.util.function.Predicate;
-import java.util.function.Supplier;
-import org.apache.commons.lang3.mutable.MutableInt;
+import javax.annotation.Nullable;
 
 public class ana {
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wp.c("argument.pos.unloaded"));
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> wp.b("commands.fillbiome.toobig", $$0, $$1));
+   private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> wp.b("commands.fill.toobig", $$0, $$1));
+   static final go b = new go(dkg.a.m(), Collections.emptySet(), null);
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wp.c("commands.fill.failed"));
 
    public static void a(CommandDispatcher<ex> $$0, et $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("fillbiome").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("fill").requires($$0x -> $$0x.c(2)))
             .then(
                ey.a("from", gt.a())
                   .then(
                      ey.a("to", gt.a())
                         .then(
-                           ((RequiredArgumentBuilder)ey.a("biome", fw.a($$1, mc.aI))
-                                 .executes($$0x -> a((ex)$$0x.getSource(), gt.a($$0x, "from"), gt.a($$0x, "to"), fw.a($$0x, "biome", mc.aI), $$0xx -> true)))
+                           a($$1, ey.a("block", gq.a($$1)), $$0x -> gt.a($$0x, "from"), $$0x -> gt.a($$0x, "to"), $$0x -> gq.a($$0x, "block"), $$0x -> null)
                               .then(
-                                 ey.a("replace")
+                                 ((LiteralArgumentBuilder)ey.a("replace")
+                                       .executes(
+                                          $$0x -> a(
+                                                (ex)$$0x.getSource(), eob.a(gt.a($$0x, "from"), gt.a($$0x, "to")), gq.a($$0x, "block"), ana.d.a, null, false
+                                             )
+                                       ))
                                     .then(
-                                       ey.a("filter", ga.a($$1, mc.aI))
-                                          .executes(
-                                             $$0x -> a(
-                                                   (ex)$$0x.getSource(),
-                                                   gt.a($$0x, "from"),
-                                                   gt.a($$0x, "to"),
-                                                   fw.a($$0x, "biome", mc.aI),
-                                                   ga.a($$0x, "filter", mc.aI)::test
-                                                )
+                                       a(
+                                          $$1,
+                                          ey.a("filter", gp.a($$1)),
+                                          $$0x -> gt.a($$0x, "from"),
+                                          $$0x -> gt.a($$0x, "to"),
+                                          $$0x -> gq.a($$0x, "block"),
+                                          $$0x -> gp.a($$0x, "filter")
+                                       )
+                                    )
+                              )
+                              .then(
+                                 ey.a("keep")
+                                    .executes(
+                                       $$0x -> a(
+                                             (ex)$$0x.getSource(),
+                                             eob.a(gt.a($$0x, "from"), gt.a($$0x, "to")),
+                                             gq.a($$0x, "block"),
+                                             ana.d.a,
+                                             $$0xx -> $$0xx.c().u($$0xx.d()),
+                                             false
                                           )
                                     )
                               )
@@ -48,76 +62,144 @@ public class ana {
       );
    }
 
-   private static int a(int $$0) {
-      return kc.c(kc.a($$0));
+   private static ArgumentBuilder<ex, ?> a(
+      et $$0,
+      ArgumentBuilder<ex, ?> $$1,
+      ana.b<CommandContext<ex>, ji> $$2,
+      ana.b<CommandContext<ex>, ji> $$3,
+      ana.b<CommandContext<ex>, go> $$4,
+      ana.e<CommandContext<ex>, Predicate<dxu>> $$5
+   ) {
+      return $$1.executes($$4x -> a((ex)$$4x.getSource(), eob.a($$2.apply($$4x), $$3.apply($$4x)), $$4.apply($$4x), ana.d.a, $$5.apply($$4x), false))
+         .then(
+            ey.a("outline")
+               .executes($$4x -> a((ex)$$4x.getSource(), eob.a($$2.apply($$4x), $$3.apply($$4x)), $$4.apply($$4x), ana.d.b, $$5.apply($$4x), false))
+         )
+         .then(
+            ey.a("hollow").executes($$4x -> a((ex)$$4x.getSource(), eob.a($$2.apply($$4x), $$3.apply($$4x)), $$4.apply($$4x), ana.d.c, $$5.apply($$4x), false))
+         )
+         .then(
+            ey.a("destroy")
+               .executes($$4x -> a((ex)$$4x.getSource(), eob.a($$2.apply($$4x), $$3.apply($$4x)), $$4.apply($$4x), ana.d.d, $$5.apply($$4x), false))
+         )
+         .then(
+            ey.a("strict").executes($$4x -> a((ex)$$4x.getSource(), eob.a($$2.apply($$4x), $$3.apply($$4x)), $$4.apply($$4x), ana.d.a, $$5.apply($$4x), true))
+         );
    }
 
-   private static ji a(ji $$0) {
-      return new ji(a($$0.u()), a($$0.v()), a($$0.w()));
-   }
-
-   private static dho a(MutableInt $$0, dyt $$1, enf $$2, jr<dhl> $$3, Predicate<jr<dhl>> $$4) {
-      return ($$5, $$6, $$7, $$8) -> {
-         int $$9 = kc.c($$5);
-         int $$10 = kc.c($$6);
-         int $$11 = kc.c($$7);
-         jr<dhl> $$12 = $$1.getNoiseBiome($$5, $$6, $$7);
-         if ($$2.d($$9, $$10, $$11) && $$4.test($$12)) {
-            $$0.increment();
-            return $$3;
-         } else {
-            return $$12;
-         }
-      };
-   }
-
-   public static Either<Integer, CommandSyntaxException> a(ard $$0, ji $$1, ji $$2, jr<dhl> $$3) {
-      return a($$0, $$1, $$2, $$3, $$0x -> true, $$0x -> {
-      });
-   }
-
-   public static Either<Integer, CommandSyntaxException> a(ard $$0, ji $$1, ji $$2, jr<dhl> $$3, Predicate<jr<dhl>> $$4, Consumer<Supplier<wp>> $$5) {
-      ji $$6 = a($$1);
-      ji $$7 = a($$2);
-      enf $$8 = enf.a($$6, $$7);
-      int $$9 = $$8.d() * $$8.e() * $$8.f();
-      int $$10 = $$0.O().c(dgf.A);
-      if ($$9 > $$10) {
-         return Either.right(b.create($$10, $$9));
+   private static int a(ex $$0, eob $$1, go $$2, ana.d $$3, @Nullable Predicate<dxu> $$4, boolean $$5) throws CommandSyntaxException {
+      int $$6 = $$1.d() * $$1.e() * $$1.f();
+      int $$7 = $$0.e().O().c(dgv.A);
+      if ($$6 > $$7) {
+         throw a.create($$7, $$6);
       } else {
-         List<dyt> $$11 = new ArrayList<>();
+         List<ji> $$8 = Lists.newArrayList();
+         ard $$9 = $$0.e();
+         if ($$9.ak()) {
+            throw c.create();
+         } else {
+            int $$10 = 0;
 
-         for (int $$12 = kk.a($$8.j()); $$12 <= kk.a($$8.m()); $$12++) {
-            for (int $$13 = kk.a($$8.h()); $$13 <= kk.a($$8.k()); $$13++) {
-               dyt $$14 = $$0.a($$13, $$12, dzu.n, false);
-               if ($$14 == null) {
-                  return Either.right(a.create());
+            for (ji $$11 : ji.b($$1.h(), $$1.i(), $$1.j(), $$1.k(), $$1.l(), $$1.m())) {
+               if ($$4 == null || $$4.test(new dxu($$9, $$11, true))) {
+                  boolean $$12 = false;
+                  if ($$3.f.affect($$9, $$11)) {
+                     $$12 = true;
+                  }
+
+                  go $$13 = $$3.e.filter($$1, $$11, $$2, $$9);
+                  if ($$13 == null) {
+                     if ($$12) {
+                        $$10++;
+                     }
+                  } else if (!$$13.a($$9, $$11, 2 | ($$5 ? 304 : 256))) {
+                     if ($$12) {
+                        $$10++;
+                     }
+                  } else {
+                     if (!$$5) {
+                        $$8.add($$11.j());
+                     }
+
+                     $$10++;
+                  }
                }
+            }
 
-               $$11.add($$14);
+            for (ji $$14 : $$8) {
+               dke $$15 = $$9.a_($$14).b();
+               $$9.a($$14, $$15);
+            }
+
+            if ($$10 == 0) {
+               throw c.create();
+            } else {
+               int $$16 = $$10;
+               $$0.a(() -> wp.a("commands.fill.success", $$16), true);
+               return $$10;
             }
          }
-
-         MutableInt $$15 = new MutableInt(0);
-
-         for (dyt $$16 : $$11) {
-            $$16.a(a($$15, $$16, $$8, $$3, $$4), $$0.m().i().b());
-            $$16.i();
-         }
-
-         $$0.m().a.a($$11);
-         $$5.accept(() -> wp.a("commands.fillbiome.success.count", $$15.getValue(), $$8.h(), $$8.i(), $$8.j(), $$8.k(), $$8.l(), $$8.m()));
-         return Either.left($$15.getValue());
       }
    }
 
-   private static int a(ex $$0, ji $$1, ji $$2, jr.c<dhl> $$3, Predicate<jr<dhl>> $$4) throws CommandSyntaxException {
-      Either<Integer, CommandSyntaxException> $$5 = a($$0.e(), $$1, $$2, $$3, $$4, $$1x -> $$0.a($$1x, true));
-      Optional<CommandSyntaxException> $$6 = $$5.right();
-      if ($$6.isPresent()) {
-         throw (CommandSyntaxException)$$6.get();
-      } else {
-         return (Integer)$$5.left().get();
+   @FunctionalInterface
+   public interface a {
+      ana.a a = ($$0, $$1) -> false;
+
+      boolean affect(ard var1, ji var2);
+   }
+
+   @FunctionalInterface
+   interface b<T, R> {
+      R apply(T var1) throws CommandSyntaxException;
+   }
+
+   @FunctionalInterface
+   public interface c {
+      ana.c a = ($$0, $$1, $$2, $$3) -> $$2;
+
+      @Nullable
+      go filter(eob var1, ji var2, go var3, ard var4);
+   }
+
+   static enum d {
+      a(ana.a.a, ana.c.a),
+      b(
+         ana.a.a,
+         ($$0, $$1, $$2, $$3) -> $$1.u() != $$0.h()
+                  && $$1.u() != $$0.k()
+                  && $$1.v() != $$0.i()
+                  && $$1.v() != $$0.l()
+                  && $$1.w() != $$0.j()
+                  && $$1.w() != $$0.m()
+               ? null
+               : $$2
+      ),
+      c(
+         ana.a.a,
+         ($$0, $$1, $$2, $$3) -> $$1.u() != $$0.h()
+                  && $$1.u() != $$0.k()
+                  && $$1.v() != $$0.i()
+                  && $$1.v() != $$0.l()
+                  && $$1.w() != $$0.j()
+                  && $$1.w() != $$0.m()
+               ? ana.b
+               : $$2
+      ),
+      d(($$0, $$1) -> $$0.b($$1, true), ana.c.a);
+
+      public final ana.c e;
+      public final ana.a f;
+
+      private d(final ana.a $$0, final ana.c $$1) {
+         this.f = $$0;
+         this.e = $$1;
       }
+   }
+
+   @FunctionalInterface
+   interface e<T, R> {
+      @Nullable
+      R apply(T var1) throws CommandSyntaxException;
    }
 }

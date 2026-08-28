@@ -1,8 +1,20 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum dyp implements azv {
+   a("top"),
+   b("bottom");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dyp {
+   private final String c;
+
+   private dyp(final String $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.c;
+   }
+
+   @Override
+   public String c() {
+      return this.c;
+   }
 }

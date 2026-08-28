@@ -1,196 +1,143 @@
-import com.google.common.annotations.VisibleForTesting;
-import io.netty.buffer.ByteBuf;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import javax.annotation.Nullable;
 
 public class eui {
-   public static final yn<ByteBuf, eui> a = yl.a(eui::a, eui::i);
-   private static final eui[] b = af.a(() -> {
-      eui[] $$0 = new eui[48];
-      a(new eui(jn.b, jn.c, eui.a.a), $$0);
-      return $$0;
-   });
-   private final jn c;
-   private final jn d;
-   private final jn e;
-   private final eui.a f;
-   private final int g;
-   private final List<jn> h;
-   private final List<jn> i;
-   private final List<jn> j;
-   private final Map<jn, eui> k = new EnumMap<>(jn.class);
-   private final Map<jn, eui> l = new EnumMap<>(jn.class);
-   private final Map<eui.a, eui> m = new EnumMap<>(eui.a.class);
+   public final int a;
+   public final int b;
+   public final int c;
+   private final int m;
+   public int d = -1;
+   public float e;
+   public float f;
+   public float g;
+   @Nullable
+   public eui h;
+   public boolean i;
+   public float j;
+   public float k;
+   public eun l = eun.a;
 
-   private eui(jn $$0, jn $$1, eui.a $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = $$2;
-      this.g = b($$0, $$1, $$2);
-      km $$3 = $$1.q().d($$0.q());
-      jn $$4 = jn.a($$3, null);
-      Objects.requireNonNull($$4);
-      if (this.f == eui.a.b) {
-         this.e = $$4;
-      } else {
-         this.e = $$4.g();
-      }
-
-      this.h = List.of(this.d.g(), this.d, this.e, this.e.g(), this.c.g(), this.c);
-      this.i = this.h.stream().filter($$0x -> $$0x.o() != this.c.o()).toList();
-      this.j = this.h.stream().filter($$0x -> $$0x.o() == this.c.o()).toList();
+   public eui(int $$0, int $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.m = b($$0, $$1, $$2);
    }
 
-   public static eui a(jn $$0, jn $$1, eui.a $$2) {
-      return b[b($$0, $$1, $$2)];
+   public eui a(int $$0, int $$1, int $$2) {
+      eui $$3 = new eui($$0, $$1, $$2);
+      $$3.d = this.d;
+      $$3.e = this.e;
+      $$3.f = this.f;
+      $$3.g = this.g;
+      $$3.h = this.h;
+      $$3.i = this.i;
+      $$3.j = this.j;
+      $$3.k = this.k;
+      $$3.l = this.l;
+      return $$3;
    }
 
-   public eui a(jn $$0) {
-      return this.l.get($$0);
+   public static int b(int $$0, int $$1, int $$2) {
+      return $$1 & 0xFF | ($$0 & 32767) << 8 | ($$2 & 32767) << 24 | ($$0 < 0 ? Integer.MIN_VALUE : 0) | ($$2 < 0 ? 32768 : 0);
    }
 
-   public eui b(jn $$0) {
-      return this.k.get($$0);
+   public float a(eui $$0) {
+      float $$1 = (float)($$0.a - this.a);
+      float $$2 = (float)($$0.b - this.b);
+      float $$3 = (float)($$0.c - this.c);
+      return ayz.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
    }
 
-   public eui c(jn $$0) {
-      return $$0.o() == this.c.o() ? this : this.k.get($$0);
+   public float b(eui $$0) {
+      float $$1 = (float)($$0.a - this.a);
+      float $$2 = (float)($$0.c - this.c);
+      return ayz.c($$1 * $$1 + $$2 * $$2);
    }
 
-   public eui d(jn $$0) {
-      eui $$1 = this.b($$0);
-      return this.d == $$1.e ? $$1.a() : $$1;
+   public float a(ji $$0) {
+      float $$1 = (float)($$0.u() - this.a);
+      float $$2 = (float)($$0.v() - this.b);
+      float $$3 = (float)($$0.w() - this.c);
+      return ayz.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
    }
 
-   public eui a(eui.a $$0) {
-      return this.m.get($$0);
+   public float c(eui $$0) {
+      float $$1 = (float)($$0.a - this.a);
+      float $$2 = (float)($$0.b - this.b);
+      float $$3 = (float)($$0.c - this.c);
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
    }
 
-   public eui a() {
-      return this.a(this.f.a());
+   public float b(ji $$0) {
+      float $$1 = (float)($$0.u() - this.a);
+      float $$2 = (float)($$0.v() - this.b);
+      float $$3 = (float)($$0.w() - this.c);
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
    }
 
-   public jn b() {
-      return this.d;
+   public float d(eui $$0) {
+      float $$1 = (float)Math.abs($$0.a - this.a);
+      float $$2 = (float)Math.abs($$0.b - this.b);
+      float $$3 = (float)Math.abs($$0.c - this.c);
+      return $$1 + $$2 + $$3;
    }
 
-   public jn c() {
-      return this.c;
+   public float c(ji $$0) {
+      float $$1 = (float)Math.abs($$0.u() - this.a);
+      float $$2 = (float)Math.abs($$0.v() - this.b);
+      float $$3 = (float)Math.abs($$0.w() - this.c);
+      return $$1 + $$2 + $$3;
    }
 
-   public jn d() {
-      return this.e;
+   public ji a() {
+      return new ji(this.a, this.b, this.c);
    }
 
-   public eui.a e() {
-      return this.f;
+   public fbx b() {
+      return new fbx((double)this.a, (double)this.b, (double)this.c);
    }
 
-   public List<jn> f() {
-      return this.h;
+   @Override
+   public boolean equals(Object $$0) {
+      return !($$0 instanceof eui $$1) ? false : this.m == $$1.m && this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
    }
 
-   public List<jn> g() {
-      return this.i;
+   @Override
+   public int hashCode() {
+      return this.m;
    }
 
-   public List<jn> h() {
-      return this.j;
+   public boolean c() {
+      return this.d >= 0;
    }
 
    @Override
    public String toString() {
-      return "[up=" + this.c + ",front=" + this.d + ",sideBias=" + this.f + "]";
+      return "Node{x=" + this.a + ", y=" + this.b + ", z=" + this.c + "}";
    }
 
-   public int i() {
-      return this.g;
+   public void a(vl $$0) {
+      $$0.q(this.a);
+      $$0.q(this.b);
+      $$0.q(this.c);
+      $$0.a(this.j);
+      $$0.a(this.k);
+      $$0.a(this.i);
+      $$0.a(this.l);
+      $$0.a(this.g);
    }
 
-   public static eui a(int $$0) {
-      return b[$$0];
+   public static eui b(vl $$0) {
+      eui $$1 = new eui($$0.readInt(), $$0.readInt(), $$0.readInt());
+      a($$0, $$1);
+      return $$1;
    }
 
-   public static eui a(azh $$0) {
-      return af.a(b, $$0);
-   }
-
-   private static eui a(eui $$0, eui[] $$1) {
-      if ($$1[$$0.i()] != null) {
-         return $$1[$$0.i()];
-      } else {
-         $$1[$$0.i()] = $$0;
-
-         for (eui.a $$2 : eui.a.values()) {
-            $$0.m.put($$2, a(new eui($$0.c, $$0.d, $$2), $$1));
-         }
-
-         for (jn $$3 : jn.values()) {
-            jn $$4 = $$0.c;
-            if ($$3 == $$0.c) {
-               $$4 = $$0.d.g();
-            }
-
-            if ($$3 == $$0.c.g()) {
-               $$4 = $$0.d;
-            }
-
-            $$0.k.put($$3, a(new eui($$4, $$3, $$0.f), $$1));
-         }
-
-         for (jn $$5 : jn.values()) {
-            jn $$6 = $$0.d;
-            if ($$5 == $$0.d) {
-               $$6 = $$0.c.g();
-            }
-
-            if ($$5 == $$0.d.g()) {
-               $$6 = $$0.c;
-            }
-
-            $$0.l.put($$5, a(new eui($$5, $$6, $$0.f), $$1));
-         }
-
-         return $$0;
-      }
-   }
-
-   @VisibleForTesting
-   protected static int b(jn $$0, jn $$1, eui.a $$2) {
-      if ($$0.o() == $$1.o()) {
-         throw new IllegalStateException("Up-vector and front-vector can not be on the same axis");
-      } else {
-         int $$3;
-         if ($$0.o() == jn.a.b) {
-            $$3 = $$1.o() == jn.a.a ? 1 : 0;
-         } else {
-            $$3 = $$1.o() == jn.a.b ? 1 : 0;
-         }
-
-         int $$5 = $$3 << 1 | $$1.f().ordinal();
-         return (($$0.ordinal() << 2) + $$5 << 1) + $$2.ordinal();
-      }
-   }
-
-   public static enum a {
-      a("left"),
-      b("right");
-
-      private final String c;
-
-      private a(final String $$0) {
-         this.c = $$0;
-      }
-
-      public eui.a a() {
-         return this == a ? b : a;
-      }
-
-      @Override
-      public String toString() {
-         return this.c;
-      }
+   protected static void a(vl $$0, eui $$1) {
+      $$1.j = $$0.readFloat();
+      $$1.k = $$0.readFloat();
+      $$1.i = $$0.readBoolean();
+      $$1.l = $$0.b(eun.class);
+      $$1.g = $$0.readFloat();
    }
 }

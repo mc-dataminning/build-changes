@@ -1,41 +1,57 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.DSL.TypeReference;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.function.Function;
-import java.util.function.IntFunction;
+import java.util.Map;
 
-public class beo extends bgt {
-   private final String a;
-   private final IntFunction<String> b;
+public class beo extends bip {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:commandblock_minecart", "minecraft:command_block_minecart")
+      .put("minecraft:ender_crystal", "minecraft:end_crystal")
+      .put("minecraft:snowman", "minecraft:snow_golem")
+      .put("minecraft:evocation_illager", "minecraft:evoker")
+      .put("minecraft:evocation_fangs", "minecraft:evoker_fangs")
+      .put("minecraft:illusion_illager", "minecraft:illusioner")
+      .put("minecraft:vindication_illager", "minecraft:vindicator")
+      .put("minecraft:villager_golem", "minecraft:iron_golem")
+      .put("minecraft:xp_orb", "minecraft:experience_orb")
+      .put("minecraft:xp_bottle", "minecraft:experience_bottle")
+      .put("minecraft:eye_of_ender_signal", "minecraft:eye_of_ender")
+      .put("minecraft:fireworks_rocket", "minecraft:firework_rocket")
+      .build();
+   public static final Map<String, String> b = ImmutableMap.builder()
+      .put("minecraft:portal", "minecraft:nether_portal")
+      .put("minecraft:oak_bark", "minecraft:oak_wood")
+      .put("minecraft:spruce_bark", "minecraft:spruce_wood")
+      .put("minecraft:birch_bark", "minecraft:birch_wood")
+      .put("minecraft:jungle_bark", "minecraft:jungle_wood")
+      .put("minecraft:acacia_bark", "minecraft:acacia_wood")
+      .put("minecraft:dark_oak_bark", "minecraft:dark_oak_wood")
+      .put("minecraft:stripped_oak_bark", "minecraft:stripped_oak_wood")
+      .put("minecraft:stripped_spruce_bark", "minecraft:stripped_spruce_wood")
+      .put("minecraft:stripped_birch_bark", "minecraft:stripped_birch_wood")
+      .put("minecraft:stripped_jungle_bark", "minecraft:stripped_jungle_wood")
+      .put("minecraft:stripped_acacia_bark", "minecraft:stripped_acacia_wood")
+      .put("minecraft:stripped_dark_oak_bark", "minecraft:stripped_dark_oak_wood")
+      .put("minecraft:mob_spawner", "minecraft:spawner")
+      .build();
+   public static final Map<String, String> c = ImmutableMap.builder()
+      .putAll(b)
+      .put("minecraft:clownfish", "minecraft:tropical_fish")
+      .put("minecraft:chorus_fruit_popped", "minecraft:popped_chorus_fruit")
+      .put("minecraft:evocation_illager_spawn_egg", "minecraft:evoker_spawn_egg")
+      .put("minecraft:vindication_illager_spawn_egg", "minecraft:vindicator_spawn_egg")
+      .build();
+   private static final String d = "minecraft:bred_";
 
-   public beo(Schema $$0, String $$1, TypeReference $$2, String $$3, String $$4, IntFunction<String> $$5) {
-      super($$0, false, $$1, $$2, $$3);
-      this.a = $$4;
-      this.b = $$5;
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0, String $$1, String $$2, Function<Dynamic<T>, Dynamic<T>> $$3) {
-      return $$0.map($$4 -> {
-         DynamicOps<T> $$5 = $$0.getOps();
-         Function<T, T> $$6 = $$2xx -> (T)$$3.apply(new Dynamic($$5, $$2xx)).getValue();
-         return $$5.get($$4, $$1).map($$4x -> $$5.set($$4, $$2, $$6.apply((T)$$4x))).result().orElse($$4);
-      });
+   public beo(Schema $$0, boolean $$1) {
+      super("EntityTheRenameningBlock", $$0, $$1);
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> a(
-               $$0x,
-               this.a,
-               "variant",
-               $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asNumber().map($$1 -> $$0xx.createString(this.b.apply($$1.intValue()))).result(), $$0xx)
-            )
-      );
+   protected String a(String $$0) {
+      if ($$0.startsWith("minecraft:bred_")) {
+         $$0 = "minecraft:" + $$0.substring("minecraft:bred_".length());
+      }
+
+      return a.getOrDefault($$0, $$0);
    }
 }

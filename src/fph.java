@@ -1,66 +1,74 @@
 import javax.annotation.Nullable;
 
-public abstract class fph extends fos {
-   fph(int $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1, $$2, $$3, wo.a);
-   }
+public abstract class fph extends fpj implements frm {
+   @Nullable
+   private frn a;
+   private boolean c;
 
-   public static fph a(int $$0, int $$1, akv $$2, int $$3, int $$4) {
-      return new fph.b(0, 0, $$0, $$1, $$2, $$3, $$4);
-   }
-
-   public static fph a(int $$0, int $$1, akv $$2) {
-      return new fph.a(0, 0, $$0, $$1, $$2);
+   public fph(int $$0, int $$1, int $$2, int $$3, wp $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   protected void a(fsr $$0) {
+   public final boolean aK_() {
+      return this.c;
    }
 
    @Override
-   public void a(hjw $$0) {
-   }
-
-   @Override
-   public boolean E() {
-      return false;
+   public final void b_(boolean $$0) {
+      this.c = $$0;
    }
 
    @Nullable
    @Override
-   public foc a(fsx $$0) {
-      return null;
+   public frn aL_() {
+      return this.a;
    }
 
-   static class a extends fph {
-      private final akv a;
-
-      public a(int $$0, int $$1, int $$2, int $$3, akv $$4) {
-         super($$0, $$1, $$2, $$3);
-         this.a = $$4;
+   @Override
+   public void a(@Nullable frn $$0) {
+      if (this.a != null) {
+         this.a.a(false);
       }
 
-      @Override
-      public void b(fof $$0, int $$1, int $$2, float $$3) {
-         $$0.a(gmj::H, this.a, this.F(), this.G(), this.A(), this.y());
+      if ($$0 != null) {
+         $$0.a(true);
       }
+
+      this.a = $$0;
    }
 
-   static class b extends fph {
-      private final akv a;
-      private final int b;
-      private final int c;
+   @Nullable
+   @Override
+   public foz a(ftt $$0) {
+      return frm.super.a($$0);
+   }
 
-      public b(int $$0, int $$1, int $$2, int $$3, akv $$4, int $$5, int $$6) {
-         super($$0, $$1, $$2, $$3);
-         this.a = $$4;
-         this.b = $$5;
-         this.c = $$6;
-      }
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      boolean $$3 = this.c($$0, $$1, $$2);
+      return frm.super.a($$0, $$1, $$2) || $$3;
+   }
 
-      @Override
-      protected void b(fof $$0, int $$1, int $$2, float $$3) {
-         $$0.a(gmj::H, this.a, this.F(), this.G(), 0.0F, 0.0F, this.A(), this.y(), this.b, this.c);
-      }
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      super.b($$0, $$1, $$2);
+      return frm.super.b($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      return frm.super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   public boolean aM_() {
+      return frm.super.aM_();
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      frm.super.a($$0);
    }
 }

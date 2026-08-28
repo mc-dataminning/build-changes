@@ -1,36 +1,54 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
-
-public class glc implements bqg {
-   private final glv a;
-   private final Set<bqe> b = new ObjectOpenHashSet();
-   private final bqm c = new bqm();
-
-   public glc(LongSupplier $$0, glv $$1) {
-      this.a = $$1;
-      this.b.add(bqn.a($$0));
-      this.a();
-   }
-
-   private void a() {
-      this.b.addAll(bqn.a());
-      this.b.add(bqe.a("totalChunks", bqd.f, this.a, glv::h));
-      this.b.add(bqe.a("renderedChunks", bqd.f, this.a, glv::j));
-      this.b.add(bqe.a("lastViewDistance", bqd.f, this.a, glv::i));
-      gpn $$0 = this.a.g();
-      this.b.add(bqe.a("toUpload", bqd.g, $$0, gpn::c));
-      this.b.add(bqe.a("freeBufferCount", bqd.g, $$0, gpn::d));
-      this.b.add(bqe.a("toBatchCount", bqd.g, $$0, gpn::b));
-      if (ffo.a().isPresent()) {
-         this.b.add(bqe.a("gpuUtilization", bqd.i, flk.Q(), flk::v));
-      }
+public class glc extends gks {
+   glc(ggy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, glb $$8) {
+      super($$0, $$1, $$2, $$3, $$8, 0.0F);
+      this.B = 0.92F;
+      this.D = 0.5F;
+      this.e(1.0F);
+      this.a((float)axk.b($$7), (float)axk.c($$7), (float)axk.d($$7));
+      this.t = (int)((double)(this.D * 12.0F) / (Math.random() * 0.8F + 0.2F));
+      this.b($$8);
+      this.n = false;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
    }
 
    @Override
-   public Set<bqe> a(Supplier<bor> $$0) {
-      this.b.addAll(this.c.a($$0));
-      return this.b;
+   public void a() {
+      super.a();
+      if (!this.o) {
+         this.b(this.a);
+         if (this.s > this.t / 2) {
+            this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
+         }
+
+         if (this.c.a_(ji.a(this.g, this.h, this.i)).l()) {
+            this.k -= 0.0074F;
+         }
+      }
+   }
+
+   public static class a implements gkj<lx> {
+      private final glb a;
+
+      public a(glb $$0) {
+         this.a = $$0;
+      }
+
+      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new glc($$1, $$2, $$3, $$4, $$5, $$6, $$7, axk.a(255, 204, 31, 102), this.a);
+      }
+   }
+
+   public static class b implements gkj<lx> {
+      private final glb a;
+
+      public b(glb $$0) {
+         this.a = $$0;
+      }
+
+      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new glc($$1, $$2, $$3, $$4, $$5, $$6, $$7, axk.a(255, 255, 255, 255), this.a);
+      }
    }
 }

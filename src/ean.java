@@ -1,293 +1,102 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.OptionalDynamic;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import java.io.IOException;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import java.util.function.BiFunction;
-import java.util.function.BooleanSupplier;
-import java.util.function.Function;
+import com.google.common.collect.Lists;
+import java.util.Collections;
+import java.util.EnumSet;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.jetbrains.annotations.VisibleForTesting;
 
-public class ean<R, P> implements AutoCloseable {
-   static final Logger a = LogUtils.getLogger();
-   private static final String b = "Sections";
-   private final eap d;
-   private final Long2ObjectMap<Optional<R>> e = new Long2ObjectOpenHashMap();
-   private final LongLinkedOpenHashSet f = new LongLinkedOpenHashSet();
-   private final Codec<P> g;
-   private final Function<R, P> h;
-   private final BiFunction<P, Runnable, R> i;
-   private final Function<Runnable, R> j;
-   private final kf k;
-   private final eab l;
-   protected final dgl c;
-   private final LongSet m = new LongOpenHashSet();
-   private final Long2ObjectMap<CompletableFuture<Optional<ean.a<P>>>> n = new Long2ObjectOpenHashMap();
-   private final Object o = new Object();
+public class ean {
+   public static final int a = 8;
+   private static final EnumSet<edo.a> o = EnumSet.of(edo.a.c, edo.a.a);
+   public static final EnumSet<edo.a> b = EnumSet.of(edo.a.d, edo.a.b, edo.a.e, edo.a.f);
+   public static final ean c = a("empty", null, o, ear.a);
+   public static final ean d = a("structure_starts", c, o, ear.a);
+   public static final ean e = a("structure_references", d, o, ear.a);
+   public static final ean f = a("biomes", e, o, ear.a);
+   public static final ean g = a("noise", f, o, ear.a);
+   public static final ean h = a("surface", g, o, ear.a);
+   public static final ean i = a("carvers", h, b, ear.a);
+   public static final ean j = a("features", i, b, ear.a);
+   public static final ean k = a("initialize_light", j, b, ear.a);
+   public static final ean l = a("light", k, b, ear.a);
+   public static final ean m = a("spawn", l, b, ear.a);
+   public static final ean n = a("full", m, b, ear.b);
+   private final int p;
+   private final ean q;
+   private final ear r;
+   private final EnumSet<edo.a> s;
 
-   public ean(eap $$0, Codec<P> $$1, Function<R, P> $$2, BiFunction<P, Runnable, R> $$3, Function<Runnable, R> $$4, kf $$5, eab $$6, dgl $$7) {
-      this.d = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.c = $$7;
+   private static ean a(String $$0, @Nullable ean $$1, EnumSet<edo.a> $$2, ear $$3) {
+      return ke.a(mb.l, $$0, new ean($$1, $$2, $$3));
    }
 
-   protected void a(BooleanSupplier $$0) {
-      LongIterator $$1 = this.f.iterator();
+   public static List<ean> a() {
+      List<ean> $$0 = Lists.newArrayList();
 
-      while ($$1.hasNext() && $$0.getAsBoolean()) {
-         dfp $$2 = new dfp($$1.nextLong());
-         $$1.remove();
-         this.e($$2);
+      ean $$1;
+      for ($$1 = n; $$1.c() != $$1; $$1 = $$1.c()) {
+         $$0.add($$1);
       }
 
-      this.c();
+      $$0.add($$1);
+      Collections.reverse($$0);
+      return $$0;
    }
 
-   private void c() {
-      synchronized (this.o) {
-         Iterator<Entry<CompletableFuture<Optional<ean.a<P>>>>> $$0 = Long2ObjectMaps.fastIterator(this.n);
-
-         while ($$0.hasNext()) {
-            Entry<CompletableFuture<Optional<ean.a<P>>>> $$1 = $$0.next();
-            Optional<ean.a<P>> $$2 = (Optional<ean.a<P>>)((CompletableFuture)$$1.getValue()).getNow(null);
-            if ($$2 != null) {
-               long $$3 = $$1.getLongKey();
-               this.a(new dfp($$3), $$2.orElse(null));
-               $$0.remove();
-               this.m.add($$3);
-            }
-         }
-      }
+   @VisibleForTesting
+   protected ean(@Nullable ean $$0, EnumSet<edo.a> $$1, ear $$2) {
+      this.q = $$0 == null ? this : $$0;
+      this.r = $$2;
+      this.s = $$1;
+      this.p = $$0 == null ? 0 : $$0.b() + 1;
    }
 
-   public void a() {
-      if (!this.f.isEmpty()) {
-         this.f.forEach($$0 -> this.e(new dfp($$0)));
-         this.f.clear();
-      }
+   public int b() {
+      return this.p;
    }
 
-   public boolean b() {
-      return !this.f.isEmpty();
+   public ean c() {
+      return this.q;
    }
 
-   @Nullable
-   protected Optional<R> c(long $$0) {
-      return (Optional<R>)this.e.get($$0);
+   public ear d() {
+      return this.r;
    }
 
-   protected Optional<R> d(long $$0) {
-      if (this.e($$0)) {
-         return Optional.empty();
-      } else {
-         Optional<R> $$1 = this.c($$0);
-         if ($$1 != null) {
-            return $$1;
-         } else {
-            this.c(kk.a($$0).r());
-            $$1 = this.c($$0);
-            if ($$1 == null) {
-               throw (IllegalStateException)af.b(new IllegalStateException());
-            } else {
-               return $$1;
-            }
-         }
-      }
+   public static ean a(String $$0) {
+      return mb.l.a(aku.c($$0));
    }
 
-   protected boolean e(long $$0) {
-      int $$1 = kk.c(kk.c($$0));
-      return this.c.e($$1);
+   public EnumSet<edo.a> e() {
+      return this.s;
    }
 
-   protected R f(long $$0) {
-      if (this.e($$0)) {
-         throw (IllegalArgumentException)af.b(new IllegalArgumentException("sectionPos out of bounds"));
-      } else {
-         Optional<R> $$1 = this.d($$0);
-         if ($$1.isPresent()) {
-            return $$1.get();
-         } else {
-            R $$2 = this.j.apply(() -> this.a($$0));
-            this.e.put($$0, Optional.of($$2));
-            return $$2;
-         }
-      }
+   public boolean a(ean $$0) {
+      return this.b() >= $$0.b();
    }
 
-   public CompletableFuture<?> a(dfp $$0) {
-      synchronized (this.o) {
-         long $$1 = $$0.a();
-         return this.m.contains($$1) ? CompletableFuture.completedFuture(null) : (CompletableFuture)this.n.computeIfAbsent($$1, $$1x -> this.d($$0));
-      }
+   public boolean b(ean $$0) {
+      return this.b() > $$0.b();
    }
 
-   private void c(dfp $$0) {
-      long $$1 = $$0.a();
-      CompletableFuture<Optional<ean.a<P>>> $$2;
-      synchronized (this.o) {
-         if (!this.m.add($$1)) {
-            return;
-         }
-
-         $$2 = (CompletableFuture<Optional<ean.a<P>>>)this.n.computeIfAbsent($$1, $$1x -> this.d($$0));
-      }
-
-      this.a($$0, $$2.join().orElse(null));
-      synchronized (this.o) {
-         this.n.remove($$1);
-      }
+   public boolean c(ean $$0) {
+      return this.b() <= $$0.b();
    }
 
-   private CompletableFuture<Optional<ean.a<P>>> d(dfp $$0) {
-      akt<un> $$1 = this.k.a(ue.a);
-      return this.d
-         .a($$0)
-         .thenApplyAsync($$1x -> $$1x.map($$1xx -> ean.a.a(this.g, $$1, $$1xx, this.d, this.c)), af.h().a("parseSection"))
-         .exceptionally($$1x -> {
-            if ($$1x instanceof CompletionException) {
-               $$1x = $$1x.getCause();
-            }
-
-            if ($$1x instanceof IOException $$2) {
-               a.error("Error reading chunk {} data from disk", $$0, $$2);
-               this.l.a($$2, this.d.a(), $$0);
-               return Optional.empty();
-            } else {
-               throw new CompletionException($$1x);
-            }
-         });
+   public boolean d(ean $$0) {
+      return this.b() < $$0.b();
    }
 
-   private void a(dfp $$0, @Nullable ean.a<P> $$1) {
-      if ($$1 == null) {
-         for (int $$2 = this.c.ap(); $$2 <= this.c.aq(); $$2++) {
-            this.e.put(a($$0, $$2), Optional.empty());
-         }
-      } else {
-         boolean $$3 = $$1.b();
-
-         for (int $$4 = this.c.ap(); $$4 <= this.c.aq(); $$4++) {
-            long $$5 = a($$0, $$4);
-            Optional<R> $$6 = Optional.ofNullable($$1.a.get($$4)).map($$1x -> this.i.apply((P)$$1x, () -> this.a($$5)));
-            this.e.put($$5, $$6);
-            $$6.ifPresent($$2 -> {
-               this.b($$5);
-               if ($$3) {
-                  this.a($$5);
-               }
-            });
-         }
-      }
-   }
-
-   private void e(dfp $$0) {
-      akt<un> $$1 = this.k.a(ue.a);
-      Dynamic<un> $$2 = this.a($$0, $$1);
-      un $$3 = (un)$$2.getValue();
-      if ($$3 instanceof tq) {
-         this.d.a($$0, (tq)$$3).exceptionally($$1x -> {
-            this.l.b($$1x, this.d.a(), $$0);
-            return null;
-         });
-      } else {
-         a.error("Expected compound tag, got {}", $$3);
-      }
-   }
-
-   private <T> Dynamic<T> a(dfp $$0, DynamicOps<T> $$1) {
-      Map<T, T> $$2 = Maps.newHashMap();
-
-      for (int $$3 = this.c.ap(); $$3 <= this.c.aq(); $$3++) {
-         long $$4 = a($$0, $$3);
-         Optional<R> $$5 = (Optional<R>)this.e.get($$4);
-         if ($$5 != null && !$$5.isEmpty()) {
-            DataResult<T> $$6 = this.g.encodeStart($$1, this.h.apply($$5.get()));
-            String $$7 = Integer.toString($$3);
-            $$6.resultOrPartial(a::error).ifPresent($$3x -> $$2.put((T)$$1.createString($$7), (T)$$3x));
-         }
-      }
-
-      return new Dynamic(
-         $$1, $$1.createMap(ImmutableMap.of($$1.createString("Sections"), $$1.createMap($$2), $$1.createString("DataVersion"), $$1.createInt(ab.b().d().c())))
-      );
-   }
-
-   private static long a(dfp $$0, int $$1) {
-      return kk.b($$0.h, $$1, $$0.i);
-   }
-
-   protected void b(long $$0) {
-   }
-
-   protected void a(long $$0) {
-      Optional<R> $$1 = (Optional<R>)this.e.get($$0);
-      if ($$1 != null && !$$1.isEmpty()) {
-         this.f.add(dfp.c(kk.b($$0), kk.d($$0)));
-      } else {
-         a.warn("No data for position: {}", kk.a($$0));
-      }
-   }
-
-   static int a(Dynamic<?> $$0) {
-      return $$0.get("DataVersion").asInt(1945);
-   }
-
-   public void b(dfp $$0) {
-      if (this.f.remove($$0.a())) {
-         this.e($$0);
-      }
+   public static ean a(ean $$0, ean $$1) {
+      return $$0.b($$1) ? $$0 : $$1;
    }
 
    @Override
-   public void close() throws IOException {
-      this.d.close();
+   public String toString() {
+      return this.f();
    }
 
-   static record a<T>(Int2ObjectMap<T> a, boolean b) {
-
-      public static <T> ean.a<T> a(Codec<T> $$0, DynamicOps<un> $$1, un $$2, eap $$3, dgl $$4) {
-         Dynamic<un> $$5 = new Dynamic($$1, $$2);
-         int $$6 = ean.a($$5);
-         int $$7 = ab.b().d().c();
-         boolean $$8 = $$6 != $$7;
-         Dynamic<un> $$9 = $$3.a($$5, $$6);
-         OptionalDynamic<un> $$10 = $$9.get("Sections");
-         Int2ObjectMap<T> $$11 = new Int2ObjectOpenHashMap();
-
-         for (int $$12 = $$4.ap(); $$12 <= $$4.aq(); $$12++) {
-            Optional<T> $$13 = $$10.get(Integer.toString($$12)).result().flatMap($$1x -> $$0.parse($$1x).resultOrPartial(ean.a::error));
-            if ($$13.isPresent()) {
-               $$11.put($$12, $$13.get());
-            }
-         }
-
-         return new ean.a<>($$11, $$8);
-      }
+   public String f() {
+      return mb.l.b(this).toString();
    }
 }

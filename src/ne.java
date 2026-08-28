@@ -12,52 +12,52 @@ import java.util.stream.Collectors;
 
 public abstract class ne implements ng {
    protected final jt.a a;
-   private final cru b;
-   private final cru c;
-   private final Map<but<?>, Map<aku<evx>, evx.a>> d = Maps.newHashMap();
+   private final csn b;
+   private final csn c;
+   private final Map<bvi<?>, Map<akt<ewt>, ewt.a>> d = Maps.newHashMap();
 
-   protected final eyp.a a() {
-      jt.b<dda> $$0 = this.a.d(mc.aO);
-      return eyp.a(
-         eze.a(evs.b.a, bx.a.a().a(bv.a.a().b(true))), eze.a(evs.b.c, bx.a.a().a(bu.a.a().f(cv.a.a().a(cx.b, cq.a(List.of(new bs($$0.b(aws.p), dk.d.c)))))))
+   protected final ezl.a a() {
+      jt.b<ddr> $$0 = this.a.d(mc.aP);
+      return ezl.a(
+         faa.a(ewo.b.a, bx.a.a().a(bv.a.a().b(true))), faa.a(ewo.b.c, bx.a.a().a(bu.a.a().f(cv.a.a().a(cx.b, cq.a(List.of(new bs($$0.b(aws.p), dk.d.c)))))))
       );
    }
 
-   protected ne(cru $$0, jt.a $$1) {
+   protected ne(csn $$0, jt.a $$1) {
       this($$0, $$0, $$1);
    }
 
-   protected ne(cru $$0, cru $$1, jt.a $$2) {
+   protected ne(csn $$0, csn $$1, jt.a $$2) {
       this.b = $$0;
       this.c = $$1;
       this.a = $$2;
    }
 
-   public static evw.a a(Map<cvn, aku<evx>> $$0) {
-      evz.a $$1 = evz.a();
+   public static ews.a a(Map<cwe, akt<ewt>> $$0) {
+      ewv.a $$1 = ewv.a();
 
-      for (Entry<cvn, aku<evx>> $$2 : $$0.entrySet()) {
-         $$1 = $$1.a(ewl.a($$2.getValue()).a(eze.a(evs.b.a, bx.a.a().a(dx.a($$2.getKey())))));
+      for (Entry<cwe, akt<ewt>> $$2 : $$0.entrySet()) {
+         $$1 = $$1.a(exh.a($$2.getValue()).a(faa.a(ewo.b.a, bx.a.a().a(dx.a($$2.getKey())))));
       }
 
-      return evw.a().a($$1);
+      return ews.a().a($$1);
    }
 
    public abstract void b();
 
    @Override
-   public void generate(BiConsumer<aku<evx>, evx.a> $$0) {
+   public void generate(BiConsumer<akt<ewt>, ewt.a> $$0) {
       this.b();
-      Set<aku<evx>> $$1 = new HashSet<>();
+      Set<akt<ewt>> $$1 = new HashSet<>();
       mb.f
          .c()
          .forEach(
             $$2 -> {
-               but<?> $$3 = $$2.a();
+               bvi<?> $$3 = $$2.a();
                if ($$3.a(this.b)) {
-                  Optional<aku<evx>> $$4 = $$3.k();
+                  Optional<akt<ewt>> $$4 = $$3.j();
                   if ($$4.isPresent()) {
-                     Map<aku<evx>, evx.a> $$5 = this.d.remove($$3);
+                     Map<akt<ewt>, ewt.a> $$5 = this.d.remove($$3);
                      if ($$3.a(this.c) && ($$5 == null || !$$5.containsKey($$4.get()))) {
                         throw new IllegalStateException(String.format(Locale.ROOT, "Missing loottable '%s' for '%s'", $$4.get(), $$2.h().a()));
                      }
@@ -72,7 +72,7 @@ public abstract class ne implements ng {
                         });
                      }
                   } else {
-                     Map<aku<evx>, evx.a> $$6 = this.d.remove($$3);
+                     Map<akt<ewt>, ewt.a> $$6 = this.d.remove($$3);
                      if ($$6 != null) {
                         throw new IllegalStateException(
                            String.format(
@@ -92,19 +92,19 @@ public abstract class ne implements ng {
       }
    }
 
-   protected ezb.a a(js<but<?>> $$0) {
-      return eyu.a(bm.a.a().b(bx.a.a().a($$0, but.ab)));
+   protected ezx.a a(js<bvi<?>> $$0) {
+      return ezq.a(bm.a.a().b(bx.a.a().a($$0, bvi.ab)));
    }
 
-   protected ezb.a a(js<but<?>> $$0, aku<chk> $$1) {
-      return eyu.a(bm.a.a().b(bx.a.a().a($$0, but.ab).a(bz.b(mb.aj.b($$1)))));
+   protected ezx.a a(js<bvi<?>> $$0, akt<cia> $$1) {
+      return ezq.a(bm.a.a().b(bx.a.a().a($$0, bvi.ab).a(bz.b(mb.aj.b($$1)))));
    }
 
-   protected void a(but<?> $$0, evx.a $$1) {
-      this.a($$0, $$0.k().orElseThrow(() -> new IllegalStateException("Entity " + $$0 + " has no loot table")), $$1);
+   protected void a(bvi<?> $$0, ewt.a $$1) {
+      this.a($$0, $$0.j().orElseThrow(() -> new IllegalStateException("Entity " + $$0 + " has no loot table")), $$1);
    }
 
-   protected void a(but<?> $$0, aku<evx> $$1, evx.a $$2) {
+   protected void a(bvi<?> $$0, akt<ewt> $$1, ewt.a $$2) {
       this.d.computeIfAbsent($$0, $$0x -> new HashMap<>()).put($$1, $$2);
    }
 }

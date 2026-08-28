@@ -1,30 +1,29 @@
-public class chf extends cgx {
-   public chf(but<? extends chf> $$0, dgj $$1) {
-      super($$0, $$1);
+import java.util.Set;
+import java.util.function.Predicate;
+
+public record chf(Set<dxq> b, int c, int d) {
+   public static final Predicate<jr<chf>> a = $$0 -> false;
+
+   public chf(Set<dxq> b, int c, int d) {
+      b = Set.copyOf(b);
+      this.b = b;
+      this.c = c;
+      this.d = d;
    }
 
-   @Override
-   public cwq W_() {
-      return new cwq(cwu.ro);
+   public boolean a(dxq $$0) {
+      return this.b.contains($$0);
    }
 
-   @Override
-   protected avz u() {
-      return awa.fp;
+   public Set<dxq> a() {
+      return this.b;
    }
 
-   @Override
-   protected avz o_() {
-      return awa.fq;
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   protected avz e(btc $$0) {
-      return awa.fs;
-   }
-
-   @Override
-   protected avz gs() {
-      return awa.fr;
+   public int c() {
+      return this.d;
    }
 }

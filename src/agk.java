@@ -1,29 +1,20 @@
-public class agk implements yw<agg> {
+public record agk(int b) implements yw<agf> {
    public static final yn<vl, agk> a = yw.a(agk::a, agk::new);
-   private final bsi b;
-
-   public agk(bsi $$0) {
-      this.b = $$0;
-   }
 
    private agk(vl $$0) {
-      this.b = bsi.a($$0.readUnsignedByte());
+      this($$0.l());
    }
 
    private void a(vl $$0) {
-      $$0.l(this.b.a());
+      $$0.c(this.b);
    }
 
    @Override
    public yy<agk> a() {
-      return age.bn;
+      return agd.bn;
    }
 
-   public void a(agg $$0) {
+   public void a(agf $$0) {
       $$0.a(this);
-   }
-
-   public bsi b() {
-      return this.b;
    }
 }

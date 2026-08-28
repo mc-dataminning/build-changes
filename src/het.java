@@ -1,121 +1,51 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class het {
-   private final akv a;
-   private final hen b;
-   final int c;
-   final int d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final float h;
+public class het implements her {
+   private final gpw a;
+   private final float b;
+   private final jn c;
+   private final hhy d;
 
-   protected het(akv $$0, hen $$1, int $$2, int $$3, int $$4, int $$5) {
+   public het(gpw $$0, float $$1, jn $$2, hhy $$3) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$4;
-      this.d = $$5;
-      this.e = (float)$$4 / (float)$$2;
-      this.f = (float)($$4 + $$1.a()) / (float)$$2;
-      this.g = (float)$$5 / (float)$$3;
-      this.h = (float)($$5 + $$1.b()) / (float)$$3;
-   }
-
-   public int a() {
-      return this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public float c() {
-      return this.e;
-   }
-
-   public float d() {
-      return this.f;
-   }
-
-   public hen e() {
-      return this.b;
-   }
-
-   @Nullable
-   public het.a f() {
-      final hep $$0 = this.b.e();
-      return $$0 != null ? new het.a() {
-         @Override
-         public void a() {
-            $$0.a(het.this.c, het.this.d);
-         }
-
-         @Override
-         public void close() {
-            $$0.close();
-         }
-      } : null;
-   }
-
-   public float a(float $$0) {
-      float $$1 = this.f - this.e;
-      return this.e + $$1 * $$0;
-   }
-
-   public float b(float $$0) {
-      float $$1 = this.f - this.e;
-      return ($$0 - this.e) / $$1;
-   }
-
-   public float g() {
-      return this.g;
-   }
-
-   public float h() {
-      return this.h;
-   }
-
-   public float c(float $$0) {
-      float $$1 = this.h - this.g;
-      return this.g + $$1 * $$0;
-   }
-
-   public float d(float $$0) {
-      float $$1 = this.h - this.g;
-      return ($$0 - this.g) / $$1;
-   }
-
-   public akv i() {
-      return this.a;
+      this.c = $$2;
+      this.d = $$3;
    }
 
    @Override
-   public String toString() {
-      return "TextureAtlasSprite{contents='" + this.b + "', u0=" + this.e + ", u1=" + this.f + ", v0=" + this.g + ", v1=" + this.h + "}";
+   public void a(cxf $$0, fgr $$1, gmx $$2, int $$3, int $$4, boolean $$5) {
+      this.a.a($$1, $$2, $$3, $$4, this.c, this.b, this.d);
    }
 
-   public void j() {
-      this.b.a(this.c, this.d);
-   }
+   public static record a(aku b, float c, jn d) implements hev.a {
+      public static final MapCodec<het.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  aku.a.fieldOf("texture").forGetter(het.a::b),
+                  Codec.FLOAT.optionalFieldOf("openness", 0.0F).forGetter(het.a::c),
+                  jn.g.optionalFieldOf("orientation", jn.b).forGetter(het.a::d)
+               )
+               .apply($$0, het.a::new)
+      );
 
-   private float l() {
-      float $$0 = (float)this.b.a() / (this.f - this.e);
-      float $$1 = (float)this.b.b() / (this.h - this.g);
-      return Math.max($$1, $$0);
-   }
+      public a() {
+         this(aku.b("shulker"), 0.0F, jn.b);
+      }
 
-   public float k() {
-      return 4.0F / this.l();
-   }
-
-   public ffz a(ffz $$0) {
-      return new gmx($$0, this);
-   }
-
-   public interface a extends AutoCloseable {
-      void a();
+      public a(cwe $$0) {
+         this(gns.e($$0), 0.0F, jn.b);
+      }
 
       @Override
-      void close();
+      public MapCodec<het.a> a() {
+         return a;
+      }
+
+      @Override
+      public hev<?> a(gfy $$0) {
+         return new het(new gpw($$0), this.c, this.d, gns.b(this.b));
+      }
    }
 }

@@ -1,415 +1,233 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Queues;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.io.Writer;
-import java.util.List;
-import java.util.Queue;
-import java.util.Set;
-import java.util.UUID;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.OptionalLong;
 
-public class ebm<T extends ebb> implements AutoCloseable {
-   static final Logger a = LogUtils.getLogger();
-   final Set<UUID> b = Sets.newHashSet();
-   final ebj<T> c;
-   private final ebe<T> d;
-   private final ebd<T> e;
-   final ebg<T> f;
-   private final ebk<T> g;
-   private final Long2ObjectMap<ebo> h = new Long2ObjectOpenHashMap();
-   private final Long2ObjectMap<ebm.b> i = new Long2ObjectOpenHashMap();
-   private final LongSet j = new LongOpenHashSet();
-   private final Queue<eaz<T>> k = Queues.newConcurrentLinkedQueue();
+public record ebm(
+   OptionalLong m, boolean n, boolean o, boolean p, boolean q, double r, boolean s, boolean t, int u, int v, int w, axf<dke> x, aku y, float z, ebm.a A
+) {
+   public static final int a = ji.e;
+   public static final int b = 16;
+   public static final int c = (1 << a) - 32;
+   public static final int d = (c >> 1) - 1;
+   public static final int e = d - c + 1;
+   public static final int f = d << 4;
+   public static final int g = e << 4;
+   public static final Codec<ebm> h = ayi.e(
+      RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  ayi.a(Codec.LONG.lenientOptionalFieldOf("fixed_time")).forGetter(ebm::f),
+                  Codec.BOOL.fieldOf("has_skylight").forGetter(ebm::g),
+                  Codec.BOOL.fieldOf("has_ceiling").forGetter(ebm::h),
+                  Codec.BOOL.fieldOf("ultrawarm").forGetter(ebm::i),
+                  Codec.BOOL.fieldOf("natural").forGetter(ebm::j),
+                  Codec.doubleRange(1.0E-5F, 3.0E7).fieldOf("coordinate_scale").forGetter(ebm::k),
+                  Codec.BOOL.fieldOf("bed_works").forGetter(ebm::l),
+                  Codec.BOOL.fieldOf("respawn_anchor_works").forGetter(ebm::m),
+                  Codec.intRange(e, d).fieldOf("min_y").forGetter(ebm::n),
+                  Codec.intRange(16, c).fieldOf("height").forGetter(ebm::o),
+                  Codec.intRange(0, c).fieldOf("logical_height").forGetter(ebm::p),
+                  axf.b(mc.f).fieldOf("infiniburn").forGetter(ebm::q),
+                  aku.a.fieldOf("effects").orElse(ebk.e).forGetter(ebm::r),
+                  Codec.FLOAT.fieldOf("ambient_light").forGetter(ebm::s),
+                  ebm.a.a.forGetter(ebm::t)
+               )
+               .apply($$0, ebm::new)
+      )
+   );
+   public static final yn<wa, jr<ebm>> i = yl.b(mc.aO);
+   public static final int j = 8;
+   public static final float[] k = new float[]{1.0F, 0.75F, 0.5F, 0.25F, 0.0F, 0.25F, 0.5F, 0.75F};
+   public static final Codec<jr<ebm>> l = akq.a(mc.aO, h);
 
-   public ebm(Class<T> $$0, ebj<T> $$1, ebe<T> $$2) {
-      this.e = new ebd<>();
-      this.f = new ebg<>($$0, this.h);
-      this.h.defaultReturnValue(ebo.a);
-      this.i.defaultReturnValue(ebm.b.a);
-      this.c = $$1;
-      this.d = $$2;
-      this.g = new ebl<>(this.e, this.f);
-   }
-
-   void a(long $$0, ebf<T> $$1) {
-      if ($$1.a()) {
-         this.f.e($$0);
-      }
-   }
-
-   private boolean b(T $$0) {
-      if (!this.b.add($$0.cG())) {
-         a.warn("UUID of added entity already exists: {}", $$0);
-         return false;
+   public ebm(
+      OptionalLong m, boolean n, boolean o, boolean p, boolean q, double r, boolean s, boolean t, int u, int v, int w, axf<dke> x, aku y, float z, ebm.a A
+   ) {
+      if (v < 16) {
+         throw new IllegalStateException("height has to be at least 16");
+      } else if (u + v > d + 1) {
+         throw new IllegalStateException("min_y + height cannot be higher than: " + (d + 1));
+      } else if (w > v) {
+         throw new IllegalStateException("logical_height cannot be higher than height");
+      } else if (v % 16 != 0) {
+         throw new IllegalStateException("height has to be multiple of 16");
+      } else if (u % 16 != 0) {
+         throw new IllegalStateException("min_y has to be a multiple of 16");
       } else {
-         return true;
+         this.m = m;
+         this.n = n;
+         this.o = o;
+         this.p = p;
+         this.q = q;
+         this.r = r;
+         this.s = s;
+         this.t = t;
+         this.u = u;
+         this.v = v;
+         this.w = w;
+         this.x = x;
+         this.y = y;
+         this.z = z;
+         this.A = A;
       }
    }
 
-   public boolean a(T $$0) {
-      return this.a($$0, false);
+   @Deprecated
+   public static DataResult<akt<dgz>> a(Dynamic<?> $$0) {
+      Optional<Number> $$1 = $$0.asNumber().result();
+      if ($$1.isPresent()) {
+         int $$2 = $$1.get().intValue();
+         if ($$2 == -1) {
+            return DataResult.success(dgz.j);
+         }
+
+         if ($$2 == 0) {
+            return DataResult.success(dgz.i);
+         }
+
+         if ($$2 == 1) {
+            return DataResult.success(dgz.k);
+         }
+      }
+
+      return dgz.h.parse($$0);
    }
 
-   private boolean a(T $$0, boolean $$1) {
-      if (!this.b($$0)) {
-         return false;
+   public static double a(ebm $$0, ebm $$1) {
+      double $$2 = $$0.k();
+      double $$3 = $$1.k();
+      return $$2 / $$3;
+   }
+
+   public static Path a(akt<dgz> $$0, Path $$1) {
+      if ($$0 == dgz.i) {
+         return $$1;
+      } else if ($$0 == dgz.k) {
+         return $$1.resolve("DIM1");
       } else {
-         long $$2 = kk.c($$0.dv());
-         ebf<T> $$3 = this.f.c($$2);
-         $$3.a($$0);
-         $$0.a(new ebm.a($$0, $$2, $$3));
-         if (!$$1) {
-            this.c.g($$0);
-         }
-
-         ebo $$4 = a($$0, $$3.c());
-         if ($$4.b()) {
-            this.e($$0);
-         }
-
-         if ($$4.a()) {
-            this.c($$0);
-         }
-
-         return true;
+         return $$0 == dgz.j ? $$1.resolve("DIM-1") : $$1.resolve("dimensions").resolve($$0.a().b()).resolve($$0.a().a());
       }
    }
 
-   static <T extends ebb> ebo a(T $$0, ebo $$1) {
-      return $$0.dU() ? ebo.c : $$1;
+   public boolean a() {
+      return this.m.isPresent();
    }
 
-   public void a(Stream<T> $$0) {
-      $$0.forEach($$0x -> this.a((T)$$0x, true));
+   public float a(long $$0) {
+      double $$1 = ayz.e((double)this.m.orElse($$0) / 24000.0 - 0.25);
+      double $$2 = 0.5 - Math.cos($$1 * Math.PI) / 2.0;
+      return (float)($$1 * 2.0 + $$2) / 3.0F;
    }
 
-   public void b(Stream<T> $$0) {
-      $$0.forEach($$0x -> this.a((T)$$0x, false));
+   public int b(long $$0) {
+      return (int)($$0 / 24000L % 8L + 8L) % 8;
    }
 
-   void c(T $$0) {
-      this.c.e($$0);
+   public boolean b() {
+      return this.A.a();
    }
 
-   void d(T $$0) {
-      this.c.d($$0);
+   public boolean c() {
+      return this.A.b();
    }
 
-   void e(T $$0) {
-      this.e.a($$0);
-      this.c.c($$0);
+   public bsd d() {
+      return this.A.c();
    }
 
-   void f(T $$0) {
-      this.c.b($$0);
-      this.e.b($$0);
+   public int e() {
+      return this.A.d();
    }
 
-   public void a(dfp $$0, aqs $$1) {
-      ebo $$2 = ebo.a($$1);
-      this.a($$0, $$2);
+   public OptionalLong f() {
+      return this.m;
    }
 
-   public void a(dfp $$0, ebo $$1) {
-      long $$2 = $$0.a();
-      if ($$1 == ebo.a) {
-         this.h.remove($$2);
-         this.j.add($$2);
-      } else {
-         this.h.put($$2, $$1);
-         this.j.remove($$2);
-         this.b($$2);
+   public boolean g() {
+      return this.n;
+   }
+
+   public boolean h() {
+      return this.o;
+   }
+
+   public boolean i() {
+      return this.p;
+   }
+
+   public boolean j() {
+      return this.q;
+   }
+
+   public double k() {
+      return this.r;
+   }
+
+   public boolean l() {
+      return this.s;
+   }
+
+   public boolean m() {
+      return this.t;
+   }
+
+   public int n() {
+      return this.u;
+   }
+
+   public int o() {
+      return this.v;
+   }
+
+   public int p() {
+      return this.w;
+   }
+
+   public axf<dke> q() {
+      return this.x;
+   }
+
+   public aku r() {
+      return this.y;
+   }
+
+   public float s() {
+      return this.z;
+   }
+
+   public ebm.a t() {
+      return this.A;
+   }
+
+   public static record a(boolean b, boolean c, bsd d, int e) {
+      public static final MapCodec<ebm.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.BOOL.fieldOf("piglin_safe").forGetter(ebm.a::a),
+                  Codec.BOOL.fieldOf("has_raids").forGetter(ebm.a::b),
+                  bsd.b(0, 15).fieldOf("monster_spawn_light_level").forGetter(ebm.a::c),
+                  Codec.intRange(0, 15).fieldOf("monster_spawn_block_light_limit").forGetter(ebm.a::d)
+               )
+               .apply($$0, ebm.a::new)
+      );
+
+      public boolean a() {
+         return this.b;
       }
 
-      this.f.b($$2).forEach($$1x -> {
-         ebo $$2x = $$1x.a($$1);
-         boolean $$3 = $$2x.b();
-         boolean $$4 = $$1.b();
-         boolean $$5 = $$2x.a();
-         boolean $$6 = $$1.a();
-         if ($$5 && !$$6) {
-            $$1x.b().filter($$0xx -> !$$0xx.dU()).forEach(this::d);
-         }
-
-         if ($$3 && !$$4) {
-            $$1x.b().filter($$0xx -> !$$0xx.dU()).forEach(this::f);
-         } else if (!$$3 && $$4) {
-            $$1x.b().filter($$0xx -> !$$0xx.dU()).forEach(this::e);
-         }
-
-         if (!$$5 && $$6) {
-            $$1x.b().filter($$0xx -> !$$0xx.dU()).forEach(this::c);
-         }
-      });
-   }
-
-   private void b(long $$0) {
-      ebm.b $$1 = (ebm.b)this.i.get($$0);
-      if ($$1 == ebm.b.a) {
-         this.c($$0);
-      }
-   }
-
-   private boolean a(long $$0, Consumer<T> $$1) {
-      ebm.b $$2 = (ebm.b)this.i.get($$0);
-      if ($$2 == ebm.b.b) {
-         return false;
-      } else {
-         List<T> $$3 = this.f.b($$0).flatMap($$0x -> $$0x.b().filter(ebb::dT)).collect(Collectors.toList());
-         if ($$3.isEmpty()) {
-            if ($$2 == ebm.b.c) {
-               this.d.a(new eaz<>(new dfp($$0), ImmutableList.of()));
-            }
-
-            return true;
-         } else if ($$2 == ebm.b.a) {
-            this.c($$0);
-            return false;
-         } else {
-            this.d.a(new eaz<>(new dfp($$0), $$3));
-            $$3.forEach($$1);
-            return true;
-         }
-      }
-   }
-
-   private void c(long $$0) {
-      this.i.put($$0, ebm.b.b);
-      dfp $$1 = new dfp($$0);
-      this.d.a($$1).thenAccept(this.k::add).exceptionally($$1x -> {
-         a.error("Failed to read chunk {}", $$1, $$1x);
-         return null;
-      });
-   }
-
-   private boolean d(long $$0) {
-      boolean $$1 = this.a($$0, $$0x -> $$0x.db().forEach(this::g));
-      if (!$$1) {
-         return false;
-      } else {
-         this.i.remove($$0);
-         return true;
-      }
-   }
-
-   private void g(ebb $$0) {
-      $$0.c(bum.d.c);
-      $$0.a(ebc.a);
-   }
-
-   private void g() {
-      this.j.removeIf($$0 -> this.h.get($$0) != ebo.a ? true : this.d($$0));
-   }
-
-   private void h() {
-      eaz<T> $$0;
-      while (($$0 = this.k.poll()) != null) {
-         $$0.b().forEach($$0x -> this.a((T)$$0x, true));
-         this.i.put($$0.a().a(), ebm.b.c);
-      }
-   }
-
-   public void a() {
-      this.h();
-      this.g();
-   }
-
-   private LongSet i() {
-      LongSet $$0 = this.f.a();
-      ObjectIterator var2 = Long2ObjectMaps.fastIterable(this.i).iterator();
-
-      while (var2.hasNext()) {
-         Entry<ebm.b> $$1 = (Entry<ebm.b>)var2.next();
-         if ($$1.getValue() == ebm.b.c) {
-            $$0.add($$1.getLongKey());
-         }
+      public boolean b() {
+         return this.c;
       }
 
-      return $$0;
-   }
-
-   public void b() {
-      this.i().forEach($$0 -> {
-         boolean $$1 = this.h.get($$0) == ebo.a;
-         if ($$1) {
-            this.d($$0);
-         } else {
-            this.a($$0, $$0x -> {
-            });
-         }
-      });
-   }
-
-   public void c() {
-      LongSet $$0 = this.i();
-
-      while (!$$0.isEmpty()) {
-         this.d.a(false);
-         this.h();
-         $$0.removeIf($$0x -> {
-            boolean $$1 = this.h.get($$0x) == ebo.a;
-            return $$1 ? this.d($$0x) : this.a($$0x, $$0xx -> {
-            });
-         });
+      public bsd c() {
+         return this.d;
       }
 
-      this.d.a(true);
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.c();
-      this.d.close();
-   }
-
-   public boolean a(UUID $$0) {
-      return this.b.contains($$0);
-   }
-
-   public ebk<T> d() {
-      return this.g;
-   }
-
-   public boolean a(ji $$0) {
-      return ((ebo)this.h.get(dfp.a($$0))).a();
-   }
-
-   public boolean a(dfp $$0) {
-      return ((ebo)this.h.get($$0.a())).a();
-   }
-
-   public boolean a(long $$0) {
-      return this.i.get($$0) == ebm.b.c;
-   }
-
-   public void a(Writer $$0) throws IOException {
-      axz $$1 = axz.a().a("x").a("y").a("z").a("visibility").a("load_status").a("entity_count").a($$0);
-      this.f.a().forEach($$1x -> {
-         ebm.b $$2 = (ebm.b)this.i.get($$1x);
-         this.f.a($$1x).forEach($$2x -> {
-            ebf<T> $$3 = this.f.d($$2x);
-            if ($$3 != null) {
-               try {
-                  $$1.a(kk.b($$2x), kk.c($$2x), kk.d($$2x), $$3.c(), $$2, $$3.d());
-               } catch (IOException var7) {
-                  throw new UncheckedIOException(var7);
-               }
-            }
-         });
-      });
-   }
-
-   @bag
-   public String e() {
-      return this.b.size() + "," + this.e.b() + "," + this.f.b() + "," + this.i.size() + "," + this.h.size() + "," + this.k.size() + "," + this.j.size();
-   }
-
-   @bag
-   public int f() {
-      return this.e.b();
-   }
-
-   class a implements ebc {
-      private final T c;
-      private long d;
-      private ebf<T> e;
-
-      a(final T $$0, final long $$1, final ebf<T> $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
+      public int d() {
+         return this.e;
       }
-
-      @Override
-      public void a() {
-         ji $$0 = this.c.dv();
-         long $$1 = kk.c($$0);
-         if ($$1 != this.d) {
-            ebo $$2 = this.e.c();
-            if (!this.e.b(this.c)) {
-               ebm.a.warn("Entity {} wasn't found in section {} (moving to {})", new Object[]{this.c, kk.a(this.d), $$1});
-            }
-
-            ebm.this.a(this.d, this.e);
-            ebf<T> $$3 = ebm.this.f.c($$1);
-            $$3.a(this.c);
-            this.e = $$3;
-            this.d = $$1;
-            this.a($$2, $$3.c());
-         }
-      }
-
-      private void a(ebo $$0, ebo $$1) {
-         ebo $$2 = ebm.a(this.c, $$0);
-         ebo $$3 = ebm.a(this.c, $$1);
-         if ($$2 == $$3) {
-            if ($$3.b()) {
-               ebm.this.c.a(this.c);
-            }
-         } else {
-            boolean $$4 = $$2.b();
-            boolean $$5 = $$3.b();
-            if ($$4 && !$$5) {
-               ebm.this.f(this.c);
-            } else if (!$$4 && $$5) {
-               ebm.this.e(this.c);
-            }
-
-            boolean $$6 = $$2.a();
-            boolean $$7 = $$3.a();
-            if ($$6 && !$$7) {
-               ebm.this.d(this.c);
-            } else if (!$$6 && $$7) {
-               ebm.this.c(this.c);
-            }
-
-            if ($$5) {
-               ebm.this.c.a(this.c);
-            }
-         }
-      }
-
-      @Override
-      public void a(bum.d $$0) {
-         if (!this.e.b(this.c)) {
-            ebm.a.warn("Entity {} wasn't found in section {} (destroying due to {})", new Object[]{this.c, kk.a(this.d), $$0});
-         }
-
-         ebo $$1 = ebm.a(this.c, this.e.c());
-         if ($$1.a()) {
-            ebm.this.d(this.c);
-         }
-
-         if ($$1.b()) {
-            ebm.this.f(this.c);
-         }
-
-         if ($$0.a()) {
-            ebm.this.c.f(this.c);
-         }
-
-         ebm.this.b.remove(this.c.cG());
-         this.c.a(a);
-         ebm.this.a(this.d, this.e);
-      }
-   }
-
-   static enum b {
-      a,
-      b,
-      c;
    }
 }

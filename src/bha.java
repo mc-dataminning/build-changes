@@ -1,52 +1,31 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
 import com.mojang.datafixers.util.Pair;
+import java.util.Objects;
+import java.util.function.UnaryOperator;
 
 public class bha extends DataFix {
-   public bha(Schema $$0) {
+   private final String a;
+   private final TypeReference b;
+   private final UnaryOperator<String> c;
+
+   public bha(Schema $$0, String $$1, TypeReference $$2, UnaryOperator<String> $$3) {
       super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bhy.s);
-      Type<?> $$1 = this.getInputSchema().getType(bhy.t);
-      TaggedChoiceType<?> $$2 = this.getInputSchema().findChoiceType(bhy.s);
-      OpticFinder<Pair<String, String>> $$3 = DSL.fieldFinder("id", DSL.named(bhy.D.typeName(), bjm.a()));
-      OpticFinder<?> $$4 = $$0.findField("components");
-      OpticFinder<?> $$5 = $$1.findField("components");
-      return TypeRewriteRule.seq(this.fixTypeEverywhereTyped("Ominous Banner block entity common rarity to uncommon rarity fix", $$0, $$2x -> {
-         Object $$3x = ((Pair)$$2x.get($$2.finder())).getFirst();
-         return $$3x.equals("minecraft:banner") ? this.a($$2x, $$4) : $$2x;
-      }), this.fixTypeEverywhereTyped("Ominous Banner item stack common rarity to uncommon rarity fix", $$1, $$2x -> {
-         String $$3x = $$2x.getOptional($$3).<String>map(Pair::getSecond).orElse("");
-         return $$3x.equals("minecraft:white_banner") ? this.a($$2x, $$5) : $$2x;
-      }));
-   }
-
-   private Typed<?> a(Typed<?> $$0, OpticFinder<?> $$1) {
-      return $$0.updateTyped(
-         $$1,
-         $$0x -> $$0x.update(
-               DSL.remainderFinder(),
-               $$0xx -> {
-                  boolean $$1x = $$0xx.get("minecraft:item_name")
-                     .asString()
-                     .result()
-                     .flatMap(bam::a)
-                     .filter($$0xxx -> $$0xxx.equals("block.minecraft.ominous_banner"))
-                     .isPresent();
-                  return $$1x
-                     ? $$0xx.set("minecraft:rarity", $$0xx.createString("uncommon"))
-                        .set("minecraft:item_name", bam.b($$0xx.getOps(), "block.minecraft.ominous_banner"))
-                     : $$0xx;
-               }
-            )
-      );
+   protected TypeRewriteRule makeRule() {
+      Type<Pair<String, String>> $$0 = DSL.named(this.b.typeName(), bju.a());
+      if (!Objects.equals($$0, this.getInputSchema().getType(this.b))) {
+         throw new IllegalStateException("\"" + this.b.typeName() + "\" is not what was expected.");
+      } else {
+         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this.c));
+      }
    }
 }

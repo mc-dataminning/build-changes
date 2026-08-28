@@ -1,7 +1,7 @@
 import java.util.List;
 
-public record ai(akv c, ah d) {
-   public static final yn<wa, ai> a = yn.a(akv.b, ai::a, ah.b, ai::b, ai::new);
+public record ai(aku c, ah d) {
+   public static final yn<wa, ai> a = yn.a(aku.b, ai::a, ah.b, ai::b, ai::new);
    public static final yn<wa, List<ai>> b = a.a(yl.a());
 
    @Override
@@ -27,7 +27,7 @@ public record ai(akv c, ah d) {
       return this.c.toString();
    }
 
-   public akv a() {
+   public aku a() {
       return this.c;
    }
 

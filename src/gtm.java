@@ -1,27 +1,23 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-
-public class gtm extends gqz<chm, gzq, gbs> {
-   private static final Map<chm.a, akv> a = af.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(chm.a.b, akv.b("textures/entity/cow/brown_mooshroom.png"));
-      $$0.put(chm.a.a, akv.b("textures/entity/cow/red_mooshroom.png"));
-   });
-
-   public gtm(gsf.a $$0) {
-      super($$0, new gbs($$0.a(gfd.bB)), new gbs($$0.a(gfd.bC)), 0.7F);
-      this.a(new gwp(this, $$0.d()));
+public class gtm extends guj<cjm, gzt, gde> {
+   public gtm(gtd.a $$0) {
+      super($$0, new gde($$0.a(ggb.aR)), 0.3F);
    }
 
-   public akv a(gzq $$0) {
-      return a.get($$0.a);
+   public aku a(gzt $$0) {
+      return $$0.f;
    }
 
-   public gzq b() {
-      return new gzq();
+   public gzt b() {
+      return new gzt();
    }
 
-   public void a(chm $$0, gzq $$1, float $$2) {
+   public void a(cjm $$0, gzt $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
+      $$1.a = $$0.bj();
+      $$1.b.a($$0.bJ);
+      $$1.c.a($$0.bK);
+      $$1.d.a($$0.bL);
+      $$1.e.a($$0.bM);
+      $$1.f = $$0.x().a().a();
    }
 }

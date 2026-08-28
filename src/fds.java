@@ -1,8 +1,2 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@fdd
-@fdc
-interface fds {
+public interface fds<T> extends fdr<T> {
 }

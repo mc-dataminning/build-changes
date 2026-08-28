@@ -1,93 +1,199 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class eya extends exf {
-   public static final MapCodec<eya> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  wr.a.sizeLimitedListOf(256).fieldOf("lore").forGetter($$0x -> $$0x.b),
-                  exe.a(256).forGetter($$0x -> $$0x.c),
-                  evs.b.e.optionalFieldOf("entity").forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, eya::new)
-   );
-   private final List<wp> b;
-   private final exe c;
-   private final Optional<evs.b> d;
+public interface eya {
+   MapCodec<eya> a = a(Integer.MAX_VALUE);
 
-   public eya(List<ezb> $$0, List<wp> $$1, exe $$2, Optional<evs.b> $$3) {
-      super($$0);
-      this.b = List.copyOf($$1);
-      this.c = $$2;
-      this.d = $$3;
+   static MapCodec<eya> a(int $$0) {
+      return eya.f.e.dispatchMap("mode", eya::a, $$0x -> $$0x.g).validate($$1 -> {
+         if ($$1 instanceof eya.d $$2 && $$2.c().isPresent()) {
+            int $$3 = $$2.c().get();
+            if ($$3 > $$0) {
+               return DataResult.error(() -> "Size value too large: " + $$3 + ", max size is " + $$0);
+            }
+         }
+
+         return DataResult.success($$1);
+      });
    }
 
-   @Override
-   public exh<eya> b() {
-      return exi.A;
+   eya.f a();
+
+   default <T> List<T> a(List<T> $$0, List<T> $$1) {
+      return this.a($$0, $$1, Integer.MAX_VALUE);
    }
 
-   @Override
-   public Set<bai<?>> a() {
-      return this.d.<Set<bai<?>>>map($$0 -> Set.of($$0.a())).orElseGet(Set::of);
-   }
+   <T> List<T> a(List<T> var1, List<T> var2, int var3);
 
-   @Override
-   public cwq a(cwq $$0, evs $$1) {
-      $$0.a(kv.j, czj.a, $$1x -> new czj(this.a($$1x, $$1)));
-      return $$0;
-   }
+   public static class a implements eya {
+      private static final Logger d = LogUtils.getLogger();
+      public static final eya.a b = new eya.a();
+      public static final MapCodec<eya.a> c = MapCodec.unit(() -> b);
 
-   private List<wp> a(@Nullable czj $$0, evs $$1) {
-      if ($$0 == null && this.b.isEmpty()) {
-         return List.of();
-      } else {
-         UnaryOperator<wp> $$2 = eyb.a($$1, this.d.orElse(null));
-         List<wp> $$3 = this.b.stream().map($$2).toList();
-         return this.c.a($$0.a(), $$3, 256);
-      }
-   }
-
-   public static eya.a c() {
-      return new eya.a();
-   }
-
-   public static class a extends exf.a<eya.a> {
-      private Optional<evs.b> a = Optional.empty();
-      private final Builder<wp> b = ImmutableList.builder();
-      private exe c = exe.a.b;
-
-      public eya.a a(exe $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public eya.a a(evs.b $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public eya.a a(wp $$0) {
-         this.b.add($$0);
-         return this;
-      }
-
-      protected eya.a a() {
-         return this;
+      private a() {
       }
 
       @Override
-      public exg b() {
-         return new eya(this.g(), this.b.build(), this.c, this.a);
+      public eya.f a() {
+         return eya.f.d;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         if ($$0.size() + $$1.size() > $$2) {
+            d.error("Contents overflow in section append");
+            return $$0;
+         } else {
+            return Stream.concat($$0.stream(), $$1.stream()).toList();
+         }
+      }
+   }
+
+   public static record b(int c) implements eya {
+      private static final Logger d = LogUtils.getLogger();
+      public static final MapCodec<eya.b> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ayi.l.optionalFieldOf("offset", 0).forGetter(eya.b::b)).apply($$0, eya.b::new)
+      );
+
+      @Override
+      public eya.f a() {
+         return eya.f.c;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         int $$3 = $$0.size();
+         if (this.c > $$3) {
+            d.error("Cannot insert when offset is out of bounds");
+            return $$0;
+         } else if ($$3 + $$1.size() > $$2) {
+            d.error("Contents overflow in section insertion");
+            return $$0;
+         } else {
+            Builder<T> $$4 = ImmutableList.builder();
+            $$4.addAll($$0.subList(0, this.c));
+            $$4.addAll($$1);
+            $$4.addAll($$0.subList(this.c, $$3));
+            return $$4.build();
+         }
+      }
+
+      public int b() {
+         return this.c;
+      }
+   }
+
+   public static class c implements eya {
+      public static final eya.c b = new eya.c();
+      public static final MapCodec<eya.c> c = MapCodec.unit(() -> b);
+
+      private c() {
+      }
+
+      @Override
+      public eya.f a() {
+         return eya.f.a;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         return $$1;
+      }
+   }
+
+   public static record d(int c, Optional<Integer> d) implements eya {
+      private static final Logger e = LogUtils.getLogger();
+      public static final MapCodec<eya.d> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ayi.l.optionalFieldOf("offset", 0).forGetter(eya.d::b), ayi.l.optionalFieldOf("size").forGetter(eya.d::c)).apply($$0, eya.d::new)
+      );
+
+      public d(int $$0) {
+         this($$0, Optional.empty());
+      }
+
+      @Override
+      public eya.f a() {
+         return eya.f.b;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         int $$3 = $$0.size();
+         if (this.c > $$3) {
+            e.error("Cannot replace when offset is out of bounds");
+            return $$0;
+         } else {
+            Builder<T> $$4 = ImmutableList.builder();
+            $$4.addAll($$0.subList(0, this.c));
+            $$4.addAll($$1);
+            int $$5 = this.c + this.d.orElse($$1.size());
+            if ($$5 < $$3) {
+               $$4.addAll($$0.subList($$5, $$3));
+            }
+
+            List<T> $$6 = $$4.build();
+            if ($$6.size() > $$2) {
+               e.error("Contents overflow in section replacement");
+               return $$0;
+            } else {
+               return $$6;
+            }
+         }
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      public Optional<Integer> c() {
+         return this.d;
+      }
+   }
+
+   public static record e<T>(List<T> a, eya b) {
+      public static <T> Codec<eya.e<T>> a(Codec<T> $$0, int $$1) {
+         return RecordCodecBuilder.create(
+            $$2 -> $$2.group($$0.sizeLimitedListOf($$1).fieldOf("values").forGetter($$0xx -> $$0xx.a), eya.a($$1).forGetter($$0xx -> $$0xx.b))
+                  .apply($$2, eya.e::new)
+         );
+      }
+
+      public List<T> a(List<T> $$0) {
+         return this.b.a($$0, this.a);
+      }
+   }
+
+   public static enum f implements azv {
+      a("replace_all", eya.c.c),
+      b("replace_section", eya.d.b),
+      c("insert", eya.b.b),
+      d("append", eya.a.c);
+
+      public static final Codec<eya.f> e = azv.a(eya.f::values);
+      private final String f;
+      final MapCodec<? extends eya> g;
+
+      private f(final String $$0, final MapCodec<? extends eya> $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public MapCodec<? extends eya> a() {
+         return this.g;
+      }
+
+      @Override
+      public String c() {
+         return this.f;
       }
    }
 }

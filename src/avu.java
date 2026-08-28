@@ -19,9 +19,9 @@ public class avu extends avs {
    private final Socket k;
    private final byte[] l = new byte[1460];
    private final String m;
-   private final alm n;
+   private final all n;
 
-   avu(alm $$0, String $$1, Socket $$2) {
+   avu(all $$0, String $$1, Socket $$2) {
       super("RCON Client " + $$2.getInetAddress());
       this.n = $$0;
       this.k = $$2;

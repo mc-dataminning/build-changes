@@ -52,7 +52,7 @@ public class awg extends awl {
    }
 
    @Override
-   public void a(coy $$0, awh<?> $$1, int $$2) {
+   public void a(cpr $$0, awh<?> $$1, int $$2) {
       super.a($$0, $$1, $$2);
       this.e.add($$1);
    }
@@ -73,7 +73,7 @@ public class awg extends awl {
                JsonElement $$3 = Streams.parse($$2);
                if (!$$3.isJsonNull()) {
                   tq $$4 = a($$3.getAsJsonObject());
-                  $$4 = ban.g.a($$0, $$4, uf.b($$4, 1343));
+                  $$4 = bam.g.a($$0, $$4, uf.b($$4, 1343));
                   if (!$$4.b("stats", 10)) {
                      break label47;
                   }
@@ -89,7 +89,7 @@ public class awg extends awl {
                      String $$6 = (String)var7.next();
                      if ($$5.b($$6, 10)) {
                         af.a(
-                           mb.v.b(akv.a($$6)),
+                           mb.v.b(aku.a($$6)),
                            $$2x -> {
                               tq $$3x = $$5.p($$6);
 
@@ -133,7 +133,7 @@ public class awg extends awl {
    }
 
    private <T> Optional<awh<T>> a(awj<T> $$0, String $$1) {
-      return Optional.ofNullable(akv.c($$1)).flatMap($$0.b()::b).map($$0::b);
+      return Optional.ofNullable(aku.c($$1)).flatMap($$0.b()::b).map($$0::b);
    }
 
    private static tq a(JsonObject $$0) {
@@ -176,7 +176,7 @@ public class awg extends awl {
       return $$5.toString();
    }
 
-   private static <T> akv b(awh<T> $$0) {
+   private static <T> aku b(awh<T> $$0) {
       return $$0.a().b().b($$0.b());
    }
 
@@ -191,6 +191,6 @@ public class awg extends awl {
          $$1.put($$2, this.a($$2));
       }
 
-      $$0.f.b(new abp($$1));
+      $$0.f.b(new abo($$1));
    }
 }

@@ -1,37 +1,50 @@
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collection;
+import java.util.Optional;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record hfv(akv a, @Nullable String b, @Nullable akv c, @Nullable akv d, hfv.a e, boolean f) {
-   public static enum a {
-      a("slim"),
-      b("default");
+@FunctionalInterface
+public interface hfv {
+   Logger a = LogUtils.getLogger();
 
-      private final String c;
-
-      private a(final String $$0) {
-         this.c = $$0;
-      }
-
-      public static hfv.a a(@Nullable String $$0) {
-         if ($$0 == null) {
-            return b;
-         } else {
-            byte var2 = -1;
-            switch ($$0.hashCode()) {
-               case 3533117:
-                  if ($$0.equals("slim")) {
-                     var2 = 0;
-                  }
-               default:
-                  return switch (var2) {
-                     case 0 -> a;
-                     default -> b;
-                  };
-            }
+   static hfv create(Collection<atp<?>> $$0) {
+      return ($$1, $$2) -> {
+         aur $$3;
+         try {
+            $$3 = $$2.f().a($$0);
+         } catch (Exception var9) {
+            a.error("Unable to parse metadata from {}", $$1, var9);
+            return null;
          }
-      }
 
-      public String a() {
-         return this.c;
-      }
+         ffr $$7;
+         try (InputStream $$6 = $$2.d()) {
+            $$7 = ffr.a($$6);
+         } catch (IOException var11) {
+            a.error("Using missing texture, unable to load {}", $$1, var11);
+            return null;
+         }
+
+         Optional<hhe> $$11 = $$3.a(hhe.b);
+         hhf $$12;
+         if ($$11.isPresent()) {
+            $$12 = $$11.get().a($$7.a(), $$7.b());
+            if (!ayz.c($$7.a(), $$12.a()) || !ayz.c($$7.b(), $$12.b())) {
+               a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
+               $$7.close();
+               return null;
+            }
+         } else {
+            $$12 = new hhf($$7.a(), $$7.b());
+         }
+
+         return new hfl($$1, $$12, $$7, $$3);
+      };
    }
+
+   @Nullable
+   hfl loadSprite(aku var1, aun var2);
 }

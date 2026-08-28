@@ -1,44 +1,97 @@
-public class gmx implements ffz {
-   private final ffz a;
-   private final het b;
+import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.objects.Object2ObjectSortedMaps;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.SequencedMap;
+import javax.annotation.Nullable;
 
-   public gmx(ffz $$0, het $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public interface gmx {
+   static gmx.a a(fgo $$0) {
+      return a(Object2ObjectSortedMaps.emptyMap(), $$0);
    }
 
-   @Override
-   public ffz a(float $$0, float $$1, float $$2) {
-      return this.a.a($$0, $$1, $$2);
+   static gmx.a a(SequencedMap<gnh, fgo> $$0, fgo $$1) {
+      return new gmx.a($$1, $$0);
    }
 
-   @Override
-   public ffz a(int $$0, int $$1, int $$2, int $$3) {
-      return this.a.a($$0, $$1, $$2, $$3);
-   }
+   fgv getBuffer(gnh var1);
 
-   @Override
-   public ffz a(float $$0, float $$1) {
-      return this.a.a(this.b.a($$0), this.b.c($$1));
-   }
+   public static class a implements gmx {
+      protected final fgo a;
+      protected final SequencedMap<gnh, fgo> b;
+      protected final Map<gnh, fgm> c = new HashMap<>();
+      @Nullable
+      protected gnh d;
 
-   @Override
-   public ffz a(int $$0, int $$1) {
-      return this.a.a($$0, $$1);
-   }
+      protected a(fgo $$0, SequencedMap<gnh, fgo> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   @Override
-   public ffz b(int $$0, int $$1) {
-      return this.a.b($$0, $$1);
-   }
+      @Override
+      public fgv getBuffer(gnh $$0) {
+         fgm $$1 = this.c.get($$0);
+         if ($$1 != null && !$$0.X()) {
+            this.a($$0, $$1);
+            $$1 = null;
+         }
 
-   @Override
-   public ffz b(float $$0, float $$1, float $$2) {
-      return this.a.b($$0, $$1, $$2);
-   }
+         if ($$1 != null) {
+            return $$1;
+         } else {
+            fgo $$2 = this.b.get($$0);
+            if ($$2 != null) {
+               $$1 = new fgm($$2, $$0.T(), $$0.S());
+            } else {
+               if (this.d != null) {
+                  this.a(this.d);
+               }
 
-   @Override
-   public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-      this.a.a($$0, $$1, $$2, $$3, this.b.a($$4), this.b.c($$5), $$6, $$7, $$8, $$9, $$10);
+               $$1 = new fgm(this.a, $$0.T(), $$0.S());
+               this.d = $$0;
+            }
+
+            this.c.put($$0, $$1);
+            return $$1;
+         }
+      }
+
+      public void a() {
+         if (this.d != null) {
+            this.a(this.d);
+            this.d = null;
+         }
+      }
+
+      public void b() {
+         this.a();
+
+         for (gnh $$0 : this.b.keySet()) {
+            this.a($$0);
+         }
+      }
+
+      public void a(gnh $$0) {
+         fgm $$1 = this.c.remove($$0);
+         if ($$1 != null) {
+            this.a($$0, $$1);
+         }
+      }
+
+      private void a(gnh $$0, fgm $$1) {
+         fgq $$2 = $$1.a();
+         if ($$2 != null) {
+            if ($$0.Y()) {
+               fgo $$3 = this.b.getOrDefault($$0, this.a);
+               $$2.a($$3, RenderSystem.getProjectionType().a());
+            }
+
+            $$0.a($$2);
+         }
+
+         if ($$0.equals(this.d)) {
+            this.d = null;
+         }
+      }
    }
 }

@@ -1,138 +1,140 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-public class etq {
-   private static final float a = 1.5F;
-   private final etm[] b = new etm[32];
-   private int c;
-   private final etn d;
-   private static final boolean e = false;
-   private final etk f = new etk();
-
-   public etq(etn $$0, int $$1) {
-      this.d = $$0;
-      this.c = $$1;
+public class etq extends etk<etq.a> {
+   protected etq(dzz $$0) {
+      super(dhi.a, $$0, new etq.a(new Long2ObjectOpenHashMap(), new Long2IntOpenHashMap(), Integer.MAX_VALUE));
    }
 
-   public void a(int $$0) {
-      this.c = $$0;
+   @Override
+   protected int a(long $$0) {
+      return this.e($$0, false);
    }
 
-   @Nullable
-   public eto a(dgw $$0, bvk $$1, Set<ji> $$2, float $$3, int $$4, float $$5) {
-      this.f.a();
-      this.d.a($$0, $$1);
-      etm $$6 = this.d.a();
-      if ($$6 == null) {
-         return null;
-      } else {
-         Map<etv, ji> $$7 = $$2.stream().collect(Collectors.toMap($$0x -> this.d.a((double)$$0x.u(), (double)$$0x.v(), (double)$$0x.w()), Function.identity()));
-         eto $$8 = this.a($$6, $$7, $$3, $$4, $$5);
-         this.d.b();
-         return $$8;
-      }
-   }
-
-   @Nullable
-   private eto a(etm $$0, Map<etv, ji> $$1, float $$2, int $$3, float $$4) {
-      bou $$5 = bot.a();
-      $$5.a("find_path");
-      $$5.a(bqd.a);
-      Set<etv> $$6 = $$1.keySet();
-      $$0.e = 0.0F;
-      $$0.f = this.a($$0, $$6);
-      $$0.g = $$0.f;
-      this.f.a();
-      this.f.a($$0);
-      Set<etm> $$7 = ImmutableSet.of();
-      int $$8 = 0;
-      Set<etv> $$9 = Sets.newHashSetWithExpectedSize($$6.size());
-      int $$10 = (int)((float)this.c * $$4);
-
-      while (!this.f.e()) {
-         if (++$$8 >= $$10) {
-            break;
-         }
-
-         etm $$11 = this.f.c();
-         $$11.i = true;
-
-         for (etv $$12 : $$6) {
-            if ($$11.d($$12) <= (float)$$3) {
-               $$12.e();
-               $$9.add($$12);
-            }
-         }
-
-         if (!$$9.isEmpty()) {
-            break;
-         }
-
-         if (!($$11.a($$0) >= $$2)) {
-            int $$13 = this.d.a(this.b, $$11);
-
-            for (int $$14 = 0; $$14 < $$13; $$14++) {
-               etm $$15 = this.b[$$14];
-               float $$16 = this.a($$11, $$15);
-               $$15.j = $$11.j + $$16;
-               float $$17 = $$11.e + $$16 + $$15.k;
-               if ($$15.j < $$2 && (!$$15.c() || $$17 < $$15.e)) {
-                  $$15.h = $$11;
-                  $$15.e = $$17;
-                  $$15.f = this.a($$15, $$6) * 1.5F;
-                  if ($$15.c()) {
-                     this.f.a($$15, $$15.e + $$15.f);
-                  } else {
-                     $$15.g = $$15.e + $$15.f;
-                     this.f.a($$15);
-                  }
+   protected int e(long $$0, boolean $$1) {
+      long $$2 = kk.e($$0);
+      int $$3 = kk.c($$2);
+      etq.a $$4 = $$1 ? this.d : this.c;
+      int $$5 = $$4.c.get(kk.f($$2));
+      if ($$5 != $$4.b && $$3 < $$5) {
+         dzr $$6 = this.a($$4, $$2);
+         if ($$6 == null) {
+            for ($$0 = ji.e($$0); $$6 == null; $$6 = this.a($$4, $$2)) {
+               if (++$$3 >= $$5) {
+                  return 15;
                }
+
+               $$2 = kk.a($$2, jn.b);
             }
          }
-      }
 
-      Optional<eto> $$18 = !$$9.isEmpty()
-         ? $$9.stream().map($$1x -> this.a($$1x.d(), $$1.get($$1x), true)).min(Comparator.comparingInt(eto::e))
-         : $$6.stream().map($$1x -> this.a($$1x.d(), $$1.get($$1x), false)).min(Comparator.comparingDouble(eto::m).thenComparingInt(eto::e));
-      $$5.c();
-      return $$18.isEmpty() ? null : $$18.get();
+         return $$6.a(kk.b(ji.a($$0)), kk.b(ji.b($$0)), kk.b(ji.c($$0)));
+      } else {
+         return $$1 && !this.j($$2) ? 0 : 15;
+      }
    }
 
-   protected float a(etm $$0, etm $$1) {
-      return $$0.a($$1);
-   }
-
-   private float a(etm $$0, Set<etv> $$1) {
-      float $$2 = Float.MAX_VALUE;
-
-      for (etv $$3 : $$1) {
-         float $$4 = $$0.a($$3);
-         $$3.a($$4, $$0);
-         $$2 = Math.min($$4, $$2);
+   @Override
+   protected void h(long $$0) {
+      int $$1 = kk.c($$0);
+      if (this.d.b > $$1) {
+         this.d.b = $$1;
+         this.d.c.defaultReturnValue(this.d.b);
       }
 
-      return $$2;
+      long $$2 = kk.f($$0);
+      int $$3 = this.d.c.get($$2);
+      if ($$3 < $$1 + 1) {
+         this.d.c.put($$2, $$1 + 1);
+      }
    }
 
-   private eto a(etm $$0, ji $$1, boolean $$2) {
-      List<etm> $$3 = Lists.newArrayList();
-      etm $$4 = $$0;
-      $$3.add(0, $$0);
+   @Override
+   protected void i(long $$0) {
+      long $$1 = kk.f($$0);
+      int $$2 = kk.c($$0);
+      if (this.d.c.get($$1) == $$2 + 1) {
+         long $$3;
+         for ($$3 = $$0; !this.b($$3) && this.a($$2); $$3 = kk.a($$3, jn.a)) {
+            $$2--;
+         }
 
-      while ($$4.h != null) {
-         $$4 = $$4.h;
-         $$3.add(0, $$4);
+         if (this.b($$3)) {
+            this.d.c.put($$1, $$2 + 1);
+         } else {
+            this.d.c.remove($$1);
+         }
+      }
+   }
+
+   @Override
+   protected dzr g(long $$0) {
+      dzr $$1 = (dzr)this.g.get($$0);
+      if ($$1 != null) {
+         return $$1;
+      } else {
+         int $$2 = this.d.c.get(kk.f($$0));
+         if ($$2 != this.d.b && kk.c($$0) < $$2) {
+            long $$3 = kk.a($$0, jn.b);
+
+            dzr $$4;
+            while (($$4 = this.a($$3, true)) == null) {
+               $$3 = kk.a($$3, jn.b);
+            }
+
+            return a($$4);
+         } else {
+            return this.j($$0) ? new dzr(15) : new dzr();
+         }
+      }
+   }
+
+   private static dzr a(dzr $$0) {
+      if ($$0.c()) {
+         return $$0.b();
+      } else {
+         byte[] $$1 = $$0.a();
+         byte[] $$2 = new byte[2048];
+
+         for (int $$3 = 0; $$3 < 16; $$3++) {
+            System.arraycopy($$1, 0, $$2, $$3 * 128, 128);
+         }
+
+         return new dzr($$2);
+      }
+   }
+
+   protected boolean a(int $$0) {
+      return $$0 >= this.d.b;
+   }
+
+   protected boolean m(long $$0) {
+      long $$1 = kk.f($$0);
+      int $$2 = this.d.c.get($$1);
+      return $$2 == this.d.b || kk.c($$0) >= $$2;
+   }
+
+   protected int n(long $$0) {
+      return this.d.c.get($$0);
+   }
+
+   protected int c() {
+      return this.d.b;
+   }
+
+   protected static final class a extends eth<etq.a> {
+      int b;
+      final Long2IntOpenHashMap c;
+
+      public a(Long2ObjectOpenHashMap<dzr> $$0, Long2IntOpenHashMap $$1, int $$2) {
+         super($$0);
+         this.c = $$1;
+         $$1.defaultReturnValue($$2);
+         this.b = $$2;
       }
 
-      return new eto($$3, $$1, $$2);
+      public etq.a a() {
+         return new etq.a(this.a.clone(), this.c.clone(), this.b);
+      }
    }
 }

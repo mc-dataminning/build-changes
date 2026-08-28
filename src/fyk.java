@@ -1,182 +1,58 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Unit;
+import com.mojang.serialization.Codec;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class fyk {
-   public static final int a = 20;
-   private static final fqh b = new fqh(akv.b("recipe_book/page_forward"), akv.b("recipe_book/page_forward_highlighted"));
-   private static final fqh c = new fqh(akv.b("recipe_book/page_backward"), akv.b("recipe_book/page_backward_highlighted"));
-   private final List<fym> d = Lists.newArrayListWithCapacity(20);
+public class fyk extends fym {
+   private static final wp a = wp.c("options.online.title");
    @Nullable
-   private fym e;
-   private final fyi f;
-   private flk g;
-   private final fyj<?> h;
-   private List<fyn> i = ImmutableList.of();
-   private fqa j;
-   private fqa k;
-   private int l;
-   private int m;
-   private fkv n;
-   @Nullable
-   private dcm o;
-   @Nullable
-   private fyn p;
-   private boolean q;
+   private fmj<Unit> u;
 
-   public fyk(fyj<?> $$0, fyq $$1, boolean $$2) {
-      this.h = $$0;
-      this.f = new fyi($$1, $$2);
-
-      for (int $$3 = 0; $$3 < 20; $$3++) {
-         this.d.add(new fym($$1));
-      }
+   public fyk(fvi $$0, fmk $$1) {
+      super($$0, $$1, a);
    }
 
-   public void a(flk $$0, int $$1, int $$2) {
-      this.g = $$0;
-      this.n = $$0.t.n();
-
-      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
-         this.d.get($$3).c($$1 + 11 + 25 * ($$3 % 5), $$2 + 31 + 25 * ($$3 / 5));
-      }
-
-      this.j = new fqa($$1 + 93, $$2 + 137, 12, 17, false);
-      this.j.a(b);
-      this.k = new fqa($$1 + 38, $$2 + 137, 12, 17, true);
-      this.k.a(c);
-   }
-
-   public void a(List<fyn> $$0, boolean $$1, boolean $$2) {
-      this.i = $$0;
-      this.q = $$2;
-      this.l = (int)Math.ceil((double)$$0.size() / 20.0);
-      if (this.l <= this.m || $$1) {
-         this.m = 0;
-      }
-
-      this.e();
-   }
-
-   private void e() {
-      int $$0 = 20 * this.m;
-      bak $$1 = dcr.a(this.g.s);
-
-      for (int $$2 = 0; $$2 < this.d.size(); $$2++) {
-         fym $$3 = this.d.get($$2);
-         if ($$0 + $$2 < this.i.size()) {
-            fyn $$4 = this.i.get($$0 + $$2);
-            $$3.a($$4, this.q, this, $$1);
-            $$3.k = true;
-         } else {
-            $$3.k = false;
+   @Override
+   protected void aR_() {
+      super.aR_();
+      if (this.u != null) {
+         fpo $$0 = this.d.b(this.u);
+         if ($$0 != null) {
+            $$0.j = false;
          }
       }
-
-      this.f();
    }
 
-   private void f() {
-      this.j.k = this.l > 1 && this.m < this.l - 1;
-      this.k.k = this.l > 1 && this.m > 0;
-   }
-
-   public void a(fof $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
-      if (this.l > 1) {
-         wp $$6 = wp.a("gui.recipebook.page", this.m + 1, this.l);
-         int $$7 = this.g.h.a($$6);
-         $$0.b(this.g.h, $$6, $$1 - $$7 / 2 + 73, $$2 + 141, -1);
-      }
-
-      this.e = null;
-
-      for (fym $$8 : this.d) {
-         $$8.a($$0, $$3, $$4, $$5);
-         if ($$8.k && $$8.D()) {
-            this.e = $$8;
-         }
-      }
-
-      this.k.a($$0, $$3, $$4, $$5);
-      this.j.a($$0, $$3, $$4, $$5);
-      this.f.a($$0, $$3, $$4, $$5);
-   }
-
-   public void a(fof $$0, int $$1, int $$2) {
-      if (this.g.z != null && this.e != null && !this.f.c()) {
-         cwq $$3 = this.e.e();
-         akv $$4 = $$3.a(kv.G);
-         $$0.a(this.g.h, this.e.a($$3), $$1, $$2, $$4);
-      }
-   }
-
-   @Nullable
-   public dcm a() {
-      return this.o;
-   }
-
-   @Nullable
-   public fyn b() {
-      return this.p;
-   }
-
-   public void c() {
-      this.f.b(false);
-   }
-
-   public boolean a(double $$0, double $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      this.o = null;
-      this.p = null;
-      if (this.f.c()) {
-         if (this.f.a($$0, $$1, $$2)) {
-            this.o = this.f.b();
-            this.p = this.f.a();
-         } else {
-            this.f.b(false);
-         }
-
-         return true;
-      } else if (this.j.a($$0, $$1, $$2)) {
-         this.m++;
-         this.e();
-         return true;
-      } else if (this.k.a($$0, $$1, $$2)) {
-         this.m--;
-         this.e();
-         return true;
-      } else {
-         bak $$7 = dcr.a(this.g.s);
-
-         for (fym $$8 : this.d) {
-            if ($$8.a($$0, $$1, $$2)) {
-               if ($$2 == 0) {
-                  this.o = $$8.c();
-                  this.p = $$8.a();
-               } else if ($$2 == 1 && !this.f.c() && !$$8.b()) {
-                  this.f.a($$8.a(), $$7, this.q, $$8.F(), $$8.G(), $$3 + $$5 / 2, $$4 + 13 + $$6 / 2, (float)$$8.A());
+   private fmj<?>[] a(fmk $$0, fmg $$1) {
+      List<fmj<?>> $$2 = new ArrayList<>();
+      $$2.add($$0.W());
+      $$2.add($$0.X());
+      fmj<Unit> $$3 = x.a(
+         $$1.s,
+         $$0x -> {
+            bsv $$1x = $$0x.an();
+            return new fmj<>(
+               "options.difficulty.online",
+               fmj.a(),
+               ($$1xx, $$2x) -> $$1x.b(),
+               new fmj.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
+               Unit.INSTANCE,
+               $$0xx -> {
                }
-
-               return true;
-            }
+            );
          }
-
-         return false;
+      );
+      if ($$3 != null) {
+         this.u = $$3;
+         $$2.add($$3);
       }
+
+      return $$2.toArray(new fmj[0]);
    }
 
-   public void a(dcm $$0) {
-      this.h.a($$0);
-   }
-
-   public fkv d() {
-      return this.n;
-   }
-
-   protected void a(Consumer<fos> $$0) {
-      $$0.accept(this.j);
-      $$0.accept(this.k);
-      this.d.forEach($$0);
+   @Override
+   protected void m() {
+      this.d.a(this.a(this.c, this.m));
    }
 }

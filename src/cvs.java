@@ -1,44 +1,86 @@
 import java.util.List;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class cvs extends cwm {
-   public cvs(cwm.a $$0) {
+public class cvs extends cyc {
+   public static final int a = 20;
+   public static final int b = 15;
+
+   public cvs(cxd.a $$0) {
       super($$0);
    }
 
    @Override
-   public bsl a(daj $$0) {
-      dgj $$1 = $$0.q();
-      ji $$2 = $$0.a();
-      dwy $$3 = $$1.a_($$2);
-      if (!$$3.a(djp.cv) && !$$3.a(djp.I)) {
-         return bsl.d;
+   public boolean a(cxh $$0, dgz $$1, bvy $$2, int $$3) {
+      if (!($$2 instanceof cpr $$4)) {
+         return false;
       } else {
-         ji $$4 = $$2.d();
-         if (!$$1.u($$4)) {
-            return bsl.d;
+         cxh $$5 = $$4.d($$0);
+         if ($$5.f()) {
+            return false;
          } else {
-            double $$5 = (double)$$4.u();
-            double $$6 = (double)$$4.v();
-            double $$7 = (double)$$4.w();
-            List<bum> $$8 = $$1.a_(null, new faw($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
-            if (!$$8.isEmpty()) {
-               return bsl.d;
+            int $$6 = this.a($$0, $$2) - $$3;
+            float $$7 = a($$6);
+            if ((double)$$7 < 0.1) {
+               return false;
             } else {
-               if ($$1 instanceof ard) {
-                  cjv $$9 = new cjv($$1, $$5 + 0.5, $$6, $$7 + 0.5);
-                  $$9.a(false);
-                  $$1.b($$9);
-                  $$1.a($$0.o(), ebu.t, $$4);
-                  eaw $$10 = ((ard)$$1).F();
-                  if ($$10 != null) {
-                     $$10.g();
-                  }
+               List<cxh> $$8 = a($$0, $$5, $$4);
+               if ($$1 instanceof ard $$9 && !$$8.isEmpty()) {
+                  this.a($$9, $$4, $$4.fC(), $$0, $$8, $$7 * 3.0F, 1.0F, $$7 == 1.0F, null);
                }
 
-               $$0.n().h(1);
-               return bsl.a;
+               $$1.a(null, $$4.dz(), $$4.dB(), $$4.dF(), awa.aG, awb.h, 1.0F, 1.0F / ($$1.C_().i() * 0.4F + 1.2F) + $$7 * 0.5F);
+               $$4.b(awk.c.b(this));
+               return true;
             }
          }
       }
+   }
+
+   @Override
+   protected void a(bvy $$0, cqk $$1, int $$2, float $$3, float $$4, float $$5, @Nullable bvy $$6) {
+      $$1.a($$0, $$0.dM(), $$0.dK() + $$5, 0.0F, $$3, $$4);
+   }
+
+   public static float a(int $$0) {
+      float $$1 = (float)$$0 / 20.0F;
+      $$1 = ($$1 * $$1 + $$1 * 2.0F) / 3.0F;
+      if ($$1 > 1.0F) {
+         $$1 = 1.0F;
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public int a(cxh $$0, bvy $$1) {
+      return 72000;
+   }
+
+   @Override
+   public cxj b(cxh $$0) {
+      return cxj.e;
+   }
+
+   @Override
+   public bsy a(dgz $$0, cpr $$1, bsx $$2) {
+      cxh $$3 = $$1.b($$2);
+      boolean $$4 = !$$1.d($$3).f();
+      if (!$$1.fX() && !$$4) {
+         return bsy.d;
+      } else {
+         $$1.c($$2);
+         return bsy.c;
+      }
+   }
+
+   @Override
+   public Predicate<cxh> b() {
+      return c;
+   }
+
+   @Override
+   public int c() {
+      return 15;
    }
 }

@@ -1,35 +1,40 @@
-public class gwr extends gwu<gzx, gdh> {
-   private final gda a;
-   private final gzt b = new gzt();
+public class gwr extends gxs<hav, gef> {
+   private final gdn<hav> a;
+   private final hhw b;
 
-   public gwr(guc<gzx, gdh> $$0, gfa $$1) {
+   public gwr(gva<hav, gef> $$0, gfy $$1, hhw $$2) {
       super($$0);
-      this.a = new gda($$1.a(gfd.bN));
-      this.b.c = gda.a.e;
+      this.a = new ged<>($$1.a(ggb.ch));
+      this.b = $$2;
    }
 
-   public void a(ffv $$0, glz $$1, int $$2, gzx $$3, float $$4, float $$5) {
-      chp.b $$6 = $$3.aE;
-      if ($$6 != null) {
-         this.a($$0, $$1, $$2, $$3, $$6, $$4, $$5, true);
-      }
-
-      chp.b $$7 = $$3.aF;
-      if ($$7 != null) {
-         this.a($$0, $$1, $$2, $$3, $$7, $$4, $$5, false);
+   private boolean a(cxh $$0, hhx.d $$1) {
+      dfm $$2 = $$0.a(kv.E);
+      if ($$2 != null && !$$2.c().isEmpty()) {
+         hhx $$3 = this.b.a($$2.c().get());
+         return !$$3.a($$1).isEmpty();
+      } else {
+         return false;
       }
    }
 
-   private void a(ffv $$0, glz $$1, int $$2, gzx $$3, chp.b $$4, float $$5, float $$6, boolean $$7) {
-      $$0.a();
-      $$0.a($$7 ? 0.4F : -0.4F, $$3.N ? -1.3F : -1.5F, 0.0F);
-      this.b.u = $$3.u;
-      this.b.ad = $$3.ad;
-      this.b.ae = $$3.ae;
-      this.b.aa = $$5;
-      this.b.ab = $$6;
-      this.a.a(this.b);
-      this.a.a($$0, $$1.getBuffer(this.a.a(gts.a($$4))), $$2, hej.d);
-      $$0.b();
+   public void a(fgr $$0, gmx $$1, int $$2, hav $$3, float $$4, float $$5) {
+      if (!$$3.z && $$3.ay) {
+         hgt $$6 = $$3.a;
+         if ($$6.c() != null) {
+            if (!this.a($$3.W, hhx.d.c)) {
+               $$0.a();
+               if (this.a($$3.W, hhx.d.a)) {
+                  $$0.a(0.0F, -0.053125F, 0.06875F);
+               }
+
+               fgv $$7 = $$1.getBuffer(gnh.d($$6.c()));
+               this.d().a(this.a);
+               this.a.a($$3);
+               this.a.a($$0, $$7, $$2, hfh.d);
+               $$0.b();
+            }
+         }
+      }
    }
 }

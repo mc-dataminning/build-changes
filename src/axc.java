@@ -17,19 +17,19 @@ public class axc {
       return this;
    }
 
-   public axc a(akv $$0) {
+   public axc a(aku $$0) {
       return this.a(axd.a($$0));
    }
 
-   public axc b(akv $$0) {
+   public axc b(aku $$0) {
       return this.a(axd.b($$0));
    }
 
-   public axc c(akv $$0) {
+   public axc c(aku $$0) {
       return this.a(axd.c($$0));
    }
 
-   public axc d(akv $$0) {
+   public axc d(aku $$0) {
       return this.a(axd.d($$0));
    }
 }

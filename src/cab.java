@@ -1,34 +1,81 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public class cab {
-   public static bxc<bvi> a(djn $$0) {
-      return cao.a(
-         (Function<cao.b<bvi>, ? extends App<cao.c<bvi>, car<bvi>>>)($$1 -> $$1.group($$1.c(cem.o), $$1.b(cem.m), $$1.b(cem.Y))
-               .apply($$1, ($$1x, $$2, $$3) -> ($$2x, $$3x, $$4) -> {
-                     if (!$$3x.bj() && $$3x.aJ()) {
-                        ji $$5 = $$3x.dv().e();
+public class cab extends bxr<bvy> {
+   public static final int c = 100;
+   private long d;
 
-                        for (jn $$6 : jn.c.a) {
-                           ji $$7 = $$5.a($$6);
-                           if ($$2x.a_($$7).g($$2x, $$7).a(jn.b).c() && $$2x.b_($$7).b(etb.c)) {
-                              ji $$8 = $$7.d();
-                              if ($$2x.a_($$8).l()) {
-                                 dwy $$9 = $$0.m();
-                                 $$2x.a($$8, $$9, 3);
-                                 $$2x.a(ebu.i, $$8, ebu.a.a($$3x, $$9));
-                                 $$2x.a(null, $$3x, awa.kp, awb.e, 1.0F, 1.0F);
-                                 $$3.b();
-                                 return true;
-                              }
-                           }
-                        }
+   public cab() {
+      super(ImmutableMap.of(cfc.b, cfd.a, cfc.I, cfd.c));
+   }
 
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+   @Override
+   protected boolean a(ard $$0, bvy $$1) {
+      if ($$1.bY()) {
+         return false;
+      } else {
+         bxa<?> $$2 = $$1.ea();
+         jq $$3 = $$2.c(cfc.b).get();
+         if ($$0.aj() != $$3.a()) {
+            return false;
+         } else {
+            Optional<Long> $$4 = $$2.c(cfc.I);
+            if ($$4.isPresent()) {
+               long $$5 = $$0.ae() - $$4.get();
+               if ($$5 > 0L && $$5 < 100L) {
+                  return false;
+               }
+            }
+
+            dxq $$6 = $$0.a_($$3.b());
+            return $$3.b().a($$1.ds(), 2.0) && $$6.a(awp.T) && !$$6.c(djx.c);
+         }
+      }
+   }
+
+   @Override
+   protected boolean a(ard $$0, bvy $$1, long $$2) {
+      Optional<jq> $$3 = $$1.ea().c(cfc.b);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         ji $$4 = $$3.get().b();
+         return $$1.ea().c(cri.e) && $$1.dB() > (double)$$4.v() + 0.4 && $$4.a($$1.ds(), 1.14);
+      }
+   }
+
+   @Override
+   protected void d(ard $$0, bvy $$1, long $$2) {
+      if ($$2 > this.d) {
+         bxa<?> $$3 = $$1.ea();
+         if ($$3.a(cfc.v)) {
+            Set<jq> $$4 = $$3.c(cfc.v).get();
+            Optional<List<bvy>> $$5;
+            if ($$3.a(cfc.g)) {
+               $$5 = $$3.c(cfc.g);
+            } else {
+               $$5 = Optional.empty();
+            }
+
+            byp.a($$0, $$1, null, null, $$4, $$5);
+         }
+
+         $$1.b($$1.ea().c(cfc.b).get().b());
+      }
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   @Override
+   protected void b(ard $$0, bvy $$1, long $$2) {
+      if ($$1.fT()) {
+         $$1.fU();
+         this.d = $$2 + 40L;
+      }
    }
 }

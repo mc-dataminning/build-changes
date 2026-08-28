@@ -1,4 +1,3 @@
-public class gzu extends gzl {
-   public float a;
-   public int b;
+public class gzu extends haj {
+   public boolean a;
 }

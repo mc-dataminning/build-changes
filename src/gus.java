@@ -1,39 +1,39 @@
-public class gus<T extends bum & cpo> extends gse<T, hao> {
-   private final hbn a;
-   private final float b;
-   private final boolean h;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gus(gsf.a $$0, float $$1, boolean $$2) {
-      super($$0);
-      this.a = $$0.b();
-      this.b = $$1;
-      this.h = $$2;
+public class gus extends guj<cig, hat, gea> {
+   private final Map<cih.a, gbp<gea>> a;
+
+   public gus(gtd.a $$0) {
+      super($$0, new gea($$0.a(ggb.bR)), 0.7F);
+      this.a = a($$0);
+      this.a(new gxt<>(this, new gea($$0.a(ggb.ce)), new gea($$0.a(ggb.cd)), aku.b("textures/entity/pig/pig_saddle.png")));
    }
 
-   public gus(gsf.a $$0) {
-      this($$0, 1.0F, false);
+   private static Map<cih.a, gbp<gea>> a(gtd.a $$0) {
+      return Maps.newEnumMap(
+         Map.of(cih.a.a, new gbp<>(new gea($$0.a(ggb.bR)), new gea($$0.a(ggb.cc))), cih.a.b, new gbp<>(new gcp($$0.a(ggb.aa)), new gcp($$0.a(ggb.ab))))
+      );
    }
 
-   @Override
-   protected int a(T $$0, ji $$1) {
-      return this.h ? 15 : super.a($$0, $$1);
+   public void a(hat $$0, fgr $$1, gmx $$2, int $$3) {
+      if ($$0.b != null) {
+         this.h = this.a.get($$0.b.a()).a($$0.aj);
+         super.a($$0, $$1, $$2, $$3);
+      }
    }
 
-   public void a(hao $$0, ffv $$1, glz $$2, int $$3) {
-      $$1.a();
-      $$1.b(this.b, this.b, this.b);
-      $$1.a(this.e.b());
-      $$0.a.a($$1, $$2, $$3, hej.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+   public aku a(hat $$0) {
+      return $$0.b == null ? hfg.c() : $$0.b.b();
    }
 
-   public hao a() {
-      return new hao();
+   public hat b() {
+      return new hat();
    }
 
-   public void a(T $$0, hao $$1, float $$2) {
+   public void a(cig $$0, hat $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      this.a.a($$1.a, $$0.l(), cwo.h, $$0);
+      $$1.a = $$0.j();
+      $$1.b = $$0.t().a();
    }
 }

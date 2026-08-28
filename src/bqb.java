@@ -1,22 +1,105 @@
+import com.mojang.datafixers.util.Pair;
 import java.time.Duration;
+import java.time.Instant;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public record bqb<T extends bqa>(T a, T b, @Nullable T c, int d, Map<Integer, Double> e, Duration f) {
-   public static <T extends bqa> bqb<T> a(List<T> $$0) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("No values");
-      } else {
-         List<T> $$1 = $$0.stream().sorted(Comparator.comparing(bqa::a)).toList();
-         Duration $$2 = $$1.stream().map(bqa::a).reduce(Duration::plus).orElse(Duration.ZERO);
-         T $$3 = (T)$$1.get(0);
-         T $$4 = (T)$$1.get($$1.size() - 1);
-         T $$5 = $$1.size() > 1 ? $$1.get($$1.size() - 2) : null;
-         int $$6 = $$1.size();
-         Map<Integer, Double> $$7 = bpd.a($$1.stream().mapToLong($$0x -> $$0x.a().toNanos()).toArray());
-         return new bqb<>($$3, $$4, $$5, $$6, $$7, $$2);
-      }
+public record bqb(
+   Instant a,
+   Instant b,
+   Duration c,
+   @Nullable Duration d,
+   List<bqo> e,
+   List<bqh> f,
+   bqj.a g,
+   bqn.a h,
+   bqk<bql> i,
+   bqk<bql> j,
+   bqk<bqg> k,
+   bqk<bqg> l,
+   bqi.a m,
+   bqi.a n,
+   List<bqf> o,
+   List<bqm> p
+) {
+   public List<Pair<ean, bqq<bqf>>> a() {
+      Map<ean, List<bqf>> $$0 = this.o.stream().collect(Collectors.groupingBy(bqf::d));
+      return $$0.entrySet()
+         .stream()
+         .map($$0x -> Pair.of((ean)$$0x.getKey(), bqq.a((List)$$0x.getValue())))
+         .sorted(Comparator.<Pair<ean, bqq<bqf>>, Duration>comparing($$0x -> ((bqq)$$0x.getSecond()).f()).reversed())
+         .toList();
+   }
+
+   public String b() {
+      return new bqd().a(this);
+   }
+
+   public Instant c() {
+      return this.a;
+   }
+
+   public Instant d() {
+      return this.b;
+   }
+
+   public Duration e() {
+      return this.c;
+   }
+
+   @Nullable
+   public Duration f() {
+      return this.d;
+   }
+
+   public List<bqo> g() {
+      return this.e;
+   }
+
+   public List<bqh> h() {
+      return this.f;
+   }
+
+   public bqj.a i() {
+      return this.g;
+   }
+
+   public bqn.a j() {
+      return this.h;
+   }
+
+   public bqk<bql> k() {
+      return this.i;
+   }
+
+   public bqk<bql> l() {
+      return this.j;
+   }
+
+   public bqk<bqg> m() {
+      return this.k;
+   }
+
+   public bqk<bqg> n() {
+      return this.l;
+   }
+
+   public bqi.a o() {
+      return this.m;
+   }
+
+   public bqi.a p() {
+      return this.n;
+   }
+
+   public List<bqf> q() {
+      return this.o;
+   }
+
+   public List<bqm> r() {
+      return this.p;
    }
 }

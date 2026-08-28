@@ -1,19 +1,43 @@
-public class cxq extends cwn {
-   private final are a;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-   public cxq(are $$0) {
-      this.a = $$0;
+public class cxq extends cxd {
+   private static final Logger a = LogUtils.getLogger();
+
+   public cxq(cxd.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected void b(akv $$0, int $$1) {
-      super.b($$0, $$1);
-      this.a.f.b(new acj($$0, $$1));
-   }
+   public bsy a(dgz $$0, cpr $$1, bsx $$2) {
+      cxh $$3 = $$1.b($$2);
+      List<akt<dbv<?>>> $$4 = $$3.a(kv.ae, List.of());
+      $$3.a(1, $$1);
+      if ($$4.isEmpty()) {
+         return bsy.d;
+      } else {
+         if (!$$0.C) {
+            dcc $$5 = $$0.p().aI();
+            List<dca<?>> $$6 = new ArrayList<>($$4.size());
 
-   @Override
-   protected void b(akv $$0) {
-      super.b($$0);
-      this.a.f.b(new acj($$0, 0));
+            for (akt<dbv<?>> $$7 : $$4) {
+               Optional<dca<?>> $$8 = $$5.b($$7);
+               if (!$$8.isPresent()) {
+                  a.error("Invalid recipe: {}", $$7);
+                  return bsy.d;
+               }
+
+               $$6.add($$8.get());
+            }
+
+            $$1.a($$6);
+            $$1.b(awk.c.b(this));
+         }
+
+         return bsy.a;
+      }
    }
 }

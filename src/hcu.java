@@ -1,8 +1,16 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public interface hcu {
-   float a(cwq var1, @Nullable gga var2, @Nullable bvi var3, int var4);
+public record hcu() implements hcw {
+   public static final MapCodec<hcu> a = MapCodec.unit(new hcu());
 
-   MapCodec<? extends hcu> a();
+   @Override
+   public boolean a(cxh $$0, @Nullable ggy $$1, @Nullable bvy $$2, int $$3, cxf $$4) {
+      return cvv.g($$0);
+   }
+
+   @Override
+   public MapCodec<hcu> a() {
+      return a;
+   }
 }

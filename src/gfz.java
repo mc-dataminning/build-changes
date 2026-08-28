@@ -1,209 +1,362 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.exceptions.AuthenticationException;
-import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
-import com.mojang.authlib.exceptions.ForcedUsernameChangeException;
-import com.mojang.authlib.exceptions.InsufficientPrivilegesException;
-import com.mojang.authlib.exceptions.InvalidCredentialsException;
-import com.mojang.authlib.exceptions.UserBannedException;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.logging.LogUtils;
-import java.math.BigInteger;
-import java.security.PublicKey;
-import java.time.Duration;
-import java.util.HashMap;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import net.minecraft.client.ClientBrandRetriever;
-import org.slf4j.Logger;
+import java.util.stream.Collectors;
 
-public class gfz implements aiq {
-   private static final Logger a = LogUtils.getLogger();
-   private final flk b;
-   @Nullable
-   private final ggp c;
-   @Nullable
-   private final fum d;
-   private final Consumer<wp> e;
-   private final vi f;
-   private final boolean g;
-   @Nullable
-   private final Duration h;
-   @Nullable
-   private String i;
-   private final Map<akv, byte[]> j;
-   private final boolean k;
-   private final AtomicReference<gfz.a> l = new AtomicReference<>(gfz.a.a);
+public class gfz {
+   private static final ggg a = new ggg(0.008F);
+   private static final ggg b = new ggg(1.0F);
+   private static final ggg c = new ggg(0.5F);
 
-   public gfz(vi $$0, flk $$1, @Nullable ggp $$2, @Nullable fum $$3, boolean $$4, @Nullable Duration $$5, Consumer<wp> $$6, @Nullable ggt $$7) {
-      this.f = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$6;
-      this.g = $$4;
-      this.h = $$5;
-      this.j = $$7 != null ? new HashMap<>($$7.a()) : new HashMap<>();
-      this.k = $$7 != null;
-   }
+   public static Map<gga, ggi> a() {
+      Builder<gga, ggi> $$0 = ImmutableMap.builder();
+      ggi $$1 = ggi.a(gdn.a(ggg.a, 0.0F), 64, 64);
+      ggi $$2 = ggi.a(gdm.a(b), 64, 32);
+      ggi $$3 = ggi.a(gdm.a(new ggg(1.02F)), 64, 32);
+      ggi $$4 = ggi.a(gdm.a(c), 64, 32);
+      ggi $$5 = gdu.a();
+      ggi $$6 = gew.c();
+      ggi $$7 = ggi.a(gbm.a(ggg.a), 64, 64);
+      ggi $$8 = ggi.a(gbm.b(ggg.a), 64, 64);
+      ggl $$9 = ggl.scaling(0.9375F);
+      ggi $$10 = gdo.a().a($$9);
+      ggi $$11 = gbx.a();
+      ggi $$12 = gcc.a();
+      ggi $$13 = gcq.a();
+      ggi $$14 = $$13.a(gcq.a);
+      ggi $$15 = gcw.a();
+      ggi $$16 = ggi.a(gdc.a(ggg.a), 64, 32);
+      ggi $$17 = $$16.a(gdc.b);
+      ggi $$18 = ggi.a(gdc.a(new ggg(0.01F)), 64, 32);
+      ggi $$19 = ggi.a(gec.a(ggg.a), 64, 64);
+      ggi $$20 = ggi.a(geb.a(), 64, 64);
+      ggi $$21 = gew.b();
+      ggi $$22 = gds.a(ggg.a);
+      ggi $$23 = gds.a(new ggg(0.5F));
+      ggi $$24 = gfe.a();
+      ggi $$25 = gdk.a();
+      ggi $$26 = gdk.b();
+      ggi $$27 = gev.c();
+      ggi $$28 = ggi.a(gfm.a(), 64, 64).a($$9);
+      ggi $$29 = gfb.a();
+      ggi $$30 = gbs.a();
+      ggi $$31 = gck.a();
+      ggi $$32 = gcn.a();
+      ggi $$33 = gdh.a();
+      ggi $$34 = gdx.a();
+      ggi $$35 = gea.c(ggg.a);
+      ggi $$36 = gcp.a(ggg.a);
+      ggi $$37 = gea.b(new ggg(0.5F));
+      ggi $$38 = geg.a();
+      ggi $$39 = geq.a();
+      ggi $$40 = gep.a();
+      ggi $$41 = gez.a();
+      ggi $$42 = gfj.a();
+      ggi $$43 = ggi.a(gfr.a(ggg.a), 64, 32);
+      ggi $$44 = ggi.a(gfr.a(new ggg(0.2F)), 64, 32);
+      ggi $$45 = gft.a();
+      ggi $$46 = gbv.a();
+      ggi $$47 = gbu.a(c);
+      ggi $$48 = gbu.a(b);
+      ggi $$49 = gcv.a(ggg.a);
+      ggi $$50 = gcv.a(new ggg(0.25F));
+      ggi $$51 = gfd.a();
+      ggi $$52 = gct.a();
+      ggi $$53 = geo.a();
+      $$0.put(ggb.c, gbq.a());
+      $$0.put(ggb.d, $$30);
+      $$0.put(ggb.e, $$30.a(gbs.a));
+      $$0.put(ggb.f, $$46);
+      $$0.put(ggb.g, $$47);
+      $$0.put(ggb.h, $$48);
+      $$0.put(ggb.i, $$46.a(gdn.i));
+      $$0.put(ggb.j, $$47.a(gdn.i));
+      $$0.put(ggb.k, $$48.a(gdn.i));
+      $$0.put(ggb.l, gbw.a());
+      $$0.put(ggb.m, $$11);
+      $$0.put(ggb.n, $$11.a(gbx.b));
+      $$0.put(ggb.q, gca.a(true));
+      $$0.put(ggb.s, gca.a(false));
+      $$0.put(ggb.r, gbz.a(true));
+      $$0.put(ggb.t, gbz.a(false));
+      $$0.put(ggb.u, gcb.a());
+      $$0.put(ggb.v, gpg.c());
+      $$0.put(ggb.w, gpg.b());
+      $$0.put(ggb.x, $$12);
+      $$0.put(ggb.y, $$12.a(gcc.a));
+      $$0.put(ggb.z, gcd.a());
+      $$0.put(ggb.A, gce.a());
+      $$0.put(ggb.D, gcf.a());
+      $$0.put(ggb.E, gcg.c());
+      $$0.put(ggb.F, gch.a());
+      $$0.put(ggb.G, $$4);
+      $$0.put(ggb.H, $$2);
+      $$0.put(ggb.I, ggi.a(gdn.a(new ggg(0.2F), 0.0F), 64, 32));
+      $$0.put(ggb.J, gci.a());
+      $$0.put(ggb.K, gcj.a(32, 32));
+      $$0.put(ggb.L, gcj.a(128, 128));
+      $$0.put(ggb.O, $$16.a(gcl.a));
+      $$0.put(ggb.P, $$17.a(gcl.a));
+      $$0.put(ggb.R, $$18.a(gcl.a));
+      $$0.put(ggb.Q, $$18.a(gdc.b).a(gcl.a));
+      $$0.put(ggb.M, $$31);
+      $$0.put(ggb.N, $$31.a(gck.a));
+      $$0.put(ggb.S, $$29.a(ggl.scaling(0.7F)));
+      $$0.put(ggb.V, gcm.a());
+      $$0.put(ggb.W, $$5);
+      $$0.put(ggb.X, $$32);
+      $$0.put(ggb.Y, $$32.a(gcn.b));
+      $$0.put(ggb.Z, gco.a());
+      $$0.put(ggb.aa, $$36);
+      $$0.put(ggb.ab, $$36.a(gea.a));
+      $$0.put(ggb.ac, $$5);
+      $$0.put(ggb.ae, gpq.b());
+      $$0.put(ggb.ag, gpq.c());
+      $$0.put(ggb.af, gpq.d());
+      $$0.put(ggb.ad, gpq.e());
+      $$0.put(ggb.ah, $$13);
+      $$0.put(ggb.ai, $$14);
+      $$0.put(ggb.aj, gcr.a());
+      $$0.put(ggb.ak, gcs.a(ggg.a));
+      $$0.put(ggb.al, gcs.a(new ggg(2.0F)));
+      $$0.put(ggb.am, $$6);
+      $$0.put(ggb.ap, gpr.b());
+      $$0.put(ggb.aq, gpr.c());
+      $$0.put(ggb.ar, $$52);
+      $$0.put(ggb.as, $$52.a(gct.a));
+      $$0.put(ggb.at, gcu.a(0.87F));
+      $$0.put(ggb.au, gcu.b(0.87F));
+      $$0.put(ggb.av, gcm.c());
+      $$0.put(ggb.aw, gcm.b());
+      $$0.put(ggb.ax, gfv.a());
+      $$0.put(ggb.ay, $$49);
+      $$0.put(ggb.aD, $$4);
+      $$0.put(ggb.aE, $$4);
+      $$0.put(ggb.aF, $$50);
+      $$0.put(ggb.az, $$49.a(gdn.i));
+      $$0.put(ggb.aA, $$4.a(gdn.i));
+      $$0.put(ggb.aB, $$4.a(gdn.i));
+      $$0.put(ggb.aC, $$50.a(gdn.i));
+      $$0.put(ggb.aG, gdi.b());
+      $$0.put(ggb.aH, $$15);
+      $$0.put(ggb.aI, $$15.a(gcw.a));
+      $$0.put(ggb.aJ, gcy.a());
+      $$0.put(ggb.aK, gcz.a());
+      $$0.put(ggb.aL, gfw.a());
+      $$0.put(ggb.aM, gcx.a());
+      $$0.put(ggb.aN, $$10);
+      $$0.put(ggb.aO, gdb.a());
+      $$0.put(ggb.aP, gdd.a());
+      $$0.put(ggb.aQ, gdd.a().a(gdd.a));
+      $$0.put(ggb.aR, gde.a());
+      $$0.put(ggb.aS, $$5);
+      $$0.put(ggb.aT, gdf.a());
+      ggl $$54 = ggl.scaling(6.0F);
+      $$0.put(ggb.aU, $$1.a($$54));
+      $$0.put(ggb.aV, $$4.a($$54));
+      $$0.put(ggb.aW, $$2.a($$54));
+      $$0.put(ggb.aX, $$51);
+      $$0.put(ggb.aY, $$51.a(gfd.a));
+      $$0.put(ggb.aZ, $$33);
+      $$0.put(ggb.ba, $$33.a(gdh.a));
+      $$0.put(ggb.bb, gdi.a());
+      $$0.put(ggb.bc, $$25);
+      $$0.put(ggb.bd, $$26);
+      $$0.put(ggb.be, $$5);
+      ggl $$55 = ggl.scaling(1.1F);
+      $$0.put(ggb.bf, $$7.a($$55));
+      $$0.put(ggb.bh, $$8.a($$55));
+      $$0.put(ggb.bg, ggi.a(gbm.a(new ggg(0.1F)), 64, 64).a($$55));
+      $$0.put(ggb.bi, ggi.a(gbm.b(new ggg(0.1F)), 64, 64).a($$55));
+      ggl $$56 = ggl.scaling(1.0625F);
+      $$0.put(ggb.bj, $$1.a($$56));
+      $$0.put(ggb.bn, $$4.a($$56));
+      $$0.put(ggb.bo, $$2.a($$56));
+      $$0.put(ggb.bk, $$1.a(gdn.i).a($$56));
+      $$0.put(ggb.bl, $$4.a(gdn.i).a($$56));
+      $$0.put(ggb.bm, $$2.a(gdn.i).a($$56));
+      $$0.put(ggb.bp, $$10);
+      $$0.put(ggb.bq, gdp.a());
+      $$0.put(ggb.bt, gdr.a());
+      $$0.put(ggb.bu, $$22);
+      $$0.put(ggb.bv, $$22.a(gds.a));
+      $$0.put(ggb.bx, $$23);
+      $$0.put(ggb.bw, $$23.a(gds.a));
+      $$0.put(ggb.by, gdt.a());
+      $$0.put(ggb.bz, gdq.a());
+      $$0.put(ggb.bC, $$5);
+      $$0.put(ggb.bD, $$13);
+      $$0.put(ggb.bE, $$14);
+      $$0.put(ggb.bF, gcu.a(0.92F));
+      $$0.put(ggb.bG, gcu.b(0.92F));
+      $$0.put(ggb.bJ, $$16);
+      $$0.put(ggb.bK, $$17);
+      $$0.put(ggb.bN, $$34);
+      $$0.put(ggb.bO, $$34.a(gdx.a));
+      $$0.put(ggb.bP, gdy.a());
+      $$0.put(ggb.bQ, gdz.a());
+      $$0.put(ggb.bR, $$35);
+      $$0.put(ggb.cc, $$35.a(gea.a));
+      $$0.put(ggb.ce, $$37);
+      $$0.put(ggb.cd, $$37.a(gea.a));
+      $$0.put(ggb.bS, $$19);
+      $$0.put(ggb.ca, $$4);
+      $$0.put(ggb.cb, $$3);
+      $$0.put(ggb.bW, $$19);
+      $$0.put(ggb.bX, $$4);
+      $$0.put(ggb.bY, $$3);
+      $$0.put(ggb.bT, $$19.a(gdn.i));
+      $$0.put(ggb.bU, $$4.a(gdn.i));
+      $$0.put(ggb.bV, $$3.a(gdn.i));
+      $$0.put(ggb.bZ, $$20);
+      $$0.put(ggb.cf, $$10);
+      $$0.put(ggb.cg, ggi.a(gef.a(ggg.a, false), 64, 64));
+      $$0.put(ggb.ci, gee.a());
+      $$0.put(ggb.ch, ged.a());
+      $$0.put(ggb.cj, $$21);
+      $$0.put(ggb.ck, $$4);
+      $$0.put(ggb.cl, $$2);
+      $$0.put(ggb.cm, ggi.a(gef.a(ggg.a, true), 64, 64));
+      $$0.put(ggb.cn, $$4);
+      $$0.put(ggb.co, $$2);
+      $$0.put(ggb.cp, gfc.a());
+      $$0.put(ggb.cq, $$38);
+      $$0.put(ggb.cr, $$38.a(geg.a));
+      $$0.put(ggb.cs, geh.a());
+      $$0.put(ggb.ct, gei.a());
+      $$0.put(ggb.cu, gej.a());
+      $$0.put(ggb.cv, gel.a(false));
+      $$0.put(ggb.cw, gel.a(true));
+      $$0.put(ggb.cx, gen.a());
+      $$0.put(ggb.cy, $$53);
+      $$0.put(ggb.cA, $$53.a(geo.a));
+      $$0.put(ggb.cz, $$53.a(geo.b));
+      $$0.put(ggb.cB, $$39);
+      $$0.put(ggb.cC, $$39.a(geq.a));
+      $$0.put(ggb.cE, $$40);
+      $$0.put(ggb.cD, $$40.a(geq.a));
+      $$0.put(ggb.cF, ger.a());
+      $$0.put(ggb.cG, get.a());
+      $$0.put(ggb.cH, get.b());
+      $$0.put(ggb.cI, ges.a());
+      $$0.put(ggb.cJ, geu.a());
+      $$0.put(ggb.cK, $$27);
+      $$0.put(ggb.cN, $$4);
+      $$0.put(ggb.cO, $$2);
+      $$0.put(ggb.cL, $$7);
+      $$0.put(ggb.cM, $$8);
+      $$0.put(ggb.cP, $$6);
+      $$0.put(ggb.cQ, gey.b());
+      $$0.put(ggb.cR, gey.a());
+      $$0.put(ggb.cS, $$41);
+      $$0.put(ggb.cT, $$41.a(gez.a));
+      $$0.put(ggb.cU, gfa.a());
+      $$0.put(ggb.cV, $$5);
+      $$0.put(ggb.cW, $$29);
+      $$0.put(ggb.cZ, $$51);
+      $$0.put(ggb.da, $$51.a(gfd.a));
+      $$0.put(ggb.db, $$27);
+      $$0.put(ggb.dc, $$4);
+      $$0.put(ggb.dd, $$2);
+      $$0.put(ggb.de, ggi.a(gdn.a(new ggg(0.25F), 0.0F), 64, 32));
+      $$0.put(ggb.df, $$24);
+      $$0.put(ggb.dg, $$24);
+      $$0.put(ggb.dh, $$24.a(gfe.a));
+      $$0.put(ggb.di, $$24.a(gfe.a));
+      $$0.put(ggb.dj, gff.a());
+      $$0.put(ggb.dk, $$5);
+      $$0.put(ggb.dl, $$22);
+      $$0.put(ggb.dm, $$22.a(gds.a));
+      $$0.put(ggb.dn, gfg.a());
+      $$0.put(ggb.do, gfi.a(ggg.a));
+      $$0.put(ggb.dp, gfi.a(a));
+      $$0.put(ggb.dq, gfh.a(ggg.a));
+      $$0.put(ggb.dr, gfh.a(a));
+      $$0.put(ggb.ds, $$42);
+      $$0.put(ggb.dt, $$42.a(gfj.a));
+      $$0.put(ggb.du, gfk.a());
+      $$0.put(ggb.dv, $$28);
+      $$0.put(ggb.dw, $$28.a(gfm.a));
+      $$0.put(ggb.dx, $$10);
+      $$0.put(ggb.dz, gfn.a());
+      $$0.put(ggb.dy, $$28);
+      $$0.put(ggb.dA, gfo.a());
+      $$0.put(ggb.dB, gfp.a().a($$9));
+      $$0.put(ggb.dC, gfq.a(ggg.a));
+      $$0.put(ggb.dD, gfq.a(c));
+      $$0.put(ggb.dI, gwh.a());
+      ggl $$57 = ggl.scaling(1.2F);
+      $$0.put(ggb.dE, $$27.a($$57));
+      $$0.put(ggb.dF, $$4.a($$57));
+      $$0.put(ggb.dG, $$2.a($$57));
+      $$0.put(ggb.dH, $$6);
+      $$0.put(ggb.dJ, $$43);
+      $$0.put(ggb.dK, $$44);
+      $$0.put(ggb.dL, $$43.a(gfr.a));
+      $$0.put(ggb.dM, $$44.a(gfr.a));
+      $$0.put(ggb.dN, $$25);
+      $$0.put(ggb.dO, $$26);
+      $$0.put(ggb.dP, $$1);
+      $$0.put(ggb.dW, $$4);
+      $$0.put(ggb.dX, $$2);
+      $$0.put(ggb.dQ, $$1.a(gdn.i));
+      $$0.put(ggb.dR, $$4.a(gdn.i));
+      $$0.put(ggb.dS, $$2.a(gdn.i));
+      $$0.put(ggb.dT, $$21);
+      $$0.put(ggb.dU, $$7);
+      $$0.put(ggb.dV, $$8);
+      $$0.put(ggb.dY, $$45);
+      $$0.put(ggb.ec, gft.a(c));
+      $$0.put(ggb.ed, gft.a(b));
+      $$0.put(ggb.dZ, $$45.a(gdn.i));
+      $$0.put(ggb.ea, gft.a(c).a(gdn.i));
+      $$0.put(ggb.eb, gft.a(b).a(gdn.i));
+      $$0.put(ggb.ee, $$19);
+      $$0.put(ggb.ei, $$4);
+      $$0.put(ggb.ej, $$3);
+      $$0.put(ggb.ef, $$19.a(gdn.i));
+      $$0.put(ggb.eg, $$4.a(gdn.i));
+      $$0.put(ggb.eh, $$3.a(gdn.i));
+      $$0.put(ggb.p, gem.a());
+      $$0.put(ggb.o, gem.b());
+      ggi $$58 = gcg.a();
+      ggi $$59 = gcg.b();
+      $$0.put(ggb.bH, $$58);
+      $$0.put(ggb.bI, $$59);
+      $$0.put(ggb.cX, $$58);
+      $$0.put(ggb.cY, $$59);
+      $$0.put(ggb.B, $$58);
+      $$0.put(ggb.C, $$59);
+      $$0.put(ggb.br, $$58);
+      $$0.put(ggb.bs, $$59);
+      $$0.put(ggb.a, $$58);
+      $$0.put(ggb.b, $$59);
+      $$0.put(ggb.T, $$58);
+      $$0.put(ggb.U, $$59);
+      $$0.put(ggb.an, $$58);
+      $$0.put(ggb.ao, $$59);
+      $$0.put(ggb.bL, $$58);
+      $$0.put(ggb.bM, $$59);
+      $$0.put(ggb.bA, $$58);
+      $$0.put(ggb.bB, $$59);
+      ggi $$60 = gpx.a(true);
+      ggi $$61 = gpx.a(false);
+      dzd.a().forEach($$3x -> {
+         $$0.put(ggb.a($$3x), $$60);
+         $$0.put(ggb.b($$3x), $$61);
 
-   private void a(gfz.a $$0) {
-      gfz.a $$1 = this.l.updateAndGet($$1x -> {
-         if (!$$0.f.contains($$1x)) {
-            throw new IllegalStateException("Tried to switch to " + $$0 + " from " + $$1x + ", but expected one of " + $$0.f);
-         } else {
-            return $$0;
+         for (gpt.a $$4x : gpt.a.values()) {
+            ggi $$5x = gpt.a($$4x);
+            $$0.put(ggb.a($$3x, $$4x), $$5x);
          }
       });
-      this.e.accept($$1.e);
-   }
-
-   @Override
-   public void a(ais $$0) {
-      this.a(gfz.a.b);
-
-      Cipher $$4;
-      Cipher $$5;
-      String $$3;
-      ajb $$7;
-      try {
-         SecretKey $$1 = axx.a();
-         PublicKey $$2 = $$0.e();
-         $$3 = new BigInteger(axx.a($$0.b(), $$2, $$1)).toString(16);
-         $$4 = axx.a(2, $$1);
-         $$5 = axx.a(1, $$1);
-         byte[] $$6 = $$0.f();
-         $$7 = new ajb($$1, $$2, $$6);
-      } catch (Exception var9) {
-         throw new IllegalStateException("Protocol error", var9);
-      }
-
-      if ($$0.g()) {
-         af.i().execute(() -> {
-            wp $$4x = this.b($$3);
-            if ($$4x != null) {
-               if (this.c == null || !this.c.d()) {
-                  this.f.a($$4x);
-                  return;
-               }
-
-               a.warn($$4x.getString());
-            }
-
-            this.a($$7, $$4, $$5);
-         });
+      ImmutableMap<gga, ggi> $$62 = $$0.build();
+      List<gga> $$63 = ggb.a().filter($$1x -> !$$62.containsKey($$1x)).collect(Collectors.toList());
+      if (!$$63.isEmpty()) {
+         throw new IllegalStateException("Missing layer definitions: " + $$63);
       } else {
-         this.a($$7, $$4, $$5);
-      }
-   }
-
-   private void a(ajb $$0, Cipher $$1, Cipher $$2) {
-      this.a(gfz.a.c);
-      this.f.a($$0, vw.a(() -> this.f.a($$1, $$2)));
-   }
-
-   @Nullable
-   private wp b(String $$0) {
-      try {
-         this.d().joinServer(this.b.X().b(), this.b.X().d(), $$0);
-         return null;
-      } catch (AuthenticationUnavailableException var3) {
-         return wp.a("disconnect.loginFailedInfo", wp.c("disconnect.loginFailedInfo.serversUnavailable"));
-      } catch (InvalidCredentialsException var4) {
-         return wp.a("disconnect.loginFailedInfo", wp.c("disconnect.loginFailedInfo.invalidSession"));
-      } catch (InsufficientPrivilegesException var5) {
-         return wp.a("disconnect.loginFailedInfo", wp.c("disconnect.loginFailedInfo.insufficientPrivileges"));
-      } catch (ForcedUsernameChangeException | UserBannedException var6) {
-         return wp.a("disconnect.loginFailedInfo", wp.c("disconnect.loginFailedInfo.userBanned"));
-      } catch (AuthenticationException var7) {
-         return wp.a("disconnect.loginFailedInfo", var7.getMessage());
-      }
-   }
-
-   private MinecraftSessionService d() {
-      return this.b.am();
-   }
-
-   @Override
-   public void a(aiv $$0) {
-      this.a(gfz.a.d);
-      GameProfile $$1 = $$0.b();
-      this.f
-         .a(
-            aba.d,
-            new gfy(this.b, this.f, new ggf($$1, this.b.u().a(this.g, this.h, this.i), ggd.a().a(), crw.h, null, this.c, this.d, this.j, null, Map.of(), aln.a))
-         );
-      this.f.a(ajc.a);
-      this.f.a(aba.b);
-      this.f.a(new zr(new zx(ClientBrandRetriever.getClientModName())));
-      this.f.a(new zq(this.b.n.aA()));
-   }
-
-   @Override
-   public void a(vk $$0) {
-      wp $$1 = this.k ? wo.q : wo.r;
-      if (this.c != null && this.c.e()) {
-         this.b.a(new hlc(this.d, $$1, $$0.a()));
-      } else {
-         this.b.a(new ftt(this.d, $$1, $$0));
-      }
-   }
-
-   @Override
-   public boolean c() {
-      return this.f.i();
-   }
-
-   @Override
-   public void a(aiu $$0) {
-      this.f.a($$0.b());
-   }
-
-   @Override
-   public void a(ait $$0) {
-      if (!this.f.e()) {
-         this.f.a($$0.b(), false);
-      }
-   }
-
-   @Override
-   public void a(air $$0) {
-      this.e.accept(wp.c("connect.negotiating"));
-      this.f.a(new aiz($$0.b(), null));
-   }
-
-   public void a(@Nullable String $$0) {
-      this.i = $$0;
-   }
-
-   @Override
-   public void a(abg $$0) {
-      this.f.a(new abj($$0.b(), this.j.get($$0.b())));
-   }
-
-   @Override
-   public void a(o $$0, p $$1) {
-      $$1.a("Server type", () -> this.c != null ? this.c.f().toString() : "<unknown>");
-      $$1.a("Login phase", () -> this.l.get().toString());
-      $$1.a("Is Local", () -> String.valueOf(this.f.e()));
-   }
-
-   static enum a {
-      a(wp.c("connect.connecting"), Set.of()),
-      b(wp.c("connect.authorizing"), Set.of(a)),
-      c(wp.c("connect.encrypting"), Set.of(b)),
-      d(wp.c("connect.joining"), Set.of(c, a));
-
-      final wp e;
-      final Set<gfz.a> f;
-
-      private a(final wp $$0, final Set<gfz.a> $$1) {
-         this.e = $$0;
-         this.f = $$1;
+         return $$62;
       }
    }
 }

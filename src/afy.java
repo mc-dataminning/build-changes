@@ -1,31 +1,59 @@
-import com.google.common.collect.Lists;
-import io.netty.buffer.ByteBuf;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
 public class afy implements yw<abl> {
-   public static final yn<wa, afy> a = yn.a(yl.h, afy::b, afy.a.b.a(yl.a()), afy::e, afy::new);
-   private final int b;
-   private final List<afy.a> c;
+   public static final yn<wa, afy> a = yw.a(afy::a, afy::new);
+   private static final int b = 1;
+   private static final int c = 2;
+   private static final int d = 4;
+   private static final int e = 8;
+   private final int f;
+   private final jr<buc> g;
+   private final int h;
+   private final int i;
+   private final byte j;
 
-   public afy(int $$0, Collection<bwm> $$1) {
-      this.b = $$0;
-      this.c = Lists.newArrayList();
-
-      for (bwm $$2 : $$1) {
-         this.c.add(new afy.a($$2.a(), $$2.b(), $$2.c()));
+   public afy(int $$0, bue $$1, boolean $$2) {
+      this.f = $$0;
+      this.g = $$1.c();
+      this.h = $$1.e();
+      this.i = $$1.d();
+      byte $$3 = 0;
+      if ($$1.f()) {
+         $$3 = (byte)($$3 | 1);
       }
+
+      if ($$1.g()) {
+         $$3 = (byte)($$3 | 2);
+      }
+
+      if ($$1.h()) {
+         $$3 = (byte)($$3 | 4);
+      }
+
+      if ($$2) {
+         $$3 = (byte)($$3 | 8);
+      }
+
+      this.j = $$3;
    }
 
-   private afy(int $$0, List<afy.a> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private afy(wa $$0) {
+      this.f = $$0.l();
+      this.g = buc.b.decode($$0);
+      this.h = $$0.l();
+      this.i = $$0.l();
+      this.j = $$0.readByte();
+   }
+
+   private void a(wa $$0) {
+      $$0.c(this.f);
+      buc.b.encode($$0, this.g);
+      $$0.c(this.h);
+      $$0.c(this.i);
+      $$0.l(this.j);
    }
 
    @Override
    public yy<afy> a() {
-      return age.bg;
+      return agd.bg;
    }
 
    public void a(abl $$0) {
@@ -33,27 +61,34 @@ public class afy implements yw<abl> {
    }
 
    public int b() {
-      return this.b;
+      return this.f;
    }
 
-   public List<afy.a> e() {
-      return this.c;
+   public jr<buc> e() {
+      return this.g;
    }
 
-   public static record a(jr<bwl> c, double d, Collection<bwo> e) {
-      public static final yn<ByteBuf, bwo> a = yn.a(akv.b, bwo::b, yl.m, bwo::c, bwo.a.e, bwo::d, bwo::new);
-      public static final yn<wa, afy.a> b = yn.a(bwl.b, afy.a::a, yl.m, afy.a::b, a.a(yl.a(ArrayList::new)), afy.a::c, afy.a::new);
+   public int f() {
+      return this.h;
+   }
 
-      public jr<bwl> a() {
-         return this.c;
-      }
+   public int g() {
+      return this.i;
+   }
 
-      public double b() {
-         return this.d;
-      }
+   public boolean h() {
+      return (this.j & 2) != 0;
+   }
 
-      public Collection<bwo> c() {
-         return this.e;
-      }
+   public boolean i() {
+      return (this.j & 1) != 0;
+   }
+
+   public boolean j() {
+      return (this.j & 4) != 0;
+   }
+
+   public boolean k() {
+      return (this.j & 8) != 0;
    }
 }

@@ -1,16 +1,27 @@
-import com.mojang.serialization.MapCodec;
+public abstract class brr<R extends Runnable> extends brn<R> {
+   private int b;
 
-public interface brr<P extends brq> {
-   brr<brn> a = a("constant", brn.b);
-   brr<brw> b = a("uniform", brw.a);
-   brr<bri> c = a("biased_to_bottom", bri.a);
-   brr<brj> d = a("clamped", brj.a);
-   brr<brx> e = a("weighted_list", brx.a);
-   brr<brl> f = a("clamped_normal", brl.a);
+   public brr(String $$0) {
+      super($$0);
+   }
 
-   MapCodec<P> codec();
+   @Override
+   public boolean ax() {
+      return this.bB() || super.ax();
+   }
 
-   static <P extends brq> brr<P> a(String $$0, MapCodec<P> $$1) {
-      return ke.a(mb.K, $$0, () -> $$1);
+   protected boolean bB() {
+      return this.b != 0;
+   }
+
+   @Override
+   public void d(R $$0) {
+      this.b++;
+
+      try {
+         super.d($$0);
+      } finally {
+         this.b--;
+      }
    }
 }

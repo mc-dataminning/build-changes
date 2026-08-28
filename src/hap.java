@@ -1,5 +1,8 @@
-public class hap extends gyl {
-   public float a;
-   public float b;
-   public boolean c;
+import javax.annotation.Nullable;
+
+public class hap extends gzj {
+   public jn a = jn.c;
+   @Nullable
+   public cls b;
+   public int[] c = new int[0];
 }

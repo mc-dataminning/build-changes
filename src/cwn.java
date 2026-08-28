@@ -1,69 +1,60 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-
-public class cwn {
-   private final Map<akv, cwn.a> a = Maps.newHashMap();
-   private int b;
-
-   public boolean a(cwq $$0) {
-      return this.a($$0, 0.0F) > 0.0F;
+public class cwn extends cxd implements cyb {
+   public cwn(cxd.a $$0) {
+      super($$0);
    }
 
-   public float a(cwq $$0, float $$1) {
-      akv $$2 = this.b($$0);
-      cwn.a $$3 = this.a.get($$2);
-      if ($$3 != null) {
-         float $$4 = (float)($$3.b - $$3.a);
-         float $$5 = (float)$$3.b - ((float)this.b + $$1);
-         return ayz.a($$5 / $$4, 0.0F, 1.0F);
-      } else {
-         return 0.0F;
-      }
-   }
-
-   public void a() {
-      this.b++;
-      if (!this.a.isEmpty()) {
-         Iterator<Entry<akv, cwn.a>> $$0 = this.a.entrySet().iterator();
-
-         while ($$0.hasNext()) {
-            Entry<akv, cwn.a> $$1 = $$0.next();
-            if ($$1.getValue().b <= this.b) {
-               $$0.remove();
-               this.b($$1.getKey());
-            }
+   @Override
+   public bsy a(daz $$0) {
+      dgz $$1 = $$0.q();
+      ji $$2 = $$0.a();
+      dxq $$3 = $$1.a_($$2);
+      boolean $$4 = false;
+      if (!dkt.i($$3) && !dku.h($$3) && !dkv.h($$3)) {
+         $$2 = $$2.a($$0.k());
+         if (djr.a($$1, $$2, $$0.g())) {
+            this.a($$1, $$2);
+            $$1.b($$2, djr.a($$1, $$2));
+            $$1.a($$0.o(), ecp.i, $$2);
+            $$4 = true;
          }
+      } else {
+         this.a($$1, $$2);
+         $$1.b($$2, $$3.b(dyg.u, Boolean.valueOf(true)));
+         $$1.a($$0.o(), ecp.c, $$2);
+         $$4 = true;
+      }
+
+      if ($$4) {
+         $$0.n().h(1);
+         return bsy.a;
+      } else {
+         return bsy.d;
       }
    }
 
-   public akv b(cwq $$0) {
-      czv $$1 = $$0.a(kv.z);
-      akv $$2 = mb.g.b($$0.h());
-      return $$1 == null ? $$2 : $$1.c().orElse($$2);
+   private void a(dgz $$0, ji $$1) {
+      azh $$2 = $$0.C_();
+      $$0.a(null, $$1, awa.jk, awb.e, 1.0F, ($$2.i() - $$2.i()) * 0.2F + 1.0F);
    }
 
-   public void a(cwq $$0, int $$1) {
-      this.a(this.b($$0), $$1);
+   @Override
+   public cqk a(dgz $$0, kb $$1, cxh $$2, jn $$3) {
+      azh $$4 = $$0.C_();
+      double $$5 = $$4.a((double)$$3.j(), 0.11485000000000001);
+      double $$6 = $$4.a((double)$$3.k(), 0.11485000000000001);
+      double $$7 = $$4.a((double)$$3.l(), 0.11485000000000001);
+      fbx $$8 = new fbx($$5, $$6, $$7);
+      cqo $$9 = new cqo($$0, $$1.a(), $$1.b(), $$1.c(), $$8.d());
+      $$9.a($$2);
+      return $$9;
    }
 
-   public void a(akv $$0, int $$1) {
-      this.a.put($$0, new cwn.a(this.b, this.b + $$1));
-      this.b($$0, $$1);
+   @Override
+   public void a(cqk $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
    }
 
-   public void a(akv $$0) {
-      this.a.remove($$0);
-      this.b($$0);
-   }
-
-   protected void b(akv $$0, int $$1) {
-   }
-
-   protected void b(akv $$0) {
-   }
-
-   static record a(int a, int b) {
+   @Override
+   public cyb.a b() {
+      return cyb.a.a().a(($$0, $$1) -> dmk.a($$0, 1.0, fbx.c)).a(6.6666665F).b(1.0F).a(1018).a();
    }
 }

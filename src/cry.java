@@ -1,31 +1,91 @@
-public class cry {
-   public static final int a = 20;
-   public static final float b = 20.0F;
-   public static final float c = 5.0F;
-   public static final float d = 2.5F;
-   public static final float e = 4.0F;
-   public static final int f = 80;
-   public static final int g = 10;
-   public static final int h = 18;
-   public static final int i = 6;
-   public static final int j = 0;
-   public static final float k = 0.1F;
-   public static final float l = 0.3F;
-   public static final float m = 0.6F;
-   public static final float n = 0.8F;
-   public static final float o = 1.0F;
-   public static final float p = 1.2F;
-   public static final float q = 6.0F;
-   public static final float r = 0.05F;
-   public static final float s = 0.2F;
-   public static final float t = 0.005F;
-   public static final float u = 0.1F;
-   public static final float v = 0.0F;
-   public static final float w = 0.0F;
-   public static final float x = 0.1F;
-   public static final float y = 0.01F;
+public abstract class cry {
+   protected final crq a;
 
-   public static float a(int $$0, float $$1) {
-      return (float)$$0 * $$1 * 2.0F;
+   protected cry(crq $$0) {
+      this.a = $$0;
    }
+
+   public bvt a() {
+      return null;
+   }
+
+   public void a(double $$0, double $$1, double $$2) {
+      this.b($$0, $$1, $$2);
+   }
+
+   public abstract void b();
+
+   public dgz c() {
+      return this.a.dU();
+   }
+
+   public abstract void a(ard var1);
+
+   public abstract double a(ji var1, dyu var2, double var3);
+
+   public abstract boolean d();
+
+   public fbx e() {
+      return this.a.dx();
+   }
+
+   public void a(fbx $$0) {
+      this.a.i($$0);
+   }
+
+   public void b(double $$0, double $$1, double $$2) {
+      this.a.n($$0, $$1, $$2);
+   }
+
+   public fbx f() {
+      return this.a.ds();
+   }
+
+   public double g() {
+      return this.a.dz();
+   }
+
+   public double h() {
+      return this.a.dB();
+   }
+
+   public double i() {
+      return this.a.dF();
+   }
+
+   public void b(fbx $$0) {
+      this.a.b($$0);
+   }
+
+   public void c(double $$0, double $$1, double $$2) {
+      this.a.a_($$0, $$1, $$2);
+   }
+
+   public float j() {
+      return this.a.dM();
+   }
+
+   public void a(float $$0) {
+      this.a.x($$0);
+   }
+
+   public float k() {
+      return this.a.dK();
+   }
+
+   public void b(float $$0) {
+      this.a.w($$0);
+   }
+
+   public jn l() {
+      return this.a.cN();
+   }
+
+   public fbx c(fbx $$0) {
+      return $$0;
+   }
+
+   public abstract double b(ard var1);
+
+   public abstract double m();
 }

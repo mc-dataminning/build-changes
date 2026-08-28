@@ -1,81 +1,101 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
-public class eot extends eov {
-   public static final MapCodec<eot> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eov.f.listOf().fieldOf("elements").forGetter($$0x -> $$0x.b), e()).apply($$0, eot::new)
-   );
-   private final List<eov> b;
+public abstract class eot extends eon {
+   private static final Logger h = LogUtils.getLogger();
+   protected final String a;
+   protected esl b;
+   protected esh c;
+   protected ji d;
 
-   public eot(List<eov> $$0, eox.a $$1) {
-      super($$1);
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Elements are empty");
-      } else {
-         this.b = $$0;
-         this.b($$1);
-      }
+   public eot(epa $$0, int $$1, esm $$2, aku $$3, String $$4, esh $$5, ji $$6) {
+      super($$0, $$1, $$2.a($$3).b($$5, $$6));
+      this.a(jn.c);
+      this.a = $$4;
+      this.d = $$6;
+      this.b = $$2.a($$3);
+      this.c = $$5;
+   }
+
+   public eot(epa $$0, tq $$1, esm $$2, Function<aku, esh> $$3) {
+      super($$0, $$1);
+      this.a(jn.c);
+      this.a = $$1.l("Template");
+      this.d = new ji($$1.h("TPX"), $$1.h("TPY"), $$1.h("TPZ"));
+      aku $$4 = this.b();
+      this.b = $$2.a($$4);
+      this.c = $$3.apply($$4);
+      this.f = this.b.b(this.c, this.d);
+   }
+
+   protected aku b() {
+      return aku.a(this.a);
    }
 
    @Override
-   public km a(erq $$0, dqf $$1) {
-      int $$2 = 0;
-      int $$3 = 0;
-      int $$4 = 0;
-
-      for (eov $$5 : this.b) {
-         km $$6 = $$5.a($$0, $$1);
-         $$2 = Math.max($$2, $$6.u());
-         $$3 = Math.max($$3, $$6.v());
-         $$4 = Math.max($$4, $$6.w());
-      }
-
-      return new km($$2, $$3, $$4);
+   protected void a(eoz $$0, tq $$1) {
+      $$1.a("TPX", this.d.u());
+      $$1.a("TPY", this.d.v());
+      $$1.a("TPZ", this.d.w());
+      $$1.a("Template", this.a);
    }
 
    @Override
-   public List<erp.a> a(erq $$0, ji $$1, dqf $$2, azh $$3) {
-      return this.b.get(0).a($$0, $$1, $$2, $$3);
-   }
+   public void a(dhy $$0, dhv $$1, dzn $$2, azh $$3, eob $$4, dgg $$5, ji $$6) {
+      this.c.a($$4);
+      this.f = this.b.b(this.c, this.d);
+      if (this.b.a($$0, this.d, $$6, this.c, $$3, 2)) {
+         for (esl.d $$8 : this.b.a(this.d, this.c, dkg.pC)) {
+            if ($$8.c() != null) {
+               dza $$9 = dza.valueOf($$8.c().l("mode"));
+               if ($$9 == dza.d) {
+                  this.a($$8.c().l("metadata"), $$8.a(), $$0, $$3, $$4);
+               }
+            }
+         }
 
-   @Override
-   public enf a(erq $$0, ji $$1, dqf $$2) {
-      Stream<enf> $$3 = this.b.stream().filter($$0x -> $$0x != eoo.b).map($$3x -> $$3x.a($$0, $$1, $$2));
-      return enf.b($$3::iterator).orElseThrow(() -> new IllegalStateException("Unable to calculate boundingbox for ListPoolElement"));
-   }
+         for (esl.d $$11 : this.b.a(this.d, this.c, dkg.pD)) {
+            if ($$11.c() != null) {
+               String $$12 = $$11.c().l("final_state");
+               dxq $$13 = dkg.a.m();
 
-   @Override
-   public boolean a(erq $$0, dhh $$1, dhf $$2, dyu $$3, ji $$4, ji $$5, dqf $$6, enf $$7, azh $$8, eqz $$9, boolean $$10) {
-      for (eov $$11 : this.b) {
-         if (!$$11.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10)) {
-            return false;
+               try {
+                  $$13 = gr.a($$0.a(mc.f), $$12, true).a();
+               } catch (CommandSyntaxException var15) {
+                  h.error("Error while parsing blockstate {} in jigsaw block @ {}", $$12, $$11.a());
+               }
+
+               $$0.a($$11.a(), $$13, 3);
+            }
          }
       }
+   }
 
-      return true;
+   protected abstract void a(String var1, ji var2, dhq var3, azh var4, eob var5);
+
+   @Deprecated
+   @Override
+   public void a(int $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.d = this.d.b($$0, $$1, $$2);
    }
 
    @Override
-   public eow<?> a() {
-      return eow.b;
+   public dqw a() {
+      return this.c.d();
    }
 
-   @Override
-   public eov a(eox.a $$0) {
-      super.a($$0);
-      this.b($$0);
-      return this;
+   public esl c() {
+      return this.b;
    }
 
-   @Override
-   public String toString() {
-      return "List[" + this.b.stream().map(Object::toString).collect(Collectors.joining(", ")) + "]";
+   public ji d() {
+      return this.d;
    }
 
-   private void b(eox.a $$0) {
-      this.b.forEach($$1 -> $$1.a($$0));
+   public esh e() {
+      return this.c;
    }
 }

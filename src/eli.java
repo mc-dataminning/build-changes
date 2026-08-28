@@ -1,29 +1,20 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
 
-public class eli extends elj {
-   public static final MapCodec<eli> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eli::new));
+public class eli extends ekz {
+   public static final MapCodec<eli> b = dxq.a.fieldOf("state").xmap(eli::new, $$0 -> $$0.c);
+   private final dxq c;
 
-   public eli(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   protected eli(dxq $$0) {
+      this.c = $$0;
    }
 
    @Override
-   protected elk<?> a() {
-      return elk.a;
+   protected ela<?> a() {
+      return ela.a;
    }
 
    @Override
-   public List<ejp.a> a(dgp $$0, BiConsumer<ji, dwy> $$1, azh $$2, int $$3, ji $$4, eiz $$5) {
-      a($$0, $$1, $$2, $$4.e(), $$5);
-
-      for (int $$6 = 0; $$6 < $$3; $$6++) {
-         this.b($$0, $$1, $$2, $$4.b($$6), $$5);
-      }
-
-      return ImmutableList.of(new ejp.a($$4.b($$3), 0, false));
+   public dxq a(azh $$0, ji $$1) {
+      return this.c;
    }
 }

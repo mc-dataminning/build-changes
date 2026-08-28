@@ -1,57 +1,40 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public enum dom implements azv {
-   a("none", h.a),
-   b("left_right", h.B),
-   c("front_back", h.z);
+public class dom extends dnu implements doz {
+   public static final MapCodec<dom> c = b(dom::new);
 
-   public static final Codec<dom> d = azv.a(dom::values);
-   private final String e;
-   private final wp f;
-   private final h g;
-
-   private dom(final String $$0, final h $$1) {
-      this.e = $$0;
-      this.f = wp.c("mirror." + $$0);
-      this.g = $$1;
+   @Override
+   public MapCodec<dom> a() {
+      return c;
    }
 
-   public int a(int $$0, int $$1) {
-      int $$2 = $$1 / 2;
-      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
-      switch (this) {
-         case b:
-            return ($$2 - $$3 + $$1) % $$1;
-         case c:
-            return ($$1 - $$3) % $$1;
-         default:
-            return $$0;
-      }
-   }
-
-   public dqf a(jn $$0) {
-      jn.a $$1 = $$0.o();
-      return (this != b || $$1 != jn.a.c) && (this != c || $$1 != jn.a.a) ? dqf.a : dqf.c;
-   }
-
-   public jn b(jn $$0) {
-      if (this == c && $$0.o() == jn.a.a) {
-         return $$0.g();
-      } else {
-         return this == b && $$0.o() == jn.a.c ? $$0.g() : $$0;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public wp b() {
-      return this.f;
+   protected dom(dxp.d $$0) {
+      super($$0, jn.b, fco.b(), true);
    }
 
    @Override
-   public String c() {
-      return this.e;
+   protected dnv c() {
+      return (dnv)dkg.mE;
+   }
+
+   @Override
+   protected etw b_(dxq $$0) {
+      return etx.c.a(false);
+   }
+
+   @Override
+   protected boolean o(dxq $$0) {
+      return this.c().o($$0);
+   }
+
+   @Override
+   public boolean a(@Nullable bvy $$0, dgf $$1, ji $$2, dxq $$3, etv $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(dha $$0, ji $$1, dxq $$2, etw $$3) {
+      return false;
    }
 }

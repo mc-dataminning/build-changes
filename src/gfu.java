@@ -1,25 +1,20 @@
-public class gfu {
-   private static final int a = 49;
-   private static final int b = 3;
-   private double c = 2000000.0;
-   private int d = 1;
-   private volatile long e = af.d();
-
-   public void a() {
-      this.e = af.d();
+public class gfu extends gbn<hcc> {
+   public gfu(ggc $$0) {
+      super($$0);
    }
 
-   public void a(int $$0) {
-      if ($$0 > 0) {
-         double $$1 = (double)(af.d() - this.e);
-         double $$2 = $$1 / (double)$$0;
-         double $$3 = ayz.a($$2, this.c / 3.0, this.c * 3.0);
-         this.c = (this.c * (double)this.d + $$3) / (double)(this.d + 1);
-         this.d = Math.min(49, this.d + 1);
-      }
+   public void a(hcc $$0) {
+      super.a($$0);
+      gbr.a(this.s, this.r, $$0.a, $$0.H, $$0.u);
    }
 
-   public float b() {
-      return (float)(7000000.0 / this.c);
+   @Override
+   public void c_(boolean $$0) {
+      super.c_($$0);
+      this.a.k = $$0;
+      this.b.k = $$0;
+      this.c.k = $$0;
+      this.d.k = $$0;
+      this.e.k = $$0;
    }
 }

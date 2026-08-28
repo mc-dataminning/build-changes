@@ -1,21 +1,32 @@
-public class gsc extends gtl<clq, gzl, gcb> {
-   private static final akv a = akv.b("textures/entity/endermite.png");
+import com.google.common.collect.Maps;
+import java.util.Locale;
+import java.util.Map;
 
-   public gsc(gsf.a $$0) {
-      super($$0, new gcb($$0.a(gfd.aI)), 0.3F);
+public class gsc extends grx<cje, gyr, gbx> {
+   private static final Map<cje.e, aku> a = af.a(Maps.newHashMap(), $$0 -> {
+      for (cje.e $$1 : cje.e.values()) {
+         $$0.put($$1, aku.b(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
+      }
+   });
+
+   public gsc(gtd.a $$0) {
+      super($$0, new gbx($$0.a(ggb.m)), new gbx($$0.a(ggb.n)), 0.5F);
    }
 
-   @Override
-   protected float aV_() {
-      return 180.0F;
+   public aku a(gyr $$0) {
+      return a.get($$0.a);
    }
 
-   @Override
-   public akv b(gzl $$0) {
-      return a;
+   public gyr a() {
+      return new gyr();
    }
 
-   public gzl b() {
-      return new gzl();
+   public void a(cje $$0, gyr $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.t();
+      $$1.b = $$0.bM.a($$2);
+      $$1.d = $$0.bN.a($$2);
+      $$1.e = $$0.bO.a($$2);
+      $$1.c = $$0.bP.a($$2);
    }
 }

@@ -1,56 +1,75 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.JsonOps;
 import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public class hfx extends auu<List<String>> {
-   private static final akv a = akv.b("texts/splashes.txt");
-   private static final azh b = azh.a();
-   private final List<String> c = Lists.newArrayList();
-   private final flw d;
+public class hfx {
+   private static final Logger a = LogUtils.getLogger();
+   private static final akn b = new akn("atlases", ".json");
+   private final List<hfw> c;
 
-   public hfx(flw $$0) {
-      this.d = $$0;
+   private hfx(List<hfw> $$0) {
+      this.c = $$0;
    }
 
-   protected List<String> a(aup $$0, bou $$1) {
-      try {
-         List var4;
-         try (BufferedReader $$2 = flk.Q().ac().openAsReader(a)) {
-            var4 = $$2.lines().map(String::trim).filter($$0x -> $$0x.hashCode() != 125780783).collect(Collectors.toList());
+   public List<Function<hfv, hfl>> a(aup $$0) {
+      final Map<aku, hfw.b> $$1 = new HashMap<>();
+      hfw.a $$2 = new hfw.a() {
+         @Override
+         public void a(aku $$0, hfw.b $$1x) {
+            hfw.b $$2 = $$1.put($$0, $$1);
+            if ($$2 != null) {
+               $$2.a();
+            }
          }
 
-         return var4;
-      } catch (IOException var8) {
-         return Collections.emptyList();
-      }
+         @Override
+         public void a(Predicate<aku> $$0) {
+            Iterator<Entry<aku, hfw.b>> $$1 = $$1.entrySet().iterator();
+
+            while ($$1.hasNext()) {
+               Entry<aku, hfw.b> $$2 = $$1.next();
+               if ($$0.test($$2.getKey())) {
+                  $$2.getValue().a();
+                  $$1.remove();
+               }
+            }
+         }
+      };
+      this.c.forEach($$2x -> $$2x.a($$0, $$2));
+      Builder<Function<hfv, hfl>> $$3 = ImmutableList.builder();
+      $$3.add((Function<hfv, hfl>)$$0x -> hfg.b());
+      $$3.addAll($$1.values());
+      return $$3.build();
    }
 
-   protected void a(List<String> $$0, aup $$1, bou $$2) {
-      this.c.clear();
-      this.c.addAll($$0);
-   }
+   public static hfx a(aup $$0, aku $$1) {
+      aku $$2 = b.a($$1);
+      List<hfw> $$3 = new ArrayList<>();
 
-   @Nullable
-   public fpy a() {
-      Calendar $$0 = Calendar.getInstance();
-      $$0.setTime(new Date());
-      if ($$0.get(2) + 1 == 12 && $$0.get(5) == 24) {
-         return fpy.a;
-      } else if ($$0.get(2) + 1 == 1 && $$0.get(5) == 1) {
-         return fpy.b;
-      } else if ($$0.get(2) + 1 == 10 && $$0.get(5) == 31) {
-         return fpy.c;
-      } else if (this.c.isEmpty()) {
-         return null;
-      } else {
-         return this.d != null && b.a(this.c.size()) == 42 ? new fpy(this.d.c().toUpperCase(Locale.ROOT) + " IS YOU") : new fpy(this.c.get(b.a(this.c.size())));
+      for (aun $$4 : $$0.a($$2)) {
+         try (BufferedReader $$5 = $$4.e()) {
+            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
+            $$3.addAll((Collection<? extends hfw>)hfz.h.parse($$6).getOrThrow());
+         } catch (Exception var11) {
+            a.error("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
+         }
       }
+
+      return new hfx($$3);
    }
 }

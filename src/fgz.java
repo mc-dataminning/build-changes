@@ -1,20 +1,36 @@
+import com.google.common.primitives.Floats;
+import it.unimi.dsi.fastutil.ints.IntArrays;
+import org.joml.Vector3f;
+
 public interface fgz {
-   fgp b();
+   fgz a = a(0.0F, 0.0F, 0.0F);
+   fgz b = a((fgz.a)($$0 -> -$$0.z()));
 
-   void d();
+   static fgz a(float $$0, float $$1, float $$2) {
+      return a(new Vector3f($$0, $$1, $$2));
+   }
 
-   static fgz f() {
-      return new fgz() {
-         private final fgp a = new fgp();
+   static fgz a(Vector3f $$0) {
+      return a($$0::distanceSquared);
+   }
 
-         @Override
-         public fgp b() {
-            return this.a;
+   static fgz a(fgz.a $$0) {
+      return $$1 -> {
+         float[] $$2 = new float[$$1.length];
+         int[] $$3 = new int[$$1.length];
+
+         for (int $$4 = 0; $$4 < $$1.length; $$3[$$4] = $$4++) {
+            $$2[$$4] = $$0.apply($$1[$$4]);
          }
 
-         @Override
-         public void d() {
-         }
+         IntArrays.mergeSort($$3, ($$1x, $$2x) -> Floats.compare($$2[$$2x], $$2[$$1x]));
+         return $$3;
       };
+   }
+
+   int[] sort(Vector3f[] var1);
+
+   public interface a {
+      float apply(Vector3f var1);
    }
 }

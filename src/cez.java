@@ -1,19 +1,32 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
-import java.util.Set;
+import com.mojang.serialization.Codec;
 
-public class cez extends cfs<bud> {
+public enum cez implements azv {
+   a("major_negative", -5, 100, 10, 10),
+   b("minor_negative", -1, 200, 20, 20),
+   c("minor_positive", 1, 25, 1, 5),
+   d("major_positive", 5, 20, 0, 20),
+   e("trading", 1, 25, 2, 20);
+
+   public static final int f = 25;
+   public static final int g = 20;
+   public static final int h = 2;
+   public final String i;
+   public final int j;
+   public final int k;
+   public final int l;
+   public final int m;
+   public static final Codec<cez> n = azv.a(cez::values);
+
+   private cez(final String $$0, final int $$1, final int $$2, final int $$3, final int $$4) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.m = $$4;
+   }
+
    @Override
-   public Set<cem<?>> a() {
-      return ImmutableSet.of(cem.K, cem.h);
-   }
-
-   protected void a(ard $$0, bud $$1) {
-      $$1.eb().c(cem.h).ifPresent($$1x -> this.a($$1, $$1x));
-   }
-
-   private void a(bud $$0, ceo $$1) {
-      Optional<bud> $$2 = $$1.a($$1x -> $$1x.aq() == $$0.aq() && !$$1x.e_()).map(bud.class::cast);
-      $$0.eb().a(cem.K, $$2);
+   public String c() {
+      return this.i;
    }
 }

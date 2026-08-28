@@ -1,29 +1,30 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.stream.Collectors;
 
 public class bhl extends DataFix {
-   private final String a;
-   private final String b;
-   private final String c;
-
-   public bhl(Schema $$0, boolean $$1, String $$2, String $$3, String $$4) {
+   public bhl(Schema $$0, boolean $$1) {
       super($$0, $$1);
-      this.a = $$2;
-      this.b = $$3;
-      this.c = $$4;
    }
 
    public TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
-         this.a,
-         this.getInputSchema().getType(bhy.e),
-         $$0 -> $$0.update(
-               DSL.remainderFinder(), $$0x -> (Dynamic)DataFixUtils.orElse($$0x.get(this.b).result().map($$1 -> $$0x.set(this.c, $$1).remove(this.b)), $$0x)
-            )
+         "OptionsKeyTranslationFix",
+         this.getInputSchema().getType(bic.e),
+         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.getMapValues().map($$1 -> $$0x.createMap($$1.entrySet().stream().map($$1x -> {
+                     if (((Dynamic)$$1x.getKey()).asString("").startsWith("key_")) {
+                        String $$2 = ((Dynamic)$$1x.getValue()).asString("");
+                        if (!$$2.startsWith("key.mouse") && !$$2.startsWith("scancode.")) {
+                           return Pair.of((Dynamic)$$1x.getKey(), $$0x.createString("key.keyboard." + $$2.substring("key.".length())));
+                        }
+                     }
+
+                     return Pair.of((Dynamic)$$1x.getKey(), (Dynamic)$$1x.getValue());
+                  }).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond)))).result().orElse($$0x))
       );
    }
 }

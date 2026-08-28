@@ -1,50 +1,39 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class cev extends cet {
-   @Nullable
-   private ji p;
+public class cev<T extends bwa & bwd> extends ccw {
+   private static final int a = 10;
+   private final T b;
+   private final boolean c;
+   private int d;
 
-   public cev(bvk $$0, dgj $$1) {
-      super($$0, $$1);
+   public cev(T $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public eto a(ji $$0, int $$1) {
-      this.p = $$0;
-      return super.a($$0, $$1);
+   public boolean b() {
+      return a(this.b).O().b(dgv.P) && this.h();
+   }
+
+   private boolean h() {
+      return this.b.ep() != null && this.b.ep().aq() == bvi.bR && this.b.er() > this.d;
    }
 
    @Override
-   public eto a(bum $$0, int $$1) {
-      this.p = $$0.dv();
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(bum $$0, double $$1) {
-      eto $$2 = this.a($$0, 0);
-      if ($$2 != null) {
-         return this.a($$2, $$1);
-      } else {
-         this.p = $$0.dv();
-         this.d = $$1;
-         return true;
+   public void d() {
+      this.d = this.b.er();
+      this.b.aa_();
+      if (this.c) {
+         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bwd)$$0).forEach(bwd::aa_);
       }
+
+      super.d();
    }
 
-   @Override
-   public void c() {
-      if (!this.k()) {
-         super.c();
-      } else {
-         if (this.p != null) {
-            if (!this.p.a(this.a.dt(), (double)this.a.dq())
-               && (!(this.a.dC() > (double)this.p.v()) || !ji.a((double)this.p.u(), this.a.dC(), (double)this.p.w()).a(this.a.dt(), (double)this.a.dq()))) {
-               this.a.N().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
-            } else {
-               this.p = null;
-            }
-         }
-      }
+   private List<? extends bwa> i() {
+      double $$0 = this.b.h(bxg.m);
+      fbs $$1 = fbs.a(this.b.ds()).c($$0, 10.0, $$0);
+      return this.b.dU().a((Class<? extends bwa>)this.b.getClass(), $$1, bvg.f);
    }
 }

@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.serialization.Codec;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface deg {
+public record deg() {
+   public static final deg a = new deg();
+   public static final Codec<deg> b = Codec.unit(() -> a);
 }

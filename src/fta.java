@@ -1,24 +1,20 @@
-public record fta(int a, int b) {
-   public static fta a(fsy $$0, int $$1, int $$2) {
-      return switch ($$0) {
-         case a -> new fta($$1, $$2);
-         case b -> new fta($$2, $$1);
-      };
+import java.util.function.Consumer;
+
+public class fta {
+   private static final int a = 4;
+
+   private fta() {
    }
 
-   public fta a(fsz $$0) {
-      return switch ($$0) {
-         case b -> new fta(this.a, this.b + 1);
-         case a -> new fta(this.a, this.b - 1);
-         case c -> new fta(this.a - 1, this.b);
-         case d -> new fta(this.a + 1, this.b);
-      };
+   public static ftf a(fpa $$0, ftg $$1, wp $$2) {
+      return a($$0, $$1, $$2, $$0x -> {
+      });
    }
 
-   public int a(fsy $$0) {
-      return switch ($$0) {
-         case a -> this.a;
-         case b -> this.b;
-      };
+   public static ftf a(fpa $$0, ftg $$1, wp $$2, Consumer<fth> $$3) {
+      fti $$4 = fti.d().a(4);
+      $$4.a(new fqx($$2, $$0));
+      $$4.a($$1, $$3);
+      return $$4;
    }
 }

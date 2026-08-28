@@ -1,23 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record eja(int b, int c, int d) implements eid {
+public class eja implements eiy {
    public static final Codec<eja> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               ayi.m.fieldOf("spread_width").forGetter(eja::a), ayi.m.fieldOf("spread_height").forGetter(eja::b), ayi.m.fieldOf("max_height").forGetter(eja::c)
+               ekz.a.fieldOf("cap_provider").forGetter($$0x -> $$0x.b),
+               ekz.a.fieldOf("stem_provider").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("foliage_radius").orElse(2).forGetter($$0x -> $$0x.d)
             )
             .apply($$0, eja::new)
    );
+   public final ekz b;
+   public final ekz c;
+   public final int d;
 
-   public int a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
+   public eja(ekz $$0, ekz $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 }

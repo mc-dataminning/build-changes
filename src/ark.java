@@ -1,118 +1,45 @@
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.ArrayList;
-import java.util.List;
+public record ark(long j, boolean k, ark.a l) {
+   public static final int a = 0;
+   public static final ark b = a("start", 0L, false, ark.a.c);
+   public static final ark c = a("dragon", 0L, false, ark.a.c);
+   public static final ark d = a("player_loading", 0L, false, ark.a.a);
+   public static final ark e = a("player_simulation", 0L, false, ark.a.b);
+   public static final ark f = a("forced", 0L, true, ark.a.c);
+   public static final ark g = a("portal", 300L, true, ark.a.c);
+   public static final ark h = a("ender_pearl", 40L, false, ark.a.c);
+   public static final ark i = a("unknown", 1L, false, ark.a.a);
 
-public class ark extends aqm {
-   public static final int a = 33;
-   private static final int c = 4;
-   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
-   private final Long2ObjectOpenHashMap<azr<ari<?>>> d = new Long2ObjectOpenHashMap();
-
-   public ark() {
-      super(34, 16, 256);
-      this.b.defaultReturnValue((byte)33);
+   private static ark a(String $$0, long $$1, boolean $$2, ark.a $$3) {
+      return ke.a(mb.aC, $$0, new ark($$1, $$2, $$3));
    }
 
-   private azr<ari<?>> g(long $$0) {
-      return (azr<ari<?>>)this.d.computeIfAbsent($$0, $$0x -> azr.a(4));
+   public boolean a() {
+      return this.l == ark.a.a || this.l == ark.a.c;
    }
 
-   private int a(azr<ari<?>> $$0) {
-      return $$0.isEmpty() ? 34 : $$0.b().b();
+   public boolean b() {
+      return this.l == ark.a.b || this.l == ark.a.c;
    }
 
-   public void a(long $$0, ari<?> $$1) {
-      azr<ari<?>> $$2 = this.g($$0);
-      int $$3 = this.a($$2);
-      $$2.add($$1);
-      if ($$1.b() < $$3) {
-         this.b($$0, $$1.b(), true);
-      }
+   public boolean c() {
+      return this.j != 0L;
    }
 
-   public void b(long $$0, ari<?> $$1) {
-      azr<ari<?>> $$2 = this.g($$0);
-      $$2.remove($$1);
-      if ($$2.isEmpty()) {
-         this.d.remove($$0);
-      }
-
-      this.b($$0, this.a($$2), false);
+   public long d() {
+      return this.j;
    }
 
-   public <T> void a(arj<T> $$0, dfp $$1, int $$2, T $$3) {
-      this.a($$1.a(), new ari<>($$0, $$2, $$3));
+   public boolean e() {
+      return this.k;
    }
 
-   public <T> void b(arj<T> $$0, dfp $$1, int $$2, T $$3) {
-      ari<T> $$4 = new ari<>($$0, $$2, $$3);
-      this.b($$1.a(), $$4);
+   public ark.a f() {
+      return this.l;
    }
 
-   public void a(int $$0) {
-      List<Pair<ari<dfp>, Long>> $$1 = new ArrayList<>();
-      ObjectIterator var3 = this.d.long2ObjectEntrySet().iterator();
-
-      while (var3.hasNext()) {
-         Entry<azr<ari<?>>> $$2 = (Entry<azr<ari<?>>>)var3.next();
-
-         for (ari<?> $$3 : (azr)$$2.getValue()) {
-            if ($$3.a() == arj.c) {
-               $$1.add(Pair.of($$3, $$2.getLongKey()));
-            }
-         }
-      }
-
-      for (Pair<ari<dfp>, Long> $$4 : $$1) {
-         Long $$5 = (Long)$$4.getSecond();
-         ari<dfp> $$6 = (ari<dfp>)$$4.getFirst();
-         this.b($$5, $$6);
-         dfp $$7 = new dfp($$5);
-         arj<dfp> $$8 = $$6.a();
-         this.a($$8, $$7, $$0, $$7);
-      }
-   }
-
-   @Override
-   protected int b(long $$0) {
-      azr<ari<?>> $$1 = (azr<ari<?>>)this.d.get($$0);
-      return $$1 != null && !$$1.isEmpty() ? $$1.b().b() : Integer.MAX_VALUE;
-   }
-
-   public int a(dfp $$0) {
-      return this.c($$0.a());
-   }
-
-   @Override
-   protected int c(long $$0) {
-      return this.b.get($$0);
-   }
-
-   @Override
-   protected void a(long $$0, int $$1) {
-      if ($$1 >= 33) {
-         this.b.remove($$0);
-      } else {
-         this.b.put($$0, (byte)$$1);
-      }
-   }
-
-   public LongSet a() {
-      return this.b.keySet();
-   }
-
-   public void b() {
-      this.b(Integer.MAX_VALUE);
-   }
-
-   public String d(long $$0) {
-      azr<ari<?>> $$1 = (azr<ari<?>>)this.d.get($$0);
-      return $$1 != null && !$$1.isEmpty() ? $$1.b().toString() : "no_ticket";
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

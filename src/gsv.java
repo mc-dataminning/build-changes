@@ -1,35 +1,32 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gsv extends grw<cmg, hca, gcv> {
+   private static final aku a = aku.b("textures/entity/zombie/drowned.png");
 
-public final class gsv extends gqv<cjf, gzb, gcn> {
-   private static final Map<cjm, akv> a = af.a(Maps.newEnumMap(cjm.class), $$0 -> {
-      $$0.put(cjm.a, akv.b("textures/entity/horse/horse_white.png"));
-      $$0.put(cjm.b, akv.b("textures/entity/horse/horse_creamy.png"));
-      $$0.put(cjm.c, akv.b("textures/entity/horse/horse_chestnut.png"));
-      $$0.put(cjm.d, akv.b("textures/entity/horse/horse_brown.png"));
-      $$0.put(cjm.e, akv.b("textures/entity/horse/horse_black.png"));
-      $$0.put(cjm.f, akv.b("textures/entity/horse/horse_gray.png"));
-      $$0.put(cjm.g, akv.b("textures/entity/horse/horse_darkbrown.png"));
-   });
-
-   public gsv(gsf.a $$0) {
-      super($$0, new gcn($$0.a(gfd.bd)), new gcn($$0.a(gfd.bf)));
-      this.a(new gwi(this));
-      this.a(new gwh(this, $$0.f(), $$0.h()));
+   public gsv(gtd.a $$0) {
+      super($$0, new gcv($$0.a(ggb.ay)), new gcv($$0.a(ggb.az)), new gcv($$0.a(ggb.aD)), new gcv($$0.a(ggb.aE)), new gcv($$0.a(ggb.aA)), new gcv($$0.a(ggb.aB)));
+      this.a(new gwz(this, $$0.f()));
    }
 
-   public akv a(gzb $$0) {
-      return a.get($$0.a);
+   public hca a() {
+      return new hca();
    }
 
-   public gzb b() {
-      return new gzb();
+   @Override
+   public aku a(hca $$0) {
+      return a;
    }
 
-   public void a(cjf $$0, gzb $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.p();
-      $$1.h = $$0.t();
-      $$1.i = $$0.ak().v();
+   protected void a(hca $$0, fgr $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      float $$4 = $$0.G;
+      if ($$4 > 0.0F) {
+         float $$5 = -10.0F - $$0.ab;
+         float $$6 = ayz.h($$4, 0.0F, $$5);
+         $$1.a(a.b.rotationDegrees($$6), 0.0F, $$0.w / 2.0F / $$3, 0.0F);
+      }
+   }
+
+   protected gdn.a a(cmg $$0, bvr $$1) {
+      cxh $$2 = $$0.a($$1);
+      return $$0.fA() == $$1 && $$0.gj() && $$2.a(cxl.wU) ? gdn.a.e : gdn.a.a;
    }
 }

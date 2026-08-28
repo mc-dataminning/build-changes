@@ -1,29 +1,30 @@
-import javax.annotation.Nullable;
-
 public class afs implements yw<abl> {
    public static final yn<vl, afs> a = yw.a(afs::a, afs::new);
    private final int b;
-   @Nullable
-   private final tq c;
+   private final int c;
+   private final int d;
 
-   public afs(int $$0, @Nullable tq $$1) {
+   public afs(int $$0, int $$1, int $$2) {
       this.b = $$0;
       this.c = $$1;
+      this.d = $$2;
    }
 
    private afs(vl $$0) {
       this.b = $$0.l();
-      this.c = $$0.o();
+      this.c = $$0.l();
+      this.d = $$0.l();
    }
 
    private void a(vl $$0) {
       $$0.c(this.b);
-      $$0.a((un)this.c);
+      $$0.c(this.c);
+      $$0.c(this.d);
    }
 
    @Override
    public yy<afs> a() {
-      return age.bb;
+      return agd.bb;
    }
 
    public void a(abl $$0) {
@@ -34,13 +35,11 @@ public class afs implements yw<abl> {
       return this.b;
    }
 
-   @Nullable
-   public tq e() {
+   public int e() {
       return this.c;
    }
 
-   @Override
-   public boolean c() {
-      return true;
+   public int f() {
+      return this.d;
    }
 }

@@ -1,1076 +1,534 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.logging.LogUtils;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
+import com.mojang.serialization.OptionalDynamic;
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
+import it.unimi.dsi.fastutil.ints.Int2IntLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.ints.Int2IntMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.nio.ByteBuffer;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.BitSet;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
+import org.apache.commons.lang3.mutable.MutableBoolean;
+import org.apache.commons.lang3.mutable.MutableObject;
 
 public class bcp extends DataFix {
-   private static final int a = 128;
-   private static final int b = 64;
-   private static final int c = 32;
-   private static final int d = 16;
-   private static final int e = 8;
-   private static final int f = 4;
-   private static final int g = 2;
-   private static final int h = 1;
-   static final Logger i = LogUtils.getLogger();
-   private static final int j = 4096;
+   public static final String a = "__context";
+   private static final String d = "ChunkHeightAndBiomeFix";
+   private static final int e = 16;
+   private static final int f = 24;
+   private static final int g = -4;
+   public static final int b = 4096;
+   private static final int h = 64;
+   private static final int i = 9;
+   private static final long j = 511L;
+   private static final int k = 64;
+   private static final String[] l = new String[]{
+      "WORLD_SURFACE_WG", "WORLD_SURFACE", "WORLD_SURFACE_IGNORE_SNOW", "OCEAN_FLOOR_WG", "OCEAN_FLOOR", "MOTION_BLOCKING", "MOTION_BLOCKING_NO_LEAVES"
+   };
+   private static final Set<String> m = Set.of("surface", "carvers", "liquid_carvers", "features", "light", "spawn", "heightmaps", "full");
+   private static final Set<String> n = Set.of("noise", "surface", "carvers", "liquid_carvers", "features", "light", "spawn", "heightmaps", "full");
+   private static final Set<String> o = Set.of(
+      "minecraft:air",
+      "minecraft:basalt",
+      "minecraft:bedrock",
+      "minecraft:blackstone",
+      "minecraft:calcite",
+      "minecraft:cave_air",
+      "minecraft:coarse_dirt",
+      "minecraft:crimson_nylium",
+      "minecraft:dirt",
+      "minecraft:end_stone",
+      "minecraft:grass_block",
+      "minecraft:gravel",
+      "minecraft:ice",
+      "minecraft:lava",
+      "minecraft:mycelium",
+      "minecraft:nether_wart_block",
+      "minecraft:netherrack",
+      "minecraft:orange_terracotta",
+      "minecraft:packed_ice",
+      "minecraft:podzol",
+      "minecraft:powder_snow",
+      "minecraft:red_sand",
+      "minecraft:red_sandstone",
+      "minecraft:sand",
+      "minecraft:sandstone",
+      "minecraft:snow_block",
+      "minecraft:soul_sand",
+      "minecraft:soul_soil",
+      "minecraft:stone",
+      "minecraft:terracotta",
+      "minecraft:warped_nylium",
+      "minecraft:warped_wart_block",
+      "minecraft:water",
+      "minecraft:white_terracotta"
+   );
+   private static final int p = 16;
+   private static final int q = 64;
+   private static final int r = 1008;
+   public static final String c = "minecraft:plains";
+   private static final Int2ObjectMap<String> s = new Int2ObjectOpenHashMap();
 
-   public bcp(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public bcp(Schema $$0) {
+      super($$0, true);
    }
 
-   public static String a(Dynamic<?> $$0) {
-      return $$0.get("Name").asString("");
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bic.c);
+      OpticFinder<?> $$1 = $$0.findField("Level");
+      OpticFinder<?> $$2 = $$1.type().findField("Sections");
+      Schema $$3 = this.getOutputSchema();
+      Type<?> $$4 = $$3.getType(bic.c);
+      Type<?> $$5 = $$4.findField("Level").type();
+      Type<?> $$6 = $$5.findField("Sections").type();
+      return this.fixTypeEverywhereTyped("ChunkHeightAndBiomeFix", $$0, $$4, $$4x -> $$4x.updateTyped($$1, $$5, $$3xx -> {
+            Dynamic<?> $$4xx = (Dynamic<?>)$$3xx.get(DSL.remainderFinder());
+            OptionalDynamic<?> $$5x = ((Dynamic)$$4x.get(DSL.remainderFinder())).get("__context");
+            String $$6x = $$5x.get("dimension").asString().result().orElse("");
+            String $$7 = $$5x.get("generator").asString().result().orElse("");
+            boolean $$8 = "minecraft:overworld".equals($$6x);
+            MutableBoolean $$9 = new MutableBoolean();
+            int $$10 = $$8 ? -4 : 0;
+            Dynamic<?>[] $$11 = a($$4xx, $$8, $$10, $$9);
+            Dynamic<?> $$12 = d($$4xx.createList(Stream.of($$4xx.createMap(ImmutableMap.of($$4xx.createString("Name"), $$4xx.createString("minecraft:air"))))));
+            Set<String> $$13 = Sets.newHashSet();
+            MutableObject<Supplier<bcs.a>> $$14 = new MutableObject((Supplier<bcs.a>)() -> null);
+            $$3xx = $$3xx.updateTyped($$2, $$6, $$7x -> {
+               IntSet $$8x = new IntOpenHashSet();
+               Dynamic<?> $$9x = (Dynamic<?>)$$7x.write().result().orElseThrow(() -> new IllegalStateException("Malformed Chunk.Level.Sections"));
+               List<Dynamic<?>> $$10x = $$9x.asStream().map($$6xxx -> {
+                  int $$7xx = $$6xxx.get("Y").asInt(0);
+                  Dynamic<?> $$8xx = (Dynamic<?>)DataFixUtils.orElse($$6xxx.get("Palette").result().flatMap($$2xxxxx -> {
+                     $$2xxxxx.asStream().map($$0xxxxxx -> $$0xxxxxx.get("Name").asString("minecraft:air")).forEach($$13::add);
+                     return $$6xxx.get("BlockStates").result().map($$1xxxxxx -> b($$2xxxxx, $$1xxxxxx));
+                  }), $$12);
+                  Dynamic<?> $$9xx = $$6xxx;
+                  int $$10xx = $$7xx - $$10;
+                  if ($$10xx >= 0 && $$10xx < $$11.length) {
+                     $$9xx = $$6xxx.set("biomes", $$11[$$10xx]);
+                  }
+
+                  $$8x.add($$7xx);
+                  if ($$6xxx.get("Y").asInt(Integer.MAX_VALUE) == 0) {
+                     $$14.setValue((Supplier<bcs.a>)() -> {
+                        List<? extends Dynamic<?>> $$1xxxxx = $$8xx.get("palette").asList(Function.identity());
+                        long[] $$2xxxxx = $$8xx.get("data").asLongStream().toArray();
+                        return new bcs.a($$1xxxxx, $$2xxxxx);
+                     });
+                  }
+
+                  return $$9xx.set("block_states", $$8xx).remove("Palette").remove("BlockStates");
+               }).collect(Collectors.toCollection(ArrayList::new));
+
+               for (int $$11x = 0; $$11x < $$11.length; $$11x++) {
+                  int $$12x = $$11x + $$10;
+                  if ($$8x.add($$12x)) {
+                     Dynamic<?> $$13x = $$4xx.createMap(Map.of($$4xx.createString("Y"), $$4xx.createInt($$12x)));
+                     $$13x = $$13x.set("block_states", $$12);
+                     $$13x = $$13x.set("biomes", $$11[$$11x]);
+                     $$10x.add($$13x);
+                  }
+               }
+
+               return af.a($$6, $$4xx.createList($$10x.stream()));
+            });
+            return $$3xx.update(DSL.remainderFinder(), $$5xx -> {
+               if ($$8) {
+                  $$5xx = this.a($$5xx, $$13);
+               }
+
+               return a($$5xx, $$8, $$9.booleanValue(), "minecraft:noise".equals($$7), (Supplier<bcs.a>)$$14.getValue());
+            });
+         }));
    }
 
-   public static String a(Dynamic<?> $$0, String $$1) {
-      return $$0.get("Properties").get($$1).asString("");
+   private Dynamic<?> a(Dynamic<?> $$0, Set<String> $$1) {
+      return $$0.update("Status", $$1x -> {
+         String $$2 = $$1x.asString("empty");
+         if (m.contains($$2)) {
+            return $$1x;
+         } else {
+            $$1.remove("minecraft:air");
+            boolean $$3 = !$$1.isEmpty();
+            $$1.removeAll(o);
+            boolean $$4 = !$$1.isEmpty();
+            if ($$4) {
+               return $$1x.createString("liquid_carvers");
+            } else if ("noise".equals($$2) || $$3) {
+               return $$1x.createString("noise");
+            } else {
+               return "biomes".equals($$2) ? $$1x.createString("structure_references") : $$1x;
+            }
+         }
+      });
    }
 
-   public static int a(axw<Dynamic<?>> $$0, Dynamic<?> $$1) {
-      int $$2 = $$0.a($$1);
-      if ($$2 == -1) {
-         $$2 = $$0.d($$1);
-      }
+   private static Dynamic<?>[] a(Dynamic<?> $$0, boolean $$1, int $$2, MutableBoolean $$3) {
+      Dynamic<?>[] $$4 = new Dynamic[$$1 ? 24 : 16];
+      int[] $$5 = $$0.get("Biomes").asIntStreamOpt().result().map(IntStream::toArray).orElse(null);
+      if ($$5 != null && $$5.length == 1536) {
+         $$3.setValue(true);
 
-      return $$2;
-   }
+         for (int $$6 = 0; $$6 < 24; $$6++) {
+            int $$7 = $$6;
+            $$4[$$6] = a($$0, (Int2IntFunction)($$2x -> a($$5, $$7 * 64 + $$2x)));
+         }
+      } else if ($$5 != null && $$5.length == 1024) {
+         for (int $$8 = 0; $$8 < 16; $$8++) {
+            int $$9 = $$8 - $$2;
+            $$4[$$9] = a($$0, (Int2IntFunction)($$2x -> a($$5, $$8 * 64 + $$2x)));
+         }
 
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      Optional<? extends Dynamic<?>> $$1 = $$0.get("Level").result();
-      return $$1.isPresent() && $$1.get().get("Sections").asStreamOpt().result().isPresent() ? $$0.set("Level", new bcp.e((Dynamic<?>)$$1.get()).a()) : $$0;
-   }
-
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bhy.c);
-      Type<?> $$1 = this.getOutputSchema().getType(bhy.c);
-      return this.writeFixAndRead("ChunkPalettedStorageFix", $$0, $$1, this::b);
-   }
-
-   public static int a(boolean $$0, boolean $$1, boolean $$2, boolean $$3) {
-      int $$4 = 0;
-      if ($$2) {
          if ($$1) {
-            $$4 |= 2;
-         } else if ($$0) {
-            $$4 |= 128;
-         } else {
-            $$4 |= 1;
+            Dynamic<?> $$11 = a($$0, (Int2IntFunction)($$1x -> a($$5, $$1x % 16)));
+            Dynamic<?> $$12 = a($$0, (Int2IntFunction)($$1x -> a($$5, $$1x % 16 + 1008)));
+
+            for (int $$13 = 0; $$13 < 4; $$13++) {
+               $$4[$$13] = $$11;
+            }
+
+            for (int $$14 = 20; $$14 < 24; $$14++) {
+               $$4[$$14] = $$12;
+            }
          }
-      } else if ($$3) {
-         if ($$0) {
-            $$4 |= 32;
-         } else if ($$1) {
-            $$4 |= 8;
-         } else {
-            $$4 |= 16;
-         }
-      } else if ($$1) {
-         $$4 |= 4;
-      } else if ($$0) {
-         $$4 |= 64;
+      } else {
+         Arrays.fill($$4, d($$0.createList(Stream.of($$0.createString("minecraft:plains")))));
       }
 
       return $$4;
    }
 
-   static class a {
-      private static final int a = 2048;
-      private static final int b = 4;
-      private final byte[] c;
-
-      public a() {
-         this.c = new byte[2048];
-      }
-
-      public a(byte[] $$0) {
-         this.c = $$0;
-         if ($$0.length != 2048) {
-            throw new IllegalArgumentException("ChunkNibbleArrays should be 2048 bytes not: " + $$0.length);
-         }
-      }
-
-      public int a(int $$0, int $$1, int $$2) {
-         int $$3 = this.b($$1 << 8 | $$2 << 4 | $$0);
-         return this.a($$1 << 8 | $$2 << 4 | $$0) ? this.c[$$3] & 15 : this.c[$$3] >> 4 & 15;
-      }
-
-      private boolean a(int $$0) {
-         return ($$0 & 1) == 0;
-      }
-
-      private int b(int $$0) {
-         return $$0 >> 1;
-      }
+   private static int a(int[] $$0, int $$1) {
+      return $$0[$$1] & 0xFF;
    }
 
-   public static enum b {
-      a(bcp.b.b.b, bcp.b.a.b),
-      b(bcp.b.b.a, bcp.b.a.b),
-      c(bcp.b.b.b, bcp.b.a.c),
-      d(bcp.b.b.a, bcp.b.a.c),
-      e(bcp.b.b.b, bcp.b.a.a),
-      f(bcp.b.b.a, bcp.b.a.a);
-
-      private final bcp.b.a g;
-      private final bcp.b.b h;
-
-      private b(final bcp.b.b $$0, final bcp.b.a $$1) {
-         this.g = $$1;
-         this.h = $$0;
-      }
-
-      public bcp.b.b a() {
-         return this.h;
-      }
-
-      public bcp.b.a b() {
-         return this.g;
-      }
-
-      public static enum a {
-         a,
-         b,
-         c;
-      }
-
-      public static enum b {
-         a(1),
-         b(-1);
-
-         private final int c;
-
-         private b(final int $$0) {
-            this.c = $$0;
-         }
-
-         public int a() {
-            return this.c;
-         }
-      }
-   }
-
-   static class c {
-      static final BitSet a = new BitSet(256);
-      static final BitSet b = new BitSet(256);
-      static final Dynamic<?> c = bap.a("minecraft:pumpkin");
-      static final Dynamic<?> d = bap.a("minecraft:podzol", Map.of("snowy", "true"));
-      static final Dynamic<?> e = bap.a("minecraft:grass_block", Map.of("snowy", "true"));
-      static final Dynamic<?> f = bap.a("minecraft:mycelium", Map.of("snowy", "true"));
-      static final Dynamic<?> g = bap.a("minecraft:sunflower", Map.of("half", "upper"));
-      static final Dynamic<?> h = bap.a("minecraft:lilac", Map.of("half", "upper"));
-      static final Dynamic<?> i = bap.a("minecraft:tall_grass", Map.of("half", "upper"));
-      static final Dynamic<?> j = bap.a("minecraft:large_fern", Map.of("half", "upper"));
-      static final Dynamic<?> k = bap.a("minecraft:rose_bush", Map.of("half", "upper"));
-      static final Dynamic<?> l = bap.a("minecraft:peony", Map.of("half", "upper"));
-      static final Map<String, Dynamic<?>> m = (Map<String, Dynamic<?>>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
-         $$0.put("minecraft:air0", bap.a("minecraft:flower_pot"));
-         $$0.put("minecraft:red_flower0", bap.a("minecraft:potted_poppy"));
-         $$0.put("minecraft:red_flower1", bap.a("minecraft:potted_blue_orchid"));
-         $$0.put("minecraft:red_flower2", bap.a("minecraft:potted_allium"));
-         $$0.put("minecraft:red_flower3", bap.a("minecraft:potted_azure_bluet"));
-         $$0.put("minecraft:red_flower4", bap.a("minecraft:potted_red_tulip"));
-         $$0.put("minecraft:red_flower5", bap.a("minecraft:potted_orange_tulip"));
-         $$0.put("minecraft:red_flower6", bap.a("minecraft:potted_white_tulip"));
-         $$0.put("minecraft:red_flower7", bap.a("minecraft:potted_pink_tulip"));
-         $$0.put("minecraft:red_flower8", bap.a("minecraft:potted_oxeye_daisy"));
-         $$0.put("minecraft:yellow_flower0", bap.a("minecraft:potted_dandelion"));
-         $$0.put("minecraft:sapling0", bap.a("minecraft:potted_oak_sapling"));
-         $$0.put("minecraft:sapling1", bap.a("minecraft:potted_spruce_sapling"));
-         $$0.put("minecraft:sapling2", bap.a("minecraft:potted_birch_sapling"));
-         $$0.put("minecraft:sapling3", bap.a("minecraft:potted_jungle_sapling"));
-         $$0.put("minecraft:sapling4", bap.a("minecraft:potted_acacia_sapling"));
-         $$0.put("minecraft:sapling5", bap.a("minecraft:potted_dark_oak_sapling"));
-         $$0.put("minecraft:red_mushroom0", bap.a("minecraft:potted_red_mushroom"));
-         $$0.put("minecraft:brown_mushroom0", bap.a("minecraft:potted_brown_mushroom"));
-         $$0.put("minecraft:deadbush0", bap.a("minecraft:potted_dead_bush"));
-         $$0.put("minecraft:tallgrass2", bap.a("minecraft:potted_fern"));
-         $$0.put("minecraft:cactus0", bap.a("minecraft:potted_cactus"));
-      });
-      static final Map<String, Dynamic<?>> n = (Map<String, Dynamic<?>>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
-         a($$0, 0, "skeleton", "skull");
-         a($$0, 1, "wither_skeleton", "skull");
-         a($$0, 2, "zombie", "head");
-         a($$0, 3, "player", "head");
-         a($$0, 4, "creeper", "head");
-         a($$0, 5, "dragon", "head");
-      });
-      static final Map<String, Dynamic<?>> o = (Map<String, Dynamic<?>>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
-         a($$0, "oak_door");
-         a($$0, "iron_door");
-         a($$0, "spruce_door");
-         a($$0, "birch_door");
-         a($$0, "jungle_door");
-         a($$0, "acacia_door");
-         a($$0, "dark_oak_door");
-      });
-      static final Map<String, Dynamic<?>> p = (Map<String, Dynamic<?>>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
-         for (int $$1 = 0; $$1 < 26; $$1++) {
-            $$0.put("true" + $$1, bap.a("minecraft:note_block", Map.of("powered", "true", "note", String.valueOf($$1))));
-            $$0.put("false" + $$1, bap.a("minecraft:note_block", Map.of("powered", "false", "note", String.valueOf($$1))));
-         }
-      });
-      private static final Int2ObjectMap<String> q = (Int2ObjectMap<String>)DataFixUtils.make(new Int2ObjectOpenHashMap(), $$0 -> {
-         $$0.put(0, "white");
-         $$0.put(1, "orange");
-         $$0.put(2, "magenta");
-         $$0.put(3, "light_blue");
-         $$0.put(4, "yellow");
-         $$0.put(5, "lime");
-         $$0.put(6, "pink");
-         $$0.put(7, "gray");
-         $$0.put(8, "light_gray");
-         $$0.put(9, "cyan");
-         $$0.put(10, "purple");
-         $$0.put(11, "blue");
-         $$0.put(12, "brown");
-         $$0.put(13, "green");
-         $$0.put(14, "red");
-         $$0.put(15, "black");
-      });
-      static final Map<String, Dynamic<?>> r = (Map<String, Dynamic<?>>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
-         ObjectIterator var1 = q.int2ObjectEntrySet().iterator();
-
-         while (var1.hasNext()) {
-            Entry<String> $$1 = (Entry<String>)var1.next();
-            if (!Objects.equals($$1.getValue(), "red")) {
-               a($$0, $$1.getIntKey(), (String)$$1.getValue());
-            }
-         }
-      });
-      static final Map<String, Dynamic<?>> s = (Map<String, Dynamic<?>>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
-         ObjectIterator var1 = q.int2ObjectEntrySet().iterator();
-
-         while (var1.hasNext()) {
-            Entry<String> $$1 = (Entry<String>)var1.next();
-            if (!Objects.equals($$1.getValue(), "white")) {
-               b($$0, 15 - $$1.getIntKey(), (String)$$1.getValue());
-            }
-         }
-      });
-      static final Dynamic<?> t = bap.a("minecraft:air");
-
-      private c() {
-      }
-
-      private static void a(Map<String, Dynamic<?>> $$0, int $$1, String $$2, String $$3) {
-         $$0.put($$1 + "north", bap.a("minecraft:" + $$2 + "_wall_" + $$3, Map.of("facing", "north")));
-         $$0.put($$1 + "east", bap.a("minecraft:" + $$2 + "_wall_" + $$3, Map.of("facing", "east")));
-         $$0.put($$1 + "south", bap.a("minecraft:" + $$2 + "_wall_" + $$3, Map.of("facing", "south")));
-         $$0.put($$1 + "west", bap.a("minecraft:" + $$2 + "_wall_" + $$3, Map.of("facing", "west")));
-
-         for (int $$4 = 0; $$4 < 16; $$4++) {
-            $$0.put("" + $$1 + $$4, bap.a("minecraft:" + $$2 + "_" + $$3, Map.of("rotation", String.valueOf($$4))));
-         }
-      }
-
-      private static void a(Map<String, Dynamic<?>> $$0, String $$1) {
-         String $$2 = "minecraft:" + $$1;
-         $$0.put(
-            "minecraft:" + $$1 + "eastlowerleftfalsefalse",
-            bap.a($$2, Map.of("facing", "east", "half", "lower", "hinge", "left", "open", "false", "powered", "false"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "eastlowerleftfalsetrue",
-            bap.a($$2, Map.of("facing", "east", "half", "lower", "hinge", "left", "open", "false", "powered", "true"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "eastlowerlefttruefalse",
-            bap.a($$2, Map.of("facing", "east", "half", "lower", "hinge", "left", "open", "true", "powered", "false"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "eastlowerlefttruetrue",
-            bap.a($$2, Map.of("facing", "east", "half", "lower", "hinge", "left", "open", "true", "powered", "true"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "eastlowerrightfalsefalse",
-            bap.a($$2, Map.of("facing", "east", "half", "lower", "hinge", "right", "open", "false", "powered", "false"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "eastlowerrightfalsetrue",
-            bap.a($$2, Map.of("facing", "east", "half", "lower", "hinge", "right", "open", "false", "powered", "true"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "eastlowerrighttruefalse",
-            bap.a($$2, Map.of("facing", "east", "half", "lower", "hinge", "right", "open", "true", "powered", "false"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "eastlowerrighttruetrue",
-            bap.a($$2, Map.of("facing", "east", "half", "lower", "hinge", "right", "open", "true", "powered", "true"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "eastupperleftfalsefalse",
-            bap.a($$2, Map.of("facing", "east", "half", "upper", "hinge", "left", "open", "false", "powered", "false"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "eastupperleftfalsetrue",
-            bap.a($$2, Map.of("facing", "east", "half", "upper", "hinge", "left", "open", "false", "powered", "true"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "eastupperlefttruefalse",
-            bap.a($$2, Map.of("facing", "east", "half", "upper", "hinge", "left", "open", "true", "powered", "false"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "eastupperlefttruetrue",
-            bap.a($$2, Map.of("facing", "east", "half", "upper", "hinge", "left", "open", "true", "powered", "true"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "eastupperrightfalsefalse",
-            bap.a($$2, Map.of("facing", "east", "half", "upper", "hinge", "right", "open", "false", "powered", "false"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "eastupperrightfalsetrue",
-            bap.a($$2, Map.of("facing", "east", "half", "upper", "hinge", "right", "open", "false", "powered", "true"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "eastupperrighttruefalse",
-            bap.a($$2, Map.of("facing", "east", "half", "upper", "hinge", "right", "open", "true", "powered", "false"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "eastupperrighttruetrue",
-            bap.a($$2, Map.of("facing", "east", "half", "upper", "hinge", "right", "open", "true", "powered", "true"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "northlowerleftfalsefalse",
-            bap.a($$2, Map.of("facing", "north", "half", "lower", "hinge", "left", "open", "false", "powered", "false"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "northlowerleftfalsetrue",
-            bap.a($$2, Map.of("facing", "north", "half", "lower", "hinge", "left", "open", "false", "powered", "true"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "northlowerlefttruefalse",
-            bap.a($$2, Map.of("facing", "north", "half", "lower", "hinge", "left", "open", "true", "powered", "false"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "northlowerlefttruetrue",
-            bap.a($$2, Map.of("facing", "north", "half", "lower", "hinge", "left", "open", "true", "powered", "true"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "northlowerrightfalsefalse",
-            bap.a($$2, Map.of("facing", "north", "half", "lower", "hinge", "right", "open", "false", "powered", "false"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "northlowerrightfalsetrue",
-            bap.a($$2, Map.of("facing", "north", "half", "lower", "hinge", "right", "open", "false", "powered", "true"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "northlowerrighttruefalse",
-            bap.a($$2, Map.of("facing", "north", "half", "lower", "hinge", "right", "open", "true", "powered", "false"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "northlowerrighttruetrue",
-            bap.a($$2, Map.of("facing", "north", "half", "lower", "hinge", "right", "open", "true", "powered", "true"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "northupperleftfalsefalse",
-            bap.a($$2, Map.of("facing", "north", "half", "upper", "hinge", "left", "open", "false", "powered", "false"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "northupperleftfalsetrue",
-            bap.a($$2, Map.of("facing", "north", "half", "upper", "hinge", "left", "open", "false", "powered", "true"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "northupperlefttruefalse",
-            bap.a($$2, Map.of("facing", "north", "half", "upper", "hinge", "left", "open", "true", "powered", "false"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "northupperlefttruetrue",
-            bap.a($$2, Map.of("facing", "north", "half", "upper", "hinge", "left", "open", "true", "powered", "true"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "northupperrightfalsefalse",
-            bap.a($$2, Map.of("facing", "north", "half", "upper", "hinge", "right", "open", "false", "powered", "false"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "northupperrightfalsetrue",
-            bap.a($$2, Map.of("facing", "north", "half", "upper", "hinge", "right", "open", "false", "powered", "true"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "northupperrighttruefalse",
-            bap.a($$2, Map.of("facing", "north", "half", "upper", "hinge", "right", "open", "true", "powered", "false"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "northupperrighttruetrue",
-            bap.a($$2, Map.of("facing", "north", "half", "upper", "hinge", "right", "open", "true", "powered", "true"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "southlowerleftfalsefalse",
-            bap.a($$2, Map.of("facing", "south", "half", "lower", "hinge", "left", "open", "false", "powered", "false"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "southlowerleftfalsetrue",
-            bap.a($$2, Map.of("facing", "south", "half", "lower", "hinge", "left", "open", "false", "powered", "true"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "southlowerlefttruefalse",
-            bap.a($$2, Map.of("facing", "south", "half", "lower", "hinge", "left", "open", "true", "powered", "false"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "southlowerlefttruetrue",
-            bap.a($$2, Map.of("facing", "south", "half", "lower", "hinge", "left", "open", "true", "powered", "true"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "southlowerrightfalsefalse",
-            bap.a($$2, Map.of("facing", "south", "half", "lower", "hinge", "right", "open", "false", "powered", "false"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "southlowerrightfalsetrue",
-            bap.a($$2, Map.of("facing", "south", "half", "lower", "hinge", "right", "open", "false", "powered", "true"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "southlowerrighttruefalse",
-            bap.a($$2, Map.of("facing", "south", "half", "lower", "hinge", "right", "open", "true", "powered", "false"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "southlowerrighttruetrue",
-            bap.a($$2, Map.of("facing", "south", "half", "lower", "hinge", "right", "open", "true", "powered", "true"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "southupperleftfalsefalse",
-            bap.a($$2, Map.of("facing", "south", "half", "upper", "hinge", "left", "open", "false", "powered", "false"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "southupperleftfalsetrue",
-            bap.a($$2, Map.of("facing", "south", "half", "upper", "hinge", "left", "open", "false", "powered", "true"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "southupperlefttruefalse",
-            bap.a($$2, Map.of("facing", "south", "half", "upper", "hinge", "left", "open", "true", "powered", "false"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "southupperlefttruetrue",
-            bap.a($$2, Map.of("facing", "south", "half", "upper", "hinge", "left", "open", "true", "powered", "true"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "southupperrightfalsefalse",
-            bap.a($$2, Map.of("facing", "south", "half", "upper", "hinge", "right", "open", "false", "powered", "false"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "southupperrightfalsetrue",
-            bap.a($$2, Map.of("facing", "south", "half", "upper", "hinge", "right", "open", "false", "powered", "true"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "southupperrighttruefalse",
-            bap.a($$2, Map.of("facing", "south", "half", "upper", "hinge", "right", "open", "true", "powered", "false"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "southupperrighttruetrue",
-            bap.a($$2, Map.of("facing", "south", "half", "upper", "hinge", "right", "open", "true", "powered", "true"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "westlowerleftfalsefalse",
-            bap.a($$2, Map.of("facing", "west", "half", "lower", "hinge", "left", "open", "false", "powered", "false"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "westlowerleftfalsetrue",
-            bap.a($$2, Map.of("facing", "west", "half", "lower", "hinge", "left", "open", "false", "powered", "true"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "westlowerlefttruefalse",
-            bap.a($$2, Map.of("facing", "west", "half", "lower", "hinge", "left", "open", "true", "powered", "false"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "westlowerlefttruetrue",
-            bap.a($$2, Map.of("facing", "west", "half", "lower", "hinge", "left", "open", "true", "powered", "true"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "westlowerrightfalsefalse",
-            bap.a($$2, Map.of("facing", "west", "half", "lower", "hinge", "right", "open", "false", "powered", "false"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "westlowerrightfalsetrue",
-            bap.a($$2, Map.of("facing", "west", "half", "lower", "hinge", "right", "open", "false", "powered", "true"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "westlowerrighttruefalse",
-            bap.a($$2, Map.of("facing", "west", "half", "lower", "hinge", "right", "open", "true", "powered", "false"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "westlowerrighttruetrue",
-            bap.a($$2, Map.of("facing", "west", "half", "lower", "hinge", "right", "open", "true", "powered", "true"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "westupperleftfalsefalse",
-            bap.a($$2, Map.of("facing", "west", "half", "upper", "hinge", "left", "open", "false", "powered", "false"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "westupperleftfalsetrue",
-            bap.a($$2, Map.of("facing", "west", "half", "upper", "hinge", "left", "open", "false", "powered", "true"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "westupperlefttruefalse",
-            bap.a($$2, Map.of("facing", "west", "half", "upper", "hinge", "left", "open", "true", "powered", "false"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "westupperlefttruetrue",
-            bap.a($$2, Map.of("facing", "west", "half", "upper", "hinge", "left", "open", "true", "powered", "true"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "westupperrightfalsefalse",
-            bap.a($$2, Map.of("facing", "west", "half", "upper", "hinge", "right", "open", "false", "powered", "false"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "westupperrightfalsetrue",
-            bap.a($$2, Map.of("facing", "west", "half", "upper", "hinge", "right", "open", "false", "powered", "true"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "westupperrighttruefalse",
-            bap.a($$2, Map.of("facing", "west", "half", "upper", "hinge", "right", "open", "true", "powered", "false"))
-         );
-         $$0.put(
-            "minecraft:" + $$1 + "westupperrighttruetrue",
-            bap.a($$2, Map.of("facing", "west", "half", "upper", "hinge", "right", "open", "true", "powered", "true"))
-         );
-      }
-
-      private static void a(Map<String, Dynamic<?>> $$0, int $$1, String $$2) {
-         $$0.put("southfalsefoot" + $$1, bap.a("minecraft:" + $$2 + "_bed", Map.of("facing", "south", "occupied", "false", "part", "foot")));
-         $$0.put("westfalsefoot" + $$1, bap.a("minecraft:" + $$2 + "_bed", Map.of("facing", "west", "occupied", "false", "part", "foot")));
-         $$0.put("northfalsefoot" + $$1, bap.a("minecraft:" + $$2 + "_bed", Map.of("facing", "north", "occupied", "false", "part", "foot")));
-         $$0.put("eastfalsefoot" + $$1, bap.a("minecraft:" + $$2 + "_bed", Map.of("facing", "east", "occupied", "false", "part", "foot")));
-         $$0.put("southfalsehead" + $$1, bap.a("minecraft:" + $$2 + "_bed", Map.of("facing", "south", "occupied", "false", "part", "head")));
-         $$0.put("westfalsehead" + $$1, bap.a("minecraft:" + $$2 + "_bed", Map.of("facing", "west", "occupied", "false", "part", "head")));
-         $$0.put("northfalsehead" + $$1, bap.a("minecraft:" + $$2 + "_bed", Map.of("facing", "north", "occupied", "false", "part", "head")));
-         $$0.put("eastfalsehead" + $$1, bap.a("minecraft:" + $$2 + "_bed", Map.of("facing", "east", "occupied", "false", "part", "head")));
-         $$0.put("southtruehead" + $$1, bap.a("minecraft:" + $$2 + "_bed", Map.of("facing", "south", "occupied", "true", "part", "head")));
-         $$0.put("westtruehead" + $$1, bap.a("minecraft:" + $$2 + "_bed", Map.of("facing", "west", "occupied", "true", "part", "head")));
-         $$0.put("northtruehead" + $$1, bap.a("minecraft:" + $$2 + "_bed", Map.of("facing", "north", "occupied", "true", "part", "head")));
-         $$0.put("easttruehead" + $$1, bap.a("minecraft:" + $$2 + "_bed", Map.of("facing", "east", "occupied", "true", "part", "head")));
-      }
-
-      private static void b(Map<String, Dynamic<?>> $$0, int $$1, String $$2) {
-         for (int $$3 = 0; $$3 < 16; $$3++) {
-            $$0.put($$3 + "_" + $$1, bap.a("minecraft:" + $$2 + "_banner", Map.of("rotation", String.valueOf($$3))));
-         }
-
-         $$0.put("north_" + $$1, bap.a("minecraft:" + $$2 + "_wall_banner", Map.of("facing", "north")));
-         $$0.put("south_" + $$1, bap.a("minecraft:" + $$2 + "_wall_banner", Map.of("facing", "south")));
-         $$0.put("west_" + $$1, bap.a("minecraft:" + $$2 + "_wall_banner", Map.of("facing", "west")));
-         $$0.put("east_" + $$1, bap.a("minecraft:" + $$2 + "_wall_banner", Map.of("facing", "east")));
-      }
-
-      static {
-         b.set(2);
-         b.set(3);
-         b.set(110);
-         b.set(140);
-         b.set(144);
-         b.set(25);
-         b.set(86);
-         b.set(26);
-         b.set(176);
-         b.set(177);
-         b.set(175);
-         b.set(64);
-         b.set(71);
-         b.set(193);
-         b.set(194);
-         b.set(195);
-         b.set(196);
-         b.set(197);
-         a.set(54);
-         a.set(146);
-         a.set(25);
-         a.set(26);
-         a.set(51);
-         a.set(53);
-         a.set(67);
-         a.set(108);
-         a.set(109);
-         a.set(114);
-         a.set(128);
-         a.set(134);
-         a.set(135);
-         a.set(136);
-         a.set(156);
-         a.set(163);
-         a.set(164);
-         a.set(180);
-         a.set(203);
-         a.set(55);
-         a.set(85);
-         a.set(113);
-         a.set(188);
-         a.set(189);
-         a.set(190);
-         a.set(191);
-         a.set(192);
-         a.set(93);
-         a.set(94);
-         a.set(101);
-         a.set(102);
-         a.set(160);
-         a.set(106);
-         a.set(107);
-         a.set(183);
-         a.set(184);
-         a.set(185);
-         a.set(186);
-         a.set(187);
-         a.set(132);
-         a.set(139);
-         a.set(199);
-      }
-   }
-
-   static class d {
-      private final axw<Dynamic<?>> b = axw.c(32);
-      private final List<Dynamic<?>> c;
-      private final Dynamic<?> d;
-      private final boolean e;
-      final Int2ObjectMap<IntList> f = new Int2ObjectLinkedOpenHashMap();
-      final IntList g = new IntArrayList();
-      public final int a;
-      private final Set<Dynamic<?>> h = Sets.newIdentityHashSet();
-      private final int[] i = new int[4096];
-
-      public d(Dynamic<?> $$0) {
-         this.c = Lists.newArrayList();
-         this.d = $$0;
-         this.a = $$0.get("Y").asInt(0);
-         this.e = $$0.get("Blocks").result().isPresent();
-      }
-
-      public Dynamic<?> a(int $$0) {
-         if ($$0 >= 0 && $$0 <= 4095) {
-            Dynamic<?> $$1 = this.b.a(this.i[$$0]);
-            return $$1 == null ? bcp.c.t : $$1;
-         } else {
-            return bcp.c.t;
-         }
-      }
-
-      public void a(int $$0, Dynamic<?> $$1) {
-         if (this.h.add($$1)) {
-            this.c.add("%%FILTER_ME%%".equals(bcp.a($$1)) ? bcp.c.t : $$1);
-         }
-
-         this.i[$$0] = bcp.a(this.b, $$1);
-      }
-
-      public int b(int $$0) {
-         if (!this.e) {
+   private static Dynamic<?> a(Dynamic<?> $$0, boolean $$1, boolean $$2, boolean $$3, Supplier<bcs.a> $$4) {
+      $$0 = $$0.remove("Biomes");
+      if (!$$1) {
+         return a($$0, 16, 0);
+      } else if ($$2) {
+         return a($$0, 24, 0);
+      } else {
+         $$0 = b($$0);
+         $$0 = a($$0, "LiquidsToBeTicked");
+         $$0 = a($$0, "PostProcessing");
+         $$0 = a($$0, "ToBeTicked");
+         $$0 = a($$0, 24, 4);
+         $$0 = $$0.update("UpgradeData", bcp::a);
+         if (!$$3) {
             return $$0;
          } else {
-            ByteBuffer $$1 = (ByteBuffer)this.d.get("Blocks").asByteBufferOpt().result().get();
-            bcp.a $$2 = this.d.get("Data").asByteBufferOpt().map($$0x -> new bcp.a(DataFixUtils.toArray($$0x))).result().orElseGet(bcp.a::new);
-            bcp.a $$3 = this.d.get("Add").asByteBufferOpt().map($$0x -> new bcp.a(DataFixUtils.toArray($$0x))).result().orElseGet(bcp.a::new);
-            this.h.add(bcp.c.t);
-            bcp.a(this.b, bcp.c.t);
-            this.c.add(bcp.c.t);
+            Optional<? extends Dynamic<?>> $$5 = $$0.get("Status").result();
+            if ($$5.isPresent()) {
+               Dynamic<?> $$6 = (Dynamic<?>)$$5.get();
+               String $$7 = $$6.asString("");
+               if (!"empty".equals($$7)) {
+                  $$0 = $$0.set("blending_data", $$0.createMap(ImmutableMap.of($$0.createString("old_noise"), $$0.createBoolean(n.contains($$7)))));
+                  bcs.a $$8 = $$4.get();
+                  if ($$8 != null) {
+                     BitSet $$9 = new BitSet(256);
+                     boolean $$10 = $$7.equals("noise");
 
-            for (int $$4 = 0; $$4 < 4096; $$4++) {
-               int $$5 = $$4 & 15;
-               int $$6 = $$4 >> 8 & 15;
-               int $$7 = $$4 >> 4 & 15;
-               int $$8 = $$3.a($$5, $$6, $$7) << 12 | ($$1.get($$4) & 255) << 4 | $$2.a($$5, $$6, $$7);
-               if (bcp.c.b.get($$8 >> 4)) {
-                  this.a($$8 >> 4, $$4);
-               }
-
-               if (bcp.c.a.get($$8 >> 4)) {
-                  int $$9 = bcp.a($$5 == 0, $$5 == 15, $$7 == 0, $$7 == 15);
-                  if ($$9 == 0) {
-                     this.g.add($$4);
-                  } else {
-                     $$0 |= $$9;
-                  }
-               }
-
-               this.a($$4, bcb.b($$8));
-            }
-
-            return $$0;
-         }
-      }
-
-      private void a(int $$0, int $$1) {
-         IntList $$2 = (IntList)this.f.get($$0);
-         if ($$2 == null) {
-            $$2 = new IntArrayList();
-            this.f.put($$0, $$2);
-         }
-
-         $$2.add($$1);
-      }
-
-      public Dynamic<?> a() {
-         Dynamic<?> $$0 = this.d;
-         if (!this.e) {
-            return $$0;
-         } else {
-            $$0 = $$0.set("Palette", $$0.createList(this.c.stream()));
-            int $$1 = Math.max(4, DataFixUtils.ceillog2(this.h.size()));
-            bar $$2 = new bar($$1, 4096);
-
-            for (int $$3 = 0; $$3 < this.i.length; $$3++) {
-               $$2.a($$3, this.i[$$3]);
-            }
-
-            $$0 = $$0.set("BlockStates", $$0.createLongList(Arrays.stream($$2.a())));
-            $$0 = $$0.remove("Blocks");
-            $$0 = $$0.remove("Data");
-            return $$0.remove("Add");
-         }
-      }
-   }
-
-   static final class e {
-      private int a;
-      private final bcp.d[] b = new bcp.d[16];
-      private final Dynamic<?> c;
-      private final int d;
-      private final int e;
-      private final Int2ObjectMap<Dynamic<?>> f = new Int2ObjectLinkedOpenHashMap(16);
-
-      public e(Dynamic<?> $$0) {
-         this.c = $$0;
-         this.d = $$0.get("xPos").asInt(0) << 4;
-         this.e = $$0.get("zPos").asInt(0) << 4;
-         $$0.get("TileEntities").asStreamOpt().ifSuccess($$0x -> $$0x.forEach($$0xx -> {
-               int $$1x = $$0xx.get("x").asInt(0) - this.d & 15;
-               int $$2x = $$0xx.get("y").asInt(0);
-               int $$3x = $$0xx.get("z").asInt(0) - this.e & 15;
-               int $$4x = $$2x << 8 | $$3x << 4 | $$1x;
-               if (this.f.put($$4x, $$0xx) != null) {
-                  bcp.i.warn("In chunk: {}x{} found a duplicate block entity at position: [{}, {}, {}]", new Object[]{this.d, this.e, $$1x, $$2x, $$3x});
-               }
-            }));
-         boolean $$1 = $$0.get("convertedFromAlphaFormat").asBoolean(false);
-         $$0.get("Sections").asStreamOpt().ifSuccess($$0x -> $$0x.forEach($$0xx -> {
-               bcp.d $$1x = new bcp.d($$0xx);
-               this.a = $$1x.b(this.a);
-               this.b[$$1x.a] = $$1x;
-            }));
-
-         for (bcp.d $$2 : this.b) {
-            if ($$2 != null) {
-               ObjectIterator var7 = $$2.f.int2ObjectEntrySet().iterator();
-
-               while (var7.hasNext()) {
-                  Entry<IntList> $$3 = (Entry<IntList>)var7.next();
-                  int $$4 = $$2.a << 12;
-                  switch ($$3.getIntKey()) {
-                     case 2:
-                        IntListIterator var30 = ((IntList)$$3.getValue()).iterator();
-
-                        while (var30.hasNext()) {
-                           int $$5 = (Integer)var30.next();
-                           $$5 |= $$4;
-                           Dynamic<?> $$6 = this.a($$5);
-                           if ("minecraft:grass_block".equals(bcp.a($$6))) {
-                              String $$7 = bcp.a(this.a(a($$5, bcp.b.b)));
-                              if ("minecraft:snow".equals($$7) || "minecraft:snow_layer".equals($$7)) {
-                                 this.a($$5, bcp.c.e);
-                              }
+                     for (int $$11 = 0; $$11 < 16; $$11++) {
+                        for (int $$12 = 0; $$12 < 16; $$12++) {
+                           Dynamic<?> $$13 = $$8.a($$12, 0, $$11);
+                           boolean $$14 = $$13 != null && "minecraft:bedrock".equals($$13.get("Name").asString(""));
+                           boolean $$15 = $$13 != null && "minecraft:air".equals($$13.get("Name").asString(""));
+                           if ($$15) {
+                              $$9.set($$11 * 16 + $$12);
                            }
-                        }
-                        break;
-                     case 3:
-                        IntListIterator var29 = ((IntList)$$3.getValue()).iterator();
 
-                        while (var29.hasNext()) {
-                           int $$8 = (Integer)var29.next();
-                           $$8 |= $$4;
-                           Dynamic<?> $$9 = this.a($$8);
-                           if ("minecraft:podzol".equals(bcp.a($$9))) {
-                              String $$10 = bcp.a(this.a(a($$8, bcp.b.b)));
-                              if ("minecraft:snow".equals($$10) || "minecraft:snow_layer".equals($$10)) {
-                                 this.a($$8, bcp.c.d);
-                              }
-                           }
+                           $$10 |= $$14;
                         }
-                        break;
-                     case 25:
-                        IntListIterator var28 = ((IntList)$$3.getValue()).iterator();
+                     }
 
-                        while (var28.hasNext()) {
-                           int $$14 = (Integer)var28.next();
-                           $$14 |= $$4;
-                           Dynamic<?> $$15 = this.c($$14);
-                           if ($$15 != null) {
-                              String $$16 = Boolean.toString($$15.get("powered").asBoolean(false)) + (byte)Math.min(Math.max($$15.get("note").asInt(0), 0), 24);
-                              this.a($$14, bcp.c.p.getOrDefault($$16, bcp.c.p.get("false0")));
-                           }
-                        }
-                        break;
-                     case 26:
-                        IntListIterator var27 = ((IntList)$$3.getValue()).iterator();
+                     if ($$10 && $$9.cardinality() != $$9.size()) {
+                        Dynamic<?> $$16 = "full".equals($$7) ? $$0.createString("heightmaps") : $$6;
+                        $$0 = $$0.set(
+                           "below_zero_retrogen",
+                           $$0.createMap(
+                              ImmutableMap.of(
+                                 $$0.createString("target_status"),
+                                 $$16,
+                                 $$0.createString("missing_bedrock"),
+                                 $$0.createLongList(LongStream.of($$9.toLongArray()))
+                              )
+                           )
+                        );
+                        $$0 = $$0.set("Status", $$0.createString("empty"));
+                     }
 
-                        while (var27.hasNext()) {
-                           int $$17 = (Integer)var27.next();
-                           $$17 |= $$4;
-                           Dynamic<?> $$18 = this.b($$17);
-                           Dynamic<?> $$19 = this.a($$17);
-                           if ($$18 != null) {
-                              int $$20 = $$18.get("color").asInt(0);
-                              if ($$20 != 14 && $$20 >= 0 && $$20 < 16) {
-                                 String $$21 = bcp.a($$19, "facing") + bcp.a($$19, "occupied") + bcp.a($$19, "part") + $$20;
-                                 if (bcp.c.r.containsKey($$21)) {
-                                    this.a($$17, bcp.c.r.get($$21));
-                                 }
-                              }
-                           }
-                        }
-                        break;
-                     case 64:
-                     case 71:
-                     case 193:
-                     case 194:
-                     case 195:
-                     case 196:
-                     case 197:
-                        IntListIterator var26 = ((IntList)$$3.getValue()).iterator();
-
-                        while (var26.hasNext()) {
-                           int $$39 = (Integer)var26.next();
-                           $$39 |= $$4;
-                           Dynamic<?> $$40 = this.a($$39);
-                           if (bcp.a($$40).endsWith("_door")) {
-                              Dynamic<?> $$41 = this.a($$39);
-                              if ("lower".equals(bcp.a($$41, "half"))) {
-                                 int $$42 = a($$39, bcp.b.b);
-                                 Dynamic<?> $$43 = this.a($$42);
-                                 String $$44 = bcp.a($$41);
-                                 if ($$44.equals(bcp.a($$43))) {
-                                    String $$45 = bcp.a($$41, "facing");
-                                    String $$46 = bcp.a($$41, "open");
-                                    String $$47 = $$1 ? "left" : bcp.a($$43, "hinge");
-                                    String $$48 = $$1 ? "false" : bcp.a($$43, "powered");
-                                    this.a($$39, bcp.c.o.get($$44 + $$45 + "lower" + $$47 + $$46 + $$48));
-                                    this.a($$42, bcp.c.o.get($$44 + $$45 + "upper" + $$47 + $$46 + $$48));
-                                 }
-                              }
-                           }
-                        }
-                        break;
-                     case 86:
-                        IntListIterator var25 = ((IntList)$$3.getValue()).iterator();
-
-                        while (var25.hasNext()) {
-                           int $$27 = (Integer)var25.next();
-                           $$27 |= $$4;
-                           Dynamic<?> $$28 = this.a($$27);
-                           if ("minecraft:carved_pumpkin".equals(bcp.a($$28))) {
-                              String $$29 = bcp.a(this.a(a($$27, bcp.b.a)));
-                              if ("minecraft:grass_block".equals($$29) || "minecraft:dirt".equals($$29)) {
-                                 this.a($$27, bcp.c.c);
-                              }
-                           }
-                        }
-                        break;
-                     case 110:
-                        IntListIterator var24 = ((IntList)$$3.getValue()).iterator();
-
-                        while (var24.hasNext()) {
-                           int $$11 = (Integer)var24.next();
-                           $$11 |= $$4;
-                           Dynamic<?> $$12 = this.a($$11);
-                           if ("minecraft:mycelium".equals(bcp.a($$12))) {
-                              String $$13 = bcp.a(this.a(a($$11, bcp.b.b)));
-                              if ("minecraft:snow".equals($$13) || "minecraft:snow_layer".equals($$13)) {
-                                 this.a($$11, bcp.c.f);
-                              }
-                           }
-                        }
-                        break;
-                     case 140:
-                        IntListIterator var23 = ((IntList)$$3.getValue()).iterator();
-
-                        while (var23.hasNext()) {
-                           int $$30 = (Integer)var23.next();
-                           $$30 |= $$4;
-                           Dynamic<?> $$31 = this.c($$30);
-                           if ($$31 != null) {
-                              String $$32 = $$31.get("Item").asString("") + $$31.get("Data").asInt(0);
-                              this.a($$30, bcp.c.m.getOrDefault($$32, bcp.c.m.get("minecraft:air0")));
-                           }
-                        }
-                        break;
-                     case 144:
-                        IntListIterator var22 = ((IntList)$$3.getValue()).iterator();
-
-                        while (var22.hasNext()) {
-                           int $$33 = (Integer)var22.next();
-                           $$33 |= $$4;
-                           Dynamic<?> $$34 = this.b($$33);
-                           if ($$34 != null) {
-                              String $$35 = String.valueOf($$34.get("SkullType").asInt(0));
-                              String $$36 = bcp.a(this.a($$33), "facing");
-                              String $$38;
-                              if (!"up".equals($$36) && !"down".equals($$36)) {
-                                 $$38 = $$35 + $$36;
-                              } else {
-                                 $$38 = $$35 + $$34.get("Rot").asInt(0);
-                              }
-
-                              $$34.remove("SkullType");
-                              $$34.remove("facing");
-                              $$34.remove("Rot");
-                              this.a($$33, bcp.c.n.getOrDefault($$38, bcp.c.n.get("0north")));
-                           }
-                        }
-                        break;
-                     case 175:
-                        IntListIterator var21 = ((IntList)$$3.getValue()).iterator();
-
-                        while (var21.hasNext()) {
-                           int $$49 = (Integer)var21.next();
-                           $$49 |= $$4;
-                           Dynamic<?> $$50 = this.a($$49);
-                           if ("upper".equals(bcp.a($$50, "half"))) {
-                              Dynamic<?> $$51 = this.a(a($$49, bcp.b.a));
-                              String $$52 = bcp.a($$51);
-                              switch ($$52) {
-                                 case "minecraft:sunflower":
-                                    this.a($$49, bcp.c.g);
-                                    break;
-                                 case "minecraft:lilac":
-                                    this.a($$49, bcp.c.h);
-                                    break;
-                                 case "minecraft:tall_grass":
-                                    this.a($$49, bcp.c.i);
-                                    break;
-                                 case "minecraft:large_fern":
-                                    this.a($$49, bcp.c.j);
-                                    break;
-                                 case "minecraft:rose_bush":
-                                    this.a($$49, bcp.c.k);
-                                    break;
-                                 case "minecraft:peony":
-                                    this.a($$49, bcp.c.l);
-                              }
-                           }
-                        }
-                        break;
-                     case 176:
-                     case 177:
-                        IntListIterator var10 = ((IntList)$$3.getValue()).iterator();
-
-                        while (var10.hasNext()) {
-                           int $$22 = (Integer)var10.next();
-                           $$22 |= $$4;
-                           Dynamic<?> $$23 = this.b($$22);
-                           Dynamic<?> $$24 = this.a($$22);
-                           if ($$23 != null) {
-                              int $$25 = $$23.get("Base").asInt(0);
-                              if ($$25 != 15 && $$25 >= 0 && $$25 < 16) {
-                                 String $$26 = bcp.a($$24, $$3.getIntKey() == 176 ? "rotation" : "facing") + "_" + $$25;
-                                 if (bcp.c.s.containsKey($$26)) {
-                                    this.a($$22, bcp.c.s.get($$26));
-                                 }
-                              }
-                           }
-                        }
+                     $$0 = $$0.set("isLightOn", $$0.createBoolean(false));
                   }
                }
             }
+
+            return $$0;
+         }
+      }
+   }
+
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.update("Indices", $$0x -> {
+         Map<Dynamic<?>, Dynamic<?>> $$1 = new HashMap<>();
+         $$0x.getMapValues().ifSuccess($$1x -> $$1x.forEach(($$1xx, $$2) -> {
+               try {
+                  $$1xx.asString().result().map(Integer::parseInt).ifPresent($$3 -> {
+                     int $$4 = $$3 - -4;
+                     $$1.put($$1xx.createString(Integer.toString($$4)), (Dynamic<?>)$$2);
+                  });
+               } catch (NumberFormatException var4) {
+               }
+            }));
+         return $$0x.createMap($$1);
+      });
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0, int $$1, int $$2) {
+      Dynamic<?> $$3 = $$0.get("CarvingMasks").orElseEmptyMap();
+      $$3 = $$3.updateMapValues($$3x -> {
+         long[] $$4 = BitSet.valueOf(((Dynamic)$$3x.getSecond()).asByteBuffer().array()).toLongArray();
+         long[] $$5 = new long[64 * $$1];
+         System.arraycopy($$4, 0, $$5, 64 * $$2, $$4.length);
+         return Pair.of((Dynamic)$$3x.getFirst(), $$0.createLongList(LongStream.of($$5)));
+      });
+      return $$0.set("CarvingMasks", $$3);
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0, String $$1) {
+      List<Dynamic<?>> $$2 = $$0.get($$1).orElseEmptyList().asStream().collect(Collectors.toCollection(ArrayList::new));
+      if ($$2.size() == 24) {
+         return $$0;
+      } else {
+         Dynamic<?> $$3 = $$0.emptyList();
+
+         for (int $$4 = 0; $$4 < 4; $$4++) {
+            $$2.add(0, $$3);
+            $$2.add($$3);
+         }
+
+         return $$0.set($$1, $$0.createList($$2.stream()));
+      }
+   }
+
+   private static Dynamic<?> b(Dynamic<?> $$0) {
+      return $$0.update("Heightmaps", $$0x -> {
+         for (String $$1 : l) {
+            $$0x = $$0x.update($$1, bcp::c);
+         }
+
+         return $$0x;
+      });
+   }
+
+   private static Dynamic<?> c(Dynamic<?> $$0) {
+      return $$0.createLongList($$0.asLongStream().map($$0x -> {
+         long $$1 = 0L;
+
+         for (int $$2 = 0; $$2 + 9 <= 64; $$2 += 9) {
+            long $$3 = $$0x >> $$2 & 511L;
+            long $$4;
+            if ($$3 == 0L) {
+               $$4 = 0L;
+            } else {
+               $$4 = Math.min($$3 + 64L, 511L);
+            }
+
+            $$1 |= $$4 << $$2;
+         }
+
+         return $$1;
+      }));
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0, Int2IntFunction $$1) {
+      Int2IntMap $$2 = new Int2IntLinkedOpenHashMap();
+
+      for (int $$3 = 0; $$3 < 64; $$3++) {
+         int $$4 = $$1.applyAsInt($$3);
+         if (!$$2.containsKey($$4)) {
+            $$2.put($$4, $$2.size());
          }
       }
 
-      @Nullable
-      private Dynamic<?> b(int $$0) {
-         return (Dynamic<?>)this.f.get($$0);
-      }
+      Dynamic<?> $$5 = $$0.createList($$2.keySet().stream().map($$1x -> $$0.createString((String)s.getOrDefault($$1x, "minecraft:plains"))));
+      int $$6 = a($$2.size());
+      if ($$6 == 0) {
+         return d($$5);
+      } else {
+         int $$7 = 64 / $$6;
+         int $$8 = (64 + $$7 - 1) / $$7;
+         long[] $$9 = new long[$$8];
+         int $$10 = 0;
+         int $$11 = 0;
 
-      @Nullable
-      private Dynamic<?> c(int $$0) {
-         return (Dynamic<?>)this.f.remove($$0);
-      }
-
-      public static int a(int $$0, bcp.b $$1) {
-         int var10000;
-         switch ($$1.b()) {
-            case a:
-               int $$2 = ($$0 & 15) + $$1.a().a();
-               var10000 = $$2 >= 0 && $$2 <= 15 ? $$0 & -16 | $$2 : -1;
-               break;
-            case b:
-               int $$3 = ($$0 >> 8) + $$1.a().a();
-               var10000 = $$3 >= 0 && $$3 <= 255 ? $$0 & 0xFF | $$3 << 8 : -1;
-               break;
-            case c:
-               int $$4 = ($$0 >> 4 & 15) + $$1.a().a();
-               var10000 = $$4 >= 0 && $$4 <= 15 ? $$0 & -241 | $$4 << 4 : -1;
-               break;
-            default:
-               throw new MatchException(null, null);
-         }
-
-         return var10000;
-      }
-
-      private void a(int $$0, Dynamic<?> $$1) {
-         if ($$0 >= 0 && $$0 <= 65535) {
-            bcp.d $$2 = this.d($$0);
-            if ($$2 != null) {
-               $$2.a($$0 & 4095, $$1);
+         for (int $$12 = 0; $$12 < 64; $$12++) {
+            int $$13 = $$1.applyAsInt($$12);
+            $$9[$$10] |= (long)$$2.get($$13) << $$11;
+            $$11 += $$6;
+            if ($$11 + $$6 > 64) {
+               $$10++;
+               $$11 = 0;
             }
          }
-      }
 
-      @Nullable
-      private bcp.d d(int $$0) {
-         int $$1 = $$0 >> 12;
-         return $$1 < this.b.length ? this.b[$$1] : null;
+         Dynamic<?> $$14 = $$0.createLongList(Arrays.stream($$9));
+         return a($$5, $$14);
       }
+   }
 
-      public Dynamic<?> a(int $$0) {
-         if ($$0 >= 0 && $$0 <= 65535) {
-            bcp.d $$1 = this.d($$0);
-            return $$1 == null ? bcp.c.t : $$1.a($$0 & 4095);
-         } else {
-            return bcp.c.t;
+   private static Dynamic<?> d(Dynamic<?> $$0) {
+      return $$0.createMap(ImmutableMap.of($$0.createString("palette"), $$0));
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0, Dynamic<?> $$1) {
+      return $$0.createMap(ImmutableMap.of($$0.createString("palette"), $$0, $$0.createString("data"), $$1));
+   }
+
+   private static Dynamic<?> b(Dynamic<?> $$0, Dynamic<?> $$1) {
+      List<Dynamic<?>> $$2 = $$0.asStream().collect(Collectors.toCollection(ArrayList::new));
+      if ($$2.size() == 1) {
+         return d($$0);
+      } else {
+         $$0 = a($$0, $$1, $$2);
+         return a($$0, $$1);
+      }
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0, Dynamic<?> $$1, List<Dynamic<?>> $$2) {
+      long $$3 = $$1.asLongStream().count() * 64L;
+      long $$4 = $$3 / 4096L;
+      int $$5 = $$2.size();
+      int $$6 = a($$5);
+      if ($$4 <= (long)$$6) {
+         return $$0;
+      } else {
+         Dynamic<?> $$7 = $$0.createMap(ImmutableMap.of($$0.createString("Name"), $$0.createString("minecraft:air")));
+         int $$8 = (1 << (int)($$4 - 1L)) + 1;
+         int $$9 = $$8 - $$5;
+
+         for (int $$10 = 0; $$10 < $$9; $$10++) {
+            $$2.add($$7);
          }
+
+         return $$0.createList($$2.stream());
       }
+   }
 
-      public Dynamic<?> a() {
-         Dynamic<?> $$0 = this.c;
-         if (this.f.isEmpty()) {
-            $$0 = $$0.remove("TileEntities");
-         } else {
-            $$0 = $$0.set("TileEntities", $$0.createList(this.f.values().stream()));
-         }
+   public static int a(int $$0) {
+      return $$0 == 0 ? 0 : (int)Math.ceil(Math.log((double)$$0) / Math.log(2.0));
+   }
 
-         Dynamic<?> $$1 = $$0.emptyMap();
-         List<Dynamic<?>> $$2 = Lists.newArrayList();
-
-         for (bcp.d $$3 : this.b) {
-            if ($$3 != null) {
-               $$2.add($$3.a());
-               $$1 = $$1.set(String.valueOf($$3.a), $$1.createIntList(Arrays.stream($$3.g.toIntArray())));
-            }
-         }
-
-         Dynamic<?> $$4 = $$0.emptyMap();
-         $$4 = $$4.set("Sides", $$4.createByte((byte)this.a));
-         $$4 = $$4.set("Indices", $$1);
-         return $$0.set("UpgradeData", $$4).set("Sections", $$4.createList($$2.stream()));
-      }
+   static {
+      s.put(0, "minecraft:ocean");
+      s.put(1, "minecraft:plains");
+      s.put(2, "minecraft:desert");
+      s.put(3, "minecraft:mountains");
+      s.put(4, "minecraft:forest");
+      s.put(5, "minecraft:taiga");
+      s.put(6, "minecraft:swamp");
+      s.put(7, "minecraft:river");
+      s.put(8, "minecraft:nether_wastes");
+      s.put(9, "minecraft:the_end");
+      s.put(10, "minecraft:frozen_ocean");
+      s.put(11, "minecraft:frozen_river");
+      s.put(12, "minecraft:snowy_tundra");
+      s.put(13, "minecraft:snowy_mountains");
+      s.put(14, "minecraft:mushroom_fields");
+      s.put(15, "minecraft:mushroom_field_shore");
+      s.put(16, "minecraft:beach");
+      s.put(17, "minecraft:desert_hills");
+      s.put(18, "minecraft:wooded_hills");
+      s.put(19, "minecraft:taiga_hills");
+      s.put(20, "minecraft:mountain_edge");
+      s.put(21, "minecraft:jungle");
+      s.put(22, "minecraft:jungle_hills");
+      s.put(23, "minecraft:jungle_edge");
+      s.put(24, "minecraft:deep_ocean");
+      s.put(25, "minecraft:stone_shore");
+      s.put(26, "minecraft:snowy_beach");
+      s.put(27, "minecraft:birch_forest");
+      s.put(28, "minecraft:birch_forest_hills");
+      s.put(29, "minecraft:dark_forest");
+      s.put(30, "minecraft:snowy_taiga");
+      s.put(31, "minecraft:snowy_taiga_hills");
+      s.put(32, "minecraft:giant_tree_taiga");
+      s.put(33, "minecraft:giant_tree_taiga_hills");
+      s.put(34, "minecraft:wooded_mountains");
+      s.put(35, "minecraft:savanna");
+      s.put(36, "minecraft:savanna_plateau");
+      s.put(37, "minecraft:badlands");
+      s.put(38, "minecraft:wooded_badlands_plateau");
+      s.put(39, "minecraft:badlands_plateau");
+      s.put(40, "minecraft:small_end_islands");
+      s.put(41, "minecraft:end_midlands");
+      s.put(42, "minecraft:end_highlands");
+      s.put(43, "minecraft:end_barrens");
+      s.put(44, "minecraft:warm_ocean");
+      s.put(45, "minecraft:lukewarm_ocean");
+      s.put(46, "minecraft:cold_ocean");
+      s.put(47, "minecraft:deep_warm_ocean");
+      s.put(48, "minecraft:deep_lukewarm_ocean");
+      s.put(49, "minecraft:deep_cold_ocean");
+      s.put(50, "minecraft:deep_frozen_ocean");
+      s.put(127, "minecraft:the_void");
+      s.put(129, "minecraft:sunflower_plains");
+      s.put(130, "minecraft:desert_lakes");
+      s.put(131, "minecraft:gravelly_mountains");
+      s.put(132, "minecraft:flower_forest");
+      s.put(133, "minecraft:taiga_mountains");
+      s.put(134, "minecraft:swamp_hills");
+      s.put(140, "minecraft:ice_spikes");
+      s.put(149, "minecraft:modified_jungle");
+      s.put(151, "minecraft:modified_jungle_edge");
+      s.put(155, "minecraft:tall_birch_forest");
+      s.put(156, "minecraft:tall_birch_hills");
+      s.put(157, "minecraft:dark_forest_hills");
+      s.put(158, "minecraft:snowy_taiga_mountains");
+      s.put(160, "minecraft:giant_spruce_taiga");
+      s.put(161, "minecraft:giant_spruce_taiga_hills");
+      s.put(162, "minecraft:modified_gravelly_mountains");
+      s.put(163, "minecraft:shattered_savanna");
+      s.put(164, "minecraft:shattered_savanna_plateau");
+      s.put(165, "minecraft:eroded_badlands");
+      s.put(166, "minecraft:modified_wooded_badlands_plateau");
+      s.put(167, "minecraft:modified_badlands_plateau");
+      s.put(168, "minecraft:bamboo_jungle");
+      s.put(169, "minecraft:bamboo_jungle_hills");
+      s.put(170, "minecraft:soul_sand_valley");
+      s.put(171, "minecraft:crimson_forest");
+      s.put(172, "minecraft:warped_forest");
+      s.put(173, "minecraft:basalt_deltas");
+      s.put(174, "minecraft:dripstone_caves");
+      s.put(175, "minecraft:lush_caves");
+      s.put(177, "minecraft:meadow");
+      s.put(178, "minecraft:grove");
+      s.put(179, "minecraft:snowy_slopes");
+      s.put(180, "minecraft:snowcapped_peaks");
+      s.put(181, "minecraft:lofty_peaks");
+      s.put(182, "minecraft:stony_peaks");
    }
 }

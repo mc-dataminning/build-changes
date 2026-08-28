@@ -1,33 +1,67 @@
-import java.util.function.IntSupplier;
-import java.util.function.LongSupplier;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class bon {
-   private final LongSupplier a;
-   private final IntSupplier b;
-   private bor c = boq.a;
+public abstract class bon<S> {
+   private final Map<bon.b<?>, bon.a<?>> a = new HashMap<>();
+   private final bok<S> b;
+   private final bol<S> c;
 
-   public bon(LongSupplier $$0, IntSupplier $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   protected bon(bok<S> $$0, bol<S> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public boolean a() {
-      return this.c != boq.a;
-   }
-
-   public void b() {
-      this.c = boq.a;
-   }
-
-   public void c() {
-      this.c = new bom(this.a, this.b, true);
-   }
-
-   public bou d() {
+   public bol<S> a() {
       return this.c;
    }
 
-   public bos e() {
-      return this.c.d();
+   public <T> Optional<T> a(boi<T> $$0) {
+      Optional<T> $$1 = this.b($$0);
+      if ($$1.isPresent()) {
+         this.c.a(this.c());
+      }
+
+      return $$1;
+   }
+
+   public <T> Optional<T> b(boi<T> $$0) {
+      bon.b<T> $$1 = new bon.b<>($$0, this.c());
+      bon.a<T> $$2 = this.a($$1);
+      if ($$2 != null) {
+         this.a($$2.b());
+         return $$2.a;
+      } else {
+         boo<S, T> $$3 = this.b.a($$0);
+         if ($$3 == null) {
+            throw new IllegalStateException("No symbol " + $$0);
+         } else {
+            Optional<T> $$4 = $$3.a(this);
+            this.a($$1, $$4);
+            return $$4;
+         }
+      }
+   }
+
+   @Nullable
+   private <T> bon.a<T> a(bon.b<T> $$0) {
+      return (bon.a<T>)this.a.get($$0);
+   }
+
+   private <T> void a(bon.b<T> $$0, Optional<T> $$1) {
+      this.a.put($$0, new bon.a<>($$1, this.c()));
+   }
+
+   public abstract S b();
+
+   public abstract int c();
+
+   public abstract void a(int var1);
+
+   static record a<T>(Optional<T> a, int b) {
+   }
+
+   static record b<T>(boi<T> a, int b) {
    }
 }

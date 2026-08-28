@@ -1,61 +1,110 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.Map;
-import java.util.UUID;
+import java.io.DataInput;
+import java.io.DataInputStream;
+import java.io.DataOutput;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.nio.file.Path;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ebd<T extends ebb> {
-   private static final Logger a = LogUtils.getLogger();
-   private final Int2ObjectMap<T> b = new Int2ObjectLinkedOpenHashMap();
-   private final Map<UUID, T> c = Maps.newHashMap();
+public final class ebd implements AutoCloseable {
+   public static final String a = ".mca";
+   private static final int b = 256;
+   private final Long2ObjectLinkedOpenHashMap<ebc> c = new Long2ObjectLinkedOpenHashMap();
+   private final ebf d;
+   private final Path e;
+   private final boolean f;
 
-   public <U extends T> void a(ebi<T, U> $$0, axl<U> $$1) {
-      ObjectIterator var3 = this.b.values().iterator();
+   ebd(ebf $$0, Path $$1, boolean $$2) {
+      this.e = $$1;
+      this.f = $$2;
+      this.d = $$0;
+   }
 
-      while (var3.hasNext()) {
-         T $$2 = (T)var3.next();
-         U $$3 = (U)$$0.a($$2);
-         if ($$3 != null && $$1.accept($$3).a()) {
-            return;
+   private ebc b(dgg $$0) throws IOException {
+      long $$1 = dgg.c($$0.h(), $$0.i());
+      ebc $$2 = (ebc)this.c.getAndMoveToFirst($$1);
+      if ($$2 != null) {
+         return $$2;
+      } else {
+         if (this.c.size() >= 256) {
+            ((ebc)this.c.removeLast()).close();
+         }
+
+         v.c(this.e);
+         Path $$3 = this.e.resolve("r." + $$0.h() + "." + $$0.i() + ".mca");
+         ebc $$4 = new ebc(this.d, $$3, this.e, this.f);
+         this.c.putAndMoveToFirst($$1, $$4);
+         return $$4;
+      }
+   }
+
+   @Nullable
+   public tq a(dgg $$0) throws IOException {
+      ebc $$1 = this.b($$0);
+
+      tq var4;
+      try (DataInputStream $$2 = $$1.a($$0)) {
+         if ($$2 == null) {
+            return null;
+         }
+
+         var4 = ud.a($$2);
+      }
+
+      return var4;
+   }
+
+   public void a(dgg $$0, uk $$1) throws IOException {
+      ebc $$2 = this.b($$0);
+
+      try (DataInputStream $$3 = $$2.a($$0)) {
+         if ($$3 != null) {
+            ud.a((DataInput)$$3, $$1, tz.a());
          }
       }
    }
 
-   public Iterable<T> a() {
-      return Iterables.unmodifiableIterable(this.b.values());
-   }
-
-   public void a(T $$0) {
-      UUID $$1 = $$0.cG();
-      if (this.c.containsKey($$1)) {
-         a.warn("Duplicate entity UUID {}: {}", $$1, $$0);
+   protected void a(dgg $$0, @Nullable tq $$1) throws IOException {
+      ebc $$2 = this.b($$0);
+      if ($$1 == null) {
+         $$2.d($$0);
       } else {
-         this.c.put($$1, $$0);
-         this.b.put($$0.ar(), $$0);
+         try (DataOutputStream $$3 = $$2.c($$0)) {
+            ud.a($$1, (DataOutput)$$3);
+         }
       }
    }
 
-   public void b(T $$0) {
-      this.c.remove($$0.cG());
-      this.b.remove($$0.ar());
+   @Override
+   public void close() throws IOException {
+      ayh<IOException> $$0 = new ayh<>();
+      ObjectIterator var2 = this.c.values().iterator();
+
+      while (var2.hasNext()) {
+         ebc $$1 = (ebc)var2.next();
+
+         try {
+            $$1.close();
+         } catch (IOException var5) {
+            $$0.a(var5);
+         }
+      }
+
+      $$0.a();
    }
 
-   @Nullable
-   public T a(int $$0) {
-      return (T)this.b.get($$0);
+   public void a() throws IOException {
+      ObjectIterator var1 = this.c.values().iterator();
+
+      while (var1.hasNext()) {
+         ebc $$0 = (ebc)var1.next();
+         $$0.b();
+      }
    }
 
-   @Nullable
-   public T a(UUID $$0) {
-      return this.c.get($$0);
-   }
-
-   public int b() {
-      return this.c.size();
+   public ebf b() {
+      return this.d;
    }
 }

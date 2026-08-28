@@ -1,88 +1,60 @@
-public class adn implements yw<abl> {
-   public static final yn<vl, adn> a = yw.a(adn::a, adn::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 4;
-   private static final int e = 8;
-   private final boolean f;
-   private final boolean g;
-   private final boolean h;
-   private final boolean i;
-   private final float j;
-   private final float k;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   public adn(cou $$0) {
-      this.f = $$0.a;
-      this.g = $$0.b;
-      this.h = $$0.c;
-      this.i = $$0.d;
-      this.j = $$0.a();
-      this.k = $$0.b();
+public record adn(UUID b, int c, @Nullable xb d, xi.a e, @Nullable wp f, wt g, wl.a h) implements yw<abl> {
+   public static final yn<wa, adn> a = yw.a(adn::a, adn::new);
+
+   private adn(wa $$0) {
+      this($$0.n(), $$0.l(), $$0.c(xb::a), new xi.a($$0), vl.a($$0, wr.d), wt.a($$0), wl.a.a.decode($$0));
    }
 
-   private adn(vl $$0) {
-      byte $$1 = $$0.readByte();
-      this.f = ($$1 & 1) != 0;
-      this.g = ($$1 & 2) != 0;
-      this.h = ($$1 & 4) != 0;
-      this.i = ($$1 & 8) != 0;
-      this.j = $$0.readFloat();
-      this.k = $$0.readFloat();
-   }
-
-   private void a(vl $$0) {
-      byte $$1 = 0;
-      if (this.f) {
-         $$1 = (byte)($$1 | 1);
-      }
-
-      if (this.g) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      if (this.h) {
-         $$1 = (byte)($$1 | 4);
-      }
-
-      if (this.i) {
-         $$1 = (byte)($$1 | 8);
-      }
-
-      $$0.l($$1);
-      $$0.a(this.j);
-      $$0.a(this.k);
+   private void a(wa $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d, xb::a);
+      this.e.a($$0);
+      vl.a($$0, this.f, wr.d);
+      wt.a($$0, this.g);
+      wl.a.a.encode($$0, this.h);
    }
 
    @Override
    public yy<adn> a() {
-      return age.aa;
+      return agd.aa;
    }
 
    public void a(abl $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
+   @Override
+   public boolean c() {
+      return true;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   @Nullable
+   public xb f() {
+      return this.d;
+   }
+
+   public xi.a g() {
+      return this.e;
+   }
+
+   @Nullable
+   public wp h() {
       return this.f;
    }
 
-   public boolean e() {
+   public wt i() {
       return this.g;
    }
 
-   public boolean f() {
+   public wl.a j() {
       return this.h;
-   }
-
-   public boolean g() {
-      return this.i;
-   }
-
-   public float h() {
-      return this.j;
-   }
-
-   public float i() {
-      return this.k;
    }
 }

@@ -1,146 +1,104 @@
-import java.util.Objects;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
-public abstract class gqw<T extends cqx, S extends gzo> extends gse<T, S> {
-   private static final akv b = akv.b("textures/entity/minecart.png");
-   protected final gcw a;
-   private final gnd h;
+public class gqw implements gqy.a {
+   final fmg a;
+   private double b = Double.MIN_VALUE;
+   private final int c = 12;
+   @Nullable
+   private gqw.a d;
 
-   public gqw(gsf.a $$0, gfc $$1) {
-      super($$0);
-      this.f = 0.7F;
-      this.a = new gcw($$0.a($$1));
-      this.h = $$0.d();
+   public gqw(fmg $$0) {
+      this.a = $$0;
    }
 
-   public void a(S $$0, ffv $$1, glz $$2, int $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$1.a();
-      long $$4 = $$0.c;
-      float $$5 = (((float)($$4 >> 16 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
-      float $$6 = (((float)($$4 >> 20 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
-      float $$7 = (((float)($$4 >> 24 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
-      $$1.a($$5, $$6, $$7);
-      if ($$0.i) {
-         a($$0, $$1);
-      } else {
-         b($$0, $$1);
-      }
-
-      float $$8 = $$0.e;
-      if ($$8 > 0.0F) {
-         $$1.a(a.b.rotationDegrees(ayz.a($$8) * $$8 * $$0.f / 10.0F * (float)$$0.d));
-      }
-
-      dwy $$9 = $$0.h;
-      if ($$9.o() != dpy.a) {
-         $$1.a();
-         float $$10 = 0.75F;
-         $$1.b(0.75F, 0.75F, 0.75F);
-         $$1.a(-0.5F, (float)($$0.g - 8) / 16.0F, 0.5F);
-         $$1.a(a.d.rotationDegrees(90.0F));
-         this.a($$0, $$9, $$1, $$2, $$3);
-         $$1.b();
-      }
-
-      $$1.b(-1.0F, -1.0F, 1.0F);
-      this.a.a($$0);
-      ffz $$11 = $$2.getBuffer(this.a.a(b));
-      this.a.a($$1, $$11, $$3, hej.d);
-      $$1.b();
-   }
-
-   private static <S extends gzo> void a(S $$0, ffv $$1) {
-      $$1.a(a.d.rotationDegrees($$0.b));
-      $$1.a(a.f.rotationDegrees(-$$0.a));
-      $$1.a(0.0F, 0.375F, 0.0F);
-   }
-
-   private static <S extends gzo> void b(S $$0, ffv $$1) {
-      double $$2 = $$0.r;
-      double $$3 = $$0.s;
-      double $$4 = $$0.t;
-      float $$5 = $$0.a;
-      float $$6 = $$0.b;
-      if ($$0.k != null && $$0.l != null && $$0.m != null) {
-         fbb $$7 = $$0.l;
-         fbb $$8 = $$0.m;
-         $$1.a($$0.k.d - $$2, ($$7.e + $$8.e) / 2.0 - $$3, $$0.k.f - $$4);
-         fbb $$9 = $$8.b(-$$7.d, -$$7.e, -$$7.f);
-         if ($$9.g() != 0.0) {
-            $$9 = $$9.d();
-            $$6 = (float)(Math.atan2($$9.f, $$9.d) * 180.0 / Math.PI);
-            $$5 = (float)(Math.atan($$9.e) * 73.0);
+   @Override
+   public void a(fgr $$0, gmx $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)af.d();
+      if ($$5 - this.b > 3.0E9) {
+         this.b = $$5;
+         hkc $$6 = this.a.V();
+         if ($$6 != null) {
+            this.d = new gqw.a($$6, $$2, $$4);
+         } else {
+            this.d = null;
          }
       }
 
-      $$1.a(0.0F, 0.375F, 0.0F);
-      $$1.a(a.d.rotationDegrees(180.0F - $$6));
-      $$1.a(a.f.rotationDegrees(-$$5));
-   }
+      if (this.d != null) {
+         Map<dgg, String> $$7 = this.d.b.getNow(null);
+         double $$8 = this.a.j.k().b().e * 0.85;
 
-   public void a(T $$0, S $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      if ($$0.l() instanceof crm $$3) {
-         a($$0, $$3, $$1, $$2);
-         $$1.i = true;
-      } else if ($$0.l() instanceof crn $$4) {
-         a($$0, $$4, $$1, $$2);
-         $$1.i = false;
-      }
+         for (Entry<dgg, String> $$9 : this.d.a.entrySet()) {
+            dgg $$10 = $$9.getKey();
+            String $$11 = $$9.getValue();
+            if ($$7 != null) {
+               $$11 = $$11 + $$7.get($$10);
+            }
 
-      long $$5 = (long)$$0.ar() * 493286711L;
-      $$1.c = $$5 * $$5 * 4392167121L + $$5 * 98761L;
-      $$1.e = (float)$$0.N() - $$2;
-      $$1.d = $$0.O();
-      $$1.f = Math.max($$0.L() - $$2, 0.0F);
-      $$1.g = $$0.y();
-      $$1.h = $$0.t();
-   }
+            String[] $$12 = $$11.split("\n");
+            int $$13 = 0;
 
-   private static <T extends cqx, S extends gzo> void a(T $$0, crm $$1, S $$2, float $$3) {
-      if ($$1.t()) {
-         $$2.j = $$1.e($$3);
-         $$2.a = $$1.c($$3);
-         $$2.b = $$1.d($$3);
-      } else {
-         $$2.j = null;
-         $$2.a = $$0.dN();
-         $$2.b = $$0.dL();
+            for (String $$14 : $$12) {
+               gqy.a($$0, $$1, $$14, (double)kk.a($$10.h, 8), $$8 + (double)$$13, (double)kk.a($$10.i, 8), -1, 0.15F, true, 0.0F, true);
+               $$13 -= 2;
+            }
+         }
       }
    }
 
-   private static <T extends cqx, S extends gzo> void a(T $$0, crn $$1, S $$2, float $$3) {
-      float $$4 = 0.3F;
-      $$2.a = $$0.j($$3);
-      $$2.b = $$0.k($$3);
-      double $$5 = $$2.r;
-      double $$6 = $$2.s;
-      double $$7 = $$2.t;
-      fbb $$8 = $$1.d($$5, $$6, $$7);
-      if ($$8 != null) {
-         $$2.k = $$8;
-         fbb $$9 = $$1.a($$5, $$6, $$7, 0.3F);
-         fbb $$10 = $$1.a($$5, $$6, $$7, -0.3F);
-         $$2.l = Objects.requireNonNullElse($$9, $$8);
-         $$2.m = Objects.requireNonNullElse($$10, $$8);
-      } else {
-         $$2.k = null;
-         $$2.l = null;
-         $$2.m = null;
+   final class a {
+      final Map<dgg, String> a;
+      final CompletableFuture<Map<dgg, String>> b;
+
+      a(final hkc $$0, final double $$1, final double $$2) {
+         ggy $$3 = gqw.this.a.s;
+         akt<dgz> $$4 = $$3.aj();
+         int $$5 = kk.a($$1);
+         int $$6 = kk.a($$2);
+         Builder<dgg, String> $$7 = ImmutableMap.builder();
+         ggu $$8 = $$3.h();
+
+         for (int $$9 = $$5 - 12; $$9 <= $$5 + 12; $$9++) {
+            for (int $$10 = $$6 - 12; $$10 <= $$6 + 12; $$10++) {
+               dgg $$11 = new dgg($$9, $$10);
+               String $$12 = "";
+               dzw $$13 = $$8.a($$9, $$10, false);
+               $$12 = $$12 + "Client: ";
+               if ($$13 == null) {
+                  $$12 = $$12 + "0n/a\n";
+               } else {
+                  $$12 = $$12 + ($$13.E() ? " E" : "");
+                  $$12 = $$12 + "\n";
+               }
+
+               $$7.put($$11, $$12);
+            }
+         }
+
+         this.a = $$7.build();
+         this.b = $$0.a(() -> {
+            ard $$4x = $$0.a($$4);
+            if ($$4x == null) {
+               return ImmutableMap.of();
+            } else {
+               Builder<dgg, String> $$5x = ImmutableMap.builder();
+               ara $$6x = $$4x.m();
+
+               for (int $$7x = $$5 - 12; $$7x <= $$5 + 12; $$7x++) {
+                  for (int $$8x = $$6 - 12; $$8x <= $$6 + 12; $$8x++) {
+                     dgg $$9x = new dgg($$7x, $$8x);
+                     $$5x.put($$9x, "Server: " + $$6x.a($$9x));
+                  }
+               }
+
+               return $$5x.build();
+            }
+         });
       }
-   }
-
-   protected void a(S $$0, dwy $$1, ffv $$2, glz $$3, int $$4) {
-      this.h.a($$1, $$2, $$3, $$4, hej.d);
-   }
-
-   protected faw a(T $$0) {
-      faw $$1 = super.a($$0);
-      return $$0.A() ? $$1.g((double)Math.abs($$0.y()) / 16.0) : $$1;
-   }
-
-   public fbb a(S $$0) {
-      fbb $$1 = super.a($$0);
-      return $$0.i && $$0.j != null ? $$1.b($$0.j.d - $$0.r, $$0.j.e - $$0.s, $$0.j.f - $$0.t) : $$1;
    }
 }

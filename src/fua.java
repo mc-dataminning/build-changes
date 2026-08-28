@@ -1,100 +1,106 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import com.mojang.text2speech.Narrator;
+import javax.annotation.Nullable;
 
-public class fua extends fum {
-   private static final long a = 2000L;
-   private final arr b;
-   private long c = -1L;
-   private boolean d;
-   private static final Object2IntMap<dzu> s = af.a(new Object2IntOpenHashMap(), $$0 -> {
-      $$0.defaultReturnValue(0);
-      $$0.put(dzu.c, 5526612);
-      $$0.put(dzu.d, 10066329);
-      $$0.put(dzu.e, 6250897);
-      $$0.put(dzu.f, 8434258);
-      $$0.put(dzu.g, 13750737);
-      $$0.put(dzu.h, 7497737);
-      $$0.put(dzu.i, 3159410);
-      $$0.put(dzu.j, 2213376);
-      $$0.put(dzu.k, 13421772);
-      $$0.put(dzu.l, 16769184);
-      $$0.put(dzu.m, 15884384);
-      $$0.put(dzu.n, 16777215);
-   });
+public class fua extends fvi {
+   private static final wp a = wp.c("accessibility.onboarding.screen.title");
+   private static final wp b = wp.c("accessibility.onboarding.screen.narrator");
+   private static final int c = 4;
+   private static final int d = 16;
+   private final fqh s;
+   private final fmk u;
+   private final boolean v;
+   private boolean w;
+   private float x;
+   private final Runnable y;
+   @Nullable
+   private fqb z;
+   private final fte A = new fte(this, this.m(), 33);
 
-   public fua(arr $$0) {
-      super(flb.a);
-      this.b = $$0;
+   public fua(fmk $$0, Runnable $$1) {
+      super(a);
+      this.u = $$0;
+      this.y = $$1;
+      this.s = new fqh(true);
+      this.v = fmg.Q().aY().a();
    }
 
    @Override
-   public boolean aG_() {
-      return false;
+   public void aR_() {
+      fti $$0 = this.A.c(fti.d());
+      $$0.c().b().a(4);
+      this.z = $$0.a(new fqb(this.n, this.l, this.p), $$0x -> $$0x.a(8));
+      if (this.u.av().a(this.u) instanceof fpx $$1) {
+         this.q = $$1;
+         this.q.j = this.v;
+         $$0.a(this.q);
+      }
+
+      $$0.a(fpu.b(150, $$0x -> this.a(new fyf(this, this.m.n)), false));
+      $$0.a(fpu.a(150, $$0x -> this.a(new fyi(this, this.m.n, this.m.ah())), false));
+      this.A.b(fpq.a(wo.j, $$0x -> this.aO_()).a());
+      this.A.a(this::c);
+      this.c();
    }
 
    @Override
-   protected boolean aQ_() {
-      return false;
+   protected void c() {
+      if (this.z != null) {
+         this.z.b(this.n);
+      }
+
+      this.A.a();
    }
 
    @Override
-   public void aI_() {
-      this.d = true;
-      this.d(true);
-   }
-
-   @Override
-   protected void b(fsr $$0) {
-      if (this.d) {
-         $$0.a(fsq.a, wp.c("narrator.loading.done"));
+   protected void aF_() {
+      if (this.v && this.q != null) {
+         this.b(this.q);
       } else {
-         $$0.a(fsq.a, this.m());
+         super.aF_();
       }
    }
 
-   private wp m() {
-      return wp.a("loading.progress", ayz.a(this.b.f(), 0, 100));
+   private int m() {
+      return 90;
    }
 
    @Override
-   public void a(fof $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      long $$4 = af.c();
-      if ($$4 - this.c > 2000L) {
-         this.c = $$4;
-         this.d(true);
-      }
-
-      int $$5 = this.n / 2;
-      int $$6 = this.o / 2;
-      a($$0, this.b, $$5, $$6, 2, 0);
-      int $$7 = this.b.e() + 9 + 2;
-      $$0.a(this.p, this.m(), $$5, $$6 - $$7, 16777215);
+   public void aO_() {
+      this.a(true, this.y);
    }
 
-   public static void a(fof $$0, arr $$1, int $$2, int $$3, int $$4, int $$5) {
-      int $$6 = $$4 + $$5;
-      int $$7 = $$1.d();
-      int $$8 = $$7 * $$6 - $$5;
-      int $$9 = $$1.e();
-      int $$10 = $$9 * $$6 - $$5;
-      int $$11 = $$2 - $$10 / 2;
-      int $$12 = $$3 - $$10 / 2;
-      int $$13 = $$8 / 2 + 1;
-      int $$14 = -16772609;
-      if ($$5 != 0) {
-         $$0.a($$2 - $$13, $$3 - $$13, $$2 - $$13 + 1, $$3 + $$13, -16772609);
-         $$0.a($$2 + $$13 - 1, $$3 - $$13, $$2 + $$13, $$3 + $$13, -16772609);
-         $$0.a($$2 - $$13, $$3 - $$13, $$2 + $$13, $$3 - $$13 + 1, -16772609);
-         $$0.a($$2 - $$13, $$3 + $$13 - 1, $$2 + $$13, $$3 + $$13, -16772609);
+   private void a(fvi $$0) {
+      this.a(false, () -> this.m.a($$0));
+   }
+
+   private void a(boolean $$0, Runnable $$1) {
+      if ($$0) {
+         this.u.ax();
       }
 
-      for (int $$15 = 0; $$15 < $$9; $$15++) {
-         for (int $$16 = 0; $$16 < $$9; $$16++) {
-            dzu $$17 = $$1.a($$15, $$16);
-            int $$18 = $$11 + $$15 * $$6;
-            int $$19 = $$12 + $$16 * $$6;
-            $$0.a($$18, $$19, $$18 + $$4, $$19 + $$4, axk.f(s.getInt($$17)));
+      Narrator.getNarrator().clear();
+      $$1.run();
+   }
+
+   @Override
+   public void a(fpc $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.E();
+      this.s.a($$0, this.n, 1.0F);
+   }
+
+   @Override
+   protected void a(fpc $$0, float $$1) {
+      f.a($$0, this.n, this.o, 1.0F, 0.0F);
+   }
+
+   private void E() {
+      if (!this.w && this.v) {
+         if (this.x < 40.0F) {
+            this.x++;
+         } else if (this.m.aC()) {
+            Narrator.getNarrator().say(b.getString(), true, 1.0F);
+            this.w = true;
          }
       }
    }

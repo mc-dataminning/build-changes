@@ -1,32 +1,26 @@
-import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public enum cej implements azv {
-   a("major_negative", -5, 100, 10, 10),
-   b("minor_negative", -1, 200, 20, 20),
-   c("minor_positive", 1, 25, 1, 5),
-   d("major_positive", 5, 20, 0, 20),
-   e("trading", 1, 25, 2, 20);
+public class cej extends cdt {
+   public static final float i = 0.001F;
+   protected final float j;
 
-   public static final int f = 25;
-   public static final int g = 20;
-   public static final int h = 2;
-   public final String i;
-   public final int j;
-   public final int k;
-   public final int l;
-   public final int m;
-   public static final Codec<cej> n = azv.a(cej::values);
-
-   private cej(final String $$0, final int $$1, final int $$2, final int $$3, final int $$4) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.m = $$4;
+   public cej(bwg $$0, double $$1) {
+      this($$0, $$1, 0.001F);
    }
 
+   public cej(bwg $$0, double $$1, float $$2) {
+      super($$0, $$1);
+      this.j = $$2;
+   }
+
+   @Nullable
    @Override
-   public String c() {
-      return this.i;
+   protected fbx h() {
+      if (this.b.bj()) {
+         fbx $$0 = cgw.a(this.b, 15, 7);
+         return $$0 == null ? super.h() : $$0;
+      } else {
+         return this.b.dX().i() >= this.j ? cgw.a(this.b, 10, 7) : super.h();
+      }
    }
 }

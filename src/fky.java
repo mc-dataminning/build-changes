@@ -1,29 +1,19 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import javax.annotation.Nullable;
 
 public class fky {
-   private final List<wu> a = Lists.newArrayList();
+   private static final Long2ObjectMap<String> a = new Long2ObjectOpenHashMap();
 
-   public void a(wu $$0) {
-      this.a.add($$0);
+   public static String a(long $$0) {
+      return (String)a.get($$0);
    }
 
-   @Nullable
-   public wu a() {
-      if (this.a.isEmpty()) {
-         return null;
-      } else {
-         return this.a.size() == 1 ? this.a.get(0) : wu.a(this.a);
-      }
+   public static void b(long $$0) {
+      a.remove($$0);
    }
 
-   public wu b() {
-      wu $$0 = this.a();
-      return $$0 != null ? $$0 : wu.b;
-   }
-
-   public void c() {
-      this.a.clear();
+   public static void a(long $$0, @Nullable String $$1) {
+      a.put($$0, $$1);
    }
 }

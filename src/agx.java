@@ -1,29 +1,30 @@
-public class agx implements yw<agg> {
+public record agx(int b, int c, boolean d) implements yw<agf> {
    public static final yn<vl, agx> a = yw.a(agx::a, agx::new);
-   private final int b;
-
-   public agx(int $$0) {
-      this.b = $$0;
-   }
 
    private agx(vl $$0) {
-      this.b = $$0.x();
+      this($$0.l(), $$0.x(), $$0.readBoolean());
    }
 
    private void a(vl $$0) {
-      $$0.f(this.b);
+      $$0.c(this.b);
+      $$0.f(this.c);
+      $$0.a(this.d);
    }
 
    @Override
    public yy<agx> a() {
-      return age.bA;
+      return agd.bA;
    }
 
-   public void a(agg $$0) {
+   public void a(agf $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public int e() {
+      return this.c;
+   }
+
+   public boolean f() {
+      return this.d;
    }
 }

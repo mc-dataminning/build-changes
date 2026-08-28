@@ -35,7 +35,7 @@ public interface un {
 
    int a();
 
-   default String u_() {
+   default String p_() {
       return new um().a(this);
    }
 

@@ -1,61 +1,48 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.ToIntFunction;
 
-public class brk extends bro {
-   public static final MapCodec<brk> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.d),
-                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.e),
-                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.f)
-               )
-               .apply($$0, brk::new)
-      )
-      .validate($$0 -> $$0.f < $$0.e ? DataResult.error(() -> "Max must be larger than min: [" + $$0.e + ", " + $$0.f + "]") : DataResult.success($$0));
-   private final float b;
-   private final float d;
-   private final float e;
-   private final float f;
-
-   public static brk a(float $$0, float $$1, float $$2, float $$3) {
-      return new brk($$0, $$1, $$2, $$3);
+public class brk {
+   private brk() {
    }
 
-   private brk(float $$0, float $$1, float $$2, float $$3) {
-      this.b = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public static <T> int a(List<T> $$0, ToIntFunction<T> $$1) {
+      long $$2 = 0L;
+
+      for (T $$3 : $$0) {
+         $$2 += (long)$$1.applyAsInt($$3);
+      }
+
+      if ($$2 > 2147483647L) {
+         throw new IllegalArgumentException("Sum of weights must be <= 2147483647");
+      } else {
+         return (int)$$2;
+      }
    }
 
-   @Override
-   public float a(azh $$0) {
-      return a($$0, this.b, this.d, this.e, this.f);
+   public static <T> Optional<T> a(azh $$0, List<T> $$1, int $$2, ToIntFunction<T> $$3) {
+      if ($$2 < 0) {
+         throw (IllegalArgumentException)af.b(new IllegalArgumentException("Negative total weight in getRandomItem"));
+      } else if ($$2 == 0) {
+         return Optional.empty();
+      } else {
+         int $$4 = $$0.a($$2);
+         return a($$1, $$4, $$3);
+      }
    }
 
-   public static float a(azh $$0, float $$1, float $$2, float $$3, float $$4) {
-      return ayz.a(ayz.c($$0, $$1, $$2), $$3, $$4);
+   public static <T> Optional<T> a(List<T> $$0, int $$1, ToIntFunction<T> $$2) {
+      for (T $$3 : $$0) {
+         $$1 -= $$2.applyAsInt($$3);
+         if ($$1 < 0) {
+            return Optional.of($$3);
+         }
+      }
+
+      return Optional.empty();
    }
 
-   @Override
-   public float a() {
-      return this.e;
-   }
-
-   @Override
-   public float b() {
-      return this.f;
-   }
-
-   @Override
-   public brp<?> c() {
-      return brp.c;
-   }
-
-   @Override
-   public String toString() {
-      return "normal(" + this.b + ", " + this.d + ") in [" + this.e + "-" + this.f + "]";
+   public static <T> Optional<T> a(azh $$0, List<T> $$1, ToIntFunction<T> $$2) {
+      return a($$0, $$1, a($$1, $$2), $$2);
    }
 }

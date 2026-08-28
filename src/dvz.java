@@ -1,64 +1,61 @@
+import com.mojang.serialization.Codec;
 import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.function.Predicate;
+import java.util.Optional;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public interface dvz {
-   dvz a = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.dv().a($$2, $$3) && !$$2x.b() && !$$2x.Z_())
-         .stream()
-         .filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bF()))
-         .map(bum::cG)
-         .toList();
-   dvz b = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.dv().a($$2, $$3) && !$$2x.Z_())
-         .stream()
-         .filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bF()))
-         .map(bum::cG)
-         .toList();
-   dvz c = ($$0, $$1, $$2, $$3, $$4) -> {
-      faw $$5 = new faw($$2).g($$3);
-      return $$1.a($$0, but.ba, $$5, bvi::bL).stream().filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bF())).map(bum::cG).toList();
-   };
+public record dvz(Optional<cxd> d, Optional<cxd> e, Optional<cxd> f, Optional<cxd> g) {
+   public static final dvz a = new dvz(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+   public static final Codec<dvz> b = mb.g.q().sizeLimitedListOf(4).xmap(dvz::new, dvz::a);
+   public static final yn<wa, dvz> c = yl.a(mc.K).a(yl.c(4)).a(dvz::new, dvz::a);
 
-   List<UUID> detect(ard var1, dvz.a var2, ji var3, double var4, boolean var6);
-
-   private static boolean a(dgj $$0, fbb $$1, fbb $$2) {
-      fax $$3 = $$0.a(new dfr($$2, $$1, dfr.a.c, dfr.b.a, fbg.a()));
-      return $$3.b().equals(ji.a((kb)$$1)) || $$3.d() == faz.a.a;
+   private dvz(List<cxd> $$0) {
+      this(a($$0, 0), a($$0, 1), a($$0, 2), a($$0, 3));
    }
 
-   public interface a {
-      dvz.a a = new dvz.a() {
-         @Override
-         public List<are> a(ard $$0, Predicate<? super coy> $$1) {
-            return $$0.a($$1);
-         }
+   public dvz(cxd $$0, cxd $$1, cxd $$2, cxd $$3) {
+      this(List.of($$0, $$1, $$2, $$3));
+   }
 
-         @Override
-         public <T extends bum> List<T> a(ard $$0, ebi<bum, T> $$1, faw $$2, Predicate<? super T> $$3) {
-            return $$0.a($$1, $$2, $$3);
-         }
-      };
-
-      List<? extends coy> a(ard var1, Predicate<? super coy> var2);
-
-      <T extends bum> List<T> a(ard var1, ebi<bum, T> var2, faw var3, Predicate<? super T> var4);
-
-      static dvz.a a(coy $$0) {
-         return a(List.of($$0));
+   private static Optional<cxd> a(List<cxd> $$0, int $$1) {
+      if ($$1 >= $$0.size()) {
+         return Optional.empty();
+      } else {
+         cxd $$2 = $$0.get($$1);
+         return $$2 == cxl.ru ? Optional.empty() : Optional.of($$2);
       }
+   }
 
-      static dvz.a a(final List<coy> $$0) {
-         return new dvz.a() {
-            @Override
-            public List<coy> a(ard $$0x, Predicate<? super coy> $$1) {
-               return $$0.stream().filter($$1).toList();
-            }
-
-            @Override
-            public <T extends bum> List<T> a(ard $$0x, ebi<bum, T> $$1, faw $$2, Predicate<? super T> $$3) {
-               return $$0.stream().map($$1::a).filter(Objects::nonNull).filter($$3).toList();
-            }
-         };
+   public tq a(tq $$0) {
+      if (this.equals(a)) {
+         return $$0;
+      } else {
+         $$0.a("sherds", (un)b.encodeStart(ue.a, this).getOrThrow());
+         return $$0;
       }
+   }
+
+   public List<cxd> a() {
+      return Stream.of(this.d, this.e, this.f, this.g).map($$0 -> $$0.orElse(cxl.ru)).toList();
+   }
+
+   public static dvz b(@Nullable tq $$0) {
+      return $$0 != null && $$0.e("sherds") ? b.parse(ue.a, $$0.c("sherds")).result().orElse(a) : a;
+   }
+
+   public Optional<cxd> b() {
+      return this.d;
+   }
+
+   public Optional<cxd> c() {
+      return this.e;
+   }
+
+   public Optional<cxd> d() {
+      return this.f;
+   }
+
+   public Optional<cxd> e() {
+      return this.g;
    }
 }

@@ -1,26 +1,28 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
 
-public class bfh extends DataFix {
-   public bfh(Schema $$0) {
-      super($$0, false);
+public class bfh extends bgy {
+   public bfh(Schema $$0, String $$1) {
+      super($$0, false, "Gossip for for " + $$1, bic.C, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "BlockEntityLockToComponentFix", this.getInputSchema().getType(bhy.s), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
-               Optional<? extends Dynamic<?>> $$1 = $$0x.get("lock").result();
-               if ($$1.isEmpty()) {
-                  return $$0x;
-               } else {
-                  Dynamic<?> $$2 = bfi.b($$1.get());
-                  return $$2 != null ? $$0x.set("lock", $$2) : $$0x.remove("lock");
-               }
-            })
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> $$0x.update(
+               "Gossips",
+               $$0xx -> (Dynamic)DataFixUtils.orElse(
+                     $$0xx.asStreamOpt()
+                        .result()
+                        .map($$0xxx -> $$0xxx.map($$0xxxx -> (Dynamic)bav.c($$0xxxx, "Target", "Target").orElse($$0xxxx)))
+                        .map($$0xx::createList),
+                     $$0xx
+                  )
+            )
       );
    }
 }

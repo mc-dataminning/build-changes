@@ -1,36 +1,33 @@
-import java.util.function.Function;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
+import java.util.concurrent.Executor;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
-public enum hla {
-   a("movement", hkv::new),
-   b("find_tree", hku::new),
-   c("punch_tree", hkx::new),
-   d("open_inventory", hkw::new),
-   e("craft_planks", hkt::new),
-   f("none", hks::new);
+public class hla implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final bob<hkz> b;
+   private final bro c;
 
-   private final String g;
-   private final Function<hky, ? extends hkz> h;
-
-   private <T extends hkz> hla(final String $$0, final Function<hky, T> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public hla(FileChannel $$0, Executor $$1) {
+      this.b = new bob<>(hkz.a, $$0);
+      this.c = new bro($$1, "telemetry-event-log");
    }
 
-   public hkz a(hky $$0) {
-      return this.h.apply($$0);
+   public hlb a() {
+      return $$0 -> this.c.a_(() -> {
+            try {
+               this.b.a($$0);
+            } catch (IOException var3) {
+               a.error("Failed to write telemetry event to log", var3);
+            }
+         });
    }
 
-   public String a() {
-      return this.g;
-   }
-
-   public static hla a(String $$0) {
-      for (hla $$1 : values()) {
-         if ($$1.g.equals($$0)) {
-            return $$1;
-         }
-      }
-
-      return f;
+   @Override
+   public void close() {
+      this.c.a_(() -> IOUtils.closeQuietly(this.b));
+      this.c.close();
    }
 }

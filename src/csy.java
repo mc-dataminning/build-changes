@@ -1,61 +1,100 @@
-public class csy extends csd {
-   private static final int m = 9;
-   private static final int n = 9;
-   private static final int o = 36;
-   private static final int p = 36;
-   private static final int q = 45;
-   private final bse r;
+import java.util.List;
 
-   public csy(int $$0, cox $$1) {
-      this($$0, $$1, new bss(9));
+public abstract class csy extends cul {
+   public static final int m = 0;
+   public static final int n = 1;
+   public static final int o = 2;
+   public static final int p = 3;
+   public static final int q = 4;
+   private static final int s = 3;
+   private static final int t = 30;
+   private static final int u = 30;
+   private static final int v = 39;
+   final bsr w;
+   private final cti x;
+   protected final dgz r;
+   private final dcg<? extends dbb> y;
+   private final dce z;
+   private final cum A;
+
+   protected csy(cuf<?> $$0, dcg<? extends dbb> $$1, akt<dce> $$2, cum $$3, int $$4, cpq $$5) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, new btf(3), new cus(4));
    }
 
-   public csy(int $$0, cox $$1, bse $$2) {
-      super(ctm.g, $$0);
-      a($$2, 9);
-      this.r = $$2;
-      $$2.c_($$1.k);
-      this.d($$2, 62, 17);
-      this.c($$1, 8, 84);
+   protected csy(cuf<?> $$0, dcg<? extends dbb> $$1, akt<dce> $$2, cum $$3, int $$4, cpq $$5, bsr $$6, cti $$7) {
+      super($$0, $$4);
+      this.y = $$1;
+      this.A = $$3;
+      a($$6, 3);
+      a($$7, 4);
+      this.w = $$6;
+      this.x = $$7;
+      this.r = $$5.k.dU();
+      this.z = this.r.Q().a($$2);
+      this.a(new cut($$6, 0, 56, 17));
+      this.a(new ctt(this, $$6, 1, 56, 53));
+      this.a(new ctv($$5.k, $$6, 2, 116, 35));
+      this.c($$5, 8, 84);
+      this.a($$7);
    }
 
-   protected void d(bse $$0, int $$1, int $$2) {
-      for (int $$3 = 0; $$3 < 3; $$3++) {
-         for (int $$4 = 0; $$4 < 3; $$4++) {
-            int $$5 = $$4 + $$3 * 3;
-            this.a(new cua($$0, $$5, $$1 + $$4 * 18, $$2 + $$3 * 18));
-         }
+   @Override
+   public void a(cpw $$0) {
+      if (this.w instanceof cuy) {
+         ((cuy)this.w).fillStackedContents($$0);
       }
    }
 
-   @Override
-   public boolean b(coy $$0) {
-      return this.r.a($$0);
+   public cut l() {
+      return this.k.get(2);
    }
 
    @Override
-   public cwq b(coy $$0, int $$1) {
-      cwq $$2 = cwq.j;
-      cua $$3 = this.k.get($$1);
+   public boolean b(cpr $$0) {
+      return this.w.a($$0);
+   }
+
+   @Override
+   public cxh b(cpr $$0, int $$1) {
+      cxh $$2 = cxh.k;
+      cut $$3 = this.k.get($$1);
       if ($$3 != null && $$3.h()) {
-         cwq $$4 = $$3.g();
+         cxh $$4 = $$3.g();
          $$2 = $$4.v();
-         if ($$1 < 9) {
-            if (!this.a($$4, 9, 45, true)) {
-               return cwq.j;
+         if ($$1 == 2) {
+            if (!this.a($$4, 3, 39, true)) {
+               return cxh.k;
             }
-         } else if (!this.a($$4, 0, 9, false)) {
-            return cwq.j;
+
+            $$3.b($$4, $$2);
+         } else if ($$1 != 1 && $$1 != 0) {
+            if (this.c($$4)) {
+               if (!this.a($$4, 0, 1, false)) {
+                  return cxh.k;
+               }
+            } else if (this.d($$4)) {
+               if (!this.a($$4, 1, 2, false)) {
+                  return cxh.k;
+               }
+            } else if ($$1 >= 3 && $$1 < 30) {
+               if (!this.a($$4, 30, 39, false)) {
+                  return cxh.k;
+               }
+            } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
+               return cxh.k;
+            }
+         } else if (!this.a($$4, 3, 39, false)) {
+            return cxh.k;
          }
 
          if ($$4.f()) {
-            $$3.e(cwq.j);
+            $$3.e(cxh.k);
          } else {
             $$3.c();
          }
 
          if ($$4.M() == $$2.M()) {
-            return cwq.j;
+            return cxh.k;
          }
 
          $$3.a($$0, $$4);
@@ -64,9 +103,56 @@ public class csy extends csd {
       return $$2;
    }
 
+   protected boolean c(cxh $$0) {
+      return this.z.a($$0);
+   }
+
+   protected boolean d(cxh $$0) {
+      return this.r.M().a($$0);
+   }
+
+   public float m() {
+      int $$0 = this.x.a(2);
+      int $$1 = this.x.a(3);
+      return $$1 != 0 && $$0 != 0 ? ayz.a((float)$$0 / (float)$$1, 0.0F, 1.0F) : 0.0F;
+   }
+
+   public float n() {
+      int $$0 = this.x.a(1);
+      if ($$0 == 0) {
+         $$0 = 200;
+      }
+
+      return ayz.a((float)this.x.a(0) / (float)$$0, 0.0F, 1.0F);
+   }
+
+   public boolean o() {
+      return this.x.a(0) > 0;
+   }
+
    @Override
-   public void a(coy $$0) {
-      super.a($$0);
-      this.r.c($$0);
+   public cum am_() {
+      return this.A;
+   }
+
+   @Override
+   public cul.a a(boolean $$0, boolean $$1, dca<?> $$2, final ard $$3, cpq $$4) {
+      final List<cut> $$5 = List.of(this.b(0), this.b(2));
+      return akg.a(new akg.a<dbb>() {
+         @Override
+         public void a(cpw $$0) {
+            csy.this.a($$0);
+         }
+
+         @Override
+         public void a() {
+            $$5.forEach($$0 -> $$0.f(cxh.k));
+         }
+
+         @Override
+         public boolean a(dca<dbb> $$0) {
+            return $$0.b().a(new dco(csy.this.w.a(0)), $$3);
+         }
+      }, 1, 1, List.of(this.b(0)), $$5, $$4, (dca<dbb>)$$2, $$0, $$1);
    }
 }

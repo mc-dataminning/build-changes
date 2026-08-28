@@ -2,62 +2,60 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Set;
 
-public class exq extends exf {
+public class exq extends eyb {
    public static final MapCodec<exq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  aku.a(mc.bg).fieldOf("name").forGetter($$0x -> $$0x.b),
-                  Codec.LONG.optionalFieldOf("seed", 0L).forGetter($$0x -> $$0x.c),
-                  mb.j.r().fieldOf("type").forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, exq::new)
+      $$0 -> a($$0).and(exq.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, exq::new)
    );
-   private final aku<evx> b;
-   private final long c;
-   private final jr<duc<?>> d;
+   private final exq.a b;
 
-   private exq(List<ezb> $$0, aku<evx> $$1, long $$2, jr<duc<?>> $$3) {
+   private exq(List<ezx> $$0, exq.a $$1) {
       super($$0);
       this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
    }
 
    @Override
-   public exh<exq> b() {
-      return exi.y;
+   public eyd<exq> b() {
+      return eye.s;
    }
 
    @Override
-   public cwq a(cwq $$0, evs $$1) {
-      if ($$0.f()) {
-         return $$0;
-      } else {
-         $$0.b(kv.ap, new czq(this.b, this.c));
-         return $$0;
+   public Set<bai<?>> a() {
+      return Set.of(this.b.g);
+   }
+
+   @Override
+   public cxh a(cxh $$0, ewo $$1) {
+      if ($$1.c(this.b.g) instanceof btb $$3) {
+         $$0.b(kv.g, $$3.an());
       }
+
+      return $$0;
    }
 
-   @Override
-   public void a(evy $$0) {
-      super.a($$0);
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.b.a() + ", but references are not allowed");
-      } else {
-         if ($$0.a().c(this.b).isEmpty()) {
-            $$0.b("Missing loot table used for container: " + this.b.a());
-         }
+   public static eyb.a<?> a(exq.a $$0) {
+      return a($$1 -> new exq($$1, $$0));
+   }
+
+   public static enum a implements azv {
+      a("this", ezi.a),
+      b("attacking_entity", ezi.d),
+      c("last_damage_player", ezi.b),
+      d("block_entity", ezi.h);
+
+      public static final Codec<exq.a> e = azv.a(exq.a::values);
+      private final String f;
+      final bai<?> g;
+
+      private a(final String $$0, final bai<?> $$1) {
+         this.f = $$0;
+         this.g = $$1;
       }
-   }
 
-   public static exf.a<?> a(duc<?> $$0, aku<evx> $$1) {
-      return a($$2 -> new exq($$2, $$1, 0L, $$0.a()));
-   }
-
-   public static exf.a<?> a(duc<?> $$0, aku<evx> $$1, long $$2) {
-      return a($$3 -> new exq($$3, $$1, $$2, $$0.a()));
+      @Override
+      public String c() {
+         return this.f;
+      }
    }
 }

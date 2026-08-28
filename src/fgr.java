@@ -1,80 +1,141 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.concurrent.CompletionException;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 public class fgr {
-   private static final Logger a = LogUtils.getLogger();
+   private final List<fgr.a> a = new ArrayList<>(16);
+   private int b;
 
-   public static void a(flk $$0, fum $$1, fum $$2, int $$3, fhm $$4, @Nullable fkk $$5) {
-      fzl.a($$0, $$1, ($$6, $$7, $$8, $$9) -> {
-         Path $$10;
-         try {
-            $$10 = a($$7, $$8, $$9);
-         } catch (IOException var13) {
-            a.warn("Failed to create temporary world folder.");
-            $$0.a(new fiz(wp.c("mco.create.world.failed"), $$2));
-            return true;
-         }
-
-         fhs $$13 = fhs.a($$8.J(), ab.b().c());
-         fgy $$14 = new fgy($$10, $$13, $$0.X(), $$4.a, $$3, fgz.f());
-         $$0.d(new ftf($$14::b, wp.c("mco.create.world.reset.title"), wp.i(), wo.e, false));
-         if ($$5 != null) {
-            $$5.run();
-         }
-
-         $$14.a().handleAsync(($$5xx, $$6x) -> {
-            if ($$6x != null) {
-               if ($$6x instanceof CompletionException $$7x) {
-                  $$6x = $$7x.getCause();
-               }
-
-               if ($$6x instanceof fgs) {
-                  $$0.d($$2);
-               } else {
-                  if ($$6x instanceof fgu $$8x) {
-                     a.warn("Failed to create realms world {}", $$8x.a());
-                  } else {
-                     a.warn("Failed to create realms world {}", $$6x.getMessage());
-                  }
-
-                  $$0.d(new fiz(wp.c("mco.create.world.failed"), $$2));
-               }
-            } else {
-               if ($$1 instanceof fiv $$9x) {
-                  $$9x.a($$4.a);
-               }
-
-               if ($$5 != null) {
-                  fgg.a($$4, $$1, true);
-               } else {
-                  $$0.d($$1);
-               }
-
-               fgg.g();
-            }
-
-            return null;
-         }, $$0);
-         return true;
-      });
+   public fgr() {
+      this.a.add(new fgr.a());
    }
 
-   private static Path a(jy<ale> $$0, evk $$1, @Nullable Path $$2) throws IOException {
-      Path $$3 = Files.createTempDirectory("minecraft_realms_world_upload");
-      if ($$2 != null) {
-         Files.move($$2, $$3.resolve("datapacks"));
+   public void a(double $$0, double $$1, double $$2) {
+      this.a((float)$$0, (float)$$1, (float)$$2);
+   }
+
+   public void a(float $$0, float $$1, float $$2) {
+      this.c().a.translate($$0, $$1, $$2);
+   }
+
+   public void a(fbx $$0) {
+      this.a($$0.d, $$0.e, $$0.f);
+   }
+
+   public void b(float $$0, float $$1, float $$2) {
+      fgr.a $$3 = this.c();
+      $$3.a.scale($$0, $$1, $$2);
+      if (Math.abs($$0) == Math.abs($$1) && Math.abs($$1) == Math.abs($$2)) {
+         if ($$0 < 0.0F || $$1 < 0.0F || $$2 < 0.0F) {
+            $$3.b.scale(Math.signum($$0), Math.signum($$1), Math.signum($$2));
+         }
+      } else {
+         $$3.b.scale(1.0F / $$0, 1.0F / $$1, 1.0F / $$2);
+         $$3.c = false;
+      }
+   }
+
+   public void a(Quaternionf $$0) {
+      fgr.a $$1 = this.c();
+      $$1.a.rotate($$0);
+      $$1.b.rotate($$0);
+   }
+
+   public void a(Quaternionf $$0, float $$1, float $$2, float $$3) {
+      fgr.a $$4 = this.c();
+      $$4.a.rotateAround($$0, $$1, $$2, $$3);
+      $$4.b.rotate($$0);
+   }
+
+   public void a() {
+      fgr.a $$0 = this.c();
+      this.b++;
+      if (this.b >= this.a.size()) {
+         this.a.add($$0.c());
+      } else {
+         this.a.get(this.b).a($$0);
+      }
+   }
+
+   public void b() {
+      if (this.b == 0) {
+         throw new NoSuchElementException();
+      } else {
+         this.b--;
+      }
+   }
+
+   public fgr.a c() {
+      return this.a.get(this.b);
+   }
+
+   public boolean d() {
+      return this.b == 0;
+   }
+
+   public void e() {
+      fgr.a $$0 = this.c();
+      $$0.a.identity();
+      $$0.b.identity();
+      $$0.c = true;
+   }
+
+   public void a(Matrix4f $$0) {
+      fgr.a $$1 = this.c();
+      $$1.a.mul($$0);
+      if (!f.b($$0)) {
+         if (f.c($$0)) {
+            $$1.b.mul(new Matrix3f($$0));
+         } else {
+            $$1.d();
+         }
+      }
+   }
+
+   public static final class a {
+      final Matrix4f a = new Matrix4f();
+      final Matrix3f b = new Matrix3f();
+      boolean c = true;
+
+      a() {
       }
 
-      tq $$4 = $$1.a($$0.a(), null);
-      tq $$5 = new tq();
-      $$5.a("Data", $$4);
-      Path $$6 = Files.createFile($$3.resolve("level.dat"));
-      ud.a($$5, $$6);
-      return $$3;
+      void d() {
+         this.b.set(this.a).invert().transpose();
+         this.c = false;
+      }
+
+      void a(fgr.a $$0) {
+         this.a.set($$0.a);
+         this.b.set($$0.b);
+         this.c = $$0.c;
+      }
+
+      public Matrix4f a() {
+         return this.a;
+      }
+
+      public Matrix3f b() {
+         return this.b;
+      }
+
+      public Vector3f a(Vector3f $$0, Vector3f $$1) {
+         return this.a($$0.x, $$0.y, $$0.z, $$1);
+      }
+
+      public Vector3f a(float $$0, float $$1, float $$2, Vector3f $$3) {
+         Vector3f $$4 = this.b.transform($$0, $$1, $$2, $$3);
+         return this.c ? $$4 : $$4.normalize();
+      }
+
+      public fgr.a c() {
+         fgr.a $$0 = new fgr.a();
+         $$0.a(this);
+         return $$0;
+      }
    }
 }

@@ -1,55 +1,60 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dls extends djn {
+public class dls extends dke {
    public static final MapCodec<dls> a = b(dls::new);
-   protected static final fbv b = dml.c;
+   public static final dyh b = dyg.A;
+   public static final dyh c = dyg.u;
 
    @Override
-   public MapCodec<dls> a() {
+   protected MapCodec<? extends dls> a() {
       return a;
    }
 
-   protected dls(dwx.d $$0) {
+   public dls(dxp.d $$0) {
       super($$0);
+      this.l(this.m().b(c, Boolean.valueOf(false)).b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean g_(dwy $$0) {
+   protected void a(dxq $$0, dgz $$1, ji $$2, dxq $$3, boolean $$4) {
+      if ($$3.b() != $$0.b() && $$1 instanceof ard $$5) {
+         this.a($$0, $$5, $$2);
+      }
+   }
+
+   @Override
+   protected void a(dxq $$0, dgz $$1, ji $$2, dke $$3, @Nullable eve $$4, boolean $$5) {
+      if ($$1 instanceof ard $$6) {
+         this.a($$0, $$6, $$2);
+      }
+   }
+
+   public void a(dxq $$0, ard $$1, ji $$2) {
+      boolean $$3 = $$1.C($$2);
+      if ($$3 != $$0.c(b)) {
+         dxq $$4 = $$0;
+         if (!$$0.c(b)) {
+            $$4 = $$0.a(c);
+            $$1.a(null, $$2, $$4.c(c) ? awa.fI : awa.fJ, awb.e);
+         }
+
+         $$1.a($$2, $$4.b(b, Boolean.valueOf($$3)), 3);
+      }
+   }
+
+   @Override
+   protected void a(dxr.a<dke, dxq> $$0) {
+      $$0.a(c, b);
+   }
+
+   @Override
+   protected boolean c_(dxq $$0) {
       return true;
    }
 
    @Override
-   public dwy a(dah $$0) {
-      return !this.m().a((dgm)$$0.q(), $$0.a()) ? djn.a(this.m(), djp.j.m(), $$0.q(), $$0.a()) : super.a($$0);
-   }
-
-   @Override
-   protected dwy a(dwy $$0, dgm $$1, dgy $$2, ji $$3, jn $$4, ji $$5, dwy $$6, azh $$7) {
-      if ($$4 == jn.b && !$$0.a($$1, $$3)) {
-         $$2.a($$3, this, 1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected void a(dwy $$0, ard $$1, ji $$2, azh $$3) {
-      dml.a(null, $$0, $$1, $$2);
-   }
-
-   @Override
-   protected boolean a(dwy $$0, dgm $$1, ji $$2) {
-      dwy $$3 = $$1.a_($$2.d());
-      return !$$3.e() || $$3.b() instanceof dmn;
-   }
-
-   @Override
-   protected fbv a(dwy $$0, dfo $$1, ji $$2, fbg $$3) {
-      return b;
-   }
-
-   @Override
-   protected boolean a(dwy $$0, etp $$1) {
-      return false;
+   protected int a(dxq $$0, dgz $$1, ji $$2) {
+      return $$1.a_($$2).c(c) ? 15 : 0;
    }
 }

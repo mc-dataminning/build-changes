@@ -1,40 +1,31 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class doh extends dnl {
-   public static final MapCodec<doh> a = b(doh::new);
-   private static final wp b = wp.c("container.loom");
+public class doh extends dog {
+   public static final MapCodec<doh> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(mb.e.q().fieldOf("host").forGetter(dog::b), t()).apply($$0, doh::new));
 
    @Override
    public MapCodec<doh> a() {
-      return a;
+      return b;
    }
 
-   protected doh(dwx.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected bsl a(dwy $$0, dgj $$1, ji $$2, coy $$3, fax $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.c($$1, $$2));
-         $$3.a(awk.ax);
-      }
-
-      return bsl.a;
+   public doh(dke $$0, dxp.d $$1) {
+      super($$0, $$1);
+      this.l(this.m().b(dqv.d, jn.a.b));
    }
 
    @Override
-   protected bsn b(dwy $$0, dgj $$1, ji $$2) {
-      return new bst(($$2x, $$3, $$4) -> new ctk($$2x, $$3, csq.a($$1, $$2)), b);
+   protected dxq a(dxq $$0, dqw $$1) {
+      return dqv.b($$0, $$1);
    }
 
    @Override
-   public dwy a(dah $$0) {
-      return this.m().b(aF, $$0.g().g());
+   protected void a(dxr.a<dke, dxq> $$0) {
+      $$0.a(dqv.d);
    }
 
    @Override
-   protected void a(dwz.a<djn, dwy> $$0) {
-      $$0.a(aF);
+   public dxq a(dax $$0) {
+      return this.m().b(dqv.d, $$0.k().o());
    }
 }

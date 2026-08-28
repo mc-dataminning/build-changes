@@ -1,33 +1,37 @@
 public class adk implements yw<abl> {
-   public static final yn<wa, adk> a = yn.a(yl.w, adk::b, yl.a(mc.V), adk::e, wr.d, adk::f, adk::new);
-   private final int b;
-   private final ctm<?> c;
-   private final wp d;
+   public static final yn<vl, adk> a = yw.a(adk::a, adk::new);
+   private final ji b;
+   private final boolean c;
 
-   public adk(int $$0, ctm<?> $$1, wp $$2) {
+   public adk(ji $$0, boolean $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
+   }
+
+   private adk(vl $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readBoolean();
+   }
+
+   private void a(vl $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
    public yy<adk> a() {
-      return age.X;
+      return agd.X;
    }
 
    public void a(abl $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public ji b() {
       return this.b;
    }
 
-   public ctm<?> e() {
+   public boolean e() {
       return this.c;
-   }
-
-   public wp f() {
-      return this.d;
    }
 }

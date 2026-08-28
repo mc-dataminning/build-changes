@@ -1,45 +1,47 @@
-public class gif extends gki {
-   private final gkd a;
+import java.util.List;
+import java.util.Locale;
 
-   gif(gga $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gkd $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.a = $$7;
-      this.t = 4;
-      this.u = 0.008F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.b($$7);
+public enum gif {
+   a("i_want_to_report_them"),
+   b("hate_speech"),
+   c("harassment_or_bullying"),
+   d("self_harm_or_suicide"),
+   e("imminent_harm"),
+   f("defamation_impersonation_false_information"),
+   g("alcohol_tobacco_drugs"),
+   h("child_sexual_exploitation_or_abuse"),
+   i("terrorism_or_violent_extremism"),
+   j("non_consensual_intimate_imagery"),
+   k("sexually_inappropriate");
+
+   private final String l;
+   private final wp m;
+   private final wp n;
+
+   private gif(final String $$0) {
+      this.l = $$0.toUpperCase(Locale.ROOT);
+      String $$1 = "gui.abuseReport.reason." + $$0;
+      this.m = wp.c($$1);
+      this.n = wp.c($$1 + ".description");
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         this.b(this.a);
-      }
+   public String a() {
+      return this.l;
    }
 
-   @Override
-   public gjm b() {
-      return gjm.b;
+   public wp b() {
+      return this.m;
    }
 
-   public static class a implements gjl<lx> {
-      private final gkd a;
+   public wp c() {
+      return this.n;
+   }
 
-      public a(gkd $$0) {
-         this.a = $$0;
-      }
-
-      public gji a(lx $$0, gga $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gif($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
+   public static List<gif> a(gig $$0) {
+      return switch ($$0) {
+         case a -> List.of(k);
+         case b -> List.of(e, f);
+         default -> List.of();
+      };
    }
 }

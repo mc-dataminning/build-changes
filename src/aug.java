@@ -38,15 +38,15 @@ public class aug implements aup {
       this.a($$0.b(), $$0, null);
    }
 
-   public void a(atc $$0, Predicate<akv> $$1) {
+   public void a(atc $$0, Predicate<aku> $$1) {
       this.a($$0.b(), $$0, $$1);
    }
 
-   public void a(String $$0, Predicate<akv> $$1) {
+   public void a(String $$0, Predicate<aku> $$1) {
       this.a($$0, null, $$1);
    }
 
-   private void a(String $$0, @Nullable atc $$1, @Nullable Predicate<akv> $$2) {
+   private void a(String $$0, @Nullable atc $$1, @Nullable Predicate<aku> $$2) {
       this.a.add(new aug.d($$0, $$1, $$2));
    }
 
@@ -56,7 +56,7 @@ public class aug implements aup {
    }
 
    @Override
-   public Optional<aun> getResource(akv $$0) {
+   public Optional<aun> getResource(aku $$0) {
       for (int $$1 = this.a.size() - 1; $$1 >= 0; $$1--) {
          aug.d $$2 = this.a.get($$1);
          atc $$3 = $$2.b;
@@ -77,17 +77,17 @@ public class aug implements aup {
       return Optional.empty();
    }
 
-   private static aun a(atc $$0, akv $$1, auh<InputStream> $$2, auh<aur> $$3) {
+   private static aun a(atc $$0, aku $$1, auh<InputStream> $$2, auh<aur> $$3) {
       return new aun($$0, a($$1, $$0, $$2), $$3);
    }
 
-   private static auh<InputStream> a(akv $$0, atc $$1, auh<InputStream> $$2) {
+   private static auh<InputStream> a(aku $$0, atc $$1, auh<InputStream> $$2) {
       return c.isDebugEnabled() ? () -> new aug.c($$2.get(), $$0, $$1.b()) : $$2;
    }
 
    @Override
-   public List<aun> a(akv $$0) {
-      akv $$1 = d($$0);
+   public List<aun> a(aku $$0) {
+      aku $$1 = d($$0);
       List<aun> $$2 = new ArrayList<>();
       boolean $$3 = false;
       String $$4 = null;
@@ -129,26 +129,26 @@ public class aug implements aup {
       return Lists.reverse($$2);
    }
 
-   private static boolean b(akv $$0) {
+   private static boolean b(aku $$0) {
       return $$0.a().endsWith(".mcmeta");
    }
 
-   private static akv c(akv $$0) {
+   private static aku c(aku $$0) {
       String $$1 = $$0.a().substring(0, $$0.a().length() - ".mcmeta".length());
       return $$0.e($$1);
    }
 
-   static akv d(akv $$0) {
+   static aku d(aku $$0) {
       return $$0.e($$0.a() + ".mcmeta");
    }
 
    @Override
-   public Map<akv, aun> b(String $$0, Predicate<akv> $$1) {
+   public Map<aku, aun> b(String $$0, Predicate<aku> $$1) {
       record a(atc a, auh<InputStream> b, int c) {
       }
 
-      Map<akv, a> $$2 = new HashMap<>();
-      Map<akv, a> $$3 = new HashMap<>();
+      Map<aku, a> $$2 = new HashMap<>();
+      Map<aku, a> $$3 = new HashMap<>();
       int $$4 = this.a.size();
 
       for (int $$5 = 0; $$5 < $$4; $$5++) {
@@ -170,9 +170,9 @@ public class aug implements aup {
          }
       }
 
-      Map<akv, aun> $$9 = Maps.newTreeMap();
+      Map<aku, aun> $$9 = Maps.newTreeMap();
       $$2.forEach(($$2x, $$3x) -> {
-         akv $$4x = d($$2x);
+         aku $$4x = d($$2x);
          a $$5x = $$3.get($$4x);
          auh<aur> $$6x;
          if ($$5x != null && $$5x.c >= $$3x.c) {
@@ -186,9 +186,9 @@ public class aug implements aup {
       return $$9;
    }
 
-   private auh<aur> a(akv $$0, int $$1) {
+   private auh<aur> a(aku $$0, int $$1) {
       return () -> {
-         akv $$2 = d($$0);
+         aku $$2 = d($$0);
 
          for (int $$3 = this.a.size() - 1; $$3 >= $$1; $$3--) {
             aug.d $$4 = this.a.get($$3);
@@ -222,7 +222,7 @@ public class aug implements aup {
       return var2;
    }
 
-   private static void a(aug.d $$0, Map<akv, aug.b> $$1) {
+   private static void a(aug.d $$0, Map<aku, aug.b> $$1) {
       for (aug.b $$2 : $$1.values()) {
          if ($$0.a($$2.a)) {
             $$2.c.clear();
@@ -232,12 +232,12 @@ public class aug implements aup {
       }
    }
 
-   private void a(aug.d $$0, String $$1, Predicate<akv> $$2, Map<akv, aug.b> $$3) {
+   private void a(aug.d $$0, String $$1, Predicate<aku> $$2, Map<aku, aug.b> $$3) {
       atc $$4 = $$0.b;
       if ($$4 != null) {
          $$4.a(this.d, this.e, $$1, ($$3x, $$4x) -> {
             if (b($$3x)) {
-               akv $$5 = c($$3x);
+               aku $$5 = c($$3x);
                if (!$$2.test($$5)) {
                   return;
                }
@@ -255,15 +255,15 @@ public class aug implements aup {
    }
 
    @Override
-   public Map<akv, List<aun>> c(String $$0, Predicate<akv> $$1) {
-      Map<akv, aug.b> $$2 = Maps.newHashMap();
+   public Map<aku, List<aun>> c(String $$0, Predicate<aku> $$1) {
+      Map<aku, aug.b> $$2 = Maps.newHashMap();
 
       for (aug.d $$3 : this.a) {
          a($$3, $$2);
          this.a($$3, $$0, $$1, $$2);
       }
 
-      TreeMap<akv, List<aun>> $$4 = Maps.newTreeMap();
+      TreeMap<aku, List<aun>> $$4 = Maps.newTreeMap();
 
       for (aug.b $$5 : $$2.values()) {
          if (!$$5.c.isEmpty()) {
@@ -288,9 +288,9 @@ public class aug implements aup {
       return this.a.stream().map($$0 -> $$0.b).filter(Objects::nonNull);
    }
 
-   static record b(akv a, akv b, List<aug.e> c, Map<atc, auh<InputStream>> d) {
+   static record b(aku a, aku b, List<aug.e> c, Map<atc, auh<InputStream>> d) {
 
-      b(akv $$0) {
+      b(aku $$0) {
          this($$0, aug.d($$0), new ArrayList<>(), new Object2ObjectArrayMap());
       }
    }
@@ -299,7 +299,7 @@ public class aug implements aup {
       private final Supplier<String> a;
       private boolean b;
 
-      public c(InputStream $$0, akv $$1, String $$2) {
+      public c(InputStream $$0, aku $$1, String $$2) {
          super($$0);
          Exception $$3 = new Exception("Stacktrace");
          this.a = () -> {
@@ -325,15 +325,15 @@ public class aug implements aup {
       }
    }
 
-   static record d(String a, @Nullable atc b, @Nullable Predicate<akv> c) {
+   static record d(String a, @Nullable atc b, @Nullable Predicate<aku> c) {
 
-      public void a(Collection<akv> $$0) {
+      public void a(Collection<aku> $$0) {
          if (this.c != null) {
             $$0.removeIf(this.c);
          }
       }
 
-      public boolean a(akv $$0) {
+      public boolean a(aku $$0) {
          return this.c != null && this.c.test($$0);
       }
    }

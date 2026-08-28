@@ -1,8 +1,16 @@
-public abstract class fol extends foo {
-   protected final flo a;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
-   protected fol(flo $$0, int $$1, int $$2, int $$3, int $$4, double $$5) {
-      super($$1, $$2, $$3, $$4, wo.a, $$5);
+public class fol implements fon {
+   private final aku a;
+
+   public fol(aku $$0) {
       this.a = $$0;
+   }
+
+   public JsonElement a() {
+      JsonObject $$0 = new JsonObject();
+      $$0.addProperty("parent", this.a.toString());
+      return $$0;
    }
 }

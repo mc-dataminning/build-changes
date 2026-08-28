@@ -49,7 +49,7 @@ public class uj implements ur {
 
    @Override
    public void a(ul $$0) {
-      this.p = ul.b($$0.u_());
+      this.p = ul.b($$0.p_());
    }
 
    @Override

@@ -1,26 +1,42 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public interface ero<P extends erm> {
-   Codec<erm> a = mb.af.q().dispatch("processor_type", erm::a, ero::codec);
-   Codec<ern> b = a.listOf().xmap(ern::new, ern::a);
-   Codec<ern> c = Codec.withAlternative(b.fieldOf("processors").codec(), b);
-   Codec<jr<ern>> d = akr.a(mc.aV, c);
-   ero<eqq> e = a("block_ignore", eqq.a);
-   ero<eqs> f = a("block_rot", eqs.a);
-   ero<eqv> g = a("gravity", eqv.a);
-   ero<eqw> h = a("jigsaw_replacement", eqw.a);
-   ero<eri> i = a("rule", eri.a);
-   ero<era> j = a("nop", era.a);
-   ero<eqp> k = a("block_age", eqp.a);
-   ero<eqo> l = a("blackstone_replace", eqo.a);
-   ero<eqx> m = a("lava_submerged_block", eqx.a);
-   ero<erf> n = a("protected_blocks", erf.b);
-   ero<equ> o = a("capped", equ.a);
+public class ero extends esi {
+   public static final MapCodec<ero> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               kg.a(mc.f).optionalFieldOf("rottable_blocks").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, ero::new)
+   );
+   private final Optional<jv<dke>> b;
+   private final float c;
 
-   MapCodec<P> codec();
+   public ero(jv<dke> $$0, float $$1) {
+      this(Optional.of($$0), $$1);
+   }
 
-   static <P extends erm> ero<P> a(String $$0, MapCodec<P> $$1) {
-      return ke.a(mb.af, $$0, () -> $$1);
+   public ero(float $$0) {
+      this(Optional.empty(), $$0);
+   }
+
+   private ero(Optional<jv<dke>> $$0, float $$1) {
+      this.c = $$1;
+      this.b = $$0;
+   }
+
+   @Nullable
+   @Override
+   public esl.d a(dhc $$0, ji $$1, ji $$2, esl.d $$3, esl.d $$4, esh $$5) {
+      azh $$6 = $$5.b($$4.a());
+      return (!this.b.isPresent() || $$3.b().a(this.b.get())) && !($$6.i() <= this.c) ? null : $$4;
+   }
+
+   @Override
+   protected esk<?> a() {
+      return esk.f;
    }
 }

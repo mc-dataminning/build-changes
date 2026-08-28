@@ -1,385 +1,80 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import com.mojang.authlib.GameProfile;
+import javax.annotation.Nullable;
 
-public class gls {
-   private static final Map<djn, gmj> a = af.a(Maps.newHashMap(), $$0 -> {
-      gmj $$1 = gmj.s();
-      $$0.put(djp.gd, $$1);
-      gmj $$2 = gmj.d();
-      $$0.put(djp.i, $$2);
-      $$0.put(djp.fk, $$2);
-      $$0.put(djp.fm, $$2);
-      $$0.put(djp.gc, $$2);
-      $$0.put(djp.hz, $$2);
-      $$0.put(djp.fl, $$2);
-      $$0.put(djp.aN, $$2);
-      $$0.put(djp.aK, $$2);
-      $$0.put(djp.aL, $$2);
-      $$0.put(djp.aO, $$2);
-      $$0.put(djp.aP, $$2);
-      $$0.put(djp.aM, $$2);
-      $$0.put(djp.aQ, $$2);
-      $$0.put(djp.aR, $$2);
-      $$0.put(djp.aT, $$2);
-      $$0.put(djp.aU, $$2);
-      $$0.put(djp.ag, $$2);
-      $$0.put(djp.aS, $$2);
-      gmj $$3 = gmj.e();
-      $$0.put(djp.z, $$3);
-      $$0.put(djp.A, $$3);
-      $$0.put(djp.B, $$3);
-      $$0.put(djp.C, $$3);
-      $$0.put(djp.D, $$3);
-      $$0.put(djp.E, $$3);
-      $$0.put(djp.F, $$3);
-      $$0.put(djp.G, $$3);
-      $$0.put(djp.aX, $$3);
-      $$0.put(djp.bg, $$3);
-      $$0.put(djp.bh, $$3);
-      $$0.put(djp.bi, $$3);
-      $$0.put(djp.bj, $$3);
-      $$0.put(djp.bk, $$3);
-      $$0.put(djp.bl, $$3);
-      $$0.put(djp.bm, $$3);
-      $$0.put(djp.bn, $$3);
-      $$0.put(djp.bo, $$3);
-      $$0.put(djp.bp, $$3);
-      $$0.put(djp.bq, $$3);
-      $$0.put(djp.br, $$3);
-      $$0.put(djp.bs, $$3);
-      $$0.put(djp.bt, $$3);
-      $$0.put(djp.bu, $$3);
-      $$0.put(djp.bv, $$3);
-      $$0.put(djp.bw, $$3);
-      $$0.put(djp.bx, $$3);
-      $$0.put(djp.bz, $$3);
-      $$0.put(djp.bA, $$3);
-      $$0.put(djp.bB, $$3);
-      $$0.put(djp.bC, $$3);
-      $$0.put(djp.bD, $$3);
-      $$0.put(djp.bE, $$3);
-      $$0.put(djp.bY, $$3);
-      $$0.put(djp.tZ, $$3);
-      $$0.put(djp.ua, $$3);
-      $$0.put(djp.ca, $$3);
-      $$0.put(djp.cb, $$3);
-      $$0.put(djp.cc, $$3);
-      $$0.put(djp.cd, $$3);
-      $$0.put(djp.ce, $$3);
-      $$0.put(djp.cf, $$3);
-      $$0.put(djp.cg, $$3);
-      $$0.put(djp.ch, $$3);
-      $$0.put(djp.ci, $$3);
-      $$0.put(djp.cj, $$3);
-      $$0.put(djp.ck, $$3);
-      $$0.put(djp.cl, $$3);
-      $$0.put(djp.cm, $$3);
-      $$0.put(djp.cn, $$3);
-      $$0.put(djp.cw, $$3);
-      $$0.put(djp.cx, $$3);
-      $$0.put(djp.en, $$3);
-      $$0.put(djp.eo, $$3);
-      $$0.put(djp.cy, $$3);
-      $$0.put(djp.cz, $$3);
-      $$0.put(djp.cA, $$3);
-      $$0.put(djp.tT, $$3);
-      $$0.put(djp.tU, $$3);
-      $$0.put(djp.cE, $$3);
-      $$0.put(djp.cJ, $$3);
-      $$0.put(djp.cW, $$3);
-      $$0.put(djp.cX, $$3);
-      $$0.put(djp.cY, $$3);
-      $$0.put(djp.dK, $$3);
-      $$0.put(djp.dX, $$3);
-      $$0.put(djp.dY, $$3);
-      $$0.put(djp.ed, $$3);
-      $$0.put(djp.ef, $$3);
-      $$0.put(djp.eu, $$3);
-      $$0.put(djp.eL, $$3);
-      $$0.put(djp.eM, $$3);
-      $$0.put(djp.eN, $$3);
-      $$0.put(djp.eO, $$3);
-      $$0.put(djp.eP, $$3);
-      $$0.put(djp.eQ, $$3);
-      $$0.put(djp.eR, $$3);
-      $$0.put(djp.eS, $$3);
-      $$0.put(djp.po, $$3);
-      $$0.put(djp.pp, $$3);
-      $$0.put(djp.eT, $$3);
-      $$0.put(djp.eU, $$3);
-      $$0.put(djp.sw, $$3);
-      $$0.put(djp.sx, $$3);
-      $$0.put(djp.sz, $$3);
-      $$0.put(djp.sy, $$3);
-      $$0.put(djp.sA, $$3);
-      $$0.put(djp.sB, $$3);
-      $$0.put(djp.sD, $$3);
-      $$0.put(djp.sC, $$3);
-      $$0.put(djp.fp, $$3);
-      $$0.put(djp.fq, $$3);
-      $$0.put(djp.fr, $$3);
-      $$0.put(djp.fs, $$3);
-      $$0.put(djp.ft, $$3);
-      $$0.put(djp.tX, $$3);
-      $$0.put(djp.tY, $$3);
-      $$0.put(djp.fu, $$3);
-      $$0.put(djp.fv, $$3);
-      $$0.put(djp.fB, $$3);
-      $$0.put(djp.fL, $$3);
-      $$0.put(djp.fN, $$3);
-      $$0.put(djp.fX, $$3);
-      $$0.put(djp.gj, $$3);
-      $$0.put(djp.gm, $$3);
-      $$0.put(djp.go, $$3);
-      $$0.put(djp.gp, $$3);
-      $$0.put(djp.gq, $$3);
-      $$0.put(djp.gr, $$3);
-      $$0.put(djp.gs, $$3);
-      $$0.put(djp.gt, $$3);
-      $$0.put(djp.gu, $$3);
-      $$0.put(djp.gv, $$3);
-      $$0.put(djp.gw, $$3);
-      $$0.put(djp.gx, $$3);
-      $$0.put(djp.gy, $$3);
-      $$0.put(djp.gz, $$3);
-      $$0.put(djp.ub, $$3);
-      $$0.put(djp.uc, $$3);
-      $$0.put(djp.gA, $$3);
-      $$0.put(djp.gB, $$3);
-      $$0.put(djp.gC, $$3);
-      $$0.put(djp.gD, $$3);
-      $$0.put(djp.gE, $$3);
-      $$0.put(djp.gF, $$3);
-      $$0.put(djp.gG, $$3);
-      $$0.put(djp.gH, $$3);
-      $$0.put(djp.gI, $$3);
-      $$0.put(djp.gJ, $$3);
-      $$0.put(djp.gK, $$3);
-      $$0.put(djp.gL, $$3);
-      $$0.put(djp.gM, $$3);
-      $$0.put(djp.gN, $$3);
-      $$0.put(djp.gO, $$3);
-      $$0.put(djp.tK, $$3);
-      $$0.put(djp.tL, $$3);
-      $$0.put(djp.gn, $$3);
-      $$0.put(djp.gP, $$3);
-      $$0.put(djp.gQ, $$3);
-      $$0.put(djp.hv, $$3);
-      $$0.put(djp.hE, $$3);
-      $$0.put(djp.iw, $$3);
-      $$0.put(djp.jb, $$3);
-      $$0.put(djp.jc, $$3);
-      $$0.put(djp.jd, $$3);
-      $$0.put(djp.je, $$3);
-      $$0.put(djp.jf, $$3);
-      $$0.put(djp.jg, $$3);
-      $$0.put(djp.kM, $$3);
-      $$0.put(djp.kN, $$3);
-      $$0.put(djp.kO, $$3);
-      $$0.put(djp.kP, $$3);
-      $$0.put(djp.kQ, $$3);
-      $$0.put(djp.kR, $$3);
-      $$0.put(djp.kS, $$3);
-      $$0.put(djp.kT, $$3);
-      $$0.put(djp.kU, $$3);
-      $$0.put(djp.so, $$3);
-      $$0.put(djp.sp, $$3);
-      $$0.put(djp.sr, $$3);
-      $$0.put(djp.sq, $$3);
-      $$0.put(djp.ss, $$3);
-      $$0.put(djp.st, $$3);
-      $$0.put(djp.sv, $$3);
-      $$0.put(djp.su, $$3);
-      $$0.put(djp.kV, $$3);
-      $$0.put(djp.kW, $$3);
-      $$0.put(djp.kX, $$3);
-      $$0.put(djp.bZ, $$3);
-      $$0.put(djp.lc, $$3);
-      $$0.put(djp.le, $$3);
-      $$0.put(djp.ld, $$3);
-      $$0.put(djp.lf, $$3);
-      $$0.put(djp.mE, $$3);
-      $$0.put(djp.mF, $$3);
-      $$0.put(djp.mH, $$3);
-      $$0.put(djp.mT, $$3);
-      $$0.put(djp.mU, $$3);
-      $$0.put(djp.mV, $$3);
-      $$0.put(djp.mW, $$3);
-      $$0.put(djp.mX, $$3);
-      $$0.put(djp.mY, $$3);
-      $$0.put(djp.mZ, $$3);
-      $$0.put(djp.na, $$3);
-      $$0.put(djp.nb, $$3);
-      $$0.put(djp.nc, $$3);
-      $$0.put(djp.nd, $$3);
-      $$0.put(djp.ne, $$3);
-      $$0.put(djp.nf, $$3);
-      $$0.put(djp.ng, $$3);
-      $$0.put(djp.nh, $$3);
-      $$0.put(djp.ni, $$3);
-      $$0.put(djp.nj, $$3);
-      $$0.put(djp.nk, $$3);
-      $$0.put(djp.nl, $$3);
-      $$0.put(djp.nm, $$3);
-      $$0.put(djp.nn, $$3);
-      $$0.put(djp.no, $$3);
-      $$0.put(djp.np, $$3);
-      $$0.put(djp.nq, $$3);
-      $$0.put(djp.nr, $$3);
-      $$0.put(djp.ns, $$3);
-      $$0.put(djp.nt, $$3);
-      $$0.put(djp.nu, $$3);
-      $$0.put(djp.nv, $$3);
-      $$0.put(djp.nw, $$3);
-      $$0.put(djp.nx, $$3);
-      $$0.put(djp.nz, $$3);
-      $$0.put(djp.nA, $$3);
-      $$0.put(djp.nB, $$3);
-      $$0.put(djp.nC, $$3);
-      $$0.put(djp.ou, $$3);
-      $$0.put(djp.oE, $$3);
-      $$0.put(djp.oG, $$3);
-      $$0.put(djp.oH, $$3);
-      $$0.put(djp.oI, $$3);
-      $$0.put(djp.oJ, $$3);
-      $$0.put(djp.oK, $$3);
-      $$0.put(djp.pb, $$3);
-      $$0.put(djp.pc, $$3);
-      $$0.put(djp.pd, $$3);
-      $$0.put(djp.pe, $$3);
-      $$0.put(djp.oT, $$3);
-      $$0.put(djp.oZ, $$3);
-      $$0.put(djp.oQ, $$3);
-      $$0.put(djp.pf, $$3);
-      $$0.put(djp.oS, $$3);
-      $$0.put(djp.pO, $$3);
-      $$0.put(djp.pP, $$3);
-      $$0.put(djp.pQ, $$3);
-      $$0.put(djp.pR, $$3);
-      $$0.put(djp.pw, $$3);
-      $$0.put(djp.px, $$3);
-      $$0.put(djp.sV, $$3);
-      $$0.put(djp.ra, $$3);
-      $$0.put(djp.qZ, $$3);
-      $$0.put(djp.qY, $$3);
-      $$0.put(djp.qX, $$3);
-      $$0.put(djp.sU, $$3);
-      $$0.put(djp.sX, $$3);
-      $$0.put(djp.sY, $$3);
-      $$0.put(djp.sZ, $$3);
-      $$0.put(djp.tb, $$3);
-      $$0.put(djp.ta, $$3);
-      $$0.put(djp.td, $$3);
-      $$0.put(djp.tf, $$3);
-      $$0.put(djp.tg, $$3);
-      $$0.put(djp.th, $$3);
-      $$0.put(djp.ti, $$3);
-      $$0.put(djp.rs, $$3);
-      $$0.put(djp.rt, $$3);
-      $$0.put(djp.rv, $$3);
-      $$0.put(djp.rx, $$3);
-      $$0.put(djp.H, $$3);
-      $$0.put(djp.tP, $$3);
-      $$0.put(djp.sE, $$3);
-      $$0.put(djp.sF, $$3);
-      $$0.put(djp.sG, $$3);
-      $$0.put(djp.sH, $$3);
-      $$0.put(djp.sI, $$3);
-      $$0.put(djp.sJ, $$3);
-      $$0.put(djp.sK, $$3);
-      $$0.put(djp.sL, $$3);
-      gmj $$4 = gmj.f();
-      $$0.put(djp.eb, $$4);
-      $$0.put(djp.eq, $$4);
-      $$0.put(djp.ev, $$4);
-      $$0.put(djp.ew, $$4);
-      $$0.put(djp.ex, $$4);
-      $$0.put(djp.ey, $$4);
-      $$0.put(djp.ez, $$4);
-      $$0.put(djp.eA, $$4);
-      $$0.put(djp.eB, $$4);
-      $$0.put(djp.eC, $$4);
-      $$0.put(djp.eD, $$4);
-      $$0.put(djp.eE, $$4);
-      $$0.put(djp.eF, $$4);
-      $$0.put(djp.eG, $$4);
-      $$0.put(djp.eH, $$4);
-      $$0.put(djp.eI, $$4);
-      $$0.put(djp.eJ, $$4);
-      $$0.put(djp.eK, $$4);
-      $$0.put(djp.hW, $$4);
-      $$0.put(djp.hX, $$4);
-      $$0.put(djp.hY, $$4);
-      $$0.put(djp.hZ, $$4);
-      $$0.put(djp.ia, $$4);
-      $$0.put(djp.ib, $$4);
-      $$0.put(djp.ic, $$4);
-      $$0.put(djp.id, $$4);
-      $$0.put(djp.ie, $$4);
-      $$0.put(djp.if, $$4);
-      $$0.put(djp.ig, $$4);
-      $$0.put(djp.ih, $$4);
-      $$0.put(djp.ii, $$4);
-      $$0.put(djp.ij, $$4);
-      $$0.put(djp.ik, $$4);
-      $$0.put(djp.il, $$4);
-      $$0.put(djp.it, $$4);
-      $$0.put(djp.pI, $$4);
-      $$0.put(djp.lk, $$4);
-      $$0.put(djp.nF, $$4);
-      $$0.put(djp.rq, $$4);
-   });
-   private static final Map<esz, gmj> b = af.a(Maps.newHashMap(), $$0 -> {
-      gmj $$1 = gmj.f();
-      $$0.put(etb.b, $$1);
-      $$0.put(etb.c, $$1);
-   });
-   private static boolean c;
+public abstract class gls extends cpr {
+   @Nullable
+   private ghk h;
+   protected fbx a = fbx.c;
+   public float b;
+   public float c;
+   public float d;
+   public final ggy e;
+   public float f;
+   public float g;
 
-   public static gmj a(dwy $$0) {
-      djn $$1 = $$0.b();
-      if ($$1 instanceof dnz) {
-         return c ? gmj.d() : gmj.c();
-      } else {
-         gmj $$2 = a.get($$1);
-         return $$2 != null ? $$2 : gmj.c();
-      }
+   public gls(ggy $$0, GameProfile $$1) {
+      super($$0, $$0.aa(), $$0.ab(), $$1);
+      this.e = $$0;
    }
 
-   public static gmj b(dwy $$0) {
-      djn $$1 = $$0.b();
-      if ($$1 instanceof dnz) {
-         return c ? gmj.d() : gmj.c();
-      } else {
-         gmj $$2 = a.get($$1);
-         if ($$2 != null) {
-            return $$2 == gmj.f() ? gmj.g() : $$2;
-         } else {
-            return gmj.c();
+   @Override
+   public boolean U_() {
+      ghk $$0 = this.a();
+      return $$0 != null && $$0.e() == dgw.d;
+   }
+
+   @Override
+   public boolean b() {
+      ghk $$0 = this.a();
+      return $$0 != null && $$0.e() == dgw.b;
+   }
+
+   @Nullable
+   protected ghk a() {
+      if (this.h == null) {
+         this.h = fmg.Q().L().a(this.cF());
+      }
+
+      return this.h;
+   }
+
+   @Override
+   public void h() {
+      this.f = this.g;
+      this.a = this.dx();
+      super.h();
+   }
+
+   public fbx J(float $$0) {
+      return this.a.a(this.dx(), (double)$$0);
+   }
+
+   public hgt c() {
+      ghk $$0 = this.a();
+      return $$0 == null ? hgk.a(this.cF()) : $$0.g();
+   }
+
+   public float a(boolean $$0, float $$1) {
+      float $$2 = 1.0F;
+      if (this.gm().b) {
+         $$2 *= 1.1F;
+      }
+
+      float $$3 = this.gm().b();
+      if ($$3 != 0.0F) {
+         float $$4 = (float)this.h(bxg.v) / $$3;
+         $$2 *= ($$4 + 1.0F) / 2.0F;
+      }
+
+      if (this.fB()) {
+         if (this.fD().a(cxl.pc)) {
+            float $$5 = Math.min((float)this.fF() / 20.0F, 1.0F);
+            $$2 *= 1.0F - ayz.l($$5) * 0.15F;
+         } else if ($$0 && this.gJ()) {
+            return 0.1F;
          }
       }
-   }
 
-   public static gmj c(dwy $$0) {
-      gmj $$1 = a($$0);
-      return $$1 == gmj.f() ? gmu.j() : gmu.i();
-   }
-
-   public static gmj a(cwq $$0) {
-      if ($$0.h() instanceof cuw $$2) {
-         djn $$3 = $$2.d();
-         return c($$3.m());
-      } else {
-         return gmu.j();
-      }
-   }
-
-   public static gmj a(eta $$0) {
-      gmj $$1 = b.get($$0.a());
-      return $$1 != null ? $$1 : gmj.c();
-   }
-
-   public static void a(boolean $$0) {
-      c = $$0;
+      return ayz.h($$1, 1.0F, $$2);
    }
 }

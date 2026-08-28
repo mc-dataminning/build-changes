@@ -3,13 +3,13 @@ import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 
-public class bdk extends bgt {
-   public bdk(Schema $$0) {
-      super($$0, false, "EntityBrushableBlockFieldsRenameFix", bhy.s, "minecraft:brushable_block");
+public class bdk extends bgy {
+   public bdk(Schema $$0, boolean $$1) {
+      super($$0, $$1, "EntityArmorStandSilentFix", bic.C, "ArmorStand");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.renameField("loot_table", "LootTable").renameField("loot_table_seed", "LootTableSeed");
+      return $$0.get("Silent").asBoolean(false) && !$$0.get("Marker").asBoolean(false) ? $$0.remove("Silent") : $$0;
    }
 
    @Override

@@ -1,53 +1,47 @@
-import ca.weblite.objc.Client;
-import ca.weblite.objc.NSObject;
-import com.sun.jna.Pointer;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Base64;
-import java.util.Locale;
-import java.util.Optional;
-import org.lwjgl.glfw.GLFWNativeCocoa;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import it.unimi.dsi.fastutil.ints.IntSets;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class fes {
-   public static final boolean a = System.getProperty("os.name").toLowerCase(Locale.ROOT).contains("mac");
-   private static final int b = 8;
-   private static final int c = 16384;
+public class fes implements feq {
+   private final Int2ObjectMap<fep.a> b;
 
-   public static void a(long $$0) {
-      c($$0).filter(fes::a).ifPresent(fes::c);
+   public fes(Map<Integer, Float> $$0) {
+      this.b = new Int2ObjectOpenHashMap($$0.size());
+      $$0.forEach(($$0x, $$1) -> this.b.put($$0x, (fep.a)() -> $$1));
    }
 
-   public static void b(long $$0) {
-      c($$0).ifPresent($$0x -> {
-         long $$1 = b($$0x);
-         $$0x.send("setStyleMask:", new Object[]{$$1 & -9L});
-      });
+   @Nullable
+   @Override
+   public fep a(int $$0) {
+      return (fep)this.b.get($$0);
    }
 
-   private static Optional<NSObject> c(long $$0) {
-      long $$1 = GLFWNativeCocoa.glfwGetCocoaWindow($$0);
-      return $$1 != 0L ? Optional.of(new NSObject(new Pointer($$1))) : Optional.empty();
+   @Override
+   public IntSet a() {
+      return IntSets.unmodifiable(this.b.keySet());
    }
 
-   private static boolean a(NSObject $$0) {
-      return (b($$0) & 16384L) != 0L;
-   }
+   public static record a(Map<Integer, Float> c) implements fst {
+      public static final MapCodec<fes.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.unboundedMap(ayi.B, Codec.FLOAT).fieldOf("advances").forGetter(fes.a::c)).apply($$0, fes.a::new)
+      );
 
-   private static long b(NSObject $$0) {
-      return (Long)$$0.sendRaw("styleMask", new Object[0]);
-   }
+      @Override
+      public fsu a() {
+         return fsu.c;
+      }
 
-   private static void c(NSObject $$0) {
-      $$0.send("toggleFullScreen:", new Object[]{Pointer.NULL});
-   }
-
-   public static void a(auh<InputStream> $$0) throws IOException {
-      try (InputStream $$1 = $$0.get()) {
-         String $$2 = Base64.getEncoder().encodeToString($$1.readAllBytes());
-         Client $$3 = Client.getInstance();
-         Object $$4 = $$3.sendProxy("NSData", "alloc", new Object[0]).send("initWithBase64Encoding:", new Object[]{$$2});
-         Object $$5 = $$3.sendProxy("NSImage", "alloc", new Object[0]).send("initWithData:", new Object[]{$$4});
-         $$3.sendProxy("NSApplication", "sharedApplication", new Object[0]).send("setApplicationIconImage:", new Object[]{$$5});
+      @Override
+      public Either<fst.b, fst.c> b() {
+         fst.b $$0 = $$0x -> new fes(this.c);
+         return Either.left($$0);
       }
    }
 }

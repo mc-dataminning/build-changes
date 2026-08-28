@@ -1,63 +1,80 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.Optional;
 
-public class cbb extends bxb<coa> {
-   private static final int d = 15;
-   private static final int e = 20;
-   private static final double f = 0.5;
-   private static final double g = 2.5;
-   public static final int c = 40;
-   private static final int h = ayz.c(34.0);
-   private static final int i = ayz.f(60.0F);
+public class cbb extends cbc {
+   private static final List<cxd> c = ImmutableList.of(cxl.qc, cxl.wn);
 
-   public cbb() {
-      super(ImmutableMap.of(cem.o, cen.a, cem.aJ, cen.b, cem.aK, cen.c, cem.aL, cen.c), i);
-   }
-
-   protected boolean a(ard $$0, coa $$1) {
-      return $$1.a($$1.eb().c(cem.o).get(), 15.0, 20.0);
-   }
-
-   protected boolean a(ard $$0, coa $$1, long $$2) {
-      return true;
-   }
-
-   protected void b(ard $$0, coa $$1, long $$2) {
-      $$1.eb().a(cem.p, true, (long)i);
-      $$1.eb().a(cem.aL, baf.a, (long)h);
-      $$0.a($$1, (byte)62);
-      $$1.a(awa.CL, 3.0F, 1.0F);
-   }
-
-   protected void c(ard $$0, coa $$1, long $$2) {
-      $$1.eb().c(cem.o).ifPresent($$1x -> $$1.L().a($$1x.dt()));
-      if (!$$1.eb().a(cem.aL) && !$$1.eb().a(cem.aK)) {
-         $$1.eb().a(cem.aK, baf.a, (long)(i - h));
-         $$1.eb().c(cem.o).filter($$1::b).filter($$1x -> $$1.a($$1x, 15.0, 20.0)).ifPresent($$2x -> {
-            fbb $$3 = $$1.dt().e($$1.ds().b(bun.d, 0, $$1.dL()));
-            fbb $$4 = $$2x.bF().d($$3);
-            fbb $$5 = $$4.d();
-            int $$6 = ayz.a($$4.g()) + 7;
-
-            for (int $$7 = 1; $$7 < $$6; $$7++) {
-               fbb $$8 = $$3.e($$5.c((double)$$7));
-               $$0.a(lt.B, $$8.d, $$8.e, $$8.f, 1, 0.0, 0.0, 0.0, 0.0);
-            }
-
-            $$1.a(awa.CK, 3.0F, 1.0F);
-            if ($$2x.a($$0, $$0.ak().e($$1), 10.0F)) {
-               double $$9 = 0.5 * (1.0 - $$2x.h(bwq.p));
-               double $$10 = 2.5 * (1.0 - $$2x.h(bwq.p));
-               $$2x.j($$5.a() * $$10, $$5.b() * $$9, $$5.c() * $$10);
-            }
-         });
+   @Override
+   protected void a(ard $$0, cpd $$1) {
+      Optional<jq> $$2 = $$1.ea().c(cfc.c);
+      if (!$$2.isEmpty()) {
+         jq $$3 = $$2.get();
+         dxq $$4 = $$0.a_($$3.b());
+         if ($$4.a(dkg.pE)) {
+            this.c($$0, $$1);
+            this.a($$0, $$1, $$3, $$4);
+         }
       }
    }
 
-   protected void d(ard $$0, coa $$1, long $$2) {
-      a($$1, 40);
+   private void a(ard $$0, cpd $$1, jq $$2, dxq $$3) {
+      ji $$4 = $$2.b();
+      if ($$3.c(dlp.e) == 8) {
+         $$3 = dlp.a($$1, $$3, (dgz)$$0, $$4);
+      }
+
+      int $$5 = 20;
+      int $$6 = 10;
+      int[] $$7 = new int[c.size()];
+      btf $$8 = $$1.n();
+      int $$9 = $$8.b();
+      dxq $$10 = $$3;
+
+      for (int $$11 = $$9 - 1; $$11 >= 0 && $$5 > 0; $$11--) {
+         cxh $$12 = $$8.a($$11);
+         int $$13 = c.indexOf($$12.h());
+         if ($$13 != -1) {
+            int $$14 = $$12.M();
+            int $$15 = $$7[$$13] + $$14;
+            $$7[$$13] = $$15;
+            int $$16 = Math.min(Math.min($$15 - 10, $$5), $$14);
+            if ($$16 > 0) {
+               $$5 -= $$16;
+
+               for (int $$17 = 0; $$17 < $$16; $$17++) {
+                  $$10 = dlp.a($$1, $$10, $$0, $$12, $$4);
+                  if ($$10.c(dlp.e) == 7) {
+                     this.a($$0, $$3, $$4, $$10);
+                     return;
+                  }
+               }
+            }
+         }
+      }
+
+      this.a($$0, $$3, $$4, $$10);
    }
 
-   public static void a(bvi $$0, int $$1) {
-      $$0.eb().a(cem.aJ, baf.a, (long)$$1);
+   private void a(ard $$0, dxq $$1, ji $$2, dxq $$3) {
+      $$0.c(1500, $$2, $$3 != $$1 ? 1 : 0);
+   }
+
+   private void c(ard $$0, cpd $$1) {
+      btf $$2 = $$1.n();
+      if ($$2.a_(cxl.qe) <= 36) {
+         int $$3 = $$2.a_(cxl.qd);
+         int $$4 = 3;
+         int $$5 = 3;
+         int $$6 = Math.min(3, $$3 / 3);
+         if ($$6 != 0) {
+            int $$7 = $$6 * 3;
+            $$2.a(cxl.qd, $$7);
+            cxh $$8 = $$2.b(new cxh(cxl.qe, $$6));
+            if (!$$8.f()) {
+               $$1.a($$0, $$8, 0.5F);
+            }
+         }
+      }
    }
 }

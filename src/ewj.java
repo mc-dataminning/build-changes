@@ -1,4 +1,3 @@
-import com.mojang.serialization.MapCodec;
-
-public record ewj(MapCodec<? extends ewi> a) {
+public interface ewj extends evy {
+   void a(ji var1, float var2);
 }

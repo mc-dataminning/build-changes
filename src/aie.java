@@ -1,13 +1,16 @@
-public class aie implements yw<agg> {
-   public static final yn<vl, aie> a = yw.a(aie::a, aie::new);
-   private final bsk b;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   public aie(bsk $$0) {
+public class aie implements yw<agf> {
+   public static final yn<vl, aie> a = yw.a(aie::a, aie::new);
+   private final UUID b;
+
+   public aie(UUID $$0) {
       this.b = $$0;
    }
 
    private aie(vl $$0) {
-      this.b = $$0.b(bsk.class);
+      this.b = $$0.n();
    }
 
    private void a(vl $$0) {
@@ -16,14 +19,15 @@ public class aie implements yw<agg> {
 
    @Override
    public yy<aie> a() {
-      return age.cj;
+      return agd.cj;
    }
 
-   public void a(agg $$0) {
+   public void a(agf $$0) {
       $$0.a(this);
    }
 
-   public bsk b() {
-      return this.b;
+   @Nullable
+   public bva a(ard $$0) {
+      return $$0.b(this.b);
    }
 }

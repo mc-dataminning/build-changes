@@ -1,18 +1,26 @@
-public class guz extends gqv<cjd, gym, gaq<gym>> {
-   private static final akv a = akv.b("textures/entity/horse/horse_zombie.png");
-   private static final akv b = akv.b("textures/entity/horse/horse_skeleton.png");
-   private final akv k;
+public class guz extends guj<cmx, haz, gen> {
+   private static final aku a = aku.b("textures/entity/illager/ravager.png");
 
-   public guz(gsf.a $$0, gfc $$1, gfc $$2, boolean $$3) {
-      super($$0, new gcn($$0.a($$1)), new gcn($$0.a($$2)));
-      this.k = $$3 ? b : a;
+   public guz(gtd.a $$0) {
+      super($$0, new gen($$0.a(ggb.cx)), 1.1F);
    }
 
-   public akv a(gym $$0) {
-      return this.k;
+   public aku a(haz $$0) {
+      return a;
    }
 
-   public gym b() {
-      return new gym();
+   public haz b() {
+      return new haz();
+   }
+
+   public void a(cmx $$0, haz $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = (float)$$0.q() > 0.0F ? (float)$$0.q() - $$2 : 0.0F;
+      $$1.b = (float)$$0.m() > 0.0F ? (float)$$0.m() - $$2 : 0.0F;
+      if ($$0.gz() > 0) {
+         $$1.c = ((float)(20 - $$0.gz()) + $$2) / 20.0F;
+      } else {
+         $$1.c = 0.0F;
+      }
    }
 }

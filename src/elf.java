@@ -1,77 +1,69 @@
-import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.OptionalInt;
-import java.util.function.BiConsumer;
+import java.util.Collection;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class elf extends elj {
-   public static final MapCodec<elf> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, elf::new));
+public class elf extends ekz {
+   public static final MapCodec<elf> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ekz.a.fieldOf("source").forGetter($$0x -> $$0x.c),
+               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
+               bsd.c.fieldOf("values").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, elf::new)
+   );
+   private final ekz c;
+   private final String d;
+   @Nullable
+   private dyq e;
+   private final bsd f;
 
-   public elf(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public elf(ekz $$0, dyq $$1, bsd $$2) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = $$1.f();
+      this.f = $$2;
+      Collection<Integer> $$3 = $$1.a();
+
+      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
+         if (!$$3.contains($$4)) {
+            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
+         }
+      }
+   }
+
+   public elf(ekz $$0, String $$1, bsd $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.f = $$2;
    }
 
    @Override
-   protected elk<?> a() {
-      return elk.b;
+   protected ela<?> a() {
+      return ela.g;
    }
 
    @Override
-   public List<ejp.a> a(dgp $$0, BiConsumer<ji, dwy> $$1, azh $$2, int $$3, ji $$4, eiz $$5) {
-      a($$0, $$1, $$2, $$4.e(), $$5);
-      List<ejp.a> $$6 = Lists.newArrayList();
-      jn $$7 = jn.c.a.a($$2);
-      int $$8 = $$3 - $$2.a(4) - 1;
-      int $$9 = 3 - $$2.a(3);
-      ji.a $$10 = new ji.a();
-      int $$11 = $$4.u();
-      int $$12 = $$4.w();
-      OptionalInt $$13 = OptionalInt.empty();
-
-      for (int $$14 = 0; $$14 < $$3; $$14++) {
-         int $$15 = $$4.v() + $$14;
-         if ($$14 >= $$8 && $$9 > 0) {
-            $$11 += $$7.j();
-            $$12 += $$7.l();
-            $$9--;
+   public dxq a(azh $$0, ji $$1) {
+      dxq $$2 = this.c.a($$0, $$1);
+      if (this.e == null || !$$2.b(this.e)) {
+         dyq $$3 = a($$2, this.d);
+         if ($$3 == null) {
+            return $$2;
          }
 
-         if (this.b($$0, $$1, $$2, $$10.d($$11, $$15, $$12), $$5)) {
-            $$13 = OptionalInt.of($$15 + 1);
-         }
+         this.e = $$3;
       }
 
-      if ($$13.isPresent()) {
-         $$6.add(new ejp.a(new ji($$11, $$13.getAsInt(), $$12), 1, false));
-      }
+      return $$2.b(this.e, Integer.valueOf(this.f.a($$0)));
+   }
 
-      $$11 = $$4.u();
-      $$12 = $$4.w();
-      jn $$16 = jn.c.a.a($$2);
-      if ($$16 != $$7) {
-         int $$17 = $$8 - $$2.a(2) - 1;
-         int $$18 = 1 + $$2.a(3);
-         $$13 = OptionalInt.empty();
-
-         for (int $$19 = $$17; $$19 < $$3 && $$18 > 0; $$18--) {
-            if ($$19 >= 1) {
-               int $$20 = $$4.v() + $$19;
-               $$11 += $$16.j();
-               $$12 += $$16.l();
-               if (this.b($$0, $$1, $$2, $$10.d($$11, $$20, $$12), $$5)) {
-                  $$13 = OptionalInt.of($$20 + 1);
-               }
-            }
-
-            $$19++;
-         }
-
-         if ($$13.isPresent()) {
-            $$6.add(new ejp.a(new ji($$11, $$13.getAsInt(), $$12), 0, false));
-         }
-      }
-
-      return $$6;
+   @Nullable
+   private static dyq a(dxq $$0, String $$1) {
+      Collection<dyt<?>> $$2 = $$0.F();
+      Optional<dyq> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof dyq).map($$0x -> (dyq)$$0x).findAny();
+      return $$3.orElse(null);
    }
 }

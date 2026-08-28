@@ -1,89 +1,72 @@
 import java.util.EnumSet;
 import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
-public class cco extends ccg {
-   public static final float a = 0.02F;
-   protected final bvk b;
-   @Nullable
-   protected bum c;
-   protected final float d;
-   private int h;
-   protected final float e;
-   private final boolean i;
-   protected final Class<? extends bvi> f;
-   protected final cfz g;
+public class cco extends ccw {
+   private static final int a = 40;
+   private static final Predicate<dxq> b = dxz.a(dkg.bA);
+   private final bwa c;
+   private final dgz d;
+   private int e;
 
-   public cco(bvk $$0, Class<? extends bvi> $$1, float $$2) {
-      this($$0, $$1, $$2, 0.02F);
-   }
-
-   public cco(bvk $$0, Class<? extends bvi> $$1, float $$2, float $$3) {
-      this($$0, $$1, $$2, $$3, false);
-   }
-
-   public cco(bvk $$0, Class<? extends bvi> $$1, float $$2, float $$3, boolean $$4) {
-      this.b = $$0;
-      this.f = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.i = $$4;
-      this.a(EnumSet.of(ccg.a.b));
-      if ($$1 == coy.class) {
-         Predicate<bum> $$5 = bur.b($$0);
-         this.g = cfz.b().a((double)$$2).a(($$1x, $$2x) -> $$5.test($$1x));
-      } else {
-         this.g = cfz.b().a((double)$$2);
-      }
+   public cco(bwa $$0) {
+      this.c = $$0;
+      this.d = $$0.dU();
+      this.a(EnumSet.of(ccw.a.a, ccw.a.b, ccw.a.c));
    }
 
    @Override
    public boolean b() {
-      if (this.b.dY().i() >= this.e) {
+      if (this.c.dX().a(this.c.n_() ? 50 : 1000) != 0) {
          return false;
       } else {
-         if (this.b.O_() != null) {
-            this.c = this.b.O_();
-         }
-
-         ard $$0 = a(this.b);
-         if (this.f == coy.class) {
-            this.c = $$0.a(this.g, this.b, this.b.dA(), this.b.dE(), this.b.dG());
-         } else {
-            this.c = $$0.a(
-               this.b.dV().a(this.f, this.b.cR().c((double)this.d, 3.0, (double)this.d), $$0x -> true), this.g, this.b, this.b.dA(), this.b.dE(), this.b.dG()
-            );
-         }
-
-         return this.c != null;
-      }
-   }
-
-   @Override
-   public boolean c() {
-      if (!this.c.bL()) {
-         return false;
-      } else {
-         return this.b.g(this.c) > (double)(this.d * this.d) ? false : this.h > 0;
+         ji $$0 = this.c.du();
+         return b.test(this.d.a_($$0)) ? true : this.d.a_($$0.e()).a(dkg.i);
       }
    }
 
    @Override
    public void d() {
-      this.h = this.a(40 + this.b.dY().a(40));
+      this.e = this.a(40);
+      this.d.a(this.c, (byte)10);
+      this.c.O().m();
    }
 
    @Override
    public void e() {
-      this.c = null;
+      this.e = 0;
+   }
+
+   @Override
+   public boolean c() {
+      return this.e > 0;
+   }
+
+   public int h() {
+      return this.e;
    }
 
    @Override
    public void a() {
-      if (this.c.bL()) {
-         double $$0 = this.i ? this.b.dE() : this.c.dE();
-         this.b.L().a(this.c.dA(), $$0, this.c.dG());
-         this.h--;
+      this.e = Math.max(0, this.e - 1);
+      if (this.e == this.a(4)) {
+         ji $$0 = this.c.du();
+         if (b.test(this.d.a_($$0))) {
+            if (a(this.d).O().b(dgv.c)) {
+               this.d.b($$0, false);
+            }
+
+            this.c.R();
+         } else {
+            ji $$1 = $$0.e();
+            if (this.d.a_($$1).a(dkg.i)) {
+               if (a(this.d).O().b(dgv.c)) {
+                  this.d.c(2001, $$1, dke.j(dkg.i.m()));
+                  this.d.a($$1, dkg.j.m(), 2);
+               }
+
+               this.c.R();
+            }
+         }
       }
    }
 }

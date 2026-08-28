@@ -1,53 +1,98 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class caa {
-   public static bxc<bvq> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return cao.a(
-         (Function<cao.b<bvq>, ? extends App<cao.c<bvq>, car<bvq>>>)($$3 -> $$3.group($$3.c(cem.o), $$3.c(cem.m), $$3.a(cem.n))
-               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                     if ($$5x.b_($$6.dv()).a(awv.a)) {
-                        return false;
-                     } else if ($$7 < $$2.getValue()) {
-                        $$2.setValue($$7 + 20L + 2L);
-                        return true;
-                     } else {
-                        ji $$8 = null;
-                        ji $$9 = null;
-                        ji $$10 = $$6.dv();
+public class caa<U> implements Iterable<U> {
+   protected final List<caa.a<U>> a;
+   private final azh b = azh.a();
 
-                        for (ji $$12 : ji.a($$10, $$0, $$0, $$0)) {
-                           if ($$12.u() != $$10.u() || $$12.w() != $$10.w()) {
-                              dwy $$13 = $$6.dV().a_($$12.d());
-                              dwy $$14 = $$6.dV().a_($$12);
-                              if ($$14.a(djp.J)) {
-                                 if ($$13.l()) {
-                                    $$8 = $$12.j();
-                                    break;
-                                 }
+   public caa() {
+      this.a = Lists.newArrayList();
+   }
 
-                                 if ($$9 == null && !$$12.a($$6.dt(), 1.5)) {
-                                    $$9 = $$12.j();
-                                 }
-                              }
-                           }
-                        }
+   private caa(List<caa.a<U>> $$0) {
+      this.a = Lists.newArrayList($$0);
+   }
 
-                        if ($$8 == null) {
-                           $$8 = $$9;
-                        }
+   public static <U> Codec<caa<U>> a(Codec<U> $$0) {
+      return caa.a.a($$0).listOf().xmap(caa::new, $$0x -> $$0x.a);
+   }
 
-                        if ($$8 != null) {
-                           $$5.a(new bxe($$8));
-                           $$4.a(new cep(new bxe($$8), $$1, 0));
-                        }
+   public caa<U> a(U $$0, int $$1) {
+      this.a.add(new caa.a<>($$0, $$1));
+      return this;
+   }
 
-                        $$2.setValue($$7 + 40L);
-                        return true;
-                     }
-                  }))
-      );
+   public caa<U> a() {
+      this.a.forEach($$0 -> $$0.a(this.b.i()));
+      this.a.sort(Comparator.comparingDouble(caa.a::c));
+      return this;
+   }
+
+   public Stream<U> b() {
+      return this.a.stream().map(caa.a::a);
+   }
+
+   @Override
+   public Iterator<U> iterator() {
+      return Iterators.transform(this.a.iterator(), caa.a::a);
+   }
+
+   @Override
+   public String toString() {
+      return "ShufflingList[" + this.a + "]";
+   }
+
+   public static class a<T> {
+      final T a;
+      final int b;
+      private double c;
+
+      a(T $$0, int $$1) {
+         this.b = $$1;
+         this.a = $$0;
+      }
+
+      private double c() {
+         return this.c;
+      }
+
+      void a(float $$0) {
+         this.c = -Math.pow((double)$$0, (double)(1.0F / (float)this.b));
+      }
+
+      public T a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + ":" + this.a;
+      }
+
+      public static <E> Codec<caa.a<E>> a(final Codec<E> $$0) {
+         return new Codec<caa.a<E>>() {
+            public <T> DataResult<Pair<caa.a<E>, T>> decode(DynamicOps<T> $$0x, T $$1) {
+               Dynamic<T> $$2 = new Dynamic($$0, $$1);
+               return $$2.get("data").flatMap($$0::parse).map($$1x -> new caa.a<>($$1x, $$2.get("weight").asInt(1))).map($$1x -> Pair.of($$1x, $$0.empty()));
+            }
+
+            public <T> DataResult<T> a(caa.a<E> $$0x, DynamicOps<T> $$1, T $$2) {
+               return $$1.mapBuilder().add("weight", $$1.createInt($$0.b)).add("data", $$0.encodeStart($$1, $$0.a)).build($$2);
+            }
+         };
+      }
    }
 }

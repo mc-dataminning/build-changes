@@ -1,77 +1,60 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class dtl extends dqu {
-   public static final MapCodec<dtl> b = b(dtl::new);
-   @Nullable
-   private static dxd h;
-   @Nullable
-   private static dxd i;
-
-   @Override
-   public MapCodec<dtl> a() {
-      return b;
-   }
-
-   protected dtl(dwx.d $$0) {
-      super(dqu.b.d, $$0);
-   }
+public class dtl extends dja {
+   public static final MapCodec<dtl> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(drm.a.b.fieldOf("kind").forGetter(dja::b), t()).apply($$0, dtl::new));
+   public static final dyo<jn> d = dod.e;
+   private static final Map<jn, fcr> b = fco.c(dke.c(8.0, 8.0, 16.0));
 
    @Override
-   public void a(dgj $$0, ji $$1, dwy $$2, @Nullable bvi $$3, cwq $$4) {
-      a($$0, $$1);
+   public MapCodec<? extends dtl> a() {
+      return c;
    }
 
-   public static void a(dgj $$0, ji $$1) {
-      if ($$0.c_($$1) instanceof dvp $$2) {
-         a($$0, $$1, $$2);
-      }
+   protected dtl(drm.a $$0, dxp.d $$1) {
+      super($$0, $$1);
+      this.l(this.m().b(d, jn.c));
    }
 
-   public static void a(dgj $$0, ji $$1, dvp $$2) {
-      if (!$$0.C) {
-         dwy $$3 = $$2.m();
-         boolean $$4 = $$3.a(djp.hd) || $$3.a(djp.he);
-         if ($$4 && $$1.v() >= $$0.L_() && $$0.am() != bsi.a) {
-            dxd.b $$5 = q().a($$0, $$1);
-            if ($$5 != null) {
-               ckq $$6 = but.bI.a($$0, bus.k);
-               if ($$6 != null) {
-                  dki.a($$0, $$5);
-                  ji $$7 = $$5.a(1, 2, 0).d();
-                  $$6.b((double)$$7.u() + 0.5, (double)$$7.v() + 0.55, (double)$$7.w() + 0.5, $$5.b().o() == jn.a.a ? 0.0F : 90.0F, 0.0F);
-                  $$6.aX = $$5.b().o() == jn.a.a ? 0.0F : 90.0F;
-                  $$6.m();
+   @Override
+   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
+      return b.get($$0.c(d));
+   }
 
-                  for (are $$8 : $$0.a(are.class, $$6.cR().g(50.0))) {
-                     ap.o.a($$8, $$6);
-                  }
+   @Override
+   public dxq a(dax $$0) {
+      dxq $$1 = super.a($$0);
+      dgf $$2 = $$0.q();
+      ji $$3 = $$0.a();
+      jn[] $$4 = $$0.f();
 
-                  $$0.b($$6);
-                  dki.b($$0, $$5);
-               }
+      for (jn $$5 : $$4) {
+         if ($$5.o().d()) {
+            jn $$6 = $$5.g();
+            $$1 = $$1.b(d, $$6);
+            if (!$$2.a_($$3.a($$5)).a($$0)) {
+               return $$1;
             }
          }
       }
+
+      return null;
    }
 
-   public static boolean b(dgj $$0, ji $$1, cwq $$2) {
-      return $$2.a(cwu.vl) && $$1.v() >= $$0.L_() + 2 && $$0.am() != bsi.a && !$$0.C ? r().a($$0, $$1) != null : false;
+   @Override
+   protected dxq a(dxq $$0, dqw $$1) {
+      return $$0.b(d, $$1.a($$0.c(d)));
    }
 
-   private static dxd q() {
-      if (h == null) {
-         h = dxe.a().a("^^^", "###", "~#~").a('#', $$0 -> $$0.a().a(awp.aI)).a('^', dxc.a(dxh.a(djp.hd).or(dxh.a(djp.he)))).a('~', $$0 -> $$0.a().l()).b();
-      }
-
-      return h;
+   @Override
+   protected dxq a(dxq $$0, dpf $$1) {
+      return $$0.a($$1.a($$0.c(d)));
    }
 
-   private static dxd r() {
-      if (i == null) {
-         i = dxe.a().a("   ", "###", "~#~").a('#', $$0 -> $$0.a().a(awp.aI)).a('~', $$0 -> $$0.a().l()).b();
-      }
-
-      return i;
+   @Override
+   protected void a(dxr.a<dke, dxq> $$0) {
+      super.a($$0);
+      $$0.a(d);
    }
 }

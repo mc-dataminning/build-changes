@@ -1,134 +1,166 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.List;
-import java.util.Objects;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.concurrent.atomic.AtomicBoolean;
+import javax.annotation.Nullable;
+import javax.sound.sampled.AudioFormat;
+import org.lwjgl.openal.AL10;
+import org.slf4j.Logger;
 
-public class fed extends fef {
-   public static final int a = 854;
-   public static final int b = 480;
-   static final fed.b l = new fed.b(854, 480);
+public class fed {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 4;
+   public static final int a = 1;
+   private final int d;
+   private final AtomicBoolean e = new AtomicBoolean(true);
+   private int f = 16384;
+   @Nullable
+   private hkh g;
 
-   public fed(int $$0, int $$1) {
-      super(true);
-      this.e($$0, $$1);
+   @Nullable
+   static fed a() {
+      int[] $$0 = new int[1];
+      AL10.alGenSources($$0);
+      return feh.a("Allocate new source") ? null : new fed($$0[0]);
    }
 
-   private void e(int $$0, int $$1) {
-      fed.b $$2 = this.f($$0, $$1);
-      this.h = GlStateManager.glGenFramebuffers();
-      GlStateManager._glBindFramebuffer(36160, this.h);
-      GlStateManager._bindTexture(this.i);
-      GlStateManager._texParameter(3553, 10241, 9728);
-      GlStateManager._texParameter(3553, 10240, 9728);
-      GlStateManager._texParameter(3553, 10242, 33071);
-      GlStateManager._texParameter(3553, 10243, 33071);
-      GlStateManager._glFramebufferTexture2D(36160, 36064, 3553, this.i, 0);
-      GlStateManager._bindTexture(this.j);
-      GlStateManager._texParameter(3553, 34892, 0);
-      GlStateManager._texParameter(3553, 10241, 9728);
-      GlStateManager._texParameter(3553, 10240, 9728);
-      GlStateManager._texParameter(3553, 10242, 33071);
-      GlStateManager._texParameter(3553, 10243, 33071);
-      GlStateManager._glFramebufferTexture2D(36160, 36096, 3553, this.j, 0);
-      GlStateManager._bindTexture(0);
-      this.e = $$2.a;
-      this.f = $$2.b;
-      this.c = $$2.a;
-      this.d = $$2.b;
-      this.b();
-      GlStateManager._glBindFramebuffer(36160, 0);
+   private fed(int $$0) {
+      this.d = $$0;
    }
 
-   private fed.b f(int $$0, int $$1) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      this.i = TextureUtil.generateTextureId();
-      this.j = TextureUtil.generateTextureId();
-      fed.a $$2 = fed.a.a;
+   public void b() {
+      if (this.e.compareAndSet(true, false)) {
+         AL10.alSourceStop(this.d);
+         feh.a("Stop");
+         if (this.g != null) {
+            try {
+               this.g.close();
+            } catch (IOException var2) {
+               b.error("Failed to close audio stream", var2);
+            }
 
-      for (fed.b $$3 : fed.b.a($$0, $$1)) {
-         $$2 = fed.a.a;
-         if (this.a($$3)) {
-            $$2 = $$2.a(fed.a.b);
+            this.l();
+            this.g = null;
          }
 
-         if (this.b($$3)) {
-            $$2 = $$2.a(fed.a.c);
+         AL10.alDeleteSources(new int[]{this.d});
+         feh.a("Cleanup");
+      }
+   }
+
+   public void c() {
+      AL10.alSourcePlay(this.d);
+   }
+
+   private int k() {
+      return !this.e.get() ? 4116 : AL10.alGetSourcei(this.d, 4112);
+   }
+
+   public void d() {
+      if (this.k() == 4114) {
+         AL10.alSourcePause(this.d);
+      }
+   }
+
+   public void e() {
+      if (this.k() == 4115) {
+         AL10.alSourcePlay(this.d);
+      }
+   }
+
+   public void f() {
+      if (this.e.get()) {
+         AL10.alSourceStop(this.d);
+         feh.a("Stop");
+      }
+   }
+
+   public boolean g() {
+      return this.k() == 4114;
+   }
+
+   public boolean h() {
+      return this.k() == 4116;
+   }
+
+   public void a(fbx $$0) {
+      AL10.alSourcefv(this.d, 4100, new float[]{(float)$$0.d, (float)$$0.e, (float)$$0.f});
+   }
+
+   public void a(float $$0) {
+      AL10.alSourcef(this.d, 4099, $$0);
+   }
+
+   public void a(boolean $$0) {
+      AL10.alSourcei(this.d, 4103, $$0 ? 1 : 0);
+   }
+
+   public void b(float $$0) {
+      AL10.alSourcef(this.d, 4106, $$0);
+   }
+
+   public void i() {
+      AL10.alSourcei(this.d, 53248, 0);
+   }
+
+   public void c(float $$0) {
+      AL10.alSourcei(this.d, 53248, 53251);
+      AL10.alSourcef(this.d, 4131, $$0);
+      AL10.alSourcef(this.d, 4129, 1.0F);
+      AL10.alSourcef(this.d, 4128, 0.0F);
+   }
+
+   public void b(boolean $$0) {
+      AL10.alSourcei(this.d, 514, $$0 ? 1 : 0);
+   }
+
+   public void a(fei $$0) {
+      $$0.a().ifPresent($$0x -> AL10.alSourcei(this.d, 4105, $$0x));
+   }
+
+   public void a(hkh $$0) {
+      this.g = $$0;
+      AudioFormat $$1 = $$0.a();
+      this.f = a($$1, 1);
+      this.a(4);
+   }
+
+   private static int a(AudioFormat $$0, int $$1) {
+      return (int)((float)($$1 * $$0.getSampleSizeInBits()) / 8.0F * (float)$$0.getChannels() * $$0.getSampleRate());
+   }
+
+   private void a(int $$0) {
+      if (this.g != null) {
+         try {
+            for (int $$1 = 0; $$1 < $$0; $$1++) {
+               ByteBuffer $$2 = this.g.a(this.f);
+               if ($$2 != null) {
+                  new fei($$2, this.g.a()).c().ifPresent($$0x -> AL10.alSourceQueueBuffers(this.d, new int[]{$$0x}));
+               }
+            }
+         } catch (IOException var4) {
+            b.error("Failed to read from audio stream", var4);
          }
-
-         if ($$2 == fed.a.d) {
-            return $$3;
-         }
-      }
-
-      throw new RuntimeException("Unrecoverable GL_OUT_OF_MEMORY (allocated attachments = " + $$2.name() + ")");
-   }
-
-   private boolean a(fed.b $$0) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      GlStateManager._getError();
-      GlStateManager._bindTexture(this.i);
-      GlStateManager._texImage2D(3553, 0, 32856, $$0.a, $$0.b, 0, 6408, 5121, null);
-      return GlStateManager._getError() != 1285;
-   }
-
-   private boolean b(fed.b $$0) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      GlStateManager._getError();
-      GlStateManager._bindTexture(this.j);
-      GlStateManager._texImage2D(3553, 0, 6402, $$0.a, $$0.b, 0, 6402, 5126, null);
-      return GlStateManager._getError() != 1285;
-   }
-
-   static enum a {
-      a,
-      b,
-      c,
-      d;
-
-      private static final fed.a[] e = values();
-
-      fed.a a(fed.a $$0) {
-         return e[this.ordinal() | $$0.ordinal()];
       }
    }
 
-   static class b {
-      public final int a;
-      public final int b;
+   public void j() {
+      if (this.g != null) {
+         int $$0 = this.l();
+         this.a($$0);
+      }
+   }
 
-      b(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   private int l() {
+      int $$0 = AL10.alGetSourcei(this.d, 4118);
+      if ($$0 > 0) {
+         int[] $$1 = new int[$$0];
+         AL10.alSourceUnqueueBuffers(this.d, $$1);
+         feh.a("Unqueue buffers");
+         AL10.alDeleteBuffers($$1);
+         feh.a("Remove processed buffers");
       }
 
-      static List<fed.b> a(int $$0, int $$1) {
-         RenderSystem.assertOnRenderThreadOrInit();
-         int $$2 = RenderSystem.maxSupportedTextureSize();
-         return $$0 > 0 && $$0 <= $$2 && $$1 > 0 && $$1 <= $$2 ? ImmutableList.of(new fed.b($$0, $$1), fed.l) : ImmutableList.of(fed.l);
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            fed.b $$1 = (fed.b)$$0;
-            return this.a == $$1.a && this.b == $$1.b;
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         return Objects.hash(this.a, this.b);
-      }
-
-      @Override
-      public String toString() {
-         return this.a + "x" + this.b;
-      }
+      return $$0;
    }
 }

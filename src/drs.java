@@ -1,87 +1,79 @@
 import com.mojang.serialization.MapCodec;
 
-public class drs extends djn {
+public class drs extends dke {
    public static final MapCodec<drs> a = b(drs::new);
-   public static final dxx b = dxo.az;
-   protected static final float c = 6.0F;
-   protected static final fbv d = djn.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
+   public static final int b = 2;
+   public static final dyq c = dyg.aH;
+   private static final int d = 24000;
+   private static final int e = 12000;
+   private static final int f = 300;
+   private static final fcr g = dke.a(14.0, 12.0, 0.0, 16.0);
 
    @Override
    public MapCodec<drs> a() {
       return a;
    }
 
-   protected drs(dwx.d $$0) {
+   public drs(dxp.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, Integer.valueOf(0)));
+      this.l(this.B.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected fbv a(dwy $$0, dfo $$1, ji $$2, fbg $$3) {
-      return d;
+   protected void a(dxr.a<dke, dxq> $$0) {
+      $$0.a(c);
    }
 
    @Override
-   protected void a(dwy $$0, ard $$1, ji $$2, azh $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
+   public fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
+      return g;
+   }
+
+   public int o(dxq $$0) {
+      return $$0.c(c);
+   }
+
+   private boolean q(dxq $$0) {
+      return this.o($$0) == 2;
    }
 
    @Override
-   protected void b(dwy $$0, ard $$1, ji $$2, azh $$3) {
-      if ($$1.u($$2.d())) {
-         int $$4 = 1;
-
-         while ($$1.a_($$2.c($$4)).a(this)) {
-            $$4++;
-         }
-
-         if ($$4 < 3) {
-            int $$5 = $$0.c(b);
-            if ($$5 == 15) {
-               $$1.b($$2.d(), this.m());
-               $$1.a($$2, $$0.b(b, Integer.valueOf(0)), 4);
-            } else {
-               $$1.a($$2, $$0.b(b, Integer.valueOf($$5 + 1)), 4);
-            }
-         }
-      }
-   }
-
-   @Override
-   protected dwy a(dwy $$0, dgm $$1, dgy $$2, ji $$3, jn $$4, ji $$5, dwy $$6, azh $$7) {
-      if (!$$0.a($$1, $$3)) {
-         $$2.a($$3, this, 1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected boolean a(dwy $$0, dgm $$1, ji $$2) {
-      dwy $$3 = $$1.a_($$2.e());
-      if ($$3.a(this)) {
-         return true;
+   public void a(dxq $$0, ard $$1, ji $$2, azh $$3) {
+      if (!this.q($$0)) {
+         $$1.a(null, $$2, awa.zw, awb.e, 0.7F, 0.9F + $$3.i() * 0.2F);
+         $$1.a($$2, $$0.b(c, Integer.valueOf(this.o($$0) + 1)), 2);
       } else {
-         if ($$3.a(awp.ah) || $$3.a(awp.J)) {
-            ji $$4 = $$2.e();
-
-            for (jn $$5 : jn.c.a) {
-               dwy $$6 = $$1.a_($$4.a($$5));
-               eta $$7 = $$1.b_($$4.a($$5));
-               if ($$7.a(awv.a) || $$6.a(djp.lk)) {
-                  return true;
-               }
-            }
+         $$1.a(null, $$2, awa.zx, awb.e, 0.7F, 0.9F + $$3.i() * 0.2F);
+         $$1.b($$2, false);
+         ckj $$4 = bvi.bi.a($$1, bvh.e);
+         if ($$4 != null) {
+            fbx $$5 = $$2.b();
+            $$4.a(true);
+            $$4.b($$5.a(), $$5.b(), $$5.c(), ayz.h($$1.A.i() * 360.0F), 0.0F);
+            $$1.b($$4);
          }
-
-         return false;
       }
    }
 
    @Override
-   protected void a(dwz.a<djn, dwy> $$0) {
-      $$0.a(b);
+   public void a(dxq $$0, dgz $$1, ji $$2, dxq $$3, boolean $$4) {
+      boolean $$5 = a($$1, $$2);
+      if (!$$1.w_() && $$5) {
+         $$1.c(3009, $$2, 0);
+      }
+
+      int $$6 = $$5 ? 12000 : 24000;
+      int $$7 = $$6 / 3;
+      $$1.a(ecp.i, $$2, ecp.a.a($$0));
+      $$1.a($$2, this, $$7 + $$1.A.a(300));
+   }
+
+   @Override
+   public boolean a(dxq $$0, eul $$1) {
+      return false;
+   }
+
+   public static boolean a(dgf $$0, ji $$1) {
+      return $$0.a_($$1.e()).a(awp.cx);
    }
 }

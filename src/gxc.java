@@ -1,66 +1,85 @@
-public abstract class gxc<M extends gdh> extends gwu<gzx, M> {
-   private final gcx a;
-   private final akv b;
-   private final gxc.a c;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-   public gxc(gtg<?, gzx, M> $$0, gcx $$1, akv $$2, gxc.a $$3) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
+public class gxc {
+   private static final int a = 0;
+   private final hhw b;
+   private final Function<gxc.a, aku> c;
+   private final Function<gxc.b, hfr> d;
+
+   public gxc(hhw $$0, hfq $$1) {
+      this.b = $$0;
+      this.c = af.b($$0x -> $$0x.b.a($$0x.a));
+      this.d = af.b($$1x -> $$1.a($$1x.a()));
    }
 
-   protected abstract int a(gzx var1);
-
-   private void a(ffv $$0, glz $$1, int $$2, float $$3, float $$4, float $$5) {
-      float $$6 = ayz.c($$3 * $$3 + $$5 * $$5);
-      float $$7 = (float)(Math.atan2((double)$$3, (double)$$5) * 180.0F / (float)Math.PI);
-      float $$8 = (float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI);
-      $$0.a(a.d.rotationDegrees($$7 - 90.0F));
-      $$0.a(a.f.rotationDegrees($$8));
-      this.a.a($$0, $$1.getBuffer(this.a.a(this.b)), $$2, hej.d);
+   public void a(hhx.d $$0, akt<dfk> $$1, gdv $$2, cxh $$3, fgr $$4, gmx $$5, int $$6) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, null);
    }
 
-   public void a(ffv $$0, glz $$1, int $$2, gzx $$3, float $$4, float $$5) {
-      int $$6 = this.a($$3);
-      if ($$6 > 0) {
-         azh $$7 = azh.a((long)$$3.aG);
+   public void a(hhx.d $$0, akt<dfk> $$1, gdv $$2, cxh $$3, fgr $$4, gmx $$5, int $$6, @Nullable aku $$7) {
+      List<hhx.c> $$8 = this.b.a($$1).a($$0);
+      if (!$$8.isEmpty()) {
+         int $$9 = $$3.a(awy.bO) ? czt.a($$3, 0) : 0;
+         boolean $$10 = $$3.C();
 
-         for (int $$8 = 0; $$8 < $$6; $$8++) {
-            $$0.a();
-            gfe $$9 = this.d().a($$7);
-            gfe.a $$10 = $$9.a($$7);
-            $$9.a($$0);
-            float $$11 = $$7.i();
-            float $$12 = $$7.i();
-            float $$13 = $$7.i();
-            if (this.c == gxc.a.b) {
-               int $$14 = $$7.a(3);
-               switch ($$14) {
-                  case 0:
-                     $$11 = a($$11);
-                     break;
-                  case 1:
-                     $$12 = a($$12);
-                     break;
-                  default:
-                     $$13 = a($$13);
-               }
+         for (hhx.c $$11 : $$8) {
+            int $$12 = a($$11, $$9);
+            if ($$12 != 0) {
+               aku $$13 = $$11.c() && $$7 != null ? $$7 : this.c.apply(new gxc.a($$0, $$11));
+               fgv $$14 = gub.a($$5, gnh.a($$13), $$10);
+               $$2.a($$4, $$14, $$6, hfh.d, $$12);
+               $$10 = false;
             }
+         }
 
-            $$0.a(ayz.h($$11, $$10.b, $$10.e) / 16.0F, ayz.h($$12, $$10.c, $$10.f) / 16.0F, ayz.h($$13, $$10.d, $$10.g) / 16.0F);
-            this.a($$0, $$1, $$2, -($$11 * 2.0F - 1.0F), -($$12 * 2.0F - 1.0F), -($$13 * 2.0F - 1.0F));
-            $$0.b();
+         dfo $$15 = $$3.a(kv.W);
+         if ($$15 != null) {
+            hfr $$16 = this.d.apply(new gxc.b($$15, $$0, $$1));
+            fgv $$17 = $$16.a($$5.getBuffer(gns.a($$15.b().a().d())));
+            $$2.a($$4, $$17, $$6, hfh.d);
          }
       }
    }
 
-   private static float a(float $$0) {
-      return $$0 > 0.5F ? 1.0F : 0.5F;
+   private static int a(hhx.c $$0, int $$1) {
+      Optional<hhx.b> $$2 = $$0.b();
+      if ($$2.isPresent()) {
+         int $$3 = $$2.get().a().map(axk::f).orElse(0);
+         return $$1 != 0 ? $$1 : $$3;
+      } else {
+         return -1;
+      }
    }
 
-   public static enum a {
-      a,
-      b;
+   static record a(hhx.d a, hhx.c b) {
+   }
+
+   static record b(dfo a, hhx.d b, akt<dfk> c) {
+      private static String a(jr<dfp> $$0, akt<dfk> $$1) {
+         String $$2 = $$0.a().c().get($$1);
+         return $$2 != null ? $$2 : $$0.a().a();
+      }
+
+      public aku a() {
+         aku $$0 = this.a.b().a().a();
+         String $$1 = a(this.a.a(), this.c);
+         return $$0.a((UnaryOperator<String>)($$1x -> "trims/entity/" + this.b.c() + "/" + $$1x + "_" + $$1));
+      }
+
+      public dfo b() {
+         return this.a;
+      }
+
+      public hhx.d c() {
+         return this.b;
+      }
+
+      public akt<dfk> d() {
+         return this.c;
+      }
    }
 }

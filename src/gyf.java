@@ -1,11 +1,27 @@
-import javax.annotation.Nullable;
+public class gyf extends gxb<hbx, gfq> {
+   private static final aku a = aku.b("textures/entity/wither/wither_armor.png");
+   private final gfq b;
 
-public abstract class gyf extends gyl {
-   @Nullable
-   public buk.k b;
-   public float c;
-   public float d;
-   public float e;
+   public gyf(gva<hbx, gfq> $$0, gfy $$1) {
+      super($$0);
+      this.b = new gfq($$1.a(ggb.dD));
+   }
 
-   public abstract boolean a();
+   protected boolean a(hbx $$0) {
+      return $$0.d;
+   }
+
+   @Override
+   protected float a(float $$0) {
+      return ayz.b($$0 * 0.02F) * 3.0F;
+   }
+
+   @Override
+   protected aku a() {
+      return a;
+   }
+
+   protected gfq b() {
+      return this.b;
+   }
 }

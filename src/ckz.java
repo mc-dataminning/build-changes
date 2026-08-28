@@ -1,43 +1,26 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record ckz(int e, int f, akv g, Optional<wp> h, Optional<wp> i) {
-   public static final Codec<ckz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayi.a(1, 16).fieldOf("width").forGetter(ckz::b),
-               ayi.a(1, 16).fieldOf("height").forGetter(ckz::c),
-               akv.a.fieldOf("asset_id").forGetter(ckz::d),
-               wr.a.optionalFieldOf("title").forGetter(ckz::e),
-               wr.a.optionalFieldOf("author").forGetter(ckz::f)
-            )
-            .apply($$0, ckz::new)
-   );
-   public static final yn<wa, ckz> b = yn.a(yl.h, ckz::b, yl.h, ckz::c, akv.b, ckz::d, wr.e, ckz::e, wr.e, ckz::f, ckz::new);
-   public static final Codec<jr<ckz>> c = akr.a(mc.X, a);
-   public static final yn<wa, jr<ckz>> d = yl.a(mc.X, b);
+public interface ckz {
+   boolean a();
 
-   public int a() {
-      return this.b() * this.c();
-   }
+   void b();
 
-   public int b() {
-      return this.e;
-   }
+   void a(ard var1);
 
-   public int c() {
-      return this.f;
-   }
+   void a(cko var1, ji var2, btp var3, @Nullable cpr var4);
 
-   public akv d() {
-      return this.g;
-   }
+   void c();
 
-   public Optional<wp> e() {
-      return this.h;
-   }
+   void d();
 
-   public Optional<wp> f() {
-      return this.i;
-   }
+   float e();
+
+   float g();
+
+   clf<? extends ckz> h();
+
+   @Nullable
+   fbx f();
+
+   float a(btp var1, float var2);
 }

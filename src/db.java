@@ -3,7 +3,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public record db(Optional<bf<arv<wp>, db.a>> c, Optional<String> d, Optional<String> e, dk.d f, Optional<Boolean> g) implements ea<czy> {
+public record db(Optional<bf<arv<wp>, db.a>> c, Optional<String> d, Optional<String> e, dk.d f, Optional<Boolean> g) implements ea<dao> {
    public static final Codec<db> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                bf.a(db.a.a).optionalFieldOf("pages").forGetter(db::b),
@@ -16,11 +16,11 @@ public record db(Optional<bf<arv<wp>, db.a>> c, Optional<String> d, Optional<Str
    );
 
    @Override
-   public ku<czy> a() {
-      return kv.T;
+   public ku<dao> a() {
+      return kv.V;
    }
 
-   public boolean a(cwq $$0, czy $$1) {
+   public boolean a(cxh $$0, dao $$1) {
       if (this.d.isPresent() && !this.d.get().equals($$1.e())) {
          return false;
       } else if (this.e.isPresent() && !this.e.get().equals($$1.d().a())) {

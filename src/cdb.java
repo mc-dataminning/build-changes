@@ -1,42 +1,36 @@
-import java.util.EnumSet;
+public class cdb extends ccw {
+   private final cio a;
+   private are b;
+   private boolean c;
 
-public class cdb extends ccg {
-   private final bvk a;
-   private double b;
-   private double c;
-   private int d;
-
-   public cdb(bvk $$0) {
+   public cdb(cio $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(ccg.a.a, ccg.a.b));
    }
 
    @Override
    public boolean b() {
-      return this.a.dY().i() < 0.02F;
+      are $$0 = (are)this.a.ae_();
+      boolean $$1 = $$0 != null && !$$0.U_() && !$$0.gm().b && !$$0.bj() && !$$0.av;
+      return !this.a.gs() && $$1 && this.a.gI();
    }
 
    @Override
-   public boolean c() {
-      return this.d >= 0;
+   public boolean P_() {
+      return !this.c;
    }
 
    @Override
    public void d() {
-      double $$0 = (Math.PI * 2) * this.a.dY().j();
-      this.b = Math.cos($$0);
-      this.c = Math.sin($$0);
-      this.d = 20 + this.a.dY().a(20);
-   }
-
-   @Override
-   public boolean V_() {
-      return true;
+      this.b = (are)this.a.ae_();
+      this.c = false;
    }
 
    @Override
    public void a() {
-      this.d--;
-      this.a.L().a(this.a.dA() + this.b, this.a.dE(), this.a.dG() + this.c);
+      if (!this.c && !this.a.x() && !this.a.O_()) {
+         if (this.a.cQ().c(this.b.cQ())) {
+            this.c = this.a.b(this.b);
+         }
+      }
    }
 }

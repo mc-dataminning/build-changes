@@ -1,35 +1,66 @@
-import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-public interface dbp<T extends dbf<?>> {
-   dbp<dbt> a = a("crafting_shaped", new dbt.a());
-   dbp<dbv> b = a("crafting_shapeless", new dbv.a());
-   dbp<dam> c = a("crafting_special_armordye", new dav.a<>(dam::new));
-   dbp<dap> d = a("crafting_special_bookcloning", new dav.a<>(dap::new));
-   dbp<dbc> e = a("crafting_special_mapcloning", new dav.a<>(dbc::new));
-   dbp<dbd> f = a("crafting_special_mapextending", new dav.a<>(dbd::new));
-   dbp<day> g = a("crafting_special_firework_rocket", new dav.a<>(day::new));
-   dbp<dba> h = a("crafting_special_firework_star", new dav.a<>(dba::new));
-   dbp<daz> i = a("crafting_special_firework_star_fade", new dav.a<>(daz::new));
-   dbp<dcg> j = a("crafting_special_tippedarrow", new dav.a<>(dcg::new));
-   dbp<dan> k = a("crafting_special_bannerduplicate", new dav.a<>(dan::new));
-   dbp<dbw> l = a("crafting_special_shielddecoration", new dav.a<>(dbw::new));
-   dbp<dch> m = a("crafting_transmute", new dch.a());
-   dbp<dbr> n = a("crafting_special_repairitem", new dav.a<>(dbr::new));
-   dbp<dbz> o = a("smelting", new dal.b<>(dbz::new, 200));
-   dbp<dao> p = a("blasting", new dal.b<>(dao::new, 100));
-   dbp<dce> q = a("smoking", new dal.b<>(dce::new, 100));
-   dbp<daq> r = a("campfire_cooking", new dal.b<>(daq::new, 100));
-   dbp<dcf> s = a("stonecutting", new dbx.b<>(dcf::new));
-   dbp<dcc> t = a("smithing_transform", new dcc.a());
-   dbp<dcd> u = a("smithing_trim", new dcd.a());
-   dbp<daw> v = a("crafting_decorated_pot", new dav.a<>(daw::new));
+public class dbp extends dbl {
+   private static final dbr c = dbr.a(cxl.vw);
 
-   MapCodec<T> a();
+   public dbp(dbi $$0) {
+      super($$0);
+   }
 
-   @Deprecated
-   yn<wa, T> b();
+   public boolean a(dbj $$0, dgz $$1) {
+      if ($$0.e() < 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         boolean $$3 = false;
 
-   static <S extends dbp<T>, T extends dbf<?>> S a(String $$0, S $$1) {
-      return ke.a(mb.r, $$0, $$1);
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            cxh $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if ($$5.h() instanceof cwf) {
+                  $$2 = true;
+               } else {
+                  if (!c.a($$5)) {
+                     return false;
+                  }
+
+                  if ($$3) {
+                     return false;
+                  }
+
+                  $$3 = true;
+               }
+            }
+         }
+
+         return $$3 && $$2;
+      }
+   }
+
+   public cxh a(dbj $$0, jt.a $$1) {
+      IntList $$2 = new IntArrayList();
+      cxh $$3 = null;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cxh $$5 = $$0.a($$4);
+         if ($$5.h() instanceof cwf $$7) {
+            $$2.add($$7.b().f());
+         } else if (c.a($$5)) {
+            $$3 = $$5.c(1);
+         }
+      }
+
+      if ($$3 != null && !$$2.isEmpty()) {
+         $$3.a(kv.ag, czu.a, $$2, czu::a);
+         return $$3;
+      } else {
+         return cxh.k;
+      }
+   }
+
+   @Override
+   public dcf<dbp> a() {
+      return dcf.i;
    }
 }

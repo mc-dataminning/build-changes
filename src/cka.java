@@ -1,56 +1,24 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.IntFunction;
 
-public class cka extends cjy {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 10;
-   @Nullable
-   private fbb d;
-   private int e;
+public enum cka {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4);
 
-   public cka(cjw $$0) {
-      super($$0);
+   private static final IntFunction<cka> f = axq.a(cka::a, values(), axq.a.b);
+   private final int g;
+
+   private cka(final int $$0) {
+      this.g = $$0;
    }
 
-   @Override
-   public void a(ard $$0) {
-      if (this.d == null) {
-         b.warn("Aborting charge player as no target was set.");
-         this.a.go().a(ckm.a);
-      } else if (this.e > 0 && this.e++ >= 10) {
-         this.a.go().a(ckm.a);
-      } else {
-         double $$1 = this.d.c(this.a.dA(), this.a.dC(), this.a.dG());
-         if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
-            this.e++;
-         }
-      }
+   public int a() {
+      return this.g;
    }
 
-   @Override
-   public void c() {
-      this.d = null;
-      this.e = 0;
-   }
-
-   public void a(fbb $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public float e() {
-      return 3.0F;
-   }
-
-   @Nullable
-   @Override
-   public fbb f() {
-      return this.d;
-   }
-
-   @Override
-   public ckm<cka> h() {
-      return ckm.i;
+   public static cka a(int $$0) {
+      return f.apply($$0);
    }
 }

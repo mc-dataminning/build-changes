@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.Consumer;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface frt {
+public interface frt {
+   wp a();
+
+   void a(Consumer<fpo> var1);
+
+   void a(ftx var1);
 }

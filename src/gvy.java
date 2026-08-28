@@ -1,64 +1,27 @@
-import java.util.function.Function;
+public class gvy extends guj<cng, hbs, gfk> {
+   private static final aku a = aku.b("textures/entity/illager/vex.png");
+   private static final aku b = aku.b("textures/entity/illager/vex_charging.png");
 
-public class gvy<S extends gzl, M extends gcc<S> & gcl> extends gwu<S, M> {
-   private static final float a = 0.625F;
-   private static final float b = 1.1875F;
-   private final gvy.a c;
-   private final Function<dqu.a, gdz> d;
-
-   public gvy(guc<S, M> $$0, gfa $$1) {
-      this($$0, $$1, gvy.a.a);
+   public gvy(gtd.a $$0) {
+      super($$0, new gfk($$0.a(ggb.du)), 0.3F);
+      this.a(new gxk<>(this));
    }
 
-   public gvy(guc<S, M> $$0, gfa $$1, gvy.a $$2) {
-      super($$0);
-      this.c = $$2;
-      this.d = af.b($$1x -> gpa.a($$1, $$1x));
+   protected int a(cng $$0, ji $$1) {
+      return 15;
    }
 
-   public void a(ffv $$0, glz $$1, int $$2, S $$3, float $$4, float $$5) {
-      if (!$$3.as.c() || $$3.au != null) {
-         $$0.a();
-         $$0.b(this.c.c(), 1.0F, this.c.c());
-         M $$6 = this.d();
-         $$6.e().a($$0);
-         $$6.b().a($$0);
-         if ($$3.au != null) {
-            $$0.a(0.0F, this.c.b(), 0.0F);
-            $$0.b(1.1875F, -1.1875F, -1.1875F);
-            $$0.a(-0.5, 0.0, -0.5);
-            dqu.a $$7 = $$3.au;
-            gdz $$8 = this.d.apply($$7);
-            gmj $$9 = gpa.a($$7, $$3.av);
-            gpa.a(null, 180.0F, $$3.at, $$0, $$1, $$2, $$8, $$9);
-         } else {
-            a($$0, this.c);
-            $$3.as.a($$0, $$1, $$2, hej.d);
-         }
-
-         $$0.b();
-      }
+   public aku a(hbs $$0) {
+      return $$0.a ? b : a;
    }
 
-   public static void a(ffv $$0, gvy.a $$1) {
-      $$0.a(0.0F, -0.25F + $$1.a(), 0.0F);
-      $$0.a(a.d.rotationDegrees(180.0F));
-      $$0.b(0.625F, -0.625F, -0.625F);
+   public hbs b() {
+      return new hbs();
    }
 
-   public static record a(float b, float c, float d) {
-      public static final gvy.a a = new gvy.a(0.0F, 0.0F, 1.0F);
-
-      public float a() {
-         return this.b;
-      }
-
-      public float b() {
-         return this.c;
-      }
-
-      public float c() {
-         return this.d;
-      }
+   public void a(cng $$0, hbs $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      gyo.a($$0, $$1, this.i);
+      $$1.a = $$0.t();
    }
 }

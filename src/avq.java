@@ -20,7 +20,7 @@ public class avq implements ew {
 
    public ex g() {
       ard $$0 = this.e.J();
-      return new ex(this, fbb.a($$0.Z()), fba.a, $$0, 4, "Rcon", c, this.e, null);
+      return new ex(this, fbx.a($$0.aa()), fbw.a, $$0, 4, "Rcon", c, this.e, null);
    }
 
    @Override
@@ -29,12 +29,12 @@ public class avq implements ew {
    }
 
    @Override
-   public boolean y_() {
+   public boolean t_() {
       return true;
    }
 
    @Override
-   public boolean z_() {
+   public boolean u_() {
       return true;
    }
 

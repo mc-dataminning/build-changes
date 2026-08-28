@@ -1,55 +1,84 @@
-import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Consumer;
 
-public class eqk extends enn {
-   public static final MapCodec<eqk> d = a(eqk::new);
+public final class eqk extends eoj {
+   public static final epj d = epj.b;
+   public static final erv e = erv.b;
+   public static final int f = 128;
+   public static final int g = 0;
+   public static final int h = 20;
+   public static final MapCodec<eqk> i = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  a($$0),
+                  ept.b.fieldOf("start_pool").forGetter($$0x -> $$0x.j),
+                  aku.a.optionalFieldOf("start_jigsaw_name").forGetter($$0x -> $$0x.k),
+                  Codec.intRange(0, 20).fieldOf("size").forGetter($$0x -> $$0x.l),
+                  emq.c.fieldOf("start_height").forGetter($$0x -> $$0x.m),
+                  Codec.BOOL.fieldOf("use_expansion_hack").forGetter($$0x -> $$0x.n),
+                  edo.a.g.optionalFieldOf("project_start_to_heightmap").forGetter($$0x -> $$0x.o),
+                  Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter($$0x -> $$0x.p),
+                  Codec.list(epv.b).optionalFieldOf("pool_aliases", List.of()).forGetter($$0x -> $$0x.q),
+                  epj.a.optionalFieldOf("dimension_padding", d).forGetter($$0x -> $$0x.r),
+                  erv.c.optionalFieldOf("liquid_settings", e).forGetter($$0x -> $$0x.s)
+               )
+               .apply($$0, eqk::new)
+      )
+      .validate(eqk::a);
+   private final jr<ept> j;
+   private final Optional<aku> k;
+   private final int l;
+   private final emq m;
+   private final boolean n;
+   private final Optional<edo.a> o;
+   private final int p;
+   private final List<epv> q;
+   private final epj r;
+   private final erv s;
 
-   public eqk(enn.c $$0) {
+   private static DataResult<eqk> a(eqk $$0) {
+      int $$1 = switch ($$0.d()) {
+         case a -> 0;
+         case b, c, d, e -> 12;
+      };
+      return $$0.p + $$1 > 128 ? DataResult.error(() -> "Structure size including terrain adaptation must not exceed 128") : DataResult.success($$0);
+   }
+
+   public eqk(eoj.c $$0, jr<ept> $$1, Optional<aku> $$2, int $$3, emq $$4, boolean $$5, Optional<edo.a> $$6, int $$7, List<epv> $$8, epj $$9, erv $$10) {
       super($$0);
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.m = $$4;
+      this.n = $$5;
+      this.o = $$6;
+      this.p = $$7;
+      this.q = $$8;
+      this.r = $$9;
+      this.s = $$10;
+   }
+
+   public eqk(eoj.c $$0, jr<ept> $$1, int $$2, emq $$3, boolean $$4, edo.a $$5) {
+      this($$0, $$1, Optional.empty(), $$2, $$3, $$4, Optional.of($$5), 80, List.of(), d, e);
+   }
+
+   public eqk(eoj.c $$0, jr<ept> $$1, int $$2, emq $$3, boolean $$4) {
+      this($$0, $$1, Optional.empty(), $$2, $$3, $$4, Optional.empty(), 80, List.of(), d, e);
    }
 
    @Override
-   public Optional<enn.b> a(enn.a $$0) {
-      dqf $$1 = dqf.a($$0.f());
-      ji $$2 = this.a($$0, $$1);
-      return $$2.v() < 60 ? Optional.empty() : Optional.of(new enn.b($$2, (Consumer<eof>)($$3 -> this.a($$3, $$0, $$2, $$1))));
-   }
-
-   private void a(eof $$0, enn.a $$1, ji $$2, dqf $$3) {
-      List<eqj.i> $$4 = Lists.newLinkedList();
-      eqj.a($$1.e(), $$2, $$3, $$4, $$1.f());
-      $$4.forEach($$0::a);
+   public Optional<eoj.b> a(eoj.a $$0) {
+      dgg $$1 = $$0.h();
+      int $$2 = this.m.a($$0.f(), new eel($$0.b(), $$0.i()));
+      ji $$3 = new ji($$1.d(), $$2, $$1.e());
+      return epn.a($$0, this.j, this.k, this.l, $$3, this.n, this.o, this.p, epx.create(this.q, $$3, $$0.g()), this.r, this.s);
    }
 
    @Override
-   public void a(dhh $$0, dhf $$1, dyu $$2, azh $$3, enf $$4, dfp $$5, eoc $$6) {
-      ji.a $$7 = new ji.a();
-      int $$8 = $$0.L_();
-      enf $$9 = $$6.b();
-      int $$10 = $$9.i();
-
-      for (int $$11 = $$4.h(); $$11 <= $$4.k(); $$11++) {
-         for (int $$12 = $$4.j(); $$12 <= $$4.m(); $$12++) {
-            $$7.d($$11, $$10, $$12);
-            if (!$$0.u($$7) && $$9.b($$7) && $$6.a($$7)) {
-               for (int $$13 = $$10 - 1; $$13 > $$8; $$13--) {
-                  $$7.q($$13);
-                  if (!$$0.u($$7) && !$$0.a_($$7).n()) {
-                     break;
-                  }
-
-                  $$0.a($$7, djp.m.m(), 2);
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   public enw<?> e() {
-      return enw.p;
+   public eos<?> e() {
+      return eos.f;
    }
 }

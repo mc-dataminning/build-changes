@@ -1,33 +1,44 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public record cwj(jr<avz> e, float f, float g, wp h) {
-   public static final Codec<cwj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               avz.b.fieldOf("sound_event").forGetter(cwj::a),
-               ayi.o.fieldOf("use_duration").forGetter(cwj::b),
-               ayi.o.fieldOf("range").forGetter(cwj::c),
-               wr.a.fieldOf("description").forGetter(cwj::d)
-            )
-            .apply($$0, cwj::new)
-   );
-   public static final yn<wa, cwj> b = yn.a(avz.d, cwj::a, yl.l, cwj::b, yl.l, cwj::c, wr.b, cwj::d, cwj::new);
-   public static final Codec<jr<cwj>> c = akr.a(mc.I, a);
-   public static final yn<wa, jr<cwj>> d = yl.a(mc.I, b);
-
-   public jr<avz> a() {
-      return this.e;
+public class cwj extends cxd {
+   public cwj(cxd.a $$0) {
+      super($$0);
    }
 
-   public float b() {
-      return this.f;
-   }
+   @Override
+   public bsy a(daz $$0) {
+      dgz $$1 = $$0.q();
+      ji $$2 = $$0.a();
+      dxq $$3 = $$1.a_($$2);
+      if (!$$3.a(dkg.cv) && !$$3.a(dkg.I)) {
+         return bsy.d;
+      } else {
+         ji $$4 = $$2.d();
+         if (!$$1.u($$4)) {
+            return bsy.d;
+         } else {
+            double $$5 = (double)$$4.u();
+            double $$6 = (double)$$4.v();
+            double $$7 = (double)$$4.w();
+            List<bva> $$8 = $$1.a_(null, new fbs($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
+            if (!$$8.isEmpty()) {
+               return bsy.d;
+            } else {
+               if ($$1 instanceof ard) {
+                  cko $$9 = new cko($$1, $$5 + 0.5, $$6, $$7 + 0.5);
+                  $$9.a(false);
+                  $$1.b($$9);
+                  $$1.a($$0.o(), ecp.t, $$4);
+                  ebp $$10 = ((ard)$$1).F();
+                  if ($$10 != null) {
+                     $$10.g();
+                  }
+               }
 
-   public float c() {
-      return this.g;
-   }
-
-   public wp d() {
-      return this.h;
+               $$0.n().h(1);
+               return bsy.a;
+            }
+         }
+      }
    }
 }

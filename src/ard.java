@@ -6,7 +6,6 @@ import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.LongSets;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectIterator;
@@ -25,7 +24,6 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
-import java.util.UUID;
 import java.util.concurrent.Executor;
 import java.util.function.BooleanSupplier;
 import java.util.function.Function;
@@ -37,97 +35,97 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class ard extends dgj implements arc, dhh {
+public class ard extends dgz implements arc, dhy {
    public static final ji a = new ji(100, 50, 0);
-   public static final brq b = brw.a(12000, 180000);
-   public static final brq c = brw.a(12000, 24000);
-   private static final brq E = brw.a(12000, 180000);
-   public static final brq d = brw.a(3600, 15600);
+   public static final bsd b = bsj.a(12000, 180000);
+   public static final bsd c = bsj.a(12000, 24000);
+   private static final bsd E = bsj.a(12000, 180000);
+   public static final bsd d = bsj.a(3600, 15600);
    private static final Logger F = LogUtils.getLogger();
    private static final int G = 300;
    private static final int H = 65536;
    final List<are> I = Lists.newArrayList();
    private final ara J;
    private final MinecraftServer K;
-   private final evl L;
+   private final ewh L;
    private int M;
-   final ebh N = new ebh();
-   private final ebm<bum> O;
-   private final ebv P;
+   final eca N = new eca();
+   private final ecf<bva> O;
+   private final ecq P;
    public boolean e;
    private final avg Q;
    private int R;
-   private final ety S;
-   private final fcq<djn> T = new fcq<>(this::d);
-   private final fcq<esz> U = new fcq<>(this::d);
-   private final ets V = new ets();
-   final Set<bvk> W = new ObjectOpenHashSet();
+   private final euu S;
+   private final fdm<dke> T = new fdm<>(this::d);
+   private final fdm<etv> U = new fdm<>(this::d);
+   private final euo V = new euo();
+   final Set<bwa> W = new ObjectOpenHashSet();
    volatile boolean X;
-   protected final cqn f;
-   private final ObjectLinkedOpenHashSet<dfn> Y = new ObjectLinkedOpenHashSet();
-   private final List<dfn> Z = new ArrayList<>(64);
+   protected final crg f;
+   private final ObjectLinkedOpenHashSet<dge> Y = new ObjectLinkedOpenHashSet();
+   private final List<dge> Z = new ArrayList<>(64);
    private boolean aa;
-   private final List<dfv> ab;
+   private final List<dgm> ab;
    @Nullable
-   private eaw ac;
-   final Int2ObjectMap<cjt> ad = new Int2ObjectOpenHashMap();
-   private final dhf ae;
-   private final eno af;
+   private ebp ac;
+   final Int2ObjectMap<ckm> ad = new Int2ObjectOpenHashMap();
+   private final dhv ae;
+   private final eok af;
    private final boolean ag;
-   private final bsq ah;
+   private final btd ah;
 
    public ard(
       MinecraftServer $$0,
       Executor $$1,
-      evg.c $$2,
-      evl $$3,
-      aku<dgj> $$4,
-      eau $$5,
+      ewc.c $$2,
+      ewh $$3,
+      akt<dgz> $$4,
+      ebn $$5,
       arn $$6,
       boolean $$7,
       long $$8,
-      List<dfv> $$9,
+      List<dgm> $$9,
       boolean $$10,
-      @Nullable bsq $$11
+      @Nullable btd $$11
    ) {
       super($$3, $$4, $$0.ba(), $$5.a(), false, $$7, $$8, $$0.bj());
       this.ag = $$10;
       this.K = $$0;
       this.ab = $$9;
       this.L = $$3;
-      dyu $$12 = $$5.b();
+      dzn $$12 = $$5.b();
       boolean $$13 = $$0.aX();
       DataFixer $$14 = $$0.aC();
-      ebe<bum> $$15 = new eae(new eap(new eam($$2.f(), $$4, "entities"), $$2.a($$4).resolve("entities"), $$14, $$13, ban.s), this, $$0);
-      this.O = new ebm<>(bum.class, new ard.a(), $$15);
+      ebx<bva> $$15 = new eax(new ebi(new ebf($$2.f(), $$4, "entities"), $$2.a($$4).resolve("entities"), $$14, $$13, bam.s), this, $$0);
+      this.O = new ecf<>(bva.class, new ard.a(), $$15);
       this.J = new ara(this, $$2, $$14, $$0.aY(), $$1, $$12, $$0.ag().p(), $$0.ag().q(), $$13, $$6, this.O::a, () -> $$0.J().w());
       this.J.h().b();
-      this.S = new ety(this);
-      this.Y();
-      this.ab();
-      this.F_().a($$0.aw());
-      this.f = this.w().a(cqn.a(this), cqn.a(this.ah()));
+      this.S = new euu(this);
+      this.Z();
+      this.ac();
+      this.A_().a($$0.aw());
+      this.f = this.w().a(crg.a(this), crg.a(this.ai()));
       if (!$$0.U()) {
          $$3.a($$0.u());
       }
 
       long $$16 = $$0.aZ().y().c();
-      this.af = new eno(this.J.m(), this.K_(), $$0.aY(), $$4, $$12, this.J.i(), this, $$12.d(), $$16, $$14);
-      this.ae = new dhf(this, $$0.aZ().y(), this.af);
-      if (this.ai() == dgj.k && this.ah().a(ear.c)) {
-         this.ac = new eaw(this, $$16, $$0.aZ().C());
+      this.af = new eok(this.J.n(), this.F_(), $$0.aY(), $$4, $$12, this.J.i(), this, $$12.d(), $$16, $$14);
+      this.ae = new dhv(this, $$0.aZ().y(), this.af);
+      if (this.aj() == dgz.k && this.ai().a(ebk.c)) {
+         this.ac = new ebp(this, $$16, $$0.aZ().C());
       } else {
          this.ac = null;
       }
 
       this.Q = new avg();
-      this.P = new ebv(this);
-      this.ah = Objects.requireNonNullElseGet($$11, () -> this.w().a(bsq.a($$16), "random_sequences"));
+      this.P = new ecq(this);
+      this.ah = Objects.requireNonNullElseGet($$11, () -> this.w().a(btd.a($$16), "random_sequences"));
    }
 
    @Deprecated
    @VisibleForTesting
-   public void a(@Nullable eaw $$0) {
+   public void a(@Nullable ebp $$0) {
       this.ac = $$0;
    }
 
@@ -140,50 +138,50 @@ public class ard extends dgj implements arc, dhh {
    }
 
    @Override
-   public jr<dhl> a(int $$0, int $$1, int $$2) {
+   public jr<dic> a(int $$0, int $$1, int $$2) {
       return this.m().g().d().getNoiseBiome($$0, $$1, $$2, this.m().i().b());
    }
 
-   public dhf b() {
+   public dhv b() {
       return this.ae;
    }
 
    public void a(BooleanSupplier $$0) {
-      bou $$1 = bot.a();
+      bpj $$1 = bpi.a();
       this.aa = true;
-      bsu $$2 = this.u();
+      bth $$2 = this.u();
       boolean $$3 = $$2.i();
       if ($$3) {
          $$1.a("world border");
-         this.F_().s();
+         this.A_().s();
          $$1.b("weather");
-         this.av();
+         this.aw();
          $$1.c();
       }
 
-      int $$4 = this.O().c(dgf.Q);
+      int $$4 = this.O().c(dgv.Q);
       if (this.Q.a($$4) && this.Q.a($$4, this.I)) {
-         if (this.O().b(dgf.l)) {
+         if (this.O().b(dgv.l)) {
             long $$5 = this.B.d() + 24000L;
             this.b($$5 - $$5 % 24000L);
          }
 
-         this.at();
-         if (this.O().b(dgf.w) && this.ag()) {
+         this.au();
+         if (this.O().b(dgv.w) && this.ah()) {
             this.h();
          }
       }
 
-      this.Y();
+      this.Z();
       if ($$3) {
          this.c();
       }
 
       $$1.a("tickPending");
-      if (!this.aj() && $$3) {
-         long $$6 = this.ad();
+      if (!this.ak() && $$3) {
+         long $$6 = this.ae();
          $$1.a("blockTicks");
-         this.T.a($$6, 65536, this::d);
+         this.T.a($$6, 65536, this::c);
          $$1.b("fluidTicks");
          this.U.a($$6, 65536, this::a);
          $$1.c();
@@ -198,7 +196,7 @@ public class ard extends dgj implements arc, dhh {
       this.m().a($$0, true);
       $$1.b("blockEvents");
       if ($$3) {
-         this.aw();
+         this.ax();
       }
 
       this.aa = false;
@@ -217,19 +215,19 @@ public class ard extends dgj implements arc, dhh {
          }
 
          this.N.a($$2x -> {
-            if (!$$2x.dQ()) {
+            if (!$$2x.dP()) {
                if (!$$2.a($$2x)) {
                   $$1.a("checkDespawn");
-                  $$2x.dH();
+                  $$2x.dG();
                   $$1.c();
-                  if ($$2x instanceof are || this.J.a.j().c($$2x.dx().a())) {
-                     bum $$3x = $$2x.dk();
+                  if ($$2x instanceof are || this.J.a.j().c($$2x.dw().a())) {
+                     bva $$3x = $$2x.dj();
                      if ($$3x != null) {
-                        if (!$$3x.dQ() && $$3x.y($$2x)) {
+                        if (!$$3x.dP() && $$3x.y($$2x)) {
                            return;
                         }
 
-                        $$2x.ae();
+                        $$2x.bO();
                      }
 
                      $$1.a("tick");
@@ -240,7 +238,7 @@ public class ard extends dgj implements arc, dhh {
             }
          });
          $$1.c();
-         this.X();
+         this.Y();
       }
 
       $$1.a("entityManagement");
@@ -257,10 +255,10 @@ public class ard extends dgj implements arc, dhh {
       if (this.ag) {
          long $$0 = this.B.c() + 1L;
          this.L.a($$0);
-         bot.a().a("scheduledFunctions");
+         bpi.a().a("scheduledFunctions");
          this.L.s().a(this.K, $$0);
-         bot.a().c();
-         if (this.L.o().b(dgf.l)) {
+         bpi.a().c();
+         if (this.L.o().b(dgv.l)) {
             this.b(this.B.d() + 1L);
          }
       }
@@ -271,41 +269,41 @@ public class ard extends dgj implements arc, dhh {
    }
 
    public void a(boolean $$0, boolean $$1) {
-      for (dfv $$2 : this.ab) {
+      for (dgm $$2 : this.ab) {
          $$2.a(this, $$0, $$1);
       }
    }
 
-   private void at() {
+   private void au() {
       this.Q.a();
-      this.I.stream().filter(bvi::fR).collect(Collectors.toList()).forEach($$0 -> $$0.a(false, false));
+      this.I.stream().filter(bvy::fT).collect(Collectors.toList()).forEach($$0 -> $$0.a(false, false));
    }
 
-   public void a(dzd $$0, int $$1) {
-      dfp $$2 = $$0.f();
-      boolean $$3 = this.ag();
+   public void a(dzw $$0, int $$1) {
+      dgg $$2 = $$0.f();
+      boolean $$3 = this.ah();
       int $$4 = $$2.d();
       int $$5 = $$2.e();
-      bou $$6 = bot.a();
+      bpj $$6 = bpi.a();
       $$6.a("thunder");
-      if ($$3 && this.af() && this.A.a(100000) == 0) {
+      if ($$3 && this.ag() && this.A.a(100000) == 0) {
          ji $$7 = this.b(this.a($$4, 0, $$5, 15));
          if (this.r($$7)) {
-            bsj $$8 = this.d_($$7);
-            boolean $$9 = this.O().b(dgf.e) && this.A.j() < (double)$$8.b() * 0.01 && !this.a_($$7.e()).a(djp.sU);
+            bsw $$8 = this.d_($$7);
+            boolean $$9 = this.O().b(dgv.e) && this.A.j() < (double)$$8.b() * 0.01 && !this.a_($$7.e()).a(dkg.sU);
             if ($$9) {
-               cjj $$10 = but.bf.a(this, bus.h);
+               ckc $$10 = bvi.bf.a(this, bvh.h);
                if ($$10 != null) {
-                  $$10.x(true);
+                  $$10.w(true);
                   $$10.c_(0);
                   $$10.a_((double)$$7.u(), (double)$$7.v(), (double)$$7.w());
                   this.b($$10);
                }
             }
 
-            bvh $$11 = but.aw.a(this, bus.h);
+            bvx $$11 = bvi.aw.a(this, bvh.h);
             if ($$11 != null) {
-               $$11.f(fbb.c($$7));
+               $$11.f(fbx.c($$7));
                $$11.a($$9);
                this.b($$11);
             }
@@ -322,10 +320,10 @@ public class ard extends dgj implements arc, dhh {
 
       $$6.b("tickBlocks");
       if ($$1 > 0) {
-         dze[] $$13 = $$0.d();
+         dzx[] $$13 = $$0.d();
 
          for (int $$14 = 0; $$14 < $$13.length; $$14++) {
-            dze $$15 = $$13[$$14];
+            dzx $$15 = $$13[$$14];
             if ($$15.d()) {
                int $$16 = $$0.h($$14);
                int $$17 = kk.c($$16);
@@ -333,12 +331,12 @@ public class ard extends dgj implements arc, dhh {
                for (int $$18 = 0; $$18 < $$1; $$18++) {
                   ji $$19 = this.a($$4, $$17, $$5, 15);
                   $$6.a("randomTick");
-                  dwy $$20 = $$15.a($$19.u() - $$4, $$19.v() - $$17, $$19.w() - $$5);
+                  dxq $$20 = $$15.a($$19.u() - $$4, $$19.v() - $$17, $$19.w() - $$5);
                   if ($$20.z()) {
                      $$20.b(this, $$19, this.A);
                   }
 
-                  eta $$21 = $$20.y();
+                  etw $$21 = $$20.y();
                   if ($$21.f()) {
                      $$21.a(this, $$19, this.A);
                   }
@@ -354,54 +352,54 @@ public class ard extends dgj implements arc, dhh {
 
    @VisibleForTesting
    public void a(ji $$0) {
-      ji $$1 = this.a(ect.a.e, $$0);
+      ji $$1 = this.a(edo.a.e, $$0);
       ji $$2 = $$1.e();
-      dhl $$3 = this.t($$1).a();
+      dic $$3 = this.t($$1).a();
       if ($$3.a(this, $$2)) {
-         this.b($$2, djp.eb.m());
+         this.b($$2, dkg.eb.m());
       }
 
-      if (this.ag()) {
-         int $$4 = this.O().c(dgf.U);
+      if (this.ah()) {
+         int $$4 = this.O().c(dgv.U);
          if ($$4 > 0 && $$3.b(this, $$1)) {
-            dwy $$5 = this.a_($$1);
-            if ($$5.a(djp.ea)) {
-               int $$6 = $$5.c(drb.c);
+            dxq $$5 = this.a_($$1);
+            if ($$5.a(dkg.ea)) {
+               int $$6 = $$5.c(drt.c);
                if ($$6 < Math.min($$4, 8)) {
-                  dwy $$7 = $$5.b(drb.c, Integer.valueOf($$6 + 1));
-                  djn.a($$5, $$7, this, $$1);
+                  dxq $$7 = $$5.b(drt.c, Integer.valueOf($$6 + 1));
+                  dke.a($$5, $$7, this, $$1);
                   this.b($$1, $$7);
                }
             } else {
-               this.b($$1, djp.ea.m());
+               this.b($$1, dkg.ea.m());
             }
          }
 
-         dhl.c $$8 = $$3.a($$2, this.P());
-         if ($$8 != dhl.c.a) {
-            dwy $$9 = this.a_($$2);
+         dic.c $$8 = $$3.a($$2, this.P());
+         if ($$8 != dic.c.a) {
+            dxq $$9 = this.a_($$2);
             $$9.b().a($$9, this, $$2, $$8);
          }
       }
    }
 
    private Optional<ji> E(ji $$0) {
-      Optional<ji> $$1 = this.A().e($$0x -> $$0x.a(cgq.t), $$0x -> $$0x.v() == this.a(ect.a.b, $$0x.u(), $$0x.w()) - 1, $$0, 128, cgm.b.c);
+      Optional<ji> $$1 = this.A().e($$0x -> $$0x.a(chg.t), $$0x -> $$0x.v() == this.a(edo.a.b, $$0x.u(), $$0x.w()) - 1, $$0, 128, chc.b.c);
       return $$1.map($$0x -> $$0x.b(1));
    }
 
    protected ji b(ji $$0) {
-      ji $$1 = this.a(ect.a.e, $$0);
+      ji $$1 = this.a(edo.a.e, $$0);
       Optional<ji> $$2 = this.E($$1);
       if ($$2.isPresent()) {
          return $$2.get();
       } else {
-         faw $$3 = faw.a($$1, $$1.h(this.an() + 1)).g(3.0);
-         List<bvi> $$4 = this.a(bvi.class, $$3, $$0x -> $$0x != null && $$0x.bL() && this.h($$0x.dv()));
+         fbs $$3 = fbs.a($$1, $$1.h(this.ao() + 1)).g(3.0);
+         List<bvy> $$4 = this.a(bvy.class, $$3, $$0x -> $$0x != null && $$0x.bJ() && this.h($$0x.du()));
          if (!$$4.isEmpty()) {
-            return $$4.get(this.A.a($$4.size())).dv();
+            return $$4.get(this.A.a($$4.size())).du();
          } else {
-            if ($$1.v() == this.L_() - 1) {
+            if ($$1.v() == this.G_() - 1) {
                $$1 = $$1.b(2);
             }
 
@@ -415,13 +413,13 @@ public class ard extends dgj implements arc, dhh {
    }
 
    public boolean e() {
-      return this.O().c(dgf.Q) <= 100;
+      return this.O().c(dgv.Q) <= 100;
    }
 
-   private void au() {
+   private void av() {
       if (this.e()) {
          if (!this.p().U() || this.p().r()) {
-            int $$0 = this.O().c(dgf.Q);
+            int $$0 = this.O().c(dgv.Q);
             wp $$1;
             if (this.Q.a($$0)) {
                $$1 = wp.c("sleep.skipping_night");
@@ -438,18 +436,18 @@ public class ard extends dgj implements arc, dhh {
 
    public void f() {
       if (!this.I.isEmpty() && this.Q.a(this.I)) {
-         this.au();
+         this.av();
       }
    }
 
-   public alo g() {
+   public aln g() {
       return this.K.aJ();
    }
 
-   private void av() {
-      boolean $$0 = this.ag();
-      if (this.G_().g()) {
-         if (this.O().b(dgf.w)) {
+   private void aw() {
+      boolean $$0 = this.ah();
+      if (this.B_().g()) {
+         if (this.O().b(dgv.w)) {
             int $$1 = this.L.f();
             int $$2 = this.L.h();
             int $$3 = this.L.j();
@@ -509,22 +507,22 @@ public class ard extends dgj implements arc, dhh {
       }
 
       if (this.w != this.x) {
-         this.K.ag().a(new act(act.i, this.x), this.ai());
+         this.K.ag().a(new acs(acs.i, this.x), this.aj());
       }
 
       if (this.y != this.z) {
-         this.K.ag().a(new act(act.j, this.z), this.ai());
+         this.K.ag().a(new acs(acs.j, this.z), this.aj());
       }
 
-      if ($$0 != this.ag()) {
+      if ($$0 != this.ah()) {
          if ($$0) {
-            this.K.ag().a(new act(act.d, 0.0F));
+            this.K.ag().a(new acs(acs.d, 0.0F));
          } else {
-            this.K.ag().a(new act(act.c, 0.0F));
+            this.K.ag().a(new acs(acs.c, 0.0F));
          }
 
-         this.K.ag().a(new act(act.i, this.x));
-         this.K.ag().a(new act(act.j, this.z));
+         this.K.ag().a(new acs(acs.i, this.x));
+         this.K.ag().a(new acs(acs.j, this.z));
       }
    }
 
@@ -540,56 +538,60 @@ public class ard extends dgj implements arc, dhh {
       this.R = 0;
    }
 
-   private void a(ji $$0, esz $$1) {
-      dwy $$2 = this.a_($$0);
-      eta $$3 = $$2.y();
+   private void a(ji $$0, etv $$1) {
+      dxq $$2 = this.a_($$0);
+      etw $$3 = $$2.y();
       if ($$3.b($$1)) {
          $$3.a(this, $$0, $$2);
       }
    }
 
-   private void d(ji $$0, djn $$1) {
-      dwy $$2 = this.a_($$0);
+   private void c(ji $$0, dke $$1) {
+      dxq $$2 = this.a_($$0);
       if ($$2.a($$1)) {
          $$2.a(this, $$0, this.A);
       }
    }
 
-   public void a(bum $$0) {
-      $$0.bz();
-      bou $$1 = bot.a();
+   public void a(bva $$0) {
+      $$0.bx();
+      bpj $$1 = bpi.a();
       $$0.af++;
       $$1.a(() -> mb.f.b($$0.aq()).toString());
       $$1.f("tickNonPassenger");
       $$0.h();
       $$1.c();
 
-      for (bum $$2 : $$0.cY()) {
+      for (bva $$2 : $$0.cX()) {
          this.a($$0, $$2);
       }
    }
 
-   private void a(bum $$0, bum $$1) {
-      if ($$1.dQ() || $$1.dk() != $$0) {
-         $$1.ae();
-      } else if ($$1 instanceof coy || this.N.c($$1)) {
-         $$1.bz();
+   private void a(bva $$0, bva $$1) {
+      if ($$1.dP() || $$1.dj() != $$0) {
+         $$1.bO();
+      } else if ($$1 instanceof cpr || this.N.c($$1)) {
+         $$1.bx();
          $$1.af++;
-         bou $$2 = bot.a();
+         bpj $$2 = bpi.a();
          $$2.a(() -> mb.f.b($$1.aq()).toString());
          $$2.f("tickPassenger");
          $$1.r();
          $$2.c();
 
-         for (bum $$3 : $$1.cY()) {
+         for (bva $$3 : $$1.cX()) {
             this.a($$1, $$3);
          }
       }
    }
 
    @Override
-   public boolean a(coy $$0, ji $$1) {
-      return !this.K.a(this, $$1, $$0) && this.F_().a($$1);
+   public boolean a(bva $$0, ji $$1) {
+      if ($$0 instanceof cpr $$2 && (this.K.a(this, $$1, $$2) || !this.A_().a($$1))) {
+         return false;
+      }
+
+      return true;
    }
 
    public void a(@Nullable azg $$0, boolean $$1, boolean $$2) {
@@ -618,7 +620,7 @@ public class ard extends dgj implements arc, dhh {
          this.K.aZ().a(this.ac.b());
       }
 
-      eva $$1 = this.m().k();
+      evw $$1 = this.m().l();
       if ($$0) {
          $$1.b();
       } else {
@@ -626,17 +628,17 @@ public class ard extends dgj implements arc, dhh {
       }
    }
 
-   public <T extends bum> List<? extends T> a(ebi<bum, T> $$0, Predicate<? super T> $$1) {
+   public <T extends bva> List<? extends T> a(ecb<bva, T> $$0, Predicate<? super T> $$1) {
       List<T> $$2 = Lists.newArrayList();
       this.a($$0, $$1, $$2);
       return $$2;
    }
 
-   public <T extends bum> void a(ebi<bum, T> $$0, Predicate<? super T> $$1, List<? super T> $$2) {
+   public <T extends bva> void a(ecb<bva, T> $$0, Predicate<? super T> $$1, List<? super T> $$2) {
       this.a($$0, $$1, $$2, Integer.MAX_VALUE);
    }
 
-   public <T extends bum> void a(ebi<bum, T> $$0, Predicate<? super T> $$1, List<? super T> $$2, int $$3) {
+   public <T extends bva> void a(ecb<bva, T> $$0, Predicate<? super T> $$1, List<? super T> $$2, int $$3) {
       this.H().a($$0, $$3x -> {
          if ($$1.test((T)$$3x)) {
             $$2.add((T)$$3x);
@@ -649,8 +651,8 @@ public class ard extends dgj implements arc, dhh {
       });
    }
 
-   public List<? extends cjw> j() {
-      return this.a(but.P, bvi::bL);
+   public List<? extends ckp> j() {
+      return this.a(bvi.P, bvy::bJ);
    }
 
    public List<are> a(Predicate<? super are> $$0) {
@@ -674,20 +676,20 @@ public class ard extends dgj implements arc, dhh {
 
    @Nullable
    public are k() {
-      List<are> $$0 = this.a(bvi::bL);
+      List<are> $$0 = this.a(bvy::bJ);
       return $$0.isEmpty() ? null : $$0.get(this.A.a($$0.size()));
    }
 
    @Override
-   public boolean b(bum $$0) {
+   public boolean b(bva $$0) {
       return this.i($$0);
    }
 
-   public boolean c(bum $$0) {
+   public boolean c(bva $$0) {
       return this.i($$0);
    }
 
-   public void d(bum $$0) {
+   public void d(bva $$0) {
       if ($$0 instanceof are $$1) {
          this.c($$1);
       } else {
@@ -704,27 +706,27 @@ public class ard extends dgj implements arc, dhh {
    }
 
    private void c(are $$0) {
-      bum $$1 = this.H().a($$0.cG());
+      bva $$1 = this.b($$0.cF());
       if ($$1 != null) {
-         F.warn("Force-added player with duplicate UUID {}", $$0.cG());
+         F.warn("Force-added player with duplicate UUID {}", $$0.cF());
          $$1.ao();
-         this.a((are)$$1, bum.d.b);
+         this.a((are)$$1, bva.d.b);
       }
 
       this.O.a($$0);
    }
 
-   private boolean i(bum $$0) {
-      if ($$0.dQ()) {
-         F.warn("Tried to add entity {} but it was marked as removed already", but.a($$0.aq()));
+   private boolean i(bva $$0) {
+      if ($$0.dP()) {
+         F.warn("Tried to add entity {} but it was marked as removed already", bvi.a($$0.aq()));
          return false;
       } else {
          return this.O.a($$0);
       }
    }
 
-   public boolean e(bum $$0) {
-      if ($$0.da().map(bum::cG).anyMatch(this.O::a)) {
+   public boolean e(bva $$0) {
+      if ($$0.cZ().map(bva::cF).anyMatch(this.O::a)) {
          return false;
       } else {
          this.a_($$0);
@@ -732,57 +734,59 @@ public class ard extends dgj implements arc, dhh {
       }
    }
 
-   public void a(dzd $$0) {
+   public void a(dzw $$0) {
       $$0.J();
       $$0.c(this);
    }
 
-   public void a(are $$0, bum.d $$1) {
+   public void a(are $$0, bva.d $$1) {
       $$0.a($$1);
    }
 
    @Override
    public void a(int $$0, ji $$1, int $$2) {
       for (are $$3 : this.K.ag().t()) {
-         if ($$3 != null && $$3.dV() == this && $$3.ar() != $$0) {
-            double $$4 = (double)$$1.u() - $$3.dA();
-            double $$5 = (double)$$1.v() - $$3.dC();
-            double $$6 = (double)$$1.w() - $$3.dG();
+         if ($$3 != null && $$3.dU() == this && $$3.ar() != $$0) {
+            double $$4 = (double)$$1.u() - $$3.dz();
+            double $$5 = (double)$$1.v() - $$3.dB();
+            double $$6 = (double)$$1.w() - $$3.dF();
             if ($$4 * $$4 + $$5 * $$5 + $$6 * $$6 < 1024.0) {
-               $$3.f.b(new abr($$0, $$1, $$2));
+               $$3.f.b(new abq($$0, $$1, $$2));
             }
          }
       }
    }
 
    @Override
-   public void a(@Nullable coy $$0, double $$1, double $$2, double $$3, jr<avz> $$4, awb $$5, float $$6, float $$7, long $$8) {
-      this.K.ag().a($$0, $$1, $$2, $$3, (double)$$4.a().a($$6), this.ai(), new afn($$4, $$5, $$1, $$2, $$3, $$6, $$7, $$8));
+   public void a(@Nullable bva $$0, double $$1, double $$2, double $$3, jr<avz> $$4, awb $$5, float $$6, float $$7, long $$8) {
+      this.K.ag().a($$0 instanceof cpr $$9 ? $$9 : null, $$1, $$2, $$3, (double)$$4.a().a($$6), this.aj(), new afm($$4, $$5, $$1, $$2, $$3, $$6, $$7, $$8));
    }
 
    @Override
-   public void a(@Nullable coy $$0, bum $$1, jr<avz> $$2, awb $$3, float $$4, float $$5, long $$6) {
-      this.K.ag().a($$0, $$1.dA(), $$1.dC(), $$1.dG(), (double)$$2.a().a($$4), this.ai(), new afm($$2, $$3, $$1, $$4, $$5, $$6));
+   public void a(@Nullable bva $$0, bva $$1, jr<avz> $$2, awb $$3, float $$4, float $$5, long $$6) {
+      this.K
+         .ag()
+         .a($$0 instanceof cpr $$7 ? $$7 : null, $$1.dz(), $$1.dB(), $$1.dF(), (double)$$2.a().a($$4), this.aj(), new afl($$2, $$3, $$1, $$4, $$5, $$6));
    }
 
    @Override
    public void b(int $$0, ji $$1, int $$2) {
-      if (this.O().b(dgf.X)) {
+      if (this.O().b(dgv.X)) {
          this.K.ag().t().forEach($$3 -> {
-            fbb $$5;
-            if ($$3.dV() == this) {
-               fbb $$4 = fbb.b($$1);
+            fbx $$5;
+            if ($$3.dU() == this) {
+               fbx $$4 = fbx.b($$1);
                if ($$3.g($$4) < (double)ayz.h(32)) {
                   $$5 = $$4;
                } else {
-                  fbb $$6 = $$4.d($$3.dt()).d();
-                  $$5 = $$3.dt().e($$6.c(32.0));
+                  fbx $$6 = $$4.d($$3.ds()).d();
+                  $$5 = $$3.ds().e($$6.c(32.0));
                }
             } else {
-               $$5 = $$3.dt();
+               $$5 = $$3.ds();
             }
 
-            $$3.f.b(new acz($$0, ji.a((kb)$$5), $$2, true));
+            $$3.f.b(new acy($$0, ji.a((kb)$$5), $$2, true));
          });
       } else {
          this.a(null, $$0, $$1, $$2);
@@ -790,21 +794,21 @@ public class ard extends dgj implements arc, dhh {
    }
 
    @Override
-   public void a(@Nullable coy $$0, int $$1, ji $$2, int $$3) {
-      this.K.ag().a($$0, (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 64.0, this.ai(), new acz($$1, $$2, $$3, false));
+   public void a(@Nullable bva $$0, int $$1, ji $$2, int $$3) {
+      this.K.ag().a($$0 instanceof cpr $$4 ? $$4 : null, (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 64.0, this.aj(), new acy($$1, $$2, $$3, false));
    }
 
    public int l() {
-      return this.G_().p();
+      return this.B_().p();
    }
 
    @Override
-   public void a(jr<ebu> $$0, fbb $$1, ebu.a $$2) {
+   public void a(jr<ecp> $$0, fbx $$1, ecp.a $$2) {
       this.P.a($$0, $$1, $$2);
    }
 
    @Override
-   public void a(ji $$0, dwy $$1, dwy $$2, int $$3) {
+   public void a(ji $$0, dxq $$1, dxq $$2, int $$3) {
       if (this.X) {
          String $$4 = "recursive call to sendBlockUpdated";
          af.a("recursive call to sendBlockUpdated", new IllegalStateException("recursive call to sendBlockUpdated"));
@@ -812,13 +816,13 @@ public class ard extends dgj implements arc, dhh {
 
       this.m().a($$0);
       this.V.a($$0);
-      fbv $$5 = $$1.g(this, $$0);
-      fbv $$6 = $$2.g(this, $$0);
-      if (fbs.c($$5, $$6, fbf.g)) {
-         List<ceu> $$7 = new ObjectArrayList();
+      fcr $$5 = $$1.g(this, $$0);
+      fcr $$6 = $$2.g(this, $$0);
+      if (fco.c($$5, $$6, fcb.g)) {
+         List<cfk> $$7 = new ObjectArrayList();
 
-         for (bvk $$8 : this.W) {
-            ceu $$9 = $$8.P();
+         for (bwa $$8 : this.W) {
+            cfk $$9 = $$8.O();
             if ($$9.b($$0)) {
                $$7.add($$9);
             }
@@ -827,7 +831,7 @@ public class ard extends dgj implements arc, dhh {
          try {
             this.X = true;
 
-            for (ceu $$10 : $$7) {
+            for (cfk $$10 : $$7) {
                $$10.h();
             }
          } finally {
@@ -837,38 +841,38 @@ public class ard extends dgj implements arc, dhh {
    }
 
    @Override
-   public void a(ji $$0, djn $$1) {
-      this.a($$0, $$1, eue.a(this, null, null));
+   public void a(ji $$0, dke $$1) {
+      this.a($$0, $$1, eva.a(this, null, null));
    }
 
    @Override
-   public void a(ji $$0, djn $$1, @Nullable eui $$2) {
+   public void a(ji $$0, dke $$1, @Nullable eve $$2) {
       this.t.a($$0, $$1, null, $$2);
    }
 
    @Override
-   public void a(ji $$0, djn $$1, jn $$2, @Nullable eui $$3) {
+   public void a(ji $$0, dke $$1, jn $$2, @Nullable eve $$3) {
       this.t.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public void b(ji $$0, djn $$1, @Nullable eui $$2) {
+   public void b(ji $$0, dke $$1, @Nullable eve $$2) {
       this.t.a($$0, $$1, $$2);
    }
 
    @Override
-   public void a(dwy $$0, ji $$1, djn $$2, @Nullable eui $$3, boolean $$4) {
+   public void a(dxq $$0, ji $$1, dke $$2, @Nullable eve $$3, boolean $$4) {
       this.t.a($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public void a(bum $$0, byte $$1) {
-      this.m().a($$0, new acp($$0, $$1));
+   public void a(bva $$0, byte $$1) {
+      this.m().a($$0, new aco($$0, $$1));
    }
 
    @Override
-   public void a(bum $$0, btc $$1) {
-      this.m().a($$0, new acl($$0, $$1));
+   public void a(bva $$0, btp $$1) {
+      this.m().a($$0, new ack($$0, $$1));
    }
 
    public ara m() {
@@ -877,56 +881,56 @@ public class ard extends dgj implements arc, dhh {
 
    @Override
    public void a(
-      @Nullable bum $$0,
-      @Nullable btc $$1,
-      @Nullable dgc $$2,
+      @Nullable bva $$0,
+      @Nullable btp $$1,
+      @Nullable dgt $$2,
       double $$3,
       double $$4,
       double $$5,
       float $$6,
       boolean $$7,
-      dgj.a $$8,
+      dgz.a $$8,
       lr $$9,
       lr $$10,
       jr<avz> $$11
    ) {
-      dgb.a $$12 = switch ($$8) {
-         case a -> dgb.a.a;
-         case b -> this.a(dgf.R);
-         case c -> this.O().b(dgf.c) ? this.a(dgf.S) : dgb.a.a;
-         case d -> this.a(dgf.T);
-         case e -> dgb.a.d;
+      dgs.a $$12 = switch ($$8) {
+         case a -> dgs.a.a;
+         case b -> this.a(dgv.R);
+         case c -> this.O().b(dgv.c) ? this.a(dgv.S) : dgs.a.a;
+         case d -> this.a(dgv.T);
+         case e -> dgs.a.d;
       };
-      fbb $$13 = new fbb($$3, $$4, $$5);
-      dgz $$14 = new dgz(this, $$0, $$1, $$2, $$13, $$6, $$7, $$12);
+      fbx $$13 = new fbx($$3, $$4, $$5);
+      dhp $$14 = new dhp(this, $$0, $$1, $$2, $$13, $$6, $$7, $$12);
       $$14.i();
       lr $$15 = $$14.l() ? $$9 : $$10;
 
       for (are $$16 : this.I) {
          if ($$16.g($$13) < 4096.0) {
-            Optional<fbb> $$17 = Optional.ofNullable($$14.j().get($$16));
-            $$16.f.b(new acr($$13, $$17, $$15, $$11));
+            Optional<fbx> $$17 = Optional.ofNullable($$14.j().get($$16));
+            $$16.f.b(new acq($$13, $$17, $$15, $$11));
          }
       }
    }
 
-   private dgb.a a(dgf.e<dgf.a> $$0) {
-      return this.O().b($$0) ? dgb.a.c : dgb.a.b;
+   private dgs.a a(dgv.e<dgv.a> $$0) {
+      return this.O().b($$0) ? dgs.a.c : dgs.a.b;
    }
 
    @Override
-   public void a(ji $$0, djn $$1, int $$2, int $$3) {
-      this.Y.add(new dfn($$0, $$1, $$2, $$3));
+   public void a(ji $$0, dke $$1, int $$2, int $$3) {
+      this.Y.add(new dge($$0, $$1, $$2, $$3));
    }
 
-   private void aw() {
+   private void ax() {
       this.Z.clear();
 
       while (!this.Y.isEmpty()) {
-         dfn $$0 = (dfn)this.Y.removeFirst();
+         dge $$0 = (dge)this.Y.removeFirst();
          if (this.n($$0.a())) {
             if (this.a($$0)) {
-               this.K.ag().a(null, (double)$$0.a().u(), (double)$$0.a().v(), (double)$$0.a().w(), 64.0, this.ai(), new abt($$0.a(), $$0.b(), $$0.c(), $$0.d()));
+               this.K.ag().a(null, (double)$$0.a().u(), (double)$$0.a().v(), (double)$$0.a().w(), 64.0, this.aj(), new abs($$0.a(), $$0.b(), $$0.c(), $$0.d()));
             }
          } else {
             this.Z.add($$0);
@@ -936,16 +940,16 @@ public class ard extends dgj implements arc, dhh {
       this.Y.addAll(this.Z);
    }
 
-   private boolean a(dfn $$0) {
-      dwy $$1 = this.a_($$0.a());
+   private boolean a(dge $$0) {
+      dxq $$1 = this.a_($$0.a());
       return $$1.a($$0.b()) ? $$1.a(this, $$0.a(), $$0.c(), $$0.d()) : false;
    }
 
-   public fcq<djn> n() {
+   public fdm<dke> n() {
       return this.T;
    }
 
-   public fcq<esz> o() {
+   public fdm<etv> o() {
       return this.U;
    }
 
@@ -955,11 +959,11 @@ public class ard extends dgj implements arc, dhh {
       return this.K;
    }
 
-   public ety q() {
+   public euu q() {
       return this.S;
    }
 
-   public erq r() {
+   public esm r() {
       return this.K.aY();
    }
 
@@ -968,7 +972,7 @@ public class ard extends dgj implements arc, dhh {
    }
 
    public <T extends lr> int a(T $$0, boolean $$1, boolean $$2, double $$3, double $$4, double $$5, int $$6, double $$7, double $$8, double $$9, double $$10) {
-      ada $$11 = new ada($$0, $$1, $$2, $$3, $$4, $$5, (float)$$7, (float)$$8, (float)$$9, (float)$$10, $$6);
+      acz $$11 = new acz($$0, $$1, $$2, $$3, $$4, $$5, (float)$$7, (float)$$8, (float)$$9, (float)$$10, $$6);
       int $$12 = 0;
 
       for (int $$13 = 0; $$13 < this.I.size(); $$13++) {
@@ -984,16 +988,16 @@ public class ard extends dgj implements arc, dhh {
    public <T extends lr> boolean a(
       are $$0, T $$1, boolean $$2, boolean $$3, double $$4, double $$5, double $$6, int $$7, double $$8, double $$9, double $$10, double $$11
    ) {
-      yw<?> $$12 = new ada($$1, $$2, $$3, $$4, $$5, $$6, (float)$$8, (float)$$9, (float)$$10, (float)$$11, $$7);
+      yw<?> $$12 = new acz($$1, $$2, $$3, $$4, $$5, $$6, (float)$$8, (float)$$9, (float)$$10, (float)$$11, $$7);
       return this.a($$0, $$2, $$4, $$5, $$6, $$12);
    }
 
    private boolean a(are $$0, boolean $$1, double $$2, double $$3, double $$4, yw<?> $$5) {
-      if ($$0.dV() != this) {
+      if ($$0.dU() != this) {
          return false;
       } else {
-         ji $$6 = $$0.dv();
-         if ($$6.a(new fbb($$2, $$3, $$4), $$1 ? 512.0 : 32.0)) {
+         ji $$6 = $$0.du();
+         if ($$6.a(new fbx($$2, $$3, $$4), $$1 ? 512.0 : 32.0)) {
             $$0.f.b($$5);
             return true;
          } else {
@@ -1004,53 +1008,48 @@ public class ard extends dgj implements arc, dhh {
 
    @Nullable
    @Override
-   public bum a(int $$0) {
-      return this.H().a($$0);
-   }
-
-   @Nullable
-   public bum a(UUID $$0) {
+   public bva a(int $$0) {
       return this.H().a($$0);
    }
 
    @Deprecated
    @Nullable
-   public bum b(int $$0) {
-      bum $$1 = this.H().a($$0);
-      return $$1 != null ? $$1 : (bum)this.ad.get($$0);
+   public bva b(int $$0) {
+      bva $$1 = this.H().a($$0);
+      return $$1 != null ? $$1 : (bva)this.ad.get($$0);
    }
 
    @Override
-   public Collection<cjt> s() {
+   public Collection<ckm> s() {
       return this.ad.values();
    }
 
    @Nullable
-   public ji a(axf<enn> $$0, ji $$1, int $$2, boolean $$3) {
+   public ji a(axf<eoj> $$0, ji $$1, int $$2, boolean $$3) {
       if (!this.K.aZ().y().d()) {
          return null;
       } else {
-         Optional<jv.c<enn>> $$4 = this.K_().e(mc.aU).a($$0);
+         Optional<jv.c<eoj>> $$4 = this.F_().e(mc.aW).a($$0);
          if ($$4.isEmpty()) {
             return null;
          } else {
-            Pair<ji, jr<enn>> $$5 = this.m().g().a(this, $$4.get(), $$1, $$2, $$3);
+            Pair<ji, jr<eoj>> $$5 = this.m().g().a(this, $$4.get(), $$1, $$2, $$3);
             return $$5 != null ? (ji)$$5.getFirst() : null;
          }
       }
    }
 
    @Nullable
-   public Pair<ji, jr<dhl>> a(Predicate<jr<dhl>> $$0, ji $$1, int $$2, int $$3, int $$4) {
+   public Pair<ji, jr<dic>> a(Predicate<jr<dic>> $$0, ji $$1, int $$2, int $$3, int $$4) {
       return this.m().g().d().a($$1, $$2, $$3, $$4, $$0, this.m().i().b(), this);
    }
 
-   public dbm t() {
+   public dcc t() {
       return this.K.aI();
    }
 
    @Override
-   public bsu u() {
+   public bth u() {
       return this.K.aP();
    }
 
@@ -1059,24 +1058,24 @@ public class ard extends dgj implements arc, dhh {
       return this.e;
    }
 
-   public eva w() {
-      return this.m().k();
+   public evw w() {
+      return this.m().l();
    }
 
    @Nullable
    @Override
-   public euu a(eus $$0) {
-      return this.p().J().w().b(euu.a(), $$0.a());
+   public evq a(evo $$0) {
+      return this.p().J().w().b(evq.a(), $$0.a());
    }
 
    @Override
-   public void a(eus $$0, euu $$1) {
+   public void a(evo $$0, evq $$1) {
       this.p().J().w().a($$0.a(), $$1);
    }
 
    @Override
-   public eus x() {
-      return this.p().J().w().a(eut.a(), "idcounts").b();
+   public evo x() {
+      return this.p().J().w().a(evp.a(), "idcounts").b();
    }
 
    public void a(ji $$0, float $$1) {
@@ -1084,46 +1083,32 @@ public class ard extends dgj implements arc, dhh {
       float $$3 = this.B.b();
       if (!$$2.equals($$0) || $$3 != $$1) {
          this.B.a($$0, $$1);
-         this.p().ag().a(new aet($$0, $$1));
+         this.p().ag().a(new aes($$0, $$1));
       }
 
       if (this.M > 1) {
-         this.m().b(arj.a, new dfp($$2), this.M, baf.a);
+         this.m().b(ark.b, new dgg($$2), this.M);
       }
 
-      int $$4 = this.O().c(dgf.ab) + 1;
+      int $$4 = this.O().c(dgv.ab) + 1;
       if ($$4 > 1) {
-         this.m().a(arj.a, new dfp($$0), $$4, baf.a);
+         this.m().a(ark.b, new dgg($$0), $$4);
       }
 
       this.M = $$4;
    }
 
    public LongSet y() {
-      dge $$0 = this.w().b(dge.a(), "chunks");
-      return (LongSet)($$0 != null ? LongSets.unmodifiable($$0.b()) : LongSets.EMPTY_SET);
+      return this.J.k();
    }
 
    public boolean a(int $$0, int $$1, boolean $$2) {
-      dge $$3 = this.w().a(dge.a(), "chunks");
-      dfp $$4 = new dfp($$0, $$1);
-      long $$5 = $$4.a();
-      boolean $$6;
-      if ($$2) {
-         $$6 = $$3.b().add($$5);
-         if ($$6) {
-            this.d($$0, $$1);
-         }
-      } else {
-         $$6 = $$3.b().remove($$5);
+      boolean $$3 = this.J.a(new dgg($$0, $$1), $$2);
+      if ($$2 && $$3) {
+         this.d($$0, $$1);
       }
 
-      $$3.a($$6);
-      if ($$6) {
-         this.m().a($$4, $$2);
-      }
-
-      return $$6;
+      return $$3;
    }
 
    @Override
@@ -1132,24 +1117,24 @@ public class ard extends dgj implements arc, dhh {
    }
 
    @Override
-   public void a(ji $$0, dwy $$1, dwy $$2) {
-      Optional<jr<cgp>> $$3 = cgq.a($$1);
-      Optional<jr<cgp>> $$4 = cgq.a($$2);
+   public void a(ji $$0, dxq $$1, dxq $$2) {
+      Optional<jr<chf>> $$3 = chg.a($$1);
+      Optional<jr<chf>> $$4 = chg.a($$2);
       if (!Objects.equals($$3, $$4)) {
          ji $$5 = $$0.j();
          $$3.ifPresent($$1x -> this.p().execute(() -> {
                this.A().a($$5);
-               agd.b(this, $$5);
+               agc.b(this, $$5);
             }));
          $$4.ifPresent($$1x -> this.p().execute(() -> {
                this.A().a($$5, $$1x);
-               agd.a(this, $$5);
+               agc.a(this, $$5);
             }));
       }
    }
 
-   public cgm A() {
-      return this.m().l();
+   public chc A() {
+      return this.m().m();
    }
 
    public boolean c(ji $$0) {
@@ -1168,12 +1153,12 @@ public class ard extends dgj implements arc, dhh {
       return this.A().a($$0);
    }
 
-   public cqn B() {
+   public crg B() {
       return this.f;
    }
 
    @Nullable
-   public cql d(ji $$0) {
+   public cre d(ji $$0) {
       return this.f.a($$0, 9216);
    }
 
@@ -1181,22 +1166,22 @@ public class ard extends dgj implements arc, dhh {
       return this.d($$0) != null;
    }
 
-   public void a(cgj $$0, bum $$1, bvx $$2) {
+   public void a(cgz $$0, bva $$1, bwn $$2) {
       $$2.a($$0, $$1);
    }
 
    public void a(Path $$0) throws IOException {
-      aqi $$1 = this.m().a;
+      aqh $$1 = this.m().a;
 
       try (Writer $$2 = Files.newBufferedWriter($$0.resolve("stats.txt"))) {
-         $$2.write(String.format(Locale.ROOT, "spawning_chunks: %d\n", $$1.j().b()));
-         dgu.d $$3 = this.m().n();
+         $$2.write(String.format(Locale.ROOT, "spawning_chunks: %d\n", $$1.j().a()));
+         dhk.d $$3 = this.m().o();
          if ($$3 != null) {
             ObjectIterator $$9 = $$3.b().object2IntEntrySet().iterator();
 
             while ($$9.hasNext()) {
-               Entry<bvl> $$4 = (Entry<bvl>)$$9.next();
-               $$2.write(String.format(Locale.ROOT, "spawn_count.%s: %d\n", ((bvl)$$4.getKey()).a(), $$4.getIntValue()));
+               Entry<bwb> $$4 = (Entry<bwb>)$$9.next();
+               $$2.write(String.format(Locale.ROOT, "spawn_count.%s: %d\n", ((bwb)$$4.getKey()).a(), $$4.getIntValue()));
             }
          }
 
@@ -1204,7 +1189,7 @@ public class ard extends dgj implements arc, dhh {
          $$2.write(String.format(Locale.ROOT, "block_entity_tickers: %d\n", this.s.size()));
          $$2.write(String.format(Locale.ROOT, "block_ticks: %d\n", this.n().a()));
          $$2.write(String.format(Locale.ROOT, "fluid_ticks: %d\n", this.o().a()));
-         $$2.write("distance_manager: " + $$1.j().d() + "\n");
+         $$2.write("distance_manager: " + $$1.j().c() + "\n");
          $$2.write(String.format(Locale.ROOT, "pending_tasks: %d\n", this.m().f()));
       }
 
@@ -1240,35 +1225,28 @@ public class ard extends dgj implements arc, dhh {
       }
    }
 
-   private static void a(Writer $$0, Iterable<bum> $$1) throws IOException {
+   private static void a(Writer $$0, Iterable<bva> $$1) throws IOException {
       axz $$2 = axz.a().a("x").a("y").a("z").a("uuid").a("type").a("alive").a("display_name").a("custom_name").a($$0);
 
-      for (bum $$3 : $$1) {
+      for (bva $$3 : $$1) {
          wp $$4 = $$3.an();
-         wp $$5 = $$3.p_();
-         $$2.a($$3.dA(), $$3.dC(), $$3.dG(), $$3.cG(), mb.f.b($$3.aq()), $$3.bL(), $$5.getString(), $$4 != null ? $$4.getString() : null);
+         wp $$5 = $$3.m_();
+         $$2.a($$3.dz(), $$3.dB(), $$3.dF(), $$3.cF(), mb.f.b($$3.aq()), $$3.bJ(), $$5.getString(), $$4 != null ? $$4.getString() : null);
       }
    }
 
    private void a(Writer $$0) throws IOException {
       axz $$1 = axz.a().a("x").a("y").a("z").a("type").a($$0);
 
-      for (dvv $$2 : this.s) {
+      for (dwn $$2 : this.s) {
          ji $$3 = $$2.c();
          $$1.a($$3.u(), $$3.v(), $$3.w(), $$2.d());
       }
    }
 
    @VisibleForTesting
-   public void a(enf $$0) {
+   public void a(eob $$0) {
       this.Y.removeIf($$1 -> $$0.b($$1.a()));
-   }
-
-   @Override
-   public void b(ji $$0, djn $$1) {
-      if (!this.aj()) {
-         this.a($$0, $$1);
-      }
    }
 
    @Override
@@ -1276,7 +1254,7 @@ public class ard extends dgj implements arc, dhh {
       return 1.0F;
    }
 
-   public Iterable<bum> C() {
+   public Iterable<bva> C() {
       return this.H().a();
    }
 
@@ -1295,7 +1273,7 @@ public class ard extends dgj implements arc, dhh {
    }
 
    @Nullable
-   public eaw F() {
+   public ebp F() {
       return this.ac;
    }
 
@@ -1313,7 +1291,7 @@ public class ard extends dgj implements arc, dhh {
          this.O.e(),
          a(this.O.d().a(), $$0 -> mb.f.b($$0.aq()).toString()),
          this.s.size(),
-         a(this.s, dvv::d),
+         a(this.s, dwn::d),
          this.n().a(),
          this.o().a(),
          this.J()
@@ -1341,27 +1319,27 @@ public class ard extends dgj implements arc, dhh {
    }
 
    @Override
-   protected ebk<bum> H() {
+   protected ecd<bva> H() {
       return this.O.d();
    }
 
-   public void a(Stream<bum> $$0) {
+   public void a(Stream<bva> $$0) {
       this.O.a($$0);
    }
 
-   public void b(Stream<bum> $$0) {
+   public void b(Stream<bva> $$0) {
       this.O.b($$0);
    }
 
-   public void b(dzd $$0) {
-      $$0.d(this.D_().c());
+   public void b(dzw $$0) {
+      $$0.d(this.y_().c());
    }
 
-   public void a(dyt $$0) {
+   public void a(dzm $$0) {
       this.K.execute(() -> this.af.a($$0.f(), $$0.g()));
    }
 
-   public ets I() {
+   public euo I() {
       return this.V;
    }
 
@@ -1385,41 +1363,41 @@ public class ard extends dgj implements arc, dhh {
    }
 
    public boolean f(ji $$0) {
-      return this.O.a($$0) && this.J.a.j().c(dfp.a($$0));
+      return this.O.a($$0) && this.J.a.j().c(dgg.a($$0));
    }
 
    public boolean g(ji $$0) {
       return this.O.a($$0);
    }
 
-   public boolean a(dfp $$0) {
+   public boolean a(dgg $$0) {
       return this.O.a($$0);
    }
 
    @Override
-   public cru K() {
+   public csn K() {
       return this.K.aZ().K();
    }
 
    @Override
-   public cyo L() {
+   public czd L() {
       return this.K.bn();
    }
 
    @Override
-   public duy M() {
+   public dvq M() {
       return this.K.bo();
    }
 
-   public azh a(akv $$0) {
+   public azh a(aku $$0) {
       return this.ah.a($$0);
    }
 
-   public bsq N() {
+   public btd N() {
       return this.ah;
    }
 
-   public dgf O() {
+   public dgv O() {
       return this.L.o();
    }
 
@@ -1435,30 +1413,30 @@ public class ard extends dgj implements arc, dhh {
       return this.J.g().f();
    }
 
-   final class a implements ebj<bum> {
-      public void a(bum $$0) {
+   final class a implements ecc<bva> {
+      public void a(bva $$0) {
       }
 
-      public void b(bum $$0) {
+      public void b(bva $$0) {
          ard.this.g().a($$0);
       }
 
-      public void c(bum $$0) {
+      public void c(bva $$0) {
          ard.this.N.a($$0);
       }
 
-      public void d(bum $$0) {
+      public void d(bva $$0) {
          ard.this.N.b($$0);
       }
 
-      public void e(bum $$0) {
+      public void e(bva $$0) {
          ard.this.m().b($$0);
          if ($$0 instanceof are $$1) {
             ard.this.I.add($$1);
             ard.this.f();
          }
 
-         if ($$0 instanceof bvk $$2) {
+         if ($$0 instanceof bwa $$2) {
             if (ard.this.X) {
                String $$3 = "onTrackingStart called during navigation iteration";
                af.a("onTrackingStart called during navigation iteration", new IllegalStateException("onTrackingStart called during navigation iteration"));
@@ -1467,23 +1445,23 @@ public class ard extends dgj implements arc, dhh {
             ard.this.W.add($$2);
          }
 
-         if ($$0 instanceof cjw $$4) {
-            for (cjt $$5 : $$4.x()) {
+         if ($$0 instanceof ckp $$4) {
+            for (ckm $$5 : $$4.q()) {
                ard.this.ad.put($$5.ar(), $$5);
             }
          }
 
-         $$0.a(ebr::a);
+         $$0.a(ecm::a);
       }
 
-      public void f(bum $$0) {
+      public void f(bva $$0) {
          ard.this.m().a($$0);
          if ($$0 instanceof are $$1) {
             ard.this.I.remove($$1);
             ard.this.f();
          }
 
-         if ($$0 instanceof bvk $$2) {
+         if ($$0 instanceof bwa $$2) {
             if (ard.this.X) {
                String $$3 = "onTrackingStart called during navigation iteration";
                af.a("onTrackingStart called during navigation iteration", new IllegalStateException("onTrackingStart called during navigation iteration"));
@@ -1492,17 +1470,17 @@ public class ard extends dgj implements arc, dhh {
             ard.this.W.remove($$2);
          }
 
-         if ($$0 instanceof cjw $$4) {
-            for (cjt $$5 : $$4.x()) {
+         if ($$0 instanceof ckp $$4) {
+            for (ckm $$5 : $$4.q()) {
                ard.this.ad.remove($$5.ar());
             }
          }
 
-         $$0.a(ebr::b);
+         $$0.a(ecm::b);
       }
 
-      public void g(bum $$0) {
-         $$0.a(ebr::c);
+      public void g(bva $$0) {
+         $$0.a(ecm::c);
       }
    }
 }

@@ -1,95 +1,181 @@
-public class ede implements dfv {
-   private int a;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-   @Override
-   public int a(ard $$0, boolean $$1, boolean $$2) {
-      if (!$$1) {
-         return 0;
-      } else if (!$$0.O().b(dgf.L)) {
-         return 0;
+public abstract class ede {
+   public static ede.b a(int $$0, int $$1) {
+      return new ede.b($$0 - 1, $$1 + 1);
+   }
+
+   public static ede.b b(int $$0, int $$1) {
+      return new ede.b($$0, $$1);
+   }
+
+   public static ede a(int $$0) {
+      return new ede.c($$0, false);
+   }
+
+   public static ede b(int $$0) {
+      return new ede.c($$0 + 1, false);
+   }
+
+   public static ede c(int $$0) {
+      return new ede.c($$0, true);
+   }
+
+   public static ede d(int $$0) {
+      return new ede.c($$0 - 1, true);
+   }
+
+   public static ede a() {
+      return ede.a.a;
+   }
+
+   public static ede a(OptionalInt $$0, OptionalInt $$1) {
+      if ($$0.isPresent() && $$1.isPresent()) {
+         return b($$0.getAsInt(), $$1.getAsInt());
+      } else if ($$0.isPresent()) {
+         return c($$0.getAsInt());
       } else {
-         azh $$3 = $$0.A;
-         this.a--;
-         if (this.a > 0) {
-            return 0;
-         } else {
-            this.a = this.a + 12000 + $$3.a(1200);
-            long $$4 = $$0.ae() / 24000L;
-            if ($$4 < 5L || !$$0.V()) {
-               return 0;
-            } else if ($$3.a(5) != 0) {
-               return 0;
-            } else {
-               int $$5 = $$0.z().size();
-               if ($$5 < 1) {
-                  return 0;
-               } else {
-                  coy $$6 = $$0.z().get($$3.a($$5));
-                  if ($$6.Z_()) {
-                     return 0;
-                  } else if ($$0.a($$6.dv(), 2)) {
-                     return 0;
-                  } else {
-                     int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     ji.a $$9 = $$6.dv().k().e($$7, 0, $$8);
-                     int $$10 = 10;
-                     if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
-                        return 0;
-                     } else {
-                        jr<dhl> $$11 = $$0.t($$9);
-                        if ($$11.a(awo.ag)) {
-                           return 0;
-                        } else {
-                           int $$12 = 0;
-                           int $$13 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
-
-                           for (int $$14 = 0; $$14 < $$13; $$14++) {
-                              $$12++;
-                              $$9.q($$0.a(ect.a.f, $$9).v());
-                              if ($$14 == 0) {
-                                 if (!this.a($$0, $$9, $$3, true)) {
-                                    break;
-                                 }
-                              } else {
-                                 this.a($$0, $$9, $$3, false);
-                              }
-
-                              $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
-                              $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
-                           }
-
-                           return $$12;
-                        }
-                     }
-                  }
-               }
-            }
-         }
+         return $$1.isPresent() ? a($$1.getAsInt()) : a();
       }
    }
 
-   private boolean a(ard $$0, ji $$1, azh $$2, boolean $$3) {
-      dwy $$4 = $$0.a_($$1);
-      if (!dgu.a($$0, $$1, $$4, $$4.y(), but.aT)) {
-         return false;
-      } else if (!cma.b(but.aT, $$0, bus.p, $$1, $$2)) {
-         return false;
-      } else {
-         cma $$5 = but.aT.a($$0, bus.p);
-         if ($$5 != null) {
-            if ($$3) {
-               $$5.x(true);
-               $$5.gz();
-            }
+   public abstract OptionalInt b();
 
-            $$5.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
-            $$5.a($$0, $$0.d_($$1), bus.p, null);
-            $$0.a_($$5);
-            return true;
-         } else {
-            return false;
+   public abstract OptionalInt c();
+
+   public abstract OptionalInt d();
+
+   public ede a(OptionalInt $$0) {
+      return a($$0, this.b());
+   }
+
+   public ede b(OptionalInt $$0) {
+      return a(this.c(), $$0);
+   }
+
+   public static Optional<ede> a(dhf $$0, ji $$1, int $$2, Predicate<dxq> $$3, Predicate<dxq> $$4) {
+      ji.a $$5 = $$1.k();
+      if (!$$0.a($$1, $$3)) {
+         return Optional.empty();
+      } else {
+         int $$6 = $$1.v();
+         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, jn.b);
+         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, jn.a);
+         return Optional.of(a($$8, $$7));
+      }
+   }
+
+   private static OptionalInt a(dhf $$0, int $$1, Predicate<dxq> $$2, Predicate<dxq> $$3, ji.a $$4, int $$5, jn $$6) {
+      $$4.q($$5);
+
+      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
+         $$4.c($$6);
+      }
+
+      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
+   }
+
+   public static final class a extends ede {
+      static final ede.a a = new ede.a();
+
+      private a() {
+      }
+
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return "C(-)";
+      }
+   }
+
+   public static final class b extends ede {
+      private final int a;
+      private final int b;
+
+      protected b(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+         if (this.g() < 0) {
+            throw new IllegalArgumentException("Column of negative height: " + this);
          }
+      }
+
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.of(this.b);
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.of(this.a);
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.of(this.g());
+      }
+
+      public int e() {
+         return this.b;
+      }
+
+      public int f() {
+         return this.a;
+      }
+
+      public int g() {
+         return this.b - this.a - 1;
+      }
+
+      @Override
+      public String toString() {
+         return "C(" + this.b + "-" + this.a + ")";
+      }
+   }
+
+   public static final class c extends ede {
+      private final int a;
+      private final boolean b;
+
+      public c(int $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public OptionalInt b() {
+         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
+      }
+
+      @Override
+      public OptionalInt c() {
+         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
       }
    }
 }

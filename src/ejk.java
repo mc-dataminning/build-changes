@@ -1,43 +1,22 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class ejk extends ejp {
-   public static final MapCodec<ejk> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ejk::new));
-   protected final int b;
+public class ejk implements eiy {
+   public static final Codec<ejk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.apply2(ejk::new, eio.a.listOf().fieldOf("features").forGetter($$0x -> $$0x.b), enn.b.fieldOf("default").forGetter($$0x -> $$0x.c))
+   );
+   public final List<eio> b;
+   public final jr<enn> c;
 
-   protected static <P extends ejk> P3<Mu<P>, brq, brq, Integer> a(Instance<P> $$0) {
-      return b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b));
-   }
-
-   public ejk(brq $$0, brq $$1, int $$2) {
-      super($$0, $$1);
-      this.b = $$2;
-   }
-
-   @Override
-   protected ejq<?> a() {
-      return ejq.a;
+   public ejk(List<eio> $$0, jr<enn> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   protected void a(dgp $$0, ejp.b $$1, azh $$2, eiz $$3, int $$4, ejp.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = Math.max($$7 + $$5.b() - 1 - $$9 / 2, 0);
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
-   }
-
-   @Override
-   public int a(azh $$0, int $$1, eiz $$2) {
-      return this.b;
-   }
-
-   @Override
-   protected boolean a(azh $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && ($$0.a(2) == 0 || $$2 == 0);
+   public Stream<egg<?, ?>> e() {
+      return Stream.concat(this.b.stream().flatMap($$0 -> $$0.b.a().a()), this.c.a().a());
    }
 }

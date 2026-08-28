@@ -1,16 +1,23 @@
-public class gwb extends gwu<hbc, gbx> {
-   private static final akv a = akv.b("textures/entity/zombie/drowned_outer_layer.png");
-   private final gbx b;
-   private final gbx c;
+public class gwb extends guj<cpj, hbu, gfm> {
+   private static final aku a = aku.b("textures/entity/wandering_trader.png");
 
-   public gwb(guc<hbc, gbx> $$0, gfa $$1) {
-      super($$0);
-      this.b = new gbx($$1.a(gfd.aD));
-      this.c = new gbx($$1.a(gfd.aA));
+   public gwb(gtd.a $$0) {
+      super($$0, new gfm($$0.a(ggb.dy)), 0.5F);
+      this.a(new gww<>(this, $$0.f()));
+      this.a(new gwv<>(this));
    }
 
-   public void a(ffv $$0, glz $$1, int $$2, hbc $$3, float $$4, float $$5) {
-      gbx $$6 = $$3.aj ? this.c : this.b;
-      a($$6, a, $$0, $$1, $$2, $$3, -1);
+   public aku a(hbu $$0) {
+      return a;
+   }
+
+   public hbu b() {
+      return new hbu();
+   }
+
+   public void a(cpj $$0, hbu $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      gzy.a($$0, $$1, this.i);
+      $$1.a = $$0.q() > 0;
    }
 }

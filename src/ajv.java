@@ -1,12 +1,8 @@
+import io.netty.buffer.ByteBuf;
+
 public class ajv {
-   public static final yy<ajr> a = a("status_response");
-   public static final yy<aju> b = b("status_request");
-
-   private static <T extends yw<ajq>> yy<T> a(String $$0) {
-      return new yy<>(yx.b, akv.b($$0));
-   }
-
-   private static <T extends yw<ajt>> yy<T> b(String $$0) {
-      return new yy<>(yx.a, akv.b($$0));
-   }
+   public static final vx.a<ajs, ByteBuf> a = zb.a(vj.c, $$0 -> $$0.a(aju.b, ajt.b).a(ajl.b, ajn.a));
+   public static final vx<ajs> b = a.a($$0 -> $$0);
+   public static final vx.a<ajp, vl> c = zb.b(vj.c, $$0 -> $$0.a(aju.a, ajq.a).a(ajl.a, ajk.a));
+   public static final vx<ajp> d = c.a(vl::new);
 }

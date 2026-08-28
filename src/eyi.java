@@ -1,61 +1,63 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class eyi extends exf {
-   private static final Map<ku<?>, eyi.a<?>> b = Stream.of(
-         new eyi.a<>(kv.U, dex::a),
-         new eyi.a<>(kv.J, cze::a),
-         new eyi.a<>(kv.l, ddg::a),
-         new eyi.a<>(kv.I, ddg::a),
-         new eyi.a<>(kv.f, czu::a),
-         new eyi.a<>(kv.n, cum::a),
-         new eyi.a<>(kv.m, cum::a),
-         new eyi.a<>(kv.o, czh::a),
-         new eyi.a<>(kv.ab, cwv::a)
-      )
-      .collect(Collectors.toMap(eyi.a::a, $$0 -> (eyi.a<?>)$$0));
-   private static final Codec<eyi.a<?>> c = mb.ao.q().comapFlatMap($$0 -> {
-      eyi.a<?> $$1 = b.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Can't toggle tooltip visiblity for " + mb.ao.b($$0));
-   }, eyi.a::a);
+public class eyi extends eyb {
    public static final MapCodec<eyi> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(Codec.unboundedMap(c, Codec.BOOL).fieldOf("toggles").forGetter($$0x -> $$0x.d)).apply($$0, eyi::new)
+      $$0 -> a($$0)
+            .and($$0.group(duj.b.fieldOf("patterns").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.c)))
+            .apply($$0, eyi::new)
    );
-   private final Map<eyi.a<?>, Boolean> d;
+   private final duj b;
+   private final boolean c;
 
-   private eyi(List<ezb> $$0, Map<eyi.a<?>, Boolean> $$1) {
+   eyi(List<ezx> $$0, duj $$1, boolean $$2) {
       super($$0);
-      this.d = $$1;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   protected cwq a(cwq $$0, evs $$1) {
-      this.d.forEach(($$1x, $$2) -> $$1x.a($$0, $$2));
+   protected cxh a(cxh $$0, ewo $$1) {
+      if (this.c) {
+         $$0.a(kv.ak, duj.a, this.b, ($$0x, $$1x) -> new duj.a().a($$0x).a($$1x).a());
+      } else {
+         $$0.b(kv.ak, this.b);
+      }
+
       return $$0;
    }
 
    @Override
-   public exh<eyi> b() {
-      return exi.P;
+   public eyd<eyi> b() {
+      return eye.E;
    }
 
-   static record a<T>(ku<T> a, eyi.b<T> b) {
-      public void a(cwq $$0, boolean $$1) {
-         T $$2 = $$0.a(this.a);
-         if ($$2 != null) {
-            $$0.b(this.a, this.b.withTooltip($$2, $$1));
-         }
+   public static eyi.a a(boolean $$0) {
+      return new eyi.a($$0);
+   }
+
+   public static class a extends eyb.a<eyi.a> {
+      private final duj.a a = new duj.a();
+      private final boolean b;
+
+      a(boolean $$0) {
+         this.b = $$0;
       }
-   }
 
-   @FunctionalInterface
-   interface b<T> {
-      T withTooltip(T var1, boolean var2);
+      protected eyi.a a() {
+         return this;
+      }
+
+      @Override
+      public eyc b() {
+         return new eyi(this.g(), this.a.a(), this.b);
+      }
+
+      public eyi.a a(jr<dui> $$0, cwe $$1) {
+         this.a.a($$0, $$1);
+         return this;
+      }
    }
 }

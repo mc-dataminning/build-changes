@@ -1,10 +1,15 @@
-public class cwp extends cwe {
-   public cwp(but<? extends ckv> $$0, cwm.a $$1) {
-      super($$0, $$1);
+import java.util.List;
+
+public class cwp extends cxd {
+   public cwp(cxd.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(coy $$0, jn $$1, cwq $$2, ji $$3) {
-      return !$$0.dV().s($$3) && $$0.a($$3, $$1, $$2);
+   public void a(cxh $$0, cxd.b $$1, List<wp> $$2, cyx $$3) {
+      czu $$4 = $$0.a(kv.ag);
+      if ($$4 != null) {
+         $$4.a($$1, $$2::add, $$3);
+      }
    }
 }

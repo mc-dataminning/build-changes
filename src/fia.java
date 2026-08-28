@@ -1,32 +1,28 @@
-import com.google.gson.annotations.SerializedName;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
+import com.google.common.collect.Sets;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import java.util.Set;
 
-public abstract class fia {
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder("{");
+public class fia extends fiw {
+   public Set<String> a = Sets.newHashSet();
 
-      for (Field $$1 : this.getClass().getFields()) {
-         if (!b($$1)) {
-            try {
-               $$0.append(a($$1)).append("=").append($$1.get(this)).append(" ");
-            } catch (IllegalAccessException var7) {
+   public static fia a(String $$0) {
+      fia $$1 = new fia();
+      JsonParser $$2 = new JsonParser();
+
+      try {
+         JsonElement $$3 = $$2.parse($$0);
+         JsonObject $$4 = $$3.getAsJsonObject();
+         JsonElement $$5 = $$4.get("ops");
+         if ($$5.isJsonArray()) {
+            for (JsonElement $$6 : $$5.getAsJsonArray()) {
+               $$1.a.add($$6.getAsString());
             }
          }
+      } catch (Exception var8) {
       }
 
-      $$0.deleteCharAt($$0.length() - 1);
-      $$0.append('}');
-      return $$0.toString();
-   }
-
-   private static String a(Field $$0) {
-      SerializedName $$1 = $$0.getAnnotation(SerializedName.class);
-      return $$1 != null ? $$1.value() : $$0.getName();
-   }
-
-   private static boolean b(Field $$0) {
-      return Modifier.isStatic($$0.getModifiers());
+      return $$1;
    }
 }

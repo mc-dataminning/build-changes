@@ -1,90 +1,30 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.List;
+import java.util.Map;
 
-public class gnk {
-   public float[] a;
-   public final int b;
+public class gnk implements AutoCloseable {
+   private static final List<gnh> b = gnh.Q();
+   public static final int a = b.stream().mapToInt(gnh::R).sum();
+   private final Map<gnh, fgo> c = af.a(new Reference2ObjectArrayMap(b.size()), $$0 -> {
+      for (gnh $$1 : b) {
+         $$0.put($$1, new fgo($$1.R()));
+      }
+   });
 
-   public gnk(@Nullable float[] $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public fgo a(gnh $$0) {
+      return this.c.get($$0);
    }
 
-   public float a(int $$0) {
-      if (this.a == null) {
-         throw new NullPointerException("uvs");
-      } else {
-         int $$1 = this.d($$0);
-         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
-      }
+   public void a() {
+      this.c.values().forEach(fgo::b);
    }
 
-   public float b(int $$0) {
-      if (this.a == null) {
-         throw new NullPointerException("uvs");
-      } else {
-         int $$1 = this.d($$0);
-         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
-      }
+   public void b() {
+      this.c.values().forEach(fgo::c);
    }
 
-   private int d(int $$0) {
-      return ($$0 + this.b / 90) % 4;
-   }
-
-   public int c(int $$0) {
-      return ($$0 + 4 - this.b / 90) % 4;
-   }
-
-   public void a(float[] $$0) {
-      if (this.a == null) {
-         this.a = $$0;
-      }
-   }
-
-   protected static class a implements JsonDeserializer<gnk> {
-      private static final int a = 0;
-
-      public gnk a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         float[] $$4 = this.b($$3);
-         int $$5 = this.a($$3);
-         return new gnk($$4, $$5);
-      }
-
-      protected int a(JsonObject $$0) {
-         int $$1 = ayp.a($$0, "rotation", 0);
-         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
-            return $$1;
-         } else {
-            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
-         }
-      }
-
-      @Nullable
-      private float[] b(JsonObject $$0) {
-         if (!$$0.has("uv")) {
-            return null;
-         } else {
-            JsonArray $$1 = ayp.v($$0, "uv");
-            if ($$1.size() != 4) {
-               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
-            } else {
-               float[] $$2 = new float[4];
-
-               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-                  $$2[$$3] = ayp.e($$1.get($$3), "uv[" + $$3 + "]");
-               }
-
-               return $$2;
-            }
-         }
-      }
+   @Override
+   public void close() {
+      this.c.values().forEach(fgo::close);
    }
 }

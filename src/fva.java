@@ -1,140 +1,61 @@
-public abstract class fva extends fum {
-   private static final wp u = wp.c("advMode.setCommand");
-   private static final wp v = wp.c("advMode.command");
-   private static final wp w = wp.c("advMode.previousOutput");
-   protected fpd a;
-   protected fpd b;
-   protected fou c;
-   protected fou d;
-   protected fpb<Boolean> s;
-   fox x;
+import java.net.URI;
 
-   public fva() {
-      super(flb.a);
+public class fva extends fvi {
+   private static final wp a = wp.c("symlink_warning.title.world").a(n.r);
+   private static final wp b = wp.a("symlink_warning.message.world", wp.a(axv.p));
+   private static final wp c = wp.c("symlink_warning.title.pack").a(n.r);
+   private static final wp d = wp.a("symlink_warning.message.pack", wp.a(axv.p));
+   private final wp s;
+   private final URI u;
+   private final Runnable v;
+   private final ftd w = new ftd().b(10);
+
+   public fva(wp $$0, wp $$1, URI $$2, Runnable $$3) {
+      super($$0);
+      this.s = $$1;
+      this.u = $$2;
+      this.v = $$3;
    }
 
-   @Override
-   public void e() {
-      if (!this.m().j()) {
-         this.aO_();
-      }
+   public static fvi a(Runnable $$0) {
+      return new fva(a, b, axv.p, $$0);
    }
 
-   abstract dfj m();
-
-   abstract int E();
+   public static fvi b(Runnable $$0) {
+      return new fva(c, d, axv.p, $$0);
+   }
 
    @Override
    protected void aR_() {
-      this.c = this.c(fou.a(wo.d, $$0x -> this.F()).a(this.n / 2 - 4 - 150, this.o / 4 + 120 + 12, 150, 20).a());
-      this.d = this.c(fou.a(wo.e, $$0x -> this.aO_()).a(this.n / 2 + 4, this.o / 4 + 120 + 12, 150, 20).a());
-      boolean $$0 = this.m().p();
-      this.s = this.c(fpb.a(wp.b("O"), wp.b("X")).a($$0).a().a(this.n / 2 + 150 - 20, this.E(), 20, 20, wp.c("advMode.trackOutput"), ($$0x, $$1) -> {
-         dfj $$2 = this.m();
-         $$2.a($$1);
-         this.c($$1);
-      }));
-      this.a = new fpd(this.p, this.n / 2 - 150, 50, 300, 20, wp.c("advMode.command")) {
-         @Override
-         protected xd d() {
-            return super.d().b(fva.this.x.e());
-         }
-      };
-      this.a.f(32500);
-      this.a.b(this::a);
-      this.d(this.a);
-      this.b = new fpd(this.p, this.n / 2 - 150, this.E(), 276, 20, wp.c("advMode.previousOutput"));
-      this.b.f(32500);
-      this.b.e(false);
-      this.b.a("-");
-      this.d(this.b);
-      this.x = new fox(this.m, this, this.a, this.p, true, true, 0, 7, false, Integer.MIN_VALUE);
-      this.x.a(true);
-      this.x.d();
-      this.c($$0);
+      super.aR_();
+      this.w.c().b();
+      ftd.b $$0 = this.w.d(1);
+      $$0.a(new fqx(this.l, this.p));
+      $$0.a(new fqk(this.s, this.p).d(this.n - 50).b(true));
+      int $$1 = 120;
+      ftd $$2 = new ftd().a(5);
+      ftd.b $$3 = $$2.d(3);
+      $$3.a(fpq.a(wo.n, $$0x -> af.n().a(this.u)).b(120, 20).a());
+      $$3.a(fpq.a(wo.o, $$0x -> this.m.p.a(this.u.toString())).b(120, 20).a());
+      $$3.a(fpq.a(wo.k, $$0x -> this.aO_()).b(120, 20).a());
+      $$0.a($$2);
+      this.c();
+      this.w.a(this::c);
    }
 
    @Override
-   protected void aF_() {
-      this.b(this.a);
+   protected void c() {
+      this.w.a();
+      ftc.a(this.w, this.J());
    }
 
    @Override
-   protected wp z() {
-      return this.x.a() ? this.x.b() : super.z();
+   public wp i() {
+      return wo.a(super.i(), this.s);
    }
 
    @Override
-   public void a(flk $$0, int $$1, int $$2) {
-      String $$3 = this.a.a();
-      this.b($$0, $$1, $$2);
-      this.a.a($$3);
-      this.x.d();
-   }
-
-   @Override
-   protected void c(boolean $$0) {
-      this.b.a($$0 ? this.m().l().getString() : "-");
-   }
-
-   protected void F() {
-      dfj $$0 = this.m();
-      this.a($$0);
-      if (!$$0.p()) {
-         $$0.c(null);
-      }
-
-      this.m.a(null);
-   }
-
-   protected abstract void a(dfj var1);
-
-   private void a(String $$0) {
-      this.x.d();
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.x.a($$0, $$1, $$2)) {
-         return true;
-      } else if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else if ($$0 != 257 && $$0 != 335) {
-         return false;
-      } else {
-         this.F();
-         return true;
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return this.x.a($$3) ? true : super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      return this.x.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(fof $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, u, this.n / 2, 20, 16777215);
-      $$0.b(this.p, v, this.n / 2 - 150 + 1, 40, 10526880);
-      this.a.a($$0, $$1, $$2, $$3);
-      int $$4 = 75;
-      if (!this.b.a().isEmpty()) {
-         $$4 += 5 * 9 + 1 + this.E() - 135;
-         $$0.b(this.p, w, this.n / 2 - 150 + 1, $$4 + 4, 10526880);
-         this.b.a($$0, $$1, $$2, $$3);
-      }
-
-      this.x.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void b(fof $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+   public void aO_() {
+      this.v.run();
    }
 }

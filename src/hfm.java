@@ -1,45 +1,138 @@
-import com.mojang.authlib.GameProfile;
-import java.util.UUID;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
 public class hfm {
-   private static final hfv[] a = new hfv[]{
-      a("textures/entity/player/slim/alex.png", hfv.a.a),
-      a("textures/entity/player/slim/ari.png", hfv.a.a),
-      a("textures/entity/player/slim/efe.png", hfv.a.a),
-      a("textures/entity/player/slim/kai.png", hfv.a.a),
-      a("textures/entity/player/slim/makena.png", hfv.a.a),
-      a("textures/entity/player/slim/noor.png", hfv.a.a),
-      a("textures/entity/player/slim/steve.png", hfv.a.a),
-      a("textures/entity/player/slim/sunny.png", hfv.a.a),
-      a("textures/entity/player/slim/zuri.png", hfv.a.a),
-      a("textures/entity/player/wide/alex.png", hfv.a.b),
-      a("textures/entity/player/wide/ari.png", hfv.a.b),
-      a("textures/entity/player/wide/efe.png", hfv.a.b),
-      a("textures/entity/player/wide/kai.png", hfv.a.b),
-      a("textures/entity/player/wide/makena.png", hfv.a.b),
-      a("textures/entity/player/wide/noor.png", hfv.a.b),
-      a("textures/entity/player/wide/steve.png", hfv.a.b),
-      a("textures/entity/player/wide/sunny.png", hfv.a.b),
-      a("textures/entity/player/wide/zuri.png", hfv.a.b)
-   };
+   public static final Set<atp<?>> a = Set.of(hhe.b);
+   private static final Logger b = LogUtils.getLogger();
+   private final aku c;
+   private final int d;
+   private final int e;
+   private final int f;
 
-   public static akv a() {
-      return b().a();
+   public hfm(aku $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public static hfv b() {
-      return a[6];
+   public static hfm a(hfq $$0) {
+      return new hfm($$0.g(), $$0.h(), $$0.i(), $$0.j());
    }
 
-   public static hfv a(UUID $$0) {
-      return a[Math.floorMod($$0.hashCode(), a.length)];
+   public hfm.a a(List<hfl> $$0, int $$1, Executor $$2) {
+      int $$3 = this.d;
+      hfo<hfl> $$4 = new hfo<>($$3, $$3, $$1);
+      int $$5 = Integer.MAX_VALUE;
+      int $$6 = 1 << $$1;
+
+      for (hfl $$7 : $$0) {
+         $$5 = Math.min($$5, Math.min($$7.a(), $$7.b()));
+         int $$8 = Math.min(Integer.lowestOneBit($$7.a()), Integer.lowestOneBit($$7.b()));
+         if ($$8 < $$6) {
+            b.warn("Texture {} with size {}x{} limits mip level from {} to {}", new Object[]{$$7.c(), $$7.a(), $$7.b(), ayz.f($$6), ayz.f($$8)});
+            $$6 = $$8;
+         }
+
+         $$4.a($$7);
+      }
+
+      int $$9 = Math.min($$5, $$6);
+      int $$10 = ayz.f($$9);
+      int $$11;
+      if ($$10 < $$1) {
+         b.warn("{}: dropping miplevel from {} to {}, because of minimum power of two: {}", new Object[]{this.c, $$1, $$10, $$9});
+         $$11 = $$10;
+      } else {
+         $$11 = $$1;
+      }
+
+      try {
+         $$4.c();
+      } catch (hfp var16) {
+         o $$14 = o.a(var16, "Stitching");
+         p $$15 = $$14.a("Stitcher");
+         $$15.a(
+            "Sprites", var16.a().stream().map($$0x -> String.format(Locale.ROOT, "%s[%dx%d]", $$0x.c(), $$0x.a(), $$0x.b())).collect(Collectors.joining(","))
+         );
+         $$15.a("Max Texture Size", $$3);
+         throw new z($$14);
+      }
+
+      int $$16 = Math.max($$4.a(), this.e);
+      int $$17 = Math.max($$4.b(), this.f);
+      Map<aku, hfr> $$18 = this.a($$4, $$16, $$17);
+      hfr $$19 = $$18.get(hfg.c());
+      CompletableFuture<Void> $$20;
+      if ($$11 > 0) {
+         $$20 = CompletableFuture.runAsync(() -> $$18.values().forEach($$1xx -> $$1xx.e().a($$11)), $$2);
+      } else {
+         $$20 = CompletableFuture.completedFuture(null);
+      }
+
+      return new hfm.a($$16, $$17, $$11, $$19, $$18, $$20);
    }
 
-   public static hfv a(GameProfile $$0) {
-      return a($$0.getId());
+   public static CompletableFuture<List<hfl>> a(hfv $$0, List<Function<hfv, hfl>> $$1, Executor $$2) {
+      List<CompletableFuture<hfl>> $$3 = $$1.stream().map($$2x -> CompletableFuture.supplyAsync(() -> (hfl)$$2x.apply($$0), $$2)).toList();
+      return af.d($$3).thenApply($$0x -> $$0x.stream().filter(Objects::nonNull).toList());
    }
 
-   private static hfv a(String $$0, hfv.a $$1) {
-      return new hfv(akv.b($$0), null, null, null, $$1, true);
+   public CompletableFuture<hfm.a> a(aup $$0, aku $$1, int $$2, Executor $$3) {
+      return this.a($$0, $$1, $$2, $$3, a);
+   }
+
+   public CompletableFuture<hfm.a> a(aup $$0, aku $$1, int $$2, Executor $$3, Collection<atp<?>> $$4) {
+      hfv $$5 = hfv.create($$4);
+      return CompletableFuture.<List<Function<hfv, hfl>>>supplyAsync(() -> hfx.a($$0, $$1).a($$0), $$3)
+         .thenCompose($$2x -> a($$5, $$2x, $$3))
+         .thenApply($$2x -> this.a($$2x, $$2, $$3));
+   }
+
+   private Map<aku, hfr> a(hfo<hfl> $$0, int $$1, int $$2) {
+      Map<aku, hfr> $$3 = new HashMap<>();
+      $$0.a(($$3x, $$4, $$5) -> $$3.put($$3x.c(), new hfr(this.c, $$3x, $$1, $$2, $$4, $$5)));
+      return $$3;
+   }
+
+   public static record a(int a, int b, int c, hfr d, Map<aku, hfr> e, CompletableFuture<Void> f) {
+      public CompletableFuture<hfm.a> a() {
+         return this.f.thenApply($$0 -> this);
+      }
+
+      public int b() {
+         return this.a;
+      }
+
+      public int c() {
+         return this.b;
+      }
+
+      public int d() {
+         return this.c;
+      }
+
+      public hfr e() {
+         return this.d;
+      }
+
+      public Map<aku, hfr> f() {
+         return this.e;
+      }
+
+      public CompletableFuture<Void> g() {
+         return this.f;
+      }
    }
 }

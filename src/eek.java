@@ -1,21 +1,26 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-@Deprecated
-public class eek extends eel {
-   public static final MapCodec<eek> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eek::new));
+public record eek(eem b, eej c) {
+   public static final Codec<eek> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(eem.a.forGetter(eek::a), eej.a.forGetter(eek::b)).apply($$0, $$0.stable(eek::new))
+   );
 
-   public eek(km $$0) {
-      super($$0);
+   public static <T> DataResult<T> a(DynamicOps<T> $$0, eem $$1, eej $$2) {
+      return a.encodeStart($$0, new eek($$1, $$2));
    }
 
-   @Override
-   protected boolean a(dwy $$0) {
-      return $$0.e();
+   public static <T> DataResult<T> a(DynamicOps<T> $$0, eem $$1, kf $$2) {
+      return a($$0, $$1, new eej($$2.e(mc.bh)));
    }
 
-   @Override
-   public eeb<?> a() {
-      return eeb.e;
+   public eem a() {
+      return this.b;
+   }
+
+   public eej b() {
+      return this.c;
    }
 }

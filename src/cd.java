@@ -20,11 +20,11 @@ public record cd(Optional<Boolean> d) implements by {
    }
 
    @Override
-   public boolean a(bum $$0, ard $$1, @Nullable fbb $$2) {
+   public boolean a(bva $$0, ard $$1, @Nullable fbx $$2) {
       if (this.d.isEmpty()) {
          return true;
       } else {
-         return $$0 instanceof cpn $$3 ? this.d.get() == $$3.l() : false;
+         return $$0 instanceof cqg $$3 ? this.d.get() == $$3.f() : false;
       }
    }
 
