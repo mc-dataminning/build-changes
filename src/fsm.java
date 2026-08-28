@@ -1,3 +1,8 @@
-public interface fsm {
-   void a(fsj var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fsm {
 }

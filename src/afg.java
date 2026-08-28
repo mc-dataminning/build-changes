@@ -1,29 +1,45 @@
-public class afg implements zw<aci> {
-   public static final zn<wm, afg> a = zw.a(afg::a, afg::new);
+public class afg implements zb<abn> {
+   public static final ys<vr, afg> a = zb.a(afg::a, afg::new);
    private final int b;
+   private final int c;
+   private final int d;
 
-   public afg(dtv $$0) {
-      this.b = $$0.r();
+   public afg(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private afg(wm $$0) {
-      this.b = $$0.l();
+   private afg(vr $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
+      this.d = $$0.readInt();
    }
 
-   private void a(wm $$0) {
-      $$0.c(this.b);
+   private void a(vr $$0) {
+      $$0.p(this.b);
+      $$0.p(this.c);
+      $$0.p(this.d);
    }
 
    @Override
-   public zy<afg> a() {
-      return agu.av;
+   public zd<afg> a() {
+      return afz.aQ;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
    }
 
    public int b() {
       return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

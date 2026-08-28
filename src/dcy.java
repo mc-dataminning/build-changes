@@ -1,23 +1,25 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dcy {
-   public static final Codec<dcy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(li.bf.fieldOf("options").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.c)).apply($$0, dcy::new)
+public record dcy(dbr d, cov e) {
+   public static final String a = "enabled_features";
+   public static final Codec<dcy> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dbr.b.lenientOptionalFieldOf("DataPacks", dbr.a).forGetter(dcy::a), cox.e.lenientOptionalFieldOf("enabled_features", cox.g).forGetter(dcy::b)
+            )
+            .apply($$0, dcy::new)
    );
-   private final lg b;
-   private final float c;
+   public static final dcy c = new dcy(dbr.a, cox.g);
 
-   public dcy(lg $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public dcy a(cov $$0) {
+      return new dcy(this.d, this.e.c($$0));
    }
 
-   public lg a() {
-      return this.b;
+   public dbr a() {
+      return this.d;
    }
 
-   public boolean a(azh $$0) {
-      return $$0.i() <= this.c;
+   public cov b() {
+      return this.e;
    }
 }

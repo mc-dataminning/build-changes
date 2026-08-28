@@ -1,37 +1,30 @@
-public enum cna {
-   a(0, "cape"),
-   b(1, "jacket"),
-   c(2, "left_sleeve"),
-   d(3, "right_sleeve"),
-   e(4, "left_pants_leg"),
-   f(5, "right_pants_leg"),
-   g(6, "hat");
+import javax.annotation.Nullable;
 
-   private final int h;
-   private final int i;
-   private final String j;
-   private final xp k;
+@FunctionalInterface
+public interface cna {
+   cna a = ($$0, $$1, $$2) -> {
+   };
+   cna b = ($$0, $$1, $$2) -> {
+      float $$3 = 170.0F + $$2.i() * 20.0F;
+      $$0.h($$0.ds().a(-0.5));
+      $$0.s($$0.dF() + $$3);
+      $$0.O += $$3;
+      $$0.U = true;
+   };
+   cna c = ($$0, $$1, $$2) -> {
+      if ($$1 != null) {
+         evz $$3 = $$1.bL().d();
+         $$0.h($$3);
+         $$0.U = true;
+      }
+   };
+   cna d = ($$0, $$1, $$2) -> {
+      if ($$1 != null) {
+         evz $$3 = $$1.ds().d();
+         $$0.h($$3);
+         $$0.U = true;
+      }
+   };
 
-   private cna(final int $$0, final String $$1) {
-      this.h = $$0;
-      this.i = 1 << $$0;
-      this.j = $$1;
-      this.k = xp.c("options.modelPart." + $$1);
-   }
-
-   public int a() {
-      return this.i;
-   }
-
-   public int b() {
-      return this.h;
-   }
-
-   public String c() {
-      return this.j;
-   }
-
-   public xp d() {
-      return this.k;
-   }
+   void deflect(cmz var1, @Nullable bsd var2, aym var3);
 }

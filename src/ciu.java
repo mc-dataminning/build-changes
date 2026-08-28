@@ -1,45 +1,50 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
-public class ciu {
-   private static final Logger a = LogUtils.getLogger();
-   private final cid b;
-   private final cin[] c = new cin[cit.c()];
-   @Nullable
-   private cin d;
-
-   public ciu(cid $$0) {
-      this.b = $$0;
-      this.a(cit.k);
+public abstract class ciu extends cnt {
+   protected ciu(bsj<? extends ciu> $$0, dcd $$1) {
+      super($$0, $$1);
    }
 
-   public void a(cit<?> $$0) {
-      if (this.d == null || $$0 != this.d.i()) {
-         if (this.d != null) {
-            this.d.e();
-         }
+   @Override
+   protected void z() {
+      super.z();
+   }
 
-         this.d = this.b((cit<cin>)$$0);
-         if (!this.b.dP().B) {
-            this.b.ap().a(cid.b, $$0.b());
-         }
+   public ciu.a s() {
+      return ciu.a.a;
+   }
 
-         a.debug("Dragon is now in phase {} on the {}", $$0, this.b.dP().B ? "client" : "server");
-         this.d.d();
+   @Override
+   public boolean c(bsy $$0) {
+      return $$0 instanceof clp && $$0.p_() ? false : super.c($$0);
+   }
+
+   @Override
+   public boolean s(bsd $$0) {
+      if (super.s($$0)) {
+         return true;
+      } else {
+         return !$$0.ak().a(avy.z) ? false : this.cj() == null && $$0.cj() == null;
       }
    }
 
-   public cin a() {
-      return this.d;
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h;
    }
 
-   public <T extends cin> T b(cit<T> $$0) {
-      int $$1 = $$0.b();
-      if (this.c[$$1] == null) {
-         this.c[$$1] = $$0.a(this.b);
+   protected class b extends cao {
+      public b(final cnt $$1) {
+         super($$1, false);
       }
 
-      return (T)this.c[$$1];
+      @Override
+      public boolean a() {
+         return super.a() && ciu.this.gE();
+      }
    }
 }

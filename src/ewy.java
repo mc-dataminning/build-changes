@@ -1,197 +1,177 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public class ewy extends epe {
-   private static final Logger b = LogUtils.getLogger();
-   public static final String a = "scoreboard";
-   private final ewx c;
+public class ewy extends exf {
+   private static final int a = 0;
+   private static final int b = 1;
+   private final exd c;
+   private final String d;
+   private final Set<String> e = Sets.newHashSet();
+   private wu f;
+   private wu g = wt.a;
+   private wu h = wt.a;
+   private boolean i = true;
+   private boolean j = true;
+   private exf.b k = exf.b.a;
+   private exf.b l = exf.b.a;
+   private n m = n.v;
+   private exf.a n = exf.a.a;
+   private final xr o;
 
-   public ewy(ewx $$0) {
+   public ewy(exd $$0, String $$1) {
       this.c = $$0;
+      this.d = $$1;
+      this.f = wu.b($$1);
+      this.o = xr.a.a($$1).a(new xa(xa.a.a, wu.b($$1)));
    }
 
-   public ewy b(us $$0, jk.a $$1) {
-      this.b($$0.c("Objectives", 10), $$1);
-      this.c.a($$0.c("PlayerScores", 10), $$1);
-      if ($$0.b("DisplaySlots", 10)) {
-         this.a($$0.p("DisplaySlots"));
-      }
-
-      if ($$0.b("Teams", 9)) {
-         this.a($$0.c("Teams", 10), $$1);
-      }
-
-      return this;
-   }
-
-   private void a(uy $$0, jk.a $$1) {
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         us $$3 = $$0.a($$2);
-         String $$4 = $$3.l("Name");
-         ews $$5 = this.c.c($$4);
-         xp $$6 = xp.a.a($$3.l("DisplayName"), $$1);
-         if ($$6 != null) {
-            $$5.a($$6);
-         }
-
-         if ($$3.b("TeamColor", 8)) {
-            $$5.a(n.b($$3.l("TeamColor")));
-         }
-
-         if ($$3.b("AllowFriendlyFire", 99)) {
-            $$5.a($$3.q("AllowFriendlyFire"));
-         }
-
-         if ($$3.b("SeeFriendlyInvisibles", 99)) {
-            $$5.b($$3.q("SeeFriendlyInvisibles"));
-         }
-
-         if ($$3.b("MemberNamePrefix", 8)) {
-            xp $$7 = xp.a.a($$3.l("MemberNamePrefix"), $$1);
-            if ($$7 != null) {
-               $$5.b($$7);
-            }
-         }
-
-         if ($$3.b("MemberNameSuffix", 8)) {
-            xp $$8 = xp.a.a($$3.l("MemberNameSuffix"), $$1);
-            if ($$8 != null) {
-               $$5.c($$8);
-            }
-         }
-
-         if ($$3.b("NameTagVisibility", 8)) {
-            ewz.b $$9 = ewz.b.a($$3.l("NameTagVisibility"));
-            if ($$9 != null) {
-               $$5.a($$9);
-            }
-         }
-
-         if ($$3.b("DeathMessageVisibility", 8)) {
-            ewz.b $$10 = ewz.b.a($$3.l("DeathMessageVisibility"));
-            if ($$10 != null) {
-               $$5.b($$10);
-            }
-         }
-
-         if ($$3.b("CollisionRule", 8)) {
-            ewz.a $$11 = ewz.a.a($$3.l("CollisionRule"));
-            if ($$11 != null) {
-               $$5.a($$11);
-            }
-         }
-
-         this.a($$5, $$3.c("Players", 8));
-      }
-   }
-
-   private void a(ews $$0, uy $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.c.a($$1.j($$2), $$0);
-      }
-   }
-
-   private void a(us $$0) {
-      for (String $$1 : $$0.e()) {
-         ewo $$2 = ewo.t.a($$1);
-         if ($$2 != null) {
-            String $$3 = $$0.l($$1);
-            ewp $$4 = this.c.a($$3);
-            this.c.a($$2, $$4);
-         }
-      }
-   }
-
-   private void b(uy $$0, jk.a $$1) {
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         us $$3 = $$0.a($$2);
-         String $$4 = $$3.l("CriteriaName");
-         exa $$5 = exa.a($$4).orElseGet(() -> {
-            b.warn("Unknown scoreboard criteria {}, replacing with {}", $$4, exa.b.d());
-            return exa.b;
-         });
-         String $$6 = $$3.l("Name");
-         xp $$7 = xp.a.a($$3.l("DisplayName"), $$1);
-         exa.a $$8 = exa.a.a($$3.l("RenderType"));
-         boolean $$9 = $$3.q("display_auto_update");
-         zf $$10 = (zf)zh.b.parse($$1.a(vg.a), $$3.c("format")).result().orElse(null);
-         this.c.a($$6, $$5, $$7, $$8, $$9, $$10);
-      }
+   public exd a() {
+      return this.c;
    }
 
    @Override
-   public us a(us $$0, jk.a $$1) {
-      $$0.a("Objectives", this.b($$1));
-      $$0.a("PlayerScores", this.c.a($$1));
-      $$0.a("Teams", this.a($$1));
-      this.b($$0);
+   public String b() {
+      return this.d;
+   }
+
+   public wu c() {
+      return this.f;
+   }
+
+   public xi d() {
+      xi $$0 = wx.a((wu)this.f.f().c(this.o));
+      n $$1 = this.n();
+      if ($$1 != n.v) {
+         $$0.a($$1);
+      }
+
       return $$0;
    }
 
-   private uy a(jk.a $$0) {
-      uy $$1 = new uy();
+   public void a(wu $$0) {
+      if ($$0 == null) {
+         throw new IllegalArgumentException("Name cannot be null");
+      } else {
+         this.f = $$0;
+         this.c.b(this);
+      }
+   }
 
-      for (ews $$3 : this.c.g()) {
-         us $$4 = new us();
-         $$4.a("Name", $$3.b());
-         $$4.a("DisplayName", xp.a.a($$3.c(), $$0));
-         if ($$3.n().b() >= 0) {
-            $$4.a("TeamColor", $$3.n().g());
-         }
+   public void b(@Nullable wu $$0) {
+      this.g = $$0 == null ? wt.a : $$0;
+      this.c.b(this);
+   }
 
-         $$4.a("AllowFriendlyFire", $$3.h());
-         $$4.a("SeeFriendlyInvisibles", $$3.i());
-         $$4.a("MemberNamePrefix", xp.a.a($$3.e(), $$0));
-         $$4.a("MemberNameSuffix", xp.a.a($$3.f(), $$0));
-         $$4.a("NameTagVisibility", $$3.j().e);
-         $$4.a("DeathMessageVisibility", $$3.k().e);
-         $$4.a("CollisionRule", $$3.l().e);
-         uy $$5 = new uy();
+   public wu e() {
+      return this.g;
+   }
 
-         for (String $$6 : $$3.g()) {
-            $$5.add(vn.a($$6));
-         }
+   public void c(@Nullable wu $$0) {
+      this.h = $$0 == null ? wt.a : $$0;
+      this.c.b(this);
+   }
 
-         $$4.a("Players", $$5);
-         $$1.add($$4);
+   public wu f() {
+      return this.h;
+   }
+
+   @Override
+   public Collection<String> g() {
+      return this.e;
+   }
+
+   @Override
+   public xi d(wu $$0) {
+      xi $$1 = wu.i().b(this.g).b($$0).b(this.h);
+      n $$2 = this.n();
+      if ($$2 != n.v) {
+         $$1.a($$2);
       }
 
       return $$1;
    }
 
-   private void b(us $$0) {
-      us $$1 = new us();
-
-      for (ewo $$2 : ewo.values()) {
-         ewp $$3 = this.c.a($$2);
-         if ($$3 != null) {
-            $$1.a($$2.c(), $$3.b());
-         }
-      }
-
-      if (!$$1.g()) {
-         $$0.a("DisplaySlots", $$1);
-      }
+   public static xi a(@Nullable exf $$0, wu $$1) {
+      return $$0 == null ? $$1.f() : $$0.d($$1);
    }
 
-   private uy b(jk.a $$0) {
-      uy $$1 = new uy();
+   @Override
+   public boolean h() {
+      return this.i;
+   }
 
-      for (ewp $$3 : this.c.c()) {
-         us $$4 = new us();
-         $$4.a("Name", $$3.b());
-         $$4.a("CriteriaName", $$3.c().d());
-         $$4.a("DisplayName", xp.a.a($$3.d(), $$0));
-         $$4.a("RenderType", $$3.h().a());
-         $$4.a("display_auto_update", $$3.e());
-         zf $$5 = $$3.f();
-         if ($$5 != null) {
-            zh.b.encodeStart($$0.a(vg.a), $$5).ifSuccess($$1x -> $$4.a("format", $$1x));
-         }
+   public void a(boolean $$0) {
+      this.i = $$0;
+      this.c.b(this);
+   }
 
-         $$1.add($$4);
+   @Override
+   public boolean i() {
+      return this.j;
+   }
+
+   public void b(boolean $$0) {
+      this.j = $$0;
+      this.c.b(this);
+   }
+
+   @Override
+   public exf.b j() {
+      return this.k;
+   }
+
+   @Override
+   public exf.b k() {
+      return this.l;
+   }
+
+   public void a(exf.b $$0) {
+      this.k = $$0;
+      this.c.b(this);
+   }
+
+   public void b(exf.b $$0) {
+      this.l = $$0;
+      this.c.b(this);
+   }
+
+   @Override
+   public exf.a l() {
+      return this.n;
+   }
+
+   public void a(exf.a $$0) {
+      this.n = $$0;
+      this.c.b(this);
+   }
+
+   public int m() {
+      int $$0 = 0;
+      if (this.h()) {
+         $$0 |= 1;
       }
 
-      return $$1;
+      if (this.i()) {
+         $$0 |= 2;
+      }
+
+      return $$0;
+   }
+
+   public void a(int $$0) {
+      this.a(($$0 & 1) > 0);
+      this.b(($$0 & 2) > 0);
+   }
+
+   public void a(n $$0) {
+      this.m = $$0;
+      this.c.b(this);
+   }
+
+   @Override
+   public n n() {
+      return this.m;
    }
 }

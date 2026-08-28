@@ -1,94 +1,280 @@
-import com.google.common.base.Suppliers;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.authlib.minecraft.UserApiService;
-import java.nio.file.Path;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionStage;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.Supplier;
+import com.google.common.collect.Maps;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gub implements AutoCloseable {
-   private static final AtomicInteger a = new AtomicInteger(1);
-   private static final Executor b = Executors.newSingleThreadExecutor($$0 -> {
-      Thread $$1 = new Thread($$0);
-      $$1.setName("Telemetry-Sender-#" + a.getAndIncrement());
-      return $$1;
-   });
-   private final ffh c;
-   private final UserApiService d;
-   private final guj e;
-   private final Path f;
-   private final CompletableFuture<Optional<guh>> g;
-   private final Supplier<guf> h = Suppliers.memoize(this::c);
+public class gub extends atz<gub.a> {
+   public static final gst a = new gst("minecraft:empty", bpe.a(1.0F), bpe.a(1.0F), 1, gst.a.a, false, false, 16);
+   public static final akk b = new akk("minecraft", "intentionally_empty");
+   public static final guc c = new guc(b, null);
+   public static final gst d = new gst(b.toString(), bpe.a(1.0F), bpe.a(1.0F), 1, gst.a.a, false, false, 16);
+   static final Logger e = LogUtils.getLogger();
+   private static final String f = "sounds.json";
+   private static final Gson g = new GsonBuilder().registerTypeHierarchyAdapter(wu.class, new wu.b(jx.b)).registerTypeAdapter(gsu.class, new gsv()).create();
+   private static final TypeToken<Map<String, gsu>> h = new TypeToken<Map<String, gsu>>() {
+   };
+   private final Map<akk, guc> i = Maps.newHashMap();
+   private final gty j;
+   private final Map<akk, ats> k = new HashMap<>();
 
-   public gub(ffh $$0, UserApiService $$1, ffv $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      guj.a $$3 = guj.a();
-      $$2.f().ifPresent($$1x -> $$3.a(gui.a, $$1x));
-      $$2.e().ifPresent($$1x -> $$3.a(gui.b, $$1x));
-      $$3.a(gui.c, UUID.randomUUID());
-      $$3.a(gui.d, aa.b().b());
-      $$3.a(gui.e, ac.k().a());
-      $$3.a(gui.f, System.getProperty("os.name"));
-      $$3.a(gui.g, ffh.e().a());
-      $$3.b(gui.h, ffh.be());
-      this.e = $$3.a();
-      this.f = $$0.p.toPath().resolve("logs/telemetry");
-      this.g = guh.a(this.f);
+   public gub(ffr $$0) {
+      this.j = new gty(this, $$0, atx.fromMap(this.k));
    }
 
-   public guk a(boolean $$0, @Nullable Duration $$1, @Nullable String $$2) {
-      return new guk(this.c(), $$0, $$1, $$2);
-   }
+   protected gub.a a(atu $$0, bmr $$1) {
+      gub.a $$2 = new gub.a();
+      $$1.a();
+      $$1.a("list");
+      $$2.a($$0);
+      $$1.c();
 
-   public guf a() {
-      return this.h.get();
-   }
+      for (String $$3 : $$0.a()) {
+         $$1.a($$3);
 
-   private guf c() {
-      if (!this.c.E()) {
-         return guf.a;
-      } else {
-         TelemetrySession $$0 = this.d.newTelemetrySession(b);
-         if (!$$0.isEnabled()) {
-            return guf.a;
-         } else {
-            CompletableFuture<Optional<gue>> $$1 = this.g
-               .thenCompose($$0x -> $$0x.<CompletionStage<Optional<gue>>>map(guh::a).orElseGet(() -> CompletableFuture.completedFuture(Optional.empty())));
-            return ($$2, $$3) -> {
-               if (!$$2.d() || ffh.Q().C()) {
-                  guj.a $$4 = guj.a();
-                  $$4.a(this.e);
-                  $$4.a(gui.m, Instant.now());
-                  $$4.a(gui.l, $$2.d());
-                  $$3.accept($$4);
-                  guc $$5 = new guc($$2, $$4.a());
-                  $$1.thenAccept($$2x -> {
-                     if (!$$2x.isEmpty()) {
-                        ((gue)$$2x.get()).log($$5);
-                        $$5.a($$0).send();
-                     }
-                  });
+         try {
+            for (ats $$5 : $$0.a(new akk($$3, "sounds.json"))) {
+               $$1.a($$5.b());
+
+               try (Reader $$6 = $$5.e()) {
+                  $$1.a("parse");
+                  Map<String, gsu> $$7 = axu.a(g, $$6, h);
+                  $$1.b("register");
+
+                  for (Entry<String, gsu> $$8 : $$7.entrySet()) {
+                     $$2.a(new akk($$3, $$8.getKey()), $$8.getValue());
+                  }
+
+                  $$1.c();
+               } catch (RuntimeException var15) {
+                  e.warn("Invalid {} in resourcepack: '{}'", new Object[]{"sounds.json", $$5.b(), var15});
                }
-            };
+
+               $$1.c();
+            }
+         } catch (IOException var16) {
          }
+
+         $$1.c();
+      }
+
+      $$1.b();
+      return $$2;
+   }
+
+   protected void a(gub.a $$0, atu $$1, bmr $$2) {
+      $$0.a(this.i, this.k, this.j);
+      if (aa.aX) {
+         for (akk $$3 : this.i.keySet()) {
+            guc $$4 = this.i.get($$3);
+            if (!wx.b($$4.a()) && lq.b.d($$3)) {
+               e.error("Missing subtitle {} for sound event: {}", $$4.a(), $$3);
+            }
+         }
+      }
+
+      if (e.isDebugEnabled()) {
+         for (akk $$5 : this.i.keySet()) {
+            if (!lq.b.d($$5)) {
+               e.debug("Not having sound event for: {}", $$5);
+            }
+         }
+      }
+
+      this.j.a();
+   }
+
+   public List<String> a() {
+      return this.j.h();
+   }
+
+   public eye b() {
+      return this.j.i();
+   }
+
+   static boolean a(gst $$0, akk $$1, atx $$2) {
+      akk $$3 = $$0.b();
+      if ($$2.getResource($$3).isEmpty()) {
+         e.warn("File {} does not exist, cannot add it to event {}", $$3, $$1);
+         return false;
+      } else {
+         return true;
       }
    }
 
-   public Path b() {
-      return this.f;
+   @Nullable
+   public guc a(akk $$0) {
+      return this.i.get($$0);
    }
 
-   @Override
-   public void close() {
-      this.g.thenAccept($$0 -> $$0.ifPresent(guh::close));
+   public Collection<akk> d() {
+      return this.i.keySet();
+   }
+
+   public void a(gsx $$0) {
+      this.j.a($$0);
+   }
+
+   public void a(gsw $$0) {
+      this.j.c($$0);
+   }
+
+   public void a(gsw $$0, int $$1) {
+      this.j.a($$0, $$1);
+   }
+
+   public void a(fey $$0) {
+      this.j.a($$0);
+   }
+
+   public void e() {
+      this.j.e();
+   }
+
+   public void f() {
+      this.j.d();
+   }
+
+   public void g() {
+      this.j.b();
+   }
+
+   public void h() {
+      this.j.c();
+   }
+
+   public void a(boolean $$0) {
+      this.j.a($$0);
+   }
+
+   public void i() {
+      this.j.f();
+   }
+
+   public void a(avg $$0, float $$1) {
+      if ($$0 == avg.a && $$1 <= 0.0F) {
+         this.f();
+      }
+
+      this.j.a($$0, $$1);
+   }
+
+   public void b(gsw $$0) {
+      this.j.a($$0);
+   }
+
+   public boolean c(gsw $$0) {
+      return this.j.b($$0);
+   }
+
+   public void a(gua $$0) {
+      this.j.a($$0);
+   }
+
+   public void b(gua $$0) {
+      this.j.b($$0);
+   }
+
+   public void a(@Nullable akk $$0, @Nullable avg $$1) {
+      this.j.a($$0, $$1);
+   }
+
+   public String j() {
+      return this.j.g();
+   }
+
+   public void k() {
+      this.j.a();
+   }
+
+   protected static class a {
+      final Map<akk, guc> a = Maps.newHashMap();
+      private Map<akk, ats> b = Map.of();
+
+      void a(atu $$0) {
+         this.b = gst.a.a($$0);
+      }
+
+      void a(akk $$0, gsu $$1) {
+         guc $$2 = this.a.get($$0);
+         boolean $$3 = $$2 == null;
+         if ($$3 || $$1.b()) {
+            if (!$$3) {
+               gub.e.debug("Replaced sound event location {}", $$0);
+            }
+
+            $$2 = new guc($$0, $$1.c());
+            this.a.put($$0, $$2);
+         }
+
+         atx $$4 = atx.fromMap(this.b);
+
+         for (final gst $$5 : $$1.a()) {
+            final akk $$6 = $$5.a();
+            gud<gst> $$8;
+            switch ($$5.f()) {
+               case a:
+                  if (!gub.a($$5, $$0, $$4)) {
+                     continue;
+                  }
+
+                  $$8 = $$5;
+                  break;
+               case b:
+                  $$8 = new gud<gst>() {
+                     @Override
+                     public int e() {
+                        guc $$0 = a.this.a.get($$6);
+                        return $$0 == null ? 0 : $$0.e();
+                     }
+
+                     public gst a(aym $$0) {
+                        guc $$1 = a.this.a.get($$6);
+                        if ($$1 == null) {
+                           return gub.a;
+                        } else {
+                           gst $$2 = $$1.a($$0);
+                           return new gst(
+                              $$2.a().toString(), new bpk($$2.c(), $$5.c()), new bpk($$2.d(), $$5.d()), $$5.e(), gst.a.a, $$2.g() || $$5.g(), $$2.h(), $$2.i()
+                           );
+                        }
+                     }
+
+                     @Override
+                     public void a(gty $$0) {
+                        guc $$1 = a.this.a.get($$6);
+                        if ($$1 != null) {
+                           $$1.a($$0);
+                        }
+                     }
+                  };
+                  break;
+               default:
+                  throw new IllegalStateException("Unknown SoundEventRegistration type: " + $$5.f());
+            }
+
+            $$2.a($$8);
+         }
+      }
+
+      public void a(Map<akk, guc> $$0, Map<akk, ats> $$1, gty $$2) {
+         $$0.clear();
+         $$1.clear();
+         $$1.putAll(this.b);
+
+         for (Entry<akk, guc> $$3 : this.a.entrySet()) {
+            $$0.put($$3.getKey(), $$3.getValue());
+            $$3.getValue().a($$2);
+         }
+      }
    }
 }

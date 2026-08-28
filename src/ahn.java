@@ -1,30 +1,18 @@
-public record ahn(int b, int c, boolean d) implements zw<agw> {
-   public static final zn<wm, ahn> a = zw.a(ahn::a, ahn::new);
+import java.util.Optional;
 
-   private ahn(wm $$0) {
-      this($$0.l(), $$0.l(), $$0.readBoolean());
-   }
-
-   private void a(wm $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
-   }
+public record ahn(Optional<jj<brj>> b, Optional<jj<brj>> c) implements zb<agb> {
+   public static final ys<wf, ahn> a = ys.a(yq.b(lr.V).a(yq::a), ahn::b, yq.b(lr.V).a(yq::a), ahn::e, ahn::new);
 
    @Override
-   public zy<ahn> a() {
-      return agu.bu;
+   public zd<ahn> a() {
+      return afz.bS;
    }
 
-   public void a(agw $$0) {
+   public void a(agb $$0) {
       $$0.a(this);
    }
 
-   public int e() {
+   public Optional<jj<brj>> e() {
       return this.c;
-   }
-
-   public boolean f() {
-      return this.d;
    }
 }

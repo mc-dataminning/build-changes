@@ -1,81 +1,33 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bxu extends bvk<btr> {
-   public static final int c = 100;
-   private long d;
+public class bxu {
+   private static final int a = 16;
 
-   public bxu() {
-      super(ImmutableMap.of(ccv.b, ccw.a, ccv.I, ccw.c));
-   }
+   public static bus<bsy> a(Predicate<jj<cef>> $$0, ccc<ji> $$1) {
+      return bye.a((Function<bye.b<bsy>, ? extends App<bye.c<bsy>, byh<bsy>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               ji $$6 = $$2.b($$2x);
+               ja $$7 = $$6.b();
+               if ($$3.af() == $$6.a() && $$7.a($$4.dn(), 16.0)) {
+                  aqk $$8 = $$3.o().a($$6.a());
+                  if ($$8 == null || !$$8.y().a($$7, $$0)) {
+                     $$2x.b();
+                  } else if (a($$8, $$7, $$4)) {
+                     $$2x.b();
+                     $$3.y().b($$7);
+                     afy.c($$3, $$7);
+                  }
 
-   @Override
-   protected boolean a(arf $$0, btr $$1) {
-      if ($$1.bR()) {
-         return false;
-      } else {
-         but<?> $$2 = $$1.dS();
-         jh $$3 = $$2.c(ccv.b).get();
-         if ($$0.af() != $$3.a()) {
-            return false;
-         } else {
-            Optional<Long> $$4 = $$2.c(ccv.I);
-            if ($$4.isPresent()) {
-               long $$5 = $$0.Z() - $$4.get();
-               if ($$5 > 0L && $$5 < 100L) {
+                  return true;
+               } else {
                   return false;
                }
-            }
-
-            dse $$6 = $$0.a_($$3.b());
-            return $$3.b().a($$1.dn(), 2.0) && $$6.a(awp.R) && !$$6.c(deu.c);
-         }
-      }
+            })));
    }
 
-   @Override
-   protected boolean a(arf $$0, btr $$1, long $$2) {
-      Optional<jh> $$3 = $$1.dS().c(ccv.b);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         iz $$4 = $$3.get().b();
-         return $$1.dS().c(cop.e) && $$1.dw() > (double)$$4.v() + 0.4 && $$4.a($$1.dn(), 1.14);
-      }
-   }
-
-   @Override
-   protected void d(arf $$0, btr $$1, long $$2) {
-      if ($$2 > this.d) {
-         but<?> $$3 = $$1.dS();
-         if ($$3.a(ccv.v)) {
-            Set<jh> $$4 = $$3.c(ccv.v).get();
-            Optional<List<btr>> $$5;
-            if ($$3.a(ccv.g)) {
-               $$5 = $$3.c(ccv.g);
-            } else {
-               $$5 = Optional.empty();
-            }
-
-            bwi.a($$0, $$1, null, null, $$4, $$5);
-         }
-
-         $$1.b($$1.dS().c(ccv.b).get().b());
-      }
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   @Override
-   protected void b(arf $$0, btr $$1, long $$2) {
-      if ($$1.fL()) {
-         $$1.fM();
-         this.d = $$2 + 40L;
-      }
+   private static boolean a(aqk $$0, ja $$1, bsy $$2) {
+      dsh $$3 = $$0.a_($$1);
+      return $$3.a(avu.R) && $$3.c(dey.c) && !$$2.fH();
    }
 }

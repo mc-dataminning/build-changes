@@ -3,75 +3,97 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.Dynamic3CommandExceptionType;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class fp<T> implements ArgumentType<ale<T>> {
-   private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xp.b("commands.place.feature.invalid", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xp.b("commands.place.structure.invalid", $$0));
-   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> xp.b("commands.place.jigsaw.invalid", $$0));
-   final ale<? extends jv<T>> e;
+public class fp<T> implements ArgumentType<jj.c<T>> {
+   private static final Collection<String> c = Arrays.asList("foo", "foo:bar", "012");
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> wu.b("entity.not_summonable", $$0));
+   public static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> wu.b("argument.resource.not_found", $$0, $$1));
+   public static final Dynamic3CommandExceptionType b = new Dynamic3CommandExceptionType(
+      ($$0, $$1, $$2) -> wu.b("argument.resource.invalid_type", $$0, $$1, $$2)
+   );
+   final akj<? extends jw<T>> e;
+   private final jl<T> f;
 
-   public fp(ale<? extends jv<T>> $$0) {
-      this.e = $$0;
+   public fp(em $$0, akj<? extends jw<T>> $$1) {
+      this.e = $$1;
+      this.f = $$0.b($$1);
    }
 
-   public static <T> fp<T> a(ale<? extends jv<T>> $$0) {
-      return new fp<>($$0);
+   public static <T> fp<T> a(em $$0, akj<? extends jw<T>> $$1) {
+      return new fp<>($$0, $$1);
    }
 
-   private static <T> ale<T> a(CommandContext<ep> $$0, String $$1, ale<jv<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
-      ale<?> $$4 = (ale<?>)$$0.getArgument($$1, ale.class);
-      Optional<ale<T>> $$5 = $$4.d($$2);
-      return $$5.orElseThrow(() -> $$3.create($$4));
+   public static <T> jj.c<T> a(CommandContext<eq> $$0, String $$1, akj<jw<T>> $$2) throws CommandSyntaxException {
+      jj.c<T> $$3 = (jj.c<T>)$$0.getArgument($$1, jj.c.class);
+      akj<?> $$4 = $$3.h();
+      if ($$4.c($$2)) {
+         return $$3;
+      } else {
+         throw b.create($$4.a(), $$4.b(), $$2.a());
+      }
    }
 
-   private static <T> jv<T> a(CommandContext<ep> $$0, ale<? extends jv<T>> $$1) {
-      return ((ep)$$0.getSource()).l().bc().d($$1);
+   public static jj.c<bub> a(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, lr.c);
    }
 
-   private static <T> ji.c<T> b(CommandContext<ep> $$0, String $$1, ale<jv<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
-      ale<T> $$4 = a($$0, $$1, $$2, $$3);
-      return a($$0, $$2).b($$4).orElseThrow(() -> $$3.create($$4.a()));
+   public static jj.c<ear<?, ?>> b(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, lr.aH);
    }
 
-   public static ji.c<ean<?, ?>> a(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1, lq.aC, b);
+   public static jj.c<eiq> c(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, lr.aQ);
    }
 
-   public static ji.c<eim> b(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1, lq.aJ, c);
+   public static jj.c<bsj<?>> d(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, lr.z);
    }
 
-   public static ji.c<ejv> c(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1, lq.aM, d);
+   public static jj.c<bsj<?>> e(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+      jj.c<bsj<?>> $$2 = a($$0, $$1, lr.z);
+      if (!$$2.a().c()) {
+         throw d.create($$2.h().a().toString());
+      } else {
+         return $$2;
+      }
    }
 
-   public ale<T> a(StringReader $$0) throws CommandSyntaxException {
-      alf $$1 = alf.a($$0);
-      return ale.a(this.e, $$1);
+   public static jj.c<brj> f(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, lr.V);
+   }
+
+   public static jj.c<czj> g(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, lr.aK);
+   }
+
+   public jj.c<T> a(StringReader $$0) throws CommandSyntaxException {
+      akk $$1 = akk.a($$0);
+      akj<T> $$2 = akj.a(this.e, $$1);
+      return this.f.a($$2).orElseThrow(() -> a.createWithContext($$0, $$1, this.e.a()));
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return $$0.getSource() instanceof eu $$2 ? $$2.a(this.e, eu.a.b, $$1, $$0) : $$1.buildFuture();
+      return ev.a(this.f.c().map(akj::a), $$1);
    }
 
    public Collection<String> getExamples() {
-      return a;
+      return c;
    }
 
-   public static class a<T> implements ik<fp<T>, fp.a<T>.a> {
-      public void a(fp.a<T>.a $$0, wm $$1) {
+   public static class a<T> implements il<fp<T>, fp.a<T>.a> {
+      public void a(fp.a<T>.a $$0, vr $$1) {
          $$1.b($$0.b);
       }
 
-      public fp.a<T>.a a(wm $$0) {
+      public fp.a<T>.a a(vr $$0) {
          return new fp.a.a($$0.r());
       }
 
@@ -83,19 +105,19 @@ public class fp<T> implements ArgumentType<ale<T>> {
          return new fp.a.a($$0.e);
       }
 
-      public final class a implements ik.a<fp<T>> {
-         final ale<? extends jv<T>> b;
+      public final class a implements il.a<fp<T>> {
+         final akj<? extends jw<T>> b;
 
-         a(final ale<? extends jv<T>> $$1) {
+         a(final akj<? extends jw<T>> $$1) {
             this.b = $$1;
          }
 
-         public fp<T> a(el $$0) {
-            return new fp<>(this.b);
+         public fp<T> a(em $$0) {
+            return new fp<>($$0, this.b);
          }
 
          @Override
-         public ik<fp<T>, ?> a() {
+         public il<fp<T>, ?> a() {
             return a.this;
          }
       }

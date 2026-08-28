@@ -1,13 +1,36 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
 
-public class bgv {
-   public static final Map<String, String> a = ImmutableMap.builder()
-      .put("minecraft:acacia_bark", "minecraft:acacia_wood")
-      .put("minecraft:birch_bark", "minecraft:birch_wood")
-      .put("minecraft:dark_oak_bark", "minecraft:dark_oak_wood")
-      .put("minecraft:jungle_bark", "minecraft:jungle_wood")
-      .put("minecraft:oak_bark", "minecraft:oak_wood")
-      .put("minecraft:spruce_bark", "minecraft:spruce_wood")
-      .build();
+public class bgv extends DataFix {
+   public bgv(Schema $$0) {
+      super($$0, false);
+   }
+
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bgd.M);
+      OpticFinder<?> $$1 = $$0.findField("dimensions");
+      return this.fixTypeEverywhereTyped(
+         "StructureSettingsFlatten", $$0, $$1x -> $$1x.updateTyped($$1, $$1xx -> ac.a($$1xx, $$1.type(), $$0xxx -> $$0xxx.updateMapValues(bgv::a)))
+      );
+   }
+
+   private static Pair<Dynamic<?>, Dynamic<?>> a(Pair<Dynamic<?>, Dynamic<?>> $$0) {
+      Dynamic<?> $$1 = (Dynamic<?>)$$0.getSecond();
+      return Pair.of((Dynamic)$$0.getFirst(), $$1.update("generator", $$0x -> $$0x.update("settings", $$0xx -> $$0xx.update("structures", bgv::a))));
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      Dynamic<?> $$1 = $$0.get("structures")
+         .orElseEmptyMap()
+         .updateMapValues($$1x -> $$1x.mapSecond($$1xx -> $$1xx.set("type", $$0.createString("minecraft:random_spread"))));
+      return (Dynamic<?>)DataFixUtils.orElse(
+         $$0.get("stronghold").result().map($$2 -> $$1.set("minecraft:stronghold", $$2.set("type", $$0.createString("minecraft:concentric_rings")))), $$1
+      );
+   }
 }

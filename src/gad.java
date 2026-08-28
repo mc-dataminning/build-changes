@@ -1,62 +1,59 @@
-public class gad extends gce {
-   private static final float a = 0.0025F;
-   private static final int b = 300;
-   private static final int F = 300;
-   private static final float G = 0.25F;
-   private static final float H = 2.0F;
-   private float I;
-   private final float J;
-   private final float K;
+public class gad extends gcl {
+   private final gcg a;
 
-   protected gad(fxx $$0, double $$1, double $$2, double $$3, gbz $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a($$4.a(this.r.a(12), 12));
-      this.I = (float)Math.toRadians(this.r.h() ? -30.0 : 30.0);
-      this.J = this.r.i();
-      this.K = (float)Math.toRadians(this.r.h() ? -5.0 : 5.0);
-      this.t = 300;
-      this.u = 7.5E-4F;
-      float $$5 = this.r.h() ? 0.05F : 0.075F;
-      this.D = $$5;
-      this.b($$5, $$5);
-      this.B = 1.0F;
+   protected gad(
+      fyd $$0,
+      double $$1,
+      double $$2,
+      double $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      double $$7,
+      double $$8,
+      double $$9,
+      float $$10,
+      gcg $$11,
+      float $$12,
+      int $$13,
+      float $$14,
+      boolean $$15
+   ) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.96F;
+      this.u = $$14;
+      this.C = true;
+      this.a = $$11;
+      this.j *= (double)$$4;
+      this.k *= (double)$$5;
+      this.l *= (double)$$6;
+      this.j += $$7;
+      this.k += $$8;
+      this.l += $$9;
+      float $$16 = $$0.z.i() * $$12;
+      this.v = $$16;
+      this.w = $$16;
+      this.x = $$16;
+      this.D *= 0.75F * $$10;
+      this.t = (int)((double)$$13 / ((double)$$0.z.i() * 0.8 + 0.2) * (double)$$10);
+      this.t = Math.max(this.t, 1);
+      this.b($$11);
+      this.n = $$15;
    }
 
    @Override
-   public gbi b() {
-      return gbi.b;
+   public gbp b() {
+      return gbp.b;
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * aye.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
-      }
-
-      if (!this.o) {
-         float $$0 = (float)(300 - this.t);
-         float $$1 = Math.min($$0 / 300.0F, 1.0F);
-         double $$2 = Math.cos(Math.toRadians((double)(this.J * 60.0F))) * 2.0 * Math.pow((double)$$1, 1.25);
-         double $$3 = Math.sin(Math.toRadians((double)(this.J * 60.0F))) * 2.0 * Math.pow((double)$$1, 1.25);
-         this.j += $$2 * 0.0025F;
-         this.l += $$3 * 0.0025F;
-         this.k = this.k - (double)this.u;
-         this.I = this.I + this.K / 20.0F;
-         this.A = this.z;
-         this.z = this.z + this.I / 20.0F;
-         this.a(this.j, this.k, this.l);
-         if (this.m || this.t < 299 && (this.j == 0.0 || this.l == 0.0)) {
-            this.k();
-         }
-
-         if (!this.o) {
-            this.j = this.j * (double)this.B;
-            this.k = this.k * (double)this.B;
-            this.l = this.l * (double)this.B;
-         }
-      }
+      super.a();
+      this.b(this.a);
    }
 }

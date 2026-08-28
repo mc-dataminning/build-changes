@@ -1,34 +1,13 @@
-public class glp extends giy<cjk> {
-   private final gek a;
+public class glp extends gli<cjz> {
+   private static final akk a = new akk("textures/entity/skeleton/stray.png");
+   private static final akk i = new akk("textures/entity/skeleton/stray_overlay.png");
 
-   public glp(giz.a $$0) {
-      super($$0);
-      this.d = 0.5F;
-      this.a = $$0.c();
+   public glp(gjg.a $$0) {
+      super($$0, fxh.bz, fxh.bA, fxh.bB);
+      this.a(new gnw<>(this, $$0.f(), fxh.bC, i));
    }
 
-   public void a(cjk $$0, float $$1, float $$2, faa $$3, gdq $$4, int $$5) {
-      $$3.a();
-      $$3.a(0.0F, 0.5F, 0.0F);
-      int $$6 = $$0.u();
-      if ((float)$$6 - $$2 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$2 + 1.0F) / 10.0F;
-         $$7 = ayz.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
-      }
-
-      $$3.a(a.d.rotationDegrees(-90.0F));
-      $$3.a(-0.5F, -0.5F, 0.5F);
-      $$3.a(a.d.rotationDegrees(90.0F));
-      glo.a(this.a, $$0.v(), $$3, $$4, $$5, $$6 / 5 % 2 == 0);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public alf a(cjk $$0) {
-      return gpa.e;
+   public akk a(cjz $$0) {
+      return a;
    }
 }

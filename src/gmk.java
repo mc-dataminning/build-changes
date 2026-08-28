@@ -1,19 +1,27 @@
-public class gmk extends gnl<clb, ftl<clb>> {
-   private static final alf a = new alf("textures/entity/breeze/breeze_wind.png");
-   private static final ftl<clb> b = new ftl<>(ftl.a(128, 128).a());
-
-   public gmk(gkv<clb, ftl<clb>> $$0) {
-      super($$0);
+public class gmk extends gkm<cfr, fwz<cfr>> {
+   public gmk(gjg.a $$0) {
+      super($$0, new fwz<>($$0.a(fxh.cc)), 0.5F);
+      this.a(new goh(this, $$0.f()));
+      this.a(new goi(this));
    }
 
-   public void a(faa $$0, gdq $$1, int $$2, clb $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      float $$10 = (float)$$3.ai + $$6;
-      fae $$11 = $$1.getBuffer(gdy.a(a, this.a($$10) % 1.0F, 0.0F));
-      b.a($$3, $$4, $$5, $$7, $$8, $$9);
-      gif.a(b, b.e()).a($$0, $$11, $$2, gos.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   protected float a(cfr $$0, float $$1) {
+      return $$0.gx();
    }
 
-   private float a(float $$0) {
-      return $$0 * 0.02F;
+   public void a(cfr $$0, float $$1, float $$2, fag $$3, gdx $$4, int $$5) {
+      if ($$0.gw()) {
+         float $$6 = $$0.H($$2);
+         this.f.a($$6, $$6, $$6);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if ($$0.gw()) {
+         this.f.a(1.0F, 1.0F, 1.0F);
+      }
+   }
+
+   public akk a(cfr $$0) {
+      return $$0.gt();
    }
 }

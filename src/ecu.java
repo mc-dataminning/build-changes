@@ -1,20 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ecu {
-   public static final Codec<ecu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ehq.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
-            .apply($$0, ecu::new)
-   );
-   public final ji<ehq> b;
-   public final float c;
-
-   public ecu(ji<ehq> $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class ecu extends ebe<edp> {
+   public ecu(Codec<edp> $$0) {
+      super($$0);
    }
 
-   public boolean a(dcv $$0, dub $$1, azh $$2, iz $$3) {
-      return this.b.a().a($$0, $$1, $$2, $$3);
+   @Override
+   public boolean a(ebg<edp> $$0) {
+      dcz $$1 = $$0.b();
+      ja $$2 = $$0.e();
+      $$0.f();
+      if (!$$1.u($$2)) {
+         return false;
+      } else {
+         for (jf $$3 : jf.values()) {
+            if ($$3 != jf.a && dob.a($$1, $$2.a($$3), $$3)) {
+               $$1.a($$2, dfh.ff.o().a(dob.a($$3), Boolean.valueOf(true)), 2);
+               return true;
+            }
+         }
+
+         return false;
+      }
    }
 }

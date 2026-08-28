@@ -1,29 +1,45 @@
-public class ahx implements zw<agw> {
-   public static final zn<wm, ahx> a = zw.a(ahx::a, ahx::new);
-   private final int b;
+public class ahx implements zb<agb> {
+   public static final ys<vr, ahx> a = zb.a(ahx::a, ahx::new);
+   private final evv b;
+   private final bqc c;
+   private final int d;
 
-   public ahx(int $$0) {
-      this.b = $$0;
+   public ahx(bqc $$0, evv $$1, int $$2) {
+      this.c = $$0;
+      this.b = $$1;
+      this.d = $$2;
    }
 
-   private ahx(wm $$0) {
-      this.b = $$0.l();
+   private ahx(vr $$0) {
+      this.c = $$0.b(bqc.class);
+      this.b = $$0.v();
+      this.d = $$0.l();
    }
 
-   private void a(wm $$0) {
-      $$0.c(this.b);
+   private void a(vr $$0) {
+      $$0.a(this.c);
+      $$0.a(this.b);
+      $$0.c(this.d);
    }
 
    @Override
-   public zy<ahx> a() {
-      return agu.bH;
+   public zd<ahx> a() {
+      return afz.cc;
    }
 
-   public void a(agw $$0) {
+   public void a(agb $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public bqc b() {
+      return this.c;
+   }
+
+   public evv e() {
       return this.b;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

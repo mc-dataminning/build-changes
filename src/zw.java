@@ -1,19 +1,29 @@
-import io.netty.buffer.ByteBuf;
+public class zw implements zb<zs> {
+   public static final ys<vr, zw> a = zb.a(zw::a, zw::new);
+   private final int b;
 
-public interface zw<T extends wv> {
-   zy<? extends zw<T>> a();
-
-   void a(T var1);
-
-   default boolean c() {
-      return false;
+   public zw(int $$0) {
+      this.b = $$0;
    }
 
-   default boolean d() {
-      return false;
+   private zw(vr $$0) {
+      this.b = $$0.readInt();
    }
 
-   static <B extends ByteBuf, T extends zw<?>> zn<B, T> a(zq<B, T> $$0, zo<B, T> $$1) {
-      return zn.a($$0, $$1);
+   private void a(vr $$0) {
+      $$0.p(this.b);
+   }
+
+   @Override
+   public zd<zw> a() {
+      return zr.m;
+   }
+
+   public void a(zs $$0) {
+      $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
    }
 }

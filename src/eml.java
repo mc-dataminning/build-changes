@@ -1,26 +1,16 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 
-public interface eml<P extends emj> {
-   Codec<emj> a = lp.ah.q().dispatch("processor_type", emj::a, eml::codec);
-   Codec<emk> b = a.listOf().xmap(emk::new, emk::a);
-   Codec<emk> c = Codec.withAlternative(b.fieldOf("processors").codec(), b);
-   Codec<ji<emk>> d = alb.a(lq.aK, c);
-   eml<elo> e = a("block_ignore", elo.a);
-   eml<elq> f = a("block_rot", elq.a);
-   eml<elt> g = a("gravity", elt.a);
-   eml<elu> h = a("jigsaw_replacement", elu.a);
-   eml<emf> i = a("rule", emf.a);
-   eml<elx> j = a("nop", elx.a);
-   eml<eln> k = a("block_age", eln.a);
-   eml<elm> l = a("blackstone_replace", elm.a);
-   eml<elv> m = a("lava_submerged_block", elv.a);
-   eml<emc> n = a("protected_blocks", emc.b);
-   eml<els> o = a("capped", els.a);
+public interface eml<P extends emk> {
+   eml<elo> a = a("always_true", elo.a);
+   eml<elt> b = a("block_match", elt.a);
+   eml<elv> c = a("blockstate_match", elv.a);
+   eml<ems> d = a("tag_match", ems.a);
+   eml<emh> e = a("random_block_match", emh.a);
+   eml<emi> f = a("random_blockstate_match", emi.a);
 
    MapCodec<P> codec();
 
-   static <P extends emj> eml<P> a(String $$0, MapCodec<P> $$1) {
-      return jv.a(lp.ah, $$0, () -> $$1);
+   static <P extends emk> eml<P> a(String $$0, MapCodec<P> $$1) {
+      return jw.a(lq.m, $$0, () -> $$1);
    }
 }

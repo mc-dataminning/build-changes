@@ -1,7 +1,9 @@
-public record exy(evt b, evt c, evt d) {
-   public static final exy a = new exy(evt.b, new evt(0.0, 0.0, -1.0), new evt(0.0, 1.0, 0.0));
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import javax.annotation.meta.TypeQualifierDefault;
 
-   public evt a() {
-      return this.c.c(this.d);
-   }
+@TypeQualifierDefault({ElementType.TYPE, ElementType.METHOD})
+@Retention(RetentionPolicy.CLASS)
+public @interface exy {
 }

@@ -1,25 +1,30 @@
-public class fzx extends gce {
-   fzx(fxx $$0, double $$1, double $$2, double $$3, dse $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a(ffh.Q().ao().a().a($$4));
-      this.u = 0.0F;
-      this.t = 80;
-      this.n = false;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
+
+public class fzx {
+   public static final fzx a = new fzx(fzw.b, fzy.createDnsSrvRedirectHandler(), fzt.a());
+   private final fzw b;
+   private final fzy c;
+   private final fzt d;
+
+   @VisibleForTesting
+   fzx(fzw $$0, fzy $$1, fzt $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public gbi b() {
-      return gbi.a;
-   }
+   public Optional<fzu> a(fzv $$0) {
+      Optional<fzu> $$1 = this.b.resolve($$0);
+      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
+         Optional<fzv> $$2 = this.c.lookupRedirect($$0);
+         if ($$2.isPresent()) {
+            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
+         }
 
-   @Override
-   public float b(float $$0) {
-      return 0.5F;
-   }
-
-   public static class a implements gbh<la> {
-      public gbe a(la $$0, fxx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fzx($$1, $$2, $$3, $$4, $$0.b());
+         return $$1;
+      } else {
+         return Optional.empty();
       }
    }
 }

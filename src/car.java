@@ -1,86 +1,42 @@
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class car extends cbm {
-   private static final int i = 2;
-   private static final int j = 32;
-   private static final int k = 10;
-   private static final int l = 7;
+public class car extends bzw {
+   private final bta a;
+   private double b;
+   private double c;
+   private int d;
 
-   public car(bua $$0, double $$1) {
-      super($$0, $$1, 240, false);
+   public car(bta $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(bzw.a.a, bzw.a.b));
    }
 
-   @Nullable
    @Override
-   protected evt h() {
-      float $$0 = this.b.dP().z.i();
-      if (this.b.dP().z.i() < 0.3F) {
-         return this.k();
-      } else {
-         evt $$1;
-         if ($$0 < 0.7F) {
-            $$1 = this.l();
-            if ($$1 == null) {
-               $$1 = this.m();
-            }
-         } else {
-            $$1 = this.m();
-            if ($$1 == null) {
-               $$1 = this.l();
-            }
-         }
-
-         return $$1 == null ? this.k() : $$1;
-      }
+   public boolean a() {
+      return this.a.dS().i() < 0.02F;
    }
 
-   @Nullable
-   private evt k() {
-      return cep.a(this.b, 10, 7);
+   @Override
+   public boolean b() {
+      return this.d >= 0;
    }
 
-   @Nullable
-   private evt l() {
-      arf $$0 = (arf)this.b.dP();
-      List<cmm> $$1 = $$0.a(btc.bj, this.b.cK().g(32.0), this::a);
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         cmm $$2 = $$1.get(this.b.dP().z.a($$1.size()));
-         evt $$3 = $$2.dn();
-         return cep.a(this.b, 10, 7, $$3);
-      }
+   @Override
+   public void c() {
+      double $$0 = (Math.PI * 2) * this.a.dS().j();
+      this.b = Math.cos($$0);
+      this.c = Math.sin($$0);
+      this.d = 20 + this.a.dS().a(20);
    }
 
-   @Nullable
-   private evt m() {
-      kb $$0 = this.n();
-      if ($$0 == null) {
-         return null;
-      } else {
-         iz $$1 = this.a($$0);
-         return $$1 == null ? null : cep.a(this.b, 10, 7, evt.c($$1));
-      }
+   @Override
+   public boolean R_() {
+      return true;
    }
 
-   @Nullable
-   private kb n() {
-      arf $$0 = (arf)this.b.dP();
-      List<kb> $$1 = kb.a(kb.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
-      return $$1.isEmpty() ? null : $$1.get($$0.z.a($$1.size()));
-   }
-
-   @Nullable
-   private iz a(kb $$0) {
-      arf $$1 = (arf)this.b.dP();
-      cev $$2 = $$1.y();
-      List<iz> $$3 = $$2.c($$0x -> true, $$0.q(), 8, cev.b.b).map(cew::f).collect(Collectors.toList());
-      return $$3.isEmpty() ? null : $$3.get($$1.z.a($$3.size()));
-   }
-
-   private boolean a(cmm $$0) {
-      return $$0.a(this.b.dP().Z());
+   @Override
+   public void e() {
+      this.d--;
+      this.a.G().a(this.a.du() + this.b, this.a.dy(), this.a.dA() + this.c);
    }
 }

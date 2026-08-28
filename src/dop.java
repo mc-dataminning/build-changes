@@ -1,30 +1,33 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dop extends diq {
-   public static final MapCodec<dop> c = b(dop::new);
-   protected static final ewm g = dfb.a(4.0, 9.0, 4.0, 12.0, 16.0, 12.0);
+public class dop extends dmi implements dok {
+   public static final MapCodec<dop> f = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dok.a.e.fieldOf("weathering_state").forGetter(dgg::c), u()).apply($$0, dop::new)
+   );
+   private final dok.a g;
 
    @Override
    public MapCodec<dop> a() {
-      return c;
+      return f;
    }
 
-   public dop(dsd.d $$0) {
-      super($$0, je.a, g, false, 0.1);
-   }
-
-   @Override
-   protected int a(azh $$0) {
-      return dkh.a($$0);
+   public dop(dok.a $$0, dsg.d $$1) {
+      super($$1);
+      this.g = $$0;
    }
 
    @Override
-   protected dfb b() {
-      return dfd.oA;
+   protected void b(dsh $$0, aqk $$1, ja $$2, aym $$3) {
+      this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected boolean g(dse $$0) {
-      return dkh.a($$0);
+   protected boolean d_(dsh $$0) {
+      return dok.c($$0.b()).isPresent();
+   }
+
+   public dok.a m() {
+      return this.g;
    }
 }

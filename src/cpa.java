@@ -1,89 +1,121 @@
-import java.util.function.Function;
-import javax.annotation.Nullable;
-
 public class cpa {
-   public static int[][] a(je $$0) {
-      je $$1 = $$0.h();
-      je $$2 = $$1.g();
-      je $$3 = $$0.g();
-      return new int[][]{
-         {$$1.j(), $$1.l()},
-         {$$2.j(), $$2.l()},
-         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
-         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
-         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
-         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
-         {$$3.j(), $$3.l()},
-         {$$0.j(), $$0.l()}
-      };
+   private int a = 20;
+   private float b;
+   private float c;
+   private int d;
+   private int e = 20;
+
+   public cpa() {
+      this.b = 5.0F;
    }
 
-   public static boolean a(double $$0) {
-      return !Double.isInfinite($$0) && $$0 < 1.0;
+   private void b(int $$0, float $$1) {
+      this.a = Math.min($$0 + this.a, 20);
+      this.b = Math.min($$1 + this.b, (float)this.a);
    }
 
-   public static boolean a(dbk $$0, btr $$1, evo $$2) {
-      for (ewm $$4 : $$0.e($$1, $$2)) {
-         if (!$$4.c()) {
-            return false;
+   public void a(int $$0, float $$1) {
+      this.b($$0, coz.a($$0, $$1));
+   }
+
+   public void a(cua $$0) {
+      cpb $$1 = $$0.a(kn.v);
+      if ($$1 != null) {
+         this.b($$1.b(), $$1.c());
+      }
+   }
+
+   public void a(cmh $$0) {
+      bqa $$1 = $$0.dP().al();
+      this.e = this.a;
+      if (this.c > 4.0F) {
+         this.c -= 4.0F;
+         if (this.b > 0.0F) {
+            this.b = Math.max(this.b - 1.0F, 0.0F);
+         } else if ($$1 != bqa.a) {
+            this.a = Math.max(this.a - 1, 0);
          }
       }
 
-      return $$0.C_().a($$2);
-   }
-
-   public static boolean a(dbk $$0, evt $$1, btr $$2, bud $$3) {
-      return a($$0, $$2, $$2.f($$3).c($$1));
-   }
-
-   public static ewm a(dbg $$0, iz $$1) {
-      dse $$2 = $$0.a_($$1);
-      return !$$2.a(awp.aP) && (!($$2.b() instanceof dno) || !$$2.c(dno.b)) ? $$2.k($$0, $$1) : ewj.a();
-   }
-
-   public static double a(iz $$0, int $$1, Function<iz, ewm> $$2) {
-      iz.a $$3 = $$0.j();
-      int $$4 = 0;
-
-      while ($$4 < $$1) {
-         ewm $$5 = $$2.apply($$3);
-         if (!$$5.c()) {
-            return (double)($$0.v() + $$4) + $$5.b(je.a.b);
+      boolean $$2 = $$0.dP().ab().b(dbz.k);
+      if ($$2 && this.b > 0.0F && $$0.gj() && this.a >= 20) {
+         this.d++;
+         if (this.d >= 10) {
+            float $$3 = Math.min(this.b, 6.0F);
+            $$0.c($$3 / 6.0F);
+            this.a($$3);
+            this.d = 0;
          }
+      } else if ($$2 && this.a >= 18 && $$0.gj()) {
+         this.d++;
+         if (this.d >= 80) {
+            $$0.c(1.0F);
+            this.a(6.0F);
+            this.d = 0;
+         }
+      } else if (this.a <= 0) {
+         this.d++;
+         if (this.d >= 80) {
+            if ($$0.ew() > 10.0F || $$1 == bqa.d || $$0.ew() > 1.0F && $$1 == bqa.c) {
+               $$0.a($$0.dQ().j(), 1.0F);
+            }
 
-         $$4++;
-         $$3.c(je.b);
-      }
-
-      return Double.POSITIVE_INFINITY;
-   }
-
-   @Nullable
-   public static evt a(btc<?> $$0, dbk $$1, iz $$2, boolean $$3) {
-      if ($$3 && $$0.a($$1.a_($$2))) {
-         return null;
+            this.d = 0;
+         }
       } else {
-         double $$4 = $$1.a(a((dbg)$$1, $$2), () -> a((dbg)$$1, $$2.d()));
-         if (!a($$4)) {
-            return null;
-         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.d()))) {
-            return null;
-         } else {
-            evt $$5 = evt.a($$2, $$4);
-            evo $$6 = $$0.n().a($$5);
-
-            for (ewm $$8 : $$1.e(null, $$6)) {
-               if (!$$8.c()) {
-                  return null;
-               }
-            }
-
-            if ($$0 != btc.by || !$$1.a_($$2).a(awp.cq) && !$$1.a_($$2.c()).a(awp.cq)) {
-               return !$$1.C_().a($$6) ? null : $$5;
-            } else {
-               return null;
-            }
-         }
+         this.d = 0;
       }
+   }
+
+   public void a(tx $$0) {
+      if ($$0.b("foodLevel", 99)) {
+         this.a = $$0.h("foodLevel");
+         this.d = $$0.h("foodTickTimer");
+         this.b = $$0.j("foodSaturationLevel");
+         this.c = $$0.j("foodExhaustionLevel");
+      }
+   }
+
+   public void b(tx $$0) {
+      $$0.a("foodLevel", this.a);
+      $$0.a("foodTickTimer", this.d);
+      $$0.a("foodSaturationLevel", this.b);
+      $$0.a("foodExhaustionLevel", this.c);
+   }
+
+   public int a() {
+      return this.a;
+   }
+
+   public int b() {
+      return this.e;
+   }
+
+   public boolean c() {
+      return this.a < 20;
+   }
+
+   public void a(float $$0) {
+      this.c = Math.min(this.c + $$0, 40.0F);
+   }
+
+   public float d() {
+      return this.c;
+   }
+
+   public float e() {
+      return this.b;
+   }
+
+   public void a(int $$0) {
+      this.a = $$0;
+   }
+
+   public void b(float $$0) {
+      this.b = $$0;
+   }
+
+   public void c(float $$0) {
+      this.c = $$0;
    }
 }

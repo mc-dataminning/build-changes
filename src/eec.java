@@ -1,22 +1,43 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class eec implements ede {
+public class eec implements edi {
    public static final Codec<eec> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(0, 512).fieldOf("floor_search_range").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 64).fieldOf("placement_radius_around_floor").forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("placement_probability_per_valid_position").forGetter($$0x -> $$0x.d)
+               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
+               eco.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
+               ja.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
             )
             .apply($$0, eec::new)
    );
-   public final int b;
-   public final int c;
-   public final float d;
+   private final boolean b;
+   private final List<eco.a> c;
+   @Nullable
+   private final ja d;
 
-   public eec(int $$0, int $$1, float $$2) {
+   public eec(boolean $$0, List<eco.a> $$1, @Nullable ja $$2) {
+      this($$0, $$1, Optional.ofNullable($$2));
+   }
+
+   private eec(boolean $$0, List<eco.a> $$1, Optional<ja> $$2) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
+      this.d = $$2.orElse(null);
+   }
+
+   public boolean a() {
+      return this.b;
+   }
+
+   public List<eco.a> b() {
+      return this.c;
+   }
+
+   @Nullable
+   public ja c() {
+      return this.d;
    }
 }

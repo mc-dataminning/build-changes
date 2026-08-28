@@ -1,68 +1,45 @@
-import java.util.Set;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class gg implements Predicate<dsi> {
-   private final dse a;
-   private final Set<dth<?>> b;
-   @Nullable
-   private final us c;
+public class gg implements ArgumentType<UUID> {
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("argument.uuid.invalid"));
+   private static final Collection<String> b = Arrays.asList("dd12be42-52a9-4a91-a8a1-11c01849e498");
+   private static final Pattern c = Pattern.compile("^([-A-Fa-f0-9]+)");
 
-   public gg(dse $$0, Set<dth<?>> $$1, @Nullable us $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public static UUID a(CommandContext<eq> $$0, String $$1) {
+      return (UUID)$$0.getArgument($$1, UUID.class);
    }
 
-   public dse a() {
-      return this.a;
+   public static gg a() {
+      return new gg();
    }
 
-   public Set<dth<?>> b() {
-      return this.b;
-   }
+   public UUID a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = $$0.getRemaining();
+      Matcher $$2 = c.matcher($$1);
+      if ($$2.find()) {
+         String $$3 = $$2.group(1);
 
-   public boolean a(dsi $$0) {
-      dse $$1 = $$0.a();
-      if (!$$1.a(this.a.b())) {
-         return false;
-      } else {
-         for (dth<?> $$2 : this.b) {
-            if ($$1.c($$2) != this.a.c($$2)) {
-               return false;
-            }
-         }
-
-         if (this.c == null) {
-            return true;
-         } else {
-            dpj $$3 = $$0.b();
-            return $$3 != null && vh.a(this.c, $$3.b($$0.c().H_()), true);
+         try {
+            UUID $$4 = UUID.fromString($$3);
+            $$0.setCursor($$0.getCursor() + $$3.length());
+            return $$4;
+         } catch (IllegalArgumentException var6) {
          }
       }
+
+      throw a.createWithContext($$0);
    }
 
-   public boolean a(arf $$0, iz $$1) {
-      return this.a(new dsi($$0, $$1, false));
-   }
-
-   public boolean a(arf $$0, iz $$1, int $$2) {
-      dse $$3 = dfb.b(this.a, $$0, $$1);
-      if ($$3.i()) {
-         $$3 = this.a;
-      }
-
-      if (!$$0.a($$1, $$3, $$2)) {
-         return false;
-      } else {
-         if (this.c != null) {
-            dpj $$4 = $$0.c_($$1);
-            if ($$4 != null) {
-               $$4.c(this.c, $$0.H_());
-            }
-         }
-
-         return true;
-      }
+   public Collection<String> getExamples() {
+      return b;
    }
 }

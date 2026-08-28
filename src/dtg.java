@@ -1,6 +1,6 @@
-public enum dtg implements azu {
-   a("normal"),
-   b("sticky");
+public enum dtg implements ayz {
+   a("top"),
+   b("bottom");
 
    private final String c;
 

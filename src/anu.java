@@ -1,29 +1,28 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.List;
-import java.util.function.Function;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class anu {
-   public static void a(CommandDispatcher<ep> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("list").executes($$0x -> a((ep)$$0x.getSource())))
-            .then(eq.a("uuids").executes($$0x -> b((ep)$$0x.getSource())))
-      );
-   }
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("commands.save.alreadyOn"));
 
-   private static int a(ep $$0) {
-      return a($$0, cmz::O_);
-   }
+   public static void a(CommandDispatcher<eq> $$0) {
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("save-on").requires($$0x -> $$0x.c(4))).executes($$0x -> {
+         eq $$1 = (eq)$$0x.getSource();
+         boolean $$2 = false;
 
-   private static int b(ep $$0) {
-      return a($$0, $$0x -> xp.a("commands.list.nameAndId", $$0x.af(), xp.a($$0x.gb().getId())));
-   }
+         for (aqk $$3 : $$1.l().K()) {
+            if ($$3 != null && $$3.e) {
+               $$3.e = false;
+               $$2 = true;
+            }
+         }
 
-   private static int a(ep $$0, Function<arg, xp> $$1) {
-      avd $$2 = $$0.l().ah();
-      List<arg> $$3 = $$2.t();
-      xp $$4 = xs.b($$3, $$1);
-      $$0.a(() -> xp.a("commands.list.players", $$3.size(), $$2.n(), $$4), false);
-      return $$3.size();
+         if (!$$2) {
+            throw a.create();
+         } else {
+            $$1.a(() -> wu.c("commands.save.enabled"), true);
+            return 1;
+         }
+      }));
    }
 }

@@ -1,33 +1,43 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class doj extends dfb implements dog {
-   public static final MapCodec<doj> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dog.a.e.fieldOf("weathering_state").forGetter(dgc::c), u()).apply($$0, doj::new)
-   );
-   private final dog.a e;
+public class doj extends dnr implements dmg {
+   public static final MapCodec<doj> a = b(doj::new);
+   public static final dsy c = dsx.C;
 
    @Override
-   public MapCodec<doj> a() {
-      return d;
+   protected MapCodec<? extends doj> a() {
+      return a;
    }
 
-   public doj(dog.a $$0, dsd.d $$1) {
-      super($$1);
-      this.e = $$0;
+   protected doj(dsg.d $$0) {
+      super($$0);
+      this.k(this.o().a(c, Boolean.valueOf(false)));
+   }
+
+   @Nullable
+   @Override
+   public dsh a(cxk $$0) {
+      eob $$1 = $$0.q().b_($$0.a());
+      return super.a($$0).a(c, Boolean.valueOf($$1.b(eoc.c)));
    }
 
    @Override
-   protected void b(dse $$0, arf $$1, iz $$2, azh $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, eoc.c, eoc.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean d_(dse $$0) {
-      return dog.c($$0.b()).isPresent();
+   protected eob b_(dsh $$0) {
+      return $$0.c(c) ? eoc.c.a(true) : super.b_($$0);
    }
 
-   public dog.a m() {
-      return this.e;
+   @Override
+   protected void a(dsi.a<dff, dsh> $$0) {
+      $$0.a(c);
    }
 }

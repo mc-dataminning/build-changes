@@ -1,62 +1,51 @@
-import org.apache.commons.lang3.Validate;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import java.util.Map;
 
-public class bak {
-   private static final int a = 6;
-   private final long[] b;
-   private final int c;
-   private final long d;
-   private final int e;
+public class bak extends DataFix {
+   private static final Map<String, String> a = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
+      $$0.put("Airportal", "minecraft:end_portal");
+      $$0.put("Banner", "minecraft:banner");
+      $$0.put("Beacon", "minecraft:beacon");
+      $$0.put("Cauldron", "minecraft:brewing_stand");
+      $$0.put("Chest", "minecraft:chest");
+      $$0.put("Comparator", "minecraft:comparator");
+      $$0.put("Control", "minecraft:command_block");
+      $$0.put("DLDetector", "minecraft:daylight_detector");
+      $$0.put("Dropper", "minecraft:dropper");
+      $$0.put("EnchantTable", "minecraft:enchanting_table");
+      $$0.put("EndGateway", "minecraft:end_gateway");
+      $$0.put("EnderChest", "minecraft:ender_chest");
+      $$0.put("FlowerPot", "minecraft:flower_pot");
+      $$0.put("Furnace", "minecraft:furnace");
+      $$0.put("Hopper", "minecraft:hopper");
+      $$0.put("MobSpawner", "minecraft:mob_spawner");
+      $$0.put("Music", "minecraft:noteblock");
+      $$0.put("Piston", "minecraft:piston");
+      $$0.put("RecordPlayer", "minecraft:jukebox");
+      $$0.put("Sign", "minecraft:sign");
+      $$0.put("Skull", "minecraft:skull");
+      $$0.put("Structure", "minecraft:structure_block");
+      $$0.put("Trap", "minecraft:dispenser");
+   });
 
-   public bak(int $$0, int $$1) {
-      this($$0, $$1, new long[ayz.d($$1 * $$0, 64) / 64]);
+   public bak(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   public bak(int $$0, int $$1, long[] $$2) {
-      Validate.inclusiveBetween(1L, 32L, (long)$$0);
-      this.e = $$1;
-      this.c = $$0;
-      this.b = $$2;
-      this.d = (1L << $$0) - 1L;
-      int $$3 = ayz.d($$1 * $$0, 64) / 64;
-      if ($$2.length != $$3) {
-         throw new IllegalArgumentException("Invalid length given for storage, got: " + $$2.length + " but expected: " + $$3);
-      }
-   }
-
-   public void a(int $$0, int $$1) {
-      Validate.inclusiveBetween(0L, (long)(this.e - 1), (long)$$0);
-      Validate.inclusiveBetween(0L, this.d, (long)$$1);
-      int $$2 = $$0 * this.c;
-      int $$3 = $$2 >> 6;
-      int $$4 = ($$0 + 1) * this.c - 1 >> 6;
-      int $$5 = $$2 ^ $$3 << 6;
-      this.b[$$3] = this.b[$$3] & ~(this.d << $$5) | ((long)$$1 & this.d) << $$5;
-      if ($$3 != $$4) {
-         int $$6 = 64 - $$5;
-         int $$7 = this.c - $$6;
-         this.b[$$4] = this.b[$$4] >>> $$7 << $$7 | ((long)$$1 & this.d) >> $$6;
-      }
-   }
-
-   public int a(int $$0) {
-      Validate.inclusiveBetween(0L, (long)(this.e - 1), (long)$$0);
-      int $$1 = $$0 * this.c;
-      int $$2 = $$1 >> 6;
-      int $$3 = ($$0 + 1) * this.c - 1 >> 6;
-      int $$4 = $$1 ^ $$2 << 6;
-      if ($$2 == $$3) {
-         return (int)(this.b[$$2] >>> $$4 & this.d);
-      } else {
-         int $$5 = 64 - $$4;
-         return (int)((this.b[$$2] >>> $$4 | this.b[$$3] << $$5) & this.d);
-      }
-   }
-
-   public long[] a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bgd.t);
+      Type<?> $$1 = this.getOutputSchema().getType(bgd.t);
+      TaggedChoiceType<String> $$2 = this.getInputSchema().findChoiceType(bgd.s);
+      TaggedChoiceType<String> $$3 = this.getOutputSchema().findChoiceType(bgd.s);
+      return TypeRewriteRule.seq(
+         this.convertUnchecked("item stack block entity name hook converter", $$0, $$1),
+         this.fixTypeEverywhere("BlockEntityIdFix", $$2, $$3, $$0x -> $$0xx -> $$0xx.mapFirst($$0xxx -> a.getOrDefault($$0xxx, $$0xxx)))
+      );
    }
 }

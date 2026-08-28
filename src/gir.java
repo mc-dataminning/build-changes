@@ -1,23 +1,17 @@
-public class gir extends ghu<cjt, fty<cjt>> {
-   private static final alf a = new alf("textures/entity/zombie/drowned.png");
+public class gir extends gkm<cet, ftx<cet>> {
+   private static final akk a = new akk("textures/entity/chicken.png");
 
-   public gir(giz.a $$0) {
-      super($$0, new fty<>($$0.a(fxb.R)), new fty<>($$0.a(fxb.S)), new fty<>($$0.a(fxb.T)));
-      this.a(new gmt<>(this, $$0.f()));
+   public gir(gjg.a $$0) {
+      super($$0, new ftx<>($$0.a(fxh.z)), 0.3F);
    }
 
-   @Override
-   public alf a(cky $$0) {
+   public akk a(cet $$0) {
       return a;
    }
 
-   protected void a(cjt $$0, faa $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = $$0.a($$4);
-      if ($$6 > 0.0F) {
-         float $$7 = -10.0F - $$0.dH();
-         float $$8 = ayz.i($$6, 0.0F, $$7);
-         $$1.a(a.b.rotationDegrees($$8), 0.0F, $$0.dk() / 2.0F / $$5, 0.0F);
-      }
+   protected float a(cet $$0, float $$1) {
+      float $$2 = aye.i($$1, $$0.ce, $$0.ca);
+      float $$3 = aye.i($$1, $$0.cd, $$0.cb);
+      return (aye.a($$2) + 1.0F) * $$3;
    }
 }

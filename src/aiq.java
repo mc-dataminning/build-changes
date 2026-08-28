@@ -1,29 +1,44 @@
-public class aiq implements zw<agw> {
-   public static final zn<wm, aiq> a = zw.a(aiq::a, aiq::new);
-   private final bqv b;
+import javax.annotation.Nullable;
 
-   public aiq(bqv $$0) {
-      this.b = $$0;
+public record aiq(int b, @Nullable aiu c) implements zb<aip> {
+   public static final ys<vr, aiq> a = zb.a(aiq::c, aiq::a);
+   private static final int d = 1048576;
+
+   private static aiq a(vr $$0) {
+      int $$1 = $$0.l();
+      return new aiq($$1, a($$1, $$0));
    }
 
-   private aiq(wm $$0) {
-      this.b = $$0.b(bqv.class);
+   private static aiu a(int $$0, vr $$1) {
+      return b($$1);
    }
 
-   private void a(wm $$0) {
-      $$0.a(this.b);
+   private static aiu b(vr $$0) {
+      int $$1 = $$0.readableBytes();
+      if ($$1 >= 0 && $$1 <= 1048576) {
+         $$0.j($$1);
+         return aiw.a;
+      } else {
+         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
+      }
+   }
+
+   private void c(vr $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public zy<aiq> a() {
-      return agu.ca;
+   public zd<aiq> a() {
+      return ain.f;
    }
 
-   public void a(agw $$0) {
+   public void a(aip $$0) {
       $$0.a(this);
    }
 
-   public bqv b() {
-      return this.b;
+   @Nullable
+   public aiu e() {
+      return this.c;
    }
 }

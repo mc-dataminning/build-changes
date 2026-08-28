@@ -1,107 +1,63 @@
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
+import javax.swing.JComponent;
+import javax.swing.Timer;
+import net.minecraft.server.MinecraftServer;
 
-public class apo {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xp.c("commands.trigger.failed.unprimed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xp.c("commands.trigger.failed.invalid"));
+public class apo extends JComponent {
+   private static final DecimalFormat a = ac.a(
+      new DecimalFormat("########0.000"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT))
+   );
+   private final int[] b = new int[256];
+   private int c;
+   private final String[] d = new String[11];
+   private final MinecraftServer e;
+   private final Timer f;
 
-   public static void a(CommandDispatcher<ep> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)eq.a("trigger")
-            .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)eq.a("objective", fj.a())
-                        .suggests(($$0x, $$1) -> a((ep)$$0x.getSource(), $$1))
-                        .executes($$0x -> a((ep)$$0x.getSource(), ((ep)$$0x.getSource()).h(), fj.a($$0x, "objective"))))
-                     .then(
-                        eq.a("add")
-                           .then(
-                              eq.a("value", IntegerArgumentType.integer())
-                                 .executes(
-                                    $$0x -> a(
-                                          (ep)$$0x.getSource(),
-                                          ((ep)$$0x.getSource()).h(),
-                                          fj.a($$0x, "objective"),
-                                          IntegerArgumentType.getInteger($$0x, "value")
-                                       )
-                                 )
-                           )
-                     ))
-                  .then(
-                     eq.a("set")
-                        .then(
-                           eq.a("value", IntegerArgumentType.integer())
-                              .executes(
-                                 $$0x -> b(
-                                       (ep)$$0x.getSource(), ((ep)$$0x.getSource()).h(), fj.a($$0x, "objective"), IntegerArgumentType.getInteger($$0x, "value")
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
+   public apo(MinecraftServer $$0) {
+      this.e = $$0;
+      this.setPreferredSize(new Dimension(456, 246));
+      this.setMinimumSize(new Dimension(456, 246));
+      this.setMaximumSize(new Dimension(456, 246));
+      this.f = new Timer(500, $$0x -> this.b());
+      this.f.start();
+      this.setBackground(Color.BLACK);
    }
 
-   public static CompletableFuture<Suggestions> a(ep $$0, SuggestionsBuilder $$1) {
-      eww $$2 = $$0.f();
-      List<String> $$3 = Lists.newArrayList();
-      if ($$2 != null) {
-         ewx $$4 = $$0.l().aK();
+   private void b() {
+      long $$0 = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+      this.d[0] = "Memory use: " + $$0 / 1024L / 1024L + " mb (" + Runtime.getRuntime().freeMemory() * 100L / Runtime.getRuntime().maxMemory() + "% free)";
+      this.d[1] = "Avg tick: " + a.format((double)this.e.aR() / (double)aze.b) + " ms";
+      this.b[this.c++ & 0xFF] = (int)($$0 * 100L / Runtime.getRuntime().maxMemory());
+      this.repaint();
+   }
 
-         for (ewp $$5 : $$4.c()) {
-            if ($$5.c() == exa.c) {
-               ewt $$6 = $$4.d($$2, $$5);
-               if ($$6 != null && !$$6.b()) {
-                  $$3.add($$5.b());
-               }
-            }
-         }
+   @Override
+   public void paint(Graphics $$0) {
+      $$0.setColor(new Color(16777215));
+      $$0.fillRect(0, 0, 456, 246);
+
+      for (int $$1 = 0; $$1 < 256; $$1++) {
+         int $$2 = this.b[$$1 + this.c & 0xFF];
+         $$0.setColor(new Color($$2 + 28 << 16));
+         $$0.fillRect($$1, 100 - $$2, 1, $$2);
       }
 
-      return eu.b($$3, $$1);
-   }
+      $$0.setColor(Color.BLACK);
 
-   private static int a(ep $$0, arg $$1, ewp $$2, int $$3) throws CommandSyntaxException {
-      ewv $$4 = a($$0.l().aK(), $$1, $$2);
-      int $$5 = $$4.b($$3);
-      $$0.a(() -> xp.a("commands.trigger.add.success", $$2.g(), $$3), true);
-      return $$5;
-   }
-
-   private static int b(ep $$0, arg $$1, ewp $$2, int $$3) throws CommandSyntaxException {
-      ewv $$4 = a($$0.l().aK(), $$1, $$2);
-      $$4.a($$3);
-      $$0.a(() -> xp.a("commands.trigger.set.success", $$2.g(), $$3), true);
-      return $$3;
-   }
-
-   private static int a(ep $$0, arg $$1, ewp $$2) throws CommandSyntaxException {
-      ewv $$3 = a($$0.l().aK(), $$1, $$2);
-      int $$4 = $$3.b(1);
-      $$0.a(() -> xp.a("commands.trigger.simple.success", $$2.g()), true);
-      return $$4;
-   }
-
-   private static ewv a(ewx $$0, eww $$1, ewp $$2) throws CommandSyntaxException {
-      if ($$2.c() != exa.c) {
-         throw b.create();
-      } else {
-         ewt $$3 = $$0.d($$1, $$2);
-         if ($$3 != null && !$$3.b()) {
-            ewv $$4 = $$0.c($$1, $$2);
-            $$4.f();
-            return $$4;
-         } else {
-            throw a.create();
+      for (int $$3 = 0; $$3 < this.d.length; $$3++) {
+         String $$4 = this.d[$$3];
+         if ($$4 != null) {
+            $$0.drawString($$4, 32, 116 + $$3 * 16);
          }
       }
+   }
+
+   public void a() {
+      this.f.stop();
    }
 }

@@ -1,156 +1,39 @@
-import com.mojang.blaze3d.platform.TextureUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.Writer;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class gpa extends gom implements gon, gpd {
-   private static final Logger g = LogUtils.getLogger();
-   @Deprecated
-   public static final alf e = cqx.x;
-   @Deprecated
-   public static final alf f = new alf("textures/atlas/particles.png");
-   private List<gov> h = List.of();
-   private List<gpb.a> i = List.of();
-   private Map<alf, gpb> j = Map.of();
+public class gpa extends gpb {
    @Nullable
-   private gpb k;
-   private final alf l;
-   private final int m;
-   private int n;
-   private int o;
-   private int p;
+   private CompletableFuture<gpb.a> f;
 
-   public gpa(alf $$0) {
-      this.l = $$0;
-      this.m = RenderSystem.maxSupportedTextureSize();
+   public gpa(atu $$0, akk $$1, Executor $$2) {
+      super($$1);
+      this.f = CompletableFuture.supplyAsync(() -> gpb.a.a($$0, $$1), $$2);
    }
 
    @Override
-   public void a(aup $$0) {
-   }
-
-   public void a(gow.a $$0) {
-      g.info("Created: {}x{}x{} {}-atlas", new Object[]{$$0.b(), $$0.c(), $$0.d(), this.l});
-      TextureUtil.prepareImage(this.a(), $$0.d(), $$0.b(), $$0.c());
-      this.n = $$0.b();
-      this.o = $$0.c();
-      this.p = $$0.d();
-      this.f();
-      this.j = Map.copyOf($$0.f());
-      this.k = this.j.get(gor.b());
-      if (this.k == null) {
-         throw new IllegalStateException("Atlas '" + this.l + "' (" + this.j.size() + " sprites) has no missing texture sprite");
-      } else {
-         List<gov> $$1 = new ArrayList<>();
-         List<gpb.a> $$2 = new ArrayList<>();
-
-         for (gpb $$3 : $$0.f().values()) {
-            $$1.add($$3.e());
-
-            try {
-               $$3.j();
-            } catch (Throwable var9) {
-               o $$5 = o.a(var9, "Stitching texture atlas");
-               p $$6 = $$5.a("Texture being stitched together");
-               $$6.a("Atlas path", this.l);
-               $$6.a("Sprite", $$3);
-               throw new y($$5);
-            }
-
-            gpb.a $$7 = $$3.f();
-            if ($$7 != null) {
-               $$2.add($$7);
-            }
-         }
-
-         this.h = List.copyOf($$1);
-         this.i = List.copyOf($$2);
-      }
-   }
-
-   @Override
-   public void a(alf $$0, Path $$1) throws IOException {
-      String $$2 = $$0.c();
-      TextureUtil.writeAsPNG($$1, $$2, this.a(), this.p, this.n, this.o);
-      a($$1, $$2, this.j);
-   }
-
-   private static void a(Path $$0, String $$1, Map<alf, gpb> $$2) {
-      Path $$3 = $$0.resolve($$1 + ".txt");
-
-      try (Writer $$4 = Files.newBufferedWriter($$3)) {
-         for (Entry<alf, gpb> $$5 : $$2.entrySet().stream().sorted(Entry.comparingByKey()).toList()) {
-            gpb $$6 = $$5.getValue();
-            $$4.write(String.format(Locale.ROOT, "%s\tx=%d\ty=%d\tw=%d\th=%d%n", $$5.getKey(), $$6.a(), $$6.b(), $$6.e().a(), $$6.e().b()));
-         }
-      } catch (IOException var10) {
-         g.warn("Failed to write file {}", $$3, var10);
-      }
-   }
-
-   @Override
-   public void d() {
-      this.c();
-
-      for (gpb.a $$0 : this.i) {
-         $$0.a();
-      }
-   }
-
-   @Override
-   public void e() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(this::d);
-      } else {
-         this.d();
-      }
-   }
-
-   public gpb a(alf $$0) {
-      gpb $$1 = this.j.getOrDefault($$0, this.k);
-      if ($$1 == null) {
-         throw new IllegalStateException("Tried to lookup sprite, but atlas is not initialized");
-      } else {
+   protected gpb.a b(atu $$0) {
+      if (this.f != null) {
+         gpb.a $$1 = this.f.join();
+         this.f = null;
          return $$1;
+      } else {
+         return gpb.a.a($$0, this.e);
       }
    }
 
-   public void f() {
-      this.h.forEach(gov::close);
-      this.i.forEach(gpb.a::close);
-      this.h = List.of();
-      this.i = List.of();
-      this.j = Map.of();
-      this.k = null;
+   public CompletableFuture<Void> d() {
+      return this.f == null ? CompletableFuture.completedFuture(null) : this.f.thenApply($$0 -> null);
    }
 
-   public alf g() {
-      return this.l;
+   @Override
+   public void a(gpj $$0, atu $$1, akk $$2, Executor $$3) {
+      this.f = CompletableFuture.supplyAsync(() -> gpb.a.a($$1, this.e), ac.g());
+      this.f.thenRunAsync(() -> $$0.a(this.e, this), a($$3));
    }
 
-   public int h() {
-      return this.m;
-   }
-
-   int i() {
-      return this.n;
-   }
-
-   int j() {
-      return this.o;
-   }
-
-   public void b(gow.a $$0) {
-      this.a(false, $$0.d() > 0);
+   private static Executor a(Executor $$0) {
+      return $$1 -> $$0.execute(() -> RenderSystem.recordRenderCall($$1::run));
    }
 }

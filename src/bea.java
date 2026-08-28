@@ -1,17 +1,34 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
-import java.util.Objects;
+import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.Dynamic;
 
-public class bea extends bhj {
-   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:zombie_pigman_spawn_egg", "minecraft:zombified_piglin_spawn_egg").build();
+public abstract class bea extends DataFix {
+   private final String a;
+   private final String b;
+   private final String c;
 
-   public bea(Schema $$0) {
-      super("EntityZombifiedPiglinRenameFix", $$0, true);
+   public bea(Schema $$0, String $$1, String $$2) {
+      this($$0, $$1, $$2, $$2);
    }
 
-   @Override
-   protected String a(String $$0) {
-      return Objects.equals("minecraft:zombie_pigman", $$0) ? "minecraft:zombified_piglin" : $$0;
+   public bea(Schema $$0, String $$1, String $$2, String $$3) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
+
+   public final TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bgd.t);
+      OpticFinder<?> $$1 = $$0.findField("components");
+      return this.fixTypeEverywhereTyped(
+         this.a, $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.renameAndFixField(this.b, this.c, this::a)))
+      );
+   }
+
+   protected abstract <T> Dynamic<T> a(Dynamic<T> var1);
 }

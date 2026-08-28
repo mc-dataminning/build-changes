@@ -1,42 +1,40 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap;
 
-public class bxz {
-   private static final int a = 200;
-
-   public static <E extends btt> bvl<E> a(BiConsumer<E, btr> $$0) {
-      return a($$0x -> false, $$0, true);
+public class bxz extends bur<clu> {
+   public bxz() {
+      super(ImmutableMap.of());
    }
 
-   public static <E extends btt> bvl<E> a(Predicate<btr> $$0) {
-      return a($$0, ($$0x, $$1) -> {
-      }, true);
+   protected boolean a(aqk $$0, clu $$1, long $$2) {
+      return c($$1) || b($$1);
    }
 
-   public static <E extends btt> bvl<E> a() {
-      return a($$0 -> false, ($$0, $$1) -> {
-      }, true);
+   protected void b(aqk $$0, clu $$1, long $$2) {
+      if (c($$1) || b($$1)) {
+         bua<?> $$3 = $$1.dT();
+         if (!$$3.c(cnw.g)) {
+            $$3.b(ccc.t);
+            $$3.b(ccc.m);
+            $$3.b(ccc.n);
+            $$3.b(ccc.r);
+            $$3.b(ccc.q);
+         }
+
+         $$3.a(cnw.g);
+      }
    }
 
-   public static <E extends btt> bvl<E> a(Predicate<btr> $$0, BiConsumer<E, btr> $$1, boolean $$2) {
-      return byx.a(
-         (Function<byx.b<E>, ? extends App<byx.c<E>, bza<E>>>)($$3 -> $$3.group($$3.b(ccv.o), $$3.a(ccv.E)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                  btr $$9 = $$3.b($$4);
-                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bD() && $$9.dP() == $$7.dP() && !$$0.test($$9)) {
-                     return true;
-                  } else {
-                     $$1.accept((E)$$7, $$9);
-                     $$4.b();
-                     return true;
-                  }
-               }))
-      );
+   protected void c(aqk $$0, clu $$1, long $$2) {
+      if ($$2 % 100L == 0L) {
+         $$1.a($$0, $$2, 3);
+      }
    }
 
-   private static boolean a(btr $$0, Optional<Long> $$1) {
-      return $$1.isPresent() && $$0.dP().Z() - $$1.get() > 200L;
+   public static boolean b(bsy $$0) {
+      return $$0.dT().a(ccc.A);
+   }
+
+   public static boolean c(bsy $$0) {
+      return $$0.dT().a(ccc.x);
    }
 }

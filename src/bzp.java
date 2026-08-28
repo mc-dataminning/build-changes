@@ -1,51 +1,70 @@
-public class bzp extends bzs {
-   private final int l;
-   private final boolean m;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-   public bzp(btt $$0, int $$1, boolean $$2) {
-      super($$0);
-      this.l = $$1;
-      this.m = $$2;
+public class bzp extends bzw {
+   protected final bth a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
+   private final dcd f;
+
+   public bzp(bth $$0, double $$1) {
+      this.a = $$0;
+      this.e = $$1;
+      this.f = $$0.dP();
+      this.a(EnumSet.of(bzw.a.a));
    }
 
    @Override
-   public void a() {
-      if (this.k == bzs.a.b) {
-         this.k = bzs.a.a;
-         this.d.f(true);
-         double $$0 = this.e - this.d.du();
-         double $$1 = this.f - this.d.dw();
-         double $$2 = this.g - this.d.dA();
-         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
-         if ($$3 < 2.5000003E-7F) {
-            this.d.D(0.0F);
-            this.d.C(0.0F);
-            return;
-         }
-
-         float $$4 = (float)(ayz.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
-         this.d.r(this.a(this.d.dF(), $$4, 90.0F));
-         float $$5;
-         if (this.d.aE()) {
-            $$5 = (float)(this.h * this.d.g(buz.r));
-         } else {
-            $$5 = (float)(this.h * this.d.g(buz.j));
-         }
-
-         this.d.y($$5);
-         double $$7 = Math.sqrt($$0 * $$0 + $$2 * $$2);
-         if (Math.abs($$1) > 1.0E-5F || Math.abs($$7) > 1.0E-5F) {
-            float $$8 = (float)(-(ayz.d($$1, $$7) * 180.0F / (float)Math.PI));
-            this.d.s(this.a(this.d.dH(), $$8, (float)this.l));
-            this.d.D($$1 > 0.0 ? $$5 : -$$5);
-         }
+   public boolean a() {
+      if (this.a.p() != null) {
+         return false;
+      } else if (!this.f.R()) {
+         return false;
+      } else if (!this.a.bQ()) {
+         return false;
+      } else if (!this.f.h(this.a.dp())) {
+         return false;
       } else {
-         if (!this.m) {
-            this.d.f(false);
-         }
-
-         this.d.D(0.0F);
-         this.d.C(0.0F);
+         return !this.a.a(bsk.f).e() ? false : this.h();
       }
+   }
+
+   protected boolean h() {
+      evz $$0 = this.i();
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.b = $$0.c;
+         this.c = $$0.d;
+         this.d = $$0.e;
+         return true;
+      }
+   }
+
+   @Override
+   public boolean b() {
+      return !this.a.K().l();
+   }
+
+   @Override
+   public void c() {
+      this.a.K().a(this.b, this.c, this.d, this.e);
+   }
+
+   @Nullable
+   protected evz i() {
+      aym $$0 = this.a.dS();
+      ja $$1 = this.a.dp();
+
+      for (int $$2 = 0; $$2 < 10; $$2++) {
+         ja $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
+         if (!this.f.h($$3) && this.a.c($$3) < 0.0F) {
+            return evz.c($$3);
+         }
+      }
+
+      return null;
    }
 }

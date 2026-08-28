@@ -1,129 +1,102 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Dynamic;
 import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
 
-public class ejs extends ejt {
-   private static final Codec<Either<alf, emm>> a = Codec.of(ejs::a, alf.a.map(Either::left));
-   public static final MapCodec<ejs> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c(), b(), d()).apply($$0, ejs::new));
-   protected final Either<alf, emm> c;
-   protected final ji<emk> d;
+public class ejs {
+   private final int a;
+   private final int b;
+   private final int c;
+   private final int d;
+   private final ejz.a e;
 
-   private static <T> DataResult<T> a(Either<alf, emm> $$0, DynamicOps<T> $$1, T $$2) {
-      Optional<alf> $$3 = $$0.left();
-      return $$3.isEmpty() ? DataResult.error(() -> "Can not serialize a runtime pool element") : alf.a.encode($$3.get(), $$1, $$2);
+   public ejs(int $$0, int $$1, int $$2, int $$3, ejz.a $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   protected static <E extends ejs> RecordCodecBuilder<E, ji<emk>> b() {
-      return eml.d.fieldOf("processors").forGetter($$0 -> $$0.d);
+   public int a() {
+      return this.a;
    }
 
-   protected static <E extends ejs> RecordCodecBuilder<E, Either<alf, emm>> c() {
-      return a.fieldOf("location").forGetter($$0 -> $$0.c);
+   public int b() {
+      return this.b;
    }
 
-   protected ejs(Either<alf, emm> $$0, ji<emk> $$1, ejv.a $$2) {
-      super($$2);
-      this.c = $$0;
-      this.d = $$1;
+   public int c() {
+      return this.c;
    }
 
-   @Override
-   public kd a(emn $$0, dlo $$1) {
-      emm $$2 = this.a($$0);
-      return $$2.a($$1);
+   public int d() {
+      return this.d;
    }
 
-   private emm a(emn $$0) {
-      return (emm)this.c.map($$0::a, Function.identity());
+   public ejz.a e() {
+      return this.e;
    }
 
-   public List<emm.c> a(emn $$0, iz $$1, dlo $$2, boolean $$3) {
-      emm $$4 = this.a($$0);
-      List<emm.c> $$5 = $$4.a($$1, new emi().a($$2), dfd.pa, $$3);
-      List<emm.c> $$6 = Lists.newArrayList();
+   public <T> Dynamic<T> a(DynamicOps<T> $$0) {
+      Builder<T, T> $$1 = ImmutableMap.builder();
+      $$1.put($$0.createString("source_x"), $$0.createInt(this.a))
+         .put($$0.createString("source_ground_y"), $$0.createInt(this.b))
+         .put($$0.createString("source_z"), $$0.createInt(this.c))
+         .put($$0.createString("delta_y"), $$0.createInt(this.d))
+         .put($$0.createString("dest_proj"), $$0.createString(this.e.a()));
+      return new Dynamic($$0, $$0.createMap($$1.build()));
+   }
 
-      for (emm.c $$7 : $$5) {
-         us $$8 = $$7.c();
-         if ($$8 != null) {
-            dto $$9 = dto.valueOf($$8.l("mode"));
-            if ($$9 == dto.d) {
-               $$6.add($$7);
-            }
-         }
-      }
-
-      return $$6;
+   public static <T> ejs a(Dynamic<T> $$0) {
+      return new ejs(
+         $$0.get("source_x").asInt(0),
+         $$0.get("source_ground_y").asInt(0),
+         $$0.get("source_z").asInt(0),
+         $$0.get("delta_y").asInt(0),
+         ejz.a.a($$0.get("dest_proj").asString(""))
+      );
    }
 
    @Override
-   public List<emm.c> a(emn $$0, iz $$1, dlo $$2, azh $$3) {
-      emm $$4 = this.a($$0);
-      ObjectArrayList<emm.c> $$5 = $$4.a($$1, new emi().a($$2), dfd.pb, true);
-      ac.c($$5, $$3);
-      a($$5);
-      return $$5;
-   }
-
-   @VisibleForTesting
-   static void a(List<emm.c> $$0) {
-      $$0.sort(Comparator.<emm.c>comparingInt($$0x -> x.a($$0x.c(), $$0xx -> $$0xx.h("selection_priority"), 0)).reversed());
-   }
-
-   @Override
-   public eie a(emn $$0, iz $$1, dlo $$2) {
-      emm $$3 = this.a($$0);
-      return $$3.b(new emi().a($$2), $$1);
-   }
-
-   @Override
-   public boolean a(emn $$0, dcv $$1, dct $$2, dub $$3, iz $$4, iz $$5, dlo $$6, eie $$7, azh $$8, boolean $$9) {
-      emm $$10 = this.a($$0);
-      emi $$11 = this.a($$6, $$7, $$9);
-      if (!$$10.a($$1, $$4, $$5, $$11, $$8, 18)) {
-         return false;
-      } else {
-         for (emm.c $$13 : emm.a($$1, $$4, $$5, $$11, this.a($$0, $$4, $$6, false))) {
-            this.a($$1, $$13, $$4, $$6, $$8, $$7);
-         }
-
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
          return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         ejs $$1 = (ejs)$$0;
+         if (this.a != $$1.a) {
+            return false;
+         } else if (this.c != $$1.c) {
+            return false;
+         } else {
+            return this.d != $$1.d ? false : this.e == $$1.e;
+         }
+      } else {
+         return false;
       }
-   }
-
-   protected emi a(dlo $$0, eie $$1, boolean $$2) {
-      emi $$3 = new emi();
-      $$3.a($$1);
-      $$3.a($$0);
-      $$3.c(true);
-      $$3.a(false);
-      $$3.a(elo.b);
-      $$3.d(true);
-      if (!$$2) {
-         $$3.a(elu.b);
-      }
-
-      this.d.a().a().forEach($$3::a);
-      this.e().b().forEach($$3::a);
-      return $$3;
    }
 
    @Override
-   public eju<?> a() {
-      return eju.a;
+   public int hashCode() {
+      int $$0 = this.a;
+      $$0 = 31 * $$0 + this.b;
+      $$0 = 31 * $$0 + this.c;
+      $$0 = 31 * $$0 + this.d;
+      return 31 * $$0 + this.e.hashCode();
    }
 
    @Override
    public String toString() {
-      return "Single[" + this.c + "]";
+      return "JigsawJunction{sourceX="
+         + this.a
+         + ", sourceGroundY="
+         + this.b
+         + ", sourceZ="
+         + this.c
+         + ", deltaY="
+         + this.d
+         + ", destProjection="
+         + this.e
+         + "}";
    }
 }

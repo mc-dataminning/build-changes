@@ -1,122 +1,45 @@
-import com.google.common.collect.Lists;
-import com.google.common.hash.HashCode;
-import com.google.common.hash.Hashing;
-import com.google.common.hash.HashingOutputStream;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
 
-public class pl implements lw {
-   private static final Logger d = LogUtils.getLogger();
-   private final ly e;
-   private final Iterable<Path> f;
-   private final List<pl.a> g = Lists.newArrayList();
-
-   public pl(ly $$0, Iterable<Path> $$1) {
-      this.e = $$0;
-      this.f = $$1;
-   }
-
-   public pl a(pl.a $$0) {
-      this.g.add($$0);
-      return this;
-   }
-
-   private us a(String $$0, us $$1) {
-      us $$2 = $$1;
-
-      for (pl.a $$3 : this.g) {
-         $$2 = $$3.apply($$0, $$2);
-      }
-
-      return $$2;
+public class pl extends pq<bsj<?>> {
+   public pl(lz $$0, CompletableFuture<jl.a> $$1) {
+      super($$0, lr.z, $$1, $$0x -> $$0x.r().h());
    }
 
    @Override
-   public CompletableFuture<?> a(lu $$0) {
-      Path $$1 = this.e.a();
-      List<CompletableFuture<?>> $$2 = Lists.newArrayList();
-
-      for (Path $$3 : this.f) {
-         $$2.add(CompletableFuture.<CompletableFuture>supplyAsync(() -> {
-            try {
-               CompletableFuture var5x;
-               try (Stream<Path> $$3x = Files.walk($$3)) {
-                  var5x = CompletableFuture.allOf($$3x.filter($$0xx -> $$0xx.toString().endsWith(".snbt")).map($$3xx -> CompletableFuture.runAsync(() -> {
-                        pl.c $$4 = this.a($$3xx, this.a($$3, $$3xx));
-                        this.a($$0, $$4, $$1);
-                     }, ac.g())).toArray(CompletableFuture[]::new));
-               }
-
-               return var5x;
-            } catch (Exception var9) {
-               throw new RuntimeException("Failed to read structure input directory, aborting", var9);
-            }
-         }, ac.g()).thenCompose($$0x -> $$0x));
-      }
-
-      return ac.e($$2);
-   }
-
-   @Override
-   public final String a() {
-      return "SNBT -> NBT";
-   }
-
-   private String a(Path $$0, Path $$1) {
-      String $$2 = $$0.relativize($$1).toString().replaceAll("\\\\", "/");
-      return $$2.substring(0, $$2.length() - ".snbt".length());
-   }
-
-   private pl.c a(Path $$0, String $$1) {
-      try {
-         pl.c var10;
-         try (BufferedReader $$2 = Files.newBufferedReader($$0)) {
-            String $$3 = IOUtils.toString($$2);
-            us $$4 = this.a($$1, vh.a($$3));
-            ByteArrayOutputStream $$5 = new ByteArrayOutputStream();
-            HashingOutputStream $$6 = new HashingOutputStream(Hashing.sha1(), $$5);
-            vf.a($$4, $$6);
-            byte[] $$7 = $$5.toByteArray();
-            HashCode $$8 = $$6.hash();
-            var10 = new pl.c($$1, $$7, $$8);
-         }
-
-         return var10;
-      } catch (Throwable var13) {
-         throw new pl.b($$0, var13);
-      }
-   }
-
-   private void a(lu $$0, pl.c $$1, Path $$2) {
-      Path $$3 = $$2.resolve($$1.a + ".nbt");
-
-      try {
-         $$0.writeIfNeeded($$3, $$1.b, $$1.c);
-      } catch (IOException var6) {
-         d.error("Couldn't write structure {} at {}", new Object[]{$$1.a, $$3, var6});
-      }
-   }
-
-   @FunctionalInterface
-   public interface a {
-      us apply(String var1, us var2);
-   }
-
-   static class b extends RuntimeException {
-      public b(Path $$0, Throwable $$1) {
-         super($$0.toAbsolutePath().toString(), $$1);
-      }
-   }
-
-   static record c(String a, byte[] b, HashCode c) {
+   protected void a(jl.a $$0) {
+      this.a(avy.a).a(bsj.aN, bsj.aY, bsj.bq, bsj.aO, bsj.l);
+      this.a(avy.b).a(bsj.bv, bsj.bu, bsj.bw, bsj.bx, bsj.bt, bsj.B, bsj.ac);
+      this.a(avy.c).a(bsj.J, bsj.aC, bsj.aH, bsj.bk, bsj.ad, bsj.bo);
+      this.a(avy.d).a(avy.a).a(avy.b).a(bsj.bp).a(bsj.ay);
+      this.a(avy.e).a(bsj.h);
+      this.a(avy.f).a(bsj.e, bsj.aV);
+      this.a(avy.g).a(avy.f).a(bsj.P).a(bsj.aT, bsj.ak, bsj.aQ, bsj.C, bsj.bf, bsj.A, bsj.br, bsj.bn, bsj.n);
+      this.a(avy.h).a(bsj.aG, bsj.I, bsj.aM, bsj.Q);
+      this.a(avy.j).a(bsj.bg, bsj.aF, bsj.aI, bsj.u, bsj.aX, bsj.W, bsj.ba);
+      this.a(avy.i).a(bsj.B, bsj.Y, bsj.D);
+      this.a(avy.k).a(bsj.aY, bsj.aD, bsj.aS, bsj.bp);
+      this.a(avy.l).a(bsj.aZ, bsj.i, bsj.ap);
+      this.a(avy.m).a(avy.d).a(bsj.f, bsj.R, bsj.Y, bsj.D, bsj.bh, bsj.W, bsj.u, bsj.aF, bsj.aI, bsj.aX, bsj.bg, bsj.ba, bsj.d);
+      this.a(avy.n).a(bsj.aP, bsj.ap);
+      this.a(avy.o).a(bsj.af, bsj.aS, bsj.aK, bsj.a, bsj.g, bsj.h, bsj.i, bsj.p, bsj.t, bsj.T, bsj.ay, bsj.ap, bsj.au, bsj.ax, bsj.bp, bsj.m);
+      this.a(avy.p).a(bsj.o, bsj.t, bsj.z, bsj.ab, bsj.an, bsj.at, bsj.az, bsj.aH, bsj.aW, bsj.aZ, bsj.be, bsj.bv);
+      this.a(avy.q).a(bsj.aP, bsj.ap);
+      this.a(avy.t).a(bsj.J).a(bsj.ad).a(bsj.aC).a(bsj.bk);
+      this.a(avy.u).a(bsj.bh).a(bsj.f).a(bsj.Y).a(bsj.D).a(bsj.u).a(bsj.aF).a(bsj.aI).a(bsj.bg).a(bsj.y).a(bsj.aX).a(bsj.W).a(bsj.ba);
+      this.a(avy.v).a(bsj.h).a(bsj.I).a(bsj.aM).a(bsj.aW).a(bsj.q);
+      this.a(avy.w).a(avy.d);
+      this.a(avy.x).a(avy.d);
+      this.a(avy.y).a(avy.d);
+      this.a(avy.z).a(avy.t);
+      this.a(avy.A).a(bsj.bh).a(bsj.Y).a(bsj.D).a(bsj.u).a(bsj.aF).a(bsj.aI).a(bsj.bg).a(bsj.y).a(bsj.aX).a(bsj.W).a(bsj.ba);
+      this.a(avy.B).a(avy.u);
+      this.a(avy.C).a(avy.v);
+      this.a(avy.D).a(avy.d);
+      this.a(avy.H).a(bsj.ak, bsj.bn, bsj.n);
+      this.a(avy.r).a(bsj.m);
+      this.a(avy.s).a(bsj.m);
+      this.a(avy.E).a(bsj.m, bsj.aN, bsj.l, bsj.aY, bsj.bu, bsj.ac, bsj.aW, bsj.q, bsj.aP);
+      this.a(avy.G).a(bsj.aM);
+      this.a(avy.F).a(bsj.aP);
    }
 }

@@ -1,28 +1,27 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehj extends ehx {
-   public static final MapCodec<ehj> a = bqb.b(0, 256).fieldOf("count").xmap(ehj::new, $$0 -> $$0.c);
-   private final bqb c;
+public class ehj extends ehw {
+   public static final MapCodec<ehj> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dzg.b.fieldOf("predicate").forGetter($$0x -> $$0x.c)).apply($$0, ehj::new)
+   );
+   private final dzg c;
 
-   private ehj(bqb $$0) {
+   private ehj(dzg $$0) {
       this.c = $$0;
    }
 
-   public static ehj a(bqb $$0) {
+   public static ehj a(dzg $$0) {
       return new ehj($$0);
    }
 
-   public static ehj a(int $$0) {
-      return a(bpy.a($$0));
+   @Override
+   protected boolean a(ehv $$0, aym $$1, ja $$2) {
+      return this.c.test($$0.d(), $$2);
    }
 
    @Override
-   protected int a(azh $$0, iz $$1) {
-      return this.c.a($$0);
-   }
-
-   @Override
-   public ehu<?> b() {
-      return ehu.f;
+   public ehy<?> b() {
+      return ehy.a;
    }
 }

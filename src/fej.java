@@ -1,36 +1,34 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public class fej extends fen {
+   private static final wu b = wu.c("mco.connect.connecting");
+   private final gvj c;
+   private final fbn d;
+   private final fbo e;
 
-public class fej extends feh {
-   private static final Logger b = LogUtils.getLogger();
-   private static final xp c = xp.c("mco.create.world.wait");
-   private final String d;
-   private final String e;
-   private final long f;
-
-   public fej(long $$0, String $$1, String $$2) {
-      this.f = $$0;
+   public fej(fnd $$0, fbn $$1, fbo $$2) {
       this.d = $$1;
       this.e = $$2;
+      this.c = new gvj($$0);
    }
 
    @Override
    public void run() {
-      faq $$0 = faq.a();
-
-      try {
-         $$0.a(this.f, this.d, this.e);
-      } catch (fcd var3) {
-         b.error("Couldn't create world", var3);
-         this.a(var3);
-      } catch (Exception var4) {
-         b.error("Could not create world", var4);
-         this.a(var4);
-      }
+      this.c.a(this.d, fzv.a(this.e.a));
    }
 
    @Override
-   public xp a() {
-      return c;
+   public void b() {
+      super.b();
+      this.c.a();
+      ffn.Q().ae().i();
+   }
+
+   @Override
+   public void c() {
+      this.c.b();
+   }
+
+   @Override
+   public wu a() {
+      return b;
    }
 }

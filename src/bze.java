@@ -1,22 +1,68 @@
-import com.google.common.collect.ImmutableMap;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class bze<E extends cmd> extends bvk<E> {
-   public bze(int $$0) {
-      super(ImmutableMap.of(ccv.aC, ccw.a, ccv.m, ccw.b, ccv.n, ccw.c), $$0);
+public class bze extends bzw {
+   private final cfr a;
+   @Nullable
+   private cmh b;
+   private final dcd c;
+   private final float d;
+   private int e;
+   private final cdp f;
+
+   public bze(cfr $$0, float $$1) {
+      this.a = $$0;
+      this.c = $$0.dP();
+      this.d = $$1;
+      this.f = cdp.b().a((double)$$1);
+      this.a(EnumSet.of(bzw.a.b));
    }
 
-   protected boolean a(arf $$0, E $$1, long $$2) {
-      return true;
+   @Override
+   public boolean a() {
+      this.b = this.c.a(this.f, this.a);
+      return this.b == null ? false : this.a(this.b);
    }
 
-   protected void b(arf $$0, E $$1, long $$2) {
-      $$1.b(bud.n);
-      $$1.a(awa.BI, 5.0F, 1.0F);
-   }
-
-   protected void c(arf $$0, E $$1, long $$2) {
-      if ($$1.c(bud.n)) {
-         $$1.b(bud.a);
+   @Override
+   public boolean b() {
+      if (!this.b.bD()) {
+         return false;
+      } else {
+         return this.a.g((bsd)this.b) > (double)(this.d * this.d) ? false : this.e > 0 && this.a(this.b);
       }
+   }
+
+   @Override
+   public void c() {
+      this.a.z(true);
+      this.e = this.a(40 + this.a.dS().a(40));
+   }
+
+   @Override
+   public void d() {
+      this.a.z(false);
+      this.b = null;
+   }
+
+   @Override
+   public void e() {
+      this.a.G().a(this.b.du(), this.b.dy(), this.b.dA(), 10.0F, (float)this.a.aa());
+      this.e--;
+   }
+
+   private boolean a(cmh $$0) {
+      for (bqc $$1 : bqc.values()) {
+         cua $$2 = $$0.b($$1);
+         if (this.a.s() && $$2.a(cud.rz)) {
+            return true;
+         }
+
+         if (this.a.o($$2)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

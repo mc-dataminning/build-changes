@@ -1,21 +1,37 @@
-public record adl(xp b, xl.a c) implements zw<aci> {
-   public static final zn<xa, adl> a = zn.a(xr.d, adl::b, xl.a.a, adl::e, adl::new);
+public class adl implements zb<abn> {
+   public static final ys<vr, adl> a = zb.a(adl::a, adl::new);
+   private final ja b;
+   private final boolean c;
 
-   @Override
-   public zy<adl> a() {
-      return agu.C;
+   public adl(ja $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public void a(aci $$0) {
+   private adl(vr $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readBoolean();
+   }
+
+   private void a(vr $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+   }
+
+   @Override
+   public zd<adl> a() {
+      return afz.X;
+   }
+
+   public void a(abn $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean c() {
-      return true;
+   public ja b() {
+      return this.b;
    }
 
-   public xl.a e() {
+   public boolean e() {
       return this.c;
    }
 }

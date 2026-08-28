@@ -1,62 +1,53 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public record eur(euy b, String c, float d) implements eup {
+public record eur(euv b, euv c) implements euv {
    public static final MapCodec<eur> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               euz.a.fieldOf("target").forGetter(eur::c),
-               Codec.STRING.fieldOf("score").forGetter(eur::d),
-               Codec.FLOAT.fieldOf("scale").orElse(1.0F).forGetter(eur::e)
-            )
-            .apply($$0, eur::new)
+      $$0 -> $$0.group(euw.a.fieldOf("n").forGetter(eur::c), euw.a.fieldOf("p").forGetter(eur::d)).apply($$0, eur::new)
    );
 
    @Override
-   public euo b() {
-      return euq.e;
+   public euu b() {
+      return euw.d;
    }
 
    @Override
-   public Set<etd<?>> a() {
-      return this.b.b();
-   }
+   public int a(eqo $$0) {
+      int $$1 = this.b.a($$0);
+      float $$2 = this.c.b($$0);
+      aym $$3 = $$0.b();
+      int $$4 = 0;
 
-   public static eur a(eqk.b $$0, String $$1) {
-      return a($$0, $$1, 1.0F);
-   }
-
-   public static eur a(eqk.b $$0, String $$1, float $$2) {
-      return new eur(euv.a($$0), $$1, $$2);
-   }
-
-   @Override
-   public float b(eqk $$0) {
-      eww $$1 = this.b.a($$0);
-      if ($$1 == null) {
-         return 0.0F;
-      } else {
-         ewx $$2 = $$0.d().f();
-         ewp $$3 = $$2.a(this.c);
-         if ($$3 == null) {
-            return 0.0F;
-         } else {
-            ewt $$4 = $$2.d($$1, $$3);
-            return $$4 == null ? 0.0F : (float)$$4.a() * this.d;
+      for (int $$5 = 0; $$5 < $$1; $$5++) {
+         if ($$3.i() < $$2) {
+            $$4++;
          }
       }
+
+      return $$4;
    }
 
-   public euy c() {
+   @Override
+   public float b(eqo $$0) {
+      return (float)this.a($$0);
+   }
+
+   public static eur a(int $$0, float $$1) {
+      return new eur(eus.a((float)$$0), eus.a($$1));
+   }
+
+   @Override
+   public Set<eth<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public euv c() {
       return this.b;
    }
 
-   public String d() {
+   public euv d() {
       return this.c;
-   }
-
-   public float e() {
-      return this.d;
    }
 }

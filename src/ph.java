@@ -1,58 +1,140 @@
-import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
-public class ph {
-   private static final jy a = new jy()
-      .a(lq.aE, rf::a)
-      .a(lq.aB, rd::a)
-      .a(lq.aC, si::a)
-      .a(lq.aI, sx::a)
-      .a(lq.aJ, ro::a)
-      .a(lq.aL, rn::a)
-      .a(lq.aK, rk::a)
-      .a(lq.aM, rj::a)
-      .a(lq.az, rz::a)
-      .a(lq.aR, ddo::a)
-      .a(lq.aH, rg::a)
-      .a(lq.aD, dyd::a)
-      .a(lq.aG, dyb::a)
-      .a(lq.aQ, eic::a)
-      .a(lq.aF, ego::a)
-      .a(lq.aA, xl::a)
-      .a(lq.aP, cwz::a)
-      .a(lq.aO, cwx::a)
-      .a(lq.m, cgm::a)
-      .a(lq.s, brs::a)
-      .a(lq.d, dpb::a);
-
-   private static void a(jk.a $$0) {
-      a($$0.b(lq.aI), $$0.b(lq.az));
+public class ph extends pv<ddd> {
+   public ph(lz $$0, CompletableFuture<jl.a> $$1) {
+      super($$0, lr.aE, $$1);
    }
 
-   public static void a(jj<ehq> $$0, jk<dcz> $$1) {
-      $$1.b().forEach($$1x -> {
-         alf $$2 = $$1x.h().a();
-         List<jm<ehq>> $$3 = ((dcz)$$1x.a()).d().b();
-         $$3.stream().flatMap(jm::a).forEach($$3x -> $$3x.d().ifLeft($$2xx -> {
-               ji.c<ehq> $$3xx = $$0.b($$2xx);
-               if (!a($$3xx.a())) {
-                  ac.a("Placed feature " + $$2xx.a() + " in biome " + $$2 + " is missing BiomeFilter.biome()");
-               }
-            }).ifRight($$1xxx -> {
-               if (!a($$1xxx)) {
-                  ac.a("Placed inline feature in biome " + $$1x + " is missing BiomeFilter.biome()");
-               }
-            }));
-      });
-   }
-
-   private static boolean a(ehq $$0) {
-      return $$0.c().contains(ehe.a());
-   }
-
-   public static jk.a a() {
-      jw.b $$0 = jw.a(lp.aw);
-      jk.a $$1 = a.a($$0);
-      a($$1);
-      return $$1;
+   @Override
+   protected void a(jl.a $$0) {
+      this.b(avt.a).a(ddk.X).a(ddk.V).a(ddk.T).a(ddk.R);
+      this.b(avt.b).b(avt.a).a(ddk.W).a(ddk.S).a(ddk.U).a(ddk.Q).a(ddk.P);
+      this.b(avt.c).a(ddk.M).a(ddk.N);
+      this.b(avt.d).a(ddk.K).a(ddk.L);
+      this.b(avt.e).a(ddk.D).a(ddk.H).a(ddk.I).a(ddk.J).a(ddk.G).a(ddk.E);
+      this.b(avt.f).a(ddk.A).a(ddk.B).a(ddk.C);
+      this.b(avt.g).a(ddk.t).a(ddk.v).a(ddk.u);
+      this.b(avt.h).a(ddk.p).a(ddk.q).a(ddk.n).a(ddk.o);
+      this.b(avt.i).a(ddk.z).a(ddk.x).a(ddk.y);
+      this.b(avt.j).a(ddk.i).a(ddk.j).a(ddk.k).a(ddk.m).a(ddk.l).a(ddk.F);
+      this.b(avt.k).a(ddk.r).a(ddk.s).a(ddk.w);
+      pv.b<ddd> $$1 = this.b(avt.m);
+      ddr.a.a.a().forEach($$1::a);
+      pv.b<ddd> $$2 = this.b(avt.l);
+      ddr.a.b.a().forEach($$2::a);
+      this.b(avt.n).a(ddk.ah).a(ddk.ai).a(ddk.aj).a(ddk.ak).a(ddk.al);
+      this.b(avt.p).b(avt.c);
+      this.b(avt.q).a(ddk.f);
+      this.b(avt.r).a(ddk.q).a(ddk.d).a(ddk.G);
+      this.b(avt.s).a(ddk.z).a(ddk.x);
+      this.b(avt.t)
+         .b(avt.b)
+         .b(avt.d)
+         .b(avt.c)
+         .b(avt.e)
+         .b(avt.g)
+         .b(avt.h)
+         .b(avt.i)
+         .b(avt.j)
+         .a(ddk.O)
+         .a(ddk.Y)
+         .a(ddk.e)
+         .a(ddk.w)
+         .a(ddk.f)
+         .a(ddk.r)
+         .a(ddk.d)
+         .a(ddk.b)
+         .a(ddk.c)
+         .a(ddk.g)
+         .a(ddk.h)
+         .a(ddk.s)
+         .a(ddk.Z)
+         .a(ddk.aa);
+      this.b(avt.u).b(avt.f);
+      this.b(avt.Y).a(ddk.ab);
+      this.b(avt.v).b(avt.a);
+      this.b(avt.X).b(avt.b).b(avt.d);
+      this.b(avt.w).a(ddk.W).a(ddk.U).a(ddk.S).a(ddk.X).a(ddk.V).a(ddk.T);
+      this.b(avt.x).a(ddk.Q).a(ddk.P).a(ddk.R);
+      this.b(avt.y).a(ddk.f).a(ddk.b).a(ddk.r).a(ddk.d).a(ddk.p).b(avt.e).a(ddk.F);
+      this.b(avt.z).a(ddk.f);
+      this.b(avt.A).b(avt.i);
+      this.b(avt.B).b(avt.b);
+      this.b(avt.C).a(ddk.g).a(ddk.h);
+      this.b(avt.D).b(avt.f).b(avt.g).a(ddk.s).a(ddk.w).a(ddk.O).b(avt.e);
+      this.b(avt.E).b(avt.c).b(avt.d).b(avt.h).b(avt.j).a(ddk.Y).a(ddk.e).a(ddk.Z).a(ddk.aa).a(ddk.r).a(ddk.d).a(ddk.b).a(ddk.c);
+      this.b(avt.F).b(avt.c);
+      this.b(avt.G).b(avt.b);
+      this.b(avt.J).a(ddk.g);
+      this.b(avt.K).a(ddk.f);
+      this.b(avt.L).a(ddk.b).a(ddk.D);
+      this.b(avt.M).a(ddk.r);
+      this.b(avt.N).a(ddk.d);
+      this.b(avt.O).a(ddk.p);
+      this.b(avt.P).a(ddk.p).a(ddk.q).a(ddk.n).a(ddk.o).a(ddk.m).a(ddk.x);
+      this.b(avt.Q).a(ddk.l);
+      this.b(avt.o)
+         .a(ddk.b)
+         .a(ddk.c)
+         .a(ddk.d)
+         .a(ddk.e)
+         .a(ddk.f)
+         .a(ddk.i)
+         .a(ddk.j)
+         .a(ddk.k)
+         .a(ddk.l)
+         .a(ddk.m)
+         .a(ddk.n)
+         .a(ddk.o)
+         .a(ddk.p)
+         .a(ddk.q)
+         .a(ddk.r)
+         .a(ddk.s)
+         .a(ddk.t)
+         .a(ddk.u)
+         .a(ddk.v)
+         .a(ddk.w)
+         .a(ddk.x)
+         .a(ddk.y)
+         .a(ddk.z)
+         .a(ddk.A)
+         .a(ddk.B)
+         .a(ddk.C)
+         .a(ddk.D)
+         .a(ddk.F)
+         .a(ddk.G)
+         .a(ddk.H)
+         .a(ddk.I)
+         .a(ddk.J)
+         .a(ddk.Y)
+         .a(ddk.Z)
+         .a(ddk.aa);
+      this.b(avt.H).b(avt.l);
+      this.b(avt.I).b(avt.l);
+      this.b(avt.R).b(avt.m);
+      this.b(avt.S).a(ddk.af);
+      this.b(avt.T).a(ddk.ae).a(ddk.ac).a(ddk.af).a(ddk.ad);
+      this.b(avt.U).a(ddk.ab);
+      this.b(avt.V).b(avt.m);
+      this.b(avt.W).a(ddk.ai).a(ddk.aj);
+      this.b(avt.ac).a(ddk.P);
+      this.b(avt.Z).b(avt.b).b(avt.d);
+      this.b(avt.aa).a(ddk.g).a(ddk.h);
+      this.b(avt.ab).b(avt.b).b(avt.d).a(ddk.g).a(ddk.h);
+      this.b(avt.af).a(ddk.Y);
+      this.b(avt.ag).a(ddk.Y);
+      this.b(avt.ah).a(ddk.a);
+      this.b(avt.ai).a(ddk.d).a(ddk.e).a(ddk.H).a(ddk.I).a(ddk.G).a(ddk.W).a(ddk.X).a(ddk.F).a(ddk.ab).a(ddk.L).a(ddk.q).a(ddk.N).b(avt.n);
+      this.b(avt.aj).a(ddk.f).a(ddk.P).b(avt.i).b(avt.k).b(avt.m).b(avt.f).a(ddk.h);
+      this.b(avt.ak).a(ddk.f);
+      this.b(avt.al).a(ddk.d).a(ddk.e).a(ddk.W).a(ddk.q).a(ddk.L).a(ddk.N).a(ddk.H).a(ddk.I).a(ddk.G).a(ddk.F);
+      this.b(avt.am).b(avt.d);
+      this.b(avt.an).a(ddk.aa);
+      this.b(avt.ao).a(ddk.W).a(ddk.X);
+      this.b(avt.ap).b(avt.d);
+      this.b(avt.aq).a(ddk.g).a(ddk.h);
+      this.b(avt.ar).a(ddk.d).a(ddk.e).a(ddk.W).a(ddk.q).a(ddk.L).a(ddk.N).a(ddk.H).a(ddk.I).a(ddk.G).a(ddk.F);
+      this.b(avt.ad).a(ddk.z).a(ddk.Y).a(ddk.h).a(ddk.G).a(ddk.H).a(ddk.I).a(ddk.g).a(ddk.x);
+      this.b(avt.ae).a(ddk.A).a(ddk.ag).a(ddk.ae).a(ddk.f).a(ddk.B).a(ddk.ac).a(ddk.r).a(ddk.s).a(ddk.af).a(ddk.ad).a(ddk.w).a(ddk.C);
    }
 }

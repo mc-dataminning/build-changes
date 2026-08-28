@@ -1,31 +1,107 @@
-public class gse implements grz {
-   private final gcs a;
-   private boolean b;
-   private boolean c = true;
+public abstract class gse implements gsw {
+   protected gst a;
+   protected final avg b;
+   protected final akk c;
+   protected float d = 1.0F;
+   protected float e = 1.0F;
+   protected double f;
+   protected double g;
+   protected double h;
+   protected boolean i;
+   protected int j;
+   protected gsw.a k = gsw.a.b;
+   protected boolean l;
+   protected aym m;
 
-   public gse(gcs $$0) {
-      this.a = $$0;
+   protected gse(ave $$0, avg $$1, aym $$2) {
+      this($$0.a(), $$1, $$2);
+   }
+
+   protected gse(akk $$0, avg $$1, aym $$2) {
+      this.c = $$0;
+      this.b = $$1;
+      this.m = $$2;
    }
 
    @Override
-   public void a() {
-      dca $$0 = this.a.dP();
-      dse $$1 = $$0.c(this.a.cK().c(0.0, -0.4F, 0.0).h(1.0E-6)).filter($$0x -> $$0x.a(dfd.nd)).findFirst().orElse(null);
-      if ($$1 != null) {
-         if (!this.b && !this.c && $$1.a(dfd.nd) && !this.a.N_()) {
-            boolean $$2 = $$1.c(dfh.b);
-            if ($$2) {
-               this.a.a(awa.db, 1.0F, 1.0F);
-            } else {
-               this.a.a(awa.cZ, 1.0F, 1.0F);
-            }
+   public akk a() {
+      return this.c;
+   }
+
+   @Override
+   public guc a(gub $$0) {
+      if (this.c.equals(gub.b)) {
+         this.a = gub.d;
+         return gub.c;
+      } else {
+         guc $$1 = $$0.a(this.c);
+         if ($$1 == null) {
+            this.a = gub.a;
+         } else {
+            this.a = $$1.a(this.m);
          }
 
-         this.b = true;
-      } else {
-         this.b = false;
+         return $$1;
       }
+   }
 
-      this.c = false;
+   @Override
+   public gst b() {
+      return this.a;
+   }
+
+   @Override
+   public avg c() {
+      return this.b;
+   }
+
+   @Override
+   public boolean d() {
+      return this.i;
+   }
+
+   @Override
+   public int e() {
+      return this.j;
+   }
+
+   @Override
+   public float f() {
+      return this.d * this.a.c().a(this.m);
+   }
+
+   @Override
+   public float g() {
+      return this.e * this.a.d().a(this.m);
+   }
+
+   @Override
+   public double h() {
+      return this.f;
+   }
+
+   @Override
+   public double i() {
+      return this.g;
+   }
+
+   @Override
+   public double j() {
+      return this.h;
+   }
+
+   @Override
+   public gsw.a k() {
+      return this.k;
+   }
+
+   @Override
+   public boolean l() {
+      return this.l;
+   }
+
+   @Override
+   public String toString() {
+      return "SoundInstance[" + this.c + "]";
    }
 }

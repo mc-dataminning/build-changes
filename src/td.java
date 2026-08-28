@@ -1,10 +1,20 @@
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-@Target({ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface td {
-   String a();
+public class td implements tq {
+   private static final Logger a = LogUtils.getLogger();
+
+   @Override
+   public void a(st $$0) {
+      String $$1 = $$0.c().x();
+      if ($$0.q()) {
+         a.error("{} failed at {}! {}", new Object[]{$$0.b(), $$1, ac.c($$0.m())});
+      } else {
+         a.warn("(optional) {} failed at {}. {}", new Object[]{$$0.b(), $$1, ac.c($$0.m())});
+      }
+   }
+
+   @Override
+   public void b(st $$0) {
+   }
 }

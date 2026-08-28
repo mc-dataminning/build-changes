@@ -1,147 +1,67 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.locks.LockSupport;
-import java.util.function.BooleanSupplier;
-import java.util.function.Supplier;
-import javax.annotation.CheckReturnValue;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class bpm<R extends Runnable> implements bou, bpo<R>, Executor {
-   private final String b;
-   private static final Logger c = LogUtils.getLogger();
-   private final Queue<R> d = Queues.newConcurrentLinkedQueue();
-   private int e;
+public class bpm extends bpg {
+   public static final MapCodec<bpm> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.d),
+                  Codec.FLOAT.fieldOf("plateau").forGetter($$0x -> $$0x.e)
+               )
+               .apply($$0, bpm::new)
+      )
+      .validate(
+         $$0 -> {
+            if ($$0.d < $$0.b) {
+               return DataResult.error(() -> "Max must be larger than min: [" + $$0.b + ", " + $$0.d + "]");
+            } else {
+               return $$0.e > $$0.d - $$0.b
+                  ? DataResult.error(() -> "Plateau can at most be the full span: [" + $$0.b + ", " + $$0.d + "]")
+                  : DataResult.success($$0);
+            }
+         }
+      );
+   private final float b;
+   private final float d;
+   private final float e;
 
-   protected bpm(String $$0) {
+   public static bpm a(float $$0, float $$1, float $$2) {
+      return new bpm($$0, $$1, $$2);
+   }
+
+   private bpm(float $$0, float $$1, float $$2) {
       this.b = $$0;
-      bos.a.a(this);
-   }
-
-   protected abstract R f(Runnable var1);
-
-   protected abstract boolean e(R var1);
-
-   public boolean bw() {
-      return Thread.currentThread() == this.az();
-   }
-
-   protected abstract Thread az();
-
-   protected boolean ay() {
-      return !this.bw();
-   }
-
-   public int bx() {
-      return this.d.size();
+      this.d = $$1;
+      this.e = $$2;
    }
 
    @Override
-   public String by() {
+   public float a(aym $$0) {
+      float $$1 = this.d - this.b;
+      float $$2 = ($$1 - this.e) / 2.0F;
+      float $$3 = $$1 - $$2;
+      return this.b + $$0.i() * $$3 + $$0.i() * $$2;
+   }
+
+   @Override
+   public float a() {
       return this.b;
    }
 
-   public <V> CompletableFuture<V> a(Supplier<V> $$0) {
-      return this.ay() ? CompletableFuture.supplyAsync($$0, this) : CompletableFuture.completedFuture($$0.get());
-   }
-
-   private CompletableFuture<Void> a(Runnable $$0) {
-      return CompletableFuture.supplyAsync(() -> {
-         $$0.run();
-         return null;
-      }, this);
-   }
-
-   @CheckReturnValue
-   public CompletableFuture<Void> g(Runnable $$0) {
-      if (this.ay()) {
-         return this.a($$0);
-      } else {
-         $$0.run();
-         return CompletableFuture.completedFuture(null);
-      }
-   }
-
-   public void h(Runnable $$0) {
-      if (!this.bw()) {
-         this.a($$0).join();
-      } else {
-         $$0.run();
-      }
-   }
-
-   public void i(R $$0) {
-      this.d.add($$0);
-      LockSupport.unpark(this.az());
+   @Override
+   public float b() {
+      return this.d;
    }
 
    @Override
-   public void execute(Runnable $$0) {
-      if (this.ay()) {
-         this.i(this.f($$0));
-      } else {
-         $$0.run();
-      }
-   }
-
-   public void c(Runnable $$0) {
-      this.execute($$0);
-   }
-
-   protected void bz() {
-      this.d.clear();
-   }
-
-   protected void bA() {
-      while (this.A()) {
-      }
-   }
-
-   public boolean A() {
-      R $$0 = this.d.peek();
-      if ($$0 == null) {
-         return false;
-      } else if (this.e == 0 && !this.e($$0)) {
-         return false;
-      } else {
-         this.d(this.d.remove());
-         return true;
-      }
-   }
-
-   public void c(BooleanSupplier $$0) {
-      this.e++;
-
-      try {
-         while (!$$0.getAsBoolean()) {
-            if (!this.A()) {
-               this.z();
-            }
-         }
-      } finally {
-         this.e--;
-      }
-   }
-
-   public void z() {
-      Thread.yield();
-      LockSupport.parkNanos("waiting for tasks", 100000L);
-   }
-
-   protected void d(R $$0) {
-      try {
-         $$0.run();
-      } catch (Exception var3) {
-         c.error(LogUtils.FATAL_MARKER, "Error executing task on {}", this.by(), var3);
-      }
+   public bph<?> c() {
+      return bph.d;
    }
 
    @Override
-   public List<bor> bv() {
-      return ImmutableList.of(bor.a(this.b + "-pending-tasks", boq.b, this::bx));
+   public String toString() {
+      return "trapezoid(" + this.e + ") in [" + this.b + "-" + this.d + "]";
    }
 }

@@ -1,44 +1,29 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import net.minecraft.server.MinecraftServer;
 
 public class ans {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xp.c("commands.kick.owner.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xp.c("commands.kick.singleplayer.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("commands.save.failed"));
 
-   public static void a(CommandDispatcher<ep> $$0) {
+   public static void a(CommandDispatcher<eq> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("kick").requires($$0x -> $$0x.c(3)))
-            .then(
-               ((RequiredArgumentBuilder)eq.a("targets", fc.d())
-                     .executes($$0x -> a((ep)$$0x.getSource(), fc.f($$0x, "targets"), xp.c("multiplayer.disconnect.kicked"))))
-                  .then(eq.a("reason", fg.a()).executes($$0x -> a((ep)$$0x.getSource(), fc.f($$0x, "targets"), fg.a($$0x, "reason"))))
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("save-all").requires($$0x -> $$0x.c(4)))
+               .executes($$0x -> a((eq)$$0x.getSource(), false)))
+            .then(er.a("flush").executes($$0x -> a((eq)$$0x.getSource(), true)))
       );
    }
 
-   private static int a(ep $$0, Collection<arg> $$1, xp $$2) throws CommandSyntaxException {
-      if (!$$0.l().r()) {
-         throw b.create();
+   private static int a(eq $$0, boolean $$1) throws CommandSyntaxException {
+      $$0.a(() -> wu.c("commands.save.saving"), false);
+      MinecraftServer $$2 = $$0.l();
+      boolean $$3 = $$2.b(true, $$1, true);
+      if (!$$3) {
+         throw a.create();
       } else {
-         int $$3 = 0;
-
-         for (arg $$4 : $$1) {
-            if (!$$0.l().a($$4.gb())) {
-               $$4.c.b($$2);
-               $$0.a(() -> xp.a("commands.kick.success", $$4.O_(), $$2), true);
-               $$3++;
-            }
-         }
-
-         if ($$3 == 0) {
-            throw a.create();
-         } else {
-            return $$3;
-         }
+         $$0.a(() -> wu.c("commands.save.success"), true);
+         return 1;
       }
    }
 }

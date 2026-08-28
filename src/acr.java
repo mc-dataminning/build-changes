@@ -1,31 +1,40 @@
-public class acr implements zw<aci> {
-   public static final zn<xa, acr> a = zn.a(iz.b, acr::e, zl.a(dfb.q), acr::b, acr::new);
-   private final iz b;
-   private final dse c;
+import javax.annotation.Nullable;
 
-   public acr(iz $$0, dse $$1) {
-      this.b = $$0;
+public class acr implements zb<abn> {
+   public static final ys<vr, acr> a = zb.a(acr::a, acr::new);
+   private final int b;
+   private final byte c;
+
+   public acr(bsd $$0, byte $$1) {
+      this.b = $$0.al();
       this.c = $$1;
    }
 
-   public acr(dbg $$0, iz $$1) {
-      this($$1, $$0.a_($$1));
+   private acr(vr $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readByte();
+   }
+
+   private void a(vr $$0) {
+      $$0.p(this.b);
+      $$0.k(this.c);
    }
 
    @Override
-   public zy<acr> a() {
-      return agu.k;
+   public zd<acr> a() {
+      return afz.D;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
    }
 
-   public dse b() {
-      return this.c;
+   @Nullable
+   public bsd a(dcd $$0) {
+      return $$0.a(this.b);
    }
 
-   public iz e() {
-      return this.b;
+   public byte b() {
+      return this.c;
    }
 }

@@ -1,143 +1,23 @@
-import java.util.function.BiConsumer;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
-public class ne implements mu {
-   @Override
-   public void generate(jk.a $$0, BiConsumer<ale<eqp>, eqp.a> $$1) {
-      $$1.accept(
-         eqg.bd,
-         eqp.b()
-            .a(
-               eqo.a()
-                  .a(eun.a(1.0F))
-                  .a(eqx.a(cuu.xN).a(2))
-                  .a(eqx.a(cuu.xP).a(2))
-                  .a(eqx.a(cuu.qL))
-                  .a(eqx.a(cuu.oz))
-                  .a(eqx.a(cuu.pp))
-                  .a(
-                     eqx.a(cuu.vU)
-                        .a(
-                           esw.c()
-                              .a(bsg.p, eut.a(7.0F, 10.0F))
-                              .a(bsg.h, eut.a(7.0F, 10.0F))
-                              .a(bsg.r, eut.a(6.0F, 8.0F))
-                              .a(bsg.o, eut.a(5.0F, 7.0F))
-                              .a(bsg.s, eut.a(10.0F, 20.0F))
-                              .a(bsg.w, eut.a(7.0F, 10.0F))
-                        )
-                  )
-            )
-      );
-      $$1.accept(
-         eqg.be,
-         eqp.b()
-            .a(
-               eqo.a()
-                  .a(eun.a(1.0F))
-                  .a(eqx.a(cuu.xM))
-                  .a(eqx.a(cuu.xZ))
-                  .a(eqx.a(cuu.yc))
-                  .a(eqx.a(cuu.yg))
-                  .a(eqx.a(cuu.oy))
-                  .a(eqx.a(cuu.md))
-                  .a(eqx.a(cuu.pu))
-                  .a(eqx.a(cuu.oz))
-            )
-      );
-      $$1.accept(
-         eqg.bf,
-         eqp.b()
-            .a(
-               eqo.a()
-                  .a(eun.a(1.0F))
-                  .a(eqx.a(cuu.oz).a(2))
-                  .a(eqx.a(cuu.pw).a(2))
-                  .a(eqx.a(cuu.oP).a(2))
-                  .a(eqx.a(cuu.eX).a(2))
-                  .a(eqx.a(cuu.qL).a(2))
-                  .a(eqx.a(cuu.rm).a(2))
-                  .a(eqx.a(cuu.rt).a(2))
-                  .a(eqx.a(cuu.rl).a(2))
-                  .a(eqx.a(cuu.ri).a(2))
-                  .a(eqx.a(cuu.rj).a(2))
-                  .a(eqx.a(cuu.xf).a(2))
-                  .a(eqx.a(cuu.xe).a(2))
-                  .a(eqx.a(cuu.xb).a(2))
-                  .a(eqx.a(cuu.xd).a(2))
-                  .a(eqx.a(cuu.iv))
-                  .a(eqx.a(cuu.iz))
-                  .a(eqx.a(cuu.iE))
-                  .a(eqx.a(cuu.iw))
-                  .a(eqx.a(cuu.iH))
-                  .a(eqx.a(cuu.ix))
-                  .a(eqx.a(cuu.iD))
-                  .a(eqx.a(cuu.qo))
-                  .a(eqx.a(cuu.qn))
-                  .a(eqx.a(cuu.si))
-                  .a(eqx.a(cuu.ow))
-                  .a(eqx.a(cuu.pv))
-                  .a(eqx.a(cuu.vl))
-                  .a(eqx.a(cuu.cR))
-                  .a(eqx.a(cuu.ue))
-                  .a(eqx.a(cuu.ps))
-                  .a(eqx.a(cuu.uK))
-            )
-      );
-      $$1.accept(
-         eqg.bg,
-         eqp.b()
-            .a(
-               eqo.a()
-                  .a(eun.a(1.0F))
-                  .a(eqx.a(cuu.xQ))
-                  .a(eqx.a(cuu.xR))
-                  .a(eqx.a(cuu.xU))
-                  .a(eqx.a(cuu.xW))
-                  .a(eqx.a(cuu.xX))
-                  .a(eqx.a(cuu.xY))
-                  .a(eqx.a(cuu.ye))
-                  .a(eqx.a(cuu.xE))
-                  .a(eqx.a(cuu.xH))
-                  .a(eqx.a(cuu.xF))
-                  .a(eqx.a(cuu.xI))
-                  .a(eqx.a(cuu.vL))
-            )
-      );
-      $$1.accept(
-         eqg.bh,
-         eqp.b()
-            .a(
-               eqo.a()
-                  .a(eun.a(1.0F))
-                  .a(eqx.a(cuu.xL))
-                  .a(eqx.a(cuu.yf))
-                  .a(eqx.a(cuu.yh))
-                  .a(eqx.a(cuu.kq))
-                  .a(eqx.a(cuu.pd))
-                  .a(eqx.a(cuu.oz).a(2))
-                  .a(eqx.a(cuu.pw).a(2))
-                  .a(eqx.a(cuu.oP).a(2))
-                  .a(eqx.a(cuu.ow).a(2))
-                  .a(eqx.a(cuu.si).a(2))
-            )
-      );
-      $$1.accept(
-         eqg.bi,
-         eqp.b()
-            .a(
-               eqo.a()
-                  .a(eun.a(1.0F))
-                  .a(eqx.a(cuu.xO))
-                  .a(eqx.a(cuu.xS))
-                  .a(eqx.a(cuu.ya))
-                  .a(eqx.a(cuu.yb))
-                  .a(eqx.a(cuu.pd))
-                  .a(eqx.a(cuu.oz).a(2))
-                  .a(eqx.a(cuu.pw).a(2))
-                  .a(eqx.a(cuu.oP).a(2))
-                  .a(eqx.a(cuu.ow).a(2))
-                  .a(eqx.a(cuu.si).a(2))
-            )
+public class ne {
+   public static ms a(lz $$0, CompletableFuture<jl.a> $$1) {
+      return new ms(
+         $$0,
+         eqk.a(),
+         List.of(
+            new ms.a(nc::new, etj.f),
+            new ms.a(mz::new, etj.c),
+            new ms.a(na::new, etj.g),
+            new ms.a(nb::new, etj.h),
+            new ms.a(my::new, etj.r),
+            new ms.a(nf::new, etj.k),
+            new ms.a(nd::new, etj.j),
+            new ms.a(mx::new, etj.i),
+            new ms.a(ng::new, etj.s)
+         ),
+         $$1
       );
    }
 }

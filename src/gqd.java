@@ -1,56 +1,45 @@
-import com.google.common.collect.Lists;
+import com.google.common.base.Splitter;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.mojang.logging.LogUtils;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Date;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
-import java.util.Locale;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.Map.Entry;
+import org.slf4j.Logger;
 
-public class gqd extends auu<List<String>> {
-   private static final alf a = new alf("texts/splashes.txt");
-   private static final azh b = azh.a();
-   private final List<String> c = Lists.newArrayList();
-   private final ffv d;
+public class gqd {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Splitter a = Splitter.on('/');
 
-   public gqd(ffv $$0) {
-      this.d = $$0;
-   }
+   public static Path a(Path $$0, String $$1) {
+      Path $$2 = $$0.resolve("objects");
+      asq.a $$3 = asq.c();
+      Path $$4 = $$0.resolve("indexes/" + $$1 + ".json");
 
-   protected List<String> a(aup $$0, bnk $$1) {
-      try {
-         List var4;
-         try (BufferedReader $$2 = ffh.Q().ab().openAsReader(a)) {
-            var4 = $$2.lines().map(String::trim).filter($$0x -> $$0x.hashCode() != 125780783).collect(Collectors.toList());
+      try (BufferedReader $$5 = Files.newBufferedReader($$4, StandardCharsets.UTF_8)) {
+         JsonObject $$6 = axu.a($$5);
+         JsonObject $$7 = axu.a($$6, "objects", null);
+         if ($$7 != null) {
+            for (Entry<String, JsonElement> $$8 : $$7.entrySet()) {
+               JsonObject $$9 = (JsonObject)$$8.getValue();
+               String $$10 = $$8.getKey();
+               List<String> $$11 = a.splitToList($$10);
+               String $$12 = axu.i($$9, "hash");
+               Path $$13 = $$2.resolve($$12.substring(0, 2) + "/" + $$12);
+               $$3.a($$11, $$13);
+            }
          }
-
-         return var4;
-      } catch (IOException var8) {
-         return Collections.emptyList();
+      } catch (JsonParseException var17) {
+         b.error("Unable to parse resource index file: {}", $$4);
+      } catch (IOException var18) {
+         b.error("Can't open the resource index file: {}", $$4);
       }
-   }
 
-   protected void a(List<String> $$0, aup $$1, bnk $$2) {
-      this.c.clear();
-      this.c.addAll($$0);
-   }
-
-   @Nullable
-   public fik a() {
-      Calendar $$0 = Calendar.getInstance();
-      $$0.setTime(new Date());
-      if ($$0.get(2) + 1 == 12 && $$0.get(5) == 24) {
-         return fik.a;
-      } else if ($$0.get(2) + 1 == 1 && $$0.get(5) == 1) {
-         return fik.b;
-      } else if ($$0.get(2) + 1 == 10 && $$0.get(5) == 31) {
-         return fik.c;
-      } else if (this.c.isEmpty()) {
-         return null;
-      } else {
-         return this.d != null && b.a(this.c.size()) == 42 ? new fik(this.d.c().toUpperCase(Locale.ROOT) + " IS YOU") : new fik(this.c.get(b.a(this.c.size())));
-      }
+      return $$3.a("index-" + $$1).getPath("/");
    }
 }

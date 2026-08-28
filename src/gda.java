@@ -1,125 +1,87 @@
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.time.Instant;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.authlib.GameProfile;
 
-public class gda {
-   private static final gda a = new gda("") {
-      @Override
-      public void a(ffh $$0) {
+public class gda extends gcw {
+   private evz g = evz.b;
+   private int cB;
+
+   public gda(fyd $$0, GameProfile $$1) {
+      super($$0, $$1);
+      this.ag = true;
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      double $$1 = this.cK().a() * 10.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 1.0;
       }
 
-      @Override
-      public void a(gda.c $$0, String $$1, String $$2) {
+      $$1 *= 64.0 * cD();
+      return $$0 < $$1 * $$1;
+   }
+
+   @Override
+   public boolean a(bqw $$0, float $$1) {
+      return true;
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      this.r(false);
+   }
+
+   @Override
+   public void n_() {
+      if (this.br > 0) {
+         this.a(this.br, this.bs, this.bt, this.bu, this.bv, this.bw);
+         this.br--;
       }
-   };
-   private static final Logger b = LogUtils.getLogger();
-   private static final Gson c = new GsonBuilder().create();
-   private final Path d;
-   @Nullable
-   private gda.b e;
 
-   gda(String $$0) {
-      this.d = ffh.Q().p.toPath().resolve($$0);
-   }
+      if (this.by > 0) {
+         this.a(this.by, this.bx);
+         this.by--;
+      }
 
-   public static gda a(@Nullable String $$0) {
-      return $$0 == null ? a : new gda($$0);
-   }
+      if (this.cB > 0) {
+         this.i(new evz((this.g.c - this.ds().c) / (double)this.cB, (this.g.d - this.ds().d) / (double)this.cB, (this.g.e - this.ds().e) / (double)this.cB));
+         this.cB--;
+      }
 
-   public void a(gda.c $$0, String $$1, String $$2) {
-      this.e = new gda.b($$0, $$1, $$2);
-   }
-
-   public void a(ffh $$0) {
-      if ($$0.q != null && this.e != null) {
-         ac.h().execute(() -> {
-            try {
-               Files.deleteIfExists(this.d);
-            } catch (IOException var3) {
-               b.error("Failed to delete quickplay log file {}", this.d, var3);
-            }
-
-            gda.a $$2 = new gda.a(this.e, Instant.now(), $$0.q.j());
-            Codec.list(gda.a.a).encodeStart(JsonOps.INSTANCE, List.of($$2)).resultOrPartial(ac.a("Quick Play: ", b::error)).ifPresent($$0xx -> {
-               try {
-                  Files.createDirectories(this.d.getParent());
-                  Files.writeString(this.d, c.toJson($$0xx));
-               } catch (IOException var3x) {
-                  b.error("Failed to write to quickplay log file {}", this.d, var3x);
-               }
-            });
-         });
+      this.cg = this.ch;
+      this.eR();
+      float $$1;
+      if (this.aE() && !this.ex()) {
+         $$1 = (float)Math.min(0.1, this.ds().h());
       } else {
-         b.error("Failed to log session for quickplay. Missing world data or gamemode");
+         $$1 = 0.0F;
       }
+
+      this.ch = this.ch + ($$1 - this.ch) * 0.4F;
+      this.dP().ag().a("push");
+      this.q();
+      this.dP().ag().c();
    }
 
-   static record a(gda.b b, Instant c, dbx d) {
-      public static final Codec<gda.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(gda.b.a.forGetter(gda.a::a), ayh.o.fieldOf("lastPlayedTime").forGetter(gda.a::b), dbx.f.fieldOf("gamemode").forGetter(gda.a::c))
-               .apply($$0, gda.a::new)
-      );
-
-      public gda.b a() {
-         return this.b;
-      }
-
-      public Instant b() {
-         return this.c;
-      }
-
-      public dbx c() {
-         return this.d;
-      }
+   @Override
+   public void l(double $$0, double $$1, double $$2) {
+      this.g = new evz($$0, $$1, $$2);
+      this.cB = this.ak().p() + 1;
    }
 
-   static record b(gda.c b, String c, String d) {
-      public static final MapCodec<gda.b> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  gda.c.d.fieldOf("type").forGetter(gda.b::a), ayh.q.fieldOf("id").forGetter(gda.b::b), Codec.STRING.fieldOf("name").forGetter(gda.b::c)
-               )
-               .apply($$0, gda.b::new)
-      );
-
-      public gda.c a() {
-         return this.b;
-      }
-
-      public String b() {
-         return this.c;
-      }
-
-      public String c() {
-         return this.d;
-      }
+   @Override
+   protected void fR() {
    }
 
-   public static enum c implements azu {
-      a("singleplayer"),
-      b("multiplayer"),
-      c("realms");
+   @Override
+   public void a(wu $$0) {
+      ffn $$1 = ffn.Q();
+      $$1.l.d().a($$0);
+   }
 
-      static final Codec<gda.c> d = azu.a(gda.c::values);
-      private final String e;
-
-      private c(final String $$0) {
-         this.e = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.e;
-      }
+   @Override
+   public void a(abo $$0) {
+      super.a($$0);
+      this.bu();
    }
 }

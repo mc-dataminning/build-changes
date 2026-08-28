@@ -1,23 +1,34 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class dcw {
-   public static final Codec<dcw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(avz.b.fieldOf("sound").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("tick_chance").forGetter($$0x -> $$0x.c)).apply($$0, dcw::new)
-   );
-   private final ji<avz> b;
-   private final double c;
+public interface dcw {
+   void a(bsj<?> var1, aym var2);
 
-   public dcw(ji<avz> $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   static void a(cua $$0, List<wu> $$1, String $$2) {
+      wu $$3 = a($$0, $$2);
+      if ($$3 != null) {
+         $$1.add($$3);
+      } else {
+         $$1.add(wt.a);
+         $$1.add(wu.c("block.minecraft.spawner.desc1").a(n.h));
+         $$1.add(wt.a().b(wu.c("block.minecraft.spawner.desc2").a(n.j)));
+      }
    }
 
-   public ji<avz> a() {
-      return this.b;
+   @Nullable
+   static wu a(cua $$0, String $$1) {
+      tx $$2 = $$0.a(kn.O, cwo.a).d();
+      akk $$3 = a($$2, $$1);
+      return $$3 != null ? lq.f.b($$3).map($$0x -> wu.c($$0x.g()).a(n.h)).orElse(null) : null;
    }
 
-   public double b() {
-      return this.c;
+   @Nullable
+   private static akk a(tx $$0, String $$1) {
+      if ($$0.b($$1, 10)) {
+         String $$2 = $$0.p($$1).p("entity").l("id");
+         return akk.a($$2);
+      } else {
+         return null;
+      }
    }
 }

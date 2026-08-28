@@ -1,33 +1,33 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.function.Function;
 
-public class czz extends dac {
-   private final Optional<axf<btc<?>>> b;
+public interface czz extends daa {
+   Codec<czz> b = lq.aw.r().dispatch(czz::a, Function.identity());
 
-   public czz(dac.b $$0, Optional<axf<btc<?>>> $$1) {
-      super($$0);
-      this.b = $$1;
+   static MapCodec<? extends czz> a(jw<MapCodec<? extends czz>> $$0) {
+      jw.a($$0, "all_of", czt.a.a);
+      jw.a($$0, "apply_mob_effect", czu.a);
+      jw.a($$0, "damage_entity", czv.a);
+      jw.a($$0, "damage_item", czx.a);
+      jw.a($$0, "explode", dac.a);
+      jw.a($$0, "ignite", dad.a);
+      jw.a($$0, "play_sound", daf.a);
+      jw.a($$0, "replace_block", dah.a);
+      jw.a($$0, "replace_disc", dai.a);
+      jw.a($$0, "run_function", daj.a);
+      jw.a($$0, "set_block_properties", dak.a);
+      jw.a($$0, "spawn_particles", dam.a);
+      return jw.a($$0, "summon_entity", dan.a);
+   }
+
+   void a(aqk var1, int var2, czi var3, bsd var4, evz var5);
+
+   @Override
+   default void a(aqk $$0, int $$1, czi $$2, bsd $$3, evz $$4, boolean $$5) {
+      this.a($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public float a(int $$0, @Nullable btc<?> $$1) {
-      if (this.b.isEmpty()) {
-         return 1.0F + (float)Math.max(0, $$0 - 1) * 0.5F;
-      } else {
-         return $$1 != null && $$1.a(this.b.get()) ? (float)$$0 * 2.5F : 0.0F;
-      }
-   }
-
-   @Override
-   public boolean a(dac $$0) {
-      return !($$0 instanceof czz);
-   }
-
-   @Override
-   public void a(btr $$0, bsw $$1, int $$2) {
-      if (this.b.isPresent() && $$1 instanceof btr $$3 && this.b.get() == awt.C && $$2 > 0 && $$3.ak().a(this.b.get())) {
-         int $$4 = 20 + $$0.el().a(10 * $$2);
-         $$3.b(new bse(bsg.b, $$4, 3));
-      }
-   }
+   MapCodec<? extends czz> a();
 }

@@ -1,14 +1,29 @@
-import java.time.Duration;
-import jdk.jfr.consumer.RecordedEvent;
+public class boe implements bof {
+   public static final bof a = new boe();
 
-public record boe(Duration a, dbh b, aqv c, duz d, String e) implements bon {
-   public static boe a(RecordedEvent $$0) {
-      return new boe(
-         $$0.getDuration(),
-         new dbh($$0.getInt("chunkPosX"), $$0.getInt("chunkPosX")),
-         new aqv($$0.getInt("worldPosX"), $$0.getInt("worldPosZ")),
-         duz.a($$0.getString("status")),
-         $$0.getString("level")
-      );
+   @Override
+   public void a() {
+   }
+
+   @Override
+   public void b() {
+   }
+
+   @Override
+   public void c() {
+   }
+
+   @Override
+   public boolean e() {
+      return false;
+   }
+
+   @Override
+   public bmr f() {
+      return bmo.a;
+   }
+
+   @Override
+   public void d() {
    }
 }

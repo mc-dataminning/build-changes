@@ -1,88 +1,75 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.brigadier.ParseResults;
+import com.mojang.brigadier.context.CommandContextBuilder;
+import com.mojang.brigadier.context.ParsedArgument;
+import com.mojang.brigadier.context.ParsedCommandNode;
+import com.mojang.brigadier.tree.ArgumentCommandNode;
+import com.mojang.brigadier.tree.CommandNode;
+import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.Nullable;
 
-public record xm(String b, List<xm.a> c, ym d) {
-   public static final Codec<xm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("translation_key").forGetter(xm::a),
-               xm.a.d.listOf().fieldOf("parameters").forGetter(xm::b),
-               ym.b.b.optionalFieldOf("style", ym.a).forGetter(xm::c)
-            )
-            .apply($$0, xm::new)
-   );
-
-   public static xm a(String $$0) {
-      return new xm($$0, List.of(xm.a.a, xm.a.c), ym.a);
+public record xm<S>(List<xm.a<S>> a) {
+   public static <S> boolean a(ParseResults<S> $$0) {
+      return !b($$0).a().isEmpty();
    }
 
-   public static xm b(String $$0) {
-      ym $$1 = ym.a.a(n.h).b(true);
-      return new xm($$0, List.of(xm.a.a, xm.a.c), $$1);
+   public static <S> xm<S> b(ParseResults<S> $$0) {
+      String $$1 = $$0.getReader().getString();
+      CommandContextBuilder<S> $$2 = $$0.getContext();
+      CommandContextBuilder<S> $$3 = $$2;
+      List<xm.a<S>> $$4 = a($$1, $$2);
+
+      CommandContextBuilder<S> $$5;
+      while (($$5 = $$3.getChild()) != null && $$5.getRootNode() != $$2.getRootNode()) {
+         $$4.addAll(a($$1, $$5));
+         $$3 = $$5;
+      }
+
+      return new xm<>($$4);
    }
 
-   public static xm c(String $$0) {
-      ym $$1 = ym.a.a(n.h).b(true);
-      return new xm($$0, List.of(xm.a.b, xm.a.c), $$1);
-   }
+   private static <S> List<xm.a<S>> a(String $$0, CommandContextBuilder<S> $$1) {
+      List<xm.a<S>> $$2 = new ArrayList<>();
 
-   public static xm d(String $$0) {
-      return new xm($$0, List.of(xm.a.b, xm.a.a, xm.a.c), ym.a);
-   }
-
-   public xp a(xp $$0, xl.a $$1) {
-      Object[] $$2 = this.b($$0, $$1);
-      return xp.a(this.b, $$2).c(this.d);
-   }
-
-   private xp[] b(xp $$0, xl.a $$1) {
-      xp[] $$2 = new xp[this.c.size()];
-
-      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-         xm.a $$4 = this.c.get($$3);
-         $$2[$$3] = $$4.a($$0, $$1);
+      for (ParsedCommandNode<S> $$3 : $$1.getNodes()) {
+         CommandNode $$5 = $$3.getNode();
+         if ($$5 instanceof ArgumentCommandNode) {
+            ArgumentCommandNode<S, ?> $$4 = (ArgumentCommandNode<S, ?>)$$5;
+            if ($$4.getType() instanceof fx) {
+               ParsedArgument<S, ?> $$5x = (ParsedArgument<S, ?>)$$1.getArguments().get($$4.getName());
+               if ($$5x != null) {
+                  String $$6 = $$5x.getRange().get($$0);
+                  $$2.add(new xm.a<>($$4, $$6));
+               }
+            }
+         }
       }
 
       return $$2;
    }
 
-   public String a() {
-      return this.b;
-   }
-
-   public List<xm.a> b() {
-      return this.c;
-   }
-
-   public ym c() {
-      return this.d;
-   }
-
-   public static enum a implements azu {
-      a("sender", ($$0, $$1) -> $$1.b()),
-      b("target", ($$0, $$1) -> $$1.c().orElse(xo.a)),
-      c("content", ($$0, $$1) -> $$0);
-
-      public static final Codec<xm.a> d = azu.a(xm.a::values);
-      private final String e;
-      private final xm.a.a f;
-
-      private a(final String $$0, final xm.a.a $$1) {
-         this.e = $$0;
-         this.f = $$1;
+   @Nullable
+   public xm.a<S> a(String $$0) {
+      for (xm.a<S> $$1 : this.a) {
+         if ($$0.equals($$1.a())) {
+            return $$1;
+         }
       }
 
-      public xp a(xp $$0, xl.a $$1) {
-         return this.f.select($$0, $$1);
+      return null;
+   }
+
+   public static record a<S>(ArgumentCommandNode<S, ?> a, String b) {
+      public String a() {
+         return this.a.getName();
       }
 
-      @Override
+      public ArgumentCommandNode<S, ?> b() {
+         return this.a;
+      }
+
       public String c() {
-         return this.e;
-      }
-
-      public interface a {
-         xp select(xp var1, xl.a var2);
+         return this.b;
       }
    }
 }

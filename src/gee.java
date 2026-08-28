@@ -1,464 +1,541 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.UnmodifiableIterator;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.Reader;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.function.Supplier;
+import org.apache.commons.lang3.tuple.Triple;
+import org.joml.Matrix4f;
+import org.joml.Matrix4fStack;
 
-public class gee implements ezq, AutoCloseable {
-   public static final String a = "shaders";
-   private static final String q = "shaders/core/";
-   private static final String r = "shaders/include/";
-   static final Logger s = LogUtils.getLogger();
-   private static final ezj t = new ezj();
-   private static final boolean u = true;
-   private static gee v;
-   private static int w = -1;
-   private final Map<String, Object> x = Maps.newHashMap();
-   private final List<String> y = Lists.newArrayList();
-   private final List<Integer> z = Lists.newArrayList();
-   private final List<ezr> A = Lists.newArrayList();
-   private final List<Integer> B = Lists.newArrayList();
-   private final Map<String, ezr> C = Maps.newHashMap();
-   private final int D;
-   private final String E;
-   private boolean F;
-   private final ezk G;
-   private final ezo H;
-   private final ezo I;
-   private final faf J;
-   @Nullable
-   public final ezr b;
-   @Nullable
-   public final ezr c;
-   @Nullable
-   public final ezr d;
-   @Nullable
-   public final ezr e;
-   @Nullable
-   public final ezr f;
-   @Nullable
-   public final ezr g;
-   @Nullable
-   public final ezr h;
-   @Nullable
-   public final ezr i;
-   @Nullable
-   public final ezr j;
-   @Nullable
-   public final ezr k;
-   @Nullable
-   public final ezr l;
-   @Nullable
-   public final ezr m;
-   @Nullable
-   public final ezr n;
-   @Nullable
-   public final ezr o;
-   @Nullable
-   public final ezr p;
-
-   public gee(aus $$0, String $$1, faf $$2) throws IOException {
-      this.E = $$1;
-      this.J = $$2;
-      alf $$3 = new alf("shaders/core/" + $$1 + ".json");
-
-      try (Reader $$4 = $$0.openAsReader($$3)) {
-         JsonObject $$5 = ayp.a($$4);
-         String $$6 = ayp.i($$5, "vertex");
-         String $$7 = ayp.i($$5, "fragment");
-         JsonArray $$8 = ayp.a($$5, "samplers", null);
-         if ($$8 != null) {
-            int $$9 = 0;
-
-            for (JsonElement $$10 : $$8) {
-               try {
-                  this.a($$10);
-               } catch (Exception var18) {
-                  ali $$12 = ali.a(var18);
-                  $$12.a("samplers[" + $$9 + "]");
-                  throw $$12;
-               }
-
-               $$9++;
-            }
-         }
-
-         JsonArray $$13 = ayp.a($$5, "uniforms", null);
-         if ($$13 != null) {
-            int $$14 = 0;
-
-            for (JsonElement $$15 : $$13) {
-               try {
-                  this.b($$15);
-               } catch (Exception var17) {
-                  ali $$17 = ali.a(var17);
-                  $$17.a("uniforms[" + $$14 + "]");
-                  throw $$17;
-               }
-
-               $$14++;
-            }
-         }
-
-         this.G = a(ayp.a($$5, "blend", null));
-         this.H = a($$0, ezo.a.a, $$6);
-         this.I = a($$0, ezo.a.b, $$7);
-         this.D = ezp.a();
-         int $$18 = 0;
-
-         for (UnmodifiableIterator var26 = $$2.d().iterator(); var26.hasNext(); $$18++) {
-            String $$19 = (String)var26.next();
-            ezr.a(this.D, $$18, $$19);
-         }
-
-         ezp.b(this);
-         this.j();
-      } catch (Exception var20) {
-         ali $$22 = ali.a(var20);
-         $$22.b($$3.a());
-         throw $$22;
+public abstract class gee {
+   private static final float aT = 0.99975586F;
+   public static final double a = 8.0;
+   protected final String b;
+   private final Runnable aU;
+   private final Runnable aV;
+   protected static final gee.p c = new gee.p("no_transparency", () -> RenderSystem.disableBlend(), () -> {
+   });
+   protected static final gee.p d = new gee.p("additive_transparency", () -> {
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);
+   }, () -> {
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
+   });
+   protected static final gee.p e = new gee.p("lightning_transparency", () -> {
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE);
+   }, () -> {
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
+   });
+   protected static final gee.p f = new gee.p(
+      "glint_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.SRC_COLOR, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
       }
+   );
+   protected static final gee.p g = new gee.p(
+      "crumbling_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.DST_COLOR, GlStateManager.DestFactor.SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
+      }
+   );
+   protected static final gee.p h = new gee.p(
+      "translucent_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.SRC_ALPHA,
+            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
+            GlStateManager.SourceFactor.ONE,
+            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
+      }
+   );
+   protected static final gee.m i = new gee.m();
+   protected static final gee.m j = new gee.m(gdq::u);
+   protected static final gee.m k = new gee.m(gdq::o);
+   protected static final gee.m l = new gee.m(gdq::q);
+   protected static final gee.m m = new gee.m(gdq::r);
+   protected static final gee.m n = new gee.m(gdq::v);
+   protected static final gee.m o = new gee.m(gdq::p);
+   protected static final gee.m p = new gee.m(gdq::w);
+   protected static final gee.m q = new gee.m(gdq::x);
+   protected static final gee.m r = new gee.m(gdq::y);
+   protected static final gee.m s = new gee.m(gdq::z);
+   protected static final gee.m t = new gee.m(gdq::A);
+   protected static final gee.m u = new gee.m(gdq::B);
+   protected static final gee.m v = new gee.m(gdq::C);
+   protected static final gee.m w = new gee.m(gdq::D);
+   protected static final gee.m x = new gee.m(gdq::E);
+   protected static final gee.m y = new gee.m(gdq::F);
+   protected static final gee.m z = new gee.m(gdq::G);
+   protected static final gee.m A = new gee.m(gdq::H);
+   protected static final gee.m B = new gee.m(gdq::I);
+   protected static final gee.m C = new gee.m(gdq::J);
+   protected static final gee.m D = new gee.m(gdq::K);
+   protected static final gee.m E = new gee.m(gdq::L);
+   protected static final gee.m F = new gee.m(gdq::M);
+   protected static final gee.m G = new gee.m(gdq::N);
+   protected static final gee.m H = new gee.m(gdq::O);
+   protected static final gee.m I = new gee.m(gdq::P);
+   protected static final gee.m J = new gee.m(gdq::Q);
+   protected static final gee.m K = new gee.m(gdq::R);
+   protected static final gee.m L = new gee.m(gdq::T);
+   protected static final gee.m M = new gee.m(gdq::U);
+   protected static final gee.m N = new gee.m(gdq::V);
+   protected static final gee.m O = new gee.m(gdq::W);
+   protected static final gee.m P = new gee.m(gdq::X);
+   protected static final gee.m Q = new gee.m(gdq::Y);
+   protected static final gee.m R = new gee.m(gdq::Z);
+   protected static final gee.m S = new gee.m(gdq::aa);
+   protected static final gee.m T = new gee.m(gdq::ab);
+   protected static final gee.m U = new gee.m(gdq::ac);
+   protected static final gee.m V = new gee.m(gdq::ap);
+   protected static final gee.m W = new gee.m(gdq::ad);
+   protected static final gee.m X = new gee.m(gdq::ae);
+   protected static final gee.m Y = new gee.m(gdq::af);
+   protected static final gee.m Z = new gee.m(gdq::ag);
+   protected static final gee.m aa = new gee.m(gdq::ah);
+   protected static final gee.m ab = new gee.m(gdq::ai);
+   protected static final gee.m ac = new gee.m(gdq::aj);
+   protected static final gee.m ad = new gee.m(gdq::ak);
+   protected static final gee.m ae = new gee.m(gdq::al);
+   protected static final gee.m af = new gee.m(gdq::am);
+   protected static final gee.m ag = new gee.m(gdq::an);
+   protected static final gee.m ah = new gee.m(gdq::ao);
+   protected static final gee.m ai = new gee.m(gdq::aq);
+   protected static final gee.m aj = new gee.m(gdq::ar);
+   protected static final gee.m ak = new gee.m(gdq::as);
+   protected static final gee.m al = new gee.m(gdq::at);
+   protected static final gee.m am = new gee.m(gdq::S);
+   protected static final gee.n an = new gee.n(gph.e, false, true);
+   protected static final gee.n ao = new gee.n(gph.e, false, false);
+   protected static final gee.e ap = new gee.e();
+   protected static final gee.o aq = new gee.o("default_texturing", () -> {
+   }, () -> {
+   });
+   protected static final gee.o ar = new gee.o("glint_texturing", () -> a(8.0F), () -> RenderSystem.resetTextureMatrix());
+   protected static final gee.o as = new gee.o("entity_glint_texturing", () -> a(0.16F), () -> RenderSystem.resetTextureMatrix());
+   protected static final gee.g at = new gee.g(true);
+   protected static final gee.g au = new gee.g(false);
+   protected static final gee.l av = new gee.l(true);
+   protected static final gee.l aw = new gee.l(false);
+   protected static final gee.c ax = new gee.c(true);
+   protected static final gee.c ay = new gee.c(false);
+   protected static final gee.d az = new gee.d("always", 519);
+   protected static final gee.d aA = new gee.d("==", 514);
+   protected static final gee.d aB = new gee.d("<=", 515);
+   protected static final gee.d aC = new gee.d(">", 516);
+   protected static final gee.q aD = new gee.q(true, true);
+   protected static final gee.q aE = new gee.q(true, false);
+   protected static final gee.q aF = new gee.q(false, true);
+   protected static final gee.f aG = new gee.f("no_layering", () -> {
+   }, () -> {
+   });
+   protected static final gee.f aH = new gee.f("polygon_offset_layering", () -> {
+      RenderSystem.polygonOffset(-1.0F, -10.0F);
+      RenderSystem.enablePolygonOffset();
+   }, () -> {
+      RenderSystem.polygonOffset(0.0F, 0.0F);
+      RenderSystem.disablePolygonOffset();
+   });
+   protected static final gee.f aI = new gee.f("view_offset_z_layering", () -> {
+      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
+      $$0.pushMatrix();
+      $$0.scale(0.99975586F, 0.99975586F, 0.99975586F);
+      RenderSystem.applyModelViewMatrix();
+   }, () -> {
+      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
+      $$0.popMatrix();
+      RenderSystem.applyModelViewMatrix();
+   });
+   protected static final gee.k aJ = new gee.k("main_target", () -> {
+   }, () -> {
+   });
+   protected static final gee.k aK = new gee.k("outline_target", () -> ffn.Q().f.s().a(false), () -> ffn.Q().h().a(false));
+   protected static final gee.k aL = new gee.k("translucent_target", () -> {
+      if (ffn.O()) {
+         ffn.Q().f.t().a(false);
+      }
+   }, () -> {
+      if (ffn.O()) {
+         ffn.Q().h().a(false);
+      }
+   });
+   protected static final gee.k aM = new gee.k("particles_target", () -> {
+      if (ffn.O()) {
+         ffn.Q().f.v().a(false);
+      }
+   }, () -> {
+      if (ffn.O()) {
+         ffn.Q().h().a(false);
+      }
+   });
+   protected static final gee.k aN = new gee.k("weather_target", () -> {
+      if (ffn.O()) {
+         ffn.Q().f.w().a(false);
+      }
+   }, () -> {
+      if (ffn.O()) {
+         ffn.Q().h().a(false);
+      }
+   });
+   protected static final gee.k aO = new gee.k("clouds_target", () -> {
+      if (ffn.O()) {
+         ffn.Q().f.x().a(false);
+      }
+   }, () -> {
+      if (ffn.O()) {
+         ffn.Q().h().a(false);
+      }
+   });
+   protected static final gee.k aP = new gee.k("item_entity_target", () -> {
+      if (ffn.O()) {
+         ffn.Q().f.u().a(false);
+      }
+   }, () -> {
+      if (ffn.O()) {
+         ffn.Q().h().a(false);
+      }
+   });
+   protected static final gee.h aQ = new gee.h(OptionalDouble.of(1.0));
+   protected static final gee.b aR = new gee.b("no_color_logic", () -> RenderSystem.disableColorLogicOp(), () -> {
+   });
+   protected static final gee.b aS = new gee.b("or_reverse", () -> {
+      RenderSystem.enableColorLogicOp();
+      RenderSystem.logicOp(GlStateManager.g.n);
+   }, () -> RenderSystem.disableColorLogicOp());
 
-      this.b();
-      this.b = this.a("ModelViewMat");
-      this.c = this.a("ProjMat");
-      this.d = this.a("TextureMat");
-      this.e = this.a("ScreenSize");
-      this.f = this.a("ColorModulator");
-      this.g = this.a("Light0_Direction");
-      this.h = this.a("Light1_Direction");
-      this.i = this.a("GlintAlpha");
-      this.j = this.a("FogStart");
-      this.k = this.a("FogEnd");
-      this.l = this.a("FogColor");
-      this.m = this.a("FogShape");
-      this.n = this.a("LineWidth");
-      this.o = this.a("GameTime");
-      this.p = this.a("ChunkOffset");
+   public gee(String $$0, Runnable $$1, Runnable $$2) {
+      this.b = $$0;
+      this.aU = $$1;
+      this.aV = $$2;
    }
 
-   private static ezo a(final aus $$0, ezo.a $$1, String $$2) throws IOException {
-      ezo $$3 = $$1.c().get($$2);
-      ezo $$8;
-      if ($$3 == null) {
-         String $$4 = "shaders/core/" + $$2 + $$1.b();
-         aun $$5 = $$0.getResourceOrThrow(new alf($$4));
-
-         try (InputStream $$6 = $$5.d()) {
-            final String $$7 = v.a($$4);
-            $$8 = ezo.a($$1, $$2, $$6, $$5.b(), new ezh() {
-               private final Set<String> c = Sets.newHashSet();
-
-               @Override
-               public String a(boolean $$0x, String $$1) {
-                  $$1 = v.b(($$0 ? $$7 : "shaders/include/") + $$1);
-                  if (!this.c.add($$1)) {
-                     return null;
-                  } else {
-                     alf $$2 = new alf($$1);
-
-                     try {
-                        String var5;
-                        try (Reader $$3 = $$0.openAsReader($$2)) {
-                           var5 = IOUtils.toString($$3);
-                        }
-
-                        return var5;
-                     } catch (IOException var9) {
-                        gee.s.error("Could not open GLSL import {}: {}", $$1, var9.getMessage());
-                        return "#error " + var9.getMessage();
-                     }
-                  }
-               }
-            });
-         }
-      } else {
-         $$8 = $$3;
-      }
-
-      return $$8;
+   public void a() {
+      this.aU.run();
    }
 
-   public static ezk a(JsonObject $$0) {
-      if ($$0 == null) {
-         return new ezk();
-      } else {
-         int $$1 = 32774;
-         int $$2 = 1;
-         int $$3 = 0;
-         int $$4 = 1;
-         int $$5 = 0;
-         boolean $$6 = true;
-         boolean $$7 = false;
-         if (ayp.a($$0, "func")) {
-            $$1 = ezk.a($$0.get("func").getAsString());
-            if ($$1 != 32774) {
-               $$6 = false;
-            }
-         }
-
-         if (ayp.a($$0, "srcrgb")) {
-            $$2 = ezk.b($$0.get("srcrgb").getAsString());
-            if ($$2 != 1) {
-               $$6 = false;
-            }
-         }
-
-         if (ayp.a($$0, "dstrgb")) {
-            $$3 = ezk.b($$0.get("dstrgb").getAsString());
-            if ($$3 != 0) {
-               $$6 = false;
-            }
-         }
-
-         if (ayp.a($$0, "srcalpha")) {
-            $$4 = ezk.b($$0.get("srcalpha").getAsString());
-            if ($$4 != 1) {
-               $$6 = false;
-            }
-
-            $$7 = true;
-         }
-
-         if (ayp.a($$0, "dstalpha")) {
-            $$5 = ezk.b($$0.get("dstalpha").getAsString());
-            if ($$5 != 0) {
-               $$6 = false;
-            }
-
-            $$7 = true;
-         }
-
-         if ($$6) {
-            return new ezk();
-         } else {
-            return $$7 ? new ezk($$2, $$3, $$4, $$5, $$1) : new ezk($$2, $$3, $$1);
-         }
-      }
-   }
-
-   @Override
-   public void close() {
-      for (ezr $$0 : this.A) {
-         $$0.close();
-      }
-
-      ezp.a(this);
-   }
-
-   public void f() {
-      RenderSystem.assertOnRenderThread();
-      ezp.a(0);
-      w = -1;
-      v = null;
-      int $$0 = GlStateManager._getActiveTexture();
-
-      for (int $$1 = 0; $$1 < this.z.size(); $$1++) {
-         if (this.x.get(this.y.get($$1)) != null) {
-            GlStateManager._activeTexture(33984 + $$1);
-            GlStateManager._bindTexture(0);
-         }
-      }
-
-      GlStateManager._activeTexture($$0);
-   }
-
-   public void g() {
-      RenderSystem.assertOnRenderThread();
-      this.F = false;
-      v = this;
-      this.G.a();
-      if (this.D != w) {
-         ezp.a(this.D);
-         w = this.D;
-      }
-
-      int $$0 = GlStateManager._getActiveTexture();
-
-      for (int $$1 = 0; $$1 < this.z.size(); $$1++) {
-         String $$2 = this.y.get($$1);
-         if (this.x.get($$2) != null) {
-            int $$3 = ezr.a(this.D, $$2);
-            ezr.b($$3, $$1);
-            RenderSystem.activeTexture(33984 + $$1);
-            Object $$4 = this.x.get($$2);
-            int $$5 = -1;
-            if ($$4 instanceof eym) {
-               $$5 = ((eym)$$4).f();
-            } else if ($$4 instanceof gom) {
-               $$5 = ((gom)$$4).a();
-            } else if ($$4 instanceof Integer) {
-               $$5 = (Integer)$$4;
-            }
-
-            if ($$5 != -1) {
-               RenderSystem.bindTexture($$5);
-            }
-         }
-      }
-
-      GlStateManager._activeTexture($$0);
-
-      for (ezr $$6 : this.A) {
-         $$6.b();
-      }
-   }
-
-   @Override
    public void b() {
-      this.F = true;
+      this.aV.run();
    }
 
-   @Nullable
-   public ezr a(String $$0) {
-      RenderSystem.assertOnRenderThread();
-      return this.C.get($$0);
+   @Override
+   public String toString() {
+      return this.b;
    }
 
-   public ezj b(String $$0) {
-      RenderSystem.assertOnGameThread();
-      ezr $$1 = this.a($$0);
-      return (ezj)($$1 == null ? t : $$1);
+   private static void a(float $$0) {
+      long $$1 = (long)((double)ac.c() * ffn.Q().m.am().c() * 8.0);
+      float $$2 = (float)($$1 % 110000L) / 110000.0F;
+      float $$3 = (float)($$1 % 30000L) / 30000.0F;
+      Matrix4f $$4 = new Matrix4f().translation(-$$2, $$3, 0.0F);
+      $$4.rotateZ((float) (Math.PI / 18)).scale($$0);
+      RenderSystem.setTextureMatrix($$4);
    }
 
-   private void j() {
-      RenderSystem.assertOnRenderThread();
-      IntList $$0 = new IntArrayList();
+   static class a extends gee {
+      private final boolean aT;
 
-      for (int $$1 = 0; $$1 < this.y.size(); $$1++) {
-         String $$2 = this.y.get($$1);
-         int $$3 = ezr.a(this.D, $$2);
-         if ($$3 == -1) {
-            s.warn("Shader {} could not find sampler named {} in the specified shader program.", this.E, $$2);
-            this.x.remove($$2);
-            $$0.add($$1);
-         } else {
-            this.z.add($$3);
+      public a(String $$0, Runnable $$1, Runnable $$2, boolean $$3) {
+         super($$0, $$1, $$2);
+         this.aT = $$3;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aT + "]";
+      }
+   }
+
+   protected static class b extends gee {
+      public b(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class c extends gee.a {
+      public c(boolean $$0) {
+         super("cull", () -> {
+            if (!$$0) {
+               RenderSystem.disableCull();
+            }
+         }, () -> {
+            if (!$$0) {
+               RenderSystem.enableCull();
+            }
+         }, $$0);
+      }
+   }
+
+   protected static class d extends gee {
+      private final String aT;
+
+      public d(String $$0, int $$1) {
+         super("depth_test", () -> {
+            if ($$1 != 519) {
+               RenderSystem.enableDepthTest();
+               RenderSystem.depthFunc($$1);
+            }
+         }, () -> {
+            if ($$1 != 519) {
+               RenderSystem.disableDepthTest();
+               RenderSystem.depthFunc(515);
+            }
+         });
+         this.aT = $$0;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aT + "]";
+      }
+   }
+
+   protected static class e extends gee {
+      public e(Runnable $$0, Runnable $$1) {
+         super("texture", $$0, $$1);
+      }
+
+      e() {
+         super("texture", () -> {
+         }, () -> {
+         });
+      }
+
+      protected Optional<akk> c() {
+         return Optional.empty();
+      }
+   }
+
+   protected static class f extends gee {
+      public f(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class g extends gee.a {
+      public g(boolean $$0) {
+         super("lightmap", () -> {
+            if ($$0) {
+               ffn.Q().j.m().c();
+            }
+         }, () -> {
+            if ($$0) {
+               ffn.Q().j.m().b();
+            }
+         }, $$0);
+      }
+   }
+
+   protected static class h extends gee {
+      private final OptionalDouble aT;
+
+      public h(OptionalDouble $$0) {
+         super("line_width", () -> {
+            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
+               if ($$0.isPresent()) {
+                  RenderSystem.lineWidth((float)$$0.getAsDouble());
+               } else {
+                  RenderSystem.lineWidth(Math.max(2.5F, (float)ffn.Q().aO().k() / 1920.0F * 2.5F));
+               }
+            }
+         }, () -> {
+            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
+               RenderSystem.lineWidth(1.0F);
+            }
+         });
+         this.aT = $$0;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + (this.aT.isPresent() ? this.aT.getAsDouble() : "window_scale") + "]";
+      }
+   }
+
+   protected static class i extends gee.e {
+      private final Optional<akk> aT;
+
+      i(ImmutableList<Triple<akk, Boolean, Boolean>> $$0) {
+         super(() -> {
+            int $$1 = 0;
+            UnmodifiableIterator var2 = $$0.iterator();
+
+            while (var2.hasNext()) {
+               Triple<akk, Boolean, Boolean> $$2 = (Triple<akk, Boolean, Boolean>)var2.next();
+               gpj $$3 = ffn.Q().aa();
+               $$3.b((akk)$$2.getLeft()).a((Boolean)$$2.getMiddle(), (Boolean)$$2.getRight());
+               RenderSystem.setShaderTexture($$1++, (akk)$$2.getLeft());
+            }
+         }, () -> {
+         });
+         this.aT = $$0.stream().findFirst().map(Triple::getLeft);
+      }
+
+      @Override
+      protected Optional<akk> c() {
+         return this.aT;
+      }
+
+      public static gee.i.a d() {
+         return new gee.i.a();
+      }
+
+      public static final class a {
+         private final Builder<Triple<akk, Boolean, Boolean>> a = new Builder();
+
+         public gee.i.a a(akk $$0, boolean $$1, boolean $$2) {
+            this.a.add(Triple.of($$0, $$1, $$2));
+            return this;
+         }
+
+         public gee.i a() {
+            return new gee.i(this.a.build());
          }
       }
+   }
 
-      for (int $$4 = $$0.size() - 1; $$4 >= 0; $$4--) {
-         int $$5 = $$0.getInt($$4);
-         this.y.remove($$5);
-      }
-
-      for (ezr $$6 : this.A) {
-         String $$7 = $$6.a();
-         int $$8 = ezr.a(this.D, $$7);
-         if ($$8 == -1) {
-            s.warn("Shader {} could not find uniform named {} in the specified shader program.", this.E, $$7);
-         } else {
-            this.B.add($$8);
-            $$6.b($$8);
-            this.C.put($$7, $$6);
-         }
+   protected static final class j extends gee.o {
+      public j(float $$0, float $$1) {
+         super("offset_texturing", () -> RenderSystem.setTextureMatrix(new Matrix4f().translation($$0, $$1, 0.0F)), () -> RenderSystem.resetTextureMatrix());
       }
    }
 
-   private void a(JsonElement $$0) {
-      JsonObject $$1 = ayp.m($$0, "sampler");
-      String $$2 = ayp.i($$1, "name");
-      if (!ayp.a($$1, "file")) {
-         this.x.put($$2, null);
-         this.y.add($$2);
-      } else {
-         this.y.add($$2);
+   protected static class k extends gee {
+      public k(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
       }
    }
 
-   public void a(String $$0, Object $$1) {
-      this.x.put($$0, $$1);
-      this.b();
+   protected static class l extends gee.a {
+      public l(boolean $$0) {
+         super("overlay", () -> {
+            if ($$0) {
+               ffn.Q().j.n().a();
+            }
+         }, () -> {
+            if ($$0) {
+               ffn.Q().j.n().b();
+            }
+         }, $$0);
+      }
    }
 
-   private void b(JsonElement $$0) throws ali {
-      JsonObject $$1 = ayp.m($$0, "uniform");
-      String $$2 = ayp.i($$1, "name");
-      int $$3 = ezr.a(ayp.i($$1, "type"));
-      int $$4 = ayp.o($$1, "count");
-      float[] $$5 = new float[Math.max($$4, 16)];
-      JsonArray $$6 = ayp.v($$1, "values");
-      if ($$6.size() != $$4 && $$6.size() > 1) {
-         throw new ali("Invalid amount of values specified (expected " + $$4 + ", found " + $$6.size() + ")");
-      } else {
-         int $$7 = 0;
+   protected static class m extends gee {
+      private final Optional<Supplier<gel>> aT;
 
-         for (JsonElement $$8 : $$6) {
-            try {
-               $$5[$$7] = ayp.e($$8, "value");
-            } catch (Exception var13) {
-               ali $$10 = ali.a(var13);
-               $$10.a("values[" + $$7 + "]");
-               throw $$10;
+      public m(Supplier<gel> $$0) {
+         super("shader", () -> RenderSystem.setShader($$0), () -> {
+         });
+         this.aT = Optional.of($$0);
+      }
+
+      public m() {
+         super("shader", () -> RenderSystem.setShader(() -> null), () -> {
+         });
+         this.aT = Optional.empty();
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aT + "]";
+      }
+   }
+
+   protected static class n extends gee.e {
+      private final Optional<akk> aT;
+      private final boolean aU;
+      private final boolean aV;
+
+      public n(akk $$0, boolean $$1, boolean $$2) {
+         super(() -> {
+            gpj $$3 = ffn.Q().aa();
+            $$3.b($$0).a($$1, $$2);
+            RenderSystem.setShaderTexture(0, $$0);
+         }, () -> {
+         });
+         this.aT = Optional.of($$0);
+         this.aU = $$1;
+         this.aV = $$2;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aT + "(blur=" + this.aU + ", mipmap=" + this.aV + ")]";
+      }
+
+      @Override
+      protected Optional<akk> c() {
+         return this.aT;
+      }
+   }
+
+   protected static class o extends gee {
+      public o(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class p extends gee {
+      public p(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class q extends gee {
+      private final boolean aT;
+      private final boolean aU;
+
+      public q(boolean $$0, boolean $$1) {
+         super("write_mask_state", () -> {
+            if (!$$1) {
+               RenderSystem.depthMask($$1);
             }
 
-            $$7++;
-         }
-
-         if ($$4 > 1 && $$6.size() == 1) {
-            while ($$7 < $$4) {
-               $$5[$$7] = $$5[0];
-               $$7++;
+            if (!$$0) {
+               RenderSystem.colorMask($$0, $$0, $$0, $$0);
             }
-         }
+         }, () -> {
+            if (!$$1) {
+               RenderSystem.depthMask(true);
+            }
 
-         int $$11 = $$4 > 1 && $$4 <= 4 && $$3 < 8 ? $$4 - 1 : 0;
-         ezr $$12 = new ezr($$2, $$3 + $$11, $$4, this);
-         if ($$3 <= 3) {
-            $$12.a((int)$$5[0], (int)$$5[1], (int)$$5[2], (int)$$5[3]);
-         } else if ($$3 <= 7) {
-            $$12.b($$5[0], $$5[1], $$5[2], $$5[3]);
-         } else {
-            $$12.a(Arrays.copyOfRange($$5, 0, $$4));
-         }
-
-         this.A.add($$12);
+            if (!$$0) {
+               RenderSystem.colorMask(true, true, true, true);
+            }
+         });
+         this.aT = $$0;
+         this.aU = $$1;
       }
-   }
 
-   @Override
-   public ezo c() {
-      return this.H;
-   }
-
-   @Override
-   public ezo d() {
-      return this.I;
-   }
-
-   @Override
-   public void e() {
-      this.I.a(this);
-      this.H.a(this);
-   }
-
-   public faf h() {
-      return this.J;
-   }
-
-   public String i() {
-      return this.E;
-   }
-
-   @Override
-   public int a() {
-      return this.D;
+      @Override
+      public String toString() {
+         return this.b + "[writeColor=" + this.aT + ", writeDepth=" + this.aU + "]";
+      }
    }
 }

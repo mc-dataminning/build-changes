@@ -1,16 +1,20 @@
-public interface ajc extends acc, wh {
-   @Override
-   default wl b() {
-      return wl.d;
+public record ajc(long b) implements zb<ajb> {
+   public static final ys<vr, ajc> a = zb.a(ajc::a, ajc::new);
+
+   private ajc(vr $$0) {
+      this($$0.readLong());
    }
 
-   void a(ajf var1);
+   private void a(vr $$0) {
+      $$0.b(this.b);
+   }
 
-   void a(aje var1);
+   @Override
+   public zd<ajc> a() {
+      return ajd.a;
+   }
 
-   void a(ajh var1);
-
-   void a(ajg var1);
-
-   void a(ajd var1);
+   public void a(ajb $$0) {
+      $$0.a(this);
+   }
 }

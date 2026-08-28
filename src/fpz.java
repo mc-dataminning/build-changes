@@ -1,27 +1,53 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+import javax.annotation.Nullable;
 
-public class fpz implements fpy {
-   public static final fpy a = new fpz();
+public class fpz extends fqf {
+   private static final wu a = wu.c("options.chat.title");
+   @Nullable
+   private fhk s;
 
-   private fpz() {
+   private static ffq<?>[] a(ffr $$0) {
+      return new ffq[]{
+         $$0.m(),
+         $$0.K(),
+         $$0.L(),
+         $$0.M(),
+         $$0.n(),
+         $$0.r(),
+         $$0.w(),
+         $$0.o(),
+         $$0.A(),
+         $$0.x(),
+         $$0.z(),
+         $$0.y(),
+         $$0.as(),
+         $$0.J(),
+         $$0.ae(),
+         $$0.V(),
+         $$0.ag()
+      };
+   }
+
+   public fpz(fnd $$0, ffr $$1) {
+      super($$0, $$1, a);
    }
 
    @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i($$2, $$3).add(12, -12);
-      this.a($$0, $$1, $$6, $$4, $$5);
-      return $$6;
+   public void aO_() {
+      super.aO_();
+      this.s = this.q.b(this.c.as());
+      if (this.s != null) {
+         this.s.j = this.l.aX().a();
+      }
    }
 
-   private void a(int $$0, int $$1, Vector2i $$2, int $$3, int $$4) {
-      if ($$2.x + $$3 > $$0) {
-         $$2.x = Math.max($$2.x - 24 - $$3, 4);
-      }
+   @Override
+   protected void m() {
+      this.q.a(a(this.c));
+   }
 
-      int $$5 = $$4 + 3;
-      if ($$2.y + $$5 > $$1) {
-         $$2.y = $$1 - $$5;
+   public void F() {
+      if (this.s instanceof fht) {
+         ((fht)this.s).a(this.c.as().c());
       }
    }
 }

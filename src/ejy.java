@@ -1,15 +1,15 @@
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
 
-public class ejy {
-   public static MapCodec<? extends ejx> a(jv<MapCodec<? extends ejx>> $$0) {
-      jv.a($$0, "random", eka.a);
-      jv.a($$0, "random_group", ekb.a);
-      return jv.a($$0, "direct", ejw.a);
-   }
+public interface ejy<P extends ejx> {
+   ejy<ejw> a = a("single_pool_element", ejw.b);
+   ejy<ejv> b = a("list_pool_element", ejv.a);
+   ejy<ejr> c = a("feature_pool_element", ejr.a);
+   ejy<ejq> d = a("empty_pool_element", ejq.a);
+   ejy<eju> e = a("legacy_single_pool_element", eju.a);
 
-   public static void a(rc<ejv> $$0, ji<ejv> $$1, List<ejx> $$2) {
-      $$2.stream().flatMap(ejx::a).map($$0x -> $$0x.a().a()).forEach($$2x -> rj.a($$0, $$2x, new ejv($$1, List.of(Pair.of(ejt.b($$2x), 1)), ejv.a.b)));
+   MapCodec<P> codec();
+
+   static <P extends ejx> ejy<P> a(String $$0, MapCodec<P> $$1) {
+      return jw.a(lq.ag, $$0, () -> $$1);
    }
 }

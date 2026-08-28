@@ -1,44 +1,23 @@
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.IOException;
-import java.util.function.BiFunction;
-import java.util.function.Supplier;
-import org.slf4j.Logger;
+public class epe implements epf {
+   private final dcd b;
 
-public abstract class epe {
-   private static final Logger a = LogUtils.getLogger();
-   private boolean b;
-
-   public abstract us a(us var1, jk.a var2);
-
-   public void c() {
-      this.a(true);
-   }
-
-   public void a(boolean $$0) {
+   public epe(dcd $$0) {
       this.b = $$0;
    }
 
-   public boolean d() {
-      return this.b;
+   @Override
+   public void a(jf $$0, dsh $$1, ja $$2, ja $$3, int $$4, int $$5) {
+      epf.a(this.b, $$0, $$1, $$2, $$3, $$4, $$5 - 1);
    }
 
-   public void a(File $$0, jk.a $$1) {
-      if (this.d()) {
-         us $$2 = new us();
-         $$2.a("data", this.a(new us(), $$1));
-         vh.e($$2);
-
-         try {
-            vf.a($$2, $$0.toPath());
-         } catch (IOException var5) {
-            a.error("Could not save data {}", this, var5);
-         }
-
-         this.a(false);
-      }
+   @Override
+   public void a(ja $$0, dff $$1, ja $$2) {
+      dsh $$3 = this.b.a_($$0);
+      this.a($$3, $$0, $$1, $$2, false);
    }
 
-   public static record a<T extends epe>(Supplier<T> a, BiFunction<us, jk.a, T> b, bag c) {
+   @Override
+   public void a(dsh $$0, ja $$1, dff $$2, ja $$3, boolean $$4) {
+      epf.a(this.b, $$0, $$1, $$2, $$3, $$4);
    }
 }

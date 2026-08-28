@@ -1,81 +1,53 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonParser;
-import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.OptionalDynamic;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
-public class baf {
-   private static final String a = b("");
+public class baf extends DataFix {
+   private final String a;
+   private static final Set<String> b = Set.of("minecraft:empty", "minecraft:structure_starts", "minecraft:structure_references", "minecraft:biomes");
 
-   public static <T> Dynamic<T> a(DynamicOps<T> $$0, String $$1) {
-      String $$2 = b($$1);
-      return new Dynamic($$0, $$0.createString($$2));
+   public baf(Schema $$0) {
+      super($$0, false);
+      this.a = "Blending Data Fix v" + $$0.getVersionKey();
    }
 
-   public static <T> Dynamic<T> a(DynamicOps<T> $$0) {
-      return new Dynamic($$0, $$0.createString(a));
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getOutputSchema().getType(bgd.c);
+      return this.fixTypeEverywhereTyped(this.a, $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> a($$0xx, $$0xx.get("__context"))));
    }
 
-   private static String b(String $$0) {
-      JsonObject $$1 = new JsonObject();
-      $$1.addProperty("text", $$0);
-      return ayp.e($$1);
-   }
-
-   public static <T> Dynamic<T> b(DynamicOps<T> $$0, String $$1) {
-      JsonObject $$2 = new JsonObject();
-      $$2.addProperty("translate", $$1);
-      return new Dynamic($$0, $$0.createString(ayp.e($$2)));
-   }
-
-   public static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return (Dynamic<T>)DataFixUtils.orElse($$0.asString().map($$1 -> a($$0.getOps(), $$1)).result(), $$0);
-   }
-
-   public static Dynamic<?> b(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.asString().result();
-      if ($$1.isEmpty()) {
-         return $$0;
-      } else {
-         String $$2 = $$1.get();
-         if (!$$2.isEmpty() && !$$2.equals("null")) {
-            char $$3 = $$2.charAt(0);
-            char $$4 = $$2.charAt($$2.length() - 1);
-            if ($$3 == '"' && $$4 == '"' || $$3 == '{' && $$4 == '}' || $$3 == '[' && $$4 == ']') {
-               try {
-                  JsonElement $$5 = JsonParser.parseString($$2);
-                  if ($$5.isJsonPrimitive()) {
-                     return a($$0.getOps(), $$5.getAsString());
-                  }
-
-                  return $$0.createString(ayp.e($$5));
-               } catch (JsonParseException var6) {
-               }
-            }
-
-            return a($$0.getOps(), $$2);
-         } else {
-            return a($$0.getOps());
-         }
-      }
-   }
-
-   public static Optional<String> a(String $$0) {
-      try {
-         JsonElement $$1 = JsonParser.parseString($$0);
-         if ($$1.isJsonObject()) {
-            JsonObject $$2 = $$1.getAsJsonObject();
-            JsonElement $$3 = $$2.get("translate");
-            if ($$3 != null && $$3.isJsonPrimitive()) {
-               return Optional.of($$3.getAsString());
+   private static Dynamic<?> a(Dynamic<?> $$0, OptionalDynamic<?> $$1) {
+      $$0 = $$0.remove("blending_data");
+      boolean $$2 = "minecraft:overworld".equals($$1.get("dimension").asString().result().orElse(""));
+      Optional<? extends Dynamic<?>> $$3 = $$0.get("Status").result();
+      if ($$2 && $$3.isPresent()) {
+         String $$4 = bhp.a($$3.get().asString("empty"));
+         Optional<? extends Dynamic<?>> $$5 = $$0.get("below_zero_retrogen").result();
+         if (!b.contains($$4)) {
+            $$0 = a($$0, 384, -64);
+         } else if ($$5.isPresent()) {
+            Dynamic<?> $$6 = (Dynamic<?>)$$5.get();
+            String $$7 = bhp.a($$6.get("target_status").asString("empty"));
+            if (!b.contains($$7)) {
+               $$0 = a($$0, 256, 0);
             }
          }
-      } catch (JsonParseException var4) {
       }
 
-      return Optional.empty();
+      return $$0;
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0, int $$1, int $$2) {
+      return $$0.set(
+         "blending_data",
+         $$0.createMap(Map.of($$0.createString("min_section"), $$0.createInt(kc.a($$2)), $$0.createString("max_section"), $$0.createInt(kc.a($$2 + $$1))))
+      );
    }
 }

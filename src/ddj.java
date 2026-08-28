@@ -1,108 +1,245 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.TreeSet;
-import java.util.function.Function;
-import java.util.function.ToIntFunction;
-import java.util.stream.Collectors;
-import org.apache.commons.lang3.mutable.MutableInt;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalInt;
+import javax.annotation.Nullable;
 
 public class ddj {
-   public static <T> List<ddj.b> a(List<T> $$0, Function<T, List<jm<ehq>>> $$1, boolean $$2) {
-      Object2IntMap<ehq> $$3 = new Object2IntOpenHashMap();
-      MutableInt $$4 = new MutableInt(0);
+   public static final Codec<ddj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.INT.fieldOf("fog_color").forGetter($$0x -> $$0x.b),
+               Codec.INT.fieldOf("water_color").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("water_fog_color").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("sky_color").forGetter($$0x -> $$0x.e),
+               Codec.INT.optionalFieldOf("foliage_color").forGetter($$0x -> $$0x.f),
+               Codec.INT.optionalFieldOf("grass_color").forGetter($$0x -> $$0x.g),
+               ddj.b.d.optionalFieldOf("grass_color_modifier", ddj.b.a).forGetter($$0x -> $$0x.h),
+               ddc.a.optionalFieldOf("particle").forGetter($$0x -> $$0x.i),
+               ave.b.optionalFieldOf("ambient_sound").forGetter($$0x -> $$0x.j),
+               ddb.a.optionalFieldOf("mood_sound").forGetter($$0x -> $$0x.k),
+               dda.a.optionalFieldOf("additions_sound").forGetter($$0x -> $$0x.l),
+               avc.a.optionalFieldOf("music").forGetter($$0x -> $$0x.m)
+            )
+            .apply($$0, ddj::new)
+   );
+   private final int b;
+   private final int c;
+   private final int d;
+   private final int e;
+   private final Optional<Integer> f;
+   private final Optional<Integer> g;
+   private final ddj.b h;
+   private final Optional<ddc> i;
+   private final Optional<jj<ave>> j;
+   private final Optional<ddb> k;
+   private final Optional<dda> l;
+   private final Optional<avc> m;
 
-      record a(int a, int b, ehq c) {
-      }
-
-      Comparator<a> $$5 = Comparator.comparingInt(a::b).thenComparingInt(a::a);
-      Map<a, Set<a>> $$6 = new TreeMap<>($$5);
-      int $$7 = 0;
-
-      for (T $$8 : $$0) {
-         List<a> $$9 = Lists.newArrayList();
-         List<jm<ehq>> $$10 = $$1.apply($$8);
-         $$7 = Math.max($$7, $$10.size());
-
-         for (int $$11 = 0; $$11 < $$10.size(); $$11++) {
-            for (ji<ehq> $$12 : $$10.get($$11)) {
-               ehq $$13 = $$12.a();
-               $$9.add(new a($$3.computeIfAbsent($$13, $$1x -> $$4.getAndIncrement()), $$11, $$13));
-            }
-         }
-
-         for (int $$14 = 0; $$14 < $$9.size(); $$14++) {
-            Set<a> $$15 = $$6.computeIfAbsent($$9.get($$14), $$1x -> new TreeSet<>($$5));
-            if ($$14 < $$9.size() - 1) {
-               $$15.add($$9.get($$14 + 1));
-            }
-         }
-      }
-
-      Set<a> $$16 = new TreeSet<>($$5);
-      Set<a> $$17 = new TreeSet<>($$5);
-      List<a> $$18 = Lists.newArrayList();
-
-      for (a $$19 : $$6.keySet()) {
-         if (!$$17.isEmpty()) {
-            throw new IllegalStateException("You somehow broke the universe; DFS bork (iteration finished with non-empty in-progress vertex set");
-         }
-
-         if (!$$16.contains($$19) && ayo.a($$6, $$16, $$17, $$18::add, $$19)) {
-            if (!$$2) {
-               throw new IllegalStateException("Feature order cycle found");
-            }
-
-            List<T> $$20 = new ArrayList<>($$0);
-
-            int $$21;
-            do {
-               $$21 = $$20.size();
-               ListIterator<T> $$22 = $$20.listIterator();
-
-               while ($$22.hasNext()) {
-                  T $$23 = $$22.next();
-                  $$22.remove();
-
-                  try {
-                     a($$20, $$1, false);
-                  } catch (IllegalStateException var18) {
-                     continue;
-                  }
-
-                  $$22.add($$23);
-               }
-            } while ($$21 != $$20.size());
-
-            throw new IllegalStateException("Feature order cycle found, involved sources: " + $$20);
-         }
-      }
-
-      Collections.reverse($$18);
-      Builder<ddj.b> $$25 = ImmutableList.builder();
-
-      for (int $$26 = 0; $$26 < $$7; $$26++) {
-         int $$27 = $$26;
-         List<ehq> $$28 = $$18.stream().filter($$1x -> $$1x.b() == $$27).map(a::c).collect(Collectors.toList());
-         $$25.add(new ddj.b($$28));
-      }
-
-      return $$25.build();
+   ddj(
+      int $$0,
+      int $$1,
+      int $$2,
+      int $$3,
+      Optional<Integer> $$4,
+      Optional<Integer> $$5,
+      ddj.b $$6,
+      Optional<ddc> $$7,
+      Optional<jj<ave>> $$8,
+      Optional<ddb> $$9,
+      Optional<dda> $$10,
+      Optional<avc> $$11
+   ) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
+      this.l = $$10;
+      this.m = $$11;
    }
 
-   public static record b(List<ehq> a, ToIntFunction<ehq> b) {
-      b(List<ehq> $$0) {
-         this($$0, ac.h($$0));
+   public int a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
+   }
+
+   public Optional<Integer> e() {
+      return this.f;
+   }
+
+   public Optional<Integer> f() {
+      return this.g;
+   }
+
+   public ddj.b g() {
+      return this.h;
+   }
+
+   public Optional<ddc> h() {
+      return this.i;
+   }
+
+   public Optional<jj<ave>> i() {
+      return this.j;
+   }
+
+   public Optional<ddb> j() {
+      return this.k;
+   }
+
+   public Optional<dda> k() {
+      return this.l;
+   }
+
+   public Optional<avc> l() {
+      return this.m;
+   }
+
+   public static class a {
+      private OptionalInt a = OptionalInt.empty();
+      private OptionalInt b = OptionalInt.empty();
+      private OptionalInt c = OptionalInt.empty();
+      private OptionalInt d = OptionalInt.empty();
+      private Optional<Integer> e = Optional.empty();
+      private Optional<Integer> f = Optional.empty();
+      private ddj.b g = ddj.b.a;
+      private Optional<ddc> h = Optional.empty();
+      private Optional<jj<ave>> i = Optional.empty();
+      private Optional<ddb> j = Optional.empty();
+      private Optional<dda> k = Optional.empty();
+      private Optional<avc> l = Optional.empty();
+
+      public ddj.a a(int $$0) {
+         this.a = OptionalInt.of($$0);
+         return this;
+      }
+
+      public ddj.a b(int $$0) {
+         this.b = OptionalInt.of($$0);
+         return this;
+      }
+
+      public ddj.a c(int $$0) {
+         this.c = OptionalInt.of($$0);
+         return this;
+      }
+
+      public ddj.a d(int $$0) {
+         this.d = OptionalInt.of($$0);
+         return this;
+      }
+
+      public ddj.a e(int $$0) {
+         this.e = Optional.of($$0);
+         return this;
+      }
+
+      public ddj.a f(int $$0) {
+         this.f = Optional.of($$0);
+         return this;
+      }
+
+      public ddj.a a(ddj.b $$0) {
+         this.g = $$0;
+         return this;
+      }
+
+      public ddj.a a(ddc $$0) {
+         this.h = Optional.of($$0);
+         return this;
+      }
+
+      public ddj.a a(jj<ave> $$0) {
+         this.i = Optional.of($$0);
+         return this;
+      }
+
+      public ddj.a a(ddb $$0) {
+         this.j = Optional.of($$0);
+         return this;
+      }
+
+      public ddj.a a(dda $$0) {
+         this.k = Optional.of($$0);
+         return this;
+      }
+
+      public ddj.a a(@Nullable avc $$0) {
+         this.l = Optional.ofNullable($$0);
+         return this;
+      }
+
+      public ddj a() {
+         return new ddj(
+            this.a.orElseThrow(() -> new IllegalStateException("Missing 'fog' color.")),
+            this.b.orElseThrow(() -> new IllegalStateException("Missing 'water' color.")),
+            this.c.orElseThrow(() -> new IllegalStateException("Missing 'water fog' color.")),
+            this.d.orElseThrow(() -> new IllegalStateException("Missing 'sky' color.")),
+            this.e,
+            this.f,
+            this.g,
+            this.h,
+            this.i,
+            this.j,
+            this.k,
+            this.l
+         );
+      }
+   }
+
+   public static enum b implements ayz {
+      a("none") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            return $$2;
+         }
+      },
+      b("dark_forest") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            return ($$2 & 16711422) + 2634762 >> 1;
+         }
+      },
+      c("swamp") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            double $$3 = ddd.e.a($$0 * 0.0225, $$1 * 0.0225, false);
+            return $$3 < -0.1 ? 5011004 : 6975545;
+         }
+      };
+
+      private final String e;
+      public static final Codec<ddj.b> d = ayz.a(ddj.b::values);
+
+      public abstract int a(double var1, double var3, int var5);
+
+      b(final String $$0) {
+         this.e = $$0;
+      }
+
+      public String a() {
+         return this.e;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
       }
    }
 }

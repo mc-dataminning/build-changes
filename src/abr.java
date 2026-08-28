@@ -1,23 +1,16 @@
-import io.netty.buffer.ByteBuf;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-public class abr implements zw<abq> {
-   public static final abr a = new abr();
-   public static final zn<ByteBuf, abr> b = zn.a(a);
-
-   private abr() {
-   }
+public record abr(Object2IntMap<avm<?>> b) implements zb<abn> {
+   private static final ys<wf, Object2IntMap<avm<?>>> c = yq.a(Object2IntOpenHashMap::new, avm.a, yq.g);
+   public static final ys<wf, abr> a = c.a(abr::new, abr::b);
 
    @Override
-   public zy<abr> a() {
-      return abw.a;
+   public zd<abr> a() {
+      return afz.f;
    }
 
-   public void a(abq $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
-   }
-
-   @Override
-   public boolean d() {
-      return true;
    }
 }

@@ -1,57 +1,43 @@
-public class gat extends gce {
-   private final gbz a;
+public class gat extends gcl {
+   private final gcg a;
 
-   protected gat(fxx $$0, double $$1, double $$2, double $$3, gbz $$4) {
+   protected gat(fyd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gcg $$7) {
       super($$0, $$1, $$2, $$3);
-      this.a = $$4;
-      this.b($$4);
-      this.t = 12 + this.r.a(4);
-      this.D = 1.0F;
-      this.b(1.0F, 1.0F);
+      this.u = -0.1F;
+      this.B = 0.9F;
+      this.a = $$7;
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      float $$8 = this.r.i() * 0.3F + 0.7F;
+      this.v = $$8;
+      this.w = $$8;
+      this.x = $$8;
+      this.D = 0.1F * (this.r.i() * this.r.i() * 6.0F + 1.0F);
+      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
+      this.b($$7);
    }
 
    @Override
-   public gbi b() {
-      return gbi.d;
-   }
-
-   @Override
-   public int a(float $$0) {
-      return 15728880;
+   public gbp b() {
+      return gbp.b;
    }
 
    @Override
    public void a() {
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.a);
-      }
+      super.a();
+      this.b(this.a);
    }
 
-   public static class a implements gbh<lm> {
-      private final gbz a;
+   public static class a implements gbo<ln> {
+      private final gcg a;
 
-      public a(gbz $$0) {
+      public a(gcg $$0) {
          this.a = $$0;
       }
 
-      public gbe a(lm $$0, fxx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gat($$1, $$2, $$3, $$4, this.a);
-      }
-   }
-
-   public static class b implements gbh<lm> {
-      private final gbz a;
-
-      public b(gbz $$0) {
-         this.a = $$0;
-      }
-
-      public gbe a(lm $$0, fxx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gbe $$8 = new gat($$1, $$2, $$3, $$4, this.a);
-         $$8.d(0.15F);
-         return $$8;
+      public gbl a(ln $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gat($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

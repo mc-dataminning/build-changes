@@ -1,54 +1,42 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
 public class bwx {
-   public static bvl<cmm> a() {
-      return byx.a(
-         (Function<byx.b<cmm>, ? extends App<byx.c<cmm>, bza<cmm>>>)($$0 -> $$0.group($$0.b(ccv.c), $$0.b(ccv.g))
-               .apply(
-                  $$0,
-                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                        jh $$6 = $$0.b($$1);
-                        $$3.y()
-                           .c($$6.b())
-                           .ifPresent(
-                              $$4x -> $$0.<List<btr>>b($$2)
-                                    .stream()
-                                    .filter($$1xxx -> $$1xxx instanceof cmm && $$1xxx != $$4)
-                                    .map($$0xxxx -> (cmm)$$0xxxx)
-                                    .filter(btr::bD)
-                                    .filter($$2xxx -> a($$6, $$4x, $$2xxx))
-                                    .reduce($$4, bwx::a)
-                           );
-                        return true;
+   public static bwc<clu> a(ccc<ji> $$0, float $$1, int $$2, int $$3, int $$4) {
+      return bye.a(
+         (Function<bye.b<clu>, ? extends App<bye.c<clu>, byh<clu>>>)($$5 -> $$5.group($$5.a(ccc.E), $$5.c(ccc.m), $$5.b($$0))
+               .apply($$5, ($$6, $$7, $$8) -> ($$9, $$10, $$11) -> {
+                     ji $$12 = $$5.b($$8);
+                     Optional<Long> $$13 = $$5.a($$6);
+                     if ($$12.a() == $$9.af() && (!$$13.isPresent() || $$9.Z() - $$13.get() <= (long)$$4)) {
+                        if ($$12.b().k($$10.dp()) > $$3) {
+                           evz $$14 = null;
+                           int $$15 = 0;
+                           int $$16 = 1000;
+
+                           while ($$14 == null || ja.a($$14).k($$10.dp()) > $$3) {
+                              $$14 = cdt.a($$10, 15, 7, evz.c($$12.b()), (float) (Math.PI / 2));
+                              if (++$$15 == 1000) {
+                                 $$10.a($$0);
+                                 $$8.b();
+                                 $$6.a($$11);
+                                 return true;
+                              }
+                           }
+
+                           $$7.a(new ccf($$14, $$1, $$2));
+                        } else if ($$12.b().k($$10.dp()) > $$2) {
+                           $$7.a(new ccf($$12.b(), $$1, $$2));
+                        }
+                     } else {
+                        $$10.a($$0);
+                        $$8.b();
+                        $$6.a($$11);
                      }
-               ))
+
+                     return true;
+                  }))
       );
-   }
-
-   private static cmm a(cmm $$0, cmm $$1) {
-      cmm $$2;
-      cmm $$3;
-      if ($$0.u() > $$1.u()) {
-         $$2 = $$0;
-         $$3 = $$1;
-      } else {
-         $$2 = $$1;
-         $$3 = $$0;
-      }
-
-      $$3.dS().b(ccv.c);
-      return $$2;
-   }
-
-   private static boolean a(jh $$0, ji<cey> $$1, cmm $$2) {
-      Optional<jh> $$3 = $$2.dS().c(ccv.c);
-      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gB().b());
-   }
-
-   private static boolean a(ji<cey> $$0, cmp $$1) {
-      return $$1.b().test($$0);
    }
 }

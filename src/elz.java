@@ -1,9 +1,20 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class elz {
-   public static final Codec<elz> c = lp.q.q().dispatch("predicate_type", elz::a, ema::codec);
+public class elz extends emn {
+   public static final MapCodec<elz> a = MapCodec.unit(() -> elz.b);
+   public static final elz b = new elz();
 
-   public abstract boolean a(iz var1, iz var2, iz var3, azh var4);
+   @Nullable
+   @Override
+   public emq.c a(dcg $$0, ja $$1, ja $$2, emq.c $$3, emq.c $$4, emm $$5) {
+      ja $$6 = $$4.a();
+      boolean $$7 = $$0.a_($$6).a(dfh.H);
+      return $$7 && !dff.a($$4.b().j($$0, $$6)) ? new emq.c($$6, dfh.H.o(), $$4.c()) : $$4;
+   }
 
-   protected abstract ema<?> a();
+   @Override
+   protected emp<?> a() {
+      return emp.m;
+   }
 }

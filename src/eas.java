@@ -1,63 +1,53 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class eas extends eba<eda> {
-   private static final ImmutableList<dfb> a = ImmutableList.of(dfd.F, dfd.fn, dfd.fo, dfd.fp, dfd.fq, dfd.cv, dfd.ct);
-   private static final je[] b = je.values();
-   private static final double c = 0.9;
-
-   public eas(Codec<eda> $$0) {
+public class eas extends eat {
+   public eas(Codec<edp> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebc<eda> $$0) {
-      boolean $$1 = false;
-      azh $$2 = $$0.d();
-      dcv $$3 = $$0.b();
-      eda $$4 = $$0.f();
-      iz $$5 = $$0.e();
-      boolean $$6 = $$2.j() < 0.9;
-      int $$7 = $$6 ? $$4.d().a($$2) : 0;
-      int $$8 = $$6 ? $$4.d().a($$2) : 0;
-      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
-      int $$10 = $$4.c().a($$2);
-      int $$11 = $$4.c().a($$2);
-      int $$12 = Math.max($$10, $$11);
-
-      for (iz $$13 : iz.a($$5, $$10, 0, $$11)) {
-         if ($$13.k($$5) > $$12) {
-            break;
-         }
-
-         if (a($$3, $$13, $$4)) {
-            if ($$9) {
-               $$1 = true;
-               this.a($$3, $$13, $$4.b());
-            }
-
-            iz $$14 = $$13.b($$7, 0, $$8);
-            if (a($$3, $$14, $$4)) {
-               $$1 = true;
-               this.a($$3, $$14, $$4.a());
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   private static boolean a(dcb $$0, iz $$1, eda $$2) {
-      dse $$3 = $$0.a_($$1);
-      if ($$3.a($$2.a().b())) {
-         return false;
-      } else if (a.contains($$3.b())) {
+   protected boolean a(dce $$0, aym $$1, ja $$2, dsh $$3) {
+      if (!this.b($$0, $$1, $$2, $$3)) {
          return false;
       } else {
-         for (je $$4 : b) {
-            boolean $$5 = $$0.a_($$1.a($$4)).i();
-            if ($$5 && $$4 != je.b || !$$5 && $$4 == je.b) {
-               return false;
+         jf $$4 = jf.c.a.a($$1);
+         int $$5 = $$1.a(2) + 2;
+         List<jf> $$6 = ac.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
+
+         for (jf $$8 : $$6.subList(0, $$5)) {
+            ja.a $$9 = $$2.j();
+            int $$10 = $$1.a(2) + 1;
+            $$9.c($$8);
+            int $$12;
+            jf $$11;
+            if ($$8 == $$4) {
+               $$11 = $$4;
+               $$12 = $$1.a(3) + 2;
+            } else {
+               $$9.c(jf.b);
+               jf[] $$13 = new jf[]{$$8, jf.b};
+               $$11 = ac.a($$13, $$1);
+               $$12 = $$1.a(3) + 3;
+            }
+
+            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
+               $$9.c($$11);
+            }
+
+            $$9.c($$11.g());
+            $$9.c(jf.b);
+
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               $$9.c($$4);
+               if (!this.b($$0, $$1, $$9, $$3)) {
+                  break;
+               }
+
+               if ($$1.i() < 0.25F) {
+                  $$9.c(jf.b);
+               }
             }
          }
 

@@ -1,40 +1,80 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class esb extends erw {
-   public static final MapCodec<esb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(eqi.e.fieldOf("component").forGetter($$0x -> $$0x.b), erz.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
-            .apply($$0, esb::new)
-   );
-   private final eqh<?> b;
-   private final erx c;
+public abstract class esb implements esc {
+   protected final List<etz> g;
+   private final Predicate<eqo> a;
 
-   private esb(List<etu> $$0, eqh<?> $$1, erx $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   protected esb(List<etz> $$0) {
+      this.g = $$0;
+      this.a = ac.a($$0);
    }
 
    @Override
-   public ery<esb> b() {
-      return erz.u;
+   public abstract esd<? extends esb> b();
+
+   protected static <T extends esb> P1<Mu<T>, List<etz>> a(Instance<T> $$0) {
+      return $$0.group(etz.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.g));
    }
 
+   public final cua b(cua $$0, eqo $$1) {
+      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
+   }
+
+   protected abstract cua a(cua var1, eqo var2);
+
    @Override
-   public cur a(cur $$0, eqk $$1) {
-      if ($$0.e()) {
-         return $$0;
-      } else {
-         this.b.a($$0, $$1x -> this.c.apply($$1x, $$1));
-         return $$0;
+   public void a(equ $$0) {
+      esc.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
+         this.g.get($$1).a($$0.a(".conditions[" + $$1 + "]"));
       }
    }
 
-   @Override
-   public void a(eqq $$0) {
-      super.a($$0);
-      this.c.a($$0.a(".modifier"));
+   protected static esb.a<?> a(Function<List<etz>, esc> $$0) {
+      return new esb.b($$0);
+   }
+
+   public abstract static class a<T extends esb.a<T>> implements esc.a, etr<T> {
+      private final Builder<etz> a = ImmutableList.builder();
+
+      public T a(etz.a $$0) {
+         this.a.add($$0.build());
+         return this.c();
+      }
+
+      public final T f() {
+         return this.c();
+      }
+
+      protected abstract T c();
+
+      protected List<etz> g() {
+         return this.a.build();
+      }
+   }
+
+   static final class b extends esb.a<esb.b> {
+      private final Function<List<etz>, esc> a;
+
+      public b(Function<List<etz>, esc> $$0) {
+         this.a = $$0;
+      }
+
+      protected esb.b a() {
+         return this;
+      }
+
+      @Override
+      public esc b() {
+         return this.a.apply(this.g());
+      }
    }
 }

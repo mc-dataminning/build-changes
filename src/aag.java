@@ -1,29 +1,36 @@
-public class aag implements zw<aac> {
-   public static final zn<wm, aag> a = zw.a(aag::a, aag::new);
-   private final int b;
+public record aag(ja c, int d, String e, int f) implements aac {
+   public static final ys<vr, aag> a = aac.a(aag::a, aag::new);
+   public static final aac.b<aag> b = aac.a("debug/game_test_add_marker");
 
-   public aag(int $$0) {
-      this.b = $$0;
+   private aag(vr $$0) {
+      this($$0.e(), $$0.readInt(), $$0.p(), $$0.readInt());
    }
 
-   private aag(wm $$0) {
-      this.b = $$0.readInt();
-   }
-
-   private void a(wm $$0) {
-      $$0.p(this.b);
+   private void a(vr $$0) {
+      $$0.a(this.c);
+      $$0.p(this.d);
+      $$0.a(this.e);
+      $$0.p(this.f);
    }
 
    @Override
-   public zy<aag> a() {
-      return aam.d;
+   public aac.b<aag> a() {
+      return b;
    }
 
-   public void a(aac $$0) {
-      $$0.a(this);
+   public ja b() {
+      return this.c;
    }
 
-   public int b() {
-      return this.b;
+   public int c() {
+      return this.d;
+   }
+
+   public String d() {
+      return this.e;
+   }
+
+   public int e() {
+      return this.f;
    }
 }

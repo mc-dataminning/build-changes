@@ -1,57 +1,70 @@
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.MapCodec;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+public abstract class ddk {
+   public static final akj<ddd> a = a("the_void");
+   public static final akj<ddd> b = a("plains");
+   public static final akj<ddd> c = a("sunflower_plains");
+   public static final akj<ddd> d = a("snowy_plains");
+   public static final akj<ddd> e = a("ice_spikes");
+   public static final akj<ddd> f = a("desert");
+   public static final akj<ddd> g = a("swamp");
+   public static final akj<ddd> h = a("mangrove_swamp");
+   public static final akj<ddd> i = a("forest");
+   public static final akj<ddd> j = a("flower_forest");
+   public static final akj<ddd> k = a("birch_forest");
+   public static final akj<ddd> l = a("dark_forest");
+   public static final akj<ddd> m = a("old_growth_birch_forest");
+   public static final akj<ddd> n = a("old_growth_pine_taiga");
+   public static final akj<ddd> o = a("old_growth_spruce_taiga");
+   public static final akj<ddd> p = a("taiga");
+   public static final akj<ddd> q = a("snowy_taiga");
+   public static final akj<ddd> r = a("savanna");
+   public static final akj<ddd> s = a("savanna_plateau");
+   public static final akj<ddd> t = a("windswept_hills");
+   public static final akj<ddd> u = a("windswept_gravelly_hills");
+   public static final akj<ddd> v = a("windswept_forest");
+   public static final akj<ddd> w = a("windswept_savanna");
+   public static final akj<ddd> x = a("jungle");
+   public static final akj<ddd> y = a("sparse_jungle");
+   public static final akj<ddd> z = a("bamboo_jungle");
+   public static final akj<ddd> A = a("badlands");
+   public static final akj<ddd> B = a("eroded_badlands");
+   public static final akj<ddd> C = a("wooded_badlands");
+   public static final akj<ddd> D = a("meadow");
+   public static final akj<ddd> E = a("cherry_grove");
+   public static final akj<ddd> F = a("grove");
+   public static final akj<ddd> G = a("snowy_slopes");
+   public static final akj<ddd> H = a("frozen_peaks");
+   public static final akj<ddd> I = a("jagged_peaks");
+   public static final akj<ddd> J = a("stony_peaks");
+   public static final akj<ddd> K = a("river");
+   public static final akj<ddd> L = a("frozen_river");
+   public static final akj<ddd> M = a("beach");
+   public static final akj<ddd> N = a("snowy_beach");
+   public static final akj<ddd> O = a("stony_shore");
+   public static final akj<ddd> P = a("warm_ocean");
+   public static final akj<ddd> Q = a("lukewarm_ocean");
+   public static final akj<ddd> R = a("deep_lukewarm_ocean");
+   public static final akj<ddd> S = a("ocean");
+   public static final akj<ddd> T = a("deep_ocean");
+   public static final akj<ddd> U = a("cold_ocean");
+   public static final akj<ddd> V = a("deep_cold_ocean");
+   public static final akj<ddd> W = a("frozen_ocean");
+   public static final akj<ddd> X = a("deep_frozen_ocean");
+   public static final akj<ddd> Y = a("mushroom_fields");
+   public static final akj<ddd> Z = a("dripstone_caves");
+   public static final akj<ddd> aa = a("lush_caves");
+   public static final akj<ddd> ab = a("deep_dark");
+   public static final akj<ddd> ac = a("nether_wastes");
+   public static final akj<ddd> ad = a("warped_forest");
+   public static final akj<ddd> ae = a("crimson_forest");
+   public static final akj<ddd> af = a("soul_sand_valley");
+   public static final akj<ddd> ag = a("basalt_deltas");
+   public static final akj<ddd> ah = a("the_end");
+   public static final akj<ddd> ai = a("end_highlands");
+   public static final akj<ddd> aj = a("end_midlands");
+   public static final akj<ddd> ak = a("small_end_islands");
+   public static final akj<ddd> al = a("end_barrens");
 
-public class ddk extends ddd implements ddb.a {
-   public static final MapCodec<ddk> b = dcz.c.fieldOf("biome").xmap(ddk::new, $$0 -> $$0.c).stable();
-   private final ji<dcz> c;
-
-   public ddk(ji<dcz> $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   protected Stream<ji<dcz>> b() {
-      return Stream.of(this.c);
-   }
-
-   @Override
-   protected MapCodec<? extends ddd> a() {
-      return b;
-   }
-
-   @Override
-   public ji<dcz> getNoiseBiome(int $$0, int $$1, int $$2, ddi.f $$3) {
-      return this.c;
-   }
-
-   @Override
-   public ji<dcz> getNoiseBiome(int $$0, int $$1, int $$2) {
-      return this.c;
-   }
-
-   @Nullable
-   @Override
-   public Pair<iz, ji<dcz>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<ji<dcz>> $$5, azh $$6, boolean $$7, ddi.f $$8) {
-      if ($$5.test(this.c)) {
-         return $$7 ? Pair.of(new iz($$0, $$1, $$2), this.c) : Pair.of(new iz($$0 - $$3 + $$6.a($$3 * 2 + 1), $$1, $$2 - $$3 + $$6.a($$3 * 2 + 1)), this.c);
-      } else {
-         return null;
-      }
-   }
-
-   @Nullable
-   @Override
-   public Pair<iz, ji<dcz>> a(iz $$0, int $$1, int $$2, int $$3, Predicate<ji<dcz>> $$4, ddi.f $$5, dcd $$6) {
-      return $$4.test(this.c) ? Pair.of($$0, this.c) : null;
-   }
-
-   @Override
-   public Set<ji<dcz>> a(int $$0, int $$1, int $$2, int $$3, ddi.f $$4) {
-      return Sets.newHashSet(Set.of(this.c));
+   private static akj<ddd> a(String $$0) {
+      return akj.a(lr.aE, new akk($$0));
    }
 }

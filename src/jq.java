@@ -1,426 +1,93 @@
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Lifecycle;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import it.unimi.dsi.fastutil.objects.Reference2IntMap;
-import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.IdentityHashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class jq<T> implements ke<T> {
-   private static final Logger b = LogUtils.getLogger();
-   final ale<? extends jv<T>> c;
-   private final ObjectList<ji.c<T>> d = new ObjectArrayList(256);
-   private final Reference2IntMap<T> e = ac.a(new Reference2IntOpenHashMap(), $$0x -> $$0x.defaultReturnValue(-1));
-   private final Map<alf, ji.c<T>> f = new HashMap<>();
-   private final Map<ale<T>, ji.c<T>> g = new HashMap<>();
-   private final Map<T, ji.c<T>> h = new IdentityHashMap<>();
-   private final Map<ale<T>, ju> i = new IdentityHashMap<>();
-   private Lifecycle j;
-   private volatile Map<axf<T>, jm.c<T>> k = new IdentityHashMap<>();
-   private boolean l;
-   @Nullable
-   private Map<T, ji.c<T>> m;
-   private final jk.b<T> n = new jk.b<T>() {
-      @Override
-      public ale<? extends jv<? extends T>> f() {
-         return jq.this.c;
-      }
+public class jq<T> {
+   private final List<T> a;
+   private final List<jx.b> b;
+   private final jx.b c;
 
-      @Override
-      public Lifecycle g() {
-         return jq.this.d();
-      }
-
-      @Override
-      public Optional<ji.c<T>> a(ale<T> $$0) {
-         return jq.this.b($$0);
-      }
-
-      @Override
-      public Stream<ji.c<T>> b() {
-         return jq.this.h();
-      }
-
-      @Override
-      public Optional<jm.c<T>> a(axf<T> $$0) {
-         return jq.this.b($$0);
-      }
-
-      @Override
-      public Stream<jm.c<T>> d() {
-         return jq.this.i().map(Pair::getSecond);
-      }
-   };
-   private final Object o = new Object();
-
-   public jq(ale<? extends jv<T>> $$0, Lifecycle $$1) {
-      this($$0, $$1, false);
+   public jq(List<T> $$0) {
+      this($$0, ac.a(() -> {
+         jx.b[] $$1 = new jx.b[$$0.size()];
+         Arrays.fill($$1, jx.b);
+         return Arrays.asList($$1);
+      }));
    }
 
-   public jq(ale<? extends jv<T>> $$0, Lifecycle $$1, boolean $$2) {
-      this.c = $$0;
-      this.j = $$1;
-      if ($$2) {
-         this.m = new IdentityHashMap<>();
+   private jq(List<T> $$0, List<jx.b> $$1) {
+      this.a = List.copyOf($$0);
+      this.b = List.copyOf($$1);
+      this.c = new jx.c(a($$1.stream())).d();
+   }
+
+   private int d(T $$0) {
+      int $$1 = this.a.indexOf($$0);
+      if ($$1 == -1) {
+         throw new IllegalStateException("Can't find " + $$0 + " inside " + this.a);
+      } else {
+         return $$1;
       }
    }
 
-   @Override
-   public ale<? extends jv<T>> c() {
+   public jx.b a(T $$0) {
+      int $$1 = this.d($$0);
+      return this.b.get($$1);
+   }
+
+   public jx.b b(T $$0) {
+      int $$1 = this.d($$0);
+      return this.a(0, $$1);
+   }
+
+   public jx.b c(T $$0) {
+      int $$1 = this.d($$0);
+      return this.a($$1, this.b.size());
+   }
+
+   private jx.b a(int $$0, int $$1) {
+      return new jx.c(a(this.b.subList($$0, $$1).stream())).d();
+   }
+
+   public jq<T> a(T $$0, jx.b... $$1) {
+      return this.a($$0, Arrays.asList($$1));
+   }
+
+   public jq<T> a(T $$0, List<jx.b> $$1) {
+      int $$2 = this.d($$0);
+      if ($$1.size() > this.b.size() - $$2) {
+         throw new IllegalStateException("Too many values to replace");
+      } else {
+         List<jx.b> $$3 = new ArrayList<>();
+
+         for (int $$4 = 0; $$4 < $$2; $$4++) {
+            $$3.add(this.b.get($$4));
+         }
+
+         $$3.addAll($$1);
+
+         while ($$3.size() < this.b.size()) {
+            $$3.add(jx.b);
+         }
+
+         return new jq<>(this.a, $$3);
+      }
+   }
+
+   public jx.b a() {
       return this.c;
    }
 
-   @Override
-   public String toString() {
-      return "Registry[" + this.c + " (" + this.j + ")]";
-   }
-
-   private void a() {
-      if (this.l) {
-         throw new IllegalStateException("Registry is already frozen");
-      }
-   }
-
-   private void h(ale<T> $$0) {
-      if (this.l) {
-         throw new IllegalStateException("Registry is already frozen (trying to add key " + $$0 + ")");
-      }
-   }
-
-   @Override
-   public ji.c<T> a(ale<T> $$0, T $$1, ju $$2) {
-      this.h($$0);
-      Objects.requireNonNull($$0);
-      Objects.requireNonNull($$1);
-      if (this.f.containsKey($$0.a())) {
-         ac.b(new IllegalStateException("Adding duplicate key '" + $$0 + "' to registry"));
-      }
-
-      if (this.h.containsKey($$1)) {
-         ac.b(new IllegalStateException("Adding duplicate value '" + $$1 + "' to registry"));
-      }
-
-      ji.c<T> $$3;
-      if (this.m != null) {
-         $$3 = this.m.remove($$1);
-         if ($$3 == null) {
-            throw new AssertionError("Missing intrusive holder for " + $$0 + ":" + $$1);
-         }
-
-         $$3.b($$0);
-      } else {
-         $$3 = this.g.computeIfAbsent($$0, $$0x -> ji.c.a(this.o(), $$0x));
-      }
-
-      this.g.put($$0, $$3);
-      this.f.put($$0.a(), $$3);
-      this.h.put($$1, $$3);
-      int $$5 = this.d.size();
-      this.d.add($$3);
-      this.e.put($$1, $$5);
-      this.i.put($$0, $$2);
-      this.j = this.j.add($$2.b());
-      return $$3;
-   }
-
-   @Nullable
-   @Override
-   public alf b(T $$0) {
-      ji.c<T> $$1 = this.h.get($$0);
-      return $$1 != null ? $$1.h().a() : null;
-   }
-
-   @Override
-   public Optional<ale<T>> d(T $$0) {
-      return Optional.ofNullable(this.h.get($$0)).map(ji.c::h);
-   }
-
-   @Override
-   public int a(@Nullable T $$0) {
-      return this.e.getInt($$0);
-   }
-
-   @Nullable
-   @Override
-   public T a(@Nullable ale<T> $$0) {
-      return a(this.g.get($$0));
-   }
-
-   @Nullable
-   @Override
-   public T a(int $$0) {
-      return (T)($$0 >= 0 && $$0 < this.d.size() ? ((ji.c)this.d.get($$0)).a() : null);
-   }
-
-   @Override
-   public Optional<ji.c<T>> c(int $$0) {
-      return $$0 >= 0 && $$0 < this.d.size() ? Optional.ofNullable((ji.c<T>)this.d.get($$0)) : Optional.empty();
-   }
-
-   @Override
-   public Optional<ji.c<T>> c(alf $$0) {
-      return Optional.ofNullable(this.f.get($$0));
-   }
-
-   @Override
-   public Optional<ji.c<T>> b(ale<T> $$0) {
-      return Optional.ofNullable(this.g.get($$0));
-   }
-
-   @Override
-   public ji<T> e(T $$0) {
-      ji.c<T> $$1 = this.h.get($$0);
-      return (ji<T>)($$1 != null ? $$1 : ji.a($$0));
-   }
-
-   ji.c<T> i(ale<T> $$0) {
-      return this.g.computeIfAbsent($$0, $$0x -> {
-         if (this.m != null) {
-            throw new IllegalStateException("This registry can't create new holders without value");
-         } else {
-            this.h($$0x);
-            return ji.c.a(this.o(), $$0x);
-         }
-      });
-   }
-
-   @Override
-   public int b() {
-      return this.g.size();
-   }
-
-   @Override
-   public Optional<ju> c(ale<T> $$0) {
-      return Optional.ofNullable(this.i.get($$0));
-   }
-
-   @Override
-   public Lifecycle d() {
-      return this.j;
-   }
-
-   @Override
-   public Iterator<T> iterator() {
-      return Iterators.transform(this.d.iterator(), ji::a);
-   }
-
-   @Nullable
-   @Override
-   public T a(@Nullable alf $$0) {
-      ji.c<T> $$1 = this.f.get($$0);
-      return a($$1);
-   }
-
-   @Nullable
-   private static <T> T a(@Nullable ji.c<T> $$0) {
-      return $$0 != null ? $$0.a() : null;
-   }
-
-   @Override
-   public Set<alf> e() {
-      return Collections.unmodifiableSet(this.f.keySet());
-   }
-
-   @Override
-   public Set<ale<T>> f() {
-      return Collections.unmodifiableSet(this.g.keySet());
-   }
-
-   @Override
-   public Set<Entry<ale<T>, T>> g() {
-      return Collections.unmodifiableSet(Maps.transformValues(this.g, ji::a).entrySet());
-   }
-
-   @Override
-   public Stream<ji.c<T>> h() {
-      return this.d.stream();
-   }
-
-   @Override
-   public Stream<Pair<axf<T>, jm.c<T>>> i() {
-      return this.k.entrySet().stream().map($$0 -> Pair.of($$0.getKey(), $$0.getValue()));
-   }
-
-   @Override
-   public jm.c<T> a(axf<T> $$0) {
-      jm.c<T> $$1 = this.k.get($$0);
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         synchronized (this.o) {
-            $$1 = this.k.get($$0);
-            if ($$1 != null) {
-               return $$1;
-            } else {
-               $$1 = this.d($$0);
-               Map<axf<T>, jm.c<T>> $$2 = new IdentityHashMap<>(this.k);
-               $$2.put($$0, $$1);
-               this.k = $$2;
-               return $$1;
+   private static Map<akj<? extends jw<?>>, jw<?>> a(Stream<? extends jx> $$0) {
+      Map<akj<? extends jw<?>>, jw<?>> $$1 = new HashMap<>();
+      $$0.forEach($$1x -> $$1x.c().forEach($$1xx -> {
+            if ($$1.put($$1xx.a(), $$1xx.b()) != null) {
+               throw new IllegalStateException("Duplicated registry " + $$1xx.a());
             }
-         }
-      }
-   }
-
-   private jm.c<T> d(axf<T> $$0) {
-      return new jm.c<>(this.o(), $$0);
-   }
-
-   @Override
-   public Stream<axf<T>> j() {
-      return this.k.keySet().stream();
-   }
-
-   @Override
-   public boolean k() {
-      return this.g.isEmpty();
-   }
-
-   @Override
-   public Optional<ji.c<T>> a(azh $$0) {
-      return ac.b(this.d, $$0);
-   }
-
-   @Override
-   public boolean d(alf $$0) {
-      return this.f.containsKey($$0);
-   }
-
-   @Override
-   public boolean d(ale<T> $$0) {
-      return this.g.containsKey($$0);
-   }
-
-   @Override
-   public jv<T> l() {
-      if (this.l) {
-         return this;
-      } else {
-         this.l = true;
-         this.h.forEach(($$0x, $$1) -> $$1.b((T)$$0x));
-         List<alf> $$0 = this.g.entrySet().stream().filter($$0x -> !((ji.c)$$0x.getValue()).b()).map($$0x -> ((ale)$$0x.getKey()).a()).sorted().toList();
-         if (!$$0.isEmpty()) {
-            throw new IllegalStateException("Unbound values in registry " + this.c() + ": " + $$0);
-         } else {
-            if (this.m != null) {
-               if (!this.m.isEmpty()) {
-                  throw new IllegalStateException("Some intrusive holders were not registered: " + this.m.values());
-               }
-
-               this.m = null;
-            }
-
-            return this;
-         }
-      }
-   }
-
-   @Override
-   public ji.c<T> f(T $$0) {
-      if (this.m == null) {
-         throw new IllegalStateException("This registry can't create intrusive holders");
-      } else {
-         this.a();
-         return this.m.computeIfAbsent($$0, $$0x -> ji.c.a(this.p(), (T)$$0x));
-      }
-   }
-
-   @Override
-   public Optional<jm.c<T>> b(axf<T> $$0) {
-      return Optional.ofNullable(this.k.get($$0));
-   }
-
-   @Override
-   public void a(Map<axf<T>, List<ji<T>>> $$0) {
-      Map<ji.c<T>, List<axf<T>>> $$1 = new IdentityHashMap<>();
-      this.g.values().forEach($$1x -> $$1.put($$1x, new ArrayList<>()));
-      $$0.forEach(($$1x, $$2x) -> {
-         for (ji<T> $$3x : $$2x) {
-            if (!$$3x.a(this.p())) {
-               throw new IllegalStateException("Can't create named set " + $$1x + " containing value " + $$3x + " from outside registry " + this);
-            }
-
-            if (!($$3x instanceof ji.c<T> $$4)) {
-               throw new IllegalStateException("Found direct holder " + $$3x + " value in tag " + $$1x);
-            }
-
-            $$1.get($$4).add($$1x);
-         }
-      });
-      Set<axf<T>> $$2 = Sets.difference(this.k.keySet(), $$0.keySet());
-      if (!$$2.isEmpty()) {
-         b.warn(
-            "Not all defined tags for registry {} are present in data pack: {}",
-            this.c(),
-            $$2.stream().map($$0x -> $$0x.b().toString()).sorted().collect(Collectors.joining(", "))
-         );
-      }
-
-      synchronized (this.o) {
-         Map<axf<T>, jm.c<T>> $$3 = new IdentityHashMap<>(this.k);
-         $$0.forEach(($$1x, $$2x) -> $$3.computeIfAbsent($$1x, this::d).b($$2x));
-         $$1.forEach(ji.c::a);
-         this.k = $$3;
-      }
-   }
-
-   @Override
-   public void m() {
-      this.k.values().forEach($$0 -> $$0.b(List.of()));
-      this.g.values().forEach($$0 -> $$0.a(Set.of()));
-   }
-
-   @Override
-   public jj<T> n() {
-      this.a();
-      return new jj<T>() {
-         @Override
-         public Optional<ji.c<T>> a(ale<T> $$0) {
-            return Optional.of(this.b($$0));
-         }
-
-         @Override
-         public ji.c<T> b(ale<T> $$0) {
-            return jq.this.i($$0);
-         }
-
-         @Override
-         public Optional<jm.c<T>> a(axf<T> $$0) {
-            return Optional.of(this.b($$0));
-         }
-
-         @Override
-         public jm.c<T> b(axf<T> $$0) {
-            return jq.this.a($$0);
-         }
-      };
-   }
-
-   @Override
-   public jl<T> o() {
-      return this.n;
-   }
-
-   @Override
-   public jk.b<T> p() {
-      return this.n;
+         }));
+      return $$1;
    }
 }

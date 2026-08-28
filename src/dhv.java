@@ -1,58 +1,39 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public abstract class dhv extends dix {
-   public static final dtc<dsp> K = dsu.U;
+public class dhv extends dlo {
+   public static final MapCodec<dhv> b = b(dhv::new);
 
-   protected dhv(dsd.d $$0) {
+   @Override
+   public MapCodec<dhv> a() {
+      return b;
+   }
+
+   protected dhv(dsg.d $$0) {
       super($$0);
+      this.k(this.E.b().a(a, jf.b));
    }
 
    @Override
-   protected abstract MapCodec<? extends dhv> a();
-
-   @Override
-   protected boolean a(dse $$0, dcd $$1, iz $$2) {
-      return b($$1, $$2, m($$0).g());
+   public dsh a(cxk $$0) {
+      jf $$1 = $$0.k();
+      dsh $$2 = $$0.q().a_($$0.a().a($$1.g()));
+      return $$2.a(this) && $$2.c(a) == $$1 ? this.o().a(a, $$1.g()) : this.o().a(a, $$1);
    }
 
-   public static boolean b(dcd $$0, iz $$1, je $$2) {
-      iz $$3 = $$1.a($$2);
-      return $$0.a_($$3).d($$0, $$3, $$2.g());
-   }
-
-   @Nullable
    @Override
-   public dse a(cyc $$0) {
-      for (je $$1 : $$0.f()) {
-         dse $$2;
-         if ($$1.o() == je.a.b) {
-            $$2 = this.o().a(K, $$1 == je.b ? dsp.c : dsp.a).a(aE, $$0.g());
-         } else {
-            $$2 = this.o().a(K, dsp.b).a(aE, $$1.g());
-         }
-
-         if ($$2.a((dcd)$$0.q(), $$0.a())) {
-            return $$2;
-         }
+   public void a(dsh $$0, dcd $$1, ja $$2, aym $$3) {
+      jf $$4 = $$0.c(a);
+      double $$5 = (double)$$2.u() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$6 = (double)$$2.v() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$7 = (double)$$2.w() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$8 = (double)(0.4F - ($$3.i() + $$3.i()) * 0.4F);
+      if ($$3.a(5) == 0) {
+         $$1.a(lj.t, $$5 + (double)$$4.j() * $$8, $$6 + (double)$$4.k() * $$8, $$7 + (double)$$4.l() * $$8, $$3.k() * 0.005, $$3.k() * 0.005, $$3.k() * 0.005);
       }
-
-      return null;
    }
 
    @Override
-   protected dse a(dse $$0, je $$1, dse $$2, dcb $$3, iz $$4, iz $$5) {
-      return m($$0).g() == $$1 && !$$0.a($$3, $$4) ? dfd.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   protected static je m(dse $$0) {
-      switch ((dsp)$$0.c(K)) {
-         case c:
-            return je.a;
-         case a:
-            return je.b;
-         default:
-            return $$0.c(aE);
-      }
+   protected void a(dsi.a<dff, dsh> $$0) {
+      $$0.a(a);
    }
 }

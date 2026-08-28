@@ -1,36 +1,49 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.joml.Vector3f;
+import io.netty.buffer.ByteBuf;
 
-public class lc extends lj {
-   public static final Vector3f a = evt.a(3790560).j();
-   public static final lc b = new lc(a, ld.a, 1.0F);
-   public static final MapCodec<lc> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ayh.c.fieldOf("from_color").forGetter($$0x -> $$0x.h), ayh.c.fieldOf("to_color").forGetter($$0x -> $$0x.i), g.fieldOf("scale").forGetter(lj::d)
-            )
-            .apply($$0, lc::new)
-   );
-   public static final zn<xa, lc> d = zn.a(zl.r, $$0 -> $$0.h, zl.r, $$0 -> $$0.i, zl.i, lj::d, lc::new);
-   private final Vector3f h;
-   private final Vector3f i;
+public class lc implements lh {
+   private final li<lc> a;
+   private final int b;
 
-   public lc(Vector3f $$0, Vector3f $$1, float $$2) {
-      super($$2);
-      this.h = $$0;
-      this.i = $$1;
+   public static MapCodec<lc> a(li<lc> $$0) {
+      return axm.i.xmap($$1 -> new lc($$0, $$1), $$0x -> $$0x.b).fieldOf("color");
    }
 
-   public Vector3f b() {
-      return this.h;
+   public static ys<? super ByteBuf, lc> b(li<lc> $$0) {
+      return yq.f.a($$1 -> new lc($$0, $$1), $$0x -> $$0x.b);
    }
 
-   public Vector3f c() {
-      return this.i;
+   private lc(li<lc> $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
    @Override
-   public lh<lc> a() {
-      return li.o;
+   public li<lc> a() {
+      return this.a;
+   }
+
+   public float b() {
+      return (float)axo.b.b(this.b) / 255.0F;
+   }
+
+   public float c() {
+      return (float)axo.b.c(this.b) / 255.0F;
+   }
+
+   public float d() {
+      return (float)axo.b.d(this.b) / 255.0F;
+   }
+
+   public float e() {
+      return (float)axo.b.a(this.b) / 255.0F;
+   }
+
+   public static lc a(li<lc> $$0, int $$1) {
+      return new lc($$0, $$1);
+   }
+
+   public static lc a(li<lc> $$0, float $$1, float $$2, float $$3) {
+      return a($$0, axo.b.a(1.0F, $$1, $$2, $$3));
    }
 }

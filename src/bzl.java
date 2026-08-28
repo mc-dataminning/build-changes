@@ -1,19 +1,34 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import java.util.EnumSet;
 
-public class bzl {
-   private static final bqb a = bqh.a(100, 200);
+public class bzl extends bzw {
+   private final bta a;
+   private final dcd b;
 
-   public static bvl<btr> a() {
-      return byx.a(
-         (Function<byx.b<btr>, ? extends App<byx.c<btr>, bza<btr>>>)($$0 -> $$0.group($$0.a(ccv.aB), $$0.a(ccv.m), $$0.c(ccv.aG), $$0.b(ccv.B), $$0.c(ccv.az))
-               .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
-                     $$0x.a(bac.a);
-                     $$2.a(bac.a, (long)a.a($$3x.E_()));
-                     $$1.b();
-                     $$4x.b(bud.m);
-                     return true;
-                  }))
-      );
+   public bzl(bta $$0, dcd $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.a(EnumSet.of(bzw.a.c));
+   }
+
+   @Override
+   public boolean a() {
+      boolean $$0 = this.a.aC || this.a.aB;
+      if ($$0 && this.a.ak().a(avy.h)) {
+         ja $$1 = this.a.dp().c();
+         dsh $$2 = this.b.a_($$1);
+         return $$2.a(dfh.qP) || $$2.k(this.b, $$1) == ewp.a();
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean R_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      this.a.I().a();
    }
 }

@@ -1,30 +1,25 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record edr(int b, int c, int d, ji<ehq> e) implements ede {
+public class edr implements edi {
    public static final Codec<edr> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               ayh.l.fieldOf("tries").orElse(128).forGetter(edr::a),
-               ayh.k.fieldOf("xz_spread").orElse(7).forGetter(edr::b),
-               ayh.k.fieldOf("y_spread").orElse(3).forGetter(edr::c),
-               ehq.b.fieldOf("feature").forGetter(edr::d)
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_taller_dripstone").orElse(0.2F).forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_directional_spread").orElse(0.7F).forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius2").orElse(0.5F).forGetter($$0x -> $$0x.d),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius3").orElse(0.5F).forGetter($$0x -> $$0x.e)
             )
             .apply($$0, edr::new)
    );
+   public final float b;
+   public final float c;
+   public final float d;
+   public final float e;
 
-   public int a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public ji<ehq> d() {
-      return this.e;
+   public edr(float $$0, float $$1, float $$2, float $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 }

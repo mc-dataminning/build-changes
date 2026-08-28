@@ -1,63 +1,65 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import org.slf4j.Logger;
+import java.util.Optional;
+import java.util.Set;
 
-public class ers extends erw {
-   private static final Logger b = LogUtils.getLogger();
+public class ers extends esb {
    public static final MapCodec<ers> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(ale.a(lq.aV).fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, ers::new)
+      $$0 -> a($$0)
+            .and($$0.group(euw.a.fieldOf("levels").forGetter($$0x -> $$0x.b), jy.a(lr.aK).optionalFieldOf("options").forGetter($$0x -> $$0x.c)))
+            .apply($$0, ers::new)
    );
-   private final ale<erx> c;
+   private final euv b;
+   private final Optional<jn<czj>> c;
 
-   private ers(List<etu> $$0, ale<erx> $$1) {
+   ers(List<etz> $$0, euv $$1, Optional<jn<czj>> $$2) {
       super($$0);
-      this.c = $$1;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public ery<ers> b() {
-      return erz.H;
+   public esd<ers> b() {
+      return ese.g;
    }
 
    @Override
-   public void a(eqq $$0) {
-      if ($$0.a(this.c)) {
-         $$0.b("Function " + this.c.a() + " is recursively called");
-      } else {
-         super.a($$0);
-         $$0.a()
-            .a(lq.aV, this.c)
-            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.c.a() + "}", this.c)), () -> $$0.b("Unknown function table called " + this.c.a()));
+   public Set<eth<?>> a() {
+      return this.b.a();
+   }
+
+   @Override
+   public cua a(cua $$0, eqo $$1) {
+      aym $$2 = $$1.b();
+      jx $$3 = $$1.d().H_();
+      return czl.a($$2, $$0, this.b.a($$1), $$3, this.c);
+   }
+
+   public static ers.a a(jl.a $$0, euv $$1) {
+      return new ers.a($$1).a($$0.b(lr.aK).b(avx.n));
+   }
+
+   public static class a extends esb.a<ers.a> {
+      private final euv a;
+      private Optional<jn<czj>> b = Optional.empty();
+
+      public a(euv $$0) {
+         this.a = $$0;
       }
-   }
 
-   @Override
-   protected cur a(cur $$0, eqk $$1) {
-      erx $$2 = $$1.a().a(lq.aV, this.c).map(ji::a).orElse(null);
-      if ($$2 == null) {
-         b.warn("Unknown function: {}", this.c.a());
-         return $$0;
-      } else {
-         eqk.c<?> $$3 = eqk.a($$2);
-         if ($$1.b($$3)) {
-            cur var5;
-            try {
-               var5 = $$2.apply($$0, $$1);
-            } finally {
-               $$1.c($$3);
-            }
-
-            return var5;
-         } else {
-            b.warn("Detected infinite loop in loot tables");
-            return $$0;
-         }
+      protected ers.a a() {
+         return this;
       }
-   }
 
-   public static erw.a<?> a(ale<erx> $$0) {
-      return a($$1 -> new ers($$1, $$0));
+      public ers.a a(jn<czj> $$0) {
+         this.b = Optional.of($$0);
+         return this;
+      }
+
+      @Override
+      public esc b() {
+         return new ers(this.g(), this.a, this.b);
+      }
    }
 }

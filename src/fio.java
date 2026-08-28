@@ -1,143 +1,153 @@
-import com.google.common.collect.Lists;
+import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class fio implements gtw {
-   private static final long a = 3000L;
-   private final ffh b;
-   private final List<fio.a> c = Lists.newArrayList();
-   private boolean d;
-   private final List<fio.a> e = new ArrayList<>();
+public class fio extends fnd {
+   private static final akk a = new akk("popup/background");
+   private static final int b = 12;
+   private static final int c = 18;
+   private static final int q = 6;
+   private static final int r = 130;
+   private static final int s = 64;
+   private static final int u = 250;
+   private final fnd v;
+   @Nullable
+   private final akk w;
+   private final wu x;
+   private final List<fio.b> y;
+   @Nullable
+   private final Runnable z;
+   private final int A;
+   private final fld B = fld.d();
 
-   public fio(ffh $$0) {
-      this.b = $$0;
-   }
-
-   public void a(fgt $$0) {
-      gtx $$1 = this.b.aj();
-      if (!this.d && this.b.m.W().c()) {
-         $$1.a(this);
-         this.d = true;
-      } else if (this.d && !this.b.m.W().c()) {
-         $$1.b(this);
-         this.d = false;
-      }
-
-      if (this.d) {
-         exy $$2 = $$1.b();
-         evt $$3 = $$2.b();
-         evt $$4 = $$2.c();
-         evt $$5 = $$2.a();
-         this.e.clear();
-
-         for (fio.a $$6 : this.c) {
-            if ($$6.b($$3)) {
-               this.e.add($$6);
-            }
-         }
-
-         if (!this.e.isEmpty()) {
-            int $$7 = 0;
-            int $$8 = 0;
-            double $$9 = this.b.m.B().c();
-            Iterator<fio.a> $$10 = this.e.iterator();
-
-            while ($$10.hasNext()) {
-               fio.a $$11 = $$10.next();
-               if ((double)$$11.b() + 3000.0 * $$9 <= (double)ac.c()) {
-                  $$10.remove();
-               } else {
-                  $$8 = Math.max($$8, this.b.h.a($$11.a()));
-               }
-            }
-
-            $$8 += this.b.h.b("<") + this.b.h.b(" ") + this.b.h.b(">") + this.b.h.b(" ");
-
-            for (fio.a $$12 : this.e) {
-               int $$13 = 255;
-               xp $$14 = $$12.a();
-               evt $$15 = $$12.c().d($$3).d();
-               double $$16 = $$5.b($$15);
-               double $$17 = $$4.b($$15);
-               boolean $$18 = $$17 > 0.5;
-               int $$19 = $$8 / 2;
-               int $$20 = 9;
-               int $$21 = $$20 / 2;
-               float $$22 = 1.0F;
-               int $$23 = this.b.h.a($$14);
-               int $$24 = ayz.d(ayz.b(255.0F, 75.0F, (float)(ac.c() - $$12.b()) / (float)(3000.0 * $$9)));
-               int $$25 = $$24 << 16 | $$24 << 8 | $$24;
-               $$0.c().a();
-               $$0.c().a((float)$$0.a() - (float)$$19 * 1.0F - 2.0F, (float)($$0.b() - 35) - (float)($$7 * ($$20 + 1)) * 1.0F, 0.0F);
-               $$0.c().b(1.0F, 1.0F, 1.0F);
-               $$0.a(-$$19 - 1, -$$21 - 1, $$19 + 1, $$21 + 1, this.b.m.b(0.8F));
-               int $$26 = $$25 + -16777216;
-               if (!$$18) {
-                  if ($$16 > 0.0) {
-                     $$0.b(this.b.h, ">", $$19 - this.b.h.b(">"), -$$21, $$26);
-                  } else if ($$16 < 0.0) {
-                     $$0.b(this.b.h, "<", -$$19, -$$21, $$26);
-                  }
-               }
-
-               $$0.b(this.b.h, $$14, -$$23 / 2, -$$21, $$26);
-               $$0.c().b();
-               $$7++;
-            }
-         }
-      }
+   fio(fnd $$0, int $$1, @Nullable akk $$2, wu $$3, wu $$4, List<fio.b> $$5, @Nullable Runnable $$6) {
+      super($$3);
+      this.v = $$0;
+      this.w = $$2;
+      this.x = $$4;
+      this.y = $$5;
+      this.z = $$6;
+      this.A = $$1 - 36;
    }
 
    @Override
-   public void a(gsp $$0, gty $$1, float $$2) {
-      if ($$1.a() != null) {
-         xp $$3 = $$1.a();
-         if (!this.c.isEmpty()) {
-            for (fio.a $$4 : this.c) {
-               if ($$4.a().equals($$3)) {
-                  $$4.a(new evt($$0.h(), $$0.i(), $$0.j()));
-                  return;
-               }
-            }
-         }
+   public void aG_() {
+      super.aG_();
+      this.v.o();
+   }
 
-         this.c.add(new fio.a($$3, $$2, new evt($$0.h(), $$0.i(), $$0.j())));
+   @Override
+   protected void aO_() {
+      this.v.b(this.l, this.m, this.n);
+      this.B.a(12).c().b();
+      this.B.a(new fig(this.k.f().a(n.r), this.o).d(this.A).b(true));
+      if (this.w != null) {
+         this.B.a(fhz.a(130, 64, this.w, 130, 64));
       }
+
+      this.B.a(new fig(this.x, this.o).d(this.A).b(true));
+      this.B.a(this.m());
+      this.B.a($$1 -> {
+         fhk var10000 = this.c($$1);
+      });
+      this.c();
+   }
+
+   private fld m() {
+      int $$0 = 6 * (this.y.size() - 1);
+      int $$1 = Math.min((this.A - $$0) / this.y.size(), 150);
+      fld $$2 = fld.e();
+      $$2.a(6);
+
+      for (fio.b $$3 : this.y) {
+         $$2.a(fhm.a($$3.a(), $$1x -> $$3.b().accept(this)).a($$1).a());
+      }
+
+      return $$2;
+   }
+
+   @Override
+   protected void c() {
+      this.v.a(this.l, this.m, this.n);
+      this.B.a();
+      fkx.a(this.B, this.H());
+   }
+
+   @Override
+   public void b(fgz $$0, int $$1, int $$2, float $$3) {
+      this.v.a($$0, -1, -1, $$3);
+      $$0.e();
+      RenderSystem.clear(256, ffn.a);
+      this.b($$0);
+      $$0.a(a, this.B.D() - 18, this.B.E() - 18, this.B.y() + 36, this.B.w() + 36);
+   }
+
+   @Override
+   public wu i() {
+      return wt.a(this.k, this.x);
+   }
+
+   @Override
+   public void d() {
+      if (this.z != null) {
+         this.z.run();
+      }
+
+      this.l.a(this.v);
    }
 
    public static class a {
-      private final xp a;
-      private final float b;
-      private long c;
-      private evt d;
+      private final fnd a;
+      private final wu b;
+      private wu c = wt.a;
+      private int d = 250;
+      @Nullable
+      private akk e;
+      private final List<fio.b> f = new ArrayList<>();
+      @Nullable
+      private Runnable g = null;
 
-      public a(xp $$0, float $$1, evt $$2) {
+      public a(fnd $$0, wu $$1) {
          this.a = $$0;
          this.b = $$1;
-         this.d = $$2;
-         this.c = ac.c();
       }
 
-      public xp a() {
-         return this.a;
-      }
-
-      public long b() {
-         return this.c;
-      }
-
-      public evt c() {
-         return this.d;
-      }
-
-      public void a(evt $$0) {
+      public fio.a a(int $$0) {
          this.d = $$0;
-         this.c = ac.c();
+         return this;
       }
 
-      public boolean b(evt $$0) {
-         return Float.isInfinite(this.b) || $$0.a((js)this.d, (double)this.b);
+      public fio.a a(akk $$0) {
+         this.e = $$0;
+         return this;
       }
+
+      public fio.a a(wu $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public fio.a a(wu $$0, Consumer<fio> $$1) {
+         this.f.add(new fio.b($$0, $$1));
+         return this;
+      }
+
+      public fio.a a(Runnable $$0) {
+         this.g = $$0;
+         return this;
+      }
+
+      public fio a() {
+         if (this.f.isEmpty()) {
+            throw new IllegalStateException("Popup must have at least one button");
+         } else {
+            return new fio(this.a, this.d, this.e, this.b, this.c, List.copyOf(this.f), this.g);
+         }
+      }
+   }
+
+   static record b(wu a, Consumer<fio> b) {
    }
 }

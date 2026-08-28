@@ -1,49 +1,32 @@
-import com.google.common.collect.ImmutableMap;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bvo extends bvk<cmm> {
-   @Nullable
-   private cok c;
-
-   public bvo(int $$0, int $$1) {
-      super(ImmutableMap.of(), $$0, $$1);
+public class bvo {
+   public static <T extends bsy> bus<bsy> a(bsj<? extends T> $$0, int $$1, ccc<T> $$2, float $$3, int $$4) {
+      return a($$0, $$1, $$0x -> true, $$0x -> true, $$2, $$3, $$4);
    }
 
-   protected boolean a(arf $$0, cmm $$1) {
-      iz $$2 = $$1.dp();
-      this.c = $$0.d($$2);
-      return this.c != null && this.c.e() && bwt.a($$0, $$1, $$2);
-   }
-
-   protected boolean a(arf $$0, cmm $$1, long $$2) {
-      return this.c != null && !this.c.d();
-   }
-
-   protected void b(arf $$0, cmm $$1, long $$2) {
-      this.c = null;
-      $$1.dS().a($$0.aa(), $$0.Z());
-   }
-
-   protected void c(arf $$0, cmm $$1, long $$2) {
-      azh $$3 = $$1.el();
-      if ($$3.a(100) == 0) {
-         $$1.gv();
-      }
-
-      if ($$3.a(200) == 0 && bwt.a($$0, $$1, $$1.dp())) {
-         ctk $$4 = ac.a(ctk.values(), $$3);
-         int $$5 = $$3.a(3);
-         cur $$6 = this.a($$4, $$5);
-         cnm $$7 = new cnm($$1.dP(), $$1, $$1.du(), $$1.dy(), $$1.dA(), $$6);
-         $$1.dP().b($$7);
-      }
-   }
-
-   private cur a(ctk $$0, int $$1) {
-      cur $$2 = new cur(cuu.uu);
-      $$2.b(km.U, new cxl((byte)$$1, List.of(new cxk(cxk.a.e, IntList.of($$0.f()), IntList.of(), false, false))));
-      return $$2;
+   public static <E extends bsy, T extends bsy> bus<E> a(bsj<? extends T> $$0, int $$1, Predicate<E> $$2, Predicate<T> $$3, ccc<T> $$4, float $$5, int $$6) {
+      int $$7 = $$1 * $$1;
+      Predicate<bsy> $$8 = $$2x -> $$0.equals($$2x.ak()) && $$3.test((T)$$2x);
+      return bye.a(
+         (Function<bye.b<E>, ? extends App<bye.c<E>, byh<E>>>)($$6x -> $$6x.group($$6x.a($$4), $$6x.a(ccc.n), $$6x.c(ccc.m), $$6x.b(ccc.h))
+               .apply($$6x, ($$6xx, $$7x, $$8x, $$9) -> ($$10, $$11, $$12) -> {
+                     cce $$13 = $$6x.b($$9);
+                     if ($$2.test((E)$$11) && $$13.d($$8)) {
+                        Optional<bsy> $$14 = $$13.a($$3xxxx -> $$3xxxx.g((bsd)$$11) <= (double)$$7 && $$8.test($$3xxxx));
+                        $$14.ifPresent($$5xxxx -> {
+                           $$6xx.a($$5xxxx);
+                           $$7x.a(new bvc($$5xxxx, true));
+                           $$8x.a(new ccf(new bvc($$5xxxx, false), $$5, $$6));
+                        });
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

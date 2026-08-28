@@ -1,208 +1,84 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
+import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.stream.LongStream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.Supplier;
 
-public class bhq extends DataFix {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<String, bhq.a> b = ImmutableMap.builder()
-      .put(
-         "mineshaft",
-         bhq.a.a(
-            Map.of(List.of("minecraft:badlands", "minecraft:eroded_badlands", "minecraft:wooded_badlands"), "minecraft:mineshaft_mesa"), "minecraft:mineshaft"
-         )
-      )
-      .put("shipwreck", bhq.a.a(Map.of(List.of("minecraft:beach", "minecraft:snowy_beach"), "minecraft:shipwreck_beached"), "minecraft:shipwreck"))
-      .put(
-         "ocean_ruin",
-         bhq.a.a(
-            Map.of(List.of("minecraft:warm_ocean", "minecraft:lukewarm_ocean", "minecraft:deep_lukewarm_ocean"), "minecraft:ocean_ruin_warm"),
-            "minecraft:ocean_ruin_cold"
-         )
-      )
-      .put(
-         "village",
-         bhq.a.a(
-            Map.of(
-               List.of("minecraft:desert"),
-               "minecraft:village_desert",
-               List.of("minecraft:savanna"),
-               "minecraft:village_savanna",
-               List.of("minecraft:snowy_plains"),
-               "minecraft:village_snowy",
-               List.of("minecraft:taiga"),
-               "minecraft:village_taiga"
-            ),
-            "minecraft:village_plains"
-         )
-      )
-      .put(
-         "ruined_portal",
-         bhq.a.a(
-            Map.of(
-               List.of("minecraft:desert"),
-               "minecraft:ruined_portal_desert",
-               List.of(
-                  "minecraft:badlands",
-                  "minecraft:eroded_badlands",
-                  "minecraft:wooded_badlands",
-                  "minecraft:windswept_hills",
-                  "minecraft:windswept_forest",
-                  "minecraft:windswept_gravelly_hills",
-                  "minecraft:savanna_plateau",
-                  "minecraft:windswept_savanna",
-                  "minecraft:stony_shore",
-                  "minecraft:meadow",
-                  "minecraft:frozen_peaks",
-                  "minecraft:jagged_peaks",
-                  "minecraft:stony_peaks",
-                  "minecraft:snowy_slopes"
-               ),
-               "minecraft:ruined_portal_mountain",
-               List.of("minecraft:bamboo_jungle", "minecraft:jungle", "minecraft:sparse_jungle"),
-               "minecraft:ruined_portal_jungle",
-               List.of(
-                  "minecraft:deep_frozen_ocean",
-                  "minecraft:deep_cold_ocean",
-                  "minecraft:deep_ocean",
-                  "minecraft:deep_lukewarm_ocean",
-                  "minecraft:frozen_ocean",
-                  "minecraft:ocean",
-                  "minecraft:cold_ocean",
-                  "minecraft:lukewarm_ocean",
-                  "minecraft:warm_ocean"
-               ),
-               "minecraft:ruined_portal_ocean"
-            ),
-            "minecraft:ruined_portal"
-         )
-      )
-      .put("pillager_outpost", bhq.a.a("minecraft:pillager_outpost"))
-      .put("mansion", bhq.a.a("minecraft:mansion"))
-      .put("jungle_pyramid", bhq.a.a("minecraft:jungle_pyramid"))
-      .put("desert_pyramid", bhq.a.a("minecraft:desert_pyramid"))
-      .put("igloo", bhq.a.a("minecraft:igloo"))
-      .put("swamp_hut", bhq.a.a("minecraft:swamp_hut"))
-      .put("stronghold", bhq.a.a("minecraft:stronghold"))
-      .put("monument", bhq.a.a("minecraft:monument"))
-      .put("fortress", bhq.a.a("minecraft:fortress"))
-      .put("endcity", bhq.a.a("minecraft:end_city"))
-      .put("buried_treasure", bhq.a.a("minecraft:buried_treasure"))
-      .put("nether_fossil", bhq.a.a("minecraft:nether_fossil"))
-      .put("bastion_remnant", bhq.a.a("minecraft:bastion_remnant"))
-      .build();
-
-   public bhq(Schema $$0) {
-      super($$0, false);
+public class bhq extends Schema {
+   public bhq(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgx.c);
-      Type<?> $$1 = this.getInputSchema().getType(bgx.c);
-      return this.writeFixAndRead("StucturesToConfiguredStructures", $$0, $$1, this::a);
+   protected static TypeTemplate a(Schema $$0) {
+      return DSL.optionalFields("ArmorItems", DSL.list(bgd.t.in($$0)), "HandItems", DSL.list(bgd.t.in($$0)), "body_armor_item", bgd.t.in($$0));
    }
 
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("structures", $$1 -> $$1.update("starts", $$1x -> this.a($$1x, $$0)).update("References", $$1x -> this.b($$1x, $$0)));
+   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
+      $$0.register($$1, $$2, () -> a($$0));
    }
 
-   private Dynamic<?> a(Dynamic<?> $$0, Dynamic<?> $$1) {
-      Map<? extends Dynamic<?>, ? extends Dynamic<?>> $$2 = $$0.getMapValues().result().orElse(Map.of());
-      HashMap<Dynamic<?>, Dynamic<?>> $$3 = Maps.newHashMap();
-      $$2.forEach(($$2x, $$3x) -> {
-         if (!$$3x.get("id").asString("INVALID").equals("INVALID")) {
-            Dynamic<?> $$4 = this.c($$2x, $$1);
-            if ($$4 == null) {
-               a.warn("Encountered unknown structure in datafixer: " + $$2x.asString("<missing key>"));
-            } else {
-               $$3.computeIfAbsent($$4, $$2xx -> $$3x.set("id", $$4));
-            }
-         }
-      });
-      return $$1.createMap($$3);
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      a($$0, $$1, "ArmorStand");
+      a($$0, $$1, "Creeper");
+      a($$0, $$1, "Skeleton");
+      a($$0, $$1, "Spider");
+      a($$0, $$1, "Giant");
+      a($$0, $$1, "Zombie");
+      a($$0, $$1, "Slime");
+      a($$0, $$1, "Ghast");
+      a($$0, $$1, "PigZombie");
+      $$0.register($$1, "Enderman", $$1x -> DSL.optionalFields("carried", bgd.C.in($$0), a($$0)));
+      a($$0, $$1, "CaveSpider");
+      a($$0, $$1, "Silverfish");
+      a($$0, $$1, "Blaze");
+      a($$0, $$1, "LavaSlime");
+      a($$0, $$1, "EnderDragon");
+      a($$0, $$1, "WitherBoss");
+      a($$0, $$1, "Bat");
+      a($$0, $$1, "Witch");
+      a($$0, $$1, "Endermite");
+      a($$0, $$1, "Guardian");
+      a($$0, $$1, "Pig");
+      a($$0, $$1, "Sheep");
+      a($$0, $$1, "Cow");
+      a($$0, $$1, "Chicken");
+      a($$0, $$1, "Squid");
+      a($$0, $$1, "Wolf");
+      a($$0, $$1, "MushroomCow");
+      a($$0, $$1, "SnowMan");
+      a($$0, $$1, "Ozelot");
+      a($$0, $$1, "VillagerGolem");
+      $$0.register(
+         $$1, "EntityHorse", $$1x -> DSL.optionalFields("Items", DSL.list(bgd.t.in($$0)), "ArmorItem", bgd.t.in($$0), "SaddleItem", bgd.t.in($$0), a($$0))
+      );
+      a($$0, $$1, "Rabbit");
+      $$0.register(
+         $$1,
+         "Villager",
+         $$1x -> DSL.optionalFields("Inventory", DSL.list(bgd.t.in($$0)), "Offers", DSL.optionalFields("Recipes", DSL.list(bgd.x.in($$0))), a($$0))
+      );
+      a($$0, $$1, "Shulker");
+      $$0.register($$1, "AreaEffectCloud", $$1x -> DSL.optionalFields("Particle", bgd.y.in($$0)));
+      $$0.registerSimple($$1, "ShulkerBullet");
+      return $$1;
    }
 
-   private Dynamic<?> b(Dynamic<?> $$0, Dynamic<?> $$1) {
-      Map<? extends Dynamic<?>, ? extends Dynamic<?>> $$2 = $$0.getMapValues().result().orElse(Map.of());
-      HashMap<Dynamic<?>, Dynamic<?>> $$3 = Maps.newHashMap();
-      $$2.forEach(($$2x, $$3x) -> {
-         if ($$3x.asLongStream().count() != 0L) {
-            Dynamic<?> $$4 = this.c($$2x, $$1);
-            if ($$4 == null) {
-               a.warn("Encountered unknown structure in datafixer: " + $$2x.asString("<missing key>"));
-            } else {
-               $$3.compute($$4, ($$1xx, $$2xx) -> $$2xx == null ? $$3x : $$3x.createLongList(LongStream.concat($$2xx.asLongStream(), $$3x.asLongStream())));
-            }
-         }
-      });
-      return $$1.createMap($$3);
-   }
-
-   @Nullable
-   private Dynamic<?> c(Dynamic<?> $$0, Dynamic<?> $$1) {
-      String $$2 = $$0.asString("UNKNOWN").toLowerCase(Locale.ROOT);
-      bhq.a $$3 = b.get($$2);
-      if ($$3 == null) {
-         return null;
-      } else {
-         String $$4 = $$3.b;
-         if (!$$3.a().isEmpty()) {
-            Optional<String> $$5 = this.a($$1, $$3);
-            if ($$5.isPresent()) {
-               $$4 = $$5.get();
-            }
-         }
-
-         return $$1.createString($$4);
-      }
-   }
-
-   private Optional<String> a(Dynamic<?> $$0, bhq.a $$1) {
-      Object2IntArrayMap<String> $$2 = new Object2IntArrayMap();
-      $$0.get("sections").asList(Function.identity()).forEach($$2x -> $$2x.get("biomes").get("palette").asList(Function.identity()).forEach($$2xx -> {
-            String $$3 = $$1.a().get($$2xx.asString(""));
-            if ($$3 != null) {
-               $$2.mergeInt($$3, 1, Integer::sum);
-            }
-         }));
-      return $$2.object2IntEntrySet().stream().max(Comparator.comparingInt(it.unimi.dsi.fastutil.objects.Object2IntMap.Entry::getIntValue)).map(Entry::getKey);
-   }
-
-   static record a(Map<String, String> a, String b) {
-
-      public static bhq.a a(String $$0) {
-         return new bhq.a(Map.of(), $$0);
-      }
-
-      public static bhq.a a(Map<List<String>, String> $$0, String $$1) {
-         return new bhq.a(a($$0), $$1);
-      }
-
-      private static Map<String, String> a(Map<List<String>, String> $$0) {
-         Builder<String, String> $$1 = ImmutableMap.builder();
-
-         for (Entry<List<String>, String> $$2 : $$0.entrySet()) {
-            $$2.getKey().forEach($$2x -> $$1.put($$2x, $$2.getValue()));
-         }
-
-         return $$1.build();
-      }
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(
+         false,
+         bgd.f,
+         () -> DSL.optionalFields(
+               "entities",
+               DSL.list(DSL.optionalFields("nbt", bgd.A.in($$0))),
+               "blocks",
+               DSL.list(DSL.optionalFields("nbt", bgd.s.in($$0))),
+               "palette",
+               DSL.list(bgd.u.in($$0))
+            )
+      );
+      $$0.registerType(false, bgd.u, DSL::remainder);
+      $$0.registerType(false, bgd.v, DSL::remainder);
    }
 }

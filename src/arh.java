@@ -1,330 +1,163 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.logging.LogUtils;
-import java.util.Objects;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class arh {
-   private static final Logger a = LogUtils.getLogger();
-   protected arf c;
-   protected final arg d;
-   private dbx b;
-   @Nullable
-   private dbx e;
-   private boolean f;
-   private int g;
-   private iz h;
-   private int i;
-   private boolean j;
-   private iz k;
-   private int l;
-   private int m;
+public abstract class arh implements zs {
+   private static final Logger f = LogUtils.getLogger();
+   public static final int b = 15000;
+   private static final int g = 15000;
+   private static final wu h = wu.c("disconnect.timeout");
+   static final wu c = wu.c("multiplayer.disconnect.unexpected_query_response");
+   protected final MinecraftServer d;
+   protected final vp e;
+   private final boolean i;
+   private long j;
+   private boolean k;
+   private long l;
+   private long m;
+   private boolean n = false;
+   private int o;
+   private volatile boolean p = false;
 
-   public arh(arg $$0) {
-      this.b = dbx.e;
-      this.h = iz.c;
-      this.k = iz.c;
-      this.m = -1;
+   public arh(MinecraftServer $$0, vp $$1, aqz $$2) {
       this.d = $$0;
-      this.c = $$0.z();
+      this.e = $$1;
+      this.j = ac.c();
+      this.o = $$2.b();
+      this.i = $$2.d();
    }
 
-   public boolean a(dbx $$0) {
-      if ($$0 == this.b) {
-         return false;
-      } else {
-         this.a($$0, this.e);
-         this.d.y();
-         this.d.d.ah().a(new aeo(aeo.a.c, this.d));
-         this.c.e();
-         if ($$0 == dbx.b) {
-            this.d.gE();
+   private void l() {
+      if (!this.n) {
+         this.m = ac.c();
+         this.n = true;
+      }
+   }
+
+   @Override
+   public void a(wu $$0) {
+      if (this.h()) {
+         f.info("Stopping singleplayer server as player logged out");
+         this.d.a(false);
+      }
+   }
+
+   @Override
+   public void a(zv $$0) {
+      if (this.k && $$0.b() == this.l) {
+         int $$1 = (int)(ac.c() - this.j);
+         this.o = (this.o * 3 + $$1) / 4;
+         this.k = false;
+      } else if (!this.h()) {
+         this.b(h);
+      }
+   }
+
+   @Override
+   public void a(zw $$0) {
+   }
+
+   @Override
+   public void a(zu $$0) {
+   }
+
+   @Override
+   public void a(zx $$0) {
+      ze.a($$0, this, this.d);
+      if ($$0.e() == zx.a.b && this.d.Y()) {
+         f.info("Disconnecting {} due to resource pack {} rejection", this.i().getName(), $$0.b());
+         this.b(wu.c("multiplayer.requiredTexturePrompt.disconnect"));
+      }
+   }
+
+   @Override
+   public void a(abl $$0) {
+      this.b(c);
+   }
+
+   protected void e() {
+      this.d.aT().a("keepAlive");
+      long $$0 = ac.c();
+      if (!this.h() && $$0 - this.j >= 15000L) {
+         if (this.k) {
+            this.b(h);
+         } else if (this.a($$0)) {
+            this.k = true;
+            this.j = $$0;
+            this.l = $$0;
+            this.b(new zk(this.l));
+         }
+      }
+
+      this.d.aT().c();
+   }
+
+   private boolean a(long $$0) {
+      if (this.n) {
+         if ($$0 - this.m >= 15000L) {
+            this.b(h);
          }
 
+         return false;
+      } else {
          return true;
       }
    }
 
-   protected void a(dbx $$0, @Nullable dbx $$1) {
-      this.e = $$1;
-      this.b = $$0;
-      $$0.a(this.d.gd());
+   public void f() {
+      this.p = true;
    }
 
-   public dbx b() {
-      return this.b;
+   public void g() {
+      this.p = false;
+      this.e.a();
    }
 
-   @Nullable
-   public dbx c() {
-      return this.e;
+   public void b(zb<?> $$0) {
+      this.a($$0, null);
    }
 
-   public boolean d() {
-      return this.b.h();
-   }
+   public void a(zb<?> $$0, @Nullable wb $$1) {
+      if ($$0.d()) {
+         this.l();
+      }
 
-   public boolean e() {
-      return this.b.g();
-   }
+      boolean $$2 = !this.p || !this.d.bw();
 
-   public void a() {
-      this.i++;
-      if (this.j) {
-         dse $$0 = this.c.a_(this.k);
-         if ($$0.i()) {
-            this.j = false;
-         } else {
-            float $$1 = this.a($$0, this.k, this.l);
-            if ($$1 >= 1.0F) {
-               this.j = false;
-               this.a(this.k);
-            }
-         }
-      } else if (this.f) {
-         dse $$2 = this.c.a_(this.h);
-         if ($$2.i()) {
-            this.c.a(this.d.al(), this.h, -1);
-            this.m = -1;
-            this.f = false;
-         } else {
-            this.a($$2, this.h, this.g);
-         }
+      try {
+         this.e.a($$0, $$1, $$2);
+      } catch (Throwable var7) {
+         o $$4 = o.a(var7, "Sending packet");
+         p $$5 = $$4.a("Packet being sent");
+         $$5.a("Packet class", () -> $$0.getClass().getCanonicalName());
+         throw new y($$4);
       }
    }
 
-   private float a(dse $$0, iz $$1, int $$2) {
-      int $$3 = this.i - $$2;
-      float $$4 = $$0.a(this.d, this.d.dP(), $$1) * (float)($$3 + 1);
-      int $$5 = (int)($$4 * 10.0F);
-      if ($$5 != this.m) {
-         this.c.a(this.d.al(), $$1, $$5);
-         this.m = $$5;
-      }
-
-      return $$4;
+   public void b(wu $$0) {
+      this.e.a(new zj($$0), wb.a(() -> this.e.a($$0)));
+      this.e.m();
+      this.d.h(this.e::n);
    }
 
-   private void a(iz $$0, boolean $$1, int $$2, String $$3) {
+   protected boolean h() {
+      return this.d.a(this.i());
    }
 
-   public void a(iz $$0, aia.a $$1, je $$2, int $$3, int $$4) {
-      if (!this.d.a($$0, 1.0)) {
-         this.a($$0, false, $$4, "too far");
-      } else if ($$0.v() >= $$3) {
-         this.d.c.b(new acr($$0, this.c.a_($$0)));
-         this.a($$0, false, $$4, "too high");
-      } else {
-         if ($$1 == aia.a.a) {
-            if (!this.c.a(this.d, $$0)) {
-               this.d.c.b(new acr($$0, this.c.a_($$0)));
-               this.a($$0, false, $$4, "may not interact");
-               return;
-            }
+   protected abstract GameProfile i();
 
-            if (this.e()) {
-               this.a($$0, $$4, "creative destroy");
-               return;
-            }
-
-            if (this.d.a(this.c, $$0, this.b)) {
-               this.d.c.b(new acr($$0, this.c.a_($$0)));
-               this.a($$0, false, $$4, "block action restricted");
-               return;
-            }
-
-            this.g = this.i;
-            float $$5 = 1.0F;
-            dse $$6 = this.c.a_($$0);
-            if (!$$6.i()) {
-               $$6.a(this.c, $$0, this.d);
-               $$5 = $$6.a(this.d, this.d.dP(), $$0);
-            }
-
-            if (!$$6.i() && $$5 >= 1.0F) {
-               this.a($$0, $$4, "insta mine");
-            } else {
-               if (this.f) {
-                  this.d.c.b(new acr(this.h, this.c.a_(this.h)));
-                  this.a($$0, false, $$4, "abort destroying since another started (client insta mine, server disagreed)");
-               }
-
-               this.f = true;
-               this.h = $$0.i();
-               int $$7 = (int)($$5 * 10.0F);
-               this.c.a(this.d.al(), $$0, $$7);
-               this.a($$0, true, $$4, "actual start of destroying");
-               this.m = $$7;
-            }
-         } else if ($$1 == aia.a.c) {
-            if ($$0.equals(this.h)) {
-               int $$8 = this.i - this.g;
-               dse $$9 = this.c.a_($$0);
-               if (!$$9.i()) {
-                  float $$10 = $$9.a(this.d, this.d.dP(), $$0) * (float)($$8 + 1);
-                  if ($$10 >= 0.7F) {
-                     this.f = false;
-                     this.c.a(this.d.al(), $$0, -1);
-                     this.a($$0, $$4, "destroyed");
-                     return;
-                  }
-
-                  if (!this.j) {
-                     this.f = false;
-                     this.j = true;
-                     this.k = $$0;
-                     this.l = this.g;
-                  }
-               }
-            }
-
-            this.a($$0, true, $$4, "stopped destroying");
-         } else if ($$1 == aia.a.b) {
-            this.f = false;
-            if (!Objects.equals(this.h, $$0)) {
-               a.warn("Mismatch in destroy block pos: {} {}", this.h, $$0);
-               this.c.a(this.d.al(), this.h, -1);
-               this.a($$0, true, $$4, "aborted mismatched destroying");
-            }
-
-            this.c.a(this.d.al(), $$0, -1);
-            this.a($$0, true, $$4, "aborted destroying");
-         }
-      }
+   @azi
+   public GameProfile j() {
+      return this.i();
    }
 
-   public void a(iz $$0, int $$1, String $$2) {
-      if (this.a($$0)) {
-         this.a($$0, true, $$1, $$2);
-      } else {
-         this.d.c.b(new acr($$0, this.c.a_($$0)));
-         this.a($$0, false, $$1, $$2);
-      }
+   public int k() {
+      return this.o;
    }
 
-   public boolean a(iz $$0) {
-      dse $$1 = this.c.a_($$0);
-      if (!this.d.eX().g().a($$1, this.c, $$0, this.d)) {
-         return false;
-      } else {
-         dpj $$2 = this.c.c_($$0);
-         dfb $$3 = $$1.b();
-         if ($$3 instanceof dij && !this.d.gz()) {
-            this.c.a($$0, $$1, $$1, 3);
-            return false;
-         } else if (this.d.a(this.c, $$0, this.b)) {
-            return false;
-         } else {
-            dse $$4 = $$3.a(this.c, $$0, $$1, (cmz)this.d);
-            boolean $$5 = this.c.a($$0, false);
-            if ($$5) {
-               $$3.a((dcb)this.c, $$0, $$4);
-            }
-
-            if (this.e()) {
-               return true;
-            } else {
-               cur $$6 = this.d.eX();
-               cur $$7 = $$6.s();
-               boolean $$8 = this.d.e($$4);
-               $$6.a(this.c, $$4, $$0, this.d);
-               if ($$5 && $$8) {
-                  $$3.a(this.c, this.d, $$0, $$4, $$2, $$7);
-               }
-
-               return true;
-            }
-         }
-      }
-   }
-
-   public bqw a(arg $$0, dca $$1, cur $$2, bqv $$3) {
-      if (this.b == dbx.d) {
-         return bqw.e;
-      } else if ($$0.gx().a($$2.g())) {
-         return bqw.e;
-      } else {
-         int $$4 = $$2.I();
-         int $$5 = $$2.n();
-         bqx<cur> $$6 = $$2.a($$1, $$0, $$3);
-         cur $$7 = $$6.b();
-         if ($$7 == $$2 && $$7.I() == $$4 && $$7.u() <= 0 && $$7.n() == $$5) {
-            return $$6.a();
-         } else if ($$6.a() == bqw.f && $$7.u() > 0 && !$$0.fv()) {
-            return $$6.a();
-         } else {
-            if ($$2 != $$7) {
-               $$0.a($$3, $$7);
-            }
-
-            if ($$7.e()) {
-               $$0.a($$3, cur.l);
-            }
-
-            if (!$$0.fv()) {
-               $$0.ca.b();
-            }
-
-            return $$6.a();
-         }
-      }
-   }
-
-   public bqw a(arg $$0, dca $$1, cur $$2, bqv $$3, evp $$4) {
-      iz $$5 = $$4.a();
-      dse $$6 = $$1.a_($$5);
-      if (!$$6.b().a($$1.J())) {
-         return bqw.f;
-      } else if (this.b == dbx.d) {
-         bra $$7 = $$6.b($$1, $$5);
-         if ($$7 != null) {
-            $$0.a($$7);
-            return bqw.a;
-         } else {
-            return bqw.e;
-         }
-      } else {
-         boolean $$8 = !$$0.eX().e() || !$$0.eY().e();
-         boolean $$9 = $$0.fR() && $$8;
-         cur $$10 = $$2.s();
-         if (!$$9) {
-            bqy $$11 = $$6.a($$0.b($$3), $$1, $$0, $$3, $$4);
-            if ($$11.a()) {
-               am.N.a($$0, $$5, $$10);
-               return $$11.b();
-            }
-
-            if ($$11 == bqy.d && $$3 == bqv.a) {
-               bqw $$12 = $$6.a($$1, $$0, $$4);
-               if ($$12.a()) {
-                  am.O.a($$0, $$5);
-                  return $$12;
-               }
-            }
-         }
-
-         if (!$$2.e() && !$$0.gx().a($$2.g())) {
-            cye $$13 = new cye($$0, $$3, $$4);
-            bqw $$15;
-            if (this.e()) {
-               int $$14 = $$2.I();
-               $$15 = $$2.a($$13);
-               $$2.e($$14);
-            } else {
-               $$15 = $$2.a($$13);
-            }
-
-            if ($$15.a()) {
-               am.N.a($$0, $$5, $$10);
-            }
-
-            return $$15;
-         } else {
-            return bqw.e;
-         }
-      }
-   }
-
-   public void a(arf $$0) {
-      this.c = $$0;
+   protected aqz a(apz $$0) {
+      return new aqz(this.i(), this.o, $$0, this.i);
    }
 }

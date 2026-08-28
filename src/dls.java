@@ -1,84 +1,105 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class dls extends dhl implements dlr {
-   public static final MapCodec<dls> b = b(dls::new);
+public enum dls implements ayz {
+   a("none", h.a),
+   b("clockwise_90", h.u),
+   c("180", h.c),
+   d("counterclockwise_90", h.v);
 
-   @Override
-   public MapCodec<dls> a() {
-      return b;
+   public static final Codec<dls> e = ayz.a(dls::values);
+   private final String f;
+   private final h g;
+
+   private dls(final String $$0, final h $$1) {
+      this.f = $$0;
+      this.g = $$1;
    }
 
-   public dls(dsd.d $$0) {
-      super(bpy.a(1), $$0);
-   }
-
-   @Override
-   public int a(dlw.a $$0, dcb $$1, iz $$2, azh $$3, dlw $$4, boolean $$5) {
-      int $$6 = $$0.b();
-      if ($$6 != 0 && $$3.a($$4.f()) == 0) {
-         iz $$7 = $$0.a();
-         boolean $$8 = $$7.a($$2, (double)$$4.e());
-         if (!$$8 && a($$1, $$7)) {
-            int $$9 = $$4.d();
-            if ($$3.a($$9) < $$6) {
-               iz $$10 = $$7.c();
-               dse $$11 = this.a($$1, $$10, $$3, $$4.h());
-               $$1.a($$10, $$11, 3);
-               $$1.a(null, $$7, $$11.w().e(), awb.e, 1.0F, 1.0F);
+   public dls a(dls $$0) {
+      switch ($$0) {
+         case c:
+            switch (this) {
+               case a:
+                  return c;
+               case b:
+                  return d;
+               case c:
+                  return a;
+               case d:
+                  return b;
             }
+         case d:
+            switch (this) {
+               case a:
+                  return d;
+               case b:
+                  return a;
+               case c:
+                  return b;
+               case d:
+                  return c;
+            }
+         case b:
+            switch (this) {
+               case a:
+                  return b;
+               case b:
+                  return c;
+               case c:
+                  return d;
+               case d:
+                  return a;
+            }
+         default:
+            return this;
+      }
+   }
 
-            return Math.max(0, $$6 - $$9);
-         } else {
-            return $$3.a($$4.g()) != 0 ? $$6 : $$6 - ($$8 ? 1 : a($$4, $$7, $$2, $$6));
+   public h a() {
+      return this.g;
+   }
+
+   public jf a(jf $$0) {
+      if ($$0.o() == jf.a.b) {
+         return $$0;
+      } else {
+         switch (this) {
+            case b:
+               return $$0.h();
+            case c:
+               return $$0.g();
+            case d:
+               return $$0.i();
+            default:
+               return $$0;
          }
-      } else {
-         return $$6;
       }
    }
 
-   private static int a(dlw $$0, iz $$1, iz $$2, int $$3) {
-      int $$4 = $$0.e();
-      float $$5 = ayz.k((float)Math.sqrt($$1.j($$2)) - (float)$$4);
-      int $$6 = ayz.h(24 - $$4);
-      float $$7 = Math.min(1.0F, $$5 / (float)$$6);
-      return Math.max(1, (int)((float)$$3 * $$7 * 0.5F));
+   public int a(int $$0, int $$1) {
+      switch (this) {
+         case b:
+            return ($$0 + $$1 / 4) % $$1;
+         case c:
+            return ($$0 + $$1 / 2) % $$1;
+         case d:
+            return ($$0 + $$1 * 3 / 4) % $$1;
+         default:
+            return $$0;
+      }
    }
 
-   private dse a(dcb $$0, iz $$1, azh $$2, boolean $$3) {
-      dse $$4;
-      if ($$2.a(11) == 0) {
-         $$4 = dfd.qV.o().a(dlv.d, Boolean.valueOf($$3));
-      } else {
-         $$4 = dfd.qQ.o();
-      }
-
-      return $$4.b(dsu.C) && !$$0.b_($$1).c() ? $$4.a(dsu.C, Boolean.valueOf(true)) : $$4;
+   public static dls a(aym $$0) {
+      return ac.a(values(), $$0);
    }
 
-   private static boolean a(dcb $$0, iz $$1) {
-      dse $$2 = $$0.a_($$1.c());
-      if ($$2.i() || $$2.a(dfd.G) && $$2.u().b(eny.c)) {
-         int $$3 = 0;
-
-         for (iz $$4 : iz.c($$1.b(-4, 0, -4), $$1.b(4, 2, 4))) {
-            dse $$5 = $$0.a_($$4);
-            if ($$5.a(dfd.qQ) || $$5.a(dfd.qV)) {
-               $$3++;
-            }
-
-            if ($$3 > 2) {
-               return false;
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
+   public static List<dls> b(aym $$0) {
+      return ac.b(values(), $$0);
    }
 
    @Override
-   public boolean d() {
-      return false;
+   public String c() {
+      return this.f;
    }
 }

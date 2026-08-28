@@ -1,130 +1,114 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class dfv extends dix {
-   public static final MapCodec<dfv> a = b(dfv::new);
-   public static final dsy b = dix.aE;
-   @Nullable
-   private dsj c;
-   @Nullable
-   private dsj d;
-   @Nullable
-   private dsj e;
-   @Nullable
-   private dsj f;
-   private static final Predicate<dse> g = $$0 -> $$0 != null && ($$0.a(dfd.ee) || $$0.a(dfd.ef));
-
-   @Override
-   public MapCodec<? extends dfv> a() {
-      return a;
-   }
-
-   protected dfv(dsd.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, je.c));
-   }
+public class dfv extends ddx {
+   public static final MapCodec<dfv> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(lq.e.r().fieldOf("candle").forGetter($$0x -> $$0x.k), u()).apply($$0, dfv::new)
+   );
+   public static final dsy d = ddx.b;
+   protected static final float e = 1.0F;
+   protected static final ews f = dff.a(1.0, 0.0, 1.0, 15.0, 8.0, 15.0);
+   protected static final ews g = dff.a(7.0, 8.0, 7.0, 9.0, 14.0, 9.0);
+   protected static final ews h = ewp.a(f, g);
+   private static final Map<dfu, dfv> i = Maps.newHashMap();
+   private static final Iterable<evz> j = ImmutableList.of(new evz(0.5, 1.0, 0.5));
+   private final dfu k;
 
    @Override
-   protected void b(dse $$0, dca $$1, iz $$2, dse $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2);
-      }
+   public MapCodec<dfv> a() {
+      return c;
    }
 
-   public boolean a(dcd $$0, iz $$1) {
-      return this.b().a($$0, $$1) != null || this.y().a($$0, $$1) != null;
-   }
-
-   private void a(dca $$0, iz $$1) {
-      dsj.b $$2 = this.m().a($$0, $$1);
-      if ($$2 != null) {
-         cgf $$3 = btc.aS.a($$0);
-         if ($$3 != null) {
-            a($$0, $$2, $$3, $$2.a(0, 2, 0).d());
-         }
+   protected dfv(dff $$0, dsg.d $$1) {
+      super($$1);
+      this.k(this.E.b().a(d, Boolean.valueOf(false)));
+      if ($$0 instanceof dfu $$2) {
+         i.put($$2, this);
+         this.k = $$2;
       } else {
-         dsj.b $$4 = this.z().a($$0, $$1);
-         if ($$4 != null) {
-            cft $$5 = btc.af.a($$0);
-            if ($$5 != null) {
-               $$5.x(true);
-               a($$0, $$4, $$5, $$4.a(1, 2, 0).d());
-            }
-         }
-      }
-   }
-
-   private static void a(dca $$0, dsj.b $$1, bsw $$2, iz $$3) {
-      a($$0, $$1);
-      $$2.b((double)$$3.u() + 0.5, (double)$$3.v() + 0.05, (double)$$3.w() + 0.5, 0.0F, 0.0F);
-      $$0.b($$2);
-
-      for (arg $$4 : $$0.a(arg.class, $$2.cK().g(5.0))) {
-         am.o.a($$4, $$2);
-      }
-
-      b($$0, $$1);
-   }
-
-   public static void a(dca $$0, dsj.b $$1) {
-      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
-         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
-            dsi $$4 = $$1.a($$2, $$3, 0);
-            $$0.a($$4.d(), dfd.a.o(), 2);
-            $$0.c(2001, $$4.d(), dfb.i($$4.a()));
-         }
-      }
-   }
-
-   public static void b(dca $$0, dsj.b $$1) {
-      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
-         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
-            dsi $$4 = $$1.a($$2, $$3, 0);
-            $$0.b($$4.d(), dfd.a);
-         }
+         throw new IllegalArgumentException("Expected block to be of " + dfu.class + " was " + $$0.getClass());
       }
    }
 
    @Override
-   public dse a(cyc $$0) {
-      return this.o().a(b, $$0.g().g());
+   protected Iterable<evz> b(dsh $$0) {
+      return j;
    }
 
    @Override
-   protected void a(dsf.a<dfb, dse> $$0) {
-      $$0.a(b);
+   protected ews a(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
+      return h;
    }
 
-   private dsj b() {
-      if (this.c == null) {
-         this.c = dsk.a().a(" ", "#", "#").a('#', dsi.a(dsn.a(dfd.dP))).b();
+   @Override
+   protected bqf a(cua $$0, dsh $$1, dcd $$2, ja $$3, cmh $$4, bqc $$5, evv $$6) {
+      if ($$0.a(cud.os) || $$0.a(cud.tX)) {
+         return bqf.e;
+      } else if (a($$6) && $$0.e() && $$1.c(d)) {
+         a($$4, $$1, $$2, $$3);
+         return bqf.a($$2.B);
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
-
-      return this.c;
    }
 
-   private dsj m() {
-      if (this.d == null) {
-         this.d = dsk.a().a("^", "#", "#").a('^', dsi.a(g)).a('#', dsi.a(dsn.a(dfd.dP))).b();
+   @Override
+   protected bqd a(dsh $$0, dcd $$1, ja $$2, cmh $$3, evv $$4) {
+      bqd $$5 = dfr.a($$1, $$2, dfh.eg.o(), $$3);
+      if ($$5.a()) {
+         c($$0, $$1, $$2);
       }
 
-      return this.d;
+      return $$5;
    }
 
-   private dsj y() {
-      if (this.e == null) {
-         this.e = dsk.a().a("~ ~", "###", "~#~").a('#', dsi.a(dsn.a(dfd.ci))).a('~', $$0 -> $$0.a().i()).b();
-      }
-
-      return this.e;
+   private static boolean a(evv $$0) {
+      return $$0.e().d - (double)$$0.a().v() > 0.5;
    }
 
-   private dsj z() {
-      if (this.f == null) {
-         this.f = dsk.a().a("~^~", "###", "~#~").a('^', dsi.a(g)).a('#', dsi.a(dsn.a(dfd.ci))).a('~', $$0 -> $$0.a().i()).b();
-      }
+   @Override
+   protected void a(dsi.a<dff, dsh> $$0) {
+      $$0.a(d);
+   }
 
-      return this.f;
+   @Override
+   public cua a(dcg $$0, ja $$1, dsh $$2) {
+      return new cua(dfh.eg);
+   }
+
+   @Override
+   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
+      return $$1 == jf.a && !$$0.a($$3, $$4) ? dfh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected boolean a(dsh $$0, dcg $$1, ja $$2) {
+      return $$1.a_($$2.d()).e();
+   }
+
+   @Override
+   protected int a(dsh $$0, dcd $$1, ja $$2) {
+      return dfr.d;
+   }
+
+   @Override
+   protected boolean c_(dsh $$0) {
+      return true;
+   }
+
+   @Override
+   protected boolean a(dsh $$0, eoq $$1) {
+      return false;
+   }
+
+   public static dsh a(dfu $$0) {
+      return i.get($$0).o();
+   }
+
+   public static boolean g(dsh $$0) {
+      return $$0.a(avu.bk, $$1 -> $$1.b(d) && !$$0.c(d));
    }
 }

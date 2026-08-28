@@ -1,147 +1,84 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import java.util.Collection;
-import java.util.function.BiConsumer;
-import java.util.function.BiPredicate;
-import java.util.function.ToIntFunction;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Locale;
+import java.util.function.Consumer;
+import net.minecraft.server.MinecraftServer;
+import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
 
 public class anh {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xp.c("commands.experience.set.points.invalid"));
+   private static final Logger a = LogUtils.getLogger();
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wu.c("commands.perf.notRunning"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wu.c("commands.perf.alreadyRunning"));
 
-   public static void a(CommandDispatcher<ep> $$0) {
-      LiteralCommandNode<ep> $$1 = $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("experience").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     eq.a("add")
-                        .then(
-                           eq.a("targets", fc.d())
-                              .then(
-                                 ((RequiredArgumentBuilder)((RequiredArgumentBuilder)eq.a("amount", IntegerArgumentType.integer())
-                                          .executes(
-                                             $$0x -> a((ep)$$0x.getSource(), fc.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), anh.a.a)
-                                          ))
-                                       .then(
-                                          eq.a("points")
-                                             .executes(
-                                                $$0x -> a((ep)$$0x.getSource(), fc.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), anh.a.a)
-                                             )
-                                       ))
-                                    .then(
-                                       eq.a("levels")
-                                          .executes(
-                                             $$0x -> a((ep)$$0x.getSource(), fc.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), anh.a.b)
-                                          )
-                                    )
-                              )
-                        )
-                  ))
-               .then(
-                  eq.a("set")
-                     .then(
-                        eq.a("targets", fc.d())
-                           .then(
-                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)eq.a("amount", IntegerArgumentType.integer(0))
-                                       .executes(
-                                          $$0x -> b((ep)$$0x.getSource(), fc.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), anh.a.a)
-                                       ))
-                                    .then(
-                                       eq.a("points")
-                                          .executes(
-                                             $$0x -> b((ep)$$0x.getSource(), fc.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), anh.a.a)
-                                          )
-                                    ))
-                                 .then(
-                                    eq.a("levels")
-                                       .executes(
-                                          $$0x -> b((ep)$$0x.getSource(), fc.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), anh.a.b)
-                                       )
-                                 )
-                           )
-                     )
-               ))
-            .then(
-               eq.a("query")
-                  .then(
-                     ((RequiredArgumentBuilder)eq.a("targets", fc.c())
-                           .then(eq.a("points").executes($$0x -> a((ep)$$0x.getSource(), fc.e($$0x, "targets"), anh.a.a))))
-                        .then(eq.a("levels").executes($$0x -> a((ep)$$0x.getSource(), fc.e($$0x, "targets"), anh.a.b)))
-                  )
-            )
+   public static void a(CommandDispatcher<eq> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("perf").requires($$0x -> $$0x.c(4)))
+               .then(er.a("start").executes($$0x -> a((eq)$$0x.getSource()))))
+            .then(er.a("stop").executes($$0x -> b((eq)$$0x.getSource())))
       );
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("xp").requires($$0x -> $$0x.c(2))).redirect($$1));
    }
 
-   private static int a(ep $$0, arg $$1, anh.a $$2) {
-      int $$3 = $$2.f.applyAsInt($$1);
-      $$0.a(() -> xp.a("commands.experience.query." + $$2.e, $$1.O_(), $$3), false);
-      return $$3;
-   }
-
-   private static int a(ep $$0, Collection<? extends arg> $$1, int $$2, anh.a $$3) {
-      for (arg $$4 : $$1) {
-         $$3.c.accept($$4, $$2);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> xp.a("commands.experience.add." + $$3.e + ".success.single", $$2, $$1.iterator().next().O_()), true);
+   private static int a(eq $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if ($$1.aV()) {
+         throw c.create();
       } else {
-         $$0.a(() -> xp.a("commands.experience.add." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
+         Consumer<bmq> $$2 = $$1x -> a($$0, $$1x);
+         Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
+         $$1.a($$2, $$3);
+         $$0.a(() -> wu.c("commands.perf.started"), false);
+         return 0;
       }
-
-      return $$1.size();
    }
 
-   private static int b(ep $$0, Collection<? extends arg> $$1, int $$2, anh.a $$3) throws CommandSyntaxException {
-      int $$4 = 0;
-
-      for (arg $$5 : $$1) {
-         if ($$3.d.test($$5, $$2)) {
-            $$4++;
-         }
-      }
-
-      if ($$4 == 0) {
-         throw a.create();
+   private static int b(eq $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if (!$$1.aV()) {
+         throw b.create();
       } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> xp.a("commands.experience.set." + $$3.e + ".success.single", $$2, $$1.iterator().next().O_()), true);
-         } else {
-            $$0.a(() -> xp.a("commands.experience.set." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
-         }
-
-         return $$1.size();
+         $$1.aX();
+         return 0;
       }
    }
 
-   static enum a {
-      a("points", cmz::d, ($$0, $$1) -> {
-         if ($$1 >= $$0.gl()) {
-            return false;
-         } else {
-            $$0.a($$1);
-            return true;
-         }
-      }, $$0 -> ayz.d($$0.cq * (float)$$0.gl())),
-      b("levels", arg::c, ($$0, $$1) -> {
-         $$0.b($$1);
-         return true;
-      }, $$0 -> $$0.co);
+   private static void a(eq $$0, Path $$1, MinecraftServer $$2) {
+      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ac.f(), $$2.bb().e(), aa.b().b());
 
-      public final BiConsumer<arg, Integer> c;
-      public final BiPredicate<arg, Integer> d;
-      public final String e;
-      final ToIntFunction<arg> f;
+      String $$4;
+      try {
+         $$4 = v.a(boj.a, $$3, ".zip");
+      } catch (IOException var11) {
+         $$0.b(wu.c("commands.perf.reportFailed"));
+         a.error("Failed to create report name", var11);
+         return;
+      }
 
-      private a(final String $$0, final BiConsumer<arg, Integer> $$1, final BiPredicate<arg, Integer> $$2, final ToIntFunction<arg> $$3) {
-         this.c = $$1;
-         this.e = $$0;
-         this.d = $$2;
-         this.f = $$3;
+      try (axp $$7 = new axp(boj.a.resolve($$4))) {
+         $$7.a(Paths.get("system.txt"), $$2.b(new ab()).a());
+         $$7.a($$1);
+      }
+
+      try {
+         FileUtils.forceDelete($$1.toFile());
+      } catch (IOException var9) {
+         a.warn("Failed to delete temporary profiling file {}", $$1, var9);
+      }
+
+      $$0.a(() -> wu.a("commands.perf.reportSaved", $$4), false);
+   }
+
+   private static void a(eq $$0, bmq $$1) {
+      if ($$1 != bmm.a) {
+         int $$2 = $$1.f();
+         double $$3 = (double)$$1.g() / (double)aze.a;
+         $$0.a(() -> wu.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);
       }
    }
 }

@@ -1,27 +1,22 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.function.Consumer;
+public abstract class cxy implements cxx {
+   private final cxv a;
 
-public record cxy(boolean c) implements cxx {
-   public static final Codec<cxy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cxy::a)).apply($$0, cxy::new)
-   );
-   public static final zn<ByteBuf, cxy> b = zl.b.a(cxy::new, cxy::a);
-   private static final xp d = xp.c("item.unbreakable").a(n.j);
+   public cxy(cxv $$0) {
+      this.a = $$0;
+   }
 
    @Override
-   public void a(cum.b $$0, Consumer<xp> $$1, cwk $$2) {
-      if (this.c) {
-         $$1.accept(d);
-      }
+   public boolean ao_() {
+      return true;
    }
 
-   public cxy a(boolean $$0) {
-      return new cxy($$0);
+   @Override
+   public cua a(jl.a $$0) {
+      return cua.l;
    }
 
-   public boolean a() {
-      return this.c;
+   @Override
+   public cxv d() {
+      return this.a;
    }
 }

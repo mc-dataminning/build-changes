@@ -1,29 +1,30 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.IntFunction;
 
-public class fex {
-   private final List<xu> a = Lists.newArrayList();
+public enum fex implements ayh {
+   a(0, "options.off"),
+   b(1, "options.attack.crosshair"),
+   c(2, "options.attack.hotbar");
 
-   public void a(xu $$0) {
-      this.a.add($$0);
+   private static final IntFunction<fex> d = awu.a(fex::a, values(), awu.a.b);
+   private final int e;
+   private final String f;
+
+   private fex(final int $$0, final String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   @Nullable
-   public xu a() {
-      if (this.a.isEmpty()) {
-         return null;
-      } else {
-         return this.a.size() == 1 ? this.a.get(0) : xu.a(this.a);
-      }
+   @Override
+   public int a() {
+      return this.e;
    }
 
-   public xu b() {
-      xu $$0 = this.a();
-      return $$0 != null ? $$0 : xu.b;
+   @Override
+   public String b() {
+      return this.f;
    }
 
-   public void c() {
-      this.a.clear();
+   public static fex a(int $$0) {
+      return d.apply($$0);
    }
 }

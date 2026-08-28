@@ -1,50 +1,50 @@
-import java.util.List;
+public abstract class fou<T extends cqh> extends fns<T> implements cpr {
+   private final akk D;
 
-public class fou {
-   private static final int a = 30;
-   private static final int b = 16;
-   private static final int c = 4;
-   private final int d;
-   private List<alf> e = List.of();
-   private int f;
-   private int g;
-
-   public fou(int $$0) {
-      this.d = $$0;
+   public fou(T $$0, cmg $$1, wu $$2, akk $$3) {
+      super($$0, $$1, $$2);
+      this.D = $$3;
    }
 
-   public void a(List<alf> $$0) {
-      if (!this.e.equals($$0)) {
-         this.e = $$0;
-         this.g = 0;
-      }
-
-      if (!this.e.isEmpty() && ++this.f % 30 == 0) {
-         this.g = (this.g + 1) % this.e.size();
-      }
+   protected void G() {
    }
 
-   public void a(cpw $$0, fgt $$1, float $$2, int $$3, int $$4) {
-      crr $$5 = $$0.b(this.d);
-      if (!this.e.isEmpty() && !$$5.h()) {
-         boolean $$6 = this.e.size() > 1 && this.f >= 30;
-         float $$7 = $$6 ? this.a($$2) : 1.0F;
-         if ($$7 < 1.0F) {
-            int $$8 = Math.floorMod(this.g - 1, this.e.size());
-            this.a($$5, this.e.get($$8), 1.0F - $$7, $$1, $$3, $$4);
-         }
-
-         this.a($$5, this.e.get(this.g), $$7, $$1, $$3, $$4);
-      }
+   @Override
+   protected void aO_() {
+      super.aO_();
+      this.G();
+      this.w.a(this);
    }
 
-   private void a(crr $$0, alf $$1, float $$2, fgt $$3, int $$4, int $$5) {
-      gpb $$6 = ffh.Q().a(gpa.e).apply($$1);
-      $$3.a($$4 + $$0.e, $$5 + $$0.f, 0, 16, 16, $$6, 1.0F, 1.0F, 1.0F, $$2);
+   @Override
+   public void j() {
+      super.j();
+      this.w.b(this);
    }
 
-   private float a(float $$0) {
-      float $$1 = (float)(this.f % 30) + $$0;
-      return Math.min($$1, 4.0F) / 4.0F;
+   @Override
+   public void a(fgz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
+
+   protected void d(fgz $$0, int $$1, int $$2, float $$3) {
+   }
+
+   @Override
+   protected void a(fgz $$0, float $$1, int $$2, int $$3) {
+      $$0.a(this.D, this.z, this.A, 0, 0, this.c, this.q);
+      this.c($$0, this.z, this.A);
+   }
+
+   protected abstract void c(fgz var1, int var2, int var3);
+
+   @Override
+   public void a(cpe $$0, int $$1, int $$2) {
+   }
+
+   @Override
+   public void a(cpe $$0, int $$1, cua $$2) {
    }
 }

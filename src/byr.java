@@ -1,97 +1,63 @@
 import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
 
-public class byr extends bvk<cmm> {
-   private long c;
+public class byr extends bur<cll> {
+   private static final int d = 15;
+   private static final int e = 20;
+   private static final double f = 0.5;
+   private static final double g = 2.5;
+   public static final int c = 40;
+   private static final int h = aye.c(34.0);
+   private static final int i = aye.f(60.0F);
 
    public byr() {
-      super(ImmutableMap.of(ccv.r, ccw.a, ccv.h, ccw.a), 350, 350);
+      super(ImmutableMap.of(ccc.o, ccd.a, ccc.aJ, ccd.b, ccc.aK, ccd.c, ccc.aL, ccd.c), i);
    }
 
-   protected boolean a(arf $$0, cmm $$1) {
-      return this.a($$1);
+   protected boolean a(aqk $$0, cll $$1) {
+      return $$1.a($$1.dT().c(ccc.o).get(), 15.0, 20.0);
    }
 
-   protected boolean a(arf $$0, cmm $$1, long $$2) {
-      return $$2 <= this.c && this.a($$1);
+   protected boolean a(aqk $$0, cll $$1, long $$2) {
+      return true;
    }
 
-   protected void b(arf $$0, cmm $$1, long $$2) {
-      bsq $$3 = $$1.dS().c(ccv.r).get();
-      bvm.a($$1, $$3, 0.5F, 2);
-      $$0.a($$3, (byte)18);
-      $$0.a($$1, (byte)18);
-      int $$4 = 275 + $$1.el().a(50);
-      this.c = $$2 + (long)$$4;
+   protected void b(aqk $$0, cll $$1, long $$2) {
+      $$1.dT().a(ccc.p, true, (long)i);
+      $$1.dT().a(ccc.aL, azh.a, (long)h);
+      $$0.a($$1, (byte)62);
+      $$1.a(avf.BW, 3.0F, 1.0F);
    }
 
-   protected void c(arf $$0, cmm $$1, long $$2) {
-      cmm $$3 = (cmm)$$1.dS().c(ccv.r).get();
-      if (!($$1.g($$3) > 5.0)) {
-         bvm.a($$1, $$3, 0.5F, 2);
-         if ($$2 >= this.c) {
-            $$1.gH();
-            $$3.gH();
-            this.a($$0, $$1, $$3);
-         } else if ($$1.el().a(35) == 0) {
-            $$0.a($$3, (byte)12);
-            $$0.a($$1, (byte)12);
-         }
+   protected void c(aqk $$0, cll $$1, long $$2) {
+      $$1.dT().c(ccc.o).ifPresent($$1x -> $$1.G().a($$1x.dn()));
+      if (!$$1.dT().a(ccc.aL) && !$$1.dT().a(ccc.aK)) {
+         $$1.dT().a(ccc.aK, azh.a, (long)(i - h));
+         $$1.dT().c(ccc.o).filter($$1::b).filter($$1x -> $$1.a($$1x, 15.0, 20.0)).ifPresent($$2x -> {
+            evz $$3 = $$1.dn().e($$1.dm().b(bse.d, 0, $$1.dF()));
+            evz $$4 = $$2x.bx().d($$3);
+            evz $$5 = $$4.d();
+            int $$6 = aye.a($$4.f()) + 7;
+
+            for (int $$7 = 1; $$7 < $$6; $$7++) {
+               evz $$8 = $$3.e($$5.a((double)$$7));
+               $$0.a(lj.B, $$8.c, $$8.d, $$8.e, 1, 0.0, 0.0, 0.0, 0.0);
+            }
+
+            $$1.a(avf.BV, 3.0F, 1.0F);
+            if ($$2x.a($$0.aj().e($$1), 10.0F)) {
+               double $$9 = 0.5 * (1.0 - $$2x.g(bug.p));
+               double $$10 = 2.5 * (1.0 - $$2x.g(bug.p));
+               $$2x.j($$5.a() * $$10, $$5.b() * $$9, $$5.c() * $$10);
+            }
+         });
       }
    }
 
-   private void a(arf $$0, cmm $$1, cmm $$2) {
-      Optional<iz> $$3 = this.b($$0, $$1);
-      if ($$3.isEmpty()) {
-         $$0.a($$2, (byte)13);
-         $$0.a($$1, (byte)13);
-      } else {
-         Optional<cmm> $$4 = this.b($$0, $$1, $$2);
-         if ($$4.isPresent()) {
-            this.a($$0, $$4.get(), $$3.get());
-         } else {
-            $$0.y().b($$3.get());
-            agt.c($$0, $$3.get());
-         }
-      }
+   protected void d(aqk $$0, cll $$1, long $$2) {
+      a($$1, 40);
    }
 
-   protected void d(arf $$0, cmm $$1, long $$2) {
-      $$1.dS().b(ccv.r);
-   }
-
-   private boolean a(cmm $$0) {
-      but<cmm> $$1 = $$0.dS();
-      Optional<bsq> $$2 = $$1.c(ccv.r).filter($$0x -> $$0x.ak() == btc.bj);
-      return $$2.isEmpty() ? false : bvm.a($$1, ccv.r, btc.bj) && $$0.X_() && $$2.get().X_();
-   }
-
-   private Optional<iz> b(arf $$0, cmm $$1) {
-      return $$0.y().a($$0x -> $$0x.a(cez.n), ($$1x, $$2) -> this.a($$1, $$2, $$1x), $$1.dp(), 48);
-   }
-
-   private boolean a(cmm $$0, iz $$1, ji<cey> $$2) {
-      eol $$3 = $$0.K().a($$1, $$2.a().c());
-      return $$3 != null && $$3.j();
-   }
-
-   private Optional<cmm> b(arf $$0, cmm $$1, cmm $$2) {
-      cmm $$3 = $$1.b($$0, $$2);
-      if ($$3 == null) {
-         return Optional.empty();
-      } else {
-         $$1.c_(6000);
-         $$2.c_(6000);
-         $$3.c_(-24000);
-         $$3.b($$1.du(), $$1.dw(), $$1.dA(), 0.0F, 0.0F);
-         $$0.a_($$3);
-         $$0.a($$3, (byte)12);
-         return Optional.of($$3);
-      }
-   }
-
-   private void a(arf $$0, cmm $$1, iz $$2) {
-      jh $$3 = jh.a($$0.af(), $$2);
-      $$1.dS().a(ccv.b, $$3);
+   public static void a(bsy $$0, int $$1) {
+      $$0.dT().a(ccc.aJ, azh.a, (long)$$1);
    }
 }

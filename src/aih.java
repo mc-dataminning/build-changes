@@ -1,29 +1,16 @@
-public class aih implements zw<agw> {
-   public static final zn<wm, aih> a = zw.a(aih::a, aih::new);
-   private final int b;
-
-   public aih(int $$0) {
-      this.b = $$0;
-   }
-
-   private aih(wm $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(wm $$0) {
-      $$0.c(this.b);
-   }
-
+public interface aih extends abh, vm {
    @Override
-   public zy<aih> a() {
-      return agu.bR;
+   default vq b() {
+      return vq.d;
    }
 
-   public void a(agw $$0) {
-      $$0.a(this);
-   }
+   void a(aik var1);
 
-   public int b() {
-      return this.b;
-   }
+   void a(aij var1);
+
+   void a(aim var1);
+
+   void a(ail var1);
+
+   void a(aii var1);
 }

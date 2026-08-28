@@ -1,11 +1,11 @@
-public class glk extends gkf<che, fwg<che>> {
-   private static final alf a = new alf("textures/entity/tadpole/tadpole.png");
+public class glk extends gkm<chf, fwh<chf>> {
+   private static final akk a = new akk("textures/entity/sniffer/sniffer.png");
 
-   public glk(giz.a $$0) {
-      super($$0, new fwg<>($$0.a(fxb.bF)), 0.14F);
+   public glk(gjg.a $$0) {
+      super($$0, new fwh<>($$0.a(fxh.bu)), 1.1F);
    }
 
-   public alf a(che $$0) {
+   public akk a(chf $$0) {
       return a;
    }
 }

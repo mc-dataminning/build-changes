@@ -1,33 +1,61 @@
-public class ftq<T extends chk> extends fun<T> {
-   private final fxc g = this.b.b("left_chest");
-   private final fxc h = this.b.b("right_chest");
+public class ftq extends fve {
+   private static final String a = "left_pages";
+   private static final String b = "right_pages";
+   private static final String c = "flip_page1";
+   private static final String d = "flip_page2";
+   private final fxi e;
+   private final fxi f;
+   private final fxi g;
+   private final fxi h;
+   private final fxi i;
+   private final fxi j;
+   private final fxi k;
 
-   public ftq(fxc $$0) {
-      super($$0);
+   public ftq(fxi $$0) {
+      super(gef::c);
+      this.e = $$0;
+      this.f = $$0.b("left_lid");
+      this.g = $$0.b("right_lid");
+      this.h = $$0.b("left_pages");
+      this.i = $$0.b("right_pages");
+      this.j = $$0.b("flip_page1");
+      this.k = $$0.b("flip_page2");
    }
 
-   public static fxi c() {
-      fxk $$0 = fun.a(fxg.a);
-      fxl $$1 = $$0.a();
-      fxl $$2 = $$1.a("body");
-      fxh $$3 = fxh.c().a(26, 21).a(-4.0F, 0.0F, -2.0F, 8.0F, 8.0F, 3.0F);
-      $$2.a("left_chest", $$3, fxe.a(6.0F, -8.0F, 0.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$2.a("right_chest", $$3, fxe.a(-6.0F, -8.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      fxl $$4 = $$1.a("head_parts").a("head");
-      fxh $$5 = fxh.c().a(0, 12).a(-1.0F, -7.0F, 0.0F, 2.0F, 7.0F, 1.0F);
-      $$4.a("left_ear", $$5, fxe.a(1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12)));
-      $$4.a("right_ear", $$5, fxe.a(-1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12)));
-      return fxi.a($$0, 64, 64);
+   public static fxo a() {
+      fxq $$0 = new fxq();
+      fxr $$1 = $$0.a();
+      $$1.a("left_lid", fxn.c().a(0, 0).a(-6.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), fxk.a(0.0F, 0.0F, -1.0F));
+      $$1.a("right_lid", fxn.c().a(16, 0).a(0.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), fxk.a(0.0F, 0.0F, 1.0F));
+      $$1.a("seam", fxn.c().a(12, 0).a(-1.0F, -5.0F, 0.0F, 2.0F, 10.0F, 0.005F), fxk.b(0.0F, (float) (Math.PI / 2), 0.0F));
+      $$1.a("left_pages", fxn.c().a(0, 10).a(0.0F, -4.0F, -0.99F, 5.0F, 8.0F, 1.0F), fxk.a);
+      $$1.a("right_pages", fxn.c().a(12, 10).a(0.0F, -4.0F, -0.01F, 5.0F, 8.0F, 1.0F), fxk.a);
+      fxn $$2 = fxn.c().a(24, 10).a(0.0F, -4.0F, 0.0F, 5.0F, 8.0F, 0.005F);
+      $$1.a("flip_page1", $$2, fxk.a);
+      $$1.a("flip_page2", $$2, fxk.a);
+      return fxo.a($$0, 64, 32);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if ($$0.u()) {
-         this.g.k = true;
-         this.h.k = true;
-      } else {
-         this.g.k = false;
-         this.h.k = false;
-      }
+   @Override
+   public void a(fag $$0, fak $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   public void b(fag $$0, fak $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.e.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3) {
+      float $$4 = (aye.a($$0 * 0.02F) * 0.1F + 1.25F) * $$3;
+      this.f.f = (float) Math.PI + $$4;
+      this.g.f = -$$4;
+      this.h.f = $$4;
+      this.i.f = -$$4;
+      this.j.f = $$4 - $$4 * 2.0F * $$1;
+      this.k.f = $$4 - $$4 * 2.0F * $$2;
+      this.h.b = aye.a($$4);
+      this.i.b = aye.a($$4);
+      this.j.b = aye.a($$4);
+      this.k.b = aye.a($$4);
    }
 }

@@ -1,26 +1,33 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class bxv {
-   private static final float a = 0.3F;
+   private static final int a = 10;
+   private static final int b = 7;
 
-   public static bwv<btr> a() {
-      return byx.a(
-         (Function<byx.b<btr>, ? extends App<byx.c<btr>, bza<btr>>>)($$0 -> $$0.group($$0.a(ccv.m), $$0.a(ccv.n), $$0.b(ccv.e), $$0.b(ccv.h), $$0.c(ccv.q))
-               .apply($$0, ($$1, $$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     jh $$9 = $$0.b($$3);
-                     ccx $$10 = $$0.b($$4);
-                     if ($$6.E_().a(100) == 0 && $$6.af() == $$9.a() && $$9.b().a($$7.dn(), 4.0) && $$10.d($$0xxx -> btc.bj.equals($$0xxx.ak()))) {
-                        $$10.a($$1xx -> btc.bj.equals($$1xx.ak()) && $$1xx.g((bsw)$$7) <= 32.0).ifPresent($$3xx -> {
-                           $$5.a($$3xx);
-                           $$2.a(new bvv($$3xx, true));
-                           $$1.a(new ccy(new bvv($$3xx, false), 0.3F, 1));
-                        });
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+   public static bwc<bth> a(float $$0) {
+      return a($$0, 10, 7);
+   }
+
+   public static bwc<bth> a(float $$0, int $$1, int $$2) {
+      return bye.a((Function<bye.b<bth>, ? extends App<bye.c<bth>, byh<bth>>>)($$3 -> $$3.group($$3.c(ccc.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
+               ja $$7 = $$5.dp();
+               evz $$8;
+               if ($$4.c($$7)) {
+                  $$8 = cdw.a($$5, $$1, $$2);
+               } else {
+                  kc $$9 = kc.a($$7);
+                  kc $$10 = but.a($$4, $$9, 2);
+                  if ($$10 != $$9) {
+                     $$8 = cdt.a($$5, $$1, $$2, evz.c($$10.q()), (float) (Math.PI / 2));
+                  } else {
+                     $$8 = cdw.a($$5, $$1, $$2);
+                  }
+               }
+
+               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new ccf($$1xxxx, $$0, 0)));
+               return true;
+            })));
    }
 }

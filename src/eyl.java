@@ -1,94 +1,47 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import it.unimi.dsi.fastutil.ints.IntSets;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class eyl {
-   private final List<ConcurrentLinkedQueue<eyk>> a = ImmutableList.of(
-      new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue()
-   );
-   private volatile boolean b;
-   private volatile int c;
-   private volatile boolean d;
-   private volatile int e;
-   private volatile int f;
+public class eyl implements eyj {
+   private final Int2ObjectMap<eyi.a> b;
 
-   public eyl() {
-      this.c = this.e = this.f + 1;
+   public eyl(Map<Integer, Float> $$0) {
+      this.b = new Int2ObjectOpenHashMap($$0.size());
+      $$0.forEach(($$0x, $$1) -> this.b.put($$0x, (eyi.a)() -> $$1));
    }
 
-   public boolean a() {
-      return !this.b && this.c == this.e;
+   @Nullable
+   @Override
+   public eyi a(int $$0) {
+      return (eyi)this.b.get($$0);
    }
 
-   public boolean b() {
-      if (this.b) {
-         throw new RuntimeException("ALREADY RECORDING !!!");
-      } else if (this.a()) {
-         this.c = (this.e + 1) % this.a.size();
-         this.b = true;
-         return true;
-      } else {
-         return false;
+   @Override
+   public IntSet a() {
+      return IntSets.unmodifiable(this.b.keySet());
+   }
+
+   public static record a(Map<Integer, Float> c) implements fko {
+      public static final MapCodec<eyl.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.unboundedMap(axm.z, Codec.FLOAT).fieldOf("advances").forGetter(eyl.a::c)).apply($$0, eyl.a::new)
+      );
+
+      @Override
+      public fkp a() {
+         return fkp.c;
       }
-   }
 
-   public void a(eyk $$0) {
-      if (!this.b) {
-         throw new RuntimeException("NOT RECORDING !!!");
-      } else {
-         ConcurrentLinkedQueue<eyk> $$1 = this.i();
-         $$1.add($$0);
+      @Override
+      public Either<fko.b, fko.c> b() {
+         fko.b $$0 = $$0x -> new eyl(this.c);
+         return Either.left($$0);
       }
-   }
-
-   public void c() {
-      if (this.b) {
-         this.b = false;
-      } else {
-         throw new RuntimeException("NOT RECORDING !!!");
-      }
-   }
-
-   public boolean d() {
-      return !this.d && this.c != this.e;
-   }
-
-   public boolean e() {
-      if (this.d) {
-         throw new RuntimeException("ALREADY PROCESSING !!!");
-      } else if (this.d()) {
-         this.d = true;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public void f() {
-      if (!this.d) {
-         throw new RuntimeException("NOT PROCESSING !!!");
-      }
-   }
-
-   public void g() {
-      if (this.d) {
-         this.d = false;
-         this.f = this.e;
-         this.e = this.c;
-      } else {
-         throw new RuntimeException("NOT PROCESSING !!!");
-      }
-   }
-
-   public ConcurrentLinkedQueue<eyk> h() {
-      return this.a.get(this.f);
-   }
-
-   public ConcurrentLinkedQueue<eyk> i() {
-      return this.a.get(this.c);
-   }
-
-   public ConcurrentLinkedQueue<eyk> j() {
-      return this.a.get(this.e);
    }
 }

@@ -1,109 +1,54 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
+import com.google.common.collect.Lists;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringEscapeUtils;
 
 public class axd {
-   private static final Codec<axd> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayh.r.fieldOf("id").forGetter(axd::a), Codec.BOOL.optionalFieldOf("required", true).forGetter($$0x -> $$0x.e)).apply($$0, axd::new)
-   );
-   public static final Codec<axd> a = Codec.either(ayh.r, b)
-      .xmap($$0 -> (axd)$$0.map($$0x -> new axd($$0x, true), $$0x -> $$0x), $$0 -> $$0.e ? Either.left($$0.a()) : Either.right($$0));
-   private final alf c;
-   private final boolean d;
-   private final boolean e;
+   private static final String a = "\r\n";
+   private static final String b = ",";
+   private final Writer c;
+   private final int d;
 
-   private axd(alf $$0, boolean $$1, boolean $$2) {
+   axd(Writer $$0, List<String> $$1) throws IOException {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+      this.d = $$1.size();
+      this.a($$1.stream());
    }
 
-   private axd(ayh.c $$0, boolean $$1) {
-      this.c = $$0.a();
-      this.d = $$0.b();
-      this.e = $$1;
+   public static axd.a a() {
+      return new axd.a();
    }
 
-   private ayh.c a() {
-      return new ayh.c(this.c, this.d);
-   }
-
-   public static axd a(alf $$0) {
-      return new axd($$0, false, true);
-   }
-
-   public static axd b(alf $$0) {
-      return new axd($$0, false, false);
-   }
-
-   public static axd c(alf $$0) {
-      return new axd($$0, true, true);
-   }
-
-   public static axd d(alf $$0) {
-      return new axd($$0, true, false);
-   }
-
-   public <T> boolean a(axd.a<T> $$0, Consumer<T> $$1) {
-      if (this.d) {
-         Collection<T> $$2 = $$0.b(this.c);
-         if ($$2 == null) {
-            return !this.e;
-         }
-
-         $$2.forEach($$1);
+   public void a(Object... $$0) throws IOException {
+      if ($$0.length != this.d) {
+         throw new IllegalArgumentException("Invalid number of columns, expected " + this.d + ", but got " + $$0.length);
       } else {
-         T $$3 = $$0.a(this.c);
-         if ($$3 == null) {
-            return !this.e;
-         }
-
-         $$1.accept($$3);
-      }
-
-      return true;
-   }
-
-   public void a(Consumer<alf> $$0) {
-      if (this.d && this.e) {
-         $$0.accept(this.c);
+         this.a(Stream.of($$0));
       }
    }
 
-   public void b(Consumer<alf> $$0) {
-      if (this.d && !this.e) {
-         $$0.accept(this.c);
-      }
+   private void a(Stream<?> $$0) throws IOException {
+      this.c.write($$0.<CharSequence>map(axd::a).collect(Collectors.joining(",")) + "\r\n");
    }
 
-   public boolean a(Predicate<alf> $$0, Predicate<alf> $$1) {
-      return !this.e || (this.d ? $$1 : $$0).test(this.c);
+   private static String a(@Nullable Object $$0) {
+      return StringEscapeUtils.escapeCsv($$0 != null ? $$0.toString() : "[null]");
    }
 
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-      if (this.d) {
-         $$0.append('#');
+   public static class a {
+      private final List<String> a = Lists.newArrayList();
+
+      public axd.a a(String $$0) {
+         this.a.add($$0);
+         return this;
       }
 
-      $$0.append(this.c);
-      if (!this.e) {
-         $$0.append('?');
+      public axd a(Writer $$0) throws IOException {
+         return new axd($$0, this.a);
       }
-
-      return $$0.toString();
-   }
-
-   public interface a<T> {
-      @Nullable
-      T a(alf var1);
-
-      @Nullable
-      Collection<T> b(alf var1);
    }
 }

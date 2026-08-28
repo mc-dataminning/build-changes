@@ -1,21 +1,17 @@
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
+import java.util.Map;
+import java.util.Objects;
 
-public class bcq extends DataFix {
-   public bcq(Schema $$0) {
-      super($$0, false);
+public class bcq extends bgp {
+   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:illager_beast_spawn_egg", "minecraft:ravager_spawn_egg").build();
+
+   public bcq(Schema $$0, boolean $$1) {
+      super("EntityRavagerRenameFix", $$0, $$1);
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgx.x);
-      return this.writeFixAndRead("EmptyItemInVillagerTradeFix", $$0, $$0, $$0x -> {
-         Dynamic<?> $$1 = $$0x.get("buyB").orElseEmptyMap();
-         String $$2 = bij.a($$1.get("id").asString("minecraft:air"));
-         int $$3 = $$1.get("count").asInt(0);
-         return !$$2.equals("minecraft:air") && $$3 != 0 ? $$0x : $$0x.remove("buyB");
-      });
+   @Override
+   protected String a(String $$0) {
+      return Objects.equals("minecraft:illager_beast", $$0) ? "minecraft:ravager" : $$0;
    }
 }

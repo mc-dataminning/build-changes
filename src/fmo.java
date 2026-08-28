@@ -1,114 +1,41 @@
-public class fmo extends fmx {
-   private static final xp a = xp.c("options.languageAccuracyWarning").a(n.h);
-   private static final int r = 53;
-   private fmo.a s;
-   final gqj u;
+import javax.annotation.Nullable;
 
-   public fmo(fnf $$0, ffl $$1, gqj $$2) {
-      super($$0, $$1, xp.c("options.language.title"));
-      this.u = $$2;
+public class fmo extends fnd {
+   @Nullable
+   private fhx a;
+
+   public fmo(wu $$0) {
+      super($$0);
    }
 
    @Override
-   protected void aM_() {
-      this.s = this.c(new fmo.a(this.m));
-      this.d.a(53);
-      super.aM_();
+   protected void aO_() {
+      this.a = this.c(new fhx(this.m, this.k, this.o, 12));
+      this.c();
    }
 
    @Override
    protected void c() {
-      super.c();
-      this.s.a(this.n, this.d);
+      if (this.a != null) {
+         this.a.b(this.m);
+         this.a.c(this.m / 2 - this.a.y() / 2, this.n / 2 - 9 / 2);
+      }
    }
 
    @Override
-   protected void h() {
-      fkx $$0 = this.d.b(fkx.d()).a(8);
-      $$0.c().b();
-      $$0.a(new fin(a, this.p));
-      fkx $$1 = $$0.a(fkx.e().a(8));
-      $$1.a(fhg.a(xp.c("options.font"), $$0x -> this.m.a(new fmk(this, this.c))).a());
-      $$1.a(fhg.a(xo.d, $$0x -> this.E()).a());
+   public boolean aE_() {
+      return false;
    }
 
-   void E() {
-      fmo.a.a $$0 = this.s.h();
-      if ($$0 != null && !$$0.b.equals(this.u.a())) {
-         this.u.a($$0.b);
-         this.c.ac = $$0.b;
-         this.m.l();
-      }
-
-      this.m.a(this.b);
+   @Override
+   protected boolean aN_() {
+      return false;
    }
 
-   class a extends fic<fmo.a.a> {
-      public a(final ffh $$0) {
-         super($$0, fmo.this.n, fmo.this.o - 33 - 53, 33, 18);
-         String $$1 = fmo.this.u.a();
-         fmo.this.u.b().forEach(($$1x, $$2) -> {
-            fmo.a.a $$3 = new fmo.a.a($$1x, $$2);
-            this.b($$3);
-            if ($$1.equals($$1x)) {
-               this.a($$3);
-            }
-         });
-         if (this.h() != null) {
-            this.e(this.h());
-         }
-      }
-
-      @Override
-      public int b() {
-         return super.b() + 50;
-      }
-
-      public class a extends fic.a<fmo.a.a> {
-         final String b;
-         private final xp c;
-         private long d;
-
-         public a(final String $$1, final gqi $$2) {
-            this.b = $$1;
-            this.c = $$2.a();
-         }
-
-         @Override
-         public void a(fgt $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.a(fmo.this.p, this.c, a.this.g / 2, $$2 + 1, -1);
-         }
-
-         @Override
-         public boolean a(int $$0, int $$1, int $$2) {
-            if (flh.a($$0)) {
-               this.b();
-               fmo.this.E();
-               return true;
-            } else {
-               return super.a($$0, $$1, $$2);
-            }
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            this.b();
-            if (ac.c() - this.d < 250L) {
-               fmo.this.E();
-            }
-
-            this.d = ac.c();
-            return super.a($$0, $$1, $$2);
-         }
-
-         private void b() {
-            a.this.a(this);
-         }
-
-         @Override
-         public xp a() {
-            return xp.a("narrator.select", this.c);
-         }
-      }
+   @Override
+   public void b(fgz $$0, int $$1, int $$2, float $$3) {
+      this.a($$0, $$3);
+      this.a($$3);
+      this.a($$0);
    }
 }

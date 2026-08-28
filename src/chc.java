@@ -1,139 +1,57 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class chc {
-   private static final float a = 2.0F;
-   private static final float b = 1.0F;
-   private static final float c = 1.0F;
-   private static final float d = 0.75F;
-   private static final bqh e = bqh.a(100, 140);
-   private static final int f = 2;
-   private static final int g = 4;
-   private static final float h = 3.5714288F;
-   private static final float i = 1.25F;
+public class chc extends cgs {
+   private static final bsg ca = bsj.bv.n().a(bsf.a().a(bse.a, 0.0F, bsj.bv.m() - 0.03125F, 0.0F)).a(0.5F);
 
-   protected static void a(chb $$0, azh $$1) {
-      $$0.dS().a(ccv.S, e.a($$1));
+   public chc(bsj<? extends chc> $$0, dcd $$1) {
+      super($$0, $$1);
    }
 
-   protected static but<?> a(but<chb> $$0) {
-      b($$0);
-      c($$0);
-      d($$0);
-      e($$0);
-      g($$0);
-      f($$0);
-      $$0.a(ImmutableSet.of(cop.a));
-      $$0.b(cop.b);
-      $$0.f();
-      return $$0;
+   public static buf.a s() {
+      return gM().a(bug.s, 15.0).a(bug.v, 0.2F);
    }
 
-   private static void b(but<chb> $$0) {
-      $$0.a(cop.a, 0, ImmutableList.of(new bvf(2.0F), new bwq(45, 90), new bwu(), new bvq(ccv.P), new bvq(ccv.S)));
+   public static boolean c(bsj<? extends ceo> $$0, dce $$1, btc $$2, ja $$3, aym $$4) {
+      return !btc.a($$2) ? ceo.b($$0, $$1, $$2, $$3, $$4) : btc.b($$2) || a($$1, $$3);
    }
 
-   private static void c(but<chb> $$0) {
-      $$0.a(
-         cop.b,
-         ImmutableList.of(
-            Pair.of(0, bxk.a(btc.by, 6.0F, bqh.a(30, 60))),
-            Pair.of(0, new bve(btc.R)),
-            Pair.of(1, new bvx($$0x -> 1.25F)),
-            Pair.of(2, bxw.a(chc::b, $$0x -> $$0x.dS().c(ccv.B))),
-            Pair.of(3, byh.a(6, 1.0F)),
-            Pair.of(
-               4,
-               new bxh(
-                  ImmutableMap.of(ccv.m, ccw.b),
-                  ImmutableList.of(Pair.of(bxc.a(1.0F), 1), Pair.of(bxr.a(1.0F, 3), 1), Pair.of(new bvr(), 3), Pair.of(byx.a(bsw::aE), 2))
-               )
-            )
-         ),
-         ImmutableSet.of(Pair.of(ccv.T, ccw.b), Pair.of(ccv.X, ccw.b))
-      );
+   @Override
+   protected void a(aym $$0) {
+      this.f(bug.o).a(a($$0::j));
    }
 
-   private static void d(but<chb> $$0) {
-      $$0.a(
-         cop.t,
-         ImmutableList.of(
-            Pair.of(0, bxk.a(btc.by, 6.0F, bqh.a(30, 60))),
-            Pair.of(1, new bvx($$0x -> 1.25F)),
-            Pair.of(2, bxw.a(chc::b, $$0x -> $$0x.dS().c(ccv.B))),
-            Pair.of(3, byh.a(8, 1.5F)),
-            Pair.of(
-               5,
-               new bvy(
-                  ImmutableMap.of(ccv.m, ccw.b),
-                  ImmutableSet.of(),
-                  bvy.a.a,
-                  bvy.b.b,
-                  ImmutableList.of(Pair.of(bxc.c(0.75F), 1), Pair.of(bxc.a(1.0F, true), 1), Pair.of(bxr.a(1.0F, 3), 1), Pair.of(byx.a(bsw::bh), 5))
-               )
-            )
-         ),
-         ImmutableSet.of(Pair.of(ccv.T, ccw.b), Pair.of(ccv.X, ccw.a))
-      );
+   @Override
+   protected ave v() {
+      return avf.Dz;
    }
 
-   private static void e(but<chb> $$0) {
-      $$0.a(
-         cop.u,
-         ImmutableList.of(
-            Pair.of(0, bxk.a(btc.by, 6.0F, bqh.a(30, 60))),
-            Pair.of(1, bxw.a(chc::b, $$0x -> $$0x.dS().c(ccv.B))),
-            Pair.of(2, byi.a(8, 1.0F)),
-            Pair.of(3, byk.a(dfd.tn)),
-            Pair.of(4, new bxh(ImmutableList.of(Pair.of(bxc.a(1.0F), 2), Pair.of(bxr.a(1.0F, 3), 1), Pair.of(new bvr(), 2), Pair.of(byx.a(bsw::aE), 1))))
-         ),
-         ImmutableSet.of(Pair.of(ccv.T, ccw.b), Pair.of(ccv.Y, ccw.a))
-      );
+   @Override
+   protected ave o_() {
+      return avf.DA;
    }
 
-   private static void f(but<chb> $$0) {
-      $$0.a(
-         cop.q,
-         ImmutableList.of(Pair.of(0, new bwl(e, awa.jR)), Pair.of(1, new bwm<>(e, 2, 4, 3.5714288F, $$0x -> awa.jQ, awp.bR, 0.5F, chc::a))),
-         ImmutableSet.of(Pair.of(ccv.O, ccw.b), Pair.of(ccv.r, ccw.b), Pair.of(ccv.S, ccw.b), Pair.of(ccv.X, ccw.b))
-      );
+   @Override
+   protected ave d(bqw $$0) {
+      return avf.DB;
    }
 
-   private static void g(but<chb> $$0) {
-      $$0.a(cop.s, 0, ImmutableList.of(bxz.a(), new chd(awa.jS, awa.jN)), ccv.o);
+   @Nullable
+   @Override
+   public brx a(aqk $$0, brx $$1) {
+      return bsj.bv.a((dcd)$$0);
    }
 
-   private static <E extends btt> boolean a(E $$0, iz $$1) {
-      dca $$2 = $$0.dP();
-      iz $$3 = $$1.d();
-      if ($$2.b_($$1).c() && $$2.b_($$3).c() && $$2.b_($$1.c()).c()) {
-         dse $$4 = $$2.a_($$1);
-         dse $$5 = $$2.a_($$3);
-         if (!$$4.a(awp.bR) && !$$5.a(awp.bR)) {
-            eoq $$6 = new eoq($$0.dP(), $$0);
-            eoo $$7 = eot.a($$6, $$1.j());
-            eoo $$8 = eot.a($$6, $$3.j());
-            return $$7 != eoo.e && (!$$4.i() || $$8 != eoo.e) ? bwn.a($$0, $$1) : true;
-         } else {
-            return true;
-         }
-      } else {
-         return false;
-      }
+   @Override
+   public bqd b(cmh $$0, bqc $$1) {
+      return !this.gC() ? bqd.e : super.b($$0, $$1);
    }
 
-   private static boolean b(chb $$0) {
-      return !bvm.a($$0);
+   @Override
+   protected void gD() {
    }
 
-   public static void a(chb $$0) {
-      $$0.dS().a(ImmutableList.of(cop.s, cop.u, cop.q, cop.t, cop.b));
-   }
-
-   public static Predicate<cur> a() {
-      return $$0 -> $$0.a(awy.al);
+   @Override
+   public bsg e(btk $$0) {
+      return this.p_() ? ca : super.e($$0);
    }
 }

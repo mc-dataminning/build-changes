@@ -1,29 +1,32 @@
-import net.minecraft.server.MinecraftServer;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class evc implements eve<MinecraftServer> {
-   final alf a;
+public record evc(String b) implements eve {
+   public static final MapCodec<evc> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(evc::c)).apply($$0, evc::new));
 
-   public evc(alf $$0) {
-      this.a = $$0;
+   public static eve a(String $$0) {
+      return new evc($$0);
    }
 
-   public void a(MinecraftServer $$0, evg<MinecraftServer> $$1, long $$2) {
-      alu $$3 = $$0.aF();
-      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
+   @Override
+   public evd a() {
+      return evf.b;
    }
 
-   public static class a extends eve.a<MinecraftServer, evc> {
-      public a() {
-         super(new alf("function"), evc.class);
-      }
+   @Override
+   public exc a(eqo $$0) {
+      return exc.c(this.b);
+   }
 
-      public void a(us $$0, evc $$1) {
-         $$0.a("Name", $$1.a.toString());
-      }
+   @Override
+   public Set<eth<?>> b() {
+      return ImmutableSet.of();
+   }
 
-      public evc a(us $$0) {
-         alf $$1 = new alf($$0.l("Name"));
-         return new evc($$1);
-      }
+   public String c() {
+      return this.b;
    }
 }

@@ -8,24 +8,24 @@ import javax.annotation.Nullable;
 
 public class aa {
    @Deprecated
-   public static final boolean a = false;
+   public static final boolean a = true;
    @Deprecated
-   public static final int b = 3839;
+   public static final int b = 3940;
    @Deprecated
    public static final String c = "main";
    @Deprecated
-   public static final String d = "1.20.6";
+   public static final String d = "24w18a";
    @Deprecated
-   public static final int e = 766;
+   public static final int e = 767;
    @Deprecated
-   public static final int f = 192;
-   public static final int g = 3798;
+   public static final int f = 193;
+   public static final int g = 3937;
    private static final int bp = 30;
-   public static final boolean h = false;
+   public static final boolean h = true;
    @Deprecated
-   public static final int i = 32;
+   public static final int i = 33;
    @Deprecated
-   public static final int j = 41;
+   public static final int j = 42;
    @Deprecated
    public static final int k = 1;
    public static final int l = 1;
@@ -162,22 +162,22 @@ public class aa {
    }
 
    public static int c() {
-      return 766;
+      return 1073742017;
    }
 
-   public static boolean a(dbh $$0) {
+   public static boolean a(dbk $$0) {
       int $$1 = $$0.d();
       int $$2 = $$0.e();
       return !as ? false : $$1 > 8192 || $$1 < 0 || $$2 > 1024 || $$2 < 0;
    }
 
    public static void d() {
-      aY = bag.t;
+      aY = azl.t;
    }
 
    static {
       ResourceLeakDetector.setLevel(aJ);
       CommandSyntaxException.ENABLE_COMMAND_STACK_TRACES = false;
-      CommandSyntaxException.BUILT_IN_EXCEPTIONS = new ej();
+      CommandSyntaxException.BUILT_IN_EXCEPTIONS = new ek();
    }
 }

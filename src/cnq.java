@@ -1,77 +1,16 @@
-public class cnq extends cnr {
-   public cnq(btc<? extends cnq> $$0, dca $$1) {
+public class cnq extends cnp {
+   private static final float h = 3.0F;
+
+   public cnq(bsj<? extends cnp> $$0, dcd $$1) {
       super($$0, $$1);
    }
 
-   public cnq(dca $$0, cho $$1) {
-      this(btc.ao, $$0);
-      this.c($$1);
-      this.a_(
-         $$1.du() - (double)($$1.dj() + 1.0F) * 0.5 * (double)ayz.a($$1.aY * (float) (Math.PI / 180.0)),
-         $$1.dy() - 0.1F,
-         $$1.dA() + (double)($$1.dj() + 1.0F) * 0.5 * (double)ayz.b($$1.aY * (float) (Math.PI / 180.0))
-      );
+   public cnq(ckj $$0, dcd $$1) {
+      super(bsj.n, $$1, $$0, $$0.du(), $$0.gp(), $$0.dA());
    }
 
    @Override
-   protected double aY() {
-      return 0.06;
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      evt $$0 = this.ds();
-      evr $$1 = cnt.a(this, this::b);
-      this.b($$1);
-      double $$2 = this.du() + $$0.c;
-      double $$3 = this.dw() + $$0.d;
-      double $$4 = this.dA() + $$0.e;
-      this.J();
-      float $$5 = 0.99F;
-      if (this.dP().a(this.cK()).noneMatch(dsd.a::i)) {
-         this.ao();
-      } else if (this.bh()) {
-         this.ao();
-      } else {
-         this.h($$0.a(0.99F));
-         this.ba();
-         this.a_($$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   protected void a(evq $$0) {
-      super.a($$0);
-      if (this.s() instanceof btr $$1) {
-         $$0.a().a(this.dQ().b(this, $$1), 1.0F);
-      }
-   }
-
-   @Override
-   protected void a(evp $$0) {
-      super.a($$0);
-      if (!this.dP().B) {
-         this.ao();
-      }
-   }
-
-   @Override
-   protected void a(ako.a $$0) {
-   }
-
-   @Override
-   public void a(acj $$0) {
-      super.a($$0);
-      double $$1 = $$0.j();
-      double $$2 = $$0.k();
-      double $$3 = $$0.l();
-
-      for (int $$4 = 0; $$4 < 7; $$4++) {
-         double $$5 = 0.4 + 0.1 * (double)$$4;
-         this.dP().a(li.ah, this.du(), this.dw(), this.dA(), $$1 * $$5, $$2, $$3 * $$5);
-      }
-
-      this.o($$1, $$2, $$3);
+   protected void y() {
+      this.dP().a(this, null, g, this.du(), this.dw(), this.dA(), 3.0F, false, dcd.a.e, lj.A, lj.z, avf.cQ);
    }
 }

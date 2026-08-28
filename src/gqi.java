@@ -1,17 +1,37 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public record gqi(String b, String c, boolean d) {
-   public static final Codec<gqi> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayh.y.fieldOf("region").forGetter(gqi::b),
-               ayh.y.fieldOf("name").forGetter(gqi::c),
-               Codec.BOOL.optionalFieldOf("bidirectional", false).forGetter(gqi::d)
-            )
-            .apply($$0, gqi::new)
-   );
+public record gqi(akk a, @Nullable String b, @Nullable akk c, @Nullable akk d, gqi.a e, boolean f) {
+   public static enum a {
+      a("slim"),
+      b("default");
 
-   public xp a() {
-      return xp.b(this.c + " (" + this.b + ")");
+      private final String c;
+
+      private a(final String $$0) {
+         this.c = $$0;
+      }
+
+      public static gqi.a a(@Nullable String $$0) {
+         if ($$0 == null) {
+            return b;
+         } else {
+            byte var2 = -1;
+            switch ($$0.hashCode()) {
+               case 3533117:
+                  if ($$0.equals("slim")) {
+                     var2 = 0;
+                  }
+               default:
+                  return switch (var2) {
+                     case 0 -> a;
+                     default -> b;
+                  };
+            }
+         }
+      }
+
+      public String a() {
+         return this.c;
+      }
    }
 }

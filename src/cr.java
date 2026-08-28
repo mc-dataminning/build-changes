@@ -16,10 +16,10 @@ public class cr {
    public static final cq.a<cs> m = a("trim", cs.a);
 
    private static <T extends cq> cq.a<T> a(String $$0, Codec<T> $$1) {
-      return jv.a(lp.au, $$0, new cq.a<>($$1));
+      return jw.a(lq.as, $$0, new cq.a<>($$1));
    }
 
-   public static cq.a<?> a(jv<cq.a<?>> $$0) {
+   public static cq.a<?> a(jw<cq.a<?>> $$0) {
       return a;
    }
 }

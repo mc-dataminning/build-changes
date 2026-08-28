@@ -1,21 +1,32 @@
-public record aem(int b, xp c) implements zw<aci> {
-   public static final zn<xa, aem> a = zn.a(zl.g, aem::b, xr.d, aem::e, aem::new);
+import javax.annotation.Nullable;
 
-   @Override
-   public zy<aem> a() {
-      return agu.ad;
+public class aem implements zb<abn> {
+   public static final ys<vr, aem> a = zb.a(aem::a, aem::new);
+   private final int b;
+
+   public aem(bsd $$0) {
+      this.b = $$0.al();
    }
 
-   public void a(aci $$0) {
+   private aem(vr $$0) {
+      this.b = $$0.l();
+   }
+
+   private void a(vr $$0) {
+      $$0.c(this.b);
+   }
+
+   @Override
+   public zd<aem> a() {
+      return afz.aw;
+   }
+
+   public void a(abn $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   public xp e() {
-      return this.c;
+   @Nullable
+   public bsd a(dcd $$0) {
+      return $$0.a(this.b);
    }
 }

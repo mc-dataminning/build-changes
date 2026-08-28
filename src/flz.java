@@ -1,109 +1,226 @@
-import com.ibm.icu.text.Collator;
-import java.util.Comparator;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class flz extends fnf {
-   private static final xp a = xp.c("createWorld.customize.buffet.biome").b(-8355712);
-   private static final int b = 8;
-   private final fkt c = new fkt(this);
-   private final fnf d;
-   private final Consumer<ji<dcz>> r;
-   final jv<dcz> s;
-   private flz.a u;
-   ji<dcz> v;
-   private fhg w;
+public class flz extends fnd {
+   public static final double a = 7.0;
+   private static final wu c = wu.c("chat_screen.usage");
+   private static final int q = 210;
+   private String r = "";
+   private int s = -1;
+   protected fhv b;
+   private String u;
+   fhp v;
 
-   public flz(fnf $$0, fsc $$1, Consumer<ji<dcz>> $$2) {
-      super(xp.c("createWorld.customize.buffet.title"));
-      this.d = $$0;
-      this.r = $$2;
-      this.s = $$1.a().d(lq.az);
-      ji<dcz> $$3 = this.s.b(ddg.b).or(() -> this.s.h().findAny()).orElseThrow();
-      this.v = $$1.d().a().d().c().stream().findFirst().orElse($$3);
+   public flz(String $$0) {
+      super(wu.c("chat_screen.title"));
+      this.u = $$0;
    }
 
    @Override
-   public void d() {
-      this.m.a(this.d);
+   protected void aO_() {
+      this.s = this.l.l.d().c().size();
+      this.b = new fhv(this.l.i, 4, this.n - 12, this.m - 4, 12, wu.c("chat.editBox")) {
+         @Override
+         protected xi aL_() {
+            return super.aL_().b(flz.this.v.e());
+         }
+      };
+      this.b.f(256);
+      this.b.d(false);
+      this.b.a(this.u);
+      this.b.b(this::b);
+      this.b.f(false);
+      this.d(this.b);
+      this.v = new fhp(this.l, this, this.b, this.o, false, false, 1, 10, true, -805306368);
+      this.v.b(false);
+      this.v.d();
    }
 
    @Override
-   protected void aM_() {
-      fkx $$0 = this.c.a(fkx.d().a(8));
-      $$0.c().b();
-      $$0.a(new fin(this.n(), this.p));
-      $$0.a(new fin(a, this.p));
-      this.u = this.c.c(new flz.a());
-      fkx $$1 = this.c.b(fkx.e().a(8));
-      this.w = $$1.a(fhg.a(xo.d, $$0x -> {
-         this.r.accept(this.v);
-         this.d();
-      }).a());
-      $$1.a(fhg.a(xo.e, $$0x -> this.d()).a());
-      this.u.a(this.u.aD_().stream().filter($$0x -> Objects.equals($$0x.b, this.v)).findFirst().orElse(null));
-      this.c.a(this::c);
-      this.c();
+   protected void aD_() {
+      this.b(this.b);
    }
 
    @Override
-   protected void c() {
-      this.c.a();
-      this.u.a(this.n, this.c);
+   public void a(ffn $$0, int $$1, int $$2) {
+      String $$3 = this.b.a();
+      this.b($$0, $$1, $$2);
+      this.c($$3);
+      this.v.d();
    }
 
-   void m() {
-      this.w.j = this.u.h() != null;
+   @Override
+   public void j() {
+      this.l.l.d().d();
    }
 
-   class a extends fic<flz.a.a> {
-      a() {
-         super(flz.this.m, flz.this.n, flz.this.o - 77, 40, 16);
-         Collator $$0 = Collator.getInstance(Locale.getDefault());
-         flz.this.s.h().map($$0x -> new flz.a.a($$0x)).sorted(Comparator.comparing($$0x -> $$0x.c.getString(), $$0)).forEach($$1 -> this.b($$1));
+   private void b(String $$0) {
+      String $$1 = this.b.a();
+      this.v.a(!$$1.equals(this.u));
+      this.v.d();
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.v.a($$0, $$1, $$2)) {
+         return true;
+      } else if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if ($$0 == 256) {
+         this.l.a(null);
+         return true;
+      } else if ($$0 == 257 || $$0 == 335) {
+         this.b(this.b.a(), true);
+         this.l.a(null);
+         return true;
+      } else if ($$0 == 265) {
+         this.a(-1);
+         return true;
+      } else if ($$0 == 264) {
+         this.a(1);
+         return true;
+      } else if ($$0 == 266) {
+         this.l.l.d().a(this.l.l.d().j() - 1);
+         return true;
+      } else if ($$0 == 267) {
+         this.l.l.d().a(-this.l.l.d().j() + 1);
+         return true;
+      } else {
+         return false;
       }
+   }
 
-      public void a(@Nullable flz.a.a $$0) {
-         super.a($$0);
-         if ($$0 != null) {
-            flz.this.v = $$0.b;
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      $$3 = aye.a($$3, -1.0, 1.0);
+      if (this.v.a($$3)) {
+         return true;
+      } else {
+         if (!t()) {
+            $$3 *= 7.0;
          }
 
-         flz.this.m();
+         this.l.l.d().a((int)$$3);
+         return true;
       }
+   }
 
-      class a extends fic.a<flz.a.a> {
-         final ji.c<dcz> b;
-         final xp c;
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.v.a((double)((int)$$0), (double)((int)$$1), $$2)) {
+         return true;
+      } else {
+         if ($$2 == 0) {
+            fhn $$3 = this.l.l.d();
+            if ($$3.a($$0, $$1)) {
+               return true;
+            }
 
-         public a(final ji.c<dcz> $$0) {
-            this.b = $$0;
-            alf $$1 = $$0.h().a();
-            String $$2 = $$1.f("biome");
-            if (un.a().b($$2)) {
-               this.c = xp.c($$2);
-            } else {
-               this.c = xp.b($$1.toString());
+            xr $$4 = this.b($$0, $$1);
+            if ($$4 != null && this.a($$4)) {
+               this.u = this.b.a();
+               return true;
             }
          }
 
-         @Override
-         public xp a() {
-            return xp.a("narrator.select", this.c);
-         }
+         return this.b.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+      }
+   }
 
-         @Override
-         public void a(fgt $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.b(flz.this.p, this.c, $$3 + 5, $$2 + 2, 16777215);
-         }
+   @Override
+   protected void a_(String $$0, boolean $$1) {
+      if ($$1) {
+         this.b.a($$0);
+      } else {
+         this.b.b($$0);
+      }
+   }
 
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            a.this.a(this);
-            return super.a($$0, $$1, $$2);
+   public void a(int $$0) {
+      int $$1 = this.s + $$0;
+      int $$2 = this.l.l.d().c().size();
+      $$1 = aye.a($$1, 0, $$2);
+      if ($$1 != this.s) {
+         if ($$1 == $$2) {
+            this.s = $$2;
+            this.b.a(this.r);
+         } else {
+            if (this.s == $$2) {
+               this.r = this.b.a();
+            }
+
+            this.b.a(this.l.l.d().c().get($$1));
+            this.v.a(false);
+            this.s = $$1;
          }
       }
+   }
+
+   @Override
+   public void a(fgz $$0, int $$1, int $$2, float $$3) {
+      this.l.l.d().a($$0, this.l.l.e(), $$1, $$2, true);
+      $$0.a(2, this.n - 14, this.m - 2, this.n - 2, this.l.m.a(Integer.MIN_VALUE));
+      this.b.a($$0, $$1, $$2, $$3);
+      super.a($$0, $$1, $$2, $$3);
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, 200.0F);
+      this.v.a($$0, $$1, $$2);
+      $$0.c().b();
+      ffi $$4 = this.l.l.d().c((double)$$1, (double)$$2);
+      if ($$4 != null && $$4.g() != null) {
+         $$0.b(this.o, this.o.c($$4.g(), 210), $$1, $$2);
+      } else {
+         xr $$5 = this.b((double)$$1, (double)$$2);
+         if ($$5 != null && $$5.i() != null) {
+            $$0.a(this.o, $$5, $$1, $$2);
+         }
+      }
+   }
+
+   @Override
+   public void b(fgz $$0, int $$1, int $$2, float $$3) {
+   }
+
+   @Override
+   public boolean k() {
+      return false;
+   }
+
+   private void c(String $$0) {
+      this.b.a($$0);
+   }
+
+   @Override
+   protected void a(fli $$0) {
+      $$0.a(flh.a, this.n());
+      $$0.a(flh.d, c);
+      String $$1 = this.b.a();
+      if (!$$1.isEmpty()) {
+         $$0.a().a(flh.a, wu.a("chat_screen.message", $$1));
+      }
+   }
+
+   @Nullable
+   private xr b(double $$0, double $$1) {
+      return this.l.l.d().b($$0, $$1);
+   }
+
+   public void b(String $$0, boolean $$1) {
+      $$0 = this.a($$0);
+      if (!$$0.isEmpty()) {
+         if ($$1) {
+            this.l.l.d().a($$0);
+         }
+
+         if ($$0.startsWith("/")) {
+            this.l.s.cB.c($$0.substring(1));
+         } else {
+            this.l.s.cB.b($$0);
+         }
+      }
+   }
+
+   public String a(String $$0) {
+      return aza.e(StringUtils.normalizeSpace($$0.trim()));
    }
 }

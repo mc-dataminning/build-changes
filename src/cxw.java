@@ -1,101 +1,130 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
-public record cxw(List<cxw.a> c, float d, int e) {
-   public static final Codec<cxw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               cxw.a.a.listOf().fieldOf("rules").forGetter(cxw::a),
-               Codec.FLOAT.optionalFieldOf("default_mining_speed", 1.0F).forGetter(cxw::b),
-               ayh.k.optionalFieldOf("damage_per_block", 1).forGetter(cxw::c)
-            )
-            .apply($$0, cxw::new)
-   );
-   public static final zn<xa, cxw> b = zn.a(cxw.a.b.a(zl.a()), cxw::a, zl.i, cxw::b, zl.g, cxw::c, cxw::new);
+public class cxw implements cyj {
+   public static final cxw a = new cxw(0, 0, List.of());
+   private final int b;
+   private final int c;
+   private final List<cua> d;
+   private final cml e = new cml();
+   private final int f;
 
-   public float a(dse $$0) {
-      for (cxw.a $$1 : this.c) {
-         if ($$1.d.isPresent() && $$0.a($$1.c)) {
-            return $$1.d.get();
+   private cxw(int $$0, int $$1, List<cua> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      int $$3 = 0;
+
+      for (cua $$4 : $$2) {
+         if (!$$4.e()) {
+            $$3++;
+            this.e.a($$4, 1);
          }
       }
 
-      return this.d;
+      this.f = $$3;
    }
 
-   public boolean b(dse $$0) {
-      for (cxw.a $$1 : this.c) {
-         if ($$1.e.isPresent() && $$0.a($$1.c)) {
-            return $$1.e.get();
+   public static cxw a(int $$0, int $$1, List<cua> $$2) {
+      if ($$0 != 0 && $$1 != 0) {
+         int $$3 = $$0 - 1;
+         int $$4 = 0;
+         int $$5 = $$1 - 1;
+         int $$6 = 0;
+
+         for (int $$7 = 0; $$7 < $$1; $$7++) {
+            boolean $$8 = true;
+
+            for (int $$9 = 0; $$9 < $$0; $$9++) {
+               cua $$10 = $$2.get($$9 + $$7 * $$0);
+               if (!$$10.e()) {
+                  $$3 = Math.min($$3, $$9);
+                  $$4 = Math.max($$4, $$9);
+                  $$8 = false;
+               }
+            }
+
+            if (!$$8) {
+               $$5 = Math.min($$5, $$7);
+               $$6 = Math.max($$6, $$7);
+            }
          }
+
+         int $$11 = $$4 - $$3 + 1;
+         int $$12 = $$6 - $$5 + 1;
+         if ($$11 <= 0 || $$12 <= 0) {
+            return a;
+         } else if ($$11 == $$0 && $$12 == $$1) {
+            return new cxw($$0, $$1, $$2);
+         } else {
+            List<cua> $$13 = new ArrayList<>($$11 * $$12);
+
+            for (int $$14 = 0; $$14 < $$12; $$14++) {
+               for (int $$15 = 0; $$15 < $$11; $$15++) {
+                  int $$16 = $$15 + $$3 + ($$14 + $$5) * $$0;
+                  $$13.add($$2.get($$16));
+               }
+            }
+
+            return new cxw($$11, $$12, $$13);
+         }
+      } else {
+         return a;
       }
-
-      return false;
    }
 
-   public List<cxw.a> a() {
-      return this.c;
+   @Override
+   public cua a(int $$0) {
+      return this.d.get($$0);
    }
 
-   public float b() {
-      return this.d;
+   public cua a(int $$0, int $$1) {
+      return this.d.get($$0 + $$1 * this.b);
    }
 
-   public int c() {
+   @Override
+   public int a() {
+      return this.d.size();
+   }
+
+   @Override
+   public boolean b() {
+      return this.f == 0;
+   }
+
+   public cml c() {
       return this.e;
    }
 
-   public static record a(jm<dfb> c, Optional<Float> d, Optional<Boolean> e) {
-      public static final Codec<cxw.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  jx.a(lq.f).fieldOf("blocks").forGetter(cxw.a::a),
-                  ayh.m.optionalFieldOf("speed").forGetter(cxw.a::b),
-                  Codec.BOOL.optionalFieldOf("correct_for_drops").forGetter(cxw.a::c)
-               )
-               .apply($$0, cxw.a::new)
-      );
-      public static final zn<xa, cxw.a> b = zn.a(zl.c(lq.f), cxw.a::a, zl.i.a(zl::a), cxw.a::b, zl.b.a(zl::a), cxw.a::c, cxw.a::new);
+   public List<cua> d() {
+      return this.d;
+   }
 
-      public static cxw.a a(List<dfb> $$0, float $$1) {
-         return a($$0, Optional.of($$1), Optional.of(true));
-      }
+   public int e() {
+      return this.f;
+   }
 
-      public static cxw.a a(axf<dfb> $$0, float $$1) {
-         return a($$0, Optional.of($$1), Optional.of(true));
-      }
+   public int f() {
+      return this.b;
+   }
 
-      public static cxw.a a(axf<dfb> $$0) {
-         return a($$0, Optional.empty(), Optional.of(false));
-      }
+   public int g() {
+      return this.c;
+   }
 
-      public static cxw.a b(axf<dfb> $$0, float $$1) {
-         return a($$0, Optional.of($$1), Optional.empty());
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 == this) {
+         return true;
+      } else {
+         return !($$0 instanceof cxw $$1) ? false : this.b == $$1.b && this.c == $$1.c && this.f == $$1.f && cua.a(this.d, $$1.d);
       }
+   }
 
-      public static cxw.a b(List<dfb> $$0, float $$1) {
-         return a($$0, Optional.of($$1), Optional.empty());
-      }
-
-      private static cxw.a a(axf<dfb> $$0, Optional<Float> $$1, Optional<Boolean> $$2) {
-         return new cxw.a(lp.e.a($$0), $$1, $$2);
-      }
-
-      private static cxw.a a(List<dfb> $$0, Optional<Float> $$1, Optional<Boolean> $$2) {
-         return new cxw.a(jm.a($$0.stream().map(dfb::s).collect(Collectors.toList())), $$1, $$2);
-      }
-
-      public jm<dfb> a() {
-         return this.c;
-      }
-
-      public Optional<Float> b() {
-         return this.d;
-      }
-
-      public Optional<Boolean> c() {
-         return this.e;
-      }
+   @Override
+   public int hashCode() {
+      int $$0 = cua.a(this.d);
+      $$0 = 31 * $$0 + this.b;
+      return 31 * $$0 + this.c;
    }
 }

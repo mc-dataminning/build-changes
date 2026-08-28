@@ -1,58 +1,37 @@
-import com.mojang.logging.LogUtils;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
+import com.google.common.base.MoreObjects;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
+import jdk.jfr.consumer.RecordedEvent;
+import jdk.jfr.consumer.RecordedThread;
 
-public class bns {
-   private static final Logger a = LogUtils.getLogger();
-   private final Runnable b;
+public record bns(Instant a, String b, long c) {
+   private static final String d = "unknown";
 
-   protected bns(Runnable $$0) {
-      this.b = $$0;
+   public static bns a(RecordedEvent $$0) {
+      RecordedThread $$1 = $$0.getThread("thread");
+      String $$2 = $$1 == null ? "unknown" : (String)MoreObjects.firstNonNull($$1.getJavaName(), "unknown");
+      return new bns($$0.getStartTime(), $$2, $$0.getLong("allocated"));
    }
 
-   public void a(@Nullable Path $$0) {
-      if ($$0 != null) {
-         this.b.run();
-         a(() -> "Dumped flight recorder profiling to " + $$0);
-
-         boa $$1;
-         try {
-            $$1 = bnz.a($$0);
-         } catch (Throwable var5) {
-            a(() -> "Failed to parse JFR recording", var5);
-            return;
+   public static bns.a a(List<bns> $$0) {
+      Map<String, Double> $$1 = new TreeMap<>();
+      Map<String, List<bns>> $$2 = $$0.stream().collect(Collectors.groupingBy($$0x -> $$0x.b));
+      $$2.forEach(($$1x, $$2x) -> {
+         if ($$2x.size() >= 2) {
+            bns $$3 = (bns)$$2x.get(0);
+            bns $$4 = (bns)$$2x.get($$2x.size() - 1);
+            long $$5 = Duration.between($$3.a, $$4.a).getSeconds();
+            long $$6 = $$4.c - $$3.c;
+            $$1.put($$1x, (double)$$6 / (double)$$5);
          }
-
-         try {
-            a($$1::b);
-            Path $$4 = $$0.resolveSibling("jfr-report-" + StringUtils.substringBefore($$0.getFileName().toString(), ".jfr") + ".json");
-            Files.writeString($$4, $$1.b(), StandardOpenOption.CREATE);
-            a(() -> "Dumped recording summary to " + $$4);
-         } catch (Throwable var4) {
-            a(() -> "Failed to output JFR report", var4);
-         }
-      }
+      });
+      return new bns.a($$1);
    }
 
-   private static void a(Supplier<String> $$0) {
-      if (LogUtils.isLoggerActive()) {
-         a.info($$0.get());
-      } else {
-         alh.a($$0.get());
-      }
-   }
-
-   private static void a(Supplier<String> $$0, Throwable $$1) {
-      if (LogUtils.isLoggerActive()) {
-         a.warn($$0.get(), $$1);
-      } else {
-         alh.a($$0.get());
-         $$1.printStackTrace(alh.a);
-      }
+   public static record a(Map<String, Double> a) {
    }
 }

@@ -1,20 +1,28 @@
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class fkp {
-   private static final int a = 4;
+public enum fkp implements ayz {
+   a("bitmap", fkm.a.a),
+   b("ttf", fkr.a),
+   c("space", eyl.a.a),
+   d("unihex", fks.b.a),
+   e("reference", fkq.a);
 
-   private fkp() {
+   public static final Codec<fkp> f = ayz.a(fkp::values);
+   private final String g;
+   private final MapCodec<? extends fko> h;
+
+   private fkp(final String $$0, final MapCodec<? extends fko> $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   public static fku a(fgr $$0, fkv $$1, xp $$2) {
-      return a($$0, $$1, $$2, $$0x -> {
-      });
+   @Override
+   public String c() {
+      return this.g;
    }
 
-   public static fku a(fgr $$0, fkv $$1, xp $$2, Consumer<fkw> $$3) {
-      fkx $$4 = fkx.d().a(4);
-      $$4.a(new fin($$2, $$0));
-      $$4.a($$1, $$3);
-      return $$4;
+   public MapCodec<? extends fko> a() {
+      return this.h;
    }
 }

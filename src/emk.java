@@ -1,18 +1,9 @@
-import java.util.List;
+import com.mojang.serialization.Codec;
 
-public class emk {
-   private final List<emj> a;
+public abstract class emk {
+   public static final Codec<emk> c = lq.m.r().dispatch("predicate_type", emk::a, eml::codec);
 
-   public emk(List<emj> $$0) {
-      this.a = $$0;
-   }
+   public abstract boolean a(dsh var1, aym var2);
 
-   public List<emj> a() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "ProcessorList[" + this.a + "]";
-   }
+   protected abstract eml<?> a();
 }

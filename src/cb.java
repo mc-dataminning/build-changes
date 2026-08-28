@@ -3,18 +3,18 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Collection;
 import java.util.Optional;
 
-public class cb extends dr<cb.a> {
+public class cb extends ds<cb.a> {
    @Override
    public Codec<cb.a> a() {
       return cb.a.a;
    }
 
-   public void a(arg $$0, cur $$1, cnn $$2, Collection<cur> $$3) {
-      eqk $$4 = bu.b($$0, (bsw)($$2.v() != null ? $$2.v() : $$2));
+   public void a(aql $$0, cua $$1, cmv $$2, Collection<cua> $$3) {
+      eqo $$4 = bu.b($$0, (bsd)($$2.v() != null ? $$2.v() : $$2));
       this.a($$0, $$3x -> $$3x.a($$1, $$4, $$3));
    }
 
-   public static record a(Optional<bf> b, Optional<cp> c, Optional<bf> d, Optional<cp> e) implements dr.a {
+   public static record a(Optional<bf> b, Optional<cp> c, Optional<bf> d, Optional<cp> e) implements ds.a {
       public static final Codec<cb.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bu.b.optionalFieldOf("player").forGetter(cb.a::a),
@@ -29,7 +29,7 @@ public class cb extends dr<cb.a> {
          return am.E.a(new cb.a(Optional.empty(), $$0, bu.a($$1), $$2));
       }
 
-      public boolean a(cur $$0, eqk $$1, Collection<cur> $$2) {
+      public boolean a(cua $$0, eqo $$1, Collection<cua> $$2) {
          if (this.c.isPresent() && !this.c.get().a($$0)) {
             return false;
          } else if (this.d.isPresent() && !this.d.get().a($$1)) {
@@ -37,12 +37,12 @@ public class cb extends dr<cb.a> {
          } else {
             if (this.e.isPresent()) {
                boolean $$3 = false;
-               bsw $$4 = $$1.c(etg.a);
-               if ($$4 instanceof cjj $$5 && this.e.get().a($$5.p())) {
+               bsd $$4 = $$1.c(etk.a);
+               if ($$4 instanceof cir $$5 && this.e.get().a($$5.p())) {
                   $$3 = true;
                }
 
-               for (cur $$6 : $$2) {
+               for (cua $$6 : $$2) {
                   if (this.e.get().a($$6)) {
                      $$3 = true;
                      break;
@@ -60,7 +60,7 @@ public class cb extends dr<cb.a> {
 
       @Override
       public void a(bg $$0) {
-         dr.a.super.a($$0);
+         ds.a.super.a($$0);
          $$0.a(this.d, ".entity");
       }
 

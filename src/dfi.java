@@ -1,8 +1,23 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
-
 public interface dfi {
-   cur a(@Nullable cmz var1, dcb var2, iz var3, dse var4);
+   boolean b(dcg var1, ja var2, dsh var3);
 
-   Optional<avz> ar_();
+   boolean a(dcd var1, aym var2, ja var3, dsh var4);
+
+   void a(aqk var1, aym var2, ja var3, dsh var4);
+
+   default ja a(ja $$0) {
+      return switch (this.aq_()) {
+         case a -> $$0.c();
+         case b -> $$0;
+      };
+   }
+
+   default dfi.a aq_() {
+      return dfi.a.b;
+   }
+
+   public static enum a {
+      a,
+      b;
+   }
 }

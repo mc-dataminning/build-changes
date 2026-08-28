@@ -1,27 +1,27 @@
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import javax.annotation.Nullable;
+
 public interface wv {
-   zx a();
-
-   wl b();
-
-   void a(xp var1);
-
-   default void a(zw $$0, Exception $$1) throws y {
-      throw zz.a($$1, $$0, this);
+   default <T> Optional<T> a(wz.b<T> $$0, xr $$1) {
+      return Optional.empty();
    }
 
-   boolean c();
-
-   default boolean a(zw<?> $$0) {
-      return this.c();
+   default <T> Optional<T> a(wz.a<T> $$0) {
+      return Optional.empty();
    }
 
-   default void a(o $$0) {
-      p $$1 = $$0.a("Connection");
-      $$1.a("Protocol", () -> this.b().a());
-      $$1.a("Flow", () -> this.a().toString());
-      this.a($$1);
+   default xi a(@Nullable eq $$0, @Nullable bsd $$1, int $$2) throws CommandSyntaxException {
+      return xi.a(this);
    }
 
-   default void a(p $$0) {
+   wv.a<?> a();
+
+   public static record a<T extends wv>(MapCodec<T> a, String b) implements ayz {
+      @Override
+      public String c() {
+         return this.b;
+      }
    }
 }

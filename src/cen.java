@@ -1,33 +1,110 @@
-public class cen {
-   public static boolean a(btt $$0) {
-      return $$0.K() instanceof cdc;
+import java.util.List;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+
+public abstract class cen extends cel {
+   @Nullable
+   private cen b;
+   private int c = 1;
+
+   public cen(bsj<? extends cen> $$0, dcd $$1) {
+      super($$0, $$1);
    }
 
-   public static boolean a(bua $$0, int $$1) {
-      return $$0.gb() && $$0.fY().a($$0.dn(), (double)($$0.fZ() + (float)$$1) + 1.0);
+   @Override
+   protected void z() {
+      super.z();
+      this.bU.a(5, new bzs(this));
    }
 
-   public static boolean a(iz $$0, bua $$1) {
-      return $$0.v() < $$1.dP().I_() || $$0.v() > $$1.dP().am();
+   @Override
+   public int fM() {
+      return this.gp();
    }
 
-   public static boolean a(boolean $$0, bua $$1, iz $$2) {
-      return $$0 && !$$1.a($$2);
+   public int gp() {
+      return super.fM();
    }
 
-   public static boolean a(cdd $$0, iz $$1) {
-      return !$$0.a($$1);
+   @Override
+   protected boolean gn() {
+      return !this.gq();
    }
 
-   public static boolean a(bua $$0, iz $$1) {
-      return $$0.dP().b_($$1).a(awv.a);
+   public boolean gq() {
+      return this.b != null && this.b.bD();
    }
 
-   public static boolean b(bua $$0, iz $$1) {
-      return $$0.a(eot.b($$0, $$1)) != 0.0F;
+   public cen a(cen $$0) {
+      this.b = $$0;
+      $$0.gw();
+      return $$0;
    }
 
-   public static boolean c(bua $$0, iz $$1) {
-      return $$0.dP().a_($$1).e();
+   public void gr() {
+      this.b.gx();
+      this.b = null;
+   }
+
+   private void gw() {
+      this.c++;
+   }
+
+   private void gx() {
+      this.c--;
+   }
+
+   public boolean gs() {
+      return this.gt() && this.c < this.gp();
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      if (this.gt() && this.dP().z.a(200) == 1) {
+         List<? extends cel> $$0 = this.dP().a((Class<? extends cel>)this.getClass(), this.cK().c(8.0, 8.0, 8.0));
+         if ($$0.size() <= 1) {
+            this.c = 1;
+         }
+      }
+   }
+
+   public boolean gt() {
+      return this.c > 1;
+   }
+
+   public boolean gu() {
+      return this.g(this.b) <= 121.0;
+   }
+
+   public void gv() {
+      if (this.gq()) {
+         this.K().a(this.b, 1.0);
+      }
+   }
+
+   public void a(Stream<? extends cen> $$0) {
+      $$0.limit((long)(this.gp() - this.c)).filter($$0x -> $$0x != this).forEach($$0x -> $$0x.a(this));
+   }
+
+   @Nullable
+   @Override
+   public btr a(dcs $$0, bqb $$1, btc $$2, @Nullable btr $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3 == null) {
+         $$3 = new cen.a(this);
+      } else {
+         this.a(((cen.a)$$3).a);
+      }
+
+      return $$3;
+   }
+
+   public static class a implements btr {
+      public final cen a;
+
+      public a(cen $$0) {
+         this.a = $$0;
+      }
    }
 }

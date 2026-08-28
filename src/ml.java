@@ -1,50 +1,91 @@
+import com.google.common.collect.UnmodifiableIterator;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Encoder;
+import com.google.gson.JsonObject;
 import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.MapCodec;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
-import org.slf4j.Logger;
 
-public class ml implements lw {
-   private static final Logger d = LogUtils.getLogger();
-   private final Path e;
-   private final CompletableFuture<jk.a> f;
-   private static final MapCodec<ale<dcz>> g = ale.a(lq.az).fieldOf("biome");
-   private static final Codec<ddi.c<ale<dcz>>> h = ddi.c.a(g).fieldOf("biomes").codec();
+public class ml implements lx {
+   private final lz d;
+   private final CompletableFuture<jl.a> e;
 
-   public ml(ly $$0, CompletableFuture<jk.a> $$1) {
-      this.e = $$0.a(ly.b.c).resolve("biome_parameters");
-      this.f = $$1;
+   public ml(lz $$0, CompletableFuture<jl.a> $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
    @Override
-   public CompletableFuture<?> a(lu $$0) {
-      return this.f.thenCompose($$1 -> {
-         DynamicOps<JsonElement> $$2 = $$1.a(JsonOps.INSTANCE);
-         List<CompletableFuture<?>> $$3 = new ArrayList<>();
-         ddn.b().forEach(($$3x, $$4) -> $$3.add(a(this.a($$3x.b()), $$0, $$2, h, $$4)));
-         return CompletableFuture.allOf($$3.toArray(CompletableFuture[]::new));
-      });
-   }
+   public CompletableFuture<?> a(lv $$0) {
+      Path $$1 = this.d.a(lz.b.c).resolve("blocks.json");
+      return this.e
+         .thenCompose(
+            $$2 -> {
+               JsonObject $$3 = new JsonObject();
+               aki<JsonElement> $$4 = $$2.a(JsonOps.INSTANCE);
+               $$2.b(lr.f)
+                  .b()
+                  .forEach(
+                     $$2x -> {
+                        JsonObject $$3x = new JsonObject();
+                        dsi<dff, dsh> $$4x = ((dff)$$2x.a()).l();
+                        if (!$$4x.d().isEmpty()) {
+                           JsonObject $$5 = new JsonObject();
 
-   private static <E> CompletableFuture<?> a(Path $$0, lu $$1, DynamicOps<JsonElement> $$2, Encoder<E> $$3, E $$4) {
-      Optional<JsonElement> $$5 = $$3.encodeStart($$2, $$4).resultOrPartial($$1x -> d.error("Couldn't serialize element {}: {}", $$0, $$1x));
-      return $$5.isPresent() ? lw.a($$1, $$5.get(), $$0) : CompletableFuture.completedFuture(null);
-   }
+                           for (dtk<?> $$6 : $$4x.d()) {
+                              JsonArray $$7 = new JsonArray();
 
-   private Path a(alf $$0) {
-      return this.e.resolve($$0.b()).resolve($$0.a() + ".json");
+                              for (Comparable<?> $$8 : $$6.a()) {
+                                 $$7.add(ac.a($$6, $$8));
+                              }
+
+                              $$5.add($$6.f(), $$7);
+                           }
+
+                           $$3x.add("properties", $$5);
+                        }
+
+                        JsonArray $$9 = new JsonArray();
+                        UnmodifiableIterator var13 = $$4x.a().iterator();
+
+                        while (var13.hasNext()) {
+                           dsh $$10 = (dsh)var13.next();
+                           JsonObject $$11 = new JsonObject();
+                           JsonObject $$12 = new JsonObject();
+
+                           for (dtk<?> $$13 : $$4x.d()) {
+                              $$12.addProperty($$13.f(), ac.a($$13, $$10.c($$13)));
+                           }
+
+                           if ($$12.size() > 0) {
+                              $$11.add("properties", $$12);
+                           }
+
+                           $$11.addProperty("id", dff.i($$10));
+                           if ($$10 == ((dff)$$2x.a()).o()) {
+                              $$11.addProperty("default", true);
+                           }
+
+                           $$9.add($$11);
+                        }
+
+                        $$3x.add("states", $$9);
+                        String $$14 = $$2x.g();
+                        JsonElement $$15 = (JsonElement)dfg.a
+                           .codec()
+                           .encodeStart($$4, (dff)$$2x.a())
+                           .getOrThrow($$1xxx -> new AssertionError("Failed to serialize block " + $$14 + " (is type registered in BlockTypes?): " + $$1xxx));
+                        $$3x.add("definition", $$15);
+                        $$3.add($$14, $$3x);
+                     }
+                  );
+               return lx.a($$0, $$3, $$1);
+            }
+         );
    }
 
    @Override
    public final String a() {
-      return "Biome Parameters";
+      return "Block List";
    }
 }

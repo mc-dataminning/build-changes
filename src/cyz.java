@@ -1,34 +1,33 @@
-public record cyz<T extends cyx<?>>(alf b, T c) {
-   public static final zn<xa, cyz<?>> a = zn.a(alf.b, cyz::a, cyx.i, cyz::b, cyz::new);
-
+public record cyz(cua a, cua b, cua c) implements cyj {
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof cyz<?> $$1 && this.b.equals($$1.b)) {
-            return true;
-         }
-
-         return false;
-      }
+   public cua a(int $$0) {
+      return switch ($$0) {
+         case 0 -> this.a;
+         case 1 -> this.b;
+         case 2 -> this.c;
+         default -> throw new IllegalArgumentException("Recipe does not contain slot " + $$0);
+      };
    }
 
    @Override
-   public int hashCode() {
-      return this.b.hashCode();
+   public int a() {
+      return 3;
    }
 
    @Override
-   public String toString() {
-      return this.b.toString();
+   public boolean b() {
+      return this.a.e() && this.b.e() && this.c.e();
    }
 
-   public alf a() {
+   public cua c() {
+      return this.a;
+   }
+
+   public cua d() {
       return this.b;
    }
 
-   public T b() {
+   public cua e() {
       return this.c;
    }
 }

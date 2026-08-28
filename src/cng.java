@@ -1,185 +1,47 @@
-import javax.annotation.Nullable;
+public abstract class cng extends cnh implements cmw {
+   private static final ajp<cua> b = ajt.a(cng.class, ajr.h);
 
-public abstract class cng extends cnr {
-   public static final double b = 0.1;
-   public static final double c = 0.05;
-   public double d;
-   public double e;
-   public double f;
-
-   protected cng(btc<? extends cng> $$0, dca $$1) {
+   public cng(bsj<? extends cng> $$0, dcd $$1) {
       super($$0, $$1);
    }
 
-   protected cng(btc<? extends cng> $$0, double $$1, double $$2, double $$3, dca $$4) {
-      this($$0, $$4);
-      this.a_($$1, $$2, $$3);
+   public cng(bsj<? extends cng> $$0, double $$1, double $$2, double $$3, dcd $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
-   public cng(btc<? extends cng> $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dca $$7) {
-      this($$0, $$7);
-      this.b($$1, $$2, $$3, this.dF(), this.dH());
-      this.at();
-      this.q($$4, $$5, $$6);
+   public cng(bsj<? extends cng> $$0, bsy $$1, dcd $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public cng(btc<? extends cng> $$0, btr $$1, double $$2, double $$3, double $$4, dca $$5) {
-      this($$0, $$1.du(), $$1.dw(), $$1.dA(), $$2, $$3, $$4, $$5);
-      this.c($$1);
-      this.a($$1.dF(), $$1.dH());
+   public void a(cua $$0) {
+      this.ap().a(b, $$0.c(1));
+   }
+
+   protected abstract ctv u();
+
+   @Override
+   public cua p() {
+      return this.ap().a(b);
    }
 
    @Override
-   protected void a(ako.a $$0) {
+   protected void a(ajt.a $$0) {
+      $$0.a(b, new cua(this.u()));
    }
 
    @Override
-   public boolean a(double $$0) {
-      double $$1 = this.cK().a() * 4.0;
-      if (Double.isNaN($$1)) {
-         $$1 = 4.0;
-      }
-
-      $$1 *= 64.0;
-      return $$0 < $$1 * $$1;
-   }
-
-   protected dbj.a af_() {
-      return dbj.a.a;
-   }
-
-   @Override
-   public void l() {
-      bsw $$0 = this.s();
-      if (this.dP().B || ($$0 == null || !$$0.dK()) && this.dP().B(this.dp())) {
-         super.l();
-         if (this.u()) {
-            this.g(1);
-         }
-
-         evr $$1 = cnt.a(this, this::b, this.af_());
-         if ($$1.c() != evr.a.a) {
-            this.b($$1);
-         }
-
-         this.aS();
-         evt $$2 = this.ds();
-         double $$3 = this.du() + $$2.c;
-         double $$4 = this.dw() + $$2.d;
-         double $$5 = this.dA() + $$2.e;
-         cnt.a(this, 0.2F);
-         float $$8;
-         if (this.be()) {
-            for (int $$6 = 0; $$6 < 4; $$6++) {
-               float $$7 = 0.25F;
-               this.dP().a(li.d, $$3 - $$2.c * 0.25, $$4 - $$2.d * 0.25, $$5 - $$2.e * 0.25, $$2.c, $$2.d, $$2.e);
-            }
-
-            $$8 = this.x();
-         } else {
-            $$8 = this.w();
-         }
-
-         this.h($$2.b(this.d, this.e, this.f).a((double)$$8));
-         lg $$10 = this.v();
-         if ($$10 != null) {
-            this.dP().a($$10, $$3, $$4 + 0.5, $$5, 0.0, 0.0, 0.0);
-         }
-
-         this.a_($$3, $$4, $$5);
-      } else {
-         this.ao();
-      }
-   }
-
-   @Override
-   public boolean a(brp $$0, float $$1) {
-      return !this.b($$0);
-   }
-
-   @Override
-   protected boolean b(bsw $$0) {
-      return super.b($$0) && !$$0.ag;
-   }
-
-   @Override
-   protected boolean u() {
-      return true;
-   }
-
-   @Nullable
-   protected lg v() {
-      return li.ae;
-   }
-
-   protected float w() {
-      return 0.95F;
-   }
-
-   protected float x() {
-      return 0.8F;
-   }
-
-   @Override
-   public void b(us $$0) {
+   public void b(tx $$0) {
       super.b($$0);
-      $$0.a("power", this.a(new double[]{this.d, this.e, this.f}));
+      $$0.a("Item", this.p().a(this.dR()));
    }
 
    @Override
-   public void a(us $$0) {
+   public void a(tx $$0) {
       super.a($$0);
-      if ($$0.b("power", 9)) {
-         uy $$1 = $$0.c("power", 6);
-         if ($$1.size() == 3) {
-            this.d = $$1.h(0);
-            this.e = $$1.h(1);
-            this.f = $$1.h(2);
-         }
-      }
-   }
-
-   @Override
-   public float bt() {
-      return 1.0F;
-   }
-
-   @Override
-   public zw<aci> dl() {
-      bsw $$0 = this.s();
-      int $$1 = $$0 == null ? 0 : $$0.al();
-      return new acj(this.al(), this.cz(), this.du(), this.dw(), this.dA(), this.dH(), this.dF(), this.ak(), $$1, new evt(this.d, this.e, this.f), 0.0);
-   }
-
-   @Override
-   public void a(acj $$0) {
-      super.a($$0);
-      double $$1 = $$0.j();
-      double $$2 = $$0.k();
-      double $$3 = $$0.l();
-      this.q($$1, $$2, $$3);
-   }
-
-   private void q(double $$0, double $$1, double $$2) {
-      double $$3 = Math.sqrt($$0 * $$0 + $$1 * $$1 + $$2 * $$2);
-      if ($$3 != 0.0) {
-         this.d = $$0 / $$3 * 0.1;
-         this.e = $$1 / $$3 * 0.1;
-         this.f = $$2 / $$3 * 0.1;
-      }
-   }
-
-   @Override
-   protected void b(@Nullable bsw $$0, boolean $$1) {
-      super.b($$0, $$1);
-      if ($$1) {
-         this.d = this.ds().c * 0.1;
-         this.e = this.ds().d * 0.1;
-         this.f = this.ds().e * 0.1;
+      if ($$0.b("Item", 10)) {
+         this.a(cua.a(this.dR(), (uu)$$0.p("Item")).orElseGet(() -> new cua(this.u())));
       } else {
-         this.d = this.ds().c * 0.05;
-         this.e = this.ds().d * 0.05;
-         this.f = this.ds().e * 0.05;
+         this.a(new cua(this.u()));
       }
    }
 }

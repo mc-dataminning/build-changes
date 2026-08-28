@@ -1,45 +1,119 @@
-public class cad extends cbc {
-   private final cfk g;
+import java.util.EnumSet;
+import java.util.List;
 
-   public cad(cfk $$0, double $$1) {
-      super($$0, $$1, 8);
-      this.g = $$0;
+public class cad extends bzw {
+   public final cgv a;
+   private double b;
+   private static final int c = 8;
+   private int d;
+
+   public cad(cgv $$0, double $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.a(EnumSet.of(bzw.a.a));
    }
 
    @Override
    public boolean a() {
-      return this.g.s() && !this.g.gq() && super.a();
+      if (!this.a.fZ() && !this.a.gZ()) {
+         List<bsd> $$0 = this.a.dP().a(this.a, this.a.cK().c(9.0, 4.0, 9.0), $$0x -> {
+            bsj<?> $$1x = $$0x.ak();
+            return $$1x == bsj.an || $$1x == bsj.be;
+         });
+         cgv $$1 = null;
+         double $$2 = Double.MAX_VALUE;
+
+         for (bsd $$3 : $$0) {
+            cgv $$4 = (cgv)$$3;
+            if ($$4.gZ() && !$$4.gY()) {
+               double $$5 = this.a.g($$4);
+               if (!($$5 > $$2)) {
+                  $$2 = $$5;
+                  $$1 = $$4;
+               }
+            }
+         }
+
+         if ($$1 == null) {
+            for (bsd $$6 : $$0) {
+               cgv $$7 = (cgv)$$6;
+               if ($$7.fZ() && !$$7.gY()) {
+                  double $$8 = this.a.g($$7);
+                  if (!($$8 > $$2)) {
+                     $$2 = $$8;
+                     $$1 = $$7;
+                  }
+               }
+            }
+         }
+
+         if ($$1 == null) {
+            return false;
+         } else if ($$2 < 4.0) {
+            return false;
+         } else if (!$$1.fZ() && !this.a($$1, 1)) {
+            return false;
+         } else {
+            this.a.a($$1);
+            return true;
+         }
+      } else {
+         return false;
+      }
    }
 
    @Override
-   public void c() {
-      super.c();
-      this.g.x(false);
+   public boolean b() {
+      if (this.a.gZ() && this.a.ha().bD() && this.a(this.a, 0)) {
+         double $$0 = this.a.g(this.a.ha());
+         if ($$0 > 676.0) {
+            if (this.b <= 3.0) {
+               this.b *= 1.2;
+               this.d = b(40);
+               return true;
+            }
+
+            if (this.d == 0) {
+               return false;
+            }
+         }
+
+         if (this.d > 0) {
+            this.d--;
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 
    @Override
    public void d() {
-      super.d();
-      this.g.x(false);
+      this.a.gX();
+      this.b = 2.1;
    }
 
    @Override
    public void e() {
-      super.e();
-      this.g.x(this.m());
+      if (this.a.gZ()) {
+         if (!(this.a.gb() instanceof cil)) {
+            cgv $$0 = this.a.ha();
+            double $$1 = (double)this.a.f($$0);
+            float $$2 = 2.0F;
+            evz $$3 = new evz($$0.du() - this.a.du(), $$0.dw() - this.a.dw(), $$0.dA() - this.a.dA()).d().a(Math.max($$1 - 2.0, 0.0));
+            this.a.K().a(this.a.du() + $$3.c, this.a.dw() + $$3.d, this.a.dA() + $$3.e, this.b);
+         }
+      }
    }
 
-   @Override
-   protected boolean a(dcd $$0, iz $$1) {
-      if (!$$0.u($$1.c())) {
+   private boolean a(cgv $$0, int $$1) {
+      if ($$1 > 8) {
          return false;
+      } else if ($$0.gZ()) {
+         return $$0.ha().fZ() ? true : this.a($$0.ha(), ++$$1);
       } else {
-         dse $$2 = $$0.a_($$1);
-         if ($$2.a(dfd.cv)) {
-            return dpq.a($$0, $$1) < 1;
-         } else {
-            return $$2.a(dfd.cD) && $$2.c(dii.b) ? true : $$2.a(awp.R, $$0x -> $$0x.d(deu.b).map($$0xx -> $$0xx != dsr.a).orElse(true));
-         }
+         return false;
       }
    }
 }

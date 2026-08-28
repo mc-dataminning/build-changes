@@ -1,77 +1,51 @@
-import com.mojang.util.UndashedUuid;
-import java.util.Arrays;
-import java.util.Locale;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
 
-public class ffv {
-   private final String a;
-   private final UUID b;
-   private final String c;
-   private final Optional<String> d;
-   private final Optional<String> e;
-   private final ffv.a f;
+public enum ffv {
+   a(new cua(cud.qS)),
+   b(new cua(dfh.cj)),
+   c(new cua(cud.lH)),
+   d(new cua(cud.pd), new cua(cud.oV)),
+   e(new cua(cud.qA), new cua(cud.ot)),
+   f(new cua(cud.qS)),
+   g(new cua(cud.pX)),
+   h(new cua(dfh.b)),
+   i(new cua(cud.qA), new cua(cud.oz)),
+   j(new cua(cud.qS)),
+   k(new cua(dfh.dI)),
+   l(new cua(cud.pb), new cua(cud.pQ)),
+   m(new cua(cud.qS)),
+   n(new cua(cud.pX)),
+   o(new cua(cud.fF)),
+   p(new cua(cud.pT)),
+   q(new cua(cud.pX)),
+   r(new cua(cud.hB));
 
-   public ffv(String $$0, UUID $$1, String $$2, Optional<String> $$3, Optional<String> $$4, ffv.a $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+   public static final List<ffv> s = ImmutableList.of(m, n);
+   public static final List<ffv> t = ImmutableList.of(j, k, l);
+   public static final List<ffv> u = ImmutableList.of(f, g, h, i);
+   public static final List<ffv> v = ImmutableList.of(a, d, b, e, c);
+   public static final Map<ffv, List<ffv>> w = ImmutableMap.of(
+      a, ImmutableList.of(d, b, e, c), f, ImmutableList.of(g, h, i), j, ImmutableList.of(k, l), m, ImmutableList.of(n)
+   );
+   private final List<cua> x;
+
+   private ffv(final cua... $$0) {
+      this.x = ImmutableList.copyOf($$0);
    }
 
-   public String a() {
-      return "token:" + this.c + ":" + UndashedUuid.toString(this.b);
+   public static List<ffv> a(cqt $$0) {
+      return switch ($$0) {
+         case a -> v;
+         case b -> u;
+         case c -> t;
+         case d -> s;
+      };
    }
 
-   public UUID b() {
-      return this.b;
-   }
-
-   public String c() {
-      return this.a;
-   }
-
-   public String d() {
-      return this.c;
-   }
-
-   public Optional<String> e() {
-      return this.e;
-   }
-
-   public Optional<String> f() {
-      return this.d;
-   }
-
-   public ffv.a g() {
-      return this.f;
-   }
-
-   public static enum a {
-      a("legacy"),
-      b("mojang"),
-      c("msa");
-
-      private static final Map<String, ffv.a> d = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, Function.identity()));
-      private final String e;
-
-      private a(final String $$0) {
-         this.e = $$0;
-      }
-
-      @Nullable
-      public static ffv.a a(String $$0) {
-         return d.get($$0.toLowerCase(Locale.ROOT));
-      }
-
-      public String a() {
-         return this.e;
-      }
+   public List<cua> a() {
+      return this.x;
    }
 }

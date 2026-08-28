@@ -1,9 +1,143 @@
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
+import java.util.function.BiConsumer;
 
-public class mx {
-   public static mt a(ly $$0, CompletableFuture<jk.a> $$1) {
-      return new mt($$0, Set.of(), List.of(new mt.a(mw::new, etf.c)), $$1);
+public record mx(jl.a a) implements mt {
+   @Override
+   public void generate(BiConsumer<akj<eqt>, eqt.a> $$0) {
+      $$0.accept(
+         eqk.bd,
+         eqt.b()
+            .a(
+               eqs.a()
+                  .a(eus.a(1.0F))
+                  .a(erb.a(cud.xQ).a(2))
+                  .a(erb.a(cud.xS).a(2))
+                  .a(erb.a(cud.qL))
+                  .a(erb.a(cud.oz))
+                  .a(erb.a(cud.pp))
+                  .a(
+                     erb.a(cud.vX)
+                        .a(
+                           eta.c()
+                              .a(brn.p, euz.a(7.0F, 10.0F))
+                              .a(brn.h, euz.a(7.0F, 10.0F))
+                              .a(brn.r, euz.a(6.0F, 8.0F))
+                              .a(brn.o, euz.a(5.0F, 7.0F))
+                              .a(brn.s, euz.a(10.0F, 20.0F))
+                              .a(brn.w, euz.a(7.0F, 10.0F))
+                        )
+                  )
+            )
+      );
+      $$0.accept(
+         eqk.be,
+         eqt.b()
+            .a(
+               eqs.a()
+                  .a(eus.a(1.0F))
+                  .a(erb.a(cud.xP))
+                  .a(erb.a(cud.yc))
+                  .a(erb.a(cud.yf))
+                  .a(erb.a(cud.yj))
+                  .a(erb.a(cud.oy))
+                  .a(erb.a(cud.md))
+                  .a(erb.a(cud.pu))
+                  .a(erb.a(cud.oz))
+            )
+      );
+      $$0.accept(
+         eqk.bf,
+         eqt.b()
+            .a(
+               eqs.a()
+                  .a(eus.a(1.0F))
+                  .a(erb.a(cud.oz).a(2))
+                  .a(erb.a(cud.pw).a(2))
+                  .a(erb.a(cud.oP).a(2))
+                  .a(erb.a(cud.eX).a(2))
+                  .a(erb.a(cud.qL).a(2))
+                  .a(erb.a(cud.rm).a(2))
+                  .a(erb.a(cud.rt).a(2))
+                  .a(erb.a(cud.rl).a(2))
+                  .a(erb.a(cud.ri).a(2))
+                  .a(erb.a(cud.rj).a(2))
+                  .a(erb.a(cud.xi).a(2))
+                  .a(erb.a(cud.xh).a(2))
+                  .a(erb.a(cud.xe).a(2))
+                  .a(erb.a(cud.xg).a(2))
+                  .a(erb.a(cud.iv))
+                  .a(erb.a(cud.iz))
+                  .a(erb.a(cud.iE))
+                  .a(erb.a(cud.iw))
+                  .a(erb.a(cud.iH))
+                  .a(erb.a(cud.ix))
+                  .a(erb.a(cud.iD))
+                  .a(erb.a(cud.qo))
+                  .a(erb.a(cud.qn))
+                  .a(erb.a(cud.si))
+                  .a(erb.a(cud.ow))
+                  .a(erb.a(cud.pv))
+                  .a(erb.a(cud.vl))
+                  .a(erb.a(cud.cR))
+                  .a(erb.a(cud.ue))
+                  .a(erb.a(cud.ps))
+                  .a(erb.a(cud.uK))
+            )
+      );
+      $$0.accept(
+         eqk.bg,
+         eqt.b()
+            .a(
+               eqs.a()
+                  .a(eus.a(1.0F))
+                  .a(erb.a(cud.xT))
+                  .a(erb.a(cud.xU))
+                  .a(erb.a(cud.xX))
+                  .a(erb.a(cud.xZ))
+                  .a(erb.a(cud.ya))
+                  .a(erb.a(cud.yb))
+                  .a(erb.a(cud.yh))
+                  .a(erb.a(cud.xH))
+                  .a(erb.a(cud.xK))
+                  .a(erb.a(cud.xI))
+                  .a(erb.a(cud.xL))
+                  .a(erb.a(cud.vN))
+            )
+      );
+      $$0.accept(
+         eqk.bh,
+         eqt.b()
+            .a(
+               eqs.a()
+                  .a(eus.a(1.0F))
+                  .a(erb.a(cud.xO))
+                  .a(erb.a(cud.yi))
+                  .a(erb.a(cud.yk))
+                  .a(erb.a(cud.kq))
+                  .a(erb.a(cud.pd))
+                  .a(erb.a(cud.oz).a(2))
+                  .a(erb.a(cud.pw).a(2))
+                  .a(erb.a(cud.oP).a(2))
+                  .a(erb.a(cud.ow).a(2))
+                  .a(erb.a(cud.si).a(2))
+            )
+      );
+      $$0.accept(
+         eqk.bi,
+         eqt.b()
+            .a(
+               eqs.a()
+                  .a(eus.a(1.0F))
+                  .a(erb.a(cud.xR))
+                  .a(erb.a(cud.xV))
+                  .a(erb.a(cud.yd))
+                  .a(erb.a(cud.ye))
+                  .a(erb.a(cud.pd))
+                  .a(erb.a(cud.oz).a(2))
+                  .a(erb.a(cud.pw).a(2))
+                  .a(erb.a(cud.oP).a(2))
+                  .a(erb.a(cud.ow).a(2))
+                  .a(erb.a(cud.si).a(2))
+            )
+      );
    }
 }

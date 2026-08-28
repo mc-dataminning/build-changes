@@ -1,5 +1,6 @@
-public class flh {
-   public static boolean a(int $$0) {
-      return $$0 == 257 || $$0 == 32 || $$0 == 335;
-   }
+public enum flh {
+   a,
+   b,
+   c,
+   d;
 }

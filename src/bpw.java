@@ -1,61 +1,86 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class bpw extends bqb {
-   public static final MapCodec<bpw> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.f),
-                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.g),
-                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.h)
-               )
-               .apply($$0, bpw::new)
-      )
-      .validate($$0 -> $$0.h < $$0.g ? DataResult.error(() -> "Max must be larger than min: [" + $$0.g + ", " + $$0.h + "]") : DataResult.success($$0));
-   private final float b;
-   private final float f;
-   private final int g;
-   private final int h;
+public interface bpw extends bpu {
+   float o_ = 4.0F;
 
-   public static bpw a(float $$0, float $$1, int $$2, int $$3) {
-      return new bpw($$0, $$1, $$2, $$3);
+   int b();
+
+   boolean c();
+
+   cua a(int var1);
+
+   cua a(int var1, int var2);
+
+   cua b(int var1);
+
+   void a(int var1, cua var2);
+
+   default int ah_() {
+      return 99;
    }
 
-   private bpw(float $$0, float $$1, int $$2, int $$3) {
-      this.b = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
+   default int e_(cua $$0) {
+      return Math.min(this.ah_(), $$0.j());
    }
 
-   @Override
-   public int a(azh $$0) {
-      return a($$0, this.b, this.f, (float)this.g, (float)this.h);
+   void e();
+
+   boolean a(cmh var1);
+
+   default void d_(cmh $$0) {
    }
 
-   public static int a(azh $$0, float $$1, float $$2, float $$3, float $$4) {
-      return (int)ayz.a(ayz.c($$0, $$1, $$2), $$3, $$4);
+   default void c(cmh $$0) {
    }
 
-   @Override
-   public int a() {
-      return this.g;
+   default boolean b(int $$0, cua $$1) {
+      return true;
    }
 
-   @Override
-   public int b() {
-      return this.h;
+   default boolean a(bpw $$0, int $$1, cua $$2) {
+      return true;
    }
 
-   @Override
-   public bqc<?> c() {
-      return bqc.f;
+   default int a_(ctv $$0) {
+      int $$1 = 0;
+
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         cua $$3 = this.a($$2);
+         if ($$3.g().equals($$0)) {
+            $$1 += $$3.H();
+         }
+      }
+
+      return $$1;
    }
 
-   @Override
-   public String toString() {
-      return "normal(" + this.b + ", " + this.f + ") in [" + this.g + "-" + this.h + "]";
+   default boolean a(Set<ctv> $$0) {
+      return this.a_($$1 -> !$$1.e() && $$0.contains($$1.g()));
+   }
+
+   default boolean a_(Predicate<cua> $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         cua $$2 = this.a($$1);
+         if ($$0.test($$2)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   static boolean a(dpn $$0, cmh $$1) {
+      return a($$0, $$1, 4.0F);
+   }
+
+   static boolean a(dpn $$0, cmh $$1, float $$2) {
+      dcd $$3 = $$0.i();
+      ja $$4 = $$0.az_();
+      if ($$3 == null) {
+         return false;
+      } else {
+         return $$3.c_($$4) != $$0 ? false : $$1.a($$4, (double)$$2);
+      }
    }
 }

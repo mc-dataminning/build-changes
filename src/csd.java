@@ -1,117 +1,79 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Objects;
-import java.util.function.Consumer;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class csd {
-   private static final Codec<csd> e = av.a.flatComapMap($$0 -> new csd(List.of($$0), true), $$0 -> DataResult.error(() -> "Cannot encode"));
-   private static final Codec<csd> f = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayh.a(av.a.listOf()).fieldOf("predicates").forGetter($$0x -> $$0x.h), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(csd::a)
-            )
-            .apply($$0, csd::new)
-   );
-   public static final Codec<csd> a = Codec.withAlternative(f, e);
-   public static final zn<xa, csd> b = zn.a(av.b.a(zl.a()), $$0 -> $$0.h, zl.b, csd::a, csd::new);
-   public static final xp c = xp.c("item.canBreak").a(n.h);
-   public static final xp d = xp.c("item.canPlace").a(n.h);
-   private static final xp g = xp.c("item.canUse.unknown").a(n.h);
-   private final List<av> h;
-   private final boolean i;
-   private final List<xp> j;
-   @Nullable
-   private dsi k;
-   private boolean l;
-   private boolean m;
+public class csd extends cut {
+   public static final int a = 20;
+   public static final int b = 15;
 
-   private csd(List<av> $$0, boolean $$1, List<xp> $$2) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
+   public csd(ctv.a $$0) {
+      super($$0);
    }
 
-   public csd(List<av> $$0, boolean $$1) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = a($$0);
-   }
+   @Override
+   public void a(cua $$0, dcd $$1, bsy $$2, int $$3) {
+      if ($$2 instanceof cmh $$4) {
+         cua $$5 = $$4.g($$0);
+         if (!$$5.e()) {
+            int $$6 = this.a($$0, $$2) - $$3;
+            float $$7 = a($$6);
+            if (!((double)$$7 < 0.1)) {
+               List<cua> $$8 = a($$0, $$5, $$4);
+               if ($$1 instanceof aqk $$9 && !$$8.isEmpty()) {
+                  this.a($$9, $$4, $$4.fs(), $$0, $$8, $$7 * 3.0F, 1.0F, $$7 == 1.0F, null);
+               }
 
-   private static boolean a(dsi $$0, @Nullable dsi $$1, boolean $$2) {
-      if ($$1 == null || $$0.a() != $$1.a()) {
-         return false;
-      } else if (!$$2) {
-         return true;
-      } else if ($$0.b() == null && $$1.b() == null) {
-         return true;
-      } else if ($$0.b() != null && $$1.b() != null) {
-         jw $$3 = $$0.c().H_();
-         return Objects.equals($$0.b().c($$3), $$1.b().c($$3));
-      } else {
-         return false;
-      }
-   }
-
-   public boolean a(dsi $$0) {
-      if (a($$0, this.k, this.m)) {
-         return this.l;
-      } else {
-         this.k = $$0;
-         this.m = false;
-
-         for (av $$1 : this.h) {
-            if ($$1.a($$0)) {
-               this.m = this.m | $$1.a();
-               this.l = true;
-               return true;
+               $$1.a(null, $$4.du(), $$4.dw(), $$4.dA(), avf.aG, avg.h, 1.0F, 1.0F / ($$1.E_().i() * 0.4F + 1.2F) + $$7 * 0.5F);
+               $$4.b(avp.c.b(this));
             }
          }
-
-         this.l = false;
-         return false;
       }
-   }
-
-   public void a(Consumer<xp> $$0) {
-      this.j.forEach($$0);
-   }
-
-   public csd a(boolean $$0) {
-      return new csd(this.h, $$0, this.j);
-   }
-
-   private static List<xp> a(List<av> $$0) {
-      for (av $$1 : $$0) {
-         if ($$1.b().isEmpty()) {
-            return List.of(g);
-         }
-      }
-
-      return $$0.stream().flatMap($$0x -> $$0x.b().orElseThrow().a()).distinct().map($$0x -> ((dfb)$$0x.a()).f().a(n.i)).toList();
-   }
-
-   public boolean a() {
-      return this.i;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
+   protected void a(bsy $$0, cmz $$1, int $$2, float $$3, float $$4, float $$5, @Nullable bsy $$6) {
+      $$1.a($$0, $$0.dH(), $$0.dF() + $$5, 0.0F, $$3, $$4);
+   }
+
+   public static float a(int $$0) {
+      float $$1 = (float)$$0 / 20.0F;
+      $$1 = ($$1 * $$1 + $$1 * 2.0F) / 3.0F;
+      if ($$1 > 1.0F) {
+         $$1 = 1.0F;
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public int a(cua $$0, bsy $$1) {
+      return 72000;
+   }
+
+   @Override
+   public cvv b(cua $$0) {
+      return cvv.e;
+   }
+
+   @Override
+   public bqe<cua> a(dcd $$0, cmh $$1, bqc $$2) {
+      cua $$3 = $$1.b($$2);
+      boolean $$4 = !$$1.g($$3).e();
+      if (!$$1.fL() && !$$4) {
+         return bqe.d($$3);
       } else {
-         return !($$0 instanceof csd $$1) ? false : this.h.equals($$1.h) && this.i == $$1.i;
+         $$1.c($$2);
+         return bqe.b($$3);
       }
    }
 
    @Override
-   public int hashCode() {
-      return this.h.hashCode() * 31 + (this.i ? 1 : 0);
+   public Predicate<cua> b() {
+      return c;
    }
 
    @Override
-   public String toString() {
-      return "AdventureModePredicate{predicates=" + this.h + ", showInTooltip=" + this.i + "}";
+   public int c() {
+      return 15;
    }
 }

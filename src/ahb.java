@@ -1,20 +1,37 @@
-public record ahb(int b) implements zw<agw> {
-   public static final zn<wm, ahb> a = zw.a(ahb::a, ahb::new);
+public class ahb implements zb<agb> {
+   public static final ys<vr, ahb> a = zb.a(ahb::a, ahb::new);
+   private final boolean b;
+   private final boolean c;
 
-   private ahb(wm $$0) {
-      this($$0.l());
+   public ahb(boolean $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private void a(wm $$0) {
-      $$0.c(this.b);
+   private ahb(vr $$0) {
+      this.b = $$0.readBoolean();
+      this.c = $$0.readBoolean();
+   }
+
+   private void a(vr $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+   }
+
+   public void a(agb $$0) {
+      $$0.a(this);
    }
 
    @Override
-   public zy<ahb> a() {
-      return agu.bi;
+   public zd<ahb> a() {
+      return afz.bG;
    }
 
-   public void a(agw $$0) {
-      $$0.a(this);
+   public boolean b() {
+      return this.b;
+   }
+
+   public boolean e() {
+      return this.c;
    }
 }

@@ -1,37 +1,23 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
-import javax.annotation.Nullable;
 
 public class bwt {
-   public static bwv<btr> a(float $$0) {
-      return byx.a((Function<byx.b<btr>, ? extends App<byx.c<btr>, bza<btr>>>)($$1 -> $$1.group($$1.c(ccv.m)).apply($$1, $$1x -> ($$2, $$3, $$4) -> {
-               if ($$2.h($$3.dp())) {
-                  return false;
-               } else {
-                  Optional<evt> $$5 = Optional.ofNullable(a($$2, $$3));
-                  $$5.ifPresent($$2x -> $$1x.a(new ccy($$2x, $$0, 0)));
-                  return true;
-               }
-            })));
-   }
-
-   @Nullable
-   private static evt a(arf $$0, btr $$1) {
-      azh $$2 = $$1.el();
-      iz $$3 = $$1.dp();
-
-      for (int $$4 = 0; $$4 < 10; $$4++) {
-         iz $$5 = $$3.b($$2.a(20) - 10, $$2.a(6) - 3, $$2.a(20) - 10);
-         if (a($$0, $$1, $$5)) {
-            return evt.c($$5);
-         }
-      }
-
-      return null;
-   }
-
-   public static boolean a(arf $$0, btr $$1, iz $$2) {
-      return $$0.h($$2) && (double)$$0.a(dxw.a.e, $$2).v() <= $$1.dw();
+   public static bus<bsy> a(bsj<?> $$0, int $$1) {
+      int $$2 = $$1 * $$1;
+      return bye.a(
+         (Function<bye.b<bsy>, ? extends App<bye.c<bsy>, byh<bsy>>>)($$2x -> $$2x.group($$2x.a(ccc.n), $$2x.c(ccc.q), $$2x.b(ccc.h))
+               .apply($$2x, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<bsy> $$9 = $$2x.<cce>b($$5).a($$3xx -> $$3xx.g((bsd)$$7) <= (double)$$2 && $$0.equals($$3xx.ak()));
+                     if ($$9.isEmpty()) {
+                        return false;
+                     } else {
+                        bsy $$10 = $$9.get();
+                        $$4.a($$10);
+                        $$3.a(new bvc($$10, true));
+                        return true;
+                     }
+                  }))
+      );
    }
 }

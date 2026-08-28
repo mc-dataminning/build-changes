@@ -1,83 +1,69 @@
-import java.util.Collection;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class ctf extends cum {
-   public ctf(cum.a $$0) {
+public class ctf extends ctv implements cus {
+   public static final byte[] a = new byte[]{1, 2, 3};
+   public static final double b = 0.15;
+
+   public ctf(ctv.a $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dse $$0, dca $$1, iz $$2, cmz $$3) {
+   public bqd a(cxm $$0) {
+      dcd $$1 = $$0.q();
       if (!$$1.B) {
-         this.a($$3, $$0, $$1, $$2, false, $$3.b(bqv.a));
+         cua $$2 = $$0.n();
+         evz $$3 = $$0.l();
+         jf $$4 = $$0.k();
+         cmu $$5 = new cmu($$1, $$0.o(), $$3.c + (double)$$4.j() * 0.15, $$3.d + (double)$$4.k() * 0.15, $$3.e + (double)$$4.l() * 0.15, $$2);
+         $$1.b($$5);
+         $$2.h(1);
       }
 
-      return false;
+      return bqd.a($$1.B);
    }
 
    @Override
-   public bqw a(cye $$0) {
-      cmz $$1 = $$0.o();
-      dca $$2 = $$0.q();
-      if (!$$2.B && $$1 != null) {
-         iz $$3 = $$0.a();
-         if (!this.a($$1, $$2.a_($$3), $$2, $$3, true, $$0.n())) {
-            return bqw.f;
+   public bqe<cua> a(dcd $$0, cmh $$1, bqc $$2) {
+      if ($$1.fA()) {
+         cua $$3 = $$1.b($$2);
+         if (!$$0.B) {
+            cmu $$4 = new cmu($$0, $$3, $$1);
+            $$0.b($$4);
+            $$3.a(1, $$1);
+            $$1.b(avp.c.b(this));
          }
-      }
 
-      return bqw.a($$2.B);
-   }
-
-   private boolean a(cmz $$0, dse $$1, dcb $$2, iz $$3, boolean $$4, cur $$5) {
-      if (!$$0.gz()) {
-         return false;
+         return bqe.a($$1.b($$2), $$0.x_());
       } else {
-         ji<dfb> $$6 = $$1.c();
-         dsf<dfb, dse> $$7 = $$6.a().l();
-         Collection<dth<?>> $$8 = $$7.d();
-         if ($$8.isEmpty()) {
-            a($$0, xp.a(this.a() + ".empty", $$6.g()));
-            return false;
-         } else {
-            cxi $$9 = $$5.a(km.L);
-            if ($$9 == null) {
-               return false;
-            } else {
-               dth<?> $$10 = $$9.a().get($$6);
-               if ($$4) {
-                  if ($$10 == null) {
-                     $$10 = $$8.iterator().next();
-                  }
-
-                  dse $$11 = a($$1, $$10, $$0.fR());
-                  $$2.a($$3, $$11, 18);
-                  a($$0, xp.a(this.a() + ".update", $$10.f(), a($$11, $$10)));
-               } else {
-                  $$10 = a($$8, $$10, $$0.fR());
-                  $$5.b(km.L, $$9.a($$6, $$10));
-                  a($$0, xp.a(this.a() + ".select", $$10.f(), a($$1, $$10)));
-               }
-
-               return true;
-            }
-         }
+         return bqe.c($$1.b($$2));
       }
    }
 
-   private static <T extends Comparable<T>> dse a(dse $$0, dth<T> $$1, boolean $$2) {
-      return $$0.a($$1, a($$1.a(), $$0.c($$1), $$2));
+   @Override
+   public void a(cua $$0, ctv.b $$1, List<wu> $$2, cvt $$3) {
+      cwt $$4 = $$0.a(kn.U);
+      if ($$4 != null) {
+         $$4.a($$1, $$2::add, $$3);
+      }
    }
 
-   private static <T> T a(Iterable<T> $$0, @Nullable T $$1, boolean $$2) {
-      return $$2 ? ac.b($$0, $$1) : ac.a($$0, $$1);
+   @Override
+   public cmz a(dcd $$0, jt $$1, cua $$2, jf $$3) {
+      return new cmu($$0, $$2.c(1), $$1.a(), $$1.b(), $$1.c(), true);
    }
 
-   private static void a(cmz $$0, xp $$1) {
-      ((arg)$$0).b($$1, true);
+   @Override
+   public cus.a c() {
+      return cus.a.a().a(ctf::a).a(1.0F).b(0.5F).a(1004).a();
    }
 
-   private static <T extends Comparable<T>> String a(dse $$0, dth<T> $$1) {
-      return $$1.a($$0.c($$1));
+   private static evz a(kr $$0, jf $$1) {
+      return $$0.a()
+         .b(
+            (double)$$1.j() * (0.5000099999997474 - (double)bsj.P.l() / 2.0),
+            (double)$$1.k() * (0.5000099999997474 - (double)bsj.P.m() / 2.0) - (double)bsj.P.m() / 2.0,
+            (double)$$1.l() * (0.5000099999997474 - (double)bsj.P.l() / 2.0)
+         );
    }
 }

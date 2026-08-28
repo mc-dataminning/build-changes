@@ -1,124 +1,35 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
 
-public class gpp implements gpf {
-   static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<gpp> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               alf.a.fieldOf("resource").forGetter($$0x -> $$0x.d),
-               ayh.a(gpp.a.a.listOf()).fieldOf("regions").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.optionalFieldOf("divisor_x", 1.0).forGetter($$0x -> $$0x.f),
-               Codec.DOUBLE.optionalFieldOf("divisor_y", 1.0).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, gpp::new)
-   );
-   private final alf d;
-   private final List<gpp.a> e;
-   private final double f;
-   private final double g;
+public class gpp {
+   private static final BiMap<akk, gpo> i = HashBiMap.create();
+   public static final gpo a = a("single", gpu.b);
+   public static final gpo b = a("directory", gpr.b);
+   public static final gpo c = a("filter", gpv.b);
+   public static final gpo d = a("unstitch", gpw.b);
+   public static final gpo e = a("paletted_permutations", gpt.b);
+   public static Codec<gpo> f = akk.a.flatXmap($$0 -> {
+      gpo $$1 = (gpo)i.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$0);
+   }, $$0 -> {
+      akk $$1 = (akk)i.inverse().get($$0);
+      return $$0 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$1);
+   });
+   public static Codec<gpm> g = f.dispatch(gpm::a, gpo::a);
+   public static Codec<List<gpm>> h = g.listOf().fieldOf("sources").codec();
 
-   public gpp(alf $$0, List<gpp.a> $$1, double $$2, double $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-   }
-
-   @Override
-   public void a(aup $$0, gpf.a $$1) {
-      alf $$2 = a.a(this.d);
-      Optional<aun> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         gpl $$4 = new gpl($$2, $$3.get(), this.e.size());
-
-         for (gpp.a $$5 : this.e) {
-            $$1.a($$5.b, new gpp.b($$4, $$5, this.f, this.g));
-         }
+   private static gpo a(String $$0, MapCodec<? extends gpm> $$1) {
+      gpo $$2 = new gpo($$1);
+      akk $$3 = new akk($$0);
+      gpo $$4 = (gpo)i.putIfAbsent($$3, $$2);
+      if ($$4 != null) {
+         throw new IllegalStateException("Duplicate registration " + $$3);
       } else {
-         c.warn("Missing sprite: {}", $$2);
-      }
-   }
-
-   @Override
-   public gph a() {
-      return gpi.d;
-   }
-
-   static record a(alf b, double c, double d, double e, double f) {
-      public static final Codec<gpp.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  alf.a.fieldOf("sprite").forGetter(gpp.a::a),
-                  Codec.DOUBLE.fieldOf("x").forGetter(gpp.a::b),
-                  Codec.DOUBLE.fieldOf("y").forGetter(gpp.a::c),
-                  Codec.DOUBLE.fieldOf("width").forGetter(gpp.a::d),
-                  Codec.DOUBLE.fieldOf("height").forGetter(gpp.a::e)
-               )
-               .apply($$0, gpp.a::new)
-      );
-
-      public alf a() {
-         return this.b;
-      }
-
-      public double b() {
-         return this.c;
-      }
-
-      public double c() {
-         return this.d;
-      }
-
-      public double d() {
-         return this.e;
-      }
-
-      public double e() {
-         return this.f;
-      }
-   }
-
-   static class b implements gpf.b {
-      private final gpl a;
-      private final gpp.a b;
-      private final double c;
-      private final double d;
-
-      b(gpl $$0, gpp.a $$1, double $$2, double $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      public gov a(gpe $$0) {
-         try {
-            ezb $$1 = this.a.a();
-            double $$2 = (double)$$1.a() / this.c;
-            double $$3 = (double)$$1.b() / this.d;
-            int $$4 = ayz.a(this.b.c * $$2);
-            int $$5 = ayz.a(this.b.d * $$3);
-            int $$6 = ayz.a(this.b.e * $$2);
-            int $$7 = ayz.a(this.b.f * $$3);
-            ezb $$8 = new ezb(ezb.a.a, $$6, $$7, false);
-            $$1.a($$8, $$4, $$5, 0, 0, $$6, $$7, false, false);
-            return new gov(this.b.b, new gqo($$6, $$7), $$8, aur.a);
-         } catch (Exception var16) {
-            gpp.c.error("Failed to unstitch region {}", this.b.b, var16);
-         } finally {
-            this.a.b();
-         }
-
-         return gor.a();
-      }
-
-      @Override
-      public void a() {
-         this.a.b();
+         return $$2;
       }
    }
 }

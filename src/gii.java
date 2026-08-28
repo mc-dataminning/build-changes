@@ -1,17 +1,18 @@
-public class gii extends glg<cjq> {
-   private static final alf a = new alf("textures/entity/spider/cave_spider.png");
-   private static final float i = 0.7F;
+public class gii extends gkm<cep, ftm<cep>> {
+   private static final akk a = new akk("textures/entity/bee/bee_angry.png");
+   private static final akk i = new akk("textures/entity/bee/bee_angry_nectar.png");
+   private static final akk j = new akk("textures/entity/bee/bee.png");
+   private static final akk k = new akk("textures/entity/bee/bee_nectar.png");
 
-   public gii(giz.a $$0) {
-      super($$0, fxb.w);
-      this.d *= 0.7F;
+   public gii(gjg.a $$0) {
+      super($$0, new ftm<>($$0.a(fxh.k)), 0.4F);
    }
 
-   protected void a(cjq $$0, faa $$1, float $$2) {
-      $$1.b(0.7F, 0.7F, 0.7F);
-   }
-
-   public alf a(cjq $$0) {
-      return a;
+   public akk a(cep $$0) {
+      if ($$0.Z_()) {
+         return $$0.gx() ? i : a;
+      } else {
+         return $$0.gx() ? k : j;
+      }
    }
 }

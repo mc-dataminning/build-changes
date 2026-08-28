@@ -1,40 +1,37 @@
-import javax.annotation.Nullable;
-
-public class adm implements zw<aci> {
-   public static final zn<wm, adm> a = zw.a(adm::a, adm::new);
+public class adm implements zb<abn> {
+   public static final ys<vr, adm> a = zb.a(adm::a, adm::new);
    private final int b;
-   private final byte c;
+   private final akk c;
 
-   public adm(bsw $$0, byte $$1) {
-      this.b = $$0.al();
-      this.c = $$1;
+   public adm(int $$0, cyi<?> $$1) {
+      this.b = $$0;
+      this.c = $$1.a();
    }
 
-   private adm(wm $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readByte();
+   private adm(vr $$0) {
+      this.b = $$0.readByte();
+      this.c = $$0.q();
    }
 
-   private void a(wm $$0) {
-      $$0.p(this.b);
-      $$0.k(this.c);
+   private void a(vr $$0) {
+      $$0.k(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zy<adm> a() {
-      return agu.D;
+   public zd<adm> a() {
+      return afz.Y;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bsw a(dca $$0) {
-      return $$0.a(this.b);
+   public akk b() {
+      return this.c;
    }
 
-   public byte b() {
-      return this.c;
+   public int e() {
+      return this.b;
    }
 }

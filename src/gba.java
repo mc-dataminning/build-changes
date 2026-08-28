@@ -1,56 +1,56 @@
-public class gba extends gce {
-   gba(fxx $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.u = 0.75F;
-      this.B = 0.999F;
-      this.j *= 0.8F;
-      this.k *= 0.8F;
-      this.l *= 0.8F;
-      this.k = (double)(this.r.i() * 0.4F + 0.05F);
-      this.D = this.D * (this.r.i() * 2.0F + 0.2F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+public class gba extends gcl {
+   private final gcg a;
+
+   protected gba(fyd $$0, double $$1, double $$2, double $$3, gcg $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a = $$4;
+      this.b($$4);
+      this.t = 12 + this.r.a(4);
+      this.D = 1.0F;
+      this.b(1.0F, 1.0F);
    }
 
    @Override
-   public gbi b() {
-      return gbi.b;
+   public gbp b() {
+      return gbp.d;
    }
 
    @Override
    public int a(float $$0) {
-      int $$1 = super.a($$0);
-      int $$2 = 240;
-      int $$3 = $$1 >> 16 & 0xFF;
-      return 240 | $$3 << 16;
-   }
-
-   @Override
-   public float b(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      return this.D * (1.0F - $$1 * $$1);
+      return 15728880;
    }
 
    @Override
    public void a() {
-      super.a();
-      if (!this.o) {
-         float $$0 = (float)this.s / (float)this.t;
-         if (this.r.i() > $$0) {
-            this.c.a(li.ae, this.g, this.h, this.i, this.j, this.k, this.l);
-         }
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.a);
       }
    }
 
-   public static class a implements gbh<lm> {
-      private final gbz a;
+   public static class a implements gbo<ln> {
+      private final gcg a;
 
-      public a(gbz $$0) {
+      public a(gcg $$0) {
          this.a = $$0;
       }
 
-      public gbe a(lm $$0, fxx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gba $$8 = new gba($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
+      public gbl a(ln $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gba($$1, $$2, $$3, $$4, this.a);
+      }
+   }
+
+   public static class b implements gbo<ln> {
+      private final gcg a;
+
+      public b(gcg $$0) {
+         this.a = $$0;
+      }
+
+      public gbl a(ln $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gbl $$8 = new gba($$1, $$2, $$3, $$4, this.a);
+         $$8.d(0.15F);
          return $$8;
       }
    }

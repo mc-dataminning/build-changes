@@ -1,33 +1,46 @@
-public enum aty {
-   a("old"),
-   b("new"),
-   c("compatible");
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import org.slf4j.Logger;
 
-   private final xp d;
-   private final xp e;
+public abstract class aty extends atz<Map<akk, JsonElement>> {
+   private static final Logger a = LogUtils.getLogger();
+   private final Gson b;
+   private final String c;
 
-   private aty(final String $$0) {
-      this.d = xp.c("pack.incompatible." + $$0).a(n.h);
-      this.e = xp.c("pack.incompatible.confirm." + $$0);
+   public aty(Gson $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public boolean a() {
-      return this == c;
+   protected Map<akk, JsonElement> a(atu $$0, bmr $$1) {
+      Map<akk, JsonElement> $$2 = new HashMap<>();
+      a($$0, this.c, this.b, $$2);
+      return $$2;
    }
 
-   public static aty a(ayr<Integer> $$0, int $$1) {
-      if ($$0.b() < $$1) {
-         return a;
-      } else {
-         return $$1 < $$0.a() ? b : c;
+   public static void a(atu $$0, String $$1, Gson $$2, Map<akk, JsonElement> $$3) {
+      akd $$4 = akd.a($$1);
+
+      for (Entry<akk, ats> $$5 : $$4.a($$0).entrySet()) {
+         akk $$6 = $$5.getKey();
+         akk $$7 = $$4.b($$6);
+
+         try (Reader $$8 = $$5.getValue().e()) {
+            JsonElement $$9 = axu.a($$2, $$8, JsonElement.class);
+            JsonElement $$10 = $$3.put($$7, $$9);
+            if ($$10 != null) {
+               throw new IllegalStateException("Duplicate data file ignored with ID " + $$7);
+            }
+         } catch (IllegalArgumentException | IOException | JsonParseException var14) {
+            a.error("Couldn't parse data file {} from {}", new Object[]{$$7, $$6, var14});
+         }
       }
-   }
-
-   public xp b() {
-      return this.d;
-   }
-
-   public xp c() {
-      return this.e;
    }
 }

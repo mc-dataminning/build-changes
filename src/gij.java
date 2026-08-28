@@ -1,17 +1,15 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gij extends gkm<ciw, ftn<ciw>> {
+   private static final akk a = new akk("textures/entity/blaze.png");
 
-public class gij<T extends chk> extends ght<T, ftq<T>> {
-   private static final Map<btc<?>, alf> a = Maps.newHashMap(
-      ImmutableMap.of(btc.z, new alf("textures/entity/horse/donkey.png"), btc.at, new alf("textures/entity/horse/mule.png"))
-   );
-
-   public gij(giz.a $$0, float $$1, fxa $$2) {
-      super($$0, new ftq<>($$0.a($$2)), $$1);
+   public gij(gjg.a $$0) {
+      super($$0, new ftn<>($$0.a(fxh.m)), 0.5F);
    }
 
-   public alf a(T $$0) {
-      return a.get($$0.ak());
+   protected int a(ciw $$0, ja $$1) {
+      return 15;
+   }
+
+   public akk a(ciw $$0) {
+      return a;
    }
 }

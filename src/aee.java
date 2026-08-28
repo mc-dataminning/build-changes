@@ -1,29 +1,33 @@
-public class aee implements zw<aci> {
-   public static final zn<wm, aee> a = zw.a(aee::a, aee::new);
-   private final bqv b;
+import javax.annotation.Nullable;
 
-   public aee(bqv $$0) {
+public class aee implements zb<abn> {
+   public static final ys<vr, aee> a = zb.a(aee::a, aee::new);
+   @Nullable
+   private final akk b;
+
+   public aee(@Nullable akk $$0) {
       this.b = $$0;
    }
 
-   private aee(wm $$0) {
-      this.b = $$0.b(bqv.class);
+   private aee(vr $$0) {
+      this.b = $$0.c(vr::q);
    }
 
-   private void a(wm $$0) {
-      $$0.a(this.b);
+   private void a(vr $$0) {
+      $$0.a(this.b, vr::a);
    }
 
    @Override
-   public zy<aee> a() {
-      return agu.V;
+   public zd<aee> a() {
+      return afz.ao;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
    }
 
-   public bqv b() {
+   @Nullable
+   public akk b() {
       return this.b;
    }
 }

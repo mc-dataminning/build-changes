@@ -1,7 +1,3 @@
-public interface exm<T> {
-   void a(exk<T> var1);
-
-   boolean a(iz var1, T var2);
-
-   int a();
+public interface exm<T> extends exs<T> {
+   boolean b(ja var1, T var2);
 }

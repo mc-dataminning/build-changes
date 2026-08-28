@@ -1,18 +1,53 @@
-public class gbc extends gbe {
-   protected gbc(fxx $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-   }
-
-   protected gbc(fxx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+public class gbc extends gcl {
+   gbc(fyd $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.C = true;
+      this.B = 0.86F;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.1;
+      this.D *= 1.5F;
+      this.t = 16;
+      this.n = false;
    }
 
    @Override
-   public final void a(fae $$0, fes $$1, float $$2) {
+   public gbp b() {
+      return gbp.b;
    }
 
    @Override
-   public gbi b() {
-      return gbi.f;
+   public float b(float $$0) {
+      return this.D * aye.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
+
+   public static class a implements gbo<ln> {
+      private final gcg a;
+
+      public a(gcg $$0) {
+         this.a = $$0;
+      }
+
+      public gbl a(ln $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gbc $$8 = new gbc($$1, $$2, $$3 + 0.5, $$4);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
+
+   public static class b implements gbo<ln> {
+      private final gcg a;
+
+      public b(gcg $$0) {
+         this.a = $$0;
+      }
+
+      public gbl a(ln $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gbc $$8 = new gbc($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

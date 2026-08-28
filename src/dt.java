@@ -1,56 +1,11 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-
-public class dt extends dr<dt.a> {
+public interface dt<T> extends cq {
    @Override
-   public Codec<dt.a> a() {
-      return dt.a.a;
+   default boolean a(cua $$0) {
+      T $$1 = $$0.a(this.a());
+      return $$1 != null && this.a($$0, $$1);
    }
 
-   public void a(arg $$0, dse $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
-   }
+   km<T> a();
 
-   public static record a(Optional<bf> b, Optional<ji<dfb>> c, Optional<dx> d) implements dr.a {
-      public static final Codec<dt.a> a = RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     bu.b.optionalFieldOf("player").forGetter(dt.a::a),
-                     lp.e.r().optionalFieldOf("block").forGetter(dt.a::b),
-                     dx.a.optionalFieldOf("state").forGetter(dt.a::c)
-                  )
-                  .apply($$0, dt.a::new)
-         )
-         .validate(dt.a::a);
-
-      private static DataResult<dt.a> a(dt.a $$0) {
-         return $$0.c
-            .<DataResult<dt.a>>flatMap(
-               $$1 -> $$0.d.<String>flatMap($$1x -> $$1x.a(((dfb)$$1.a()).l())).map($$1x -> DataResult.error(() -> "Block" + $$1 + " has no property " + $$1x))
-            )
-            .orElseGet(() -> DataResult.success($$0));
-      }
-
-      public static an<dt.a> a(dfb $$0) {
-         return am.K.a(new dt.a(Optional.empty(), Optional.of($$0.s()), Optional.empty()));
-      }
-
-      public boolean a(dse $$0) {
-         return this.c.isPresent() && !$$0.a(this.c.get()) ? false : !this.d.isPresent() || this.d.get().a($$0);
-      }
-
-      @Override
-      public Optional<bf> a() {
-         return this.b;
-      }
-
-      public Optional<ji<dfb>> b() {
-         return this.c;
-      }
-
-      public Optional<dx> c() {
-         return this.d;
-      }
-   }
+   boolean a(cua var1, T var2);
 }

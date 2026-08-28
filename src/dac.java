@@ -1,176 +1,101 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class dac implements cpk {
-   private final dac.b b;
+public record dac(boolean d, Optional<jj<bqy>> e, Optional<czq> f, Optional<jn<dff>> g, evz h, czq i, boolean j, dcd.a k, lh l, lh m, jj<ave> n) implements czz {
+   public static final MapCodec<dac> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("attribute_to_user", false).forGetter(dac::b),
+               bqy.b.optionalFieldOf("damage_type").forGetter(dac::c),
+               czq.b.optionalFieldOf("knockback_multiplier").forGetter(dac::d),
+               jy.a(lr.f).optionalFieldOf("immune_blocks").forGetter(dac::e),
+               evz.a.optionalFieldOf("offset", evz.b).forGetter(dac::f),
+               czq.b.fieldOf("radius").forGetter(dac::g),
+               Codec.BOOL.optionalFieldOf("create_fire", false).forGetter(dac::h),
+               dcd.a.f.fieldOf("block_interaction").forGetter(dac::i),
+               lj.bf.fieldOf("small_particle").forGetter(dac::j),
+               lj.bf.fieldOf("large_particle").forGetter(dac::k),
+               ave.b.fieldOf("sound").forGetter(dac::l)
+            )
+            .apply($$0, dac::new)
+   );
+
+   @Override
+   public void a(aqk $$0, int $$1, czi $$2, bsd $$3, evz $$4) {
+      evz $$5 = $$4.e(this.h);
+      $$0.a(
+         this.d ? $$3 : null,
+         this.a($$3, $$5),
+         new dcu(this.k != dcd.a.a, this.e.isPresent(), this.f.map($$1x -> $$1x.a($$1)), this.g),
+         $$5.a(),
+         $$5.b(),
+         $$5.c(),
+         Math.max(this.i.a($$1), 0.0F),
+         this.j,
+         this.k,
+         this.l,
+         this.m,
+         this.n
+      );
+   }
+
    @Nullable
-   protected String a;
-   private final ji.c<dac> c = lp.f.f(this);
-
-   public static dac.a a(int $$0) {
-      return new dac.a($$0, 0);
-   }
-
-   public static dac.a a(int $$0, int $$1) {
-      return new dac.a($$0, $$1);
-   }
-
-   public static dac.b a(axf<cum> $$0, axf<cum> $$1, int $$2, int $$3, dac.a $$4, dac.a $$5, int $$6, btd... $$7) {
-      return new dac.b($$0, Optional.of($$1), $$2, $$3, $$4, $$5, $$6, cpp.h, $$7);
-   }
-
-   public static dac.b a(axf<cum> $$0, int $$1, int $$2, dac.a $$3, dac.a $$4, int $$5, btd... $$6) {
-      return new dac.b($$0, Optional.empty(), $$1, $$2, $$3, $$4, $$5, cpp.h, $$6);
-   }
-
-   public static dac.b a(axf<cum> $$0, int $$1, int $$2, dac.a $$3, dac.a $$4, int $$5, cpn $$6, btd... $$7) {
-      return new dac.b($$0, Optional.empty(), $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Nullable
-   public static dac b(int $$0) {
-      return lp.f.a($$0);
-   }
-
-   public dac(dac.b $$0) {
-      this.b = $$0;
-   }
-
-   public Map<btd, cur> a(btr $$0) {
-      Map<btd, cur> $$1 = Maps.newEnumMap(btd.class);
-
-      for (btd $$2 : this.b.i()) {
-         cur $$3 = $$0.a($$2);
-         if (!$$3.e()) {
-            $$1.put($$2, $$3);
-         }
-      }
-
-      return $$1;
-   }
-
-   public final axf<cum> c() {
-      return this.b.a();
-   }
-
-   public final boolean a(cur $$0) {
-      return this.b.b.isEmpty() || $$0.a(this.b.b.get());
-   }
-
-   public final int d() {
-      return this.b.c();
-   }
-
-   public final int e() {
-      return this.b.g();
-   }
-
-   public final int f() {
-      return 1;
-   }
-
-   public final int g() {
-      return this.b.d();
-   }
-
-   public final int c(int $$0) {
-      return this.b.e().a($$0);
-   }
-
-   public final int d(int $$0) {
-      return this.b.f().a($$0);
-   }
-
-   public int a(int $$0, brp $$1) {
-      return 0;
-   }
-
-   public float a(int $$0, @Nullable btc<?> $$1) {
-      return 0.0F;
-   }
-
-   public final boolean b(dac $$0) {
-      return this.a($$0) && $$0.a(this);
-   }
-
-   protected boolean a(dac $$0) {
-      return this != $$0;
-   }
-
-   protected String h() {
-      if (this.a == null) {
-         this.a = ac.a("enchantment", lp.f.b(this));
-      }
-
-      return this.a;
-   }
-
-   public String j() {
-      return this.h();
-   }
-
-   public xp e(int $$0) {
-      yd $$1 = xp.c(this.j());
-      if (this.b()) {
-         $$1.a(n.m);
+   private bqw a(bsd $$0, evz $$1) {
+      if (this.e.isEmpty()) {
+         return null;
       } else {
-         $$1.a(n.h);
+         return this.d ? new bqw(this.e.get(), $$0) : new bqw(this.e.get(), $$1);
       }
-
-      if ($$0 != 1 || this.g() != 1) {
-         $$1.b(xo.v).b(xp.c("enchantment.level." + $$0));
-      }
-
-      return $$1;
-   }
-
-   public boolean b(cur $$0) {
-      return $$0.g().o().a(this.b.a());
-   }
-
-   public void a(btr $$0, bsw $$1, int $$2) {
-   }
-
-   public void b(btr $$0, bsw $$1, int $$2) {
-   }
-
-   public void c(btr $$0, bsw $$1, int $$2) {
-   }
-
-   public boolean a() {
-      return false;
-   }
-
-   public boolean b() {
-      return false;
-   }
-
-   public boolean k() {
-      return true;
-   }
-
-   public boolean l() {
-      return true;
-   }
-
-   @Deprecated
-   public ji.c<dac> m() {
-      return this.c;
    }
 
    @Override
-   public cpn i() {
-      return this.b.h();
+   public MapCodec<dac> a() {
+      return a;
    }
 
-   public static record a(int a, int b) {
-      public int a(int $$0) {
-         return this.a + this.b * ($$0 - 1);
-      }
+   public boolean b() {
+      return this.d;
    }
 
-   public static record b(axf<cum> a, Optional<axf<cum>> b, int c, int d, dac.a e, dac.a f, int g, cpn h, btd[] i) {
+   public Optional<jj<bqy>> c() {
+      return this.e;
+   }
+
+   public Optional<czq> d() {
+      return this.f;
+   }
+
+   public Optional<jn<dff>> e() {
+      return this.g;
+   }
+
+   public evz f() {
+      return this.h;
+   }
+
+   public czq g() {
+      return this.i;
+   }
+
+   public boolean h() {
+      return this.j;
+   }
+
+   public dcd.a i() {
+      return this.k;
+   }
+
+   public lh j() {
+      return this.l;
+   }
+
+   public lh k() {
+      return this.m;
+   }
+
+   public jj<ave> l() {
+      return this.n;
    }
 }

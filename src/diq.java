@@ -1,106 +1,75 @@
 import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Optional;
 
-public abstract class diq extends dio implements dfe {
-   public static final dte e = dsu.ax;
-   public static final int f = 25;
-   private final double c;
+public class diq extends dmw implements dfi {
+   public static final MapCodec<diq> a = b(diq::new);
 
-   protected diq(dsd.d $$0, je $$1, ewm $$2, boolean $$3, double $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.c = $$4;
-      this.k(this.E.b().a(e, Integer.valueOf(0)));
+   @Override
+   public MapCodec<diq> a() {
+      return a;
+   }
+
+   public diq(dsg.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends diq> a();
-
-   @Override
-   public dse a(dcb $$0) {
-      return this.o().a(e, Integer.valueOf($$0.E_().a(25)));
+   public boolean b(dcg $$0, ja $$1, dsh $$2) {
+      return $$0.a_($$1.c()).i();
    }
 
    @Override
-   protected boolean d_(dse $$0) {
-      return $$0.c(e) < 25;
-   }
-
-   @Override
-   protected void b(dse $$0, arf $$1, iz $$2, azh $$3) {
-      if ($$0.c(e) < 25 && $$3.j() < this.c) {
-         iz $$4 = $$2.a(this.a);
-         if (this.g($$1.a_($$4))) {
-            $$1.b($$4, this.a($$0, $$1.z));
-         }
-      }
-   }
-
-   protected dse a(dse $$0, azh $$1) {
-      return $$0.a(e);
-   }
-
-   public dse n(dse $$0) {
-      return $$0.a(e, Integer.valueOf(25));
-   }
-
-   public boolean o(dse $$0) {
-      return $$0.c(e) == 25;
-   }
-
-   protected dse a(dse $$0, dse $$1) {
-      return $$1;
-   }
-
-   @Override
-   protected dse a(dse $$0, je $$1, dse $$2, dcb $$3, iz $$4, iz $$5) {
-      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      if ($$1 != this.a || !$$2.a(this) && !$$2.a(this.b())) {
-         if (this.b) {
-            $$3.a($$4, eny.c, eny.c.a($$3));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         return this.a($$0, this.b().o());
-      }
-   }
-
-   @Override
-   protected void a(dsf.a<dfb, dse> $$0) {
-      $$0.a(e);
-   }
-
-   @Override
-   public boolean b(dcd $$0, iz $$1, dse $$2) {
-      return this.g($$0.a_($$1.a(this.a)));
-   }
-
-   @Override
-   public boolean a(dca $$0, azh $$1, iz $$2, dse $$3) {
+   public boolean a(dcd $$0, aym $$1, ja $$2, dsh $$3) {
       return true;
    }
 
    @Override
-   public void a(arf $$0, azh $$1, iz $$2, dse $$3) {
-      iz $$4 = $$2.a(this.a);
-      int $$5 = Math.min($$3.c(e) + 1, 25);
-      int $$6 = this.a($$1);
+   public void a(aqk $$0, aym $$1, ja $$2, dsh $$3) {
+      ja $$4 = $$2.c();
+      dsh $$5 = dfh.bt.o();
+      Optional<jj.c<ehu>> $$6 = $$0.H_().d(lr.aP).b(se.n);
 
-      for (int $$7 = 0; $$7 < $$6 && this.g($$0.a_($$4)); $$7++) {
-         $$0.b($$4, $$3.a(e, Integer.valueOf($$5)));
-         $$4 = $$4.a(this.a);
-         $$5 = Math.min($$5 + 1, 25);
+      label49:
+      for (int $$7 = 0; $$7 < 128; $$7++) {
+         ja $$8 = $$4;
+
+         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
+            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
+            if (!$$0.a_($$8.d()).a(this) || $$0.a_($$8).r($$0, $$8)) {
+               continue label49;
+            }
+         }
+
+         dsh $$10 = $$0.a_($$8);
+         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
+            ((dfi)$$5.b()).a($$0, $$1, $$8, $$10);
+         }
+
+         if ($$10.i()) {
+            jj<ehu> $$12;
+            if ($$1.a(8) == 0) {
+               List<ear<?, ?>> $$11 = $$0.t($$8).a().d().a();
+               if ($$11.isEmpty()) {
+                  continue;
+               }
+
+               $$12 = ((edv)$$11.get(0).c()).d();
+            } else {
+               if (!$$6.isPresent()) {
+                  continue;
+               }
+
+               $$12 = $$6.get();
+            }
+
+            $$12.a().a($$0, $$0.l().g(), $$1, $$8);
+         }
       }
    }
 
-   protected abstract int a(azh var1);
-
-   protected abstract boolean g(dse var1);
-
    @Override
-   protected diq c() {
-      return this;
+   public dfi.a aq_() {
+      return dfi.a.a;
    }
 }

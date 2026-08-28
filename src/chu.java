@@ -1,35 +1,26 @@
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public enum chu implements azu {
-   a(0, "white"),
-   b(1, "creamy"),
-   c(2, "chestnut"),
-   d(3, "brown"),
-   e(4, "black"),
-   f(5, "gray"),
-   g(6, "dark_brown");
+public interface chu {
+   boolean a();
 
-   public static final Codec<chu> h = azu.a(chu::values);
-   private static final IntFunction<chu> i = axp.a(chu::a, values(), axp.a.b);
-   private final int j;
-   private final String k;
+   void b();
 
-   private chu(final int $$0, final String $$1) {
-      this.j = $$0;
-      this.k = $$1;
-   }
+   void c();
 
-   public int a() {
-      return this.j;
-   }
+   void a(chj var1, ja var2, bqw var3, @Nullable cmh var4);
 
-   public static chu a(int $$0) {
-      return i.apply($$0);
-   }
+   void d();
 
-   @Override
-   public String c() {
-      return this.k;
-   }
+   void e();
+
+   float f();
+
+   float h();
+
+   cia<? extends chu> i();
+
+   @Nullable
+   evz g();
+
+   float a(bqw var1, float var2);
 }

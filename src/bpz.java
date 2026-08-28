@@ -1,26 +1,44 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-
-public abstract class bpz implements bqe {
-   private static final Codec<Either<Float, bpz>> a = Codec.either(Codec.FLOAT, lp.L.q().dispatch(bpz::c, bqa::codec));
-   public static final Codec<bpz> c = a.xmap(
-      $$0 -> (bpz)$$0.map(bpx::a, $$0x -> $$0x), $$0 -> $$0.c() == bqa.a ? Either.left(((bpx)$$0).d()) : Either.right($$0)
-   );
-
-   public static Codec<bpz> a(float $$0, float $$1) {
-      return c.validate($$2 -> {
-         if ($$2.a() < $$0) {
-            return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
-         } else {
-            return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
-         }
-      });
+public class bpz {
+   public static void a(dcd $$0, ja $$1, bpw $$2) {
+      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
    }
 
-   public abstract float a();
+   public static void a(dcd $$0, bsd $$1, bpw $$2) {
+      a($$0, $$1.du(), $$1.dw(), $$1.dA(), $$2);
+   }
 
-   public abstract float b();
+   private static void a(dcd $$0, double $$1, double $$2, double $$3, bpw $$4) {
+      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
+         a($$0, $$1, $$2, $$3, $$4.a($$5));
+      }
+   }
 
-   public abstract bqa<?> c();
+   public static void a(dcd $$0, ja $$1, js<cua> $$2) {
+      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
+   }
+
+   public static void a(dcd $$0, double $$1, double $$2, double $$3, cua $$4) {
+      double $$5 = (double)bsj.ag.l();
+      double $$6 = 1.0 - $$5;
+      double $$7 = $$5 / 2.0;
+      double $$8 = Math.floor($$1) + $$0.z.j() * $$6 + $$7;
+      double $$9 = Math.floor($$2) + $$0.z.j() * $$6;
+      double $$10 = Math.floor($$3) + $$0.z.j() * $$6 + $$7;
+
+      while (!$$4.e()) {
+         cir $$11 = new cir($$0, $$8, $$9, $$10, $$4.a($$0.z.a(21) + 10));
+         float $$12 = 0.05F;
+         $$11.o($$0.z.a(0.0, 0.11485000171139836), $$0.z.a(0.2, 0.11485000171139836), $$0.z.a(0.0, 0.11485000171139836));
+         $$0.b($$11);
+      }
+   }
+
+   public static void a(dsh $$0, dsh $$1, dcd $$2, ja $$3) {
+      if (!$$0.a($$1.b())) {
+         if ($$2.c_($$3) instanceof bpw $$5) {
+            a($$2, $$3, $$5);
+            $$2.c($$3, $$0.b());
+         }
+      }
+   }
 }

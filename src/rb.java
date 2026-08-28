@@ -1,473 +1,203 @@
 public class rb {
-   public static void a(dda.a $$0) {
-      $$0.a(dxs.a.a, rd.a);
-      $$0.a(dxs.a.a, rd.b);
-      $$0.a(dxs.a.a, rd.c);
-      $$0.a(dxs.b.b, su.g);
-      $$0.a(dxs.b.b, su.h);
-   }
-
-   public static void b(dda.a $$0) {
-      $$0.a(dxs.b.d, ss.a);
-      $$0.a(dxs.b.d, ss.b);
-   }
-
-   public static void c(dda.a $$0) {
-      $$0.a(dxs.b.g, sw.i);
-      $$0.a(dxs.b.g, sw.j);
-      $$0.a(dxs.b.g, sw.k);
-      $$0.a(dxs.b.g, sw.l);
-      $$0.a(dxs.b.g, sw.m);
-      $$0.a(dxs.b.g, sw.n);
-      $$0.a(dxs.b.g, sw.o);
-      $$0.a(dxs.b.g, sw.p);
-      $$0.a(dxs.b.g, sw.q);
-      $$0.a(dxs.b.j, ss.i);
-   }
-
-   public static void d(dda.a $$0) {
-      $$0.a(dxs.b.c, ss.f);
-      $$0.a(dxs.b.h, ss.e);
-      $$0.a(dxs.b.h, ss.g);
-   }
-
-   public static void e(dda.a $$0) {
-      $$0.a(dxs.b.h, ss.t);
-      $$0.a(dxs.b.h, ss.r);
-   }
-
-   public static void f(dda.a $$0) {
-      a($$0, false);
-   }
-
-   public static void a(dda.a $$0, boolean $$1) {
-      $$0.a(dxs.b.g, sw.r);
-      $$0.a(dxs.b.g, sw.s);
-      $$0.a(dxs.b.g, sw.t);
-      $$0.a(dxs.b.g, sw.u);
-      $$0.a(dxs.b.g, sw.v);
-      $$0.a(dxs.b.g, sw.x);
-      $$0.a(dxs.b.g, sw.y);
-      $$0.a(dxs.b.g, sw.z);
-      $$0.a(dxs.b.g, sw.A);
-      $$0.a(dxs.b.g, sw.B);
-      $$0.a(dxs.b.g, sw.C);
-      $$0.a(dxs.b.g, sw.D);
-      $$0.a(dxs.b.g, sw.E);
-      $$0.a(dxs.b.g, sw.F);
-      $$0.a(dxs.b.g, sw.G);
-      $$0.a(dxs.b.g, $$1 ? sw.M : sw.L);
-      $$0.a(dxs.b.g, ss.h);
-   }
-
-   public static void g(dda.a $$0) {
-      $$0.a(dxs.b.g, sw.w);
-   }
-
-   public static void h(dda.a $$0) {
-      $$0.a(dxs.b.g, sw.I);
-   }
-
-   public static void i(dda.a $$0) {
-      $$0.a(dxs.b.h, sw.H);
-   }
-
-   public static void j(dda.a $$0) {
-      $$0.a(dxs.b.g, su.k);
-      $$0.a(dxs.b.g, su.i);
-      $$0.a(dxs.b.g, su.j);
-   }
-
-   public static void k(dda.a $$0) {
-      $$0.a(dxs.b.g, su.i);
-   }
-
-   public static void l(dda.a $$0) {
-      $$0.a(dxs.b.g, su.l);
-      $$0.a(dxs.b.g, su.i);
-   }
-
-   public static void m(dda.a $$0) {
-      $$0.a(dxs.b.c, su.c);
-   }
-
-   public static void n(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.y);
-   }
-
-   public static void o(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.u);
-   }
-
-   public static void p(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.t);
-   }
-
-   public static void q(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.a);
-   }
-
-   public static void r(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.b);
-      $$0.a(dxs.b.j, sz.au);
-   }
-
-   public static void s(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.ad);
-   }
-
-   public static void t(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.ae);
-   }
-
-   public static void u(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.ao);
-   }
-
-   public static void v(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.al);
-   }
-
-   public static void w(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.ap);
-   }
-
-   public static void x(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.ak);
-   }
-
-   public static void y(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.aj);
-   }
-
-   public static void z(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.ai);
-   }
-
-   public static void A(dda.a $$0) {
-      $$0.a(dxs.b.j, ss.n);
-      $$0.a(dxs.b.j, ss.k);
-      $$0.a(dxs.b.j, ss.m);
-      $$0.a(dxs.b.j, ss.l);
-      $$0.a(dxs.b.j, ss.j);
-      $$0.a(dxs.b.j, ss.o);
-      $$0.a(dxs.b.j, ss.p);
-   }
-
-   public static void B(dda.a $$0) {
-      $$0.a(dxs.b.g, sw.N);
-   }
-
-   public static void C(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.an);
-   }
-
-   public static void D(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.am);
-   }
-
-   public static void E(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.at);
-   }
-
-   public static void F(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.aq);
-   }
-
-   public static void G(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.af);
-   }
-
-   public static void H(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.ag);
-   }
-
-   public static void I(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.m);
-   }
-
-   public static void J(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.x);
-   }
-
-   public static void K(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.j);
-   }
-
-   public static void L(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.i);
-   }
-
-   public static void M(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.h);
-      $$0.a(dxs.b.j, sz.q);
-   }
-
-   public static void N(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.Z);
-   }
-
-   public static void O(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.g);
-   }
-
-   public static void P(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.ah);
-      $$0.a(dxs.b.j, sz.S);
-      $$0.a(dxs.b.j, sz.j);
-      $$0.a(dxs.b.j, sz.p);
-      $$0.a(dxs.b.j, sz.v);
-      $$0.a(dxs.b.j, sz.N);
-      $$0.a(dxs.b.j, sz.O);
-   }
-
-   public static void Q(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.aw);
-      $$0.a(dxs.b.j, sz.j);
-      $$0.a(dxs.b.j, sz.p);
-      $$0.a(dxs.b.j, sz.v);
-   }
-
-   public static void R(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.av);
-      $$0.a(dxs.b.j, sz.J);
-      $$0.a(dxs.b.j, sz.K);
-   }
-
-   public static void S(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.W);
-      $$0.a(dxs.b.j, sz.T);
-      $$0.a(dxs.b.j, sz.f);
-   }
-
-   public static void T(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.o);
-   }
-
-   public static void U(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.l);
-      $$0.a(dxs.b.j, sz.p);
-      $$0.a(dxs.b.j, sz.L);
-      $$0.a(dxs.b.j, sz.M);
-   }
-
-   public static void V(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.Q);
-   }
-
-   public static void W(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.f);
-      $$0.a(dxs.b.j, sz.V);
-      $$0.a(dxs.b.j, sz.ac);
-   }
-
-   public static void X(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.f);
-      $$0.a(dxs.b.j, sz.U);
-      $$0.a(dxs.b.j, sz.ab);
-   }
-
-   public static void Y(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.P);
-   }
-
-   public static void Z(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.h);
-   }
-
-   public static void aa(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.k);
-      $$0.a(dxs.b.j, sz.J);
-      $$0.a(dxs.b.j, sz.K);
-   }
-
-   public static void ab(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.w);
-   }
-
-   public static void ac(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.H);
-      $$0.a(dxs.b.j, sz.I);
-   }
-
-   public static void ad(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.E);
-      $$0.a(dxs.b.j, sz.e);
-   }
-
-   public static void ae(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.D);
-      $$0.a(dxs.b.j, sz.e);
-      $$0.a(dxs.b.j, sz.A);
-   }
-
-   public static void af(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.r);
-   }
-
-   public static void ag(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.s);
-   }
-
-   public static void ah(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.c);
-   }
-
-   public static void ai(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.C);
-      $$0.a(dxs.b.j, sz.e);
-      $$0.a(dxs.b.j, sz.z);
-   }
-
-   public static void aj(dda.a $$0) {
-      $$0.a(dxs.b.j, sz.B);
-      $$0.a(dxs.b.j, sz.e);
-   }
-
-   public static void ak(dda.a $$0) {
-      $$0.a(dxs.b.e, su.o);
-   }
-
-   public static void al(dda.a $$0) {
-      $$0.a(dxs.b.d, ss.c);
-      $$0.a(dxs.b.d, ss.d);
-   }
-
-   public static void am(dda.a $$0) {
-      $$0.a(dxs.b.j, sr.k);
-   }
-
-   public static void an(dda.a $$0) {
-      $$0.a(dxs.b.j, sr.i);
-   }
-
-   public static void ao(dda.a $$0) {
-      $$0.a(dxs.b.j, sr.l);
-   }
-
-   public static void ap(dda.a $$0) {
-      $$0.a(dxs.b.i, su.r);
-      $$0.a(dxs.b.i, su.p);
-   }
-
-   public static void aq(dda.a $$0) {
-      $$0.a(dxs.b.i, su.q);
-   }
-
-   public static void ar(dda.a $$0) {
-      $$0.a(dxs.b.c, su.d);
-      $$0.a(dxs.b.c, su.e);
-   }
-
-   public static void as(dda.a $$0) {
-      $$0.a(dxs.b.e, su.f);
-   }
-
-   public static void at(dda.a $$0) {
-      $$0.a(dxs.b.k, su.m);
-   }
-
-   public static void au(dda.a $$0) {
-      $$0.a(dxs.b.h, sw.g);
-      $$0.a(dxs.b.h, sw.h);
-      $$0.a(dxs.b.h, sw.e);
-      $$0.a(dxs.b.h, sw.f);
-      av($$0);
-   }
-
-   public static void av(dda.a $$0) {
-      $$0.a(dxs.b.h, sw.J);
-      $$0.a(dxs.b.h, sw.K);
-   }
-
-   public static void aw(dda.a $$0) {
-      $$0.a(dxs.b.c, ss.q);
-   }
-
-   public static void a(ddl.a $$0) {
-      $$0.a(btu.b, new ddl.c(btc.aJ, 12, 4, 4));
-      $$0.a(btu.b, new ddl.c(btc.az, 10, 4, 4));
-      $$0.a(btu.b, new ddl.c(btc.t, 10, 4, 4));
-      $$0.a(btu.b, new ddl.c(btc.w, 8, 4, 4));
-   }
-
-   public static void b(ddl.a $$0) {
-      $$0.a(btu.c, new ddl.c(btc.g, 10, 8, 8));
-      $$0.a(btu.e, new ddl.c(btc.W, 10, 4, 6));
-   }
-
-   public static void c(ddl.a $$0) {
-      b($$0);
-      a($$0, 95, 5, 100, false);
-   }
-
-   public static void a(ddl.a $$0, int $$1, int $$2, int $$3) {
-      $$0.a(btu.f, new ddl.c(btc.aX, $$1, 1, $$2));
-      $$0.a(btu.g, new ddl.c(btc.u, $$3, 3, 6));
-      c($$0);
-      $$0.a(btu.a, new ddl.c(btc.B, 5, 1, 1));
-   }
-
-   public static void a(ddl.a $$0, int $$1, int $$2) {
-      $$0.a(btu.f, new ddl.c(btc.aX, $$1, $$2, 4));
-      $$0.a(btu.g, new ddl.c(btc.bg, 25, 8, 8));
-      $$0.a(btu.f, new ddl.c(btc.y, 2, 1, 2));
-      $$0.a(btu.a, new ddl.c(btc.B, 5, 1, 1));
-      c($$0);
-   }
-
-   public static void d(ddl.a $$0) {
-      a($$0);
-      $$0.a(btu.b, new ddl.c(btc.ab, 5, 2, 6));
-      $$0.a(btu.b, new ddl.c(btc.z, 1, 1, 3));
-      c($$0);
-   }
-
-   public static void e(ddl.a $$0) {
-      $$0.a(btu.b, new ddl.c(btc.aG, 10, 2, 3));
-      $$0.a(btu.b, new ddl.c(btc.aD, 1, 1, 2));
-      b($$0);
-      a($$0, 95, 5, 20, false);
-      $$0.a(btu.a, new ddl.c(btc.aY, 80, 4, 4));
-   }
-
-   public static void f(ddl.a $$0) {
-      $$0.a(btu.b, new ddl.c(btc.aG, 4, 2, 3));
-      b($$0);
-      a($$0, 19, 1, 100, false);
-      $$0.a(btu.a, new ddl.c(btc.ac, 80, 4, 4));
-   }
-
-   public static void g(ddl.a $$0) {
-      b($$0);
-      int $$1 = 95;
-      a($$0, 95, 5, 100, false);
-      $$0.a(btu.a, new ddl.c(btc.B, 95, 4, 4));
-   }
-
-   public static void a(ddl.a $$0, int $$1, int $$2, int $$3, boolean $$4) {
-      $$0.a(btu.a, new ddl.c(btc.aW, 100, 4, 4));
-      $$0.a(btu.a, new ddl.c($$4 ? btc.B : btc.bu, $$1, 4, 4));
-      $$0.a(btu.a, new ddl.c(btc.bw, $$2, 1, 1));
-      $$0.a(btu.a, new ddl.c(btc.aN, $$3, 4, 4));
-      $$0.a(btu.a, new ddl.c(btc.x, 100, 4, 4));
-      $$0.a(btu.a, new ddl.c(btc.aP, 100, 4, 4));
-      $$0.a(btu.a, new ddl.c(btc.H, 10, 1, 4));
-      $$0.a(btu.a, new ddl.c(btc.bo, 5, 1, 1));
-   }
-
-   public static void h(ddl.a $$0) {
-      $$0.a(btu.b, new ddl.c(btc.as, 8, 4, 8));
-      b($$0);
-   }
-
-   public static void i(ddl.a $$0) {
-      a($$0);
-      $$0.a(btu.b, new ddl.c(btc.t, 10, 4, 4));
-      c($$0);
-   }
-
-   public static void j(ddl.a $$0) {
-      $$0.a(btu.a, new ddl.c(btc.H, 10, 4, 4));
+   private static final float a = -0.51F;
+   private static final float b = -0.4F;
+   private static final float c = 0.1F;
+   private static final float d = -0.15F;
+   private static final azf<Float> e = azf.a;
+   private static final azf<Float> f = azf.a($$0 -> $$0 < 0.0F ? $$0 : $$0 * 2.0F);
+   private static final azf<Float> g = azf.a($$0 -> 1.25F - 6.25F / ($$0 + 5.0F));
+   private static final azf<Float> h = azf.a($$0 -> $$0 * 2.0F);
+
+   public static <C, I extends azf<C>> axf<C, I> a(I $$0, I $$1, I $$2, boolean $$3) {
+      azf<Float> $$4 = $$3 ? f : e;
+      axf<C, I> $$5 = a($$1, $$2, -0.15F, 0.0F, 0.0F, 0.1F, 0.0F, -0.03F, false, false, $$4);
+      axf<C, I> $$6 = a($$1, $$2, -0.1F, 0.03F, 0.1F, 0.1F, 0.01F, -0.03F, false, false, $$4);
+      axf<C, I> $$7 = a($$1, $$2, -0.1F, 0.03F, 0.1F, 0.7F, 0.01F, -0.03F, true, true, $$4);
+      axf<C, I> $$8 = a($$1, $$2, -0.05F, 0.03F, 0.1F, 1.0F, 0.01F, 0.01F, true, true, $$4);
+      return axf.<C, I>a($$0, $$4)
+         .a(-1.1F, 0.044F)
+         .a(-1.02F, -0.2222F)
+         .a(-0.51F, -0.2222F)
+         .a(-0.44F, -0.12F)
+         .a(-0.18F, -0.12F)
+         .a(-0.16F, $$5)
+         .a(-0.15F, $$5)
+         .a(-0.1F, $$6)
+         .a(0.25F, $$7)
+         .a(1.0F, $$8)
+         .a();
+   }
+
+   public static <C, I extends azf<C>> axf<C, I> a(I $$0, I $$1, I $$2, I $$3, boolean $$4) {
+      azf<Float> $$5 = $$4 ? g : e;
+      return axf.<C, I>a($$0, e)
+         .a(-0.19F, 3.95F)
+         .a(-0.15F, a($$1, $$2, $$3, 6.25F, true, e))
+         .a(-0.1F, a($$1, $$2, $$3, 5.47F, true, $$5))
+         .a(0.03F, a($$1, $$2, $$3, 5.08F, true, $$5))
+         .a(0.06F, a($$1, $$2, $$3, 4.69F, false, $$5))
+         .a();
+   }
+
+   public static <C, I extends azf<C>> axf<C, I> b(I $$0, I $$1, I $$2, I $$3, boolean $$4) {
+      azf<Float> $$5 = $$4 ? h : e;
+      float $$6 = 0.65F;
+      return axf.<C, I>a($$0, $$5)
+         .a(-0.11F, 0.0F)
+         .a(0.03F, a($$1, $$2, $$3, 1.0F, 0.5F, 0.0F, 0.0F, $$5))
+         .a(0.65F, a($$1, $$2, $$3, 1.0F, 1.0F, 1.0F, 0.0F, $$5))
+         .a();
+   }
+
+   private static <C, I extends azf<C>> axf<C, I> a(I $$0, I $$1, I $$2, float $$3, float $$4, float $$5, float $$6, azf<Float> $$7) {
+      float $$8 = -0.5775F;
+      axf<C, I> $$9 = a($$1, $$2, $$3, $$5, $$7);
+      axf<C, I> $$10 = a($$1, $$2, $$4, $$6, $$7);
+      return axf.<C, I>a($$0, $$7).a(-1.0F, $$9).a(-0.78F, $$10).a(-0.5775F, $$10).a(-0.375F, 0.0F).a();
+   }
+
+   private static <C, I extends azf<C>> axf<C, I> a(I $$0, I $$1, float $$2, float $$3, azf<Float> $$4) {
+      float $$5 = dyg.a(0.4F);
+      float $$6 = dyg.a(0.56666666F);
+      float $$7 = ($$5 + $$6) / 2.0F;
+      axf.b<C, I> $$8 = axf.a($$1, $$4);
+      $$8.a($$5, 0.0F);
+      if ($$3 > 0.0F) {
+         $$8.a($$7, a($$0, $$3, $$4));
+      } else {
+         $$8.a($$7, 0.0F);
+      }
+
+      if ($$2 > 0.0F) {
+         $$8.a(1.0F, a($$0, $$2, $$4));
+      } else {
+         $$8.a(1.0F, 0.0F);
+      }
+
+      return $$8.a();
+   }
+
+   private static <C, I extends azf<C>> axf<C, I> a(I $$0, float $$1, azf<Float> $$2) {
+      float $$3 = 0.63F * $$1;
+      float $$4 = 0.3F * $$1;
+      return axf.<C, I>a($$0, $$2).a(-0.01F, $$3).a(0.01F, $$4).a();
+   }
+
+   private static <C, I extends azf<C>> axf<C, I> a(I $$0, I $$1, I $$2, float $$3, boolean $$4, azf<Float> $$5) {
+      axf<C, I> $$6 = axf.<C, I>a($$1, $$5).a(-0.2F, 6.3F).a(0.2F, $$3).a();
+      axf.b<C, I> $$7 = axf.<C, I>a($$0, $$5)
+         .a(-0.6F, $$6)
+         .a(-0.5F, axf.<C, I>a($$1, $$5).a(-0.05F, 6.3F).a(0.05F, 2.67F).a())
+         .a(-0.35F, $$6)
+         .a(-0.25F, $$6)
+         .a(-0.1F, axf.<C, I>a($$1, $$5).a(-0.05F, 2.67F).a(0.05F, 6.3F).a())
+         .a(0.03F, $$6);
+      if ($$4) {
+         axf<C, I> $$8 = axf.<C, I>a($$1, $$5).a(0.0F, $$3).a(0.1F, 0.625F).a();
+         axf<C, I> $$9 = axf.<C, I>a($$2, $$5).a(-0.9F, $$3).a(-0.69F, $$8).a();
+         $$7.a(0.35F, $$3).a(0.45F, $$9).a(0.55F, $$9).a(0.62F, $$3);
+      } else {
+         axf<C, I> $$10 = axf.<C, I>a($$2, $$5).a(-0.7F, $$6).a(-0.15F, 1.37F).a();
+         axf<C, I> $$11 = axf.<C, I>a($$2, $$5).a(0.45F, $$6).a(0.7F, 1.56F).a();
+         $$7.a(0.05F, $$11).a(0.4F, $$11).a(0.45F, $$10).a(0.55F, $$10).a(0.58F, $$3);
+      }
+
+      return $$7.a();
+   }
+
+   private static float a(float $$0, float $$1, float $$2, float $$3) {
+      return ($$1 - $$0) / ($$3 - $$2);
+   }
+
+   private static <C, I extends azf<C>> axf<C, I> a(I $$0, float $$1, boolean $$2, azf<Float> $$3) {
+      axf.b<C, I> $$4 = axf.a($$0, $$3);
+      float $$5 = -0.7F;
+      float $$6 = -1.0F;
+      float $$7 = a(-1.0F, $$1, -0.7F);
+      float $$8 = 1.0F;
+      float $$9 = a(1.0F, $$1, -0.7F);
+      float $$10 = a($$1);
+      float $$11 = -0.65F;
+      if (-0.65F < $$10 && $$10 < 1.0F) {
+         float $$12 = a(-0.65F, $$1, -0.7F);
+         float $$13 = -0.75F;
+         float $$14 = a(-0.75F, $$1, -0.7F);
+         float $$15 = a($$7, $$14, -1.0F, -0.75F);
+         $$4.a(-1.0F, $$7, $$15);
+         $$4.a(-0.75F, $$14);
+         $$4.a(-0.65F, $$12);
+         float $$16 = a($$10, $$1, -0.7F);
+         float $$17 = a($$16, $$9, $$10, 1.0F);
+         float $$18 = 0.01F;
+         $$4.a($$10 - 0.01F, $$16);
+         $$4.a($$10, $$16, $$17);
+         $$4.a(1.0F, $$9, $$17);
+      } else {
+         float $$19 = a($$7, $$9, -1.0F, 1.0F);
+         if ($$2) {
+            $$4.a(-1.0F, Math.max(0.2F, $$7));
+            $$4.a(0.0F, aye.i(0.5F, $$7, $$9), $$19);
+         } else {
+            $$4.a(-1.0F, $$7, $$19);
+         }
+
+         $$4.a(1.0F, $$9, $$19);
+      }
+
+      return $$4.a();
+   }
+
+   private static float a(float $$0, float $$1, float $$2) {
+      float $$3 = 1.17F;
+      float $$4 = 0.46082947F;
+      float $$5 = 1.0F - (1.0F - $$1) * 0.5F;
+      float $$6 = 0.5F * (1.0F - $$1);
+      float $$7 = ($$0 + 1.17F) * 0.46082947F;
+      float $$8 = $$7 * $$5 - $$6;
+      return $$0 < $$2 ? Math.max($$8, -0.2222F) : Math.max($$8, 0.0F);
+   }
+
+   private static float a(float $$0) {
+      float $$1 = 1.17F;
+      float $$2 = 0.46082947F;
+      float $$3 = 1.0F - (1.0F - $$0) * 0.5F;
+      float $$4 = 0.5F * (1.0F - $$0);
+      return $$4 / (0.46082947F * $$3) - 1.17F;
+   }
+
+   public static <C, I extends azf<C>> axf<C, I> a(
+      I $$0, I $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8, boolean $$9, azf<Float> $$10
+   ) {
+      float $$11 = 0.6F;
+      float $$12 = 0.5F;
+      float $$13 = 0.5F;
+      axf<C, I> $$14 = a($$1, aye.i($$5, 0.6F, 1.5F), $$9, $$10);
+      axf<C, I> $$15 = a($$1, aye.i($$5, 0.6F, 1.0F), $$9, $$10);
+      axf<C, I> $$16 = a($$1, $$5, $$9, $$10);
+      axf<C, I> $$17 = a($$1, $$2 - 0.15F, 0.5F * $$5, aye.i(0.5F, 0.5F, 0.5F) * $$5, 0.5F * $$5, 0.6F * $$5, 0.5F, $$10);
+      axf<C, I> $$18 = a($$1, $$2, $$6 * $$5, $$3 * $$5, 0.5F * $$5, 0.6F * $$5, 0.5F, $$10);
+      axf<C, I> $$19 = a($$1, $$2, $$6, $$6, $$3, $$4, 0.5F, $$10);
+      axf<C, I> $$20 = a($$1, $$2, $$6, $$6, $$3, $$4, 0.5F, $$10);
+      axf<C, I> $$21 = axf.<C, I>a($$1, $$10).a(-1.0F, $$2).a(-0.4F, $$19).a(0.0F, $$4 + 0.07F).a();
+      axf<C, I> $$22 = a($$1, -0.02F, $$7, $$7, $$3, $$4, 0.0F, $$10);
+      axf.b<C, I> $$23 = axf.<C, I>a($$0, $$10).a(-0.85F, $$14).a(-0.7F, $$15).a(-0.4F, $$16).a(-0.35F, $$17).a(-0.1F, $$18).a(0.2F, $$19);
+      if ($$8) {
+         $$23.a(0.4F, $$20).a(0.45F, $$21).a(0.55F, $$21).a(0.58F, $$20);
+      }
+
+      $$23.a(0.7F, $$22);
+      return $$23.a();
+   }
+
+   private static <C, I extends azf<C>> axf<C, I> a(I $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, azf<Float> $$7) {
+      float $$8 = Math.max(0.5F * ($$2 - $$1), $$6);
+      float $$9 = 5.0F * ($$3 - $$2);
+      return axf.<C, I>a($$0, $$7)
+         .a(-1.0F, $$1, $$8)
+         .a(-0.4F, $$2, Math.min($$8, $$9))
+         .a(0.0F, $$3, $$9)
+         .a(0.4F, $$4, 2.0F * ($$4 - $$3))
+         .a(1.0F, $$5, 0.7F * ($$5 - $$4))
+         .a();
    }
 }

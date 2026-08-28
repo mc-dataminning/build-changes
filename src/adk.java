@@ -1,20 +1,33 @@
-public record adk(yb.a b) implements zw<aci> {
-   public static final zn<wm, adk> a = zw.a(adk::a, adk::new);
+public class adk implements zb<abn> {
+   public static final ys<wf, adk> a = ys.a(yq.g, adk::b, yq.a(lr.U), adk::e, ww.d, adk::f, adk::new);
+   private final int b;
+   private final cqm<?> c;
+   private final wu d;
 
-   private adk(wm $$0) {
-      this(yb.a.a($$0));
-   }
-
-   private void a(wm $$0) {
-      yb.a.a($$0, this.b);
+   public adk(int $$0, cqm<?> $$1, wu $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public zy<adk> a() {
-      return agu.B;
+   public zd<adk> a() {
+      return afz.W;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public cqm<?> e() {
+      return this.c;
+   }
+
+   public wu f() {
+      return this.d;
    }
 }

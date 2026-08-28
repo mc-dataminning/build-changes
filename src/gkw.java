@@ -1,29 +1,41 @@
-public class gkw extends gkf<cgc, fvq<cgc>> {
-   private static final alf a = new alf("textures/entity/fish/salmon.png");
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-   public gkw(giz.a $$0) {
-      super($$0, new fvq<>($$0.a(fxb.bg)), 0.4F);
+public class gkw extends gjx<bta, fvm<bta>> {
+   private static final Map<bsj<?>, akk> a = ImmutableMap.of(
+      bsj.aA,
+      new akk("textures/entity/piglin/piglin.png"),
+      bsj.bx,
+      new akk("textures/entity/piglin/zombified_piglin.png"),
+      bsj.aB,
+      new akk("textures/entity/piglin/piglin_brute.png")
+   );
+   private static final float i = 1.0019531F;
+
+   public gkw(gjg.a $$0, fxg $$1, fxg $$2, fxg $$3, boolean $$4) {
+      super($$0, a($$0.f(), $$1, $$4), 0.5F, 1.0019531F, 1.0F, 1.0019531F);
+      this.a(new gni<>(this, new fuu($$0.a($$2)), new fuu($$0.a($$3)), $$0.g()));
    }
 
-   public alf a(cgc $$0) {
-      return a;
+   private static fvm<bta> a(fxe $$0, fxg $$1, boolean $$2) {
+      fvm<bta> $$3 = new fvm<>($$0.a($$1));
+      if ($$2) {
+         $$3.a.k = false;
+      }
+
+      return $$3;
    }
 
-   protected void a(cgc $$0, faa $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = 1.0F;
-      float $$7 = 1.0F;
-      if (!$$0.be()) {
-         $$6 = 1.3F;
-         $$7 = 1.7F;
+   public akk c(bta $$0) {
+      akk $$1 = a.get($$0.ak());
+      if ($$1 == null) {
+         throw new IllegalArgumentException("I don't know what texture to use for " + $$0.ak());
+      } else {
+         return $$1;
       }
+   }
 
-      float $$8 = $$6 * 4.3F * ayz.a($$7 * 0.6F * $$2);
-      $$1.a(a.d.rotationDegrees($$8));
-      $$1.a(0.0F, 0.0F, -0.4F);
-      if (!$$0.be()) {
-         $$1.a(0.2F, 0.1F, 0.0F);
-         $$1.a(a.f.rotationDegrees(90.0F));
-      }
+   protected boolean d(bta $$0) {
+      return super.a($$0) || $$0 instanceof ckw && ((ckw)$$0).gn();
    }
 }

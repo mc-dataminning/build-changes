@@ -3,19 +3,19 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.function.BiConsumer;
 import java.util.stream.Stream;
 
-record eka(ale<ejv> c, bpg<ale<ejv>> d) implements ejx {
+record eka(akj<ejz> c, akj<ejz> d) implements ekb {
    static MapCodec<eka> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ale.a(lq.aM).fieldOf("alias").forGetter(eka::c), bpg.b(ale.a(lq.aM)).fieldOf("targets").forGetter(eka::d)).apply($$0, eka::new)
+      $$0 -> $$0.group(akj.a(lr.aT).fieldOf("alias").forGetter(eka::c), akj.a(lr.aT).fieldOf("target").forGetter(eka::d)).apply($$0, eka::new)
    );
 
    @Override
-   public void a(azh $$0, BiConsumer<ale<ejv>, ale<ejv>> $$1) {
-      this.d.b($$0).ifPresent($$1x -> $$1.accept(this.c, (ale<ejv>)$$1x.b()));
+   public void a(aym $$0, BiConsumer<akj<ejz>, akj<ejz>> $$1) {
+      $$1.accept(this.c, this.d);
    }
 
    @Override
-   public Stream<ale<ejv>> a() {
-      return this.d.e().stream().map(bpi.b::b);
+   public Stream<akj<ejz>> a() {
+      return Stream.of(this.d);
    }
 
    @Override

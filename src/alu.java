@@ -1,95 +1,46 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.logging.LogUtils;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
 public class alu {
-   private static final Logger a = LogUtils.getLogger();
-   private static final alf b = new alf("tick");
-   private static final alf c = new alf("load");
-   private final MinecraftServer d;
-   private List<ib<ep>> e = ImmutableList.of();
-   private boolean f;
-   private alt g;
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("commands.ban.failed"));
 
-   public alu(MinecraftServer $$0, alt $$1) {
-      this.d = $$0;
-      this.g = $$1;
-      this.b($$1);
+   public static void a(CommandDispatcher<eq> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("ban").requires($$0x -> $$0x.c(3)))
+            .then(
+               ((RequiredArgumentBuilder)er.a("targets", ff.a()).executes($$0x -> a((eq)$$0x.getSource(), ff.a($$0x, "targets"), null)))
+                  .then(er.a("reason", fh.a()).executes($$0x -> a((eq)$$0x.getSource(), ff.a($$0x, "targets"), fh.a($$0x, "reason"))))
+            )
+      );
    }
 
-   public CommandDispatcher<ep> a() {
-      return this.d.aH().a();
-   }
+   private static int a(eq $$0, Collection<GameProfile> $$1, @Nullable wu $$2) throws CommandSyntaxException {
+      aun $$3 = $$0.l().ah().f();
+      int $$4 = 0;
 
-   public void b() {
-      if (this.d.aQ().i()) {
-         if (this.f) {
-            this.f = false;
-            Collection<ib<ep>> $$0 = this.g.b(c);
-            this.a($$0, c);
+      for (GameProfile $$5 : $$1) {
+         if (!$$3.a($$5)) {
+            auo $$6 = new auo($$5, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
+            $$3.a($$6);
+            $$4++;
+            $$0.a(() -> wu.a("commands.ban.success", wu.b($$5.getName()), $$6.d()), true);
+            aql $$7 = $$0.l().ah().a($$5.getId());
+            if ($$7 != null) {
+               $$7.c.b(wu.c("multiplayer.disconnect.banned"));
+            }
          }
-
-         this.a(this.e, b);
-      }
-   }
-
-   private void a(Collection<ib<ep>> $$0, alf $$1) {
-      this.d.aT().a($$1::toString);
-
-      for (ib<ep> $$2 : $$0) {
-         this.a($$2, this.c());
       }
 
-      this.d.aT().c();
-   }
-
-   public void a(ib<ep> $$0, ep $$1) {
-      bnk $$2 = this.d.aT();
-      $$2.a(() -> "function " + $$0.a());
-
-      try {
-         id<ep> $$3 = $$0.a(null, this.a());
-         eq.a($$1, $$2x -> ho.a($$2x, $$3, $$1, em.a));
-      } catch (es var9) {
-      } catch (Exception var10) {
-         a.warn("Failed to execute function {}", $$0.a(), var10);
-      } finally {
-         $$2.c();
+      if ($$4 == 0) {
+         throw a.create();
+      } else {
+         return $$4;
       }
-   }
-
-   public void a(alt $$0) {
-      this.g = $$0;
-      this.b($$0);
-   }
-
-   private void b(alt $$0) {
-      this.e = ImmutableList.copyOf($$0.b(b));
-      this.f = true;
-   }
-
-   public ep c() {
-      return this.d.aI().a(2).a();
-   }
-
-   public Optional<ib<ep>> a(alf $$0) {
-      return this.g.a($$0);
-   }
-
-   public Collection<ib<ep>> b(alf $$0) {
-      return this.g.b($$0);
-   }
-
-   public Iterable<alf> d() {
-      return this.g.a().keySet();
-   }
-
-   public Iterable<alf> e() {
-      return this.g.b();
    }
 }

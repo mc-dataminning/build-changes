@@ -1,42 +1,46 @@
-import java.util.UUID;
+public record aas(ja c, float d, float e, float f, float g, float h) implements aac {
+   public static final ys<vr, aas> a = aac.a(aas::a, aas::new);
+   public static final aac.b<aas> b = aac.a("debug/worldgen_attempt");
 
-public record aas(UUID b, aas.a c) implements zw<aan> {
-   public static final zn<wm, aas> a = zw.a(aas::a, aas::new);
-
-   private aas(wm $$0) {
-      this($$0.n(), $$0.b(aas.a.class));
+   private aas(vr $$0) {
+      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
    }
 
-   private void a(wm $$0) {
-      $$0.a(this.b);
+   private void a(vr $$0) {
       $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
    }
 
    @Override
-   public zy<aas> a() {
-      return aam.n;
+   public aac.b<aas> a() {
+      return b;
    }
 
-   public void a(aan $$0) {
-      $$0.a(this);
-   }
-
-   public aas.a e() {
+   public ja b() {
       return this.c;
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h;
+   public float c() {
+      return this.d;
+   }
 
-      public boolean a() {
-         return this != d && this != e;
-      }
+   public float d() {
+      return this.e;
+   }
+
+   public float e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
+   }
+
+   public float g() {
+      return this.h;
    }
 }

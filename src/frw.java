@@ -1,141 +1,149 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.function.DoubleConsumer;
+import javax.annotation.Nullable;
 
-public class frw extends fnf {
-   private static final Logger a = LogUtils.getLogger();
-   private static final xp b = xp.c("selectWorld.enterName").a(n.h);
-   private static final xp c = xp.c("selectWorld.edit.resetIcon");
-   private static final xp d = xp.c("selectWorld.edit.openFolder");
-   private static final xp r = xp.c("selectWorld.edit.backup");
-   private static final xp s = xp.c("selectWorld.edit.backupFolder");
-   private static final xp u = xp.c("selectWorld.edit.optimize");
-   private static final xp v = xp.c("optimizeWorld.confirm.title");
-   private static final xp w = xp.c("optimizeWorld.confirm.description");
-   private static final xp x = xp.c("selectWorld.edit.save");
-   private static final int y = 200;
-   private static final int z = 4;
-   private static final int A = 98;
-   private final fkx B = fkx.d().a(5);
-   private final BooleanConsumer C;
-   private final epy.c D;
-   private final fhp E;
+public class frw extends fhg {
+   private static final int a = 32;
+   private static final String b = "telemetry.event.required";
+   private static final String c = "telemetry.event.optional";
+   private static final String d = "telemetry.event.optional.disabled";
+   private static final wu e = wu.c("telemetry_info.property_title").a(n.t);
+   private final fgx f;
+   private frw.a m;
+   @Nullable
+   private DoubleConsumer n;
 
-   public static frw a(ffh $$0, epy.c $$1, BooleanConsumer $$2) throws IOException {
-      epz $$3 = $$1.a($$1.h());
-      return new frw($$0, $$1, $$3.b(), $$2);
+   public frw(int $$0, int $$1, int $$2, int $$3, fgx $$4) {
+      super($$0, $$1, $$2, $$3, wu.i());
+      this.f = $$4;
+      this.m = this.c(ffn.Q().C());
    }
 
-   private frw(ffh $$0, epy.c $$1, String $$2, BooleanConsumer $$3) {
-      super(xp.c("selectWorld.edit.title"));
-      this.C = $$3;
-      this.D = $$1;
-      fgr $$4 = $$0.h;
-      this.B.a(new fky(200, 20));
-      this.B.a(new fin(b, $$4));
-      this.E = this.B.a(new fhp($$4, 200, 20, b));
-      this.E.a($$2);
-      fkx $$5 = fkx.e().a(4);
-      fhg $$6 = $$5.a(fhg.a(x, $$0x -> this.a(this.E.a())).a(98).a());
-      $$5.a(fhg.a(xo.e, $$0x -> this.d()).a(98).a());
-      this.E.b($$1x -> $$6.j = !azv.h($$1x));
-      this.B.a(fhg.a(c, $$1x -> {
-         $$1.j().ifPresent($$0xx -> FileUtils.deleteQuietly($$0xx.toFile()));
-         $$1x.j = false;
-      }).a(200).a()).j = $$1.j().filter($$0x -> Files.isRegularFile($$0x)).isPresent();
-      this.B.a(fhg.a(d, $$1x -> ac.k().a($$1.a(epw.l).toFile())).a(200).a());
-      this.B.a(fhg.a(r, $$1x -> {
-         boolean $$2x = a($$1);
-         this.C.accept(!$$2x);
-      }).a(200).a());
-      this.B.a(fhg.a(s, $$1x -> {
-         epy $$2x = $$0.m();
-         Path $$3x = $$2x.d();
+   public void b(boolean $$0) {
+      this.m = this.c($$0);
+      this.a(this.c());
+   }
 
-         try {
-            v.c($$3x);
-         } catch (IOException var5x) {
-            throw new RuntimeException(var5x);
+   public void j() {
+      this.m = this.c(ffn.Q().C());
+      this.a(this.c());
+   }
+
+   private frw.a c(boolean $$0) {
+      frw.b $$1 = new frw.b(this.k());
+      List<guk> $$2 = new ArrayList<>(guk.g());
+      $$2.sort(Comparator.comparing(guk::d));
+
+      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+         guk $$4 = $$2.get($$3);
+         boolean $$5 = $$4.d() && !$$0;
+         this.a($$1, $$4, $$5);
+         if ($$3 < $$2.size() - 1) {
+            $$1.a(9);
          }
-
-         ac.k().a($$3x.toFile());
-      }).a(200).a());
-      this.B.a(fhg.a(u, $$2x -> $$0.a(new fls(() -> $$0.a(this), ($$2xx, $$3x) -> {
-            if ($$2xx) {
-               a($$1);
-            }
-
-            $$0.a(fry.a($$0, this.C, $$0.as(), $$1, $$3x));
-         }, v, w, true))).a(200).a());
-      this.B.a(new fky(200, 20));
-      this.B.a($$5);
-      this.B.a($$1x -> {
-         fhe var10000 = this.c($$1x);
-      });
-   }
-
-   @Override
-   protected void aB_() {
-      this.b(this.E);
-   }
-
-   @Override
-   protected void aM_() {
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.B.a();
-      fkr.a(this.B, this.G());
-   }
-
-   @Override
-   public void d() {
-      this.C.accept(false);
-   }
-
-   private void a(String $$0) {
-      try {
-         this.D.a($$0);
-      } catch (vd | vj | IOException var3) {
-         a.error("Failed to access world '{}'", this.D.f(), var3);
-         fjo.a(this.m, this.D.f());
       }
 
-      this.C.accept(true);
+      return $$1.a();
    }
 
-   public static boolean a(epy.c $$0) {
-      long $$1 = 0L;
-      IOException $$2 = null;
+   public void a(@Nullable DoubleConsumer $$0) {
+      this.n = $$0;
+   }
 
-      try {
-         $$1 = $$0.l();
-      } catch (IOException var6) {
-         $$2 = var6;
-      }
-
-      if ($$2 != null) {
-         xp $$4 = xp.c("selectWorld.edit.backupFailed");
-         xp $$5 = xp.b($$2.getMessage());
-         ffh.Q().ax().a(new fjo(fjo.a.b, $$4, $$5));
-         return false;
-      } else {
-         xp $$6 = xp.a("selectWorld.edit.backupCreated", $$0.f());
-         xp $$7 = xp.a("selectWorld.edit.backupSize", ayz.c((double)$$1 / 1048576.0));
-         ffh.Q().ax().a(new fjo(fjo.a.b, $$6, $$7));
-         return true;
+   @Override
+   protected void a(double $$0) {
+      super.a($$0);
+      if (this.n != null) {
+         this.n.accept(this.c());
       }
    }
 
    @Override
-   public void a(fgt $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 15, 16777215);
+   protected int h() {
+      return this.m.a().w();
+   }
+
+   @Override
+   protected double i() {
+      return 9.0;
+   }
+
+   @Override
+   protected void c(fgz $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.E() + this.a();
+      int $$5 = this.D() + this.a();
+      $$0.c().a();
+      $$0.c().a((double)$$5, (double)$$4, 0.0);
+      this.m.a().a($$4x -> $$4x.a($$0, $$1, $$2, $$3));
+      $$0.c().b();
+   }
+
+   @Override
+   protected void a(fli $$0) {
+      $$0.a(flh.a, this.m.b());
+   }
+
+   private wu a(wu $$0, boolean $$1) {
+      return (wu)($$1 ? $$0.f().a(n.h) : $$0);
+   }
+
+   private void a(frw.b $$0, guk $$1, boolean $$2) {
+      String $$3 = $$1.d() ? ($$2 ? "telemetry.event.optional.disabled" : "telemetry.event.optional") : "telemetry.event.required";
+      $$0.b(this.f, this.a(wu.a($$3, $$1.e()), $$2));
+      $$0.b(this.f, $$1.f().a(n.h));
+      $$0.a(9 / 2);
+      $$0.a(this.f, this.a(e, $$2), 2);
+      this.a($$1, $$0, $$2);
+   }
+
+   private void a(guk $$0, frw.b $$1, boolean $$2) {
+      for (gum<?> $$3 : $$0.b()) {
+         $$1.a(this.f, this.a($$3.a(), $$2));
+      }
+   }
+
+   private int k() {
+      return this.g - this.b();
+   }
+
+   static record a(fla a, wu b) {
+   }
+
+   static class b {
+      private final int a;
+      private final fld b;
+      private final xi c = wu.i();
+
+      public b(int $$0) {
+         this.a = $$0;
+         this.b = fld.d();
+         this.b.c().a();
+         this.b.a(fle.a($$0));
+      }
+
+      public void a(fgx $$0, wu $$1) {
+         this.a($$0, $$1, 0);
+      }
+
+      public void a(fgx $$0, wu $$1, int $$2) {
+         this.b.a(new fig($$1, $$0).d(this.a), $$1x -> $$1x.e($$2));
+         this.c.b($$1).f("\n");
+      }
+
+      public void b(fgx $$0, wu $$1) {
+         this.b.a(new fig($$1, $$0).d(this.a - 64).b(true), $$0x -> $$0x.b().f(32));
+         this.c.b($$1).f("\n");
+      }
+
+      public void a(int $$0) {
+         this.b.a(fle.b($$0));
+      }
+
+      public frw.a a() {
+         this.b.a();
+         return new frw.a(this.b, this.c);
+      }
    }
 }

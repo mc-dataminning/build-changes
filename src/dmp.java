@@ -1,47 +1,36 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import javax.annotation.Nullable;
 
-public class dmp extends den {
-   public static final MapCodec<dmp> a = b(dmp::new);
+public class dmp extends dff {
+   public static final MapCodec<dmp> b = b(dmp::new);
+   public static final dsy c = dsx.z;
 
    @Override
-   public MapCodec<dmp> a() {
-      return a;
+   protected MapCodec<? extends dmp> a() {
+      return b;
    }
 
-   protected dmp(dsd.d $$0) {
+   protected dmp(dsg.d $$0) {
       super($$0);
+      this.k(this.E.b().a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public dpj a(iz $$0, dse $$1) {
-      return new dqx($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dpj> dpk<T> a(dca $$0, dse $$1, dpl<T> $$2) {
-      return a($$2, dpl.j, $$0.B ? dqx::a : dqx::b);
+   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
+      return $$1 == jf.b ? $$0.a(c, Boolean.valueOf(m($$2))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void a(dse $$0, arf $$1, iz $$2, cur $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         int $$5 = 15 + $$1.z.a(15) + $$1.z.a(15);
-         this.a($$1, $$2, $$5);
-      }
+   public dsh a(cxk $$0) {
+      dsh $$1 = $$0.q().a_($$0.a().c());
+      return this.o().a(c, Boolean.valueOf(m($$1)));
+   }
+
+   private static boolean m(dsh $$0) {
+      return $$0.a(avu.bz);
    }
 
    @Override
-   protected dlh a_(dse $$0) {
-      return dlh.c;
-   }
-
-   @Override
-   public void a(cur $$0, cum.b $$1, List<xp> $$2, cwk $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      dcs.a($$0, $$2, "SpawnData");
+   protected void a(dsi.a<dff, dsh> $$0) {
+      $$0.a(c);
    }
 }

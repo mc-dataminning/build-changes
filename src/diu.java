@@ -1,51 +1,106 @@
 import com.mojang.serialization.MapCodec;
 
-public class diu extends dfb implements dmc {
-   public static final MapCodec<diu> a = b(diu::new);
-   private static final ewm b = dfb.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
+public abstract class diu extends dis implements dfi {
+   public static final dth e = dsx.ax;
+   public static final int f = 25;
+   private final double c;
 
-   public diu(dsd.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(dsu.C, Boolean.valueOf(false)));
+   protected diu(dsg.d $$0, jf $$1, ews $$2, boolean $$3, double $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.c = $$4;
+      this.k(this.E.b().a(e, Integer.valueOf(0)));
    }
 
    @Override
-   public MapCodec<diu> a() {
-      return a;
+   protected abstract MapCodec<? extends diu> a();
+
+   @Override
+   public dsh a(dce $$0) {
+      return this.o().a(e, Integer.valueOf($$0.E_().a(25)));
    }
 
    @Override
-   protected void a(dsf.a<dfb, dse> $$0) {
-      $$0.a(dsu.C);
+   protected boolean d_(dsh $$0) {
+      return $$0.c(e) < 25;
    }
 
    @Override
-   protected dse a(dse $$0, je $$1, dse $$2, dcb $$3, iz $$4, iz $$5) {
-      if ($$0.c(dsu.C)) {
-         $$3.a($$4, eny.c, eny.c.a($$3));
+   protected void b(dsh $$0, aqk $$1, ja $$2, aym $$3) {
+      if ($$0.c(e) < 25 && $$3.j() < this.c) {
+         ja $$4 = $$2.a(this.a);
+         if (this.g($$1.a_($$4))) {
+            $$1.b($$4, this.a($$0, $$1.z));
+         }
+      }
+   }
+
+   protected dsh a(dsh $$0, aym $$1) {
+      return $$0.a(e);
+   }
+
+   public dsh n(dsh $$0) {
+      return $$0.a(e, Integer.valueOf(25));
+   }
+
+   public boolean o(dsh $$0) {
+      return $$0.c(e) == 25;
+   }
+
+   protected dsh a(dsh $$0, dsh $$1) {
+      return $$1;
+   }
+
+   @Override
+   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
+      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if ($$1 != this.a || !$$2.a(this) && !$$2.a(this.b())) {
+         if (this.b) {
+            $$3.a($$4, eoc.c, eoc.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      } else {
+         return this.a($$0, this.b().o());
+      }
    }
 
    @Override
-   protected enx b_(dse $$0) {
-      return $$0.c(dsu.C) ? eny.c.a(false) : super.b_($$0);
+   protected void a(dsi.a<dff, dsh> $$0) {
+      $$0.a(e);
    }
 
    @Override
-   public dse a(cyc $$0) {
-      enx $$1 = $$0.q().b_($$0.a());
-      return this.o().a(dsu.C, Boolean.valueOf($$1.b(eny.c)));
+   public boolean b(dcg $$0, ja $$1, dsh $$2) {
+      return this.g($$0.a_($$1.a(this.a)));
    }
 
    @Override
-   protected ewm a(dse $$0, dbg $$1, iz $$2, evy $$3) {
-      return b;
+   public boolean a(dcd $$0, aym $$1, ja $$2, dsh $$3) {
+      return true;
    }
 
    @Override
-   protected boolean a(dse $$0, eom $$1) {
-      return false;
+   public void a(aqk $$0, aym $$1, ja $$2, dsh $$3) {
+      ja $$4 = $$2.a(this.a);
+      int $$5 = Math.min($$3.c(e) + 1, 25);
+      int $$6 = this.a($$1);
+
+      for (int $$7 = 0; $$7 < $$6 && this.g($$0.a_($$4)); $$7++) {
+         $$0.b($$4, $$3.a(e, Integer.valueOf($$5)));
+         $$4 = $$4.a(this.a);
+         $$5 = Math.min($$5 + 1, 25);
+      }
+   }
+
+   protected abstract int a(aym var1);
+
+   protected abstract boolean g(dsh var1);
+
+   @Override
+   protected diu c() {
+      return this;
    }
 }

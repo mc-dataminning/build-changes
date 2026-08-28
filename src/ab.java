@@ -1,5 +1,9 @@
 import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
+import java.nio.file.FileStore;
+import java.nio.file.Files;
+import java.nio.file.InvalidPathException;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -70,6 +74,7 @@ public class ab {
       this.a("processor", () -> this.a($$1.getProcessor()));
       this.a("graphics", () -> this.b($$1.getGraphicsCards()));
       this.a("memory", () -> this.a($$1.getMemory()));
+      this.a("storage", this::b);
    }
 
    private void a(String $$0, Runnable $$1) {
@@ -80,22 +85,26 @@ public class ab {
       }
    }
 
+   public static float a(long $$0) {
+      return (float)$$0 / 1048576.0F;
+   }
+
    private void a(List<PhysicalMemory> $$0) {
       int $$1 = 0;
 
       for (PhysicalMemory $$2 : $$0) {
          String $$3 = String.format(Locale.ROOT, "Memory slot #%d ", $$1++);
-         this.a($$3 + "capacity (MB)", () -> String.format(Locale.ROOT, "%.2f", (float)$$2.getCapacity() / 1048576.0F));
+         this.a($$3 + "capacity (MiB)", () -> String.format(Locale.ROOT, "%.2f", a($$2.getCapacity())));
          this.a($$3 + "clockSpeed (GHz)", () -> String.format(Locale.ROOT, "%.2f", (float)$$2.getClockSpeed() / 1.0E9F));
          this.a($$3 + "type", $$2::getMemoryType);
       }
    }
 
    private void a(VirtualMemory $$0) {
-      this.a("Virtual memory max (MB)", () -> String.format(Locale.ROOT, "%.2f", (float)$$0.getVirtualMax() / 1048576.0F));
-      this.a("Virtual memory used (MB)", () -> String.format(Locale.ROOT, "%.2f", (float)$$0.getVirtualInUse() / 1048576.0F));
-      this.a("Swap memory total (MB)", () -> String.format(Locale.ROOT, "%.2f", (float)$$0.getSwapTotal() / 1048576.0F));
-      this.a("Swap memory used (MB)", () -> String.format(Locale.ROOT, "%.2f", (float)$$0.getSwapUsed() / 1048576.0F));
+      this.a("Virtual memory max (MiB)", () -> String.format(Locale.ROOT, "%.2f", a($$0.getVirtualMax())));
+      this.a("Virtual memory used (MiB)", () -> String.format(Locale.ROOT, "%.2f", a($$0.getVirtualInUse())));
+      this.a("Swap memory total (MiB)", () -> String.format(Locale.ROOT, "%.2f", a($$0.getSwapTotal())));
+      this.a("Swap memory used (MiB)", () -> String.format(Locale.ROOT, "%.2f", a($$0.getSwapUsed())));
    }
 
    private void a(GlobalMemory $$0) {
@@ -110,7 +119,7 @@ public class ab {
          String $$3 = String.format(Locale.ROOT, "Graphics card #%d ", $$1++);
          this.a($$3 + "name", $$2::getName);
          this.a($$3 + "vendor", $$2::getVendor);
-         this.a($$3 + "VRAM (MB)", () -> String.format(Locale.ROOT, "%.2f", (float)$$2.getVRam() / 1048576.0F));
+         this.a($$3 + "VRAM (MiB)", () -> String.format(Locale.ROOT, "%.2f", a($$2.getVRam())));
          this.a($$3 + "deviceId", $$2::getDeviceId);
          this.a($$3 + "versionInfo", $$2::getVersionInfo);
       }
@@ -126,6 +135,39 @@ public class ab {
       this.a("Number of physical packages", () -> String.valueOf($$0.getPhysicalPackageCount()));
       this.a("Number of physical CPUs", () -> String.valueOf($$0.getPhysicalProcessorCount()));
       this.a("Number of logical CPUs", () -> String.valueOf($$0.getLogicalProcessorCount()));
+   }
+
+   private void b() {
+      this.a("jna.tmpdir");
+      this.a("org.lwjgl.system.SharedLibraryExtractPath");
+      this.a("io.netty.native.workdir");
+      this.a("java.io.tmpdir");
+      this.b("workdir", () -> "");
+   }
+
+   private void a(String $$0) {
+      this.b($$0, () -> System.getProperty($$0));
+   }
+
+   private void b(String $$0, Supplier<String> $$1) {
+      String $$2 = "Space in storage for " + $$0 + " (MiB)";
+
+      try {
+         String $$3 = $$1.get();
+         if ($$3 == null) {
+            this.a($$2, "<path not set>");
+            return;
+         }
+
+         FileStore $$4 = Files.getFileStore(Path.of($$3));
+         this.a($$2, String.format(Locale.ROOT, "available: %.2f, total: %.2f", a($$4.getUsableSpace()), a($$4.getTotalSpace())));
+      } catch (InvalidPathException var6) {
+         c.warn("{} is not a path", $$0, var6);
+         this.a($$2, "<invalid path>");
+      } catch (Exception var7) {
+         c.warn("Failed retrieving storage space for {}", $$0, var7);
+         this.a($$2, "ERR");
+      }
    }
 
    public void a(StringBuilder $$0) {

@@ -1,73 +1,121 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+import java.util.EnumSet;
+import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class ggf implements gfq<dqv> {
-   private final Map<dmd.a, fvz> a;
-   private static final Map<dmd.a, alf> b = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(dmd.b.c, new alf("textures/entity/skeleton/skeleton.png"));
-      $$0.put(dmd.b.d, new alf("textures/entity/skeleton/wither_skeleton.png"));
-      $$0.put(dmd.b.f, new alf("textures/entity/zombie/zombie.png"));
-      $$0.put(dmd.b.g, new alf("textures/entity/creeper/creeper.png"));
-      $$0.put(dmd.b.i, new alf("textures/entity/enderdragon/dragon.png"));
-      $$0.put(dmd.b.h, new alf("textures/entity/piglin/piglin.png"));
-      $$0.put(dmd.b.e, gpt.a());
-   });
+public class ggf implements gfx<dqd> {
+   private static final String a = "neck";
+   private static final String b = "front";
+   private static final String c = "back";
+   private static final String d = "left";
+   private static final String e = "right";
+   private static final String f = "top";
+   private static final String g = "bottom";
+   private final fxi h;
+   private final fxi i;
+   private final fxi j;
+   private final fxi k;
+   private final fxi l;
+   private final fxi m;
+   private final fxi n;
+   private final grm o = Objects.requireNonNull(gem.a(dqe.a));
+   private static final float p = 0.125F;
 
-   public static Map<dmd.a, fvz> a(fwy $$0) {
-      Builder<dmd.a, fvz> $$1 = ImmutableMap.builder();
-      $$1.put(dmd.b.c, new fvy($$0.a(fxb.br)));
-      $$1.put(dmd.b.d, new fvy($$0.a(fxb.ca)));
-      $$1.put(dmd.b.e, new fvy($$0.a(fxb.aT)));
-      $$1.put(dmd.b.f, new fvy($$0.a(fxb.cg)));
-      $$1.put(dmd.b.g, new fvy($$0.a(fxb.J)));
-      $$1.put(dmd.b.i, new fww($$0.a(fxb.Q)));
-      $$1.put(dmd.b.h, new fvf($$0.a(fxb.aN)));
-      return $$1.build();
+   public ggf(gfy.a $$0) {
+      fxi $$1 = $$0.a(fxh.K);
+      this.h = $$1.b("neck");
+      this.m = $$1.b("top");
+      this.n = $$1.b("bottom");
+      fxi $$2 = $$0.a(fxh.L);
+      this.i = $$2.b("front");
+      this.j = $$2.b("back");
+      this.k = $$2.b("left");
+      this.l = $$2.b("right");
    }
 
-   public ggf(gfr.a $$0) {
-      this.a = a($$0.e());
+   public static fxo b() {
+      fxq $$0 = new fxq();
+      fxr $$1 = $$0.a();
+      fxm $$2 = new fxm(0.2F);
+      fxm $$3 = new fxm(-0.1F);
+      $$1.a(
+         "neck",
+         fxn.c().a(0, 0).a(4.0F, 17.0F, 4.0F, 8.0F, 3.0F, 8.0F, $$3).a(0, 5).a(5.0F, 20.0F, 5.0F, 6.0F, 1.0F, 6.0F, $$2),
+         fxk.a(0.0F, 37.0F, 16.0F, (float) Math.PI, 0.0F, 0.0F)
+      );
+      fxn $$4 = fxn.c().a(-14, 13).a(0.0F, 0.0F, 0.0F, 14.0F, 0.0F, 14.0F);
+      $$1.a("top", $$4, fxk.a(1.0F, 16.0F, 1.0F, 0.0F, 0.0F, 0.0F));
+      $$1.a("bottom", $$4, fxk.a(1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F));
+      return fxo.a($$0, 32, 32);
    }
 
-   public void a(dqv $$0, float $$1, faa $$2, gdq $$3, int $$4, int $$5) {
-      float $$6 = $$0.a($$1);
-      dse $$7 = $$0.n();
-      boolean $$8 = $$7.b() instanceof doc;
-      je $$9 = $$8 ? $$7.c(doc.d) : null;
-      int $$10 = $$8 ? dtk.a($$9.g()) : $$7.c(dmd.e);
-      float $$11 = dtk.b($$10);
-      dmd.a $$12 = ((ddx)$$7.b()).b();
-      fvz $$13 = this.a.get($$12);
-      gdy $$14 = a($$12, $$0.c());
-      a($$9, $$11, $$6, $$2, $$3, $$4, $$13, $$14);
+   public static fxo c() {
+      fxq $$0 = new fxq();
+      fxr $$1 = $$0.a();
+      fxn $$2 = fxn.c().a(1, 0).a(0.0F, 0.0F, 0.0F, 14.0F, 16.0F, 0.0F, EnumSet.of(jf.c));
+      $$1.a("back", $$2, fxk.a(15.0F, 16.0F, 1.0F, 0.0F, 0.0F, (float) Math.PI));
+      $$1.a("left", $$2, fxk.a(1.0F, 16.0F, 1.0F, 0.0F, (float) (-Math.PI / 2), (float) Math.PI));
+      $$1.a("right", $$2, fxk.a(15.0F, 16.0F, 15.0F, 0.0F, (float) (Math.PI / 2), (float) Math.PI));
+      $$1.a("front", $$2, fxk.a(1.0F, 16.0F, 15.0F, (float) Math.PI, 0.0F, 0.0F));
+      return fxo.a($$0, 16, 16);
    }
 
-   public static void a(@Nullable je $$0, float $$1, float $$2, faa $$3, gdq $$4, int $$5, fvz $$6, gdy $$7) {
-      $$3.a();
-      if ($$0 == null) {
-         $$3.a(0.5F, 0.0F, 0.5F);
-      } else {
-         float $$8 = 0.25F;
-         $$3.a(0.5F - (float)$$0.j() * 0.25F, 0.25F, 0.5F - (float)$$0.l() * 0.25F);
+   @Nullable
+   private static grm a(Optional<ctv> $$0) {
+      if ($$0.isPresent()) {
+         grm $$1 = gem.a(dqe.a($$0.get()));
+         if ($$1 != null) {
+            return $$1;
+         }
       }
 
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      fae $$9 = $$4.getBuffer($$7);
-      $$6.a($$2, $$1, 0.0F);
-      $$6.a($$3, $$9, $$5, gos.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
+      return gem.a(dqe.a(cud.qL));
    }
 
-   public static gdy a(dmd.a $$0, @Nullable cxt $$1) {
-      alf $$2 = b.get($$0);
-      if ($$0 == dmd.b.e && $$1 != null) {
-         gqc $$3 = ffh.Q().am();
-         return gdy.i($$3.b($$1.f()).a());
-      } else {
-         return gdy.f($$2);
+   public void a(dqd $$0, float $$1, fag $$2, gdx $$3, int $$4, int $$5) {
+      $$2.a();
+      jf $$6 = $$0.k();
+      $$2.a(0.5, 0.0, 0.5);
+      $$2.a(a.d.rotationDegrees(180.0F - $$6.p()));
+      $$2.a(-0.5, 0.0, -0.5);
+      dqd.a $$7 = $$0.h;
+      if ($$7 != null && $$0.i() != null) {
+         float $$8 = ((float)($$0.i().Z() - $$0.g) + $$1) / (float)$$7.c;
+         if ($$8 >= 0.0F && $$8 <= 1.0F) {
+            if ($$7 == dqd.a.a) {
+               float $$9 = 0.015625F;
+               float $$10 = $$8 * (float) (Math.PI * 2);
+               float $$11 = -1.5F * (aye.b($$10) + 0.5F) * aye.a($$10 / 2.0F);
+               $$2.a(a.b.rotation($$11 * 0.015625F), 0.5F, 0.0F, 0.5F);
+               float $$12 = aye.a($$10);
+               $$2.a(a.f.rotation($$12 * 0.015625F), 0.5F, 0.0F, 0.5F);
+            } else {
+               float $$13 = aye.a(-$$8 * 3.0F * (float) Math.PI) * 0.125F;
+               float $$14 = 1.0F - $$8;
+               $$2.a(a.d.rotation($$13 * $$14), 0.5F, 0.0F, 0.5F);
+            }
+         }
+      }
+
+      fak $$15 = this.o.a($$3, gef::c);
+      this.h.a($$2, $$15, $$4, $$5);
+      this.m.a($$2, $$15, $$4, $$5);
+      this.n.a($$2, $$15, $$4, $$5);
+      dqr $$16 = $$0.l();
+      this.a(this.i, $$2, $$3, $$4, $$5, a($$16.e()));
+      this.a(this.j, $$2, $$3, $$4, $$5, a($$16.b()));
+      this.a(this.k, $$2, $$3, $$4, $$5, a($$16.c()));
+      this.a(this.l, $$2, $$3, $$4, $$5, a($$16.d()));
+      $$2.b();
+   }
+
+   private void a(fxi $$0, fag $$1, gdx $$2, int $$3, int $$4, @Nullable grm $$5) {
+      if ($$5 == null) {
+         $$5 = a(Optional.empty());
+      }
+
+      if ($$5 != null) {
+         $$0.a($$1, $$5.a($$2, gef::c), $$3, $$4);
       }
    }
 }

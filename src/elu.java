@@ -1,46 +1,42 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class elu extends emj {
-   private static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<elu> a = MapCodec.unit(() -> elu.b);
-   public static final elu b = new elu();
+public class elu extends emn {
+   public static final MapCodec<elu> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               jy.a(lr.f).optionalFieldOf("rottable_blocks").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, elu::new)
+   );
+   private final Optional<jn<dff>> b;
+   private final float c;
 
-   private elu() {
+   public elu(jn<dff> $$0, float $$1) {
+      this(Optional.of($$0), $$1);
+   }
+
+   public elu(float $$0) {
+      this(Optional.empty(), $$0);
+   }
+
+   private elu(Optional<jn<dff>> $$0, float $$1) {
+      this.c = $$1;
+      this.b = $$0;
    }
 
    @Nullable
    @Override
-   public emm.c a(dcd $$0, iz $$1, iz $$2, emm.c $$3, emm.c $$4, emi $$5) {
-      dse $$6 = $$4.b();
-      if ($$6.a(dfd.pb)) {
-         if ($$4.c() == null) {
-            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
-            return $$4;
-         } else {
-            String $$7 = $$4.c().l("final_state");
-
-            dse $$9;
-            try {
-               gj.a $$8 = gj.a($$0.a(lq.f), $$7, true);
-               $$9 = $$8.a();
-            } catch (CommandSyntaxException var11) {
-               c.error("Failed to parse jigsaw replacement state '{}' at {}: {}", new Object[]{$$7, $$1, var11.getMessage()});
-               return null;
-            }
-
-            return $$9.a(dfd.kN) ? null : new emm.c($$4.a(), $$9, null);
-         }
-      } else {
-         return $$4;
-      }
+   public emq.c a(dcg $$0, ja $$1, ja $$2, emq.c $$3, emq.c $$4, emm $$5) {
+      aym $$6 = $$5.b($$4.a());
+      return (!this.b.isPresent() || $$3.b().a(this.b.get())) && !($$6.i() <= this.c) ? null : $$4;
    }
 
    @Override
-   protected eml<?> a() {
-      return eml.h;
+   protected emp<?> a() {
+      return emp.f;
    }
 }

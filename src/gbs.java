@@ -1,17 +1,42 @@
-public class gbs extends fzw {
-   protected gbs(fxx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gbz $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
+public class gbs extends gbr {
+   gbs(fyd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.D *= 1.5F;
+      this.t = (int)(Math.random() * 2.0) + 60;
    }
 
-   public static class a implements gbh<lm> {
-      private final gbz a;
+   @Override
+   public float b(float $$0) {
+      float $$1 = 1.0F - ((float)this.s + $$0) / ((float)this.t * 1.5F);
+      return this.D * $$1;
+   }
 
-      public a(gbz $$0) {
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = (float)this.s / (float)this.t;
+         this.g = this.g + this.j * (double)$$0;
+         this.h = this.h + this.k * (double)$$0;
+         this.i = this.i + this.l * (double)$$0;
+      }
+   }
+
+   public static class a implements gbo<ln> {
+      private final gcg a;
+
+      public a(gcg $$0) {
          this.a = $$0;
       }
 
-      public gbe a(lm $$0, fxx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gbs($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
+      public gbl a(ln $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gbs $$8 = new gbs($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

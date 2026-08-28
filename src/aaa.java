@@ -1,23 +1,21 @@
-import io.netty.buffer.ByteBuf;
+public record aaa(String c) implements aac {
+   public static final ys<vr, aaa> a = aac.a(aaa::a, aaa::new);
+   public static final aac.b<aaa> b = aac.a("brand");
 
-public class aaa<B extends ByteBuf, L extends wv> {
-   private final zm.a<B, zw<? super L>, zy<? extends zw<? super L>>> a = zm.a(zw::a);
-   private final zx b;
-
-   public aaa(zx $$0) {
-      this.b = $$0;
+   private aaa(vr $$0) {
+      this($$0.p());
    }
 
-   public <T extends zw<? super L>> aaa<B, L> a(zy<T> $$0, zn<? super B, T> $$1) {
-      if ($$0.a() != this.b) {
-         throw new IllegalArgumentException("Invalid packet flow for packet " + $$0 + ", expected " + this.b.name());
-      } else {
-         this.a.a($$0, $$1);
-         return this;
-      }
+   private void a(vr $$0) {
+      $$0.a(this.c);
    }
 
-   public zn<B, zw<? super L>> a() {
-      return this.a.a();
+   @Override
+   public aac.b<aaa> a() {
+      return b;
+   }
+
+   public String b() {
+      return this.c;
    }
 }

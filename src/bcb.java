@@ -3,22 +3,27 @@ import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.Dynamic;
+import java.util.Objects;
+import java.util.Optional;
 
 public class bcb extends DataFix {
    public bcb(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgx.c);
-      Type<?> $$1 = $$0.findFieldType("Level");
-      OpticFinder<?> $$2 = DSL.fieldFinder("Level", $$1);
+   public TypeRewriteRule makeRule() {
+      OpticFinder<String> $$0 = DSL.fieldFinder("id", bhp.a());
       return this.fixTypeEverywhereTyped(
-         "ChunkLightRemoveFix",
-         $$0,
-         this.getOutputSchema().getType(bgx.c),
-         $$1x -> $$1x.updateTyped($$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.remove("isLightOn")))
+         "EntityCustomNameToComponentFix", this.getInputSchema().getType(bgd.B), $$1 -> $$1.update(DSL.remainderFinder(), $$2 -> {
+               Optional<String> $$3 = $$1.getOptional($$0);
+               return $$3.isPresent() && Objects.equals($$3.get(), "minecraft:commandblock_minecart") ? $$2 : a($$2);
+            })
       );
+   }
+
+   public static Dynamic<?> a(Dynamic<?> $$0) {
+      String $$1 = $$0.get("CustomName").asString("");
+      return $$1.isEmpty() ? $$0.remove("CustomName") : $$0.set("CustomName", azk.a($$0.getOps(), $$1));
    }
 }

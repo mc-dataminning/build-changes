@@ -1,24 +1,13 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gna<T extends cjb> extends gns<T, fue<T>> {
+   private static final akk a = new akk("textures/entity/zombie/drowned_outer_layer.png");
+   private final fue<T> b;
 
-public class gna extends gnl<chn, fun<chn>> {
-   private static final Map<chp, alf> a = ac.a(Maps.newEnumMap(chp.class), $$0 -> {
-      $$0.put(chp.a, null);
-      $$0.put(chp.b, new alf("textures/entity/horse/horse_markings_white.png"));
-      $$0.put(chp.c, new alf("textures/entity/horse/horse_markings_whitefield.png"));
-      $$0.put(chp.d, new alf("textures/entity/horse/horse_markings_whitedots.png"));
-      $$0.put(chp.e, new alf("textures/entity/horse/horse_markings_blackdots.png"));
-   });
-
-   public gna(gkv<chn, fun<chn>> $$0) {
+   public gna(glc<T, fue<T>> $$0, fxe $$1) {
       super($$0);
+      this.b = new fue<>($$1.a(fxh.U));
    }
 
-   public void a(faa $$0, gdq $$1, int $$2, chn $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      alf $$10 = a.get($$3.u());
-      if ($$10 != null && !$$3.ch()) {
-         fae $$11 = $$1.getBuffer(gdy.i($$10));
-         this.c().a($$0, $$11, $$2, gka.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
-      }
+   public void a(fag $$0, gdx $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
    }
 }

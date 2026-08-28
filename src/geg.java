@@ -1,61 +1,35 @@
-public class geg implements fae {
-   private final fae a;
-   private final gpb b;
+public class geg {
+   private final long[] a;
+   private int b;
+   private int c;
 
-   public geg(fae $$0, gpb $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public geg(int $$0) {
+      this.a = new long[$$0];
    }
 
-   @Override
-   public fae a(double $$0, double $$1, double $$2) {
-      return this.a.a($$0, $$1, $$2);
-   }
+   public long a(long $$0) {
+      if (this.b < this.a.length) {
+         this.b++;
+      }
 
-   @Override
-   public fae a(int $$0, int $$1, int $$2, int $$3) {
-      return this.a.a($$0, $$1, $$2, $$3);
-   }
+      this.a[this.c] = $$0;
+      this.c = (this.c + 1) % this.a.length;
+      long $$1 = Long.MAX_VALUE;
+      long $$2 = Long.MIN_VALUE;
+      long $$3 = 0L;
 
-   @Override
-   public fae a(float $$0, float $$1) {
-      return this.a.a(this.b.a($$0), this.b.c($$1));
-   }
+      for (int $$4 = 0; $$4 < this.b; $$4++) {
+         long $$5 = this.a[$$4];
+         $$3 += $$5;
+         $$1 = Math.min($$1, $$5);
+         $$2 = Math.max($$2, $$5);
+      }
 
-   @Override
-   public fae a(int $$0, int $$1) {
-      return this.a.a($$0, $$1);
-   }
-
-   @Override
-   public fae b(int $$0, int $$1) {
-      return this.a.b($$0, $$1);
-   }
-
-   @Override
-   public fae a(float $$0, float $$1, float $$2) {
-      return this.a.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void e() {
-      this.a.e();
-   }
-
-   @Override
-   public void b(int $$0, int $$1, int $$2, int $$3) {
-      this.a.b($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void l() {
-      this.a.l();
-   }
-
-   @Override
-   public void a(
-      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
-   ) {
-      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, this.b.a($$7), this.b.c($$8), $$9, $$10, $$11, $$12, $$13);
+      if (this.b > 2) {
+         $$3 -= $$1 + $$2;
+         return $$3 / (long)(this.b - 2);
+      } else {
+         return $$3 > 0L ? (long)this.b / $$3 : 0L;
+      }
    }
 }

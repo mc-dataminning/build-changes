@@ -1,137 +1,116 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.UnmodifiableIterator;
+import com.google.common.collect.Sets;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.CompletableFuture;
-import org.slf4j.Logger;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
+import java.util.Set;
 
 public class aok {
-   private static final Logger a = LogUtils.getLogger();
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("commands.tag.add.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wu.c("commands.tag.remove.failed"));
 
-   public static void a(CommandDispatcher<ep> $$0) {
+   public static void a(CommandDispatcher<eq> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("resetchunks").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((ep)$$0x.getSource(), 0, true)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("tag").requires($$0x -> $$0x.c(2)))
             .then(
-               ((RequiredArgumentBuilder)eq.a("range", IntegerArgumentType.integer(0, 5))
-                     .executes($$0x -> a((ep)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "range"), true)))
-                  .then(
-                     eq.a("skipOldChunks", BoolArgumentType.bool())
-                        .executes(
-                           $$0x -> a((ep)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "range"), BoolArgumentType.getBool($$0x, "skipOldChunks"))
-                        )
-                  )
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)er.a("targets", fd.b())
+                        .then(
+                           er.a("add")
+                              .then(
+                                 er.a("name", StringArgumentType.word())
+                                    .executes($$0x -> a((eq)$$0x.getSource(), fd.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
+                              )
+                        ))
+                     .then(
+                        er.a("remove")
+                           .then(
+                              er.a("name", StringArgumentType.word())
+                                 .suggests(($$0x, $$1) -> ev.b(a(fd.b($$0x, "targets")), $$1))
+                                 .executes($$0x -> b((eq)$$0x.getSource(), fd.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
+                           )
+                     ))
+                  .then(er.a("list").executes($$0x -> a((eq)$$0x.getSource(), fd.b($$0x, "targets"))))
             )
       );
    }
 
-   private static int a(ep $$0, int $$1, boolean $$2) {
-      arf $$3 = $$0.e();
-      ard $$4 = $$3.l();
-      $$4.a.d();
-      evt $$5 = $$0.d();
-      dbh $$6 = new dbh(iz.a($$5));
-      int $$7 = $$6.f - $$1;
-      int $$8 = $$6.f + $$1;
-      int $$9 = $$6.e - $$1;
-      int $$10 = $$6.e + $$1;
+   private static Collection<String> a(Collection<? extends bsd> $$0) {
+      Set<String> $$1 = Sets.newHashSet();
 
-      for (int $$11 = $$7; $$11 <= $$8; $$11++) {
-         for (int $$12 = $$9; $$12 <= $$10; $$12++) {
-            dbh $$13 = new dbh($$12, $$11);
-            duk $$14 = $$4.a($$12, $$11, false);
-            if ($$14 != null && (!$$2 || !$$14.s())) {
-               for (iz $$15 : iz.b($$13.d(), $$3.I_(), $$13.e(), $$13.f(), $$3.am() - 1, $$13.g())) {
-                  $$3.a($$15, dfd.a.o(), 16);
-               }
-            }
+      for (bsd $$2 : $$0) {
+         $$1.addAll($$2.am());
+      }
+
+      return $$1;
+   }
+
+   private static int a(eq $$0, Collection<? extends bsd> $$1, String $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (bsd $$4 : $$1) {
+         if ($$4.a($$2)) {
+            $$3++;
          }
       }
 
-      bpp<Runnable> $$16 = bpp.a(ac.g(), "worldgen-resetchunks");
-      long $$17 = System.currentTimeMillis();
-      int $$18 = ($$1 * 2 + 1) * ($$1 * 2 + 1);
-      UnmodifiableIterator var34 = ImmutableList.of(duz.f, duz.g, duz.h, duz.i, duz.j, duz.k).iterator();
-
-      while (var34.hasNext()) {
-         duz $$19 = (duz)var34.next();
-         long $$20 = System.currentTimeMillis();
-         CompletableFuture<Unit> $$21 = CompletableFuture.supplyAsync(() -> Unit.INSTANCE, $$16::a);
-         dvd $$22 = new dvd($$3, $$4.g(), $$3.q(), $$4.a());
-
-         for (int $$23 = $$6.f - $$1; $$23 <= $$6.f + $$1; $$23++) {
-            for (int $$24 = $$6.e - $$1; $$24 <= $$6.e + $$1; $$24++) {
-               dbh $$25 = new dbh($$24, $$23);
-               duk $$26 = $$4.a($$24, $$23, false);
-               if ($$26 != null && (!$$2 || !$$26.s())) {
-                  List<dua> $$27 = Lists.newArrayList();
-                  int $$28 = Math.max(1, $$19.e());
-
-                  for (int $$29 = $$25.f - $$28; $$29 <= $$25.f + $$28; $$29++) {
-                     for (int $$30 = $$25.e - $$28; $$30 <= $$25.e + $$28; $$30++) {
-                        dua $$31 = $$4.a($$30, $$29, $$19.d(), true);
-                        dua $$32;
-                        if ($$31 instanceof duj) {
-                           $$32 = new duj(((duj)$$31).C(), true);
-                        } else if ($$31 instanceof duk) {
-                           $$32 = new duj((duk)$$31, true);
-                        } else {
-                           $$32 = $$31;
-                        }
-
-                        $$27.add($$32);
-                     }
-                  }
-
-                  $$21 = $$21.thenComposeAsync($$4x -> $$19.a($$22, $$16::a, $$0xx -> {
-                        throw new UnsupportedOperationException("Not creating full chunks here");
-                     }, $$27).thenApply($$1xx -> {
-                        if ($$19 == duz.g) {
-                           dxw.a($$1xx, duz.b);
-                        }
-
-                        return Unit.INSTANCE;
-                     }), $$16::a);
-               }
-            }
+      if ($$3 == 0) {
+         throw a.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> wu.a("commands.tag.add.success.single", $$2, $$1.iterator().next().O_()), true);
+         } else {
+            $$0.a(() -> wu.a("commands.tag.add.success.multiple", $$2, $$1.size()), true);
          }
 
-         $$0.l().c($$21::isDone);
-         a.debug($$19 + " took " + (System.currentTimeMillis() - $$20) + " ms");
+         return $$3;
       }
+   }
 
-      long $$35 = System.currentTimeMillis();
+   private static int b(eq $$0, Collection<? extends bsd> $$1, String $$2) throws CommandSyntaxException {
+      int $$3 = 0;
 
-      for (int $$36 = $$6.f - $$1; $$36 <= $$6.f + $$1; $$36++) {
-         for (int $$37 = $$6.e - $$1; $$37 <= $$6.e + $$1; $$37++) {
-            dbh $$38 = new dbh($$37, $$36);
-            duk $$39 = $$4.a($$37, $$36, false);
-            if ($$39 != null && (!$$2 || !$$39.s())) {
-               for (iz $$40 : iz.b($$38.d(), $$3.I_(), $$38.e(), $$38.f(), $$3.am() - 1, $$38.g())) {
-                  $$4.a($$40);
-               }
-            }
+      for (bsd $$4 : $$1) {
+         if ($$4.b($$2)) {
+            $$3++;
          }
       }
 
-      a.debug("blockChanged took " + (System.currentTimeMillis() - $$35) + " ms");
-      long $$41 = System.currentTimeMillis() - $$17;
-      $$0.a(
-         () -> xp.b(
-               String.format(
-                  Locale.ROOT, "%d chunks have been reset. This took %d ms for %d chunks, or %02f ms per chunk", $$18, $$41, $$18, (float)$$41 / (float)$$18
-               )
-            ),
-         true
-      );
-      return 1;
+      if ($$3 == 0) {
+         throw b.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> wu.a("commands.tag.remove.success.single", $$2, $$1.iterator().next().O_()), true);
+         } else {
+            $$0.a(() -> wu.a("commands.tag.remove.success.multiple", $$2, $$1.size()), true);
+         }
+
+         return $$3;
+      }
+   }
+
+   private static int a(eq $$0, Collection<? extends bsd> $$1) {
+      Set<String> $$2 = Sets.newHashSet();
+
+      for (bsd $$3 : $$1) {
+         $$2.addAll($$3.am());
+      }
+
+      if ($$1.size() == 1) {
+         bsd $$4 = $$1.iterator().next();
+         if ($$2.isEmpty()) {
+            $$0.a(() -> wu.a("commands.tag.list.single.empty", $$4.O_()), false);
+         } else {
+            $$0.a(() -> wu.a("commands.tag.list.single.success", $$4.O_(), $$2.size(), wx.a($$2)), false);
+         }
+      } else if ($$2.isEmpty()) {
+         $$0.a(() -> wu.a("commands.tag.list.multiple.empty", $$1.size()), false);
+      } else {
+         $$0.a(() -> wu.a("commands.tag.list.multiple.success", $$1.size(), $$2.size(), wx.a($$2)), false);
+      }
+
+      return $$2.size();
    }
 }

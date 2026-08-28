@@ -1,7 +1,14 @@
-import com.google.gson.JsonObject;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public interface ato<T> {
-   String a();
+public interface ato {
+   CompletableFuture<Void> a(ato.a var1, atu var2, bmr var3, bmr var4, Executor var5, Executor var6);
 
-   T a(JsonObject var1);
+   default String c() {
+      return this.getClass().getSimpleName();
+   }
+
+   public interface a {
+      <T> CompletableFuture<T> a(T var1);
+   }
 }

@@ -1,33 +1,33 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dol extends dme implements dog {
-   public static final MapCodec<dol> f = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dog.a.e.fieldOf("weathering_state").forGetter(dgc::c), u()).apply($$0, dol::new)
+public class dol extends dgt implements dok {
+   public static final MapCodec<dol> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dok.a.e.fieldOf("weathering_state").forGetter(dol::m), u()).apply($$0, dol::new)
    );
-   private final dog.a g;
+   private final dok.a e;
 
    @Override
-   public MapCodec<dol> a() {
-      return f;
+   protected MapCodec<dol> a() {
+      return d;
    }
 
-   public dol(dog.a $$0, dsd.d $$1) {
+   public dol(dok.a $$0, dsg.d $$1) {
       super($$1);
-      this.g = $$0;
+      this.e = $$0;
    }
 
    @Override
-   protected void b(dse $$0, arf $$1, iz $$2, azh $$3) {
+   protected void b(dsh $$0, aqk $$1, ja $$2, aym $$3) {
       this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected boolean d_(dse $$0) {
-      return dog.c($$0.b()).isPresent();
+   protected boolean d_(dsh $$0) {
+      return dok.c($$0.b()).isPresent();
    }
 
-   public dog.a m() {
-      return this.g;
+   public dok.a m() {
+      return this.e;
    }
 }

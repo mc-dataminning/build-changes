@@ -1,13 +1,113 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public interface apu {
-   void a(us var1) throws CommandSyntaxException;
+public interface apu<T> {
+   static <T> apu<T> a(T $$0) {
+      return new apu.b<>($$0);
+   }
 
-   us a() throws CommandSyntaxException;
+   static <T> apu<T> a(String $$0) {
+      return a(() -> $$0);
+   }
 
-   xp b();
+   static <T> apu<T> a(Supplier<String> $$0) {
+      return new apu.a<>($$0);
+   }
 
-   xp a(vp var1);
+   boolean a();
 
-   xp a(fh.g var1, double var2, int var4);
+   @Nullable
+   T b(@Nullable T var1);
+
+   @Nullable
+   static <R> R a(apu<? extends R> $$0, @Nullable R $$1) {
+      R $$2 = (R)$$0.b(null);
+      return $$2 != null ? $$2 : $$1;
+   }
+
+   @Nullable
+   String b();
+
+   apu<T> a(Consumer<T> var1);
+
+   <R> apu<R> a(Function<T, R> var1);
+
+   <E extends Throwable> T b(Supplier<E> var1) throws E;
+
+   public static record a<T>(Supplier<String> a) implements apu<T> {
+      @Override
+      public boolean a() {
+         return false;
+      }
+
+      @Nullable
+      @Override
+      public T b(@Nullable T $$0) {
+         return $$0;
+      }
+
+      @Override
+      public String b() {
+         return this.a.get();
+      }
+
+      @Override
+      public apu<T> a(Consumer<T> $$0) {
+         return this;
+      }
+
+      @Override
+      public <R> apu<R> a(Function<T, R> $$0) {
+         return new apu.a(this.a);
+      }
+
+      @Override
+      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
+         throw $$0.get();
+      }
+
+      public Supplier<String> c() {
+         return this.a;
+      }
+   }
+
+   public static record b<T>(T a) implements apu<T> {
+      @Override
+      public boolean a() {
+         return true;
+      }
+
+      @Override
+      public T b(@Nullable T $$0) {
+         return this.a;
+      }
+
+      @Nullable
+      @Override
+      public String b() {
+         return null;
+      }
+
+      @Override
+      public apu<T> a(Consumer<T> $$0) {
+         $$0.accept(this.a);
+         return this;
+      }
+
+      @Override
+      public <R> apu<R> a(Function<T, R> $$0) {
+         return new apu.b<>($$0.apply(this.a));
+      }
+
+      @Override
+      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
+         return this.a;
+      }
+
+      public T c() {
+         return this.a;
+      }
+   }
 }

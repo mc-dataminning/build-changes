@@ -1,72 +1,48 @@
-public class fzy extends gce {
-   private final float a;
-   private final float b;
+import com.mojang.logging.LogUtils;
+import java.util.Hashtable;
+import java.util.Optional;
+import javax.naming.directory.Attribute;
+import javax.naming.directory.Attributes;
+import javax.naming.directory.DirContext;
+import javax.naming.directory.InitialDirContext;
+import org.slf4j.Logger;
 
-   fzy(fxx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cur $$7) {
-      this($$0, $$1, $$2, $$3, $$7);
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
-   }
+@FunctionalInterface
+public interface fzy {
+   Logger a = LogUtils.getLogger();
+   fzy b = $$0 -> Optional.empty();
 
-   @Override
-   public gbi b() {
-      return gbi.a;
-   }
+   Optional<fzv> lookupRedirect(fzv var1);
 
-   protected fzy(fxx $$0, double $$1, double $$2, double $$3, cur $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a(ffh.Q().ar().a($$4, $$0, null, 0).e());
-      this.u = 1.0F;
-      this.D /= 2.0F;
-      this.a = this.r.i() * 3.0F;
-      this.b = this.r.i() * 3.0F;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.a((this.a + 1.0F) / 4.0F);
-   }
-
-   @Override
-   protected float d() {
-      return this.E.a(this.a / 4.0F);
-   }
-
-   @Override
-   protected float e() {
-      return this.E.c(this.b / 4.0F);
-   }
-
-   @Override
-   protected float f() {
-      return this.E.c((this.b + 1.0F) / 4.0F);
-   }
-
-   public static class a implements gbh<lm> {
-      public gbe a(lm $$0, fxx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fzy($$1, $$2, $$3, $$4, new cur(cuu.cM));
+   static fzy createDnsSrvRedirectHandler() {
+      DirContext $$2;
+      try {
+         String $$0 = "com.sun.jndi.dns.DnsContextFactory";
+         Class.forName("com.sun.jndi.dns.DnsContextFactory");
+         Hashtable<String, String> $$1 = new Hashtable<>();
+         $$1.put("java.naming.factory.initial", "com.sun.jndi.dns.DnsContextFactory");
+         $$1.put("java.naming.provider.url", "dns:");
+         $$1.put("com.sun.jndi.dns.timeout.retries", "1");
+         $$2 = new InitialDirContext($$1);
+      } catch (Throwable var3) {
+         a.error("Failed to initialize SRV redirect resolved, some servers might not work", var3);
+         return b;
       }
-   }
 
-   public static class b implements gbh<le> {
-      public gbe a(le $$0, fxx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fzy($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.b());
-      }
-   }
+      return $$1x -> {
+         if ($$1x.b() == 25565) {
+            try {
+               Attributes $$2x = $$2.getAttributes("_minecraft._tcp." + $$1x.a(), new String[]{"SRV"});
+               Attribute $$3x = $$2x.get("srv");
+               if ($$3x != null) {
+                  String[] $$4x = $$3x.get().toString().split(" ", 4);
+                  return Optional.of(new fzv($$4x[3], fzv.c($$4x[2])));
+               }
+            } catch (Throwable var5) {
+            }
+         }
 
-   public static class c implements gbh<lm> {
-      public gbe a(lm $$0, fxx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fzy($$1, $$2, $$3, $$4, new cur(cuu.qQ));
-      }
-   }
-
-   public static class d implements gbh<lm> {
-      public gbe a(lm $$0, fxx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fzy($$1, $$2, $$3, $$4, new cur(cuu.qC));
-      }
+         return Optional.empty();
+      };
    }
 }

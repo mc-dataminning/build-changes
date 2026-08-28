@@ -1,81 +1,41 @@
-import com.mojang.logging.LogUtils;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.concurrent.Semaphore;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public class azx {
-   private static final Logger a = LogUtils.getLogger();
-   private final String b;
-   private final Semaphore c = new Semaphore(1);
-   private final Lock d = new ReentrantLock();
-   @Nullable
-   private volatile Thread e;
-   @Nullable
-   private volatile y f;
-
-   public azx(String $$0) {
-      this.b = $$0;
+public class azx extends bfa {
+   public azx(Schema $$0) {
+      super($$0, false, "AreaEffectCloudPotionFix", bgd.B, "minecraft:area_effect_cloud");
    }
 
-   public void a() {
-      boolean $$0 = false;
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
+   }
 
-      try {
-         this.d.lock();
-         if (!this.c.tryAcquire()) {
-            this.e = Thread.currentThread();
-            $$0 = true;
-            this.d.unlock();
-
-            try {
-               this.c.acquire();
-            } catch (InterruptedException var6) {
-               Thread.currentThread().interrupt();
-            }
-
-            throw this.f;
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("Color").result();
+      Optional<Dynamic<T>> $$2 = $$0.get("effects").result();
+      Optional<Dynamic<T>> $$3 = $$0.get("Potion").result();
+      $$0 = $$0.remove("Color").remove("effects").remove("Potion");
+      if ($$1.isEmpty() && $$2.isEmpty() && $$3.isEmpty()) {
+         return $$0;
+      } else {
+         Dynamic<T> $$4 = $$0.emptyMap();
+         if ($$1.isPresent()) {
+            $$4 = $$4.set("custom_color", $$1.get());
          }
-      } finally {
-         if (!$$0) {
-            this.d.unlock();
+
+         if ($$2.isPresent()) {
+            $$4 = $$4.set("custom_effects", $$2.get());
          }
+
+         if ($$3.isPresent()) {
+            $$4 = $$4.set("potion", $$3.get());
+         }
+
+         return $$0.set("potion_contents", $$4);
       }
-   }
-
-   public void b() {
-      try {
-         this.d.lock();
-         Thread $$0 = this.e;
-         if ($$0 != null) {
-            y $$1 = a(this.b, $$0);
-            this.f = $$1;
-            this.c.release();
-            throw $$1;
-         }
-
-         this.c.release();
-      } finally {
-         this.d.unlock();
-      }
-   }
-
-   public static y a(String $$0, @Nullable Thread $$1) {
-      String $$2 = Stream.of(Thread.currentThread(), $$1).filter(Objects::nonNull).map(azx::a).collect(Collectors.joining("\n"));
-      String $$3 = "Accessing " + $$0 + " from multiple threads";
-      o $$4 = new o($$3, new IllegalStateException($$3));
-      p $$5 = $$4.a("Thread dumps");
-      $$5.a("Thread dumps", $$2);
-      a.error("Thread dumps: \n" + $$2);
-      return new y($$4);
-   }
-
-   private static String a(Thread $$0) {
-      return $$0.getName() + ": \n\tat " + Arrays.stream($$0.getStackTrace()).map(Object::toString).collect(Collectors.joining("\n\tat "));
    }
 }

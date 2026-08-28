@@ -1,33 +1,48 @@
 import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
-public record eto(Optional<bj> b) implements etu {
-   public static final MapCodec<eto> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bj.a.optionalFieldOf("predicate").forGetter(eto::c)).apply($$0, eto::new));
+public record eto(jj<czj> b, List<Float> c) implements etz {
+   public static final MapCodec<eto> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(czj.b.fieldOf("enchantment").forGetter(eto::c), axm.a(Codec.FLOAT.listOf()).fieldOf("chances").forGetter(eto::d)).apply($$0, eto::new)
+   );
 
    @Override
-   public etv b() {
-      return etw.o;
+   public eua b() {
+      return eub.k;
    }
 
    @Override
-   public Set<etd<?>> a() {
-      return ImmutableSet.of(etg.f, etg.c);
+   public Set<eth<?>> a() {
+      return ImmutableSet.of(etk.i);
    }
 
-   public boolean a(eqk $$0) {
-      brp $$1 = $$0.c(etg.c);
-      evt $$2 = $$0.c(etg.f);
-      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
+   public boolean a(eqo $$0) {
+      cua $$1 = $$0.c(etk.i);
+      int $$2 = $$1 != null ? czl.a(this.b, $$1) : 0;
+      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
+      return $$0.b().i() < $$3;
    }
 
-   public static etu.a a(bj.a $$0) {
-      return () -> new eto(Optional.of($$0.b()));
+   public static etz.a a(jj<czj> $$0, float... $$1) {
+      List<Float> $$2 = new ArrayList<>($$1.length);
+
+      for (float $$3 : $$1) {
+         $$2.add($$3);
+      }
+
+      return () -> new eto($$0, $$2);
    }
 
-   public Optional<bj> c() {
+   public jj<czj> c() {
       return this.b;
+   }
+
+   public List<Float> d() {
+      return this.c;
    }
 }

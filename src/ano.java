@@ -1,72 +1,47 @@
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
 import java.util.Collection;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
 public class ano {
-   public static final int a = 100;
+   private static final Logger a = LogUtils.getLogger();
 
-   public static void a(CommandDispatcher<ep> $$0, el $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("give").requires($$0x -> $$0x.c(2)))
-            .then(
-               eq.a("targets", fc.d())
-                  .then(
-                     ((RequiredArgumentBuilder)eq.a("item", gy.a($$1)).executes($$0x -> a((ep)$$0x.getSource(), gy.a($$0x, "item"), fc.f($$0x, "targets"), 1)))
-                        .then(
-                           eq.a("count", IntegerArgumentType.integer(1))
-                              .executes(
-                                 $$0x -> a((ep)$$0x.getSource(), gy.a($$0x, "item"), fc.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "count"))
-                              )
-                        )
-                  )
-            )
-      );
+   public static void a(Collection<String> $$0, eq $$1) {
+      $$1.l().a($$0).exceptionally($$1x -> {
+         a.warn("Failed to execute reload", $$1x);
+         $$1.b(wu.c("commands.reload.failure"));
+         return null;
+      });
    }
 
-   private static int a(ep $$0, gz $$1, Collection<arg> $$2, int $$3) throws CommandSyntaxException {
-      cur $$4 = $$1.a(1, false);
-      int $$5 = $$4.j();
-      int $$6 = $$5 * 100;
-      if ($$3 > $$6) {
-         $$0.b(xp.a("commands.give.failed.toomanyitems", $$6, $$4.G()));
-         return 0;
-      } else {
-         for (arg $$7 : $$2) {
-            int $$8 = $$3;
+   private static Collection<String> a(atf $$0, eqi $$1, Collection<String> $$2) {
+      $$0.a();
+      Collection<String> $$3 = Lists.newArrayList($$2);
+      Collection<String> $$4 = $$1.D().a().b();
 
-            while ($$8 > 0) {
-               int $$9 = Math.min($$5, $$8);
-               $$8 -= $$9;
-               cur $$10 = $$1.a($$9, false);
-               boolean $$11 = $$7.gc().f($$10);
-               if ($$11 && $$10.e()) {
-                  cjj $$13 = $$7.a($$4, false);
-                  if ($$13 != null) {
-                     $$13.B();
-                  }
-
-                  $$7.dP().a(null, $$7.du(), $$7.dw(), $$7.dA(), awa.nC, awb.h, 0.2F, (($$7.el().i() - $$7.el().i()) * 0.7F + 1.0F) * 2.0F);
-                  $$7.cb.d();
-               } else {
-                  cjj $$12 = $$7.a($$10, false);
-                  if ($$12 != null) {
-                     $$12.w();
-                     $$12.b($$7.cz());
-                  }
-               }
-            }
+      for (String $$5 : $$0.b()) {
+         if (!$$4.contains($$5) && !$$3.contains($$5)) {
+            $$3.add($$5);
          }
-
-         if ($$2.size() == 1) {
-            $$0.a(() -> xp.a("commands.give.success.single", $$3, $$4.G(), $$2.iterator().next().O_()), true);
-         } else {
-            $$0.a(() -> xp.a("commands.give.success.single", $$3, $$4.G(), $$2.size()), true);
-         }
-
-         return $$2.size();
       }
+
+      return $$3;
+   }
+
+   public static void a(CommandDispatcher<eq> $$0) {
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("reload").requires($$0x -> $$0x.c(2))).executes($$0x -> {
+         eq $$1 = (eq)$$0x.getSource();
+         MinecraftServer $$2 = $$1.l();
+         atf $$3 = $$2.aG();
+         eqi $$4 = $$2.bb();
+         Collection<String> $$5 = $$3.d();
+         Collection<String> $$6 = a($$3, $$4, $$5);
+         $$1.a(() -> wu.c("commands.reload.success"), true);
+         a($$6, $$1);
+         return 0;
+      }));
    }
 }

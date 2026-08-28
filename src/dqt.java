@@ -1,251 +1,98 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
-import java.util.UUID;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.annotations.VisibleForTesting;
 
-public class dqt extends dpj {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 90;
-   private static final int c = 10;
-   @Nullable
-   private UUID d;
-   private dqu e = this.f();
-   private dqu f = this.f();
-   private boolean g;
+public class dqt extends dpn implements dxc.b<dqt.a> {
+   private final dqt.a a;
 
-   public dqt(iz $$0, dse $$1) {
-      this(dpl.h, $$0, $$1);
+   public dqt(ja $$0, dsh $$1) {
+      super(dpp.K, $$0, $$1);
+      this.a = new dqt.a($$1, new dww($$0));
    }
 
-   public dqt(dpl $$0, iz $$1, dse $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   protected dqu f() {
-      return new dqu();
-   }
-
-   public boolean a(cmz $$0) {
-      if (this.n().b() instanceof dmb $$1) {
-         evt $$2 = $$1.m(this.n());
-         double $$3 = $$0.du() - ((double)this.ay_().u() + $$2.c);
-         double $$4 = $$0.dA() - ((double)this.ay_().w() + $$2.e);
-         float $$5 = $$1.g(this.n());
-         float $$6 = (float)(ayz.d($$4, $$3) * 180.0F / (float)Math.PI) - 90.0F;
-         return ayz.d($$5, $$6) <= 90.0F;
-      } else {
-         return false;
-      }
-   }
-
-   public dqu a(boolean $$0) {
-      return $$0 ? this.e : this.f;
-   }
-
-   public dqu j() {
-      return this.e;
-   }
-
-   public dqu k() {
-      return this.f;
-   }
-
-   public int b() {
-      return 10;
-   }
-
-   public int c() {
-      return 90;
+   public static void a(dcd $$0, ja $$1, dsh $$2, dqt $$3) {
+      $$3.a.d().a($$0, $$1, $$0.E_(), true);
    }
 
    @Override
-   protected void b(us $$0, jk.a $$1) {
-      super.b($$0, $$1);
-      DynamicOps<vp> $$2 = $$1.a(vg.a);
-      dqu.a.encodeStart($$2, this.e).resultOrPartial(a::error).ifPresent($$1x -> $$0.a("front_text", $$1x));
-      dqu.a.encodeStart($$2, this.f).resultOrPartial(a::error).ifPresent($$1x -> $$0.a("back_text", $$1x));
-      $$0.a("is_waxed", this.g);
-   }
-
-   @Override
-   protected void a(us $$0, jk.a $$1) {
+   protected void a(tx $$0, jl.a $$1) {
       super.a($$0, $$1);
-      DynamicOps<vp> $$2 = $$1.a(vg.a);
-      if ($$0.e("front_text")) {
-         dqu.a.parse($$2, $$0.p("front_text")).resultOrPartial(a::error).ifPresent($$0x -> this.e = this.a($$0x));
-      }
-
-      if ($$0.e("back_text")) {
-         dqu.a.parse($$2, $$0.p("back_text")).resultOrPartial(a::error).ifPresent($$0x -> this.f = this.a($$0x));
-      }
-
-      this.g = $$0.q("is_waxed");
+      this.a.b.a($$0);
    }
 
-   private dqu a(dqu $$0) {
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         xp $$2 = this.a($$0.a($$1, false));
-         xp $$3 = this.a($$0.a($$1, true));
-         $$0 = $$0.a($$1, $$2, $$3);
+   @Override
+   protected void b(tx $$0, jl.a $$1) {
+      this.a.b.b($$0);
+      super.b($$0, $$1);
+   }
+
+   public dqt.a b() {
+      return this.a;
+   }
+
+   public static class a implements dxc {
+      public static final int a = 8;
+      final dma b;
+      private final dsh c;
+      private final dxe d;
+
+      public a(dsh $$0, dxe $$1) {
+         this.c = $$0;
+         this.d = $$1;
+         this.b = dma.a();
       }
 
-      return $$0;
-   }
-
-   private xp a(xp $$0) {
-      if (this.n instanceof arf $$1) {
-         try {
-            return xs.a(a(null, $$1, this.o), $$0, null, 0);
-         } catch (CommandSyntaxException var4) {
-         }
+      @Override
+      public dxe a() {
+         return this.d;
       }
 
-      return $$0;
-   }
-
-   public void a(cmz $$0, boolean $$1, List<arx> $$2) {
-      if (!this.v() && $$0.cz().equals(this.u()) && this.n != null) {
-         this.a($$2x -> this.a($$0, $$2, $$2x), $$1);
-         this.a(null);
-         this.n.a(this.ay_(), this.n(), this.n(), 3);
-      } else {
-         a.warn("Player {} just tried to change non-editable sign", $$0.af().getString());
+      @Override
+      public int b() {
+         return 8;
       }
-   }
 
-   public boolean a(UnaryOperator<dqu> $$0, boolean $$1) {
-      dqu $$2 = this.a($$1);
-      return this.a($$0.apply($$2), $$1);
-   }
+      @Override
+      public dxc.a c() {
+         return dxc.a.b;
+      }
 
-   private dqu a(cmz $$0, List<arx> $$1, dqu $$2) {
-      for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
-         arx $$4 = $$1.get($$3);
-         ym $$5 = $$2.a($$3, $$0.Y()).a();
-         if ($$0.Y()) {
-            $$2 = $$2.a($$3, xp.b($$4.b()).b($$5));
+      @Override
+      public boolean a(aqk $$0, jj<dxa> $$1, dxa.a $$2, evz $$3) {
+         if ($$1.a(dxa.p) && $$2.a() instanceof bsy $$4) {
+            if (!$$4.eD()) {
+               bqw $$5 = $$4.ey();
+               int $$6 = $$4.a($$0, x.a($$5, bqw::d));
+               if ($$4.ee() && $$6 > 0) {
+                  this.b.a(ja.a($$3.a(jf.b, 0.5)), $$6);
+                  this.a($$0, $$4);
+               }
+
+               $$4.eC();
+               this.d.a($$0).ifPresent($$1x -> this.a($$0, ja.a($$1x), this.c, $$0.E_()));
+            }
+
+            return true;
          } else {
-            $$2 = $$2.a($$3, xp.b($$4.d()).b($$5), xp.b($$4.b()).b($$5));
+            return false;
          }
       }
 
-      return $$2;
-   }
-
-   public boolean a(dqu $$0, boolean $$1) {
-      return $$1 ? this.c($$0) : this.b($$0);
-   }
-
-   private boolean b(dqu $$0) {
-      if ($$0 != this.f) {
-         this.f = $$0;
-         this.w();
-         return true;
-      } else {
-         return false;
+      @VisibleForTesting
+      public dma d() {
+         return this.b;
       }
-   }
 
-   private boolean c(dqu $$0) {
-      if ($$0 != this.e) {
-         this.e = $$0;
-         this.w();
-         return true;
-      } else {
-         return false;
+      private void a(aqk $$0, ja $$1, dsh $$2, aym $$3) {
+         $$0.a($$1, $$2.a(dlx.b, Boolean.valueOf(true)), 3);
+         $$0.a($$1, $$2.b(), 8);
+         $$0.a(lj.I, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
+         $$0.a(null, $$1, avf.wa, avg.e, 2.0F, 0.6F + $$3.i() * 0.4F);
       }
-   }
 
-   public boolean a(boolean $$0, cmz $$1) {
-      return this.v() && this.a($$0).b($$1);
-   }
-
-   public boolean a(cmz $$0, dca $$1, iz $$2, boolean $$3) {
-      boolean $$4 = false;
-
-      for (xp $$5 : this.a($$3).b($$0.Y())) {
-         ym $$6 = $$5.a();
-         xn $$7 = $$6.h();
-         if ($$7 != null && $$7.a() == xn.a.c) {
-            $$0.cO().aH().a(a($$0, $$1, $$2), $$7.b());
-            $$4 = true;
+      private void a(dcd $$0, bsy $$1) {
+         if ($$1.ei() instanceof aql $$3) {
+            bqw $$4 = $$1.ey() == null ? $$0.aj().a((cmh)$$3) : $$1.ey();
+            am.Z.a($$3, $$1, $$4);
          }
       }
-
-      return $$4;
-   }
-
-   private static ep a(@Nullable cmz $$0, dca $$1, iz $$2) {
-      String $$3 = $$0 == null ? "Sign" : $$0.af().getString();
-      xp $$4 = (xp)($$0 == null ? xp.b("Sign") : $$0.O_());
-      return new ep(eo.a, evt.b($$2), evs.a, (arf)$$1, 2, $$3, $$4, $$1.o(), $$0);
-   }
-
-   public acp l() {
-      return acp.a(this);
-   }
-
-   @Override
-   public us a(jk.a $$0) {
-      return this.e($$0);
-   }
-
-   @Override
-   public boolean q() {
-      return true;
-   }
-
-   public void a(@Nullable UUID $$0) {
-      this.d = $$0;
-   }
-
-   @Nullable
-   public UUID u() {
-      return this.d;
-   }
-
-   private void w() {
-      this.e();
-      this.n.a(this.ay_(), this.n(), this.n(), 3);
-   }
-
-   public boolean v() {
-      return this.g;
-   }
-
-   public boolean b(boolean $$0) {
-      if (this.g != $$0) {
-         this.g = $$0;
-         this.w();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean b(UUID $$0) {
-      cmz $$1 = this.n.b($$0);
-      return $$1 == null || !$$1.a(this.ay_(), 4.0);
-   }
-
-   public static void a(dca $$0, iz $$1, dse $$2, dqt $$3) {
-      UUID $$4 = $$3.u();
-      if ($$4 != null) {
-         $$3.a($$3, $$0, $$4);
-      }
-   }
-
-   private void a(dqt $$0, dca $$1, UUID $$2) {
-      if ($$0.b($$2)) {
-         $$0.a(null);
-      }
-   }
-
-   public avz d() {
-      return awa.BX;
    }
 }

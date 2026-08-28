@@ -1,17 +1,20 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class ems implements emu {
-   private static final ems b = new ems();
-   public static final MapCodec<ems> a = MapCodec.unit(b);
+public class ems extends emk {
+   public static final MapCodec<ems> a = awk.a(lr.f).fieldOf("tag").xmap(ems::new, $$0 -> $$0.b);
+   private final awk<dff> b;
 
-   @Override
-   public us a(azh $$0, @Nullable us $$1) {
-      return new us();
+   public ems(awk<dff> $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public emv<?> a() {
-      return emv.a;
+   public boolean a(dsh $$0, aym $$1) {
+      return $$0.a(this.b);
+   }
+
+   @Override
+   protected eml<?> a() {
+      return eml.d;
    }
 }

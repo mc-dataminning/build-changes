@@ -1,343 +1,436 @@
-import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.common.io.Files;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.ProfileLookupCallback;
+import com.mojang.authlib.yggdrasil.ProfileNotFoundException;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.io.FilterInputStream;
+import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.util.ArrayList;
+import java.nio.charset.StandardCharsets;
+import java.text.ParseException;
 import java.util.Collection;
-import java.util.HashMap;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
+import java.util.UUID;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class aug implements aup {
-   static final Logger c = LogUtils.getLogger();
-   protected final List<aug.d> a = Lists.newArrayList();
-   private final atd d;
-   private final String e;
+public class aug {
+   static final Logger e = LogUtils.getLogger();
+   public static final File a = new File("banned-ips.txt");
+   public static final File b = new File("banned-players.txt");
+   public static final File c = new File("ops.txt");
+   public static final File d = new File("white-list.txt");
 
-   public aug(atd $$0, String $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   static List<String> a(File $$0, Map<String, String[]> $$1) throws IOException {
+      List<String> $$2 = Files.readLines($$0, StandardCharsets.UTF_8);
+
+      for (String $$3 : $$2) {
+         $$3 = $$3.trim();
+         if (!$$3.startsWith("#") && $$3.length() >= 1) {
+            String[] $$4 = $$3.split("\\|");
+            $$1.put($$4[0].toLowerCase(Locale.ROOT), $$4);
+         }
+      }
+
+      return $$2;
    }
 
-   public void a(atb $$0) {
-      this.a($$0.b(), $$0, null);
+   private static void a(MinecraftServer $$0, Collection<String> $$1, ProfileLookupCallback $$2) {
+      String[] $$3 = $$1.stream().filter($$0x -> !aza.b($$0x)).toArray(String[]::new);
+      if ($$0.Z()) {
+         $$0.at().findProfilesByNames($$3, $$2);
+      } else {
+         for (String $$4 : $$3) {
+            $$2.onProfileLookupSucceeded(kd.b($$4));
+         }
+      }
    }
 
-   public void a(atb $$0, Predicate<alf> $$1) {
-      this.a($$0.b(), $$0, $$1);
-   }
-
-   public void a(String $$0, Predicate<alf> $$1) {
-      this.a($$0, null, $$1);
-   }
-
-   private void a(String $$0, @Nullable atb $$1, @Nullable Predicate<alf> $$2) {
-      this.a.add(new aug.d($$0, $$1, $$2));
-   }
-
-   @Override
-   public Set<String> a() {
-      return ImmutableSet.of(this.e);
-   }
-
-   @Override
-   public Optional<aun> getResource(alf $$0) {
-      for (int $$1 = this.a.size() - 1; $$1 >= 0; $$1--) {
-         aug.d $$2 = this.a.get($$1);
-         atb $$3 = $$2.b;
-         if ($$3 != null) {
-            auh<InputStream> $$4 = $$3.a(this.d, $$0);
-            if ($$4 != null) {
-               auh<aur> $$5 = this.a($$0, $$1);
-               return Optional.of(a($$3, $$0, $$4, $$5));
+   public static boolean a(final MinecraftServer $$0) {
+      final aun $$1 = new aun(auh.a);
+      if (b.exists() && b.isFile()) {
+         if ($$1.b().exists()) {
+            try {
+               $$1.f();
+            } catch (IOException var6) {
+               e.warn("Could not load existing file {}", $$1.b().getName(), var6);
             }
          }
 
-         if ($$2.a($$0)) {
-            c.warn("Resource {} not found, but was filtered by pack {}", $$0, $$2.a);
-            return Optional.empty();
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   private static aun a(atb $$0, alf $$1, auh<InputStream> $$2, auh<aur> $$3) {
-      return new aun($$0, a($$1, $$0, $$2), $$3);
-   }
-
-   private static auh<InputStream> a(alf $$0, atb $$1, auh<InputStream> $$2) {
-      return c.isDebugEnabled() ? () -> new aug.c($$2.get(), $$0, $$1.b()) : $$2;
-   }
-
-   @Override
-   public List<aun> a(alf $$0) {
-      alf $$1 = d($$0);
-      List<aun> $$2 = new ArrayList<>();
-      boolean $$3 = false;
-      String $$4 = null;
-
-      for (int $$5 = this.a.size() - 1; $$5 >= 0; $$5--) {
-         aug.d $$6 = this.a.get($$5);
-         atb $$7 = $$6.b;
-         if ($$7 != null) {
-            auh<InputStream> $$8 = $$7.a(this.d, $$0);
-            if ($$8 != null) {
-               auh<aur> $$9;
-               if ($$3) {
-                  $$9 = aur.b;
-               } else {
-                  $$9 = () -> {
-                     auh<InputStream> $$2x = $$7.a(this.d, $$1);
-                     return $$2x != null ? b($$2x) : aur.a;
-                  };
-               }
-
-               $$2.add(new aun($$7, $$8, $$9));
-            }
-         }
-
-         if ($$6.a($$0)) {
-            $$4 = $$6.a;
-            break;
-         }
-
-         if ($$6.a($$1)) {
-            $$3 = true;
-         }
-      }
-
-      if ($$2.isEmpty() && $$4 != null) {
-         c.warn("Resource {} not found, but was filtered by pack {}", $$0, $$4);
-      }
-
-      return Lists.reverse($$2);
-   }
-
-   private static boolean b(alf $$0) {
-      return $$0.a().endsWith(".mcmeta");
-   }
-
-   private static alf c(alf $$0) {
-      String $$1 = $$0.a().substring(0, $$0.a().length() - ".mcmeta".length());
-      return $$0.c($$1);
-   }
-
-   static alf d(alf $$0) {
-      return $$0.c($$0.a() + ".mcmeta");
-   }
-
-   @Override
-   public Map<alf, aun> b(String $$0, Predicate<alf> $$1) {
-      record a(atb a, auh<InputStream> b, int c) {
-      }
-
-      Map<alf, a> $$2 = new HashMap<>();
-      Map<alf, a> $$3 = new HashMap<>();
-      int $$4 = this.a.size();
-
-      for (int $$5 = 0; $$5 < $$4; $$5++) {
-         aug.d $$6 = this.a.get($$5);
-         $$6.a($$2.keySet());
-         $$6.a($$3.keySet());
-         atb $$7 = $$6.b;
-         if ($$7 != null) {
-            int $$8 = $$5;
-            $$7.a(this.d, this.e, $$0, ($$5x, $$6x) -> {
-               if (b($$5x)) {
-                  if ($$1.test(c($$5x))) {
-                     $$3.put($$5x, new a($$7, $$6x, $$8));
+         try {
+            final Map<String, String[]> $$3 = Maps.newHashMap();
+            a(b, $$3);
+            ProfileLookupCallback $$4 = new ProfileLookupCallback() {
+               public void onProfileLookupSucceeded(GameProfile $$0x) {
+                  $$0.au().a($$0);
+                  String[] $$1 = $$3.get($$0.getName().toLowerCase(Locale.ROOT));
+                  if ($$1 == null) {
+                     aug.e.warn("Could not convert user banlist entry for {}", $$0.getName());
+                     throw new aug.a("Profile not in the conversionlist");
+                  } else {
+                     Date $$2 = $$1.length > 1 ? aug.a($$1[1], null) : null;
+                     String $$3 = $$1.length > 2 ? $$1[2] : null;
+                     Date $$4 = $$1.length > 3 ? aug.a($$1[3], null) : null;
+                     String $$5 = $$1.length > 4 ? $$1[4] : null;
+                     $$1.a(new auo($$0, $$2, $$3, $$4, $$5));
                   }
-               } else if ($$1.test($$5x)) {
-                  $$2.put($$5x, new a($$7, $$6x, $$8));
                }
-            });
-         }
-      }
 
-      Map<alf, aun> $$9 = Maps.newTreeMap();
-      $$2.forEach(($$2x, $$3x) -> {
-         alf $$4x = d($$2x);
-         a $$5x = $$3.get($$4x);
-         auh<aur> $$6x;
-         if ($$5x != null && $$5x.c >= $$3x.c) {
-            $$6x = a($$5x.b);
+               public void onProfileLookupFailed(String $$0x, Exception $$1x) {
+                  aug.e.warn("Could not lookup user banlist entry for {}", $$0, $$1);
+                  if (!($$1 instanceof ProfileNotFoundException)) {
+                     throw new aug.a("Could not request user " + $$0 + " from backend systems", $$1);
+                  }
+               }
+            };
+            a($$0, $$3.keySet(), $$4);
+            $$1.e();
+            b(b);
+            return true;
+         } catch (IOException var4) {
+            e.warn("Could not read old user banlist to convert it!", var4);
+            return false;
+         } catch (aug.a var5) {
+            e.error("Conversion failed, please try again later", var5);
+            return false;
+         }
+      } else {
+         return true;
+      }
+   }
+
+   public static boolean b(MinecraftServer $$0) {
+      aue $$1 = new aue(auh.b);
+      if (a.exists() && a.isFile()) {
+         if ($$1.b().exists()) {
+            try {
+               $$1.f();
+            } catch (IOException var11) {
+               e.warn("Could not load existing file {}", $$1.b().getName(), var11);
+            }
+         }
+
+         try {
+            Map<String, String[]> $$3 = Maps.newHashMap();
+            a(a, $$3);
+
+            for (String $$4 : $$3.keySet()) {
+               String[] $$5 = $$3.get($$4);
+               Date $$6 = $$5.length > 1 ? a($$5[1], null) : null;
+               String $$7 = $$5.length > 2 ? $$5[2] : null;
+               Date $$8 = $$5.length > 3 ? a($$5[3], null) : null;
+               String $$9 = $$5.length > 4 ? $$5[4] : null;
+               $$1.a(new auf($$4, $$6, $$7, $$8, $$9));
+            }
+
+            $$1.e();
+            b(a);
+            return true;
+         } catch (IOException var10) {
+            e.warn("Could not parse old ip banlist to convert it!", var10);
+            return false;
+         }
+      } else {
+         return true;
+      }
+   }
+
+   public static boolean c(final MinecraftServer $$0) {
+      final aui $$1 = new aui(auh.c);
+      if (c.exists() && c.isFile()) {
+         if ($$1.b().exists()) {
+            try {
+               $$1.f();
+            } catch (IOException var6) {
+               e.warn("Could not load existing file {}", $$1.b().getName(), var6);
+            }
+         }
+
+         try {
+            List<String> $$3 = Files.readLines(c, StandardCharsets.UTF_8);
+            ProfileLookupCallback $$4 = new ProfileLookupCallback() {
+               public void onProfileLookupSucceeded(GameProfile $$0x) {
+                  $$0.au().a($$0);
+                  $$1.a(new auj($$0, $$0.k(), false));
+               }
+
+               public void onProfileLookupFailed(String $$0x, Exception $$1x) {
+                  aug.e.warn("Could not lookup oplist entry for {}", $$0, $$1);
+                  if (!($$1 instanceof ProfileNotFoundException)) {
+                     throw new aug.a("Could not request user " + $$0 + " from backend systems", $$1);
+                  }
+               }
+            };
+            a($$0, $$3, $$4);
+            $$1.e();
+            b(c);
+            return true;
+         } catch (IOException var4) {
+            e.warn("Could not read old oplist to convert it!", var4);
+            return false;
+         } catch (aug.a var5) {
+            e.error("Conversion failed, please try again later", var5);
+            return false;
+         }
+      } else {
+         return true;
+      }
+   }
+
+   public static boolean d(final MinecraftServer $$0) {
+      final aup $$1 = new aup(auh.d);
+      if (d.exists() && d.isFile()) {
+         if ($$1.b().exists()) {
+            try {
+               $$1.f();
+            } catch (IOException var6) {
+               e.warn("Could not load existing file {}", $$1.b().getName(), var6);
+            }
+         }
+
+         try {
+            List<String> $$3 = Files.readLines(d, StandardCharsets.UTF_8);
+            ProfileLookupCallback $$4 = new ProfileLookupCallback() {
+               public void onProfileLookupSucceeded(GameProfile $$0x) {
+                  $$0.au().a($$0);
+                  $$1.a(new auq($$0));
+               }
+
+               public void onProfileLookupFailed(String $$0x, Exception $$1x) {
+                  aug.e.warn("Could not lookup user whitelist entry for {}", $$0, $$1);
+                  if (!($$1 instanceof ProfileNotFoundException)) {
+                     throw new aug.a("Could not request user " + $$0 + " from backend systems", $$1);
+                  }
+               }
+            };
+            a($$0, $$3, $$4);
+            $$1.e();
+            b(d);
+            return true;
+         } catch (IOException var4) {
+            e.warn("Could not read old whitelist to convert it!", var4);
+            return false;
+         } catch (aug.a var5) {
+            e.error("Conversion failed, please try again later", var5);
+            return false;
+         }
+      } else {
+         return true;
+      }
+   }
+
+   @Nullable
+   public static UUID a(final MinecraftServer $$0, String $$1) {
+      if (!aza.b($$1) && $$1.length() <= 16) {
+         Optional<UUID> $$3 = $$0.au().a($$1).map(GameProfile::getId);
+         if ($$3.isPresent()) {
+            return $$3.get();
+         } else if (!$$0.T() && $$0.Z()) {
+            final List<GameProfile> $$4 = Lists.newArrayList();
+            ProfileLookupCallback $$5 = new ProfileLookupCallback() {
+               public void onProfileLookupSucceeded(GameProfile $$0x) {
+                  $$0.au().a($$0);
+                  $$4.add($$0);
+               }
+
+               public void onProfileLookupFailed(String $$0x, Exception $$1) {
+                  aug.e.warn("Could not lookup user whitelist entry for {}", $$0, $$1);
+               }
+            };
+            a($$0, Lists.newArrayList(new String[]{$$1}), $$5);
+            return !$$4.isEmpty() ? $$4.get(0).getId() : null;
          } else {
-            $$6x = aur.b;
+            return kd.a($$1);
          }
-
-         $$9.put($$2x, a($$3x.a, $$2x, $$3x.b, $$6x));
-      });
-      return $$9;
+      } else {
+         try {
+            return UUID.fromString($$1);
+         } catch (IllegalArgumentException var5) {
+            return null;
+         }
+      }
    }
 
-   private auh<aur> a(alf $$0, int $$1) {
-      return () -> {
-         alf $$2 = d($$0);
+   public static boolean a(final apg $$0) {
+      final File $$1 = g($$0);
+      final File $$2 = new File($$1.getParentFile(), "playerdata");
+      final File $$3 = new File($$1.getParentFile(), "unknownplayers");
+      if ($$1.exists() && $$1.isDirectory()) {
+         File[] $$4 = $$1.listFiles();
+         List<String> $$5 = Lists.newArrayList();
 
-         for (int $$3 = this.a.size() - 1; $$3 >= $$1; $$3--) {
-            aug.d $$4 = this.a.get($$3);
-            atb $$5 = $$4.b;
-            if ($$5 != null) {
-               auh<InputStream> $$6 = $$5.a(this.d, $$2);
-               if ($$6 != null) {
-                  return b($$6);
+         for (File $$6 : $$4) {
+            String $$7 = $$6.getName();
+            if ($$7.toLowerCase(Locale.ROOT).endsWith(".dat")) {
+               String $$8 = $$7.substring(0, $$7.length() - ".dat".length());
+               if (!$$8.isEmpty()) {
+                  $$5.add($$8);
                }
             }
-
-            if ($$4.a($$2)) {
-               break;
-            }
          }
 
-         return aur.a;
-      };
-   }
-
-   private static auh<aur> a(auh<InputStream> $$0) {
-      return () -> b($$0);
-   }
-
-   private static aur b(auh<InputStream> $$0) throws IOException {
-      aur var2;
-      try (InputStream $$1 = $$0.get()) {
-         var2 = aur.a($$1);
-      }
-
-      return var2;
-   }
-
-   private static void a(aug.d $$0, Map<alf, aug.b> $$1) {
-      for (aug.b $$2 : $$1.values()) {
-         if ($$0.a($$2.a)) {
-            $$2.c.clear();
-         } else if ($$0.a($$2.b())) {
-            $$2.d.clear();
-         }
-      }
-   }
-
-   private void a(aug.d $$0, String $$1, Predicate<alf> $$2, Map<alf, aug.b> $$3) {
-      atb $$4 = $$0.b;
-      if ($$4 != null) {
-         $$4.a(this.d, this.e, $$1, ($$3x, $$4x) -> {
-            if (b($$3x)) {
-               alf $$5 = c($$3x);
-               if (!$$2.test($$5)) {
-                  return;
+         try {
+            final String[] $$9 = $$5.toArray(new String[$$5.size()]);
+            ProfileLookupCallback $$10 = new ProfileLookupCallback() {
+               public void onProfileLookupSucceeded(GameProfile $$0x) {
+                  $$0.au().a($$0);
+                  UUID $$1 = $$0.getId();
+                  this.a($$2, this.a($$0.getName()), $$1.toString());
                }
 
-               $$3.computeIfAbsent($$5, aug.b::new).d.put($$4, $$4x);
-            } else {
-               if (!$$2.test($$3x)) {
-                  return;
+               public void onProfileLookupFailed(String $$0x, Exception $$1x) {
+                  aug.e.warn("Could not lookup user uuid for {}", $$0, $$1);
+                  if ($$1 instanceof ProfileNotFoundException) {
+                     String $$2 = this.a($$0);
+                     this.a($$3, $$2, $$2);
+                  } else {
+                     throw new aug.a("Could not request user " + $$0 + " from backend systems", $$1);
+                  }
                }
 
-               $$3.computeIfAbsent($$3x, aug.b::new).c.add(new aug.e($$4, $$4x));
-            }
-         });
-      }
-   }
+               private void a(File $$0x, String $$1x, String $$2x) {
+                  File $$3 = new File($$1, $$1 + ".dat");
+                  File $$4 = new File($$0, $$2 + ".dat");
+                  aug.a($$0);
+                  if (!$$3.renameTo($$4)) {
+                     throw new aug.a("Could not convert file for " + $$1);
+                  }
+               }
 
-   @Override
-   public Map<alf, List<aun>> c(String $$0, Predicate<alf> $$1) {
-      Map<alf, aug.b> $$2 = Maps.newHashMap();
+               private String a(String $$0x) {
+                  String $$1 = null;
 
-      for (aug.d $$3 : this.a) {
-         a($$3, $$2);
-         this.a($$3, $$0, $$1, $$2);
-      }
+                  for (String $$2 : $$9) {
+                     if ($$2 != null && $$2.equalsIgnoreCase($$0)) {
+                        $$1 = $$2;
+                        break;
+                     }
+                  }
 
-      TreeMap<alf, List<aun>> $$4 = Maps.newTreeMap();
-
-      for (aug.b $$5 : $$2.values()) {
-         if (!$$5.c.isEmpty()) {
-            List<aun> $$6 = new ArrayList<>();
-
-            for (aug.e $$7 : $$5.c) {
-               atb $$8 = $$7.a;
-               auh<InputStream> $$9 = $$5.d.get($$8);
-               auh<aur> $$10 = $$9 != null ? a($$9) : aur.b;
-               $$6.add(a($$8, $$5.a, $$7.b, $$10));
-            }
-
-            $$4.put($$5.a, $$6);
+                  if ($$1 == null) {
+                     throw new aug.a("Could not find the filename for " + $$0 + " anymore");
+                  } else {
+                     return $$1;
+                  }
+               }
+            };
+            a($$0, Lists.newArrayList($$9), $$10);
+            return true;
+         } catch (aug.a var12) {
+            e.error("Conversion failed, please try again later", var12);
+            return false;
          }
-      }
-
-      return $$4;
-   }
-
-   @Override
-   public Stream<atb> b() {
-      return this.a.stream().map($$0 -> $$0.b).filter(Objects::nonNull);
-   }
-
-   static record b(alf a, alf b, List<aug.e> c, Map<atb, auh<InputStream>> d) {
-
-      b(alf $$0) {
-         this($$0, aug.d($$0), new ArrayList<>(), new Object2ObjectArrayMap());
+      } else {
+         return true;
       }
    }
 
-   static class c extends FilterInputStream {
-      private final Supplier<String> a;
-      private boolean b;
+   static void a(File $$0) {
+      if ($$0.exists()) {
+         if (!$$0.isDirectory()) {
+            throw new aug.a("Can't create directory " + $$0.getName() + " in world save directory.");
+         }
+      } else if (!$$0.mkdirs()) {
+         throw new aug.a("Can't create directory " + $$0.getName() + " in world save directory.");
+      }
+   }
 
-      public c(InputStream $$0, alf $$1, String $$2) {
+   public static boolean e(MinecraftServer $$0) {
+      boolean $$1 = a();
+      return $$1 && f($$0);
+   }
+
+   private static boolean a() {
+      boolean $$0 = false;
+      if (b.exists() && b.isFile()) {
+         $$0 = true;
+      }
+
+      boolean $$1 = false;
+      if (a.exists() && a.isFile()) {
+         $$1 = true;
+      }
+
+      boolean $$2 = false;
+      if (c.exists() && c.isFile()) {
+         $$2 = true;
+      }
+
+      boolean $$3 = false;
+      if (d.exists() && d.isFile()) {
+         $$3 = true;
+      }
+
+      if (!$$0 && !$$1 && !$$2 && !$$3) {
+         return true;
+      } else {
+         e.warn("**** FAILED TO START THE SERVER AFTER ACCOUNT CONVERSION!");
+         e.warn("** please remove the following files and restart the server:");
+         if ($$0) {
+            e.warn("* {}", b.getName());
+         }
+
+         if ($$1) {
+            e.warn("* {}", a.getName());
+         }
+
+         if ($$2) {
+            e.warn("* {}", c.getName());
+         }
+
+         if ($$3) {
+            e.warn("* {}", d.getName());
+         }
+
+         return false;
+      }
+   }
+
+   private static boolean f(MinecraftServer $$0) {
+      File $$1 = g($$0);
+      if (!$$1.exists() || !$$1.isDirectory() || $$1.list().length <= 0 && $$1.delete()) {
+         return true;
+      } else {
+         e.warn("**** DETECTED OLD PLAYER DIRECTORY IN THE WORLD SAVE");
+         e.warn("**** THIS USUALLY HAPPENS WHEN THE AUTOMATIC CONVERSION FAILED IN SOME WAY");
+         e.warn("** please restart the server and if the problem persists, remove the directory '{}'", $$1.getPath());
+         return false;
+      }
+   }
+
+   private static File g(MinecraftServer $$0) {
+      return $$0.a(eqa.d).toFile();
+   }
+
+   private static void b(File $$0) {
+      File $$1 = new File($$0.getName() + ".converted");
+      $$0.renameTo($$1);
+   }
+
+   static Date a(String $$0, Date $$1) {
+      Date $$2;
+      try {
+         $$2 = auc.a.parse($$0);
+      } catch (ParseException var4) {
+         $$2 = $$1;
+      }
+
+      return $$2;
+   }
+
+   static class a extends RuntimeException {
+      a(String $$0, Throwable $$1) {
+         super($$0, $$1);
+      }
+
+      a(String $$0) {
          super($$0);
-         Exception $$3 = new Exception("Stacktrace");
-         this.a = () -> {
-            StringWriter $$3x = new StringWriter();
-            $$3.printStackTrace(new PrintWriter($$3x));
-            return "Leaked resource: '" + $$1 + "' loaded from pack: '" + $$2 + "'\n" + $$3x;
-         };
       }
-
-      @Override
-      public void close() throws IOException {
-         super.close();
-         this.b = true;
-      }
-
-      @Override
-      protected void finalize() throws Throwable {
-         if (!this.b) {
-            aug.c.warn("{}", this.a.get());
-         }
-
-         super.finalize();
-      }
-   }
-
-   static record d(String a, @Nullable atb b, @Nullable Predicate<alf> c) {
-
-      public void a(Collection<alf> $$0) {
-         if (this.c != null) {
-            $$0.removeIf(this.c);
-         }
-      }
-
-      public boolean a(alf $$0) {
-         return this.c != null && this.c.test($$0);
-      }
-   }
-
-   static record e(atb a, auh<InputStream> b) {
    }
 }

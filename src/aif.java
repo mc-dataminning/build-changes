@@ -1,29 +1,8 @@
-public class aif implements zw<agw> {
-   public static final zn<wm, aif> a = zw.a(aif::a, aif::new);
-   private final String b;
-
-   public aif(String $$0) {
-      this.b = $$0;
-   }
-
-   private aif(wm $$0) {
-      this.b = $$0.p();
-   }
-
-   private void a(wm $$0) {
-      $$0.a(this.b);
-   }
-
+public interface aif extends agc {
    @Override
-   public zy<aif> a() {
-      return agu.bP;
+   default vq b() {
+      return vq.a;
    }
 
-   public void a(agw $$0) {
-      $$0.a(this);
-   }
-
-   public String b() {
-      return this.b;
-   }
+   void a(aic var1);
 }

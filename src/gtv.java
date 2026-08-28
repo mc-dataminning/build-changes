@@ -1,59 +1,58 @@
-import java.util.concurrent.locks.LockSupport;
+import java.io.BufferedInputStream;
+import java.io.FilterInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import javax.sound.sampled.AudioFormat;
 
-public class gtv extends bpm<Runnable> {
-   private Thread a = this.b();
-   private volatile boolean b;
+public class gtv implements gtp {
+   private final gtv.a a;
+   private gtp b;
+   private final BufferedInputStream c;
 
-   public gtv() {
-      super("Sound executor");
-   }
-
-   private Thread b() {
-      Thread $$0 = new Thread(this::c);
-      $$0.setDaemon(true);
-      $$0.setName("Sound engine");
-      $$0.start();
-      return $$0;
-   }
-
-   @Override
-   protected Runnable f(Runnable $$0) {
-      return $$0;
+   public gtv(gtv.a $$0, InputStream $$1) throws IOException {
+      this.a = $$0;
+      this.c = new BufferedInputStream($$1);
+      this.c.mark(Integer.MAX_VALUE);
+      this.b = $$0.create(new gtv.b(this.c));
    }
 
    @Override
-   protected boolean e(Runnable $$0) {
-      return !this.b;
+   public AudioFormat a() {
+      return this.b.a();
    }
 
    @Override
-   protected Thread az() {
-      return this.a;
-   }
-
-   private void c() {
-      while (!this.b) {
-         this.c(() -> this.b);
-      }
-   }
-
-   @Override
-   protected void z() {
-      LockSupport.park("waiting for tasks");
-   }
-
-   public void a() {
-      this.b = true;
-      this.a.interrupt();
-
-      try {
-         this.a.join();
-      } catch (InterruptedException var2) {
-         Thread.currentThread().interrupt();
+   public ByteBuffer a(int $$0) throws IOException {
+      ByteBuffer $$1 = this.b.a($$0);
+      if (!$$1.hasRemaining()) {
+         this.b.close();
+         this.c.reset();
+         this.b = this.a.create(new gtv.b(this.c));
+         $$1 = this.b.a($$0);
       }
 
-      this.bz();
-      this.b = false;
-      this.a = this.b();
+      return $$1;
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.b.close();
+      this.c.close();
+   }
+
+   @FunctionalInterface
+   public interface a {
+      gtp create(InputStream var1) throws IOException;
+   }
+
+   static class b extends FilterInputStream {
+      b(InputStream $$0) {
+         super($$0);
+      }
+
+      @Override
+      public void close() {
+      }
    }
 }

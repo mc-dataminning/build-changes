@@ -1,66 +1,11 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+public interface ezw {
+   int a();
 
-public class ezw {
-   @Nullable
-   private static fad a;
+   void b();
 
-   public static void a() {
-      if (a != null) {
-         b();
-         fad.b();
-      }
-   }
+   ezu c();
 
-   public static void b() {
-      a = null;
-   }
+   ezu d();
 
-   public static void a(ezv.b $$0) {
-      if (!RenderSystem.isOnRenderThreadOrInit()) {
-         RenderSystem.recordRenderCall(() -> c($$0));
-      } else {
-         c($$0);
-      }
-   }
-
-   private static void c(ezv.b $$0) {
-      fad $$1 = d($$0);
-      if ($$1 != null) {
-         $$1.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
-      }
-   }
-
-   public static void b(ezv.b $$0) {
-      fad $$1 = d($$0);
-      if ($$1 != null) {
-         $$1.c();
-      }
-   }
-
-   @Nullable
-   private static fad d(ezv.b $$0) {
-      RenderSystem.assertOnRenderThread();
-      if ($$0.d()) {
-         $$0.e();
-         return null;
-      } else {
-         fad $$1 = a($$0.c().g());
-         $$1.a($$0);
-         return $$1;
-      }
-   }
-
-   private static fad a(faf $$0) {
-      fad $$1 = $$0.g();
-      a($$1);
-      return $$1;
-   }
-
-   private static void a(fad $$0) {
-      if ($$0 != a) {
-         $$0.a();
-         a = $$0;
-      }
-   }
+   void e();
 }

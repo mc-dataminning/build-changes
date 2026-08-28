@@ -1,36 +1,59 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import javax.annotation.concurrent.Immutable;
 
-public abstract class bqb {
-   private static final Codec<Either<Integer, bqb>> a = Codec.either(Codec.INT, lp.M.q().dispatch(bqb::c, bqc::codec));
-   public static final Codec<bqb> c = a.xmap(
-      $$0 -> (bqb)$$0.map(bpy::a, $$0x -> $$0x), $$0 -> $$0.c() == bqc.a ? Either.left(((bpy)$$0).d()) : Either.right($$0)
-   );
-   public static final Codec<bqb> d = b(0, Integer.MAX_VALUE);
-   public static final Codec<bqb> e = b(1, Integer.MAX_VALUE);
+@Immutable
+public class bqb {
+   private static final float a = -72000.0F;
+   private static final float b = 1440000.0F;
+   private static final float c = 3600000.0F;
+   private final bqa d;
+   private final float e;
 
-   public static Codec<bqb> b(int $$0, int $$1) {
-      return a($$0, $$1, c);
+   public bqb(bqa $$0, long $$1, long $$2, float $$3) {
+      this.d = $$0;
+      this.e = this.a($$0, $$1, $$2, $$3);
    }
 
-   public static <T extends bqb> Codec<T> a(int $$0, int $$1, Codec<T> $$2) {
-      return $$2.validate($$2x -> a($$0, $$1, $$2x));
+   public bqa a() {
+      return this.d;
    }
 
-   private static <T extends bqb> DataResult<T> a(int $$0, int $$1, T $$2) {
-      if ($$2.a() < $$0) {
-         return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
+   public float b() {
+      return this.e;
+   }
+
+   public boolean c() {
+      return this.e >= (float)bqa.d.ordinal();
+   }
+
+   public boolean a(float $$0) {
+      return this.e > $$0;
+   }
+
+   public float d() {
+      if (this.e < 2.0F) {
+         return 0.0F;
       } else {
-         return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
+         return this.e > 4.0F ? 1.0F : (this.e - 2.0F) / 2.0F;
       }
    }
 
-   public abstract int a(azh var1);
+   private float a(bqa $$0, long $$1, long $$2, float $$3) {
+      if ($$0 == bqa.a) {
+         return 0.0F;
+      } else {
+         boolean $$4 = $$0 == bqa.d;
+         float $$5 = 0.75F;
+         float $$6 = aye.a(((float)$$1 + -72000.0F) / 1440000.0F, 0.0F, 1.0F) * 0.25F;
+         $$5 += $$6;
+         float $$7 = 0.0F;
+         $$7 += aye.a((float)$$2 / 3600000.0F, 0.0F, 1.0F) * ($$4 ? 1.0F : 0.75F);
+         $$7 += aye.a($$3 * 0.25F, 0.0F, $$6);
+         if ($$0 == bqa.b) {
+            $$7 *= 0.5F;
+         }
 
-   public abstract int a();
-
-   public abstract int b();
-
-   public abstract bqc<?> c();
+         $$5 += $$7;
+         return (float)$$0.a() * $$5;
+      }
+   }
 }

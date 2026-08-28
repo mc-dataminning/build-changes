@@ -1,51 +1,125 @@
-public enum gdh {
-   a(new gdh.b(gdh.a.f, gdh.a.e, gdh.a.a), new gdh.b(gdh.a.f, gdh.a.e, gdh.a.d), new gdh.b(gdh.a.c, gdh.a.e, gdh.a.d), new gdh.b(gdh.a.c, gdh.a.e, gdh.a.a)),
-   b(new gdh.b(gdh.a.f, gdh.a.b, gdh.a.d), new gdh.b(gdh.a.f, gdh.a.b, gdh.a.a), new gdh.b(gdh.a.c, gdh.a.b, gdh.a.a), new gdh.b(gdh.a.c, gdh.a.b, gdh.a.d)),
-   c(new gdh.b(gdh.a.c, gdh.a.b, gdh.a.d), new gdh.b(gdh.a.c, gdh.a.e, gdh.a.d), new gdh.b(gdh.a.f, gdh.a.e, gdh.a.d), new gdh.b(gdh.a.f, gdh.a.b, gdh.a.d)),
-   d(new gdh.b(gdh.a.f, gdh.a.b, gdh.a.a), new gdh.b(gdh.a.f, gdh.a.e, gdh.a.a), new gdh.b(gdh.a.c, gdh.a.e, gdh.a.a), new gdh.b(gdh.a.c, gdh.a.b, gdh.a.a)),
-   e(new gdh.b(gdh.a.f, gdh.a.b, gdh.a.d), new gdh.b(gdh.a.f, gdh.a.e, gdh.a.d), new gdh.b(gdh.a.f, gdh.a.e, gdh.a.a), new gdh.b(gdh.a.f, gdh.a.b, gdh.a.a)),
-   f(new gdh.b(gdh.a.c, gdh.a.b, gdh.a.a), new gdh.b(gdh.a.c, gdh.a.e, gdh.a.a), new gdh.b(gdh.a.c, gdh.a.e, gdh.a.d), new gdh.b(gdh.a.c, gdh.a.b, gdh.a.d));
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.Instant;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   private static final gdh[] g = ac.a(new gdh[6], $$0 -> {
-      $$0[gdh.a.e] = a;
-      $$0[gdh.a.b] = b;
-      $$0[gdh.a.d] = c;
-      $$0[gdh.a.a] = d;
-      $$0[gdh.a.f] = e;
-      $$0[gdh.a.c] = f;
-   });
-   private final gdh.b[] h;
+public class gdh {
+   private static final gdh a = new gdh("") {
+      @Override
+      public void a(ffn $$0) {
+      }
 
-   public static gdh a(je $$0) {
-      return g[$$0.d()];
+      @Override
+      public void a(gdh.c $$0, String $$1, String $$2) {
+      }
+   };
+   private static final Logger b = LogUtils.getLogger();
+   private static final Gson c = new GsonBuilder().create();
+   private final Path d;
+   @Nullable
+   private gdh.b e;
+
+   gdh(String $$0) {
+      this.d = ffn.Q().p.toPath().resolve($$0);
    }
 
-   private gdh(final gdh.b... $$0) {
-      this.h = $$0;
+   public static gdh a(@Nullable String $$0) {
+      return $$0 == null ? a : new gdh($$0);
    }
 
-   public gdh.b a(int $$0) {
-      return this.h[$$0];
+   public void a(gdh.c $$0, String $$1, String $$2) {
+      this.e = new gdh.b($$0, $$1, $$2);
    }
 
-   public static final class a {
-      public static final int a = je.d.d();
-      public static final int b = je.b.d();
-      public static final int c = je.f.d();
-      public static final int d = je.c.d();
-      public static final int e = je.a.d();
-      public static final int f = je.e.d();
+   public void a(ffn $$0) {
+      if ($$0.q != null && this.e != null) {
+         ac.h().execute(() -> {
+            try {
+               Files.deleteIfExists(this.d);
+            } catch (IOException var3) {
+               b.error("Failed to delete quickplay log file {}", this.d, var3);
+            }
+
+            gdh.a $$2 = new gdh.a(this.e, Instant.now(), $$0.q.j());
+            Codec.list(gdh.a.a).encodeStart(JsonOps.INSTANCE, List.of($$2)).resultOrPartial(ac.a("Quick Play: ", b::error)).ifPresent($$0xx -> {
+               try {
+                  Files.createDirectories(this.d.getParent());
+                  Files.writeString(this.d, c.toJson($$0xx));
+               } catch (IOException var3x) {
+                  b.error("Failed to write to quickplay log file {}", this.d, var3x);
+               }
+            });
+         });
+      } else {
+         b.error("Failed to log session for quickplay. Missing world data or gamemode");
+      }
    }
 
-   public static class b {
-      public final int a;
-      public final int b;
-      public final int c;
+   static record a(gdh.b b, Instant c, dca d) {
+      public static final Codec<gdh.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(gdh.b.a.forGetter(gdh.a::a), axm.o.fieldOf("lastPlayedTime").forGetter(gdh.a::b), dca.f.fieldOf("gamemode").forGetter(gdh.a::c))
+               .apply($$0, gdh.a::new)
+      );
 
-      b(int $$0, int $$1, int $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+      public gdh.b a() {
+         return this.b;
+      }
+
+      public Instant b() {
+         return this.c;
+      }
+
+      public dca c() {
+         return this.d;
+      }
+   }
+
+   static record b(gdh.c b, String c, String d) {
+      public static final MapCodec<gdh.b> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  gdh.c.d.fieldOf("type").forGetter(gdh.b::a), axm.q.fieldOf("id").forGetter(gdh.b::b), Codec.STRING.fieldOf("name").forGetter(gdh.b::c)
+               )
+               .apply($$0, gdh.b::new)
+      );
+
+      public gdh.c a() {
+         return this.b;
+      }
+
+      public String b() {
+         return this.c;
+      }
+
+      public String c() {
+         return this.d;
+      }
+   }
+
+   public static enum c implements ayz {
+      a("singleplayer"),
+      b("multiplayer"),
+      c("realms");
+
+      static final Codec<gdh.c> d = ayz.a(gdh.c::values);
+      private final String e;
+
+      private c(final String $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
       }
    }
 }

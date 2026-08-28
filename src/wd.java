@@ -1,18 +1,18 @@
-import java.util.concurrent.atomic.AtomicInteger;
+import io.netty.channel.ChannelHandlerContext;
 
-public class wd {
-   private final AtomicInteger a = new AtomicInteger();
-   private final blw b;
-
-   public wd(blw $$0) {
-      this.b = $$0;
+public interface wd {
+   static void a(ChannelHandlerContext $$0, zb<?> $$1) {
+      if ($$1.d()) {
+         $$0.channel().config().setAutoRead(false);
+         $$0.pipeline().addBefore($$0.name(), "inbound_config", new wj.a());
+         $$0.pipeline().remove($$0.name());
+      }
    }
 
-   public void a(int $$0) {
-      this.a.getAndAdd($$0);
-   }
-
-   public void a() {
-      this.b.a((long)this.a.getAndSet(0));
+   static void b(ChannelHandlerContext $$0, zb<?> $$1) {
+      if ($$1.d()) {
+         $$0.pipeline().addAfter($$0.name(), "outbound_config", new wj.c());
+         $$0.pipeline().remove($$0.name());
+      }
    }
 }

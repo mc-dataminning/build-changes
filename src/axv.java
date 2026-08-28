@@ -1,176 +1,231 @@
-import com.google.common.base.Predicates;
-import com.google.common.collect.Iterators;
-import java.util.Arrays;
-import java.util.Iterator;
+import com.google.common.hash.Funnels;
+import com.google.common.hash.HashCode;
+import com.google.common.hash.HashFunction;
+import com.google.common.hash.Hasher;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.UncheckedIOException;
+import java.net.HttpURLConnection;
+import java.net.Proxy;
+import java.net.ServerSocket;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.nio.file.StandardOpenOption;
+import java.nio.file.attribute.FileTime;
+import java.time.Instant;
+import java.util.Map;
+import java.util.OptionalLong;
 import javax.annotation.Nullable;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
-public class axv<K> implements jn<K> {
-   private static final int b = -1;
-   private static final Object c = null;
-   private static final float d = 0.8F;
-   private K[] e;
-   private int[] f;
-   private K[] g;
-   private int h;
-   private int i;
+public class axv {
+   private static final Logger a = LogUtils.getLogger();
 
-   private axv(int $$0) {
-      this.e = (K[])(new Object[$$0]);
-      this.f = new int[$$0];
-      this.g = (K[])(new Object[$$0]);
+   private axv() {
    }
 
-   private axv(K[] $$0, int[] $$1, K[] $$2, int $$3, int $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
-   }
+   public static Path a(Path $$0, URL $$1, Map<String, String> $$2, HashFunction $$3, @Nullable HashCode $$4, int $$5, Proxy $$6, axv.a $$7) {
+      HttpURLConnection $$8 = null;
+      InputStream $$9 = null;
+      $$7.a();
+      Path $$10;
+      if ($$4 != null) {
+         $$10 = a($$0, $$4);
 
-   public static <A> axv<A> c(int $$0) {
-      return new axv((int)((float)$$0 / 0.8F));
-   }
-
-   @Override
-   public int a(@Nullable K $$0) {
-      return this.e(this.b($$0, this.e($$0)));
-   }
-
-   @Nullable
-   @Override
-   public K a(int $$0) {
-      return $$0 >= 0 && $$0 < this.g.length ? this.g[$$0] : null;
-   }
-
-   private int e(int $$0) {
-      return $$0 == -1 ? -1 : this.f[$$0];
-   }
-
-   public boolean b(K $$0) {
-      return this.a($$0) != -1;
-   }
-
-   public boolean d(int $$0) {
-      return this.a($$0) != null;
-   }
-
-   public int d(K $$0) {
-      int $$1 = this.d();
-      this.a($$0, $$1);
-      return $$1;
-   }
-
-   private int d() {
-      while (this.h < this.g.length && this.g[this.h] != null) {
-         this.h++;
-      }
-
-      return this.h;
-   }
-
-   private void f(int $$0) {
-      K[] $$1 = this.e;
-      int[] $$2 = this.f;
-      axv<K> $$3 = new axv<>($$0);
-
-      for (int $$4 = 0; $$4 < $$1.length; $$4++) {
-         if ($$1[$$4] != null) {
-            $$3.a($$1[$$4], $$2[$$4]);
-         }
-      }
-
-      this.e = $$3.e;
-      this.f = $$3.f;
-      this.g = $$3.g;
-      this.h = $$3.h;
-      this.i = $$3.i;
-   }
-
-   public void a(K $$0, int $$1) {
-      int $$2 = Math.max($$1, this.i + 1);
-      if ((float)$$2 >= (float)this.e.length * 0.8F) {
-         int $$3 = this.e.length << 1;
-
-         while ($$3 < $$1) {
-            $$3 <<= 1;
+         try {
+            if (a($$10, $$3, $$4)) {
+               a.info("Returning cached file since actual hash matches requested");
+               $$7.a(true);
+               a($$10);
+               return $$10;
+            }
+         } catch (IOException var35) {
+            a.warn("Failed to check cached file {}", $$10, var35);
          }
 
-         this.f($$3);
+         try {
+            a.warn("Existing file {} not found or had mismatched hash", $$10);
+            Files.deleteIfExists($$10);
+         } catch (IOException var34) {
+            $$7.a(false);
+            throw new UncheckedIOException("Failed to remove existing file " + $$10, var34);
+         }
+      } else {
+         $$10 = null;
       }
 
-      int $$4 = this.g(this.e($$0));
-      this.e[$$4] = $$0;
-      this.f[$$4] = $$1;
-      this.g[$$1] = $$0;
-      this.i++;
-      if ($$1 == this.h) {
-         this.h++;
+      Path $$18;
+      try {
+         $$8 = (HttpURLConnection)$$1.openConnection($$6);
+         $$8.setInstanceFollowRedirects(true);
+         $$2.forEach($$8::setRequestProperty);
+         $$9 = $$8.getInputStream();
+         long $$14 = $$8.getContentLengthLong();
+         OptionalLong $$15 = $$14 != -1L ? OptionalLong.of($$14) : OptionalLong.empty();
+         v.c($$0);
+         $$7.a($$15);
+         if ($$15.isPresent() && $$15.getAsLong() > (long)$$5) {
+            throw new IOException("Filesize is bigger than maximum allowed (file is " + $$15 + ", limit is " + $$5 + ")");
+         }
+
+         if ($$10 == null) {
+            Path $$17 = Files.createTempFile($$0, "download", ".tmp");
+
+            try {
+               HashCode $$18x = a($$3, $$5, $$7, $$9, $$17);
+               Path $$19 = a($$0, $$18x);
+               if (!a($$19, $$3, $$18x)) {
+                  Files.move($$17, $$19, StandardCopyOption.REPLACE_EXISTING);
+               } else {
+                  a($$19);
+               }
+
+               $$7.a(true);
+               return $$19;
+            } finally {
+               Files.deleteIfExists($$17);
+            }
+         }
+
+         HashCode $$16 = a($$3, $$5, $$7, $$9, $$10);
+         if (!$$16.equals($$4)) {
+            throw new IOException("Hash of downloaded file (" + $$16 + ") did not match requested (" + $$4 + ")");
+         }
+
+         $$7.a(true);
+         $$18 = $$10;
+      } catch (Throwable var36) {
+         if ($$8 != null) {
+            InputStream $$21 = $$8.getErrorStream();
+            if ($$21 != null) {
+               try {
+                  a.error("HTTP response error: {}", IOUtils.toString($$21, StandardCharsets.UTF_8));
+               } catch (Exception var32) {
+                  a.error("Failed to read response from server");
+               }
+            }
+         }
+
+         $$7.a(false);
+         throw new IllegalStateException("Failed to download file " + $$1, var36);
+      } finally {
+         IOUtils.closeQuietly($$9);
+      }
+
+      return $$18;
+   }
+
+   private static void a(Path $$0) {
+      try {
+         Files.setLastModifiedTime($$0, FileTime.from(Instant.now()));
+      } catch (IOException var2) {
+         a.warn("Failed to update modification time of {}", $$0, var2);
       }
    }
 
-   private int e(@Nullable K $$0) {
-      return (ayz.g(System.identityHashCode($$0)) & 2147483647) % this.e.length;
-   }
+   private static HashCode a(Path $$0, HashFunction $$1) throws IOException {
+      Hasher $$2 = $$1.newHasher();
 
-   private int b(@Nullable K $$0, int $$1) {
-      for (int $$2 = $$1; $$2 < this.e.length; $$2++) {
-         if (this.e[$$2] == $$0) {
-            return $$2;
-         }
-
-         if (this.e[$$2] == c) {
-            return -1;
-         }
+      try (
+         OutputStream $$3 = Funnels.asOutputStream($$2);
+         InputStream $$4 = Files.newInputStream($$0);
+      ) {
+         $$4.transferTo($$3);
       }
 
-      for (int $$3 = 0; $$3 < $$1; $$3++) {
-         if (this.e[$$3] == $$0) {
-            return $$3;
+      return $$2.hash();
+   }
+
+   private static boolean a(Path $$0, HashFunction $$1, HashCode $$2) throws IOException {
+      if (Files.exists($$0)) {
+         HashCode $$3 = a($$0, $$1);
+         if ($$3.equals($$2)) {
+            return true;
          }
 
-         if (this.e[$$3] == c) {
-            return -1;
-         }
+         a.warn("Mismatched hash of file {}, expected {} but found {}", new Object[]{$$0, $$2, $$3});
       }
 
-      return -1;
+      return false;
    }
 
-   private int g(int $$0) {
-      for (int $$1 = $$0; $$1 < this.e.length; $$1++) {
-         if (this.e[$$1] == c) {
-            return $$1;
+   private static Path a(Path $$0, HashCode $$1) {
+      return $$0.resolve($$1.toString());
+   }
+
+   private static HashCode a(HashFunction $$0, int $$1, axv.a $$2, InputStream $$3, Path $$4) throws IOException {
+      HashCode var11;
+      try (OutputStream $$5 = Files.newOutputStream($$4, StandardOpenOption.CREATE)) {
+         Hasher $$6 = $$0.newHasher();
+         byte[] $$7 = new byte[8196];
+         long $$8 = 0L;
+
+         int $$9;
+         while (($$9 = $$3.read($$7)) >= 0) {
+            $$8 += (long)$$9;
+            $$2.a($$8);
+            if ($$8 > (long)$$1) {
+               throw new IOException("Filesize was bigger than maximum allowed (got >= " + $$8 + ", limit was " + $$1 + ")");
+            }
+
+            if (Thread.interrupted()) {
+               a.error("INTERRUPTED");
+               throw new IOException("Download interrupted");
+            }
+
+            $$5.write($$7, 0, $$9);
+            $$6.putBytes($$7, 0, $$9);
          }
+
+         var11 = $$6.hash();
       }
 
-      for (int $$2 = 0; $$2 < $$0; $$2++) {
-         if (this.e[$$2] == c) {
-            return $$2;
+      return var11;
+   }
+
+   public static int a() {
+      try {
+         int var1;
+         try (ServerSocket $$0 = new ServerSocket(0)) {
+            var1 = $$0.getLocalPort();
          }
+
+         return var1;
+      } catch (IOException var5) {
+         return 25564;
       }
-
-      throw new RuntimeException("Overflowed :(");
    }
 
-   @Override
-   public Iterator<K> iterator() {
-      return Iterators.filter(Iterators.forArray(this.g), Predicates.notNull());
+   public static boolean a(int $$0) {
+      if ($$0 >= 0 && $$0 <= 65535) {
+         try {
+            boolean var2;
+            try (ServerSocket $$1 = new ServerSocket($$0)) {
+               var2 = $$1.getLocalPort() == $$0;
+            }
+
+            return var2;
+         } catch (IOException var6) {
+            return false;
+         }
+      } else {
+         return false;
+      }
    }
 
-   public void a() {
-      Arrays.fill(this.e, null);
-      Arrays.fill(this.g, null);
-      this.h = 0;
-      this.i = 0;
-   }
+   public interface a {
+      void a();
 
-   @Override
-   public int b() {
-      return this.i;
-   }
+      void a(OptionalLong var1);
 
-   public axv<K> c() {
-      return new axv<>((K[])((Object[])this.e.clone()), (int[])this.f.clone(), (K[])((Object[])this.g.clone()), this.h, this.i);
+      void a(long var1);
+
+      void a(boolean var1);
    }
 }

@@ -1,118 +1,111 @@
-public class ggh implements gfq<dqy> {
-   public ggh(gfr.a $$0) {
-   }
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-   public void a(dqy $$0, float $$1, faa $$2, gdq $$3, int $$4, int $$5) {
-      if (ffh.Q().s.gz() || ffh.Q().s.N_()) {
-         iz $$6 = $$0.f();
-         kd $$7 = $$0.j();
-         if ($$7.u() >= 1 && $$7.v() >= 1 && $$7.w() >= 1) {
-            if ($$0.v() == dto.a || $$0.v() == dto.b) {
-               double $$8 = (double)$$6.u();
-               double $$9 = (double)$$6.w();
-               double $$10 = (double)$$6.v();
-               double $$11 = $$10 + (double)$$7.v();
-               double $$12;
-               double $$13;
-               switch ($$0.k()) {
-                  case b:
-                     $$12 = (double)$$7.u();
-                     $$13 = (double)(-$$7.w());
-                     break;
-                  case c:
-                     $$12 = (double)(-$$7.u());
-                     $$13 = (double)$$7.w();
-                     break;
-                  default:
-                     $$12 = (double)$$7.u();
-                     $$13 = (double)$$7.w();
-               }
+public class ggh extends ggl {
+   private static final String a = "plank";
+   private static final String b = "vChains";
+   private static final String c = "normalChains";
+   private static final String d = "chainL1";
+   private static final String e = "chainL2";
+   private static final String f = "chainR1";
+   private static final String g = "chainR2";
+   private static final String h = "board";
+   private static final float i = 1.0F;
+   private static final float j = 0.9F;
+   private static final evz k = new evz(0.0, -0.32F, 0.073F);
+   private final Map<dtu, ggh.a> l;
 
-               double $$30;
-               double $$31;
-               double $$32;
-               double $$33;
-               switch ($$0.l()) {
-                  case b:
-                     $$30 = $$13 < 0.0 ? $$8 : $$8 + 1.0;
-                     $$31 = $$12 < 0.0 ? $$9 + 1.0 : $$9;
-                     $$32 = $$30 - $$13;
-                     $$33 = $$31 + $$12;
-                     break;
-                  case c:
-                     $$30 = $$12 < 0.0 ? $$8 : $$8 + 1.0;
-                     $$31 = $$13 < 0.0 ? $$9 : $$9 + 1.0;
-                     $$32 = $$30 - $$12;
-                     $$33 = $$31 - $$13;
-                     break;
-                  case d:
-                     $$30 = $$13 < 0.0 ? $$8 + 1.0 : $$8;
-                     $$31 = $$12 < 0.0 ? $$9 : $$9 + 1.0;
-                     $$32 = $$30 + $$13;
-                     $$33 = $$31 - $$12;
-                     break;
-                  default:
-                     $$30 = $$12 < 0.0 ? $$8 + 1.0 : $$8;
-                     $$31 = $$13 < 0.0 ? $$9 + 1.0 : $$9;
-                     $$32 = $$30 + $$12;
-                     $$33 = $$31 + $$13;
-               }
-
-               float $$34 = 1.0F;
-               float $$35 = 0.9F;
-               float $$36 = 0.5F;
-               fae $$37 = $$3.getBuffer(gdy.y());
-               if ($$0.v() == dto.a || $$0.F()) {
-                  gdo.a($$2, $$37, $$30, $$10, $$31, $$32, $$11, $$33, 0.9F, 0.9F, 0.9F, 1.0F, 0.5F, 0.5F, 0.5F);
-               }
-
-               if ($$0.v() == dto.a && $$0.E()) {
-                  this.a($$0, $$37, $$6, $$2);
-               }
-            }
-         }
-      }
-   }
-
-   private void a(dqy $$0, fae $$1, iz $$2, faa $$3) {
-      dbg $$4 = $$0.i();
-      iz $$5 = $$0.ay_();
-      iz $$6 = $$5.a((kd)$$2);
-
-      for (iz $$7 : iz.c($$6, $$6.a($$0.j()).b(-1, -1, -1))) {
-         dse $$8 = $$4.a_($$7);
-         boolean $$9 = $$8.i();
-         boolean $$10 = $$8.a(dfd.kN);
-         boolean $$11 = $$8.a(dfd.hW);
-         boolean $$12 = $$8.a(dfd.hX);
-         boolean $$13 = $$10 || $$11 || $$12;
-         if ($$9 || $$13) {
-            float $$14 = $$9 ? 0.05F : 0.0F;
-            double $$15 = (double)((float)($$7.u() - $$5.u()) + 0.45F - $$14);
-            double $$16 = (double)((float)($$7.v() - $$5.v()) + 0.45F - $$14);
-            double $$17 = (double)((float)($$7.w() - $$5.w()) + 0.45F - $$14);
-            double $$18 = (double)((float)($$7.u() - $$5.u()) + 0.55F + $$14);
-            double $$19 = (double)((float)($$7.v() - $$5.v()) + 0.55F + $$14);
-            double $$20 = (double)((float)($$7.w() - $$5.w()) + 0.55F + $$14);
-            if ($$9) {
-               gdo.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 0.5F, 0.5F, 1.0F, 1.0F, 0.5F, 0.5F, 1.0F);
-            } else if ($$10) {
-               gdo.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 0.75F, 0.75F, 1.0F, 1.0F, 0.75F, 0.75F);
-            } else if ($$11) {
-               gdo.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F);
-            } else if ($$12) {
-               gdo.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F);
-            }
-         }
-      }
-   }
-
-   public boolean a(dqy $$0) {
-      return true;
+   public ggh(gfy.a $$0) {
+      super($$0);
+      this.l = dtu.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new ggh.a($$0.a(fxh.b($$1)))));
    }
 
    @Override
-   public int aP_() {
-      return 96;
+   public float b() {
+      return 1.0F;
+   }
+
+   @Override
+   public float c() {
+      return 0.9F;
+   }
+
+   @Override
+   public void a(dqx $$0, float $$1, fag $$2, gdx $$3, int $$4, int $$5) {
+      dsh $$6 = $$0.n();
+      dmf $$7 = (dmf)$$6.b();
+      dtu $$8 = dmf.a($$7);
+      ggh.a $$9 = this.l.get($$8);
+      $$9.a($$6);
+      this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+   }
+
+   @Override
+   void a(fag $$0, float $$1, dsh $$2) {
+      $$0.a(0.5, 0.9375, 0.5);
+      $$0.a(a.d.rotationDegrees($$1));
+      $$0.a(0.0F, -0.3125F, 0.0F);
+   }
+
+   @Override
+   void a(fag $$0, int $$1, int $$2, fve $$3, fak $$4) {
+      ggh.a $$5 = (ggh.a)$$3;
+      $$5.a.a($$0, $$4, $$1, $$2);
+   }
+
+   @Override
+   grm a(dtu $$0) {
+      return gem.b($$0);
+   }
+
+   @Override
+   evz d() {
+      return k;
+   }
+
+   public static fxo e() {
+      fxq $$0 = new fxq();
+      fxr $$1 = $$0.a();
+      $$1.a("board", fxn.c().a(0, 12).a(-7.0F, 0.0F, -1.0F, 14.0F, 10.0F, 2.0F), fxk.a);
+      $$1.a("plank", fxn.c().a(0, 0).a(-8.0F, -6.0F, -2.0F, 16.0F, 2.0F, 4.0F), fxk.a);
+      fxr $$2 = $$1.a("normalChains", fxn.c(), fxk.a);
+      $$2.a("chainL1", fxn.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fxk.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$2.a("chainL2", fxn.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fxk.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$2.a("chainR1", fxn.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fxk.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$2.a("chainR2", fxn.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fxk.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("vChains", fxn.c().a(14, 6).a(-6.0F, -6.0F, 0.0F, 12.0F, 6.0F, 0.0F), fxk.a);
+      return fxo.a($$0, 64, 32);
+   }
+
+   public static final class a extends fve {
+      public final fxi a;
+      public final fxi b;
+      public final fxi c;
+      public final fxi d;
+
+      public a(fxi $$0) {
+         super(gef::e);
+         this.a = $$0;
+         this.b = $$0.b("plank");
+         this.d = $$0.b("normalChains");
+         this.c = $$0.b("vChains");
+      }
+
+      public void a(dsh $$0) {
+         boolean $$1 = !($$0.b() instanceof dge);
+         this.b.k = $$1;
+         this.c.k = false;
+         this.d.k = true;
+         if (!$$1) {
+            boolean $$2 = $$0.c(dsx.a);
+            this.d.k = !$$2;
+            this.c.k = $$2;
+         }
+      }
+
+      @Override
+      public void a(fag $$0, fak $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
    }
 }

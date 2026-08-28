@@ -1,233 +1,92 @@
-import java.util.ArrayList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 import java.util.List;
-import java.util.Optional;
+import java.util.Locale;
+import java.util.function.Consumer;
 
-public class cwr {
-   public static final int a = 20;
-   public static final cwr b = new cwr(List.of(), List.of(), List.of());
-   private final List<cyu> c;
-   private final List<cwr.b<cwq>> d;
-   private final List<cwr.b<cum>> e;
+public record cwr(int d, boolean e) implements cxf {
+   private static final Codec<cwr> f = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.INT.fieldOf("rgb").forGetter(cwr::a), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cwr::b)).apply($$0, cwr::new)
+   );
+   public static final Codec<cwr> a = Codec.withAlternative(f, Codec.INT, $$0 -> new cwr($$0, true));
+   public static final ys<ByteBuf, cwr> b = ys.a(yq.f, cwr::a, yq.b, cwr::b, cwr::new);
+   public static final int c = -6265536;
 
-   cwr(List<cyu> $$0, List<cwr.b<cwq>> $$1, List<cwr.b<cum>> $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public static int a(cua $$0, int $$1) {
+      cwr $$2 = $$0.a(kn.z);
+      return $$2 != null ? axo.b.e($$2.a()) : $$1;
    }
 
-   public boolean a(cur $$0) {
-      return this.b($$0) || this.c($$0);
-   }
-
-   private boolean d(cur $$0) {
-      for (cyu $$1 : this.c) {
-         if ($$1.a($$0)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public boolean b(cur $$0) {
-      for (cwr.b<cum> $$1 : this.e) {
-         if ($$1.b.a($$0)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public boolean c(cur $$0) {
-      for (cwr.b<cwq> $$1 : this.d) {
-         if ($$1.b.a($$0)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public boolean a(ji<cwq> $$0) {
-      for (cwr.b<cwq> $$1 : this.d) {
-         if ($$1.c.a($$0)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public boolean a(cur $$0, cur $$1) {
-      return !this.d($$0) ? false : this.b($$0, $$1) || this.c($$0, $$1);
-   }
-
-   public boolean b(cur $$0, cur $$1) {
-      for (cwr.b<cum> $$2 : this.e) {
-         if ($$0.a($$2.a) && $$2.b.a($$1)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public boolean c(cur $$0, cur $$1) {
-      Optional<ji<cwq>> $$2 = $$0.a(km.G, cws.a).e();
-      if ($$2.isEmpty()) {
-         return false;
+   public static cua a(cua $$0, List<csu> $$1) {
+      if (!$$0.a(awd.by)) {
+         return cua.l;
       } else {
-         for (cwr.b<cwq> $$3 : this.d) {
-            if ($$3.a.a($$2.get()) && $$3.b.a($$1)) {
-               return true;
-            }
+         cua $$2 = $$0.c(1);
+         int $$3 = 0;
+         int $$4 = 0;
+         int $$5 = 0;
+         int $$6 = 0;
+         int $$7 = 0;
+         cwr $$8 = $$2.a(kn.z);
+         if ($$8 != null) {
+            int $$9 = axo.b.b($$8.a());
+            int $$10 = axo.b.c($$8.a());
+            int $$11 = axo.b.d($$8.a());
+            $$6 += Math.max($$9, Math.max($$10, $$11));
+            $$3 += $$9;
+            $$4 += $$10;
+            $$5 += $$11;
+            $$7++;
          }
 
-         return false;
+         for (csu $$12 : $$1) {
+            float[] $$13 = $$12.c().d();
+            int $$14 = (int)($$13[0] * 255.0F);
+            int $$15 = (int)($$13[1] * 255.0F);
+            int $$16 = (int)($$13[2] * 255.0F);
+            $$6 += Math.max($$14, Math.max($$15, $$16));
+            $$3 += $$14;
+            $$4 += $$15;
+            $$5 += $$16;
+            $$7++;
+         }
+
+         int $$17 = $$3 / $$7;
+         int $$18 = $$4 / $$7;
+         int $$19 = $$5 / $$7;
+         float $$20 = (float)$$6 / (float)$$7;
+         float $$21 = (float)Math.max($$17, Math.max($$18, $$19));
+         $$17 = (int)((float)$$17 * $$20 / $$21);
+         $$18 = (int)((float)$$18 * $$20 / $$21);
+         $$19 = (int)((float)$$19 * $$20 / $$21);
+         int $$22 = axo.b.a(0, $$17, $$18, $$19);
+         boolean $$23 = $$8 == null || $$8.b();
+         $$2.b(kn.z, new cwr($$22, $$23));
+         return $$2;
       }
    }
 
-   public cur d(cur $$0, cur $$1) {
-      if ($$1.e()) {
-         return $$1;
-      } else {
-         Optional<ji<cwq>> $$2 = $$1.a(km.G, cws.a).e();
-         if ($$2.isEmpty()) {
-            return $$1;
+   @Override
+   public void a(ctv.b $$0, Consumer<wu> $$1, cvt $$2) {
+      if (this.e) {
+         if ($$2.a()) {
+            $$1.accept(wu.a("item.color", String.format(Locale.ROOT, "#%06X", this.d)).a(n.h));
          } else {
-            for (cwr.b<cum> $$3 : this.e) {
-               if ($$1.a($$3.a) && $$3.b.a($$0)) {
-                  return cws.a($$3.c.a(), $$2.get());
-               }
-            }
-
-            for (cwr.b<cwq> $$4 : this.d) {
-               if ($$4.a.a($$2.get()) && $$4.b.a($$0)) {
-                  return cws.a($$1.g(), $$4.c);
-               }
-            }
-
-            return $$1;
+            $$1.accept(wu.c("item.dyed").a(n.h, n.u));
          }
       }
    }
 
-   public static cwr a(cpn $$0) {
-      cwr.a $$1 = new cwr.a($$0);
-      a($$1);
-      return $$1.a();
+   public cwr a(boolean $$0) {
+      return new cwr(this.d, $$0);
    }
 
-   public static void a(cwr.a $$0) {
-      $$0.a(cuu.sk);
-      $$0.a(cuu.vo);
-      $$0.a(cuu.vr);
-      $$0.a(cuu.sk, cuu.pu, cuu.vo);
-      $$0.a(cuu.vo, cuu.vn, cuu.vr);
-      $$0.a(cwt.a, cuu.qY, cwt.c);
-      $$0.a(cwt.a, cuu.lH, cwt.b);
-      $$0.a(cwt.a, cuu.sj, cwt.d);
-      $$0.a(cuu.yD, cwt.Q);
-      $$0.a(cuu.lO, cwt.S);
-      $$0.a(cuu.b, cwt.T);
-      $$0.a(cuu.cM, cwt.R);
-      $$0.a(cwt.d, cuu.uk, cwt.e);
-      $$0.a(cwt.e, cuu.lH, cwt.f);
-      $$0.a(cwt.e, cuu.sn, cwt.g);
-      $$0.a(cwt.f, cuu.sn, cwt.h);
-      $$0.a(cwt.g, cuu.lH, cwt.h);
-      $$0.a(cuu.sp, cwt.l);
-      $$0.a(cwt.l, cuu.lH, cwt.m);
-      $$0.a(cuu.uD, cwt.i);
-      $$0.a(cwt.i, cuu.lH, cwt.j);
-      $$0.a(cwt.i, cuu.qY, cwt.k);
-      $$0.a(cwt.i, cuu.sn, cwt.q);
-      $$0.a(cwt.j, cuu.sn, cwt.r);
-      $$0.a(cwt.q, cuu.lH, cwt.r);
-      $$0.a(cwt.q, cuu.qY, cwt.s);
-      $$0.a(cwt.d, cuu.oo, cwt.t);
-      $$0.a(cwt.t, cuu.lH, cwt.u);
-      $$0.a(cwt.t, cuu.qY, cwt.v);
-      $$0.a(cwt.n, cuu.sn, cwt.q);
-      $$0.a(cwt.o, cuu.sn, cwt.r);
-      $$0.a(cuu.rA, cwt.n);
-      $$0.a(cwt.n, cuu.lH, cwt.o);
-      $$0.a(cwt.n, cuu.qY, cwt.p);
-      $$0.a(cwt.d, cuu.rc, cwt.w);
-      $$0.a(cwt.w, cuu.lH, cwt.x);
-      $$0.a(cuu.st, cwt.y);
-      $$0.a(cwt.y, cuu.qY, cwt.z);
-      $$0.a(cwt.y, cuu.sn, cwt.A);
-      $$0.a(cwt.z, cuu.sn, cwt.B);
-      $$0.a(cwt.A, cuu.qY, cwt.B);
-      $$0.a(cwt.C, cuu.sn, cwt.A);
-      $$0.a(cwt.D, cuu.sn, cwt.A);
-      $$0.a(cwt.E, cuu.sn, cwt.B);
-      $$0.a(cuu.sm, cwt.C);
-      $$0.a(cwt.C, cuu.lH, cwt.D);
-      $$0.a(cwt.C, cuu.qY, cwt.E);
-      $$0.a(cuu.sh, cwt.F);
-      $$0.a(cwt.F, cuu.lH, cwt.G);
-      $$0.a(cwt.F, cuu.qY, cwt.H);
-      $$0.a(cuu.so, cwt.I);
-      $$0.a(cwt.I, cuu.lH, cwt.J);
-      $$0.a(cwt.I, cuu.qY, cwt.K);
-      $$0.a(cwt.a, cuu.sn, cwt.L);
-      $$0.a(cwt.L, cuu.lH, cwt.M);
-      $$0.a(cwt.d, cuu.vQ, cwt.O);
-      $$0.a(cwt.O, cuu.lH, cwt.P);
+   public int a() {
+      return this.d;
    }
 
-   public static class a {
-      private final List<cyu> a = new ArrayList<>();
-      private final List<cwr.b<cwq>> b = new ArrayList<>();
-      private final List<cwr.b<cum>> c = new ArrayList<>();
-      private final cpn d;
-
-      public a(cpn $$0) {
-         this.d = $$0;
-      }
-
-      private static void b(cum $$0) {
-         if (!($$0 instanceof cvi)) {
-            throw new IllegalArgumentException("Expected a potion, got: " + lp.h.b($$0));
-         }
-      }
-
-      public void a(cum $$0, cum $$1, cum $$2) {
-         if ($$0.a(this.d) && $$1.a(this.d) && $$2.a(this.d)) {
-            b($$0);
-            b($$2);
-            this.c.add(new cwr.b<>($$0.o(), cyu.a($$1), $$2.o()));
-         }
-      }
-
-      public void a(cum $$0) {
-         if ($$0.a(this.d)) {
-            b($$0);
-            this.a.add(cyu.a($$0));
-         }
-      }
-
-      public void a(ji<cwq> $$0, cum $$1, ji<cwq> $$2) {
-         if ($$0.a().a(this.d) && $$1.a(this.d) && $$2.a().a(this.d)) {
-            this.b.add(new cwr.b<>($$0, cyu.a($$1), $$2));
-         }
-      }
-
-      public void a(cum $$0, ji<cwq> $$1) {
-         if ($$1.a().a(this.d)) {
-            this.a(cwt.a, $$0, cwt.b);
-            this.a(cwt.d, $$0, $$1);
-         }
-      }
-
-      public cwr a() {
-         return new cwr(List.copyOf(this.a), List.copyOf(this.b), List.copyOf(this.c));
-      }
-   }
-
-   static record b<T>(ji<T> a, cyu b, ji<T> c) {
+   public boolean b() {
+      return this.e;
    }
 }

@@ -1,86 +1,80 @@
 import javax.annotation.Nullable;
 
-public class chs extends cap {
-   private final chr a;
+public class chs extends chm {
+   private static final cdp b = cdp.a().d();
+   @Nullable
+   private eop c;
+   @Nullable
+   private evz d;
 
-   public chs(chr $$0) {
-      this.a = $$0;
+   public chs(chk $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a() {
-      return this.a.dP().a(this.a.du(), this.a.dw(), this.a.dA(), 10.0);
+   public cia<chs> i() {
+      return cia.c;
    }
 
    @Override
-   public void e() {
-      arf $$0 = (arf)this.a.dP();
-      bqu $$1 = $$0.d_(this.a.dp());
-      this.a.w(false);
-      this.a.x(true);
-      this.a.c_(0);
-      btq $$2 = btc.am.a((dca)$$0);
-      if ($$2 != null) {
-         $$2.e(this.a.du(), this.a.dw(), this.a.dA());
-         $$2.a(true);
-         $$0.b($$2);
-         ckn $$3 = this.a($$1, this.a);
-         if ($$3 != null) {
-            $$3.n(this.a);
-            $$0.a_($$3);
+   public void d() {
+      this.c = null;
+      this.d = null;
+   }
 
-            for (int $$4 = 0; $$4 < 3; $$4++) {
-               chl $$5 = this.a($$1);
-               if ($$5 != null) {
-                  ckn $$6 = this.a($$1, $$5);
-                  if ($$6 != null) {
-                     $$6.n($$5);
-                     $$5.j(this.a.el().a(0.0, 1.1485), 0.0, this.a.el().a(0.0, 1.1485));
-                     $$0.a_($$5);
-                  }
-               }
-            }
-         }
+   @Override
+   public void c() {
+      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.du(), this.a.dw(), this.a.dA());
+      if ($$0 < 100.0 || $$0 > 22500.0 || this.a.Q || this.a.R) {
+         this.j();
       }
    }
 
    @Nullable
-   private chl a(bqu $$0) {
-      chr $$1 = btc.aO.a(this.a.dP());
-      if ($$1 != null) {
-         $$1.a((arf)this.a.dP(), $$0, btv.k, null);
-         $$1.a_(this.a.du(), this.a.dw(), this.a.dA());
-         $$1.am = 60;
-         $$1.fU();
-         $$1.x(true);
-         $$1.c_(0);
-      }
-
-      return $$1;
+   @Override
+   public evz g() {
+      return this.d;
    }
 
-   @Nullable
-   private ckn a(bqu $$0, chl $$1) {
-      ckn $$2 = btc.aN.a($$1.dP());
-      if ($$2 != null) {
-         $$2.a((arf)$$1.dP(), $$0, btv.k, null);
-         $$2.a_($$1.du(), $$1.dw(), $$1.dA());
-         $$2.am = 60;
-         $$2.fU();
-         if ($$2.a(btd.f).e()) {
-            $$2.a(btd.f, new cur(cuu.pG));
+   private void j() {
+      if (this.c == null || this.c.c()) {
+         int $$0 = this.a.y();
+         ja $$1 = this.a.dP().a(dxz.a.f, ebd.a(this.a.s()));
+         cmh $$2 = this.a.dP().a(b, this.a, (double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+         int $$4;
+         if ($$2 != null) {
+            evz $$3 = new evz($$2.du(), 0.0, $$2.dA()).d();
+            $$4 = this.a.r(-$$3.c * 40.0, 105.0, -$$3.e * 40.0);
+         } else {
+            $$4 = this.a.r(40.0, (double)$$1.v(), 0.0);
          }
 
-         cpn $$3 = $$1.dP().J();
-         $$2.a(btd.a, dad.a($$3, $$2.el(), this.a($$2.eX()), (int)(5.0F + $$0.d() * (float)$$2.el().a(18)), false));
-         $$2.a(btd.f, dad.a($$3, $$2.el(), this.a($$2.a(btd.f)), (int)(5.0F + $$0.d() * (float)$$2.el().a(18)), false));
+         eon $$6 = new eon($$1.u(), $$1.v(), $$1.w());
+         this.c = this.a.a($$0, $$4, $$6);
+         if (this.c != null) {
+            this.c.a();
+         }
       }
 
-      return $$2;
+      this.k();
+      if (this.c != null && this.c.c()) {
+         this.a.gk().a(cia.d);
+      }
    }
 
-   private cur a(cur $$0) {
-      $$0.b(km.k, dah.a);
-      return $$0;
+   private void k() {
+      if (this.c != null && !this.c.c()) {
+         ke $$0 = this.c.g();
+         this.c.a();
+         double $$1 = (double)$$0.u();
+         double $$2 = (double)$$0.w();
+
+         double $$3;
+         do {
+            $$3 = (double)((float)$$0.v() + this.a.dS().i() * 20.0F);
+         } while ($$3 < (double)$$0.v());
+
+         this.d = new evz($$1, $$3, $$2);
+      }
    }
 }

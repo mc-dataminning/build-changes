@@ -1,14 +1,29 @@
-import com.mojang.serialization.Lifecycle;
-import java.util.Optional;
+public final class ju {
+   public static final int a = 2;
+   public static final int b = 4;
+   public static final int c = 3;
+   private static final int d = 2;
 
-public record ju(Optional<atw> b, Lifecycle c) {
-   public static final ju a = new ju(Optional.empty(), Lifecycle.stable());
-
-   public Optional<atw> a() {
-      return this.b;
+   private ju() {
    }
 
-   public Lifecycle b() {
-      return this.c;
+   public static int a(int $$0) {
+      return $$0 >> 2;
+   }
+
+   public static int b(int $$0) {
+      return $$0 & 3;
+   }
+
+   public static int c(int $$0) {
+      return $$0 << 2;
+   }
+
+   public static int d(int $$0) {
+      return $$0 << 2;
+   }
+
+   public static int e(int $$0) {
+      return $$0 >> 2;
    }
 }

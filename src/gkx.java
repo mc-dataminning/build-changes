@@ -1,12 +1,12 @@
-public class gkx extends gkf<cgd, fvs<cgd>> {
-   private static final alf a = new alf("textures/entity/sheep/sheep.png");
+public class gkx extends gjz<cjq> {
+   private static final akk a = new akk("textures/entity/illager/pillager.png");
 
-   public gkx(giz.a $$0) {
-      super($$0, new fvs<>($$0.a(fxb.bh)), 0.7F);
-      this.a(new gnn(this, $$0.f()));
+   public gkx(gjg.a $$0) {
+      super($$0, new fuw<>($$0.a(fxh.aR)), 0.5F);
+      this.a(new gnl<>(this, $$0.d()));
    }
 
-   public alf a(cgd $$0) {
+   public akk a(cjq $$0) {
       return a;
    }
 }

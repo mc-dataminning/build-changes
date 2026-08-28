@@ -1,17 +1,35 @@
-public class fzu extends fzw {
-   protected fzu(fxx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gbz $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.5F, 20, 0.1F, false);
-   }
+import java.net.InetSocketAddress;
 
-   public static class a implements gbh<lm> {
-      private final gbz a;
+public interface fzu {
+   String a();
 
-      public a(gbz $$0) {
-         this.a = $$0;
-      }
+   String b();
 
-      public gbe a(lm $$0, fxx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fzu($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, 1.0F, this.a);
-      }
+   int c();
+
+   InetSocketAddress d();
+
+   static fzu a(final InetSocketAddress $$0) {
+      return new fzu() {
+         @Override
+         public String a() {
+            return $$0.getAddress().getHostName();
+         }
+
+         @Override
+         public String b() {
+            return $$0.getAddress().getHostAddress();
+         }
+
+         @Override
+         public int c() {
+            return $$0.getPort();
+         }
+
+         @Override
+         public InetSocketAddress d() {
+            return $$0;
+         }
+      };
    }
 }

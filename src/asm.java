@@ -1,15 +1,43 @@
-import java.util.function.Consumer;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.attribute.FileTime;
+import javax.annotation.Nullable;
 
-public class asm implements arv {
-   public static final arv.a a = new arv.a("join_world");
+abstract class asm implements BasicFileAttributes {
+   private static final FileTime a = FileTime.fromMillis(0L);
 
    @Override
-   public void a(Consumer<zw<?>> $$0) {
-      $$0.accept(abr.a);
+   public FileTime lastModifiedTime() {
+      return a;
    }
 
    @Override
-   public arv.a a() {
+   public FileTime lastAccessTime() {
       return a;
+   }
+
+   @Override
+   public FileTime creationTime() {
+      return a;
+   }
+
+   @Override
+   public boolean isSymbolicLink() {
+      return false;
+   }
+
+   @Override
+   public boolean isOther() {
+      return false;
+   }
+
+   @Override
+   public long size() {
+      return 0L;
+   }
+
+   @Nullable
+   @Override
+   public Object fileKey() {
+      return null;
    }
 }

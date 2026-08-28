@@ -1,68 +1,148 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import org.slf4j.Logger;
 
-public class dhk extends dhx {
+public class dhk extends der {
+   private static final Logger e = LogUtils.getLogger();
    public static final MapCodec<dhk> a = b(dhk::new);
-   protected static final ewm b = dfb.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+   public static final dtb b = dhi.a;
+   public static final dsy c = dsx.A;
+   private static final kt f = new kt();
+   public static final Map<ctv, ku> d = ac.a(new Object2ObjectOpenHashMap(), $$0 -> $$0.defaultReturnValue(f));
+   private static final int g = 4;
 
    @Override
-   public MapCodec<dhk> a() {
+   public MapCodec<? extends dhk> a() {
       return a;
    }
 
-   public dhk(dsd.d $$0) {
+   public static void a(dcc $$0, ku $$1) {
+      d.put($$0.r(), $$1);
+   }
+
+   public static void a(dcc $$0) {
+      d.put($$0.r(), new kw($$0.r()));
+   }
+
+   protected dhk(dsg.d $$0) {
       super($$0);
+      this.k(this.E.b().a(b, jf.c).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected ewm a(dse $$0, dbg $$1, iz $$2, evy $$3) {
-      return b;
-   }
-
-   @Override
-   protected bqw a(dse $$0, dca $$1, iz $$2, cmz $$3, evp $$4) {
-      this.d($$0, $$1, $$2);
-      return bqw.a($$1.B);
-   }
-
-   @Override
-   protected void a(dse $$0, dca $$1, iz $$2, cmz $$3) {
-      this.d($$0, $$1, $$2);
-   }
-
-   private void d(dse $$0, dca $$1, iz $$2) {
-      dtv $$3 = $$1.C_();
-
-      for (int $$4 = 0; $$4 < 1000; $$4++) {
-         iz $$5 = $$2.b($$1.z.a(16) - $$1.z.a(16), $$1.z.a(8) - $$1.z.a(8), $$1.z.a(16) - $$1.z.a(16));
-         if ($$1.a_($$5).i() && $$3.a($$5)) {
-            if ($$1.B) {
-               for (int $$6 = 0; $$6 < 128; $$6++) {
-                  double $$7 = $$1.z.j();
-                  float $$8 = ($$1.z.i() - 0.5F) * 0.2F;
-                  float $$9 = ($$1.z.i() - 0.5F) * 0.2F;
-                  float $$10 = ($$1.z.i() - 0.5F) * 0.2F;
-                  double $$11 = ayz.d($$7, (double)$$5.u(), (double)$$2.u()) + ($$1.z.j() - 0.5) + 0.5;
-                  double $$12 = ayz.d($$7, (double)$$5.v(), (double)$$2.v()) + $$1.z.j() - 0.5;
-                  double $$13 = ayz.d($$7, (double)$$5.w(), (double)$$2.w()) + ($$1.z.j() - 0.5) + 0.5;
-                  $$1.a(li.ac, $$11, $$12, $$13, (double)$$8, (double)$$9, (double)$$10);
-               }
+   protected bqd a(dsh $$0, dcd $$1, ja $$2, cmh $$3, evv $$4) {
+      if ($$1.B) {
+         return bqd.a;
+      } else {
+         dpn $$5 = $$1.c_($$2);
+         if ($$5 instanceof dqf) {
+            $$3.a((dqf)$$5);
+            if ($$5 instanceof dqg) {
+               $$3.a(avp.ac);
             } else {
-               $$1.a($$5, $$0, 2);
-               $$1.a($$2, false);
+               $$3.a(avp.ae);
             }
+         }
 
-            return;
+         return bqd.c;
+      }
+   }
+
+   protected void a(aqk $$0, dsh $$1, ja $$2) {
+      dqf $$3 = $$0.a($$2, dpp.f).orElse(null);
+      if ($$3 == null) {
+         e.warn("Ignoring dispensing attempt for Dispenser without matching block entity at {}", $$2);
+      } else {
+         kr $$4 = new kr($$0, $$2, $$1, $$3);
+         int $$5 = $$3.a($$0.z);
+         if ($$5 < 0) {
+            $$0.c(1001, $$2, 0);
+            $$0.a(dxa.a, $$2, dxa.a.a($$3.n()));
+         } else {
+            cua $$6 = $$3.a($$5);
+            ku $$7 = this.a($$0, $$6);
+            if ($$7 != ku.b) {
+               $$3.a($$5, $$7.dispense($$4, $$6));
+            }
          }
       }
    }
 
-   @Override
-   protected int b() {
-      return 5;
+   protected ku a(dcd $$0, cua $$1) {
+      return (ku)(!$$1.a($$0.J()) ? f : d.get($$1.g()));
    }
 
    @Override
-   protected boolean a(dse $$0, eom $$1) {
-      return false;
+   protected void a(dsh $$0, dcd $$1, ja $$2, dff $$3, ja $$4, boolean $$5) {
+      boolean $$6 = $$1.C($$2) || $$1.C($$2.c());
+      boolean $$7 = $$0.c(c);
+      if ($$6 && !$$7) {
+         $$1.a($$2, this, 4);
+         $$1.a($$2, $$0.a(c, Boolean.valueOf(true)), 2);
+      } else if (!$$6 && $$7) {
+         $$1.a($$2, $$0.a(c, Boolean.valueOf(false)), 2);
+      }
+   }
+
+   @Override
+   protected void a(dsh $$0, aqk $$1, ja $$2, aym $$3) {
+      this.a($$1, $$0, $$2);
+   }
+
+   @Override
+   public dpn a(ja $$0, dsh $$1) {
+      return new dqf($$0, $$1);
+   }
+
+   @Override
+   public dsh a(cxk $$0) {
+      return this.o().a(b, $$0.d().g());
+   }
+
+   @Override
+   protected void a(dsh $$0, dcd $$1, ja $$2, dsh $$3, boolean $$4) {
+      bpz.a($$0, $$3, $$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static jt a(kr $$0) {
+      return a($$0, 0.7, evz.b);
+   }
+
+   public static jt a(kr $$0, double $$1, evz $$2) {
+      jf $$3 = $$0.d().c(b);
+      return $$0.a().b($$1 * (double)$$3.j() + $$2.a(), $$1 * (double)$$3.k() + $$2.b(), $$1 * (double)$$3.l() + $$2.c());
+   }
+
+   @Override
+   protected boolean c_(dsh $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dsh $$0, dcd $$1, ja $$2) {
+      return cpe.a($$1.c_($$2));
+   }
+
+   @Override
+   protected dll a_(dsh $$0) {
+      return dll.c;
+   }
+
+   @Override
+   protected dsh a(dsh $$0, dls $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dsh a(dsh $$0, dkc $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dsi.a<dff, dsh> $$0) {
+      $$0.a(b, c);
    }
 }

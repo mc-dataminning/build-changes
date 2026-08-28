@@ -1,79 +1,42 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+public class fmf extends fnd {
+   private static final int a = 8;
+   private static final int b = 210;
+   private static final wu c = wu.c("credits_and_attribution.screen.title");
+   private static final wu q = wu.c("credits_and_attribution.button.credits");
+   private static final wu r = wu.c("credits_and_attribution.button.attribution");
+   private static final wu s = wu.c("credits_and_attribution.button.licenses");
+   private final fnd u;
+   private final fkz v = new fkz(this);
 
-public class fmf extends fnf {
-   private static final xp a = xp.c("addServer.enterIp");
-   private fhg b;
-   private final fyl c;
-   private fhp d;
-   private final BooleanConsumer r;
-   private final fnf s;
-
-   public fmf(fnf $$0, BooleanConsumer $$1, fyl $$2) {
-      super(xp.c("selectServer.direct"));
-      this.s = $$0;
-      this.c = $$2;
-      this.r = $$1;
+   public fmf(fnd $$0) {
+      super(c);
+      this.u = $$0;
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.b.j || this.aG_() != this.d || $$0 != 257 && $$0 != 335) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         this.m();
-         return true;
-      }
+   protected void aO_() {
+      this.v.a(c, this.o);
+      fld $$0 = this.v.c(fld.d()).a(8);
+      $$0.c().b();
+      $$0.a(fhm.a(q, $$0x -> this.m()).a(210).a());
+      $$0.a(fhm.a(r, fma.b(this, "https://aka.ms/MinecraftJavaAttribution")).a(210).a());
+      $$0.a(fhm.a(s, fma.b(this, "https://aka.ms/MinecraftJavaLicenses")).a(210).a());
+      this.v.b(fhm.a(wt.d, $$0x -> this.d()).a(200).a());
+      this.v.a();
+      this.v.a(this::c);
    }
 
    @Override
-   protected void aM_() {
-      this.d = new fhp(this.p, this.n / 2 - 100, 116, 200, 20, xp.c("addServer.enterIp"));
-      this.d.f(128);
-      this.d.a(this.m.m.Z);
-      this.d.b($$0 -> this.E());
-      this.d(this.d);
-      this.b = this.c(fhg.a(xp.c("selectServer.select"), $$0 -> this.m()).a(this.n / 2 - 100, this.o / 4 + 96 + 12, 200, 20).a());
-      this.c(fhg.a(xo.e, $$0 -> this.r.accept(false)).a(this.n / 2 - 100, this.o / 4 + 120 + 12, 200, 20).a());
-      this.E();
-   }
-
-   @Override
-   protected void aB_() {
-      this.b(this.d);
-   }
-
-   @Override
-   public void a(ffh $$0, int $$1, int $$2) {
-      String $$3 = this.d.a();
-      this.b($$0, $$1, $$2);
-      this.d.a($$3);
+   protected void c() {
+      this.v.a();
    }
 
    private void m() {
-      this.c.b = this.d.a();
-      this.r.accept(true);
+      this.l.a(new fng(false, () -> this.l.a(this)));
    }
 
    @Override
    public void d() {
-      this.m.a(this.s);
-   }
-
-   @Override
-   public void j() {
-      this.m.m.Z = this.d.a();
-      this.m.m.av();
-   }
-
-   private void E() {
-      this.b.j = fzo.b(this.d.a());
-   }
-
-   @Override
-   public void a(fgt $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
-      $$0.b(this.p, a, this.n / 2 - 100 + 1, 100, 10526880);
-      this.d.a($$0, $$1, $$2, $$3);
+      this.l.a(this.u);
    }
 }

@@ -1,8 +1,13 @@
-public class akw {
-   public static final ale<cum> a = a("pumpkin_seeds");
-   public static final ale<cum> b = a("melon_seeds");
+public final class akw extends RuntimeException {
+   public static final akw a = new akw();
 
-   private static ale<cum> a(String $$0) {
-      return ale.a(lq.G, new alf($$0));
+   private akw() {
+      this.setStackTrace(new StackTraceElement[0]);
+   }
+
+   @Override
+   public synchronized Throwable fillInStackTrace() {
+      this.setStackTrace(new StackTraceElement[0]);
+      return this;
    }
 }

@@ -1,56 +1,48 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.tree.LiteralCommandNode;
+import java.util.List;
 
 public class aom {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xp.b("commands.ride.not_riding", $$0));
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> xp.b("commands.ride.already_riding", $$0, $$1));
-   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> xp.b("commands.ride.mount.failure.generic", $$0, $$1));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(xp.c("commands.ride.mount.failure.cant_ride_players"));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(xp.c("commands.ride.mount.failure.loop"));
-   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(xp.c("commands.ride.mount.failure.wrong_dimension"));
+   private static final xr a = xr.a.a(new xa(xa.a.a, wu.c("chat.type.team.hover"))).a(new ws(ws.a.d, "/teammsg "));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wu.c("commands.teammsg.failed.noteam"));
 
-   public static void a(CommandDispatcher<ep> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("ride").requires($$0x -> $$0x.c(2)))
-            .then(
-               ((RequiredArgumentBuilder)eq.a("target", fc.a())
-                     .then(eq.a("mount").then(eq.a("vehicle", fc.a()).executes($$0x -> a((ep)$$0x.getSource(), fc.a($$0x, "target"), fc.a($$0x, "vehicle"))))))
-                  .then(eq.a("dismount").executes($$0x -> a((ep)$$0x.getSource(), fc.a($$0x, "target"))))
-            )
-      );
+   public static void a(CommandDispatcher<eq> $$0) {
+      LiteralCommandNode<eq> $$1 = $$0.register((LiteralArgumentBuilder)er.a("teammsg").then(er.a("message", fh.a()).executes($$0x -> {
+         eq $$1x = (eq)$$0x.getSource();
+         bsd $$2 = $$1x.g();
+         ewy $$3 = $$2.cj();
+         if ($$3 == null) {
+            throw b.create();
+         } else {
+            List<aql> $$4 = $$1x.l().ah().t().stream().filter($$2x -> $$2x == $$2 || $$2x.cj() == $$3).toList();
+            if (!$$4.isEmpty()) {
+               fh.a($$0x, "message", $$4x -> a($$1x, $$2, $$3, $$4, $$4x));
+            }
+
+            return $$4.size();
+         }
+      })));
+      $$0.register((LiteralArgumentBuilder)er.a("tm").redirect($$1));
    }
 
-   private static int a(ep $$0, bsw $$1, bsw $$2) throws CommandSyntaxException {
-      bsw $$3 = $$1.dc();
-      if ($$3 != null) {
-         throw b.create($$1.O_(), $$3.O_());
-      } else if ($$2.ak() == btc.by) {
-         throw d.create();
-      } else if ($$1.cU().anyMatch($$1x -> $$1x == $$2)) {
-         throw e.create();
-      } else if ($$1.dP() != $$2.dP()) {
-         throw f.create();
-      } else if (!$$1.a($$2, true)) {
-         throw c.create($$1.O_(), $$2.O_());
-      } else {
-         $$0.a(() -> xp.a("commands.ride.mount.success", $$1.O_(), $$2.O_()), true);
-         return 1;
+   private static void a(eq $$0, bsd $$1, ewy $$2, List<aql> $$3, xk $$4) {
+      wu $$5 = $$2.d().c(a);
+      wq.a $$6 = wq.a(wq.g, $$0).c($$5);
+      wq.a $$7 = wq.a(wq.h, $$0).c($$5);
+      xj $$8 = xj.a($$4);
+      boolean $$9 = false;
+
+      for (aql $$10 : $$3) {
+         wq.a $$11 = $$10 == $$1 ? $$7 : $$6;
+         boolean $$12 = $$0.a($$10);
+         $$10.a($$8, $$12, $$11);
+         $$9 |= $$12 && $$4.j();
       }
-   }
 
-   private static int a(ep $$0, bsw $$1) throws CommandSyntaxException {
-      bsw $$2 = $$1.dc();
-      if ($$2 == null) {
-         throw a.create($$1.O_());
-      } else {
-         $$1.ac();
-         $$0.a(() -> xp.a("commands.ride.dismount.success", $$1.O_(), $$2.O_()), true);
-         return 1;
+      if ($$9) {
+         $$0.a(auh.e);
       }
    }
 }

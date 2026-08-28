@@ -1,54 +1,57 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class eca extends eba<edt> {
-   public eca(Codec<edt> $$0) {
+public class eca extends ebe<edr> {
+   public eca(Codec<edr> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebc<edt> $$0) {
-      edt $$1 = $$0.f();
-      dcv $$2 = $$0.b();
-      azh $$3 = $$0.d();
-      dfb $$4 = $$1.b.b();
-      iz $$5 = a($$2, $$0.e().j().a(je.a.b, $$2.I_() + 1, $$2.am() - 1), $$4);
-      if ($$5 == null) {
+   public boolean a(ebg<edr> $$0) {
+      dce $$1 = $$0.b();
+      ja $$2 = $$0.e();
+      aym $$3 = $$0.d();
+      edr $$4 = $$0.f();
+      Optional<jf> $$5 = a($$1, $$2, $$3);
+      if ($$5.isEmpty()) {
          return false;
       } else {
-         int $$6 = $$1.a().a($$3);
-         int $$7 = $$1.a().a($$3);
-         int $$8 = $$1.a().a($$3);
-         int $$9 = Math.max($$6, Math.max($$7, $$8));
-         boolean $$10 = false;
-
-         for (iz $$11 : iz.a($$5, $$6, $$7, $$8)) {
-            if ($$11.k($$5) > $$9) {
-               break;
-            }
-
-            dse $$12 = $$2.a_($$11);
-            if ($$12.a($$4)) {
-               this.a($$2, $$11, $$1.c);
-               $$10 = true;
-            }
-         }
-
-         return $$10;
+         ja $$6 = $$2.a($$5.get().g());
+         a($$1, $$3, $$6, $$4);
+         int $$7 = $$3.i() < $$4.b && eba.c($$1.a_($$2.a($$5.get()))) ? 2 : 1;
+         eba.a($$1, $$2, $$5.get(), $$7, false);
+         return true;
       }
    }
 
-   @Nullable
-   private static iz a(dcb $$0, iz.a $$1, dfb $$2) {
-      while ($$1.v() > $$0.I_() + 1) {
-         dse $$3 = $$0.a_($$1);
-         if ($$3.a($$2)) {
-            return $$1;
-         }
-
-         $$1.c(je.a);
+   private static Optional<jf> a(dce $$0, ja $$1, aym $$2) {
+      boolean $$3 = eba.b($$0.a_($$1.c()));
+      boolean $$4 = eba.b($$0.a_($$1.d()));
+      if ($$3 && $$4) {
+         return Optional.of($$2.h() ? jf.a : jf.b);
+      } else if ($$3) {
+         return Optional.of(jf.a);
+      } else {
+         return $$4 ? Optional.of(jf.b) : Optional.empty();
       }
+   }
 
-      return null;
+   private static void a(dce $$0, aym $$1, ja $$2, edr $$3) {
+      eba.c($$0, $$2);
+
+      for (jf $$4 : jf.c.a) {
+         if (!($$1.i() > $$3.c)) {
+            ja $$5 = $$2.a($$4);
+            eba.c($$0, $$5);
+            if (!($$1.i() > $$3.d)) {
+               ja $$6 = $$5.a(jf.b($$1));
+               eba.c($$0, $$6);
+               if (!($$1.i() > $$3.e)) {
+                  ja $$7 = $$6.a(jf.b($$1));
+                  eba.c($$0, $$7);
+               }
+            }
+         }
+      }
    }
 }

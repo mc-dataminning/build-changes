@@ -1,100 +1,90 @@
-import com.mojang.authlib.GameProfile;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
+import com.mojang.serialization.DynamicOps;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public record ake(xp b, Optional<ake.b> c, Optional<ake.c> d, Optional<ake.a> e, boolean f) {
-   public static final Codec<ake> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               xr.a.lenientOptionalFieldOf("description", xo.a).forGetter(ake::a),
-               ake.b.a.lenientOptionalFieldOf("players").forGetter(ake::b),
-               ake.c.a.lenientOptionalFieldOf("version").forGetter(ake::c),
-               ake.a.a.lenientOptionalFieldOf("favicon").forGetter(ake::d),
-               Codec.BOOL.lenientOptionalFieldOf("enforcesSecureChat", false).forGetter(ake::e)
-            )
-            .apply($$0, ake::new)
-   );
+public class ake<E> implements Codec<jn<E>> {
+   private final akj<? extends jw<E>> a;
+   private final Codec<jj<E>> b;
+   private final Codec<List<jj<E>>> c;
+   private final Codec<Either<awk<E>, List<jj<E>>>> d;
 
-   public xp a() {
-      return this.b;
+   private static <E> Codec<List<jj<E>>> a(Codec<jj<E>> $$0, boolean $$1) {
+      Codec<List<jj<E>>> $$2 = $$0.listOf().validate(axm.b(jj::f));
+      return $$1
+         ? $$2
+         : Codec.either($$2, $$0)
+            .xmap($$0x -> (List)$$0x.map($$0xx -> $$0xx, List::of), $$0x -> $$0x.size() == 1 ? Either.right((jj)$$0x.get(0)) : Either.left($$0x));
    }
 
-   public Optional<ake.b> b() {
-      return this.c;
+   public static <E> Codec<jn<E>> a(akj<? extends jw<E>> $$0, Codec<jj<E>> $$1, boolean $$2) {
+      return new ake<>($$0, $$1, $$2);
    }
 
-   public Optional<ake.c> c() {
-      return this.d;
+   private ake(akj<? extends jw<E>> $$0, Codec<jj<E>> $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = a($$1, $$2);
+      this.d = Codec.either(awk.b($$0), this.c);
    }
 
-   public Optional<ake.a> d() {
-      return this.e;
-   }
-
-   public boolean e() {
-      return this.f;
-   }
-
-   public static record a(byte[] b) {
-      private static final String c = "data:image/png;base64,";
-      public static final Codec<ake.a> a = Codec.STRING.comapFlatMap($$0 -> {
-         if (!$$0.startsWith("data:image/png;base64,")) {
-            return DataResult.error(() -> "Unknown format");
-         } else {
-            try {
-               String $$1 = $$0.substring("data:image/png;base64,".length()).replaceAll("\n", "");
-               byte[] $$2 = Base64.getDecoder().decode($$1.getBytes(StandardCharsets.UTF_8));
-               return DataResult.success(new ake.a($$2));
-            } catch (IllegalArgumentException var3) {
-               return DataResult.error(() -> "Malformed base64 server icon");
-            }
+   public <T> DataResult<Pair<jn<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
+      if ($$0 instanceof aki<T> $$2) {
+         Optional<jk<E>> $$3 = $$2.b(this.a);
+         if ($$3.isPresent()) {
+            jk<E> $$4 = $$3.get();
+            return this.d.decode($$0, $$1).flatMap($$1x -> {
+               DataResult<jn<E>> $$2x = (DataResult<jn<E>>)((Either)$$1x.getFirst()).map($$1xx -> a($$4, $$1xx), $$0xx -> DataResult.success(jn.a($$0xx)));
+               return $$2x.map($$1xx -> Pair.of($$1xx, $$1x.getSecond()));
+            });
          }
-      }, $$0 -> "data:image/png;base64," + new String(Base64.getEncoder().encode($$0.b), StandardCharsets.UTF_8));
-
-      public byte[] a() {
-         return this.b;
       }
+
+      return this.a($$0, $$1);
    }
 
-   public static record b(int b, int c, List<GameProfile> d) {
-      private static final Codec<GameProfile> e = RecordCodecBuilder.create(
-         $$0 -> $$0.group(kc.d.fieldOf("id").forGetter(GameProfile::getId), Codec.STRING.fieldOf("name").forGetter(GameProfile::getName))
-               .apply($$0, GameProfile::new)
-      );
-      public static final Codec<ake.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.INT.fieldOf("max").forGetter(ake.b::a),
-                  Codec.INT.fieldOf("online").forGetter(ake.b::b),
-                  e.listOf().lenientOptionalFieldOf("sample", List.of()).forGetter(ake.b::c)
-               )
-               .apply($$0, ake.b::new)
-      );
-
-      public int a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
-
-      public List<GameProfile> c() {
-         return this.d;
-      }
+   private static <E> DataResult<jn<E>> a(jk<E> $$0, awk<E> $$1) {
+      return $$0.a($$1)
+         .<DataResult<jn<E>>>map(DataResult::success)
+         .orElseGet(() -> DataResult.error(() -> "Missing tag: '" + $$1.b() + "' in '" + $$1.a().a() + "'"));
    }
 
-   public static record c(String b, int c) {
-      public static final Codec<ake.c> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(ake.c::b), Codec.INT.fieldOf("protocol").forGetter(ake.c::c)).apply($$0, ake.c::new)
-      );
+   public <T> DataResult<T> a(jn<E> $$0, DynamicOps<T> $$1, T $$2) {
+      if ($$1 instanceof aki<T> $$3) {
+         Optional<jm<E>> $$4 = $$3.a(this.a);
+         if ($$4.isPresent()) {
+            if (!$$0.a($$4.get())) {
+               return DataResult.error(() -> "HolderSet " + $$0 + " is not valid in current registry set");
+            }
 
-      public static ake.c a() {
-         ad $$0 = aa.b();
-         return new ake.c($$0.c(), $$0.e());
+            return this.d.encode($$0.c().mapRight(List::copyOf), $$1, $$2);
+         }
       }
+
+      return this.b($$0, $$1, $$2);
+   }
+
+   private <T> DataResult<Pair<jn<E>, T>> a(DynamicOps<T> $$0, T $$1) {
+      return this.b.listOf().decode($$0, $$1).flatMap($$0x -> {
+         List<jj.a<E>> $$1x = new ArrayList<>();
+
+         for (jj<E> $$2 : (List)$$0x.getFirst()) {
+            if (!($$2 instanceof jj.a<E> $$3)) {
+               return DataResult.error(() -> "Can't decode element " + $$2 + " without registry");
+            }
+
+            $$1x.add($$3);
+         }
+
+         return DataResult.success(new Pair(jn.a($$1x), $$0x.getSecond()));
+      });
+   }
+
+   private <T> DataResult<T> b(jn<E> $$0, DynamicOps<T> $$1, T $$2) {
+      return this.c.encode($$0.a().toList(), $$1, $$2);
    }
 }

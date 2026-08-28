@@ -1,45 +1,46 @@
-public class ais implements zw<agw> {
-   public static final zn<wm, ais> a = zw.a(ais::a, ais::new);
-   private final evp b;
-   private final bqv c;
-   private final int d;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.util.Arrays;
+import javax.crypto.SecretKey;
 
-   public ais(bqv $$0, evp $$1, int $$2) {
-      this.c = $$0;
-      this.b = $$1;
-      this.d = $$2;
+public class ais implements zb<aip> {
+   public static final ys<vr, ais> a = zb.a(ais::a, ais::new);
+   private final byte[] b;
+   private final byte[] c;
+
+   public ais(SecretKey $$0, PublicKey $$1, byte[] $$2) throws axc {
+      this.b = axb.a($$1, $$0.getEncoded());
+      this.c = axb.a($$1, $$2);
    }
 
-   private ais(wm $$0) {
-      this.c = $$0.b(bqv.class);
-      this.b = $$0.v();
-      this.d = $$0.l();
+   private ais(vr $$0) {
+      this.b = $$0.b();
+      this.c = $$0.b();
    }
 
-   private void a(wm $$0) {
-      $$0.a(this.c);
+   private void a(vr $$0) {
       $$0.a(this.b);
-      $$0.c(this.d);
+      $$0.a(this.c);
    }
 
    @Override
-   public zy<ais> a() {
-      return agu.cc;
+   public zd<ais> a() {
+      return ain.h;
    }
 
-   public void a(agw $$0) {
+   public void a(aip $$0) {
       $$0.a(this);
    }
 
-   public bqv b() {
-      return this.c;
+   public SecretKey a(PrivateKey $$0) throws axc {
+      return axb.a($$0, this.b);
    }
 
-   public evp e() {
-      return this.b;
-   }
-
-   public int f() {
-      return this.d;
+   public boolean a(byte[] $$0, PrivateKey $$1) {
+      try {
+         return Arrays.equals($$0, axb.b($$1, this.c));
+      } catch (axc var4) {
+         return false;
+      }
    }
 }

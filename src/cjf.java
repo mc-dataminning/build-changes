@@ -1,17 +1,8 @@
-public class cjf {
-   private final int a;
-   private final int b;
-
-   public cjf(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   public int b() {
-      return this.b;
-   }
+public interface cjf {
+   int h_ = 0;
+   int i_ = 3;
+   int j_ = 5;
+   int k_ = 10;
+   int l_ = 20;
+   int m_ = 50;
 }

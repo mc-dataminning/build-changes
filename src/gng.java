@@ -1,52 +1,34 @@
-public class gng<T extends cfu> extends gnl<T, ftv<T>> {
-   private final gek a;
+public class gng extends gns<cgu, fut<cgu>> {
+   private final fut<cgu> a;
 
-   public gng(gkv<T, ftv<T>> $$0, gek $$1) {
+   public gng(glc<cgu, fut<cgu>> $$0, fxe $$1) {
       super($$0);
-      this.a = $$1;
+      this.a = new fut<>($$1.a(fxh.aq));
    }
 
-   public void a(faa $$0, gdq $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.p_()) {
-         ffh $$10 = ffh.Q();
-         boolean $$11 = $$10.b($$3) && $$3.ch();
-         if (!$$3.ch() || $$11) {
-            dse $$12 = $$3.u().a();
-            int $$13 = gka.c($$3, 0.0F);
-            grc $$14 = this.a.a($$12);
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(42.0F));
-            $$0.a(0.1F, 0.0F, -0.6F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-            $$0.a();
-            this.c().d().a($$0);
-            $$0.a(0.0F, -0.7F, -0.2F);
-            $$0.a(a.d.rotationDegrees(-78.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
+   public void a(fag $$0, gdx $$1, int $$2, cgu $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cua $$10 = $$3.fN();
+      if ($$10.g() instanceof cro $$11 && $$11.d() == cro.a.a) {
+         this.c().a(this.a);
+         this.a.a($$3, $$4, $$5, $$6);
+         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
+         float $$15;
+         float $$16;
+         float $$14;
+         if ($$10.a(awd.by)) {
+            int $$13 = cwr.a($$10, -6265536);
+            $$14 = (float)axo.b.b($$13) / 255.0F;
+            $$15 = (float)axo.b.c($$13) / 255.0F;
+            $$16 = (float)axo.b.d($$13) / 255.0F;
+         } else {
+            $$14 = 1.0F;
+            $$15 = 1.0F;
+            $$16 = 1.0F;
          }
-      }
-   }
 
-   private void a(faa $$0, gdq $$1, int $$2, boolean $$3, dse $$4, int $$5, grc $$6) {
-      if ($$3) {
-         this.a.b().a($$0.c(), $$1.getBuffer(gdy.r(gpa.e)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
-      } else {
-         this.a.a($$4, $$0, $$1, $$2, $$5);
+         fak $$20 = $$1.getBuffer(gef.e($$11.b()));
+         this.a.a($$0, $$20, $$2, goz.d, $$14, $$15, $$16, 1.0F);
+         return;
       }
    }
 }

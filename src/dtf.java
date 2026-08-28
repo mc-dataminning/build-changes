@@ -1,62 +1,78 @@
-public enum dtf implements azu {
-   a("harp", awa.rV, dtf.a.a),
-   b("basedrum", awa.rP, dtf.a.a),
-   c("snare", awa.rY, dtf.a.a),
-   d("hat", awa.rW, dtf.a.a),
-   e("bass", awa.rQ, dtf.a.a),
-   f("flute", awa.rT, dtf.a.a),
-   g("bell", awa.rR, dtf.a.a),
-   h("guitar", awa.rU, dtf.a.a),
-   i("chime", awa.rS, dtf.a.a),
-   j("xylophone", awa.rZ, dtf.a.a),
-   k("iron_xylophone", awa.sa, dtf.a.a),
-   l("cow_bell", awa.sb, dtf.a.a),
-   m("didgeridoo", awa.sc, dtf.a.a),
-   n("bit", awa.sd, dtf.a.a),
-   o("banjo", awa.se, dtf.a.a),
-   p("pling", awa.rX, dtf.a.a),
-   q("zombie", awa.sf, dtf.a.b),
-   r("skeleton", awa.sg, dtf.a.b),
-   s("creeper", awa.sh, dtf.a.b),
-   t("dragon", awa.si, dtf.a.b),
-   u("wither_skeleton", awa.sj, dtf.a.b),
-   v("piglin", awa.sk, dtf.a.b),
-   w("custom_head", awa.Ao, dtf.a.c);
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   private final String x;
-   private final ji<avz> y;
-   private final dtf.a z;
+public class dtf<T extends Enum<T> & ayz> extends dtk<T> {
+   private final ImmutableSet<T> a;
+   private final Map<String, T> b = Maps.newHashMap();
 
-   private dtf(final String $$0, final ji<avz> $$1, final dtf.a $$2) {
-      this.x = $$0;
-      this.y = $$1;
-      this.z = $$2;
+   protected dtf(String $$0, Class<T> $$1, Collection<T> $$2) {
+      super($$0, $$1);
+      this.a = ImmutableSet.copyOf($$2);
+
+      for (T $$3 : $$2) {
+         String $$4 = $$3.c();
+         if (this.b.containsKey($$4)) {
+            throw new IllegalArgumentException("Multiple values have the same name '" + $$4 + "'");
+         }
+
+         this.b.put($$4, $$3);
+      }
    }
 
    @Override
-   public String c() {
-      return this.x;
+   public Collection<T> a() {
+      return this.a;
    }
 
-   public ji<avz> a() {
-      return this.y;
+   @Override
+   public Optional<T> b(String $$0) {
+      return Optional.ofNullable(this.b.get($$0));
    }
 
-   public boolean b() {
-      return this.z == dtf.a.a;
+   public String a(T $$0) {
+      return $$0.c();
    }
 
-   public boolean d() {
-      return this.z == dtf.a.c;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof dtf<?> $$1 && super.equals($$0)) {
+            return this.a.equals($$1.a) && this.b.equals($$1.b);
+         }
+
+         return false;
+      }
    }
 
-   public boolean e() {
-      return this.z != dtf.a.a;
+   @Override
+   public int b() {
+      int $$0 = super.b();
+      $$0 = 31 * $$0 + this.a.hashCode();
+      return 31 * $$0 + this.b.hashCode();
    }
 
-   static enum a {
-      a,
-      b,
-      c;
+   public static <T extends Enum<T> & ayz> dtf<T> a(String $$0, Class<T> $$1) {
+      return a($$0, $$1, $$0x -> true);
+   }
+
+   public static <T extends Enum<T> & ayz> dtf<T> a(String $$0, Class<T> $$1, Predicate<T> $$2) {
+      return a($$0, $$1, Arrays.<T>stream($$1.getEnumConstants()).filter($$2).collect(Collectors.toList()));
+   }
+
+   public static <T extends Enum<T> & ayz> dtf<T> a(String $$0, Class<T> $$1, T... $$2) {
+      return a($$0, $$1, Lists.newArrayList($$2));
+   }
+
+   public static <T extends Enum<T> & ayz> dtf<T> a(String $$0, Class<T> $$1, Collection<T> $$2) {
+      return new dtf<>($$0, $$1, $$2);
    }
 }

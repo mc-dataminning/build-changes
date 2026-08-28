@@ -1,34 +1,20 @@
 import com.mojang.serialization.Codec;
 
-public class eaq extends eap {
-   public eaq(Codec<edl> $$0) {
+public class eaq extends ebe<edp> {
+   public eaq(Codec<edp> $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(dcb $$0, azh $$1, iz $$2, dse $$3) {
-      int $$4 = $$1.a(3) + 3;
-      int $$5 = $$1.a(3) + 3;
-      int $$6 = $$1.a(3) + 3;
-      int $$7 = $$1.a(3) + 1;
-      iz.a $$8 = $$2.j();
-
-      for (int $$9 = 0; $$9 <= $$5; $$9++) {
-         for (int $$10 = 0; $$10 <= $$4; $$10++) {
-            for (int $$11 = 0; $$11 <= $$6; $$11++) {
-               $$8.d($$9 + $$2.u(), $$10 + $$2.v(), $$11 + $$2.w());
-               $$8.c(je.a, $$7);
-               if (($$9 != 0 && $$9 != $$5 || $$10 != 0 && $$10 != $$4)
-                  && ($$11 != 0 && $$11 != $$6 || $$10 != 0 && $$10 != $$4)
-                  && ($$9 != 0 && $$9 != $$5 || $$11 != 0 && $$11 != $$6)
-                  && ($$9 == 0 || $$9 == $$5 || $$10 == 0 || $$10 == $$4 || $$11 == 0 || $$11 == $$6)
-                  && !($$1.i() < 0.1F)
-                  && !this.b($$0, $$1, $$8, $$3)) {
-               }
-            }
-         }
+   public boolean a(ebg<edp> $$0) {
+      dcz $$1 = $$0.b();
+      ja $$2 = $$0.e();
+      aym $$3 = $$0.d();
+      if ($$1.u($$2) && $$1.a_($$2.d()).a(dfh.fz)) {
+         dgk.a($$1, $$2, $$3, 8);
+         return true;
+      } else {
+         return false;
       }
-
-      return true;
    }
 }

@@ -1,96 +1,69 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class dje extends den {
-   public static final MapCodec<dje> a = b(dje::new);
-   public static final dsv b = dsu.n;
+public class dje extends dff {
+   public static final MapCodec<dje> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(lq.e.r().fieldOf("host").forGetter(dje::b), u()).apply($$0, dje::new));
+   private final dff b;
+   private static final Map<dff, dff> c = Maps.newIdentityHashMap();
+   private static final Map<dsh, dsh> d = Maps.newIdentityHashMap();
+   private static final Map<dsh, dsh> e = Maps.newIdentityHashMap();
 
    @Override
-   public MapCodec<dje> a() {
+   public MapCodec<? extends dje> a() {
       return a;
    }
 
-   protected dje(dsd.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)));
+   public dje(dff $$0, dsg.d $$1) {
+      super($$1.e($$0.x() / 2.0F).f(0.75F));
+      this.b = $$0;
+      c.put($$0, this);
+   }
+
+   public dff b() {
+      return this.b;
+   }
+
+   public static boolean m(dsh $$0) {
+      return c.containsKey($$0.b());
+   }
+
+   private void a(aqk $$0, ja $$1) {
+      cju $$2 = bsj.aM.a((dcd)$$0);
+      if ($$2 != null) {
+         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
+         $$0.b($$2);
+         $$2.R();
+      }
    }
 
    @Override
-   public void a(dca $$0, iz $$1, dse $$2, @Nullable btr $$3, cur $$4) {
+   protected void a(dsh $$0, aqk $$1, ja $$2, cua $$3, boolean $$4) {
       super.a($$0, $$1, $$2, $$3, $$4);
-      cxg $$5 = $$4.a(km.O, cxg.a);
-      if ($$5.a("RecordItem")) {
-         $$0.a($$1, $$2.a(b, Boolean.valueOf(true)), 2);
+      if ($$1.ab().b(dbz.h) && !czl.a($$3, avx.t)) {
+         this.a($$1, $$2);
       }
    }
 
-   @Override
-   protected bqw a(dse $$0, dca $$1, iz $$2, cmz $$3, evp $$4) {
-      if ($$0.c(b) && $$1.c_($$2) instanceof dqk $$5) {
-         $$5.l();
-         return bqw.a($$1.B);
-      } else {
-         return bqw.e;
-      }
+   public static dsh n(dsh $$0) {
+      return a(d, $$0, () -> c.get($$0.b()).o());
    }
 
-   @Override
-   protected void a(dse $$0, dca $$1, iz $$2, dse $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$1.c_($$2) instanceof dqk $$5) {
-            $$5.l();
+   public dsh o(dsh $$0) {
+      return a(e, $$0, () -> this.b().o());
+   }
+
+   private static dsh a(Map<dsh, dsh> $$0, dsh $$1, Supplier<dsh> $$2) {
+      return $$0.computeIfAbsent($$1, $$1x -> {
+         dsh $$2x = $$2.get();
+
+         for (dtk $$3 : $$1x.B()) {
+            $$2x = $$2x.b($$3) ? $$2x.a($$3, $$1x.c($$3)) : $$2x;
          }
 
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   public dpj a(iz $$0, dse $$1) {
-      return new dqk($$0, $$1);
-   }
-
-   @Override
-   public boolean e_(dse $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dse $$0, dbg $$1, iz $$2, je $$3) {
-      if ($$1.c_($$2) instanceof dqk $$4 && $$4.j()) {
-         return 15;
-      }
-
-      return 0;
-   }
-
-   @Override
-   protected boolean c_(dse $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dse $$0, dca $$1, iz $$2) {
-      if ($$1.c_($$2) instanceof dqk $$3 && $$3.f().g() instanceof cvm $$4) {
-         return $$4.h();
-      }
-
-      return 0;
-   }
-
-   @Override
-   protected dlh a_(dse $$0) {
-      return dlh.c;
-   }
-
-   @Override
-   protected void a(dsf.a<dfb, dse> $$0) {
-      $$0.a(b);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dpj> dpk<T> a(dca $$0, dse $$1, dpl<T> $$2) {
-      return $$1.c(b) ? a($$2, dpl.e, dqk::a) : null;
+         return $$2x;
+      });
    }
 }

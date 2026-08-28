@@ -1,89 +1,100 @@
+import com.google.common.hash.Hashing;
+import com.google.common.hash.HashingOutputStream;
+import com.mojang.logging.LogUtils;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class pb extends or {
-   public pb(ly $$0, CompletableFuture<jk.a> $$1) {
-      super($$0, $$1);
+public class pb implements lx {
+   private static final Logger d = LogUtils.getLogger();
+   private final Iterable<Path> e;
+   private final lz f;
+
+   public pb(lz $$0, Collection<Path> $$1) {
+      this.e = $$1;
+      this.f = $$0;
    }
 
    @Override
-   protected void a(oq $$0) {
-      a($$0, cpn.a(cpp.c));
-      os.a(op.c, dfd.tq).a('#', cuu.oE).a('C', cuu.eO).a('R', cuu.lH).a('D', cuu.lT).b("###").b("#C#").b("RDR").b("has_dropper", a((dbz)cuu.lT)).a($$0);
-      a($$0, op.a, dfd.qA, dfd.qz, 2);
-      i($$0, op.a, dfd.qB, dfd.qz);
-      i($$0, op.b, dfd.qC, dfd.qz);
-      i($$0, op.a, dfd.qH, dfd.qz);
-      i($$0, op.a, dfd.qD, dfd.qz);
-      a($$0, op.a, dfd.qE, dfd.qz, 2);
-      i($$0, op.a, dfd.qF, dfd.qz);
-      i($$0, op.b, dfd.qG, dfd.qz);
-      i($$0, op.a, dfd.qI, dfd.qz);
-      a($$0, op.a, dfd.qJ, dfd.qz, 2);
-      i($$0, op.a, dfd.qK, dfd.qz);
-      i($$0, op.b, dfd.qL, dfd.qz);
-      i($$0, op.a, dfd.qM, dfd.qz);
-      a($$0, op.a, dfd.qE, dfd.qD, 2);
-      i($$0, op.a, dfd.qF, dfd.qD);
-      i($$0, op.b, dfd.qG, dfd.qD);
-      i($$0, op.a, dfd.qI, dfd.qD);
-      a($$0, op.a, dfd.qJ, dfd.qD, 2);
-      i($$0, op.a, dfd.qK, dfd.qD);
-      i($$0, op.b, dfd.qL, dfd.qD);
-      i($$0, op.a, dfd.qM, dfd.qD);
-      a($$0, op.a, dfd.qJ, dfd.qI, 2);
-      i($$0, op.a, dfd.qK, dfd.qI);
-      i($$0, op.b, dfd.qL, dfd.qI);
-      i($$0, op.a, dfd.qM, dfd.qI);
-      a($$0, op.a, dfd.rj, dfd.qW, 4);
-      a($$0, op.a, dfd.ri, dfd.qX, 4);
-      a($$0, op.a, dfd.rh, dfd.qY, 4);
-      a($$0, op.a, dfd.rg, dfd.qZ, 4);
-      a($$0, op.a, dfd.rn, dfd.rw, 4);
-      a($$0, op.a, dfd.rm, dfd.ry, 4);
-      a($$0, op.a, dfd.rl, dfd.rx, 4);
-      a($$0, op.a, dfd.rk, dfd.rz, 4);
-      a($$0, op.a, dfd.rj, dfd.rf, 1);
-      a($$0, op.a, dfd.ri, dfd.re, 1);
-      a($$0, op.a, dfd.rh, dfd.rd, 1);
-      a($$0, op.a, dfd.rg, dfd.rc, 1);
-      a($$0, op.a, dfd.rn, dfd.rD, 1);
-      a($$0, op.a, dfd.rm, dfd.rC, 1);
-      a($$0, op.a, dfd.rl, dfd.rB, 1);
-      a($$0, op.a, dfd.rk, dfd.rA, 1);
-      a($$0, dfd.sc, dfd.qW);
-      a($$0, dfd.sd, dfd.qX);
-      a($$0, dfd.se, dfd.qY);
-      a($$0, dfd.sf, dfd.qZ);
-      a($$0, dfd.sg, dfd.rw);
-      a($$0, dfd.sh, dfd.ry);
-      a($$0, dfd.si, dfd.rx);
-      a($$0, dfd.sj, dfd.rz);
-      b($$0, dfd.sk, dfd.qW);
-      b($$0, dfd.sl, dfd.qX);
-      b($$0, dfd.sm, dfd.qY);
-      b($$0, dfd.sn, dfd.qZ);
-      b($$0, dfd.so, dfd.rw);
-      b($$0, dfd.sp, dfd.ry);
-      b($$0, dfd.sq, dfd.rx);
-      b($$0, dfd.sr, dfd.rz);
-      a($$0, op.a, dfd.sc, dfd.qW, 4);
-      a($$0, op.a, dfd.sd, dfd.qX, 4);
-      a($$0, op.a, dfd.se, dfd.qY, 4);
-      a($$0, op.a, dfd.sf, dfd.qZ, 4);
-      a($$0, op.a, dfd.sg, dfd.rw, 4);
-      a($$0, op.a, dfd.sh, dfd.ry, 4);
-      a($$0, op.a, dfd.si, dfd.rx, 4);
-      a($$0, op.a, dfd.sj, dfd.rz, 4);
-      b().forEach($$1 -> a($$0, $$1.a(), $$1.b()));
-      o($$0, cuu.xJ, cuu.yD);
-      o($$0, cuu.xK, cuu.aL);
-      ot.a(op.i, cuu.tY, 4).b(cuu.yD).b("has_breeze_rod", a((dbz)cuu.yD)).a($$0);
-      os.a(op.f, cuu.ub, 1).a('I', cuu.yD).a('#', dfd.tt).b(" # ").b(" I ").b("has_breeze_rod", a((dbz)cuu.yD)).b("has_heavy_core", a(dfd.tt)).a($$0);
-      b($$0, cpn.a(cpp.c));
+   public CompletableFuture<?> a(lv $$0) {
+      Path $$1 = this.f.a();
+      List<CompletableFuture<?>> $$2 = new ArrayList<>();
+
+      for (Path $$3 : this.e) {
+         $$2.add(
+            CompletableFuture.<CompletableFuture>supplyAsync(
+                  () -> {
+                     try {
+                        CompletableFuture var4;
+                        try (Stream<Path> $$3x = Files.walk($$3)) {
+                           var4 = CompletableFuture.allOf(
+                              $$3x.filter($$0xx -> $$0xx.toString().endsWith(".nbt"))
+                                 .map($$3xx -> CompletableFuture.runAsync(() -> a($$0, $$3xx, a($$3, $$3xx), $$1), ac.h()))
+                                 .toArray(CompletableFuture[]::new)
+                           );
+                        }
+
+                        return var4;
+                     } catch (IOException var8) {
+                        d.error("Failed to read structure input directory", var8);
+                        return CompletableFuture.completedFuture(null);
+                     }
+                  },
+                  ac.g()
+               )
+               .thenCompose($$0x -> $$0x)
+         );
+      }
+
+      return CompletableFuture.allOf($$2.toArray(CompletableFuture[]::new));
    }
 
-   public static Stream<pc.a> b() {
-      return Stream.of(cuu.xK, cuu.xJ).map($$0 -> new pc.a($$0, new alf(c($$0) + "_smithing_trim")));
+   @Override
+   public final String a() {
+      return "NBT -> SNBT";
+   }
+
+   private static String a(Path $$0, Path $$1) {
+      String $$2 = $$0.relativize($$1).toString().replaceAll("\\\\", "/");
+      return $$2.substring(0, $$2.length() - ".nbt".length());
+   }
+
+   @Nullable
+   public static Path a(lv $$0, Path $$1, String $$2, Path $$3) {
+      try {
+         Path var7;
+         try (
+            InputStream $$4 = Files.newInputStream($$1);
+            InputStream $$5 = new axn($$4);
+         ) {
+            Path $$6 = $$3.resolve($$2 + ".snbt");
+            a($$0, $$6, um.a(uk.a($$5, ug.a())));
+            d.info("Converted {} from NBT to SNBT", $$2);
+            var7 = $$6;
+         }
+
+         return var7;
+      } catch (IOException var12) {
+         d.error("Couldn't convert {} from NBT to SNBT at {}", new Object[]{$$2, $$1, var12});
+         return null;
+      }
+   }
+
+   public static void a(lv $$0, Path $$1, String $$2) throws IOException {
+      ByteArrayOutputStream $$3 = new ByteArrayOutputStream();
+      HashingOutputStream $$4 = new HashingOutputStream(Hashing.sha1(), $$3);
+      $$4.write($$2.getBytes(StandardCharsets.UTF_8));
+      $$4.write(10);
+      $$0.writeIfNeeded($$1, $$3.toByteArray(), $$4.hash());
    }
 }

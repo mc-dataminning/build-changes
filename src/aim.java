@@ -1,20 +1,29 @@
-public record aim(short b, cur c) implements zw<agw> {
-   public static final zn<xa, aim> a = zn.a(zl.d, aim::b, cur.a(cur.h), aim::e, aim::new);
+public class aim implements zb<aih> {
+   public static final ys<vr, aim> a = zb.a(aim::a, aim::new);
+   private final wu b;
 
-   public aim(int $$0, cur $$1) {
-      this((short)$$0, $$1);
+   public aim(wu $$0) {
+      this.b = $$0;
+   }
+
+   private aim(vr $$0) {
+      this.b = wu.a.b($$0.d(262144), jx.b);
+   }
+
+   private void a(vr $$0) {
+      $$0.a(wu.a.a(this.b, jx.b));
    }
 
    @Override
-   public zy<aim> a() {
-      return agu.bW;
+   public zd<aim> a() {
+      return ain.e;
    }
 
-   public void a(agw $$0) {
+   public void a(aih $$0) {
       $$0.a(this);
    }
 
-   public cur e() {
-      return this.c;
+   public wu b() {
+      return this.b;
    }
 }

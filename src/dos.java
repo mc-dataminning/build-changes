@@ -1,6 +1,6 @@
 import com.mojang.serialization.MapCodec;
 
-public class dos extends dfb {
+public class dos extends dff {
    public static final MapCodec<dos> a = b(dos::new);
 
    @Override
@@ -8,54 +8,17 @@ public class dos extends dfb {
       return a;
    }
 
-   protected dos(dsd.d $$0) {
+   public dos(dsg.d $$0) {
       super($$0);
    }
 
    @Override
-   protected void b(dse $$0, dca $$1, iz $$2, dse $$3, boolean $$4) {
-      if ($$1.D_().i()) {
-         $$1.a($$2, dfd.aO.o(), 3);
-         $$1.c(2009, $$2, 0);
-         $$1.a(null, $$2, awa.Ch, awb.e, 1.0F, (1.0F + $$1.E_().i() * 0.2F) * 0.7F);
+   protected void a(dsh $$0, dcd $$1, ja $$2, bsd $$3) {
+      evz $$4 = new evz(0.25, 0.05F, 0.25);
+      if ($$3 instanceof bsy $$5 && $$5.b(brn.K)) {
+         $$4 = new evz(0.5, 0.25, 0.5);
       }
-   }
 
-   @Override
-   public void a(dse $$0, dca $$1, iz $$2, azh $$3) {
-      je $$4 = je.b($$3);
-      if ($$4 != je.b) {
-         iz $$5 = $$2.a($$4);
-         dse $$6 = $$1.a_($$5);
-         if (!$$0.p() || !$$6.d($$1, $$5, $$4.g())) {
-            double $$7 = (double)$$2.u();
-            double $$8 = (double)$$2.v();
-            double $$9 = (double)$$2.w();
-            if ($$4 == je.a) {
-               $$8 -= 0.05;
-               $$7 += $$3.j();
-               $$9 += $$3.j();
-            } else {
-               $$8 += $$3.j() * 0.8;
-               if ($$4.o() == je.a.a) {
-                  $$9 += $$3.j();
-                  if ($$4 == je.f) {
-                     $$7++;
-                  } else {
-                     $$7 += 0.05;
-                  }
-               } else {
-                  $$7 += $$3.j();
-                  if ($$4 == je.d) {
-                     $$9++;
-                  } else {
-                     $$9 += 0.05;
-                  }
-               }
-            }
-
-            $$1.a(li.l, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-         }
-      }
+      $$3.a($$0, $$4);
    }
 }

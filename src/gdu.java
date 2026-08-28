@@ -1,94 +1,47 @@
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
-import java.util.List;
-import java.util.function.IntSupplier;
-import org.joml.Matrix4f;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-public class gdu implements AutoCloseable {
-   private final gdg c;
-   public final eym a;
-   public final eym b;
-   private final List<IntSupplier> d = Lists.newArrayList();
-   private final List<String> e = Lists.newArrayList();
-   private final List<Integer> f = Lists.newArrayList();
-   private final List<Integer> g = Lists.newArrayList();
-   private Matrix4f h;
-   private final int i;
+public class gdu {
+   public final Int2ObjectMap<grq> a = new Int2ObjectOpenHashMap(256);
+   private final Int2ObjectMap<grj> b = new Int2ObjectOpenHashMap(256);
+   private final grp c;
 
-   public gdu(aus $$0, String $$1, eym $$2, eym $$3, boolean $$4) throws IOException {
-      this.c = new gdg($$0, $$1);
-      this.a = $$2;
-      this.b = $$3;
-      this.i = $$4 ? 9729 : 9728;
+   public gdu(grp $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public void close() {
-      this.c.close();
+   public grj a(cua $$0) {
+      grj $$1 = this.a($$0.g());
+      return $$1 == null ? this.c.a() : $$1;
    }
 
-   public final String a() {
-      return this.c.h();
+   @Nullable
+   public grj a(ctv $$0) {
+      return (grj)this.b.get(b($$0));
    }
 
-   public void a(String $$0, IntSupplier $$1, int $$2, int $$3) {
-      this.e.add(this.e.size(), $$0);
-      this.d.add(this.d.size(), $$1);
-      this.f.add(this.f.size(), $$2);
-      this.g.add(this.g.size(), $$3);
+   private static int b(ctv $$0) {
+      return ctv.a($$0);
    }
 
-   public void a(Matrix4f $$0) {
-      this.h = $$0;
+   public void a(ctv $$0, grq $$1) {
+      this.a.put(b($$0), $$1);
    }
 
-   public void a(float $$0) {
-      this.a.e();
-      float $$1 = (float)this.b.c;
-      float $$2 = (float)this.b.d;
-      RenderSystem.viewport(0, 0, (int)$$1, (int)$$2);
-      this.c.a("DiffuseSampler", this.a::f);
-
-      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
-         this.c.a(this.e.get($$3), this.d.get($$3));
-         this.c.b("AuxSize" + $$3).a((float)this.f.get($$3).intValue(), (float)this.g.get($$3).intValue());
-      }
-
-      this.c.b("ProjMat").a(this.h);
-      this.c.b("InSize").a((float)this.a.c, (float)this.a.d);
-      this.c.b("OutSize").a($$1, $$2);
-      this.c.b("Time").a($$0);
-      ffh $$4 = ffh.Q();
-      this.c.b("ScreenSize").a((float)$$4.aO().k(), (float)$$4.aO().l());
-      this.c.g();
-      this.b.b(ffh.a);
-      this.b.a(false);
-      RenderSystem.depthFunc(519);
-      ezv $$5 = fac.b().d();
-      $$5.a(faf.b.h, ezy.m);
-      $$5.a(0.0, 0.0, 500.0).e();
-      $$5.a((double)$$1, 0.0, 500.0).e();
-      $$5.a((double)$$1, (double)$$2, 500.0).e();
-      $$5.a(0.0, (double)$$2, 500.0).e();
-      ezw.b($$5.d());
-      RenderSystem.depthFunc(515);
-      this.c.f();
-      this.b.e();
-      this.a.d();
-
-      for (Object $$6 : this.d) {
-         if ($$6 instanceof eym) {
-            ((eym)$$6).d();
-         }
-      }
-   }
-
-   public gdg b() {
+   public grp a() {
       return this.c;
    }
 
-   public int c() {
-      return this.i;
+   public void b() {
+      this.b.clear();
+      ObjectIterator var1 = this.a.entrySet().iterator();
+
+      while (var1.hasNext()) {
+         Entry<Integer, grq> $$0 = (Entry<Integer, grq>)var1.next();
+         this.b.put($$0.getKey(), this.c.a($$0.getValue()));
+      }
    }
 }

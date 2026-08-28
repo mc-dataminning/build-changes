@@ -1,51 +1,35 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
-public class awh<T> extends exa {
-   public static final zn<xa, awh<?>> a = zl.a(lq.ah).b(awh::a, awj::a);
-   private final awi o;
-   private final T p;
-   private final awj<T> q;
+public class awh {
+   private final List<awi> a = new ArrayList<>();
 
-   protected awh(awj<T> $$0, T $$1, awi $$2) {
-      super(a($$0, $$1));
-      this.q = $$0;
-      this.o = $$2;
-      this.p = $$1;
+   public static awh a() {
+      return new awh();
    }
 
-   public static <T> String a(awj<T> $$0, T $$1) {
-      return a(lp.x.b($$0)) + ":" + a($$0.b().b($$1));
+   public List<awi> b() {
+      return List.copyOf(this.a);
    }
 
-   private static <T> String a(@Nullable alf $$0) {
-      return $$0.toString().replace(':', '.');
+   public awh a(awi $$0) {
+      this.a.add($$0);
+      return this;
    }
 
-   public awj<T> a() {
-      return this.q;
+   public awh a(akk $$0) {
+      return this.a(awi.a($$0));
    }
 
-   public T b() {
-      return this.p;
+   public awh b(akk $$0) {
+      return this.a(awi.b($$0));
    }
 
-   public String a(int $$0) {
-      return this.o.format($$0);
+   public awh c(akk $$0) {
+      return this.a(awi.c($$0));
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 || $$0 instanceof awh && Objects.equals(this.d(), ((awh)$$0).d());
-   }
-
-   @Override
-   public int hashCode() {
-      return this.d().hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "Stat{name=" + this.d() + ", formatter=" + this.o + "}";
+   public awh d(akk $$0) {
+      return this.a(awi.d($$0));
    }
 }

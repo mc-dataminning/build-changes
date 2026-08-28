@@ -1,39 +1,61 @@
-public class gen {
-   protected final int[] a;
-   protected final int b;
-   protected final je c;
-   protected final gpb d;
-   private final boolean e;
+public class gen implements fak {
+   private final fak a;
+   private final gpi b;
 
-   public gen(int[] $$0, int $$1, je $$2, gpb $$3, boolean $$4) {
+   public gen(fak $$0, gpi $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
    }
 
-   public gpb a() {
-      return this.d;
+   @Override
+   public fak a(double $$0, double $$1, double $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   public int[] b() {
-      return this.a;
+   @Override
+   public fak a(int $$0, int $$1, int $$2, int $$3) {
+      return this.a.a($$0, $$1, $$2, $$3);
    }
 
-   public boolean c() {
-      return this.b != -1;
+   @Override
+   public fak a(float $$0, float $$1) {
+      return this.a.a(this.b.a($$0), this.b.c($$1));
    }
 
-   public int d() {
-      return this.b;
+   @Override
+   public fak a(int $$0, int $$1) {
+      return this.a.a($$0, $$1);
    }
 
-   public je e() {
-      return this.c;
+   @Override
+   public fak b(int $$0, int $$1) {
+      return this.a.b($$0, $$1);
    }
 
-   public boolean f() {
-      return this.e;
+   @Override
+   public fak a(float $$0, float $$1, float $$2) {
+      return this.a.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void e() {
+      this.a.e();
+   }
+
+   @Override
+   public void b(int $$0, int $$1, int $$2, int $$3) {
+      this.a.b($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void l() {
+      this.a.l();
+   }
+
+   @Override
+   public void a(
+      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
+   ) {
+      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, this.b.a($$7), this.b.c($$8), $$9, $$10, $$11, $$12, $$13);
    }
 }

@@ -1,98 +1,125 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+public class cpt extends cpe implements cpr {
+   protected static final int k = 9;
+   private static final int l = 9;
+   private static final int m = 36;
+   private static final int n = 36;
+   private static final int o = 45;
+   private final cqv p = new cqv();
+   private final cpp q;
+   private final cmh r;
+   private final cpv s;
 
-public record cpt(int c, float d, boolean e, float f, List<cpt.b> g) {
-   private static final float h = 1.6F;
-   public static final Codec<cpt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayh.k.fieldOf("nutrition").forGetter(cpt::b),
-               Codec.FLOAT.fieldOf("saturation").forGetter(cpt::c),
-               Codec.BOOL.optionalFieldOf("can_always_eat", false).forGetter(cpt::d),
-               ayh.m.optionalFieldOf("eat_seconds", 1.6F).forGetter(cpt::e),
-               cpt.b.a.listOf().optionalFieldOf("effects", List.of()).forGetter(cpt::f)
-            )
-            .apply($$0, cpt::new)
-   );
-   public static final zn<xa, cpt> b = zn.a(zl.g, cpt::b, zl.i, cpt::c, zl.b, cpt::d, zl.i, cpt::e, cpt.b.b.a(zl.a()), cpt::f, cpt::new);
-
-   public int a() {
-      return (int)(this.f * 20.0F);
+   public cpt(int $$0, cmg $$1) {
+      super(cqm.h, $$0);
+      this.r = $$1.l;
+      this.q = new cqz(10);
+      this.s = new crh(this, 3, 3);
+      this.a($$1);
    }
 
-   public int b() {
-      return this.c;
+   public cpt(int $$0, cmg $$1, cpv $$2, cpp $$3) {
+      super(cqm.h, $$0);
+      this.r = $$1.l;
+      this.q = $$3;
+      this.s = $$2;
+      a($$2, 9);
+      $$2.d_($$1.l);
+      this.a($$1);
+      this.a(this);
    }
 
-   public float c() {
-      return this.d;
+   private void a(cmg $$0) {
+      for (int $$1 = 0; $$1 < 3; $$1++) {
+         for (int $$2 = 0; $$2 < 3; $$2++) {
+            int $$3 = $$2 + $$1 * 3;
+            this.a(new cpu(this.s, $$3, 26 + $$2 * 18, 17 + $$1 * 18, this));
+         }
+      }
+
+      for (int $$4 = 0; $$4 < 3; $$4++) {
+         for (int $$5 = 0; $$5 < 9; $$5++) {
+            this.a(new cra($$0, $$5 + $$4 * 9 + 9, 8 + $$5 * 18, 84 + $$4 * 18));
+         }
+      }
+
+      for (int $$6 = 0; $$6 < 9; $$6++) {
+         this.a(new cra($$0, $$6, 8 + $$6 * 18, 142));
+      }
+
+      this.a(new cqq(this.p, 0, 134, 35));
+      this.a(this.q);
+      this.n();
    }
 
-   public boolean d() {
-      return this.e;
+   public void a(int $$0, boolean $$1) {
+      cpu $$2 = (cpu)this.b($$0);
+      this.q.a($$2.d, $$1 ? 0 : 1);
+      this.d();
    }
 
-   public float e() {
-      return this.f;
+   public boolean e(int $$0) {
+      return $$0 > -1 && $$0 < 9 ? this.q.a($$0) == 1 : false;
    }
 
-   public List<cpt.b> f() {
-      return this.g;
+   public boolean l() {
+      return this.q.a(9) == 1;
    }
 
-   public static class a {
-      private int a;
-      private float b;
-      private boolean c;
-      private float d = 1.6F;
-      private final Builder<cpt.b> e = ImmutableList.builder();
+   @Override
+   public cua b(cmh $$0, int $$1) {
+      cua $$2 = cua.l;
+      cra $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cua $$4 = $$3.g();
+         $$2 = $$4.s();
+         if ($$1 < 9) {
+            if (!this.a($$4, 9, 45, true)) {
+               return cua.l;
+            }
+         } else if (!this.a($$4, 0, 9, false)) {
+            return cua.l;
+         }
 
-      public cpt.a a(int $$0) {
-         this.a = $$0;
-         return this;
+         if ($$4.e()) {
+            $$3.f(cua.l);
+         } else {
+            $$3.c();
+         }
+
+         if ($$4.H() == $$2.H()) {
+            return cua.l;
+         }
+
+         $$3.a($$0, $$4);
       }
 
-      public cpt.a a(float $$0) {
-         this.b = $$0;
-         return this;
-      }
+      return $$2;
+   }
 
-      public cpt.a a() {
-         this.c = true;
-         return this;
-      }
+   @Override
+   public boolean b(cmh $$0) {
+      return this.s.a($$0);
+   }
 
-      public cpt.a b() {
-         this.d = 0.8F;
-         return this;
-      }
-
-      public cpt.a a(bse $$0, float $$1) {
-         this.e.add(new cpt.b($$0, $$1));
-         return this;
-      }
-
-      public cpt c() {
-         float $$0 = cpr.a(this.a, this.b);
-         return new cpt(this.a, $$0, this.c, this.d, this.e.build());
+   private void n() {
+      if (this.r instanceof aql $$0) {
+         dcd $$1 = $$0.dP();
+         cxw $$2 = this.s.aA_();
+         cua $$3 = dgy.a($$1, $$2).map($$2x -> ((cxx)$$2x.b()).a($$2, $$1.H_())).orElse(cua.l);
+         this.p.a(0, $$3);
       }
    }
 
-   public static record b(bse c, float d) {
-      public static final Codec<cpt.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bse.d.fieldOf("effect").forGetter(cpt.b::a), Codec.floatRange(0.0F, 1.0F).optionalFieldOf("probability", 1.0F).forGetter(cpt.b::b))
-               .apply($$0, cpt.b::new)
-      );
-      public static final zn<xa, cpt.b> b = zn.a(bse.e, cpt.b::a, zl.i, cpt.b::b, cpt.b::new);
+   public bpw m() {
+      return this.s;
+   }
 
-      public bse a() {
-         return new bse(this.c);
-      }
+   @Override
+   public void a(cpe $$0, int $$1, cua $$2) {
+      this.n();
+   }
 
-      public float b() {
-         return this.d;
-      }
+   @Override
+   public void a(cpe $$0, int $$1, int $$2) {
    }
 }

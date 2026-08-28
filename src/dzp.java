@@ -1,18 +1,20 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class dzp implements dzd {
-   public static dzp a = new dzp();
-   public static final MapCodec<dzp> e = MapCodec.unit(() -> a);
+class dzp extends dzr {
+   public static final MapCodec<dzp> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, dzp::new));
 
-   private dzp() {
-   }
-
-   public boolean a(dcv $$0, iz $$1) {
-      return true;
+   public dzp(ke $$0) {
+      super($$0);
    }
 
    @Override
-   public dze<?> a() {
-      return dze.l;
+   protected boolean a(dsh $$0) {
+      return $$0.r();
+   }
+
+   @Override
+   public dzh<?> a() {
+      return dzh.f;
    }
 }

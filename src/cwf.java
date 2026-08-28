@@ -1,32 +1,46 @@
-public class cwf extends cvi implements cvj {
-   public cwf(cum.a $$0) {
-      super($$0);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+
+public record cwf(String e, jj<ctv> f, float g, Map<jj<crq>, String> h, wu i) {
+   public static final Codec<cwf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               axm.A.fieldOf("asset_name").forGetter(cwf::a),
+               akh.a(lr.K).fieldOf("ingredient").forGetter(cwf::b),
+               Codec.FLOAT.fieldOf("item_model_index").forGetter(cwf::c),
+               Codec.unboundedMap(crq.a, Codec.STRING).optionalFieldOf("override_armor_materials", Map.of()).forGetter(cwf::d),
+               ww.a.fieldOf("description").forGetter(cwf::e)
+            )
+            .apply($$0, cwf::new)
+   );
+   public static final ys<wf, cwf> b = ys.a(
+      yq.l, cwf::a, yq.b(lr.K), cwf::b, yq.i, cwf::c, yq.a(Object2ObjectOpenHashMap::new, yq.b(lr.ay), yq.l), cwf::d, ww.b, cwf::e, cwf::new
+   );
+   public static final Codec<jj<cwf>> c = akg.a(lr.aV, a);
+   public static final ys<wf, jj<cwf>> d = yq.a(lr.aV, b);
+
+   public static cwf a(String $$0, ctv $$1, float $$2, wu $$3, Map<jj<crq>, String> $$4) {
+      return new cwf($$0, lq.g.e($$1), $$2, $$4, $$3);
    }
 
-   @Override
-   public bqx<cur> a(dca $$0, cmz $$1, bqv $$2) {
-      cur $$3 = $$1.b($$2);
-      if (!$$0.B) {
-         cod $$4 = new cod($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dH(), $$1.dF(), -20.0F, 0.5F, 1.0F);
-         $$0.b($$4);
-      }
-
-      $$1.b(awk.c.b(this));
-      $$3.a(1, $$1);
-      return bqx.a($$3, $$0.x_());
+   public String a() {
+      return this.e;
    }
 
-   @Override
-   public cnr a(dca $$0, js $$1, cur $$2, je $$3) {
-      cod $$4 = new cod($$0, $$1.a(), $$1.b(), $$1.c());
-      $$4.a($$2);
-      return $$4;
+   public jj<ctv> b() {
+      return this.f;
    }
 
-   @Override
-   public cvj.a c() {
-      return cvj.a.a().a(cvj.a.a.c() * 0.5F).b(cvj.a.a.d() * 1.25F).a();
+   public float c() {
+      return this.g;
+   }
+
+   public Map<jj<crq>, String> d() {
+      return this.h;
+   }
+
+   public wu e() {
+      return this.i;
    }
 }

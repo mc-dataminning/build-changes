@@ -1,19 +1,22 @@
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.ChannelHandler.Sharable;
+import io.netty.handler.codec.EncoderException;
+import io.netty.handler.codec.MessageToByteEncoder;
 
-public class wo extends ChannelInboundHandlerAdapter {
-   private final wd a;
+@Sharable
+public class wo extends MessageToByteEncoder<ByteBuf> {
+   public static final int a = 3;
 
-   public wo(wd $$0) {
-      this.a = $$0;
-   }
-
-   public void channelRead(ChannelHandlerContext $$0, Object $$1) {
-      if ($$1 instanceof ByteBuf $$2) {
-         this.a.a($$2.readableBytes());
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) {
+      int $$3 = $$1.readableBytes();
+      int $$4 = wl.a($$3);
+      if ($$4 > 3) {
+         throw new EncoderException("Packet too large: size " + $$3 + " is over 8");
+      } else {
+         $$2.ensureWritable($$4 + $$3);
+         wl.a($$2, $$3);
+         $$2.writeBytes($$1, $$1.readerIndex(), $$3);
       }
-
-      $$0.fireChannelRead($$1);
    }
 }

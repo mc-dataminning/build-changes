@@ -1,103 +1,150 @@
+import com.google.common.collect.Iterables;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.OptionalInt;
+import java.util.stream.Stream;
 
-public class cwv implements cxx {
-   public static final Codec<cwv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               cww.c.fieldOf("material").forGetter(cwv::b),
-               cwy.c.fieldOf("pattern").forGetter(cwv::a),
-               Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, cwv::new)
-   );
-   public static final zn<xa, cwv> b = zn.a(cww.d, cwv::b, cwy.d, cwv::a, zl.b, $$0 -> $$0.f, cwv::new);
-   private static final xp c = xp.c(ac.a("item", new alf("smithing_template.upgrade"))).a(n.h);
-   private final ji<cww> d;
-   private final ji<cwy> e;
-   private final boolean f;
-   private final Function<ji<csh>, alf> g;
-   private final Function<ji<csh>, alf> h;
+public final class cwv {
+   private static final int d = -1;
+   private static final int e = 256;
+   public static final cwv a = new cwv(js.a());
+   public static final Codec<cwv> b = cwv.a.a.sizeLimitedListOf(256).xmap(cwv::b, cwv::f);
+   public static final ys<wf, cwv> c = cua.h.a(yq.c(256)).a(cwv::new, $$0 -> $$0.f);
+   private final js<cua> f;
+   private final int g;
 
-   private cwv(ji<cww> $$0, ji<cwy> $$1, boolean $$2, Function<ji<csh>, alf> $$3, Function<ji<csh>, alf> $$4) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
+   private cwv(js<cua> $$0) {
+      if ($$0.size() > 256) {
+         throw new IllegalArgumentException("Got " + $$0.size() + " items, but maximum is 256");
+      } else {
+         this.f = $$0;
+         this.g = cua.a($$0);
+      }
    }
 
-   public cwv(ji<cww> $$0, ji<cwy> $$1, boolean $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.g = ac.b($$2x -> {
-         alf $$3 = $$1.a().a();
-         String $$4 = b($$0, $$2x);
-         return $$3.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_leggings_" + $$4));
-      });
-      this.h = ac.b($$2x -> {
-         alf $$3 = $$1.a().a();
-         String $$4 = b($$0, $$2x);
-         return $$3.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_" + $$4));
-      });
-      this.f = $$2;
+   private cwv(int $$0) {
+      this(js.a($$0, cua.l));
    }
 
-   public cwv(ji<cww> $$0, ji<cwy> $$1) {
-      this($$0, $$1, true);
+   private cwv(List<cua> $$0) {
+      this($$0.size());
+
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         this.f.set($$1, $$0.get($$1));
+      }
    }
 
-   private static String b(ji<cww> $$0, ji<csh> $$1) {
-      Map<ji<csh>, String> $$2 = $$0.a().d();
-      String $$3 = $$2.get($$1);
-      return $$3 != null ? $$3 : $$0.a().a();
+   private static cwv b(List<cwv.a> $$0) {
+      OptionalInt $$1 = $$0.stream().mapToInt(cwv.a::a).max();
+      if ($$1.isEmpty()) {
+         return a;
+      } else {
+         cwv $$2 = new cwv($$1.getAsInt() + 1);
+
+         for (cwv.a $$3 : $$0) {
+            $$2.f.set($$3.a(), $$3.b());
+         }
+
+         return $$2;
+      }
    }
 
-   public boolean a(ji<cwy> $$0, ji<cww> $$1) {
-      return $$0.equals(this.e) && $$1.equals(this.d);
+   public static cwv a(List<cua> $$0) {
+      int $$1 = c($$0);
+      if ($$1 == -1) {
+         return a;
+      } else {
+         cwv $$2 = new cwv($$1 + 1);
+
+         for (int $$3 = 0; $$3 <= $$1; $$3++) {
+            $$2.f.set($$3, $$0.get($$3).s());
+         }
+
+         return $$2;
+      }
    }
 
-   public ji<cwy> a() {
-      return this.e;
+   private static int c(List<cua> $$0) {
+      for (int $$1 = $$0.size() - 1; $$1 >= 0; $$1--) {
+         if (!$$0.get($$1).e()) {
+            return $$1;
+         }
+      }
+
+      return -1;
    }
 
-   public ji<cww> b() {
-      return this.d;
+   private List<cwv.a> f() {
+      List<cwv.a> $$0 = new ArrayList<>();
+
+      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
+         cua $$2 = this.f.get($$1);
+         if (!$$2.e()) {
+            $$0.add(new cwv.a($$1, $$2));
+         }
+      }
+
+      return $$0;
    }
 
-   public alf a(ji<csh> $$0) {
-      return this.g.apply($$0);
+   public void a(js<cua> $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         cua $$2 = $$1 < this.f.size() ? this.f.get($$1) : cua.l;
+         $$0.set($$1, $$2.s());
+      }
    }
 
-   public alf b(ji<csh> $$0) {
-      return this.h.apply($$0);
+   public cua a() {
+      return this.f.isEmpty() ? cua.l : this.f.get(0).s();
+   }
+
+   public Stream<cua> b() {
+      return this.f.stream().map(cua::s);
+   }
+
+   public Stream<cua> c() {
+      return this.f.stream().filter($$0 -> !$$0.e()).map(cua::s);
+   }
+
+   public Iterable<cua> d() {
+      return Iterables.filter(this.f, $$0 -> !$$0.e());
+   }
+
+   public Iterable<cua> e() {
+      return Iterables.transform(this.d(), cua::s);
    }
 
    @Override
    public boolean equals(Object $$0) {
-      return !($$0 instanceof cwv $$1) ? false : this.f == $$1.f && this.e.equals($$1.e) && this.d.equals($$1.d);
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof cwv $$1 && cua.a(this.f, $$1.f)) {
+            return true;
+         }
+
+         return false;
+      }
    }
 
    @Override
    public int hashCode() {
-      int $$0 = this.d.hashCode();
-      $$0 = 31 * $$0 + this.e.hashCode();
-      return 31 * $$0 + (this.f ? 1 : 0);
+      return this.g;
    }
 
-   @Override
-   public void a(cum.b $$0, Consumer<xp> $$1, cwk $$2) {
-      if (this.f) {
-         $$1.accept(c);
-         $$1.accept(xo.a().b(this.e.a().a(this.d)));
-         $$1.accept(xo.a().b(this.d.a().e()));
+   static record a(int b, cua c) {
+      public static final Codec<cwv.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.intRange(0, 255).fieldOf("slot").forGetter(cwv.a::a), cua.b.fieldOf("item").forGetter(cwv.a::b)).apply($$0, cwv.a::new)
+      );
+
+      public int a() {
+         return this.b;
       }
-   }
 
-   public cwv a(boolean $$0) {
-      return new cwv(this.d, this.e, $$0, this.g, this.h);
+      public cua b() {
+         return this.c;
+      }
    }
 }

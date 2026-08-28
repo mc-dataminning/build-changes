@@ -1,90 +1,84 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import javax.annotation.Nullable;
+public class ger implements atv {
+   private final geq a;
+   private final get b;
+   private final gdk c;
+   private final ges d;
+   private final aym e = aym.a();
+   private final fgq f;
 
-public class ger {
-   public float[] a;
-   public final int b;
-
-   public ger(@Nullable float[] $$0, int $$1) {
+   public ger(geq $$0, gdk $$1, fgq $$2) {
       this.a = $$0;
-      this.b = $$1;
+      this.c = $$1;
+      this.f = $$2;
+      this.b = new get(this.f);
+      this.d = new ges();
    }
 
-   public float a(int $$0) {
-      if (this.a == null) {
-         throw new NullPointerException("uvs");
-      } else {
-         int $$1 = this.d($$0);
-         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
+   public geq a() {
+      return this.a;
+   }
+
+   public void a(dsh $$0, ja $$1, dbg $$2, fag $$3, fak $$4) {
+      if ($$0.l() == dll.c) {
+         grj $$5 = this.a.b($$0);
+         long $$6 = $$0.a($$1);
+         this.b.a($$2, $$5, $$0, $$1, $$3, $$4, true, this.e, $$6, goz.d);
       }
    }
 
-   public float b(int $$0) {
-      if (this.a == null) {
-         throw new NullPointerException("uvs");
-      } else {
-         int $$1 = this.d($$0);
-         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
+   public void a(dsh $$0, ja $$1, dbg $$2, fag $$3, fak $$4, boolean $$5, aym $$6) {
+      try {
+         dll $$7 = $$0.l();
+         if ($$7 == dll.c) {
+            this.b.a($$2, this.a($$0), $$0, $$1, $$3, $$4, $$5, $$6, $$0.a($$1), goz.d);
+         }
+      } catch (Throwable var11) {
+         o $$9 = o.a(var11, "Tesselating block in world");
+         p $$10 = $$9.a("Block being tesselated");
+         p.a($$10, $$2, $$1, $$0);
+         throw new y($$9);
       }
    }
 
-   private int d(int $$0) {
-      return ($$0 + this.b / 90) % 4;
-   }
-
-   public int c(int $$0) {
-      return ($$0 + 4 - this.b / 90) % 4;
-   }
-
-   public void a(float[] $$0) {
-      if (this.a == null) {
-         this.a = $$0;
+   public void a(ja $$0, dbg $$1, fak $$2, dsh $$3, eob $$4) {
+      try {
+         this.d.a($$1, $$0, $$2, $$3, $$4);
+      } catch (Throwable var9) {
+         o $$6 = o.a(var9, "Tesselating liquid in world");
+         p $$7 = $$6.a("Block being tesselated");
+         p.a($$7, $$1, $$0, null);
+         throw new y($$6);
       }
    }
 
-   protected static class a implements JsonDeserializer<ger> {
-      private static final int a = 0;
+   public get b() {
+      return this.b;
+   }
 
-      public ger a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         float[] $$4 = this.b($$3);
-         int $$5 = this.a($$3);
-         return new ger($$4, $$5);
-      }
+   public grj a(dsh $$0) {
+      return this.a.b($$0);
+   }
 
-      protected int a(JsonObject $$0) {
-         int $$1 = ayp.a($$0, "rotation", 0);
-         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
-            return $$1;
-         } else {
-            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
+   public void a(dsh $$0, fag $$1, gdx $$2, int $$3, int $$4) {
+      dll $$5 = $$0.l();
+      if ($$5 != dll.a) {
+         switch ($$5) {
+            case c:
+               grj $$6 = this.a($$0);
+               int $$7 = this.f.a($$0, null, null, 0);
+               float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
+               float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
+               float $$10 = (float)($$7 & 0xFF) / 255.0F;
+               this.b.a($$1.c(), $$2.getBuffer(gds.a($$0, false)), $$0, $$6, $$8, $$9, $$10, $$3, $$4);
+               break;
+            case b:
+               this.c.a(new cua($$0.b()), ctx.a, $$1, $$2, $$3, $$4);
          }
       }
+   }
 
-      @Nullable
-      private float[] b(JsonObject $$0) {
-         if (!$$0.has("uv")) {
-            return null;
-         } else {
-            JsonArray $$1 = ayp.v($$0, "uv");
-            if ($$1.size() != 4) {
-               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
-            } else {
-               float[] $$2 = new float[4];
-
-               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-                  $$2[$$3] = ayp.e($$1.get($$3), "uv[" + $$3 + "]");
-               }
-
-               return $$2;
-            }
-         }
-      }
+   @Override
+   public void a(atu $$0) {
+      this.d.a();
    }
 }

@@ -1,4 +1,8 @@
-@FunctionalInterface
-public interface dwd {
-   void onChunkStatusChange(dbh var1, aqy var2);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dwd {
 }

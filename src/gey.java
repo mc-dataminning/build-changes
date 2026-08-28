@@ -5,90 +5,84 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import javax.annotation.Nullable;
 
 public class gey {
-   public static final gey a = new gey(new Vector3f(), new Vector3f(), new Vector3f(1.0F, 1.0F, 1.0F));
-   public final Vector3f b;
-   public final Vector3f c;
-   public final Vector3f d;
+   public float[] a;
+   public final int b;
 
-   public gey(Vector3f $$0, Vector3f $$1, Vector3f $$2) {
-      this.b = new Vector3f($$0);
-      this.c = new Vector3f($$1);
-      this.d = new Vector3f($$2);
+   public gey(@Nullable float[] $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(boolean $$0, faa $$1) {
-      if (this != a) {
-         float $$2 = this.b.x();
-         float $$3 = this.b.y();
-         float $$4 = this.b.z();
-         if ($$0) {
-            $$3 = -$$3;
-            $$4 = -$$4;
-         }
-
-         int $$5 = $$0 ? -1 : 1;
-         $$1.a((float)$$5 * this.c.x(), this.c.y(), this.c.z());
-         $$1.a(new Quaternionf().rotationXYZ($$2 * (float) (Math.PI / 180.0), $$3 * (float) (Math.PI / 180.0), $$4 * (float) (Math.PI / 180.0)));
-         $$1.b(this.d.x(), this.d.y(), this.d.z());
-      }
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if (this.getClass() != $$0.getClass()) {
-         return false;
+   public float a(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
       } else {
-         gey $$1 = (gey)$$0;
-         return this.b.equals($$1.b) && this.d.equals($$1.d) && this.c.equals($$1.c);
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
       }
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      $$0 = 31 * $$0 + this.c.hashCode();
-      return 31 * $$0 + this.d.hashCode();
+   public float b(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
+      } else {
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
+      }
+   }
+
+   private int d(int $$0) {
+      return ($$0 + this.b / 90) % 4;
+   }
+
+   public int c(int $$0) {
+      return ($$0 + 4 - this.b / 90) % 4;
+   }
+
+   public void a(float[] $$0) {
+      if (this.a == null) {
+         this.a = $$0;
+      }
    }
 
    protected static class a implements JsonDeserializer<gey> {
-      private static final Vector3f c = new Vector3f(0.0F, 0.0F, 0.0F);
-      private static final Vector3f d = new Vector3f(0.0F, 0.0F, 0.0F);
-      private static final Vector3f e = new Vector3f(1.0F, 1.0F, 1.0F);
-      public static final float a = 5.0F;
-      public static final float b = 4.0F;
+      private static final int a = 0;
 
       public gey a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
          JsonObject $$3 = $$0.getAsJsonObject();
-         Vector3f $$4 = this.a($$3, "rotation", c);
-         Vector3f $$5 = this.a($$3, "translation", d);
-         $$5.mul(0.0625F);
-         $$5.set(ayz.a($$5.x, -5.0F, 5.0F), ayz.a($$5.y, -5.0F, 5.0F), ayz.a($$5.z, -5.0F, 5.0F));
-         Vector3f $$6 = this.a($$3, "scale", e);
-         $$6.set(ayz.a($$6.x, -4.0F, 4.0F), ayz.a($$6.y, -4.0F, 4.0F), ayz.a($$6.z, -4.0F, 4.0F));
-         return new gey($$4, $$5, $$6);
+         float[] $$4 = this.b($$3);
+         int $$5 = this.a($$3);
+         return new gey($$4, $$5);
       }
 
-      private Vector3f a(JsonObject $$0, String $$1, Vector3f $$2) {
-         if (!$$0.has($$1)) {
-            return $$2;
+      protected int a(JsonObject $$0) {
+         int $$1 = axu.a($$0, "rotation", 0);
+         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
+            return $$1;
          } else {
-            JsonArray $$3 = ayp.v($$0, $$1);
-            if ($$3.size() != 3) {
-               throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$3.size());
-            } else {
-               float[] $$4 = new float[3];
+            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
+         }
+      }
 
-               for (int $$5 = 0; $$5 < $$4.length; $$5++) {
-                  $$4[$$5] = ayp.e($$3.get($$5), $$1 + "[" + $$5 + "]");
+      @Nullable
+      private float[] b(JsonObject $$0) {
+         if (!$$0.has("uv")) {
+            return null;
+         } else {
+            JsonArray $$1 = axu.v($$0, "uv");
+            if ($$1.size() != 4) {
+               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
+            } else {
+               float[] $$2 = new float[4];
+
+               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+                  $$2[$$3] = axu.e($$1.get($$3), "uv[" + $$3 + "]");
                }
 
-               return new Vector3f($$4[0], $$4[1], $$4[2]);
+               return $$2;
             }
          }
       }

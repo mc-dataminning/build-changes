@@ -1,61 +1,23 @@
-import java.util.UUID;
+import io.netty.buffer.ByteBuf;
 
-public record aaw(aaw.a c) implements aax {
-   public static final zn<wm, aaw> a = aax.a(aaw::a, aaw::new);
-   public static final aax.b<aaw> b = aax.a("debug/breeze");
+public class aaw implements zb<aav> {
+   public static final aaw a = new aaw();
+   public static final ys<ByteBuf, aaw> b = ys.a(a);
 
-   private aaw(wm $$0) {
-      this(new aaw.a($$0));
-   }
-
-   private void a(wm $$0) {
-      this.c.a($$0);
+   private aaw() {
    }
 
    @Override
-   public aax.b<aaw> a() {
-      return b;
+   public zd<aaw> a() {
+      return abb.a;
    }
 
-   public aaw.a b() {
-      return this.c;
+   public void a(aav $$0) {
+      $$0.a(this);
    }
 
-   public static record a(UUID a, int b, Integer c, iz d) {
-      public a(wm $$0) {
-         this($$0.n(), $$0.readInt(), $$0.c(wm::readInt), $$0.c(iz.b));
-      }
-
-      public void a(wm $$0) {
-         $$0.a(this.a);
-         $$0.p(this.b);
-         $$0.a(this.c, wm::p);
-         $$0.a(this.d, iz.b);
-      }
-
-      public String a() {
-         return ags.a(this.a);
-      }
-
-      @Override
-      public String toString() {
-         return this.a();
-      }
-
-      public UUID b() {
-         return this.a;
-      }
-
-      public int c() {
-         return this.b;
-      }
-
-      public Integer d() {
-         return this.c;
-      }
-
-      public iz e() {
-         return this.d;
-      }
+   @Override
+   public boolean d() {
+      return true;
    }
 }

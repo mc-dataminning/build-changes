@@ -1,15 +1,15 @@
-public class cyj extends cyg {
-   public cyj(String $$0, cym $$1, cyu $$2, cur $$3, float $$4, int $$5) {
-      super(czc.c, $$0, $$1, $$2, $$3, $$4, $$5);
-   }
+public interface cyj {
+   cua a(int var1);
 
-   @Override
-   public cur g() {
-      return new cur(dfd.nW);
-   }
+   int a();
 
-   @Override
-   public czb<?> ao_() {
-      return czb.q;
+   default boolean b() {
+      for (int $$0 = 0; $$0 < this.a(); $$0++) {
+         if (!this.a($$0).e()) {
+            return false;
+         }
+      }
+
+      return true;
    }
 }

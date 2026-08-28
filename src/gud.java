@@ -1,33 +1,7 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.util.concurrent.Executor;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+public interface gud<T> {
+   int e();
 
-public class gud implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final bmd<guc> b;
-   private final bpp<Runnable> c;
+   T b(aym var1);
 
-   public gud(FileChannel $$0, Executor $$1) {
-      this.b = new bmd<>(guc.a, $$0);
-      this.c = bpp.a($$1, "telemetry-event-log");
-   }
-
-   public gue a() {
-      return $$0 -> this.c.a(() -> {
-            try {
-               this.b.a($$0);
-            } catch (IOException var3) {
-               a.error("Failed to write telemetry event to log", var3);
-            }
-         });
-   }
-
-   @Override
-   public void close() {
-      this.c.a(() -> IOUtils.closeQuietly(this.b));
-      this.c.close();
-   }
+   void a(gty var1);
 }

@@ -1,10 +1,8 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class der extends dfb {
-   protected static final int a = 2;
-   protected static final ewm b = dfb.a(6.0, 0.0, 6.0, 10.0, 10.0, 10.0);
-
-   protected der(dsd.d $$0) {
+public abstract class der extends dff implements dhx {
+   protected der(dsg.d $$0) {
       super($$0);
    }
 
@@ -12,17 +10,26 @@ public abstract class der extends dfb {
    protected abstract MapCodec<? extends der> a();
 
    @Override
-   protected ewm a(dse $$0, dbg $$1, iz $$2, evy $$3) {
-      return b;
+   protected dll a_(dsh $$0) {
+      return dll.a;
    }
 
    @Override
-   protected dse a(dse $$0, je $$1, dse $$2, dcb $$3, iz $$4, iz $$5) {
-      return $$1 == je.a && !this.a($$0, $$3, $$4) ? dfd.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected boolean a(dsh $$0, dcd $$1, ja $$2, int $$3, int $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      dpn $$5 = $$1.c_($$2);
+      return $$5 == null ? false : $$5.a_($$3, $$4);
    }
 
+   @Nullable
    @Override
-   protected boolean a(dse $$0, dcd $$1, iz $$2) {
-      return a($$1, $$2.d(), je.b);
+   protected bqh b(dsh $$0, dcd $$1, ja $$2) {
+      dpn $$3 = $$1.c_($$2);
+      return $$3 instanceof bqh ? (bqh)$$3 : null;
+   }
+
+   @Nullable
+   protected static <E extends dpn, A extends dpn> dpo<A> a(dpp<A> $$0, dpp<E> $$1, dpo<? super E> $$2) {
+      return $$1 == $$0 ? $$2 : null;
    }
 }

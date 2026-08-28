@@ -1,22 +1,36 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import com.google.common.collect.ImmutableMap;
 
-public class cdm extends cdv {
-   public static final float a = 10.0F;
+public class cdm extends cdc {
+   private static final ImmutableMap<bsj<?>, Float> a = ImmutableMap.builder()
+      .put(bsj.B, 8.0F)
+      .put(bsj.J, 12.0F)
+      .put(bsj.ac, 8.0F)
+      .put(bsj.ad, 12.0F)
+      .put(bsj.aC, 15.0F)
+      .put(bsj.aH, 12.0F)
+      .put(bsj.bi, 8.0F)
+      .put(bsj.bk, 10.0F)
+      .put(bsj.bt, 10.0F)
+      .put(bsj.bu, 8.0F)
+      .put(bsj.bw, 8.0F)
+      .build();
 
    @Override
-   protected boolean a(btr $$0, btr $$1) {
-      return !$$0.dS().a(ccv.U) && ceb.c($$0, $$1) && chb.j($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
+   protected boolean a(bsy $$0, bsy $$1) {
+      return this.b($$1) && this.e($$0, $$1);
    }
 
-   private boolean e(btr $$0, btr $$1) {
-      List<UUID> $$2 = $$0.dS().c(ccv.aa).orElseGet(ArrayList::new);
-      return $$2.contains($$1.cz());
+   private boolean e(bsy $$0, bsy $$1) {
+      float $$2 = (Float)a.get($$1.ak());
+      return $$1.g((bsd)$$0) <= (double)($$2 * $$2);
    }
 
    @Override
-   protected ccv<btr> b() {
-      return ccv.B;
+   protected ccc<bsy> b() {
+      return ccc.A;
+   }
+
+   private boolean b(bsy $$0) {
+      return a.containsKey($$0.ak());
    }
 }

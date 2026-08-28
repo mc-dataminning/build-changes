@@ -1,64 +1,78 @@
-import java.util.EnumSet;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
-
-public class cci<T extends btr> extends ccp {
-   private static final int i = 10;
-   protected final Class<T> a;
-   protected final int b;
-   @Nullable
-   protected btr c;
-   protected cei d;
-
-   public cci(btt $$0, Class<T> $$1, boolean $$2) {
-      this($$0, $$1, 10, $$2, false, null);
-   }
-
-   public cci(btt $$0, Class<T> $$1, boolean $$2, Predicate<btr> $$3) {
-      this($$0, $$1, 10, $$2, false, $$3);
-   }
-
-   public cci(btt $$0, Class<T> $$1, boolean $$2, boolean $$3) {
-      this($$0, $$1, 10, $$2, $$3, null);
-   }
-
-   public cci(btt $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<btr> $$5) {
-      super($$0, $$3, $$4);
-      this.a = $$1;
-      this.b = b($$2);
-      this.a(EnumSet.of(cap.a.d));
-      this.d = cei.a().a(this.l()).a($$5);
+public class cci extends cck {
+   public cci(bta $$0, dcd $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public boolean a() {
-      if (this.b > 0 && this.e.el().a(this.b) != 0) {
-         return false;
-      } else {
-         this.h();
-         return this.c != null;
-      }
+   protected eor a(int $$0) {
+      this.o = new eom();
+      this.o.a(true);
+      return new eor(this.o, $$0);
    }
 
-   protected evo a(double $$0) {
-      return this.e.cK().c($$0, 4.0, $$0);
+   @Override
+   protected boolean a(evz $$0, evz $$1) {
+      return a(this.a, $$0, $$1, true);
    }
 
-   protected void h() {
-      if (this.a != cmz.class && this.a != arg.class) {
-         this.c = this.e.dP().a(this.e.dP().a(this.a, this.a(this.l()), $$0 -> true), this.d, this.e, this.e.du(), this.e.dy(), this.e.dA());
-      } else {
-         this.c = this.e.dP().a(this.d, this.e, this.e.du(), this.e.dy(), this.e.dA());
-      }
+   @Override
+   protected boolean a() {
+      return this.p() && this.a.bi() || !this.a.bR();
+   }
+
+   @Override
+   protected evz b() {
+      return this.a.dn();
+   }
+
+   @Override
+   public eop a(bsd $$0, int $$1) {
+      return this.a($$0.dp(), $$1);
    }
 
    @Override
    public void c() {
-      this.e.h(this.c);
-      super.c();
+      this.e++;
+      if (this.m) {
+         this.i();
+      }
+
+      if (!this.l()) {
+         if (this.a()) {
+            this.k();
+         } else if (this.c != null && !this.c.c()) {
+            evz $$0 = this.c.a(this.a);
+            if (this.a.dt() == aye.a($$0.c) && this.a.dv() == aye.a($$0.d) && this.a.dz() == aye.a($$0.e)) {
+               this.c.a();
+            }
+         }
+
+         afy.a(this.b, this.a, this.c, this.l);
+         if (!this.l()) {
+            evz $$1 = this.c.a(this.a);
+            this.a.H().a($$1.c, $$1.d, $$1.e, this.d);
+         }
+      }
    }
 
-   public void a(@Nullable btr $$0) {
-      this.c = $$0;
+   public void b(boolean $$0) {
+      this.o.b($$0);
+   }
+
+   public boolean d() {
+      return this.o.d();
+   }
+
+   public void c(boolean $$0) {
+      this.o.a($$0);
+   }
+
+   public boolean e() {
+      return this.o.d();
+   }
+
+   @Override
+   public boolean a(ja $$0) {
+      return this.b.a_($$0).a(this.b, $$0, this.a);
    }
 }

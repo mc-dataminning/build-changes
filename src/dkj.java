@@ -1,68 +1,115 @@
 import com.mojang.serialization.MapCodec;
 
-public class dkj extends dfb implements dfe {
+public class dkj extends dff {
    public static final MapCodec<dkj> a = b(dkj::new);
+   public static final dtf<jf.a> b = dsx.H;
+   protected static final int c = 2;
+   protected static final ews d = dff.a(0.0, 0.0, 6.0, 16.0, 16.0, 10.0);
+   protected static final ews e = dff.a(6.0, 0.0, 0.0, 10.0, 16.0, 16.0);
 
    @Override
    public MapCodec<dkj> a() {
       return a;
    }
 
-   public dkj(dsd.d $$0) {
+   public dkj(dsg.d $$0) {
       super($$0);
+      this.k(this.E.b().a(b, jf.a.a));
    }
 
    @Override
-   public boolean b(dcd $$0, iz $$1, dse $$2) {
-      if (!$$0.a_($$1.c()).a((dbg)$$0, $$1)) {
-         return false;
-      } else {
-         for (iz $$3 : iz.c($$1.b(-1, -1, -1), $$1.b(1, 1, 1))) {
-            if ($$0.a_($$3).a(awp.aL)) {
-               return true;
+   protected ews a(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
+      switch ((jf.a)$$0.c(b)) {
+         case c:
+            return e;
+         case a:
+         default:
+            return d;
+      }
+   }
+
+   @Override
+   protected void b(dsh $$0, aqk $$1, ja $$2, aym $$3) {
+      if ($$1.D_().j() && $$1.ab().b(dbz.e) && $$3.a(2000) < $$1.al().a()) {
+         while ($$1.a_($$2).a(this)) {
+            $$2 = $$2.d();
+         }
+
+         if ($$1.a_($$2).a($$1, $$2, bsj.bx)) {
+            bsd $$4 = bsj.bx.a($$1, $$2.c(), btc.d);
+            if ($$4 != null) {
+               $$4.aw();
             }
          }
-
-         return false;
       }
    }
 
    @Override
-   public boolean a(dca $$0, azh $$1, iz $$2, dse $$3) {
-      return true;
+   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
+      jf.a $$6 = $$1.o();
+      jf.a $$7 = $$0.c(b);
+      boolean $$8 = $$7 != $$6 && $$6.d();
+      return !$$8 && !$$2.a(this) && !new epb($$3, $$4, $$7).c() ? dfh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void a(arf $$0, azh $$1, iz $$2, dse $$3) {
-      boolean $$4 = false;
-      boolean $$5 = false;
-
-      for (iz $$6 : iz.c($$2.b(-1, -1, -1), $$2.b(1, 1, 1))) {
-         dse $$7 = $$0.a_($$6);
-         if ($$7.a(dfd.on)) {
-            $$5 = true;
-         }
-
-         if ($$7.a(dfd.ow)) {
-            $$4 = true;
-         }
-
-         if ($$5 && $$4) {
-            break;
-         }
-      }
-
-      if ($$5 && $$4) {
-         $$0.a($$2, $$1.h() ? dfd.on.o() : dfd.ow.o(), 3);
-      } else if ($$5) {
-         $$0.a($$2, dfd.on.o(), 3);
-      } else if ($$4) {
-         $$0.a($$2, dfd.ow.o(), 3);
+   protected void a(dsh $$0, dcd $$1, ja $$2, bsd $$3) {
+      if ($$3.cw()) {
+         $$3.f($$2);
       }
    }
 
    @Override
-   public dfe.a ap_() {
-      return dfe.a.a;
+   public void a(dsh $$0, dcd $$1, ja $$2, aym $$3) {
+      if ($$3.a(100) == 0) {
+         $$1.a((double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, avf.uH, avg.e, 0.5F, $$3.i() * 0.4F + 0.8F, false);
+      }
+
+      for (int $$4 = 0; $$4 < 4; $$4++) {
+         double $$5 = (double)$$2.u() + $$3.j();
+         double $$6 = (double)$$2.v() + $$3.j();
+         double $$7 = (double)$$2.w() + $$3.j();
+         double $$8 = ((double)$$3.i() - 0.5) * 0.5;
+         double $$9 = ((double)$$3.i() - 0.5) * 0.5;
+         double $$10 = ((double)$$3.i() - 0.5) * 0.5;
+         int $$11 = $$3.a(2) * 2 - 1;
+         if (!$$1.a_($$2.g()).a(this) && !$$1.a_($$2.h()).a(this)) {
+            $$5 = (double)$$2.u() + 0.5 + 0.25 * (double)$$11;
+            $$8 = (double)($$3.i() * 2.0F * (float)$$11);
+         } else {
+            $$7 = (double)$$2.w() + 0.5 + 0.25 * (double)$$11;
+            $$10 = (double)($$3.i() * 2.0F * (float)$$11);
+         }
+
+         $$1.a(lj.ac, $$5, $$6, $$7, $$8, $$9, $$10);
+      }
+   }
+
+   @Override
+   public cua a(dcg $$0, ja $$1, dsh $$2) {
+      return cua.l;
+   }
+
+   @Override
+   protected dsh a(dsh $$0, dls $$1) {
+      switch ($$1) {
+         case d:
+         case b:
+            switch ((jf.a)$$0.c(b)) {
+               case c:
+                  return $$0.a(b, jf.a.a);
+               case a:
+                  return $$0.a(b, jf.a.c);
+               default:
+                  return $$0;
+            }
+         default:
+            return $$0;
+      }
+   }
+
+   @Override
+   protected void a(dsi.a<dff, dsh> $$0) {
+      $$0.a(b);
    }
 }

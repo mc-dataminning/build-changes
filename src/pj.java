@@ -1,100 +1,70 @@
-import com.google.common.hash.Hashing;
-import com.google.common.hash.HashingOutputStream;
-import com.mojang.logging.LogUtils;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class pj implements lw {
-   private static final Logger d = LogUtils.getLogger();
-   private final Iterable<Path> e;
-   private final ly f;
-
-   public pj(ly $$0, Collection<Path> $$1) {
-      this.e = $$1;
-      this.f = $$0;
+public class pj extends pv<bqy> {
+   public pj(lz $$0, CompletableFuture<jl.a> $$1) {
+      super($$0, lr.s, $$1);
    }
 
    @Override
-   public CompletableFuture<?> a(lu $$0) {
-      Path $$1 = this.f.a();
-      List<CompletableFuture<?>> $$2 = new ArrayList<>();
-
-      for (Path $$3 : this.e) {
-         $$2.add(
-            CompletableFuture.<CompletableFuture>supplyAsync(
-                  () -> {
-                     try {
-                        CompletableFuture var4;
-                        try (Stream<Path> $$3x = Files.walk($$3)) {
-                           var4 = CompletableFuture.allOf(
-                              $$3x.filter($$0xx -> $$0xx.toString().endsWith(".nbt"))
-                                 .map($$3xx -> CompletableFuture.runAsync(() -> a($$0, $$3xx, a($$3, $$3xx), $$1), ac.h()))
-                                 .toArray(CompletableFuture[]::new)
-                           );
-                        }
-
-                        return var4;
-                     } catch (IOException var8) {
-                        d.error("Failed to read structure input directory", var8);
-                        return CompletableFuture.completedFuture(null);
-                     }
-                  },
-                  ac.g()
-               )
-               .thenCompose($$0x -> $$0x)
+   protected void a(jl.a $$0) {
+      this.b(avw.a).a(bqz.x, bqz.w, bqz.y);
+      this.b(avw.c).a(bqz.d, bqz.g, bqz.h, bqz.i, bqz.m, bqz.o, bqz.q, bqz.r, bqz.j, bqz.l, bqz.u, bqz.v, bqz.p, bqz.N, bqz.n, bqz.U, bqz.R, bqz.T);
+      this.b(avw.d).b(avw.c).a(bqz.x, bqz.y);
+      this.b(avw.e).a(bqz.n, bqz.U);
+      this.b(avw.g).a(bqz.j);
+      this.b(avw.h).a(bqz.n, bqz.U);
+      this.b(avw.i).a(bqz.R);
+      this.b(avw.j).a(bqz.a, bqz.b, bqz.d, bqz.e, bqz.f, bqz.K, bqz.J);
+      this.b(avw.k).a(bqz.D, bqz.E, bqz.F, bqz.K, bqz.J, bqz.L, bqz.M, bqz.H);
+      this.b(avw.l).a(bqz.p, bqz.N, bqz.R, bqz.O);
+      this.b(avw.m).a(bqz.I, bqz.P, bqz.Q, bqz.S);
+      this.b(avw.n).a(bqz.l, bqz.v);
+      this.b(avw.o).a(bqz.i);
+      this.b(avw.p).a(bqz.u);
+      this.b(avw.q).a(bqz.c);
+      this.b(avw.r).a(bqz.B);
+      this.b(avw.s).a(bqz.i);
+      this.b(avw.t).a(bqz.n);
+      this.b(avw.u).a(bqz.i);
+      this.b(avw.v).a(bqz.a, bqz.b);
+      this.b(avw.w).a(bqz.d);
+      this.b(avw.x).a(bqz.p, bqz.O).b(avw.m);
+      this.b(avw.y).a(bqz.p);
+      this.b(avw.z).b(avw.m);
+      this.b(avw.A)
+         .a(
+            bqz.P,
+            bqz.Q,
+            bqz.S,
+            bqz.a,
+            bqz.c,
+            bqz.d,
+            bqz.e,
+            bqz.f,
+            bqz.g,
+            bqz.h,
+            bqz.i,
+            bqz.j,
+            bqz.k,
+            bqz.l,
+            bqz.m,
+            bqz.n,
+            bqz.o,
+            bqz.p,
+            bqz.q,
+            bqz.r,
+            bqz.s,
+            bqz.t,
+            bqz.u,
+            bqz.v,
+            bqz.T,
+            bqz.U
          );
-      }
-
-      return CompletableFuture.allOf($$2.toArray(CompletableFuture[]::new));
-   }
-
-   @Override
-   public final String a() {
-      return "NBT -> SNBT";
-   }
-
-   private static String a(Path $$0, Path $$1) {
-      String $$2 = $$0.relativize($$1).toString().replaceAll("\\\\", "/");
-      return $$2.substring(0, $$2.length() - ".nbt".length());
-   }
-
-   @Nullable
-   public static Path a(lu $$0, Path $$1, String $$2, Path $$3) {
-      try {
-         Path var7;
-         try (
-            InputStream $$4 = Files.newInputStream($$1);
-            InputStream $$5 = new ayi($$4);
-         ) {
-            Path $$6 = $$3.resolve($$2 + ".snbt");
-            a($$0, $$6, vh.a(vf.a($$5, vb.a())));
-            d.info("Converted {} from NBT to SNBT", $$2);
-            var7 = $$6;
-         }
-
-         return var7;
-      } catch (IOException var12) {
-         d.error("Couldn't convert {} from NBT to SNBT at {}", new Object[]{$$2, $$1, var12});
-         return null;
-      }
-   }
-
-   public static void a(lu $$0, Path $$1, String $$2) throws IOException {
-      ByteArrayOutputStream $$3 = new ByteArrayOutputStream();
-      HashingOutputStream $$4 = new HashingOutputStream(Hashing.sha1(), $$3);
-      $$4.write($$2.getBytes(StandardCharsets.UTF_8));
-      $$4.write(10);
-      $$0.writeIfNeeded($$1, $$3.toByteArray(), $$4.hash());
+      this.b(avw.B).a(bqz.D, bqz.E, bqz.J, bqz.L, bqz.H);
+      this.b(avw.C).a(bqz.C, bqz.Q);
+      this.b(avw.D).b(avw.e).a(bqz.h, bqz.i, bqz.s, bqz.u, bqz.g, bqz.N, bqz.p, bqz.T, bqz.j, bqz.O, bqz.q);
+      this.b(avw.E).a(bqz.C);
+      this.b(avw.F).a(bqz.b, bqz.f);
+      this.b(avw.b).a(bqz.D, bqz.E);
    }
 }

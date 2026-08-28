@@ -1,70 +1,117 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import java.util.List;
 
-public record dye(int g, int h, int i, int j) {
+public record dye(dyh j, dsh k, dsh l, dyf m, dyq.o n, List<ddm.d> o, int p, boolean q, boolean r, boolean s, boolean t) {
    public static final Codec<dye> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.intRange(dvw.e, dvw.d).fieldOf("min_y").forGetter(dye::c),
-                  Codec.intRange(0, dvw.c).fieldOf("height").forGetter(dye::d),
-                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(dye::e),
-                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(dye::f)
-               )
-               .apply($$0, dye::new)
-      )
-      .comapFlatMap(dye::a, Function.identity());
-   protected static final dye b = a(-64, 384, 1, 2);
-   protected static final dye c = a(0, 128, 1, 2);
-   protected static final dye d = a(0, 128, 2, 1);
-   protected static final dye e = a(-64, 192, 1, 2);
-   protected static final dye f = a(0, 256, 2, 1);
+      $$0 -> $$0.group(
+               dyh.a.fieldOf("noise").forGetter(dye::f),
+               dsh.b.fieldOf("default_block").forGetter(dye::g),
+               dsh.b.fieldOf("default_fluid").forGetter(dye::h),
+               dyf.a.fieldOf("noise_router").forGetter(dye::i),
+               dyq.o.b.fieldOf("surface_rule").forGetter(dye::j),
+               ddm.d.a.listOf().fieldOf("spawn_target").forGetter(dye::k),
+               Codec.INT.fieldOf("sea_level").forGetter(dye::l),
+               Codec.BOOL.fieldOf("disable_mob_generation").forGetter(dye::a),
+               Codec.BOOL.fieldOf("aquifers_enabled").forGetter(dye::b),
+               Codec.BOOL.fieldOf("ore_veins_enabled").forGetter(dye::c),
+               Codec.BOOL.fieldOf("legacy_random_source").forGetter(dye::n)
+            )
+            .apply($$0, dye::new)
+   );
+   public static final Codec<jj<dye>> b = akg.a(lr.aN, a);
+   public static final akj<dye> c = akj.a(lr.aN, new akk("overworld"));
+   public static final akj<dye> d = akj.a(lr.aN, new akk("large_biomes"));
+   public static final akj<dye> e = akj.a(lr.aN, new akk("amplified"));
+   public static final akj<dye> f = akj.a(lr.aN, new akk("nether"));
+   public static final akj<dye> g = akj.a(lr.aN, new akk("end"));
+   public static final akj<dye> h = akj.a(lr.aN, new akk("caves"));
+   public static final akj<dye> i = akj.a(lr.aN, new akk("floating_islands"));
 
-   private static DataResult<dye> a(dye $$0) {
-      if ($$0.c() + $$0.d() > dvw.d + 1) {
-         return DataResult.error(() -> "min_y + height cannot be higher than: " + (dvw.d + 1));
-      } else if ($$0.d() % 16 != 0) {
-         return DataResult.error(() -> "height has to be a multiple of 16");
-      } else {
-         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
-      }
+   @Deprecated
+   public boolean a() {
+      return this.q;
    }
 
-   public static dye a(int $$0, int $$1, int $$2, int $$3) {
-      dye $$4 = new dye($$0, $$1, $$2, $$3);
-      a($$4).error().ifPresent($$0x -> {
-         throw new IllegalStateException($$0x.message());
-      });
-      return $$4;
+   public boolean b() {
+      return this.r;
    }
 
-   public int a() {
-      return jt.c(this.f());
+   public boolean c() {
+      return this.s;
    }
 
-   public int b() {
-      return jt.c(this.e());
+   public dyy.a d() {
+      return this.t ? dyy.a.a : dyy.a.b;
    }
 
-   public dye a(dcc $$0) {
-      int $$1 = Math.max(this.g, $$0.I_());
-      int $$2 = Math.min(this.g + this.h, $$0.am()) - $$1;
-      return new dye($$1, $$2, this.i, this.j);
+   public static void a(qm<dye> $$0) {
+      $$0.a(c, a($$0, false, false));
+      $$0.a(d, a($$0, false, true));
+      $$0.a(e, a($$0, true, false));
+      $$0.a(f, c($$0));
+      $$0.a(g, b($$0));
+      $$0.a(h, d($$0));
+      $$0.a(i, e($$0));
    }
 
-   public int c() {
-      return this.g;
+   private static dye b(qm<?> $$0) {
+      return new dye(dyh.d, dfh.fz.o(), dfh.a.o(), dyg.a($$0.a(lr.aI)), qz.c(), List.of(), 0, true, false, false, true);
    }
 
-   public int d() {
-      return this.h;
+   private static dye c(qm<?> $$0) {
+      return new dye(dyh.c, dfh.dV.o(), dfh.H.o(), dyg.a($$0.a(lr.aI), $$0.a(lr.aO)), qz.b(), List.of(), 32, false, false, false, true);
    }
 
-   public int e() {
-      return this.i;
+   private static dye a(qm<?> $$0, boolean $$1, boolean $$2) {
+      return new dye(dyh.b, dfh.b.o(), dfh.G.o(), dyg.a($$0.a(lr.aI), $$0.a(lr.aO), $$2, $$1), qz.a(), new ddt().a(), 63, false, true, true, false);
    }
 
-   public int f() {
+   private static dye d(qm<?> $$0) {
+      return new dye(dyh.e, dfh.b.o(), dfh.G.o(), dyg.b($$0.a(lr.aI), $$0.a(lr.aO)), qz.a(false, true, true), List.of(), 32, false, false, false, true);
+   }
+
+   private static dye e(qm<?> $$0) {
+      return new dye(dyh.f, dfh.b.o(), dfh.G.o(), dyg.c($$0.a(lr.aI), $$0.a(lr.aO)), qz.a(false, false, false), List.of(), -64, false, false, false, true);
+   }
+
+   public static dye e() {
+      return new dye(dyh.b, dfh.b.o(), dfh.a.o(), dyg.a(), qz.d(), List.of(), 63, true, false, false, false);
+   }
+
+   public dyh f() {
       return this.j;
+   }
+
+   public dsh g() {
+      return this.k;
+   }
+
+   public dsh h() {
+      return this.l;
+   }
+
+   public dyf i() {
+      return this.m;
+   }
+
+   public dyq.o j() {
+      return this.n;
+   }
+
+   public List<ddm.d> k() {
+      return this.o;
+   }
+
+   public int l() {
+      return this.p;
+   }
+
+   public boolean m() {
+      return this.r;
+   }
+
+   public boolean n() {
+      return this.t;
    }
 }

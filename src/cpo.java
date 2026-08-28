@@ -1,12 +1,9 @@
-public class cpo {
-   private final String a;
-
-   public cpo(String $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.a;
-   }
+public enum cpo {
+   a,
+   b,
+   c,
+   d,
+   e,
+   f,
+   g;
 }

@@ -1,27 +1,54 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.K1;
+import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bwe {
-   public static bvl<btr> a(float $$0, boolean $$1, int $$2) {
-      return a($$0x -> true, $$0, $$1, $$2);
+   public static bus<clu> a() {
+      return bye.a(
+         (Function<bye.b<clu>, ? extends App<bye.c<clu>, byh<clu>>>)($$0 -> $$0.group($$0.b(ccc.c), $$0.b(ccc.g))
+               .apply(
+                  $$0,
+                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                        ji $$6 = $$0.b($$1);
+                        $$3.y()
+                           .c($$6.b())
+                           .ifPresent(
+                              $$4x -> $$0.<List<bsy>>b($$2)
+                                    .stream()
+                                    .filter($$1xxx -> $$1xxx instanceof clu && $$1xxx != $$4)
+                                    .map($$0xxxx -> (clu)$$0xxxx)
+                                    .filter(bsy::bD)
+                                    .filter($$2xxx -> a($$6, $$4x, $$2xxx))
+                                    .reduce($$4, bwe::a)
+                           );
+                        return true;
+                     }
+               ))
+      );
    }
 
-   public static <E extends btr> bvl<E> a(Predicate<E> $$0, float $$1, boolean $$2, int $$3) {
-      return byx.a((Function<byx.b<E>, ? extends App<byx.c<E>, bza<E>>>)($$4 -> {
-         byx<E, ? extends byy<? extends K1, ccy>> $$5 = $$2 ? $$4.a(ccv.m) : $$4.c(ccv.m);
-         return $$4.group($$4.a(ccv.n), $$5, $$4.b(ccv.L), $$4.a(ccv.aP)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
-               cjj $$11 = $$4.b($$6);
-               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dP().C_().a($$11.dp())) {
-                  ccy $$12 = new ccy(new bvv($$11, false), $$1, 0);
-                  $$4x.a(new bvv($$11, true));
-                  $$5x.a($$12);
-                  return true;
-               } else {
-                  return false;
-               }
-            });
-      }));
+   private static clu a(clu $$0, clu $$1) {
+      clu $$2;
+      clu $$3;
+      if ($$0.u() > $$1.u()) {
+         $$2 = $$0;
+         $$3 = $$1;
+      } else {
+         $$2 = $$1;
+         $$3 = $$0;
+      }
+
+      $$3.dT().b(ccc.c);
+      return $$2;
+   }
+
+   private static boolean a(ji $$0, jj<cef> $$1, clu $$2) {
+      Optional<ji> $$3 = $$2.dT().c(ccc.c);
+      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gy().b());
+   }
+
+   private static boolean a(jj<cef> $$0, clx $$1) {
+      return $$1.b().test($$0);
    }
 }

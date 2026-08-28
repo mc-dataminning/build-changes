@@ -1,30 +1,20 @@
-public class fxe {
-   public static final fxe a = a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
-   public final float b;
-   public final float c;
-   public final float d;
-   public final float e;
-   public final float f;
-   public final float g;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-   private fxe(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+public class fxe implements atv {
+   private Map<fxg, fxo> a = ImmutableMap.of();
+
+   public fxi a(fxg $$0) {
+      fxo $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("No model for layer " + $$0);
+      } else {
+         return $$1.a();
+      }
    }
 
-   public static fxe a(float $$0, float $$1, float $$2) {
-      return a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F);
-   }
-
-   public static fxe b(float $$0, float $$1, float $$2) {
-      return a(0.0F, 0.0F, 0.0F, $$0, $$1, $$2);
-   }
-
-   public static fxe a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      return new fxe($$0, $$1, $$2, $$3, $$4, $$5);
+   @Override
+   public void a(atu $$0) {
+      this.a = ImmutableMap.copyOf(fxf.a());
    }
 }

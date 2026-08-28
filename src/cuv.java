@@ -1,46 +1,71 @@
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
+import com.google.common.collect.Maps;
 import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class cuv extends cum {
-   private static final Logger a = LogUtils.getLogger();
+public class cuv extends ctv {
+   private static final Map<ave, cuv> a = Maps.newHashMap();
+   private final int b;
+   private final ave c;
+   private final int j;
 
-   public cuv(cum.a $$0) {
-      super($$0);
+   protected cuv(int $$0, ave $$1, ctv.a $$2, int $$3) {
+      super($$2);
+      this.b = $$0;
+      this.c = $$1;
+      this.j = $$3 * 20;
+      a.put(this.c, this);
    }
 
    @Override
-   public bqx<cur> a(dca $$0, cmz $$1, bqv $$2) {
-      cur $$3 = $$1.b($$2);
-      if (!$$1.fP()) {
-         $$1.a($$2, cur.l);
-      }
-
-      List<alf> $$4 = $$3.a(km.R, List.of());
-      if ($$4.isEmpty()) {
-         return bqx.d($$3);
-      } else {
-         if (!$$0.B) {
-            cza $$5 = $$0.o().aJ();
-            List<cyz<?>> $$6 = new ArrayList<>($$4.size());
-
-            for (alf $$7 : $$4) {
-               Optional<cyz<?>> $$8 = $$5.a($$7);
-               if (!$$8.isPresent()) {
-                  a.error("Invalid recipe: {}", $$7);
-                  return bqx.d($$3);
-               }
-
-               $$6.add($$8.get());
+   public bqd a(cxm $$0) {
+      dcd $$1 = $$0.q();
+      ja $$2 = $$0.a();
+      dsh $$3 = $$1.a_($$2);
+      if ($$3.a(dfh.dT) && !$$3.c(dji.b)) {
+         cua $$4 = $$0.n();
+         if (!$$1.B) {
+            cmh $$5 = $$0.o();
+            if ($$1.c_($$2) instanceof dqo $$6) {
+               $$6.b($$4.s());
+               $$1.a(dxa.c, $$2, dxa.a.a($$5, $$3));
             }
 
-            $$1.a($$6);
-            $$1.b(awk.c.b(this));
+            $$4.h(1);
+            if ($$5 != null) {
+               $$5.a(avp.al);
+            }
          }
 
-         return bqx.a($$3, $$0.x_());
+         return bqd.a($$1.B);
+      } else {
+         return bqd.e;
       }
+   }
+
+   public int h() {
+      return this.b;
+   }
+
+   @Override
+   public void a(cua $$0, ctv.b $$1, List<wu> $$2, cvt $$3) {
+      $$2.add(this.k().a(n.h));
+   }
+
+   public xi k() {
+      return wu.c(this.a() + ".desc");
+   }
+
+   @Nullable
+   public static cuv a(ave $$0) {
+      return a.get($$0);
+   }
+
+   public ave l() {
+      return this.c;
+   }
+
+   public int m() {
+      return this.j;
    }
 }

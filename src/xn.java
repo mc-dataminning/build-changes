@@ -1,81 +1,71 @@
+import com.google.common.primitives.Ints;
+import com.google.common.primitives.Longs;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.charset.StandardCharsets;
+import java.security.SignatureException;
+import java.time.Instant;
+import java.util.Optional;
 
-public class xn {
-   public static final Codec<xn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(xn.a.h.forGetter($$0x -> $$0x.b), Codec.STRING.fieldOf("value").forGetter($$0x -> $$0x.c)).apply($$0, xn::new)
+public record xn(String b, Instant c, long d, xb e) {
+   public static final MapCodec<xn> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("content").forGetter(xn::a),
+               axm.o.fieldOf("time_stamp").forGetter(xn::b),
+               Codec.LONG.fieldOf("salt").forGetter(xn::c),
+               xb.a.optionalFieldOf("last_seen", xb.b).forGetter(xn::d)
+            )
+            .apply($$0, xn::new)
    );
-   private final xn.a b;
-   private final String c;
 
-   public xn(xn.a $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public static xn a(String $$0) {
+      return new xn($$0, Instant.now(), 0L, xb.b);
    }
 
-   public xn.a a() {
+   public void a(ayq.a $$0) throws SignatureException {
+      $$0.update(Longs.toByteArray(this.d));
+      $$0.update(Longs.toByteArray(this.c.getEpochSecond()));
+      byte[] $$1 = this.b.getBytes(StandardCharsets.UTF_8);
+      $$0.update(Ints.toByteArray($$1.length));
+      $$0.update($$1);
+      this.e.a($$0);
+   }
+
+   public xn.a a(xh $$0) {
+      return new xn.a(this.b, this.c, this.d, this.e.a($$0));
+   }
+
+   public String a() {
       return this.b;
    }
 
-   public String b() {
+   public Instant b() {
       return this.c;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         xn $$1 = (xn)$$0;
-         return this.b == $$1.b && this.c.equals($$1.c);
-      } else {
-         return false;
-      }
+   public long c() {
+      return this.d;
    }
 
-   @Override
-   public String toString() {
-      return "ClickEvent{action=" + this.b + ", value='" + this.c + "'}";
+   public xb d() {
+      return this.e;
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
-   }
-
-   public static enum a implements azu {
-      a("open_url", true),
-      b("open_file", false),
-      c("run_command", true),
-      d("suggest_command", true),
-      e("change_page", true),
-      f("copy_to_clipboard", true);
-
-      public static final MapCodec<xn.a> g = azu.a(xn.a::values).fieldOf("action");
-      public static final MapCodec<xn.a> h = g.validate(xn.a::a);
-      private final boolean i;
-      private final String j;
-
-      private a(final String $$0, final boolean $$1) {
-         this.j = $$0;
-         this.i = $$1;
+   public static record a(String a, Instant b, long c, xb.a d) {
+      public a(vr $$0) {
+         this($$0.d(256), $$0.t(), $$0.readLong(), new xb.a($$0));
       }
 
-      public boolean a() {
-         return this.i;
+      public void a(vr $$0) {
+         $$0.a(this.a, 256);
+         $$0.a(this.b);
+         $$0.b(this.c);
+         this.d.a($$0);
       }
 
-      @Override
-      public String c() {
-         return this.j;
-      }
-
-      public static DataResult<xn.a> a(xn.a $$0) {
-         return !$$0.a() ? DataResult.error(() -> "Action not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
+      public Optional<xn> a(xh $$0) {
+         return this.d.a($$0).map($$0x -> new xn(this.a, this.b, this.c, $$0x));
       }
    }
 }

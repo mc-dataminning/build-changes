@@ -1,89 +1,108 @@
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
-import java.util.Optional;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
 import java.util.function.Function;
+import java.util.function.ToIntFunction;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class ddn {
-   public static final Codec<ddn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ddn.a.c.fieldOf("preset").forGetter($$0x -> $$0x.c), ald.c(lq.az)).apply($$0, ddn::new)
-   );
-   public static final Codec<ji<ddn>> b = alb.a(lq.aR, a);
-   private final ddn.a c;
-   private final ddi.c<ji<dcz>> d;
+   public static <T> List<ddn.b> a(List<T> $$0, Function<T, List<jn<ehu>>> $$1, boolean $$2) {
+      Object2IntMap<ehu> $$3 = new Object2IntOpenHashMap();
+      MutableInt $$4 = new MutableInt(0);
 
-   public ddn(ddn.a $$0, jj<dcz> $$1) {
-      this.c = $$0;
-      this.d = $$0.e.apply($$1::b);
-   }
+      record a(int a, int b, ehu c) {
+      }
 
-   public ddi.c<ji<dcz>> a() {
-      return this.d;
-   }
+      Comparator<a> $$5 = Comparator.comparingInt(a::b).thenComparingInt(a::a);
+      Map<a, Set<a>> $$6 = new TreeMap<>($$5);
+      int $$7 = 0;
 
-   public static Map<ddn.a, ddi.c<ale<dcz>>> b() {
-      return ddn.a.f.values().stream().collect(Collectors.toMap($$0 -> (ddn.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
-   }
+      for (T $$8 : $$0) {
+         List<a> $$9 = Lists.newArrayList();
+         List<jn<ehu>> $$10 = $$1.apply($$8);
+         $$7 = Math.max($$7, $$10.size());
 
-   public static record a(alf d, ddn.a.a e) {
-      public static final ddn.a a = new ddn.a(
-         new alf("nether"),
-         new ddn.a.a() {
-            @Override
-            public <T> ddi.c<T> apply(Function<ale<dcz>, T> $$0) {
-               return new ddi.c<>(
-                  List.of(
-                     Pair.of(ddi.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(ddg.ac)),
-                     Pair.of(ddi.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(ddg.af)),
-                     Pair.of(ddi.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(ddg.ae)),
-                     Pair.of(ddi.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(ddg.ad)),
-                     Pair.of(ddi.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(ddg.ag))
-                  )
-               );
+         for (int $$11 = 0; $$11 < $$10.size(); $$11++) {
+            for (jj<ehu> $$12 : $$10.get($$11)) {
+               ehu $$13 = $$12.a();
+               $$9.add(new a($$3.computeIfAbsent($$13, $$1x -> $$4.getAndIncrement()), $$11, $$13));
             }
          }
-      );
-      public static final ddn.a b = new ddn.a(new alf("overworld"), new ddn.a.a() {
-         @Override
-         public <T> ddi.c<T> apply(Function<ale<dcz>, T> $$0) {
-            return ddn.a.a($$0);
+
+         for (int $$14 = 0; $$14 < $$9.size(); $$14++) {
+            Set<a> $$15 = $$6.computeIfAbsent($$9.get($$14), $$1x -> new TreeSet<>($$5));
+            if ($$14 < $$9.size() - 1) {
+               $$15.add($$9.get($$14 + 1));
+            }
          }
-      });
-      static final Map<alf, ddn.a> f = Stream.of(a, b).collect(Collectors.toMap(ddn.a::b, $$0 -> (ddn.a)$$0));
-      public static final Codec<ddn.a> c = alf.a
-         .flatXmap(
-            $$0 -> Optional.ofNullable(f.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
-            $$0 -> DataResult.success($$0.d)
-         );
-
-      static <T> ddi.c<T> a(Function<ale<dcz>, T> $$0) {
-         Builder<Pair<ddi.d, T>> $$1 = ImmutableList.builder();
-         new ddp().a($$2 -> $$1.add($$2.mapSecond($$0)));
-         return new ddi.c<>($$1.build());
       }
 
-      public Stream<ale<dcz>> a() {
-         return this.e.apply($$0 -> $$0).a().stream().<ale<dcz>>map(Pair::getSecond).distinct();
+      Set<a> $$16 = new TreeSet<>($$5);
+      Set<a> $$17 = new TreeSet<>($$5);
+      List<a> $$18 = Lists.newArrayList();
+
+      for (a $$19 : $$6.keySet()) {
+         if (!$$17.isEmpty()) {
+            throw new IllegalStateException("You somehow broke the universe; DFS bork (iteration finished with non-empty in-progress vertex set");
+         }
+
+         if (!$$16.contains($$19) && axt.a($$6, $$16, $$17, $$18::add, $$19)) {
+            if (!$$2) {
+               throw new IllegalStateException("Feature order cycle found");
+            }
+
+            List<T> $$20 = new ArrayList<>($$0);
+
+            int $$21;
+            do {
+               $$21 = $$20.size();
+               ListIterator<T> $$22 = $$20.listIterator();
+
+               while ($$22.hasNext()) {
+                  T $$23 = $$22.next();
+                  $$22.remove();
+
+                  try {
+                     a($$20, $$1, false);
+                  } catch (IllegalStateException var18) {
+                     continue;
+                  }
+
+                  $$22.add($$23);
+               }
+            } while ($$21 != $$20.size());
+
+            throw new IllegalStateException("Feature order cycle found, involved sources: " + $$20);
+         }
       }
 
-      public alf b() {
-         return this.d;
+      Collections.reverse($$18);
+      Builder<ddn.b> $$25 = ImmutableList.builder();
+
+      for (int $$26 = 0; $$26 < $$7; $$26++) {
+         int $$27 = $$26;
+         List<ehu> $$28 = $$18.stream().filter($$1x -> $$1x.b() == $$27).map(a::c).collect(Collectors.toList());
+         $$25.add(new ddn.b($$28));
       }
 
-      public ddn.a.a c() {
-         return this.e;
-      }
+      return $$25.build();
+   }
 
-      @FunctionalInterface
-      interface a {
-         <T> ddi.c<T> apply(Function<ale<dcz>, T> var1);
+   public static record b(List<ehu> a, ToIntFunction<ehu> b) {
+      b(List<ehu> $$0) {
+         this($$0, ac.h($$0));
       }
    }
 }

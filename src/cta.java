@@ -1,63 +1,76 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
-
-public class cta extends cum {
-   public cta(cum.a $$0) {
+public class cta extends ctv {
+   public cta(ctv.a $$0) {
       super($$0);
    }
 
-   @Nullable
-   public static jh a(dca $$0) {
-      return $$0.D_().j() ? jh.a($$0.af(), $$0.V()) : null;
-   }
-
    @Override
-   public boolean d_(cur $$0) {
-      return $$0.b(km.S) || super.d_($$0);
-   }
-
-   @Override
-   public void a(cur $$0, dca $$1, bsw $$2, int $$3, boolean $$4) {
-      if ($$1 instanceof arf $$5) {
-         cxp $$6 = $$0.a(km.S);
-         if ($$6 != null) {
-            cxp $$7 = $$6.a($$5);
-            if ($$7 != $$6) {
-               $$0.b(km.S, $$7);
-            }
-         }
-      }
-   }
-
-   @Override
-   public bqw a(cye $$0) {
-      iz $$1 = $$0.a();
-      dca $$2 = $$0.q();
-      if (!$$2.a_($$1).a(dfd.pq)) {
-         return super.a($$0);
+   public bqd a(cxm $$0) {
+      dcd $$1 = $$0.q();
+      ja $$2 = $$0.a();
+      dsh $$3 = $$1.a_($$2);
+      if (!$$3.a(dfh.fy) || $$3.c(dhu.c)) {
+         return bqd.e;
+      } else if ($$1.B) {
+         return bqd.a;
       } else {
-         $$2.a(null, $$1, awa.on, awb.h, 1.0F, 1.0F);
-         cmz $$3 = $$0.o();
-         cur $$4 = $$0.n();
-         boolean $$5 = !$$3.fP() && $$4.I() == 1;
-         cxp $$6 = new cxp(Optional.of(jh.a($$2.af(), $$1)), true);
-         if ($$5) {
-            $$4.b(km.S, $$6);
-         } else {
-            cur $$7 = $$4.a(cuu.qS, 1);
-            $$4.a(1, $$3);
-            $$7.b(km.S, $$6);
-            if (!$$3.gc().f($$7)) {
-               $$3.a($$7, false);
+         dsh $$4 = $$3.a(dhu.c, Boolean.valueOf(true));
+         dff.a($$3, $$4, $$1, $$2);
+         $$1.a($$2, $$4, 2);
+         $$1.c($$2, dfh.fy);
+         $$0.n().h(1);
+         $$1.c(1503, $$2, 0);
+         dsm.b $$5 = dhu.b().a($$1, $$2);
+         if ($$5 != null) {
+            ja $$6 = $$5.a().b(-3, 0, -3);
+
+            for (int $$7 = 0; $$7 < 3; $$7++) {
+               for (int $$8 = 0; $$8 < 3; $$8++) {
+                  $$1.a($$6.b($$7, 0, $$8), dfh.fx.o(), 2);
+               }
             }
+
+            $$1.b(1038, $$6.b(1, 0, 1), 0);
          }
 
-         return bqw.a($$2.B);
+         return bqd.c;
       }
    }
 
    @Override
-   public String i(cur $$0) {
-      return $$0.b(km.S) ? "item.minecraft.lodestone_compass" : super.i($$0);
+   public int a(cua $$0, bsy $$1) {
+      return 0;
+   }
+
+   @Override
+   public bqe<cua> a(dcd $$0, cmh $$1, bqc $$2) {
+      cua $$3 = $$1.b($$2);
+      evv $$4 = a($$0, $$1, dbm.b.a);
+      if ($$4.c() == evx.a.b && $$0.a_($$4.a()).a(dfh.fy)) {
+         return bqe.c($$3);
+      } else {
+         $$1.c($$2);
+         if ($$0 instanceof aqk $$5) {
+            ja $$6 = $$5.a(awg.a, $$1.dp(), 100, false);
+            if ($$6 != null) {
+               cms $$7 = new cms($$0, $$1.du(), $$1.e(0.5), $$1.dA());
+               $$7.a($$3);
+               $$7.a($$6);
+               $$0.a(dxa.K, $$7.dn(), dxa.a.a($$1));
+               $$0.b($$7);
+               if ($$1 instanceof aql $$8) {
+                  am.n.a($$8, $$6);
+               }
+
+               float $$9 = aye.i($$0.z.i(), 0.33F, 0.5F);
+               $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), avf.ii, avg.g, 1.0F, $$9);
+               $$3.a(1, $$1);
+               $$1.b(avp.c.b(this));
+               $$1.a($$2, true);
+               return bqe.a($$3);
+            }
+         }
+
+         return bqe.b($$3);
+      }
    }
 }

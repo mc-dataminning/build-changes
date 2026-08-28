@@ -1,33 +1,19 @@
-public class aef implements zw<aci> {
-   public static final zn<xa, aef> a = zn.a(zl.g, aef::b, zl.a(lq.Q), aef::e, xr.d, aef::f, aef::new);
-   private final int b;
-   private final crd<?> c;
-   private final xp d;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-   public aef(int $$0, crd<?> $$1, xp $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
+public record aef(wu b, Optional<byte[]> c) implements zb<abn> {
+   public static final ys<ByteBuf, aef> a = ys.a(ww.f, aef::b, yq.k.a(yq::a), aef::e, aef::new);
 
    @Override
-   public zy<aef> a() {
-      return agu.W;
+   public zd<aef> a() {
+      return afz.ap;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public crd<?> e() {
+   public Optional<byte[]> e() {
       return this.c;
-   }
-
-   public xp f() {
-      return this.d;
    }
 }

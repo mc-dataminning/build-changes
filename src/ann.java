@@ -1,35 +1,82 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
+import java.util.Collections;
 
 public class ann {
-   public static void a(CommandDispatcher<ep> $$0) {
-      final LiteralArgumentBuilder<ep> $$1 = (LiteralArgumentBuilder<ep>)eq.a("gamerule").requires($$0x -> $$0x.c(2));
-      dbw.a(
-         new dbw.c() {
-            @Override
-            public <T extends dbw.g<T>> void a(dbw.e<T> $$0, dbw.f<T> $$1x) {
-               $$1.then(
-                  ((LiteralArgumentBuilder)eq.a($$0.a()).executes($$1xxx -> ann.a((ep)$$1xxx.getSource(), $$0)))
-                     .then($$1.a("value").executes($$1xxx -> ann.a($$1xxx, $$0)))
-               );
-            }
-         }
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("commands.recipe.give.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wu.c("commands.recipe.take.failed"));
+
+   public static void a(CommandDispatcher<eq> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("recipe").requires($$0x -> $$0x.c(2)))
+               .then(
+                  er.a("give")
+                     .then(
+                        ((RequiredArgumentBuilder)er.a("targets", fd.d())
+                              .then(
+                                 er.a("recipe", fr.a())
+                                    .suggests(ip.b)
+                                    .executes($$0x -> a((eq)$$0x.getSource(), fd.f($$0x, "targets"), Collections.singleton(fr.b($$0x, "recipe"))))
+                              ))
+                           .then(er.a("*").executes($$0x -> a((eq)$$0x.getSource(), fd.f($$0x, "targets"), ((eq)$$0x.getSource()).l().aJ().d())))
+                     )
+               ))
+            .then(
+               er.a("take")
+                  .then(
+                     ((RequiredArgumentBuilder)er.a("targets", fd.d())
+                           .then(
+                              er.a("recipe", fr.a())
+                                 .suggests(ip.b)
+                                 .executes($$0x -> b((eq)$$0x.getSource(), fd.f($$0x, "targets"), Collections.singleton(fr.b($$0x, "recipe"))))
+                           ))
+                        .then(er.a("*").executes($$0x -> b((eq)$$0x.getSource(), fd.f($$0x, "targets"), ((eq)$$0x.getSource()).l().aJ().d())))
+                  )
+            )
       );
-      $$0.register($$1);
    }
 
-   static <T extends dbw.g<T>> int a(CommandContext<ep> $$0, dbw.e<T> $$1) {
-      ep $$2 = (ep)$$0.getSource();
-      T $$3 = $$2.l().aM().a($$1);
-      $$3.b($$0, "value");
-      $$2.a(() -> xp.a("commands.gamerule.set", $$1.a(), $$3.toString()), true);
-      return $$3.c();
+   private static int a(eq $$0, Collection<aql> $$1, Collection<cyi<?>> $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (aql $$4 : $$1) {
+         $$3 += $$4.a($$2);
+      }
+
+      if ($$3 == 0) {
+         throw a.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> wu.a("commands.recipe.give.success.single", $$2.size(), $$1.iterator().next().O_()), true);
+         } else {
+            $$0.a(() -> wu.a("commands.recipe.give.success.multiple", $$2.size(), $$1.size()), true);
+         }
+
+         return $$3;
+      }
    }
 
-   static <T extends dbw.g<T>> int a(ep $$0, dbw.e<T> $$1) {
-      T $$2 = $$0.l().aM().a($$1);
-      $$0.a(() -> xp.a("commands.gamerule.query", $$1.a(), $$2.toString()), false);
-      return $$2.c();
+   private static int b(eq $$0, Collection<aql> $$1, Collection<cyi<?>> $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (aql $$4 : $$1) {
+         $$3 += $$4.b($$2);
+      }
+
+      if ($$3 == 0) {
+         throw b.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> wu.a("commands.recipe.take.success.single", $$2.size(), $$1.iterator().next().O_()), true);
+         } else {
+            $$0.a(() -> wu.a("commands.recipe.take.success.multiple", $$2.size(), $$1.size()), true);
+         }
+
+         return $$3;
+      }
    }
 }

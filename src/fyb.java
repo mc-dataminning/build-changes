@@ -1,17 +1,106 @@
 import com.mojang.authlib.GameProfile;
-import java.util.Map;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.function.Function;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record fyb(
-   GameProfile a,
-   guk b,
-   jw.b c,
-   cpn d,
-   @Nullable String e,
-   @Nullable fyl f,
-   @Nullable fnf g,
-   Map<alf, byte[]> h,
-   @Nullable fhh.b i,
-   @Deprecated(forRemoval = true) boolean j
-) {
+public class fyb extends fya implements aav, wi {
+   private static final Logger k = LogUtils.getLogger();
+   private final GameProfile l;
+   private cov m;
+   private final jx.b n;
+   private final fyq o = new fyq();
+   @Nullable
+   private fyj p;
+   @Nullable
+   protected fhn.b j;
+
+   public fyb(ffn $$0, vp $$1, fyh $$2) {
+      super($$0, $$1, $$2);
+      this.l = $$2.a();
+      this.n = $$2.c();
+      this.m = $$2.d();
+      this.j = $$2.i();
+   }
+
+   @Override
+   public boolean c() {
+      return this.b.i();
+   }
+
+   @Override
+   protected void a(aac $$0) {
+      this.b($$0);
+   }
+
+   private void b(aac $$0) {
+      k.warn("Unknown custom packet payload: {}", $$0.a().a());
+   }
+
+   @Override
+   public void a(aax $$0) {
+      ze.a($$0, this, this.a);
+      this.o.a($$0.b(), $$0.e());
+   }
+
+   @Override
+   public void a(zq $$0) {
+      ze.a($$0, this, this.a);
+      this.o.a($$0.b());
+   }
+
+   @Override
+   public void a(aba $$0) {
+      this.m = cox.d.a($$0.b());
+   }
+
+   @Override
+   public void a(aaz $$0) {
+      ze.a($$0, this, this.a);
+      if (this.p == null) {
+         this.p = new fyj();
+      }
+
+      List<atb> $$1 = this.p.a($$0.b());
+      this.b(new abf($$1));
+   }
+
+   @Override
+   public void a(aay $$0) {
+      this.j = null;
+   }
+
+   private <T> T a(Function<atx, T> $$0) {
+      if (this.p == null) {
+         return $$0.apply(atx.b);
+      } else {
+         Object var3;
+         try (atk $$1 = this.p.a()) {
+            var3 = $$0.apply($$1);
+         }
+
+         return (T)var3;
+      }
+   }
+
+   @Override
+   public void a(aaw $$0) {
+      ze.a($$0, this, this.a);
+      jx.b $$1 = this.a($$0x -> this.o.a($$0x, this.n, this.b.e()));
+      this.b.a(aga.b.bind(wf.a($$1)), new fye(this.a, this.b, new fyh(this.l, this.e, $$1, this.m, this.d, this.c, this.f, this.i, this.j, this.h)));
+      this.b.a(abe.a);
+      this.b.a(aga.a.bind(wf.a($$1)));
+   }
+
+   @Override
+   public void d() {
+      this.e();
+   }
+
+   @Override
+   public void a(wu $$0) {
+      super.a($$0);
+      this.a.B();
+   }
 }

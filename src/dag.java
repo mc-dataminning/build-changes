@@ -1,37 +1,29 @@
-public class dag extends dac {
-   public dag(dac.b $$0) {
-      super($$0);
-   }
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record dag(czq c) implements dab {
+   public static final MapCodec<dag> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(czq.b.fieldOf("chance").forGetter(dag::b)).apply($$0, dag::new));
 
    @Override
-   public boolean a() {
-      return true;
-   }
+   public float a(cua $$0, int $$1, aym $$2, float $$3) {
+      float $$4 = this.c.a($$1);
+      int $$5 = 0;
 
-   public static void a(btr $$0, dca $$1, iz $$2, int $$3) {
-      if ($$0.aE()) {
-         dse $$4 = dfd.kI.o();
-         int $$5 = Math.min(16, 2 + $$3);
-         iz.a $$6 = new iz.a();
-
-         for (iz $$7 : iz.c($$2.b(-$$5, -1, -$$5), $$2.b($$5, -1, $$5))) {
-            if ($$7.a($$0.dn(), (double)$$5)) {
-               $$6.d($$7.u(), $$7.v() + 1, $$7.w());
-               dse $$8 = $$1.a_($$6);
-               if ($$8.i()) {
-                  dse $$9 = $$1.a_($$7);
-                  if ($$9 == dig.b() && $$4.a((dcd)$$1, $$7) && $$1.a($$4, $$7, evy.a())) {
-                     $$1.b($$7, $$4);
-                     $$1.a($$7, dfd.kI, ayz.a($$0.el(), 60, 120));
-                  }
-               }
-            }
+      for (int $$6 = 0; (float)$$6 < $$3; $$6++) {
+         if ($$2.i() < $$4) {
+            $$5++;
          }
       }
+
+      return $$3 - (float)$$5;
    }
 
    @Override
-   public boolean a(dac $$0) {
-      return super.a($$0) && $$0 != daf.i;
+   public MapCodec<dag> a() {
+      return a;
+   }
+
+   public czq b() {
+      return this.c;
    }
 }

@@ -1,174 +1,169 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.MoreObjects;
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import java.util.function.Predicate;
+import com.google.common.collect.ArrayTable;
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.Table;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class dsj {
-   private final Predicate<dsi>[][][] a;
-   private final int b;
-   private final int c;
-   private final int d;
-
-   public dsj(Predicate<dsi>[][][] $$0) {
-      this.a = $$0;
-      this.b = $$0.length;
-      if (this.b > 0) {
-         this.c = $$0[0].length;
-         if (this.c > 0) {
-            this.d = $$0[0][0].length;
+public abstract class dsj<O, S> {
+   public static final String c = "Name";
+   public static final String d = "Properties";
+   private static final Function<Entry<dtk<?>, Comparable<?>>, String> a = new Function<Entry<dtk<?>, Comparable<?>>, String>() {
+      public String a(@Nullable Entry<dtk<?>, Comparable<?>> $$0) {
+         if ($$0 == null) {
+            return "<NULL>";
          } else {
-            this.d = 0;
+            dtk<?> $$1 = $$0.getKey();
+            return $$1.f() + "=" + this.a($$1, $$0.getValue());
          }
+      }
+
+      private <T extends Comparable<T>> String a(dtk<T> $$0, Comparable<?> $$1) {
+         return $$0.a((T)$$1);
+      }
+   };
+   protected final O e;
+   private final Reference2ObjectArrayMap<dtk<?>, Comparable<?>> b;
+   private Table<dtk<?>, Comparable<?>, S> g;
+   protected final MapCodec<S> f;
+
+   protected dsj(O $$0, Reference2ObjectArrayMap<dtk<?>, Comparable<?>> $$1, MapCodec<S> $$2) {
+      this.e = $$0;
+      this.b = $$1;
+      this.f = $$2;
+   }
+
+   public <T extends Comparable<T>> S a(dtk<T> $$0) {
+      return this.a($$0, a($$0.a(), this.c($$0)));
+   }
+
+   protected static <T> T a(Collection<T> $$0, T $$1) {
+      Iterator<T> $$2 = $$0.iterator();
+
+      while ($$2.hasNext()) {
+         if ($$2.next().equals($$1)) {
+            if ($$2.hasNext()) {
+               return $$2.next();
+            }
+
+            return $$0.iterator().next();
+         }
+      }
+
+      return $$2.next();
+   }
+
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append(this.e);
+      if (!this.C().isEmpty()) {
+         $$0.append('[');
+         $$0.append(this.C().entrySet().stream().map(a).collect(Collectors.joining(",")));
+         $$0.append(']');
+      }
+
+      return $$0.toString();
+   }
+
+   public Collection<dtk<?>> B() {
+      return Collections.unmodifiableCollection(this.b.keySet());
+   }
+
+   public <T extends Comparable<T>> boolean b(dtk<T> $$0) {
+      return this.b.containsKey($$0);
+   }
+
+   public <T extends Comparable<T>> T c(dtk<T> $$0) {
+      Comparable<?> $$1 = (Comparable<?>)this.b.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("Cannot get property " + $$0 + " as it does not exist in " + this.e);
       } else {
-         this.c = 0;
-         this.d = 0;
+         return $$0.g().cast($$1);
       }
    }
 
-   public int a() {
+   public <T extends Comparable<T>> Optional<T> d(dtk<T> $$0) {
+      Comparable<?> $$1 = (Comparable<?>)this.b.get($$0);
+      return $$1 == null ? Optional.empty() : Optional.of($$0.g().cast($$1));
+   }
+
+   public <T extends Comparable<T>, V extends T> S a(dtk<T> $$0, V $$1) {
+      Comparable<?> $$2 = (Comparable<?>)this.b.get($$0);
+      if ($$2 == null) {
+         throw new IllegalArgumentException("Cannot set property " + $$0 + " as it does not exist in " + this.e);
+      } else if ($$2.equals($$1)) {
+         return (S)this;
+      } else {
+         S $$3 = (S)this.g.get($$0, $$1);
+         if ($$3 == null) {
+            throw new IllegalArgumentException("Cannot set property " + $$0 + " to " + $$1 + " on " + this.e + ", it is not an allowed value");
+         } else {
+            return $$3;
+         }
+      }
+   }
+
+   public <T extends Comparable<T>, V extends T> S b(dtk<T> $$0, V $$1) {
+      Comparable<?> $$2 = (Comparable<?>)this.b.get($$0);
+      if ($$2 != null && !$$2.equals($$1)) {
+         S $$3 = (S)this.g.get($$0, $$1);
+         if ($$3 == null) {
+            throw new IllegalArgumentException("Cannot set property " + $$0 + " to " + $$1 + " on " + this.e + ", it is not an allowed value");
+         } else {
+            return $$3;
+         }
+      } else {
+         return (S)this;
+      }
+   }
+
+   public void a(Map<Map<dtk<?>, Comparable<?>>, S> $$0) {
+      if (this.g != null) {
+         throw new IllegalStateException();
+      } else {
+         Table<dtk<?>, Comparable<?>, S> $$1 = HashBasedTable.create();
+         ObjectIterator var3 = this.b.entrySet().iterator();
+
+         while (var3.hasNext()) {
+            Entry<dtk<?>, Comparable<?>> $$2 = (Entry<dtk<?>, Comparable<?>>)var3.next();
+            dtk<?> $$3 = $$2.getKey();
+
+            for (Comparable<?> $$4 : $$3.a()) {
+               if (!$$4.equals($$2.getValue())) {
+                  $$1.put($$3, $$4, $$0.get(this.c($$3, $$4)));
+               }
+            }
+         }
+
+         this.g = (Table<dtk<?>, Comparable<?>, S>)($$1.isEmpty() ? $$1 : ArrayTable.create($$1));
+      }
+   }
+
+   private Map<dtk<?>, Comparable<?>> c(dtk<?> $$0, Comparable<?> $$1) {
+      Map<dtk<?>, Comparable<?>> $$2 = new Reference2ObjectArrayMap(this.b);
+      $$2.put($$0, $$1);
+      return $$2;
+   }
+
+   public Map<dtk<?>, Comparable<?>> C() {
       return this.b;
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   @VisibleForTesting
-   public Predicate<dsi>[][][] d() {
-      return this.a;
-   }
-
-   @Nullable
-   @VisibleForTesting
-   public dsj.b a(dcd $$0, iz $$1, je $$2, je $$3) {
-      LoadingCache<iz, dsi> $$4 = a($$0, false);
-      return this.a($$1, $$2, $$3, $$4);
-   }
-
-   @Nullable
-   private dsj.b a(iz $$0, je $$1, je $$2, LoadingCache<iz, dsi> $$3) {
-      for (int $$4 = 0; $$4 < this.d; $$4++) {
-         for (int $$5 = 0; $$5 < this.c; $$5++) {
-            for (int $$6 = 0; $$6 < this.b; $$6++) {
-               if (!this.a[$$6][$$5][$$4].test((dsi)$$3.getUnchecked(a($$0, $$1, $$2, $$4, $$5, $$6)))) {
-                  return null;
-               }
-            }
-         }
-      }
-
-      return new dsj.b($$0, $$1, $$2, $$3, this.d, this.c, this.b);
-   }
-
-   @Nullable
-   public dsj.b a(dcd $$0, iz $$1) {
-      LoadingCache<iz, dsi> $$2 = a($$0, false);
-      int $$3 = Math.max(Math.max(this.d, this.c), this.b);
-
-      for (iz $$4 : iz.c($$1, $$1.b($$3 - 1, $$3 - 1, $$3 - 1))) {
-         for (je $$5 : je.values()) {
-            for (je $$6 : je.values()) {
-               if ($$6 != $$5 && $$6 != $$5.g()) {
-                  dsj.b $$7 = this.a($$4, $$5, $$6, $$2);
-                  if ($$7 != null) {
-                     return $$7;
-                  }
-               }
-            }
-         }
-      }
-
-      return null;
-   }
-
-   public static LoadingCache<iz, dsi> a(dcd $$0, boolean $$1) {
-      return CacheBuilder.newBuilder().build(new dsj.a($$0, $$1));
-   }
-
-   protected static iz a(iz $$0, je $$1, je $$2, int $$3, int $$4, int $$5) {
-      if ($$1 != $$2 && $$1 != $$2.g()) {
-         kd $$6 = new kd($$1.j(), $$1.k(), $$1.l());
-         kd $$7 = new kd($$2.j(), $$2.k(), $$2.l());
-         kd $$8 = $$6.d($$7);
-         return $$0.b(
-            $$7.u() * -$$4 + $$8.u() * $$3 + $$6.u() * $$5, $$7.v() * -$$4 + $$8.v() * $$3 + $$6.v() * $$5, $$7.w() * -$$4 + $$8.w() * $$3 + $$6.w() * $$5
-         );
-      } else {
-         throw new IllegalArgumentException("Invalid forwards & up combination");
-      }
-   }
-
-   static class a extends CacheLoader<iz, dsi> {
-      private final dcd a;
-      private final boolean b;
-
-      public a(dcd $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public dsi a(iz $$0) {
-         return new dsi(this.a, $$0, this.b);
-      }
-   }
-
-   public static class b {
-      private final iz a;
-      private final je b;
-      private final je c;
-      private final LoadingCache<iz, dsi> d;
-      private final int e;
-      private final int f;
-      private final int g;
-
-      public b(iz $$0, je $$1, je $$2, LoadingCache<iz, dsi> $$3, int $$4, int $$5, int $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-      }
-
-      public iz a() {
-         return this.a;
-      }
-
-      public je b() {
-         return this.b;
-      }
-
-      public je c() {
-         return this.c;
-      }
-
-      public int d() {
-         return this.e;
-      }
-
-      public int e() {
-         return this.f;
-      }
-
-      public int f() {
-         return this.g;
-      }
-
-      public dsi a(int $$0, int $$1, int $$2) {
-         return (dsi)this.d.getUnchecked(dsj.a(this.a, this.b(), this.c(), $$0, $$1, $$2));
-      }
-
-      @Override
-      public String toString() {
-         return MoreObjects.toStringHelper(this).add("up", this.c).add("forwards", this.b).add("frontTopLeft", this.a).toString();
-      }
+   protected static <O, S extends dsj<O, S>> Codec<S> a(Codec<O> $$0, Function<O, S> $$1) {
+      return $$0.dispatch("Name", $$0x -> $$0x.e, $$1x -> {
+         S $$2 = $$1.apply((O)$$1x);
+         return $$2.C().isEmpty() ? MapCodec.unit($$2) : $$2.f.codec().lenientOptionalFieldOf("Properties").xmap($$1xx -> $$1xx.orElse($$2), Optional::of);
+      });
    }
 }

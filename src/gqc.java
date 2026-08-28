@@ -1,140 +1,17 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.google.common.hash.Hashing;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.SignatureState;
-import com.mojang.authlib.minecraft.MinecraftProfileTexture;
-import com.mojang.authlib.minecraft.MinecraftProfileTextures;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.minecraft.MinecraftProfileTexture.Type;
-import com.mojang.authlib.properties.Property;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.nio.file.Path;
-import java.time.Duration;
-import java.util.Map;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.io.IOException;
 
-public class gqc {
-   static final Logger a = LogUtils.getLogger();
-   private final MinecraftSessionService b;
-   private final LoadingCache<gqc.a, CompletableFuture<gqb>> c;
-   private final gqc.b d;
-   private final gqc.b e;
-   private final gqc.b f;
+public class gqc extends atz<int[]> {
+   private static final akk a = new akk("textures/colormap/grass.png");
 
-   public gqc(gpc $$0, Path $$1, final MinecraftSessionService $$2, final Executor $$3) {
-      this.b = $$2;
-      this.d = new gqc.b($$0, $$1, Type.SKIN);
-      this.e = new gqc.b($$0, $$1, Type.CAPE);
-      this.f = new gqc.b($$0, $$1, Type.ELYTRA);
-      this.c = CacheBuilder.newBuilder().expireAfterAccess(Duration.ofSeconds(15L)).build(new CacheLoader<gqc.a, CompletableFuture<gqb>>() {
-         public CompletableFuture<gqb> a(gqc.a $$0) {
-            return CompletableFuture.<MinecraftProfileTextures>supplyAsync(() -> {
-               Property $$2xx = $$0.b();
-               if ($$2xx == null) {
-                  return MinecraftProfileTextures.EMPTY;
-               } else {
-                  MinecraftProfileTextures $$3xx = $$2.unpackTextures($$2xx);
-                  if ($$3xx.signatureState() == SignatureState.INVALID) {
-                     gqc.a.warn("Profile contained invalid signature for textures property (profile id: {})", $$0.a());
-                  }
-
-                  return $$3xx;
-               }
-            }, ac.g()).thenComposeAsync($$1 -> gqc.this.a($$0.a(), $$1), $$3);
-         }
-      });
-   }
-
-   public Supplier<gqb> a(GameProfile $$0) {
-      CompletableFuture<gqb> $$1 = this.c($$0);
-      gqb $$2 = gpt.a($$0);
-      return () -> $$1.getNow($$2);
-   }
-
-   public gqb b(GameProfile $$0) {
-      gqb $$1 = this.c($$0).getNow(null);
-      return $$1 != null ? $$1 : gpt.a($$0);
-   }
-
-   public CompletableFuture<gqb> c(GameProfile $$0) {
-      Property $$1 = this.b.getPackedTextures($$0);
-      return (CompletableFuture<gqb>)this.c.getUnchecked(new gqc.a($$0.getId(), $$1));
-   }
-
-   CompletableFuture<gqb> a(UUID $$0, MinecraftProfileTextures $$1) {
-      MinecraftProfileTexture $$2 = $$1.skin();
-      CompletableFuture<alf> $$3;
-      gqb.a $$4;
-      if ($$2 != null) {
-         $$3 = this.d.a($$2);
-         $$4 = gqb.a.a($$2.getMetadata("model"));
-      } else {
-         gqb $$5 = gpt.a($$0);
-         $$3 = CompletableFuture.completedFuture($$5.a());
-         $$4 = $$5.e();
+   protected int[] a(atu $$0, bmr $$1) {
+      try {
+         return gqe.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load grass color texture", var4);
       }
-
-      String $$8 = x.a($$2, MinecraftProfileTexture::getUrl);
-      MinecraftProfileTexture $$9 = $$1.cape();
-      CompletableFuture<alf> $$10 = $$9 != null ? this.e.a($$9) : CompletableFuture.completedFuture(null);
-      MinecraftProfileTexture $$11 = $$1.elytra();
-      CompletableFuture<alf> $$12 = $$11 != null ? this.f.a($$11) : CompletableFuture.completedFuture(null);
-      return CompletableFuture.allOf($$3, $$10, $$12)
-         .thenApply($$6x -> new gqb($$3.join(), $$8, $$10.join(), $$12.join(), $$4, $$1.signatureState() == SignatureState.SIGNED));
    }
 
-   static record a(UUID a, @Nullable Property b) {
-   }
-
-   static class b {
-      private final gpc a;
-      private final Path b;
-      private final Type c;
-      private final Map<String, CompletableFuture<alf>> d = new Object2ObjectOpenHashMap();
-
-      b(gpc $$0, Path $$1, Type $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      public CompletableFuture<alf> a(MinecraftProfileTexture $$0) {
-         String $$1 = $$0.getHash();
-         CompletableFuture<alf> $$2 = this.d.get($$1);
-         if ($$2 == null) {
-            $$2 = this.b($$0);
-            this.d.put($$1, $$2);
-         }
-
-         return $$2;
-      }
-
-      private CompletableFuture<alf> b(MinecraftProfileTexture $$0) {
-         String $$1 = Hashing.sha1().hashUnencodedChars($$0.getHash()).toString();
-         alf $$2 = this.a($$1);
-         Path $$3 = this.b.resolve($$1.length() > 2 ? $$1.substring(0, 2) : "xx").resolve($$1);
-         CompletableFuture<alf> $$4 = new CompletableFuture<>();
-         gop $$5 = new gop($$3.toFile(), $$0.getUrl(), gpt.a(), this.c == Type.SKIN, () -> $$4.complete($$2));
-         this.a.a($$2, $$5);
-         return $$4;
-      }
-
-      private alf a(String $$0) {
-         String $$1 = switch (this.c) {
-            case SKIN -> "skins";
-            case CAPE -> "capes";
-            case ELYTRA -> "elytra";
-            default -> throw new MatchException(null, null);
-         };
-         return new alf($$1 + "/" + $$0);
-      }
+   protected void a(int[] $$0, atu $$1, bmr $$2) {
+      dcb.a($$0);
    }
 }

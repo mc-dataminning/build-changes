@@ -1,88 +1,93 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public class ern extends erw {
-   private static final Logger b = LogUtils.getLogger();
-   private static final Codec<jm<dac>> c = lp.f.r().listOf().xmap(jm::a, $$0 -> $$0.a().toList());
+public class ern extends esb {
    public static final MapCodec<ern> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(c.optionalFieldOf("enchantments").forGetter($$0x -> $$0x.d)).apply($$0, ern::new)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  lq.e.s().fieldOf("block").forGetter($$0x -> $$0x.b),
+                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dtk::f).toList())
+               )
+            )
+            .apply($$0, ern::new)
    );
-   private final Optional<jm<dac>> d;
+   private final jj<dff> b;
+   private final Set<dtk<?>> c;
 
-   ern(List<etu> $$0, Optional<jm<dac>> $$1) {
+   ern(List<etz> $$0, jj<dff> $$1, Set<dtk<?>> $$2) {
       super($$0);
-      this.d = $$1;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   private ern(List<etz> $$0, jj<dff> $$1, List<String> $$2) {
+      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
    }
 
    @Override
-   public ery<ern> b() {
-      return erz.h;
+   public esd<ern> b() {
+      return ese.D;
    }
 
    @Override
-   public cur a(cur $$0, eqk $$1) {
-      azh $$2 = $$1.b();
-      Optional<ji<dac>> $$3 = this.d
-         .<ji<dac>>flatMap($$1x -> $$1x.a($$2))
-         .or(
-            () -> {
-               boolean $$3x = $$0.a(cuu.qP);
-               List<ji.c<dac>> $$4 = lp.f
-                  .h()
-                  .filter($$1xx -> ((dac)$$1xx.a()).a($$1.d().J()))
-                  .filter($$0xx -> ((dac)$$0xx.a()).l())
-                  .filter($$2xx -> $$3x || ((dac)$$2xx.a()).b($$0))
-                  .toList();
-               return ac.b($$4, $$2);
+   public Set<eth<?>> a() {
+      return ImmutableSet.of(etk.g);
+   }
+
+   @Override
+   protected cua a(cua $$0, eqo $$1) {
+      dsh $$2 = $$1.c(etk.g);
+      if ($$2 != null) {
+         $$0.a(kn.ab, cwk.a, $$1x -> {
+            for (dtk<?> $$2x : this.c) {
+               if ($$2.b($$2x)) {
+                  $$1x = $$1x.a($$2x, $$2);
+               }
             }
-         );
-      if ($$3.isEmpty()) {
-         b.warn("Couldn't find a compatible enchantment for {}", $$0);
-         return $$0;
-      } else {
-         return a($$0, $$3.get().a(), $$2);
-      }
-   }
 
-   private static cur a(cur $$0, dac $$1, azh $$2) {
-      int $$3 = ayz.a($$2, $$1.f(), $$1.g());
-      if ($$0.a(cuu.qP)) {
-         $$0 = new cur(cuu.uw);
+            return $$1x;
+         });
       }
 
-      $$0.a($$1, $$3);
       return $$0;
    }
 
-   public static ern.a c() {
-      return new ern.a();
+   public static ern.a a(dff $$0) {
+      return new ern.a($$0);
    }
 
-   public static erw.a<?> d() {
-      return a($$0 -> new ern($$0, Optional.empty()));
-   }
+   public static class a extends esb.a<ern.a> {
+      private final jj<dff> a;
+      private final Builder<dtk<?>> b = ImmutableSet.builder();
 
-   public static class a extends erw.a<ern.a> {
-      private final List<ji<dac>> a = new ArrayList<>();
+      a(dff $$0) {
+         this.a = $$0.s();
+      }
+
+      public ern.a a(dtk<?> $$0) {
+         if (!this.a.a().l().d().contains($$0)) {
+            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
+         } else {
+            this.b.add($$0);
+            return this;
+         }
+      }
 
       protected ern.a a() {
          return this;
       }
 
-      public ern.a a(dac $$0) {
-         this.a.add($$0.m());
-         return this;
-      }
-
       @Override
-      public erx b() {
-         return new ern(this.g(), this.a.isEmpty() ? Optional.empty() : Optional.of(jm.a(this.a)));
+      public esc b() {
+         return new ern(this.g(), this.a, this.b.build());
       }
    }
 }

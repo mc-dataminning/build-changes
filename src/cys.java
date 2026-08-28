@@ -1,59 +1,52 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-
-public class cys extends cyp {
-   private static final cyu a = cyu.a(cuu.uv);
-
-   public cys(cyn $$0) {
+public class cys extends cxy {
+   public cys(cxv $$0) {
       super($$0);
    }
 
-   public boolean a(cqm $$0, dca $$1) {
-      boolean $$2 = false;
-      boolean $$3 = false;
+   public boolean a(cxw $$0, dcd $$1) {
+      int $$2 = 0;
+      int $$3 = 0;
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cur $$5 = $$0.a($$4);
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cua $$5 = $$0.a($$4);
          if (!$$5.e()) {
-            if ($$5.g() instanceof ctl) {
-               $$2 = true;
+            if (dff.a($$5.g()) instanceof dme) {
+               $$2++;
             } else {
-               if (!a.a($$5)) {
+               if (!($$5.g() instanceof csu)) {
                   return false;
                }
 
-               if ($$3) {
-                  return false;
-               }
+               $$3++;
+            }
 
-               $$3 = true;
+            if ($$3 > 1 || $$2 > 1) {
+               return false;
             }
          }
       }
 
-      return $$3 && $$2;
+      return $$2 == 1 && $$3 == 1;
    }
 
-   public cur a(cqm $$0, jk.a $$1) {
-      IntList $$2 = new IntArrayList();
-      cur $$3 = null;
+   public cua a(cxw $$0, jl.a $$1) {
+      cua $$2 = cua.l;
+      csu $$3 = (csu)cud.ri;
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cur $$5 = $$0.a($$4);
-         cum $$6 = $$5.g();
-         if ($$6 instanceof ctl) {
-            $$2.add(((ctl)$$6).c().f());
-         } else if (a.a($$5)) {
-            $$3 = $$5.c(1);
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cua $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            ctv $$6 = $$5.g();
+            if (dff.a($$6) instanceof dme) {
+               $$2 = $$5;
+            } else if ($$6 instanceof csu) {
+               $$3 = (csu)$$6;
+            }
          }
       }
 
-      if ($$3 != null && !$$2.isEmpty()) {
-         $$3.a(km.T, cxk.a, $$2, cxk::a);
-         return $$3;
-      } else {
-         return cur.l;
-      }
+      dff $$7 = dme.a($$3.c());
+      return $$2.a($$7, 1);
    }
 
    @Override
@@ -62,7 +55,7 @@ public class cys extends cyp {
    }
 
    @Override
-   public czb<?> ao_() {
-      return czb.i;
+   public cyl<?> ap_() {
+      return cyl.m;
    }
 }

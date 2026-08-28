@@ -1,29 +1,27 @@
-public class aij implements zw<agw> {
-   public static final zn<wm, aij> a = zw.a(aij::a, aij::new);
-   private final int b;
+import com.mojang.authlib.GameProfile;
+import io.netty.buffer.ByteBuf;
 
-   public aij(int $$0) {
-      this.b = $$0;
-   }
-
-   private aij(wm $$0) {
-      this.b = $$0.readShort();
-   }
-
-   private void a(wm $$0) {
-      $$0.l(this.b);
-   }
+public record aij(GameProfile b, @Deprecated(forRemoval = true) boolean c) implements zb<aih> {
+   public static final ys<ByteBuf, aij> a = ys.a(yq.u, aij::b, yq.b, aij::e, aij::new);
 
    @Override
-   public zy<aij> a() {
-      return agu.bT;
+   public zd<aij> a() {
+      return ain.b;
    }
 
-   public void a(agw $$0) {
+   public void a(aih $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   @Override
+   public boolean d() {
+      return true;
+   }
+
+   @Deprecated(
+      forRemoval = true
+   )
+   public boolean e() {
+      return this.c;
    }
 }

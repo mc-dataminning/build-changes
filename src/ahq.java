@@ -1,37 +1,49 @@
-public class ahq implements zw<agw> {
-   public static final zn<wm, ahq> a = zw.a(ahq::a, ahq::new);
-   private final int b;
-   private final int c;
+import javax.annotation.Nullable;
 
-   public ahq(int $$0, int $$1) {
+public class ahq implements zb<agb> {
+   public static final ys<vr, ahq> a = zb.a(ahq::a, ahq::new);
+   private final int b;
+   private final String c;
+   private final boolean d;
+
+   public ahq(int $$0, String $$1, boolean $$2) {
       this.b = $$0;
       this.c = $$1;
+      this.d = $$2;
    }
 
-   private ahq(wm $$0) {
+   private ahq(vr $$0) {
       this.b = $$0.l();
-      this.c = $$0.l();
+      this.c = $$0.p();
+      this.d = $$0.readBoolean();
    }
 
-   private void a(wm $$0) {
+   private void a(vr $$0) {
       $$0.c(this.b);
-      $$0.c(this.c);
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zy<ahq> a() {
-      return agu.bx;
+   public zd<ahq> a() {
+      return afz.bV;
    }
 
-   public void a(agw $$0) {
+   public void a(agb $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   @Nullable
+   public dbe a(dcd $$0) {
+      bsd $$1 = $$0.a(this.b);
+      return $$1 instanceof cok ? ((cok)$$1).B() : null;
    }
 
-   public int e() {
+   public String b() {
       return this.c;
+   }
+
+   public boolean e() {
+      return this.d;
    }
 }

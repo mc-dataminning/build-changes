@@ -1,50 +1,100 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class zz {
-   private static final Logger a = LogUtils.getLogger();
+public record zz(zz.a c) implements aac {
+   public static final ys<vr, zz> a = aac.a(zz::a, zz::new);
+   public static final aac.b<zz> b = aac.a("debug/brain");
 
-   public static <T extends wv> void a(zw<T> $$0, T $$1, arf $$2) throws alr {
-      a($$0, $$1, $$2.o());
+   private zz(vr $$0) {
+      this(new zz.a($$0));
    }
 
-   public static <T extends wv> void a(zw<T> $$0, T $$1, bpm<?> $$2) throws alr {
-      if (!$$2.bw()) {
-         $$2.c(() -> {
-            if ($$1.a($$0)) {
-               try {
-                  $$0.a($$1);
-               } catch (Exception var4) {
-                  if (var4 instanceof y $$3 && $$3.getCause() instanceof OutOfMemoryError) {
-                     throw a(var4, $$0, $$1);
-                  }
+   private void a(vr $$0) {
+      this.c.a($$0);
+   }
 
-                  $$1.a($$0, var4);
-               }
-            } else {
-               a.debug("Ignoring packet due to disconnection: {}", $$0);
-            }
-         });
-         throw alr.a;
+   @Override
+   public aac.b<zz> a() {
+      return b;
+   }
+
+   public zz.a b() {
+      return this.c;
+   }
+
+   public static record a(
+      UUID a,
+      int b,
+      String c,
+      String d,
+      int e,
+      float f,
+      float g,
+      evz h,
+      String i,
+      @Nullable eop j,
+      boolean k,
+      int l,
+      List<String> m,
+      List<String> n,
+      List<String> o,
+      List<String> p,
+      Set<ja> q,
+      Set<ja> r
+   ) {
+      public a(vr $$0) {
+         this(
+            $$0.n(),
+            $$0.readInt(),
+            $$0.p(),
+            $$0.p(),
+            $$0.readInt(),
+            $$0.readFloat(),
+            $$0.readFloat(),
+            $$0.k(),
+            $$0.p(),
+            $$0.c(eop::b),
+            $$0.readBoolean(),
+            $$0.readInt(),
+            $$0.a(vr::p),
+            $$0.a(vr::p),
+            $$0.a(vr::p),
+            $$0.a(vr::p),
+            $$0.a(HashSet::new, ja.b),
+            $$0.a(HashSet::new, ja.b)
+         );
       }
-   }
 
-   public static <T extends wv> y a(Exception $$0, zw<T> $$1, T $$2) {
-      if ($$0 instanceof y $$3) {
-         a($$3.a(), $$2, $$1);
-         return $$3;
-      } else {
-         o $$4 = o.a($$0, "Main thread packet handler");
-         a($$4, $$2, $$1);
-         return new y($$4);
+      public void a(vr $$0) {
+         $$0.a(this.a);
+         $$0.p(this.b);
+         $$0.a(this.c);
+         $$0.a(this.d);
+         $$0.p(this.e);
+         $$0.a(this.f);
+         $$0.a(this.g);
+         $$0.a(this.h);
+         $$0.a(this.i);
+         $$0.a(this.j, ($$0x, $$1) -> $$1.a($$0x));
+         $$0.a(this.k);
+         $$0.p(this.l);
+         $$0.a(this.m, vr::a);
+         $$0.a(this.n, vr::a);
+         $$0.a(this.o, vr::a);
+         $$0.a(this.p, vr::a);
+         $$0.a(this.q, ja.b);
+         $$0.a(this.r, ja.b);
       }
-   }
 
-   private static <T extends wv> void a(o $$0, T $$1, zw<T> $$2) {
-      p $$3 = $$0.a("Incoming Packet");
-      $$3.a("Type", () -> $$2.a().toString());
-      $$3.a("Is Terminal", () -> Boolean.toString($$2.d()));
-      $$3.a("Is Skippable", () -> Boolean.toString($$2.c()));
-      $$1.a($$0);
+      public boolean a(ja $$0) {
+         return this.q.contains($$0);
+      }
+
+      public boolean b(ja $$0) {
+         return this.r.contains($$0);
+      }
    }
 }

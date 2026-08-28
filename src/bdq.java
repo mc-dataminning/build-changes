@@ -1,26 +1,30 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.List;
 
-public class bdq extends bfv {
-   public bdq(Schema $$0) {
-      super($$0, false, "EntityShulkerRotationFix", bgx.B, "minecraft:shulker");
+public class bdq extends DataFix {
+   public bdq(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      List<Double> $$1 = $$0.get("Rotation").asList($$0x -> $$0x.asDouble(180.0));
-      if (!$$1.isEmpty()) {
-         $$1.set(0, $$1.get(0) - 180.0);
-         return $$0.set("Rotation", $$0.createList($$1.stream().map($$0::createDouble)));
-      } else {
-         return $$0;
-      }
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bgd.G);
+      return this.fixTypeEverywhereTyped("IglooMetadataRemovalFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), bdq::a));
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      boolean $$1 = $$0.get("Children").asStreamOpt().map($$0x -> $$0x.allMatch(bdq::c)).result().orElse(false);
+      return $$1 ? $$0.set("id", $$0.createString("Igloo")).remove("Children") : $$0.update("Children", bdq::b);
+   }
+
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      return $$0.asStreamOpt().map($$0x -> $$0x.filter($$0xx -> !c($$0xx))).map($$0::createList).result().orElse($$0);
+   }
+
+   private static boolean c(Dynamic<?> $$0) {
+      return $$0.get("id").asString("").equals("Iglu");
    }
 }

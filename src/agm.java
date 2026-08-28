@@ -1,24 +1,34 @@
-public record agm(int b) implements zw<aci> {
-   public static final zn<wm, agm> a = zw.a(agm::a, agm::new);
+public class agm implements zb<agb> {
+   public static final ys<vr, agm> a = zb.a(agm::a, agm::new);
+   private final agm.a b;
 
-   private agm(wm $$0) {
-      this($$0.l());
+   public agm(agm.a $$0) {
+      this.b = $$0;
    }
 
-   public static agm a(brh $$0) {
-      return new agm($$0.k());
+   private agm(vr $$0) {
+      this.b = $$0.b(agm.a.class);
    }
 
-   private void a(wm $$0) {
-      $$0.c(this.b);
+   private void a(vr $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zy<agm> a() {
-      return agu.cg;
+   public zd<agm> a() {
+      return afz.bo;
    }
 
-   public void a(aci $$0) {
+   public void a(agb $$0) {
       $$0.a(this);
+   }
+
+   public agm.a b() {
+      return this.b;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

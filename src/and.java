@@ -1,193 +1,38 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
-import javax.annotation.Nullable;
 
 public class and {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xp.c("commands.effect.give.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xp.c("commands.effect.clear.everything.failed"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xp.c("commands.effect.clear.specific.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("commands.op.failed"));
 
-   public static void a(CommandDispatcher<ep> $$0, el $$1) {
+   public static void a(CommandDispatcher<eq> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("effect").requires($$0x -> $$0x.c(2)))
-               .then(
-                  ((LiteralArgumentBuilder)eq.a("clear").executes($$0x -> a((ep)$$0x.getSource(), ImmutableList.of(((ep)$$0x.getSource()).g()))))
-                     .then(
-                        ((RequiredArgumentBuilder)eq.a("targets", fc.b()).executes($$0x -> a((ep)$$0x.getSource(), fc.b($$0x, "targets"))))
-                           .then(eq.a("effect", fo.a($$1, lq.R)).executes($$0x -> a((ep)$$0x.getSource(), fc.b($$0x, "targets"), fo.f($$0x, "effect"))))
-                     )
-               ))
-            .then(
-               eq.a("give")
-                  .then(
-                     eq.a("targets", fc.b())
-                        .then(
-                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)eq.a("effect", fo.a($$1, lq.R))
-                                    .executes($$0x -> a((ep)$$0x.getSource(), fc.b($$0x, "targets"), fo.f($$0x, "effect"), null, 0, true)))
-                                 .then(
-                                    ((RequiredArgumentBuilder)eq.a("seconds", IntegerArgumentType.integer(1, 1000000))
-                                          .executes(
-                                             $$0x -> a(
-                                                   (ep)$$0x.getSource(),
-                                                   fc.b($$0x, "targets"),
-                                                   fo.f($$0x, "effect"),
-                                                   IntegerArgumentType.getInteger($$0x, "seconds"),
-                                                   0,
-                                                   true
-                                                )
-                                          ))
-                                       .then(
-                                          ((RequiredArgumentBuilder)eq.a("amplifier", IntegerArgumentType.integer(0, 255))
-                                                .executes(
-                                                   $$0x -> a(
-                                                         (ep)$$0x.getSource(),
-                                                         fc.b($$0x, "targets"),
-                                                         fo.f($$0x, "effect"),
-                                                         IntegerArgumentType.getInteger($$0x, "seconds"),
-                                                         IntegerArgumentType.getInteger($$0x, "amplifier"),
-                                                         true
-                                                      )
-                                                ))
-                                             .then(
-                                                eq.a("hideParticles", BoolArgumentType.bool())
-                                                   .executes(
-                                                      $$0x -> a(
-                                                            (ep)$$0x.getSource(),
-                                                            fc.b($$0x, "targets"),
-                                                            fo.f($$0x, "effect"),
-                                                            IntegerArgumentType.getInteger($$0x, "seconds"),
-                                                            IntegerArgumentType.getInteger($$0x, "amplifier"),
-                                                            !BoolArgumentType.getBool($$0x, "hideParticles")
-                                                         )
-                                                   )
-                                             )
-                                       )
-                                 ))
-                              .then(
-                                 ((LiteralArgumentBuilder)eq.a("infinite")
-                                       .executes($$0x -> a((ep)$$0x.getSource(), fc.b($$0x, "targets"), fo.f($$0x, "effect"), -1, 0, true)))
-                                    .then(
-                                       ((RequiredArgumentBuilder)eq.a("amplifier", IntegerArgumentType.integer(0, 255))
-                                             .executes(
-                                                $$0x -> a(
-                                                      (ep)$$0x.getSource(),
-                                                      fc.b($$0x, "targets"),
-                                                      fo.f($$0x, "effect"),
-                                                      -1,
-                                                      IntegerArgumentType.getInteger($$0x, "amplifier"),
-                                                      true
-                                                   )
-                                             ))
-                                          .then(
-                                             eq.a("hideParticles", BoolArgumentType.bool())
-                                                .executes(
-                                                   $$0x -> a(
-                                                         (ep)$$0x.getSource(),
-                                                         fc.b($$0x, "targets"),
-                                                         fo.f($$0x, "effect"),
-                                                         -1,
-                                                         IntegerArgumentType.getInteger($$0x, "amplifier"),
-                                                         !BoolArgumentType.getBool($$0x, "hideParticles")
-                                                      )
-                                                )
-                                          )
-                                    )
-                              )
-                        )
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("op").requires($$0x -> $$0x.c(3))).then(er.a("targets", ff.a()).suggests(($$0x, $$1) -> {
+            auh $$2 = ((eq)$$0x.getSource()).l().ah();
+            return ev.b($$2.t().stream().filter($$1x -> !$$2.f($$1x.fX())).map($$0xx -> $$0xx.fX().getName()), $$1);
+         }).executes($$0x -> a((eq)$$0x.getSource(), ff.a($$0x, "targets"))))
       );
    }
 
-   private static int a(ep $$0, Collection<? extends bsw> $$1, ji<bsc> $$2, @Nullable Integer $$3, int $$4, boolean $$5) throws CommandSyntaxException {
-      bsc $$6 = $$2.a();
-      int $$7 = 0;
-      int $$8;
-      if ($$3 != null) {
-         if ($$6.a()) {
-            $$8 = $$3;
-         } else if ($$3 == -1) {
-            $$8 = -1;
-         } else {
-            $$8 = $$3 * 20;
-         }
-      } else if ($$6.a()) {
-         $$8 = 1;
-      } else {
-         $$8 = 600;
-      }
+   private static int a(eq $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      auh $$2 = $$0.l().ah();
+      int $$3 = 0;
 
-      for (bsw $$13 : $$1) {
-         if ($$13 instanceof btr) {
-            bse $$14 = new bse($$2, $$8, $$4, false, $$5);
-            if (((btr)$$13).b($$14, $$0.f())) {
-               $$7++;
-            }
+      for (GameProfile $$4 : $$1) {
+         if (!$$2.f($$4)) {
+            $$2.a($$4);
+            $$3++;
+            $$0.a(() -> wu.a("commands.op.success", $$1.iterator().next().getName()), true);
          }
       }
 
-      if ($$7 == 0) {
+      if ($$3 == 0) {
          throw a.create();
       } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> xp.a("commands.effect.give.success.single", $$6.e(), $$1.iterator().next().O_(), $$8 / 20), true);
-         } else {
-            $$0.a(() -> xp.a("commands.effect.give.success.multiple", $$6.e(), $$1.size(), $$8 / 20), true);
-         }
-
-         return $$7;
-      }
-   }
-
-   private static int a(ep $$0, Collection<? extends bsw> $$1) throws CommandSyntaxException {
-      int $$2 = 0;
-
-      for (bsw $$3 : $$1) {
-         if ($$3 instanceof btr && ((btr)$$3).ew()) {
-            $$2++;
-         }
-      }
-
-      if ($$2 == 0) {
-         throw b.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> xp.a("commands.effect.clear.everything.success.single", $$1.iterator().next().O_()), true);
-         } else {
-            $$0.a(() -> xp.a("commands.effect.clear.everything.success.multiple", $$1.size()), true);
-         }
-
-         return $$2;
-      }
-   }
-
-   private static int a(ep $$0, Collection<? extends bsw> $$1, ji<bsc> $$2) throws CommandSyntaxException {
-      bsc $$3 = $$2.a();
-      int $$4 = 0;
-
-      for (bsw $$5 : $$1) {
-         if ($$5 instanceof btr && ((btr)$$5).e($$2)) {
-            $$4++;
-         }
-      }
-
-      if ($$4 == 0) {
-         throw c.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> xp.a("commands.effect.clear.specific.success.single", $$3.e(), $$1.iterator().next().O_()), true);
-         } else {
-            $$0.a(() -> xp.a("commands.effect.clear.specific.success.multiple", $$3.e(), $$1.size()), true);
-         }
-
-         return $$4;
+         return $$3;
       }
    }
 }

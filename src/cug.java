@@ -1,58 +1,19 @@
-public class cug extends cum {
-   private static final int a = 40;
+import java.util.List;
 
-   public cug(cum.a $$0) {
+public class cug extends cvo {
+   public cug(ctv.a $$0) {
       super($$0);
    }
 
    @Override
-   public cur a(cur $$0, dca $$1, btr $$2) {
-      super.a($$0, $$1, $$2);
-      if ($$2 instanceof arg $$3) {
-         am.A.a($$3, $$0);
-         $$3.b(awk.c.b(this));
-      }
-
-      if (!$$1.B) {
-         $$2.e(bsg.s);
-      }
-
-      if ($$0.e()) {
-         return new cur(cuu.sl);
-      } else {
-         if ($$2 instanceof cmz $$4 && !$$4.fP()) {
-            cur $$5 = new cur(cuu.sl);
-            if (!$$4.gc().f($$5)) {
-               $$4.a($$5, false);
-            }
-         }
-
-         return $$0;
-      }
+   public void a(cua $$0, ctv.b $$1, List<wu> $$2, cvt $$3) {
+      cwb $$4 = $$0.a(kn.G, cwb.a);
+      $$4.a($$2::add, 0.25F, $$1.b());
    }
 
    @Override
-   public int b(cur $$0) {
-      return 40;
-   }
-
-   @Override
-   public cwm c(cur $$0) {
-      return cwm.c;
-   }
-
-   @Override
-   public avz ak_() {
-      return awa.mD;
-   }
-
-   @Override
-   public avz al_() {
-      return awa.mD;
-   }
-
-   @Override
-   public bqx<cur> a(dca $$0, cmz $$1, bqv $$2) {
-      return cut.a($$0, $$1, $$2);
+   public bqe<cua> a(dcd $$0, cmh $$1, bqc $$2) {
+      $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), avf.nX, avg.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      return super.a($$0, $$1, $$2);
    }
 }

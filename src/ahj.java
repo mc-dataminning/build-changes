@@ -1,23 +1,29 @@
-import io.netty.buffer.ByteBuf;
+public class ahj implements zb<agb> {
+   public static final ys<vr, ahj> a = zb.a(ahj::a, ahj::new);
+   private final akk b;
 
-public class ahj implements zw<agw> {
-   public static final ahj a = new ahj();
-   public static final zn<ByteBuf, ahj> b = zn.a(a);
+   public ahj(cyi<?> $$0) {
+      this.b = $$0.a();
+   }
 
-   private ahj() {
+   private ahj(vr $$0) {
+      this.b = $$0.q();
+   }
+
+   private void a(vr $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zy<ahj> a() {
-      return agu.bq;
+   public zd<ahj> a() {
+      return afz.bO;
    }
 
-   public void a(agw $$0) {
+   public void a(agb $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public akk b() {
+      return this.b;
    }
 }

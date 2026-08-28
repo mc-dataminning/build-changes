@@ -1,115 +1,84 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
 
-public class tz {
-   private static final char a = ' ';
-   private static final char b = '_';
-   private static final char c = '+';
-   private static final char d = 'x';
-   private static final char e = 'X';
-   private final Collection<to> f = Lists.newArrayList();
-   private final Collection<tp> g = Lists.newArrayList();
+public class tz implements uu {
+   private static final int c = 8;
+   public static final uw<tz> a = new uw<tz>() {
+      public tz a(DataInput $$0, ug $$1) {
+         $$1.b(8L);
+         return tz.b;
+      }
 
-   public tz() {
+      @Override
+      public ur.b a(DataInput $$0, ur $$1, ug $$2) {
+         $$2.b(8L);
+         return $$1.a();
+      }
+
+      @Override
+      public void a(DataInput $$0, int $$1, ug $$2) {
+      }
+
+      @Override
+      public void b(DataInput $$0, ug $$1) {
+      }
+
+      @Override
+      public String a() {
+         return "END";
+      }
+
+      @Override
+      public String b() {
+         return "TAG_End";
+      }
+
+      @Override
+      public boolean d() {
+         return true;
+      }
+   };
+   public static final tz b = new tz();
+
+   private tz() {
    }
 
-   public tz(Collection<to> $$0) {
-      this.f.addAll($$0);
+   @Override
+   public void a(DataOutput $$0) throws IOException {
    }
 
-   public void a(to $$0) {
-      this.f.add($$0);
-      this.g.forEach($$0::a);
-   }
-
-   public void a(tp $$0) {
-      this.g.add($$0);
-      this.f.forEach($$1 -> $$1.a($$0));
-   }
-
-   public void a(final Consumer<to> $$0) {
-      this.a(new tp() {
-         @Override
-         public void a(to $$0x) {
-         }
-
-         @Override
-         public void a(to $$0x, tr $$1) {
-         }
-
-         @Override
-         public void b(to $$0x, tr $$1) {
-            $$0.accept($$0);
-         }
-
-         @Override
-         public void a(to $$0x, to $$1, tr $$2) {
-         }
-      });
-   }
-
+   @Override
    public int a() {
-      return (int)this.f.stream().filter(to::h).filter(to::q).count();
+      return 8;
    }
 
-   public int b() {
-      return (int)this.f.stream().filter(to::h).filter(to::r).count();
+   @Override
+   public byte b() {
+      return 0;
    }
 
-   public int c() {
-      return (int)this.f.stream().filter(to::j).count();
-   }
-
-   public boolean d() {
-      return this.a() > 0;
-   }
-
-   public boolean e() {
-      return this.b() > 0;
-   }
-
-   public Collection<to> f() {
-      return this.f.stream().filter(to::h).filter(to::q).collect(Collectors.toList());
-   }
-
-   public Collection<to> g() {
-      return this.f.stream().filter(to::h).filter(to::r).collect(Collectors.toList());
-   }
-
-   public int h() {
-      return this.f.size();
-   }
-
-   public boolean i() {
-      return this.c() == this.h();
-   }
-
-   public String j() {
-      StringBuffer $$0 = new StringBuffer();
-      $$0.append('[');
-      this.f.forEach($$1 -> {
-         if (!$$1.i()) {
-            $$0.append(' ');
-         } else if ($$1.g()) {
-            $$0.append('+');
-         } else if ($$1.h()) {
-            $$0.append((char)($$1.q() ? 'X' : 'x'));
-         } else {
-            $$0.append('_');
-         }
-      });
-      $$0.append(']');
-      return $$0.toString();
+   @Override
+   public uw<tz> c() {
+      return a;
    }
 
    @Override
    public String toString() {
-      return this.j();
+      return this.s_();
    }
 
-   public void b(to $$0) {
-      this.f.remove($$0);
+   public tz e() {
+      return this;
+   }
+
+   @Override
+   public void a(uy $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public ur.b a(ur $$0) {
+      return $$0.a();
    }
 }

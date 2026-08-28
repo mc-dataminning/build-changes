@@ -1,38 +1,39 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JavaOps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Set;
 
-public class esy extends erw {
-   public static final Codec<xp> a = xr.a.validate($$0 -> cya.g.encodeStart(JavaOps.INSTANCE, $$0).map($$1 -> $$0));
-   public static final MapCodec<esy> b = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and($$0.group(cya.a(a).fieldOf("pages").forGetter($$0x -> $$0x.c), erv.a.forGetter($$0x -> $$0x.d))).apply($$0, esy::new)
-   );
-   private final List<arw<xp>> c;
-   private final erv d;
+public class esy extends esb {
+   static final MapCodec<esy> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(euw.a.fieldOf("amplifier").forGetter($$0x -> $$0x.b)).apply($$0, esy::new));
+   private final euv b;
 
-   protected esy(List<etu> $$0, List<arw<xp>> $$1, erv $$2) {
+   private esy(List<etz> $$0, euv $$1) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = $$1;
    }
 
    @Override
-   protected cur a(cur $$0, eqk $$1) {
-      $$0.a(km.J, cya.a, this::a);
+   public Set<eth<?>> a() {
+      return this.b.a();
+   }
+
+   @Override
+   public esd<esy> b() {
+      return ese.Q;
+   }
+
+   @Override
+   public cua a(cua $$0, eqo $$1) {
+      int $$2 = aye.a(this.b.a($$1), 0, 4);
+      $$0.b(kn.Q, Integer.valueOf($$2));
       return $$0;
    }
 
-   @VisibleForTesting
-   public cya a(cya $$0) {
-      List<arw<xp>> $$1 = this.d.a($$0.a(), this.c);
-      return $$0.b($$1);
+   public euv c() {
+      return this.b;
    }
 
-   @Override
-   public ery<esy> b() {
-      return erz.N;
+   public static esb.a<?> a(euv $$0) {
+      return a($$1 -> new esy($$1, $$0));
    }
 }

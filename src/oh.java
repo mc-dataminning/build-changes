@@ -1,166 +1,40 @@
-import java.util.Optional;
-import java.util.stream.IntStream;
+import javax.annotation.Nullable;
 
-public class oh {
-   public static final og a = a("cube", oj.c, oj.j, oj.k, oj.l, oj.m, oj.n, oj.o);
-   public static final og b = a("cube_directional", oj.c, oj.j, oj.k, oj.l, oj.m, oj.n, oj.o);
-   public static final og c = a("cube_all", oj.a);
-   public static final og d = a("cube_all_inner_faces", oj.a);
-   public static final og e = a("cube_mirrored_all", "_mirrored", oj.a);
-   public static final og f = a("cube_north_west_mirrored_all", "_north_west_mirrored", oj.a);
-   public static final og g = a("cube_column_uv_locked_x", "_x", oj.d, oj.i);
-   public static final og h = a("cube_column_uv_locked_y", "_y", oj.d, oj.i);
-   public static final og i = a("cube_column_uv_locked_z", "_z", oj.d, oj.i);
-   public static final og j = a("cube_column", oj.d, oj.i);
-   public static final og k = a("cube_column_horizontal", "_horizontal", oj.d, oj.i);
-   public static final og l = a("cube_column_mirrored", "_mirrored", oj.d, oj.i);
-   public static final og m = a("cube_top", oj.f, oj.i);
-   public static final og n = a("cube_bottom_top", oj.f, oj.e, oj.i);
-   public static final og o = a("cube_bottom_top_inner_faces", oj.f, oj.e, oj.i);
-   public static final og p = a("orientable", oj.f, oj.g, oj.i);
-   public static final og q = a("orientable_with_bottom", oj.f, oj.e, oj.i, oj.g);
-   public static final og r = a("orientable_vertical", "_vertical", oj.g, oj.i);
-   public static final og s = a("button", oj.b);
-   public static final og t = a("button_pressed", "_pressed", oj.b);
-   public static final og u = a("button_inventory", "_inventory", oj.b);
-   public static final og v = a("door_bottom_left", "_bottom_left", oj.f, oj.e);
-   public static final og w = a("door_bottom_left_open", "_bottom_left_open", oj.f, oj.e);
-   public static final og x = a("door_bottom_right", "_bottom_right", oj.f, oj.e);
-   public static final og y = a("door_bottom_right_open", "_bottom_right_open", oj.f, oj.e);
-   public static final og z = a("door_top_left", "_top_left", oj.f, oj.e);
-   public static final og A = a("door_top_left_open", "_top_left_open", oj.f, oj.e);
-   public static final og B = a("door_top_right", "_top_right", oj.f, oj.e);
-   public static final og C = a("door_top_right_open", "_top_right_open", oj.f, oj.e);
-   public static final og D = a("custom_fence_post", "_post", oj.b, oj.c);
-   public static final og E = a("custom_fence_side_north", "_side_north", oj.b);
-   public static final og F = a("custom_fence_side_east", "_side_east", oj.b);
-   public static final og G = a("custom_fence_side_south", "_side_south", oj.b);
-   public static final og H = a("custom_fence_side_west", "_side_west", oj.b);
-   public static final og I = a("custom_fence_inventory", "_inventory", oj.b);
-   public static final og J = a("fence_post", "_post", oj.b);
-   public static final og K = a("fence_side", "_side", oj.b);
-   public static final og L = a("fence_inventory", "_inventory", oj.b);
-   public static final og M = a("template_wall_post", "_post", oj.r);
-   public static final og N = a("template_wall_side", "_side", oj.r);
-   public static final og O = a("template_wall_side_tall", "_side_tall", oj.r);
-   public static final og P = a("wall_inventory", "_inventory", oj.r);
-   public static final og Q = a("template_custom_fence_gate", oj.b, oj.c);
-   public static final og R = a("template_custom_fence_gate_open", "_open", oj.b, oj.c);
-   public static final og S = a("template_custom_fence_gate_wall", "_wall", oj.b, oj.c);
-   public static final og T = a("template_custom_fence_gate_wall_open", "_wall_open", oj.b, oj.c);
-   public static final og U = a("template_fence_gate", oj.b);
-   public static final og V = a("template_fence_gate_open", "_open", oj.b);
-   public static final og W = a("template_fence_gate_wall", "_wall", oj.b);
-   public static final og X = a("template_fence_gate_wall_open", "_wall_open", oj.b);
-   public static final og Y = a("pressure_plate_up", oj.b);
-   public static final og Z = a("pressure_plate_down", "_down", oj.b);
-   public static final og aa = a(oj.c);
-   public static final og ab = a("slab", oj.e, oj.f, oj.i);
-   public static final og ac = a("slab_top", "_top", oj.e, oj.f, oj.i);
-   public static final og ad = a("leaves", oj.a);
-   public static final og ae = a("stairs", oj.e, oj.f, oj.i);
-   public static final og af = a("inner_stairs", "_inner", oj.e, oj.f, oj.i);
-   public static final og ag = a("outer_stairs", "_outer", oj.e, oj.f, oj.i);
-   public static final og ah = a("template_trapdoor_top", "_top", oj.b);
-   public static final og ai = a("template_trapdoor_bottom", "_bottom", oj.b);
-   public static final og aj = a("template_trapdoor_open", "_open", oj.b);
-   public static final og ak = a("template_orientable_trapdoor_top", "_top", oj.b);
-   public static final og al = a("template_orientable_trapdoor_bottom", "_bottom", oj.b);
-   public static final og am = a("template_orientable_trapdoor_open", "_open", oj.b);
-   public static final og an = a("pointed_dripstone", oj.p);
-   public static final og ao = a("cross", oj.p);
-   public static final og ap = a("tinted_cross", oj.p);
-   public static final og aq = a("flower_pot_cross", oj.q);
-   public static final og ar = a("tinted_flower_pot_cross", oj.q);
-   public static final og as = a("rail_flat", oj.s);
-   public static final og at = a("rail_curved", "_corner", oj.s);
-   public static final og au = a("template_rail_raised_ne", "_raised_ne", oj.s);
-   public static final og av = a("template_rail_raised_sw", "_raised_sw", oj.s);
-   public static final og aw = a("carpet", oj.t);
-   public static final og ax = a("flowerbed_1", "_1", oj.P, oj.y);
-   public static final og ay = a("flowerbed_2", "_2", oj.P, oj.y);
-   public static final og az = a("flowerbed_3", "_3", oj.P, oj.y);
-   public static final og aA = a("flowerbed_4", "_4", oj.P, oj.y);
-   public static final og aB = a("coral_fan", oj.x);
-   public static final og aC = a("coral_wall_fan", oj.x);
-   public static final og aD = a("template_glazed_terracotta", oj.u);
-   public static final og aE = a("template_chorus_flower", oj.b);
-   public static final og aF = a("template_daylight_detector", oj.f, oj.i);
-   public static final og aG = a("template_glass_pane_noside", "_noside", oj.v);
-   public static final og aH = a("template_glass_pane_noside_alt", "_noside_alt", oj.v);
-   public static final og aI = a("template_glass_pane_post", "_post", oj.v, oj.w);
-   public static final og aJ = a("template_glass_pane_side", "_side", oj.v, oj.w);
-   public static final og aK = a("template_glass_pane_side_alt", "_side_alt", oj.v, oj.w);
-   public static final og aL = a("template_command_block", oj.g, oj.h, oj.i);
-   public static final og aM = a("template_chiseled_bookshelf_slot_top_left", "_slot_top_left", oj.b);
-   public static final og aN = a("template_chiseled_bookshelf_slot_top_mid", "_slot_top_mid", oj.b);
-   public static final og aO = a("template_chiseled_bookshelf_slot_top_right", "_slot_top_right", oj.b);
-   public static final og aP = a("template_chiseled_bookshelf_slot_bottom_left", "_slot_bottom_left", oj.b);
-   public static final og aQ = a("template_chiseled_bookshelf_slot_bottom_mid", "_slot_bottom_mid", oj.b);
-   public static final og aR = a("template_chiseled_bookshelf_slot_bottom_right", "_slot_bottom_right", oj.b);
-   public static final og aS = a("template_anvil", oj.f);
-   public static final og[] aT = IntStream.range(0, 8).mapToObj($$0 -> a("stem_growth" + $$0, "_stage" + $$0, oj.y)).toArray(og[]::new);
-   public static final og aU = a("stem_fruit", oj.y, oj.z);
-   public static final og aV = a("crop", oj.A);
-   public static final og aW = a("template_farmland", oj.B, oj.f);
-   public static final og aX = a("template_fire_floor", oj.C);
-   public static final og aY = a("template_fire_side", oj.C);
-   public static final og aZ = a("template_fire_side_alt", oj.C);
-   public static final og ba = a("template_fire_up", oj.C);
-   public static final og bb = a("template_fire_up_alt", oj.C);
-   public static final og bc = a("template_campfire", oj.C, oj.K);
-   public static final og bd = a("template_lantern", oj.D);
-   public static final og be = a("template_hanging_lantern", "_hanging", oj.D);
-   public static final og bf = a("template_torch", oj.G);
-   public static final og bg = a("template_torch_wall", oj.G);
-   public static final og bh = a("template_piston", oj.E, oj.e, oj.i);
-   public static final og bi = a("template_piston_head", oj.E, oj.i, oj.F);
-   public static final og bj = a("template_piston_head_short", oj.E, oj.i, oj.F);
-   public static final og bk = a("template_seagrass", oj.b);
-   public static final og bl = a("template_turtle_egg", oj.a);
-   public static final og bm = a("template_two_turtle_eggs", oj.a);
-   public static final og bn = a("template_three_turtle_eggs", oj.a);
-   public static final og bo = a("template_four_turtle_eggs", oj.a);
-   public static final og bp = a("template_single_face", oj.b);
-   public static final og bq = a("template_cauldron_level1", oj.N, oj.M, oj.c, oj.f, oj.e, oj.i);
-   public static final og br = a("template_cauldron_level2", oj.N, oj.M, oj.c, oj.f, oj.e, oj.i);
-   public static final og bs = a("template_cauldron_full", oj.N, oj.M, oj.c, oj.f, oj.e, oj.i);
-   public static final og bt = a("template_azalea", oj.f, oj.i);
-   public static final og bu = a("template_potted_azalea_bush", oj.q, oj.f, oj.i);
-   public static final og bv = a("template_potted_azalea_bush", oj.q, oj.f, oj.i);
-   public static final og bw = a("sniffer_egg", oj.f, oj.e, oj.j, oj.k, oj.l, oj.m);
-   public static final og bx = b("generated", oj.H);
-   public static final og by = b("template_music_disc", oj.H);
-   public static final og bz = b("handheld", oj.H);
-   public static final og bA = b("handheld_rod", oj.H);
-   public static final og bB = b("generated", oj.H, oj.I);
-   public static final og bC = b("generated", oj.H, oj.I, oj.J);
-   public static final og bD = b("template_shulker_box", oj.c);
-   public static final og bE = b("template_bed", oj.c);
-   public static final og bF = b("template_banner");
-   public static final og bG = b("template_skull");
-   public static final og bH = a("template_candle", oj.a, oj.c);
-   public static final og bI = a("template_two_candles", oj.a, oj.c);
-   public static final og bJ = a("template_three_candles", oj.a, oj.c);
-   public static final og bK = a("template_four_candles", oj.a, oj.c);
-   public static final og bL = a("template_cake_with_candle", oj.L, oj.e, oj.i, oj.f, oj.c);
-   public static final og bM = a("template_sculk_shrieker", oj.e, oj.i, oj.f, oj.c, oj.O);
-   public static final og bN = a("template_vault", oj.f, oj.e, oj.i, oj.g);
-   public static final og bO = b("handheld_mace", oj.H);
+public interface oh {
+   akk a = new akk("recipes/root");
 
-   private static og a(oj... $$0) {
-      return new og(Optional.empty(), Optional.empty(), $$0);
+   oh a(String var1, an<?> var2);
+
+   oh a(@Nullable String var1);
+
+   ctv a();
+
+   void a(oj var1, akk var2);
+
+   default void a(oj $$0) {
+      this.a($$0, a(this.a()));
    }
 
-   private static og a(String $$0, oj... $$1) {
-      return new og(Optional.of(new alf("minecraft", "block/" + $$0)), Optional.empty(), $$1);
+   default void a(oj $$0, String $$1) {
+      akk $$2 = a(this.a());
+      akk $$3 = new akk($$1);
+      if ($$3.equals($$2)) {
+         throw new IllegalStateException("Recipe " + $$1 + " should remove its 'save' argument as it is equal to default one");
+      } else {
+         this.a($$0, $$3);
+      }
    }
 
-   private static og b(String $$0, oj... $$1) {
-      return new og(Optional.of(new alf("minecraft", "item/" + $$0)), Optional.empty(), $$1);
+   static akk a(dcc $$0) {
+      return lq.g.b($$0.r());
    }
 
-   private static og a(String $$0, String $$1, oj... $$2) {
-      return new og(Optional.of(new alf("minecraft", "block/" + $$0)), Optional.of($$1), $$2);
+   static cxv a(oi $$0) {
+      return switch ($$0) {
+         case a -> cxv.a;
+         case e, f -> cxv.c;
+         case c -> cxv.b;
+         default -> cxv.d;
+      };
    }
 }

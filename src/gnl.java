@@ -1,48 +1,39 @@
-public abstract class gnl<T extends bsw, M extends fuc<T>> {
-   private final gkv<T, M> a;
+public class gnl<T extends bsy, M extends fui<T> & fth> extends gns<T, M> {
+   private final gdt a;
 
-   public gnl(gkv<T, M> $$0) {
-      this.a = $$0;
+   public gnl(glc<T, M> $$0, gdt $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
-   protected static <T extends btr> void a(
-      fuc<T> $$0,
-      fuc<T> $$1,
-      alf $$2,
-      faa $$3,
-      gdq $$4,
-      int $$5,
-      T $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15
-   ) {
-      if (!$$6.ch()) {
-         $$0.a($$1);
-         $$1.a($$6, $$7, $$8, $$12);
-         $$1.a($$6, $$7, $$8, $$9, $$10, $$11);
-         a($$1, $$2, $$3, $$4, $$5, $$6, $$13, $$14, $$15);
+   public void a(fag $$0, gdx $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fq() == bss.b;
+      cua $$11 = $$10 ? $$3.eU() : $$3.eT();
+      cua $$12 = $$10 ? $$3.eT() : $$3.eU();
+      if (!$$11.e() || !$$12.e()) {
+         $$0.a();
+         if (this.c().e) {
+            float $$13 = 0.5F;
+            $$0.a(0.0F, 0.75F, 0.0F);
+            $$0.b(0.5F, 0.5F, 0.5F);
+         }
+
+         this.a($$3, $$12, ctx.c, bss.b, $$0, $$1, $$2);
+         this.a($$3, $$11, ctx.b, bss.a, $$0, $$1, $$2);
+         $$0.b();
       }
    }
 
-   protected static <T extends btr> void a(fuc<T> $$0, alf $$1, faa $$2, gdq $$3, int $$4, T $$5, float $$6, float $$7, float $$8) {
-      fae $$9 = $$3.getBuffer(gdy.e($$1));
-      $$0.a($$2, $$9, $$4, gka.c($$5, 0.0F), $$6, $$7, $$8, 1.0F);
+   protected void a(bsy $$0, cua $$1, ctx $$2, bss $$3, fag $$4, gdx $$5, int $$6) {
+      if (!$$1.e()) {
+         $$4.a();
+         this.c().a($$3, $$4);
+         $$4.a(a.b.rotationDegrees(-90.0F));
+         $$4.a(a.d.rotationDegrees(180.0F));
+         boolean $$7 = $$3 == bss.a;
+         $$4.a((float)($$7 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
+         this.a.a($$0, $$1, $$2, $$7, $$4, $$5, $$6);
+         $$4.b();
+      }
    }
-
-   public M c() {
-      return this.a.a();
-   }
-
-   protected alf a(T $$0) {
-      return this.a.a($$0);
-   }
-
-   public abstract void a(faa var1, gdq var2, int var3, T var4, float var5, float var6, float var7, float var8, float var9, float var10);
 }

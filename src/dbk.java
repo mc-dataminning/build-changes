@@ -1,123 +1,205 @@
-import com.google.common.collect.Iterables;
-import java.util.List;
-import java.util.Optional;
+import java.util.Spliterators.AbstractSpliterator;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 import javax.annotation.Nullable;
 
-public interface dbk extends dbg {
-   dtv C_();
+public class dbk {
+   private static final int g = 1056;
+   public static final long a = c(1875066, 1875066);
+   public static final dbk b = new dbk(0, 0);
+   private static final long h = 32L;
+   private static final long i = 4294967295L;
+   private static final int j = 5;
+   public static final int c = 32;
+   private static final int k = 31;
+   public static final int d = 31;
+   public final int e;
+   public final int f;
+   private static final int l = 1664525;
+   private static final int m = 1013904223;
+   private static final int n = -559038737;
 
-   @Nullable
-   dbg c(int var1, int var2);
-
-   default boolean a(@Nullable bsw $$0, ewm $$1) {
-      return true;
+   public dbk(int $$0, int $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   default boolean a(dse $$0, iz $$1, evy $$2) {
-      ewm $$3 = $$0.b(this, $$1, $$2);
-      return $$3.c() || this.a(null, $$3.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w()));
+   public dbk(ja $$0) {
+      this.e = kc.a($$0.u());
+      this.f = kc.a($$0.w());
    }
 
-   default boolean f(bsw $$0) {
-      return this.a($$0, ewj.a($$0.cK()));
+   public dbk(long $$0) {
+      this.e = (int)$$0;
+      this.f = (int)($$0 >> 32);
    }
 
-   default boolean b(evo $$0) {
-      return this.a(null, $$0);
+   public static dbk a(int $$0, int $$1) {
+      return new dbk($$0 << 5, $$1 << 5);
    }
 
-   default boolean g(bsw $$0) {
-      return this.a($$0, $$0.cK());
+   public static dbk b(int $$0, int $$1) {
+      return new dbk(($$0 << 5) + 31, ($$1 << 5) + 31);
    }
 
-   default boolean a(@Nullable bsw $$0, evo $$1) {
-      for (ewm $$2 : this.e($$0, $$1)) {
-         if (!$$2.c()) {
-            return false;
-         }
-      }
+   public long a() {
+      return c(this.e, this.f);
+   }
 
-      if (!this.c($$0, $$1).isEmpty()) {
-         return false;
-      } else if ($$0 == null) {
+   public static long c(int $$0, int $$1) {
+      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
+   }
+
+   public static long a(ja $$0) {
+      return c(kc.a($$0.u()), kc.a($$0.w()));
+   }
+
+   public static int a(long $$0) {
+      return (int)($$0 & 4294967295L);
+   }
+
+   public static int b(long $$0) {
+      return (int)($$0 >>> 32 & 4294967295L);
+   }
+
+   @Override
+   public int hashCode() {
+      return d(this.e, this.f);
+   }
+
+   public static int d(int $$0, int $$1) {
+      int $$2 = 1664525 * $$0 + 1013904223;
+      int $$3 = 1664525 * ($$1 ^ -559038737) + 1013904223;
+      return $$2 ^ $$3;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
          return true;
       } else {
-         ewm $$3 = this.h($$0, $$1);
-         return $$3 == null || !ewj.c($$3, ewj.a($$1), evx.i);
+         return !($$0 instanceof dbk $$1) ? false : this.e == $$1.e && this.f == $$1.f;
       }
    }
 
-   default boolean b(@Nullable bsw $$0, evo $$1) {
-      for (ewm $$2 : this.e($$0, $$1)) {
-         if (!$$2.c()) {
-            return false;
-         }
-      }
-
-      return true;
+   public int b() {
+      return this.a(8);
    }
 
-   List<ewm> c(@Nullable bsw var1, evo var2);
-
-   default Iterable<ewm> d(@Nullable bsw $$0, evo $$1) {
-      List<ewm> $$2 = this.c($$0, $$1);
-      Iterable<ewm> $$3 = this.e($$0, $$1);
-      return $$2.isEmpty() ? $$3 : Iterables.concat($$2, $$3);
+   public int c() {
+      return this.b(8);
    }
 
-   default Iterable<ewm> e(@Nullable bsw $$0, evo $$1) {
-      return () -> new dbe<ewm>(this, $$0, $$1, false, ($$0xx, $$1xx) -> $$1xx);
+   public int d() {
+      return kc.c(this.e);
    }
 
-   @Nullable
-   private ewm h(bsw $$0, evo $$1) {
-      dtv $$2 = this.C_();
-      return $$2.a($$0, $$1) ? $$2.c() : null;
+   public int e() {
+      return kc.c(this.f);
    }
 
-   default boolean f(@Nullable bsw $$0, evo $$1) {
-      dbe<ewm> $$2 = new dbe<>(this, $$0, $$1, true, ($$0x, $$1x) -> $$1x);
+   public int f() {
+      return this.a(15);
+   }
 
-      while ($$2.hasNext()) {
-         if (!((ewm)$$2.next()).c()) {
+   public int g() {
+      return this.b(15);
+   }
+
+   public int h() {
+      return this.e >> 5;
+   }
+
+   public int i() {
+      return this.f >> 5;
+   }
+
+   public int j() {
+      return this.e & 31;
+   }
+
+   public int k() {
+      return this.f & 31;
+   }
+
+   public ja a(int $$0, int $$1, int $$2) {
+      return new ja(this.a($$0), $$1, this.b($$2));
+   }
+
+   public int a(int $$0) {
+      return kc.a(this.e, $$0);
+   }
+
+   public int b(int $$0) {
+      return kc.a(this.f, $$0);
+   }
+
+   public ja c(int $$0) {
+      return new ja(this.b(), $$0, this.c());
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.e + ", " + this.f + "]";
+   }
+
+   public ja l() {
+      return new ja(this.d(), 0, this.e());
+   }
+
+   public int a(dbk $$0) {
+      return Math.max(Math.abs(this.e - $$0.e), Math.abs(this.f - $$0.f));
+   }
+
+   public int b(dbk $$0) {
+      return this.e($$0.e, $$0.f);
+   }
+
+   public int c(long $$0) {
+      return this.e(a($$0), b($$0));
+   }
+
+   private int e(int $$0, int $$1) {
+      int $$2 = $$0 - this.e;
+      int $$3 = $$1 - this.f;
+      return $$2 * $$2 + $$3 * $$3;
+   }
+
+   public static Stream<dbk> a(dbk $$0, int $$1) {
+      return a(new dbk($$0.e - $$1, $$0.f - $$1), new dbk($$0.e + $$1, $$0.f + $$1));
+   }
+
+   public static Stream<dbk> a(final dbk $$0, final dbk $$1) {
+      int $$2 = Math.abs($$0.e - $$1.e) + 1;
+      int $$3 = Math.abs($$0.f - $$1.f) + 1;
+      final int $$4 = $$0.e < $$1.e ? 1 : -1;
+      final int $$5 = $$0.f < $$1.f ? 1 : -1;
+      return StreamSupport.stream(new AbstractSpliterator<dbk>((long)($$2 * $$3), 64) {
+         @Nullable
+         private dbk e;
+
+         @Override
+         public boolean tryAdvance(Consumer<? super dbk> $$0x) {
+            if (this.e == null) {
+               this.e = $$0;
+            } else {
+               int $$1 = this.e.e;
+               int $$2 = this.e.f;
+               if ($$1 == $$1.e) {
+                  if ($$2 == $$1.f) {
+                     return false;
+                  }
+
+                  this.e = new dbk($$0.e, $$2 + $$5);
+               } else {
+                  this.e = new dbk($$1 + $$4, $$2);
+               }
+            }
+
+            $$0.accept(this.e);
             return true;
          }
-      }
-
-      return false;
-   }
-
-   default Optional<iz> g(bsw $$0, evo $$1) {
-      iz $$2 = null;
-      double $$3 = Double.MAX_VALUE;
-      dbe<iz> $$4 = new dbe<>(this, $$0, $$1, false, ($$0x, $$1x) -> $$0x);
-
-      while ($$4.hasNext()) {
-         iz $$5 = (iz)$$4.next();
-         double $$6 = $$5.b($$0.dn());
-         if ($$6 < $$3 || $$6 == $$3 && ($$2 == null || $$2.i($$5) < 0)) {
-            $$2 = $$5.i();
-            $$3 = $$6;
-         }
-      }
-
-      return Optional.ofNullable($$2);
-   }
-
-   default Optional<evt> a(@Nullable bsw $$0, ewm $$1, evt $$2, double $$3, double $$4, double $$5) {
-      if ($$1.c()) {
-         return Optional.empty();
-      } else {
-         evo $$6 = $$1.a().c($$3, $$4, $$5);
-         ewm $$7 = StreamSupport.stream(this.e($$0, $$6).spliterator(), false)
-            .filter($$0x -> this.C_() == null || this.C_().a($$0x.a()))
-            .flatMap($$0x -> $$0x.e().stream())
-            .map($$3x -> $$3x.c($$3 / 2.0, $$4 / 2.0, $$5 / 2.0))
-            .map(ewj::a)
-            .reduce(ewj.a(), ewj::a);
-         ewm $$8 = ewj.a($$1, $$7, evx.e);
-         return $$8.a($$2);
-      }
+      }, false);
    }
 }

@@ -1,37 +1,45 @@
-public class aex implements zw<aci> {
-   public static final zn<wm, aex> a = zw.a(aex::a, aex::new);
-   private final int b;
-   private final byte c;
+public class aex implements zb<abn> {
+   public static final ys<vr, aex> a = zb.a(aex::a, aex::new);
+   private final float b;
+   private final int c;
+   private final float d;
 
-   public aex(bsw $$0, byte $$1) {
-      this.b = $$0.al();
+   public aex(float $$0, int $$1, float $$2) {
+      this.b = $$0;
       this.c = $$1;
+      this.d = $$2;
    }
 
-   private aex(wm $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readByte();
+   private aex(vr $$0) {
+      this.b = $$0.readFloat();
+      this.c = $$0.l();
+      this.d = $$0.readFloat();
    }
 
-   private void a(wm $$0) {
-      $$0.c(this.b);
-      $$0.k(this.c);
+   private void a(vr $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zy<aex> a() {
-      return agu.am;
+   public zd<aex> a() {
+      return afz.aH;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
    }
 
-   public bsw a(dca $$0) {
-      return $$0.a(this.b);
+   public float b() {
+      return this.b;
    }
 
-   public byte b() {
+   public int e() {
       return this.c;
+   }
+
+   public float f() {
+      return this.d;
    }
 }

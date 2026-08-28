@@ -1,121 +1,71 @@
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class fna extends fnf {
-   private static final alf a = new alf("icon/draft_report");
-   private static final int b = 2;
-   private static final int c = 50;
-   private static final int d = 4;
-   private static final int r = 204;
-   private static final int s = 98;
-   private static final xp u = xp.c("menu.returnToGame");
-   private static final xp v = xp.c("gui.advancements");
-   private static final xp w = xp.c("gui.stats");
-   private static final xp x = xp.c("menu.sendFeedback");
-   private static final xp y = xp.c("menu.reportBugs");
-   private static final xp z = xp.c("menu.options");
-   private static final xp A = xp.c("menu.shareToLan");
-   private static final xp B = xp.c("menu.playerReporting");
-   private static final xp C = xp.c("menu.returnToMenu");
-   private static final xp D = xp.c("menu.savingLevel");
-   private static final xp E = xp.c("menu.game");
-   private static final xp F = xp.c("menu.paused");
-   private final boolean G;
+public class fna extends fnd implements ayl {
    @Nullable
-   private fhg H;
+   private wu a;
+   @Nullable
+   private wu b;
+   private int c;
+   private boolean q;
+   private final boolean r;
 
    public fna(boolean $$0) {
-      super($$0 ? E : F);
-      this.G = $$0;
-   }
-
-   public boolean m() {
-      return this.G;
+      super(fff.a);
+      this.r = $$0;
    }
 
    @Override
-   protected void aM_() {
-      if (this.G) {
-         this.E();
-      }
-
-      this.c(new fin(0, this.G ? 40 : 10, this.n, 9, this.l, this.p));
+   public boolean aE_() {
+      return false;
    }
 
-   private void E() {
-      fks $$0 = new fks();
-      $$0.c().a(4, 4, 4, 0);
-      fks.b $$1 = $$0.d(2);
-      $$1.a(fhg.a(u, $$0x -> {
-         this.m.a(null);
-         this.m.n.i();
-      }).a(204).a(), 2, $$0.b().c(50));
-      $$1.a(this.a(v, () -> new fnu(this.m.s.cz.p(), this)));
-      $$1.a(this.a(w, () -> new fno(this, this.m.s.j())));
-      $$1.a(this.a(x, aa.b().g() ? "https://aka.ms/javafeedback?ref=game" : "https://aka.ms/snapshotfeedback?ref=game"));
-      $$1.a(this.a(y, "https://aka.ms/snapshotbugs?ref=game")).j = !aa.b().d().a();
-      $$1.a(this.a(z, () -> new fmw(this, this.m.m)));
-      if (this.m.U() && !this.m.V().r()) {
-         $$1.a(this.a(A, () -> new fng(this)));
+   @Override
+   protected boolean aN_() {
+      return false;
+   }
+
+   @Override
+   public void a(wu $$0) {
+      this.b($$0);
+   }
+
+   @Override
+   public void b(wu $$0) {
+      this.a = $$0;
+      this.c(wu.c("menu.working"));
+   }
+
+   @Override
+   public void c(wu $$0) {
+      this.b = $$0;
+      this.a(0);
+   }
+
+   @Override
+   public void a(int $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public void a() {
+      this.q = true;
+   }
+
+   @Override
+   public void a(fgz $$0, int $$1, int $$2, float $$3) {
+      if (this.q) {
+         if (this.r) {
+            this.l.a(null);
+         }
       } else {
-         $$1.a(this.a(B, () -> new fro(this)));
+         super.a($$0, $$1, $$2, $$3);
+         if (this.a != null) {
+            $$0.a(this.o, this.a, this.m / 2, 70, 16777215);
+         }
+
+         if (this.b != null && this.c != 0) {
+            $$0.a(this.o, wu.i().b(this.b).f(" " + this.c + "%"), this.m / 2, 90, 16777215);
+         }
       }
-
-      xp $$2 = this.m.T() ? C : xo.p;
-      this.H = $$1.a(fhg.a($$2, $$0x -> {
-         $$0x.j = false;
-         this.m.aZ().a(this.m, this, this::F, true);
-      }).a(204).a(), 2);
-      $$0.a();
-      fkr.a($$0, 0, 0, this.n, this.o, 0.5F, 0.25F);
-      $$0.a(this::c);
-   }
-
-   private void F() {
-      boolean $$0 = this.m.T();
-      fyl $$1 = this.m.S();
-      this.m.r.Y();
-      if ($$0) {
-         this.m.b(new fml(D));
-      } else {
-         this.m.y();
-      }
-
-      fnk $$2 = new fnk();
-      if ($$0) {
-         this.m.a($$2);
-      } else if ($$1 != null && $$1.e()) {
-         this.m.a(new fal($$2));
-      } else {
-         this.m.a(new fqd($$2));
-      }
-   }
-
-   @Override
-   public void e() {
-      super.e();
-   }
-
-   @Override
-   public void a(fgt $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.G && this.m != null && this.m.aZ().c() && this.H != null) {
-         $$0.a(a, this.H.C() + this.H.x() - 17, this.H.D() + 3, 15, 15);
-      }
-   }
-
-   @Override
-   public void b(fgt $$0, int $$1, int $$2, float $$3) {
-      if (this.G) {
-         super.b($$0, $$1, $$2, $$3);
-      }
-   }
-
-   private fhg a(xp $$0, Supplier<fnf> $$1) {
-      return fhg.a($$0, $$1x -> this.m.a($$1.get())).a(98).a();
-   }
-
-   private fhg a(xp $$0, String $$1) {
-      return fhg.a($$0, flw.b(this, $$1)).a(98).a();
    }
 }

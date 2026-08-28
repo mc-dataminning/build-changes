@@ -1,32 +1,70 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public record cxp(Optional<jh> c, boolean d) {
-   public static final Codec<cxp> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jh.b.optionalFieldOf("target").forGetter(cxp::a), Codec.BOOL.optionalFieldOf("tracked", true).forGetter(cxp::b)).apply($$0, cxp::new)
-   );
-   public static final zn<ByteBuf, cxp> b = zn.a(jh.c.a(zl::a), cxp::a, zl.b, cxp::b, cxp::new);
+public class cxp extends cxy {
+   public cxp(cxv $$0) {
+      super($$0);
+   }
 
-   public cxp a(arf $$0) {
-      if (this.d && !this.c.isEmpty()) {
-         if (this.c.get().a() != $$0.af()) {
-            return this;
-         } else {
-            iz $$1 = this.c.get().b();
-            return $$0.k($$1) && $$0.y().a(cez.s, $$1) ? this : new cxp(Optional.empty(), true);
+   public boolean a(cxw $$0, dcd $$1) {
+      cua $$2 = cua.l;
+      List<cua> $$3 = Lists.newArrayList();
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cua $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            if ($$5.a(awd.by)) {
+               if (!$$2.e()) {
+                  return false;
+               }
+
+               $$2 = $$5;
+            } else {
+               if (!($$5.g() instanceof csu)) {
+                  return false;
+               }
+
+               $$3.add($$5);
+            }
          }
-      } else {
-         return this;
       }
+
+      return !$$2.e() && !$$3.isEmpty();
    }
 
-   public Optional<jh> a() {
-      return this.c;
+   public cua a(cxw $$0, jl.a $$1) {
+      List<csu> $$2 = Lists.newArrayList();
+      cua $$3 = cua.l;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cua $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            if ($$5.a(awd.by)) {
+               if (!$$3.e()) {
+                  return cua.l;
+               }
+
+               $$3 = $$5.s();
+            } else {
+               if (!($$5.g() instanceof csu $$6)) {
+                  return cua.l;
+               }
+
+               $$2.add($$6);
+            }
+         }
+      }
+
+      return !$$3.e() && !$$2.isEmpty() ? cwr.a($$3, $$2) : cua.l;
    }
 
-   public boolean b() {
-      return this.d;
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
+   }
+
+   @Override
+   public cyl<?> ap_() {
+      return cyl.c;
    }
 }

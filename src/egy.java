@@ -1,23 +1,16 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class egy extends egt {
-   public static final MapCodec<egy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bpg.b(egt.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, egy::new)
-   );
-   private final bpg<egt> b;
+public interface egy<P extends egx> {
+   egy<egw> a = a("constant", egw.b);
+   egy<eha> b = a("uniform", eha.a);
+   egy<egv> c = a("biased_to_bottom", egv.a);
+   egy<ehb> d = a("very_biased_to_bottom", ehb.a);
+   egy<egz> e = a("trapezoid", egz.a);
+   egy<ehc> f = a("weighted_list", ehc.a);
 
-   public egy(bpg<egt> $$0) {
-      this.b = $$0;
-   }
+   MapCodec<P> codec();
 
-   @Override
-   public int a(azh $$0, dyt $$1) {
-      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0, $$1);
-   }
-
-   @Override
-   public egu<?> a() {
-      return egu.f;
+   private static <P extends egx> egy<P> a(String $$0, MapCodec<P> $$1) {
+      return jw.a(lq.L, $$0, () -> $$1);
    }
 }

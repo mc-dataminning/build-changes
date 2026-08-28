@@ -1,26 +1,9 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class emd extends emg {
-   public static final MapCodec<emd> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(lp.e.q().fieldOf("block").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d)).apply($$0, emd::new)
-   );
-   private final dfb b;
-   private final float d;
+public abstract class emd {
+   public static final Codec<emd> c = lq.o.r().dispatch("predicate_type", emd::a, eme::codec);
 
-   public emd(dfb $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
-   }
+   public abstract boolean a(ja var1, ja var2, ja var3, aym var4);
 
-   @Override
-   public boolean a(dse $$0, azh $$1) {
-      return $$0.a(this.b) && $$1.i() < this.d;
-   }
-
-   @Override
-   protected emh<?> a() {
-      return emh.e;
-   }
+   protected abstract eme<?> a();
 }

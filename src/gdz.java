@@ -1,35 +1,30 @@
-public class gdz {
-   private final long[] a;
-   private int b;
-   private int c;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-   public gdz(int $$0) {
-      this.a = new long[$$0];
+public class gdz {
+   public static final akk a = new akk("textures/gui/title/background/panorama_overlay.png");
+   private final ffn b;
+   private final gdl c;
+   private float d;
+   private float e;
+
+   public gdz(gdl $$0) {
+      this.c = $$0;
+      this.b = ffn.Q();
    }
 
-   public long a(long $$0) {
-      if (this.b < this.a.length) {
-         this.b++;
-      }
+   public void a(fgz $$0, int $$1, int $$2, float $$3, float $$4) {
+      float $$5 = (float)((double)$$4 * this.b.m.s().c());
+      this.d = a(this.d + $$5 * 0.1F, 360.0F);
+      this.e = a(this.e + $$5 * 0.001F, (float) (Math.PI * 2));
+      this.c.a(this.b, 10.0F, -this.d, $$3);
+      RenderSystem.enableBlend();
+      $$0.a(1.0F, 1.0F, 1.0F, $$3);
+      $$0.a(a, 0, 0, $$1, $$2, 0.0F, 0.0F, 16, 128, 16, 128);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.disableBlend();
+   }
 
-      this.a[this.c] = $$0;
-      this.c = (this.c + 1) % this.a.length;
-      long $$1 = Long.MAX_VALUE;
-      long $$2 = Long.MIN_VALUE;
-      long $$3 = 0L;
-
-      for (int $$4 = 0; $$4 < this.b; $$4++) {
-         long $$5 = this.a[$$4];
-         $$3 += $$5;
-         $$1 = Math.min($$1, $$5);
-         $$2 = Math.max($$2, $$5);
-      }
-
-      if (this.b > 2) {
-         $$3 -= $$1 + $$2;
-         return $$3 / (long)(this.b - 2);
-      } else {
-         return $$3 > 0L ? (long)this.b / $$3 : 0L;
-      }
+   private static float a(float $$0, float $$1) {
+      return $$0 > $$1 ? $$0 - $$1 : $$0;
    }
 }

@@ -1,57 +1,83 @@
-import java.util.BitSet;
 import javax.annotation.Nullable;
 
-public class adu implements zw<aci> {
-   public static final zn<xa, adu> a = zw.a(adu::a, adu::new);
-   private final int b;
-   private final int c;
-   private final adt d;
-   private final ady e;
+public class adu implements zb<abn> {
+   public static final ys<vr, adu> a = zb.a(adu::a, adu::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final int e;
+   private final fc.a f;
+   private final fc.a g;
+   private final boolean h;
 
-   public adu(duk $$0, enm $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      dbh $$4 = $$0.f();
-      this.b = $$4.e;
-      this.c = $$4.f;
-      this.d = new adt($$0);
-      this.e = new ady($$4, $$1, $$2, $$3);
+   public adu(fc.a $$0, double $$1, double $$2, double $$3) {
+      this.f = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = 0;
+      this.h = false;
+      this.g = null;
    }
 
-   private adu(xa $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
-      this.d = new adt($$0, this.b, this.c);
-      this.e = new ady($$0, this.b, this.c);
+   public adu(fc.a $$0, bsd $$1, fc.a $$2) {
+      this.f = $$0;
+      this.e = $$1.al();
+      this.g = $$2;
+      evz $$3 = $$2.a($$1);
+      this.b = $$3.c;
+      this.c = $$3.d;
+      this.d = $$3.e;
+      this.h = true;
    }
 
-   private void a(xa $$0) {
-      $$0.p(this.b);
-      $$0.p(this.c);
-      this.d.a($$0);
-      this.e.a($$0);
+   private adu(vr $$0) {
+      this.f = $$0.b(fc.a.class);
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.h = $$0.readBoolean();
+      if (this.h) {
+         this.e = $$0.l();
+         this.g = $$0.b(fc.a.class);
+      } else {
+         this.e = 0;
+         this.g = null;
+      }
+   }
+
+   private void a(vr $$0) {
+      $$0.a(this.f);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.h);
+      if (this.h) {
+         $$0.c(this.e);
+         $$0.a(this.g);
+      }
    }
 
    @Override
-   public zy<adu> a() {
-      return agu.K;
+   public zd<adu> a() {
+      return afz.ag;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public fc.a b() {
+      return this.f;
    }
 
-   public int e() {
-      return this.c;
-   }
-
-   public adt f() {
-      return this.d;
-   }
-
-   public ady g() {
-      return this.e;
+   @Nullable
+   public evz a(dcd $$0) {
+      if (this.h) {
+         bsd $$1 = $$0.a(this.e);
+         return $$1 == null ? new evz(this.b, this.c, this.d) : this.g.a($$1);
+      } else {
+         return new evz(this.b, this.c, this.d);
+      }
    }
 }

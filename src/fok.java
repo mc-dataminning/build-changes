@@ -1,246 +1,108 @@
-import java.util.Collections;
+import com.google.common.collect.Ordering;
+import java.util.Collection;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class fok extends fnf {
-   public static final int a = 16;
-   public static final int b = 36;
-   public static final int c = 30;
-   public static final fok.a d = new fok.a(List.of());
-   public static final alf r = new alf("textures/gui/book.png");
-   protected static final int s = 114;
-   protected static final int u = 128;
-   protected static final int v = 192;
-   protected static final int w = 192;
-   private fok.a x;
-   private int y;
-   private List<ayl> z = Collections.emptyList();
-   private int A = -1;
-   private xp B = xo.a;
-   private fpm C;
-   private fpm D;
-   private final boolean E;
+public abstract class fok<T extends cpe> extends fns<T> {
+   private static final akk D = new akk("container/inventory/effect_background_large");
+   private static final akk E = new akk("container/inventory/effect_background_small");
 
-   public fok(fok.a $$0) {
-      this($$0, true);
-   }
-
-   public fok() {
-      this(d, false);
-   }
-
-   private fok(fok.a $$0, boolean $$1) {
-      super(fez.a);
-      this.x = $$0;
-      this.E = $$1;
-   }
-
-   public void a(fok.a $$0) {
-      this.x = $$0;
-      this.y = ayz.a(this.y, 0, $$0.a());
-      this.L();
-      this.A = -1;
-   }
-
-   public boolean a(int $$0) {
-      int $$1 = ayz.a($$0, 0, this.x.a() - 1);
-      if ($$1 != this.y) {
-         this.y = $$1;
-         this.L();
-         this.A = -1;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected boolean b(int $$0) {
-      return this.a($$0);
+   public fok(T $$0, cmg $$1, wu $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected void aM_() {
-      this.m();
-      this.E();
-   }
-
-   protected void m() {
-      this.c(fhg.a(xo.d, $$0 -> this.d()).a(this.n / 2 - 100, 196, 200, 20).a());
-   }
-
-   protected void E() {
-      int $$0 = (this.n - 192) / 2;
-      int $$1 = 2;
-      this.C = this.c(new fpm($$0 + 116, 159, true, $$0x -> this.J(), this.E));
-      this.D = this.c(new fpm($$0 + 43, 159, false, $$0x -> this.I(), this.E));
-      this.L();
-   }
-
-   private int F() {
-      return this.x.a();
-   }
-
-   protected void I() {
-      if (this.y > 0) {
-         this.y--;
-      }
-
-      this.L();
-   }
-
-   protected void J() {
-      if (this.y < this.F() - 1) {
-         this.y++;
-      }
-
-      this.L();
-   }
-
-   private void L() {
-      this.C.k = this.y < this.F() - 1;
-      this.D.k = this.y > 0;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else {
-         switch ($$0) {
-            case 266:
-               this.D.b();
-               return true;
-            case 267:
-               this.C.b();
-               return true;
-            default:
-               return false;
-         }
-      }
-   }
-
-   @Override
-   public void a(fgt $$0, int $$1, int $$2, float $$3) {
+   public void a(fgz $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      int $$4 = (this.n - 192) / 2;
-      int $$5 = 2;
-      if (this.A != this.y) {
-         xu $$6 = this.x.a(this.y);
-         this.z = this.p.c($$6, 114);
-         this.B = xp.a("book.pageIndicator", this.y + 1, Math.max(this.F(), 1));
-      }
-
-      this.A = this.y;
-      int $$7 = this.p.a(this.B);
-      $$0.a(this.p, this.B, $$4 - $$7 + 192 - 44, 18, 0, false);
-      int $$8 = Math.min(128 / 9, this.z.size());
-
-      for (int $$9 = 0; $$9 < $$8; $$9++) {
-         ayl $$10 = this.z.get($$9);
-         $$0.a(this.p, $$10, $$4 + 36, 32 + $$9 * 9, 0, false);
-      }
-
-      ym $$11 = this.b((double)$$1, (double)$$2);
-      if ($$11 != null) {
-         $$0.a(this.p, $$11, $$1, $$2);
-      }
+      this.c($$0, $$1, $$2);
    }
 
-   @Override
-   public void b(fgt $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-      $$0.a(r, (this.n - 192) / 2, 2, 0, 0, 192, 192);
+   public boolean K() {
+      int $$0 = this.z + this.c + 2;
+      int $$1 = this.m - $$0;
+      return $$1 >= 32;
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if ($$2 == 0) {
-         ym $$3 = this.b($$0, $$1);
-         if ($$3 != null && this.a($$3)) {
-            return true;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(ym $$0) {
-      xn $$1 = $$0.h();
-      if ($$1 == null) {
-         return false;
-      } else if ($$1.a() == xn.a.e) {
-         String $$2 = $$1.b();
-
-         try {
-            int $$3 = Integer.parseInt($$2) - 1;
-            return this.b($$3);
-         } catch (Exception var5) {
-            return false;
-         }
-      } else {
-         boolean $$4 = super.a($$0);
-         if ($$4 && $$1.a() == xn.a.c) {
-            this.K();
+   private void c(fgz $$0, int $$1, int $$2) {
+      int $$3 = this.z + this.c + 2;
+      int $$4 = this.m - $$3;
+      Collection<brl> $$5 = this.l.s.et();
+      if (!$$5.isEmpty() && $$4 >= 32) {
+         boolean $$6 = $$4 >= 120;
+         int $$7 = 33;
+         if ($$5.size() > 5) {
+            $$7 = 132 / ($$5.size() - 1);
          }
 
-         return $$4;
-      }
-   }
+         Iterable<brl> $$8 = Ordering.natural().sortedCopy($$5);
+         this.a($$0, $$3, $$7, $$8, $$6);
+         this.b($$0, $$3, $$7, $$8, $$6);
+         if ($$6) {
+            this.a($$0, $$3, $$7, $$8);
+         } else if ($$1 >= $$3 && $$1 <= $$3 + 33) {
+            int $$9 = this.A;
+            brl $$10 = null;
 
-   protected void K() {
-      this.m.a(null);
-   }
-
-   @Nullable
-   public ym b(double $$0, double $$1) {
-      if (this.z.isEmpty()) {
-         return null;
-      } else {
-         int $$2 = ayz.a($$0 - (double)((this.n - 192) / 2) - 36.0);
-         int $$3 = ayz.a($$1 - 2.0 - 30.0);
-         if ($$2 >= 0 && $$3 >= 0) {
-            int $$4 = Math.min(128 / 9, this.z.size());
-            if ($$2 <= 114 && $$3 < 9 * $$4 + $$4) {
-               int $$5 = $$3 / 9;
-               if ($$5 >= 0 && $$5 < this.z.size()) {
-                  ayl $$6 = this.z.get($$5);
-                  return this.m.h.b().a($$6, $$2);
-               } else {
-                  return null;
+            for (brl $$11 : $$8) {
+               if ($$2 >= $$9 && $$2 <= $$9 + $$7) {
+                  $$10 = $$11;
                }
-            } else {
-               return null;
+
+               $$9 += $$7;
             }
-         } else {
-            return null;
+
+            if ($$10 != null) {
+               List<wu> $$12 = List.of(this.a($$10), brm.a($$10, 1.0F, this.l.r.s().f()));
+               $$0.a(this.o, $$12, Optional.empty(), $$1, $$2);
+            }
          }
       }
    }
 
-   public static record a(List<xp> a) {
-      public int a() {
-         return this.a.size();
-      }
+   private void a(fgz $$0, int $$1, int $$2, Iterable<brl> $$3, boolean $$4) {
+      int $$5 = this.A;
 
-      public xu a(int $$0) {
-         return $$0 >= 0 && $$0 < this.a() ? this.a.get($$0) : xu.b;
-      }
-
-      @Nullable
-      public static fok.a a(cur $$0) {
-         boolean $$1 = ffh.Q().aS();
-         cya $$2 = $$0.a(km.J);
-         if ($$2 != null) {
-            return new fok.a($$2.a($$1));
+      for (brl $$6 : $$3) {
+         if ($$4) {
+            $$0.a(D, $$1, $$5, 120, 32);
          } else {
-            cxz $$3 = $$0.a(km.I);
-            return $$3 != null ? new fok.a($$3.a($$1).map(xp::b).toList()) : null;
+            $$0.a(E, $$1, $$5, 32, 32);
          }
+
+         $$5 += $$2;
+      }
+   }
+
+   private void b(fgz $$0, int $$1, int $$2, Iterable<brl> $$3, boolean $$4) {
+      gqg $$5 = this.l.aF();
+      int $$6 = this.A;
+
+      for (brl $$7 : $$3) {
+         jj<brj> $$8 = $$7.c();
+         gpi $$9 = $$5.a($$8);
+         $$0.a($$1 + ($$4 ? 6 : 7), $$6 + 7, 0, 18, 18, $$9);
+         $$6 += $$2;
+      }
+   }
+
+   private void a(fgz $$0, int $$1, int $$2, Iterable<brl> $$3) {
+      int $$4 = this.A;
+
+      for (brl $$5 : $$3) {
+         wu $$6 = this.a($$5);
+         $$0.b(this.o, $$6, $$1 + 10 + 18, $$4 + 6, 16777215);
+         wu $$7 = brm.a($$5, 1.0F, this.l.r.s().f());
+         $$0.b(this.o, $$7, $$1 + 10 + 18, $$4 + 6 + 10, 8355711);
+         $$4 += $$2;
+      }
+   }
+
+   private wu a(brl $$0) {
+      xi $$1 = $$0.c().a().e().f();
+      if ($$0.e() >= 1 && $$0.e() <= 9) {
+         $$1.b(wt.v).b(wu.c("enchantment.level." + ($$0.e() + 1)));
       }
 
-      public List<xp> b() {
-         return this.a;
-      }
+      return $$1;
    }
 }

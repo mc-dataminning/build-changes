@@ -1,20 +1,53 @@
-public record ajx(long b) implements zw<ajw> {
-   public static final zn<wm, ajx> a = zw.a(ajx::a, ajx::new);
+import java.util.Iterator;
 
-   private ajx(wm $$0) {
-      this($$0.readLong());
+public interface ajx<T> {
+   default void a(int $$0, int $$1, int $$2, cyi<?> $$3, Iterator<T> $$4, int $$5) {
+      int $$6 = $$0;
+      int $$7 = $$1;
+      if ($$3.b() instanceof cyo $$9) {
+         $$6 = $$9.j();
+         $$7 = $$9.k();
+      }
+
+      int $$10 = 0;
+
+      for (int $$11 = 0; $$11 < $$1; $$11++) {
+         if ($$10 == $$2) {
+            $$10++;
+         }
+
+         boolean $$12 = (float)$$7 < (float)$$1 / 2.0F;
+         int $$13 = aye.d((float)$$1 / 2.0F - (float)$$7 / 2.0F);
+         if ($$12 && $$13 > $$11) {
+            $$10 += $$0;
+            $$11++;
+         }
+
+         for (int $$14 = 0; $$14 < $$0; $$14++) {
+            if (!$$4.hasNext()) {
+               return;
+            }
+
+            $$12 = (float)$$6 < (float)$$0 / 2.0F;
+            $$13 = aye.d((float)$$0 / 2.0F - (float)$$6 / 2.0F);
+            int $$15 = $$6;
+            boolean $$16 = $$14 < $$6;
+            if ($$12) {
+               $$15 = $$13 + $$6;
+               $$16 = $$13 <= $$14 && $$14 < $$13 + $$6;
+            }
+
+            if ($$16) {
+               this.a($$4.next(), $$10, $$5, $$14, $$11);
+            } else if ($$15 == $$14) {
+               $$10 += $$0 - $$14;
+               break;
+            }
+
+            $$10++;
+         }
+      }
    }
 
-   private void a(wm $$0) {
-      $$0.b(this.b);
-   }
-
-   @Override
-   public zy<ajx> a() {
-      return ajy.a;
-   }
-
-   public void a(ajw $$0) {
-      $$0.a(this);
-   }
+   void a(T var1, int var2, int var3, int var4, int var5);
 }

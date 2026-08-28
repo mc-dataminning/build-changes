@@ -1,19 +1,66 @@
-public class bly extends blu {
-   private final blv c;
-   private final blx d;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   public bly(int $$0, blv $$1, blx $$2) {
-      this($$0, $$1, $$2, new long[$$0]);
+public final class bly {
+   private final Object2ObjectMap<blr<?>, Object> a = new Object2ObjectArrayMap();
+
+   public <T> void a(blr<T> $$0, @Nullable T $$1) {
+      this.a.put($$0, $$1);
    }
 
-   public bly(int $$0, blv $$1, blx $$2, long[] $$3) {
-      super($$0, $$3);
-      this.c = $$1;
-      this.d = $$2;
+   @Nullable
+   public <T> T a(blr<T> $$0) {
+      return (T)this.a.get($$0);
+   }
+
+   public <T> T b(blr<T> $$0) {
+      return Objects.requireNonNull(this.a($$0));
+   }
+
+   public <T> T b(blr<T> $$0, T $$1) {
+      return Objects.requireNonNullElse(this.a($$0), $$1);
+   }
+
+   @Nullable
+   @SafeVarargs
+   public final <T> T a(blr<T>... $$0) {
+      for (blr<T> $$1 : $$0) {
+         T $$2 = this.a($$1);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
+
+      return null;
+   }
+
+   @SafeVarargs
+   public final <T> T b(blr<T>... $$0) {
+      return Objects.requireNonNull(this.a($$0));
    }
 
    @Override
-   protected void a() {
-      this.c.a(new adj((long[])this.b.clone(), this.d));
+   public String toString() {
+      return this.a.toString();
+   }
+
+   public void a(bly $$0) {
+      this.a.putAll($$0.a);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 instanceof bly $$1 ? this.a.equals($$1.a) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

@@ -1,8 +1,6 @@
-import java.util.function.BiConsumer;
+import com.google.gson.JsonElement;
+import java.util.function.Supplier;
 
-public class nn implements mu {
-   @Override
-   public void generate(jk.a $$0, BiConsumer<ale<eqp>, eqp.a> $$1) {
-      $$1.accept(eqg.bc, eqp.b());
-   }
+public interface nn extends Supplier<JsonElement> {
+   dff a();
 }

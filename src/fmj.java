@@ -1,74 +1,79 @@
-import com.google.common.hash.Hashing;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class fmj implements AutoCloseable {
-   private static final alf a = new alf("textures/misc/unknown_server.png");
-   private static final int b = 64;
-   private static final int c = 64;
-   private final gpc d;
-   private final alf e;
-   @Nullable
-   private goo f;
-   private boolean g;
+public class fmj extends fnd {
+   private static final wu a = wu.c("addServer.enterIp");
+   private fhm b;
+   private final fyr c;
+   private fhv q;
+   private final BooleanConsumer r;
+   private final fnd s;
 
-   private fmj(gpc $$0, alf $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   public static fmj a(gpc $$0, String $$1) {
-      return new fmj($$0, new alf("minecraft", "worlds/" + ac.a($$1, alf::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
-   }
-
-   public static fmj b(gpc $$0, String $$1) {
-      return new fmj($$0, new alf("minecraft", "servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
-   }
-
-   public void a(ezb $$0) {
-      if ($$0.a() == 64 && $$0.b() == 64) {
-         try {
-            this.c();
-            if (this.f == null) {
-               this.f = new goo($$0);
-            } else {
-               this.f.a($$0);
-               this.f.d();
-            }
-
-            this.d.a(this.e, this.f);
-         } catch (Throwable var3) {
-            $$0.close();
-            this.a();
-            throw var3;
-         }
-      } else {
-         $$0.close();
-         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
-      }
-   }
-
-   public void a() {
-      this.c();
-      if (this.f != null) {
-         this.d.c(this.e);
-         this.f.close();
-         this.f = null;
-      }
-   }
-
-   public alf b() {
-      return this.f != null ? this.e : a;
+   public fmj(fnd $$0, BooleanConsumer $$1, fyr $$2) {
+      super(wu.c("selectServer.direct"));
+      this.s = $$0;
+      this.c = $$2;
+      this.r = $$1;
    }
 
    @Override
-   public void close() {
-      this.a();
-      this.g = true;
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (!this.b.j || this.aI_() != this.q || $$0 != 257 && $$0 != 335) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         this.m();
+         return true;
+      }
    }
 
-   private void c() {
-      if (this.g) {
-         throw new IllegalStateException("Icon already closed");
-      }
+   @Override
+   protected void aO_() {
+      this.q = new fhv(this.o, this.m / 2 - 100, 116, 200, 20, wu.c("addServer.enterIp"));
+      this.q.f(128);
+      this.q.a(this.l.m.Z);
+      this.q.b($$0 -> this.E());
+      this.d(this.q);
+      this.b = this.c(fhm.a(wu.c("selectServer.select"), $$0 -> this.m()).a(this.m / 2 - 100, this.n / 4 + 96 + 12, 200, 20).a());
+      this.c(fhm.a(wt.e, $$0 -> this.r.accept(false)).a(this.m / 2 - 100, this.n / 4 + 120 + 12, 200, 20).a());
+      this.E();
+   }
+
+   @Override
+   protected void aD_() {
+      this.b(this.q);
+   }
+
+   @Override
+   public void a(ffn $$0, int $$1, int $$2) {
+      String $$3 = this.q.a();
+      this.b($$0, $$1, $$2);
+      this.q.a($$3);
+   }
+
+   private void m() {
+      this.c.b = this.q.a();
+      this.r.accept(true);
+   }
+
+   @Override
+   public void d() {
+      this.l.a(this.s);
+   }
+
+   @Override
+   public void j() {
+      this.l.m.Z = this.q.a();
+      this.l.m.av();
+   }
+
+   private void E() {
+      this.b.j = fzv.b(this.q.a());
+   }
+
+   @Override
+   public void a(fgz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.o, this.k, this.m / 2, 20, 16777215);
+      $$0.b(this.o, a, this.m / 2 - 100 + 1, 100, 10526880);
+      this.q.a($$0, $$1, $$2, $$3);
    }
 }

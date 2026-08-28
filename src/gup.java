@@ -1,22 +1,51 @@
 import java.time.Duration;
+import java.time.Instant;
 import javax.annotation.Nullable;
 
-public class gup {
-   private final boolean a;
+public abstract class gup {
+   private static final int a = 60000;
+   private static final int b = 10;
+   private int c;
+   private boolean d = false;
    @Nullable
-   private final Duration b;
+   private Instant e;
 
-   public gup(boolean $$0, @Nullable Duration $$1) {
-      this.b = $$1;
-      this.a = $$0;
+   public void a() {
+      this.d = true;
+      this.e = Instant.now();
+      this.c = 0;
    }
 
-   public void a(guf $$0) {
-      if (this.b != null) {
-         $$0.send(gug.d, $$0x -> {
-            $$0x.a(gui.x, (int)this.b.toMillis());
-            $$0x.a(gui.y, this.a);
-         });
+   public void a(guj $$0) {
+      if (this.b()) {
+         this.f();
+         this.c++;
+         this.e = Instant.now();
+      }
+
+      if (this.c()) {
+         this.b($$0);
+         this.c = 0;
       }
    }
+
+   public boolean b() {
+      return this.d && this.e != null && Duration.between(this.e, Instant.now()).toMillis() > 60000L;
+   }
+
+   public boolean c() {
+      return this.c >= 10;
+   }
+
+   public void d() {
+      this.d = false;
+   }
+
+   protected int e() {
+      return this.c;
+   }
+
+   public abstract void f();
+
+   public abstract void b(guj var1);
 }

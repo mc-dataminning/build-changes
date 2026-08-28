@@ -1,47 +1,31 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.util.Unit;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public final class bbu {
-   public static final ImmutableMap<String, String> a = ImmutableMap.builder()
-      .put("minecraft:badlands_plateau", "minecraft:badlands")
-      .put("minecraft:bamboo_jungle_hills", "minecraft:bamboo_jungle")
-      .put("minecraft:birch_forest_hills", "minecraft:birch_forest")
-      .put("minecraft:dark_forest_hills", "minecraft:dark_forest")
-      .put("minecraft:desert_hills", "minecraft:desert")
-      .put("minecraft:desert_lakes", "minecraft:desert")
-      .put("minecraft:giant_spruce_taiga_hills", "minecraft:old_growth_spruce_taiga")
-      .put("minecraft:giant_spruce_taiga", "minecraft:old_growth_spruce_taiga")
-      .put("minecraft:giant_tree_taiga_hills", "minecraft:old_growth_pine_taiga")
-      .put("minecraft:giant_tree_taiga", "minecraft:old_growth_pine_taiga")
-      .put("minecraft:gravelly_mountains", "minecraft:windswept_gravelly_hills")
-      .put("minecraft:jungle_edge", "minecraft:sparse_jungle")
-      .put("minecraft:jungle_hills", "minecraft:jungle")
-      .put("minecraft:modified_badlands_plateau", "minecraft:badlands")
-      .put("minecraft:modified_gravelly_mountains", "minecraft:windswept_gravelly_hills")
-      .put("minecraft:modified_jungle_edge", "minecraft:sparse_jungle")
-      .put("minecraft:modified_jungle", "minecraft:jungle")
-      .put("minecraft:modified_wooded_badlands_plateau", "minecraft:wooded_badlands")
-      .put("minecraft:mountain_edge", "minecraft:windswept_hills")
-      .put("minecraft:mountains", "minecraft:windswept_hills")
-      .put("minecraft:mushroom_field_shore", "minecraft:mushroom_fields")
-      .put("minecraft:shattered_savanna", "minecraft:windswept_savanna")
-      .put("minecraft:shattered_savanna_plateau", "minecraft:windswept_savanna")
-      .put("minecraft:snowy_mountains", "minecraft:snowy_plains")
-      .put("minecraft:snowy_taiga_hills", "minecraft:snowy_taiga")
-      .put("minecraft:snowy_taiga_mountains", "minecraft:snowy_taiga")
-      .put("minecraft:snowy_tundra", "minecraft:snowy_plains")
-      .put("minecraft:stone_shore", "minecraft:stony_shore")
-      .put("minecraft:swamp_hills", "minecraft:swamp")
-      .put("minecraft:taiga_hills", "minecraft:taiga")
-      .put("minecraft:taiga_mountains", "minecraft:taiga")
-      .put("minecraft:tall_birch_forest", "minecraft:old_growth_birch_forest")
-      .put("minecraft:tall_birch_hills", "minecraft:old_growth_birch_forest")
-      .put("minecraft:wooded_badlands_plateau", "minecraft:wooded_badlands")
-      .put("minecraft:wooded_hills", "minecraft:forest")
-      .put("minecraft:wooded_mountains", "minecraft:windswept_forest")
-      .put("minecraft:lofty_peaks", "minecraft:jagged_peaks")
-      .put("minecraft:snowcapped_peaks", "minecraft:frozen_peaks")
-      .build();
+public class bbu extends DataFix {
+   public bbu(Schema $$0) {
+      super($$0, false);
+   }
 
-   private bbu() {
+   public TypeRewriteRule makeRule() {
+      OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> $$0 = DSL.typeFinder(
+         this.getInputSchema().getType(bgd.t)
+      );
+      return this.fixTypeEverywhereTyped(
+         "EmptyItemInHotbarFix", this.getInputSchema().getType(bgd.d), $$1 -> $$1.update($$0, $$0xx -> $$0xx.mapSecond($$0xxx -> {
+                  Optional<String> $$1x = ((Either)$$0xxx.getFirst()).left().map(Pair::getSecond);
+                  Dynamic<?> $$2 = (Dynamic<?>)((Pair)$$0xxx.getSecond()).getSecond();
+                  boolean $$3 = $$1x.isEmpty() || $$1x.get().equals("minecraft:air");
+                  boolean $$4 = $$2.get("Count").asInt(0) <= 0;
+                  return !$$3 && !$$4 ? $$0xxx : Pair.of(Either.right(Unit.INSTANCE), Pair.of(Either.right(Unit.INSTANCE), $$2.emptyMap()));
+               }))
+      );
    }
 }

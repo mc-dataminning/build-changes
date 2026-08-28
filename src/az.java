@@ -5,18 +5,18 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class az extends dr<az.a> {
+public class az extends ds<az.a> {
    @Override
    public Codec<az.a> a() {
       return az.a.a;
    }
 
-   public void a(arg $$0, Collection<? extends bsw> $$1) {
-      List<eqk> $$2 = $$1.stream().map($$1x -> bu.b($$0, $$1x)).collect(Collectors.toList());
+   public void a(aql $$0, Collection<? extends bsd> $$1) {
+      List<eqo> $$2 = $$1.stream().map($$1x -> bu.b($$0, $$1x)).collect(Collectors.toList());
       this.a($$0, $$1x -> $$1x.a($$2));
    }
 
-   public static record a(Optional<bf> b, List<bf> c) implements dr.a {
+   public static record a(Optional<bf> b, List<bf> c) implements ds.a {
       public static final Codec<az.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(bu.b.optionalFieldOf("player").forGetter(az.a::a), bu.b.listOf().optionalFieldOf("victims", List.of()).forGetter(az.a::b))
                .apply($$0, az.a::new)
@@ -26,11 +26,11 @@ public class az extends dr<az.a> {
          return am.F.a(new az.a(Optional.empty(), bu.a($$0)));
       }
 
-      public boolean a(Collection<? extends eqk> $$0) {
+      public boolean a(Collection<? extends eqo> $$0) {
          for (bf $$1 : this.c) {
             boolean $$2 = false;
 
-            for (eqk $$3 : $$0) {
+            for (eqo $$3 : $$0) {
                if ($$1.a($$3)) {
                   $$2 = true;
                   break;
@@ -47,7 +47,7 @@ public class az extends dr<az.a> {
 
       @Override
       public void a(bg $$0) {
-         dr.a.super.a($$0);
+         ds.a.super.a($$0);
          $$0.a(this.c, ".victims");
       }
 

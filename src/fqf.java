@@ -1,50 +1,63 @@
-public class fqf extends fnf {
-   private static final int a = 600;
-   private final wk b;
-   private fhg c;
-   private int d;
-   private final fkx r = fkx.d();
+import javax.annotation.Nullable;
 
-   public fqf(xp $$0, wk $$1) {
-      super($$0);
-      this.b = $$1;
+public abstract class fqf extends fnd {
+   protected final fnd b;
+   protected final ffr c;
+   @Nullable
+   protected fij q;
+   public final fkz r = new fkz(this);
+
+   public fqf(fnd $$0, ffr $$1, wu $$2) {
+      super($$2);
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public boolean aC_() {
-      return false;
-   }
-
-   @Override
-   protected void aM_() {
-      this.r.c().b().a(10);
-      this.r.a(new fin(this.l, this.p));
-      this.c = this.r.a(fhg.a(xo.p, $$0 -> this.b.a(fly.a)).a());
-      this.c.j = false;
-      this.r.a();
+   protected void aO_() {
+      this.G();
+      this.aP_();
+      this.E();
       this.r.a($$1 -> {
-         fhe var10000 = this.c($$1);
+         fhk var10000 = this.c($$1);
       });
       this.c();
    }
 
-   @Override
-   protected void c() {
-      fkr.a(this.r, this.G());
+   protected void G() {
+      this.r.a(this.k, this.o);
+   }
+
+   protected void aP_() {
+      this.q = this.r.c(new fij(this.l, this.m, this));
+      this.m();
+   }
+
+   protected abstract void m();
+
+   protected void E() {
+      this.r.b(fhm.a(wt.d, $$0 -> this.d()).a(200).a());
    }
 
    @Override
-   public void e() {
-      super.e();
-      this.d++;
-      if (this.d == 600) {
-         this.c.j = true;
+   protected void c() {
+      this.r.a();
+      if (this.q != null) {
+         this.q.a(this.m, this.r);
+      }
+   }
+
+   @Override
+   public void j() {
+      this.l.m.av();
+   }
+
+   @Override
+   public void d() {
+      if (this.q != null) {
+         this.q.c();
       }
 
-      if (this.b.i()) {
-         this.b.b();
-      } else {
-         this.b.n();
-      }
+      this.l.a(this.b);
    }
 }

@@ -1,76 +1,150 @@
-import java.util.function.Predicate;
+import java.util.Optional;
+import java.util.function.BiFunction;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class dbj {
-   private final evt a;
-   private final evt b;
-   private final dbj.a c;
-   private final dbj.b d;
-   private final evy e;
+public interface dbj extends dcf {
+   @Nullable
+   dpn c_(ja var1);
 
-   public dbj(evt $$0, evt $$1, dbj.a $$2, dbj.b $$3, bsw $$4) {
-      this($$0, $$1, $$2, $$3, evy.a($$4));
+   default <T extends dpn> Optional<T> a(ja $$0, dpp<T> $$1) {
+      dpn $$2 = this.c_($$0);
+      return $$2 != null && $$2.r() == $$1 ? Optional.of((T)$$2) : Optional.empty();
    }
 
-   public dbj(evt $$0, evt $$1, dbj.a $$2, dbj.b $$3, evy $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   dsh a_(ja var1);
+
+   eob b_(ja var1);
+
+   default int i(ja $$0) {
+      return this.a_($$0).h();
    }
 
-   public evt a() {
-      return this.b;
+   default int Q() {
+      return 15;
    }
 
-   public evt b() {
-      return this.a;
+   default Stream<dsh> a(evu $$0) {
+      return ja.a($$0).map(this::a_);
    }
 
-   public ewm a(dse $$0, dbg $$1, iz $$2) {
-      return this.c.get($$0, $$1, $$2, this.e);
+   default evv a(dbl $$0) {
+      return a($$0.b(), $$0.a(), $$0, ($$0x, $$1) -> {
+         dsh $$2 = this.a_($$1);
+         evz $$3 = $$0x.b().d($$0x.a());
+         return $$0x.c().test($$2) ? new evv($$0x.a(), jf.a($$3.c, $$3.d, $$3.e), ja.a($$0x.a()), false) : null;
+      }, $$0x -> {
+         evz $$1 = $$0x.b().d($$0x.a());
+         return evv.a($$0x.a(), jf.a($$1.c, $$1.d, $$1.e), ja.a($$0x.a()));
+      });
    }
 
-   public ewm a(enx $$0, dbg $$1, iz $$2) {
-      return this.d.a($$0) ? $$0.d($$1, $$2) : ewj.a();
+   default evv a(dbm $$0) {
+      return a($$0.b(), $$0.a(), $$0, ($$0x, $$1) -> {
+         dsh $$2 = this.a_($$1);
+         eob $$3 = this.b_($$1);
+         evz $$4 = $$0x.b();
+         evz $$5 = $$0x.a();
+         ews $$6 = $$0x.a($$2, this, $$1);
+         evv $$7 = this.a($$4, $$5, $$1, $$6, $$2);
+         ews $$8 = $$0x.a($$3, this, $$1);
+         evv $$9 = $$8.a($$4, $$5, $$1);
+         double $$10 = $$7 == null ? Double.MAX_VALUE : $$0x.b().g($$7.e());
+         double $$11 = $$9 == null ? Double.MAX_VALUE : $$0x.b().g($$9.e());
+         return $$10 <= $$11 ? $$7 : $$9;
+      }, $$0x -> {
+         evz $$1 = $$0x.b().d($$0x.a());
+         return evv.a($$0x.a(), jf.a($$1.c, $$1.d, $$1.e), ja.a($$0x.a()));
+      });
    }
 
-   public static enum a implements dbj.c {
-      a(dsd.a::b),
-      b(dsd.a::a),
-      c(dsd.a::c),
-      d(($$0, $$1, $$2, $$3) -> $$0.a(awp.aQ) ? ewj.b() : ewj.a());
-
-      private final dbj.c e;
-
-      private a(final dbj.c $$0) {
-         this.e = $$0;
+   @Nullable
+   default evv a(evz $$0, evz $$1, ja $$2, ews $$3, dsh $$4) {
+      evv $$5 = $$3.a($$0, $$1, $$2);
+      if ($$5 != null) {
+         evv $$6 = $$4.m(this, $$2).a($$0, $$1, $$2);
+         if ($$6 != null && $$6.e().d($$0).g() < $$5.e().d($$0).g()) {
+            return $$5.a($$6.b());
+         }
       }
 
-      @Override
-      public ewm get(dse $$0, dbg $$1, iz $$2, evy $$3) {
-         return this.e.get($$0, $$1, $$2, $$3);
+      return $$5;
+   }
+
+   default double a(ews $$0, Supplier<ews> $$1) {
+      if (!$$0.c()) {
+         return $$0.c(jf.a.b);
+      } else {
+         double $$2 = $$1.get().c(jf.a.b);
+         return $$2 >= 1.0 ? $$2 - 1.0 : Double.NEGATIVE_INFINITY;
       }
    }
 
-   public static enum b {
-      a($$0 -> false),
-      b(enx::b),
-      c($$0 -> !$$0.c()),
-      d($$0 -> $$0.a(awv.a));
-
-      private final Predicate<enx> e;
-
-      private b(final Predicate<enx> $$0) {
-         this.e = $$0;
-      }
-
-      public boolean a(enx $$0) {
-         return this.e.test($$0);
-      }
+   default double j(ja $$0) {
+      return this.a(this.a_($$0).k(this, $$0), () -> {
+         ja $$1 = $$0.d();
+         return this.a_($$1).k(this, $$1);
+      });
    }
 
-   public interface c {
-      ewm get(dse var1, dbg var2, iz var3, evy var4);
+   static <T, C> T a(evz $$0, evz $$1, C $$2, BiFunction<C, ja, T> $$3, Function<C, T> $$4) {
+      if ($$0.equals($$1)) {
+         return $$4.apply($$2);
+      } else {
+         double $$5 = aye.d(-1.0E-7, $$1.c, $$0.c);
+         double $$6 = aye.d(-1.0E-7, $$1.d, $$0.d);
+         double $$7 = aye.d(-1.0E-7, $$1.e, $$0.e);
+         double $$8 = aye.d(-1.0E-7, $$0.c, $$1.c);
+         double $$9 = aye.d(-1.0E-7, $$0.d, $$1.d);
+         double $$10 = aye.d(-1.0E-7, $$0.e, $$1.e);
+         int $$11 = aye.a($$8);
+         int $$12 = aye.a($$9);
+         int $$13 = aye.a($$10);
+         ja.a $$14 = new ja.a($$11, $$12, $$13);
+         T $$15 = $$3.apply($$2, $$14);
+         if ($$15 != null) {
+            return $$15;
+         } else {
+            double $$16 = $$5 - $$8;
+            double $$17 = $$6 - $$9;
+            double $$18 = $$7 - $$10;
+            int $$19 = aye.j($$16);
+            int $$20 = aye.j($$17);
+            int $$21 = aye.j($$18);
+            double $$22 = $$19 == 0 ? Double.MAX_VALUE : (double)$$19 / $$16;
+            double $$23 = $$20 == 0 ? Double.MAX_VALUE : (double)$$20 / $$17;
+            double $$24 = $$21 == 0 ? Double.MAX_VALUE : (double)$$21 / $$18;
+            double $$25 = $$22 * ($$19 > 0 ? 1.0 - aye.e($$8) : aye.e($$8));
+            double $$26 = $$23 * ($$20 > 0 ? 1.0 - aye.e($$9) : aye.e($$9));
+            double $$27 = $$24 * ($$21 > 0 ? 1.0 - aye.e($$10) : aye.e($$10));
+
+            while ($$25 <= 1.0 || $$26 <= 1.0 || $$27 <= 1.0) {
+               if ($$25 < $$26) {
+                  if ($$25 < $$27) {
+                     $$11 += $$19;
+                     $$25 += $$22;
+                  } else {
+                     $$13 += $$21;
+                     $$27 += $$24;
+                  }
+               } else if ($$26 < $$27) {
+                  $$12 += $$20;
+                  $$26 += $$23;
+               } else {
+                  $$13 += $$21;
+                  $$27 += $$24;
+               }
+
+               T $$28 = $$3.apply($$2, $$14.d($$11, $$12, $$13));
+               if ($$28 != null) {
+                  return $$28;
+               }
+            }
+
+            return $$4.apply($$2);
+         }
+      }
    }
 }

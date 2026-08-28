@@ -1,20 +1,33 @@
-public class cvn extends cum {
-   public cvn(cum.a $$0) {
-      super($$0);
+import java.util.List;
+
+public class cvn extends cvq {
+   public cvn(cvp $$0, ctv.a $$1) {
+      super($$0, $$1.a(kn.x, k()));
+   }
+
+   private static cxe k() {
+      return new cxe(List.of(cxe.a.a(List.of(dfh.bs), 15.0F), cxe.a.b(avu.bE, 1.5F)), 1.0F, 2);
+   }
+
+   public static cwu a(cvp $$0, int $$1, float $$2) {
+      return cwu.a()
+         .a(bug.c, new bue(e, "Weapon modifier", (double)((float)$$1 + $$0.c()), bue.a.a), bsl.b)
+         .a(bug.e, new bue(f, "Weapon modifier", (double)$$2, bue.a.a), bsl.b)
+         .a();
    }
 
    @Override
-   public bqw a(cur $$0, cmz $$1, btr $$2, bqv $$3) {
-      if ($$2 instanceof buh $$4 && $$2.bD() && !$$4.i() && $$4.f()) {
-         if (!$$1.dP().B) {
-            $$4.a(awb.g);
-            $$2.dP().a($$2, dwx.v, $$2.dn());
-            $$0.h(1);
-         }
+   public boolean a(dsh $$0, dcd $$1, ja $$2, cmh $$3) {
+      return !$$3.f();
+   }
 
-         return bqw.a($$1.dP().B);
-      }
+   @Override
+   public boolean a(cua $$0, bsy $$1, bsy $$2) {
+      return true;
+   }
 
-      return bqw.e;
+   @Override
+   public void b(cua $$0, bsy $$1, bsy $$2) {
+      $$0.a(1, $$2, bsk.a);
    }
 }

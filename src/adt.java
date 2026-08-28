@@ -1,145 +1,142 @@
-import com.google.common.collect.Lists;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
+import com.google.common.base.MoreObjects;
+import com.google.common.collect.Multimap;
+import com.mojang.authlib.GameProfile;
+import java.util.Collection;
+import java.util.EnumSet;
 import java.util.List;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
+import java.util.Objects;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class adt {
-   private static final int a = 2097152;
-   private final us b;
-   private final byte[] c;
-   private final List<adt.a> d;
+public class adt implements zb<abn> {
+   public static final ys<wf, adt> a = zb.a(adt::a, adt::new);
+   private final EnumSet<adt.a> b;
+   private final List<adt.b> c;
 
-   public adt(duk $$0) {
-      this.b = new us();
+   public adt(EnumSet<adt.a> $$0, Collection<aql> $$1) {
+      this.b = $$0;
+      this.c = $$1.stream().map(adt.b::new).toList();
+   }
 
-      for (Entry<dxw.a, dxw> $$1 : $$0.e()) {
-         if ($$1.getKey().b()) {
-            this.b.a($$1.getKey().a(), new uz($$1.getValue().a()));
+   public adt(adt.a $$0, aql $$1) {
+      this.b = EnumSet.of($$0);
+      this.c = List.of(new adt.b($$1));
+   }
+
+   public static adt a(Collection<aql> $$0) {
+      EnumSet<adt.a> $$1 = EnumSet.of(adt.a.a, adt.a.b, adt.a.c, adt.a.d, adt.a.e, adt.a.f);
+      return new adt($$1, $$0);
+   }
+
+   private adt(wf $$0) {
+      this.b = $$0.a(adt.a.class);
+      this.c = $$0.a($$0x -> {
+         adt.c $$1 = new adt.c($$0x.n());
+
+         for (adt.a $$2 : this.b) {
+            $$2.g.read($$1, (wf)$$0x);
          }
-      }
 
-      this.c = new byte[a($$0)];
-      a(new wm(this.c()), $$0);
-      this.d = Lists.newArrayList();
-
-      for (Entry<iz, dpj> $$2 : $$0.G().entrySet()) {
-         this.d.add(adt.a.a($$2.getValue()));
-      }
+         return $$1.a();
+      });
    }
 
-   public adt(xa $$0, int $$1, int $$2) {
-      this.b = $$0.o();
-      if (this.b == null) {
-         throw new RuntimeException("Can't read heightmap in packet for [" + $$1 + ", " + $$2 + "]");
-      } else {
-         int $$3 = $$0.l();
-         if ($$3 > 2097152) {
-            throw new RuntimeException("Chunk Packet trying to allocate too much memory on read.");
-         } else {
-            this.c = new byte[$$3];
-            $$0.b(this.c);
-            this.d = adt.a.b.decode($$0);
+   private void a(wf $$0) {
+      $$0.a(this.b, adt.a.class);
+      $$0.a(this.c, ($$0x, $$1) -> {
+         $$0x.a($$1.a());
+
+         for (adt.a $$2 : this.b) {
+            $$2.h.write((wf)$$0x, $$1);
          }
-      }
+      });
    }
 
-   public void a(xa $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c.length);
-      $$0.c(this.c);
-      adt.a.b.encode($$0, this.d);
+   @Override
+   public zd<adt> a() {
+      return afz.af;
    }
 
-   private static int a(duk $$0) {
-      int $$1 = 0;
-
-      for (dul $$2 : $$0.d()) {
-         $$1 += $$2.j();
-      }
-
-      return $$1;
+   public void a(abn $$0) {
+      $$0.a(this);
    }
 
-   private ByteBuf c() {
-      ByteBuf $$0 = Unpooled.wrappedBuffer(this.c);
-      $$0.writerIndex(0);
-      return $$0;
-   }
-
-   public static void a(wm $$0, duk $$1) {
-      for (dul $$2 : $$1.d()) {
-         $$2.c($$0);
-      }
-   }
-
-   public Consumer<adt.b> a(int $$0, int $$1) {
-      return $$2 -> this.a($$2, $$0, $$1);
-   }
-
-   private void a(adt.b $$0, int $$1, int $$2) {
-      int $$3 = 16 * $$1;
-      int $$4 = 16 * $$2;
-      iz.a $$5 = new iz.a();
-
-      for (adt.a $$6 : this.d) {
-         int $$7 = $$3 + kb.b($$6.c >> 4);
-         int $$8 = $$4 + kb.b($$6.c);
-         $$5.d($$7, $$6.d, $$8);
-         $$0.accept($$5, $$6.e, $$6.f);
-      }
-   }
-
-   public wm a() {
-      return new wm(Unpooled.wrappedBuffer(this.c));
-   }
-
-   public us b() {
+   public EnumSet<adt.a> b() {
       return this.b;
    }
 
-   static class a {
-      public static final zn<xa, adt.a> a = zn.a(adt.a::a, adt.a::new);
-      public static final zn<xa, List<adt.a>> b = a.a(zl.a());
-      final int c;
-      final int d;
-      final dpl<?> e;
-      @Nullable
-      final us f;
+   public List<adt.b> e() {
+      return this.c;
+   }
 
-      private a(int $$0, int $$1, dpl<?> $$2, @Nullable us $$3) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
+   public List<adt.b> f() {
+      return this.b.contains(adt.a.a) ? this.c : List.of();
+   }
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this).add("actions", this.b).add("entries", this.c).toString();
+   }
+
+   public static enum a {
+      a(($$0, $$1) -> {
+         GameProfile $$2 = new GameProfile($$0.a, $$1.d(16));
+         $$2.getProperties().putAll((Multimap)yq.t.decode($$1));
+         $$0.b = $$2;
+      }, ($$0, $$1) -> {
+         GameProfile $$2 = Objects.requireNonNull($$1.b());
+         $$0.a($$2.getName(), 16);
+         yq.t.encode($$0, $$2.getProperties());
+      }),
+      b(($$0, $$1) -> $$0.g = $$1.c(xl.a::a), ($$0, $$1) -> $$0.a($$1.g, xl.a::a)),
+      c(($$0, $$1) -> $$0.e = dca.a($$1.l()), ($$0, $$1) -> $$0.c($$1.e().a())),
+      d(($$0, $$1) -> $$0.c = $$1.readBoolean(), ($$0, $$1) -> $$0.a($$1.c())),
+      e(($$0, $$1) -> $$0.d = $$1.l(), ($$0, $$1) -> $$0.c($$1.d())),
+      f(($$0, $$1) -> $$0.f = vr.a($$1, ww.d), ($$0, $$1) -> vr.a($$0, $$1.f(), ww.d));
+
+      final adt.a.a g;
+      final adt.a.b h;
+
+      private a(final adt.a.a $$0, final adt.a.b $$1) {
+         this.g = $$0;
+         this.h = $$1;
       }
 
-      private a(xa $$0) {
-         this.c = $$0.readByte();
-         this.d = $$0.readShort();
-         this.e = zl.a(lq.h).decode($$0);
-         this.f = $$0.o();
+      public interface a {
+         void read(adt.c var1, wf var2);
       }
 
-      private void a(xa $$0) {
-         $$0.k(this.c);
-         $$0.l(this.d);
-         zl.a(lq.h).encode($$0, this.e);
-         $$0.a(this.f);
-      }
-
-      static adt.a a(dpj $$0) {
-         us $$1 = $$0.a($$0.i().H_());
-         iz $$2 = $$0.ay_();
-         int $$3 = kb.b($$2.u()) << 4 | kb.b($$2.w());
-         return new adt.a($$3, $$2.v(), $$0.r(), $$1.g() ? null : $$1);
+      public interface b {
+         void write(wf var1, adt.b var2);
       }
    }
 
-   @FunctionalInterface
-   public interface b {
-      void accept(iz var1, dpl<?> var2, @Nullable us var3);
+   public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, dca e, @Nullable wu f, @Nullable xl.a g) {
+
+      b(aql $$0) {
+         this($$0.cz(), $$0.fX(), true, $$0.c.k(), $$0.e.b(), $$0.N(), x.a($$0.ab(), xl::a));
+      }
+   }
+
+   static class c {
+      final UUID a;
+      @Nullable
+      GameProfile b;
+      boolean c;
+      int d;
+      dca e;
+      @Nullable
+      wu f;
+      @Nullable
+      xl.a g;
+
+      c(UUID $$0) {
+         this.e = dca.e;
+         this.a = $$0;
+      }
+
+      adt.b a() {
+         return new adt.b(this.a, this.b, this.c, this.d, this.e, this.f, this.g);
+      }
    }
 }

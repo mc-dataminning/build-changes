@@ -1,89 +1,45 @@
-public class ayj {
-   public static int a(float $$0) {
-      return ayz.d($$0 * 255.0F);
-   }
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
-   public static class a {
-      public static int a(int $$0) {
-         return $$0 >>> 24;
-      }
+public record ayj(int a, int b) {
+   private static final long c = -8552249625308161526L;
+   private static final int d = 1229472850;
+   private static final int e = 13;
 
-      public static int b(int $$0) {
-         return $$0 & 0xFF;
-      }
-
-      public static int c(int $$0) {
-         return $$0 >> 8 & 0xFF;
-      }
-
-      public static int d(int $$0) {
-         return $$0 >> 16 & 0xFF;
-      }
-
-      public static int e(int $$0) {
-         return $$0 & 16777215;
-      }
-
-      public static int f(int $$0) {
-         return $$0 | 0xFF000000;
-      }
-
-      public static int a(int $$0, int $$1, int $$2, int $$3) {
-         return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
-      }
-
-      public static int a(int $$0, int $$1) {
-         return $$0 << 24 | $$1 & 16777215;
+   public static ayj a(InputStream $$0) throws IOException {
+      DataInputStream $$1 = new DataInputStream($$0);
+      if ($$1.readLong() != -8552249625308161526L) {
+         throw new IOException("Bad PNG Signature");
+      } else if ($$1.readInt() != 13) {
+         throw new IOException("Bad length for IHDR chunk!");
+      } else if ($$1.readInt() != 1229472850) {
+         throw new IOException("Bad type for IHDR chunk!");
+      } else {
+         int $$2 = $$1.readInt();
+         int $$3 = $$1.readInt();
+         return new ayj($$2, $$3);
       }
    }
 
-   public static class b {
-      public static int a(int $$0) {
-         return $$0 >>> 24;
-      }
+   public static ayj a(byte[] $$0) throws IOException {
+      return a(new ByteArrayInputStream($$0));
+   }
 
-      public static int b(int $$0) {
-         return $$0 >> 16 & 0xFF;
-      }
-
-      public static int c(int $$0) {
-         return $$0 >> 8 & 0xFF;
-      }
-
-      public static int d(int $$0) {
-         return $$0 & 0xFF;
-      }
-
-      public static int a(int $$0, int $$1, int $$2, int $$3) {
-         return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
-      }
-
-      public static int a(int $$0, int $$1, int $$2) {
-         return a(255, $$0, $$1, $$2);
-      }
-
-      public static int a(int $$0, int $$1) {
-         return a(a($$0) * a($$1) / 255, b($$0) * b($$1) / 255, c($$0) * c($$1) / 255, d($$0) * d($$1) / 255);
-      }
-
-      public static int a(float $$0, int $$1, int $$2) {
-         int $$3 = ayz.a($$0, a($$1), a($$2));
-         int $$4 = ayz.a($$0, b($$1), b($$2));
-         int $$5 = ayz.a($$0, c($$1), c($$2));
-         int $$6 = ayz.a($$0, d($$1), d($$2));
-         return a($$3, $$4, $$5, $$6);
-      }
-
-      public static int e(int $$0) {
-         return $$0 | 0xFF000000;
-      }
-
-      public static int b(int $$0, int $$1) {
-         return $$0 << 24 | $$1 & 16777215;
-      }
-
-      public static int a(float $$0, float $$1, float $$2, float $$3) {
-         return a(ayj.a($$0), ayj.a($$1), ayj.a($$2), ayj.a($$3));
+   public static void a(ByteBuffer $$0) throws IOException {
+      ByteOrder $$1 = $$0.order();
+      $$0.order(ByteOrder.BIG_ENDIAN);
+      if ($$0.getLong(0) != -8552249625308161526L) {
+         throw new IOException("Bad PNG Signature");
+      } else if ($$0.getInt(8) != 13) {
+         throw new IOException("Bad length for IHDR chunk!");
+      } else if ($$0.getInt(12) != 1229472850) {
+         throw new IOException("Bad type for IHDR chunk!");
+      } else {
+         $$0.order($$1);
       }
    }
 }

@@ -1,8 +1,40 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.IOException;
+import java.io.InputStream;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@exu
-@ext
-interface ezs {
+public class ezs extends ezu {
+   private static final ezn a = new ezn() {
+      @Override
+      public String a(boolean $$0, String $$1) {
+         return "#error Import statement not supported";
+      }
+   };
+   private int b;
+
+   private ezs(ezu.a $$0, int $$1, String $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   public void a(ezr $$0) {
+      RenderSystem.assertOnRenderThread();
+      this.b++;
+      this.a($$0);
+   }
+
+   @Override
+   public void a() {
+      RenderSystem.assertOnRenderThread();
+      this.b--;
+      if (this.b <= 0) {
+         super.a();
+      }
+   }
+
+   public static ezs a(ezu.a $$0, String $$1, InputStream $$2, String $$3) throws IOException {
+      RenderSystem.assertOnRenderThread();
+      int $$4 = b($$0, $$1, $$2, $$3, a);
+      ezs $$5 = new ezs($$0, $$4, $$1);
+      $$0.c().put($$1, $$5);
+      return $$5;
+   }
 }

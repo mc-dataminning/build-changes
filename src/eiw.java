@@ -1,101 +1,44 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public abstract class eiw extends eiq {
-   private static final Logger h = LogUtils.getLogger();
-   protected final String a;
-   protected emm b;
-   protected emi c;
-   protected iz d;
+public record eiw(List<eiw.a> c, ejn d) {
+   public static final Codec<eiw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(eiw.a.a.listOf().fieldOf("structures").forGetter(eiw::a), ejn.b.fieldOf("placement").forGetter(eiw::b)).apply($$0, eiw::new)
+   );
+   public static final Codec<jj<eiw>> b = akg.a(lr.aS, a);
 
-   public eiw(ejd $$0, int $$1, emn $$2, alf $$3, String $$4, emi $$5, iz $$6) {
-      super($$0, $$1, $$2.a($$3).b($$5, $$6));
-      this.a(je.c);
-      this.a = $$4;
-      this.d = $$6;
-      this.b = $$2.a($$3);
-      this.c = $$5;
+   public eiw(jj<eiq> $$0, ejn $$1) {
+      this(List.of(new eiw.a($$0, 1)), $$1);
    }
 
-   public eiw(ejd $$0, us $$1, emn $$2, Function<alf, emi> $$3) {
-      super($$0, $$1);
-      this.a(je.c);
-      this.a = $$1.l("Template");
-      this.d = new iz($$1.h("TPX"), $$1.h("TPY"), $$1.h("TPZ"));
-      alf $$4 = this.b();
-      this.b = $$2.a($$4);
-      this.c = $$3.apply($$4);
-      this.f = this.b.b(this.c, this.d);
+   public static eiw.a a(jj<eiq> $$0, int $$1) {
+      return new eiw.a($$0, $$1);
    }
 
-   protected alf b() {
-      return new alf(this.a);
+   public static eiw.a a(jj<eiq> $$0) {
+      return new eiw.a($$0, 1);
    }
 
-   @Override
-   protected void a(ejc $$0, us $$1) {
-      $$1.a("TPX", this.d.u());
-      $$1.a("TPY", this.d.v());
-      $$1.a("TPZ", this.d.w());
-      $$1.a("Template", this.a);
+   public List<eiw.a> a() {
+      return this.c;
    }
 
-   @Override
-   public void a(dcv $$0, dct $$1, dub $$2, azh $$3, eie $$4, dbh $$5, iz $$6) {
-      this.c.a($$4);
-      this.f = this.b.b(this.c, this.d);
-      if (this.b.a($$0, this.d, $$6, this.c, $$3, 2)) {
-         for (emm.c $$8 : this.b.a(this.d, this.c, dfd.pa)) {
-            if ($$8.c() != null) {
-               dto $$9 = dto.valueOf($$8.c().l("mode"));
-               if ($$9 == dto.d) {
-                  this.a($$8.c().l("metadata"), $$8.a(), $$0, $$3, $$4);
-               }
-            }
-         }
-
-         for (emm.c $$11 : this.b.a(this.d, this.c, dfd.pb)) {
-            if ($$11.c() != null) {
-               String $$12 = $$11.c().l("final_state");
-               dse $$13 = dfd.a.o();
-
-               try {
-                  $$13 = gj.a($$0.a(lq.f), $$12, true).a();
-               } catch (CommandSyntaxException var15) {
-                  h.error("Error while parsing blockstate {} in jigsaw block @ {}", $$12, $$11.a());
-               }
-
-               $$0.a($$11.a(), $$13, 3);
-            }
-         }
-      }
-   }
-
-   protected abstract void a(String var1, iz var2, dcp var3, azh var4, eie var5);
-
-   @Deprecated
-   @Override
-   public void a(int $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.d = this.d.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public dlo a() {
-      return this.c.d();
-   }
-
-   public emm c() {
-      return this.b;
-   }
-
-   public iz d() {
+   public ejn b() {
       return this.d;
    }
 
-   public emi e() {
-      return this.c;
+   public static record a(jj<eiq> b, int c) {
+      public static final Codec<eiw.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(eiq.b.fieldOf("structure").forGetter(eiw.a::a), axm.l.fieldOf("weight").forGetter(eiw.a::b)).apply($$0, eiw.a::new)
+      );
+
+      public jj<eiq> a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
    }
 }

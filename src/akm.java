@@ -1,135 +1,116 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import com.mojang.logging.LogUtils;
+import java.io.PrintStream;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import org.slf4j.Logger;
 
 public class akm {
-   private static final axv<akl<?>> F = axv.c(16);
-   public static final akl<Byte> a = akl.a(zl.c);
-   public static final akl<Integer> b = akl.a(zl.g);
-   public static final akl<Long> c = akl.a(zl.h);
-   public static final akl<Float> d = akl.a(zl.i);
-   public static final akl<String> e = akl.a(zl.l);
-   public static final akl<xp> f = akl.a(xr.d);
-   public static final akl<Optional<xp>> g = akl.a(xr.e);
-   public static final akl<cur> h = new akl<cur>() {
-      @Override
-      public zn<? super xa, cur> codec() {
-         return cur.h;
-      }
+   public static final PrintStream a = System.out;
+   private static volatile boolean c;
+   private static final Logger d = LogUtils.getLogger();
+   public static final AtomicLong b = new AtomicLong(-1L);
 
-      public cur a(cur $$0) {
-         return $$0.s();
-      }
-   };
-   public static final akl<dse> i = akl.a(zl.a(dfb.q));
-   private static final zn<ByteBuf, Optional<dse>> G = new zn<ByteBuf, Optional<dse>>() {
-      public void a(ByteBuf $$0, Optional<dse> $$1) {
-         if ($$1.isPresent()) {
-            xg.a($$0, dfb.i($$1.get()));
+   public static void a() {
+      if (!c) {
+         c = true;
+         Instant $$0 = Instant.now();
+         if (lq.aA.f().isEmpty()) {
+            throw new IllegalStateException("Unable to load registries");
          } else {
-            xg.a($$0, 0);
+            dif.b();
+            dgq.b();
+            if (bsj.a(bsj.by) == null) {
+               throw new IllegalStateException("Failed loading EntityTypes");
+            } else {
+               hh.a();
+               ku.a();
+               kg.a();
+               lq.a();
+               csm.a();
+               d();
+               b.set(Duration.between($$0, Instant.now()).toMillis());
+            }
          }
       }
-
-      public Optional<dse> a(ByteBuf $$0) {
-         int $$1 = xg.a($$0);
-         return $$1 == 0 ? Optional.empty() : Optional.of(dfb.a($$1));
-      }
-   };
-   public static final akl<Optional<dse>> j = akl.a(G);
-   public static final akl<Boolean> k = akl.a(zl.b);
-   public static final akl<lg> l = akl.a(li.bg);
-   public static final akl<List<lg>> m = akl.a(li.bg.a(zl.a()));
-   public static final akl<ka> n = akl.a(ka.a);
-   public static final akl<iz> o = akl.a(iz.b);
-   public static final akl<Optional<iz>> p = akl.a(iz.b.a(zl::a));
-   public static final akl<je> q = akl.a(je.j);
-   public static final akl<Optional<UUID>> r = akl.a(kc.g.a(zl::a));
-   public static final akl<Optional<jh>> s = akl.a(jh.c.a(zl::a));
-   public static final akl<us> t = new akl<us>() {
-      @Override
-      public zn<? super xa, us> codec() {
-         return zl.p;
-      }
-
-      public us a(us $$0) {
-         return $$0.i();
-      }
-   };
-   public static final akl<cmn> u = akl.a(cmn.d);
-   private static final zn<ByteBuf, OptionalInt> H = new zn<ByteBuf, OptionalInt>() {
-      public OptionalInt a(ByteBuf $$0) {
-         int $$1 = xg.a($$0);
-         return $$1 == 0 ? OptionalInt.empty() : OptionalInt.of($$1 - 1);
-      }
-
-      public void a(ByteBuf $$0, OptionalInt $$1) {
-         xg.a($$0, $$1.orElse(-1) + 1);
-      }
-   };
-   public static final akl<OptionalInt> v = akl.a(H);
-   public static final akl<bud> w = akl.a(bud.t);
-   public static final akl<ji<cfl>> x = akl.a(zl.b(lq.l));
-   public static final akl<ji<cgl>> y = akl.a(zl.b(lq.m));
-   public static final akl<ji<cfs>> z = akl.a(zl.b(lq.B));
-   public static final akl<ji<cjf>> A = akl.a(zl.b(lq.S));
-   public static final akl<cgq.a> B = akl.a(cgq.a.e);
-   public static final akl<chy.a> C = akl.a(chy.a.i);
-   public static final akl<Vector3f> D = akl.a(zl.r);
-   public static final akl<Quaternionf> E = akl.a(zl.s);
-
-   public static void a(akl<?> $$0) {
-      F.d($$0);
    }
 
-   @Nullable
-   public static akl<?> a(int $$0) {
-      return F.a($$0);
+   private static <T> void a(Iterable<T> $$0, Function<T, String> $$1, Set<String> $$2) {
+      ts $$3 = ts.a();
+      $$0.forEach($$3x -> {
+         String $$4 = $$1.apply((T)$$3x);
+         if (!$$3.b($$4)) {
+            $$2.add($$4);
+         }
+      });
    }
 
-   public static int b(akl<?> $$0) {
-      return F.a($$0);
+   private static void a(final Set<String> $$0) {
+      final ts $$1 = ts.a();
+      dbz.a(new dbz.c() {
+         @Override
+         public <T extends dbz.g<T>> void a(dbz.e<T> $$0x, dbz.f<T> $$1x) {
+            if (!$$1.b($$0.b())) {
+               $$0.add($$0.a());
+            }
+         }
+      });
    }
 
-   private akm() {
+   public static Set<String> b() {
+      Set<String> $$0 = new TreeSet<>();
+      a(lq.s, bub::c, $$0);
+      a(lq.f, bsj::g, $$0);
+      a(lq.d, brj::d, $$0);
+      a(lq.g, ctv::a, $$0);
+      a(lq.e, dff::g, $$0);
+      a(lq.k, $$0x -> "stat." + $$0x.toString().replace(':', '.'), $$0);
+      a($$0);
+      return $$0;
    }
 
-   static {
-      a(a);
-      a(b);
-      a(c);
-      a(d);
-      a(e);
-      a(f);
-      a(g);
-      a(h);
-      a(k);
-      a(n);
-      a(o);
-      a(p);
-      a(q);
-      a(r);
-      a(i);
-      a(j);
-      a(t);
-      a(l);
-      a(m);
-      a(u);
-      a(v);
-      a(w);
-      a(x);
-      a(y);
-      a(z);
-      a(s);
-      a(A);
-      a(C);
-      a(B);
-      a(D);
-      a(E);
+   public static void a(Supplier<String> $$0) {
+      if (!c) {
+         throw b($$0);
+      }
+   }
+
+   private static RuntimeException b(Supplier<String> $$0) {
+      try {
+         String $$1 = $$0.get();
+         return new IllegalArgumentException("Not bootstrapped (called from " + $$1 + ")");
+      } catch (Exception var3) {
+         RuntimeException $$3 = new IllegalArgumentException("Not bootstrapped (failed to resolve location)");
+         $$3.addSuppressed(var3);
+         return $$3;
+      }
+   }
+
+   public static void c() {
+      a(() -> "validate");
+      if (aa.aX) {
+         b().forEach($$0 -> d.error("Missing translations: {}", $$0));
+         er.b();
+      }
+
+      buh.a();
+   }
+
+   private static void d() {
+      if (d.isDebugEnabled()) {
+         System.setErr(new akp("STDERR", System.err));
+         System.setOut(new akp("STDOUT", a));
+      } else {
+         System.setErr(new akr("STDERR", System.err));
+         System.setOut(new akr("STDOUT", a));
+      }
+   }
+
+   public static void a(String $$0) {
+      a.println($$0);
    }
 }

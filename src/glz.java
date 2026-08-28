@@ -1,22 +1,17 @@
-public class glz extends gkf<ckv, fwr<ckv>> {
-   private static final alf a = new alf("textures/entity/witch.png");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public glz(giz.a $$0) {
-      super($$0, new fwr<>($$0.a(fxb.bU)), 0.5F);
-      this.a(new gny<>(this, $$0.d()));
+public class glz extends gia<cgs, fut<cgs>> {
+   private static final Map<bsj<?>, akk> a = Maps.newHashMap(
+      ImmutableMap.of(bsj.bv, new akk("textures/entity/horse/horse_zombie.png"), bsj.aO, new akk("textures/entity/horse/horse_skeleton.png"))
+   );
+
+   public glz(gjg.a $$0, fxg $$1) {
+      super($$0, new fut<>($$0.a($$1)), 1.0F);
    }
 
-   public void a(ckv $$0, float $$1, float $$2, faa $$3, gdq $$4, int $$5) {
-      this.f.b(!$$0.eX().e());
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public alf a(ckv $$0) {
-      return a;
-   }
-
-   protected void a(ckv $$0, faa $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
+   public akk a(cgs $$0) {
+      return a.get($$0.ak());
    }
 }

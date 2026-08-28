@@ -1,5 +1,7 @@
-public record ajs(alf a) implements ajq {
-   @Override
-   public void a(wm $$0) {
-   }
+import java.util.List;
+
+public interface ajs {
+   void a(ajp<?> var1);
+
+   void a(List<ajt.c<?>> var1);
 }

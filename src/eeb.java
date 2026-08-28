@@ -1,23 +1,16 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public record eeb(int b, int c, int d) implements ede {
-   public static final Codec<eeb> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayh.l.fieldOf("spread_width").forGetter(eeb::a), ayh.l.fieldOf("spread_height").forGetter(eeb::b), ayh.l.fieldOf("max_height").forGetter(eeb::c)
-            )
-            .apply($$0, eeb::new)
-   );
+public class eeb implements edi {
+   public static final Codec<eeb> a = axm.b(ehu.c).fieldOf("features").xmap(eeb::new, $$0 -> $$0.b).codec();
+   public final jn<ehu> b;
 
-   public int a() {
-      return this.b;
+   public eeb(jn<ehu> $$0) {
+      this.b = $$0;
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
+   @Override
+   public Stream<ear<?, ?>> e() {
+      return this.b.a().flatMap($$0 -> $$0.a().a());
    }
 }

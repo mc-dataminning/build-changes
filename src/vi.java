@@ -1,23 +1,18 @@
-public abstract class vi implements vp {
-   protected vi() {
+import java.util.concurrent.atomic.AtomicInteger;
+
+public class vi {
+   private final AtomicInteger a = new AtomicInteger();
+   private final bld b;
+
+   public vi(bld $$0) {
+      this.b = $$0;
    }
 
-   public abstract long f();
+   public void a(int $$0) {
+      this.a.getAndAdd($$0);
+   }
 
-   public abstract int g();
-
-   public abstract short h();
-
-   public abstract byte i();
-
-   public abstract double j();
-
-   public abstract float k();
-
-   public abstract Number l();
-
-   @Override
-   public String toString() {
-      return this.s_();
+   public void a() {
+      this.b.a((long)this.a.getAndSet(0));
    }
 }

@@ -1,70 +1,26 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Optional;
+import java.util.function.Predicate;
 
-public class eje implements eir {
-   private final List<eiq> a = Lists.newArrayList();
+@FunctionalInterface
+public interface eje<C extends edi> {
+   Optional<ejd<C>> createGenerator(eje.a<C> var1);
 
-   @Override
-   public void a(eiq $$0) {
-      this.a.add($$0);
+   static <C extends edi> eje<C> simple(Predicate<eje.a<C>> $$0, ejd<C> $$1) {
+      Optional<ejd<C>> $$2 = Optional.of($$1);
+      return $$2x -> $$0.test($$2x) ? $$2 : Optional.empty();
    }
 
-   @Nullable
-   @Override
-   public eiq a(eie $$0) {
-      return eiq.a(this.a, $$0);
+   static <C extends edi> Predicate<eje.a<C>> checkForBiomeOnTop(dxz.a $$0) {
+      return $$1 -> $$1.a($$0);
    }
 
-   @Deprecated
-   public void a(int $$0) {
-      for (eiq $$1 : this.a) {
-         $$1.a(0, $$0, 0);
+   public static record a<C extends edi>(due a, ddh b, dyn c, long d, dbk e, C f, dcf g, Predicate<jj<ddd>> h, emr i, jx j) {
+      public boolean a(dxz.a $$0) {
+         int $$1 = this.e.b();
+         int $$2 = this.e.c();
+         int $$3 = this.a.c($$1, $$2, $$0, this.g, this.c);
+         jj<ddd> $$4 = this.a.d().getNoiseBiome(ju.a($$1), ju.a($$3), ju.a($$2), this.c.b());
+         return this.h.test($$4);
       }
-   }
-
-   @Deprecated
-   public int a(int $$0, int $$1, azh $$2, int $$3) {
-      int $$4 = $$0 - $$3;
-      eie $$5 = this.d();
-      int $$6 = $$5.e() + $$1 + 1;
-      if ($$6 < $$4) {
-         $$6 += $$2.a($$4 - $$6);
-      }
-
-      int $$7 = $$6 - $$5.l();
-      this.a($$7);
-      return $$7;
-   }
-
-   /** @deprecated */
-   public void a(azh $$0, int $$1, int $$2) {
-      eie $$3 = this.d();
-      int $$4 = $$2 - $$1 + 1 - $$3.e();
-      int $$5;
-      if ($$4 > 1) {
-         $$5 = $$1 + $$0.a($$4);
-      } else {
-         $$5 = $$1;
-      }
-
-      int $$7 = $$5 - $$3.i();
-      this.a($$7);
-   }
-
-   public ejb a() {
-      return new ejb(this.a);
-   }
-
-   public void b() {
-      this.a.clear();
-   }
-
-   public boolean c() {
-      return this.a.isEmpty();
-   }
-
-   public eie d() {
-      return eiq.a(this.a.stream());
    }
 }

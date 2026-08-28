@@ -1,40 +1,43 @@
-import java.util.EnumSet;
+public class ccm extends cck {
+   private boolean p;
 
-public class ccm extends ccp {
-   private final buo a;
-   private btr b;
-   private int c;
-
-   public ccm(buo $$0) {
-      super($$0, false);
-      this.a = $$0;
-      this.a(EnumSet.of(cap.a.d));
+   public ccm(bta $$0, dcd $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public boolean a() {
-      if (this.a.s() && !this.a.gq()) {
-         btr $$0 = this.a.P_();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.em();
-            int $$1 = $$0.en();
-            return $$1 != this.c && this.a(this.b, cei.a) && this.a.a(this.b, $$0);
-         }
-      } else {
-         return false;
-      }
+   protected eor a(int $$0) {
+      this.p = this.a.ak() == bsj.y;
+      this.o = new eov(this.p);
+      return new eor(this.o, $$0);
    }
 
    @Override
-   public void c() {
-      this.e.h(this.b);
-      btr $$0 = this.a.P_();
-      if ($$0 != null) {
-         this.c = $$0.en();
-      }
+   protected boolean a() {
+      return this.p || this.a.bi();
+   }
 
-      super.c();
+   @Override
+   protected evz b() {
+      return new evz(this.a.du(), this.a.e(0.5), this.a.dA());
+   }
+
+   @Override
+   protected double a(evz $$0) {
+      return $$0.d;
+   }
+
+   @Override
+   protected boolean a(evz $$0, evz $$1) {
+      return a(this.a, $$0, $$1, false);
+   }
+
+   @Override
+   public boolean a(ja $$0) {
+      return !this.b.a_($$0).i(this.b, $$0);
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

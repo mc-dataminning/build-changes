@@ -1,24 +1,70 @@
-import java.util.OptionalLong;
-
-public class rf {
-   public static void a(rc<dvw> $$0) {
-      $$0.a(
-         dvu.a,
-         new dvw(OptionalLong.empty(), true, false, false, true, 1.0, true, false, -64, 384, 384, awp.bb, dvu.e, 0.0F, new dvw.a(false, true, bqh.a(0, 7), 0))
-      );
-      $$0.a(
-         dvu.b,
-         new dvw(OptionalLong.of(18000L), false, true, true, false, 8.0, false, true, 0, 256, 128, awp.bc, dvu.f, 0.1F, new dvw.a(true, false, bpy.a(7), 15))
-      );
-      $$0.a(
-         dvu.c,
-         new dvw(
-            OptionalLong.of(6000L), false, false, false, false, 1.0, false, false, 0, 256, 256, awp.bd, dvu.g, 0.0F, new dvw.a(false, true, bqh.a(0, 7), 0)
-         )
-      );
-      $$0.a(
-         dvu.d,
-         new dvw(OptionalLong.empty(), true, true, false, true, 1.0, true, false, -64, 384, 384, awp.bb, dvu.e, 0.0F, new dvw.a(false, true, bqh.a(0, 7), 0))
-      );
+public abstract class rf {
+   public static void a(qm<ddd> $$0) {
+      jk<ehu> $$1 = $$0.a(lr.aP);
+      jk<ead<?>> $$2 = $$0.a(lr.aG);
+      $$0.a(ddk.a, ri.j($$1, $$2));
+      $$0.a(ddk.b, ri.a($$1, $$2, false, false, false));
+      $$0.a(ddk.c, ri.a($$1, $$2, true, false, false));
+      $$0.a(ddk.d, ri.a($$1, $$2, false, true, false));
+      $$0.a(ddk.e, ri.a($$1, $$2, false, true, true));
+      $$0.a(ddk.f, ri.d($$1, $$2));
+      $$0.a(ddk.g, ri.h($$1, $$2));
+      $$0.a(ddk.h, ri.i($$1, $$2));
+      $$0.a(ddk.i, ri.b($$1, $$2, false, false, false));
+      $$0.a(ddk.j, ri.b($$1, $$2, false, false, true));
+      $$0.a(ddk.k, ri.b($$1, $$2, true, false, false));
+      $$0.a(ddk.l, ri.g($$1, $$2));
+      $$0.a(ddk.m, ri.b($$1, $$2, true, true, false));
+      $$0.a(ddk.n, ri.a($$1, $$2, false));
+      $$0.a(ddk.o, ri.a($$1, $$2, true));
+      $$0.a(ddk.p, ri.h($$1, $$2, false));
+      $$0.a(ddk.q, ri.h($$1, $$2, true));
+      $$0.a(ddk.r, ri.a($$1, $$2, false, false));
+      $$0.a(ddk.s, ri.a($$1, $$2, false, true));
+      $$0.a(ddk.t, ri.b($$1, $$2, false));
+      $$0.a(ddk.u, ri.b($$1, $$2, false));
+      $$0.a(ddk.v, ri.b($$1, $$2, true));
+      $$0.a(ddk.w, ri.a($$1, $$2, true, false));
+      $$0.a(ddk.x, ri.b($$1, $$2));
+      $$0.a(ddk.y, ri.a($$1, $$2));
+      $$0.a(ddk.z, ri.c($$1, $$2));
+      $$0.a(ddk.A, ri.c($$1, $$2, false));
+      $$0.a(ddk.B, ri.c($$1, $$2, false));
+      $$0.a(ddk.C, ri.c($$1, $$2, true));
+      $$0.a(ddk.D, ri.j($$1, $$2, false));
+      $$0.a(ddk.E, ri.j($$1, $$2, true));
+      $$0.a(ddk.F, ri.o($$1, $$2));
+      $$0.a(ddk.G, ri.n($$1, $$2));
+      $$0.a(ddk.H, ri.k($$1, $$2));
+      $$0.a(ddk.I, ri.l($$1, $$2));
+      $$0.a(ddk.J, ri.m($$1, $$2));
+      $$0.a(ddk.K, ri.i($$1, $$2, false));
+      $$0.a(ddk.L, ri.i($$1, $$2, true));
+      $$0.a(ddk.M, ri.b($$1, $$2, false, false));
+      $$0.a(ddk.N, ri.b($$1, $$2, true, false));
+      $$0.a(ddk.O, ri.b($$1, $$2, false, true));
+      $$0.a(ddk.P, ri.f($$1, $$2));
+      $$0.a(ddk.Q, ri.f($$1, $$2, false));
+      $$0.a(ddk.R, ri.f($$1, $$2, true));
+      $$0.a(ddk.S, ri.e($$1, $$2, false));
+      $$0.a(ddk.T, ri.e($$1, $$2, true));
+      $$0.a(ddk.U, ri.d($$1, $$2, false));
+      $$0.a(ddk.V, ri.d($$1, $$2, true));
+      $$0.a(ddk.W, ri.g($$1, $$2, false));
+      $$0.a(ddk.X, ri.g($$1, $$2, true));
+      $$0.a(ddk.Y, ri.e($$1, $$2));
+      $$0.a(ddk.Z, ri.q($$1, $$2));
+      $$0.a(ddk.aa, ri.p($$1, $$2));
+      $$0.a(ddk.ab, ri.r($$1, $$2));
+      $$0.a(ddk.ac, rh.a($$1, $$2));
+      $$0.a(ddk.ad, rh.e($$1, $$2));
+      $$0.a(ddk.ae, rh.d($$1, $$2));
+      $$0.a(ddk.af, rh.b($$1, $$2));
+      $$0.a(ddk.ag, rh.c($$1, $$2));
+      $$0.a(ddk.ah, rg.b($$1, $$2));
+      $$0.a(ddk.ai, rg.d($$1, $$2));
+      $$0.a(ddk.aj, rg.c($$1, $$2));
+      $$0.a(ddk.ak, rg.e($$1, $$2));
+      $$0.a(ddk.al, rg.a($$1, $$2));
    }
 }

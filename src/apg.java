@@ -1,308 +1,567 @@
 import com.google.common.collect.Lists;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import com.mojang.authlib.GameProfile;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Writer;
+import java.net.InetAddress;
+import java.net.Proxy;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.function.BooleanSupplier;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class apg {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xp.c("commands.team.add.duplicate"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xp.c("commands.team.empty.unchanged"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xp.c("commands.team.option.name.unchanged"));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(xp.c("commands.team.option.color.unchanged"));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(xp.c("commands.team.option.friendlyfire.alreadyEnabled"));
-   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(xp.c("commands.team.option.friendlyfire.alreadyDisabled"));
-   private static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(xp.c("commands.team.option.seeFriendlyInvisibles.alreadyEnabled"));
-   private static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(xp.c("commands.team.option.seeFriendlyInvisibles.alreadyDisabled"));
-   private static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(xp.c("commands.team.option.nametagVisibility.unchanged"));
-   private static final SimpleCommandExceptionType j = new SimpleCommandExceptionType(xp.c("commands.team.option.deathMessageVisibility.unchanged"));
-   private static final SimpleCommandExceptionType k = new SimpleCommandExceptionType(xp.c("commands.team.option.collisionRule.unchanged"));
+public class apg extends MinecraftServer implements alb {
+   static final Logger k = LogUtils.getLogger();
+   private static final int l = 5000;
+   private static final int m = 2;
+   private final List<ako> n = Collections.synchronizedList(Lists.newArrayList());
+   @Nullable
+   private auy o;
+   private final auu p;
+   @Nullable
+   private ava q;
+   private final api r;
+   @Nullable
+   private apm s;
+   @Nullable
+   private final arq t;
+   @Nullable
+   private blf u;
+   @Nullable
+   private blc v;
 
-   public static void a(CommandDispatcher<ep> $$0, el $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a(
-                                    "team"
-                                 )
-                                 .requires($$0x -> $$0x.c(2)))
-                              .then(
-                                 ((LiteralArgumentBuilder)eq.a("list").executes($$0x -> a((ep)$$0x.getSource())))
-                                    .then(eq.a("team", gb.a()).executes($$0x -> c((ep)$$0x.getSource(), gb.a($$0x, "team"))))
-                              ))
-                           .then(
-                              eq.a("add")
-                                 .then(
-                                    ((RequiredArgumentBuilder)eq.a("team", StringArgumentType.word())
-                                          .executes($$0x -> a((ep)$$0x.getSource(), StringArgumentType.getString($$0x, "team"))))
-                                       .then(
-                                          eq.a("displayName", ey.a($$1))
-                                             .executes($$0x -> a((ep)$$0x.getSource(), StringArgumentType.getString($$0x, "team"), ey.a($$0x, "displayName")))
-                                       )
-                                 )
-                           ))
-                        .then(eq.a("remove").then(eq.a("team", gb.a()).executes($$0x -> b((ep)$$0x.getSource(), gb.a($$0x, "team"))))))
-                     .then(eq.a("empty").then(eq.a("team", gb.a()).executes($$0x -> a((ep)$$0x.getSource(), gb.a($$0x, "team"))))))
-                  .then(
-                     eq.a("join")
-                        .then(
-                           ((RequiredArgumentBuilder)eq.a("team", gb.a())
-                                 .executes($$0x -> a((ep)$$0x.getSource(), gb.a($$0x, "team"), Collections.singleton(((ep)$$0x.getSource()).g()))))
-                              .then(eq.a("members", fu.b()).suggests(fu.a).executes($$0x -> a((ep)$$0x.getSource(), gb.a($$0x, "team"), fu.c($$0x, "members"))))
-                        )
-                  ))
-               .then(eq.a("leave").then(eq.a("members", fu.b()).suggests(fu.a).executes($$0x -> a((ep)$$0x.getSource(), fu.c($$0x, "members"))))))
-            .then(
-               eq.a("modify")
-                  .then(
-                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)eq.a(
-                                                   "team", gb.a()
-                                                )
-                                                .then(
-                                                   eq.a("displayName")
-                                                      .then(
-                                                         eq.a("displayName", ey.a($$1))
-                                                            .executes($$0x -> a((ep)$$0x.getSource(), gb.a($$0x, "team"), ey.a($$0x, "displayName")))
-                                                      )
-                                                ))
-                                             .then(
-                                                eq.a("color")
-                                                   .then(
-                                                      eq.a("value", ex.a()).executes($$0x -> a((ep)$$0x.getSource(), gb.a($$0x, "team"), ex.a($$0x, "value")))
-                                                   )
-                                             ))
-                                          .then(
-                                             eq.a("friendlyFire")
-                                                .then(
-                                                   eq.a("allowed", BoolArgumentType.bool())
-                                                      .executes($$0x -> b((ep)$$0x.getSource(), gb.a($$0x, "team"), BoolArgumentType.getBool($$0x, "allowed")))
-                                                )
-                                          ))
-                                       .then(
-                                          eq.a("seeFriendlyInvisibles")
-                                             .then(
-                                                eq.a("allowed", BoolArgumentType.bool())
-                                                   .executes($$0x -> a((ep)$$0x.getSource(), gb.a($$0x, "team"), BoolArgumentType.getBool($$0x, "allowed")))
-                                             )
-                                       ))
-                                    .then(
-                                       ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("nametagVisibility")
-                                                   .then(eq.a("never").executes($$0x -> a((ep)$$0x.getSource(), gb.a($$0x, "team"), ewz.b.b))))
-                                                .then(eq.a("hideForOtherTeams").executes($$0x -> a((ep)$$0x.getSource(), gb.a($$0x, "team"), ewz.b.c))))
-                                             .then(eq.a("hideForOwnTeam").executes($$0x -> a((ep)$$0x.getSource(), gb.a($$0x, "team"), ewz.b.d))))
-                                          .then(eq.a("always").executes($$0x -> a((ep)$$0x.getSource(), gb.a($$0x, "team"), ewz.b.a)))
-                                    ))
-                                 .then(
-                                    ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("deathMessageVisibility")
-                                                .then(eq.a("never").executes($$0x -> b((ep)$$0x.getSource(), gb.a($$0x, "team"), ewz.b.b))))
-                                             .then(eq.a("hideForOtherTeams").executes($$0x -> b((ep)$$0x.getSource(), gb.a($$0x, "team"), ewz.b.c))))
-                                          .then(eq.a("hideForOwnTeam").executes($$0x -> b((ep)$$0x.getSource(), gb.a($$0x, "team"), ewz.b.d))))
-                                       .then(eq.a("always").executes($$0x -> b((ep)$$0x.getSource(), gb.a($$0x, "team"), ewz.b.a)))
-                                 ))
-                              .then(
-                                 ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("collisionRule")
-                                             .then(eq.a("never").executes($$0x -> a((ep)$$0x.getSource(), gb.a($$0x, "team"), ewz.a.b))))
-                                          .then(eq.a("pushOwnTeam").executes($$0x -> a((ep)$$0x.getSource(), gb.a($$0x, "team"), ewz.a.d))))
-                                       .then(eq.a("pushOtherTeams").executes($$0x -> a((ep)$$0x.getSource(), gb.a($$0x, "team"), ewz.a.c))))
-                                    .then(eq.a("always").executes($$0x -> a((ep)$$0x.getSource(), gb.a($$0x, "team"), ewz.a.a)))
-                              ))
-                           .then(
-                              eq.a("prefix")
-                                 .then(eq.a("prefix", ey.a($$1)).executes($$0x -> b((ep)$$0x.getSource(), gb.a($$0x, "team"), ey.a($$0x, "prefix"))))
-                           ))
-                        .then(
-                           eq.a("suffix").then(eq.a("suffix", ey.a($$1)).executes($$0x -> c((ep)$$0x.getSource(), gb.a($$0x, "team"), ey.a($$0x, "suffix"))))
-                        )
-                  )
-            )
-      );
+   public apg(Thread $$0, eqc.c $$1, atf $$2, alh $$3, api $$4, DataFixer $$5, ale $$6, aqu $$7) {
+      super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, $$5, $$6, $$7);
+      this.r = $$4;
+      this.p = new auu(this);
+      this.t = arq.a($$4.a().S);
    }
 
-   private static xp a(Collection<eww> $$0) {
-      return $$0.iterator().next().he();
-   }
+   @Override
+   public boolean e() throws IOException {
+      Thread $$0 = new Thread("Server console handler") {
+         @Override
+         public void run() {
+            BufferedReader $$0 = new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
 
-   private static int a(ep $$0, Collection<eww> $$1) {
-      ewx $$2 = $$0.l().aK();
-
-      for (eww $$3 : $$1) {
-         $$2.d($$3.cB());
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> xp.a("commands.team.leave.success.single", a($$1)), true);
-      } else {
-         $$0.a(() -> xp.a("commands.team.leave.success.multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
-   }
-
-   private static int a(ep $$0, ews $$1, Collection<eww> $$2) {
-      ewx $$3 = $$0.l().aK();
-
-      for (eww $$4 : $$2) {
-         $$3.a($$4.cB(), $$1);
-      }
-
-      if ($$2.size() == 1) {
-         $$0.a(() -> xp.a("commands.team.join.success.single", a($$2), $$1.d()), true);
-      } else {
-         $$0.a(() -> xp.a("commands.team.join.success.multiple", $$2.size(), $$1.d()), true);
-      }
-
-      return $$2.size();
-   }
-
-   private static int a(ep $$0, ews $$1, ewz.b $$2) throws CommandSyntaxException {
-      if ($$1.j() == $$2) {
-         throw i.create();
-      } else {
-         $$1.a($$2);
-         $$0.a(() -> xp.a("commands.team.option.nametagVisibility.success", $$1.d(), $$2.b()), true);
-         return 0;
-      }
-   }
-
-   private static int b(ep $$0, ews $$1, ewz.b $$2) throws CommandSyntaxException {
-      if ($$1.k() == $$2) {
-         throw j.create();
-      } else {
-         $$1.b($$2);
-         $$0.a(() -> xp.a("commands.team.option.deathMessageVisibility.success", $$1.d(), $$2.b()), true);
-         return 0;
-      }
-   }
-
-   private static int a(ep $$0, ews $$1, ewz.a $$2) throws CommandSyntaxException {
-      if ($$1.l() == $$2) {
-         throw k.create();
-      } else {
-         $$1.a($$2);
-         $$0.a(() -> xp.a("commands.team.option.collisionRule.success", $$1.d(), $$2.a()), true);
-         return 0;
-      }
-   }
-
-   private static int a(ep $$0, ews $$1, boolean $$2) throws CommandSyntaxException {
-      if ($$1.i() == $$2) {
-         if ($$2) {
-            throw g.create();
-         } else {
-            throw h.create();
+            String $$1;
+            try {
+               while (!apg.this.ag() && apg.this.x() && ($$1 = $$0.readLine()) != null) {
+                  apg.this.a($$1, apg.this.aI());
+               }
+            } catch (IOException var4) {
+               apg.k.error("Exception handling console input", var4);
+            }
          }
-      } else {
-         $$1.b($$2);
-         $$0.a(() -> xp.a("commands.team.option.seeFriendlyInvisibles." + ($$2 ? "enabled" : "disabled"), $$1.d()), true);
-         return 0;
+      };
+      $$0.setDaemon(true);
+      $$0.setUncaughtExceptionHandler(new r(k));
+      $$0.start();
+      k.info("Starting minecraft server version {}", aa.b().c());
+      if (Runtime.getRuntime().maxMemory() / 1024L / 1024L < 512L) {
+         k.warn("To start the server with more ram, launch it as \"java -Xmx1024M -Xms1024M -jar minecraft_server.jar\"");
       }
-   }
 
-   private static int b(ep $$0, ews $$1, boolean $$2) throws CommandSyntaxException {
-      if ($$1.h() == $$2) {
-         if ($$2) {
-            throw e.create();
-         } else {
-            throw f.create();
-         }
+      k.info("Loading properties");
+      aph $$1 = this.r.a();
+      if (this.T()) {
+         this.a_("127.0.0.1");
       } else {
-         $$1.a($$2);
-         $$0.a(() -> xp.a("commands.team.option.friendlyfire." + ($$2 ? "enabled" : "disabled"), $$1.d()), true);
-         return 0;
+         this.d($$1.a);
+         this.e($$1.b);
+         this.a_($$1.c);
       }
-   }
 
-   private static int a(ep $$0, ews $$1, xp $$2) throws CommandSyntaxException {
-      if ($$1.c().equals($$2)) {
-         throw c.create();
-      } else {
-         $$1.a($$2);
-         $$0.a(() -> xp.a("commands.team.option.name.success", $$1.d()), true);
-         return 0;
+      this.f($$1.f);
+      this.g($$1.g);
+      this.d($$1.h);
+      super.c($$1.V.get());
+      this.h($$1.j);
+      this.j.a($$1.l);
+      k.info("Default game type: {}", $$1.l);
+      InetAddress $$2 = null;
+      if (!this.w().isEmpty()) {
+         $$2 = InetAddress.getByName(this.w());
       }
-   }
 
-   private static int a(ep $$0, ews $$1, n $$2) throws CommandSyntaxException {
-      if ($$1.n() == $$2) {
-         throw d.create();
-      } else {
-         $$1.a($$2);
-         $$0.a(() -> xp.a("commands.team.option.color.success", $$1.d(), $$2.g()), true);
-         return 0;
+      if (this.R() < 0) {
+         this.a($$1.n);
       }
-   }
 
-   private static int a(ep $$0, ews $$1) throws CommandSyntaxException {
-      ewx $$2 = $$0.l().aK();
-      Collection<String> $$3 = Lists.newArrayList($$1.g());
-      if ($$3.isEmpty()) {
-         throw b.create();
+      this.U();
+      k.info("Starting Minecraft server on {}:{}", this.w().isEmpty() ? "*" : this.w(), this.R());
+
+      try {
+         this.ai().a($$2, this.R());
+      } catch (IOException var10) {
+         k.warn("**** FAILED TO BIND TO PORT!");
+         k.warn("The exception was: {}", var10.toString());
+         k.warn("Perhaps a server is already running on that port?");
+         return false;
+      }
+
+      if (!this.Z()) {
+         k.warn("**** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!");
+         k.warn("The server will make no attempt to authenticate usernames. Beware.");
+         k.warn(
+            "While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose."
+         );
+         k.warn("To change this, set \"online-mode\" to \"true\" in the server.properties file.");
+      }
+
+      if (this.bt()) {
+         this.au().c();
+      }
+
+      if (!aug.e(this)) {
+         return false;
       } else {
-         for (String $$4 : $$3) {
-            $$2.b($$4, $$1);
+         this.a(new apf(this, this.bd(), this.g));
+         this.v = new blc(this.br());
+         this.u = new blf(bli.values().length, this.v, ble.a);
+         long $$4 = ac.d();
+         dqz.a(this.i, this);
+         aud.a(this.Z());
+         k.info("Preparing level \"{}\"", this.s());
+         this.t_();
+         long $$5 = ac.d() - $$4;
+         String $$6 = String.format(Locale.ROOT, "%.3fs", (double)$$5 / 1.0E9);
+         k.info("Done ({})! For help, type \"help\"", $$6);
+         if ($$1.o != null) {
+            this.aM().a(dbz.A).a($$1.o, this);
          }
 
-         $$0.a(() -> xp.a("commands.team.empty.success", $$3.size(), $$1.d()), true);
-         return $$3.size();
+         if ($$1.p) {
+            k.info("Starting GS4 status listener");
+            this.o = auy.a(this);
+         }
+
+         if ($$1.r) {
+            k.info("Starting remote control listener");
+            this.q = ava.a(this);
+         }
+
+         if (this.bu() > 0L) {
+            Thread $$7 = new Thread(new apj(this));
+            $$7.setUncaughtExceptionHandler(new s(k));
+            $$7.setName("Server Watchdog");
+            $$7.setDaemon(true);
+            $$7.start();
+         }
+
+         if ($$1.O) {
+            bln.a(this);
+            k.info("JMX monitoring enabled");
+         }
+
+         return true;
       }
    }
 
-   private static int b(ep $$0, ews $$1) {
-      ewx $$2 = $$0.l().aK();
-      $$2.d($$1);
-      $$0.a(() -> xp.a("commands.team.remove.success", $$1.d()), true);
-      return $$2.g().size();
+   @Override
+   public boolean ab() {
+      return this.a().d && super.ab();
    }
 
-   private static int a(ep $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, xp.b($$1));
+   @Override
+   public boolean V() {
+      return this.r.a().w && super.V();
    }
 
-   private static int a(ep $$0, String $$1, xp $$2) throws CommandSyntaxException {
-      ewx $$3 = $$0.l().aK();
-      if ($$3.b($$1) != null) {
-         throw a.create();
+   @Override
+   public boolean ac() {
+      return this.r.a().e && super.ac();
+   }
+
+   @Override
+   public aph a() {
+      return this.r.a();
+   }
+
+   @Override
+   public void t() {
+      this.a(this.a().k, true);
+   }
+
+   @Override
+   public boolean j() {
+      return this.a().u;
+   }
+
+   @Override
+   public ab a(ab $$0) {
+      $$0.a("Is Modded", () -> this.P().b());
+      $$0.a("Type", () -> "Dedicated Server (map_server.txt)");
+      return $$0;
+   }
+
+   @Override
+   public void a(Path $$0) throws IOException {
+      aph $$1 = this.a();
+
+      try (Writer $$2 = Files.newBufferedWriter($$0)) {
+         $$2.write(String.format(Locale.ROOT, "sync-chunk-writes=%s%n", $$1.M));
+         $$2.write(String.format(Locale.ROOT, "gamemode=%s%n", $$1.l));
+         $$2.write(String.format(Locale.ROOT, "spawn-monsters=%s%n", $$1.w));
+         $$2.write(String.format(Locale.ROOT, "entity-broadcast-range-percentage=%d%n", $$1.R));
+         $$2.write(String.format(Locale.ROOT, "max-world-size=%d%n", $$1.L));
+         $$2.write(String.format(Locale.ROOT, "spawn-npcs=%s%n", $$1.e));
+         $$2.write(String.format(Locale.ROOT, "view-distance=%d%n", $$1.F));
+         $$2.write(String.format(Locale.ROOT, "simulation-distance=%d%n", $$1.G));
+         $$2.write(String.format(Locale.ROOT, "spawn-animals=%s%n", $$1.d));
+         $$2.write(String.format(Locale.ROOT, "generate-structures=%s%n", $$1.Z.c()));
+         $$2.write(String.format(Locale.ROOT, "use-native=%s%n", $$1.x));
+         $$2.write(String.format(Locale.ROOT, "rate-limit=%d%n", $$1.E));
+      }
+   }
+
+   @Override
+   public void i() {
+      if (this.t != null) {
+         this.t.close();
+      }
+
+      if (this.s != null) {
+         this.s.b();
+      }
+
+      if (this.q != null) {
+         this.q.b();
+      }
+
+      if (this.o != null) {
+         this.o.b();
+      }
+   }
+
+   @Override
+   public void b(BooleanSupplier $$0) {
+      super.b($$0);
+      this.bq();
+   }
+
+   @Override
+   public boolean G() {
+      return this.a().v;
+   }
+
+   public void a(String $$0, eq $$1) {
+      this.n.add(new ako($$0, $$1));
+   }
+
+   @Override
+   public void bq() {
+      while (!this.n.isEmpty()) {
+         ako $$0 = this.n.remove(0);
+         this.aH().a($$0.b, $$0.a);
+      }
+   }
+
+   @Override
+   public boolean n() {
+      return true;
+   }
+
+   @Override
+   public int o() {
+      return this.a().E;
+   }
+
+   @Override
+   public boolean p() {
+      return this.a().x;
+   }
+
+   public apf br() {
+      return (apf)super.ah();
+   }
+
+   @Override
+   public boolean r() {
+      return true;
+   }
+
+   @Override
+   public String b() {
+      return this.w();
+   }
+
+   @Override
+   public int d() {
+      return this.R();
+   }
+
+   @Override
+   public String h() {
+      return this.af();
+   }
+
+   @Override
+   public void bs() {
+      if (this.s == null) {
+         this.s = apm.a(this);
+      }
+   }
+
+   @Override
+   public boolean ak() {
+      return this.s != null;
+   }
+
+   @Override
+   public boolean q() {
+      return this.a().y;
+   }
+
+   @Override
+   public int am() {
+      return this.a().z;
+   }
+
+   @Override
+   public boolean a(aqk $$0, ja $$1, cmh $$2) {
+      if ($$0.af() != dcd.h) {
+         return false;
+      } else if (this.br().k().c()) {
+         return false;
+      } else if (this.br().f($$2.fX())) {
+         return false;
+      } else if (this.am() <= 0) {
+         return false;
       } else {
-         ews $$4 = $$3.c($$1);
-         $$4.a($$2);
-         $$0.a(() -> xp.a("commands.team.add.success", $$4.d()), true);
-         return $$3.g().size();
+         ja $$3 = $$0.V();
+         int $$4 = aye.a($$1.u() - $$3.u());
+         int $$5 = aye.a($$1.w() - $$3.w());
+         int $$6 = Math.max($$4, $$5);
+         return $$6 <= this.am();
       }
    }
 
-   private static int c(ep $$0, ews $$1) {
-      Collection<String> $$2 = $$1.g();
-      if ($$2.isEmpty()) {
-         $$0.a(() -> xp.a("commands.team.list.members.empty", $$1.d()), false);
-      } else {
-         $$0.a(() -> xp.a("commands.team.list.members.success", $$1.d(), $$2.size(), xs.a($$2)), false);
+   @Override
+   public boolean an() {
+      return this.a().P;
+   }
+
+   @Override
+   public boolean ao() {
+      return this.a().Q;
+   }
+
+   @Override
+   public int k() {
+      return this.a().A;
+   }
+
+   @Override
+   public int l() {
+      return this.a().B;
+   }
+
+   @Override
+   public void c(int $$0) {
+      super.c($$0);
+      this.r.a($$1 -> $$1.V.a(this.bc(), $$0));
+   }
+
+   @Override
+   public boolean m() {
+      return this.a().J;
+   }
+
+   @Override
+   public boolean U_() {
+      return this.a().K;
+   }
+
+   @Override
+   public int ax() {
+      return this.a().L;
+   }
+
+   @Override
+   public int aA() {
+      return this.a().I;
+   }
+
+   @Override
+   public boolean aB() {
+      aph $$0 = this.a();
+      return $$0.X && $$0.a && this.i.b();
+   }
+
+   @Override
+   public boolean bn() {
+      return this.a().Y;
+   }
+
+   @Override
+   protected boolean bt() {
+      boolean $$0 = false;
+
+      for (int $$1 = 0; !$$0 && $$1 <= 2; $$1++) {
+         if ($$1 > 0) {
+            k.warn("Encountered a problem while converting the user banlist, retrying in a few seconds");
+            this.bC();
+         }
+
+         $$0 = aug.a((MinecraftServer)this);
       }
 
-      return $$2.size();
-   }
+      boolean $$2 = false;
 
-   private static int a(ep $$0) {
-      Collection<ews> $$1 = $$0.l().aK().g();
-      if ($$1.isEmpty()) {
-         $$0.a(() -> xp.c("commands.team.list.teams.empty"), false);
-      } else {
-         $$0.a(() -> xp.a("commands.team.list.teams.success", $$1.size(), xs.b($$1, ews::d)), false);
+      for (int var7 = 0; !$$2 && var7 <= 2; var7++) {
+         if (var7 > 0) {
+            k.warn("Encountered a problem while converting the ip banlist, retrying in a few seconds");
+            this.bC();
+         }
+
+         $$2 = aug.b(this);
       }
 
-      return $$1.size();
+      boolean $$3 = false;
+
+      for (int var8 = 0; !$$3 && var8 <= 2; var8++) {
+         if (var8 > 0) {
+            k.warn("Encountered a problem while converting the op list, retrying in a few seconds");
+            this.bC();
+         }
+
+         $$3 = aug.c(this);
+      }
+
+      boolean $$4 = false;
+
+      for (int var9 = 0; !$$4 && var9 <= 2; var9++) {
+         if (var9 > 0) {
+            k.warn("Encountered a problem while converting the whitelist, retrying in a few seconds");
+            this.bC();
+         }
+
+         $$4 = aug.d(this);
+      }
+
+      boolean $$5 = false;
+
+      for (int var10 = 0; !$$5 && var10 <= 2; var10++) {
+         if (var10 > 0) {
+            k.warn("Encountered a problem while converting the player save files, retrying in a few seconds");
+            this.bC();
+         }
+
+         $$5 = aug.a(this);
+      }
+
+      return $$0 || $$2 || $$3 || $$4 || $$5;
    }
 
-   private static int b(ep $$0, ews $$1, xp $$2) {
-      $$1.b($$2);
-      $$0.a(() -> xp.a("commands.team.option.prefix.success", $$2), false);
-      return 1;
+   private void bC() {
+      try {
+         Thread.sleep(5000L);
+      } catch (InterruptedException var2) {
+      }
    }
 
-   private static int c(ep $$0, ews $$1, xp $$2) {
-      $$1.c($$2);
-      $$0.a(() -> xp.a("commands.team.option.suffix.success", $$2), false);
-      return 1;
+   public long bu() {
+      return this.a().C;
+   }
+
+   @Override
+   public int bl() {
+      return this.a().D;
+   }
+
+   @Override
+   public String u() {
+      return "";
+   }
+
+   @Override
+   public String a(String $$0) {
+      this.p.e();
+      this.h(() -> this.aH().a(this.p.g(), $$0));
+      return this.p.f();
+   }
+
+   public void i(boolean $$0) {
+      this.r.a($$1 -> $$1.W.a(this.bc(), $$0));
+   }
+
+   @Override
+   public void v() {
+      super.v();
+      ac.j();
+      dqz.b();
+   }
+
+   @Override
+   public boolean a(GameProfile $$0) {
+      return false;
+   }
+
+   @Override
+   public int b(int $$0) {
+      return this.a().R * $$0 / 100;
+   }
+
+   @Override
+   public String s() {
+      return this.f.f();
+   }
+
+   @Override
+   public boolean aZ() {
+      return this.r.a().M;
+   }
+
+   @Override
+   public arp a(aql $$0) {
+      return this.t != null ? this.t.a($$0.fX()) : arp.a;
+   }
+
+   @Nullable
+   @Override
+   public dca bf() {
+      return this.r.a().i ? this.j.k() : null;
+   }
+
+   @Override
+   public Optional<MinecraftServer.b> X() {
+      return this.r.a().T;
+   }
+
+   @Override
+   public void aU() {
+      super.aU();
+      this.v.a(this.al());
+   }
+
+   @Override
+   public blg f() {
+      return this.u;
+   }
+
+   @Override
+   public boolean g() {
+      return this.v.a(ble.a);
+   }
+
+   @Override
+   public void a(aql $$0, ble $$1) {
+      this.v.a($$0, $$1);
+   }
+
+   @Override
+   public boolean bo() {
+      return this.r.a().aa;
    }
 }

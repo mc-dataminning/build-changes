@@ -1,27 +1,18 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
-public record atq(xp c, int d, Optional<ayr<Integer>> e) {
-   public static final Codec<atq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               xr.a.fieldOf("description").forGetter(atq::a),
-               Codec.INT.fieldOf("pack_format").forGetter(atq::b),
-               ayr.a(Codec.INT).lenientOptionalFieldOf("supported_formats").forGetter(atq::c)
-            )
-            .apply($$0, atq::new)
-   );
-   public static final atp<atq> b = atp.a("pack", a);
+public interface atq {
+   CompletableFuture<?> a();
 
-   public xp a() {
-      return this.c;
+   float b();
+
+   default boolean c() {
+      return this.a().isDone();
    }
 
-   public int b() {
-      return this.d;
-   }
-
-   public Optional<ayr<Integer>> c() {
-      return this.e;
+   default void d() {
+      CompletableFuture<?> $$0 = this.a();
+      if ($$0.isCompletedExceptionally()) {
+         $$0.join();
+      }
    }
 }

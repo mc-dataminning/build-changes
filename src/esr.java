@@ -1,25 +1,41 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
 
-public class esr extends erw {
+public class esr extends esb {
    public static final MapCodec<esr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(alc.a(lq.G).fieldOf("item").forGetter($$0x -> $$0x.b)).apply($$0, esr::new)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  esa.e.a(cws.c, 256).optionalFieldOf("explosions").forGetter($$0x -> $$0x.c),
+                  axm.j.optionalFieldOf("flight_duration").forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, esr::new)
    );
-   private final ji<cum> b;
+   public static final cwt b = new cwt(0, List.of());
+   private final Optional<esa.e<cws>> c;
+   private final Optional<Integer> d;
 
-   private esr(List<etu> $$0, ji<cum> $$1) {
+   protected esr(List<etz> $$0, Optional<esa.e<cws>> $$1, Optional<Integer> $$2) {
       super($$0);
-      this.b = $$1;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public ery<esr> b() {
-      return erz.f;
+   protected cua a(cua $$0, eqo $$1) {
+      $$0.a(kn.U, b, this::a);
+      return $$0;
+   }
+
+   private cwt a(cwt $$0) {
+      return new cwt(this.d.orElseGet($$0::a), this.c.<List<cws>>map($$1 -> $$1.a($$0.b())).orElse($$0.b()));
    }
 
    @Override
-   public cur a(cur $$0, eqk $$1) {
-      return $$0.a(this.b.a(), $$0.I());
+   public esd<esr> b() {
+      return ese.K;
    }
 }

@@ -1,20 +1,12 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.Map;
 
-public interface grc {
-   List<gen> a(@Nullable dse var1, @Nullable je var2, azh var3);
+public record grc(Map<String, gqp> d) {
+   public static final Codec<String> a = Codec.string(1, 16);
+   public static final Codec<grc> b = Codec.unboundedMap(a, gqp.a).xmap(grc::new, grc::a);
+   public static final asu<grc> c = asu.a("language", b);
 
-   boolean a();
-
-   boolean b();
-
-   boolean c();
-
-   boolean d();
-
-   gpb e();
-
-   gez f();
-
-   gex g();
+   public Map<String, gqp> a() {
+      return this.d;
+   }
 }

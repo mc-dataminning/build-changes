@@ -1,43 +1,79 @@
-public class gau extends gbc {
-   private final double a;
-   private final int b;
+import javax.annotation.Nullable;
 
-   gau(fxx $$0, double $$1, double $$2, double $$3, double $$4, int $$5, int $$6) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$4;
-      this.t = $$5;
-      this.b = $$6;
+public class gau extends gcl {
+   private final float a;
+   private final gcg b;
+
+   gau(fyd $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, gcg $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.b = $$7;
+      this.v = $$4;
+      this.w = $$5;
+      this.x = $$6;
+      float $$8 = 0.9F;
+      this.D *= 0.67499995F;
+      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
+      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
+      this.b($$7);
+      this.a = ((float)Math.random() - 0.5F) * 0.1F;
+      this.z = (float)Math.random() * (float) (Math.PI * 2);
+   }
+
+   @Override
+   public gbp b() {
+      return gbp.b;
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * aye.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
    public void a() {
-      if (this.s % (this.b + 1) == 0) {
-         for (int $$0 = 0; $$0 < 3; $$0++) {
-            double $$1 = this.g + (this.r.j() - this.r.j()) * this.a;
-            double $$2 = this.h + (this.r.j() - this.r.j()) * this.a;
-            double $$3 = this.i + (this.r.j() - this.r.j()) * this.a;
-            this.c.a(li.x, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
-         }
-      }
-
-      if (this.s++ == this.t) {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
          this.k();
+      } else {
+         this.b(this.b);
+         this.A = this.z;
+         this.z = this.z + (float) Math.PI * this.a * 2.0F;
+         if (this.m) {
+            this.A = this.z = 0.0F;
+         }
+
+         this.a(this.j, this.k, this.l);
+         this.k -= 0.003F;
+         this.k = Math.max(this.k, -0.14F);
       }
    }
 
-   public static class a implements gbh<lm> {
-      private final double a;
-      private final int b;
-      private final int c;
+   public static class a implements gbo<lb> {
+      private final gcg a;
 
-      public a(double $$0, int $$1, int $$2) {
+      public a(gcg $$0) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
       }
 
-      public gbe a(lm $$0, fxx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gau($$1, $$2, $$3, $$4, this.a, this.b, this.c);
+      @Nullable
+      public gbl a(lb $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         dsh $$8 = $$0.b();
+         if (!$$8.i() && $$8.l() == dll.a) {
+            return null;
+         } else {
+            ja $$9 = ja.a($$2, $$3, $$4);
+            int $$10 = ffn.Q().av().a($$8, $$1, $$9);
+            if ($$8.b() instanceof dib) {
+               $$10 = ((dib)$$8.b()).b($$8, $$1, $$9);
+            }
+
+            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
+            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
+            float $$13 = (float)($$10 & 0xFF) / 255.0F;
+            return new gau($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
+         }
       }
    }
 }

@@ -1,44 +1,40 @@
 import java.util.EnumSet;
 
-public class cbu extends cap {
-   private final buo a;
+public class cbu extends cbw {
+   private final btv a;
+   private bsy b;
+   private int c;
 
-   public cbu(buo $$0) {
+   public cbu(btv $$0) {
+      super($$0, false);
       this.a = $$0;
-      this.a(EnumSet.of(cap.a.c, cap.a.a));
-   }
-
-   @Override
-   public boolean b() {
-      return this.a.gq();
+      this.a(EnumSet.of(bzw.a.d));
    }
 
    @Override
    public boolean a() {
-      if (!this.a.s()) {
-         return false;
-      } else if (this.a.bh()) {
-         return false;
-      } else if (!this.a.aE()) {
-         return false;
-      } else {
-         btr $$0 = this.a.P_();
+      if (this.a.s() && !this.a.gn()) {
+         bsy $$0 = this.a.P_();
          if ($$0 == null) {
-            return true;
+            return false;
          } else {
-            return this.a.g((bsw)$$0) < 144.0 && $$0.em() != null ? false : this.a.gq();
+            this.b = $$0.ek();
+            int $$1 = $$0.el();
+            return $$1 != this.c && this.a(this.b, cdp.a) && this.a.a(this.b, $$0);
          }
+      } else {
+         return false;
       }
    }
 
    @Override
    public void c() {
-      this.a.K().n();
-      this.a.x(true);
-   }
+      this.e.h(this.b);
+      bsy $$0 = this.a.P_();
+      if ($$0 != null) {
+         this.c = $$0.el();
+      }
 
-   @Override
-   public void d() {
-      this.a.x(false);
+      super.c();
    }
 }

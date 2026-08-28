@@ -1,35 +1,75 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.JsonOps;
+import java.io.BufferedReader;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import org.slf4j.Logger;
 
-public class gpn implements gpf {
-   private static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<gpn> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alf.a.fieldOf("resource").forGetter($$0x -> $$0x.d), alf.a.optionalFieldOf("sprite").forGetter($$0x -> $$0x.e)).apply($$0, gpn::new)
-   );
-   private final alf d;
-   private final Optional<alf> e;
+public class gpn {
+   private static final Logger a = LogUtils.getLogger();
+   private static final akd b = new akd("atlases", ".json");
+   private final List<gpm> c;
 
-   public gpn(alf $$0, Optional<alf> $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   private gpn(List<gpm> $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public void a(aup $$0, gpf.a $$1) {
-      alf $$2 = a.a(this.d);
-      Optional<aun> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         $$1.a(this.e.orElse(this.d), $$3.get());
-      } else {
-         c.warn("Missing sprite: {}", $$2);
+   public List<Function<gpl, gpc>> a(atu $$0) {
+      final Map<akk, gpm.b> $$1 = new HashMap<>();
+      gpm.a $$2 = new gpm.a() {
+         @Override
+         public void a(akk $$0, gpm.b $$1x) {
+            gpm.b $$2 = $$1.put($$0, $$1);
+            if ($$2 != null) {
+               $$2.a();
+            }
+         }
+
+         @Override
+         public void a(Predicate<akk> $$0) {
+            Iterator<Entry<akk, gpm.b>> $$1 = $$1.entrySet().iterator();
+
+            while ($$1.hasNext()) {
+               Entry<akk, gpm.b> $$2 = $$1.next();
+               if ($$0.test($$2.getKey())) {
+                  $$2.getValue().a();
+                  $$1.remove();
+               }
+            }
+         }
+      };
+      this.c.forEach($$2x -> $$2x.a($$0, $$2));
+      Builder<Function<gpl, gpc>> $$3 = ImmutableList.builder();
+      $$3.add((Function<gpl, gpc>)$$0x -> goy.a());
+      $$3.addAll($$1.values());
+      return $$3.build();
+   }
+
+   public static gpn a(atu $$0, akk $$1) {
+      akk $$2 = b.a($$1);
+      List<gpm> $$3 = new ArrayList<>();
+
+      for (ats $$4 : $$0.a($$2)) {
+         try (BufferedReader $$5 = $$4.e()) {
+            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
+            $$3.addAll((Collection<? extends gpm>)gpp.h.parse($$6).getOrThrow());
+         } catch (Exception var11) {
+            a.error("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
+         }
       }
-   }
 
-   @Override
-   public gph a() {
-      return gpi.a;
+      return new gpn($$3);
    }
 }

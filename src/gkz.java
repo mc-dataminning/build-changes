@@ -1,38 +1,39 @@
-import javax.annotation.Nullable;
+public class gkz extends gkm<cfh, fui<cfh>> {
+   private static final akk a = new akk("textures/entity/fish/pufferfish.png");
+   private int i = 3;
+   private final fui<cfh> j;
+   private final fui<cfh> k;
+   private final fui<cfh> l = this.a();
 
-public class gkz extends gkf<ckl, fvv<ckl>> {
-   private static final alf a = new alf("textures/" + gef.i.b().a() + ".png");
-   private static final alf[] i = gef.j.stream().map($$0 -> new alf("textures/" + $$0.b().a() + ".png")).toArray(alf[]::new);
-
-   public gkz(giz.a $$0) {
-      super($$0, new fvv<>($$0.a(fxb.bk)), 0.0F);
-      this.a(new gno(this));
+   public gkz(gjg.a $$0) {
+      super($$0, new fvp<>($$0.a(fxh.bb)), 0.2F);
+      this.k = new fvq<>($$0.a(fxh.bc));
+      this.j = new fvr<>($$0.a(fxh.bd));
    }
 
-   public evt a(ckl $$0, float $$1) {
-      return $$0.H($$1).orElse(super.a($$0, $$1)).a((double)$$0.ee());
+   public akk a(cfh $$0) {
+      return a;
    }
 
-   public boolean a(ckl $$0, ggu $$1, double $$2, double $$3, double $$4) {
-      return super.a($$0, $$1, $$2, $$3, $$4) ? true : $$0.H(0.0F).filter($$2x -> {
-         btc<?> $$3x = $$0.ak();
-         float $$4x = $$3x.m() / 2.0F;
-         float $$5 = $$3x.l() / 2.0F;
-         evt $$6 = evt.c($$0.dp());
-         return $$1.a(new evo($$2x.c, $$2x.d + (double)$$4x, $$2x.e, $$6.c, $$6.d + (double)$$4x, $$6.e).c((double)$$5, (double)$$4x, (double)$$5));
-      }).isPresent();
+   public void a(cfh $$0, float $$1, float $$2, fag $$3, gdx $$4, int $$5) {
+      int $$6 = $$0.gp();
+      if ($$6 != this.i) {
+         if ($$6 == 0) {
+            this.f = this.j;
+         } else if ($$6 == 1) {
+            this.f = this.k;
+         } else {
+            this.f = this.l;
+         }
+      }
+
+      this.i = $$6;
+      this.d = 0.1F + 0.1F * (float)$$6;
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public alf a(ckl $$0) {
-      return a($$0.gr());
-   }
-
-   public static alf a(@Nullable ctk $$0) {
-      return $$0 == null ? a : i[$$0.a()];
-   }
-
-   protected void a(ckl $$0, faa $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3 + 180.0F, $$4, $$5);
-      $$1.a($$0.y().g().b(), 0.0F, 0.5F, 0.0F);
+   protected void a(cfh $$0, fag $$1, float $$2, float $$3, float $$4, float $$5) {
+      $$1.a(0.0F, aye.b($$2 * 0.05F) * 0.08F, 0.0F);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 }

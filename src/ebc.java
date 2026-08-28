@@ -1,43 +1,29 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
 
-public class ebc<FC extends ede> {
-   private final Optional<ean<?, ?>> a;
-   private final dcv b;
-   private final dub c;
-   private final azh d;
-   private final iz e;
-   private final FC f;
-
-   public ebc(Optional<ean<?, ?>> $$0, dcv $$1, dub $$2, azh $$3, iz $$4, FC $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+public class ebc extends ebe<edp> {
+   public ebc(Codec<edp> $$0) {
+      super($$0);
    }
 
-   public Optional<ean<?, ?>> a() {
-      return this.a;
-   }
+   @Override
+   public boolean a(ebg<edp> $$0) {
+      dcz $$1 = $$0.b();
+      aym $$2 = $$0.d();
+      ja $$3 = $$0.e();
+      float $$4 = (float)$$2.a(3) + 4.0F;
 
-   public dcv b() {
-      return this.b;
-   }
+      for (int $$5 = 0; $$4 > 0.5F; $$5--) {
+         for (int $$6 = aye.d(-$$4); $$6 <= aye.f($$4); $$6++) {
+            for (int $$7 = aye.d(-$$4); $$7 <= aye.f($$4); $$7++) {
+               if ((float)($$6 * $$6 + $$7 * $$7) <= ($$4 + 1.0F) * ($$4 + 1.0F)) {
+                  this.a($$1, $$3.b($$6, $$5, $$7), dfh.fz.o());
+               }
+            }
+         }
 
-   public dub c() {
-      return this.c;
-   }
+         $$4 -= (float)$$2.a(2) + 0.5F;
+      }
 
-   public azh d() {
-      return this.d;
-   }
-
-   public iz e() {
-      return this.e;
-   }
-
-   public FC f() {
-      return this.f;
+      return true;
    }
 }

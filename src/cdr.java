@@ -1,52 +1,25 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class cdr<T extends btr> extends ceb<T> {
-   private final BiPredicate<T, btr> a;
-   private final Predicate<T> c;
-   private final ccv<Boolean> d;
-   private final int e;
-
-   public cdr(int $$0, BiPredicate<T, btr> $$1, Predicate<T> $$2, ccv<Boolean> $$3, int $$4) {
-      super($$0);
-      this.a = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+public class cdr {
+   @Nullable
+   public static evz a(bth $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      boolean $$7 = cdu.a($$0, $$1);
+      return cdx.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
    }
 
-   @Override
-   protected void a(arf $$0, T $$1) {
-      if (!this.c.test($$1)) {
-         this.c($$1);
+   @Nullable
+   public static ja a(bth $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
+      ja $$8 = cdx.a($$0.dS(), $$1, $$2, $$3, $$4, $$5, $$6);
+      if ($$8 == null) {
+         return null;
       } else {
-         this.a($$1);
-      }
-   }
-
-   @Override
-   public Set<ccv<?>> a() {
-      return Set.of(ccv.g);
-   }
-
-   public void a(T $$0) {
-      Optional<List<btr>> $$1 = $$0.dS().c(ccv.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
-         if ($$2) {
-            this.b($$0);
+         ja $$9 = cdx.a($$0, $$1, $$0.dS(), $$8);
+         if (!cdu.a($$9, $$0) && !cdu.a($$7, $$0, $$9)) {
+            $$9 = cdx.a($$9, $$0.dP().am(), $$1x -> cdu.c($$0, $$1x));
+            return cdu.b($$0, $$9) ? null : $$9;
+         } else {
+            return null;
          }
       }
-   }
-
-   public void b(T $$0) {
-      $$0.dS().a(this.d, true, (long)this.e);
-   }
-
-   public void c(T $$0) {
-      $$0.dS().b(this.d);
    }
 }

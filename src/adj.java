@@ -1,25 +1,29 @@
-public record adj(long[] b, blx c) implements zw<aci> {
-   public static final zn<wm, adj> a = zw.a(adj::a, adj::new);
+public class adj implements zb<abn> {
+   public static final ys<vr, adj> a = zb.a(adj::a, adj::new);
+   private final bqc b;
 
-   private adj(wm $$0) {
-      this($$0.d(), $$0.b(blx.class));
+   public adj(bqc $$0) {
+      this.b = $$0;
    }
 
-   private void a(wm $$0) {
+   private adj(vr $$0) {
+      this.b = $$0.b(bqc.class);
+   }
+
+   private void a(vr $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
    }
 
    @Override
-   public zy<adj> a() {
-      return agu.A;
+   public zd<adj> a() {
+      return afz.V;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
    }
 
-   public blx e() {
-      return this.c;
+   public bqc b() {
+      return this.b;
    }
 }

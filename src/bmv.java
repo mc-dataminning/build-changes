@@ -1,21 +1,20 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Optional;
+import net.minecraft.server.MinecraftServer;
 
-public class bmv implements bmq<StringReader, alf> {
-   public static final bmq<StringReader, alf> a = new bmv();
+public enum bmv {
+   a("client"),
+   b("server");
 
-   private bmv() {
+   private final String c;
+
+   private bmv(final String $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public Optional<alf> a(bmp<StringReader> $$0) {
-      $$0.b().skipWhitespace();
+   public static bmv a(MinecraftServer $$0) {
+      return $$0.n() ? b : a;
+   }
 
-      try {
-         return Optional.of(alf.b($$0.b()));
-      } catch (CommandSyntaxException var3) {
-         return Optional.empty();
-      }
+   public String a() {
+      return this.c;
    }
 }

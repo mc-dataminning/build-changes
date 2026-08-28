@@ -1,92 +1,126 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
 import java.util.Collection;
-import net.minecraft.server.MinecraftServer;
+import java.util.function.Function;
 
 public class aor {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xp.c("commands.schedule.same_tick"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xp.b("commands.schedule.cleared.failure", $$0));
-   private static final SuggestionProvider<ep> c = ($$0, $$1) -> eu.b(((ep)$$0.getSource()).l().bb().I().s().a(), $$1);
-
-   public static void a(CommandDispatcher<ep> $$0) {
+   public static void a(CommandDispatcher<eq> $$0, em $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("schedule").requires($$0x -> $$0x.c(2)))
-               .then(
-                  eq.a("function")
-                     .then(
-                        eq.a("function", gx.a())
-                           .suggests(anl.b)
-                           .then(
-                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)eq.a("time", ge.a())
-                                       .executes($$0x -> a((ep)$$0x.getSource(), gx.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true)))
-                                    .then(
-                                       eq.a("append")
-                                          .executes(
-                                             $$0x -> a((ep)$$0x.getSource(), gx.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), false)
-                                          )
-                                    ))
-                                 .then(
-                                    eq.a("replace")
-                                       .executes($$0x -> a((ep)$$0x.getSource(), gx.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true))
-                                 )
-                           )
-                     )
-               ))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("title").requires($$0x -> $$0x.c(2)))
             .then(
-               eq.a("clear")
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)er.a(
+                                    "targets", fd.d()
+                                 )
+                                 .then(er.a("clear").executes($$0x -> a((eq)$$0x.getSource(), fd.f($$0x, "targets")))))
+                              .then(er.a("reset").executes($$0x -> b((eq)$$0x.getSource(), fd.f($$0x, "targets")))))
+                           .then(
+                              er.a("title")
+                                 .then(
+                                    er.a("title", ez.a($$1))
+                                       .executes($$0x -> a((eq)$$0x.getSource(), fd.f($$0x, "targets"), ez.a($$0x, "title"), "title", aff::new))
+                                 )
+                           ))
+                        .then(
+                           er.a("subtitle")
+                              .then(
+                                 er.a("title", ez.a($$1))
+                                    .executes($$0x -> a((eq)$$0x.getSource(), fd.f($$0x, "targets"), ez.a($$0x, "title"), "subtitle", afd::new))
+                              )
+                        ))
+                     .then(
+                        er.a("actionbar")
+                           .then(
+                              er.a("title", ez.a($$1))
+                                 .executes($$0x -> a((eq)$$0x.getSource(), fd.f($$0x, "targets"), ez.a($$0x, "title"), "actionbar", aeg::new))
+                           )
+                     ))
                   .then(
-                     eq.a("function", StringArgumentType.greedyString())
-                        .suggests(c)
-                        .executes($$0x -> a((ep)$$0x.getSource(), StringArgumentType.getString($$0x, "function")))
+                     er.a("times")
+                        .then(
+                           er.a("fadeIn", gf.a())
+                              .then(
+                                 er.a("stay", gf.a())
+                                    .then(
+                                       er.a("fadeOut", gf.a())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (eq)$$0x.getSource(),
+                                                   fd.f($$0x, "targets"),
+                                                   IntegerArgumentType.getInteger($$0x, "fadeIn"),
+                                                   IntegerArgumentType.getInteger($$0x, "stay"),
+                                                   IntegerArgumentType.getInteger($$0x, "fadeOut")
+                                                )
+                                          )
+                                    )
+                              )
+                        )
                   )
             )
       );
    }
 
-   private static int a(ep $$0, Pair<alf, Either<ib<ep>, Collection<ib<ep>>>> $$1, int $$2, boolean $$3) throws CommandSyntaxException {
-      if ($$2 == 0) {
-         throw a.create();
-      } else {
-         long $$4 = $$0.e().Z() + (long)$$2;
-         alf $$5 = (alf)$$1.getFirst();
-         evg<MinecraftServer> $$6 = $$0.l().bb().I().s();
-         ((Either)$$1.getSecond()).ifLeft($$6x -> {
-            String $$7 = $$5.toString();
-            if ($$3) {
-               $$6.a($$7);
-            }
+   private static int a(eq $$0, Collection<aql> $$1) {
+      ace $$2 = new ace(false);
 
-            $$6.a($$7, $$4, new evc($$5));
-            $$0.a(() -> xp.a("commands.schedule.created.function", xp.a($$5), $$2, $$4), true);
-         }).ifRight($$6x -> {
-            String $$7 = "#" + $$5;
-            if ($$3) {
-               $$6.a($$7);
-            }
-
-            $$6.a($$7, $$4, new evd($$5));
-            $$0.a(() -> xp.a("commands.schedule.created.tag", xp.a($$5), $$2, $$4), true);
-         });
-         return Math.floorMod($$4, Integer.MAX_VALUE);
+      for (aql $$3 : $$1) {
+         $$3.c.b($$2);
       }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> wu.a("commands.title.cleared.single", $$1.iterator().next().O_()), true);
+      } else {
+         $$0.a(() -> wu.a("commands.title.cleared.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 
-   private static int a(ep $$0, String $$1) throws CommandSyntaxException {
-      int $$2 = $$0.l().bb().I().s().a($$1);
-      if ($$2 == 0) {
-         throw b.create($$1);
-      } else {
-         $$0.a(() -> xp.a("commands.schedule.cleared.success", $$2, $$1), true);
-         return $$2;
+   private static int b(eq $$0, Collection<aql> $$1) {
+      ace $$2 = new ace(true);
+
+      for (aql $$3 : $$1) {
+         $$3.c.b($$2);
       }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> wu.a("commands.title.reset.single", $$1.iterator().next().O_()), true);
+      } else {
+         $$0.a(() -> wu.a("commands.title.reset.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
+   }
+
+   private static int a(eq $$0, Collection<aql> $$1, wu $$2, String $$3, Function<wu, zb<?>> $$4) throws CommandSyntaxException {
+      for (aql $$5 : $$1) {
+         $$5.c.b($$4.apply(wx.a($$0, $$2, $$5, 0)));
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> wu.a("commands.title.show." + $$3 + ".single", $$1.iterator().next().O_()), true);
+      } else {
+         $$0.a(() -> wu.a("commands.title.show." + $$3 + ".multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
+   }
+
+   private static int a(eq $$0, Collection<aql> $$1, int $$2, int $$3, int $$4) {
+      afg $$5 = new afg($$2, $$3, $$4);
+
+      for (aql $$6 : $$1) {
+         $$6.c.b($$5);
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> wu.a("commands.title.times.single", $$1.iterator().next().O_()), true);
+      } else {
+         $$0.a(() -> wu.a("commands.title.times.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 }

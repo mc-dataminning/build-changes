@@ -1,29 +1,46 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bxp {
-   private static final int a = 1;
+   public static bus<bth> a(int $$0, float $$1) {
+      MutableLong $$2 = new MutableLong(0L);
+      return bye.a(
+         (Function<bye.b<bth>, ? extends App<bye.c<bth>, byh<bth>>>)($$3 -> $$3.group($$3.c(ccc.o), $$3.c(ccc.m), $$3.a(ccc.n))
+               .apply(
+                  $$3,
+                  ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
+                        if ($$5x.b_($$6.dp()).a(awa.a)) {
+                           return false;
+                        } else if ($$7 < $$2.getValue()) {
+                           $$2.setValue($$7 + 40L);
+                           return true;
+                        } else {
+                           ewe $$8 = ewe.a($$6);
+                           ja $$9 = $$6.dp();
+                           ja.a $$10 = new ja.a();
 
-   public static bvl<btt> a(float $$0) {
-      return a($$1 -> $$0);
-   }
+                           label45:
+                           for (ja $$11 : ja.a($$9, $$0, $$0, $$0)) {
+                              if (($$11.u() != $$9.u() || $$11.w() != $$9.w())
+                                 && $$5x.a_($$11).b($$5x, $$11, $$8).c()
+                                 && !$$5x.a_($$10.a($$11, jf.a)).b($$5x, $$11, $$8).c()) {
+                                 for (jf $$12 : jf.c.a) {
+                                    $$10.a($$11, $$12);
+                                    if ($$5x.a_($$10).i() && $$5x.a_($$10.c(jf.a)).a(dfh.G)) {
+                                       $$5.a(new buu($$11));
+                                       $$4.a(new ccf(new buu($$11), $$1, 0));
+                                       break label45;
+                                    }
+                                 }
+                              }
+                           }
 
-   public static bvl<btt> a(Function<btr, Float> $$0) {
-      return byx.a(
-         (Function<byx.b<btt>, ? extends App<byx.c<btt>, bza<btt>>>)($$1 -> $$1.group($$1.a(ccv.m), $$1.a(ccv.n), $$1.b(ccv.o), $$1.a(ccv.h))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     btr $$9 = $$1.b($$4);
-                     Optional<ccx> $$10 = $$1.a($$5);
-                     if ($$10.isPresent() && $$10.get().a($$9) && bvm.a($$7, $$9, 1)) {
-                        $$2.b();
-                     } else {
-                        $$3.a(new bvv($$9, true));
-                        $$2.a(new ccy(new bvv($$9, false), $$0.apply($$7), 0));
+                           $$2.setValue($$7 + 40L);
+                           return true;
+                        }
                      }
-
-                     return true;
-                  }))
+               ))
       );
    }
 }

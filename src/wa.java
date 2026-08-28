@@ -1,89 +1,27 @@
-public interface wa extends vm {
-   wa a = new wa() {
-   };
+public interface wa {
+   zc a();
 
-   @Override
-   default vm.b a() {
-      return vm.b.a;
+   vq b();
+
+   void a(wu var1);
+
+   default void a(zb $$0, Exception $$1) throws y {
+      throw ze.a($$1, $$0, this);
    }
 
-   @Override
-   default vm.b a(String $$0) {
-      return vm.b.a;
+   boolean c();
+
+   default boolean a(zb<?> $$0) {
+      return this.c();
    }
 
-   @Override
-   default vm.b a(byte $$0) {
-      return vm.b.a;
+   default void a(o $$0) {
+      p $$1 = $$0.a("Connection");
+      $$1.a("Protocol", () -> this.b().a());
+      $$1.a("Flow", () -> this.a().toString());
+      this.a($$1);
    }
 
-   @Override
-   default vm.b a(short $$0) {
-      return vm.b.a;
-   }
-
-   @Override
-   default vm.b a(int $$0) {
-      return vm.b.a;
-   }
-
-   @Override
-   default vm.b a(long $$0) {
-      return vm.b.a;
-   }
-
-   @Override
-   default vm.b a(float $$0) {
-      return vm.b.a;
-   }
-
-   @Override
-   default vm.b a(double $$0) {
-      return vm.b.a;
-   }
-
-   @Override
-   default vm.b a(byte[] $$0) {
-      return vm.b.a;
-   }
-
-   @Override
-   default vm.b a(int[] $$0) {
-      return vm.b.a;
-   }
-
-   @Override
-   default vm.b a(long[] $$0) {
-      return vm.b.a;
-   }
-
-   @Override
-   default vm.b a(vr<?> $$0, int $$1) {
-      return vm.b.a;
-   }
-
-   @Override
-   default vm.a b(vr<?> $$0, int $$1) {
-      return vm.a.b;
-   }
-
-   @Override
-   default vm.a a(vr<?> $$0) {
-      return vm.a.b;
-   }
-
-   @Override
-   default vm.a a(vr<?> $$0, String $$1) {
-      return vm.a.b;
-   }
-
-   @Override
-   default vm.b b() {
-      return vm.b.a;
-   }
-
-   @Override
-   default vm.b b(vr<?> $$0) {
-      return vm.b.a;
+   default void a(p $$0) {
    }
 }

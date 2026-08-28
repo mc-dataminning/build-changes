@@ -1,203 +1,500 @@
-import com.google.common.base.Splitter;
-import com.google.common.base.Strings;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
+import it.unimi.dsi.fastutil.longs.Long2ByteMap;
+import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2IntMap;
+import it.unimi.dsi.fastutil.longs.Long2IntMaps;
+import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import it.unimi.dsi.fastutil.objects.ObjectSet;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Properties;
-import java.util.UUID;
-import java.util.concurrent.TimeUnit;
-import java.util.regex.Pattern;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class aqc extends aqf<aqc> {
-   static final Logger ac = LogUtils.getLogger();
-   private static final Pattern ad = Pattern.compile("^[a-fA-F0-9]{40}$");
-   private static final Splitter ae = Splitter.on(',').trimResults();
-   public final boolean a = this.a("online-mode", true);
-   public final boolean b = this.a("prevent-proxy-connections", false);
-   public final String c = this.a("server-ip", "");
-   public final boolean d = this.a("spawn-animals", true);
-   public final boolean e = this.a("spawn-npcs", true);
-   public final boolean f = this.a("pvp", true);
-   public final boolean g = this.a("allow-flight", false);
-   public final String h = this.a("motd", "A Minecraft Server");
-   public final boolean i = this.a("force-gamemode", false);
-   public final boolean j = this.a("enforce-whitelist", false);
-   public final bqt k = this.a("difficulty", a(bqt::a, bqt::a), bqt::e, bqt.b);
-   public final dbx l = this.a("gamemode", a(dbx::a, dbx::a), dbx::b, dbx.a);
-   public final String m = this.a("level-name", "world");
-   public final int n = this.a("server-port", 25565);
-   @Nullable
-   public final Boolean o = this.b("announce-player-achievements");
-   public final boolean p = this.a("enable-query", false);
-   public final int q = this.a("query.port", 25565);
-   public final boolean r = this.a("enable-rcon", false);
-   public final int s = this.a("rcon.port", 25575);
-   public final String t = this.a("rcon.password", "");
-   public final boolean u = this.a("hardcore", false);
-   public final boolean v = this.a("allow-nether", true);
-   public final boolean w = this.a("spawn-monsters", true);
-   public final boolean x = this.a("use-native-transport", true);
-   public final boolean y = this.a("enable-command-block", false);
-   public final int z = this.a("spawn-protection", 16);
-   public final int A = this.a("op-permission-level", 4);
-   public final int B = this.a("function-permission-level", 2);
-   public final long C = this.a("max-tick-time", TimeUnit.MINUTES.toMillis(1L));
-   public final int D = this.a("max-chained-neighbor-updates", 1000000);
-   public final int E = this.a("rate-limit", 0);
-   public final int F = this.a("view-distance", 10);
-   public final int G = this.a("simulation-distance", 10);
-   public final int H = this.a("max-players", 20);
-   public final int I = this.a("network-compression-threshold", 256);
-   public final boolean J = this.a("broadcast-rcon-to-ops", true);
-   public final boolean K = this.a("broadcast-console-to-ops", true);
-   public final int L = this.a("max-world-size", $$0x -> ayz.a($$0x, 1, 29999984), 29999984);
-   public final boolean M = this.a("sync-chunk-writes", true);
-   public final String N = this.a("region-file-compression", "deflate");
-   public final boolean O = this.a("enable-jmx-monitoring", false);
-   public final boolean P = this.a("enable-status", true);
-   public final boolean Q = this.a("hide-online-players", false);
-   public final int R = this.a("entity-broadcast-range-percentage", $$0x -> ayz.a($$0x, 10, 1000), 100);
-   public final String S = this.a("text-filtering-config", "");
-   public final Optional<MinecraftServer.b> T;
-   public final dbo U;
-   public final aqf<aqc>.a<Integer> V = this.b("player-idle-timeout", 0);
-   public final aqf<aqc>.a<Boolean> W = this.b("white-list", false);
-   public final boolean X = this.a("enforce-secure-profile", true);
-   public final boolean Y = this.a("log-ips", true);
-   private final aqc.a af;
-   public final dyu Z;
-   public boolean aa = this.a("accepts-transfers", false);
+public abstract class aqc {
+   static final Logger a = LogUtils.getLogger();
+   static final int b = aps.a(aqd.d);
+   private static final int c = 4;
+   final Long2ObjectMap<ObjectSet<aql>> d = new Long2ObjectOpenHashMap();
+   final Long2ObjectOpenHashMap<ayw<aqo<?>>> e = new Long2ObjectOpenHashMap();
+   private final aqc.a f = new aqc.a();
+   private final aqc.b g = new aqc.b(8);
+   private final aqq h = new aqq();
+   private final aqc.c i = new aqc.c(32);
+   final Set<apr> j = Sets.newHashSet();
+   final apw k;
+   final bov<apw.a<Runnable>> l;
+   final bov<apw.b> m;
+   final LongSet n = new LongOpenHashSet();
+   final Executor o;
+   private long p;
+   private int q = 10;
 
-   public aqc(Properties $$0) {
-      super($$0);
-      String $$1 = this.a("level-seed", "");
-      boolean $$2 = this.a("generate-structures", true);
-      long $$3 = dyu.a($$1).orElse(dyu.f());
-      this.Z = new dyu($$3, $$2, false);
-      this.af = new aqc.a(
-         this.a("generator-settings", $$0x -> ayp.a(!$$0x.isEmpty() ? $$0x : "{}"), new JsonObject()),
-         this.a("level-type", $$0x -> $$0x.toLowerCase(Locale.ROOT), eic.a.a().toString())
-      );
-      this.T = a(
-         this.a("resource-pack-id", ""),
-         this.a("resource-pack", ""),
-         this.a("resource-pack-sha1", ""),
-         this.a("resource-pack-hash"),
-         this.a("require-resource-pack", false),
-         this.a("resource-pack-prompt", "")
-      );
-      this.U = b(this.a("initial-enabled-packs", String.join(",", dcu.c.a().a())), this.a("initial-disabled-packs", String.join(",", dcu.c.a().b())));
+   protected aqc(Executor $$0, Executor $$1) {
+      bov<Runnable> $$2 = bov.a("player ticket throttler", $$1::execute);
+      apw $$3 = new apw(ImmutableList.of($$2), $$0, 4);
+      this.k = $$3;
+      this.l = $$3.a($$2, true);
+      this.m = $$3.a($$2);
+      this.o = $$1;
    }
 
-   public static aqc a(Path $$0) {
-      return new aqc(b($$0));
-   }
+   protected void a() {
+      this.p++;
+      ObjectIterator<Entry<ayw<aqo<?>>>> $$0 = this.e.long2ObjectEntrySet().fastIterator();
 
-   protected aqc a(jw $$0, Properties $$1) {
-      return new aqc($$1);
-   }
+      while ($$0.hasNext()) {
+         Entry<ayw<aqo<?>>> $$1 = (Entry<ayw<aqo<?>>>)$$0.next();
+         Iterator<aqo<?>> $$2 = ((ayw)$$1.getValue()).iterator();
+         boolean $$3 = false;
 
-   @Nullable
-   private static xp c(String $$0) {
-      if (!Strings.isNullOrEmpty($$0)) {
-         try {
-            return xp.a.a($$0, jw.b);
-         } catch (Exception var2) {
-            ac.warn("Failed to parse resource pack prompt '{}'", $$0, var2);
+         while ($$2.hasNext()) {
+            aqo<?> $$4 = $$2.next();
+            if ($$4.b(this.p)) {
+               $$2.remove();
+               $$3 = true;
+               this.h.b($$1.getLongKey(), $$4);
+            }
+         }
+
+         if ($$3) {
+            this.f.b($$1.getLongKey(), a((ayw<aqo<?>>)$$1.getValue()), false);
+         }
+
+         if (((ayw)$$1.getValue()).isEmpty()) {
+            $$0.remove();
          }
       }
-
-      return null;
    }
 
-   private static Optional<MinecraftServer.b> a(String $$0, String $$1, String $$2, @Nullable String $$3, boolean $$4, String $$5) {
-      if ($$1.isEmpty()) {
-         return Optional.empty();
+   private static int a(ayw<aqo<?>> $$0) {
+      return !$$0.isEmpty() ? $$0.b().b() : aps.a + 1;
+   }
+
+   protected abstract boolean a(long var1);
+
+   @Nullable
+   protected abstract apr b(long var1);
+
+   @Nullable
+   protected abstract apr a(long var1, int var3, @Nullable apr var4, int var5);
+
+   public boolean a(apt $$0) {
+      this.g.a();
+      this.h.a();
+      this.i.a();
+      int $$1 = Integer.MAX_VALUE - this.f.a(Integer.MAX_VALUE);
+      boolean $$2 = $$1 != 0;
+      if ($$2) {
+      }
+
+      if (!this.j.isEmpty()) {
+         this.j.forEach($$1x -> $$1x.a($$0, this.o));
+         this.j.clear();
+         return true;
       } else {
-         String $$6;
-         if (!$$2.isEmpty()) {
-            $$6 = $$2;
-            if (!Strings.isNullOrEmpty($$3)) {
-               ac.warn("resource-pack-hash is deprecated and found along side resource-pack-sha1. resource-pack-hash will be ignored.");
+         if (!this.n.isEmpty()) {
+            LongIterator $$3 = this.n.iterator();
+
+            while ($$3.hasNext()) {
+               long $$4 = $$3.nextLong();
+               if (this.g($$4).stream().anyMatch($$0x -> $$0x.a() == aqp.c)) {
+                  apr $$5 = $$0.a($$4);
+                  if ($$5 == null) {
+                     throw new IllegalStateException();
+                  }
+
+                  CompletableFuture<apu<dun>> $$6 = $$5.b();
+                  $$6.thenAccept($$1x -> this.o.execute(() -> this.m.a(apw.a(() -> {
+                        }, $$4, false))));
+               }
             }
-         } else if (!Strings.isNullOrEmpty($$3)) {
-            ac.warn("resource-pack-hash is deprecated. Please use resource-pack-sha1 instead.");
-            $$6 = $$3;
-         } else {
-            $$6 = "";
+
+            this.n.clear();
          }
 
-         if ($$6.isEmpty()) {
-            ac.warn("You specified a resource pack without providing a sha1 hash. Pack will be updated on the client only if you change the name of the pack.");
-         } else if (!ad.matcher($$6).matches()) {
-            ac.warn("Invalid sha1 for resource-pack-sha1");
-         }
-
-         xp $$9 = c($$5);
-         UUID $$10;
-         if ($$0.isEmpty()) {
-            $$10 = UUID.nameUUIDFromBytes($$1.getBytes(StandardCharsets.UTF_8));
-            ac.warn("resource-pack-id missing, using default of {}", $$10);
-         } else {
-            try {
-               $$10 = UUID.fromString($$0);
-            } catch (IllegalArgumentException var10) {
-               ac.warn("Failed to parse '{}' into UUID", $$0);
-               return Optional.empty();
-            }
-         }
-
-         return Optional.of(new MinecraftServer.b($$10, $$1, $$6, $$4, $$9));
+         return $$2;
       }
    }
 
-   private static dbo b(String $$0, String $$1) {
-      List<String> $$2 = ae.splitToList($$0);
-      List<String> $$3 = ae.splitToList($$1);
-      return new dbo($$2, $$3);
+   void a(long $$0, aqo<?> $$1) {
+      ayw<aqo<?>> $$2 = this.g($$0);
+      int $$3 = a($$2);
+      aqo<?> $$4 = $$2.a($$1);
+      $$4.a(this.p);
+      if ($$1.b() < $$3) {
+         this.f.b($$0, $$1.b(), true);
+      }
    }
 
-   public dyr a(jw $$0) {
-      return this.af.a($$0);
+   void b(long $$0, aqo<?> $$1) {
+      ayw<aqo<?>> $$2 = this.g($$0);
+      if ($$2.remove($$1)) {
+      }
+
+      if ($$2.isEmpty()) {
+         this.e.remove($$0);
+      }
+
+      this.f.b($$0, a($$2), false);
    }
 
-   static record a(JsonObject a, String b) {
-      private static final Map<String, ale<eib>> c = Map.of("default", eic.a, "largebiomes", eic.c);
+   public <T> void a(aqp<T> $$0, dbk $$1, int $$2, T $$3) {
+      this.a($$1.a(), new aqo<>($$0, $$2, $$3));
+   }
 
-      public dyr a(jw $$0) {
-         jv<eib> $$1 = $$0.d(lq.aQ);
-         ji.c<eib> $$2 = $$1.b(eic.a)
-            .or(() -> $$1.h().findAny())
-            .orElseThrow(() -> new IllegalStateException("Invalid datapack contents: can't find default preset"));
-         ji<eib> $$3 = Optional.ofNullable(alf.a(this.b))
-            .map($$0x -> ale.a(lq.aQ, $$0x))
-            .or(() -> Optional.ofNullable(c.get(this.b)))
-            .flatMap($$1::b)
-            .orElseGet(() -> {
-               aqc.ac.warn("Failed to parse level-type {}, defaulting to {}", this.b, $$2.h().a());
-               return $$2;
-            });
-         dyr $$4 = $$3.a().a();
-         if ($$3.a(eic.b)) {
-            ald<JsonElement> $$5 = $$0.a(JsonOps.INSTANCE);
-            Optional<egp> $$6 = egp.a.parse(new Dynamic($$5, this.a())).resultOrPartial(aqc.ac::error);
-            if ($$6.isPresent()) {
-               return $$4.a($$0, new dxr($$6.get()));
+   public <T> void b(aqp<T> $$0, dbk $$1, int $$2, T $$3) {
+      aqo<T> $$4 = new aqo<>($$0, $$2, $$3);
+      this.b($$1.a(), $$4);
+   }
+
+   public <T> void c(aqp<T> $$0, dbk $$1, int $$2, T $$3) {
+      aqo<T> $$4 = new aqo<>($$0, aps.a(aqd.b) - $$2, $$3);
+      long $$5 = $$1.a();
+      this.a($$5, $$4);
+      this.h.a($$5, $$4);
+   }
+
+   public <T> void d(aqp<T> $$0, dbk $$1, int $$2, T $$3) {
+      aqo<T> $$4 = new aqo<>($$0, aps.a(aqd.b) - $$2, $$3);
+      long $$5 = $$1.a();
+      this.b($$5, $$4);
+      this.h.b($$5, $$4);
+   }
+
+   private ayw<aqo<?>> g(long $$0) {
+      return (ayw<aqo<?>>)this.e.computeIfAbsent($$0, $$0x -> ayw.a(4));
+   }
+
+   protected void a(dbk $$0, boolean $$1) {
+      aqo<dbk> $$2 = new aqo<>(aqp.d, apt.c, $$0);
+      long $$3 = $$0.a();
+      if ($$1) {
+         this.a($$3, $$2);
+         this.h.a($$3, $$2);
+      } else {
+         this.b($$3, $$2);
+         this.h.b($$3, $$2);
+      }
+   }
+
+   public void a(kc $$0, aql $$1) {
+      dbk $$2 = $$0.r();
+      long $$3 = $$2.a();
+      ((ObjectSet)this.d.computeIfAbsent($$3, $$0x -> new ObjectOpenHashSet())).add($$1);
+      this.g.b($$3, 0, true);
+      this.i.b($$3, 0, true);
+      this.h.a(aqp.c, $$2, this.g(), $$2);
+   }
+
+   public void b(kc $$0, aql $$1) {
+      dbk $$2 = $$0.r();
+      long $$3 = $$2.a();
+      ObjectSet<aql> $$4 = (ObjectSet<aql>)this.d.get($$3);
+      $$4.remove($$1);
+      if ($$4.isEmpty()) {
+         this.d.remove($$3);
+         this.g.b($$3, Integer.MAX_VALUE, false);
+         this.i.b($$3, Integer.MAX_VALUE, false);
+         this.h.b(aqp.c, $$2, this.g(), $$2);
+      }
+   }
+
+   private int g() {
+      return Math.max(0, aps.a(aqd.d) - this.q);
+   }
+
+   public boolean c(long $$0) {
+      return aps.c(this.h.c($$0));
+   }
+
+   public boolean d(long $$0) {
+      return aps.d(this.h.c($$0));
+   }
+
+   protected String e(long $$0) {
+      ayw<aqo<?>> $$1 = (ayw<aqo<?>>)this.e.get($$0);
+      return $$1 != null && !$$1.isEmpty() ? $$1.b().toString() : "no_ticket";
+   }
+
+   protected void a(int $$0) {
+      this.i.a($$0);
+   }
+
+   public void b(int $$0) {
+      if ($$0 != this.q) {
+         this.q = $$0;
+         this.h.a(this.g());
+      }
+   }
+
+   public int b() {
+      this.g.a();
+      return this.g.a.size();
+   }
+
+   public boolean f(long $$0) {
+      this.g.a();
+      return this.g.a.containsKey($$0);
+   }
+
+   public String c() {
+      return this.k.b();
+   }
+
+   private void a(String $$0) {
+      try (FileOutputStream $$1 = new FileOutputStream(new File($$0))) {
+         ObjectIterator var3 = this.e.long2ObjectEntrySet().iterator();
+
+         while (var3.hasNext()) {
+            Entry<ayw<aqo<?>>> $$2 = (Entry<ayw<aqo<?>>>)var3.next();
+            dbk $$3 = new dbk($$2.getLongKey());
+
+            for (aqo<?> $$4 : (ayw)$$2.getValue()) {
+               $$1.write(($$3.e + "\t" + $$3.f + "\t" + $$4.a() + "\t" + $$4.b() + "\t\n").getBytes(StandardCharsets.UTF_8));
+            }
+         }
+      } catch (IOException var10) {
+         a.error("Failed to dump tickets to {}", $$0, var10);
+      }
+   }
+
+   @VisibleForTesting
+   aqq d() {
+      return this.h;
+   }
+
+   public void e() {
+      ImmutableSet<aqp<?>> $$0 = ImmutableSet.of(aqp.h, aqp.g, aqp.e);
+      ObjectIterator<Entry<ayw<aqo<?>>>> $$1 = this.e.long2ObjectEntrySet().fastIterator();
+
+      while ($$1.hasNext()) {
+         Entry<ayw<aqo<?>>> $$2 = (Entry<ayw<aqo<?>>>)$$1.next();
+         Iterator<aqo<?>> $$3 = ((ayw)$$2.getValue()).iterator();
+         boolean $$4 = false;
+
+         while ($$3.hasNext()) {
+            aqo<?> $$5 = $$3.next();
+            if (!$$0.contains($$5.a())) {
+               $$3.remove();
+               $$4 = true;
+               this.h.b($$2.getLongKey(), $$5);
             }
          }
 
-         return $$4;
+         if ($$4) {
+            this.f.b($$2.getLongKey(), a((ayw<aqo<?>>)$$2.getValue()), false);
+         }
+
+         if (((ayw)$$2.getValue()).isEmpty()) {
+            $$1.remove();
+         }
+      }
+   }
+
+   public boolean f() {
+      return !this.e.isEmpty();
+   }
+
+   class a extends apx {
+      private static final int b = aps.a + 1;
+
+      public a() {
+         super(b + 1, 16, 256);
+      }
+
+      @Override
+      protected int b(long $$0) {
+         ayw<aqo<?>> $$1 = (ayw<aqo<?>>)aqc.this.e.get($$0);
+         if ($$1 == null) {
+            return Integer.MAX_VALUE;
+         } else {
+            return $$1.isEmpty() ? Integer.MAX_VALUE : $$1.b().b();
+         }
+      }
+
+      @Override
+      protected int c(long $$0) {
+         if (!aqc.this.a($$0)) {
+            apr $$1 = aqc.this.b($$0);
+            if ($$1 != null) {
+               return $$1.l();
+            }
+         }
+
+         return b;
+      }
+
+      @Override
+      protected void a(long $$0, int $$1) {
+         apr $$2 = aqc.this.b($$0);
+         int $$3 = $$2 == null ? b : $$2.l();
+         if ($$3 != $$1) {
+            $$2 = aqc.this.a($$0, $$1, $$2, $$3);
+            if ($$2 != null) {
+               aqc.this.j.add($$2);
+            }
+         }
+      }
+
+      public int a(int $$0) {
+         return this.b($$0);
+      }
+   }
+
+   class b extends apx {
+      protected final Long2ByteMap a = new Long2ByteOpenHashMap();
+      protected final int b;
+
+      protected b(final int $$0) {
+         super($$0 + 2, 16, 256);
+         this.b = $$0;
+         this.a.defaultReturnValue((byte)($$0 + 2));
+      }
+
+      @Override
+      protected int c(long $$0) {
+         return this.a.get($$0);
+      }
+
+      @Override
+      protected void a(long $$0, int $$1) {
+         byte $$2;
+         if ($$1 > this.b) {
+            $$2 = this.a.remove($$0);
+         } else {
+            $$2 = this.a.put($$0, (byte)$$1);
+         }
+
+         this.a($$0, $$2, $$1);
+      }
+
+      protected void a(long $$0, int $$1, int $$2) {
+      }
+
+      @Override
+      protected int b(long $$0) {
+         return this.d($$0) ? 0 : Integer.MAX_VALUE;
+      }
+
+      private boolean d(long $$0) {
+         ObjectSet<aql> $$1 = (ObjectSet<aql>)aqc.this.d.get($$0);
+         return $$1 != null && !$$1.isEmpty();
+      }
+
+      public void a() {
+         this.b(Integer.MAX_VALUE);
+      }
+
+      private void a(String $$0) {
+         try (FileOutputStream $$1 = new FileOutputStream(new File($$0))) {
+            ObjectIterator var3 = this.a.long2ByteEntrySet().iterator();
+
+            while (var3.hasNext()) {
+               it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry $$2 = (it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry)var3.next();
+               dbk $$3 = new dbk($$2.getLongKey());
+               String $$4 = Byte.toString($$2.getByteValue());
+               $$1.write(($$3.e + "\t" + $$3.f + "\t" + $$4 + "\n").getBytes(StandardCharsets.UTF_8));
+            }
+         } catch (IOException var9) {
+            aqc.a.error("Failed to dump chunks to {}", $$0, var9);
+         }
+      }
+   }
+
+   class c extends aqc.b {
+      private int g;
+      private final Long2IntMap h = Long2IntMaps.synchronize(new Long2IntOpenHashMap());
+      private final LongSet i = new LongOpenHashSet();
+
+      protected c(final int $$0) {
+         super($$0);
+         this.g = 0;
+         this.h.defaultReturnValue($$0 + 2);
+      }
+
+      @Override
+      protected void a(long $$0, int $$1, int $$2) {
+         this.i.add($$0);
+      }
+
+      public void a(int $$0) {
+         ObjectIterator var2 = this.a.long2ByteEntrySet().iterator();
+
+         while (var2.hasNext()) {
+            it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry $$1 = (it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry)var2.next();
+            byte $$2 = $$1.getByteValue();
+            long $$3 = $$1.getLongKey();
+            this.a($$3, $$2, this.c($$2), $$2 <= $$0);
+         }
+
+         this.g = $$0;
+      }
+
+      private void a(long $$0, int $$1, boolean $$2, boolean $$3) {
+         if ($$2 != $$3) {
+            aqo<?> $$4 = new aqo<>(aqp.c, aqc.b, new dbk($$0));
+            if ($$3) {
+               aqc.this.l.a(apw.a(() -> aqc.this.o.execute(() -> {
+                     if (this.c(this.c($$0))) {
+                        aqc.this.a($$0, $$4);
+                        aqc.this.n.add($$0);
+                     } else {
+                        aqc.this.m.a(apw.a(() -> {
+                        }, $$0, false));
+                     }
+                  }), $$0, () -> $$1));
+            } else {
+               aqc.this.m.a(apw.a(() -> aqc.this.o.execute(() -> aqc.this.b($$0, $$4)), $$0, true));
+            }
+         }
+      }
+
+      @Override
+      public void a() {
+         super.a();
+         if (!this.i.isEmpty()) {
+            LongIterator $$0 = this.i.iterator();
+
+            while ($$0.hasNext()) {
+               long $$1 = $$0.nextLong();
+               int $$2 = this.h.get($$1);
+               int $$3 = this.c($$1);
+               if ($$2 != $$3) {
+                  aqc.this.k.onLevelChange(new dbk($$1), () -> this.h.get($$1), $$3, $$1x -> {
+                     if ($$1x >= this.h.defaultReturnValue()) {
+                        this.h.remove($$1);
+                     } else {
+                        this.h.put($$1, $$1x);
+                     }
+                  });
+                  this.a($$1, $$3, this.c($$2), this.c($$3));
+               }
+            }
+
+            this.i.clear();
+         }
+      }
+
+      private boolean c(int $$0) {
+         return $$0 <= this.g;
       }
    }
 }

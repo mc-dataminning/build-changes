@@ -1,66 +1,155 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import org.joml.Matrix4f;
+import it.unimi.dsi.fastutil.ints.IntArrayFIFOQueue;
+import it.unimi.dsi.fastutil.ints.IntPriorityQueue;
+import java.util.BitSet;
+import java.util.EnumSet;
+import java.util.Set;
 
 public class ggy {
-   private static final int a = ayj.b.a(255, 255, 100, 255);
-   private static final int b = ayj.b.a(255, 100, 255, 255);
-   private static final int c = ayj.b.a(255, 0, 255, 0);
-   private static final int d = ayj.b.a(255, 255, 165, 0);
-   private static final int e = ayj.b.a(255, 255, 0, 0);
-   private static final int f = 20;
-   private static final float g = (float) (Math.PI / 10);
-   private final ffh h;
-   private final Map<Integer, aaw.a> i = new HashMap<>();
+   private static final int a = 4;
+   private static final int b = 16;
+   private static final int c = 15;
+   private static final int d = 4096;
+   private static final int e = 0;
+   private static final int f = 4;
+   private static final int g = 8;
+   private static final int h = (int)Math.pow(16.0, 0.0);
+   private static final int i = (int)Math.pow(16.0, 1.0);
+   private static final int j = (int)Math.pow(16.0, 2.0);
+   private static final int k = -1;
+   private static final jf[] l = jf.values();
+   private final BitSet m = new BitSet(4096);
+   private static final int[] n = ac.a(new int[1352], $$0 -> {
+      int $$1 = 0;
+      int $$2 = 15;
+      int $$3 = 0;
 
-   public ggy(ffh $$0) {
-      this.h = $$0;
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            for (int $$6 = 0; $$6 < 16; $$6++) {
+               if ($$4 == 0 || $$4 == 15 || $$5 == 0 || $$5 == 15 || $$6 == 0 || $$6 == 15) {
+                  $$0[$$3++] = a($$4, $$5, $$6);
+               }
+            }
+         }
+      }
+   });
+   private int o = 4096;
+
+   public void a(ja $$0) {
+      this.m.set(b($$0), true);
+      this.o--;
    }
 
-   public void a(faa $$0, gdq $$1, double $$2, double $$3, double $$4) {
-      gcs $$5 = this.h.s;
-      $$5.dP().a(btc.m, $$5.cK().g(100.0), $$0x -> true).forEach($$6 -> {
-         Optional<aaw.a> $$7 = Optional.ofNullable(this.i.get($$6.al()));
-         $$7.map(aaw.a::d).map($$1xx -> $$5.dP().a($$1xx)).map($$0xx -> $$0xx.l(this.h.at())).ifPresent($$6x -> {
-            a($$0, $$1, $$2, $$3, $$4, $$6.dn(), $$6x, b);
-            evt $$7x = $$6x.b(0.0, 0.01F, 0.0);
-            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(gdy.a(2.0)), $$7x, 4.0F, c);
-            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(gdy.a(2.0)), $$7x, 8.0F, d);
-            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(gdy.a(2.0)), $$7x, 20.0F, e);
-         });
-         $$7.map(aaw.a::e).ifPresent($$6x -> {
-            a($$0, $$1, $$2, $$3, $$4, $$6.dn(), $$6x.b(), a);
-            ghc.a($$0, $$1, evo.a(evt.a($$6x)).d(-$$2, -$$3, -$$4), 1.0F, 0.0F, 0.0F, 1.0F);
-         });
-      });
+   private static int b(ja $$0) {
+      return a($$0.u() & 15, $$0.v() & 15, $$0.w() & 15);
    }
 
-   private static void a(faa $$0, gdq $$1, double $$2, double $$3, double $$4, evt $$5, evt $$6, int $$7) {
-      fae $$8 = $$1.getBuffer(gdy.a(2.0));
-      $$8.a($$0.c(), (float)($$5.c - $$2), (float)($$5.d - $$3), (float)($$5.e - $$4)).a($$7).e();
-      $$8.a($$0.c(), (float)($$6.c - $$2), (float)($$6.d - $$3), (float)($$6.e - $$4)).a($$7).e();
+   private static int a(int $$0, int $$1, int $$2) {
+      return $$0 << 0 | $$1 << 8 | $$2 << 4;
    }
 
-   private static void a(Matrix4f $$0, double $$1, double $$2, double $$3, fae $$4, evt $$5, float $$6, int $$7) {
-      for (int $$8 = 0; $$8 < 20; $$8++) {
-         a($$8, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public ggz a() {
+      ggz $$0 = new ggz();
+      if (4096 - this.o < 256) {
+         $$0.a(true);
+      } else if (this.o == 0) {
+         $$0.a(false);
+      } else {
+         for (int $$1 : n) {
+            if (!this.m.get($$1)) {
+               $$0.a(this.a($$1));
+            }
+         }
       }
 
-      a(0, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      return $$0;
    }
 
-   private static void a(int $$0, Matrix4f $$1, double $$2, double $$3, double $$4, fae $$5, evt $$6, float $$7, int $$8) {
-      float $$9 = (float)$$0 * (float) (Math.PI / 10);
-      evt $$10 = $$6.b((double)$$7 * Math.cos((double)$$9), 0.0, (double)$$7 * Math.sin((double)$$9));
-      $$5.a($$1, (float)($$10.c - $$2), (float)($$10.d - $$3), (float)($$10.e - $$4)).a($$8).e();
+   private Set<jf> a(int $$0) {
+      Set<jf> $$1 = EnumSet.noneOf(jf.class);
+      IntPriorityQueue $$2 = new IntArrayFIFOQueue();
+      $$2.enqueue($$0);
+      this.m.set($$0, true);
+
+      while (!$$2.isEmpty()) {
+         int $$3 = $$2.dequeueInt();
+         this.a($$3, $$1);
+
+         for (jf $$4 : l) {
+            int $$5 = this.a($$3, $$4);
+            if ($$5 >= 0 && !this.m.get($$5)) {
+               this.m.set($$5, true);
+               $$2.enqueue($$5);
+            }
+         }
+      }
+
+      return $$1;
    }
 
-   public void a() {
-      this.i.clear();
+   private void a(int $$0, Set<jf> $$1) {
+      int $$2 = $$0 >> 0 & 15;
+      if ($$2 == 0) {
+         $$1.add(jf.e);
+      } else if ($$2 == 15) {
+         $$1.add(jf.f);
+      }
+
+      int $$3 = $$0 >> 8 & 15;
+      if ($$3 == 0) {
+         $$1.add(jf.a);
+      } else if ($$3 == 15) {
+         $$1.add(jf.b);
+      }
+
+      int $$4 = $$0 >> 4 & 15;
+      if ($$4 == 0) {
+         $$1.add(jf.c);
+      } else if ($$4 == 15) {
+         $$1.add(jf.d);
+      }
    }
 
-   public void a(aaw.a $$0) {
-      this.i.put($$0.c(), $$0);
+   private int a(int $$0, jf $$1) {
+      switch ($$1) {
+         case a:
+            if (($$0 >> 8 & 15) == 0) {
+               return -1;
+            }
+
+            return $$0 - j;
+         case b:
+            if (($$0 >> 8 & 15) == 15) {
+               return -1;
+            }
+
+            return $$0 + j;
+         case c:
+            if (($$0 >> 4 & 15) == 0) {
+               return -1;
+            }
+
+            return $$0 - i;
+         case d:
+            if (($$0 >> 4 & 15) == 15) {
+               return -1;
+            }
+
+            return $$0 + i;
+         case e:
+            if (($$0 >> 0 & 15) == 0) {
+               return -1;
+            }
+
+            return $$0 - h;
+         case f:
+            if (($$0 >> 0 & 15) == 15) {
+               return -1;
+            }
+
+            return $$0 + h;
+         default:
+            return -1;
+      }
    }
 }

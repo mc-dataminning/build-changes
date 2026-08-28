@@ -1,54 +1,38 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import com.google.common.collect.Sets;
+import java.util.Arrays;
+import java.util.Set;
 
-public enum jg implements azu {
-   a("down_east", je.a, je.f),
-   b("down_north", je.a, je.c),
-   c("down_south", je.a, je.d),
-   d("down_west", je.a, je.e),
-   e("up_east", je.b, je.f),
-   f("up_north", je.b, je.c),
-   g("up_south", je.b, je.d),
-   h("up_west", je.b, je.e),
-   i("west_up", je.e, je.b),
-   j("east_up", je.f, je.b),
-   k("north_up", je.c, je.b),
-   l("south_up", je.d, je.b);
+public enum jg {
+   a(jf.c),
+   b(jf.c, jf.f),
+   c(jf.f),
+   d(jf.d, jf.f),
+   e(jf.d),
+   f(jf.d, jf.e),
+   g(jf.e),
+   h(jf.c, jf.e);
 
-   private static final Int2ObjectMap<jg> m = ac.a(new Int2ObjectOpenHashMap(values().length), $$0 -> {
-      for (jg $$1 : values()) {
-         $$0.put(b($$1.p, $$1.o), $$1);
+   private final Set<jf> i;
+   private final ke j;
+
+   private jg(final jf... $$0) {
+      this.i = Sets.immutableEnumSet(Arrays.asList($$0));
+      this.j = new ke(0, 0, 0);
+
+      for (jf $$1 : $$0) {
+         this.j.u(this.j.u() + $$1.j()).t(this.j.v() + $$1.k()).s(this.j.w() + $$1.l());
       }
-   });
-   private final String n;
-   private final je o;
-   private final je p;
-
-   private static int b(je $$0, je $$1) {
-      return $$1.ordinal() << 3 | $$0.ordinal();
    }
 
-   private jg(final String $$0, final je $$1, final je $$2) {
-      this.n = $$0;
-      this.p = $$1;
-      this.o = $$2;
+   public Set<jf> a() {
+      return this.i;
    }
 
-   @Override
-   public String c() {
-      return this.n;
+   public int b() {
+      return this.j.u();
    }
 
-   public static jg a(je $$0, je $$1) {
-      int $$2 = b($$0, $$1);
-      return (jg)m.get($$2);
-   }
-
-   public je a() {
-      return this.p;
-   }
-
-   public je b() {
-      return this.o;
+   public int c() {
+      return this.j.w();
    }
 }

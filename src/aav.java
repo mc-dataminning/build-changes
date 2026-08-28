@@ -1,21 +1,16 @@
-public record aav(String c) implements aax {
-   public static final zn<wm, aav> a = aax.a(aav::a, aav::new);
-   public static final aax.b<aav> b = aax.a("brand");
-
-   private aav(wm $$0) {
-      this($$0.p());
-   }
-
-   private void a(wm $$0) {
-      $$0.a(this.c);
-   }
-
+public interface aav extends zh {
    @Override
-   public aax.b<aav> a() {
-      return b;
+   default vq b() {
+      return vq.e;
    }
 
-   public String b() {
-      return this.c;
-   }
+   void a(aaw var1);
+
+   void a(aax var1);
+
+   void a(aba var1);
+
+   void a(aaz var1);
+
+   void a(aay var1);
 }

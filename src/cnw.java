@@ -1,51 +1,65 @@
-public class cnw extends cny {
-   public cnw(btc<? extends cnw> $$0, dca $$1) {
-      super($$0, $$1);
+public class cnw {
+   public static final cnw a = a("core");
+   public static final cnw b = a("idle");
+   public static final cnw c = a("work");
+   public static final cnw d = a("play");
+   public static final cnw e = a("rest");
+   public static final cnw f = a("meet");
+   public static final cnw g = a("panic");
+   public static final cnw h = a("raid");
+   public static final cnw i = a("pre_raid");
+   public static final cnw j = a("hide");
+   public static final cnw k = a("fight");
+   public static final cnw l = a("celebrate");
+   public static final cnw m = a("admire_item");
+   public static final cnw n = a("avoid");
+   public static final cnw o = a("ride");
+   public static final cnw p = a("play_dead");
+   public static final cnw q = a("long_jump");
+   public static final cnw r = a("ram");
+   public static final cnw s = a("tongue");
+   public static final cnw t = a("swim");
+   public static final cnw u = a("lay_spawn");
+   public static final cnw v = a("sniff");
+   public static final cnw w = a("investigate");
+   public static final cnw x = a("roar");
+   public static final cnw y = a("emerge");
+   public static final cnw z = a("dig");
+   private final String A;
+   private final int B;
+
+   private cnw(String $$0) {
+      this.A = $$0;
+      this.B = $$0.hashCode();
    }
 
-   public cnw(dca $$0, btr $$1) {
-      super(btc.aT, $$1, $$0);
+   public String a() {
+      return this.A;
    }
 
-   public cnw(dca $$0, double $$1, double $$2, double $$3) {
-      super(btc.aT, $$1, $$2, $$3, $$0);
+   private static cnw a(String $$0) {
+      return jw.a(lq.C, $$0, new cnw($$0));
    }
 
    @Override
-   protected cum u() {
-      return cuu.qC;
-   }
-
-   private lg v() {
-      cur $$0 = this.p();
-      return (lg)(!$$0.e() && !$$0.a(this.u()) ? new le(li.S, $$0) : li.W);
-   }
-
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 3) {
-         lg $$1 = this.v();
-
-         for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dP().a($$1, this.du(), this.dw(), this.dA(), 0.0, 0.0, 0.0);
-         }
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         cnw $$1 = (cnw)$$0;
+         return this.A.equals($$1.A);
+      } else {
+         return false;
       }
    }
 
    @Override
-   protected void a(evq $$0) {
-      super.a($$0);
-      bsw $$1 = $$0.a();
-      int $$2 = $$1 instanceof cjo ? 3 : 0;
-      $$1.a(this.dQ().b(this, this.s()), (float)$$2);
+   public int hashCode() {
+      return this.B;
    }
 
    @Override
-   protected void a(evr $$0) {
-      super.a($$0);
-      if (!this.dP().B) {
-         this.dP().a(this, (byte)3);
-         this.ao();
-      }
+   public String toString() {
+      return this.a();
    }
 }

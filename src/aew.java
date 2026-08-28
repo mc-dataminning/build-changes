@@ -1,36 +1,45 @@
-public record aew(agr e, byte f) implements zw<aci> {
-   public static final zn<xa, aew> a = zw.a(aew::a, aew::new);
-   public static final byte b = 1;
-   public static final byte c = 2;
-   public static final byte d = 3;
+public class aew implements zb<abn> {
+   public static final ys<vr, aew> a = zb.a(aew::a, aew::new);
+   private final float b;
+   private final int c;
+   private final int d;
 
-   private aew(xa $$0) {
-      this(new agr($$0), $$0.readByte());
+   public aew(float $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private void a(xa $$0) {
-      this.e.a($$0);
-      $$0.k(this.f);
+   private aew(vr $$0) {
+      this.b = $$0.readFloat();
+      this.d = $$0.l();
+      this.c = $$0.l();
+   }
+
+   private void a(vr $$0) {
+      $$0.a(this.b);
+      $$0.c(this.d);
+      $$0.c(this.c);
    }
 
    @Override
-   public zy<aew> a() {
-      return agu.al;
+   public zd<aew> a() {
+      return afz.aG;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
    }
 
-   public boolean a(byte $$0) {
-      return (this.f & $$0) != 0;
+   public float b() {
+      return this.b;
    }
 
-   public agr b() {
-      return this.e;
+   public int e() {
+      return this.c;
    }
 
-   public byte e() {
-      return this.f;
+   public int f() {
+      return this.d;
    }
 }

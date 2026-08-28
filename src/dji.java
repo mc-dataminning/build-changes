@@ -1,76 +1,96 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dji extends dfb implements dmc {
+public class dji extends der {
    public static final MapCodec<dji> a = b(dji::new);
-   public static final dsv b = dsu.j;
-   public static final dsv c = dsu.C;
-   protected static final ewm d = ewj.a(dfb.a(5.0, 0.0, 5.0, 11.0, 7.0, 11.0), dfb.a(6.0, 7.0, 6.0, 10.0, 9.0, 10.0));
-   protected static final ewm e = ewj.a(dfb.a(5.0, 1.0, 5.0, 11.0, 8.0, 11.0), dfb.a(6.0, 8.0, 6.0, 10.0, 10.0, 10.0));
+   public static final dsy b = dsx.n;
 
    @Override
    public MapCodec<dji> a() {
       return a;
    }
 
-   public dji(dsd.d $$0) {
+   protected dji(dsg.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)));
+      this.k(this.E.b().a(b, Boolean.valueOf(false)));
+   }
+
+   @Override
+   public void a(dcd $$0, ja $$1, dsh $$2, @Nullable bsy $$3, cua $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      cwo $$5 = $$4.a(kn.O, cwo.a);
+      if ($$5.a("RecordItem")) {
+         $$0.a($$1, $$2.a(b, Boolean.valueOf(true)), 2);
+      }
+   }
+
+   @Override
+   protected bqd a(dsh $$0, dcd $$1, ja $$2, cmh $$3, evv $$4) {
+      if ($$0.c(b) && $$1.c_($$2) instanceof dqo $$5) {
+         $$5.l();
+         return bqd.a($$1.B);
+      } else {
+         return bqd.e;
+      }
+   }
+
+   @Override
+   protected void a(dsh $$0, dcd $$1, ja $$2, dsh $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if ($$1.c_($$2) instanceof dqo $$5) {
+            $$5.l();
+         }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public dpn a(ja $$0, dsh $$1) {
+      return new dqo($$0, $$1);
+   }
+
+   @Override
+   public boolean e_(dsh $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(dsh $$0, dbj $$1, ja $$2, jf $$3) {
+      if ($$1.c_($$2) instanceof dqo $$4 && $$4.j()) {
+         return 15;
+      }
+
+      return 0;
+   }
+
+   @Override
+   protected boolean c_(dsh $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dsh $$0, dcd $$1, ja $$2) {
+      if ($$1.c_($$2) instanceof dqo $$3 && $$3.f().g() instanceof cuv $$4) {
+         return $$4.h();
+      }
+
+      return 0;
+   }
+
+   @Override
+   protected dll a_(dsh $$0) {
+      return dll.c;
+   }
+
+   @Override
+   protected void a(dsi.a<dff, dsh> $$0) {
+      $$0.a(b);
    }
 
    @Nullable
    @Override
-   public dse a(cyc $$0) {
-      enx $$1 = $$0.q().b_($$0.a());
-
-      for (je $$2 : $$0.f()) {
-         if ($$2.o() == je.a.b) {
-            dse $$3 = this.o().a(b, Boolean.valueOf($$2 == je.b));
-            if ($$3.a((dcd)$$0.q(), $$0.a())) {
-               return $$3.a(c, Boolean.valueOf($$1.a() == eny.c));
-            }
-         }
-      }
-
-      return null;
-   }
-
-   @Override
-   protected ewm a(dse $$0, dbg $$1, iz $$2, evy $$3) {
-      return $$0.c(b) ? e : d;
-   }
-
-   @Override
-   protected void a(dsf.a<dfb, dse> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected boolean a(dse $$0, dcd $$1, iz $$2) {
-      je $$3 = m($$0).g();
-      return dfb.a($$1, $$2.a($$3), $$3.g());
-   }
-
-   protected static je m(dse $$0) {
-      return $$0.c(b) ? je.a : je.b;
-   }
-
-   @Override
-   protected dse a(dse $$0, je $$1, dse $$2, dcb $$3, iz $$4, iz $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, eny.c, eny.c.a($$3));
-      }
-
-      return m($$0).g() == $$1 && !$$0.a($$3, $$4) ? dfd.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected enx b_(dse $$0) {
-      return $$0.c(c) ? eny.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean a(dse $$0, eom $$1) {
-      return false;
+   public <T extends dpn> dpo<T> a(dcd $$0, dsh $$1, dpp<T> $$2) {
+      return $$1.c(b) ? a($$2, dpp.e, dqo::a) : null;
    }
 }

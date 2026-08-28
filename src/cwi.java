@@ -1,57 +1,56 @@
-import com.google.common.base.Suppliers;
-import java.util.function.Supplier;
+import java.util.Optional;
 
-public enum cwi implements cwg {
-   a(awp.bN, 59, 2.0F, 0.0F, 15, () -> cyu.a(awy.b)),
-   b(awp.bL, 131, 4.0F, 1.0F, 5, () -> cyu.a(awy.aY)),
-   c(awp.bK, 250, 6.0F, 2.0F, 14, () -> cyu.a(cuu.oE)),
-   d(awp.bJ, 1561, 8.0F, 3.0F, 10, () -> cyu.a(cuu.oy)),
-   e(awp.bM, 32, 12.0F, 0.0F, 22, () -> cyu.a(cuu.oI)),
-   f(awp.bI, 2031, 9.0F, 4.0F, 15, () -> cyu.a(cuu.oJ));
+public class cwi {
+   public static final akj<cwh> a = a("sentry");
+   public static final akj<cwh> b = a("dune");
+   public static final akj<cwh> c = a("coast");
+   public static final akj<cwh> d = a("wild");
+   public static final akj<cwh> e = a("ward");
+   public static final akj<cwh> f = a("eye");
+   public static final akj<cwh> g = a("vex");
+   public static final akj<cwh> h = a("tide");
+   public static final akj<cwh> i = a("snout");
+   public static final akj<cwh> j = a("rib");
+   public static final akj<cwh> k = a("spire");
+   public static final akj<cwh> l = a("wayfinder");
+   public static final akj<cwh> m = a("shaper");
+   public static final akj<cwh> n = a("silence");
+   public static final akj<cwh> o = a("raiser");
+   public static final akj<cwh> p = a("host");
+   public static final akj<cwh> q = a("flow");
+   public static final akj<cwh> r = a("bolt");
 
-   private final axf<dfb> g;
-   private final int h;
-   private final float i;
-   private final float j;
-   private final int k;
-   private final Supplier<cyu> l;
-
-   private cwi(final axf<dfb> $$0, final int $$1, final float $$2, final float $$3, final int $$4, final Supplier<cyu> $$5) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.j = $$3;
-      this.k = $$4;
-      this.l = Suppliers.memoize($$5::get);
+   public static void a(qm<cwh> $$0) {
+      a($$0, cud.xw, a);
+      a($$0, cud.xx, b);
+      a($$0, cud.xy, c);
+      a($$0, cud.xz, d);
+      a($$0, cud.xA, e);
+      a($$0, cud.xB, f);
+      a($$0, cud.xC, g);
+      a($$0, cud.xD, h);
+      a($$0, cud.xE, i);
+      a($$0, cud.xF, j);
+      a($$0, cud.xG, k);
+      a($$0, cud.xH, l);
+      a($$0, cud.xI, m);
+      a($$0, cud.xJ, n);
+      a($$0, cud.xK, o);
+      a($$0, cud.xL, p);
+      a($$0, cud.xM, q);
+      a($$0, cud.xN, r);
    }
 
-   @Override
-   public int a() {
-      return this.h;
+   public static Optional<jj.c<cwh>> a(jl.a $$0, cua $$1) {
+      return $$0.b(lr.aW).b().filter($$1x -> $$1.a(((cwh)$$1x.a()).b())).findFirst();
    }
 
-   @Override
-   public float b() {
-      return this.i;
+   public static void a(qm<cwh> $$0, ctv $$1, akj<cwh> $$2) {
+      cwh $$3 = new cwh($$2.a(), lq.g.e($$1), wu.c(ac.a("trim_pattern", $$2.a())), false);
+      $$0.a($$2, $$3);
    }
 
-   @Override
-   public float c() {
-      return this.j;
-   }
-
-   @Override
-   public axf<dfb> d() {
-      return this.g;
-   }
-
-   @Override
-   public int e() {
-      return this.k;
-   }
-
-   @Override
-   public cyu f() {
-      return this.l.get();
+   private static akj<cwh> a(String $$0) {
+      return akj.a(lr.aW, new akk($$0));
    }
 }

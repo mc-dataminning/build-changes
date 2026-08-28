@@ -1,21 +1,24 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import java.util.function.IntFunction;
 
-public class cgw {
-   public static bvl<btr> a() {
-      return byx.a(
-         (Function<byx.b<btr>, ? extends App<byx.c<btr>, bza<btr>>>)($$0 -> $$0.group($$0.b(ccv.N), $$0.a(ccv.y)).apply($$0, ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                  int $$6 = $$0.<Integer>b($$1);
-                  if ($$6 <= 0) {
-                     $$1.b();
-                     $$2.b();
-                     $$4.dS().f();
-                  } else {
-                     $$1.a($$6 - 1);
-                  }
+public enum cgw {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4);
 
-                  return true;
-               }))
-      );
+   private static final IntFunction<cgw> f = awu.a(cgw::a, values(), awu.a.b);
+   private final int g;
+
+   private cgw(final int $$0) {
+      this.g = $$0;
+   }
+
+   public int a() {
+      return this.g;
+   }
+
+   public static cgw a(int $$0) {
+      return f.apply($$0);
    }
 }

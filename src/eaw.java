@@ -1,111 +1,67 @@
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
 
-public class eaw {
-   protected static double a(double $$0, double $$1, double $$2, double $$3) {
-      if ($$0 < $$3) {
-         $$0 = $$3;
-      }
+public class eaw extends ebe<ede> {
+   private static final ImmutableList<dff> a = ImmutableList.of(dfh.F, dfh.fn, dfh.fo, dfh.fp, dfh.fq, dfh.cv, dfh.ct);
+   private static final jf[] b = jf.values();
+   private static final double c = 0.9;
 
-      double $$4 = 0.384;
-      double $$5 = $$0 / $$1 * 0.384;
-      double $$6 = 0.75 * Math.pow($$5, 1.3333333333333333);
-      double $$7 = Math.pow($$5, 0.6666666666666666);
-      double $$8 = 0.3333333333333333 * Math.log($$5);
-      double $$9 = $$2 * ($$6 - $$7 - $$8);
-      $$9 = Math.max($$9, 0.0);
-      return $$9 / 0.384 * $$1;
+   public eaw(Codec<ede> $$0) {
+      super($$0);
    }
 
-   protected static boolean a(dcv $$0, iz $$1, int $$2) {
-      if (b($$0, $$1)) {
+   @Override
+   public boolean a(ebg<ede> $$0) {
+      boolean $$1 = false;
+      aym $$2 = $$0.d();
+      dcz $$3 = $$0.b();
+      ede $$4 = $$0.f();
+      ja $$5 = $$0.e();
+      boolean $$6 = $$2.j() < 0.9;
+      int $$7 = $$6 ? $$4.d().a($$2) : 0;
+      int $$8 = $$6 ? $$4.d().a($$2) : 0;
+      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
+      int $$10 = $$4.c().a($$2);
+      int $$11 = $$4.c().a($$2);
+      int $$12 = Math.max($$10, $$11);
+
+      for (ja $$13 : ja.a($$5, $$10, 0, $$11)) {
+         if ($$13.k($$5) > $$12) {
+            break;
+         }
+
+         if (a($$3, $$13, $$4)) {
+            if ($$9) {
+               $$1 = true;
+               this.a($$3, $$13, $$4.b());
+            }
+
+            ja $$14 = $$13.b($$7, 0, $$8);
+            if (a($$3, $$14, $$4)) {
+               $$1 = true;
+               this.a($$3, $$14, $$4.a());
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   private static boolean a(dce $$0, ja $$1, ede $$2) {
+      dsh $$3 = $$0.a_($$1);
+      if ($$3.a($$2.a().b())) {
+         return false;
+      } else if (a.contains($$3.b())) {
          return false;
       } else {
-         float $$3 = 6.0F;
-         float $$4 = 6.0F / (float)$$2;
-
-         for (float $$5 = 0.0F; $$5 < (float) (Math.PI * 2); $$5 += $$4) {
-            int $$6 = (int)(ayz.b($$5) * (float)$$2);
-            int $$7 = (int)(ayz.a($$5) * (float)$$2);
-            if (b($$0, $$1.b($$6, 0, $$7))) {
+         for (jf $$4 : b) {
+            boolean $$5 = $$0.a_($$1.a($$4)).i();
+            if ($$5 && $$4 != jf.b || !$$5 && $$4 == jf.b) {
                return false;
             }
          }
 
          return true;
       }
-   }
-
-   protected static boolean a(dcb $$0, iz $$1) {
-      return $$0.a($$1, eaw::c);
-   }
-
-   protected static boolean b(dcb $$0, iz $$1) {
-      return $$0.a($$1, eaw::e);
-   }
-
-   protected static void a(je $$0, int $$1, boolean $$2, Consumer<dse> $$3) {
-      if ($$1 >= 3) {
-         $$3.accept(a($$0, dtb.e));
-
-         for (int $$4 = 0; $$4 < $$1 - 3; $$4++) {
-            $$3.accept(a($$0, dtb.d));
-         }
-      }
-
-      if ($$1 >= 2) {
-         $$3.accept(a($$0, dtb.c));
-      }
-
-      if ($$1 >= 1) {
-         $$3.accept(a($$0, $$2 ? dtb.a : dtb.b));
-      }
-   }
-
-   protected static void a(dcb $$0, iz $$1, je $$2, int $$3, boolean $$4) {
-      if (b($$0.a_($$1.a($$2.g())))) {
-         iz.a $$5 = $$1.j();
-         a($$2, $$3, $$4, $$3x -> {
-            if ($$3x.a(dfd.st)) {
-               $$3x = $$3x.a(dkt.d, Boolean.valueOf($$0.z($$5)));
-            }
-
-            $$0.a($$5, $$3x, 2);
-            $$5.c($$2);
-         });
-      }
-   }
-
-   protected static boolean c(dcb $$0, iz $$1) {
-      dse $$2 = $$0.a_($$1);
-      if ($$2.a(awp.bs)) {
-         $$0.a($$1, dfd.su.o(), 2);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private static dse a(je $$0, dtb $$1) {
-      return dfd.st.o().a(dkt.b, $$0).a(dkt.c, $$1);
-   }
-
-   public static boolean a(dse $$0) {
-      return b($$0) || $$0.a(dfd.H);
-   }
-
-   public static boolean b(dse $$0) {
-      return $$0.a(dfd.su) || $$0.a(awp.bs);
-   }
-
-   public static boolean c(dse $$0) {
-      return $$0.i() || $$0.a(dfd.G);
-   }
-
-   public static boolean d(dse $$0) {
-      return !$$0.i() && !$$0.a(dfd.G);
-   }
-
-   public static boolean e(dse $$0) {
-      return $$0.i() || $$0.a(dfd.G) || $$0.a(dfd.H);
    }
 }

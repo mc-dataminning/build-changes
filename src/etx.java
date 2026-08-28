@@ -1,47 +1,45 @@
-import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.Set;
 
-public record etx(Optional<bu> b, eqk.b c) implements etu {
+public record etx(Optional<dc> b, ja c) implements etz {
+   private static final MapCodec<ja> g = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.INT.optionalFieldOf("offsetX", 0).forGetter(ke::u),
+               Codec.INT.optionalFieldOf("offsetY", 0).forGetter(ke::v),
+               Codec.INT.optionalFieldOf("offsetZ", 0).forGetter(ke::w)
+            )
+            .apply($$0, ja::new)
+   );
    public static final MapCodec<etx> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bu.a.optionalFieldOf("predicate").forGetter(etx::c), eqk.b.e.fieldOf("entity").forGetter(etx::d)).apply($$0, etx::new)
+      $$0 -> $$0.group(dc.a.optionalFieldOf("predicate").forGetter(etx::c), g.forGetter(etx::d)).apply($$0, etx::new)
    );
 
    @Override
-   public etv b() {
-      return etw.h;
+   public eua b() {
+      return eub.n;
    }
 
-   @Override
-   public Set<etd<?>> a() {
-      return ImmutableSet.of(etg.f, this.c.a());
+   public boolean a(eqo $$0) {
+      evz $$1 = $$0.c(etk.f);
+      return $$1 != null
+         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
    }
 
-   public boolean a(eqk $$0) {
-      bsw $$1 = $$0.c(this.c.a());
-      evt $$2 = $$0.c(etg.f);
-      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
+   public static etz.a a(dc.a $$0) {
+      return () -> new etx(Optional.of($$0.b()), ja.c);
    }
 
-   public static etu.a a(eqk.b $$0) {
-      return a($$0, bu.a.a());
+   public static etz.a a(dc.a $$0, ja $$1) {
+      return () -> new etx(Optional.of($$0.b()), $$1);
    }
 
-   public static etu.a a(eqk.b $$0, bu.a $$1) {
-      return () -> new etx(Optional.of($$1.b()), $$0);
-   }
-
-   public static etu.a a(eqk.b $$0, bu $$1) {
-      return () -> new etx(Optional.of($$1), $$0);
-   }
-
-   public Optional<bu> c() {
+   public Optional<dc> c() {
       return this.b;
    }
 
-   public eqk.b d() {
+   public ja d() {
       return this.c;
    }
 }

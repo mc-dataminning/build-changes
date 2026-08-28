@@ -1,205 +1,138 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.exceptions.AuthenticationException;
-import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
-import com.mojang.authlib.exceptions.ForcedUsernameChangeException;
-import com.mojang.authlib.exceptions.InsufficientPrivilegesException;
-import com.mojang.authlib.exceptions.InvalidCredentialsException;
-import com.mojang.authlib.exceptions.UserBannedException;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.google.common.base.Strings;
+import com.google.gson.JsonParser;
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.minecraft.UserApiService;
+import com.mojang.authlib.minecraft.InsecurePublicKeyException.MissingException;
+import com.mojang.authlib.yggdrasil.response.KeyPairResponse;
+import com.mojang.authlib.yggdrasil.response.KeyPairResponse.KeyPair;
 import com.mojang.logging.LogUtils;
-import java.math.BigInteger;
+import com.mojang.serialization.JsonOps;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.security.PublicKey;
+import java.time.DateTimeException;
 import java.time.Duration;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Consumer;
+import java.time.Instant;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import net.minecraft.client.ClientBrandRetriever;
 import org.slf4j.Logger;
 
-public class fxw implements ajc {
-   private static final Logger a = LogUtils.getLogger();
-   private final ffh b;
-   @Nullable
-   private final fyl c;
-   @Nullable
-   private final fnf d;
-   private final Consumer<xp> e;
-   private final wk f;
-   private final boolean g;
-   @Nullable
-   private final Duration h;
-   @Nullable
-   private String i;
-   private final Map<alf, byte[]> j;
-   private final boolean k;
-   private final AtomicReference<fxw.a> l = new AtomicReference<>(fxw.a.a);
+public class fxw implements fyp {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Duration c = Duration.ofHours(1L);
+   private static final Path d = Path.of("profilekeys");
+   private final UserApiService e;
+   private final Path f;
+   private CompletableFuture<Optional<cmj>> g = CompletableFuture.completedFuture(Optional.empty());
+   private Instant h = Instant.EPOCH;
 
-   public fxw(wk $$0, ffh $$1, @Nullable fyl $$2, @Nullable fnf $$3, boolean $$4, @Nullable Duration $$5, Consumer<xp> $$6, @Nullable fyp $$7) {
-      this.f = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$6;
-      this.g = $$4;
-      this.h = $$5;
-      this.j = $$7 != null ? new HashMap<>($$7.a()) : new HashMap<>();
-      this.k = $$7 != null;
-   }
-
-   private void a(fxw.a $$0) {
-      fxw.a $$1 = this.l.updateAndGet($$1x -> {
-         if (!$$0.f.contains($$1x)) {
-            throw new IllegalStateException("Tried to switch to " + $$0 + " from " + $$1x + ", but expected one of " + $$0.f);
-         } else {
-            return $$0;
-         }
-      });
-      this.e.accept($$1.e);
+   public fxw(UserApiService $$0, UUID $$1, Path $$2) {
+      this.e = $$0;
+      this.f = $$2.resolve(d).resolve($$1 + ".json");
    }
 
    @Override
-   public void a(ajf $$0) {
-      this.a(fxw.a.b);
+   public CompletableFuture<Optional<cmj>> a() {
+      this.h = Instant.now().plus(c);
+      this.g = this.g.thenCompose(this::a);
+      return this.g;
+   }
 
-      Cipher $$4;
-      Cipher $$5;
-      String $$3;
-      ajn $$7;
-      try {
-         SecretKey $$1 = axw.a();
-         PublicKey $$2 = $$0.e();
-         $$3 = new BigInteger(axw.a($$0.b(), $$2, $$1)).toString(16);
-         $$4 = axw.a(2, $$1);
-         $$5 = axw.a(1, $$1);
-         byte[] $$6 = $$0.f();
-         $$7 = new ajn($$1, $$2, $$6);
-      } catch (Exception var9) {
-         throw new IllegalStateException("Protocol error", var9);
-      }
+   @Override
+   public boolean b() {
+      return this.g.isDone() && Instant.now().isAfter(this.h) ? this.g.join().<Boolean>map(cmj::a).orElse(true) : false;
+   }
 
-      if ($$0.g()) {
-         ac.h().submit(() -> {
-            xp $$4x = this.b($$3);
-            if ($$4x != null) {
-               if (this.c == null || !this.c.d()) {
-                  this.f.a($$4x);
-                  return;
-               }
-
-               a.warn($$4x.getString());
+   private CompletableFuture<Optional<cmj>> a(Optional<cmj> $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         if ($$0.isPresent() && !$$0.get().a()) {
+            if (!aa.aX) {
+               this.a(null);
             }
 
-            this.a($$7, $$4, $$5);
-         });
+            return $$0;
+         } else {
+            try {
+               cmj $$1 = this.a(this.e);
+               this.a($$1);
+               return Optional.ofNullable($$1);
+            } catch (axc | MinecraftClientException | IOException var3) {
+               b.error("Failed to retrieve profile key pair", var3);
+               this.a(null);
+               return $$0;
+            }
+         }
+      }, ac.i());
+   }
+
+   private Optional<cmj> c() {
+      if (Files.notExists(this.f)) {
+         return Optional.empty();
       } else {
-         this.a($$7, $$4, $$5);
+         try {
+            Optional var2;
+            try (BufferedReader $$0 = Files.newBufferedReader(this.f)) {
+               var2 = cmj.a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$0)).result();
+            }
+
+            return var2;
+         } catch (Exception var6) {
+            b.error("Failed to read profile key pair file {}", this.f, var6);
+            return Optional.empty();
+         }
       }
    }
 
-   private void a(ajn $$0, Cipher $$1, Cipher $$2) {
-      this.a(fxw.a.c);
-      this.f.a($$0, ww.a(() -> this.f.a($$1, $$2)));
+   private void a(@Nullable cmj $$0) {
+      try {
+         Files.deleteIfExists(this.f);
+      } catch (IOException var3) {
+         b.error("Failed to delete profile key pair file {}", this.f, var3);
+      }
+
+      if ($$0 != null) {
+         if (aa.aX) {
+            cmj.a.encodeStart(JsonOps.INSTANCE, $$0).ifSuccess($$0x -> {
+               try {
+                  Files.createDirectories(this.f.getParent());
+                  Files.writeString(this.f, $$0x.toString());
+               } catch (Exception var3x) {
+                  b.error("Failed to write profile key pair file {}", this.f, var3x);
+               }
+            });
+         }
+      }
    }
 
    @Nullable
-   private xp b(String $$0) {
-      try {
-         this.d().joinServer(this.b.X().b(), this.b.X().d(), $$0);
-         return null;
-      } catch (AuthenticationUnavailableException var3) {
-         return xp.a("disconnect.loginFailedInfo", xp.c("disconnect.loginFailedInfo.serversUnavailable"));
-      } catch (InvalidCredentialsException var4) {
-         return xp.a("disconnect.loginFailedInfo", xp.c("disconnect.loginFailedInfo.invalidSession"));
-      } catch (InsufficientPrivilegesException var5) {
-         return xp.a("disconnect.loginFailedInfo", xp.c("disconnect.loginFailedInfo.insufficientPrivileges"));
-      } catch (ForcedUsernameChangeException | UserBannedException var6) {
-         return xp.a("disconnect.loginFailedInfo", xp.c("disconnect.loginFailedInfo.userBanned"));
-      } catch (AuthenticationException var7) {
-         return xp.a("disconnect.loginFailedInfo", var7.getMessage());
-      }
-   }
-
-   private MinecraftSessionService d() {
-      return this.b.al();
-   }
-
-   @Override
-   public void a(aje $$0) {
-      this.a(fxw.a.d);
-      GameProfile $$1 = $$0.b();
-      this.f
-         .a(abx.b, new fxv(this.b, this.f, new fyb($$1, this.b.u().a(this.g, this.h, this.i), fxz.a().a(), cpp.h, null, this.c, this.d, this.j, null, $$0.e())));
-      this.f.a(ajo.a);
-      this.f.a(abx.a);
-      this.f.a(new aap(new aav(ClientBrandRetriever.getClientModName())));
-      this.f.a(new aao(this.b.m.aw()));
-   }
-
-   @Override
-   public void a(xp $$0) {
-      xp $$1 = this.k ? xo.q : xo.r;
-      if (this.c != null && this.c.e()) {
-         this.b.a(new gve(this.d, $$1, $$0));
+   private cmj a(UserApiService $$0) throws axc, IOException {
+      KeyPairResponse $$1 = $$0.getKeyPair();
+      if ($$1 != null) {
+         cmk.a $$2 = a($$1);
+         return new cmj(axb.a($$1.keyPair().privateKey()), new cmk($$2), Instant.parse($$1.refreshedAfter()));
       } else {
-         this.b.a(new fmg(this.d, $$1, $$0));
+         return null;
       }
    }
 
-   @Override
-   public boolean c() {
-      return this.f.i();
-   }
-
-   @Override
-   public void a(ajh $$0) {
-      this.f.a($$0.b());
-   }
-
-   @Override
-   public void a(ajg $$0) {
-      if (!this.f.e()) {
-         this.f.a($$0.b(), false);
-      }
-   }
-
-   @Override
-   public void a(ajd $$0) {
-      this.e.accept(xp.c("connect.negotiating"));
-      this.f.a(new ajl($$0.b(), null));
-   }
-
-   public void a(@Nullable String $$0) {
-      this.i = $$0;
-   }
-
-   @Override
-   public void a(acd $$0) {
-      this.f.a(new acg($$0.b(), this.j.get($$0.b())));
-   }
-
-   @Override
-   public void a(p $$0) {
-      $$0.a("Server type", () -> this.c != null ? this.c.f().toString() : "<unknown>");
-      $$0.a("Login phase", () -> this.l.get().toString());
-   }
-
-   static enum a {
-      a(xp.c("connect.connecting"), Set.of()),
-      b(xp.c("connect.authorizing"), Set.of(a)),
-      c(xp.c("connect.encrypting"), Set.of(b)),
-      d(xp.c("connect.joining"), Set.of(c, a));
-
-      final xp e;
-      final Set<fxw.a> f;
-
-      private a(final xp $$0, final Set<fxw.a> $$1) {
-         this.e = $$0;
-         this.f = $$1;
+   private static cmk.a a(KeyPairResponse $$0) throws axc {
+      KeyPair $$1 = $$0.keyPair();
+      if (!Strings.isNullOrEmpty($$1.publicKey()) && $$0.publicKeySignature() != null && $$0.publicKeySignature().array().length != 0) {
+         try {
+            Instant $$2 = Instant.parse($$0.expiresAt());
+            PublicKey $$3 = axb.b($$1.publicKey());
+            ByteBuffer $$4 = $$0.publicKeySignature();
+            return new cmk.a($$2, $$3, $$4.array());
+         } catch (IllegalArgumentException | DateTimeException var5) {
+            throw new axc(var5);
+         }
+      } else {
+         throw new axc(new MissingException("Missing public key"));
       }
    }
 }

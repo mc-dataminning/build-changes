@@ -1,53 +1,49 @@
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
+import java.util.function.Supplier;
+import org.apache.commons.lang3.ObjectUtils;
 
-public class ayd<K, V extends ayd.a<K>> {
-   private final Map<K, V> a = new HashMap<>();
-
-   public ayd<K, V> a(K $$0, V $$1) {
-      this.a.put($$0, $$1);
-      return this;
-   }
-
-   private void a(Multimap<K, K> $$0, Set<K> $$1, K $$2, BiConsumer<K, V> $$3) {
-      if ($$1.add($$2)) {
-         $$0.get($$2).forEach($$3x -> this.a($$0, $$1, (K)$$3x, $$3));
-         V $$4 = this.a.get($$2);
-         if ($$4 != null) {
-            $$3.accept($$2, $$4);
-         }
+public record ayd(ayd.a a, String b) {
+   public static ayd a(String $$0, Supplier<String> $$1, String $$2, Class<?> $$3) {
+      String $$4 = $$1.get();
+      if (!$$0.equals($$4)) {
+         return new ayd(ayd.a.c, $$2 + " brand changed to '" + $$4 + "'");
+      } else {
+         return $$3.getSigners() == null
+            ? new ayd(ayd.a.b, $$2 + " jar signature invalidated")
+            : new ayd(ayd.a.a, $$2 + " jar signature and brand is untouched");
       }
    }
 
-   private static <K> boolean a(Multimap<K, K> $$0, K $$1, K $$2) {
-      Collection<K> $$3 = $$0.get($$2);
-      return $$3.contains($$1) ? true : $$3.stream().anyMatch($$2x -> a($$0, $$1, $$2x));
+   public boolean a() {
+      return this.a.e;
    }
 
-   private static <K> void b(Multimap<K, K> $$0, K $$1, K $$2) {
-      if (!a($$0, $$1, $$2)) {
-         $$0.put($$1, $$2);
+   public ayd a(ayd $$0) {
+      return new ayd((ayd.a)ObjectUtils.max(new ayd.a[]{this.a, $$0.a}), this.b + "; " + $$0.b);
+   }
+
+   public String b() {
+      return this.a.d + " " + this.b;
+   }
+
+   public ayd.a c() {
+      return this.a;
+   }
+
+   public String d() {
+      return this.b;
+   }
+
+   public static enum a {
+      a("Probably not.", false),
+      b("Very likely;", true),
+      c("Definitely;", true);
+
+      final String d;
+      final boolean e;
+
+      private a(final String $$0, final boolean $$1) {
+         this.d = $$0;
+         this.e = $$1;
       }
-   }
-
-   public void a(BiConsumer<K, V> $$0) {
-      Multimap<K, K> $$1 = HashMultimap.create();
-      this.a.forEach(($$1x, $$2x) -> $$2x.a($$2xx -> b($$1, $$1x, $$2xx)));
-      this.a.forEach(($$1x, $$2x) -> $$2x.b($$2xx -> b($$1, $$1x, $$2xx)));
-      Set<K> $$2 = new HashSet<>();
-      this.a.keySet().forEach($$3 -> this.a($$1, $$2, (K)$$3, $$0));
-   }
-
-   public interface a<K> {
-      void a(Consumer<K> var1);
-
-      void b(Consumer<K> var1);
    }
 }

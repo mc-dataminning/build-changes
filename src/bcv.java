@@ -1,23 +1,26 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
+import com.mojang.serialization.Dynamic;
+import java.util.List;
 
-public class bcv extends bhj {
-   public static final Map<String, String> a = ImmutableMap.builder()
-      .put("minecraft:salmon_mob", "minecraft:salmon")
-      .put("minecraft:cod_mob", "minecraft:cod")
-      .build();
-   public static final Map<String, String> b = ImmutableMap.builder()
-      .put("minecraft:salmon_mob_spawn_egg", "minecraft:salmon_spawn_egg")
-      .put("minecraft:cod_mob_spawn_egg", "minecraft:cod_spawn_egg")
-      .build();
+public class bcv extends bfa {
+   public bcv(Schema $$0) {
+      super($$0, false, "EntityShulkerRotationFix", bgd.B, "minecraft:shulker");
+   }
 
-   public bcv(Schema $$0, boolean $$1) {
-      super("EntityCodSalmonFix", $$0, $$1);
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      List<Double> $$1 = $$0.get("Rotation").asList($$0x -> $$0x.asDouble(180.0));
+      if (!$$1.isEmpty()) {
+         $$1.set(0, $$1.get(0) - 180.0);
+         return $$0.set("Rotation", $$0.createList($$1.stream().map($$0::createDouble)));
+      } else {
+         return $$0;
+      }
    }
 
    @Override
-   protected String a(String $$0) {
-      return a.getOrDefault($$0, $$0);
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

@@ -3,57 +3,61 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class esi extends erw {
+public class esi extends esb {
    public static final MapCodec<esi> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  ale.a(lq.aU).fieldOf("name").forGetter($$0x -> $$0x.b),
-                  Codec.LONG.optionalFieldOf("seed", 0L).forGetter($$0x -> $$0x.c),
-                  lp.k.r().fieldOf("type").forGetter($$0x -> $$0x.d)
-               )
-            )
+            .and($$0.group(dpe.b.fieldOf("patterns").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.c)))
             .apply($$0, esi::new)
    );
-   private final ale<eqp> b;
-   private final long c;
-   private final ji<dpl<?>> d;
+   private final dpe b;
+   private final boolean c;
 
-   private esi(List<etu> $$0, ale<eqp> $$1, long $$2, ji<dpl<?>> $$3) {
+   esi(List<etz> $$0, dpe $$1, boolean $$2) {
       super($$0);
       this.b = $$1;
       this.c = $$2;
-      this.d = $$3;
    }
 
    @Override
-   public ery<esi> b() {
-      return erz.y;
-   }
-
-   @Override
-   public cur a(cur $$0, eqk $$1) {
-      if ($$0.e()) {
-         return $$0;
+   protected cua a(cua $$0, eqo $$1) {
+      if (this.c) {
+         $$0.a(kn.X, dpe.a, this.b, ($$0x, $$1x) -> new dpe.a().a($$0x).a($$1x).a());
       } else {
-         $$0.b(km.ae, new cxu(this.b, this.c));
-         return $$0;
+         $$0.b(kn.X, this.b);
       }
+
+      return $$0;
    }
 
    @Override
-   public void a(eqq $$0) {
-      super.a($$0);
-      if ($$0.a().a(lq.aU, this.b).isEmpty()) {
-         $$0.b("Missing loot table used for container: " + this.b.a());
+   public esd<esi> b() {
+      return ese.E;
+   }
+
+   public static esi.a a(boolean $$0) {
+      return new esi.a($$0);
+   }
+
+   public static class a extends esb.a<esi.a> {
+      private final dpe.a a = new dpe.a();
+      private final boolean b;
+
+      a(boolean $$0) {
+         this.b = $$0;
       }
-   }
 
-   public static erw.a<?> a(dpl<?> $$0, ale<eqp> $$1) {
-      return a($$2 -> new esi($$2, $$1, 0L, $$0.a()));
-   }
+      protected esi.a a() {
+         return this;
+      }
 
-   public static erw.a<?> a(dpl<?> $$0, ale<eqp> $$1, long $$2) {
-      return a($$3 -> new esi($$3, $$1, $$2, $$0.a()));
+      @Override
+      public esc b() {
+         return new esi(this.g(), this.a.a(), this.b);
+      }
+
+      public esi.a a(jj<dpd> $$0, cst $$1) {
+         this.a.a($$0, $$1);
+         return this;
+      }
    }
 }

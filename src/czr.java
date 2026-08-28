@@ -1,15 +1,36 @@
-public class czr extends czl {
-   public czr(String $$0, cyu $$1, cur $$2) {
-      super(czc.f, czb.t, $$0, $$1, $$2);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+
+public record czr<T>(czn a, czn b, T c, Optional<etz> d) {
+   public static <S> Codec<czr<S>> a(Codec<S> $$0, eti $$1) {
+      return RecordCodecBuilder.create(
+         $$2 -> $$2.group(
+                  czn.d.fieldOf("enchanted").forGetter(czr::a),
+                  czn.d.fieldOf("affected").forGetter(czr::b),
+                  $$0.fieldOf("effect").forGetter(czr::c),
+                  czh.a($$1).optionalFieldOf("requirements").forGetter(czr::d)
+               )
+               .apply($$2, czr::new)
+      );
    }
 
-   @Override
-   public boolean a(bqp $$0, dca $$1) {
-      return this.a.a($$0.a(0));
+   public static <S> Codec<czr<S>> b(Codec<S> $$0, eti $$1) {
+      return RecordCodecBuilder.create(
+         $$2 -> $$2.group(
+                  czn.d
+                     .validate($$0xx -> $$0xx != czn.b ? DataResult.success($$0xx) : DataResult.error(() -> "enchanted must be attacker or victim"))
+                     .fieldOf("enchanted")
+                     .forGetter(czr::a),
+                  $$0.fieldOf("effect").forGetter(czr::c),
+                  czh.a($$1).optionalFieldOf("requirements").forGetter(czr::d)
+               )
+               .apply($$2, ($$0xx, $$1xx, $$2x) -> new czr<>($$0xx, czn.c, $$1xx, $$2x))
+      );
    }
 
-   @Override
-   public cur g() {
-      return new cur(dfd.oc);
+   public boolean a(eqo $$0) {
+      return this.d.isEmpty() ? true : this.d.get().test($$0);
    }
 }

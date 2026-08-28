@@ -3,20 +3,20 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class aw extends dr<aw.a> {
+public class aw extends ds<aw.a> {
    @Override
    public Codec<aw.a> a() {
       return aw.a.a;
    }
 
-   public void a(arg $$0, cfh $$1, cfh $$2, @Nullable bsq $$3) {
-      eqk $$4 = bu.b($$0, $$1);
-      eqk $$5 = bu.b($$0, $$2);
-      eqk $$6 = $$3 != null ? bu.b($$0, $$3) : null;
+   public void a(aql $$0, ceo $$1, ceo $$2, @Nullable brx $$3) {
+      eqo $$4 = bu.b($$0, $$1);
+      eqo $$5 = bu.b($$0, $$2);
+      eqo $$6 = $$3 != null ? bu.b($$0, $$3) : null;
       this.a($$0, $$3x -> $$3x.a($$4, $$5, $$6));
    }
 
-   public static record a(Optional<bf> b, Optional<bf> c, Optional<bf> d, Optional<bf> e) implements dr.a {
+   public static record a(Optional<bf> b, Optional<bf> c, Optional<bf> d, Optional<bf> e) implements ds.a {
       public static final Codec<aw.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bu.b.optionalFieldOf("player").forGetter(aw.a::a),
@@ -39,17 +39,17 @@ public class aw extends dr<aw.a> {
          return am.p.a(new aw.a(Optional.empty(), bu.a($$0), bu.a($$1), bu.a($$2)));
       }
 
-      public boolean a(eqk $$0, eqk $$1, @Nullable eqk $$2) {
+      public boolean a(eqo $$0, eqo $$1, @Nullable eqo $$2) {
          return !this.e.isPresent() || $$2 != null && this.e.get().a($$2) ? a(this.c, $$0) && a(this.d, $$1) || a(this.c, $$1) && a(this.d, $$0) : false;
       }
 
-      private static boolean a(Optional<bf> $$0, eqk $$1) {
+      private static boolean a(Optional<bf> $$0, eqo $$1) {
          return $$0.isEmpty() || $$0.get().a($$1);
       }
 
       @Override
       public void a(bg $$0) {
-         dr.a.super.a($$0);
+         ds.a.super.a($$0);
          $$0.a(this.c, ".parent");
          $$0.a(this.d, ".partner");
          $$0.a(this.e, ".child");

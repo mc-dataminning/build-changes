@@ -1,73 +1,60 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.stream.Stream;
+import java.util.stream.Stream.Builder;
 
-public class esl extends erw {
+public class esl extends esb {
    public static final MapCodec<esl> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  Codec.unboundedMap(lp.f.r(), euq.a).optionalFieldOf("enchantments", Map.of()).forGetter($$0x -> $$0x.b),
-                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
-               )
-            )
+            .and($$0.group(eqm.e.fieldOf("component").forGetter($$0x -> $$0x.b), erc.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
             .apply($$0, esl::new)
    );
-   private final Map<ji<dac>, eup> b;
-   private final boolean c;
+   private final eql<?> b;
+   private final List<ere> c;
 
-   esl(List<etu> $$0, Map<ji<dac>, eup> $$1, boolean $$2) {
+   esl(List<etz> $$0, eql<?> $$1, List<ere> $$2) {
       super($$0);
-      this.b = Map.copyOf($$1);
-      this.c = $$2;
+      this.b = $$1;
+      this.c = List.copyOf($$2);
    }
 
    @Override
-   public ery<esl> b() {
-      return erz.i;
+   public esd<esl> b() {
+      return ese.t;
    }
 
    @Override
-   public Set<etd<?>> a() {
-      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
-   }
-
-   @Override
-   public cur a(cur $$0, eqk $$1) {
-      Object2IntMap<dac> $$2 = new Object2IntOpenHashMap();
-      this.b.forEach(($$2x, $$3) -> $$2.put((dac)$$2x.a(), ayz.a($$3.a($$1), 0, 255)));
-      if ($$0.a(cuu.qP)) {
-         $$0 = $$0.a(cuu.uw, $$0.I());
-         $$0.b(km.y, $$0.c(km.k));
+   public cua a(cua $$0, eqo $$1) {
+      if ($$0.e()) {
+         return $$0;
+      } else {
+         Builder<cua> $$2 = Stream.builder();
+         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(eqt.a($$1.d(), $$2::add), $$1)));
+         this.b.a($$0, $$2.build());
+         return $$0;
       }
-
-      dad.a($$0, $$1x -> {
-         if (this.c) {
-            $$2.forEach(($$1xx, $$2x) -> $$1x.a($$1xx, $$1x.a($$1xx) + $$2x));
-         } else {
-            $$2.forEach($$1x::a);
-         }
-      });
-      return $$0;
    }
 
-   public static class a extends erw.a<esl.a> {
-      private final Builder<ji<dac>, eup> a = ImmutableMap.builder();
-      private final boolean b;
+   @Override
+   public void a(equ $$0) {
+      super.a($$0);
 
-      public a() {
-         this(false);
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".entry[" + $$1 + "]"));
       }
+   }
 
-      public a(boolean $$0) {
+   public static esl.a a(eql<?> $$0) {
+      return new esl.a($$0);
+   }
+
+   public static class a extends esb.a<esl.a> {
+      private final com.google.common.collect.ImmutableList.Builder<ere> a = ImmutableList.builder();
+      private final eql<?> b;
+
+      public a(eql<?> $$0) {
          this.b = $$0;
       }
 
@@ -75,14 +62,14 @@ public class esl extends erw {
          return this;
       }
 
-      public esl.a a(dac $$0, eup $$1) {
-         this.a.put($$0.m(), $$1);
+      public esl.a a(ere.a<?> $$0) {
+         this.a.add($$0.b());
          return this;
       }
 
       @Override
-      public erx b() {
-         return new esl(this.g(), this.a.build(), this.b);
+      public esc b() {
+         return new esl(this.g(), this.b, this.a.build());
       }
    }
 }

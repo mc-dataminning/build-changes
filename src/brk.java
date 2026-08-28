@@ -1,4 +1,15 @@
-import javax.annotation.Nullable;
+public enum brk {
+   a(n.j),
+   b(n.m),
+   c(n.j);
 
-public record brk(brp a, float b, @Nullable bru c, float d) {
+   private final n d;
+
+   private brk(final n $$0) {
+      this.d = $$0;
+   }
+
+   public n a() {
+      return this.d;
+   }
 }

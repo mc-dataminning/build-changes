@@ -1,28 +1,153 @@
-import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.io.File;
-import java.util.Objects;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
+import java.util.Map;
 
-public class avj extends avi<GameProfile, avk> {
-   public avj(File $$0) {
-      super($$0);
+public final class avj {
+   private static final Map<cqt, Pair<String, String>> a = ImmutableMap.of(
+      cqt.a,
+      Pair.of("isGuiOpen", "isFilteringCraftable"),
+      cqt.b,
+      Pair.of("isFurnaceGuiOpen", "isFurnaceFilteringCraftable"),
+      cqt.c,
+      Pair.of("isBlastingFurnaceGuiOpen", "isBlastingFurnaceFilteringCraftable"),
+      cqt.d,
+      Pair.of("isSmokerGuiOpen", "isSmokerFilteringCraftable")
+   );
+   private final Map<cqt, avj.a> b;
+
+   private avj(Map<cqt, avj.a> $$0) {
+      this.b = $$0;
+   }
+
+   public avj() {
+      this(ac.a(Maps.newEnumMap(cqt.class), $$0 -> {
+         for (cqt $$1 : cqt.values()) {
+            $$0.put($$1, new avj.a(false, false));
+         }
+      }));
+   }
+
+   public boolean a(cqt $$0) {
+      return this.b.get($$0).a;
+   }
+
+   public void a(cqt $$0, boolean $$1) {
+      this.b.get($$0).a = $$1;
+   }
+
+   public boolean b(cqt $$0) {
+      return this.b.get($$0).b;
+   }
+
+   public void b(cqt $$0, boolean $$1) {
+      this.b.get($$0).b = $$1;
+   }
+
+   public static avj a(vr $$0) {
+      Map<cqt, avj.a> $$1 = Maps.newEnumMap(cqt.class);
+
+      for (cqt $$2 : cqt.values()) {
+         boolean $$3 = $$0.readBoolean();
+         boolean $$4 = $$0.readBoolean();
+         $$1.put($$2, new avj.a($$3, $$4));
+      }
+
+      return new avj($$1);
+   }
+
+   public void b(vr $$0) {
+      for (cqt $$1 : cqt.values()) {
+         avj.a $$2 = this.b.get($$1);
+         if ($$2 == null) {
+            $$0.a(false);
+            $$0.a(false);
+         } else {
+            $$0.a($$2.a);
+            $$0.a($$2.b);
+         }
+      }
+   }
+
+   public static avj a(tx $$0) {
+      Map<cqt, avj.a> $$1 = Maps.newEnumMap(cqt.class);
+      a.forEach(($$2, $$3) -> {
+         boolean $$4 = $$0.q((String)$$3.getFirst());
+         boolean $$5 = $$0.q((String)$$3.getSecond());
+         $$1.put($$2, new avj.a($$4, $$5));
+      });
+      return new avj($$1);
+   }
+
+   public void b(tx $$0) {
+      a.forEach(($$1, $$2) -> {
+         avj.a $$3 = this.b.get($$1);
+         $$0.a((String)$$2.getFirst(), $$3.a);
+         $$0.a((String)$$2.getSecond(), $$3.b);
+      });
+   }
+
+   public avj a() {
+      Map<cqt, avj.a> $$0 = Maps.newEnumMap(cqt.class);
+
+      for (cqt $$1 : cqt.values()) {
+         avj.a $$2 = this.b.get($$1);
+         $$0.put($$1, $$2.a());
+      }
+
+      return new avj($$0);
+   }
+
+   public void a(avj $$0) {
+      this.b.clear();
+
+      for (cqt $$1 : cqt.values()) {
+         avj.a $$2 = $$0.b.get($$1);
+         this.b.put($$1, $$2.a());
+      }
    }
 
    @Override
-   protected avh<GameProfile> a(JsonObject $$0) {
-      return new avk($$0);
-   }
-
-   public boolean a(GameProfile $$0) {
-      return this.d($$0);
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof avj && this.b.equals(((avj)$$0).b);
    }
 
    @Override
-   public String[] a() {
-      return this.d().stream().map(avh::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
+   public int hashCode() {
+      return this.b.hashCode();
    }
 
-   protected String b(GameProfile $$0) {
-      return $$0.getId().toString();
+   static final class a {
+      boolean a;
+      boolean b;
+
+      public a(boolean $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public avj.a a() {
+         return new avj.a(this.a, this.b);
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else {
+            return !($$0 instanceof avj.a $$1) ? false : this.a == $$1.a && this.b == $$1.b;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         int $$0 = this.a ? 1 : 0;
+         return 31 * $$0 + (this.b ? 1 : 0);
+      }
+
+      @Override
+      public String toString() {
+         return "[open=" + this.a + ", filtering=" + this.b + "]";
+      }
    }
 }

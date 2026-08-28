@@ -1,29 +1,25 @@
-public class gcf extends gbq {
-   gcf(fxx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gbz $$7) {
-      super($$0, $$1, $$2, $$3, $$7, 1.25F);
-      this.B = 0.6F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.D *= 0.75F;
-      this.t = 60 + this.r.a(12);
-      this.b($$7);
-      if (this.r.a(4) == 0) {
-         this.a(0.6F + this.r.i() * 0.2F, 0.6F + this.r.i() * 0.3F, this.r.i() * 0.2F);
-      } else {
-         this.a(0.1F + this.r.i() * 0.2F, 0.4F + this.r.i() * 0.3F, this.r.i() * 0.2F);
+public class gcf extends gcs {
+   gcf(fyd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3);
+      this.u = 0.04F;
+      if ($$5 == 0.0 && ($$4 != 0.0 || $$6 != 0.0)) {
+         this.j = $$4;
+         this.k = 0.1;
+         this.l = $$6;
       }
    }
 
-   public static class a implements gbh<lm> {
-      private final gbz a;
+   public static class a implements gbo<ln> {
+      private final gcg a;
 
-      public a(gbz $$0) {
+      public a(gcg $$0) {
          this.a = $$0;
       }
 
-      public gbe a(lm $$0, fxx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gcf($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public gbl a(ln $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gcf $$8 = new gcf($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

@@ -1,37 +1,45 @@
-public class ahi implements zw<agw> {
-   public static final zn<wm, ahi> a = zw.a(ahi::a, ahi::new);
-   private final int b;
-   private final String c;
+public class ahi implements zb<agb> {
+   public static final ys<vr, ahi> a = zb.a(ahi::a, ahi::new);
+   private final cqt b;
+   private final boolean c;
+   private final boolean d;
 
-   public ahi(int $$0, String $$1) {
+   public ahi(cqt $$0, boolean $$1, boolean $$2) {
       this.b = $$0;
       this.c = $$1;
+      this.d = $$2;
    }
 
-   private ahi(wm $$0) {
-      this.b = $$0.l();
-      this.c = $$0.d(32500);
+   private ahi(vr $$0) {
+      this.b = $$0.b(cqt.class);
+      this.c = $$0.readBoolean();
+      this.d = $$0.readBoolean();
    }
 
-   private void a(wm $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c, 32500);
+   private void a(vr $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zy<ahi> a() {
-      return agu.bp;
+   public zd<ahi> a() {
+      return afz.bN;
    }
 
-   public void a(agw $$0) {
+   public void a(agb $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public cqt b() {
       return this.b;
    }
 
-   public String e() {
+   public boolean e() {
       return this.c;
+   }
+
+   public boolean f() {
+      return this.d;
    }
 }

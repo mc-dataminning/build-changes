@@ -1,174 +1,108 @@
-import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Map.Entry;
 import javax.annotation.Nullable;
-import org.joml.Vector3f;
 
 public class geo {
-   private static final boolean f = false;
-   private static final float g = -16.0F;
-   private static final float h = 32.0F;
-   public final Vector3f a;
-   public final Vector3f b;
-   public final Map<je, gep> c;
-   public final geq d;
-   public final boolean e;
+   protected final gdv a;
+   protected final dcd b;
+   protected int c;
+   protected int d;
+   protected int e;
+   private int g;
+   public ggx.b[] f;
 
-   public geo(Vector3f $$0, Vector3f $$1, Map<je, gep> $$2, @Nullable geq $$3, boolean $$4) {
-      this.a = $$0;
+   public geo(ggx $$0, dcd $$1, int $$2, gdv $$3) {
+      this.a = $$3;
       this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.a();
+      this.a($$2);
+      this.a($$0);
    }
 
-   private void a() {
-      for (Entry<je, gep> $$0 : this.c.entrySet()) {
-         float[] $$1 = this.a($$0.getKey());
-         $$0.getValue().e.a($$1);
-      }
-   }
+   protected void a(ggx $$0) {
+      if (!ffn.Q().bw()) {
+         throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
+      } else {
+         int $$1 = this.d * this.c * this.e;
+         this.f = new ggx.b[$$1];
 
-   private float[] a(je $$0) {
-      switch ($$0) {
-         case a:
-            return new float[]{this.a.x(), 16.0F - this.b.z(), this.b.x(), 16.0F - this.a.z()};
-         case b:
-            return new float[]{this.a.x(), this.a.z(), this.b.x(), this.b.z()};
-         case c:
-         default:
-            return new float[]{16.0F - this.b.x(), 16.0F - this.b.y(), 16.0F - this.a.x(), 16.0F - this.a.y()};
-         case d:
-            return new float[]{this.a.x(), 16.0F - this.b.y(), this.b.x(), 16.0F - this.a.y()};
-         case e:
-            return new float[]{this.a.z(), 16.0F - this.b.y(), this.b.z(), 16.0F - this.a.y()};
-         case f:
-            return new float[]{16.0F - this.b.z(), 16.0F - this.b.y(), 16.0F - this.a.z(), 16.0F - this.a.y()};
-      }
-   }
-
-   protected static class a implements JsonDeserializer<geo> {
-      private static final boolean a = true;
-
-      public geo a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         Vector3f $$4 = this.e($$3);
-         Vector3f $$5 = this.d($$3);
-         geq $$6 = this.a($$3);
-         Map<je, gep> $$7 = this.a($$2, $$3);
-         if ($$3.has("shade") && !ayp.c($$3, "shade")) {
-            throw new JsonParseException("Expected shade to be a Boolean");
-         } else {
-            boolean $$8 = ayp.a($$3, "shade", true);
-            return new geo($$4, $$5, $$7, $$6, $$8);
-         }
-      }
-
-      @Nullable
-      private geq a(JsonObject $$0) {
-         geq $$1 = null;
-         if ($$0.has("rotation")) {
-            JsonObject $$2 = ayp.u($$0, "rotation");
-            Vector3f $$3 = this.a($$2, "origin");
-            $$3.mul(0.0625F);
-            je.a $$4 = this.c($$2);
-            float $$5 = this.b($$2);
-            boolean $$6 = ayp.a($$2, "rescale", false);
-            $$1 = new geq($$3, $$4, $$5, $$6);
-         }
-
-         return $$1;
-      }
-
-      private float b(JsonObject $$0) {
-         float $$1 = ayp.m($$0, "angle");
-         if ($$1 != 0.0F && ayz.e($$1) != 22.5F && ayz.e($$1) != 45.0F) {
-            throw new JsonParseException("Invalid rotation " + $$1 + " found, only -45/-22.5/0/22.5/45 allowed");
-         } else {
-            return $$1;
-         }
-      }
-
-      private je.a c(JsonObject $$0) {
-         String $$1 = ayp.i($$0, "axis");
-         je.a $$2 = je.a.a($$1.toLowerCase(Locale.ROOT));
-         if ($$2 == null) {
-            throw new JsonParseException("Invalid rotation axis: " + $$1);
-         } else {
-            return $$2;
-         }
-      }
-
-      private Map<je, gep> a(JsonDeserializationContext $$0, JsonObject $$1) {
-         Map<je, gep> $$2 = this.b($$0, $$1);
-         if ($$2.isEmpty()) {
-            throw new JsonParseException("Expected between 1 and 6 unique faces, got 0");
-         } else {
-            return $$2;
-         }
-      }
-
-      private Map<je, gep> b(JsonDeserializationContext $$0, JsonObject $$1) {
-         Map<je, gep> $$2 = Maps.newEnumMap(je.class);
-         JsonObject $$3 = ayp.u($$1, "faces");
-
-         for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
-            je $$5 = this.a($$4.getKey());
-            $$2.put($$5, (gep)$$0.deserialize($$4.getValue(), gep.class));
-         }
-
-         return $$2;
-      }
-
-      private je a(String $$0) {
-         je $$1 = je.a($$0);
-         if ($$1 == null) {
-            throw new JsonParseException("Unknown facing: " + $$0);
-         } else {
-            return $$1;
-         }
-      }
-
-      private Vector3f d(JsonObject $$0) {
-         Vector3f $$1 = this.a($$0, "to");
-         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
-            return $$1;
-         } else {
-            throw new JsonParseException("'to' specifier exceeds the allowed boundaries: " + $$1);
-         }
-      }
-
-      private Vector3f e(JsonObject $$0) {
-         Vector3f $$1 = this.a($$0, "from");
-         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
-            return $$1;
-         } else {
-            throw new JsonParseException("'from' specifier exceeds the allowed boundaries: " + $$1);
-         }
-      }
-
-      private Vector3f a(JsonObject $$0, String $$1) {
-         JsonArray $$2 = ayp.v($$0, $$1);
-         if ($$2.size() != 3) {
-            throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$2.size());
-         } else {
-            float[] $$3 = new float[3];
-
-            for (int $$4 = 0; $$4 < $$3.length; $$4++) {
-               $$3[$$4] = ayp.e($$2.get($$4), $$1 + "[" + $$4 + "]");
+         for (int $$2 = 0; $$2 < this.d; $$2++) {
+            for (int $$3 = 0; $$3 < this.c; $$3++) {
+               for (int $$4 = 0; $$4 < this.e; $$4++) {
+                  int $$5 = this.a($$2, $$3, $$4);
+                  this.f[$$5] = $$0.new b($$5, $$2 * 16, this.b.I_() + $$3 * 16, $$4 * 16);
+               }
             }
-
-            return new Vector3f($$3[0], $$3[1], $$3[2]);
          }
+      }
+   }
+
+   public void a() {
+      for (ggx.b $$0 : this.f) {
+         $$0.e();
+      }
+   }
+
+   private int a(int $$0, int $$1, int $$2) {
+      return ($$2 * this.c + $$1) * this.d + $$0;
+   }
+
+   protected void a(int $$0) {
+      int $$1 = $$0 * 2 + 1;
+      this.d = $$1;
+      this.c = this.b.an();
+      this.e = $$1;
+      this.g = $$0;
+   }
+
+   public int b() {
+      return this.g;
+   }
+
+   public dcf c() {
+      return this.b;
+   }
+
+   public void a(double $$0, double $$1) {
+      int $$2 = aye.c($$0);
+      int $$3 = aye.c($$1);
+
+      for (int $$4 = 0; $$4 < this.d; $$4++) {
+         int $$5 = this.d * 16;
+         int $$6 = $$2 - 8 - $$5 / 2;
+         int $$7 = $$6 + Math.floorMod($$4 * 16 - $$6, $$5);
+
+         for (int $$8 = 0; $$8 < this.e; $$8++) {
+            int $$9 = this.e * 16;
+            int $$10 = $$3 - 8 - $$9 / 2;
+            int $$11 = $$10 + Math.floorMod($$8 * 16 - $$10, $$9);
+
+            for (int $$12 = 0; $$12 < this.c; $$12++) {
+               int $$13 = this.b.I_() + $$12 * 16;
+               ggx.b $$14 = this.f[this.a($$4, $$12, $$8)];
+               ja $$15 = $$14.f();
+               if ($$7 != $$15.u() || $$13 != $$15.v() || $$11 != $$15.w()) {
+                  $$14.a($$7, $$13, $$11);
+               }
+            }
+         }
+      }
+   }
+
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      int $$4 = Math.floorMod($$0, this.d);
+      int $$5 = Math.floorMod($$1 - this.b.ao(), this.c);
+      int $$6 = Math.floorMod($$2, this.e);
+      ggx.b $$7 = this.f[this.a($$4, $$5, $$6)];
+      $$7.a($$3);
+   }
+
+   @Nullable
+   protected ggx.b a(ja $$0) {
+      int $$1 = aye.a($$0.v() - this.b.I_(), 16);
+      if ($$1 >= 0 && $$1 < this.c) {
+         int $$2 = aye.b(aye.a($$0.u(), 16), this.d);
+         int $$3 = aye.b(aye.a($$0.w(), 16), this.e);
+         return this.f[this.a($$2, $$1, $$3)];
+      } else {
+         return null;
       }
    }
 }

@@ -1,41 +1,31 @@
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
 
-public interface atb extends AutoCloseable {
-   String a = ".mcmeta";
-   String b = "pack.mcmeta";
+public record atb(String c, String d, String e) {
+   public static final ys<ByteBuf, atb> a = ys.a(yq.l, atb::b, yq.l, atb::c, yq.l, atb::d, atb::new);
+   public static final String b = "minecraft";
 
-   @Nullable
-   auh<InputStream> a(String... var1);
-
-   @Nullable
-   auh<InputStream> a(atd var1, alf var2);
-
-   void a(atd var1, String var2, String var3, atb.a var4);
-
-   Set<String> a(atd var1);
-
-   @Nullable
-   <T> T a(ato<T> var1) throws IOException;
-
-   ata a();
-
-   default String b() {
-      return this.a().a();
+   public static atb a(String $$0) {
+      return new atb("minecraft", $$0, aa.b().b());
    }
 
-   default Optional<atw> c() {
-      return this.a().d();
+   public boolean a() {
+      return this.c.equals("minecraft");
    }
 
    @Override
-   void close();
+   public String toString() {
+      return this.c + ":" + this.d + ":" + this.e;
+   }
 
-   @FunctionalInterface
-   public interface a extends BiConsumer<alf, auh<InputStream>> {
+   public String b() {
+      return this.c;
+   }
+
+   public String c() {
+      return this.d;
+   }
+
+   public String d() {
+      return this.e;
    }
 }

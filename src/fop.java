@@ -1,100 +1,30 @@
-public class fop extends fod<cqk> {
-   private static final alf D = new alf("container/crafter/disabled_slot");
-   private static final alf E = new alf("container/crafter/powered_redstone");
-   private static final alf F = new alf("container/crafter/unpowered_redstone");
-   private static final alf G = new alf("textures/gui/container/crafter.png");
-   private static final xp H = xp.c("gui.togglable_slot");
-   private final cmz I;
+import org.joml.Vector3f;
 
-   public fop(cqk $$0, cmy $$1, xp $$2) {
-      super($$0, $$1, $$2);
-      this.I = $$1.l;
+public class fop extends fnu {
+   public static final float b = 4.5F;
+   private static final Vector3f c = new Vector3f(1.0F, 1.0F, 1.0F);
+   private static final int q = 16;
+   private static final int r = 16;
+   private final akk s = new akk("textures/gui/hanging_signs/" + this.a.b() + ".png");
+
+   public fop(dqx $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2, wu.c("hanging_sign.edit"));
    }
 
    @Override
-   protected void aM_() {
-      super.aM_();
-      this.r = (this.c - this.p.a(this.l)) / 2;
+   protected void b(fgz $$0, dsh $$1) {
+      $$0.c().a((float)this.m / 2.0F, 125.0F, 50.0F);
    }
 
    @Override
-   protected void a(crr $$0, int $$1, int $$2, cqf $$3) {
-      if ($$0 instanceof cql && !$$0.h() && !this.I.N_()) {
-         switch ($$3) {
-            case a:
-               if (this.w.e($$1)) {
-                  this.a($$1);
-               } else if (this.w.g().e()) {
-                  this.b($$1);
-               }
-               break;
-            case c:
-               cur $$4 = this.I.gc().a($$2);
-               if (this.w.e($$1) && !$$4.e()) {
-                  this.a($$1);
-               }
-         }
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   private void a(int $$0) {
-      this.a($$0, true);
-   }
-
-   private void b(int $$0) {
-      this.a($$0, false);
-   }
-
-   private void a(int $$0, boolean $$1) {
-      this.w.a($$0, $$1);
-      super.a($$0, this.w.j, $$1);
-      float $$2 = $$1 ? 1.0F : 0.75F;
-      this.I.a(awa.Ao.a(), 0.4F, $$2);
+   protected void a(fgz $$0, dsh $$1) {
+      $$0.c().a(0.0F, -13.0F, 0.0F);
+      $$0.c().b(4.5F, 4.5F, 1.0F);
+      $$0.a(this.s, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
    }
 
    @Override
-   public void a(fgt $$0, crr $$1) {
-      if ($$1 instanceof cql $$2 && this.w.e($$1.d)) {
-         this.a($$0, $$2);
-         return;
-      }
-
-      super.a($$0, $$1);
-   }
-
-   private void a(fgt $$0, cql $$1) {
-      $$0.a(D, $$1.e - 1, $$1.f - 1, 18, 18);
-   }
-
-   @Override
-   public void a(fgt $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c($$0);
-      this.a($$0, $$1, $$2);
-      if (this.y instanceof cql && !this.w.e(this.y.d) && this.w.g().e() && !this.y.h() && !this.I.N_()) {
-         $$0.a(this.p, H, $$1, $$2);
-      }
-   }
-
-   private void c(fgt $$0) {
-      int $$1 = this.n / 2 + 9;
-      int $$2 = this.o / 2 - 48;
-      alf $$3;
-      if (this.w.l()) {
-         $$3 = E;
-      } else {
-         $$3 = F;
-      }
-
-      $$0.a($$3, $$1, $$2, 16, 16);
-   }
-
-   @Override
-   protected void a(fgt $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.c) / 2;
-      int $$5 = (this.o - this.d) / 2;
-      $$0.a(G, $$4, $$5, 0, 0, this.c, this.d);
+   protected Vector3f m() {
+      return c;
    }
 }

@@ -1,18 +1,19 @@
-public class gjr extends gmf {
-   private static final alf a = new alf("textures/entity/zombie/husk.png");
+public class gjr extends gkm<cji, fuv<cji>> {
+   private static final akk a = new akk("textures/entity/zombie/zombie.png");
+   private final float i;
 
-   public gjr(giz.a $$0) {
-      super($$0, fxb.ar, fxb.as, fxb.at);
+   public gjr(gjg.a $$0, float $$1) {
+      super($$0, new fun($$0.a(fxh.ah)), 0.5F * $$1);
+      this.i = $$1;
+      this.a(new gnl<>(this, $$0.d()));
+      this.a(new gni<>(this, new fun($$0.a(fxh.ai)), new fun($$0.a(fxh.aj)), $$0.g()));
    }
 
-   protected void a(cky $$0, faa $$1, float $$2) {
-      float $$3 = 1.0625F;
-      $$1.b(1.0625F, 1.0625F, 1.0625F);
-      super.a($$0, $$1, $$2);
+   protected void a(cji $$0, fag $$1, float $$2) {
+      $$1.b(this.i, this.i, this.i);
    }
 
-   @Override
-   public alf a(cky $$0) {
+   public akk a(cji $$0) {
       return a;
    }
 }

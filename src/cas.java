@@ -1,13 +1,47 @@
-import java.util.EnumSet;
+public class cas extends bzw {
+   private final cgs a;
+   private int b;
 
-public class cas extends cax {
-   public cas(btt $$0, Class<? extends btr> $$1, float $$2) {
-      super($$0, $$1, $$2);
-      this.a(EnumSet.of(cap.a.b, cap.a.a));
+   public cas(cgs $$0) {
+      this.a = $$0;
+      this.a($$0);
    }
 
-   public cas(btt $$0, Class<? extends btr> $$1, float $$2, float $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a(EnumSet.of(cap.a.b, cap.a.a));
+   @Override
+   public void c() {
+      this.a.gR();
+      this.h();
+   }
+
+   private void h() {
+      ave $$0 = this.a.gQ();
+      if ($$0 != null) {
+         this.a.a($$0);
+      }
+   }
+
+   @Override
+   public boolean b() {
+      return false;
+   }
+
+   @Override
+   public boolean a() {
+      this.b++;
+      if (this.b > 0 && this.a.dS().a(1000) < this.b) {
+         this.a(this.a);
+         return !this.a.fc() && this.a.dS().a(10) == 0;
+      } else {
+         return false;
+      }
+   }
+
+   private void a(cgs $$0) {
+      this.b = -$$0.gV();
+   }
+
+   @Override
+   public boolean R_() {
+      return true;
    }
 }

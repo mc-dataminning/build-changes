@@ -1,61 +1,63 @@
-import java.util.Map;
-import java.util.Map.Entry;
+import com.google.common.collect.Queues;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class gej {
-   private Map<dse, grc> a = Map.of();
-   private final gri b;
+   private static final Logger a = LogUtils.getLogger();
+   private final Queue<gei> b;
+   private volatile int c;
 
-   public gej(gri $$0) {
-      this.b = $$0;
+   private gej(List<gei> $$0) {
+      this.b = Queues.newArrayDeque($$0);
+      this.c = this.b.size();
    }
 
-   public gpb a(dse $$0) {
-      return this.b($$0).e();
-   }
+   public static gej a(int $$0) {
+      int $$1 = Math.max(1, (int)((double)Runtime.getRuntime().maxMemory() * 0.3) / gei.a);
+      int $$2 = Math.max(1, Math.min($$0, $$1));
+      List<gei> $$3 = new ArrayList<>($$2);
 
-   public grc b(dse $$0) {
-      grc $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         $$1 = this.b.a();
-      }
-
-      return $$1;
-   }
-
-   public gri a() {
-      return this.b;
-   }
-
-   public void a(Map<dse, grc> $$0) {
-      this.a = $$0;
-   }
-
-   public static grj c(dse $$0) {
-      return a(lp.e.b($$0.b()), $$0);
-   }
-
-   public static grj a(alf $$0, dse $$1) {
-      return new grj($$0, b($$1.C()));
-   }
-
-   public static String b(Map<dth<?>, Comparable<?>> $$0) {
-      StringBuilder $$1 = new StringBuilder();
-
-      for (Entry<dth<?>, Comparable<?>> $$2 : $$0.entrySet()) {
-         if ($$1.length() != 0) {
-            $$1.append(',');
+      try {
+         for (int $$4 = 0; $$4 < $$2; $$4++) {
+            $$3.add(new gei());
          }
+      } catch (OutOfMemoryError var7) {
+         a.warn("Allocated only {}/{} buffers", $$3.size(), $$2);
+         int $$6 = Math.min($$3.size() * 2 / 3, $$3.size() - 1);
 
-         dth<?> $$3 = $$2.getKey();
-         $$1.append($$3.f());
-         $$1.append('=');
-         $$1.append(a($$3, $$2.getValue()));
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            $$3.remove($$3.size() - 1).close();
+         }
       }
 
-      return $$1.toString();
+      return new gej($$3);
    }
 
-   private static <T extends Comparable<T>> String a(dth<T> $$0, Comparable<?> $$1) {
-      return $$0.a((T)$$1);
+   @Nullable
+   public gei a() {
+      gei $$0 = this.b.poll();
+      if ($$0 != null) {
+         this.c = this.b.size();
+         return $$0;
+      } else {
+         return null;
+      }
+   }
+
+   public void a(gei $$0) {
+      this.b.add($$0);
+      this.c = this.b.size();
+   }
+
+   public boolean b() {
+      return this.b.isEmpty();
+   }
+
+   public int c() {
+      return this.c;
    }
 }

@@ -1,86 +1,87 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gkl<T extends coc> extends gjf<T> {
+   private static final akk f = new akk("textures/entity/minecart.png");
+   protected final fui<T> a;
+   private final ger g;
 
-public class gkl extends gkf<cfw, fvb<cfw>> {
-   private static final Map<cfw.a, alf> a = ac.a(Maps.newEnumMap(cfw.a.class), $$0 -> {
-      $$0.put(cfw.a.a, new alf("textures/entity/panda/panda.png"));
-      $$0.put(cfw.a.b, new alf("textures/entity/panda/lazy_panda.png"));
-      $$0.put(cfw.a.c, new alf("textures/entity/panda/worried_panda.png"));
-      $$0.put(cfw.a.d, new alf("textures/entity/panda/playful_panda.png"));
-      $$0.put(cfw.a.e, new alf("textures/entity/panda/brown_panda.png"));
-      $$0.put(cfw.a.f, new alf("textures/entity/panda/weak_panda.png"));
-      $$0.put(cfw.a.g, new alf("textures/entity/panda/aggressive_panda.png"));
-   });
-
-   public gkl(giz.a $$0) {
-      super($$0, new fvb<>($$0.a(fxb.aF)), 0.9F);
-      this.a(new gnh(this, $$0.d()));
+   public gkl(gjg.a $$0, fxg $$1) {
+      super($$0);
+      this.d = 0.7F;
+      this.a = new fvd<>($$0.a($$1));
+      this.g = $$0.c();
    }
 
-   public alf a(cfw $$0) {
-      return a.getOrDefault($$0.gC(), a.get(cfw.a.a));
-   }
-
-   protected void a(cfw $$0, faa $$1, float $$2, float $$3, float $$4, float $$5) {
+   public void a(T $$0, float $$1, float $$2, fag $$3, gdx $$4, int $$5) {
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if ($$0.bZ > 0) {
-         int $$6 = $$0.bZ;
-         int $$7 = $$6 + 1;
-         float $$8 = 7.0F;
-         float $$9 = $$0.p_() ? 0.3F : 0.8F;
-         if ($$6 < 8) {
-            float $$10 = (float)(90 * $$6) / 7.0F;
-            float $$11 = (float)(90 * $$7) / 7.0F;
-            float $$12 = this.a($$10, $$11, $$7, $$4, 8.0F);
-            $$1.a(0.0F, ($$9 + 0.2F) * ($$12 / 90.0F), 0.0F);
-            $$1.a(a.b.rotationDegrees(-$$12));
-         } else if ($$6 < 16) {
-            float $$13 = ((float)$$6 - 8.0F) / 7.0F;
-            float $$14 = 90.0F + 90.0F * $$13;
-            float $$15 = 90.0F + 90.0F * ((float)$$7 - 8.0F) / 7.0F;
-            float $$16 = this.a($$14, $$15, $$7, $$4, 16.0F);
-            $$1.a(0.0F, $$9 + 0.2F + ($$9 - 0.2F) * ($$16 - 90.0F) / 90.0F, 0.0F);
-            $$1.a(a.b.rotationDegrees(-$$16));
-         } else if ((float)$$6 < 24.0F) {
-            float $$17 = ((float)$$6 - 16.0F) / 7.0F;
-            float $$18 = 180.0F + 90.0F * $$17;
-            float $$19 = 180.0F + 90.0F * ((float)$$7 - 16.0F) / 7.0F;
-            float $$20 = this.a($$18, $$19, $$7, $$4, 24.0F);
-            $$1.a(0.0F, $$9 + $$9 * (270.0F - $$20) / 90.0F, 0.0F);
-            $$1.a(a.b.rotationDegrees(-$$20));
-         } else if ($$6 < 32) {
-            float $$21 = ((float)$$6 - 24.0F) / 7.0F;
-            float $$22 = 270.0F + 90.0F * $$21;
-            float $$23 = 270.0F + 90.0F * ((float)$$7 - 24.0F) / 7.0F;
-            float $$24 = this.a($$22, $$23, $$7, $$4, 32.0F);
-            $$1.a(0.0F, $$9 * ((360.0F - $$24) / 90.0F), 0.0F);
-            $$1.a(a.b.rotationDegrees(-$$24));
+      $$3.a();
+      long $$6 = (long)$$0.al() * 493286711L;
+      $$6 = $$6 * $$6 * 4392167121L + $$6 * 98761L;
+      float $$7 = (((float)($$6 >> 16 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
+      float $$8 = (((float)($$6 >> 20 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
+      float $$9 = (((float)($$6 >> 24 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
+      $$3.a($$7, $$8, $$9);
+      double $$10 = aye.d((double)$$2, $$0.ad, $$0.du());
+      double $$11 = aye.d((double)$$2, $$0.ae, $$0.dw());
+      double $$12 = aye.d((double)$$2, $$0.af, $$0.dA());
+      double $$13 = 0.3F;
+      evz $$14 = $$0.q($$10, $$11, $$12);
+      float $$15 = aye.i($$2, $$0.P, $$0.dH());
+      if ($$14 != null) {
+         evz $$16 = $$0.a($$10, $$11, $$12, 0.3F);
+         evz $$17 = $$0.a($$10, $$11, $$12, -0.3F);
+         if ($$16 == null) {
+            $$16 = $$14;
+         }
+
+         if ($$17 == null) {
+            $$17 = $$14;
+         }
+
+         $$3.a($$14.c - $$10, ($$16.d + $$17.d) / 2.0 - $$11, $$14.e - $$12);
+         evz $$18 = $$17.b(-$$16.c, -$$16.d, -$$16.e);
+         if ($$18.f() != 0.0) {
+            $$18 = $$18.d();
+            $$1 = (float)(Math.atan2($$18.e, $$18.c) * 180.0 / Math.PI);
+            $$15 = (float)(Math.atan($$18.d) * 73.0);
          }
       }
 
-      float $$25 = $$0.G($$4);
-      if ($$25 > 0.0F) {
-         $$1.a(0.0F, 0.8F * $$25, 0.0F);
-         $$1.a(a.b.rotationDegrees(ayz.i($$25, $$0.dH(), $$0.dH() + 90.0F)));
-         $$1.a(0.0F, -1.0F * $$25, 0.0F);
-         if ($$0.gI()) {
-            float $$26 = (float)(Math.cos((double)$$0.ai * 1.25) * Math.PI * 0.05F);
-            $$1.a(a.d.rotationDegrees($$26));
-            if ($$0.p_()) {
-               $$1.a(0.0F, 0.8F, 0.55F);
-            }
-         }
+      $$3.a(0.0F, 0.375F, 0.0F);
+      $$3.a(a.d.rotationDegrees(180.0F - $$1));
+      $$3.a(a.f.rotationDegrees(-$$15));
+      float $$19 = (float)$$0.O() - $$2;
+      float $$20 = $$0.N() - $$2;
+      if ($$20 < 0.0F) {
+         $$20 = 0.0F;
       }
 
-      float $$27 = $$0.H($$4);
-      if ($$27 > 0.0F) {
-         float $$28 = $$0.p_() ? 0.5F : 1.3F;
-         $$1.a(0.0F, $$28 * $$27, 0.0F);
-         $$1.a(a.b.rotationDegrees(ayz.i($$27, $$0.dH(), $$0.dH() + 180.0F)));
+      if ($$19 > 0.0F) {
+         $$3.a(a.b.rotationDegrees(aye.a($$19) * $$19 * $$20 / 10.0F * (float)$$0.P()));
       }
+
+      int $$21 = $$0.y();
+      dsh $$22 = $$0.w();
+      if ($$22.l() != dll.a) {
+         $$3.a();
+         float $$23 = 0.75F;
+         $$3.b(0.75F, 0.75F, 0.75F);
+         $$3.a(-0.5F, (float)($$21 - 8) / 16.0F, 0.5F);
+         $$3.a(a.d.rotationDegrees(90.0F));
+         this.a($$0, $$2, $$22, $$3, $$4, $$5);
+         $$3.b();
+      }
+
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      this.a.a($$0, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+      fak $$24 = $$4.getBuffer(this.a.a(this.a($$0)));
+      this.a.a($$3, $$24, $$5, goz.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
    }
 
-   private float a(float $$0, float $$1, int $$2, float $$3, float $$4) {
-      return (float)$$2 < $$4 ? ayz.i($$3, $$0, $$1) : $$0;
+   public akk a(T $$0) {
+      return f;
+   }
+
+   protected void a(T $$0, float $$1, dsh $$2, fag $$3, gdx $$4, int $$5) {
+      this.g.a($$2, $$3, $$4, $$5, goz.d);
    }
 }

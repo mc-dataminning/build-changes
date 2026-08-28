@@ -1,45 +1,18 @@
-public class adq implements zw<aci> {
-   public static final zn<wm, adq> a = zw.a(adq::a, adq::new);
-   private final int b;
-   private final int c;
-   private final int d;
+import io.netty.buffer.ByteBuf;
 
-   public adq(int $$0, int $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
+public class adq implements zb<abn> {
+   public static final adq a = new adq();
+   public static final ys<ByteBuf, adq> b = ys.a(a);
 
-   private adq(wm $$0) {
-      this.b = $$0.readUnsignedByte();
-      this.c = $$0.l();
-      this.d = $$0.readInt();
-   }
-
-   private void a(wm $$0) {
-      $$0.k(this.b);
-      $$0.c(this.c);
-      $$0.p(this.d);
+   private adq() {
    }
 
    @Override
-   public zy<adq> a() {
-      return agu.H;
+   public zd<adq> a() {
+      return afz.ac;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
    }
 }

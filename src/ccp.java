@@ -1,127 +1,19 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
 
-public abstract class ccp extends cap {
-   private static final int a = 0;
-   private static final int b = 1;
-   private static final int c = 2;
-   protected final btt e;
-   protected final boolean f;
-   private final boolean d;
-   private int i;
-   private int j;
-   private int k;
-   @Nullable
-   protected btr g;
-   protected int h = 60;
-
-   public ccp(btt $$0, boolean $$1) {
-      this($$0, $$1, false);
-   }
-
-   public ccp(btt $$0, boolean $$1, boolean $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.d = $$2;
-   }
-
+public class ccp extends cdi<brx> {
    @Override
-   public boolean b() {
-      btr $$0 = this.e.p();
-      if ($$0 == null) {
-         $$0 = this.g;
-      }
-
-      if ($$0 == null) {
-         return false;
-      } else if (!this.e.c($$0)) {
-         return false;
-      } else {
-         ewz $$1 = this.e.cj();
-         ewz $$2 = $$0.cj();
-         if ($$1 != null && $$2 == $$1) {
-            return false;
-         } else {
-            double $$3 = this.l();
-            if (this.e.g($$0) > $$3 * $$3) {
-               return false;
-            } else {
-               if (this.f) {
-                  if (this.e.M().a($$0)) {
-                     this.k = 0;
-                  } else if (++this.k > b(this.h)) {
-                     return false;
-                  }
-               }
-
-               this.e.h($$0);
-               return true;
-            }
-         }
-      }
+   public Set<ccc<?>> a() {
+      return ImmutableSet.of(ccc.K, ccc.h);
    }
 
-   protected double l() {
-      return this.e.g(buz.k);
+   protected void a(aqk $$0, brx $$1) {
+      $$1.dT().c(ccc.h).ifPresent($$1x -> this.a($$1, $$1x));
    }
 
-   @Override
-   public void c() {
-      this.i = 0;
-      this.j = 0;
-      this.k = 0;
-   }
-
-   @Override
-   public void d() {
-      this.e.h(null);
-      this.g = null;
-   }
-
-   protected boolean a(@Nullable btr $$0, cei $$1) {
-      if ($$0 == null) {
-         return false;
-      } else if (!$$1.a(this.e, $$0)) {
-         return false;
-      } else if (!this.e.a($$0.dp())) {
-         return false;
-      } else {
-         if (this.d) {
-            if (--this.j <= 0) {
-               this.i = 0;
-            }
-
-            if (this.i == 0) {
-               this.i = this.a($$0) ? 1 : 2;
-            }
-
-            if (this.i == 2) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   private boolean a(btr $$0) {
-      this.j = b(10 + this.e.el().a(5));
-      eol $$1 = this.e.K().a($$0, 0);
-      if ($$1 == null) {
-         return false;
-      } else {
-         eoj $$2 = $$1.d();
-         if ($$2 == null) {
-            return false;
-         } else {
-            int $$3 = $$2.a - $$0.dt();
-            int $$4 = $$2.c - $$0.dz();
-            return (double)($$3 * $$3 + $$4 * $$4) <= 2.25;
-         }
-      }
-   }
-
-   public ccp c(int $$0) {
-      this.h = $$0;
-      return this;
+   private void a(brx $$0, cce $$1) {
+      Optional<brx> $$2 = $$1.a($$1x -> $$1x.ak() == $$0.ak() && !$$1x.p_()).map(brx.class::cast);
+      $$0.dT().a(ccc.K, $$2);
    }
 }

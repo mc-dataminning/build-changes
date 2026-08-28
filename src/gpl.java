@@ -1,46 +1,44 @@
+import com.mojang.logging.LogUtils;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.Collection;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gpl {
-   private final alf a;
-   private final aun b;
-   private final AtomicReference<ezb> c = new AtomicReference<>();
-   private final AtomicInteger d;
+@FunctionalInterface
+public interface gpl {
+   Logger a = LogUtils.getLogger();
 
-   public gpl(alf $$0, aun $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.d = new AtomicInteger($$2);
-   }
-
-   public ezb a() throws IOException {
-      ezb $$0 = this.c.get();
-      if ($$0 == null) {
-         synchronized (this) {
-            $$0 = this.c.get();
-            if ($$0 == null) {
-               try (InputStream $$1 = this.b.d()) {
-                  $$0 = ezb.a($$1);
-                  this.c.set($$0);
-               } catch (IOException var9) {
-                  throw new IOException("Failed to load image " + this.a, var9);
-               }
-            }
+   static gpl create(Collection<ast<?>> $$0) {
+      return ($$1, $$2) -> {
+         atw $$3;
+         try {
+            $$3 = $$2.f().a($$0);
+         } catch (Exception var9) {
+            a.error("Unable to parse metadata from {}", $$1, var9);
+            return null;
          }
-      }
 
-      return $$0;
-   }
-
-   public void b() {
-      int $$0 = this.d.decrementAndGet();
-      if ($$0 <= 0) {
-         ezb $$1 = this.c.getAndSet(null);
-         if ($$1 != null) {
-            $$1.close();
+         ezh $$7;
+         try (InputStream $$6 = $$2.d()) {
+            $$7 = ezh.a($$6);
+         } catch (IOException var11) {
+            a.error("Using missing texture, unable to load {}", $$1, var11);
+            return null;
          }
-      }
+
+         gqt $$11 = $$3.a(gqt.a).orElse(gqt.e);
+         gqv $$12 = $$11.a($$7.a(), $$7.b());
+         if (aye.c($$7.a(), $$12.a()) && aye.c($$7.b(), $$12.b())) {
+            return new gpc($$1, $$12, $$7, $$3);
+         } else {
+            a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
+            $$7.close();
+            return null;
+         }
+      };
    }
+
+   @Nullable
+   gpc loadSprite(akk var1, ats var2);
 }

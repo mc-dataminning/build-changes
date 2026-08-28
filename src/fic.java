@@ -1,62 +1,49 @@
-import javax.annotation.Nullable;
+public class fic extends fhm {
+   private boolean a;
 
-public abstract class fic<E extends fic.a<E>> extends fhb<E> {
-   private static final xp a = xp.c("narration.selection.usage");
-
-   public fic(ffh $$0, int $$1, int $$2, int $$3, int $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Nullable
-   @Override
-   public fgq a(fli $$0) {
-      if (this.l() == 0) {
-         return null;
-      } else if (this.aH_() && $$0 instanceof fli.a $$1) {
-         E $$2 = this.a($$1.b());
-         return $$2 != null ? fgq.a(this, fgq.a($$2)) : null;
-      } else if (!this.aH_()) {
-         E $$3 = this.h();
-         if ($$3 == null) {
-            $$3 = this.a($$0.a());
-         }
-
-         return $$3 == null ? null : fgq.a(this, fgq.a($$3));
-      } else {
-         return null;
-      }
+   public fic(int $$0, int $$1, fhm.c $$2) {
+      super($$0, $$1, 20, 20, wu.c("narrator.button.difficulty_lock"), $$2, q);
    }
 
    @Override
-   public void a(flc $$0) {
-      E $$1 = this.u();
-      if ($$1 != null) {
-         this.a($$0.a(), $$1);
-         $$1.b($$0);
-      } else {
-         E $$2 = this.h();
-         if ($$2 != null) {
-            this.a($$0.a(), $$2);
-            $$2.b($$0);
-         }
-      }
-
-      if (this.aH_()) {
-         $$0.a(flb.d, a);
-      }
+   protected xi aL_() {
+      return wt.a(super.aL_(), this.a() ? wu.c("narrator.button.difficulty_lock.locked") : wu.c("narrator.button.difficulty_lock.unlocked"));
    }
 
-   public abstract static class a<E extends fic.a<E>> extends fhb.a<E> implements fld {
-      public abstract xp a();
+   public boolean a() {
+      return this.a;
+   }
 
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         return true;
+   public void b(boolean $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public void b(fgz $$0, int $$1, int $$2, float $$3) {
+      fic.a $$4;
+      if (!this.j) {
+         $$4 = this.a ? fic.a.c : fic.a.f;
+      } else if (this.B()) {
+         $$4 = this.a ? fic.a.b : fic.a.e;
+      } else {
+         $$4 = this.a ? fic.a.a : fic.a.d;
       }
 
-      @Override
-      public void b(flc $$0) {
-         $$0.a(flb.a, this.a());
+      $$0.a($$4.g, this.D(), this.E(), this.g, this.h);
+   }
+
+   static enum a {
+      a(new akk("widget/locked_button")),
+      b(new akk("widget/locked_button_highlighted")),
+      c(new akk("widget/locked_button_disabled")),
+      d(new akk("widget/unlocked_button")),
+      e(new akk("widget/unlocked_button_highlighted")),
+      f(new akk("widget/unlocked_button_disabled"));
+
+      final akk g;
+
+      private a(final akk $$0) {
+         this.g = $$0;
       }
    }
 }

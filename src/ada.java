@@ -1,33 +1,42 @@
-import com.mojang.brigadier.context.StringRange;
-import com.mojang.brigadier.suggestion.Suggestion;
-import com.mojang.brigadier.suggestion.Suggestions;
-import java.util.List;
-import java.util.Optional;
+public class ada implements zb<abn> {
+   public static final ys<vr, ada> a = zb.a(ada::a, ada::new);
+   private final int b;
+   private final ja c;
+   private final int d;
+   private final boolean e;
 
-public record ada(int b, int c, int d, List<ada.a> e) implements zw<aci> {
-   public static final zn<xa, ada> a = zn.a(zl.g, ada::e, zl.g, ada::f, zl.g, ada::g, ada.a.a.a(zl.a()), ada::h, ada::new);
+   public ada(int $$0, ja $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1.i();
+      this.d = $$2;
+      this.e = $$3;
+   }
 
-   public ada(int $$0, Suggestions $$1) {
-      this(
-         $$0,
-         $$1.getRange().getStart(),
-         $$1.getRange().getLength(),
-         $$1.getList().stream().map($$0x -> new ada.a($$0x.getText(), Optional.ofNullable($$0x.getTooltip()).map(xs::a))).toList()
-      );
+   private ada(vr $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.e();
+      this.d = $$0.readInt();
+      this.e = $$0.readBoolean();
+   }
+
+   private void a(vr $$0) {
+      $$0.p(this.b);
+      $$0.a(this.c);
+      $$0.p(this.d);
+      $$0.a(this.e);
    }
 
    @Override
-   public zy<ada> a() {
-      return agu.r;
+   public zd<ada> a() {
+      return afz.L;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
    }
 
-   public Suggestions b() {
-      StringRange $$0 = StringRange.between(this.c, this.c + this.d);
-      return new Suggestions($$0, this.e.stream().map($$1 -> new Suggestion($$0, $$1.a(), $$1.b().orElse(null))).toList());
+   public boolean b() {
+      return this.e;
    }
 
    public int e() {
@@ -35,26 +44,10 @@ public record ada(int b, int c, int d, List<ada.a> e) implements zw<aci> {
    }
 
    public int f() {
-      return this.c;
-   }
-
-   public int g() {
       return this.d;
    }
 
-   public List<ada.a> h() {
-      return this.e;
-   }
-
-   public static record a(String b, Optional<xp> c) {
-      public static final zn<xa, ada.a> a = zn.a(zl.l, ada.a::a, xr.e, ada.a::b, ada.a::new);
-
-      public String a() {
-         return this.b;
-      }
-
-      public Optional<xp> b() {
-         return this.c;
-      }
+   public ja g() {
+      return this.c;
    }
 }

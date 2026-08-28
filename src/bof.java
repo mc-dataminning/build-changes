@@ -1,7 +1,13 @@
-import jdk.jfr.consumer.RecordedEvent;
+public interface bof {
+   void a();
 
-public record bof(String a, String b, int c, int d) {
-   public static bof a(RecordedEvent $$0) {
-      return new bof($$0.getString("level"), $$0.getString("dimension"), $$0.getInt("chunkPosX"), $$0.getInt("chunkPosZ"));
-   }
+   void b();
+
+   void c();
+
+   boolean e();
+
+   bmr f();
+
+   void d();
 }

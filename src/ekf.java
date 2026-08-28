@@ -1,25 +1,25 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.stream.Stream;
 
-public class ekf extends eim {
-   public static final MapCodec<ekf> d = a(ekf::new);
+record ekf(bon<List<ekb>> c) implements ekb {
+   static MapCodec<ekf> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bon.b(Codec.list(ekb.b)).fieldOf("groups").forGetter(ekf::c)).apply($$0, ekf::new));
 
-   public ekf(eim.c $$0) {
-      super($$0);
+   @Override
+   public void a(aym $$0, BiConsumer<akj<ejz>, akj<ejz>> $$1) {
+      this.c.b($$0).ifPresent($$2 -> $$2.b().forEach($$2x -> $$2x.a($$0, $$1)));
    }
 
    @Override
-   public Optional<eim.b> a(eim.a $$0) {
-      return a($$0, dxw.a.c, $$1 -> a($$1, $$0));
-   }
-
-   private static void a(eje $$0, eim.a $$1) {
-      iz $$2 = new iz($$1.h().a(9), 90, $$1.h().b(9));
-      $$0.a(new eke.a($$2));
+   public Stream<akj<ejz>> a() {
+      return this.c.e().stream().flatMap($$0 -> $$0.b().stream()).flatMap(ekb::a);
    }
 
    @Override
-   public eiv<?> e() {
-      return eiv.a;
+   public MapCodec<ekf> b() {
+      return a;
    }
 }

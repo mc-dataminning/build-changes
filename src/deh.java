@@ -1,89 +1,40 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class deh extends den {
+public class deh extends dfo implements dfi {
    public static final MapCodec<deh> a = b(deh::new);
-   public static final dsy b = dsu.P;
-   public static final dsv c = dsu.u;
+   private static final ews b = ewp.a(dff.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0), dff.a(6.0, 0.0, 6.0, 10.0, 8.0, 10.0));
 
    @Override
    public MapCodec<deh> a() {
       return a;
    }
 
-   public deh(dsd.d $$0) {
+   protected deh(dsg.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, je.c).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected bqw a(dse $$0, dca $$1, iz $$2, cmz $$3, evp $$4) {
-      if ($$1.B) {
-         return bqw.a;
-      } else {
-         dpj $$5 = $$1.c_($$2);
-         if ($$5 instanceof dpc) {
-            $$3.a((dpc)$$5);
-            $$3.a(awk.ar);
-            clq.a($$3, true);
-         }
-
-         return bqw.c;
-      }
+   protected ews a(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
+      return b;
    }
 
    @Override
-   protected void a(dse $$0, dca $$1, iz $$2, dse $$3, boolean $$4) {
-      bqs.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
+   protected boolean b(dsh $$0, dbj $$1, ja $$2) {
+      return $$0.a(dfh.dR) || super.b($$0, $$1, $$2);
    }
 
    @Override
-   protected void a(dse $$0, arf $$1, iz $$2, azh $$3) {
-      dpj $$4 = $$1.c_($$2);
-      if ($$4 instanceof dpc) {
-         ((dpc)$$4).l();
-      }
-   }
-
-   @Nullable
-   @Override
-   public dpj a(iz $$0, dse $$1) {
-      return new dpc($$0, $$1);
+   public boolean b(dcg $$0, ja $$1, dsh $$2) {
+      return $$0.b_($$1.c()).c();
    }
 
    @Override
-   protected dlh a_(dse $$0) {
-      return dlh.c;
+   public boolean a(dcd $$0, aym $$1, ja $$2, dsh $$3) {
+      return (double)$$0.z.i() < 0.45;
    }
 
    @Override
-   protected boolean c_(dse $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dse $$0, dca $$1, iz $$2) {
-      return cpw.a($$1.c_($$2));
-   }
-
-   @Override
-   protected dse a(dse $$0, dlo $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dse a(dse $$0, djy $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dsf.a<dfb, dse> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public dse a(cyc $$0) {
-      return this.o().a(b, $$0.d().g());
+   public void a(aqk $$0, aym $$1, ja $$2, dsh $$3) {
+      drw.e.a($$0, $$0.l().g(), $$2, $$3, $$1);
    }
 }

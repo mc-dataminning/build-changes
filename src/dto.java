@@ -1,23 +1,21 @@
-public enum dto implements azu {
-   a("save"),
-   b("load"),
-   c("corner"),
-   d("data");
+public enum dto implements ayz {
+   a("inactive"),
+   b("active"),
+   c("cooldown");
 
-   private final String e;
-   private final xp f;
+   private final String d;
 
    private dto(final String $$0) {
-      this.e = $$0;
-      this.f = xp.c("structure_block.mode_info." + $$0);
+      this.d = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.d;
    }
 
    @Override
    public String c() {
-      return this.e;
-   }
-
-   public xp a() {
-      return this.f;
+      return this.d;
    }
 }

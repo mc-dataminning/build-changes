@@ -1,65 +1,97 @@
-import java.util.Optional;
+import java.util.List;
 
-public class crh extends crr {
-   public crh(bqp $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1, $$2, $$3);
+public class crh implements cpv {
+   private final js<cua> b;
+   private final int c;
+   private final int d;
+   private final cpe e;
+
+   public crh(cpe $$0, int $$1, int $$2) {
+      this($$0, $$1, $$2, js.a($$1 * $$2, cua.l));
+   }
+
+   public crh(cpe $$0, int $$1, int $$2, js<cua> $$3) {
+      this.b = $$3;
+      this.e = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public void b(cur $$0, cur $$1) {
+   public int b() {
+      return this.b.size();
    }
 
    @Override
-   public boolean a(cmz $$0) {
-      return false;
-   }
+   public boolean c() {
+      for (cua $$0 : this.b) {
+         if (!$$0.e()) {
+            return false;
+         }
+      }
 
-   @Override
-   public Optional<cur> a(int $$0, int $$1, cmz $$2) {
-      return Optional.empty();
-   }
-
-   @Override
-   public cur b(int $$0, int $$1, cmz $$2) {
-      return cur.l;
-   }
-
-   @Override
-   public cur d(cur $$0) {
-      return $$0;
-   }
-
-   @Override
-   public cur b(cur $$0, int $$1) {
-      return this.d($$0);
-   }
-
-   @Override
-   public boolean b(cmz $$0) {
-      return false;
-   }
-
-   @Override
-   public boolean a(cur $$0) {
-      return false;
-   }
-
-   @Override
-   public cur a(int $$0) {
-      return cur.l;
-   }
-
-   @Override
-   public void a(cmz $$0, cur $$1) {
-   }
-
-   @Override
-   public boolean e() {
-      return false;
-   }
-
-   @Override
-   public boolean f() {
       return true;
+   }
+
+   @Override
+   public cua a(int $$0) {
+      return $$0 >= this.b() ? cua.l : this.b.get($$0);
+   }
+
+   @Override
+   public cua b(int $$0) {
+      return bpx.a(this.b, $$0);
+   }
+
+   @Override
+   public cua a(int $$0, int $$1) {
+      cua $$2 = bpx.a(this.b, $$0, $$1);
+      if (!$$2.e()) {
+         this.e.a(this);
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public void a(int $$0, cua $$1) {
+      this.b.set($$0, $$1);
+      this.e.a(this);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cmh $$0) {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.b.clear();
+   }
+
+   @Override
+   public int g() {
+      return this.d;
+   }
+
+   @Override
+   public int f() {
+      return this.c;
+   }
+
+   @Override
+   public List<cua> h() {
+      return List.copyOf(this.b);
+   }
+
+   @Override
+   public void a(cml $$0) {
+      for (cua $$1 : this.b) {
+         $$0.a($$1);
+      }
    }
 }

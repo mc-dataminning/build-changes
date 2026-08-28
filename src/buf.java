@@ -1,48 +1,96 @@
-import java.util.EnumSet;
-import java.util.Set;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public enum buf {
-   a(0),
-   b(1),
-   c(2),
-   d(3),
-   e(4);
+public class buf {
+   private final Map<jj<bub>, buc> a;
 
-   public static final Set<buf> f = Set.of(values());
-   public static final Set<buf> g = Set.of(e, d);
-   private final int h;
-
-   private buf(final int $$0) {
-      this.h = $$0;
+   buf(Map<jj<bub>, buc> $$0) {
+      this.a = $$0;
    }
 
-   private int a() {
-      return 1 << this.h;
+   private buc d(jj<bub> $$0) {
+      buc $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("Can't find attribute " + $$0.g());
+      } else {
+         return $$1;
+      }
    }
 
-   private boolean b(int $$0) {
-      return ($$0 & this.a()) == this.a();
+   public double a(jj<bub> $$0) {
+      return this.d($$0).f();
    }
 
-   public static Set<buf> a(int $$0) {
-      Set<buf> $$1 = EnumSet.noneOf(buf.class);
+   public double b(jj<bub> $$0) {
+      return this.d($$0).b();
+   }
 
-      for (buf $$2 : values()) {
-         if ($$2.b($$0)) {
-            $$1.add($$2);
-         }
+   public double a(jj<bub> $$0, UUID $$1) {
+      bue $$2 = this.d($$0).a($$1);
+      if ($$2 == null) {
+         throw new IllegalArgumentException("Can't find modifier " + $$1 + " on attribute " + $$0.g());
+      } else {
+         return $$2.d();
+      }
+   }
+
+   @Nullable
+   public buc a(Consumer<buc> $$0, jj<bub> $$1) {
+      buc $$2 = this.a.get($$1);
+      if ($$2 == null) {
+         return null;
+      } else {
+         buc $$3 = new buc($$1, $$0);
+         $$3.a($$2);
+         return $$3;
+      }
+   }
+
+   public static buf.a a() {
+      return new buf.a();
+   }
+
+   public boolean c(jj<bub> $$0) {
+      return this.a.containsKey($$0);
+   }
+
+   public boolean b(jj<bub> $$0, UUID $$1) {
+      buc $$2 = this.a.get($$0);
+      return $$2 != null && $$2.a($$1) != null;
+   }
+
+   public static class a {
+      private final Builder<jj<bub>, buc> a = ImmutableMap.builder();
+      private boolean b;
+
+      private buc b(jj<bub> $$0) {
+         buc $$1 = new buc($$0, $$1x -> {
+            if (this.b) {
+               throw new UnsupportedOperationException("Tried to change value for default attribute instance: " + $$0.g());
+            }
+         });
+         this.a.put($$0, $$1);
+         return $$1;
       }
 
-      return $$1;
-   }
-
-   public static int a(Set<buf> $$0) {
-      int $$1 = 0;
-
-      for (buf $$2 : $$0) {
-         $$1 |= $$2.a();
+      public buf.a a(jj<bub> $$0) {
+         this.b($$0);
+         return this;
       }
 
-      return $$1;
+      public buf.a a(jj<bub> $$0, double $$1) {
+         buc $$2 = this.b($$0);
+         $$2.a($$1);
+         return this;
+      }
+
+      public buf a() {
+         this.b = true;
+         return new buf(this.a.buildKeepingLast());
+      }
    }
 }

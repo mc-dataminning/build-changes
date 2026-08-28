@@ -1,44 +1,65 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2LongMap;
+import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import org.apache.commons.lang3.mutable.MutableInt;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class bwp extends bvk<cmm> {
-   private final float c;
+public class bwp {
+   private static final int a = 40;
+   private static final int b = 5;
+   private static final int c = 20;
+   private static final int d = 4;
 
-   public bwp(float $$0) {
-      super(ImmutableMap.of(ccv.m, ccw.c, ccv.n, ccw.c), Integer.MAX_VALUE);
-      this.c = $$0;
-   }
+   public static bus<bth> a(float $$0) {
+      Long2LongMap $$1 = new Long2LongOpenHashMap();
+      MutableLong $$2 = new MutableLong(0L);
+      return bye.a(
+         (Function<bye.b<bth>, ? extends App<bye.c<bth>, byh<bth>>>)($$3 -> $$3.group($$3.c(ccc.m), $$3.c(ccc.b))
+               .apply($$3, ($$3x, $$4) -> ($$4x, $$5, $$6) -> {
+                     if ($$4x.Z() - $$2.getValue() < 20L) {
+                        return false;
+                     } else {
+                        cec $$7 = $$4x.y();
+                        Optional<ja> $$8 = $$7.d($$0xxxx -> $$0xxxx.a(ceg.n), $$5.dp(), 48, cec.b.c);
+                        if (!$$8.isEmpty() && !($$8.get().j($$5.dp()) <= 4.0)) {
+                           MutableInt $$9 = new MutableInt(0);
+                           $$2.setValue($$4x.Z() + (long)$$4x.E_().a(20));
+                           Predicate<ja> $$10 = $$3xxx -> {
+                              long $$4xx = $$3xxx.a();
+                              if ($$1.containsKey($$4xx)) {
+                                 return false;
+                              } else if ($$9.incrementAndGet() >= 5) {
+                                 return false;
+                              } else {
+                                 $$1.put($$4xx, $$2.getValue() + 40L);
+                                 return true;
+                              }
+                           };
+                           Set<Pair<jj<cef>, ja>> $$11 = $$7.b($$0xxxx -> $$0xxxx.a(ceg.n), $$10, $$5.dp(), 48, cec.b.c).collect(Collectors.toSet());
+                           eop $$12 = buk.a($$5, $$11);
+                           if ($$12 != null && $$12.j()) {
+                              ja $$13 = $$12.l();
+                              Optional<jj<cef>> $$14 = $$7.c($$13);
+                              if ($$14.isPresent()) {
+                                 $$3x.a(new ccf($$13, $$0, 1));
+                                 afy.c($$4x, $$13);
+                              }
+                           } else if ($$9.getValue() < 5) {
+                              $$1.long2LongEntrySet().removeIf($$1xxxx -> $$1xxxx.getLongValue() < $$2.getValue());
+                           }
 
-   protected boolean a(arf $$0, cmm $$1) {
-      cmz $$2 = $$1.gq();
-      return $$1.bD() && $$2 != null && !$$1.be() && !$$1.U && $$1.g($$2) <= 16.0 && $$2.cb != null;
-   }
-
-   protected boolean a(arf $$0, cmm $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(arf $$0, cmm $$1, long $$2) {
-      this.a($$1);
-   }
-
-   protected void c(arf $$0, cmm $$1, long $$2) {
-      but<?> $$3 = $$1.dS();
-      $$3.b(ccv.m);
-      $$3.b(ccv.n);
-   }
-
-   protected void d(arf $$0, cmm $$1, long $$2) {
-      this.a($$1);
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   private void a(cmm $$0) {
-      but<?> $$1 = $$0.dS();
-      $$1.a(ccv.m, new ccy(new bvv($$0.gq(), false), this.c, 2));
-      $$1.a(ccv.n, new bvv($$0.gq(), true));
+                           return true;
+                        } else {
+                           return false;
+                        }
+                     }
+                  }))
+      );
    }
 }

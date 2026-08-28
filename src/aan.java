@@ -1,11 +1,21 @@
-public interface aan extends acf, agx {
-   void a(aaq var1);
+public record aan(ja c) implements aac {
+   public static final ys<vr, aan> a = aac.a(aan::a, aan::new);
+   public static final aac.b<aan> b = aac.a("debug/poi_removed");
 
-   void a(aar var1);
+   private aan(vr $$0) {
+      this($$0.e());
+   }
 
-   void a(aap var1);
+   private void a(vr $$0) {
+      $$0.a(this.c);
+   }
 
-   void a(aas var1);
+   @Override
+   public aac.b<aan> a() {
+      return b;
+   }
 
-   void a(aao var1);
+   public ja b() {
+      return this.c;
+   }
 }

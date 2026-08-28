@@ -1,44 +1,24 @@
 import com.mojang.serialization.Codec;
 
-public class ecd extends eba<edm> {
-   private static final int a = 7;
-
-   ecd(Codec<edm> $$0) {
+public class ecd extends ebe<edu> {
+   public ecd(Codec<edu> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebc<edm> $$0) {
-      dcv $$1 = $$0.b();
-      azh $$2 = $$0.d();
-      edm $$3 = $$0.f();
-      iz $$4 = $$0.e();
-      int $$5 = $$2.a($$3.c + 1);
-      iz.a $$6 = new iz.a();
+   public boolean a(ebg<edu> $$0) {
+      edu $$1 = $$0.f();
+      aym $$2 = $$0.d();
+      dcz $$3 = $$0.b();
+      due $$4 = $$0.c();
+      ja $$5 = $$0.e();
 
-      for (int $$7 = 0; $$7 < $$5; $$7++) {
-         this.a($$6, $$2, $$4, Math.min($$7, 7));
-         dse $$8 = $$1.a_($$6);
-
-         for (edm.a $$9 : $$3.b) {
-            if (ebv.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
-               $$1.a($$6, $$9.c, 2);
-               break;
-            }
+      for (ecy $$6 : $$1.b) {
+         if ($$2.i() < $$6.c) {
+            return $$6.a($$3, $$4, $$2, $$5);
          }
       }
 
-      return true;
-   }
-
-   private void a(iz.a $$0, azh $$1, iz $$2, int $$3) {
-      int $$4 = this.a($$1, $$3);
-      int $$5 = this.a($$1, $$3);
-      int $$6 = this.a($$1, $$3);
-      $$0.a($$2, $$4, $$5, $$6);
-   }
-
-   private int a(azh $$0, int $$1) {
-      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
+      return $$1.c.a().a($$3, $$4, $$2, $$5);
    }
 }

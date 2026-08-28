@@ -1,10 +1,6 @@
-public interface aby extends aan {
+public class aby extends yy<abn> {
    @Override
-   default wl b() {
-      return wl.e;
+   public zd<aby> a() {
+      return afz.b;
    }
-
-   void a(abz var1);
-
-   void a(aca var1);
 }

@@ -1,75 +1,64 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.Arrays;
 import java.util.function.Function;
 
 public class bdj extends DataFix {
+   private static final String a = "minecraft:empty";
+
    public bdj(Schema $$0) {
-      super($$0, false);
+      super($$0, true);
    }
 
    protected TypeRewriteRule makeRule() {
-      Schema $$0 = this.getInputSchema();
-      return this.fixTypeEverywhereTyped("EntityProjectileOwner", $$0.getType(bgx.B), this::a);
+      Type<?> $$0 = this.getInputSchema().getType(bgd.B);
+      Type<?> $$1 = this.getOutputSchema().getType(bgd.B);
+      return this.fixTypeEverywhereTyped(
+         "Fix AbstractArrow item type",
+         $$0,
+         $$1,
+         azn.a(this.a("minecraft:trident", bdj::c), this.a("minecraft:arrow", bdj::a), this.a("minecraft:spectral_arrow", bdj::b))
+      );
    }
 
-   private Typed<?> a(Typed<?> $$0) {
-      $$0 = this.a($$0, "minecraft:egg", this::d);
-      $$0 = this.a($$0, "minecraft:ender_pearl", this::d);
-      $$0 = this.a($$0, "minecraft:experience_bottle", this::d);
-      $$0 = this.a($$0, "minecraft:snowball", this::d);
-      $$0 = this.a($$0, "minecraft:potion", this::d);
-      $$0 = this.a($$0, "minecraft:potion", this::c);
-      $$0 = this.a($$0, "minecraft:llama_spit", this::b);
-      $$0 = this.a($$0, "minecraft:arrow", this::a);
-      $$0 = this.a($$0, "minecraft:spectral_arrow", this::a);
-      return this.a($$0, "minecraft:trident", this::a);
+   private Function<Typed<?>, Typed<?>> a(String $$0, bdj.a<?> $$1) {
+      Type<?> $$2 = this.getInputSchema().getChoiceType(bgd.B, $$0);
+      Type<?> $$3 = this.getOutputSchema().getChoiceType(bgd.B, $$0);
+      return a($$0, $$1, $$2, $$3);
    }
 
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      long $$1 = $$0.get("OwnerUUIDMost").asLong(0L);
-      long $$2 = $$0.get("OwnerUUIDLeast").asLong(0L);
-      return this.a($$0, $$1, $$2).remove("OwnerUUIDMost").remove("OwnerUUIDLeast");
+   private static <T> Function<Typed<?>, Typed<?>> a(String $$0, bdj.a<?> $$1, Type<?> $$2, Type<T> $$3) {
+      OpticFinder<?> $$4 = DSL.namedChoice($$0, $$2);
+      return $$3x -> $$3x.updateTyped($$4, $$3, $$2xx -> $$1.fix($$2xx, $$3));
    }
 
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      OptionalDynamic<?> $$1 = $$0.get("Owner");
-      long $$2 = $$1.get("OwnerUUIDMost").asLong(0L);
-      long $$3 = $$1.get("OwnerUUIDLeast").asLong(0L);
-      return this.a($$0, $$2, $$3).remove("Owner");
+   private static <T> Typed<T> a(Typed<?> $$0, Type<T> $$1) {
+      return ac.a($$0, $$1, $$0x -> $$0x.set("item", a($$0x, a($$0x))));
    }
 
-   private Dynamic<?> c(Dynamic<?> $$0) {
-      OptionalDynamic<?> $$1 = $$0.get("Potion");
-      return $$0.set("Item", $$1.orElseEmptyMap()).remove("Potion");
+   private static String a(Dynamic<?> $$0) {
+      return $$0.get("Potion").asString("minecraft:empty").equals("minecraft:empty") ? "minecraft:arrow" : "minecraft:tipped_arrow";
    }
 
-   private Dynamic<?> d(Dynamic<?> $$0) {
-      String $$1 = "owner";
-      OptionalDynamic<?> $$2 = $$0.get("owner");
-      long $$3 = $$2.get("M").asLong(0L);
-      long $$4 = $$2.get("L").asLong(0L);
-      return this.a($$0, $$3, $$4).remove("owner");
+   private static <T> Typed<T> b(Typed<?> $$0, Type<T> $$1) {
+      return ac.a($$0, $$1, $$0x -> $$0x.set("item", a($$0x, "minecraft:spectral_arrow")));
    }
 
-   private Dynamic<?> a(Dynamic<?> $$0, long $$1, long $$2) {
-      String $$3 = "OwnerUUID";
-      return $$1 != 0L && $$2 != 0L ? $$0.set("OwnerUUID", $$0.createIntList(Arrays.stream(a($$1, $$2)))) : $$0;
+   private static Dynamic<?> a(Dynamic<?> $$0, String $$1) {
+      return $$0.createMap(ImmutableMap.of($$0.createString("id"), $$0.createString($$1), $$0.createString("Count"), $$0.createInt(1)));
    }
 
-   private static int[] a(long $$0, long $$1) {
-      return new int[]{(int)($$0 >> 32), (int)$$0, (int)($$1 >> 32), (int)$$1};
+   private static <T> Typed<T> c(Typed<?> $$0, Type<T> $$1) {
+      return new Typed($$1, $$0.getOps(), $$0.getValue());
    }
 
-   private Typed<?> a(Typed<?> $$0, String $$1, Function<Dynamic<?>, Dynamic<?>> $$2) {
-      Type<?> $$3 = this.getInputSchema().getChoiceType(bgx.B, $$1);
-      Type<?> $$4 = this.getOutputSchema().getChoiceType(bgx.B, $$1);
-      return $$0.updateTyped(DSL.namedChoice($$1, $$3), $$4, $$1x -> $$1x.update(DSL.remainderFinder(), $$2));
+   interface a<F> {
+      Typed<F> fix(Typed<?> var1, Type<F> var2);
    }
 }

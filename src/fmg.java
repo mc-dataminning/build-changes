@@ -1,52 +1,31 @@
-public class fmg extends fnf {
-   private static final xp a = xp.c("gui.toMenu");
-   private static final xp b = xp.c("gui.toTitle");
-   private final fnf c;
-   private final xp d;
-   private final xp r;
-   private final fkx s = fkx.d();
+public class fmg extends fnd {
+   private fif a;
+   private final Runnable b;
+   private final Runnable c;
 
-   public fmg(fnf $$0, xp $$1, xp $$2) {
-      this($$0, $$1, $$2, a);
-   }
-
-   public fmg(fnf $$0, xp $$1, xp $$2, xp $$3) {
-      super($$1);
-      this.c = $$0;
-      this.d = $$2;
-      this.r = $$3;
+   public fmg(Runnable $$0, Runnable $$1) {
+      super(wu.c("datapackFailure.title"));
+      this.a = fif.a;
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   protected void aM_() {
-      this.s.c().b().a(10);
-      this.s.a(new fin(this.l, this.p));
-      this.s.a(new fia(this.d, this.p).d(this.n - 50).b(true));
-      fhg $$0;
-      if (this.m.F()) {
-         $$0 = fhg.a(this.r, $$0x -> this.m.a(this.c)).a();
-      } else {
-         $$0 = fhg.a(b, $$0x -> this.m.a(new fnk())).a();
-      }
-
-      this.s.a($$0);
-      this.s.a();
-      this.s.a(this::c);
-      this.c();
+   protected void aO_() {
+      super.aO_();
+      this.a = fif.a(this.o, this.n(), this.m - 50);
+      this.c(fhm.a(wu.c("datapackFailure.safeMode"), $$0 -> this.c.run()).a(this.m / 2 - 155, this.n / 6 + 96, 150, 20).a());
+      this.c(fhm.a(wt.k, $$0 -> this.b.run()).a(this.m / 2 - 155 + 160, this.n / 6 + 96, 150, 20).a());
    }
 
    @Override
-   protected void c() {
-      fkr.a(this.s, this.G());
+   public void a(fgz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.a($$0, this.m / 2, 70);
    }
 
    @Override
-   public xp i() {
-      return xo.a(this.l, this.d);
-   }
-
-   @Override
-   public boolean aC_() {
+   public boolean aE_() {
       return false;
    }
 }

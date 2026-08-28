@@ -1,24 +1,63 @@
-import org.joml.Matrix4f;
+import javax.annotation.Nullable;
 
-public class fpw implements fpx {
-   private final ayl a;
+public abstract class fpw extends fnd {
+   private static final int b = 100;
+   private final wu c;
+   @Nullable
+   private final wu q;
+   private final wu r;
+   @Nullable
+   protected fho a;
+   @Nullable
+   private fhx s;
+   private final fkx u;
 
-   public fpw(ayl $$0) {
-      this.a = $$0;
+   protected fpw(wu $$0, wu $$1, wu $$2) {
+      this($$0, $$1, null, $$2);
+   }
+
+   protected fpw(wu $$0, wu $$1, @Nullable wu $$2, wu $$3) {
+      super($$0);
+      this.c = $$1;
+      this.q = $$2;
+      this.r = $$3;
+      this.u = new fkx(0, 0, this.m, this.n);
+   }
+
+   protected abstract fla m();
+
+   @Override
+   protected void aO_() {
+      fld $$0 = this.u.a(fld.d().a(8));
+      $$0.c().b();
+      $$0.a(new fit(this.n(), this.o));
+      this.s = $$0.a(new fhx(this.m - 100, this.c, this.o, 12), $$0x -> $$0x.a(12));
+      this.s.b(false);
+      fld $$1 = $$0.a(fld.d().a(8));
+      $$1.c().b();
+      if (this.q != null) {
+         this.a = $$1.a(fho.a(this.q, this.o).a());
+      }
+
+      $$1.a(this.m());
+      this.u.a($$1x -> {
+         fhk var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
    @Override
-   public int a(fgr $$0) {
-      return $$0.a(this.a);
+   protected void c() {
+      if (this.s != null) {
+         this.s.d(this.m - 100);
+      }
+
+      this.u.a();
+      fkx.a(this.u, this.H());
    }
 
    @Override
-   public int a() {
-      return 10;
-   }
-
-   @Override
-   public void a(fgr $$0, int $$1, int $$2, Matrix4f $$3, gdq.a $$4) {
-      $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, fgr.a.a, 0, 15728880);
+   public wu i() {
+      return this.r;
    }
 }

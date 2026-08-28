@@ -1,31 +1,31 @@
-public class gkt extends gkf<cgb, fvn<cgb>> {
-   private static final alf a = new alf("textures/entity/rabbit/brown.png");
-   private static final alf i = new alf("textures/entity/rabbit/white.png");
-   private static final alf j = new alf("textures/entity/rabbit/black.png");
-   private static final alf k = new alf("textures/entity/rabbit/gold.png");
-   private static final alf l = new alf("textures/entity/rabbit/salt.png");
-   private static final alf m = new alf("textures/entity/rabbit/white_splotched.png");
-   private static final alf n = new alf("textures/entity/rabbit/toast.png");
-   private static final alf o = new alf("textures/entity/rabbit/caerbannog.png");
+public class gkt extends gkm<cfe, fvi> {
+   private static final akk a = new akk("textures/entity/parrot/parrot_red_blue.png");
+   private static final akk i = new akk("textures/entity/parrot/parrot_blue.png");
+   private static final akk j = new akk("textures/entity/parrot/parrot_green.png");
+   private static final akk k = new akk("textures/entity/parrot/parrot_yellow_blue.png");
+   private static final akk l = new akk("textures/entity/parrot/parrot_grey.png");
 
-   public gkt(giz.a $$0) {
-      super($$0, new fvn<>($$0.a(fxb.be)), 0.3F);
+   public gkt(gjg.a $$0) {
+      super($$0, new fvi($$0.a(fxh.aG)), 0.3F);
    }
 
-   public alf a(cgb $$0) {
-      String $$1 = n.a($$0.af().getString());
-      if ("Toast".equals($$1)) {
-         return n;
-      } else {
-         return switch ($$0.gq()) {
-            case a -> a;
-            case b -> i;
-            case c -> j;
-            case e -> k;
-            case f -> l;
-            case d -> m;
-            case g -> o;
-         };
-      }
+   public akk a(cfe $$0) {
+      return a($$0.gv());
+   }
+
+   public static akk a(cfe.b $$0) {
+      return switch ($$0) {
+         case a -> a;
+         case b -> i;
+         case c -> j;
+         case d -> k;
+         case e -> l;
+      };
+   }
+
+   public float a(cfe $$0, float $$1) {
+      float $$2 = aye.i($$1, $$0.cg, $$0.cd);
+      float $$3 = aye.i($$1, $$0.cf, $$0.ce);
+      return (aye.a($$2) + 1.0F) * $$3;
    }
 }

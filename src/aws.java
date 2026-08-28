@@ -1,7 +1,21 @@
-public interface aws {
-   axf<dac> a = a("tooltip_order");
+import java.util.function.IntConsumer;
 
-   private static axf<dac> a(String $$0) {
-      return axf.a(lq.u, new alf("minecraft", $$0));
-   }
+public interface aws {
+   int a(int var1, int var2);
+
+   void b(int var1, int var2);
+
+   int a(int var1);
+
+   long[] a();
+
+   int b();
+
+   int c();
+
+   void a(IntConsumer var1);
+
+   void a(int[] var1);
+
+   aws d();
 }

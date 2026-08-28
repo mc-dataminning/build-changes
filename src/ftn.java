@@ -1,80 +1,94 @@
-public class ftn<T extends cfk> extends fva<T> {
-   private float q;
-   private float r;
-   private float s;
+import java.util.Arrays;
 
-   public ftn(fxc $$0) {
-      super($$0);
+public class ftn<T extends bsd> extends fur<T> {
+   private final fxi a;
+   private final fxi[] b;
+   private final fxi f;
+
+   public ftn(fxi $$0) {
+      this.a = $$0;
+      this.f = $$0.b("head");
+      this.b = new fxi[12];
+      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      this.q = $$0.G($$3);
-      this.r = $$0.H($$3);
-      this.s = $$0.I($$3);
-      if (this.q <= 0.0F) {
-         this.n.e = 0.0F;
-         this.n.g = 0.0F;
-         this.j.e = 0.0F;
-         this.j.g = 0.0F;
-         this.k.e = 0.0F;
-         this.k.g = 0.0F;
-         this.k.b = -1.2F;
-         this.h.e = 0.0F;
-         this.i.e = 0.0F;
-         this.i.g = 0.0F;
-         this.i.b = -1.1F;
-         this.i.c = 18.0F;
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-      if ($$0.y()) {
-         this.o.e = (float) (Math.PI / 4);
-         this.o.c += -4.0F;
-         this.o.d += 5.0F;
-         this.n.c += -3.3F;
-         this.n.d++;
-         this.l.c += 8.0F;
-         this.l.d += -2.0F;
-         this.m.c += 2.0F;
-         this.m.d += -0.8F;
-         this.l.e = 1.7278761F;
-         this.m.e = 2.670354F;
-         this.j.e = (float) (-Math.PI / 20);
-         this.j.c = 16.1F;
-         this.j.d = -7.0F;
-         this.k.e = (float) (-Math.PI / 20);
-         this.k.c = 16.1F;
-         this.k.d = -7.0F;
-         this.h.e = (float) (-Math.PI / 2);
-         this.h.c = 21.0F;
-         this.h.d = 1.0F;
-         this.i.e = (float) (-Math.PI / 2);
-         this.i.c = 21.0F;
-         this.i.d = 1.0F;
-         this.p = 3;
-      }
+   private static String a(int $$0) {
+      return "part" + $$0;
    }
 
+   public static fxo b() {
+      fxq $$0 = new fxq();
+      fxr $$1 = $$0.a();
+      $$1.a("head", fxn.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fxk.a);
+      float $$2 = 0.0F;
+      fxn $$3 = fxn.c().a(0, 16).a(0.0F, 0.0F, 0.0F, 2.0F, 8.0F, 2.0F);
+
+      for (int $$4 = 0; $$4 < 4; $$4++) {
+         float $$5 = aye.b($$2) * 9.0F;
+         float $$6 = -2.0F + aye.b((float)($$4 * 2) * 0.25F);
+         float $$7 = aye.a($$2) * 9.0F;
+         $$1.a(a($$4), $$3, fxk.a($$5, $$6, $$7));
+         $$2++;
+      }
+
+      $$2 = (float) (Math.PI / 4);
+
+      for (int $$8 = 4; $$8 < 8; $$8++) {
+         float $$9 = aye.b($$2) * 7.0F;
+         float $$10 = 2.0F + aye.b((float)($$8 * 2) * 0.25F);
+         float $$11 = aye.a($$2) * 7.0F;
+         $$1.a(a($$8), $$3, fxk.a($$9, $$10, $$11));
+         $$2++;
+      }
+
+      $$2 = 0.47123894F;
+
+      for (int $$12 = 8; $$12 < 12; $$12++) {
+         float $$13 = aye.b($$2) * 5.0F;
+         float $$14 = 11.0F + aye.b((float)$$12 * 1.5F * 0.5F);
+         float $$15 = aye.a($$2) * 5.0F;
+         $$1.a(a($$12), $$3, fxk.a($$13, $$14, $$15));
+         $$2++;
+      }
+
+      return fxo.a($$0, 64, 32);
+   }
+
+   @Override
+   public fxi a() {
+      return this.a;
+   }
+
+   @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (this.q > 0.0F) {
-         this.n.g = fuz.a(this.n.g, -1.2707963F, this.q);
-         this.n.f = fuz.a(this.n.f, 1.2707963F, this.q);
-         this.j.e = -1.2707963F;
-         this.k.e = -0.47079635F;
-         this.k.g = -0.2F;
-         this.k.b = -0.2F;
-         this.h.e = -0.4F;
-         this.i.e = 0.5F;
-         this.i.g = -0.5F;
-         this.i.b = -0.3F;
-         this.i.c = 20.0F;
-         this.l.e = fuz.a(this.l.e, 0.8F, this.r);
-         this.m.e = fuz.a(this.m.e, -0.4F, this.r);
+      float $$6 = $$3 * (float) Math.PI * -0.1F;
+
+      for (int $$7 = 0; $$7 < 4; $$7++) {
+         this.b[$$7].c = -2.0F + aye.b(((float)($$7 * 2) + $$3) * 0.25F);
+         this.b[$$7].b = aye.b($$6) * 9.0F;
+         this.b[$$7].d = aye.a($$6) * 9.0F;
+         $$6++;
       }
 
-      if (this.s > 0.0F) {
-         this.n.e = fuz.a(this.n.e, -0.58177644F, this.s);
+      $$6 = (float) (Math.PI / 4) + $$3 * (float) Math.PI * 0.03F;
+
+      for (int $$8 = 4; $$8 < 8; $$8++) {
+         this.b[$$8].c = 2.0F + aye.b(((float)($$8 * 2) + $$3) * 0.25F);
+         this.b[$$8].b = aye.b($$6) * 7.0F;
+         this.b[$$8].d = aye.a($$6) * 7.0F;
+         $$6++;
       }
+
+      $$6 = 0.47123894F + $$3 * (float) Math.PI * -0.05F;
+
+      for (int $$9 = 8; $$9 < 12; $$9++) {
+         this.b[$$9].c = 11.0F + aye.b(((float)$$9 * 1.5F + $$3) * 0.5F);
+         this.b[$$9].b = aye.b($$6) * 5.0F;
+         this.b[$$9].d = aye.a($$6) * 5.0F;
+         $$6++;
+      }
+
+      this.f.f = $$4 * (float) (Math.PI / 180.0);
+      this.f.e = $$5 * (float) (Math.PI / 180.0);
    }
 }

@@ -1,40 +1,19 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bys extends bvk<cmm> {
-   public bys() {
-      super(ImmutableMap.of());
-   }
+public class bys {
+   private static final bpi a = bpo.a(100, 200);
 
-   protected boolean a(arf $$0, cmm $$1, long $$2) {
-      return c($$1) || b($$1);
-   }
-
-   protected void b(arf $$0, cmm $$1, long $$2) {
-      if (c($$1) || b($$1)) {
-         but<?> $$3 = $$1.dS();
-         if (!$$3.c(cop.g)) {
-            $$3.b(ccv.t);
-            $$3.b(ccv.m);
-            $$3.b(ccv.n);
-            $$3.b(ccv.r);
-            $$3.b(ccv.q);
-         }
-
-         $$3.a(cop.g);
-      }
-   }
-
-   protected void c(arf $$0, cmm $$1, long $$2) {
-      if ($$2 % 100L == 0L) {
-         $$1.a($$0, $$2, 3);
-      }
-   }
-
-   public static boolean b(btr $$0) {
-      return $$0.dS().a(ccv.A);
-   }
-
-   public static boolean c(btr $$0) {
-      return $$0.dS().a(ccv.x);
+   public static bus<bsy> a() {
+      return bye.a(
+         (Function<bye.b<bsy>, ? extends App<bye.c<bsy>, byh<bsy>>>)($$0 -> $$0.group($$0.a(ccc.aB), $$0.a(ccc.m), $$0.c(ccc.aG), $$0.b(ccc.B), $$0.c(ccc.az))
+               .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
+                     $$0x.a(azh.a);
+                     $$2.a(azh.a, (long)a.a($$3x.E_()));
+                     $$1.b();
+                     $$4x.b(btk.m);
+                     return true;
+                  }))
+      );
    }
 }

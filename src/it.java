@@ -1,48 +1,56 @@
 import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType.StringType;
+import com.mojang.brigadier.arguments.LongArgumentType;
 
-public class it implements ik<StringArgumentType, it.a> {
-   public void a(it.a $$0, wm $$1) {
-      $$1.a((Enum<?>)$$0.b);
+public class it implements il<LongArgumentType, it.a> {
+   public void a(it.a $$0, vr $$1) {
+      boolean $$2 = $$0.b != Long.MIN_VALUE;
+      boolean $$3 = $$0.c != Long.MAX_VALUE;
+      $$1.k(in.a($$2, $$3));
+      if ($$2) {
+         $$1.b($$0.b);
+      }
+
+      if ($$3) {
+         $$1.b($$0.c);
+      }
    }
 
-   public it.a a(wm $$0) {
-      StringType $$1 = $$0.b(StringType.class);
-      return new it.a($$1);
+   public it.a a(vr $$0) {
+      byte $$1 = $$0.readByte();
+      long $$2 = in.a($$1) ? $$0.readLong() : Long.MIN_VALUE;
+      long $$3 = in.b($$1) ? $$0.readLong() : Long.MAX_VALUE;
+      return new it.a($$2, $$3);
    }
 
    public void a(it.a $$0, JsonObject $$1) {
-      $$1.addProperty("type", switch ($$0.b) {
-         case SINGLE_WORD -> "word";
-         case QUOTABLE_PHRASE -> "phrase";
-         case GREEDY_PHRASE -> "greedy";
-         default -> throw new MatchException(null, null);
-      });
-   }
-
-   public it.a a(StringArgumentType $$0) {
-      return new it.a($$0.getType());
-   }
-
-   public final class a implements ik.a<StringArgumentType> {
-      final StringType b;
-
-      public a(final StringType $$1) {
-         this.b = $$1;
+      if ($$0.b != Long.MIN_VALUE) {
+         $$1.addProperty("min", $$0.b);
       }
 
-      public StringArgumentType a(el $$0) {
-         return switch (this.b) {
-            case SINGLE_WORD -> StringArgumentType.word();
-            case QUOTABLE_PHRASE -> StringArgumentType.string();
-            case GREEDY_PHRASE -> StringArgumentType.greedyString();
-            default -> throw new MatchException(null, null);
-         };
+      if ($$0.c != Long.MAX_VALUE) {
+         $$1.addProperty("max", $$0.c);
+      }
+   }
+
+   public it.a a(LongArgumentType $$0) {
+      return new it.a($$0.getMinimum(), $$0.getMaximum());
+   }
+
+   public final class a implements il.a<LongArgumentType> {
+      final long b;
+      final long c;
+
+      a(final long $$1, final long $$2) {
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public LongArgumentType a(em $$0) {
+         return LongArgumentType.longArg(this.b, this.c);
       }
 
       @Override
-      public ik<StringArgumentType, ?> a() {
+      public il<LongArgumentType, ?> a() {
          return it.this;
       }
    }

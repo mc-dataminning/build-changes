@@ -1,33 +1,48 @@
-public abstract class gnu<T extends btr, M extends fvh<T>> extends gnl<T, M> {
-   public gnu(gka<T, M> $$0) {
+public class gnu extends gns<cfk, fvy<cfk>> {
+   private static final akk a = new akk("textures/entity/sheep/sheep_fur.png");
+   private final fvx<cfk> b;
+
+   public gnu(glc<cfk, fvy<cfk>> $$0, fxe $$1) {
       super($$0);
+      this.b = new fvx<>($$1.a(fxh.bi));
    }
 
-   protected abstract int a(T var1);
+   public void a(fag $$0, gdx $$1, int $$2, cfk $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.y()) {
+         if ($$3.ch()) {
+            ffn $$10 = ffn.Q();
+            boolean $$11 = $$10.b($$3);
+            if ($$11) {
+               this.c().a(this.b);
+               this.b.a($$3, $$4, $$5, $$6);
+               this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
+               fak $$12 = $$1.getBuffer(gef.r(a));
+               this.b.a($$0, $$12, $$2, gkh.c($$3, 0.0F), 0.0F, 0.0F, 0.0F, 1.0F);
+            }
+         } else {
+            float $$21;
+            float $$22;
+            float $$23;
+            if ($$3.ag() && "jeb_".equals($$3.af().getString())) {
+               int $$13 = 25;
+               int $$14 = $$3.ai / 25 + $$3.al();
+               int $$15 = cst.values().length;
+               int $$16 = $$14 % $$15;
+               int $$17 = ($$14 + 1) % $$15;
+               float $$18 = ((float)($$3.ai % 25) + $$6) / 25.0F;
+               float[] $$19 = cfk.a(cst.a($$16));
+               float[] $$20 = cfk.a(cst.a($$17));
+               $$21 = $$19[0] * (1.0F - $$18) + $$20[0] * $$18;
+               $$22 = $$19[1] * (1.0F - $$18) + $$20[1] * $$18;
+               $$23 = $$19[2] * (1.0F - $$18) + $$20[2] * $$18;
+            } else {
+               float[] $$24 = cfk.a($$3.u());
+               $$21 = $$24[0];
+               $$22 = $$24[1];
+               $$23 = $$24[2];
+            }
 
-   protected abstract void a(faa var1, gdq var2, int var3, bsw var4, float var5, float var6, float var7, float var8);
-
-   public void a(faa $$0, gdq $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      int $$10 = this.a($$3);
-      azh $$11 = azh.a((long)$$3.al());
-      if ($$10 > 0) {
-         for (int $$12 = 0; $$12 < $$10; $$12++) {
-            $$0.a();
-            fxc $$13 = this.c().a($$11);
-            fxc.a $$14 = $$13.a($$11);
-            $$13.a($$0);
-            float $$15 = $$11.i();
-            float $$16 = $$11.i();
-            float $$17 = $$11.i();
-            float $$18 = ayz.i($$15, $$14.a, $$14.d) / 16.0F;
-            float $$19 = ayz.i($$16, $$14.b, $$14.e) / 16.0F;
-            float $$20 = ayz.i($$17, $$14.c, $$14.f) / 16.0F;
-            $$0.a($$18, $$19, $$20);
-            $$15 = -1.0F * ($$15 * 2.0F - 1.0F);
-            $$16 = -1.0F * ($$16 * 2.0F - 1.0F);
-            $$17 = -1.0F * ($$17 * 2.0F - 1.0F);
-            this.a($$0, $$1, $$2, $$3, $$15, $$16, $$17, $$6);
-            $$0.b();
+            a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$21, $$22, $$23);
          }
       }
    }

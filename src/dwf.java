@@ -1,15 +1,24 @@
-public interface dwf {
-   dwf a = new dwf() {
-      @Override
-      public void a() {
-      }
+import java.util.List;
+import java.util.stream.Stream;
 
-      @Override
-      public void a(bsw.c $$0) {
-      }
-   };
+public class dwf<T> {
+   private final dbk a;
+   private final List<T> b;
 
-   void a();
+   public dwf(dbk $$0, List<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   void a(bsw.c var1);
+   public dbk a() {
+      return this.a;
+   }
+
+   public Stream<T> b() {
+      return this.b.stream();
+   }
+
+   public boolean c() {
+      return this.b.isEmpty();
+   }
 }

@@ -1,32 +1,43 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Locale;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public record axs(int b) {
-   private static final String c = "#";
-   public static final Codec<axs> a = Codec.STRING.comapFlatMap($$0 -> {
-      if (!$$0.startsWith("#")) {
-         return DataResult.error(() -> "Not a color code: " + $$0);
-      } else {
-         try {
-            int $$1 = (int)Long.parseLong($$0.substring(1), 16);
-            return DataResult.success(new axs($$1));
-         } catch (NumberFormatException var2) {
-            return DataResult.error(() -> "Exception parsing color code: " + var2.getMessage());
-         }
-      }
-   }, axs::b);
+public class axs implements azb, AutoCloseable {
+   private static final Logger b = LogUtils.getLogger();
+   private CompletableFuture<?> c = CompletableFuture.completedFuture(null);
+   private final Executor d;
+   private volatile boolean e;
 
-   private String b() {
-      return String.format(Locale.ROOT, "#%08X", this.b);
+   public axs(Executor $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public String toString() {
-      return this.b();
+   public <T> void append(CompletableFuture<T> $$0, Consumer<T> $$1) {
+      this.c = this.c.<T, Object>thenCombine($$0, ($$0x, $$1x) -> $$1x).thenAcceptAsync($$1x -> {
+         if (!this.e) {
+            $$1.accept((T)$$1x);
+         }
+      }, this.d).exceptionally($$0x -> {
+         if ($$0x instanceof CompletionException $$1x) {
+            $$0x = $$1x.getCause();
+         }
+
+         if ($$0x instanceof CancellationException $$2) {
+            throw $$2;
+         } else {
+            b.error("Chain link failed, continuing to next one", $$0x);
+            return null;
+         }
+      });
    }
 
-   public int a() {
-      return this.b;
+   @Override
+   public void close() {
+      this.e = true;
    }
 }

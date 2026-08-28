@@ -1,14 +1,13 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import java.util.Objects;
 
-public class bcz extends bfv {
-   public bcz(Schema $$0) {
-      super($$0, false, "EntityGoatMissingStateFix", bgx.B, "minecraft:goat");
+public class bcz extends bgp {
+   public bcz(Schema $$0, boolean $$1) {
+      super("EntityTippedArrowFix", $$0, $$1);
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), $$0x -> $$0x.set("HasLeftHorn", $$0x.createBoolean(true)).set("HasRightHorn", $$0x.createBoolean(true)));
+   protected String a(String $$0) {
+      return Objects.equals($$0, "TippedArrow") ? "Arrow" : $$0;
    }
 }

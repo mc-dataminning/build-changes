@@ -1,134 +1,89 @@
-import java.util.Optional;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public abstract class coh extends cng implements cno {
-   public static final coh.a g = new coh.a();
-
-   public coh(btc<? extends coh> $$0, dca $$1) {
-      super($$0, $$1);
+public class coh {
+   public static int[][] a(jf $$0) {
+      jf $$1 = $$0.h();
+      jf $$2 = $$1.g();
+      jf $$3 = $$0.g();
+      return new int[][]{
+         {$$1.j(), $$1.l()},
+         {$$2.j(), $$2.l()},
+         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
+         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
+         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
+         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
+         {$$3.j(), $$3.l()},
+         {$$0.j(), $$0.l()}
+      };
    }
 
-   public coh(btc<? extends coh> $$0, dca $$1, bsw $$2, double $$3, double $$4, double $$5) {
-      super($$0, $$3, $$4, $$5, $$1);
-      this.c($$2);
+   public static boolean a(double $$0) {
+      return !Double.isInfinite($$0) && $$0 < 1.0;
    }
 
-   coh(btc<? extends coh> $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dca $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected evo as() {
-      float $$0 = this.ak().n().a() / 2.0F;
-      float $$1 = this.ak().n().b();
-      float $$2 = 0.15F;
-      return new evo(
-         this.dn().c - (double)$$0,
-         this.dn().d - 0.15F,
-         this.dn().e - (double)$$0,
-         this.dn().c + (double)$$0,
-         this.dn().d - 0.15F + (double)$$1,
-         this.dn().e + (double)$$0
-      );
-   }
-
-   @Override
-   public boolean i(bsw $$0) {
-      return $$0 instanceof coh ? false : super.i($$0);
-   }
-
-   @Override
-   protected boolean b(bsw $$0) {
-      if ($$0 instanceof coh) {
-         return false;
-      } else {
-         return $$0.ak() == btc.E ? false : super.b($$0);
+   public static boolean a(dbn $$0, bsy $$1, evu $$2) {
+      for (ews $$4 : $$0.e($$1, $$2)) {
+         if (!$$4.c()) {
+            return false;
+         }
       }
+
+      return $$0.C_().a($$2);
    }
 
-   @Override
-   protected void a(evq $$0) {
-      super.a($$0);
-      if (!this.dP().B) {
-         btr $$2 = this.s() instanceof btr $$1 ? $$1 : null;
-         bsw $$3 = $$0.a().g($$0.e()).orElse($$0.a());
-         if ($$2 != null) {
-            $$2.A($$3);
+   public static boolean a(dbn $$0, evz $$1, bsy $$2, btk $$3) {
+      return a($$0, $$2, $$2.f($$3).c($$1));
+   }
+
+   public static ews a(dbj $$0, ja $$1) {
+      dsh $$2 = $$0.a_($$1);
+      return !$$2.a(avu.aP) && (!($$2.b() instanceof dns) || !$$2.c(dns.b)) ? $$2.k($$0, $$1) : ewp.a();
+   }
+
+   public static double a(ja $$0, int $$1, Function<ja, ews> $$2) {
+      ja.a $$3 = $$0.j();
+      int $$4 = 0;
+
+      while ($$4 < $$1) {
+         ews $$5 = $$2.apply($$3);
+         if (!$$5.c()) {
+            return (double)($$0.v() + $$4) + $$5.b(jf.a.b);
          }
 
-         $$3.a(this.dQ().c(this, $$2), 1.0F);
-         this.y();
+         $$4++;
+         $$3.c(jf.b);
       }
-   }
 
-   @Override
-   public void j(double $$0, double $$1, double $$2) {
-   }
-
-   protected abstract void y();
-
-   @Override
-   protected void a(evp $$0) {
-      super.a($$0);
-      if (!this.dP().B) {
-         this.y();
-         this.ao();
-      }
-   }
-
-   @Override
-   protected void a(evr $$0) {
-      super.a($$0);
-      if (!this.dP().B) {
-         this.ao();
-      }
-   }
-
-   @Override
-   protected boolean u() {
-      return false;
-   }
-
-   @Override
-   public cur p() {
-      return cur.l;
-   }
-
-   @Override
-   protected float w() {
-      return 1.0F;
-   }
-
-   @Override
-   protected float x() {
-      return this.w();
+      return Double.POSITIVE_INFINITY;
    }
 
    @Nullable
-   @Override
-   protected lg v() {
-      return null;
-   }
-
-   @Override
-   public void l() {
-      if (!this.dP().B && this.dv() > this.dP().am() + 30) {
-         this.y();
-         this.ao();
+   public static evz a(bsj<?> $$0, dbn $$1, ja $$2, boolean $$3) {
+      if ($$3 && $$0.a($$1.a_($$2))) {
+         return null;
       } else {
-         super.l();
-      }
-   }
+         double $$4 = $$1.a(a((dbj)$$1, $$2), () -> a((dbj)$$1, $$2.d()));
+         if (!a($$4)) {
+            return null;
+         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.d()))) {
+            return null;
+         } else {
+            evz $$5 = evz.a($$2, $$4);
+            evu $$6 = $$0.n().a($$5);
 
-   public static class a extends dbt {
-      @Override
-      public boolean a(dbs $$0, bsw $$1) {
-         return false;
-      }
+            for (ews $$8 : $$1.e(null, $$6)) {
+               if (!$$8.c()) {
+                  return null;
+               }
+            }
 
-      @Override
-      public Optional<Float> a(dbs $$0, dbg $$1, iz $$2, dse $$3, enx $$4) {
-         return $$3.a(awp.cy) ? Optional.of(3600000.0F) : Optional.empty();
+            if ($$0 != bsj.by || !$$1.a_($$2).a(avu.cq) && !$$1.a_($$2.c()).a(avu.cq)) {
+               return !$$1.C_().a($$6) ? null : $$5;
+            } else {
+               return null;
+            }
+         }
       }
    }
 }

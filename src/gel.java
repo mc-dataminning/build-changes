@@ -1,320 +1,464 @@
-public class gel {
-   private static final float a = 0.8888889F;
-   private final gpb[] b = new gpb[2];
-   private final gpb[] c = new gpb[2];
-   private gpb d;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.google.common.collect.UnmodifiableIterator;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Reader;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
-   protected void a() {
-      this.b[0] = ffh.Q().aD().b().b(dfd.H.o()).e();
-      this.b[1] = grh.c.c();
-      this.c[0] = ffh.Q().aD().b().b(dfd.G.o()).e();
-      this.c[1] = grh.d.c();
-      this.d = grh.e.c();
-   }
+public class gel implements ezw, AutoCloseable {
+   public static final String a = "shaders";
+   private static final String q = "shaders/core/";
+   private static final String r = "shaders/include/";
+   static final Logger s = LogUtils.getLogger();
+   private static final ezp t = new ezp();
+   private static final boolean u = true;
+   private static gel v;
+   private static int w = -1;
+   private final Map<String, Object> x = Maps.newHashMap();
+   private final List<String> y = Lists.newArrayList();
+   private final List<Integer> z = Lists.newArrayList();
+   private final List<ezx> A = Lists.newArrayList();
+   private final List<Integer> B = Lists.newArrayList();
+   private final Map<String, ezx> C = Maps.newHashMap();
+   private final int D;
+   private final String E;
+   private boolean F;
+   private final ezq G;
+   private final ezu H;
+   private final ezu I;
+   private final fal J;
+   @Nullable
+   public final ezx b;
+   @Nullable
+   public final ezx c;
+   @Nullable
+   public final ezx d;
+   @Nullable
+   public final ezx e;
+   @Nullable
+   public final ezx f;
+   @Nullable
+   public final ezx g;
+   @Nullable
+   public final ezx h;
+   @Nullable
+   public final ezx i;
+   @Nullable
+   public final ezx j;
+   @Nullable
+   public final ezx k;
+   @Nullable
+   public final ezx l;
+   @Nullable
+   public final ezx m;
+   @Nullable
+   public final ezx n;
+   @Nullable
+   public final ezx o;
+   @Nullable
+   public final ezx p;
 
-   private static boolean a(enx $$0, enx $$1) {
-      return $$1.a().a($$0.a());
-   }
+   public gel(atx $$0, String $$1, fal $$2) throws IOException {
+      this.E = $$1;
+      this.J = $$2;
+      akk $$3 = new akk("shaders/core/" + $$1 + ".json");
 
-   private static boolean a(dbg $$0, je $$1, float $$2, iz $$3, dse $$4) {
-      if ($$4.p()) {
-         ewm $$5 = ewj.a(0.0, 0.0, 0.0, 1.0, (double)$$2, 1.0);
-         ewm $$6 = $$4.c($$0, $$3);
-         return ewj.a($$5, $$6, $$1);
-      } else {
-         return false;
+      try (Reader $$4 = $$0.openAsReader($$3)) {
+         JsonObject $$5 = axu.a($$4);
+         String $$6 = axu.i($$5, "vertex");
+         String $$7 = axu.i($$5, "fragment");
+         JsonArray $$8 = axu.a($$5, "samplers", null);
+         if ($$8 != null) {
+            int $$9 = 0;
+
+            for (JsonElement $$10 : $$8) {
+               try {
+                  this.a($$10);
+               } catch (Exception var18) {
+                  akn $$12 = akn.a(var18);
+                  $$12.a("samplers[" + $$9 + "]");
+                  throw $$12;
+               }
+
+               $$9++;
+            }
+         }
+
+         JsonArray $$13 = axu.a($$5, "uniforms", null);
+         if ($$13 != null) {
+            int $$14 = 0;
+
+            for (JsonElement $$15 : $$13) {
+               try {
+                  this.b($$15);
+               } catch (Exception var17) {
+                  akn $$17 = akn.a(var17);
+                  $$17.a("uniforms[" + $$14 + "]");
+                  throw $$17;
+               }
+
+               $$14++;
+            }
+         }
+
+         this.G = a(axu.a($$5, "blend", null));
+         this.H = a($$0, ezu.a.a, $$6);
+         this.I = a($$0, ezu.a.b, $$7);
+         this.D = ezv.a();
+         int $$18 = 0;
+
+         for (UnmodifiableIterator var26 = $$2.d().iterator(); var26.hasNext(); $$18++) {
+            String $$19 = (String)var26.next();
+            ezx.a(this.D, $$18, $$19);
+         }
+
+         ezv.b(this);
+         this.j();
+      } catch (Exception var20) {
+         akn $$22 = akn.a(var20);
+         $$22.b($$3.a());
+         throw $$22;
       }
+
+      this.b();
+      this.b = this.a("ModelViewMat");
+      this.c = this.a("ProjMat");
+      this.d = this.a("TextureMat");
+      this.e = this.a("ScreenSize");
+      this.f = this.a("ColorModulator");
+      this.g = this.a("Light0_Direction");
+      this.h = this.a("Light1_Direction");
+      this.i = this.a("GlintAlpha");
+      this.j = this.a("FogStart");
+      this.k = this.a("FogEnd");
+      this.l = this.a("FogColor");
+      this.m = this.a("FogShape");
+      this.n = this.a("LineWidth");
+      this.o = this.a("GameTime");
+      this.p = this.a("ChunkOffset");
    }
 
-   private static boolean a(dbg $$0, iz $$1, je $$2, float $$3, dse $$4) {
-      return a($$0, $$2, $$3, $$1.a($$2), $$4);
-   }
+   private static ezu a(final atx $$0, ezu.a $$1, String $$2) throws IOException {
+      ezu $$3 = $$1.c().get($$2);
+      ezu $$8;
+      if ($$3 == null) {
+         String $$4 = "shaders/core/" + $$2 + $$1.b();
+         ats $$5 = $$0.getResourceOrThrow(new akk($$4));
 
-   private static boolean a(dbg $$0, iz $$1, dse $$2, je $$3) {
-      return a($$0, $$3.g(), 1.0F, $$1, $$2);
-   }
+         try (InputStream $$6 = $$5.d()) {
+            final String $$7 = v.a($$4);
+            $$8 = ezu.a($$1, $$2, $$6, $$5.b(), new ezn() {
+               private final Set<String> c = Sets.newHashSet();
 
-   public static boolean a(dbd $$0, iz $$1, enx $$2, dse $$3, je $$4, enx $$5) {
-      return !a($$0, $$1, $$3, $$4) && !a($$2, $$5);
-   }
+               @Override
+               public String a(boolean $$0x, String $$1) {
+                  $$1 = v.b(($$0 ? $$7 : "shaders/include/") + $$1);
+                  if (!this.c.add($$1)) {
+                     return null;
+                  } else {
+                     akk $$2 = new akk($$1);
 
-   public void a(dbd $$0, iz $$1, fae $$2, dse $$3, enx $$4) {
-      boolean $$5 = $$4.a(awv.b);
-      gpb[] $$6 = $$5 ? this.b : this.c;
-      int $$7 = $$5 ? 16777215 : gdc.c($$0, $$1);
-      float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
-      float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
-      float $$10 = (float)($$7 & 0xFF) / 255.0F;
-      dse $$11 = $$0.a_($$1.a(je.a));
-      enx $$12 = $$11.u();
-      dse $$13 = $$0.a_($$1.a(je.b));
-      enx $$14 = $$13.u();
-      dse $$15 = $$0.a_($$1.a(je.c));
-      enx $$16 = $$15.u();
-      dse $$17 = $$0.a_($$1.a(je.d));
-      enx $$18 = $$17.u();
-      dse $$19 = $$0.a_($$1.a(je.e));
-      enx $$20 = $$19.u();
-      dse $$21 = $$0.a_($$1.a(je.f));
-      enx $$22 = $$21.u();
-      boolean $$23 = !a($$4, $$14);
-      boolean $$24 = a($$0, $$1, $$4, $$3, je.a, $$12) && !a($$0, $$1, je.a, 0.8888889F, $$11);
-      boolean $$25 = a($$0, $$1, $$4, $$3, je.c, $$16);
-      boolean $$26 = a($$0, $$1, $$4, $$3, je.d, $$18);
-      boolean $$27 = a($$0, $$1, $$4, $$3, je.e, $$20);
-      boolean $$28 = a($$0, $$1, $$4, $$3, je.f, $$22);
-      if ($$23 || $$24 || $$28 || $$27 || $$25 || $$26) {
-         float $$29 = $$0.a(je.a, true);
-         float $$30 = $$0.a(je.b, true);
-         float $$31 = $$0.a(je.c, true);
-         float $$32 = $$0.a(je.e, true);
-         enw $$33 = $$4.a();
-         float $$34 = this.a($$0, $$33, $$1, $$3, $$4);
-         float $$35;
-         float $$36;
-         float $$37;
-         float $$38;
-         if ($$34 >= 1.0F) {
-            $$35 = 1.0F;
-            $$36 = 1.0F;
-            $$37 = 1.0F;
-            $$38 = 1.0F;
-         } else {
-            float $$39 = this.a($$0, $$33, $$1.e(), $$15, $$16);
-            float $$40 = this.a($$0, $$33, $$1.f(), $$17, $$18);
-            float $$41 = this.a($$0, $$33, $$1.h(), $$21, $$22);
-            float $$42 = this.a($$0, $$33, $$1.g(), $$19, $$20);
-            $$35 = this.a($$0, $$33, $$34, $$39, $$41, $$1.a(je.c).a(je.f));
-            $$36 = this.a($$0, $$33, $$34, $$39, $$42, $$1.a(je.c).a(je.e));
-            $$37 = this.a($$0, $$33, $$34, $$40, $$41, $$1.a(je.d).a(je.f));
-            $$38 = this.a($$0, $$33, $$34, $$40, $$42, $$1.a(je.d).a(je.e));
-         }
+                     try {
+                        String var5;
+                        try (Reader $$3 = $$0.openAsReader($$2)) {
+                           var5 = IOUtils.toString($$3);
+                        }
 
-         double $$47 = (double)($$1.u() & 15);
-         double $$48 = (double)($$1.v() & 15);
-         double $$49 = (double)($$1.w() & 15);
-         float $$50 = 0.001F;
-         float $$51 = $$24 ? 0.001F : 0.0F;
-         if ($$23 && !a($$0, $$1, je.b, Math.min(Math.min($$36, $$38), Math.min($$37, $$35)), $$13)) {
-            $$36 -= 0.001F;
-            $$38 -= 0.001F;
-            $$37 -= 0.001F;
-            $$35 -= 0.001F;
-            evt $$52 = $$4.c($$0, $$1);
-            float $$54;
-            float $$56;
-            float $$58;
-            float $$60;
-            float $$55;
-            float $$57;
-            float $$59;
-            float $$61;
-            if ($$52.c == 0.0 && $$52.e == 0.0) {
-               gpb $$53 = $$6[0];
-               $$54 = $$53.a(0.0F);
-               $$55 = $$53.c(0.0F);
-               $$56 = $$54;
-               $$57 = $$53.c(1.0F);
-               $$58 = $$53.a(1.0F);
-               $$59 = $$57;
-               $$60 = $$58;
-               $$61 = $$55;
-            } else {
-               gpb $$62 = $$6[1];
-               float $$63 = (float)ayz.d($$52.e, $$52.c) - (float) (Math.PI / 2);
-               float $$64 = ayz.a($$63) * 0.25F;
-               float $$65 = ayz.b($$63) * 0.25F;
-               float $$66 = 0.5F;
-               $$54 = $$62.a(0.5F + (-$$65 - $$64));
-               $$55 = $$62.c(0.5F + -$$65 + $$64);
-               $$56 = $$62.a(0.5F + -$$65 + $$64);
-               $$57 = $$62.c(0.5F + $$65 + $$64);
-               $$58 = $$62.a(0.5F + $$65 + $$64);
-               $$59 = $$62.c(0.5F + ($$65 - $$64));
-               $$60 = $$62.a(0.5F + ($$65 - $$64));
-               $$61 = $$62.c(0.5F + (-$$65 - $$64));
-            }
-
-            float $$75 = ($$54 + $$56 + $$58 + $$60) / 4.0F;
-            float $$76 = ($$55 + $$57 + $$59 + $$61) / 4.0F;
-            float $$77 = $$6[0].k();
-            $$54 = ayz.i($$77, $$54, $$75);
-            $$56 = ayz.i($$77, $$56, $$75);
-            $$58 = ayz.i($$77, $$58, $$75);
-            $$60 = ayz.i($$77, $$60, $$75);
-            $$55 = ayz.i($$77, $$55, $$76);
-            $$57 = ayz.i($$77, $$57, $$76);
-            $$59 = ayz.i($$77, $$59, $$76);
-            $$61 = ayz.i($$77, $$61, $$76);
-            int $$78 = this.a($$0, $$1);
-            float $$79 = $$30 * $$8;
-            float $$80 = $$30 * $$9;
-            float $$81 = $$30 * $$10;
-            this.a($$2, $$47 + 0.0, $$48 + (double)$$36, $$49 + 0.0, $$79, $$80, $$81, $$54, $$55, $$78);
-            this.a($$2, $$47 + 0.0, $$48 + (double)$$38, $$49 + 1.0, $$79, $$80, $$81, $$56, $$57, $$78);
-            this.a($$2, $$47 + 1.0, $$48 + (double)$$37, $$49 + 1.0, $$79, $$80, $$81, $$58, $$59, $$78);
-            this.a($$2, $$47 + 1.0, $$48 + (double)$$35, $$49 + 0.0, $$79, $$80, $$81, $$60, $$61, $$78);
-            if ($$4.b($$0, $$1.c())) {
-               this.a($$2, $$47 + 0.0, $$48 + (double)$$36, $$49 + 0.0, $$79, $$80, $$81, $$54, $$55, $$78);
-               this.a($$2, $$47 + 1.0, $$48 + (double)$$35, $$49 + 0.0, $$79, $$80, $$81, $$60, $$61, $$78);
-               this.a($$2, $$47 + 1.0, $$48 + (double)$$37, $$49 + 1.0, $$79, $$80, $$81, $$58, $$59, $$78);
-               this.a($$2, $$47 + 0.0, $$48 + (double)$$38, $$49 + 1.0, $$79, $$80, $$81, $$56, $$57, $$78);
-            }
-         }
-
-         if ($$24) {
-            float $$82 = $$6[0].c();
-            float $$83 = $$6[0].d();
-            float $$84 = $$6[0].g();
-            float $$85 = $$6[0].h();
-            int $$86 = this.a($$0, $$1.d());
-            float $$87 = $$29 * $$8;
-            float $$88 = $$29 * $$9;
-            float $$89 = $$29 * $$10;
-            this.a($$2, $$47, $$48 + (double)$$51, $$49 + 1.0, $$87, $$88, $$89, $$82, $$85, $$86);
-            this.a($$2, $$47, $$48 + (double)$$51, $$49, $$87, $$88, $$89, $$82, $$84, $$86);
-            this.a($$2, $$47 + 1.0, $$48 + (double)$$51, $$49, $$87, $$88, $$89, $$83, $$84, $$86);
-            this.a($$2, $$47 + 1.0, $$48 + (double)$$51, $$49 + 1.0, $$87, $$88, $$89, $$83, $$85, $$86);
-         }
-
-         int $$90 = this.a($$0, $$1);
-
-         for (je $$91 : je.c.a) {
-            float $$92;
-            float $$93;
-            double $$94;
-            double $$96;
-            double $$95;
-            double $$97;
-            boolean $$98;
-            switch ($$91) {
-               case c:
-                  $$92 = $$36;
-                  $$93 = $$35;
-                  $$94 = $$47;
-                  $$95 = $$47 + 1.0;
-                  $$96 = $$49 + 0.001F;
-                  $$97 = $$49 + 0.001F;
-                  $$98 = $$25;
-                  break;
-               case d:
-                  $$92 = $$37;
-                  $$93 = $$38;
-                  $$94 = $$47 + 1.0;
-                  $$95 = $$47;
-                  $$96 = $$49 + 1.0 - 0.001F;
-                  $$97 = $$49 + 1.0 - 0.001F;
-                  $$98 = $$26;
-                  break;
-               case e:
-                  $$92 = $$38;
-                  $$93 = $$36;
-                  $$94 = $$47 + 0.001F;
-                  $$95 = $$47 + 0.001F;
-                  $$96 = $$49 + 1.0;
-                  $$97 = $$49;
-                  $$98 = $$27;
-                  break;
-               default:
-                  $$92 = $$35;
-                  $$93 = $$37;
-                  $$94 = $$47 + 1.0 - 0.001F;
-                  $$95 = $$47 + 1.0 - 0.001F;
-                  $$96 = $$49;
-                  $$97 = $$49 + 1.0;
-                  $$98 = $$28;
-            }
-
-            if ($$98 && !a($$0, $$1, $$91, Math.max($$92, $$93), $$0.a_($$1.a($$91)))) {
-               iz $$120 = $$1.a($$91);
-               gpb $$121 = $$6[1];
-               if (!$$5) {
-                  dfb $$122 = $$0.a_($$120).b();
-                  if ($$122 instanceof dir || $$122 instanceof djl) {
-                     $$121 = this.d;
+                        return var5;
+                     } catch (IOException var9) {
+                        gel.s.error("Could not open GLSL import {}: {}", $$1, var9.getMessage());
+                        return "#error " + var9.getMessage();
+                     }
                   }
                }
+            });
+         }
+      } else {
+         $$8 = $$3;
+      }
 
-               float $$123 = $$121.a(0.0F);
-               float $$124 = $$121.a(0.5F);
-               float $$125 = $$121.c((1.0F - $$92) * 0.5F);
-               float $$126 = $$121.c((1.0F - $$93) * 0.5F);
-               float $$127 = $$121.c(0.5F);
-               float $$128 = $$91.o() == je.a.c ? $$31 : $$32;
-               float $$129 = $$30 * $$128 * $$8;
-               float $$130 = $$30 * $$128 * $$9;
-               float $$131 = $$30 * $$128 * $$10;
-               this.a($$2, $$94, $$48 + (double)$$92, $$96, $$129, $$130, $$131, $$123, $$125, $$90);
-               this.a($$2, $$95, $$48 + (double)$$93, $$97, $$129, $$130, $$131, $$124, $$126, $$90);
-               this.a($$2, $$95, $$48 + (double)$$51, $$97, $$129, $$130, $$131, $$124, $$127, $$90);
-               this.a($$2, $$94, $$48 + (double)$$51, $$96, $$129, $$130, $$131, $$123, $$127, $$90);
-               if ($$121 != this.d) {
-                  this.a($$2, $$94, $$48 + (double)$$51, $$96, $$129, $$130, $$131, $$123, $$127, $$90);
-                  this.a($$2, $$95, $$48 + (double)$$51, $$97, $$129, $$130, $$131, $$124, $$127, $$90);
-                  this.a($$2, $$95, $$48 + (double)$$93, $$97, $$129, $$130, $$131, $$124, $$126, $$90);
-                  this.a($$2, $$94, $$48 + (double)$$92, $$96, $$129, $$130, $$131, $$123, $$125, $$90);
-               }
+      return $$8;
+   }
+
+   public static ezq a(JsonObject $$0) {
+      if ($$0 == null) {
+         return new ezq();
+      } else {
+         int $$1 = 32774;
+         int $$2 = 1;
+         int $$3 = 0;
+         int $$4 = 1;
+         int $$5 = 0;
+         boolean $$6 = true;
+         boolean $$7 = false;
+         if (axu.a($$0, "func")) {
+            $$1 = ezq.a($$0.get("func").getAsString());
+            if ($$1 != 32774) {
+               $$6 = false;
             }
+         }
+
+         if (axu.a($$0, "srcrgb")) {
+            $$2 = ezq.b($$0.get("srcrgb").getAsString());
+            if ($$2 != 1) {
+               $$6 = false;
+            }
+         }
+
+         if (axu.a($$0, "dstrgb")) {
+            $$3 = ezq.b($$0.get("dstrgb").getAsString());
+            if ($$3 != 0) {
+               $$6 = false;
+            }
+         }
+
+         if (axu.a($$0, "srcalpha")) {
+            $$4 = ezq.b($$0.get("srcalpha").getAsString());
+            if ($$4 != 1) {
+               $$6 = false;
+            }
+
+            $$7 = true;
+         }
+
+         if (axu.a($$0, "dstalpha")) {
+            $$5 = ezq.b($$0.get("dstalpha").getAsString());
+            if ($$5 != 0) {
+               $$6 = false;
+            }
+
+            $$7 = true;
+         }
+
+         if ($$6) {
+            return new ezq();
+         } else {
+            return $$7 ? new ezq($$2, $$3, $$4, $$5, $$1) : new ezq($$2, $$3, $$1);
          }
       }
    }
 
-   private float a(dbd $$0, enw $$1, float $$2, float $$3, float $$4, iz $$5) {
-      if (!($$4 >= 1.0F) && !($$3 >= 1.0F)) {
-         float[] $$6 = new float[2];
-         if ($$4 > 0.0F || $$3 > 0.0F) {
-            float $$7 = this.a($$0, $$1, $$5);
-            if ($$7 >= 1.0F) {
-               return 1.0F;
+   @Override
+   public void close() {
+      for (ezx $$0 : this.A) {
+         $$0.close();
+      }
+
+      ezv.a(this);
+   }
+
+   public void f() {
+      RenderSystem.assertOnRenderThread();
+      ezv.a(0);
+      w = -1;
+      v = null;
+      int $$0 = GlStateManager._getActiveTexture();
+
+      for (int $$1 = 0; $$1 < this.z.size(); $$1++) {
+         if (this.x.get(this.y.get($$1)) != null) {
+            GlStateManager._activeTexture(33984 + $$1);
+            GlStateManager._bindTexture(0);
+         }
+      }
+
+      GlStateManager._activeTexture($$0);
+   }
+
+   public void g() {
+      RenderSystem.assertOnRenderThread();
+      this.F = false;
+      v = this;
+      this.G.a();
+      if (this.D != w) {
+         ezv.a(this.D);
+         w = this.D;
+      }
+
+      int $$0 = GlStateManager._getActiveTexture();
+
+      for (int $$1 = 0; $$1 < this.z.size(); $$1++) {
+         String $$2 = this.y.get($$1);
+         if (this.x.get($$2) != null) {
+            int $$3 = ezx.a(this.D, $$2);
+            ezx.b($$3, $$1);
+            RenderSystem.activeTexture(33984 + $$1);
+            Object $$4 = this.x.get($$2);
+            int $$5 = -1;
+            if ($$4 instanceof eys) {
+               $$5 = ((eys)$$4).f();
+            } else if ($$4 instanceof got) {
+               $$5 = ((got)$$4).a();
+            } else if ($$4 instanceof Integer) {
+               $$5 = (Integer)$$4;
             }
 
-            this.a($$6, $$7);
+            if ($$5 != -1) {
+               RenderSystem.bindTexture($$5);
+            }
+         }
+      }
+
+      GlStateManager._activeTexture($$0);
+
+      for (ezx $$6 : this.A) {
+         $$6.b();
+      }
+   }
+
+   @Override
+   public void b() {
+      this.F = true;
+   }
+
+   @Nullable
+   public ezx a(String $$0) {
+      RenderSystem.assertOnRenderThread();
+      return this.C.get($$0);
+   }
+
+   public ezp b(String $$0) {
+      RenderSystem.assertOnGameThread();
+      ezx $$1 = this.a($$0);
+      return (ezp)($$1 == null ? t : $$1);
+   }
+
+   private void j() {
+      RenderSystem.assertOnRenderThread();
+      IntList $$0 = new IntArrayList();
+
+      for (int $$1 = 0; $$1 < this.y.size(); $$1++) {
+         String $$2 = this.y.get($$1);
+         int $$3 = ezx.a(this.D, $$2);
+         if ($$3 == -1) {
+            s.warn("Shader {} could not find sampler named {} in the specified shader program.", this.E, $$2);
+            this.x.remove($$2);
+            $$0.add($$1);
+         } else {
+            this.z.add($$3);
+         }
+      }
+
+      for (int $$4 = $$0.size() - 1; $$4 >= 0; $$4--) {
+         int $$5 = $$0.getInt($$4);
+         this.y.remove($$5);
+      }
+
+      for (ezx $$6 : this.A) {
+         String $$7 = $$6.a();
+         int $$8 = ezx.a(this.D, $$7);
+         if ($$8 == -1) {
+            s.warn("Shader {} could not find uniform named {} in the specified shader program.", this.E, $$7);
+         } else {
+            this.B.add($$8);
+            $$6.b($$8);
+            this.C.put($$7, $$6);
+         }
+      }
+   }
+
+   private void a(JsonElement $$0) {
+      JsonObject $$1 = axu.m($$0, "sampler");
+      String $$2 = axu.i($$1, "name");
+      if (!axu.a($$1, "file")) {
+         this.x.put($$2, null);
+         this.y.add($$2);
+      } else {
+         this.y.add($$2);
+      }
+   }
+
+   public void a(String $$0, Object $$1) {
+      this.x.put($$0, $$1);
+      this.b();
+   }
+
+   private void b(JsonElement $$0) throws akn {
+      JsonObject $$1 = axu.m($$0, "uniform");
+      String $$2 = axu.i($$1, "name");
+      int $$3 = ezx.a(axu.i($$1, "type"));
+      int $$4 = axu.o($$1, "count");
+      float[] $$5 = new float[Math.max($$4, 16)];
+      JsonArray $$6 = axu.v($$1, "values");
+      if ($$6.size() != $$4 && $$6.size() > 1) {
+         throw new akn("Invalid amount of values specified (expected " + $$4 + ", found " + $$6.size() + ")");
+      } else {
+         int $$7 = 0;
+
+         for (JsonElement $$8 : $$6) {
+            try {
+               $$5[$$7] = axu.e($$8, "value");
+            } catch (Exception var13) {
+               akn $$10 = akn.a(var13);
+               $$10.a("values[" + $$7 + "]");
+               throw $$10;
+            }
+
+            $$7++;
          }
 
-         this.a($$6, $$2);
-         this.a($$6, $$4);
-         this.a($$6, $$3);
-         return $$6[0] / $$6[1];
-      } else {
-         return 1.0F;
+         if ($$4 > 1 && $$6.size() == 1) {
+            while ($$7 < $$4) {
+               $$5[$$7] = $$5[0];
+               $$7++;
+            }
+         }
+
+         int $$11 = $$4 > 1 && $$4 <= 4 && $$3 < 8 ? $$4 - 1 : 0;
+         ezx $$12 = new ezx($$2, $$3 + $$11, $$4, this);
+         if ($$3 <= 3) {
+            $$12.a((int)$$5[0], (int)$$5[1], (int)$$5[2], (int)$$5[3]);
+         } else if ($$3 <= 7) {
+            $$12.b($$5[0], $$5[1], $$5[2], $$5[3]);
+         } else {
+            $$12.a(Arrays.copyOfRange($$5, 0, $$4));
+         }
+
+         this.A.add($$12);
       }
    }
 
-   private void a(float[] $$0, float $$1) {
-      if ($$1 >= 0.8F) {
-         $$0[0] += $$1 * 10.0F;
-         $$0[1] += 10.0F;
-      } else if ($$1 >= 0.0F) {
-         $$0[0] += $$1;
-         $$0[1]++;
-      }
+   @Override
+   public ezu c() {
+      return this.H;
    }
 
-   private float a(dbd $$0, enw $$1, iz $$2) {
-      dse $$3 = $$0.a_($$2);
-      return this.a($$0, $$1, $$2, $$3, $$3.u());
+   @Override
+   public ezu d() {
+      return this.I;
    }
 
-   private float a(dbd $$0, enw $$1, iz $$2, dse $$3, enx $$4) {
-      if ($$1.a($$4.a())) {
-         dse $$5 = $$0.a_($$2.c());
-         return $$1.a($$5.u().a()) ? 1.0F : $$4.d();
-      } else {
-         return !$$3.e() ? 0.0F : -1.0F;
-      }
+   @Override
+   public void e() {
+      this.I.a(this);
+      this.H.a(this);
    }
 
-   private void a(fae $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
-      $$0.a($$1, $$2, $$3).a($$4, $$5, $$6, 1.0F).a($$7, $$8).b($$9).a(0.0F, 1.0F, 0.0F).e();
+   public fal h() {
+      return this.J;
    }
 
-   private int a(dbd $$0, iz $$1) {
-      int $$2 = gdo.a($$0, $$1);
-      int $$3 = gdo.a($$0, $$1.c());
-      int $$4 = $$2 & 0xFF;
-      int $$5 = $$3 & 0xFF;
-      int $$6 = $$2 >> 16 & 0xFF;
-      int $$7 = $$3 >> 16 & 0xFF;
-      return ($$4 > $$5 ? $$4 : $$5) | ($$6 > $$7 ? $$6 : $$7) << 16;
+   public String i() {
+      return this.E;
+   }
+
+   @Override
+   public int a() {
+      return this.D;
    }
 }

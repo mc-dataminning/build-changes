@@ -1,26 +1,15 @@
-import java.util.IllegalFormatException;
+public class gqh extends gql {
+   private static final akk a = new akk("back");
 
-public class gqh {
-   private static volatile un a = un.a();
-
-   private gqh() {
+   public gqh(gpj $$0) {
+      super($$0, new akk("textures/atlas/paintings.png"), new akk("paintings"));
    }
 
-   static void a(un $$0) {
-      a = $$0;
+   public gpi a(cin $$0) {
+      return this.a($$0.d());
    }
 
-   public static String a(String $$0, Object... $$1) {
-      String $$2 = a.a($$0);
-
-      try {
-         return String.format($$2, $$1);
-      } catch (IllegalFormatException var4) {
-         return "Format error: " + $$2;
-      }
-   }
-
-   public static boolean a(String $$0) {
-      return a.b($$0);
+   public gpi a() {
+      return this.a(a);
    }
 }

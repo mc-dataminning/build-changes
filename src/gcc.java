@@ -1,117 +1,55 @@
-public class gcc extends gce {
-   gcc(fxx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+public class gcc extends gbt {
+   private final gcg b;
+   protected boolean a;
+
+   gcc(fyd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gcg $$7) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      float $$7 = this.r.i() * 0.1F + 0.2F;
-      this.v = $$7;
-      this.w = $$7;
-      this.x = $$7;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.5F);
-      this.j *= 0.02F;
-      this.k *= 0.02F;
-      this.l *= 0.02F;
-      this.t = (int)(20.0 / (Math.random() * 0.8 + 0.2));
+      this.b = $$7;
+      this.d(1.5F);
+      this.b($$7);
    }
 
    @Override
-   public gbi b() {
-      return gbi.b;
+   public int a(float $$0) {
+      return this.a ? 240 : super.a($$0);
    }
 
    @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
+   public gbp b() {
+      return gbp.c;
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
-      } else {
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.99;
-         this.k *= 0.99;
-         this.l *= 0.99;
-      }
+      super.a();
+      this.b(this.b);
    }
 
-   public static class a implements gbh<lm> {
-      private final gbz a;
+   public static class a implements gbo<ln> {
+      private final gcg a;
 
-      public a(gbz $$0) {
+      public a(gcg $$0) {
          this.a = $$0;
       }
 
-      public gbe a(lm $$0, fxx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gcc $$8 = new gcc($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         $$8.a(3 + $$1.E_().a(5));
+      public gbl a(ln $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gcc $$8 = new gcc($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.a = true;
          return $$8;
       }
    }
 
-   public static class b implements gbh<lm> {
-      private final gbz a;
+   public static class b implements gbo<ln> {
+      private final gcg a;
 
-      public b(gbz $$0) {
+      public b(gcg $$0) {
          this.a = $$0;
       }
 
-      public gbe a(lm $$0, fxx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gcc $$8 = new gcc($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(0.3F, 0.5F, 1.0F);
-         $$8.a(this.a);
-         $$8.e(1.0F - $$1.z.i() * 0.7F);
-         $$8.a($$8.j() / 2);
-         return $$8;
-      }
-   }
-
-   public static class c implements gbh<lm> {
-      private final gbz a;
-
-      public c(gbz $$0) {
-         this.a = $$0;
-      }
-
-      public gbe a(lm $$0, fxx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gcc $$8 = new gcc($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
-      }
-   }
-
-   public static class d implements gbh<lm> {
-      private final gbz a;
-
-      public d(gbz $$0) {
-         this.a = $$0;
-      }
-
-      public gbe a(lm $$0, fxx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gcc $$8 = new gcc($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
-      }
-   }
-
-   public static class e implements gbh<lm> {
-      private final gbz a;
-
-      public e(gbz $$0) {
-         this.a = $$0;
-      }
-
-      public gbe a(lm $$0, fxx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gcc $$8 = new gcc($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
+      public gbl a(ln $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gcc $$8 = new gcc($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
          return $$8;
       }
    }

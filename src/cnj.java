@@ -1,136 +1,82 @@
-import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class cnj extends bsw implements buq {
-   public static final int b = 20;
-   public static final int c = 2;
-   public static final int d = 14;
-   private int e;
-   private boolean f;
-   private int g = 22;
-   private boolean h;
-   @Nullable
-   private btr i;
-   @Nullable
-   private UUID j;
-
-   public cnj(btc<? extends cnj> $$0, dca $$1) {
+public class cnj extends cng {
+   public cnj(bsj<? extends cnj> $$0, dcd $$1) {
       super($$0, $$1);
    }
 
-   public cnj(dca $$0, double $$1, double $$2, double $$3, float $$4, int $$5, btr $$6) {
-      this(btc.K, $$0);
-      this.e = $$5;
-      this.a($$6);
-      this.r($$4 * (180.0F / (float)Math.PI));
-      this.a_($$1, $$2, $$3);
+   public cnj(dcd $$0, bsy $$1) {
+      super(bsj.G, $$1, $$0);
    }
 
    @Override
-   protected void a(ako.a $$0) {
+   protected ctv u() {
+      return cud.sf;
    }
 
-   public void a(@Nullable btr $$0) {
-      this.i = $$0;
-      this.j = $$0 == null ? null : $$0.cz();
+   @Override
+   protected void a(evw $$0) {
+      super.a($$0);
+      $$0.a().a(this.dQ().b(this, this.s()), 0.0F);
    }
 
-   @Nullable
-   public btr p() {
-      if (this.i == null && this.j != null && this.dP() instanceof arf) {
-         bsw $$0 = ((arf)this.dP()).a(this.j);
-         if ($$0 instanceof btr) {
-            this.i = (btr)$$0;
+   @Override
+   protected void a(evx $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < 32; $$1++) {
+         this.dP().a(lj.ac, this.du(), this.dw() + this.ah.j() * 2.0, this.dA(), this.ah.k(), 0.0, this.ah.k());
+      }
+
+      if (!this.dP().B && !this.dK()) {
+         bsd $$2 = this.s();
+         if ($$2 instanceof aql $$3) {
+            if ($$3.c.c() && $$3.dP() == this.dP() && !$$3.fH()) {
+               if (this.ah.i() < 0.05F && this.dP().ab().b(dbz.e)) {
+                  cje $$4 = bsj.I.a(this.dP());
+                  if ($$4 != null) {
+                     $$4.b($$2.du(), $$2.dw(), $$2.dA(), $$2.dF(), $$2.dH());
+                     this.dP().b($$4);
+                  }
+               }
+
+               if ($$2.bR()) {
+                  $$3.a(this.du(), this.dw(), this.dA());
+               } else {
+                  $$2.c(this.du(), this.dw(), this.dA());
+               }
+
+               $$2.n();
+               $$2.a(this.dQ().l(), 5.0F);
+               this.dP().a(null, this.du(), this.dw(), this.dA(), avf.uv, avg.h);
+            }
+         } else if ($$2 != null) {
+            $$2.c(this.du(), this.dw(), this.dA());
+            $$2.n();
          }
-      }
 
-      return this.i;
-   }
-
-   @Override
-   protected void a(us $$0) {
-      this.e = $$0.h("Warmup");
-      if ($$0.b("Owner")) {
-         this.j = $$0.a("Owner");
-      }
-   }
-
-   @Override
-   protected void b(us $$0) {
-      $$0.a("Warmup", this.e);
-      if (this.j != null) {
-         $$0.a("Owner", this.j);
+         this.ao();
       }
    }
 
    @Override
    public void l() {
-      super.l();
-      if (this.dP().B) {
-         if (this.h) {
-            this.g--;
-            if (this.g == 14) {
-               for (int $$0 = 0; $$0 < 12; $$0++) {
-                  double $$1 = this.du() + (this.ah.j() * 2.0 - 1.0) * (double)this.dj() * 0.5;
-                  double $$2 = this.dw() + 0.05 + this.ah.j();
-                  double $$3 = this.dA() + (this.ah.j() * 2.0 - 1.0) * (double)this.dj() * 0.5;
-                  double $$4 = (this.ah.j() * 2.0 - 1.0) * 0.3;
-                  double $$5 = 0.3 + this.ah.j() * 0.3;
-                  double $$6 = (this.ah.j() * 2.0 - 1.0) * 0.3;
-                  this.dP().a(li.f, $$1, $$2 + 1.0, $$3, $$4, $$5, $$6);
-               }
-            }
-         }
-      } else if (--this.e < 0) {
-         if (this.e == -8) {
-            for (btr $$8 : this.dP().a(btr.class, this.cK().c(0.2, 0.0, 0.2))) {
-               this.c($$8);
-            }
-         }
-
-         if (!this.f) {
-            this.dP().a(this, (byte)4);
-            this.f = true;
-         }
-
-         if (--this.g < 0) {
-            this.ao();
-         }
-      }
-   }
-
-   private void c(btr $$0) {
-      btr $$1 = this.p();
-      if ($$0.bD() && !$$0.cu() && $$0 != $$1) {
-         if ($$1 == null) {
-            $$0.a(this.dQ().o(), 6.0F);
-         } else {
-            if ($$1.s($$0)) {
-               return;
-            }
-
-            $$0.a(this.dQ().c(this, (bsw)$$1), 6.0F);
-         }
-      }
-   }
-
-   @Override
-   public void b(byte $$0) {
-      super.b($$0);
-      if ($$0 == 4) {
-         this.h = true;
-         if (!this.aW()) {
-            this.dP().a(this.du(), this.dw(), this.dA(), awa.iB, this.de(), 1.0F, this.ah.i() * 0.2F + 0.85F, false);
-         }
-      }
-   }
-
-   public float a(float $$0) {
-      if (!this.h) {
-         return 0.0F;
+      bsd $$0 = this.s();
+      if ($$0 instanceof aql && !$$0.bD() && this.dP().ab().b(dbz.Y)) {
+         this.ao();
       } else {
-         int $$1 = this.g - 2;
-         return $$1 <= 0 ? 1.0F : 1.0F - ((float)$$1 - $$0) / 20.0F;
+         super.l();
       }
+   }
+
+   @Nullable
+   @Override
+   public bsd b(aqk $$0) {
+      bsd $$1 = this.s();
+      if ($$1 != null && $$1.dP().af() != $$0.af()) {
+         this.c(null);
+      }
+
+      return super.b($$0);
    }
 }

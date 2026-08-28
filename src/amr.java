@@ -1,132 +1,47 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.brigadier.context.CommandContext;
+import java.util.Collection;
+import java.util.Collections;
 
 public class amr {
-   private static final Logger b = LogUtils.getLogger();
-   private static final String c = "localhost";
-   private static final String d = "0.0.0.0";
-   private static final int e = 10000;
-   private static final int f = 100;
-   public static BiMap<String, ale<dca>> a = ImmutableBiMap.of("o", dca.h, "n", dca.i, "e", dca.j);
-   @Nullable
-   private static amj g;
-   @Nullable
-   private static ami h;
+   public static final int a = 2;
 
-   public static void a(CommandDispatcher<ep> $$0) {
+   public static void a(CommandDispatcher<eq> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("chase")
-                  .then(
-                     ((LiteralArgumentBuilder)eq.a("follow")
-                           .then(
-                              ((RequiredArgumentBuilder)eq.a("host", StringArgumentType.string())
-                                    .executes($$0x -> b((ep)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), 10000)))
-                                 .then(
-                                    eq.a("port", IntegerArgumentType.integer(1, 65535))
-                                       .executes(
-                                          $$0x -> b(
-                                                (ep)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), IntegerArgumentType.getInteger($$0x, "port")
-                                             )
-                                       )
-                                 )
-                           ))
-                        .executes($$0x -> b((ep)$$0x.getSource(), "localhost", 10000))
-                  ))
-               .then(
-                  ((LiteralArgumentBuilder)eq.a("lead")
-                        .then(
-                           ((RequiredArgumentBuilder)eq.a("bind_address", StringArgumentType.string())
-                                 .executes($$0x -> a((ep)$$0x.getSource(), StringArgumentType.getString($$0x, "bind_address"), 10000)))
-                              .then(
-                                 eq.a("port", IntegerArgumentType.integer(1024, 65535))
-                                    .executes(
-                                       $$0x -> a(
-                                             (ep)$$0x.getSource(),
-                                             StringArgumentType.getString($$0x, "bind_address"),
-                                             IntegerArgumentType.getInteger($$0x, "port")
-                                          )
-                                    )
-                              )
-                        ))
-                     .executes($$0x -> a((ep)$$0x.getSource(), "0.0.0.0", 10000))
-               ))
-            .then(eq.a("stop").executes($$0x -> a((ep)$$0x.getSource())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("gamemode").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)er.a("gamemode", fe.a())
+                     .executes($$0x -> a($$0x, Collections.singleton(((eq)$$0x.getSource()).h()), fe.a($$0x, "gamemode"))))
+                  .then(er.a("target", fd.d()).executes($$0x -> a($$0x, fd.f($$0x, "target"), fe.a($$0x, "gamemode"))))
+            )
       );
    }
 
-   private static int a(ep $$0) {
-      if (h != null) {
-         h.b();
-         $$0.a(() -> xp.b("You have now stopped chasing"), false);
-         h = null;
-      }
-
-      if (g != null) {
-         g.b();
-         $$0.a(() -> xp.b("You are no longer being chased"), false);
-         g = null;
-      }
-
-      return 0;
-   }
-
-   private static boolean b(ep $$0) {
-      if (g != null) {
-         $$0.b(xp.b("Chase server is already running. Stop it using /chase stop"));
-         return true;
-      } else if (h != null) {
-         $$0.b(xp.b("You are already chasing someone. Stop it using /chase stop"));
-         return true;
+   private static void a(eq $$0, aql $$1, dca $$2) {
+      wu $$3 = wu.c("gameMode." + $$2.b());
+      if ($$0.f() == $$1) {
+         $$0.a(() -> wu.a("commands.gamemode.success.self", $$3), true);
       } else {
-         return false;
-      }
-   }
-
-   private static int a(ep $$0, String $$1, int $$2) {
-      if (b($$0)) {
-         return 0;
-      } else {
-         g = new amj($$1, $$2, $$0.l().ah(), 100);
-
-         try {
-            g.a();
-            $$0.a(() -> xp.b("Chase server is now running on port " + $$2 + ". Clients can follow you using /chase follow <ip> <port>"), false);
-         } catch (IOException var4) {
-            b.error("Failed to start chase server", var4);
-            $$0.b(xp.b("Failed to start chase server on port " + $$2));
-            g = null;
+         if ($$0.e().ab().b(dbz.p)) {
+            $$1.a(wu.a("gameMode.changed", $$3));
          }
 
-         return 0;
+         $$0.a(() -> wu.a("commands.gamemode.success.other", $$1.O_(), $$3), true);
       }
    }
 
-   private static int b(ep $$0, String $$1, int $$2) {
-      if (b($$0)) {
-         return 0;
-      } else {
-         h = new ami($$1, $$2, $$0.l());
-         h.a();
-         $$0.a(
-            () -> xp.b(
-                  "You are now chasing "
-                     + $$1
-                     + ":"
-                     + $$2
-                     + ". If that server does '/chase lead' then you will automatically go to the same position. Use '/chase stop' to stop chasing."
-               ),
-            false
-         );
-         return 0;
+   private static int a(CommandContext<eq> $$0, Collection<aql> $$1, dca $$2) {
+      int $$3 = 0;
+
+      for (aql $$4 : $$1) {
+         if ($$4.a($$2)) {
+            a((eq)$$0.getSource(), $$4, $$2);
+            $$3++;
+         }
       }
+
+      return $$3;
    }
 }

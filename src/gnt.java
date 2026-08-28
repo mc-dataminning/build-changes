@@ -1,35 +1,21 @@
-public class gnt<T extends btr> extends gnl<T, fvh<T>> {
-   public static final alf a = new alf("textures/entity/trident_riptide.png");
-   public static final String b = "box";
-   private final fxc c;
+public class gnt<T extends bsd & bto, M extends fui<T>> extends gns<T, M> {
+   private final akk a;
+   private final M b;
 
-   public gnt(gkv<T, fvh<T>> $$0, fwy $$1) {
+   public gnt(glc<T, M> $$0, M $$1, akk $$2) {
       super($$0);
-      fxc $$2 = $$1.a(fxb.aZ);
-      this.c = $$2.b("box");
+      this.b = $$1;
+      this.a = $$2;
    }
 
-   public static fxi a() {
-      fxk $$0 = new fxk();
-      fxl $$1 = $$0.a();
-      $$1.a("box", fxh.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 32.0F, 16.0F), fxe.a);
-      return fxi.a($$0, 64, 64);
-   }
-
-   public void a(faa $$0, gdq $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.fr()) {
-         fae $$10 = $$1.getBuffer(gdy.e(a));
-
-         for (int $$11 = 0; $$11 < 3; $$11++) {
-            $$0.a();
-            float $$12 = $$7 * (float)(-(45 + $$11 * 5));
-            $$0.a(a.d.rotationDegrees($$12));
-            float $$13 = 0.75F * (float)$$11;
-            $$0.b($$13, $$13, $$13);
-            $$0.a(0.0F, -0.2F + 0.6F * (float)$$11, 0.0F);
-            this.c.a($$0, $$10, $$2, gos.d);
-            $$0.b();
-         }
+   @Override
+   public void a(fag $$0, gdx $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.i()) {
+         this.c().a(this.b);
+         this.b.a($$3, $$4, $$5, $$6);
+         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
+         fak $$10 = $$1.getBuffer(gef.e(this.a));
+         this.b.a($$0, $$10, $$2, goz.d, 1.0F, 1.0F, 1.0F, 1.0F);
       }
    }
 }

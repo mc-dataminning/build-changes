@@ -1,292 +1,211 @@
+import com.google.common.collect.Iterators;
 import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
 import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
 import it.unimi.dsi.fastutil.objects.Reference2ObjectMaps;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
-import java.util.Map.Entry;
+import java.util.Spliterators;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 import javax.annotation.Nullable;
 
-public final class kj {
-   public static final kj a = new kj(Reference2ObjectMaps.emptyMap());
-   public static final Codec<kj> b = Codec.dispatchedMap(kj.b.a, kj.b::a).xmap($$0 -> {
-      if ($$0.isEmpty()) {
-         return a;
-      } else {
-         Reference2ObjectMap<kl<?>, Optional<?>> $$1 = new Reference2ObjectArrayMap($$0.size());
-
-         for (Entry<kj.b, ?> $$2 : $$0.entrySet()) {
-            kj.b $$3 = $$2.getKey();
-            if ($$3.c()) {
-               $$1.put($$3.b(), Optional.empty());
-            } else {
-               $$1.put($$3.b(), Optional.of($$2.getValue()));
-            }
-         }
-
-         return new kj($$1);
-      }
-   }, $$0 -> {
-      Reference2ObjectMap<kj.b, Object> $$1 = new Reference2ObjectArrayMap($$0.d.size());
-      ObjectIterator var2 = Reference2ObjectMaps.fastIterable($$0.d).iterator();
-
-      while (var2.hasNext()) {
-         Entry<kl<?>, Optional<?>> $$2 = (Entry<kl<?>, Optional<?>>)var2.next();
-         kl<?> $$3 = $$2.getKey();
-         if (!$$3.d()) {
-            Optional<?> $$4 = $$2.getValue();
-            if ($$4.isPresent()) {
-               $$1.put(new kj.b($$3, false), $$4.get());
-            } else {
-               $$1.put(new kj.b($$3, true), bac.a);
-            }
-         }
+public interface kj extends Iterable<kp<?>> {
+   kj a = new kj() {
+      @Nullable
+      @Override
+      public <T> T a(km<? extends T> $$0) {
+         return null;
       }
 
-      return $$1;
-   });
-   public static final zn<xa, kj> c = new zn<xa, kj>() {
-      public kj a(xa $$0) {
-         int $$1 = $$0.l();
-         int $$2 = $$0.l();
-         if ($$1 == 0 && $$2 == 0) {
-            return kj.a;
-         } else {
-            Reference2ObjectMap<kl<?>, Optional<?>> $$3 = new Reference2ObjectArrayMap($$1 + $$2);
-
-            for (int $$4 = 0; $$4 < $$1; $$4++) {
-               kl<?> $$5 = kl.b.decode($$0);
-               Object $$6 = $$5.e().decode($$0);
-               $$3.put($$5, Optional.of($$6));
-            }
-
-            for (int $$7 = 0; $$7 < $$2; $$7++) {
-               kl<?> $$8 = kl.b.decode($$0);
-               $$3.put($$8, Optional.empty());
-            }
-
-            return new kj($$3);
-         }
+      @Override
+      public Set<km<?>> b() {
+         return Set.of();
       }
 
-      public void a(xa $$0, kj $$1) {
-         if ($$1.d()) {
-            $$0.c(0);
-            $$0.c(0);
-         } else {
-            int $$2 = 0;
-            int $$3 = 0;
-            ObjectIterator var5 = Reference2ObjectMaps.fastIterable($$1.d).iterator();
-
-            while (var5.hasNext()) {
-               it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<kl<?>, Optional<?>> $$4 = (it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<kl<?>, Optional<?>>)var5.next();
-               if (((Optional)$$4.getValue()).isPresent()) {
-                  $$2++;
-               } else {
-                  $$3++;
-               }
-            }
-
-            $$0.c($$2);
-            $$0.c($$3);
-            var5 = Reference2ObjectMaps.fastIterable($$1.d).iterator();
-
-            while (var5.hasNext()) {
-               it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<kl<?>, Optional<?>> $$5 = (it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<kl<?>, Optional<?>>)var5.next();
-               Optional<?> $$6 = (Optional<?>)$$5.getValue();
-               if ($$6.isPresent()) {
-                  kl<?> $$7 = (kl<?>)$$5.getKey();
-                  kl.b.encode($$0, $$7);
-                  a($$0, $$7, $$6.get());
-               }
-            }
-
-            var5 = Reference2ObjectMaps.fastIterable($$1.d).iterator();
-
-            while (var5.hasNext()) {
-               it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<kl<?>, Optional<?>> $$8 = (it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<kl<?>, Optional<?>>)var5.next();
-               if (((Optional)$$8.getValue()).isEmpty()) {
-                  kl<?> $$9 = (kl<?>)$$8.getKey();
-                  kl.b.encode($$0, $$9);
-               }
-            }
-         }
-      }
-
-      private static <T> void a(xa $$0, kl<T> $$1, Object $$2) {
-         $$1.e().encode($$0, (T)$$2);
+      @Override
+      public Iterator<kp<?>> iterator() {
+         return Collections.emptyIterator();
       }
    };
-   private static final String e = "!";
-   final Reference2ObjectMap<kl<?>, Optional<?>> d;
+   Codec<kj> b = b(km.d);
 
-   kj(Reference2ObjectMap<kl<?>, Optional<?>> $$0) {
-      this.d = $$0;
+   static Codec<kj> a(Codec<km<?>> $$0) {
+      return b(Codec.dispatchedMap($$0, km::c));
    }
 
-   public static kj.a a() {
+   static Codec<kj> b(Codec<Map<km<?>, Object>> $$0) {
+      return $$0.flatComapMap(kj.a::a, $$0x -> {
+         int $$1 = $$0x.d();
+         if ($$1 == 0) {
+            return DataResult.success(Reference2ObjectMaps.emptyMap());
+         } else {
+            Reference2ObjectMap<km<?>, Object> $$2 = new Reference2ObjectArrayMap($$1);
+
+            for (kp<?> $$3 : $$0x) {
+               if (!$$3.a().d()) {
+                  $$2.put($$3.a(), $$3.b());
+               }
+            }
+
+            return DataResult.success($$2);
+         }
+      });
+   }
+
+   static kj a(final kj $$0, final kj $$1) {
+      return new kj() {
+         @Nullable
+         @Override
+         public <T> T a(km<? extends T> $$0x) {
+            T $$1 = $$1.a($$0);
+            return $$1 != null ? $$1 : $$0.a($$0);
+         }
+
+         @Override
+         public Set<km<?>> b() {
+            return Sets.union($$0.b(), $$1.b());
+         }
+      };
+   }
+
+   static kj.a a() {
       return new kj.a();
    }
 
    @Nullable
-   public <T> Optional<? extends T> a(kl<? extends T> $$0) {
-      return (Optional<? extends T>)this.d.get($$0);
+   <T> T a(km<? extends T> var1);
+
+   Set<km<?>> b();
+
+   default boolean b(km<?> $$0) {
+      return this.a($$0) != null;
    }
 
-   public Set<Entry<kl<?>, Optional<?>>> b() {
-      return this.d.entrySet();
+   default <T> T a(km<? extends T> $$0, T $$1) {
+      T $$2 = this.a($$0);
+      return $$2 != null ? $$2 : $$1;
    }
 
-   public int c() {
-      return this.d.size();
-   }
-
-   public kj a(Predicate<kl<?>> $$0) {
-      if (this.d()) {
-         return a;
-      } else {
-         Reference2ObjectMap<kl<?>, Optional<?>> $$1 = new Reference2ObjectArrayMap(this.d);
-         $$1.keySet().removeIf($$0);
-         return $$1.isEmpty() ? a : new kj($$1);
-      }
-   }
-
-   public boolean d() {
-      return this.d.isEmpty();
-   }
-
-   public kj.c e() {
-      if (this.d()) {
-         return kj.c.a;
-      } else {
-         ki.a $$0 = ki.a();
-         Set<kl<?>> $$1 = Sets.newIdentityHashSet();
-         this.d.forEach(($$2, $$3) -> {
-            if ($$3.isPresent()) {
-               $$0.b($$2, $$3.get());
-            } else {
-               $$1.add($$2);
-            }
-         });
-         return new kj.c($$0.a(), $$1);
-      }
+   @Nullable
+   default <T> kp<T> c(km<T> $$0) {
+      T $$1 = this.a($$0);
+      return $$1 != null ? new kp<>($$0, $$1) : null;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof kj $$1 && this.d.equals($$1.d)) {
-            return true;
-         }
-
-         return false;
-      }
+   default Iterator<kp<?>> iterator() {
+      return Iterators.transform(this.b().iterator(), $$0 -> Objects.requireNonNull(this.c($$0)));
    }
 
-   @Override
-   public int hashCode() {
-      return this.d.hashCode();
+   default Stream<kp<?>> c() {
+      return StreamSupport.stream(Spliterators.spliterator(this.iterator(), (long)this.d(), 1345), false);
    }
 
-   @Override
-   public String toString() {
-      return a(this.d);
+   default int d() {
+      return this.b().size();
    }
 
-   static String a(Reference2ObjectMap<kl<?>, Optional<?>> $$0) {
-      StringBuilder $$1 = new StringBuilder();
-      $$1.append('{');
-      boolean $$2 = true;
-      ObjectIterator var3 = Reference2ObjectMaps.fastIterable($$0).iterator();
+   default boolean e() {
+      return this.d() == 0;
+   }
 
-      while (var3.hasNext()) {
-         Entry<kl<?>, Optional<?>> $$3 = (Entry<kl<?>, Optional<?>>)var3.next();
-         if ($$2) {
-            $$2 = false;
-         } else {
-            $$1.append(", ");
+   default kj a(final Predicate<km<?>> $$0) {
+      return new kj() {
+         @Nullable
+         @Override
+         public <T> T a(km<? extends T> $$0x) {
+            return $$0.test($$0) ? kj.this.a($$0) : null;
          }
 
-         Optional<?> $$4 = $$3.getValue();
-         if ($$4.isPresent()) {
-            $$1.append($$3.getKey());
-            $$1.append("=>");
-            $$1.append($$4.get());
-         } else {
-            $$1.append("!");
-            $$1.append($$3.getKey());
+         @Override
+         public Set<km<?>> b() {
+            return Sets.filter(kj.this.b(), $$0::test);
          }
-      }
-
-      $$1.append('}');
-      return $$1.toString();
+      };
    }
 
    public static class a {
-      private final Reference2ObjectMap<kl<?>, Optional<?>> a = new Reference2ObjectArrayMap();
+      private final Reference2ObjectMap<km<?>, Object> a = new Reference2ObjectArrayMap();
 
       a() {
       }
 
-      public <T> kj.a a(kl<T> $$0, T $$1) {
-         this.a.put($$0, Optional.of($$1));
+      public <T> kj.a a(km<T> $$0, @Nullable T $$1) {
+         this.b($$0, $$1);
          return this;
       }
 
-      public <T> kj.a a(kl<T> $$0) {
-         this.a.put($$0, Optional.empty());
-         return this;
+      <T> void b(km<T> $$0, @Nullable Object $$1) {
+         if ($$1 != null) {
+            this.a.put($$0, $$1);
+         } else {
+            this.a.remove($$0);
+         }
       }
 
-      public <T> kj.a a(ko<T> $$0) {
-         return this.a($$0.a(), $$0.b());
+      public kj.a a(kj $$0) {
+         for (kp<?> $$1 : $$0) {
+            this.a.put($$1.a(), $$1.b());
+         }
+
+         return this;
       }
 
       public kj a() {
-         return this.a.isEmpty() ? kj.a : new kj(this.a);
+         return a(this.a);
       }
-   }
 
-   static record b(kl<?> b, boolean c) {
-      public static final Codec<kj.b> a = Codec.STRING.flatXmap($$0 -> {
-         boolean $$1 = $$0.startsWith("!");
-         if ($$1) {
-            $$0 = $$0.substring("!".length());
-         }
-
-         alf $$2 = alf.a($$0);
-         kl<?> $$3 = lp.as.a($$2);
-         if ($$3 == null) {
-            return DataResult.error(() -> "No component with type: '" + $$2 + "'");
+      private static kj a(Map<km<?>, Object> $$0) {
+         if ($$0.isEmpty()) {
+            return kj.a;
          } else {
-            return $$3.d() ? DataResult.error(() -> "'" + $$2 + "' is not a persistent component") : DataResult.success(new kj.b($$3, $$1));
+            return $$0.size() < 8 ? new kj.a.a(new Reference2ObjectArrayMap($$0)) : new kj.a.a(new Reference2ObjectOpenHashMap($$0));
          }
-      }, $$0 -> {
-         kl<?> $$1 = $$0.b();
-         alf $$2 = lp.as.b($$1);
-         return $$2 == null ? DataResult.error(() -> "Unregistered component: " + $$1) : DataResult.success($$0.c() ? "!" + $$2 : $$2.toString());
-      });
-
-      public Codec<?> a() {
-         return this.c ? Codec.EMPTY.codec() : this.b.c();
-      }
-   }
-
-   public static record c(ki b, Set<kl<?>> c) {
-      public static final kj.c a = new kj.c(ki.a, Set.of());
-
-      public ki a() {
-         return this.b;
       }
 
-      public Set<kl<?>> b() {
-         return this.c;
+      static record a(Reference2ObjectMap<km<?>, Object> c) implements kj {
+         @Nullable
+         @Override
+         public <T> T a(km<? extends T> $$0) {
+            return (T)this.c.get($$0);
+         }
+
+         @Override
+         public boolean b(km<?> $$0) {
+            return this.c.containsKey($$0);
+         }
+
+         @Override
+         public Set<km<?>> b() {
+            return this.c.keySet();
+         }
+
+         @Override
+         public Iterator<kp<?>> iterator() {
+            return Iterators.transform(Reference2ObjectMaps.fastIterator(this.c), kp::a);
+         }
+
+         @Override
+         public int d() {
+            return this.c.size();
+         }
+
+         @Override
+         public String toString() {
+            return this.c.toString();
+         }
+
+         public Reference2ObjectMap<km<?>, Object> f() {
+            return this.c;
+         }
       }
    }
 }

@@ -1,77 +1,53 @@
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
-public class axi {
-   public static Map<ale<? extends jv<?>>, axi.a> a(jp<alo> $$0) {
-      return jz.b($$0)
-         .map($$0x -> Pair.of($$0x.a(), a($$0x.b())))
-         .filter($$0x -> ((axi.a)$$0x.getSecond()).a() > 0)
-         .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
+public class axi<K, V extends axi.a<K>> {
+   private final Map<K, V> a = new HashMap<>();
+
+   public axi<K, V> a(K $$0, V $$1) {
+      this.a.put($$0, $$1);
+      return this;
    }
 
-   private static <T> axi.a a(jv<T> $$0) {
-      Map<alf, IntList> $$1 = new HashMap<>();
-      $$0.i().forEach($$2 -> {
-         jm<T> $$3 = (jm<T>)$$2.getSecond();
-         IntList $$4 = new IntArrayList($$3.b());
-
-         for (ji<T> $$5 : $$3) {
-            if ($$5.f() != ji.b.a) {
-               throw new IllegalStateException("Can't serialize unregistered value " + $$5);
-            }
-
-            $$4.add($$0.a($$5.a()));
-         }
-
-         $$1.put(((axf)$$2.getFirst()).b(), $$4);
-      });
-      return new axi.a($$1);
-   }
-
-   static <T> void a(ale<? extends jv<T>> $$0, jv<T> $$1, axi.a $$2, axi.b<T> $$3) {
-      $$2.a.forEach(($$3x, $$4) -> {
-         axf<T> $$5 = axf.a($$0, $$3x);
-         List<ji<T>> $$6 = $$4.intStream().mapToObj($$1::c).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
-         $$3.accept($$5, $$6);
-      });
-   }
-
-   public static final class a {
-      final Map<alf, IntList> a;
-
-      a(Map<alf, IntList> $$0) {
-         this.a = $$0;
-      }
-
-      public void a(wm $$0) {
-         $$0.a(this.a, wm::a, wm::a);
-      }
-
-      public static axi.a b(wm $$0) {
-         return new axi.a($$0.a(wm::q, wm::a));
-      }
-
-      public int a() {
-         return this.a.size();
-      }
-
-      public <T> void a(jv<T> $$0) {
-         if (this.a() != 0) {
-            Map<axf<T>, List<ji<T>>> $$1 = new HashMap<>(this.a());
-            axi.a($$0.c(), $$0, this, $$1::put);
-            $$0.a($$1);
+   private void a(Multimap<K, K> $$0, Set<K> $$1, K $$2, BiConsumer<K, V> $$3) {
+      if ($$1.add($$2)) {
+         $$0.get($$2).forEach($$3x -> this.a($$0, $$1, (K)$$3x, $$3));
+         V $$4 = this.a.get($$2);
+         if ($$4 != null) {
+            $$3.accept($$2, $$4);
          }
       }
    }
 
-   @FunctionalInterface
-   public interface b<T> {
-      void accept(axf<T> var1, List<ji<T>> var2);
+   private static <K> boolean a(Multimap<K, K> $$0, K $$1, K $$2) {
+      Collection<K> $$3 = $$0.get($$2);
+      return $$3.contains($$1) ? true : $$3.stream().anyMatch($$2x -> a($$0, $$1, $$2x));
+   }
+
+   private static <K> void b(Multimap<K, K> $$0, K $$1, K $$2) {
+      if (!a($$0, $$1, $$2)) {
+         $$0.put($$1, $$2);
+      }
+   }
+
+   public void a(BiConsumer<K, V> $$0) {
+      Multimap<K, K> $$1 = HashMultimap.create();
+      this.a.forEach(($$1x, $$2x) -> $$2x.a($$2xx -> b($$1, $$1x, $$2xx)));
+      this.a.forEach(($$1x, $$2x) -> $$2x.b($$2xx -> b($$1, $$1x, $$2xx)));
+      Set<K> $$2 = new HashSet<>();
+      this.a.keySet().forEach($$3 -> this.a($$1, $$2, (K)$$3, $$0));
+   }
+
+   public interface a<K> {
+      void a(Consumer<K> var1);
+
+      void b(Consumer<K> var1);
    }
 }

@@ -1,68 +1,29 @@
-import javax.annotation.Nullable;
+public class agf implements zb<agb> {
+   public static final ys<vr, agf> a = zb.a(agf::a, agf::new);
+   private final bqa b;
 
-public class agf implements zw<aci> {
-   public static final zn<wm, agf> a = zw.a(agf::a, agf::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   @Nullable
-   private final alf d;
-   @Nullable
-   private final awb e;
-
-   public agf(@Nullable alf $$0, @Nullable awb $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public agf(bqa $$0) {
+      this.b = $$0;
    }
 
-   private agf(wm $$0) {
-      int $$1 = $$0.readByte();
-      if (($$1 & 1) > 0) {
-         this.e = $$0.b(awb.class);
-      } else {
-         this.e = null;
-      }
-
-      if (($$1 & 2) > 0) {
-         this.d = $$0.q();
-      } else {
-         this.d = null;
-      }
+   private agf(vr $$0) {
+      this.b = bqa.a($$0.readUnsignedByte());
    }
 
-   private void a(wm $$0) {
-      if (this.e != null) {
-         if (this.d != null) {
-            $$0.k(3);
-            $$0.a(this.e);
-            $$0.a(this.d);
-         } else {
-            $$0.k(1);
-            $$0.a(this.e);
-         }
-      } else if (this.d != null) {
-         $$0.k(2);
-         $$0.a(this.d);
-      } else {
-         $$0.k(0);
-      }
+   private void a(vr $$0) {
+      $$0.k(this.b.a());
    }
 
    @Override
-   public zy<agf> a() {
-      return agu.aU;
+   public zd<agf> a() {
+      return afz.bh;
    }
 
-   public void a(aci $$0) {
+   public void a(agb $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public alf b() {
-      return this.d;
-   }
-
-   @Nullable
-   public awb e() {
-      return this.e;
+   public bqa b() {
+      return this.b;
    }
 }

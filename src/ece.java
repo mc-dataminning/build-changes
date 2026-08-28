@@ -1,60 +1,54 @@
 import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public class ece extends eba<edv> {
-   public ece(Codec<edv> $$0) {
+public class ece extends ebe<edx> {
+   public ece(Codec<edx> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebc<edv> $$0) {
-      dcv $$1 = $$0.b();
-      iz $$2 = $$0.e();
-      if (!this.a($$1, $$2)) {
+   public boolean a(ebg<edx> $$0) {
+      edx $$1 = $$0.f();
+      dcz $$2 = $$0.b();
+      aym $$3 = $$0.d();
+      dff $$4 = $$1.b.b();
+      ja $$5 = a($$2, $$0.e().j().a(jf.a.b, $$2.I_() + 1, $$2.am() - 1), $$4);
+      if ($$5 == null) {
          return false;
       } else {
-         edv $$3 = $$0.f();
-         azh $$4 = $$0.d();
-         dlw $$5 = dlw.b();
-         int $$6 = $$3.f() + $$3.d();
+         int $$6 = $$1.a().a($$3);
+         int $$7 = $$1.a().a($$3);
+         int $$8 = $$1.a().a($$3);
+         int $$9 = Math.max($$6, Math.max($$7, $$8));
+         boolean $$10 = false;
 
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
-               $$5.a($$2, $$3.b());
+         for (ja $$11 : ja.a($$5, $$6, $$7, $$8)) {
+            if ($$11.k($$5) > $$9) {
+               break;
             }
 
-            boolean $$9 = $$7 < $$3.f();
-
-            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
-               $$5.a($$1, $$2, $$4, $$9);
-            }
-
-            $$5.j();
-         }
-
-         iz $$11 = $$2.d();
-         if ($$4.i() <= $$3.h() && $$1.a_($$11).r($$1, $$11)) {
-            $$1.a($$2, dfd.qU.o(), 3);
-         }
-
-         int $$12 = $$3.g().a($$4);
-
-         for (int $$13 = 0; $$13 < $$12; $$13++) {
-            iz $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
-            if ($$1.a_($$14).i() && $$1.a_($$14.d()).d($$1, $$14.d(), je.b)) {
-               $$1.a($$14, dfd.qV.o().a(dlv.d, Boolean.valueOf(true)), 3);
+            dsh $$12 = $$2.a_($$11);
+            if ($$12.a($$4)) {
+               this.a($$2, $$11, $$1.c);
+               $$10 = true;
             }
          }
 
-         return true;
+         return $$10;
       }
    }
 
-   private boolean a(dcb $$0, iz $$1) {
-      dse $$2 = $$0.a_($$1);
-      if ($$2.b() instanceof dlr) {
-         return true;
-      } else {
-         return !$$2.i() && (!$$2.a(dfd.G) || !$$2.u().b()) ? false : je.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).r($$0, $$1x));
+   @Nullable
+   private static ja a(dce $$0, ja.a $$1, dff $$2) {
+      while ($$1.v() > $$0.I_() + 1) {
+         dsh $$3 = $$0.a_($$1);
+         if ($$3.a($$2)) {
+            return $$1;
+         }
+
+         $$1.c(jf.a);
       }
+
+      return null;
    }
 }

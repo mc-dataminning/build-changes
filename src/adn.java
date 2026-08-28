@@ -1,146 +1,88 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+public class adn implements zb<abn> {
+   public static final ys<vr, adn> a = zb.a(adn::a, adn::new);
+   private static final int b = 1;
+   private static final int c = 2;
+   private static final int d = 4;
+   private static final int e = 8;
+   private final boolean f;
+   private final boolean g;
+   private final boolean h;
+   private final boolean i;
+   private final float j;
+   private final float k;
 
-public class adn implements zw<aci> {
-   public static final zn<xa, adn> a = zw.a(adn::a, adn::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final float e;
-   private final List<iz> f;
-   private final float g;
-   private final float h;
-   private final float i;
-   private final lg j;
-   private final lg k;
-   private final dbs.a l;
-   private final ji<avz> m;
+   public adn(cme $$0) {
+      this.f = $$0.a;
+      this.g = $$0.b;
+      this.h = $$0.c;
+      this.i = $$0.d;
+      this.j = $$0.a();
+      this.k = $$0.b();
+   }
 
-   public adn(double $$0, double $$1, double $$2, float $$3, List<iz> $$4, @Nullable evt $$5, dbs.a $$6, lg $$7, lg $$8, ji<avz> $$9) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = Lists.newArrayList($$4);
-      this.m = $$9;
-      if ($$5 != null) {
-         this.g = (float)$$5.c;
-         this.h = (float)$$5.d;
-         this.i = (float)$$5.e;
-      } else {
-         this.g = 0.0F;
-         this.h = 0.0F;
-         this.i = 0.0F;
+   private adn(vr $$0) {
+      byte $$1 = $$0.readByte();
+      this.f = ($$1 & 1) != 0;
+      this.g = ($$1 & 2) != 0;
+      this.h = ($$1 & 4) != 0;
+      this.i = ($$1 & 8) != 0;
+      this.j = $$0.readFloat();
+      this.k = $$0.readFloat();
+   }
+
+   private void a(vr $$0) {
+      byte $$1 = 0;
+      if (this.f) {
+         $$1 = (byte)($$1 | 1);
       }
 
-      this.l = $$6;
-      this.j = $$7;
-      this.k = $$8;
-   }
+      if (this.g) {
+         $$1 = (byte)($$1 | 2);
+      }
 
-   private adn(xa $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readFloat();
-      int $$1 = ayz.a(this.b);
-      int $$2 = ayz.a(this.c);
-      int $$3 = ayz.a(this.d);
-      this.f = $$0.a($$3x -> {
-         int $$4 = $$3x.readByte() + $$1;
-         int $$5 = $$3x.readByte() + $$2;
-         int $$6 = $$3x.readByte() + $$3;
-         return new iz($$4, $$5, $$6);
-      });
-      this.g = $$0.readFloat();
-      this.h = $$0.readFloat();
-      this.i = $$0.readFloat();
-      this.l = $$0.b(dbs.a.class);
-      this.j = li.bg.decode($$0);
-      this.k = li.bg.decode($$0);
-      this.m = avz.d.decode($$0);
-   }
+      if (this.h) {
+         $$1 = (byte)($$1 | 4);
+      }
 
-   private void a(xa $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      int $$1 = ayz.a(this.b);
-      int $$2 = ayz.a(this.c);
-      int $$3 = ayz.a(this.d);
-      $$0.a(this.f, ($$3x, $$4) -> {
-         int $$5 = $$4.u() - $$1;
-         int $$6 = $$4.v() - $$2;
-         int $$7 = $$4.w() - $$3;
-         $$3x.k($$5);
-         $$3x.k($$6);
-         $$3x.k($$7);
-      });
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.a(this.i);
-      $$0.a(this.l);
-      li.bg.encode($$0, this.j);
-      li.bg.encode($$0, this.k);
-      avz.d.encode($$0, this.m);
+      if (this.i) {
+         $$1 = (byte)($$1 | 8);
+      }
+
+      $$0.k($$1);
+      $$0.a(this.j);
+      $$0.a(this.k);
    }
 
    @Override
-   public zy<adn> a() {
-      return agu.E;
+   public zd<adn> a() {
+      return afz.Z;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
    }
 
-   public float b() {
-      return this.g;
-   }
-
-   public float e() {
-      return this.h;
-   }
-
-   public float f() {
-      return this.i;
-   }
-
-   public double g() {
-      return this.b;
-   }
-
-   public double h() {
-      return this.c;
-   }
-
-   public double i() {
-      return this.d;
-   }
-
-   public float j() {
-      return this.e;
-   }
-
-   public List<iz> k() {
+   public boolean b() {
       return this.f;
    }
 
-   public dbs.a l() {
-      return this.l;
+   public boolean e() {
+      return this.g;
    }
 
-   public lg m() {
+   public boolean f() {
+      return this.h;
+   }
+
+   public boolean g() {
+      return this.i;
+   }
+
+   public float h() {
       return this.j;
    }
 
-   public lg n() {
+   public float i() {
       return this.k;
-   }
-
-   public ji<avz> o() {
-      return this.m;
    }
 }

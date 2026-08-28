@@ -1,104 +1,53 @@
-import com.google.common.base.Preconditions;
 import com.mojang.serialization.Codec;
-import java.nio.ByteBuffer;
-import java.util.Arrays;
-import java.util.Base64;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public record yb(byte[] c) {
-   public static final Codec<yb> a = ayh.p.xmap(yb::new, yb::b);
-   public static final int b = 256;
+public interface yb extends wv {
+   MapCodec<yb> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("text").forGetter(yb::b)).apply($$0, yb::a));
+   wv.a<yb> b = new wv.a<>(a, "text");
+   yb c = new yb() {
+      @Override
+      public String toString() {
+         return "empty";
+      }
 
-   public yb(byte[] c) {
-      Preconditions.checkState(c.length == 256, "Invalid message signature size");
-      this.c = c;
+      @Override
+      public String b() {
+         return "";
+      }
+   };
+
+   static yb a(String $$0) {
+      return (yb)($$0.isEmpty() ? c : new yb.a($$0));
    }
 
-   public static yb a(wm $$0) {
-      byte[] $$1 = new byte[256];
-      $$0.b($$1);
-      return new yb($$1);
-   }
-
-   public static void a(wm $$0, yb $$1) {
-      $$0.c($$1.c);
-   }
-
-   public boolean a(azm $$0, azl $$1) {
-      return $$0.validate($$1, this.c);
-   }
-
-   public ByteBuffer a() {
-      return ByteBuffer.wrap(this.c);
-   }
+   String b();
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof yb $$1 && Arrays.equals(this.c, $$1.c)) {
-            return true;
-         }
-
-         return false;
-      }
+   default wv.a<?> a() {
+      return b;
    }
 
-   @Override
-   public int hashCode() {
-      return Arrays.hashCode(this.c);
-   }
-
-   @Override
-   public String toString() {
-      return Base64.getEncoder().encodeToString(this.c);
-   }
-
-   public yb.a a(yc $$0) {
-      int $$1 = $$0.a(this);
-      return $$1 != -1 ? new yb.a($$1) : new yb.a(this);
-   }
-
-   public byte[] b() {
-      return this.c;
-   }
-
-   public static record a(int b, @Nullable yb c) {
-      public static final int a = -1;
-
-      public a(yb $$0) {
-         this(-1, $$0);
+   public static record a(String d) implements yb {
+      @Override
+      public <T> Optional<T> a(wz.a<T> $$0) {
+         return $$0.accept(this.d);
       }
 
-      public a(int $$0) {
-         this($$0, null);
+      @Override
+      public <T> Optional<T> a(wz.b<T> $$0, xr $$1) {
+         return $$0.accept($$1, this.d);
       }
 
-      public static yb.a a(wm $$0) {
-         int $$1 = $$0.l() - 1;
-         return $$1 == -1 ? new yb.a(yb.a($$0)) : new yb.a($$1);
+      @Override
+      public String toString() {
+         return "literal{" + this.d + "}";
       }
 
-      public static void a(wm $$0, yb.a $$1) {
-         $$0.c($$1.a() + 1);
-         if ($$1.b() != null) {
-            yb.a($$0, $$1.b());
-         }
-      }
-
-      public Optional<yb> a(yc $$0) {
-         return this.c != null ? Optional.of(this.c) : Optional.ofNullable($$0.a(this.b));
-      }
-
-      public int a() {
-         return this.b;
-      }
-
-      @Nullable
-      public yb b() {
-         return this.c;
+      @Override
+      public String b() {
+         return this.d;
       }
    }
 }

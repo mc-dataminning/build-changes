@@ -1,102 +1,60 @@
-import it.unimi.dsi.fastutil.ints.IntCollection;
-import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
-import it.unimi.dsi.fastutil.ints.IntSortedSet;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import com.mojang.serialization.Codec;
+import java.time.Instant;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class fyz {
-   final int a;
-   private final List<fyz.a> b = new ArrayList<>();
+public enum fyz implements ayz {
+   a("secure"),
+   b("modified"),
+   c("not_secure");
 
-   public fyz(int $$0) {
-      this.a = $$0;
+   public static final Codec<fyz> d = ayz.a(fyz::values);
+   private final String e;
+
+   private fyz(final String $$0) {
+      this.e = $$0;
    }
 
-   public void a(fyr $$0, IntCollection $$1, fyz.b $$2) {
-      IntSortedSet $$3 = new IntRBTreeSet($$1);
-
-      for (int $$4 = $$3.lastInt(); $$4 >= $$0.a() && (this.a() || !$$3.isEmpty()); $$4--) {
-         fyt $$6 = $$0.b($$4);
-         if ($$6 instanceof fyu.a) {
-            fyu.a $$5 = (fyu.a)$$6;
-            boolean $$6x = this.b($$5.g());
-            if ($$3.remove($$4)) {
-               this.a($$5.g());
-               $$2.accept($$4, $$5);
-            } else if ($$6x) {
-               $$2.accept($$4, $$5);
-            }
-         }
+   public static fyz a(xk $$0, wu $$1, Instant $$2) {
+      if (!$$0.i() || $$0.b($$2)) {
+         return c;
+      } else {
+         return a($$0, $$1) ? b : a;
       }
    }
 
-   public void a(yf $$0) {
-      this.b.add(new fyz.a($$0));
+   private static boolean a(xk $$0, wu $$1) {
+      if (!$$1.getString().contains($$0.c())) {
+         return true;
+      } else {
+         wu $$2 = $$0.n();
+         return $$2 == null ? false : a($$2);
+      }
    }
 
-   public boolean b(yf $$0) {
-      boolean $$1 = false;
-      Iterator<fyz.a> $$2 = this.b.iterator();
+   private static boolean a(wu $$0) {
+      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), xr.a).orElse(false);
+   }
 
-      while ($$2.hasNext()) {
-         fyz.a $$3 = $$2.next();
-         if ($$3.a($$0)) {
-            $$1 = true;
-            if ($$3.a()) {
-               $$2.remove();
-            }
-         }
-      }
-
-      return $$1;
+   private static boolean a(xr $$0) {
+      return !$$0.k().equals(xr.b);
    }
 
    public boolean a() {
-      return !this.b.isEmpty();
+      return this == c;
    }
 
-   class a {
-      private final Set<yb> b;
-      private yf c;
-      private boolean d = true;
-      private int e;
-
-      a(final yf $$0) {
-         this.b = new ObjectOpenHashSet($$0.m().d().a());
-         this.c = $$0;
-      }
-
-      boolean a(yf $$0) {
-         if ($$0.equals(this.c)) {
-            return false;
-         } else {
-            boolean $$1 = this.b.remove($$0.l());
-            if (this.d && this.c.g().equals($$0.g())) {
-               if (this.c.k().a($$0.k())) {
-                  $$1 = true;
-                  this.c = $$0;
-               } else {
-                  this.d = false;
-               }
-            }
-
-            if ($$1) {
-               this.e++;
-            }
-
-            return $$1;
-         }
-      }
-
-      boolean a() {
-         return this.e >= fyz.this.a || !this.d && this.b.isEmpty();
-      }
+   @Nullable
+   public ffi a(xk $$0) {
+      return switch (this) {
+         case b -> ffi.a($$0.c());
+         case c -> ffi.c();
+         default -> null;
+      };
    }
 
-   public interface b {
-      void accept(int var1, fyu.a var2);
+   @Override
+   public String c() {
+      return this.e;
    }
 }

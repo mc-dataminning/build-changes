@@ -1,16 +1,21 @@
-public class gis extends gjn {
-   public static final alf a = new alf("textures/entity/guardian_elder.png");
+public class gis extends gkm<ceu, fty<ceu>> {
+   private static final akk a = new akk("textures/entity/fish/cod.png");
 
-   public gis(giz.a $$0) {
-      super($$0, 1.2F, fxb.V);
+   public gis(gjg.a $$0) {
+      super($$0, new fty<>($$0.a(fxh.A)), 0.3F);
    }
 
-   protected void a(ckb $$0, faa $$1, float $$2) {
-      $$1.b(cju.b, cju.b, cju.b);
-   }
-
-   @Override
-   public alf a(ckb $$0) {
+   public akk a(ceu $$0) {
       return a;
+   }
+
+   protected void a(ceu $$0, fag $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      float $$6 = 4.3F * aye.a(0.6F * $$2);
+      $$1.a(a.d.rotationDegrees($$6));
+      if (!$$0.be()) {
+         $$1.a(0.1F, 0.1F, -0.1F);
+         $$1.a(a.f.rotationDegrees(90.0F));
+      }
    }
 }

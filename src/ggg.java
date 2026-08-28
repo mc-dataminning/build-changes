@@ -1,36 +1,36 @@
-public class ggg implements gfq<dqx> {
-   private final gix a;
+public class ggg implements gfx<dqh> {
+   public static final grm a = new grm(gph.e, new akk("entity/enchanting_table_book"));
+   private final ftq b;
 
-   public ggg(gfr.a $$0) {
-      this.a = $$0.c();
+   public ggg(gfy.a $$0) {
+      this.b = new ftq($$0.a(fxh.r));
    }
 
-   public void a(dqx $$0, float $$1, faa $$2, gdq $$3, int $$4, int $$5) {
-      dca $$6 = $$0.i();
-      if ($$6 != null) {
-         dbc $$7 = $$0.c();
-         bsw $$8 = $$7.b($$6, $$0.ay_());
-         if ($$8 != null) {
-            a($$1, $$2, $$3, $$4, $$8, this.a, $$7.b(), $$7.a());
-         }
-      }
-   }
+   public void a(dqh $$0, float $$1, fag $$2, gdx $$3, int $$4, int $$5) {
+      $$2.a();
+      $$2.a(0.5F, 0.75F, 0.5F);
+      float $$6 = (float)$$0.a + $$1;
+      $$2.a(0.0F, 0.1F + aye.a($$6 * 0.1F) * 0.01F, 0.0F);
+      float $$7 = $$0.h - $$0.i;
 
-   public static void a(float $$0, faa $$1, gdq $$2, int $$3, bsw $$4, gix $$5, double $$6, double $$7) {
-      $$1.a();
-      $$1.a(0.5F, 0.0F, 0.5F);
-      float $$8 = 0.53125F;
-      float $$9 = Math.max($$4.dj(), $$4.dk());
-      if ((double)$$9 > 1.0) {
-         $$8 /= $$9;
+      while ($$7 >= (float) Math.PI) {
+         $$7 -= (float) (Math.PI * 2);
       }
 
-      $$1.a(0.0F, 0.4F, 0.0F);
-      $$1.a(a.d.rotationDegrees((float)ayz.d((double)$$0, $$6, $$7) * 10.0F));
-      $$1.a(0.0F, -0.2F, 0.0F);
-      $$1.a(a.b.rotationDegrees(-30.0F));
-      $$1.b($$8, $$8, $$8);
-      $$5.a($$4, 0.0, 0.0, 0.0, 0.0F, $$0, $$1, $$2, $$3);
-      $$1.b();
+      while ($$7 < (float) -Math.PI) {
+         $$7 += (float) (Math.PI * 2);
+      }
+
+      float $$8 = $$0.i + $$7 * $$1;
+      $$2.a(a.d.rotation(-$$8));
+      $$2.a(a.f.rotationDegrees(80.0F));
+      float $$9 = aye.i($$1, $$0.c, $$0.b);
+      float $$10 = aye.h($$9 + 0.25F) * 1.6F - 0.3F;
+      float $$11 = aye.h($$9 + 0.75F) * 1.6F - 0.3F;
+      float $$12 = aye.i($$1, $$0.g, $$0.f);
+      this.b.a($$6, aye.a($$10, 0.0F, 1.0F), aye.a($$11, 0.0F, 1.0F), $$12);
+      fak $$13 = a.a($$3, gef::c);
+      this.b.b($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$2.b();
    }
 }

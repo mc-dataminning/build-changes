@@ -1,26 +1,37 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class cuj extends ctv {
+   private static final int a = 32;
 
-public record cuj(ji<avz> e, int f, float g) {
-   public static final Codec<cuj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               avz.b.fieldOf("sound_event").forGetter(cuj::a), ayh.l.fieldOf("use_duration").forGetter(cuj::b), ayh.m.fieldOf("range").forGetter(cuj::c)
-            )
-            .apply($$0, cuj::new)
-   );
-   public static final zn<xa, cuj> b = zn.a(avz.d, cuj::a, zl.g, cuj::b, zl.i, cuj::c, cuj::new);
-   public static final Codec<ji<cuj>> c = alb.a(lq.E, a);
-   public static final zn<xa, ji<cuj>> d = zl.a(lq.E, b);
-
-   public ji<avz> a() {
-      return this.e;
+   public cuj(ctv.a $$0) {
+      super($$0);
    }
 
-   public int b() {
-      return this.f;
+   @Override
+   public cua a(cua $$0, dcd $$1, bsy $$2) {
+      if ($$2 instanceof aql $$3) {
+         am.A.a($$3, $$0);
+         $$3.b(avp.c.b(this));
+      }
+
+      $$0.a(1, $$2);
+      if (!$$1.B) {
+         $$2.es();
+      }
+
+      return $$0.e() ? new cua(cud.qy) : $$0;
    }
 
-   public float c() {
-      return this.g;
+   @Override
+   public int a(cua $$0, bsy $$1) {
+      return 32;
+   }
+
+   @Override
+   public cvv b(cua $$0) {
+      return cvv.c;
+   }
+
+   @Override
+   public bqe<cua> a(dcd $$0, cmh $$1, bqc $$2) {
+      return cuc.a($$0, $$1, $$2);
    }
 }

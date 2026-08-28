@@ -1,120 +1,67 @@
-import com.google.common.collect.Lists;
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportChatMessage;
-import com.mojang.authlib.minecraft.report.ReportEvidence;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.nio.ByteBuffer;
-import java.time.Instant;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class fyy extends fzb {
-   final IntSet f = new IntOpenHashSet();
+public class fyy {
+   private final fza[] a;
+   private int b;
 
-   fyy(UUID $$0, Instant $$1, UUID $$2) {
-      super($$0, $$1, $$2);
+   public static Codec<fyy> a(int $$0) {
+      return Codec.list(fza.a)
+         .comapFlatMap(
+            $$1 -> {
+               int $$2 = $$1.size();
+               return $$2 > $$0
+                  ? DataResult.error(() -> "Expected: a buffer of size less than or equal to " + $$0 + " but: " + $$2 + " is greater than " + $$0)
+                  : DataResult.success(new fyy($$0, $$1));
+            },
+            fyy::c
+         );
    }
 
-   public void a(int $$0, AbuseReportLimits $$1) {
-      if (this.f.contains($$0)) {
-         this.f.remove($$0);
-      } else if (this.f.size() < $$1.maxReportedMessageCount()) {
-         this.f.add($$0);
+   public fyy(int $$0) {
+      this.a = new fza[$$0];
+   }
+
+   private fyy(int $$0, List<fza> $$1) {
+      this.a = $$1.toArray(fza[]::new);
+      this.b = $$1.size();
+   }
+
+   private List<fza> c() {
+      List<fza> $$0 = new ArrayList<>(this.d());
+
+      for (int $$1 = this.a(); $$1 <= this.b(); $$1++) {
+         $$0.add(this.b($$1));
       }
-   }
 
-   public fyy a() {
-      fyy $$0 = new fyy(this.a, this.b, this.c);
-      $$0.f.addAll(this.f);
-      $$0.d = this.d;
-      $$0.e = this.e;
       return $$0;
    }
 
-   @Override
-   public fnf a(fnf $$0, fzf $$1) {
-      return new frd($$0, $$1, this);
+   public void a(fza $$0) {
+      this.a[this.c(this.b++)] = $$0;
    }
 
-   public static class a extends fzb.a<fyy> {
-      public a(fyy $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
-      }
+   @Nullable
+   public fza b(int $$0) {
+      return $$0 >= this.a() && $$0 <= this.b() ? this.a[this.c($$0)] : null;
+   }
 
-      public a(UUID $$0, AbuseReportLimits $$1) {
-         super(new fyy(UUID.randomUUID(), Instant.now(), $$0), $$1);
-      }
+   private int c(int $$0) {
+      return $$0 % this.a.length;
+   }
 
-      public IntSet a() {
-         return this.a.f;
-      }
+   public int a() {
+      return Math.max(this.b - this.a.length, 0);
+   }
 
-      public void a(int $$0) {
-         this.a.a($$0, this.b);
-      }
+   public int b() {
+      return this.b - 1;
+   }
 
-      public boolean b(int $$0) {
-         return this.a.f.contains($$0);
-      }
-
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || !this.a().isEmpty() || this.h() != null;
-      }
-
-      @Nullable
-      @Override
-      public fzb.b c() {
-         if (this.a.f.isEmpty()) {
-            return fzb.b.b;
-         } else if (this.a.f.size() > this.b.maxReportedMessageCount()) {
-            return fzb.b.c;
-         } else if (this.a.e == null) {
-            return fzb.b.a;
-         } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fzb.b.d : null;
-         }
-      }
-
-      @Override
-      public Either<fzb.c, fzb.b> a(fzf $$0) {
-         fzb.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportEvidence $$3 = this.b($$0);
-            ReportedEntity $$4 = new ReportedEntity(this.a.c);
-            AbuseReport $$5 = AbuseReport.chat(this.a.d, $$2, $$3, $$4, this.a.b);
-            return Either.left(new fzb.c(this.a.a, fze.a, $$5));
-         }
-      }
-
-      private ReportEvidence b(fzf $$0) {
-         List<ReportChatMessage> $$1 = new ArrayList<>();
-         fyz $$2 = new fyz(this.b.leadingContextMessageCount());
-         $$2.a($$0.b(), this.a.f, ($$1x, $$2x) -> $$1.add(this.a($$2x, this.b($$1x))));
-         return new ReportEvidence(Lists.reverse($$1));
-      }
-
-      private ReportChatMessage a(fyu.a $$0, boolean $$1) {
-         yk $$2 = $$0.g().k();
-         yi $$3 = $$0.g().m();
-         List<ByteBuffer> $$4 = $$3.d().a().stream().map(yb::a).toList();
-         ByteBuffer $$5 = x.a($$0.g().l(), yb::a);
-         return new ReportChatMessage($$2.b(), $$2.c(), $$2.d(), $$3.b(), $$3.c(), $$4, $$3.a(), $$5, $$1);
-      }
-
-      public fyy.a d() {
-         return new fyy.a(this.a.a(), this.b);
-      }
+   private int d() {
+      return this.b() - this.a() + 1;
    }
 }

@@ -1,51 +1,60 @@
-import com.mojang.logging.LogUtils;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Properties;
-import org.slf4j.Logger;
+import com.google.common.collect.Maps;
+import java.util.Collection;
+import java.util.Map;
+import javax.annotation.Nullable;
 
 public class all {
-   private static final Logger a = LogUtils.getLogger();
-   private final Path b;
-   private final boolean c;
+   private final Map<akk, alk> a = Maps.newHashMap();
 
-   public all(Path $$0) {
-      this.b = $$0;
-      this.c = aa.aX || this.b();
+   @Nullable
+   public alk a(akk $$0) {
+      return this.a.get($$0);
    }
 
-   private boolean b() {
-      try {
-         boolean var3;
-         try (InputStream $$0 = Files.newInputStream(this.b)) {
-            Properties $$1 = new Properties();
-            $$1.load($$0);
-            var3 = Boolean.parseBoolean($$1.getProperty("eula", "false"));
-         }
+   public alk a(akk $$0, wu $$1) {
+      alk $$2 = new alk($$0, $$1);
+      this.a.put($$0, $$2);
+      return $$2;
+   }
 
-         return var3;
-      } catch (Exception var6) {
-         a.warn("Failed to load {}", this.b);
-         this.c();
-         return false;
+   public void a(alk $$0) {
+      this.a.remove($$0.a());
+   }
+
+   public Collection<akk> a() {
+      return this.a.keySet();
+   }
+
+   public Collection<alk> b() {
+      return this.a.values();
+   }
+
+   public tx a(jl.a $$0) {
+      tx $$1 = new tx();
+
+      for (alk $$2 : this.a.values()) {
+         $$1.a($$2.a().toString(), $$2.a($$0));
+      }
+
+      return $$1;
+   }
+
+   public void a(tx $$0, jl.a $$1) {
+      for (String $$2 : $$0.e()) {
+         akk $$3 = new akk($$2);
+         this.a.put($$3, alk.a($$0.p($$2), $$3, $$1));
       }
    }
 
-   public boolean a() {
-      return this.c;
+   public void a(aql $$0) {
+      for (alk $$1 : this.a.values()) {
+         $$1.c($$0);
+      }
    }
 
-   private void c() {
-      if (!aa.aX) {
-         try (OutputStream $$0 = Files.newOutputStream(this.b)) {
-            Properties $$1 = new Properties();
-            $$1.setProperty("eula", "false");
-            $$1.store($$0, "By changing the setting below to TRUE you are indicating your agreement to our EULA (https://aka.ms/MinecraftEULA).");
-         } catch (Exception var6) {
-            a.warn("Failed to save {}", this.b, var6);
-         }
+   public void b(aql $$0) {
+      for (alk $$1 : this.a.values()) {
+         $$1.d($$0);
       }
    }
 }

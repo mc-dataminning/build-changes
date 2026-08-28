@@ -1,72 +1,58 @@
-import it.unimi.dsi.fastutil.Stack;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Optional;
-import java.util.function.Predicate;
+import com.mojang.authlib.GameProfile;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+import net.minecraft.server.MinecraftServer;
 
 public class amd {
-   private static final int a = 2;
-
-   private static amd.b a(ae $$0, boolean $$1) {
-      Optional<ar> $$2 = $$0.c();
-      if ($$2.isEmpty()) {
-         return amd.b.b;
-      } else if ($$1) {
-         return amd.b.a;
-      } else {
-         return $$2.get().j() ? amd.b.b : amd.b.c;
-      }
+   public static void a(CommandDispatcher<eq> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("debugconfig").requires($$0x -> $$0x.c(3)))
+               .then(er.a("config").then(er.a("target", fd.c()).executes($$0x -> a((eq)$$0x.getSource(), fd.e($$0x, "target"))))))
+            .then(
+               er.a("unconfig")
+                  .then(
+                     er.a("target", gg.a())
+                        .suggests(($$0x, $$1) -> ev.b(a(((eq)$$0x.getSource()).l()), $$1))
+                        .executes($$0x -> a((eq)$$0x.getSource(), gg.a($$0x, "target")))
+                  )
+            )
+      );
    }
 
-   private static boolean a(Stack<amd.b> $$0) {
-      for (int $$1 = 0; $$1 <= 2; $$1++) {
-         amd.b $$2 = (amd.b)$$0.peek($$1);
-         if ($$2 == amd.b.a) {
-            return true;
+   private static Iterable<String> a(MinecraftServer $$0) {
+      Set<String> $$1 = new HashSet<>();
+
+      for (vp $$2 : $$0.ai().e()) {
+         if ($$2.k() instanceof ari $$3) {
+            $$1.add($$3.j().getId().toString());
          }
+      }
 
-         if ($$2 == amd.b.b) {
-            return false;
+      return $$1;
+   }
+
+   private static int a(eq $$0, aql $$1) {
+      GameProfile $$2 = $$1.fX();
+      $$1.c.n();
+      $$0.a(() -> wu.b("Switched player " + $$2.getName() + "(" + $$2.getId() + ") to config mode"), false);
+      return 1;
+   }
+
+   private static int a(eq $$0, UUID $$1) {
+      for (vp $$2 : $$0.l().ai().e()) {
+         wa var5 = $$2.k();
+         if (var5 instanceof ari) {
+            ari $$3 = (ari)var5;
+            if ($$3.j().getId().equals($$1)) {
+               $$3.m();
+            }
          }
       }
 
-      return false;
-   }
-
-   private static boolean a(ag $$0, Stack<amd.b> $$1, Predicate<ag> $$2, amd.a $$3) {
-      boolean $$4 = $$2.test($$0);
-      amd.b $$5 = a($$0.a(), $$4);
-      boolean $$6 = $$4;
-      $$1.push($$5);
-
-      for (ag $$7 : $$0.e()) {
-         $$6 |= a($$7, $$1, $$2, $$3);
-      }
-
-      boolean $$8 = $$6 || a($$1);
-      $$1.pop();
-      $$3.accept($$0, $$8);
-      return $$6;
-   }
-
-   public static void a(ag $$0, Predicate<ag> $$1, amd.a $$2) {
-      ag $$3 = $$0.d();
-      Stack<amd.b> $$4 = new ObjectArrayList();
-
-      for (int $$5 = 0; $$5 <= 2; $$5++) {
-         $$4.push(amd.b.c);
-      }
-
-      a($$3, $$4, $$1, $$2);
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void accept(ag var1, boolean var2);
-   }
-
-   static enum b {
-      a,
-      b,
-      c;
+      $$0.b(wu.b("Can't find player to unconfig"));
+      return 0;
    }
 }

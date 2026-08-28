@@ -1,15 +1,19 @@
-import java.util.Locale;
+import io.netty.buffer.ByteBuf;
 
-public class zb extends IllegalArgumentException {
-   public zb(za $$0, String $$1) {
-      super(String.format(Locale.ROOT, "Error parsing: %s: %s", $$0, $$1));
+public interface zb<T extends wa> {
+   zd<? extends zb<T>> a();
+
+   void a(T var1);
+
+   default boolean c() {
+      return false;
    }
 
-   public zb(za $$0, int $$1) {
-      super(String.format(Locale.ROOT, "Invalid index %d requested for %s", $$1, $$0));
+   default boolean d() {
+      return false;
    }
 
-   public zb(za $$0, Throwable $$1) {
-      super(String.format(Locale.ROOT, "Error while parsing: %s", $$0), $$1);
+   static <B extends ByteBuf, T extends zb<?>> ys<B, T> a(yv<B, T> $$0, yt<B, T> $$1) {
+      return ys.a($$0, $$1);
    }
 }

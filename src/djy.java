@@ -1,57 +1,43 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public enum djy implements azu {
-   a("none", h.a),
-   b("left_right", h.B),
-   c("front_back", h.z);
+public class djy extends dff {
+   public static final MapCodec<djy> a = b(djy::new);
+   private static final int b = 20;
 
-   public static final Codec<djy> d = azu.a(djy::values);
-   private final String e;
-   private final xp f;
-   private final h g;
-
-   private djy(final String $$0, final h $$1) {
-      this.e = $$0;
-      this.f = xp.c("mirror." + $$0);
-      this.g = $$1;
+   @Override
+   public MapCodec<djy> a() {
+      return a;
    }
 
-   public int a(int $$0, int $$1) {
-      int $$2 = $$1 / 2;
-      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
-      switch (this) {
-         case b:
-            return ($$2 - $$3 + $$1) % $$1;
-         case c:
-            return ($$1 - $$3) % $$1;
-         default:
-            return $$0;
-      }
-   }
-
-   public dlo a(je $$0) {
-      je.a $$1 = $$0.o();
-      return (this != b || $$1 != je.a.c) && (this != c || $$1 != je.a.a) ? dlo.a : dlo.c;
-   }
-
-   public je b(je $$0) {
-      if (this == c && $$0.o() == je.a.a) {
-         return $$0.g();
-      } else {
-         return this == b && $$0.o() == je.a.c ? $$0.g() : $$0;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public xp b() {
-      return this.f;
+   public djy(dsg.d $$0) {
+      super($$0);
    }
 
    @Override
-   public String c() {
-      return this.e;
+   public void a(dcd $$0, ja $$1, dsh $$2, bsd $$3) {
+      if (!$$3.bW() && $$3 instanceof bsy) {
+         $$3.a($$0.aj().f(), 1.0F);
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected void a(dsh $$0, aqk $$1, ja $$2, aym $$3) {
+      dfl.b($$1, $$2.c(), $$0);
+   }
+
+   @Override
+   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
+      if ($$1 == jf.b && $$2.a(dfh.G)) {
+         $$3.a($$4, this, 20);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected void b(dsh $$0, dcd $$1, ja $$2, dsh $$3, boolean $$4) {
+      $$1.a($$2, this, 20);
    }
 }

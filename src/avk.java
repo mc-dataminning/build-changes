@@ -1,52 +1,106 @@
-import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.util.Date;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public class avk extends auy<GameProfile> {
-   public avk(@Nullable GameProfile $$0) {
-      this($$0, null, null, null, null);
-   }
+public class avk extends avi {
+   public static final String c = "recipeBook";
+   private static final Logger d = LogUtils.getLogger();
 
-   public avk(@Nullable GameProfile $$0, @Nullable Date $$1, @Nullable String $$2, @Nullable Date $$3, @Nullable String $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-   }
+   public int a(Collection<cyi<?>> $$0, aql $$1) {
+      List<akk> $$2 = Lists.newArrayList();
+      int $$3 = 0;
 
-   public avk(JsonObject $$0) {
-      super(b($$0), $$0);
-   }
-
-   @Override
-   protected void a(JsonObject $$0) {
-      if (this.g() != null) {
-         $$0.addProperty("uuid", this.g().getId().toString());
-         $$0.addProperty("name", this.g().getName());
-         super.a($$0);
-      }
-   }
-
-   @Override
-   public xp e() {
-      GameProfile $$0 = this.g();
-      return $$0 != null ? xp.b($$0.getName()) : xp.c("commands.banlist.entry.unknown");
-   }
-
-   @Nullable
-   private static GameProfile b(JsonObject $$0) {
-      if ($$0.has("uuid") && $$0.has("name")) {
-         String $$1 = $$0.get("uuid").getAsString();
-
-         UUID $$2;
-         try {
-            $$2 = UUID.fromString($$1);
-         } catch (Throwable var4) {
-            return null;
+      for (cyi<?> $$4 : $$0) {
+         akk $$5 = $$4.a();
+         if (!this.a.contains($$5) && !$$4.b().ao_()) {
+            this.a($$5);
+            this.d($$5);
+            $$2.add($$5);
+            am.g.a($$1, $$4);
+            $$3++;
          }
-
-         return new GameProfile($$2, $$0.get("name").getAsString());
-      } else {
-         return null;
       }
+
+      if ($$2.size() > 0) {
+         this.a(adx.a.b, $$1, $$2);
+      }
+
+      return $$3;
+   }
+
+   public int b(Collection<cyi<?>> $$0, aql $$1) {
+      List<akk> $$2 = Lists.newArrayList();
+      int $$3 = 0;
+
+      for (cyi<?> $$4 : $$0) {
+         akk $$5 = $$4.a();
+         if (this.a.contains($$5)) {
+            this.c($$5);
+            $$2.add($$5);
+            $$3++;
+         }
+      }
+
+      this.a(adx.a.c, $$1, $$2);
+      return $$3;
+   }
+
+   private void a(adx.a $$0, aql $$1, List<akk> $$2) {
+      $$1.c.b(new adx($$0, $$2, Collections.emptyList(), this.a()));
+   }
+
+   public tx b() {
+      tx $$0 = new tx();
+      this.a().b($$0);
+      ud $$1 = new ud();
+
+      for (akk $$2 : this.a) {
+         $$1.add(us.a($$2.toString()));
+      }
+
+      $$0.a("recipes", $$1);
+      ud $$3 = new ud();
+
+      for (akk $$4 : this.b) {
+         $$3.add(us.a($$4.toString()));
+      }
+
+      $$0.a("toBeDisplayed", $$3);
+      return $$0;
+   }
+
+   public void a(tx $$0, cyk $$1) {
+      this.a(avj.a($$0));
+      ud $$2 = $$0.c("recipes", 8);
+      this.a($$2, this::a, $$1);
+      ud $$3 = $$0.c("toBeDisplayed", 8);
+      this.a($$3, this::f, $$1);
+   }
+
+   private void a(ud $$0, Consumer<cyi<?>> $$1, cyk $$2) {
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         String $$4 = $$0.j($$3);
+
+         try {
+            akk $$5 = new akk($$4);
+            Optional<cyi<?>> $$6 = $$2.a($$5);
+            if ($$6.isEmpty()) {
+               d.error("Tried to load unrecognized recipe: {} removed now.", $$5);
+            } else {
+               $$1.accept($$6.get());
+            }
+         } catch (z var8) {
+            d.error("Tried to load improperly formatted recipe: {} removed now.", $$4);
+         }
+      }
+   }
+
+   public void a(aql $$0) {
+      $$0.c.b(new adx(adx.a.a, this.a, this.b, this.a()));
    }
 }

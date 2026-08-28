@@ -1,45 +1,40 @@
-public class dat extends dac {
-   public dat() {
-      super(dac.a(awy.bR, 2, 3, dac.a(15, 9), dac.a(65, 9), 4, cpn.a(cpp.c), btd.a));
-   }
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record dat(jn<czj> c, int d, int e) implements daq {
+   public static final MapCodec<dat> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               jy.a(lr.aK).fieldOf("enchantments").forGetter(dat::b),
+               axm.l.fieldOf("min_cost").forGetter(dat::c),
+               axm.k.fieldOf("max_cost_span").forGetter(dat::d)
+            )
+            .apply($$0, dat::new)
+   );
 
    @Override
-   public void c(btr $$0, bsw $$1, int $$2) {
-      float $$3 = 0.25F + 0.25F * (float)$$2;
-      $$0.dP().a(null, null, new dat.a($$3), $$0.du(), $$0.dw(), $$0.dA(), 3.5F, false, dca.a.e, li.A, li.z, awa.Cm);
-   }
+   public void a(cua $$0, czp.a $$1, aym $$2, dcd $$3, ja $$4) {
+      float $$5 = $$3.d_($$4).d();
+      int $$6 = aye.b($$2, this.d, this.d + (int)($$5 * (float)this.e));
 
-   @Override
-   public boolean k() {
-      return false;
-   }
-
-   @Override
-   public boolean l() {
-      return false;
-   }
-
-   static final class a extends coh.a {
-      private final float a;
-
-      public a(float $$0) {
-         this.a = $$0;
+      for (czm $$8 : czl.b($$2, $$0, $$6, this.c.a())) {
+         $$1.b($$8.a, $$8.b);
       }
+   }
 
-      @Override
-      public float a(bsw $$0) {
-         boolean var10000;
-         label17: {
-            if ($$0 instanceof cmz $$1 && $$1.gd().b) {
-               var10000 = true;
-               break label17;
-            }
+   @Override
+   public MapCodec<dat> a() {
+      return b;
+   }
 
-            var10000 = false;
-         }
+   public jn<czj> b() {
+      return this.c;
+   }
 
-         boolean $$2 = var10000;
-         return !$$2 ? this.a : 0.0F;
-      }
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

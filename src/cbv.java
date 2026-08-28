@@ -1,67 +1,39 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class cbv extends cap {
+public class cbv<T extends bta & bte> extends bzw {
    private static final int a = 10;
-   private final bua b;
-   private final int c;
-   @Nullable
-   private iz d;
+   private final T b;
+   private final boolean c;
+   private int d;
 
-   public cbv(bua $$0, int $$1) {
+   public cbv(T $$0, boolean $$1) {
       this.b = $$0;
-      this.c = b($$1);
-      this.a(EnumSet.of(cap.a.a));
+      this.c = $$1;
    }
 
    @Override
    public boolean a() {
-      if (this.b.cR()) {
-         return false;
-      } else if (this.b.dP().R()) {
-         return false;
-      } else if (this.b.el().a(this.c) != 0) {
-         return false;
-      } else {
-         arf $$0 = (arf)this.b.dP();
-         iz $$1 = this.b.dp();
-         if (!$$0.a($$1, 6)) {
-            return false;
-         } else {
-            evt $$2 = cep.a(this.b, 15, 7, $$1x -> (double)(-$$0.b(kb.a($$1x))));
-            this.d = $$2 == null ? null : iz.a($$2);
-            return this.d != null;
-         }
-      }
+      return this.b.dP().ab().b(dbz.O) && this.h();
+   }
+
+   private boolean h() {
+      return this.b.ei() != null && this.b.ei().ak() == bsj.by && this.b.ej() > this.d;
    }
 
    @Override
-   public boolean b() {
-      return this.d != null && !this.b.K().l() && this.b.K().h().equals(this.d);
-   }
-
-   @Override
-   public void e() {
-      if (this.d != null) {
-         cdd $$0 = this.b.K();
-         if ($$0.l() && !this.d.a(this.b.dn(), 10.0)) {
-            evt $$1 = evt.c(this.d);
-            evt $$2 = this.b.dn();
-            evt $$3 = $$2.d($$1);
-            $$1 = $$3.a(0.4).e($$1);
-            evt $$4 = $$1.d($$2).d().a(10.0).e($$2);
-            iz $$5 = iz.a($$4);
-            $$5 = this.b.dP().a(dxw.a.f, $$5);
-            if (!$$0.a((double)$$5.u(), (double)$$5.v(), (double)$$5.w(), 1.0)) {
-               this.h();
-            }
-         }
+   public void c() {
+      this.d = this.b.ej();
+      this.b.aa_();
+      if (this.c) {
+         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bte)$$0).forEach(bte::aa_);
       }
+
+      super.c();
    }
 
-   private void h() {
-      azh $$0 = this.b.el();
-      iz $$1 = this.b.dP().a(dxw.a.f, this.b.dp().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
-      this.b.K().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), 1.0);
+   private List<? extends bta> i() {
+      double $$0 = this.b.g(bug.m);
+      evu $$1 = evu.a(this.b.dn()).c($$0, 10.0, $$0);
+      return this.b.dP().a((Class<? extends bta>)this.b.getClass(), $$1, bsi.f);
    }
 }

@@ -1,11 +1,22 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class byl {
-   public static bvl<btr> a() {
-      return byx.a((Function<byx.b<btr>, ? extends App<byx.c<btr>, bza<btr>>>)($$0 -> $$0.a((bza<btr>)(($$0x, $$1, $$2) -> {
-            $$1.dS().a($$0x.aa(), $$0x.Z());
-            return true;
-         }))));
+public class byl<E extends cll> extends bur<E> {
+   public byl(int $$0) {
+      super(ImmutableMap.of(ccc.aC, ccd.a, ccc.m, ccd.b, ccc.n, ccd.c), $$0);
+   }
+
+   protected boolean a(aqk $$0, E $$1, long $$2) {
+      return true;
+   }
+
+   protected void b(aqk $$0, E $$1, long $$2) {
+      $$1.b(btk.n);
+      $$1.a(avf.BL, 5.0F, 1.0F);
+   }
+
+   protected void c(aqk $$0, E $$1, long $$2) {
+      if ($$1.c(btk.n)) {
+         $$1.b(btk.a);
+      }
    }
 }

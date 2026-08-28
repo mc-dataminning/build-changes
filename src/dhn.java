@@ -1,94 +1,102 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class dhn extends den {
+public class dhn extends dfo {
    public static final MapCodec<dhn> a = b(dhn::new);
-   protected static final ewm b = dfb.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0);
-   public static final List<iz> c = iz.a(-2, 0, -2, 2, 1, 2).filter($$0 -> Math.abs($$0.u()) == 2 || Math.abs($$0.w()) == 2).map(iz::i).toList();
+   public static final dtf<dtd> b = dsx.ae;
 
    @Override
-   public MapCodec<dhn> a() {
+   public MapCodec<? extends dhn> a() {
       return a;
    }
 
-   protected dhn(dsd.d $$0) {
+   public dhn(dsg.d $$0) {
       super($$0);
-   }
-
-   public static boolean a(dca $$0, iz $$1, iz $$2) {
-      return $$0.a_($$1.a((kd)$$2)).a(awp.cv) && $$0.a_($$1.b($$2.u() / 2, $$2.v(), $$2.w() / 2)).a(awp.cw);
+      this.k(this.E.b().a(b, dtd.b));
    }
 
    @Override
-   protected boolean f_(dse $$0) {
-      return true;
+   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
+      dtd $$6 = $$0.c(b);
+      if ($$1.o() != jf.a.b || $$6 == dtd.b != ($$1 == jf.b) || $$2.a(this) && $$2.c(b) != $$6) {
+         return $$6 == dtd.b && $$1 == jf.a && !$$0.a($$3, $$4) ? dfh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      } else {
+         return dfh.a.o();
+      }
+   }
+
+   @Nullable
+   @Override
+   public dsh a(cxk $$0) {
+      ja $$1 = $$0.a();
+      dcd $$2 = $$0.q();
+      return $$1.v() < $$2.am() - 1 && $$2.a_($$1.c()).a($$0) ? super.a($$0) : null;
    }
 
    @Override
-   protected ewm a(dse $$0, dbg $$1, iz $$2, evy $$3) {
-      return b;
+   public void a(dcd $$0, ja $$1, dsh $$2, bsy $$3, cua $$4) {
+      ja $$5 = $$1.c();
+      $$0.a($$5, c($$0, $$5, this.o().a(b, dtd.a)), 3);
    }
 
    @Override
-   public void a(dse $$0, dca $$1, iz $$2, azh $$3) {
-      super.a($$0, $$1, $$2, $$3);
+   protected boolean a(dsh $$0, dcg $$1, ja $$2) {
+      if ($$0.c(b) != dtd.a) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         dsh $$3 = $$1.a_($$2.d());
+         return $$3.a(this) && $$3.c(b) == dtd.b;
+      }
+   }
 
-      for (iz $$4 : c) {
-         if ($$3.a(16) == 0 && a($$1, $$2, $$4)) {
-            $$1.a(
-               li.s,
-               (double)$$2.u() + 0.5,
-               (double)$$2.v() + 2.0,
-               (double)$$2.w() + 0.5,
-               (double)((float)$$4.u() + $$3.i()) - 0.5,
-               (double)((float)$$4.v() - $$3.i() - 1.0F),
-               (double)((float)$$4.w() + $$3.i()) - 0.5
-            );
+   public static void a(dce $$0, dsh $$1, ja $$2, int $$3) {
+      ja $$4 = $$2.c();
+      $$0.a($$2, c($$0, $$2, $$1.a(b, dtd.b)), $$3);
+      $$0.a($$4, c($$0, $$4, $$1.a(b, dtd.a)), $$3);
+   }
+
+   public static dsh c(dcg $$0, ja $$1, dsh $$2) {
+      return $$2.b(dsx.C) ? $$2.a(dsx.C, Boolean.valueOf($$0.z($$1))) : $$2;
+   }
+
+   @Override
+   public dsh a(dcd $$0, ja $$1, dsh $$2, cmh $$3) {
+      if (!$$0.B) {
+         if ($$3.f()) {
+            b($$0, $$1, $$2, $$3);
+         } else {
+            a($$2, $$0, $$1, null, $$3, $$3.eT());
+         }
+      }
+
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(dcd $$0, cmh $$1, ja $$2, dsh $$3, @Nullable dpn $$4, cua $$5) {
+      super.a($$0, $$1, $$2, dfh.a.o(), $$4, $$5);
+   }
+
+   protected static void b(dcd $$0, ja $$1, dsh $$2, cmh $$3) {
+      dtd $$4 = $$2.c(b);
+      if ($$4 == dtd.a) {
+         ja $$5 = $$1.d();
+         dsh $$6 = $$0.a_($$5);
+         if ($$6.a($$2.b()) && $$6.c(b) == dtd.b) {
+            dsh $$7 = $$6.u().b(eoc.c) ? dfh.G.o() : dfh.a.o();
+            $$0.a($$5, $$7, 35);
+            $$0.a($$3, 2001, $$5, dff.i($$6));
          }
       }
    }
 
    @Override
-   protected dlh a_(dse $$0) {
-      return dlh.c;
+   protected void a(dsi.a<dff, dsh> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   public dpj a(iz $$0, dse $$1) {
-      return new dqd($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dpj> dpk<T> a(dca $$0, dse $$1, dpl<T> $$2) {
-      return $$0.B ? a($$2, dpl.m, dqd::a) : null;
-   }
-
-   @Override
-   protected bqw a(dse $$0, dca $$1, iz $$2, cmz $$3, evp $$4) {
-      if ($$1.B) {
-         return bqw.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         return bqw.c;
-      }
-   }
-
-   @Nullable
-   @Override
-   protected bra b(dse $$0, dca $$1, iz $$2) {
-      dpj $$3 = $$1.c_($$2);
-      if ($$3 instanceof dqd) {
-         xp $$4 = ((brb)$$3).O_();
-         return new brg(($$2x, $$3x, $$4x) -> new cqq($$2x, $$3x, cqh.a($$1, $$2)), $$4);
-      } else {
-         return null;
-      }
-   }
-
-   @Override
-   protected boolean a(dse $$0, eom $$1) {
-      return false;
+   protected long a(dsh $$0, ja $$1) {
+      return aye.b($$1.u(), $$1.c($$0.c(b) == dtd.b ? 0 : 1).v(), $$1.w());
    }
 }

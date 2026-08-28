@@ -1,74 +1,206 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
-import java.util.function.UnaryOperator;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Dynamic;
+import javax.annotation.Nullable;
 
-public final class cgl {
-   public static final Codec<cgl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               alf.a.fieldOf("wild_texture").forGetter($$0x -> $$0x.c),
-               alf.a.fieldOf("tame_texture").forGetter($$0x -> $$0x.d),
-               alf.a.fieldOf("angry_texture").forGetter($$0x -> $$0x.e),
-               jx.a(lq.az).fieldOf("biomes").forGetter(cgl::d)
-            )
-            .apply($$0, cgl::new)
-   );
-   public static final Codec<ji<cgl>> b = alb.a(lq.m, a);
-   private final alf c;
-   private final alf d;
-   private final alf e;
-   private final alf f;
-   private final alf g;
-   private final alf h;
-   private final jm<dcz> i;
+public class cgl extends cel {
+   @VisibleForTesting
+   public static int b = Math.abs(-24000);
+   public static float c = 0.4F;
+   public static float d = 0.3F;
+   private int cb;
+   protected static final ImmutableList<cdj<? extends cdi<? super cgl>>> e = ImmutableList.of(cdj.c, cdj.d, cdj.f, cdj.s);
+   protected static final ImmutableList<ccc<?>> ca = ImmutableList.of(ccc.n, ccc.h, ccc.m, ccc.E, ccc.t, ccc.K, ccc.P, ccc.R, ccc.O, ccc.r, ccc.Z);
 
-   public cgl(alf $$0, alf $$1, alf $$2, jm<dcz> $$3) {
-      this.c = $$0;
-      this.f = a($$0);
-      this.d = $$1;
-      this.g = a($$1);
-      this.e = $$2;
-      this.h = a($$2);
-      this.i = $$3;
-   }
-
-   private static alf a(alf $$0) {
-      return $$0.a((UnaryOperator<String>)($$0x -> "textures/" + $$0x + ".png"));
-   }
-
-   public alf a() {
-      return this.f;
-   }
-
-   public alf b() {
-      return this.g;
-   }
-
-   public alf c() {
-      return this.h;
-   }
-
-   public jm<dcz> d() {
-      return this.i;
+   public cgl(bsj<? extends cel> $$0, dcd $$1) {
+      super($$0, $$1);
+      this.bR = new bzb(this, 85, 10, 0.02F, 0.1F, true);
+      this.bQ = new bza(this, 10);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if ($$0 == this) {
-         return true;
-      } else {
-         return !($$0 instanceof cgl $$1)
-            ? false
-            : Objects.equals(this.c, $$1.c) && Objects.equals(this.d, $$1.d) && Objects.equals(this.e, $$1.e) && Objects.equals(this.i, $$1.i);
+   protected cck b(dcd $$0) {
+      return new ccm(this, $$0);
+   }
+
+   @Override
+   protected bua.b<cgl> dU() {
+      return bua.a(ca, e);
+   }
+
+   @Override
+   protected bua<?> a(Dynamic<?> $$0) {
+      return cgm.a(this.dU().a($$0));
+   }
+
+   @Override
+   public bua<cgl> dT() {
+      return (bua<cgl>)super.dT();
+   }
+
+   @Override
+   protected ave go() {
+      return avf.zu;
+   }
+
+   @Override
+   protected void Z() {
+      this.dP().ag().a("tadpoleBrain");
+      this.dT().a((aqk)this.dP(), this);
+      this.dP().ag().c();
+      this.dP().ag().a("tadpoleActivityUpdate");
+      cgm.a(this);
+      this.dP().ag().c();
+      super.Z();
+   }
+
+   public static buf.a gp() {
+      return bta.A().a(bug.v, 1.0).a(bug.s, 6.0);
+   }
+
+   @Override
+   public void n_() {
+      super.n_();
+      if (!this.dP().B) {
+         this.s(this.cb + 1);
       }
    }
 
    @Override
-   public int hashCode() {
-      int $$0 = 1;
-      $$0 = 31 * $$0 + this.c.hashCode();
-      $$0 = 31 * $$0 + this.d.hashCode();
-      $$0 = 31 * $$0 + this.e.hashCode();
-      return 31 * $$0 + this.i.hashCode();
+   public void b(tx $$0) {
+      super.b($$0);
+      $$0.a("Age", this.cb);
+   }
+
+   @Override
+   public void a(tx $$0) {
+      super.a($$0);
+      this.s($$0.h("Age"));
+   }
+
+   @Nullable
+   @Override
+   protected ave v() {
+      return null;
+   }
+
+   @Nullable
+   @Override
+   protected ave d(bqw $$0) {
+      return avf.zw;
+   }
+
+   @Nullable
+   @Override
+   protected ave o_() {
+      return avf.zt;
+   }
+
+   @Override
+   public bqd b(cmh $$0, bqc $$1) {
+      cua $$2 = $$0.b($$1);
+      if (this.o($$2)) {
+         this.a($$0, $$2);
+         return bqd.a(this.dP().B);
+      } else {
+         return ceq.a($$0, $$1, this).orElse(super.b($$0, $$1));
+      }
+   }
+
+   @Override
+   protected void Y() {
+      super.Y();
+      afy.a(this);
+   }
+
+   @Override
+   public boolean u() {
+      return true;
+   }
+
+   @Override
+   public void w(boolean $$0) {
+   }
+
+   @Override
+   public void n(cua $$0) {
+      ceq.a(this, $$0);
+      cwo.a(kn.N, $$0, $$0x -> $$0x.a("Age", this.gq()));
+   }
+
+   @Override
+   public void c(tx $$0) {
+      ceq.a(this, $$0);
+      if ($$0.e("Age")) {
+         this.s($$0.h("Age"));
+      }
+   }
+
+   @Override
+   public cua b() {
+      return new cua(cud.qK);
+   }
+
+   @Override
+   public ave y() {
+      return avf.dn;
+   }
+
+   private boolean o(cua $$0) {
+      return $$0.a(awd.al);
+   }
+
+   private void a(cmh $$0, cua $$1) {
+      this.b($$0, $$1);
+      this.c(brx.d_(this.gs()));
+      this.dP().a(lj.O, this.d(1.0), this.dx() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
+   }
+
+   private void b(cmh $$0, cua $$1) {
+      $$1.a(1, $$0);
+   }
+
+   private int gq() {
+      return this.cb;
+   }
+
+   private void c(int $$0) {
+      this.s(this.cb + $$0 * 20);
+   }
+
+   private void s(int $$0) {
+      this.cb = $$0;
+      if (this.cb >= b) {
+         this.gr();
+      }
+   }
+
+   private void gr() {
+      if (this.dP() instanceof aqk $$0) {
+         cgi $$1 = bsj.R.a(this.dP());
+         if ($$1 != null) {
+            $$1.b(this.du(), this.dw(), this.dA(), this.dF(), this.dH());
+            $$1.a($$0, this.dP().d_($$1.dp()), btc.i, null);
+            $$1.t(this.gc());
+            if (this.ag()) {
+               $$1.b(this.ah());
+               $$1.o(this.cE());
+            }
+
+            $$1.fQ();
+            this.a(avf.zv, 0.15F, 1.0F);
+            $$0.a_($$1);
+            this.ao();
+         }
+      }
+   }
+
+   private int gs() {
+      return Math.max(0, b - this.cb);
+   }
+
+   @Override
+   public boolean ee() {
+      return false;
    }
 }

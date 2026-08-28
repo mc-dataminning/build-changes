@@ -1,29 +1,54 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-public record jh(ale<dca> d, iz e) {
-   public static final MapCodec<jh> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dca.g.fieldOf("dimension").forGetter(jh::a), iz.a.fieldOf("pos").forGetter(jh::b)).apply($$0, jh::a)
-   );
-   public static final Codec<jh> b = a.codec();
-   public static final zn<ByteBuf, jh> c = zn.a(ale.b(lq.aS), jh::a, iz.b, jh::b, jh::a);
+public enum jh implements ayz {
+   a("down_east", jf.a, jf.f),
+   b("down_north", jf.a, jf.c),
+   c("down_south", jf.a, jf.d),
+   d("down_west", jf.a, jf.e),
+   e("up_east", jf.b, jf.f),
+   f("up_north", jf.b, jf.c),
+   g("up_south", jf.b, jf.d),
+   h("up_west", jf.b, jf.e),
+   i("west_up", jf.e, jf.b),
+   j("east_up", jf.f, jf.b),
+   k("north_up", jf.c, jf.b),
+   l("south_up", jf.d, jf.b);
 
-   public static jh a(ale<dca> $$0, iz $$1) {
-      return new jh($$0, $$1);
+   private static final Int2ObjectMap<jh> m = ac.a(new Int2ObjectOpenHashMap(values().length), $$0 -> {
+      for (jh $$1 : values()) {
+         $$0.put(b($$1.p, $$1.o), $$1);
+      }
+   });
+   private final String n;
+   private final jf o;
+   private final jf p;
+
+   private static int b(jf $$0, jf $$1) {
+      return $$1.ordinal() << 3 | $$0.ordinal();
+   }
+
+   private jh(final String $$0, final jf $$1, final jf $$2) {
+      this.n = $$0;
+      this.p = $$1;
+      this.o = $$2;
    }
 
    @Override
-   public String toString() {
-      return this.d + " " + this.e;
+   public String c() {
+      return this.n;
    }
 
-   public ale<dca> a() {
-      return this.d;
+   public static jh a(jf $$0, jf $$1) {
+      int $$2 = b($$0, $$1);
+      return (jh)m.get($$2);
    }
 
-   public iz b() {
-      return this.e;
+   public jf a() {
+      return this.p;
+   }
+
+   public jf b() {
+      return this.o;
    }
 }

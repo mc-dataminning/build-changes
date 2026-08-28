@@ -1,39 +1,43 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
-import java.util.function.ToIntFunction;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 
-class bsm extends bsc {
-   private final ToIntFunction<azh> a;
+public record bsm(akj<eqt> c, Map<bsk, Float> d) {
+   public static final Codec<Map<bsk, Float>> a = Codec.either(Codec.FLOAT, Codec.unboundedMap(bsk.h, Codec.FLOAT))
+      .xmap($$0 -> (Map)$$0.map(bsm::a, Function.identity()), $$0 -> {
+         boolean $$1 = $$0.values().stream().distinct().count() == 1L;
+         boolean $$2 = $$0.keySet().containsAll(Arrays.asList(bsk.values()));
+         return $$1 && $$2 ? Either.left($$0.values().stream().findFirst().orElse(0.0F)) : Either.right($$0);
+      });
+   public static final Codec<bsm> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(akj.a(lr.bb).fieldOf("loot_table").forGetter(bsm::a), a.optionalFieldOf("slot_drop_chances", Map.of()).forGetter(bsm::b))
+            .apply($$0, bsm::new)
+   );
 
-   protected bsm(bsd $$0, int $$1, ToIntFunction<azh> $$2) {
-      super($$0, $$1, li.V);
-      this.a = $$2;
+   private static Map<bsk, Float> a(float $$0) {
+      return a(List.of(bsk.values()), $$0);
    }
 
-   @Override
-   public void a(btr $$0, int $$1, bsw.c $$2) {
-      if ($$2 == bsw.c.a && ($$0 instanceof cmz || $$0.dP().ab().b(dbw.c))) {
-         this.a($$0.dP(), $$0.el(), $$0.aL());
+   private static Map<bsk, Float> a(List<bsk> $$0, float $$1) {
+      Map<bsk, Float> $$2 = Maps.newHashMap();
+
+      for (bsk $$3 : $$0) {
+         $$2.put($$3, $$1);
       }
+
+      return $$2;
    }
 
-   private void a(dca $$0, azh $$1, iz $$2) {
-      Set<iz> $$3 = Sets.newHashSet();
-      int $$4 = this.a.applyAsInt($$1);
+   public akj<eqt> a() {
+      return this.c;
+   }
 
-      for (iz $$5 : iz.a($$1, 15, $$2, 1)) {
-         iz $$6 = $$5.d();
-         if (!$$3.contains($$5) && $$0.a_($$5).r() && $$0.a_($$6).d($$0, $$6, je.b)) {
-            $$3.add($$5.i());
-            if ($$3.size() >= $$4) {
-               break;
-            }
-         }
-      }
-
-      for (iz $$7 : $$3) {
-         $$0.a($$7, dfd.bs.o(), 3);
-         $$0.c(3018, $$7, 0);
-      }
+   public Map<bsk, Float> b() {
+      return this.d;
    }
 }

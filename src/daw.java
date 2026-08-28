@@ -1,57 +1,24 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
+public interface daw {
+   akj<daq> a = a("mob_spawn_equipment");
+   akj<daq> b = a("pillager_spawn_crossbow");
+   akj<daq> c = a("raid/pillager_post_wave_3");
+   akj<daq> d = a("raid/pillager_post_wave_5");
+   akj<daq> e = a("raid/vindicator");
+   akj<daq> f = a("raid/vindicator_post_wave_5");
+   akj<daq> g = a("enderman_loot_drop");
 
-public record daw(ji<cum> d, int e, kk f, cur g) {
-   public static final Codec<daw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               cur.a.fieldOf("id").forGetter(daw::a),
-               ayh.l.fieldOf("count").orElse(1).forGetter(daw::b),
-               kk.a.optionalFieldOf("components", kk.c).forGetter(daw::c)
-            )
-            .apply($$0, daw::new)
-   );
-   public static final zn<xa, daw> b = zn.a(zl.b(lq.G), daw::a, zl.g, daw::b, kk.b, daw::c, daw::new);
-   public static final zn<xa, Optional<daw>> c = b.a(zl::a);
-
-   public daw(dbz $$0) {
-      this($$0, 1);
+   static void a(qm<daq> $$0) {
+      jk<czj> $$1 = $$0.a(lr.aK);
+      $$0.a(a, new dat($$1.b(avx.l), 5, 17));
+      $$0.a(b, new dau($$1.b(czo.K), bpf.a(1)));
+      $$0.a(c, new dau($$1.b(czo.J), bpf.a(1)));
+      $$0.a(d, new dau($$1.b(czo.J), bpf.a(2)));
+      $$0.a(e, new dau($$1.b(czo.n), bpf.a(1)));
+      $$0.a(f, new dau($$1.b(czo.n), bpf.a(2)));
+      $$0.a(g, new dau($$1.b(czo.v), bpf.a(1)));
    }
 
-   public daw(dbz $$0, int $$1) {
-      this($$0.r().o(), $$1, kk.c);
-   }
-
-   public daw(ji<cum> $$0, int $$1, kk $$2) {
-      this($$0, $$1, $$2, a($$0, $$1, $$2));
-   }
-
-   public daw a(UnaryOperator<kk.a> $$0) {
-      return new daw(this.d, this.e, $$0.apply(kk.a()).a());
-   }
-
-   private static cur a(ji<cum> $$0, int $$1, kk $$2) {
-      return new cur($$0, $$1, $$2.c());
-   }
-
-   public boolean a(cur $$0) {
-      return $$0.a(this.d) && this.f.a($$0);
-   }
-
-   public ji<cum> a() {
-      return this.d;
-   }
-
-   public int b() {
-      return this.e;
-   }
-
-   public kk c() {
-      return this.f;
-   }
-
-   public cur d() {
-      return this.g;
+   static akj<daq> a(String $$0) {
+      return akj.a(lr.aL, new akk($$0));
    }
 }

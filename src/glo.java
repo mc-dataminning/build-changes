@@ -1,33 +1,25 @@
-public class glo extends gke<cph> {
-   private final gek f;
+public class glo<T extends cfn> extends gkm<T, fwk<T>> {
+   private static final akk a = new akk("textures/entity/squid/squid.png");
 
-   public glo(giz.a $$0) {
-      super($$0, fxb.bG);
-      this.f = $$0.c();
+   public glo(gjg.a $$0, fwk<T> $$1) {
+      super($$0, $$1, 0.7F);
    }
 
-   protected void a(cph $$0, float $$1, dse $$2, faa $$3, gdq $$4, int $$5) {
-      int $$6 = $$0.C();
-      if ($$6 > -1 && (float)$$6 - $$1 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$1 + 1.0F) / 10.0F;
-         $$7 = ayz.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
-      }
-
-      a(this.f, $$2, $$3, $$4, $$5, $$6 > -1 && $$6 / 5 % 2 == 0);
+   public akk a(T $$0) {
+      return a;
    }
 
-   public static void a(gek $$0, dse $$1, faa $$2, gdq $$3, int $$4, boolean $$5) {
-      int $$6;
-      if ($$5) {
-         $$6 = gos.a(gos.a(1.0F), 10);
-      } else {
-         $$6 = gos.d;
-      }
+   protected void a(T $$0, fag $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = aye.i($$4, $$0.c, $$0.b);
+      float $$7 = aye.i($$4, $$0.e, $$0.d);
+      $$1.a(0.0F, 0.5F, 0.0F);
+      $$1.a(a.d.rotationDegrees(180.0F - $$3));
+      $$1.a(a.b.rotationDegrees($$6));
+      $$1.a(a.d.rotationDegrees($$7));
+      $$1.a(0.0F, -1.2F, 0.0F);
+   }
 
-      $$0.a($$1, $$2, $$3, $$4, $$6);
+   protected float a(T $$0, float $$1) {
+      return aye.i($$1, $$0.cd, $$0.cc);
    }
 }

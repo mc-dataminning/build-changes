@@ -1,80 +1,121 @@
 import javax.annotation.Nullable;
 
-public class cis extends cif {
-   private boolean b;
+public class cis extends bsd implements btx {
+   private static final ajp<Integer> c = ajt.a(cis.class, ajr.b);
+   private static final ajp<dsh> d = ajt.a(cis.class, ajr.i);
+   private static final int e = 80;
+   private static final String f = "block_state";
+   public static final String b = "fuse";
    @Nullable
-   private eol c;
-   @Nullable
-   private evt d;
+   private bsy g;
 
-   public cis(cid $$0) {
-      super($$0);
+   public cis(bsj<? extends cis> $$0, dcd $$1) {
+      super($$0, $$1);
+      this.J = true;
+   }
+
+   public cis(dcd $$0, double $$1, double $$2, double $$3, @Nullable bsy $$4) {
+      this(bsj.bc, $$0);
+      this.a_($$1, $$2, $$3);
+      double $$5 = $$0.z.j() * (float) (Math.PI * 2);
+      this.o(-Math.sin($$5) * 0.02, 0.2F, -Math.cos($$5) * 0.02);
+      this.b(80);
+      this.L = $$1;
+      this.M = $$2;
+      this.N = $$3;
+      this.g = $$4;
    }
 
    @Override
-   public void c() {
-      if (!this.b && this.c != null) {
-         iz $$0 = this.a.dP().a(dxw.a.f, eaz.a(this.a.s()));
-         if (!$$0.a(this.a.dn(), 10.0)) {
-            this.a.gn().a(cit.a);
+   protected void a(ajt.a $$0) {
+      $$0.a(c, 80);
+      $$0.a(d, dfh.ck.o());
+   }
+
+   @Override
+   protected bsd.b bb() {
+      return bsd.b.a;
+   }
+
+   @Override
+   public boolean bz() {
+      return !this.dK();
+   }
+
+   @Override
+   protected double aY() {
+      return 0.04;
+   }
+
+   @Override
+   public void l() {
+      this.ba();
+      this.a(btd.a, this.ds());
+      this.h(this.ds().a(0.98));
+      if (this.aE()) {
+         this.h(this.ds().d(0.7, -0.5, 0.7));
+      }
+
+      int $$0 = this.u() - 1;
+      this.b($$0);
+      if ($$0 <= 0) {
+         this.ao();
+         if (!this.dP().B) {
+            this.w();
          }
       } else {
-         this.b = false;
-         this.j();
+         this.bl();
+         if (this.dP().B) {
+            this.dP().a(lj.ae, this.du(), this.dw() + 0.5, this.dA(), 0.0, 0.0, 0.0);
+         }
       }
+   }
+
+   private void w() {
+      float $$0 = 4.0F;
+      this.dP().a(this, this.du(), this.e(0.0625), this.dA(), 4.0F, dcd.a.d);
    }
 
    @Override
-   public void d() {
-      this.b = true;
-      this.c = null;
-      this.d = null;
+   protected void b(tx $$0) {
+      $$0.a("fuse", (short)this.u());
+      $$0.a("block_state", um.a(this.v()));
    }
 
-   private void j() {
-      int $$0 = this.a.y();
-      evt $$1 = this.a.F(1.0F);
-      int $$2 = this.a.r(-$$1.c * 40.0, 105.0, -$$1.e * 40.0);
-      if (this.a.go() != null && this.a.go().e() > 0) {
-         $$2 %= 12;
-         if ($$2 < 0) {
-            $$2 += 12;
-         }
-      } else {
-         $$2 -= 12;
-         $$2 &= 7;
-         $$2 += 12;
-      }
-
-      this.c = this.a.a($$0, $$2, null);
-      this.k();
-   }
-
-   private void k() {
-      if (this.c != null) {
-         this.c.a();
-         if (!this.c.c()) {
-            kd $$0 = this.c.g();
-            this.c.a();
-
-            double $$1;
-            do {
-               $$1 = (double)((float)$$0.v() + this.a.el().i() * 20.0F);
-            } while ($$1 < (double)$$0.v());
-
-            this.d = new evt((double)$$0.u(), $$1, (double)$$0.w());
-         }
+   @Override
+   protected void a(tx $$0) {
+      this.b($$0.g("fuse"));
+      if ($$0.b("block_state", 10)) {
+         this.c(um.a(this.dP().a(lr.f), $$0.p("block_state")));
       }
    }
 
    @Nullable
-   @Override
-   public evt g() {
-      return this.d;
+   public bsy p() {
+      return this.g;
    }
 
    @Override
-   public cit<cis> i() {
-      return cit.e;
+   public void w(bsd $$0) {
+      super.w($$0);
+      if ($$0 instanceof cis $$1) {
+         this.g = $$1.g;
+      }
+   }
+
+   public void b(int $$0) {
+      this.ao.a(c, $$0);
+   }
+
+   public int u() {
+      return this.ao.a(c);
+   }
+
+   public void c(dsh $$0) {
+      this.ao.a(d, $$0);
+   }
+
+   public dsh v() {
+      return this.ao.a(d);
    }
 }

@@ -1,63 +1,25 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import java.util.List;
+import java.util.Vector;
+import javax.swing.JList;
+import net.minecraft.server.MinecraftServer;
 
-public class apn {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xp.c("commands.transfer.error.no_players"));
+public class apn extends JList<String> {
+   private final MinecraftServer a;
+   private int b;
 
-   public static void a(CommandDispatcher<ep> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("transfer").requires($$0x -> $$0x.c(3)))
-            .then(
-               ((RequiredArgumentBuilder)eq.a("hostname", StringArgumentType.string())
-                     .executes($$0x -> a((ep)$$0x.getSource(), StringArgumentType.getString($$0x, "hostname"), 25565, List.of(((ep)$$0x.getSource()).h()))))
-                  .then(
-                     ((RequiredArgumentBuilder)eq.a("port", IntegerArgumentType.integer(1, 65535))
-                           .executes(
-                              $$0x -> a(
-                                    (ep)$$0x.getSource(),
-                                    StringArgumentType.getString($$0x, "hostname"),
-                                    IntegerArgumentType.getInteger($$0x, "port"),
-                                    List.of(((ep)$$0x.getSource()).h())
-                                 )
-                           ))
-                        .then(
-                           eq.a("players", fc.d())
-                              .executes(
-                                 $$0x -> a(
-                                       (ep)$$0x.getSource(),
-                                       StringArgumentType.getString($$0x, "hostname"),
-                                       IntegerArgumentType.getInteger($$0x, "port"),
-                                       fc.f($$0x, "players")
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
+   public apn(MinecraftServer $$0) {
+      this.a = $$0;
+      $$0.b(this::a);
    }
 
-   private static int a(ep $$0, String $$1, int $$2, Collection<arg> $$3) throws CommandSyntaxException {
-      if ($$3.isEmpty()) {
-         throw a.create();
-      } else {
-         for (arg $$4 : $$3) {
-            $$4.c.b(new aak($$1, $$2));
+   public void a() {
+      if (this.b++ % 20 == 0) {
+         Vector<String> $$0 = new Vector<>();
+
+         for (int $$1 = 0; $$1 < this.a.ah().t().size(); $$1++) {
+            $$0.add(this.a.ah().t().get($$1).fX().getName());
          }
 
-         if ($$3.size() == 1) {
-            $$0.a(() -> xp.a("commands.transfer.success.single", $$3.iterator().next().O_(), $$1, $$2), true);
-         } else {
-            $$0.a(() -> xp.a("commands.transfer.success.multiple", $$3.size(), $$1, $$2), true);
-         }
-
-         return $$3.size();
+         this.setListData($$0);
       }
    }
 }

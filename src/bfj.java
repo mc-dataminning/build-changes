@@ -1,28 +1,34 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
 
 public class bfj extends DataFix {
-   public bfj(Schema $$0) {
-      super($$0, false);
+   public bfj(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.update("ExitPortalLocation", bai::a);
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "OptionsAddTextBackgroundFix",
+         this.getInputSchema().getType(bgd.e),
+         $$0 -> $$0.update(
+               DSL.remainderFinder(),
+               $$0x -> (Dynamic)DataFixUtils.orElse(
+                     $$0x.get("chatOpacity").asString().map($$1 -> $$0x.set("textBackgroundOpacity", $$0x.createDouble(this.a($$1)))).result(), $$0x
+                  )
+            )
+      );
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("LegacyDragonFightFix", this.getInputSchema().getType(bgx.a), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
-            OptionalDynamic<?> $$1 = $$0x.get("DragonFight");
-            if ($$1.result().isPresent()) {
-               return $$0x;
-            } else {
-               Dynamic<?> $$2 = $$0x.get("DimensionData").get("1").get("DragonFight").orElseEmptyMap();
-               return $$0x.set("DragonFight", a($$2));
-            }
-         }));
+   private double a(String $$0) {
+      try {
+         double $$1 = 0.9 * Double.parseDouble($$0) + 0.1;
+         return $$1 / 2.0;
+      } catch (NumberFormatException var4) {
+         return 0.5;
+      }
    }
 }

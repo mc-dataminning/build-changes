@@ -1,73 +1,33 @@
 import com.mojang.serialization.MapCodec;
 
-public class dmq extends dfb {
-   public static final MapCodec<dmq> a = b(dmq::new);
-   public static final int b = 6;
-   public static final int c = 64;
-   private static final je[] d = je.values();
+public class dmq extends des {
+   public static final MapCodec<dmq> c = b(dmq::new);
 
    @Override
    public MapCodec<dmq> a() {
-      return a;
+      return c;
    }
 
-   protected dmq(dsd.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected void b(dse $$0, dca $$1, iz $$2, dse $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2);
-      }
+   public dmq(dsg.d $$0) {
+      super($$0, 2.0F);
    }
 
    @Override
-   protected void a(dse $$0, dca $$1, iz $$2, dfb $$3, iz $$4, boolean $$5) {
-      this.a($$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
+      return this.a($$0, $$3, $$4) ? this.o() : dfh.a.o();
    }
 
-   protected void a(dca $$0, iz $$1) {
-      if (this.b($$0, $$1)) {
-         $$0.a($$1, dfd.aP.o(), 2);
-         $$0.a(null, $$1, awa.yT, awb.e, 1.0F, 1.0F);
-      }
+   @Override
+   protected boolean a(dsh $$0, dcg $$1, ja $$2) {
+      return m($$1.a_($$2.d()));
    }
 
-   private boolean b(dca $$0, iz $$1) {
-      return iz.a($$1, 6, 65, ($$0x, $$1x) -> {
-         for (je $$2 : d) {
-            $$1x.accept($$0x.a($$2));
-         }
-      }, $$2 -> {
-         if ($$2.equals($$1)) {
-            return true;
-         } else {
-            dse $$3 = $$0.a_($$2);
-            enx $$4 = $$0.b_($$2);
-            if (!$$4.a(awv.a)) {
-               return false;
-            } else {
-               if ($$3.b() instanceof dfi $$6 && !$$6.a(null, $$0, $$2, $$3).e()) {
-                  return true;
-               }
+   public static boolean m(dsh $$0) {
+      return $$0.a(avu.aT);
+   }
 
-               if ($$3.b() instanceof djr) {
-                  $$0.a($$2, dfd.a.o(), 3);
-               } else {
-                  if (!$$3.a(dfd.mc) && !$$3.a(dfd.md) && !$$3.a(dfd.bw) && !$$3.a(dfd.bx)) {
-                     return false;
-                  }
-
-                  dpj $$7 = $$3.t() ? $$0.c_($$2) : null;
-                  a($$3, $$0, $$2, $$7);
-                  $$0.a($$2, dfd.a.o(), 3);
-               }
-
-               return true;
-            }
-         }
-      }) > 1;
+   @Override
+   protected boolean f(dsh $$0) {
+      return true;
    }
 }

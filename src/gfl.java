@@ -1,87 +1,61 @@
-public class gfl implements gfq<doy> {
-   private static final int b = 20;
-   private static final int c = 40;
-   private static final int d = 16;
-   public static final String a = "flag";
-   private static final String e = "pole";
-   private static final String f = "bar";
-   private final fxc g;
-   private final fxc h;
-   private final fxc i;
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Splitter;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   public gfl(gfr.a $$0) {
-      fxc $$1 = $$0.a(fxb.g);
-      this.g = $$1.b("flag");
-      this.h = $$1.b("pole");
-      this.i = $$1.b("bar");
+public class gfl implements gfk {
+   private static final Splitter a = Splitter.on('|').omitEmptyStrings();
+   private final String d;
+   private final String e;
+
+   public gfl(String $$0, String $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public static fxi a() {
-      fxk $$0 = new fxk();
-      fxl $$1 = $$0.a();
-      $$1.a("flag", fxh.c().a(0, 0).a(-10.0F, 0.0F, -2.0F, 20.0F, 40.0F, 1.0F), fxe.a);
-      $$1.a("pole", fxh.c().a(44, 0).a(-1.0F, -30.0F, -1.0F, 2.0F, 42.0F, 2.0F), fxe.a);
-      $$1.a("bar", fxh.c().a(0, 42).a(-10.0F, -32.0F, -1.0F, 20.0F, 2.0F, 2.0F), fxe.a);
-      return fxi.a($$0, 64, 64);
-   }
-
-   public void a(doy $$0, float $$1, faa $$2, gdq $$3, int $$4, int $$5) {
-      float $$6 = 0.6666667F;
-      boolean $$7 = $$0.i() == null;
-      $$2.a();
-      long $$8;
-      if ($$7) {
-         $$8 = 0L;
-         $$2.a(0.5F, 0.5F, 0.5F);
-         this.h.k = true;
+   @Override
+   public Predicate<dsh> getPredicate(dsi<dff, dsh> $$0) {
+      dtk<?> $$1 = $$0.a(this.d);
+      if ($$1 == null) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown property '%s' on '%s'", this.d, $$0.c()));
       } else {
-         $$8 = $$0.i().Z();
-         dse $$10 = $$0.n();
-         if ($$10.b() instanceof deg) {
-            $$2.a(0.5F, 0.5F, 0.5F);
-            float $$11 = -dtk.b($$10.c(deg.b));
-            $$2.a(a.d.rotationDegrees($$11));
-            this.h.k = true;
+         String $$2 = this.e;
+         boolean $$3 = !$$2.isEmpty() && $$2.charAt(0) == '!';
+         if ($$3) {
+            $$2 = $$2.substring(1);
+         }
+
+         List<String> $$4 = a.splitToList($$2);
+         if ($$4.isEmpty()) {
+            throw new RuntimeException(String.format(Locale.ROOT, "Empty value '%s' for property '%s' on '%s'", this.e, this.d, $$0.c()));
          } else {
-            $$2.a(0.5F, -0.16666667F, 0.5F);
-            float $$12 = -$$10.c(dny.b).p();
-            $$2.a(a.d.rotationDegrees($$12));
-            $$2.a(0.0F, -0.3125F, -0.4375F);
-            this.h.k = false;
+            Predicate<dsh> $$5;
+            if ($$4.size() == 1) {
+               $$5 = this.a($$0, $$1, $$2);
+            } else {
+               List<Predicate<dsh>> $$6 = $$4.stream().map($$2x -> this.a($$0, $$1, $$2x)).collect(Collectors.toList());
+               $$5 = $$1x -> $$6.stream().anyMatch($$1xx -> $$1xx.test($$1x));
+            }
+
+            return $$3 ? $$5.negate() : $$5;
          }
       }
-
-      $$2.a();
-      $$2.b(0.6666667F, -0.6666667F, -0.6666667F);
-      fae $$13 = grh.f.a($$3, gdy::c);
-      this.h.a($$2, $$13, $$4, $$5);
-      this.i.a($$2, $$13, $$4, $$5);
-      iz $$14 = $$0.ay_();
-      float $$15 = ((float)Math.floorMod((long)($$14.u() * 7 + $$14.v() * 9 + $$14.w() * 13) + $$8, 100L) + $$1) / 100.0F;
-      this.g.e = (-0.0125F + 0.01F * ayz.b((float) (Math.PI * 2) * $$15)) * (float) Math.PI;
-      this.g.c = -32.0F;
-      a($$2, $$3, $$4, $$5, this.g, grh.f, true, $$0.f(), $$0.b());
-      $$2.b();
-      $$2.b();
    }
 
-   public static void a(faa $$0, gdq $$1, int $$2, int $$3, fxc $$4, grf $$5, boolean $$6, ctk $$7, dpa $$8) {
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false);
-   }
-
-   public static void a(faa $$0, gdq $$1, int $$2, int $$3, fxc $$4, grf $$5, boolean $$6, ctk $$7, dpa $$8, boolean $$9) {
-      $$4.a($$0, $$5.a($$1, gdy::c, $$9), $$2, $$3);
-      a($$0, $$1, $$2, $$3, $$4, $$6 ? gef.m : gef.n, $$7);
-
-      for (int $$10 = 0; $$10 < 16 && $$10 < $$8.b().size(); $$10++) {
-         dpa.b $$11 = $$8.b().get($$10);
-         grf $$12 = $$6 ? gef.a($$11.b()) : gef.b($$11.b());
-         a($$0, $$1, $$2, $$3, $$4, $$12, $$11.c());
+   private Predicate<dsh> a(dsi<dff, dsh> $$0, dtk<?> $$1, String $$2) {
+      Optional<?> $$3 = $$1.b($$2);
+      if ($$3.isEmpty()) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown value '%s' for property '%s' on '%s' in '%s'", $$2, this.d, $$0.c(), this.e));
+      } else {
+         return $$2x -> $$2x.c($$1).equals($$3.get());
       }
    }
 
-   private static void a(faa $$0, gdq $$1, int $$2, int $$3, fxc $$4, grf $$5, ctk $$6) {
-      float[] $$7 = $$6.d();
-      $$4.a($$0, $$5.a($$1, gdy::m), $$2, $$3, $$7[0], $$7[1], $$7[2], 1.0F);
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this).add("key", this.d).add("value", this.e).toString();
    }
 }

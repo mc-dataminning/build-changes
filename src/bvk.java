@@ -1,101 +1,28 @@
-import java.util.Map;
-import java.util.Map.Entry;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public abstract class bvk<E extends btr> implements bvl<E> {
-   public static final int a = 60;
-   protected final Map<ccv<?>, ccw> b;
-   private bvk.a c = bvk.a.a;
-   private long d;
-   private final int e;
-   private final int f;
-
-   public bvk(Map<ccv<?>, ccw> $$0) {
-      this($$0, 60);
+public class bvk {
+   private static ja a(bta $$0, ja $$1) {
+      aym $$2 = $$0.dP().z;
+      return $$1.b(a($$2), 0, a($$2));
    }
 
-   public bvk(Map<ccv<?>, ccw> $$0, int $$1) {
-      this($$0, $$1, $$1);
+   private static int a(aym $$0) {
+      return $$0.a(3) - 1;
    }
 
-   public bvk(Map<ccv<?>, ccw> $$0, int $$1, int $$2) {
-      this.e = $$1;
-      this.f = $$2;
-      this.b = $$0;
-   }
+   public static <E extends bta> bwc<E> a(ccc<ja> $$0, int $$1, float $$2) {
+      return bye.a(
+         (Function<bye.b<E>, ? extends App<bye.c<E>, byh<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(ccc.o), $$3.c(ccc.m), $$3.a(ccc.n))
+               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
+                     ja $$7 = $$3.b($$3x);
+                     boolean $$8 = $$7.a($$5x.dp(), (double)$$1);
+                     if (!$$8) {
+                        but.a($$5x, a($$5x, $$7), $$2, $$1);
+                     }
 
-   @Override
-   public bvk.a a() {
-      return this.c;
-   }
-
-   @Override
-   public final boolean e(arf $$0, E $$1, long $$2) {
-      if (this.a($$1) && this.a($$0, $$1)) {
-         this.c = bvk.a.b;
-         int $$3 = this.e + $$0.E_().a(this.f + 1 - this.e);
-         this.d = $$2 + (long)$$3;
-         this.d($$0, $$1, $$2);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected void d(arf $$0, E $$1, long $$2) {
-   }
-
-   @Override
-   public final void f(arf $$0, E $$1, long $$2) {
-      if (!this.a($$2) && this.a($$0, $$1, $$2)) {
-         this.c($$0, $$1, $$2);
-      } else {
-         this.g($$0, $$1, $$2);
-      }
-   }
-
-   protected void c(arf $$0, E $$1, long $$2) {
-   }
-
-   @Override
-   public final void g(arf $$0, E $$1, long $$2) {
-      this.c = bvk.a.a;
-      this.b($$0, $$1, $$2);
-   }
-
-   protected void b(arf $$0, E $$1, long $$2) {
-   }
-
-   protected boolean a(arf $$0, E $$1, long $$2) {
-      return false;
-   }
-
-   protected boolean a(long $$0) {
-      return $$0 > this.d;
-   }
-
-   protected boolean a(arf $$0, E $$1) {
-      return true;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
-   }
-
-   protected boolean a(E $$0) {
-      for (Entry<ccv<?>, ccw> $$1 : this.b.entrySet()) {
-         ccv<?> $$2 = $$1.getKey();
-         ccw $$3 = $$1.getValue();
-         if (!$$0.dS().a($$2, $$3)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public static enum a {
-      a,
-      b;
+                     return true;
+                  }))
+      );
    }
 }

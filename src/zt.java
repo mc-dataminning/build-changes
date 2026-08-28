@@ -1,9 +1,20 @@
-public abstract class zt<T extends wv> implements zw<T> {
-   @Override
-   public final void a(T $$0) {
-      throw new AssertionError("This packet should be handled by pipeline");
+public record zt(apz b) implements zb<zs> {
+   public static final ys<vr, zt> a = zb.a(zt::a, zt::new);
+
+   private zt(vr $$0) {
+      this(new apz($$0));
+   }
+
+   private void a(vr $$0) {
+      this.b.a($$0);
    }
 
    @Override
-   public abstract zy<? extends zt<T>> a();
+   public zd<zt> a() {
+      return zr.j;
+   }
+
+   public void a(zs $$0) {
+      $$0.a(this);
+   }
 }

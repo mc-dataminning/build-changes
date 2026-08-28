@@ -1,75 +1,46 @@
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
-public class gps extends atu {
-   private static final atq d = new atq(xp.c("resourcePack.vanilla.description"), aa.b().a(atd.a), Optional.empty());
-   private static final ast e = ast.a(atq.b, d);
-   public static final String c = "high_contrast";
-   private static final Map<String, xp> f = Map.of(
-      "programmer_art", xp.c("resourcePack.programmer_art.name"), "high_contrast", xp.c("resourcePack.high_contrast.name")
-   );
-   private static final ata g = new ata("vanilla", xp.c("resourcePack.vanilla.name"), aub.c, Optional.of(b));
-   private static final atc h = new atc(true, atx.b.b, false);
-   private static final atc i = new atc(false, atx.b.a, false);
-   private static final alf j = new alf("minecraft", "resourcepacks");
-   @Nullable
-   private final Path k;
+public class gps {
+   private final akk a;
+   private final ats b;
+   private final AtomicReference<ezh> c = new AtomicReference<>();
+   private final AtomicInteger d;
 
-   public gps(Path $$0, evj $$1) {
-      super(atd.a, b($$0), j, $$1);
-      this.k = this.a($$0);
+   public gps(akk $$0, ats $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = new AtomicInteger($$2);
    }
 
-   private static ata a(String $$0, xp $$1) {
-      return new ata($$0, $$1, aub.c, Optional.of(atw.a($$0)));
-   }
-
-   @Nullable
-   private Path a(Path $$0) {
-      if (aa.aX && $$0.getFileSystem() == FileSystems.getDefault()) {
-         Path $$1 = $$0.getParent().resolve("resourcepacks");
-         if (Files.isDirectory($$1)) {
-            return $$1;
+   public ezh a() throws IOException {
+      ezh $$0 = this.c.get();
+      if ($$0 == null) {
+         synchronized (this) {
+            $$0 = this.c.get();
+            if ($$0 == null) {
+               try (InputStream $$1 = this.b.d()) {
+                  $$0 = ezh.a($$1);
+                  this.c.set($$0);
+               } catch (IOException var9) {
+                  throw new IOException("Failed to load image " + this.a, var9);
+               }
+            }
          }
       }
 
-      return null;
+      return $$0;
    }
 
-   private static atf b(Path $$0) {
-      atg $$1 = new atg().a(e).a("minecraft", "realms");
-      return $$1.b().a().a(atd.a, $$0).a(g);
-   }
-
-   @Override
-   protected xp a(String $$0) {
-      xp $$1 = f.get($$0);
-      return (xp)($$1 != null ? $$1 : xp.b($$0));
-   }
-
-   @Nullable
-   @Override
-   protected atx a(atb $$0) {
-      return atx.a(g, b($$0), atd.a, h);
-   }
-
-   @Nullable
-   @Override
-   protected atx a(String $$0, atx.c $$1, xp $$2) {
-      return atx.a(a($$0, $$2), $$1, atd.a, i);
-   }
-
-   @Override
-   protected void a(BiConsumer<String, Function<String, atx>> $$0) {
-      super.a($$0);
-      if (this.k != null) {
-         this.a(this.k, $$0);
+   public void b() {
+      int $$0 = this.d.decrementAndGet();
+      if ($$0 <= 0) {
+         ezh $$1 = this.c.getAndSet(null);
+         if ($$1 != null) {
+            $$1.close();
+         }
       }
    }
 }

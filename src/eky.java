@@ -1,63 +1,48 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import java.util.function.Consumer;
 
-public class eky extends eim {
+public class eky extends eiq {
    public static final MapCodec<eky> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               a($$0),
-               eky.a.c.fieldOf("biome_temp").forGetter($$0x -> $$0x.e),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("large_probability").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("cluster_probability").forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, eky::new)
+      $$0 -> $$0.group(a($$0), egx.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, eky::new)
    );
-   public final eky.a e;
-   public final float f;
-   public final float g;
+   public final egx e;
 
-   public eky(eim.c $$0, eky.a $$1, float $$2, float $$3) {
+   public eky(eiq.c $$0, egx $$1) {
       super($$0);
       this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
    }
 
    @Override
-   public Optional<eim.b> a(eim.a $$0) {
-      return a($$0, dxw.a.c, $$1 -> this.a($$1, $$0));
-   }
+   public Optional<eiq.b> a(eiq.a $$0) {
+      dyy $$1 = $$0.f();
+      int $$2 = $$0.h().d() + $$1.a(16);
+      int $$3 = $$0.h().e() + $$1.a(16);
+      int $$4 = $$0.b().f();
+      dyw $$5 = new dyw($$0.b(), $$0.i());
+      int $$6 = this.e.a($$1, $$5);
+      dcp $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
+      ja.a $$8 = new ja.a($$2, $$6, $$3);
 
-   private void a(eje $$0, eim.a $$1) {
-      iz $$2 = new iz($$1.h().d(), 90, $$1.h().e());
-      dlo $$3 = dlo.a($$1.f());
-      ekx.a($$1.e(), $$2, $$3, $$0, $$1.f(), this);
+      while ($$6 > $$4) {
+         dsh $$9 = $$7.a($$6);
+         dsh $$10 = $$7.a(--$$6);
+         if ($$9.i() && ($$10.a(dfh.dW) || $$10.d(dbs.a, $$8.q($$6), jf.b))) {
+            break;
+         }
+      }
+
+      if ($$6 <= $$4) {
+         return Optional.empty();
+      } else {
+         ja $$11 = new ja($$2, $$6, $$3);
+         return Optional.of(new eiq.b($$11, (Consumer<eji>)($$3x -> ekx.a($$0.e(), $$3x, $$1, $$11))));
+      }
    }
 
    @Override
-   public eiv<?> e() {
-      return eiv.k;
-   }
-
-   public static enum a implements azu {
-      a("warm"),
-      b("cold");
-
-      public static final Codec<eky.a> c = azu.a(eky.a::values);
-      private final String d;
-
-      private a(final String $$0) {
-         this.d = $$0;
-      }
-
-      public String a() {
-         return this.d;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
+   public eiz<?> e() {
+      return eiz.i;
    }
 }

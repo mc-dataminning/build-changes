@@ -1,88 +1,64 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
 
-public abstract class dkp extends dfb {
-   private static final je[] a = je.values();
-   public static final dsv b = dsu.L;
-   public static final dsv c = dsu.M;
-   public static final dsv d = dsu.N;
-   public static final dsv e = dsu.O;
-   public static final dsv f = dsu.J;
-   public static final dsv g = dsu.K;
-   public static final Map<je, dsv> h = ImmutableMap.copyOf(ac.a(Maps.newEnumMap(je.class), $$0 -> {
-      $$0.put(je.c, b);
-      $$0.put(je.f, c);
-      $$0.put(je.d, d);
-      $$0.put(je.e, e);
-      $$0.put(je.b, f);
-      $$0.put(je.a, g);
-   }));
-   protected final ewm[] i;
+public class dkp extends dff implements dfi {
+   public static final MapCodec<dkp> a = b(dkp::new);
 
-   protected dkp(float $$0, dsd.d $$1) {
-      super($$1);
-      this.i = this.a($$0);
+   @Override
+   public MapCodec<dkp> a() {
+      return a;
+   }
+
+   protected dkp(dsg.d $$0) {
+      super($$0);
+   }
+
+   private static boolean b(dsh $$0, dcg $$1, ja $$2) {
+      ja $$3 = $$2.c();
+      dsh $$4 = $$1.a_($$3);
+      int $$5 = ens.a($$1, $$0, $$2, $$4, $$3, jf.b, $$4.b($$1, $$3));
+      return $$5 < $$1.Q();
    }
 
    @Override
-   protected abstract MapCodec<? extends dkp> a();
-
-   private ewm[] a(float $$0) {
-      float $$1 = 0.5F - $$0;
-      float $$2 = 0.5F + $$0;
-      ewm $$3 = dfb.a((double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F));
-      ewm[] $$4 = new ewm[a.length];
-
-      for (int $$5 = 0; $$5 < a.length; $$5++) {
-         je $$6 = a[$$5];
-         $$4[$$5] = ewj.a(
-            0.5 + Math.min((double)(-$$0), (double)$$6.j() * 0.5),
-            0.5 + Math.min((double)(-$$0), (double)$$6.k() * 0.5),
-            0.5 + Math.min((double)(-$$0), (double)$$6.l() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.j() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.k() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.l() * 0.5)
-         );
+   protected void b(dsh $$0, aqk $$1, ja $$2, aym $$3) {
+      if (!b($$0, $$1, $$2)) {
+         $$1.b($$2, dfh.dV.o());
       }
-
-      ewm[] $$7 = new ewm[64];
-
-      for (int $$8 = 0; $$8 < 64; $$8++) {
-         ewm $$9 = $$3;
-
-         for (int $$10 = 0; $$10 < a.length; $$10++) {
-            if (($$8 & 1 << $$10) != 0) {
-               $$9 = ewj.a($$9, $$4[$$10]);
-            }
-         }
-
-         $$7[$$8] = $$9;
-      }
-
-      return $$7;
    }
 
    @Override
-   protected boolean a_(dse $$0, dbg $$1, iz $$2) {
-      return false;
+   public boolean b(dcg $$0, ja $$1, dsh $$2) {
+      return $$0.a_($$1.c()).i();
    }
 
    @Override
-   protected ewm a(dse $$0, dbg $$1, iz $$2, evy $$3) {
-      return this.i[this.m($$0)];
+   public boolean a(dcd $$0, aym $$1, ja $$2, dsh $$3) {
+      return true;
    }
 
-   protected int m(dse $$0) {
-      int $$1 = 0;
-
-      for (int $$2 = 0; $$2 < a.length; $$2++) {
-         if ($$0.c(h.get(a[$$2]))) {
-            $$1 |= 1 << $$2;
+   @Override
+   public void a(aqk $$0, aym $$1, ja $$2, dsh $$3) {
+      dsh $$4 = $$0.a_($$2);
+      ja $$5 = $$2.c();
+      due $$6 = $$0.l().g();
+      jw<ear<?, ?>> $$7 = $$0.H_().d(lr.aH);
+      if ($$4.a(dfh.ow)) {
+         this.a($$7, rp.h, $$0, $$6, $$1, $$5);
+      } else if ($$4.a(dfh.on)) {
+         this.a($$7, rp.j, $$0, $$6, $$1, $$5);
+         this.a($$7, rp.l, $$0, $$6, $$1, $$5);
+         if ($$1.a(8) == 0) {
+            this.a($$7, rp.n, $$0, $$6, $$1, $$5);
          }
       }
+   }
 
-      return $$1;
+   private void a(jw<ear<?, ?>> $$0, akj<ear<?, ?>> $$1, aqk $$2, due $$3, aym $$4, ja $$5) {
+      $$0.b($$1).ifPresent($$4x -> ((ear)$$4x.a()).a($$2, $$3, $$4, $$5));
+   }
+
+   @Override
+   public dfi.a aq_() {
+      return dfi.a.a;
    }
 }

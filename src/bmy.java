@@ -1,24 +1,27 @@
-import com.mojang.brigadier.StringReader;
+import com.google.common.math.Quantiles;
+import com.google.common.math.Quantiles.ScaleAndIndexes;
+import it.unimi.dsi.fastutil.ints.Int2DoubleRBTreeMap;
+import it.unimi.dsi.fastutil.ints.Int2DoubleSortedMap;
+import it.unimi.dsi.fastutil.ints.Int2DoubleSortedMaps;
+import java.util.Comparator;
+import java.util.Map;
 
-public class bmy extends bmp<StringReader> {
-   private final StringReader a;
+public class bmy {
+   public static final ScaleAndIndexes a = Quantiles.scale(100).indexes(new int[]{50, 75, 90, 99});
 
-   public bmy(bmm<StringReader> $$0, bmn<StringReader> $$1, StringReader $$2) {
-      super($$0, $$1);
-      this.a = $$2;
+   private bmy() {
    }
 
-   public StringReader d() {
-      return this.a;
+   public static Map<Integer, Double> a(long[] $$0) {
+      return $$0.length == 0 ? Map.of() : a(a.compute($$0));
    }
 
-   @Override
-   public int c() {
-      return this.a.getCursor();
+   public static Map<Integer, Double> a(double[] $$0) {
+      return $$0.length == 0 ? Map.of() : a(a.compute($$0));
    }
 
-   @Override
-   public void a(int $$0) {
-      this.a.setCursor($$0);
+   private static Map<Integer, Double> a(Map<Integer, Double> $$0) {
+      Int2DoubleSortedMap $$1 = ac.a(new Int2DoubleRBTreeMap(Comparator.reverseOrder()), $$1x -> $$1x.putAll($$0));
+      return Int2DoubleSortedMaps.unmodifiable($$1);
    }
 }

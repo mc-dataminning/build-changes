@@ -1,59 +1,42 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class eae extends eba<edo> {
-   private static final dse a = dfd.mZ.o().a(def.h, Integer.valueOf(1)).a(def.i, dsq.a).a(def.j, Integer.valueOf(0));
-   private static final dse b = a.a(def.i, dsq.c).a(def.j, Integer.valueOf(1));
-   private static final dse c = a.a(def.i, dsq.c);
-   private static final dse d = a.a(def.i, dsq.b);
-
-   public eae(Codec<edo> $$0) {
+public class eae extends eac {
+   public eae(Codec<eab> $$0) {
       super($$0);
+      this.h = ImmutableSet.of(eoc.e, eoc.c);
    }
 
    @Override
-   public boolean a(ebc<edo> $$0) {
-      int $$1 = 0;
-      iz $$2 = $$0.e();
-      dcv $$3 = $$0.b();
-      azh $$4 = $$0.d();
-      edo $$5 = $$0.f();
-      iz.a $$6 = $$2.j();
-      iz.a $$7 = $$2.j();
-      if ($$3.u($$6)) {
-         if (dfd.mZ.o().a($$3, $$6)) {
-            int $$8 = $$4.a(12) + 5;
-            if ($$4.i() < $$5.l) {
-               int $$9 = $$4.a(4) + 1;
+   protected int a() {
+      return 10;
+   }
 
-               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
-                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
-                     int $$12 = $$10 - $$2.u();
-                     int $$13 = $$11 - $$2.w();
-                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-                        $$7.d($$10, $$3.a(dxw.a.b, $$10, $$11) - 1, $$11);
-                        if (b($$3.a_($$7))) {
-                           $$3.a($$7, dfd.l.o(), 2);
-                        }
-                     }
-                  }
-               }
-            }
+   @Override
+   protected float a(aym $$0) {
+      return ($$0.i() * 2.0F + $$0.i()) * 2.0F;
+   }
 
-            for (int $$14 = 0; $$14 < $$8 && $$3.u($$6); $$14++) {
-               $$3.a($$6, a, 2);
-               $$6.c(je.b, 1);
-            }
+   @Override
+   protected double b() {
+      return 5.0;
+   }
 
-            if ($$6.v() - $$2.v() >= 3) {
-               $$3.a($$6, b, 2);
-               $$3.a($$6.c(je.a, 1), c, 2);
-               $$3.a($$6.c(je.a, 1), d, 2);
-            }
+   protected boolean a(eaa $$0, eab $$1, dud $$2, Function<ja, jj<ddd>> $$3, duc $$4, ja.a $$5, ja.a $$6, dxl $$7, MutableBoolean $$8) {
+      if (this.a($$1, $$2.a_($$5))) {
+         dsh $$9;
+         if ($$5.v() <= $$0.a() + 31) {
+            $$9 = g.g();
+         } else {
+            $$9 = e;
          }
 
-         $$1++;
+         $$2.a($$5, $$9, false);
+         return true;
+      } else {
+         return false;
       }
-
-      return $$1 > 0;
    }
 }

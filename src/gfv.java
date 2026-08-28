@@ -1,30 +1,41 @@
-public class gfv implements gfq<dpp> {
-   private static final float a = 0.375F;
-   private final gjx b;
+public class gfv implements gfx<dpl> {
+   public static final grm a = new grm(gph.e, new akk("entity/bell/bell_body"));
+   private static final String b = "bell_body";
+   private final fxi c;
 
-   public gfv(gfr.a $$0) {
-      this.b = $$0.d();
+   public gfv(gfy.a $$0) {
+      fxi $$1 = $$0.a(fxh.l);
+      this.c = $$1.b("bell_body");
    }
 
-   public void a(dpp $$0, float $$1, faa $$2, gdq $$3, int $$4, int $$5) {
-      je $$6 = $$0.n().c(dfp.f);
-      jr<cur> $$7 = $$0.b();
-      int $$8 = (int)$$0.ay_().a();
+   public static fxo b() {
+      fxq $$0 = new fxq();
+      fxr $$1 = $$0.a();
+      fxr $$2 = $$1.a("bell_body", fxn.c().a(0, 0).a(-3.0F, -6.0F, -3.0F, 6.0F, 7.0F, 6.0F), fxk.a(8.0F, 12.0F, 8.0F));
+      $$2.a("bell_base", fxn.c().a(0, 13).a(4.0F, 4.0F, 4.0F, 8.0F, 2.0F, 8.0F), fxk.a(-8.0F, -12.0F, -8.0F));
+      return fxo.a($$0, 32, 32);
+   }
 
-      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
-         cur $$10 = $$7.get($$9);
-         if ($$10 != cur.l) {
-            $$2.a();
-            $$2.a(0.5F, 0.44921875F, 0.5F);
-            je $$11 = je.b(($$9 + $$6.e()) % 4);
-            float $$12 = -$$11.p();
-            $$2.a(a.d.rotationDegrees($$12));
-            $$2.a(a.b.rotationDegrees(90.0F));
-            $$2.a(-0.3125F, -0.3125F, 0.0F);
-            $$2.b(0.375F, 0.375F, 0.375F);
-            this.b.a($$10, cuo.i, $$4, $$5, $$2, $$3, $$0.i(), $$8 + $$9);
-            $$2.b();
+   public void a(dpl $$0, float $$1, fag $$2, gdx $$3, int $$4, int $$5) {
+      float $$6 = (float)$$0.a + $$1;
+      float $$7 = 0.0F;
+      float $$8 = 0.0F;
+      if ($$0.b) {
+         float $$9 = aye.a($$6 / (float) Math.PI) / (4.0F + $$6 / 3.0F);
+         if ($$0.c == jf.c) {
+            $$7 = -$$9;
+         } else if ($$0.c == jf.d) {
+            $$7 = $$9;
+         } else if ($$0.c == jf.f) {
+            $$8 = -$$9;
+         } else if ($$0.c == jf.e) {
+            $$8 = $$9;
          }
       }
+
+      this.c.e = $$7;
+      this.c.g = $$8;
+      fak $$10 = a.a($$3, gef::c);
+      this.c.a($$2, $$10, $$4, $$5);
    }
 }

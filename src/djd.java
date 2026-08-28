@@ -1,78 +1,51 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class djd extends dfb implements dht, dij {
-   public static final MapCodec<djd> a = b(djd::new);
-   public static final dtc<jg> b = dsu.T;
+public class djd extends div {
+   public static final MapCodec<djd> e = b(djd::new);
 
    @Override
-   public MapCodec<djd> a() {
-      return a;
+   public MapCodec<? extends djd> a() {
+      return e;
    }
 
-   protected djd(dsd.d $$0) {
+   public djd(dsg.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, jg.k));
+   }
+
+   public static dsh b() {
+      return dfh.G.o();
    }
 
    @Override
-   protected void a(dsf.a<dfb, dse> $$0) {
-      $$0.a(b);
-   }
+   public void a(dcd $$0, cmh $$1, ja $$2, dsh $$3, @Nullable dpn $$4, cua $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (!czl.a($$5, avx.s)) {
+         if ($$0.D_().i()) {
+            $$0.a($$2, false);
+            return;
+         }
 
-   @Override
-   protected dse a(dse $$0, dlo $$1) {
-      return $$0.a(b, $$1.a().a($$0.c(b)));
-   }
-
-   @Override
-   protected dse a(dse $$0, djy $$1) {
-      return $$0.a(b, $$1.a().a($$0.c(b)));
-   }
-
-   @Override
-   public dse a(cyc $$0) {
-      je $$1 = $$0.k();
-      je $$2;
-      if ($$1.o() == je.a.b) {
-         $$2 = $$0.g().g();
-      } else {
-         $$2 = je.b;
-      }
-
-      return this.o().a(b, jg.a($$1, $$2));
-   }
-
-   @Override
-   public dpj a(iz $$0, dse $$1) {
-      return new dqj($$0, $$1);
-   }
-
-   @Override
-   protected bqw a(dse $$0, dca $$1, iz $$2, cmz $$3, evp $$4) {
-      dpj $$5 = $$1.c_($$2);
-      if ($$5 instanceof dqj && $$3.gz()) {
-         $$3.a((dqj)$$5);
-         return bqw.a($$1.B);
-      } else {
-         return bqw.e;
+         dsh $$6 = $$0.a_($$2.d());
+         if ($$6.d() || $$6.k()) {
+            $$0.b($$2, b());
+         }
       }
    }
 
-   public static boolean a(emm.c $$0, emm.c $$1) {
-      je $$2 = m($$0.b());
-      je $$3 = m($$1.b());
-      je $$4 = n($$0.b());
-      je $$5 = n($$1.b());
-      dqj.a $$6 = dqj.a.a($$0.c().l("joint")).orElseGet(() -> $$2.o().d() ? dqj.a.b : dqj.a.a);
-      boolean $$7 = $$6 == dqj.a.a;
-      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.c().l("target").equals($$1.c().l("name"));
+   @Override
+   protected void b(dsh $$0, aqk $$1, ja $$2, aym $$3) {
+      if ($$1.a(dcm.b, $$2) > 11 - $$0.b($$1, $$2)) {
+         this.d($$0, $$1, $$2);
+      }
    }
 
-   public static je m(dse $$0) {
-      return $$0.c(b).a();
-   }
-
-   public static je n(dse $$0) {
-      return $$0.c(b).b();
+   protected void d(dsh $$0, dcd $$1, ja $$2) {
+      if ($$1.D_().i()) {
+         $$1.a($$2, false);
+      } else {
+         $$1.b($$2, b());
+         $$1.a($$2, b().b(), $$2);
+      }
    }
 }

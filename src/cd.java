@@ -2,15 +2,15 @@ import com.mojang.serialization.Codec;
 
 public class cd implements ap<cd.a> {
    @Override
-   public void a(aln $$0, ap.a<cd.a> $$1) {
+   public void a(aks $$0, ap.a<cd.a> $$1) {
    }
 
    @Override
-   public void b(aln $$0, ap.a<cd.a> $$1) {
+   public void b(aks $$0, ap.a<cd.a> $$1) {
    }
 
    @Override
-   public void a(aln $$0) {
+   public void a(aks $$0) {
    }
 
    @Override

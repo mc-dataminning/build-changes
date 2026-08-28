@@ -1,16 +1,20 @@
-public class gsa extends gsc {
-   public gsa(cfi $$0) {
-      super($$0, awa.bQ, awb.g);
-      this.j = 0;
+import java.util.UUID;
+
+public interface gsa {
+   void a(UUID var1, gsa.b var2);
+
+   void a(UUID var1, gsa.a var2);
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 
-   @Override
-   protected gry o() {
-      return new gsb(this.n);
-   }
-
-   @Override
-   protected boolean p() {
-      return !this.n.Z_();
+   public static enum b {
+      a,
+      b;
    }
 }

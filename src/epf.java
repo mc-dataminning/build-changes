@@ -1,53 +1,44 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
+import java.util.Locale;
 import javax.annotation.Nullable;
 
-public record epf(iz c, ctk d, Optional<xp> e) {
-   public static final Codec<epf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               iz.a.fieldOf("pos").forGetter(epf::c),
-               ctk.q.lenientOptionalFieldOf("color", ctk.a).forGetter(epf::d),
-               xr.g.lenientOptionalFieldOf("name").forGetter(epf::e)
-            )
-            .apply($$0, epf::new)
-   );
-   public static final Codec<List<epf>> b = a.listOf();
+public interface epf {
+   jf[] a = new jf[]{jf.e, jf.f, jf.a, jf.b, jf.c, jf.d};
 
-   @Nullable
-   public static epf a(dbg $$0, iz $$1) {
-      if ($$0.c_($$1) instanceof doy $$3) {
-         ctk $$4 = $$3.f();
-         Optional<xp> $$5 = Optional.ofNullable($$3.ah());
-         return new epf($$1, $$4, $$5);
-      } else {
-         return null;
+   void a(jf var1, dsh var2, ja var3, ja var4, int var5, int var6);
+
+   void a(ja var1, dff var2, ja var3);
+
+   void a(dsh var1, ja var2, dff var3, ja var4, boolean var5);
+
+   default void a(ja $$0, dff $$1, @Nullable jf $$2) {
+      for (jf $$3 : a) {
+         if ($$3 != $$2) {
+            this.a($$0.a($$3), $$1, $$0);
+         }
       }
    }
 
-   public ji<eph> a() {
-      return switch (this.d) {
-         case a -> epi.k;
-         case b -> epi.l;
-         case c -> epi.m;
-         case d -> epi.n;
-         case e -> epi.o;
-         case f -> epi.p;
-         case g -> epi.q;
-         case h -> epi.r;
-         case i -> epi.s;
-         case j -> epi.t;
-         case k -> epi.u;
-         case l -> epi.v;
-         case m -> epi.w;
-         case n -> epi.x;
-         case o -> epi.y;
-         case p -> epi.z;
-      };
+   static void a(dce $$0, jf $$1, dsh $$2, ja $$3, ja $$4, int $$5, int $$6) {
+      dsh $$7 = $$0.a_($$3);
+      dsh $$8 = $$7.a($$1, $$2, $$0, $$3, $$4);
+      dff.a($$7, $$8, $$0, $$3, $$5, $$6);
    }
 
-   public String b() {
-      return "banner-" + this.c.u() + "," + this.c.v() + "," + this.c.w();
+   static void a(dcd $$0, dsh $$1, ja $$2, dff $$3, ja $$4, boolean $$5) {
+      try {
+         $$1.a($$0, $$2, $$3, $$4, $$5);
+      } catch (Throwable var9) {
+         o $$7 = o.a(var9, "Exception while updating neighbours");
+         p $$8 = $$7.a("Block being updated");
+         $$8.a("Source block type", () -> {
+            try {
+               return String.format(Locale.ROOT, "ID #%s (%s // %s)", lq.e.b($$3), $$3.g(), $$3.getClass().getCanonicalName());
+            } catch (Throwable var2x) {
+               return "ID #" + lq.e.b($$3);
+            }
+         });
+         p.a($$8, $$0, $$2, $$1);
+         throw new y($$7);
+      }
    }
 }

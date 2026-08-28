@@ -3,40 +3,36 @@ import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
+import java.util.List;
 
-public class gb implements ArgumentType<String> {
-   private static final Collection<String> a = Arrays.asList("foo", "123");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xp.b("team.notFound", $$0));
+public class gb implements ArgumentType<xr> {
+   private static final Collection<String> b = List.of("{\"bold\": true}\n");
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wu.b("argument.style.invalid", $$0));
+   private final jl.a c;
 
-   public static gb a() {
-      return new gb();
+   private gb(jl.a $$0) {
+      this.c = $$0;
    }
 
-   public static ews a(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
-      String $$2 = (String)$$0.getArgument($$1, String.class);
-      ewx $$3 = ((ep)$$0.getSource()).l().aK();
-      ews $$4 = $$3.b($$2);
-      if ($$4 == null) {
-         throw b.create($$2);
-      } else {
-         return $$4;
+   public static xr a(CommandContext<eq> $$0, String $$1) {
+      return (xr)$$0.getArgument($$1, xr.class);
+   }
+
+   public static gb a(em $$0) {
+      return new gb($$0);
+   }
+
+   public xr a(StringReader $$0) throws CommandSyntaxException {
+      try {
+         return eu.a(this.c, $$0, xr.b.b);
+      } catch (Exception var4) {
+         String $$2 = var4.getCause() != null ? var4.getCause().getMessage() : var4.getMessage();
+         throw a.createWithContext($$0, $$2);
       }
    }
 
-   public String a(StringReader $$0) throws CommandSyntaxException {
-      return $$0.readUnquotedString();
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return $$0.getSource() instanceof eu ? eu.b(((eu)$$0.getSource()).r(), $$1) : Suggestions.empty();
-   }
-
    public Collection<String> getExamples() {
-      return a;
+      return b;
    }
 }

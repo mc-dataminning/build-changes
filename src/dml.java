@@ -1,36 +1,31 @@
 import com.mojang.serialization.MapCodec;
 
-public class dml extends dfb {
+public class dml extends dgz {
    public static final MapCodec<dml> b = b(dml::new);
-   public static final dsv c = dsu.z;
+   private static final wu c = wu.c("container.upgrade");
 
    @Override
-   protected MapCodec<? extends dml> a() {
+   public MapCodec<dml> a() {
       return b;
    }
 
-   protected dml(dsd.d $$0) {
+   protected dml(dsg.d $$0) {
       super($$0);
-      this.k(this.E.b().a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected dse a(dse $$0, je $$1, dse $$2, dcb $$3, iz $$4, iz $$5) {
-      return $$1 == je.b ? $$0.a(c, Boolean.valueOf(m($$2))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected bqh b(dsh $$0, dcd $$1, ja $$2) {
+      return new bqn(($$2x, $$3, $$4) -> new crd($$2x, $$3, cpq.a($$1, $$2)), c);
    }
 
    @Override
-   public dse a(cyc $$0) {
-      dse $$1 = $$0.q().a_($$0.a().c());
-      return this.o().a(c, Boolean.valueOf(m($$1)));
-   }
-
-   private static boolean m(dse $$0) {
-      return $$0.a(awp.bz);
-   }
-
-   @Override
-   protected void a(dsf.a<dfb, dse> $$0) {
-      $$0.a(c);
+   protected bqd a(dsh $$0, dcd $$1, ja $$2, cmh $$3, evv $$4) {
+      if ($$1.B) {
+         return bqd.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(avp.aF);
+         return bqd.c;
+      }
    }
 }

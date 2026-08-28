@@ -1,80 +1,42 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.concurrent.TimeUnit;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
 
-public class ebb {
-   private static final Logger a = LogUtils.getLogger();
-   private static final LoadingCache<arf, ebb.b> b = CacheBuilder.newBuilder()
-      .weakKeys()
-      .expireAfterAccess(5L, TimeUnit.MINUTES)
-      .build(new CacheLoader<arf, ebb.b>() {
-         public ebb.b a(arf $$0) {
-            return new ebb.b(Object2IntMaps.synchronize(new Object2IntOpenHashMap()), new MutableInt(0));
+public class ebb extends ebe<edh> {
+   public ebb(Codec<edh> $$0) {
+      super($$0);
+   }
+
+   @Override
+   public boolean a(ebg<edh> $$0) {
+      ja $$1 = $$0.e();
+      dcz $$2 = $$0.b();
+      edh $$3 = $$0.f();
+
+      for (ja $$4 : ja.c($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
+         boolean $$5 = $$4.u() == $$1.u();
+         boolean $$6 = $$4.v() == $$1.v();
+         boolean $$7 = $$4.w() == $$1.w();
+         boolean $$8 = Math.abs($$4.v() - $$1.v()) == 2;
+         if ($$5 && $$6 && $$7) {
+            ja $$9 = $$4.i();
+            this.a($$2, $$9, dfh.kF.o());
+            $$3.b().ifPresent($$3x -> {
+               dpn $$4x = $$2.c_($$9);
+               if ($$4x instanceof drd $$5x) {
+                  $$5x.a($$3x, $$3.c());
+                  $$4x.e();
+               }
+            });
+         } else if ($$6) {
+            this.a($$2, $$4, dfh.a.o());
+         } else if ($$8 && $$5 && $$7) {
+            this.a($$2, $$4, dfh.F.o());
+         } else if (($$5 || $$7) && !$$8) {
+            this.a($$2, $$4, dfh.F.o());
+         } else {
+            this.a($$2, $$4, dfh.a.o());
          }
-      });
-
-   public static void a(arf $$0) {
-      try {
-         ((ebb.b)b.get($$0)).b().increment();
-      } catch (Exception var2) {
-         a.error("Failed to increment chunk count", var2);
       }
-   }
 
-   public static void a(arf $$0, ean<?, ?> $$1, Optional<ehq> $$2) {
-      try {
-         ((ebb.b)b.get($$0)).a().computeInt(new ebb.a($$1, $$2), ($$0x, $$1x) -> $$1x == null ? 1 : $$1x + 1);
-      } catch (Exception var4) {
-         a.error("Failed to increment feature count", var4);
-      }
-   }
-
-   public static void a() {
-      b.invalidateAll();
-      a.debug("Cleared feature counts");
-   }
-
-   public static void b() {
-      a.debug("Logging feature counts:");
-      b.asMap()
-         .forEach(
-            ($$0, $$1) -> {
-               String $$2 = $$0.af().a().toString();
-               boolean $$3 = $$0.o().x();
-               jv<ehq> $$4 = $$0.H_().d(lq.aI);
-               String $$5 = ($$3 ? "running" : "dead") + " " + $$2;
-               Integer $$6 = $$1.b().getValue();
-               a.debug($$5 + " total_chunks: " + $$6);
-               $$1.a()
-                  .forEach(
-                     ($$3x, $$4x) -> a.debug(
-                           $$5
-                              + " "
-                              + String.format(Locale.ROOT, "%10d ", $$4x)
-                              + String.format(Locale.ROOT, "%10f ", (double)$$4x.intValue() / (double)$$6.intValue())
-                              + $$3x.b().flatMap($$4::d).<alf>map(ale::a)
-                              + " "
-                              + $$3x.a().b()
-                              + " "
-                              + $$3x.a()
-                        )
-                  );
-            }
-         );
-   }
-
-   static record a(ean<?, ?> a, Optional<ehq> b) {
-   }
-
-   static record b(Object2IntMap<ebb.a> a, MutableInt b) {
+      return true;
    }
 }

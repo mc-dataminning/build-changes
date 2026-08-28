@@ -3,37 +3,48 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
 public record dc(
-   Optional<dc.b> b, Optional<jm<dcz>> c, Optional<jm<eim>> d, Optional<ale<dca>> e, Optional<Boolean> f, Optional<cz> g, Optional<av> h, Optional<cc> i
+   Optional<dc.b> b,
+   Optional<jn<ddd>> c,
+   Optional<jn<eiq>> d,
+   Optional<akj<dcd>> e,
+   Optional<Boolean> f,
+   Optional<cz> g,
+   Optional<av> h,
+   Optional<cc> i,
+   Optional<Boolean> j
 ) {
    public static final Codec<dc> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                dc.b.a.optionalFieldOf("position").forGetter(dc::a),
-               jx.a(lq.az).optionalFieldOf("biomes").forGetter(dc::b),
-               jx.a(lq.aJ).optionalFieldOf("structures").forGetter(dc::c),
-               ale.a(lq.aS).optionalFieldOf("dimension").forGetter(dc::d),
+               jy.a(lr.aE).optionalFieldOf("biomes").forGetter(dc::b),
+               jy.a(lr.aQ).optionalFieldOf("structures").forGetter(dc::c),
+               akj.a(lr.aZ).optionalFieldOf("dimension").forGetter(dc::d),
                Codec.BOOL.optionalFieldOf("smokey").forGetter(dc::e),
                cz.a.optionalFieldOf("light").forGetter(dc::f),
                av.a.optionalFieldOf("block").forGetter(dc::g),
-               cc.a.optionalFieldOf("fluid").forGetter(dc::h)
+               cc.a.optionalFieldOf("fluid").forGetter(dc::h),
+               Codec.BOOL.optionalFieldOf("can_see_sky").forGetter(dc::i)
             )
             .apply($$0, dc::new)
    );
 
-   public boolean a(arf $$0, double $$1, double $$2, double $$3) {
+   public boolean a(aqk $$0, double $$1, double $$2, double $$3) {
       if (this.b.isPresent() && !this.b.get().a($$1, $$2, $$3)) {
          return false;
       } else if (this.e.isPresent() && this.e.get() != $$0.af()) {
          return false;
       } else {
-         iz $$4 = iz.a($$1, $$2, $$3);
+         ja $$4 = ja.a($$1, $$2, $$3);
          boolean $$5 = $$0.p($$4);
          if (!this.c.isPresent() || $$5 && this.c.get().a($$0.t($$4))) {
             if (!this.d.isPresent() || $$5 && $$0.a().a($$4, this.d.get()).b()) {
-               if (!this.f.isPresent() || $$5 && this.f.get() == dfp.a($$0, $$4)) {
+               if (!this.f.isPresent() || $$5 && this.f.get() == dft.a($$0, $$4)) {
                   if (this.g.isPresent() && !this.g.get().a($$0, $$4)) {
                      return false;
+                  } else if (this.h.isPresent() && !this.h.get().a($$0, $$4)) {
+                     return false;
                   } else {
-                     return this.h.isPresent() && !this.h.get().a($$0, $$4) ? false : !this.i.isPresent() || this.i.get().a($$0, $$4);
+                     return this.i.isPresent() && !this.i.get().a($$0, $$4) ? false : !this.j.isPresent() || this.j.get() == $$0.h($$4);
                   }
                } else {
                   return false;
@@ -51,15 +62,15 @@ public record dc(
       return this.b;
    }
 
-   public Optional<jm<dcz>> b() {
+   public Optional<jn<ddd>> b() {
       return this.c;
    }
 
-   public Optional<jm<eim>> c() {
+   public Optional<jn<eiq>> c() {
       return this.d;
    }
 
-   public Optional<ale<dca>> d() {
+   public Optional<akj<dcd>> d() {
       return this.e;
    }
 
@@ -79,17 +90,22 @@ public record dc(
       return this.i;
    }
 
+   public Optional<Boolean> i() {
+      return this.j;
+   }
+
    public static class a {
       private de.c a;
       private de.c b;
       private de.c c;
-      private Optional<jm<dcz>> d;
-      private Optional<jm<eim>> e;
-      private Optional<ale<dca>> f;
+      private Optional<jn<ddd>> d;
+      private Optional<jn<eiq>> e;
+      private Optional<akj<dcd>> f;
       private Optional<Boolean> g;
       private Optional<cz> h;
       private Optional<av> i;
       private Optional<cc> j;
+      private Optional<Boolean> k;
 
       public a() {
          this.a = de.c.c;
@@ -102,22 +118,23 @@ public record dc(
          this.h = Optional.empty();
          this.i = Optional.empty();
          this.j = Optional.empty();
+         this.k = Optional.empty();
       }
 
       public static dc.a a() {
          return new dc.a();
       }
 
-      public static dc.a a(ji<dcz> $$0) {
-         return a().a(jm.a($$0));
+      public static dc.a a(jj<ddd> $$0) {
+         return a().a(jn.a($$0));
       }
 
-      public static dc.a a(ale<dca> $$0) {
+      public static dc.a a(akj<dcd> $$0) {
          return a().b($$0);
       }
 
-      public static dc.a b(ji<eim> $$0) {
-         return a().b(jm.a($$0));
+      public static dc.a b(jj<eiq> $$0) {
+         return a().b(jn.a($$0));
       }
 
       public static dc.a a(de.c $$0) {
@@ -139,17 +156,17 @@ public record dc(
          return this;
       }
 
-      public dc.a a(jm<dcz> $$0) {
+      public dc.a a(jn<ddd> $$0) {
          this.d = Optional.of($$0);
          return this;
       }
 
-      public dc.a b(jm<eim> $$0) {
+      public dc.a b(jn<eiq> $$0) {
          this.e = Optional.of($$0);
          return this;
       }
 
-      public dc.a b(ale<dca> $$0) {
+      public dc.a b(akj<dcd> $$0) {
          this.f = Optional.of($$0);
          return this;
       }
@@ -174,9 +191,14 @@ public record dc(
          return this;
       }
 
+      public dc.a b(boolean $$0) {
+         this.k = Optional.of($$0);
+         return this;
+      }
+
       public dc b() {
          Optional<dc.b> $$0 = dc.b.a(this.a, this.b, this.c);
-         return new dc($$0, this.d, this.e, this.f, this.g, this.h, this.i, this.j);
+         return new dc($$0, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k);
       }
    }
 

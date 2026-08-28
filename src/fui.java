@@ -1,41 +1,26 @@
-public class fui<T extends chh> extends fvm<T> {
-   public fui(fxc $$0) {
-      super($$0, true, 19.0F, 1.0F, 2.5F, 2.0F, 24);
+import java.util.function.Function;
+
+public abstract class fui<T extends bsd> extends fve {
+   public float c;
+   public boolean d;
+   public boolean e = true;
+
+   protected fui() {
+      this(gef::e);
    }
 
-   public static fxi c() {
-      fxk $$0 = new fxk();
-      fxl $$1 = $$0.a();
-      fxl $$2 = $$1.a(
-         "head",
-         fxh.c()
-            .a(2, 61)
-            .a("right ear", -6.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
-            .a(2, 61)
-            .a()
-            .a("left ear", 2.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
-            .a(23, 52)
-            .a("goatee", -0.5F, -3.0F, -14.0F, 0.0F, 7.0F, 5.0F),
-         fxe.a(1.0F, 14.0F, 0.0F)
-      );
-      $$2.a("left_horn", fxh.c().a(12, 55).a(-0.01F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), fxe.a(0.0F, 0.0F, 0.0F));
-      $$2.a("right_horn", fxh.c().a(12, 55).a(-2.99F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), fxe.a(0.0F, 0.0F, 0.0F));
-      $$2.a("nose", fxh.c().a(34, 46).a(-3.0F, -4.0F, -8.0F, 5.0F, 7.0F, 10.0F), fxe.a(0.0F, -8.0F, -8.0F, 0.9599F, 0.0F, 0.0F));
-      $$1.a("body", fxh.c().a(1, 1).a(-4.0F, -17.0F, -7.0F, 9.0F, 11.0F, 16.0F).a(0, 28).a(-5.0F, -18.0F, -8.0F, 11.0F, 14.0F, 11.0F), fxe.a(0.0F, 24.0F, 0.0F));
-      $$1.a("left_hind_leg", fxh.c().a(36, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), fxe.a(1.0F, 14.0F, 4.0F));
-      $$1.a("right_hind_leg", fxh.c().a(49, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), fxe.a(-3.0F, 14.0F, 4.0F));
-      $$1.a("left_front_leg", fxh.c().a(49, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), fxe.a(1.0F, 14.0F, -6.0F));
-      $$1.a("right_front_leg", fxh.c().a(35, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), fxe.a(-3.0F, 14.0F, -6.0F));
-      return fxi.a($$0, 64, 64);
+   protected fui(Function<akk, gef> $$0) {
+      super($$0);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a.b("left_horn").k = $$0.gq();
-      this.a.b("right_horn").k = $$0.gw();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = $$0.gB();
-      if ($$6 != 0.0F) {
-         this.a.e = $$6;
-      }
+   public abstract void a(T var1, float var2, float var3, float var4, float var5, float var6);
+
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+   }
+
+   public void a(fui<T> $$0) {
+      $$0.c = this.c;
+      $$0.d = this.d;
+      $$0.e = this.e;
    }
 }

@@ -1,85 +1,80 @@
-import io.netty.buffer.ByteBuf;
-import java.util.Iterator;
-
-public record ix(iz b, iz c) implements Iterable<iz> {
-   public static final zn<ByteBuf, ix> a = new zn<ByteBuf, ix>() {
-      public ix a(ByteBuf $$0) {
-         return new ix(wm.b($$0), wm.b($$0));
+public enum ix {
+   a {
+      @Override
+      public int a(int $$0, int $$1, int $$2, jf.a $$3) {
+         return $$3.a($$0, $$1, $$2);
       }
 
-      public void a(ByteBuf $$0, ix $$1) {
-         wm.a($$0, $$1.f());
-         wm.a($$0, $$1.g());
+      @Override
+      public double a(double $$0, double $$1, double $$2, jf.a $$3) {
+         return $$3.a($$0, $$1, $$2);
+      }
+
+      @Override
+      public jf.a a(jf.a $$0) {
+         return $$0;
+      }
+
+      @Override
+      public ix a() {
+         return this;
+      }
+   },
+   b {
+      @Override
+      public int a(int $$0, int $$1, int $$2, jf.a $$3) {
+         return $$3.a($$2, $$0, $$1);
+      }
+
+      @Override
+      public double a(double $$0, double $$1, double $$2, jf.a $$3) {
+         return $$3.a($$2, $$0, $$1);
+      }
+
+      @Override
+      public jf.a a(jf.a $$0) {
+         return d[Math.floorMod($$0.ordinal() + 1, 3)];
+      }
+
+      @Override
+      public ix a() {
+         return c;
+      }
+   },
+   c {
+      @Override
+      public int a(int $$0, int $$1, int $$2, jf.a $$3) {
+         return $$3.a($$1, $$2, $$0);
+      }
+
+      @Override
+      public double a(double $$0, double $$1, double $$2, jf.a $$3) {
+         return $$3.a($$1, $$2, $$0);
+      }
+
+      @Override
+      public jf.a a(jf.a $$0) {
+         return d[Math.floorMod($$0.ordinal() - 1, 3)];
+      }
+
+      @Override
+      public ix a() {
+         return b;
       }
    };
 
-   public ix(final iz b, final iz c) {
-      this.b = iz.a(b, c);
-      this.c = iz.b(b, c);
-   }
+   public static final jf.a[] d = jf.a.values();
+   public static final ix[] e = values();
 
-   public static ix a(iz $$0) {
-      return new ix($$0, $$0);
-   }
+   public abstract int a(int var1, int var2, int var3, jf.a var4);
 
-   public static ix a(iz $$0, iz $$1) {
-      return new ix($$0, $$1);
-   }
+   public abstract double a(double var1, double var3, double var5, jf.a var7);
 
-   public ix b(iz $$0) {
-      return new ix(iz.a(this.b, $$0), iz.b(this.c, $$0));
-   }
+   public abstract jf.a a(jf.a var1);
 
-   public boolean a() {
-      return this.b.equals(this.c);
-   }
+   public abstract ix a();
 
-   public boolean c(iz $$0) {
-      return $$0.u() >= this.b.u() && $$0.v() >= this.b.v() && $$0.w() >= this.b.w() && $$0.u() <= this.c.u() && $$0.v() <= this.c.v() && $$0.w() <= this.c.w();
-   }
-
-   public evo b() {
-      return evo.a(this.b, this.c);
-   }
-
-   @Override
-   public Iterator<iz> iterator() {
-      return iz.c(this.b, this.c).iterator();
-   }
-
-   public int c() {
-      return this.c.u() - this.b.u() + 1;
-   }
-
-   public int d() {
-      return this.c.v() - this.b.v() + 1;
-   }
-
-   public int e() {
-      return this.c.w() - this.b.w() + 1;
-   }
-
-   public ix a(je $$0, int $$1) {
-      if ($$1 == 0) {
-         return this;
-      } else {
-         return $$0.f() == je.b.a ? a(this.b, iz.b(this.b, this.c.a($$0, $$1))) : a(iz.a(this.b.a($$0, $$1), this.c), this.c);
-      }
-   }
-
-   public ix b(je $$0, int $$1) {
-      return $$1 == 0 ? this : new ix(this.b.a($$0, $$1), this.c.a($$0, $$1));
-   }
-
-   public ix a(kd $$0) {
-      return new ix(this.b.a($$0), this.c.a($$0));
-   }
-
-   public iz f() {
-      return this.b;
-   }
-
-   public iz g() {
-      return this.c;
+   public static ix a(jf.a $$0, jf.a $$1) {
+      return e[Math.floorMod($$1.ordinal() - $$0.ordinal(), 3)];
    }
 }

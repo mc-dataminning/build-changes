@@ -1,18 +1,13 @@
-import java.util.function.Function;
-
-public abstract class fuu<E extends bsw> extends fuc<E> {
-   public fuu() {
-      this(gdy::e);
-   }
-
-   public fuu(Function<alf, gdy> $$0) {
+public class fuu<T extends bsy> extends fuv<T> {
+   public fuu(fxi $$0) {
       super($$0);
    }
 
-   @Override
-   public void a(faa $$0, fae $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.d().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+   public static fxq a(fxm $$0) {
+      fxq $$1 = fuv.a($$0, 0.0F);
+      fxr $$2 = $$1.a();
+      $$2.a("right_leg", fxn.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), fxk.a(-1.9F, 12.0F, 0.0F));
+      $$2.a("left_leg", fxn.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), fxk.a(1.9F, 12.0F, 0.0F));
+      return $$1;
    }
-
-   public abstract Iterable<fxc> d();
 }

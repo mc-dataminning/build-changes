@@ -1,22 +1,19 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
 
-public class bby extends DataFix {
+public class bby extends bfa {
    public bby(Schema $$0) {
-      super($$0, true);
+      super($$0, false, "EntityBrushableBlockFieldsRenameFix", bgd.s, "minecraft:brushable_block");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgx.c);
-      OpticFinder<?> $$1 = $$0.findField("sections");
-      return this.fixTypeEverywhereTyped("ChunkDeleteIgnoredLightDataFix", $$0, $$1x -> {
-         boolean $$2 = ((Dynamic)$$1x.get(DSL.remainderFinder())).get("isLightOn").asBoolean(false);
-         return !$$2 ? $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.remove("BlockLight").remove("SkyLight"))) : $$1x;
-      });
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.renameField("loot_table", "LootTable").renameField("loot_table_seed", "LootTableSeed");
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

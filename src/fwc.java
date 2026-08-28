@@ -1,54 +1,67 @@
-public class fwc<T extends bsw> extends ful<T> {
-   private static final String a = "upper_body";
-   private final fxc b;
-   private final fxc f;
-   private final fxc g;
-   private final fxc h;
-   private final fxc i;
+import java.util.Arrays;
 
-   public fwc(fxc $$0) {
+public class fwc<T extends bsd> extends fur<T> {
+   private static final int a = 7;
+   private final fxi b;
+   private final fxi[] f = new fxi[7];
+   private final fxi[] g = new fxi[3];
+   private static final int[][] h = new int[][]{{3, 2, 2}, {4, 3, 2}, {6, 4, 3}, {3, 3, 3}, {2, 2, 3}, {2, 1, 2}, {1, 1, 2}};
+   private static final int[][] i = new int[][]{{0, 0}, {0, 4}, {0, 9}, {0, 16}, {0, 22}, {11, 0}, {13, 4}};
+
+   public fwc(fxi $$0) {
       this.b = $$0;
-      this.g = $$0.b("head");
-      this.h = $$0.b("left_arm");
-      this.i = $$0.b("right_arm");
-      this.f = $$0.b("upper_body");
+      Arrays.setAll(this.f, $$1 -> $$0.b(b($$1)));
+      Arrays.setAll(this.g, $$1 -> $$0.b(a($$1)));
    }
 
-   public static fxi b() {
-      fxk $$0 = new fxk();
-      fxl $$1 = $$0.a();
-      float $$2 = 4.0F;
-      fxg $$3 = new fxg(-0.5F);
-      $$1.a("head", fxh.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$3), fxe.a(0.0F, 4.0F, 0.0F));
-      fxh $$4 = fxh.c().a(32, 0).a(-1.0F, 0.0F, -1.0F, 12.0F, 2.0F, 2.0F, $$3);
-      $$1.a("left_arm", $$4, fxe.a(5.0F, 6.0F, 1.0F, 0.0F, 0.0F, 1.0F));
-      $$1.a("right_arm", $$4, fxe.a(-5.0F, 6.0F, -1.0F, 0.0F, (float) Math.PI, -1.0F));
-      $$1.a("upper_body", fxh.c().a(0, 16).a(-5.0F, -10.0F, -5.0F, 10.0F, 10.0F, 10.0F, $$3), fxe.a(0.0F, 13.0F, 0.0F));
-      $$1.a("lower_body", fxh.c().a(0, 36).a(-6.0F, -12.0F, -6.0F, 12.0F, 12.0F, 12.0F, $$3), fxe.a(0.0F, 24.0F, 0.0F));
-      return fxi.a($$0, 64, 64);
+   private static String a(int $$0) {
+      return "layer" + $$0;
+   }
+
+   private static String b(int $$0) {
+      return "segment" + $$0;
+   }
+
+   public static fxo b() {
+      fxq $$0 = new fxq();
+      fxr $$1 = $$0.a();
+      float[] $$2 = new float[7];
+      float $$3 = -3.5F;
+
+      for (int $$4 = 0; $$4 < 7; $$4++) {
+         $$1.a(
+            b($$4),
+            fxn.c().a(i[$$4][0], i[$$4][1]).a((float)h[$$4][0] * -0.5F, 0.0F, (float)h[$$4][2] * -0.5F, (float)h[$$4][0], (float)h[$$4][1], (float)h[$$4][2]),
+            fxk.a(0.0F, (float)(24 - h[$$4][1]), $$3)
+         );
+         $$2[$$4] = $$3;
+         if ($$4 < 6) {
+            $$3 += (float)(h[$$4][2] + h[$$4 + 1][2]) * 0.5F;
+         }
+      }
+
+      $$1.a(a(0), fxn.c().a(20, 0).a(-5.0F, 0.0F, (float)h[2][2] * -0.5F, 10.0F, 8.0F, (float)h[2][2]), fxk.a(0.0F, 16.0F, $$2[2]));
+      $$1.a(a(1), fxn.c().a(20, 11).a(-3.0F, 0.0F, (float)h[4][2] * -0.5F, 6.0F, 4.0F, (float)h[4][2]), fxk.a(0.0F, 20.0F, $$2[4]));
+      $$1.a(a(2), fxn.c().a(20, 18).a(-3.0F, 0.0F, (float)h[4][2] * -0.5F, 6.0F, 5.0F, (float)h[1][2]), fxk.a(0.0F, 19.0F, $$2[1]));
+      return fxo.a($$0, 64, 32);
+   }
+
+   @Override
+   public fxi a() {
+      return this.b;
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.g.f = $$4 * (float) (Math.PI / 180.0);
-      this.g.e = $$5 * (float) (Math.PI / 180.0);
-      this.f.f = $$4 * (float) (Math.PI / 180.0) * 0.25F;
-      float $$6 = ayz.a(this.f.f);
-      float $$7 = ayz.b(this.f.f);
-      this.h.f = this.f.f;
-      this.i.f = this.f.f + (float) Math.PI;
-      this.h.b = $$7 * 5.0F;
-      this.h.d = -$$6 * 5.0F;
-      this.i.b = -$$7 * 5.0F;
-      this.i.d = $$6 * 5.0F;
-   }
+      for (int $$6 = 0; $$6 < this.f.length; $$6++) {
+         this.f[$$6].f = aye.b($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (float)(1 + Math.abs($$6 - 2));
+         this.f[$$6].b = aye.a($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.2F * (float)Math.abs($$6 - 2);
+      }
 
-   @Override
-   public fxc a() {
-      return this.b;
-   }
-
-   public fxc c() {
-      return this.g;
+      this.g[0].f = this.f[2].f;
+      this.g[1].f = this.f[4].f;
+      this.g[1].b = this.f[4].b;
+      this.g[2].f = this.f[1].f;
+      this.g[2].b = this.f[1].b;
    }
 }

@@ -1,32 +1,44 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public enum cvl implements azu {
-   a(0, "common", n.p),
-   b(1, "uncommon", n.o),
-   c(2, "rare", n.l),
-   d(3, "epic", n.n);
+public class cvl extends cry {
+   protected final dff a;
+   private final jf b;
 
-   public static final Codec<cvl> e = azu.b(cvl::values);
-   public static final IntFunction<cvl> f = axp.a($$0 -> $$0.h, values(), axp.a.a);
-   public static final zn<ByteBuf, cvl> g = zl.a(f, $$0 -> $$0.h);
-   private final int h;
-   private final String i;
-   private final n j;
-
-   private cvl(final int $$0, final String $$1, final n $$2) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
+   public cvl(dff $$0, dff $$1, ctv.a $$2, jf $$3) {
+      super($$0, $$2);
+      this.a = $$1;
+      this.b = $$3;
    }
 
-   public n a() {
-      return this.j;
+   protected boolean a(dcg $$0, dsh $$1, ja $$2) {
+      return $$1.a($$0, $$2);
+   }
+
+   @Nullable
+   @Override
+   protected dsh c(cxk $$0) {
+      dsh $$1 = this.a.a($$0);
+      dsh $$2 = null;
+      dcg $$3 = $$0.q();
+      ja $$4 = $$0.a();
+
+      for (jf $$5 : $$0.f()) {
+         if ($$5 != this.b.g()) {
+            dsh $$6 = $$5 == this.b ? this.d().a($$0) : $$1;
+            if ($$6 != null && this.a($$3, $$6, $$4)) {
+               $$2 = $$6;
+               break;
+            }
+         }
+      }
+
+      return $$2 != null && $$3.a($$2, $$4, ewe.a()) ? $$2 : null;
    }
 
    @Override
-   public String c() {
-      return this.i;
+   public void a(Map<dff, ctv> $$0, ctv $$1) {
+      super.a($$0, $$1);
+      $$0.put(this.a, $$1);
    }
 }

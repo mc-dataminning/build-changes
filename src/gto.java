@@ -1,6 +1,8 @@
-import java.io.IOException;
-import java.nio.ByteBuffer;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface gto extends gtl {
-   ByteBuffer b() throws IOException;
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gto {
 }

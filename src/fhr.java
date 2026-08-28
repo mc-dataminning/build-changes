@@ -1,50 +1,25 @@
-public class fhr extends fia {
-   private static final int a = 4;
-   private final boolean b;
-   private final int c;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-   public fhr(int $$0, xp $$1, fgr $$2) {
-      this($$0, $$1, $$2, 4);
+public class fhr {
+   private static final axq a = axq.codepoint(32, xr.a);
+
+   private static String a(String $$0) {
+      return ffn.Q().m.K().c() ? $$0 : n.a($$0);
    }
 
-   public fhr(int $$0, xp $$1, fgr $$2, int $$3) {
-      this($$0, $$1, $$2, true, $$3);
-   }
-
-   public fhr(int $$0, xp $$1, fgr $$2, boolean $$3, int $$4) {
-      super($$1, $$2);
-      this.d($$0);
-      this.b(true);
-      this.j = true;
-      this.b = $$3;
-      this.c = $$4;
-   }
-
-   public void b(int $$0) {
-      this.d($$0 - this.c * 4);
-   }
-
-   @Override
-   protected void a(flc $$0) {
-      $$0.a(flb.a, this.y());
-   }
-
-   @Override
-   public void b(fgt $$0, int $$1, int $$2, float $$3) {
-      if (this.aH_() || this.b) {
-         int $$4 = this.C() - this.c;
-         int $$5 = this.D() - this.c;
-         int $$6 = this.x() + this.c * 2;
-         int $$7 = this.v() + this.c * 2;
-         int $$8 = this.b ? (this.aH_() ? -1 : -6250336) : -1;
-         $$0.a($$4 + 1, $$5, $$4 + $$6, $$5 + $$7, -16777216);
-         $$0.b($$4, $$5, $$6, $$7, $$8);
-      }
-
-      super.b($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(gtx $$0) {
+   public static List<axq> a(wz $$0, int $$1, fgx $$2) {
+      ffd $$3 = new ffd();
+      $$0.a(($$1x, $$2x) -> {
+         $$3.a(wz.a(a($$2x), $$1x));
+         return Optional.empty();
+      }, xr.a);
+      List<axq> $$4 = Lists.newArrayList();
+      $$2.b().a($$3.b(), $$1, xr.a, ($$1x, $$2x) -> {
+         axq $$3x = ts.a().a($$1x);
+         $$4.add($$2x ? axq.composite(a, $$3x) : $$3x);
+      });
+      return (List<axq>)($$4.isEmpty() ? Lists.newArrayList(new axq[]{axq.a}) : $$4);
    }
 }

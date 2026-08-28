@@ -1,14 +1,24 @@
-public enum dsz implements azu {
-   a,
-   b;
+public enum dsz implements ayz {
+   a("single"),
+   b("left"),
+   c("right");
 
-   @Override
-   public String toString() {
-      return this.c();
+   private final String d;
+
+   private dsz(final String $$0) {
+      this.d = $$0;
    }
 
    @Override
    public String c() {
-      return this == a ? "left" : "right";
+      return this.d;
+   }
+
+   public dsz a() {
+      return switch (this) {
+         case a -> a;
+         case b -> c;
+         case c -> b;
+      };
    }
 }

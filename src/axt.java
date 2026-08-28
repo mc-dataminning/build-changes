@@ -1,11 +1,30 @@
-public class axt {
-   public static final int a = -1;
-   public static final int b = -16777216;
-   public static final int c = -8355712;
-   public static final int d = -6250336;
-   public static final int e = -4539718;
-   public static final int f = -65536;
-   public static final int g = -2142128;
-   public static final int h = -256;
-   public static final int i = -171;
+import com.google.common.collect.ImmutableSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Consumer;
+
+public final class axt {
+   private axt() {
+   }
+
+   public static <T> boolean a(Map<T, Set<T>> $$0, Set<T> $$1, Set<T> $$2, Consumer<T> $$3, T $$4) {
+      if ($$1.contains($$4)) {
+         return false;
+      } else if ($$2.contains($$4)) {
+         return true;
+      } else {
+         $$2.add($$4);
+
+         for (T $$5 : $$0.getOrDefault($$4, ImmutableSet.of())) {
+            if (a($$0, $$1, $$2, $$3, $$5)) {
+               return true;
+            }
+         }
+
+         $$2.remove($$4);
+         $$1.add($$4);
+         $$3.accept($$4);
+         return false;
+      }
+   }
 }

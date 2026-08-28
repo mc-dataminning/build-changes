@@ -1,186 +1,167 @@
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fdf extends gvi {
-   static final Logger c = LogUtils.getLogger();
-   private static final xp B = xp.c("mco.selectServer.create");
-   private static final xp C = xp.c("mco.selectServer.create.subtitle");
-   private static final xp D = xp.c("mco.configure.world.switch.slot");
-   private static final xp E = xp.c("mco.configure.world.switch.slot.subtitle");
-   private static final xp F = xp.c("mco.reset.world.title");
-   private static final xp G = xp.c("mco.reset.world.warning");
-   public static final xp a = xp.c("mco.create.world.reset.title");
-   private static final xp H = xp.c("mco.reset.world.resetting.screen.title");
-   private static final xp I = xp.c("mco.reset.world.template");
-   private static final xp J = xp.c("mco.reset.world.adventure");
-   private static final xp K = xp.c("mco.reset.world.experience");
-   private static final xp L = xp.c("mco.reset.world.inspiration");
-   private final fnf M;
-   private final fbh N;
-   private final xp O;
-   private final int P;
-   private final xp Q;
-   private static final alf R = new alf("textures/gui/realms/upload.png");
-   private static final alf S = new alf("textures/gui/realms/adventure.png");
-   private static final alf T = new alf("textures/gui/realms/survival_spawn.png");
-   private static final alf U = new alf("textures/gui/realms/new_world.png");
-   private static final alf V = new alf("textures/gui/realms/experience.png");
-   private static final alf W = new alf("textures/gui/realms/inspiration.png");
-   fbz X;
-   fbz Y;
-   fbz Z;
-   fbz aa;
-   public final int b;
+public class fdf extends gvm {
+   private static final akk a = new akk("icon/unseen_notification");
+   private static final akk b = new akk("icon/news");
+   private static final akk c = new akk("icon/invite");
+   private static final akk A = new akk("icon/trial_available");
+   private final CompletableFuture<Boolean> B = faq.a().thenApply($$0 -> $$0.a() == faq.b.a);
    @Nullable
-   private final fej ab;
-   private final Runnable ac;
-   private final fkt ad = new fkt(this);
-
-   private fdf(fnf $$0, fbh $$1, int $$2, xp $$3, xp $$4, int $$5, xp $$6, Runnable $$7) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, null, $$7);
-   }
-
-   public fdf(fnf $$0, fbh $$1, int $$2, xp $$3, xp $$4, int $$5, xp $$6, @Nullable fej $$7, Runnable $$8) {
-      super($$3);
-      this.M = $$0;
-      this.N = $$1;
-      this.b = $$2;
-      this.O = $$4;
-      this.P = $$5;
-      this.Q = $$6;
-      this.ab = $$7;
-      this.ac = $$8;
-   }
-
-   public static fdf a(fnf $$0, fbh $$1, fej $$2, Runnable $$3) {
-      return new fdf($$0, $$1, $$1.n, B, C, -6250336, a, $$2, $$3);
-   }
-
-   public static fdf a(fnf $$0, int $$1, fbh $$2, Runnable $$3) {
-      return new fdf($$0, $$2, $$1, D, E, -6250336, a, $$3);
-   }
-
-   public static fdf a(fnf $$0, fbh $$1, Runnable $$2) {
-      return new fdf($$0, $$1, $$1.n, F, G, -65536, H, $$2);
-   }
-
-   @Override
-   public void aM_() {
-      fkx $$0 = this.ad.a(fkx.d());
-      $$0.c().a(9 / 3);
-      $$0.a(new fin(this.l, this.p), fkw::b);
-      $$0.a(new fin(this.O, this.p).b(this.P), fkw::b);
-      (new Thread("Realms-reset-world-fetcher") {
-         @Override
-         public void run() {
-            faq $$0 = faq.a();
-
-            try {
-               fbz $$1 = $$0.a(1, 10, fbh.d.a);
-               fbz $$2 = $$0.a(1, 10, fbh.d.c);
-               fbz $$3 = $$0.a(1, 10, fbh.d.d);
-               fbz $$4 = $$0.a(1, 10, fbh.d.e);
-               fdf.this.m.execute(() -> {
-                  fdf.this.X = $$1;
-                  fdf.this.Y = $$2;
-                  fdf.this.Z = $$3;
-                  fdf.this.aa = $$4;
-               });
-            } catch (fcd var6) {
-               fdf.c.error("Couldn't fetch templates in reset world", var6);
-            }
-         }
-      }).start();
-      fks $$1 = this.ad.c(new fks());
-      fks.b $$2 = $$1.d(3);
-      $$2.c().f(16);
-      $$2.a(new fdf.a(this.m.h, fde.a, U, $$0x -> this.m.a(new fde(this::a, this.l))));
-      $$2.a(new fdf.a(this.m.h, fdg.a, R, $$0x -> this.m.a(new fdg(this.ab, this.N.a, this.b, this))));
-      $$2.a(new fdf.a(this.m.h, I, T, $$0x -> this.m.a(new fdh(I, this::a, fbh.d.a, this.X))));
-      $$2.a(fky.b(16), 3);
-      $$2.a(new fdf.a(this.m.h, J, S, $$0x -> this.m.a(new fdh(J, this::a, fbh.d.c, this.Y))));
-      $$2.a(new fdf.a(this.m.h, K, V, $$0x -> this.m.a(new fdh(K, this::a, fbh.d.d, this.Z))));
-      $$2.a(new fdf.a(this.m.h, L, W, $$0x -> this.m.a(new fdh(L, this::a, fbh.d.e, this.aa))));
-      this.ad.b(fhg.a(xo.k, $$0x -> this.d()).a());
-      this.ad.a($$1x -> {
-         fhe var10000 = this.c($$1x);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.ad.a();
-   }
-
-   @Override
-   public xp i() {
-      return xo.a(this.n(), this.O);
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.M);
-   }
-
-   private void a(@Nullable fby $$0) {
-      this.m.a(this);
-      if ($$0 != null) {
-         this.a(new fel($$0, this.N.a, this.Q, this.ac));
-      }
-   }
-
-   private void a(@Nullable fea $$0) {
-      this.m.a(this);
-      if ($$0 != null) {
-         this.a(new fek($$0, this.N.a, this.Q, this.ac));
-      }
-   }
-
-   private void a(feh $$0) {
-      List<feh> $$1 = new ArrayList<>();
-      if (this.ab != null) {
-         $$1.add(this.ab);
-      }
-
-      if (this.b != this.N.n) {
-         $$1.add(new fep(this.N.a, this.b, () -> {
-         }));
-      }
-
-      $$1.add($$0);
-      this.m.a(new fcx(this.M, $$1.toArray(new feh[0])));
-   }
-
-   class a extends fhg {
-      private static final alf b = new alf("widget/slot_frame");
-      private static final int c = 60;
-      private static final int d = 2;
-      private static final int u = 56;
-      private final alf v;
-
-      a(final fgr $$0, final xp $$1, final alf $$2, final fhg.c $$3) {
-         super(0, 0, 60, 60 + 9, $$1, $$3, q);
-         this.v = $$2;
+   private fdv.c C;
+   @Nullable
+   private fdf.a D;
+   private volatile int E;
+   private static boolean F;
+   private static boolean G;
+   private static boolean H;
+   private final fdf.a I = new fdf.a() {
+      @Override
+      public fdv.c a(fcm $$0) {
+         fdv.c $$1 = $$0.a.a();
+         fdf.this.a($$0, $$1);
+         fdf.this.b($$0, $$1);
+         return $$1;
       }
 
       @Override
-      public void b(fgt $$0, int $$1, int $$2, float $$3) {
-         boolean $$4 = this.A();
-         if ($$4) {
-            $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
+      public boolean a() {
+         return true;
+      }
+   };
+   private final fdf.a J = new fdf.a() {
+      @Override
+      public fdv.c a(fcm $$0) {
+         fdv.c $$1 = $$0.a.a();
+         fdf.this.b($$0, $$1);
+         return $$1;
+      }
+
+      @Override
+      public boolean a() {
+         return false;
+      }
+   };
+
+   public fdf() {
+      super(fff.a);
+   }
+
+   @Override
+   public void aO_() {
+      if (this.C != null) {
+         this.C.a();
+      }
+   }
+
+   @Override
+   public void aG_() {
+      super.aG_();
+      this.l.ba().b.a();
+   }
+
+   @Nullable
+   private fdf.a E() {
+      boolean $$0 = this.G() && this.B.getNow(false);
+      if (!$$0) {
+         return null;
+      } else {
+         return this.F() ? this.I : this.J;
+      }
+   }
+
+   @Override
+   public void e() {
+      fdf.a $$0 = this.E();
+      if (!Objects.equals(this.D, $$0)) {
+         this.D = $$0;
+         if (this.D != null) {
+            this.C = this.D.a(this.l.ba());
+         } else {
+            this.C = null;
+         }
+      }
+
+      if (this.C != null) {
+         this.C.b();
+      }
+   }
+
+   private boolean F() {
+      return this.l.m.T().c();
+   }
+
+   private boolean G() {
+      return this.l.y instanceof fnf;
+   }
+
+   @Override
+   public void a(fgz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.B.getNow(false)) {
+         this.c($$0);
+      }
+   }
+
+   @Override
+   public void b(fgz $$0, int $$1, int $$2, float $$3) {
+   }
+
+   private void c(fgz $$0) {
+      int $$1 = this.E;
+      int $$2 = 24;
+      int $$3 = this.n / 4 + 48;
+      int $$4 = this.m / 2 + 100;
+      int $$5 = $$3 + 48 + 2;
+      int $$6 = $$4 - 3;
+      if (H) {
+         $$0.a(a, $$6 - 12, $$5 + 3, 10, 10);
+         $$6 -= 16;
+      }
+
+      if (this.D != null && this.D.a()) {
+         if (G) {
+            $$0.a(b, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
          }
 
-         int $$5 = this.C();
-         int $$6 = this.D();
-         $$0.a(this.v, $$5 + 2, $$6 + 2, 0.0F, 0.0F, 56, 56, 56, 56);
-         $$0.a(b, $$5, $$6, 60, 60);
-         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-         int $$7 = $$4 ? -6250336 : -1;
-         $$0.a(fdf.this.p, this.y(), $$5 + 28, $$6 - 14, $$7);
+         if ($$1 != 0) {
+            $$0.a(c, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
+         }
+
+         if (F) {
+            $$0.a(A, $$6 - 10, $$5 + 4, 8, 8);
+         }
       }
+   }
+
+   void a(fcm $$0, fdv.c $$1) {
+      $$1.a($$0.d, $$0x -> this.E = $$0x);
+      $$1.a($$0.e, $$0x -> F = $$0x);
+      $$1.a($$0.f, $$1x -> {
+         $$0.g.a($$1x);
+         G = $$0.g.a();
+      });
+   }
+
+   void b(fcm $$0, fdv.c $$1) {
+      $$1.a($$0.b, $$0x -> {
+         H = false;
+
+         for (fbm $$1x : $$0x) {
+            if (!$$1x.a()) {
+               H = true;
+               break;
+            }
+         }
+      });
+   }
+
+   interface a {
+      fdv.c a(fcm var1);
+
+      boolean a();
    }
 }

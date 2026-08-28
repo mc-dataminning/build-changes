@@ -1,19 +1,22 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eeg<P extends eef> {
-   public static final eeg<eei> a = a("two_layers_feature_size", eei.d);
-   public static final eeg<eeh> b = a("three_layers_feature_size", eeh.d);
-   private final MapCodec<P> c;
+public class eeg implements edi {
+   public static final Codec<eeg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(0, 512).fieldOf("floor_search_range").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 64).fieldOf("placement_radius_around_floor").forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("placement_probability_per_valid_position").forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, eeg::new)
+   );
+   public final int b;
+   public final int c;
+   public final float d;
 
-   private static <P extends eef> eeg<P> a(String $$0, MapCodec<P> $$1) {
-      return jv.a(lp.aa, $$0, new eeg<>($$1));
-   }
-
-   private eeg(MapCodec<P> $$0) {
-      this.c = $$0;
-   }
-
-   public MapCodec<P> a() {
-      return this.c;
+   public eeg(int $$0, int $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 }

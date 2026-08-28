@@ -1,77 +1,36 @@
+import com.google.common.net.InetAddresses;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
 
 public class anf {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xp.b("commands.enchant.failed.entity", $$0));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xp.b("commands.enchant.failed.itemless", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xp.b("commands.enchant.failed.incompatible", $$0));
-   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> xp.b("commands.enchant.failed.level", $$0, $$1));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(xp.c("commands.enchant.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("commands.pardonip.invalid"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wu.c("commands.pardonip.failed"));
 
-   public static void a(CommandDispatcher<ep> $$0, el $$1) {
+   public static void a(CommandDispatcher<eq> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("enchant").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("pardon-ip").requires($$0x -> $$0x.c(3)))
             .then(
-               eq.a("targets", fc.b())
-                  .then(
-                     ((RequiredArgumentBuilder)eq.a("enchantment", fo.a($$1, lq.u))
-                           .executes($$0x -> a((ep)$$0x.getSource(), fc.b($$0x, "targets"), fo.g($$0x, "enchantment"), 1)))
-                        .then(
-                           eq.a("level", IntegerArgumentType.integer(0))
-                              .executes(
-                                 $$0x -> a(
-                                       (ep)$$0x.getSource(), fc.b($$0x, "targets"), fo.g($$0x, "enchantment"), IntegerArgumentType.getInteger($$0x, "level")
-                                    )
-                              )
-                        )
-                  )
+               er.a("target", StringArgumentType.word())
+                  .suggests(($$0x, $$1) -> ev.a(((eq)$$0x.getSource()).l().ah().g().a(), $$1))
+                  .executes($$0x -> a((eq)$$0x.getSource(), StringArgumentType.getString($$0x, "target")))
             )
       );
    }
 
-   private static int a(ep $$0, Collection<? extends bsw> $$1, ji<dac> $$2, int $$3) throws CommandSyntaxException {
-      dac $$4 = $$2.a();
-      if ($$3 > $$4.g()) {
-         throw d.create($$3, $$4.g());
+   private static int a(eq $$0, String $$1) throws CommandSyntaxException {
+      if (!InetAddresses.isInetAddress($$1)) {
+         throw a.create();
       } else {
-         int $$5 = 0;
-
-         for (bsw $$6 : $$1) {
-            if ($$6 instanceof btr) {
-               btr $$7 = (btr)$$6;
-               cur $$8 = $$7.eX();
-               if (!$$8.e()) {
-                  if ($$4.b($$8) && dad.a(dad.b($$8).a(), $$4)) {
-                     $$8.a($$4, $$3);
-                     $$5++;
-                  } else if ($$1.size() == 1) {
-                     throw c.create($$8.g().o($$8).getString());
-                  }
-               } else if ($$1.size() == 1) {
-                  throw b.create($$7.af().getString());
-               }
-            } else if ($$1.size() == 1) {
-               throw a.create($$6.af().getString());
-            }
-         }
-
-         if ($$5 == 0) {
-            throw e.create();
+         aue $$2 = $$0.l().ah().g();
+         if (!$$2.a($$1)) {
+            throw b.create();
          } else {
-            if ($$1.size() == 1) {
-               $$0.a(() -> xp.a("commands.enchant.success.single", $$4.e($$3), $$1.iterator().next().O_()), true);
-            } else {
-               $$0.a(() -> xp.a("commands.enchant.success.multiple", $$4.e($$3), $$1.size()), true);
-            }
-
-            return $$5;
+            $$2.c($$1);
+            $$0.a(() -> wu.a("commands.pardonip.success", $$1), true);
+            return 1;
          }
       }
    }

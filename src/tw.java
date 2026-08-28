@@ -1,19 +1,15 @@
-public class tw {
-   private static ul a = new ty();
+import java.util.AbstractList;
 
-   public static void a(ul $$0) {
-      a = $$0;
-   }
+public abstract class tw<T extends uu> extends AbstractList<T> implements uu {
+   public abstract T d(int var1, T var2);
 
-   public static void a(to $$0) {
-      a.a($$0);
-   }
+   public abstract void c(int var1, T var2);
 
-   public static void b(to $$0) {
-      a.b($$0);
-   }
+   public abstract T c(int var1);
 
-   public static void a() {
-      a.a();
-   }
+   public abstract boolean a(int var1, uu var2);
+
+   public abstract boolean b(int var1, uu var2);
+
+   public abstract byte f();
 }

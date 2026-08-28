@@ -1,72 +1,56 @@
-public abstract class cyg implements cyx<bqp> {
-   protected final czc<?> a;
-   protected final cym b;
-   protected final String c;
-   protected final cyu d;
-   protected final cur e;
-   protected final float f;
-   protected final int g;
+import com.mojang.serialization.Codec;
 
-   public cyg(czc<?> $$0, String $$1, cym $$2, cyu $$3, cur $$4, float $$5, int $$6) {
-      this.a = $$0;
-      this.b = $$2;
-      this.c = $$1;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
+public interface cyg<T extends cyj> {
+   Codec<cyg<?>> h = lq.r.r().dispatch(cyg::ap_, cyl::a);
+   ys<wf, cyg<?>> i = yq.a(lr.ad).b(cyg::ap_, cyl::b);
+
+   boolean a(T var1, dcd var2);
+
+   cua a(T var1, jl.a var2);
+
+   boolean a(int var1, int var2);
+
+   cua a(jl.a var1);
+
+   default js<cua> a(T $$0) {
+      js<cua> $$1 = js.a($$0.a(), cua.l);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         ctv $$3 = $$0.a($$2).g();
+         if ($$3.v()) {
+            $$1.set($$2, new cua($$3.u()));
+         }
+      }
+
+      return $$1;
    }
 
-   @Override
-   public boolean a(bqp $$0, dca $$1) {
-      return this.d.a($$0.a(0));
+   default js<cyd> a() {
+      return js.a();
    }
 
-   @Override
-   public cur a(bqp $$0, jk.a $$1) {
-      return this.e.s();
+   default boolean ao_() {
+      return false;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
+   default boolean h() {
       return true;
    }
 
-   @Override
-   public jr<cyu> a() {
-      jr<cyu> $$0 = jr.a();
-      $$0.add(this.d);
-      return $$0;
+   default String c() {
+      return "";
    }
 
-   public float b() {
-      return this.f;
+   default cua g() {
+      return new cua(dfh.cA);
    }
 
-   @Override
-   public cur a(jk.a $$0) {
-      return this.e;
-   }
+   cyl<?> ap_();
 
-   @Override
-   public String c() {
-      return this.c;
-   }
+   cym<?> e();
 
-   public int d() {
-      return this.g;
-   }
-
-   @Override
-   public czc<?> e() {
-      return this.a;
-   }
-
-   public cym f() {
-      return this.b;
-   }
-
-   public interface a<T extends cyg> {
-      T create(String var1, cym var2, cyu var3, cur var4, float var5, int var6);
+   default boolean i() {
+      js<cyd> $$0 = this.a();
+      return $$0.isEmpty() || $$0.stream().anyMatch($$0x -> $$0x.a().length == 0);
    }
 }

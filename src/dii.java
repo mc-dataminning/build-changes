@@ -1,57 +1,85 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class dii extends ddw {
-   public static final MapCodec<dii> c = b(dii::new);
+public class dii extends dff {
+   public static final MapCodec<dii> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(lq.e.r().fieldOf("potted").forGetter($$0x -> $$0x.e), u()).apply($$0, dii::new)
+   );
+   private static final Map<dff, dff> d = Maps.newHashMap();
+   public static final float b = 3.0F;
+   protected static final ews c = dff.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
+   private final dff e;
 
    @Override
    public MapCodec<dii> a() {
+      return a;
+   }
+
+   public dii(dff $$0, dsg.d $$1) {
+      super($$1);
+      this.e = $$0;
+      d.put($$0, this);
+   }
+
+   @Override
+   protected ews a(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
       return c;
    }
 
-   protected dii(dsd.d $$0) {
-      super($$0);
-   }
-
    @Override
-   public dpj a(iz $$0, dse $$1) {
-      return new dqf($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dpj> dpk<T> a(dca $$0, dse $$1, dpl<T> $$2) {
-      return a($$0, $$2, dpl.a);
-   }
-
-   @Override
-   protected void a(dca $$0, iz $$1, cmz $$2) {
-      dpj $$3 = $$0.c_($$1);
-      if ($$3 instanceof dqf) {
-         $$2.a((bra)$$3);
-         $$2.a(awk.am);
+   protected bqf a(cua $$0, dsh $$1, dcd $$2, ja $$3, cmh $$4, bqc $$5, evv $$6) {
+      dsh $$8 = ($$0.g() instanceof cry $$7 ? d.getOrDefault($$7.d(), dfh.a) : dfh.a).o();
+      if ($$8.i()) {
+         return bqf.d;
+      } else if (!this.m()) {
+         return bqf.b;
+      } else {
+         $$2.a($$3, $$8, 3);
+         $$2.a($$4, dxa.c, $$3);
+         $$4.a(avp.ah);
+         $$0.a(1, $$4);
+         return bqf.a($$2.B);
       }
    }
 
    @Override
-   public void a(dse $$0, dca $$1, iz $$2, azh $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, awa.jY, awb.e, 1.0F, 1.0F, false);
+   protected bqd a(dsh $$0, dcd $$1, ja $$2, cmh $$3, evv $$4) {
+      if (this.m()) {
+         return bqd.c;
+      } else {
+         cua $$5 = new cua(this.e);
+         if (!$$3.i($$5)) {
+            $$3.a($$5, false);
          }
 
-         je $$7 = $$0.c(a);
-         je.a $$8 = $$7.o();
-         double $$9 = 0.52;
-         double $$10 = $$3.j() * 0.6 - 0.3;
-         double $$11 = $$8 == je.a.a ? (double)$$7.j() * 0.52 : $$10;
-         double $$12 = $$3.j() * 6.0 / 16.0;
-         double $$13 = $$8 == je.a.c ? (double)$$7.l() * 0.52 : $$10;
-         $$1.a(li.ae, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
-         $$1.a(li.F, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+         $$1.a($$2, dfh.fR.o(), 3);
+         $$1.a($$3, dxa.c, $$2);
+         return bqd.a($$1.B);
       }
+   }
+
+   @Override
+   public cua a(dcg $$0, ja $$1, dsh $$2) {
+      return this.m() ? super.a($$0, $$1, $$2) : new cua(this.e);
+   }
+
+   private boolean m() {
+      return this.e == dfh.a;
+   }
+
+   @Override
+   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
+      return $$1 == jf.a && !$$0.a($$3, $$4) ? dfh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public dff b() {
+      return this.e;
+   }
+
+   @Override
+   protected boolean a(dsh $$0, eoq $$1) {
+      return false;
    }
 }

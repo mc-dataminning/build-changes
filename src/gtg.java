@@ -1,288 +1,68 @@
-import com.google.common.base.MoreObjects;
-import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.IOException;
-import java.util.UUID;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.Locale;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class gtg extends MinecraftServer {
-   private static final Logger k = LogUtils.getLogger();
-   private static final int l = 2;
-   private final ffh m;
-   private boolean n = true;
-   private int o = -1;
-   @Nullable
-   private dbx p;
-   @Nullable
-   private gtj q;
-   @Nullable
-   private UUID r;
-   private int s = 0;
-
-   public gtg(Thread $$0, ffh $$1, epy.c $$2, aua $$3, amc $$4, alz $$5, arp $$6) {
-      super($$0, $$2, $$3, $$4, $$1.Z(), $$1.as(), $$5, $$6);
-      this.b($$1.Y());
-      this.c($$1.K());
-      this.a(new gtf(this, this.bd(), this.g));
-      this.m = $$1;
+@FunctionalInterface
+public interface gtg<T> {
+   static <T> gtg<T> empty() {
+      return $$0 -> List.of();
    }
 
-   @Override
-   public boolean e() {
-      k.info("Starting integrated minecraft server version {}", aa.b().c());
-      this.d(true);
-      this.f(true);
-      this.g(true);
-      this.U();
-      this.t_();
-      GameProfile $$0 = this.S();
-      String $$1 = this.bb().e();
-      this.d($$0 != null ? $$0.getName() + " - " + $$1 : $$1);
-      return true;
+   static <T> gtg<T> plainText(List<T> $$0, Function<T, Stream<String>> $$1) {
+      // $VF: Couldn't be decompiled
+      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+      // java.lang.NullPointerException: Cannot invoke "org.jetbrains.java.decompiler.struct.gen.VarType.equals(Object)" because "curType" is null
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.setLambdaGenericTypes(NewExprent.java:668)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.toJava(NewExprent.java:401)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.getCastedExprent(ExprProcessor.java:1018)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.ExitExprent.toJava(ExitExprent.java:86)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.listToJava(ExprProcessor.java:895)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.BasicBlockStatement.toJava(BasicBlockStatement.java:90)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.SequenceStatement.toJava(SequenceStatement.java:107)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.IfStatement.toJava(IfStatement.java:261)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.RootStatement.toJava(RootStatement.java:36)
+      //   at org.jetbrains.java.decompiler.main.ClassWriter.writeMethod(ClassWriter.java:1283)
+      //
+      // Bytecode:
+      // 00: aload 0
+      // 01: invokeinterface java/util/List.isEmpty ()Z 1
+      // 06: ifeq 0d
+      // 09: invokestatic gtg.empty ()Lgtg;
+      // 0c: areturn
+      // 0d: new gth
+      // 10: dup
+      // 11: invokespecial gth.<init> ()V
+      // 14: astore 2
+      // 15: aload 0
+      // 16: invokeinterface java/util/List.iterator ()Ljava/util/Iterator; 1
+      // 1b: astore 3
+      // 1c: aload 3
+      // 1d: invokeinterface java/util/Iterator.hasNext ()Z 1
+      // 22: ifeq 48
+      // 25: aload 3
+      // 26: invokeinterface java/util/Iterator.next ()Ljava/lang/Object; 1
+      // 2b: astore 4
+      // 2d: aload 1
+      // 2e: aload 4
+      // 30: invokeinterface java/util/function/Function.apply (Ljava/lang/Object;)Ljava/lang/Object; 2
+      // 35: checkcast java/util/stream/Stream
+      // 38: aload 2
+      // 39: aload 4
+      // 3b: invokedynamic accept (Lgth;Ljava/lang/Object;)Ljava/util/function/Consumer; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)V, gtg.a (Lgth;Ljava/lang/Object;Ljava/lang/String;)V, (Ljava/lang/String;)V ]
+      // 40: invokeinterface java/util/stream/Stream.forEach (Ljava/util/function/Consumer;)V 2
+      // 45: goto 1c
+      // 48: aload 2
+      // 49: invokevirtual gth.a ()V
+      // 4c: aload 2
+      // 4d: dup
+      // 4e: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
+      // 51: pop
+      // 52: invokedynamic search (Lgth;)Lgtg; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/String;)Ljava/util/List;, gth.a (Ljava/lang/String;)Ljava/util/List;, (Ljava/lang/String;)Ljava/util/List; ]
+      // 57: areturn
    }
 
-   @Override
-   public boolean D() {
-      return this.n;
-   }
-
-   @Override
-   public void a(BooleanSupplier $$0) {
-      boolean $$1 = this.n;
-      this.n = ffh.Q().ah();
-      bnk $$2 = this.aT();
-      if (!$$1 && this.n) {
-         $$2.a("autoSave");
-         k.info("Saving and pausing game...");
-         this.b(false, false, false);
-         $$2.c();
-      }
-
-      boolean $$3 = ffh.Q().L() != null;
-      if ($$3 && this.n) {
-         this.b();
-      } else {
-         if ($$1 && !this.n) {
-            this.F();
-         }
-
-         super.a($$0);
-         int $$4 = Math.max(2, this.m.m.e().c());
-         if ($$4 != this.ah().p()) {
-            k.info("Changing view distance to {}, from {}", $$4, this.ah().p());
-            this.ah().a($$4);
-         }
-
-         int $$5 = Math.max(2, this.m.m.f().c());
-         if ($$5 != this.s) {
-            k.info("Changing simulation distance to {}, from {}", $$5, this.s);
-            this.ah().b($$5);
-            this.s = $$5;
-         }
-      }
-   }
-
-   protected blw a() {
-      return this.m.aP().l();
-   }
-
-   @Override
-   public boolean g() {
-      return true;
-   }
-
-   private void b() {
-      for (arg $$0 : this.ah().t()) {
-         $$0.a(awk.l);
-      }
-   }
-
-   @Override
-   public boolean m() {
-      return true;
-   }
-
-   @Override
-   public boolean U_() {
-      return true;
-   }
-
-   @Override
-   public File C() {
-      return this.m.p;
-   }
-
-   @Override
-   public boolean n() {
-      return false;
-   }
-
-   @Override
-   public int o() {
-      return 0;
-   }
-
-   @Override
-   public boolean p() {
-      return false;
-   }
-
-   @Override
-   public void a(o $$0) {
-      this.m.b($$0);
-   }
-
-   @Override
-   public ab a(ab $$0) {
-      $$0.a("Type", "Integrated Server (map_client.txt)");
-      $$0.a("Is Modded", () -> this.P().b());
-      $$0.a("Launched Version", this.m::i);
-      return $$0;
-   }
-
-   @Override
-   public ayy P() {
-      return ffh.e().a(super.P());
-   }
-
-   @Override
-   public boolean a(@Nullable dbx $$0, boolean $$1, int $$2) {
-      try {
-         this.m.aT();
-         this.m.w().a().thenAcceptAsync($$0x -> $$0x.ifPresent($$0xx -> {
-               fxy $$1x = this.m.L();
-               if ($$1x != null) {
-                  $$1x.a($$0xx);
-               }
-            }), this.m);
-         this.ai().a(null, $$2);
-         k.info("Started serving on {}", $$2);
-         this.o = $$2;
-         this.q = new gtj(this.af(), $$2 + "");
-         this.q.start();
-         this.p = $$0;
-         this.ah().b($$1);
-         int $$3 = this.c(this.m.s.gb());
-         this.m.s.a($$3);
-
-         for (arg $$4 : this.ah().t()) {
-            this.aH().a($$4);
-         }
-
-         return true;
-      } catch (IOException var7) {
-         return false;
-      }
-   }
-
-   @Override
-   public void v() {
-      super.v();
-      if (this.q != null) {
-         this.q.interrupt();
-         this.q = null;
-      }
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      this.h(() -> {
-         for (arg $$1 : Lists.newArrayList(this.ah().t())) {
-            if (!$$1.cz().equals(this.r)) {
-               this.ah().c($$1);
-            }
-         }
-      });
-      super.a($$0);
-      if (this.q != null) {
-         this.q.interrupt();
-         this.q = null;
-      }
-   }
-
-   @Override
-   public boolean r() {
-      return this.o > -1;
-   }
-
-   @Override
-   public int R() {
-      return this.o;
-   }
-
-   @Override
-   public void a(dbx $$0) {
-      super.a($$0);
-      this.p = null;
-   }
-
-   @Override
-   public boolean q() {
-      return true;
-   }
-
-   @Override
-   public int k() {
-      return 2;
-   }
-
-   @Override
-   public int l() {
-      return 2;
-   }
-
-   public void a(UUID $$0) {
-      this.r = $$0;
-   }
-
-   @Override
-   public boolean a(GameProfile $$0) {
-      return this.S() != null && $$0.getName().equalsIgnoreCase(this.S().getName());
-   }
-
-   @Override
-   public int b(int $$0) {
-      return (int)(this.m.m.g().c() * (double)$$0);
-   }
-
-   @Override
-   public boolean aZ() {
-      return this.m.m.ae;
-   }
-
-   @Nullable
-   @Override
-   public dbx bf() {
-      return this.r() ? (dbx)MoreObjects.firstNonNull(this.p, this.j.k()) : null;
-   }
-
-   @Override
-   public boolean b(boolean $$0, boolean $$1, boolean $$2) {
-      boolean $$3 = super.b($$0, $$1, $$2);
-      this.c();
-      return $$3;
-   }
-
-   private void c() {
-      if (this.f.b()) {
-         fjo.a(this.m);
-      }
-   }
-
-   @Override
-   public void a(dbh $$0) {
-      this.c();
-      fjo.a(this.m, $$0);
-   }
-
-   @Override
-   public void b(dbh $$0) {
-      this.c();
-      fjo.b(this.m, $$0);
-   }
+   List<T> search(String var1);
 }

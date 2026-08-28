@@ -1,62 +1,41 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
 
-public class erm extends erw {
-   public static final MapCodec<erm> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(erm.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, erm::new)
-   );
-   private final erm.a b;
+public class erm extends esb {
+   public static final MapCodec<erm> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, erm::new));
 
-   private erm(List<etu> $$0, erm.a $$1) {
+   private erm(List<etz> $$0) {
       super($$0);
-      this.b = $$1;
    }
 
    @Override
-   public ery<erm> b() {
-      return erz.s;
+   public esd<erm> b() {
+      return ese.z;
    }
 
    @Override
-   public Set<etd<?>> a() {
-      return ImmutableSet.of(this.b.g);
-   }
+   public cua a(cua $$0, eqo $$1) {
+      Float $$2 = $$1.c(etk.j);
+      if ($$2 != null) {
+         aym $$3 = $$1.b();
+         float $$4 = 1.0F / $$2;
+         int $$5 = $$0.H();
+         int $$6 = 0;
 
-   @Override
-   public cur a(cur $$0, eqk $$1) {
-      if ($$1.c(this.b.g) instanceof brb $$3) {
-         $$0.b(km.g, $$3.ah());
+         for (int $$7 = 0; $$7 < $$5; $$7++) {
+            if ($$3.i() <= $$4) {
+               $$6++;
+            }
+         }
+
+         $$0.e($$6);
       }
 
       return $$0;
    }
 
-   public static erw.a<?> a(erm.a $$0) {
-      return a($$1 -> new erm($$1, $$0));
-   }
-
-   public static enum a implements azu {
-      a("this", etg.a),
-      b("killer", etg.d),
-      c("killer_player", etg.b),
-      d("block_entity", etg.h);
-
-      public static final Codec<erm.a> e = azu.a(erm.a::values);
-      private final String f;
-      final etd<?> g;
-
-      private a(final String $$0, final etd<?> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      @Override
-      public String c() {
-         return this.f;
-      }
+   public static esb.a<?> c() {
+      return a(erm::new);
    }
 }

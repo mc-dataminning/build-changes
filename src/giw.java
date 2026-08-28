@@ -1,15 +1,12 @@
-public class giw extends gkf<cjw, fub<cjw>> {
-   private static final alf a = new alf("textures/entity/endermite.png");
+public class giw extends gkm<cew, fud<cew>> {
+   private static final akk a = new akk("textures/entity/dolphin.png");
 
-   public giw(giz.a $$0) {
-      super($$0, new fub<>($$0.a(fxb.Y)), 0.3F);
+   public giw(gjg.a $$0) {
+      super($$0, new fud<>($$0.a(fxh.M)), 0.7F);
+      this.a(new gmz(this, $$0.d()));
    }
 
-   protected float a(cjw $$0) {
-      return 180.0F;
-   }
-
-   public alf b(cjw $$0) {
+   public akk a(cew $$0) {
       return a;
    }
 }

@@ -1,230 +1,388 @@
-import com.google.common.collect.ImmutableList;
-import java.time.Duration;
-import java.util.ArrayList;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.List;
 import java.util.UUID;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class frl extends fhm.a<frl> {
-   private static final alf f = new alf("icon/draft_report");
-   private static final Duration g = Duration.ofMillis(500L);
-   private static final fit h = new fit(
-      new alf("social_interactions/report_button"),
-      new alf("social_interactions/report_button_disabled"),
-      new alf("social_interactions/report_button_highlighted")
-   );
-   private static final fit i = new fit(new alf("social_interactions/mute_button"), new alf("social_interactions/mute_button_highlighted"));
-   private static final fit j = new fit(new alf("social_interactions/unmute_button"), new alf("social_interactions/unmute_button_highlighted"));
-   private final ffh k;
-   private final List<fhe> l;
-   private final UUID m;
-   private final String n;
-   private final Supplier<gqb> o;
-   private boolean p;
-   private boolean q;
-   private final boolean r;
-   private final boolean s;
-   private final boolean u;
+public class frl extends fnd {
+   static final akk a = new akk("icon/checkmark");
+   private static final wu b = wu.c("gui.chatSelection.title");
+   private static final wu c = wu.c("gui.chatSelection.context");
    @Nullable
-   private fhg v;
+   private final fnd q;
+   private final fzm r;
+   private fhm s;
+   private fif u;
    @Nullable
-   private fhg w;
-   @Nullable
-   private fhg x;
-   private float y;
-   private static final xp z = xp.c("gui.socialInteractions.status_hidden").a(n.u);
-   private static final xp A = xp.c("gui.socialInteractions.status_blocked").a(n.u);
-   private static final xp B = xp.c("gui.socialInteractions.status_offline").a(n.u);
-   private static final xp C = xp.c("gui.socialInteractions.status_hidden_offline").a(n.u);
-   private static final xp D = xp.c("gui.socialInteractions.status_blocked_offline").a(n.u);
-   private static final xp E = xp.c("gui.socialInteractions.tooltip.report.disabled");
-   private static final xp F = xp.c("gui.socialInteractions.tooltip.hide");
-   private static final xp G = xp.c("gui.socialInteractions.tooltip.show");
-   private static final xp H = xp.c("gui.socialInteractions.tooltip.report");
-   private static final int I = 24;
-   private static final int J = 4;
-   public static final int a = ayj.b.a(190, 0, 0, 0);
-   private static final int K = 20;
-   public static final int b = ayj.b.a(255, 74, 74, 74);
-   public static final int c = ayj.b.a(255, 48, 48, 48);
-   public static final int d = ayj.b.a(255, 255, 255, 255);
-   public static final int e = ayj.b.a(140, 255, 255, 255);
+   private frl.a v;
+   final fzf.a w;
+   private final Consumer<fzf.a> x;
+   private frk y;
 
-   public frl(ffh $$0, fro $$1, UUID $$2, String $$3, Supplier<gqb> $$4, boolean $$5) {
-      this.k = $$0;
-      this.m = $$2;
-      this.n = $$3;
-      this.o = $$4;
-      fzf $$6 = $$0.aZ();
-      this.r = $$6.a().a();
-      this.u = $$5;
-      this.s = $$6.a($$2);
-      xp $$7 = xp.a("gui.socialInteractions.narration.hide", $$3);
-      xp $$8 = xp.a("gui.socialInteractions.narration.show", $$3);
-      frm $$9 = $$0.aM();
-      boolean $$10 = $$0.J().a($$0.T());
-      boolean $$11 = !$$0.s.cz().equals($$2);
-      if ($$11 && $$10 && !$$9.e($$2)) {
-         this.x = new fhs(0, 0, 20, 20, h, $$3x -> $$6.a($$0, $$1, () -> $$0.a(new frh($$1, $$6, this)), false), xp.c("gui.socialInteractions.report")) {
-            @Override
-            protected yd aJ_() {
-               return frl.this.a(super.aJ_());
-            }
-         };
-         this.x.j = this.r;
-         this.x.a(this.l());
-         this.x.a(g);
-         this.v = new fhs(0, 0, 20, 20, i, $$3x -> {
-            $$9.a($$2);
-            this.a(true, xp.a("gui.socialInteractions.hidden_in_chat", $$3));
-         }, xp.c("gui.socialInteractions.hide")) {
-            @Override
-            protected yd aJ_() {
-               return frl.this.a(super.aJ_());
-            }
-         };
-         this.v.a(fir.a(F, $$7));
-         this.v.a(g);
-         this.w = new fhs(0, 0, 20, 20, j, $$3x -> {
-            $$9.b($$2);
-            this.a(false, xp.a("gui.socialInteractions.shown_in_chat", $$3));
-         }, xp.c("gui.socialInteractions.show")) {
-            @Override
-            protected yd aJ_() {
-               return frl.this.a(super.aJ_());
-            }
-         };
-         this.w.a(fir.a(G, $$8));
-         this.w.a(g);
-         this.l = new ArrayList<>();
-         this.l.add(this.v);
-         this.l.add(this.x);
-         this.e($$9.d(this.m));
-      } else {
-         this.l = ImmutableList.of();
-      }
-   }
-
-   private fir l() {
-      return !this.r ? fir.a(E) : fir.a(H, xp.a("gui.socialInteractions.narration.report", this.n));
+   public frl(@Nullable fnd $$0, fzm $$1, fzf.a $$2, Consumer<fzf.a> $$3) {
+      super(b);
+      this.q = $$0;
+      this.r = $$1;
+      this.w = $$2.d();
+      this.x = $$3;
    }
 
    @Override
-   public void a(fgt $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-      int $$10 = $$3 + 4;
-      int $$11 = $$2 + ($$5 - 24) / 2;
-      int $$12 = $$10 + 24 + 4;
-      xp $$13 = this.m();
-      int $$14;
-      if ($$13 == xo.a) {
-         $$0.a($$3, $$2, $$3 + $$4, $$2 + $$5, b);
-         $$14 = $$2 + ($$5 - 9) / 2;
-      } else {
-         $$0.a($$3, $$2, $$3 + $$4, $$2 + $$5, c);
-         $$14 = $$2 + ($$5 - (9 + 9)) / 2;
-         $$0.a(this.k.h, $$13, $$12, $$14 + 12, e, false);
+   protected void aO_() {
+      this.y = new frk(this.r, this::a);
+      this.u = fif.a(this.o, c, this.m - 16);
+      this.v = this.c(new frl.a(this.l, (this.u.a() + 1) * 9));
+      this.c(fhm.a(wt.k, $$0 -> this.d()).a(this.m / 2 - 155, this.n - 32, 150, 20).a());
+      this.s = this.c(fhm.a(wt.d, $$0 -> {
+         this.x.accept(this.w);
+         this.d();
+      }).a(this.m / 2 - 155 + 160, this.n - 32, 150, 20).a());
+      this.F();
+      this.m();
+      this.v.b((double)this.v.p());
+   }
+
+   private boolean a(fzb $$0) {
+      return $$0.a(this.w.f());
+   }
+
+   private void m() {
+      int $$0 = this.v.c();
+      this.y.a($$0, this.v);
+   }
+
+   void E() {
+      this.m();
+   }
+
+   void F() {
+      this.s.j = !this.w.a().isEmpty();
+   }
+
+   @Override
+   public void a(fgz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.o, this.k, this.m / 2, 10, 16777215);
+      AbuseReportLimits $$4 = this.r.a().b();
+      int $$5 = this.w.a().size();
+      int $$6 = $$4.maxReportedMessageCount();
+      wu $$7 = wu.a("gui.chatSelection.selected", $$5, $$6);
+      $$0.a(this.o, $$7, this.m / 2, 16 + 9 * 3 / 2, -1);
+      this.u.a($$0, this.m / 2, this.v.J());
+   }
+
+   @Override
+   public void d() {
+      this.l.a(this.q);
+   }
+
+   @Override
+   public wu i() {
+      return wt.a(super.i(), c);
+   }
+
+   public class a extends fii<frl.a.b> implements frk.a {
+      @Nullable
+      private frl.a.c m;
+
+      public a(final ffn $$1, final int $$2) {
+         super($$1, frl.this.m, frl.this.n - $$2 - 80, 40, 16);
       }
 
-      fif.a($$0, this.o.get(), $$10, $$11, 24);
-      $$0.a(this.k.h, this.n, $$12, $$14, d, false);
-      if (this.p) {
-         $$0.a($$10, $$11, $$10 + 24, $$11 + 24, a);
-      }
-
-      if (this.v != null && this.w != null && this.x != null) {
-         float $$16 = this.y;
-         this.v.m($$3 + ($$4 - this.v.x() - 4) - 20 - 4);
-         this.v.n($$2 + ($$5 - this.v.v()) / 2);
-         this.v.a($$0, $$6, $$7, $$9);
-         this.w.m($$3 + ($$4 - this.w.x() - 4) - 20 - 4);
-         this.w.n($$2 + ($$5 - this.w.v()) / 2);
-         this.w.a($$0, $$6, $$7, $$9);
-         this.x.m($$3 + ($$4 - this.w.x() - 4));
-         this.x.n($$2 + ($$5 - this.w.v()) / 2);
-         this.x.a($$0, $$6, $$7, $$9);
-         if ($$16 == this.y) {
-            this.y = 0.0F;
+      @Override
+      public void b(double $$0) {
+         double $$1 = this.n();
+         super.b($$0);
+         if ((float)this.p() > 1.0E-5F && $$0 <= 1.0E-5F && !aye.b($$0, $$1)) {
+            frl.this.E();
          }
       }
 
-      if (this.s && this.x != null) {
-         $$0.a(f, this.x.C() + 5, this.x.D() + 1, 15, 15);
+      @Override
+      public void a(int $$0, fzb.a $$1) {
+         boolean $$2 = $$1.a(frl.this.w.f());
+         fyz $$3 = $$1.h();
+         ffi $$4 = $$3.a($$1.g());
+         frl.a.b $$5 = new frl.a.d($$0, $$1.b(), $$1.c(), $$4, $$2, true);
+         this.c($$5);
+         this.a($$1, $$2);
       }
-   }
 
-   @Override
-   public List<? extends fjc> aD_() {
-      return this.l;
-   }
+      private void a(fzb.a $$0, boolean $$1) {
+         frl.a.b $$2 = new frl.a.e($$0.f(), $$0.d(), $$1);
+         this.c($$2);
+         frl.a.c $$3 = new frl.a.c($$0.e(), $$2);
+         if (this.m != null && this.m.a($$3)) {
+            this.d(this.m.b());
+         }
 
-   @Override
-   public List<? extends fla> b() {
-      return this.l;
-   }
+         this.m = $$3;
+      }
 
-   public String c() {
-      return this.n;
-   }
+      @Override
+      public void a(wu $$0) {
+         this.c(new frl.a.f());
+         this.c(new frl.a.a($$0));
+         this.c(new frl.a.f());
+         this.m = null;
+      }
 
-   public UUID d() {
-      return this.m;
-   }
+      @Override
+      public int b() {
+         return Math.min(350, this.g - 50);
+      }
 
-   public Supplier<gqb> h() {
-      return this.o;
-   }
+      @Override
+      public int c() {
+         return aye.e(this.h, this.d);
+      }
 
-   public void c(boolean $$0) {
-      this.p = $$0;
-   }
+      @Override
+      protected void a(fgz $$0, int $$1, int $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+         frl.a.b $$9 = this.d($$4);
+         if (this.b($$9)) {
+            boolean $$10 = this.h() == $$9;
+            int $$11 = this.aJ_() && $$10 ? -1 : -8355712;
+            this.a($$0, $$6, $$7, $$8, $$11, -16777216);
+         }
 
-   public boolean i() {
-      return this.p;
-   }
+         $$9.a($$0, $$4, $$6, $$5, $$7, $$8, $$1, $$2, this.v() == $$9, $$3);
+      }
 
-   public void d(boolean $$0) {
-      this.q = $$0;
-   }
+      private boolean b(frl.a.b $$0) {
+         if ($$0.c()) {
+            boolean $$1 = this.h() == $$0;
+            boolean $$2 = this.h() == null;
+            boolean $$3 = this.v() == $$0;
+            return $$1 || $$2 && $$3 && $$0.d();
+         } else {
+            return false;
+         }
+      }
 
-   public boolean j() {
-      return this.q;
-   }
+      @Nullable
+      protected frl.a.b b(flq $$0) {
+         return this.a($$0, frl.a.b::c);
+      }
 
-   public boolean k() {
-      return this.u;
-   }
+      public void a(@Nullable frl.a.b $$0) {
+         super.a($$0);
+         frl.a.b $$1 = this.b(flq.a);
+         if ($$1 == null) {
+            frl.this.E();
+         }
+      }
 
-   private void a(boolean $$0, xp $$1) {
-      this.e($$0);
-      this.k.l.d().a($$1);
-      this.k.aX().c($$1);
-   }
+      @Override
+      public boolean a(int $$0, int $$1, int $$2) {
+         frl.a.b $$3 = this.h();
+         return $$3 != null && $$3.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+      }
 
-   private void e(boolean $$0) {
-      this.w.k = $$0;
-      this.v.k = !$$0;
-      this.l.set(0, $$0 ? this.w : this.v);
-   }
+      @Override
+      public int J() {
+         return this.G() + 9;
+      }
 
-   yd a(yd $$0) {
-      xp $$1 = this.m();
-      return $$1 == xo.a ? xp.b(this.n).f(", ").b($$0) : xp.b(this.n).f(", ").b($$1).f(", ").b($$0);
-   }
+      public class a extends frl.a.b {
+         private static final int b = -6250336;
+         private final wu c;
 
-   private xp m() {
-      boolean $$0 = this.k.aM().d(this.m);
-      boolean $$1 = this.k.aM().e(this.m);
-      if ($$1 && this.p) {
-         return D;
-      } else if ($$0 && this.p) {
-         return C;
-      } else if ($$1) {
-         return A;
-      } else if ($$0) {
-         return z;
-      } else {
-         return this.p ? B : xo.a;
+         public a(final wu $$1) {
+            this.c = $$1;
+         }
+
+         @Override
+         public void a(fgz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            int $$10 = $$2 + $$5 / 2;
+            int $$11 = $$3 + $$4 - 8;
+            int $$12 = frl.this.o.a(this.c);
+            int $$13 = ($$3 + $$11 - $$12) / 2;
+            int $$14 = $$10 - 9 / 2;
+            $$0.b(frl.this.o, this.c, $$13, $$14, -6250336);
+         }
+
+         @Override
+         public wu a() {
+            return this.c;
+         }
+      }
+
+      public abstract class b extends fii.a<frl.a.b> {
+         @Override
+         public wu a() {
+            return wt.a;
+         }
+
+         public boolean b() {
+            return false;
+         }
+
+         public boolean c() {
+            return false;
+         }
+
+         public boolean d() {
+            return this.c();
+         }
+      }
+
+      static record c(UUID a, frl.a.b b) {
+         public boolean a(frl.a.c $$0) {
+            return $$0.a.equals(this.a);
+         }
+      }
+
+      public class d extends frl.a.b {
+         private static final int b = 9;
+         private static final int c = 8;
+         private static final int d = 11;
+         private static final int e = 4;
+         private final int f;
+         private final wz g;
+         private final wu h;
+         @Nullable
+         private final List<axq> i;
+         @Nullable
+         private final ffi.a j;
+         @Nullable
+         private final List<axq> k;
+         private final boolean l;
+         private final boolean m;
+
+         public d(final int $$1, final wu $$2, final wu $$3, @Nullable final ffi $$4, final boolean $$5, final boolean $$6) {
+            this.f = $$1;
+            this.j = x.a($$4, ffi::f);
+            this.k = $$4 != null && $$4.g() != null ? frl.this.o.c($$4.g(), a.this.b()) : null;
+            this.l = $$5;
+            this.m = $$6;
+            wz $$7 = frl.this.o.a($$2, this.e() - frl.this.o.a(wt.u));
+            if ($$2 != $$7) {
+               this.g = wz.a($$7, wt.u);
+               this.i = frl.this.o.c($$2, a.this.b());
+            } else {
+               this.g = $$2;
+               this.i = null;
+            }
+
+            this.h = $$3;
+         }
+
+         @Override
+         public void a(fgz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            if (this.b() && this.l) {
+               this.a($$0, $$2, $$3, $$5);
+            }
+
+            int $$10 = $$3 + this.f();
+            int $$11 = $$2 + 1 + ($$5 - 9) / 2;
+            $$0.b(frl.this.o, ts.a().a(this.g), $$10, $$11, this.l ? -1 : -1593835521);
+            if (this.i != null && $$8) {
+               frl.this.b(this.i);
+            }
+
+            int $$12 = frl.this.o.a(this.g);
+            this.a($$0, $$10 + $$12 + 4, $$2, $$5, $$6, $$7);
+         }
+
+         private void a(fgz $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+            if (this.j != null) {
+               int $$6 = $$2 + ($$3 - this.j.d) / 2;
+               this.j.a($$0, $$1, $$6);
+               if (this.k != null && $$4 >= $$1 && $$4 <= $$1 + this.j.c && $$5 >= $$6 && $$5 <= $$6 + this.j.d) {
+                  frl.this.b(this.k);
+               }
+            }
+         }
+
+         private void a(fgz $$0, int $$1, int $$2, int $$3) {
+            int $$5 = $$1 + ($$3 - 8) / 2;
+            RenderSystem.enableBlend();
+            $$0.a(frl.a, $$2, $$5, 9, 8);
+            RenderSystem.disableBlend();
+         }
+
+         private int e() {
+            int $$0 = this.j != null ? this.j.c + 4 : 0;
+            return a.this.b() - this.f() - 4 - $$0;
+         }
+
+         private int f() {
+            return this.m ? 11 : 0;
+         }
+
+         @Override
+         public wu a() {
+            return (wu)(this.b() ? wu.a("narrator.select", this.h) : this.h);
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(null);
+            return this.h();
+         }
+
+         @Override
+         public boolean a(int $$0, int $$1, int $$2) {
+            return fln.a($$0) ? this.h() : false;
+         }
+
+         @Override
+         public boolean b() {
+            return frl.this.w.b(this.f);
+         }
+
+         @Override
+         public boolean c() {
+            return true;
+         }
+
+         @Override
+         public boolean d() {
+            return this.l;
+         }
+
+         private boolean h() {
+            if (this.l) {
+               frl.this.w.a(this.f);
+               frl.this.F();
+               return true;
+            } else {
+               return false;
+            }
+         }
+      }
+
+      public class e extends frl.a.b {
+         private static final int b = 12;
+         private static final int c = 4;
+         private final wu d;
+         private final Supplier<gqi> e;
+         private final boolean f;
+
+         public e(final GameProfile $$1, final wu $$2, final boolean $$3) {
+            this.d = $$2;
+            this.f = $$3;
+            this.e = a.this.c.am().a($$1);
+         }
+
+         @Override
+         public void a(fgz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            int $$10 = $$3 - 12 + 4;
+            int $$11 = $$2 + ($$5 - 12) / 2;
+            fil.a($$0, this.e.get(), $$10, $$11, 12);
+            int $$12 = $$2 + 1 + ($$5 - 9) / 2;
+            $$0.b(frl.this.o, this.d, $$10 + 12 + 4, $$12, this.f ? -1 : -1593835521);
+         }
+      }
+
+      public class f extends frl.a.b {
+         @Override
+         public void a(fgz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         }
       }
    }
 }

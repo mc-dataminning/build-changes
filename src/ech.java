@@ -1,30 +1,44 @@
 import com.mojang.serialization.Codec;
 
-public class ech extends eba<edw> {
-   public ech(Codec<edw> $$0) {
+public class ech extends ebe<edq> {
+   private static final int a = 7;
+
+   ech(Codec<edq> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebc<edw> $$0) {
-      edw $$1 = $$0.f();
-      dcv $$2 = $$0.b();
-      iz $$3 = $$0.e();
-      dse $$4 = $$1.a().a($$0.d(), $$3);
-      if ($$4.a($$2, $$3)) {
-         if ($$4.b() instanceof dhj) {
-            if (!$$2.u($$3.c())) {
-               return false;
+   public boolean a(ebg<edq> $$0) {
+      dcz $$1 = $$0.b();
+      aym $$2 = $$0.d();
+      edq $$3 = $$0.f();
+      ja $$4 = $$0.e();
+      int $$5 = $$2.a($$3.c + 1);
+      ja.a $$6 = new ja.a();
+
+      for (int $$7 = 0; $$7 < $$5; $$7++) {
+         this.a($$6, $$2, $$4, Math.min($$7, 7));
+         dsh $$8 = $$1.a_($$6);
+
+         for (edq.a $$9 : $$3.b) {
+            if (ebz.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
+               $$1.a($$6, $$9.c, 2);
+               break;
             }
-
-            dhj.a($$2, $$4, $$3, 2);
-         } else {
-            $$2.a($$3, $$4, 2);
          }
-
-         return true;
-      } else {
-         return false;
       }
+
+      return true;
+   }
+
+   private void a(ja.a $$0, aym $$1, ja $$2, int $$3) {
+      int $$4 = this.a($$1, $$3);
+      int $$5 = this.a($$1, $$3);
+      int $$6 = this.a($$1, $$3);
+      $$0.a($$2, $$4, $$5, $$6);
+   }
+
+   private int a(aym $$0, int $$1) {
+      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
    }
 }

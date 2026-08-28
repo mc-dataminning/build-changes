@@ -1,74 +1,61 @@
-import java.util.Optional;
+import com.google.common.collect.Lists;
+import io.netty.buffer.ByteBuf;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
-public class aft implements zw<aci> {
-   public static final zn<xa, aft> a = zw.a(aft::a, aft::new);
-   public static final int b = 0;
-   public static final int c = 1;
-   public static final int d = 2;
-   private final String e;
-   private final xp f;
-   private final exa.a g;
-   private final Optional<zf> h;
-   private final int i;
+public class aft implements zb<abn> {
+   public static final ys<wf, aft> a = ys.a(yq.g, aft::b, aft.a.b.a(yq.a()), aft::e, aft::new);
+   private final int b;
+   private final List<aft.a> c;
 
-   public aft(ewp $$0, int $$1) {
-      this.e = $$0.b();
-      this.f = $$0.d();
-      this.g = $$0.h();
-      this.h = Optional.ofNullable($$0.f());
-      this.i = $$1;
-   }
+   public aft(int $$0, Collection<buc> $$1) {
+      this.b = $$0;
+      this.c = Lists.newArrayList();
 
-   private aft(xa $$0) {
-      this.e = $$0.p();
-      this.i = $$0.readByte();
-      if (this.i != 0 && this.i != 2) {
-         this.f = xo.a;
-         this.g = exa.a.a;
-         this.h = Optional.empty();
-      } else {
-         this.f = xr.d.decode($$0);
-         this.g = $$0.b(exa.a.class);
-         this.h = zh.d.decode($$0);
+      for (buc $$2 : $$1) {
+         this.c.add(new aft.a($$2.a(), $$2.b(), $$2.c()));
       }
    }
 
-   private void a(xa $$0) {
-      $$0.a(this.e);
-      $$0.k(this.i);
-      if (this.i == 0 || this.i == 2) {
-         xr.d.encode($$0, this.f);
-         $$0.a(this.g);
-         zh.d.encode($$0, this.h);
-      }
+   private aft(int $$0, List<aft.a> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public zy<aft> a() {
-      return agu.aI;
+   public zd<aft> a() {
+      return afz.bb;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
    }
 
-   public String b() {
-      return this.e;
+   public int b() {
+      return this.b;
    }
 
-   public xp e() {
-      return this.f;
+   public List<aft.a> e() {
+      return this.c;
    }
 
-   public int f() {
-      return this.i;
-   }
+   public static record a(jj<bub> c, double d, Collection<bue> e) {
+      public static final ys<ByteBuf, bue> a = ys.a(
+         kd.g, bue::b, yq.j, bue::d, bue.a.e, bue::e, ($$0, $$1, $$2) -> new bue($$0, "Unknown synced attribute modifier", $$1, $$2)
+      );
+      public static final ys<wf, aft.a> b = ys.a(yq.b(lr.c), aft.a::a, yq.j, aft.a::b, a.a(yq.a(ArrayList::new)), aft.a::c, aft.a::new);
 
-   public exa.a g() {
-      return this.g;
-   }
+      public jj<bub> a() {
+         return this.c;
+      }
 
-   public Optional<zf> h() {
-      return this.h;
+      public double b() {
+         return this.d;
+      }
+
+      public Collection<bue> c() {
+         return this.e;
+      }
    }
 }

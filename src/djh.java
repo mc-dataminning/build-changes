@@ -1,109 +1,78 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class djh extends dfb implements dmc {
+public class djh extends dff implements dhx, din {
    public static final MapCodec<djh> a = b(djh::new);
-   public static final dsy b = dix.aE;
-   public static final dsv c = dsu.C;
-   protected static final float d = 3.0F;
-   protected static final ewm e = dfb.a(0.0, 0.0, 0.0, 3.0, 16.0, 16.0);
-   protected static final ewm f = dfb.a(13.0, 0.0, 0.0, 16.0, 16.0, 16.0);
-   protected static final ewm g = dfb.a(0.0, 0.0, 0.0, 16.0, 16.0, 3.0);
-   protected static final ewm h = dfb.a(0.0, 0.0, 13.0, 16.0, 16.0, 16.0);
+   public static final dtf<jh> b = dsx.T;
 
    @Override
    public MapCodec<djh> a() {
       return a;
    }
 
-   protected djh(dsd.d $$0) {
+   protected djh(dsg.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, je.c).a(c, Boolean.valueOf(false)));
+      this.k(this.E.b().a(b, jh.k));
    }
 
    @Override
-   protected ewm a(dse $$0, dbg $$1, iz $$2, evy $$3) {
-      switch ((je)$$0.c(b)) {
-         case c:
-            return h;
-         case d:
-            return g;
-         case e:
-            return f;
-         case f:
-         default:
-            return e;
-      }
-   }
-
-   private boolean a(dbg $$0, iz $$1, je $$2) {
-      dse $$3 = $$0.a_($$1);
-      return $$3.d($$0, $$1, $$2);
+   protected void a(dsi.a<dff, dsh> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected boolean a(dse $$0, dcd $$1, iz $$2) {
-      je $$3 = $$0.c(b);
-      return this.a($$1, $$2.a($$3.g()), $$3);
+   protected dsh a(dsh $$0, dls $$1) {
+      return $$0.a(b, $$1.a().a($$0.c(b)));
    }
 
    @Override
-   protected dse a(dse $$0, je $$1, dse $$2, dcb $$3, iz $$4, iz $$5) {
-      if ($$1.g() == $$0.c(b) && !$$0.a($$3, $$4)) {
-         return dfd.a.o();
+   protected dsh a(dsh $$0, dkc $$1) {
+      return $$0.a(b, $$1.a().a($$0.c(b)));
+   }
+
+   @Override
+   public dsh a(cxk $$0) {
+      jf $$1 = $$0.k();
+      jf $$2;
+      if ($$1.o() == jf.a.b) {
+         $$2 = $$0.g().g();
       } else {
-         if ($$0.c(c)) {
-            $$3.a($$4, eny.c, eny.c.a($$3));
-         }
+         $$2 = jf.b;
+      }
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return this.o().a(b, jh.a($$1, $$2));
+   }
+
+   @Override
+   public dpn a(ja $$0, dsh $$1) {
+      return new dqn($$0, $$1);
+   }
+
+   @Override
+   protected bqd a(dsh $$0, dcd $$1, ja $$2, cmh $$3, evv $$4) {
+      dpn $$5 = $$1.c_($$2);
+      if ($$5 instanceof dqn && $$3.gv()) {
+         $$3.a((dqn)$$5);
+         return bqd.a($$1.B);
+      } else {
+         return bqd.e;
       }
    }
 
-   @Nullable
-   @Override
-   public dse a(cyc $$0) {
-      if (!$$0.c()) {
-         dse $$1 = $$0.q().a_($$0.a().a($$0.k().g()));
-         if ($$1.a(this) && $$1.c(b) == $$0.k()) {
-            return null;
-         }
-      }
-
-      dse $$2 = this.o();
-      dcd $$3 = $$0.q();
-      iz $$4 = $$0.a();
-      enx $$5 = $$0.q().b_($$0.a());
-
-      for (je $$6 : $$0.f()) {
-         if ($$6.o().d()) {
-            $$2 = $$2.a(b, $$6.g());
-            if ($$2.a($$3, $$4)) {
-               return $$2.a(c, Boolean.valueOf($$5.a() == eny.c));
-            }
-         }
-      }
-
-      return null;
+   public static boolean a(emq.c $$0, emq.c $$1) {
+      jf $$2 = m($$0.b());
+      jf $$3 = m($$1.b());
+      jf $$4 = n($$0.b());
+      jf $$5 = n($$1.b());
+      dqn.a $$6 = dqn.a.a($$0.c().l("joint")).orElseGet(() -> $$2.o().d() ? dqn.a.b : dqn.a.a);
+      boolean $$7 = $$6 == dqn.a.a;
+      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.c().l("target").equals($$1.c().l("name"));
    }
 
-   @Override
-   protected dse a(dse $$0, dlo $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   public static jf m(dsh $$0) {
+      return $$0.c(b).a();
    }
 
-   @Override
-   protected dse a(dse $$0, djy $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dsf.a<dfb, dse> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected enx b_(dse $$0) {
-      return $$0.c(c) ? eny.c.a(false) : super.b_($$0);
+   public static jf n(dsh $$0) {
+      return $$0.c(b).b();
    }
 }

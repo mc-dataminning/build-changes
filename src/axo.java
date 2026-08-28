@@ -1,28 +1,89 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record axo(int d, int e) {
-   public static final Codec<Integer> a = ayh.a(0, 15);
-   public static final Codec<axo> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(a.fieldOf("block").forGetter(axo::b), a.fieldOf("sky").forGetter(axo::c)).apply($$0, axo::new)
-   );
-   public static axo c = new axo(15, 15);
-
-   public int a() {
-      return this.d << 4 | this.e << 20;
+public class axo {
+   public static int a(float $$0) {
+      return aye.d($$0 * 255.0F);
    }
 
-   public static axo a(int $$0) {
-      int $$1 = $$0 >> 4 & 65535;
-      int $$2 = $$0 >> 20 & 65535;
-      return new axo($$1, $$2);
+   public static class a {
+      public static int a(int $$0) {
+         return $$0 >>> 24;
+      }
+
+      public static int b(int $$0) {
+         return $$0 & 0xFF;
+      }
+
+      public static int c(int $$0) {
+         return $$0 >> 8 & 0xFF;
+      }
+
+      public static int d(int $$0) {
+         return $$0 >> 16 & 0xFF;
+      }
+
+      public static int e(int $$0) {
+         return $$0 & 16777215;
+      }
+
+      public static int f(int $$0) {
+         return $$0 | 0xFF000000;
+      }
+
+      public static int a(int $$0, int $$1, int $$2, int $$3) {
+         return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
+      }
+
+      public static int a(int $$0, int $$1) {
+         return $$0 << 24 | $$1 & 16777215;
+      }
    }
 
-   public int b() {
-      return this.d;
-   }
+   public static class b {
+      public static int a(int $$0) {
+         return $$0 >>> 24;
+      }
 
-   public int c() {
-      return this.e;
+      public static int b(int $$0) {
+         return $$0 >> 16 & 0xFF;
+      }
+
+      public static int c(int $$0) {
+         return $$0 >> 8 & 0xFF;
+      }
+
+      public static int d(int $$0) {
+         return $$0 & 0xFF;
+      }
+
+      public static int a(int $$0, int $$1, int $$2, int $$3) {
+         return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
+      }
+
+      public static int a(int $$0, int $$1, int $$2) {
+         return a(255, $$0, $$1, $$2);
+      }
+
+      public static int a(int $$0, int $$1) {
+         return a(a($$0) * a($$1) / 255, b($$0) * b($$1) / 255, c($$0) * c($$1) / 255, d($$0) * d($$1) / 255);
+      }
+
+      public static int a(float $$0, int $$1, int $$2) {
+         int $$3 = aye.a($$0, a($$1), a($$2));
+         int $$4 = aye.a($$0, b($$1), b($$2));
+         int $$5 = aye.a($$0, c($$1), c($$2));
+         int $$6 = aye.a($$0, d($$1), d($$2));
+         return a($$3, $$4, $$5, $$6);
+      }
+
+      public static int e(int $$0) {
+         return $$0 | 0xFF000000;
+      }
+
+      public static int b(int $$0, int $$1) {
+         return $$0 << 24 | $$1 & 16777215;
+      }
+
+      public static int a(float $$0, float $$1, float $$2, float $$3) {
+         return a(axo.a($$0), axo.a($$1), axo.a($$2), axo.a($$3));
+      }
    }
 }

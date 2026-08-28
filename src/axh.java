@@ -1,45 +1,80 @@
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Collectors;
+import java.io.DataOutput;
+import java.io.IOException;
 
-public class axh implements auj {
-   private static final Map<ale<? extends jv<?>>, String> a = Map.of(
-      lq.f, "tags/blocks", lq.v, "tags/entity_types", lq.z, "tags/fluids", lq.C, "tags/game_events", lq.G, "tags/items"
-   );
-   private final jw b;
-   private List<axh.a<?>> c = List.of();
+public class axh implements DataOutput {
+   private final DataOutput a;
 
-   public axh(jw $$0) {
-      this.b = $$0;
-   }
-
-   public List<axh.a<?>> a() {
-      return this.c;
-   }
-
-   public static String a(ale<? extends jv<?>> $$0) {
-      String $$1 = a.get($$0);
-      return $$1 != null ? $$1 : "tags/" + $$0.a().a();
+   public axh(DataOutput $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public CompletableFuture<Void> a(auj.a $$0, aup $$1, bnk $$2, bnk $$3, Executor $$4, Executor $$5) {
-      List<? extends CompletableFuture<? extends axh.a<?>>> $$6 = this.b.c().map($$2x -> this.a($$1, $$4, $$2x)).toList();
-      return CompletableFuture.allOf($$6.toArray(CompletableFuture[]::new))
-         .thenCompose($$0::a)
-         .thenAcceptAsync($$1x -> this.c = $$6.stream().map(CompletableFuture::join).collect(Collectors.toUnmodifiableList()), $$5);
+   public void write(int $$0) throws IOException {
+      this.a.write($$0);
    }
 
-   private <T> CompletableFuture<axh.a<T>> a(aup $$0, Executor $$1, jw.d<T> $$2) {
-      ale<? extends jv<T>> $$3 = $$2.a();
-      jv<T> $$4 = $$2.b();
-      axg<ji<T>> $$5 = new axg<>($$4::c, a($$3));
-      return CompletableFuture.supplyAsync(() -> new axh.a<>($$3, $$5.b($$0)), $$1);
+   @Override
+   public void write(byte[] $$0) throws IOException {
+      this.a.write($$0);
    }
 
-   public static record a<T>(ale<? extends jv<T>> a, Map<alf, Collection<ji<T>>> b) {
+   @Override
+   public void write(byte[] $$0, int $$1, int $$2) throws IOException {
+      this.a.write($$0, $$1, $$2);
+   }
+
+   @Override
+   public void writeBoolean(boolean $$0) throws IOException {
+      this.a.writeBoolean($$0);
+   }
+
+   @Override
+   public void writeByte(int $$0) throws IOException {
+      this.a.writeByte($$0);
+   }
+
+   @Override
+   public void writeShort(int $$0) throws IOException {
+      this.a.writeShort($$0);
+   }
+
+   @Override
+   public void writeChar(int $$0) throws IOException {
+      this.a.writeChar($$0);
+   }
+
+   @Override
+   public void writeInt(int $$0) throws IOException {
+      this.a.writeInt($$0);
+   }
+
+   @Override
+   public void writeLong(long $$0) throws IOException {
+      this.a.writeLong($$0);
+   }
+
+   @Override
+   public void writeFloat(float $$0) throws IOException {
+      this.a.writeFloat($$0);
+   }
+
+   @Override
+   public void writeDouble(double $$0) throws IOException {
+      this.a.writeDouble($$0);
+   }
+
+   @Override
+   public void writeBytes(String $$0) throws IOException {
+      this.a.writeBytes($$0);
+   }
+
+   @Override
+   public void writeChars(String $$0) throws IOException {
+      this.a.writeChars($$0);
+   }
+
+   @Override
+   public void writeUTF(String $$0) throws IOException {
+      this.a.writeUTF($$0);
    }
 }

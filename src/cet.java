@@ -1,122 +1,147 @@
-import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class cet implements dbn {
-   private static final Logger a = LogUtils.getLogger();
-   private boolean b;
-   private cet.a c;
-   private int d;
-   private int e;
-   private int f;
-   private int g;
-   private int h;
+public class cet extends ceo {
+   private static final bsg ci = bsj.t.n().a(0.5F).b(0.2975F);
+   public float ca;
+   public float cb;
+   public float cd;
+   public float ce;
+   public float cf = 1.0F;
+   private float cj = 1.0F;
+   public int cg = this.ah.a(6000) + 6000;
+   public boolean ch;
 
-   public cet() {
-      this.c = cet.a.c;
+   public cet(bsj<? extends cet> $$0, dcd $$1) {
+      super($$0, $$1);
+      this.a(eos.j, 0.0F);
    }
 
    @Override
-   public int a(arf $$0, boolean $$1, boolean $$2) {
-      if (!$$0.R() && $$1) {
-         float $$3 = $$0.f(0.0F);
-         if ((double)$$3 == 0.5) {
-            this.c = $$0.z.a(10) == 0 ? cet.a.b : cet.a.c;
-         }
+   protected void z() {
+      this.bU.a(0, new bzq(this));
+      this.bU.a(1, new cap(this, 1.4));
+      this.bU.a(2, new bzi(this, 1.0));
+      this.bU.a(3, new cbe(this, 1.0, $$0 -> $$0.a(awd.ak), false));
+      this.bU.a(4, new bzv(this, 1.1));
+      this.bU.a(5, new cbj(this, 1.0));
+      this.bU.a(6, new cae(this, cmh.class, 6.0F));
+      this.bU.a(7, new car(this));
+   }
 
-         if (this.c == cet.a.c) {
-            return 0;
-         } else {
-            if (!this.b) {
-               if (!this.a($$0)) {
-                  return 0;
-               }
+   @Override
+   public bsg e(btk $$0) {
+      return this.p_() ? ci : super.e($$0);
+   }
 
-               this.b = true;
-            }
+   public static buf.a s() {
+      return bta.A().a(bug.s, 4.0).a(bug.v, 0.25);
+   }
 
-            if (this.e > 0) {
-               this.e--;
-               return 0;
-            } else {
-               this.e = 2;
-               if (this.d > 0) {
-                  this.b($$0);
-                  this.d--;
-               } else {
-                  this.c = cet.a.c;
-               }
+   @Override
+   public void n_() {
+      super.n_();
+      this.ce = this.ca;
+      this.cd = this.cb;
+      this.cb = this.cb + (this.aE() ? -1.0F : 4.0F) * 0.3F;
+      this.cb = aye.a(this.cb, 0.0F, 1.0F);
+      if (!this.aE() && this.cf < 1.0F) {
+         this.cf = 1.0F;
+      }
 
-               return 1;
-            }
-         }
-      } else {
-         this.c = cet.a.c;
-         this.b = false;
-         return 0;
+      this.cf *= 0.9F;
+      evz $$0 = this.ds();
+      if (!this.aE() && $$0.d < 0.0) {
+         this.h($$0.d(1.0, 0.6, 1.0));
+      }
+
+      this.ca = this.ca + this.cf * 2.0F;
+      if (!this.dP().B && this.bD() && !this.p_() && !this.u() && --this.cg <= 0) {
+         this.a(avf.eT, 1.0F, (this.ah.i() - this.ah.i()) * 0.2F + 1.0F);
+         this.a(cud.qR);
+         this.a(dxa.t);
+         this.cg = this.ah.a(6000) + 6000;
       }
    }
 
-   private boolean a(arf $$0) {
-      for (cmz $$1 : $$0.x()) {
-         if (!$$1.N_()) {
-            iz $$2 = $$1.dp();
-            if ($$0.c($$2) && !$$0.t($$2).a(awo.af)) {
-               for (int $$3 = 0; $$3 < 10; $$3++) {
-                  float $$4 = $$0.z.i() * (float) (Math.PI * 2);
-                  this.f = $$2.u() + ayz.d(ayz.b($$4) * 32.0F);
-                  this.g = $$2.v();
-                  this.h = $$2.w() + ayz.d(ayz.a($$4) * 32.0F);
-                  if (this.a($$0, new iz(this.f, this.g, this.h)) != null) {
-                     this.e = 0;
-                     this.d = 20;
-                     break;
-                  }
-               }
-
-               return true;
-            }
-         }
-      }
-
-      return false;
+   @Override
+   protected boolean aV() {
+      return this.ab > this.cj;
    }
 
-   private void b(arf $$0) {
-      evt $$1 = this.a($$0, new iz(this.f, this.g, this.h));
-      if ($$1 != null) {
-         cky $$2;
-         try {
-            $$2 = new cky($$0);
-            $$2.a($$0, $$0.d_($$2.dp()), btv.h, null);
-         } catch (Exception var5) {
-            a.warn("Failed to create zombie for village siege at {}", $$1, var5);
-            return;
-         }
+   @Override
+   protected void aU() {
+      this.cj = this.ab + this.cb / 2.0F;
+   }
 
-         $$2.b($$1.c, $$1.d, $$1.e, $$0.z.i() * 360.0F, 0.0F);
-         $$0.a_($$2);
-      }
+   @Override
+   protected ave v() {
+      return avf.eR;
+   }
+
+   @Override
+   protected ave d(bqw $$0) {
+      return avf.eU;
+   }
+
+   @Override
+   protected ave o_() {
+      return avf.eS;
+   }
+
+   @Override
+   protected void b(ja $$0, dsh $$1) {
+      this.a(avf.eV, 0.15F, 1.0F);
    }
 
    @Nullable
-   private evt a(arf $$0, iz $$1) {
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         int $$3 = $$1.u() + $$0.z.a(16) - 8;
-         int $$4 = $$1.w() + $$0.z.a(16) - 8;
-         int $$5 = $$0.a(dxw.a.b, $$3, $$4);
-         iz $$6 = new iz($$3, $$5, $$4);
-         if ($$0.c($$6) && ckf.b(btc.bu, $$0, btv.h, $$6, $$0.z)) {
-            return evt.c($$6);
-         }
-      }
-
-      return null;
+   public cet b(aqk $$0, brx $$1) {
+      return bsj.t.a((dcd)$$0);
    }
 
-   static enum a {
-      a,
-      b,
-      c;
+   @Override
+   public boolean o(cua $$0) {
+      return $$0.a(awd.ak);
+   }
+
+   @Override
+   protected int eg() {
+      return this.u() ? 10 : super.eg();
+   }
+
+   @Override
+   public void a(tx $$0) {
+      super.a($$0);
+      this.ch = $$0.q("IsChickenJockey");
+      if ($$0.e("EggLayTime")) {
+         this.cg = $$0.h("EggLayTime");
+      }
+   }
+
+   @Override
+   public void b(tx $$0) {
+      super.b($$0);
+      $$0.a("IsChickenJockey", this.ch);
+      $$0.a("EggLayTime", this.cg);
+   }
+
+   @Override
+   public boolean h(double $$0) {
+      return this.u();
+   }
+
+   @Override
+   protected void a(bsd $$0, bsd.a $$1) {
+      super.a($$0, $$1);
+      if ($$0 instanceof bsy) {
+         ((bsy)$$0).aY = this.aY;
+      }
+   }
+
+   public boolean u() {
+      return this.ch;
+   }
+
+   public void w(boolean $$0) {
+      this.ch = $$0;
    }
 }

@@ -1,7 +1,110 @@
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.BitSet;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
-import java.util.UUID;
-import java.util.function.Consumer;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.tuple.Pair;
 
-public interface grs {
-   void a(Map<UUID, asw.c> var1, Consumer<asw.b> var2);
+public class grs implements grj {
+   private final List<Pair<Predicate<dsh>, grj>> g;
+   protected final boolean a;
+   protected final boolean b;
+   protected final boolean c;
+   protected final gpi d;
+   protected final gfg e;
+   protected final gfe f;
+   private final Map<dsh, BitSet> h = new Reference2ObjectOpenHashMap();
+
+   public grs(List<Pair<Predicate<dsh>, grj>> $$0) {
+      this.g = $$0;
+      grj $$1 = (grj)$$0.iterator().next().getRight();
+      this.a = $$1.a();
+      this.b = $$1.b();
+      this.c = $$1.c();
+      this.d = $$1.e();
+      this.e = $$1.f();
+      this.f = $$1.g();
+   }
+
+   @Override
+   public List<geu> a(@Nullable dsh $$0, @Nullable jf $$1, aym $$2) {
+      if ($$0 == null) {
+         return Collections.emptyList();
+      } else {
+         BitSet $$3 = this.h.get($$0);
+         if ($$3 == null) {
+            $$3 = new BitSet();
+
+            for (int $$4 = 0; $$4 < this.g.size(); $$4++) {
+               Pair<Predicate<dsh>, grj> $$5 = this.g.get($$4);
+               if (((Predicate)$$5.getLeft()).test($$0)) {
+                  $$3.set($$4);
+               }
+            }
+
+            this.h.put($$0, $$3);
+         }
+
+         List<geu> $$6 = Lists.newArrayList();
+         long $$7 = $$2.g();
+
+         for (int $$8 = 0; $$8 < $$3.length(); $$8++) {
+            if ($$3.get($$8)) {
+               $$6.addAll(((grj)this.g.get($$8).getRight()).a($$0, $$1, aym.a($$7)));
+            }
+         }
+
+         return $$6;
+      }
+   }
+
+   @Override
+   public boolean a() {
+      return this.a;
+   }
+
+   @Override
+   public boolean b() {
+      return this.b;
+   }
+
+   @Override
+   public boolean c() {
+      return this.c;
+   }
+
+   @Override
+   public boolean d() {
+      return false;
+   }
+
+   @Override
+   public gpi e() {
+      return this.d;
+   }
+
+   @Override
+   public gfg f() {
+      return this.e;
+   }
+
+   @Override
+   public gfe g() {
+      return this.f;
+   }
+
+   public static class a {
+      private final List<Pair<Predicate<dsh>, grj>> a = Lists.newArrayList();
+
+      public void a(Predicate<dsh> $$0, grj $$1) {
+         this.a.add(Pair.of($$0, $$1));
+      }
+
+      public grj a() {
+         return new grs(this.a);
+      }
+   }
 }

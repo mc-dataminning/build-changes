@@ -1,28 +1,20 @@
-public enum dta implements azu {
-   a(je.a),
-   b(je.b);
+public enum dta implements ayz {
+   a("compare"),
+   b("subtract");
 
-   private final je c;
+   private final String c;
 
-   private dta(final je $$0) {
+   private dta(final String $$0) {
       this.c = $$0;
-   }
-
-   public je a() {
-      return this.c;
    }
 
    @Override
    public String toString() {
-      return this.c();
+      return this.c;
    }
 
    @Override
    public String c() {
-      return this == a ? "upper" : "lower";
-   }
-
-   public dta b() {
-      return this == a ? b : a;
+      return this.c;
    }
 }

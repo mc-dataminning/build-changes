@@ -1,177 +1,101 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import java.util.ArrayList;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.math.Fraction;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
-public final class cxe implements csb {
-   public static final cxe a = new cxe(List.of());
-   public static final Codec<cxe> b = cur.b.listOf().xmap(cxe::new, $$0 -> $$0.f);
-   public static final zn<xa, cxe> c = cur.i.a(zl.a()).a(cxe::new, $$0 -> $$0.f);
-   private static final Fraction d = Fraction.getFraction(1, 16);
-   private static final int e = -1;
-   final List<cur> f;
-   final Fraction g;
+public record cxe(List<cxe.a> c, float d, int e) {
+   public static final Codec<cxe> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               cxe.a.a.listOf().fieldOf("rules").forGetter(cxe::a),
+               Codec.FLOAT.optionalFieldOf("default_mining_speed", 1.0F).forGetter(cxe::b),
+               axm.k.optionalFieldOf("damage_per_block", 1).forGetter(cxe::c)
+            )
+            .apply($$0, cxe::new)
+   );
+   public static final ys<wf, cxe> b = ys.a(cxe.a.b.a(yq.a()), cxe::a, yq.i, cxe::b, yq.g, cxe::c, cxe::new);
 
-   cxe(List<cur> $$0, Fraction $$1) {
-      this.f = $$0;
-      this.g = $$1;
-   }
-
-   public cxe(List<cur> $$0) {
-      this($$0, a($$0));
-   }
-
-   private static Fraction a(List<cur> $$0) {
-      Fraction $$1 = Fraction.ZERO;
-
-      for (cur $$2 : $$0) {
-         $$1 = $$1.add(a($$2).multiplyBy(Fraction.getFraction($$2.I(), 1)));
-      }
-
-      return $$1;
-   }
-
-   static Fraction a(cur $$0) {
-      cxe $$1 = $$0.a(km.F);
-      if ($$1 != null) {
-         return d.add($$1.e());
-      } else {
-         List<dpg.c> $$2 = $$0.a(km.ac, List.of());
-         return !$$2.isEmpty() ? Fraction.ONE : Fraction.getFraction(1, $$0.j());
-      }
-   }
-
-   public cur a(int $$0) {
-      return this.f.get($$0);
-   }
-
-   public Stream<cur> a() {
-      return this.f.stream().map(cur::s);
-   }
-
-   public Iterable<cur> b() {
-      return this.f;
-   }
-
-   public Iterable<cur> c() {
-      return Lists.transform(this.f, cur::s);
-   }
-
-   public int d() {
-      return this.f.size();
-   }
-
-   public Fraction e() {
-      return this.g;
-   }
-
-   public boolean f() {
-      return this.f.isEmpty();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof cxe $$1) ? false : this.g.equals($$1.g) && cur.a(this.f, $$1.f);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return cur.a(this.f);
-   }
-
-   @Override
-   public String toString() {
-      return "BundleContents" + this.f;
-   }
-
-   public static class a {
-      private final List<cur> a;
-      private Fraction b;
-
-      public a(cxe $$0) {
-         this.a = new ArrayList<>($$0.f);
-         this.b = $$0.g;
-      }
-
-      public cxe.a a() {
-         this.a.clear();
-         this.b = Fraction.ZERO;
-         return this;
-      }
-
-      private int b(cur $$0) {
-         if (!$$0.k()) {
-            return -1;
-         } else {
-            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
-               if (cur.c(this.a.get($$1), $$0)) {
-                  return $$1;
-               }
-            }
-
-            return -1;
+   public float a(dsh $$0) {
+      for (cxe.a $$1 : this.c) {
+         if ($$1.d.isPresent() && $$0.a($$1.c)) {
+            return $$1.d.get();
          }
       }
 
-      private int c(cur $$0) {
-         Fraction $$1 = Fraction.ONE.subtract(this.b);
-         return Math.max($$1.divideBy(cxe.a($$0)).intValue(), 0);
-      }
+      return this.d;
+   }
 
-      public int a(cur $$0) {
-         if (!$$0.e() && $$0.g().am_()) {
-            int $$1 = Math.min($$0.I(), this.c($$0));
-            if ($$1 == 0) {
-               return 0;
-            } else {
-               this.b = this.b.add(cxe.a($$0).multiplyBy(Fraction.getFraction($$1, 1)));
-               int $$2 = this.b($$0);
-               if ($$2 != -1) {
-                  cur $$3 = this.a.remove($$2);
-                  cur $$4 = $$3.c($$3.I() + $$1);
-                  $$0.h($$1);
-                  this.a.add(0, $$4);
-               } else {
-                  this.a.add(0, $$0.a($$1));
-               }
-
-               return $$1;
-            }
-         } else {
-            return 0;
+   public boolean b(dsh $$0) {
+      for (cxe.a $$1 : this.c) {
+         if ($$1.e.isPresent() && $$0.a($$1.c)) {
+            return $$1.e.get();
          }
       }
 
-      public int a(crr $$0, cmz $$1) {
-         cur $$2 = $$0.g();
-         int $$3 = this.c($$2);
-         return this.a($$0.b($$2.I(), $$3, $$1));
+      return false;
+   }
+
+   public List<cxe.a> a() {
+      return this.c;
+   }
+
+   public float b() {
+      return this.d;
+   }
+
+   public int c() {
+      return this.e;
+   }
+
+   public static record a(jn<dff> c, Optional<Float> d, Optional<Boolean> e) {
+      public static final Codec<cxe.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  jy.a(lr.f).fieldOf("blocks").forGetter(cxe.a::a),
+                  axm.m.optionalFieldOf("speed").forGetter(cxe.a::b),
+                  Codec.BOOL.optionalFieldOf("correct_for_drops").forGetter(cxe.a::c)
+               )
+               .apply($$0, cxe.a::new)
+      );
+      public static final ys<wf, cxe.a> b = ys.a(yq.c(lr.f), cxe.a::a, yq.i.a(yq::a), cxe.a::b, yq.b.a(yq::a), cxe.a::c, cxe.a::new);
+
+      public static cxe.a a(List<dff> $$0, float $$1) {
+         return a($$0, Optional.of($$1), Optional.of(true));
       }
 
-      @Nullable
-      public cur b() {
-         if (this.a.isEmpty()) {
-            return null;
-         } else {
-            cur $$0 = this.a.remove(0).s();
-            this.b = this.b.subtract(cxe.a($$0).multiplyBy(Fraction.getFraction($$0.I(), 1)));
-            return $$0;
-         }
+      public static cxe.a a(awk<dff> $$0, float $$1) {
+         return a($$0, Optional.of($$1), Optional.of(true));
       }
 
-      public Fraction c() {
-         return this.b;
+      public static cxe.a a(awk<dff> $$0) {
+         return a($$0, Optional.empty(), Optional.of(false));
       }
 
-      public cxe d() {
-         return new cxe(List.copyOf(this.a), this.b);
+      public static cxe.a b(awk<dff> $$0, float $$1) {
+         return a($$0, Optional.of($$1), Optional.empty());
+      }
+
+      public static cxe.a b(List<dff> $$0, float $$1) {
+         return a($$0, Optional.of($$1), Optional.empty());
+      }
+
+      private static cxe.a a(awk<dff> $$0, Optional<Float> $$1, Optional<Boolean> $$2) {
+         return new cxe.a(lq.e.a($$0), $$1, $$2);
+      }
+
+      private static cxe.a a(List<dff> $$0, Optional<Float> $$1, Optional<Boolean> $$2) {
+         return new cxe.a(jn.a($$0.stream().map(dff::s).collect(Collectors.toList())), $$1, $$2);
+      }
+
+      public jn<dff> a() {
+         return this.c;
+      }
+
+      public Optional<Float> b() {
+         return this.d;
+      }
+
+      public Optional<Boolean> c() {
+         return this.e;
       }
    }
 }

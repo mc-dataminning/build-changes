@@ -1,31 +1,71 @@
-import io.netty.buffer.ByteBuf;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.JsonObject;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.Collection;
+import java.util.Optional;
 
-public record atw(String c, String d, String e) {
-   public static final zn<ByteBuf, atw> a = zn.a(zl.l, atw::b, zl.l, atw::c, zl.l, atw::d, atw::new);
-   public static final String b = "minecraft";
+public interface atw {
+   atw a = new atw() {
+      @Override
+      public <T> Optional<T> a(ast<T> $$0) {
+         return Optional.empty();
+      }
+   };
+   atm<atw> b = () -> a;
 
-   public static atw a(String $$0) {
-      return new atw("minecraft", $$0, aa.b().b());
+   static atw a(InputStream $$0) throws IOException {
+      atw var3;
+      try (BufferedReader $$1 = new BufferedReader(new InputStreamReader($$0, StandardCharsets.UTF_8))) {
+         final JsonObject $$2 = axu.a($$1);
+         var3 = new atw() {
+            @Override
+            public <T> Optional<T> a(ast<T> $$0) {
+               String $$1 = $$0.a();
+               return $$2.has($$1) ? Optional.of($$0.a(axu.u($$2, $$1))) : Optional.empty();
+            }
+         };
+      }
+
+      return var3;
    }
 
-   public boolean a() {
-      return this.c.equals("minecraft");
+   <T> Optional<T> a(ast<T> var1);
+
+   default atw a(Collection<ast<?>> $$0) {
+      atw.a $$1 = new atw.a();
+
+      for (ast<?> $$2 : $$0) {
+         this.a($$1, $$2);
+      }
+
+      return $$1.a();
    }
 
-   @Override
-   public String toString() {
-      return this.c + ":" + this.d + ":" + this.e;
+   private <T> void a(atw.a $$0, ast<T> $$1) {
+      this.a($$1).ifPresent($$2 -> $$0.a($$1, (T)$$2));
    }
 
-   public String b() {
-      return this.c;
-   }
+   public static class a {
+      private final Builder<ast<?>, Object> a = ImmutableMap.builder();
 
-   public String c() {
-      return this.d;
-   }
+      public <T> atw.a a(ast<T> $$0, T $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
 
-   public String d() {
-      return this.e;
+      public atw a() {
+         final ImmutableMap<ast<?>, Object> $$0 = this.a.build();
+         return $$0.isEmpty() ? atw.a : new atw() {
+            @Override
+            public <T> Optional<T> a(ast<T> $$0x) {
+               return Optional.ofNullable((T)$$0.get($$0));
+            }
+         };
+      }
    }
 }

@@ -1,32 +1,17 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-
-public class ewe implements ewf {
-   private final DoubleList a;
-
-   public ewe(DoubleList $$0) {
-      this.a = $$0;
+public interface ewe {
+   static ewe a() {
+      return ewj.a;
    }
 
-   @Override
-   public boolean a(ewf.a $$0) {
-      int $$1 = this.a.size() - 1;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2, $$2, $$2)) {
-            return false;
-         }
-      }
-
-      return true;
+   static ewe a(bsd $$0) {
+      return new ewj($$0);
    }
 
-   @Override
-   public int size() {
-      return this.a.size();
-   }
+   boolean b();
 
-   @Override
-   public DoubleList a() {
-      return this.a;
-   }
+   boolean a(ews var1, ja var2, boolean var3);
+
+   boolean a(ctv var1);
+
+   boolean a(eob var1, eob var2);
 }

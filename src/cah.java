@@ -1,72 +1,27 @@
-import java.util.EnumSet;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class cah extends cap {
-   private static final int a = 40;
-   private static final Predicate<dse> b = dsn.a(dfd.bt);
-   private final btt c;
-   private final dca d;
-   private int e;
+public class cah extends cat {
+   private static final int i = 10;
+   private static final int j = 7;
 
-   public cah(btt $$0) {
-      this.c = $$0;
-      this.d = $$0.dP();
-      this.a(EnumSet.of(cap.a.a, cap.a.b, cap.a.c));
+   public cah(bth $$0, double $$1, boolean $$2) {
+      super($$0, $$1, 10, $$2);
    }
 
    @Override
    public boolean a() {
-      if (this.c.el().a(this.c.p_() ? 50 : 1000) != 0) {
-         return false;
-      } else {
-         iz $$0 = this.c.dp();
-         return b.test(this.d.a_($$0)) ? true : this.d.a_($$0.d()).a(dfd.i);
-      }
+      aqk $$0 = (aqk)this.b.dP();
+      ja $$1 = this.b.dp();
+      return $$0.c($$1) ? false : super.a();
    }
 
+   @Nullable
    @Override
-   public void c() {
-      this.e = this.a(40);
-      this.d.a(this.c, (byte)10);
-      this.c.K().n();
-   }
-
-   @Override
-   public void d() {
-      this.e = 0;
-   }
-
-   @Override
-   public boolean b() {
-      return this.e > 0;
-   }
-
-   public int h() {
-      return this.e;
-   }
-
-   @Override
-   public void e() {
-      this.e = Math.max(0, this.e - 1);
-      if (this.e == this.a(4)) {
-         iz $$0 = this.c.dp();
-         if (b.test(this.d.a_($$0))) {
-            if (this.d.ab().b(dbw.c)) {
-               this.d.b($$0, false);
-            }
-
-            this.c.O();
-         } else {
-            iz $$1 = $$0.d();
-            if (this.d.a_($$1).a(dfd.i)) {
-               if (this.d.ab().b(dbw.c)) {
-                  this.d.c(2001, $$1, dfb.i(dfd.i.o()));
-                  this.d.a($$1, dfd.j.o(), 2);
-               }
-
-               this.c.O();
-            }
-         }
-      }
+   protected evz h() {
+      aqk $$0 = (aqk)this.b.dP();
+      ja $$1 = this.b.dp();
+      kc $$2 = kc.a($$1);
+      kc $$3 = but.a($$0, $$2, 2);
+      return $$3 != $$2 ? cdt.a(this.b, 10, 7, evz.c($$3.q()), (float) (Math.PI / 2)) : null;
    }
 }

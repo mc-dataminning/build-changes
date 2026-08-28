@@ -1,16 +1,17 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public enum cxu implements ayz {
+   a("food"),
+   b("blocks"),
+   c("misc");
 
-public record cxu(ale<eqp> b, long c) {
-   public static final Codec<cxu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ale.a(lq.aU).fieldOf("loot_table").forGetter(cxu::a), Codec.LONG.optionalFieldOf("seed", 0L).forGetter(cxu::b)).apply($$0, cxu::new)
-   );
+   public static final ayz.a<cxu> d = ayz.a(cxu::values);
+   private final String e;
 
-   public ale<eqp> a() {
-      return this.b;
+   private cxu(final String $$0) {
+      this.e = $$0;
    }
 
-   public long b() {
-      return this.c;
+   @Override
+   public String c() {
+      return this.e;
    }
 }

@@ -1,65 +1,56 @@
-import java.io.IOException;
-import java.nio.file.FileStore;
-import java.nio.file.attribute.BasicFileAttributeView;
-import java.nio.file.attribute.FileAttributeView;
-import java.nio.file.attribute.FileStoreAttributeView;
+import com.google.common.annotations.VisibleForTesting;
+import java.nio.file.Path;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-class ati extends FileStore {
-   private final String a;
+public class ati extends asz {
+   private static final asv c = new asv(wu.c("dataPack.vanilla.description"), aa.b().a(asi.b), Optional.empty());
+   private static final asc d = new asc(cox.g);
+   private static final ary e = ary.a(asv.b, c, asc.a, d);
+   private static final asf f = new asf("vanilla", wu.c("dataPack.vanilla.name"), atg.c, Optional.of(b));
+   private static final ash g = new ash(false, atc.b.b, false);
+   private static final ash h = new ash(false, atc.b.a, false);
+   private static final akk i = new akk("minecraft", "datapacks");
 
-   public ati(String $$0) {
-      this.a = $$0;
+   public ati(evp $$0) {
+      super(asi.b, b(), i, $$0);
+   }
+
+   private static asf a(String $$0, wu $$1) {
+      return new asf($$0, $$1, atg.d, Optional.of(atb.a($$0)));
+   }
+
+   @VisibleForTesting
+   public static ask b() {
+      return new asl().a(e).a("minecraft").b().a().a(f);
    }
 
    @Override
-   public String name() {
-      return this.a;
-   }
-
-   @Override
-   public String type() {
-      return "index";
-   }
-
-   @Override
-   public boolean isReadOnly() {
-      return true;
-   }
-
-   @Override
-   public long getTotalSpace() {
-      return 0L;
-   }
-
-   @Override
-   public long getUsableSpace() {
-      return 0L;
-   }
-
-   @Override
-   public long getUnallocatedSpace() {
-      return 0L;
-   }
-
-   @Override
-   public boolean supportsFileAttributeView(Class<? extends FileAttributeView> $$0) {
-      return $$0 == BasicFileAttributeView.class;
-   }
-
-   @Override
-   public boolean supportsFileAttributeView(String $$0) {
-      return "basic".equals($$0);
+   protected wu a(String $$0) {
+      return wu.b($$0);
    }
 
    @Nullable
    @Override
-   public <V extends FileStoreAttributeView> V getFileStoreAttributeView(Class<V> $$0) {
-      return null;
+   protected atc a(asg $$0) {
+      return atc.a(f, b($$0), asi.b, g);
    }
 
+   @Nullable
    @Override
-   public Object getAttribute(String $$0) throws IOException {
-      throw new UnsupportedOperationException();
+   protected atc a(String $$0, atc.c $$1, wu $$2) {
+      return atc.a(a($$0, $$2), $$1, asi.b, h);
+   }
+
+   public static atf a(Path $$0, evp $$1) {
+      return new atf(new ati($$1), new ata($$0, asi.b, atg.e, $$1));
+   }
+
+   public static atf c() {
+      return new atf(new ati(new evp($$0 -> true)));
+   }
+
+   public static atf a(eqc.c $$0) {
+      return a($$0.a(eqa.j), $$0.d().e());
    }
 }

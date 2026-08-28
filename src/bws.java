@@ -1,24 +1,30 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class bws {
-   private static final int a = 1;
+   private static final int a = 300;
 
-   public static bvl<btr> a(float $$0) {
-      return byx.a(
-         (Function<byx.b<btr>, ? extends App<byx.c<btr>, bza<btr>>>)($$1 -> $$1.group($$1.a(ccv.n), $$1.c(ccv.m), $$1.b(ccv.s))
-               .apply($$1, ($$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
-                     if ($$6.bR()) {
-                        return false;
-                     } else {
-                        bsw $$8 = $$1.b($$4);
-                        if ($$8.a($$6, 1.0)) {
-                           $$6.n($$8);
-                        } else {
-                           $$2.a(new bvv($$8, true));
-                           $$3.a(new ccy(new bvv($$8, false), $$0, 1));
+   public static bus<bsy> a(int $$0, int $$1) {
+      int $$2 = $$0 * 20;
+      MutableInt $$3 = new MutableInt(0);
+      return bye.a(
+         (Function<bye.b<bsy>, ? extends App<bye.c<bsy>, byh<bsy>>>)($$3x -> $$3x.group($$3x.b(ccc.C), $$3x.b(ccc.D))
+               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                     long $$9 = $$3x.<Long>b($$5);
+                     boolean $$10 = $$9 + 300L <= $$8;
+                     if ($$3.getValue() <= $$2 && !$$10) {
+                        ja $$11 = $$3x.<ji>b($$4).b();
+                        if ($$11.a($$7.dp(), (double)$$1)) {
+                           $$3.increment();
                         }
 
+                        return true;
+                     } else {
+                        $$5.b();
+                        $$4.b();
+                        $$7.dT().a($$6.aa(), $$6.Z());
+                        $$3.setValue(0);
                         return true;
                      }
                   }))

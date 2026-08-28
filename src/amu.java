@@ -1,89 +1,48 @@
+import com.google.common.collect.Iterables;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
+import com.mojang.brigadier.ParseResults;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.context.ParsedCommandNode;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.tree.CommandNode;
+import java.util.Map;
 
 public class amu {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xp.c("commands.damage.invulnerable"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("commands.help.failed"));
 
-   public static void a(CommandDispatcher<ep> $$0, el $$1) {
+   public static void a(CommandDispatcher<eq> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("damage").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("help").executes($$1 -> {
+               Map<CommandNode<eq>, String> $$2 = $$0.getSmartUsage($$0.getRoot(), (eq)$$1.getSource());
+
+               for (String $$3 : $$2.values()) {
+                  ((eq)$$1.getSource()).a(() -> wu.b("/" + $$3), false);
+               }
+
+               return $$2.size();
+            }))
             .then(
-               eq.a("target", fc.a())
-                  .then(
-                     ((RequiredArgumentBuilder)eq.a("amount", FloatArgumentType.floatArg(0.0F))
-                           .executes(
-                              $$0x -> a(
-                                    (ep)$$0x.getSource(), fc.a($$0x, "target"), FloatArgumentType.getFloat($$0x, "amount"), ((ep)$$0x.getSource()).e().aj().n()
-                                 )
-                           ))
-                        .then(
-                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)eq.a("damageType", fo.a($$1, lq.s))
-                                    .executes(
-                                       $$0x -> a(
-                                             (ep)$$0x.getSource(),
-                                             fc.a($$0x, "target"),
-                                             FloatArgumentType.getFloat($$0x, "amount"),
-                                             new brp(fo.a($$0x, "damageType", lq.s))
-                                          )
-                                    ))
-                                 .then(
-                                    eq.a("at")
-                                       .then(
-                                          eq.a("location", gs.a())
-                                             .executes(
-                                                $$0x -> a(
-                                                      (ep)$$0x.getSource(),
-                                                      fc.a($$0x, "target"),
-                                                      FloatArgumentType.getFloat($$0x, "amount"),
-                                                      new brp(fo.a($$0x, "damageType", lq.s), gs.a($$0x, "location"))
-                                                   )
-                                             )
-                                       )
-                                 ))
-                              .then(
-                                 eq.a("by")
-                                    .then(
-                                       ((RequiredArgumentBuilder)eq.a("entity", fc.a())
-                                             .executes(
-                                                $$0x -> a(
-                                                      (ep)$$0x.getSource(),
-                                                      fc.a($$0x, "target"),
-                                                      FloatArgumentType.getFloat($$0x, "amount"),
-                                                      new brp(fo.a($$0x, "damageType", lq.s), fc.a($$0x, "entity"))
-                                                   )
-                                             ))
-                                          .then(
-                                             eq.a("from")
-                                                .then(
-                                                   eq.a("cause", fc.a())
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (ep)$$0x.getSource(),
-                                                               fc.a($$0x, "target"),
-                                                               FloatArgumentType.getFloat($$0x, "amount"),
-                                                               new brp(fo.a($$0x, "damageType", lq.s), fc.a($$0x, "entity"), fc.a($$0x, "cause"))
-                                                            )
-                                                      )
-                                                )
-                                          )
-                                    )
-                              )
-                        )
+               er.a("command", StringArgumentType.greedyString())
+                  .executes(
+                     $$1 -> {
+                        ParseResults<eq> $$2 = $$0.parse(StringArgumentType.getString($$1, "command"), (eq)$$1.getSource());
+                        if ($$2.getContext().getNodes().isEmpty()) {
+                           throw a.create();
+                        } else {
+                           Map<CommandNode<eq>, String> $$3 = $$0.getSmartUsage(
+                              ((ParsedCommandNode)Iterables.getLast($$2.getContext().getNodes())).getNode(), (eq)$$1.getSource()
+                           );
+
+                           for (String $$4 : $$3.values()) {
+                              ((eq)$$1.getSource()).a(() -> wu.b("/" + $$2.getReader().getString() + " " + $$4), false);
+                           }
+
+                           return $$3.size();
+                        }
+                     }
                   )
             )
       );
-   }
-
-   private static int a(ep $$0, bsw $$1, float $$2, brp $$3) throws CommandSyntaxException {
-      if ($$1.a($$3, $$2)) {
-         $$0.a(() -> xp.a("commands.damage.success", $$2, $$1.O_()), true);
-         return 1;
-      } else {
-         throw a.create();
-      }
    }
 }

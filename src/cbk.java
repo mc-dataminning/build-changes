@@ -1,42 +1,99 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cbk extends cap {
-   private final btt a;
-   private double b;
-   private double c;
-   private int d;
+public class cbk extends bzw {
+   private final bzw a;
+   private final int b;
+   private boolean c;
 
-   public cbk(btt $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(cap.a.a, cap.a.b));
+   public cbk(int $$0, bzw $$1) {
+      this.b = $$0;
+      this.a = $$1;
+   }
+
+   public boolean a(cbk $$0) {
+      return this.Q_() && $$0.i() < this.i();
    }
 
    @Override
    public boolean a() {
-      return this.a.el().i() < 0.02F;
+      return this.a.a();
    }
 
    @Override
    public boolean b() {
-      return this.d >= 0;
+      return this.a.b();
+   }
+
+   @Override
+   public boolean Q_() {
+      return this.a.Q_();
    }
 
    @Override
    public void c() {
-      double $$0 = (Math.PI * 2) * this.a.el().j();
-      this.b = Math.cos($$0);
-      this.c = Math.sin($$0);
-      this.d = 20 + this.a.el().a(20);
+      if (!this.c) {
+         this.c = true;
+         this.a.c();
+      }
+   }
+
+   @Override
+   public void d() {
+      if (this.c) {
+         this.c = false;
+         this.a.d();
+      }
    }
 
    @Override
    public boolean R_() {
-      return true;
+      return this.a.R_();
+   }
+
+   @Override
+   protected int a(int $$0) {
+      return this.a.a($$0);
    }
 
    @Override
    public void e() {
-      this.d--;
-      this.a.G().a(this.a.du() + this.b, this.a.dy(), this.a.dA() + this.c);
+      this.a.e();
+   }
+
+   @Override
+   public void a(EnumSet<bzw.a> $$0) {
+      this.a.a($$0);
+   }
+
+   @Override
+   public EnumSet<bzw.a> j() {
+      return this.a.j();
+   }
+
+   public boolean h() {
+      return this.c;
+   }
+
+   public int i() {
+      return this.b;
+   }
+
+   public bzw k() {
+      return this.a;
+   }
+
+   @Override
+   public boolean equals(@Nullable Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? this.a.equals(((cbk)$$0).a) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

@@ -1,24 +1,12 @@
-public class gnz extends gmw<cix, fws<cix>> {
-   private static final alf a = new alf("textures/entity/wither/wither_armor.png");
-   private final fws<cix> b;
+public class gnz<T extends bsd, M extends fwj<T>> extends gne<T, M> {
+   private static final gef a = gef.p(new akk("textures/entity/spider_eyes.png"));
 
-   public gnz(gkv<cix, fws<cix>> $$0, fwy $$1) {
+   public gnz(glc<T, M> $$0) {
       super($$0);
-      this.b = new fws<>($$1.a(fxb.bW));
    }
 
    @Override
-   protected float a(float $$0) {
-      return ayz.b($$0 * 0.02F) * 3.0F;
-   }
-
-   @Override
-   protected alf a() {
+   public gef a() {
       return a;
-   }
-
-   @Override
-   protected fuc<cix> b() {
-      return this.b;
    }
 }

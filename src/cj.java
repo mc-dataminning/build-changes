@@ -1,18 +1,18 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record cj(de.d c, de.d d) implements ds<Integer> {
+public record cj(de.d c, de.d d) implements dt<Integer> {
    public static final Codec<cj> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(de.d.d.optionalFieldOf("durability", de.d.c).forGetter(cj::b), de.d.d.optionalFieldOf("damage", de.d.c).forGetter(cj::c))
             .apply($$0, cj::new)
    );
 
    @Override
-   public kl<Integer> a() {
-      return km.e;
+   public km<Integer> a() {
+      return kn.e;
    }
 
-   public boolean a(cur $$0, Integer $$1) {
+   public boolean a(cua $$0, Integer $$1) {
       return !this.c.d($$0.o() - $$1) ? false : this.d.d($$1);
    }
 

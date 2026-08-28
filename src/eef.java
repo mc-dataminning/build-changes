@@ -1,29 +1,23 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalInt;
 
-public abstract class eef {
-   public static final Codec<eef> a = lp.aa.q().dispatch(eef::b, eeg::a);
-   protected static final int b = 16;
-   protected final OptionalInt c;
+public record eef(int b, int c, int d) implements edi {
+   public static final Codec<eef> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               axm.l.fieldOf("spread_width").forGetter(eef::a), axm.l.fieldOf("spread_height").forGetter(eef::b), axm.l.fieldOf("max_height").forGetter(eef::c)
+            )
+            .apply($$0, eef::new)
+   );
 
-   protected static <S extends eef> RecordCodecBuilder<S, OptionalInt> a() {
-      return Codec.intRange(0, 80)
-         .optionalFieldOf("min_clipped_height")
-         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
-         .forGetter($$0 -> $$0.c);
+   public int a() {
+      return this.b;
    }
 
-   public eef(OptionalInt $$0) {
-      this.c = $$0;
-   }
-
-   protected abstract eeg<?> b();
-
-   public abstract int a(int var1, int var2);
-
-   public OptionalInt c() {
+   public int b() {
       return this.c;
+   }
+
+   public int c() {
+      return this.d;
    }
 }

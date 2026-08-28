@@ -1,18 +1,20 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class efd<P extends efc> {
-   public static final efd<efb> a = a("mangrove_root_placer", efb.c);
-   private final MapCodec<P> b;
+public record efd(efj b, float c) {
+   public static final Codec<efd> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               efj.a.fieldOf("above_root_provider").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("above_root_placement_chance").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, efd::new)
+   );
 
-   private static <P extends efc> efd<P> a(String $$0, MapCodec<P> $$1) {
-      return jv.a(lp.Y, $$0, new efd<>($$1));
-   }
-
-   private efd(MapCodec<P> $$0) {
-      this.b = $$0;
-   }
-
-   public MapCodec<P> a() {
+   public efj a() {
       return this.b;
+   }
+
+   public float b() {
+      return this.c;
    }
 }

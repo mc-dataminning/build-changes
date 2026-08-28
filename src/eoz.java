@@ -1,141 +1,162 @@
-import com.mojang.logging.LogUtils;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Comparator;
+import java.util.Optional;
 
-public class eoz implements epb {
-   private static final Logger b = LogUtils.getLogger();
-   private final dca c;
-   private final int d;
-   private final ArrayDeque<eoz.c> e = new ArrayDeque<>();
-   private final List<eoz.c> f = new ArrayList<>();
-   private int g = 0;
+public class eoz {
+   public static final int a = 3;
+   private static final int b = 128;
+   private static final int c = 16;
+   private static final int d = 5;
+   private static final int e = 4;
+   private static final int f = 3;
+   private static final int g = -1;
+   private static final int h = 4;
+   private static final int i = -1;
+   private static final int j = 3;
+   private static final int k = -1;
+   private static final int l = 2;
+   private static final int m = -1;
+   private final aqk n;
 
-   public eoz(dca $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public eoz(aqk $$0) {
+      this.n = $$0;
    }
 
-   @Override
-   public void a(je $$0, dse $$1, iz $$2, iz $$3, int $$4, int $$5) {
-      this.a($$2, new eoz.d($$0, $$1, $$2.i(), $$3.i(), $$4, $$5));
+   public Optional<l.a> a(ja $$0, boolean $$1, dty $$2) {
+      cec $$3 = this.n.y();
+      int $$4 = $$1 ? 16 : 128;
+      $$3.a(this.n, $$0, $$4);
+      Optional<ced> $$5 = $$3.b($$0x -> $$0x.a(ceg.r), $$0, $$4, cec.b.c)
+         .filter($$1x -> $$2.a($$1x.f()))
+         .sorted(Comparator.<ced>comparingDouble($$1x -> $$1x.f().j($$0)).thenComparingInt($$0x -> $$0x.f().v()))
+         .filter($$0x -> this.n.a_($$0x.f()).b(dsx.H))
+         .findFirst();
+      return $$5.map($$0x -> {
+         ja $$1x = $$0x.f();
+         this.n.l().a(aqp.f, new dbk($$1x), 3, $$1x);
+         dsh $$2x = this.n.a_($$1x);
+         return l.a($$1x, $$2x.c(dsx.H), 21, jf.a.b, 21, $$1xx -> this.n.a_($$1xx) == $$2x);
+      });
    }
 
-   @Override
-   public void a(iz $$0, dfb $$1, iz $$2) {
-      this.a($$0, new eoz.e($$0, $$1, $$2.i()));
-   }
+   public Optional<l.a> a(ja $$0, jf.a $$1) {
+      jf $$2 = jf.a(jf.b.a, $$1);
+      double $$3 = -1.0;
+      ja $$4 = null;
+      double $$5 = -1.0;
+      ja $$6 = null;
+      dty $$7 = this.n.C_();
+      int $$8 = Math.min(this.n.am(), this.n.I_() + this.n.k()) - 1;
+      ja.a $$9 = $$0.j();
 
-   @Override
-   public void a(dse $$0, iz $$1, dfb $$2, iz $$3, boolean $$4) {
-      this.a($$1, new eoz.a($$0, $$1.i(), $$2, $$3.i(), $$4));
-   }
+      for (ja.a $$10 : ja.a($$0, 16, jf.f, jf.d)) {
+         int $$11 = Math.min($$8, this.n.a(dxz.a.e, $$10.u(), $$10.w()));
+         int $$12 = 1;
+         if ($$7.a($$10) && $$7.a($$10.c($$2, 1))) {
+            $$10.c($$2.g(), 1);
 
-   @Override
-   public void a(iz $$0, dfb $$1, @Nullable je $$2) {
-      this.a($$0, new eoz.b($$0.i(), $$1, $$2));
-   }
+            for (int $$13 = $$11; $$13 >= this.n.I_(); $$13--) {
+               $$10.q($$13);
+               if (this.a($$10)) {
+                  int $$14 = $$13;
 
-   private void a(iz $$0, eoz.c $$1) {
-      boolean $$2 = this.g > 0;
-      boolean $$3 = this.d >= 0 && this.g >= this.d;
-      this.g++;
-      if (!$$3) {
-         if ($$2) {
-            this.f.add($$1);
-         } else {
-            this.e.push($$1);
-         }
-      } else if (this.g - 1 == this.d) {
-         b.error("Too many chained neighbor updates. Skipping the rest. First skipped position: " + $$0.x());
-      }
+                  while ($$13 > this.n.I_() && this.a($$10.c(jf.a))) {
+                     $$13--;
+                  }
 
-      if (!$$2) {
-         this.a();
-      }
-   }
+                  if ($$13 + 4 <= $$8) {
+                     int $$15 = $$14 - $$13;
+                     if ($$15 <= 0 || $$15 >= 3) {
+                        $$10.q($$13);
+                        if (this.a($$10, $$9, $$2, 0)) {
+                           double $$16 = $$0.j($$10);
+                           if (this.a($$10, $$9, $$2, -1) && this.a($$10, $$9, $$2, 1) && ($$3 == -1.0 || $$3 > $$16)) {
+                              $$3 = $$16;
+                              $$4 = $$10.i();
+                           }
 
-   private void a() {
-      try {
-         while (!this.e.isEmpty() || !this.f.isEmpty()) {
-            for (int $$0 = this.f.size() - 1; $$0 >= 0; $$0--) {
-               this.e.push(this.f.get($$0));
-            }
-
-            this.f.clear();
-            eoz.c $$1 = this.e.peek();
-
-            while (this.f.isEmpty()) {
-               if (!$$1.a(this.c)) {
-                  this.e.pop();
-                  break;
+                           if ($$3 == -1.0 && ($$5 == -1.0 || $$5 > $$16)) {
+                              $$5 = $$16;
+                              $$6 = $$10.i();
+                           }
+                        }
+                     }
+                  }
                }
             }
          }
-      } finally {
-         this.e.clear();
-         this.f.clear();
-         this.g = 0;
       }
-   }
 
-   static record a(dse a, iz b, dfb c, iz d, boolean e) implements eoz.c {
-      @Override
-      public boolean a(dca $$0) {
-         epb.a($$0, this.a, this.b, this.c, this.d, this.e);
-         return false;
+      if ($$3 == -1.0 && $$5 != -1.0) {
+         $$4 = $$6;
+         $$3 = $$5;
       }
-   }
 
-   static final class b implements eoz.c {
-      private final iz a;
-      private final dfb b;
-      @Nullable
-      private final je c;
-      private int d = 0;
+      if ($$3 == -1.0) {
+         int $$17 = Math.max(this.n.I_() - -1, 70);
+         int $$18 = $$8 - 9;
+         if ($$18 < $$17) {
+            return Optional.empty();
+         }
 
-      b(iz $$0, dfb $$1, @Nullable je $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         if (epb.a[this.d] == $$2) {
-            this.d++;
+         $$4 = new ja($$0.u(), aye.a($$0.v(), $$17, $$18), $$0.w()).i();
+         jf $$19 = $$2.h();
+         if (!$$7.a($$4)) {
+            return Optional.empty();
+         }
+
+         for (int $$20 = -1; $$20 < 2; $$20++) {
+            for (int $$21 = 0; $$21 < 2; $$21++) {
+               for (int $$22 = -1; $$22 < 3; $$22++) {
+                  dsh $$23 = $$22 < 0 ? dfh.co.o() : dfh.a.o();
+                  $$9.a($$4, $$21 * $$2.j() + $$20 * $$19.j(), $$22, $$21 * $$2.l() + $$20 * $$19.l());
+                  this.n.b($$9, $$23);
+               }
+            }
          }
       }
 
-      @Override
-      public boolean a(dca $$0) {
-         iz $$1 = this.a.a(epb.a[this.d++]);
-         dse $$2 = $$0.a_($$1);
-         epb.a($$0, $$2, $$1, this.b, this.a, false);
-         if (this.d < epb.a.length && epb.a[this.d] == this.c) {
-            this.d++;
+      for (int $$24 = -1; $$24 < 3; $$24++) {
+         for (int $$25 = -1; $$25 < 4; $$25++) {
+            if ($$24 == -1 || $$24 == 2 || $$25 == -1 || $$25 == 3) {
+               $$9.a($$4, $$24 * $$2.j(), $$25, $$24 * $$2.l());
+               this.n.a($$9, dfh.co.o(), 3);
+            }
          }
-
-         return this.d < epb.a.length;
       }
+
+      dsh $$26 = dfh.ed.o().a(dkj.b, $$1);
+
+      for (int $$27 = 0; $$27 < 2; $$27++) {
+         for (int $$28 = 0; $$28 < 3; $$28++) {
+            $$9.a($$4, $$27 * $$2.j(), $$28, $$27 * $$2.l());
+            this.n.a($$9, $$26, 18);
+         }
+      }
+
+      return Optional.of(new l.a($$4.i(), 2, 3));
    }
 
-   interface c {
-      boolean a(dca var1);
+   private boolean a(ja.a $$0) {
+      dsh $$1 = this.n.a_($$0);
+      return $$1.r() && $$1.u().c();
    }
 
-   static record d(je a, dse b, iz c, iz d, int e, int f) implements eoz.c {
-      @Override
-      public boolean a(dca $$0) {
-         epb.a($$0, this.a, this.b, this.c, this.d, this.e, this.f);
-         return false;
-      }
-   }
+   private boolean a(ja $$0, ja.a $$1, jf $$2, int $$3) {
+      jf $$4 = $$2.h();
 
-   static record e(iz a, dfb b, iz c) implements eoz.c {
-      @Override
-      public boolean a(dca $$0) {
-         dse $$1 = $$0.a_(this.a);
-         epb.a($$0, $$1, this.a, this.b, this.c, false);
-         return false;
+      for (int $$5 = -1; $$5 < 3; $$5++) {
+         for (int $$6 = -1; $$6 < 4; $$6++) {
+            $$1.a($$0, $$2.j() * $$5 + $$4.j() * $$3, $$6, $$2.l() * $$5 + $$4.l() * $$3);
+            if ($$6 < 0 && !this.n.a_($$1).e()) {
+               return false;
+            }
+
+            if ($$6 >= 0 && !this.a($$1)) {
+               return false;
+            }
+         }
       }
+
+      return true;
    }
 }

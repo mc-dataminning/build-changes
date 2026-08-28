@@ -1,32 +1,34 @@
-public class buu {
-   public static final int a = 64;
-   private final double b;
-   private boolean c;
-   private final String d;
+public class buu implements bwf {
+   private final ja a;
+   private final evz b;
 
-   protected buu(String $$0, double $$1) {
-      this.b = $$1;
-      this.d = $$0;
+   public buu(ja $$0) {
+      this.a = $$0.i();
+      this.b = evz.b($$0);
    }
 
-   public double a() {
+   public buu(evz $$0) {
+      this.a = ja.a($$0);
+      this.b = $$0;
+   }
+
+   @Override
+   public evz a() {
       return this.b;
    }
 
-   public boolean b() {
-      return this.c;
+   @Override
+   public ja b() {
+      return this.a;
    }
 
-   public buu a(boolean $$0) {
-      this.c = $$0;
-      return this;
+   @Override
+   public boolean a(bsy $$0) {
+      return true;
    }
 
-   public double a(double $$0) {
-      return $$0;
-   }
-
-   public String c() {
-      return this.d;
+   @Override
+   public String toString() {
+      return "BlockPosTracker{blockPos=" + this.a + ", centerPosition=" + this.b + "}";
    }
 }

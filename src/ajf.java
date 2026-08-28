@@ -1,55 +1,29 @@
-import java.security.PublicKey;
+public class ajf implements zb<aje> {
+   public static final ys<vr, ajf> a = zb.a(ajf::a, ajf::new);
+   private final long b;
 
-public class ajf implements zw<ajc> {
-   public static final zn<wm, ajf> a = zw.a(ajf::a, ajf::new);
-   private final String b;
-   private final byte[] c;
-   private final byte[] d;
-   private final boolean e;
-
-   public ajf(String $$0, byte[] $$1, byte[] $$2, boolean $$3) {
+   public ajf(long $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
    }
 
-   private ajf(wm $$0) {
-      this.b = $$0.d(20);
-      this.c = $$0.b();
-      this.d = $$0.b();
-      this.e = $$0.readBoolean();
+   private ajf(vr $$0) {
+      this.b = $$0.readLong();
    }
 
-   private void a(wm $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
+   private void a(vr $$0) {
+      $$0.b(this.b);
    }
 
    @Override
-   public zy<ajf> a() {
-      return aji.c;
+   public zd<ajf> a() {
+      return ajd.b;
    }
 
-   public void a(ajc $$0) {
+   public void a(aje $$0) {
       $$0.a(this);
    }
 
-   public String b() {
+   public long b() {
       return this.b;
-   }
-
-   public PublicKey e() throws axx {
-      return axw.a(this.c);
-   }
-
-   public byte[] f() {
-      return this.d;
-   }
-
-   public boolean g() {
-      return this.e;
    }
 }

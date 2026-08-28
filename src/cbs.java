@@ -1,24 +1,21 @@
-public class cbs extends cap {
-   private final bua a;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   public cbs(bua $$0) {
-      this.a = $$0;
+public class cbs<T extends bsy> extends cbp<T> {
+   private final btv i;
+
+   public cbs(btv $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<bsy> $$3) {
+      super($$0, $$1, 10, $$2, false, $$3);
+      this.i = $$0;
    }
 
    @Override
    public boolean a() {
-      return this.a.dP().R() && this.a.a(btd.f).e() && cen.a(this.a);
+      return !this.i.s() && super.a();
    }
 
    @Override
-   public void c() {
-      ((cdc)this.a.K()).d(true);
-   }
-
-   @Override
-   public void d() {
-      if (cen.a(this.a)) {
-         ((cdc)this.a.K()).d(false);
-      }
+   public boolean b() {
+      return this.d != null ? this.d.a(this.e, this.c) : super.b();
    }
 }

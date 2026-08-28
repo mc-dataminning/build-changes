@@ -1,68 +1,41 @@
-import net.minecraft.server.MinecraftServer;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import javax.annotation.Nullable;
 
-public class asg implements aja {
-   private static final xp b = xp.c("disconnect.ignoring_status_request");
-   private final MinecraftServer c;
-   private final wk d;
+public interface asg extends AutoCloseable {
+   String a = ".mcmeta";
+   String b = "pack.mcmeta";
 
-   public asg(MinecraftServer $$0, wk $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   @Nullable
+   atm<InputStream> a(String... var1);
+
+   @Nullable
+   atm<InputStream> a(asi var1, akk var2);
+
+   void a(asi var1, String var2, String var3, asg.a var4);
+
+   Set<String> a(asi var1);
+
+   @Nullable
+   <T> T a(ast<T> var1) throws IOException;
+
+   asf a();
+
+   default String b() {
+      return this.a().a();
+   }
+
+   default Optional<atb> c() {
+      return this.a().d();
    }
 
    @Override
-   public void a(aix $$0) {
-      switch ($$0.g()) {
-         case b:
-            this.a($$0, false);
-            break;
-         case a:
-            ake $$1 = this.c.av();
-            this.d.a(aki.b);
-            if (this.c.an() && $$1 != null) {
-               this.d.a(aki.a, new asj($$1, this.d));
-            } else {
-               this.d.a(b);
-            }
-            break;
-         case c:
-            if (!this.c.bo()) {
-               this.d.a(ajj.b);
-               xp $$2 = xp.c("multiplayer.disconnect.transfers_disabled");
-               this.d.a(new ajh($$2));
-               this.d.a($$2);
-            } else {
-               this.a($$0, true);
-            }
-            break;
-         default:
-            throw new UnsupportedOperationException("Invalid intention " + $$0.g());
-      }
-   }
+   void close();
 
-   private void a(aix $$0, boolean $$1) {
-      this.d.a(ajj.b);
-      if ($$0.b() != aa.b().e()) {
-         xp $$2;
-         if ($$0.b() < 754) {
-            $$2 = xp.a("multiplayer.disconnect.outdated_client", aa.b().c());
-         } else {
-            $$2 = xp.a("multiplayer.disconnect.incompatible", aa.b().c());
-         }
-
-         this.d.a(new ajh($$2));
-         this.d.a($$2);
-      } else {
-         this.d.a(ajj.a, new ash(this.c, this.d, $$1));
-      }
-   }
-
-   @Override
-   public void a(xp $$0) {
-   }
-
-   @Override
-   public boolean c() {
-      return this.d.i();
+   @FunctionalInterface
+   public interface a extends BiConsumer<akk, atm<InputStream>> {
    }
 }

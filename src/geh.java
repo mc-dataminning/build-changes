@@ -1,108 +1,140 @@
+import com.mojang.blaze3d.systems.RenderSystem;
 import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
 public class geh {
-   protected final gdo a;
-   protected final dca b;
-   protected int c;
-   protected int d;
-   protected int e;
-   private int g;
-   public ggq.b[] f;
+   private static final akk a = new akk("textures/misc/underwater.png");
 
-   public geh(ggq $$0, dca $$1, int $$2, gdo $$3) {
-      this.a = $$3;
-      this.b = $$1;
-      this.a($$2);
-      this.a($$0);
-   }
-
-   protected void a(ggq $$0) {
-      if (!ffh.Q().bw()) {
-         throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
-      } else {
-         int $$1 = this.d * this.c * this.e;
-         this.f = new ggq.b[$$1];
-
-         for (int $$2 = 0; $$2 < this.d; $$2++) {
-            for (int $$3 = 0; $$3 < this.c; $$3++) {
-               for (int $$4 = 0; $$4 < this.e; $$4++) {
-                  int $$5 = this.a($$2, $$3, $$4);
-                  this.f[$$5] = $$0.new b($$5, $$2 * 16, this.b.I_() + $$3 * 16, $$4 * 16);
-               }
-            }
+   public static void a(ffn $$0, fag $$1) {
+      cmh $$2 = $$0.s;
+      if (!$$2.ag) {
+         dsh $$3 = a($$2);
+         if ($$3 != null) {
+            a($$0.ao().a().a($$3), $$1);
          }
       }
-   }
 
-   public void a() {
-      for (ggq.b $$0 : this.f) {
-         $$0.e();
-      }
-   }
+      if (!$$0.s.N_()) {
+         if ($$0.s.a(awa.a)) {
+            b($$0, $$1);
+         }
 
-   private int a(int $$0, int $$1, int $$2) {
-      return ($$2 * this.c + $$1) * this.d + $$0;
-   }
-
-   protected void a(int $$0) {
-      int $$1 = $$0 * 2 + 1;
-      this.d = $$1;
-      this.c = this.b.an();
-      this.e = $$1;
-      this.g = $$0;
-   }
-
-   public int b() {
-      return this.g;
-   }
-
-   public dcc c() {
-      return this.b;
-   }
-
-   public void a(double $$0, double $$1) {
-      int $$2 = ayz.c($$0);
-      int $$3 = ayz.c($$1);
-
-      for (int $$4 = 0; $$4 < this.d; $$4++) {
-         int $$5 = this.d * 16;
-         int $$6 = $$2 - 8 - $$5 / 2;
-         int $$7 = $$6 + Math.floorMod($$4 * 16 - $$6, $$5);
-
-         for (int $$8 = 0; $$8 < this.e; $$8++) {
-            int $$9 = this.e * 16;
-            int $$10 = $$3 - 8 - $$9 / 2;
-            int $$11 = $$10 + Math.floorMod($$8 * 16 - $$10, $$9);
-
-            for (int $$12 = 0; $$12 < this.c; $$12++) {
-               int $$13 = this.b.I_() + $$12 * 16;
-               ggq.b $$14 = this.f[this.a($$4, $$12, $$8)];
-               iz $$15 = $$14.f();
-               if ($$7 != $$15.u() || $$13 != $$15.v() || $$11 != $$15.w()) {
-                  $$14.a($$7, $$13, $$11);
-               }
-            }
+         if ($$0.s.bQ()) {
+            c($$0, $$1);
          }
       }
-   }
-
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      int $$4 = Math.floorMod($$0, this.d);
-      int $$5 = Math.floorMod($$1 - this.b.ao(), this.c);
-      int $$6 = Math.floorMod($$2, this.e);
-      ggq.b $$7 = this.f[this.a($$4, $$5, $$6)];
-      $$7.a($$3);
    }
 
    @Nullable
-   protected ggq.b a(iz $$0) {
-      int $$1 = ayz.a($$0.v() - this.b.I_(), 16);
-      if ($$1 >= 0 && $$1 < this.c) {
-         int $$2 = ayz.b(ayz.a($$0.u(), 16), this.d);
-         int $$3 = ayz.b(ayz.a($$0.w(), 16), this.e);
-         return this.f[this.a($$2, $$1, $$3)];
-      } else {
-         return null;
+   private static dsh a(cmh $$0) {
+      ja.a $$1 = new ja.a();
+
+      for (int $$2 = 0; $$2 < 8; $$2++) {
+         double $$3 = $$0.du() + (double)(((float)(($$2 >> 0) % 2) - 0.5F) * $$0.dj() * 0.8F);
+         double $$4 = $$0.dy() + (double)(((float)(($$2 >> 1) % 2) - 0.5F) * 0.1F * $$0.eb());
+         double $$5 = $$0.dA() + (double)(((float)(($$2 >> 2) % 2) - 0.5F) * $$0.dj() * 0.8F);
+         $$1.b($$3, $$4, $$5);
+         dsh $$6 = $$0.dP().a_($$1);
+         if ($$6.l() != dll.a && $$6.p($$0.dP(), $$1)) {
+            return $$6;
+         }
       }
+
+      return null;
+   }
+
+   private static void a(gpi $$0, fag $$1) {
+      RenderSystem.setShaderTexture(0, $$0.i());
+      RenderSystem.setShader(gdq::q);
+      fab $$2 = fai.b().d();
+      float $$3 = 0.1F;
+      float $$4 = -1.0F;
+      float $$5 = 1.0F;
+      float $$6 = -1.0F;
+      float $$7 = 1.0F;
+      float $$8 = -0.5F;
+      float $$9 = $$0.c();
+      float $$10 = $$0.d();
+      float $$11 = $$0.g();
+      float $$12 = $$0.h();
+      Matrix4f $$13 = $$1.c().a();
+      $$2.a(fal.b.h, fae.r);
+      $$2.a($$13, -1.0F, -1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$10, $$12).e();
+      $$2.a($$13, 1.0F, -1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$9, $$12).e();
+      $$2.a($$13, 1.0F, 1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$9, $$11).e();
+      $$2.a($$13, -1.0F, 1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$10, $$11).e();
+      fac.a($$2.d());
+   }
+
+   private static void b(ffn $$0, fag $$1) {
+      RenderSystem.setShader(gdq::r);
+      RenderSystem.setShaderTexture(0, a);
+      fab $$2 = fai.b().d();
+      ja $$3 = ja.a($$0.s.du(), $$0.s.dy(), $$0.s.dA());
+      float $$4 = gdw.a($$0.s.dP().D_(), $$0.s.dP().A($$3));
+      RenderSystem.enableBlend();
+      RenderSystem.setShaderColor($$4, $$4, $$4, 0.1F);
+      float $$5 = 4.0F;
+      float $$6 = -1.0F;
+      float $$7 = 1.0F;
+      float $$8 = -1.0F;
+      float $$9 = 1.0F;
+      float $$10 = -0.5F;
+      float $$11 = -$$0.s.dF() / 64.0F;
+      float $$12 = $$0.s.dH() / 64.0F;
+      Matrix4f $$13 = $$1.c().a();
+      $$2.a(fal.b.h, fae.q);
+      $$2.a($$13, -1.0F, -1.0F, -0.5F).a(4.0F + $$11, 4.0F + $$12).e();
+      $$2.a($$13, 1.0F, -1.0F, -0.5F).a(0.0F + $$11, 4.0F + $$12).e();
+      $$2.a($$13, 1.0F, 1.0F, -0.5F).a(0.0F + $$11, 0.0F + $$12).e();
+      $$2.a($$13, -1.0F, 1.0F, -0.5F).a(4.0F + $$11, 0.0F + $$12).e();
+      fac.a($$2.d());
+      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.disableBlend();
+   }
+
+   private static void c(ffn $$0, fag $$1) {
+      fab $$2 = fai.b().d();
+      RenderSystem.setShader(gdq::q);
+      RenderSystem.depthFunc(519);
+      RenderSystem.depthMask(false);
+      RenderSystem.enableBlend();
+      gpi $$3 = gro.b.c();
+      RenderSystem.setShaderTexture(0, $$3.i());
+      float $$4 = $$3.c();
+      float $$5 = $$3.d();
+      float $$6 = ($$4 + $$5) / 2.0F;
+      float $$7 = $$3.g();
+      float $$8 = $$3.h();
+      float $$9 = ($$7 + $$8) / 2.0F;
+      float $$10 = $$3.k();
+      float $$11 = aye.i($$10, $$4, $$6);
+      float $$12 = aye.i($$10, $$5, $$6);
+      float $$13 = aye.i($$10, $$7, $$9);
+      float $$14 = aye.i($$10, $$8, $$9);
+      float $$15 = 1.0F;
+
+      for (int $$16 = 0; $$16 < 2; $$16++) {
+         $$1.a();
+         float $$17 = -0.5F;
+         float $$18 = 0.5F;
+         float $$19 = -0.5F;
+         float $$20 = 0.5F;
+         float $$21 = -0.5F;
+         $$1.a((float)(-($$16 * 2 - 1)) * 0.24F, -0.3F, 0.0F);
+         $$1.a(a.d.rotationDegrees((float)($$16 * 2 - 1) * 10.0F));
+         Matrix4f $$22 = $$1.c().a();
+         $$2.a(fal.b.h, fae.r);
+         $$2.a($$22, -0.5F, -0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$12, $$14).e();
+         $$2.a($$22, 0.5F, -0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$11, $$14).e();
+         $$2.a($$22, 0.5F, 0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$11, $$13).e();
+         $$2.a($$22, -0.5F, 0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$12, $$13).e();
+         fac.a($$2.d());
+         $$1.b();
+      }
+
+      RenderSystem.disableBlend();
+      RenderSystem.depthMask(true);
+      RenderSystem.depthFunc(515);
    }
 }

@@ -1,105 +1,44 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 
-public enum dlo implements azu {
-   a("none", h.a),
-   b("clockwise_90", h.u),
-   c("180", h.c),
-   d("counterclockwise_90", h.v);
+public abstract class dlo extends dhi {
+   protected static final float f = 6.0F;
+   protected static final float g = 10.0F;
+   protected static final ews h = dff.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
+   protected static final ews i = dff.a(6.0, 6.0, 0.0, 10.0, 10.0, 16.0);
+   protected static final ews j = dff.a(0.0, 6.0, 6.0, 16.0, 10.0, 10.0);
 
-   public static final Codec<dlo> e = azu.a(dlo::values);
-   private final String f;
-   private final h g;
-
-   private dlo(final String $$0, final h $$1) {
-      this.f = $$0;
-      this.g = $$1;
-   }
-
-   public dlo a(dlo $$0) {
-      switch ($$0) {
-         case c:
-            switch (this) {
-               case a:
-                  return c;
-               case b:
-                  return d;
-               case c:
-                  return a;
-               case d:
-                  return b;
-            }
-         case d:
-            switch (this) {
-               case a:
-                  return d;
-               case b:
-                  return a;
-               case c:
-                  return b;
-               case d:
-                  return c;
-            }
-         case b:
-            switch (this) {
-               case a:
-                  return b;
-               case b:
-                  return c;
-               case c:
-                  return d;
-               case d:
-                  return a;
-            }
-         default:
-            return this;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public je a(je $$0) {
-      if ($$0.o() == je.a.b) {
-         return $$0;
-      } else {
-         switch (this) {
-            case b:
-               return $$0.h();
-            case c:
-               return $$0.g();
-            case d:
-               return $$0.i();
-            default:
-               return $$0;
-         }
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      switch (this) {
-         case b:
-            return ($$0 + $$1 / 4) % $$1;
-         case c:
-            return ($$0 + $$1 / 2) % $$1;
-         case d:
-            return ($$0 + $$1 * 3 / 4) % $$1;
-         default:
-            return $$0;
-      }
-   }
-
-   public static dlo a(azh $$0) {
-      return ac.a(values(), $$0);
-   }
-
-   public static List<dlo> b(azh $$0) {
-      return ac.b(values(), $$0);
+   protected dlo(dsg.d $$0) {
+      super($$0);
    }
 
    @Override
-   public String c() {
-      return this.f;
+   protected abstract MapCodec<? extends dlo> a();
+
+   @Override
+   protected ews a(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
+      switch ($$0.c(a).o()) {
+         case a:
+         default:
+            return j;
+         case c:
+            return i;
+         case b:
+            return h;
+      }
+   }
+
+   @Override
+   protected dsh a(dsh $$0, dls $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected dsh a(dsh $$0, dkc $$1) {
+      return $$0.a(a, $$1.b($$0.c(a)));
+   }
+
+   @Override
+   protected boolean a(dsh $$0, eoq $$1) {
+      return false;
    }
 }

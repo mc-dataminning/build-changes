@@ -1,29 +1,27 @@
-public class box implements boy {
-   public static final boy a = new box();
+public abstract class box<R extends Runnable> extends bot<R> {
+   private int b;
 
-   @Override
-   public void a() {
+   public box(String $$0) {
+      super($$0);
    }
 
    @Override
-   public void b() {
+   public boolean ay() {
+      return this.bB() || super.ay();
+   }
+
+   protected boolean bB() {
+      return this.b != 0;
    }
 
    @Override
-   public void c() {
-   }
+   public void d(R $$0) {
+      this.b++;
 
-   @Override
-   public boolean e() {
-      return false;
-   }
-
-   @Override
-   public bnk f() {
-      return bnh.a;
-   }
-
-   @Override
-   public void d() {
+      try {
+         super.d($$0);
+      } finally {
+         this.b--;
+      }
    }
 }

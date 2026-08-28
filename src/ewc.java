@@ -1,219 +1,219 @@
-public abstract class ewc {
-   private static final je.a[] d = je.a.values();
-   protected final int a;
-   protected final int b;
-   protected final int c;
+import java.util.BitSet;
 
-   protected ewc(int $$0, int $$1, int $$2) {
-      if ($$0 >= 0 && $$1 >= 0 && $$2 >= 0) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      } else {
-         throw new IllegalArgumentException("Need all positive sizes: x: " + $$0 + ", y: " + $$1 + ", z: " + $$2);
-      }
+public final class ewc extends ewi {
+   private final BitSet d;
+   private int e;
+   private int f;
+   private int g;
+   private int h;
+   private int i;
+   private int j;
+
+   public ewc(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
+      this.d = new BitSet($$0 * $$1 * $$2);
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public boolean a(iw $$0, int $$1, int $$2, int $$3) {
-      return this.e($$0.a($$1, $$2, $$3, je.a.a), $$0.a($$1, $$2, $$3, je.a.b), $$0.a($$1, $$2, $$3, je.a.c));
-   }
+   public static ewc a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+      ewc $$9 = new ewc($$0, $$1, $$2);
+      $$9.e = $$3;
+      $$9.f = $$4;
+      $$9.g = $$5;
+      $$9.h = $$6;
+      $$9.i = $$7;
+      $$9.j = $$8;
 
-   public boolean e(int $$0, int $$1, int $$2) {
-      if ($$0 < 0 || $$1 < 0 || $$2 < 0) {
-         return false;
-      } else {
-         return $$0 < this.a && $$1 < this.b && $$2 < this.c ? this.b($$0, $$1, $$2) : false;
-      }
-   }
-
-   public boolean b(iw $$0, int $$1, int $$2, int $$3) {
-      return this.b($$0.a($$1, $$2, $$3, je.a.a), $$0.a($$1, $$2, $$3, je.a.b), $$0.a($$1, $$2, $$3, je.a.c));
-   }
-
-   public abstract boolean b(int var1, int var2, int var3);
-
-   public abstract void c(int var1, int var2, int var3);
-
-   public boolean a() {
-      for (je.a $$0 : d) {
-         if (this.a($$0) >= this.b($$0)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public abstract int a(je.a var1);
-
-   public abstract int b(je.a var1);
-
-   public int a(je.a $$0, int $$1, int $$2) {
-      int $$3 = this.c($$0);
-      if ($$1 >= 0 && $$2 >= 0) {
-         je.a $$4 = iw.b.a($$0);
-         je.a $$5 = iw.c.a($$0);
-         if ($$1 < this.c($$4) && $$2 < this.c($$5)) {
-            iw $$6 = iw.a(je.a.a, $$0);
-
-            for (int $$7 = 0; $$7 < $$3; $$7++) {
-               if (this.b($$6, $$7, $$1, $$2)) {
-                  return $$7;
-               }
+      for (int $$10 = $$3; $$10 < $$6; $$10++) {
+         for (int $$11 = $$4; $$11 < $$7; $$11++) {
+            for (int $$12 = $$5; $$12 < $$8; $$12++) {
+               $$9.a($$10, $$11, $$12, false);
             }
-
-            return $$3;
-         } else {
-            return $$3;
          }
-      } else {
-         return $$3;
       }
+
+      return $$9;
    }
 
-   public int b(je.a $$0, int $$1, int $$2) {
-      if ($$1 >= 0 && $$2 >= 0) {
-         je.a $$3 = iw.b.a($$0);
-         je.a $$4 = iw.c.a($$0);
-         if ($$1 < this.c($$3) && $$2 < this.c($$4)) {
-            int $$5 = this.c($$0);
-            iw $$6 = iw.a(je.a.a, $$0);
-
-            for (int $$7 = $$5 - 1; $$7 >= 0; $$7--) {
-               if (this.b($$6, $$7, $$1, $$2)) {
-                  return $$7 + 1;
-               }
-            }
-
-            return 0;
-         } else {
-            return 0;
-         }
+   public ewc(ewi $$0) {
+      super($$0.a, $$0.b, $$0.c);
+      if ($$0 instanceof ewc) {
+         this.d = (BitSet)((ewc)$$0).d.clone();
       } else {
-         return 0;
-      }
-   }
+         this.d = new BitSet(this.a * this.b * this.c);
 
-   public int c(je.a $$0) {
-      return $$0.a(this.a, this.b, this.c);
-   }
-
-   public int b() {
-      return this.c(je.a.a);
-   }
-
-   public int c() {
-      return this.c(je.a.b);
-   }
-
-   public int d() {
-      return this.c(je.a.c);
-   }
-
-   public void a(ewc.b $$0, boolean $$1) {
-      this.a($$0, iw.a, $$1);
-      this.a($$0, iw.b, $$1);
-      this.a($$0, iw.c, $$1);
-   }
-
-   private void a(ewc.b $$0, iw $$1, boolean $$2) {
-      iw $$3 = $$1.a();
-      int $$4 = this.c($$3.a(je.a.a));
-      int $$5 = this.c($$3.a(je.a.b));
-      int $$6 = this.c($$3.a(je.a.c));
-
-      for (int $$7 = 0; $$7 <= $$4; $$7++) {
-         for (int $$8 = 0; $$8 <= $$5; $$8++) {
-            int $$9 = -1;
-
-            for (int $$10 = 0; $$10 <= $$6; $$10++) {
-               int $$11 = 0;
-               int $$12 = 0;
-
-               for (int $$13 = 0; $$13 <= 1; $$13++) {
-                  for (int $$14 = 0; $$14 <= 1; $$14++) {
-                     if (this.a($$3, $$7 + $$13 - 1, $$8 + $$14 - 1, $$10)) {
-                        $$11++;
-                        $$12 ^= $$13 ^ $$14;
-                     }
+         for (int $$1 = 0; $$1 < this.a; $$1++) {
+            for (int $$2 = 0; $$2 < this.b; $$2++) {
+               for (int $$3 = 0; $$3 < this.c; $$3++) {
+                  if ($$0.b($$1, $$2, $$3)) {
+                     this.d.set(this.a($$1, $$2, $$3));
                   }
                }
+            }
+         }
+      }
 
-               if ($$11 == 1 || $$11 == 3 || $$11 == 2 && ($$12 & 1) == 0) {
+      this.e = $$0.a(jf.a.a);
+      this.f = $$0.a(jf.a.b);
+      this.g = $$0.a(jf.a.c);
+      this.h = $$0.b(jf.a.a);
+      this.i = $$0.b(jf.a.b);
+      this.j = $$0.b(jf.a.c);
+   }
+
+   protected int a(int $$0, int $$1, int $$2) {
+      return ($$0 * this.b + $$1) * this.c + $$2;
+   }
+
+   @Override
+   public boolean b(int $$0, int $$1, int $$2) {
+      return this.d.get(this.a($$0, $$1, $$2));
+   }
+
+   private void a(int $$0, int $$1, int $$2, boolean $$3) {
+      this.d.set(this.a($$0, $$1, $$2));
+      if ($$3) {
+         this.e = Math.min(this.e, $$0);
+         this.f = Math.min(this.f, $$1);
+         this.g = Math.min(this.g, $$2);
+         this.h = Math.max(this.h, $$0 + 1);
+         this.i = Math.max(this.i, $$1 + 1);
+         this.j = Math.max(this.j, $$2 + 1);
+      }
+   }
+
+   @Override
+   public void c(int $$0, int $$1, int $$2) {
+      this.a($$0, $$1, $$2, true);
+   }
+
+   @Override
+   public boolean a() {
+      return this.d.isEmpty();
+   }
+
+   @Override
+   public int a(jf.a $$0) {
+      return $$0.a(this.e, this.f, this.g);
+   }
+
+   @Override
+   public int b(jf.a $$0) {
+      return $$0.a(this.h, this.i, this.j);
+   }
+
+   static ewc a(ewi $$0, ewi $$1, ewl $$2, ewl $$3, ewl $$4, ewd $$5) {
+      ewc $$6 = new ewc($$2.size() - 1, $$3.size() - 1, $$4.size() - 1);
+      int[] $$7 = new int[]{Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE};
+      $$2.a(($$7x, $$8, $$9) -> {
+         boolean[] $$10 = new boolean[]{false};
+         $$3.a(($$10x, $$11, $$12) -> {
+            boolean[] $$13 = new boolean[]{false};
+            $$4.a(($$12x, $$13x, $$14) -> {
+               if ($$5.apply($$0.e($$7x, $$10x, $$12x), $$1.e($$8, $$11, $$13x))) {
+                  $$6.d.set($$6.a($$9, $$12, $$14));
+                  $$7[2] = Math.min($$7[2], $$14);
+                  $$7[5] = Math.max($$7[5], $$14);
+                  $$13[0] = true;
+               }
+
+               return true;
+            });
+            if ($$13[0]) {
+               $$7[1] = Math.min($$7[1], $$12);
+               $$7[4] = Math.max($$7[4], $$12);
+               $$10[0] = true;
+            }
+
+            return true;
+         });
+         if ($$10[0]) {
+            $$7[0] = Math.min($$7[0], $$9);
+            $$7[3] = Math.max($$7[3], $$9);
+         }
+
+         return true;
+      });
+      $$6.e = $$7[0];
+      $$6.f = $$7[1];
+      $$6.g = $$7[2];
+      $$6.h = $$7[3] + 1;
+      $$6.i = $$7[4] + 1;
+      $$6.j = $$7[5] + 1;
+      return $$6;
+   }
+
+   protected static void a(ewi $$0, ewi.b $$1, boolean $$2) {
+      ewc $$3 = new ewc($$0);
+
+      for (int $$4 = 0; $$4 < $$3.b; $$4++) {
+         for (int $$5 = 0; $$5 < $$3.a; $$5++) {
+            int $$6 = -1;
+
+            for (int $$7 = 0; $$7 <= $$3.c; $$7++) {
+               if ($$3.e($$5, $$4, $$7)) {
                   if ($$2) {
-                     if ($$9 == -1) {
-                        $$9 = $$10;
+                     if ($$6 == -1) {
+                        $$6 = $$7;
                      }
                   } else {
-                     $$0.consume(
-                        $$3.a($$7, $$8, $$10, je.a.a),
-                        $$3.a($$7, $$8, $$10, je.a.b),
-                        $$3.a($$7, $$8, $$10, je.a.c),
-                        $$3.a($$7, $$8, $$10 + 1, je.a.a),
-                        $$3.a($$7, $$8, $$10 + 1, je.a.b),
-                        $$3.a($$7, $$8, $$10 + 1, je.a.c)
-                     );
+                     $$1.consume($$5, $$4, $$7, $$5 + 1, $$4 + 1, $$7 + 1);
                   }
-               } else if ($$9 != -1) {
-                  $$0.consume(
-                     $$3.a($$7, $$8, $$9, je.a.a),
-                     $$3.a($$7, $$8, $$9, je.a.b),
-                     $$3.a($$7, $$8, $$9, je.a.c),
-                     $$3.a($$7, $$8, $$10, je.a.a),
-                     $$3.a($$7, $$8, $$10, je.a.b),
-                     $$3.a($$7, $$8, $$10, je.a.c)
-                  );
-                  $$9 = -1;
+               } else if ($$6 != -1) {
+                  int $$8 = $$5;
+                  int $$9 = $$4;
+                  $$3.b($$6, $$7, $$5, $$4);
+
+                  while ($$3.a($$6, $$7, $$8 + 1, $$4)) {
+                     $$3.b($$6, $$7, $$8 + 1, $$4);
+                     $$8++;
+                  }
+
+                  while ($$3.a($$5, $$8 + 1, $$6, $$7, $$9 + 1)) {
+                     for (int $$10 = $$5; $$10 <= $$8; $$10++) {
+                        $$3.b($$6, $$7, $$10, $$9 + 1);
+                     }
+
+                     $$9++;
+                  }
+
+                  $$1.consume($$5, $$4, $$6, $$8 + 1, $$9 + 1, $$7);
+                  $$6 = -1;
                }
             }
          }
       }
    }
 
-   public void b(ewc.b $$0, boolean $$1) {
-      evw.a(this, $$0, $$1);
+   private boolean a(int $$0, int $$1, int $$2, int $$3) {
+      return $$2 < this.a && $$3 < this.b ? this.d.nextClearBit(this.a($$2, $$3, $$0)) >= this.a($$2, $$3, $$1) : false;
    }
 
-   public void a(ewc.a $$0) {
-      this.a($$0, iw.a);
-      this.a($$0, iw.b);
-      this.a($$0, iw.c);
-   }
-
-   private void a(ewc.a $$0, iw $$1) {
-      iw $$2 = $$1.a();
-      je.a $$3 = $$2.a(je.a.c);
-      int $$4 = this.c($$2.a(je.a.a));
-      int $$5 = this.c($$2.a(je.a.b));
-      int $$6 = this.c($$3);
-      je $$7 = je.a($$3, je.b.b);
-      je $$8 = je.a($$3, je.b.a);
-
-      for (int $$9 = 0; $$9 < $$4; $$9++) {
-         for (int $$10 = 0; $$10 < $$5; $$10++) {
-            boolean $$11 = false;
-
-            for (int $$12 = 0; $$12 <= $$6; $$12++) {
-               boolean $$13 = $$12 != $$6 && this.b($$2, $$9, $$10, $$12);
-               if (!$$11 && $$13) {
-                  $$0.consume($$7, $$2.a($$9, $$10, $$12, je.a.a), $$2.a($$9, $$10, $$12, je.a.b), $$2.a($$9, $$10, $$12, je.a.c));
-               }
-
-               if ($$11 && !$$13) {
-                  $$0.consume($$8, $$2.a($$9, $$10, $$12 - 1, je.a.a), $$2.a($$9, $$10, $$12 - 1, je.a.b), $$2.a($$9, $$10, $$12 - 1, je.a.c));
-               }
-
-               $$11 = $$13;
-            }
+   private boolean a(int $$0, int $$1, int $$2, int $$3, int $$4) {
+      for (int $$5 = $$0; $$5 < $$1; $$5++) {
+         if (!this.a($$2, $$3, $$5, $$4)) {
+            return false;
          }
       }
+
+      return true;
    }
 
-   public interface a {
-      void consume(je var1, int var2, int var3, int var4);
+   private void b(int $$0, int $$1, int $$2, int $$3) {
+      this.d.clear(this.a($$2, $$3, $$0), this.a($$2, $$3, $$1));
    }
 
-   public interface b {
-      void consume(int var1, int var2, int var3, int var4, int var5, int var6);
+   public boolean d(int $$0, int $$1, int $$2) {
+      boolean $$3 = $$0 > 0 && $$0 < this.a - 1 && $$1 > 0 && $$1 < this.b - 1 && $$2 > 0 && $$2 < this.c - 1;
+      return $$3
+         && this.b($$0, $$1, $$2)
+         && this.b($$0 - 1, $$1, $$2)
+         && this.b($$0 + 1, $$1, $$2)
+         && this.b($$0, $$1 - 1, $$2)
+         && this.b($$0, $$1 + 1, $$2)
+         && this.b($$0, $$1, $$2 - 1)
+         && this.b($$0, $$1, $$2 + 1);
    }
 }

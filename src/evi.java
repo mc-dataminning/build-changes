@@ -1,25 +1,29 @@
-import java.nio.file.Path;
-import java.util.List;
-import java.util.stream.Collectors;
+import net.minecraft.server.MinecraftServer;
 
-public class evi extends Exception {
-   private final Path a;
-   private final List<evk> b;
+public class evi implements evk<MinecraftServer> {
+   final akk a;
 
-   public evi(Path $$0, List<evk> $$1) {
+   public evi(akk $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   @Override
-   public String getMessage() {
-      return a(this.a, this.b);
+   public void a(MinecraftServer $$0, evm<MinecraftServer> $$1, long $$2) {
+      akz $$3 = $$0.aF();
+      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
    }
 
-   public static String a(Path $$0, List<evk> $$1) {
-      return "Failed to validate '"
-         + $$0
-         + "'. Found forbidden symlinks: "
-         + $$1.stream().map($$0x -> $$0x.a() + "->" + $$0x.b()).collect(Collectors.joining(", "));
+   public static class a extends evk.a<MinecraftServer, evi> {
+      public a() {
+         super(new akk("function"), evi.class);
+      }
+
+      public void a(tx $$0, evi $$1) {
+         $$0.a("Name", $$1.a.toString());
+      }
+
+      public evi a(tx $$0) {
+         akk $$1 = new akk($$0.l("Name"));
+         return new evi($$1);
+      }
    }
 }

@@ -1,42 +1,45 @@
-import java.time.Instant;
+public class ahd implements zb<agb> {
+   public static final ys<vr, ahd> a = zb.a(ahd::a, ahd::new);
+   private final int b;
+   private final akk c;
+   private final boolean d;
 
-public record ahd(String b, Instant c, long d, ew e, xw.b f) implements zw<agw> {
-   public static final zn<wm, ahd> a = zw.a(ahd::a, ahd::new);
-
-   private ahd(wm $$0) {
-      this($$0.p(), $$0.t(), $$0.readLong(), new ew($$0), new xw.b($$0));
+   public ahd(int $$0, cyi<?> $$1, boolean $$2) {
+      this.b = $$0;
+      this.c = $$1.a();
+      this.d = $$2;
    }
 
-   private void a(wm $$0) {
-      $$0.a(this.b);
+   private ahd(vr $$0) {
+      this.b = $$0.readByte();
+      this.c = $$0.q();
+      this.d = $$0.readBoolean();
+   }
+
+   private void a(vr $$0) {
+      $$0.k(this.b);
       $$0.a(this.c);
-      $$0.b(this.d);
-      this.e.a($$0);
-      this.f.a($$0);
+      $$0.a(this.d);
    }
 
    @Override
-   public zy<ahd> a() {
-      return agu.bk;
+   public zd<ahd> a() {
+      return afz.bI;
    }
 
-   public void a(agw $$0) {
+   public void a(agb $$0) {
       $$0.a(this);
    }
 
-   public Instant e() {
+   public int b() {
+      return this.b;
+   }
+
+   public akk e() {
       return this.c;
    }
 
-   public long f() {
+   public boolean f() {
       return this.d;
-   }
-
-   public ew g() {
-      return this.e;
-   }
-
-   public xw.b h() {
-      return this.f;
    }
 }

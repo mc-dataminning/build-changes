@@ -1,26 +1,17 @@
-import com.mojang.serialization.MapCodec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class ehe extends ehs {
-   private static final ehe c = new ehe();
-   public static MapCodec<ehe> a = MapCodec.unit(() -> c);
-
-   private ehe() {
-   }
-
-   public static ehe a() {
-      return c;
-   }
-
+public record ehe(List<dyd.c> a) implements dyd.c {
+   @Nullable
    @Override
-   protected boolean a(ehr $$0, azh $$1, iz $$2) {
-      ehq $$3 = $$0.e()
-         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
-      ji<dcz> $$4 = $$0.d().t($$2);
-      return $$0.f().a($$4).a($$3);
-   }
+   public dsh calculate(dxs.b $$0) {
+      for (dyd.c $$1 : this.a) {
+         dsh $$2 = $$1.calculate($$0);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
 
-   @Override
-   public ehu<?> b() {
-      return ehu.e;
+      return null;
    }
 }

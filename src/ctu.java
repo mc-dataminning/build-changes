@@ -1,33 +1,27 @@
-public class ctu extends cum implements cvj {
-   public ctu(cum.a $$0) {
-      super($$0);
+public interface ctu {
+   int a = 256;
+   int b = 140;
+   akj<cts> c = a("ponder_goat_horn");
+   akj<cts> d = a("sing_goat_horn");
+   akj<cts> e = a("seek_goat_horn");
+   akj<cts> f = a("feel_goat_horn");
+   akj<cts> g = a("admire_goat_horn");
+   akj<cts> h = a("call_goat_horn");
+   akj<cts> i = a("yearn_goat_horn");
+   akj<cts> j = a("dream_goat_horn");
+
+   private static akj<cts> a(String $$0) {
+      return akj.a(lr.I, new akk($$0));
    }
 
-   @Override
-   public bqx<cur> a(dca $$0, cmz $$1, bqv $$2) {
-      cur $$3 = $$1.b($$2);
-      $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), awa.iG, awb.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      if (!$$0.B) {
-         coc $$4 = new coc($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dH(), $$1.dF(), -20.0F, 0.7F, 1.0F);
-         $$0.b($$4);
-      }
-
-      $$1.b(awk.c.b(this));
-      $$3.a(1, $$1);
-      return bqx.a($$3, $$0.x_());
-   }
-
-   @Override
-   public cnr a(dca $$0, js $$1, cur $$2, je $$3) {
-      coc $$4 = new coc($$0, $$1.a(), $$1.b(), $$1.c());
-      $$4.a($$2);
-      return $$4;
-   }
-
-   @Override
-   public cvj.a c() {
-      return cvj.a.a().a(cvj.a.a.c() * 0.5F).b(cvj.a.a.d() * 1.25F).a();
+   static cts a(jw<cts> $$0) {
+      jw.a($$0, c, new cts((jj<ave>)avf.mF.get(0), 140, 256.0F));
+      jw.a($$0, d, new cts((jj<ave>)avf.mF.get(1), 140, 256.0F));
+      jw.a($$0, e, new cts((jj<ave>)avf.mF.get(2), 140, 256.0F));
+      jw.a($$0, f, new cts((jj<ave>)avf.mF.get(3), 140, 256.0F));
+      jw.a($$0, g, new cts((jj<ave>)avf.mF.get(4), 140, 256.0F));
+      jw.a($$0, h, new cts((jj<ave>)avf.mF.get(5), 140, 256.0F));
+      jw.a($$0, i, new cts((jj<ave>)avf.mF.get(6), 140, 256.0F));
+      return jw.a($$0, j, new cts((jj<ave>)avf.mF.get(7), 140, 256.0F));
    }
 }

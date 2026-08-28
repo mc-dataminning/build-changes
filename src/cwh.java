@@ -1,22 +1,37 @@
-public class cwh extends cum {
-   private final cwg a;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public cwh(cwg $$0, cum.a $$1) {
-      super($$1.b($$0.a()));
-      this.a = $$0;
+public record cwh(akk e, jj<ctv> f, wu g, boolean h) {
+   public static final Codec<cwh> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               akk.a.fieldOf("asset_id").forGetter(cwh::a),
+               akh.a(lr.K).fieldOf("template_item").forGetter(cwh::b),
+               ww.a.fieldOf("description").forGetter(cwh::c),
+               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(cwh::d)
+            )
+            .apply($$0, cwh::new)
+   );
+   public static final ys<wf, cwh> b = ys.a(akk.b, cwh::a, yq.b(lr.K), cwh::b, ww.b, cwh::c, yq.b, cwh::d, cwh::new);
+   public static final Codec<jj<cwh>> c = akg.a(lr.aW, a);
+   public static final ys<wf, jj<cwh>> d = yq.a(lr.aW, b);
+
+   public wu a(jj<cwf> $$0) {
+      return this.g.f().c($$0.a().e().a());
    }
 
-   public cwg h() {
-      return this.a;
+   public akk a() {
+      return this.e;
    }
 
-   @Override
-   public int g() {
-      return this.a.e();
+   public jj<ctv> b() {
+      return this.f;
    }
 
-   @Override
-   public boolean a(cur $$0, cur $$1) {
-      return this.a.f().a($$1) || super.a($$0, $$1);
+   public wu c() {
+      return this.g;
+   }
+
+   public boolean d() {
+      return this.h;
    }
 }

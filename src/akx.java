@@ -1,184 +1,69 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.ListBuilder;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import com.mojang.serialization.ListBuilder.Builder;
-import com.mojang.serialization.RecordBuilder.MapBuilder;
-import java.nio.ByteBuffer;
-import java.util.List;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.JsonOps;
+import java.util.Collection;
 import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.stream.IntStream;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class akx<T> implements DynamicOps<T> {
-   protected final DynamicOps<T> a;
+public class akx extends aty {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Gson b = new GsonBuilder().create();
+   private Map<akk, af> c = Map.of();
+   private ak d = new ak();
+   private final jl.a e;
 
-   protected akx(DynamicOps<T> $$0) {
-      this.a = $$0;
+   public akx(jl.a $$0) {
+      super(b, "advancements");
+      this.e = $$0;
    }
 
-   public T empty() {
-      return (T)this.a.empty();
+   protected void a(Map<akk, JsonElement> $$0, atu $$1, bmr $$2) {
+      aki<JsonElement> $$3 = this.e.a(JsonOps.INSTANCE);
+      Builder<akk, af> $$4 = ImmutableMap.builder();
+      $$0.forEach(($$2x, $$3x) -> {
+         try {
+            ae $$4x = (ae)ae.a.parse($$3, $$3x).getOrThrow(JsonParseException::new);
+            this.a($$2x, $$4x);
+            $$4.put($$2x, new af($$2x, $$4x));
+         } catch (Exception var6x) {
+            a.error("Parsing error loading custom advancement {}: {}", $$2x, var6x.getMessage());
+         }
+      });
+      this.c = $$4.buildOrThrow();
+      ak $$5 = new ak();
+      $$5.a(this.c.values());
+
+      for (ag $$6 : $$5.b()) {
+         if ($$6.b().b().c().isPresent()) {
+            as.a($$6);
+         }
+      }
+
+      this.d = $$5;
    }
 
-   public T emptyMap() {
-      return (T)this.a.emptyMap();
+   private void a(akk $$0, ae $$1) {
+      ayk.a $$2 = new ayk.a();
+      $$1.a($$2, this.e.b());
+      $$2.b().ifPresent($$1x -> a.warn("Found validation problems in advancement {}: \n{}", $$0, $$1x));
    }
 
-   public T emptyList() {
-      return (T)this.a.emptyList();
+   @Nullable
+   public af a(akk $$0) {
+      return this.c.get($$0);
    }
 
-   public <U> U convertTo(DynamicOps<U> $$0, T $$1) {
-      return (U)this.a.convertTo($$0, $$1);
+   public ak a() {
+      return this.d;
    }
 
-   public DataResult<Number> getNumberValue(T $$0) {
-      return this.a.getNumberValue($$0);
-   }
-
-   public T createNumeric(Number $$0) {
-      return (T)this.a.createNumeric($$0);
-   }
-
-   public T createByte(byte $$0) {
-      return (T)this.a.createByte($$0);
-   }
-
-   public T createShort(short $$0) {
-      return (T)this.a.createShort($$0);
-   }
-
-   public T createInt(int $$0) {
-      return (T)this.a.createInt($$0);
-   }
-
-   public T createLong(long $$0) {
-      return (T)this.a.createLong($$0);
-   }
-
-   public T createFloat(float $$0) {
-      return (T)this.a.createFloat($$0);
-   }
-
-   public T createDouble(double $$0) {
-      return (T)this.a.createDouble($$0);
-   }
-
-   public DataResult<Boolean> getBooleanValue(T $$0) {
-      return this.a.getBooleanValue($$0);
-   }
-
-   public T createBoolean(boolean $$0) {
-      return (T)this.a.createBoolean($$0);
-   }
-
-   public DataResult<String> getStringValue(T $$0) {
-      return this.a.getStringValue($$0);
-   }
-
-   public T createString(String $$0) {
-      return (T)this.a.createString($$0);
-   }
-
-   public DataResult<T> mergeToList(T $$0, T $$1) {
-      return this.a.mergeToList($$0, $$1);
-   }
-
-   public DataResult<T> mergeToList(T $$0, List<T> $$1) {
-      return this.a.mergeToList($$0, $$1);
-   }
-
-   public DataResult<T> mergeToMap(T $$0, T $$1, T $$2) {
-      return this.a.mergeToMap($$0, $$1, $$2);
-   }
-
-   public DataResult<T> mergeToMap(T $$0, MapLike<T> $$1) {
-      return this.a.mergeToMap($$0, $$1);
-   }
-
-   public DataResult<T> mergeToMap(T $$0, Map<T, T> $$1) {
-      return this.a.mergeToMap($$0, $$1);
-   }
-
-   public DataResult<T> mergeToPrimitive(T $$0, T $$1) {
-      return this.a.mergeToPrimitive($$0, $$1);
-   }
-
-   public DataResult<Stream<Pair<T, T>>> getMapValues(T $$0) {
-      return this.a.getMapValues($$0);
-   }
-
-   public DataResult<Consumer<BiConsumer<T, T>>> getMapEntries(T $$0) {
-      return this.a.getMapEntries($$0);
-   }
-
-   public T createMap(Map<T, T> $$0) {
-      return (T)this.a.createMap($$0);
-   }
-
-   public T createMap(Stream<Pair<T, T>> $$0) {
-      return (T)this.a.createMap($$0);
-   }
-
-   public DataResult<MapLike<T>> getMap(T $$0) {
-      return this.a.getMap($$0);
-   }
-
-   public DataResult<Stream<T>> getStream(T $$0) {
-      return this.a.getStream($$0);
-   }
-
-   public DataResult<Consumer<Consumer<T>>> getList(T $$0) {
-      return this.a.getList($$0);
-   }
-
-   public T createList(Stream<T> $$0) {
-      return (T)this.a.createList($$0);
-   }
-
-   public DataResult<ByteBuffer> getByteBuffer(T $$0) {
-      return this.a.getByteBuffer($$0);
-   }
-
-   public T createByteList(ByteBuffer $$0) {
-      return (T)this.a.createByteList($$0);
-   }
-
-   public DataResult<IntStream> getIntStream(T $$0) {
-      return this.a.getIntStream($$0);
-   }
-
-   public T createIntList(IntStream $$0) {
-      return (T)this.a.createIntList($$0);
-   }
-
-   public DataResult<LongStream> getLongStream(T $$0) {
-      return this.a.getLongStream($$0);
-   }
-
-   public T createLongList(LongStream $$0) {
-      return (T)this.a.createLongList($$0);
-   }
-
-   public T remove(T $$0, String $$1) {
-      return (T)this.a.remove($$0, $$1);
-   }
-
-   public boolean compressMaps() {
-      return this.a.compressMaps();
-   }
-
-   public ListBuilder<T> listBuilder() {
-      return new Builder(this);
-   }
-
-   public RecordBuilder<T> mapBuilder() {
-      return new MapBuilder(this);
+   public Collection<af> b() {
+      return this.c.values();
    }
 }

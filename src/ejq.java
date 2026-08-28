@@ -1,29 +1,42 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collections;
+import java.util.List;
 
-public class ejq extends ejs {
-   public static final MapCodec<ejq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c(), b(), d()).apply($$0, ejq::new));
+public class ejq extends ejx {
+   public static final MapCodec<ejq> a = MapCodec.unit(() -> ejq.b);
+   public static final ejq b = new ejq();
 
-   protected ejq(Either<alf, emm> $$0, ji<emk> $$1, ejv.a $$2) {
-      super($$0, $$1, $$2);
+   private ejq() {
+      super(ejz.a.a);
    }
 
    @Override
-   protected emi a(dlo $$0, eie $$1, boolean $$2) {
-      emi $$3 = super.a($$0, $$1, $$2);
-      $$3.b(elo.b);
-      $$3.a(elo.d);
-      return $$3;
+   public ke a(emr $$0, dls $$1) {
+      return ke.g;
    }
 
    @Override
-   public eju<?> a() {
-      return eju.e;
+   public List<emq.c> a(emr $$0, ja $$1, dls $$2, aym $$3) {
+      return Collections.emptyList();
+   }
+
+   @Override
+   public eii a(emr $$0, ja $$1, dls $$2) {
+      throw new IllegalStateException("Invalid call to EmtyPoolElement.getBoundingBox, filter me!");
+   }
+
+   @Override
+   public boolean a(emr $$0, dcz $$1, dcx $$2, due $$3, ja $$4, ja $$5, dls $$6, eii $$7, aym $$8, boolean $$9) {
+      return true;
+   }
+
+   @Override
+   public ejy<?> a() {
+      return ejy.d;
    }
 
    @Override
    public String toString() {
-      return "LegacySingle[" + this.c + "]";
+      return "Empty";
    }
 }

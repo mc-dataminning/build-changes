@@ -1,84 +1,52 @@
-import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class uu implements vp {
-   private static final int c = 8;
-   public static final vr<uu> a = new vr<uu>() {
-      public uu a(DataInput $$0, vb $$1) {
-         $$1.b(8L);
-         return uu.b;
-      }
+public interface uu {
+   int d = 8;
+   int e = 12;
+   int f = 4;
+   int g = 28;
+   byte h = 0;
+   byte i = 1;
+   byte j = 2;
+   byte k = 3;
+   byte l = 4;
+   byte m = 5;
+   byte n = 6;
+   byte o = 7;
+   byte p = 8;
+   byte q = 9;
+   byte r = 10;
+   byte s = 11;
+   byte t = 12;
+   byte u = 99;
+   int v = 512;
 
-      @Override
-      public vm.b a(DataInput $$0, vm $$1, vb $$2) {
-         $$2.b(8L);
-         return $$1.a();
-      }
-
-      @Override
-      public void a(DataInput $$0, int $$1, vb $$2) {
-      }
-
-      @Override
-      public void b(DataInput $$0, vb $$1) {
-      }
-
-      @Override
-      public String a() {
-         return "END";
-      }
-
-      @Override
-      public String b() {
-         return "TAG_End";
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-   };
-   public static final uu b = new uu();
-
-   private uu() {
-   }
+   void a(DataOutput var1) throws IOException;
 
    @Override
-   public void a(DataOutput $$0) throws IOException {
+   String toString();
+
+   byte b();
+
+   uw<?> c();
+
+   uu d();
+
+   int a();
+
+   default String s_() {
+      return new ut().a(this);
    }
 
-   @Override
-   public int a() {
-      return 8;
-   }
+   void a(uy var1);
 
-   @Override
-   public byte b() {
-      return 0;
-   }
+   ur.b a(ur var1);
 
-   @Override
-   public vr<uu> c() {
-      return a;
-   }
-
-   @Override
-   public String toString() {
-      return this.s_();
-   }
-
-   public uu e() {
-      return this;
-   }
-
-   @Override
-   public void a(vt $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public vm.b a(vm $$0) {
-      return $$0.a();
+   default void b(ur $$0) {
+      ur.b $$1 = $$0.b(this.c());
+      if ($$1 == ur.b.a) {
+         this.a($$0);
+      }
    }
 }

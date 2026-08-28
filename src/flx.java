@@ -1,102 +1,57 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.util.List;
+public class flx extends fnd {
+   private final Runnable c;
+   protected final flx.a a;
+   private final wu q;
+   private final boolean r;
+   private fif s = fif.a;
+   protected int b;
+   private fho u;
 
-public class flx extends fnf {
-   private static final int d = 20;
-   private final xp r;
-   private fhz s = fhz.a;
-   protected xp a;
-   protected xp b;
-   private int u;
-   protected final BooleanConsumer c;
-   private final List<fhg> v = Lists.newArrayList();
-
-   public flx(BooleanConsumer $$0, xp $$1, xp $$2) {
-      this($$0, $$1, $$2, xo.f, xo.g);
-   }
-
-   public flx(BooleanConsumer $$0, xp $$1, xp $$2, xp $$3, xp $$4) {
-      super($$1);
+   public flx(Runnable $$0, flx.a $$1, wu $$2, wu $$3, boolean $$4) {
+      super($$2);
       this.c = $$0;
-      this.r = $$2;
-      this.a = $$3;
-      this.b = $$4;
+      this.a = $$1;
+      this.q = $$3;
+      this.r = $$4;
    }
 
    @Override
-   public xp i() {
-      return xo.a(super.i(), this.r);
+   protected void aO_() {
+      super.aO_();
+      this.s = fif.a(this.o, this.q, this.m - 50);
+      int $$0 = (this.s.a() + 1) * 9;
+      this.c(fhm.a(wu.c("selectWorld.backupJoinConfirmButton"), $$0x -> this.a.proceed(true, this.u.a())).a(this.m / 2 - 155, 100 + $$0, 150, 20).a());
+      this.c(fhm.a(wu.c("selectWorld.backupJoinSkipButton"), $$0x -> this.a.proceed(false, this.u.a())).a(this.m / 2 - 155 + 160, 100 + $$0, 150, 20).a());
+      this.c(fhm.a(wt.e, $$0x -> this.c.run()).a(this.m / 2 - 155 + 80, 124 + $$0, 150, 20).a());
+      this.u = fho.a(wu.c("selectWorld.backupEraseCache"), this.o).a(this.m / 2 - 155 + 80, 76 + $$0).a();
+      if (this.r) {
+         this.c(this.u);
+      }
    }
 
    @Override
-   protected void aM_() {
-      super.aM_();
-      this.s = fhz.a(this.p, this.r, this.n - 50);
-      int $$0 = ayz.a(this.E() + this.F() + 20, this.o / 6 + 96, this.o - 24);
-      this.v.clear();
-      this.a($$0);
-   }
-
-   protected void a(int $$0) {
-      this.a(fhg.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 155, $$0, 150, 20).a());
-      this.a(fhg.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 155 + 160, $$0, 150, 20).a());
-   }
-
-   protected void a(fhg $$0) {
-      this.v.add(this.c($$0));
-   }
-
-   @Override
-   public void a(fgt $$0, int $$1, int $$2, float $$3) {
+   public void a(fgz $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, this.m(), 16777215);
-      this.s.a($$0, this.n / 2, this.E());
-   }
-
-   private int m() {
-      int $$0 = (this.o - this.F()) / 2;
-      return ayz.a($$0 - 20 - 9, 10, 80);
-   }
-
-   private int E() {
-      return this.m() + 20;
-   }
-
-   private int F() {
-      return this.s.a() * 9;
-   }
-
-   public void b(int $$0) {
-      this.u = $$0;
-
-      for (fhg $$1 : this.v) {
-         $$1.j = false;
-      }
+      $$0.a(this.o, this.k, this.m / 2, 50, 16777215);
+      this.s.a($$0, this.m / 2, 70);
    }
 
    @Override
-   public void e() {
-      super.e();
-      if (--this.u == 0) {
-         for (fhg $$0 : this.v) {
-            $$0.j = true;
-         }
-      }
-   }
-
-   @Override
-   public boolean aC_() {
+   public boolean aE_() {
       return false;
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
       if ($$0 == 256) {
-         this.c.accept(false);
+         this.c.run();
          return true;
       } else {
          return super.a($$0, $$1, $$2);
       }
+   }
+
+   public interface a {
+      void proceed(boolean var1, boolean var2);
    }
 }

@@ -1,11 +1,37 @@
-public class ghw extends gkf<cgq, fta> {
-   private static final alf a = new alf("textures/entity/armadillo.png");
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   public ghw(giz.a $$0) {
-      super($$0, new fta($$0.a(fxb.b)), 0.4F);
+public class ghw implements ghj.a {
+   private static final int a = 60;
+   private final Set<kc> b = Sets.newHashSet();
+
+   ghw() {
    }
 
-   public alf a(cgq $$0) {
-      return a;
+   @Override
+   public void a() {
+      this.b.clear();
+   }
+
+   public void a(kc $$0) {
+      this.b.add($$0);
+   }
+
+   public void b(kc $$0) {
+      this.b.remove($$0);
+   }
+
+   @Override
+   public void a(fag $$0, gdx $$1, double $$2, double $$3, double $$4) {
+      ja $$5 = ja.a($$2, $$3, $$4);
+      this.b.forEach($$3x -> {
+         if ($$5.a($$3x.q(), 60.0)) {
+            a($$0, $$1, $$3x);
+         }
+      });
+   }
+
+   private static void a(fag $$0, gdx $$1, kc $$2) {
+      ghj.a($$0, $$1, $$2.q(), 0.2F, 1.0F, 0.2F, 0.15F);
    }
 }

@@ -1,109 +1,77 @@
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class doy extends dpj implements brb {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 6;
-   private static final String c = "patterns";
+public class doy extends dmh {
+   public static final MapCodec<doy> b = b(doy::new);
    @Nullable
-   private xp d;
-   private ctk e;
-   private dpa f = dpa.a;
-
-   public doy(iz $$0, dse $$1) {
-      super(dpl.t, $$0, $$1);
-      this.e = ((dds)$$1.b()).b();
-   }
-
-   public doy(iz $$0, dse $$1, ctk $$2) {
-      this($$0, $$1);
-      this.e = $$2;
-   }
-
-   public void a(cur $$0, ctk $$1) {
-      this.e = $$1;
-      this.a($$0);
-   }
-
-   @Override
-   public xp af() {
-      return (xp)(this.d != null ? this.d : xp.c("block.minecraft.banner"));
-   }
-
+   private static dsm h;
    @Nullable
+   private static dsm i;
+
    @Override
-   public xp ah() {
-      return this.d;
+   public MapCodec<doy> a() {
+      return b;
+   }
+
+   protected doy(dsg.d $$0) {
+      super(dmh.b.d, $$0);
    }
 
    @Override
-   protected void b(us $$0, jk.a $$1) {
-      super.b($$0, $$1);
-      if (!this.f.equals(dpa.a)) {
-         $$0.a("patterns", (vp)dpa.b.encodeStart($$1.a(vg.a), this.f).getOrThrow());
-      }
-
-      if (this.d != null) {
-         $$0.a("CustomName", xp.a.a(this.d, $$1));
-      }
+   public void a(dcd $$0, ja $$1, dsh $$2, @Nullable bsy $$3, cua $$4) {
+      a($$0, $$1);
    }
 
-   @Override
-   protected void a(us $$0, jk.a $$1) {
-      super.a($$0, $$1);
-      if ($$0.b("CustomName", 8)) {
-         this.d = a($$0.l("CustomName"), $$1);
-      }
-
-      if ($$0.e("patterns")) {
-         dpa.b
-            .parse($$1.a(vg.a), $$0.c("patterns"))
-            .resultOrPartial($$0x -> b.error("Failed to parse banner patterns: '{}'", $$0x))
-            .ifPresent($$0x -> this.f = $$0x);
+   public static void a(dcd $$0, ja $$1) {
+      if ($$0.c_($$1) instanceof dqz $$2) {
+         a($$0, $$1, $$2);
       }
    }
 
-   public acp a() {
-      return acp.a(this);
+   public static void a(dcd $$0, ja $$1, dqz $$2) {
+      if (!$$0.B) {
+         dsh $$3 = $$2.n();
+         boolean $$4 = $$3.a(dfh.gG) || $$3.a(dfh.gH);
+         if ($$4 && $$1.v() >= $$0.I_() && $$0.al() != bqa.a) {
+            dsm.b $$5 = y().a($$0, $$1);
+            if ($$5 != null) {
+               cie $$6 = bsj.bp.a($$0);
+               if ($$6 != null) {
+                  dfz.a($$0, $$5);
+                  ja $$7 = $$5.a(1, 2, 0).d();
+                  $$6.b((double)$$7.u() + 0.5, (double)$$7.v() + 0.55, (double)$$7.w() + 0.5, $$5.b().o() == jf.a.a ? 0.0F : 90.0F, 0.0F);
+                  $$6.aY = $$5.b().o() == jf.a.a ? 0.0F : 90.0F;
+                  $$6.s();
+
+                  for (aql $$8 : $$0.a(aql.class, $$6.cK().g(50.0))) {
+                     am.o.a($$8, $$6);
+                  }
+
+                  $$0.b($$6);
+                  dfz.b($$0, $$5);
+               }
+            }
+         }
+      }
    }
 
-   @Override
-   public us a(jk.a $$0) {
-      return this.d($$0);
+   public static boolean b(dcd $$0, ja $$1, cua $$2) {
+      return $$2.a(cud.um) && $$1.v() >= $$0.I_() + 2 && $$0.al() != bqa.a && !$$0.B ? z().a($$0, $$1) != null : false;
    }
 
-   public dpa b() {
-      return this.f;
+   private static dsm y() {
+      if (h == null) {
+         h = dsn.a().a("^^^", "###", "~#~").a('#', $$0 -> $$0.a().a(avu.aF)).a('^', dsl.a(dsq.a(dfh.gG).or(dsq.a(dfh.gH)))).a('~', $$0 -> $$0.a().i()).b();
+      }
+
+      return h;
    }
 
-   public cur c() {
-      cur $$0 = new cur(deg.a(this.e));
-      $$0.b(this.s());
-      return $$0;
-   }
+   private static dsm z() {
+      if (i == null) {
+         i = dsn.a().a("   ", "###", "~#~").a('#', $$0 -> $$0.a().a(avu.aF)).a('~', $$0 -> $$0.a().i()).b();
+      }
 
-   public ctk f() {
-      return this.e;
-   }
-
-   @Override
-   protected void a(dpj.b $$0) {
-      super.a($$0);
-      this.f = $$0.a(km.X, dpa.a);
-      this.d = $$0.a(km.g);
-   }
-
-   @Override
-   protected void a(ki.a $$0) {
-      super.a($$0);
-      $$0.a(km.X, this.f);
-      $$0.a(km.g, this.d);
-   }
-
-   @Override
-   public void a(us $$0) {
-      $$0.r("patterns");
-      $$0.r("CustomName");
+      return i;
    }
 }

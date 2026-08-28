@@ -1,180 +1,114 @@
-import java.time.LocalDate;
-import java.time.temporal.ChronoField;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public abstract class cjn extends ckf implements ckj {
-   private static final int b = 20;
-   private static final int c = 40;
-   private final cbp<cjn> d = new cbp<>(this, 1.0, 20, 15.0F);
-   private final caz e = new caz(this, 1.2, false) {
-      @Override
-      public void d() {
-         super.d();
-         cjn.this.v(false);
-      }
-
-      @Override
-      public void c() {
-         super.c();
-         cjn.this.v(true);
-      }
-   };
-
-   protected cjn(btc<? extends cjn> $$0, dca $$1) {
+public abstract class cjn extends bth implements cjf {
+   protected cjn(bsj<? extends cjn> $$0, dcd $$1) {
       super($$0, $$1);
-      this.y();
+      this.bP = 5;
    }
 
    @Override
-   protected void z() {
-      this.bS.a(2, new cbs(this));
-      this.bS.a(3, new cai(this, 1.0));
-      this.bS.a(3, new bzw<>(this, cgk.class, 6.0F, 1.0, 1.2));
-      this.bS.a(5, new ccc(this, 1.0));
-      this.bS.a(6, new cax(this, cmz.class, 8.0F));
-      this.bS.a(6, new cbk(this));
-      this.bT.a(1, new cch(this));
-      this.bT.a(2, new cci<>(this, cmz.class, true));
-      this.bT.a(3, new cci<>(this, cft.class, true));
-      this.bT.a(3, new cci<>(this, cgi.class, 10, true, false, cgi.bY));
+   public avg de() {
+      return avg.f;
    }
-
-   public static buy.a s() {
-      return ckf.gw().a(buz.r, 0.25);
-   }
-
-   @Override
-   protected void b(iz $$0, dse $$1) {
-      this.a(this.u(), 0.15F, 1.0F);
-   }
-
-   abstract avz u();
 
    @Override
    public void n_() {
-      boolean $$0 = this.gk();
-      if ($$0) {
-         cur $$1 = this.a(btd.f);
-         if (!$$1.e()) {
-            if ($$1.l()) {
-               $$1.b($$1.n() + this.ah.a(2));
-               if ($$1.n() >= $$1.o()) {
-                  this.e(btd.f);
-                  this.a(btd.f, cur.l);
-               }
-            }
-
-            $$0 = false;
-         }
-
-         if ($$0) {
-            this.g(8);
-         }
-      }
-
+      this.eR();
+      this.gs();
       super.n_();
    }
 
-   @Override
-   public void t() {
-      super.t();
-      if (this.dd() instanceof bua $$0) {
-         this.aY = $$0.aY;
+   protected void gs() {
+      float $$0 = this.bt();
+      if ($$0 > 0.5F) {
+         this.bf += 2;
       }
    }
 
    @Override
-   protected void a(azh $$0, bqu $$1) {
-      super.a($$0, $$1);
-      this.a(btd.a, new cur(cuu.ou));
+   protected boolean X() {
+      return true;
    }
 
-   @Nullable
    @Override
-   public buk a(dcp $$0, bqu $$1, btv $$2, @Nullable buk $$3) {
-      $$3 = super.a($$0, $$1, $$2, $$3);
-      azh $$4 = $$0.E_();
-      this.a($$4, $$1);
-      this.b($$4, $$1);
-      this.y();
-      this.a_($$4.i() < 0.55F * $$1.d());
-      if (this.a(btd.f).e()) {
-         LocalDate $$5 = LocalDate.now();
-         int $$6 = $$5.get(ChronoField.DAY_OF_MONTH);
-         int $$7 = $$5.get(ChronoField.MONTH_OF_YEAR);
-         if ($$7 == 10 && $$6 == 31 && $$4.i() < 0.25F) {
-            this.a(btd.f, new cur($$4.i() < 0.1F ? dfd.ef : dfd.ee));
-            this.bV[btd.f.b()] = 0.0F;
-         }
-      }
-
-      return $$3;
+   protected ave aP() {
+      return avf.mY;
    }
 
-   public void y() {
-      if (this.dP() != null && !this.dP().B) {
-         this.bS.a(this.e);
-         this.bS.a(this.d);
-         cur $$0 = this.b(cnt.a(this, cuu.ou));
-         if ($$0.a(cuu.ou)) {
-            int $$1 = this.gq();
-            if (this.dP().al() != bqt.d) {
-               $$1 = this.gr();
-            }
+   @Override
+   protected ave aQ() {
+      return avf.mX;
+   }
 
-            this.d.c($$1);
-            this.bS.a(4, this.d);
+   @Override
+   protected ave d(bqw $$0) {
+      return avf.mV;
+   }
+
+   @Override
+   protected ave o_() {
+      return avf.mU;
+   }
+
+   @Override
+   public bsy.a eH() {
+      return new bsy.a(avf.mW, avf.mT);
+   }
+
+   @Override
+   public float a(ja $$0, dcg $$1) {
+      return -$$1.w($$0);
+   }
+
+   public static boolean a(dcs $$0, ja $$1, aym $$2) {
+      if ($$0.a(dcm.a, $$1) > $$2.a(32)) {
+         return false;
+      } else {
+         dvz $$3 = $$0.D_();
+         int $$4 = $$3.e();
+         if ($$4 < 15 && $$0.a(dcm.b, $$1) > $$4) {
+            return false;
          } else {
-            this.bS.a(4, this.e);
+            int $$5 = $$0.E().ac() ? $$0.c($$1, 10) : $$0.A($$1);
+            return $$5 <= $$3.d().a($$2);
          }
       }
    }
 
-   protected int gq() {
-      return 20;
+   public static boolean b(bsj<? extends cjn> $$0, dcs $$1, btc $$2, ja $$3, aym $$4) {
+      return $$1.al() != bqa.a && (btc.b($$2) || a($$1, $$3, $$4)) && a($$0, $$1, $$2, $$3, $$4);
    }
 
-   protected int gr() {
-      return 40;
+   public static boolean c(bsj<? extends cjn> $$0, dce $$1, btc $$2, ja $$3, aym $$4) {
+      return $$1.al() != bqa.a && a($$0, $$1, $$2, $$3, $$4);
    }
 
-   @Override
-   public void a(btr $$0, float $$1) {
-      cur $$2 = this.g(this.b(cnt.a(this, cuu.ou)));
-      cnf $$3 = this.b($$2, $$1);
-      double $$4 = $$0.du() - this.du();
-      double $$5 = $$0.e(0.3333333333333333) - $$3.dw();
-      double $$6 = $$0.dA() - this.dA();
-      double $$7 = Math.sqrt($$4 * $$4 + $$6 * $$6);
-      $$3.c($$4, $$5 + $$7 * 0.2F, $$6, 1.6F, (float)(14 - this.dP().al().a() * 4));
-      this.a(awa.xk, 1.0F, 1.0F / (this.el().i() * 0.4F + 0.8F));
-      this.dP().b($$3);
-   }
-
-   protected cnf b(cur $$0, float $$1) {
-      return cnt.a(this, $$0, $$1);
+   public static buf.a gt() {
+      return bta.A().a(bug.c);
    }
 
    @Override
-   public boolean a(cvk $$0) {
-      return $$0 == cuu.ou;
+   public boolean ee() {
+      return true;
    }
 
    @Override
-   public void a(us $$0) {
-      super.a($$0);
-      this.y();
+   protected boolean ef() {
+      return true;
+   }
+
+   public boolean f(cmh $$0) {
+      return true;
    }
 
    @Override
-   public void a(btd $$0, cur $$1) {
-      super.a($$0, $$1);
-      if (!this.dP().B) {
-         this.y();
+   public cua g(cua $$0) {
+      if ($$0.g() instanceof cut) {
+         Predicate<cua> $$1 = ((cut)$$0.g()).d();
+         cua $$2 = cut.a(this, $$1);
+         return $$2.e() ? new cua(cud.ov) : $$2;
+      } else {
+         return cua.l;
       }
-   }
-
-   public boolean gs() {
-      return this.co();
    }
 }

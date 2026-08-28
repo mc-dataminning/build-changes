@@ -2,53 +2,28 @@ import com.google.common.collect.Lists;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
-import org.slf4j.Logger;
 
-public class fbz extends fbw {
-   private static final Logger e = LogUtils.getLogger();
-   public List<fby> a;
-   public int b;
-   public int c;
-   public int d;
-
-   public fbz() {
-   }
-
-   public fbz(int $$0) {
-      this.a = Collections.emptyList();
-      this.b = 0;
-      this.c = $$0;
-      this.d = -1;
-   }
-
-   public boolean a() {
-      return this.b * this.c >= this.d && this.b > 0 && this.d > 0 && this.c > 0;
-   }
+public class fbz extends fcc {
+   public long a;
+   public List<fby> b = Lists.newArrayList();
 
    public static fbz a(String $$0) {
       fbz $$1 = new fbz();
-      $$1.a = Lists.newArrayList();
+      JsonParser $$2 = new JsonParser();
 
       try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("templates").isJsonArray()) {
-            Iterator<JsonElement> $$4 = $$3.get("templates").getAsJsonArray().iterator();
-
-            while ($$4.hasNext()) {
-               $$1.a.add(fby.a($$4.next().getAsJsonObject()));
+         JsonElement $$3 = $$2.parse($$0);
+         JsonObject $$4 = $$3.getAsJsonObject();
+         $$1.a = fdz.a("periodInMillis", $$4, -1L);
+         JsonElement $$5 = $$4.get("playerActivityDto");
+         if ($$5 != null && $$5.isJsonArray()) {
+            for (JsonElement $$7 : $$5.getAsJsonArray()) {
+               fby $$8 = fby.a($$7.getAsJsonObject());
+               $$1.b.add($$8);
             }
          }
-
-         $$1.b = fdt.a("page", $$3, 0);
-         $$1.c = fdt.a("size", $$3, 0);
-         $$1.d = fdt.a("total", $$3, 0);
-      } catch (Exception var5) {
-         e.error("Could not parse WorldTemplatePaginatedList: {}", var5.getMessage());
+      } catch (Exception var10) {
       }
 
       return $$1;

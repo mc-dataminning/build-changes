@@ -1,47 +1,98 @@
+import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
-public final class bsf {
-   public static xp a(bse $$0, float $$1, float $$2) {
-      if ($$0.b()) {
-         return xp.c("effect.duration.infinite");
+public class bsf {
+   private final Map<bse, List<evz>> a;
+
+   bsf(Map<bse, List<evz>> $$0) {
+      this.a = $$0;
+   }
+
+   public static bsf a(float $$0, float $$1) {
+      return a().a($$0, $$1);
+   }
+
+   public static bsf.a a() {
+      return new bsf.a();
+   }
+
+   public bsf a(float $$0, float $$1, float $$2) {
+      Map<bse, List<evz>> $$3 = new EnumMap<>(bse.class);
+
+      for (Entry<bse, List<evz>> $$4 : this.a.entrySet()) {
+         $$3.put($$4.getKey(), a($$4.getValue(), $$0, $$1, $$2));
+      }
+
+      return new bsf($$3);
+   }
+
+   private static List<evz> a(List<evz> $$0, float $$1, float $$2, float $$3) {
+      List<evz> $$4 = new ArrayList<>($$0.size());
+
+      for (evz $$5 : $$0) {
+         $$4.add($$5.d((double)$$1, (double)$$2, (double)$$3));
+      }
+
+      return $$4;
+   }
+
+   @Nullable
+   public evz a(bse $$0, int $$1, float $$2) {
+      List<evz> $$3 = this.a.get($$0);
+      return $$1 >= 0 && $$1 < $$3.size() ? a($$3.get($$1), $$2) : null;
+   }
+
+   public evz b(bse $$0, int $$1, float $$2) {
+      evz $$3 = this.a($$0, $$1, $$2);
+      if ($$3 == null) {
+         throw new IllegalStateException("Had no attachment point of type: " + $$0 + " for index: " + $$1);
       } else {
-         int $$3 = ayz.d((float)$$0.d() * $$1);
-         return xp.b(azv.a($$3, $$2));
+         return $$3;
       }
    }
 
-   public static boolean a(btr $$0) {
-      return $$0.b(bsg.c) || $$0.b(bsg.C);
+   public evz c(bse $$0, int $$1, float $$2) {
+      List<evz> $$3 = this.a.get($$0);
+      if ($$3.isEmpty()) {
+         throw new IllegalStateException("Had no attachment points of type: " + $$0);
+      } else {
+         evz $$4 = $$3.get(aye.a($$1, 0, $$3.size() - 1));
+         return a($$4, $$2);
+      }
    }
 
-   public static int b(btr $$0) {
-      int $$1 = 0;
-      int $$2 = 0;
-      if ($$0.b(bsg.c)) {
-         $$1 = $$0.c(bsg.c).e();
+   private static evz a(evz $$0, float $$1) {
+      return $$0.b(-$$1 * (float) (Math.PI / 180.0));
+   }
+
+   public static class a {
+      private final Map<bse, List<evz>> a = new EnumMap<>(bse.class);
+
+      a() {
       }
 
-      if ($$0.b(bsg.C)) {
-         $$2 = $$0.c(bsg.C).e();
+      public bsf.a a(bse $$0, float $$1, float $$2, float $$3) {
+         return this.a($$0, new evz((double)$$1, (double)$$2, (double)$$3));
       }
 
-      return Math.max($$1, $$2);
-   }
+      public bsf.a a(bse $$0, evz $$1) {
+         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>(1)).add($$1);
+         return this;
+      }
 
-   public static boolean c(btr $$0) {
-      return $$0.b(bsg.m) || $$0.b(bsg.C);
-   }
+      public bsf a(float $$0, float $$1) {
+         Map<bse, List<evz>> $$2 = new EnumMap<>(bse.class);
 
-   public static List<arg> a(arf $$0, @Nullable bsw $$1, evt $$2, double $$3, bse $$4, int $$5) {
-      ji<bsc> $$6 = $$4.c();
-      List<arg> $$7 = $$0.a(
-         $$6x -> $$6x.e.d()
-               && ($$1 == null || !$$1.s($$6x))
-               && $$2.a((js)$$6x.dn(), $$3)
-               && (!$$6x.b($$6) || $$6x.c($$6).e() < $$4.e() || $$6x.c($$6).a($$5 - 1))
-      );
-      $$7.forEach($$2x -> $$2x.b(new bse($$4), $$1));
-      return $$7;
+         for (bse $$3 : bse.values()) {
+            List<evz> $$4 = this.a.get($$3);
+            $$2.put($$3, $$4 != null ? List.copyOf($$4) : $$3.a($$0, $$1));
+         }
+
+         return new bsf($$2);
+      }
    }
 }

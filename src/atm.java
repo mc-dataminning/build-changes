@@ -1,29 +1,19 @@
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Map;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
-interface atm {
-   atm a = new atm() {
-      @Override
-      public String toString() {
-         return "empty";
-      }
-   };
-   atm b = new atm() {
-      @Override
-      public String toString() {
-         return "relative";
-      }
-   };
-
-   public static record a(Map<String, atj> c) implements atm {
-      public Map<String, atj> a() {
-         return this.c;
-      }
+@FunctionalInterface
+public interface atm<T> {
+   static atm<InputStream> create(Path $$0) {
+      return () -> Files.newInputStream($$0);
    }
 
-   public static record b(Path c) implements atm {
-      public Path a() {
-         return this.c;
-      }
+   static atm<InputStream> create(ZipFile $$0, ZipEntry $$1) {
+      return () -> $$0.getInputStream($$1);
    }
+
+   T get() throws IOException;
 }

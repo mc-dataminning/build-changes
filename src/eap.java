@@ -1,52 +1,48 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntListIterator;
+import java.util.stream.IntStream;
 
-public abstract class eap extends eba<edl> {
-   public eap(Codec<edl> $$0) {
+public class eap extends ebe<edp> {
+   public eap(Codec<edp> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebc<edl> $$0) {
-      azh $$1 = $$0.d();
-      dcv $$2 = $$0.b();
-      iz $$3 = $$0.e();
-      Optional<dfb> $$4 = lp.e.a(awp.aq, $$1).map(ji::a);
-      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().o());
-   }
+   public boolean a(ebg<edp> $$0) {
+      aym $$1 = $$0.d();
+      dcz $$2 = $$0.b();
+      dbk $$3 = new dbk($$0.e());
+      IntArrayList $$4 = ac.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
+      IntArrayList $$5 = ac.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
+      ja.a $$6 = new ja.a();
+      IntListIterator var8 = $$4.iterator();
 
-   protected abstract boolean a(dcb var1, azh var2, iz var3, dse var4);
+      while (var8.hasNext()) {
+         Integer $$7 = (Integer)var8.next();
+         IntListIterator var10 = $$5.iterator();
 
-   protected boolean b(dcb $$0, azh $$1, iz $$2, dse $$3) {
-      iz $$4 = $$2.c();
-      dse $$5 = $$0.a_($$2);
-      if (($$5.a(dfd.G) || $$5.a(awp.at)) && $$0.a_($$4).a(dfd.G)) {
-         $$0.a($$2, $$3, 3);
-         if ($$1.i() < 0.25F) {
-            lp.e.a(awp.at, $$1).map(ji::a).ifPresent($$2x -> $$0.a($$4, $$2x.o(), 2));
-         } else if ($$1.i() < 0.05F) {
-            $$0.a($$4, dfd.mV.o().a(dly.c, Integer.valueOf($$1.a(4) + 1)), 2);
-         }
+         while (var10.hasNext()) {
+            Integer $$8 = (Integer)var10.next();
+            $$6.d($$7, 0, $$8);
+            ja $$9 = $$2.a(dxz.a.f, $$6);
+            if ($$2.u($$9) || $$2.a_($$9).k($$2, $$9).c()) {
+               $$2.a($$9, dfh.cv.o(), 2);
+               bql.a($$2, $$1, $$9, eqk.b);
+               dsh $$10 = dfh.cp.o();
 
-         for (je $$6 : je.c.a) {
-            if ($$1.i() < 0.2F) {
-               iz $$7 = $$2.a($$6);
-               if ($$0.a_($$7).a(dfd.G)) {
-                  lp.e.a(awp.ar, $$1).map(ji::a).ifPresent($$3x -> {
-                     dse $$4x = $$3x.o();
-                     if ($$4x.b(dem.c)) {
-                        $$4x = $$4x.a(dem.c, $$6);
-                     }
-
-                     $$0.a($$7, $$4x, 2);
-                  });
+               for (jf $$11 : jf.c.a) {
+                  ja $$12 = $$9.a($$11);
+                  if ($$10.a($$2, $$12)) {
+                     $$2.a($$12, $$10, 2);
+                  }
                }
+
+               return true;
             }
          }
-
-         return true;
-      } else {
-         return false;
       }
+
+      return false;
    }
 }

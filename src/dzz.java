@@ -1,24 +1,61 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dzz<WC extends dzu>(eab<WC> d, WC e) {
-   public static final Codec<dzz<?>> a = lp.P.q().dispatch($$0 -> $$0.d, eab::c);
-   public static final Codec<ji<dzz<?>>> b = alb.a(lq.aB, a);
-   public static final Codec<jm<dzz<?>>> c = jx.a(lq.aB, a);
+public class dzz {
+   public static final dzz a = new dzz(false, dfh.gz.o(), dfh.pL.o(), dfh.ej.o(), dfh.aQ.o());
+   public static final Codec<dzz> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(dzz::a),
+               dsh.b.optionalFieldOf("air_state", a.b()).forGetter(dzz::b),
+               dsh.b.optionalFieldOf("water_state", a.b()).forGetter(dzz::c),
+               dsh.b.optionalFieldOf("lava_state", a.b()).forGetter(dzz::d),
+               dsh.b.optionalFieldOf("barrier_state", a.b()).forGetter(dzz::e)
+            )
+            .apply($$0, dzz::new)
+   );
+   private final boolean c;
+   private final dsh d;
+   private final dsh e;
+   private final dsh f;
+   private final dsh g;
 
-   public boolean a(azh $$0) {
-      return this.d.a(this.e, $$0);
+   public static dzz a(boolean $$0, dsh $$1, dsh $$2, dsh $$3, dsh $$4) {
+      return new dzz($$0, $$1, $$2, $$3, $$4);
    }
 
-   public boolean a(dzw $$0, dua $$1, Function<iz, ji<dcz>> $$2, azh $$3, dxi $$4, dbh $$5, dtz $$6) {
-      return aa.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
+   public static dzz a(dsh $$0, dsh $$1, dsh $$2, dsh $$3) {
+      return new dzz(false, $$0, $$1, $$2, $$3);
    }
 
-   public eab<WC> a() {
+   public static dzz a(boolean $$0, dsh $$1) {
+      return new dzz($$0, $$1, a.c(), a.d(), a.e());
+   }
+
+   private dzz(boolean $$0, dsh $$1, dsh $$2, dsh $$3, dsh $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+   }
+
+   public boolean a() {
+      return this.c;
+   }
+
+   public dsh b() {
       return this.d;
    }
 
-   public WC b() {
+   public dsh c() {
       return this.e;
+   }
+
+   public dsh d() {
+      return this.f;
+   }
+
+   public dsh e() {
+      return this.g;
    }
 }

@@ -1,94 +1,62 @@
 import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.concurrent.CompletableFuture;
 
-public class gt {
-   private static final char c = '~';
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xp.c("argument.pos.missing.double"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xp.c("argument.pos.missing.int"));
+public class gt implements ArgumentType<go> {
+   private static final Collection<String> c = Arrays.asList("0 0 0", "~ ~ ~", "^ ^ ^", "^1 ^ ^-5", "0.1 -0.5 .9", "~0.5 ~1 ~-5");
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("argument.pos3d.incomplete"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wu.c("argument.pos.mixed"));
    private final boolean d;
-   private final double e;
 
-   public gt(boolean $$0, double $$1) {
+   public gt(boolean $$0) {
       this.d = $$0;
-      this.e = $$1;
    }
 
-   public double a(double $$0) {
-      return this.d ? this.e + $$0 : this.e;
+   public static gt a() {
+      return new gt(true);
    }
 
-   public static gt a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
-      if ($$0.canRead() && $$0.peek() == '^') {
-         throw gs.b.createWithContext($$0);
-      } else if (!$$0.canRead()) {
-         throw a.createWithContext($$0);
+   public static gt a(boolean $$0) {
+      return new gt($$0);
+   }
+
+   public static evz a(CommandContext<eq> $$0, String $$1) {
+      return ((go)$$0.getArgument($$1, go.class)).a((eq)$$0.getSource());
+   }
+
+   public static go b(CommandContext<eq> $$0, String $$1) {
+      return (go)$$0.getArgument($$1, go.class);
+   }
+
+   public go a(StringReader $$0) throws CommandSyntaxException {
+      return (go)($$0.canRead() && $$0.peek() == '^' ? gp.a($$0) : gv.a($$0, this.d));
+   }
+
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      if (!($$0.getSource() instanceof ev)) {
+         return Suggestions.empty();
       } else {
-         boolean $$2 = b($$0);
-         int $$3 = $$0.getCursor();
-         double $$4 = $$0.canRead() && $$0.peek() != ' ' ? $$0.readDouble() : 0.0;
-         String $$5 = $$0.getString().substring($$3, $$0.getCursor());
-         if ($$2 && $$5.isEmpty()) {
-            return new gt(true, 0.0);
+         String $$2 = $$1.getRemaining();
+         Collection<ev.b> $$3;
+         if (!$$2.isEmpty() && $$2.charAt(0) == '^') {
+            $$3 = Collections.singleton(ev.b.a);
          } else {
-            if (!$$5.contains(".") && !$$2 && $$1) {
-               $$4 += 0.5;
-            }
-
-            return new gt($$2, $$4);
-         }
-      }
-   }
-
-   public static gt a(StringReader $$0) throws CommandSyntaxException {
-      if ($$0.canRead() && $$0.peek() == '^') {
-         throw gs.b.createWithContext($$0);
-      } else if (!$$0.canRead()) {
-         throw b.createWithContext($$0);
-      } else {
-         boolean $$1 = b($$0);
-         double $$2;
-         if ($$0.canRead() && $$0.peek() != ' ') {
-            $$2 = $$1 ? $$0.readDouble() : (double)$$0.readInt();
-         } else {
-            $$2 = 0.0;
+            $$3 = ((ev)$$0.getSource()).C();
          }
 
-         return new gt($$1, $$2);
+         return ev.a($$2, $$3, $$1, er.a(this::a));
       }
    }
 
-   public static boolean b(StringReader $$0) {
-      boolean $$1;
-      if ($$0.peek() == '~') {
-         $$1 = true;
-         $$0.skip();
-      } else {
-         $$1 = false;
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if (!($$0 instanceof gt $$1)) {
-         return false;
-      } else {
-         return this.d != $$1.d ? false : Double.compare($$1.e, this.e) == 0;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.d ? 1 : 0;
-      long $$1 = Double.doubleToLongBits(this.e);
-      return 31 * $$0 + (int)($$1 ^ $$1 >>> 32);
-   }
-
-   public boolean a() {
-      return this.d;
+   public Collection<String> getExamples() {
+      return c;
    }
 }

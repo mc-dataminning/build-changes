@@ -1,37 +1,23 @@
-public class ait implements zw<agw> {
-   public static final zn<wm, ait> a = zw.a(ait::a, ait::new);
-   private final bqv b;
-   private final int c;
+import io.netty.buffer.ByteBuf;
 
-   public ait(bqv $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+public class ait implements zb<aip> {
+   public static final ait a = new ait();
+   public static final ys<ByteBuf, ait> b = ys.a(a);
 
-   private ait(wm $$0) {
-      this.b = $$0.b(bqv.class);
-      this.c = $$0.l();
-   }
-
-   private void a(wm $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
+   private ait() {
    }
 
    @Override
-   public zy<ait> a() {
-      return agu.cd;
+   public zd<ait> a() {
+      return ain.i;
    }
 
-   public void a(agw $$0) {
+   public void a(aip $$0) {
       $$0.a(this);
    }
 
-   public bqv b() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

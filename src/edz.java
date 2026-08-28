@@ -1,28 +1,33 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class edz implements ede {
+public record edz(int b, int c, int d, int e, int f, bpi g, float h) implements edi {
    public static final Codec<edz> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               enx.a.fieldOf("state").forGetter($$0x -> $$0x.b),
-               Codec.BOOL.fieldOf("requires_block_below").orElse(true).forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("rock_count").orElse(4).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("hole_count").orElse(1).forGetter($$0x -> $$0x.e),
-               jx.a(lq.f).fieldOf("valid_blocks").forGetter($$0x -> $$0x.f)
+               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(edz::a),
+               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(edz::b),
+               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(edz::c),
+               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(edz::d),
+               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(edz::f),
+               bpi.c.fieldOf("extra_rare_growths").forGetter(edz::g),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(edz::h)
             )
             .apply($$0, edz::new)
    );
-   public final enx b;
-   public final boolean c;
-   public final int d;
-   public final int e;
-   public final jm<dfb> f;
 
-   public edz(enx $$0, boolean $$1, int $$2, int $$3, jm<dfb> $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
+   public int a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

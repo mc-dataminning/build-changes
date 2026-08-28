@@ -1,88 +1,98 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.ToDoubleFunction;
+import java.util.stream.Stream;
 
-public class bxa extends bvk<chh> {
-   public static final int c = 200;
-   public static final float d = 1.65F;
-   private final Function<chh, bqh> e;
-   private final cei f;
-   private final float g;
-   private final ToDoubleFunction<chh> h;
-   private evt i;
-   private final Function<chh, avz> j;
-   private final Function<chh, avz> k;
+public class bxa<U> implements Iterable<U> {
+   protected final List<bxa.a<U>> a;
+   private final aym b = aym.a();
 
-   public bxa(Function<chh, bqh> $$0, cei $$1, float $$2, ToDoubleFunction<chh> $$3, Function<chh, avz> $$4, Function<chh, avz> $$5) {
-      super(ImmutableMap.of(ccv.V, ccw.b, ccv.W, ccw.a), 200);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.j = $$4;
-      this.k = $$5;
-      this.i = evt.b;
+   public bxa() {
+      this.a = Lists.newArrayList();
    }
 
-   protected boolean a(arf $$0, chh $$1) {
-      return $$1.dS().a(ccv.W);
+   private bxa(List<bxa.a<U>> $$0) {
+      this.a = Lists.newArrayList($$0);
    }
 
-   protected boolean a(arf $$0, chh $$1, long $$2) {
-      return $$1.dS().a(ccv.W);
+   public static <U> Codec<bxa<U>> a(Codec<U> $$0) {
+      return bxa.a.a($$0).listOf().xmap(bxa::new, $$0x -> $$0x.a);
    }
 
-   protected void b(arf $$0, chh $$1, long $$2) {
-      iz $$3 = $$1.dp();
-      but<?> $$4 = $$1.dS();
-      evt $$5 = $$4.c(ccv.W).get();
-      this.i = new evt((double)$$3.u() - $$5.a(), 0.0, (double)$$3.w() - $$5.c()).d();
-      $$4.a(ccv.m, new ccy($$5, this.g, 0));
+   public bxa<U> a(U $$0, int $$1) {
+      this.a.add(new bxa.a<>($$0, $$1));
+      return this;
    }
 
-   protected void c(arf $$0, chh $$1, long $$2) {
-      List<btr> $$3 = $$0.a(btr.class, this.f, $$1, $$1.cK());
-      but<?> $$4 = $$1.dS();
-      if (!$$3.isEmpty()) {
-         btr $$5 = $$3.get(0);
-         $$5.a($$0.aj().c((btr)$$1), (float)$$1.g(buz.c));
-         int $$6 = $$1.b(bsg.a) ? $$1.c(bsg.a).e() + 1 : 0;
-         int $$7 = $$1.b(bsg.b) ? $$1.c(bsg.b).e() + 1 : 0;
-         float $$8 = 0.25F * (float)($$6 - $$7);
-         float $$9 = ayz.a($$1.fn() * 1.65F, 0.2F, 3.0F) + $$8;
-         float $$10 = $$5.f($$0.aj().b((btr)$$1)) ? 0.5F : 1.0F;
-         $$5.q((double)($$10 * $$9) * this.h.applyAsDouble($$1), this.i.a(), this.i.c());
-         this.b($$0, $$1);
-         $$0.a(null, $$1, this.j.apply($$1), awb.g, 1.0F, 1.0F);
-      } else if (this.c($$0, $$1)) {
-         $$0.a(null, $$1, this.j.apply($$1), awb.g, 1.0F, 1.0F);
-         boolean $$11 = $$1.gx();
-         if ($$11) {
-            $$0.a(null, $$1, this.k.apply($$1), awb.g, 1.0F, 1.0F);
-         }
+   public bxa<U> a() {
+      this.a.forEach($$0 -> $$0.a(this.b.i()));
+      this.a.sort(Comparator.comparingDouble(bxa.a::c));
+      return this;
+   }
 
-         this.b($$0, $$1);
-      } else {
-         Optional<ccy> $$12 = $$4.c(ccv.m);
-         Optional<evt> $$13 = $$4.c(ccv.W);
-         boolean $$14 = $$12.isEmpty() || $$13.isEmpty() || $$12.get().a().a().a($$13.get(), 0.25);
-         if ($$14) {
-            this.b($$0, $$1);
-         }
+   public Stream<U> b() {
+      return this.a.stream().map(bxa.a::a);
+   }
+
+   @Override
+   public Iterator<U> iterator() {
+      return Iterators.transform(this.a.iterator(), bxa.a::a);
+   }
+
+   @Override
+   public String toString() {
+      return "ShufflingList[" + this.a + "]";
+   }
+
+   public static class a<T> {
+      final T a;
+      final int b;
+      private double c;
+
+      a(T $$0, int $$1) {
+         this.b = $$1;
+         this.a = $$0;
       }
-   }
 
-   private boolean c(arf $$0, chh $$1) {
-      evt $$2 = $$1.ds().d(1.0, 0.0, 1.0).d();
-      iz $$3 = iz.a($$1.dn().e($$2));
-      return $$0.a_($$3).a(awp.cm) || $$0.a_($$3.c()).a(awp.cm);
-   }
+      private double c() {
+         return this.c;
+      }
 
-   protected void b(arf $$0, chh $$1) {
-      $$0.a($$1, (byte)59);
-      $$1.dS().a(ccv.V, this.e.apply($$1).a($$0.z));
-      $$1.dS().b(ccv.W);
+      void a(float $$0) {
+         this.c = -Math.pow((double)$$0, (double)(1.0F / (float)this.b));
+      }
+
+      public T a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + ":" + this.a;
+      }
+
+      public static <E> Codec<bxa.a<E>> a(final Codec<E> $$0) {
+         return new Codec<bxa.a<E>>() {
+            public <T> DataResult<Pair<bxa.a<E>, T>> decode(DynamicOps<T> $$0x, T $$1) {
+               Dynamic<T> $$2 = new Dynamic($$0, $$1);
+               return $$2.get("data").flatMap($$0::parse).map($$1x -> new bxa.a<>($$1x, $$2.get("weight").asInt(1))).map($$1x -> Pair.of($$1x, $$0.empty()));
+            }
+
+            public <T> DataResult<T> a(bxa.a<E> $$0x, DynamicOps<T> $$1, T $$2) {
+               return $$1.mapBuilder().add("weight", $$1.createInt($$0.b)).add("data", $$0.encodeStart($$1, $$0.a)).build($$2);
+            }
+         };
+      }
    }
 }

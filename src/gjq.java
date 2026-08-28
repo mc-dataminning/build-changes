@@ -1,12 +1,19 @@
-public abstract class gjq<T extends btt, M extends fup<T>> extends gkf<T, M> {
-   public gjq(giz.a $$0, M $$1, float $$2) {
-      this($$0, $$1, $$2, 1.0F, 1.0F, 1.0F);
+public class gjq extends gkm<cjh, fum<cjh>> {
+   private static final akk a = new akk("textures/entity/ghast/ghast.png");
+   private static final akk i = new akk("textures/entity/ghast/ghast_shooting.png");
+
+   public gjq(gjg.a $$0) {
+      super($$0, new fum<>($$0.a(fxh.ag)), 1.5F);
    }
 
-   public gjq(giz.a $$0, M $$1, float $$2, float $$3, float $$4, float $$5) {
-      super($$0, $$1, $$2);
-      this.a(new gmq<>(this, $$0.f(), $$3, $$4, $$5, $$0.d()));
-      this.a(new gmu<>(this, $$0.f()));
-      this.a(new gne<>(this, $$0.d()));
+   public akk a(cjh $$0) {
+      return $$0.s() ? i : a;
+   }
+
+   protected void a(cjh $$0, fag $$1, float $$2) {
+      float $$3 = 1.0F;
+      float $$4 = 4.5F;
+      float $$5 = 4.5F;
+      $$1.b(4.5F, 4.5F, 4.5F);
    }
 }

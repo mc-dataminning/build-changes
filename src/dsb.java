@@ -1,185 +1,145 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
+import java.util.Arrays;
 
-public class dsb {
-   public static final int a = 12;
-   private final dca b;
-   private final iz c;
-   private final boolean d;
-   private final iz e;
-   private final je f;
-   private final List<iz> g = Lists.newArrayList();
-   private final List<iz> h = Lists.newArrayList();
-   private final je i;
+public class dsb extends dhi {
+   public static final MapCodec<dsb> b = b(dsb::new);
+   public static final dtf<dtj> c = dsx.bg;
+   public static final dsy d = dsx.x;
+   public static final float e = 4.0F;
+   protected static final ews f = dff.a(12.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final ews g = dff.a(0.0, 0.0, 0.0, 4.0, 16.0, 16.0);
+   protected static final ews h = dff.a(0.0, 0.0, 12.0, 16.0, 16.0, 16.0);
+   protected static final ews i = dff.a(0.0, 0.0, 0.0, 16.0, 16.0, 4.0);
+   protected static final ews j = dff.a(0.0, 12.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final ews k = dff.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0);
+   protected static final float l = 2.0F;
+   protected static final float m = 6.0F;
+   protected static final float n = 10.0F;
+   protected static final ews o = dff.a(6.0, -4.0, 6.0, 10.0, 12.0, 10.0);
+   protected static final ews F = dff.a(6.0, 4.0, 6.0, 10.0, 20.0, 10.0);
+   protected static final ews G = dff.a(6.0, 6.0, -4.0, 10.0, 10.0, 12.0);
+   protected static final ews H = dff.a(6.0, 6.0, 4.0, 10.0, 10.0, 20.0);
+   protected static final ews I = dff.a(-4.0, 6.0, 6.0, 12.0, 10.0, 10.0);
+   protected static final ews J = dff.a(4.0, 6.0, 6.0, 20.0, 10.0, 10.0);
+   protected static final ews K = dff.a(6.0, 0.0, 6.0, 10.0, 12.0, 10.0);
+   protected static final ews L = dff.a(6.0, 4.0, 6.0, 10.0, 16.0, 10.0);
+   protected static final ews M = dff.a(6.0, 6.0, 0.0, 10.0, 10.0, 12.0);
+   protected static final ews N = dff.a(6.0, 6.0, 4.0, 10.0, 10.0, 16.0);
+   protected static final ews O = dff.a(0.0, 6.0, 6.0, 12.0, 10.0, 10.0);
+   protected static final ews P = dff.a(4.0, 6.0, 6.0, 16.0, 10.0, 10.0);
+   private static final ews[] Q = a(true);
+   private static final ews[] R = a(false);
 
-   public dsb(dca $$0, iz $$1, je $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.i = $$2;
-      this.d = $$3;
-      if ($$3) {
-         this.f = $$2;
-         this.e = $$1.a($$2);
-      } else {
-         this.f = $$2.g();
-         this.e = $$1.a($$2, 2);
+   @Override
+   protected MapCodec<dsb> a() {
+      return b;
+   }
+
+   private static ews[] a(boolean $$0) {
+      return Arrays.stream(jf.values()).map($$1 -> a($$1, $$0)).toArray(ews[]::new);
+   }
+
+   private static ews a(jf $$0, boolean $$1) {
+      switch ($$0) {
+         case a:
+         default:
+            return ewp.a(k, $$1 ? L : F);
+         case b:
+            return ewp.a(j, $$1 ? K : o);
+         case c:
+            return ewp.a(i, $$1 ? N : H);
+         case d:
+            return ewp.a(h, $$1 ? M : G);
+         case e:
+            return ewp.a(g, $$1 ? P : J);
+         case f:
+            return ewp.a(f, $$1 ? O : I);
       }
    }
 
-   public boolean a() {
-      this.g.clear();
-      this.h.clear();
-      dse $$0 = this.b.a_(this.e);
-      if (!drx.a($$0, this.b, this.e, this.f, false, this.i)) {
-         if (this.d && $$0.o() == eoc.b) {
-            this.h.add(this.e);
-            return true;
-         } else {
-            return false;
-         }
-      } else if (!this.a(this.e, this.f)) {
-         return false;
-      } else {
-         for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
-            iz $$2 = this.g.get($$1);
-            if (a(this.b.a_($$2)) && !this.a($$2)) {
-               return false;
-            }
-         }
-
-         return true;
-      }
+   public dsb(dsg.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(a, jf.c).a(c, dtj.a).a(d, Boolean.valueOf(false)));
    }
 
-   private static boolean a(dse $$0) {
-      return $$0.a(dfd.hV) || $$0.a(dfd.pg);
-   }
-
-   private static boolean a(dse $$0, dse $$1) {
-      if ($$0.a(dfd.pg) && $$1.a(dfd.hV)) {
-         return false;
-      } else {
-         return $$0.a(dfd.hV) && $$1.a(dfd.pg) ? false : a($$0) || a($$1);
-      }
-   }
-
-   private boolean a(iz $$0, je $$1) {
-      dse $$2 = this.b.a_($$0);
-      if ($$2.i()) {
-         return true;
-      } else if (!drx.a($$2, this.b, $$0, this.f, false, $$1)) {
-         return true;
-      } else if ($$0.equals(this.c)) {
-         return true;
-      } else if (this.g.contains($$0)) {
-         return true;
-      } else {
-         int $$3 = 1;
-         if ($$3 + this.g.size() > 12) {
-            return false;
-         } else {
-            while (a($$2)) {
-               iz $$4 = $$0.a(this.f.g(), $$3);
-               dse $$5 = $$2;
-               $$2 = this.b.a_($$4);
-               if ($$2.i() || !a($$5, $$2) || !drx.a($$2, this.b, $$4, this.f, false, this.f.g()) || $$4.equals(this.c)) {
-                  break;
-               }
-
-               if (++$$3 + this.g.size() > 12) {
-                  return false;
-               }
-            }
-
-            int $$6 = 0;
-
-            for (int $$7 = $$3 - 1; $$7 >= 0; $$7--) {
-               this.g.add($$0.a(this.f.g(), $$7));
-               $$6++;
-            }
-
-            int $$8 = 1;
-
-            while (true) {
-               iz $$9 = $$0.a(this.f, $$8);
-               int $$10 = this.g.indexOf($$9);
-               if ($$10 > -1) {
-                  this.a($$6, $$10);
-
-                  for (int $$11 = 0; $$11 <= $$10 + $$6; $$11++) {
-                     iz $$12 = this.g.get($$11);
-                     if (a(this.b.a_($$12)) && !this.a($$12)) {
-                        return false;
-                     }
-                  }
-
-                  return true;
-               }
-
-               $$2 = this.b.a_($$9);
-               if ($$2.i()) {
-                  return true;
-               }
-
-               if (!drx.a($$2, this.b, $$9, this.f, true, this.f) || $$9.equals(this.c)) {
-                  return false;
-               }
-
-               if ($$2.o() == eoc.b) {
-                  this.h.add($$9);
-                  return true;
-               }
-
-               if (this.g.size() >= 12) {
-                  return false;
-               }
-
-               this.g.add($$9);
-               $$6++;
-               $$8++;
-            }
-         }
-      }
-   }
-
-   private void a(int $$0, int $$1) {
-      List<iz> $$2 = Lists.newArrayList();
-      List<iz> $$3 = Lists.newArrayList();
-      List<iz> $$4 = Lists.newArrayList();
-      $$2.addAll(this.g.subList(0, $$1));
-      $$3.addAll(this.g.subList(this.g.size() - $$0, this.g.size()));
-      $$4.addAll(this.g.subList($$1, this.g.size() - $$0));
-      this.g.clear();
-      this.g.addAll($$2);
-      this.g.addAll($$3);
-      this.g.addAll($$4);
-   }
-
-   private boolean a(iz $$0) {
-      dse $$1 = this.b.a_($$0);
-
-      for (je $$2 : je.values()) {
-         if ($$2.o() != this.f.o()) {
-            iz $$3 = $$0.a($$2);
-            dse $$4 = this.b.a_($$3);
-            if (a($$4, $$1) && !this.a($$3, $$2)) {
-               return false;
-            }
-         }
-      }
-
+   @Override
+   protected boolean f_(dsh $$0) {
       return true;
    }
 
-   public je b() {
-      return this.f;
+   @Override
+   protected ews a(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
+      return ($$0.c(d) ? Q : R)[$$0.c(a).ordinal()];
    }
 
-   public List<iz> c() {
-      return this.g;
+   private boolean a(dsh $$0, dsh $$1) {
+      dff $$2 = $$0.c(c) == dtj.a ? dfh.by : dfh.br;
+      return $$1.a($$2) && $$1.c(dsa.c) && $$1.c(a) == $$0.c(a);
    }
 
-   public List<iz> d() {
-      return this.h;
+   @Override
+   public dsh a(dcd $$0, ja $$1, dsh $$2, cmh $$3) {
+      if (!$$0.B && $$3.fZ().d) {
+         ja $$4 = $$1.a($$2.c(a).g());
+         if (this.a($$2, $$0.a_($$4))) {
+            $$0.b($$4, false);
+         }
+      }
+
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected void a(dsh $$0, dcd $$1, ja $$2, dsh $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         super.a($$0, $$1, $$2, $$3, $$4);
+         ja $$5 = $$2.a($$0.c(a).g());
+         if (this.a($$0, $$1.a_($$5))) {
+            $$1.b($$5, true);
+         }
+      }
+   }
+
+   @Override
+   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
+      return $$1.g() == $$0.c(a) && !$$0.a($$3, $$4) ? dfh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected boolean a(dsh $$0, dcg $$1, ja $$2) {
+      dsh $$3 = $$1.a_($$2.a($$0.c(a).g()));
+      return this.a($$0, $$3) || $$3.a(dfh.bQ) && $$3.c(a) == $$0.c(a);
+   }
+
+   @Override
+   protected void a(dsh $$0, dcd $$1, ja $$2, dff $$3, ja $$4, boolean $$5) {
+      if ($$0.a((dcg)$$1, $$2)) {
+         $$1.a($$2.a($$0.c(a).g()), $$3, $$4);
+      }
+   }
+
+   @Override
+   public cua a(dcg $$0, ja $$1, dsh $$2) {
+      return new cua($$2.c(c) == dtj.b ? dfh.br : dfh.by);
+   }
+
+   @Override
+   protected dsh a(dsh $$0, dls $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected dsh a(dsh $$0, dkc $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dsi.a<dff, dsh> $$0) {
+      $$0.a(a, c, d);
+   }
+
+   @Override
+   protected boolean a(dsh $$0, eoq $$1) {
+      return false;
    }
 }

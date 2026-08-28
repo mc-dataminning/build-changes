@@ -1,30 +1,33 @@
-import org.joml.Vector3f;
+public class fpb extends fhm {
+   private static final akk a = new akk("widget/page_forward_highlighted");
+   private static final akk b = new akk("widget/page_forward");
+   private static final akk c = new akk("widget/page_backward_highlighted");
+   private static final akk d = new akk("widget/page_backward");
+   private final boolean u;
+   private final boolean v;
 
-public class fpb extends fof {
-   public static final float b = 4.5F;
-   private static final Vector3f c = new Vector3f(1.0F, 1.0F, 1.0F);
-   private static final int d = 16;
-   private static final int r = 16;
-   private final alf s = new alf("textures/gui/hanging_signs/" + this.a.b() + ".png");
-
-   public fpb(dqt $$0, boolean $$1, boolean $$2) {
-      super($$0, $$1, $$2, xp.c("hanging_sign.edit"));
+   public fpb(int $$0, int $$1, boolean $$2, fhm.c $$3, boolean $$4) {
+      super($$0, $$1, 23, 13, wt.a, $$3, q);
+      this.u = $$2;
+      this.v = $$4;
    }
 
    @Override
-   protected void b(fgt $$0, dse $$1) {
-      $$0.c().a((float)this.n / 2.0F, 125.0F, 50.0F);
+   public void b(fgz $$0, int $$1, int $$2, float $$3) {
+      akk $$4;
+      if (this.u) {
+         $$4 = this.B() ? a : b;
+      } else {
+         $$4 = this.B() ? c : d;
+      }
+
+      $$0.a($$4, this.D(), this.E(), 23, 13);
    }
 
    @Override
-   protected void a(fgt $$0, dse $$1) {
-      $$0.c().a(0.0F, -13.0F, 0.0F);
-      $$0.c().b(4.5F, 4.5F, 1.0F);
-      $$0.a(this.s, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
-   }
-
-   @Override
-   protected Vector3f m() {
-      return c;
+   public void a(gub $$0) {
+      if (this.v) {
+         $$0.a(gsr.a(avf.cy, 1.0F));
+      }
    }
 }

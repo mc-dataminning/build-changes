@@ -1,302 +1,79 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.net.PortUnreachableException;
-import java.net.SocketAddress;
-import java.net.SocketTimeoutException;
-import java.net.UnknownHostException;
-import java.nio.charset.StandardCharsets;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class avt {
+   public static final awk<ddd> a = a("is_deep_ocean");
+   public static final awk<ddd> b = a("is_ocean");
+   public static final awk<ddd> c = a("is_beach");
+   public static final awk<ddd> d = a("is_river");
+   public static final awk<ddd> e = a("is_mountain");
+   public static final awk<ddd> f = a("is_badlands");
+   public static final awk<ddd> g = a("is_hill");
+   public static final awk<ddd> h = a("is_taiga");
+   public static final awk<ddd> i = a("is_jungle");
+   public static final awk<ddd> j = a("is_forest");
+   public static final awk<ddd> k = a("is_savanna");
+   public static final awk<ddd> l = a("is_overworld");
+   public static final awk<ddd> m = a("is_nether");
+   public static final awk<ddd> n = a("is_end");
+   public static final awk<ddd> o = a("stronghold_biased_to");
+   public static final awk<ddd> p = a("has_structure/buried_treasure");
+   public static final awk<ddd> q = a("has_structure/desert_pyramid");
+   public static final awk<ddd> r = a("has_structure/igloo");
+   public static final awk<ddd> s = a("has_structure/jungle_temple");
+   public static final awk<ddd> t = a("has_structure/mineshaft");
+   public static final awk<ddd> u = a("has_structure/mineshaft_mesa");
+   public static final awk<ddd> v = a("has_structure/ocean_monument");
+   public static final awk<ddd> w = a("has_structure/ocean_ruin_cold");
+   public static final awk<ddd> x = a("has_structure/ocean_ruin_warm");
+   public static final awk<ddd> y = a("has_structure/pillager_outpost");
+   public static final awk<ddd> z = a("has_structure/ruined_portal_desert");
+   public static final awk<ddd> A = a("has_structure/ruined_portal_jungle");
+   public static final awk<ddd> B = a("has_structure/ruined_portal_ocean");
+   public static final awk<ddd> C = a("has_structure/ruined_portal_swamp");
+   public static final awk<ddd> D = a("has_structure/ruined_portal_mountain");
+   public static final awk<ddd> E = a("has_structure/ruined_portal_standard");
+   public static final awk<ddd> F = a("has_structure/shipwreck_beached");
+   public static final awk<ddd> G = a("has_structure/shipwreck");
+   public static final awk<ddd> H = a("has_structure/stronghold");
+   public static final awk<ddd> I = a("has_structure/trial_chambers");
+   public static final awk<ddd> J = a("has_structure/swamp_hut");
+   public static final awk<ddd> K = a("has_structure/village_desert");
+   public static final awk<ddd> L = a("has_structure/village_plains");
+   public static final awk<ddd> M = a("has_structure/village_savanna");
+   public static final awk<ddd> N = a("has_structure/village_snowy");
+   public static final awk<ddd> O = a("has_structure/village_taiga");
+   public static final awk<ddd> P = a("has_structure/trail_ruins");
+   public static final awk<ddd> Q = a("has_structure/woodland_mansion");
+   public static final awk<ddd> R = a("has_structure/nether_fortress");
+   public static final awk<ddd> S = a("has_structure/nether_fossil");
+   public static final awk<ddd> T = a("has_structure/bastion_remnant");
+   public static final awk<ddd> U = a("has_structure/ancient_city");
+   public static final awk<ddd> V = a("has_structure/ruined_portal_nether");
+   public static final awk<ddd> W = a("has_structure/end_city");
+   public static final awk<ddd> X = a("required_ocean_monument_surrounding");
+   public static final awk<ddd> Y = a("mineshaft_blocking");
+   public static final awk<ddd> Z = a("plays_underwater_music");
+   public static final awk<ddd> aa = a("has_closer_water_fog");
+   public static final awk<ddd> ab = a("water_on_map_outlines");
+   public static final awk<ddd> ac = a("produces_corals_from_bonemeal");
+   public static final awk<ddd> ad = a("increased_fire_burnout");
+   public static final awk<ddd> ae = a("snow_golem_melts");
+   public static final awk<ddd> af = a("without_zombie_sieges");
+   public static final awk<ddd> ag = a("without_patrol_spawns");
+   public static final awk<ddd> ah = a("without_wandering_trader_spawns");
+   public static final awk<ddd> ai = a("spawns_cold_variant_frogs");
+   public static final awk<ddd> aj = a("spawns_warm_variant_frogs");
+   public static final awk<ddd> ak = a("spawns_gold_rabbits");
+   public static final awk<ddd> al = a("spawns_white_rabbits");
+   public static final awk<ddd> am = a("reduce_water_ambient_spawns");
+   public static final awk<ddd> an = a("allows_tropical_fish_spawns_at_any_height");
+   public static final awk<ddd> ao = a("polar_bears_spawn_on_alternate_blocks");
+   public static final awk<ddd> ap = a("more_frequent_drowned_spawns");
+   public static final awk<ddd> aq = a("allows_surface_slime_spawns");
+   public static final awk<ddd> ar = a("spawns_snow_foxes");
 
-public class avt extends avs {
-   private static final Logger d = LogUtils.getLogger();
-   private static final String e = "SMP";
-   private static final String f = "MINECRAFT";
-   private static final long g = 30000L;
-   private static final long h = 5000L;
-   private long i;
-   private final int j;
-   private final int k;
-   private final int l;
-   private final String m;
-   private final String n;
-   private DatagramSocket o;
-   private final byte[] p = new byte[1460];
-   private String q;
-   private String r;
-   private final Map<SocketAddress, avt.a> s;
-   private final avo t;
-   private long u;
-   private final alw v;
-
-   private avt(alw $$0, int $$1) {
-      super("Query Listener");
-      this.v = $$0;
-      this.j = $$1;
-      this.r = $$0.b();
-      this.k = $$0.d();
-      this.m = $$0.h();
-      this.l = $$0.N();
-      this.n = $$0.s();
-      this.u = 0L;
-      this.q = "0.0.0.0";
-      if (!this.r.isEmpty() && !this.q.equals(this.r)) {
-         this.q = this.r;
-      } else {
-         this.r = "0.0.0.0";
-
-         try {
-            InetAddress $$2 = InetAddress.getLocalHost();
-            this.q = $$2.getHostAddress();
-         } catch (UnknownHostException var4) {
-            d.warn("Unable to determine local host IP, please set server-ip in server.properties", var4);
-         }
-      }
-
-      this.t = new avo(1460);
-      this.s = Maps.newHashMap();
+   private avt() {
    }
 
-   @Nullable
-   public static avt a(alw $$0) {
-      int $$1 = $$0.a().q;
-      if (0 < $$1 && 65535 >= $$1) {
-         avt $$2 = new avt($$0, $$1);
-         return !$$2.a() ? null : $$2;
-      } else {
-         d.warn("Invalid query port {} found in server.properties (queries disabled)", $$1);
-         return null;
-      }
-   }
-
-   private void a(byte[] $$0, DatagramPacket $$1) throws IOException {
-      this.o.send(new DatagramPacket($$0, $$0.length, $$1.getSocketAddress()));
-   }
-
-   private boolean a(DatagramPacket $$0) throws IOException {
-      byte[] $$1 = $$0.getData();
-      int $$2 = $$0.getLength();
-      SocketAddress $$3 = $$0.getSocketAddress();
-      d.debug("Packet len {} [{}]", $$2, $$3);
-      if (3 <= $$2 && -2 == $$1[0] && -3 == $$1[1]) {
-         d.debug("Packet '{}' [{}]", avp.a($$1[2]), $$3);
-         switch ($$1[2]) {
-            case 0:
-               if (!this.c($$0)) {
-                  d.debug("Invalid challenge [{}]", $$3);
-                  return false;
-               } else if (15 == $$2) {
-                  this.a(this.b($$0), $$0);
-                  d.debug("Rules [{}]", $$3);
-               } else {
-                  avo $$4 = new avo(1460);
-                  $$4.a(0);
-                  $$4.a(this.a($$0.getSocketAddress()));
-                  $$4.a(this.m);
-                  $$4.a("SMP");
-                  $$4.a(this.n);
-                  $$4.a(Integer.toString(this.v.M()));
-                  $$4.a(Integer.toString(this.l));
-                  $$4.a((short)this.k);
-                  $$4.a(this.q);
-                  this.a($$4.a(), $$0);
-                  d.debug("Status [{}]", $$3);
-               }
-            default:
-               return true;
-            case 9:
-               this.d($$0);
-               d.debug("Challenge [{}]", $$3);
-               return true;
-         }
-      } else {
-         d.debug("Invalid packet [{}]", $$3);
-         return false;
-      }
-   }
-
-   private byte[] b(DatagramPacket $$0) throws IOException {
-      long $$1 = ac.c();
-      if ($$1 < this.u + 5000L) {
-         byte[] $$2 = this.t.a();
-         byte[] $$3 = this.a($$0.getSocketAddress());
-         $$2[1] = $$3[0];
-         $$2[2] = $$3[1];
-         $$2[3] = $$3[2];
-         $$2[4] = $$3[3];
-         return $$2;
-      } else {
-         this.u = $$1;
-         this.t.b();
-         this.t.a(0);
-         this.t.a(this.a($$0.getSocketAddress()));
-         this.t.a("splitnum");
-         this.t.a(128);
-         this.t.a(0);
-         this.t.a("hostname");
-         this.t.a(this.m);
-         this.t.a("gametype");
-         this.t.a("SMP");
-         this.t.a("game_id");
-         this.t.a("MINECRAFT");
-         this.t.a("version");
-         this.t.a(this.v.L());
-         this.t.a("plugins");
-         this.t.a(this.v.u());
-         this.t.a("map");
-         this.t.a(this.n);
-         this.t.a("numplayers");
-         this.t.a(this.v.M() + "");
-         this.t.a("maxplayers");
-         this.t.a(this.l + "");
-         this.t.a("hostport");
-         this.t.a(this.k + "");
-         this.t.a("hostip");
-         this.t.a(this.q);
-         this.t.a(0);
-         this.t.a(1);
-         this.t.a("player_");
-         this.t.a(0);
-         String[] $$4 = this.v.O();
-
-         for (String $$5 : $$4) {
-            this.t.a($$5);
-         }
-
-         this.t.a(0);
-         return this.t.a();
-      }
-   }
-
-   private byte[] a(SocketAddress $$0) {
-      return this.s.get($$0).c();
-   }
-
-   private Boolean c(DatagramPacket $$0) {
-      SocketAddress $$1 = $$0.getSocketAddress();
-      if (!this.s.containsKey($$1)) {
-         return false;
-      } else {
-         byte[] $$2 = $$0.getData();
-         return this.s.get($$1).a() == avp.c($$2, 7, $$0.getLength());
-      }
-   }
-
-   private void d(DatagramPacket $$0) throws IOException {
-      avt.a $$1 = new avt.a($$0);
-      this.s.put($$0.getSocketAddress(), $$1);
-      this.a($$1.b(), $$0);
-   }
-
-   private void d() {
-      if (this.a) {
-         long $$0 = ac.c();
-         if ($$0 >= this.i + 30000L) {
-            this.i = $$0;
-            this.s.values().removeIf($$1 -> $$1.a($$0));
-         }
-      }
-   }
-
-   @Override
-   public void run() {
-      d.info("Query running on {}:{}", this.r, this.j);
-      this.i = ac.c();
-      DatagramPacket $$0 = new DatagramPacket(this.p, this.p.length);
-
-      try {
-         while (this.a) {
-            try {
-               this.o.receive($$0);
-               this.d();
-               this.a($$0);
-            } catch (SocketTimeoutException var8) {
-               this.d();
-            } catch (PortUnreachableException var9) {
-            } catch (IOException var10) {
-               this.a(var10);
-            }
-         }
-      } finally {
-         d.debug("closeSocket: {}:{}", this.r, this.j);
-         this.o.close();
-      }
-   }
-
-   @Override
-   public boolean a() {
-      if (this.a) {
-         return true;
-      } else {
-         return !this.e() ? false : super.a();
-      }
-   }
-
-   private void a(Exception $$0) {
-      if (this.a) {
-         d.warn("Unexpected exception", $$0);
-         if (!this.e()) {
-            d.error("Failed to recover from exception, shutting down!");
-            this.a = false;
-         }
-      }
-   }
-
-   private boolean e() {
-      try {
-         this.o = new DatagramSocket(this.j, InetAddress.getByName(this.r));
-         this.o.setSoTimeout(500);
-         return true;
-      } catch (Exception var2) {
-         d.warn("Unable to initialise query system on {}:{}", new Object[]{this.r, this.j, var2});
-         return false;
-      }
-   }
-
-   static class a {
-      private final long a = new Date().getTime();
-      private final int b;
-      private final byte[] c;
-      private final byte[] d;
-      private final String e;
-
-      public a(DatagramPacket $$0) {
-         byte[] $$1 = $$0.getData();
-         this.c = new byte[4];
-         this.c[0] = $$1[3];
-         this.c[1] = $$1[4];
-         this.c[2] = $$1[5];
-         this.c[3] = $$1[6];
-         this.e = new String(this.c, StandardCharsets.UTF_8);
-         this.b = azh.a().a(16777216);
-         this.d = String.format(Locale.ROOT, "\t%s%d\u0000", this.e, this.b).getBytes(StandardCharsets.UTF_8);
-      }
-
-      public Boolean a(long $$0) {
-         return this.a < $$0;
-      }
-
-      public int a() {
-         return this.b;
-      }
-
-      public byte[] b() {
-         return this.d;
-      }
-
-      public byte[] c() {
-         return this.c;
-      }
-
-      public String d() {
-         return this.e;
-      }
+   private static awk<ddd> a(String $$0) {
+      return awk.a(lr.aE, new akk($$0));
    }
 }

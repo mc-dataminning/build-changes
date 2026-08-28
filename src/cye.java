@@ -1,71 +1,67 @@
-import javax.annotation.Nullable;
-
-public class cye {
-   @Nullable
-   private final cmz a;
-   private final bqv b;
-   private final evp c;
-   private final dca d;
-   private final cur e;
-
-   public cye(cmz $$0, bqv $$1, evp $$2) {
-      this($$0.dP(), $$0, $$1, $$0.b($$1), $$2);
+public class cye extends cxy {
+   public cye(cxv $$0) {
+      super($$0);
    }
 
-   protected cye(dca $$0, @Nullable cmz $$1, bqv $$2, cur $$3, evp $$4) {
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$4;
-      this.e = $$3;
-      this.d = $$0;
+   public boolean a(cxw $$0, dcd $$1) {
+      int $$2 = 0;
+      cua $$3 = cua.l;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cua $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            if ($$5.a(cud.rU)) {
+               if (!$$3.e()) {
+                  return false;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cud.uj)) {
+                  return false;
+               }
+
+               $$2++;
+            }
+         }
+      }
+
+      return !$$3.e() && $$2 > 0;
    }
 
-   protected final evp j() {
-      return this.c;
+   public cua a(cxw $$0, jl.a $$1) {
+      int $$2 = 0;
+      cua $$3 = cua.l;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cua $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            if ($$5.a(cud.rU)) {
+               if (!$$3.e()) {
+                  return cua.l;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cud.uj)) {
+                  return cua.l;
+               }
+
+               $$2++;
+            }
+         }
+      }
+
+      return !$$3.e() && $$2 >= 1 ? $$3.c($$2 + 1) : cua.l;
    }
 
-   public iz a() {
-      return this.c.a();
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= 3 && $$1 >= 3;
    }
 
-   public je k() {
-      return this.c.b();
-   }
-
-   public evt l() {
-      return this.c.e();
-   }
-
-   public boolean m() {
-      return this.c.d();
-   }
-
-   public cur n() {
-      return this.e;
-   }
-
-   @Nullable
-   public cmz o() {
-      return this.a;
-   }
-
-   public bqv p() {
-      return this.b;
-   }
-
-   public dca q() {
-      return this.d;
-   }
-
-   public je g() {
-      return this.a == null ? je.c : this.a.cH();
-   }
-
-   public boolean h() {
-      return this.a != null && this.a.fR();
-   }
-
-   public float i() {
-      return this.a == null ? 0.0F : this.a.dF();
+   @Override
+   public cyl<?> ap_() {
+      return cyl.e;
    }
 }

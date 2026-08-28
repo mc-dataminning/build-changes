@@ -1,51 +1,37 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import java.util.List;
-import java.util.Map;
+import java.util.function.IntFunction;
 
 public enum ffp {
-   a(new cur(cuu.qS)),
-   b(new cur(dfd.cj)),
-   c(new cur(cuu.lH)),
-   d(new cur(cuu.pd), new cur(cuu.oV)),
-   e(new cur(cuu.qA), new cur(cuu.ot)),
-   f(new cur(cuu.qS)),
-   g(new cur(cuu.pX)),
-   h(new cur(dfd.b)),
-   i(new cur(cuu.qA), new cur(cuu.oz)),
-   j(new cur(cuu.qS)),
-   k(new cur(dfd.dI)),
-   l(new cur(cuu.pb), new cur(cuu.pQ)),
-   m(new cur(cuu.qS)),
-   n(new cur(cuu.pX)),
-   o(new cur(cuu.fF)),
-   p(new cur(cuu.pT)),
-   q(new cur(cuu.pX)),
-   r(new cur(cuu.hB));
+   a(0, "options.narrator.off"),
+   b(1, "options.narrator.all"),
+   c(2, "options.narrator.chat"),
+   d(3, "options.narrator.system");
 
-   public static final List<ffp> s = ImmutableList.of(m, n);
-   public static final List<ffp> t = ImmutableList.of(j, k, l);
-   public static final List<ffp> u = ImmutableList.of(f, g, h, i);
-   public static final List<ffp> v = ImmutableList.of(a, d, b, e, c);
-   public static final Map<ffp, List<ffp>> w = ImmutableMap.of(
-      a, ImmutableList.of(d, b, e, c), f, ImmutableList.of(g, h, i), j, ImmutableList.of(k, l), m, ImmutableList.of(n)
-   );
-   private final List<cur> x;
+   private static final IntFunction<ffp> e = awu.a(ffp::a, values(), awu.a.b);
+   private final int f;
+   private final wu g;
 
-   private ffp(final cur... $$0) {
-      this.x = ImmutableList.copyOf($$0);
+   private ffp(final int $$0, final String $$1) {
+      this.f = $$0;
+      this.g = wu.c($$1);
    }
 
-   public static List<ffp> a(crk $$0) {
-      return switch ($$0) {
-         case a -> v;
-         case b -> u;
-         case c -> t;
-         case d -> s;
-      };
+   public int a() {
+      return this.f;
    }
 
-   public List<cur> a() {
-      return this.x;
+   public wu b() {
+      return this.g;
+   }
+
+   public static ffp a(int $$0) {
+      return e.apply($$0);
+   }
+
+   public boolean c() {
+      return this == b || this == c;
+   }
+
+   public boolean d() {
+      return this == b || this == d;
    }
 }

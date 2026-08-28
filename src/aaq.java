@@ -1,29 +1,57 @@
-public class aaq implements zw<aan> {
-   public static final zn<wm, aaq> a = zw.a(aaq::a, aaq::new);
-   private final long b;
+import java.util.List;
 
-   public aaq(long $$0) {
-      this.b = $$0;
+public record aaq(akj<dcd> c, eii d, List<aaq.a> e) implements aac {
+   public static final ys<vr, aaq> a = aac.a(aaq::a, aaq::new);
+   public static final aac.b<aaq> b = aac.a("debug/structures");
+
+   private aaq(vr $$0) {
+      this($$0.a(lr.aZ), b($$0), $$0.a(aaq.a::new));
    }
 
-   private aaq(wm $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(wm $$0) {
-      $$0.b(this.b);
+   private void a(vr $$0) {
+      $$0.b(this.c);
+      a($$0, this.d);
+      $$0.a(this.e, ($$1, $$2) -> $$2.a($$0));
    }
 
    @Override
-   public zy<aaq> a() {
-      return aam.l;
+   public aac.b<aaq> a() {
+      return b;
    }
 
-   public void a(aan $$0) {
-      $$0.a(this);
+   static eii b(vr $$0) {
+      return new eii($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
    }
 
-   public long b() {
-      return this.b;
+   static void a(vr $$0, eii $$1) {
+      $$0.p($$1.h());
+      $$0.p($$1.i());
+      $$0.p($$1.j());
+      $$0.p($$1.k());
+      $$0.p($$1.l());
+      $$0.p($$1.m());
+   }
+
+   public akj<dcd> b() {
+      return this.c;
+   }
+
+   public eii c() {
+      return this.d;
+   }
+
+   public List<aaq.a> d() {
+      return this.e;
+   }
+
+   public static record a(eii a, boolean b) {
+      public a(vr $$0) {
+         this(aaq.b($$0), $$0.readBoolean());
+      }
+
+      public void a(vr $$0) {
+         aaq.a($$0, this.a);
+         $$0.a(this.b);
+      }
    }
 }

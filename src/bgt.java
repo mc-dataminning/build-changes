@@ -1,18 +1,19 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
 
-public class bgt extends DataFix {
-   public bgt(Schema $$0) {
-      super($$0, false);
+public class bgt extends bfa {
+   public bgt(Schema $$0, boolean $$1) {
+      super($$0, $$1, "StriderGravityFix", bgd.B, "minecraft:strider");
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "RandomSequenceSettingsFix",
-         this.getInputSchema().getType(bgx.m),
-         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("data", $$0xx -> $$0xx.emptyMap().set("sequences", $$0xx)))
-      );
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.get("NoGravity").asBoolean(false) ? $$0.set("NoGravity", $$0.createBoolean(false)) : $$0;
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

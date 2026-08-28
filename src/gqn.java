@@ -1,71 +1,31 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
+import com.google.common.collect.Lists;
+import com.ibm.icu.lang.UCharacter;
+import com.ibm.icu.text.ArabicShaping;
+import com.ibm.icu.text.Bidi;
+import com.ibm.icu.text.BidiRun;
+import java.util.List;
 
-public class gqn implements ato<gqm> {
-   public gqm b(JsonObject $$0) {
-      Builder<gql> $$1 = ImmutableList.builder();
-      int $$2 = ayp.a($$0, "frametime", 1);
-      if ($$2 != 1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$2, "Invalid default frame time");
+public class gqn {
+   public static axq a(wz $$0, boolean $$1) {
+      xs $$2 = xs.a($$0, UCharacter::getMirror, gqn::a);
+      Bidi $$3 = new Bidi($$2.a(), $$1 ? 127 : 126);
+      $$3.setReorderingMode(0);
+      List<axq> $$4 = Lists.newArrayList();
+      int $$5 = $$3.countRuns();
+
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         BidiRun $$7 = $$3.getVisualRun($$6);
+         $$4.addAll($$2.a($$7.getStart(), $$7.getLength(), $$7.isOddRun()));
       }
 
-      if ($$0.has("frames")) {
-         try {
-            JsonArray $$3 = ayp.v($$0, "frames");
-
-            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-               JsonElement $$5 = $$3.get($$4);
-               gql $$6 = this.a($$4, $$5);
-               if ($$6 != null) {
-                  $$1.add($$6);
-               }
-            }
-         } catch (ClassCastException var8) {
-            throw new JsonParseException("Invalid animation->frames: expected array, was " + $$0.get("frames"), var8);
-         }
-      }
-
-      int $$8 = ayp.a($$0, "width", -1);
-      int $$9 = ayp.a($$0, "height", -1);
-      if ($$8 != -1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$8, "Invalid width");
-      }
-
-      if ($$9 != -1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$9, "Invalid height");
-      }
-
-      boolean $$10 = ayp.a($$0, "interpolate", false);
-      return new gqm($$1.build(), $$8, $$9, $$2, $$10);
+      return axq.composite($$4);
    }
 
-   @Nullable
-   private gql a(int $$0, JsonElement $$1) {
-      if ($$1.isJsonPrimitive()) {
-         return new gql(ayp.g($$1, "frames[" + $$0 + "]"));
-      } else if ($$1.isJsonObject()) {
-         JsonObject $$2 = ayp.m($$1, "frames[" + $$0 + "]");
-         int $$3 = ayp.a($$2, "time", -1);
-         if ($$2.has("time")) {
-            Validate.inclusiveBetween(1L, 2147483647L, (long)$$3, "Invalid frame time");
-         }
-
-         int $$4 = ayp.o($$2, "index");
-         Validate.inclusiveBetween(0L, 2147483647L, (long)$$4, "Invalid frame index");
-         return new gql($$4, $$3);
-      } else {
-         return null;
+   private static String a(String $$0) {
+      try {
+         return new ArabicShaping(8).shape($$0);
+      } catch (Exception var2) {
+         return $$0;
       }
-   }
-
-   @Override
-   public String a() {
-      return "animation";
    }
 }

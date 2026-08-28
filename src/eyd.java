@@ -1,24 +1,32 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
-import javax.annotation.Nullable;
+import org.lwjgl.openal.AL10;
 
-public interface eyd extends AutoCloseable {
-   float a = 7.0F;
+public class eyd {
+   private float a = 1.0F;
+   private eye b = eye.a;
 
-   @Override
-   default void close() {
+   public void a(eye $$0) {
+      this.b = $$0;
+      evz $$1 = $$0.b();
+      evz $$2 = $$0.c();
+      evz $$3 = $$0.d();
+      AL10.alListener3f(4100, (float)$$1.c, (float)$$1.d, (float)$$1.e);
+      AL10.alListenerfv(4111, new float[]{(float)$$2.c, (float)$$2.d, (float)$$2.e, (float)$$3.a(), (float)$$3.b(), (float)$$3.c()});
    }
 
-   @Nullable
-   default eyc a(int $$0) {
-      return null;
+   public void a(float $$0) {
+      AL10.alListenerf(4106, $$0);
+      this.a = $$0;
    }
 
-   IntSet a();
+   public float a() {
+      return this.a;
+   }
 
-   public static record a(eyd a, fjw.a b) implements AutoCloseable {
-      @Override
-      public void close() {
-         this.a.close();
-      }
+   public void b() {
+      this.a(eye.a);
+   }
+
+   public eye c() {
+      return this.b;
    }
 }

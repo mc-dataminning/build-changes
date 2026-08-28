@@ -1,37 +1,44 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public record cwy(alf e, ji<cum> f, xp g, boolean h) {
-   public static final Codec<cwy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               alf.a.fieldOf("asset_id").forGetter(cwy::a),
-               alc.a(lq.G).fieldOf("template_item").forGetter(cwy::b),
-               xr.a.fieldOf("description").forGetter(cwy::c),
-               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(cwy::d)
-            )
-            .apply($$0, cwy::new)
-   );
-   public static final zn<xa, cwy> b = zn.a(alf.b, cwy::a, zl.b(lq.G), cwy::b, xr.b, cwy::c, zl.b, cwy::d, cwy::new);
-   public static final Codec<ji<cwy>> c = alb.a(lq.aP, a);
-   public static final zn<xa, ji<cwy>> d = zl.a(lq.aP, b);
+public record cwy(Map<String, cwy.a> c) {
+   public static final cwy a = new cwy(Map.of());
+   public static final Codec<cwy> b = Codec.unboundedMap(Codec.STRING, cwy.a.a).xmap(cwy::new, cwy::a);
 
-   public xp a(ji<cww> $$0) {
-      return this.g.f().c($$0.a().e().a());
+   public cwy a(String $$0, cwy.a $$1) {
+      return new cwy(ac.a(this.c, $$0, $$1));
    }
 
-   public alf a() {
-      return this.e;
+   public Map<String, cwy.a> a() {
+      return this.c;
    }
 
-   public ji<cum> b() {
-      return this.f;
-   }
+   public static record a(jj<epl> b, double c, double d, float e) {
+      public static final Codec<cwy.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  epl.b.fieldOf("type").forGetter(cwy.a::a),
+                  Codec.DOUBLE.fieldOf("x").forGetter(cwy.a::b),
+                  Codec.DOUBLE.fieldOf("z").forGetter(cwy.a::c),
+                  Codec.FLOAT.fieldOf("rotation").forGetter(cwy.a::d)
+               )
+               .apply($$0, cwy.a::new)
+      );
 
-   public xp c() {
-      return this.g;
-   }
+      public jj<epl> a() {
+         return this.b;
+      }
 
-   public boolean d() {
-      return this.h;
+      public double b() {
+         return this.c;
+      }
+
+      public double c() {
+         return this.d;
+      }
+
+      public float d() {
+         return this.e;
+      }
    }
 }

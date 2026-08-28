@@ -1,15 +1,10 @@
-public class czm extends cyg {
-   public czm(String $$0, cym $$1, cyu $$2, cur $$3, float $$4, int $$5) {
-      super(czc.b, $$0, $$1, $$2, $$3, $$4, $$5);
-   }
+public class czm extends bop.a {
+   public final jj<czj> a;
+   public final int b;
 
-   @Override
-   public cur g() {
-      return new cur(dfd.cD);
-   }
-
-   @Override
-   public czb<?> ao_() {
-      return czb.p;
+   public czm(jj<czj> $$0, int $$1) {
+      super($$0.a().b());
+      this.a = $$0;
+      this.b = $$1;
    }
 }

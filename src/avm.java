@@ -1,38 +1,51 @@
-import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.util.UUID;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class avm extends avh<GameProfile> {
-   public avm(GameProfile $$0) {
-      super($$0);
+public class avm<T> extends exg {
+   public static final ys<wf, avm<?>> a = yq.a(lr.al).b(avm::a, avo::a);
+   private final avn o;
+   private final T p;
+   private final avo<T> q;
+
+   protected avm(avo<T> $$0, T $$1, avn $$2) {
+      super(a($$0, $$1));
+      this.q = $$0;
+      this.o = $$2;
+      this.p = $$1;
    }
 
-   public avm(JsonObject $$0) {
-      super(b($$0));
+   public static <T> String a(avo<T> $$0, T $$1) {
+      return a(lq.v.b($$0)) + ":" + a($$0.b().b($$1));
+   }
+
+   private static <T> String a(@Nullable akk $$0) {
+      return $$0.toString().replace(':', '.');
+   }
+
+   public avo<T> a() {
+      return this.q;
+   }
+
+   public T b() {
+      return this.p;
+   }
+
+   public String a(int $$0) {
+      return this.o.format($$0);
    }
 
    @Override
-   protected void a(JsonObject $$0) {
-      if (this.g() != null) {
-         $$0.addProperty("uuid", this.g().getId() == null ? "" : this.g().getId().toString());
-         $$0.addProperty("name", this.g().getName());
-      }
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof avm && Objects.equals(this.d(), ((avm)$$0).d());
    }
 
-   private static GameProfile b(JsonObject $$0) {
-      if ($$0.has("uuid") && $$0.has("name")) {
-         String $$1 = $$0.get("uuid").getAsString();
+   @Override
+   public int hashCode() {
+      return this.d().hashCode();
+   }
 
-         UUID $$2;
-         try {
-            $$2 = UUID.fromString($$1);
-         } catch (Throwable var4) {
-            return null;
-         }
-
-         return new GameProfile($$2, $$0.get("name").getAsString());
-      } else {
-         return null;
-      }
+   @Override
+   public String toString() {
+      return "Stat{name=" + this.d() + ", formatter=" + this.o + "}";
    }
 }

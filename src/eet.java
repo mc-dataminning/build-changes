@@ -1,49 +1,28 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eet extends eeq {
-   public static final MapCodec<eet> a = RecordCodecBuilder.mapCodec(
-      $$0 -> b($$0).and(bqb.b(0, 24).fieldOf("crown_height").forGetter($$0x -> $$0x.b)).apply($$0, eet::new)
-   );
-   private final bqb b;
+public class eet extends eep {
+   public static final MapCodec<eet> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eet::new));
 
-   public eet(bqb $$0, bqb $$1, bqb $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+   public eet(bpi $$0, bpi $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected eer<?> a() {
-      return eer.h;
+   protected eev<?> a() {
+      return eev.f;
    }
 
    @Override
-   protected void a(dcg $$0, eeq.b $$1, azh $$2, eea $$3, int $$4, eeq.a $$5, int $$6, int $$7, int $$8) {
-      iz $$9 = $$5.a();
-      int $$10 = 0;
-
-      for (int $$11 = $$9.v() - $$6 + $$8; $$11 <= $$9.v() + $$8; $$11++) {
-         int $$12 = $$9.v() - $$11;
-         int $$13 = $$7 + $$5.b() + ayz.d((float)$$12 / (float)$$6 * 3.5F);
-         int $$14;
-         if ($$12 > 0 && $$13 == $$10 && ($$11 & 1) == 0) {
-            $$14 = $$13 + 1;
-         } else {
-            $$14 = $$13;
-         }
-
-         this.a($$0, $$1, $$2, $$3, new iz($$9.u(), $$11, $$9.w()), $$14, 0, $$5.c());
-         $$10 = $$13;
+   protected void a(dcj $$0, eeu.b $$1, aym $$2, eee $$3, int $$4, eeu.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = $$7 + ($$9 != $$8 && $$9 != $$8 - $$6 ? 1 : 0);
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
       }
    }
 
    @Override
-   public int a(azh $$0, int $$1, eea $$2) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   protected boolean a(azh $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
+   protected boolean a(aym $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return aye.k((float)$$1 + 0.5F) + aye.k((float)$$3 + 0.5F) > (float)($$4 * $$4);
    }
 }

@@ -1,51 +1,59 @@
-import java.time.Duration;
-import java.time.Instant;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
+import java.nio.file.Path;
+import java.time.LocalDate;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class gul {
-   private static final int a = 60000;
-   private static final int b = 10;
-   private int c;
-   private boolean d = false;
+public class gul implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = ".json";
+   private static final int c = 7;
+   private final blj d;
    @Nullable
-   private Instant e;
+   private CompletableFuture<Optional<guh>> e;
 
-   public void a() {
-      this.d = true;
-      this.e = Instant.now();
-      this.c = 0;
+   private gul(blj $$0) {
+      this.d = $$0;
    }
 
-   public void a(guf $$0) {
-      if (this.b()) {
-         this.f();
-         this.c++;
-         this.e = Instant.now();
+   public static CompletableFuture<Optional<gul>> a(Path $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         try {
+            blj $$1 = blj.a($$0, ".json");
+            $$1.a().a(LocalDate.now(), 7).a();
+            return Optional.of(new gul($$1));
+         } catch (Exception var2) {
+            a.error("Failed to create telemetry log manager", var2);
+            return Optional.empty();
+         }
+      }, ac.g());
+   }
+
+   public CompletableFuture<Optional<gui>> a() {
+      if (this.e == null) {
+         this.e = CompletableFuture.supplyAsync(() -> {
+            try {
+               blj.e $$0 = this.d.a(LocalDate.now());
+               FileChannel $$1 = $$0.e();
+               return Optional.of(new guh($$1, ac.g()));
+            } catch (IOException var3) {
+               a.error("Failed to open channel for telemetry event log", var3);
+               return Optional.empty();
+            }
+         }, ac.g());
       }
 
-      if (this.c()) {
-         this.b($$0);
-         this.c = 0;
+      return this.e.thenApply($$0 -> $$0.map(guh::a));
+   }
+
+   @Override
+   public void close() {
+      if (this.e != null) {
+         this.e.thenAccept($$0 -> $$0.ifPresent(guh::close));
       }
    }
-
-   public boolean b() {
-      return this.d && this.e != null && Duration.between(this.e, Instant.now()).toMillis() > 60000L;
-   }
-
-   public boolean c() {
-      return this.c >= 10;
-   }
-
-   public void d() {
-      this.d = false;
-   }
-
-   protected int e() {
-      return this.c;
-   }
-
-   public abstract void f();
-
-   public abstract void b(guf var1);
 }

@@ -1,65 +1,31 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.function.Supplier;
 
-public class fza extends fzb {
-   private final String f;
+public interface fza {
+   Codec<fza> a = ayz.a(fza.a::values).dispatch(fza::a, fza.a::a);
 
-   fza(UUID $$0, Instant $$1, UUID $$2, String $$3) {
-      super($$0, $$1, $$2);
-      this.f = $$3;
-   }
+   fza.a a();
 
-   public String a() {
-      return this.f;
-   }
+   public static enum a implements ayz {
+      a("player", () -> fzb.a.b),
+      b("system", () -> fzb.b.b);
 
-   public fza c() {
-      fza $$0 = new fza(this.a, this.b, this.c, this.f);
-      $$0.d = this.d;
-      return $$0;
-   }
+      private final String c;
+      private final Supplier<MapCodec<? extends fza>> d;
 
-   @Override
-   public fnf a(fnf $$0, fzf $$1) {
-      return new frg($$0, $$1, this);
-   }
-
-   public static class a extends fzb.a<fza> {
-      public a(fza $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
+      private a(final String $$0, final Supplier<MapCodec<? extends fza>> $$1) {
+         this.c = $$0;
+         this.d = $$1;
       }
 
-      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
-         super(new fza(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
+      private MapCodec<? extends fza> a() {
+         return this.d.get();
       }
 
       @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g());
-      }
-
-      @Nullable
-      @Override
-      public fzb.b c() {
-         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fzb.b.d : null;
-      }
-
-      @Override
-      public Either<fzb.c, fzb.b> a(fzf $$0) {
-         fzb.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            ReportedEntity $$2 = new ReportedEntity(this.a.c);
-            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
-            return Either.left(new fzb.c(this.a.a, fze.c, $$3));
-         }
+      public String c() {
+         return this.c;
       }
    }
 }

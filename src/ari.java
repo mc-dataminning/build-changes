@@ -1,177 +1,143 @@
-import com.mojang.datafixers.util.Pair;
+import com.mojang.authlib.GameProfile;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.IntSupplier;
-import java.util.function.Supplier;
+import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class ari extends enm implements AutoCloseable {
-   public static final int a = 1000;
-   private static final Logger d = LogUtils.getLogger();
-   private final bpp<Runnable> e;
-   private final ObjectList<Pair<ari.a, Runnable>> f = new ObjectArrayList();
-   private final aqo g;
-   private final bpo<aqr.a<Runnable>> h;
-   private final int i = 1000;
-   private final AtomicBoolean j = new AtomicBoolean();
+public class ari extends arh implements abd, wi {
+   private static final Logger f = LogUtils.getLogger();
+   private static final wu g = wu.c("multiplayer.disconnect.invalid_player_data");
+   private final GameProfile h;
+   private final Queue<ara> i = new ConcurrentLinkedQueue<>();
+   @Nullable
+   private ara j;
+   private apz k;
+   @Nullable
+   private art l;
 
-   public ari(dun $$0, aqo $$1, boolean $$2, bpp<Runnable> $$3, bpo<aqr.a<Runnable>> $$4) {
-      super($$0, true, $$2);
-      this.g = $$1;
-      this.h = $$4;
-      this.e = $$3;
+   public ari(MinecraftServer $$0, vp $$1, aqz $$2) {
+      super($$0, $$1, $$2);
+      this.h = $$2.a();
+      this.k = $$2.c();
    }
 
    @Override
-   public void close() {
+   protected GameProfile i() {
+      return this.h;
    }
 
    @Override
-   public int a() {
-      throw (UnsupportedOperationException)ac.b(new UnsupportedOperationException("Ran automatically on a different thread!"));
+   public void a(wu $$0) {
+      f.info("{} lost connection: {}", this.h, $$0.getString());
+      super.a($$0);
    }
 
    @Override
-   public void a(iz $$0) {
-      iz $$1 = $$0.i();
-      this.a(kb.a($$0.u()), kb.a($$0.w()), ari.a.a, ac.a((Runnable)(() -> super.a($$1)), (Supplier<String>)(() -> "checkBlock " + $$1)));
-   }
-
-   protected void a(dbh $$0) {
-      this.a($$0.e, $$0.f, () -> 0, ari.a.a, ac.a((Runnable)(() -> {
-         super.b($$0, false);
-         super.a($$0, false);
-
-         for (int $$1 = this.d(); $$1 < this.e(); $$1++) {
-            super.a(dcj.b, kb.a($$0, $$1), null);
-            super.a(dcj.a, kb.a($$0, $$1), null);
-         }
-
-         for (int $$2 = this.c.ao(); $$2 < this.c.ap(); $$2++) {
-            super.a(kb.a($$0, $$2), true);
-         }
-      }), (Supplier<String>)(() -> "updateChunkStatus " + $$0 + " true")));
+   public boolean c() {
+      return this.e.i();
    }
 
    @Override
-   public void a(kb $$0, boolean $$1) {
-      this.a($$0.a(), $$0.c(), () -> 0, ari.a.a, ac.a((Runnable)(() -> super.a($$0, $$1)), (Supplier<String>)(() -> "updateSectionStatus " + $$0 + " " + $$1)));
+   public void l() {
+      this.b(new zi(new aaa(this.d.getServerModName())));
+      jq<akt> $$0 = this.d.bd();
+      List<atb> $$1 = this.d.bg().b().flatMap($$0x -> $$0x.a().d().stream()).toList();
+      this.b(new aba(cox.d.b(this.d.bb().K())));
+      this.l = new art($$1, $$0);
+      this.i.add(this.l);
+      this.n();
+      this.i.add(new arr());
+      this.o();
+   }
+
+   public void m() {
+      this.i.add(new arr());
+      this.o();
+   }
+
+   private void n() {
+      this.d.X().ifPresent($$0 -> this.i.add(new ars($$0)));
    }
 
    @Override
-   public void b(dbh $$0) {
-      this.a($$0.e, $$0.f, ari.a.a, ac.a((Runnable)(() -> super.b($$0)), (Supplier<String>)(() -> "propagateLight " + $$0)));
+   public void a(zt $$0) {
+      this.k = $$0.b();
    }
 
    @Override
-   public void a(dbh $$0, boolean $$1) {
-      this.a($$0.e, $$0.f, ari.a.a, ac.a((Runnable)(() -> super.a($$0, $$1)), (Supplier<String>)(() -> "enableLight " + $$0 + " " + $$1)));
-   }
-
-   @Override
-   public void a(dcj $$0, kb $$1, @Nullable duf $$2) {
-      this.a($$1.a(), $$1.c(), () -> 0, ari.a.a, ac.a((Runnable)(() -> super.a($$0, $$1, $$2)), (Supplier<String>)(() -> "queueData " + $$1)));
-   }
-
-   private void a(int $$0, int $$1, ari.a $$2, Runnable $$3) {
-      this.a($$0, $$1, this.g.c(dbh.c($$0, $$1)), $$2, $$3);
-   }
-
-   private void a(int $$0, int $$1, IntSupplier $$2, ari.a $$3, Runnable $$4) {
-      this.h.a(aqr.a(() -> {
-         this.f.add(Pair.of($$3, $$4));
-         if (this.f.size() >= 1000) {
-            this.f();
-         }
-      }, dbh.c($$0, $$1), $$2));
-   }
-
-   @Override
-   public void b(dbh $$0, boolean $$1) {
-      this.a($$0.e, $$0.f, () -> 0, ari.a.a, ac.a((Runnable)(() -> super.b($$0, $$1)), (Supplier<String>)(() -> "retainData " + $$0)));
-   }
-
-   public CompletableFuture<dua> a(dua $$0, boolean $$1) {
-      dbh $$2 = $$0.f();
-      this.a($$2.e, $$2.f, ari.a.a, ac.a((Runnable)(() -> {
-         dul[] $$2x = $$0.d();
-
-         for (int $$3 = 0; $$3 < $$0.an(); $$3++) {
-            dul $$4 = $$2x[$$3];
-            if (!$$4.c()) {
-               int $$5 = this.c.g($$3);
-               super.a(kb.a($$2, $$5), false);
-            }
-         }
-      }), (Supplier<String>)(() -> "initializeLight: " + $$2)));
-      return CompletableFuture.supplyAsync(() -> {
-         super.a($$2, $$1);
-         super.b($$2, false);
-         return $$0;
-      }, $$1x -> this.a($$2.e, $$2.f, ari.a.b, $$1x));
-   }
-
-   public CompletableFuture<dua> b(dua $$0, boolean $$1) {
-      dbh $$2 = $$0.f();
-      $$0.b(false);
-      this.a($$2.e, $$2.f, ari.a.a, ac.a((Runnable)(() -> {
-         if (!$$1) {
-            super.b($$2);
-         }
-      }), (Supplier<String>)(() -> "lightChunk " + $$2 + " " + $$1)));
-      return CompletableFuture.supplyAsync(() -> {
-         $$0.b(true);
-         this.g.b($$2);
-         return $$0;
-      }, $$1x -> this.a($$2.e, $$2.f, ari.a.b, $$1x));
-   }
-
-   public void b() {
-      if ((!this.f.isEmpty() || super.K_()) && this.j.compareAndSet(false, true)) {
-         this.e.a(() -> {
-            this.f();
-            this.j.set(false);
-         });
+   public void a(zx $$0) {
+      super.a($$0);
+      if ($$0.e().a()) {
+         this.a(ars.a);
       }
    }
 
-   private void f() {
-      int $$0 = Math.min(this.f.size(), 1000);
-      ObjectListIterator<Pair<ari.a, Runnable>> $$1 = this.f.iterator();
-
-      int $$2;
-      for ($$2 = 0; $$1.hasNext() && $$2 < $$0; $$2++) {
-         Pair<ari.a, Runnable> $$3 = (Pair<ari.a, Runnable>)$$1.next();
-         if ($$3.getFirst() == ari.a.a) {
-            ((Runnable)$$3.getSecond()).run();
-         }
-      }
-
-      $$1.back($$2);
-      super.a();
-
-      for (int var5 = 0; $$1.hasNext() && var5 < $$0; var5++) {
-         Pair<ari.a, Runnable> $$4 = (Pair<ari.a, Runnable>)$$1.next();
-         if ($$4.getFirst() == ari.a.b) {
-            ((Runnable)$$4.getSecond()).run();
-         }
-
-         $$1.remove();
+   @Override
+   public void a(abf $$0) {
+      ze.a($$0, this, this.d);
+      if (this.l == null) {
+         throw new IllegalStateException("Unexpected response from client: received pack selection, but no negotiation ongoing");
+      } else {
+         this.l.a($$0.b(), this::b);
+         this.a(art.a);
       }
    }
 
-   public CompletableFuture<?> a(int $$0, int $$1) {
-      return CompletableFuture.runAsync(() -> {
-      }, $$2 -> this.a($$0, $$1, ari.a.b, $$2));
+   @Override
+   public void a(abe $$0) {
+      ze.a($$0, this, this.d);
+      this.a(arr.a);
+      this.e.a(aga.b.bind(wf.a(this.d.bc())));
+
+      try {
+         auh $$1 = this.d.ah();
+         if ($$1.a(this.h.getId()) != null) {
+            this.b(auh.f);
+            return;
+         }
+
+         wu $$2 = $$1.a(this.e.d(), this.h);
+         if ($$2 != null) {
+            this.b($$2);
+            return;
+         }
+
+         aql $$3 = $$1.a(this.h, this.k);
+         $$1.a(this.e, $$3, this.a(this.k));
+      } catch (Exception var5) {
+         f.error("Couldn't place player in world", var5);
+         this.e.a(new zj(g));
+         this.e.a(g);
+      }
    }
 
-   static enum a {
-      a,
-      b;
+   @Override
+   public void d() {
+      this.e();
+   }
+
+   private void o() {
+      if (this.j != null) {
+         throw new IllegalStateException("Task " + this.j.a().a() + " has not finished yet");
+      } else if (this.c()) {
+         ara $$0 = this.i.poll();
+         if ($$0 != null) {
+            this.j = $$0;
+            $$0.a(this::b);
+         }
+      }
+   }
+
+   private void a(ara.a $$0) {
+      ara.a $$1 = this.j != null ? this.j.a() : null;
+      if (!$$0.equals($$1)) {
+         throw new IllegalStateException("Unexpected request for task finish, current task: " + $$1 + ", requested: " + $$0);
+      } else {
+         this.j = null;
+         this.o();
+      }
    }
 }

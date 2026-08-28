@@ -1,57 +1,31 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
 import java.util.stream.Stream;
-import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public record ehq(ji<ean<?, ?>> e, List<eht> f) {
-   public static final Codec<ehq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ean.b.fieldOf("feature").forGetter($$0x -> $$0x.e), eht.b.listOf().fieldOf("placement").forGetter($$0x -> $$0x.f)).apply($$0, ehq::new)
+public class ehq extends ehx {
+   public static final MapCodec<ehq> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dxz.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c)).apply($$0, ehq::new)
    );
-   public static final Codec<ji<ehq>> b = alb.a(lq.aI, a);
-   public static final Codec<jm<ehq>> c = jx.a(lq.aI, a);
-   public static final Codec<List<jm<ehq>>> d = jx.a(lq.aI, a, true).listOf();
+   private final dxz.a c;
 
-   public boolean a(dcv $$0, dub $$1, azh $$2, iz $$3) {
-      return this.a(new ehr($$0, $$1, Optional.empty()), $$2, $$3);
+   private ehq(dxz.a $$0) {
+      this.c = $$0;
    }
 
-   public boolean b(dcv $$0, dub $$1, azh $$2, iz $$3) {
-      return this.a(new ehr($$0, $$1, Optional.of(this)), $$2, $$3);
-   }
-
-   private boolean a(ehr $$0, azh $$1, iz $$2) {
-      Stream<iz> $$3 = Stream.of($$2);
-
-      for (eht $$4 : this.f) {
-         $$3 = $$3.flatMap($$3x -> $$4.a_($$0, $$1, $$3x));
-      }
-
-      ean<?, ?> $$5 = this.e.a();
-      MutableBoolean $$6 = new MutableBoolean();
-      $$3.forEach($$4 -> {
-         if ($$5.a($$0.d(), $$0.f(), $$1, $$4)) {
-            $$6.setTrue();
-         }
-      });
-      return $$6.isTrue();
-   }
-
-   public Stream<ean<?, ?>> a() {
-      return this.e.a().a();
+   public static ehq a(dxz.a $$0) {
+      return new ehq($$0);
    }
 
    @Override
-   public String toString() {
-      return "Placed " + this.e;
+   public Stream<ja> a_(ehv $$0, aym $$1, ja $$2) {
+      int $$3 = $$2.u();
+      int $$4 = $$2.w();
+      int $$5 = $$0.a(this.c, $$3, $$4);
+      return $$5 > $$0.c() ? Stream.of(new ja($$3, $$5, $$4)) : Stream.of();
    }
 
-   public ji<ean<?, ?>> b() {
-      return this.e;
-   }
-
-   public List<eht> c() {
-      return this.f;
+   @Override
+   public ehy<?> b() {
+      return ehy.k;
    }
 }

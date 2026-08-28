@@ -1,35 +1,80 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.concurrent.TimeUnit;
+import org.apache.commons.lang3.mutable.MutableInt;
+import org.slf4j.Logger;
 
-public class ebf implements ede {
-   public static final Codec<ebf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               alf.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
-               alf.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
-               eml.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
-               eml.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, ebf::new)
-   );
-   public final List<alf> b;
-   public final List<alf> c;
-   public final ji<emk> d;
-   public final ji<emk> e;
-   public final int f;
+public class ebf {
+   private static final Logger a = LogUtils.getLogger();
+   private static final LoadingCache<aqk, ebf.b> b = CacheBuilder.newBuilder()
+      .weakKeys()
+      .expireAfterAccess(5L, TimeUnit.MINUTES)
+      .build(new CacheLoader<aqk, ebf.b>() {
+         public ebf.b a(aqk $$0) {
+            return new ebf.b(Object2IntMaps.synchronize(new Object2IntOpenHashMap()), new MutableInt(0));
+         }
+      });
 
-   public ebf(List<alf> $$0, List<alf> $$1, ji<emk> $$2, ji<emk> $$3, int $$4) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
-      } else if ($$0.size() != $$1.size()) {
-         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
-      } else {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
+   public static void a(aqk $$0) {
+      try {
+         ((ebf.b)b.get($$0)).b().increment();
+      } catch (Exception var2) {
+         a.error("Failed to increment chunk count", var2);
       }
+   }
+
+   public static void a(aqk $$0, ear<?, ?> $$1, Optional<ehu> $$2) {
+      try {
+         ((ebf.b)b.get($$0)).a().computeInt(new ebf.a($$1, $$2), ($$0x, $$1x) -> $$1x == null ? 1 : $$1x + 1);
+      } catch (Exception var4) {
+         a.error("Failed to increment feature count", var4);
+      }
+   }
+
+   public static void a() {
+      b.invalidateAll();
+      a.debug("Cleared feature counts");
+   }
+
+   public static void b() {
+      a.debug("Logging feature counts:");
+      b.asMap()
+         .forEach(
+            ($$0, $$1) -> {
+               String $$2 = $$0.af().a().toString();
+               boolean $$3 = $$0.o().x();
+               jw<ehu> $$4 = $$0.H_().d(lr.aP);
+               String $$5 = ($$3 ? "running" : "dead") + " " + $$2;
+               Integer $$6 = $$1.b().getValue();
+               a.debug($$5 + " total_chunks: " + $$6);
+               $$1.a()
+                  .forEach(
+                     ($$3x, $$4x) -> a.debug(
+                           $$5
+                              + " "
+                              + String.format(Locale.ROOT, "%10d ", $$4x)
+                              + String.format(Locale.ROOT, "%10f ", (double)$$4x.intValue() / (double)$$6.intValue())
+                              + $$3x.b().flatMap($$4::d).<akk>map(akj::a)
+                              + " "
+                              + $$3x.a().b()
+                              + " "
+                              + $$3x.a()
+                        )
+                  );
+            }
+         );
+   }
+
+   static record a(ear<?, ?> a, Optional<ehu> b) {
+   }
+
+   static record b(Object2IntMap<ebf.a> a, MutableInt b) {
    }
 }

@@ -1,20 +1,29 @@
-public record acw(int b) implements zw<aci> {
-   public static final zn<wm, acw> a = zw.a(acw::a, acw::new);
+public record acw(int b, float c) implements zb<abn> {
+   public static final ys<vr, acw> a = zb.a(acw::a, acw::new);
 
-   private acw(wm $$0) {
-      this($$0.l());
+   public acw(bsy $$0) {
+      this($$0.al(), $$0.eE());
    }
 
-   private void a(wm $$0) {
+   private acw(vr $$0) {
+      this($$0.l(), $$0.readFloat());
+   }
+
+   private void a(vr $$0) {
       $$0.c(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zy<acw> a() {
-      return agu.n;
+   public zd<acw> a() {
+      return afz.I;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
+   }
+
+   public float e() {
+      return this.c;
    }
 }

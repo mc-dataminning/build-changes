@@ -1,76 +1,77 @@
-import com.mojang.datafixers.Products.P3;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.OptionalInt;
 import java.util.function.BiConsumer;
-import java.util.function.Function;
 
-public abstract class egi {
-   public static final Codec<egi> c = lp.X.q().dispatch(egi::a, egj::a);
-   private static final int a = 32;
-   private static final int b = 24;
-   public static final int d = 80;
-   protected final int e;
-   protected final int f;
-   protected final int g;
-
-   protected static <P extends egi> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
-         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
-         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
-      );
-   }
+public class egi extends egm {
+   public static final MapCodec<egi> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, egi::new));
 
    public egi(int $$0, int $$1, int $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+      super($$0, $$1, $$2);
    }
 
-   protected abstract egj<?> a();
-
-   public abstract List<eeq.a> a(dcg var1, BiConsumer<iz, dse> var2, azh var3, int var4, iz var5, eea var6);
-
-   public int a(azh $$0) {
-      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
+   @Override
+   protected egn<?> a() {
+      return egn.b;
    }
 
-   private static boolean c(dcg $$0, iz $$1) {
-      return $$0.a($$1, $$0x -> eba.b($$0x) && !$$0x.a(dfd.i) && !$$0x.a(dfd.fl));
-   }
+   @Override
+   public List<eeu.a> a(dcj $$0, BiConsumer<ja, dsh> $$1, aym $$2, int $$3, ja $$4, eee $$5) {
+      a($$0, $$1, $$2, $$4.d(), $$5);
+      List<eeu.a> $$6 = Lists.newArrayList();
+      jf $$7 = jf.c.a.a($$2);
+      int $$8 = $$3 - $$2.a(4) - 1;
+      int $$9 = 3 - $$2.a(3);
+      ja.a $$10 = new ja.a();
+      int $$11 = $$4.u();
+      int $$12 = $$4.w();
+      OptionalInt $$13 = OptionalInt.empty();
 
-   protected static void a(dcg $$0, BiConsumer<iz, dse> $$1, azh $$2, iz $$3, eea $$4) {
-      if ($$4.k || !c($$0, $$3)) {
-         $$1.accept($$3, $$4.c.a($$2, $$3));
+      for (int $$14 = 0; $$14 < $$3; $$14++) {
+         int $$15 = $$4.v() + $$14;
+         if ($$14 >= $$8 && $$9 > 0) {
+            $$11 += $$7.j();
+            $$12 += $$7.l();
+            $$9--;
+         }
+
+         if (this.b($$0, $$1, $$2, $$10.d($$11, $$15, $$12), $$5)) {
+            $$13 = OptionalInt.of($$15 + 1);
+         }
       }
-   }
 
-   protected boolean b(dcg $$0, BiConsumer<iz, dse> $$1, azh $$2, iz $$3, eea $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
-   }
-
-   protected boolean a(dcg $$0, BiConsumer<iz, dse> $$1, azh $$2, iz $$3, eea $$4, Function<dse, dse> $$5) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
-         return true;
-      } else {
-         return false;
+      if ($$13.isPresent()) {
+         $$6.add(new eeu.a(new ja($$11, $$13.getAsInt(), $$12), 1, false));
       }
-   }
 
-   protected void a(dcg $$0, BiConsumer<iz, dse> $$1, azh $$2, iz.a $$3, eea $$4) {
-      if (this.b($$0, $$3)) {
-         this.b($$0, $$1, $$2, $$3, $$4);
+      $$11 = $$4.u();
+      $$12 = $$4.w();
+      jf $$16 = jf.c.a.a($$2);
+      if ($$16 != $$7) {
+         int $$17 = $$8 - $$2.a(2) - 1;
+         int $$18 = 1 + $$2.a(3);
+         $$13 = OptionalInt.empty();
+
+         for (int $$19 = $$17; $$19 < $$3 && $$18 > 0; $$18--) {
+            if ($$19 >= 1) {
+               int $$20 = $$4.v() + $$19;
+               $$11 += $$16.j();
+               $$12 += $$16.l();
+               if (this.b($$0, $$1, $$2, $$10.d($$11, $$20, $$12), $$5)) {
+                  $$13 = OptionalInt.of($$20 + 1);
+               }
+            }
+
+            $$19++;
+         }
+
+         if ($$13.isPresent()) {
+            $$6.add(new eeu.a(new ja($$11, $$13.getAsInt(), $$12), 0, false));
+         }
       }
-   }
 
-   protected boolean a(dcg $$0, iz $$1) {
-      return ecm.c($$0, $$1);
-   }
-
-   public boolean b(dcg $$0, iz $$1) {
-      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(awp.t));
+      return $$6;
    }
 }

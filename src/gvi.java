@@ -1,34 +1,37 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
+public class gvi extends gvm {
+   private final wu a;
+   private fif b = fif.a;
+   private final fnd c;
+   private int A;
 
-public abstract class gvi extends fnf {
-   protected static final int d = 17;
-   protected static final int r = 7;
-   protected static final long s = 5368709120L;
-   protected static final int u = 5000268;
-   protected static final int v = 7105644;
-   protected static final int w = 8388479;
-   protected static final int x = 3368635;
-   protected static final int y = 7107012;
-   protected static final int z = 8226750;
-   protected static final int A = 32;
-   private final List<gvg> a = Lists.newArrayList();
-
-   public gvi(xp $$0) {
-      super($$0);
+   public gvi(fnd $$0, wu $$1, wu $$2) {
+      super($$1);
+      this.c = $$0;
+      this.a = $$2;
    }
 
-   protected static int g(int $$0) {
-      return 40 + $$0 * 13;
+   @Override
+   public void aO_() {
+      this.l.ae().i();
+      this.b = fif.a(this.o, this.a, this.m - 50);
+      this.A = this.b.a() * 9;
+      this.c(fhm.a(wt.k, $$0 -> this.l.a(this.c)).a(this.m / 2 - 100, this.n / 2 + this.A / 2 + 9, 200, 20).a());
    }
 
-   protected gvg a(gvg $$0) {
-      this.a.add($$0);
-      return this.a($$0);
+   @Override
+   public wu i() {
+      return wu.i().b(this.k).f(": ").b(this.a);
    }
 
-   public xp m() {
-      return xo.a(this.a.stream().map(gvg::a).collect(Collectors.toList()));
+   @Override
+   public void d() {
+      ffn.Q().a(this.c);
+   }
+
+   @Override
+   public void a(fgz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.o, this.k, this.m / 2, this.n / 2 - this.A / 2 - 9 * 2, 11184810);
+      this.b.a($$0, this.m / 2, this.n / 2 - this.A / 2);
    }
 }

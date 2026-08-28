@@ -1,15 +1,36 @@
-import javax.annotation.Nullable;
+public class aro implements ajk {
+   private static final wu b = wu.c("multiplayer.status.request_handled");
+   private final ajj c;
+   private final vp d;
+   private boolean e;
 
-public interface aro {
-   void a(dbh var1);
+   public aro(ajj $$0, vp $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
 
-   void a(dbh var1, @Nullable duz var2);
+   @Override
+   public void a(wu $$0) {
+   }
 
-   void a();
+   @Override
+   public boolean c() {
+      return this.d.i();
+   }
 
-   void b();
+   @Override
+   public void a(ajl $$0) {
+      if (this.e) {
+         this.d.a(b);
+      } else {
+         this.e = true;
+         this.d.a(new aji(this.c));
+      }
+   }
 
-   static int a(int $$0) {
-      return 2 * $$0 + 1;
+   @Override
+   public void a(ajf $$0) {
+      this.d.a(new ajc($$0.b()));
+      this.d.a(b);
    }
 }

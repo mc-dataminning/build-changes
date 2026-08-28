@@ -1,55 +1,42 @@
-public class adf implements zw<aci> {
-   public static final zn<xa, adf> a = zw.a(adf::a, adf::new);
-   public static final int b = -1;
-   public static final int c = -2;
-   private final int d;
-   private final int e;
-   private final int f;
-   private final cur g;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public adf(int $$0, int $$1, int $$2, cur $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3.s();
-   }
+public record adf(epo b, byte c, boolean d, Optional<List<epk>> e, Optional<epq.b> f) implements zb<abn> {
+   public static final ys<wf, adf> a = ys.a(epo.b, adf::b, yq.c, adf::e, yq.b, adf::f, epk.a.a(yq.a()).a(yq::a), adf::g, epq.b.a, adf::h, adf::new);
 
-   private adf(xa $$0) {
-      this.d = $$0.readByte();
-      this.e = $$0.l();
-      this.f = $$0.readShort();
-      this.g = cur.h.decode($$0);
-   }
-
-   private void a(xa $$0) {
-      $$0.k(this.d);
-      $$0.c(this.e);
-      $$0.l(this.f);
-      cur.h.encode($$0, this.g);
+   public adf(epo $$0, byte $$1, boolean $$2, @Nullable Collection<epk> $$3, @Nullable epq.b $$4) {
+      this($$0, $$1, $$2, $$3 != null ? Optional.of(List.copyOf($$3)) : Optional.empty(), Optional.ofNullable($$4));
    }
 
    @Override
-   public zy<adf> a() {
-      return agu.w;
+   public zd<adf> a() {
+      return afz.P;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public void a(epq $$0) {
+      this.e.ifPresent($$0::a);
+      this.f.ifPresent($$1 -> $$1.a($$0));
+   }
+
+   public byte e() {
+      return this.c;
+   }
+
+   public boolean f() {
       return this.d;
    }
 
-   public int e() {
-      return this.f;
-   }
-
-   public cur f() {
-      return this.g;
-   }
-
-   public int g() {
+   public Optional<List<epk>> g() {
       return this.e;
+   }
+
+   public Optional<epq.b> h() {
+      return this.f;
    }
 }

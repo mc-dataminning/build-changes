@@ -1,204 +1,151 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.concurrent.CompletableFuture;
+import com.google.common.collect.Maps;
+import java.util.Map;
 import javax.annotation.Nullable;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
 
-public class gop extends gou {
-   private static final Logger f = LogUtils.getLogger();
-   private static final int g = 64;
-   private static final int h = 64;
-   private static final int i = 32;
-   @Nullable
-   private final File j;
-   private final String k;
-   private final boolean l;
-   @Nullable
-   private final Runnable m;
-   @Nullable
-   private CompletableFuture<?> n;
-   private boolean o;
+public class gop {
+   private static final Map<akk, goq> a = Maps.newHashMap();
+   private static final akk b = new akk("damaged");
+   private static final akk c = new akk("damage");
+   private static final gon d = ($$0x, $$1, $$2, $$3) -> $$0x.m() ? 1.0F : 0.0F;
+   private static final gon e = ($$0x, $$1, $$2, $$3) -> aye.a((float)$$0x.n() / (float)$$0x.o(), 0.0F, 1.0F);
+   private static final Map<ctv, Map<akk, goq>> f = Maps.newHashMap();
 
-   public gop(@Nullable File $$0, String $$1, alf $$2, boolean $$3, @Nullable Runnable $$4) {
-      super($$2);
-      this.j = $$0;
-      this.k = $$1;
-      this.l = $$3;
-      this.m = $$4;
-   }
-
-   private void a(ezb $$0) {
-      if (this.m != null) {
-         this.m.run();
-      }
-
-      ffh.Q().execute(() -> {
-         this.o = true;
-         if (!RenderSystem.isOnRenderThread()) {
-            RenderSystem.recordRenderCall(() -> this.b($$0));
-         } else {
-            this.b($$0);
-         }
-      });
-   }
-
-   private void b(ezb $$0) {
-      TextureUtil.prepareImage(this.a(), $$0.a(), $$0.b());
-      $$0.a(0, 0, 0, true);
-   }
-
-   @Override
-   public void a(aup $$0) throws IOException {
-      ffh.Q().execute(() -> {
-         if (!this.o) {
-            try {
-               super.a($$0);
-            } catch (IOException var3x) {
-               f.warn("Failed to load texture: {}", this.e, var3x);
-            }
-
-            this.o = true;
-         }
-      });
-      if (this.n == null) {
-         ezb $$2;
-         if (this.j != null && this.j.isFile()) {
-            f.debug("Loading http texture from local cache ({})", this.j);
-            FileInputStream $$1 = new FileInputStream(this.j);
-            $$2 = this.a($$1);
-         } else {
-            $$2 = null;
-         }
-
-         if ($$2 != null) {
-            this.a($$2);
-         } else {
-            this.n = CompletableFuture.runAsync(() -> {
-               HttpURLConnection $$0x = null;
-               f.debug("Downloading http texture from {} to {}", this.k, this.j);
-
-               try {
-                  $$0x = (HttpURLConnection)new URL(this.k).openConnection(ffh.Q().Z());
-                  $$0x.setDoInput(true);
-                  $$0x.setDoOutput(false);
-                  $$0x.connect();
-                  if ($$0x.getResponseCode() / 100 == 2) {
-                     InputStream $$1x;
-                     if (this.j != null) {
-                        FileUtils.copyInputStreamToFile($$0x.getInputStream(), this.j);
-                        $$1x = new FileInputStream(this.j);
-                     } else {
-                        $$1x = $$0x.getInputStream();
-                     }
-
-                     ffh.Q().execute(() -> {
-                        ezb $$1xx = this.a($$1x);
-                        if ($$1xx != null) {
-                           this.a($$1xx);
-                        }
-                     });
-                     return;
-                  }
-               } catch (Exception var6) {
-                  f.error("Couldn't download http texture", var6);
-                  return;
-               } finally {
-                  if ($$0x != null) {
-                     $$0x.disconnect();
-                  }
-               }
-            }, ac.g());
-         }
-      }
-   }
-
-   @Nullable
-   private ezb a(InputStream $$0) {
-      ezb $$1 = null;
-
-      try {
-         $$1 = ezb.a($$0);
-         if (this.l) {
-            $$1 = this.c($$1);
-         }
-      } catch (Exception var4) {
-         f.warn("Error while loading the skin texture", var4);
-      }
-
+   private static gon a(akk $$0, gon $$1) {
+      a.put($$0, $$1);
       return $$1;
    }
 
+   private static void a(goq $$0) {
+      a.put(new akk("custom_model_data"), $$0);
+   }
+
+   private static void a(ctv $$0, akk $$1, gon $$2) {
+      f.computeIfAbsent($$0, $$0x -> Maps.newHashMap()).put($$1, $$2);
+   }
+
    @Nullable
-   private ezb c(ezb $$0) {
-      int $$1 = $$0.b();
-      int $$2 = $$0.a();
-      if ($$2 == 64 && ($$1 == 32 || $$1 == 64)) {
-         boolean $$3 = $$1 == 32;
-         if ($$3) {
-            ezb $$4 = new ezb(64, 64, true);
-            $$4.a($$0);
-            $$0.close();
-            $$0 = $$4;
-            $$4.a(0, 32, 64, 32, 0);
-            $$4.a(4, 16, 16, 32, 4, 4, true, false);
-            $$4.a(8, 16, 16, 32, 4, 4, true, false);
-            $$4.a(0, 20, 24, 32, 4, 12, true, false);
-            $$4.a(4, 20, 16, 32, 4, 12, true, false);
-            $$4.a(8, 20, 8, 32, 4, 12, true, false);
-            $$4.a(12, 20, 16, 32, 4, 12, true, false);
-            $$4.a(44, 16, -8, 32, 4, 4, true, false);
-            $$4.a(48, 16, -8, 32, 4, 4, true, false);
-            $$4.a(40, 20, 0, 32, 4, 12, true, false);
-            $$4.a(44, 20, -8, 32, 4, 12, true, false);
-            $$4.a(48, 20, -16, 32, 4, 12, true, false);
-            $$4.a(52, 20, -8, 32, 4, 12, true, false);
+   public static goq a(cua $$0, akk $$1) {
+      if ($$0.o() > 0) {
+         if (c.equals($$1)) {
+            return e;
          }
 
-         b($$0, 0, 0, 32, 16);
-         if ($$3) {
-            a($$0, 32, 0, 64, 32);
+         if (b.equals($$1)) {
+            return d;
          }
+      }
 
-         b($$0, 0, 16, 64, 32);
-         b($$0, 16, 48, 48, 64);
-         return $$0;
+      goq $$2 = a.get($$1);
+      if ($$2 != null) {
+         return $$2;
       } else {
-         $$0.close();
-         f.warn("Discarding incorrectly sized ({}x{}) skin texture from {}", new Object[]{$$2, $$1, this.k});
-         return null;
+         Map<akk, goq> $$3 = f.get($$0.g());
+         return $$3 == null ? null : $$3.get($$1);
       }
    }
 
-   private static void a(ezb $$0, int $$1, int $$2, int $$3, int $$4) {
-      for (int $$5 = $$1; $$5 < $$3; $$5++) {
-         for (int $$6 = $$2; $$6 < $$4; $$6++) {
-            int $$7 = $$0.a($$5, $$6);
-            if (($$7 >> 24 & 0xFF) < 128) {
-               return;
+   static {
+      a(new akk("lefthanded"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fq() != bss.b ? 1.0F : 0.0F);
+      a(new akk("cooldown"), ($$0x, $$1, $$2, $$3) -> $$2 instanceof cmh ? ((cmh)$$2).gt().a($$0x.g(), 0.0F) : 0.0F);
+      gon $$0 = ($$0x, $$1, $$2, $$3) -> {
+         cwe $$4 = $$0x.a(kn.K);
+         return $$4 != null ? $$4.b().a().c() : Float.NEGATIVE_INFINITY;
+      };
+      a(nl.a, $$0);
+      a(($$0x, $$1, $$2, $$3) -> (float)$$0x.a(kn.o, cwp.a).a());
+      a(cud.ou, new akk("pull"), ($$0x, $$1, $$2, $$3) -> {
+         if ($$2 == null) {
+            return 0.0F;
+         } else {
+            return $$2.ft() != $$0x ? 0.0F : (float)($$0x.a($$2) - $$2.fu()) / 20.0F;
+         }
+      });
+      a(cud.xu, new akk("brushing"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.ft() == $$0x ? (float)($$2.fu() % 10) / 10.0F : 0.0F);
+      a(cud.ou, new akk("pulling"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fr() && $$2.ft() == $$0x ? 1.0F : 0.0F);
+      a(cud.qU, new akk("filled"), ($$0x, $$1, $$2, $$3) -> csh.c($$0x));
+      a(cud.qW, new akk("time"), new gon() {
+         private double a;
+         private double b;
+         private long c;
+
+         @Override
+         public float unclampedCall(cua $$0, @Nullable fyd $$1, @Nullable bsy $$2, int $$3) {
+            bsd $$4 = (bsd)($$2 != null ? $$2 : $$0.E());
+            if ($$4 == null) {
+               return 0.0F;
+            } else {
+               if ($$1 == null && $$4.dP() instanceof fyd) {
+                  $$1 = (fyd)$$4.dP();
+               }
+
+               if ($$1 == null) {
+                  return 0.0F;
+               } else {
+                  double $$5;
+                  if ($$1.D_().j()) {
+                     $$5 = (double)$$1.f(1.0F);
+                  } else {
+                     $$5 = Math.random();
+                  }
+
+                  $$5 = this.a($$1, $$5);
+                  return (float)$$5;
+               }
             }
          }
-      }
 
-      for (int $$8 = $$1; $$8 < $$3; $$8++) {
-         for (int $$9 = $$2; $$9 < $$4; $$9++) {
-            $$0.a($$8, $$9, $$0.a($$8, $$9) & 16777215);
-         }
-      }
-   }
+         private double a(dcd $$0, double $$1) {
+            if ($$0.Z() != this.c) {
+               this.c = $$0.Z();
+               double $$2 = $$1 - this.a;
+               $$2 = aye.c($$2 + 0.5, 1.0) - 0.5;
+               this.b += $$2 * 0.1;
+               this.b *= 0.9;
+               this.a = aye.c(this.a + this.b, 1.0);
+            }
 
-   private static void b(ezb $$0, int $$1, int $$2, int $$3, int $$4) {
-      for (int $$5 = $$1; $$5 < $$3; $$5++) {
-         for (int $$6 = $$2; $$6 < $$4; $$6++) {
-            $$0.a($$5, $$6, $$0.a($$5, $$6) | 0xFF000000);
+            return this.a;
          }
-      }
+      });
+      a(cud.qS, new akk("angle"), new goo(($$0x, $$1, $$2) -> {
+         cwx $$3 = $$1.a(kn.S);
+         return $$3 != null ? $$3.a().orElse(null) : csj.a($$0x);
+      }));
+      a(cud.qT, new akk("angle"), new goo(($$0x, $$1, $$2) -> $$2 instanceof cmh $$3 ? $$3.gx().orElse(null) : null));
+      a(cud.vW, new akk("pull"), ($$0x, $$1, $$2, $$3) -> {
+         if ($$2 == null) {
+            return 0.0F;
+         } else {
+            return csn.i($$0x) ? 0.0F : (float)($$0x.a($$2) - $$2.fu()) / (float)csn.b($$0x, $$2);
+         }
+      });
+      a(cud.vW, new akk("pulling"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fr() && $$2.ft() == $$0x && !csn.i($$0x) ? 1.0F : 0.0F);
+      a(cud.vW, new akk("charged"), ($$0x, $$1, $$2, $$3) -> csn.i($$0x) ? 1.0F : 0.0F);
+      a(cud.vW, new akk("firework"), ($$0x, $$1, $$2, $$3) -> {
+         cwn $$4 = $$0x.a(kn.E);
+         return $$4 != null && $$4.a(cud.uu) ? 1.0F : 0.0F;
+      });
+      a(cud.nT, new akk("broken"), ($$0x, $$1, $$2, $$3) -> csw.i($$0x) ? 0.0F : 1.0F);
+      a(cud.qV, new akk("cast"), ($$0x, $$1, $$2, $$3) -> {
+         if ($$2 == null) {
+            return 0.0F;
+         } else {
+            boolean $$4 = $$2.eT() == $$0x;
+            boolean $$5 = $$2.eU() == $$0x;
+            if ($$2.eT().g() instanceof cth) {
+               $$5 = false;
+            }
+
+            return ($$4 || $$5) && $$2 instanceof cmh && ((cmh)$$2).cv != null ? 1.0F : 0.0F;
+         }
+      });
+      a(cud.vs, new akk("blocking"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fr() && $$2.ft() == $$0x ? 1.0F : 0.0F);
+      a(cud.vS, new akk("throwing"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fr() && $$2.ft() == $$0x ? 1.0F : 0.0F);
+      a(cud.hC, new akk("level"), ($$0x, $$1, $$2, $$3) -> {
+         cwk $$4 = $$0x.a(kn.ab, cwk.a);
+         Integer $$5 = $$4.a(djt.c);
+         return $$5 != null ? (float)$$5.intValue() / 16.0F : 1.0F;
+      });
+      a(cud.wh, new akk("tooting"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fr() && $$2.ft() == $$0x ? 1.0F : 0.0F);
    }
 }

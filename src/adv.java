@@ -1,53 +1,79 @@
-public class adv implements zw<aci> {
-   public static final zn<wm, adv> a = zw.a(adv::a, adv::new);
-   private final int b;
-   private final iz c;
-   private final int d;
-   private final boolean e;
+import java.util.Set;
 
-   public adv(int $$0, iz $$1, int $$2, boolean $$3) {
+public class adv implements zb<abn> {
+   public static final ys<vr, adv> a = zb.a(adv::a, adv::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final float f;
+   private final Set<btm> g;
+   private final int h;
+
+   public adv(double $$0, double $$1, double $$2, float $$3, float $$4, Set<btm> $$5, int $$6) {
       this.b = $$0;
-      this.c = $$1.i();
+      this.c = $$1;
       this.d = $$2;
       this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
    }
 
-   private adv(wm $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.e();
-      this.d = $$0.readInt();
-      this.e = $$0.readBoolean();
+   private adv(vr $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+      this.g = btm.a($$0.readUnsignedByte());
+      this.h = $$0.l();
    }
 
-   private void a(wm $$0) {
-      $$0.p(this.b);
+   private void a(vr $$0) {
+      $$0.a(this.b);
       $$0.a(this.c);
-      $$0.p(this.d);
+      $$0.a(this.d);
       $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.k(btm.a(this.g));
+      $$0.c(this.h);
    }
 
    @Override
-   public zy<adv> a() {
-      return agu.L;
+   public zd<adv> a() {
+      return afz.ah;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
-      return this.e;
-   }
-
-   public int e() {
+   public double b() {
       return this.b;
    }
 
-   public int f() {
+   public double e() {
+      return this.c;
+   }
+
+   public double f() {
       return this.d;
    }
 
-   public iz g() {
-      return this.c;
+   public float g() {
+      return this.e;
+   }
+
+   public float h() {
+      return this.f;
+   }
+
+   public int i() {
+      return this.h;
+   }
+
+   public Set<btm> j() {
+      return this.g;
    }
 }

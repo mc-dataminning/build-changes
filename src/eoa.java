@@ -1,213 +1,93 @@
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public abstract class eoa extends env {
-   public static final float e = 0.44444445F;
+public abstract class eoa {
+   public static final jp<eob> c = new jp<>();
+   protected final dsi<eoa, eob> d;
+   private eob a;
+   private final jj.c<eoa> b = lq.c.f(this);
 
-   @Override
-   public enw d() {
-      return eny.d;
+   protected eoa() {
+      dsi.a<eoa, eob> $$0 = new dsi.a<>(this);
+      this.a($$0);
+      this.d = $$0.a(eoa::g, eob::new);
+      this.f(this.d.b());
    }
 
-   @Override
-   public enw e() {
-      return eny.e;
+   protected void a(dsi.a<eoa, eob> $$0) {
    }
 
-   @Override
-   public cum a() {
-      return cuu.qA;
+   public dsi<eoa, eob> f() {
+      return this.d;
    }
 
-   @Override
-   public void a(dca $$0, iz $$1, enx $$2, azh $$3) {
-      iz $$4 = $$1.c();
-      if ($$0.a_($$4).i() && !$$0.a_($$4).i($$0, $$4)) {
-         if ($$3.a(100) == 0) {
-            double $$5 = (double)$$1.u() + $$3.j();
-            double $$6 = (double)$$1.v() + 1.0;
-            double $$7 = (double)$$1.w() + $$3.j();
-            $$0.a(li.Y, $$5, $$6, $$7, 0.0, 0.0, 0.0);
-            $$0.a($$5, $$6, $$7, awa.nR, awb.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
-
-         if ($$3.a(200) == 0) {
-            $$0.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), awa.nP, awb.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
-      }
+   protected final void f(eob $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public void b(dca $$0, iz $$1, enx $$2, azh $$3) {
-      if ($$0.ab().b(dbw.b)) {
-         int $$4 = $$3.a(3);
-         if ($$4 > 0) {
-            iz $$5 = $$1;
-
-            for (int $$6 = 0; $$6 < $$4; $$6++) {
-               $$5 = $$5.b($$3.a(3) - 1, 1, $$3.a(3) - 1);
-               if (!$$0.p($$5)) {
-                  return;
-               }
-
-               dse $$7 = $$0.a_($$5);
-               if ($$7.i()) {
-                  if (this.a((dcd)$$0, $$5)) {
-                     $$0.b($$5, deo.a($$0, $$5));
-                     return;
-                  }
-               } else if ($$7.d()) {
-                  return;
-               }
-            }
-         } else {
-            for (int $$8 = 0; $$8 < 3; $$8++) {
-               iz $$9 = $$1.b($$3.a(3) - 1, 0, $$3.a(3) - 1);
-               if (!$$0.p($$9)) {
-                  return;
-               }
-
-               if ($$0.u($$9.c()) && this.b($$0, $$9)) {
-                  $$0.b($$9.c(), deo.a($$0, $$9));
-               }
-            }
-         }
-      }
+   public final eob g() {
+      return this.a;
    }
 
-   private boolean a(dcd $$0, iz $$1) {
-      for (je $$2 : je.values()) {
-         if (this.b($$0, $$1.a($$2))) {
-            return true;
-         }
-      }
+   public abstract ctv a();
 
-      return false;
+   protected void a(dcd $$0, ja $$1, eob $$2, aym $$3) {
    }
 
-   private boolean b(dcd $$0, iz $$1) {
-      return $$1.v() >= $$0.I_() && $$1.v() < $$0.am() && !$$0.B($$1) ? false : $$0.a_($$1).j();
+   protected void b(dcd $$0, ja $$1, eob $$2) {
+   }
+
+   protected void b(dcd $$0, ja $$1, eob $$2, aym $$3) {
    }
 
    @Nullable
-   @Override
-   public lg h() {
-      return li.i;
+   protected lh h() {
+      return null;
    }
 
-   @Override
-   protected void a(dcb $$0, iz $$1, dse $$2) {
-      this.a($$0, $$1);
-   }
+   protected abstract boolean a(eob var1, dbj var2, ja var3, eoa var4, jf var5);
 
-   @Override
-   public int b(dcd $$0) {
-      return $$0.D_().i() ? 4 : 2;
-   }
+   protected abstract evz a(dbj var1, ja var2, eob var3);
 
-   @Override
-   public dse b(enx $$0) {
-      return dfd.H.o().a(djr.b, Integer.valueOf(e($$0)));
-   }
+   public abstract int a(dcg var1);
 
-   @Override
-   public boolean a(enw $$0) {
-      return $$0 == eny.e || $$0 == eny.d;
-   }
-
-   @Override
-   public int c(dcd $$0) {
-      return $$0.D_().i() ? 1 : 2;
-   }
-
-   @Override
-   public boolean a(enx $$0, dbg $$1, iz $$2, enw $$3, je $$4) {
-      return $$0.a($$1, $$2) >= 0.44444445F && $$3.a(awv.a);
-   }
-
-   @Override
-   public int a(dcd $$0) {
-      return $$0.D_().i() ? 10 : 30;
-   }
-
-   @Override
-   public int a(dca $$0, iz $$1, enx $$2, enx $$3) {
-      int $$4 = this.a((dcd)$$0);
-      if (!$$2.c() && !$$3.c() && !$$2.c(a) && !$$3.c(a) && $$3.a((dbg)$$0, $$1) > $$2.a((dbg)$$0, $$1) && $$0.E_().a(4) != 0) {
-         $$4 *= 4;
-      }
-
-      return $$4;
-   }
-
-   private void a(dcb $$0, iz $$1) {
-      $$0.c(1501, $$1, 0);
-   }
-
-   @Override
-   protected boolean a(dca $$0) {
-      return $$0.ab().b(dbw.V);
-   }
-
-   @Override
-   protected void a(dcb $$0, iz $$1, dse $$2, je $$3, enx $$4) {
-      if ($$3 == je.a) {
-         enx $$5 = $$0.b_($$1);
-         if (this.a(awv.b) && $$5.a(awv.a)) {
-            if ($$2.b() instanceof djr) {
-               $$0.a($$1, dfd.b.o(), 3);
-            }
-
-            this.a($$0, $$1);
-            return;
-         }
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
    protected boolean i() {
-      return true;
+      return false;
    }
 
-   @Override
-   protected float c() {
-      return 100.0F;
+   protected boolean b() {
+      return false;
    }
 
-   @Override
-   public Optional<avz> j() {
-      return Optional.of(awa.dl);
+   protected abstract float c();
+
+   public abstract float a(eob var1, dbj var2, ja var3);
+
+   public abstract float a(eob var1);
+
+   protected abstract dsh b(eob var1);
+
+   public abstract boolean c(eob var1);
+
+   public abstract int d(eob var1);
+
+   public boolean a(eoa $$0) {
+      return $$0 == this;
    }
 
-   public static class a extends eoa {
-      @Override
-      protected void a(dsf.a<enw, enx> $$0) {
-         super.a($$0);
-         $$0.a(b);
-      }
-
-      @Override
-      public int d(enx $$0) {
-         return $$0.c(b);
-      }
-
-      @Override
-      public boolean c(enx $$0) {
-         return false;
-      }
+   @Deprecated
+   public boolean a(awk<eoa> $$0) {
+      return this.b.a($$0);
    }
 
-   public static class b extends eoa {
-      @Override
-      public int d(enx $$0) {
-         return 8;
-      }
+   public abstract ews b(eob var1, dbj var2, ja var3);
 
-      @Override
-      public boolean c(enx $$0) {
-         return true;
-      }
+   public Optional<ave> j() {
+      return Optional.empty();
+   }
+
+   @Deprecated
+   public jj.c<eoa> k() {
+      return this.b;
    }
 }

@@ -1,105 +1,151 @@
-import com.google.common.collect.Comparators;
+import com.google.common.hash.HashCode;
+import com.google.common.hash.HashFunction;
+import com.mojang.datafixers.util.Either;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Objects;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.net.Proxy;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.Instant;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class asb {
-   private static final Logger c = LogUtils.getLogger();
-   public static final float a = 0.01F;
-   public static final float b = 64.0F;
-   private static final float d = 9.0F;
-   private static final int e = 10;
-   private final LongSet f = new LongOpenHashSet();
-   private final boolean g;
-   private float h = 9.0F;
-   private float i;
-   private int j;
-   private int k = 1;
+public class asb implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 20;
+   private final Path c;
+   private final blk<asb.e> d;
+   private final bow<Runnable> e = bow.a(ac.i(), "download-queue");
 
-   public asb(boolean $$0) {
-      this.g = $$0;
+   public asb(Path $$0) throws IOException {
+      this.c = $$0;
+      v.c($$0);
+      this.d = blk.a(asb.e.a, $$0.resolve("log.json"));
+      asa.a($$0, 20);
    }
 
-   public void a(duk $$0) {
-      this.f.add($$0.f().a());
-   }
+   private asb.b b(asb.a $$0, Map<UUID, asb.c> $$1) {
+      asb.b $$2 = new asb.b();
+      $$1.forEach(
+         ($$2x, $$3) -> {
+            Path $$4 = this.c.resolve($$2x.toString());
+            Path $$5 = null;
 
-   public void a(arg $$0, dbh $$1) {
-      if (!this.f.remove($$1.a()) && $$0.bD()) {
-         $$0.c.b(new ado($$1));
-      }
-   }
+            try {
+               $$5 = axv.a($$4, $$3.a, $$0.c, $$0.a, $$3.b, $$0.b, $$0.d, $$0.e);
+               $$2.a.put($$2x, $$5);
+            } catch (Exception var9) {
+               a.error("Failed to download {}", $$3.a, var9);
+               $$2.b.add($$2x);
+            }
 
-   public void a(arg $$0) {
-      if (this.j < this.k) {
-         float $$1 = Math.max(1.0F, this.h);
-         this.i = Math.min(this.i + this.h, $$1);
-         if (!(this.i < 1.0F)) {
-            if (!this.f.isEmpty()) {
-               arf $$2 = $$0.z();
-               aqo $$3 = $$2.l().a;
-               List<duk> $$4 = this.a($$3, $$0.dr());
-               if (!$$4.isEmpty()) {
-                  asf $$5 = $$0.c;
-                  this.j++;
-                  $$5.b(acx.a);
-
-                  for (duk $$6 : $$4) {
-                     a($$5, $$2, $$6);
-                  }
-
-                  $$5.b(new acw($$4.size()));
-                  this.i = this.i - (float)$$4.size();
-               }
+            try {
+               this.d
+                  .a(
+                     new asb.e(
+                        $$2x,
+                        $$3.a.toString(),
+                        Instant.now(),
+                        Optional.ofNullable($$3.b).map(HashCode::toString),
+                        $$5 != null ? this.a($$5) : Either.left("download_failed")
+                     )
+                  );
+            } catch (Exception var8) {
+               a.error("Failed to log download of {}", $$3.a, var8);
             }
          }
+      );
+      return $$2;
+   }
+
+   private Either<String, asb.d> a(Path $$0) {
+      try {
+         long $$1 = Files.size($$0);
+         Path $$2 = this.c.relativize($$0);
+         return Either.right(new asb.d($$2.toString(), $$1));
+      } catch (IOException var5) {
+         a.error("Failed to get file size of {}", $$0, var5);
+         return Either.left("no_access");
       }
    }
 
-   private static void a(asf $$0, arf $$1, duk $$2) {
-      $$0.b(new adu($$2, $$1.y_(), null, null));
-      dbh $$3 = $$2.f();
-      agt.a($$1, $$3);
+   public CompletableFuture<asb.b> a(asb.a $$0, Map<UUID, asb.c> $$1) {
+      return CompletableFuture.supplyAsync(() -> this.b($$0, $$1), this.e::a);
    }
 
-   private List<duk> a(aqo $$0, dbh $$1) {
-      int $$2 = ayz.d(this.i);
-      List<duk> $$4;
-      if (!this.g && this.f.size() > $$2) {
-         $$4 = this.f
-            .stream()
-            .collect(Comparators.least($$2, Comparator.comparingInt($$1::c)))
-            .stream()
-            .mapToLong(Long::longValue)
-            .mapToObj($$0::d)
-            .filter(Objects::nonNull)
-            .toList();
-      } else {
-         $$4 = this.f.longStream().mapToObj($$0::d).filter(Objects::nonNull).sorted(Comparator.comparingInt($$1x -> $$1.b($$1x.f()))).toList();
-      }
-
-      for (duk $$5 : $$4) {
-         this.f.remove($$5.f().a());
-      }
-
-      return $$4;
+   @Override
+   public void close() throws IOException {
+      this.e.close();
+      this.d.close();
    }
 
-   public void a(float $$0) {
-      this.j--;
-      this.h = Double.isNaN((double)$$0) ? 0.01F : ayz.a($$0, 0.01F, 64.0F);
-      if (this.j == 0) {
-         this.i = 1.0F;
-      }
-
-      this.k = 10;
+   public static record a(HashFunction a, int b, Map<String, String> c, Proxy d, axv.a e) {
    }
 
-   public boolean a(long $$0) {
-      return this.f.contains($$0);
+   public static record b(Map<UUID, Path> a, Set<UUID> b) {
+
+      public b() {
+         this(new HashMap<>(), new HashSet<>());
+      }
+   }
+
+   public static record c(URL a, @Nullable HashCode b) {
+   }
+
+   static record d(String b, long c) {
+      public static final Codec<asb.d> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(asb.d::a), Codec.LONG.fieldOf("size").forGetter(asb.d::b)).apply($$0, asb.d::new)
+      );
+
+      public String a() {
+         return this.b;
+      }
+
+      public long b() {
+         return this.c;
+      }
+   }
+
+   static record e(UUID b, String c, Instant d, Optional<String> e, Either<String, asb.d> f) {
+      public static final Codec<asb.e> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  kd.d.fieldOf("id").forGetter(asb.e::a),
+                  Codec.STRING.fieldOf("url").forGetter(asb.e::b),
+                  axm.o.fieldOf("time").forGetter(asb.e::c),
+                  Codec.STRING.optionalFieldOf("hash").forGetter(asb.e::d),
+                  Codec.mapEither(Codec.STRING.fieldOf("error"), asb.d.a.fieldOf("file")).forGetter(asb.e::e)
+               )
+               .apply($$0, asb.e::new)
+      );
+
+      public UUID a() {
+         return this.b;
+      }
+
+      public String b() {
+         return this.c;
+      }
+
+      public Instant c() {
+         return this.d;
+      }
+
+      public Optional<String> d() {
+         return this.e;
+      }
+
+      public Either<String, asb.d> e() {
+         return this.f;
+      }
    }
 }

@@ -9,13 +9,15 @@ public class bfp extends DataFix {
       super($$0, false);
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.update("banners", $$0x -> $$0x.createList($$0x.asStream().map($$0xx -> $$0xx.update("Pos", bai::a))));
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "OptionsProgrammerArtFix",
+         this.getInputSchema().getType(bgd.e),
+         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("resourcePacks", this::a).update("incompatibleResourcePacks", this::a))
+      );
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "MapBannerBlockPosFormatFix", this.getInputSchema().getType(bgx.j), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("data", bfp::a))
-      );
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.asString().result().map($$1 -> $$0.createString($$1.replace("\"programer_art\"", "\"programmer_art\""))).orElse($$0);
    }
 }

@@ -1,42 +1,25 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Collections;
-import java.util.List;
+import com.mojang.serialization.Codec;
 
-public class ejm extends ejt {
-   public static final MapCodec<ejm> a = MapCodec.unit(() -> ejm.b);
-   public static final ejm b = new ejm();
+public enum ejm implements ayz {
+   a("linear"),
+   b("triangular");
 
-   private ejm() {
-      super(ejv.a.a);
+   public static final Codec<ejm> c = ayz.a(ejm::values);
+   private final String d;
+
+   private ejm(final String $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public kd a(emn $$0, dlo $$1) {
-      return kd.g;
+   public String c() {
+      return this.d;
    }
 
-   @Override
-   public List<emm.c> a(emn $$0, iz $$1, dlo $$2, azh $$3) {
-      return Collections.emptyList();
-   }
-
-   @Override
-   public eie a(emn $$0, iz $$1, dlo $$2) {
-      throw new IllegalStateException("Invalid call to EmtyPoolElement.getBoundingBox, filter me!");
-   }
-
-   @Override
-   public boolean a(emn $$0, dcv $$1, dct $$2, dub $$3, iz $$4, iz $$5, dlo $$6, eie $$7, azh $$8, boolean $$9) {
-      return true;
-   }
-
-   @Override
-   public eju<?> a() {
-      return eju.d;
-   }
-
-   @Override
-   public String toString() {
-      return "Empty";
+   public int a(aym $$0, int $$1) {
+      return switch (this) {
+         case a -> $$0.a($$1);
+         case b -> ($$0.a($$1) + $$0.a($$1)) / 2;
+      };
    }
 }

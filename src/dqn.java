@@ -1,61 +1,143 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+import java.util.Arrays;
 import java.util.Optional;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
 
-public record dqn(Optional<cum> d, Optional<cum> e, Optional<cum> f, Optional<cum> g) {
-   public static final dqn a = new dqn(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
-   public static final Codec<dqn> b = lp.h.q().sizeLimitedListOf(4).xmap(dqn::new, dqn::a);
-   public static final zn<xa, dqn> c = zl.a(lq.G).a(zl.c(4)).a(dqn::new, dqn::a);
+public class dqn extends dpn {
+   public static final String a = "target";
+   public static final String b = "pool";
+   public static final String c = "joint";
+   public static final String d = "placement_priority";
+   public static final String e = "selection_priority";
+   public static final String f = "name";
+   public static final String g = "final_state";
+   private akk h = new akk("empty");
+   private akk i = new akk("empty");
+   private akj<ejz> j = akj.a(lr.aT, new akk("empty"));
+   private dqn.a k = dqn.a.a;
+   private String l = "minecraft:air";
+   private int m;
+   private int q;
 
-   private dqn(List<cum> $$0) {
-      this(a($$0, 0), a($$0, 1), a($$0, 2), a($$0, 3));
+   public dqn(ja $$0, dsh $$1) {
+      super(dpp.F, $$0, $$1);
    }
 
-   public dqn(cum $$0, cum $$1, cum $$2, cum $$3) {
-      this(List.of($$0, $$1, $$2, $$3));
+   public akk b() {
+      return this.h;
    }
 
-   private static Optional<cum> a(List<cum> $$0, int $$1) {
-      if ($$1 >= $$0.size()) {
-         return Optional.empty();
-      } else {
-         cum $$2 = $$0.get($$1);
-         return $$2 == cuu.qL ? Optional.empty() : Optional.of($$2);
+   public akk c() {
+      return this.i;
+   }
+
+   public akj<ejz> d() {
+      return this.j;
+   }
+
+   public String f() {
+      return this.l;
+   }
+
+   public dqn.a j() {
+      return this.k;
+   }
+
+   public int k() {
+      return this.m;
+   }
+
+   public int l() {
+      return this.q;
+   }
+
+   public void a(akk $$0) {
+      this.h = $$0;
+   }
+
+   public void b(akk $$0) {
+      this.i = $$0;
+   }
+
+   public void a(akj<ejz> $$0) {
+      this.j = $$0;
+   }
+
+   public void a(String $$0) {
+      this.l = $$0;
+   }
+
+   public void a(dqn.a $$0) {
+      this.k = $$0;
+   }
+
+   public void a(int $$0) {
+      this.m = $$0;
+   }
+
+   public void b(int $$0) {
+      this.q = $$0;
+   }
+
+   @Override
+   protected void b(tx $$0, jl.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("name", this.h.toString());
+      $$0.a("target", this.i.toString());
+      $$0.a("pool", this.j.a().toString());
+      $$0.a("final_state", this.l);
+      $$0.a("joint", this.k.c());
+      $$0.a("placement_priority", this.m);
+      $$0.a("selection_priority", this.q);
+   }
+
+   @Override
+   protected void a(tx $$0, jl.a $$1) {
+      super.a($$0, $$1);
+      this.h = new akk($$0.l("name"));
+      this.i = new akk($$0.l("target"));
+      this.j = akj.a(lr.aT, new akk($$0.l("pool")));
+      this.l = $$0.l("final_state");
+      this.k = dqn.a.a($$0.l("joint")).orElseGet(() -> djh.m(this.n()).o().d() ? dqn.a.b : dqn.a.a);
+      this.m = $$0.h("placement_priority");
+      this.q = $$0.h("selection_priority");
+   }
+
+   public abu u() {
+      return abu.a(this);
+   }
+
+   @Override
+   public tx a(jl.a $$0) {
+      return this.e($$0);
+   }
+
+   public void a(aqk $$0, int $$1, boolean $$2) {
+      ja $$3 = this.az_().a(this.n().c(djh.b).a());
+      jw<ejz> $$4 = $$0.H_().d(lr.aT);
+      jj<ejz> $$5 = $$4.g(this.j);
+      ejt.a($$0, $$5, this.i, $$1, $$3, $$2);
+   }
+
+   public static enum a implements ayz {
+      a("rollable"),
+      b("aligned");
+
+      private final String c;
+
+      private a(final String $$0) {
+         this.c = $$0;
       }
-   }
 
-   public us a(us $$0) {
-      if (this.equals(a)) {
-         return $$0;
-      } else {
-         $$0.a("sherds", (vp)b.encodeStart(vg.a, this).getOrThrow());
-         return $$0;
+      @Override
+      public String c() {
+         return this.c;
       }
-   }
 
-   public List<cum> a() {
-      return Stream.of(this.d, this.e, this.f, this.g).map($$0 -> $$0.orElse(cuu.qL)).toList();
-   }
+      public static Optional<dqn.a> a(String $$0) {
+         return Arrays.stream(values()).filter($$1 -> $$1.c().equals($$0)).findFirst();
+      }
 
-   public static dqn b(@Nullable us $$0) {
-      return $$0 != null && $$0.e("sherds") ? b.parse(vg.a, $$0.c("sherds")).result().orElse(a) : a;
-   }
-
-   public Optional<cum> b() {
-      return this.d;
-   }
-
-   public Optional<cum> c() {
-      return this.e;
-   }
-
-   public Optional<cum> d() {
-      return this.f;
-   }
-
-   public Optional<cum> e() {
-      return this.g;
+      public wu a() {
+         return wu.c("jigsaw_block.joint." + this.c);
+      }
    }
 }

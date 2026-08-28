@@ -1,52 +1,46 @@
-import java.util.ArrayList;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public record afn(int c, List<ako.c<?>> d) implements zw<aci> {
-   public static final zn<xa, afn> a = zw.a(afn::b, afn::new);
-   public static final int b = 255;
+public class afn implements zb<abn> {
+   public static final ys<vr, afn> a = zb.a(afn::a, afn::new);
+   private final int b;
+   @Nullable
+   private final tx c;
 
-   private afn(xa $$0) {
-      this($$0.l(), a($$0));
+   public afn(int $$0, @Nullable tx $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private static void a(List<ako.c<?>> $$0, xa $$1) {
-      for (ako.c<?> $$2 : $$0) {
-         $$2.a($$1);
-      }
-
-      $$1.k(255);
+   private afn(vr $$0) {
+      this.b = $$0.l();
+      this.c = $$0.o();
    }
 
-   private static List<ako.c<?>> a(xa $$0) {
-      List<ako.c<?>> $$1 = new ArrayList<>();
-
-      int $$2;
-      while (($$2 = $$0.readUnsignedByte()) != 255) {
-         $$1.add(ako.c.a($$0, $$2));
-      }
-
-      return $$1;
-   }
-
-   private void b(xa $$0) {
-      $$0.c(this.c);
-      a(this.d, $$0);
+   private void a(vr $$0) {
+      $$0.c(this.b);
+      $$0.a((uu)this.c);
    }
 
    @Override
-   public zy<afn> a() {
-      return agu.aC;
+   public zd<afn> a() {
+      return afz.aX;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
    }
 
    public int b() {
+      return this.b;
+   }
+
+   @Nullable
+   public tx e() {
       return this.c;
    }
 
-   public List<ako.c<?>> e() {
-      return this.d;
+   @Override
+   public boolean c() {
+      return true;
    }
 }

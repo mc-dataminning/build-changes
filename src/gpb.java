@@ -1,121 +1,119 @@
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.Closeable;
+import java.io.IOException;
+import java.io.InputStream;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gpb {
-   private final alf a;
-   private final gov b;
-   final int c;
-   final int d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final float h;
+public class gpb extends got {
+   static final Logger f = LogUtils.getLogger();
+   protected final akk e;
 
-   protected gpb(alf $$0, gov $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$4;
-      this.d = $$5;
-      this.e = (float)$$4 / (float)$$2;
-      this.f = (float)($$4 + $$1.a()) / (float)$$2;
-      this.g = (float)$$5 / (float)$$3;
-      this.h = (float)($$5 + $$1.b()) / (float)$$3;
-   }
-
-   public int a() {
-      return this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public float c() {
-      return this.e;
-   }
-
-   public float d() {
-      return this.f;
-   }
-
-   public gov e() {
-      return this.b;
-   }
-
-   @Nullable
-   public gpb.a f() {
-      final gox $$0 = this.b.e();
-      return $$0 != null ? new gpb.a() {
-         @Override
-         public void a() {
-            $$0.a(gpb.this.c, gpb.this.d);
-         }
-
-         @Override
-         public void close() {
-            $$0.close();
-         }
-      } : null;
-   }
-
-   public float a(float $$0) {
-      float $$1 = this.f - this.e;
-      return this.e + $$1 * $$0;
-   }
-
-   public float b(float $$0) {
-      float $$1 = this.f - this.e;
-      return ($$0 - this.e) / $$1;
-   }
-
-   public float g() {
-      return this.g;
-   }
-
-   public float h() {
-      return this.h;
-   }
-
-   public float c(float $$0) {
-      float $$1 = this.h - this.g;
-      return this.g + $$1 * $$0;
-   }
-
-   public float d(float $$0) {
-      float $$1 = this.h - this.g;
-      return ($$0 - this.g) / $$1;
-   }
-
-   public alf i() {
-      return this.a;
+   public gpb(akk $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public String toString() {
-      return "TextureAtlasSprite{contents='" + this.b + "', u0=" + this.e + ", u1=" + this.f + ", v0=" + this.g + ", v1=" + this.h + "}";
+   public void a(atu $$0) throws IOException {
+      gpb.a $$1 = this.b($$0);
+      $$1.c();
+      grf $$2 = $$1.a();
+      boolean $$3;
+      boolean $$4;
+      if ($$2 != null) {
+         $$3 = $$2.a();
+         $$4 = $$2.b();
+      } else {
+         $$3 = false;
+         $$4 = false;
+      }
+
+      ezh $$7 = $$1.b();
+      if (!RenderSystem.isOnRenderThreadOrInit()) {
+         RenderSystem.recordRenderCall(() -> this.a($$7, $$3, $$4));
+      } else {
+         this.a($$7, $$3, $$4);
+      }
    }
 
-   public void j() {
-      this.b.a(this.c, this.d);
+   private void a(ezh $$0, boolean $$1, boolean $$2) {
+      TextureUtil.prepareImage(this.a(), 0, $$0.a(), $$0.b());
+      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), $$1, $$2, false, true);
    }
 
-   private float l() {
-      float $$0 = (float)this.b.a() / (this.f - this.e);
-      float $$1 = (float)this.b.b() / (this.h - this.g);
-      return Math.max($$1, $$0);
+   protected gpb.a b(atu $$0) {
+      return gpb.a.a($$0, this.e);
    }
 
-   public float k() {
-      return 4.0F / this.l();
-   }
+   protected static class a implements Closeable {
+      @Nullable
+      private final grf a;
+      @Nullable
+      private final ezh b;
+      @Nullable
+      private final IOException c;
 
-   public fae a(fae $$0) {
-      return new geg($$0, this);
-   }
+      public a(IOException $$0) {
+         this.c = $$0;
+         this.a = null;
+         this.b = null;
+      }
 
-   public interface a extends AutoCloseable {
-      void a();
+      public a(@Nullable grf $$0, ezh $$1) {
+         this.c = null;
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public static gpb.a a(atu $$0, akk $$1) {
+         try {
+            ats $$2 = $$0.getResourceOrThrow($$1);
+
+            ezh $$4;
+            try (InputStream $$3 = $$2.d()) {
+               $$4 = ezh.a($$3);
+            }
+
+            grf $$6 = null;
+
+            try {
+               $$6 = $$2.f().a(grf.a).orElse(null);
+            } catch (RuntimeException var8) {
+               gpb.f.warn("Failed reading metadata of: {}", $$1, var8);
+            }
+
+            return new gpb.a($$6, $$4);
+         } catch (IOException var10) {
+            return new gpb.a(var10);
+         }
+      }
+
+      @Nullable
+      public grf a() {
+         return this.a;
+      }
+
+      public ezh b() throws IOException {
+         if (this.c != null) {
+            throw this.c;
+         } else {
+            return this.b;
+         }
+      }
 
       @Override
-      void close();
+      public void close() {
+         if (this.b != null) {
+            this.b.close();
+         }
+      }
+
+      public void c() throws IOException {
+         if (this.c != null) {
+            throw this.c;
+         }
+      }
    }
 }

@@ -1,68 +1,132 @@
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.EnumMap;
 import java.util.EnumSet;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
-public class bzx extends cap {
-   private final cgk a;
-   @Nullable
-   private cmz b;
-   private final dca c;
-   private final float d;
-   private int e;
-   private final cei f;
-
-   public bzx(cgk $$0, float $$1) {
-      this.a = $$0;
-      this.c = $$0.dP();
-      this.d = $$1;
-      this.f = cei.b().a((double)$$1);
-      this.a(EnumSet.of(cap.a.b));
-   }
-
-   @Override
-   public boolean a() {
-      this.b = this.c.a(this.f, this.a);
-      return this.b == null ? false : this.a(this.b);
-   }
-
-   @Override
-   public boolean b() {
-      if (!this.b.bD()) {
+public class bzx {
+   private static final cbk a = new cbk(Integer.MAX_VALUE, new bzw() {
+      @Override
+      public boolean a() {
          return false;
-      } else {
-         return this.a.g((bsw)this.b) > (double)(this.d * this.d) ? false : this.e > 0 && this.a(this.b);
       }
+   }) {
+      @Override
+      public boolean h() {
+         return false;
+      }
+   };
+   private final Map<bzw.a, cbk> b = new EnumMap<>(bzw.a.class);
+   private final Set<cbk> c = new ObjectLinkedOpenHashSet();
+   private final Supplier<bmr> d;
+   private final EnumSet<bzw.a> e = EnumSet.noneOf(bzw.a.class);
+
+   public bzx(Supplier<bmr> $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   public void c() {
-      this.a.z(true);
-      this.e = this.a(40 + this.a.el().a(40));
+   public void a(int $$0, bzw $$1) {
+      this.c.add(new cbk($$0, $$1));
    }
 
-   @Override
-   public void d() {
-      this.a.z(false);
-      this.b = null;
+   @VisibleForTesting
+   public void a(Predicate<bzw> $$0) {
+      this.c.removeIf($$1 -> $$0.test($$1.k()));
    }
 
-   @Override
-   public void e() {
-      this.a.G().a(this.b.du(), this.b.dy(), this.b.dA(), 10.0F, (float)this.a.aa());
-      this.e--;
-   }
-
-   private boolean a(cmz $$0) {
-      for (bqv $$1 : bqv.values()) {
-         cur $$2 = $$0.b($$1);
-         if (this.a.s() && $$2.a(cuu.rz)) {
-            return true;
+   public void a(bzw $$0) {
+      for (cbk $$1 : this.c) {
+         if ($$1.k() == $$0 && $$1.h()) {
+            $$1.d();
          }
+      }
 
-         if (this.a.o($$2)) {
+      this.c.removeIf($$1x -> $$1x.k() == $$0);
+   }
+
+   private static boolean a(cbk $$0, EnumSet<bzw.a> $$1) {
+      for (bzw.a $$2 : $$0.j()) {
+         if ($$1.contains($$2)) {
             return true;
          }
       }
 
       return false;
+   }
+
+   private static boolean a(cbk $$0, Map<bzw.a, cbk> $$1) {
+      for (bzw.a $$2 : $$0.j()) {
+         if (!$$1.getOrDefault($$2, a).a($$0)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public void a() {
+      bmr $$0 = this.d.get();
+      $$0.a("goalCleanup");
+
+      for (cbk $$1 : this.c) {
+         if ($$1.h() && (a($$1, this.e) || !$$1.b())) {
+            $$1.d();
+         }
+      }
+
+      this.b.entrySet().removeIf($$0x -> !((cbk)$$0x.getValue()).h());
+      $$0.c();
+      $$0.a("goalUpdate");
+
+      for (cbk $$2 : this.c) {
+         if (!$$2.h() && !a($$2, this.e) && a($$2, this.b) && $$2.a()) {
+            for (bzw.a $$3 : $$2.j()) {
+               cbk $$4 = this.b.getOrDefault($$3, a);
+               $$4.d();
+               this.b.put($$3, $$2);
+            }
+
+            $$2.c();
+         }
+      }
+
+      $$0.c();
+      this.a(true);
+   }
+
+   public void a(boolean $$0) {
+      bmr $$1 = this.d.get();
+      $$1.a("goalTick");
+
+      for (cbk $$2 : this.c) {
+         if ($$2.h() && ($$0 || $$2.R_())) {
+            $$2.e();
+         }
+      }
+
+      $$1.c();
+   }
+
+   public Set<cbk> b() {
+      return this.c;
+   }
+
+   public void a(bzw.a $$0) {
+      this.e.add($$0);
+   }
+
+   public void b(bzw.a $$0) {
+      this.e.remove($$0);
+   }
+
+   public void a(bzw.a $$0, boolean $$1) {
+      if ($$1) {
+         this.b($$0);
+      } else {
+         this.a($$0);
+      }
    }
 }

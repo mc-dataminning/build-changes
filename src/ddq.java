@@ -1,59 +1,84 @@
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Lifecycle;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 
-public class ddq extends ddd {
-   public static final MapCodec<ddq> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ald.d(ddg.ah), ald.d(ddg.ai), ald.d(ddg.aj), ald.d(ddg.ak), ald.d(ddg.al)).apply($$0, $$0.stable(ddq::new))
-   );
-   private final ji<dcz> c;
-   private final ji<dcz> d;
-   private final ji<dcz> e;
-   private final ji<dcz> f;
-   private final ji<dcz> g;
+public class ddq extends ddh {
+   private static final MapCodec<jj<ddd>> d = ddd.c.fieldOf("biome");
+   public static final MapCodec<ddm.c<jj<ddd>>> b = ddm.c.a(d).fieldOf("biomes");
+   private static final MapCodec<jj<ddr>> e = ddr.b.fieldOf("preset").withLifecycle(Lifecycle.stable());
+   public static final MapCodec<ddq> c = Codec.mapEither(b, e).xmap(ddq::new, $$0 -> $$0.f);
+   private final Either<ddm.c<jj<ddd>>, jj<ddr>> f;
 
-   public static ddq a(jj<dcz> $$0) {
-      return new ddq($$0.b(ddg.ah), $$0.b(ddg.ai), $$0.b(ddg.aj), $$0.b(ddg.ak), $$0.b(ddg.al));
+   private ddq(Either<ddm.c<jj<ddd>>, jj<ddr>> $$0) {
+      this.f = $$0;
    }
 
-   private ddq(ji<dcz> $$0, ji<dcz> $$1, ji<dcz> $$2, ji<dcz> $$3, ji<dcz> $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
+   public static ddq a(ddm.c<jj<ddd>> $$0) {
+      return new ddq(Either.left($$0));
    }
 
-   @Override
-   protected Stream<ji<dcz>> b() {
-      return Stream.of(this.c, this.d, this.e, this.f, this.g);
+   public static ddq a(jj<ddr> $$0) {
+      return new ddq(Either.right($$0));
+   }
+
+   private ddm.c<jj<ddd>> d() {
+      return (ddm.c<jj<ddd>>)this.f.map($$0 -> $$0, $$0 -> ((ddr)$$0.a()).a());
    }
 
    @Override
-   protected MapCodec<? extends ddd> a() {
-      return b;
+   protected Stream<jj<ddd>> b() {
+      return this.d().a().stream().map(Pair::getSecond);
    }
 
    @Override
-   public ji<dcz> getNoiseBiome(int $$0, int $$1, int $$2, ddi.f $$3) {
-      int $$4 = jt.c($$0);
-      int $$5 = jt.c($$1);
-      int $$6 = jt.c($$2);
-      int $$7 = kb.a($$4);
-      int $$8 = kb.a($$6);
-      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
-         return this.c;
-      } else {
-         int $$9 = (kb.a($$4) * 2 + 1) * 8;
-         int $$10 = (kb.a($$6) * 2 + 1) * 8;
-         double $$11 = $$3.e().a(new dxp.e($$9, $$5, $$10));
-         if ($$11 > 0.25) {
-            return this.d;
-         } else if ($$11 >= -0.0625) {
-            return this.e;
-         } else {
-            return $$11 < -0.21875 ? this.f : this.g;
-         }
-      }
+   protected MapCodec<? extends ddh> a() {
+      return c;
+   }
+
+   public boolean a(akj<ddr> $$0) {
+      Optional<jj<ddr>> $$1 = this.f.right();
+      return $$1.isPresent() && $$1.get().a($$0);
+   }
+
+   @Override
+   public jj<ddd> getNoiseBiome(int $$0, int $$1, int $$2, ddm.f $$3) {
+      return this.a($$3.a($$0, $$1, $$2));
+   }
+
+   @azi
+   public jj<ddd> a(ddm.h $$0) {
+      return this.d().a($$0);
+   }
+
+   @Override
+   public void a(List<String> $$0, ja $$1, ddm.f $$2) {
+      int $$3 = ju.a($$1.u());
+      int $$4 = ju.a($$1.v());
+      int $$5 = ju.a($$1.w());
+      ddm.h $$6 = $$2.a($$3, $$4, $$5);
+      float $$7 = ddm.a($$6.d());
+      float $$8 = ddm.a($$6.e());
+      float $$9 = ddm.a($$6.b());
+      float $$10 = ddm.a($$6.c());
+      float $$11 = ddm.a($$6.g());
+      double $$12 = (double)dyg.a($$11);
+      ddt $$13 = new ddt();
+      $$0.add(
+         "Biome builder PV: "
+            + ddt.a($$12)
+            + " C: "
+            + $$13.b((double)$$7)
+            + " E: "
+            + $$13.c((double)$$8)
+            + " T: "
+            + $$13.d((double)$$9)
+            + " H: "
+            + $$13.e((double)$$10)
+      );
    }
 }

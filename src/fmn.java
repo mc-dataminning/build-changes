@@ -1,64 +1,74 @@
-public class fmn extends flv {
-   private fhg c;
+import com.google.common.hash.Hashing;
+import javax.annotation.Nullable;
 
-   public fmn() {
-      super("");
+public class fmn implements AutoCloseable {
+   private static final akk a = new akk("textures/misc/unknown_server.png");
+   private static final int b = 64;
+   private static final int c = 64;
+   private final gpj d;
+   private final akk e;
+   @Nullable
+   private gov f;
+   private boolean g;
+
+   private fmn(gpj $$0, akk $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Override
-   protected void aM_() {
-      super.aM_();
-      this.c = fhg.a(xp.c("multiplayer.stopSleeping"), $$0 -> this.E()).a(this.n / 2 - 100, this.o - 40, 200, 20).a();
-      this.c(this.c);
+   public static fmn a(gpj $$0, String $$1) {
+      return new fmn($$0, new akk("minecraft", "worlds/" + ac.a($$1, akk::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
    }
 
-   @Override
-   public void a(fgt $$0, int $$1, int $$2, float $$3) {
-      if (!this.m.J().a(this.m.T())) {
-         this.c.a($$0, $$1, $$2, $$3);
+   public static fmn b(gpj $$0, String $$1) {
+      return new fmn($$0, new akk("minecraft", "servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
+   }
+
+   public void a(ezh $$0) {
+      if ($$0.a() == 64 && $$0.b() == 64) {
+         try {
+            this.c();
+            if (this.f == null) {
+               this.f = new gov($$0);
+            } else {
+               this.f.a($$0);
+               this.f.d();
+            }
+
+            this.d.a(this.e, this.f);
+         } catch (Throwable var3) {
+            $$0.close();
+            this.a();
+            throw var3;
+         }
       } else {
-         super.a($$0, $$1, $$2, $$3);
+         $$0.close();
+         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
       }
    }
 
-   @Override
-   public void d() {
-      this.E();
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return !this.m.J().a(this.m.T()) ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.E();
-      }
-
-      if (!this.m.J().a(this.m.T())) {
-         return true;
-      } else if ($$0 != 257 && $$0 != 335) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         this.b(this.b.a(), true);
-         this.b.a("");
-         this.m.l.d().d();
-         return true;
+   public void a() {
+      this.c();
+      if (this.f != null) {
+         this.d.c(this.e);
+         this.f.close();
+         this.f = null;
       }
    }
 
-   private void E() {
-      fxy $$0 = this.m.s.cz;
-      $$0.b(new aib(this.m.s, aib.a.c));
+   public akk b() {
+      return this.f != null ? this.e : a;
    }
 
-   public void m() {
-      if (this.b.a().isEmpty()) {
-         this.m.a(null);
-      } else {
-         this.m.a(new flv(this.b.a()));
+   @Override
+   public void close() {
+      this.a();
+      this.g = true;
+   }
+
+   private void c() {
+      if (this.g) {
+         throw new IllegalStateException("Icon already closed");
       }
    }
 }

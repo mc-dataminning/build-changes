@@ -1,28 +1,17 @@
-public class gma extends gkf<cix, fws<cix>> {
-   private static final alf a = new alf("textures/entity/wither/wither_invulnerable.png");
-   private static final alf i = new alf("textures/entity/wither/wither.png");
+public class gma extends gkm<ckb, fwr> {
+   private static final akk a = new akk("textures/entity/illager/vex.png");
+   private static final akk i = new akk("textures/entity/illager/vex_charging.png");
 
-   public gma(giz.a $$0) {
-      super($$0, new fws<>($$0.a(fxb.bV)), 1.0F);
-      this.a(new gnz(this, $$0.f()));
+   public gma(gjg.a $$0) {
+      super($$0, new fwr($$0.a(fxh.bO)), 0.3F);
+      this.a(new gnl<>(this, $$0.d()));
    }
 
-   protected int a(cix $$0, iz $$1) {
+   protected int a(ckb $$0, ja $$1) {
       return 15;
    }
 
-   public alf a(cix $$0) {
-      int $$1 = $$0.y();
-      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : i;
-   }
-
-   protected void a(cix $$0, faa $$1, float $$2) {
-      float $$3 = 2.0F;
-      int $$4 = $$0.y();
-      if ($$4 > 0) {
-         $$3 -= ((float)$$4 - $$2) / 220.0F * 0.5F;
-      }
-
-      $$1.b($$3, $$3, $$3);
+   public akk a(ckb $$0) {
+      return $$0.go() ? i : a;
    }
 }

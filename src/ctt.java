@@ -1,48 +1,77 @@
-import javax.annotation.Nullable;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
 
-public interface ctt {
-   btd m();
+public class ctt extends ctv {
+   private final awk<cts> a;
 
-   default ji<avz> n() {
-      return awa.as;
+   public ctt(ctv.a $$0, awk<cts> $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
-   default bqx<cur> a(cum $$0, dca $$1, cmz $$2, bqv $$3) {
-      cur $$4 = $$2.b($$3);
-      btd $$5 = btt.h($$4);
-      if (!$$2.d($$5)) {
-         return bqx.c($$4);
-      } else {
-         cur $$6 = $$2.a($$5);
-         if ((!dad.f($$6) || $$2.f()) && !cur.a($$4, $$6)) {
-            if (!$$1.x_()) {
-               $$2.b(awk.c.b($$0));
-            }
-
-            cur $$7 = $$6.e() ? $$4 : $$6.f();
-            cur $$8 = $$2.f() ? $$4.s() : $$4.f();
-            $$2.a($$5, $$8);
-            return bqx.a($$7, $$1.x_());
-         } else {
-            return bqx.d($$4);
-         }
+   @Override
+   public void a(cua $$0, ctv.b $$1, List<wu> $$2, cvt $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      Optional<akj<cts>> $$4 = this.i($$0).flatMap(jj::e);
+      if ($$4.isPresent()) {
+         xi $$5 = wu.c(ac.a("instrument", $$4.get().a()));
+         $$2.add($$5.a(n.h));
       }
    }
 
-   @Nullable
-   static ctt c_(cur $$0) {
-      cum $$3 = $$0.g();
-      if ($$3 instanceof ctt) {
-         return (ctt)$$3;
-      } else {
-         if ($$0.g() instanceof csp $$2) {
-            dfb var6 = $$2.d();
-            if (var6 instanceof ctt) {
-               return (ctt)var6;
-            }
-         }
+   public static cua a(ctv $$0, jj<cts> $$1) {
+      cua $$2 = new cua($$0);
+      $$2.b(kn.P, $$1);
+      return $$2;
+   }
 
-         return null;
+   public static void a(cua $$0, awk<cts> $$1, aym $$2) {
+      Optional<jj<cts>> $$3 = lq.ak.a($$1, $$2);
+      $$3.ifPresent($$1x -> $$0.b(kn.P, $$1x));
+   }
+
+   @Override
+   public bqe<cua> a(dcd $$0, cmh $$1, bqc $$2) {
+      cua $$3 = $$1.b($$2);
+      Optional<? extends jj<cts>> $$4 = this.i($$3);
+      if ($$4.isPresent()) {
+         cts $$5 = $$4.get().a();
+         $$1.c($$2);
+         a($$0, $$1, $$5);
+         $$1.gt().a(this, $$5.b());
+         $$1.b(avp.c.b(this));
+         return bqe.b($$3);
+      } else {
+         return bqe.d($$3);
       }
+   }
+
+   @Override
+   public int a(cua $$0, bsy $$1) {
+      Optional<jj<cts>> $$2 = this.i($$0);
+      return $$2.<Integer>map($$0x -> ((cts)$$0x.a()).b()).orElse(0);
+   }
+
+   private Optional<jj<cts>> i(cua $$0) {
+      jj<cts> $$1 = $$0.a(kn.P);
+      if ($$1 != null) {
+         return Optional.of($$1);
+      } else {
+         Iterator<jj<cts>> $$2 = lq.ak.c(this.a).iterator();
+         return $$2.hasNext() ? Optional.of($$2.next()) : Optional.empty();
+      }
+   }
+
+   @Override
+   public cvv b(cua $$0) {
+      return cvv.i;
+   }
+
+   private static void a(dcd $$0, cmh $$1, cts $$2) {
+      ave $$3 = $$2.a().a();
+      float $$4 = $$2.c() / 16.0F;
+      $$0.a($$1, $$1, $$3, avg.c, $$4, 1.0F);
+      $$0.a(dxa.B, $$1.dn(), dxa.a.a($$1));
    }
 }

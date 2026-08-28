@@ -1,20 +1,29 @@
-public record aho(blx b) implements zw<agw> {
-   public static final zn<wm, aho> a = zw.a(aho::a, aho::new);
+public class aho implements zb<agb> {
+   public static final ys<vr, aho> a = zb.a(aho::a, aho::new);
+   private final int b;
 
-   private aho(wm $$0) {
-      this($$0.b(blx.class));
+   public aho(int $$0) {
+      this.b = $$0;
    }
 
-   private void a(wm $$0) {
-      $$0.a(this.b);
+   private aho(vr $$0) {
+      this.b = $$0.readShort();
+   }
+
+   private void a(vr $$0) {
+      $$0.l(this.b);
    }
 
    @Override
-   public zy<aho> a() {
-      return agu.bv;
+   public zd<aho> a() {
+      return afz.bT;
    }
 
-   public void a(agw $$0) {
+   public void a(agb $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
    }
 }

@@ -1,12 +1,12 @@
-public class gle extends gkf<cgf, fwc<cgf>> {
-   private static final alf a = new alf("textures/entity/snow_golem.png");
+public class gle extends gkm<cfk, fvy<cfk>> {
+   private static final akk a = new akk("textures/entity/sheep/sheep.png");
 
-   public gle(giz.a $$0) {
-      super($$0, new fwc<>($$0.a(fxb.bv)), 0.5F);
-      this.a(new gnr(this, $$0.c(), $$0.b()));
+   public gle(gjg.a $$0) {
+      super($$0, new fvy<>($$0.a(fxh.bh)), 0.7F);
+      this.a(new gnu(this, $$0.f()));
    }
 
-   public alf a(cgf $$0) {
+   public akk a(cfk $$0) {
       return a;
    }
 }

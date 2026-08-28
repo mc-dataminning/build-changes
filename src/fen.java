@@ -1,67 +1,56 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class fen extends feh {
+public abstract class fen implements Runnable {
+   protected static final int a = 25;
    private static final Logger b = LogUtils.getLogger();
-   private static final xp c = xp.c("mco.backup.restoring");
-   private final faw d;
-   private final long e;
-   private final fcq f;
+   private boolean c = false;
 
-   public fen(faw $$0, long $$1, fcq $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   @Override
-   public void run() {
-      faq $$0 = faq.a();
-      int $$1 = 0;
-
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            $$0.b(this.e, this.d.a);
-            a(1L);
-            if (this.d()) {
-               return;
-            }
-
-            a(this.f.f());
-            return;
-         } catch (fce var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (fcd var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't restore backup", var5);
-            a(new fcu(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't restore backup", var6);
-            this.a(var6);
-            return;
-         }
+   protected static void a(long $$0) {
+      try {
+         Thread.sleep($$0 * 1000L);
+      } catch (InterruptedException var3) {
+         Thread.currentThread().interrupt();
+         b.error("", var3);
       }
    }
 
-   @Override
-   public xp a() {
-      return c;
+   public static void a(fnd $$0) {
+      ffn $$1 = ffn.Q();
+      $$1.execute(() -> $$1.a($$0));
+   }
+
+   protected void a(wu $$0) {
+      this.b();
+      ffn $$1 = ffn.Q();
+      $$1.execute(() -> $$1.a(new fdb($$0, new far(new fnf()))));
+   }
+
+   protected void a(Exception $$0) {
+      if ($$0 instanceof fcj $$1) {
+         this.a($$1.a.b());
+      } else {
+         this.a(wu.b($$0.getMessage()));
+      }
+   }
+
+   protected void a(fcj $$0) {
+      this.a($$0.a.b());
+   }
+
+   public abstract wu a();
+
+   public boolean d() {
+      return this.c;
+   }
+
+   public void c() {
+   }
+
+   public void e() {
+   }
+
+   public void b() {
+      this.c = true;
    }
 }

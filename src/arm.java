@@ -1,425 +1,231 @@
+import com.google.common.primitives.Ints;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
+import com.mojang.authlib.yggdrasil.ProfileResult;
 import com.mojang.logging.LogUtils;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.math.BigInteger;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.SocketAddress;
+import java.security.PrivateKey;
+import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nullable;
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
 import net.minecraft.server.MinecraftServer;
+import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 
-public class arm implements dcv {
-   private static final Logger a = LogUtils.getLogger();
-   private final List<dua> b;
-   private final dua c;
-   private final int d;
-   private final arf e;
-   private final long f;
-   private final epu g;
-   private final azh h;
-   private final dvw i;
-   private final exp<dfb> j = new exp<>($$0x -> this.y($$0x).o());
-   private final exp<enw> k = new exp<>($$0x -> this.y($$0x).p());
-   private final ddb l;
-   private final dbh m;
-   private final dbh n;
-   private final duz o;
-   private final int p;
+public class arm implements aip, wi {
+   private static final AtomicInteger b = new AtomicInteger(0);
+   static final Logger c = LogUtils.getLogger();
+   private static final int d = 600;
+   private final byte[] e;
+   final MinecraftServer f;
+   final vp g;
+   private volatile arm.a h = arm.a.a;
+   private int i;
    @Nullable
-   private Supplier<String> q;
-   private final AtomicLong r = new AtomicLong();
-   private static final alf s = new alf("worldgen_region_random");
+   String j;
+   @Nullable
+   private GameProfile k;
+   private final String l = "";
+   private final boolean m;
 
-   public arm(arf $$0, List<dua> $$1, duz $$2, int $$3) {
-      this.o = $$2;
-      this.p = $$3;
-      int $$4 = ayz.a(Math.sqrt((double)$$1.size()));
-      if ($$4 * $$4 != $$1.size()) {
-         throw (IllegalStateException)ac.b(new IllegalStateException("Cache size is not a square."));
-      } else {
-         this.b = $$1;
-         this.c = $$1.get($$1.size() / 2);
-         this.d = $$4;
-         this.e = $$0;
-         this.f = $$0.C();
-         this.g = $$0.A_();
-         this.h = $$0.l().i().a(s).a(this.c.f().l());
-         this.i = $$0.D_();
-         this.l = new ddb(this, ddb.a(this.f));
-         this.m = $$1.get(0).f();
-         this.n = $$1.get($$1.size() - 1).f();
+   public arm(MinecraftServer $$0, vp $$1, boolean $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.e = Ints.toByteArray(aym.a().f());
+      this.m = $$2;
+   }
+
+   @Override
+   public void d() {
+      if (this.h == arm.a.e) {
+         this.c(Objects.requireNonNull(this.k));
+      }
+
+      if (this.h == arm.a.f && !this.a(Objects.requireNonNull(this.k))) {
+         this.d(this.k);
+      }
+
+      if (this.i++ == 600) {
+         this.b(wu.c("multiplayer.disconnect.slow_login"));
       }
    }
 
-   public boolean a(dbh $$0, int $$1) {
-      return this.e.l().a.b($$0, $$1);
+   @Override
+   public boolean c() {
+      return this.g.i();
    }
 
-   public dbh a() {
-      return this.c.f();
+   public void b(wu $$0) {
+      try {
+         c.info("Disconnecting {}: {}", this.e(), $$0.getString());
+         this.g.a(new aim($$0));
+         this.g.a($$0);
+      } catch (Exception var3) {
+         c.error("Error whilst disconnecting player", var3);
+      }
+   }
+
+   private boolean a(GameProfile $$0) {
+      return this.f.ah().a($$0.getId()) != null;
    }
 
    @Override
-   public void a(@Nullable Supplier<String> $$0) {
-      this.q = $$0;
+   public void a(wu $$0) {
+      c.info("{} lost connection: {}", this.e(), $$0.getString());
    }
 
    @Override
-   public dua a(int $$0, int $$1) {
-      return this.a($$0, $$1, duz.c);
+   public String e() {
+      String $$0 = this.g.a(this.f.bn());
+      return this.j != null ? this.j + " (" + $$0 + ")" : $$0;
    }
 
-   @Nullable
    @Override
-   public dua a(int $$0, int $$1, duz $$2, boolean $$3) {
-      dua $$6;
-      if (this.b($$0, $$1)) {
-         int $$4 = $$0 - this.m.e;
-         int $$5 = $$1 - this.m.f;
-         $$6 = this.b.get($$4 + $$5 * this.d);
-         if ($$6.j().b($$2)) {
-            return $$6;
+   public void a(air $$0) {
+      Validate.validState(this.h == arm.a.a, "Unexpected hello packet", new Object[0]);
+      Validate.validState(aza.f($$0.b()), "Invalid characters in username", new Object[0]);
+      this.j = $$0.b();
+      GameProfile $$1 = this.f.S();
+      if ($$1 != null && this.j.equalsIgnoreCase($$1.getName())) {
+         this.b($$1);
+      } else {
+         if (this.f.Z() && !this.g.e()) {
+            this.h = arm.a.b;
+            this.g.a(new aik("", this.f.Q().getPublic().getEncoded(), this.e, true));
+         } else {
+            this.b(kd.b(this.j));
          }
-      } else {
-         $$6 = null;
-      }
-
-      o $$8 = o.a(new IllegalStateException("Requested chunk unavailable during world generation"), "Exception generating new chunk");
-      p $$9 = $$8.a("Chunk request details");
-      $$9.a("Requested chunk", String.format(Locale.ROOT, "%d, %d", $$0, $$1));
-      $$9.a("Requested status", () -> lp.n.b($$2).toString());
-      $$9.a("Actual status", () -> $$6 == null ? "[out of region bounds]" : lp.n.b($$6.j()).toString());
-      $$9.a("loadOrGenerate", $$3);
-      $$9.a("Generating chunk", () -> this.c.f().toString());
-      $$9.a("Region start", this.m);
-      $$9.a("Region end", this.n);
-      throw new y($$8);
-   }
-
-   @Override
-   public boolean b(int $$0, int $$1) {
-      return $$0 >= this.m.e && $$0 <= this.n.e && $$1 >= this.m.f && $$1 <= this.n.f;
-   }
-
-   @Override
-   public dse a_(iz $$0) {
-      return this.a(kb.a($$0.u()), kb.a($$0.w())).a_($$0);
-   }
-
-   @Override
-   public enx b_(iz $$0) {
-      return this.y($$0).b_($$0);
-   }
-
-   @Nullable
-   @Override
-   public cmz a(double $$0, double $$1, double $$2, double $$3, Predicate<bsw> $$4) {
-      return null;
-   }
-
-   @Override
-   public int B_() {
-      return 0;
-   }
-
-   @Override
-   public ddb F_() {
-      return this.l;
-   }
-
-   @Override
-   public ji<dcz> a(int $$0, int $$1, int $$2) {
-      return this.e.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public float a(je $$0, boolean $$1) {
-      return 1.0F;
-   }
-
-   @Override
-   public enm y_() {
-      return this.e.y_();
-   }
-
-   @Override
-   public boolean a(iz $$0, boolean $$1, @Nullable bsw $$2, int $$3) {
-      dse $$4 = this.a_($$0);
-      if ($$4.i()) {
-         return false;
-      } else {
-         if ($$1) {
-            dpj $$5 = $$4.t() ? this.c_($$0) : null;
-            dfb.a($$4, (dca)this.e, $$0, $$5, $$2, cur.l);
-         }
-
-         return this.a($$0, dfd.a.o(), 3, $$3);
       }
    }
 
-   @Nullable
-   @Override
-   public dpj c_(iz $$0) {
-      dua $$1 = this.y($$0);
-      dpj $$2 = $$1.c_($$0);
+   void b(GameProfile $$0) {
+      this.k = $$0;
+      this.h = arm.a.e;
+   }
+
+   private void c(GameProfile $$0) {
+      auh $$1 = this.f.ah();
+      wu $$2 = $$1.a(this.g.d(), $$0);
       if ($$2 != null) {
-         return $$2;
+         this.b($$2);
       } else {
-         us $$3 = $$1.f($$0);
-         dse $$4 = $$1.a_($$0);
-         if ($$3 != null) {
-            if ("DUMMY".equals($$3.l("id"))) {
-               if (!$$4.t()) {
-                  return null;
-               }
-
-               $$2 = ((dht)$$4.b()).a($$0, $$4);
-            } else {
-               $$2 = dpj.a($$0, $$4, $$3, this.e.H_());
-            }
-
-            if ($$2 != null) {
-               $$1.a($$2);
-               return $$2;
-            }
+         if (this.f.aA() >= 0 && !this.g.e()) {
+            this.g.a(new ail(this.f.aA()), wb.a(() -> this.g.a(this.f.aA(), true)));
          }
 
-         if ($$4.t()) {
-            a.warn("Tried to access a block entity before it was created. {}", $$0);
+         boolean $$3 = $$1.e($$0);
+         if ($$3) {
+            this.h = arm.a.f;
+         } else {
+            this.d($$0);
          }
-
-         return null;
       }
    }
 
-   @Override
-   public boolean f_(iz $$0) {
-      int $$1 = kb.a($$0.u());
-      int $$2 = kb.a($$0.w());
-      dbh $$3 = this.a();
-      int $$4 = Math.abs($$3.e - $$1);
-      int $$5 = Math.abs($$3.f - $$2);
-      if ($$4 <= this.p && $$5 <= this.p) {
-         if (this.c.y()) {
-            dcc $$6 = this.c.z();
-            if ($$0.v() < $$6.I_() || $$0.v() >= $$6.am()) {
-               return false;
-            }
-         }
-
-         return true;
-      } else {
-         ac.a(
-            "Detected setBlock in a far chunk ["
-               + $$1
-               + ", "
-               + $$2
-               + "], pos: "
-               + $$0
-               + ", status: "
-               + this.o
-               + (this.q == null ? "" : ", currently generating: " + this.q.get())
-         );
-         return false;
-      }
+   private void d(GameProfile $$0) {
+      this.h = arm.a.g;
+      this.g.a(new aij($$0, true));
    }
 
    @Override
-   public boolean a(iz $$0, dse $$1, int $$2, int $$3) {
-      if (!this.f_($$0)) {
-         return false;
-      } else {
-         dua $$4 = this.y($$0);
-         dse $$5 = $$4.a($$0, $$1, false);
-         if ($$5 != null) {
-            this.e.a($$0, $$5, $$1);
+   public void a(ais $$0) {
+      Validate.validState(this.h == arm.a.b, "Unexpected key packet", new Object[0]);
+
+      final String $$5;
+      try {
+         PrivateKey $$1 = this.f.Q().getPrivate();
+         if (!$$0.a(this.e, $$1)) {
+            throw new IllegalStateException("Protocol error");
          }
 
-         if ($$1.t()) {
-            if ($$4.j().g() == dvb.b) {
-               dpj $$6 = ((dht)$$1.b()).a($$0, $$1);
-               if ($$6 != null) {
-                  $$4.a($$6);
+         SecretKey $$2 = $$0.a($$1);
+         Cipher $$3 = axb.a(2, $$2);
+         Cipher $$4 = axb.a(1, $$2);
+         $$5 = new BigInteger(axb.a("", this.f.Q().getPublic(), $$2)).toString(16);
+         this.h = arm.a.c;
+         this.g.a($$3, $$4);
+      } catch (axc var7) {
+         throw new IllegalStateException("Protocol error", var7);
+      }
+
+      Thread $$8 = new Thread("User Authenticator #" + b.incrementAndGet()) {
+         @Override
+         public void run() {
+            String $$0 = Objects.requireNonNull(arm.this.j, "Player name not initialized");
+
+            try {
+               ProfileResult $$1 = arm.this.f.ar().hasJoinedServer($$0, $$5, this.a());
+               if ($$1 != null) {
+                  GameProfile $$2 = $$1.profile();
+                  arm.c.info("UUID of player {} is {}", $$2.getName(), $$2.getId());
+                  arm.this.b($$2);
+               } else if (arm.this.f.T()) {
+                  arm.c.warn("Failed to verify username but will let them in anyway!");
+                  arm.this.b(kd.b($$0));
                } else {
-                  $$4.d($$0);
+                  arm.this.b(wu.c("multiplayer.disconnect.unverified_username"));
+                  arm.c.error("Username '{}' tried to join with an invalid session", $$0);
                }
-            } else {
-               us $$7 = new us();
-               $$7.a("x", $$0.u());
-               $$7.a("y", $$0.v());
-               $$7.a("z", $$0.w());
-               $$7.a("id", "DUMMY");
-               $$4.a($$7);
+            } catch (AuthenticationUnavailableException var4) {
+               if (arm.this.f.T()) {
+                  arm.c.warn("Authentication servers are down but will let them in anyway!");
+                  arm.this.b(kd.b($$0));
+               } else {
+                  arm.this.b(wu.c("multiplayer.disconnect.authservers_down"));
+                  arm.c.error("Couldn't verify username because servers are unavailable");
+               }
             }
-         } else if ($$5 != null && $$5.t()) {
-            $$4.d($$0);
          }
 
-         if ($$1.q(this, $$0)) {
-            this.f($$0);
+         @Nullable
+         private InetAddress a() {
+            SocketAddress $$0 = arm.this.g.d();
+            return arm.this.f.aa() && $$0 instanceof InetSocketAddress ? ((InetSocketAddress)$$0).getAddress() : null;
          }
-
-         return true;
-      }
-   }
-
-   private void f(iz $$0) {
-      this.y($$0).e($$0);
+      };
+      $$8.setUncaughtExceptionHandler(new r(c));
+      $$8.start();
    }
 
    @Override
-   public boolean b(bsw $$0) {
-      int $$1 = kb.a($$0.dt());
-      int $$2 = kb.a($$0.dz());
-      this.a($$1, $$2).a($$0);
-      return true;
+   public void a(aiq $$0) {
+      this.b(arh.c);
    }
 
    @Override
-   public boolean a(iz $$0, boolean $$1) {
-      return this.a($$0, dfd.a.o(), 3);
+   public void a(ait $$0) {
+      Validate.validState(this.h == arm.a.g, "Unexpected login acknowledgement packet", new Object[0]);
+      this.g.a(abc.b);
+      aqz $$1 = aqz.a(Objects.requireNonNull(this.k), this.m);
+      ari $$2 = new ari(this.f, this.g, $$1);
+      this.g.a(abc.a, $$2);
+      $$2.l();
+      this.h = arm.a.h;
    }
 
    @Override
-   public dtv C_() {
-      return this.e.C_();
+   public void a(p $$0) {
+      $$0.a("Login phase", () -> this.h.toString());
    }
 
    @Override
-   public boolean x_() {
-      return false;
+   public void a(abl $$0) {
+      this.b(arh.c);
    }
 
-   @Deprecated
-   @Override
-   public arf E() {
-      return this.e;
-   }
-
-   @Override
-   public jw H_() {
-      return this.e.H_();
-   }
-
-   @Override
-   public cpn J() {
-      return this.e.J();
-   }
-
-   @Override
-   public epu A_() {
-      return this.g;
-   }
-
-   @Override
-   public bqu d_(iz $$0) {
-      if (!this.b(kb.a($$0.u()), kb.a($$0.w()))) {
-         throw new RuntimeException("We are asking a region for a chunk out of bound");
-      } else {
-         return new bqu(this.e.al(), this.e.aa(), 0L, this.e.aq());
-      }
-   }
-
-   @Nullable
-   @Override
-   public MinecraftServer o() {
-      return this.e.o();
-   }
-
-   @Override
-   public due N() {
-      return this.e.l();
-   }
-
-   @Override
-   public long C() {
-      return this.f;
-   }
-
-   @Override
-   public exg<dfb> P() {
-      return this.j;
-   }
-
-   @Override
-   public exg<enw> O() {
-      return this.k;
-   }
-
-   @Override
-   public int z_() {
-      return this.e.z_();
-   }
-
-   @Override
-   public azh E_() {
-      return this.h;
-   }
-
-   @Override
-   public int a(dxw.a $$0, int $$1, int $$2) {
-      return this.a(kb.a($$1), kb.a($$2)).a($$0, $$1 & 15, $$2 & 15) + 1;
-   }
-
-   @Override
-   public void a(@Nullable cmz $$0, iz $$1, avz $$2, awb $$3, float $$4, float $$5) {
-   }
-
-   @Override
-   public void a(lg $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-   }
-
-   @Override
-   public void a(@Nullable cmz $$0, int $$1, iz $$2, int $$3) {
-   }
-
-   @Override
-   public void a(ji<dwx> $$0, evt $$1, dwx.a $$2) {
-   }
-
-   @Override
-   public dvw D_() {
-      return this.i;
-   }
-
-   @Override
-   public boolean a(iz $$0, Predicate<dse> $$1) {
-      return $$1.test(this.a_($$0));
-   }
-
-   @Override
-   public boolean b(iz $$0, Predicate<enx> $$1) {
-      return $$1.test(this.b_($$0));
-   }
-
-   @Override
-   public <T extends bsw> List<T> a(dwl<bsw, T> $$0, evo $$1, Predicate<? super T> $$2) {
-      return Collections.emptyList();
-   }
-
-   @Override
-   public List<bsw> a(@Nullable bsw $$0, evo $$1, @Nullable Predicate<? super bsw> $$2) {
-      return Collections.emptyList();
-   }
-
-   @Override
-   public List<cmz> x() {
-      return Collections.emptyList();
-   }
-
-   @Override
-   public int I_() {
-      return this.e.I_();
-   }
-
-   @Override
-   public int J_() {
-      return this.e.J_();
-   }
-
-   @Override
-   public long G_() {
-      return this.r.getAndIncrement();
+   static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h;
    }
 }

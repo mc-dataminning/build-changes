@@ -1,12 +1,32 @@
-public class es extends Exception {
-   private final xp a;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.Message;
+import com.mojang.brigadier.ResultConsumer;
+import com.mojang.brigadier.exceptions.CommandExceptionType;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import javax.annotation.Nullable;
 
-   public es(xp $$0) {
-      super($$0.getString());
-      this.a = $$0;
+public interface es<T extends es<T>> {
+   boolean c(int var1);
+
+   T b(en var1);
+
+   en p();
+
+   default T a_() {
+      return this.b(en.a);
    }
 
-   public xp a() {
-      return this.a;
+   CommandDispatcher<T> x();
+
+   void a(CommandExceptionType var1, Message var2, boolean var3, @Nullable hs var4);
+
+   boolean y();
+
+   default void a(CommandSyntaxException $$0, boolean $$1, @Nullable hs $$2) {
+      this.a($$0.getType(), $$0.getRawMessage(), $$1, $$2);
+   }
+
+   static <T extends es<T>> ResultConsumer<T> b_() {
+      return ($$0, $$1, $$2) -> ((es)$$0.getSource()).p().onResult($$1, $$2);
    }
 }

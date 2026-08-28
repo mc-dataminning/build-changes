@@ -4,19 +4,19 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class db extends dr<db.a> {
+public class db extends ds<db.a> {
    @Override
    public Codec<db.a> a() {
       return db.a.a;
    }
 
-   public void a(arg $$0, btq $$1, List<bsw> $$2) {
-      List<eqk> $$3 = $$2.stream().map($$1x -> bu.b($$0, $$1x)).collect(Collectors.toList());
-      eqk $$4 = bu.b($$0, $$1);
+   public void a(aql $$0, bsx $$1, List<bsd> $$2) {
+      List<eqo> $$3 = $$2.stream().map($$1x -> bu.b($$0, $$1x)).collect(Collectors.toList());
+      eqo $$4 = bu.b($$0, $$1);
       this.a($$0, $$2x -> $$2x.a($$4, $$3));
    }
 
-   public static record a(Optional<bf> b, Optional<bf> c, Optional<bf> d) implements dr.a {
+   public static record a(Optional<bf> b, Optional<bf> c, Optional<bf> d) implements ds.a {
       public static final Codec<db.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bu.b.optionalFieldOf("player").forGetter(db.a::a),
@@ -30,13 +30,13 @@ public class db extends dr<db.a> {
          return am.V.a(new db.a(Optional.empty(), bu.a($$0), bu.a($$1)));
       }
 
-      public boolean a(eqk $$0, List<eqk> $$1) {
+      public boolean a(eqo $$0, List<eqo> $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || !$$1.stream().noneMatch(this.d.get()::a);
       }
 
       @Override
       public void a(bg $$0) {
-         dr.a.super.a($$0);
+         ds.a.super.a($$0);
          $$0.a(this.c, ".lightning");
          $$0.a(this.d, ".bystander");
       }

@@ -1,136 +1,73 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+public class gva implements gvf {
+   private static final int a = 6000;
+   private static final wu b = wu.c("tutorial.find_tree.title");
+   private static final wu c = wu.c("tutorial.find_tree.description");
+   private final gve d;
+   private fjx e;
+   private int f;
 
-public class gva {
-   private final ffh a;
-   @Nullable
-   private gvb b;
-   private final List<gva.a> c = Lists.newArrayList();
-   private final gut d;
-
-   public gva(ffh $$0, ffl $$1) {
-      this.a = $$0;
-      this.d = new gut(this, $$1);
+   public gva(gve $$0) {
+      this.d = $$0;
    }
 
-   public void a(gcq $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-   }
-
-   public void a(double $$0, double $$1) {
-      if (this.b != null) {
-         this.b.a($$0, $$1);
-      }
-   }
-
-   public void a(@Nullable fxx $$0, @Nullable evr $$1) {
-      if (this.b != null && $$1 != null && $$0 != null) {
-         this.b.a($$0, $$1);
-      }
-   }
-
-   public void a(fxx $$0, iz $$1, dse $$2, float $$3) {
-      if (this.b != null) {
-         this.b.a($$0, $$1, $$2, $$3);
-      }
-   }
-
+   @Override
    public void a() {
-      if (this.b != null) {
-         this.b.c();
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(gvg.f);
+      } else {
+         if (this.f == 1) {
+            gcz $$0 = this.d.e().s;
+            if ($$0 != null && (b($$0) || a($$0))) {
+               this.d.a(gvg.e);
+               return;
+            }
+         }
+
+         if (this.f >= 6000 && this.e == null) {
+            this.e = new fjx(fjx.a.c, b, c, false);
+            this.d.e().ax().a(this.e);
+         }
       }
    }
 
-   public void a(cur $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-   }
-
+   @Override
    public void b() {
-      if (this.b != null) {
-         this.b.b();
-         this.b = null;
+      if (this.e != null) {
+         this.e.c();
+         this.e = null;
       }
    }
 
-   public void c() {
-      if (this.b != null) {
-         this.b();
-      }
-
-      this.b = this.a.m.r.a(this);
-   }
-
-   public void a(fjr $$0, int $$1) {
-      this.c.add(new gva.a($$0, $$1));
-      this.a.ax().a($$0);
-   }
-
-   public void a(fjr $$0) {
-      this.c.removeIf($$1 -> $$1.a == $$0);
-      $$0.c();
-   }
-
-   public void d() {
-      this.c.removeIf(gva.a::a);
-      if (this.b != null) {
-         if (this.a.r != null) {
-            this.b.a();
-         } else {
-            this.b();
+   @Override
+   public void a(fyd $$0, evx $$1) {
+      if ($$1.c() == evx.a.b) {
+         dsh $$2 = $$0.a_(((evv)$$1).a());
+         if ($$2.a(avu.aj)) {
+            this.d.a(gvg.c);
          }
-      } else if (this.a.r != null) {
-         this.c();
       }
    }
 
-   public void a(gvc $$0) {
-      this.a.m.r = $$0;
-      this.a.m.av();
-      if (this.b != null) {
-         this.b.b();
-         this.b = $$0.a(this);
+   @Override
+   public void a(cua $$0) {
+      if ($$0.a(awd.aM)) {
+         this.d.a(gvg.e);
       }
    }
 
-   public ffh e() {
-      return this.a;
+   private static boolean b(gcz $$0) {
+      return $$0.fY().a_($$0x -> $$0x.a(awd.aM));
    }
 
-   public boolean f() {
-      return this.a.q == null ? false : this.a.q.j() == dbx.a;
-   }
-
-   public static xp a(String $$0) {
-      return xp.d("key." + $$0).a(n.r);
-   }
-
-   public void a(cur $$0, cur $$1, cqe $$2) {
-      this.d.a($$0, $$1, $$2);
-   }
-
-   static final class a {
-      final fjr a;
-      private final int b;
-      private int c;
-
-      a(fjr $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      private boolean a() {
-         this.a.a(Math.min((float)(++this.c) / (float)this.b, 1.0F));
-         if (this.c > this.b) {
-            this.a.c();
+   public static boolean a(gcz $$0) {
+      for (jj<dff> $$1 : lq.e.c(avu.aj)) {
+         dff $$2 = $$1.a();
+         if ($$0.j().a(avp.a.b($$2)) > 0) {
             return true;
-         } else {
-            return false;
          }
       }
+
+      return false;
    }
 }

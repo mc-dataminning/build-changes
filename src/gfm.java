@@ -1,131 +1,100 @@
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class gfm implements gfq<dpe> {
-   public static final alf a = new alf("textures/entity/beacon_beam.png");
-   public static final int b = 1024;
+public class gfm implements gru {
+   private final dsi<dff, dsh> a;
+   private final List<gfo> b;
 
-   public gfm(gfr.a $$0) {
+   public gfm(dsi<dff, dsh> $$0, List<gfo> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(dpe $$0, float $$1, faa $$2, gdq $$3, int $$4, int $$5) {
-      long $$6 = $$0.i().Z();
-      List<dpe.a> $$7 = $$0.b();
-      int $$8 = 0;
+   public List<gfo> a() {
+      return this.b;
+   }
 
-      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
-         dpe.a $$10 = $$7.get($$9);
-         a($$2, $$3, $$1, $$6, $$8, $$9 == $$7.size() - 1 ? 1024 : $$10.c(), $$10.b());
-         $$8 += $$10.c();
+   public Set<gfh> b() {
+      Set<gfh> $$0 = Sets.newHashSet();
+
+      for (gfo $$1 : this.b) {
+         $$0.add($$1.a());
       }
-   }
 
-   private static void a(faa $$0, gdq $$1, float $$2, long $$3, int $$4, int $$5, float[] $$6) {
-      a($$0, $$1, a, $$2, 1.0F, $$3, $$4, $$5, $$6, 0.2F, 0.25F);
-   }
-
-   public static void a(faa $$0, gdq $$1, alf $$2, float $$3, float $$4, long $$5, int $$6, int $$7, float[] $$8, float $$9, float $$10) {
-      int $$11 = $$6 + $$7;
-      $$0.a();
-      $$0.a(0.5, 0.0, 0.5);
-      float $$12 = (float)Math.floorMod($$5, 40) + $$3;
-      float $$13 = $$7 < 0 ? $$12 : -$$12;
-      float $$14 = ayz.h($$13 * 0.2F - (float)ayz.d($$13 * 0.1F));
-      float $$15 = $$8[0];
-      float $$16 = $$8[1];
-      float $$17 = $$8[2];
-      $$0.a();
-      $$0.a(a.d.rotationDegrees($$12 * 2.25F - 45.0F));
-      float $$18 = 0.0F;
-      float $$21 = 0.0F;
-      float $$22 = -$$9;
-      float $$23 = 0.0F;
-      float $$24 = 0.0F;
-      float $$25 = -$$9;
-      float $$26 = 0.0F;
-      float $$27 = 1.0F;
-      float $$28 = -1.0F + $$14;
-      float $$29 = (float)$$7 * $$4 * (0.5F / $$9) + $$28;
-      a($$0, $$1.getBuffer(gdy.e($$2, false)), $$15, $$16, $$17, 1.0F, $$6, $$11, 0.0F, $$9, $$9, 0.0F, $$22, 0.0F, 0.0F, $$25, 0.0F, 1.0F, $$29, $$28);
-      $$0.b();
-      $$18 = -$$10;
-      float $$31 = -$$10;
-      $$21 = -$$10;
-      $$22 = -$$10;
-      $$26 = 0.0F;
-      $$27 = 1.0F;
-      $$28 = -1.0F + $$14;
-      $$29 = (float)$$7 * $$4 + $$28;
-      a($$0, $$1.getBuffer(gdy.e($$2, true)), $$15, $$16, $$17, 0.125F, $$6, $$11, $$18, $$31, $$10, $$21, $$22, $$10, $$10, $$10, 0.0F, 1.0F, $$29, $$28);
-      $$0.b();
-   }
-
-   private static void a(
-      faa $$0,
-      fae $$1,
-      float $$2,
-      float $$3,
-      float $$4,
-      float $$5,
-      int $$6,
-      int $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15,
-      float $$16,
-      float $$17,
-      float $$18,
-      float $$19
-   ) {
-      faa.a $$20 = $$0.c();
-      a($$20, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$16, $$17, $$18, $$19);
-      a($$20, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$14, $$15, $$12, $$13, $$16, $$17, $$18, $$19);
-      a($$20, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$10, $$11, $$14, $$15, $$16, $$17, $$18, $$19);
-      a($$20, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$12, $$13, $$8, $$9, $$16, $$17, $$18, $$19);
-   }
-
-   private static void a(
-      faa.a $$0,
-      fae $$1,
-      float $$2,
-      float $$3,
-      float $$4,
-      float $$5,
-      int $$6,
-      int $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15
-   ) {
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$13, $$14);
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$8, $$9, $$13, $$15);
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$10, $$11, $$12, $$15);
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$7, $$10, $$11, $$12, $$14);
-   }
-
-   private static void a(faa.a $$0, fae $$1, float $$2, float $$3, float $$4, float $$5, int $$6, float $$7, float $$8, float $$9, float $$10) {
-      $$1.a($$0, $$7, (float)$$6, $$8).a($$2, $$3, $$4, $$5).a($$9, $$10).c(gos.d).b(15728880).b($$0, 0.0F, 1.0F, 0.0F).e();
-   }
-
-   public boolean a(dpe $$0) {
-      return true;
+      return $$0;
    }
 
    @Override
-   public int aP_() {
-      return 256;
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof gfm $$1) ? false : Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b);
+      }
    }
 
-   public boolean a(dpe $$0, evt $$1) {
-      return evt.b($$0.ay_()).d(1.0, 0.0, 1.0).a((js)$$1.d(1.0, 0.0, 1.0), (double)this.aP_());
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.a, this.b);
+   }
+
+   @Override
+   public Collection<akk> f() {
+      return this.a().stream().flatMap($$0 -> $$0.a().f().stream()).collect(Collectors.toSet());
+   }
+
+   @Override
+   public void a(Function<akk, gru> $$0) {
+      this.a().forEach($$1 -> $$1.a().a($$0));
+   }
+
+   @Nullable
+   @Override
+   public grj a(grn $$0, Function<grm, gpi> $$1, grr $$2, akk $$3) {
+      grs.a $$4 = new grs.a();
+
+      for (gfo $$5 : this.a()) {
+         grj $$6 = $$5.a().a($$0, $$1, $$2, $$3);
+         if ($$6 != null) {
+            $$4.a($$5.a(this.a), $$6);
+         }
+      }
+
+      return $$4.a();
+   }
+
+   public static class a implements JsonDeserializer<gfm> {
+      private final gfa.a a;
+
+      public a(gfa.a $$0) {
+         this.a = $$0;
+      }
+
+      public gfm a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         return new gfm(this.a.a(), this.a($$2, $$0.getAsJsonArray()));
+      }
+
+      private List<gfo> a(JsonDeserializationContext $$0, JsonArray $$1) {
+         List<gfo> $$2 = Lists.newArrayList();
+
+         for (JsonElement $$3 : $$1) {
+            $$2.add((gfo)$$0.deserialize($$3, gfo.class));
+         }
+
+         return $$2;
+      }
    }
 }

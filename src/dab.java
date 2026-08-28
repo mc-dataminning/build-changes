@@ -1,9 +1,19 @@
-public class dab extends dac {
-   protected dab(dac.b $$0) {
-      super($$0);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.function.Function;
+
+public interface dab {
+   Codec<dab> b = lq.ay.r().dispatch(dab::a, Function.identity());
+
+   static MapCodec<? extends dab> a(jw<MapCodec<? extends dab>> $$0) {
+      jw.a($$0, "add", czs.a);
+      jw.a($$0, "all_of", czt.c.a);
+      jw.a($$0, "multiply", dae.a);
+      jw.a($$0, "remove_binomial", dag.a);
+      return jw.a($$0, "set", dal.a);
    }
 
-   public static boolean a(cur $$0, int $$1, azh $$2) {
-      return $$0.g() instanceof csg && $$2.i() < 0.6F ? false : $$2.a($$1 + 1) > 0;
-   }
+   float a(cua var1, int var2, aym var3, float var4);
+
+   MapCodec<? extends dab> a();
 }

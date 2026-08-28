@@ -1,18 +1,34 @@
-public class glw extends gkf<cms, fwn<cms>> {
-   private static final alf a = new alf("textures/entity/wandering_trader.png");
+public class glw extends gjf<cis> {
+   private final ger a;
 
-   public glw(giz.a $$0) {
-      super($$0, new fwn<>($$0.a(fxb.bS)), 0.5F);
-      this.a(new gmq<>(this, $$0.f(), $$0.d()));
-      this.a(new gmp<>(this, $$0.d()));
+   public glw(gjg.a $$0) {
+      super($$0);
+      this.d = 0.5F;
+      this.a = $$0.c();
    }
 
-   public alf a(cms $$0) {
-      return a;
+   public void a(cis $$0, float $$1, float $$2, fag $$3, gdx $$4, int $$5) {
+      $$3.a();
+      $$3.a(0.0F, 0.5F, 0.0F);
+      int $$6 = $$0.u();
+      if ((float)$$6 - $$2 + 1.0F < 10.0F) {
+         float $$7 = 1.0F - ((float)$$6 - $$2 + 1.0F) / 10.0F;
+         $$7 = aye.a($$7, 0.0F, 1.0F);
+         $$7 *= $$7;
+         $$7 *= $$7;
+         float $$8 = 1.0F + $$7 * 0.3F;
+         $$3.b($$8, $$8, $$8);
+      }
+
+      $$3.a(a.d.rotationDegrees(-90.0F));
+      $$3.a(-0.5F, -0.5F, 0.5F);
+      $$3.a(a.d.rotationDegrees(90.0F));
+      glv.a(this.a, $$0.v(), $$3, $$4, $$5, $$6 / 5 % 2 == 0);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected void a(cms $$0, faa $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
+   public akk a(cis $$0) {
+      return gph.e;
    }
 }

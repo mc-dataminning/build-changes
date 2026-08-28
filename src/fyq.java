@@ -1,200 +1,58 @@
-import com.google.common.collect.Queues;
-import com.mojang.authlib.GameProfile;
-import java.time.Instant;
-import java.util.Deque;
-import java.util.UUID;
-import java.util.function.BooleanSupplier;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
 public class fyq {
-   private static final xp a = xp.c("chat.validation_error").a(n.m, n.u);
-   private final ffh b;
-   private final Deque<fyq.a> c = Queues.newArrayDeque();
-   private long d;
-   private long e;
+   @Nullable
+   private fyq.a a;
+   @Nullable
+   private fyv b;
 
-   public fyq(ffh $$0) {
-      this.b = $$0;
-   }
-
-   public void a() {
-      if (this.d != 0L) {
-         if (ac.c() >= this.e + this.d) {
-            fyq.a $$0 = this.c.poll();
-
-            while ($$0 != null && !$$0.a()) {
-               $$0 = this.c.poll();
-            }
-         }
-      }
-   }
-
-   public void a(double $$0) {
-      long $$1 = (long)($$0 * 1000.0);
-      if ($$1 == 0L && this.d > 0L) {
-         this.c.forEach(fyq.a::a);
-         this.c.clear();
+   public void a(akj<? extends jw<?>> $$0, List<ka.a> $$1) {
+      if (this.a == null) {
+         this.a = new fyq.a();
       }
 
-      this.d = $$1;
+      this.a.a($$0, $$1);
    }
 
-   public void b() {
-      this.c.remove().a();
+   public void a(Map<akj<? extends jw<?>>, awn.a> $$0) {
+      if (this.b == null) {
+         this.b = new fyv();
+      }
+
+      $$0.forEach(this.b::a);
    }
 
-   public long c() {
-      return (long)this.c.size();
-   }
-
-   public void d() {
-      this.c.forEach(fyq.a::a);
-      this.c.clear();
-   }
-
-   public boolean a(yb $$0) {
-      return this.c.removeIf($$1 -> $$0.equals($$1.b()));
-   }
-
-   private boolean e() {
-      return this.d > 0L && ac.c() < this.e + this.d;
-   }
-
-   private void a(@Nullable yb $$0, BooleanSupplier $$1) {
-      if (this.e()) {
-         this.c.add(new fyq.a($$0, $$1));
+   public jx.b a(atx $$0, jx $$1, boolean $$2) {
+      jq<fyf> $$3 = fyf.a();
+      jx $$6;
+      if (this.a != null) {
+         jx.b $$4 = $$3.b(fyf.b);
+         jx.b $$5 = this.a.a($$0, $$4).d();
+         $$6 = $$3.a(fyf.b, $$5).a();
       } else {
-         $$1.getAsBoolean();
-      }
-   }
-
-   public void a(yf $$0, GameProfile $$1, xl.a $$2) {
-      boolean $$3 = this.b.m.ag().c();
-      yf $$4 = $$3 ? $$0.a() : $$0;
-      xp $$5 = $$2.a($$4.d());
-      Instant $$6 = Instant.now();
-      this.a($$0.l(), () -> {
-         boolean $$6x = this.a($$2, $$0, $$5, $$1, $$3, $$6);
-         fxy $$7 = this.b.L();
-         if ($$7 != null) {
-            $$7.a($$0, $$6x);
-         }
-
-         return $$6x;
-      });
-   }
-
-   public void a(UUID $$0, xl.a $$1) {
-      this.a(null, () -> {
-         if (this.b.a($$0)) {
-            return false;
-         } else {
-            xp $$2 = $$1.a(a);
-            this.b.l.d().a($$2, null, ffc.d());
-            this.e = ac.c();
-            return true;
-         }
-      });
-   }
-
-   public void a(xp $$0, xl.a $$1) {
-      Instant $$2 = Instant.now();
-      this.a(null, () -> {
-         xp $$3 = $$1.a($$0);
-         this.b.l.d().a($$3);
-         this.a($$1, $$0);
-         this.a($$3, $$2);
-         this.e = ac.c();
-         return true;
-      });
-   }
-
-   private boolean a(xl.a $$0, yf $$1, xp $$2, GameProfile $$3, boolean $$4, Instant $$5) {
-      fys $$6 = this.a($$1, $$2, $$5);
-      if ($$4 && $$6.a()) {
-         return false;
-      } else if (!this.b.a($$1.g()) && !$$1.j()) {
-         ffc $$7 = $$6.a($$1);
-         yb $$8 = $$1.l();
-         xt $$9 = $$1.o();
-         if ($$9.a()) {
-            this.b.l.d().a($$2, $$8, $$7);
-            this.a($$0, $$1.d());
-         } else {
-            xp $$10 = $$9.b($$1.c());
-            if ($$10 != null) {
-               this.b.l.d().a($$0.a($$10), $$8, $$7);
-               this.a($$0, $$10);
-            }
-         }
-
-         this.a($$1, $$0, $$3, $$6);
-         this.e = ac.c();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private void a(xl.a $$0, xp $$1) {
-      this.b.aX().a($$0.b($$1));
-   }
-
-   private fys a(yf $$0, xp $$1, Instant $$2) {
-      return this.a($$0.g()) ? fys.a : fys.a($$0, $$1, $$2);
-   }
-
-   private void a(yf $$0, xl.a $$1, GameProfile $$2, fys $$3) {
-      fyr $$4 = this.b.aZ().b();
-      $$4.a(fyu.a($$2, $$0, $$3));
-   }
-
-   private void a(xp $$0, Instant $$1) {
-      fyr $$2 = this.b.aZ().b();
-      $$2.a(fyu.a($$0, $$1));
-   }
-
-   public void a(xp $$0, boolean $$1) {
-      if (!this.b.m.ae().c() || !this.b.a(this.a($$0))) {
-         if ($$1) {
-            this.b.l.a($$0, false);
-         } else {
-            this.b.l.d().a($$0);
-            this.a($$0, Instant.now());
-         }
-
-         this.b.aX().b($$0);
-      }
-   }
-
-   private UUID a(xp $$0) {
-      String $$1 = azt.a($$0);
-      String $$2 = StringUtils.substringBetween($$1, "<", ">");
-      return $$2 == null ? ac.e : this.b.aM().a($$2);
-   }
-
-   private boolean a(UUID $$0) {
-      if (this.b.T() && this.b.s != null) {
-         UUID $$1 = this.b.s.gb().getId();
-         return $$1.equals($$0);
-      } else {
-         return false;
-      }
-   }
-
-   static record a(@Nullable yb a, BooleanSupplier b) {
-      public boolean a() {
-         return this.b.getAsBoolean();
+         $$6 = $$1;
       }
 
-      @Nullable
-      public yb b() {
-         return this.a;
+      if (this.b != null) {
+         this.b.a($$6, $$2);
       }
 
-      public BooleanSupplier c() {
-         return this.b;
+      return $$6.d();
+   }
+
+   static class a {
+      private final Map<akj<? extends jw<?>>, List<ka.a>> a = new HashMap<>();
+
+      public void a(akj<? extends jw<?>> $$0, List<ka.a> $$1) {
+         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>()).addAll($$1);
+      }
+
+      public jx a(atx $$0, jx $$1) {
+         return akf.a(this.a, $$0, $$1, akf.c);
       }
    }
 }

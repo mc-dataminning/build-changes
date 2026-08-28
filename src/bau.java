@@ -1,44 +1,74 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class bau extends DataFix {
-   public bau(Schema $$0) {
+public abstract class bau extends DataFix {
+   private final String a;
+
+   public bau(Schema $$0, String $$1) {
       super($$0, false);
+      this.a = $$1;
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgx.s);
-      TaggedChoiceType<?> $$1 = this.getInputSchema().findChoiceType(bgx.s);
-      OpticFinder<?> $$2 = $$0.findField("components");
-      return this.fixTypeEverywhereTyped("Banner entity custom_name to item_name component fix", $$0, $$2x -> {
-         Object $$3 = ((Pair)$$2x.get($$1.finder())).getFirst();
-         return $$3.equals("minecraft:banner") ? this.a($$2x, $$2) : $$2x;
-      });
+      Type<?> $$0 = this.getInputSchema().getType(bgd.C);
+      Type<Pair<String, String>> $$1 = DSL.named(bgd.C.typeName(), bhp.a());
+      if (!Objects.equals($$0, $$1)) {
+         throw new IllegalStateException("block type is not what was expected.");
+      } else {
+         TypeRewriteRule $$2 = this.fixTypeEverywhere(this.a + " for block", $$1, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
+         TypeRewriteRule $$3 = this.fixTypeEverywhereTyped(
+            this.a + " for block_state", this.getInputSchema().getType(bgd.u), $$0x -> $$0x.update(DSL.remainderFinder(), this::a)
+         );
+         TypeRewriteRule $$4 = this.fixTypeEverywhereTyped(
+            this.a + " for flat_block_state",
+            this.getInputSchema().getType(bgd.v),
+            $$0x -> $$0x.update(
+                  DSL.remainderFinder(), $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().result().map(this::b).map($$0xx::createString), $$0xx)
+               )
+         );
+         return TypeRewriteRule.seq($$2, new TypeRewriteRule[]{$$3, $$4});
+      }
    }
 
-   private Typed<?> a(Typed<?> $$0, OpticFinder<?> $$1) {
-      Dynamic<?> $$2 = (Dynamic<?>)$$0.getOptional(DSL.remainderFinder()).orElseThrow();
-      OptionalDynamic<?> $$3 = $$2.get("CustomName");
-      boolean $$4 = $$3.asString().result().flatMap(baf::a).filter($$0x -> $$0x.equals("block.minecraft.ominous_banner")).isPresent();
-      if ($$4) {
-         Typed<?> $$5 = $$0.getOrCreateTyped($$1)
-            .update(
-               DSL.remainderFinder(),
-               $$1x -> $$1x.set("minecraft:item_name", (Dynamic)$$3.result().get()).set("minecraft:hide_additional_tooltip", $$1x.createMap(Map.of()))
-            );
-         return $$0.set($$1, $$5).set(DSL.remainderFinder(), $$2.remove("CustomName"));
-      } else {
-         return $$0;
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<String> $$1 = $$0.get("Name").asString().result();
+      return $$1.isPresent() ? $$0.set("Name", $$0.createString(this.a($$1.get()))) : $$0;
+   }
+
+   private String b(String $$0) {
+      int $$1 = $$0.indexOf(91);
+      int $$2 = $$0.indexOf(123);
+      int $$3 = $$0.length();
+      if ($$1 > 0) {
+         $$3 = $$1;
       }
+
+      if ($$2 > 0) {
+         $$3 = Math.min($$3, $$2);
+      }
+
+      String $$4 = $$0.substring(0, $$3);
+      String $$5 = this.a($$4);
+      return $$5 + $$0.substring($$3);
+   }
+
+   protected abstract String a(String var1);
+
+   public static DataFix a(Schema $$0, String $$1, final Function<String, String> $$2) {
+      return new bau($$0, $$1) {
+         @Override
+         protected String a(String $$0) {
+            return $$2.apply($$0);
+         }
+      };
    }
 }

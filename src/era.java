@@ -1,66 +1,70 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.MapCodec;
 import java.util.List;
-import java.util.function.Predicate;
 
-public abstract class era implements eqs {
-   protected final List<etu> e;
-   private final Predicate<eqk> a;
+public class era extends eqx {
+   public static final MapCodec<era> a = a(era::new);
 
-   protected era(List<etu> $$0) {
-      this.e = $$0;
-      this.a = ac.a($$0);
+   era(List<ere> $$0, List<etz> $$1) {
+      super($$0, $$1);
    }
 
-   protected static <T extends era> P1<Mu<T>, List<etu>> a(Instance<T> $$0) {
-      return $$0.group(etw.a.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.e));
+   @Override
+   public erf a() {
+      return erc.i;
    }
 
-   public void a(eqq $$0) {
-      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
-         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
-      }
+   @Override
+   protected eqw a(List<? extends eqw> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (eqw)$$0.get(0);
+         case 2 -> {
+            eqw $$1 = $$0.get(0);
+            eqw $$2 = $$0.get(1);
+            yield ($$2x, $$3) -> {
+               $$1.expand($$2x, $$3);
+               $$2.expand($$2x, $$3);
+               return true;
+            };
+         }
+         default -> ($$1x, $$2x) -> {
+         for (eqw $$3 : $$0) {
+            $$3.expand($$1x, $$2x);
+         }
+
+         return true;
+      };
+      };
    }
 
-   protected final boolean a(eqk $$0) {
-      return this.a.test($$0);
+   public static era.a a(ere.a<?>... $$0) {
+      return new era.a($$0);
    }
 
-   public abstract erb a();
+   public static class a extends ere.a<era.a> {
+      private final Builder<ere> a = ImmutableList.builder();
 
-   public abstract static class a<T extends era.a<T>> implements etn<T> {
-      private final Builder<etu> a = ImmutableList.builder();
-
-      protected abstract T aA_();
-
-      public T a(etu.a $$0) {
-         this.a.add($$0.build());
-         return this.aA_();
+      public a(ere.a<?>... $$0) {
+         for (ere.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
       }
 
-      public final T e() {
-         return this.aA_();
+      protected era.a a() {
+         return this;
       }
 
-      protected List<etu> f() {
-         return this.a.build();
+      @Override
+      public era.a b(ere.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
       }
 
-      public eqr.a a(era.a<?> $$0) {
-         return new eqr.a(this, $$0);
+      @Override
+      public ere b() {
+         return new era(this.a.build(), this.f());
       }
-
-      public eqw.a b(era.a<?> $$0) {
-         return new eqw.a(this, $$0);
-      }
-
-      public ere.a c(era.a<?> $$0) {
-         return new ere.a(this, $$0);
-      }
-
-      public abstract era b();
    }
 }

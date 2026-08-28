@@ -1,69 +1,58 @@
-public class cro extends cpw {
-   private static final int k = 27;
-   private final bqp l;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-   public cro(int $$0, cmy $$1) {
-      this($$0, $$1, new brf(27));
-   }
+public class cro extends crp {
+   private final akk j;
+   @Nullable
+   private final akk k;
+   private final cro.a l;
 
-   public cro(int $$0, cmy $$1, bqp $$2) {
-      super(crd.u, $$0);
-      a($$2, 27);
-      this.l = $$2;
-      $$2.d_($$1.l);
-      int $$3 = 3;
-      int $$4 = 9;
-
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         for (int $$6 = 0; $$6 < 9; $$6++) {
-            this.a(new crp($$2, $$6 + $$5 * 9, 8 + $$6 * 18, 18 + $$5 * 18));
-         }
-      }
-
-      for (int $$7 = 0; $$7 < 3; $$7++) {
-         for (int $$8 = 0; $$8 < 9; $$8++) {
-            this.a(new crr($$1, $$8 + $$7 * 9 + 9, 8 + $$8 * 18, 84 + $$7 * 18));
-         }
-      }
-
-      for (int $$9 = 0; $$9 < 9; $$9++) {
-         this.a(new crr($$1, $$9, 8 + $$9 * 18, 142));
+   public cro(jj<crq> $$0, cro.a $$1, boolean $$2, ctv.a $$3) {
+      super($$0, crp.a.e, $$3);
+      this.l = $$1;
+      akk $$4 = $$1.c.apply($$0.e().orElseThrow().a());
+      this.j = $$4.e(".png");
+      if ($$2) {
+         this.k = $$4.e("_overlay.png");
+      } else {
+         this.k = null;
       }
    }
 
-   @Override
-   public boolean a(cmz $$0) {
-      return this.l.a($$0);
+   public akk b() {
+      return this.j;
+   }
+
+   @Nullable
+   public akk c() {
+      return this.k;
+   }
+
+   public cro.a d() {
+      return this.l;
    }
 
    @Override
-   public cur a(cmz $$0, int $$1) {
-      cur $$2 = cur.l;
-      crr $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cur $$4 = $$3.g();
-         $$2 = $$4.s();
-         if ($$1 < this.l.b()) {
-            if (!this.a($$4, this.l.b(), this.i.size(), true)) {
-               return cur.l;
-            }
-         } else if (!this.a($$4, 0, this.l.b(), false)) {
-            return cur.l;
-         }
-
-         if ($$4.e()) {
-            $$3.e(cur.l);
-         } else {
-            $$3.b();
-         }
-      }
-
-      return $$2;
+   public ave e() {
+      return this.l.d;
    }
 
    @Override
-   public void b(cmz $$0) {
-      super.b($$0);
-      this.l.c($$0);
+   public boolean a(cua $$0) {
+      return false;
+   }
+
+   public static enum a {
+      a($$0 -> $$0.a((UnaryOperator<String>)($$0x -> "textures/entity/horse/armor/horse_armor_" + $$0x)), avf.nB),
+      b($$0 -> $$0.c("textures/entity/wolf/wolf_armor"), avf.CH);
+
+      final Function<akk, akk> c;
+      final ave d;
+
+      private a(final Function<akk, akk> $$0, final ave $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
    }
 }

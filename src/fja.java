@@ -1,36 +1,55 @@
+import java.time.Duration;
 import javax.annotation.Nullable;
 
-public abstract class fja implements fjb {
+public class fja {
    @Nullable
-   private fjc a;
-   private boolean b;
+   private fix a;
+   private Duration b = Duration.ZERO;
+   private long c;
+   private boolean d;
 
-   @Override
-   public final boolean aF_() {
-      return this.b;
-   }
-
-   @Override
-   public final void b(boolean $$0) {
+   public void a(Duration $$0) {
       this.b = $$0;
    }
 
+   public void a(@Nullable fix $$0) {
+      this.a = $$0;
+   }
+
    @Nullable
-   @Override
-   public fjc aG_() {
+   public fix a() {
       return this.a;
    }
 
-   @Override
-   public void a(@Nullable fjc $$0) {
+   public void a(boolean $$0, boolean $$1, fls $$2) {
+      if (this.a == null) {
+         this.d = false;
+      } else {
+         boolean $$3 = $$0 || $$1 && ffn.Q().aW().b();
+         if ($$3 != this.d) {
+            if ($$3) {
+               this.c = ac.c();
+            }
+
+            this.d = $$3;
+         }
+
+         if ($$3 && ac.c() - this.c > this.b.toMillis()) {
+            fnd $$4 = ffn.Q().y;
+            if ($$4 != null) {
+               $$4.a(this.a, this.a($$2, $$0, $$1), $$1);
+            }
+         }
+      }
+   }
+
+   private fpn a(fls $$0, boolean $$1, boolean $$2) {
+      return (fpn)(!$$1 && $$2 && ffn.Q().aW().b() ? new fpj($$0) : new fpp($$0));
+   }
+
+   public void a(fli $$0) {
       if (this.a != null) {
-         this.a.a(false);
+         this.a.b($$0);
       }
-
-      if ($$0 != null) {
-         $$0.a(true);
-      }
-
-      this.a = $$0;
    }
 }

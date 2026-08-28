@@ -1,84 +1,40 @@
-public abstract class eik extends eiq {
-   protected final int a;
-   protected final int b;
-   protected final int c;
-   protected int d = -1;
+public interface eik {
+   akj<eiq> a = a("pillager_outpost");
+   akj<eiq> b = a("mineshaft");
+   akj<eiq> c = a("mineshaft_mesa");
+   akj<eiq> d = a("mansion");
+   akj<eiq> e = a("jungle_pyramid");
+   akj<eiq> f = a("desert_pyramid");
+   akj<eiq> g = a("igloo");
+   akj<eiq> h = a("shipwreck");
+   akj<eiq> i = a("shipwreck_beached");
+   akj<eiq> j = a("swamp_hut");
+   akj<eiq> k = a("stronghold");
+   akj<eiq> l = a("monument");
+   akj<eiq> m = a("ocean_ruin_cold");
+   akj<eiq> n = a("ocean_ruin_warm");
+   akj<eiq> o = a("fortress");
+   akj<eiq> p = a("nether_fossil");
+   akj<eiq> q = a("end_city");
+   akj<eiq> r = a("buried_treasure");
+   akj<eiq> s = a("bastion_remnant");
+   akj<eiq> t = a("village_plains");
+   akj<eiq> u = a("village_desert");
+   akj<eiq> v = a("village_savanna");
+   akj<eiq> w = a("village_snowy");
+   akj<eiq> x = a("village_taiga");
+   akj<eiq> y = a("ruined_portal");
+   akj<eiq> z = a("ruined_portal_desert");
+   akj<eiq> A = a("ruined_portal_jungle");
+   akj<eiq> B = a("ruined_portal_swamp");
+   akj<eiq> C = a("ruined_portal_mountain");
+   akj<eiq> D = a("ruined_portal_ocean");
+   akj<eiq> E = a("ruined_portal_nether");
+   akj<eiq> F = a("ancient_city");
+   akj<eiq> G = a("trail_ruins");
+   akj<eiq> H = a("trial_chambers");
 
-   protected eik(ejd $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, je $$7) {
-      super($$0, 0, eiq.a($$1, $$2, $$3, $$7, $$4, $$5, $$6));
-      this.a = $$4;
-      this.b = $$5;
-      this.c = $$6;
-      this.a($$7);
-   }
-
-   protected eik(ejd $$0, us $$1) {
-      super($$0, $$1);
-      this.a = $$1.h("Width");
-      this.b = $$1.h("Height");
-      this.c = $$1.h("Depth");
-      this.d = $$1.h("HPos");
-   }
-
-   @Override
-   protected void a(ejc $$0, us $$1) {
-      $$1.a("Width", this.a);
-      $$1.a("Height", this.b);
-      $$1.a("Depth", this.c);
-      $$1.a("HPos", this.d);
-   }
-
-   protected boolean a(dcb $$0, eie $$1, int $$2) {
-      if (this.d >= 0) {
-         return true;
-      } else {
-         int $$3 = 0;
-         int $$4 = 0;
-         iz.a $$5 = new iz.a();
-
-         for (int $$6 = this.f.j(); $$6 <= this.f.m(); $$6++) {
-            for (int $$7 = this.f.h(); $$7 <= this.f.k(); $$7++) {
-               $$5.d($$7, 64, $$6);
-               if ($$1.b($$5)) {
-                  $$3 += $$0.a(dxw.a.f, $$5).v();
-                  $$4++;
-               }
-            }
-         }
-
-         if ($$4 == 0) {
-            return false;
-         } else {
-            this.d = $$3 / $$4;
-            this.f.a(0, this.d - this.f.i() + $$2, 0);
-            return true;
-         }
-      }
-   }
-
-   protected boolean a(dcb $$0, int $$1) {
-      if (this.d >= 0) {
-         return true;
-      } else {
-         int $$2 = $$0.am();
-         boolean $$3 = false;
-         iz.a $$4 = new iz.a();
-
-         for (int $$5 = this.f.j(); $$5 <= this.f.m(); $$5++) {
-            for (int $$6 = this.f.h(); $$6 <= this.f.k(); $$6++) {
-               $$4.d($$6, 0, $$5);
-               $$2 = Math.min($$2, $$0.a(dxw.a.f, $$4).v());
-               $$3 = true;
-            }
-         }
-
-         if (!$$3) {
-            return false;
-         } else {
-            this.d = $$2;
-            this.f.a(0, this.d - this.f.i() + $$1, 0);
-            return true;
-         }
-      }
+   private static akj<eiq> a(String $$0) {
+      return akj.a(lr.aQ, new akk($$0));
    }
 }

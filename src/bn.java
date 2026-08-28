@@ -3,18 +3,18 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class bn extends dr<bn.a> {
+public class bn extends ds<bn.a> {
    @Override
    public Codec<bn.a> a() {
       return bn.a.a;
    }
 
-   public void a(arg $$0, @Nullable bsw $$1) {
-      eqk $$2 = $$1 != null ? bu.b($$0, $$1) : null;
+   public void a(aql $$0, @Nullable bsd $$1) {
+      eqo $$2 = $$1 != null ? bu.b($$0, $$1) : null;
       this.a($$0, $$2x -> $$2x.a($$0, $$2));
    }
 
-   public static record a(Optional<bf> b, Optional<df> c, Optional<bf> d) implements dr.a {
+   public static record a(Optional<bf> b, Optional<df> c, Optional<bf> d) implements ds.a {
       public static final Codec<bn.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bu.b.optionalFieldOf("player").forGetter(bn.a::a),
@@ -32,13 +32,13 @@ public class bn extends dr<bn.a> {
          return am.B.a(new bn.a(Optional.empty(), Optional.empty(), Optional.of(bu.a($$0.b()))));
       }
 
-      public boolean a(arg $$0, @Nullable eqk $$1) {
-         return this.c.isPresent() && !this.c.get().a((btr)$$0) ? false : !this.d.isPresent() || $$1 != null && this.d.get().a($$1);
+      public boolean a(aql $$0, @Nullable eqo $$1) {
+         return this.c.isPresent() && !this.c.get().a((bsy)$$0) ? false : !this.d.isPresent() || $$1 != null && this.d.get().a($$1);
       }
 
       @Override
       public void a(bg $$0) {
-         dr.a.super.a($$0);
+         ds.a.super.a($$0);
          $$0.a(this.d, ".source");
       }
 

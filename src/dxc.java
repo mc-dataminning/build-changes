@@ -1,14 +1,20 @@
-import com.mojang.serialization.MapCodec;
+public interface dxc {
+   dxe a();
 
-public interface dxc<T extends dxb> {
-   dxc<dwt> a = a("block", new dwt.a());
-   dxc<dwv> b = a("entity", new dwv.a());
+   int b();
 
-   MapCodec<T> a();
+   boolean a(aqk var1, jj<dxa> var2, dxa.a var3, evz var4);
 
-   zn<? super xa, T> b();
+   default dxc.a c() {
+      return dxc.a.a;
+   }
 
-   static <S extends dxc<T>, T extends dxb> S a(String $$0, S $$1) {
-      return jv.a(lp.v, $$0, $$1);
+   public static enum a {
+      a,
+      b;
+   }
+
+   public interface b<T extends dxc> {
+      T c();
    }
 }

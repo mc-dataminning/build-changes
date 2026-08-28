@@ -1,16 +1,26 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class edx implements ede {
-   public static final Codec<edx> a = ayh.b(ehq.c).fieldOf("features").xmap(edx::new, $$0 -> $$0.b).codec();
-   public final jm<ehq> b;
+public class edx implements edi {
+   public static final Codec<edx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dsh.b.fieldOf("target").forGetter($$0x -> $$0x.b),
+               dsh.b.fieldOf("state").forGetter($$0x -> $$0x.c),
+               bpi.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, edx::new)
+   );
+   public final dsh b;
+   public final dsh c;
+   private final bpi d;
 
-   public edx(jm<ehq> $$0) {
+   public edx(dsh $$0, dsh $$1, bpi $$2) {
       this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public Stream<ean<?, ?>> e() {
-      return this.b.a().flatMap($$0 -> $$0.a().a());
+   public bpi a() {
+      return this.d;
    }
 }

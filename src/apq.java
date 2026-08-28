@@ -1,47 +1,60 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+public class apq implements Comparable<apq> {
+   private final int a;
+   private final ja b;
+   private int c;
+   private int d;
 
-public class apq {
-   private static final int a = -1;
-
-   public static void a(CommandDispatcher<ep> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("weather").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     ((LiteralArgumentBuilder)eq.a("clear").executes($$0x -> a((ep)$$0x.getSource(), -1)))
-                        .then(eq.a("duration", ge.a(1)).executes($$0x -> a((ep)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
-                  ))
-               .then(
-                  ((LiteralArgumentBuilder)eq.a("rain").executes($$0x -> b((ep)$$0x.getSource(), -1)))
-                     .then(eq.a("duration", ge.a(1)).executes($$0x -> b((ep)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
-               ))
-            .then(
-               ((LiteralArgumentBuilder)eq.a("thunder").executes($$0x -> c((ep)$$0x.getSource(), -1)))
-                  .then(eq.a("duration", ge.a(1)).executes($$0x -> c((ep)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
-            )
-      );
+   public apq(int $$0, ja $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   private static int a(ep $$0, int $$1, bqb $$2) {
-      return $$1 == -1 ? $$2.a($$0.l().I().E_()) : $$1;
+   public int a() {
+      return this.a;
    }
 
-   private static int a(ep $$0, int $$1) {
-      $$0.l().I().a(a($$0, $$1, arf.b), 0, false, false);
-      $$0.a(() -> xp.c("commands.weather.set.clear"), true);
-      return $$1;
+   public ja b() {
+      return this.b;
    }
 
-   private static int b(ep $$0, int $$1) {
-      $$0.l().I().a(0, a($$0, $$1, arf.c), true, false);
-      $$0.a(() -> xp.c("commands.weather.set.rain"), true);
-      return $$1;
+   public void a(int $$0) {
+      if ($$0 > 10) {
+         $$0 = 10;
+      }
+
+      this.c = $$0;
    }
 
-   private static int c(ep $$0, int $$1) {
-      $$0.l().I().a(0, a($$0, $$1, arf.d), true, true);
-      $$0.a(() -> xp.c("commands.weather.set.thunder"), true);
-      return $$1;
+   public int c() {
+      return this.c;
+   }
+
+   public void b(int $$0) {
+      this.d = $$0;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         apq $$1 = (apq)$$0;
+         return this.a == $$1.a;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Integer.hashCode(this.a);
+   }
+
+   public int a(apq $$0) {
+      return this.c != $$0.c ? Integer.compare(this.c, $$0.c) : Integer.compare(this.a, $$0.a);
    }
 }

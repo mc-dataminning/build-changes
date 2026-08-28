@@ -1,41 +1,28 @@
-public class glq extends gkf<cgh, ftu<cgh>> {
-   private final ftu<cgh> a = this.a();
-   private final ftu<cgh> i;
-   private static final alf j = new alf("textures/entity/fish/tropical_a.png");
-   private static final alf k = new alf("textures/entity/fish/tropical_b.png");
+public class glq extends gkm<cka, fwl<cka>> {
+   private static final akk a = new akk("textures/entity/strider/strider.png");
+   private static final akk i = new akk("textures/entity/strider/strider_cold.png");
+   private static final float j = 0.5F;
 
-   public glq(giz.a $$0) {
-      super($$0, new fwi<>($$0.a(fxb.bL)), 0.15F);
-      this.i = new fwj<>($$0.a(fxb.bJ));
-      this.a(new gnv(this, $$0.f()));
+   public glq(gjg.a $$0) {
+      super($$0, new fwl<>($$0.a(fxh.bD)), 0.5F);
+      this.a(new gnt<>(this, new fwl<>($$0.a(fxh.bE)), new akk("textures/entity/strider/strider_saddle.png")));
    }
 
-   public alf a(cgh $$0) {
-      return switch ($$0.gB().a()) {
-         case a -> j;
-         case b -> k;
-      };
+   public akk a(cka $$0) {
+      return $$0.s() ? i : a;
    }
 
-   public void a(cgh $$0, float $$1, float $$2, faa $$3, gdq $$4, int $$5) {
-      ftu<cgh> $$6 = switch ($$0.gB().a()) {
-         case a -> this.a;
-         case b -> this.i;
-      };
-      this.f = $$6;
-      float[] $$7 = $$0.gz().d();
-      $$6.a($$7[0], $$7[1], $$7[2]);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      $$6.a(1.0F, 1.0F, 1.0F);
+   protected float b(cka $$0) {
+      float $$1 = super.b($$0);
+      return $$0.p_() ? $$1 * 0.5F : $$1;
    }
 
-   protected void a(cgh $$0, faa $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = 4.3F * ayz.a(0.6F * $$2);
-      $$1.a(a.d.rotationDegrees($$6));
-      if (!$$0.be()) {
-         $$1.a(0.2F, 0.1F, 0.0F);
-         $$1.a(a.f.rotationDegrees(90.0F));
-      }
+   protected void a(cka $$0, fag $$1, float $$2) {
+      float $$3 = $$0.ea();
+      $$1.b($$3, $$3, $$3);
+   }
+
+   protected boolean c(cka $$0) {
+      return super.a($$0) || $$0.s();
    }
 }

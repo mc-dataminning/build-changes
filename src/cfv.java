@@ -1,260 +1,110 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import java.util.Optional;
+import java.util.UUID;
 import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
-public class cfv extends cfh {
-   public static final double bY = 0.6;
-   public static final double bZ = 0.8;
-   public static final double cb = 1.33;
-   private static final akk<Boolean> cc = ako.a(cfv.class, akm.k);
-   @Nullable
-   private cfv.a<cmz> cd;
-   @Nullable
-   private cfv.b ce;
+public class cfv {
+   private static final float a = 1.0F;
+   private static final float b = 2.25F;
+   private static final float c = 1.75F;
+   private static final float d = 2.5F;
+   private static final int e = 4;
+   private static final int f = 16;
+   private static final int g = 6;
+   private static final int h = 30;
+   private static final int i = 60;
+   private static final int j = 600;
+   private static final int k = 32;
+   private static final int l = 20;
 
-   public cfv(btc<? extends cfv> $$0, dca $$1) {
-      super($$0, $$1);
-      this.u();
+   protected static bua<?> a(bua<cfu> $$0) {
+      b($$0);
+      c($$0);
+      $$0.a(ImmutableSet.of(cnw.a));
+      $$0.b(cnw.b);
+      $$0.f();
+      return $$0;
    }
 
-   boolean y() {
-      return this.ao.a(cc);
+   private static void b(bua<cfu> $$0) {
+      $$0.a(cnw.a, 0, ImmutableList.of(new bxl(0.8F), new bum(2.5F), new bvx(45, 90), new bwb(), new bux(ccc.aO), new bux(ccc.aP)));
    }
 
-   private void w(boolean $$0) {
-      this.ao.a(cc, $$0);
-      this.u();
+   private static void c(bua<cfu> $$0) {
+      $$0.a(
+         cnw.b,
+         ImmutableList.of(
+            Pair.of(0, bvl.a($$0x -> true, 1.75F, true, 32)),
+            Pair.of(1, new bvh(cfv::b, 2.25F, 20)),
+            Pair.of(2, bxf.a(cfv::b, Predicate.not(cfv::c), 4, 16, 2.25F)),
+            Pair.of(3, bwr.a(6.0F, bpo.a(30, 60))),
+            Pair.of(4, new bwo(ImmutableList.of(Pair.of(bwj.b(1.0F), 2), Pair.of(bwy.a(1.0F, 3), 2), Pair.of(new bvb(30, 60), 1))))
+         ),
+         ImmutableSet.of()
+      );
    }
 
-   @Override
-   public void b(us $$0) {
-      super.b($$0);
-      $$0.a("Trusting", this.y());
+   public static void a(cfu $$0) {
+      $$0.dT().a(ImmutableList.of(cnw.b));
    }
 
-   @Override
-   public void a(us $$0) {
-      super.a($$0);
-      this.w($$0.q("Trusting"));
-   }
-
-   @Override
-   protected void a(ako.a $$0) {
-      super.a($$0);
-      $$0.a(cc, false);
-   }
-
-   @Override
-   protected void z() {
-      this.ce = new cfv.b(this, 0.6, $$0 -> $$0.a(awy.ap), true);
-      this.bS.a(1, new caj(this));
-      this.bS.a(3, this.ce);
-      this.bS.a(7, new cav(this, 0.3F));
-      this.bS.a(8, new cbf(this));
-      this.bS.a(9, new cab(this, 0.8));
-      this.bS.a(10, new ccc(this, 0.8, 1.0000001E-5F));
-      this.bS.a(11, new cax(this, cmz.class, 10.0F));
-      this.bT.a(1, new cci<>(this, cfm.class, false));
-      this.bT.a(1, new cci<>(this, cgi.class, 10, false, false, cgi.bY));
-   }
-
-   @Override
-   public void Z() {
-      if (this.H().b()) {
-         double $$0 = this.H().c();
-         if ($$0 == 0.6) {
-            this.b(bud.f);
-            this.h(false);
-         } else if ($$0 == 1.33) {
-            this.b(bud.a);
-            this.h(true);
-         } else {
-            this.b(bud.a);
-            this.h(false);
-         }
-      } else {
-         this.b(bud.a);
-         this.h(false);
+   public static void a(bsy $$0, ja $$1) {
+      bua<?> $$2 = $$0.dT();
+      ji $$3 = ji.a($$0.dP().af(), $$1);
+      Optional<ji> $$4 = $$2.c(ccc.aN);
+      if ($$4.isEmpty()) {
+         $$2.a(ccc.aN, $$3);
+         $$2.a(ccc.aO, 600);
+      } else if ($$4.get().equals($$3)) {
+         $$2.a(ccc.aO, 600);
       }
    }
 
-   @Override
-   public boolean h(double $$0) {
-      return !this.y() && this.ai > 2400;
+   private static Optional<bwf> b(bsy $$0) {
+      bua<?> $$1 = $$0.dT();
+      Optional<ji> $$2 = $$1.c(ccc.aN);
+      if ($$2.isPresent()) {
+         ji $$3 = $$2.get();
+         if (a($$0, $$1, $$3)) {
+            return Optional.of(new buu($$3.b().c()));
+         }
+
+         $$1.b(ccc.aN);
+      }
+
+      return d($$0);
    }
 
-   public static buy.a s() {
-      return btt.A().a(buz.q, 10.0).a(buz.r, 0.3F).a(buz.c, 3.0);
+   private static boolean c(bsy $$0) {
+      bua<?> $$1 = $$0.dT();
+      return $$1.a(ccc.L);
    }
 
-   @Nullable
-   @Override
-   protected avz v() {
-      return awa.sm;
+   private static boolean a(bsy $$0, bua<?> $$1, ji $$2) {
+      Optional<Integer> $$3 = $$1.c(ccc.aO);
+      dcd $$4 = $$0.dP();
+      return $$4.af() == $$2.a() && $$4.a_($$2.b()).a(dfh.aY) && $$3.isPresent();
    }
 
-   @Override
-   public int P() {
-      return 900;
+   private static Optional<bwf> d(bsy $$0) {
+      return a($$0).map($$0x -> new bvc($$0x, true));
    }
 
-   @Override
-   protected avz d(brp $$0) {
-      return awa.sl;
-   }
-
-   @Override
-   protected avz o_() {
-      return awa.sn;
-   }
-
-   private float gq() {
-      return (float)this.g(buz.c);
-   }
-
-   @Override
-   public boolean C(bsw $$0) {
-      return $$0.a(this.dQ().b((btr)this), this.gq());
-   }
-
-   @Override
-   public bqw b(cmz $$0, bqv $$1) {
-      cur $$2 = $$0.b($$1);
-      if ((this.ce == null || this.ce.i()) && !this.y() && this.o($$2) && $$0.g(this) < 9.0) {
-         this.a($$0, $$1, $$2);
-         if (!this.dP().B) {
-            if (this.ah.a(3) == 0) {
-               this.w(true);
-               this.x(true);
-               this.dP().a(this, (byte)41);
-            } else {
-               this.x(false);
-               this.dP().a(this, (byte)40);
+   public static Optional<aql> a(bsy $$0) {
+      dcd $$1 = $$0.dP();
+      if (!$$1.x_() && $$1 instanceof aqk $$2) {
+         Optional<UUID> $$3 = $$0.dT().c(ccc.aM);
+         if ($$3.isPresent()) {
+            if ($$2.a($$3.get()) instanceof aql $$5 && ($$5.e.d() || $$5.e.e()) && $$5.a($$0, 64.0)) {
+               return Optional.of($$5);
             }
-         }
 
-         return bqw.a(this.dP().B);
-      } else {
-         return super.b($$0, $$1);
-      }
-   }
-
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 41) {
-         this.x(true);
-      } else if ($$0 == 40) {
-         this.x(false);
-      } else {
-         super.b($$0);
-      }
-   }
-
-   private void x(boolean $$0) {
-      lg $$1 = li.Q;
-      if (!$$0) {
-         $$1 = li.ae;
-      }
-
-      for (int $$2 = 0; $$2 < 7; $$2++) {
-         double $$3 = this.ah.k() * 0.02;
-         double $$4 = this.ah.k() * 0.02;
-         double $$5 = this.ah.k() * 0.02;
-         this.dP().a($$1, this.d(1.0), this.dx() + 0.5, this.g(1.0), $$3, $$4, $$5);
-      }
-   }
-
-   protected void u() {
-      if (this.cd == null) {
-         this.cd = new cfv.a<>(this, cmz.class, 16.0F, 0.8, 1.33);
-      }
-
-      this.bS.a(this.cd);
-      if (!this.y()) {
-         this.bS.a(4, this.cd);
-      }
-   }
-
-   @Nullable
-   public cfv b(arf $$0, bsq $$1) {
-      return btc.au.a((dca)$$0);
-   }
-
-   @Override
-   public boolean o(cur $$0) {
-      return $$0.a(awy.ap);
-   }
-
-   public static boolean c(btc<cfv> $$0, dcb $$1, btv $$2, iz $$3, azh $$4) {
-      return $$4.a(3) != 0;
-   }
-
-   @Override
-   public boolean a(dcd $$0) {
-      if ($$0.f(this) && !$$0.d(this.cK())) {
-         iz $$1 = this.dp();
-         if ($$1.v() < $$0.z_()) {
-            return false;
-         }
-
-         dse $$2 = $$0.a_($$1.d());
-         if ($$2.a(dfd.i) || $$2.a(awp.O)) {
-            return true;
+            return Optional.empty();
          }
       }
 
-      return false;
-   }
-
-   @Nullable
-   @Override
-   public buk a(dcp $$0, bqu $$1, btv $$2, @Nullable buk $$3) {
-      if ($$3 == null) {
-         $$3 = new bsq.a(1.0F);
-      }
-
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public evt cM() {
-      return new evt(0.0, (double)(0.5F * this.cL()), (double)(this.dj() * 0.4F));
-   }
-
-   @Override
-   public boolean bW() {
-      return this.ca() || super.bW();
-   }
-
-   static class a<T extends btr> extends bzw<T> {
-      private final cfv i;
-
-      public a(cfv $$0, Class<T> $$1, float $$2, double $$3, double $$4) {
-         super($$0, $$1, $$2, $$3, $$4, btb.e::test);
-         this.i = $$0;
-      }
-
-      @Override
-      public boolean a() {
-         return !this.i.y() && super.a();
-      }
-
-      @Override
-      public boolean b() {
-         return !this.i.y() && super.b();
-      }
-   }
-
-   static class b extends cbx {
-      private final cfv c;
-
-      public b(cfv $$0, double $$1, Predicate<cur> $$2, boolean $$3) {
-         super($$0, $$1, $$2, $$3);
-         this.c = $$0;
-      }
-
-      @Override
-      protected boolean h() {
-         return super.h() && !this.c.y();
-      }
+      return Optional.empty();
    }
 }

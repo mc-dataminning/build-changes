@@ -1,60 +1,77 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Set;
 
-public class vb {
-   private static final int a = 512;
-   private final long b;
-   private long c;
-   private final int d;
-   private int e;
+public class vb extends vc {
+   private int a;
+   private final Set<uw<?>> b;
+   private final Deque<ve> c = new ArrayDeque<>();
 
-   public vb(long $$0, int $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   public vb(vd... $$0) {
+      this.a = $$0.length;
+      Builder<uw<?>> $$1 = ImmutableSet.builder();
+      ve $$2 = ve.a();
+
+      for (vd $$3 : $$0) {
+         $$2.a($$3);
+         $$1.add($$3.b());
+      }
+
+      this.c.push($$2);
+      $$1.add(tx.b);
+      this.b = $$1.build();
    }
 
-   public static vb a(long $$0) {
-      return new vb($$0, 512);
+   @Override
+   public ur.b b(uw<?> $$0) {
+      return $$0 != tx.b ? ur.b.c : super.b($$0);
    }
 
-   public static vb a() {
-      return new vb(Long.MAX_VALUE, 512);
-   }
-
-   public void a(long $$0, long $$1) {
-      this.b($$0 * $$1);
-   }
-
-   public void b(long $$0) {
-      if (this.c + $$0 > this.b) {
-         throw new vc("Tried to read NBT tag that was too big; tried to allocate: " + this.c + " + " + $$0 + " bytes where max allowed: " + this.b);
+   @Override
+   public ur.a a(uw<?> $$0) {
+      ve $$1 = this.c.element();
+      if (this.e() > $$1.b()) {
+         return super.a($$0);
+      } else if (this.a <= 0) {
+         return ur.a.d;
       } else {
-         this.c += $$0;
+         return !this.b.contains($$0) ? ur.a.b : super.a($$0);
       }
    }
 
-   public void b() {
-      if (this.e >= this.d) {
-         throw new vc("Tried to read NBT tag with too high complexity, depth > " + this.d);
+   @Override
+   public ur.a a(uw<?> $$0, String $$1) {
+      ve $$2 = this.c.element();
+      if (this.e() > $$2.b()) {
+         return super.a($$0, $$1);
+      } else if ($$2.c().remove($$1, $$0)) {
+         this.a--;
+         return super.a($$0, $$1);
       } else {
-         this.e++;
+         if ($$0 == tx.b) {
+            ve $$3 = $$2.d().get($$1);
+            if ($$3 != null) {
+               this.c.push($$3);
+               return super.a($$0, $$1);
+            }
+         }
+
+         return ur.a.b;
       }
    }
 
-   public void c() {
-      if (this.e <= 0) {
-         throw new vc("NBT-Accounter tried to pop stack-depth at top-level");
-      } else {
-         this.e--;
+   @Override
+   public ur.b b() {
+      if (this.e() == this.c.element().b()) {
+         this.c.pop();
       }
+
+      return super.b();
    }
 
-   @VisibleForTesting
-   public long d() {
-      return this.c;
-   }
-
-   @VisibleForTesting
-   public int e() {
-      return this.e;
+   public int c() {
+      return this.a;
    }
 }

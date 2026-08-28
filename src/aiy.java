@@ -1,7 +1,8 @@
-public class aiy {
-   public static final zy<aix> a = a("intention");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private static <T extends zw<aja>> zy<T> a(String $$0) {
-      return new zy<>(zx.a, new alf($$0));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aiy {
 }

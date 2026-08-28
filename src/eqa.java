@@ -1,54 +1,28 @@
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-
 public class eqa {
-   private final int a;
-   private final long b;
-   private final String c;
-   private final epq d;
-   private final boolean e;
+   public static final eqa a = new eqa("advancements");
+   public static final eqa b = new eqa("stats");
+   public static final eqa c = new eqa("playerdata");
+   public static final eqa d = new eqa("players");
+   public static final eqa e = new eqa("level.dat");
+   public static final eqa f = new eqa("level.dat_old");
+   public static final eqa g = new eqa("icon.png");
+   public static final eqa h = new eqa("session.lock");
+   public static final eqa i = new eqa("generated");
+   public static final eqa j = new eqa("datapacks");
+   public static final eqa k = new eqa("resources.zip");
+   public static final eqa l = new eqa(".");
+   private final String m;
 
-   private eqa(int $$0, long $$1, String $$2, int $$3, String $$4, boolean $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = new epq($$3, $$4);
-      this.e = $$5;
+   private eqa(String $$0) {
+      this.m = $$0;
    }
 
-   public static eqa a(Dynamic<?> $$0) {
-      int $$1 = $$0.get("version").asInt(0);
-      long $$2 = $$0.get("LastPlayed").asLong(0L);
-      OptionalDynamic<?> $$3 = $$0.get("Version");
-      return $$3.result().isPresent()
-         ? new eqa(
-            $$1,
-            $$2,
-            $$3.get("Name").asString(aa.b().c()),
-            $$3.get("Id").asInt(aa.b().d().c()),
-            $$3.get("Series").asString(epq.a),
-            $$3.get("Snapshot").asBoolean(!aa.b().g())
-         )
-         : new eqa($$1, $$2, "", 0, epq.a, false);
+   public String a() {
+      return this.m;
    }
 
-   public int a() {
-      return this.a;
-   }
-
-   public long b() {
-      return this.b;
-   }
-
-   public String c() {
-      return this.c;
-   }
-
-   public epq d() {
-      return this.d;
-   }
-
-   public boolean e() {
-      return this.e;
+   @Override
+   public String toString() {
+      return "/" + this.m;
    }
 }

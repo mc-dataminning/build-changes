@@ -1,35 +1,35 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class doi extends dhh implements dog {
-   public static final MapCodec<doi> l = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dst.a.fieldOf("block_set_type").forGetter(dhh::b), dog.a.e.fieldOf("weathering_state").forGetter(doi::m), u()).apply($$0, doi::new)
-   );
-   private final dog.a m;
+public class doi extends dfo {
+   public static final MapCodec<doi> a = b(doi::new);
+   protected static final ews b = dff.a(1.0, 0.0, 1.0, 15.0, 1.5, 15.0);
 
    @Override
    public MapCodec<doi> a() {
-      return l;
+      return a;
    }
 
-   protected doi(dst $$0, dog.a $$1, dsd.d $$2) {
-      super($$0, $$2);
-      this.m = $$1;
+   protected doi(dsg.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected void b(dse $$0, arf $$1, iz $$2, azh $$3) {
-      if ($$0.c(dhh.f) == dta.b) {
-         this.a_($$0, $$1, $$2, $$3);
+   protected void a(dsh $$0, dcd $$1, ja $$2, bsd $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$1 instanceof aqk && $$3 instanceof coe) {
+         $$1.a(new ja($$2), true, $$3);
       }
    }
 
    @Override
-   protected boolean d_(dse $$0) {
-      return dog.c($$0.b()).isPresent();
+   protected ews a(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
+      return b;
    }
 
-   public dog.a m() {
-      return this.m;
+   @Override
+   protected boolean b(dsh $$0, dbj $$1, ja $$2) {
+      eob $$3 = $$1.b_($$2);
+      eob $$4 = $$1.b_($$2.c());
+      return ($$3.a() == eoc.c || $$0.b() instanceof djd) && $$4.a() == eoc.a;
    }
 }

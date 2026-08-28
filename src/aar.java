@@ -1,29 +1,29 @@
-public class aar implements zw<aan> {
-   public static final zn<wm, aar> a = zw.a(aar::a, aar::new);
-   private final int b;
+import java.util.HashSet;
+import java.util.Set;
 
-   public aar(int $$0) {
-      this.b = $$0;
+public record aar(Set<kc> c, Set<kc> d) implements aac {
+   public static final ys<vr, aar> a = aac.a(aar::a, aar::new);
+   public static final aac.b<aar> b = aac.a("debug/village_sections");
+
+   private aar(vr $$0) {
+      this($$0.a(HashSet::new, vr::g), $$0.a(HashSet::new, vr::g));
    }
 
-   private aar(wm $$0) {
-      this.b = $$0.readInt();
-   }
-
-   private void a(wm $$0) {
-      $$0.p(this.b);
+   private void a(vr $$0) {
+      $$0.a(this.c, vr::a);
+      $$0.a(this.d, vr::a);
    }
 
    @Override
-   public zy<aar> a() {
-      return aam.m;
+   public aac.b<aar> a() {
+      return b;
    }
 
-   public void a(aan $$0) {
-      $$0.a(this);
+   public Set<kc> b() {
+      return this.c;
    }
 
-   public int b() {
-      return this.b;
+   public Set<kc> c() {
+      return this.d;
    }
 }

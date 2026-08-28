@@ -1,71 +1,134 @@
+import com.google.common.collect.Lists;
+import java.util.Iterator;
 import java.util.List;
+import java.util.function.Supplier;
 
 public class sx {
-   public static final eht a = ehm.a(dxw.a.e);
-   public static final eht b = ehm.a(dxw.a.c);
-   public static final eht c = ehm.a(dxw.a.a);
-   public static final eht d = ehm.a(dxw.a.d);
-   public static final eht e = ehl.a(dyq.a(), dyq.b());
-   public static final eht f = ehl.a(dyq.b(10), dyq.c(10));
-   public static final eht g = ehl.a(dyq.b(8), dyq.c(8));
-   public static final eht h = ehl.a(dyq.b(4), dyq.c(4));
-   public static final eht i = ehl.a(dyq.a(), dyq.a(256));
+   final st a;
+   private final List<sq> b = Lists.newArrayList();
+   private long c;
 
-   public static void a(rc<ehq> $$0) {
-      sr.a($$0);
-      ss.a($$0);
-      st.a($$0);
-      su.a($$0);
-      sv.a($$0);
-      sw.a($$0);
-      sy.a($$0);
-      sz.a($$0);
-      ta.a($$0);
+   sx(st $$0) {
+      this.a = $$0;
+      this.c = $$0.o();
    }
 
-   public static ale<ehq> a(String $$0) {
-      return ale.a(lq.aI, new alf($$0));
+   public sx a(Runnable $$0) {
+      this.b.add(sq.a($$0));
+      return this;
    }
 
-   public static void a(rc<ehq> $$0, ale<ehq> $$1, ji<ean<?, ?>> $$2, List<eht> $$3) {
-      $$0.a($$1, new ehq($$2, List.copyOf($$3)));
+   public sx a(long $$0, Runnable $$1) {
+      this.b.add(sq.a($$0, $$1));
+      return this;
    }
 
-   public static void a(rc<ehq> $$0, ale<ehq> $$1, ji<ean<?, ?>> $$2, eht... $$3) {
-      a($$0, $$1, $$2, List.of($$3));
+   public sx a(int $$0) {
+      return this.a($$0, () -> {
+      });
    }
 
-   public static eht a(int $$0, float $$1, int $$2) {
-      float $$3 = 1.0F / $$1;
-      if (Math.abs($$3 - (float)((int)$$3)) > 1.0E-5F) {
-         throw new IllegalStateException("Chance data cannot be represented as list weight");
-      } else {
-         bpg<bqb> $$4 = bpg.<bqb>a().a(bpy.a($$0), (int)$$3 - 1).a(bpy.a($$0 + $$2), 1).a();
-         return ehj.a(new bqi($$4));
+   public sx b(Runnable $$0) {
+      this.b.add(sq.a(() -> this.c($$0)));
+      return this;
+   }
+
+   public sx a(int $$0, Runnable $$1) {
+      this.b.add(sq.a(() -> {
+         if (this.a.o() < this.c + (long)$$0) {
+            throw new sl("Test timed out before sequence completed");
+         } else {
+            this.c($$1);
+         }
+      }));
+      return this;
+   }
+
+   public sx b(int $$0, Runnable $$1) {
+      this.b.add(sq.a(() -> {
+         if (this.a.o() < this.c + (long)$$0) {
+            this.c($$1);
+            throw new sl("Test timed out before sequence completed");
+         }
+      }));
+      return this;
+   }
+
+   public void a() {
+      this.b.add(sq.a(this.a::l));
+   }
+
+   public void a(Supplier<Exception> $$0) {
+      this.b.add(sq.a(() -> this.a.a($$0.get())));
+   }
+
+   public sx.a b() {
+      sx.a $$0 = new sx.a();
+      this.b.add(sq.a(() -> $$0.a(this.a.o())));
+      return $$0;
+   }
+
+   public void a(long $$0) {
+      try {
+         this.c($$0);
+      } catch (sl var4) {
       }
    }
 
-   public static ehs a() {
-      return ehf.a(dzd.c);
+   public void b(long $$0) {
+      try {
+         this.c($$0);
+      } catch (sl var4) {
+         this.a.a(var4);
+      }
    }
 
-   public static ehf a(dfb $$0) {
-      return ehf.a(dzd.a($$0.o(), iz.c));
+   private void c(Runnable $$0) {
+      try {
+         $$0.run();
+      } catch (sl var3) {
+         this.a.a(var3);
+      }
    }
 
-   public static ji<ehq> a(ji<ean<?, ?>> $$0, eht... $$1) {
-      return ji.a(new ehq($$0, List.of($$1)));
+   private void c(long $$0) {
+      Iterator<sq> $$1 = this.b.iterator();
+
+      while ($$1.hasNext()) {
+         sq $$2 = $$1.next();
+         $$2.b.run();
+         $$1.remove();
+         long $$3 = $$0 - this.c;
+         long $$4 = this.c;
+         this.c = $$0;
+         if ($$2.a != null && $$2.a != $$3) {
+            this.a.a(new sl("Succeeded in invalid tick: expected " + ($$4 + $$2.a) + ", but current tick is " + $$0));
+            break;
+         }
+      }
    }
 
-   public static <FC extends ede, F extends eba<FC>> ji<ehq> a(F $$0, FC $$1, eht... $$2) {
-      return a(ji.a(new ean($$0, $$1)), $$2);
-   }
+   public class a {
+      private static final long b = -1L;
+      private long c = -1L;
 
-   public static <FC extends ede, F extends eba<FC>> ji<ehq> a(F $$0, FC $$1) {
-      return a($$0, $$1, dzd.c);
-   }
+      void a(long $$0) {
+         if (this.c != -1L) {
+            throw new IllegalStateException("Condition already triggered at " + this.c);
+         } else {
+            this.c = $$0;
+         }
+      }
 
-   public static <FC extends ede, F extends eba<FC>> ji<ehq> a(F $$0, FC $$1, dzd $$2) {
-      return a($$0, $$1, ehf.a($$2));
+      public void a() {
+         long $$0 = sx.this.a.o();
+         if (this.c != $$0) {
+            if (this.c == -1L) {
+               throw new sl("Condition not triggered (t=" + $$0 + ")");
+            } else {
+               throw new sl("Condition triggered at " + this.c + ", (t=" + $$0 + ")");
+            }
+         }
+      }
    }
 }

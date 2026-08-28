@@ -1,33 +1,40 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap;
 
-public class byn {
-   private static final int a = 16;
+public class byn extends bur<cll> {
+   private static final int c = 25;
+   private static final int d = 20;
 
-   public static bvl<btr> a(Predicate<ji<cey>> $$0, ccv<jh> $$1) {
-      return byx.a((Function<byx.b<btr>, ? extends App<byx.c<btr>, bza<btr>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
-               jh $$6 = $$2.b($$2x);
-               iz $$7 = $$6.b();
-               if ($$3.af() == $$6.a() && $$7.a($$4.dn(), 16.0)) {
-                  arf $$8 = $$3.o().a($$6.a());
-                  if ($$8 == null || !$$8.y().a($$7, $$0)) {
-                     $$2x.b();
-                  } else if (a($$8, $$7, $$4)) {
-                     $$2x.b();
-                     $$3.y().b($$7);
-                     agt.c($$3, $$7);
-                  }
-
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
+   public byn() {
+      super(ImmutableMap.of(ccc.ay, ccd.a, ccc.o, ccd.b, ccc.aF, ccd.c, ccc.aD, ccd.c), clm.b);
    }
 
-   private static boolean a(arf $$0, iz $$1, btr $$2) {
-      dse $$3 = $$0.a_($$1);
-      return $$3.a(awp.R) && $$3.c(deu.c) && !$$2.fL();
+   protected void a(aqk $$0, cll $$1, long $$2) {
+      bua<cll> $$3 = $$1.dT();
+      $$3.a(ccc.aD, azh.a, 25L);
+      $$3.b(ccc.m);
+      bsy $$4 = $$1.dT().c(ccc.ay).get();
+      but.a($$1, $$4);
+      $$1.b(btk.l);
+      $$1.a($$4, 20, false);
+   }
+
+   protected boolean b(aqk $$0, cll $$1, long $$2) {
+      return true;
+   }
+
+   protected void c(aqk $$0, cll $$1, long $$2) {
+      if (!$$1.dT().a(ccc.aD) && !$$1.dT().a(ccc.aF)) {
+         $$1.dT().a(ccc.aF, azh.a, (long)(clm.b - 25));
+         $$1.a(avf.BT, 3.0F, 1.0F);
+      }
+   }
+
+   protected void d(aqk $$0, cll $$1, long $$2) {
+      if ($$1.c(btk.l)) {
+         $$1.b(btk.a);
+      }
+
+      $$1.dT().c(ccc.ay).ifPresent($$1::j);
+      $$1.dT().b(ccc.ay);
    }
 }

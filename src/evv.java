@@ -1,46 +1,47 @@
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import java.util.Arrays;
+public class evv extends evx {
+   private final jf b;
+   private final ja c;
+   private final boolean d;
+   private final boolean e;
 
-public class evv extends ewm {
-   private final DoubleList b;
-   private final DoubleList c;
-   private final DoubleList d;
-
-   protected evv(ewc $$0, double[] $$1, double[] $$2, double[] $$3) {
-      this(
-         $$0,
-         DoubleArrayList.wrap(Arrays.copyOf($$1, $$0.b() + 1)),
-         DoubleArrayList.wrap(Arrays.copyOf($$2, $$0.c() + 1)),
-         DoubleArrayList.wrap(Arrays.copyOf($$3, $$0.d() + 1))
-      );
+   public static evv a(evz $$0, jf $$1, ja $$2) {
+      return new evv(true, $$0, $$1, $$2, false);
    }
 
-   evv(ewc $$0, DoubleList $$1, DoubleList $$2, DoubleList $$3) {
-      super($$0);
-      int $$4 = $$0.b() + 1;
-      int $$5 = $$0.c() + 1;
-      int $$6 = $$0.d() + 1;
-      if ($$4 == $$1.size() && $$5 == $$2.size() && $$6 == $$3.size()) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      } else {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Lengths of point arrays must be consistent with the size of the VoxelShape."));
-      }
+   public evv(evz $$0, jf $$1, ja $$2, boolean $$3) {
+      this(false, $$0, $$1, $$2, $$3);
+   }
+
+   private evv(boolean $$0, evz $$1, jf $$2, ja $$3, boolean $$4) {
+      super($$1);
+      this.d = $$0;
+      this.b = $$2;
+      this.c = $$3;
+      this.e = $$4;
+   }
+
+   public evv a(jf $$0) {
+      return new evv(this.d, this.a, $$0, this.c, this.e);
+   }
+
+   public evv a(ja $$0) {
+      return new evv(this.d, this.a, this.b, $$0, this.e);
+   }
+
+   public ja a() {
+      return this.c;
+   }
+
+   public jf b() {
+      return this.b;
    }
 
    @Override
-   protected DoubleList a(je.a $$0) {
-      switch ($$0) {
-         case a:
-            return this.b;
-         case b:
-            return this.c;
-         case c:
-            return this.d;
-         default:
-            throw new IllegalArgumentException();
-      }
+   public evx.a c() {
+      return this.d ? evx.a.a : evx.a.b;
+   }
+
+   public boolean d() {
+      return this.e;
    }
 }

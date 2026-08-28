@@ -1,52 +1,59 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.List;
-import java.util.Optional;
 
-public class esm extends erw {
+public class esm extends esb {
    public static final MapCodec<esm> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  cxk.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
-                  cxk.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
-                  cxk.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
-                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
-                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
+                  akj.a(lr.bb).fieldOf("name").forGetter($$0x -> $$0x.b),
+                  Codec.LONG.optionalFieldOf("seed", 0L).forGetter($$0x -> $$0x.c),
+                  lq.j.s().fieldOf("type").forGetter($$0x -> $$0x.d)
                )
             )
             .apply($$0, esm::new)
    );
-   public static final cxk b = new cxk(cxk.a.a, IntList.of(), IntList.of(), false, false);
-   final Optional<cxk.a> c;
-   final Optional<IntList> d;
-   final Optional<IntList> e;
-   final Optional<Boolean> f;
-   final Optional<Boolean> h;
+   private final akj<eqt> b;
+   private final long c;
+   private final jj<dpp<?>> d;
 
-   public esm(List<etu> $$0, Optional<cxk.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
+   private esm(List<etz> $$0, akj<eqt> $$1, long $$2, jj<dpp<?>> $$3) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.h = $$5;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
    @Override
-   protected cur a(cur $$0, eqk $$1) {
-      $$0.a(km.T, b, this::a);
-      return $$0;
-   }
-
-   private cxk a(cxk $$0) {
-      return new cxk(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
+   public esd<esm> b() {
+      return ese.y;
    }
 
    @Override
-   public ery<esm> b() {
-      return erz.L;
+   public cua a(cua $$0, eqo $$1) {
+      if ($$0.e()) {
+         return $$0;
+      } else {
+         $$0.b(kn.ae, new cxc(this.b, this.c));
+         return $$0;
+      }
+   }
+
+   @Override
+   public void a(equ $$0) {
+      super.a($$0);
+      if ($$0.a().a(lr.bb, this.b).isEmpty()) {
+         $$0.b("Missing loot table used for container: " + this.b.a());
+      }
+   }
+
+   public static esb.a<?> a(dpp<?> $$0, akj<eqt> $$1) {
+      return a($$2 -> new esm($$2, $$1, 0L, $$0.a()));
+   }
+
+   public static esb.a<?> a(dpp<?> $$0, akj<eqt> $$1, long $$2) {
+      return a($$3 -> new esm($$3, $$1, $$2, $$0.a()));
    }
 }

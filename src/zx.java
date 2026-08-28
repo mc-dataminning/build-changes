@@ -1,18 +1,42 @@
-public enum zx {
-   a("serverbound"),
-   b("clientbound");
+import java.util.UUID;
 
-   private final String c;
+public record zx(UUID b, zx.a c) implements zb<zs> {
+   public static final ys<vr, zx> a = zb.a(zx::a, zx::new);
 
-   private zx(final String $$0) {
-      this.c = $$0;
+   private zx(vr $$0) {
+      this($$0.n(), $$0.b(zx.a.class));
    }
 
-   public zx a() {
-      return this == b ? a : b;
+   private void a(vr $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
-   public String b() {
+   @Override
+   public zd<zx> a() {
+      return zr.n;
+   }
+
+   public void a(zs $$0) {
+      $$0.a(this);
+   }
+
+   public zx.a e() {
       return this.c;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h;
+
+      public boolean a() {
+         return this != d && this != e;
+      }
    }
 }

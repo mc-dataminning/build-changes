@@ -1,45 +1,44 @@
-public class agj implements zw<aci> {
-   public static final zn<wm, agj> a = zw.a(agj::a, agj::new);
-   private final int b;
-   private final int c;
-   private final int d;
+import java.time.Instant;
+import javax.annotation.Nullable;
 
-   public agj(int $$0, int $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+public record agj(String b, Instant c, long d, @Nullable xg e, xb.b f) implements zb<agb> {
+   public static final ys<vr, agj> a = zb.a(agj::a, agj::new);
+
+   private agj(vr $$0) {
+      this($$0.d(256), $$0.t(), $$0.readLong(), $$0.c(xg::a), new xb.b($$0));
    }
 
-   private agj(wm $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-      this.d = $$0.l();
-   }
-
-   private void a(wm $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
-      $$0.c(this.d);
+   private void a(vr $$0) {
+      $$0.a(this.b, 256);
+      $$0.a(this.c);
+      $$0.b(this.d);
+      $$0.a(this.e, xg::a);
+      this.f.a($$0);
    }
 
    @Override
-   public zy<agj> a() {
-      return agu.aY;
+   public zd<agj> a() {
+      return afz.bl;
    }
 
-   public void a(aci $$0) {
+   public void a(agb $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
+   public Instant e() {
       return this.c;
    }
 
-   public int f() {
+   public long f() {
       return this.d;
+   }
+
+   @Nullable
+   public xg g() {
+      return this.e;
+   }
+
+   public xb.b h() {
+      return this.f;
    }
 }

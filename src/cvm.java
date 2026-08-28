@@ -1,71 +1,37 @@
-import com.google.common.collect.Maps;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
 
-public class cvm extends cum {
-   private static final Map<avz, cvm> a = Maps.newHashMap();
-   private final int b;
-   private final avz c;
-   private final int j;
+public class cvm extends ctv {
+   public static final int a = 160;
 
-   protected cvm(int $$0, avz $$1, cum.a $$2, int $$3) {
-      super($$2);
-      this.b = $$0;
-      this.c = $$1;
-      this.j = $$3 * 20;
-      a.put(this.c, this);
+   public cvm(ctv.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bqw a(cye $$0) {
-      dca $$1 = $$0.q();
-      iz $$2 = $$0.a();
-      dse $$3 = $$1.a_($$2);
-      if ($$3.a(dfd.dT) && !$$3.c(dje.b)) {
-         cur $$4 = $$0.n();
-         if (!$$1.B) {
-            cmz $$5 = $$0.o();
-            if ($$1.c_($$2) instanceof dqk $$6) {
-               $$6.b($$4.s());
-               $$1.a(dwx.c, $$2, dwx.a.a($$5, $$3));
-            }
+   public void a(cua $$0, ctv.b $$1, List<wu> $$2, cvt $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3.b()) {
+         List<brl> $$4 = new ArrayList<>();
+         cxd $$5 = $$0.a(kn.H, cxd.a);
 
-            $$4.h(1);
-            if ($$5 != null) {
-               $$5.a(awk.al);
-            }
+         for (cxd.a $$6 : $$5.a()) {
+            $$4.add($$6.a());
          }
 
-         return bqw.a($$1.B);
-      } else {
-         return bqw.e;
+         cwb.a($$4, $$2::add, 1.0F, $$1.b());
       }
    }
 
-   public int h() {
-      return this.b;
-   }
-
    @Override
-   public void a(cur $$0, cum.b $$1, List<xp> $$2, cwk $$3) {
-      $$2.add(this.k().a(n.h));
-   }
+   public cua a(cua $$0, dcd $$1, bsy $$2) {
+      cxd $$3 = $$0.a(kn.H, cxd.a);
 
-   public yd k() {
-      return xp.c(this.a() + ".desc");
-   }
+      for (cxd.a $$4 : $$3.a()) {
+         $$2.b($$4.a());
+      }
 
-   @Nullable
-   public static cvm a(avz $$0) {
-      return a.get($$0);
-   }
-
-   public avz l() {
-      return this.c;
-   }
-
-   public int m() {
-      return this.j;
+      super.a($$0, $$1, $$2);
+      return $$2.fL() ? $$0 : new cua(cud.pq);
    }
 }

@@ -1,70 +1,62 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-
-public class fvo extends fuu<cox> {
-   private static final String a = "left_paddle";
-   private static final String b = "right_paddle";
-   private static final String f = "bottom";
-   private final fxc g;
-   private final fxc h;
-   private final ImmutableList<fxc> i;
-
-   public fvo(fxc $$0) {
-      this.g = $$0.b("left_paddle");
-      this.h = $$0.b("right_paddle");
-      this.i = this.a($$0).build();
+public class fvo<T extends cfg> extends fvs<T> {
+   public fvo(fxi $$0) {
+      super($$0, true, 16.0F, 4.0F, 2.25F, 2.0F, 24);
    }
 
-   protected Builder<fxc> a(fxc $$0) {
-      Builder<fxc> $$1 = new Builder();
-      $$1.add(new fxc[]{$$0.b("bottom"), this.g, this.h});
-      return $$1;
-   }
-
-   public static void a(fxl $$0) {
-      $$0.a(
-         "bottom",
-         fxh.c().a(0, 0).a(-14.0F, -11.0F, -4.0F, 28.0F, 20.0F, 4.0F).a(0, 0).a(-14.0F, -9.0F, -8.0F, 28.0F, 16.0F, 4.0F),
-         fxe.a(0.0F, -2.1F, 1.0F, 1.5708F, 0.0F, 0.0F)
+   public static fxo c() {
+      fxq $$0 = new fxq();
+      fxr $$1 = $$0.a();
+      $$1.a(
+         "head",
+         fxn.c()
+            .a(0, 0)
+            .a(-3.5F, -3.0F, -3.0F, 7.0F, 7.0F, 7.0F)
+            .a(0, 44)
+            .a("mouth", -2.5F, 1.0F, -6.0F, 5.0F, 3.0F, 3.0F)
+            .a(26, 0)
+            .a("right_ear", -4.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F)
+            .a(26, 0)
+            .a()
+            .a("left_ear", 2.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F),
+         fxk.a(0.0F, 10.0F, -16.0F)
       );
-      int $$1 = 20;
-      int $$2 = 7;
-      int $$3 = 6;
-      float $$4 = -5.0F;
-      $$0.a(
-         "left_paddle",
-         fxh.c().a(0, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         fxe.a(3.0F, -4.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
+      $$1.a(
+         "body",
+         fxn.c().a(0, 19).a(-5.0F, -13.0F, -7.0F, 14.0F, 14.0F, 11.0F).a(39, 0).a(-4.0F, -25.0F, -7.0F, 12.0F, 12.0F, 10.0F),
+         fxk.a(-2.0F, 9.0F, 12.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
       );
-      $$0.a(
-         "right_paddle",
-         fxh.c().a(40, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         fxe.a(3.0F, -4.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
-      );
+      int $$2 = 10;
+      fxn $$3 = fxn.c().a(50, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 8.0F);
+      $$1.a("right_hind_leg", $$3, fxk.a(-4.5F, 14.0F, 6.0F));
+      $$1.a("left_hind_leg", $$3, fxk.a(4.5F, 14.0F, 6.0F));
+      fxn $$4 = fxn.c().a(50, 40).a(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 6.0F);
+      $$1.a("right_front_leg", $$4, fxk.a(-3.5F, 14.0F, -8.0F));
+      $$1.a("left_front_leg", $$4, fxk.a(3.5F, 14.0F, -8.0F));
+      return fxo.a($$0, 128, 64);
    }
 
-   public static fxi b() {
-      fxk $$0 = new fxk();
-      fxl $$1 = $$0.a();
-      a($$1);
-      return fxi.a($$0, 128, 64);
-   }
-
-   public void a(cox $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      a($$0, 0, this.g, $$1);
-      a($$0, 1, this.h, $$1);
-   }
-
-   public ImmutableList<fxc> c() {
-      return this.i;
-   }
-
-   private static void a(cox $$0, int $$1, fxc $$2, float $$3) {
-      float $$4 = $$0.a($$1, $$3);
-      $$2.e = ayz.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (ayz.a(-$$4) + 1.0F) / 2.0F);
-      $$2.f = ayz.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (ayz.a(-$$4 + 1.0F) + 1.0F) / 2.0F);
-      if ($$1 == 1) {
-         $$2.f = (float) Math.PI - $$2.f;
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      float $$6 = $$3 - (float)$$0.ai;
+      float $$7 = $$0.H($$6);
+      $$7 *= $$7;
+      float $$8 = 1.0F - $$7;
+      this.b.e = (float) (Math.PI / 2) - $$7 * (float) Math.PI * 0.35F;
+      this.b.c = 9.0F * $$8 + 11.0F * $$7;
+      this.h.c = 14.0F * $$8 - 6.0F * $$7;
+      this.h.d = -8.0F * $$8 - 4.0F * $$7;
+      this.h.e -= $$7 * (float) Math.PI * 0.45F;
+      this.i.c = this.h.c;
+      this.i.d = this.h.d;
+      this.i.e -= $$7 * (float) Math.PI * 0.45F;
+      if (this.e) {
+         this.a.c = 10.0F * $$8 - 9.0F * $$7;
+         this.a.d = -16.0F * $$8 - 7.0F * $$7;
+      } else {
+         this.a.c = 10.0F * $$8 - 14.0F * $$7;
+         this.a.d = -16.0F * $$8 - 3.0F * $$7;
       }
+
+      this.a.e += $$7 * (float) Math.PI * 0.15F;
    }
 }

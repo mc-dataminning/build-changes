@@ -1,29 +1,76 @@
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
 
-public class egm {
-   public static final Codec<egm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.intRange(0, dvw.c).fieldOf("height").forGetter(egm::a), lp.e.q().fieldOf("block").orElse(dfd.a).forGetter($$0x -> $$0x.b().b()))
-            .apply($$0, egm::new)
-   );
-   private final dfb b;
-   private final int c;
+public abstract class egm {
+   public static final Codec<egm> c = lq.V.r().dispatch(egm::a, egn::a);
+   private static final int a = 32;
+   private static final int b = 24;
+   public static final int d = 80;
+   protected final int e;
+   protected final int f;
+   protected final int g;
 
-   public egm(int $$0, dfb $$1) {
-      this.c = $$0;
-      this.b = $$1;
+   protected static <P extends egm> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
+         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
+         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
+      );
    }
 
-   public int a() {
-      return this.c;
+   public egm(int $$0, int $$1, int $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public dse b() {
-      return this.b.o();
+   protected abstract egn<?> a();
+
+   public abstract List<eeu.a> a(dcj var1, BiConsumer<ja, dsh> var2, aym var3, int var4, ja var5, eee var6);
+
+   public int a(aym $$0) {
+      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
    }
 
-   @Override
-   public String toString() {
-      return (this.c != 1 ? this.c + "*" : "") + lp.e.b(this.b);
+   private static boolean c(dcj $$0, ja $$1) {
+      return $$0.a($$1, $$0x -> ebe.b($$0x) && !$$0x.a(dfh.i) && !$$0x.a(dfh.fl));
+   }
+
+   protected static void a(dcj $$0, BiConsumer<ja, dsh> $$1, aym $$2, ja $$3, eee $$4) {
+      if ($$4.k || !c($$0, $$3)) {
+         $$1.accept($$3, $$4.c.a($$2, $$3));
+      }
+   }
+
+   protected boolean b(dcj $$0, BiConsumer<ja, dsh> $$1, aym $$2, ja $$3, eee $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
+   }
+
+   protected boolean a(dcj $$0, BiConsumer<ja, dsh> $$1, aym $$2, ja $$3, eee $$4, Function<dsh, dsh> $$5) {
+      if (this.a($$0, $$3)) {
+         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected void a(dcj $$0, BiConsumer<ja, dsh> $$1, aym $$2, ja.a $$3, eee $$4) {
+      if (this.b($$0, $$3)) {
+         this.b($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   protected boolean a(dcj $$0, ja $$1) {
+      return ecq.c($$0, $$1);
+   }
+
+   public boolean b(dcj $$0, ja $$1) {
+      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(avu.t));
    }
 }

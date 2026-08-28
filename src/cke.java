@@ -1,93 +1,86 @@
-public class cke extends cko {
-   public cke(btc<? extends cke> $$0, dca $$1) {
+import javax.annotation.Nullable;
+
+public class cke extends civ {
+   public cke(bsj<? extends cke> $$0, dcd $$1) {
       super($$0, $$1);
-   }
-
-   public static buy.a s() {
-      return ckf.gw().a(buz.r, 0.2F);
-   }
-
-   public static boolean b(btc<cke> $$0, dcb $$1, btv $$2, iz $$3, azh $$4) {
-      return $$1.al() != bqt.a;
+      this.a(eos.i, 8.0F);
    }
 
    @Override
-   public void a(int $$0, boolean $$1) {
+   protected void z() {
+      this.bV.a(3, new cbp<>(this, ckw.class, true));
+      super.z();
+   }
+
+   @Override
+   protected ave v() {
+      return avf.CC;
+   }
+
+   @Override
+   protected ave d(bqw $$0) {
+      return avf.CE;
+   }
+
+   @Override
+   protected ave o_() {
+      return avf.CD;
+   }
+
+   @Override
+   ave u() {
+      return avf.CF;
+   }
+
+   @Override
+   protected void a(bqw $$0, boolean $$1) {
       super.a($$0, $$1);
-      this.f(buz.a).a((double)($$0 * 3));
-   }
-
-   @Override
-   public float bt() {
-      return 1.0F;
-   }
-
-   @Override
-   protected lg u() {
-      return li.F;
-   }
-
-   @Override
-   public boolean bQ() {
-      return false;
-   }
-
-   @Override
-   protected int y() {
-      return super.y() * 4;
-   }
-
-   @Override
-   protected void gm() {
-      this.e *= 0.9F;
-   }
-
-   @Override
-   protected void fj() {
-      evt $$0 = this.ds();
-      float $$1 = (float)this.gr() * 0.1F;
-      this.o($$0.c, (double)(this.fh() + $$1), $$0.e);
-      this.av = true;
-   }
-
-   @Override
-   protected void c(axf<enw> $$0) {
-      if ($$0 == awv.b) {
-         evt $$1 = this.ds();
-         this.o($$1.c, (double)(0.22F + (float)this.gr() * 0.05F), $$1.e);
-         this.av = true;
-      } else {
-         super.c($$0);
+      if ($$0.d() instanceof ciz $$3 && $$3.go()) {
+         $$3.gp();
+         this.a((dcc)cud.um);
       }
    }
 
    @Override
-   protected boolean gn() {
-      return this.db();
+   protected void a(aym $$0, bqb $$1) {
+      this.a(bsk.a, new cua(cud.oQ));
    }
 
    @Override
-   protected float go() {
-      return super.go() + 2.0F;
+   protected void b(aym $$0, bqb $$1) {
+   }
+
+   @Nullable
+   @Override
+   public btr a(dcs $$0, bqb $$1, btc $$2, @Nullable btr $$3) {
+      btr $$4 = super.a($$0, $$1, $$2, $$3);
+      this.f(bug.c).a(4.0);
+      this.y();
+      return $$4;
    }
 
    @Override
-   protected avz d(brp $$0) {
-      return this.gs() ? awa.ot : awa.os;
+   public boolean D(bsd $$0) {
+      if (!super.D($$0)) {
+         return false;
+      } else {
+         if ($$0 instanceof bsy) {
+            ((bsy)$$0).b(new brl(brn.t, 200), this);
+         }
+
+         return true;
+      }
    }
 
    @Override
-   protected avz o_() {
-      return this.gs() ? awa.oh : awa.or;
+   protected cmn a(cua $$0, float $$1, @Nullable cua $$2) {
+      cmn $$3 = super.a($$0, $$1, $$2);
+      $$3.d(100.0F);
+      return $$3;
    }
 
    @Override
-   protected avz gp() {
-      return this.gs() ? awa.ow : awa.ov;
-   }
-
-   @Override
-   protected avz gq() {
-      return awa.ou;
+   public boolean c(brl $$0) {
+      return $$0.a(brn.t) ? false : super.c($$0);
    }
 }

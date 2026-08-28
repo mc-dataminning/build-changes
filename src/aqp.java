@@ -1,113 +1,42 @@
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.util.Comparator;
 
-public interface aqp<T> {
-   static <T> aqp<T> a(T $$0) {
-      return new aqp.b<>($$0);
+public class aqp<T> {
+   private final String i;
+   private final Comparator<T> j;
+   private final long k;
+   public static final aqp<azh> a = a("start", ($$0, $$1) -> 0);
+   public static final aqp<azh> b = a("dragon", ($$0, $$1) -> 0);
+   public static final aqp<dbk> c = a("player", Comparator.comparingLong(dbk::a));
+   public static final aqp<dbk> d = a("forced", Comparator.comparingLong(dbk::a));
+   public static final aqp<dbk> e = a("light", Comparator.comparingLong(dbk::a));
+   public static final aqp<ja> f = a("portal", ke::i, 300);
+   public static final aqp<Integer> g = a("post_teleport", Integer::compareTo, 5);
+   public static final aqp<dbk> h = a("unknown", Comparator.comparingLong(dbk::a), 1);
+
+   public static <T> aqp<T> a(String $$0, Comparator<T> $$1) {
+      return new aqp<>($$0, $$1, 0L);
    }
 
-   static <T> aqp<T> a(String $$0) {
-      return a(() -> $$0);
+   public static <T> aqp<T> a(String $$0, Comparator<T> $$1, int $$2) {
+      return new aqp<>($$0, $$1, (long)$$2);
    }
 
-   static <T> aqp<T> a(Supplier<String> $$0) {
-      return new aqp.a<>($$0);
+   protected aqp(String $$0, Comparator<T> $$1, long $$2) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
    }
 
-   boolean a();
-
-   @Nullable
-   T b(@Nullable T var1);
-
-   @Nullable
-   static <R> R a(aqp<? extends R> $$0, @Nullable R $$1) {
-      R $$2 = (R)$$0.b(null);
-      return $$2 != null ? $$2 : $$1;
+   @Override
+   public String toString() {
+      return this.i;
    }
 
-   @Nullable
-   String b();
-
-   aqp<T> a(Consumer<T> var1);
-
-   <R> aqp<R> a(Function<T, R> var1);
-
-   <E extends Throwable> T b(Supplier<E> var1) throws E;
-
-   public static record a<T>(Supplier<String> a) implements aqp<T> {
-      @Override
-      public boolean a() {
-         return false;
-      }
-
-      @Nullable
-      @Override
-      public T b(@Nullable T $$0) {
-         return $$0;
-      }
-
-      @Override
-      public String b() {
-         return this.a.get();
-      }
-
-      @Override
-      public aqp<T> a(Consumer<T> $$0) {
-         return this;
-      }
-
-      @Override
-      public <R> aqp<R> a(Function<T, R> $$0) {
-         return new aqp.a(this.a);
-      }
-
-      @Override
-      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
-         throw $$0.get();
-      }
-
-      public Supplier<String> c() {
-         return this.a;
-      }
+   public Comparator<T> a() {
+      return this.j;
    }
 
-   public static record b<T>(T a) implements aqp<T> {
-      @Override
-      public boolean a() {
-         return true;
-      }
-
-      @Override
-      public T b(@Nullable T $$0) {
-         return this.a;
-      }
-
-      @Nullable
-      @Override
-      public String b() {
-         return null;
-      }
-
-      @Override
-      public aqp<T> a(Consumer<T> $$0) {
-         $$0.accept(this.a);
-         return this;
-      }
-
-      @Override
-      public <R> aqp<R> a(Function<T, R> $$0) {
-         return new aqp.b<>($$0.apply(this.a));
-      }
-
-      @Override
-      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
-         return this.a;
-      }
-
-      public T c() {
-         return this.a;
-      }
+   public long b() {
+      return this.k;
    }
 }

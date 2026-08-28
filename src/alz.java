@@ -1,43 +1,89 @@
-import com.mojang.authlib.GameProfileRepository;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.yggdrasil.ServicesKeySet;
-import com.mojang.authlib.yggdrasil.ServicesKeyType;
-import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
-import java.io.File;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.FloatArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
-public record alz(MinecraftSessionService a, ServicesKeySet b, GameProfileRepository c, auz d) {
-   private static final String e = "usercache.json";
+public class alz {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("commands.damage.invulnerable"));
 
-   public static alz a(YggdrasilAuthenticationService $$0, File $$1) {
-      MinecraftSessionService $$2 = $$0.createMinecraftSessionService();
-      GameProfileRepository $$3 = $$0.createProfileRepository();
-      auz $$4 = new auz($$3, new File($$1, "usercache.json"));
-      return new alz($$2, $$0.getServicesKeySet(), $$3, $$4);
+   public static void a(CommandDispatcher<eq> $$0, em $$1) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("damage").requires($$0x -> $$0x.c(2)))
+            .then(
+               er.a("target", fd.a())
+                  .then(
+                     ((RequiredArgumentBuilder)er.a("amount", FloatArgumentType.floatArg(0.0F))
+                           .executes(
+                              $$0x -> a(
+                                    (eq)$$0x.getSource(), fd.a($$0x, "target"), FloatArgumentType.getFloat($$0x, "amount"), ((eq)$$0x.getSource()).e().aj().o()
+                                 )
+                           ))
+                        .then(
+                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)er.a("damageType", fp.a($$1, lr.s))
+                                    .executes(
+                                       $$0x -> a(
+                                             (eq)$$0x.getSource(),
+                                             fd.a($$0x, "target"),
+                                             FloatArgumentType.getFloat($$0x, "amount"),
+                                             new bqw(fp.a($$0x, "damageType", lr.s))
+                                          )
+                                    ))
+                                 .then(
+                                    er.a("at")
+                                       .then(
+                                          er.a("location", gt.a())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (eq)$$0x.getSource(),
+                                                      fd.a($$0x, "target"),
+                                                      FloatArgumentType.getFloat($$0x, "amount"),
+                                                      new bqw(fp.a($$0x, "damageType", lr.s), gt.a($$0x, "location"))
+                                                   )
+                                             )
+                                       )
+                                 ))
+                              .then(
+                                 er.a("by")
+                                    .then(
+                                       ((RequiredArgumentBuilder)er.a("entity", fd.a())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (eq)$$0x.getSource(),
+                                                      fd.a($$0x, "target"),
+                                                      FloatArgumentType.getFloat($$0x, "amount"),
+                                                      new bqw(fp.a($$0x, "damageType", lr.s), fd.a($$0x, "entity"))
+                                                   )
+                                             ))
+                                          .then(
+                                             er.a("from")
+                                                .then(
+                                                   er.a("cause", fd.a())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (eq)$$0x.getSource(),
+                                                               fd.a($$0x, "target"),
+                                                               FloatArgumentType.getFloat($$0x, "amount"),
+                                                               new bqw(fp.a($$0x, "damageType", lr.s), fd.a($$0x, "entity"), fd.a($$0x, "cause"))
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
+      );
    }
 
-   @Nullable
-   public azm a() {
-      return azm.a(this.b, ServicesKeyType.PROFILE_KEY);
-   }
-
-   public boolean b() {
-      return !this.b.keys(ServicesKeyType.PROFILE_KEY).isEmpty();
-   }
-
-   public MinecraftSessionService c() {
-      return this.a;
-   }
-
-   public ServicesKeySet d() {
-      return this.b;
-   }
-
-   public GameProfileRepository e() {
-      return this.c;
-   }
-
-   public auz f() {
-      return this.d;
+   private static int a(eq $$0, bsd $$1, float $$2, bqw $$3) throws CommandSyntaxException {
+      if ($$1.a($$3, $$2)) {
+         $$0.a(() -> wu.a("commands.damage.success", $$2, $$1.O_()), true);
+         return 1;
+      } else {
+         throw a.create();
+      }
    }
 }

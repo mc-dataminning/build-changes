@@ -1,6 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-@Deprecated
-public interface goj {
-   float call(cur var1, @Nullable fxx var2, @Nullable btr var3, int var4);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface goj {
 }

@@ -1,40 +1,21 @@
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
 public class ox {
-   private final op a;
-   private final cyu b;
-   private final cyu c;
-   private final cyu d;
-   private final Map<String, an<?>> e = new LinkedHashMap<>();
+   public static CompletableFuture<jz.g> a(CompletableFuture<jl.a> $$0, jz $$1) {
+      return $$0.thenApply($$1x -> {
+         jx.b $$2 = jx.a(lq.aA);
+         jb.a $$3 = new jb.a();
+         akf.a.forEach($$1xx -> $$1xx.a($$3::a));
+         jz.g $$4 = $$1.a($$2, $$1x, $$3);
+         jl.a $$5 = $$4.a();
+         Optional<jl.b<ddd>> $$6 = $$5.a(lr.aE);
+         Optional<jl.b<ehu>> $$7 = $$5.a(lr.aP);
+         if ($$6.isPresent() || $$7.isPresent()) {
+            oz.a($$7.orElseGet(() -> $$1x.b(lr.aP)), $$6.orElseGet(() -> $$1x.b(lr.aE)));
+         }
 
-   public ox(op $$0, cyu $$1, cyu $$2, cyu $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   public static ox a(cyu $$0, cyu $$1, cyu $$2, op $$3) {
-      return new ox($$3, $$0, $$1, $$2);
-   }
-
-   public ox a(String $$0, an<?> $$1) {
-      this.e.put($$0, $$1);
-      return this;
-   }
-
-   public void a(oq $$0, alf $$1) {
-      this.a($$1);
-      ae.a $$2 = $$0.a().a("has_the_recipe", dp.a($$1)).a(aj.a.a($$1)).a(ai.a.b);
-      this.e.forEach($$2::a);
-      czp $$3 = new czp(this.b, this.c, this.d);
-      $$0.a($$1, $$3, $$2.b($$1.d("recipes/" + this.a.a() + "/")));
-   }
-
-   private void a(alf $$0) {
-      if (this.e.isEmpty()) {
-         throw new IllegalStateException("No way of obtaining recipe " + $$0);
-      }
+         return $$4;
+      });
    }
 }

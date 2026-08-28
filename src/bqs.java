@@ -1,44 +1,30 @@
 public class bqs {
-   public static void a(dca $$0, iz $$1, bqp $$2) {
-      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
-   }
+   public static final float a = 20.0F;
+   public static final float b = 25.0F;
+   public static final float c = 2.0F;
+   public static final float d = 0.2F;
+   private static final int e = 4;
 
-   public static void a(dca $$0, bsw $$1, bqp $$2) {
-      a($$0, $$1.du(), $$1.dw(), $$1.dA(), $$2);
-   }
-
-   private static void a(dca $$0, double $$1, double $$2, double $$3, bqp $$4) {
-      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
-         a($$0, $$1, $$2, $$3, $$4.a($$5));
-      }
-   }
-
-   public static void a(dca $$0, iz $$1, jr<cur> $$2) {
-      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
-   }
-
-   public static void a(dca $$0, double $$1, double $$2, double $$3, cur $$4) {
-      double $$5 = (double)btc.ag.l();
-      double $$6 = 1.0 - $$5;
-      double $$7 = $$5 / 2.0;
-      double $$8 = Math.floor($$1) + $$0.z.j() * $$6 + $$7;
-      double $$9 = Math.floor($$2) + $$0.z.j() * $$6;
-      double $$10 = Math.floor($$3) + $$0.z.j() * $$6 + $$7;
-
-      while (!$$4.e()) {
-         cjj $$11 = new cjj($$0, $$8, $$9, $$10, $$4.a($$0.z.a(21) + 10));
-         float $$12 = 0.05F;
-         $$11.o($$0.z.a(0.0, 0.11485000171139836), $$0.z.a(0.2, 0.11485000171139836), $$0.z.a(0.0, 0.11485000171139836));
-         $$0.b($$11);
-      }
-   }
-
-   public static void a(dse $$0, dse $$1, dca $$2, iz $$3) {
-      if (!$$0.a($$1.b())) {
-         if ($$2.c_($$3) instanceof bqp $$5) {
-            a($$2, $$3, $$5);
-            $$2.c($$3, $$0.b());
+   public static float a(bsy $$0, float $$1, bqw $$2, float $$3, float $$4) {
+      float $$10;
+      label12: {
+         float $$5 = 2.0F + $$4 / 4.0F;
+         float $$6 = aye.a($$3 - $$1 / $$5, $$3 * 0.2F, 20.0F);
+         float $$7 = $$6 / 25.0F;
+         if ($$2.c() instanceof bsy $$8 && $$8.dP() instanceof aqk $$9) {
+            $$10 = aye.a(czl.c($$9, $$8.eT(), $$0, $$2, $$7), 0.0F, 1.0F);
+            break label12;
          }
+
+         $$10 = $$7;
       }
+
+      float $$12 = 1.0F - $$10;
+      return $$1 * $$12;
+   }
+
+   public static float a(float $$0, float $$1) {
+      float $$2 = aye.a($$1, 0.0F, 20.0F);
+      return $$0 * (1.0F - $$2 / 25.0F);
    }
 }

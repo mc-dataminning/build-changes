@@ -1,33 +1,35 @@
-import io.netty.buffer.ByteBuf;
+public record aaj(aaj.a c) implements aac {
+   public static final ys<vr, aaj> a = aac.a(aaj::a, aaj::new);
+   public static final aac.b<aaj> b = aac.a("debug/hive");
 
-public record aaj(alf c, byte[] d) implements zw<aac> {
-   public static final zn<wm, aaj> a = zw.a(aaj::a, aaj::new);
-   private static final int e = 5120;
-   public static final zn<ByteBuf, byte[]> b = zl.a(5120);
-
-   private aaj(wm $$0) {
-      this($$0.q(), b.decode($$0));
+   private aaj(vr $$0) {
+      this(new aaj.a($$0));
    }
 
-   private void a(wm $$0) {
-      $$0.a(this.c);
-      b.encode($$0, this.d);
+   private void a(vr $$0) {
+      this.c.a($$0);
    }
 
    @Override
-   public zy<aaj> a() {
-      return aam.g;
+   public aac.b<aaj> a() {
+      return b;
    }
 
-   public void a(aac $$0) {
-      $$0.a(this);
-   }
-
-   public alf b() {
+   public aaj.a b() {
       return this.c;
    }
 
-   public byte[] e() {
-      return this.d;
+   public static record a(ja a, String b, int c, int d, boolean e) {
+      public a(vr $$0) {
+         this($$0.e(), $$0.p(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
+      }
+
+      public void a(vr $$0) {
+         $$0.a(this.a);
+         $$0.a(this.b);
+         $$0.p(this.c);
+         $$0.p(this.d);
+         $$0.a(this.e);
+      }
    }
 }

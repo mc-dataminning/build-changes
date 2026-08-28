@@ -1,58 +1,53 @@
-public class gfu implements gfq<dpn> {
-   private final gjx a;
+public class gfu implements gfx<dpj> {
+   private final fxi a;
+   private final fxi b;
 
-   public gfu(gfr.a $$0) {
-      this.a = $$0.d();
+   public gfu(gfy.a $$0) {
+      this.a = $$0.a(fxh.j);
+      this.b = $$0.a(fxh.i);
    }
 
-   public void a(dpn $$0, float $$1, faa $$2, gdq $$3, int $$4, int $$5) {
-      if ($$0.i() != null) {
-         int $$6 = $$0.n().c(dsu.bv);
-         if ($$6 > 0) {
-            je $$7 = $$0.d();
-            if ($$7 != null) {
-               cur $$8 = $$0.f();
-               if (!$$8.e()) {
-                  $$2.a();
-                  $$2.a(0.0F, 0.5F, 0.0F);
-                  float[] $$9 = this.a($$7, $$6);
-                  $$2.a($$9[0], $$9[1], $$9[2]);
-                  $$2.a(a.d.rotationDegrees(75.0F));
-                  boolean $$10 = $$7 == je.f || $$7 == je.e;
-                  $$2.a(a.d.rotationDegrees((float)(($$10 ? 90 : 0) + 11)));
-                  $$2.b(0.5F, 0.5F, 0.5F);
-                  int $$11 = gdo.a($$0.i(), $$0.n(), $$0.ay_().a($$7));
-                  this.a.a($$8, cuo.i, $$11, gos.d, $$2, $$3, $$0.i(), 0);
-                  $$2.b();
-               }
-            }
-         }
+   public static fxo b() {
+      fxq $$0 = new fxq();
+      fxr $$1 = $$0.a();
+      $$1.a("main", fxn.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fxk.a);
+      $$1.a("left_leg", fxn.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fxk.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
+      $$1.a("right_leg", fxn.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fxk.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
+      return fxo.a($$0, 64, 64);
+   }
+
+   public static fxo c() {
+      fxq $$0 = new fxq();
+      fxr $$1 = $$0.a();
+      $$1.a("main", fxn.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fxk.a);
+      $$1.a("left_leg", fxn.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fxk.b((float) (Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("right_leg", fxn.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fxk.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
+      return fxo.a($$0, 64, 64);
+   }
+
+   public void a(dpj $$0, float $$1, fag $$2, gdx $$3, int $$4, int $$5) {
+      grm $$6 = gem.p[$$0.c().a()];
+      dcd $$7 = $$0.i();
+      if ($$7 != null) {
+         dsh $$8 = $$0.n();
+         dhm.c<? extends dpj> $$9 = dhm.a(dpp.y, dey::h, dey::g, dgi.c, $$8, $$7, $$0.az_(), ($$0x, $$1x) -> false);
+         int $$10 = $$9.apply(new gga<>()).get($$4);
+         this.a($$2, $$3, $$8.c(dey.b) == dsu.a ? this.a : this.b, $$8.c(dey.aE), $$6, $$10, $$5, false);
+      } else {
+         this.a($$2, $$3, this.a, jf.d, $$6, $$4, $$5, false);
+         this.a($$2, $$3, this.b, jf.d, $$6, $$4, $$5, true);
       }
    }
 
-   private float[] a(je $$0, int $$1) {
-      float[] $$2 = new float[]{0.5F, 0.0F, 0.5F};
-      float $$3 = (float)$$1 / 10.0F * 0.75F;
-      switch ($$0) {
-         case f:
-            $$2[0] = 0.73F + $$3;
-            break;
-         case e:
-            $$2[0] = 0.25F - $$3;
-            break;
-         case b:
-            $$2[1] = 0.25F + $$3;
-            break;
-         case a:
-            $$2[1] = -0.23F - $$3;
-            break;
-         case c:
-            $$2[2] = 0.25F - $$3;
-            break;
-         case d:
-            $$2[2] = 0.73F + $$3;
-      }
-
-      return $$2;
+   private void a(fag $$0, gdx $$1, fxi $$2, jf $$3, grm $$4, int $$5, int $$6, boolean $$7) {
+      $$0.a();
+      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
+      $$0.a(a.b.rotationDegrees(90.0F));
+      $$0.a(0.5F, 0.5F, 0.5F);
+      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
+      $$0.a(-0.5F, -0.5F, -0.5F);
+      fak $$8 = $$4.a($$1, gef::c);
+      $$2.a($$0, $$8, $$5, $$6);
+      $$0.b();
    }
 }

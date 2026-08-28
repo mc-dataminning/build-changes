@@ -1,111 +1,48 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
+import java.util.List;
+import java.util.Optional;
 
-public class qx {
-   public static void a(rc<ejv> $$0) {
-      jj<emk> $$1 = $$0.a(lq.aK);
-      ji<emk> $$2 = $$1.b(rk.t);
-      jj<ejv> $$3 = $$0.a(lq.aM);
-      ji<ejv> $$4 = $$3.b(rj.a);
-      rj.a(
-         $$0,
-         "bastion/units/center_pieces",
-         new ejv(
-            $$4,
-            ImmutableList.of(
-               Pair.of(ejt.b("bastion/units/center_pieces/center_0", $$2), 1),
-               Pair.of(ejt.b("bastion/units/center_pieces/center_1", $$2), 1),
-               Pair.of(ejt.b("bastion/units/center_pieces/center_2", $$2), 1)
+public interface qx {
+   static void a(qm<eiw> $$0) {
+      jk<eiq> $$1 = $$0.a(lr.aQ);
+      jk<ddd> $$2 = $$0.a(lr.aE);
+      jj.c<eiw> $$3 = $$0.a(
+         eij.a,
+         new eiw(
+            List.of(eiw.a($$1.b(eik.t)), eiw.a($$1.b(eik.u)), eiw.a($$1.b(eik.v)), eiw.a($$1.b(eik.w)), eiw.a($$1.b(eik.x))), new ejl(34, 8, ejm.a, 10387312)
+         )
+      );
+      $$0.a(eij.b, new eiw($$1.b(eik.f), new ejl(32, 8, ejm.a, 14357617)));
+      $$0.a(eij.c, new eiw($$1.b(eik.g), new ejl(32, 8, ejm.a, 14357618)));
+      $$0.a(eij.d, new eiw($$1.b(eik.e), new ejl(32, 8, ejm.a, 14357619)));
+      $$0.a(eij.e, new eiw($$1.b(eik.j), new ejl(32, 8, ejm.a, 14357620)));
+      $$0.a(eij.f, new eiw($$1.b(eik.a), new ejl(ke.g, ejn.c.b, 0.2F, 165745296, Optional.of(new ejn.a($$3, 10)), 32, 8, ejm.a)));
+      $$0.a(eij.q, new eiw($$1.b(eik.F), new ejl(24, 8, ejm.a, 20083232)));
+      $$0.a(eij.g, new eiw($$1.b(eik.l), new ejl(32, 5, ejm.b, 10387313)));
+      $$0.a(eij.h, new eiw($$1.b(eik.d), new ejl(80, 20, ejm.b, 10387319)));
+      $$0.a(eij.i, new eiw($$1.b(eik.r), new ejl(new ke(9, 0, 9), ejn.c.c, 0.01F, 0, Optional.empty(), 1, 0, ejm.a)));
+      $$0.a(eij.j, new eiw(List.of(eiw.a($$1.b(eik.b)), eiw.a($$1.b(eik.c))), new ejl(ke.g, ejn.c.d, 0.004F, 0, Optional.empty(), 1, 0, ejm.a)));
+      $$0.a(
+         eij.k,
+         new eiw(
+            List.of(
+               eiw.a($$1.b(eik.y)),
+               eiw.a($$1.b(eik.z)),
+               eiw.a($$1.b(eik.A)),
+               eiw.a($$1.b(eik.B)),
+               eiw.a($$1.b(eik.C)),
+               eiw.a($$1.b(eik.D)),
+               eiw.a($$1.b(eik.E))
             ),
-            ejv.a.b
+            new ejl(40, 15, ejm.a, 34222645)
          )
       );
-      rj.a(
-         $$0,
-         "bastion/units/pathways",
-         new ejv(
-            $$4,
-            ImmutableList.of(Pair.of(ejt.b("bastion/units/pathways/pathway_0", $$2), 1), Pair.of(ejt.b("bastion/units/pathways/pathway_wall_0", $$2), 1)),
-            ejv.a.b
-         )
-      );
-      rj.a(
-         $$0,
-         "bastion/units/walls/wall_bases",
-         new ejv(
-            $$4,
-            ImmutableList.of(Pair.of(ejt.b("bastion/units/walls/wall_base", $$2), 1), Pair.of(ejt.b("bastion/units/walls/connected_wall", $$2), 1)),
-            ejv.a.b
-         )
-      );
-      rj.a(
-         $$0,
-         "bastion/units/stages/stage_0",
-         new ejv(
-            $$4,
-            ImmutableList.of(
-               Pair.of(ejt.b("bastion/units/stages/stage_0_0", $$2), 1),
-               Pair.of(ejt.b("bastion/units/stages/stage_0_1", $$2), 1),
-               Pair.of(ejt.b("bastion/units/stages/stage_0_2", $$2), 1),
-               Pair.of(ejt.b("bastion/units/stages/stage_0_3", $$2), 1)
-            ),
-            ejv.a.b
-         )
-      );
-      rj.a(
-         $$0,
-         "bastion/units/stages/stage_1",
-         new ejv(
-            $$4,
-            ImmutableList.of(
-               Pair.of(ejt.b("bastion/units/stages/stage_1_0", $$2), 1),
-               Pair.of(ejt.b("bastion/units/stages/stage_1_1", $$2), 1),
-               Pair.of(ejt.b("bastion/units/stages/stage_1_2", $$2), 1),
-               Pair.of(ejt.b("bastion/units/stages/stage_1_3", $$2), 1)
-            ),
-            ejv.a.b
-         )
-      );
-      rj.a($$0, "bastion/units/stages/rot/stage_1", new ejv($$4, ImmutableList.of(Pair.of(ejt.b("bastion/units/stages/rot/stage_1_0", $$2), 1)), ejv.a.b));
-      rj.a(
-         $$0,
-         "bastion/units/stages/stage_2",
-         new ejv(
-            $$4, ImmutableList.of(Pair.of(ejt.b("bastion/units/stages/stage_2_0", $$2), 1), Pair.of(ejt.b("bastion/units/stages/stage_2_1", $$2), 1)), ejv.a.b
-         )
-      );
-      rj.a(
-         $$0,
-         "bastion/units/stages/stage_3",
-         new ejv(
-            $$4,
-            ImmutableList.of(
-               Pair.of(ejt.b("bastion/units/stages/stage_3_0", $$2), 1),
-               Pair.of(ejt.b("bastion/units/stages/stage_3_1", $$2), 1),
-               Pair.of(ejt.b("bastion/units/stages/stage_3_2", $$2), 1),
-               Pair.of(ejt.b("bastion/units/stages/stage_3_3", $$2), 1)
-            ),
-            ejv.a.b
-         )
-      );
-      rj.a($$0, "bastion/units/fillers/stage_0", new ejv($$4, ImmutableList.of(Pair.of(ejt.b("bastion/units/fillers/stage_0", $$2), 1)), ejv.a.b));
-      rj.a($$0, "bastion/units/edges", new ejv($$4, ImmutableList.of(Pair.of(ejt.b("bastion/units/edges/edge_0", $$2), 1)), ejv.a.b));
-      rj.a($$0, "bastion/units/wall_units", new ejv($$4, ImmutableList.of(Pair.of(ejt.b("bastion/units/wall_units/unit_0", $$2), 1)), ejv.a.b));
-      rj.a($$0, "bastion/units/edge_wall_units", new ejv($$4, ImmutableList.of(Pair.of(ejt.b("bastion/units/wall_units/edge_0_large", $$2), 1)), ejv.a.b));
-      rj.a(
-         $$0,
-         "bastion/units/ramparts",
-         new ejv(
-            $$4,
-            ImmutableList.of(
-               Pair.of(ejt.b("bastion/units/ramparts/ramparts_0", $$2), 1),
-               Pair.of(ejt.b("bastion/units/ramparts/ramparts_1", $$2), 1),
-               Pair.of(ejt.b("bastion/units/ramparts/ramparts_2", $$2), 1)
-            ),
-            ejv.a.b
-         )
-      );
-      rj.a($$0, "bastion/units/large_ramparts", new ejv($$4, ImmutableList.of(Pair.of(ejt.b("bastion/units/ramparts/ramparts_0", $$2), 1)), ejv.a.b));
-      rj.a($$0, "bastion/units/rampart_plates", new ejv($$4, ImmutableList.of(Pair.of(ejt.b("bastion/units/rampart_plates/plate_0", $$2), 1)), ejv.a.b));
+      $$0.a(eij.l, new eiw(List.of(eiw.a($$1.b(eik.h)), eiw.a($$1.b(eik.i))), new ejl(24, 4, ejm.a, 165745295)));
+      $$0.a(eij.m, new eiw(List.of(eiw.a($$1.b(eik.m)), eiw.a($$1.b(eik.n))), new ejl(20, 8, ejm.a, 14357621)));
+      $$0.a(eij.n, new eiw(List.of(eiw.a($$1.b(eik.o), 2), eiw.a($$1.b(eik.s), 3)), new ejl(27, 4, ejm.a, 30084232)));
+      $$0.a(eij.o, new eiw($$1.b(eik.p), new ejl(2, 1, ejm.a, 14357921)));
+      $$0.a(eij.p, new eiw($$1.b(eik.q), new ejl(20, 11, ejm.b, 10387313)));
+      $$0.a(eij.r, new eiw($$1.b(eik.k), new ejk(32, 3, 128, $$2.b(avt.o))));
+      $$0.a(eij.s, new eiw($$1.b(eik.G), new ejl(34, 8, ejm.a, 83469867)));
+      $$0.a(eij.t, new eiw($$1.b(eik.H), new ejl(34, 12, ejm.a, 94251327)));
    }
 }

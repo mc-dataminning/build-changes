@@ -1,56 +1,69 @@
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import java.util.Locale;
-import java.util.function.Function;
+public abstract class apx extends enn {
+   protected apx(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
+   }
 
-public class apx implements apu {
-   static final SuggestionProvider<ep> b = ($$0, $$1) -> eu.a(a($$0).a(), $$1);
-   public static final Function<String, apv.c> a = $$0 -> new apv.c() {
-         @Override
-         public apu a(CommandContext<ep> $$0x) {
-            return new apx(apx.a($$0), fq.c($$0, $$0));
+   @Override
+   protected boolean a(long $$0) {
+      return $$0 == dbk.a;
+   }
+
+   @Override
+   protected void a(long $$0, int $$1, boolean $$2) {
+      if (!$$2 || $$1 < this.f - 2) {
+         dbk $$3 = new dbk($$0);
+         int $$4 = $$3.e;
+         int $$5 = $$3.f;
+
+         for (int $$6 = -1; $$6 <= 1; $$6++) {
+            for (int $$7 = -1; $$7 <= 1; $$7++) {
+               long $$8 = dbk.c($$4 + $$6, $$5 + $$7);
+               if ($$8 != $$0) {
+                  this.b($$0, $$8, $$1, $$2);
+               }
+            }
          }
+      }
+   }
 
-         @Override
-         public ArgumentBuilder<ep, ?> a(ArgumentBuilder<ep, ?> $$0x, Function<ArgumentBuilder<ep, ?>, ArgumentBuilder<ep, ?>> $$1) {
-            return $$0.then(eq.a("storage").then($$1.apply(eq.a($$0, fq.a()).suggests(apx.b))));
+   @Override
+   protected int a(long $$0, long $$1, int $$2) {
+      int $$3 = $$2;
+      dbk $$4 = new dbk($$0);
+      int $$5 = $$4.e;
+      int $$6 = $$4.f;
+
+      for (int $$7 = -1; $$7 <= 1; $$7++) {
+         for (int $$8 = -1; $$8 <= 1; $$8++) {
+            long $$9 = dbk.c($$5 + $$7, $$6 + $$8);
+            if ($$9 == $$0) {
+               $$9 = dbk.a;
+            }
+
+            if ($$9 != $$1) {
+               int $$10 = this.b($$9, $$0, this.c($$9));
+               if ($$3 > $$10) {
+                  $$3 = $$10;
+               }
+
+               if ($$3 == 0) {
+                  return $$3;
+               }
+            }
          }
-      };
-   private final epp c;
-   private final alf d;
+      }
 
-   static epp a(CommandContext<ep> $$0) {
-      return ((ep)$$0.getSource()).l().aL();
-   }
-
-   apx(epp $$0, alf $$1) {
-      this.c = $$0;
-      this.d = $$1;
+      return $$3;
    }
 
    @Override
-   public void a(us $$0) {
-      this.c.a(this.d, $$0);
+   protected int b(long $$0, long $$1, int $$2) {
+      return $$0 == dbk.a ? this.b($$1) : $$2 + 1;
    }
 
-   @Override
-   public us a() {
-      return this.c.a(this.d);
-   }
+   protected abstract int b(long var1);
 
-   @Override
-   public xp b() {
-      return xp.a("commands.data.storage.modified", xp.a(this.d));
-   }
-
-   @Override
-   public xp a(vp $$0) {
-      return xp.a("commands.data.storage.query", xp.a(this.d), vh.c($$0));
-   }
-
-   @Override
-   public xp a(fh.g $$0, double $$1, int $$2) {
-      return xp.a("commands.data.storage.get", $$0.a(), xp.a(this.d), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+   public void b(long $$0, int $$1, boolean $$2) {
+      this.a(dbk.a, $$0, $$1, $$2);
    }
 }

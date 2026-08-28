@@ -1,56 +1,28 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.io.File;
+import java.util.Objects;
 
-public class aun {
-   private final atb a;
-   private final auh<InputStream> b;
-   private final auh<aur> c;
-   @Nullable
-   private aur d;
-
-   public aun(atb $$0, auh<InputStream> $$1, auh<aur> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public class aun extends aum<GameProfile, auo> {
+   public aun(File $$0) {
+      super($$0);
    }
 
-   public aun(atb $$0, auh<InputStream> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = aur.b;
-      this.d = aur.a;
+   @Override
+   protected aul<GameProfile> a(JsonObject $$0) {
+      return new auo($$0);
    }
 
-   public atb a() {
-      return this.a;
+   public boolean a(GameProfile $$0) {
+      return this.d($$0);
    }
 
-   public String b() {
-      return this.a.b();
+   @Override
+   public String[] a() {
+      return this.d().stream().map(aul::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
    }
 
-   public Optional<atw> c() {
-      return this.a.c();
-   }
-
-   public InputStream d() throws IOException {
-      return this.b.get();
-   }
-
-   public BufferedReader e() throws IOException {
-      return new BufferedReader(new InputStreamReader(this.d(), StandardCharsets.UTF_8));
-   }
-
-   public aur f() throws IOException {
-      if (this.d == null) {
-         this.d = this.c.get();
-      }
-
-      return this.d;
+   protected String b(GameProfile $$0) {
+      return $$0.getId().toString();
    }
 }

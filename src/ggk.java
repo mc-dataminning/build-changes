@@ -1,19 +1,39 @@
-public class ggk implements gfq<drd> {
-   private final gix a;
+public class ggk implements gfx<dqw> {
+   private final fwb<?> a;
 
-   public ggk(gfr.a $$0) {
-      this.a = $$0.c();
+   public ggk(gfy.a $$0) {
+      this.a = new fwb($$0.a(fxh.bk));
    }
 
-   public void a(drd $$0, float $$1, faa $$2, gdq $$3, int $$4, int $$5) {
-      dca $$6 = $$0.i();
-      if ($$6 != null) {
-         drh $$7 = $$0.c();
-         drj $$8 = $$7.f();
-         bsw $$9 = $$8.a($$7, $$6, $$7.i());
-         if ($$9 != null) {
-            ggg.a($$1, $$2, $$3, $$4, $$9, this.a, $$8.d(), $$8.c());
+   public void a(dqw $$0, float $$1, fag $$2, gdx $$3, int $$4, int $$5) {
+      jf $$6 = jf.b;
+      if ($$0.m()) {
+         dsh $$7 = $$0.i().a_($$0.az_());
+         if ($$7.b() instanceof dme) {
+            $$6 = $$7.c(dme.b);
          }
       }
+
+      cst $$8 = $$0.u();
+      grm $$9;
+      if ($$8 == null) {
+         $$9 = gem.i;
+      } else {
+         $$9 = gem.j.get($$8.a());
+      }
+
+      $$2.a();
+      $$2.a(0.5F, 0.5F, 0.5F);
+      float $$11 = 0.9995F;
+      $$2.b(0.9995F, 0.9995F, 0.9995F);
+      $$2.a($$6.b());
+      $$2.b(1.0F, -1.0F, -1.0F);
+      $$2.a(0.0F, -1.0F, 0.0F);
+      fxi $$12 = this.a.b();
+      $$12.a(0.0F, 24.0F - $$0.a($$1) * 0.5F * 16.0F, 0.0F);
+      $$12.f = 270.0F * $$0.a($$1) * (float) (Math.PI / 180.0);
+      fak $$13 = $$9.a($$3, gef::e);
+      this.a.a($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$2.b();
    }
 }

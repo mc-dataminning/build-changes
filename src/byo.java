@@ -3,31 +3,19 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class byo {
-   private static final int a = 10;
-   private static final int b = 7;
-
-   public static bwv<bua> a(float $$0) {
-      return a($$0, 10, 7);
-   }
-
-   public static bwv<bua> a(float $$0, int $$1, int $$2) {
-      return byx.a((Function<byx.b<bua>, ? extends App<byx.c<bua>, bza<bua>>>)($$3 -> $$3.group($$3.c(ccv.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
-               iz $$7 = $$5.dp();
-               evt $$8;
-               if ($$4.c($$7)) {
-                  $$8 = cep.a($$5, $$1, $$2);
-               } else {
-                  kb $$9 = kb.a($$7);
-                  kb $$10 = bvm.a($$4, $$9, 2);
-                  if ($$10 != $$9) {
-                     $$8 = cem.a($$5, $$1, $$2, evt.c($$10.q()), (float) (Math.PI / 2));
-                  } else {
-                     $$8 = cep.a($$5, $$1, $$2);
-                  }
-               }
-
-               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new ccy($$1xxxx, $$0, 0)));
-               return true;
-            })));
+   public static <E extends cll> bus<E> a(Function<E, Optional<? extends bsy>> $$0) {
+      return bye.a(
+         (Function<bye.b<E>, ? extends App<bye.c<E>, byh<E>>>)($$1 -> $$1.group($$1.c(ccc.ay), $$1.c(ccc.o), $$1.a(ccc.E))
+               .apply($$1, ($$1x, $$2, $$3) -> ($$3x, $$4, $$5) -> {
+                     Optional<? extends bsy> $$6 = $$0.apply((E)$$4);
+                     if ($$6.filter($$4::b).isEmpty()) {
+                        return false;
+                     } else {
+                        $$1x.a($$6.get());
+                        $$3.b();
+                        return true;
+                     }
+                  }))
+      );
    }
 }

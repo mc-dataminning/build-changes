@@ -1,36 +1,33 @@
-public class gnr extends gnl<cgf, fwc<cgf>> {
-   private final gek a;
-   private final gjx b;
+public class gnr<T extends cmh, M extends fui<T> & fth & fuq> extends gnl<T, M> {
+   private final gdt a;
+   private static final float b = (float) (-Math.PI / 6);
+   private static final float c = (float) (Math.PI / 2);
 
-   public gnr(gkv<cgf, fwc<cgf>> $$0, gek $$1, gjx $$2) {
-      super($$0);
+   public gnr(glc<T, M> $$0, gdt $$1) {
+      super($$0, $$1);
       this.a = $$1;
-      this.b = $$2;
    }
 
-   public void a(faa $$0, gdq $$1, int $$2, cgf $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.u()) {
-         boolean $$10 = ffh.Q().b($$3) && $$3.ch();
-         if (!$$3.ch() || $$10) {
-            $$0.a();
-            this.c().c().a($$0);
-            float $$11 = 0.625F;
-            $$0.a(0.0F, -0.34375F, 0.0F);
-            $$0.a(a.d.rotationDegrees(180.0F));
-            $$0.b(0.625F, -0.625F, -0.625F);
-            cur $$12 = new cur(dfd.ee);
-            if ($$10) {
-               dse $$13 = dfd.ee.o();
-               grc $$14 = this.a.a($$13);
-               int $$15 = gka.c($$3, 0.0F);
-               $$0.a(-0.5F, -0.5F, -0.5F);
-               this.a.b().a($$0.c(), $$1.getBuffer(gdy.r(gpa.e)), $$13, $$14, 0.0F, 0.0F, 0.0F, $$2, $$15);
-            } else {
-               this.b.a($$3, $$12, cuo.f, false, $$0, $$1, $$3.dP(), $$2, gka.c($$3, 0.0F), $$3.al());
-            }
-
-            $$0.b();
-         }
+   @Override
+   protected void a(bsy $$0, cua $$1, ctx $$2, bss $$3, fag $$4, gdx $$5, int $$6) {
+      if ($$1.a(cud.qX) && $$0.ft() == $$1 && $$0.aL == 0) {
+         this.a($$0, $$1, $$3, $$4, $$5, $$6);
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
+   }
+
+   private void a(bsy $$0, cua $$1, bss $$2, fag $$3, gdx $$4, int $$5) {
+      $$3.a();
+      fxi $$6 = this.c().d();
+      float $$7 = $$6.e;
+      $$6.e = aye.a($$6.e, (float) (-Math.PI / 6), (float) (Math.PI / 2));
+      $$6.a($$3);
+      $$6.e = $$7;
+      gmx.a($$3, false);
+      boolean $$8 = $$2 == bss.a;
+      $$3.a(($$8 ? -2.5F : 2.5F) / 16.0F, -0.0625F, 0.0F);
+      this.a.a($$0, $$1, ctx.f, false, $$3, $$4, $$5);
+      $$3.b();
    }
 }

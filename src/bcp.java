@@ -1,31 +1,17 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+import java.util.Map;
+import java.util.Objects;
 
-public class bcp extends DataFix {
-   public bcp(Schema $$0) {
-      super($$0, false);
+public class bcp extends bgp {
+   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:puffer_fish_spawn_egg", "minecraft:pufferfish_spawn_egg").build();
+
+   public bcp(Schema $$0, boolean $$1) {
+      super("EntityPufferfishRenameFix", $$0, $$1);
    }
 
-   public TypeRewriteRule makeRule() {
-      OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> $$0 = DSL.typeFinder(
-         this.getInputSchema().getType(bgx.t)
-      );
-      return this.fixTypeEverywhereTyped(
-         "EmptyItemInHotbarFix", this.getInputSchema().getType(bgx.d), $$1 -> $$1.update($$0, $$0xx -> $$0xx.mapSecond($$0xxx -> {
-                  Optional<String> $$1x = ((Either)$$0xxx.getFirst()).left().map(Pair::getSecond);
-                  Dynamic<?> $$2 = (Dynamic<?>)((Pair)$$0xxx.getSecond()).getSecond();
-                  boolean $$3 = $$1x.isEmpty() || $$1x.get().equals("minecraft:air");
-                  boolean $$4 = $$2.get("Count").asInt(0) <= 0;
-                  return !$$3 && !$$4 ? $$0xxx : Pair.of(Either.right(Unit.INSTANCE), Pair.of(Either.right(Unit.INSTANCE), $$2.emptyMap()));
-               }))
-      );
+   @Override
+   protected String a(String $$0) {
+      return Objects.equals("minecraft:puffer_fish", $$0) ? "minecraft:pufferfish" : $$0;
    }
 }

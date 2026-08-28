@@ -1,22 +1,26 @@
-public class cts extends cum {
-   public cts(cum.a $$0) {
-      super($$0);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record cts(jj<ave> e, int f, float g) {
+   public static final Codec<cts> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ave.b.fieldOf("sound_event").forGetter(cts::a), axm.l.fieldOf("use_duration").forGetter(cts::b), axm.m.fieldOf("range").forGetter(cts::c)
+            )
+            .apply($$0, cts::new)
+   );
+   public static final ys<wf, cts> b = ys.a(ave.d, cts::a, yq.g, cts::b, yq.i, cts::c, cts::new);
+   public static final Codec<jj<cts>> c = akg.a(lr.I, a);
+   public static final ys<wf, jj<cts>> d = yq.a(lr.I, b);
+
+   public jj<ave> a() {
+      return this.e;
    }
 
-   @Override
-   public bqx<cur> a(dca $$0, cmz $$1, bqv $$2) {
-      cur $$3 = $$1.b($$2);
-      $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), awa.it, awb.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      $$1.gx().a(this, 20);
-      if (!$$0.B) {
-         cob $$4 = new cob($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dH(), $$1.dF(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
-      }
+   public int b() {
+      return this.f;
+   }
 
-      $$1.b(awk.c.b(this));
-      $$3.a(1, $$1);
-      return bqx.a($$3, $$0.x_());
+   public float c() {
+      return this.g;
    }
 }

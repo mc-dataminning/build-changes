@@ -1,138 +1,48 @@
-import com.google.common.collect.Lists;
-import java.util.Collections;
-import java.util.List;
-import java.util.regex.Pattern;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToByteEncoder;
+import java.util.zip.Deflater;
 
-public class vo implements vt {
-   private static final Pattern a = Pattern.compile("[A-Za-z0-9._+-]+");
-   private final StringBuilder b = new StringBuilder();
+public class vo extends MessageToByteEncoder<ByteBuf> {
+   private final byte[] a = new byte[8192];
+   private final Deflater b;
+   private int c;
 
-   public String a(vp $$0) {
-      $$0.a(this);
-      return this.b.toString();
+   public vo(int $$0) {
+      this.c = $$0;
+      this.b = new Deflater();
    }
 
-   @Override
-   public void a(vn $$0) {
-      this.b.append(vn.b($$0.s_()));
-   }
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) {
+      int $$3 = $$1.readableBytes();
+      if ($$3 > 8388608) {
+         throw new IllegalArgumentException("Packet too big (is " + $$3 + ", should be less than 8388608)");
+      } else {
+         if ($$3 < this.c) {
+            wl.a($$2, 0);
+            $$2.writeBytes($$1);
+         } else {
+            byte[] $$4 = new byte[$$3];
+            $$1.readBytes($$4);
+            wl.a($$2, $$4.length);
+            this.b.setInput($$4, 0, $$3);
+            this.b.finish();
 
-   @Override
-   public void a(uq $$0) {
-      this.b.append($$0.l()).append('b');
-   }
+            while (!this.b.finished()) {
+               int $$5 = this.b.deflate(this.a);
+               $$2.writeBytes(this.a, 0, $$5);
+            }
 
-   @Override
-   public void a(vk $$0) {
-      this.b.append($$0.l()).append('s');
-   }
-
-   @Override
-   public void a(ux $$0) {
-      this.b.append($$0.l());
-   }
-
-   @Override
-   public void a(va $$0) {
-      this.b.append($$0.l()).append('L');
-   }
-
-   @Override
-   public void a(uv $$0) {
-      this.b.append($$0.k()).append('f');
-   }
-
-   @Override
-   public void a(ut $$0) {
-      this.b.append($$0.j()).append('d');
-   }
-
-   @Override
-   public void a(up $$0) {
-      this.b.append("[B;");
-      byte[] $$1 = $$0.e();
-
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         if ($$2 != 0) {
-            this.b.append(',');
+            this.b.reset();
          }
-
-         this.b.append($$1[$$2]).append('B');
       }
-
-      this.b.append(']');
    }
 
-   @Override
-   public void a(uw $$0) {
-      this.b.append("[I;");
-      int[] $$1 = $$0.g();
-
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         if ($$2 != 0) {
-            this.b.append(',');
-         }
-
-         this.b.append($$1[$$2]);
-      }
-
-      this.b.append(']');
+   public int a() {
+      return this.c;
    }
 
-   @Override
-   public void a(uz $$0) {
-      this.b.append("[L;");
-      long[] $$1 = $$0.g();
-
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         if ($$2 != 0) {
-            this.b.append(',');
-         }
-
-         this.b.append($$1[$$2]).append('L');
-      }
-
-      this.b.append(']');
-   }
-
-   @Override
-   public void a(uy $$0) {
-      this.b.append('[');
-
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         if ($$1 != 0) {
-            this.b.append(',');
-         }
-
-         this.b.append(new vo().a($$0.k($$1)));
-      }
-
-      this.b.append(']');
-   }
-
-   @Override
-   public void a(us $$0) {
-      this.b.append('{');
-      List<String> $$1 = Lists.newArrayList($$0.e());
-      Collections.sort($$1);
-
-      for (String $$2 : $$1) {
-         if (this.b.length() != 1) {
-            this.b.append(',');
-         }
-
-         this.b.append(a($$2)).append(':').append(new vo().a($$0.c($$2)));
-      }
-
-      this.b.append('}');
-   }
-
-   protected static String a(String $$0) {
-      return a.matcher($$0).matches() ? $$0 : vn.b($$0);
-   }
-
-   @Override
-   public void a(uu $$0) {
-      this.b.append("END");
+   public void a(int $$0) {
+      this.c = $$0;
    }
 }

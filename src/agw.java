@@ -1,102 +1,166 @@
-public interface agw extends aan, ajz {
-   @Override
-   default wl b() {
-      return wl.b;
+import java.util.function.Function;
+import javax.annotation.Nullable;
+
+public class agw implements zb<agb> {
+   public static final ys<vr, agw> a = zb.a(agw::a, agw::new);
+   private final int b;
+   private final agw.a c;
+   private final boolean d;
+   static final agw.a e = new agw.a() {
+      @Override
+      public agw.b a() {
+         return agw.b.b;
+      }
+
+      @Override
+      public void a(agw.c $$0) {
+         $$0.a();
+      }
+
+      @Override
+      public void a(vr $$0) {
+      }
+   };
+
+   private agw(int $$0, boolean $$1, agw.a $$2) {
+      this.b = $$0;
+      this.c = $$2;
+      this.d = $$1;
    }
 
-   void a(aiq var1);
+   public static agw a(bsd $$0, boolean $$1) {
+      return new agw($$0.al(), $$1, e);
+   }
 
-   void a(ahe var1);
+   public static agw a(bsd $$0, boolean $$1, bqc $$2) {
+      return new agw($$0.al(), $$1, new agw.d($$2));
+   }
 
-   void a(ahc var1);
+   public static agw a(bsd $$0, boolean $$1, bqc $$2, evz $$3) {
+      return new agw($$0.al(), $$1, new agw.e($$2, $$3));
+   }
 
-   void a(ahd var1);
+   private agw(vr $$0) {
+      this.b = $$0.l();
+      agw.b $$1 = $$0.b(agw.b.class);
+      this.c = $$1.d.apply($$0);
+      this.d = $$0.readBoolean();
+   }
 
-   void a(ahb var1);
+   private void a(vr $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c.a());
+      this.c.a($$0);
+      $$0.a(this.d);
+   }
 
-   void a(ahh var1);
+   @Override
+   public zd<agw> a() {
+      return afz.by;
+   }
 
-   void a(ahk var1);
+   public void a(agb $$0) {
+      $$0.a(this);
+   }
 
-   void a(ahl var1);
+   @Nullable
+   public bsd a(aqk $$0) {
+      return $$0.b(this.b);
+   }
 
-   void a(ahy var1);
+   public boolean b() {
+      return this.d;
+   }
 
-   void a(ahm var1);
+   public void a(agw.c $$0) {
+      this.c.a($$0);
+   }
 
-   void a(ahr var1);
+   interface a {
+      agw.b a();
 
-   void a(ahu var1);
+      void a(agw.c var1);
 
-   void a(ahz var1);
+      void a(vr var1);
+   }
 
-   void a(aia var1);
+   static enum b {
+      a(agw.d::new),
+      b($$0 -> agw.e),
+      c(agw.e::new);
 
-   void a(aib var1);
+      final Function<vr, agw.a> d;
 
-   void a(aic var1);
+      private b(final Function<vr, agw.a> $$0) {
+         this.d = $$0;
+      }
+   }
 
-   void a(aij var1);
+   public interface c {
+      void a(bqc var1);
 
-   void a(aim var1);
+      void a(bqc var1, evz var2);
 
-   void a(aip var1);
+      void a();
+   }
 
-   void a(ais var1);
+   static class d implements agw.a {
+      private final bqc a;
 
-   void a(ait var1);
+      d(bqc $$0) {
+         this.a = $$0;
+      }
 
-   void a(air var1);
+      private d(vr $$0) {
+         this.a = $$0.b(bqc.class);
+      }
 
-   void a(ahw var1);
+      @Override
+      public agw.b a() {
+         return agw.b.a;
+      }
 
-   void a(ahv var1);
+      @Override
+      public void a(agw.c $$0) {
+         $$0.a(this.a);
+      }
 
-   void a(agy var1);
+      @Override
+      public void a(vr $$0) {
+         $$0.a(this.a);
+      }
+   }
 
-   void a(aie var1);
+   static class e implements agw.a {
+      private final bqc a;
+      private final evz b;
 
-   void a(aid var1);
+      e(bqc $$0, evz $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   void a(aig var1);
+      private e(vr $$0) {
+         this.b = new evz((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
+         this.a = $$0.b(bqc.class);
+      }
 
-   void a(ahi var1);
+      @Override
+      public agw.b a() {
+         return agw.b.c;
+      }
 
-   void a(aik var1);
+      @Override
+      public void a(agw.c $$0) {
+         $$0.a(this.a, this.b);
+      }
 
-   void a(ail var1);
-
-   void a(ahx var1);
-
-   void a(aif var1);
-
-   void a(aii var1);
-
-   void a(aio var1);
-
-   void a(aih var1);
-
-   void a(ahp var1);
-
-   void a(ahq var1);
-
-   void a(ahn var1);
-
-   void a(agz var1);
-
-   void a(ain var1);
-
-   void a(ahs var1);
-
-   void a(aha var1);
-
-   void a(aht var1);
-
-   void a(ahf var1);
-
-   void a(ahj var1);
-
-   void a(ahg var1);
-
-   void a(aho var1);
+      @Override
+      public void a(vr $$0) {
+         $$0.a((float)this.b.c);
+         $$0.a((float)this.b.d);
+         $$0.a((float)this.b.e);
+         $$0.a(this.a);
+      }
+   }
 }

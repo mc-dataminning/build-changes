@@ -1,6 +1,2 @@
-public enum crk {
-   a,
-   b,
-   c,
-   d;
+public interface crk {
 }

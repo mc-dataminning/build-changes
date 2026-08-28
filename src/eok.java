@@ -1,91 +1,100 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public abstract class eok {
-   protected eoq a;
-   protected btt b;
-   protected final Int2ObjectMap<eoj> c = new Int2ObjectOpenHashMap();
-   protected int d;
-   protected int e;
-   protected int f;
-   protected boolean g;
-   protected boolean h;
-   protected boolean i;
-   protected boolean j;
+public class eok extends eox {
+   private final boolean l;
+   private float m;
+   private float n;
 
-   public void a(dcn $$0, btt $$1) {
-      this.a = new eoq($$0, $$1);
-      this.b = $$1;
-      this.c.clear();
-      this.d = ayz.d($$1.dj() + 1.0F);
-      this.e = ayz.d($$1.dk() + 1.0F);
-      this.f = ayz.d($$1.dj() + 1.0F);
+   public eok(boolean $$0) {
+      this.l = $$0;
    }
 
+   @Override
+   public void a(dcq $$0, bta $$1) {
+      super.a($$0, $$1);
+      $$1.a(eos.j, 0.0F);
+      this.m = $$1.a(eos.c);
+      $$1.a(eos.c, 6.0F);
+      this.n = $$1.a(eos.k);
+      $$1.a(eos.k, 4.0F);
+   }
+
+   @Override
    public void b() {
-      this.a = null;
-      this.b = null;
+      this.b.a(eos.c, this.m);
+      this.b.a(eos.k, this.n);
+      super.b();
    }
 
-   protected eoj b(iz $$0) {
-      return this.c($$0.u(), $$0.v(), $$0.w());
+   @Override
+   public eon a() {
+      return !this.b.be() ? super.a() : this.c(new ja(aye.a(this.b.cK().a), aye.a(this.b.cK().b + 0.5), aye.a(this.b.cK().c)));
    }
 
-   protected eoj c(int $$0, int $$1, int $$2) {
-      return (eoj)this.c.computeIfAbsent(eoj.b($$0, $$1, $$2), $$3 -> new eoj($$0, $$1, $$2));
+   @Override
+   public eow a(double $$0, double $$1, double $$2) {
+      return this.b($$0, $$1 + 0.5, $$2);
    }
 
-   public abstract eoj a();
+   @Override
+   public int a(eon[] $$0, eon $$1) {
+      int $$2 = super.a($$0, $$1);
+      eos $$3 = this.b($$1.a, $$1.b + 1, $$1.c);
+      eos $$4 = this.b($$1.a, $$1.b, $$1.c);
+      int $$5;
+      if (this.b.a($$3) >= 0.0F && $$4 != eos.w) {
+         $$5 = aye.d(Math.max(1.0F, this.b.dJ()));
+      } else {
+         $$5 = 0;
+      }
 
-   public abstract eos a(double var1, double var3, double var5);
+      double $$7 = this.d(new ja($$1.a, $$1.b, $$1.c));
+      eon $$8 = this.a($$1.a, $$1.b + 1, $$1.c, Math.max(0, $$5 - 1), $$7, jf.b, $$4);
+      eon $$9 = this.a($$1.a, $$1.b - 1, $$1.c, $$5, $$7, jf.a, $$4);
+      if (this.b($$8, $$1)) {
+         $$0[$$2++] = $$8;
+      }
 
-   protected eos b(double $$0, double $$1, double $$2) {
-      return new eos(this.c(ayz.a($$0), ayz.a($$1), ayz.a($$2)));
+      if (this.b($$9, $$1) && $$4 != eos.e) {
+         $$0[$$2++] = $$9;
+      }
+
+      for (int $$10 = 0; $$10 < $$2; $$10++) {
+         eon $$11 = $$0[$$10];
+         if ($$11.l == eos.j && this.l && $$11.b < this.b.dP().z_() - 10) {
+            $$11.k++;
+         }
+      }
+
+      return $$2;
    }
 
-   public abstract int a(eoj[] var1, eoj var2);
-
-   public abstract eoo a(eoq var1, int var2, int var3, int var4, btt var5);
-
-   public abstract eoo a(eoq var1, int var2, int var3, int var4);
-
-   public eoo a(btt $$0, iz $$1) {
-      return this.a(new eoq($$0.dP(), $$0), $$1.u(), $$1.v(), $$1.w());
+   private boolean b(@Nullable eon $$0, eon $$1) {
+      return this.a($$0, $$1) && $$0.l == eos.j;
    }
 
-   public void a(boolean $$0) {
-      this.g = $$0;
+   @Override
+   protected boolean c() {
+      return true;
    }
 
-   public void b(boolean $$0) {
-      this.h = $$0;
-   }
+   @Override
+   public eos a(eou $$0, int $$1, int $$2, int $$3) {
+      eos $$4 = $$0.a($$1, $$2, $$3);
+      if ($$4 == eos.j) {
+         ja.a $$5 = new ja.a();
 
-   public void c(boolean $$0) {
-      this.i = $$0;
-   }
+         for (jf $$6 : jf.values()) {
+            $$5.d($$1, $$2, $$3).c($$6);
+            eos $$7 = $$0.a($$5.u(), $$5.v(), $$5.w());
+            if ($$7 == eos.a) {
+               return eos.k;
+            }
+         }
 
-   public void d(boolean $$0) {
-      this.j = $$0;
-   }
-
-   public boolean d() {
-      return this.g;
-   }
-
-   public boolean e() {
-      return this.h;
-   }
-
-   public boolean f() {
-      return this.i;
-   }
-
-   public boolean g() {
-      return this.j;
-   }
-
-   public static boolean a(dse $$0) {
-      return $$0.a(awp.aK) || $$0.a(dfd.H) || $$0.a(dfd.kJ) || dfp.g($$0) || $$0.a(dfd.fv);
+         return eos.j;
+      } else {
+         return super.a($$0, $$1, $$2, $$3);
+      }
    }
 }

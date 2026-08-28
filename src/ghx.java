@@ -1,44 +1,43 @@
-import javax.annotation.Nullable;
+public class ghx implements ghj.a {
+   private final ffn a;
 
-public class ghx extends gka<ciz, ftc> {
-   public static final alf a = new alf("textures/entity/armorstand/wood.png");
-
-   public ghx(giz.a $$0) {
-      super($$0, new ftd($$0.a(fxb.c)), 0.0F);
-      this.a(new gnb<>(this, new ftc($$0.a(fxb.d)), new ftc($$0.a(fxb.e)), $$0.g()));
-      this.a(new gne<>(this, $$0.d()));
-      this.a(new gmu<>(this, $$0.f()));
-      this.a(new gmq<>(this, $$0.f(), $$0.d()));
+   public ghx(ffn $$0) {
+      this.a = $$0;
    }
 
-   public alf a(ciz $$0) {
-      return a;
-   }
+   @Override
+   public void a(fag $$0, gdx $$1, double $$2, double $$3, double $$4) {
+      ja $$5 = this.a.s.dp();
+      dcg $$6 = this.a.s.dP();
 
-   protected void a(ciz $$0, faa $$1, float $$2, float $$3, float $$4, float $$5) {
-      $$1.a(a.d.rotationDegrees(180.0F - $$3));
-      float $$6 = (float)($$0.dP().Z() - $$0.bN) + $$4;
-      if ($$6 < 5.0F) {
-         $$1.a(a.d.rotationDegrees(ayz.a($$6 / 1.5F * (float) Math.PI) * 3.0F));
+      for (ja $$7 : ja.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
+         eob $$8 = $$6.b_($$7);
+         if ($$8.a(awa.a)) {
+            double $$9 = (double)((float)$$7.v() + $$8.a($$6, $$7));
+            ghj.a(
+               $$0,
+               $$1,
+               new evu(
+                     (double)((float)$$7.u() + 0.01F),
+                     (double)((float)$$7.v() + 0.01F),
+                     (double)((float)$$7.w() + 0.01F),
+                     (double)((float)$$7.u() + 0.99F),
+                     $$9,
+                     (double)((float)$$7.w() + 0.99F)
+                  )
+                  .d(-$$2, -$$3, -$$4),
+               0.0F,
+               1.0F,
+               0.0F,
+               0.15F
+            );
+         }
       }
-   }
 
-   protected boolean b(ciz $$0) {
-      double $$1 = this.c.b($$0);
-      float $$2 = $$0.ca() ? 32.0F : 64.0F;
-      return $$1 >= (double)($$2 * $$2) ? false : $$0.cE();
-   }
-
-   @Nullable
-   protected gdy a(ciz $$0, boolean $$1, boolean $$2, boolean $$3) {
-      if (!$$0.z()) {
-         return super.a($$0, $$1, $$2, $$3);
-      } else {
-         alf $$4 = this.a($$0);
-         if ($$2) {
-            return gdy.c($$4, false);
-         } else {
-            return $$1 ? gdy.a($$4, false) : null;
+      for (ja $$10 : ja.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
+         eob $$11 = $$6.b_($$10);
+         if ($$11.a(awa.a)) {
+            ghj.a($$0, $$1, String.valueOf($$11.e()), (double)$$10.u() + 0.5, (double)((float)$$10.v() + $$11.a($$6, $$10)), (double)$$10.w() + 0.5, -16777216);
          }
       }
    }

@@ -1,14 +1,16 @@
-public abstract class zu<T extends wv> implements zw<T> {
-   private final Iterable<zw<? super T>> a;
+import com.google.common.collect.Lists;
 
-   protected zu(Iterable<zw<? super T>> $$0) {
-      this.a = $$0;
-   }
-
-   public final Iterable<zw<? super T>> b() {
-      return this.a;
-   }
+public record zu(aac b) implements zb<zs> {
+   private static final int c = 32767;
+   public static final ys<vr, zu> a = aac.<vr>a($$0 -> aad.a($$0, 32767), ac.a(Lists.newArrayList(new aac.c[]{new aac.c<>(aaa.b, aaa.a)}), $$0 -> {
+   })).a(zu::new, zu::b);
 
    @Override
-   public abstract zy<? extends zu<T>> a();
+   public zd<zu> a() {
+      return zr.k;
+   }
+
+   public void a(zs $$0) {
+      $$0.a(this);
+   }
 }

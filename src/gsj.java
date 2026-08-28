@@ -1,24 +1,52 @@
-public class gsj extends gry {
-   private static final float n = 0.0F;
-   private static final float o = 0.75F;
-   private final cmz p;
-   private final cov q;
-   private final boolean r;
+public abstract class gsj extends gsf {
+   private static final float o = 0.0F;
+   private static final float p = 1.2F;
+   private static final float q = 0.0F;
+   protected final cep n;
+   private boolean r;
 
-   public gsj(cmz $$0, cov $$1, boolean $$2) {
-      super($$2 ? awa.oL : awa.oM, awb.g, gsp.t());
-      this.p = $$0;
-      this.q = $$1;
-      this.r = $$2;
-      this.k = gsp.a.a;
+   public gsj(cep $$0, ave $$1, avg $$2) {
+      super($$1, $$2, gsw.t());
+      this.n = $$0;
+      this.f = (double)((float)$$0.du());
+      this.g = (double)((float)$$0.dw());
+      this.h = (double)((float)$$0.dA());
       this.i = true;
       this.j = 0;
       this.d = 0.0F;
    }
 
    @Override
-   public boolean s() {
-      return !this.q.aW();
+   public void q() {
+      boolean $$0 = this.p();
+      if ($$0 && !this.m()) {
+         ffn.Q().aj().a((gsx)this.o());
+         this.r = true;
+      }
+
+      if (!this.n.dK() && !this.r) {
+         this.f = (double)((float)this.n.du());
+         this.g = (double)((float)this.n.dw());
+         this.h = (double)((float)this.n.dA());
+         float $$1 = (float)this.n.ds().h();
+         if ($$1 >= 0.01F) {
+            this.e = aye.i(aye.a($$1, this.u(), this.v()), this.u(), this.v());
+            this.d = aye.i(aye.a($$1, 0.0F, 0.5F), 0.0F, 1.2F);
+         } else {
+            this.e = 0.0F;
+            this.d = 0.0F;
+         }
+      } else {
+         this.n();
+      }
+   }
+
+   private float u() {
+      return this.n.p_() ? 1.1F : 0.7F;
+   }
+
+   private float v() {
+      return this.n.p_() ? 1.5F : 1.1F;
    }
 
    @Override
@@ -27,18 +55,11 @@ public class gsj extends gry {
    }
 
    @Override
-   public void q() {
-      if (this.q.dK() || !this.p.bR() || this.p.dc() != this.q) {
-         this.n();
-      } else if (this.r != this.p.bj()) {
-         this.d = 0.0F;
-      } else {
-         float $$0 = (float)this.q.ds().h();
-         if ($$0 >= 0.01F) {
-            this.d = ayz.b(0.0F, 0.75F, $$0);
-         } else {
-            this.d = 0.0F;
-         }
-      }
+   public boolean s() {
+      return !this.n.aW();
    }
+
+   protected abstract gsf o();
+
+   protected abstract boolean p();
 }

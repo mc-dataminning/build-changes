@@ -1,29 +1,20 @@
-public record agl(float b, boolean c) implements zw<aci> {
-   public static final zn<wm, agl> a = zw.a(agl::a, agl::new);
+public record agl(float b) implements zb<agb> {
+   public static final ys<vr, agl> a = zb.a(agl::a, agl::new);
 
-   private agl(wm $$0) {
-      this($$0.readFloat(), $$0.readBoolean());
+   private agl(vr $$0) {
+      this($$0.readFloat());
    }
 
-   public static agl a(brh $$0) {
-      return new agl($$0.f(), $$0.l());
-   }
-
-   private void a(wm $$0) {
+   private void a(vr $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
    }
 
    @Override
-   public zy<agl> a() {
-      return agu.cf;
+   public zd<agl> a() {
+      return afz.bn;
    }
 
-   public void a(aci $$0) {
+   public void a(agb $$0) {
       $$0.a(this);
-   }
-
-   public boolean e() {
-      return this.c;
    }
 }

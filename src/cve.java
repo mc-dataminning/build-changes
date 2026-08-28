@@ -1,53 +1,106 @@
 import java.util.List;
 
-public class cve extends cum {
-   private static final int j = 32;
-   public static final int a = 120000;
-   public static final int b = 0;
-   public static final int c = 4;
+public class cve extends ctv {
+   private static final n a = n.h;
+   private static final n b = n.j;
+   private static final wu c = wu.c(ac.a("item", new akk("smithing_template.ingredients"))).a(a);
+   private static final wu j = wu.c(ac.a("item", new akk("smithing_template.applies_to"))).a(a);
+   private static final wu k = wu.c(ac.a("upgrade", new akk("netherite_upgrade"))).a(a);
+   private static final wu l = wu.c(ac.a("item", new akk("smithing_template.armor_trim.applies_to"))).a(b);
+   private static final wu m = wu.c(ac.a("item", new akk("smithing_template.armor_trim.ingredients"))).a(b);
+   private static final wu n = wu.c(ac.a("item", new akk("smithing_template.armor_trim.base_slot_description")));
+   private static final wu o = wu.c(ac.a("item", new akk("smithing_template.armor_trim.additions_slot_description")));
+   private static final wu p = wu.c(ac.a("item", new akk("smithing_template.netherite_upgrade.applies_to"))).a(b);
+   private static final wu q = wu.c(ac.a("item", new akk("smithing_template.netherite_upgrade.ingredients"))).a(b);
+   private static final wu r = wu.c(ac.a("item", new akk("smithing_template.netherite_upgrade.base_slot_description")));
+   private static final wu s = wu.c(ac.a("item", new akk("smithing_template.netherite_upgrade.additions_slot_description")));
+   private static final akk t = new akk("item/empty_armor_slot_helmet");
+   private static final akk u = new akk("item/empty_armor_slot_chestplate");
+   private static final akk v = new akk("item/empty_armor_slot_leggings");
+   private static final akk w = new akk("item/empty_armor_slot_boots");
+   private static final akk x = new akk("item/empty_slot_hoe");
+   private static final akk y = new akk("item/empty_slot_axe");
+   private static final akk z = new akk("item/empty_slot_sword");
+   private static final akk A = new akk("item/empty_slot_shovel");
+   private static final akk B = new akk("item/empty_slot_pickaxe");
+   private static final akk C = new akk("item/empty_slot_ingot");
+   private static final akk D = new akk("item/empty_slot_redstone_dust");
+   private static final akk E = new akk("item/empty_slot_quartz");
+   private static final akk F = new akk("item/empty_slot_emerald");
+   private static final akk G = new akk("item/empty_slot_diamond");
+   private static final akk H = new akk("item/empty_slot_lapis_lazuli");
+   private static final akk I = new akk("item/empty_slot_amethyst_shard");
+   private final wu J;
+   private final wu K;
+   private final wu L;
+   private final wu M;
+   private final wu N;
+   private final List<akk> O;
+   private final List<akk> P;
 
-   public cve(cum.a $$0) {
-      super($$0);
+   public cve(wu $$0, wu $$1, wu $$2, wu $$3, wu $$4, List<akk> $$5, List<akk> $$6, cot... $$7) {
+      super(new ctv.a().a($$7));
+      this.J = $$0;
+      this.K = $$1;
+      this.L = $$2;
+      this.M = $$3;
+      this.N = $$4;
+      this.O = $$5;
+      this.P = $$6;
+   }
+
+   public static cve a(akj<cwh> $$0, cot... $$1) {
+      return a($$0.a(), $$1);
+   }
+
+   public static cve a(akk $$0, cot... $$1) {
+      return new cve(l, m, wu.c(ac.a("trim_pattern", $$0)).a(a), n, o, x(), y(), $$1);
+   }
+
+   public static cve h() {
+      return new cve(p, q, k, r, s, z(), A());
+   }
+
+   private static List<akk> x() {
+      return List.of(t, u, v, w);
+   }
+
+   private static List<akk> y() {
+      return List.of(C, D, H, E, G, F, I);
+   }
+
+   private static List<akk> z() {
+      return List.of(t, z, u, B, v, y, w, x, A);
+   }
+
+   private static List<akk> A() {
+      return List.of(C);
    }
 
    @Override
-   public cur a(cur $$0, dca $$1, btr $$2) {
-      if ($$2 instanceof arg $$3) {
-         am.A.a($$3, $$0);
-         $$3.b(awk.c.b(this));
-      }
-
-      $$0.a(1, $$2);
-      if (!$$1.B) {
-         $$1.a(null, $$2.dp(), awa.so, $$2.de(), 1.0F, 1.0F);
-         Integer $$4 = $$0.a(km.Q, Integer.valueOf(0));
-         $$2.e(bsg.E);
-         $$2.b(new bse(bsg.E, 120000, $$4, false, false, true));
-      }
-
-      return $$0;
-   }
-
-   @Override
-   public int b(cur $$0) {
-      return 32;
-   }
-
-   @Override
-   public cwm c(cur $$0) {
-      return cwm.c;
-   }
-
-   @Override
-   public bqx<cur> a(dca $$0, cmz $$1, bqv $$2) {
-      return cut.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(cur $$0, cum.b $$1, List<xp> $$2, cwk $$3) {
+   public void a(cua $$0, ctv.b $$1, List<wu> $$2, cvt $$3) {
       super.a($$0, $$1, $$2, $$3);
-      Integer $$4 = $$0.a(km.Q, Integer.valueOf(0));
-      List<bse> $$5 = List.of(new bse(bsg.E, 120000, $$4, false, false, true));
-      cws.a($$5, $$2::add, 1.0F, $$1.b());
+      $$2.add(this.L);
+      $$2.add(wt.a);
+      $$2.add(j);
+      $$2.add(wt.a().b(this.J));
+      $$2.add(c);
+      $$2.add(wt.a().b(this.K));
+   }
+
+   public wu k() {
+      return this.M;
+   }
+
+   public wu l() {
+      return this.N;
+   }
+
+   public List<akk> m() {
+      return this.O;
+   }
+
+   public List<akk> n() {
+      return this.P;
    }
 }

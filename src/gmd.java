@@ -1,27 +1,18 @@
-public class gmd extends gkf<cgk, fwt<cgk>> {
-   public gmd(giz.a $$0) {
-      super($$0, new fwt<>($$0.a(fxb.cc)), 0.5F);
-      this.a(new goa(this, $$0.f()));
-      this.a(new gob(this));
+public class gmd extends gkm<cma, fwt<cma>> {
+   private static final akk a = new akk("textures/entity/wandering_trader.png");
+
+   public gmd(gjg.a $$0) {
+      super($$0, new fwt<>($$0.a(fxh.bS)), 0.5F);
+      this.a(new gmx<>(this, $$0.f(), $$0.d()));
+      this.a(new gmw<>(this, $$0.d()));
    }
 
-   protected float a(cgk $$0, float $$1) {
-      return $$0.gA();
+   public akk a(cma $$0) {
+      return a;
    }
 
-   public void a(cgk $$0, float $$1, float $$2, faa $$3, gdq $$4, int $$5) {
-      if ($$0.gz()) {
-         float $$6 = $$0.G($$2);
-         this.f.a($$6, $$6, $$6);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if ($$0.gz()) {
-         this.f.a(1.0F, 1.0F, 1.0F);
-      }
-   }
-
-   public alf a(cgk $$0) {
-      return $$0.gw();
+   protected void a(cma $$0, fag $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

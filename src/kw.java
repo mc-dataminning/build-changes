@@ -1,43 +1,30 @@
-public class kw extends ku {
-   @Override
-   protected cur a(kq $$0, cur $$1) {
-      arf $$2 = $$0.b();
-      if (!$$2.x_()) {
-         iz $$3 = $$0.c().a($$0.d().c(dhg.b));
-         this.a(a($$2, $$3) || b($$2, $$3));
-         if (this.b()) {
-            $$1.a(1, $$2.E_(), null, () -> $$1.e(0));
-         }
-      }
+public class kw extends kt {
+   private final cus c;
+   private final cus.a d;
 
+   public kw(ctv $$0) {
+      if ($$0 instanceof cus $$1) {
+         this.c = $$1;
+         this.d = $$1.c();
+      } else {
+         throw new IllegalArgumentException($$0 + " not instance of " + cus.class.getSimpleName());
+      }
+   }
+
+   @Override
+   public cua a(kr $$0, cua $$1) {
+      dcd $$2 = $$0.b();
+      jf $$3 = $$0.d().c(dhk.b);
+      jt $$4 = this.d.b().getDispensePosition($$0, $$3);
+      cmz $$5 = this.c.a($$2, $$4, $$1, $$3);
+      this.c.a($$5, (double)$$3.j(), (double)$$3.k(), (double)$$3.l(), this.d.d(), this.d.c());
+      $$2.b($$5);
+      $$1.h(1);
       return $$1;
    }
 
-   private static boolean a(arf $$0, iz $$1) {
-      dse $$2 = $$0.a_($$1);
-      if ($$2.a(awp.aG, $$0x -> $$0x.b(dev.c) && $$0x.b() instanceof dev)) {
-         int $$3 = $$2.c(dev.c);
-         if ($$3 >= 5) {
-            $$0.a(null, $$1, awa.bX, awb.e, 1.0F, 1.0F);
-            dev.a($$0, $$1);
-            ((dev)$$2.b()).a($$0, $$2, $$1, null, dpg.b.b);
-            $$0.a(null, dwx.M, $$1);
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private static boolean b(arf $$0, iz $$1) {
-      for (btr $$3 : $$0.a(btr.class, new evo($$1), btb.f)) {
-         if ($$3 instanceof bui $$4 && $$4.a()) {
-            $$4.a(awb.e);
-            $$0.a(null, dwx.M, $$1);
-            return true;
-         }
-      }
-
-      return false;
+   @Override
+   protected void a(kr $$0) {
+      $$0.b().c(this.d.e().orElse(1002), $$0.c(), 0);
    }
 }

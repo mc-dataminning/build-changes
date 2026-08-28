@@ -1,28 +1,19 @@
-public class gmr extends gnl<gcp, fvh<gcp>> {
-   public gmr(gkv<gcp, fvh<gcp>> $$0) {
+public class gmr extends gns<ckj, ftr<ckj>> {
+   private static final akk a = new akk("textures/entity/breeze/breeze_wind.png");
+   private static final ftr<ckj> b = new ftr<>(ftr.a(128, 128).a());
+
+   public gmr(glc<ckj, ftr<ckj>> $$0) {
       super($$0);
    }
 
-   public void a(faa $$0, gdq $$1, int $$2, gcp $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ("deadmau5".equals($$3.af().getString()) && !$$3.ch()) {
-         fae $$10 = $$1.getBuffer(gdy.c($$3.b().a()));
-         int $$11 = gka.c($$3, 0.0F);
+   public void a(fag $$0, gdx $$1, int $$2, ckj $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      float $$10 = (float)$$3.ai + $$6;
+      fak $$11 = $$1.getBuffer(gef.a(a, this.a($$10) % 1.0F, 0.0F));
+      b.a($$3, $$4, $$5, $$7, $$8, $$9);
+      gim.a(b, b.e()).a($$0, $$11, $$2, goz.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   }
 
-         for (int $$12 = 0; $$12 < 2; $$12++) {
-            float $$13 = ayz.i($$6, $$3.O, $$3.dF()) - ayz.i($$6, $$3.aZ, $$3.aY);
-            float $$14 = ayz.i($$6, $$3.P, $$3.dH());
-            $$0.a();
-            $$0.a(a.d.rotationDegrees($$13));
-            $$0.a(a.b.rotationDegrees($$14));
-            $$0.a(0.375F * (float)($$12 * 2 - 1), 0.0F, 0.0F);
-            $$0.a(0.0F, -0.375F, 0.0F);
-            $$0.a(a.b.rotationDegrees(-$$14));
-            $$0.a(a.d.rotationDegrees(-$$13));
-            float $$15 = 1.3333334F;
-            $$0.b(1.3333334F, 1.3333334F, 1.3333334F);
-            this.c().a($$0, $$10, $$2, $$11);
-            $$0.b();
-         }
-      }
+   private float a(float $$0) {
+      return $$0 * 0.02F;
    }
 }

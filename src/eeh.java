@@ -1,46 +1,43 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
 
-public class eeh extends eef {
-   public static final MapCodec<eeh> d = RecordCodecBuilder.mapCodec(
+public class eeh implements edi {
+   public static final Codec<eeh> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(0, 80).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 80).fieldOf("upper_limit").orElse(1).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.g),
-               Codec.intRange(0, 16).fieldOf("middle_size").orElse(1).forGetter($$0x -> $$0x.h),
-               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.i),
-               a()
+               awk.b(lr.f).fieldOf("replaceable").forGetter($$0x -> $$0x.b),
+               efj.a.fieldOf("ground_state").forGetter($$0x -> $$0x.c),
+               ehu.b.fieldOf("vegetation_feature").forGetter($$0x -> $$0x.d),
+               ehl.c.fieldOf("surface").forGetter($$0x -> $$0x.e),
+               bpi.b(1, 128).fieldOf("depth").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_bottom_block_chance").forGetter($$0x -> $$0x.g),
+               Codec.intRange(1, 256).fieldOf("vertical_range").forGetter($$0x -> $$0x.h),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("vegetation_chance").forGetter($$0x -> $$0x.i),
+               bpi.c.fieldOf("xz_radius").forGetter($$0x -> $$0x.j),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_edge_column_chance").forGetter($$0x -> $$0x.k)
             )
             .apply($$0, eeh::new)
    );
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
+   public final awk<dff> b;
+   public final efj c;
+   public final jj<ehu> d;
+   public final ehl e;
+   public final bpi f;
+   public final float g;
+   public final int h;
+   public final float i;
+   public final bpi j;
+   public final float k;
 
-   public eeh(int $$0, int $$1, int $$2, int $$3, int $$4, OptionalInt $$5) {
-      super($$5);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
-   }
-
-   @Override
-   protected eeg<?> b() {
-      return eeg.b;
-   }
-
-   @Override
-   public int a(int $$0, int $$1) {
-      if ($$1 < this.e) {
-         return this.g;
-      } else {
-         return $$1 >= $$0 - this.f ? this.i : this.h;
-      }
+   public eeh(awk<dff> $$0, efj $$1, jj<ehu> $$2, ehl $$3, bpi $$4, float $$5, int $$6, float $$7, bpi $$8, float $$9) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
    }
 }

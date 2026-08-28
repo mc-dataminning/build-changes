@@ -1,37 +1,21 @@
-public class afl implements zw<aci> {
-   public static final zn<wm, afl> a = zw.a(afl::a, afl::new);
-   private final iz b;
-   private final float c;
-
-   public afl(iz $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   private afl(wm $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readFloat();
-   }
-
-   private void a(wm $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-   }
+public record afl(wu b, boolean c) implements zb<abn> {
+   public static final ys<wf, afl> a = ys.a(ww.d, afl::b, yq.b, afl::e, afl::new);
 
    @Override
-   public zy<afl> a() {
-      return agu.aA;
+   public zd<afl> a() {
+      return afz.aV;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
    }
 
-   public iz b() {
-      return this.b;
+   @Override
+   public boolean c() {
+      return true;
    }
 
-   public float e() {
+   public boolean e() {
       return this.c;
    }
 }

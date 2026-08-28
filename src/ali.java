@@ -1,80 +1,72 @@
-import com.google.common.collect.Lists;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import it.unimi.dsi.fastutil.Stack;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Optional;
+import java.util.function.Predicate;
 
-public class ali extends IOException {
-   private final List<ali.a> a = Lists.newArrayList();
-   private final String b;
+public class ali {
+   private static final int a = 2;
 
-   public ali(String $$0) {
-      this.a.add(new ali.a());
-      this.b = $$0;
-   }
-
-   public ali(String $$0, Throwable $$1) {
-      super($$1);
-      this.a.add(new ali.a());
-      this.b = $$0;
-   }
-
-   public void a(String $$0) {
-      this.a.get(0).a($$0);
-   }
-
-   public void b(String $$0) {
-      this.a.get(0).a = $$0;
-      this.a.add(0, new ali.a());
-   }
-
-   @Override
-   public String getMessage() {
-      return "Invalid " + this.a.get(this.a.size() - 1) + ": " + this.b;
-   }
-
-   public static ali a(Exception $$0) {
-      if ($$0 instanceof ali) {
-         return (ali)$$0;
+   private static ali.b a(ae $$0, boolean $$1) {
+      Optional<ar> $$2 = $$0.c();
+      if ($$2.isEmpty()) {
+         return ali.b.b;
+      } else if ($$1) {
+         return ali.b.a;
       } else {
-         String $$1 = $$0.getMessage();
-         if ($$0 instanceof FileNotFoundException) {
-            $$1 = "File not found";
-         }
-
-         return new ali($$1, $$0);
+         return $$2.get().j() ? ali.b.b : ali.b.c;
       }
    }
 
-   public static class a {
-      @Nullable
-      String a;
-      private final List<String> b = Lists.newArrayList();
+   private static boolean a(Stack<ali.b> $$0) {
+      for (int $$1 = 0; $$1 <= 2; $$1++) {
+         ali.b $$2 = (ali.b)$$0.peek($$1);
+         if ($$2 == ali.b.a) {
+            return true;
+         }
 
-      a() {
-      }
-
-      void a(String $$0) {
-         this.b.add(0, $$0);
-      }
-
-      @Nullable
-      public String a() {
-         return this.a;
-      }
-
-      public String b() {
-         return StringUtils.join(this.b, "->");
-      }
-
-      @Override
-      public String toString() {
-         if (this.a != null) {
-            return this.b.isEmpty() ? this.a : this.a + " " + this.b();
-         } else {
-            return this.b.isEmpty() ? "(Unknown file)" : "(Unknown file) " + this.b();
+         if ($$2 == ali.b.b) {
+            return false;
          }
       }
+
+      return false;
+   }
+
+   private static boolean a(ag $$0, Stack<ali.b> $$1, Predicate<ag> $$2, ali.a $$3) {
+      boolean $$4 = $$2.test($$0);
+      ali.b $$5 = a($$0.a(), $$4);
+      boolean $$6 = $$4;
+      $$1.push($$5);
+
+      for (ag $$7 : $$0.e()) {
+         $$6 |= a($$7, $$1, $$2, $$3);
+      }
+
+      boolean $$8 = $$6 || a($$1);
+      $$1.pop();
+      $$3.accept($$0, $$8);
+      return $$6;
+   }
+
+   public static void a(ag $$0, Predicate<ag> $$1, ali.a $$2) {
+      ag $$3 = $$0.d();
+      Stack<ali.b> $$4 = new ObjectArrayList();
+
+      for (int $$5 = 0; $$5 <= 2; $$5++) {
+         $$4.push(ali.b.c);
+      }
+
+      a($$3, $$4, $$1, $$2);
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void accept(ag var1, boolean var2);
+   }
+
+   static enum b {
+      a,
+      b,
+      c;
    }
 }

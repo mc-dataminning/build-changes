@@ -1,31 +1,33 @@
-import javax.annotation.Nullable;
-
-public class afo implements zw<aci> {
-   public static final zn<wm, afo> a = zw.a(afo::a, afo::new);
+public class afo implements zb<abn> {
+   public static final ys<vr, afo> a = zb.a(afo::a, afo::new);
    private final int b;
    private final int c;
+   private final int d;
 
-   public afo(bsw $$0, @Nullable bsw $$1) {
-      this.b = $$0.al();
-      this.c = $$1 != null ? $$1.al() : 0;
+   public afo(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private afo(wm $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
+   private afo(vr $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
+      this.d = $$0.l();
    }
 
-   private void a(wm $$0) {
-      $$0.p(this.b);
-      $$0.p(this.c);
+   private void a(vr $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
+      $$0.c(this.d);
    }
 
    @Override
-   public zy<afo> a() {
-      return agu.aD;
+   public zd<afo> a() {
+      return afz.aY;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
    }
 
@@ -35,5 +37,9 @@ public class afo implements zw<aci> {
 
    public int e() {
       return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

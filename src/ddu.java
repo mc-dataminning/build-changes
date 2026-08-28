@@ -1,76 +1,59 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public abstract class ddu extends dfb {
-   private static final int d = 2;
-   private static final int e = 4;
-   private static final int f = 3;
-   private static final int g = 2;
-   protected static final int a = 4;
-   private static final ewm h = a(2.0, 4.0, 2.0, 14.0, 16.0, 14.0);
-   protected static final ewm b = ewj.a(
-      ewj.b(), ewj.a(a(0.0, 0.0, 4.0, 16.0, 3.0, 12.0), a(4.0, 0.0, 0.0, 12.0, 3.0, 16.0), a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0), h), evx.e
+public class ddu extends ddh {
+   public static final MapCodec<ddu> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(aki.d(ddk.ah), aki.d(ddk.ai), aki.d(ddk.aj), aki.d(ddk.ak), aki.d(ddk.al)).apply($$0, $$0.stable(ddu::new))
    );
-   protected final kf.a c;
+   private final jj<ddd> c;
+   private final jj<ddd> d;
+   private final jj<ddd> e;
+   private final jj<ddd> f;
+   private final jj<ddd> g;
 
-   @Override
-   protected abstract MapCodec<? extends ddu> a();
-
-   public ddu(dsd.d $$0, kf.a $$1) {
-      super($$0);
-      this.c = $$1;
+   public static ddu a(jk<ddd> $$0) {
+      return new ddu($$0.b(ddk.ah), $$0.b(ddk.ai), $$0.b(ddk.aj), $$0.b(ddk.ak), $$0.b(ddk.al));
    }
 
-   protected double b(dse $$0) {
-      return 0.0;
-   }
-
-   protected boolean a(dse $$0, iz $$1, bsw $$2) {
-      return $$2.dw() < (double)$$1.v() + this.b($$0) && $$2.cK().e > (double)$$1.v() + 0.25;
-   }
-
-   @Override
-   protected bqy a(cur $$0, dse $$1, dca $$2, iz $$3, cmz $$4, bqv $$5, evp $$6) {
-      kf $$7 = this.c.b().get($$0.g());
-      return $$7.interact($$1, $$2, $$3, $$4, $$5, $$0);
+   private ddu(jj<ddd> $$0, jj<ddd> $$1, jj<ddd> $$2, jj<ddd> $$3, jj<ddd> $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
    @Override
-   protected ewm a(dse $$0, dbg $$1, iz $$2, evy $$3) {
+   protected Stream<jj<ddd>> b() {
+      return Stream.of(this.c, this.d, this.e, this.f, this.g);
+   }
+
+   @Override
+   protected MapCodec<? extends ddh> a() {
       return b;
    }
 
    @Override
-   protected ewm a(dse $$0, dbg $$1, iz $$2) {
-      return h;
-   }
-
-   @Override
-   protected boolean c_(dse $$0) {
-      return true;
-   }
-
-   @Override
-   protected boolean a(dse $$0, eom $$1) {
-      return false;
-   }
-
-   public abstract boolean d(dse var1);
-
-   @Override
-   protected void a(dse $$0, arf $$1, iz $$2, azh $$3) {
-      iz $$4 = dkt.a((dca)$$1, $$2);
-      if ($$4 != null) {
-         enw $$5 = dkt.a($$1, $$4);
-         if ($$5 != eny.a && this.a($$5)) {
-            this.a($$0, $$1, $$2, $$5);
+   public jj<ddd> getNoiseBiome(int $$0, int $$1, int $$2, ddm.f $$3) {
+      int $$4 = ju.c($$0);
+      int $$5 = ju.c($$1);
+      int $$6 = ju.c($$2);
+      int $$7 = kc.a($$4);
+      int $$8 = kc.a($$6);
+      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
+         return this.c;
+      } else {
+         int $$9 = (kc.a($$4) * 2 + 1) * 8;
+         int $$10 = (kc.a($$6) * 2 + 1) * 8;
+         double $$11 = $$3.e().a(new dxs.e($$9, $$5, $$10));
+         if ($$11 > 0.25) {
+            return this.d;
+         } else if ($$11 >= -0.0625) {
+            return this.e;
+         } else {
+            return $$11 < -0.21875 ? this.f : this.g;
          }
       }
-   }
-
-   protected boolean a(enw $$0) {
-      return false;
-   }
-
-   protected void a(dse $$0, dca $$1, iz $$2, enw $$3) {
    }
 }

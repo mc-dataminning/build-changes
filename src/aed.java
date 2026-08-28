@@ -1,61 +1,66 @@
-public class aed implements zw<aci> {
-   public static final zn<wm, aed> a = zw.a(aed::a, aed::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final float e;
-   private final float f;
+import it.unimi.dsi.fastutil.shorts.ShortIterator;
+import it.unimi.dsi.fastutil.shorts.ShortSet;
+import java.util.function.BiConsumer;
 
-   public aed(bsw $$0) {
-      this.b = $$0.du();
-      this.c = $$0.dw();
-      this.d = $$0.dA();
-      this.e = $$0.dF();
-      this.f = $$0.dH();
+public class aed implements zb<abn> {
+   public static final ys<vr, aed> a = zb.a(aed::a, aed::new);
+   private static final int b = 12;
+   private final kc c;
+   private final short[] d;
+   private final dsh[] e;
+
+   public aed(kc $$0, ShortSet $$1, duo $$2) {
+      this.c = $$0;
+      int $$3 = $$1.size();
+      this.d = new short[$$3];
+      this.e = new dsh[$$3];
+      int $$4 = 0;
+
+      for (ShortIterator var6 = $$1.iterator(); var6.hasNext(); $$4++) {
+         short $$5 = (Short)var6.next();
+         this.d[$$4] = $$5;
+         this.e[$$4] = $$2.a(kc.a($$5), kc.b($$5), kc.c($$5));
+      }
    }
 
-   private aed(wm $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
+   private aed(vr $$0) {
+      this.c = kc.a($$0.readLong());
+      int $$1 = $$0.l();
+      this.d = new short[$$1];
+      this.e = new dsh[$$1];
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         long $$3 = $$0.m();
+         this.d[$$2] = (short)((int)($$3 & 4095L));
+         this.e[$$2] = dff.q.a((int)($$3 >>> 12));
+      }
    }
 
-   private void a(wm $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
+   private void a(vr $$0) {
+      $$0.b(this.c.s());
+      $$0.c(this.d.length);
+
+      for (int $$1 = 0; $$1 < this.d.length; $$1++) {
+         $$0.a((long)dff.i(this.e[$$1]) << 12 | (long)this.d[$$1]);
+      }
    }
 
    @Override
-   public zy<aed> a() {
-      return agu.U;
+   public zd<aed> a() {
+      return afz.an;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
    }
 
-   public double b() {
-      return this.b;
-   }
+   public void a(BiConsumer<ja, dsh> $$0) {
+      ja.a $$1 = new ja.a();
 
-   public double e() {
-      return this.c;
-   }
-
-   public double f() {
-      return this.d;
-   }
-
-   public float g() {
-      return this.e;
-   }
-
-   public float h() {
-      return this.f;
+      for (int $$2 = 0; $$2 < this.d.length; $$2++) {
+         short $$3 = this.d[$$2];
+         $$1.d(this.c.d($$3), this.c.e($$3), this.c.f($$3));
+         $$0.accept($$1, this.e[$$2]);
+      }
    }
 }

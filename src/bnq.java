@@ -1,91 +1,56 @@
-import com.mojang.logging.LogUtils;
-import java.net.SocketAddress;
-import java.nio.file.Path;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.datafixers.util.Pair;
+import java.time.Duration;
+import java.util.Comparator;
+import java.util.List;
 
-public interface bnq {
-   bnq f = (bnq)(Runtime.class.getModule().getLayer().findModule("jdk.jfr").isPresent() ? bnp.a() : new bnq.a());
+public final class bnq<T> {
+   private final bnq.a a;
+   private final List<Pair<T, bnq.a>> b;
+   private final Duration c;
 
-   boolean a(bno var1);
+   public bnq(Duration $$0, List<Pair<T, bnq.a>> $$1) {
+      this.c = $$0;
+      this.a = $$1.stream().<bnq.a>map(Pair::getSecond).reduce(new bnq.a(0L, 0L), bnq.a::a);
+      this.b = $$1.stream().sorted(Comparator.comparing(Pair::getSecond, bnq.a.c)).limit(10L).toList();
+   }
 
-   Path b();
+   public double a() {
+      return (double)this.a.a / (double)this.c.getSeconds();
+   }
 
-   boolean c();
+   public double b() {
+      return (double)this.a.b / (double)this.c.getSeconds();
+   }
 
-   boolean d();
+   public long c() {
+      return this.a.a;
+   }
 
-   void a(float var1);
+   public long d() {
+      return this.a.b;
+   }
 
-   void a(wl var1, zy<?> var2, SocketAddress var3, int var4);
+   public List<Pair<T, bnq.a>> e() {
+      return this.b;
+   }
 
-   void b(wl var1, zy<?> var2, SocketAddress var3, int var4);
+   public static record a(long a, long b) {
+      static final Comparator<bnq.a> c = Comparator.comparing(bnq.a::c).thenComparing(bnq.a::b).reversed();
 
-   void a(dvq var1, dbh var2, dvp var3, int var4);
-
-   void b(dvq var1, dbh var2, dvp var3, int var4);
-
-   @Nullable
-   bnt e();
-
-   @Nullable
-   bnt a(dbh var1, ale<dca> var2, String var3);
-
-   public static class a implements bnq {
-      private static final Logger b = LogUtils.getLogger();
-      static final bnt a = () -> {
-      };
-
-      @Override
-      public boolean a(bno $$0) {
-         b.warn("Attempted to start Flight Recorder, but it's not supported on this JVM");
-         return false;
+      bnq.a a(bnq.a $$0) {
+         return new bnq.a(this.a + $$0.a, this.b + $$0.b);
       }
 
-      @Override
-      public Path b() {
-         throw new IllegalStateException("Attempted to stop Flight Recorder, but it's not supported on this JVM");
+      public float a() {
+         return (float)this.b / (float)this.a;
       }
 
-      @Override
-      public boolean c() {
-         return false;
+      public long b() {
+         return this.a;
       }
 
-      @Override
-      public boolean d() {
-         return false;
-      }
-
-      @Override
-      public void a(wl $$0, zy<?> $$1, SocketAddress $$2, int $$3) {
-      }
-
-      @Override
-      public void b(wl $$0, zy<?> $$1, SocketAddress $$2, int $$3) {
-      }
-
-      @Override
-      public void a(dvq $$0, dbh $$1, dvp $$2, int $$3) {
-      }
-
-      @Override
-      public void b(dvq $$0, dbh $$1, dvp $$2, int $$3) {
-      }
-
-      @Override
-      public void a(float $$0) {
-      }
-
-      @Override
-      public bnt e() {
-         return a;
-      }
-
-      @Nullable
-      @Override
-      public bnt a(dbh $$0, ale<dca> $$1, String $$2) {
-         return null;
+      public long c() {
+         return this.b;
       }
    }
 }

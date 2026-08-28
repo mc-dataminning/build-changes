@@ -1,57 +1,19 @@
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Map;
 
-public class cwq implements cpk {
-   @Nullable
-   private final String a;
-   private final List<bse> b;
-   private cpn c = cpp.g;
+public record cwq(Map<jj<dff>, dtk<?>> c) {
+   public static final cwq a = new cwq(Map.of());
+   public static final Codec<cwq> b = Codec.dispatchedMap(lq.e.s(), $$0 -> Codec.STRING.comapFlatMap($$1 -> {
+         dtk<?> $$2 = ((dff)$$0.a()).l().a($$1);
+         return $$2 != null ? DataResult.success($$2) : DataResult.error(() -> "No property on " + $$0.g() + " with name: " + $$1);
+      }, dtk::f)).xmap(cwq::new, cwq::a);
 
-   public cwq(bse... $$0) {
-      this(null, $$0);
+   public cwq a(jj<dff> $$0, dtk<?> $$1) {
+      return new cwq(ac.a(this.c, $$0, $$1));
    }
 
-   public cwq(@Nullable String $$0, bse... $$1) {
-      this.a = $$0;
-      this.b = List.of($$1);
-   }
-
-   public cwq a(cpl... $$0) {
-      this.c = cpp.e.a($$0);
-      return this;
-   }
-
-   @Override
-   public cpn i() {
+   public Map<jj<dff>, dtk<?>> a() {
       return this.c;
-   }
-
-   public static String a(Optional<ji<cwq>> $$0, String $$1) {
-      if ($$0.isPresent()) {
-         String $$2 = $$0.get().a().a;
-         if ($$2 != null) {
-            return $$1 + $$2;
-         }
-      }
-
-      String $$3 = $$0.flatMap(ji::e).map($$0x -> $$0x.a().a()).orElse("empty");
-      return $$1 + $$3;
-   }
-
-   public List<bse> a() {
-      return this.b;
-   }
-
-   public boolean b() {
-      if (!this.b.isEmpty()) {
-         for (bse $$0 : this.b) {
-            if ($$0.c().a().a()) {
-               return true;
-            }
-         }
-      }
-
-      return false;
    }
 }

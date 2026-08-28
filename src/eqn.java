@@ -1,136 +1,109 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.Map;
-import java.util.NoSuchElementException;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.Set;
-import java.util.function.Consumer;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
 public class eqn {
-   private final arf a;
-   private final Map<etd<?>, Object> b;
-   private final Map<alf, eqn.b> c;
-   private final float d;
+   private static final Codec<eqn> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               euw.a.optionalFieldOf("min").forGetter($$0x -> Optional.ofNullable($$0x.c)),
+               euw.a.optionalFieldOf("max").forGetter($$0x -> Optional.ofNullable($$0x.d))
+            )
+            .apply($$0, eqn::new)
+   );
+   public static final Codec<eqn> a = Codec.either(Codec.INT, b).xmap($$0 -> (eqn)$$0.map(eqn::a, Function.identity()), $$0 -> {
+      OptionalInt $$1 = $$0.b();
+      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
+   });
+   @Nullable
+   private final euv c;
+   @Nullable
+   private final euv d;
+   private final eqn.b e;
+   private final eqn.a f;
 
-   public eqn(arf $$0, Map<etd<?>, Object> $$1, Map<alf, eqn.b> $$2, float $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public Set<eth<?>> a() {
+      Builder<eth<?>> $$0 = ImmutableSet.builder();
+      if (this.c != null) {
+         $$0.addAll(this.c.a());
+      }
+
+      if (this.d != null) {
+         $$0.addAll(this.d.a());
+      }
+
+      return $$0.build();
    }
 
-   public arf a() {
-      return this.a;
+   private eqn(Optional<euv> $$0, Optional<euv> $$1) {
+      this($$0.orElse(null), $$1.orElse(null));
    }
 
-   public boolean a(etd<?> $$0) {
-      return this.b.containsKey($$0);
-   }
-
-   public <T> T b(etd<T> $$0) {
-      T $$1 = (T)this.b.get($$0);
-      if ($$1 == null) {
-         throw new NoSuchElementException($$0.a().toString());
+   private eqn(@Nullable euv $$0, @Nullable euv $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      if ($$0 == null) {
+         if ($$1 == null) {
+            this.e = ($$0x, $$1x) -> $$1x;
+            this.f = ($$0x, $$1x) -> true;
+         } else {
+            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
+            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
+         }
+      } else if ($$1 == null) {
+         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
+         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
       } else {
-         return $$1;
+         this.e = ($$2, $$3) -> aye.a($$3, $$0.a($$2), $$1.a($$2));
+         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
       }
    }
 
-   @Nullable
-   public <T> T c(etd<T> $$0) {
-      return (T)this.b.get($$0);
+   public static eqn a(int $$0) {
+      eus $$1 = eus.a((float)$$0);
+      return new eqn(Optional.of($$1), Optional.of($$1));
    }
 
-   @Nullable
-   public <T> T d(etd<T> $$0) {
-      return (T)this.b.get($$0);
+   public static eqn a(int $$0, int $$1) {
+      return new eqn(Optional.of(eus.a((float)$$0)), Optional.of(eus.a((float)$$1)));
    }
 
-   public void a(alf $$0, Consumer<cur> $$1) {
-      eqn.b $$2 = this.c.get($$0);
-      if ($$2 != null) {
-         $$2.add($$1);
-      }
+   public static eqn b(int $$0) {
+      return new eqn(Optional.of(eus.a((float)$$0)), Optional.empty());
    }
 
-   public float b() {
-      return this.d;
+   public static eqn c(int $$0) {
+      return new eqn(Optional.empty(), Optional.of(eus.a((float)$$0)));
    }
 
-   public static class a {
-      private final arf a;
-      private final Map<etd<?>, Object> b = Maps.newIdentityHashMap();
-      private final Map<alf, eqn.b> c = Maps.newHashMap();
-      private float d;
+   public int a(eqo $$0, int $$1) {
+      return this.e.apply($$0, $$1);
+   }
 
-      public a(arf $$0) {
-         this.a = $$0;
-      }
+   public boolean b(eqo $$0, int $$1) {
+      return this.f.test($$0, $$1);
+   }
 
-      public arf a() {
-         return this.a;
-      }
-
-      public <T> eqn.a a(etd<T> $$0, T $$1) {
-         this.b.put($$0, $$1);
-         return this;
-      }
-
-      public <T> eqn.a b(etd<T> $$0, @Nullable T $$1) {
-         if ($$1 == null) {
-            this.b.remove($$0);
-         } else {
-            this.b.put($$0, $$1);
-         }
-
-         return this;
-      }
-
-      public <T> T a(etd<T> $$0) {
-         T $$1 = (T)this.b.get($$0);
-         if ($$1 == null) {
-            throw new NoSuchElementException($$0.a().toString());
-         } else {
-            return $$1;
-         }
-      }
-
-      @Nullable
-      public <T> T b(etd<T> $$0) {
-         return (T)this.b.get($$0);
-      }
-
-      public eqn.a a(alf $$0, eqn.b $$1) {
-         eqn.b $$2 = this.c.put($$0, $$1);
-         if ($$2 != null) {
-            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
-         } else {
-            return this;
-         }
-      }
-
-      public eqn.a a(float $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public eqn a(ete $$0) {
-         Set<etd<?>> $$1 = Sets.difference(this.b.keySet(), $$0.b());
-         if (!$$1.isEmpty()) {
-            throw new IllegalArgumentException("Parameters not allowed in this parameter set: " + $$1);
-         } else {
-            Set<etd<?>> $$2 = Sets.difference($$0.a(), this.b.keySet());
-            if (!$$2.isEmpty()) {
-               throw new IllegalArgumentException("Missing required parameters: " + $$2);
-            } else {
-               return new eqn(this.a, this.b, this.c, this.d);
-            }
-         }
-      }
+   private OptionalInt b() {
+      return Objects.equals(this.c, this.d) && this.c instanceof eus $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
+         ? OptionalInt.of((int)$$0.c())
+         : OptionalInt.empty();
    }
 
    @FunctionalInterface
-   public interface b {
-      void add(Consumer<cur> var1);
+   interface a {
+      boolean test(eqo var1, int var2);
+   }
+
+   @FunctionalInterface
+   interface b {
+      int apply(eqo var1, int var2);
    }
 }

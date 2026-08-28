@@ -1,108 +1,109 @@
-public class dpc extends dqo {
-   private jr<cur> d = jr.a(27, cur.l);
-   private final dpw e = new dpw() {
-      @Override
-      protected void a(dca $$0, iz $$1, dse $$2) {
-         dpc.this.a($$2, awa.bz);
-         dpc.this.a($$2, true);
-      }
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-      @Override
-      protected void b(dca $$0, iz $$1, dse $$2) {
-         dpc.this.a($$2, awa.by);
-         dpc.this.a($$2, false);
-      }
+public class dpc extends dpn implements bqi {
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = 6;
+   private static final String c = "patterns";
+   @Nullable
+   private wu d;
+   private cst e;
+   private dpe f = dpe.a;
 
-      @Override
-      protected void a(dca $$0, iz $$1, dse $$2, int $$3, int $$4) {
-      }
+   public dpc(ja $$0, dsh $$1) {
+      super(dpp.t, $$0, $$1);
+      this.e = ((ddw)$$1.b()).b();
+   }
 
-      @Override
-      protected boolean a(cmz $$0) {
-         if ($$0.cb instanceof cqd) {
-            bqp $$1 = ((cqd)$$0.cb).l();
-            return $$1 == dpc.this;
-         } else {
-            return false;
-         }
-      }
-   };
+   public dpc(ja $$0, dsh $$1, cst $$2) {
+      this($$0, $$1);
+      this.e = $$2;
+   }
 
-   public dpc(iz $$0, dse $$1) {
-      super(dpl.A, $$0, $$1);
+   public void a(cua $$0, cst $$1) {
+      this.e = $$1;
+      this.a($$0);
    }
 
    @Override
-   protected void b(us $$0, jk.a $$1) {
-      super.b($$0, $$1);
-      if (!this.b_($$0)) {
-         bqq.a($$0, this.d, $$1);
-      }
+   public wu af() {
+      return (wu)(this.d != null ? this.d : wu.c("block.minecraft.banner"));
    }
 
+   @Nullable
    @Override
-   protected void a(us $$0, jk.a $$1) {
-      super.a($$0, $$1);
-      this.d = jr.a(this.b(), cur.l);
-      if (!this.a_($$0)) {
-         bqq.b($$0, this.d, $$1);
-      }
-   }
-
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   protected jr<cur> j() {
+   public wu ah() {
       return this.d;
    }
 
    @Override
-   protected void a(jr<cur> $$0) {
-      this.d = $$0;
-   }
+   protected void b(tx $$0, jl.a $$1) {
+      super.b($$0, $$1);
+      if (!this.f.equals(dpe.a)) {
+         $$0.a("patterns", (uu)dpe.b.encodeStart($$1.a(ul.a), this.f).getOrThrow());
+      }
 
-   @Override
-   protected xp k() {
-      return xp.c("container.barrel");
-   }
-
-   @Override
-   protected cpw a(int $$0, cmy $$1) {
-      return cqd.a($$0, $$1, this);
-   }
-
-   @Override
-   public void d_(cmz $$0) {
-      if (!this.p && !$$0.N_()) {
-         this.e.a($$0, this.i(), this.ay_(), this.n());
+      if (this.d != null) {
+         $$0.a("CustomName", wu.a.a(this.d, $$1));
       }
    }
 
    @Override
-   public void c(cmz $$0) {
-      if (!this.p && !$$0.N_()) {
-         this.e.b($$0, this.i(), this.ay_(), this.n());
+   protected void a(tx $$0, jl.a $$1) {
+      super.a($$0, $$1);
+      if ($$0.b("CustomName", 8)) {
+         this.d = a($$0.l("CustomName"), $$1);
+      }
+
+      if ($$0.e("patterns")) {
+         dpe.b
+            .parse($$1.a(ul.a), $$0.c("patterns"))
+            .resultOrPartial($$0x -> b.error("Failed to parse banner patterns: '{}'", $$0x))
+            .ifPresent($$0x -> this.f = $$0x);
       }
    }
 
-   public void l() {
-      if (!this.p) {
-         this.e.c(this.i(), this.ay_(), this.n());
-      }
+   public abu a() {
+      return abu.a(this);
    }
 
-   void a(dse $$0, boolean $$1) {
-      this.n.a(this.ay_(), $$0.a(deh.c, Boolean.valueOf($$1)), 3);
+   @Override
+   public tx a(jl.a $$0) {
+      return this.d($$0);
    }
 
-   void a(dse $$0, avz $$1) {
-      kd $$2 = $$0.c(deh.b).q();
-      double $$3 = (double)this.o.u() + 0.5 + (double)$$2.u() / 2.0;
-      double $$4 = (double)this.o.v() + 0.5 + (double)$$2.v() / 2.0;
-      double $$5 = (double)this.o.w() + 0.5 + (double)$$2.w() / 2.0;
-      this.n.a(null, $$3, $$4, $$5, $$1, awb.e, 0.5F, this.n.z.i() * 0.1F + 0.9F);
+   public dpe b() {
+      return this.f;
+   }
+
+   public cua c() {
+      cua $$0 = new cua(dek.a(this.e));
+      $$0.b(this.s());
+      return $$0;
+   }
+
+   public cst f() {
+      return this.e;
+   }
+
+   @Override
+   protected void a(dpn.b $$0) {
+      super.a($$0);
+      this.f = $$0.a(kn.X, dpe.a);
+      this.d = $$0.a(kn.g);
+   }
+
+   @Override
+   protected void a(kj.a $$0) {
+      super.a($$0);
+      $$0.a(kn.X, this.f);
+      $$0.a(kn.g, this.d);
+   }
+
+   @Override
+   public void a(tx $$0) {
+      $$0.r("patterns");
+      $$0.r("CustomName");
    }
 }

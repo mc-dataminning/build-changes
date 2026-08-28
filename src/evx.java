@@ -1,20 +1,26 @@
-public interface evx {
-   evx a = ($$0, $$1) -> false;
-   evx b = ($$0, $$1) -> !$$0 && !$$1;
-   evx c = ($$0, $$1) -> $$1 && !$$0;
-   evx d = ($$0, $$1) -> !$$0;
-   evx e = ($$0, $$1) -> $$0 && !$$1;
-   evx f = ($$0, $$1) -> !$$1;
-   evx g = ($$0, $$1) -> $$0 != $$1;
-   evx h = ($$0, $$1) -> !$$0 || !$$1;
-   evx i = ($$0, $$1) -> $$0 && $$1;
-   evx j = ($$0, $$1) -> $$0 == $$1;
-   evx k = ($$0, $$1) -> $$1;
-   evx l = ($$0, $$1) -> !$$0 || $$1;
-   evx m = ($$0, $$1) -> $$0;
-   evx n = ($$0, $$1) -> $$0 || !$$1;
-   evx o = ($$0, $$1) -> $$0 || $$1;
-   evx p = ($$0, $$1) -> true;
+public abstract class evx {
+   protected final evz a;
 
-   boolean apply(boolean var1, boolean var2);
+   protected evx(evz $$0) {
+      this.a = $$0;
+   }
+
+   public double a(bsd $$0) {
+      double $$1 = this.a.c - $$0.du();
+      double $$2 = this.a.d - $$0.dw();
+      double $$3 = this.a.e - $$0.dA();
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   }
+
+   public abstract evx.a c();
+
+   public evz e() {
+      return this.a;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
+   }
 }

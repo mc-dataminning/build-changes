@@ -1,41 +1,64 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class eri extends erw {
-   public static final MapCodec<eri> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eri::new));
+public class eri extends eqx {
+   public static final MapCodec<eri> a = a(eri::new);
 
-   private eri(List<etu> $$0) {
-      super($$0);
+   eri(List<ere> $$0, List<etz> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public ery<eri> b() {
-      return erz.z;
+   public erf a() {
+      return erc.h;
    }
 
    @Override
-   public cur a(cur $$0, eqk $$1) {
-      Float $$2 = $$1.c(etg.j);
-      if ($$2 != null) {
-         azh $$3 = $$1.b();
-         float $$4 = 1.0F / $$2;
-         int $$5 = $$0.I();
-         int $$6 = 0;
-
-         for (int $$7 = 0; $$7 < $$5; $$7++) {
-            if ($$3.i() <= $$4) {
-               $$6++;
+   protected eqw a(List<? extends eqw> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (eqw)$$0.get(0);
+         case 2 -> $$0.get(0).and($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (eqw $$3 : $$0) {
+            if (!$$3.expand($$1, $$2)) {
+               return false;
             }
          }
 
-         $$0.e($$6);
-      }
-
-      return $$0;
+         return true;
+      };
+      };
    }
 
-   public static erw.a<?> c() {
-      return a(eri::new);
+   public static eri.a a(ere.a<?>... $$0) {
+      return new eri.a($$0);
+   }
+
+   public static class a extends ere.a<eri.a> {
+      private final Builder<ere> a = ImmutableList.builder();
+
+      public a(ere.a<?>... $$0) {
+         for (ere.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
+      }
+
+      protected eri.a a() {
+         return this;
+      }
+
+      @Override
+      public eri.a c(ere.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public ere b() {
+         return new eri(this.a.build(), this.f());
+      }
    }
 }

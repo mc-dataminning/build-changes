@@ -1,26 +1,41 @@
-import com.mojang.authlib.minecraft.UserApiService;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
-public interface fyj {
-   fyj a = new fyj() {
-      @Override
-      public CompletableFuture<Optional<cnb>> a() {
-         return CompletableFuture.completedFuture(Optional.empty());
-      }
+public class fyj {
+   private final atf a = ati.c();
+   private final Map<atb, String> b;
 
-      @Override
-      public boolean b() {
-         return false;
-      }
-   };
-
-   static fyj a(UserApiService $$0, ffv $$1, Path $$2) {
-      return (fyj)($$1.g() == ffv.a.c ? new fxq($$0, $$1.b(), $$2) : a);
+   public fyj() {
+      this.a.a();
+      Builder<atb, String> $$0 = ImmutableMap.builder();
+      this.a.c().forEach($$1 -> {
+         asf $$2 = $$1.a();
+         $$2.d().ifPresent($$2x -> $$0.put($$2x, $$2.a()));
+      });
+      this.b = $$0.build();
    }
 
-   CompletableFuture<Optional<cnb>> a();
+   public List<atb> a(List<atb> $$0) {
+      List<atb> $$1 = new ArrayList<>($$0.size());
+      List<String> $$2 = new ArrayList<>($$0.size());
 
-   boolean b();
+      for (atb $$3 : $$0) {
+         String $$4 = this.b.get($$3);
+         if ($$4 != null) {
+            $$2.add($$4);
+            $$1.add($$3);
+         }
+      }
+
+      this.a.b($$2);
+      return $$1;
+   }
+
+   public atk a() {
+      List<asg> $$0 = this.a.g();
+      return new atn(asi.b, $$0);
+   }
 }

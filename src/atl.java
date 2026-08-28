@@ -1,181 +1,343 @@
-import com.google.common.base.Splitter;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.nio.file.FileStore;
-import java.nio.file.FileSystem;
-import java.nio.file.Path;
-import java.nio.file.PathMatcher;
-import java.nio.file.WatchService;
-import java.nio.file.attribute.UserPrincipalLookupService;
-import java.nio.file.spi.FileSystemProvider;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.io.FilterInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.TreeMap;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class atl extends FileSystem {
-   private static final Set<String> b = Set.of("basic");
-   public static final String a = "/";
-   private static final Splitter c = Splitter.on('/');
-   private final FileStore d;
-   private final FileSystemProvider e = new atk();
-   private final atj f;
+public class atl implements atu {
+   static final Logger c = LogUtils.getLogger();
+   protected final List<atl.d> a = Lists.newArrayList();
+   private final asi d;
+   private final String e;
 
-   atl(String $$0, atl.b $$1) {
-      this.d = new ati($$0);
-      this.f = a($$1, this, "", null);
+   public atl(asi $$0, String $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   private static atj a(atl.b $$0, atl $$1, String $$2, @Nullable atj $$3) {
-      Object2ObjectOpenHashMap<String, atj> $$4 = new Object2ObjectOpenHashMap();
-      atj $$5 = new atj($$1, $$2, $$3, new atm.a($$4));
-      $$0.b.forEach(($$3x, $$4x) -> $$4.put($$3x, new atj($$1, $$3x, $$5, new atm.b($$4x))));
-      $$0.a.forEach(($$3x, $$4x) -> $$4.put($$3x, a($$4x, $$1, $$3x, $$5)));
-      $$4.trim();
-      return $$5;
+   public void a(asg $$0) {
+      this.a($$0.b(), $$0, null);
    }
 
-   @Override
-   public FileSystemProvider provider() {
-      return this.e;
+   public void a(asg $$0, Predicate<akk> $$1) {
+      this.a($$0.b(), $$0, $$1);
    }
 
-   @Override
-   public void close() {
+   public void a(String $$0, Predicate<akk> $$1) {
+      this.a($$0, null, $$1);
+   }
+
+   private void a(String $$0, @Nullable asg $$1, @Nullable Predicate<akk> $$2) {
+      this.a.add(new atl.d($$0, $$1, $$2));
    }
 
    @Override
-   public boolean isOpen() {
-      return true;
+   public Set<String> a() {
+      return ImmutableSet.of(this.e);
    }
 
    @Override
-   public boolean isReadOnly() {
-      return true;
-   }
+   public Optional<ats> getResource(akk $$0) {
+      for (int $$1 = this.a.size() - 1; $$1 >= 0; $$1--) {
+         atl.d $$2 = this.a.get($$1);
+         asg $$3 = $$2.b;
+         if ($$3 != null) {
+            atm<InputStream> $$4 = $$3.a(this.d, $$0);
+            if ($$4 != null) {
+               atm<atw> $$5 = this.a($$0, $$1);
+               return Optional.of(a($$3, $$0, $$4, $$5));
+            }
+         }
 
-   @Override
-   public String getSeparator() {
-      return "/";
-   }
-
-   @Override
-   public Iterable<Path> getRootDirectories() {
-      return List.of(this.f);
-   }
-
-   @Override
-   public Iterable<FileStore> getFileStores() {
-      return List.of(this.d);
-   }
-
-   @Override
-   public Set<String> supportedFileAttributeViews() {
-      return b;
-   }
-
-   @Override
-   public Path getPath(String $$0, String... $$1) {
-      Stream<String> $$2 = Stream.of($$0);
-      if ($$1.length > 0) {
-         $$2 = Stream.concat($$2, Stream.of($$1));
+         if ($$2.a($$0)) {
+            c.warn("Resource {} not found, but was filtered by pack {}", $$0, $$2.a);
+            return Optional.empty();
+         }
       }
 
-      String $$3 = $$2.collect(Collectors.joining("/"));
-      if ($$3.equals("/")) {
-         return this.f;
-      } else if ($$3.startsWith("/")) {
-         atj $$4 = this.f;
+      return Optional.empty();
+   }
 
-         for (String $$5 : c.split($$3.substring(1))) {
-            if ($$5.isEmpty()) {
-               throw new IllegalArgumentException("Empty paths not allowed");
+   private static ats a(asg $$0, akk $$1, atm<InputStream> $$2, atm<atw> $$3) {
+      return new ats($$0, a($$1, $$0, $$2), $$3);
+   }
+
+   private static atm<InputStream> a(akk $$0, asg $$1, atm<InputStream> $$2) {
+      return c.isDebugEnabled() ? () -> new atl.c($$2.get(), $$0, $$1.b()) : $$2;
+   }
+
+   @Override
+   public List<ats> a(akk $$0) {
+      akk $$1 = d($$0);
+      List<ats> $$2 = new ArrayList<>();
+      boolean $$3 = false;
+      String $$4 = null;
+
+      for (int $$5 = this.a.size() - 1; $$5 >= 0; $$5--) {
+         atl.d $$6 = this.a.get($$5);
+         asg $$7 = $$6.b;
+         if ($$7 != null) {
+            atm<InputStream> $$8 = $$7.a(this.d, $$0);
+            if ($$8 != null) {
+               atm<atw> $$9;
+               if ($$3) {
+                  $$9 = atw.b;
+               } else {
+                  $$9 = () -> {
+                     atm<InputStream> $$2x = $$7.a(this.d, $$1);
+                     return $$2x != null ? b($$2x) : atw.a;
+                  };
+               }
+
+               $$2.add(new ats($$7, $$8, $$9));
+            }
+         }
+
+         if ($$6.a($$0)) {
+            $$4 = $$6.a;
+            break;
+         }
+
+         if ($$6.a($$1)) {
+            $$3 = true;
+         }
+      }
+
+      if ($$2.isEmpty() && $$4 != null) {
+         c.warn("Resource {} not found, but was filtered by pack {}", $$0, $$4);
+      }
+
+      return Lists.reverse($$2);
+   }
+
+   private static boolean b(akk $$0) {
+      return $$0.a().endsWith(".mcmeta");
+   }
+
+   private static akk c(akk $$0) {
+      String $$1 = $$0.a().substring(0, $$0.a().length() - ".mcmeta".length());
+      return $$0.c($$1);
+   }
+
+   static akk d(akk $$0) {
+      return $$0.c($$0.a() + ".mcmeta");
+   }
+
+   @Override
+   public Map<akk, ats> b(String $$0, Predicate<akk> $$1) {
+      record a(asg a, atm<InputStream> b, int c) {
+      }
+
+      Map<akk, a> $$2 = new HashMap<>();
+      Map<akk, a> $$3 = new HashMap<>();
+      int $$4 = this.a.size();
+
+      for (int $$5 = 0; $$5 < $$4; $$5++) {
+         atl.d $$6 = this.a.get($$5);
+         $$6.a($$2.keySet());
+         $$6.a($$3.keySet());
+         asg $$7 = $$6.b;
+         if ($$7 != null) {
+            int $$8 = $$5;
+            $$7.a(this.d, this.e, $$0, ($$5x, $$6x) -> {
+               if (b($$5x)) {
+                  if ($$1.test(c($$5x))) {
+                     $$3.put($$5x, new a($$7, $$6x, $$8));
+                  }
+               } else if ($$1.test($$5x)) {
+                  $$2.put($$5x, new a($$7, $$6x, $$8));
+               }
+            });
+         }
+      }
+
+      Map<akk, ats> $$9 = Maps.newTreeMap();
+      $$2.forEach(($$2x, $$3x) -> {
+         akk $$4x = d($$2x);
+         a $$5x = $$3.get($$4x);
+         atm<atw> $$6x;
+         if ($$5x != null && $$5x.c >= $$3x.c) {
+            $$6x = a($$5x.b);
+         } else {
+            $$6x = atw.b;
+         }
+
+         $$9.put($$2x, a($$3x.a, $$2x, $$3x.b, $$6x));
+      });
+      return $$9;
+   }
+
+   private atm<atw> a(akk $$0, int $$1) {
+      return () -> {
+         akk $$2 = d($$0);
+
+         for (int $$3 = this.a.size() - 1; $$3 >= $$1; $$3--) {
+            atl.d $$4 = this.a.get($$3);
+            asg $$5 = $$4.b;
+            if ($$5 != null) {
+               atm<InputStream> $$6 = $$5.a(this.d, $$2);
+               if ($$6 != null) {
+                  return b($$6);
+               }
             }
 
-            $$4 = $$4.a($$5);
+            if ($$4.a($$2)) {
+               break;
+            }
          }
 
-         return $$4;
-      } else {
-         atj $$6 = null;
+         return atw.a;
+      };
+   }
 
-         for (String $$7 : c.split($$3)) {
-            if ($$7.isEmpty()) {
-               throw new IllegalArgumentException("Empty paths not allowed");
+   private static atm<atw> a(atm<InputStream> $$0) {
+      return () -> b($$0);
+   }
+
+   private static atw b(atm<InputStream> $$0) throws IOException {
+      atw var2;
+      try (InputStream $$1 = $$0.get()) {
+         var2 = atw.a($$1);
+      }
+
+      return var2;
+   }
+
+   private static void a(atl.d $$0, Map<akk, atl.b> $$1) {
+      for (atl.b $$2 : $$1.values()) {
+         if ($$0.a($$2.a)) {
+            $$2.c.clear();
+         } else if ($$0.a($$2.b())) {
+            $$2.d.clear();
+         }
+      }
+   }
+
+   private void a(atl.d $$0, String $$1, Predicate<akk> $$2, Map<akk, atl.b> $$3) {
+      asg $$4 = $$0.b;
+      if ($$4 != null) {
+         $$4.a(this.d, this.e, $$1, ($$3x, $$4x) -> {
+            if (b($$3x)) {
+               akk $$5 = c($$3x);
+               if (!$$2.test($$5)) {
+                  return;
+               }
+
+               $$3.computeIfAbsent($$5, atl.b::new).d.put($$4, $$4x);
+            } else {
+               if (!$$2.test($$3x)) {
+                  return;
+               }
+
+               $$3.computeIfAbsent($$3x, atl.b::new).c.add(new atl.e($$4, $$4x));
+            }
+         });
+      }
+   }
+
+   @Override
+   public Map<akk, List<ats>> c(String $$0, Predicate<akk> $$1) {
+      Map<akk, atl.b> $$2 = Maps.newHashMap();
+
+      for (atl.d $$3 : this.a) {
+         a($$3, $$2);
+         this.a($$3, $$0, $$1, $$2);
+      }
+
+      TreeMap<akk, List<ats>> $$4 = Maps.newTreeMap();
+
+      for (atl.b $$5 : $$2.values()) {
+         if (!$$5.c.isEmpty()) {
+            List<ats> $$6 = new ArrayList<>();
+
+            for (atl.e $$7 : $$5.c) {
+               asg $$8 = $$7.a;
+               atm<InputStream> $$9 = $$5.d.get($$8);
+               atm<atw> $$10 = $$9 != null ? a($$9) : atw.b;
+               $$6.add(a($$8, $$5.a, $$7.b, $$10));
             }
 
-            $$6 = new atj(this, $$7, $$6, atm.b);
-         }
-
-         if ($$6 == null) {
-            throw new IllegalArgumentException("Empty paths not allowed");
-         } else {
-            return $$6;
+            $$4.put($$5.a, $$6);
          }
       }
+
+      return $$4;
    }
 
    @Override
-   public PathMatcher getPathMatcher(String $$0) {
-      throw new UnsupportedOperationException();
+   public Stream<asg> b() {
+      return this.a.stream().map($$0 -> $$0.b).filter(Objects::nonNull);
    }
 
-   @Override
-   public UserPrincipalLookupService getUserPrincipalLookupService() {
-      throw new UnsupportedOperationException();
+   static record b(akk a, akk b, List<atl.e> c, Map<asg, atm<InputStream>> d) {
+
+      b(akk $$0) {
+         this($$0, atl.d($$0), new ArrayList<>(), new Object2ObjectArrayMap());
+      }
    }
 
-   @Override
-   public WatchService newWatchService() {
-      throw new UnsupportedOperationException();
-   }
+   static class c extends FilterInputStream {
+      private final Supplier<String> a;
+      private boolean b;
 
-   public FileStore a() {
-      return this.d;
-   }
+      public c(InputStream $$0, akk $$1, String $$2) {
+         super($$0);
+         Exception $$3 = new Exception("Stacktrace");
+         this.a = () -> {
+            StringWriter $$3x = new StringWriter();
+            $$3.printStackTrace(new PrintWriter($$3x));
+            return "Leaked resource: '" + $$1 + "' loaded from pack: '" + $$2 + "'\n" + $$3x;
+         };
+      }
 
-   public atj b() {
-      return this.f;
-   }
+      @Override
+      public void close() throws IOException {
+         super.close();
+         this.b = true;
+      }
 
-   public static atl.a c() {
-      return new atl.a();
-   }
-
-   public static class a {
-      private final atl.b a = new atl.b();
-
-      public atl.a a(List<String> $$0, String $$1, Path $$2) {
-         atl.b $$3 = this.a;
-
-         for (String $$4 : $$0) {
-            $$3 = $$3.a.computeIfAbsent($$4, $$0x -> new atl.b());
+      @Override
+      protected void finalize() throws Throwable {
+         if (!this.b) {
+            atl.c.warn("{}", this.a.get());
          }
 
-         $$3.b.put($$1, $$2);
-         return this;
-      }
-
-      public atl.a a(List<String> $$0, Path $$1) {
-         if ($$0.isEmpty()) {
-            throw new IllegalArgumentException("Path can't be empty");
-         } else {
-            int $$2 = $$0.size() - 1;
-            return this.a($$0.subList(0, $$2), $$0.get($$2), $$1);
-         }
-      }
-
-      public FileSystem a(String $$0) {
-         return new atl($$0, this.a);
+         super.finalize();
       }
    }
 
-   static record b(Map<String, atl.b> a, Map<String, Path> b) {
+   static record d(String a, @Nullable asg b, @Nullable Predicate<akk> c) {
 
-      public b() {
-         this(new HashMap<>(), new HashMap<>());
+      public void a(Collection<akk> $$0) {
+         if (this.c != null) {
+            $$0.removeIf(this.c);
+         }
       }
+
+      public boolean a(akk $$0) {
+         return this.c != null && this.c.test($$0);
+      }
+   }
+
+   static record e(asg a, atm<InputStream> b) {
    }
 }

@@ -1,115 +1,58 @@
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.Map;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cyt extends cyp {
-   private static final cyu a = cyu.a(cuu.tX, cuu.pt, cuu.si, cuu.ul, cuu.um, cuu.up, cuu.un, cuu.uq, cuu.uo, cuu.ur);
-   private static final cyu b = cyu.a(cuu.oy);
-   private static final cyu c = cyu.a(cuu.qY);
-   private static final Map<cum, cxk.a> d = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(cuu.tX, cxk.a.b);
-      $$0.put(cuu.pt, cxk.a.e);
-      $$0.put(cuu.si, cxk.a.c);
-      $$0.put(cuu.ul, cxk.a.d);
-      $$0.put(cuu.um, cxk.a.d);
-      $$0.put(cuu.up, cxk.a.d);
-      $$0.put(cuu.un, cxk.a.d);
-      $$0.put(cuu.uq, cxk.a.d);
-      $$0.put(cuu.uo, cxk.a.d);
-      $$0.put(cuu.ur, cxk.a.d);
-   });
-   private static final cyu e = cyu.a(cuu.pu);
+public class cyt<T extends cxo> implements cyl<T> {
+   private final cxo.a<T> x;
+   private final MapCodec<T> y;
+   private final ys<wf, T> z;
 
-   public cyt(cyn $$0) {
-      super($$0);
-   }
-
-   public boolean a(cqm $$0, dca $$1) {
-      boolean $$2 = false;
-      boolean $$3 = false;
-      boolean $$4 = false;
-      boolean $$5 = false;
-      boolean $$6 = false;
-
-      for (int $$7 = 0; $$7 < $$0.b(); $$7++) {
-         cur $$8 = $$0.a($$7);
-         if (!$$8.e()) {
-            if (a.a($$8)) {
-               if ($$4) {
-                  return false;
-               }
-
-               $$4 = true;
-            } else if (c.a($$8)) {
-               if ($$6) {
-                  return false;
-               }
-
-               $$6 = true;
-            } else if (b.a($$8)) {
-               if ($$5) {
-                  return false;
-               }
-
-               $$5 = true;
-            } else if (e.a($$8)) {
-               if ($$2) {
-                  return false;
-               }
-
-               $$2 = true;
-            } else {
-               if (!($$8.g() instanceof ctl)) {
-                  return false;
-               }
-
-               $$3 = true;
-            }
-         }
-      }
-
-      return $$2 && $$3;
-   }
-
-   public cur a(cqm $$0, jk.a $$1) {
-      cxk.a $$2 = cxk.a.a;
-      boolean $$3 = false;
-      boolean $$4 = false;
-      IntList $$5 = new IntArrayList();
-
-      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
-         cur $$7 = $$0.a($$6);
-         if (!$$7.e()) {
-            if (a.a($$7)) {
-               $$2 = d.get($$7.g());
-            } else if (c.a($$7)) {
-               $$3 = true;
-            } else if (b.a($$7)) {
-               $$4 = true;
-            } else if ($$7.g() instanceof ctl) {
-               $$5.add(((ctl)$$7.g()).c().f());
-            }
-         }
-      }
-
-      cur $$8 = new cur(cuu.uv);
-      $$8.b(km.T, new cxk($$2, $$5, IntList.of(), $$4, $$3));
-      return $$8;
+   public cyt(cxo.a<T> $$0, int $$1) {
+      this.x = $$0;
+      this.y = RecordCodecBuilder.mapCodec(
+         $$2 -> $$2.group(
+                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0xx -> $$0xx.c),
+                  cxu.d.fieldOf("category").orElse(cxu.c).forGetter($$0xx -> $$0xx.b),
+                  cyd.d.fieldOf("ingredient").forGetter($$0xx -> $$0xx.d),
+                  cua.e.fieldOf("result").forGetter($$0xx -> $$0xx.e),
+                  Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter($$0xx -> $$0xx.f),
+                  Codec.INT.fieldOf("cookingtime").orElse($$1).forGetter($$0xx -> $$0xx.g)
+               )
+               .apply($$2, $$0::create)
+      );
+      this.z = ys.a(this::a, this::a);
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public MapCodec<T> a() {
+      return this.y;
    }
 
    @Override
-   public cur a(jk.a $$0) {
-      return new cur(cuu.uv);
+   public ys<wf, T> b() {
+      return this.z;
    }
 
-   @Override
-   public czb<?> ao_() {
-      return czb.h;
+   private T a(wf $$0) {
+      String $$1 = $$0.p();
+      cxu $$2 = $$0.b(cxu.class);
+      cyd $$3 = cyd.b.decode($$0);
+      cua $$4 = cua.i.decode($$0);
+      float $$5 = $$0.readFloat();
+      int $$6 = $$0.l();
+      return this.x.create($$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   private void a(wf $$0, T $$1) {
+      $$0.a($$1.c);
+      $$0.a($$1.f());
+      cyd.b.encode($$0, $$1.d);
+      cua.i.encode($$0, $$1.e);
+      $$0.a($$1.f);
+      $$0.c($$1.g);
+   }
+
+   public cxo a(String $$0, cxu $$1, cyd $$2, cua $$3, float $$4, int $$5) {
+      return this.x.create($$0, $$1, $$2, $$3, $$4, $$5);
    }
 }

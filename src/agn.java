@@ -1,59 +1,37 @@
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+public class agn implements zb<agb> {
+   public static final ys<vr, agn> a = zb.a(agn::a, agn::new);
+   private final int b;
+   private final String c;
 
-public class agn implements zw<aci> {
-   public static final zn<xa, agn> a = zw.a(agn::a, agn::new);
-   private final boolean b;
-   private final List<af> c;
-   private final Set<alf> d;
-   private final Map<alf, ah> e;
-
-   public agn(boolean $$0, Collection<af> $$1, Set<alf> $$2, Map<alf, ah> $$3) {
+   public agn(int $$0, String $$1) {
       this.b = $$0;
-      this.c = List.copyOf($$1);
-      this.d = Set.copyOf($$2);
-      this.e = Map.copyOf($$3);
+      this.c = $$1;
    }
 
-   private agn(xa $$0) {
-      this.b = $$0.readBoolean();
-      this.c = af.b.decode($$0);
-      this.d = $$0.a(Sets::newLinkedHashSetWithExpectedSize, wm::q);
-      this.e = $$0.a(wm::q, ah::b);
+   private agn(vr $$0) {
+      this.b = $$0.l();
+      this.c = $$0.d(32500);
    }
 
-   private void a(xa $$0) {
-      $$0.a(this.b);
-      af.b.encode($$0, this.c);
-      $$0.a(this.d, wm::a);
-      $$0.a(this.e, wm::a, ($$0x, $$1) -> $$1.a($$0x));
+   private void a(vr $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c, 32500);
    }
 
    @Override
-   public zy<agn> a() {
-      return agu.ba;
+   public zd<agn> a() {
+      return afz.bp;
    }
 
-   public void a(aci $$0) {
+   public void a(agb $$0) {
       $$0.a(this);
    }
 
-   public List<af> b() {
-      return this.c;
-   }
-
-   public Set<alf> e() {
-      return this.d;
-   }
-
-   public Map<alf, ah> f() {
-      return this.e;
-   }
-
-   public boolean g() {
+   public int b() {
       return this.b;
+   }
+
+   public String e() {
+      return this.c;
    }
 }

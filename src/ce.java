@@ -6,24 +6,24 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-public class ce extends dr<ce.a> {
+public class ce extends ds<ce.a> {
    @Override
    public Codec<ce.a> a() {
       return ce.a.a;
    }
 
-   public void a(arg $$0, cmy $$1, cur $$2) {
+   public void a(aql $$0, cmg $$1, cua $$2) {
       int $$3 = 0;
       int $$4 = 0;
       int $$5 = 0;
 
       for (int $$6 = 0; $$6 < $$1.b(); $$6++) {
-         cur $$7 = $$1.a($$6);
+         cua $$7 = $$1.a($$6);
          if ($$7.e()) {
             $$4++;
          } else {
             $$5++;
-            if ($$7.I() >= $$7.j()) {
+            if ($$7.H() >= $$7.j()) {
                $$3++;
             }
          }
@@ -32,11 +32,11 @@ public class ce extends dr<ce.a> {
       this.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private void a(arg $$0, cmy $$1, cur $$2, int $$3, int $$4, int $$5) {
+   private void a(aql $$0, cmg $$1, cua $$2, int $$3, int $$4, int $$5) {
       this.a($$0, $$5x -> $$5x.a($$1, $$2, $$3, $$4, $$5));
    }
 
-   public static record a(Optional<bf> b, ce.a.a c, List<cp> d) implements dr.a {
+   public static record a(Optional<bf> b, ce.a.a c, List<cp> d) implements ds.a {
       public static final Codec<ce.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bu.b.optionalFieldOf("player").forGetter(ce.a::a),
@@ -54,17 +54,17 @@ public class ce extends dr<ce.a> {
          return am.f.a(new ce.a(Optional.empty(), ce.a.a.b, List.of($$0)));
       }
 
-      public static an<ce.a> a(dbz... $$0) {
+      public static an<ce.a> a(dcc... $$0) {
          cp[] $$1 = new cp[$$0.length];
 
          for (int $$2 = 0; $$2 < $$0.length; $$2++) {
-            $$1[$$2] = new cp(Optional.of(jm.a($$0[$$2].r().o())), de.d.c, kk.c, Map.of());
+            $$1[$$2] = new cp(Optional.of(jn.a($$0[$$2].r().o())), de.d.c, kl.c, Map.of());
          }
 
          return a($$1);
       }
 
-      public boolean a(cmy $$0, cur $$1, int $$2, int $$3, int $$4) {
+      public boolean a(cmg $$0, cua $$1, int $$2, int $$3, int $$4) {
          if (!this.c.a($$2, $$3, $$4)) {
             return false;
          } else if (this.d.isEmpty()) {
@@ -78,7 +78,7 @@ public class ce extends dr<ce.a> {
                   return true;
                }
 
-               cur $$8 = $$0.a($$7);
+               cua $$8 = $$0.a($$7);
                if (!$$8.e()) {
                   $$5.removeIf($$1x -> $$1x.a($$8));
                }

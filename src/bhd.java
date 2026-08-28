@@ -1,27 +1,32 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
 
-public class bhd {
-   public static final Map<String, String> a = ImmutableMap.builder()
-      .put("minecraft:blue_coral", "minecraft:tube_coral_block")
-      .put("minecraft:pink_coral", "minecraft:brain_coral_block")
-      .put("minecraft:purple_coral", "minecraft:bubble_coral_block")
-      .put("minecraft:red_coral", "minecraft:fire_coral_block")
-      .put("minecraft:yellow_coral", "minecraft:horn_coral_block")
-      .put("minecraft:blue_coral_plant", "minecraft:tube_coral")
-      .put("minecraft:pink_coral_plant", "minecraft:brain_coral")
-      .put("minecraft:purple_coral_plant", "minecraft:bubble_coral")
-      .put("minecraft:red_coral_plant", "minecraft:fire_coral")
-      .put("minecraft:yellow_coral_plant", "minecraft:horn_coral")
-      .put("minecraft:blue_coral_fan", "minecraft:tube_coral_fan")
-      .put("minecraft:pink_coral_fan", "minecraft:brain_coral_fan")
-      .put("minecraft:purple_coral_fan", "minecraft:bubble_coral_fan")
-      .put("minecraft:red_coral_fan", "minecraft:fire_coral_fan")
-      .put("minecraft:yellow_coral_fan", "minecraft:horn_coral_fan")
-      .put("minecraft:blue_dead_coral", "minecraft:dead_tube_coral")
-      .put("minecraft:pink_dead_coral", "minecraft:dead_brain_coral")
-      .put("minecraft:purple_dead_coral", "minecraft:dead_bubble_coral")
-      .put("minecraft:red_dead_coral", "minecraft:dead_fire_coral")
-      .put("minecraft:yellow_dead_coral", "minecraft:dead_horn_coral")
-      .build();
+public class bhd extends bfa {
+   private static final double a = 16.0;
+   private static final double b = 48.0;
+
+   public bhd(Schema $$0) {
+      super($$0, false, "Villager Follow Range Fix", bgd.B, "minecraft:villager");
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), bhd::a);
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.update(
+         "Attributes",
+         $$1 -> $$0.createList(
+               $$1.asStream()
+                  .map(
+                     $$0xx -> $$0xx.get("Name").asString("").equals("generic.follow_range") && $$0xx.get("Base").asDouble(0.0) == 16.0
+                           ? $$0xx.set("Base", $$0xx.createDouble(48.0))
+                           : $$0xx
+                  )
+            )
+      );
+   }
 }

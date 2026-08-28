@@ -1,37 +1,37 @@
-public class aeh implements zw<aci> {
-   public static final zn<wm, aeh> a = zw.a(aeh::a, aeh::new);
-   private final int b;
-   private final alf c;
+public class aeh implements zb<abn> {
+   public static final ys<vr, aeh> a = zb.a(aeh::a, aeh::new);
+   private final double b;
+   private final double c;
 
-   public aeh(int $$0, cyz<?> $$1) {
-      this.b = $$0;
-      this.c = $$1.a();
+   public aeh(dty $$0) {
+      this.b = $$0.a();
+      this.c = $$0.b();
    }
 
-   private aeh(wm $$0) {
-      this.b = $$0.readByte();
-      this.c = $$0.q();
+   private aeh(vr $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
    }
 
-   private void a(wm $$0) {
-      $$0.k(this.b);
+   private void a(vr $$0) {
+      $$0.a(this.b);
       $$0.a(this.c);
    }
 
    @Override
-   public zy<aeh> a() {
-      return agu.Y;
+   public zd<aeh> a() {
+      return afz.ar;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
    }
 
-   public alf b() {
+   public double b() {
       return this.c;
    }
 
-   public int e() {
+   public double e() {
       return this.b;
    }
 }

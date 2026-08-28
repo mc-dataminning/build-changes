@@ -1,131 +1,280 @@
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
+import java.util.List;
+import java.util.regex.Pattern;
 
-public class uv extends vi {
-   private static final int c = 12;
-   public static final uv a = new uv(0.0F);
-   public static final vr<uv> b = new vr.a<uv>() {
-      public uv a(DataInput $$0, vb $$1) throws IOException {
-         return uv.a(d($$0, $$1));
+public class uv {
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("argument.nbt.trailing"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wu.c("argument.nbt.expected.key"));
+   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wu.c("argument.nbt.expected.value"));
+   public static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> wu.b("argument.nbt.list.mixed", $$0, $$1));
+   public static final Dynamic2CommandExceptionType e = new Dynamic2CommandExceptionType(($$0, $$1) -> wu.b("argument.nbt.array.mixed", $$0, $$1));
+   public static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> wu.b("argument.nbt.array.invalid", $$0));
+   public static final char g = ',';
+   public static final char h = ':';
+   private static final char k = '[';
+   private static final char l = ']';
+   private static final char m = '}';
+   private static final char n = '{';
+   private static final Pattern o = Pattern.compile("[-+]?(?:[0-9]+[.]|[0-9]*[.][0-9]+)(?:e[-+]?[0-9]+)?", 2);
+   private static final Pattern p = Pattern.compile("[-+]?(?:[0-9]+[.]?|[0-9]*[.][0-9]+)(?:e[-+]?[0-9]+)?d", 2);
+   private static final Pattern q = Pattern.compile("[-+]?(?:[0-9]+[.]?|[0-9]*[.][0-9]+)(?:e[-+]?[0-9]+)?f", 2);
+   private static final Pattern r = Pattern.compile("[-+]?(?:0|[1-9][0-9]*)b", 2);
+   private static final Pattern s = Pattern.compile("[-+]?(?:0|[1-9][0-9]*)l", 2);
+   private static final Pattern t = Pattern.compile("[-+]?(?:0|[1-9][0-9]*)s", 2);
+   private static final Pattern u = Pattern.compile("[-+]?(?:0|[1-9][0-9]*)");
+   public static final Codec<tx> i = Codec.STRING.comapFlatMap($$0 -> {
+      try {
+         return DataResult.success(new uv(new StringReader($$0)).a(), Lifecycle.stable());
+      } catch (CommandSyntaxException var2) {
+         return DataResult.error(var2::getMessage);
+      }
+   }, tx::toString);
+   public static final Codec<tx> j = Codec.withAlternative(i, tx.a);
+   private final StringReader v;
+
+   public static tx a(String $$0) throws CommandSyntaxException {
+      return new uv(new StringReader($$0)).a();
+   }
+
+   @VisibleForTesting
+   tx a() throws CommandSyntaxException {
+      tx $$0 = this.f();
+      this.v.skipWhitespace();
+      if (this.v.canRead()) {
+         throw a.createWithContext(this.v);
+      } else {
+         return $$0;
+      }
+   }
+
+   public uv(StringReader $$0) {
+      this.v = $$0;
+   }
+
+   protected String b() throws CommandSyntaxException {
+      this.v.skipWhitespace();
+      if (!this.v.canRead()) {
+         throw b.createWithContext(this.v);
+      } else {
+         return this.v.readString();
+      }
+   }
+
+   protected uu c() throws CommandSyntaxException {
+      this.v.skipWhitespace();
+      int $$0 = this.v.getCursor();
+      if (StringReader.isQuotedStringStart(this.v.peek())) {
+         return us.a(this.v.readQuotedString());
+      } else {
+         String $$1 = this.v.readUnquotedString();
+         if ($$1.isEmpty()) {
+            this.v.setCursor($$0);
+            throw c.createWithContext(this.v);
+         } else {
+            return this.b($$1);
+         }
+      }
+   }
+
+   private uu b(String $$0) {
+      try {
+         if (q.matcher($$0).matches()) {
+            return ua.a(Float.parseFloat($$0.substring(0, $$0.length() - 1)));
+         }
+
+         if (r.matcher($$0).matches()) {
+            return tv.a(Byte.parseByte($$0.substring(0, $$0.length() - 1)));
+         }
+
+         if (s.matcher($$0).matches()) {
+            return uf.a(Long.parseLong($$0.substring(0, $$0.length() - 1)));
+         }
+
+         if (t.matcher($$0).matches()) {
+            return up.a(Short.parseShort($$0.substring(0, $$0.length() - 1)));
+         }
+
+         if (u.matcher($$0).matches()) {
+            return uc.a(Integer.parseInt($$0));
+         }
+
+         if (p.matcher($$0).matches()) {
+            return ty.a(Double.parseDouble($$0.substring(0, $$0.length() - 1)));
+         }
+
+         if (o.matcher($$0).matches()) {
+            return ty.a(Double.parseDouble($$0));
+         }
+
+         if ("true".equalsIgnoreCase($$0)) {
+            return tv.c;
+         }
+
+         if ("false".equalsIgnoreCase($$0)) {
+            return tv.b;
+         }
+      } catch (NumberFormatException var3) {
       }
 
-      @Override
-      public vm.b a(DataInput $$0, vm $$1, vb $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
+      return us.a($$0);
+   }
+
+   public uu d() throws CommandSyntaxException {
+      this.v.skipWhitespace();
+      if (!this.v.canRead()) {
+         throw c.createWithContext(this.v);
+      } else {
+         char $$0 = this.v.peek();
+         if ($$0 == '{') {
+            return this.f();
+         } else {
+            return $$0 == '[' ? this.e() : this.c();
+         }
+      }
+   }
+
+   protected uu e() throws CommandSyntaxException {
+      return this.v.canRead(3) && !StringReader.isQuotedStringStart(this.v.peek(1)) && this.v.peek(2) == ';' ? this.h() : this.g();
+   }
+
+   public tx f() throws CommandSyntaxException {
+      this.a('{');
+      tx $$0 = new tx();
+      this.v.skipWhitespace();
+
+      while (this.v.canRead() && this.v.peek() != '}') {
+         int $$1 = this.v.getCursor();
+         String $$2 = this.b();
+         if ($$2.isEmpty()) {
+            this.v.setCursor($$1);
+            throw b.createWithContext(this.v);
+         }
+
+         this.a(':');
+         $$0.a($$2, this.d());
+         if (!this.i()) {
+            break;
+         }
+
+         if (!this.v.canRead()) {
+            throw b.createWithContext(this.v);
+         }
       }
 
-      private static float d(DataInput $$0, vb $$1) throws IOException {
-         $$1.b(12L);
-         return $$0.readFloat();
+      this.a('}');
+      return $$0;
+   }
+
+   private uu g() throws CommandSyntaxException {
+      this.a('[');
+      this.v.skipWhitespace();
+      if (!this.v.canRead()) {
+         throw c.createWithContext(this.v);
+      } else {
+         ud $$0 = new ud();
+         uw<?> $$1 = null;
+
+         while (this.v.peek() != ']') {
+            int $$2 = this.v.getCursor();
+            uu $$3 = this.d();
+            uw<?> $$4 = $$3.c();
+            if ($$1 == null) {
+               $$1 = $$4;
+            } else if ($$4 != $$1) {
+               this.v.setCursor($$2);
+               throw d.createWithContext(this.v, $$4.b(), $$1.b());
+            }
+
+            $$0.add($$3);
+            if (!this.i()) {
+               break;
+            }
+
+            if (!this.v.canRead()) {
+               throw c.createWithContext(this.v);
+            }
+         }
+
+         this.a(']');
+         return $$0;
+      }
+   }
+
+   private uu h() throws CommandSyntaxException {
+      this.a('[');
+      int $$0 = this.v.getCursor();
+      char $$1 = this.v.read();
+      this.v.read();
+      this.v.skipWhitespace();
+      if (!this.v.canRead()) {
+         throw c.createWithContext(this.v);
+      } else if ($$1 == 'B') {
+         return new tu(this.a(tu.a, tv.a));
+      } else if ($$1 == 'L') {
+         return new ue(this.a(ue.a, uf.a));
+      } else if ($$1 == 'I') {
+         return new ub(this.a(ub.a, uc.a));
+      } else {
+         this.v.setCursor($$0);
+         throw f.createWithContext(this.v, String.valueOf($$1));
+      }
+   }
+
+   private <T extends Number> List<T> a(uw<?> $$0, uw<?> $$1) throws CommandSyntaxException {
+      List<T> $$2 = Lists.newArrayList();
+
+      while (this.v.peek() != ']') {
+         int $$3 = this.v.getCursor();
+         uu $$4 = this.d();
+         uw<?> $$5 = $$4.c();
+         if ($$5 != $$1) {
+            this.v.setCursor($$3);
+            throw e.createWithContext(this.v, $$5.b(), $$0.b());
+         }
+
+         if ($$1 == tv.a) {
+            $$2.add((T)((un)$$4).i());
+         } else if ($$1 == uf.a) {
+            $$2.add((T)((un)$$4).f());
+         } else {
+            $$2.add((T)((un)$$4).g());
+         }
+
+         if (!this.i()) {
+            break;
+         }
+
+         if (!this.v.canRead()) {
+            throw c.createWithContext(this.v);
+         }
       }
 
-      @Override
-      public int c() {
-         return 4;
-      }
+      this.a(']');
+      return $$2;
+   }
 
-      @Override
-      public String a() {
-         return "FLOAT";
-      }
-
-      @Override
-      public String b() {
-         return "TAG_Float";
-      }
-
-      @Override
-      public boolean d() {
+   private boolean i() {
+      this.v.skipWhitespace();
+      if (this.v.canRead() && this.v.peek() == ',') {
+         this.v.skip();
+         this.v.skipWhitespace();
          return true;
+      } else {
+         return false;
       }
-   };
-   private final float w;
-
-   private uv(float $$0) {
-      this.w = $$0;
    }
 
-   public static uv a(float $$0) {
-      return $$0 == 0.0F ? a : new uv($$0);
-   }
-
-   @Override
-   public void a(DataOutput $$0) throws IOException {
-      $$0.writeFloat(this.w);
-   }
-
-   @Override
-   public int a() {
-      return 12;
-   }
-
-   @Override
-   public byte b() {
-      return 5;
-   }
-
-   @Override
-   public vr<uv> c() {
-      return b;
-   }
-
-   public uv e() {
-      return this;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof uv && this.w == ((uv)$$0).w;
-   }
-
-   @Override
-   public int hashCode() {
-      return Float.floatToIntBits(this.w);
-   }
-
-   @Override
-   public void a(vt $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public long f() {
-      return (long)this.w;
-   }
-
-   @Override
-   public int g() {
-      return ayz.d(this.w);
-   }
-
-   @Override
-   public short h() {
-      return (short)(ayz.d(this.w) & 65535);
-   }
-
-   @Override
-   public byte i() {
-      return (byte)(ayz.d(this.w) & 0xFF);
-   }
-
-   @Override
-   public double j() {
-      return (double)this.w;
-   }
-
-   @Override
-   public float k() {
-      return this.w;
-   }
-
-   @Override
-   public Number l() {
-      return this.w;
-   }
-
-   @Override
-   public vm.b a(vm $$0) {
-      return $$0.a(this.w);
+   private void a(char $$0) throws CommandSyntaxException {
+      this.v.skipWhitespace();
+      this.v.expect($$0);
    }
 }

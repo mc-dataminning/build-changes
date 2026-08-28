@@ -1,57 +1,101 @@
-public class fls extends fnf {
-   private final Runnable c;
-   protected final fls.a a;
-   private final xp d;
-   private final boolean r;
-   private fhz s = fhz.a;
-   protected int b;
-   private fhi u;
+import javax.annotation.Nullable;
 
-   public fls(Runnable $$0, fls.a $$1, xp $$2, xp $$3, boolean $$4) {
-      super($$2);
-      this.c = $$0;
-      this.a = $$1;
-      this.d = $$3;
-      this.r = $$4;
+public record fls(flr a, int b, int c) {
+   private static final fls d = new fls(0, 0, 0, 0);
+
+   public fls(int $$0, int $$1, int $$2, int $$3) {
+      this(new flr($$0, $$1), $$2, $$3);
    }
 
-   @Override
-   protected void aM_() {
-      super.aM_();
-      this.s = fhz.a(this.p, this.d, this.n - 50);
-      int $$0 = (this.s.a() + 1) * 9;
-      this.c(fhg.a(xp.c("selectWorld.backupJoinConfirmButton"), $$0x -> this.a.proceed(true, this.u.a())).a(this.n / 2 - 155, 100 + $$0, 150, 20).a());
-      this.c(fhg.a(xp.c("selectWorld.backupJoinSkipButton"), $$0x -> this.a.proceed(false, this.u.a())).a(this.n / 2 - 155 + 160, 100 + $$0, 150, 20).a());
-      this.c(fhg.a(xo.e, $$0x -> this.c.run()).a(this.n / 2 - 155 + 80, 124 + $$0, 150, 20).a());
-      this.u = fhi.a(xp.c("selectWorld.backupEraseCache"), this.p).a(this.n / 2 - 155 + 80, 76 + $$0).a();
-      if (this.r) {
-         this.c(this.u);
-      }
+   public static fls a() {
+      return d;
    }
 
-   @Override
-   public void a(fgt $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 50, 16777215);
-      this.s.a($$0, this.n / 2, 70);
+   public static fls a(flp $$0, int $$1, int $$2, int $$3, int $$4) {
+      return switch ($$0) {
+         case a -> new fls($$1, $$2, $$3, $$4);
+         case b -> new fls($$2, $$1, $$4, $$3);
+      };
    }
 
-   @Override
-   public boolean aC_() {
-      return false;
+   public fls a(flq $$0) {
+      return new fls(this.a.a($$0), this.b, this.c);
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.c.run();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
+   public int a(flp $$0) {
+      return switch ($$0) {
+         case a -> this.b;
+         case b -> this.c;
+      };
    }
 
-   public interface a {
-      void proceed(boolean var1, boolean var2);
+   public int b(flq $$0) {
+      flp $$1 = $$0.a();
+      return $$0.c() ? this.a.a($$1) + this.a($$1) - 1 : this.a.a($$1);
+   }
+
+   public fls c(flq $$0) {
+      int $$1 = this.b($$0);
+      flp $$2 = $$0.a().a();
+      int $$3 = this.b($$2.c());
+      int $$4 = this.a($$2);
+      return a($$0.a(), $$1, $$3, 1, $$4).a($$0);
+   }
+
+   public boolean a(fls $$0) {
+      return this.a($$0, flp.a) && this.a($$0, flp.b);
+   }
+
+   public boolean a(fls $$0, flp $$1) {
+      int $$2 = this.b($$1.c());
+      int $$3 = $$0.b($$1.c());
+      int $$4 = this.b($$1.b());
+      int $$5 = $$0.b($$1.b());
+      return Math.max($$2, $$3) <= Math.min($$4, $$5);
+   }
+
+   public int b(flp $$0) {
+      return (this.b($$0.b()) + this.b($$0.c())) / 2;
+   }
+
+   @Nullable
+   public fls b(fls $$0) {
+      int $$1 = Math.max(this.d(), $$0.d());
+      int $$2 = Math.max(this.b(), $$0.b());
+      int $$3 = Math.min(this.e(), $$0.e());
+      int $$4 = Math.min(this.c(), $$0.c());
+      return $$1 < $$3 && $$2 < $$4 ? new fls($$1, $$2, $$3 - $$1, $$4 - $$2) : null;
+   }
+
+   public int b() {
+      return this.a.b();
+   }
+
+   public int c() {
+      return this.a.b() + this.c;
+   }
+
+   public int d() {
+      return this.a.a();
+   }
+
+   public int e() {
+      return this.a.a() + this.b;
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= this.d() && $$0 < this.e() && $$1 >= this.b() && $$1 < this.c();
+   }
+
+   public flr f() {
+      return this.a;
+   }
+
+   public int g() {
+      return this.b;
+   }
+
+   public int h() {
+      return this.c;
    }
 }

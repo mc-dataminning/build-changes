@@ -1,16 +1,19 @@
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+
 public class cld {
-   private static final double a = 50.0;
-
-   public static evt a(btr $$0, azh $$1) {
-      int $$2 = 90;
-      float $$3 = $$0.ba + 180.0F + (float)$$1.k() * 90.0F / 2.0F;
-      float $$4 = ayz.i($$1.i(), 4.0F, 8.0F);
-      evt $$5 = evt.a(0.0F, $$3).a((double)$$4);
-      return $$0.dn().e($$5);
-   }
-
-   public static boolean a(clb $$0, evt $$1) {
-      evt $$2 = new evt($$0.du(), $$0.dw(), $$0.dA());
-      return $$1.f($$2) > 50.0 ? false : $$0.dP().a(new dbj($$2, $$1, dbj.a.a, dbj.b.a, $$0)).c() == evr.a.a;
+   public static bus<bsy> a(int $$0) {
+      return bye.a(
+         (Function<bye.b<bsy>, ? extends App<bye.c<bsy>, byh<bsy>>>)($$1 -> $$1.group($$1.b(ccc.L), $$1.c(ccc.ad), $$1.c(ccc.ag), $$1.c(ccc.af))
+               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$4x, $$5x, $$6) -> {
+                     cir $$7 = $$1.b($$2);
+                     if (!cky.a($$7.p())) {
+                        return false;
+                     } else {
+                        $$3.a(true, (long)$$0);
+                        return true;
+                     }
+                  }))
+      );
    }
 }

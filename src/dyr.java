@@ -1,167 +1,280 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.Arrays;
 import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.function.Function;
 
-public record dyr(Map<ale<dvx>, dvx> b) {
-   public static final MapCodec<dyr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.unboundedMap(ale.a(lq.aT), dvx.a).fieldOf("dimensions").forGetter(dyr::d)).apply($$0, $$0.stable(dyr::new))
-   );
-   private static final Set<ale<dvx>> c = ImmutableSet.of(dvx.b, dvx.c, dvx.d);
-   private static final int d = c.size();
+public class dyr {
+   private static final dsh a = dfh.hj.o();
+   private static final dsh b = dfh.hk.o();
+   private static final dsh c = dfh.iA.o();
+   private static final dsh d = dfh.hn.o();
+   private static final dsh e = dfh.hv.o();
+   private static final dsh f = dfh.hx.o();
+   private static final dsh g = dfh.hr.o();
+   private static final dsh h = dfh.iC.o();
+   private static final dsh i = dfh.dP.o();
+   private final dsh j;
+   private final int k;
+   private final dsh[] l;
+   private final ene m;
+   private final ene n;
+   private final ene o;
+   private final ene p;
+   private final ene q;
+   private final ene r;
+   private final ene s;
+   private final dym t;
+   private final ene u;
+   private final ene v;
 
-   public dyr(Map<ale<dvx>, dvx> b) {
-      dvx $$1 = b.get(dvx.b);
-      if ($$1 == null) {
-         throw new IllegalStateException("Overworld settings missing");
-      } else {
-         this.b = b;
+   public dyr(dyn $$0, dsh $$1, int $$2, dym $$3) {
+      this.j = $$1;
+      this.k = $$2;
+      this.t = $$3;
+      this.m = $$0.a(dyi.P);
+      this.l = a($$3.a(new akk("clay_bands")));
+      this.u = $$0.a(dyi.N);
+      this.v = $$0.a(dyi.O);
+      this.n = $$0.a(dyi.Q);
+      this.o = $$0.a(dyi.R);
+      this.p = $$0.a(dyi.S);
+      this.q = $$0.a(dyi.T);
+      this.r = $$0.a(dyi.U);
+      this.s = $$0.a(dyi.V);
+   }
+
+   public void a(dyn $$0, ddf $$1, jw<ddd> $$2, boolean $$3, dyw $$4, final dud $$5, dyd $$6, dyq.o $$7) {
+      final ja.a $$8 = new ja.a();
+      final dbk $$9 = $$5.f();
+      int $$10 = $$9.d();
+      int $$11 = $$9.e();
+      dua $$12 = new dua() {
+         @Override
+         public dsh a(int $$0) {
+            return $$5.a_($$8.q($$0));
+         }
+
+         @Override
+         public void a(int $$0, dsh $$1) {
+            dcf $$2 = $$5.z();
+            if ($$0 >= $$2.I_() && $$0 < $$2.am()) {
+               $$5.a($$8.q($$0), $$1, false);
+               if (!$$1.u().c()) {
+                  $$5.e($$8);
+               }
+            }
+         }
+
+         @Override
+         public String toString() {
+            return "ChunkBlockColumn " + $$9;
+         }
+      };
+      dyq.g $$13 = new dyq.g(this, $$0, $$5, $$6, $$1::a, $$2, $$4);
+      dyq.u $$14 = $$7.apply($$13);
+      ja.a $$15 = new ja.a();
+
+      for (int $$16 = 0; $$16 < 16; $$16++) {
+         for (int $$17 = 0; $$17 < 16; $$17++) {
+            int $$18 = $$10 + $$16;
+            int $$19 = $$11 + $$17;
+            int $$20 = $$5.a(dxz.a.a, $$16, $$17) + 1;
+            $$8.p($$18).r($$19);
+            jj<ddd> $$21 = $$1.a($$15.d($$18, $$3 ? 0 : $$20, $$19));
+            if ($$21.a(ddk.B)) {
+               this.a($$12, $$18, $$19, $$20, $$5);
+            }
+
+            int $$22 = $$5.a(dxz.a.a, $$16, $$17) + 1;
+            $$13.a($$18, $$19);
+            int $$23 = 0;
+            int $$24 = Integer.MIN_VALUE;
+            int $$25 = Integer.MAX_VALUE;
+            int $$26 = $$5.I_();
+
+            for (int $$27 = $$22; $$27 >= $$26; $$27--) {
+               dsh $$28 = $$12.a($$27);
+               if ($$28.i()) {
+                  $$23 = 0;
+                  $$24 = Integer.MIN_VALUE;
+               } else if (!$$28.u().c()) {
+                  if ($$24 == Integer.MIN_VALUE) {
+                     $$24 = $$27 + 1;
+                  }
+               } else {
+                  if ($$25 >= $$27) {
+                     $$25 = dvz.g;
+
+                     for (int $$29 = $$27 - 1; $$29 >= $$26 - 1; $$29--) {
+                        dsh $$30 = $$12.a($$29);
+                        if (!this.a($$30)) {
+                           $$25 = $$29 + 1;
+                           break;
+                        }
+                     }
+                  }
+
+                  $$23++;
+                  int $$31 = $$27 - $$25 + 1;
+                  $$13.a($$23, $$31, $$24, $$18, $$27, $$19);
+                  if ($$28 == this.j) {
+                     dsh $$32 = $$14.tryApply($$18, $$27, $$19);
+                     if ($$32 != null) {
+                        $$12.a($$27, $$32);
+                     }
+                  }
+               }
+            }
+
+            if ($$21.a(ddk.W) || $$21.a(ddk.X)) {
+               this.a($$13.b(), $$21.a(), $$12, $$15, $$18, $$19, $$20);
+            }
+         }
       }
    }
 
-   public dyr(jv<dvx> $$0) {
-      this($$0.h().collect(Collectors.toMap(ji.c::h, ji.c::a)));
+   protected int a(int $$0, int $$1) {
+      double $$2 = this.u.a((double)$$0, 0.0, (double)$$1);
+      return (int)($$2 * 2.75 + 3.0 + this.t.a($$0, 0, $$1).j() * 0.25);
    }
 
-   public static Stream<ale<dvx>> a(Stream<ale<dvx>> $$0) {
-      return Stream.concat(c.stream(), $$0.filter($$0x -> !c.contains($$0x)));
+   protected double b(int $$0, int $$1) {
+      return this.v.a((double)$$0, 0.0, (double)$$1);
    }
 
-   public dyr a(jw $$0, dub $$1) {
-      jv<dvw> $$2 = $$0.d(lq.aE);
-      Map<ale<dvx>, dvx> $$3 = a($$2, this.b, $$1);
-      return new dyr($$3);
+   private boolean a(dsh $$0) {
+      return !$$0.i() && $$0.u().c();
    }
 
-   public static Map<ale<dvx>, dvx> a(jv<dvw> $$0, Map<ale<dvx>, dvx> $$1, dub $$2) {
-      dvx $$3 = $$1.get(dvx.b);
-      ji<dvw> $$4 = (ji<dvw>)($$3 == null ? $$0.g(dvu.a) : $$3.a());
-      return a($$1, $$4, $$2);
+   @Deprecated
+   public Optional<dsh> a(dyq.o $$0, eaa $$1, Function<ja, jj<ddd>> $$2, dud $$3, dyd $$4, ja $$5, boolean $$6) {
+      dyq.g $$7 = new dyq.g(this, $$1.d(), $$3, $$4, $$2, $$1.c().d(lr.aE), $$1);
+      dyq.u $$8 = $$0.apply($$7);
+      int $$9 = $$5.u();
+      int $$10 = $$5.v();
+      int $$11 = $$5.w();
+      $$7.a($$9, $$11);
+      $$7.a(1, 1, $$6 ? $$10 + 1 : Integer.MIN_VALUE, $$9, $$10, $$11);
+      dsh $$12 = $$8.tryApply($$9, $$10, $$11);
+      return Optional.ofNullable($$12);
    }
 
-   public static Map<ale<dvx>, dvx> a(Map<ale<dvx>, dvx> $$0, ji<dvw> $$1, dub $$2) {
-      Builder<ale<dvx>, dvx> $$3 = ImmutableMap.builder();
-      $$3.putAll($$0);
-      $$3.put(dvx.b, new dvx($$1, $$2));
-      return $$3.buildKeepingLast();
-   }
+   private void a(dua $$0, int $$1, int $$2, int $$3, dcf $$4) {
+      double $$5 = 0.2;
+      double $$6 = Math.min(Math.abs(this.p.a((double)$$1, 0.0, (double)$$2) * 8.25), this.n.a((double)$$1 * 0.2, 0.0, (double)$$2 * 0.2) * 15.0);
+      if (!($$6 <= 0.0)) {
+         double $$7 = 0.75;
+         double $$8 = 1.5;
+         double $$9 = Math.abs(this.o.a((double)$$1 * 0.75, 0.0, (double)$$2 * 0.75) * 1.5);
+         double $$10 = 64.0 + Math.min($$6 * $$6 * 2.5, Math.ceil($$9 * 50.0) + 24.0);
+         int $$11 = aye.a($$10);
+         if ($$3 <= $$11) {
+            for (int $$12 = $$11; $$12 >= $$4.I_(); $$12--) {
+               dsh $$13 = $$0.a($$12);
+               if ($$13.a(this.j.b())) {
+                  break;
+               }
 
-   public dub a() {
-      dvx $$0 = this.b.get(dvx.b);
-      if ($$0 == null) {
-         throw new IllegalStateException("Overworld settings missing");
-      } else {
-         return $$0.b();
+               if ($$13.a(dfh.G)) {
+                  return;
+               }
+            }
+
+            for (int $$14 = $$11; $$14 >= $$4.I_() && $$0.a($$14).i(); $$14--) {
+               $$0.a($$14, this.j);
+            }
+         }
       }
    }
 
-   public Optional<dvx> a(ale<dvx> $$0) {
-      return Optional.ofNullable(this.b.get($$0));
-   }
+   private void a(int $$0, ddd $$1, dua $$2, ja.a $$3, int $$4, int $$5, int $$6) {
+      double $$7 = 1.28;
+      double $$8 = Math.min(Math.abs(this.s.a((double)$$4, 0.0, (double)$$5) * 8.25), this.q.a((double)$$4 * 1.28, 0.0, (double)$$5 * 1.28) * 15.0);
+      if (!($$8 <= 1.8)) {
+         double $$9 = 1.17;
+         double $$10 = 1.5;
+         double $$11 = Math.abs(this.r.a((double)$$4 * 1.17, 0.0, (double)$$5 * 1.17) * 1.5);
+         double $$12 = Math.min($$8 * $$8 * 1.2, Math.ceil($$11 * 40.0) + 14.0);
+         if ($$1.d($$3.d($$4, 63, $$5))) {
+            $$12 -= 2.0;
+         }
 
-   public ImmutableSet<ale<dca>> b() {
-      return this.d().keySet().stream().map(lq::a).collect(ImmutableSet.toImmutableSet());
-   }
-
-   public boolean c() {
-      return this.a() instanceof dxn;
-   }
-
-   private static eqc.a b(jv<dvx> $$0) {
-      return $$0.e(dvx.b).map($$0x -> {
-         dub $$1 = $$0x.b();
-         if ($$1 instanceof dxn) {
-            return eqc.a.c;
+         double $$13;
+         if ($$12 > 2.0) {
+            $$13 = (double)this.k - $$12 - 7.0;
+            $$12 += (double)this.k;
          } else {
-            return $$1 instanceof dxr ? eqc.a.b : eqc.a.a;
+            $$12 = 0.0;
+            $$13 = 0.0;
          }
-      }).orElse(eqc.a.a);
-   }
 
-   static Lifecycle a(ale<dvx> $$0, dvx $$1) {
-      return b($$0, $$1) ? Lifecycle.stable() : Lifecycle.experimental();
-   }
+         double $$15 = $$12;
+         aym $$16 = this.t.a($$4, 0, $$5);
+         int $$17 = 2 + $$16.a(4);
+         int $$18 = this.k + 18 + $$16.a(10);
+         int $$19 = 0;
 
-   private static boolean b(ale<dvx> $$0, dvx $$1) {
-      if ($$0 == dvx.b) {
-         return a($$1);
-      } else if ($$0 == dvx.c) {
-         return b($$1);
-      } else {
-         return $$0 == dvx.d ? c($$1) : false;
+         for (int $$20 = Math.max($$6, (int)$$12 + 1); $$20 >= $$0; $$20--) {
+            if ($$2.a($$20).i() && $$20 < (int)$$15 && $$16.j() > 0.01
+               || $$2.a($$20).a(dfh.G) && $$20 > (int)$$13 && $$20 < this.k && $$13 != 0.0 && $$16.j() > 0.15) {
+               if ($$19 <= $$17 && $$20 > $$18) {
+                  $$2.a($$20, i);
+                  $$19++;
+               } else {
+                  $$2.a($$20, h);
+               }
+            }
+         }
       }
    }
 
-   private static boolean a(dvx $$0) {
-      ji<dvw> $$1 = $$0.a();
-      if (!$$1.a(dvu.a) && !$$1.a(dvu.d)) {
-         return false;
-      } else {
-         if ($$0.b().d() instanceof ddm $$2 && !$$2.a(ddo.b)) {
-            return false;
-         }
+   private static dsh[] a(aym $$0) {
+      dsh[] $$1 = new dsh[192];
+      Arrays.fill($$1, c);
 
-         return true;
-      }
-   }
-
-   private static boolean b(dvx $$0) {
-      return $$0.a().a(dvu.b) && $$0.b() instanceof dxz $$1 && $$1.a(dyb.f) && $$1.d() instanceof ddm $$2 && $$2.a(ddo.a);
-   }
-
-   private static boolean c(dvx $$0) {
-      return $$0.a().a(dvu.c) && $$0.b() instanceof dxz $$1 && $$1.a(dyb.g) && $$1.d() instanceof ddq;
-   }
-
-   public dyr.b a(jv<dvx> $$0) {
-      Stream<ale<dvx>> $$1 = Stream.concat($$0.f().stream(), this.b.keySet().stream()).distinct();
-
-      record a(ale<dvx> a, dvx b) {
-
-         ju c() {
-            return new ju(Optional.empty(), dyr.a(this.a, this.b));
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         $$2 += $$0.a(5) + 1;
+         if ($$2 < $$1.length) {
+            $$1[$$2] = b;
          }
       }
 
-      List<a> $$2 = new ArrayList<>();
-      a($$1).forEach($$2x -> $$0.e($$2x).or(() -> Optional.ofNullable(this.b.get($$2x))).ifPresent($$2xx -> $$2.add(new a($$2x, $$2xx))));
-      Lifecycle $$3 = $$2.size() == d ? Lifecycle.stable() : Lifecycle.experimental();
-      ke<dvx> $$4 = new jq<>(lq.aT, $$3);
-      $$2.forEach($$1x -> $$4.a($$1x.a, $$1x.b, $$1x.c()));
-      jv<dvx> $$5 = $$4.l();
-      eqc.a $$6 = b($$5);
-      return new dyr.b($$5.l(), $$6);
+      a($$0, $$1, 1, d);
+      a($$0, $$1, 2, e);
+      a($$0, $$1, 1, f);
+      int $$3 = $$0.a(9, 15);
+      int $$4 = 0;
+
+      for (int $$5 = 0; $$4 < $$3 && $$5 < $$1.length; $$5 += $$0.a(16) + 4) {
+         $$1[$$5] = a;
+         if ($$5 - 1 > 0 && $$0.h()) {
+            $$1[$$5 - 1] = g;
+         }
+
+         if ($$5 + 1 < $$1.length && $$0.h()) {
+            $$1[$$5 + 1] = g;
+         }
+
+         $$4++;
+      }
+
+      return $$1;
    }
 
-   public Map<ale<dvx>, dvx> d() {
-      return this.b;
+   private static void a(aym $$0, dsh[] $$1, int $$2, dsh $$3) {
+      int $$4 = $$0.a(6, 15);
+
+      for (int $$5 = 0; $$5 < $$4; $$5++) {
+         int $$6 = $$2 + $$0.a(3);
+         int $$7 = $$0.a($$1.length);
+
+         for (int $$8 = 0; $$7 + $$8 < $$1.length && $$8 < $$6; $$8++) {
+            $$1[$$7 + $$8] = $$3;
+         }
+      }
    }
 
-   public static record b(jv<dvx> a, eqc.a b) {
-      public Lifecycle a() {
-         return this.a.d();
-      }
-
-      public jw.b b() {
-         return new jw.c(List.of(this.a)).d();
-      }
-
-      public jv<dvx> c() {
-         return this.a;
-      }
-
-      public eqc.a d() {
-         return this.b;
-      }
+   protected dsh a(int $$0, int $$1, int $$2) {
+      int $$3 = (int)Math.round(this.m.a((double)$$0, 0.0, (double)$$2) * 4.0);
+      return this.l[($$1 + $$3 + this.l.length) % this.l.length];
    }
 }

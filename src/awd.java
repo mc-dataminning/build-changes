@@ -1,93 +1,157 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
-import javax.annotation.Nullable;
+public final class awd {
+   public static final awk<ctv> a = a("wool");
+   public static final awk<ctv> b = a("planks");
+   public static final awk<ctv> c = a("stone_bricks");
+   public static final awk<ctv> d = a("wooden_buttons");
+   public static final awk<ctv> e = a("stone_buttons");
+   public static final awk<ctv> f = a("buttons");
+   public static final awk<ctv> g = a("wool_carpets");
+   public static final awk<ctv> h = a("wooden_doors");
+   public static final awk<ctv> i = a("wooden_stairs");
+   public static final awk<ctv> j = a("wooden_slabs");
+   public static final awk<ctv> k = a("wooden_fences");
+   public static final awk<ctv> l = a("fence_gates");
+   public static final awk<ctv> m = a("wooden_pressure_plates");
+   public static final awk<ctv> n = a("wooden_trapdoors");
+   public static final awk<ctv> o = a("doors");
+   public static final awk<ctv> p = a("saplings");
+   public static final awk<ctv> q = a("logs_that_burn");
+   public static final awk<ctv> r = a("logs");
+   public static final awk<ctv> s = a("dark_oak_logs");
+   public static final awk<ctv> t = a("oak_logs");
+   public static final awk<ctv> u = a("birch_logs");
+   public static final awk<ctv> v = a("acacia_logs");
+   public static final awk<ctv> w = a("cherry_logs");
+   public static final awk<ctv> x = a("jungle_logs");
+   public static final awk<ctv> y = a("spruce_logs");
+   public static final awk<ctv> z = a("mangrove_logs");
+   public static final awk<ctv> A = a("crimson_stems");
+   public static final awk<ctv> B = a("warped_stems");
+   public static final awk<ctv> C = a("bamboo_blocks");
+   public static final awk<ctv> D = a("wart_blocks");
+   public static final awk<ctv> E = a("banners");
+   public static final awk<ctv> F = a("sand");
+   public static final awk<ctv> G = a("smelts_to_glass");
+   public static final awk<ctv> H = a("stairs");
+   public static final awk<ctv> I = a("slabs");
+   public static final awk<ctv> J = a("walls");
+   public static final awk<ctv> K = a("anvil");
+   public static final awk<ctv> L = a("rails");
+   public static final awk<ctv> M = a("leaves");
+   public static final awk<ctv> N = a("trapdoors");
+   public static final awk<ctv> O = a("small_flowers");
+   public static final awk<ctv> P = a("beds");
+   public static final awk<ctv> Q = a("fences");
+   public static final awk<ctv> R = a("tall_flowers");
+   public static final awk<ctv> S = a("flowers");
+   public static final awk<ctv> T = a("piglin_repellents");
+   public static final awk<ctv> U = a("piglin_loved");
+   public static final awk<ctv> V = a("ignored_by_piglin_babies");
+   public static final awk<ctv> W = a("meat");
+   public static final awk<ctv> X = a("sniffer_food");
+   public static final awk<ctv> Y = a("piglin_food");
+   public static final awk<ctv> Z = a("fox_food");
+   public static final awk<ctv> aa = a("cow_food");
+   public static final awk<ctv> ab = a("goat_food");
+   public static final awk<ctv> ac = a("sheep_food");
+   public static final awk<ctv> ad = a("wolf_food");
+   public static final awk<ctv> ae = a("cat_food");
+   public static final awk<ctv> af = a("horse_food");
+   public static final awk<ctv> ag = a("horse_tempt_items");
+   public static final awk<ctv> ah = a("camel_food");
+   public static final awk<ctv> ai = a("armadillo_food");
+   public static final awk<ctv> aj = a("bee_food");
+   public static final awk<ctv> ak = a("chicken_food");
+   public static final awk<ctv> al = a("frog_food");
+   public static final awk<ctv> am = a("hoglin_food");
+   public static final awk<ctv> an = a("llama_food");
+   public static final awk<ctv> ao = a("llama_tempt_items");
+   public static final awk<ctv> ap = a("ocelot_food");
+   public static final awk<ctv> aq = a("panda_food");
+   public static final awk<ctv> ar = a("pig_food");
+   public static final awk<ctv> as = a("rabbit_food");
+   public static final awk<ctv> at = a("strider_food");
+   public static final awk<ctv> au = a("strider_tempt_items");
+   public static final awk<ctv> av = a("turtle_food");
+   public static final awk<ctv> aw = a("parrot_food");
+   public static final awk<ctv> ax = a("parrot_poisonous_food");
+   public static final awk<ctv> ay = a("axolotl_food");
+   public static final awk<ctv> az = a("gold_ores");
+   public static final awk<ctv> aA = a("iron_ores");
+   public static final awk<ctv> aB = a("diamond_ores");
+   public static final awk<ctv> aC = a("redstone_ores");
+   public static final awk<ctv> aD = a("lapis_ores");
+   public static final awk<ctv> aE = a("coal_ores");
+   public static final awk<ctv> aF = a("emerald_ores");
+   public static final awk<ctv> aG = a("copper_ores");
+   public static final awk<ctv> aH = a("non_flammable_wood");
+   public static final awk<ctv> aI = a("soul_fire_base_blocks");
+   public static final awk<ctv> aJ = a("candles");
+   public static final awk<ctv> aK = a("dirt");
+   public static final awk<ctv> aL = a("terracotta");
+   public static final awk<ctv> aM = a("completes_find_tree_tutorial");
+   public static final awk<ctv> aN = a("boats");
+   public static final awk<ctv> aO = a("chest_boats");
+   public static final awk<ctv> aP = a("fishes");
+   public static final awk<ctv> aQ = a("signs");
+   public static final awk<ctv> aR = a("music_discs");
+   public static final awk<ctv> aS = a("creeper_drop_music_discs");
+   public static final awk<ctv> aT = a("coals");
+   public static final awk<ctv> aU = a("arrows");
+   public static final awk<ctv> aV = a("lectern_books");
+   public static final awk<ctv> aW = a("bookshelf_books");
+   public static final awk<ctv> aX = a("beacon_payment_items");
+   public static final awk<ctv> aY = a("stone_tool_materials");
+   public static final awk<ctv> aZ = a("stone_crafting_materials");
+   public static final awk<ctv> ba = a("freeze_immune_wearables");
+   public static final awk<ctv> bb = a("dampens_vibrations");
+   public static final awk<ctv> bc = a("cluster_max_harvestables");
+   public static final awk<ctv> bd = a("compasses");
+   public static final awk<ctv> be = a("hanging_signs");
+   public static final awk<ctv> bf = a("creeper_igniters");
+   public static final awk<ctv> bg = a("noteblock_top_instruments");
+   public static final awk<ctv> bh = a("foot_armor");
+   public static final awk<ctv> bi = a("leg_armor");
+   public static final awk<ctv> bj = a("chest_armor");
+   public static final awk<ctv> bk = a("head_armor");
+   public static final awk<ctv> bl = a("skulls");
+   public static final awk<ctv> bm = a("trimmable_armor");
+   public static final awk<ctv> bn = a("trim_materials");
+   public static final awk<ctv> bo = a("trim_templates");
+   public static final awk<ctv> bp = a("decorated_pot_sherds");
+   public static final awk<ctv> bq = a("decorated_pot_ingredients");
+   public static final awk<ctv> br = a("swords");
+   public static final awk<ctv> bs = a("axes");
+   public static final awk<ctv> bt = a("hoes");
+   public static final awk<ctv> bu = a("pickaxes");
+   public static final awk<ctv> bv = a("shovels");
+   public static final awk<ctv> bw = a("breaks_decorated_pots");
+   public static final awk<ctv> bx = a("villager_plantable_seeds");
+   public static final awk<ctv> by = a("dyeable");
+   public static final awk<ctv> bz = a("enchantable/foot_armor");
+   public static final awk<ctv> bA = a("enchantable/leg_armor");
+   public static final awk<ctv> bB = a("enchantable/chest_armor");
+   public static final awk<ctv> bC = a("enchantable/head_armor");
+   public static final awk<ctv> bD = a("enchantable/armor");
+   public static final awk<ctv> bE = a("enchantable/sword");
+   public static final awk<ctv> bF = a("enchantable/fire_aspect");
+   public static final awk<ctv> bG = a("enchantable/sharp_weapon");
+   public static final awk<ctv> bH = a("enchantable/weapon");
+   public static final awk<ctv> bI = a("enchantable/mining");
+   public static final awk<ctv> bJ = a("enchantable/mining_loot");
+   public static final awk<ctv> bK = a("enchantable/fishing");
+   public static final awk<ctv> bL = a("enchantable/trident");
+   public static final awk<ctv> bM = a("enchantable/durability");
+   public static final awk<ctv> bN = a("enchantable/bow");
+   public static final awk<ctv> bO = a("enchantable/equippable");
+   public static final awk<ctv> bP = a("enchantable/crossbow");
+   public static final awk<ctv> bQ = a("enchantable/vanishing");
+   public static final awk<ctv> bR = a("enchantable/mace");
 
-public class awd {
-   protected final Set<alf> a = Sets.newHashSet();
-   protected final Set<alf> b = Sets.newHashSet();
-   private final awe c = new awe();
-
-   public void a(awd $$0) {
-      this.a.clear();
-      this.b.clear();
-      this.c.a($$0.c);
-      this.a.addAll($$0.a);
-      this.b.addAll($$0.b);
+   private awd() {
    }
 
-   public void a(cyz<?> $$0) {
-      if (!$$0.b().an_()) {
-         this.a($$0.a());
-      }
-   }
-
-   protected void a(alf $$0) {
-      this.a.add($$0);
-   }
-
-   public boolean b(@Nullable cyz<?> $$0) {
-      return $$0 == null ? false : this.a.contains($$0.a());
-   }
-
-   public boolean b(alf $$0) {
-      return this.a.contains($$0);
-   }
-
-   public void c(cyz<?> $$0) {
-      this.c($$0.a());
-   }
-
-   protected void c(alf $$0) {
-      this.a.remove($$0);
-      this.b.remove($$0);
-   }
-
-   public boolean d(cyz<?> $$0) {
-      return this.b.contains($$0.a());
-   }
-
-   public void e(cyz<?> $$0) {
-      this.b.remove($$0.a());
-   }
-
-   public void f(cyz<?> $$0) {
-      this.d($$0.a());
-   }
-
-   protected void d(alf $$0) {
-      this.b.add($$0);
-   }
-
-   public boolean a(crk $$0) {
-      return this.c.a($$0);
-   }
-
-   public void a(crk $$0, boolean $$1) {
-      this.c.a($$0, $$1);
-   }
-
-   public boolean a(crj<?> $$0) {
-      return this.b($$0.t());
-   }
-
-   public boolean b(crk $$0) {
-      return this.c.b($$0);
-   }
-
-   public void b(crk $$0, boolean $$1) {
-      this.c.b($$0, $$1);
-   }
-
-   public void a(awe $$0) {
-      this.c.a($$0);
-   }
-
-   public awe a() {
-      return this.c.a();
-   }
-
-   public void a(crk $$0, boolean $$1, boolean $$2) {
-      this.c.a($$0, $$1);
-      this.c.b($$0, $$2);
+   private static awk<ctv> a(String $$0) {
+      return awk.a(lr.K, new akk($$0));
    }
 }

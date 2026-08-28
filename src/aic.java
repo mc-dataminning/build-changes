@@ -1,64 +1,49 @@
-public class aic implements zw<agw> {
-   public static final zn<wm, aic> a = zw.a(aic::a, aic::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private final float d;
-   private final float e;
-   private final boolean f;
-   private final boolean g;
+public record aic(int b, String c, int d, aib e) implements zb<aif> {
+   public static final ys<vr, aic> a = zb.a(aic::a, aic::new);
+   private static final int f = 255;
 
-   public aic(float $$0, float $$1, boolean $$2, boolean $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   @Deprecated
+   public aic(int b, String c, int d, aib e) {
+      this.b = b;
+      this.c = c;
+      this.d = d;
+      this.e = e;
    }
 
-   private aic(wm $$0) {
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
-      byte $$1 = $$0.readByte();
-      this.f = ($$1 & 1) > 0;
-      this.g = ($$1 & 2) > 0;
+   private aic(vr $$0) {
+      this($$0.l(), $$0.d(255), $$0.readUnsignedShort(), aib.a($$0.l()));
    }
 
-   private void a(wm $$0) {
-      $$0.a(this.d);
-      $$0.a(this.e);
-      byte $$1 = 0;
-      if (this.f) {
-         $$1 = (byte)($$1 | 1);
-      }
-
-      if (this.g) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.k($$1);
+   private void a(vr $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.l(this.d);
+      $$0.c(this.e.a());
    }
 
    @Override
-   public zy<aic> a() {
-      return agu.bM;
+   public zd<aic> a() {
+      return aid.a;
    }
 
-   public void a(agw $$0) {
+   public void a(aif $$0) {
       $$0.a(this);
    }
 
-   public float b() {
+   @Override
+   public boolean d() {
+      return true;
+   }
+
+   public String e() {
+      return this.c;
+   }
+
+   public int f() {
       return this.d;
    }
 
-   public float e() {
+   public aib g() {
       return this.e;
-   }
-
-   public boolean f() {
-      return this.f;
-   }
-
-   public boolean g() {
-      return this.g;
    }
 }

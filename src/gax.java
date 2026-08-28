@@ -1,27 +1,76 @@
-public class gax extends gbc {
-   gax(fxx $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 8;
+public class gax extends gcl {
+   private final double a;
+   private final double b;
+   private final double F;
+   private final int G;
+   private final int H;
+
+   gax(fyd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, int $$8) {
+      super($$0, $$1, $$2, $$3);
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.a = $$1;
+      this.b = $$2;
+      this.F = $$3;
+      this.d = $$1 + $$4;
+      this.e = $$2 + $$5;
+      this.f = $$3 + $$6;
+      this.g = this.d;
+      this.h = this.e;
+      this.i = this.f;
+      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
+      this.n = false;
+      this.t = (int)(Math.random() * 5.0) + 25;
+      this.G = $$7;
+      this.H = $$8;
+   }
+
+   @Override
+   public gbp b() {
+      return gbp.b;
+   }
+
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 240;
    }
 
    @Override
    public void a() {
-      for (int $$0 = 0; $$0 < 6; $$0++) {
-         double $$1 = this.g + (this.r.j() - this.r.j()) * 4.0;
-         double $$2 = this.h + (this.r.j() - this.r.j()) * 4.0;
-         double $$3 = this.i + (this.r.j() - this.r.j()) * 4.0;
-         this.c.a(li.w, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
-      }
-
-      this.s++;
-      if (this.s == this.t) {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
          this.k();
+      } else {
+         float $$0 = (float)this.s / (float)this.t;
+         float $$1 = 1.0F - $$0;
+         this.g = this.a + this.j * (double)$$1;
+         this.h = this.b + this.k * (double)$$1;
+         this.i = this.F + this.l * (double)$$1;
+         int $$2 = axo.b.a($$0, this.G, this.H);
+         this.a((float)axo.b.b($$2) / 255.0F, (float)axo.b.c($$2) / 255.0F, (float)axo.b.d($$2) / 255.0F);
+         this.e((float)axo.b.a($$2) / 255.0F);
       }
    }
 
-   public static class a implements gbh<lm> {
-      public gbe a(lm $$0, fxx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gax($$1, $$2, $$3, $$4);
+   public static class a implements gbo<ln> {
+      private final gcg a;
+
+      public a(gcg $$0) {
+         this.a = $$0;
+      }
+
+      public gbl a(ln $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gax $$8 = new gax($$1, $$2, $$3, $$4, $$5, $$6, $$7, -12210434, -1);
+         $$8.d(aye.b($$1.E_(), 3.0F, 5.0F));
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

@@ -1,30 +1,24 @@
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record afw(String b, String c, int d, Optional<xp> e, Optional<zf> f) implements zw<aci> {
-   public static final zn<xa, afw> a = zn.a(zl.l, afw::b, zl.l, afw::e, zl.g, afw::f, xr.e, afw::g, zh.d, afw::h, afw::new);
+public record afw(jj<dvz> a, akj<dcd> b, long c, dca d, @Nullable dca e, boolean f, boolean g, Optional<ji> h, int i) {
+   private static final ys<wf, jj<dvz>> j = yq.b(lr.aJ);
 
-   @Override
-   public zy<afw> a() {
-      return agu.aL;
+   public afw(wf $$0) {
+      this(
+         j.decode($$0), $$0.a(lr.aZ), $$0.readLong(), dca.a($$0.readByte()), dca.b($$0.readByte()), $$0.readBoolean(), $$0.readBoolean(), $$0.b(vr::h), $$0.l()
+      );
    }
 
-   public void a(aci $$0) {
-      $$0.a(this);
-   }
-
-   public String e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public Optional<xp> g() {
-      return this.e;
-   }
-
-   public Optional<zf> h() {
-      return this.f;
+   public void a(wf $$0) {
+      j.encode($$0, this.a);
+      $$0.b(this.b);
+      $$0.b(this.c);
+      $$0.k(this.d.a());
+      $$0.k(dca.a(this.e));
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h, vr::a);
+      $$0.c(this.i);
    }
 }

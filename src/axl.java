@@ -1,22 +1,20 @@
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-@FunctionalInterface
-public interface axl<T> {
-   axl.a accept(T var1);
+public class axl<T extends Throwable> {
+   @Nullable
+   private T a;
 
-   static <T> axl<T> forConsumer(Consumer<T> $$0) {
-      return $$1 -> {
-         $$0.accept($$1);
-         return axl.a.a;
-      };
+   public void a(T $$0) {
+      if (this.a == null) {
+         this.a = $$0;
+      } else {
+         this.a.addSuppressed($$0);
+      }
    }
 
-   public static enum a {
-      a,
-      b;
-
-      public boolean a() {
-         return this == b;
+   public void a() throws T {
+      if (this.a != null) {
+         throw this.a;
       }
    }
 }

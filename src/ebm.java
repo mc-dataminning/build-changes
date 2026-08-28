@@ -1,89 +1,46 @@
 import com.mojang.serialization.Codec;
 
-public class ebm extends eba<edl> {
-   public ebm(Codec<edl> $$0) {
+public class ebm extends eah {
+   public ebm(Codec<edk> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebc<edl> $$0) {
-      iz $$1 = $$0.e();
-      azh $$2 = $$0.d();
-      dcv $$3 = $$0.b();
+   protected void a(dce $$0, aym $$1, ja $$2, int $$3, ja.a $$4, edk $$5) {
+      int $$6 = $$5.d;
 
-      while ($$3.u($$1) && $$1.v() > $$3.I_() + 2) {
-         $$1 = $$1.d();
-      }
-
-      if (!$$3.a_($$1).a(dfd.dP)) {
-         return false;
-      } else {
-         $$1 = $$1.b($$2.a(4));
-         int $$4 = $$2.a(4) + 7;
-         int $$5 = $$4 / 4 + $$2.a(2);
-         if ($$5 > 1 && $$2.a(60) == 0) {
-            $$1 = $$1.b(10 + $$2.a(30));
-         }
-
-         for (int $$6 = 0; $$6 < $$4; $$6++) {
-            float $$7 = (1.0F - (float)$$6 / (float)$$4) * (float)$$5;
-            int $$8 = ayz.f($$7);
-
-            for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-               float $$10 = (float)ayz.a($$9) - 0.25F;
-
-               for (int $$11 = -$$8; $$11 <= $$8; $$11++) {
-                  float $$12 = (float)ayz.a($$11) - 0.25F;
-                  if (($$9 == 0 && $$11 == 0 || !($$10 * $$10 + $$12 * $$12 > $$7 * $$7))
-                     && ($$9 != -$$8 && $$9 != $$8 && $$11 != -$$8 && $$11 != $$8 || !($$2.i() > 0.75F))) {
-                     dse $$13 = $$3.a_($$1.b($$9, $$6, $$11));
-                     if ($$13.i() || b($$13) || $$13.a(dfd.dP) || $$13.a(dfd.dO)) {
-                        this.a($$3, $$1.b($$9, $$6, $$11), dfd.iC.o());
-                     }
-
-                     if ($$6 != 0 && $$8 > 1) {
-                        $$13 = $$3.a_($$1.b($$9, -$$6, $$11));
-                        if ($$13.i() || b($$13) || $$13.a(dfd.dP) || $$13.a(dfd.dO)) {
-                           this.a($$3, $$1.b($$9, -$$6, $$11), dfd.iC.o());
-                        }
-                     }
+      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
+         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
+            boolean $$9 = $$7 == -$$6;
+            boolean $$10 = $$7 == $$6;
+            boolean $$11 = $$8 == -$$6;
+            boolean $$12 = $$8 == $$6;
+            boolean $$13 = $$9 || $$10;
+            boolean $$14 = $$11 || $$12;
+            if (!$$13 || !$$14) {
+               $$4.a($$2, $$7, $$3, $$8);
+               if (!$$0.a_($$4).i($$0, $$4)) {
+                  boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
+                  boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
+                  boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
+                  boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
+                  dsh $$19 = $$5.b.a($$1, $$2);
+                  if ($$19.b(djc.e) && $$19.b(djc.c) && $$19.b(djc.b) && $$19.b(djc.d)) {
+                     $$19 = $$19.a(djc.e, Boolean.valueOf($$15))
+                        .a(djc.c, Boolean.valueOf($$16))
+                        .a(djc.b, Boolean.valueOf($$17))
+                        .a(djc.d, Boolean.valueOf($$18));
                   }
+
+                  this.a($$0, $$4, $$19);
                }
             }
          }
-
-         int $$14 = $$5 - 1;
-         if ($$14 < 0) {
-            $$14 = 0;
-         } else if ($$14 > 1) {
-            $$14 = 1;
-         }
-
-         for (int $$15 = -$$14; $$15 <= $$14; $$15++) {
-            for (int $$16 = -$$14; $$16 <= $$14; $$16++) {
-               iz $$17 = $$1.b($$15, -1, $$16);
-               int $$18 = 50;
-               if (Math.abs($$15) == 1 && Math.abs($$16) == 1) {
-                  $$18 = $$2.a(5);
-               }
-
-               while ($$17.v() > 50) {
-                  dse $$19 = $$3.a_($$17);
-                  if (!$$19.i() && !b($$19) && !$$19.a(dfd.dP) && !$$19.a(dfd.dO) && !$$19.a(dfd.iC)) {
-                     break;
-                  }
-
-                  this.a($$3, $$17, dfd.iC.o());
-                  $$17 = $$17.d();
-                  if (--$$18 <= 0) {
-                     $$17 = $$17.c($$2.a(5) + 1);
-                     $$18 = $$2.a(5);
-                  }
-               }
-            }
-         }
-
-         return true;
       }
+   }
+
+   @Override
+   protected int a(int $$0, int $$1, int $$2, int $$3) {
+      return $$3 <= 3 ? 0 : $$2;
    }
 }

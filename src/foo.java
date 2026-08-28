@@ -1,27 +1,24 @@
-public class foo extends fod<cqd> implements fpj<cqd> {
-   private static final alf D = new alf("textures/gui/container/generic_54.png");
-   private final int E;
+public class foo extends fns<cqd> {
+   private static final akk D = new akk("container/grindstone/error");
+   private static final akk E = new akk("textures/gui/container/grindstone.png");
 
-   public foo(cqd $$0, cmy $$1, xp $$2) {
+   public foo(cqd $$0, cmg $$1, wu $$2) {
       super($$0, $$1, $$2);
-      int $$3 = 222;
-      int $$4 = 114;
-      this.E = $$0.m();
-      this.d = 114 + this.E * 18;
-      this.v = this.d - 94;
    }
 
    @Override
-   public void a(fgt $$0, int $$1, int $$2, float $$3) {
+   public void a(fgz $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
       this.a($$0, $$1, $$2);
    }
 
    @Override
-   protected void a(fgt $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.c) / 2;
-      int $$5 = (this.o - this.d) / 2;
-      $$0.a(D, $$4, $$5, 0, 0, this.c, this.E * 18 + 17);
-      $$0.a(D, $$4, $$5 + this.E * 18 + 17, 0, 126, this.c, 96);
+   protected void a(fgz $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.m - this.c) / 2;
+      int $$5 = (this.n - this.q) / 2;
+      $$0.a(E, $$4, $$5, 0, 0, this.c, this.q);
+      if ((this.w.b(0).h() || this.w.b(1).h()) && !this.w.b(2).h()) {
+         $$0.a(D, $$4 + 92, $$5 + 31, 28, 21);
+      }
    }
 }

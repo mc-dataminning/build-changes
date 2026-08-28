@@ -1,315 +1,129 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 import java.util.Optional;
-import java.util.function.BiPredicate;
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class dge extends ddv<dpq> implements dmc {
-   public static final MapCodec<dge> b = b($$0 -> new dge($$0, () -> dpl.b));
-   public static final dsy c = dix.aE;
-   public static final dtc<dsw> d = dsu.bc;
-   public static final dsv e = dsu.C;
-   public static final int f = 1;
-   protected static final int g = 1;
-   protected static final int h = 14;
-   protected static final ewm i = dfb.a(1.0, 0.0, 0.0, 15.0, 14.0, 15.0);
-   protected static final ewm j = dfb.a(1.0, 0.0, 1.0, 15.0, 14.0, 16.0);
-   protected static final ewm k = dfb.a(0.0, 0.0, 1.0, 15.0, 14.0, 15.0);
-   protected static final ewm l = dfb.a(1.0, 0.0, 1.0, 16.0, 14.0, 15.0);
-   protected static final ewm m = dfb.a(1.0, 0.0, 1.0, 15.0, 14.0, 15.0);
-   private static final dhi.b<dpq, Optional<bqp>> n = new dhi.b<dpq, Optional<bqp>>() {
-      public Optional<bqp> a(dpq $$0, dpq $$1) {
-         return Optional.of(new bqo($$0, $$1));
+public class dge extends dmf {
+   public static final MapCodec<dge> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dtu.a.fieldOf("wood_type").forGetter(dmf::d), u()).apply($$0, dge::new));
+   public static final dth b = dsx.ba;
+   public static final dsy c = dsx.a;
+   protected static final float d = 5.0F;
+   protected static final ews e = dff.a(3.0, 0.0, 3.0, 13.0, 16.0, 13.0);
+   private static final Map<Integer, ews> i = Maps.newHashMap(
+      ImmutableMap.of(
+         0,
+         dff.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0),
+         4,
+         dff.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0),
+         8,
+         dff.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0),
+         12,
+         dff.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0)
+      )
+   );
+
+   @Override
+   public MapCodec<dge> a() {
+      return a;
+   }
+
+   public dge(dtu $$0, dsg.d $$1) {
+      super($$0, $$1.a($$0.e()));
+      this.k(this.E.b().a(b, Integer.valueOf(0)).a(c, Boolean.valueOf(false)).a(f, Boolean.valueOf(false)));
+   }
+
+   @Override
+   protected bqf a(cua $$0, dsh $$1, dcd $$2, ja $$3, cmh $$4, bqc $$5, evv $$6) {
+      if ($$2.c_($$3) instanceof dqx $$7 && this.a($$4, $$6, $$7, $$0)) {
+         return bqf.e;
       }
 
-      public Optional<bqp> a(dpq $$0) {
-         return Optional.of($$0);
-      }
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
 
-      public Optional<bqp> a() {
-         return Optional.empty();
-      }
-   };
-   private static final dhi.b<dpq, Optional<bra>> o = new dhi.b<dpq, Optional<bra>>() {
-      public Optional<bra> a(final dpq $$0, final dpq $$1) {
-         final bqp $$2 = new bqo($$0, $$1);
-         return Optional.of(new bra() {
-            @Nullable
-            @Override
-            public cpw createMenu(int $$0x, cmy $$1x, cmz $$2x) {
-               if ($$0.d($$2) && $$1.d($$2)) {
-                  $$0.e_($$1.l);
-                  $$1.e_($$1.l);
-                  return cqd.b($$0, $$1, $$2);
-               } else {
-                  return null;
-               }
+   private boolean a(cmh $$0, evv $$1, dqx $$2, cua $$3) {
+      return !$$2.a($$2.a($$0), $$0) && $$3.g() instanceof ctn && $$1.b().equals(jf.a);
+   }
+
+   @Override
+   protected boolean a(dsh $$0, dcg $$1, ja $$2) {
+      return $$1.a_($$2.c()).a($$1, $$2.c(), jf.a, dng.b);
+   }
+
+   @Override
+   public dsh a(cxk $$0) {
+      dcd $$1 = $$0.q();
+      eob $$2 = $$1.b_($$0.a());
+      ja $$3 = $$0.a().c();
+      dsh $$4 = $$1.a_($$3);
+      boolean $$5 = $$4.a(avu.aA);
+      jf $$6 = jf.a((double)$$0.i());
+      boolean $$7 = !dff.a($$4.k($$1, $$3), jf.a) || $$0.h();
+      if ($$5 && !$$0.h()) {
+         if ($$4.b(doe.b)) {
+            jf $$8 = $$4.c(doe.b);
+            if ($$8.o().a($$6)) {
+               $$7 = false;
             }
-
-            @Override
-            public xp O_() {
-               if ($$0.ag()) {
-                  return $$0.O_();
-               } else {
-                  return (xp)($$1.ag() ? $$1.O_() : xp.c("container.chestDouble"));
-               }
-            }
-         });
-      }
-
-      public Optional<bra> a(dpq $$0) {
-         return Optional.of($$0);
-      }
-
-      public Optional<bra> a() {
-         return Optional.empty();
-      }
-   };
-
-   @Override
-   public MapCodec<? extends dge> a() {
-      return b;
-   }
-
-   protected dge(dsd.d $$0, Supplier<dpl<? extends dpq>> $$1) {
-      super($$0, $$1);
-      this.k(this.E.b().a(c, je.c).a(d, dsw.a).a(e, Boolean.valueOf(false)));
-   }
-
-   public static dhi.a g(dse $$0) {
-      dsw $$1 = $$0.c(d);
-      if ($$1 == dsw.a) {
-         return dhi.a.a;
-      } else {
-         return $$1 == dsw.c ? dhi.a.b : dhi.a.c;
-      }
-   }
-
-   @Override
-   protected dlh a_(dse $$0) {
-      return dlh.b;
-   }
-
-   @Override
-   protected dse a(dse $$0, je $$1, dse $$2, dcb $$3, iz $$4, iz $$5) {
-      if ($$0.c(e)) {
-         $$3.a($$4, eny.c, eny.c.a($$3));
-      }
-
-      if ($$2.a(this) && $$1.o().d()) {
-         dsw $$6 = $$2.c(d);
-         if ($$0.c(d) == dsw.a && $$6 != dsw.a && $$0.c(c) == $$2.c(c) && h($$2) == $$1.g()) {
-            return $$0.a(d, $$6.a());
-         }
-      } else if (h($$0) == $$1) {
-         return $$0.a(d, dsw.a);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected ewm a(dse $$0, dbg $$1, iz $$2, evy $$3) {
-      if ($$0.c(d) == dsw.a) {
-         return m;
-      } else {
-         switch (h($$0)) {
-            case c:
-            default:
-               return i;
-            case d:
-               return j;
-            case e:
-               return k;
-            case f:
-               return l;
-         }
-      }
-   }
-
-   public static je h(dse $$0) {
-      je $$1 = $$0.c(c);
-      return $$0.c(d) == dsw.b ? $$1.h() : $$1.i();
-   }
-
-   @Override
-   public dse a(cyc $$0) {
-      dsw $$1 = dsw.a;
-      je $$2 = $$0.g().g();
-      enx $$3 = $$0.q().b_($$0.a());
-      boolean $$4 = $$0.h();
-      je $$5 = $$0.k();
-      if ($$5.o().d() && $$4) {
-         je $$6 = this.a($$0, $$5.g());
-         if ($$6 != null && $$6.o() != $$5.o()) {
-            $$2 = $$6;
-            $$1 = $$6.i() == $$5.g() ? dsw.c : dsw.b;
-         }
-      }
-
-      if ($$1 == dsw.a && !$$4) {
-         if ($$2 == this.a($$0, $$2.h())) {
-            $$1 = dsw.b;
-         } else if ($$2 == this.a($$0, $$2.i())) {
-            $$1 = dsw.c;
-         }
-      }
-
-      return this.o().a(c, $$2).a(d, $$1).a(e, Boolean.valueOf($$3.a() == eny.c));
-   }
-
-   @Override
-   protected enx b_(dse $$0) {
-      return $$0.c(e) ? eny.c.a(false) : super.b_($$0);
-   }
-
-   @Nullable
-   private je a(cyc $$0, je $$1) {
-      dse $$2 = $$0.q().a_($$0.a().a($$1));
-      return $$2.a(this) && $$2.c(d) == dsw.a ? $$2.c(c) : null;
-   }
-
-   @Override
-   protected void a(dse $$0, dca $$1, iz $$2, dse $$3, boolean $$4) {
-      bqs.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   protected bqw a(dse $$0, dca $$1, iz $$2, cmz $$3, evp $$4) {
-      if ($$1.B) {
-         return bqw.a;
-      } else {
-         bra $$5 = this.b($$0, $$1, $$2);
-         if ($$5 != null) {
-            $$3.a($$5);
-            $$3.b(this.c());
-            clq.a($$3, true);
-         }
-
-         return bqw.c;
-      }
-   }
-
-   protected awh<alf> c() {
-      return awk.i.b(awk.ao);
-   }
-
-   public dpl<? extends dpq> d() {
-      return this.a.get();
-   }
-
-   @Nullable
-   public static bqp a(dge $$0, dse $$1, dca $$2, iz $$3, boolean $$4) {
-      return $$0.a($$1, $$2, $$3, $$4).apply(n).orElse(null);
-   }
-
-   @Override
-   public dhi.c<? extends dpq> a(dse $$0, dca $$1, iz $$2, boolean $$3) {
-      BiPredicate<dcb, iz> $$4;
-      if ($$3) {
-         $$4 = ($$0x, $$1x) -> false;
-      } else {
-         $$4 = dge::a;
-      }
-
-      return dhi.a(this.a.get(), dge::g, dge::h, c, $$0, $$1, $$2, $$4);
-   }
-
-   @Nullable
-   @Override
-   protected bra b(dse $$0, dca $$1, iz $$2) {
-      return this.a($$0, $$1, $$2, false).apply(o).orElse(null);
-   }
-
-   public static dhi.b<dpq, Float2FloatFunction> a(final dqm $$0) {
-      return new dhi.b<dpq, Float2FloatFunction>() {
-         public Float2FloatFunction a(dpq $$0x, dpq $$1) {
-            return $$2 -> Math.max($$0.a($$2), $$1.a($$2));
-         }
-
-         public Float2FloatFunction a(dpq $$0x) {
-            return $$0::a;
-         }
-
-         public Float2FloatFunction a() {
-            return $$0::a;
-         }
-      };
-   }
-
-   @Override
-   public dpj a(iz $$0, dse $$1) {
-      return new dpq($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dpj> dpk<T> a(dca $$0, dse $$1, dpl<T> $$2) {
-      return $$0.B ? a($$2, this.d(), dpq::a) : null;
-   }
-
-   public static boolean a(dcb $$0, iz $$1) {
-      return a((dbg)$$0, $$1) || b($$0, $$1);
-   }
-
-   private static boolean a(dbg $$0, iz $$1) {
-      iz $$2 = $$1.c();
-      return $$0.a_($$2).g($$0, $$2);
-   }
-
-   private static boolean b(dcb $$0, iz $$1) {
-      List<cfk> $$2 = $$0.a(
-         cfk.class, new evo((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), (double)($$1.u() + 1), (double)($$1.v() + 2), (double)($$1.w() + 1))
-      );
-      if (!$$2.isEmpty()) {
-         for (cfk $$3 : $$2) {
-            if ($$3.y()) {
-               return true;
+         } else if ($$4.b(b)) {
+            Optional<jf> $$9 = dtn.a($$4.c(b));
+            if ($$9.isPresent() && $$9.get().o().a($$6)) {
+               $$7 = false;
             }
          }
       }
 
-      return false;
+      int $$10 = !$$7 ? dtn.a($$6.g()) : dtn.a($$0.i() + 180.0F);
+      return this.o().a(c, Boolean.valueOf($$7)).a(b, Integer.valueOf($$10)).a(f, Boolean.valueOf($$2.a() == eoc.c));
    }
 
    @Override
-   protected boolean c_(dse $$0) {
-      return true;
+   protected ews a(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
+      ews $$4 = i.get($$0.c(b));
+      return $$4 == null ? e : $$4;
    }
 
    @Override
-   protected int a(dse $$0, dca $$1, iz $$2) {
-      return cpw.b(a(this, $$0, $$1, $$2, false));
+   protected ews b_(dsh $$0, dbj $$1, ja $$2) {
+      return this.a($$0, $$1, $$2, ewe.a());
    }
 
    @Override
-   protected dse a(dse $$0, dlo $$1) {
-      return $$0.a(c, $$1.a($$0.c(c)));
+   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
+      return $$1 == jf.b && !this.a($$0, $$3, $$4) ? dfh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected dse a(dse $$0, djy $$1) {
-      return $$0.a($$1.a($$0.c(c)));
+   public float g(dsh $$0) {
+      return dtn.b($$0.c(b));
    }
 
    @Override
-   protected void a(dsf.a<dfb, dse> $$0) {
-      $$0.a(c, d, e);
+   protected dsh a(dsh $$0, dls $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   protected boolean a(dse $$0, eom $$1) {
-      return false;
+   protected dsh a(dsh $$0, dkc $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   protected void a(dse $$0, arf $$1, iz $$2, azh $$3) {
-      dpj $$4 = $$1.c_($$2);
-      if ($$4 instanceof dpq) {
-         ((dpq)$$4).l();
-      }
+   protected void a(dsi.a<dff, dsh> $$0) {
+      $$0.a(b, c, f);
+   }
+
+   @Override
+   public dpn a(ja $$0, dsh $$1) {
+      return new dqk($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dpn> dpo<T> a(dcd $$0, dsh $$1, dpp<T> $$2) {
+      return a($$2, dpp.i, dqx::a);
    }
 }

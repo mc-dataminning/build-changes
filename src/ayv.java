@@ -1,64 +1,25 @@
-import java.io.Serializable;
-import java.util.Deque;
-import java.util.List;
-import java.util.RandomAccess;
-import javax.annotation.Nullable;
+public class ayv {
+   private double a;
+   private double b;
+   private double c;
 
-public interface ayv<T> extends Serializable, Cloneable, Deque<T>, List<T>, RandomAccess {
-   ayv<T> b();
+   public double a(double $$0, double $$1) {
+      this.a += $$0;
+      double $$2 = this.a - this.b;
+      double $$3 = aye.d(0.5, this.c, $$2);
+      double $$4 = Math.signum($$2);
+      if ($$4 * $$2 > $$4 * this.c) {
+         $$2 = $$3;
+      }
 
-   @Override
-   T getFirst();
-
-   @Override
-   T getLast();
-
-   @Override
-   void addFirst(T var1);
-
-   @Override
-   void addLast(T var1);
-
-   @Override
-   T removeFirst();
-
-   @Override
-   T removeLast();
-
-   @Override
-   default boolean offer(T $$0) {
-      return this.offerLast($$0);
+      this.c = $$3;
+      this.b += $$2 * $$1;
+      return $$2 * $$1;
    }
 
-   @Override
-   default T remove() {
-      return this.removeFirst();
-   }
-
-   @Nullable
-   @Override
-   default T poll() {
-      return this.pollFirst();
-   }
-
-   @Override
-   default T element() {
-      return this.getFirst();
-   }
-
-   @Nullable
-   @Override
-   default T peek() {
-      return this.peekFirst();
-   }
-
-   @Override
-   default void push(T $$0) {
-      this.addFirst($$0);
-   }
-
-   @Override
-   default T pop() {
-      return this.removeFirst();
+   public void a() {
+      this.a = 0.0;
+      this.b = 0.0;
+      this.c = 0.0;
    }
 }

@@ -1,26 +1,20 @@
 import java.util.function.Consumer;
 
-public interface fkv {
-   void m(int var1);
+public class fkv {
+   private static final int a = 4;
 
-   void n(int var1);
-
-   int C();
-
-   int D();
-
-   int x();
-
-   int v();
-
-   default flm G() {
-      return new flm(this.C(), this.D(), this.x(), this.v());
+   private fkv() {
    }
 
-   default void c(int $$0, int $$1) {
-      this.m($$0);
-      this.n($$1);
+   public static fla a(fgx $$0, flb $$1, wu $$2) {
+      return a($$0, $$1, $$2, $$0x -> {
+      });
    }
 
-   void a(Consumer<fhe> var1);
+   public static fla a(fgx $$0, flb $$1, wu $$2, Consumer<flc> $$3) {
+      fld $$4 = fld.d().a(4);
+      $$4.a(new fit($$2, $$0));
+      $$4.a($$1, $$3);
+      return $$4;
+   }
 }

@@ -1,42 +1,70 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Consumer;
+public abstract class cxo implements cyg<cyw> {
+   protected final cym<?> a;
+   protected final cxu b;
+   protected final String c;
+   protected final cyd d;
+   protected final cua e;
+   protected final float f;
+   protected final int g;
 
-public record cxo(List<xp> e, List<xp> f) implements cxx {
-   public static final cxo a = new cxo(List.of());
-   public static final int b = 256;
-   private static final ym g = ym.a.a(n.f).b(true);
-   public static final Codec<cxo> c = xr.g.sizeLimitedListOf(256).xmap(cxo::new, cxo::a);
-   public static final zn<xa, cxo> d = xr.b.a(zl.c(256)).a(cxo::new, cxo::a);
-
-   public cxo(List<xp> $$0) {
-      this($$0, Lists.transform($$0, $$0x -> xs.a($$0x.f(), g)));
+   public cxo(cym<?> $$0, String $$1, cxu $$2, cyd $$3, cua $$4, float $$5, int $$6) {
+      this.a = $$0;
+      this.b = $$2;
+      this.c = $$1;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
    }
 
-   public cxo(List<xp> e, List<xp> f) {
-      if (e.size() > 256) {
-         throw new IllegalArgumentException("Got " + e.size() + " lines, but maximum is 256");
-      } else {
-         this.e = e;
-         this.f = f;
-      }
+   public boolean a(cyw $$0, dcd $$1) {
+      return this.d.a($$0.c());
    }
 
-   public cxo a(xp $$0) {
-      return new cxo(ac.a(this.e, $$0));
+   public cua a(cyw $$0, jl.a $$1) {
+      return this.e.s();
    }
 
    @Override
-   public void a(cum.b $$0, Consumer<xp> $$1, cwk $$2) {
-      this.f.forEach($$1);
+   public boolean a(int $$0, int $$1) {
+      return true;
    }
 
-   public List<xp> a() {
+   @Override
+   public js<cyd> a() {
+      js<cyd> $$0 = js.a();
+      $$0.add(this.d);
+      return $$0;
+   }
+
+   public float b() {
+      return this.f;
+   }
+
+   @Override
+   public cua a(jl.a $$0) {
       return this.e;
    }
 
-   public List<xp> b() {
-      return this.f;
+   @Override
+   public String c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.g;
+   }
+
+   @Override
+   public cym<?> e() {
+      return this.a;
+   }
+
+   public cxu f() {
+      return this.b;
+   }
+
+   public interface a<T extends cxo> {
+      T create(String var1, cxu var2, cyd var3, cua var4, float var5, int var6);
    }
 }

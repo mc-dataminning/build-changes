@@ -1,45 +1,98 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.serialization.Dynamic;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.io.BufferedOutputStream;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.zip.DeflaterOutputStream;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
+import java.util.zip.InflaterInputStream;
 import javax.annotation.Nullable;
+import net.jpountz.lz4.LZ4BlockInputStream;
+import net.jpountz.lz4.LZ4BlockOutputStream;
+import org.slf4j.Logger;
 
-public class dvs implements AutoCloseable {
-   private final dvj a;
-   private final DataFixer b;
-   private final bag c;
+public class dvs {
+   private static final Logger g = LogUtils.getLogger();
+   private static final Int2ObjectMap<dvs> h = new Int2ObjectOpenHashMap();
+   private static final Object2ObjectMap<String, dvs> i = new Object2ObjectOpenHashMap();
+   public static final dvs a = a(new dvs(1, null, $$0 -> new axn(new GZIPInputStream($$0)), $$0 -> new BufferedOutputStream(new GZIPOutputStream($$0))));
+   public static final dvs b = a(
+      new dvs(2, "deflate", $$0 -> new axn(new InflaterInputStream($$0)), $$0 -> new BufferedOutputStream(new DeflaterOutputStream($$0)))
+   );
+   public static final dvs c = a(new dvs(3, "none", axn::new, BufferedOutputStream::new));
+   public static final dvs d = a(
+      new dvs(4, "lz4", $$0 -> new axn(new LZ4BlockInputStream($$0)), $$0 -> new BufferedOutputStream(new LZ4BlockOutputStream($$0)))
+   );
+   public static final dvs e = a(new dvs(127, null, $$0 -> {
+      throw new UnsupportedOperationException();
+   }, $$0 -> {
+      throw new UnsupportedOperationException();
+   }));
+   public static final dvs f = b;
+   private static volatile dvs j = f;
+   private final int k;
+   @Nullable
+   private final String l;
+   private final dvs.a<InputStream> m;
+   private final dvs.a<OutputStream> n;
 
-   public dvs(dvq $$0, Path $$1, DataFixer $$2, boolean $$3, bag $$4) {
-      this.b = $$2;
-      this.c = $$4;
-      this.a = new dvj($$0, $$1, $$3);
+   private dvs(int $$0, @Nullable String $$1, dvs.a<InputStream> $$2, dvs.a<OutputStream> $$3) {
+      this.k = $$0;
+      this.l = $$1;
+      this.m = $$2;
+      this.n = $$3;
    }
 
-   public CompletableFuture<Optional<us>> a(dbh $$0) {
-      return this.a.a($$0);
+   private static dvs a(dvs $$0) {
+      h.put($$0.k, $$0);
+      if ($$0.l != null) {
+         i.put($$0.l, $$0);
+      }
+
+      return $$0;
    }
 
-   public CompletableFuture<Void> a(dbh $$0, @Nullable us $$1) {
-      return this.a.a($$0, $$1);
+   @Nullable
+   public static dvs a(int $$0) {
+      return (dvs)h.get($$0);
    }
 
-   public us a(us $$0, int $$1) {
-      int $$2 = vh.b($$0, $$1);
-      return this.c.a(this.b, $$0, $$2);
+   public static void a(String $$0) {
+      dvs $$1 = (dvs)i.get($$0);
+      if ($$1 != null) {
+         j = $$1;
+      } else {
+         g.error("Invalid `region-file-compression` value `{}` in server.properties. Please use one of: {}", $$0, String.join(", ", i.keySet()));
+      }
    }
 
-   public Dynamic<vp> a(Dynamic<vp> $$0, int $$1) {
-      return this.c.a(this.b, $$0, $$1);
+   public static dvs a() {
+      return j;
    }
 
-   public CompletableFuture<Void> a(boolean $$0) {
-      return this.a.a($$0);
+   public static boolean b(int $$0) {
+      return h.containsKey($$0);
    }
 
-   @Override
-   public void close() throws IOException {
-      this.a.close();
+   public int b() {
+      return this.k;
+   }
+
+   public OutputStream a(OutputStream $$0) throws IOException {
+      return this.n.wrap($$0);
+   }
+
+   public InputStream a(InputStream $$0) throws IOException {
+      return this.m.wrap($$0);
+   }
+
+   @FunctionalInterface
+   interface a<O> {
+      O wrap(O var1) throws IOException;
    }
 }

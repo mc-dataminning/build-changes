@@ -1,45 +1,17 @@
-public class gab extends gce {
-   private final gbz a;
-
-   gab(fxx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gbz $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.a = $$7;
-      this.t = 4;
-      this.u = 0.008F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.b($$7);
+public class gab extends gad {
+   protected gab(fyd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gcg $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.5F, 20, 0.1F, false);
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         this.b(this.a);
-      }
-   }
+   public static class a implements gbo<ln> {
+      private final gcg a;
 
-   @Override
-   public gbi b() {
-      return gbi.b;
-   }
-
-   public static class a implements gbh<lm> {
-      private final gbz a;
-
-      public a(gbz $$0) {
+      public a(gcg $$0) {
          this.a = $$0;
       }
 
-      public gbe a(lm $$0, fxx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gab($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public gbl a(ln $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gab($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, 1.0F, this.a);
       }
    }
 }

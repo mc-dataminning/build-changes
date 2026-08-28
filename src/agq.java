@@ -1,24 +1,83 @@
-import java.util.Collection;
-import java.util.List;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-public class agq implements zw<aci> {
-   public static final zn<xa, agq> a = zn.a(cyz.a.a(zl.a()), $$0 -> $$0.b, agq::new);
-   private final List<cyz<?>> b;
+public class agq implements zb<agb> {
+   public static final ys<wf, agq> a = zb.a(agq::a, agq::new);
+   private static final int b = 128;
+   private static final ys<wf, Int2ObjectMap<cua>> c = yq.a(Int2ObjectOpenHashMap::new, yq.d.a(Short::intValue, Integer::shortValue), cua.h, 128);
+   private final int d;
+   private final int e;
+   private final int f;
+   private final int g;
+   private final cpo h;
+   private final cua i;
+   private final Int2ObjectMap<cua> j;
 
-   public agq(Collection<cyz<?>> $$0) {
-      this.b = List.copyOf($$0);
+   public agq(int $$0, int $$1, int $$2, int $$3, cpo $$4, cua $$5, Int2ObjectMap<cua> $$6) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = Int2ObjectMaps.unmodifiable($$6);
+   }
+
+   private agq(wf $$0) {
+      this.d = $$0.readByte();
+      this.e = $$0.l();
+      this.f = $$0.readShort();
+      this.g = $$0.readByte();
+      this.h = $$0.b(cpo.class);
+      this.j = Int2ObjectMaps.unmodifiable(c.decode($$0));
+      this.i = cua.h.decode($$0);
+   }
+
+   private void a(wf $$0) {
+      $$0.k(this.d);
+      $$0.c(this.e);
+      $$0.l(this.f);
+      $$0.k(this.g);
+      $$0.a(this.h);
+      c.encode($$0, this.j);
+      cua.h.encode($$0, this.i);
    }
 
    @Override
-   public zy<agq> a() {
-      return agu.bd;
+   public zd<agq> a() {
+      return afz.bs;
    }
 
-   public void a(aci $$0) {
+   public void a(agb $$0) {
       $$0.a(this);
    }
 
-   public List<cyz<?>> b() {
-      return this.b;
+   public int b() {
+      return this.d;
+   }
+
+   public int e() {
+      return this.f;
+   }
+
+   public int f() {
+      return this.g;
+   }
+
+   public cua g() {
+      return this.i;
+   }
+
+   public Int2ObjectMap<cua> h() {
+      return this.j;
+   }
+
+   public cpo i() {
+      return this.h;
+   }
+
+   public int j() {
+      return this.e;
    }
 }

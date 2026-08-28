@@ -1,34 +1,30 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
 
-public class ehl extends eht {
-   public static final MapCodec<ehl> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(egt.c.fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, ehl::new));
-   private final egt c;
+public enum ehl implements ayz {
+   a(jf.b, 1, "ceiling"),
+   b(jf.a, -1, "floor");
 
-   private ehl(egt $$0) {
-      this.c = $$0;
+   public static final Codec<ehl> c = ayz.a(ehl::values);
+   private final jf d;
+   private final int e;
+   private final String f;
+
+   private ehl(final jf $$0, final int $$1, final String $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public static ehl a(egt $$0) {
-      return new ehl($$0);
+   public jf a() {
+      return this.d;
    }
 
-   public static ehl a(dyq $$0, dyq $$1) {
-      return a(egw.a($$0, $$1));
-   }
-
-   public static ehl b(dyq $$0, dyq $$1) {
-      return a(egv.a($$0, $$1));
-   }
-
-   @Override
-   public Stream<iz> a_(ehr $$0, azh $$1, iz $$2) {
-      return Stream.of($$2.h(this.c.a($$1, $$0)));
+   public int b() {
+      return this.e;
    }
 
    @Override
-   public ehu<?> b() {
-      return ehu.l;
+   public String c() {
+      return this.f;
    }
 }

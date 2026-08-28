@@ -1,182 +1,126 @@
-import com.mojang.blaze3d.platform.GlStateManager;
+import com.google.common.collect.Queues;
+import java.util.Deque;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 public class fag {
-   private final fag.a a;
-   private final fag.b b;
-   private final int c;
-   private final int d;
-   private final int e;
+   private final Deque<fag.a> a = ac.a(Queues.newArrayDeque(), $$0 -> {
+      Matrix4f $$1 = new Matrix4f();
+      Matrix3f $$2 = new Matrix3f();
+      $$0.add(new fag.a($$1, $$2));
+   });
 
-   public fag(int $$0, fag.a $$1, fag.b $$2, int $$3) {
-      if (this.a($$0, $$2)) {
-         this.b = $$2;
-         this.a = $$1;
-         this.c = $$0;
-         this.d = $$3;
-         this.e = $$1.a() * this.d;
-      } else {
-         throw new IllegalStateException("Multiple vertex elements of the same type other than UVs are not supported");
-      }
+   public void a(double $$0, double $$1, double $$2) {
+      this.a((float)$$0, (float)$$1, (float)$$2);
    }
 
-   private boolean a(int $$0, fag.b $$1) {
-      return $$0 == 0 || $$1 == fag.b.d;
+   public void a(float $$0, float $$1, float $$2) {
+      fag.a $$3 = this.a.getLast();
+      $$3.a.translate($$0, $$1, $$2);
    }
 
-   public final fag.a a() {
-      return this.a;
-   }
-
-   public final fag.b b() {
-      return this.b;
-   }
-
-   public final int c() {
-      return this.d;
-   }
-
-   public final int d() {
-      return this.c;
-   }
-
-   @Override
-   public String toString() {
-      return this.d + "," + this.b.a() + "," + this.a.b();
-   }
-
-   public final int e() {
-      return this.e;
-   }
-
-   public final boolean f() {
-      return this.b == fag.b.a;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         fag $$1 = (fag)$$0;
-         if (this.d != $$1.d) {
-            return false;
-         } else if (this.c != $$1.c) {
-            return false;
-         } else {
-            return this.a != $$1.a ? false : this.b == $$1.b;
+   public void b(float $$0, float $$1, float $$2) {
+      fag.a $$3 = this.a.getLast();
+      $$3.a.scale($$0, $$1, $$2);
+      if (Math.abs($$0) == Math.abs($$1) && Math.abs($$1) == Math.abs($$2)) {
+         if ($$0 < 0.0F || $$1 < 0.0F || $$2 < 0.0F) {
+            $$3.b.scale(Math.signum($$0), Math.signum($$1), Math.signum($$2));
          }
       } else {
-         return false;
+         $$3.b.scale(1.0F / $$0, 1.0F / $$1, 1.0F / $$2);
+         $$3.c = false;
       }
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.a.hashCode();
-      $$0 = 31 * $$0 + this.b.hashCode();
-      $$0 = 31 * $$0 + this.c;
-      return 31 * $$0 + this.d;
+   public void a(Quaternionf $$0) {
+      fag.a $$1 = this.a.getLast();
+      $$1.a.rotate($$0);
+      $$1.b.rotate($$0);
    }
 
-   public void a(int $$0, long $$1, int $$2) {
-      this.b.a(this.d, this.a.c(), $$2, $$1, this.c, $$0);
+   public void a(Quaternionf $$0, float $$1, float $$2, float $$3) {
+      fag.a $$4 = this.a.getLast();
+      $$4.a.rotateAround($$0, $$1, $$2, $$3);
+      $$4.b.rotate($$0);
    }
 
-   public void a(int $$0) {
-      this.b.a(this.c, $$0);
+   public void a() {
+      this.a.addLast(new fag.a(this.a.getLast()));
    }
 
-   public static enum a {
-      a(4, "Float", 5126),
-      b(1, "Unsigned Byte", 5121),
-      c(1, "Byte", 5120),
-      d(2, "Unsigned Short", 5123),
-      e(2, "Short", 5122),
-      f(4, "Unsigned Int", 5125),
-      g(4, "Int", 5124);
-
-      private final int h;
-      private final String i;
-      private final int j;
-
-      private a(final int $$0, final String $$1, final int $$2) {
-         this.h = $$0;
-         this.i = $$1;
-         this.j = $$2;
-      }
-
-      public int a() {
-         return this.h;
-      }
-
-      public String b() {
-         return this.i;
-      }
-
-      public int c() {
-         return this.j;
-      }
+   public void b() {
+      this.a.removeLast();
    }
 
-   public static enum b {
-      a("Position", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
-      b("Normal", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         GlStateManager._vertexAttribPointer($$5, $$0, $$1, true, $$2, $$3);
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
-      c("Vertex Color", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         GlStateManager._vertexAttribPointer($$5, $$0, $$1, true, $$2, $$3);
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
-      d("UV", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         if ($$1 == 5126) {
-            GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
+   public fag.a c() {
+      return this.a.getLast();
+   }
+
+   public boolean d() {
+      return this.a.size() == 1;
+   }
+
+   public void e() {
+      fag.a $$0 = this.a.getLast();
+      $$0.a.identity();
+      $$0.b.identity();
+      $$0.c = true;
+   }
+
+   public void a(Matrix4f $$0) {
+      fag.a $$1 = this.a.getLast();
+      $$1.a.mul($$0);
+      if (!f.a($$0)) {
+         if (f.b($$0)) {
+            $$1.b.mul(new Matrix3f($$0));
          } else {
-            GlStateManager._vertexAttribIPointer($$5, $$0, $$1, $$2, $$3);
+            $$1.d();
          }
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
-      e("Padding", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-      }, ($$0, $$1) -> {
-      }),
-      f("Generic", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1));
+      }
+   }
 
-      private final String g;
-      private final fag.b.b h;
-      private final fag.b.a i;
+   public static final class a {
+      final Matrix4f a;
+      final Matrix3f b;
+      boolean c = true;
 
-      private b(final String $$0, final fag.b.b $$1, final fag.b.a $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
+      a(Matrix4f $$0, Matrix3f $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      void a(int $$0, int $$1, int $$2, long $$3, int $$4, int $$5) {
-         this.h.setupBufferState($$0, $$1, $$2, $$3, $$4, $$5);
+      a(fag.a $$0) {
+         this.a = new Matrix4f($$0.a);
+         this.b = new Matrix3f($$0.b);
+         this.c = $$0.c;
       }
 
-      public void a(int $$0, int $$1) {
-         this.i.clearBufferState($$0, $$1);
+      void d() {
+         this.b.set(this.a).invert().transpose();
+         this.c = false;
       }
 
-      public String a() {
-         return this.g;
+      public Matrix4f a() {
+         return this.a;
       }
 
-      @FunctionalInterface
-      interface a {
-         void clearBufferState(int var1, int var2);
+      public Matrix3f b() {
+         return this.b;
       }
 
-      @FunctionalInterface
-      interface b {
-         void setupBufferState(int var1, int var2, int var3, long var4, int var6, int var7);
+      public Vector3f a(Vector3f $$0, Vector3f $$1) {
+         return this.a($$0.x, $$0.y, $$0.z, $$1);
+      }
+
+      public Vector3f a(float $$0, float $$1, float $$2, Vector3f $$3) {
+         Vector3f $$4 = this.b.transform($$0, $$1, $$2, $$3);
+         return this.c ? $$4 : $$4.normalize();
+      }
+
+      public fag.a c() {
+         return new fag.a(this);
       }
    }
 }

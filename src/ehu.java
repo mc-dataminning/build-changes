@@ -1,25 +1,57 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public interface ehu<P extends eht> {
-   ehu<ehf> a = a("block_predicate_filter", ehf.a);
-   ehu<ehw> b = a("rarity_filter", ehw.a);
-   ehu<ehy> c = a("surface_relative_threshold_filter", ehy.a);
-   ehu<ehz> d = a("surface_water_depth_filter", ehz.a);
-   ehu<ehe> e = a("biome", ehe.a);
-   ehu<ehj> f = a("count", ehj.a);
-   ehu<eho> g = a("noise_based_count", eho.a);
-   ehu<ehp> h = a("noise_threshold_count", ehp.a);
-   ehu<ehi> i = a("count_on_every_layer", ehi.a);
-   ehu<ehk> j = a("environment_scan", ehk.a);
-   ehu<ehm> k = a("heightmap", ehm.a);
-   ehu<ehl> l = a("height_range", ehl.a);
-   ehu<ehn> m = a("in_square", ehn.a);
-   ehu<ehv> n = a("random_offset", ehv.a);
-   ehu<ehg> o = a("carving_mask", ehg.a);
+public record ehu(jj<ear<?, ?>> e, List<ehx> f) {
+   public static final Codec<ehu> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ear.b.fieldOf("feature").forGetter($$0x -> $$0x.e), ehx.b.listOf().fieldOf("placement").forGetter($$0x -> $$0x.f)).apply($$0, ehu::new)
+   );
+   public static final Codec<jj<ehu>> b = akg.a(lr.aP, a);
+   public static final Codec<jn<ehu>> c = jy.a(lr.aP, a);
+   public static final Codec<List<jn<ehu>>> d = jy.a(lr.aP, a, true).listOf();
 
-   MapCodec<P> codec();
+   public boolean a(dcz $$0, due $$1, aym $$2, ja $$3) {
+      return this.a(new ehv($$0, $$1, Optional.empty()), $$2, $$3);
+   }
 
-   private static <P extends eht> ehu<P> a(String $$0, MapCodec<P> $$1) {
-      return jv.a(lp.U, $$0, () -> $$1);
+   public boolean b(dcz $$0, due $$1, aym $$2, ja $$3) {
+      return this.a(new ehv($$0, $$1, Optional.of(this)), $$2, $$3);
+   }
+
+   private boolean a(ehv $$0, aym $$1, ja $$2) {
+      Stream<ja> $$3 = Stream.of($$2);
+
+      for (ehx $$4 : this.f) {
+         $$3 = $$3.flatMap($$3x -> $$4.a_($$0, $$1, $$3x));
+      }
+
+      ear<?, ?> $$5 = this.e.a();
+      MutableBoolean $$6 = new MutableBoolean();
+      $$3.forEach($$4 -> {
+         if ($$5.a($$0.d(), $$0.f(), $$1, $$4)) {
+            $$6.setTrue();
+         }
+      });
+      return $$6.isTrue();
+   }
+
+   public Stream<ear<?, ?>> a() {
+      return this.e.a().a();
+   }
+
+   @Override
+   public String toString() {
+      return "Placed " + this.e;
+   }
+
+   public jj<ear<?, ?>> b() {
+      return this.e;
+   }
+
+   public List<ehx> c() {
+      return this.f;
    }
 }

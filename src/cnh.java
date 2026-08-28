@@ -1,119 +1,79 @@
-public class cnh extends cnf {
-   private static final int f = 600;
-   private static final int g = -1;
-   private static final akk<Integer> h = ako.a(cnh.class, akm.b);
-   private static final byte i = 0;
-
-   public cnh(btc<? extends cnh> $$0, dca $$1) {
+public abstract class cnh extends cmz {
+   protected cnh(bsj<? extends cnh> $$0, dcd $$1) {
       super($$0, $$1);
    }
 
-   public cnh(dca $$0, double $$1, double $$2, double $$3, cur $$4) {
-      super(btc.e, $$1, $$2, $$3, $$0, $$4);
-      this.M();
+   protected cnh(bsj<? extends cnh> $$0, double $$1, double $$2, double $$3, dcd $$4) {
+      this($$0, $$4);
+      this.a_($$1, $$2, $$3);
    }
 
-   public cnh(dca $$0, btr $$1, cur $$2) {
-      super(btc.e, $$1, $$0, $$2);
-      this.M();
-   }
-
-   private cws K() {
-      return this.y().a(km.G, cws.a);
-   }
-
-   private void a(cws $$0) {
-      this.y().b(km.G, $$0);
-      this.M();
+   protected cnh(bsj<? extends cnh> $$0, bsy $$1, dcd $$2) {
+      this($$0, $$1.du(), $$1.dy() - 0.1F, $$1.dA(), $$2);
+      this.c($$1);
    }
 
    @Override
-   protected void a(cur $$0) {
-      super.a($$0);
-      this.M();
-   }
+   public boolean a(double $$0) {
+      double $$1 = this.cK().a() * 4.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 4.0;
+      }
 
-   private void M() {
-      cws $$0 = this.K();
-      this.ao.a(h, $$0.equals(cws.a) ? -1 : $$0.b());
-   }
-
-   public void a(bse $$0) {
-      this.a(this.K().a($$0));
-   }
-
-   @Override
-   protected void a(ako.a $$0) {
-      super.a($$0);
-      $$0.a(h, -1);
+      $$1 *= 64.0;
+      return $$0 < $$1 * $$1;
    }
 
    @Override
    public void l() {
       super.l();
-      if (this.dP().B) {
-         if (this.b) {
-            if (this.c % 5 == 0) {
-               this.c(1);
+      evx $$0 = cnb.a(this, this::b);
+      boolean $$1 = false;
+      if ($$0.c() == evx.a.b) {
+         ja $$2 = ((evv)$$0).a();
+         dsh $$3 = this.dP().a_($$2);
+         if ($$3.a(dfh.ed)) {
+            this.f($$2);
+            $$1 = true;
+         } else if ($$3.a(dfh.kF)) {
+            dpn $$4 = this.dP().c_($$2);
+            if ($$4 instanceof drd && drd.a(this)) {
+               drd.a(this.dP(), $$2, $$3, this, (drd)$$4);
             }
-         } else {
-            this.c(2);
-         }
-      } else if (this.b && this.c != 0 && !this.K().equals(cws.a) && this.c >= 600) {
-         this.dP().a(this, (byte)0);
-         this.a(new cur(cuu.ov));
-      }
-   }
 
-   private void c(int $$0) {
-      int $$1 = this.H();
-      if ($$1 != -1 && $$0 > 0) {
-         for (int $$2 = 0; $$2 < $$0; $$2++) {
-            this.dP().a(lb.a(li.u, $$1), this.d(0.5), this.dx(), this.g(0.5), 0.0, 0.0, 0.0);
-         }
-      }
-   }
-
-   public int H() {
-      return this.ao.a(h);
-   }
-
-   @Override
-   protected void a(btr $$0) {
-      super.a($$0);
-      bsw $$1 = this.I();
-      cws $$2 = this.K();
-      if ($$2.e().isPresent()) {
-         for (bse $$3 : $$2.e().get().a().a()) {
-            $$0.b(new bse($$3.c(), Math.max($$3.a($$0x -> $$0x / 8), 1), $$3.e(), $$3.f(), $$3.g()), $$1);
+            $$1 = true;
          }
       }
 
-      for (bse $$4 : $$2.d()) {
-         $$0.b($$4, $$1);
+      if ($$0.c() != evx.a.a && !$$1) {
+         this.b($$0);
       }
-   }
 
-   @Override
-   protected cur x() {
-      return new cur(cuu.ov);
-   }
-
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 0) {
-         int $$1 = this.H();
-         if ($$1 != -1) {
-            float $$2 = (float)($$1 >> 16 & 0xFF) / 255.0F;
-            float $$3 = (float)($$1 >> 8 & 0xFF) / 255.0F;
-            float $$4 = (float)($$1 >> 0 & 0xFF) / 255.0F;
-
-            for (int $$5 = 0; $$5 < 20; $$5++) {
-               this.dP().a(lb.a(li.u, $$2, $$3, $$4), this.d(0.5), this.dx(), this.g(0.5), 0.0, 0.0, 0.0);
-            }
+      this.aS();
+      evz $$5 = this.ds();
+      double $$6 = this.du() + $$5.c;
+      double $$7 = this.dw() + $$5.d;
+      double $$8 = this.dA() + $$5.e;
+      this.J();
+      float $$11;
+      if (this.be()) {
+         for (int $$9 = 0; $$9 < 4; $$9++) {
+            float $$10 = 0.25F;
+            this.dP().a(lj.d, $$6 - $$5.c * 0.25, $$7 - $$5.d * 0.25, $$8 - $$5.e * 0.25, $$5.c, $$5.d, $$5.e);
          }
+
+         $$11 = 0.8F;
       } else {
-         super.b($$0);
+         $$11 = 0.99F;
       }
+
+      this.h($$5.a((double)$$11));
+      this.ba();
+      this.a_($$6, $$7, $$8);
+   }
+
+   @Override
+   protected double aY() {
+      return 0.03;
    }
 }

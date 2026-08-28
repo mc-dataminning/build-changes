@@ -1,58 +1,123 @@
-public class gsk extends grx {
-   public gsk(avz $$0, awb $$1, float $$2, float $$3, azh $$4, iz $$5) {
-      this($$0, $$1, $$2, $$3, $$4, (double)$$5.u() + 0.5, (double)$$5.v() + 0.5, (double)$$5.w() + 0.5);
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Optional;
+import javax.annotation.Nullable;
+
+public class gsk implements gsg {
+   private static final int a = 40;
+   private static final float b = 0.001F;
+   private final gcz c;
+   private final gub d;
+   private final ddf e;
+   private final aym f;
+   private final Object2ObjectArrayMap<ddd, gsk.a> g = new Object2ObjectArrayMap();
+   private Optional<ddb> h = Optional.empty();
+   private Optional<dda> i = Optional.empty();
+   private float j;
+   @Nullable
+   private ddd k;
+
+   public gsk(gcz $$0, gub $$1, ddf $$2) {
+      this.f = $$0.dP().E_();
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public static gsk a(avz $$0, float $$1) {
-      return a($$0, $$1, 0.25F);
+   public float b() {
+      return this.j;
    }
 
-   public static gsk a(ji<avz> $$0, float $$1) {
-      return a($$0.a(), $$1);
+   @Override
+   public void a() {
+      this.g.values().removeIf(gsf::m);
+      ddd $$0 = this.e.a(this.c.du(), this.c.dw(), this.c.dA()).a();
+      if ($$0 != this.k) {
+         this.k = $$0;
+         this.h = $$0.m();
+         this.i = $$0.n();
+         this.g.values().forEach(gsk.a::o);
+         $$0.l().ifPresent($$1 -> this.g.compute($$0, ($$1x, $$2) -> {
+               if ($$2 == null) {
+                  $$2 = new gsk.a((ave)$$1.a());
+                  this.d.a((gsw)$$2);
+               }
+
+               $$2.p();
+               return $$2;
+            }));
+      }
+
+      this.i.ifPresent($$0x -> {
+         if (this.f.j() < $$0x.b()) {
+            this.d.a(gsr.b($$0x.a().a()));
+         }
+      });
+      this.h
+         .ifPresent(
+            $$0x -> {
+               dcd $$1 = this.c.dP();
+               int $$2 = $$0x.c() * 2 + 1;
+               ja $$3 = ja.a(
+                  this.c.du() + (double)this.f.a($$2) - (double)$$0x.c(),
+                  this.c.dy() + (double)this.f.a($$2) - (double)$$0x.c(),
+                  this.c.dA() + (double)this.f.a($$2) - (double)$$0x.c()
+               );
+               int $$4 = $$1.a(dcm.a, $$3);
+               if ($$4 > 0) {
+                  this.j = this.j - (float)$$4 / (float)$$1.Q() * 0.001F;
+               } else {
+                  this.j = this.j - (float)($$1.a(dcm.b, $$3) - 1) / (float)$$0x.b();
+               }
+
+               if (this.j >= 1.0F) {
+                  double $$5 = (double)$$3.u() + 0.5;
+                  double $$6 = (double)$$3.v() + 0.5;
+                  double $$7 = (double)$$3.w() + 0.5;
+                  double $$8 = $$5 - this.c.du();
+                  double $$9 = $$6 - this.c.dy();
+                  double $$10 = $$7 - this.c.dA();
+                  double $$11 = Math.sqrt($$8 * $$8 + $$9 * $$9 + $$10 * $$10);
+                  double $$12 = $$11 + $$0x.d();
+                  gsr $$13 = gsr.a($$0x.a().a(), this.f, this.c.du() + $$8 / $$11 * $$12, this.c.dy() + $$9 / $$11 * $$12, this.c.dA() + $$10 / $$11 * $$12);
+                  this.d.a($$13);
+                  this.j = 0.0F;
+               } else {
+                  this.j = Math.max(this.j, 0.0F);
+               }
+            }
+         );
    }
 
-   public static gsk a(avz $$0, float $$1, float $$2) {
-      return new gsk($$0.a(), awb.a, $$2, $$1, gsp.t(), false, 0, gsp.a.a, 0.0, 0.0, 0.0, true);
-   }
+   public static class a extends gsf {
+      private int n;
+      private int o;
 
-   public static gsk a(avz $$0) {
-      return new gsk($$0.a(), awb.b, 1.0F, 1.0F, gsp.t(), false, 0, gsp.a.a, 0.0, 0.0, 0.0, true);
-   }
+      public a(ave $$0) {
+         super($$0, avg.i, gsw.t());
+         this.i = true;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
+      }
 
-   public static gsk a(avz $$0, evt $$1) {
-      return new gsk($$0, awb.c, 4.0F, 1.0F, gsp.t(), false, 0, gsp.a.b, $$1.c, $$1.d, $$1.e);
-   }
+      @Override
+      public void q() {
+         if (this.o < 0) {
+            this.n();
+         }
 
-   public static gsk b(avz $$0, float $$1, float $$2) {
-      return new gsk($$0.a(), awb.i, $$2, $$1, gsp.t(), false, 0, gsp.a.a, 0.0, 0.0, 0.0, true);
-   }
+         this.o = this.o + this.n;
+         this.d = aye.a((float)this.o / 40.0F, 0.0F, 1.0F);
+      }
 
-   public static gsk b(avz $$0) {
-      return b($$0, 1.0F, 1.0F);
-   }
+      public void o() {
+         this.o = Math.min(this.o, 40);
+         this.n = -1;
+      }
 
-   public static gsk a(avz $$0, azh $$1, double $$2, double $$3, double $$4) {
-      return new gsk($$0, awb.i, 1.0F, 1.0F, $$1, false, 0, gsp.a.b, $$2, $$3, $$4);
-   }
-
-   public gsk(avz $$0, awb $$1, float $$2, float $$3, azh $$4, double $$5, double $$6, double $$7) {
-      this($$0, $$1, $$2, $$3, $$4, false, 0, gsp.a.b, $$5, $$6, $$7);
-   }
-
-   private gsk(avz $$0, awb $$1, float $$2, float $$3, azh $$4, boolean $$5, int $$6, gsp.a $$7, double $$8, double $$9, double $$10) {
-      this($$0.a(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, false);
-   }
-
-   public gsk(alf $$0, awb $$1, float $$2, float $$3, azh $$4, boolean $$5, int $$6, gsp.a $$7, double $$8, double $$9, double $$10, boolean $$11) {
-      super($$0, $$1, $$4);
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$8;
-      this.g = $$9;
-      this.h = $$10;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
-      this.l = $$11;
+      public void p() {
+         this.o = Math.max(0, this.o);
+         this.n = 1;
+      }
    }
 }

@@ -1,22 +1,23 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dzh implements dzd {
-   public static final MapCodec<dzh> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(kd.v(16).optionalFieldOf("offset", iz.c).forGetter($$0x -> $$0x.e)).apply($$0, dzh::new)
-   );
-   private final kd e;
+public interface dzh<P extends dzg> {
+   dzh<dzm> a = a("matching_blocks", dzm.a);
+   dzh<dzl> b = a("matching_block_tag", dzl.e);
+   dzh<dzn> c = a("matching_fluids", dzn.a);
+   dzh<dzj> d = a("has_sturdy_face", dzj.a);
+   dzh<dzq> e = a("solid", dzq.a);
+   dzh<dzp> f = a("replaceable", dzp.a);
+   dzh<dzu> g = a("would_survive", dzu.a);
+   dzh<dzk> h = a("inside_world_bounds", dzk.a);
+   dzh<dzf> i = a("any_of", dzf.a);
+   dzh<dze> j = a("all_of", dze.a);
+   dzh<dzo> k = a("not", dzo.a);
+   dzh<dzs> l = a("true", dzs.e);
+   dzh<dzt> m = a("unobstructed", dzt.a);
 
-   public dzh(kd $$0) {
-      this.e = $$0;
-   }
+   MapCodec<P> codec();
 
-   public boolean a(dcv $$0, iz $$1) {
-      return !$$0.s($$1.a(this.e));
-   }
-
-   @Override
-   public dze<?> a() {
-      return dze.h;
+   private static <P extends dzg> dzh<P> a(String $$0, MapCodec<P> $$1) {
+      return jw.a(lq.M, $$0, () -> $$1);
    }
 }

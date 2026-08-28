@@ -1,37 +1,48 @@
-public interface fjp {
-   Object b = new Object();
-   int c = 32;
+import java.util.Objects;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   fjp.a a(fgt var1, fjq var2, long var3);
+public class fjp {
+   private final Consumer<fhk> a;
+   private final Consumer<fhk> b;
+   @Nullable
+   private fjo c;
+   @Nullable
+   private fls d;
 
-   default Object e() {
-      return b;
+   public fjp(Consumer<fhk> $$0, Consumer<fhk> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   default int a() {
-      return 160;
+   public void a(fls $$0) {
+      this.d = $$0;
+      fjo $$1 = this.a();
+      if ($$1 != null) {
+         $$1.a($$0);
+      }
    }
 
-   default int b() {
-      return 32;
-   }
+   public void a(fjo $$0, boolean $$1) {
+      if (!Objects.equals(this.c, $$0)) {
+         if (this.c != null) {
+            this.c.a(this.b);
+         }
 
-   default int f() {
-      return ayz.e(this.b(), 32);
-   }
-
-   public static enum a {
-      a(awa.Av),
-      b(awa.Aw);
-
-      private final avz c;
-
-      private a(final avz $$0) {
          this.c = $$0;
-      }
+         $$0.a(this.a);
+         if (this.d != null) {
+            $$0.a(this.d);
+         }
 
-      public void a(gtx $$0) {
-         $$0.a(gsk.a(this.c, 1.0F, 1.0F));
+         if ($$1) {
+            ffn.Q().aj().a(gsr.a(avf.Ar, 1.0F));
+         }
       }
+   }
+
+   @Nullable
+   public fjo a() {
+      return this.c;
    }
 }

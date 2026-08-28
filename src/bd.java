@@ -2,17 +2,17 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class bd extends dr<bd.a> {
+public class bd extends ds<bd.a> {
    @Override
    public Codec<bd.a> a() {
       return bd.a.a;
    }
 
-   public void a(arg $$0, int $$1) {
+   public void a(aql $$0, int $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public static record a(Optional<bf> b, de.d c) implements dr.a {
+   public static record a(Optional<bf> b, de.d c) implements ds.a {
       public static final Codec<bd.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(bu.b.optionalFieldOf("player").forGetter(bd.a::a), de.d.d.optionalFieldOf("level", de.d.c).forGetter(bd.a::c)).apply($$0, bd.a::new)
       );

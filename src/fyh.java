@@ -1,17 +1,17 @@
-public class fyh {
-   private final fxy a;
-   private final blw b;
+import com.mojang.authlib.GameProfile;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-   public fyh(fxy $$0, blw $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public void a() {
-      this.a.b(new aka(ac.c()));
-   }
-
-   public void a(ajx $$0) {
-      this.b.a(ac.c() - $$0.b());
-   }
+public record fyh(
+   GameProfile a,
+   guo b,
+   jx.b c,
+   cov d,
+   @Nullable String e,
+   @Nullable fyr f,
+   @Nullable fnd g,
+   Map<akk, byte[]> h,
+   @Nullable fhn.b i,
+   @Deprecated(forRemoval = true) boolean j
+) {
 }

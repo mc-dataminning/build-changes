@@ -1,26 +1,21 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class edt implements ede {
+public class edt implements edi {
    public static final Codec<edt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dse.b.fieldOf("target").forGetter($$0x -> $$0x.b),
-               dse.b.fieldOf("state").forGetter($$0x -> $$0x.c),
-               bqb.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, edt::new)
+      $$0 -> $$0.group(ehu.b.fieldOf("feature_true").forGetter($$0x -> $$0x.b), ehu.b.fieldOf("feature_false").forGetter($$0x -> $$0x.c)).apply($$0, edt::new)
    );
-   public final dse b;
-   public final dse c;
-   private final bqb d;
+   public final jj<ehu> b;
+   public final jj<ehu> c;
 
-   public edt(dse $$0, dse $$1, bqb $$2) {
+   public edt(jj<ehu> $$0, jj<ehu> $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
    }
 
-   public bqb a() {
-      return this.d;
+   @Override
+   public Stream<ear<?, ?>> e() {
+      return Stream.concat(this.b.a().a(), this.c.a().a());
    }
 }

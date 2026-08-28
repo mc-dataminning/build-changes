@@ -1,16 +1,18 @@
-public enum dsp implements azu {
-   a("floor"),
-   b("wall"),
-   c("ceiling");
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   private final String d;
+public class dsp implements Predicate<dsh> {
+   private final dff a;
 
-   private dsp(final String $$0) {
-      this.d = $$0;
+   public dsp(dff $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public String c() {
-      return this.d;
+   public static dsp a(dff $$0) {
+      return new dsp($$0);
+   }
+
+   public boolean a(@Nullable dsh $$0) {
+      return $$0 != null && $$0.a(this.a);
    }
 }

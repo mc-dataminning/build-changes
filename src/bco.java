@@ -1,65 +1,75 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import java.util.Set;
+import com.mojang.serialization.OptionalDynamic;
+import java.util.Arrays;
+import java.util.function.Function;
 
 public class bco extends DataFix {
-   private static final Set<String> a = Set.of("minecraft:potion", "minecraft:splash_potion", "minecraft:lingering_potion", "minecraft:tipped_arrow");
-
    public bco(Schema $$0) {
       super($$0, false);
    }
 
    protected TypeRewriteRule makeRule() {
       Schema $$0 = this.getInputSchema();
-      Type<?> $$1 = this.getInputSchema().getType(bgx.t);
-      OpticFinder<Pair<String, String>> $$2 = DSL.fieldFinder("id", DSL.named(bgx.D.typeName(), bij.a()));
-      OpticFinder<?> $$3 = $$1.findField("tag");
-      return TypeRewriteRule.seq(
-         this.fixTypeEverywhereTyped("EffectDurationEntity", $$0.getType(bgx.B), $$0x -> $$0x.update(DSL.remainderFinder(), this::c)),
-         new TypeRewriteRule[]{
-            this.fixTypeEverywhereTyped("EffectDurationPlayer", $$0.getType(bgx.b), $$0x -> $$0x.update(DSL.remainderFinder(), this::c)),
-            this.fixTypeEverywhereTyped("EffectDurationItem", $$1, $$2x -> {
-               Optional<Pair<String, String>> $$3x = $$2x.getOptional($$2);
-               if ($$3x.filter(a::contains).isPresent()) {
-                  Optional<? extends Typed<?>> $$4 = $$2x.getOptionalTyped($$3);
-                  if ($$4.isPresent()) {
-                     Dynamic<?> $$5 = (Dynamic<?>)$$4.get().get(DSL.remainderFinder());
-                     Typed<?> $$6 = $$4.get().set(DSL.remainderFinder(), $$5.update("CustomPotionEffects", this::b));
-                     return $$2x.set($$3, $$6);
-                  }
-               }
+      return this.fixTypeEverywhereTyped("EntityProjectileOwner", $$0.getType(bgd.B), this::a);
+   }
 
-               return $$2x;
-            })
-         }
-      );
+   private Typed<?> a(Typed<?> $$0) {
+      $$0 = this.a($$0, "minecraft:egg", this::d);
+      $$0 = this.a($$0, "minecraft:ender_pearl", this::d);
+      $$0 = this.a($$0, "minecraft:experience_bottle", this::d);
+      $$0 = this.a($$0, "minecraft:snowball", this::d);
+      $$0 = this.a($$0, "minecraft:potion", this::d);
+      $$0 = this.a($$0, "minecraft:potion", this::c);
+      $$0 = this.a($$0, "minecraft:llama_spit", this::b);
+      $$0 = this.a($$0, "minecraft:arrow", this::a);
+      $$0 = this.a($$0, "minecraft:spectral_arrow", this::a);
+      return this.a($$0, "minecraft:trident", this::a);
    }
 
    private Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("FactorCalculationData", $$1 -> {
-         int $$2 = $$1.get("effect_changed_timestamp").asInt(-1);
-         $$1 = $$1.remove("effect_changed_timestamp");
-         int $$3 = $$0.get("Duration").asInt(-1);
-         int $$4 = $$2 - $$3;
-         return $$1.set("ticks_active", $$1.createInt($$4));
-      });
+      long $$1 = $$0.get("OwnerUUIDMost").asLong(0L);
+      long $$2 = $$0.get("OwnerUUIDLeast").asLong(0L);
+      return this.a($$0, $$1, $$2).remove("OwnerUUIDMost").remove("OwnerUUIDLeast");
    }
 
    private Dynamic<?> b(Dynamic<?> $$0) {
-      return $$0.createList($$0.asStream().map(this::a));
+      OptionalDynamic<?> $$1 = $$0.get("Owner");
+      long $$2 = $$1.get("OwnerUUIDMost").asLong(0L);
+      long $$3 = $$1.get("OwnerUUIDLeast").asLong(0L);
+      return this.a($$0, $$2, $$3).remove("Owner");
    }
 
    private Dynamic<?> c(Dynamic<?> $$0) {
-      $$0 = $$0.update("Effects", this::b);
-      $$0 = $$0.update("ActiveEffects", this::b);
-      return $$0.update("CustomPotionEffects", this::b);
+      OptionalDynamic<?> $$1 = $$0.get("Potion");
+      return $$0.set("Item", $$1.orElseEmptyMap()).remove("Potion");
+   }
+
+   private Dynamic<?> d(Dynamic<?> $$0) {
+      String $$1 = "owner";
+      OptionalDynamic<?> $$2 = $$0.get("owner");
+      long $$3 = $$2.get("M").asLong(0L);
+      long $$4 = $$2.get("L").asLong(0L);
+      return this.a($$0, $$3, $$4).remove("owner");
+   }
+
+   private Dynamic<?> a(Dynamic<?> $$0, long $$1, long $$2) {
+      String $$3 = "OwnerUUID";
+      return $$1 != 0L && $$2 != 0L ? $$0.set("OwnerUUID", $$0.createIntList(Arrays.stream(a($$1, $$2)))) : $$0;
+   }
+
+   private static int[] a(long $$0, long $$1) {
+      return new int[]{(int)($$0 >> 32), (int)$$0, (int)($$1 >> 32), (int)$$1};
+   }
+
+   private Typed<?> a(Typed<?> $$0, String $$1, Function<Dynamic<?>, Dynamic<?>> $$2) {
+      Type<?> $$3 = this.getInputSchema().getChoiceType(bgd.B, $$1);
+      Type<?> $$4 = this.getOutputSchema().getChoiceType(bgd.B, $$1);
+      return $$0.updateTyped(DSL.namedChoice($$1, $$3), $$4, $$1x -> $$1x.update(DSL.remainderFinder(), $$2));
    }
 }

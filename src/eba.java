@@ -1,144 +1,111 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.function.Consumer;
 
-public abstract class eba<FC extends ede> {
-   public static final eba<edl> e = a("no_op", new ebu(edl.a));
-   public static final eba<eea> f = a("tree", new ecm(eea.a));
-   public static final eba<edr> g = a("flower", new eby(edr.a));
-   public static final eba<edr> h = a("no_bonemeal_flower", new eby(edr.a));
-   public static final eba<edr> i = a("random_patch", new eby(edr.a));
-   public static final eba<ecw> j = a("block_pile", new eaj(ecw.a));
-   public static final eba<edz> k = a("spring_feature", new ecl(edz.a));
-   public static final eba<edl> l = a("chorus_plant", new eam(edl.a));
-   public static final eba<eds> m = a("replace_single_block", new ecb(eds.a));
-   public static final eba<edl> n = a("void_start_platform", new ecr(edl.a));
-   public static final eba<edl> o = a("desert_well", new eat(edl.a));
-   public static final eba<ebf> p = a("fossil", new ebe(ebf.a));
-   public static final eba<edg> q = a("huge_red_mushroom", new ebl(edg.a));
-   public static final eba<edg> r = a("huge_brown_mushroom", new ebi(edg.a));
-   public static final eba<edl> s = a("ice_spike", new ebm(edl.a));
-   public static final eba<edl> t = a("glowstone_blob", new ebh(edl.a));
-   public static final eba<edl> u = a("freeze_top_layer", new ecj(edl.a));
-   public static final eba<edl> v = a("vines", new ecq(edl.a));
-   public static final eba<ecv> w = a("block_column", new eai(ecv.a));
-   public static final eba<eed> x = a("vegetation_patch", new ecp(eed.a));
-   public static final eba<eed> y = a("waterlogged_vegetation_patch", new ecs(eed.a));
-   public static final eba<edu> z = a("root_system", new ecc(edu.a));
-   public static final eba<edj> A = a("multiface_growth", new ebs(edj.a));
-   public static final eba<eec> B = a("underwater_magma", new eco(eec.a));
-   public static final eba<edl> C = a("monster_room", new ebr(edl.a));
-   public static final eba<edl> D = a("blue_ice", new eak(edl.a));
-   public static final eba<ecx> E = a("iceberg", new ebn(ecx.a));
-   public static final eba<ecx> F = a("forest_rock", new eah(ecx.a));
-   public static final eba<edb> G = a("disk", new eau(edb.a));
-   public static final eba<ebp.a> H = a("lake", new ebp(ebp.a.a));
-   public static final eba<edm> I = a("ore", new ebv(edm.a));
-   public static final eba<edy> J = a("end_spike", new eck(edy.a));
-   public static final eba<edl> K = a("end_island", new eay(edl.a));
-   public static final eba<edd> L = a("end_gateway", new eax(edd.a));
-   public static final ecg M = a("seagrass", new ecg(edo.k));
-   public static final eba<edl> N = a("kelp", new ebo(edl.a));
-   public static final eba<edl> O = a("coral_tree", new ear(edl.a));
-   public static final eba<edl> P = a("coral_mushroom", new eaq(edl.a));
-   public static final eba<edl> Q = a("coral_claw", new eao(edl.a));
-   public static final eba<ecz> R = a("sea_pickle", new ecf(ecz.a));
-   public static final eba<edw> S = a("simple_block", new ech(edw.a));
-   public static final eba<edo> T = a("bamboo", new eae(edo.k));
-   public static final eba<ebj> U = a("huge_fungus", new ebk(ebj.a));
-   public static final eba<edk> V = a("nether_forest_vegetation", new ebt(edk.c));
-   public static final eba<edl> W = a("weeping_vines", new ect(edl.a));
-   public static final eba<eeb> X = a("twisting_vines", new ecn(eeb.a));
-   public static final eba<ecy> Y = a("basalt_columns", new eaf(ecy.a));
-   public static final eba<eda> Z = a("delta_feature", new eas(eda.a));
-   public static final eba<edt> aa = a("netherrack_replace_blobs", new eca(edt.a));
-   public static final eba<edi> ab = a("fill_layer", new ebd(edi.a));
-   public static final eal ac = a("bonus_chest", new eal(edl.a));
-   public static final eba<edl> ad = a("basalt_pillar", new eag(edl.a));
-   public static final eba<edm> ae = a("scattered_ore", new ecd(edm.a));
-   public static final eba<edq> af = a("random_selector", new ebz(edq.a));
-   public static final eba<edx> ag = a("simple_random_selector", new eci(edx.a));
-   public static final eba<edp> ah = a("random_boolean_selector", new ebx(edp.a));
-   public static final eba<edf> ai = a("geode", new ebg(edf.b));
-   public static final eba<edc> aj = a("dripstone_cluster", new eav(edc.a));
-   public static final eba<edh> ak = a("large_dripstone", new ebq(edh.a));
-   public static final eba<edn> al = a("pointed_dripstone", new ebw(edn.a));
-   public static final eba<edv> am = a("sculk_patch", new ece(edv.a));
-   private final MapCodec<ean<FC, eba<FC>>> a;
+public class eba {
+   protected static double a(double $$0, double $$1, double $$2, double $$3) {
+      if ($$0 < $$3) {
+         $$0 = $$3;
+      }
 
-   private static <C extends ede, F extends eba<C>> F a(String $$0, F $$1) {
-      return jv.a(lp.Q, $$0, $$1);
+      double $$4 = 0.384;
+      double $$5 = $$0 / $$1 * 0.384;
+      double $$6 = 0.75 * Math.pow($$5, 1.3333333333333333);
+      double $$7 = Math.pow($$5, 0.6666666666666666);
+      double $$8 = 0.3333333333333333 * Math.log($$5);
+      double $$9 = $$2 * ($$6 - $$7 - $$8);
+      $$9 = Math.max($$9, 0.0);
+      return $$9 / 0.384 * $$1;
    }
 
-   public eba(Codec<FC> $$0) {
-      this.a = $$0.fieldOf("config").xmap($$0x -> new ean<>(this, $$0x), ean::c);
-   }
+   protected static boolean a(dcz $$0, ja $$1, int $$2) {
+      if (b($$0, $$1)) {
+         return false;
+      } else {
+         float $$3 = 6.0F;
+         float $$4 = 6.0F / (float)$$2;
 
-   public MapCodec<ean<FC, eba<FC>>> a() {
-      return this.a;
-   }
+         for (float $$5 = 0.0F; $$5 < (float) (Math.PI * 2); $$5 += $$4) {
+            int $$6 = (int)(aye.b($$5) * (float)$$2);
+            int $$7 = (int)(aye.a($$5) * (float)$$2);
+            if (b($$0, $$1.b($$6, 0, $$7))) {
+               return false;
+            }
+         }
 
-   protected void a(dci $$0, iz $$1, dse $$2) {
-      $$0.a($$1, $$2, 3);
-   }
-
-   public static Predicate<dse> a(axf<dfb> $$0) {
-      return $$1 -> !$$1.a($$0);
-   }
-
-   protected void a(dcv $$0, iz $$1, dse $$2, Predicate<dse> $$3) {
-      if ($$3.test($$0.a_($$1))) {
-         $$0.a($$1, $$2, 2);
+         return true;
       }
    }
 
-   public abstract boolean a(ebc<FC> var1);
-
-   public boolean a(FC $$0, dcv $$1, dub $$2, azh $$3, iz $$4) {
-      return $$1.f_($$4) ? this.a(new ebc<>(Optional.empty(), $$1, $$2, $$3, $$4, $$0)) : false;
+   protected static boolean a(dce $$0, ja $$1) {
+      return $$0.a($$1, eba::c);
    }
 
-   protected static boolean a(dse $$0) {
-      return $$0.a(awp.be);
+   protected static boolean b(dce $$0, ja $$1) {
+      return $$0.a($$1, eba::e);
    }
 
-   public static boolean b(dse $$0) {
-      return $$0.a(awp.af);
-   }
+   protected static void a(jf $$0, int $$1, boolean $$2, Consumer<dsh> $$3) {
+      if ($$1 >= 3) {
+         $$3.accept(a($$0, dte.e));
 
-   public static boolean a(dcg $$0, iz $$1) {
-      return $$0.a($$1, eba::b);
-   }
-
-   public static boolean a(Function<iz, dse> $$0, iz $$1, Predicate<dse> $$2) {
-      iz.a $$3 = new iz.a();
-
-      for (je $$4 : je.values()) {
-         $$3.a($$1, $$4);
-         if ($$2.test($$0.apply($$3))) {
-            return true;
+         for (int $$4 = 0; $$4 < $$1 - 3; $$4++) {
+            $$3.accept(a($$0, dte.d));
          }
       }
 
-      return false;
-   }
-
-   public static boolean a(Function<iz, dse> $$0, iz $$1) {
-      return a($$0, $$1, dsd.a::i);
-   }
-
-   protected void a(dcv $$0, iz $$1) {
-      iz.a $$2 = $$1.j();
-
-      for (int $$3 = 0; $$3 < 2; $$3++) {
-         $$2.c(je.b);
-         if ($$0.a_($$2).i()) {
-            return;
-         }
-
-         $$0.y($$2).e($$2);
+      if ($$1 >= 2) {
+         $$3.accept(a($$0, dte.c));
       }
+
+      if ($$1 >= 1) {
+         $$3.accept(a($$0, $$2 ? dte.a : dte.b));
+      }
+   }
+
+   protected static void a(dce $$0, ja $$1, jf $$2, int $$3, boolean $$4) {
+      if (b($$0.a_($$1.a($$2.g())))) {
+         ja.a $$5 = $$1.j();
+         a($$2, $$3, $$4, $$3x -> {
+            if ($$3x.a(dfh.st)) {
+               $$3x = $$3x.a(dkx.d, Boolean.valueOf($$0.z($$5)));
+            }
+
+            $$0.a($$5, $$3x, 2);
+            $$5.c($$2);
+         });
+      }
+   }
+
+   protected static boolean c(dce $$0, ja $$1) {
+      dsh $$2 = $$0.a_($$1);
+      if ($$2.a(avu.bs)) {
+         $$0.a($$1, dfh.su.o(), 2);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private static dsh a(jf $$0, dte $$1) {
+      return dfh.st.o().a(dkx.b, $$0).a(dkx.c, $$1);
+   }
+
+   public static boolean a(dsh $$0) {
+      return b($$0) || $$0.a(dfh.H);
+   }
+
+   public static boolean b(dsh $$0) {
+      return $$0.a(dfh.su) || $$0.a(avu.bs);
+   }
+
+   public static boolean c(dsh $$0) {
+      return $$0.i() || $$0.a(dfh.G);
+   }
+
+   public static boolean d(dsh $$0) {
+      return !$$0.i() && !$$0.a(dfh.G);
+   }
+
+   public static boolean e(dsh $$0) {
+      return $$0.i() || $$0.a(dfh.G) || $$0.a(dfh.H);
    }
 }

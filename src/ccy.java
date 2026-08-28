@@ -1,35 +1,52 @@
-public class ccy {
-   private final bwy a;
-   private final float b;
-   private final int c;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 
-   public ccy(iz $$0, float $$1, int $$2) {
-      this(new bvn($$0), $$1, $$2);
-   }
+public class ccy<T extends bsy> extends cdi<T> {
+   private final BiPredicate<T, bsy> a;
+   private final Predicate<T> c;
+   private final ccc<Boolean> d;
+   private final int e;
 
-   public ccy(evt $$0, float $$1, int $$2) {
-      this(new bvn(iz.a($$0)), $$1, $$2);
-   }
-
-   public ccy(bsw $$0, float $$1, int $$2) {
-      this(new bvv($$0, false), $$1, $$2);
-   }
-
-   public ccy(bwy $$0, float $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
+   public ccy(int $$0, BiPredicate<T, bsy> $$1, Predicate<T> $$2, ccc<Boolean> $$3, int $$4) {
+      super($$0);
+      this.a = $$1;
       this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   public bwy a() {
-      return this.a;
+   @Override
+   protected void a(aqk $$0, T $$1) {
+      if (!this.c.test($$1)) {
+         this.c($$1);
+      } else {
+         this.a($$1);
+      }
    }
 
-   public float b() {
-      return this.b;
+   @Override
+   public Set<ccc<?>> a() {
+      return Set.of(ccc.g);
    }
 
-   public int c() {
-      return this.c;
+   public void a(T $$0) {
+      Optional<List<bsy>> $$1 = $$0.dT().c(ccc.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
+         if ($$2) {
+            this.b($$0);
+         }
+      }
+   }
+
+   public void b(T $$0) {
+      $$0.dT().a(this.d, true, (long)this.e);
+   }
+
+   public void c(T $$0) {
+      $$0.dT().b(this.d);
    }
 }

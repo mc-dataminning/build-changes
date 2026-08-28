@@ -1,6 +1,6 @@
 import com.mojang.serialization.MapCodec;
 
-public class djz extends dfb implements dfe {
+public class djz extends djp implements dfi {
    public static final MapCodec<djz> a = b(djz::new);
 
    @Override
@@ -8,27 +8,27 @@ public class djz extends dfb implements dfe {
       return a;
    }
 
-   public djz(dsd.d $$0) {
+   public djz(dsg.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean b(dcd $$0, iz $$1, dse $$2) {
-      return $$0.a_($$1.c()).i();
+   public boolean b(dcg $$0, ja $$1, dsh $$2) {
+      return $$0.a_($$1.d()).i();
    }
 
    @Override
-   public boolean a(dca $$0, azh $$1, iz $$2, dse $$3) {
+   public boolean a(dcd $$0, aym $$1, ja $$2, dsh $$3) {
       return true;
    }
 
    @Override
-   public void a(arf $$0, azh $$1, iz $$2, dse $$3) {
-      $$0.H_().c(lq.aC).flatMap($$0x -> $$0x.b(sg.n)).ifPresent($$3x -> ((ean)$$3x.a()).a($$0, $$0.l().g(), $$1, $$2.c()));
+   public void a(aqk $$0, aym $$1, ja $$2, dsh $$3) {
+      $$0.a($$2.d(), dka.c(), 2);
    }
 
    @Override
-   public dfe.a ap_() {
-      return dfe.a.a;
+   public ja a(ja $$0) {
+      return $$0.d();
    }
 }

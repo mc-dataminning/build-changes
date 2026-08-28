@@ -1,103 +1,174 @@
+import com.google.common.annotations.VisibleForTesting;
 import javax.annotation.Nullable;
 
-public abstract class dqo extends dpd implements bre {
-   @Nullable
-   protected ale<eqp> l;
-   protected long m = 0L;
+public class dqo extends dpn implements bpu, exk.a {
+   private static final int b = 20;
+   private cua c = cua.l;
+   private int d;
+   private long e;
+   private long f;
+   private boolean g;
 
-   protected dqo(dpl<?> $$0, iz $$1, dse $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   @Nullable
-   @Override
-   public ale<eqp> aw_() {
-      return this.l;
+   public dqo(ja $$0, dsh $$1) {
+      super(dpp.e, $$0, $$1);
    }
 
    @Override
-   public void a(@Nullable ale<eqp> $$0) {
-      this.l = $$0;
-   }
-
-   @Override
-   public long ax_() {
-      return this.m;
-   }
-
-   @Override
-   public void a(long $$0) {
-      this.m = $$0;
-   }
-
-   @Override
-   public boolean c() {
-      this.e_(null);
-      return super.c();
-   }
-
-   @Override
-   public cur a(int $$0) {
-      this.e_(null);
-      return super.a($$0);
-   }
-
-   @Override
-   public cur a(int $$0, int $$1) {
-      this.e_(null);
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   public cur b(int $$0) {
-      this.e_(null);
-      return super.b($$0);
-   }
-
-   @Override
-   public void a(int $$0, cur $$1) {
-      this.e_(null);
+   protected void a(tx $$0, jl.a $$1) {
       super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean d(cmz $$0) {
-      return super.d($$0) && (this.l == null || !$$0.N_());
-   }
-
-   @Nullable
-   @Override
-   public cpw createMenu(int $$0, cmy $$1, cmz $$2) {
-      if (this.d($$2)) {
-         this.e_($$1.l);
-         return this.a($$0, $$1);
+      if ($$0.b("RecordItem", 10)) {
+         this.c = cua.a($$1, (uu)$$0.p("RecordItem")).orElse(cua.l);
       } else {
-         return null;
+         this.c = cua.l;
+      }
+
+      this.g = $$0.q("IsPlaying");
+      this.f = $$0.i("RecordStartTick");
+      this.e = $$0.i("TickCount");
+   }
+
+   @Override
+   protected void b(tx $$0, jl.a $$1) {
+      super.b($$0, $$1);
+      if (!this.f().e()) {
+         $$0.a("RecordItem", this.f().a($$1));
+      }
+
+      $$0.a("IsPlaying", this.g);
+      $$0.a("RecordStartTick", this.f);
+      $$0.a("TickCount", this.e);
+   }
+
+   public boolean j() {
+      return !this.f().e() && this.g;
+   }
+
+   private void a(@Nullable bsd $$0, boolean $$1) {
+      if (this.n.a_(this.az_()) == this.n()) {
+         this.n.a(this.az_(), this.n().a(dji.b, Boolean.valueOf($$1)), 2);
+         this.n.a(dxa.c, this.az_(), dxa.a.a($$0, this.n()));
+      }
+   }
+
+   @VisibleForTesting
+   public void k() {
+      this.f = this.e;
+      this.g = true;
+      this.n.a(this.az_(), this.n().b());
+      this.n.a(null, 1010, this.az_(), ctv.a(this.f().g()));
+      this.e();
+   }
+
+   private void u() {
+      this.g = false;
+      this.n.a(dxa.F, this.az_(), dxa.a.a(this.n()));
+      this.n.a(this.az_(), this.n().b());
+      this.n.c(1011, this.az_(), 0);
+      this.e();
+   }
+
+   private void b(dcd $$0, ja $$1, dsh $$2) {
+      this.d++;
+      if (this.j() && this.f().g() instanceof cuv $$3) {
+         if (this.a($$3)) {
+            this.u();
+         } else if (this.w()) {
+            this.d = 0;
+            $$0.a(dxa.E, $$1, dxa.a.a($$2));
+            this.a($$0, $$1);
+         }
+      }
+
+      this.e++;
+   }
+
+   private boolean a(cuv $$0) {
+      return this.e >= this.f + (long)$$0.m() + 20L;
+   }
+
+   private boolean w() {
+      return this.d >= 20;
+   }
+
+   @Override
+   public cua f() {
+      return this.c;
+   }
+
+   @Override
+   public cua c(int $$0) {
+      cua $$1 = this.c;
+      this.c = cua.l;
+      if (!$$1.e()) {
+         this.a(null, false);
+         this.u();
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public void b(cua $$0) {
+      if ($$0.a(awd.aR) && this.n != null) {
+         this.c = $$0;
+         this.a(null, true);
+         this.k();
+      } else if ($$0.e()) {
+         this.c(1);
       }
    }
 
    @Override
-   protected void a(dpj.b $$0) {
-      super.a($$0);
-      cxu $$1 = $$0.a(km.ae);
-      if ($$1 != null) {
-         this.l = $$1.a();
-         this.m = $$1.b();
-      }
+   public int ah_() {
+      return 1;
    }
 
    @Override
-   protected void a(ki.a $$0) {
-      super.a($$0);
-      if (this.l != null) {
-         $$0.a(km.ae, new cxu(this.l, this.m));
-      }
+   public dpn v() {
+      return this;
    }
 
    @Override
-   public void a(us $$0) {
-      super.a($$0);
-      $$0.r("LootTable");
-      $$0.r("LootTableSeed");
+   public boolean b(int $$0, cua $$1) {
+      return $$1.a(awd.aR) && this.a($$0).e();
+   }
+
+   @Override
+   public boolean a(bpw $$0, int $$1, cua $$2) {
+      return $$0.a_(cua::e);
+   }
+
+   private void a(dcd $$0, ja $$1) {
+      if ($$0 instanceof aqk $$2) {
+         evz $$3 = evz.c($$1).b(0.0, 1.2F, 0.0);
+         float $$4 = (float)$$0.E_().a(4) / 24.0F;
+         $$2.a(lj.aa, $$3.a(), $$3.b(), $$3.c(), 0, (double)$$4, 0.0, 0.0, 1.0);
+      }
+   }
+
+   public void l() {
+      if (this.n != null && !this.n.B) {
+         ja $$0 = this.az_();
+         cua $$1 = this.f();
+         if (!$$1.e()) {
+            this.h();
+            evz $$2 = evz.a($$0, 0.5, 1.01, 0.5).a(this.n.z, 0.7F);
+            cua $$3 = $$1.s();
+            cir $$4 = new cir(this.n, $$2.a(), $$2.b(), $$2.c(), $$3);
+            $$4.v();
+            this.n.b($$4);
+         }
+      }
+   }
+
+   public static void a(dcd $$0, ja $$1, dsh $$2, dqo $$3) {
+      $$3.b($$0, $$1, $$2);
+   }
+
+   @VisibleForTesting
+   public void c(cua $$0) {
+      this.c = $$0;
+      this.n.a(this.az_(), this.n().b());
+      this.e();
    }
 }

@@ -1,59 +1,63 @@
-public class azj {
-   private final int a;
+import java.util.Arrays;
+import java.util.function.IntConsumer;
+import org.apache.commons.lang3.Validate;
+
+public class azj implements aws {
+   public static final long[] a = new long[0];
    private final int b;
-   private final float c;
-   private final float d;
 
    public azj(int $$0) {
-      if ($$0 < 2) {
-         throw new IllegalArgumentException("Precision cannot be less than 2 bits");
-      } else if ($$0 > 30) {
-         throw new IllegalArgumentException("Precision cannot be greater than 30 bits");
-      } else {
-         int $$1 = 1 << $$0;
-         this.a = $$1 - 1;
-         this.b = $$0;
-         this.c = (float)$$1 / 360.0F;
-         this.d = 360.0F / (float)$$1;
+      this.b = $$0;
+   }
+
+   @Override
+   public int a(int $$0, int $$1) {
+      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
+      Validate.inclusiveBetween(0L, 0L, (long)$$1);
+      return 0;
+   }
+
+   @Override
+   public void b(int $$0, int $$1) {
+      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
+      Validate.inclusiveBetween(0L, 0L, (long)$$1);
+   }
+
+   @Override
+   public int a(int $$0) {
+      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
+      return 0;
+   }
+
+   @Override
+   public long[] a() {
+      return a;
+   }
+
+   @Override
+   public int b() {
+      return this.b;
+   }
+
+   @Override
+   public int c() {
+      return 0;
+   }
+
+   @Override
+   public void a(IntConsumer $$0) {
+      for (int $$1 = 0; $$1 < this.b; $$1++) {
+         $$0.accept(0);
       }
    }
 
-   public boolean a(int $$0, int $$1) {
-      int $$2 = this.a() >> 1;
-      return ($$0 & $$2) == ($$1 & $$2);
+   @Override
+   public void a(int[] $$0) {
+      Arrays.fill($$0, 0, this.b, 0);
    }
 
-   public int a(je $$0) {
-      if ($$0.o().b()) {
-         return 0;
-      } else {
-         int $$1 = $$0.e();
-         return $$1 << this.b - 2;
-      }
-   }
-
-   public int a(float $$0) {
-      return Math.round($$0 * this.c);
-   }
-
-   public int b(float $$0) {
-      return this.c(this.a($$0));
-   }
-
-   public float a(int $$0) {
-      return (float)$$0 * this.d;
-   }
-
-   public float b(int $$0) {
-      float $$1 = this.a(this.c($$0));
-      return $$1 >= 180.0F ? $$1 - 360.0F : $$1;
-   }
-
-   public int c(int $$0) {
-      return $$0 & this.a;
-   }
-
-   public int a() {
-      return this.a;
+   @Override
+   public aws d() {
+      return this;
    }
 }

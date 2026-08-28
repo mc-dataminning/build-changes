@@ -1,36 +1,38 @@
-import java.util.function.Function;
+public class gvc implements gvf {
+   private static final int a = 600;
+   private static final wu b = wu.c("tutorial.open_inventory.title");
+   private static final wu c = wu.a("tutorial.open_inventory.description", gve.a("inventory"));
+   private final gve d;
+   private fjx e;
+   private int f;
 
-public enum gvc {
-   a("movement", gux::new),
-   b("find_tree", guw::new),
-   c("punch_tree", guz::new),
-   d("open_inventory", guy::new),
-   e("craft_planks", guv::new),
-   f("none", guu::new);
-
-   private final String g;
-   private final Function<gva, ? extends gvb> h;
-
-   private <T extends gvb> gvc(final String $$0, final Function<gva, T> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public gvc(gve $$0) {
+      this.d = $$0;
    }
 
-   public gvb a(gva $$0) {
-      return this.h.apply($$0);
-   }
-
-   public String a() {
-      return this.g;
-   }
-
-   public static gvc a(String $$0) {
-      for (gvc $$1 : values()) {
-         if ($$1.g.equals($$0)) {
-            return $$1;
+   @Override
+   public void a() {
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(gvg.f);
+      } else {
+         if (this.f >= 600 && this.e == null) {
+            this.e = new fjx(fjx.a.d, b, c, false);
+            this.d.e().ax().a(this.e);
          }
       }
+   }
 
-      return f;
+   @Override
+   public void b() {
+      if (this.e != null) {
+         this.e.c();
+         this.e = null;
+      }
+   }
+
+   @Override
+   public void c() {
+      this.d.a(gvg.e);
    }
 }

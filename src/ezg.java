@@ -1,8 +1,3 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@exu
-@ext
-interface ezg {
+public interface ezg {
+   ezf createMonitor(long var1);
 }

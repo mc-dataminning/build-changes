@@ -1,46 +1,24 @@
-import com.google.gson.JsonElement;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Encoder;
-import com.mojang.serialization.JsonOps;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
 import org.slf4j.Logger;
 
-public class pe implements lw {
-   private static final Logger d = LogUtils.getLogger();
-   private final ly e;
-   private final CompletableFuture<jk.a> f;
-
-   public pe(ly $$0, CompletableFuture<jk.a> $$1) {
-      this.f = $$1;
-      this.e = $$0;
-   }
+public class pe implements pd.a {
+   private static final Logger a = LogUtils.getLogger();
 
    @Override
-   public CompletableFuture<?> a(lu $$0) {
-      return this.f.thenCompose($$1 -> {
-         DynamicOps<JsonElement> $$2 = $$1.a(JsonOps.INSTANCE);
-         return CompletableFuture.allOf(ala.a.stream().flatMap($$3 -> this.a($$0, $$1, $$2, (ala.c<?>)$$3).stream()).toArray(CompletableFuture[]::new));
-      });
+   public tx apply(String $$0, tx $$1) {
+      return $$0.startsWith("data/minecraft/structures/") ? a($$0, $$1) : $$1;
    }
 
-   private <T> Optional<CompletableFuture<?>> a(lu $$0, jk.a $$1, DynamicOps<JsonElement> $$2, ala.c<T> $$3) {
-      ale<? extends jv<T>> $$4 = $$3.a();
-      return $$1.a($$4).map($$4x -> {
-         ly.a $$5 = this.e.a(ly.b.a, $$4.a().a());
-         return CompletableFuture.allOf($$4x.b().map($$4xx -> a($$5.a($$4xx.h().a()), $$0, $$2, $$3.b(), $$4xx.a())).toArray(CompletableFuture[]::new));
-      });
-   }
+   public static tx a(String $$0, tx $$1) {
+      emq $$2 = new emq();
+      int $$3 = um.b($$1, 500);
+      int $$4 = 3937;
+      if ($$3 < 3937) {
+         a.warn("SNBT Too old, do not forget to update: {} < {}: {}", new Object[]{$$3, 3937, $$0});
+      }
 
-   private static <E> CompletableFuture<?> a(Path $$0, lu $$1, DynamicOps<JsonElement> $$2, Encoder<E> $$3, E $$4) {
-      Optional<JsonElement> $$5 = $$3.encodeStart($$2, $$4).resultOrPartial($$1x -> d.error("Couldn't serialize element {}: {}", $$0, $$1x));
-      return $$5.isPresent() ? lw.a($$1, $$5.get(), $$0) : CompletableFuture.completedFuture(null);
-   }
-
-   @Override
-   public final String a() {
-      return "Registries";
+      tx $$5 = azl.f.a(azm.a(), $$1, $$3);
+      $$2.a(lq.e.q(), $$5);
+      return $$2.a(new tx());
    }
 }

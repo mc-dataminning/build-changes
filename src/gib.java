@@ -1,18 +1,16 @@
-public class gib extends gkf<cfi, ftg<cfi>> {
-   private static final alf a = new alf("textures/entity/bee/bee_angry.png");
-   private static final alf i = new alf("textures/entity/bee/bee_angry_nectar.png");
-   private static final alf j = new alf("textures/entity/bee/bee.png");
-   private static final alf k = new alf("textures/entity/bee/bee_nectar.png");
+public abstract class gib<T extends ckg, M extends fxa<T>> extends gjx<T, M> {
+   private static final akk a = new akk("textures/entity/zombie/zombie.png");
 
-   public gib(giz.a $$0) {
-      super($$0, new ftg<>($$0.a(fxb.k)), 0.4F);
+   protected gib(gjg.a $$0, M $$1, M $$2, M $$3) {
+      super($$0, $$1, 0.5F);
+      this.a(new gni<>(this, $$2, $$3, $$0.g()));
    }
 
-   public alf a(cfi $$0) {
-      if ($$0.Z_()) {
-         return $$0.gA() ? i : a;
-      } else {
-         return $$0.gA() ? k : j;
-      }
+   public akk a(ckg $$0) {
+      return a;
+   }
+
+   protected boolean b(T $$0) {
+      return super.a($$0) || $$0.gu();
    }
 }

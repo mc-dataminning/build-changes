@@ -1,53 +1,64 @@
-public class ftx<T extends bsw> extends ful<T> {
-   private final fxc a;
-   private final fxc b;
-   private final fxc f;
-   private final fxc g;
+import com.google.common.collect.ImmutableList;
 
-   public ftx(fxc $$0) {
-      this.a = $$0;
-      this.b = $$0.b("body");
-      this.f = this.b.b("tail");
-      this.g = this.f.b("tail_fin");
+public class ftx<T extends bsd> extends ftd<T> {
+   public static final String a = "red_thing";
+   private final fxi b;
+   private final fxi f;
+   private final fxi g;
+   private final fxi h;
+   private final fxi i;
+   private final fxi j;
+   private final fxi k;
+   private final fxi l;
+
+   public ftx(fxi $$0) {
+      this.b = $$0.b("head");
+      this.k = $$0.b("beak");
+      this.l = $$0.b("red_thing");
+      this.f = $$0.b("body");
+      this.g = $$0.b("right_leg");
+      this.h = $$0.b("left_leg");
+      this.i = $$0.b("right_wing");
+      this.j = $$0.b("left_wing");
    }
 
-   public static fxi b() {
-      fxk $$0 = new fxk();
-      fxl $$1 = $$0.a();
-      float $$2 = 18.0F;
-      float $$3 = -8.0F;
-      fxl $$4 = $$1.a("body", fxh.c().a(22, 0).a(-4.0F, -7.0F, 0.0F, 8.0F, 7.0F, 13.0F), fxe.a(0.0F, 22.0F, -5.0F));
-      $$4.a("back_fin", fxh.c().a(51, 0).a(-0.5F, 0.0F, 8.0F, 1.0F, 4.0F, 5.0F), fxe.b((float) (Math.PI / 3), 0.0F, 0.0F));
-      $$4.a(
-         "left_fin",
-         fxh.c().a(48, 20).a().a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
-         fxe.a(2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (Math.PI * 2.0 / 3.0))
-      );
-      $$4.a(
-         "right_fin",
-         fxh.c().a(48, 20).a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
-         fxe.a(-2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (-Math.PI * 2.0 / 3.0))
-      );
-      fxl $$5 = $$4.a("tail", fxh.c().a(0, 19).a(-2.0F, -2.5F, 0.0F, 4.0F, 5.0F, 11.0F), fxe.a(0.0F, -2.5F, 11.0F, -0.10471976F, 0.0F, 0.0F));
-      $$5.a("tail_fin", fxh.c().a(19, 20).a(-5.0F, -0.5F, 0.0F, 10.0F, 1.0F, 6.0F), fxe.a(0.0F, 0.0F, 9.0F));
-      fxl $$6 = $$4.a("head", fxh.c().a(0, 0).a(-4.0F, -3.0F, -3.0F, 8.0F, 7.0F, 6.0F), fxe.a(0.0F, -4.0F, -3.0F));
-      $$6.a("nose", fxh.c().a(0, 13).a(-1.0F, 2.0F, -7.0F, 2.0F, 2.0F, 4.0F), fxe.a);
-      return fxi.a($$0, 64, 64);
+   public static fxo c() {
+      fxq $$0 = new fxq();
+      fxr $$1 = $$0.a();
+      int $$2 = 16;
+      $$1.a("head", fxn.c().a(0, 0).a(-2.0F, -6.0F, -2.0F, 4.0F, 6.0F, 3.0F), fxk.a(0.0F, 15.0F, -4.0F));
+      $$1.a("beak", fxn.c().a(14, 0).a(-2.0F, -4.0F, -4.0F, 4.0F, 2.0F, 2.0F), fxk.a(0.0F, 15.0F, -4.0F));
+      $$1.a("red_thing", fxn.c().a(14, 4).a(-1.0F, -2.0F, -3.0F, 2.0F, 2.0F, 2.0F), fxk.a(0.0F, 15.0F, -4.0F));
+      $$1.a("body", fxn.c().a(0, 9).a(-3.0F, -4.0F, -3.0F, 6.0F, 8.0F, 6.0F), fxk.a(0.0F, 16.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      fxn $$3 = fxn.c().a(26, 0).a(-1.0F, 0.0F, -3.0F, 3.0F, 5.0F, 3.0F);
+      $$1.a("right_leg", $$3, fxk.a(-2.0F, 19.0F, 1.0F));
+      $$1.a("left_leg", $$3, fxk.a(1.0F, 19.0F, 1.0F));
+      $$1.a("right_wing", fxn.c().a(24, 13).a(0.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), fxk.a(-4.0F, 13.0F, 0.0F));
+      $$1.a("left_wing", fxn.c().a(24, 13).a(-1.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), fxk.a(4.0F, 13.0F, 0.0F));
+      return fxo.a($$0, 64, 32);
    }
 
    @Override
-   public fxc a() {
-      return this.a;
+   protected Iterable<fxi> a() {
+      return ImmutableList.of(this.b, this.k, this.l);
+   }
+
+   @Override
+   protected Iterable<fxi> b() {
+      return ImmutableList.of(this.f, this.g, this.h, this.i, this.j);
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
       this.b.e = $$5 * (float) (Math.PI / 180.0);
       this.b.f = $$4 * (float) (Math.PI / 180.0);
-      if ($$0.ds().i() > 1.0E-7) {
-         this.b.e = this.b.e + (-0.05F - 0.05F * ayz.b($$3 * 0.3F));
-         this.f.e = -0.1F * ayz.b($$3 * 0.3F);
-         this.g.e = -0.2F * ayz.b($$3 * 0.3F);
-      }
+      this.k.e = this.b.e;
+      this.k.f = this.b.f;
+      this.l.e = this.b.e;
+      this.l.f = this.b.f;
+      this.g.e = aye.b($$1 * 0.6662F) * 1.4F * $$2;
+      this.h.e = aye.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.i.g = $$3;
+      this.j.g = -$$3;
    }
 }

@@ -1,36 +1,17 @@
-public record abb(iz c, int d, String e, int f) implements aax {
-   public static final zn<wm, abb> a = aax.a(abb::a, abb::new);
-   public static final aax.b<abb> b = aax.a("debug/game_test_add_marker");
+public class abb {
+   public static final zd<aaw> a = a("finish_configuration");
+   public static final zd<aax> b = a("registry_data");
+   public static final zd<aba> c = a("update_enabled_features");
+   public static final zd<aaz> d = a("select_known_packs");
+   public static final zd<aay> e = a("reset_chat");
+   public static final zd<abe> f = b("finish_configuration");
+   public static final zd<abf> g = b("select_known_packs");
 
-   private abb(wm $$0) {
-      this($$0.e(), $$0.readInt(), $$0.p(), $$0.readInt());
+   private static <T extends zb<aav>> zd<T> a(String $$0) {
+      return new zd<>(zc.b, new akk($$0));
    }
 
-   private void a(wm $$0) {
-      $$0.a(this.c);
-      $$0.p(this.d);
-      $$0.a(this.e);
-      $$0.p(this.f);
-   }
-
-   @Override
-   public aax.b<abb> a() {
-      return b;
-   }
-
-   public iz b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public String d() {
-      return this.e;
-   }
-
-   public int e() {
-      return this.f;
+   private static <T extends zb<abd>> zd<T> b(String $$0) {
+      return new zd<>(zc.a, new akk($$0));
    }
 }

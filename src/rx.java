@@ -1,24 +1,65 @@
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
 public class rx {
-   public static void a(rc<eim> $$0) {
-      jj<dcz> $$1 = $$0.a(lq.az);
-      jj<ejv> $$2 = $$0.a(lq.aM);
-      $$0.a(
-         eig.H,
-         new ekm(
-            ro.a($$1.b(awo.I), Arrays.stream(btu.values()).collect(Collectors.toMap($$0x -> $$0x, $$0x -> new eit(eit.a.a, bpk.c()))), dxs.b.d, eix.e),
-            $$2.b(rt.a),
-            Optional.empty(),
-            20,
-            egw.a(dyq.a(-40), dyq.a(-20)),
-            false,
-            Optional.empty(),
-            116,
-            rt.d
-         )
-      );
+   public static final akj<ehu> a = sc.a("monster_room");
+   public static final akj<ehu> b = sc.a("monster_room_deep");
+   public static final akj<ehu> c = sc.a("fossil_upper");
+   public static final akj<ehu> d = sc.a("fossil_lower");
+   public static final akj<ehu> e = sc.a("dripstone_cluster");
+   public static final akj<ehu> f = sc.a("large_dripstone");
+   public static final akj<ehu> g = sc.a("pointed_dripstone");
+   public static final akj<ehu> h = sc.a("underwater_magma");
+   public static final akj<ehu> i = sc.a("glow_lichen");
+   public static final akj<ehu> j = sc.a("rooted_azalea_tree");
+   public static final akj<ehu> k = sc.a("cave_vines");
+   public static final akj<ehu> l = sc.a("lush_caves_vegetation");
+   public static final akj<ehu> m = sc.a("lush_caves_clay");
+   public static final akj<ehu> n = sc.a("lush_caves_ceiling_vegetation");
+   public static final akj<ehu> o = sc.a("spore_blossom");
+   public static final akj<ehu> p = sc.a("classic_vines_cave_feature");
+   public static final akj<ehu> q = sc.a("amethyst_geode");
+   public static final akj<ehu> r = sc.a("sculk_patch_deep_dark");
+   public static final akj<ehu> s = sc.a("sculk_patch_ancient_city");
+   public static final akj<ehu> t = sc.a("sculk_vein");
+
+   public static void a(qm<ehu> $$0) {
+      jk<ear<?, ?>> $$1 = $$0.a(lr.aH);
+      jj<ear<?, ?>> $$2 = $$1.b(rl.a);
+      jj<ear<?, ?>> $$3 = $$1.b(rl.b);
+      jj<ear<?, ?>> $$4 = $$1.b(rl.c);
+      jj<ear<?, ?>> $$5 = $$1.b(rl.d);
+      jj<ear<?, ?>> $$6 = $$1.b(rl.e);
+      jj<ear<?, ?>> $$7 = $$1.b(rl.f);
+      jj<ear<?, ?>> $$8 = $$1.b(rl.g);
+      jj<ear<?, ?>> $$9 = $$1.b(rl.h);
+      jj<ear<?, ?>> $$10 = $$1.b(rl.i);
+      jj<ear<?, ?>> $$11 = $$1.b(rl.j);
+      jj<ear<?, ?>> $$12 = $$1.b(rl.m);
+      jj<ear<?, ?>> $$13 = $$1.b(rl.r);
+      jj<ear<?, ?>> $$14 = $$1.b(rl.s);
+      jj<ear<?, ?>> $$15 = $$1.b(rl.t);
+      jj<ear<?, ?>> $$16 = $$1.b(rt.c);
+      jj<ear<?, ?>> $$17 = $$1.b(rl.u);
+      jj<ear<?, ?>> $$18 = $$1.b(rl.v);
+      jj<ear<?, ?>> $$19 = $$1.b(rl.w);
+      jj<ear<?, ?>> $$20 = $$1.b(rl.x);
+      sc.a($$0, a, $$2, ehn.a(10), ehr.a(), ehp.a(dyt.a(0), dyt.b()), ehi.a());
+      sc.a($$0, b, $$2, ehn.a(4), ehr.a(), ehp.a(dyt.b(6), dyt.a(-1)), ehi.a());
+      sc.a($$0, c, $$3, eia.a(64), ehr.a(), ehp.a(dyt.a(0), dyt.b()), ehi.a());
+      sc.a($$0, d, $$4, eia.a(64), ehr.a(), ehp.a(dyt.a(), dyt.a(-8)), ehi.a());
+      sc.a($$0, e, $$5, ehn.a(bpo.a(48, 96)), ehr.a(), sc.i, ehi.a());
+      sc.a($$0, f, $$6, ehn.a(bpo.a(10, 48)), ehr.a(), sc.i, ehi.a());
+      sc.a($$0, g, $$7, ehn.a(bpo.a(192, 256)), ehr.a(), sc.i, ehn.a(bpo.a(1, 5)), ehz.a(bpd.a(0.0F, 3.0F, -10, 10), bpd.a(0.0F, 0.6F, -2, 2)), ehi.a());
+      sc.a($$0, h, $$8, ehn.a(bpo.a(44, 52)), ehr.a(), sc.i, eic.a(dxz.a.c, Integer.MIN_VALUE, -2), ehi.a());
+      sc.a($$0, i, $$9, ehn.a(bpo.a(104, 157)), sc.i, ehr.a(), eic.a(dxz.a.c, Integer.MIN_VALUE, -13), ehi.a());
+      sc.a($$0, j, $$10, ehn.a(bpo.a(1, 2)), ehr.a(), sc.i, eho.a(jf.b, dzg.c(), dzg.c, 12), ehz.a(bpf.a(-1)), ehi.a());
+      sc.a($$0, k, $$11, ehn.a(188), ehr.a(), sc.i, eho.a(jf.b, dzg.a(jf.a), dzg.c, 12), ehz.a(bpf.a(-1)), ehi.a());
+      sc.a($$0, l, $$12, ehn.a(125), ehr.a(), sc.i, eho.a(jf.a, dzg.c(), dzg.c, 12), ehz.a(bpf.a(1)), ehi.a());
+      sc.a($$0, m, $$13, ehn.a(62), ehr.a(), sc.i, eho.a(jf.a, dzg.c(), dzg.c, 12), ehz.a(bpf.a(1)), ehi.a());
+      sc.a($$0, n, $$14, ehn.a(125), ehr.a(), sc.i, eho.a(jf.b, dzg.c(), dzg.c, 12), ehz.a(bpf.a(-1)), ehi.a());
+      sc.a($$0, o, $$15, ehn.a(25), ehr.a(), sc.i, eho.a(jf.b, dzg.c(), dzg.c, 12), ehz.a(bpf.a(-1)), ehi.a());
+      sc.a($$0, p, $$16, ehn.a(256), ehr.a(), sc.i, ehi.a());
+      sc.a($$0, q, $$17, eia.a(24), ehr.a(), ehp.a(dyt.b(6), dyt.a(30)), ehi.a());
+      sc.a($$0, r, $$18, ehn.a(bpf.a(256)), ehr.a(), sc.i, ehi.a());
+      sc.a($$0, s, $$19);
+      sc.a($$0, t, $$20, ehn.a(bpo.a(204, 250)), ehr.a(), sc.i, ehi.a());
    }
 }

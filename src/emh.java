@@ -1,16 +1,26 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface emh<P extends emg> {
-   emh<elk> a = a("always_true", elk.a);
-   emh<elp> b = a("block_match", elp.a);
-   emh<elr> c = a("blockstate_match", elr.a);
-   emh<emo> d = a("tag_match", emo.a);
-   emh<emd> e = a("random_block_match", emd.a);
-   emh<eme> f = a("random_blockstate_match", eme.a);
+public class emh extends emk {
+   public static final MapCodec<emh> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(lq.e.r().fieldOf("block").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d)).apply($$0, emh::new)
+   );
+   private final dff b;
+   private final float d;
 
-   MapCodec<P> codec();
+   public emh(dff $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
+   }
 
-   static <P extends emg> emh<P> a(String $$0, MapCodec<P> $$1) {
-      return jv.a(lp.o, $$0, () -> $$1);
+   @Override
+   public boolean a(dsh $$0, aym $$1) {
+      return $$0.a(this.b) && $$1.i() < this.d;
+   }
+
+   @Override
+   protected eml<?> a() {
+      return eml.e;
    }
 }

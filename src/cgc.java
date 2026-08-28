@@ -1,35 +1,22 @@
-public class cgc extends cfg {
-   public cgc(btc<? extends cgc> $$0, dca $$1) {
-      super($$0, $$1);
+import com.google.common.collect.ImmutableMap;
+
+public class cgc extends bur<cga> {
+   public cgc() {
+      super(ImmutableMap.of(ccc.N, ccd.a, ccc.y, ccd.a), 200);
    }
 
-   @Override
-   public int gs() {
-      return 5;
+   protected boolean a(aqk $$0, cga $$1) {
+      return $$1.bh();
    }
 
-   @Override
-   public cur b() {
-      return new cur(cuu.qG);
+   protected boolean a(aqk $$0, cga $$1, long $$2) {
+      return $$1.bh() && $$1.dT().a(ccc.N);
    }
 
-   @Override
-   protected avz v() {
-      return awa.vC;
-   }
-
-   @Override
-   protected avz o_() {
-      return awa.vD;
-   }
-
-   @Override
-   protected avz d(brp $$0) {
-      return awa.vF;
-   }
-
-   @Override
-   protected avz gr() {
-      return awa.vE;
+   protected void b(aqk $$0, cga $$1, long $$2) {
+      bua<cga> $$3 = $$1.dT();
+      $$3.b(ccc.m);
+      $$3.b(ccc.n);
+      $$1.b(new brl(brn.j, 200, 0));
    }
 }

@@ -1,87 +1,26 @@
-import com.mojang.authlib.GameProfile;
+public class gct extends gad {
+   private static final int a = 12235202;
 
-public class gct extends gcp {
-   private evt g = evt.b;
-   private int cz;
-
-   public gct(fxx $$0, GameProfile $$1) {
-      super($$0, $$1);
-      this.ag = true;
+   protected gct(fyd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gcg $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
+      this.v = (float)axo.b.b(12235202) / 255.0F;
+      this.w = (float)axo.b.c(12235202) / 255.0F;
+      this.x = (float)axo.b.d(12235202) / 255.0F;
    }
 
-   @Override
-   public boolean a(double $$0) {
-      double $$1 = this.cK().a() * 10.0;
-      if (Double.isNaN($$1)) {
-         $$1 = 1.0;
+   public static class a implements gbo<ln> {
+      private final gcg a;
+
+      public a(gcg $$0) {
+         this.a = $$0;
       }
 
-      $$1 *= 64.0 * cD();
-      return $$0 < $$1 * $$1;
-   }
-
-   @Override
-   public boolean a(brp $$0, float $$1) {
-      return true;
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      this.r(false);
-   }
-
-   @Override
-   public void n_() {
-      if (this.br > 0) {
-         this.a(this.br, this.bs, this.bt, this.bu, this.bv, this.bw);
-         this.br--;
+      public gbl a(ln $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         aym $$8 = $$1.z;
+         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
+         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         return new gct($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
       }
-
-      if (this.by > 0) {
-         this.a(this.by, this.bx);
-         this.by--;
-      }
-
-      if (this.cz > 0) {
-         this.i(new evt((this.g.c - this.ds().c) / (double)this.cz, (this.g.d - this.ds().d) / (double)this.cz, (this.g.e - this.ds().e) / (double)this.cz));
-         this.cz--;
-      }
-
-      this.ce = this.cf;
-      this.eV();
-      float $$1;
-      if (this.aE() && !this.eB()) {
-         $$1 = (float)Math.min(0.1, this.ds().h());
-      } else {
-         $$1 = 0.0F;
-      }
-
-      this.cf = this.cf + ($$1 - this.cf) * 0.4F;
-      this.dP().ag().a("push");
-      this.q();
-      this.dP().ag().c();
-   }
-
-   @Override
-   public void l(double $$0, double $$1, double $$2) {
-      this.g = new evt($$0, $$1, $$2);
-      this.cz = this.ak().p() + 1;
-   }
-
-   @Override
-   protected void fV() {
-   }
-
-   @Override
-   public void a(xp $$0) {
-      ffh $$1 = ffh.Q();
-      $$1.l.d().a($$0);
-   }
-
-   @Override
-   public void a(acj $$0) {
-      super.a($$0);
-      this.bu();
    }
 }

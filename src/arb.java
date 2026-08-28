@@ -1,61 +1,47 @@
-public abstract class arb extends enj {
-   protected arb(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.function.Function;
+
+public record arb<T>(T a, Optional<T> b) {
+   public static <T> Codec<arb<T>> a(Codec<T> $$0) {
+      Codec<arb<T>> $$1 = RecordCodecBuilder.create(
+         $$1x -> $$1x.group($$0.fieldOf("raw").forGetter(arb::a), $$0.optionalFieldOf("filtered").forGetter(arb::b)).apply($$1x, arb::new)
+      );
+      Codec<arb<T>> $$2 = $$0.xmap(arb::a, arb::a);
+      return Codec.withAlternative($$1, $$2);
    }
 
-   @Override
-   protected void a(long $$0, int $$1, boolean $$2) {
-      if (!$$2 || $$1 < this.f - 2) {
-         for (int $$3 = -1; $$3 <= 1; $$3++) {
-            for (int $$4 = -1; $$4 <= 1; $$4++) {
-               for (int $$5 = -1; $$5 <= 1; $$5++) {
-                  long $$6 = kb.a($$0, $$3, $$4, $$5);
-                  if ($$6 != $$0) {
-                     this.b($$0, $$6, $$1, $$2);
-                  }
-               }
-            }
-         }
+   public static <B extends ByteBuf, T> ys<B, arb<T>> a(ys<B, T> $$0) {
+      return ys.a($$0, arb::a, $$0.a(yq::a), arb::b, arb::new);
+   }
+
+   public static <T> arb<T> a(T $$0) {
+      return new arb<>($$0, Optional.empty());
+   }
+
+   public static arb<String> a(arc $$0) {
+      return new arb<>($$0.d(), $$0.c() ? Optional.of($$0.b()) : Optional.empty());
+   }
+
+   public T a(boolean $$0) {
+      return $$0 ? this.b.orElse(this.a) : this.a;
+   }
+
+   public <U> arb<U> a(Function<T, U> $$0) {
+      return new arb<>($$0.apply(this.a), this.b.map($$0));
+   }
+
+   public <U> Optional<arb<U>> b(Function<T, Optional<U>> $$0) {
+      Optional<U> $$1 = $$0.apply(this.a);
+      if ($$1.isEmpty()) {
+         return Optional.empty();
+      } else if (this.b.isPresent()) {
+         Optional<U> $$2 = $$0.apply(this.b.get());
+         return $$2.isEmpty() ? Optional.empty() : Optional.of(new arb<>($$1.get(), $$2));
+      } else {
+         return Optional.of(new arb<>($$1.get(), Optional.empty()));
       }
-   }
-
-   @Override
-   protected int a(long $$0, long $$1, int $$2) {
-      int $$3 = $$2;
-
-      for (int $$4 = -1; $$4 <= 1; $$4++) {
-         for (int $$5 = -1; $$5 <= 1; $$5++) {
-            for (int $$6 = -1; $$6 <= 1; $$6++) {
-               long $$7 = kb.a($$0, $$4, $$5, $$6);
-               if ($$7 == $$0) {
-                  $$7 = Long.MAX_VALUE;
-               }
-
-               if ($$7 != $$1) {
-                  int $$8 = this.b($$7, $$0, this.c($$7));
-                  if ($$3 > $$8) {
-                     $$3 = $$8;
-                  }
-
-                  if ($$3 == 0) {
-                     return $$3;
-                  }
-               }
-            }
-         }
-      }
-
-      return $$3;
-   }
-
-   @Override
-   protected int b(long $$0, long $$1, int $$2) {
-      return this.a($$0) ? this.b($$1) : $$2 + 1;
-   }
-
-   protected abstract int b(long var1);
-
-   public void b(long $$0, int $$1, boolean $$2) {
-      this.a(Long.MAX_VALUE, $$0, $$1, $$2);
    }
 }

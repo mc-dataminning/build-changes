@@ -1,112 +1,81 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import java.util.List;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableObject;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class ejv {
-   private static final int c = Integer.MIN_VALUE;
-   private static final MutableObject<Codec<ji<ejv>>> d = new MutableObject();
-   public static final Codec<ejv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.lazyInitialized(d::getValue).fieldOf("fallback").forGetter(ejv::a),
-               Codec.mapPair(ejt.e.fieldOf("element"), Codec.intRange(1, 150).fieldOf("weight")).codec().listOf().fieldOf("elements").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, ejv::new)
+public class ejv extends ejx {
+   public static final MapCodec<ejv> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ejx.e.listOf().fieldOf("elements").forGetter($$0x -> $$0x.b), d()).apply($$0, ejv::new)
    );
-   public static final Codec<ji<ejv>> b = ac.a(alb.a(lq.aM, a), d::setValue);
-   private final List<Pair<ejt, Integer>> e;
-   private final ObjectArrayList<ejt> f;
-   private final ji<ejv> g;
-   private int h = Integer.MIN_VALUE;
+   private final List<ejx> b;
 
-   public ejv(ji<ejv> $$0, List<Pair<ejt, Integer>> $$1) {
-      this.e = $$1;
-      this.f = new ObjectArrayList();
+   public ejv(List<ejx> $$0, ejz.a $$1) {
+      super($$1);
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Elements are empty");
+      } else {
+         this.b = $$0;
+         this.b($$1);
+      }
+   }
 
-      for (Pair<ejt, Integer> $$2 : $$1) {
-         ejt $$3 = (ejt)$$2.getFirst();
+   @Override
+   public ke a(emr $$0, dls $$1) {
+      int $$2 = 0;
+      int $$3 = 0;
+      int $$4 = 0;
 
-         for (int $$4 = 0; $$4 < $$2.getSecond(); $$4++) {
-            this.f.add($$3);
+      for (ejx $$5 : this.b) {
+         ke $$6 = $$5.a($$0, $$1);
+         $$2 = Math.max($$2, $$6.u());
+         $$3 = Math.max($$3, $$6.v());
+         $$4 = Math.max($$4, $$6.w());
+      }
+
+      return new ke($$2, $$3, $$4);
+   }
+
+   @Override
+   public List<emq.c> a(emr $$0, ja $$1, dls $$2, aym $$3) {
+      return this.b.get(0).a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public eii a(emr $$0, ja $$1, dls $$2) {
+      Stream<eii> $$3 = this.b.stream().filter($$0x -> $$0x != ejq.b).map($$3x -> $$3x.a($$0, $$1, $$2));
+      return eii.b($$3::iterator).orElseThrow(() -> new IllegalStateException("Unable to calculate boundingbox for ListPoolElement"));
+   }
+
+   @Override
+   public boolean a(emr $$0, dcz $$1, dcx $$2, due $$3, ja $$4, ja $$5, dls $$6, eii $$7, aym $$8, boolean $$9) {
+      for (ejx $$10 : this.b) {
+         if (!$$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9)) {
+            return false;
          }
       }
 
-      this.g = $$0;
+      return true;
    }
 
-   public ejv(ji<ejv> $$0, List<Pair<Function<ejv.a, ? extends ejt>, Integer>> $$1, ejv.a $$2) {
-      this.e = Lists.newArrayList();
-      this.f = new ObjectArrayList();
-
-      for (Pair<Function<ejv.a, ? extends ejt>, Integer> $$3 : $$1) {
-         ejt $$4 = (ejt)((Function)$$3.getFirst()).apply($$2);
-         this.e.add(Pair.of($$4, (Integer)$$3.getSecond()));
-
-         for (int $$5 = 0; $$5 < $$3.getSecond(); $$5++) {
-            this.f.add($$4);
-         }
-      }
-
-      this.g = $$0;
+   @Override
+   public ejy<?> a() {
+      return ejy.b;
    }
 
-   public int a(emn $$0) {
-      if (this.h == Integer.MIN_VALUE) {
-         this.h = this.f.stream().filter($$0x -> $$0x != ejm.b).mapToInt($$1 -> $$1.a($$0, iz.c, dlo.a).e()).max().orElse(0);
-      }
-
-      return this.h;
+   @Override
+   public ejx a(ejz.a $$0) {
+      super.a($$0);
+      this.b($$0);
+      return this;
    }
 
-   public ji<ejv> a() {
-      return this.g;
+   @Override
+   public String toString() {
+      return "List[" + this.b.stream().map(Object::toString).collect(Collectors.joining(", ")) + "]";
    }
 
-   public ejt a(azh $$0) {
-      return (ejt)this.f.get($$0.a(this.f.size()));
-   }
-
-   public List<ejt> b(azh $$0) {
-      return ac.a(this.f, $$0);
-   }
-
-   public int b() {
-      return this.f.size();
-   }
-
-   public static enum a implements azu {
-      a("terrain_matching", ImmutableList.of(new elt(dxw.a.a, -1))),
-      b("rigid", ImmutableList.of());
-
-      public static final azu.a<ejv.a> c = azu.a(ejv.a::values);
-      private final String d;
-      private final ImmutableList<emj> e;
-
-      private a(final String $$0, final ImmutableList<emj> $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
-
-      public String a() {
-         return this.d;
-      }
-
-      public static ejv.a a(String $$0) {
-         return c.a($$0);
-      }
-
-      public ImmutableList<emj> b() {
-         return this.e;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
+   private void b(ejz.a $$0) {
+      this.b.forEach($$1 -> $$1.a($$0));
    }
 }

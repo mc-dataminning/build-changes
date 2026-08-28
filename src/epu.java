@@ -1,30 +1,30 @@
-import java.util.Locale;
+public class epu {
+   private final int b;
+   private final String c;
+   public static String a = "main";
 
-public interface epu {
-   iz a();
+   public epu(int $$0) {
+      this($$0, a);
+   }
 
-   float b();
+   public epu(int $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
 
-   long c();
+   public boolean a() {
+      return !this.c.equals(a);
+   }
 
-   long d();
+   public String b() {
+      return this.c;
+   }
 
-   boolean g();
+   public int c() {
+      return this.b;
+   }
 
-   boolean i();
-
-   void b(boolean var1);
-
-   boolean l();
-
-   dbw o();
-
-   bqt q();
-
-   boolean r();
-
-   default void a(p $$0, dcc $$1) {
-      $$0.a("Level spawn location", () -> p.a($$1, this.a()));
-      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.c(), this.d()));
+   public boolean a(epu $$0) {
+      return this.b().equals($$0.b());
    }
 }

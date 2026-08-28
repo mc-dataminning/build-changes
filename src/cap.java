@@ -1,57 +1,79 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public abstract class cap {
-   private final EnumSet<cap.a> a = EnumSet.noneOf(cap.a.class);
+public class cap extends bzw {
+   public static final int a = 1;
+   protected final bth b;
+   protected final double c;
+   protected double d;
+   protected double e;
+   protected double f;
+   protected boolean g;
 
-   public abstract boolean a();
-
-   public boolean b() {
-      return this.a();
-   }
-
-   public boolean Q_() {
-      return true;
-   }
-
-   public void c() {
-   }
-
-   public void d() {
-   }
-
-   public boolean R_() {
-      return false;
-   }
-
-   public void e() {
-   }
-
-   public void a(EnumSet<cap.a> $$0) {
-      this.a.clear();
-      this.a.addAll($$0);
+   public cap(bth $$0, double $$1) {
+      this.b = $$0;
+      this.c = $$1;
+      this.a(EnumSet.of(bzw.a.a));
    }
 
    @Override
-   public String toString() {
-      return this.getClass().getSimpleName();
+   public boolean a() {
+      if (!this.h()) {
+         return false;
+      } else {
+         if (this.b.bQ()) {
+            ja $$0 = this.a(this.b.dP(), this.b, 5);
+            if ($$0 != null) {
+               this.d = (double)$$0.u();
+               this.e = (double)$$0.v();
+               this.f = (double)$$0.w();
+               return true;
+            }
+         }
+
+         return this.i();
+      }
    }
 
-   public EnumSet<cap.a> j() {
-      return this.a;
+   protected boolean h() {
+      return this.b.ei() != null || this.b.dE() || this.b.bQ();
    }
 
-   protected int a(int $$0) {
-      return this.R_() ? $$0 : b($$0);
+   protected boolean i() {
+      evz $$0 = cdt.a(this.b, 5, 4);
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.d = $$0.c;
+         this.e = $$0.d;
+         this.f = $$0.e;
+         return true;
+      }
    }
 
-   protected static int b(int $$0) {
-      return ayz.e($$0, 2);
+   public boolean k() {
+      return this.g;
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   @Override
+   public void c() {
+      this.b.K().a(this.d, this.e, this.f, this.c);
+      this.g = true;
+   }
+
+   @Override
+   public void d() {
+      this.g = false;
+   }
+
+   @Override
+   public boolean b() {
+      return !this.b.K().l();
+   }
+
+   @Nullable
+   protected ja a(dbj $$0, bsd $$1, int $$2) {
+      ja $$3 = $$1.dp();
+      return !$$0.a_($$3).k($$0, $$3).c() ? null : ja.a($$1.dp(), $$2, 1, $$1x -> $$0.b_($$1x).a(awa.a)).orElse(null);
    }
 }

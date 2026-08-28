@@ -1,30 +1,41 @@
-public class bvb extends buu {
-   private final double b;
-   private final double c;
+public class bvb implements bus<bsy> {
+   private final int a;
+   private final int b;
+   private bur.a c = bur.a.a;
+   private long d;
 
-   public bvb(String $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1);
-      this.b = $$2;
-      this.c = $$3;
-      if ($$2 > $$3) {
-         throw new IllegalArgumentException("Minimum value cannot be bigger than maximum value!");
-      } else if ($$1 < $$2) {
-         throw new IllegalArgumentException("Default value cannot be lower than minimum value!");
-      } else if ($$1 > $$3) {
-         throw new IllegalArgumentException("Default value cannot be bigger than maximum value!");
-      }
+   public bvb(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public double d() {
-      return this.b;
-   }
-
-   public double e() {
+   @Override
+   public bur.a a() {
       return this.c;
    }
 
    @Override
-   public double a(double $$0) {
-      return Double.isNaN($$0) ? this.b : ayz.a($$0, this.b, this.c);
+   public final boolean e(aqk $$0, bsy $$1, long $$2) {
+      this.c = bur.a.b;
+      int $$3 = this.a + $$0.E_().a(this.b + 1 - this.a);
+      this.d = $$2 + (long)$$3;
+      return true;
+   }
+
+   @Override
+   public final void f(aqk $$0, bsy $$1, long $$2) {
+      if ($$2 > this.d) {
+         this.g($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public final void g(aqk $$0, bsy $$1, long $$2) {
+      this.c = bur.a.a;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
    }
 }

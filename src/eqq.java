@@ -1,49 +1,57 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import java.util.Optional;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class eqq {
-   private final azf a;
-   private final ete b;
-   private final jj.a c;
-   private final Set<ale<?>> d;
+public record eqq<T>(akj<jw<T>> d, Codec<T> e, String f, eqq.a<T> g) {
+   private static final Logger h = LogUtils.getLogger();
+   public static final eqq<etz> a = new eqq<>(lr.bd, etz.e, "predicates", f());
+   public static final eqq<esc> b = new eqq<>(lr.bc, ese.c, "item_modifiers", f());
+   public static final eqq<eqt> c = new eqq<>(lr.bb, eqt.d, "loot_tables", g());
 
-   public eqq(azf $$0, ete $$1, jj.a $$2) {
-      this($$0, $$1, $$2, Set.of());
+   public void a(equ $$0, akj<T> $$1, T $$2) {
+      this.g.run($$0, $$1, $$2);
    }
 
-   private eqq(azf $$0, ete $$1, jj.a $$2, Set<ale<?>> $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public <V> Optional<T> a(akk $$0, DynamicOps<V> $$1, V $$2) {
+      DataResult<T> $$3 = this.e.parse($$1, $$2);
+      $$3.error().ifPresent($$1x -> h.error("Couldn't parse element {}:{} - {}", new Object[]{this.f, $$0, $$1x.message()}));
+      return $$3.result();
    }
 
-   public eqq a(String $$0) {
-      return new eqq(this.a.a($$0), this.b, this.c, this.d);
+   public static Stream<eqq<?>> a() {
+      return Stream.of(a, b, c);
    }
 
-   public eqq a(String $$0, ale<?> $$1) {
-      Set<ale<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
-      return new eqq(this.a.a($$0), this.b, this.c, $$2);
+   private static <T extends eqp> eqq.a<T> f() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
    }
 
-   public boolean a(ale<?> $$0) {
-      return this.d.contains($$0);
+   private static eqq.a<eqt> g() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
    }
 
-   public void b(String $$0) {
-      this.a.b($$0);
+   public akj<jw<T>> b() {
+      return this.d;
    }
 
-   public void a(eql $$0) {
-      this.b.a(this, $$0);
+   public Codec<T> c() {
+      return this.e;
    }
 
-   public jj.a a() {
-      return this.c;
+   public String d() {
+      return this.f;
    }
 
-   public eqq a(ete $$0) {
-      return new eqq(this.a, $$0, this.c, this.d);
+   public eqq.a<T> e() {
+      return this.g;
+   }
+
+   @FunctionalInterface
+   public interface a<T> {
+      void run(equ var1, akj<T> var2, T var3);
    }
 }

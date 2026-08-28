@@ -1,47 +1,32 @@
-public class cbl extends cap {
-   private final chl a;
-   private int b;
+public class cbl extends cag {
+   private final ckg b;
+   private int c;
 
-   public cbl(chl $$0) {
-      this.a = $$0;
-      this.a($$0);
+   public cbl(ckg $$0, double $$1, boolean $$2) {
+      super($$0, $$1, $$2);
+      this.b = $$0;
    }
 
    @Override
    public void c() {
-      this.a.gU();
-      this.h();
-   }
-
-   private void h() {
-      avz $$0 = this.a.gT();
-      if ($$0 != null) {
-         this.a.a($$0);
-      }
+      super.c();
+      this.c = 0;
    }
 
    @Override
-   public boolean b() {
-      return false;
+   public void d() {
+      super.d();
+      this.b.v(false);
    }
 
    @Override
-   public boolean a() {
-      this.b++;
-      if (this.b > 0 && this.a.el().a(1000) < this.b) {
-         this.a(this.a);
-         return !this.a.fg() && this.a.el().a(10) == 0;
+   public void e() {
+      super.e();
+      this.c++;
+      if (this.c >= 5 && this.k() < this.l() / 2) {
+         this.b.v(true);
       } else {
-         return false;
+         this.b.v(false);
       }
-   }
-
-   private void a(chl $$0) {
-      this.b = -$$0.gY();
-   }
-
-   @Override
-   public boolean R_() {
-      return true;
    }
 }

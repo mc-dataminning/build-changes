@@ -1,73 +1,72 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import java.util.function.ToIntFunction;
 
-public abstract class dip extends dio implements dfe {
-   protected dip(dsd.d $$0, je $$1, ewm $$2, boolean $$3) {
-      super($$0, $$1, $$2, $$3);
+public class dip extends dkf implements dfi, dmg {
+   public static final MapCodec<dip> a = b(dip::new);
+   private static final dsy c = dsx.C;
+   private final dkg d = new dkg(this);
+
+   @Override
+   public MapCodec<dip> a() {
+      return a;
+   }
+
+   public dip(dsg.d $$0) {
+      super($$0);
+      this.k(this.o().a(c, Boolean.valueOf(false)));
+   }
+
+   public static ToIntFunction<dsh> b(int $$0) {
+      return $$1 -> dkf.n($$1) ? $$0 : 0;
    }
 
    @Override
-   protected abstract MapCodec<? extends dip> a();
-
-   protected dse a(dse $$0, dse $$1) {
-      return $$1;
+   protected void a(dsi.a<dff, dsh> $$0) {
+      super.a($$0);
+      $$0.a(c);
    }
 
    @Override
-   protected dse a(dse $$0, je $$1, dse $$2, dcb $$3, iz $$4, iz $$5) {
-      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
+   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, eoc.c, eoc.c.a($$3));
       }
 
-      diq $$6 = this.c();
-      if ($$1 == this.a && !$$2.a(this) && !$$2.a($$6)) {
-         return this.a($$0, $$6.a($$3));
-      } else {
-         if (this.b) {
-            $$3.a($$4, eny.c, eny.c.a($$3));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public cur a(dcd $$0, iz $$1, dse $$2) {
-      return new cur(this.c());
+   protected boolean a(dsh $$0, cxk $$1) {
+      return !$$1.n().a(cud.fW) || super.a($$0, $$1);
    }
 
    @Override
-   public boolean b(dcd $$0, iz $$1, dse $$2) {
-      Optional<iz> $$3 = this.a($$0, $$1, $$2.b());
-      return $$3.isPresent() && this.c().g($$0.a_($$3.get().a(this.a)));
+   public boolean b(dcg $$0, ja $$1, dsh $$2) {
+      return jf.a().anyMatch($$3 -> this.d.a($$2, $$0, $$1, $$3.g()));
    }
 
    @Override
-   public boolean a(dca $$0, azh $$1, iz $$2, dse $$3) {
+   public boolean a(dcd $$0, aym $$1, ja $$2, dsh $$3) {
       return true;
    }
 
    @Override
-   public void a(arf $$0, azh $$1, iz $$2, dse $$3) {
-      Optional<iz> $$4 = this.a($$0, $$2, $$3.b());
-      if ($$4.isPresent()) {
-         dse $$5 = $$0.a_($$4.get());
-         ((diq)$$5.b()).a($$0, $$1, $$4.get(), $$5);
-      }
-   }
-
-   private Optional<iz> a(dbg $$0, iz $$1, dfb $$2) {
-      return l.a($$0, $$1, $$2, this.a, this.c());
+   public void a(aqk $$0, aym $$1, ja $$2, dsh $$3) {
+      this.d.a($$3, $$0, $$2, $$1);
    }
 
    @Override
-   protected boolean a(dse $$0, cyc $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      return $$2 && $$1.n().a(this.c().r()) ? false : $$2;
+   protected eob b_(dsh $$0) {
+      return $$0.c(c) ? eoc.c.a(false) : super.b_($$0);
    }
 
    @Override
-   protected dfb b() {
-      return this;
+   protected boolean a_(dsh $$0, dbj $$1, ja $$2) {
+      return $$0.u().c();
+   }
+
+   @Override
+   public dkg c() {
+      return this.d;
    }
 }

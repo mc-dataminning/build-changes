@@ -1,37 +1,54 @@
-import com.mojang.authlib.GameProfile;
-import java.net.SocketAddress;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Locale;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class gtf extends avd {
-   @Nullable
-   private us h;
+public interface gtf<T> {
+   static <T> gtf<T> a() {
+      return new gtf<T>() {
+         @Override
+         public List<T> a(String $$0) {
+            return List.of();
+         }
 
-   public gtf(gtg $$0, jp<alo> $$1, eqb $$2) {
-      super($$0, $$1, $$2, 8);
-      this.a(10);
+         @Override
+         public List<T> b(String $$0) {
+            return List.of();
+         }
+      };
    }
 
-   @Override
-   protected void b(arg $$0) {
-      if (this.b().a($$0.gb())) {
-         this.h = $$0.f(new us());
+   static <T> gtf<T> a(List<T> $$0, Function<T, Stream<akk>> $$1) {
+      if ($$0.isEmpty()) {
+         return a();
+      } else {
+         final gth<T> $$2 = new gth<>();
+         final gth<T> $$3 = new gth<>();
+
+         for (T $$4 : $$0) {
+            $$1.apply($$4).forEach($$3x -> {
+               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
+               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
+            });
+         }
+
+         $$2.a();
+         $$3.a();
+         return new gtf<T>() {
+            @Override
+            public List<T> a(String $$0) {
+               return $$2.a($$0);
+            }
+
+            @Override
+            public List<T> b(String $$0) {
+               return $$3.a($$0);
+            }
+         };
       }
-
-      super.b($$0);
    }
 
-   @Override
-   public xp a(SocketAddress $$0, GameProfile $$1) {
-      return (xp)(this.b().a($$1) && this.a($$1.getName()) != null ? xp.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
-   }
+   List<T> a(String var1);
 
-   public gtg b() {
-      return (gtg)super.c();
-   }
-
-   @Nullable
-   @Override
-   public us r() {
-      return this.h;
-   }
+   List<T> b(String var1);
 }

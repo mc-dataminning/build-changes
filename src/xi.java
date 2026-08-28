@@ -1,57 +1,130 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.ByteToMessageDecoder;
-import io.netty.handler.codec.CorruptedFrameException;
+import com.google.common.collect.Lists;
 import java.util.List;
+import java.util.Objects;
+import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
 
-public class xi extends ByteToMessageDecoder {
-   private static final int a = 3;
-   private final ByteBuf b = Unpooled.directBuffer(3);
+public class xi implements wu {
+   private final wv c;
+   private final List<wu> d;
+   private xr e;
+   private axq f = axq.a;
    @Nullable
-   private final wd c;
+   private ts g;
 
-   public xi(@Nullable wd $$0) {
+   xi(wv $$0, List<wu> $$1, xr $$2) {
       this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   protected void handlerRemoved0(ChannelHandlerContext $$0) {
-      this.b.release();
+   public static xi a(wv $$0) {
+      return new xi($$0, Lists.newArrayList(), xr.a);
    }
 
-   private static boolean a(ByteBuf $$0, ByteBuf $$1) {
-      for (int $$2 = 0; $$2 < 3; $$2++) {
-         if (!$$0.isReadable()) {
-            return false;
-         }
+   @Override
+   public wv b() {
+      return this.c;
+   }
 
-         byte $$3 = $$0.readByte();
-         $$1.writeByte($$3);
-         if (!xg.a($$3)) {
-            return true;
-         }
+   @Override
+   public List<wu> c() {
+      return this.d;
+   }
+
+   public xi b(xr $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   @Override
+   public xr a() {
+      return this.e;
+   }
+
+   public xi f(String $$0) {
+      return this.b(wu.b($$0));
+   }
+
+   public xi b(wu $$0) {
+      this.d.add($$0);
+      return this;
+   }
+
+   public xi a(UnaryOperator<xr> $$0) {
+      this.b($$0.apply(this.a()));
+      return this;
+   }
+
+   public xi c(xr $$0) {
+      this.b($$0.a(this.a()));
+      return this;
+   }
+
+   public xi a(n... $$0) {
+      this.b(this.a().a($$0));
+      return this;
+   }
+
+   public xi a(n $$0) {
+      this.b(this.a().b($$0));
+      return this;
+   }
+
+   public xi b(int $$0) {
+      this.b(this.a().a($$0));
+      return this;
+   }
+
+   @Override
+   public axq g() {
+      ts $$0 = ts.a();
+      if (this.g != $$0) {
+         this.f = $$0.a(this);
+         this.g = $$0;
       }
 
-      throw new CorruptedFrameException("length wider than 21-bit");
+      return this.f;
    }
 
-   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) {
-      $$1.markReaderIndex();
-      this.b.clear();
-      if (!a($$1, this.b)) {
-         $$1.resetReaderIndex();
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         int $$3 = xg.a(this.b);
-         if ($$1.readableBytes() < $$3) {
-            $$1.resetReaderIndex();
-         } else {
-            if (this.c != null) {
-               this.c.a($$3 + xg.a($$3));
-            }
-
-            $$2.add($$1.readBytes($$3));
-         }
+         return !($$0 instanceof xi $$1) ? false : this.c.equals($$1.c) && this.e.equals($$1.e) && this.d.equals($$1.d);
       }
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.c, this.e, this.d);
+   }
+
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder(this.c.toString());
+      boolean $$1 = !this.e.g();
+      boolean $$2 = !this.d.isEmpty();
+      if ($$1 || $$2) {
+         $$0.append('[');
+         if ($$1) {
+            $$0.append("style=");
+            $$0.append(this.e);
+         }
+
+         if ($$1 && $$2) {
+            $$0.append(", ");
+         }
+
+         if ($$2) {
+            $$0.append("siblings=");
+            $$0.append(this.d);
+         }
+
+         $$0.append(']');
+      }
+
+      return $$0.toString();
    }
 }

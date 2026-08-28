@@ -1,98 +1,43 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dlc extends dfb {
-   public static final MapCodec<dlc> a = b(dlc::new);
-   public static final dsv b = dlf.d;
+public class dlc extends det {
+   public static final MapCodec<dlc> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dsw.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), u()).apply($$0, dlc::new)
+   );
+   public static final dsy f = dsx.w;
 
    @Override
    public MapCodec<dlc> a() {
-      return a;
+      return e;
    }
 
-   public dlc(dsd.d $$0) {
-      super($$0);
-      this.k(this.o().a(b, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected void a(dse $$0, dca $$1, iz $$2, cmz $$3) {
-      d($$0, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3);
+   protected dlc(dsw $$0, dsg.d $$1) {
+      super($$1, $$0);
+      this.k(this.E.b().a(f, Boolean.valueOf(false)));
    }
 
    @Override
-   public void a(dca $$0, iz $$1, dse $$2, bsw $$3) {
-      if (!$$3.bW()) {
-         d($$2, $$0, $$1);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
+   protected int g(dsh $$0) {
+      return $$0.c(f) ? 15 : 0;
    }
 
    @Override
-   protected bqy a(cur $$0, dse $$1, dca $$2, iz $$3, cmz $$4, bqv $$5, evp $$6) {
-      if ($$2.B) {
-         a($$2, $$3);
-      } else {
-         d($$1, $$2, $$3);
-      }
-
-      return $$0.g() instanceof csp && new cyc($$4, $$5, $$0, $$6).b() ? bqy.e : bqy.a;
-   }
-
-   private static void d(dse $$0, dca $$1, iz $$2) {
-      a($$1, $$2);
-      if (!$$0.c(b)) {
-         $$1.a($$2, $$0.a(b, Boolean.valueOf(true)), 3);
-      }
+   protected dsh a(dsh $$0, int $$1) {
+      return $$0.a(f, Boolean.valueOf($$1 > 0));
    }
 
    @Override
-   protected boolean d_(dse $$0) {
-      return $$0.c(b);
+   protected int b(dcd $$0, ja $$1) {
+      Class<? extends bsd> $$2 = switch (this.d.f()) {
+         case a -> bsd.class;
+         case b -> bsy.class;
+      };
+      return a($$0, c.a($$1), $$2) > 0 ? 15 : 0;
    }
 
    @Override
-   protected void b(dse $$0, arf $$1, iz $$2, azh $$3) {
-      if ($$0.c(b)) {
-         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
-      }
-   }
-
-   @Override
-   protected void a(dse $$0, arf $$1, iz $$2, cur $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4 && dad.a(daf.v, $$3) == 0) {
-         int $$5 = 1 + $$1.z.a(5);
-         this.a($$1, $$2, $$5);
-      }
-   }
-
-   @Override
-   public void a(dse $$0, dca $$1, iz $$2, azh $$3) {
-      if ($$0.c(b)) {
-         a($$1, $$2);
-      }
-   }
-
-   private static void a(dca $$0, iz $$1) {
-      double $$2 = 0.5625;
-      azh $$3 = $$0.z;
-
-      for (je $$4 : je.values()) {
-         iz $$5 = $$1.a($$4);
-         if (!$$0.a_($$5).i($$0, $$5)) {
-            je.a $$6 = $$4.o();
-            double $$7 = $$6 == je.a.a ? 0.5 + 0.5625 * (double)$$4.j() : (double)$$3.i();
-            double $$8 = $$6 == je.a.b ? 0.5 + 0.5625 * (double)$$4.k() : (double)$$3.i();
-            double $$9 = $$6 == je.a.c ? 0.5 + 0.5625 * (double)$$4.l() : (double)$$3.i();
-            $$0.a(ld.b, (double)$$1.u() + $$7, (double)$$1.v() + $$8, (double)$$1.w() + $$9, 0.0, 0.0, 0.0);
-         }
-      }
-   }
-
-   @Override
-   protected void a(dsf.a<dfb, dse> $$0) {
-      $$0.a(b);
+   protected void a(dsi.a<dff, dsh> $$0) {
+      $$0.a(f);
    }
 }

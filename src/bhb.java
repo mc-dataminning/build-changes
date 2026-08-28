@@ -1,50 +1,26 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
 import java.util.Map;
-import java.util.function.Function;
 
-public class bhb extends DataFix {
-   final String a;
-   final Map<String, String> b;
+public class bhb extends bfa {
+   private final Map<String, String> a;
 
-   public bhb(Schema $$0, String $$1, Map<String, String> $$2) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
+   public bhb(Schema $$0, String $$1, TypeReference $$2, String $$3, Map<String, String> $$4) {
+      super($$0, false, $$1, $$2, $$3);
+      this.a = $$4;
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgx.t);
-      OpticFinder<?> $$1 = $$0.findField("tag");
-      return this.fixTypeEverywhereTyped(this.a, $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a)));
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      $$0 = this.a($$0, "Enchantments");
-      return this.a($$0, "StoredEnchantments");
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0, String $$1) {
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
       return $$0.update(
-         $$1,
-         $$0x -> (Dynamic)$$0x.asStreamOpt()
-               .map(
-                  $$0xx -> $$0xx.map(
-                        $$0xxx -> $$0xxx.update(
-                              "id",
-                              $$1x -> (Dynamic)$$1x.asString()
-                                    .map($$1xx -> $$0xxx.createString(this.b.getOrDefault($$1xx, $$1xx)))
-                                    .mapOrElse(Function.identity(), $$1xx -> $$1x)
-                           )
-                     )
-               )
-               .map($$0x::createList)
-               .mapOrElse(Function.identity(), $$1x -> $$0x)
+         DSL.remainderFinder(),
+         $$0x -> $$0x.update(
+               "variant", $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().map($$1 -> $$0xx.createString(this.a.getOrDefault($$1, $$1))).result(), $$0xx)
+            )
       );
    }
 }

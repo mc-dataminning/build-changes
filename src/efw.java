@@ -1,66 +1,72 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Comparator;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
-import java.util.function.BiConsumer;
 
-public abstract class efw {
-   public static final Codec<efw> h = lp.Z.q().dispatch(efw::a, efx::a);
+public class efw extends ega {
+   public static final MapCodec<efw> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 16).fieldOf("exclusion_radius_xz").forGetter($$0x -> $$0x.c),
+               Codec.intRange(0, 16).fieldOf("exclusion_radius_y").forGetter($$0x -> $$0x.d),
+               efj.a.fieldOf("block_provider").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 16).fieldOf("required_empty_blocks").forGetter($$0x -> $$0x.f),
+               axm.a(jf.g.listOf()).fieldOf("directions").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, efw::new)
+   );
+   protected final float b;
+   protected final int c;
+   protected final int d;
+   protected final efj e;
+   protected final int f;
+   protected final List<jf> g;
 
-   protected abstract efx<?> a();
+   public efw(float $$0, int $$1, int $$2, efj $$3, int $$4, List<jf> $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+   }
 
-   public abstract void a(efw.a var1);
+   @Override
+   public void a(ega.a $$0) {
+      Set<ja> $$1 = new HashSet<>();
+      aym $$2 = $$0.b();
 
-   public static final class a {
-      private final dcg a;
-      private final BiConsumer<iz, dse> b;
-      private final azh c;
-      private final ObjectArrayList<iz> d;
-      private final ObjectArrayList<iz> e;
-      private final ObjectArrayList<iz> f;
+      for (ja $$3 : ac.a($$0.d(), $$2)) {
+         jf $$4 = ac.a(this.g, $$2);
+         ja $$5 = $$3.a($$4);
+         if (!$$1.contains($$5) && $$2.i() < this.b && this.a($$0, $$3, $$4)) {
+            ja $$6 = $$5.b(-this.c, -this.d, -this.c);
+            ja $$7 = $$5.b(this.c, this.d, this.c);
 
-      public a(dcg $$0, BiConsumer<iz, dse> $$1, azh $$2, Set<iz> $$3, Set<iz> $$4, Set<iz> $$5) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = new ObjectArrayList($$5);
-         this.d = new ObjectArrayList($$3);
-         this.e = new ObjectArrayList($$4);
-         this.d.sort(Comparator.comparingInt(kd::v));
-         this.e.sort(Comparator.comparingInt(kd::v));
-         this.f.sort(Comparator.comparingInt(kd::v));
+            for (ja $$8 : ja.c($$6, $$7)) {
+               $$1.add($$8.i());
+            }
+
+            $$0.a($$5, this.e.a($$2, $$5));
+         }
+      }
+   }
+
+   private boolean a(ega.a $$0, ja $$1, jf $$2) {
+      for (int $$3 = 1; $$3 <= this.f; $$3++) {
+         ja $$4 = $$1.a($$2, $$3);
+         if (!$$0.a($$4)) {
+            return false;
+         }
       }
 
-      public void a(iz $$0, dsv $$1) {
-         this.a($$0, dfd.ff.o().a($$1, Boolean.valueOf(true)));
-      }
+      return true;
+   }
 
-      public void a(iz $$0, dse $$1) {
-         this.b.accept($$0, $$1);
-      }
-
-      public boolean a(iz $$0) {
-         return this.a.a($$0, dsd.a::i);
-      }
-
-      public dcg a() {
-         return this.a;
-      }
-
-      public azh b() {
-         return this.c;
-      }
-
-      public ObjectArrayList<iz> c() {
-         return this.d;
-      }
-
-      public ObjectArrayList<iz> d() {
-         return this.e;
-      }
-
-      public ObjectArrayList<iz> e() {
-         return this.f;
-      }
+   @Override
+   protected egb<?> a() {
+      return egb.f;
    }
 }

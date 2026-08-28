@@ -1,132 +1,182 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.LongArraySet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class sw {
-   public static final ale<ehq> a = sx.a("ore_magma");
-   public static final ale<ehq> b = sx.a("ore_soul_sand");
-   public static final ale<ehq> c = sx.a("ore_gold_deltas");
-   public static final ale<ehq> d = sx.a("ore_quartz_deltas");
-   public static final ale<ehq> e = sx.a("ore_gold_nether");
-   public static final ale<ehq> f = sx.a("ore_quartz_nether");
-   public static final ale<ehq> g = sx.a("ore_gravel_nether");
-   public static final ale<ehq> h = sx.a("ore_blackstone");
-   public static final ale<ehq> i = sx.a("ore_dirt");
-   public static final ale<ehq> j = sx.a("ore_gravel");
-   public static final ale<ehq> k = sx.a("ore_granite_upper");
-   public static final ale<ehq> l = sx.a("ore_granite_lower");
-   public static final ale<ehq> m = sx.a("ore_diorite_upper");
-   public static final ale<ehq> n = sx.a("ore_diorite_lower");
-   public static final ale<ehq> o = sx.a("ore_andesite_upper");
-   public static final ale<ehq> p = sx.a("ore_andesite_lower");
-   public static final ale<ehq> q = sx.a("ore_tuff");
-   public static final ale<ehq> r = sx.a("ore_coal_upper");
-   public static final ale<ehq> s = sx.a("ore_coal_lower");
-   public static final ale<ehq> t = sx.a("ore_iron_upper");
-   public static final ale<ehq> u = sx.a("ore_iron_middle");
-   public static final ale<ehq> v = sx.a("ore_iron_small");
-   public static final ale<ehq> w = sx.a("ore_gold_extra");
-   public static final ale<ehq> x = sx.a("ore_gold");
-   public static final ale<ehq> y = sx.a("ore_gold_lower");
-   public static final ale<ehq> z = sx.a("ore_redstone");
-   public static final ale<ehq> A = sx.a("ore_redstone_lower");
-   public static final ale<ehq> B = sx.a("ore_diamond");
-   public static final ale<ehq> C = sx.a("ore_diamond_medium");
-   public static final ale<ehq> D = sx.a("ore_diamond_large");
-   public static final ale<ehq> E = sx.a("ore_diamond_buried");
-   public static final ale<ehq> F = sx.a("ore_lapis");
-   public static final ale<ehq> G = sx.a("ore_lapis_buried");
-   public static final ale<ehq> H = sx.a("ore_infested");
-   public static final ale<ehq> I = sx.a("ore_emerald");
-   public static final ale<ehq> J = sx.a("ore_ancient_debris_large");
-   public static final ale<ehq> K = sx.a("ore_debris_small");
-   public static final ale<ehq> L = sx.a("ore_copper");
-   public static final ale<ehq> M = sx.a("ore_copper_large");
-   public static final ale<ehq> N = sx.a("ore_clay");
+   public static final int a = 8;
+   private static final Logger b = LogUtils.getLogger();
+   final aqk c;
+   private final sz d;
+   private final List<st> e;
+   private ImmutableList<sn> f;
+   final List<sp> g = Lists.newArrayList();
+   private final List<st> h = Lists.newArrayList();
+   private final sw.b i;
+   private boolean j = true;
+   @Nullable
+   sn k;
+   private final sw.c l;
+   private final sw.c m;
 
-   private static List<eht> a(eht $$0, eht $$1) {
-      return List.of($$0, ehn.a(), $$1, ehe.a());
+   protected sw(sw.b $$0, Collection<sn> $$1, aqk $$2, sz $$3, sw.c $$4, sw.c $$5) {
+      this.c = $$2;
+      this.d = $$3;
+      this.i = $$0;
+      this.l = $$4;
+      this.m = $$5;
+      this.f = ImmutableList.copyOf($$1);
+      this.e = this.f.stream().flatMap($$0x -> $$0x.b().stream()).collect(ac.b());
+      $$3.a(this);
+      this.e.forEach($$0x -> $$0x.a(new tf()));
    }
 
-   private static List<eht> a(int $$0, eht $$1) {
-      return a(ehj.a($$0), $$1);
+   public List<st> a() {
+      return this.e;
    }
 
-   private static List<eht> b(int $$0, eht $$1) {
-      return a(ehw.a($$0), $$1);
+   public void b() {
+      this.j = false;
+      this.a(0);
    }
 
-   public static void a(rc<ehq> $$0) {
-      jj<ean<?, ?>> $$1 = $$0.a(lq.aC);
-      ji<ean<?, ?>> $$2 = $$1.b(sl.a);
-      ji<ean<?, ?>> $$3 = $$1.b(sl.b);
-      ji<ean<?, ?>> $$4 = $$1.b(sl.c);
-      ji<ean<?, ?>> $$5 = $$1.b(sl.d);
-      ji<ean<?, ?>> $$6 = $$1.b(sl.e);
-      ji<ean<?, ?>> $$7 = $$1.b(sl.f);
-      ji<ean<?, ?>> $$8 = $$1.b(sl.g);
-      ji<ean<?, ?>> $$9 = $$1.b(sl.h);
-      ji<ean<?, ?>> $$10 = $$1.b(sl.i);
-      ji<ean<?, ?>> $$11 = $$1.b(sl.j);
-      ji<ean<?, ?>> $$12 = $$1.b(sl.k);
-      ji<ean<?, ?>> $$13 = $$1.b(sl.l);
-      ji<ean<?, ?>> $$14 = $$1.b(sl.m);
-      ji<ean<?, ?>> $$15 = $$1.b(sl.n);
-      ji<ean<?, ?>> $$16 = $$1.b(sl.o);
-      ji<ean<?, ?>> $$17 = $$1.b(sl.p);
-      ji<ean<?, ?>> $$18 = $$1.b(sl.q);
-      ji<ean<?, ?>> $$19 = $$1.b(sl.r);
-      ji<ean<?, ?>> $$20 = $$1.b(sl.s);
-      ji<ean<?, ?>> $$21 = $$1.b(sl.t);
-      ji<ean<?, ?>> $$22 = $$1.b(sl.u);
-      ji<ean<?, ?>> $$23 = $$1.b(sl.v);
-      ji<ean<?, ?>> $$24 = $$1.b(sl.w);
-      ji<ean<?, ?>> $$25 = $$1.b(sl.x);
-      ji<ean<?, ?>> $$26 = $$1.b(sl.y);
-      ji<ean<?, ?>> $$27 = $$1.b(sl.z);
-      ji<ean<?, ?>> $$28 = $$1.b(sl.A);
-      ji<ean<?, ?>> $$29 = $$1.b(sl.B);
-      ji<ean<?, ?>> $$30 = $$1.b(sl.C);
-      ji<ean<?, ?>> $$31 = $$1.b(sl.D);
-      ji<ean<?, ?>> $$32 = $$1.b(sl.E);
-      ji<ean<?, ?>> $$33 = $$1.b(sl.F);
-      sx.a($$0, a, $$2, a(4, ehl.a(dyq.a(27), dyq.a(36))));
-      sx.a($$0, b, $$3, a(12, ehl.a(dyq.a(), dyq.a(31))));
-      sx.a($$0, c, $$4, a(20, sx.f));
-      sx.a($$0, d, $$5, a(32, sx.f));
-      sx.a($$0, e, $$4, a(10, sx.f));
-      sx.a($$0, f, $$5, a(16, sx.f));
-      sx.a($$0, g, $$6, a(2, ehl.a(dyq.a(5), dyq.a(41))));
-      sx.a($$0, h, $$7, a(2, ehl.a(dyq.a(5), dyq.a(31))));
-      sx.a($$0, i, $$8, a(7, ehl.a(dyq.a(0), dyq.a(160))));
-      sx.a($$0, j, $$9, a(14, ehl.a(dyq.a(), dyq.b())));
-      sx.a($$0, k, $$10, b(6, ehl.a(dyq.a(64), dyq.a(128))));
-      sx.a($$0, l, $$10, a(2, ehl.a(dyq.a(0), dyq.a(60))));
-      sx.a($$0, m, $$11, b(6, ehl.a(dyq.a(64), dyq.a(128))));
-      sx.a($$0, n, $$11, a(2, ehl.a(dyq.a(0), dyq.a(60))));
-      sx.a($$0, o, $$12, b(6, ehl.a(dyq.a(64), dyq.a(128))));
-      sx.a($$0, p, $$12, a(2, ehl.a(dyq.a(0), dyq.a(60))));
-      sx.a($$0, q, $$13, a(2, ehl.a(dyq.a(), dyq.a(0))));
-      sx.a($$0, r, $$14, a(30, ehl.a(dyq.a(136), dyq.b())));
-      sx.a($$0, s, $$15, a(20, ehl.b(dyq.a(0), dyq.a(192))));
-      sx.a($$0, t, $$16, a(90, ehl.b(dyq.a(80), dyq.a(384))));
-      sx.a($$0, u, $$16, a(10, ehl.b(dyq.a(-24), dyq.a(56))));
-      sx.a($$0, v, $$17, a(10, ehl.a(dyq.a(), dyq.a(72))));
-      sx.a($$0, w, $$18, a(50, ehl.a(dyq.a(32), dyq.a(256))));
-      sx.a($$0, x, $$19, a(4, ehl.b(dyq.a(-64), dyq.a(32))));
-      sx.a($$0, y, $$19, a(ehj.a(bqh.a(0, 1)), ehl.a(dyq.a(-64), dyq.a(-48))));
-      sx.a($$0, z, $$20, a(4, ehl.a(dyq.a(), dyq.a(15))));
-      sx.a($$0, A, $$20, a(8, ehl.b(dyq.b(-32), dyq.b(32))));
-      sx.a($$0, B, $$21, a(7, ehl.b(dyq.b(-80), dyq.b(80))));
-      sx.a($$0, C, $$22, a(2, ehl.a(dyq.a(-64), dyq.a(-4))));
-      sx.a($$0, D, $$23, b(9, ehl.b(dyq.b(-80), dyq.b(80))));
-      sx.a($$0, E, $$24, a(4, ehl.b(dyq.b(-80), dyq.b(80))));
-      sx.a($$0, F, $$25, a(2, ehl.b(dyq.a(-32), dyq.a(32))));
-      sx.a($$0, G, $$26, a(4, ehl.a(dyq.a(), dyq.a(64))));
-      sx.a($$0, H, $$27, a(14, ehl.a(dyq.a(), dyq.a(63))));
-      sx.a($$0, I, $$28, a(100, ehl.b(dyq.a(-16), dyq.a(480))));
-      sx.a($$0, J, $$29, ehn.a(), ehl.b(dyq.a(8), dyq.a(24)), ehe.a());
-      sx.a($$0, K, $$30, ehn.a(), sx.g, ehe.a());
-      sx.a($$0, L, $$31, a(16, ehl.b(dyq.a(-16), dyq.a(112))));
-      sx.a($$0, M, $$32, a(16, ehl.b(dyq.a(-16), dyq.a(112))));
-      sx.a($$0, N, $$33, a(46, sx.i));
+   public void c() {
+      this.j = true;
+      if (this.k != null) {
+         this.k.d().accept(this.c);
+      }
+   }
+
+   public void a(st $$0) {
+      st $$1 = $$0.B();
+      $$0.A().forEach($$2 -> $$2.a($$0, $$1, this));
+      this.e.add($$1);
+      this.h.add($$1);
+      if (this.j) {
+         this.d();
+      }
+   }
+
+   void a(final int $$0) {
+      if ($$0 >= this.f.size()) {
+         this.d();
+      } else {
+         this.k = (sn)this.f.get($$0);
+         Collection<st> $$1 = this.a(this.k.b());
+         String $$2 = this.k.a();
+         b.info("Running test batch '{}' ({} tests)...", $$2, $$1.size());
+         this.k.c().accept(this.c);
+         this.g.forEach($$0x -> $$0x.a(this.k));
+         final te $$3 = new te();
+         $$1.forEach($$3::a);
+         $$3.a(new su() {
+            private void a() {
+               if ($$3.i()) {
+                  sw.this.k.d().accept(sw.this.c);
+                  sw.this.g.forEach($$0xxx -> $$0xxx.b(sw.this.k));
+                  LongSet $$0 = new LongArraySet(sw.this.c.w());
+                  $$0.forEach($$0xxx -> sw.this.c.a(dbk.a($$0xxx), dbk.b($$0xxx), false));
+                  sw.this.a($$0 + 1);
+               }
+            }
+
+            @Override
+            public void a(st $$0x) {
+            }
+
+            @Override
+            public void a(st $$0x, sw $$1) {
+               this.a();
+            }
+
+            @Override
+            public void b(st $$0x, sw $$1) {
+               this.a();
+            }
+
+            @Override
+            public void a(st $$0x, st $$1, sw $$2) {
+            }
+         });
+         $$1.forEach(this.d::a);
+      }
+   }
+
+   private void d() {
+      if (!this.h.isEmpty()) {
+         b.info("Starting re-run of tests: {}", this.h.stream().map($$0 -> $$0.u().c()).collect(Collectors.joining(", ")));
+         this.f = ImmutableList.copyOf(this.i.batch(this.h));
+         this.h.clear();
+         this.j = false;
+         this.a(0);
+      } else {
+         this.f = ImmutableList.of();
+         this.j = true;
+      }
+   }
+
+   public void a(sp $$0) {
+      this.g.add($$0);
+   }
+
+   private Collection<st> a(Collection<st> $$0) {
+      return $$0.stream().map(this::b).flatMap(Optional::stream).toList();
+   }
+
+   private Optional<st> b(st $$0) {
+      return $$0.c() == null ? this.m.spawnStructure($$0) : this.l.spawnStructure($$0);
+   }
+
+   public static void a(aqk $$0) {
+      afy.a($$0);
+   }
+
+   public static class a {
+      private final aqk a;
+      private final sz b = sz.a;
+      private final sw.b c = so.a();
+      private final sw.c d = sw.c.a;
+      private sw.c e = sw.c.b;
+      private final Collection<sn> f;
+
+      private a(Collection<sn> $$0, aqk $$1) {
+         this.f = $$0;
+         this.a = $$1;
+      }
+
+      public static sw.a a(Collection<sn> $$0, aqk $$1) {
+         return new sw.a($$0, $$1);
+      }
+
+      public static sw.a b(Collection<st> $$0, aqk $$1) {
+         return a(so.a().batch($$0), $$1);
+      }
+
+      public sw.a a(sw.c $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public sw a() {
+         return new sw(this.c, this.f, this.a, this.b, this.d, this.e);
+      }
+   }
+
+   public interface b {
+      Collection<sn> batch(Collection<st> var1);
+   }
+
+   public interface c {
+      sw.c a = $$0 -> Optional.of($$0.n().a().a(1));
+      sw.c b = $$0 -> Optional.empty();
+
+      Optional<st> spawnStructure(st var1);
    }
 }

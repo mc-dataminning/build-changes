@@ -1,9 +1,15 @@
-import javax.annotation.Nullable;
+public class bri extends brj {
+   public bri(brk $$0, int $$1) {
+      super($$0, $$1);
+   }
 
-public interface bri extends bqp {
-   int[] a(je var1);
+   @Override
+   public boolean a() {
+      return true;
+   }
 
-   boolean a(int var1, cur var2, @Nullable je var3);
-
-   boolean b(int var1, cur var2, je var3);
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= 1;
+   }
 }

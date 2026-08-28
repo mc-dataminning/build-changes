@@ -1,89 +1,119 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.datafixers.util.Either;
+import com.mojang.authlib.GameProfile;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.UUID;
-import javax.annotation.Nullable;
 
-public abstract class fzb {
-   protected final UUID a;
-   protected final Instant b;
-   protected final UUID c;
-   protected String d = "";
-   @Nullable
-   protected fzd e;
-
-   public fzb(UUID $$0, Instant $$1, UUID $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public interface fzb extends fza {
+   static fzb.a a(GameProfile $$0, xk $$1, fyz $$2) {
+      return new fzb.a($$0, $$1, $$2);
    }
 
-   public boolean a(UUID $$0) {
-      return $$0.equals(this.c);
+   static fzb.b a(wu $$0, Instant $$1) {
+      return new fzb.b($$0, $$1);
    }
 
-   public abstract fzb b();
+   wu b();
 
-   public abstract fnf a(fnf var1, fzf var2);
-
-   public abstract static class a<R extends fzb> {
-      protected final R a;
-      protected final AbuseReportLimits b;
-
-      protected a(R $$0, AbuseReportLimits $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public R e() {
-         return this.a;
-      }
-
-      public UUID f() {
-         return this.a.c;
-      }
-
-      public String g() {
-         return this.a.d;
-      }
-
-      public void a(String $$0) {
-         this.a.d = $$0;
-      }
-
-      @Nullable
-      public fzd h() {
-         return this.a.e;
-      }
-
-      public void a(fzd $$0) {
-         this.a.e = $$0;
-      }
-
-      public abstract boolean b();
-
-      @Nullable
-      public abstract fzb.b c();
-
-      public abstract Either<fzb.c, fzb.b> a(fzf var1);
+   default wu c() {
+      return this.b();
    }
 
-   public static record b(xp e) {
-      public static final fzb.b a = new fzb.b(xp.c("gui.abuseReport.send.no_reason"));
-      public static final fzb.b b = new fzb.b(xp.c("gui.chatReport.send.no_reported_messages"));
-      public static final fzb.b c = new fzb.b(xp.c("gui.chatReport.send.too_many_messages"));
-      public static final fzb.b d = new fzb.b(xp.c("gui.abuseReport.send.comment_too_long"));
+   boolean a(UUID var1);
 
-      public fir a() {
-         return fir.a(this.e);
+   public static record a(GameProfile c, xk d, fyz e) implements fzb {
+      public static final MapCodec<fzb.a> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  axm.x.fieldOf("profile").forGetter(fzb.a::f), xk.a.forGetter(fzb.a::g), fyz.d.optionalFieldOf("trust_level", fyz.a).forGetter(fzb.a::h)
+               )
+               .apply($$0, fzb.a::new)
+      );
+      private static final DateTimeFormatter f = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
+
+      @Override
+      public wu b() {
+         if (!this.d.o().a()) {
+            wu $$0 = this.d.o().b(this.d.c());
+            return (wu)($$0 != null ? $$0 : wu.i());
+         } else {
+            return this.d.d();
+         }
       }
 
-      public xp b() {
+      @Override
+      public wu c() {
+         wu $$0 = this.b();
+         wu $$1 = this.i();
+         return wu.a("gui.chatSelection.message.narrate", this.c.getName(), $$0, $$1);
+      }
+
+      public wu d() {
+         wu $$0 = this.i();
+         return wu.a("gui.chatSelection.heading", this.c.getName(), $$0);
+      }
+
+      private wu i() {
+         LocalDateTime $$0 = LocalDateTime.ofInstant(this.d.e(), ZoneOffset.systemDefault());
+         return wu.b($$0.format(f)).a(n.u, n.h);
+      }
+
+      @Override
+      public boolean a(UUID $$0) {
+         return this.d.a($$0);
+      }
+
+      public UUID e() {
+         return this.c.getId();
+      }
+
+      @Override
+      public fza.a a() {
+         return fza.a.a;
+      }
+
+      public GameProfile f() {
+         return this.c;
+      }
+
+      public xk g() {
+         return this.d;
+      }
+
+      public fyz h() {
          return this.e;
       }
    }
 
-   public static record c(UUID a, fze b, AbuseReport c) {
+   public static record b(wu c, Instant d) implements fzb {
+      public static final MapCodec<fzb.b> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ww.a.fieldOf("message").forGetter(fzb.b::d), axm.o.fieldOf("time_stamp").forGetter(fzb.b::e)).apply($$0, fzb.b::new)
+      );
+
+      @Override
+      public wu b() {
+         return this.c;
+      }
+
+      @Override
+      public boolean a(UUID $$0) {
+         return false;
+      }
+
+      @Override
+      public fza.a a() {
+         return fza.a.b;
+      }
+
+      public wu d() {
+         return this.c;
+      }
+
+      public Instant e() {
+         return this.d;
+      }
    }
 }

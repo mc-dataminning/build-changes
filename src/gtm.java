@@ -1,87 +1,101 @@
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.net.MulticastSocket;
+import java.net.SocketTimeoutException;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class gtm {
-   private final Set<gtm.a> a = Sets.newIdentityHashSet();
-   final exw b;
-   final Executor c;
+   static final AtomicInteger a = new AtomicInteger(0);
+   static final Logger b = LogUtils.getLogger();
 
-   public gtm(exw $$0, Executor $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+   public static class a extends Thread {
+      private final gtm.b a;
+      private final InetAddress b;
+      private final MulticastSocket c;
 
-   public CompletableFuture<gtm.a> a(exw.c $$0) {
-      CompletableFuture<gtm.a> $$1 = new CompletableFuture<>();
-      this.c.execute(() -> {
-         exv $$2 = this.b.a($$0);
-         if ($$2 != null) {
-            gtm.a $$3 = new gtm.a($$2);
-            this.a.add($$3);
-            $$1.complete($$3);
-         } else {
-            $$1.complete(null);
-         }
-      });
-      return $$1;
-   }
+      public a(gtm.b $$0) throws IOException {
+         super("LanServerDetector #" + gtm.a.incrementAndGet());
+         this.a = $$0;
+         this.setDaemon(true);
+         this.setUncaughtExceptionHandler(new r(gtm.b));
+         this.c = new MulticastSocket(4445);
+         this.b = InetAddress.getByName("224.0.2.60");
+         this.c.setSoTimeout(5000);
+         this.c.joinGroup(this.b);
+      }
 
-   public void a(Consumer<Stream<exv>> $$0) {
-      this.c.execute(() -> $$0.accept(this.a.stream().map($$0xx -> $$0xx.b).filter(Objects::nonNull)));
-   }
+      @Override
+      public void run() {
+         byte[] $$0 = new byte[1024];
 
-   public void a() {
-      this.c.execute(() -> {
-         Iterator<gtm.a> $$0 = this.a.iterator();
+         while (!this.isInterrupted()) {
+            DatagramPacket $$1 = new DatagramPacket($$0, $$0.length);
 
-         while ($$0.hasNext()) {
-            gtm.a $$1 = $$0.next();
-            $$1.b.j();
-            if ($$1.b.h()) {
-               $$1.b();
-               $$0.remove();
+            try {
+               this.c.receive($$1);
+            } catch (SocketTimeoutException var5) {
+               continue;
+            } catch (IOException var6) {
+               gtm.b.error("Couldn't ping server", var6);
+               break;
             }
+
+            String $$4 = new String($$1.getData(), $$1.getOffset(), $$1.getLength(), StandardCharsets.UTF_8);
+            gtm.b.debug("{}: {}", $$1.getAddress(), $$4);
+            this.a.a($$4, $$1.getAddress());
          }
-      });
+
+         try {
+            this.c.leaveGroup(this.b);
+         } catch (IOException var4) {
+         }
+
+         this.c.close();
+      }
    }
 
-   public void b() {
-      this.a.forEach(gtm.a::b);
-      this.a.clear();
-   }
+   public static class b {
+      private final List<gtl> a = Lists.newArrayList();
+      private boolean b;
 
-   public class a {
       @Nullable
-      exv b;
-      private boolean c;
-
-      public boolean a() {
-         return this.c;
+      public synchronized List<gtl> a() {
+         if (this.b) {
+            List<gtl> $$0 = List.copyOf(this.a);
+            this.b = false;
+            return $$0;
+         } else {
+            return null;
+         }
       }
 
-      public a(final exv $$1) {
-         this.b = $$1;
-      }
+      public synchronized void a(String $$0, InetAddress $$1) {
+         String $$2 = gtn.a($$0);
+         String $$3 = gtn.b($$0);
+         if ($$3 != null) {
+            $$3 = $$1.getHostAddress() + ":" + $$3;
+            boolean $$4 = false;
 
-      public void a(Consumer<exv> $$0) {
-         gtm.this.c.execute(() -> {
-            if (this.b != null) {
-               $$0.accept(this.b);
+            for (gtl $$5 : this.a) {
+               if ($$5.b().equals($$3)) {
+                  $$5.c();
+                  $$4 = true;
+                  break;
+               }
             }
-         });
-      }
 
-      public void b() {
-         this.c = true;
-         gtm.this.b.a(this.b);
-         this.b = null;
+            if (!$$4) {
+               this.a.add(new gtl($$2, $$3));
+               this.b = true;
+            }
+         }
       }
    }
 }

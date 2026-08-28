@@ -1,32 +1,19 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.stream.Stream;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 
-public class pk {
-   public static void a(String[] $$0) throws IOException {
-      aa.a(t.a);
-      alh.a();
-
-      for (String $$1 : $$0) {
-         a($$1);
-      }
+public abstract class pk extends pv<czj> {
+   public pk(lz $$0, CompletableFuture<jl.a> $$1) {
+      super($$0, lr.aK, $$1);
    }
 
-   private static void a(String $$0) throws IOException {
-      try (Stream<Path> $$1 = Files.walk(Paths.get($$0))) {
-         $$1.filter($$0x -> $$0x.toString().endsWith(".snbt")).forEach($$0x -> {
-            try {
-               String $$1x = Files.readString($$0x);
-               us $$2 = vh.a($$1x);
-               us $$3 = pm.a($$0x.toString(), $$2);
-               pj.a(lu.a, $$0x, vh.a($$3));
-            } catch (IOException | CommandSyntaxException var4) {
-               throw new RuntimeException(var4);
-            }
-         });
+   protected void a(jl.a $$0, akj<czj>... $$1) {
+      this.b(avx.a).a($$1);
+      Set<akj<czj>> $$2 = Set.of($$1);
+      List<String> $$3 = $$0.b(lr.aK).b().filter($$1x -> !$$2.contains($$1x.e().get())).map(jj::g).collect(Collectors.toList());
+      if (!$$3.isEmpty()) {
+         throw new IllegalStateException("Not all enchantments were registered for tooltip ordering. Missing: " + String.join(", ", $$3));
       }
    }
 }

@@ -1,32 +1,14 @@
-import com.mojang.serialization.MapCodec;
+public class dds {
+   public static final akj<ddr> a = a("nether");
+   public static final akj<ddr> b = a("overworld");
 
-public abstract class dds extends den {
-   private final ctk a;
-
-   protected dds(ctk $$0, dsd.d $$1) {
-      super($$1);
-      this.a = $$0;
+   public static void a(qm<ddr> $$0) {
+      jk<ddd> $$1 = $$0.a(lr.aE);
+      $$0.a(a, new ddr(ddr.a.a, $$1));
+      $$0.a(b, new ddr(ddr.a.b, $$1));
    }
 
-   @Override
-   protected abstract MapCodec<? extends dds> a();
-
-   @Override
-   public boolean a(dse $$0) {
-      return true;
-   }
-
-   @Override
-   public dpj a(iz $$0, dse $$1) {
-      return new doy($$0, $$1, this.a);
-   }
-
-   @Override
-   public cur a(dcd $$0, iz $$1, dse $$2) {
-      return $$0.c_($$1) instanceof doy $$3 ? $$3.c() : super.a($$0, $$1, $$2);
-   }
-
-   public ctk b() {
-      return this.a;
+   private static akj<ddr> a(String $$0) {
+      return akj.a(lr.aY, new akk($$0));
    }
 }

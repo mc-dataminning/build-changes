@@ -1,48 +1,69 @@
-import java.util.BitSet;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import java.util.Collection;
+import java.util.List;
 
-public class adx implements zw<aci> {
-   public static final zn<wm, adx> a = zw.a(adx::a, adx::new);
-   private final int b;
-   private final int c;
-   private final ady d;
+public class adx implements zb<abn> {
+   public static final ys<vr, adx> a = zb.a(adx::a, adx::new);
+   private final adx.a b;
+   private final List<akk> c;
+   private final List<akk> d;
+   private final avj e;
 
-   public adx(dbh $$0, enm $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      this.b = $$0.e;
-      this.c = $$0.f;
-      this.d = new ady($$0, $$1, $$2, $$3);
+   public adx(adx.a $$0, Collection<akk> $$1, Collection<akk> $$2, avj $$3) {
+      this.b = $$0;
+      this.c = ImmutableList.copyOf($$1);
+      this.d = ImmutableList.copyOf($$2);
+      this.e = $$3;
    }
 
-   private adx(wm $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-      this.d = new ady($$0, this.b, this.c);
+   private adx(vr $$0) {
+      this.b = $$0.b(adx.a.class);
+      this.e = avj.a($$0);
+      this.c = $$0.a(vr::q);
+      if (this.b == adx.a.a) {
+         this.d = $$0.a(vr::q);
+      } else {
+         this.d = ImmutableList.of();
+      }
    }
 
-   private void a(wm $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
-      this.d.a($$0);
+   private void a(vr $$0) {
+      $$0.a(this.b);
+      this.e.b($$0);
+      $$0.a(this.c, vr::a);
+      if (this.b == adx.a.a) {
+         $$0.a(this.d, vr::a);
+      }
    }
 
    @Override
-   public zy<adx> a() {
-      return agu.N;
+   public zd<adx> a() {
+      return afz.ai;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
+   public List<akk> b() {
       return this.c;
    }
 
-   public ady f() {
+   public List<akk> e() {
       return this.d;
+   }
+
+   public avj f() {
+      return this.e;
+   }
+
+   public adx.a g() {
+      return this.b;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

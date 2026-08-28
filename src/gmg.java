@@ -1,17 +1,22 @@
-public class gmg extends gjq<ckz, fwv<ckz>> {
-   private static final alf a = new alf("textures/entity/zombie_villager/zombie_villager.png");
+public class gmg extends gkm<ckd, fwx<ckd>> {
+   private static final akk a = new akk("textures/entity/witch.png");
 
-   public gmg(giz.a $$0) {
-      super($$0, new fwv<>($$0.a(fxb.ck)), 0.5F);
-      this.a(new gnb<>(this, new fwv($$0.a(fxb.cl)), new fwv($$0.a(fxb.cm)), $$0.g()));
-      this.a(new gnw<>(this, $$0.e(), "zombie_villager"));
+   public gmg(gjg.a $$0) {
+      super($$0, new fwx<>($$0.a(fxh.bU)), 0.5F);
+      this.a(new gof<>(this, $$0.d()));
    }
 
-   public alf a(ckz $$0) {
+   public void a(ckd $$0, float $$1, float $$2, fag $$3, gdx $$4, int $$5) {
+      this.f.b(!$$0.eT().e());
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public akk a(ckd $$0) {
       return a;
    }
 
-   protected boolean b(ckz $$0) {
-      return super.a($$0) || $$0.gA();
+   protected void a(ckd $$0, fag $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

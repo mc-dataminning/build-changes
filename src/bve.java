@@ -1,84 +1,73 @@
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import java.util.Optional;
+import java.util.function.Function;
 
-public class bve extends bvk<cfh> {
-   private static final int c = 3;
-   private static final int d = 60;
-   private static final int e = 110;
-   private final btc<? extends cfh> f;
-   private final float g;
-   private final int h;
-   private static final int i = 2;
-   private long j;
+public class bve extends bur<bth> {
+   public static final int c = 100;
+   public static final double d = 2.5;
+   public static final double e = 3.5;
+   private final Function<bsy, Float> f;
+   private final Function<bsy, Double> g;
 
-   public bve(btc<? extends cfh> $$0) {
-      this($$0, 1.0F, 2);
+   public bve(Function<bsy, Float> $$0) {
+      this($$0, $$0x -> 2.5);
    }
 
-   public bve(btc<? extends cfh> $$0, float $$1, int $$2) {
-      super(ImmutableMap.of(ccv.h, ccw.a, ccv.r, ccw.b, ccv.m, ccw.c, ccv.n, ccw.c, ccv.Z, ccw.b), 110);
+   public bve(Function<bsy, Float> $$0, Function<bsy, Double> $$1) {
+      super(ac.a(() -> {
+         Builder<ccc<?>, ccd> $$0x = ImmutableMap.builder();
+         $$0x.put(ccc.n, ccd.c);
+         $$0x.put(ccc.m, ccd.c);
+         $$0x.put(ccc.P, ccd.b);
+         $$0x.put(ccc.R, ccd.c);
+         $$0x.put(ccc.O, ccd.a);
+         $$0x.put(ccc.r, ccd.b);
+         $$0x.put(ccc.Z, ccd.b);
+         return $$0x.build();
+      }));
       this.f = $$0;
       this.g = $$1;
-      this.h = $$2;
    }
 
-   protected boolean a(arf $$0, cfh $$1) {
-      return $$1.gu() && this.c($$1).isPresent();
+   protected float a(bth $$0) {
+      return this.f.apply($$0);
    }
 
-   protected void a(arf $$0, cfh $$1, long $$2) {
-      cfh $$3 = this.c($$1).get();
-      $$1.dS().a(ccv.r, $$3);
-      $$3.dS().a(ccv.r, $$1);
-      bvm.a($$1, (btr)$$3, this.g, this.h);
-      int $$4 = 60 + $$1.el().a(50);
-      this.j = $$2 + (long)$$4;
+   private Optional<cmh> b(bth $$0) {
+      return $$0.dT().c(ccc.O);
    }
 
-   protected boolean b(arf $$0, cfh $$1, long $$2) {
-      if (!this.b($$1)) {
-         return false;
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   protected boolean a(aqk $$0, bth $$1, long $$2) {
+      return this.b($$1).isPresent() && !$$1.dT().a(ccc.r) && !$$1.dT().a(ccc.Z);
+   }
+
+   protected void b(aqk $$0, bth $$1, long $$2) {
+      $$1.dT().a(ccc.R, true);
+   }
+
+   protected void c(aqk $$0, bth $$1, long $$2) {
+      bua<?> $$3 = $$1.dT();
+      $$3.a(ccc.P, 100);
+      $$3.a(ccc.R, false);
+      $$3.b(ccc.m);
+      $$3.b(ccc.n);
+   }
+
+   protected void d(aqk $$0, bth $$1, long $$2) {
+      cmh $$3 = this.b($$1).get();
+      bua<?> $$4 = $$1.dT();
+      $$4.a(ccc.n, new bvc($$3, true));
+      double $$5 = this.g.apply($$1);
+      if ($$1.g($$3) < aye.k($$5)) {
+         $$4.b(ccc.m);
       } else {
-         cfh $$3 = this.a($$1);
-         return $$3.bD() && $$1.a($$3) && bvm.a($$1.dS(), $$3) && $$2 <= this.j && !$$1.gn() && !$$3.gn();
+         $$4.a(ccc.m, new ccf(new bvc($$3, false), this.a($$1), 2));
       }
-   }
-
-   protected void c(arf $$0, cfh $$1, long $$2) {
-      cfh $$3 = this.a($$1);
-      bvm.a($$1, (btr)$$3, this.g, this.h);
-      if ($$1.a($$3, 3.0)) {
-         if ($$2 >= this.j) {
-            $$1.a($$0, $$3);
-            $$1.dS().b(ccv.r);
-            $$3.dS().b(ccv.r);
-         }
-      }
-   }
-
-   protected void d(arf $$0, cfh $$1, long $$2) {
-      $$1.dS().b(ccv.r);
-      $$1.dS().b(ccv.m);
-      $$1.dS().b(ccv.n);
-      this.j = 0L;
-   }
-
-   private cfh a(cfh $$0) {
-      return (cfh)$$0.dS().c(ccv.r).get();
-   }
-
-   private boolean b(cfh $$0) {
-      but<?> $$1 = $$0.dS();
-      return $$1.a(ccv.r) && $$1.c(ccv.r).get().ak() == this.f;
-   }
-
-   private Optional<? extends cfh> c(cfh $$0) {
-      return $$0.dS().c(ccv.h).get().a($$1 -> {
-         if ($$1.ak() == this.f && $$1 instanceof cfh $$2 && $$0.a($$2) && !$$2.gn()) {
-            return true;
-         }
-
-         return false;
-      }).map(cfh.class::cast);
    }
 }

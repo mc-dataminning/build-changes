@@ -1,16 +1,23 @@
-import com.google.common.collect.Lists;
+import java.util.List;
 
-public record aap(aax b) implements zw<aan> {
-   private static final int c = 32767;
-   public static final zn<wm, aap> a = aax.<wm>a($$0 -> aay.a($$0, 32767), ac.a(Lists.newArrayList(new aax.c[]{new aax.c<>(aav.b, aav.a)}), $$0 -> {
-   })).a(aap::new, aap::b);
+public record aap(List<ja> c) implements aac {
+   public static final ys<vr, aap> a = aac.a(aap::a, aap::new);
+   public static final aac.b<aap> b = aac.a("debug/raids");
 
-   @Override
-   public zy<aap> a() {
-      return aam.k;
+   private aap(vr $$0) {
+      this($$0.a(ja.b));
    }
 
-   public void a(aan $$0) {
-      $$0.a(this);
+   private void a(vr $$0) {
+      $$0.a(this.c, ja.b);
+   }
+
+   @Override
+   public aac.b<aap> a() {
+      return b;
+   }
+
+   public List<ja> b() {
+      return this.c;
    }
 }

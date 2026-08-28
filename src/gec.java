@@ -1,63 +1,70 @@
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
 public class gec {
-   private static final Logger a = LogUtils.getLogger();
-   private final Queue<geb> b;
-   private volatile int c;
+   private int a;
+   private int b;
+   private int c;
+   private int d;
 
-   private gec(List<geb> $$0) {
-      this.b = Queues.newArrayDeque($$0);
-      this.c = this.b.size();
+   public gec(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public static gec a(int $$0) {
-      int $$1 = Math.max(1, (int)((double)Runtime.getRuntime().maxMemory() * 0.3) / geb.a);
-      int $$2 = Math.max(1, Math.min($$0, $$1));
-      List<geb> $$3 = new ArrayList<>($$2);
-
-      try {
-         for (int $$4 = 0; $$4 < $$2; $$4++) {
-            $$3.add(new geb());
-         }
-      } catch (OutOfMemoryError var7) {
-         a.warn("Allocated only {}/{} buffers", $$3.size(), $$2);
-         int $$6 = Math.min($$3.size() * 2 / 3, $$3.size() - 1);
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            $$3.remove($$3.size() - 1).close();
-         }
-      }
-
-      return new gec($$3);
+   public gec a(gec $$0) {
+      int $$1 = this.a;
+      int $$2 = this.b;
+      int $$3 = this.a + this.c;
+      int $$4 = this.b + this.d;
+      int $$5 = $$0.a();
+      int $$6 = $$0.b();
+      int $$7 = $$5 + $$0.c();
+      int $$8 = $$6 + $$0.d();
+      this.a = Math.max($$1, $$5);
+      this.b = Math.max($$2, $$6);
+      this.c = Math.max(0, Math.min($$3, $$7) - this.a);
+      this.d = Math.max(0, Math.min($$4, $$8) - this.b);
+      return this;
    }
 
-   @Nullable
-   public geb a() {
-      geb $$0 = this.b.poll();
-      if ($$0 != null) {
-         this.c = this.b.size();
-         return $$0;
-      } else {
-         return null;
-      }
+   public int a() {
+      return this.a;
    }
 
-   public void a(geb $$0) {
-      this.b.add($$0);
-      this.c = this.b.size();
+   public int b() {
+      return this.b;
    }
 
-   public boolean b() {
-      return this.b.isEmpty();
+   public void a(int $$0) {
+      this.a = $$0;
+   }
+
+   public void b(int $$0) {
+      this.b = $$0;
    }
 
    public int c() {
       return this.c;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   public void c(int $$0) {
+      this.c = $$0;
+   }
+
+   public void d(int $$0) {
+      this.d = $$0;
+   }
+
+   public void a(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public boolean b(int $$0, int $$1) {
+      return $$0 >= this.a && $$0 <= this.a + this.c && $$1 >= this.b && $$1 <= this.b + this.d;
    }
 }

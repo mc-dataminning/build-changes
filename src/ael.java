@@ -1,18 +1,29 @@
-import io.netty.buffer.ByteBuf;
+public class ael implements zb<abn> {
+   public static final ys<vr, ael> a = zb.a(ael::a, ael::new);
+   private final int b;
 
-public class ael implements zw<aci> {
-   public static final ael a = new ael();
-   public static final zn<ByteBuf, ael> b = zn.a(a);
+   public ael(dty $$0) {
+      this.b = $$0.r();
+   }
 
-   private ael() {
+   private ael(vr $$0) {
+      this.b = $$0.l();
+   }
+
+   private void a(vr $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zy<ael> a() {
-      return agu.ac;
+   public zd<ael> a() {
+      return afz.av;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
    }
 }

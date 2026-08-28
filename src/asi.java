@@ -1,5 +1,14 @@
-public interface asi {
-   arg o();
+public enum asi {
+   a("assets"),
+   b("data");
 
-   void b(zw<?> var1);
+   private final String c;
+
+   private asi(final String $$0) {
+      this.c = $$0;
+   }
+
+   public String a() {
+      return this.c;
+   }
 }

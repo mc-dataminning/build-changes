@@ -1,26 +1,103 @@
-public abstract class evr {
-   protected final evt a;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.nio.file.FileSystem;
+import java.nio.file.Path;
+import java.nio.file.PathMatcher;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
+import org.slf4j.Logger;
 
-   protected evr(evt $$0) {
-      this.a = $$0;
+public class evr implements PathMatcher {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "#";
+   private final List<evr.a> c;
+   private final Map<String, PathMatcher> d = new ConcurrentHashMap<>();
+
+   public evr(List<evr.a> $$0) {
+      this.c = $$0;
    }
 
-   public double a(bsw $$0) {
-      double $$1 = this.a.c - $$0.du();
-      double $$2 = this.a.d - $$0.dw();
-      double $$3 = this.a.e - $$0.dA();
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   public PathMatcher a(FileSystem $$0) {
+      return this.d.computeIfAbsent($$0.provider().getScheme(), $$1 -> {
+         List<PathMatcher> $$2;
+         try {
+            $$2 = this.c.stream().map($$1x -> $$1x.a($$0)).toList();
+         } catch (Exception var5) {
+            a.error("Failed to compile file pattern list", var5);
+            return $$0xx -> false;
+         }
+         return switch ($$2.size()) {
+            case 0 -> $$0xx -> false;
+            case 1 -> (PathMatcher)$$2.get(0);
+            default -> $$1x -> {
+            for (PathMatcher $$2 : $$2) {
+               if ($$2.matches($$1x)) {
+                  return true;
+               }
+            }
+
+            return false;
+         };
+         };
+      });
    }
 
-   public abstract evr.a c();
-
-   public evt e() {
-      return this.a;
+   @Override
+   public boolean matches(Path $$0) {
+      return this.a($$0.getFileSystem()).matches($$0);
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public static evr a(BufferedReader $$0) {
+      return new evr($$0.lines().flatMap($$0x -> evr.a.a($$0x).stream()).toList());
+   }
+
+   public static record a(evr.b a, String b) {
+      public PathMatcher a(FileSystem $$0) {
+         return this.a().compile($$0, this.b);
+      }
+
+      static Optional<evr.a> a(String $$0) {
+         if ($$0.isBlank() || $$0.startsWith("#")) {
+            return Optional.empty();
+         } else if (!$$0.startsWith("[")) {
+            return Optional.of(new evr.a(evr.b.b, $$0));
+         } else {
+            int $$1 = $$0.indexOf(93, 1);
+            if ($$1 == -1) {
+               throw new IllegalArgumentException("Unterminated type in line '" + $$0 + "'");
+            } else {
+               String $$2 = $$0.substring(1, $$1);
+               String $$3 = $$0.substring($$1 + 1);
+
+               return switch ($$2) {
+                  case "glob", "regex" -> Optional.of(new evr.a(evr.b.a, $$2 + ":" + $$3));
+                  case "prefix" -> Optional.of(new evr.a(evr.b.b, $$3));
+                  default -> throw new IllegalArgumentException("Unsupported definition type in line '" + $$0 + "'");
+               };
+            }
+         }
+      }
+
+      static evr.a b(String $$0) {
+         return new evr.a(evr.b.a, "glob:" + $$0);
+      }
+
+      static evr.a c(String $$0) {
+         return new evr.a(evr.b.a, "regex:" + $$0);
+      }
+
+      static evr.a d(String $$0) {
+         return new evr.a(evr.b.b, $$0);
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      evr.b a = FileSystem::getPathMatcher;
+      evr.b b = ($$0, $$1) -> $$1x -> $$1x.toString().startsWith($$1);
+
+      PathMatcher compile(FileSystem var1, String var2);
    }
 }

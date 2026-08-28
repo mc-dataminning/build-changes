@@ -1,34 +1,39 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.brigadier.tree.LiteralCommandNode;
+import java.util.Collection;
 
 public class anc {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xp.b("commands.difficulty.failure", $$0));
+   public static void a(CommandDispatcher<eq> $$0) {
+      LiteralCommandNode<eq> $$1 = $$0.register(
+         (LiteralArgumentBuilder)er.a("msg").then(er.a("targets", fd.d()).then(er.a("message", fh.a()).executes($$0x -> {
+            Collection<aql> $$1x = fd.f($$0x, "targets");
+            if (!$$1x.isEmpty()) {
+               fh.a($$0x, "message", $$2 -> a((eq)$$0x.getSource(), $$1x, $$2));
+            }
 
-   public static void a(CommandDispatcher<ep> $$0) {
-      LiteralArgumentBuilder<ep> $$1 = eq.a("difficulty");
-
-      for (bqt $$2 : bqt.values()) {
-         $$1.then(eq.a($$2.e()).executes($$1x -> a((ep)$$1x.getSource(), $$2)));
-      }
-
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)$$1.requires($$0x -> $$0x.c(2))).executes($$0x -> {
-         bqt $$1x = ((ep)$$0x.getSource()).e().al();
-         ((ep)$$0x.getSource()).a(() -> xp.a("commands.difficulty.query", $$1x.b()), false);
-         return $$1x.a();
-      }));
+            return $$1x.size();
+         })))
+      );
+      $$0.register((LiteralArgumentBuilder)er.a("tell").redirect($$1));
+      $$0.register((LiteralArgumentBuilder)er.a("w").redirect($$1));
    }
 
-   public static int a(ep $$0, bqt $$1) throws CommandSyntaxException {
-      MinecraftServer $$2 = $$0.l();
-      if ($$2.bb().q() == $$1) {
-         throw a.create($$1.e());
-      } else {
-         $$2.a($$1, true);
-         $$0.a(() -> xp.a("commands.difficulty.success", $$1.b()), true);
-         return 0;
+   private static void a(eq $$0, Collection<aql> $$1, xk $$2) {
+      wq.a $$3 = wq.a(wq.e, $$0);
+      xj $$4 = xj.a($$2);
+      boolean $$5 = false;
+
+      for (aql $$6 : $$1) {
+         wq.a $$7 = wq.a(wq.f, $$0).c($$6.O_());
+         $$0.a($$4, false, $$7);
+         boolean $$8 = $$0.a($$6);
+         $$6.a($$4, $$8, $$3);
+         $$5 |= $$8 && $$2.j();
+      }
+
+      if ($$5) {
+         $$0.a(auh.e);
       }
    }
 }

@@ -1,37 +1,70 @@
-public class gaj<T extends lj> extends gce {
-   private final gbz a;
+public class gaj extends gcl {
+   gaj(fyd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.d(3.0F);
+      this.b(0.25F, 0.25F);
+      if ($$7) {
+         this.t = this.r.a(50) + 280;
+      } else {
+         this.t = this.r.a(50) + 80;
+      }
 
-   protected gaj(fxx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, T $$7, gbz $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.C = true;
-      this.a = $$8;
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.D = this.D * 0.75F * $$7.d();
-      int $$9 = (int)(8.0 / (this.r.j() * 0.8 + 0.2));
-      this.t = (int)Math.max((float)$$9 * $$7.d(), 1.0F);
-      this.b($$8);
-   }
-
-   protected float a(float $$0, float $$1) {
-      return (this.r.i() * 0.2F + 0.8F) * $$0 * $$1;
-   }
-
-   @Override
-   public gbi b() {
-      return gbi.b;
-   }
-
-   @Override
-   public float b(float $$0) {
-      return this.D * ayz.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+      this.u = 3.0E-6F;
+      this.j = $$4;
+      this.k = $$5 + (double)(this.r.i() / 500.0F);
+      this.l = $$6;
    }
 
    @Override
    public void a() {
-      super.a();
-      this.b(this.a);
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ < this.t && !(this.y <= 0.0F)) {
+         this.j = this.j + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
+         this.l = this.l + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         if (this.s >= this.t - 60 && this.y > 0.01F) {
+            this.y -= 0.015F;
+         }
+      } else {
+         this.k();
+      }
+   }
+
+   @Override
+   public gbp b() {
+      return gbp.c;
+   }
+
+   public static class a implements gbo<ln> {
+      private final gcg a;
+
+      public a(gcg $$0) {
+         this.a = $$0;
+      }
+
+      public gbl a(ln $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gaj $$8 = new gaj($$1, $$2, $$3, $$4, $$5, $$6, $$7, false);
+         $$8.e(0.9F);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements gbo<ln> {
+      private final gcg a;
+
+      public b(gcg $$0) {
+         this.a = $$0;
+      }
+
+      public gbl a(ln $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gaj $$8 = new gaj($$1, $$2, $$3, $$4, $$5, $$6, $$7, true);
+         $$8.e(0.95F);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

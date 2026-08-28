@@ -1,38 +1,17 @@
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class gqp {
-   public static final gqq a = new gqq();
-   public static final String b = "villager";
-   private final gqp.a c;
+public record gqp(String b, String c, boolean d) {
+   public static final Codec<gqp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               axm.y.fieldOf("region").forGetter(gqp::b),
+               axm.y.fieldOf("name").forGetter(gqp::c),
+               Codec.BOOL.optionalFieldOf("bidirectional", false).forGetter(gqp::d)
+            )
+            .apply($$0, gqp::new)
+   );
 
-   public gqp(gqp.a $$0) {
-      this.c = $$0;
-   }
-
-   public gqp.a a() {
-      return this.c;
-   }
-
-   public static enum a {
-      a("none"),
-      b("partial"),
-      c("full");
-
-      private static final Map<String, gqp.a> d = Arrays.stream(values()).collect(Collectors.toMap(gqp.a::a, $$0 -> (gqp.a)$$0));
-      private final String e;
-
-      private a(final String $$0) {
-         this.e = $$0;
-      }
-
-      public String a() {
-         return this.e;
-      }
-
-      public static gqp.a a(String $$0) {
-         return d.getOrDefault($$0, a);
-      }
+   public wu a() {
+      return wu.b(this.c + " (" + this.b + ")");
    }
 }

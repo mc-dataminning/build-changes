@@ -1,28 +1,26 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import org.slf4j.Logger;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
+import java.util.function.Function;
 
-@FunctionalInterface
-public interface azw {
-   Logger a = LogUtils.getLogger();
+public class azw extends DataFix {
+   private final String a;
+   private final Function<String, String> b;
 
-   static azw immediate(final Executor $$0) {
-      return new azw() {
-         @Override
-         public <T> void append(CompletableFuture<T> $$0x, Consumer<T> $$1) {
-            $$0.thenAcceptAsync($$1, $$0).exceptionally($$0xx -> {
-               a.error("Task failed", $$0xx);
-               return null;
-            });
-         }
-      };
+   public azw(Schema $$0, boolean $$1, String $$2, Function<String, String> $$3) {
+      super($$0, $$1);
+      this.a = $$2;
+      this.b = $$3;
    }
 
-   default void append(Runnable $$0) {
-      this.append(CompletableFuture.completedFuture(null), $$1 -> $$0.run());
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         this.a, this.getInputSchema().getType(bgd.p), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.updateMapValues($$1 -> {
+                  String $$2 = ((Dynamic)$$1.getFirst()).asString("");
+                  return $$1.mapFirst($$2x -> $$0x.createString(this.b.apply($$2)));
+               }))
+      );
    }
-
-   <T> void append(CompletableFuture<T> var1, Consumer<T> var2);
 }

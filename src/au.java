@@ -2,32 +2,32 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class au extends dr<au.a> {
+public class au extends ds<au.a> {
    @Override
    public Codec<au.a> a() {
       return au.a.a;
    }
 
-   public void a(arg $$0, dse $$1, cur $$2, int $$3) {
+   public void a(aql $$0, dsh $$1, cua $$2, int $$3) {
       this.a($$0, $$3x -> $$3x.a($$1, $$2, $$3));
    }
 
-   public static record a(Optional<bf> b, Optional<ji<dfb>> c, Optional<cp> d, de.d e) implements dr.a {
+   public static record a(Optional<bf> b, Optional<jj<dff>> c, Optional<cp> d, de.d e) implements ds.a {
       public static final Codec<au.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bu.b.optionalFieldOf("player").forGetter(au.a::a),
-                  lp.e.r().optionalFieldOf("block").forGetter(au.a::b),
+                  lq.e.s().optionalFieldOf("block").forGetter(au.a::b),
                   cp.a.optionalFieldOf("item").forGetter(au.a::c),
                   de.d.d.optionalFieldOf("num_bees_inside", de.d.c).forGetter(au.a::d)
                )
                .apply($$0, au.a::new)
       );
 
-      public static an<au.a> a(dfb $$0, cp.a $$1, de.d $$2) {
+      public static an<au.a> a(dff $$0, cp.a $$1, de.d $$2) {
          return am.L.a(new au.a(Optional.empty(), Optional.of($$0.s()), Optional.of($$1.b()), $$2));
       }
 
-      public boolean a(dse $$0, cur $$1, int $$2) {
+      public boolean a(dsh $$0, cua $$1, int $$2) {
          if (this.c.isPresent() && !$$0.a(this.c.get())) {
             return false;
          } else {
@@ -40,7 +40,7 @@ public class au extends dr<au.a> {
          return this.b;
       }
 
-      public Optional<ji<dfb>> b() {
+      public Optional<jj<dff>> b() {
          return this.c;
       }
 

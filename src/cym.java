@@ -1,17 +1,18 @@
-public enum cym implements azu {
-   a("food"),
-   b("blocks"),
-   c("misc");
+public interface cym<T extends cyg<?>> {
+   cym<cxx> a = a("crafting");
+   cym<cyx> b = a("smelting");
+   cym<cxr> c = a("blasting");
+   cym<czc> d = a("smoking");
+   cym<cxt> e = a("campfire_cooking");
+   cym<czd> f = a("stonecutting");
+   cym<cyy> g = a("smithing");
 
-   public static final azu.a<cym> d = azu.a(cym::values);
-   private final String e;
-
-   private cym(final String $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public String c() {
-      return this.e;
+   static <T extends cyg<?>> cym<T> a(final String $$0) {
+      return jw.a(lq.q, new akk($$0), new cym<T>() {
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      });
    }
 }

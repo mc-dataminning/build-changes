@@ -1,5 +1,7 @@
-public class dup extends RuntimeException {
-   public dup(int $$0) {
-      super("Missing Palette entry for index " + $$0 + ".");
-   }
+import java.util.function.BiConsumer;
+
+public interface dup extends dbj {
+   void a(BiConsumer<ja, dsh> var1);
+
+   enl B();
 }

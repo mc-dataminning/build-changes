@@ -1,70 +1,81 @@
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.Queues;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.Deque;
-import javax.annotation.Nullable;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Optional;
 
-public final class azk<T> extends AbstractIterator<T> {
-   private static final int a = Integer.MIN_VALUE;
-   @Nullable
-   private Deque<T> b = null;
-   private int c = Integer.MIN_VALUE;
-   private final Int2ObjectMap<Deque<T>> d = new Int2ObjectOpenHashMap();
+public class azk {
+   private static final String a = b("");
 
-   public void a(T $$0, int $$1) {
-      if ($$1 == this.c && this.b != null) {
-         this.b.addLast($$0);
-      } else {
-         Deque<T> $$2 = (Deque<T>)this.d.computeIfAbsent($$1, $$0x -> Queues.newArrayDeque());
-         $$2.addLast($$0);
-         if ($$1 >= this.c) {
-            this.b = $$2;
-            this.c = $$1;
-         }
-      }
+   public static <T> Dynamic<T> a(DynamicOps<T> $$0, String $$1) {
+      String $$2 = b($$1);
+      return new Dynamic($$0, $$0.createString($$2));
    }
 
-   @Nullable
-   protected T computeNext() {
-      if (this.b == null) {
-         return (T)this.endOfData();
+   public static <T> Dynamic<T> a(DynamicOps<T> $$0) {
+      return new Dynamic($$0, $$0.createString(a));
+   }
+
+   private static String b(String $$0) {
+      JsonObject $$1 = new JsonObject();
+      $$1.addProperty("text", $$0);
+      return axu.e($$1);
+   }
+
+   public static <T> Dynamic<T> b(DynamicOps<T> $$0, String $$1) {
+      JsonObject $$2 = new JsonObject();
+      $$2.addProperty("translate", $$1);
+      return new Dynamic($$0, $$0.createString(axu.e($$2)));
+   }
+
+   public static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return (Dynamic<T>)DataFixUtils.orElse($$0.asString().map($$1 -> a($$0.getOps(), $$1)).result(), $$0);
+   }
+
+   public static Dynamic<?> b(Dynamic<?> $$0) {
+      Optional<String> $$1 = $$0.asString().result();
+      if ($$1.isEmpty()) {
+         return $$0;
       } else {
-         T $$0 = this.b.removeFirst();
-         if ($$0 == null) {
-            return (T)this.endOfData();
+         String $$2 = $$1.get();
+         if (!$$2.isEmpty() && !$$2.equals("null")) {
+            char $$3 = $$2.charAt(0);
+            char $$4 = $$2.charAt($$2.length() - 1);
+            if ($$3 == '"' && $$4 == '"' || $$3 == '{' && $$4 == '}' || $$3 == '[' && $$4 == ']') {
+               try {
+                  JsonElement $$5 = JsonParser.parseString($$2);
+                  if ($$5.isJsonPrimitive()) {
+                     return a($$0.getOps(), $$5.getAsString());
+                  }
+
+                  return $$0.createString(axu.e($$5));
+               } catch (JsonParseException var6) {
+               }
+            }
+
+            return a($$0.getOps(), $$2);
          } else {
-            if (this.b.isEmpty()) {
-               this.a();
-            }
-
-            return $$0;
+            return a($$0.getOps());
          }
       }
    }
 
-   private void a() {
-      int $$0 = Integer.MIN_VALUE;
-      Deque<T> $$1 = null;
-      ObjectIterator var3 = Int2ObjectMaps.fastIterable(this.d).iterator();
-
-      while (var3.hasNext()) {
-         Entry<Deque<T>> $$2 = (Entry<Deque<T>>)var3.next();
-         Deque<T> $$3 = (Deque<T>)$$2.getValue();
-         int $$4 = $$2.getIntKey();
-         if ($$4 > $$0 && !$$3.isEmpty()) {
-            $$0 = $$4;
-            $$1 = $$3;
-            if ($$4 == this.c - 1) {
-               break;
+   public static Optional<String> a(String $$0) {
+      try {
+         JsonElement $$1 = JsonParser.parseString($$0);
+         if ($$1.isJsonObject()) {
+            JsonObject $$2 = $$1.getAsJsonObject();
+            JsonElement $$3 = $$2.get("translate");
+            if ($$3 != null && $$3.isJsonPrimitive()) {
+               return Optional.of($$3.getAsString());
             }
          }
+      } catch (JsonParseException var4) {
       }
 
-      this.c = $$0;
-      this.b = $$1;
+      return Optional.empty();
    }
 }

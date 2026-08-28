@@ -1,135 +1,390 @@
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import it.unimi.dsi.fastutil.objects.ObjectSet;
 import java.util.EnumSet;
+import java.util.IdentityHashMap;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
 public class dva {
-   private static boolean a(dua $$0) {
-      return $$0.j().b(duz.l) && $$0.v();
+   private static final Logger b = LogUtils.getLogger();
+   public static final dva a = new dva(dbs.a);
+   private static final String c = "Indices";
+   private static final jg[] d = jg.values();
+   private final EnumSet<jg> e = EnumSet.noneOf(jg.class);
+   private final List<exp<dff>> f = Lists.newArrayList();
+   private final List<exp<eoa>> g = Lists.newArrayList();
+   private final int[][] h;
+   static final Map<dff, dva.a> i = new IdentityHashMap<>();
+   static final Set<dva.a> j = Sets.newHashSet();
+
+   private dva(dcf $$0) {
+      this.h = new int[$$0.an()][];
    }
 
-   static CompletableFuture<dua> a(dvd $$0, duz $$1, Executor $$2, dvc $$3, List<dua> $$4, dua $$5) {
-      return CompletableFuture.completedFuture($$5);
-   }
+   public dva(tx $$0, dcf $$1) {
+      this($$1);
+      if ($$0.b("Indices", 10)) {
+         tx $$2 = $$0.p("Indices");
 
-   static CompletableFuture<dua> a(dvd $$0, duz $$1, dvc $$2, dua $$3) {
-      return CompletableFuture.completedFuture($$3);
-   }
-
-   static CompletableFuture<dua> b(dvd $$0, duz $$1, Executor $$2, dvc $$3, List<dua> $$4, dua $$5) {
-      arf $$6 = $$0.a();
-      if ($$6.o().bb().y().c()) {
-         $$0.b().a($$6.H_(), $$6.l().h(), $$6.a(), $$5, $$0.c());
-      }
-
-      $$6.a($$5);
-      return CompletableFuture.completedFuture($$5);
-   }
-
-   static CompletableFuture<dua> b(dvd $$0, duz $$1, dvc $$2, dua $$3) {
-      $$0.a().a($$3);
-      return CompletableFuture.completedFuture($$3);
-   }
-
-   static CompletableFuture<dua> c(dvd $$0, duz $$1, Executor $$2, dvc $$3, List<dua> $$4, dua $$5) {
-      arf $$6 = $$0.a();
-      arm $$7 = new arm($$6, $$4, $$1, -1);
-      $$0.b().a($$7, $$6.a().a($$7), $$5);
-      return CompletableFuture.completedFuture($$5);
-   }
-
-   static CompletableFuture<dua> d(dvd $$0, duz $$1, Executor $$2, dvc $$3, List<dua> $$4, dua $$5) {
-      arf $$6 = $$0.a();
-      arm $$7 = new arm($$6, $$4, $$1, -1);
-      return $$0.b().a($$2, $$6.l().i(), dyy.a($$7), $$6.a().a($$7), $$5);
-   }
-
-   static CompletableFuture<dua> e(dvd $$0, duz $$1, Executor $$2, dvc $$3, List<dua> $$4, dua $$5) {
-      arf $$6 = $$0.a();
-      arm $$7 = new arm($$6, $$4, $$1, 0);
-      return $$0.b().a($$2, dyy.a($$7), $$6.l().i(), $$6.a().a($$7), $$5).thenApply($$0x -> {
-         if ($$0x instanceof duu $$1x) {
-            dxk $$2x = $$1x.x();
-            if ($$2x != null) {
-               dxk.a($$1x);
-               if ($$2x.b()) {
-                  $$2x.b($$1x);
-               }
+         for (int $$3 = 0; $$3 < this.h.length; $$3++) {
+            String $$4 = String.valueOf($$3);
+            if ($$2.b($$4, 11)) {
+               this.h[$$3] = $$2.n($$4);
             }
          }
+      }
 
-         return $$0x;
+      int $$5 = $$0.h("Sides");
+
+      for (jg $$6 : jg.values()) {
+         if (($$5 & 1 << $$6.ordinal()) != 0) {
+            this.e.add($$6);
+         }
+      }
+
+      a($$0, "neighbor_block_ticks", $$0x -> lq.e.b(akk.a($$0x)).or(() -> Optional.of(dfh.a)), this.f);
+      a($$0, "neighbor_fluid_ticks", $$0x -> lq.c.b(akk.a($$0x)).or(() -> Optional.of(eoc.a)), this.g);
+   }
+
+   private static <T> void a(tx $$0, String $$1, Function<String, Optional<T>> $$2, List<exp<T>> $$3) {
+      if ($$0.b($$1, 9)) {
+         for (uu $$5 : $$0.c($$1, 10)) {
+            exp.a((tx)$$5, $$2).ifPresent($$3::add);
+         }
+      }
+   }
+
+   public void a(dun $$0) {
+      this.b($$0);
+
+      for (jg $$1 : d) {
+         a($$0, $$1);
+      }
+
+      dcd $$2 = $$0.F();
+      this.f.forEach($$1x -> {
+         dff $$2x = $$1x.a() == dfh.a ? $$2.a_($$1x.b()).b() : (dff)$$1x.a();
+         $$2.a($$1x.b(), $$2x, $$1x.c(), $$1x.d());
       });
+      this.g.forEach($$1x -> {
+         eoa $$2x = $$1x.a() == eoc.a ? $$2.b_($$1x.b()).a() : (eoa)$$1x.a();
+         $$2.a($$1x.b(), $$2x, $$1x.c(), $$1x.d());
+      });
+      j.forEach($$1x -> $$1x.a($$2));
    }
 
-   static CompletableFuture<dua> f(dvd $$0, duz $$1, Executor $$2, dvc $$3, List<dua> $$4, dua $$5) {
-      arf $$6 = $$0.a();
-      arm $$7 = new arm($$6, $$4, $$1, 0);
-      $$0.b().a($$7, $$6.a().a($$7), $$6.l().i(), $$5);
-      return CompletableFuture.completedFuture($$5);
+   private static void a(dun $$0, jg $$1) {
+      dcd $$2 = $$0.F();
+      if ($$0.r().e.remove($$1)) {
+         Set<jf> $$3 = $$1.a();
+         int $$4 = 0;
+         int $$5 = 15;
+         boolean $$6 = $$3.contains(jf.f);
+         boolean $$7 = $$3.contains(jf.e);
+         boolean $$8 = $$3.contains(jf.d);
+         boolean $$9 = $$3.contains(jf.c);
+         boolean $$10 = $$3.size() == 1;
+         dbk $$11 = $$0.f();
+         int $$12 = $$11.d() + (!$$10 || !$$9 && !$$8 ? ($$7 ? 0 : 15) : 1);
+         int $$13 = $$11.d() + (!$$10 || !$$9 && !$$8 ? ($$7 ? 0 : 15) : 14);
+         int $$14 = $$11.e() + (!$$10 || !$$6 && !$$7 ? ($$9 ? 0 : 15) : 1);
+         int $$15 = $$11.e() + (!$$10 || !$$6 && !$$7 ? ($$9 ? 0 : 15) : 14);
+         jf[] $$16 = jf.values();
+         ja.a $$17 = new ja.a();
+
+         for (ja $$18 : ja.b($$12, $$2.I_(), $$14, $$13, $$2.am() - 1, $$15)) {
+            dsh $$19 = $$2.a_($$18);
+            dsh $$20 = $$19;
+
+            for (jf $$21 : $$16) {
+               $$17.a($$18, $$21);
+               $$20 = a($$20, $$21, $$2, $$18, $$17);
+            }
+
+            dff.a($$19, $$20, $$2, $$18, 18);
+         }
+      }
    }
 
-   static CompletableFuture<dua> g(dvd $$0, duz $$1, Executor $$2, dvc $$3, List<dua> $$4, dua $$5) {
-      arf $$6 = $$0.a();
-      arm $$7 = new arm($$6, $$4, $$1, 0);
-      if ($$5 instanceof duu $$8) {
-         dyy.a($$7, $$8);
+   private static dsh a(dsh $$0, jf $$1, dce $$2, ja $$3, ja $$4) {
+      return i.getOrDefault($$0.b(), dva.b.b).a($$0, $$1, $$2.a_($$4), $$2, $$3, $$4);
+   }
+
+   private void b(dun $$0) {
+      ja.a $$1 = new ja.a();
+      ja.a $$2 = new ja.a();
+      dbk $$3 = $$0.f();
+      dce $$4 = $$0.F();
+
+      for (int $$5 = 0; $$5 < this.h.length; $$5++) {
+         duo $$6 = $$0.b($$5);
+         int[] $$7 = this.h[$$5];
+         this.h[$$5] = null;
+         if ($$7 != null && $$7.length > 0) {
+            jf[] $$8 = jf.values();
+            duv<dsh> $$9 = $$6.h();
+            int $$10 = $$0.g($$5);
+            int $$11 = kc.c($$10);
+
+            for (int $$12 : $$7) {
+               int $$13 = $$12 & 15;
+               int $$14 = $$12 >> 8 & 15;
+               int $$15 = $$12 >> 4 & 15;
+               $$1.d($$3.d() + $$13, $$11 + $$14, $$3.e() + $$15);
+               dsh $$16 = $$9.a($$12);
+               dsh $$17 = $$16;
+
+               for (jf $$18 : $$8) {
+                  $$2.a($$1, $$18);
+                  if (kc.a($$1.u()) == $$3.e && kc.a($$1.w()) == $$3.f) {
+                     $$17 = a($$17, $$18, $$4, $$1, $$2);
+                  }
+               }
+
+               dff.a($$16, $$17, $$4, $$1, 18);
+            }
+         }
       }
 
-      $$0.b().a($$7, $$6.C(), $$6.l().i(), $$6.F_(), $$6.a().a($$7), $$5, dxs.a.a);
-      return CompletableFuture.completedFuture($$5);
+      for (int $$19 = 0; $$19 < this.h.length; $$19++) {
+         if (this.h[$$19] != null) {
+            b.warn("Discarding update data for section {} for chunk ({} {})", new Object[]{$$4.g($$19), $$3.e, $$3.f});
+         }
+
+         this.h[$$19] = null;
+      }
    }
 
-   static CompletableFuture<dua> h(dvd $$0, duz $$1, Executor $$2, dvc $$3, List<dua> $$4, dua $$5) {
-      arf $$6 = $$0.a();
-      dxw.a($$5, EnumSet.of(dxw.a.e, dxw.a.f, dxw.a.d, dxw.a.b));
-      arm $$7 = new arm($$6, $$4, $$1, 1);
-      $$0.b().a($$7, $$5, $$6.a().a($$7));
-      dyy.a($$7, $$5);
-      return CompletableFuture.completedFuture($$5);
-   }
-
-   static CompletableFuture<dua> i(dvd $$0, duz $$1, Executor $$2, dvc $$3, List<dua> $$4, dua $$5) {
-      return a($$0.d(), $$5);
-   }
-
-   static CompletableFuture<dua> c(dvd $$0, duz $$1, dvc $$2, dua $$3) {
-      return a($$0.d(), $$3);
-   }
-
-   private static CompletableFuture<dua> a(ari $$0, dua $$1) {
-      $$1.A();
-      ((duu)$$1).a($$0);
-      boolean $$2 = a($$1);
-      return $$0.a($$1, $$2);
-   }
-
-   static CompletableFuture<dua> j(dvd $$0, duz $$1, Executor $$2, dvc $$3, List<dua> $$4, dua $$5) {
-      return b($$0.d(), $$5);
-   }
-
-   static CompletableFuture<dua> d(dvd $$0, duz $$1, dvc $$2, dua $$3) {
-      return b($$0.d(), $$3);
-   }
-
-   private static CompletableFuture<dua> b(ari $$0, dua $$1) {
-      boolean $$2 = a($$1);
-      return $$0.b($$1, $$2);
-   }
-
-   static CompletableFuture<dua> k(dvd $$0, duz $$1, Executor $$2, dvc $$3, List<dua> $$4, dua $$5) {
-      if (!$$5.y()) {
-         $$0.b().a(new arm($$0.a(), $$4, $$1, -1));
+   public boolean a() {
+      for (int[] $$0 : this.h) {
+         if ($$0 != null) {
+            return false;
+         }
       }
 
-      return CompletableFuture.completedFuture($$5);
+      return this.e.isEmpty();
    }
 
-   static CompletableFuture<dua> l(dvd $$0, duz $$1, Executor $$2, dvc $$3, List<dua> $$4, dua $$5) {
-      return $$3.apply($$5);
+   public tx b() {
+      tx $$0 = new tx();
+      tx $$1 = new tx();
+
+      for (int $$2 = 0; $$2 < this.h.length; $$2++) {
+         String $$3 = String.valueOf($$2);
+         if (this.h[$$2] != null && this.h[$$2].length != 0) {
+            $$1.a($$3, this.h[$$2]);
+         }
+      }
+
+      if (!$$1.g()) {
+         $$0.a("Indices", $$1);
+      }
+
+      int $$4 = 0;
+
+      for (jg $$5 : this.e) {
+         $$4 |= 1 << $$5.ordinal();
+      }
+
+      $$0.a("Sides", (byte)$$4);
+      if (!this.f.isEmpty()) {
+         ud $$6 = new ud();
+         this.f.forEach($$1x -> $$6.add($$1x.a($$0xx -> lq.e.b($$0xx).toString())));
+         $$0.a("neighbor_block_ticks", $$6);
+      }
+
+      if (!this.g.isEmpty()) {
+         ud $$7 = new ud();
+         this.g.forEach($$1x -> $$7.add($$1x.a($$0xx -> lq.c.b($$0xx).toString())));
+         $$0.a("neighbor_fluid_ticks", $$7);
+      }
+
+      return $$0;
    }
 
-   static CompletableFuture<dua> e(dvd $$0, duz $$1, dvc $$2, dua $$3) {
-      return $$2.apply($$3);
+   public interface a {
+      dsh a(dsh var1, jf var2, dsh var3, dce var4, ja var5, ja var6);
+
+      default void a(dce $$0) {
+      }
+   }
+
+   static enum b implements dva.a {
+      a(
+         dfh.kO,
+         dfh.ed,
+         dfh.lM,
+         dfh.lN,
+         dfh.lO,
+         dfh.lP,
+         dfh.lQ,
+         dfh.lR,
+         dfh.lS,
+         dfh.lT,
+         dfh.lU,
+         dfh.lV,
+         dfh.lW,
+         dfh.lX,
+         dfh.lY,
+         dfh.lZ,
+         dfh.ma,
+         dfh.mb,
+         dfh.gS,
+         dfh.gT,
+         dfh.gU,
+         dfh.fA,
+         dfh.L,
+         dfh.I,
+         dfh.K,
+         dfh.cE,
+         dfh.cF,
+         dfh.cG,
+         dfh.cH,
+         dfh.cI,
+         dfh.cJ,
+         dfh.cK,
+         dfh.cR,
+         dfh.cS,
+         dfh.cT,
+         dfh.cU,
+         dfh.cW,
+         dfh.cX,
+         dfh.da,
+         dfh.db,
+         dfh.dc,
+         dfh.dd,
+         dfh.df,
+         dfh.dg,
+         dfh.dl,
+         dfh.dm,
+         dfh.dn,
+         dfh.do,
+         dfh.dq,
+         dfh.dr
+      ) {
+         @Override
+         public dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
+            return $$0;
+         }
+      },
+      b {
+         @Override
+         public dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
+            return $$0.a($$1, $$3.a_($$5), $$3, $$4, $$5);
+         }
+      },
+      c(dfh.cv, dfh.gV) {
+         @Override
+         public dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
+            if ($$2.a($$0.b()) && $$1.o().d() && $$0.c(dgi.d) == dsz.a && $$2.c(dgi.d) == dsz.a) {
+               jf $$6 = $$0.c(dgi.c);
+               if ($$1.o() != $$6.o() && $$6 == $$2.c(dgi.c)) {
+                  dsz $$7 = $$1 == $$6.h() ? dsz.b : dsz.c;
+                  $$3.a($$5, $$2.a(dgi.d, $$7.a()), 18);
+                  if ($$6 == jf.c || $$6 == jf.f) {
+                     dpn $$8 = $$3.c_($$4);
+                     dpn $$9 = $$3.c_($$5);
+                     if ($$8 instanceof dpu && $$9 instanceof dpu) {
+                        dpu.a((dpu)$$8, (dpu)$$9);
+                     }
+                  }
+
+                  return $$0.a(dgi.d, $$7);
+               }
+            }
+
+            return $$0;
+         }
+      },
+      d(true, dfh.aI, dfh.aJ, dfh.aG, dfh.aK, dfh.aH, dfh.aE, dfh.aF) {
+         private final ThreadLocal<List<ObjectSet<ja>>> g = ThreadLocal.withInitial(() -> Lists.newArrayListWithCapacity(7));
+
+         @Override
+         public dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
+            dsh $$6 = $$0.a($$1, $$3.a_($$5), $$3, $$4, $$5);
+            if ($$0 != $$6) {
+               int $$7 = $$6.c(dsx.aC);
+               List<ObjectSet<ja>> $$8 = this.g.get();
+               if ($$8.isEmpty()) {
+                  for (int $$9 = 0; $$9 < 7; $$9++) {
+                     $$8.add(new ObjectOpenHashSet());
+                  }
+               }
+
+               $$8.get($$7).add($$4.i());
+            }
+
+            return $$0;
+         }
+
+         @Override
+         public void a(dce $$0) {
+            ja.a $$1 = new ja.a();
+            List<ObjectSet<ja>> $$2 = this.g.get();
+
+            for (int $$3 = 2; $$3 < $$2.size(); $$3++) {
+               int $$4 = $$3 - 1;
+               ObjectSet<ja> $$5 = $$2.get($$4);
+               ObjectSet<ja> $$6 = $$2.get($$3);
+               ObjectIterator var8 = $$5.iterator();
+
+               while (var8.hasNext()) {
+                  ja $$7 = (ja)var8.next();
+                  dsh $$8 = $$0.a_($$7);
+                  if ($$8.c(dsx.aC) >= $$4) {
+                     $$0.a($$7, $$8.a(dsx.aC, Integer.valueOf($$4)), 18);
+                     if ($$3 != 7) {
+                        for (jf $$9 : f) {
+                           $$1.a($$7, $$9);
+                           dsh $$10 = $$0.a_($$1);
+                           if ($$10.b(dsx.aC) && $$8.c(dsx.aC) > $$3) {
+                              $$6.add($$1.i());
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+
+            $$2.clear();
+         }
+      },
+      e(dfh.fe, dfh.fd) {
+         @Override
+         public dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
+            if ($$0.c(dnb.c) == 7) {
+               dff $$6 = $$0.a(dfh.fd) ? dfh.eZ : dfh.fa;
+               if ($$2.a($$6)) {
+                  return ($$0.a(dfh.fd) ? dfh.fb : dfh.fc).o().a(djb.aE, $$1);
+               }
+            }
+
+            return $$0;
+         }
+      };
+
+      public static final jf[] f = jf.values();
+
+      b(final dff... $$0) {
+         this(false, $$0);
+      }
+
+      b(final boolean $$0, final dff... $$1) {
+         for (dff $$2 : $$1) {
+            dva.i.put($$2, this);
+         }
+
+         if ($$0) {
+            dva.j.add(this);
+         }
+      }
    }
 }

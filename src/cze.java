@@ -1,121 +1,60 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public class cze implements cyo {
-   final czf a;
-   final cur b;
-   final String c;
-   final cyn d;
-   final boolean e;
-
-   public cze(String $$0, cyn $$1, czf $$2, cur $$3, boolean $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.b = $$3;
-      this.e = $$4;
+public class cze extends cxy {
+   public cze(cxv $$0) {
+      super($$0);
    }
 
-   public cze(String $$0, cyn $$1, czf $$2, cur $$3) {
-      this($$0, $$1, $$2, $$3, true);
+   public boolean a(cxw $$0, dcd $$1) {
+      boolean $$2 = false;
+      boolean $$3 = false;
+      boolean $$4 = false;
+      boolean $$5 = false;
+
+      for (int $$6 = 0; $$6 < $$0.a(); $$6++) {
+         cua $$7 = $$0.a($$6);
+         if (!$$7.e()) {
+            if ($$7.a(dfh.cf.r()) && !$$4) {
+               $$4 = true;
+            } else if ($$7.a(dfh.cg.r()) && !$$3) {
+               $$3 = true;
+            } else if ($$7.a(awd.O) && !$$2) {
+               $$2 = true;
+            } else {
+               if (!$$7.a(cud.pq) || $$5) {
+                  return false;
+               }
+
+               $$5 = true;
+            }
+         }
+      }
+
+      return $$2 && $$4 && $$3 && $$5;
    }
 
-   @Override
-   public czb<?> ao_() {
-      return czb.a;
-   }
+   public cua a(cxw $$0, jl.a $$1) {
+      cua $$2 = new cua(cud.vX, 1);
 
-   @Override
-   public String c() {
-      return this.c;
-   }
+      for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
+         cua $$4 = $$0.a($$3);
+         if (!$$4.e()) {
+            dnh $$5 = dnh.a($$4.g());
+            if ($$5 != null) {
+               $$2.b(kn.H, $$5.b());
+               break;
+            }
+         }
+      }
 
-   @Override
-   public cyn d() {
-      return this.d;
-   }
-
-   @Override
-   public cur a(jk.a $$0) {
-      return this.b;
-   }
-
-   @Override
-   public jr<cyu> a() {
-      return this.a.c();
-   }
-
-   @Override
-   public boolean h() {
-      return this.e;
+      return $$2;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 >= this.a.a() && $$1 >= this.a.b();
-   }
-
-   public boolean a(cqm $$0, dca $$1) {
-      return this.a.a($$0);
-   }
-
-   public cur a(cqm $$0, jk.a $$1) {
-      return this.a($$1).s();
-   }
-
-   public int j() {
-      return this.a.a();
-   }
-
-   public int k() {
-      return this.a.b();
+      return $$0 >= 2 && $$1 >= 2;
    }
 
    @Override
-   public boolean i() {
-      jr<cyu> $$0 = this.a();
-      return $$0.isEmpty() || $$0.stream().filter($$0x -> !$$0x.c()).anyMatch($$0x -> $$0x.a().length == 0);
-   }
-
-   public static class a implements czb<cze> {
-      public static final MapCodec<cze> x = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.c),
-                  cyn.e.fieldOf("category").orElse(cyn.d).forGetter($$0x -> $$0x.d),
-                  czf.a.forGetter($$0x -> $$0x.a),
-                  cur.d.fieldOf("result").forGetter($$0x -> $$0x.b),
-                  Codec.BOOL.optionalFieldOf("show_notification", true).forGetter($$0x -> $$0x.e)
-               )
-               .apply($$0, cze::new)
-      );
-      public static final zn<xa, cze> y = zn.a(cze.a::a, cze.a::a);
-
-      @Override
-      public MapCodec<cze> a() {
-         return x;
-      }
-
-      @Override
-      public zn<xa, cze> b() {
-         return y;
-      }
-
-      private static cze a(xa $$0) {
-         String $$1 = $$0.p();
-         cyn $$2 = $$0.b(cyn.class);
-         czf $$3 = czf.b.decode($$0);
-         cur $$4 = cur.i.decode($$0);
-         boolean $$5 = $$0.readBoolean();
-         return new cze($$1, $$2, $$3, $$4, $$5);
-      }
-
-      private static void a(xa $$0, cze $$1) {
-         $$0.a($$1.c);
-         $$0.a($$1.d);
-         czf.b.encode($$0, $$1.a);
-         cur.i.encode($$0, $$1.b);
-         $$0.a($$1.e);
-      }
+   public cyl<?> ap_() {
+      return cyl.n;
    }
 }

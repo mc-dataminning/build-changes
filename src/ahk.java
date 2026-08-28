@@ -1,16 +1,29 @@
-public record ahk(int b, int c) implements zw<agw> {
-   public static final zn<wm, ahk> a = zn.a(zl.g, ahk::b, zl.g, ahk::e, ahk::new);
+public class ahk implements zb<agb> {
+   public static final ys<vr, ahk> a = zb.a(ahk::a, ahk::new);
+   private final String b;
 
-   @Override
-   public zy<ahk> a() {
-      return agu.br;
+   public ahk(String $$0) {
+      this.b = $$0;
    }
 
-   public void a(agw $$0) {
+   private ahk(vr $$0) {
+      this.b = $$0.p();
+   }
+
+   private void a(vr $$0) {
+      $$0.a(this.b);
+   }
+
+   @Override
+   public zd<ahk> a() {
+      return afz.bP;
+   }
+
+   public void a(agb $$0) {
       $$0.a(this);
    }
 
-   public int e() {
-      return this.c;
+   public String b() {
+      return this.b;
    }
 }

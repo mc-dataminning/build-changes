@@ -1,29 +1,45 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
 
-public record ean<FC extends ede, F extends eba<FC>>(F d, FC e) {
-   public static final Codec<ean<?, ?>> a = lp.Q.q().dispatch($$0 -> $$0.d, eba::a);
-   public static final Codec<ji<ean<?, ?>>> b = alb.a(lq.aC, a);
-   public static final Codec<jm<ean<?, ?>>> c = jx.a(lq.aC, a);
-
-   public boolean a(dcv $$0, dub $$1, azh $$2, iz $$3) {
-      return this.d.a(this.e, $$0, $$1, $$2, $$3);
-   }
-
-   public Stream<ean<?, ?>> a() {
-      return Stream.concat(Stream.of(this), this.e.e());
+public class ean extends ebe<eda> {
+   public ean(Codec<eda> $$0) {
+      super($$0);
    }
 
    @Override
-   public String toString() {
-      return "Configured: " + this.d + ": " + this.e;
+   public boolean a(ebg<eda> $$0) {
+      ja $$1 = $$0.e();
+      dcz $$2 = $$0.b();
+      aym $$3 = $$0.d();
+      eda $$4 = $$0.f();
+      if ($$1.v() < $$2.I_() + 5) {
+         return false;
+      } else {
+         int $$5 = 2 + $$3.a(2);
+         int $$6 = 2 + $$3.a(2);
+
+         for (ja $$7 : ja.c($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
+            int $$8 = $$1.u() - $$7.u();
+            int $$9 = $$1.w() - $$7.w();
+            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
+               this.a($$2, $$7, $$3, $$4);
+            } else if ((double)$$3.i() < 0.031) {
+               this.a($$2, $$7, $$3, $$4);
+            }
+         }
+
+         return true;
+      }
    }
 
-   public F b() {
-      return this.d;
+   private boolean a(dce $$0, ja $$1, aym $$2) {
+      ja $$3 = $$1.d();
+      dsh $$4 = $$0.a_($$3);
+      return $$4.a(dfh.kE) ? $$2.h() : $$4.d($$0, $$3, jf.b);
    }
 
-   public FC c() {
-      return this.e;
+   private void a(dce $$0, ja $$1, aym $$2, eda $$3) {
+      if ($$0.u($$1) && this.a($$0, $$1, $$2)) {
+         $$0.a($$1, $$3.b.a($$2, $$1), 4);
+      }
    }
 }

@@ -1,27 +1,60 @@
-import java.util.List;
-import java.util.Set;
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
 
-public abstract class ps extends py<dac> {
-   private final cpn d;
-
-   public ps(ly $$0, CompletableFuture<jk.a> $$1, cpn $$2) {
-      super($$0, lq.u, $$1, $$0x -> $$0x.m().h());
-      this.d = $$2;
+public class ps extends pv<cin> {
+   public ps(lz $$0, CompletableFuture<jl.a> $$1) {
+      super($$0, lr.W, $$1);
    }
 
-   protected void a(jk.a $$0, dac... $$1) {
-      this.a(aws.a).a($$1);
-      Set<dac> $$2 = Set.of($$1);
-      List<String> $$3 = $$0.b(lq.u)
-         .b()
-         .filter($$0x -> ((dac)$$0x.a()).i().a(this.d))
-         .filter($$1x -> !$$2.contains($$1x.a()))
-         .map(ji::g)
-         .collect(Collectors.toList());
-      if (!$$3.isEmpty()) {
-         throw new IllegalStateException("Not all enchantments were registered for tooltip ordering. Missing: " + String.join(", ", $$3));
-      }
+   @Override
+   protected void a(jl.a $$0) {
+      this.b(awe.a)
+         .a(
+            cio.a,
+            cio.b,
+            cio.c,
+            cio.d,
+            cio.e,
+            cio.f,
+            cio.g,
+            cio.h,
+            cio.i,
+            cio.j,
+            cio.k,
+            cio.l,
+            cio.m,
+            cio.n,
+            cio.o,
+            cio.p,
+            cio.q,
+            cio.r,
+            cio.s,
+            cio.t,
+            cio.u,
+            cio.v,
+            cio.w,
+            cio.x,
+            cio.y,
+            cio.z,
+            cio.E,
+            cio.F,
+            cio.G,
+            cio.H,
+            cio.I,
+            cio.J,
+            cio.K,
+            cio.L,
+            cio.M,
+            cio.N,
+            cio.O,
+            cio.P,
+            cio.Q,
+            cio.R,
+            cio.S,
+            cio.T,
+            cio.U,
+            cio.V,
+            cio.W,
+            cio.X
+         );
    }
 }

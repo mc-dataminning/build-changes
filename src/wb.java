@@ -1,42 +1,38 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class wb extends vx {
-   private final Deque<vz> a = new ArrayDeque<>();
-
-   public wb(vy... $$0) {
-      vz $$1 = vz.a();
-
-      for (vy $$2 : $$0) {
-         $$1.a($$2);
-      }
-
-      this.a.push($$1);
-   }
-
-   @Override
-   public vm.a a(vr<?> $$0, String $$1) {
-      vz $$2 = this.a.element();
-      if ($$2.a($$0, $$1)) {
-         return vm.a.b;
-      } else {
-         if ($$0 == us.b) {
-            vz $$3 = $$2.d().get($$1);
-            if ($$3 != null) {
-               this.a.push($$3);
-            }
+public interface wb {
+   static wb a(final Runnable $$0) {
+      return new wb() {
+         @Override
+         public void a() {
+            $$0.run();
          }
 
-         return super.a($$0, $$1);
-      }
+         @Nullable
+         @Override
+         public zb<?> b() {
+            $$0.run();
+            return null;
+         }
+      };
    }
 
-   @Override
-   public vm.b b() {
-      if (this.e() == this.a.element().b()) {
-         this.a.pop();
-      }
+   static wb a(final Supplier<zb<?>> $$0) {
+      return new wb() {
+         @Nullable
+         @Override
+         public zb<?> b() {
+            return $$0.get();
+         }
+      };
+   }
 
-      return super.b();
+   default void a() {
+   }
+
+   @Nullable
+   default zb<?> b() {
+      return null;
    }
 }

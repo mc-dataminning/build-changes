@@ -1,15 +1,9 @@
-public class dar extends dac {
-   public dar(dac.b $$0) {
-      super($$0);
-   }
+import com.mojang.serialization.MapCodec;
 
-   @Override
-   public boolean a() {
-      return true;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
+public interface dar {
+   static MapCodec<? extends daq> a(jw<MapCodec<? extends daq>> $$0) {
+      jw.a($$0, "by_cost", das.b);
+      jw.a($$0, "by_cost_with_difficulty", dat.b);
+      return jw.a($$0, "single", dau.b);
    }
 }

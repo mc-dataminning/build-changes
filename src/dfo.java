@@ -1,61 +1,35 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dfo extends dlu {
-   public static final MapCodec<dfo> a = b(dfo::new);
-   public static final dsy b = dsu.R;
-
-   @Override
-   public MapCodec<dfo> a() {
-      return a;
-   }
-
-   public dfo(dsd.d $$0) {
+public abstract class dfo extends dff {
+   protected dfo(dsg.d $$0) {
       super($$0);
-      this.k(this.o().a(b, je.c));
-   }
-
-   @Nullable
-   @Override
-   public dpj a(iz $$0, dse $$1) {
-      return new dpo($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dpj> dpk<T> a(dca $$0, dse $$1, dpl<T> $$2) {
-      return !$$0.B ? a($$2, dpl.J, ($$0x, $$1x, $$2x, $$3) -> dxg.c.a($$0x, $$3.gs(), $$3.gt())) : null;
-   }
-
-   @Nullable
-   @Override
-   public dse a(cyc $$0) {
-      return super.a($$0).a(b, $$0.g());
    }
 
    @Override
-   public int a(dse $$0, dbg $$1, iz $$2, je $$3) {
-      return $$3 != $$0.c(b) ? super.a($$0, $$1, $$2, $$3) : 0;
+   protected abstract MapCodec<? extends dfo> a();
+
+   protected boolean b(dsh $$0, dbj $$1, ja $$2) {
+      return $$0.a(avu.af) || $$0.a(dfh.cC);
    }
 
    @Override
-   protected void a(dsf.a<dfb, dse> $$0) {
-      super.a($$0);
-      $$0.a(b);
+   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
+      return !$$0.a($$3, $$4) ? dfh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public dse a(dse $$0, dlo $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   protected boolean a(dsh $$0, dcg $$1, ja $$2) {
+      ja $$3 = $$2.d();
+      return this.b($$1.a_($$3), $$1, $$3);
    }
 
    @Override
-   public dse a(dse $$0, djy $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   protected boolean a_(dsh $$0, dbj $$1, ja $$2) {
+      return $$0.u().c();
    }
 
    @Override
-   public int c() {
-      return 10;
+   protected boolean a(dsh $$0, eoq $$1) {
+      return $$1 == eoq.c && !this.aG ? true : super.a($$0, $$1);
    }
 }

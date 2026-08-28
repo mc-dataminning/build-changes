@@ -1,138 +1,77 @@
-import com.mojang.logging.LogUtils;
-import java.text.DateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.TimeZone;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Consumer;
 
-public class fdk extends gvi {
-   static final Logger a = LogUtils.getLogger();
-   private static final xp b = xp.c("mco.configure.world.subscription.title");
-   private static final xp c = xp.c("mco.configure.world.subscription.start");
-   private static final xp B = xp.c("mco.configure.world.subscription.timeleft");
-   private static final xp C = xp.c("mco.configure.world.subscription.recurring.daysleft");
-   private static final xp D = xp.c("mco.configure.world.subscription.expired");
-   private static final xp E = xp.c("mco.configure.world.subscription.less_than_a_day");
-   private static final xp F = xp.c("mco.configure.world.subscription.unknown");
-   private static final xp G = xp.c("mco.configure.world.subscription.recurring.info");
-   private final fnf H;
-   final fbh I;
-   final fnf J;
-   private xp K = F;
-   private xp L = F;
-   @Nullable
-   private fbu.a M;
+public class fdk extends gvm {
+   private static final wu b = wu.c("mco.reset.world.seed");
+   public static final wu a = wu.c("mco.reset.world.generate");
+   private static final int c = 10;
+   private static final int A = 210;
+   private final fkz B = new fkz(this);
+   private final Consumer<feg> C;
+   private fhv D;
+   private fea E = fea.a;
+   private boolean F = true;
+   private final Set<String> G = new HashSet<>();
+   private final wu H;
 
-   public fdk(fnf $$0, fbh $$1, fnf $$2) {
-      super(fez.a);
-      this.H = $$0;
-      this.I = $$1;
-      this.J = $$2;
+   public fdk(Consumer<feg> $$0, wu $$1) {
+      super(a);
+      this.C = $$0;
+      this.H = $$1;
    }
 
    @Override
-   public void aM_() {
-      this.a(this.I.a);
-      this.c(fhg.a(xp.c("mco.configure.world.subscription.extend"), $$0 -> flw.a(this, axu.a(this.I.b, this.m.X().b()))).a(this.n / 2 - 100, g(6), 200, 20).a());
-      if (this.I.j) {
-         this.c(fhg.a(xp.c("mco.configure.world.delete.button"), $$0 -> {
-            xp $$1 = xp.c("mco.configure.world.delete.question.line1");
-            xp $$2 = xp.c("mco.configure.world.delete.question.line2");
-            this.m.a(new fcw(this::c, fcw.a.a, $$1, $$2, true));
-         }).a(this.n / 2 - 100, g(10), 200, 20).a());
-      } else if (fal.b() && this.I.s != null) {
-         this.c(new fhq(this.n / 2 - 100, g(8), 200, 46, xp.a("mco.snapshot.subscription.info", this.I.s), this.p).a(-6250336));
-      } else {
-         this.c(new fhq(this.n / 2 - 100, g(8), 200, 46, G, this.p).a(-6250336));
-      }
-
-      this.c(fhg.a(xo.k, $$0 -> this.d()).a(this.n / 2 - 100, g(12), 200, 20).a());
+   public void aO_() {
+      this.D = new fhv(this.o, 210, 20, wu.c("mco.reset.world.seed"));
+      this.D.f(32);
+      this.B.a(this.k, this.o);
+      fld $$0 = this.B.c(fld.d()).a(10);
+      $$0.a(fkv.a(this.o, this.D, b));
+      $$0.a(fht.a(fea::a).a(fea.values()).a(this.E).a(0, 0, 210, 20, wu.c("selectWorld.mapType"), ($$0x, $$1x) -> this.E = $$1x));
+      $$0.a(fht.b(this.F).a(0, 0, 210, 20, wu.c("selectWorld.mapFeatures"), ($$0x, $$1x) -> this.F = $$1x));
+      this.a($$0);
+      fld $$1 = this.B.b(fld.e().a(10));
+      $$1.a(fhm.a(this.H, $$0x -> this.C.accept(this.E())).a());
+      $$1.a(fhm.a(wt.k, $$0x -> this.d()).a());
+      this.B.a($$1x -> {
+         fhk var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
    @Override
-   public xp i() {
-      return xo.b(b, c, this.L, B, this.K);
+   protected void aD_() {
+      this.b(this.D);
    }
 
-   private void c(boolean $$0) {
-      if ($$0) {
-         (new Thread("Realms-delete-realm") {
-            @Override
-            public void run() {
-               try {
-                  faq $$0 = faq.a();
-                  $$0.i(fdk.this.I.a);
-               } catch (fcd var2) {
-                  fdk.a.error("Couldn't delete world", var2);
+   private void a(fld $$0) {
+      atf $$1 = ati.c();
+      $$1.a();
+      $$0.a(fhm.a(wu.c("selectWorld.experiments"), $$1x -> this.l.a(new fsd(this, $$1, $$0xx -> {
+            this.G.clear();
+
+            for (atc $$1xx : $$0xx.f()) {
+               if ($$1xx.l() == atg.d) {
+                  this.G.add($$1xx.g());
                }
-
-               fdk.this.m.execute(() -> fdk.this.m.a(fdk.this.J));
             }
-         }).start();
-      }
 
-      this.m.a(this);
+            this.l.a(this);
+         }))).a(210).a());
    }
 
-   private void a(long $$0) {
-      faq $$1 = faq.a();
-
-      try {
-         fbu $$2 = $$1.h($$0);
-         this.K = this.a($$2.b);
-         this.L = b($$2.a);
-         this.M = $$2.c;
-      } catch (fcd var5) {
-         a.error("Couldn't get subscription", var5);
-         this.m.a(new fcu(var5, this.H));
-      }
+   private feg E() {
+      return new feg(this.D.a(), this.E, this.F, this.G);
    }
 
-   private static xp b(long $$0) {
-      Calendar $$1 = new GregorianCalendar(TimeZone.getDefault());
-      $$1.setTimeInMillis($$0);
-      return xp.b(DateFormat.getDateTimeInstance().format($$1.getTime()));
+   @Override
+   protected void c() {
+      this.B.a();
    }
 
    @Override
    public void d() {
-      this.m.a(this.H);
-   }
-
-   @Override
-   public void a(fgt $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      int $$4 = this.n / 2 - 100;
-      $$0.a(this.p, b, this.n / 2, 17, -1);
-      $$0.a(this.p, c, $$4, g(0), -6250336, false);
-      $$0.a(this.p, this.L, $$4, g(1), -1, false);
-      if (this.M == fbu.a.a) {
-         $$0.a(this.p, B, $$4, g(3), -6250336, false);
-      } else if (this.M == fbu.a.b) {
-         $$0.a(this.p, C, $$4, g(3), -6250336, false);
-      }
-
-      $$0.a(this.p, this.K, $$4, g(4), -1, false);
-   }
-
-   private xp a(int $$0) {
-      if ($$0 < 0 && this.I.j) {
-         return D;
-      } else if ($$0 <= 1) {
-         return E;
-      } else {
-         int $$1 = $$0 / 30;
-         int $$2 = $$0 % 30;
-         boolean $$3 = $$1 > 0;
-         boolean $$4 = $$2 > 0;
-         if ($$3 && $$4) {
-            return xp.a("mco.configure.world.subscription.remaining.months.days", $$1, $$2);
-         } else if ($$3) {
-            return xp.a("mco.configure.world.subscription.remaining.months", $$1);
-         } else {
-            return $$4 ? xp.a("mco.configure.world.subscription.remaining.days", $$2) : xp.i();
-         }
-      }
+      this.C.accept(null);
    }
 }

@@ -1,44 +1,36 @@
-import java.time.Instant;
-import javax.annotation.Nullable;
+public class ahe implements zb<agb> {
+   public static final ys<vr, ahe> a = zb.a(ahe::a, ahe::new);
+   private static final int b = 2;
+   private final boolean c;
 
-public record ahe(String b, Instant c, long d, @Nullable yb e, xw.b f) implements zw<agw> {
-   public static final zn<wm, ahe> a = zw.a(ahe::a, ahe::new);
-
-   private ahe(wm $$0) {
-      this($$0.d(256), $$0.t(), $$0.readLong(), $$0.c(yb::a), new xw.b($$0));
+   public ahe(cme $$0) {
+      this.c = $$0.b;
    }
 
-   private void a(wm $$0) {
-      $$0.a(this.b, 256);
-      $$0.a(this.c);
-      $$0.b(this.d);
-      $$0.a(this.e, yb::a);
-      this.f.a($$0);
+   private ahe(vr $$0) {
+      byte $$1 = $$0.readByte();
+      this.c = ($$1 & 2) != 0;
+   }
+
+   private void a(vr $$0) {
+      byte $$1 = 0;
+      if (this.c) {
+         $$1 = (byte)($$1 | 2);
+      }
+
+      $$0.k($$1);
    }
 
    @Override
-   public zy<ahe> a() {
-      return agu.bl;
+   public zd<ahe> a() {
+      return afz.bJ;
    }
 
-   public void a(agw $$0) {
+   public void a(agb $$0) {
       $$0.a(this);
    }
 
-   public Instant e() {
+   public boolean b() {
       return this.c;
-   }
-
-   public long f() {
-      return this.d;
-   }
-
-   @Nullable
-   public yb g() {
-      return this.e;
-   }
-
-   public xw.b h() {
-      return this.f;
    }
 }

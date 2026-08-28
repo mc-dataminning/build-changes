@@ -1,235 +1,56 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 import java.util.function.Consumer;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class za implements xq {
-   public static final Object[] a = new Object[0];
-   private static final Codec<Object> d = ayh.b.validate(za::b);
-   private static final Codec<Object> e = Codec.either(d, xr.a)
-      .xmap(
-         $$0 -> $$0.map($$0x -> $$0x, $$0x -> Objects.requireNonNullElse($$0x.d(), $$0x)), $$0 -> $$0 instanceof xp $$1 ? Either.right($$1) : Either.left($$0)
-      );
-   public static final MapCodec<za> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("translate").forGetter($$0x -> $$0x.h),
-               Codec.STRING.lenientOptionalFieldOf("fallback").forGetter($$0x -> Optional.ofNullable($$0x.i)),
-               e.listOf().optionalFieldOf("with").forGetter($$0x -> a($$0x.j))
-            )
-            .apply($$0, za::a)
-   );
-   public static final xq.a<za> c = new xq.a<>(b, "translatable");
-   private static final xu f = xu.e("%");
-   private static final xu g = xu.e("null");
-   private final String h;
-   @Nullable
-   private final String i;
-   private final Object[] j;
-   @Nullable
-   private un k;
-   private List<xu> l = ImmutableList.of();
-   private static final Pattern m = Pattern.compile("%(?:(\\d+)\\$)?([A-Za-z%]|$)");
+public interface za {
+   int a = 4096;
 
-   private static DataResult<Object> b(@Nullable Object $$0) {
-      return !a($$0) ? DataResult.error(() -> "This value needs to be parsed as component") : DataResult.success($$0);
-   }
-
-   public static boolean a(@Nullable Object $$0) {
-      return $$0 instanceof Number || $$0 instanceof Boolean || $$0 instanceof String;
-   }
-
-   private static Optional<List<Object>> a(Object[] $$0) {
-      return $$0.length == 0 ? Optional.empty() : Optional.of(Arrays.asList($$0));
-   }
-
-   private static Object[] a(Optional<List<Object>> $$0) {
-      return $$0.<Object[]>map($$0x -> $$0x.isEmpty() ? a : $$0x.toArray()).orElse(a);
-   }
-
-   private static za a(String $$0, Optional<String> $$1, Optional<List<Object>> $$2) {
-      return new za($$0, $$1.orElse(null), a($$2));
-   }
-
-   public za(String $$0, @Nullable String $$1, Object[] $$2) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
-   }
-
-   @Override
-   public xq.a<?> a() {
-      return c;
-   }
-
-   private void e() {
-      un $$0 = un.a();
-      if ($$0 != this.k) {
-         this.k = $$0;
-         String $$1 = this.i != null ? $$0.a(this.h, this.i) : $$0.a(this.h);
-
-         try {
-            Builder<xu> $$2 = ImmutableList.builder();
-            this.a($$1, $$2::add);
-            this.l = $$2.build();
-         } catch (zb var4) {
-            this.l = ImmutableList.of(xu.e($$1));
-         }
-      }
-   }
-
-   private void a(String $$0, Consumer<xu> $$1) {
-      Matcher $$2 = m.matcher($$0);
-
-      try {
-         int $$3 = 0;
-         int $$4 = 0;
-
-         while ($$2.find($$4)) {
-            int $$5 = $$2.start();
-            int $$6 = $$2.end();
-            if ($$5 > $$4) {
-               String $$7 = $$0.substring($$4, $$5);
-               if ($$7.indexOf(37) != -1) {
-                  throw new IllegalArgumentException();
-               }
-
-               $$1.accept(xu.e($$7));
-            }
-
-            String $$8 = $$2.group(2);
-            String $$9 = $$0.substring($$5, $$6);
-            if ("%".equals($$8) && "%%".equals($$9)) {
-               $$1.accept(f);
+   static <T extends wa, P extends yz<? super T>> za a(final zd<P> $$0, final Function<Iterable<zb<? super T>>, P> $$1, final yy<? super T> $$2) {
+      return new za() {
+         @Override
+         public void a(zb<?> $$0x, Consumer<zb<?>> $$1x) {
+            if ($$0.a() == $$0) {
+               P $$2 = (P)$$0;
+               $$1.accept($$2);
+               $$2.b().forEach($$1);
+               $$1.accept($$2);
             } else {
-               if (!"s".equals($$8)) {
-                  throw new zb(this, "Unsupported format: '" + $$9 + "'");
+               $$1.accept($$0);
+            }
+         }
+
+         @Nullable
+         @Override
+         public za.a a(zb<?> $$0x) {
+            return $$0 == $$2 ? new za.a() {
+               private final List<zb<? super T>> b = new ArrayList<>();
+
+               @Nullable
+               @Override
+               public zb<?> a(zb<?> $$0x) {
+                  if ($$0 == $$2) {
+                     return $$1.apply(this.b);
+                  } else if (this.b.size() >= 4096) {
+                     throw new IllegalStateException("Too many packets in a bundle");
+                  } else {
+                     this.b.add((zb<? super T>)$$0);
+                     return null;
+                  }
                }
-
-               String $$10 = $$2.group(1);
-               int $$11 = $$10 != null ? Integer.parseInt($$10) - 1 : $$3++;
-               $$1.accept(this.a($$11));
-            }
-
-            $$4 = $$6;
+            } : null;
          }
-
-         if ($$4 < $$0.length()) {
-            String $$12 = $$0.substring($$4);
-            if ($$12.indexOf(37) != -1) {
-               throw new IllegalArgumentException();
-            }
-
-            $$1.accept(xu.e($$12));
-         }
-      } catch (IllegalArgumentException var12) {
-         throw new zb(this, var12);
-      }
+      };
    }
 
-   private xu a(int $$0) {
-      if ($$0 >= 0 && $$0 < this.j.length) {
-         Object $$1 = this.j[$$0];
-         if ($$1 instanceof xp) {
-            return (xp)$$1;
-         } else {
-            return $$1 == null ? g : xu.e($$1.toString());
-         }
-      } else {
-         throw new zb(this, $$0);
-      }
-   }
-
-   @Override
-   public <T> Optional<T> a(xu.b<T> $$0, ym $$1) {
-      this.e();
-
-      for (xu $$2 : this.l) {
-         Optional<T> $$3 = $$2.a($$0, $$1);
-         if ($$3.isPresent()) {
-            return $$3;
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   @Override
-   public <T> Optional<T> a(xu.a<T> $$0) {
-      this.e();
-
-      for (xu $$1 : this.l) {
-         Optional<T> $$2 = $$1.a($$0);
-         if ($$2.isPresent()) {
-            return $$2;
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   @Override
-   public yd a(@Nullable ep $$0, @Nullable bsw $$1, int $$2) throws CommandSyntaxException {
-      Object[] $$3 = new Object[this.j.length];
-
-      for (int $$4 = 0; $$4 < $$3.length; $$4++) {
-         Object $$5 = this.j[$$4];
-         if ($$5 instanceof xp $$6) {
-            $$3[$$4] = xs.a($$0, $$6, $$1, $$2);
-         } else {
-            $$3[$$4] = $$5;
-         }
-      }
-
-      return yd.a(new za(this.h, this.i, $$3));
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof za $$1 && Objects.equals(this.h, $$1.h) && Objects.equals(this.i, $$1.i) && Arrays.equals(this.j, $$1.j)) {
-            return true;
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = Objects.hashCode(this.h);
-      $$0 = 31 * $$0 + Objects.hashCode(this.i);
-      return 31 * $$0 + Arrays.hashCode(this.j);
-   }
-
-   @Override
-   public String toString() {
-      return "translation{key='" + this.h + "'" + (this.i != null ? ", fallback='" + this.i + "'" : "") + ", args=" + Arrays.toString(this.j) + "}";
-   }
-
-   public String b() {
-      return this.h;
-   }
+   void a(zb<?> var1, Consumer<zb<?>> var2);
 
    @Nullable
-   public String c() {
-      return this.i;
-   }
+   za.a a(zb<?> var1);
 
-   public Object[] d() {
-      return this.j;
+   public interface a {
+      @Nullable
+      zb<?> a(zb<?> var1);
    }
 }

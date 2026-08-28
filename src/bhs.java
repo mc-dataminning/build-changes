@@ -1,34 +1,32 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import com.mojang.datafixers.util.Pair;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class bhs extends bfw {
-   public bhs(Schema $$0) {
-      super($$0, false, "TippedArrowPotionToItemFix", bgx.B, "minecraft:arrow");
+public class bhs extends Schema {
+   public bhs(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<Dynamic<T>> $$1 = $$0.get("Potion").result();
-      Optional<Dynamic<T>> $$2 = $$0.get("custom_potion_effects").result();
-      Optional<Dynamic<T>> $$3 = $$0.get("Color").result();
-      return $$1.isEmpty() && $$2.isEmpty() && $$3.isEmpty()
-         ? $$0
-         : $$0.remove("Potion").remove("custom_potion_effects").remove("Color").update("item", $$3x -> {
-            Dynamic<?> $$4 = $$3x.get("tag").orElseEmptyMap();
-            if ($$1.isPresent()) {
-               $$4 = $$4.set("Potion", $$1.get());
-            }
-
-            if ($$2.isPresent()) {
-               $$4 = $$4.set("custom_potion_effects", $$2.get());
-            }
-
-            if ($$3.isPresent()) {
-               $$4 = $$4.set("CustomPotionColor", $$3.get());
-            }
-
-            return $$3x.set("tag", $$4);
-         });
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(false, bgd.J, () -> DSL.constType(bhp.a()));
+      $$0.registerType(
+         false,
+         bgd.b,
+         () -> DSL.optionalFields(
+               new Pair[]{
+                  Pair.of("RootVehicle", DSL.optionalFields("Entity", bgd.A.in($$0))),
+                  Pair.of("Inventory", DSL.list(bgd.t.in($$0))),
+                  Pair.of("EnderItems", DSL.list(bgd.t.in($$0))),
+                  Pair.of("ShoulderEntityLeft", bgd.A.in($$0)),
+                  Pair.of("ShoulderEntityRight", bgd.A.in($$0)),
+                  Pair.of("recipeBook", DSL.optionalFields("recipes", DSL.list(bgd.J.in($$0)), "toBeDisplayed", DSL.list(bgd.J.in($$0))))
+               }
+            )
+      );
+      $$0.registerType(false, bgd.d, () -> DSL.compoundList(DSL.list(bgd.t.in($$0))));
    }
 }

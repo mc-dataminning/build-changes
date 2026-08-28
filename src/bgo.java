@@ -1,28 +1,19 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
 
-public class bgo extends bfv {
-   public bgo(Schema $$0) {
-      super($$0, false, "PlayerHeadBlockProfileFix", bgx.s, "minecraft:skull");
+public abstract class bgo extends bcs {
+   public bgo(String $$0, Schema $$1, boolean $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
+      Pair<String, Dynamic<?>> $$2 = this.a($$0, (Dynamic<?>)$$1.getOrCreate(DSL.remainderFinder()));
+      return Pair.of((String)$$2.getFirst(), $$1.set(DSL.remainderFinder(), (Dynamic)$$2.getSecond()));
    }
 
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<Dynamic<T>> $$1 = $$0.get("SkullOwner").result();
-      Optional<Dynamic<T>> $$2 = $$0.get("ExtraType").result();
-      Optional<Dynamic<T>> $$3 = $$1.or(() -> $$2);
-      if ($$3.isEmpty()) {
-         return $$0;
-      } else {
-         $$0 = $$0.remove("SkullOwner").remove("ExtraType");
-         return $$0.set("profile", bew.a($$3.get()));
-      }
-   }
+   protected abstract Pair<String, Dynamic<?>> a(String var1, Dynamic<?> var2);
 }

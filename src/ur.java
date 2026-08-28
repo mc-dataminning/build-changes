@@ -1,15 +1,48 @@
-import java.util.AbstractList;
+public interface ur {
+   ur.b a();
 
-public abstract class ur<T extends vp> extends AbstractList<T> implements vp {
-   public abstract T d(int var1, T var2);
+   ur.b a(String var1);
 
-   public abstract void c(int var1, T var2);
+   ur.b a(byte var1);
 
-   public abstract T c(int var1);
+   ur.b a(short var1);
 
-   public abstract boolean a(int var1, vp var2);
+   ur.b a(int var1);
 
-   public abstract boolean b(int var1, vp var2);
+   ur.b a(long var1);
 
-   public abstract byte f();
+   ur.b a(float var1);
+
+   ur.b a(double var1);
+
+   ur.b a(byte[] var1);
+
+   ur.b a(int[] var1);
+
+   ur.b a(long[] var1);
+
+   ur.b a(uw<?> var1, int var2);
+
+   ur.a a(uw<?> var1);
+
+   ur.a a(uw<?> var1, String var2);
+
+   ur.a b(uw<?> var1, int var2);
+
+   ur.b b();
+
+   ur.b b(uw<?> var1);
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
+   }
+
+   public static enum b {
+      a,
+      b,
+      c;
+   }
 }

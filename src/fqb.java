@@ -1,47 +1,117 @@
-public class fqb {
-   public static final int a = 12;
-   private static final int f = 3;
-   public static final int b = 3;
-   public static final int c = 3;
-   public static final int d = 3;
-   public static final int e = 3;
-   private static final int g = -267386864;
-   private static final int h = 1347420415;
-   private static final int i = 1344798847;
+public class fqb extends fqf {
+   private static final wu a = wu.c("options.languageAccuracyWarning").a(n.h);
+   private static final int s = 53;
+   private fqb.a u;
+   final gqq v;
 
-   public static void a(fgt $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      int $$6 = $$1 - 3;
-      int $$7 = $$2 - 3;
-      int $$8 = $$3 + 3 + 3;
-      int $$9 = $$4 + 3 + 3;
-      c($$0, $$6, $$7 - 1, $$8, $$5, -267386864);
-      c($$0, $$6, $$7 + $$9, $$8, $$5, -267386864);
-      b($$0, $$6, $$7, $$8, $$9, $$5, -267386864);
-      b($$0, $$6 - 1, $$7, $$9, $$5, -267386864);
-      b($$0, $$6 + $$8, $$7, $$9, $$5, -267386864);
-      a($$0, $$6, $$7 + 1, $$8, $$9, $$5, 1347420415, 1344798847);
+   public fqb(fnd $$0, ffr $$1, gqq $$2) {
+      super($$0, $$1, wu.c("options.language.title"));
+      this.v = $$2;
+      this.r.a(53);
    }
 
-   private static void a(fgt $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
-      a($$0, $$1, $$2, $$4 - 2, $$5, $$6, $$7);
-      a($$0, $$1 + $$3 - 1, $$2, $$4 - 2, $$5, $$6, $$7);
-      c($$0, $$1, $$2 - 1, $$3, $$5, $$6);
-      c($$0, $$1, $$2 - 1 + $$4 - 1, $$3, $$5, $$7);
+   @Override
+   protected void aP_() {
+      this.u = this.r.c(new fqb.a(this.l));
    }
 
-   private static void b(fgt $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      $$0.a($$1, $$2, $$1 + 1, $$2 + $$3, $$4, $$5);
+   @Override
+   protected void m() {
    }
 
-   private static void a(fgt $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      $$0.a($$1, $$2, $$1 + 1, $$2 + $$3, $$4, $$5, $$6);
+   @Override
+   protected void E() {
+      fld $$0 = this.r.b(fld.d()).a(8);
+      $$0.c().b();
+      $$0.a(new fit(a, this.o));
+      fld $$1 = $$0.a(fld.e().a(8));
+      $$1.a(fhm.a(wu.c("options.font"), $$0x -> this.l.a(new fqa(this, this.c))).a());
+      $$1.a(fhm.a(wt.d, $$0x -> this.J()).a());
    }
 
-   private static void c(fgt $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      $$0.a($$1, $$2, $$1 + $$3, $$2 + 1, $$4, $$5);
+   @Override
+   protected void c() {
+      super.c();
+      this.u.a(this.m, this.r);
    }
 
-   private static void b(fgt $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      $$0.a($$1, $$2, $$1 + $$3, $$2 + $$4, $$5, $$6);
+   void J() {
+      fqb.a.a $$0 = this.u.h();
+      if ($$0 != null && !$$0.b.equals(this.v.a())) {
+         this.v.a($$0.b);
+         this.c.ac = $$0.b;
+         this.l.l();
+      }
+
+      this.l.a(this.b);
+   }
+
+   class a extends fii<fqb.a.a> {
+      public a(final ffn $$0) {
+         super($$0, fqb.this.m, fqb.this.n - 33 - 53, 33, 18);
+         String $$1 = fqb.this.v.a();
+         fqb.this.v.b().forEach(($$1x, $$2) -> {
+            fqb.a.a $$3 = new fqb.a.a($$1x, $$2);
+            this.b($$3);
+            if ($$1.equals($$1x)) {
+               this.a($$3);
+            }
+         });
+         if (this.h() != null) {
+            this.e(this.h());
+         }
+      }
+
+      @Override
+      public int b() {
+         return super.b() + 50;
+      }
+
+      public class a extends fii.a<fqb.a.a> {
+         final String b;
+         private final wu c;
+         private long d;
+
+         public a(final String $$1, final gqp $$2) {
+            this.b = $$1;
+            this.c = $$2.a();
+         }
+
+         @Override
+         public void a(fgz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.a(fqb.this.o, this.c, a.this.g / 2, $$2 + 1, -1);
+         }
+
+         @Override
+         public boolean a(int $$0, int $$1, int $$2) {
+            if (fln.a($$0)) {
+               this.b();
+               fqb.this.J();
+               return true;
+            } else {
+               return super.a($$0, $$1, $$2);
+            }
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            this.b();
+            if (ac.c() - this.d < 250L) {
+               fqb.this.J();
+            }
+
+            this.d = ac.c();
+            return super.a($$0, $$1, $$2);
+         }
+
+         private void b() {
+            a.this.a(this);
+         }
+
+         @Override
+         public wu a() {
+            return wu.a("narrator.select", this.c);
+         }
+      }
    }
 }

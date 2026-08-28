@@ -1,38 +1,13 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
 
 public class any {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xp.c("commands.op.failed"));
-
-   public static void a(CommandDispatcher<ep> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("op").requires($$0x -> $$0x.c(3))).then(eq.a("targets", fe.a()).suggests(($$0x, $$1) -> {
-            avd $$2 = ((ep)$$0x.getSource()).l().ah();
-            return eu.b($$2.t().stream().filter($$1x -> !$$2.f($$1x.gb())).map($$0xx -> $$0xx.gb().getName()), $$1);
-         }).executes($$0x -> a((ep)$$0x.getSource(), fe.a($$0x, "targets"))))
-      );
-   }
-
-   private static int a(ep $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      avd $$2 = $$0.l().ah();
-      int $$3 = 0;
-
-      for (GameProfile $$4 : $$1) {
-         if (!$$2.f($$4)) {
-            $$2.a($$4);
-            $$3++;
-            $$0.a(() -> xp.a("commands.op.success", $$1.iterator().next().getName()), true);
-         }
-      }
-
-      if ($$3 == 0) {
-         throw a.create();
-      } else {
-         return $$3;
-      }
+   public static void a(CommandDispatcher<eq> $$0, boolean $$1) {
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("seed").requires($$1x -> !$$1 || $$1x.c(2))).executes($$0x -> {
+         long $$1x = ((eq)$$0x.getSource()).e().C();
+         wu $$2 = wx.a(String.valueOf($$1x));
+         ((eq)$$0x.getSource()).a(() -> wu.a("commands.seed.success", $$2), false);
+         return (int)$$1x;
+      }));
    }
 }

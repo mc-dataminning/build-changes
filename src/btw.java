@@ -1,7 +1,6 @@
-public enum btw {
-   a,
-   b,
-   c,
-   d,
-   e;
+import javax.annotation.Nullable;
+
+public interface btw {
+   @Nullable
+   bsy p();
 }

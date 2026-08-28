@@ -1,18 +1,47 @@
-public class cvg extends csp {
-   public cvg(dfb $$0, cum.a $$1) {
-      super($$0, $$1);
+import javax.annotation.Nullable;
+
+public class cvg extends cry implements csr {
+   private final ave a;
+
+   public cvg(dff $$0, ave $$1, ctv.a $$2) {
+      super($$0, $$2);
+      this.a = $$1;
    }
 
    @Override
-   public bqw a(cye $$0) {
-      return bqw.e;
+   public bqd a(cxm $$0) {
+      bqd $$1 = super.a($$0);
+      cmh $$2 = $$0.o();
+      if ($$1.a() && $$2 != null && !$$2.f()) {
+         bqc $$3 = $$0.p();
+         $$2.a($$3, cud.qy.w());
+      }
+
+      return $$1;
    }
 
    @Override
-   public bqx<cur> a(dca $$0, cmz $$1, bqv $$2) {
-      evp $$3 = a($$0, $$1, dbj.b.b);
-      evp $$4 = $$3.a($$3.a().c());
-      bqw $$5 = super.a(new cye($$1, $$2, $$4));
-      return new bqx<>($$5, $$1.b($$2));
+   public String a() {
+      return this.t();
+   }
+
+   @Override
+   protected ave a(dsh $$0) {
+      return this.a;
+   }
+
+   @Override
+   public boolean a(@Nullable cmh $$0, dcd $$1, ja $$2, @Nullable evv $$3) {
+      if ($$1.k($$2) && $$1.u($$2)) {
+         if (!$$1.B) {
+            $$1.a($$2, this.d().o(), 3);
+         }
+
+         $$1.a($$0, dxa.z, $$2);
+         $$1.a($$0, $$2, this.a, avg.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

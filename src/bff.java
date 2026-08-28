@@ -1,28 +1,30 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
 public class bff extends DataFix {
    public bff(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update(
-         "pages", $$1 -> (Dynamic)DataFixUtils.orElse($$1.asStreamOpt().map($$0xx -> $$0xx.map(baf::b)).map($$0::createList).result(), $$0.emptyList())
-      );
+   private static String a(String $$0) {
+      return $$0.equals("health") ? "hearts" : "integer";
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgx.t);
-      OpticFinder<?> $$1 = $$0.findField("tag");
-      return this.fixTypeEverywhereTyped(
-         "ItemWrittenBookPagesStrictJsonFix", $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a))
-      );
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bgd.H);
+      return this.fixTypeEverywhereTyped("ObjectiveRenderTypeFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> {
+            Optional<String> $$1 = $$0xx.get("RenderType").asString().result();
+            if ($$1.isEmpty()) {
+               String $$2 = $$0xx.get("CriteriaName").asString("");
+               String $$3 = a($$2);
+               return $$0xx.set("RenderType", $$0xx.createString($$3));
+            } else {
+               return $$0xx;
+            }
+         }));
    }
 }

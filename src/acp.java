@@ -1,44 +1,20 @@
-import java.util.function.BiFunction;
+public record acp(xg.a b) implements zb<abn> {
+   public static final ys<vr, acp> a = zb.a(acp::a, acp::new);
 
-public class acp implements zw<aci> {
-   public static final zn<xa, acp> a = zn.a(iz.b, acp::b, zl.a(lq.h), acp::e, zl.p, acp::f, acp::new);
-   private final iz b;
-   private final dpl<?> c;
-   private final us d;
-
-   public static acp a(dpj $$0, BiFunction<dpj, jw, us> $$1) {
-      jw $$2 = $$0.i().H_();
-      return new acp($$0.ay_(), $$0.r(), $$1.apply($$0, $$2));
+   private acp(vr $$0) {
+      this(xg.a.a($$0));
    }
 
-   public static acp a(dpj $$0) {
-      return a($$0, dpj::a);
-   }
-
-   private acp(iz $$0, dpl<?> $$1, us $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   private void a(vr $$0) {
+      xg.a.a($$0, this.b);
    }
 
    @Override
-   public zy<acp> a() {
-      return agu.i;
+   public zd<acp> a() {
+      return afz.B;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
-   }
-
-   public iz b() {
-      return this.b;
-   }
-
-   public dpl<?> e() {
-      return this.c;
-   }
-
-   public us f() {
-      return this.d;
    }
 }

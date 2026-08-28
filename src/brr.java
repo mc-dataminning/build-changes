@@ -1,51 +1,20 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record brr(String b, bro c, float d, brn e, brt f) {
-   public static final Codec<brr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("message_id").forGetter(brr::a),
-               bro.d.fieldOf("scaling").forGetter(brr::b),
-               Codec.FLOAT.fieldOf("exhaustion").forGetter(brr::c),
-               brn.g.optionalFieldOf("effects", brn.a).forGetter(brr::d),
-               brt.d.optionalFieldOf("death_message_type", brt.a).forGetter(brr::e)
-            )
-            .apply($$0, brr::new)
-   );
-
-   public brr(String $$0, bro $$1, float $$2) {
-      this($$0, $$1, $$2, brn.a, brt.a);
+class brr extends brj {
+   protected brr(brk $$0, int $$1) {
+      super($$0, $$1);
    }
 
-   public brr(String $$0, bro $$1, float $$2, brn $$3) {
-      this($$0, $$1, $$2, $$3, brt.a);
+   @Override
+   public boolean a(bsy $$0, int $$1) {
+      if ($$0.ew() < $$0.eN()) {
+         $$0.c(1.0F);
+      }
+
+      return true;
    }
 
-   public brr(String $$0, float $$1, brn $$2) {
-      this($$0, bro.b, $$1, $$2);
-   }
-
-   public brr(String $$0, float $$1) {
-      this($$0, bro.b, $$1);
-   }
-
-   public String a() {
-      return this.b;
-   }
-
-   public bro b() {
-      return this.c;
-   }
-
-   public float c() {
-      return this.d;
-   }
-
-   public brn d() {
-      return this.e;
-   }
-
-   public brt e() {
-      return this.f;
+   @Override
+   public boolean a(int $$0, int $$1) {
+      int $$2 = 50 >> $$1;
+      return $$2 > 0 ? $$0 % $$2 == 0 : true;
    }
 }

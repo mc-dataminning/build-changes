@@ -1,36 +1,39 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import javax.annotation.Nullable;
 
-public class aet implements zw<aci> {
-   public static final zn<wm, aet> a = zw.a(aet::a, aet::new);
-   private final IntList b;
+public class aet implements zb<abn> {
+   public static final ys<vr, aet> a = zb.a(aet::a, aet::new);
+   private final int b;
+   private final int c;
 
-   public aet(IntList $$0) {
-      this.b = new IntArrayList($$0);
+   public aet(bsd $$0, @Nullable bsd $$1) {
+      this.b = $$0.al();
+      this.c = $$1 != null ? $$1.al() : 0;
    }
 
-   public aet(int... $$0) {
-      this.b = new IntArrayList($$0);
+   private aet(vr $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
    }
 
-   private aet(wm $$0) {
-      this.b = $$0.a();
-   }
-
-   private void a(wm $$0) {
-      $$0.a(this.b);
+   private void a(vr $$0) {
+      $$0.p(this.b);
+      $$0.p(this.c);
    }
 
    @Override
-   public zy<aet> a() {
-      return agu.aj;
+   public zd<aet> a() {
+      return afz.aD;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
    }
 
-   public IntList b() {
+   public int b() {
       return this.b;
+   }
+
+   public int e() {
+      return this.c;
    }
 }

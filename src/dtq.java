@@ -1,21 +1,23 @@
-public enum dtq implements azu {
-   a("none"),
-   b("low"),
-   c("tall");
+public enum dtq implements ayz {
+   a("straight"),
+   b("inner_left"),
+   c("inner_right"),
+   d("outer_left"),
+   e("outer_right");
 
-   private final String d;
+   private final String f;
 
    private dtq(final String $$0) {
-      this.d = $$0;
+      this.f = $$0;
    }
 
    @Override
    public String toString() {
-      return this.c();
+      return this.f;
    }
 
    @Override
    public String c() {
-      return this.d;
+      return this.f;
    }
 }

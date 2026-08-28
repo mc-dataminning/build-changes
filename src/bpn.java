@@ -1,31 +1,56 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class bpn implements ThreadFactory {
-   private static final Logger a = LogUtils.getLogger();
-   private final ThreadGroup b;
-   private final AtomicInteger c = new AtomicInteger(1);
-   private final String d;
+public class bpn extends bpg {
+   public static final MapCodec<bpn> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.FLOAT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("max_exclusive").forGetter($$0x -> $$0x.d))
+               .apply($$0, bpn::new)
+      )
+      .validate(
+         $$0 -> $$0.d <= $$0.b
+               ? DataResult.error(() -> "Max must be larger than min, min_inclusive: " + $$0.b + ", max_exclusive: " + $$0.d)
+               : DataResult.success($$0)
+      );
+   private final float b;
+   private final float d;
 
-   public bpn(String $$0) {
-      SecurityManager $$1 = System.getSecurityManager();
-      this.b = $$1 != null ? $$1.getThreadGroup() : Thread.currentThread().getThreadGroup();
-      this.d = $$0 + "-";
+   private bpn(float $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
+   }
+
+   public static bpn b(float $$0, float $$1) {
+      if ($$1 <= $$0) {
+         throw new IllegalArgumentException("Max must exceed min");
+      } else {
+         return new bpn($$0, $$1);
+      }
    }
 
    @Override
-   public Thread newThread(Runnable $$0) {
-      Thread $$1 = new Thread(this.b, $$0, this.d + this.c.getAndIncrement(), 0L);
-      $$1.setUncaughtExceptionHandler(($$1x, $$2) -> {
-         a.error("Caught exception in thread {} from {}", $$1x, $$0);
-         a.error("", $$2);
-      });
-      if ($$1.getPriority() != 5) {
-         $$1.setPriority(5);
-      }
+   public float a(aym $$0) {
+      return aye.b($$0, this.b, this.d);
+   }
 
-      return $$1;
+   @Override
+   public float a() {
+      return this.b;
+   }
+
+   @Override
+   public float b() {
+      return this.d;
+   }
+
+   @Override
+   public bph<?> c() {
+      return bph.b;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.b + "-" + this.d + "]";
    }
 }

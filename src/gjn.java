@@ -1,115 +1,93 @@
-public class gjn extends gkf<ckb, fuj> {
-   private static final alf a = new alf("textures/entity/guardian.png");
-   private static final alf i = new alf("textures/entity/guardian_beam.png");
-   private static final gdy j = gdy.e(i);
+public class gjn extends gjf<cmv> {
+   private static final akk a = new akk("textures/entity/fishing_hook.png");
+   private static final gef f = gef.d(a);
+   private static final double g = 960.0;
 
-   public gjn(giz.a $$0) {
-      this($$0, 0.5F, fxb.am);
+   public gjn(gjg.a $$0) {
+      super($$0);
    }
 
-   protected gjn(giz.a $$0, float $$1, fxa $$2) {
-      super($$0, new fuj($$0.a($$2)), $$1);
-   }
-
-   public boolean a(ckb $$0, ggu $$1, double $$2, double $$3, double $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4)) {
-         return true;
-      } else {
-         if ($$0.gs()) {
-            btr $$5 = $$0.gt();
-            if ($$5 != null) {
-               evt $$6 = this.a($$5, (double)$$5.dk() * 0.5, 1.0F);
-               evt $$7 = this.a($$0, (double)$$0.cL(), 1.0F);
-               return $$1.a(new evo($$7.c, $$7.d, $$7.e, $$6.c, $$6.d, $$6.e));
-            }
-         }
-
-         return false;
-      }
-   }
-
-   private evt a(btr $$0, double $$1, float $$2) {
-      double $$3 = ayz.d((double)$$2, $$0.ad, $$0.du());
-      double $$4 = ayz.d((double)$$2, $$0.ae, $$0.dw()) + $$1;
-      double $$5 = ayz.d((double)$$2, $$0.af, $$0.dA());
-      return new evt($$3, $$4, $$5);
-   }
-
-   public void a(ckb $$0, float $$1, float $$2, faa $$3, gdq $$4, int $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      btr $$6 = $$0.gt();
+   public void a(cmv $$0, float $$1, float $$2, fag $$3, gdx $$4, int $$5) {
+      cmh $$6 = $$0.u();
       if ($$6 != null) {
-         float $$7 = $$0.I($$2);
-         float $$8 = $$0.gu() + $$2;
-         float $$9 = $$8 * 0.5F % 1.0F;
-         float $$10 = $$0.cL();
          $$3.a();
-         $$3.a(0.0F, $$10, 0.0F);
-         evt $$11 = this.a($$6, (double)$$6.dk() * 0.5, $$2);
-         evt $$12 = this.a($$0, (double)$$10, $$2);
-         evt $$13 = $$11.d($$12);
-         float $$14 = (float)($$13.f() + 1.0);
-         $$13 = $$13.d();
-         float $$15 = (float)Math.acos($$13.d);
-         float $$16 = (float)Math.atan2($$13.e, $$13.c);
-         $$3.a(a.d.rotationDegrees(((float) (Math.PI / 2) - $$16) * (180.0F / (float)Math.PI)));
-         $$3.a(a.b.rotationDegrees($$15 * (180.0F / (float)Math.PI)));
-         int $$17 = 1;
-         float $$18 = $$8 * 0.05F * -1.5F;
-         float $$19 = $$7 * $$7;
-         int $$20 = 64 + (int)($$19 * 191.0F);
-         int $$21 = 32 + (int)($$19 * 191.0F);
-         int $$22 = 128 - (int)($$19 * 64.0F);
-         float $$23 = 0.2F;
-         float $$24 = 0.282F;
-         float $$25 = ayz.b($$18 + (float) (Math.PI * 3.0 / 4.0)) * 0.282F;
-         float $$26 = ayz.a($$18 + (float) (Math.PI * 3.0 / 4.0)) * 0.282F;
-         float $$27 = ayz.b($$18 + (float) (Math.PI / 4)) * 0.282F;
-         float $$28 = ayz.a($$18 + (float) (Math.PI / 4)) * 0.282F;
-         float $$29 = ayz.b($$18 + ((float) Math.PI * 5.0F / 4.0F)) * 0.282F;
-         float $$30 = ayz.a($$18 + ((float) Math.PI * 5.0F / 4.0F)) * 0.282F;
-         float $$31 = ayz.b($$18 + ((float) Math.PI * 7.0F / 4.0F)) * 0.282F;
-         float $$32 = ayz.a($$18 + ((float) Math.PI * 7.0F / 4.0F)) * 0.282F;
-         float $$33 = ayz.b($$18 + (float) Math.PI) * 0.2F;
-         float $$34 = ayz.a($$18 + (float) Math.PI) * 0.2F;
-         float $$35 = ayz.b($$18 + 0.0F) * 0.2F;
-         float $$36 = ayz.a($$18 + 0.0F) * 0.2F;
-         float $$37 = ayz.b($$18 + (float) (Math.PI / 2)) * 0.2F;
-         float $$38 = ayz.a($$18 + (float) (Math.PI / 2)) * 0.2F;
-         float $$39 = ayz.b($$18 + (float) (Math.PI * 3.0 / 2.0)) * 0.2F;
-         float $$40 = ayz.a($$18 + (float) (Math.PI * 3.0 / 2.0)) * 0.2F;
-         float $$42 = 0.0F;
-         float $$43 = 0.4999F;
-         float $$44 = -1.0F + $$9;
-         float $$45 = $$14 * 2.5F + $$44;
-         fae $$46 = $$4.getBuffer(j);
-         faa.a $$47 = $$3.c();
-         a($$46, $$47, $$33, $$14, $$34, $$20, $$21, $$22, 0.4999F, $$45);
-         a($$46, $$47, $$33, 0.0F, $$34, $$20, $$21, $$22, 0.4999F, $$44);
-         a($$46, $$47, $$35, 0.0F, $$36, $$20, $$21, $$22, 0.0F, $$44);
-         a($$46, $$47, $$35, $$14, $$36, $$20, $$21, $$22, 0.0F, $$45);
-         a($$46, $$47, $$37, $$14, $$38, $$20, $$21, $$22, 0.4999F, $$45);
-         a($$46, $$47, $$37, 0.0F, $$38, $$20, $$21, $$22, 0.4999F, $$44);
-         a($$46, $$47, $$39, 0.0F, $$40, $$20, $$21, $$22, 0.0F, $$44);
-         a($$46, $$47, $$39, $$14, $$40, $$20, $$21, $$22, 0.0F, $$45);
-         float $$48 = 0.0F;
-         if ($$0.ai % 2 == 0) {
-            $$48 = 0.5F;
+         $$3.a();
+         $$3.b(0.5F, 0.5F, 0.5F);
+         $$3.a(this.c.b());
+         $$3.a(a.d.rotationDegrees(180.0F));
+         fag.a $$7 = $$3.c();
+         fak $$8 = $$4.getBuffer(f);
+         a($$8, $$7, $$5, 0.0F, 0, 0, 1);
+         a($$8, $$7, $$5, 1.0F, 0, 1, 1);
+         a($$8, $$7, $$5, 1.0F, 1, 1, 0);
+         a($$8, $$7, $$5, 0.0F, 1, 0, 0);
+         $$3.b();
+         float $$9 = $$6.A($$2);
+         float $$10 = aye.a(aye.c($$9) * (float) Math.PI);
+         evz $$11 = this.a($$6, $$10, $$2);
+         evz $$12 = $$0.m($$2).b(0.0, 0.25, 0.0);
+         float $$13 = (float)($$11.c - $$12.c);
+         float $$14 = (float)($$11.d - $$12.d);
+         float $$15 = (float)($$11.e - $$12.e);
+         fak $$16 = $$4.getBuffer(gef.z());
+         fag.a $$17 = $$3.c();
+         int $$18 = 16;
+
+         for (int $$19 = 0; $$19 <= 16; $$19++) {
+            a($$13, $$14, $$15, $$16, $$17, a($$19, 16), a($$19 + 1, 16));
          }
 
-         a($$46, $$47, $$25, $$14, $$26, $$20, $$21, $$22, 0.5F, $$48 + 0.5F);
-         a($$46, $$47, $$27, $$14, $$28, $$20, $$21, $$22, 1.0F, $$48 + 0.5F);
-         a($$46, $$47, $$31, $$14, $$32, $$20, $$21, $$22, 1.0F, $$48);
-         a($$46, $$47, $$29, $$14, $$30, $$20, $$21, $$22, 0.5F, $$48);
          $$3.b();
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
-   private static void a(fae $$0, faa.a $$1, float $$2, float $$3, float $$4, int $$5, int $$6, int $$7, float $$8, float $$9) {
-      $$0.a($$1, $$2, $$3, $$4).a($$5, $$6, $$7, 255).a($$8, $$9).c(gos.d).b(15728880).b($$1, 0.0F, 1.0F, 0.0F).e();
+   private evz a(cmh $$0, float $$1, float $$2) {
+      int $$3 = $$0.fq() == bss.b ? 1 : -1;
+      cua $$4 = $$0.eT();
+      if (!$$4.a(cud.qV)) {
+         $$3 = -$$3;
+      }
+
+      if (this.c.d.aA().a() && $$0 == ffn.Q().s) {
+         double $$12 = 960.0 / (double)this.c.d.ah().c().intValue();
+         evz $$13 = this.c.b.j().a((float)$$3 * 0.525F, -0.1F).a($$12).b($$1 * 0.5F).a(-$$1 * 0.7F);
+         return $$0.k($$2).e($$13);
+      } else {
+         float $$5 = aye.i($$2, $$0.aZ, $$0.aY) * (float) (Math.PI / 180.0);
+         double $$6 = (double)aye.a($$5);
+         double $$7 = (double)aye.b($$5);
+         float $$8 = $$0.eb();
+         double $$9 = (double)$$3 * 0.35 * (double)$$8;
+         double $$10 = 0.8 * (double)$$8;
+         float $$11 = $$0.ca() ? -0.1875F : 0.0F;
+         return $$0.k($$2).b(-$$7 * $$9 - $$6 * $$10, (double)$$11 - 0.45 * (double)$$8, -$$6 * $$9 + $$7 * $$10);
+      }
    }
 
-   public alf a(ckb $$0) {
+   private static float a(int $$0, int $$1) {
+      return (float)$$0 / (float)$$1;
+   }
+
+   private static void a(fak $$0, fag.a $$1, int $$2, float $$3, int $$4, int $$5, int $$6) {
+      $$0.a($$1, $$3 - 0.5F, (float)$$4 - 0.5F, 0.0F).a(255, 255, 255, 255).a((float)$$5, (float)$$6).c(goz.d).b($$2).b($$1, 0.0F, 1.0F, 0.0F).e();
+   }
+
+   private static void a(float $$0, float $$1, float $$2, fak $$3, fag.a $$4, float $$5, float $$6) {
+      float $$7 = $$0 * $$5;
+      float $$8 = $$1 * ($$5 * $$5 + $$5) * 0.5F + 0.25F;
+      float $$9 = $$2 * $$5;
+      float $$10 = $$0 * $$6 - $$7;
+      float $$11 = $$1 * ($$6 * $$6 + $$6) * 0.5F + 0.25F - $$8;
+      float $$12 = $$2 * $$6 - $$9;
+      float $$13 = aye.c($$10 * $$10 + $$11 * $$11 + $$12 * $$12);
+      $$10 /= $$13;
+      $$11 /= $$13;
+      $$12 /= $$13;
+      $$3.a($$4, $$7, $$8, $$9).a(0, 0, 0, 255).b($$4, $$10, $$11, $$12).e();
+   }
+
+   public akk a(cmv $$0) {
       return a;
    }
 }

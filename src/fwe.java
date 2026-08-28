@@ -1,49 +1,39 @@
-import java.util.Arrays;
+public class fwe extends fwf {
+   private final fxi b;
+   protected final fxi a;
 
-public class fwe<T extends bsw> extends ful<T> {
-   private final fxc[] a = new fxc[8];
-   private final fxc b;
-
-   public fwe(fxc $$0) {
+   public fwe(fxi $$0) {
       this.b = $$0;
-      Arrays.setAll(this.a, $$1 -> $$0.b(a($$1)));
+      this.a = $$0.b("head");
    }
 
-   private static String a(int $$0) {
-      return "tentacle" + $$0;
+   public static fxq a() {
+      fxq $$0 = new fxq();
+      fxr $$1 = $$0.a();
+      $$1.a("head", fxn.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fxk.a);
+      return $$0;
    }
 
-   public static fxi b() {
-      fxk $$0 = new fxk();
-      fxl $$1 = $$0.a();
-      fxg $$2 = new fxg(0.02F);
-      int $$3 = -16;
-      $$1.a("body", fxh.c().a(0, 0).a(-6.0F, -8.0F, -6.0F, 12.0F, 16.0F, 12.0F, $$2), fxe.a(0.0F, 8.0F, 0.0F));
-      int $$4 = 8;
-      fxh $$5 = fxh.c().a(48, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 18.0F, 2.0F);
+   public static fxo b() {
+      fxq $$0 = a();
+      fxr $$1 = $$0.a();
+      $$1.a("head").a("hat", fxn.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fxm(0.25F)), fxk.a);
+      return fxo.a($$0, 64, 64);
+   }
 
-      for (int $$6 = 0; $$6 < 8; $$6++) {
-         double $$7 = (double)$$6 * Math.PI * 2.0 / 8.0;
-         float $$8 = (float)Math.cos($$7) * 5.0F;
-         float $$9 = 15.0F;
-         float $$10 = (float)Math.sin($$7) * 5.0F;
-         $$7 = (double)$$6 * Math.PI * -2.0 / 8.0 + (Math.PI / 2);
-         float $$11 = (float)$$7;
-         $$1.a(a($$6), $$5, fxe.a($$8, 15.0F, $$10, 0.0F, $$11, 0.0F));
-      }
-
-      return fxi.a($$0, 64, 32);
+   public static fxo c() {
+      fxq $$0 = a();
+      return fxo.a($$0, 64, 32);
    }
 
    @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      for (fxc $$6 : this.a) {
-         $$6.e = $$3;
-      }
+   public void a(float $$0, float $$1, float $$2) {
+      this.a.f = $$1 * (float) (Math.PI / 180.0);
+      this.a.e = $$2 * (float) (Math.PI / 180.0);
    }
 
    @Override
-   public fxc a() {
-      return this.b;
+   public void a(fag $$0, fak $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 }

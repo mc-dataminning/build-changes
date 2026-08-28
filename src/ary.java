@@ -1,24 +1,26 @@
-import io.netty.buffer.ByteBuf;
-import java.nio.charset.StandardCharsets;
+import java.util.Map;
 
 public class ary {
-   public static final int a = 250;
-   public static final String b = "MC|PingHost";
-   public static final int c = 254;
-   public static final int d = 1;
-   public static final int e = 255;
-   public static final int f = 127;
+   private static final ary a = new ary(Map.of());
+   private final Map<ast<?>, ?> b;
 
-   public static void a(ByteBuf $$0, String $$1) {
-      $$0.writeShort($$1.length());
-      $$0.writeCharSequence($$1, StandardCharsets.UTF_16BE);
+   private ary(Map<ast<?>, ?> $$0) {
+      this.b = $$0;
    }
 
-   public static String a(ByteBuf $$0) {
-      int $$1 = $$0.readShort();
-      int $$2 = $$1 * 2;
-      String $$3 = $$0.toString($$0.readerIndex(), $$2, StandardCharsets.UTF_16BE);
-      $$0.skipBytes($$2);
-      return $$3;
+   public <T> T a(ast<T> $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   public static ary a() {
+      return a;
+   }
+
+   public static <T> ary a(ast<T> $$0, T $$1) {
+      return new ary(Map.of($$0, $$1));
+   }
+
+   public static <T1, T2> ary a(ast<T1> $$0, T1 $$1, ast<T2> $$2, T2 $$3) {
+      return new ary(Map.of($$0, $$1, $$2, (T1)$$3));
    }
 }

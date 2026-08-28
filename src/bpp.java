@@ -1,151 +1,49 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2BooleanFunction;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.Executor;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.slf4j.Logger;
 
-public class bpp<T> implements bou, bpo<T>, AutoCloseable, Runnable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 1;
-   private static final int c = 2;
-   private final AtomicInteger d = new AtomicInteger(0);
-   private final bpr<? super T, ? extends Runnable> e;
-   private final Executor f;
-   private final String g;
+public class bpp extends bpi {
+   public static final MapCodec<bpp> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(bon.b(bpi.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, bpp::new)
+   );
+   private final bon<bpi> b;
+   private final int f;
+   private final int g;
 
-   public static bpp<Runnable> a(Executor $$0, String $$1) {
-      return new bpp<>(new bpr.c<>(new ConcurrentLinkedQueue<>()), $$0, $$1);
-   }
+   public bpp(bon<bpi> $$0) {
+      this.b = $$0;
+      List<bop.b<bpi>> $$1 = $$0.e();
+      int $$2 = Integer.MAX_VALUE;
+      int $$3 = Integer.MIN_VALUE;
 
-   public bpp(bpr<? super T, ? extends Runnable> $$0, Executor $$1, String $$2) {
-      this.f = $$1;
-      this.e = $$0;
-      this.g = $$2;
-      bos.a.a(this);
-   }
+      for (bop.b<bpi> $$4 : $$1) {
+         int $$5 = $$4.b().a();
+         int $$6 = $$4.b().b();
+         $$2 = Math.min($$2, $$5);
+         $$3 = Math.max($$3, $$6);
+      }
 
-   private boolean d() {
-      int $$0;
-      do {
-         $$0 = this.d.get();
-         if (($$0 & 3) != 0) {
-            return false;
-         }
-      } while (!this.d.compareAndSet($$0, $$0 | 2));
-
-      return true;
-   }
-
-   private void e() {
-      int $$0;
-      do {
-         $$0 = this.d.get();
-      } while (!this.d.compareAndSet($$0, $$0 & -3));
-   }
-
-   private boolean f() {
-      return (this.d.get() & 1) != 0 ? false : !this.e.b();
+      this.f = $$2;
+      this.g = $$3;
    }
 
    @Override
-   public void close() {
-      int $$0;
-      do {
-         $$0 = this.d.get();
-      } while (!this.d.compareAndSet($$0, $$0 | 1));
-   }
-
-   private boolean g() {
-      return (this.d.get() & 2) != 0;
-   }
-
-   private boolean h() {
-      if (!this.g()) {
-         return false;
-      } else {
-         Runnable $$0 = this.e.a();
-         if ($$0 == null) {
-            return false;
-         } else {
-            ac.a(this.g, $$0).run();
-            return true;
-         }
-      }
+   public int a(aym $$0) {
+      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0);
    }
 
    @Override
-   public void run() {
-      try {
-         this.a($$0 -> $$0 == 0);
-      } finally {
-         this.e();
-         this.i();
-      }
-   }
-
-   public void a() {
-      try {
-         this.a($$0 -> true);
-      } finally {
-         this.e();
-         this.i();
-      }
+   public int a() {
+      return this.f;
    }
 
    @Override
-   public void a(T $$0) {
-      this.e.a($$0);
-      this.i();
-   }
-
-   private void i() {
-      if (this.f() && this.d()) {
-         try {
-            this.f.execute(this);
-         } catch (RejectedExecutionException var4) {
-            try {
-               this.f.execute(this);
-            } catch (RejectedExecutionException var3) {
-               a.error("Cound not schedule mailbox", var3);
-            }
-         }
-      }
-   }
-
-   private int a(Int2BooleanFunction $$0) {
-      int $$1 = 0;
-
-      while ($$0.get($$1) && this.h()) {
-         $$1++;
-      }
-
-      return $$1;
-   }
-
    public int b() {
-      return this.e.c();
-   }
-
-   public boolean c() {
-      return this.g() && !this.e.b();
-   }
-
-   @Override
-   public String toString() {
-      return this.g + " " + this.d.get() + " " + this.e.b();
-   }
-
-   @Override
-   public String by() {
       return this.g;
    }
 
    @Override
-   public List<bor> bv() {
-      return ImmutableList.of(bor.a(this.g + "-queue-size", boq.c, this::b));
+   public bpj<?> c() {
+      return bpj.e;
    }
 }

@@ -1,51 +1,72 @@
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
 
-public interface dgc<T extends Enum<T>> {
-   int v_ = 4;
+public class dgc extends diu implements dfi, dgb {
+   public static final MapCodec<dgc> c = b(dgc::new);
+   private static final float g = 0.11F;
 
-   Optional<dse> i_(dse var1);
-
-   float at_();
-
-   default void a_(dse $$0, arf $$1, iz $$2, azh $$3) {
-      float $$4 = 0.05688889F;
-      if ($$3.i() < 0.05688889F) {
-         this.c($$0, $$1, $$2, $$3).ifPresent($$2x -> $$1.b($$2, $$2x));
-      }
+   @Override
+   public MapCodec<dgc> a() {
+      return c;
    }
 
-   T c();
+   public dgc(dsg.d $$0) {
+      super($$0, jf.a, q_, false, 0.1);
+      this.k(this.E.b().a(e, Integer.valueOf(0)).a(r_, Boolean.valueOf(false)));
+   }
 
-   default Optional<dse> c(dse $$0, arf $$1, iz $$2, azh $$3) {
-      int $$4 = this.c().ordinal();
-      int $$5 = 0;
-      int $$6 = 0;
+   @Override
+   protected int a(aym $$0) {
+      return 1;
+   }
 
-      for (iz $$7 : iz.a($$2, 4, 4, 4)) {
-         int $$8 = $$7.k($$2);
-         if ($$8 > 4) {
-            break;
-         }
+   @Override
+   protected boolean g(dsh $$0) {
+      return $$0.i();
+   }
 
-         if (!$$7.equals($$2) && $$1.a_($$7).b() instanceof dgc<?> $$9) {
-            Enum<?> $$10 = $$9.c();
-            if (this.c().getClass() == $$10.getClass()) {
-               int $$11 = $$10.ordinal();
-               if ($$11 < $$4) {
-                  return Optional.empty();
-               }
+   @Override
+   protected dff b() {
+      return dfh.sw;
+   }
 
-               if ($$11 > $$4) {
-                  $$6++;
-               } else {
-                  $$5++;
-               }
-            }
-         }
-      }
+   @Override
+   protected dsh a(dsh $$0, dsh $$1) {
+      return $$1.a(r_, $$0.c(r_));
+   }
 
-      float $$12 = (float)($$6 + 1) / (float)($$6 + $$5 + 1);
-      float $$13 = $$12 * $$12 * this.at_();
-      return $$3.i() < $$13 ? this.i_($$0) : Optional.empty();
+   @Override
+   protected dsh a(dsh $$0, aym $$1) {
+      return super.a($$0, $$1).a(r_, Boolean.valueOf($$1.i() < 0.11F));
+   }
+
+   @Override
+   public cua a(dcg $$0, ja $$1, dsh $$2) {
+      return new cua(cud.wv);
+   }
+
+   @Override
+   protected bqd a(dsh $$0, dcd $$1, ja $$2, cmh $$3, evv $$4) {
+      return dgb.a($$3, $$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(dsi.a<dff, dsh> $$0) {
+      super.a($$0);
+      $$0.a(r_);
+   }
+
+   @Override
+   public boolean b(dcg $$0, ja $$1, dsh $$2) {
+      return !$$2.c(r_);
+   }
+
+   @Override
+   public boolean a(dcd $$0, aym $$1, ja $$2, dsh $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqk $$0, aym $$1, ja $$2, dsh $$3) {
+      $$0.a($$2, $$3.a(r_, Boolean.valueOf(true)), 2);
    }
 }

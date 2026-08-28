@@ -1,35 +1,121 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+import javax.annotation.Nullable;
 
 public class gpi {
-   private static final BiMap<alf, gph> i = HashBiMap.create();
-   public static final gph a = a("single", gpn.b);
-   public static final gph b = a("directory", gpk.b);
-   public static final gph c = a("filter", gpo.b);
-   public static final gph d = a("unstitch", gpp.b);
-   public static final gph e = a("paletted_permutations", gpm.b);
-   public static Codec<gph> f = alf.a.flatXmap($$0 -> {
-      gph $$1 = (gph)i.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$0);
-   }, $$0 -> {
-      alf $$1 = (alf)i.inverse().get($$0);
-      return $$0 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$1);
-   });
-   public static Codec<gpf> g = f.dispatch(gpf::a, gph::a);
-   public static Codec<List<gpf>> h = g.listOf().fieldOf("sources").codec();
+   private final akk a;
+   private final gpc b;
+   final int c;
+   final int d;
+   private final float e;
+   private final float f;
+   private final float g;
+   private final float h;
 
-   private static gph a(String $$0, MapCodec<? extends gpf> $$1) {
-      gph $$2 = new gph($$1);
-      alf $$3 = new alf($$0);
-      gph $$4 = (gph)i.putIfAbsent($$3, $$2);
-      if ($$4 != null) {
-         throw new IllegalStateException("Duplicate registration " + $$3);
-      } else {
-         return $$2;
-      }
+   protected gpi(akk $$0, gpc $$1, int $$2, int $$3, int $$4, int $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$4;
+      this.d = $$5;
+      this.e = (float)$$4 / (float)$$2;
+      this.f = (float)($$4 + $$1.a()) / (float)$$2;
+      this.g = (float)$$5 / (float)$$3;
+      this.h = (float)($$5 + $$1.b()) / (float)$$3;
+   }
+
+   public int a() {
+      return this.c;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public float c() {
+      return this.e;
+   }
+
+   public float d() {
+      return this.f;
+   }
+
+   public gpc e() {
+      return this.b;
+   }
+
+   @Nullable
+   public gpi.a f() {
+      final gpe $$0 = this.b.e();
+      return $$0 != null ? new gpi.a() {
+         @Override
+         public void a() {
+            $$0.a(gpi.this.c, gpi.this.d);
+         }
+
+         @Override
+         public void close() {
+            $$0.close();
+         }
+      } : null;
+   }
+
+   public float a(float $$0) {
+      float $$1 = this.f - this.e;
+      return this.e + $$1 * $$0;
+   }
+
+   public float b(float $$0) {
+      float $$1 = this.f - this.e;
+      return ($$0 - this.e) / $$1;
+   }
+
+   public float g() {
+      return this.g;
+   }
+
+   public float h() {
+      return this.h;
+   }
+
+   public float c(float $$0) {
+      float $$1 = this.h - this.g;
+      return this.g + $$1 * $$0;
+   }
+
+   public float d(float $$0) {
+      float $$1 = this.h - this.g;
+      return ($$0 - this.g) / $$1;
+   }
+
+   public akk i() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "TextureAtlasSprite{contents='" + this.b + "', u0=" + this.e + ", u1=" + this.f + ", v0=" + this.g + ", v1=" + this.h + "}";
+   }
+
+   public void j() {
+      this.b.a(this.c, this.d);
+   }
+
+   private float l() {
+      float $$0 = (float)this.b.a() / (this.f - this.e);
+      float $$1 = (float)this.b.b() / (this.h - this.g);
+      return Math.max($$1, $$0);
+   }
+
+   public float k() {
+      return 4.0F / this.l();
+   }
+
+   public fak a(fak $$0) {
+      return new gen($$0, this);
+   }
+
+   public interface a extends AutoCloseable {
+      void a();
+
+      @Override
+      void close();
    }
 }

@@ -1,28 +1,14 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+public abstract class yz<T extends wa> implements zb<T> {
+   private final Iterable<zb<? super T>> a;
 
-public record yz(alf d) implements yr {
-   public static final MapCodec<yz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alf.a.fieldOf("storage").forGetter(yz::b)).apply($$0, yz::new));
-   public static final yr.a<yz> b = new yr.a<>(a, "storage");
+   protected yz(Iterable<zb<? super T>> $$0) {
+      this.a = $$0;
+   }
 
-   @Override
-   public Stream<us> a(ep $$0) {
-      us $$1 = $$0.l().aL().a(this.d);
-      return Stream.of($$1);
+   public final Iterable<zb<? super T>> b() {
+      return this.a;
    }
 
    @Override
-   public yr.a<?> a() {
-      return b;
-   }
-
-   @Override
-   public String toString() {
-      return "storage=" + this.d;
-   }
-
-   public alf b() {
-      return this.d;
-   }
+   public abstract zd<? extends yz<T>> a();
 }

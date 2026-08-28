@@ -1,64 +1,27 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntIterator;
 import java.util.List;
-import java.util.stream.IntStream;
+import javax.annotation.Nullable;
 
-public class els extends emj {
-   public static final MapCodec<els> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eml.a.fieldOf("delegate").forGetter($$0x -> $$0x.b), bqb.e.fieldOf("limit").forGetter($$0x -> $$0x.c)).apply($$0, els::new)
-   );
-   private final emj b;
-   private final bqb c;
+public class els extends emn {
+   public static final MapCodec<els> a = dsh.b.xmap(dsg.a::b, dff::o).listOf().fieldOf("blocks").xmap(els::new, $$0 -> $$0.e);
+   public static final els b = new els(ImmutableList.of(dfh.pa));
+   public static final els c = new els(ImmutableList.of(dfh.a));
+   public static final els d = new els(ImmutableList.of(dfh.a, dfh.pa));
+   private final ImmutableList<dff> e;
 
-   public els(emj $$0, bqb $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public els(List<dff> $$0) {
+      this.e = ImmutableList.copyOf($$0);
+   }
+
+   @Nullable
+   @Override
+   public emq.c a(dcg $$0, ja $$1, ja $$2, emq.c $$3, emq.c $$4, emm $$5) {
+      return this.e.contains($$4.b().b()) ? null : $$4;
    }
 
    @Override
-   protected eml<?> a() {
-      return eml.o;
-   }
-
-   @Override
-   public final List<emm.c> a(dcp $$0, iz $$1, iz $$2, List<emm.c> $$3, List<emm.c> $$4, emi $$5) {
-      if (this.c.b() != 0 && !$$4.isEmpty()) {
-         if ($$3.size() != $$4.size()) {
-            ac.a(
-               "Original block info list not in sync with processed list, skipping processing. Original size: "
-                  + $$3.size()
-                  + ", Processed size: "
-                  + $$4.size()
-            );
-            return $$4;
-         } else {
-            azh $$6 = azh.a($$0.E().C()).e().a($$1);
-            int $$7 = Math.min(this.c.a($$6), $$4.size());
-            if ($$7 < 1) {
-               return $$4;
-            } else {
-               IntArrayList $$8 = ac.a(IntStream.range(0, $$4.size()), $$6);
-               IntIterator $$9 = $$8.intIterator();
-               int $$10 = 0;
-
-               while ($$9.hasNext() && $$10 < $$7) {
-                  int $$11 = $$9.nextInt();
-                  emm.c $$12 = $$3.get($$11);
-                  emm.c $$13 = $$4.get($$11);
-                  emm.c $$14 = this.b.a($$0, $$1, $$2, $$12, $$13, $$5);
-                  if ($$14 != null && !$$13.equals($$14)) {
-                     $$10++;
-                     $$4.set($$11, $$14);
-                  }
-               }
-
-               return $$4;
-            }
-         }
-      } else {
-         return $$4;
-      }
+   protected emp<?> a() {
+      return emp.e;
    }
 }

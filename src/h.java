@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import org.joml.Matrix3f;
 
-public enum h implements azu {
+public enum h implements ayz {
    a("identity", i.a, false, false, false),
    b("rot_180_face_xy", i.a, true, true, false),
    c("rot_180_face_xz", i.a, true, false, true),
@@ -61,7 +61,7 @@ public enum h implements azu {
    private final Matrix3f X;
    private final String Y;
    @Nullable
-   private Map<je, je> Z;
+   private Map<jf, jf> Z;
    private final boolean aa;
    private final boolean ab;
    private final boolean ac;
@@ -122,17 +122,17 @@ public enum h implements azu {
       return this.Y;
    }
 
-   public je a(je $$0) {
+   public jf a(jf $$0) {
       if (this.Z == null) {
-         this.Z = Maps.newEnumMap(je.class);
-         je.a[] $$1 = je.a.values();
+         this.Z = Maps.newEnumMap(jf.class);
+         jf.a[] $$1 = jf.a.values();
 
-         for (je $$2 : je.values()) {
-            je.a $$3 = $$2.o();
-            je.b $$4 = $$2.f();
-            je.a $$5 = $$1[this.ad.a($$3.ordinal())];
-            je.b $$6 = this.a($$5) ? $$4.c() : $$4;
-            je $$7 = je.a($$5, $$6);
+         for (jf $$2 : jf.values()) {
+            jf.a $$3 = $$2.o();
+            jf.b $$4 = $$2.f();
+            jf.a $$5 = $$1[this.ad.a($$3.ordinal())];
+            jf.b $$6 = this.a($$5) ? $$4.c() : $$4;
+            jf $$7 = jf.a($$5, $$6);
             this.Z.put($$2, $$7);
          }
       }
@@ -140,7 +140,7 @@ public enum h implements azu {
       return this.Z.get($$0);
    }
 
-   public boolean a(je.a $$0) {
+   public boolean a(jf.a $$0) {
       switch ($$0) {
          case a:
             return this.aa;
@@ -152,7 +152,7 @@ public enum h implements azu {
       }
    }
 
-   public jg a(jg $$0) {
-      return jg.a(this.a($$0.a()), this.a($$0.b()));
+   public jh a(jh $$0) {
+      return jh.a(this.a($$0.a()), this.a($$0.b()));
    }
 }

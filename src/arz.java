@@ -1,112 +1,80 @@
-import com.mojang.logging.LogUtils;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufAllocator;
-import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
-import java.net.SocketAddress;
-import java.util.Locale;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public class arz extends ChannelInboundHandlerAdapter {
-   private static final Logger a = LogUtils.getLogger();
-   private final alv b;
+public class arz implements asg {
+   private final asg c;
+   private final List<asg> d;
 
-   public arz(alv $$0) {
-      this.b = $$0;
+   public arz(asg $$0, List<asg> $$1) {
+      this.c = $$0;
+      List<asg> $$2 = new ArrayList<>($$1.size() + 1);
+      $$2.addAll(Lists.reverse($$1));
+      $$2.add($$0);
+      this.d = List.copyOf($$2);
    }
 
-   public void channelRead(ChannelHandlerContext $$0, Object $$1) {
-      ByteBuf $$2 = (ByteBuf)$$1;
-      $$2.markReaderIndex();
-      boolean $$3 = true;
+   @Nullable
+   @Override
+   public atm<InputStream> a(String... $$0) {
+      return this.c.a($$0);
+   }
 
-      try {
-         try {
-            if ($$2.readUnsignedByte() != 254) {
-               return;
-            }
-
-            SocketAddress $$4 = $$0.channel().remoteAddress();
-            int $$5 = $$2.readableBytes();
-            if ($$5 == 0) {
-               a.debug("Ping: (<1.3.x) from {}", $$4);
-               String $$6 = a(this.b);
-               a($$0, a($$0.alloc(), $$6));
-            } else {
-               if ($$2.readUnsignedByte() != 1) {
-                  return;
-               }
-
-               if ($$2.isReadable()) {
-                  if (!a($$2)) {
-                     return;
-                  }
-
-                  a.debug("Ping: (1.6) from {}", $$4);
-               } else {
-                  a.debug("Ping: (1.4-1.5.x) from {}", $$4);
-               }
-
-               String $$7 = b(this.b);
-               a($$0, a($$0.alloc(), $$7));
-            }
-
-            $$2.release();
-            $$3 = false;
-         } catch (RuntimeException var11) {
-         }
-      } finally {
-         if ($$3) {
-            $$2.resetReaderIndex();
-            $$0.channel().pipeline().remove(this);
-            $$0.fireChannelRead($$1);
+   @Nullable
+   @Override
+   public atm<InputStream> a(asi $$0, akk $$1) {
+      for (asg $$2 : this.d) {
+         atm<InputStream> $$3 = $$2.a($$0, $$1);
+         if ($$3 != null) {
+            return $$3;
          }
       }
+
+      return null;
    }
 
-   private static boolean a(ByteBuf $$0) {
-      short $$1 = $$0.readUnsignedByte();
-      if ($$1 != 250) {
-         return false;
-      } else {
-         String $$2 = ary.a($$0);
-         if (!"MC|PingHost".equals($$2)) {
-            return false;
-         } else {
-            int $$3 = $$0.readUnsignedShort();
-            if ($$0.readableBytes() != $$3) {
-               return false;
-            } else {
-               short $$4 = $$0.readUnsignedByte();
-               if ($$4 < 73) {
-                  return false;
-               } else {
-                  String $$5 = ary.a($$0);
-                  int $$6 = $$0.readInt();
-                  return $$6 <= 65535;
-               }
-            }
-         }
+   @Override
+   public void a(asi $$0, String $$1, String $$2, asg.a $$3) {
+      Map<akk, atm<InputStream>> $$4 = new HashMap<>();
+
+      for (asg $$5 : this.d) {
+         $$5.a($$0, $$1, $$2, $$4::putIfAbsent);
       }
+
+      $$4.forEach($$3);
    }
 
-   private static String a(alv $$0) {
-      return String.format(Locale.ROOT, "%s§%d§%d", $$0.af(), $$0.M(), $$0.N());
+   @Override
+   public Set<String> a(asi $$0) {
+      Set<String> $$1 = new HashSet<>();
+
+      for (asg $$2 : this.d) {
+         $$1.addAll($$2.a($$0));
+      }
+
+      return $$1;
    }
 
-   private static String b(alv $$0) {
-      return String.format(Locale.ROOT, "§1\u0000%d\u0000%s\u0000%s\u0000%d\u0000%d", 127, $$0.L(), $$0.af(), $$0.M(), $$0.N());
+   @Nullable
+   @Override
+   public <T> T a(ast<T> $$0) throws IOException {
+      return this.c.a($$0);
    }
 
-   private static void a(ChannelHandlerContext $$0, ByteBuf $$1) {
-      $$0.pipeline().firstContext().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE);
+   @Override
+   public asf a() {
+      return this.c.a();
    }
 
-   private static ByteBuf a(ByteBufAllocator $$0, String $$1) {
-      ByteBuf $$2 = $$0.buffer();
-      $$2.writeByte(255);
-      ary.a($$2, $$1);
-      return $$2;
+   @Override
+   public void close() {
+      this.d.forEach(asg::close);
    }
 }

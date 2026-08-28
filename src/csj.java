@@ -1,42 +1,63 @@
-import java.util.function.Consumer;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class csj extends cum {
-   public csj(cum.a $$0) {
+public class csj extends ctv {
+   public csj(ctv.a $$0) {
       super($$0);
    }
 
+   @Nullable
+   public static ji a(dcd $$0) {
+      return $$0.D_().j() ? ji.a($$0.af(), $$0.V()) : null;
+   }
+
    @Override
-   public bqw a(cye $$0) {
-      je $$1 = $$0.k();
-      if ($$1 == je.a) {
-         return bqw.f;
-      } else {
-         dca $$2 = $$0.q();
-         cyc $$3 = new cyc($$0);
-         iz $$4 = $$3.a();
-         cur $$5 = $$0.n();
-         evt $$6 = evt.c($$4);
-         evo $$7 = btc.d.n().a($$6.a(), $$6.b(), $$6.c());
-         if ($$2.a(null, $$7) && $$2.a_(null, $$7).isEmpty()) {
-            if ($$2 instanceof arf $$8) {
-               Consumer<ciz> $$9 = btc.a($$8, $$5, $$0.o());
-               ciz $$10 = btc.d.b($$8, $$9, $$4, btv.m, true, true);
-               if ($$10 == null) {
-                  return bqw.f;
-               }
+   public boolean d_(cua $$0) {
+      return $$0.b(kn.S) || super.d_($$0);
+   }
 
-               float $$11 = (float)ayz.d((ayz.g($$0.i() - 180.0F) + 22.5F) / 45.0F) * 45.0F;
-               $$10.b($$10.du(), $$10.dw(), $$10.dA(), $$11, 0.0F);
-               $$8.a_($$10);
-               $$2.a(null, $$10.du(), $$10.dw(), $$10.dA(), awa.aD, awb.e, 0.75F, 0.8F);
-               $$10.a(dwx.t, $$0.o());
+   @Override
+   public void a(cua $$0, dcd $$1, bsd $$2, int $$3, boolean $$4) {
+      if ($$1 instanceof aqk $$5) {
+         cwx $$6 = $$0.a(kn.S);
+         if ($$6 != null) {
+            cwx $$7 = $$6.a($$5);
+            if ($$7 != $$6) {
+               $$0.b(kn.S, $$7);
             }
-
-            $$5.h(1);
-            return bqw.a($$2.B);
-         } else {
-            return bqw.f;
          }
       }
+   }
+
+   @Override
+   public bqd a(cxm $$0) {
+      ja $$1 = $$0.a();
+      dcd $$2 = $$0.q();
+      if (!$$2.a_($$1).a(dfh.pq)) {
+         return super.a($$0);
+      } else {
+         $$2.a(null, $$1, avf.on, avg.h, 1.0F, 1.0F);
+         cmh $$3 = $$0.o();
+         cua $$4 = $$0.n();
+         boolean $$5 = !$$3.fL() && $$4.H() == 1;
+         cwx $$6 = new cwx(Optional.of(ji.a($$2.af(), $$1)), true);
+         if ($$5) {
+            $$4.b(kn.S, $$6);
+         } else {
+            cua $$7 = $$4.a(cud.qS, 1);
+            $$4.a(1, $$3);
+            $$7.b(kn.S, $$6);
+            if (!$$3.fY().f($$7)) {
+               $$3.a($$7, false);
+            }
+         }
+
+         return bqd.a($$2.B);
+      }
+   }
+
+   @Override
+   public String h(cua $$0) {
+      return $$0.b(kn.S) ? "item.minecraft.lodestone_compass" : super.h($$0);
    }
 }

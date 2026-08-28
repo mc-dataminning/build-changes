@@ -1,40 +1,48 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record efa(jm<dfb> b, jm<dfb> c, eff d, int e, int f, float g) {
-   public static final Codec<efa> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               jx.a(lq.f).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
-               jx.a(lq.f).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
-               eff.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
-               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, efa::new)
+public class efa extends eeu {
+   public static final MapCodec<efa> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(bpi.b(0, 24).fieldOf("trunk_height").forGetter($$0x -> $$0x.b)).apply($$0, efa::new)
    );
+   private final bpi b;
 
-   public jm<dfb> a() {
-      return this.b;
+   public efa(bpi $$0, bpi $$1, bpi $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
-   public jm<dfb> b() {
-      return this.c;
+   @Override
+   protected eev<?> a() {
+      return eev.b;
    }
 
-   public eff c() {
-      return this.d;
+   @Override
+   protected void a(dcj $$0, eeu.b $$1, aym $$2, eee $$3, int $$4, eeu.a $$5, int $$6, int $$7, int $$8) {
+      ja $$9 = $$5.a();
+      int $$10 = $$2.a(2);
+      int $$11 = 1;
+      int $$12 = 0;
+
+      for (int $$13 = $$8; $$13 >= -$$6; $$13--) {
+         this.a($$0, $$1, $$2, $$3, $$9, $$10, $$13, $$5.c());
+         if ($$10 >= $$11) {
+            $$10 = $$12;
+            $$12 = 1;
+            $$11 = Math.min($$11 + 1, $$7 + $$5.b());
+         } else {
+            $$10++;
+         }
+      }
    }
 
-   public int d() {
-      return this.e;
+   @Override
+   public int a(aym $$0, int $$1, eee $$2) {
+      return Math.max(4, $$1 - this.b.a($$0));
    }
 
-   public int e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
+   @Override
+   protected boolean a(aym $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

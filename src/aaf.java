@@ -1,29 +1,17 @@
-public class aaf implements zw<aac> {
-   public static final zn<wm, aaf> a = zw.a(aaf::a, aaf::new);
-   private final long b;
-
-   public aaf(long $$0) {
-      this.b = $$0;
-   }
-
-   private aaf(wm $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(wm $$0) {
-      $$0.b(this.b);
-   }
+public record aaf(dxe c, int d) implements aac {
+   public static final ys<wf, aaf> a = ys.a(dxe.d, aaf::b, yq.g, aaf::c, aaf::new);
+   public static final aac.b<aaf> b = aac.a("debug/game_event_listeners");
 
    @Override
-   public zy<aaf> a() {
-      return aam.c;
+   public aac.b<aaf> a() {
+      return b;
    }
 
-   public void a(aac $$0) {
-      $$0.a(this);
+   public dxe b() {
+      return this.c;
    }
 
-   public long b() {
-      return this.b;
+   public int c() {
+      return this.d;
    }
 }

@@ -2,17 +2,17 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class bt extends dr<bt.a> {
+public class bt extends ds<bt.a> {
    @Override
    public Codec<bt.a> a() {
       return bt.a.a;
    }
 
-   public void a(arg $$0, brp $$1, float $$2, float $$3, boolean $$4) {
+   public void a(aql $$0, bqw $$1, float $$2, float $$3, boolean $$4) {
       this.a($$0, $$5 -> $$5.a($$0, $$1, $$2, $$3, $$4));
    }
 
-   public static record a(Optional<bf> b, Optional<bi> c) implements dr.a {
+   public static record a(Optional<bf> b, Optional<bi> c) implements ds.a {
       public static final Codec<bt.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(bu.b.optionalFieldOf("player").forGetter(bt.a::a), bi.a.optionalFieldOf("damage").forGetter(bt.a::c)).apply($$0, bt.a::new)
       );
@@ -29,7 +29,7 @@ public class bt extends dr<bt.a> {
          return am.i.a(new bt.a(Optional.empty(), Optional.of($$0.b())));
       }
 
-      public boolean a(arg $$0, brp $$1, float $$2, float $$3, boolean $$4) {
+      public boolean a(aql $$0, bqw $$1, float $$2, float $$3, boolean $$4) {
          return !this.c.isPresent() || this.c.get().a($$0, $$1, $$2, $$3, $$4);
       }
 

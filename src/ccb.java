@@ -1,16 +1,59 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class ccb extends ccc {
-   public ccb(bua $$0, double $$1) {
-      super($$0, $$1);
+public class ccb<T> {
+   private final T a;
+   private long b;
+
+   public ccb(T $$0, long $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Nullable
+   public void a() {
+      if (this.e()) {
+         this.b--;
+      }
+   }
+
+   public static <T> ccb<T> a(T $$0) {
+      return new ccb<>($$0, Long.MAX_VALUE);
+   }
+
+   public static <T> ccb<T> a(T $$0, long $$1) {
+      return new ccb<>($$0, $$1);
+   }
+
+   public long b() {
+      return this.b;
+   }
+
+   public T c() {
+      return this.a;
+   }
+
+   public boolean d() {
+      return this.b <= 0L;
+   }
+
    @Override
-   protected evt h() {
-      evt $$0 = this.b.f(0.0F);
-      int $$1 = 8;
-      evt $$2 = ceo.a(this.b, 8, 7, $$0.c, $$0.e, (float) (Math.PI / 2), 3, 1);
-      return $$2 != null ? $$2 : cek.a(this.b, 8, 4, -2, $$0.c, $$0.e, (float) (Math.PI / 2));
+   public String toString() {
+      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
+   }
+
+   @azi
+   public boolean e() {
+      return this.b != Long.MAX_VALUE;
+   }
+
+   public static <T> Codec<ccb<T>> a(Codec<T> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(
+                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
+                  Codec.LONG.lenientOptionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
+               )
+               .apply($$1, ($$0xx, $$1x) -> new ccb<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
+      );
    }
 }

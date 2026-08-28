@@ -1,42 +1,61 @@
-public record aqv(int a, int b) {
-   private static final long c = 32L;
-   private static final long d = 4294967295L;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public dbh a() {
-      return new dbh(kb.a(this.a), kb.a(this.b));
+public class aqv implements aqt {
+   private static final Logger a = LogUtils.getLogger();
+   private final int b;
+   private int c;
+   private long d;
+   private long e = Long.MAX_VALUE;
+
+   private aqv(int $$0) {
+      this.b = $$0;
    }
 
-   public long b() {
-      return a(this.a, this.b);
+   public static aqv b(int $$0) {
+      return $$0 > 0 ? c($$0 + 1) : c();
    }
 
-   public static long a(int $$0, int $$1) {
-      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
+   public static aqv c(int $$0) {
+      int $$1 = aqt.a($$0);
+      return new aqv($$1 * $$1);
    }
 
-   public static int a(long $$0) {
-      return (int)($$0 & 4294967295L);
-   }
-
-   public static int b(long $$0) {
-      return (int)($$0 >>> 32 & 4294967295L);
+   public static aqv c() {
+      return new aqv(0);
    }
 
    @Override
-   public String toString() {
-      return "[" + this.a + ", " + this.b + "]";
+   public void a(dbk $$0) {
+      this.e = ac.c();
+      this.d = this.e;
    }
 
    @Override
-   public int hashCode() {
-      return dbh.d(this.a, this.b);
+   public void a(dbk $$0, @Nullable dvc $$1) {
+      if ($$1 == dvc.n) {
+         this.c++;
+      }
+
+      int $$2 = this.d();
+      if (ac.c() > this.e) {
+         this.e += 500L;
+         a.info(wu.a("menu.preparingSpawn", aye.a($$2, 0, 100)).getString());
+      }
    }
 
-   public int c() {
-      return this.a;
+   @Override
+   public void a() {
+   }
+
+   @Override
+   public void b() {
+      a.info("Time elapsed: {} ms", ac.c() - this.d);
+      this.e = Long.MAX_VALUE;
    }
 
    public int d() {
-      return this.b;
+      return this.b == 0 ? 100 : aye.d((float)this.c * 100.0F / (float)this.b);
    }
 }

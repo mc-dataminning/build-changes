@@ -1,82 +1,139 @@
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import java.util.Objects;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public abstract class dpw {
-   private static final int a = 5;
-   private int b;
-   private double c;
+public class dpw extends dpn implements bpw {
+   public static final int b = 6;
+   private static final Logger c = LogUtils.getLogger();
+   private final js<cua> d = js.a(6, cua.l);
+   private int e = -1;
 
-   protected abstract void a(dca var1, iz var2, dse var3);
-
-   protected abstract void b(dca var1, iz var2, dse var3);
-
-   protected abstract void a(dca var1, iz var2, dse var3, int var4, int var5);
-
-   protected abstract boolean a(cmz var1);
-
-   public void a(cmz $$0, dca $$1, iz $$2, dse $$3) {
-      int $$4 = this.b++;
-      if ($$4 == 0) {
-         this.a($$1, $$2, $$3);
-         $$1.a($$0, dwx.k, $$2);
-         d($$1, $$2, $$3);
-      }
-
-      this.a($$1, $$2, $$3, $$4, this.b);
-      this.c = Math.max($$0.gC(), this.c);
+   public dpw(ja $$0, dsh $$1) {
+      super(dpp.M, $$0, $$1);
    }
 
-   public void b(cmz $$0, dca $$1, iz $$2, dse $$3) {
-      int $$4 = this.b--;
-      if (this.b == 0) {
-         this.b($$1, $$2, $$3);
-         $$1.a($$0, dwx.j, $$2);
-         this.c = 0.0;
-      }
+   private void c(int $$0) {
+      if ($$0 >= 0 && $$0 < 6) {
+         this.e = $$0;
+         dsh $$1 = this.n();
 
-      this.a($$1, $$2, $$3, $$4, this.b);
-   }
-
-   private List<cmz> a(dca $$0, iz $$1) {
-      double $$2 = this.c + 4.0;
-      evo $$3 = new evo($$1).g($$2);
-      return $$0.a(dwl.a(cmz.class), $$3, this::a);
-   }
-
-   public void c(dca $$0, iz $$1, dse $$2) {
-      List<cmz> $$3 = this.a($$0, $$1);
-      this.c = 0.0;
-
-      for (cmz $$4 : $$3) {
-         this.c = Math.max($$4.gC(), this.c);
-      }
-
-      int $$5 = $$3.size();
-      int $$6 = this.b;
-      if ($$6 != $$5) {
-         boolean $$7 = $$5 != 0;
-         boolean $$8 = $$6 != 0;
-         if ($$7 && !$$8) {
-            this.a($$0, $$1, $$2);
-            $$0.a(null, dwx.k, $$1);
-         } else if (!$$7) {
-            this.b($$0, $$1, $$2);
-            $$0.a(null, dwx.j, $$1);
+         for (int $$2 = 0; $$2 < dgj.c.size(); $$2++) {
+            boolean $$3 = !this.a($$2).e();
+            dsy $$4 = dgj.c.get($$2);
+            $$1 = $$1.a($$4, Boolean.valueOf($$3));
          }
 
-         this.b = $$5;
-      }
-
-      this.a($$0, $$1, $$2, $$6, $$5);
-      if ($$5 > 0) {
-         d($$0, $$1, $$2);
+         Objects.requireNonNull(this.n).a(this.o, $$1, 3);
+         this.n.a(dxa.c, this.o, dxa.a.a($$1));
+      } else {
+         c.error("Expected slot 0-5, got {}", $$0);
       }
    }
 
-   public int a() {
-      return this.b;
+   @Override
+   protected void a(tx $$0, jl.a $$1) {
+      super.a($$0, $$1);
+      this.d.clear();
+      bpx.b($$0, this.d, $$1);
+      this.e = $$0.h("last_interacted_slot");
    }
 
-   private static void d(dca $$0, iz $$1, dse $$2) {
-      $$0.a($$1, $$2.b(), 5);
+   @Override
+   protected void b(tx $$0, jl.a $$1) {
+      super.b($$0, $$1);
+      bpx.a($$0, this.d, true, $$1);
+      $$0.a("last_interacted_slot", this.e);
+   }
+
+   public int f() {
+      return (int)this.d.stream().filter(Predicate.not(cua::e)).count();
+   }
+
+   @Override
+   public void a() {
+      this.d.clear();
+   }
+
+   @Override
+   public int b() {
+      return 6;
+   }
+
+   @Override
+   public boolean c() {
+      return this.d.stream().allMatch(cua::e);
+   }
+
+   @Override
+   public cua a(int $$0) {
+      return this.d.get($$0);
+   }
+
+   @Override
+   public cua a(int $$0, int $$1) {
+      cua $$2 = Objects.requireNonNullElse(this.d.get($$0), cua.l);
+      this.d.set($$0, cua.l);
+      if (!$$2.e()) {
+         this.c($$0);
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public cua b(int $$0) {
+      return this.a($$0, 1);
+   }
+
+   @Override
+   public void a(int $$0, cua $$1) {
+      if ($$1.a(awd.aW)) {
+         this.d.set($$0, $$1);
+         this.c($$0);
+      } else if ($$1.e()) {
+         this.a($$0, 1);
+      }
+   }
+
+   @Override
+   public boolean a(bpw $$0, int $$1, cua $$2) {
+      return $$0.a_($$2x -> $$2x.e() ? true : cua.c($$2, $$2x) && $$2x.H() + $$2.H() <= $$0.e_($$2x));
+   }
+
+   @Override
+   public int ah_() {
+      return 1;
+   }
+
+   @Override
+   public boolean a(cmh $$0) {
+      return bpw.a(this, $$0);
+   }
+
+   @Override
+   public boolean b(int $$0, cua $$1) {
+      return $$1.a(awd.aW) && this.a($$0).e() && $$1.H() == this.ah_();
+   }
+
+   public int j() {
+      return this.e;
+   }
+
+   @Override
+   protected void a(dpn.b $$0) {
+      super.a($$0);
+      $$0.a(kn.aa, cwv.a).a(this.d);
+   }
+
+   @Override
+   protected void a(kj.a $$0) {
+      super.a($$0);
+      $$0.a(kn.aa, cwv.a(this.d));
+   }
+
+   @Override
+   public void a(tx $$0) {
+      $$0.r("Items");
    }
 }

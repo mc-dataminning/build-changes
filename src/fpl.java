@@ -1,30 +1,24 @@
-public class fpl extends foc {
-   private final dbb s;
+import org.joml.Matrix4f;
 
-   public fpl(dbb $$0) {
-      this.s = $$0;
+public class fpl implements fpm {
+   private final axq a;
+
+   public fpl(axq $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public dbb m() {
-      return this.s;
+   public int a(fgx $$0) {
+      return $$0.a(this.a);
    }
 
    @Override
-   int E() {
-      return 150;
+   public int a() {
+      return 10;
    }
 
    @Override
-   protected void aM_() {
-      super.aM_();
-      this.a.a(this.m().m());
-   }
-
-   @Override
-   protected void a(dbb $$0) {
-      if ($$0 instanceof cpd.a $$1) {
-         this.m.L().b(new ail($$1.h().al(), this.a.a(), $$0.p()));
-      }
+   public void a(fgx $$0, int $$1, int $$2, Matrix4f $$3, gdx.a $$4) {
+      $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, fgx.a.a, 0, 15728880);
    }
 }

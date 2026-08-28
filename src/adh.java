@@ -1,33 +1,166 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public record adh(adh.a b, List<String> c) implements zw<aci> {
-   public static final zn<wm, adh> a = zw.a(adh::a, adh::new);
+public abstract class adh implements zb<abn> {
+   protected final int a;
+   protected final short b;
+   protected final short c;
+   protected final short d;
+   protected final byte e;
+   protected final byte f;
+   protected final boolean g;
+   protected final boolean h;
+   protected final boolean i;
 
-   private adh(wm $$0) {
-      this($$0.b(adh.a.class), $$0.a(wm::p));
-   }
-
-   private void a(wm $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, wm::a);
+   protected adh(int $$0, short $$1, short $$2, short $$3, byte $$4, byte $$5, boolean $$6, boolean $$7, boolean $$8) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
+      this.i = $$8;
    }
 
    @Override
-   public zy<adh> a() {
-      return agu.y;
-   }
+   public abstract zd<? extends adh> a();
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
    }
 
-   public List<String> e() {
+   @Override
+   public String toString() {
+      return "Entity_" + super.toString();
+   }
+
+   @Nullable
+   public bsd a(dcd $$0) {
+      return $$0.a(this.a);
+   }
+
+   public short b() {
+      return this.b;
+   }
+
+   public short e() {
       return this.c;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public short f() {
+      return this.d;
+   }
+
+   public byte g() {
+      return this.e;
+   }
+
+   public byte h() {
+      return this.f;
+   }
+
+   public boolean i() {
+      return this.h;
+   }
+
+   public boolean j() {
+      return this.i;
+   }
+
+   public boolean k() {
+      return this.g;
+   }
+
+   public static class a extends adh {
+      public static final ys<vr, adh.a> j = zb.a(adh.a::b, adh.a::a);
+
+      public a(int $$0, short $$1, short $$2, short $$3, boolean $$4) {
+         super($$0, $$1, $$2, $$3, (byte)0, (byte)0, $$4, false, true);
+      }
+
+      private static adh.a a(vr $$0) {
+         int $$1 = $$0.l();
+         short $$2 = $$0.readShort();
+         short $$3 = $$0.readShort();
+         short $$4 = $$0.readShort();
+         boolean $$5 = $$0.readBoolean();
+         return new adh.a($$1, $$2, $$3, $$4, $$5);
+      }
+
+      private void b(vr $$0) {
+         $$0.c(this.a);
+         $$0.l(this.b);
+         $$0.l(this.c);
+         $$0.l(this.d);
+         $$0.a(this.g);
+      }
+
+      @Override
+      public zd<adh.a> a() {
+         return afz.R;
+      }
+   }
+
+   public static class b extends adh {
+      public static final ys<vr, adh.b> j = zb.a(adh.b::b, adh.b::a);
+
+      public b(int $$0, short $$1, short $$2, short $$3, byte $$4, byte $$5, boolean $$6) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, true, true);
+      }
+
+      private static adh.b a(vr $$0) {
+         int $$1 = $$0.l();
+         short $$2 = $$0.readShort();
+         short $$3 = $$0.readShort();
+         short $$4 = $$0.readShort();
+         byte $$5 = $$0.readByte();
+         byte $$6 = $$0.readByte();
+         boolean $$7 = $$0.readBoolean();
+         return new adh.b($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
+
+      private void b(vr $$0) {
+         $$0.c(this.a);
+         $$0.l(this.b);
+         $$0.l(this.c);
+         $$0.l(this.d);
+         $$0.k(this.e);
+         $$0.k(this.f);
+         $$0.a(this.g);
+      }
+
+      @Override
+      public zd<adh.b> a() {
+         return afz.S;
+      }
+   }
+
+   public static class c extends adh {
+      public static final ys<vr, adh.c> j = zb.a(adh.c::b, adh.c::a);
+
+      public c(int $$0, byte $$1, byte $$2, boolean $$3) {
+         super($$0, (short)0, (short)0, (short)0, $$1, $$2, $$3, true, false);
+      }
+
+      private static adh.c a(vr $$0) {
+         int $$1 = $$0.l();
+         byte $$2 = $$0.readByte();
+         byte $$3 = $$0.readByte();
+         boolean $$4 = $$0.readBoolean();
+         return new adh.c($$1, $$2, $$3, $$4);
+      }
+
+      private void b(vr $$0) {
+         $$0.c(this.a);
+         $$0.k(this.e);
+         $$0.k(this.f);
+         $$0.a(this.g);
+      }
+
+      @Override
+      public zd<adh.c> a() {
+         return afz.T;
+      }
    }
 }

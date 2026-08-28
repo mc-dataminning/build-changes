@@ -1,15 +1,35 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class btz {
+   private float a;
+   private float b;
+   private float c;
 
-public interface btz {
-   @Nullable
-   UUID W_();
+   public void a(float $$0) {
+      this.b = $$0;
+   }
 
-   dbr e();
+   public void a(float $$0, float $$1) {
+      this.a = this.b;
+      this.b = this.b + ($$0 - this.b) * $$1;
+      this.c = this.c + this.b;
+   }
 
-   @Nullable
-   default btr P_() {
-      UUID $$0 = this.W_();
-      return $$0 == null ? null : this.e().b($$0);
+   public float a() {
+      return this.b;
+   }
+
+   public float b(float $$0) {
+      return aye.i($$0, this.a, this.b);
+   }
+
+   public float b() {
+      return this.c;
+   }
+
+   public float c(float $$0) {
+      return this.c - this.b * (1.0F - $$0);
+   }
+
+   public boolean c() {
+      return this.b > 1.0E-5F;
    }
 }

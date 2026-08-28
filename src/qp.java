@@ -1,55 +1,24 @@
-import java.util.concurrent.CompletableFuture;
+import java.util.OptionalLong;
 
-public class qp extends ps {
-   public qp(ly $$0, CompletableFuture<jk.a> $$1) {
-      super($$0, $$1, cpn.a(cpp.a));
-   }
-
-   @Override
-   protected void a(jk.a $$0) {
-      this.a(
-         $$0,
-         new dac[]{
-            daf.k,
-            daf.P,
-            daf.G,
-            daf.H,
-            daf.j,
-            daf.n,
-            daf.o,
-            daf.p,
-            daf.F,
-            daf.y,
-            daf.K,
-            daf.t,
-            daf.I,
-            daf.r,
-            daf.A,
-            daf.q,
-            daf.z,
-            daf.a,
-            daf.d,
-            daf.b,
-            daf.e,
-            daf.c,
-            daf.x,
-            daf.s,
-            daf.v,
-            daf.C,
-            daf.u,
-            daf.J,
-            daf.D,
-            daf.f,
-            daf.g,
-            daf.l,
-            daf.m,
-            daf.i,
-            daf.h,
-            daf.E,
-            daf.w,
-            daf.B,
-            daf.O
-         }
+public class qp {
+   public static void a(qm<dvz> $$0) {
+      $$0.a(
+         dvx.a,
+         new dvz(OptionalLong.empty(), true, false, false, true, 1.0, true, false, -64, 384, 384, avu.bb, dvx.e, 0.0F, new dvz.a(false, true, bpo.a(0, 7), 0))
+      );
+      $$0.a(
+         dvx.b,
+         new dvz(OptionalLong.of(18000L), false, true, true, false, 8.0, false, true, 0, 256, 128, avu.bc, dvx.f, 0.1F, new dvz.a(true, false, bpf.a(7), 15))
+      );
+      $$0.a(
+         dvx.c,
+         new dvz(
+            OptionalLong.of(6000L), false, false, false, false, 1.0, false, false, 0, 256, 256, avu.bd, dvx.g, 0.0F, new dvz.a(false, true, bpo.a(0, 7), 0)
+         )
+      );
+      $$0.a(
+         dvx.d,
+         new dvz(OptionalLong.empty(), true, true, false, true, 1.0, true, false, -64, 384, 384, avu.bb, dvx.e, 0.0F, new dvz.a(false, true, bpo.a(0, 7), 0))
       );
    }
 }

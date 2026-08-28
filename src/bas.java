@@ -1,41 +1,28 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import java.util.Objects;
 
-public class bas extends bfv {
-   public bas(Schema $$0) {
-      super($$0, false, "AreaEffectCloudPotionFix", bgx.B, "minecraft:area_effect_cloud");
+public class bas extends DataFix {
+   public bas(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
-   }
-
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<Dynamic<T>> $$1 = $$0.get("Color").result();
-      Optional<Dynamic<T>> $$2 = $$0.get("effects").result();
-      Optional<Dynamic<T>> $$3 = $$0.get("Potion").result();
-      $$0 = $$0.remove("Color").remove("effects").remove("Potion");
-      if ($$1.isEmpty() && $$2.isEmpty() && $$3.isEmpty()) {
-         return $$0;
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bgd.C);
+      Type<?> $$1 = this.getOutputSchema().getType(bgd.C);
+      Type<Pair<String, Either<Integer, String>>> $$2 = DSL.named(bgd.C.typeName(), DSL.or(DSL.intType(), bhp.a()));
+      Type<Pair<String, String>> $$3 = DSL.named(bgd.C.typeName(), bhp.a());
+      if (Objects.equals($$0, $$2) && Objects.equals($$1, $$3)) {
+         return this.fixTypeEverywhere(
+            "BlockNameFlatteningFix", $$2, $$3, $$0x -> $$0xx -> $$0xx.mapSecond($$0xxx -> (String)$$0xxx.map(bav::a, $$0xxxx -> bav.a(bhp.a($$0xxxx))))
+         );
       } else {
-         Dynamic<T> $$4 = $$0.emptyMap();
-         if ($$1.isPresent()) {
-            $$4 = $$4.set("custom_color", $$1.get());
-         }
-
-         if ($$2.isPresent()) {
-            $$4 = $$4.set("custom_effects", $$2.get());
-         }
-
-         if ($$3.isPresent()) {
-            $$4 = $$4.set("potion", $$3.get());
-         }
-
-         return $$0.set("potion_contents", $$4);
+         throw new IllegalStateException("Expected and actual types don't match.");
       }
    }
 }

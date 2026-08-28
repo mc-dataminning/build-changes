@@ -1,29 +1,29 @@
-public class agy implements zw<agw> {
-   public static final zn<wm, agy> a = zw.a(agy::a, agy::new);
-   private final int b;
+public class agy implements zb<agb> {
+   public static final ys<vr, agy> a = zb.a(agy::a, agy::new);
+   private final boolean b;
 
-   public agy(int $$0) {
+   public agy(boolean $$0) {
       this.b = $$0;
    }
 
-   private agy(wm $$0) {
-      this.b = $$0.l();
+   private agy(vr $$0) {
+      this.b = $$0.readBoolean();
    }
 
-   private void a(wm $$0) {
-      $$0.c(this.b);
+   private void a(vr $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zy<agy> a() {
-      return agu.bf;
+   public zd<agy> a() {
+      return afz.bA;
    }
 
-   public void a(agw $$0) {
+   public void a(agb $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public boolean b() {
       return this.b;
    }
 }

@@ -1,52 +1,28 @@
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.io.File;
+import java.util.Objects;
 
-public interface aup extends aus {
-   Set<String> a();
+public class aup extends aum<GameProfile, auq> {
+   public aup(File $$0) {
+      super($$0);
+   }
 
-   List<aun> a(alf var1);
+   @Override
+   protected aul<GameProfile> a(JsonObject $$0) {
+      return new auq($$0);
+   }
 
-   Map<alf, aun> b(String var1, Predicate<alf> var2);
+   public boolean a(GameProfile $$0) {
+      return this.d($$0);
+   }
 
-   Map<alf, List<aun>> c(String var1, Predicate<alf> var2);
+   @Override
+   public String[] a() {
+      return this.d().stream().map(aul::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
+   }
 
-   Stream<atb> b();
-
-   public static enum a implements aup {
-      a;
-
-      @Override
-      public Set<String> a() {
-         return Set.of();
-      }
-
-      @Override
-      public Optional<aun> getResource(alf $$0) {
-         return Optional.empty();
-      }
-
-      @Override
-      public List<aun> a(alf $$0) {
-         return List.of();
-      }
-
-      @Override
-      public Map<alf, aun> b(String $$0, Predicate<alf> $$1) {
-         return Map.of();
-      }
-
-      @Override
-      public Map<alf, List<aun>> c(String $$0, Predicate<alf> $$1) {
-         return Map.of();
-      }
-
-      @Override
-      public Stream<atb> b() {
-         return Stream.of();
-      }
+   protected String b(GameProfile $$0) {
+      return $$0.getId().toString();
    }
 }

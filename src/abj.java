@@ -1,26 +1,12 @@
-public record abj(iz c, int d) implements aax {
-   public static final zn<wm, abj> a = aax.a(abj::a, abj::new);
-   public static final aax.b<abj> b = aax.a("debug/poi_ticket_count");
+public class abj {
+   public static final zd<abi> a = a("cookie_request");
+   public static final zd<abl> b = b("cookie_response");
 
-   private abj(wm $$0) {
-      this($$0.e(), $$0.readInt());
+   private static <T extends zb<abh>> zd<T> a(String $$0) {
+      return new zd<>(zc.b, new akk($$0));
    }
 
-   private void a(wm $$0) {
-      $$0.a(this.c);
-      $$0.p(this.d);
-   }
-
-   @Override
-   public aax.b<abj> a() {
-      return b;
-   }
-
-   public iz b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
+   private static <T extends zb<abk>> zd<T> b(String $$0) {
+      return new zd<>(zc.a, new akk($$0));
    }
 }

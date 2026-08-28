@@ -1,10 +1,11 @@
-public class daq extends dac {
-   protected daq(dac.b $$0) {
-      super($$0);
-   }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.function.Function;
 
-   @Override
-   public boolean a(dac $$0) {
-      return super.a($$0) && $$0 != daf.x;
-   }
+public interface daq {
+   Codec<daq> a = lq.az.r().dispatch(daq::a, Function.identity());
+
+   void a(cua var1, czp.a var2, aym var3, dcd var4, ja var5);
+
+   MapCodec<? extends daq> a();
 }

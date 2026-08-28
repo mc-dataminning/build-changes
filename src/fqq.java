@@ -1,86 +1,255 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import java.util.Collections;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
 public class fqq {
-   @Nullable
-   private cyz<?> a;
-   private final List<fqq.a> b = Lists.newArrayList();
-   float c;
+   private final atf a;
+   final List<atc> b;
+   final List<atc> c;
+   final Function<atc, akk> d;
+   final Runnable e;
+   private final Consumer<atf> f;
 
-   public void a() {
-      this.a = null;
-      this.b.clear();
-      this.c = 0.0F;
+   public fqq(Runnable $$0, Function<atc, akk> $$1, atf $$2, Consumer<atf> $$3) {
+      this.e = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = Lists.newArrayList($$2.f());
+      Collections.reverse(this.b);
+      this.c = Lists.newArrayList($$2.c());
+      this.c.removeAll(this.b);
+      this.f = $$3;
    }
 
-   public void a(cyu $$0, int $$1, int $$2) {
-      this.b.add(new fqq.a($$0, $$1, $$2));
+   public Stream<fqq.a> a() {
+      return this.c.stream().map($$0 -> new fqq.d($$0));
    }
 
-   public fqq.a a(int $$0) {
-      return this.b.get($$0);
+   public Stream<fqq.a> b() {
+      return this.b.stream().map($$0 -> new fqq.c($$0));
    }
 
-   public int b() {
-      return this.b.size();
+   void e() {
+      this.a.b(Lists.reverse(this.b).stream().map(atc::g).collect(ImmutableList.toImmutableList()));
    }
 
-   @Nullable
-   public cyz<?> c() {
-      return this.a;
+   public void c() {
+      this.e();
+      this.f.accept(this.a);
    }
 
-   public void a(cyz<?> $$0) {
-      this.a = $$0;
+   public void d() {
+      this.a.a();
+      this.b.retainAll(this.a.c());
+      this.c.clear();
+      this.c.addAll(this.a.c());
+      this.c.removeAll(this.b);
    }
 
-   public void a(fgt $$0, ffh $$1, int $$2, int $$3, boolean $$4, float $$5) {
-      if (!fnf.s()) {
-         this.c += $$5;
+   public interface a {
+      akk a();
+
+      atd b();
+
+      String c();
+
+      wu d();
+
+      wu e();
+
+      atg f();
+
+      default wu g() {
+         return this.f().a(this.e());
       }
 
-      for (int $$6 = 0; $$6 < this.b.size(); $$6++) {
-         fqq.a $$7 = this.b.get($$6);
-         int $$8 = $$7.a() + $$2;
-         int $$9 = $$7.b() + $$3;
-         if ($$6 == 0 && $$4) {
-            $$0.a($$8 - 4, $$9 - 4, $$8 + 20, $$9 + 20, 822018048);
-         } else {
-            $$0.a($$8, $$9, $$8 + 16, $$9 + 16, 822018048);
+      boolean h();
+
+      boolean i();
+
+      void j();
+
+      void k();
+
+      void l();
+
+      void m();
+
+      boolean n();
+
+      default boolean o() {
+         return !this.n();
+      }
+
+      default boolean p() {
+         return this.n() && !this.i();
+      }
+
+      boolean q();
+
+      boolean r();
+   }
+
+   abstract class b implements fqq.a {
+      private final atc b;
+
+      public b(final atc $$0) {
+         this.b = $$0;
+      }
+
+      protected abstract List<atc> s();
+
+      protected abstract List<atc> t();
+
+      @Override
+      public akk a() {
+         return fqq.this.d.apply(this.b);
+      }
+
+      @Override
+      public atd b() {
+         return this.b.d();
+      }
+
+      @Override
+      public String c() {
+         return this.b.g();
+      }
+
+      @Override
+      public wu d() {
+         return this.b.b();
+      }
+
+      @Override
+      public wu e() {
+         return this.b.c();
+      }
+
+      @Override
+      public atg f() {
+         return this.b.l();
+      }
+
+      @Override
+      public boolean h() {
+         return this.b.j();
+      }
+
+      @Override
+      public boolean i() {
+         return this.b.i();
+      }
+
+      protected void u() {
+         this.s().remove(this.b);
+         this.b.k().a(this.t(), this.b, atc::h, true);
+         fqq.this.e.run();
+         fqq.this.e();
+         this.v();
+      }
+
+      private void v() {
+         if (this.b.g().equals("high_contrast")) {
+            ffq<Boolean> $$0 = ffn.Q().m.t();
+            $$0.a(!$$0.c());
          }
+      }
 
-         cur $$10 = $$7.c();
-         $$0.b($$10, $$8, $$9);
-         $$0.a(gdy.G(), $$8, $$9, $$8 + 16, $$9 + 16, 822083583);
-         if ($$6 == 0) {
-            $$0.a($$1.h, $$10, $$8, $$9);
-         }
+      protected void a(int $$0) {
+         List<atc> $$1 = this.s();
+         int $$2 = $$1.indexOf(this.b);
+         $$1.remove($$2);
+         $$1.add($$2 + $$0, this.b);
+         fqq.this.e.run();
+      }
+
+      @Override
+      public boolean q() {
+         List<atc> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 > 0 && !$$0.get($$1 - 1).j();
+      }
+
+      @Override
+      public void l() {
+         this.a(-1);
+      }
+
+      @Override
+      public boolean r() {
+         List<atc> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 >= 0 && $$1 < $$0.size() - 1 && !$$0.get($$1 + 1).j();
+      }
+
+      @Override
+      public void m() {
+         this.a(1);
       }
    }
 
-   public class a {
-      private final cyu b;
-      private final int c;
-      private final int d;
-
-      public a(final cyu $$1, final int $$2, final int $$3) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+   class c extends fqq.b {
+      public c(final atc $$0) {
+         super($$0);
       }
 
-      public int a() {
-         return this.c;
+      @Override
+      protected List<atc> s() {
+         return fqq.this.b;
       }
 
-      public int b() {
-         return this.d;
+      @Override
+      protected List<atc> t() {
+         return fqq.this.c;
       }
 
-      public cur c() {
-         cur[] $$0 = this.b.a();
-         return $$0.length == 0 ? cur.l : $$0[ayz.d(fqq.this.c / 30.0F) % $$0.length];
+      @Override
+      public boolean n() {
+         return true;
+      }
+
+      @Override
+      public void j() {
+      }
+
+      @Override
+      public void k() {
+         this.u();
+      }
+   }
+
+   class d extends fqq.b {
+      public d(final atc $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected List<atc> s() {
+         return fqq.this.c;
+      }
+
+      @Override
+      protected List<atc> t() {
+         return fqq.this.b;
+      }
+
+      @Override
+      public boolean n() {
+         return false;
+      }
+
+      @Override
+      public void j() {
+         this.u();
+      }
+
+      @Override
+      public void k() {
       }
    }
 }

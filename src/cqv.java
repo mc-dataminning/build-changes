@@ -1,66 +1,68 @@
-public class cqv extends cpw {
-   public static final int k = 5;
-   private final bqp l;
+import javax.annotation.Nullable;
 
-   public cqv(int $$0, cmy $$1) {
-      this($$0, $$1, new brf(5));
-   }
+public class cqv implements bpw, cqu {
+   private final js<cua> b = js.a(1, cua.l);
+   @Nullable
+   private cyi<?> c;
 
-   public cqv(int $$0, cmy $$1, bqp $$2) {
-      super(crd.q, $$0);
-      this.l = $$2;
-      a($$2, 5);
-      $$2.d_($$1.l);
-      int $$3 = 51;
-
-      for (int $$4 = 0; $$4 < 5; $$4++) {
-         this.a(new crr($$2, $$4, 44 + $$4 * 18, 20));
-      }
-
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         for (int $$6 = 0; $$6 < 9; $$6++) {
-            this.a(new crr($$1, $$6 + $$5 * 9 + 9, 8 + $$6 * 18, $$5 * 18 + 51));
-         }
-      }
-
-      for (int $$7 = 0; $$7 < 9; $$7++) {
-         this.a(new crr($$1, $$7, 8 + $$7 * 18, 109));
-      }
+   @Override
+   public int b() {
+      return 1;
    }
 
    @Override
-   public boolean a(cmz $$0) {
-      return this.l.a($$0);
-   }
-
-   @Override
-   public cur a(cmz $$0, int $$1) {
-      cur $$2 = cur.l;
-      crr $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cur $$4 = $$3.g();
-         $$2 = $$4.s();
-         if ($$1 < this.l.b()) {
-            if (!this.a($$4, this.l.b(), this.i.size(), true)) {
-               return cur.l;
-            }
-         } else if (!this.a($$4, 0, this.l.b(), false)) {
-            return cur.l;
-         }
-
-         if ($$4.e()) {
-            $$3.e(cur.l);
-         } else {
-            $$3.b();
+   public boolean c() {
+      for (cua $$0 : this.b) {
+         if (!$$0.e()) {
+            return false;
          }
       }
 
-      return $$2;
+      return true;
    }
 
    @Override
-   public void b(cmz $$0) {
-      super.b($$0);
-      this.l.c($$0);
+   public cua a(int $$0) {
+      return this.b.get(0);
+   }
+
+   @Override
+   public cua a(int $$0, int $$1) {
+      return bpx.a(this.b, 0);
+   }
+
+   @Override
+   public cua b(int $$0) {
+      return bpx.a(this.b, 0);
+   }
+
+   @Override
+   public void a(int $$0, cua $$1) {
+      this.b.set(0, $$1);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cmh $$0) {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.b.clear();
+   }
+
+   @Override
+   public void a(@Nullable cyi<?> $$0) {
+      this.c = $$0;
+   }
+
+   @Nullable
+   @Override
+   public cyi<?> d() {
+      return this.c;
    }
 }

@@ -1,63 +1,45 @@
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class cib extends bsw {
-   public final cid b;
-   public final String c;
-   private final bsz d;
-
-   public cib(cid $$0, String $$1, float $$2, float $$3) {
-      super($$0.ak(), $$0.dP());
-      this.d = bsz.b($$2, $$3);
-      this.j_();
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   @Override
-   protected void a(ako.a $$0) {
-   }
-
-   @Override
-   protected void a(us $$0) {
-   }
-
-   @Override
-   protected void b(us $$0) {
-   }
-
-   @Override
-   public boolean bz() {
-      return true;
-   }
-
+public class cib {
+   private static final Logger a = LogUtils.getLogger();
+   private final chk b;
+   private final chu[] c = new chu[cia.c()];
    @Nullable
-   @Override
-   public cur dC() {
-      return this.b.dC();
+   private chu d;
+
+   public cib(chk $$0) {
+      this.b = $$0;
+      this.a(cia.k);
    }
 
-   @Override
-   public boolean a(brp $$0, float $$1) {
-      return this.b($$0) ? false : this.b.a(this, $$0, $$1);
+   public void a(cia<?> $$0) {
+      if (this.d == null || $$0 != this.d.i()) {
+         if (this.d != null) {
+            this.d.e();
+         }
+
+         this.d = this.b((cia<chu>)$$0);
+         if (!this.b.dP().B) {
+            this.b.ap().a(chk.b, $$0.b());
+         }
+
+         a.debug("Dragon is now in phase {} on the {}", $$0, this.b.dP().B ? "client" : "server");
+         this.d.d();
+      }
    }
 
-   @Override
-   public boolean t(bsw $$0) {
-      return this == $$0 || this.b == $$0;
-   }
-
-   @Override
-   public zw<aci> dl() {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public bsz a(bud $$0) {
+   public chu a() {
       return this.d;
    }
 
-   @Override
-   public boolean dN() {
-      return false;
+   public <T extends chu> T b(cia<T> $$0) {
+      int $$1 = $$0.b();
+      if (this.c[$$1] == null) {
+         this.c[$$1] = $$0.a(this.b);
+      }
+
+      return (T)this.c[$$1];
    }
 }

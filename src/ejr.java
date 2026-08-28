@@ -1,81 +1,61 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class ejr extends ejt {
+public class ejr extends ejx {
    public static final MapCodec<ejr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ejt.e.listOf().fieldOf("elements").forGetter($$0x -> $$0x.b), d()).apply($$0, ejr::new)
+      $$0 -> $$0.group(ehu.b.fieldOf("feature").forGetter($$0x -> $$0x.b), d()).apply($$0, ejr::new)
    );
-   private final List<ejt> b;
+   private final jj<ehu> b;
+   private final tx c;
 
-   public ejr(List<ejt> $$0, ejv.a $$1) {
+   protected ejr(jj<ehu> $$0, ejz.a $$1) {
       super($$1);
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Elements are empty");
-      } else {
-         this.b = $$0;
-         this.b($$1);
-      }
+      this.b = $$0;
+      this.c = this.b();
+   }
+
+   private tx b() {
+      tx $$0 = new tx();
+      $$0.a("name", "minecraft:bottom");
+      $$0.a("final_state", "minecraft:air");
+      $$0.a("pool", "minecraft:empty");
+      $$0.a("target", "minecraft:empty");
+      $$0.a("joint", dqn.a.a.c());
+      return $$0;
    }
 
    @Override
-   public kd a(emn $$0, dlo $$1) {
-      int $$2 = 0;
-      int $$3 = 0;
-      int $$4 = 0;
-
-      for (ejt $$5 : this.b) {
-         kd $$6 = $$5.a($$0, $$1);
-         $$2 = Math.max($$2, $$6.u());
-         $$3 = Math.max($$3, $$6.v());
-         $$4 = Math.max($$4, $$6.w());
-      }
-
-      return new kd($$2, $$3, $$4);
+   public ke a(emr $$0, dls $$1) {
+      return ke.g;
    }
 
    @Override
-   public List<emm.c> a(emn $$0, iz $$1, dlo $$2, azh $$3) {
-      return this.b.get(0).a($$0, $$1, $$2, $$3);
+   public List<emq.c> a(emr $$0, ja $$1, dls $$2, aym $$3) {
+      List<emq.c> $$4 = Lists.newArrayList();
+      $$4.add(new emq.c($$1, dfh.pb.o().a(djh.b, jh.a(jf.a, jf.d)), this.c));
+      return $$4;
    }
 
    @Override
-   public eie a(emn $$0, iz $$1, dlo $$2) {
-      Stream<eie> $$3 = this.b.stream().filter($$0x -> $$0x != ejm.b).map($$3x -> $$3x.a($$0, $$1, $$2));
-      return eie.b($$3::iterator).orElseThrow(() -> new IllegalStateException("Unable to calculate boundingbox for ListPoolElement"));
+   public eii a(emr $$0, ja $$1, dls $$2) {
+      ke $$3 = this.a($$0, $$2);
+      return new eii($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
    }
 
    @Override
-   public boolean a(emn $$0, dcv $$1, dct $$2, dub $$3, iz $$4, iz $$5, dlo $$6, eie $$7, azh $$8, boolean $$9) {
-      for (ejt $$10 : this.b) {
-         if (!$$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9)) {
-            return false;
-         }
-      }
-
-      return true;
+   public boolean a(emr $$0, dcz $$1, dcx $$2, due $$3, ja $$4, ja $$5, dls $$6, eii $$7, aym $$8, boolean $$9) {
+      return this.b.a().a($$1, $$3, $$8, $$4);
    }
 
    @Override
-   public eju<?> a() {
-      return eju.b;
-   }
-
-   @Override
-   public ejt a(ejv.a $$0) {
-      super.a($$0);
-      this.b($$0);
-      return this;
+   public ejy<?> a() {
+      return ejy.c;
    }
 
    @Override
    public String toString() {
-      return "List[" + this.b.stream().map(Object::toString).collect(Collectors.joining(", ")) + "]";
-   }
-
-   private void b(ejv.a $$0) {
-      this.b.forEach($$1 -> $$1.a($$0));
+      return "Feature[" + this.b + "]";
    }
 }

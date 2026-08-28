@@ -1,21 +1,45 @@
-public class gai extends gaj<ld> {
-   protected gai(fxx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ld $$7, gbz $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      float $$9 = this.r.i() * 0.4F + 0.6F;
-      this.v = this.a($$7.b().x(), $$9);
-      this.w = this.a($$7.b().y(), $$9);
-      this.x = this.a($$7.b().z(), $$9);
+public class gai extends gcl {
+   private final gcg a;
+
+   gai(fyd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gcg $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.a = $$7;
+      this.t = 4;
+      this.u = 0.008F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.b($$7);
    }
 
-   public static class a implements gbh<ld> {
-      private final gbz a;
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         this.b(this.a);
+      }
+   }
 
-      public a(gbz $$0) {
+   @Override
+   public gbp b() {
+      return gbp.b;
+   }
+
+   public static class a implements gbo<ln> {
+      private final gcg a;
+
+      public a(gcg $$0) {
          this.a = $$0;
       }
 
-      public gbe a(ld $$0, fxx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gai($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
+      public gbl a(ln $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gai($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

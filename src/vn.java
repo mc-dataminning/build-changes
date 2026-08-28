@@ -1,148 +1,85 @@
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
-import java.util.Objects;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.ByteToMessageDecoder;
+import io.netty.handler.codec.DecoderException;
+import java.nio.ByteBuffer;
+import java.util.List;
+import java.util.zip.DataFormatException;
+import java.util.zip.Inflater;
 
-public class vn implements vp {
-   private static final int b = 36;
-   public static final vr<vn> a = new vr.b<vn>() {
-      public vn a(DataInput $$0, vb $$1) throws IOException {
-         return vn.a(d($$0, $$1));
-      }
+public class vn extends ByteToMessageDecoder {
+   public static final int a = 2097152;
+   public static final int b = 8388608;
+   private final Inflater c;
+   private int d;
+   private boolean e;
 
-      @Override
-      public vm.b a(DataInput $$0, vm $$1, vb $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
-      }
-
-      private static String d(DataInput $$0, vb $$1) throws IOException {
-         $$1.b(36L);
-         String $$2 = $$0.readUTF();
-         $$1.a(2L, (long)$$2.length());
-         return $$2;
-      }
-
-      @Override
-      public void b(DataInput $$0, vb $$1) throws IOException {
-         vn.a($$0);
-      }
-
-      @Override
-      public String a() {
-         return "STRING";
-      }
-
-      @Override
-      public String b() {
-         return "TAG_String";
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-   };
-   private static final vn c = new vn("");
-   private static final char w = '"';
-   private static final char x = '\'';
-   private static final char y = '\\';
-   private static final char z = '\u0000';
-   private final String A;
-
-   public static void a(DataInput $$0) throws IOException {
-      $$0.skipBytes($$0.readUnsignedShort());
+   public vn(int $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
+      this.c = new Inflater();
    }
 
-   private vn(String $$0) {
-      Objects.requireNonNull($$0, "Null string not allowed");
-      this.A = $$0;
-   }
+   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
+      if ($$1.readableBytes() != 0) {
+         int $$3 = wl.a($$1);
+         if ($$3 == 0) {
+            $$2.add($$1.readBytes($$1.readableBytes()));
+         } else {
+            if (this.e) {
+               if ($$3 < this.d) {
+                  throw new DecoderException("Badly compressed packet - size of " + $$3 + " is below server threshold of " + this.d);
+               }
 
-   public static vn a(String $$0) {
-      return $$0.isEmpty() ? c : new vn($$0);
-   }
-
-   @Override
-   public void a(DataOutput $$0) throws IOException {
-      $$0.writeUTF(this.A);
-   }
-
-   @Override
-   public int a() {
-      return 36 + 2 * this.A.length();
-   }
-
-   @Override
-   public byte b() {
-      return 8;
-   }
-
-   @Override
-   public vr<vn> c() {
-      return a;
-   }
-
-   @Override
-   public String toString() {
-      return vp.super.s_();
-   }
-
-   public vn e() {
-      return this;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof vn && Objects.equals(this.A, ((vn)$$0).A);
-   }
-
-   @Override
-   public int hashCode() {
-      return this.A.hashCode();
-   }
-
-   @Override
-   public String s_() {
-      return this.A;
-   }
-
-   @Override
-   public void a(vt $$0) {
-      $$0.a(this);
-   }
-
-   public static String b(String $$0) {
-      StringBuilder $$1 = new StringBuilder(" ");
-      char $$2 = 0;
-
-      for (int $$3 = 0; $$3 < $$0.length(); $$3++) {
-         char $$4 = $$0.charAt($$3);
-         if ($$4 == '\\') {
-            $$1.append('\\');
-         } else if ($$4 == '"' || $$4 == '\'') {
-            if ($$2 == 0) {
-               $$2 = (char)($$4 == '"' ? 39 : 34);
+               if ($$3 > 8388608) {
+                  throw new DecoderException("Badly compressed packet - size of " + $$3 + " is larger than protocol maximum of 8388608");
+               }
             }
 
-            if ($$2 == $$4) {
-               $$1.append('\\');
-            }
+            this.a($$1);
+            ByteBuf $$4 = this.a($$0, $$3);
+            this.c.reset();
+            $$2.add($$4);
          }
-
-         $$1.append($$4);
       }
-
-      if ($$2 == 0) {
-         $$2 = '"';
-      }
-
-      $$1.setCharAt(0, $$2);
-      $$1.append($$2);
-      return $$1.toString();
    }
 
-   @Override
-   public vm.b a(vm $$0) {
-      return $$0.a(this.A);
+   private void a(ByteBuf $$0) {
+      ByteBuffer $$1;
+      if ($$0.nioBufferCount() > 0) {
+         $$1 = $$0.nioBuffer();
+         $$0.skipBytes($$0.readableBytes());
+      } else {
+         $$1 = ByteBuffer.allocateDirect($$0.readableBytes());
+         $$0.readBytes($$1);
+         $$1.flip();
+      }
+
+      this.c.setInput($$1);
+   }
+
+   private ByteBuf a(ChannelHandlerContext $$0, int $$1) throws DataFormatException {
+      ByteBuf $$2 = $$0.alloc().directBuffer($$1);
+
+      try {
+         ByteBuffer $$3 = $$2.internalNioBuffer(0, $$1);
+         int $$4 = $$3.position();
+         this.c.inflate($$3);
+         int $$5 = $$3.position() - $$4;
+         if ($$5 != $$1) {
+            throw new DecoderException("Badly compressed packet - actual length of uncompressed payload " + $$5 + " is does not match declared size " + $$1);
+         } else {
+            $$2.writerIndex($$2.writerIndex() + $$5);
+            return $$2;
+         }
+      } catch (Exception var7) {
+         $$2.release();
+         throw var7;
+      }
+   }
+
+   public void a(int $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 }

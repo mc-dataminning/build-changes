@@ -1,55 +1,13 @@
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public abstract class atz<T> {
-   private final evj a;
-
-   protected atz(evj $$0) {
-      this.a = $$0;
+public abstract class atz<T> implements ato {
+   @Override
+   public final CompletableFuture<Void> a(ato.a $$0, atu $$1, bmr $$2, bmr $$3, Executor $$4, Executor $$5) {
+      return CompletableFuture.<T>supplyAsync(() -> this.b($$1, $$2), $$4).thenCompose($$0::a).thenAcceptAsync($$2x -> this.a((T)$$2x, $$1, $$3), $$5);
    }
 
-   @Nullable
-   public T a(Path $$0, List<evk> $$1) throws IOException {
-      Path $$2 = $$0;
+   protected abstract T b(atu var1, bmr var2);
 
-      BasicFileAttributes $$3;
-      try {
-         $$3 = Files.readAttributes($$0, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-      } catch (NoSuchFileException var6) {
-         return null;
-      }
-
-      if ($$3.isSymbolicLink()) {
-         this.a.a($$0, $$1);
-         if (!$$1.isEmpty()) {
-            return null;
-         }
-
-         $$2 = Files.readSymbolicLink($$0);
-         $$3 = Files.readAttributes($$2, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-      }
-
-      if ($$3.isDirectory()) {
-         this.a.b($$2, $$1);
-         if (!$$1.isEmpty()) {
-            return null;
-         } else {
-            return !Files.isRegularFile($$2.resolve("pack.mcmeta")) ? null : this.c($$2);
-         }
-      } else {
-         return $$3.isRegularFile() && $$2.getFileName().toString().endsWith(".zip") ? this.d($$2) : null;
-      }
-   }
-
-   @Nullable
-   protected abstract T d(Path var1) throws IOException;
-
-   @Nullable
-   protected abstract T c(Path var1) throws IOException;
+   protected abstract void a(T var1, atu var2, bmr var3);
 }

@@ -1,17 +1,8 @@
-import java.io.IOException;
-import java.io.InputStream;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class gpx {
-   @Deprecated
-   public static int[] a(aup $$0, alf $$1) throws IOException {
-      int[] var4;
-      try (
-         InputStream $$2 = $$0.open($$1);
-         ezb $$3 = ezb.a($$2);
-      ) {
-         var4 = $$3.e();
-      }
-
-      return var4;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gpx {
 }

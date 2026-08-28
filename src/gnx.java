@@ -1,41 +1,26 @@
-import java.util.List;
+public class gnx<T extends bsy> extends gns<T, fwg<T>> {
+   private final fui<T> a;
 
-public class gnx<T extends cmd, M extends fwo<T>> extends gnl<T, M> {
-   private final alf a;
-   private final gnx.a<T> b;
-   private final gnx.b<T, M> c;
-
-   public gnx(gkv<T, M> $$0, alf $$1, gnx.a<T> $$2, gnx.b<T, M> $$3) {
+   public gnx(glc<T, fwg<T>> $$0, fxe $$1) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
+      this.a = new fwg<>($$1.a(fxh.bt));
    }
 
-   public void a(faa $$0, gdq $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.ch()) {
-         this.a();
-         fae $$10 = $$1.getBuffer(gdy.j(this.a));
-         this.c().a($$0, $$10, $$2, gka.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, this.b.apply($$3, $$6, $$7));
-         this.b();
+   public void a(fag $$0, gdx $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      ffn $$10 = ffn.Q();
+      boolean $$11 = $$10.b($$3) && $$3.ch();
+      if (!$$3.ch() || $$11) {
+         fak $$12;
+         if ($$11) {
+            $$12 = $$1.getBuffer(gef.r(this.a($$3)));
+         } else {
+            $$12 = $$1.getBuffer(gef.i(this.a($$3)));
+         }
+
+         this.c().a(this.a);
+         this.a.a($$3, $$4, $$5, $$6);
+         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
+         this.a.a($$0, $$12, $$2, gkh.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
       }
-   }
-
-   private void a() {
-      List<fxc> $$0 = this.c.getPartsToDraw(this.c());
-      this.c().a().e().forEach($$0x -> $$0x.l = true);
-      $$0.forEach($$0x -> $$0x.l = false);
-   }
-
-   private void b() {
-      this.c().a().e().forEach($$0 -> $$0.l = false);
-   }
-
-   public interface a<T extends cmd> {
-      float apply(T var1, float var2, float var3);
-   }
-
-   public interface b<T extends cmd, M extends fuc<T>> {
-      List<fxc> getPartsToDraw(M var1);
    }
 }

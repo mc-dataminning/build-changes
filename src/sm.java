@@ -1,15 +1,35 @@
-public class sm {
-   public static final ale<ean<?, ?>> a = si.a("pile_hay");
-   public static final ale<ean<?, ?>> b = si.a("pile_melon");
-   public static final ale<ean<?, ?>> c = si.a("pile_snow");
-   public static final ale<ean<?, ?>> d = si.a("pile_ice");
-   public static final ale<ean<?, ?>> e = si.a("pile_pumpkin");
+import javax.annotation.Nullable;
 
-   public static void a(rc<ean<?, ?>> $$0) {
-      si.a($$0, a, eba.j, new ecw(new efm(dfd.ij)));
-      si.a($$0, b, eba.j, new ecw(eff.a(dfd.fa)));
-      si.a($$0, c, eba.j, new ecw(eff.a(dfd.dN)));
-      si.a($$0, d, eba.j, new ecw(new efp(bpg.<dse>a().a(dfd.mW.o(), 1).a(dfd.iC.o(), 5))));
-      si.a($$0, e, eba.j, new ecw(new efp(bpg.<dse>a().a(dfd.eZ.o(), 19).a(dfd.ef.o(), 1))));
+public class sm extends sl {
+   private final ja a;
+   private final ja b;
+   private final long c;
+
+   public sm(String $$0, ja $$1, ja $$2, long $$3) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
+   }
+
+   @Override
+   public String getMessage() {
+      String $$0 = this.a.u() + "," + this.a.v() + "," + this.a.w() + " (relative: " + this.b.u() + "," + this.b.v() + "," + this.b.w() + ")";
+      return super.getMessage() + " at " + $$0 + " (t=" + this.c + ")";
+   }
+
+   @Nullable
+   public String a() {
+      return super.getMessage();
+   }
+
+   @Nullable
+   public ja b() {
+      return this.b;
+   }
+
+   @Nullable
+   public ja c() {
+      return this.a;
    }
 }

@@ -1,23 +1,18 @@
 import com.mojang.serialization.Codec;
 
-public class ecb extends eba<eds> {
-   public ecb(Codec<eds> $$0) {
+public class ecb extends ebe<edt> {
+   public ecb(Codec<edt> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebc<eds> $$0) {
-      dcv $$1 = $$0.b();
-      iz $$2 = $$0.e();
-      eds $$3 = $$0.f();
-
-      for (edm.a $$4 : $$3.b) {
-         if ($$4.b.a($$1.a_($$2), $$0.d())) {
-            $$1.a($$2, $$4.c, 2);
-            break;
-         }
-      }
-
-      return true;
+   public boolean a(ebg<edt> $$0) {
+      aym $$1 = $$0.d();
+      edt $$2 = $$0.f();
+      dcz $$3 = $$0.b();
+      due $$4 = $$0.c();
+      ja $$5 = $$0.e();
+      boolean $$6 = $$1.h();
+      return ($$6 ? $$2.b : $$2.c).a().a($$3, $$4, $$1, $$5);
    }
 }

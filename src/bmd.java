@@ -1,82 +1,33 @@
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.Writer;
-import java.nio.channels.Channels;
-import java.nio.channels.FileChannel;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.ImmutableStringReader;
+import com.mojang.brigadier.StringReader;
+import java.util.Optional;
 
-public class bmd<T> implements Closeable {
-   private static final Gson a = new Gson();
-   private final Codec<T> b;
-   final FileChannel c;
-   private final AtomicInteger d = new AtomicInteger(1);
+public abstract class bmd<C, V> implements blx<StringReader, V>, bme {
+   private final blr<akk> b;
+   protected final C a;
 
-   public bmd(Codec<T> $$0, FileChannel $$1) {
+   protected bmd(blr<akk> $$0, C $$1) {
       this.b = $$0;
-      this.c = $$1;
-   }
-
-   public static <T> bmd<T> a(Codec<T> $$0, Path $$1) throws IOException {
-      FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.WRITE, StandardOpenOption.READ, StandardOpenOption.CREATE);
-      return new bmd<>($$0, $$2);
-   }
-
-   public void a(T $$0) throws IOException {
-      JsonElement $$1 = (JsonElement)this.b.encodeStart(JsonOps.INSTANCE, $$0).getOrThrow(IOException::new);
-      this.c.position(this.c.size());
-      Writer $$2 = Channels.newWriter(this.c, StandardCharsets.UTF_8);
-      a.toJson($$1, a.newJsonWriter($$2));
-      $$2.write(10);
-      $$2.flush();
-   }
-
-   public bme<T> a() throws IOException {
-      if (this.d.get() <= 0) {
-         throw new IOException("Event log has already been closed");
-      } else {
-         this.d.incrementAndGet();
-         final bme<T> $$0 = bme.a(this.b, Channels.newReader(this.c, StandardCharsets.UTF_8));
-         return new bme<T>() {
-            private volatile long c;
-
-            @Nullable
-            @Override
-            public T a() throws IOException {
-               Object var1;
-               try {
-                  bmd.this.c.position(this.c);
-                  var1 = $$0.a();
-               } finally {
-                  this.c = bmd.this.c.position();
-               }
-
-               return (T)var1;
-            }
-
-            @Override
-            public void close() throws IOException {
-               bmd.this.b();
-            }
-         };
-      }
+      this.a = $$1;
    }
 
    @Override
-   public void close() throws IOException {
-      this.b();
-   }
-
-   void b() throws IOException {
-      if (this.d.decrementAndGet() <= 0) {
-         this.c.close();
+   public Optional<V> a(blw<StringReader> $$0) {
+      $$0.b().skipWhitespace();
+      int $$1 = $$0.c();
+      Optional<akk> $$2 = $$0.b(this.b);
+      if ($$2.isPresent()) {
+         try {
+            return Optional.of(this.a((ImmutableStringReader)$$0.b(), $$2.get()));
+         } catch (Exception var5) {
+            $$0.a().a($$1, this, var5);
+            return Optional.empty();
+         }
+      } else {
+         $$0.a().a($$1, this, akk.c.createWithContext((ImmutableStringReader)$$0.b()));
+         return Optional.empty();
       }
    }
+
+   protected abstract V a(ImmutableStringReader var1, akk var2) throws Exception;
 }

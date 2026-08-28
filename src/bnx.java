@@ -1,8 +1,21 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum bnx {
+   a("pathfinding"),
+   b("event-loops"),
+   c("mailboxes"),
+   d("ticking"),
+   e("jvm"),
+   f("chunk rendering"),
+   g("chunk rendering dispatching"),
+   h("cpu"),
+   i("gpu");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface bnx {
+   private final String j;
+
+   private bnx(final String $$0) {
+      this.j = $$0;
+   }
+
+   public String a() {
+      return this.j;
+   }
 }

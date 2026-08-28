@@ -1,30 +1,32 @@
-public class cbz extends cap {
-   private final bua a;
+import com.mojang.serialization.Codec;
 
-   public cbz(bua $$0) {
-      this.a = $$0;
+public enum cbz implements ayz {
+   a("major_negative", -5, 100, 10, 10),
+   b("minor_negative", -1, 200, 20, 20),
+   c("minor_positive", 1, 25, 1, 5),
+   d("major_positive", 5, 20, 0, 20),
+   e("trading", 1, 25, 2, 20);
+
+   public static final int f = 25;
+   public static final int g = 20;
+   public static final int h = 2;
+   public final String i;
+   public final int j;
+   public final int k;
+   public final int l;
+   public final int m;
+   public static final Codec<cbz> n = ayz.a(cbz::values);
+
+   private cbz(final String $$0, final int $$1, final int $$2, final int $$3, final int $$4) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.m = $$4;
    }
 
    @Override
-   public boolean a() {
-      return this.a.aE() && !this.a.dP().b_(this.a.dp()).a(awv.a);
-   }
-
-   @Override
-   public void c() {
-      iz $$0 = null;
-
-      for (iz $$2 : iz.b(
-         ayz.a(this.a.du() - 2.0), ayz.a(this.a.dw() - 2.0), ayz.a(this.a.dA() - 2.0), ayz.a(this.a.du() + 2.0), this.a.dv(), ayz.a(this.a.dA() + 2.0)
-      )) {
-         if (this.a.dP().b_($$2).a(awv.a)) {
-            $$0 = $$2;
-            break;
-         }
-      }
-
-      if ($$0 != null) {
-         this.a.H().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
-      }
+   public String c() {
+      return this.i;
    }
 }

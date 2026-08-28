@@ -1,146 +1,142 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiFunction;
+import com.google.common.collect.Sets;
+import java.util.Optional;
+import java.util.Set;
 import java.util.function.Consumer;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.mutable.MutableInt;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
 public class eqo {
-   public static final Codec<eqo> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eqy.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.b),
-               etw.a.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.c),
-               erz.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.e),
-               euq.a.fieldOf("rolls").forGetter($$0x -> $$0x.g),
-               euq.a.fieldOf("bonus_rolls").orElse(eun.a(0.0F)).forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, eqo::new)
-   );
-   private final List<era> b;
-   private final List<etu> c;
-   private final Predicate<eqk> d;
-   private final List<erx> e;
-   private final BiFunction<cur, eqk, cur> f;
-   private final eup g;
-   private final eup h;
+   private final eqr a;
+   private final aym b;
+   private final jk.a c;
+   private final Set<eqo.c<?>> d = Sets.newLinkedHashSet();
 
-   eqo(List<era> $$0, List<etu> $$1, List<erx> $$2, eup $$3, eup $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = ac.a($$1);
-      this.e = $$2;
-      this.f = erz.a($$2);
-      this.g = $$3;
-      this.h = $$4;
+   eqo(eqr $$0, aym $$1, jk.a $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   private void b(Consumer<cur> $$0, eqk $$1) {
-      azh $$2 = $$1.b();
-      List<eqz> $$3 = Lists.newArrayList();
-      MutableInt $$4 = new MutableInt();
+   public boolean a(eth<?> $$0) {
+      return this.a.a($$0);
+   }
 
-      for (era $$5 : this.b) {
-         $$5.expand($$1, $$3x -> {
-            int $$4x = $$3x.a($$1.c());
-            if ($$4x > 0) {
-               $$3.add($$3x);
-               $$4.add($$4x);
-            }
-         });
+   public <T> T b(eth<T> $$0) {
+      return this.a.b($$0);
+   }
+
+   public void a(akk $$0, Consumer<cua> $$1) {
+      this.a.a($$0, $$1);
+   }
+
+   @Nullable
+   public <T> T c(eth<T> $$0) {
+      return this.a.d($$0);
+   }
+
+   public boolean a(eqo.c<?> $$0) {
+      return this.d.contains($$0);
+   }
+
+   public boolean b(eqo.c<?> $$0) {
+      return this.d.add($$0);
+   }
+
+   public void c(eqo.c<?> $$0) {
+      this.d.remove($$0);
+   }
+
+   public jk.a a() {
+      return this.c;
+   }
+
+   public aym b() {
+      return this.b;
+   }
+
+   public float c() {
+      return this.a.b();
+   }
+
+   public aqk d() {
+      return this.a.a();
+   }
+
+   public static eqo.c<eqt> a(eqt $$0) {
+      return new eqo.c<>(eqq.c, $$0);
+   }
+
+   public static eqo.c<etz> a(etz $$0) {
+      return new eqo.c<>(eqq.a, $$0);
+   }
+
+   public static eqo.c<esc> a(esc $$0) {
+      return new eqo.c<>(eqq.b, $$0);
+   }
+
+   public static class a {
+      private final eqr a;
+      @Nullable
+      private aym b;
+
+      public a(eqr $$0) {
+         this.a = $$0;
       }
 
-      int $$6 = $$3.size();
-      if ($$4.intValue() != 0 && $$6 != 0) {
-         if ($$6 == 1) {
-            $$3.get(0).a($$0, $$1);
+      public eqo.a a(long $$0) {
+         if ($$0 != 0L) {
+            this.b = aym.a($$0);
+         }
+
+         return this;
+      }
+
+      public aqk a() {
+         return this.a.a();
+      }
+
+      public eqo a(Optional<akk> $$0) {
+         aqk $$1 = this.a();
+         MinecraftServer $$2 = $$1.o();
+         aym $$3 = Optional.ofNullable(this.b).or(() -> $$0.map($$1::a)).orElseGet($$1::E_);
+         return new eqo(this.a, $$3, $$2.be().b());
+      }
+   }
+
+   public static enum b implements ayz {
+      a("this", etk.a),
+      b("attacker", etk.d),
+      c("direct_attacker", etk.e),
+      d("attacking_player", etk.b);
+
+      public static final ayz.a<eqo.b> e = ayz.a(eqo.b::values);
+      private final String f;
+      private final eth<? extends bsd> g;
+
+      private b(final String $$0, final eth<? extends bsd> $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public eth<? extends bsd> a() {
+         return this.g;
+      }
+
+      public static eqo.b a(String $$0) {
+         eqo.b $$1 = e.a($$0);
+         if ($$1 != null) {
+            return $$1;
          } else {
-            int $$7 = $$2.a($$4.intValue());
-
-            for (eqz $$8 : $$3) {
-               $$7 -= $$8.a($$1.c());
-               if ($$7 < 0) {
-                  $$8.a($$0, $$1);
-                  return;
-               }
-            }
+            throw new IllegalArgumentException("Invalid entity target " + $$0);
          }
       }
-   }
 
-   public void a(Consumer<cur> $$0, eqk $$1) {
-      if (this.d.test($$1)) {
-         Consumer<cur> $$2 = erx.a(this.f, $$0, $$1);
-         int $$3 = this.g.a($$1) + ayz.d(this.h.b($$1) * $$1.c());
-
-         for (int $$4 = 0; $$4 < $$3; $$4++) {
-            this.b($$2, $$1);
-         }
+      @Override
+      public String c() {
+         return this.f;
       }
    }
 
-   public void a(eqq $$0) {
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".condition[" + $$1 + "]"));
-      }
-
-      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
-         this.e.get($$2).a($$0.a(".functions[" + $$2 + "]"));
-      }
-
-      for (int $$3 = 0; $$3 < this.b.size(); $$3++) {
-         this.b.get($$3).a($$0.a(".entries[" + $$3 + "]"));
-      }
-
-      this.g.a($$0.a(".rolls"));
-      this.h.a($$0.a(".bonusRolls"));
-   }
-
-   public static eqo.a a() {
-      return new eqo.a();
-   }
-
-   public static class a implements ert<eqo.a>, etn<eqo.a> {
-      private final Builder<era> a = ImmutableList.builder();
-      private final Builder<etu> b = ImmutableList.builder();
-      private final Builder<erx> c = ImmutableList.builder();
-      private eup d = eun.a(1.0F);
-      private eup e = eun.a(0.0F);
-
-      public eqo.a a(eup $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public eqo.a a() {
-         return this;
-      }
-
-      public eqo.a b(eup $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public eqo.a a(era.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      public eqo.a a(etu.a $$0) {
-         this.b.add($$0.build());
-         return this;
-      }
-
-      public eqo.a a(erx.a $$0) {
-         this.c.add($$0.b());
-         return this;
-      }
-
-      public eqo b() {
-         return new eqo(this.a.build(), this.b.build(), this.c.build(), this.d, this.e);
-      }
+   public static record c<T>(eqq<T> a, T b) {
    }
 }

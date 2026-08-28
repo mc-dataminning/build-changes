@@ -1,40 +1,61 @@
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public interface oo {
-   alf a = new alf("recipes/root");
+public class oo implements oh {
+   private final oi b;
+   private final ctv c;
+   private final cyd d;
+   private final int e;
+   private final Map<String, an<?>> f = new LinkedHashMap<>();
+   @Nullable
+   private String g;
+   private final cyv.a<?> h;
 
-   oo a(String var1, an<?> var2);
-
-   oo a(@Nullable String var1);
-
-   cum a();
-
-   void a(oq var1, alf var2);
-
-   default void a(oq $$0) {
-      this.a($$0, a(this.a()));
+   public oo(oi $$0, cyv.a<?> $$1, cyd $$2, dcc $$3, int $$4) {
+      this.b = $$0;
+      this.h = $$1;
+      this.c = $$3.r();
+      this.d = $$2;
+      this.e = $$4;
    }
 
-   default void a(oq $$0, String $$1) {
-      alf $$2 = a(this.a());
-      alf $$3 = new alf($$1);
-      if ($$3.equals($$2)) {
-         throw new IllegalStateException("Recipe " + $$1 + " should remove its 'save' argument as it is equal to default one");
-      } else {
-         this.a($$0, $$3);
+   public static oo a(cyd $$0, oi $$1, dcc $$2) {
+      return new oo($$1, czd::new, $$0, $$2, 1);
+   }
+
+   public static oo a(cyd $$0, oi $$1, dcc $$2, int $$3) {
+      return new oo($$1, czd::new, $$0, $$2, $$3);
+   }
+
+   public oo b(String $$0, an<?> $$1) {
+      this.f.put($$0, $$1);
+      return this;
+   }
+
+   public oo b(@Nullable String $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   @Override
+   public ctv a() {
+      return this.c;
+   }
+
+   @Override
+   public void a(oj $$0, akk $$1) {
+      this.a($$1);
+      ae.a $$2 = $$0.a().a("has_the_recipe", dq.a($$1)).a(aj.a.a($$1)).a(ai.a.b);
+      this.f.forEach($$2::a);
+      cyv $$3 = this.h.create(Objects.requireNonNullElse(this.g, ""), this.d, new cua(this.c, this.e));
+      $$0.a($$1, $$3, $$2.b($$1.d("recipes/" + this.b.a() + "/")));
+   }
+
+   private void a(akk $$0) {
+      if (this.f.isEmpty()) {
+         throw new IllegalStateException("No way of obtaining recipe " + $$0);
       }
-   }
-
-   static alf a(dbz $$0) {
-      return lp.h.b($$0.r());
-   }
-
-   static cyn a(op $$0) {
-      return switch ($$0) {
-         case a -> cyn.a;
-         case e, f -> cyn.c;
-         case c -> cyn.b;
-         default -> cyn.d;
-      };
    }
 }

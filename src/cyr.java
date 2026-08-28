@@ -1,62 +1,65 @@
-import java.util.ArrayList;
-import java.util.List;
-
-public class cyr extends cyp {
-   private static final cyu a = cyu.a(cuu.qO);
-   private static final cyu b = cyu.a(cuu.pu);
-   private static final cyu c = cyu.a(cuu.uv);
-
-   public cyr(cyn $$0) {
+public class cyr extends cxy {
+   public cyr(cxv $$0) {
       super($$0);
    }
 
-   public boolean a(cqm $$0, dca $$1) {
-      boolean $$2 = false;
-      int $$3 = 0;
+   public boolean a(cxw $$0, dcd $$1) {
+      cua $$2 = cua.l;
+      cua $$3 = cua.l;
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cur $$5 = $$0.a($$4);
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cua $$5 = $$0.a($$4);
          if (!$$5.e()) {
-            if (a.a($$5)) {
-               if ($$2) {
+            if ($$5.g() instanceof crv) {
+               if (!$$3.e()) {
                   return false;
                }
 
-               $$2 = true;
-            } else if (b.a($$5)) {
-               if (++$$3 > 3) {
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cud.vs)) {
                   return false;
                }
-            } else if (!c.a($$5)) {
-               return false;
+
+               if (!$$2.e()) {
+                  return false;
+               }
+
+               dpe $$6 = $$5.a(kn.X, dpe.a);
+               if (!$$6.b().isEmpty()) {
+                  return false;
+               }
+
+               $$2 = $$5;
             }
          }
       }
 
-      return $$2 && $$3 >= 1;
+      return !$$2.e() && !$$3.e();
    }
 
-   public cur a(cqm $$0, jk.a $$1) {
-      List<cxk> $$2 = new ArrayList<>();
-      int $$3 = 0;
+   public cua a(cxw $$0, jl.a $$1) {
+      cua $$2 = cua.l;
+      cua $$3 = cua.l;
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cur $$5 = $$0.a($$4);
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cua $$5 = $$0.a($$4);
          if (!$$5.e()) {
-            if (b.a($$5)) {
-               $$3++;
-            } else if (c.a($$5)) {
-               cxk $$6 = $$5.a(km.T);
-               if ($$6 != null) {
-                  $$2.add($$6);
-               }
+            if ($$5.g() instanceof crv) {
+               $$2 = $$5;
+            } else if ($$5.a(cud.vs)) {
+               $$3 = $$5.s();
             }
          }
       }
 
-      cur $$7 = new cur(cuu.uu, 3);
-      $$7.b(km.U, new cxl($$3, $$2));
-      return $$7;
+      if ($$3.e()) {
+         return $$3;
+      } else {
+         $$3.b(kn.X, $$2.a(kn.X));
+         $$3.b(kn.Y, ((crv)$$2.g()).b());
+         return $$3;
+      }
    }
 
    @Override
@@ -65,12 +68,7 @@ public class cyr extends cyp {
    }
 
    @Override
-   public cur a(jk.a $$0) {
-      return new cur(cuu.uu);
-   }
-
-   @Override
-   public czb<?> ao_() {
-      return czb.g;
+   public cyl<?> ap_() {
+      return cyl.l;
    }
 }

@@ -3,28 +3,43 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class eqx extends erc {
-   public static final MapCodec<eqx> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(lp.h.r().fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, eqx::new)
-   );
-   private final ji<cum> j;
+public abstract class eqx extends ere {
+   protected final List<ere> d;
+   private final eqw a;
 
-   private eqx(ji<cum> $$0, int $$1, int $$2, List<etu> $$3, List<erx> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   protected eqx(List<ere> $$0, List<etz> $$1) {
+      super($$1);
+      this.d = $$0;
+      this.a = this.a($$0);
    }
 
    @Override
-   public erb a() {
-      return eqy.c;
+   public void a(equ $$0) {
+      super.a($$0);
+      if (this.d.isEmpty()) {
+         $$0.b("Empty children list");
+      }
+
+      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
+         this.d.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+      }
    }
+
+   protected abstract eqw a(List<? extends eqw> var1);
 
    @Override
-   public void a(Consumer<cur> $$0, eqk $$1) {
-      $$0.accept(new cur(this.j));
+   public final boolean expand(eqo $$0, Consumer<erd> $$1) {
+      return !this.a($$0) ? false : this.a.expand($$0, $$1);
    }
 
-   public static erc.a<?> a(dbz $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new eqx($$0.r().o(), $$1, $$2, $$3, $$4));
+   public static <T extends eqx> MapCodec<T> a(eqx.a<T> $$0) {
+      return RecordCodecBuilder.mapCodec(
+         $$1 -> $$1.group(erc.a.listOf().optionalFieldOf("children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
+      );
+   }
+
+   @FunctionalInterface
+   public interface a<T extends eqx> {
+      T create(List<ere> var1, List<etz> var2);
    }
 }

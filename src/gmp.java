@@ -1,17 +1,44 @@
-public class gmp<T extends btr, M extends fuc<T>> extends gnl<T, M> {
-   private final gdm a;
+public class gmp<T extends bsy, M extends fvn<T>> extends gob<T, M> {
+   private static final akk a = new akk("textures/entity/bee/bee_stinger.png");
 
-   public gmp(gkv<T, M> $$0, gdm $$1) {
+   public gmp(gkh<T, M> $$0) {
       super($$0);
-      this.a = $$1;
    }
 
-   public void a(faa $$0, gdq $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      $$0.a();
-      $$0.a(0.0F, 0.4F, -0.4F);
-      $$0.a(a.b.rotationDegrees(180.0F));
-      cur $$10 = $$3.a(btd.a);
-      this.a.a($$3, $$10, cuo.h, false, $$0, $$1, $$2);
-      $$0.b();
+   @Override
+   protected int a(T $$0) {
+      return $$0.eQ();
+   }
+
+   @Override
+   protected void a(fag $$0, gdx $$1, int $$2, bsd $$3, float $$4, float $$5, float $$6, float $$7) {
+      float $$8 = aye.c($$4 * $$4 + $$6 * $$6);
+      float $$9 = (float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI);
+      float $$10 = (float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI);
+      $$0.a(0.0F, 0.0F, 0.0F);
+      $$0.a(a.d.rotationDegrees($$9 - 90.0F));
+      $$0.a(a.f.rotationDegrees($$10));
+      float $$11 = 0.0F;
+      float $$12 = 0.125F;
+      float $$13 = 0.0F;
+      float $$14 = 0.0625F;
+      float $$15 = 0.03125F;
+      $$0.a(a.b.rotationDegrees(45.0F));
+      $$0.b(0.03125F, 0.03125F, 0.03125F);
+      $$0.a(2.5F, 0.0F, 0.0F);
+      fak $$16 = $$1.getBuffer(gef.e(a));
+
+      for (int $$17 = 0; $$17 < 4; $$17++) {
+         $$0.a(a.b.rotationDegrees(90.0F));
+         fag.a $$18 = $$0.c();
+         a($$16, $$18, -4.5F, -1, 0.0F, 0.0F, $$2);
+         a($$16, $$18, 4.5F, -1, 0.125F, 0.0F, $$2);
+         a($$16, $$18, 4.5F, 1, 0.125F, 0.0625F, $$2);
+         a($$16, $$18, -4.5F, 1, 0.0F, 0.0625F, $$2);
+      }
+   }
+
+   private static void a(fak $$0, fag.a $$1, float $$2, int $$3, float $$4, float $$5, int $$6) {
+      $$0.a($$1, $$2, (float)$$3, 0.0F).a(255, 255, 255, 255).a($$4, $$5).c(goz.d).b($$6).b($$1, 0.0F, 1.0F, 0.0F).e();
    }
 }

@@ -1,345 +1,253 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public class dlb {
-   private final dca a;
-   private final iz b;
-   private final deq c;
-   private dse d;
-   private final boolean e;
-   private final List<iz> f = Lists.newArrayList();
+public class dlb extends deu {
+   public static final MapCodec<dlb> d = b(dlb::new);
+   public static final dtf<dtl> e = dsx.ah;
+   public static final dsy f = dsx.w;
 
-   public dlb(dca $$0, iz $$1, dse $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.d = $$2;
-      this.c = (deq)$$2.b();
-      dti $$3 = $$2.c(this.c.c());
-      this.e = this.c.b();
-      this.a($$3);
+   @Override
+   public MapCodec<dlb> a() {
+      return d;
    }
 
-   public List<iz> a() {
-      return this.f;
+   protected dlb(dsg.d $$0) {
+      super(true, $$0);
+      this.k(this.E.b().a(e, dtl.a).a(f, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)));
    }
 
-   private void a(dti $$0) {
-      this.f.clear();
-      switch ($$0) {
-         case a:
-            this.f.add(this.b.e());
-            this.f.add(this.b.f());
-            break;
-         case b:
-            this.f.add(this.b.g());
-            this.f.add(this.b.h());
-            break;
-         case c:
-            this.f.add(this.b.g());
-            this.f.add(this.b.h().c());
-            break;
-         case d:
-            this.f.add(this.b.g().c());
-            this.f.add(this.b.h());
-            break;
-         case e:
-            this.f.add(this.b.e().c());
-            this.f.add(this.b.f());
-            break;
-         case f:
-            this.f.add(this.b.e());
-            this.f.add(this.b.f().c());
-            break;
-         case g:
-            this.f.add(this.b.h());
-            this.f.add(this.b.f());
-            break;
-         case h:
-            this.f.add(this.b.g());
-            this.f.add(this.b.f());
-            break;
-         case i:
-            this.f.add(this.b.g());
-            this.f.add(this.b.e());
-            break;
-         case j:
-            this.f.add(this.b.h());
-            this.f.add(this.b.e());
-      }
-   }
-
-   private void d() {
-      for (int $$0 = 0; $$0 < this.f.size(); $$0++) {
-         dlb $$1 = this.b(this.f.get($$0));
-         if ($$1 != null && $$1.a(this)) {
-            this.f.set($$0, $$1.b);
-         } else {
-            this.f.remove($$0--);
-         }
-      }
-   }
-
-   private boolean a(iz $$0) {
-      return deq.a(this.a, $$0) || deq.a(this.a, $$0.c()) || deq.a(this.a, $$0.d());
-   }
-
-   @Nullable
-   private dlb b(iz $$0) {
-      dse $$2 = this.a.a_($$0);
-      if (deq.g($$2)) {
-         return new dlb(this.a, $$0, $$2);
-      } else {
-         iz $$1 = $$0.c();
-         $$2 = this.a.a_($$1);
-         if (deq.g($$2)) {
-            return new dlb(this.a, $$1, $$2);
-         } else {
-            $$1 = $$0.d();
-            $$2 = this.a.a_($$1);
-            return deq.g($$2) ? new dlb(this.a, $$1, $$2) : null;
-         }
-      }
-   }
-
-   private boolean a(dlb $$0) {
-      return this.c($$0.b);
-   }
-
-   private boolean c(iz $$0) {
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         iz $$2 = this.f.get($$1);
-         if ($$2.u() == $$0.u() && $$2.w() == $$0.w()) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   protected int b() {
-      int $$0 = 0;
-
-      for (je $$1 : je.c.a) {
-         if (this.a(this.b.a($$1))) {
-            $$0++;
-         }
-      }
-
-      return $$0;
-   }
-
-   private boolean b(dlb $$0) {
-      return this.a($$0) || this.f.size() != 2;
-   }
-
-   private void c(dlb $$0) {
-      this.f.add($$0.b);
-      iz $$1 = this.b.e();
-      iz $$2 = this.b.f();
-      iz $$3 = this.b.g();
-      iz $$4 = this.b.h();
-      boolean $$5 = this.c($$1);
-      boolean $$6 = this.c($$2);
-      boolean $$7 = this.c($$3);
-      boolean $$8 = this.c($$4);
-      dti $$9 = null;
-      if ($$5 || $$6) {
-         $$9 = dti.a;
-      }
-
-      if ($$7 || $$8) {
-         $$9 = dti.b;
-      }
-
-      if (!this.e) {
-         if ($$6 && $$8 && !$$5 && !$$7) {
-            $$9 = dti.g;
-         }
-
-         if ($$6 && $$7 && !$$5 && !$$8) {
-            $$9 = dti.h;
-         }
-
-         if ($$5 && $$7 && !$$6 && !$$8) {
-            $$9 = dti.i;
-         }
-
-         if ($$5 && $$8 && !$$6 && !$$7) {
-            $$9 = dti.j;
-         }
-      }
-
-      if ($$9 == dti.a) {
-         if (deq.a(this.a, $$1.c())) {
-            $$9 = dti.e;
-         }
-
-         if (deq.a(this.a, $$2.c())) {
-            $$9 = dti.f;
-         }
-      }
-
-      if ($$9 == dti.b) {
-         if (deq.a(this.a, $$4.c())) {
-            $$9 = dti.c;
-         }
-
-         if (deq.a(this.a, $$3.c())) {
-            $$9 = dti.d;
-         }
-      }
-
-      if ($$9 == null) {
-         $$9 = dti.a;
-      }
-
-      this.d = this.d.a(this.c.c(), $$9);
-      this.a.a(this.b, this.d, 3);
-   }
-
-   private boolean d(iz $$0) {
-      dlb $$1 = this.b($$0);
-      if ($$1 == null) {
+   protected boolean a(dcd $$0, ja $$1, dsh $$2, boolean $$3, int $$4) {
+      if ($$4 >= 8) {
          return false;
       } else {
-         $$1.d();
-         return $$1.b(this);
+         int $$5 = $$1.u();
+         int $$6 = $$1.v();
+         int $$7 = $$1.w();
+         boolean $$8 = true;
+         dtl $$9 = $$2.c(e);
+         switch ($$9) {
+            case a:
+               if ($$3) {
+                  $$7++;
+               } else {
+                  $$7--;
+               }
+               break;
+            case b:
+               if ($$3) {
+                  $$5--;
+               } else {
+                  $$5++;
+               }
+               break;
+            case c:
+               if ($$3) {
+                  $$5--;
+               } else {
+                  $$5++;
+                  $$6++;
+                  $$8 = false;
+               }
+
+               $$9 = dtl.b;
+               break;
+            case d:
+               if ($$3) {
+                  $$5--;
+                  $$6++;
+                  $$8 = false;
+               } else {
+                  $$5++;
+               }
+
+               $$9 = dtl.b;
+               break;
+            case e:
+               if ($$3) {
+                  $$7++;
+               } else {
+                  $$7--;
+                  $$6++;
+                  $$8 = false;
+               }
+
+               $$9 = dtl.a;
+               break;
+            case f:
+               if ($$3) {
+                  $$7++;
+                  $$6++;
+                  $$8 = false;
+               } else {
+                  $$7--;
+               }
+
+               $$9 = dtl.a;
+         }
+
+         return this.a($$0, new ja($$5, $$6, $$7), $$3, $$4, $$9) ? true : $$8 && this.a($$0, new ja($$5, $$6 - 1, $$7), $$3, $$4, $$9);
       }
    }
 
-   public dlb a(boolean $$0, boolean $$1, dti $$2) {
-      iz $$3 = this.b.e();
-      iz $$4 = this.b.f();
-      iz $$5 = this.b.g();
-      iz $$6 = this.b.h();
-      boolean $$7 = this.d($$3);
-      boolean $$8 = this.d($$4);
-      boolean $$9 = this.d($$5);
-      boolean $$10 = this.d($$6);
-      dti $$11 = null;
-      boolean $$12 = $$7 || $$8;
-      boolean $$13 = $$9 || $$10;
-      if ($$12 && !$$13) {
-         $$11 = dti.a;
-      }
-
-      if ($$13 && !$$12) {
-         $$11 = dti.b;
-      }
-
-      boolean $$14 = $$8 && $$10;
-      boolean $$15 = $$8 && $$9;
-      boolean $$16 = $$7 && $$10;
-      boolean $$17 = $$7 && $$9;
-      if (!this.e) {
-         if ($$14 && !$$7 && !$$9) {
-            $$11 = dti.g;
-         }
-
-         if ($$15 && !$$7 && !$$10) {
-            $$11 = dti.h;
-         }
-
-         if ($$17 && !$$8 && !$$10) {
-            $$11 = dti.i;
-         }
-
-         if ($$16 && !$$8 && !$$9) {
-            $$11 = dti.j;
-         }
-      }
-
-      if ($$11 == null) {
-         if ($$12 && $$13) {
-            $$11 = $$2;
-         } else if ($$12) {
-            $$11 = dti.a;
-         } else if ($$13) {
-            $$11 = dti.b;
-         }
-
-         if (!this.e) {
-            if ($$0) {
-               if ($$14) {
-                  $$11 = dti.g;
-               }
-
-               if ($$15) {
-                  $$11 = dti.h;
-               }
-
-               if ($$16) {
-                  $$11 = dti.j;
-               }
-
-               if ($$17) {
-                  $$11 = dti.i;
+   protected boolean a(dcd $$0, ja $$1, boolean $$2, int $$3, dtl $$4) {
+      dsh $$5 = $$0.a_($$1);
+      if (!$$5.a(this)) {
+         return false;
+      } else {
+         dtl $$6 = $$5.c(e);
+         if ($$4 != dtl.b || $$6 != dtl.a && $$6 != dtl.e && $$6 != dtl.f) {
+            if ($$4 != dtl.a || $$6 != dtl.b && $$6 != dtl.c && $$6 != dtl.d) {
+               if (!$$5.c(f)) {
+                  return false;
+               } else {
+                  return $$0.C($$1) ? true : this.a($$0, $$1, $$5, $$2, $$3 + 1);
                }
             } else {
-               if ($$17) {
-                  $$11 = dti.i;
-               }
-
-               if ($$16) {
-                  $$11 = dti.j;
-               }
-
-               if ($$15) {
-                  $$11 = dti.h;
-               }
-
-               if ($$14) {
-                  $$11 = dti.g;
-               }
+               return false;
             }
+         } else {
+            return false;
          }
       }
-
-      if ($$11 == dti.a) {
-         if (deq.a(this.a, $$3.c())) {
-            $$11 = dti.e;
-         }
-
-         if (deq.a(this.a, $$4.c())) {
-            $$11 = dti.f;
-         }
-      }
-
-      if ($$11 == dti.b) {
-         if (deq.a(this.a, $$6.c())) {
-            $$11 = dti.c;
-         }
-
-         if (deq.a(this.a, $$5.c())) {
-            $$11 = dti.d;
-         }
-      }
-
-      if ($$11 == null) {
-         $$11 = $$2;
-      }
-
-      this.a($$11);
-      this.d = this.d.a(this.c.c(), $$11);
-      if ($$1 || this.a.a_(this.b) != this.d) {
-         this.a.a(this.b, this.d, 3);
-
-         for (int $$18 = 0; $$18 < this.f.size(); $$18++) {
-            dlb $$19 = this.b(this.f.get($$18));
-            if ($$19 != null) {
-               $$19.d();
-               if ($$19.b(this)) {
-                  $$19.c(this);
-               }
-            }
-         }
-      }
-
-      return this;
    }
 
-   public dse c() {
-      return this.d;
+   @Override
+   protected void a(dsh $$0, dcd $$1, ja $$2, dff $$3) {
+      boolean $$4 = $$0.c(f);
+      boolean $$5 = $$1.C($$2) || this.a($$1, $$2, $$0, true, 0) || this.a($$1, $$2, $$0, false, 0);
+      if ($$5 != $$4) {
+         $$1.a($$2, $$0.a(f, Boolean.valueOf($$5)), 3);
+         $$1.a($$2.d(), this);
+         if ($$0.c(e).b()) {
+            $$1.a($$2.c(), this);
+         }
+      }
+   }
+
+   @Override
+   public dtk<dtl> c() {
+      return e;
+   }
+
+   @Override
+   protected dsh a(dsh $$0, dls $$1) {
+      switch ($$1) {
+         case c:
+            switch ((dtl)$$0.c(e)) {
+               case c:
+                  return $$0.a(e, dtl.d);
+               case d:
+                  return $$0.a(e, dtl.c);
+               case e:
+                  return $$0.a(e, dtl.f);
+               case f:
+                  return $$0.a(e, dtl.e);
+               case g:
+                  return $$0.a(e, dtl.i);
+               case h:
+                  return $$0.a(e, dtl.j);
+               case i:
+                  return $$0.a(e, dtl.g);
+               case j:
+                  return $$0.a(e, dtl.h);
+            }
+         case d:
+            switch ((dtl)$$0.c(e)) {
+               case a:
+                  return $$0.a(e, dtl.b);
+               case b:
+                  return $$0.a(e, dtl.a);
+               case c:
+                  return $$0.a(e, dtl.e);
+               case d:
+                  return $$0.a(e, dtl.f);
+               case e:
+                  return $$0.a(e, dtl.d);
+               case f:
+                  return $$0.a(e, dtl.c);
+               case g:
+                  return $$0.a(e, dtl.j);
+               case h:
+                  return $$0.a(e, dtl.g);
+               case i:
+                  return $$0.a(e, dtl.h);
+               case j:
+                  return $$0.a(e, dtl.i);
+            }
+         case b:
+            switch ((dtl)$$0.c(e)) {
+               case a:
+                  return $$0.a(e, dtl.b);
+               case b:
+                  return $$0.a(e, dtl.a);
+               case c:
+                  return $$0.a(e, dtl.f);
+               case d:
+                  return $$0.a(e, dtl.e);
+               case e:
+                  return $$0.a(e, dtl.c);
+               case f:
+                  return $$0.a(e, dtl.d);
+               case g:
+                  return $$0.a(e, dtl.h);
+               case h:
+                  return $$0.a(e, dtl.i);
+               case i:
+                  return $$0.a(e, dtl.j);
+               case j:
+                  return $$0.a(e, dtl.g);
+            }
+         default:
+            return $$0;
+      }
+   }
+
+   @Override
+   protected dsh a(dsh $$0, dkc $$1) {
+      dtl $$2 = $$0.c(e);
+      switch ($$1) {
+         case b:
+            switch ($$2) {
+               case e:
+                  return $$0.a(e, dtl.f);
+               case f:
+                  return $$0.a(e, dtl.e);
+               case g:
+                  return $$0.a(e, dtl.j);
+               case h:
+                  return $$0.a(e, dtl.i);
+               case i:
+                  return $$0.a(e, dtl.h);
+               case j:
+                  return $$0.a(e, dtl.g);
+               default:
+                  return super.a($$0, $$1);
+            }
+         case c:
+            switch ($$2) {
+               case c:
+                  return $$0.a(e, dtl.d);
+               case d:
+                  return $$0.a(e, dtl.c);
+               case e:
+               case f:
+               default:
+                  break;
+               case g:
+                  return $$0.a(e, dtl.h);
+               case h:
+                  return $$0.a(e, dtl.g);
+               case i:
+                  return $$0.a(e, dtl.j);
+               case j:
+                  return $$0.a(e, dtl.i);
+            }
+      }
+
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(dsi.a<dff, dsh> $$0) {
+      $$0.a(e, f, c);
    }
 }

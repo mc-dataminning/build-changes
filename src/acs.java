@@ -1,304 +1,146 @@
-import java.util.UUID;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class acs implements zw<aci> {
-   public static final zn<xa, acs> a = zw.a(acs::a, acs::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 4;
-   private final UUID e;
-   private final acs.c f;
-   static final acs.c g = new acs.c() {
-      @Override
-      public acs.d a() {
-         return acs.d.b;
+public class acs implements zb<abn> {
+   public static final ys<wf, acs> a = zb.a(acs::a, acs::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final List<ja> f;
+   private final float g;
+   private final float h;
+   private final float i;
+   private final lh j;
+   private final lh k;
+   private final dbv.a l;
+   private final jj<ave> m;
+
+   public acs(double $$0, double $$1, double $$2, float $$3, List<ja> $$4, @Nullable evz $$5, dbv.a $$6, lh $$7, lh $$8, jj<ave> $$9) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = Lists.newArrayList($$4);
+      this.m = $$9;
+      if ($$5 != null) {
+         this.g = (float)$$5.c;
+         this.h = (float)$$5.d;
+         this.i = (float)$$5.e;
+      } else {
+         this.g = 0.0F;
+         this.h = 0.0F;
+         this.i = 0.0F;
       }
 
-      @Override
-      public void a(UUID $$0, acs.b $$1) {
-         $$1.a($$0);
-      }
-
-      @Override
-      public void a(xa $$0) {
-      }
-   };
-
-   private acs(UUID $$0, acs.c $$1) {
-      this.e = $$0;
-      this.f = $$1;
+      this.l = $$6;
+      this.j = $$7;
+      this.k = $$8;
    }
 
-   private acs(xa $$0) {
-      this.e = $$0.n();
-      acs.d $$1 = $$0.b(acs.d.class);
-      this.f = $$1.g.decode($$0);
+   private acs(wf $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      int $$1 = aye.a(this.b);
+      int $$2 = aye.a(this.c);
+      int $$3 = aye.a(this.d);
+      this.f = $$0.a($$3x -> {
+         int $$4 = $$3x.readByte() + $$1;
+         int $$5 = $$3x.readByte() + $$2;
+         int $$6 = $$3x.readByte() + $$3;
+         return new ja($$4, $$5, $$6);
+      });
+      this.g = $$0.readFloat();
+      this.h = $$0.readFloat();
+      this.i = $$0.readFloat();
+      this.l = $$0.b(dbv.a.class);
+      this.j = lj.bg.decode($$0);
+      this.k = lj.bg.decode($$0);
+      this.m = ave.d.decode($$0);
    }
 
-   public static acs a(bqm $$0) {
-      return new acs($$0.h(), new acs.a($$0));
-   }
-
-   public static acs a(UUID $$0) {
-      return new acs($$0, g);
-   }
-
-   public static acs b(bqm $$0) {
-      return new acs($$0.h(), new acs.f($$0.j()));
-   }
-
-   public static acs c(bqm $$0) {
-      return new acs($$0.h(), new acs.e($$0.i()));
-   }
-
-   public static acs d(bqm $$0) {
-      return new acs($$0.h(), new acs.h($$0.k(), $$0.l()));
-   }
-
-   public static acs e(bqm $$0) {
-      return new acs($$0.h(), new acs.g($$0.m(), $$0.n(), $$0.o()));
-   }
-
-   private void a(xa $$0) {
+   private void a(wf $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
       $$0.a(this.e);
-      $$0.a(this.f.a());
-      this.f.a($$0);
-   }
-
-   static int a(boolean $$0, boolean $$1, boolean $$2) {
-      int $$3 = 0;
-      if ($$0) {
-         $$3 |= 1;
-      }
-
-      if ($$1) {
-         $$3 |= 2;
-      }
-
-      if ($$2) {
-         $$3 |= 4;
-      }
-
-      return $$3;
+      int $$1 = aye.a(this.b);
+      int $$2 = aye.a(this.c);
+      int $$3 = aye.a(this.d);
+      $$0.a(this.f, ($$3x, $$4) -> {
+         int $$5 = $$4.u() - $$1;
+         int $$6 = $$4.v() - $$2;
+         int $$7 = $$4.w() - $$3;
+         $$3x.k($$5);
+         $$3x.k($$6);
+         $$3x.k($$7);
+      });
+      $$0.a(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
+      $$0.a(this.l);
+      lj.bg.encode($$0, this.j);
+      lj.bg.encode($$0, this.k);
+      ave.d.encode($$0, this.m);
    }
 
    @Override
-   public zy<acs> a() {
-      return agu.l;
+   public zd<acs> a() {
+      return afz.E;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
    }
 
-   public void a(acs.b $$0) {
-      this.f.a(this.e, $$0);
+   public float b() {
+      return this.g;
    }
 
-   static class a implements acs.c {
-      private final xp a;
-      private final float b;
-      private final bqm.a c;
-      private final bqm.b d;
-      private final boolean e;
-      private final boolean f;
-      private final boolean g;
-
-      a(bqm $$0) {
-         this.a = $$0.i();
-         this.b = $$0.j();
-         this.c = $$0.k();
-         this.d = $$0.l();
-         this.e = $$0.m();
-         this.f = $$0.n();
-         this.g = $$0.o();
-      }
-
-      private a(xa $$0) {
-         this.a = xr.d.decode($$0);
-         this.b = $$0.readFloat();
-         this.c = $$0.b(bqm.a.class);
-         this.d = $$0.b(bqm.b.class);
-         int $$1 = $$0.readUnsignedByte();
-         this.e = ($$1 & 1) > 0;
-         this.f = ($$1 & 2) > 0;
-         this.g = ($$1 & 4) > 0;
-      }
-
-      @Override
-      public acs.d a() {
-         return acs.d.a;
-      }
-
-      @Override
-      public void a(UUID $$0, acs.b $$1) {
-         $$1.a($$0, this.a, this.b, this.c, this.d, this.e, this.f, this.g);
-      }
-
-      @Override
-      public void a(xa $$0) {
-         xr.d.encode($$0, this.a);
-         $$0.a(this.b);
-         $$0.a(this.c);
-         $$0.a(this.d);
-         $$0.k(acs.a(this.e, this.f, this.g));
-      }
+   public float e() {
+      return this.h;
    }
 
-   public interface b {
-      default void a(UUID $$0, xp $$1, float $$2, bqm.a $$3, bqm.b $$4, boolean $$5, boolean $$6, boolean $$7) {
-      }
-
-      default void a(UUID $$0) {
-      }
-
-      default void a(UUID $$0, float $$1) {
-      }
-
-      default void a(UUID $$0, xp $$1) {
-      }
-
-      default void a(UUID $$0, bqm.a $$1, bqm.b $$2) {
-      }
-
-      default void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
-      }
+   public float f() {
+      return this.i;
    }
 
-   interface c {
-      acs.d a();
-
-      void a(UUID var1, acs.b var2);
-
-      void a(xa var1);
+   public double g() {
+      return this.b;
    }
 
-   static enum d {
-      a(acs.a::new),
-      b($$0 -> acs.g),
-      c(acs.f::new),
-      d(acs.e::new),
-      e(acs.h::new),
-      f(acs.g::new);
-
-      final zo<xa, acs.c> g;
-
-      private d(final zo<xa, acs.c> $$0) {
-         this.g = $$0;
-      }
+   public double h() {
+      return this.c;
    }
 
-   static record e(xp a) implements acs.c {
-      private e(xa $$0) {
-         this(xr.d.decode($$0));
-      }
-
-      @Override
-      public acs.d a() {
-         return acs.d.d;
-      }
-
-      @Override
-      public void a(UUID $$0, acs.b $$1) {
-         $$1.a($$0, this.a);
-      }
-
-      @Override
-      public void a(xa $$0) {
-         xr.d.encode($$0, this.a);
-      }
-
-      public xp b() {
-         return this.a;
-      }
+   public double i() {
+      return this.d;
    }
 
-   static record f(float a) implements acs.c {
-      private f(xa $$0) {
-         this($$0.readFloat());
-      }
-
-      @Override
-      public acs.d a() {
-         return acs.d.c;
-      }
-
-      @Override
-      public void a(UUID $$0, acs.b $$1) {
-         $$1.a($$0, this.a);
-      }
-
-      @Override
-      public void a(xa $$0) {
-         $$0.a(this.a);
-      }
-
-      public float b() {
-         return this.a;
-      }
+   public float j() {
+      return this.e;
    }
 
-   static class g implements acs.c {
-      private final boolean a;
-      private final boolean b;
-      private final boolean c;
-
-      g(boolean $$0, boolean $$1, boolean $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      private g(xa $$0) {
-         int $$1 = $$0.readUnsignedByte();
-         this.a = ($$1 & 1) > 0;
-         this.b = ($$1 & 2) > 0;
-         this.c = ($$1 & 4) > 0;
-      }
-
-      @Override
-      public acs.d a() {
-         return acs.d.f;
-      }
-
-      @Override
-      public void a(UUID $$0, acs.b $$1) {
-         $$1.a($$0, this.a, this.b, this.c);
-      }
-
-      @Override
-      public void a(xa $$0) {
-         $$0.k(acs.a(this.a, this.b, this.c));
-      }
+   public List<ja> k() {
+      return this.f;
    }
 
-   static class h implements acs.c {
-      private final bqm.a a;
-      private final bqm.b b;
+   public dbv.a l() {
+      return this.l;
+   }
 
-      h(bqm.a $$0, bqm.b $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public lh m() {
+      return this.j;
+   }
 
-      private h(xa $$0) {
-         this.a = $$0.b(bqm.a.class);
-         this.b = $$0.b(bqm.b.class);
-      }
+   public lh n() {
+      return this.k;
+   }
 
-      @Override
-      public acs.d a() {
-         return acs.d.e;
-      }
-
-      @Override
-      public void a(UUID $$0, acs.b $$1) {
-         $$1.a($$0, this.a, this.b);
-      }
-
-      @Override
-      public void a(xa $$0) {
-         $$0.a(this.a);
-         $$0.a(this.b);
-      }
+   public jj<ave> o() {
+      return this.m;
    }
 }

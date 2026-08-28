@@ -1,37 +1,23 @@
-public class afj implements zw<aci> {
-   public static final zn<wm, afj> a = zw.a(afj::a, afj::new);
-   private final int b;
-   private final int c;
+import io.netty.buffer.ByteBuf;
 
-   public afj(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+public class afj implements zb<abn> {
+   public static final afj a = new afj();
+   public static final ys<ByteBuf, afj> b = ys.a(a);
 
-   private afj(wm $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-   }
-
-   private void a(wm $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
+   private afj() {
    }
 
    @Override
-   public zy<afj> a() {
-      return agu.ay;
+   public zd<afj> a() {
+      return afz.aT;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

@@ -1,77 +1,57 @@
-public class cqp extends cpw {
-   private static final int k = 9;
-   private static final int l = 9;
-   private static final int m = 36;
-   private static final int n = 36;
-   private static final int o = 45;
-   private final bqp p;
+public class cqp extends cra {
+   private final cqn a;
+   private final cmh b;
+   private int g;
+   private final dba h;
 
-   public cqp(int $$0, cmy $$1) {
-      this($$0, $$1, new brf(9));
-   }
-
-   public cqp(int $$0, cmy $$1, bqp $$2) {
-      super(crd.g, $$0);
-      a($$2, 9);
-      this.p = $$2;
-      $$2.d_($$1.l);
-
-      for (int $$3 = 0; $$3 < 3; $$3++) {
-         for (int $$4 = 0; $$4 < 3; $$4++) {
-            this.a(new crr($$2, $$4 + $$3 * 3, 62 + $$4 * 18, 17 + $$3 * 18));
-         }
-      }
-
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         for (int $$6 = 0; $$6 < 9; $$6++) {
-            this.a(new crr($$1, $$6 + $$5 * 9 + 9, 8 + $$6 * 18, 84 + $$5 * 18));
-         }
-      }
-
-      for (int $$7 = 0; $$7 < 9; $$7++) {
-         this.a(new crr($$1, $$7, 8 + $$7 * 18, 142));
-      }
+   public cqp(cmh $$0, dba $$1, cqn $$2, int $$3, int $$4, int $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.b = $$0;
+      this.h = $$1;
+      this.a = $$2;
    }
 
    @Override
-   public boolean a(cmz $$0) {
-      return this.p.a($$0);
+   public boolean a(cua $$0) {
+      return false;
    }
 
    @Override
-   public cur a(cmz $$0, int $$1) {
-      cur $$2 = cur.l;
-      crr $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cur $$4 = $$3.g();
-         $$2 = $$4.s();
-         if ($$1 < 9) {
-            if (!this.a($$4, 9, 45, true)) {
-               return cur.l;
-            }
-         } else if (!this.a($$4, 0, 9, false)) {
-            return cur.l;
-         }
-
-         if ($$4.e()) {
-            $$3.e(cur.l);
-         } else {
-            $$3.b();
-         }
-
-         if ($$4.I() == $$2.I()) {
-            return cur.l;
-         }
-
-         $$3.a($$0, $$4);
+   public cua a(int $$0) {
+      if (this.h()) {
+         this.g = this.g + Math.min($$0, this.g().H());
       }
 
-      return $$2;
+      return super.a($$0);
    }
 
    @Override
-   public void b(cmz $$0) {
-      super.b($$0);
-      this.p.c($$0);
+   protected void a(cua $$0, int $$1) {
+      this.g += $$1;
+      this.b_($$0);
+   }
+
+   @Override
+   protected void b_(cua $$0) {
+      $$0.a(this.b.dP(), this.b, this.g);
+      this.g = 0;
+   }
+
+   @Override
+   public void a(cmh $$0, cua $$1) {
+      this.b_($$1);
+      dbb $$2 = this.a.g();
+      if ($$2 != null) {
+         cua $$3 = this.a.a(0);
+         cua $$4 = this.a.a(1);
+         if ($$2.b($$3, $$4) || $$2.b($$4, $$3)) {
+            this.h.a($$2);
+            $$0.a(avp.T);
+            this.a.a(0, $$3);
+            this.a.a(1, $$4);
+         }
+
+         this.h.t(this.h.u() + $$2.q());
+      }
    }
 }

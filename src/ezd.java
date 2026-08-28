@@ -1,130 +1,51 @@
-import java.util.Locale;
-import java.util.Objects;
+import ca.weblite.objc.Client;
+import ca.weblite.objc.NSObject;
+import com.sun.jna.Pointer;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Base64;
 import java.util.Optional;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.annotation.Nullable;
-import org.lwjgl.glfw.GLFWVidMode;
-import org.lwjgl.glfw.GLFWVidMode.Buffer;
+import org.lwjgl.glfw.GLFWNativeCocoa;
 
-public final class ezd {
-   private final int a;
-   private final int b;
-   private final int c;
-   private final int d;
-   private final int e;
-   private final int f;
-   private static final Pattern g = Pattern.compile("(\\d+)x(\\d+)(?:@(\\d+)(?::(\\d+))?)?");
+public class ezd {
+   private static final int a = 8;
+   private static final int b = 16384;
 
-   public ezd(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+   public static void a(long $$0) {
+      c($$0).filter(ezd::a).ifPresent(ezd::c);
    }
 
-   public ezd(Buffer $$0) {
-      this.a = $$0.width();
-      this.b = $$0.height();
-      this.c = $$0.redBits();
-      this.d = $$0.greenBits();
-      this.e = $$0.blueBits();
-      this.f = $$0.refreshRate();
+   public static void b(long $$0) {
+      c($$0).ifPresent($$0x -> {
+         long $$1 = b($$0x);
+         $$0x.send("setStyleMask:", new Object[]{$$1 & -9L});
+      });
    }
 
-   public ezd(GLFWVidMode $$0) {
-      this.a = $$0.width();
-      this.b = $$0.height();
-      this.c = $$0.redBits();
-      this.d = $$0.greenBits();
-      this.e = $$0.blueBits();
-      this.f = $$0.refreshRate();
+   private static Optional<NSObject> c(long $$0) {
+      long $$1 = GLFWNativeCocoa.glfwGetCocoaWindow($$0);
+      return $$1 != 0L ? Optional.of(new NSObject(new Pointer($$1))) : Optional.empty();
    }
 
-   public int a() {
-      return this.a;
+   private static boolean a(NSObject $$0) {
+      return (b($$0) & 16384L) != 0L;
    }
 
-   public int b() {
-      return this.b;
+   private static long b(NSObject $$0) {
+      return (Long)$$0.sendRaw("styleMask", new Object[0]);
    }
 
-   public int c() {
-      return this.c;
+   private static void c(NSObject $$0) {
+      $$0.send("toggleFullScreen:", new Object[]{Pointer.NULL});
    }
 
-   public int d() {
-      return this.d;
-   }
-
-   public int e() {
-      return this.e;
-   }
-
-   public int f() {
-      return this.f;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         ezd $$1 = (ezd)$$0;
-         return this.a == $$1.a && this.b == $$1.b && this.c == $$1.c && this.d == $$1.d && this.e == $$1.e && this.f == $$1.f;
-      } else {
-         return false;
+   public static void a(atm<InputStream> $$0) throws IOException {
+      try (InputStream $$1 = $$0.get()) {
+         String $$2 = Base64.getEncoder().encodeToString($$1.readAllBytes());
+         Client $$3 = Client.getInstance();
+         Object $$4 = $$3.sendProxy("NSData", "alloc", new Object[0]).send("initWithBase64Encoding:", new Object[]{$$2});
+         Object $$5 = $$3.sendProxy("NSImage", "alloc", new Object[0]).send("initWithData:", new Object[]{$$4});
+         $$3.sendProxy("NSApplication", "sharedApplication", new Object[0]).send("setApplicationIconImage:", new Object[]{$$5});
       }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.a, this.b, this.c, this.d, this.e, this.f);
-   }
-
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "%sx%s@%s (%sbit)", this.a, this.b, this.f, this.c + this.d + this.e);
-   }
-
-   public static Optional<ezd> a(@Nullable String $$0) {
-      if ($$0 == null) {
-         return Optional.empty();
-      } else {
-         try {
-            Matcher $$1 = g.matcher($$0);
-            if ($$1.matches()) {
-               int $$2 = Integer.parseInt($$1.group(1));
-               int $$3 = Integer.parseInt($$1.group(2));
-               String $$4 = $$1.group(3);
-               int $$5;
-               if ($$4 == null) {
-                  $$5 = 60;
-               } else {
-                  $$5 = Integer.parseInt($$4);
-               }
-
-               String $$7 = $$1.group(4);
-               int $$8;
-               if ($$7 == null) {
-                  $$8 = 24;
-               } else {
-                  $$8 = Integer.parseInt($$7);
-               }
-
-               int $$10 = $$8 / 3;
-               return Optional.of(new ezd($$2, $$3, $$10, $$10, $$10, $$5));
-            }
-         } catch (Exception var9) {
-         }
-
-         return Optional.empty();
-      }
-   }
-
-   public String g() {
-      return String.format(Locale.ROOT, "%sx%s@%s:%s", this.a, this.b, this.f, this.c + this.d + this.e);
    }
 }

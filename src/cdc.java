@@ -1,136 +1,27 @@
-public class cdc extends cdd {
-   private boolean p;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
 
-   public cdc(btt $$0, dca $$1) {
-      super($$0, $$1);
+public abstract class cdc extends cdi<bsy> {
+   protected abstract boolean a(bsy var1, bsy var2);
+
+   protected abstract ccc<bsy> b();
+
+   @Override
+   public Set<ccc<?>> a() {
+      return ImmutableSet.of(this.b());
    }
 
    @Override
-   protected eon a(int $$0) {
-      this.o = new eot();
-      this.o.a(true);
-      return new eon(this.o, $$0);
+   protected void a(aqk $$0, bsy $$1) {
+      $$1.dT().a(this.b(), this.b($$1));
    }
 
-   @Override
-   protected boolean a() {
-      return this.a.aE() || this.a.bi() || this.a.bR();
+   private Optional<bsy> b(bsy $$0) {
+      return this.a($$0).flatMap($$1 -> $$1.a($$1x -> this.a($$0, $$1x)));
    }
 
-   @Override
-   protected evt b() {
-      return new evt(this.a.du(), (double)this.s(), this.a.dA());
-   }
-
-   @Override
-   public eol a(iz $$0, int $$1) {
-      duk $$2 = this.b.N().a(kb.a($$0.u()), kb.a($$0.w()));
-      if ($$2 == null) {
-         return null;
-      } else {
-         if ($$2.a_($$0).i()) {
-            iz $$3 = $$0.d();
-
-            while ($$3.v() > this.b.I_() && $$2.a_($$3).i()) {
-               $$3 = $$3.d();
-            }
-
-            if ($$3.v() > this.b.I_()) {
-               return super.a($$3.c(), $$1);
-            }
-
-            while ($$3.v() < this.b.am() && $$2.a_($$3).i()) {
-               $$3 = $$3.c();
-            }
-
-            $$0 = $$3;
-         }
-
-         if (!$$2.a_($$0).e()) {
-            return super.a($$0, $$1);
-         } else {
-            iz $$4 = $$0.c();
-
-            while ($$4.v() < this.b.am() && $$2.a_($$4).e()) {
-               $$4 = $$4.c();
-            }
-
-            return super.a($$4, $$1);
-         }
-      }
-   }
-
-   @Override
-   public eol a(bsw $$0, int $$1) {
-      return this.a($$0.dp(), $$1);
-   }
-
-   private int s() {
-      if (this.a.be() && this.p()) {
-         int $$0 = this.a.dv();
-         dse $$1 = this.b.a_(iz.a(this.a.du(), (double)$$0, this.a.dA()));
-         int $$2 = 0;
-
-         while ($$1.a(dfd.G)) {
-            $$1 = this.b.a_(iz.a(this.a.du(), (double)(++$$0), this.a.dA()));
-            if (++$$2 > 16) {
-               return this.a.dv();
-            }
-         }
-
-         return $$0;
-      } else {
-         return ayz.a(this.a.dw() + 0.5);
-      }
-   }
-
-   @Override
-   protected void S_() {
-      super.S_();
-      if (this.p) {
-         if (this.b.h(iz.a(this.a.du(), this.a.dw() + 0.5, this.a.dA()))) {
-            return;
-         }
-
-         for (int $$0 = 0; $$0 < this.c.e(); $$0++) {
-            eoj $$1 = this.c.a($$0);
-            if (this.b.h(new iz($$1.a, $$1.b, $$1.c))) {
-               this.c.b($$0);
-               return;
-            }
-         }
-      }
-   }
-
-   protected boolean a(eoo $$0) {
-      if ($$0 == eoo.j) {
-         return false;
-      } else {
-         return $$0 == eoo.i ? false : $$0 != eoo.b;
-      }
-   }
-
-   public void b(boolean $$0) {
-      this.o.b($$0);
-   }
-
-   public boolean e() {
-      return this.o.d();
-   }
-
-   public void c(boolean $$0) {
-      this.o.a($$0);
-   }
-
-   public boolean f() {
-      return this.o.d();
-   }
-
-   public void d(boolean $$0) {
-      this.p = $$0;
-   }
-
-   public void e(boolean $$0) {
-      this.o.d($$0);
+   protected Optional<cce> a(bsy $$0) {
+      return $$0.dT().c(ccc.h);
    }
 }

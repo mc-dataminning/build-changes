@@ -1,23 +1,29 @@
-import java.util.List;
-import java.util.UUID;
+public class aen implements zb<abn> {
+   public static final ys<vr, aen> a = zb.a(aen::a, aen::new);
+   private final int b;
 
-public record aen(List<UUID> b) implements zw<aci> {
-   public static final zn<wm, aen> a = zw.a(aen::a, aen::new);
-
-   private aen(wm $$0) {
-      this($$0.a(kc.g));
+   public aen(int $$0) {
+      this.b = $$0;
    }
 
-   private void a(wm $$0) {
-      $$0.a(this.b, kc.g);
+   private aen(vr $$0) {
+      this.b = $$0.readByte();
+   }
+
+   private void a(vr $$0) {
+      $$0.k(this.b);
    }
 
    @Override
-   public zy<aen> a() {
-      return agu.ae;
+   public zd<aen> a() {
+      return afz.ax;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
    }
 }

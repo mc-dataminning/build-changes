@@ -3,19 +3,19 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class by extends dr<by.a> {
+public class by extends ds<by.a> {
    @Override
    public Codec<by.a> a() {
       return by.a.a;
    }
 
-   public void a(arg $$0, evt $$1, @Nullable bsw $$2) {
-      evt $$3 = $$0.dn();
-      eqk $$4 = $$2 != null ? bu.b($$0, $$2) : null;
+   public void a(aql $$0, evz $$1, @Nullable bsd $$2) {
+      evz $$3 = $$0.dn();
+      eqo $$4 = $$2 != null ? bu.b($$0, $$2) : null;
       this.a($$0, $$4x -> $$4x.a($$0.z(), $$1, $$3, $$4));
    }
 
-   public static record a(Optional<bf> b, Optional<dc> c, Optional<bl> d, Optional<bf> e) implements dr.a {
+   public static record a(Optional<bf> b, Optional<dc> c, Optional<bl> d, Optional<bf> e) implements ds.a {
       public static final Codec<by.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bu.b.optionalFieldOf("player").forGetter(by.a::a),
@@ -32,11 +32,11 @@ public class by extends dr<by.a> {
 
       @Override
       public void a(bg $$0) {
-         dr.a.super.a($$0);
+         ds.a.super.a($$0);
          $$0.a(this.d(), ".cause");
       }
 
-      public boolean a(arf $$0, evt $$1, evt $$2, @Nullable eqk $$3) {
+      public boolean a(aqk $$0, evz $$1, evz $$2, @Nullable eqo $$3) {
          if (this.c.isPresent() && !this.c.get().a($$0, $$1.c, $$1.d, $$1.e)) {
             return false;
          } else {

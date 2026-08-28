@@ -1,25 +1,26 @@
-public record aak(String b, int c) implements zw<aac> {
-   public static final zn<wm, aak> a = zw.a(aak::a, aak::new);
+public record aak(long c, ja d) implements aac {
+   public static final ys<vr, aak> a = aac.a(aak::a, aak::new);
+   public static final aac.b<aak> b = aac.a("debug/neighbors_update");
 
-   private aak(wm $$0) {
-      this($$0.p(), $$0.l());
+   private aak(vr $$0) {
+      this($$0.m(), $$0.e());
    }
 
-   private void a(wm $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
+   private void a(vr $$0) {
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zy<aak> a() {
-      return aam.h;
+   public aac.b<aak> a() {
+      return b;
    }
 
-   public void a(aac $$0) {
-      $$0.a(this);
-   }
-
-   public int e() {
+   public long b() {
       return this.c;
+   }
+
+   public ja c() {
+      return this.d;
    }
 }

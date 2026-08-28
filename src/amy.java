@@ -1,58 +1,28 @@
-import com.mojang.authlib.GameProfile;
+import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
-import net.minecraft.server.MinecraftServer;
+import java.util.Collection;
 
 public class amy {
-   public static void a(CommandDispatcher<ep> $$0) {
+   public static void a(CommandDispatcher<eq> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("debugconfig").requires($$0x -> $$0x.c(3)))
-               .then(eq.a("config").then(eq.a("target", fc.c()).executes($$0x -> a((ep)$$0x.getSource(), fc.e($$0x, "target"))))))
-            .then(
-               eq.a("unconfig")
-                  .then(
-                     eq.a("target", gf.a())
-                        .suggests(($$0x, $$1) -> eu.b(a(((ep)$$0x.getSource()).l()), $$1))
-                        .executes($$0x -> a((ep)$$0x.getSource(), gf.a($$0x, "target")))
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("kill").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((eq)$$0x.getSource(), ImmutableList.of(((eq)$$0x.getSource()).g()))))
+            .then(er.a("targets", fd.b()).executes($$0x -> a((eq)$$0x.getSource(), fd.b($$0x, "targets"))))
       );
    }
 
-   private static Iterable<String> a(MinecraftServer $$0) {
-      Set<String> $$1 = new HashSet<>();
-
-      for (wk $$2 : $$0.ai().e()) {
-         if ($$2.k() instanceof asd $$3) {
-            $$1.add($$3.j().getId().toString());
-         }
+   private static int a(eq $$0, Collection<? extends bsd> $$1) {
+      for (bsd $$2 : $$1) {
+         $$2.an();
       }
 
-      return $$1;
-   }
-
-   private static int a(ep $$0, arg $$1) {
-      GameProfile $$2 = $$1.gb();
-      $$1.c.n();
-      $$0.a(() -> xp.b("Switched player " + $$2.getName() + "(" + $$2.getId() + ") to config mode"), false);
-      return 1;
-   }
-
-   private static int a(ep $$0, UUID $$1) {
-      for (wk $$2 : $$0.l().ai().e()) {
-         wv var5 = $$2.k();
-         if (var5 instanceof asd) {
-            asd $$3 = (asd)var5;
-            if ($$3.j().getId().equals($$1)) {
-               $$3.m();
-            }
-         }
+      if ($$1.size() == 1) {
+         $$0.a(() -> wu.a("commands.kill.success.single", $$1.iterator().next().O_()), true);
+      } else {
+         $$0.a(() -> wu.a("commands.kill.success.multiple", $$1.size()), true);
       }
 
-      $$0.b(xp.b("Can't find player to unconfig"));
-      return 0;
+      return $$1.size();
    }
 }

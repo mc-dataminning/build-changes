@@ -1,30 +1,53 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
 
-public class equ extends erc {
-   public static final MapCodec<equ> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alf.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, equ::new)
-   );
-   private final alf j;
+public class equ {
+   private final ayk a;
+   private final eti b;
+   private final jk.a c;
+   private final Set<akj<?>> d;
 
-   private equ(alf $$0, int $$1, int $$2, List<etu> $$3, List<erx> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   public equ(ayk $$0, eti $$1, jk.a $$2) {
+      this($$0, $$1, $$2, Set.of());
    }
 
-   @Override
-   public erb a() {
-      return eqy.e;
+   private equ(ayk $$0, eti $$1, jk.a $$2, Set<akj<?>> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   public void a(Consumer<cur> $$0, eqk $$1) {
-      $$1.a(this.j, $$0);
+   public equ a(String $$0) {
+      return new equ(this.a.a($$0), this.b, this.c, this.d);
    }
 
-   public static erc.a<?> a(alf $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new equ($$0, $$1, $$2, $$3, $$4));
+   public equ a(String $$0, akj<?> $$1) {
+      Set<akj<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
+      return new equ(this.a.a($$0), this.b, this.c, $$2);
+   }
+
+   public boolean a(akj<?> $$0) {
+      return this.d.contains($$0);
+   }
+
+   public void b(String $$0) {
+      this.a.b($$0);
+   }
+
+   public void a(eqp $$0) {
+      this.b.a(this, $$0);
+   }
+
+   public jk.a a() {
+      return this.c;
+   }
+
+   public equ a(eti $$0) {
+      return new equ(this.a, $$0, this.c, this.d);
+   }
+
+   public ayk b() {
+      return this.a;
    }
 }

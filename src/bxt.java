@@ -1,98 +1,104 @@
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Stream;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class bxt<U> implements Iterable<U> {
-   protected final List<bxt.a<U>> a;
-   private final azh b = azh.a();
+public class bxt extends bur<clu> {
+   private static final int c = 80;
+   private long d;
+   private long e;
+   private int f;
+   private Optional<ja> g = Optional.empty();
 
    public bxt() {
-      this.a = Lists.newArrayList();
+      super(ImmutableMap.of(ccc.n, ccd.b, ccc.m, ccd.b));
    }
 
-   private bxt(List<bxt.a<U>> $$0) {
-      this.a = Lists.newArrayList($$0);
-   }
-
-   public static <U> Codec<bxt<U>> a(Codec<U> $$0) {
-      return bxt.a.a($$0).listOf().xmap(bxt::new, $$0x -> $$0x.a);
-   }
-
-   public bxt<U> a(U $$0, int $$1) {
-      this.a.add(new bxt.a<>($$0, $$1));
-      return this;
-   }
-
-   public bxt<U> a() {
-      this.a.forEach($$0 -> $$0.a(this.b.i()));
-      this.a.sort(Comparator.comparingDouble(bxt.a::c));
-      return this;
-   }
-
-   public Stream<U> b() {
-      return this.a.stream().map(bxt.a::a);
-   }
-
-   @Override
-   public Iterator<U> iterator() {
-      return Iterators.transform(this.a.iterator(), bxt.a::a);
-   }
-
-   @Override
-   public String toString() {
-      return "ShufflingList[" + this.a + "]";
-   }
-
-   public static class a<T> {
-      final T a;
-      final int b;
-      private double c;
-
-      a(T $$0, int $$1) {
-         this.b = $$1;
-         this.a = $$0;
+   protected boolean a(aqk $$0, clu $$1) {
+      if ($$1.ai % 10 == 0 && (this.e == 0L || this.e + 160L <= (long)$$1.ai)) {
+         if ($$1.y().a_(cud.ry) <= 0) {
+            return false;
+         } else {
+            this.g = this.b($$0, $$1);
+            return this.g.isPresent();
+         }
+      } else {
+         return false;
       }
+   }
 
-      private double c() {
-         return this.c;
-      }
+   protected boolean a(aqk $$0, clu $$1, long $$2) {
+      return this.f < 80 && this.g.isPresent();
+   }
 
-      void a(float $$0) {
-         this.c = -Math.pow((double)$$0, (double)(1.0F / (float)this.b));
-      }
+   private Optional<ja> b(aqk $$0, clu $$1) {
+      ja.a $$2 = new ja.a();
+      Optional<ja> $$3 = Optional.empty();
+      int $$4 = 0;
 
-      public T a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.b;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + ":" + this.a;
-      }
-
-      public static <E> Codec<bxt.a<E>> a(final Codec<E> $$0) {
-         return new Codec<bxt.a<E>>() {
-            public <T> DataResult<Pair<bxt.a<E>, T>> decode(DynamicOps<T> $$0x, T $$1) {
-               Dynamic<T> $$2 = new Dynamic($$0, $$1);
-               return $$2.get("data").flatMap($$0::parse).map($$1x -> new bxt.a<>($$1x, $$2.get("weight").asInt(1))).map($$1x -> Pair.of($$1x, $$0.empty()));
+      for (int $$5 = -1; $$5 <= 1; $$5++) {
+         for (int $$6 = -1; $$6 <= 1; $$6++) {
+            for (int $$7 = -1; $$7 <= 1; $$7++) {
+               $$2.a($$1.dp(), $$5, $$6, $$7);
+               if (this.a($$2, $$0)) {
+                  if ($$0.z.a(++$$4) == 0) {
+                     $$3 = Optional.of($$2.i());
+                  }
+               }
             }
+         }
+      }
 
-            public <T> DataResult<T> a(bxt.a<E> $$0x, DynamicOps<T> $$1, T $$2) {
-               return $$1.mapBuilder().add("weight", $$1.createInt($$0.b)).add("data", $$0.encodeStart($$1, $$0.a)).build($$2);
+      return $$3;
+   }
+
+   private boolean a(ja $$0, aqk $$1) {
+      dsh $$2 = $$1.a_($$0);
+      dff $$3 = $$2.b();
+      return $$3 instanceof dha && !((dha)$$3).h($$2);
+   }
+
+   protected void b(aqk $$0, clu $$1, long $$2) {
+      this.a($$1);
+      $$1.a(bsk.a, new cua(cud.ry));
+      this.d = $$2;
+      this.f = 0;
+   }
+
+   private void a(clu $$0) {
+      this.g.ifPresent($$1 -> {
+         buu $$2 = new buu($$1);
+         $$0.dT().a(ccc.n, $$2);
+         $$0.dT().a(ccc.m, new ccf($$2, 0.5F, 1));
+      });
+   }
+
+   protected void c(aqk $$0, clu $$1, long $$2) {
+      $$1.a(bsk.a, cua.l);
+      this.e = (long)$$1.ai;
+   }
+
+   protected void d(aqk $$0, clu $$1, long $$2) {
+      ja $$3 = this.g.get();
+      if ($$2 >= this.d && $$3.a($$1.dn(), 1.0)) {
+         cua $$4 = cua.l;
+         bqm $$5 = $$1.y();
+         int $$6 = $$5.b();
+
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            cua $$8 = $$5.a($$7);
+            if ($$8.a(cud.ry)) {
+               $$4 = $$8;
+               break;
             }
-         };
+         }
+
+         if (!$$4.e() && csa.a($$4, $$0, $$3)) {
+            $$0.c(1505, $$3, 15);
+            this.g = this.b($$0, $$1);
+            this.a($$1);
+            this.d = $$2 + 40L;
+         }
+
+         this.f++;
       }
    }
 }

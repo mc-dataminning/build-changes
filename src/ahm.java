@@ -1,25 +1,25 @@
-public class ahm implements zw<agw> {
-   public static final zn<wm, ahm> a = zw.a(ahm::a, ahm::new);
+public class ahm implements zb<agb> {
+   public static final ys<vr, ahm> a = zb.a(ahm::a, ahm::new);
    private final int b;
 
    public ahm(int $$0) {
       this.b = $$0;
    }
 
-   private ahm(wm $$0) {
-      this.b = $$0.readByte();
+   private ahm(vr $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(wm $$0) {
-      $$0.k(this.b);
+   private void a(vr $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zy<ahm> a() {
-      return agu.bt;
+   public zd<ahm> a() {
+      return afz.bR;
    }
 
-   public void a(agw $$0) {
+   public void a(agb $$0) {
       $$0.a(this);
    }
 

@@ -1,19 +1,52 @@
-public class gjk extends gkf<cka, fup<cka>> {
-   private static final alf a = new alf("textures/entity/zombie/zombie.png");
-   private final float i;
+public class gjk extends gjf<bso> {
+   private static final akk a = new akk("textures/entity/experience_orb.png");
+   private static final gef f = gef.g(a);
 
-   public gjk(giz.a $$0, float $$1) {
-      super($$0, new fuh($$0.a(fxb.ah)), 0.5F * $$1);
-      this.i = $$1;
-      this.a(new gne<>(this, $$0.d()));
-      this.a(new gnb<>(this, new fuh($$0.a(fxb.ai)), new fuh($$0.a(fxb.aj)), $$0.g()));
+   public gjk(gjg.a $$0) {
+      super($$0);
+      this.d = 0.15F;
+      this.e = 0.75F;
    }
 
-   protected void a(cka $$0, faa $$1, float $$2) {
-      $$1.b(this.i, this.i, this.i);
+   protected int a(bso $$0, ja $$1) {
+      return aye.a(super.a($$0, $$1) + 7, 0, 15);
    }
 
-   public alf a(cka $$0) {
+   public void a(bso $$0, float $$1, float $$2, fag $$3, gdx $$4, int $$5) {
+      $$3.a();
+      int $$6 = $$0.s();
+      float $$7 = (float)($$6 % 4 * 16 + 0) / 64.0F;
+      float $$8 = (float)($$6 % 4 * 16 + 16) / 64.0F;
+      float $$9 = (float)($$6 / 4 * 16 + 0) / 64.0F;
+      float $$10 = (float)($$6 / 4 * 16 + 16) / 64.0F;
+      float $$11 = 1.0F;
+      float $$12 = 0.5F;
+      float $$13 = 0.25F;
+      float $$14 = 255.0F;
+      float $$15 = ((float)$$0.ai + $$2) / 2.0F;
+      int $$16 = (int)((aye.a($$15 + 0.0F) + 1.0F) * 0.5F * 255.0F);
+      int $$17 = 255;
+      int $$18 = (int)((aye.a($$15 + (float) (Math.PI * 4.0 / 3.0)) + 1.0F) * 0.1F * 255.0F);
+      $$3.a(0.0F, 0.1F, 0.0F);
+      $$3.a(this.c.b());
+      $$3.a(a.d.rotationDegrees(180.0F));
+      float $$19 = 0.3F;
+      $$3.b(0.3F, 0.3F, 0.3F);
+      fak $$20 = $$4.getBuffer(f);
+      fag.a $$21 = $$3.c();
+      a($$20, $$21, -0.5F, -0.25F, $$16, 255, $$18, $$7, $$10, $$5);
+      a($$20, $$21, 0.5F, -0.25F, $$16, 255, $$18, $$8, $$10, $$5);
+      a($$20, $$21, 0.5F, 0.75F, $$16, 255, $$18, $$8, $$9, $$5);
+      a($$20, $$21, -0.5F, 0.75F, $$16, 255, $$18, $$7, $$9, $$5);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   private static void a(fak $$0, fag.a $$1, float $$2, float $$3, int $$4, int $$5, int $$6, float $$7, float $$8, int $$9) {
+      $$0.a($$1, $$2, $$3, 0.0F).a($$4, $$5, $$6, 128).a($$7, $$8).c(goz.d).b($$9).b($$1, 0.0F, 1.0F, 0.0F).e();
+   }
+
+   public akk a(bso $$0) {
       return a;
    }
 }

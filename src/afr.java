@@ -1,45 +1,24 @@
-public class afr implements zw<aci> {
-   public static final zn<wm, afr> a = zw.a(afr::a, afr::new);
-   private final float b;
-   private final int c;
-   private final int d;
+public record afr(int b) implements zb<abn> {
+   public static final ys<vr, afr> a = zb.a(afr::a, afr::new);
 
-   public afr(float $$0, int $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   private afr(vr $$0) {
+      this($$0.l());
    }
 
-   private afr(wm $$0) {
-      this.b = $$0.readFloat();
-      this.d = $$0.l();
-      this.c = $$0.l();
+   public static afr a(bqo $$0) {
+      return new afr($$0.k());
    }
 
-   private void a(wm $$0) {
-      $$0.a(this.b);
-      $$0.c(this.d);
-      $$0.c(this.c);
+   private void a(vr $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zy<afr> a() {
-      return agu.aG;
+   public zd<afr> a() {
+      return afz.cg;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
-   }
-
-   public float b() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
    }
 }

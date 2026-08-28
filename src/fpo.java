@@ -1,47 +1,27 @@
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-public class fpo extends fof {
-   public static final float b = 62.500004F;
-   public static final float c = 0.9765628F;
-   private static final Vector3f d = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
-   @Nullable
-   private gge.a r;
+public class fpo implements fpn {
+   public static final fpn a = new fpo();
 
-   public fpo(dqt $$0, boolean $$1, boolean $$2) {
-      super($$0, $$1, $$2);
+   private fpo() {
    }
 
    @Override
-   protected void aM_() {
-      super.aM_();
-      this.r = gge.a(this.m.aR(), this.a);
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i($$2, $$3).add(12, -12);
+      this.a($$0, $$1, $$6, $$4, $$5);
+      return $$6;
    }
 
-   @Override
-   protected void b(fgt $$0, dse $$1) {
-      super.b($$0, $$1);
-      boolean $$2 = $$1.b() instanceof dmw;
-      if (!$$2) {
-         $$0.c().a(0.0F, 35.0F, 0.0F);
+   private void a(int $$0, int $$1, Vector2i $$2, int $$3, int $$4) {
+      if ($$2.x + $$3 > $$0) {
+         $$2.x = Math.max($$2.x - 24 - $$3, 4);
       }
-   }
 
-   @Override
-   protected void a(fgt $$0, dse $$1) {
-      if (this.r != null) {
-         boolean $$2 = $$1.b() instanceof dmw;
-         $$0.c().a(0.0F, 31.0F, 0.0F);
-         $$0.c().b(62.500004F, 62.500004F, -62.500004F);
-         grf $$3 = gef.a(this.a);
-         fae $$4 = $$3.a($$0.d(), this.r::a);
-         this.r.b.k = $$2;
-         this.r.a.a($$0.c(), $$4, 15728880, gos.d);
+      int $$5 = $$4 + 3;
+      if ($$2.y + $$5 > $$1) {
+         $$2.y = $$1 - $$5;
       }
-   }
-
-   @Override
-   protected Vector3f m() {
-      return d;
    }
 }

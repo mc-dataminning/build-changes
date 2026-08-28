@@ -1,79 +1,59 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import java.util.Collection;
-import java.util.Map;
-import java.util.stream.Collectors;
+import com.google.common.net.InetAddresses;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class als extends aut {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Gson b = new GsonBuilder().create();
-   private Map<alf, af> c = Map.of();
-   private ak d = new ak();
-   private final jk.a e;
+public class als {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("commands.banip.invalid"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wu.c("commands.banip.failed"));
 
-   public als(jk.a $$0) {
-      super(b, "advancements");
-      this.e = $$0;
+   public static void a(CommandDispatcher<eq> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("ban-ip").requires($$0x -> $$0x.c(3)))
+            .then(
+               ((RequiredArgumentBuilder)er.a("target", StringArgumentType.word())
+                     .executes($$0x -> a((eq)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), null)))
+                  .then(er.a("reason", fh.a()).executes($$0x -> a((eq)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), fh.a($$0x, "reason"))))
+            )
+      );
    }
 
-   protected void a(Map<alf, JsonElement> $$0, aup $$1, bnk $$2) {
-      ald<JsonElement> $$3 = this.e.a(JsonOps.INSTANCE);
-      Builder<alf, af> $$4 = ImmutableMap.builder();
-      $$0.forEach(($$2x, $$3x) -> {
-         try {
-            ae $$4x = (ae)ae.a.parse($$3, $$3x).getOrThrow(JsonParseException::new);
-            this.a($$2x, $$4x);
-            $$4.put($$2x, new af($$2x, $$4x));
-         } catch (Exception var6x) {
-            a.error("Parsing error loading custom advancement {}: {}", $$2x, var6x.getMessage());
-         }
-      });
-      this.c = $$4.buildOrThrow();
-      ak $$5 = new ak();
-      $$5.a(this.c.values());
-
-      for (ag $$6 : $$5.b()) {
-         if ($$6.b().b().c().isPresent()) {
-            as.a($$6);
+   private static int a(eq $$0, String $$1, @Nullable wu $$2) throws CommandSyntaxException {
+      if (InetAddresses.isInetAddress($$1)) {
+         return b($$0, $$1, $$2);
+      } else {
+         aql $$3 = $$0.l().ah().a($$1);
+         if ($$3 != null) {
+            return b($$0, $$3.A(), $$2);
+         } else {
+            throw a.create();
          }
       }
-
-      this.d = $$5;
    }
 
-   private void a(alf $$0, ae $$1) {
-      azf.a $$2 = new azf.a();
-      $$1.a($$2, this.e.b());
-      Multimap<String, String> $$3 = $$2.a();
-      if (!$$3.isEmpty()) {
-         String $$4 = $$3.asMap()
-            .entrySet()
-            .stream()
-            .map($$0x -> "  at " + (String)$$0x.getKey() + ": " + String.join("; ", (Iterable<? extends CharSequence>)$$0x.getValue()))
-            .collect(Collectors.joining("\n"));
-         a.warn("Found validation problems in advancement {}: \n{}", $$0, $$4);
+   private static int b(eq $$0, String $$1, @Nullable wu $$2) throws CommandSyntaxException {
+      aue $$3 = $$0.l().ah().g();
+      if ($$3.a($$1)) {
+         throw b.create();
+      } else {
+         List<aql> $$4 = $$0.l().ah().b($$1);
+         auf $$5 = new auf($$1, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
+         $$3.a($$5);
+         $$0.a(() -> wu.a("commands.banip.success", $$1, $$5.d()), true);
+         if (!$$4.isEmpty()) {
+            $$0.a(() -> wu.a("commands.banip.info", $$4.size(), hf.a($$4)), true);
+         }
+
+         for (aql $$6 : $$4) {
+            $$6.c.b(wu.c("multiplayer.disconnect.ip_banned"));
+         }
+
+         return $$4.size();
       }
-   }
-
-   @Nullable
-   public af a(alf $$0) {
-      return this.c.get($$0);
-   }
-
-   public ak a() {
-      return this.d;
-   }
-
-   public Collection<af> b() {
-      return this.c.values();
    }
 }

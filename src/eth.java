@@ -1,8 +1,16 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class eth<T> {
+   private final akk a;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface eth {
+   public eth(akk $$0) {
+      this.a = $$0;
+   }
+
+   public akk a() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "<parameter " + this.a + ">";
+   }
 }

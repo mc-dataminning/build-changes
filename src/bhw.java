@@ -1,62 +1,23 @@
-import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class bhw extends bfv {
-   public bhw(Schema $$0, String $$1) {
-      super($$0, false, "Villager profession data fix (" + $$1 + ")", bgx.B, $$1);
+public class bhw extends Schema {
+   public bhw(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      Dynamic<?> $$1 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
-      return $$0.set(
-         DSL.remainderFinder(),
-         $$1.remove("Profession")
-            .remove("Career")
-            .remove("CareerLevel")
-            .set(
-               "VillagerData",
-               $$1.createMap(
-                  ImmutableMap.of(
-                     $$1.createString("type"),
-                     $$1.createString("minecraft:plains"),
-                     $$1.createString("profession"),
-                     $$1.createString(a($$1.get("Profession").asInt(0), $$1.get("Career").asInt(0))),
-                     $$1.createString("level"),
-                     (Dynamic)DataFixUtils.orElse($$1.get("CareerLevel").result(), $$1.createInt(1))
-                  )
-               )
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(
+         false,
+         bgd.b,
+         () -> DSL.optionalFields(
+               "RootVehicle", DSL.optionalFields("Entity", bgd.A.in($$0)), "Inventory", DSL.list(bgd.t.in($$0)), "EnderItems", DSL.list(bgd.t.in($$0))
             )
       );
-   }
-
-   private static String a(int $$0, int $$1) {
-      if ($$0 == 0) {
-         if ($$1 == 2) {
-            return "minecraft:fisherman";
-         } else if ($$1 == 3) {
-            return "minecraft:shepherd";
-         } else {
-            return $$1 == 4 ? "minecraft:fletcher" : "minecraft:farmer";
-         }
-      } else if ($$0 == 1) {
-         return $$1 == 2 ? "minecraft:cartographer" : "minecraft:librarian";
-      } else if ($$0 == 2) {
-         return "minecraft:cleric";
-      } else if ($$0 == 3) {
-         if ($$1 == 2) {
-            return "minecraft:weaponsmith";
-         } else {
-            return $$1 == 3 ? "minecraft:toolsmith" : "minecraft:armorer";
-         }
-      } else if ($$0 == 4) {
-         return $$1 == 2 ? "minecraft:leatherworker" : "minecraft:butcher";
-      } else {
-         return $$0 == 5 ? "minecraft:nitwit" : "minecraft:none";
-      }
+      $$0.registerType(true, bgd.A, () -> DSL.optionalFields("Passengers", DSL.list(bgd.A.in($$0)), bgd.B.in($$0)));
    }
 }

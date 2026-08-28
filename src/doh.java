@@ -1,33 +1,113 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class doh extends dgp implements dog {
-   public static final MapCodec<doh> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dog.a.e.fieldOf("weathering_state").forGetter(doh::m), u()).apply($$0, doh::new)
+public class doh extends dnp {
+   public static final MapCodec<doh> f = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), u()).apply($$0, doh::new));
+   public static final dtb g = djb.aE;
+   protected static final float h = 2.5F;
+   private static final Map<jf, ews> i = Maps.newEnumMap(
+      ImmutableMap.of(
+         jf.c,
+         dff.a(5.5, 3.0, 11.0, 10.5, 13.0, 16.0),
+         jf.d,
+         dff.a(5.5, 3.0, 0.0, 10.5, 13.0, 5.0),
+         jf.e,
+         dff.a(11.0, 3.0, 5.5, 16.0, 13.0, 10.5),
+         jf.f,
+         dff.a(0.0, 3.0, 5.5, 5.0, 13.0, 10.5)
+      )
    );
-   private final dog.a e;
 
    @Override
-   protected MapCodec<doh> a() {
-      return d;
+   public MapCodec<doh> a() {
+      return f;
    }
 
-   public doh(dog.a $$0, dsd.d $$1) {
-      super($$1);
-      this.e = $$0;
-   }
-
-   @Override
-   protected void b(dse $$0, arf $$1, iz $$2, azh $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   protected doh(ln $$0, dsg.d $$1) {
+      super($$0, $$1);
+      this.k(this.E.b().a(g, jf.c));
    }
 
    @Override
-   protected boolean d_(dse $$0) {
-      return dog.c($$0.b()).isPresent();
+   public String g() {
+      return this.r().a();
    }
 
-   public dog.a m() {
-      return this.e;
+   @Override
+   protected ews a(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
+      return m($$0);
+   }
+
+   public static ews m(dsh $$0) {
+      return i.get($$0.c(g));
+   }
+
+   @Override
+   protected boolean a(dsh $$0, dcg $$1, ja $$2) {
+      return b($$1, $$2, $$0.c(g));
+   }
+
+   public static boolean b(dcg $$0, ja $$1, jf $$2) {
+      ja $$3 = $$1.a($$2.g());
+      dsh $$4 = $$0.a_($$3);
+      return $$4.d($$0, $$3, $$2);
+   }
+
+   @Nullable
+   @Override
+   public dsh a(cxk $$0) {
+      dsh $$1 = this.o();
+      dcg $$2 = $$0.q();
+      ja $$3 = $$0.a();
+      jf[] $$4 = $$0.f();
+
+      for (jf $$5 : $$4) {
+         if ($$5.o().d()) {
+            jf $$6 = $$5.g();
+            $$1 = $$1.a(g, $$6);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
+         }
+      }
+
+      return null;
+   }
+
+   @Override
+   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
+      return $$1.g() == $$0.c(g) && !$$0.a($$3, $$4) ? dfh.a.o() : $$0;
+   }
+
+   @Override
+   public void a(dsh $$0, dcd $$1, ja $$2, aym $$3) {
+      jf $$4 = $$0.c(g);
+      double $$5 = (double)$$2.u() + 0.5;
+      double $$6 = (double)$$2.v() + 0.7;
+      double $$7 = (double)$$2.w() + 0.5;
+      double $$8 = 0.22;
+      double $$9 = 0.27;
+      jf $$10 = $$4.g();
+      $$1.a(lj.ae, $$5 + 0.27 * (double)$$10.j(), $$6 + 0.22, $$7 + 0.27 * (double)$$10.l(), 0.0, 0.0, 0.0);
+      $$1.a(this.e, $$5 + 0.27 * (double)$$10.j(), $$6 + 0.22, $$7 + 0.27 * (double)$$10.l(), 0.0, 0.0, 0.0);
+   }
+
+   @Override
+   protected dsh a(dsh $$0, dls $$1) {
+      return $$0.a(g, $$1.a($$0.c(g)));
+   }
+
+   @Override
+   protected dsh a(dsh $$0, dkc $$1) {
+      return $$0.a($$1.a($$0.c(g)));
+   }
+
+   @Override
+   protected void a(dsi.a<dff, dsh> $$0) {
+      $$0.a(g);
    }
 }

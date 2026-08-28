@@ -1,23 +1,13 @@
-public class epa implements epb {
-   private final dca b;
+public class epa {
+   public final evz a;
+   public final evz b;
+   public final float c;
+   public final float d;
 
-   public epa(dca $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public void a(je $$0, dse $$1, iz $$2, iz $$3, int $$4, int $$5) {
-      epb.a(this.b, $$0, $$1, $$2, $$3, $$4, $$5 - 1);
-   }
-
-   @Override
-   public void a(iz $$0, dfb $$1, iz $$2) {
-      dse $$3 = this.b.a_($$0);
-      this.a($$3, $$0, $$1, $$2, false);
-   }
-
-   @Override
-   public void a(dse $$0, iz $$1, dfb $$2, iz $$3, boolean $$4) {
-      epb.a(this.b, $$0, $$1, $$2, $$3, $$4);
+   public epa(evz $$0, evz $$1, float $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 }

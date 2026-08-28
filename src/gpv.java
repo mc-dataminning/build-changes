@@ -1,17 +1,21 @@
-import java.io.IOException;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class gpv extends auu<int[]> {
-   private static final alf a = new alf("textures/colormap/grass.png");
+public class gpv implements gpm {
+   public static final MapCodec<gpv> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayn.a.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, gpv::new));
+   private final ayn c;
 
-   protected int[] a(aup $$0, bnk $$1) {
-      try {
-         return gpx.a($$0, a);
-      } catch (IOException var4) {
-         throw new IllegalStateException("Failed to load grass color texture", var4);
-      }
+   public gpv(ayn $$0) {
+      this.c = $$0;
    }
 
-   protected void a(int[] $$0, aup $$1, bnk $$2) {
-      dby.a($$0);
+   @Override
+   public void a(atu $$0, gpm.a $$1) {
+      $$1.a(this.c.c());
+   }
+
+   @Override
+   public gpo a() {
+      return gpp.c;
    }
 }

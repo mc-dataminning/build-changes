@@ -1,70 +1,60 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import java.util.Set;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class ete {
-   private final Set<etd<?>> a;
-   private final Set<etd<?>> b;
+public class ete extends esb {
+   private static final Map<km<?>, ete.a<?>> b = Stream.of(
+         new ete.a<>(kn.K, cwe::a),
+         new ete.a<>(kn.z, cwr::a),
+         new ete.a<>(kn.k, czp::a),
+         new ete.a<>(kn.y, czp::a),
+         new ete.a<>(kn.f, cxg::a),
+         new ete.a<>(kn.m, crm::a),
+         new ete.a<>(kn.l, crm::a),
+         new ete.a<>(kn.n, cwu::a)
+      )
+      .collect(Collectors.toMap(ete.a::a, $$0 -> (ete.a<?>)$$0));
+   private static final Codec<ete.a<?>> c = lq.aq.r().comapFlatMap($$0 -> {
+      ete.a<?> $$1 = b.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Can't toggle tooltip visiblity for " + lq.aq.b($$0));
+   }, ete.a::a);
+   public static final MapCodec<ete> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(Codec.unboundedMap(c, Codec.BOOL).fieldOf("toggles").forGetter($$0x -> $$0x.d)).apply($$0, ete::new)
+   );
+   private final Map<ete.a<?>, Boolean> d;
 
-   ete(Set<etd<?>> $$0, Set<etd<?>> $$1) {
-      this.a = ImmutableSet.copyOf($$0);
-      this.b = ImmutableSet.copyOf(Sets.union($$0, $$1));
-   }
-
-   public boolean a(etd<?> $$0) {
-      return this.b.contains($$0);
-   }
-
-   public Set<etd<?>> a() {
-      return this.a;
-   }
-
-   public Set<etd<?>> b() {
-      return this.b;
+   private ete(List<etz> $$0, Map<ete.a<?>, Boolean> $$1) {
+      super($$0);
+      this.d = $$1;
    }
 
    @Override
-   public String toString() {
-      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
+   protected cua a(cua $$0, eqo $$1) {
+      this.d.forEach(($$1x, $$2) -> $$1x.a($$0, $$2));
+      return $$0;
    }
 
-   public void a(eqq $$0, eql $$1) {
-      Set<etd<?>> $$2 = $$1.a();
-      Set<etd<?>> $$3 = Sets.difference($$2, this.b);
-      if (!$$3.isEmpty()) {
-         $$0.b("Parameters " + $$3 + " are not provided in this context");
-      }
+   @Override
+   public esd<ete> b() {
+      return ese.P;
    }
 
-   public static ete.a c() {
-      return new ete.a();
-   }
-
-   public static class a {
-      private final Set<etd<?>> a = Sets.newIdentityHashSet();
-      private final Set<etd<?>> b = Sets.newIdentityHashSet();
-
-      public ete.a a(etd<?> $$0) {
-         if (this.b.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
-         } else {
-            this.a.add($$0);
-            return this;
+   static record a<T>(km<T> a, ete.b<T> b) {
+      public void a(cua $$0, boolean $$1) {
+         T $$2 = $$0.a(this.a);
+         if ($$2 != null) {
+            $$0.b(this.a, this.b.withTooltip($$2, $$1));
          }
       }
+   }
 
-      public ete.a b(etd<?> $$0) {
-         if (this.a.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
-         } else {
-            this.b.add($$0);
-            return this;
-         }
-      }
-
-      public ete a() {
-         return new ete(this.a, this.b);
-      }
+   @FunctionalInterface
+   interface b<T> {
+      T withTooltip(T var1, boolean var2);
    }
 }

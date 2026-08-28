@@ -1,42 +1,48 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cbd extends cap {
-   private final bua a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
+public class cbd extends bzw {
+   private final ciz a;
+   @Nullable
+   private bsy b;
 
-   public cbd(bua $$0, double $$1) {
+   public cbd(ciz $$0) {
       this.a = $$0;
-      this.e = $$1;
-      this.a(EnumSet.of(cap.a.a));
+      this.a(EnumSet.of(bzw.a.a));
    }
 
    @Override
    public boolean a() {
-      if (this.a.fX()) {
-         return false;
-      } else {
-         evt $$0 = cem.a(this.a, 16, 7, evt.c(this.a.fY()), (float) (Math.PI / 2));
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.c;
-            this.c = $$0.d;
-            this.d = $$0.e;
-            return true;
-         }
-      }
-   }
-
-   @Override
-   public boolean b() {
-      return !this.a.K().l();
+      bsy $$0 = this.a.p();
+      return this.a.u() > 0 || $$0 != null && this.a.g((bsd)$$0) < 9.0;
    }
 
    @Override
    public void c() {
-      this.a.K().a(this.b, this.c, this.d, this.e);
+      this.a.K().n();
+      this.b = this.a.p();
+   }
+
+   @Override
+   public void d() {
+      this.b = null;
+   }
+
+   @Override
+   public boolean R_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      if (this.b == null) {
+         this.a.b(-1);
+      } else if (this.a.g((bsd)this.b) > 49.0) {
+         this.a.b(-1);
+      } else if (!this.a.M().a(this.b)) {
+         this.a.b(-1);
+      } else {
+         this.a.b(1);
+      }
    }
 }

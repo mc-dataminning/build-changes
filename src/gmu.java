@@ -1,36 +1,16 @@
-public class gmu<T extends btr, M extends fuc<T>> extends gnl<T, M> {
-   private static final alf a = new alf("textures/entity/elytra.png");
-   private final ftz<T> b;
+public class gmu extends gns<cer, ftt<cer>> {
+   private static final akk a = new akk("textures/entity/cat/cat_collar.png");
+   private final ftt<cer> b;
 
-   public gmu(gkv<T, M> $$0, fwy $$1) {
+   public gmu(glc<cer, ftt<cer>> $$0, fxe $$1) {
       super($$0);
-      this.b = new ftz<>($$1.a(fxb.W));
+      this.b = new ftt<>($$1.a(fxh.u));
    }
 
-   public void a(faa $$0, gdq $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cur $$10 = $$3.a(btd.e);
-      if ($$10.a(cuu.nT)) {
-         alf $$13;
-         if ($$3 instanceof gcp $$11) {
-            gqb $$12 = $$11.b();
-            if ($$12.d() != null) {
-               $$13 = $$12.d();
-            } else if ($$12.c() != null && $$11.a(cna.a)) {
-               $$13 = $$12.c();
-            } else {
-               $$13 = a;
-            }
-         } else {
-            $$13 = a;
-         }
-
-         $$0.a();
-         $$0.a(0.0F, 0.0F, 0.125F);
-         this.c().a(this.b);
-         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-         fae $$17 = gjx.a($$1, gdy.a($$13), false, $$10.y());
-         this.b.a($$0, $$17, $$2, gos.d, 1.0F, 1.0F, 1.0F, 1.0F);
-         $$0.b();
+   public void a(fag $$0, gdx $$1, int $$2, cer $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.s()) {
+         float[] $$10 = $$3.gw().d();
+         a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$10[0], $$10[1], $$10[2]);
       }
    }
 }

@@ -1,20 +1,24 @@
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.stream.Collectors;
 
-public final class gei implements AutoCloseable {
-   private final ffh a;
-   private final ezc b;
+public class gei implements AutoCloseable {
+   public static final int a = gef.H().stream().mapToInt(gef::I).sum();
+   private final Map<gef, fab> b = gef.H().stream().collect(Collectors.toMap($$0 -> (gef)$$0, $$0 -> new fab($$0.I())));
 
-   public gei(ffh $$0) {
-      this.a = $$0;
-      this.b = new ezc(eyz::new);
+   public fab a(gef $$0) {
+      return this.b.get($$0);
    }
 
-   public eze a(eyr $$0, @Nullable String $$1, String $$2) {
-      return new eze(this.a, this.b, $$0, $$1, $$2);
+   public void a() {
+      this.b.values().forEach(fab::g);
+   }
+
+   public void b() {
+      this.b.values().forEach(fab::h);
    }
 
    @Override
    public void close() {
-      this.b.a();
+      this.b.values().forEach(fab::i);
    }
 }

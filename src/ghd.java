@@ -1,151 +1,288 @@
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class ghd implements ghc.a {
-   private final ffh a;
-   private static final int b = 32;
-   private static final float c = 1.0F;
-   private final List<ghd.a> d = Lists.newArrayList();
-   private final List<ghd.b> e = Lists.newArrayList();
+public class ghd implements ghj.a {
+   private static final boolean a = true;
+   private static final boolean b = true;
+   private static final boolean c = true;
+   private static final boolean d = true;
+   private static final boolean e = true;
+   private static final boolean f = false;
+   private static final boolean g = true;
+   private static final boolean h = true;
+   private static final boolean i = true;
+   private static final boolean j = true;
+   private static final boolean k = true;
+   private static final boolean l = true;
+   private static final boolean m = true;
+   private static final boolean n = true;
+   private static final int o = 30;
+   private static final int p = 30;
+   private static final int q = 8;
+   private static final int r = 20;
+   private static final float s = 0.02F;
+   private static final int t = -1;
+   private static final int u = -256;
+   private static final int v = -23296;
+   private static final int w = -16711936;
+   private static final int x = -3355444;
+   private static final int y = -98404;
+   private static final int z = -65536;
+   private final ffn A;
+   private final Map<ja, ghd.a> B = new HashMap<>();
+   private final Map<UUID, zy.a> C = new HashMap<>();
+   @Nullable
+   private UUID D;
 
-   public ghd(ffh $$0) {
-      this.a = $$0;
+   public ghd(ffn $$0) {
+      this.A = $$0;
    }
 
    @Override
-   public void a(faa $$0, gdq $$1, double $$2, double $$3, double $$4) {
-      dca $$5 = this.a.r;
-      if ($$5 == null) {
-         this.d.clear();
-         this.e.clear();
+   public void a() {
+      this.B.clear();
+      this.C.clear();
+      this.D = null;
+   }
+
+   public void a(aaj.a $$0, long $$1) {
+      this.B.put($$0.a(), new ghd.a($$0, $$1));
+   }
+
+   public void a(zy.a $$0) {
+      this.C.put($$0.b(), $$0);
+   }
+
+   public void a(int $$0) {
+      this.C.values().removeIf($$1 -> $$1.c() == $$0);
+   }
+
+   @Override
+   public void a(fag $$0, gdx $$1, double $$2, double $$3, double $$4) {
+      this.c();
+      this.b();
+      this.a($$0, $$1);
+      if (!this.A.s.N_()) {
+         this.g();
+      }
+   }
+
+   private void b() {
+      this.C.entrySet().removeIf($$0 -> this.A.r.a($$0.getValue().c()) == null);
+   }
+
+   private void c() {
+      long $$0 = this.A.r.Z() - 20L;
+      this.B.entrySet().removeIf($$1 -> $$1.getValue().b() < $$0);
+   }
+
+   private void a(fag $$0, gdx $$1) {
+      ja $$2 = this.e().c();
+      this.C.values().forEach($$2x -> {
+         if (this.c($$2x)) {
+            this.b($$0, $$1, $$2x);
+         }
+      });
+      this.b($$0, $$1);
+
+      for (ja $$3 : this.B.keySet()) {
+         if ($$2.a($$3, 30.0)) {
+            a($$0, $$1, $$3);
+         }
+      }
+
+      Map<ja, Set<UUID>> $$4 = this.d();
+      this.B.values().forEach($$4x -> {
+         if ($$2.a($$4x.a.a(), 30.0)) {
+            Set<UUID> $$5 = $$4.get($$4x.a.a());
+            this.a($$0, $$1, $$4x.a, (Collection<UUID>)($$5 == null ? Sets.newHashSet() : $$5));
+         }
+      });
+      this.f().forEach(($$3x, $$4x) -> {
+         if ($$2.a($$3x, 30.0)) {
+            this.a($$0, $$1, $$3x, (List<String>)$$4x);
+         }
+      });
+   }
+
+   private Map<ja, Set<UUID>> d() {
+      Map<ja, Set<UUID>> $$0 = Maps.newHashMap();
+      this.C.values().forEach($$1 -> $$1.j().forEach($$2 -> $$0.computeIfAbsent($$2, $$0xxx -> Sets.newHashSet()).add($$1.b())));
+      return $$0;
+   }
+
+   private void b(fag $$0, gdx $$1) {
+      Map<ja, Set<UUID>> $$2 = Maps.newHashMap();
+      this.C.values().forEach($$1x -> {
+         if ($$1x.g() != null) {
+            $$2.computeIfAbsent($$1x.g(), $$0xx -> new HashSet<>()).add($$1x.b());
+         }
+      });
+      $$2.forEach(($$2x, $$3) -> {
+         Set<String> $$4 = $$3.stream().map(afx::a).collect(Collectors.toSet());
+         int $$5 = 1;
+         a($$0, $$1, $$4.toString(), $$2x, $$5++, -256);
+         a($$0, $$1, "Flower", $$2x, $$5++, -1);
+         float $$6 = 0.05F;
+         ghj.a($$0, $$1, $$2x, 0.05F, 0.8F, 0.8F, 0.0F, 0.3F);
+      });
+   }
+
+   private static String a(Collection<UUID> $$0) {
+      if ($$0.isEmpty()) {
+         return "-";
       } else {
-         evt $$6 = new evt($$2, 0.0, $$4);
-         this.d.removeIf(ghd.a::a);
-         this.e.removeIf($$2x -> $$2x.a($$5, $$6));
-         fae $$7 = $$1.getBuffer(gdy.y());
+         return $$0.size() > 3 ? $$0.size() + " bees" : $$0.stream().map(afx::a).collect(Collectors.toSet()).toString();
+      }
+   }
 
-         for (ghd.b $$8 : this.e) {
-            $$8.a($$5).ifPresent($$6x -> {
-               double $$7x = $$6x.a() - (double)$$8.b();
-               double $$8x = $$6x.b() - (double)$$8.b();
-               double $$9 = $$6x.c() - (double)$$8.b();
-               double $$10 = $$6x.a() + (double)$$8.b();
-               double $$11 = $$6x.b() + (double)$$8.b();
-               double $$12x = $$6x.c() + (double)$$8.b();
-               gdo.a($$0, $$7, ewj.a(new evo($$7x, $$8x, $$9, $$10, $$11, $$12x)), -$$2, -$$3, -$$4, 1.0F, 1.0F, 0.0F, 0.35F, true);
-            });
+   private static void a(fag $$0, gdx $$1, ja $$2) {
+      float $$3 = 0.05F;
+      ghj.a($$0, $$1, $$2, 0.05F, 0.2F, 0.2F, 1.0F, 0.3F);
+   }
+
+   private void a(fag $$0, gdx $$1, ja $$2, List<String> $$3) {
+      float $$4 = 0.05F;
+      ghj.a($$0, $$1, $$2, 0.05F, 0.2F, 0.2F, 1.0F, 0.3F);
+      a($$0, $$1, $$3 + "", $$2, 0, -256);
+      a($$0, $$1, "Ghost Hive", $$2, 1, -65536);
+   }
+
+   private void a(fag $$0, gdx $$1, aaj.a $$2, Collection<UUID> $$3) {
+      int $$4 = 0;
+      if (!$$3.isEmpty()) {
+         a($$0, $$1, "Blacklisted by " + a($$3), $$2, $$4++, -65536);
+      }
+
+      a($$0, $$1, "Out: " + a(this.a($$2.a())), $$2, $$4++, -3355444);
+      if ($$2.c() == 0) {
+         a($$0, $$1, "In: -", $$2, $$4++, -256);
+      } else if ($$2.c() == 1) {
+         a($$0, $$1, "In: 1 bee", $$2, $$4++, -256);
+      } else {
+         a($$0, $$1, "In: " + $$2.c() + " bees", $$2, $$4++, -256);
+      }
+
+      a($$0, $$1, "Honey: " + $$2.d(), $$2, $$4++, -23296);
+      a($$0, $$1, $$2.b() + ($$2.e() ? " (sedated)" : ""), $$2, $$4++, -1);
+   }
+
+   private void a(fag $$0, gdx $$1, zy.a $$2) {
+      if ($$2.e() != null) {
+         ghr.a($$0, $$1, $$2.e(), 0.5F, false, false, this.e().b().a(), this.e().b().b(), this.e().b().c());
+      }
+   }
+
+   private void b(fag $$0, gdx $$1, zy.a $$2) {
+      boolean $$3 = this.b($$2);
+      int $$4 = 0;
+      a($$0, $$1, $$2.d(), $$4++, $$2.toString(), -1, 0.03F);
+      if ($$2.f() == null) {
+         a($$0, $$1, $$2.d(), $$4++, "No hive", -98404, 0.02F);
+      } else {
+         a($$0, $$1, $$2.d(), $$4++, "Hive: " + this.a($$2, $$2.f()), -256, 0.02F);
+      }
+
+      if ($$2.g() == null) {
+         a($$0, $$1, $$2.d(), $$4++, "No flower", -98404, 0.02F);
+      } else {
+         a($$0, $$1, $$2.d(), $$4++, "Flower: " + this.a($$2, $$2.g()), -256, 0.02F);
+      }
+
+      for (String $$5 : $$2.i()) {
+         a($$0, $$1, $$2.d(), $$4++, $$5, -16711936, 0.02F);
+      }
+
+      if ($$3) {
+         this.a($$0, $$1, $$2);
+      }
+
+      if ($$2.h() > 0) {
+         int $$6 = $$2.h() < 600 ? -3355444 : -23296;
+         a($$0, $$1, $$2.d(), $$4++, "Travelling: " + $$2.h() + " ticks", $$6, 0.02F);
+      }
+   }
+
+   private static void a(fag $$0, gdx $$1, String $$2, aaj.a $$3, int $$4, int $$5) {
+      a($$0, $$1, $$2, $$3.a(), $$4, $$5);
+   }
+
+   private static void a(fag $$0, gdx $$1, String $$2, ja $$3, int $$4, int $$5) {
+      double $$6 = 1.3;
+      double $$7 = 0.2;
+      double $$8 = (double)$$3.u() + 0.5;
+      double $$9 = (double)$$3.v() + 1.3 + (double)$$4 * 0.2;
+      double $$10 = (double)$$3.w() + 0.5;
+      ghj.a($$0, $$1, $$2, $$8, $$9, $$10, $$5, 0.02F, true, 0.0F, true);
+   }
+
+   private static void a(fag $$0, gdx $$1, jt $$2, int $$3, String $$4, int $$5, float $$6) {
+      double $$7 = 2.4;
+      double $$8 = 0.25;
+      ja $$9 = ja.a($$2);
+      double $$10 = (double)$$9.u() + 0.5;
+      double $$11 = $$2.b() + 2.4 + (double)$$3 * 0.25;
+      double $$12 = (double)$$9.w() + 0.5;
+      float $$13 = 0.5F;
+      ghj.a($$0, $$1, $$4, $$10, $$11, $$12, $$5, $$6, false, 0.5F, true);
+   }
+
+   private fey e() {
+      return this.A.j.l();
+   }
+
+   private Set<String> a(aaj.a $$0) {
+      return this.a($$0.a()).stream().map(afx::a).collect(Collectors.toSet());
+   }
+
+   private String a(zy.a $$0, ja $$1) {
+      double $$2 = Math.sqrt($$1.b($$0.d()));
+      double $$3 = (double)Math.round($$2 * 10.0) / 10.0;
+      return $$1.x() + " (dist " + $$3 + ")";
+   }
+
+   private boolean b(zy.a $$0) {
+      return Objects.equals(this.D, $$0.b());
+   }
+
+   private boolean c(zy.a $$0) {
+      cmh $$1 = this.A.s;
+      ja $$2 = ja.a($$1.du(), $$0.d().b(), $$1.dA());
+      ja $$3 = ja.a($$0.d());
+      return $$2.a($$3, 30.0);
+   }
+
+   private Collection<UUID> a(ja $$0) {
+      return this.C.values().stream().filter($$1 -> $$1.a($$0)).map(zy.a::b).collect(Collectors.toSet());
+   }
+
+   private Map<ja, List<String>> f() {
+      Map<ja, List<String>> $$0 = Maps.newHashMap();
+
+      for (zy.a $$1 : this.C.values()) {
+         if ($$1.f() != null && !this.B.containsKey($$1.f())) {
+            $$0.computeIfAbsent($$1.f(), $$0x -> Lists.newArrayList()).add($$1.a());
          }
-
-         fae $$9 = $$1.getBuffer(gdy.A());
-
-         for (ghd.b $$10 : this.e) {
-            $$10.a($$5)
-               .ifPresent(
-                  $$5x -> gdo.b(
-                        $$0,
-                        $$9,
-                        $$5x.a() - 0.25 - $$2,
-                        $$5x.b() - $$3,
-                        $$5x.c() - 0.25 - $$4,
-                        $$5x.a() + 0.25 - $$2,
-                        $$5x.b() - $$3 + 1.0,
-                        $$5x.c() + 0.25 - $$4,
-                        1.0F,
-                        1.0F,
-                        0.0F,
-                        0.35F
-                     )
-               );
-         }
-
-         for (ghd.b $$11 : this.e) {
-            $$11.a($$5).ifPresent($$2x -> {
-               ghc.a($$0, $$1, "Listener Origin", $$2x.a(), $$2x.b() + 1.8F, $$2x.c(), -1, 0.025F);
-               ghc.a($$0, $$1, iz.a($$2x).toString(), $$2x.a(), $$2x.b() + 1.5, $$2x.c(), -6959665, 0.025F);
-            });
-         }
-
-         for (ghd.a $$12 : this.d) {
-            evt $$13 = $$12.c;
-            double $$14 = 0.2F;
-            double $$15 = $$13.c - 0.2F;
-            double $$16 = $$13.d - 0.2F;
-            double $$17 = $$13.e - 0.2F;
-            double $$18 = $$13.c + 0.2F;
-            double $$19 = $$13.d + 0.2F + 0.5;
-            double $$20 = $$13.e + 0.2F;
-            a($$0, $$1, new evo($$15, $$16, $$17, $$18, $$19, $$20), 1.0F, 1.0F, 1.0F, 0.2F);
-            ghc.a($$0, $$1, $$12.b.a().toString(), $$13.c, $$13.d + 0.85F, $$13.e, -7564911, 0.0075F);
-         }
       }
+
+      return $$0;
    }
 
-   private static void a(faa $$0, gdq $$1, evo $$2, float $$3, float $$4, float $$5, float $$6) {
-      fes $$7 = ffh.Q().j.l();
-      if ($$7.h()) {
-         evt $$8 = $$7.b().e();
-         ghc.a($$0, $$1, $$2.c($$8), $$3, $$4, $$5, $$6);
-      }
+   private void g() {
+      ghj.a(this.A.an(), 8).ifPresent($$0 -> this.D = $$0.cz());
    }
 
-   public void a(ale<dwx> $$0, evt $$1) {
-      this.d.add(new ghd.a(ac.c(), $$0, $$1));
-   }
-
-   public void a(dxb $$0, int $$1) {
-      this.e.add(new ghd.b($$0, $$1));
-   }
-
-   static record a(long a, ale<dwx> b, evt c) {
-
-      public boolean a() {
-         return ac.c() - this.a > 3000L;
-      }
-
-      public long b() {
-         return this.a;
-      }
-
-      public ale<dwx> c() {
-         return this.b;
-      }
-
-      public evt d() {
-         return this.c;
-      }
-   }
-
-   static class b implements dwz {
-      public final dxb a;
-      public final int b;
-
-      public b(dxb $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public boolean a(dca $$0, evt $$1) {
-         return this.a.a($$0).filter($$1x -> $$1x.g($$1) <= 1024.0).isPresent();
-      }
-
-      public Optional<evt> a(dca $$0) {
-         return this.a.a($$0);
-      }
-
-      @Override
-      public dxb a() {
-         return this.a;
-      }
-
-      @Override
-      public int b() {
-         return this.b;
-      }
-
-      @Override
-      public boolean a(arf $$0, ji<dwx> $$1, dwx.a $$2, evt $$3) {
-         return false;
-      }
+   static record a(aaj.a a, long b) {
    }
 }

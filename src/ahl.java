@@ -1,83 +1,60 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public class ahl implements zw<agw> {
-   public static final zn<xa, ahl> a = zw.a(ahl::a, ahl::new);
-   private static final int b = 128;
-   private static final zn<xa, Int2ObjectMap<cur>> c = zl.a(Int2ObjectOpenHashMap::new, zl.d.a(Short::intValue, Integer::shortValue), cur.h, 128);
-   private final int d;
-   private final int e;
-   private final int f;
-   private final int g;
-   private final cqf h;
-   private final cur i;
-   private final Int2ObjectMap<cur> j;
+public class ahl implements zb<agb> {
+   public static final ys<vr, ahl> a = zb.a(ahl::a, ahl::new);
+   private final ahl.a b;
+   @Nullable
+   private final akk c;
 
-   public ahl(int $$0, int $$1, int $$2, int $$3, cqf $$4, cur $$5, Int2ObjectMap<cur> $$6) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = Int2ObjectMaps.unmodifiable($$6);
+   public ahl(ahl.a $$0, @Nullable akk $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private ahl(xa $$0) {
-      this.d = $$0.readByte();
-      this.e = $$0.l();
-      this.f = $$0.readShort();
-      this.g = $$0.readByte();
-      this.h = $$0.b(cqf.class);
-      this.j = Int2ObjectMaps.unmodifiable(c.decode($$0));
-      this.i = cur.h.decode($$0);
+   public static ahl a(af $$0) {
+      return new ahl(ahl.a.a, $$0.a());
    }
 
-   private void a(xa $$0) {
-      $$0.k(this.d);
-      $$0.c(this.e);
-      $$0.l(this.f);
-      $$0.k(this.g);
-      $$0.a(this.h);
-      c.encode($$0, this.j);
-      cur.h.encode($$0, this.i);
+   public static ahl b() {
+      return new ahl(ahl.a.b, null);
+   }
+
+   private ahl(vr $$0) {
+      this.b = $$0.b(ahl.a.class);
+      if (this.b == ahl.a.a) {
+         this.c = $$0.q();
+      } else {
+         this.c = null;
+      }
+   }
+
+   private void a(vr $$0) {
+      $$0.a(this.b);
+      if (this.b == ahl.a.a) {
+         $$0.a(this.c);
+      }
    }
 
    @Override
-   public zy<ahl> a() {
-      return agu.bs;
+   public zd<ahl> a() {
+      return afz.bQ;
    }
 
-   public void a(agw $$0) {
+   public void a(agb $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.d;
+   public ahl.a e() {
+      return this.b;
    }
 
-   public int e() {
-      return this.f;
+   @Nullable
+   public akk f() {
+      return this.c;
    }
 
-   public int f() {
-      return this.g;
-   }
-
-   public cur g() {
-      return this.i;
-   }
-
-   public Int2ObjectMap<cur> h() {
-      return this.j;
-   }
-
-   public cqf i() {
-      return this.h;
-   }
-
-   public int j() {
-      return this.e;
+   public static enum a {
+      a,
+      b;
    }
 }

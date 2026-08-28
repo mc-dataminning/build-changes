@@ -1,48 +1,89 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
 
-public class ced extends ceb<bua> {
-   public static final int a = 10;
-   private static final cei c = cei.b().a(10.0).d();
-   private final Predicate<cur> d;
+public class ced {
+   private final ja a;
+   private final jj<cef> b;
+   private int c;
+   private final Runnable d;
 
-   public ced(Predicate<cur> $$0) {
-      this.d = $$0;
+   public static Codec<ced> a(Runnable $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(
+                  ja.a.fieldOf("pos").forGetter($$0xx -> $$0xx.a),
+                  akh.a(lr.Z).fieldOf("type").forGetter($$0xx -> $$0xx.b),
+                  Codec.INT.fieldOf("free_tickets").orElse(0).forGetter($$0xx -> $$0xx.c),
+                  RecordCodecBuilder.point($$0)
+               )
+               .apply($$1, ced::new)
+      );
    }
 
-   protected void a(arf $$0, bua $$1) {
-      but<?> $$2 = $$1.dS();
-      List<cmz> $$3 = $$0.x()
-         .stream()
-         .filter(btb.f)
-         .filter($$1x -> c.a($$1, $$1x))
-         .filter($$1x -> $$1.a($$1x, 10.0))
-         .filter(this::a)
-         .filter($$1x -> !$$1.x($$1x))
-         .sorted(Comparator.comparingDouble($$1::g))
-         .collect(Collectors.toList());
-      if (!$$3.isEmpty()) {
-         cmz $$4 = $$3.get(0);
-         $$2.a(ccv.O, $$4);
+   private ced(ja $$0, jj<cef> $$1, int $$2, Runnable $$3) {
+      this.a = $$0.i();
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+   }
+
+   public ced(ja $$0, jj<cef> $$1, Runnable $$2) {
+      this($$0, $$1, $$1.a().b(), $$2);
+   }
+
+   @Deprecated
+   @azi
+   public int a() {
+      return this.c;
+   }
+
+   protected boolean b() {
+      if (this.c <= 0) {
+         return false;
       } else {
-         $$2.b(ccv.O);
+         this.c--;
+         this.d.run();
+         return true;
       }
    }
 
-   private boolean a(cmz $$0) {
-      return this.a($$0.eX()) || this.a($$0.eY());
+   protected boolean c() {
+      if (this.c >= this.b.a().b()) {
+         return false;
+      } else {
+         this.c++;
+         this.d.run();
+         return true;
+      }
    }
 
-   private boolean a(cur $$0) {
-      return this.d.test($$0);
+   public boolean d() {
+      return this.c > 0;
+   }
+
+   public boolean e() {
+      return this.c != this.b.a().b();
+   }
+
+   public ja f() {
+      return this.a;
+   }
+
+   public jj<cef> g() {
+      return this.b;
    }
 
    @Override
-   public Set<ccv<?>> a() {
-      return ImmutableSet.of(ccv.O);
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? Objects.equals(this.a, ((ced)$$0).a) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

@@ -1,34 +1,13 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
+import org.joml.Matrix4f;
 
-public interface fki {
-   MapCodec<fki> b = fkj.f.dispatchMap(fki::a, fkj::a);
+public class fki extends fkh {
+   public static final fki a = new fki();
 
-   fkj a();
-
-   Either<fki.b, fki.c> b();
-
-   public static record a(fki b, fjw.a c) {
-      public static final Codec<fki.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(fki.b.forGetter(fki.a::a), fjw.a.a.optionalFieldOf("filter", fjw.a.b).forGetter(fki.a::b)).apply($$0, fki.a::new)
-      );
-
-      public fki a() {
-         return this.b;
-      }
-
-      public fjw.a b() {
-         return this.c;
-      }
+   public fki() {
+      super(fkf.b(new akk("")), 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
    }
 
-   public interface b {
-      eyd load(aup var1) throws IOException;
-   }
-
-   public static record c(alf a) {
+   @Override
+   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, fak $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
    }
 }

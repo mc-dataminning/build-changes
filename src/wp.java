@@ -1,4 +1,8 @@
-import io.netty.channel.ChannelInboundHandlerAdapter;
+import javax.annotation.Nullable;
 
-public class wp extends ChannelInboundHandlerAdapter {
+@FunctionalInterface
+public interface wp {
+   wp a = ($$0, $$1) -> $$1;
+
+   wu decorate(@Nullable aql var1, wu var2);
 }

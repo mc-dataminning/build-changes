@@ -1,65 +1,40 @@
 import java.util.EnumSet;
 
-public class cbf extends cap {
-   private final btt a;
-   private btr b;
-   private int c;
+public class cbf extends bzw {
+   private final clp a;
 
-   public cbf(btt $$0) {
+   public cbf(clp $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(cap.a.a, cap.a.b));
+      this.a(EnumSet.of(bzw.a.c, bzw.a.a));
    }
 
    @Override
    public boolean a() {
-      btr $$0 = this.a.p();
-      if ($$0 == null) {
+      if (!this.a.bD()) {
+         return false;
+      } else if (this.a.be()) {
+         return false;
+      } else if (!this.a.aE()) {
+         return false;
+      } else if (this.a.U) {
          return false;
       } else {
-         this.b = $$0;
-         return true;
+         cmh $$0 = this.a.gn();
+         if ($$0 == null) {
+            return false;
+         } else {
+            return this.a.g($$0) > 16.0 ? false : $$0.cd != null;
+         }
       }
    }
 
    @Override
-   public boolean b() {
-      if (!this.b.bD()) {
-         return false;
-      } else {
-         return this.a.g(this.b) > 225.0 ? false : !this.a.K().l() || this.a();
-      }
-   }
-
-   @Override
-   public void d() {
-      this.b = null;
+   public void c() {
       this.a.K().n();
    }
 
    @Override
-   public boolean R_() {
-      return true;
-   }
-
-   @Override
-   public void e() {
-      this.a.G().a(this.b, 30.0F, 30.0F);
-      double $$0 = (double)(this.a.dj() * 2.0F * this.a.dj() * 2.0F);
-      double $$1 = this.a.i(this.b.du(), this.b.dw(), this.b.dA());
-      double $$2 = 0.8;
-      if ($$1 > $$0 && $$1 < 16.0) {
-         $$2 = 1.33;
-      } else if ($$1 < 225.0) {
-         $$2 = 0.6;
-      }
-
-      this.a.K().a(this.b, $$2);
-      this.c = Math.max(this.c - 1, 0);
-      if (!($$1 > $$0)) {
-         if (this.c <= 0) {
-            this.c = 20;
-            this.a.C(this.b);
-         }
-      }
+   public void d() {
+      this.a.f(null);
    }
 }

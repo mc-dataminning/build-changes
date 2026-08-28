@@ -1,49 +1,45 @@
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.List;
 
-public record aai(UUID c, String d, String e, boolean f, Optional<xp> g) implements zw<aac> {
-   public static final int a = 40;
-   public static final zn<ByteBuf, aai> b = zn.a(kc.g, aai::b, zl.l, aai::e, zl.b(40), aai::f, zl.b, aai::g, xr.f.a(zl::a), aai::h, aai::new);
+public record aai(int c, ja d, List<aai.a> e) implements aac {
+   public static final ys<vr, aai> a = aac.a(aai::a, aai::new);
+   public static final aac.b<aai> b = aac.a("debug/goal_selector");
 
-   public aai(UUID c, String d, String e, boolean f, Optional<xp> g) {
-      if (e.length() > 40) {
-         throw new IllegalArgumentException("Hash is too long (max 40, was " + e.length() + ")");
-      } else {
-         this.c = c;
-         this.d = d;
-         this.e = e;
-         this.f = f;
-         this.g = g;
-      }
+   private aai(vr $$0) {
+      this($$0.readInt(), $$0.e(), $$0.a(aai.a::new));
+   }
+
+   private void a(vr $$0) {
+      $$0.p(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public zy<aai> a() {
-      return aam.f;
+   public aac.b<aai> a() {
+      return b;
    }
 
-   public void a(aac $$0) {
-      $$0.a(this);
-   }
-
-   public UUID b() {
+   public int b() {
       return this.c;
    }
 
-   public String e() {
+   public ja c() {
       return this.d;
    }
 
-   public String f() {
+   public List<aai.a> d() {
       return this.e;
    }
 
-   public boolean g() {
-      return this.f;
-   }
+   public static record a(int a, boolean b, String c) {
+      public a(vr $$0) {
+         this($$0.readInt(), $$0.readBoolean(), $$0.d(255));
+      }
 
-   public Optional<xp> h() {
-      return this.g;
+      public void a(vr $$0) {
+         $$0.p(this.a);
+         $$0.a(this.b);
+         $$0.a(this.c);
+      }
    }
 }

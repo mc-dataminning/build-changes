@@ -1,51 +1,85 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import java.util.function.Supplier;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-import org.slf4j.Logger;
+import io.netty.buffer.ByteBuf;
+import java.util.Iterator;
 
-public class iy {
-   private static final Logger c = LogUtils.getLogger();
-   public static final Map<je, j> a = ac.a(Maps.newEnumMap(je.class), $$0 -> {
-      $$0.put(je.d, j.a());
-      $$0.put(je.f, new j(null, new Quaternionf().rotateY((float) (Math.PI / 2)), null, null));
-      $$0.put(je.e, new j(null, new Quaternionf().rotateY((float) (-Math.PI / 2)), null, null));
-      $$0.put(je.c, new j(null, new Quaternionf().rotateY((float) Math.PI), null, null));
-      $$0.put(je.b, new j(null, new Quaternionf().rotateX((float) (-Math.PI / 2)), null, null));
-      $$0.put(je.a, new j(null, new Quaternionf().rotateX((float) (Math.PI / 2)), null, null));
-   });
-   public static final Map<je, j> b = ac.a(Maps.newEnumMap(je.class), $$0 -> {
-      for (je $$1 : je.values()) {
-         $$0.put($$1, a.get($$1).b());
+public record iy(ja b, ja c) implements Iterable<ja> {
+   public static final ys<ByteBuf, iy> a = new ys<ByteBuf, iy>() {
+      public iy a(ByteBuf $$0) {
+         return new iy(vr.b($$0), vr.b($$0));
       }
-   });
 
-   public static j a(j $$0) {
-      Matrix4f $$1 = new Matrix4f().translation(0.5F, 0.5F, 0.5F);
-      $$1.mul($$0.c());
-      $$1.translate(-0.5F, -0.5F, -0.5F);
-      return new j($$1);
+      public void a(ByteBuf $$0, iy $$1) {
+         vr.a($$0, $$1.f());
+         vr.a($$0, $$1.g());
+      }
+   };
+
+   public iy(final ja b, final ja c) {
+      this.b = ja.a(b, c);
+      this.c = ja.b(b, c);
    }
 
-   public static j b(j $$0) {
-      Matrix4f $$1 = new Matrix4f().translation(-0.5F, -0.5F, -0.5F);
-      $$1.mul($$0.c());
-      $$1.translate(0.5F, 0.5F, 0.5F);
-      return new j($$1);
+   public static iy a(ja $$0) {
+      return new iy($$0, $$0);
    }
 
-   public static j a(j $$0, je $$1, Supplier<String> $$2) {
-      je $$3 = je.a($$0.c(), $$1);
-      j $$4 = $$0.b();
-      if ($$4 == null) {
-         c.warn($$2.get());
-         return new j(null, null, new Vector3f(0.0F, 0.0F, 0.0F), null);
+   public static iy a(ja $$0, ja $$1) {
+      return new iy($$0, $$1);
+   }
+
+   public iy b(ja $$0) {
+      return new iy(ja.a(this.b, $$0), ja.b(this.c, $$0));
+   }
+
+   public boolean a() {
+      return this.b.equals(this.c);
+   }
+
+   public boolean c(ja $$0) {
+      return $$0.u() >= this.b.u() && $$0.v() >= this.b.v() && $$0.w() >= this.b.w() && $$0.u() <= this.c.u() && $$0.v() <= this.c.v() && $$0.w() <= this.c.w();
+   }
+
+   public evu b() {
+      return evu.a(this.b, this.c);
+   }
+
+   @Override
+   public Iterator<ja> iterator() {
+      return ja.c(this.b, this.c).iterator();
+   }
+
+   public int c() {
+      return this.c.u() - this.b.u() + 1;
+   }
+
+   public int d() {
+      return this.c.v() - this.b.v() + 1;
+   }
+
+   public int e() {
+      return this.c.w() - this.b.w() + 1;
+   }
+
+   public iy a(jf $$0, int $$1) {
+      if ($$1 == 0) {
+         return this;
       } else {
-         j $$5 = b.get($$1).a($$4).a(a.get($$3));
-         return a($$5);
+         return $$0.f() == jf.b.a ? a(this.b, ja.b(this.b, this.c.a($$0, $$1))) : a(ja.a(this.b.a($$0, $$1), this.c), this.c);
       }
+   }
+
+   public iy b(jf $$0, int $$1) {
+      return $$1 == 0 ? this : new iy(this.b.a($$0, $$1), this.c.a($$0, $$1));
+   }
+
+   public iy a(ke $$0) {
+      return new iy(this.b.a($$0), this.c.a($$0));
+   }
+
+   public ja f() {
+      return this.b;
+   }
+
+   public ja g() {
+      return this.c;
    }
 }

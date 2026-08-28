@@ -1,79 +1,51 @@
 import com.mojang.serialization.MapCodec;
 
-public class dmj extends dfb {
+public class dmj extends div {
    public static final MapCodec<dmj> a = b(dmj::new);
-   public static final int b = 2;
-   public static final dte c = dsu.aE;
-   private static final int d = 24000;
-   private static final int e = 12000;
-   private static final int f = 300;
-   private static final ewm g = dfb.a(1.0, 0.0, 2.0, 15.0, 16.0, 14.0);
 
    @Override
    public MapCodec<dmj> a() {
       return a;
    }
 
-   public dmj(dsd.d $$0) {
+   public dmj(dsg.d $$0) {
       super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(dsf.a<dfb, dse> $$0) {
-      $$0.a(c);
-   }
-
-   @Override
-   public ewm a(dse $$0, dbg $$1, iz $$2, evy $$3) {
-      return g;
-   }
-
-   public int m(dse $$0) {
-      return $$0.c(c);
-   }
-
-   private boolean n(dse $$0) {
-      return this.m($$0) == 2;
-   }
-
-   @Override
-   public void a(dse $$0, arf $$1, iz $$2, azh $$3) {
-      if (!this.n($$0)) {
-         $$1.a(null, $$2, awa.yv, awb.e, 0.7F, 0.9F + $$3.i() * 0.2F);
-         $$1.a($$2, $$0.a(c, Integer.valueOf(this.m($$0) + 1)), 2);
+   public void a(dcd $$0, dsh $$1, ja $$2, bsd $$3, float $$4) {
+      if ($$3.bX()) {
+         super.a($$0, $$1, $$2, $$3, $$4);
       } else {
-         $$1.a(null, $$2, awa.yw, awb.e, 0.7F, 0.9F + $$3.i() * 0.2F);
-         $$1.b($$2, false);
-         chy $$4 = btc.aR.a((dca)$$1);
-         if ($$4 != null) {
-            evt $$5 = $$2.b();
-            $$4.a(true);
-            $$4.b($$5.a(), $$5.b(), $$5.c(), ayz.g($$1.z.i() * 360.0F), 0.0F);
-            $$1.b($$4);
-         }
+         $$3.a($$4, 0.0F, $$0.aj().l());
       }
    }
 
    @Override
-   public void b(dse $$0, dca $$1, iz $$2, dse $$3, boolean $$4) {
-      boolean $$5 = a($$1, $$2);
-      if (!$$1.x_() && $$5) {
-         $$1.c(3009, $$2, 0);
+   public void a(dbj $$0, bsd $$1) {
+      if ($$1.bX()) {
+         super.a($$0, $$1);
+      } else {
+         this.a($$1);
       }
+   }
 
-      int $$6 = $$5 ? 12000 : 24000;
-      int $$7 = $$6 / 3;
-      $$1.a(dwx.i, $$2, dwx.a.a($$0));
-      $$1.a($$2, this, $$7 + $$1.z.a(300));
+   private void a(bsd $$0) {
+      evz $$1 = $$0.ds();
+      if ($$1.d < 0.0) {
+         double $$2 = $$0 instanceof bsy ? 1.0 : 0.8;
+         $$0.o($$1.c, -$$1.d * $$2, $$1.e);
+      }
    }
 
    @Override
-   public boolean a(dse $$0, eom $$1) {
-      return false;
-   }
+   public void a(dcd $$0, ja $$1, dsh $$2, bsd $$3) {
+      double $$4 = Math.abs($$3.ds().d);
+      if ($$4 < 0.1 && !$$3.bW()) {
+         double $$5 = 0.4 + $$4 * 0.2;
+         $$3.h($$3.ds().d($$5, 1.0, $$5));
+      }
 
-   public static boolean a(dbg $$0, iz $$1) {
-      return $$0.a_($$1.d()).a(awp.cs);
+      super.a($$0, $$1, $$2, $$3);
    }
 }

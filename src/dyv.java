@@ -1,84 +1,26 @@
-import java.util.function.LongFunction;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dyv extends dxx {
-   private final azh d;
-   private int e;
+public record dyv(dyx b, dyu c) {
+   public static final Codec<dyv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dyx.a.forGetter(dyv::a), dyu.a.forGetter(dyv::b)).apply($$0, $$0.stable(dyv::new))
+   );
 
-   public dyv(azh $$0) {
-      super(0L);
-      this.d = $$0;
+   public static <T> DataResult<T> a(DynamicOps<T> $$0, dyx $$1, dyu $$2) {
+      return a.encodeStart($$0, new dyv($$1, $$2));
    }
 
-   public int l() {
-      return this.e;
+   public static <T> DataResult<T> a(DynamicOps<T> $$0, dyx $$1, jx $$2) {
+      return a($$0, $$1, new dyu($$2.d(lr.ba)));
    }
 
-   @Override
-   public azh d() {
-      return this.d.d();
+   public dyx a() {
+      return this.b;
    }
 
-   @Override
-   public dyj e() {
-      return this.d.e();
-   }
-
-   @Override
-   public int c(int $$0) {
-      this.e++;
-      return this.d instanceof dxx $$1 ? $$1.c($$0) : (int)(this.d.g() >>> 64 - $$0);
-   }
-
-   @Override
-   public synchronized void b(long $$0) {
-      if (this.d != null) {
-         this.d.b($$0);
-      }
-   }
-
-   public long a(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g() | 1L;
-      long $$4 = this.g() | 1L;
-      long $$5 = (long)$$1 * $$3 + (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-      return $$5;
-   }
-
-   public void b(long $$0, int $$1, int $$2) {
-      long $$3 = $$0 + (long)$$1 + (long)(10000 * $$2);
-      this.b($$3);
-   }
-
-   public void c(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g();
-      long $$4 = this.g();
-      long $$5 = (long)$$1 * $$3 ^ (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-   }
-
-   public void a(long $$0, int $$1, int $$2, int $$3) {
-      long $$4 = (long)$$1 * 341873128712L + (long)$$2 * 132897987541L + $$0 + (long)$$3;
-      this.b($$4);
-   }
-
-   public static azh a(int $$0, int $$1, long $$2, long $$3) {
-      return azh.a($$2 + (long)($$0 * $$0 * 4987142) + (long)($$0 * 5947611) + (long)($$1 * $$1) * 4392871L + (long)($$1 * 389711) ^ $$3);
-   }
-
-   public static enum a {
-      a(dxx::new),
-      b(dyx::new);
-
-      private final LongFunction<azh> c;
-
-      private a(final LongFunction<azh> $$0) {
-         this.c = $$0;
-      }
-
-      public azh a(long $$0) {
-         return this.c.apply($$0);
-      }
+   public dyu b() {
+      return this.c;
    }
 }

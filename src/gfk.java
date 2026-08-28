@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.Predicate;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gfk {
+@FunctionalInterface
+public interface gfk {
+   gfk b = $$0 -> $$0x -> true;
+   gfk c = $$0 -> $$0x -> false;
+
+   Predicate<dsh> getPredicate(dsi<dff, dsh> var1);
 }

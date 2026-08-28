@@ -1,56 +1,294 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.nio.file.Path;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.io.Files;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.GameProfileRepository;
+import com.mojang.authlib.ProfileLookupCallback;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class aud extends atu {
-   private static final atq c = new atq(xp.c("dataPack.vanilla.description"), aa.b().a(atd.b), Optional.empty());
-   private static final asx d = new asx(cpp.h);
-   private static final ast e = ast.a(atq.b, c, asx.a, d);
-   private static final ata f = new ata("vanilla", xp.c("dataPack.vanilla.name"), aub.c, Optional.of(b));
-   private static final atc g = new atc(false, atx.b.b, false);
-   private static final atc h = new atc(false, atx.b.a, false);
-   private static final alf i = new alf("minecraft", "datapacks");
-
-   public aud(evj $$0) {
-      super(atd.b, b(), i, $$0);
-   }
-
-   private static ata a(String $$0, xp $$1) {
-      return new ata($$0, $$1, aub.d, Optional.of(atw.a($$0)));
-   }
-
-   @VisibleForTesting
-   public static atf b() {
-      return new atg().a(e).a("minecraft").b().a().a(f);
-   }
-
-   @Override
-   protected xp a(String $$0) {
-      return xp.b($$0);
-   }
-
+public class aud {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 1000;
+   private static final int c = 1;
+   private static boolean d;
+   private final Map<String, aud.a> e = Maps.newConcurrentMap();
+   private final Map<UUID, aud.a> f = Maps.newConcurrentMap();
+   private final Map<String, CompletableFuture<Optional<GameProfile>>> g = Maps.newConcurrentMap();
+   private final GameProfileRepository h;
+   private final Gson i = new GsonBuilder().create();
+   private final File j;
+   private final AtomicLong k = new AtomicLong();
    @Nullable
-   @Override
-   protected atx a(atb $$0) {
-      return atx.a(f, b($$0), atd.b, g);
+   private Executor l;
+
+   public aud(GameProfileRepository $$0, File $$1) {
+      this.h = $$0;
+      this.j = $$1;
+      Lists.reverse(this.b()).forEach(this::a);
    }
 
-   @Nullable
-   @Override
-   protected atx a(String $$0, atx.c $$1, xp $$2) {
-      return atx.a(a($$0, $$2), $$1, atd.b, h);
+   private void a(aud.a $$0) {
+      GameProfile $$1 = $$0.a();
+      $$0.a(this.e());
+      this.e.put($$1.getName().toLowerCase(Locale.ROOT), $$0);
+      this.f.put($$1.getId(), $$0);
    }
 
-   public static aua a(Path $$0, evj $$1) {
-      return new aua(new aud($$1), new atv($$0, atd.b, aub.e, $$1));
+   private static Optional<GameProfile> a(GameProfileRepository $$0, String $$1) {
+      if (!aza.f($$1)) {
+         return c($$1);
+      } else {
+         final AtomicReference<GameProfile> $$2 = new AtomicReference<>();
+         ProfileLookupCallback $$3 = new ProfileLookupCallback() {
+            public void onProfileLookupSucceeded(GameProfile $$0) {
+               $$2.set($$0);
+            }
+
+            public void onProfileLookupFailed(String $$0, Exception $$1) {
+               $$2.set(null);
+            }
+         };
+         $$0.findProfilesByNames(new String[]{$$1}, $$3);
+         GameProfile $$4 = $$2.get();
+         return $$4 != null ? Optional.of($$4) : c($$1);
+      }
    }
 
-   public static aua c() {
-      return new aua(new aud(new evj($$0 -> true)));
+   private static Optional<GameProfile> c(String $$0) {
+      return d() ? Optional.empty() : Optional.of(kd.b($$0));
    }
 
-   public static aua a(epy.c $$0) {
-      return a($$0.a(epw.j), $$0.d().e());
+   public static void a(boolean $$0) {
+      d = $$0;
+   }
+
+   private static boolean d() {
+      return d;
+   }
+
+   public void a(GameProfile $$0) {
+      Calendar $$1 = Calendar.getInstance();
+      $$1.setTime(new Date());
+      $$1.add(2, 1);
+      Date $$2 = $$1.getTime();
+      aud.a $$3 = new aud.a($$0, $$2);
+      this.a($$3);
+      this.c();
+   }
+
+   private long e() {
+      return this.k.incrementAndGet();
+   }
+
+   public Optional<GameProfile> a(String $$0) {
+      String $$1 = $$0.toLowerCase(Locale.ROOT);
+      aud.a $$2 = this.e.get($$1);
+      boolean $$3 = false;
+      if ($$2 != null && new Date().getTime() >= $$2.b.getTime()) {
+         this.f.remove($$2.a().getId());
+         this.e.remove($$2.a().getName().toLowerCase(Locale.ROOT));
+         $$3 = true;
+         $$2 = null;
+      }
+
+      Optional<GameProfile> $$4;
+      if ($$2 != null) {
+         $$2.a(this.e());
+         $$4 = Optional.of($$2.a());
+      } else {
+         $$4 = a(this.h, $$1);
+         if ($$4.isPresent()) {
+            this.a($$4.get());
+            $$3 = false;
+         }
+      }
+
+      if ($$3) {
+         this.c();
+      }
+
+      return $$4;
+   }
+
+   public CompletableFuture<Optional<GameProfile>> b(String $$0) {
+      if (this.l == null) {
+         throw new IllegalStateException("No executor");
+      } else {
+         CompletableFuture<Optional<GameProfile>> $$1 = this.g.get($$0);
+         if ($$1 != null) {
+            return $$1;
+         } else {
+            CompletableFuture<Optional<GameProfile>> $$2 = CompletableFuture.<Optional<GameProfile>>supplyAsync(() -> this.a($$0), ac.g())
+               .whenCompleteAsync(($$1x, $$2x) -> this.g.remove($$0), this.l);
+            this.g.put($$0, $$2);
+            return $$2;
+         }
+      }
+   }
+
+   public Optional<GameProfile> a(UUID $$0) {
+      aud.a $$1 = this.f.get($$0);
+      if ($$1 == null) {
+         return Optional.empty();
+      } else {
+         $$1.a(this.e());
+         return Optional.of($$1.a());
+      }
+   }
+
+   public void a(Executor $$0) {
+      this.l = $$0;
+   }
+
+   public void a() {
+      this.l = null;
+   }
+
+   private static DateFormat f() {
+      return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z", Locale.ROOT);
+   }
+
+   public List<aud.a> b() {
+      List<aud.a> $$0 = Lists.newArrayList();
+
+      try {
+         Object var9;
+         try (Reader $$1 = Files.newReader(this.j, StandardCharsets.UTF_8)) {
+            JsonArray $$2 = (JsonArray)this.i.fromJson($$1, JsonArray.class);
+            if ($$2 != null) {
+               DateFormat $$3 = f();
+               $$2.forEach($$2x -> a($$2x, $$3).ifPresent($$0::add));
+               return $$0;
+            }
+
+            var9 = $$0;
+         }
+
+         return (List<aud.a>)var9;
+      } catch (FileNotFoundException var7) {
+      } catch (JsonParseException | IOException var8) {
+         a.warn("Failed to load profile cache {}", this.j, var8);
+      }
+
+      return $$0;
+   }
+
+   public void c() {
+      JsonArray $$0 = new JsonArray();
+      DateFormat $$1 = f();
+      this.a(1000).forEach($$2x -> $$0.add(a($$2x, $$1)));
+      String $$2 = this.i.toJson($$0);
+
+      try (Writer $$3 = Files.newWriter(this.j, StandardCharsets.UTF_8)) {
+         $$3.write($$2);
+      } catch (IOException var9) {
+      }
+   }
+
+   private Stream<aud.a> a(int $$0) {
+      return ImmutableList.copyOf(this.f.values()).stream().sorted(Comparator.comparing(aud.a::c).reversed()).limit((long)$$0);
+   }
+
+   private static JsonElement a(aud.a $$0, DateFormat $$1) {
+      JsonObject $$2 = new JsonObject();
+      $$2.addProperty("name", $$0.a().getName());
+      $$2.addProperty("uuid", $$0.a().getId().toString());
+      $$2.addProperty("expiresOn", $$1.format($$0.b()));
+      return $$2;
+   }
+
+   private static Optional<aud.a> a(JsonElement $$0, DateFormat $$1) {
+      if ($$0.isJsonObject()) {
+         JsonObject $$2 = $$0.getAsJsonObject();
+         JsonElement $$3 = $$2.get("name");
+         JsonElement $$4 = $$2.get("uuid");
+         JsonElement $$5 = $$2.get("expiresOn");
+         if ($$3 != null && $$4 != null) {
+            String $$6 = $$4.getAsString();
+            String $$7 = $$3.getAsString();
+            Date $$8 = null;
+            if ($$5 != null) {
+               try {
+                  $$8 = $$1.parse($$5.getAsString());
+               } catch (ParseException var12) {
+               }
+            }
+
+            if ($$7 != null && $$6 != null && $$8 != null) {
+               UUID $$9;
+               try {
+                  $$9 = UUID.fromString($$6);
+               } catch (Throwable var11) {
+                  return Optional.empty();
+               }
+
+               return Optional.of(new aud.a(new GameProfile($$9, $$7), $$8));
+            } else {
+               return Optional.empty();
+            }
+         } else {
+            return Optional.empty();
+         }
+      } else {
+         return Optional.empty();
+      }
+   }
+
+   static class a {
+      private final GameProfile a;
+      final Date b;
+      private volatile long c;
+
+      a(GameProfile $$0, Date $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public GameProfile a() {
+         return this.a;
+      }
+
+      public Date b() {
+         return this.b;
+      }
+
+      public void a(long $$0) {
+         this.c = $$0;
+      }
+
+      public long c() {
+         return this.c;
+      }
    }
 }

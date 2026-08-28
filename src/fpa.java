@@ -1,24 +1,30 @@
-public class fpa extends fod<cqu> {
-   private static final alf D = new alf("container/grindstone/error");
-   private static final alf E = new alf("textures/gui/container/grindstone.png");
+public class fpa extends fnr {
+   private final dbe s;
 
-   public fpa(cqu $$0, cmy $$1, xp $$2) {
-      super($$0, $$1, $$2);
+   public fpa(dbe $$0) {
+      this.s = $$0;
    }
 
    @Override
-   public void a(fgt $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   public dbe m() {
+      return this.s;
    }
 
    @Override
-   protected void a(fgt $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.c) / 2;
-      int $$5 = (this.o - this.d) / 2;
-      $$0.a(E, $$4, $$5, 0, 0, this.c, this.d);
-      if ((this.w.b(0).h() || this.w.b(1).h()) && !this.w.b(2).h()) {
-         $$0.a(D, $$4 + 92, $$5 + 31, 28, 21);
+   int E() {
+      return 150;
+   }
+
+   @Override
+   protected void aO_() {
+      super.aO_();
+      this.a.a(this.m().m());
+   }
+
+   @Override
+   protected void a(dbe $$0) {
+      if ($$0 instanceof cok.a $$1) {
+         this.l.L().b(new ahq($$1.h().al(), this.a.a(), $$0.p()));
       }
    }
 }

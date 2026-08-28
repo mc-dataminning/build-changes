@@ -1,19 +1,13 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class dvx {
+   public static final akj<dvz> a = a("overworld");
+   public static final akj<dvz> b = a("the_nether");
+   public static final akj<dvz> c = a("the_end");
+   public static final akj<dvz> d = a("overworld_caves");
+   public static final akk e = new akk("overworld");
+   public static final akk f = new akk("the_nether");
+   public static final akk g = new akk("the_end");
 
-public record dvx(ji<dvw> e, dub f) {
-   public static final Codec<dvx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dvw.j.fieldOf("type").forGetter(dvx::a), dub.a.fieldOf("generator").forGetter(dvx::b)).apply($$0, $$0.stable(dvx::new))
-   );
-   public static final ale<dvx> b = ale.a(lq.aT, new alf("overworld"));
-   public static final ale<dvx> c = ale.a(lq.aT, new alf("the_nether"));
-   public static final ale<dvx> d = ale.a(lq.aT, new alf("the_end"));
-
-   public ji<dvw> a() {
-      return this.e;
-   }
-
-   public dub b() {
-      return this.f;
+   private static akj<dvz> a(String $$0) {
+      return akj.a(lr.aJ, new akk($$0));
    }
 }

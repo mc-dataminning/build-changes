@@ -1,86 +1,103 @@
+import com.google.common.collect.Maps;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.shorts.ShortArrayList;
-import it.unimi.dsi.fastutil.shorts.ShortList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import java.util.Map;
 
 public class bci extends DataFix {
-   private static final int a = 16;
+   private static final Map<String, String> a = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
+      $$0.put("AreaEffectCloud", "minecraft:area_effect_cloud");
+      $$0.put("ArmorStand", "minecraft:armor_stand");
+      $$0.put("Arrow", "minecraft:arrow");
+      $$0.put("Bat", "minecraft:bat");
+      $$0.put("Blaze", "minecraft:blaze");
+      $$0.put("Boat", "minecraft:boat");
+      $$0.put("CaveSpider", "minecraft:cave_spider");
+      $$0.put("Chicken", "minecraft:chicken");
+      $$0.put("Cow", "minecraft:cow");
+      $$0.put("Creeper", "minecraft:creeper");
+      $$0.put("Donkey", "minecraft:donkey");
+      $$0.put("DragonFireball", "minecraft:dragon_fireball");
+      $$0.put("ElderGuardian", "minecraft:elder_guardian");
+      $$0.put("EnderCrystal", "minecraft:ender_crystal");
+      $$0.put("EnderDragon", "minecraft:ender_dragon");
+      $$0.put("Enderman", "minecraft:enderman");
+      $$0.put("Endermite", "minecraft:endermite");
+      $$0.put("EyeOfEnderSignal", "minecraft:eye_of_ender_signal");
+      $$0.put("FallingSand", "minecraft:falling_block");
+      $$0.put("Fireball", "minecraft:fireball");
+      $$0.put("FireworksRocketEntity", "minecraft:fireworks_rocket");
+      $$0.put("Ghast", "minecraft:ghast");
+      $$0.put("Giant", "minecraft:giant");
+      $$0.put("Guardian", "minecraft:guardian");
+      $$0.put("Horse", "minecraft:horse");
+      $$0.put("Husk", "minecraft:husk");
+      $$0.put("Item", "minecraft:item");
+      $$0.put("ItemFrame", "minecraft:item_frame");
+      $$0.put("LavaSlime", "minecraft:magma_cube");
+      $$0.put("LeashKnot", "minecraft:leash_knot");
+      $$0.put("MinecartChest", "minecraft:chest_minecart");
+      $$0.put("MinecartCommandBlock", "minecraft:commandblock_minecart");
+      $$0.put("MinecartFurnace", "minecraft:furnace_minecart");
+      $$0.put("MinecartHopper", "minecraft:hopper_minecart");
+      $$0.put("MinecartRideable", "minecraft:minecart");
+      $$0.put("MinecartSpawner", "minecraft:spawner_minecart");
+      $$0.put("MinecartTNT", "minecraft:tnt_minecart");
+      $$0.put("Mule", "minecraft:mule");
+      $$0.put("MushroomCow", "minecraft:mooshroom");
+      $$0.put("Ozelot", "minecraft:ocelot");
+      $$0.put("Painting", "minecraft:painting");
+      $$0.put("Pig", "minecraft:pig");
+      $$0.put("PigZombie", "minecraft:zombie_pigman");
+      $$0.put("PolarBear", "minecraft:polar_bear");
+      $$0.put("PrimedTnt", "minecraft:tnt");
+      $$0.put("Rabbit", "minecraft:rabbit");
+      $$0.put("Sheep", "minecraft:sheep");
+      $$0.put("Shulker", "minecraft:shulker");
+      $$0.put("ShulkerBullet", "minecraft:shulker_bullet");
+      $$0.put("Silverfish", "minecraft:silverfish");
+      $$0.put("Skeleton", "minecraft:skeleton");
+      $$0.put("SkeletonHorse", "minecraft:skeleton_horse");
+      $$0.put("Slime", "minecraft:slime");
+      $$0.put("SmallFireball", "minecraft:small_fireball");
+      $$0.put("SnowMan", "minecraft:snowman");
+      $$0.put("Snowball", "minecraft:snowball");
+      $$0.put("SpectralArrow", "minecraft:spectral_arrow");
+      $$0.put("Spider", "minecraft:spider");
+      $$0.put("Squid", "minecraft:squid");
+      $$0.put("Stray", "minecraft:stray");
+      $$0.put("ThrownEgg", "minecraft:egg");
+      $$0.put("ThrownEnderpearl", "minecraft:ender_pearl");
+      $$0.put("ThrownExpBottle", "minecraft:xp_bottle");
+      $$0.put("ThrownPotion", "minecraft:potion");
+      $$0.put("Villager", "minecraft:villager");
+      $$0.put("VillagerGolem", "minecraft:villager_golem");
+      $$0.put("Witch", "minecraft:witch");
+      $$0.put("WitherBoss", "minecraft:wither");
+      $$0.put("WitherSkeleton", "minecraft:wither_skeleton");
+      $$0.put("WitherSkull", "minecraft:wither_skull");
+      $$0.put("Wolf", "minecraft:wolf");
+      $$0.put("XPOrb", "minecraft:xp_orb");
+      $$0.put("Zombie", "minecraft:zombie");
+      $$0.put("ZombieHorse", "minecraft:zombie_horse");
+      $$0.put("ZombieVillager", "minecraft:zombie_villager");
+   });
 
    public bci(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
    public TypeRewriteRule makeRule() {
-      return this.writeFixAndRead(
-         "ChunkToProtoChunkFix", this.getInputSchema().getType(bgx.c), this.getOutputSchema().getType(bgx.c), $$0 -> $$0.update("Level", bci::a)
+      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bgd.B);
+      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bgd.B);
+      Type<?> $$2 = this.getInputSchema().getType(bgd.t);
+      Type<?> $$3 = this.getOutputSchema().getType(bgd.t);
+      return TypeRewriteRule.seq(
+         this.convertUnchecked("item stack entity name hook converter", $$2, $$3),
+         this.fixTypeEverywhere("EntityIdFix", $$0, $$1, $$0x -> $$0xx -> $$0xx.mapFirst($$0xxx -> a.getOrDefault($$0xxx, $$0xxx)))
       );
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      boolean $$1 = $$0.get("TerrainPopulated").asBoolean(false);
-      boolean $$2 = $$0.get("LightPopulated").asNumber().result().isEmpty() || $$0.get("LightPopulated").asBoolean(false);
-      String $$3;
-      if ($$1) {
-         if ($$2) {
-            $$3 = "mobs_spawned";
-         } else {
-            $$3 = "decorated";
-         }
-      } else {
-         $$3 = "carved";
-      }
-
-      return c(b($$0)).set("Status", $$0.createString($$3)).set("hasLegacyStructureData", $$0.createBoolean(true));
-   }
-
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      return $$0.update("Biomes", $$1 -> (Dynamic)DataFixUtils.orElse($$1.asByteBufferOpt().result().map($$1x -> {
-            int[] $$2 = new int[256];
-
-            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-               if ($$3 < $$1x.capacity()) {
-                  $$2[$$3] = $$1x.get($$3) & 255;
-               }
-            }
-
-            return $$0.createIntList(Arrays.stream($$2));
-         }), $$1));
-   }
-
-   private static <T> Dynamic<T> c(Dynamic<T> $$0) {
-      return (Dynamic<T>)DataFixUtils.orElse(
-         $$0.get("TileTicks")
-            .asStreamOpt()
-            .result()
-            .map(
-               $$1 -> {
-                  List<ShortList> $$2 = IntStream.range(0, 16).mapToObj($$0xx -> new ShortArrayList()).collect(Collectors.toList());
-                  $$1.forEach($$1x -> {
-                     int $$2x = $$1x.get("x").asInt(0);
-                     int $$3 = $$1x.get("y").asInt(0);
-                     int $$4 = $$1x.get("z").asInt(0);
-                     short $$5 = a($$2x, $$3, $$4);
-                     $$2.get($$3 >> 4).add($$5);
-                  });
-                  return $$0.remove("TileTicks")
-                     .set(
-                        "ToBeTicked",
-                        $$0.createList($$2.stream().map($$1x -> $$0.createList($$1x.intStream().mapToObj($$1xx -> $$0.createShort((short)$$1xx)))))
-                     );
-               }
-            ),
-         $$0
-      );
-   }
-
-   private static short a(int $$0, int $$1, int $$2) {
-      return (short)($$0 & 15 | ($$1 & 15) << 4 | ($$2 & 15) << 8);
    }
 }

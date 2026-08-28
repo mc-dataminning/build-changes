@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface arn {
+   aql o();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface arn {
+   void b(zb<?> var1);
 }

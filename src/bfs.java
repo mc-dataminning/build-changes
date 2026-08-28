@@ -1,101 +1,205 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.FieldFinder;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.CompoundList.CompoundListType;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class bfs extends DataFix {
-   public bfs(Schema $$0, boolean $$1) {
-      super($$0, $$1);
-   }
+   private static final Logger a = LogUtils.getLogger();
 
-   protected static <A> Type<Pair<A, Dynamic<?>>> a(String $$0, Type<A> $$1) {
-      return DSL.and(DSL.field($$0, $$1), DSL.remainderType());
-   }
-
-   protected static <A> Type<Pair<Either<A, Unit>, Dynamic<?>>> b(String $$0, Type<A> $$1) {
-      return DSL.and(DSL.optional(DSL.field($$0, $$1)), DSL.remainderType());
-   }
-
-   protected static <A1, A2> Type<Pair<Either<A1, Unit>, Pair<Either<A2, Unit>, Dynamic<?>>>> a(String $$0, Type<A1> $$1, String $$2, Type<A2> $$3) {
-      return DSL.and(DSL.optional(DSL.field($$0, $$1)), DSL.optional(DSL.field($$2, $$3)), DSL.remainderType());
+   public bfs(Schema $$0) {
+      super($$0, true);
    }
 
    protected TypeRewriteRule makeRule() {
-      Schema $$0 = this.getInputSchema();
-      Type<?> $$1 = DSL.taggedChoiceType(
-         "type",
-         DSL.string(),
-         ImmutableMap.of(
-            "minecraft:debug",
-            DSL.remainderType(),
-            "minecraft:flat",
-            a($$0),
-            "minecraft:noise",
-            a(
-               "biome_source",
-               DSL.taggedChoiceType(
-                  "type",
-                  DSL.string(),
-                  ImmutableMap.of(
-                     "minecraft:fixed",
-                     a("biome", $$0.getType(bgx.K)),
-                     "minecraft:multi_noise",
-                     DSL.list(a("biome", $$0.getType(bgx.K))),
-                     "minecraft:checkerboard",
-                     a("biomes", DSL.list($$0.getType(bgx.K))),
-                     "minecraft:vanilla_layered",
-                     DSL.remainderType(),
-                     "minecraft:the_end",
-                     DSL.remainderType()
-                  )
-               ),
-               "settings",
-               DSL.or(DSL.string(), a("default_block", $$0.getType(bgx.C), "default_fluid", $$0.getType(bgx.C)))
-            )
-         )
-      );
-      CompoundListType<String, ?> $$2 = DSL.compoundList(bij.a(), a("generator", $$1));
-      Type<?> $$3 = DSL.and($$2, DSL.remainderType());
-      Type<?> $$4 = $$0.getType(bgx.M);
-      FieldFinder<?> $$5 = new FieldFinder("dimensions", $$3);
-      if (!$$4.findFieldType("dimensions").equals($$3)) {
-         throw new IllegalStateException();
-      } else {
-         OpticFinder<? extends List<? extends Pair<String, ?>>> $$6 = $$2.finder();
-         return this.fixTypeEverywhereTyped("MissingDimensionFix", $$4, $$3x -> $$3x.updateTyped($$5, $$3xx -> $$3xx.updateTyped($$6, $$2xxx -> {
-                  if (!($$2xxx.getValue() instanceof List)) {
-                     throw new IllegalStateException("List exptected");
-                  } else if (((List)$$2xxx.getValue()).isEmpty()) {
-                     Dynamic<?> $$3xxx = (Dynamic<?>)$$3x.get(DSL.remainderFinder());
-                     Dynamic<?> $$4x = this.a($$3xxx);
-                     return (Typed)DataFixUtils.orElse($$2.readTyped($$4x).result().map(Pair::getFirst), $$2xxx);
-                  } else {
-                     return $$2xxx;
-                  }
-               })));
-      }
-   }
-
-   protected static Type<? extends Pair<? extends Either<? extends Pair<? extends Either<?, Unit>, ? extends Pair<? extends Either<? extends List<? extends Pair<? extends Either<?, Unit>, Dynamic<?>>>, Unit>, Dynamic<?>>>, Unit>, Dynamic<?>>> a(
-      Schema $$0
-   ) {
-      return b("settings", a("biome", $$0.getType(bgx.K), "layers", DSL.list(b("block", $$0.getType(bgx.C)))));
+      Type<?> $$0 = this.getInputSchema().getType(bgd.y);
+      Type<?> $$1 = this.getOutputSchema().getType(bgd.y);
+      return this.writeFixAndRead("ParticleUnflatteningFix", $$0, $$1, this::a);
    }
 
    private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      long $$1 = $$0.get("seed").asLong(0L);
-      return new Dynamic($$0.getOps(), bid.a($$0, $$1, bid.a($$0, $$1), false));
+      Optional<String> $$1 = $$0.asString().result();
+      if ($$1.isEmpty()) {
+         return $$0;
+      } else {
+         String $$2 = $$1.get();
+         String[] $$3 = $$2.split(" ", 2);
+         String $$4 = bhp.a($$3[0]);
+         Dynamic<T> $$5 = $$0.createMap(Map.of($$0.createString("type"), $$0.createString($$4)));
+
+         return switch ($$4) {
+            case "minecraft:item" -> $$3.length > 1 ? this.a($$5, $$3[1]) : $$5;
+            case "minecraft:block", "minecraft:block_marker", "minecraft:falling_dust", "minecraft:dust_pillar" -> $$3.length > 1 ? this.b($$5, $$3[1]) : $$5;
+            case "minecraft:dust" -> $$3.length > 1 ? this.d($$5, $$3[1]) : $$5;
+            case "minecraft:dust_color_transition" -> $$3.length > 1 ? this.e($$5, $$3[1]) : $$5;
+            case "minecraft:sculk_charge" -> $$3.length > 1 ? this.f($$5, $$3[1]) : $$5;
+            case "minecraft:vibration" -> $$3.length > 1 ? this.g($$5, $$3[1]) : $$5;
+            case "minecraft:shriek" -> $$3.length > 1 ? this.h($$5, $$3[1]) : $$5;
+            default -> $$5;
+         };
+      }
+   }
+
+   private <T> Dynamic<T> a(Dynamic<T> $$0, String $$1) {
+      int $$2 = $$1.indexOf("{");
+      Dynamic<T> $$3 = $$0.createMap(Map.of($$0.createString("Count"), $$0.createInt(1)));
+      if ($$2 == -1) {
+         $$3 = $$3.set("id", $$0.createString($$1));
+      } else {
+         $$3 = $$3.set("id", $$0.createString($$1.substring(0, $$2)));
+         tx $$4 = a($$1.substring($$2));
+         if ($$4 != null) {
+            $$3 = $$3.set("tag", new Dynamic(ul.a, $$4).convert($$0.getOps()));
+         }
+      }
+
+      return $$0.set("item", $$3);
+   }
+
+   @Nullable
+   private static tx a(String $$0) {
+      try {
+         return uv.a($$0);
+      } catch (Exception var2) {
+         a.warn("Failed to parse tag: {}", $$0, var2);
+         return null;
+      }
+   }
+
+   private <T> Dynamic<T> b(Dynamic<T> $$0, String $$1) {
+      int $$2 = $$1.indexOf("[");
+      Dynamic<T> $$3 = $$0.emptyMap();
+      if ($$2 == -1) {
+         $$3 = $$3.set("Name", $$0.createString(bhp.a($$1)));
+      } else {
+         $$3 = $$3.set("Name", $$0.createString(bhp.a($$1.substring(0, $$2))));
+         Map<Dynamic<T>, Dynamic<T>> $$4 = c($$0, $$1.substring($$2));
+         if (!$$4.isEmpty()) {
+            $$3 = $$3.set("Properties", $$0.createMap($$4));
+         }
+      }
+
+      return $$0.set("block_state", $$3);
+   }
+
+   private static <T> Map<Dynamic<T>, Dynamic<T>> c(Dynamic<T> $$0, String $$1) {
+      try {
+         Map<Dynamic<T>, Dynamic<T>> $$2 = new HashMap<>();
+         StringReader $$3 = new StringReader($$1);
+         $$3.expect('[');
+         $$3.skipWhitespace();
+
+         while ($$3.canRead() && $$3.peek() != ']') {
+            $$3.skipWhitespace();
+            String $$4 = $$3.readString();
+            $$3.skipWhitespace();
+            $$3.expect('=');
+            $$3.skipWhitespace();
+            String $$5 = $$3.readString();
+            $$3.skipWhitespace();
+            $$2.put($$0.createString($$4), $$0.createString($$5));
+            if ($$3.canRead()) {
+               if ($$3.peek() != ',') {
+                  break;
+               }
+
+               $$3.skip();
+            }
+         }
+
+         $$3.expect(']');
+         return $$2;
+      } catch (Exception var6) {
+         a.warn("Failed to parse block properties: {}", $$1, var6);
+         return Map.of();
+      }
+   }
+
+   private static <T> Dynamic<T> a(Dynamic<T> $$0, StringReader $$1) throws CommandSyntaxException {
+      float $$2 = $$1.readFloat();
+      $$1.expect(' ');
+      float $$3 = $$1.readFloat();
+      $$1.expect(' ');
+      float $$4 = $$1.readFloat();
+      return $$0.createList(Stream.of($$2, $$3, $$4).map($$0::createFloat));
+   }
+
+   private <T> Dynamic<T> d(Dynamic<T> $$0, String $$1) {
+      try {
+         StringReader $$2 = new StringReader($$1);
+         Dynamic<T> $$3 = a($$0, $$2);
+         $$2.expect(' ');
+         float $$4 = $$2.readFloat();
+         return $$0.set("color", $$3).set("scale", $$0.createFloat($$4));
+      } catch (Exception var6) {
+         a.warn("Failed to parse particle options: {}", $$1, var6);
+         return $$0;
+      }
+   }
+
+   private <T> Dynamic<T> e(Dynamic<T> $$0, String $$1) {
+      try {
+         StringReader $$2 = new StringReader($$1);
+         Dynamic<T> $$3 = a($$0, $$2);
+         $$2.expect(' ');
+         float $$4 = $$2.readFloat();
+         $$2.expect(' ');
+         Dynamic<T> $$5 = a($$0, $$2);
+         return $$0.set("from_color", $$3).set("to_color", $$5).set("scale", $$0.createFloat($$4));
+      } catch (Exception var7) {
+         a.warn("Failed to parse particle options: {}", $$1, var7);
+         return $$0;
+      }
+   }
+
+   private <T> Dynamic<T> f(Dynamic<T> $$0, String $$1) {
+      try {
+         StringReader $$2 = new StringReader($$1);
+         float $$3 = $$2.readFloat();
+         return $$0.set("roll", $$0.createFloat($$3));
+      } catch (Exception var5) {
+         a.warn("Failed to parse particle options: {}", $$1, var5);
+         return $$0;
+      }
+   }
+
+   private <T> Dynamic<T> g(Dynamic<T> $$0, String $$1) {
+      try {
+         StringReader $$2 = new StringReader($$1);
+         float $$3 = (float)$$2.readDouble();
+         $$2.expect(' ');
+         float $$4 = (float)$$2.readDouble();
+         $$2.expect(' ');
+         float $$5 = (float)$$2.readDouble();
+         $$2.expect(' ');
+         int $$6 = $$2.readInt();
+         Dynamic<T> $$7 = $$0.createIntList(IntStream.of(aye.d($$3), aye.d($$4), aye.d($$5)));
+         Dynamic<T> $$8 = $$0.createMap(Map.of($$0.createString("type"), $$0.createString("minecraft:block"), $$0.createString("pos"), $$7));
+         return $$0.set("destination", $$8).set("arrival_in_ticks", $$0.createInt($$6));
+      } catch (Exception var10) {
+         a.warn("Failed to parse particle options: {}", $$1, var10);
+         return $$0;
+      }
+   }
+
+   private <T> Dynamic<T> h(Dynamic<T> $$0, String $$1) {
+      try {
+         StringReader $$2 = new StringReader($$1);
+         int $$3 = $$2.readInt();
+         return $$0.set("delay", $$0.createInt($$3));
+      } catch (Exception var5) {
+         a.warn("Failed to parse particle options: {}", $$1, var5);
+         return $$0;
+      }
    }
 }

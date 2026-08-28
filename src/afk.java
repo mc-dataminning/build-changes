@@ -1,29 +1,68 @@
-public class afk implements zw<aci> {
-   public static final zn<wm, afk> a = zw.a(afk::a, afk::new);
-   private final int b;
+import javax.annotation.Nullable;
 
-   public afk(int $$0) {
-      this.b = $$0;
+public class afk implements zb<abn> {
+   public static final ys<vr, afk> a = zb.a(afk::a, afk::new);
+   private static final int b = 1;
+   private static final int c = 2;
+   @Nullable
+   private final akk d;
+   @Nullable
+   private final avg e;
+
+   public afk(@Nullable akk $$0, @Nullable avg $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   private afk(wm $$0) {
-      this.b = $$0.l();
+   private afk(vr $$0) {
+      int $$1 = $$0.readByte();
+      if (($$1 & 1) > 0) {
+         this.e = $$0.b(avg.class);
+      } else {
+         this.e = null;
+      }
+
+      if (($$1 & 2) > 0) {
+         this.d = $$0.q();
+      } else {
+         this.d = null;
+      }
    }
 
-   private void a(wm $$0) {
-      $$0.c(this.b);
+   private void a(vr $$0) {
+      if (this.e != null) {
+         if (this.d != null) {
+            $$0.k(3);
+            $$0.a(this.e);
+            $$0.a(this.d);
+         } else {
+            $$0.k(1);
+            $$0.a(this.e);
+         }
+      } else if (this.d != null) {
+         $$0.k(2);
+         $$0.a(this.d);
+      } else {
+         $$0.k(0);
+      }
    }
 
    @Override
-   public zy<afk> a() {
-      return agu.az;
+   public zd<afk> a() {
+      return afz.aU;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   @Nullable
+   public akk b() {
+      return this.d;
+   }
+
+   @Nullable
+   public avg e() {
+      return this.e;
    }
 }

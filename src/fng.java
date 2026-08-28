@@ -1,96 +1,286 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.List;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
 
-public class fng extends fnf {
-   private static final int a = 1024;
-   private static final int b = 65535;
-   private static final xp c = xp.c("selectWorld.allowCommands.new");
-   private static final xp d = xp.c("selectWorld.gameMode");
-   private static final xp r = xp.c("lanServer.otherPlayers");
-   private static final xp s = xp.c("lanServer.port");
-   private static final xp u = xp.a("lanServer.port.unavailable.new", 1024, 65535);
-   private static final xp v = xp.a("lanServer.port.invalid.new", 1024, 65535);
-   private static final int w = 16733525;
-   private final fnf x;
-   private dbx y = dbx.a;
-   private boolean z;
-   private int A = ayq.a();
-   @Nullable
-   private fhp B;
+public class fng extends fnd {
+   private static final Logger a = LogUtils.getLogger();
+   private static final akk b = new akk("textures/misc/credits_vignette.png");
+   private static final wu c = wu.b("============").a(n.p);
+   private static final String q = "           ";
+   private static final String r = "" + n.p + n.q + n.k + n.l;
+   private static final float s = 5.0F;
+   private static final float u = 15.0F;
+   private final boolean v;
+   private final Runnable w;
+   private float x;
+   private List<axq> y;
+   private IntSet z;
+   private int A;
+   private boolean B;
+   private final IntSet C = new IntOpenHashSet();
+   private float D;
+   private final float E;
+   private int F;
+   private final fid G = new fid(false);
 
-   public fng(fnf $$0) {
-      super(xp.c("lanServer.title"));
-      this.x = $$0;
-   }
-
-   @Override
-   protected void aM_() {
-      gtg $$0 = this.m.V();
-      this.y = $$0.u_();
-      this.z = $$0.bb().m();
-      this.c(fhn.a(dbx::e).a(dbx.a, dbx.d, dbx.b, dbx.c).a(this.y).a(this.n / 2 - 155, 100, 150, 20, d, ($$0x, $$1x) -> this.y = $$1x));
-      this.c(fhn.b(this.z).a(this.n / 2 + 5, 100, 150, 20, c, ($$0x, $$1x) -> this.z = $$1x));
-      fhg $$1 = fhg.a(xp.c("lanServer.start"), $$1x -> {
-         this.m.a(null);
-         xp $$2;
-         if ($$0.a(this.y, this.z, this.A)) {
-            $$2 = aof.a(this.A);
-         } else {
-            $$2 = xp.c("commands.publish.failed");
-         }
-
-         this.m.l.d().a($$2);
-         this.m.d();
-      }).a(this.n / 2 - 155, this.o - 28, 150, 20).a();
-      this.B = new fhp(this.p, this.n / 2 - 75, 160, 150, 20, xp.c("lanServer.port"));
-      this.B.b($$1x -> {
-         xp $$2 = this.a($$1x);
-         this.B.c(xp.b(this.A + "").a(n.i));
-         if ($$2 == null) {
-            this.B.g(14737632);
-            this.B.a(null);
-            $$1.j = true;
-         } else {
-            this.B.g(16733525);
-            this.B.a(fir.a($$2));
-            $$1.j = false;
-         }
-      });
-      this.B.c(xp.b(this.A + "").a(n.i));
-      this.c(this.B);
-      this.c($$1);
-      this.c(fhg.a(xo.e, $$0x -> this.d()).a(this.n / 2 + 5, this.o - 28, 150, 20).a());
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.x);
-   }
-
-   @Nullable
-   private xp a(String $$0) {
-      if ($$0.isBlank()) {
-         this.A = ayq.a();
-         return null;
+   public fng(boolean $$0, Runnable $$1) {
+      super(fff.a);
+      this.v = $$0;
+      this.w = $$1;
+      if (!$$0) {
+         this.E = 0.75F;
       } else {
-         try {
-            this.A = Integer.parseInt($$0);
-            if (this.A < 1024 || this.A > 65535) {
-               return v;
-            } else {
-               return !ayq.a(this.A) ? u : null;
-            }
-         } catch (NumberFormatException var3) {
-            this.A = ayq.a();
-            return v;
-         }
+         this.E = 0.5F;
+      }
+
+      this.F = 1;
+      this.D = this.E;
+   }
+
+   private float m() {
+      return this.B ? this.E * (5.0F + (float)this.C.size() * 15.0F) * (float)this.F : this.E * (float)this.F;
+   }
+
+   @Override
+   public void e() {
+      this.l.s().a();
+      this.l.aj().a(false);
+      float $$0 = (float)(this.A + this.n + this.n + 24);
+      if (this.x > $$0) {
+         this.E();
       }
    }
 
    @Override
-   public void a(fgt $$0, int $$1, int $$2, float $$3) {
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 265) {
+         this.F = -1;
+      } else if ($$0 == 341 || $$0 == 345) {
+         this.C.add($$0);
+      } else if ($$0 == 32) {
+         this.B = true;
+      }
+
+      this.D = this.m();
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean c(int $$0, int $$1, int $$2) {
+      if ($$0 == 265) {
+         this.F = 1;
+      }
+
+      if ($$0 == 32) {
+         this.B = false;
+      } else if ($$0 == 341 || $$0 == 345) {
+         this.C.remove($$0);
+      }
+
+      this.D = this.m();
+      return super.c($$0, $$1, $$2);
+   }
+
+   @Override
+   public void d() {
+      this.E();
+   }
+
+   private void E() {
+      this.w.run();
+   }
+
+   @Override
+   protected void aO_() {
+      if (this.y == null) {
+         this.y = Lists.newArrayList();
+         this.z = new IntOpenHashSet();
+         if (this.v) {
+            this.a("texts/end.txt", this::a);
+         }
+
+         this.a("texts/credits.json", this::b);
+         if (this.v) {
+            this.a("texts/postcredits.txt", this::a);
+         }
+
+         this.A = this.y.size() * 12;
+      }
+   }
+
+   private void a(String $$0, fng.a $$1) {
+      try (Reader $$2 = this.l.ab().openAsReader(new akk($$0))) {
+         $$1.read($$2);
+      } catch (Exception var8) {
+         a.error("Couldn't load credits", var8);
+      }
+   }
+
+   private void a(Reader $$0) throws IOException {
+      BufferedReader $$1 = new BufferedReader($$0);
+      aym $$2 = aym.a(8124371L);
+
+      String $$3;
+      while (($$3 = $$1.readLine()) != null) {
+         $$3 = $$3.replaceAll("PLAYERNAME", this.l.X().c());
+
+         int $$4;
+         while (($$4 = $$3.indexOf(r)) != -1) {
+            String $$5 = $$3.substring(0, $$4);
+            String $$6 = $$3.substring($$4 + r.length());
+            $$3 = $$5 + n.p + n.q + "XXXXXXXX".substring(0, $$2.a(4) + 3) + $$6;
+         }
+
+         this.a($$3);
+         this.F();
+      }
+
+      for (int $$7 = 0; $$7 < 8; $$7++) {
+         this.F();
+      }
+   }
+
+   private void b(Reader $$0) {
+      for (JsonElement $$2 : axu.b($$0)) {
+         JsonObject $$3 = $$2.getAsJsonObject();
+         String $$4 = $$3.get("section").getAsString();
+         this.a(c, true);
+         this.a(wu.b($$4).a(n.o), true);
+         this.a(c, true);
+         this.F();
+         this.F();
+
+         for (JsonElement $$6 : $$3.getAsJsonArray("disciplines")) {
+            JsonObject $$7 = $$6.getAsJsonObject();
+            String $$8 = $$7.get("discipline").getAsString();
+            if (StringUtils.isNotEmpty($$8)) {
+               this.a(wu.b($$8).a(n.o), true);
+               this.F();
+               this.F();
+            }
+
+            for (JsonElement $$10 : $$7.getAsJsonArray("titles")) {
+               JsonObject $$11 = $$10.getAsJsonObject();
+               String $$12 = $$11.get("title").getAsString();
+               JsonArray $$13 = $$11.getAsJsonArray("names");
+               this.a(wu.b($$12).a(n.h), false);
+
+               for (JsonElement $$14 : $$13) {
+                  String $$15 = $$14.getAsString();
+                  this.a(wu.b("           ").f($$15).a(n.p), false);
+               }
+
+               this.F();
+               this.F();
+            }
+         }
+      }
+   }
+
+   private void F() {
+      this.y.add(axq.a);
+   }
+
+   private void a(String $$0) {
+      this.y.addAll(this.l.h.c(wu.b($$0), 256));
+   }
+
+   private void a(wu $$0, boolean $$1) {
+      if ($$1) {
+         this.z.add(this.y.size());
+      }
+
+      this.y.add($$0.g());
+   }
+
+   @Override
+   public void a(fgz $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 50, 16777215);
-      $$0.a(this.p, r, this.n / 2, 82, 16777215);
-      $$0.a(this.p, s, this.n / 2, 142, 16777215);
+      this.c($$0);
+      this.x = Math.max(0.0F, this.x + $$3 * this.D);
+      int $$4 = this.m / 2 - 128;
+      int $$5 = this.n + 50;
+      float $$6 = -this.x;
+      $$0.c().a();
+      $$0.c().a(0.0F, $$6, 0.0F);
+      this.G.a($$0, this.m, 1.0F, $$5);
+      int $$7 = $$5 + 100;
+
+      for (int $$8 = 0; $$8 < this.y.size(); $$8++) {
+         if ($$8 == this.y.size() - 1) {
+            float $$9 = (float)$$7 + $$6 - (float)(this.n / 2 - 6);
+            if ($$9 < 0.0F) {
+               $$0.c().a(0.0F, -$$9, 0.0F);
+            }
+         }
+
+         if ((float)$$7 + $$6 + 12.0F + 8.0F > 0.0F && (float)$$7 + $$6 < (float)this.n) {
+            axq $$10 = this.y.get($$8);
+            if (this.z.contains($$8)) {
+               $$0.a(this.o, $$10, $$4 + 128, $$7, -1);
+            } else {
+               $$0.b(this.o, $$10, $$4, $$7, -1);
+            }
+         }
+
+         $$7 += 12;
+      }
+
+      $$0.c().b();
+   }
+
+   private void c(fgz $$0) {
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR);
+      $$0.a(b, 0, 0, 0, 0.0F, 0.0F, this.m, this.n, this.m, this.n);
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
+   }
+
+   @Override
+   public void b(fgz $$0, int $$1, int $$2, float $$3) {
+      if (this.v) {
+         $$0.b(gef.u(), 0, 0, this.m, this.n, 0);
+      } else {
+         super.b($$0, $$1, $$2, $$3);
+      }
+   }
+
+   @Override
+   protected void a(fgz $$0, int $$1, int $$2, int $$3, int $$4) {
+      float $$5 = this.x * 0.5F;
+      fnd.a($$0, fnd.f, 0, 0, 0.0F, $$5, $$3, $$4);
+   }
+
+   @Override
+   public boolean k() {
+      return !this.v;
+   }
+
+   @Override
+   public void j() {
+      this.l.s().b(avd.c);
+   }
+
+   @Override
+   public avc D() {
+      return avd.c;
+   }
+
+   @FunctionalInterface
+   interface a {
+      void read(Reader var1) throws IOException;
    }
 }

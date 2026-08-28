@@ -1,11 +1,22 @@
-public class awq {
-   public static final axf<cfl> a = a("default_spawns");
-   public static final axf<cfl> b = a("full_moon_spawns");
+import java.util.function.Consumer;
 
-   private awq() {
+@FunctionalInterface
+public interface awq<T> {
+   awq.a accept(T var1);
+
+   static <T> awq<T> forConsumer(Consumer<T> $$0) {
+      return $$1 -> {
+         $$0.accept($$1);
+         return awq.a.a;
+      };
    }
 
-   private static axf<cfl> a(String $$0) {
-      return axf.a(lq.l, new alf($$0));
+   public static enum a {
+      a,
+      b;
+
+      public boolean a() {
+         return this == b;
+      }
    }
 }

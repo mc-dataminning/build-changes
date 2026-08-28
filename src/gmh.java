@@ -1,24 +1,28 @@
-public class gmh<T extends btr, M extends fvh<T>> extends gnu<T, M> {
-   private final gix a;
+public class gmh extends gkm<cie, fwy<cie>> {
+   private static final akk a = new akk("textures/entity/wither/wither_invulnerable.png");
+   private static final akk i = new akk("textures/entity/wither/wither.png");
 
-   public gmh(giz.a $$0, gka<T, M> $$1) {
-      super($$1);
-      this.a = $$0.a();
+   public gmh(gjg.a $$0) {
+      super($$0, new fwy<>($$0.a(fxh.bV)), 1.0F);
+      this.a(new gog(this, $$0.f()));
    }
 
-   @Override
-   protected int a(T $$0) {
-      return $$0.eT();
+   protected int a(cie $$0, ja $$1) {
+      return 15;
    }
 
-   @Override
-   protected void a(faa $$0, gdq $$1, int $$2, bsw $$3, float $$4, float $$5, float $$6, float $$7) {
-      float $$8 = ayz.c($$4 * $$4 + $$6 * $$6);
-      cnh $$9 = new cnh($$3.dP(), $$3.du(), $$3.dw(), $$3.dA(), cur.l);
-      $$9.r((float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI));
-      $$9.s((float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI));
-      $$9.O = $$9.dF();
-      $$9.P = $$9.dH();
-      this.a.a($$9, 0.0, 0.0, 0.0, 0.0F, $$7, $$0, $$1, $$2);
+   public akk a(cie $$0) {
+      int $$1 = $$0.y();
+      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : i;
+   }
+
+   protected void a(cie $$0, fag $$1, float $$2) {
+      float $$3 = 2.0F;
+      int $$4 = $$0.y();
+      if ($$4 > 0) {
+         $$3 -= ((float)$$4 - $$2) / 220.0F * 0.5F;
+      }
+
+      $$1.b($$3, $$3, $$3);
    }
 }

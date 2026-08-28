@@ -1,84 +1,55 @@
-public class aik implements zw<agw> {
-   public static final zn<wm, aik> a = zw.a(aik::a, aik::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 4;
-   private final iz e;
-   private final String f;
-   private final boolean g;
-   private final boolean h;
-   private final boolean i;
-   private final dpt.a j;
+import java.security.PublicKey;
 
-   public aik(iz $$0, String $$1, dpt.a $$2, boolean $$3, boolean $$4, boolean $$5) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$2;
+public class aik implements zb<aih> {
+   public static final ys<vr, aik> a = zb.a(aik::a, aik::new);
+   private final String b;
+   private final byte[] c;
+   private final byte[] d;
+   private final boolean e;
+
+   public aik(String $$0, byte[] $$1, byte[] $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   private aik(wm $$0) {
-      this.e = $$0.e();
-      this.f = $$0.p();
-      this.j = $$0.b(dpt.a.class);
-      int $$1 = $$0.readByte();
-      this.g = ($$1 & 1) != 0;
-      this.h = ($$1 & 2) != 0;
-      this.i = ($$1 & 4) != 0;
+   private aik(vr $$0) {
+      this.b = $$0.d(20);
+      this.c = $$0.b();
+      this.d = $$0.b();
+      this.e = $$0.readBoolean();
    }
 
-   private void a(wm $$0) {
+   private void a(vr $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
       $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.j);
-      int $$1 = 0;
-      if (this.g) {
-         $$1 |= 1;
-      }
-
-      if (this.h) {
-         $$1 |= 2;
-      }
-
-      if (this.i) {
-         $$1 |= 4;
-      }
-
-      $$0.k($$1);
    }
 
    @Override
-   public zy<aik> a() {
-      return agu.bU;
+   public zd<aik> a() {
+      return ain.c;
    }
 
-   public void a(agw $$0) {
+   public void a(aih $$0) {
       $$0.a(this);
    }
 
-   public iz b() {
-      return this.e;
+   public String b() {
+      return this.b;
    }
 
-   public String e() {
-      return this.f;
+   public PublicKey e() throws axc {
+      return axb.a(this.c);
    }
 
-   public boolean f() {
-      return this.g;
+   public byte[] f() {
+      return this.d;
    }
 
    public boolean g() {
-      return this.h;
-   }
-
-   public boolean h() {
-      return this.i;
-   }
-
-   public dpt.a i() {
-      return this.j;
+      return this.e;
    }
 }

@@ -1,24 +1,31 @@
-public class aam {
-   public static final zy<aad> a = a("custom_payload");
-   public static final zy<aae> b = a("disconnect");
-   public static final zy<aaf> c = a("keep_alive");
-   public static final zy<aag> d = a("ping");
-   public static final zy<aah> e = a("resource_pack_pop");
-   public static final zy<aai> f = a("resource_pack_push");
-   public static final zy<aaj> g = a("store_cookie");
-   public static final zy<aak> h = a("transfer");
-   public static final zy<aal> i = a("update_tags");
-   public static final zy<aao> j = b("client_information");
-   public static final zy<aap> k = b("custom_payload");
-   public static final zy<aaq> l = b("keep_alive");
-   public static final zy<aar> m = b("pong");
-   public static final zy<aas> n = b("resource_pack");
+public record aam(ja c, String d, int e) implements aac {
+   public static final ys<vr, aam> a = aac.a(aam::a, aam::new);
+   public static final aac.b<aam> b = aac.a("debug/poi_added");
 
-   private static <T extends zw<aac>> zy<T> a(String $$0) {
-      return new zy<>(zx.b, new alf($$0));
+   private aam(vr $$0) {
+      this($$0.e(), $$0.p(), $$0.readInt());
    }
 
-   private static <T extends zw<aan>> zy<T> b(String $$0) {
-      return new zy<>(zx.a, new alf($$0));
+   private void a(vr $$0) {
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.p(this.e);
+   }
+
+   @Override
+   public aac.b<aam> a() {
+      return b;
+   }
+
+   public ja b() {
+      return this.c;
+   }
+
+   public String c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

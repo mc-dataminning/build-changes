@@ -1,4 +1,31 @@
-@FunctionalInterface
-public interface zq<O, T> {
-   void encode(T var1, O var2);
+import java.util.Map;
+
+public class zq implements zb<zh> {
+   public static final ys<vr, zq> a = zb.a(zq::a, zq::new);
+   private final Map<akj<? extends jw<?>>, awn.a> b;
+
+   public zq(Map<akj<? extends jw<?>>, awn.a> $$0) {
+      this.b = $$0;
+   }
+
+   private zq(vr $$0) {
+      this.b = $$0.a(vr::r, awn.a::b);
+   }
+
+   private void a(vr $$0) {
+      $$0.a(this.b, vr::b, ($$0x, $$1) -> $$1.a($$0x));
+   }
+
+   @Override
+   public zd<zq> a() {
+      return zr.i;
+   }
+
+   public void a(zh $$0) {
+      $$0.a(this);
+   }
+
+   public Map<akj<? extends jw<?>>, awn.a> b() {
+      return this.b;
+   }
 }

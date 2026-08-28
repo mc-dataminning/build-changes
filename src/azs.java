@@ -1,69 +1,69 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DSL.TypeReference;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.Dynamic;
+import java.util.Arrays;
 import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Function;
 
-public class azs {
-   public static <T extends btt> Optional<T> a(btc<T> $$0, btv $$1, arf $$2, iz $$3, int $$4, int $$5, int $$6, azs.a $$7) {
-      iz.a $$8 = $$3.j();
+public abstract class azs extends DataFix {
+   protected TypeReference a;
 
-      for (int $$9 = 0; $$9 < $$4; $$9++) {
-         int $$10 = ayz.b($$2.z, -$$5, $$5);
-         int $$11 = ayz.b($$2.z, -$$5, $$5);
-         $$8.a($$3, $$10, $$6, $$11);
-         if ($$2.C_().a($$8) && a($$2, $$6, $$8, $$7)) {
-            T $$12 = (T)$$0.b($$2, null, $$8, $$1, false, false);
-            if ($$12 != null) {
-               if ($$12.a($$2, $$1) && $$12.a($$2)) {
-                  $$2.a_($$12);
-                  return Optional.of($$12);
-               }
+   public azs(Schema $$0, TypeReference $$1) {
+      super($$0, false);
+      this.a = $$1;
+   }
 
-               $$12.ao();
+   protected Typed<?> a(Typed<?> $$0, String $$1, Function<Dynamic<?>, Dynamic<?>> $$2) {
+      Type<?> $$3 = this.getInputSchema().getChoiceType(this.a, $$1);
+      Type<?> $$4 = this.getOutputSchema().getChoiceType(this.a, $$1);
+      return $$0.updateTyped(DSL.namedChoice($$1, $$3), $$4, $$1x -> $$1x.update(DSL.remainderFinder(), $$2));
+   }
+
+   protected static Optional<Dynamic<?>> a(Dynamic<?> $$0, String $$1, String $$2) {
+      return a($$0, $$1).map($$3 -> $$0.remove($$1).set($$2, $$3));
+   }
+
+   protected static Optional<Dynamic<?>> b(Dynamic<?> $$0, String $$1, String $$2) {
+      return $$0.get($$1).result().flatMap(azs::a).map($$3 -> $$0.remove($$1).set($$2, $$3));
+   }
+
+   protected static Optional<Dynamic<?>> c(Dynamic<?> $$0, String $$1, String $$2) {
+      String $$3 = $$1 + "Most";
+      String $$4 = $$1 + "Least";
+      return d($$0, $$3, $$4).map($$4x -> $$0.remove($$3).remove($$4).set($$2, $$4x));
+   }
+
+   protected static Optional<Dynamic<?>> a(Dynamic<?> $$0, String $$1) {
+      return $$0.get($$1).result().flatMap($$1x -> {
+         String $$2 = $$1x.asString(null);
+         if ($$2 != null) {
+            try {
+               UUID $$3 = UUID.fromString($$2);
+               return a($$0, $$3.getMostSignificantBits(), $$3.getLeastSignificantBits());
+            } catch (IllegalArgumentException var4) {
             }
          }
-      }
 
-      return Optional.empty();
+         return Optional.empty();
+      });
    }
 
-   private static boolean a(arf $$0, int $$1, iz.a $$2, azs.a $$3) {
-      iz.a $$4 = new iz.a().g($$2);
-      dse $$5 = $$0.a_($$4);
-
-      for (int $$6 = $$1; $$6 >= -$$1; $$6--) {
-         $$2.c(je.a);
-         $$4.a($$2, je.b);
-         dse $$7 = $$0.a_($$2);
-         if ($$3.canSpawnOn($$0, $$2, $$7, $$4, $$5)) {
-            $$2.c(je.b);
-            return true;
-         }
-
-         $$5 = $$7;
-      }
-
-      return false;
+   protected static Optional<Dynamic<?>> a(Dynamic<?> $$0) {
+      return d($$0, "M", "L");
    }
 
-   public interface a {
-      @Deprecated
-      azs.a a = ($$0, $$1, $$2, $$3, $$4) -> !$$2.a(dfd.bs)
-               && !$$2.a(dfd.dQ)
-               && !$$2.a(dfd.eY)
-               && !($$2.b() instanceof dmu)
-               && !($$2.b() instanceof dmt)
-               && !($$2.b() instanceof djl)
-               && !$$2.a(dfd.mX)
-               && !$$2.a(dfd.dO)
-               && !$$2.a(dfd.ck)
-               && !$$2.a(dfd.ec)
-               && !$$2.a(dfd.fO)
-               && !$$2.a(dfd.ii)
-               && !$$2.a(dfd.kI)
-               && !$$2.a(dfd.qO)
-               && !$$2.a(dfd.aQ)
-            ? ($$4.i() || $$4.k()) && ($$2.e() || $$2.a(dfd.qP))
-            : false;
-      azs.a b = ($$0, $$1, $$2, $$3, $$4) -> $$4.k($$0, $$3).c() && dfb.a($$2.k($$0, $$1), je.b);
+   protected static Optional<Dynamic<?>> d(Dynamic<?> $$0, String $$1, String $$2) {
+      long $$3 = $$0.get($$1).asLong(0L);
+      long $$4 = $$0.get($$2).asLong(0L);
+      return $$3 != 0L && $$4 != 0L ? a($$0, $$3, $$4) : Optional.empty();
+   }
 
-      boolean canSpawnOn(arf var1, iz var2, dse var3, iz var4, dse var5);
+   protected static Optional<Dynamic<?>> a(Dynamic<?> $$0, long $$1, long $$2) {
+      return Optional.of($$0.createIntList(Arrays.stream(new int[]{(int)($$1 >> 32), (int)$$1, (int)($$2 >> 32), (int)$$2})));
    }
 }

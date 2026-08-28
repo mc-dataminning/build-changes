@@ -1,36 +1,42 @@
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.types.templates.Const.PrimitiveType;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.codecs.PrimitiveCodec;
 
-public class bhp extends DataFix {
-   public bhp(Schema $$0) {
-      super($$0, false);
+public class bhp extends Schema {
+   public static final PrimitiveCodec<String> a = new PrimitiveCodec<String>() {
+      public <T> DataResult<String> read(DynamicOps<T> $$0, T $$1) {
+         return $$0.getStringValue($$1).map(bhp::a);
+      }
+
+      public <T> T a(DynamicOps<T> $$0, String $$1) {
+         return (T)$$0.createString($$1);
+      }
+
+      @Override
+      public String toString() {
+         return "NamespacedString";
+      }
+   };
+   private static final Type<String> b = new PrimitiveType(a);
+
+   public bhp(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgx.M);
-      OpticFinder<?> $$1 = $$0.findField("dimensions");
-      return this.fixTypeEverywhereTyped(
-         "StructureSettingsFlatten", $$0, $$1x -> $$1x.updateTyped($$1, $$1xx -> ac.a($$1xx, $$1.type(), $$0xxx -> $$0xxx.updateMapValues(bhp::a)))
-      );
+   public static String a(String $$0) {
+      akk $$1 = akk.a($$0);
+      return $$1 != null ? $$1.toString() : $$0;
    }
 
-   private static Pair<Dynamic<?>, Dynamic<?>> a(Pair<Dynamic<?>, Dynamic<?>> $$0) {
-      Dynamic<?> $$1 = (Dynamic<?>)$$0.getSecond();
-      return Pair.of((Dynamic)$$0.getFirst(), $$1.update("generator", $$0x -> $$0x.update("settings", $$0xx -> $$0xx.update("structures", bhp::a))));
+   public static Type<String> a() {
+      return b;
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      Dynamic<?> $$1 = $$0.get("structures")
-         .orElseEmptyMap()
-         .updateMapValues($$1x -> $$1x.mapSecond($$1xx -> $$1xx.set("type", $$0.createString("minecraft:random_spread"))));
-      return (Dynamic<?>)DataFixUtils.orElse(
-         $$0.get("stronghold").result().map($$2 -> $$1.set("minecraft:stronghold", $$2.set("type", $$0.createString("minecraft:concentric_rings")))), $$1
-      );
+   public Type<?> getChoiceType(TypeReference $$0, String $$1) {
+      return super.getChoiceType($$0, a($$1));
    }
 }

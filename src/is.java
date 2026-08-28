@@ -1,56 +1,56 @@
 import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.LongArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 
-public class is implements ik<LongArgumentType, is.a> {
-   public void a(is.a $$0, wm $$1) {
-      boolean $$2 = $$0.b != Long.MIN_VALUE;
-      boolean $$3 = $$0.c != Long.MAX_VALUE;
-      $$1.k(im.a($$2, $$3));
+public class is implements il<IntegerArgumentType, is.a> {
+   public void a(is.a $$0, vr $$1) {
+      boolean $$2 = $$0.b != Integer.MIN_VALUE;
+      boolean $$3 = $$0.c != Integer.MAX_VALUE;
+      $$1.k(in.a($$2, $$3));
       if ($$2) {
-         $$1.b($$0.b);
+         $$1.p($$0.b);
       }
 
       if ($$3) {
-         $$1.b($$0.c);
+         $$1.p($$0.c);
       }
    }
 
-   public is.a a(wm $$0) {
+   public is.a a(vr $$0) {
       byte $$1 = $$0.readByte();
-      long $$2 = im.a($$1) ? $$0.readLong() : Long.MIN_VALUE;
-      long $$3 = im.b($$1) ? $$0.readLong() : Long.MAX_VALUE;
+      int $$2 = in.a($$1) ? $$0.readInt() : Integer.MIN_VALUE;
+      int $$3 = in.b($$1) ? $$0.readInt() : Integer.MAX_VALUE;
       return new is.a($$2, $$3);
    }
 
    public void a(is.a $$0, JsonObject $$1) {
-      if ($$0.b != Long.MIN_VALUE) {
+      if ($$0.b != Integer.MIN_VALUE) {
          $$1.addProperty("min", $$0.b);
       }
 
-      if ($$0.c != Long.MAX_VALUE) {
+      if ($$0.c != Integer.MAX_VALUE) {
          $$1.addProperty("max", $$0.c);
       }
    }
 
-   public is.a a(LongArgumentType $$0) {
+   public is.a a(IntegerArgumentType $$0) {
       return new is.a($$0.getMinimum(), $$0.getMaximum());
    }
 
-   public final class a implements ik.a<LongArgumentType> {
-      final long b;
-      final long c;
+   public final class a implements il.a<IntegerArgumentType> {
+      final int b;
+      final int c;
 
-      a(final long $$1, final long $$2) {
+      a(final int $$1, final int $$2) {
          this.b = $$1;
          this.c = $$2;
       }
 
-      public LongArgumentType a(el $$0) {
-         return LongArgumentType.longArg(this.b, this.c);
+      public IntegerArgumentType a(em $$0) {
+         return IntegerArgumentType.integer(this.b, this.c);
       }
 
       @Override
-      public ik<LongArgumentType, ?> a() {
+      public il<IntegerArgumentType, ?> a() {
          return is.this;
       }
    }

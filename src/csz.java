@@ -1,44 +1,44 @@
-public class csz extends cum {
-   public csz(cum.a $$0) {
+import java.util.List;
+
+public class csz extends ctv {
+   public csz(ctv.a $$0) {
       super($$0);
    }
 
    @Override
-   public cur a(cur $$0, dca $$1, btr $$2) {
-      cur $$3 = super.a($$0, $$1, $$2);
-      if (!$$1.B) {
-         for (int $$4 = 0; $$4 < 16; $$4++) {
-            double $$5 = $$2.du() + ($$2.el().j() - 0.5) * 16.0;
-            double $$6 = ayz.a($$2.dw() + (double)($$2.el().a(16) - 8), (double)$$1.I_(), (double)($$1.I_() + ((arf)$$1).k() - 1));
-            double $$7 = $$2.dA() + ($$2.el().j() - 0.5) * 16.0;
-            if ($$2.bR()) {
-               $$2.ac();
-            }
-
-            evt $$8 = $$2.dn();
-            if ($$2.b($$5, $$6, $$7, true)) {
-               $$1.a(dwx.R, $$8, dwx.a.a($$2));
-               awb $$10;
-               avz $$9;
-               if ($$2 instanceof cfr) {
-                  $$9 = awa.jp;
-                  $$10 = awb.g;
-               } else {
-                  $$9 = awa.fh;
-                  $$10 = awb.h;
+   public bqd a(cxm $$0) {
+      dcd $$1 = $$0.q();
+      ja $$2 = $$0.a();
+      dsh $$3 = $$1.a_($$2);
+      if (!$$3.a(dfh.co) && !$$3.a(dfh.F)) {
+         return bqd.f;
+      } else {
+         ja $$4 = $$2.c();
+         if (!$$1.u($$4)) {
+            return bqd.f;
+         } else {
+            double $$5 = (double)$$4.u();
+            double $$6 = (double)$$4.v();
+            double $$7 = (double)$$4.w();
+            List<bsd> $$8 = $$1.a_(null, new evu($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
+            if (!$$8.isEmpty()) {
+               return bqd.f;
+            } else {
+               if ($$1 instanceof aqk) {
+                  chj $$9 = new chj($$1, $$5 + 0.5, $$6, $$7 + 0.5);
+                  $$9.a(false);
+                  $$1.b($$9);
+                  $$1.a($$0.o(), dxa.t, $$4);
+                  dwc $$10 = ((aqk)$$1).D();
+                  if ($$10 != null) {
+                     $$10.g();
+                  }
                }
 
-               $$1.a(null, $$2.du(), $$2.dw(), $$2.dA(), $$9, $$10);
-               $$2.n();
-               break;
+               $$0.n().h(1);
+               return bqd.a($$1.B);
             }
          }
-
-         if ($$2 instanceof cmz $$13) {
-            $$13.gx().a(this, 20);
-         }
       }
-
-      return $$3;
    }
 }

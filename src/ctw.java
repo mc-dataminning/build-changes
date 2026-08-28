@@ -1,69 +1,65 @@
-import java.util.List;
+import com.google.common.collect.Maps;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class ctw extends cum implements cvj {
-   public static final byte[] a = new byte[]{1, 2, 3};
-   public static final double b = 0.15;
+public class ctw {
+   private final Map<ctv, ctw.a> a = Maps.newHashMap();
+   private int b;
 
-   public ctw(cum.a $$0) {
-      super($$0);
+   public boolean a(ctv $$0) {
+      return this.a($$0, 0.0F) > 0.0F;
    }
 
-   @Override
-   public bqw a(cye $$0) {
-      dca $$1 = $$0.q();
-      if (!$$1.B) {
-         cur $$2 = $$0.n();
-         evt $$3 = $$0.l();
-         je $$4 = $$0.k();
-         cnm $$5 = new cnm($$1, $$0.o(), $$3.c + (double)$$4.j() * 0.15, $$3.d + (double)$$4.k() * 0.15, $$3.e + (double)$$4.l() * 0.15, $$2);
-         $$1.b($$5);
-         $$2.h(1);
-      }
-
-      return bqw.a($$1.B);
-   }
-
-   @Override
-   public bqx<cur> a(dca $$0, cmz $$1, bqv $$2) {
-      if ($$1.fE()) {
-         cur $$3 = $$1.b($$2);
-         if (!$$0.B) {
-            cnm $$4 = new cnm($$0, $$3, $$1);
-            $$0.b($$4);
-            $$3.a(1, $$1);
-            $$1.b(awk.c.b(this));
-         }
-
-         return bqx.a($$1.b($$2), $$0.x_());
+   public float a(ctv $$0, float $$1) {
+      ctw.a $$2 = this.a.get($$0);
+      if ($$2 != null) {
+         float $$3 = (float)($$2.b - $$2.a);
+         float $$4 = (float)$$2.b - ((float)this.b + $$1);
+         return aye.a($$4 / $$3, 0.0F, 1.0F);
       } else {
-         return bqx.c($$1.b($$2));
+         return 0.0F;
       }
    }
 
-   @Override
-   public void a(cur $$0, cum.b $$1, List<xp> $$2, cwk $$3) {
-      cxl $$4 = $$0.a(km.U);
-      if ($$4 != null) {
-         $$4.a($$1, $$2::add, $$3);
+   public void a() {
+      this.b++;
+      if (!this.a.isEmpty()) {
+         Iterator<Entry<ctv, ctw.a>> $$0 = this.a.entrySet().iterator();
+
+         while ($$0.hasNext()) {
+            Entry<ctv, ctw.a> $$1 = $$0.next();
+            if ($$1.getValue().b <= this.b) {
+               $$0.remove();
+               this.c($$1.getKey());
+            }
+         }
       }
    }
 
-   @Override
-   public cnr a(dca $$0, js $$1, cur $$2, je $$3) {
-      return new cnm($$0, $$2.c(1), $$1.a(), $$1.b(), $$1.c(), true);
+   public void a(ctv $$0, int $$1) {
+      this.a.put($$0, new ctw.a(this.b, this.b + $$1));
+      this.b($$0, $$1);
    }
 
-   @Override
-   public cvj.a c() {
-      return cvj.a.a().a(ctw::a).a(1.0F).b(0.5F).a(1004).a();
+   public void b(ctv $$0) {
+      this.a.remove($$0);
+      this.c($$0);
    }
 
-   private static evt a(kq $$0, je $$1) {
-      return $$0.a()
-         .b(
-            (double)$$1.j() * (0.5000099999997474 - (double)btc.P.l() / 2.0),
-            (double)$$1.k() * (0.5000099999997474 - (double)btc.P.m() / 2.0) - (double)btc.P.m() / 2.0,
-            (double)$$1.l() * (0.5000099999997474 - (double)btc.P.l() / 2.0)
-         );
+   protected void b(ctv $$0, int $$1) {
+   }
+
+   protected void c(ctv $$0) {
+   }
+
+   static class a {
+      final int a;
+      final int b;
+
+      a(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 }

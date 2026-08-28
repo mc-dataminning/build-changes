@@ -1,84 +1,172 @@
-public abstract class cpi extends bsw {
-   protected static final akk<Integer> f = ako.a(cpi.class, akm.b);
-   protected static final akk<Integer> g = ako.a(cpi.class, akm.b);
-   protected static final akk<Float> h = ako.a(cpi.class, akm.d);
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public cpi(btc<?> $$0, dca $$1) {
-      super($$0, $$1);
+public class cpi extends cpe {
+   private static final int k = 0;
+   private static final int l = 1;
+   private static final int m = 3;
+   private static final int n = 1;
+   private static final int o = 28;
+   private static final int p = 28;
+   private static final int q = 37;
+   private static final int r = 0;
+   private final bpw s = new bqm(1) {
+      @Override
+      public boolean b(int $$0, cua $$1) {
+         return $$1.a(awd.aX);
+      }
+
+      @Override
+      public int ah_() {
+         return 1;
+      }
+   };
+   private final cpi.a t;
+   private final cpq u;
+   private final cpp v;
+
+   public cpi(int $$0, bpw $$1) {
+      this($$0, $$1, new cqz(3), cpq.a);
+   }
+
+   public cpi(int $$0, bpw $$1, cpp $$2, cpq $$3) {
+      super(cqm.j, $$0);
+      a($$2, 3);
+      this.v = $$2;
+      this.u = $$3;
+      this.t = new cpi.a(this.s, 0, 136, 110);
+      this.a(this.t);
+      this.a($$2);
+      int $$4 = 36;
+      int $$5 = 137;
+
+      for (int $$6 = 0; $$6 < 3; $$6++) {
+         for (int $$7 = 0; $$7 < 9; $$7++) {
+            this.a(new cra($$1, $$7 + $$6 * 9 + 9, 36 + $$7 * 18, 137 + $$6 * 18));
+         }
+      }
+
+      for (int $$8 = 0; $$8 < 9; $$8++) {
+         this.a(new cra($$1, $$8, 36 + $$8 * 18, 195));
+      }
    }
 
    @Override
-   public boolean a(brp $$0, float $$1) {
-      if (this.dP().B || this.dK()) {
-         return true;
-      } else if (this.b($$0)) {
-         return false;
-      } else {
-         this.n(-this.P());
-         this.d(10);
-         this.bv();
-         this.b(this.N() + $$1 * 10.0F);
-         this.a(dwx.o, $$0.d());
-         boolean $$2 = $$0.d() instanceof cmz && ((cmz)$$0.d()).gd().d;
-         if (($$2 || !(this.N() > 40.0F)) && !this.d($$0)) {
-            if ($$2) {
-               this.ao();
+   public void a(cmh $$0) {
+      super.a($$0);
+      if (!$$0.dP().B) {
+         cua $$1 = this.t.a(this.t.a());
+         if (!$$1.e()) {
+            $$0.a($$1, false);
+         }
+      }
+   }
+
+   @Override
+   public boolean b(cmh $$0) {
+      return a(this.u, $$0, dfh.fO);
+   }
+
+   @Override
+   public void a(int $$0, int $$1) {
+      super.a($$0, $$1);
+      this.d();
+   }
+
+   @Override
+   public cua b(cmh $$0, int $$1) {
+      cua $$2 = cua.l;
+      cra $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cua $$4 = $$3.g();
+         $$2 = $$4.s();
+         if ($$1 == 0) {
+            if (!this.a($$4, 1, 37, true)) {
+               return cua.l;
             }
-         } else {
-            this.a($$0);
+
+            $$3.b($$4, $$2);
+         } else if (!this.t.h() && this.t.a($$4) && $$4.H() == 1) {
+            if (!this.a($$4, 0, 1, false)) {
+               return cua.l;
+            }
+         } else if ($$1 >= 1 && $$1 < 28) {
+            if (!this.a($$4, 28, 37, false)) {
+               return cua.l;
+            }
+         } else if ($$1 >= 28 && $$1 < 37) {
+            if (!this.a($$4, 1, 28, false)) {
+               return cua.l;
+            }
+         } else if (!this.a($$4, 1, 37, false)) {
+            return cua.l;
          }
 
-         return true;
+         if ($$4.e()) {
+            $$3.e(cua.l);
+         } else {
+            $$3.c();
+         }
+
+         if ($$4.H() == $$2.H()) {
+            return cua.l;
+         }
+
+         $$3.a($$0, $$4);
+      }
+
+      return $$2;
+   }
+
+   public int l() {
+      return this.v.a(0);
+   }
+
+   public static int a(@Nullable jj<brj> $$0) {
+      return $$0 == null ? 0 : lq.d.u().a($$0) + 1;
+   }
+
+   @Nullable
+   public static jj<brj> e(int $$0) {
+      return $$0 == 0 ? null : lq.d.u().a($$0 - 1);
+   }
+
+   @Nullable
+   public jj<brj> m() {
+      return e(this.v.a(1));
+   }
+
+   @Nullable
+   public jj<brj> n() {
+      return e(this.v.a(2));
+   }
+
+   public void a(Optional<jj<brj>> $$0, Optional<jj<brj>> $$1) {
+      if (this.t.h()) {
+         this.v.a(1, a($$0.orElse(null)));
+         this.v.a(2, a($$1.orElse(null)));
+         this.t.a(1);
+         this.u.a(dcd::q);
       }
    }
 
-   boolean d(brp $$0) {
-      return false;
+   public boolean o() {
+      return !this.s.a(0).e();
    }
 
-   public void b(cum $$0) {
-      this.an();
-      if (this.dP().ab().b(dbw.i)) {
-         cur $$1 = new cur($$0);
-         $$1.b(km.g, this.ah());
-         this.b($$1);
+   class a extends cra {
+      public a(final bpw $$0, final int $$1, final int $$2, final int $$3) {
+         super($$0, $$1, $$2, $$3);
+      }
+
+      @Override
+      public boolean a(cua $$0) {
+         return $$0.a(awd.aX);
+      }
+
+      @Override
+      public int a() {
+         return 1;
       }
    }
-
-   @Override
-   protected void a(ako.a $$0) {
-      $$0.a(f, 0);
-      $$0.a(g, 1);
-      $$0.a(h, 0.0F);
-   }
-
-   public void d(int $$0) {
-      this.ao.a(f, $$0);
-   }
-
-   public void n(int $$0) {
-      this.ao.a(g, $$0);
-   }
-
-   public void b(float $$0) {
-      this.ao.a(h, $$0);
-   }
-
-   public float N() {
-      return this.ao.a(h);
-   }
-
-   public int O() {
-      return this.ao.a(f);
-   }
-
-   public int P() {
-      return this.ao.a(g);
-   }
-
-   protected void a(brp $$0) {
-      this.b(this.ag_());
-   }
-
-   abstract cum ag_();
 }

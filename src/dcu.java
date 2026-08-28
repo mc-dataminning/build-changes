@@ -1,25 +1,50 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record dcu(dbo d, cpn e) {
-   public static final String a = "enabled_features";
-   public static final Codec<dcu> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dbo.b.lenientOptionalFieldOf("DataPacks", dbo.a).forGetter(dcu::a), cpp.f.lenientOptionalFieldOf("enabled_features", cpp.h).forGetter(dcu::b)
-            )
-            .apply($$0, dcu::new)
-   );
-   public static final dcu c = new dcu(dbo.a, cpp.h);
+public class dcu extends dbw {
+   private final boolean a;
+   private final boolean b;
+   private final Optional<Float> c;
+   private final Optional<jn<dff>> d;
 
-   public dcu a(cpn $$0) {
-      return new dcu(this.d, this.e.c($$0));
+   public dcu(boolean $$0, boolean $$1, Optional<Float> $$2, Optional<jn<dff>> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public dbo a() {
-      return this.d;
+   @Override
+   public Optional<Float> a(dbv $$0, dbj $$1, ja $$2, dsh $$3, eob $$4) {
+      if (this.d.isPresent()) {
+         return $$3.a(this.d.get()) ? Optional.of(3600000.0F) : Optional.empty();
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
+      }
    }
 
-   public cpn b() {
-      return this.e;
+   @Override
+   public boolean a(dbv $$0, dbj $$1, ja $$2, dsh $$3, float $$4) {
+      return this.a;
+   }
+
+   @Override
+   public boolean a(dbv $$0, bsd $$1) {
+      return this.b;
+   }
+
+   @Override
+   public float a(bsd $$0) {
+      boolean var10000;
+      label17: {
+         if ($$0 instanceof cmh $$1 && $$1.fZ().b) {
+            var10000 = true;
+            break label17;
+         }
+
+         var10000 = false;
+      }
+
+      boolean $$2 = var10000;
+      return $$2 ? 0.0F : this.c.orElseGet(() -> super.a($$0));
    }
 }

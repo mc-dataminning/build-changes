@@ -1,61 +1,47 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.Set;
 
-public record euc(Optional<Long> b, eqj c) implements etu {
+public record euc(Optional<bu> b, eqo.b c) implements etz {
    public static final MapCodec<euc> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.LONG.optionalFieldOf("period").forGetter(euc::c), eqj.a.fieldOf("value").forGetter(euc::d)).apply($$0, euc::new)
+      $$0 -> $$0.group(bu.a.optionalFieldOf("predicate").forGetter(euc::c), eqo.b.e.fieldOf("entity").forGetter(euc::d)).apply($$0, euc::new)
    );
 
    @Override
-   public etv b() {
-      return etw.s;
+   public eua b() {
+      return eub.f;
    }
 
    @Override
-   public Set<etd<?>> a() {
-      return this.c.a();
+   public Set<eth<?>> a() {
+      return ImmutableSet.of(etk.f, this.c.a());
    }
 
-   public boolean a(eqk $$0) {
-      arf $$1 = $$0.d();
-      long $$2 = $$1.aa();
-      if (this.b.isPresent()) {
-         $$2 %= this.b.get();
-      }
-
-      return this.c.b($$0, (int)$$2);
+   public boolean a(eqo $$0) {
+      bsd $$1 = $$0.c(this.c.a());
+      evz $$2 = $$0.c(etk.f);
+      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
    }
 
-   public static euc.a a(eqj $$0) {
-      return new euc.a($$0);
+   public static etz.a a(eqo.b $$0) {
+      return a($$0, bu.a.a());
    }
 
-   public Optional<Long> c() {
+   public static etz.a a(eqo.b $$0, bu.a $$1) {
+      return () -> new euc(Optional.of($$1.b()), $$0);
+   }
+
+   public static etz.a a(eqo.b $$0, bu $$1) {
+      return () -> new euc(Optional.of($$1), $$0);
+   }
+
+   public Optional<bu> c() {
       return this.b;
    }
 
-   public eqj d() {
+   public eqo.b d() {
       return this.c;
-   }
-
-   public static class a implements etu.a {
-      private Optional<Long> a = Optional.empty();
-      private final eqj b;
-
-      public a(eqj $$0) {
-         this.b = $$0;
-      }
-
-      public euc.a a(long $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public euc a() {
-         return new euc(this.a, this.b);
-      }
    }
 }

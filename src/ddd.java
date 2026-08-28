@@ -1,142 +1,384 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.util.Pair;
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.longs.Long2FloatLinkedOpenHashMap;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public abstract class ddd implements ddc {
-   public static final Codec<ddd> a = lp.ab.q().dispatchStable(ddd::a, Function.identity());
-   private final Supplier<Set<ji<dcz>>> b = Suppliers.memoize(() -> this.b().distinct().collect(ImmutableSet.toImmutableSet()));
-
-   protected ddd() {
-   }
-
-   protected abstract MapCodec<? extends ddd> a();
-
-   protected abstract Stream<ji<dcz>> b();
-
-   public Set<ji<dcz>> c() {
-      return this.b.get();
-   }
-
-   public Set<ji<dcz>> a(int $$0, int $$1, int $$2, int $$3, ddi.f $$4) {
-      int $$5 = jt.a($$0 - $$3);
-      int $$6 = jt.a($$1 - $$3);
-      int $$7 = jt.a($$2 - $$3);
-      int $$8 = jt.a($$0 + $$3);
-      int $$9 = jt.a($$1 + $$3);
-      int $$10 = jt.a($$2 + $$3);
-      int $$11 = $$8 - $$5 + 1;
-      int $$12 = $$9 - $$6 + 1;
-      int $$13 = $$10 - $$7 + 1;
-      Set<ji<dcz>> $$14 = Sets.newHashSet();
-
-      for (int $$15 = 0; $$15 < $$13; $$15++) {
-         for (int $$16 = 0; $$16 < $$11; $$16++) {
-            for (int $$17 = 0; $$17 < $$12; $$17++) {
-               int $$18 = $$5 + $$16;
-               int $$19 = $$6 + $$17;
-               int $$20 = $$7 + $$15;
-               $$14.add(this.getNoiseBiome($$18, $$19, $$20, $$4));
+public final class ddd {
+   public static final Codec<ddd> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ddd.b.a.forGetter($$0x -> $$0x.i),
+               ddj.a.fieldOf("effects").forGetter($$0x -> $$0x.l),
+               dde.b.forGetter($$0x -> $$0x.j),
+               ddp.c.forGetter($$0x -> $$0x.k)
+            )
+            .apply($$0, ddd::new)
+   );
+   public static final Codec<ddd> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ddd.b.a.forGetter($$0x -> $$0x.i), ddj.a.fieldOf("effects").forGetter($$0x -> $$0x.l))
+            .apply($$0, ($$0x, $$1) -> new ddd($$0x, $$1, dde.a, ddp.b))
+   );
+   public static final Codec<jj<ddd>> c = akg.a(lr.aE, a);
+   public static final Codec<jn<ddd>> d = jy.a(lr.aE, a);
+   private static final eng f = new eng(new dyy(new dya(1234L)), ImmutableList.of(0));
+   static final eng g = new eng(new dyy(new dya(3456L)), ImmutableList.of(-2, -1, 0));
+   @Deprecated(
+      forRemoval = true
+   )
+   public static final eng e = new eng(new dyy(new dya(2345L)), ImmutableList.of(0));
+   private static final int h = 1024;
+   private final ddd.b i;
+   private final dde j;
+   private final ddp k;
+   private final ddj l;
+   private final ThreadLocal<Long2FloatLinkedOpenHashMap> m = ThreadLocal.withInitial(() -> ac.a(() -> {
+         Long2FloatLinkedOpenHashMap $$0x = new Long2FloatLinkedOpenHashMap(1024, 0.25F) {
+            protected void rehash(int $$0) {
             }
-         }
-      }
+         };
+         $$0x.defaultReturnValue(Float.NaN);
+         return $$0x;
+      }));
 
-      return $$14;
+   ddd(ddd.b $$0, ddj $$1, dde $$2, ddp $$3) {
+      this.i = $$0;
+      this.j = $$2;
+      this.k = $$3;
+      this.l = $$1;
    }
 
-   @Nullable
-   public Pair<iz, ji<dcz>> a(int $$0, int $$1, int $$2, int $$3, Predicate<ji<dcz>> $$4, azh $$5, ddi.f $$6) {
-      return this.a($$0, $$1, $$2, $$3, 1, $$4, $$5, false, $$6);
+   public int a() {
+      return this.l.d();
    }
 
-   @Nullable
-   public Pair<iz, ji<dcz>> a(iz $$0, int $$1, int $$2, int $$3, Predicate<ji<dcz>> $$4, ddi.f $$5, dcd $$6) {
-      Set<ji<dcz>> $$7 = this.c().stream().filter($$4).collect(Collectors.toUnmodifiableSet());
-      if ($$7.isEmpty()) {
-         return null;
+   public ddp b() {
+      return this.k;
+   }
+
+   public boolean c() {
+      return this.i.a();
+   }
+
+   public ddd.c a(ja $$0) {
+      if (!this.c()) {
+         return ddd.c.a;
       } else {
-         int $$8 = Math.floorDiv($$1, $$2);
-         int[] $$9 = ayz.a($$0.v(), $$6.I_() + 1, $$6.am(), $$3).toArray();
+         return this.b($$0) ? ddd.c.c : ddd.c.b;
+      }
+   }
 
-         for (iz.a $$10 : iz.a(iz.c, $$8, je.f, je.d)) {
-            int $$11 = $$0.u() + $$10.u() * $$2;
-            int $$12 = $$0.w() + $$10.w() * $$2;
-            int $$13 = jt.a($$11);
-            int $$14 = jt.a($$12);
+   private float e(ja $$0) {
+      float $$1 = this.i.d.a($$0, this.g());
+      if ($$0.v() > 80) {
+         float $$2 = (float)(f.a((double)((float)$$0.u() / 8.0F), (double)((float)$$0.w() / 8.0F), false) * 8.0);
+         return $$1 - ($$2 + (float)$$0.v() - 80.0F) * 0.05F / 40.0F;
+      } else {
+         return $$1;
+      }
+   }
 
-            for (int $$15 : $$9) {
-               int $$16 = jt.a($$15);
-               ji<dcz> $$17 = this.getNoiseBiome($$13, $$16, $$14, $$5);
-               if ($$7.contains($$17)) {
-                  return Pair.of(new iz($$11, $$15, $$12), $$17);
+   @Deprecated
+   private float f(ja $$0) {
+      long $$1 = $$0.a();
+      Long2FloatLinkedOpenHashMap $$2 = this.m.get();
+      float $$3 = $$2.get($$1);
+      if (!Float.isNaN($$3)) {
+         return $$3;
+      } else {
+         float $$4 = this.e($$0);
+         if ($$2.size() == 1024) {
+            $$2.removeFirstFloat();
+         }
+
+         $$2.put($$1, $$4);
+         return $$4;
+      }
+   }
+
+   public boolean a(dcg $$0, ja $$1) {
+      return this.a($$0, $$1, true);
+   }
+
+   public boolean a(dcg $$0, ja $$1, boolean $$2) {
+      if (this.c($$1)) {
+         return false;
+      } else {
+         if ($$1.v() >= $$0.I_() && $$1.v() < $$0.am() && $$0.a(dcm.b, $$1) < 10) {
+            dsh $$3 = $$0.a_($$1);
+            eob $$4 = $$0.b_($$1);
+            if ($$4.a() == eoc.c && $$3.b() instanceof djv) {
+               if (!$$2) {
+                  return true;
+               }
+
+               boolean $$5 = $$0.z($$1.g()) && $$0.z($$1.h()) && $$0.z($$1.e()) && $$0.z($$1.f());
+               if (!$$5) {
+                  return true;
                }
             }
          }
 
-         return null;
+         return false;
       }
    }
 
-   @Nullable
-   public Pair<iz, ji<dcz>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<ji<dcz>> $$5, azh $$6, boolean $$7, ddi.f $$8) {
-      int $$9 = jt.a($$0);
-      int $$10 = jt.a($$2);
-      int $$11 = jt.a($$3);
-      int $$12 = jt.a($$1);
-      Pair<iz, ji<dcz>> $$13 = null;
-      int $$14 = 0;
-      int $$15 = $$7 ? 0 : $$11;
-      int $$16 = $$15;
+   public boolean b(ja $$0) {
+      return !this.c($$0);
+   }
 
-      while ($$16 <= $$11) {
-         for (int $$17 = aa.as ? 0 : -$$16; $$17 <= $$16; $$17 += $$4) {
-            boolean $$18 = Math.abs($$17) == $$16;
+   public boolean c(ja $$0) {
+      return this.f($$0) >= 0.15F;
+   }
 
-            for (int $$19 = -$$16; $$19 <= $$16; $$19 += $$4) {
-               if ($$7) {
-                  boolean $$20 = Math.abs($$19) == $$16;
-                  if (!$$20 && !$$18) {
-                     continue;
-                  }
-               }
+   public boolean d(ja $$0) {
+      return this.f($$0) > 0.1F;
+   }
 
-               int $$21 = $$9 + $$19;
-               int $$22 = $$10 + $$17;
-               ji<dcz> $$23 = this.getNoiseBiome($$21, $$12, $$22, $$8);
-               if ($$5.test($$23)) {
-                  if ($$13 == null || $$6.a($$14 + 1) == 0) {
-                     iz $$24 = new iz(jt.c($$21), $$1, jt.c($$22));
-                     if ($$7) {
-                        return Pair.of($$24, $$23);
-                     }
-
-                     $$13 = Pair.of($$24, $$23);
-                  }
-
-                  $$14++;
-               }
+   public boolean b(dcg $$0, ja $$1) {
+      if (this.c($$1)) {
+         return false;
+      } else {
+         if ($$1.v() >= $$0.I_() && $$1.v() < $$0.am() && $$0.a(dcm.b, $$1) < 10) {
+            dsh $$2 = $$0.a_($$1);
+            if (($$2.i() || $$2.a(dfh.dN)) && dfh.dN.o().a($$0, $$1)) {
+               return true;
             }
          }
 
-         $$16 += $$4;
+         return false;
       }
-
-      return $$13;
    }
 
-   @Override
-   public abstract ji<dcz> getNoiseBiome(int var1, int var2, int var3, ddi.f var4);
+   public dde d() {
+      return this.j;
+   }
 
-   public void a(List<String> $$0, iz $$1, ddi.f $$2) {
+   public int e() {
+      return this.l.a();
+   }
+
+   public int a(double $$0, double $$1) {
+      int $$2 = this.l.f().orElseGet(this::p);
+      return this.l.g().a($$0, $$1, $$2);
+   }
+
+   private int p() {
+      double $$0 = (double)aye.a(this.i.c, 0.0F, 1.0F);
+      double $$1 = (double)aye.a(this.i.e, 0.0F, 1.0F);
+      return dcb.a($$0, $$1);
+   }
+
+   public int f() {
+      return this.l.e().orElseGet(this::q);
+   }
+
+   private int q() {
+      double $$0 = (double)aye.a(this.i.c, 0.0F, 1.0F);
+      double $$1 = (double)aye.a(this.i.e, 0.0F, 1.0F);
+      return dbx.a($$0, $$1);
+   }
+
+   public float g() {
+      return this.i.c;
+   }
+
+   public ddj h() {
+      return this.l;
+   }
+
+   public int i() {
+      return this.l.b();
+   }
+
+   public int j() {
+      return this.l.c();
+   }
+
+   public Optional<ddc> k() {
+      return this.l.h();
+   }
+
+   public Optional<jj<ave>> l() {
+      return this.l.i();
+   }
+
+   public Optional<ddb> m() {
+      return this.l.j();
+   }
+
+   public Optional<dda> n() {
+      return this.l.k();
+   }
+
+   public Optional<avc> o() {
+      return this.l.l();
+   }
+
+   public static class a {
+      private boolean a = true;
+      @Nullable
+      private Float b;
+      private ddd.d c = ddd.d.a;
+      @Nullable
+      private Float d;
+      @Nullable
+      private ddj e;
+      @Nullable
+      private ddp f;
+      @Nullable
+      private dde g;
+
+      public ddd.a a(boolean $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public ddd.a a(float $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public ddd.a b(float $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public ddd.a a(ddj $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public ddd.a a(ddp $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public ddd.a a(dde $$0) {
+         this.g = $$0;
+         return this;
+      }
+
+      public ddd.a a(ddd.d $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public ddd a() {
+         if (this.b != null && this.d != null && this.e != null && this.f != null && this.g != null) {
+            return new ddd(new ddd.b(this.a, this.b, this.c, this.d), this.e, this.g, this.f);
+         } else {
+            throw new IllegalStateException("You are missing parameters to build a proper biome\n" + this);
+         }
+      }
+
+      @Override
+      public String toString() {
+         return "BiomeBuilder{\nhasPrecipitation="
+            + this.a
+            + ",\ntemperature="
+            + this.b
+            + ",\ntemperatureModifier="
+            + this.c
+            + ",\ndownfall="
+            + this.d
+            + ",\nspecialEffects="
+            + this.e
+            + ",\nmobSpawnSettings="
+            + this.f
+            + ",\ngenerationSettings="
+            + this.g
+            + ",\n}";
+      }
+   }
+
+   static record b(boolean b, float c, ddd.d d, float e) {
+      public static final MapCodec<ddd.b> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.BOOL.fieldOf("has_precipitation").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("temperature").forGetter($$0x -> $$0x.c),
+                  ddd.d.c.optionalFieldOf("temperature_modifier", ddd.d.a).forGetter($$0x -> $$0x.d),
+                  Codec.FLOAT.fieldOf("downfall").forGetter($$0x -> $$0x.e)
+               )
+               .apply($$0, ddd.b::new)
+      );
+
+      public boolean a() {
+         return this.b;
+      }
+
+      public float b() {
+         return this.c;
+      }
+
+      public ddd.d c() {
+         return this.d;
+      }
+
+      public float d() {
+         return this.e;
+      }
+   }
+
+   public static enum c implements ayz {
+      a("none"),
+      b("rain"),
+      c("snow");
+
+      public static final Codec<ddd.c> d = ayz.a(ddd.c::values);
+      private final String e;
+
+      private c(final String $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
+   }
+
+   public static enum d implements ayz {
+      a("none") {
+         @Override
+         public float a(ja $$0, float $$1) {
+            return $$1;
+         }
+      },
+      b("frozen") {
+         @Override
+         public float a(ja $$0, float $$1) {
+            double $$2 = ddd.g.a((double)$$0.u() * 0.05, (double)$$0.w() * 0.05, false) * 7.0;
+            double $$3 = ddd.e.a((double)$$0.u() * 0.2, (double)$$0.w() * 0.2, false);
+            double $$4 = $$2 + $$3;
+            if ($$4 < 0.3) {
+               double $$5 = ddd.e.a((double)$$0.u() * 0.09, (double)$$0.w() * 0.09, false);
+               if ($$5 < 0.8) {
+                  return 0.2F;
+               }
+            }
+
+            return $$1;
+         }
+      };
+
+      private final String d;
+      public static final Codec<ddd.d> c = ayz.a(ddd.d::values);
+
+      public abstract float a(ja var1, float var2);
+
+      d(final String $$0) {
+         this.d = $$0;
+      }
+
+      public String a() {
+         return this.d;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
    }
 }

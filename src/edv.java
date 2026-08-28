@@ -1,16 +1,13 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record edv(int b, int c, int d, int e, int f, bqb g, float h) implements ede {
+public record edv(int b, int c, int d, jj<ehu> e) implements edi {
    public static final Codec<edv> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(edv::a),
-               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(edv::b),
-               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(edv::c),
-               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(edv::d),
-               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(edv::f),
-               bqb.c.fieldOf("extra_rare_growths").forGetter(edv::g),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(edv::h)
+               axm.l.fieldOf("tries").orElse(128).forGetter(edv::a),
+               axm.k.fieldOf("xz_spread").orElse(7).forGetter(edv::b),
+               axm.k.fieldOf("y_spread").orElse(3).forGetter(edv::c),
+               ehu.b.fieldOf("feature").forGetter(edv::d)
             )
             .apply($$0, edv::new)
    );
@@ -27,7 +24,7 @@ public record edv(int b, int c, int d, int e, int f, bqb g, float h) implements 
       return this.d;
    }
 
-   public int d() {
+   public jj<ehu> d() {
       return this.e;
    }
 }

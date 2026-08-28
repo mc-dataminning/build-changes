@@ -1,40 +1,15 @@
-public class fch {
-   private final fdv a;
-   private boolean b;
-   private String c;
+import java.lang.Thread.UncaughtExceptionHandler;
+import org.slf4j.Logger;
 
-   public fch(fdv $$0) {
+public class fch implements UncaughtExceptionHandler {
+   private final Logger a;
+
+   public fch(Logger $$0) {
       this.a = $$0;
-      fdv.a $$1 = $$0.a();
-      this.b = $$1.b;
-      this.c = $$1.a;
    }
 
-   public boolean a() {
-      return this.b;
-   }
-
-   public String b() {
-      return this.c;
-   }
-
-   public void a(fbf $$0) {
-      fdv.a $$1 = this.b($$0);
-      this.b = $$1.b;
-      this.c = $$1.a;
-   }
-
-   private fdv.a b(fbf $$0) {
-      fdv.a $$1 = new fdv.a();
-      $$1.a = $$0.a;
-      fdv.a $$2 = this.a.a();
-      boolean $$3 = $$1.a == null || $$1.a.equals($$2.a);
-      if ($$3) {
-         return $$2;
-      } else {
-         $$1.b = true;
-         this.a.a($$1);
-         return $$1;
-      }
+   @Override
+   public void uncaughtException(Thread $$0, Throwable $$1) {
+      this.a.error("Caught previously unhandled exception", $$1);
    }
 }

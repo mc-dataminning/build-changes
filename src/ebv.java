@@ -1,158 +1,115 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import java.util.BitSet;
-import java.util.function.Function;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public class ebv extends eba<edm> {
-   public ebv(Codec<edm> $$0) {
+public class ebv extends ebe<edp> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final bsj<?>[] b = new bsj[]{bsj.aN, bsj.bu, bsj.bu, bsj.aW};
+   private static final dsh c = dfh.nc.o();
+
+   public ebv(Codec<edp> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebc<edm> $$0) {
-      azh $$1 = $$0.d();
-      iz $$2 = $$0.e();
-      dcv $$3 = $$0.b();
-      edm $$4 = $$0.f();
-      float $$5 = $$1.i() * (float) Math.PI;
-      float $$6 = (float)$$4.c / 8.0F;
-      int $$7 = ayz.f(((float)$$4.c / 16.0F * 2.0F + 1.0F) / 2.0F);
-      double $$8 = (double)$$2.u() + Math.sin((double)$$5) * (double)$$6;
-      double $$9 = (double)$$2.u() - Math.sin((double)$$5) * (double)$$6;
-      double $$10 = (double)$$2.w() + Math.cos((double)$$5) * (double)$$6;
-      double $$11 = (double)$$2.w() - Math.cos((double)$$5) * (double)$$6;
-      int $$12 = 2;
-      double $$13 = (double)($$2.v() + $$1.a(3) - 2);
-      double $$14 = (double)($$2.v() + $$1.a(3) - 2);
-      int $$15 = $$2.u() - ayz.f($$6) - $$7;
-      int $$16 = $$2.v() - 2 - $$7;
-      int $$17 = $$2.w() - ayz.f($$6) - $$7;
-      int $$18 = 2 * (ayz.f($$6) + $$7);
-      int $$19 = 2 * (2 + $$7);
-
-      for (int $$20 = $$15; $$20 <= $$15 + $$18; $$20++) {
-         for (int $$21 = $$17; $$21 <= $$17 + $$18; $$21++) {
-            if ($$16 <= $$3.a(dxw.a.c, $$20, $$21)) {
-               return this.a($$3, $$1, $$4, $$8, $$9, $$10, $$11, $$13, $$14, $$15, $$16, $$17, $$18, $$19);
-            }
-         }
-      }
-
-      return false;
-   }
-
-   protected boolean a(
-      dcv $$0, azh $$1, edm $$2, double $$3, double $$4, double $$5, double $$6, double $$7, double $$8, int $$9, int $$10, int $$11, int $$12, int $$13
-   ) {
+   public boolean a(ebg<edp> $$0) {
+      Predicate<dsh> $$1 = ebe.a(avu.bO);
+      ja $$2 = $$0.e();
+      aym $$3 = $$0.d();
+      dcz $$4 = $$0.b();
+      int $$5 = 3;
+      int $$6 = $$3.a(2) + 2;
+      int $$7 = -$$6 - 1;
+      int $$8 = $$6 + 1;
+      int $$9 = -1;
+      int $$10 = 4;
+      int $$11 = $$3.a(2) + 2;
+      int $$12 = -$$11 - 1;
+      int $$13 = $$11 + 1;
       int $$14 = 0;
-      BitSet $$15 = new BitSet($$12 * $$13 * $$12);
-      iz.a $$16 = new iz.a();
-      int $$17 = $$2.c;
-      double[] $$18 = new double[$$17 * 4];
 
-      for (int $$19 = 0; $$19 < $$17; $$19++) {
-         float $$20 = (float)$$19 / (float)$$17;
-         double $$21 = ayz.d((double)$$20, $$3, $$4);
-         double $$22 = ayz.d((double)$$20, $$7, $$8);
-         double $$23 = ayz.d((double)$$20, $$5, $$6);
-         double $$24 = $$1.j() * (double)$$17 / 16.0;
-         double $$25 = ((double)(ayz.a((float) Math.PI * $$20) + 1.0F) * $$24 + 1.0) / 2.0;
-         $$18[$$19 * 4 + 0] = $$21;
-         $$18[$$19 * 4 + 1] = $$22;
-         $$18[$$19 * 4 + 2] = $$23;
-         $$18[$$19 * 4 + 3] = $$25;
-      }
+      for (int $$15 = $$7; $$15 <= $$8; $$15++) {
+         for (int $$16 = -1; $$16 <= 4; $$16++) {
+            for (int $$17 = $$12; $$17 <= $$13; $$17++) {
+               ja $$18 = $$2.b($$15, $$16, $$17);
+               boolean $$19 = $$4.a_($$18).e();
+               if ($$16 == -1 && !$$19) {
+                  return false;
+               }
 
-      for (int $$26 = 0; $$26 < $$17 - 1; $$26++) {
-         if (!($$18[$$26 * 4 + 3] <= 0.0)) {
-            for (int $$27 = $$26 + 1; $$27 < $$17; $$27++) {
-               if (!($$18[$$27 * 4 + 3] <= 0.0)) {
-                  double $$28 = $$18[$$26 * 4 + 0] - $$18[$$27 * 4 + 0];
-                  double $$29 = $$18[$$26 * 4 + 1] - $$18[$$27 * 4 + 1];
-                  double $$30 = $$18[$$26 * 4 + 2] - $$18[$$27 * 4 + 2];
-                  double $$31 = $$18[$$26 * 4 + 3] - $$18[$$27 * 4 + 3];
-                  if ($$31 * $$31 > $$28 * $$28 + $$29 * $$29 + $$30 * $$30) {
-                     if ($$31 > 0.0) {
-                        $$18[$$27 * 4 + 3] = -1.0;
-                     } else {
-                        $$18[$$26 * 4 + 3] = -1.0;
-                     }
-                  }
+               if ($$16 == 4 && !$$19) {
+                  return false;
+               }
+
+               if (($$15 == $$7 || $$15 == $$8 || $$17 == $$12 || $$17 == $$13) && $$16 == 0 && $$4.u($$18) && $$4.u($$18.c())) {
+                  $$14++;
                }
             }
          }
       }
 
-      try (dty $$32 = new dty($$0)) {
-         for (int $$33 = 0; $$33 < $$17; $$33++) {
-            double $$34 = $$18[$$33 * 4 + 3];
-            if (!($$34 < 0.0)) {
-               double $$35 = $$18[$$33 * 4 + 0];
-               double $$36 = $$18[$$33 * 4 + 1];
-               double $$37 = $$18[$$33 * 4 + 2];
-               int $$38 = Math.max(ayz.a($$35 - $$34), $$9);
-               int $$39 = Math.max(ayz.a($$36 - $$34), $$10);
-               int $$40 = Math.max(ayz.a($$37 - $$34), $$11);
-               int $$41 = Math.max(ayz.a($$35 + $$34), $$38);
-               int $$42 = Math.max(ayz.a($$36 + $$34), $$39);
-               int $$43 = Math.max(ayz.a($$37 + $$34), $$40);
-
-               for (int $$44 = $$38; $$44 <= $$41; $$44++) {
-                  double $$45 = ((double)$$44 + 0.5 - $$35) / $$34;
-                  if ($$45 * $$45 < 1.0) {
-                     for (int $$46 = $$39; $$46 <= $$42; $$46++) {
-                        double $$47 = ((double)$$46 + 0.5 - $$36) / $$34;
-                        if ($$45 * $$45 + $$47 * $$47 < 1.0) {
-                           for (int $$48 = $$40; $$48 <= $$43; $$48++) {
-                              double $$49 = ((double)$$48 + 0.5 - $$37) / $$34;
-                              if ($$45 * $$45 + $$47 * $$47 + $$49 * $$49 < 1.0 && !$$0.d($$46)) {
-                                 int $$50 = $$44 - $$9 + ($$46 - $$10) * $$12 + ($$48 - $$11) * $$12 * $$13;
-                                 if (!$$15.get($$50)) {
-                                    $$15.set($$50);
-                                    $$16.d($$44, $$46, $$48);
-                                    if ($$0.f_($$16)) {
-                                       dul $$51 = $$32.a($$16);
-                                       if ($$51 != null) {
-                                          int $$52 = kb.b($$44);
-                                          int $$53 = kb.b($$46);
-                                          int $$54 = kb.b($$48);
-                                          dse $$55 = $$51.a($$52, $$53, $$54);
-
-                                          for (edm.a $$56 : $$2.b) {
-                                             if (a($$55, $$32::b, $$1, $$2, $$56, $$16)) {
-                                                $$51.a($$52, $$53, $$54, $$56.c, false);
-                                                $$14++;
-                                                break;
-                                             }
-                                          }
-                                       }
-                                    }
-                                 }
-                              }
-                           }
+      if ($$14 >= 1 && $$14 <= 5) {
+         for (int $$20 = $$7; $$20 <= $$8; $$20++) {
+            for (int $$21 = 3; $$21 >= -1; $$21--) {
+               for (int $$22 = $$12; $$22 <= $$13; $$22++) {
+                  ja $$23 = $$2.b($$20, $$21, $$22);
+                  dsh $$24 = $$4.a_($$23);
+                  if ($$20 == $$7 || $$21 == -1 || $$22 == $$12 || $$20 == $$8 || $$21 == 4 || $$22 == $$13) {
+                     if ($$23.v() >= $$4.I_() && !$$4.a_($$23.d()).e()) {
+                        $$4.a($$23, c, 2);
+                     } else if ($$24.e() && !$$24.a(dfh.cv)) {
+                        if ($$21 == -1 && $$3.a(4) != 0) {
+                           this.a($$4, $$23, dfh.cn.o(), $$1);
+                        } else {
+                           this.a($$4, $$23, dfh.m.o(), $$1);
                         }
                      }
+                  } else if (!$$24.a(dfh.cv) && !$$24.a(dfh.ct)) {
+                     this.a($$4, $$23, c, $$1);
                   }
                }
             }
          }
-      }
 
-      return $$14 > 0;
-   }
+         for (int $$25 = 0; $$25 < 2; $$25++) {
+            for (int $$26 = 0; $$26 < 3; $$26++) {
+               int $$27 = $$2.u() + $$3.a($$6 * 2 + 1) - $$6;
+               int $$28 = $$2.v();
+               int $$29 = $$2.w() + $$3.a($$11 * 2 + 1) - $$11;
+               ja $$30 = new ja($$27, $$28, $$29);
+               if ($$4.u($$30)) {
+                  int $$31 = 0;
 
-   public static boolean a(dse $$0, Function<iz, dse> $$1, azh $$2, edm $$3, edm.a $$4, iz.a $$5) {
-      if (!$$4.b.a($$0, $$2)) {
-         return false;
-      } else {
-         return a($$2, $$3.d) ? true : !a($$1, $$5);
-      }
-   }
+                  for (jf $$32 : jf.c.a) {
+                     if ($$4.a_($$30.a($$32)).e()) {
+                        $$31++;
+                     }
+                  }
 
-   protected static boolean a(azh $$0, float $$1) {
-      if ($$1 <= 0.0F) {
+                  if ($$31 == 1) {
+                     this.a($$4, $$30, eiu.a($$4, $$30, dfh.cv.o()), $$1);
+                     bql.a($$4, $$3, $$30, eqk.d);
+                     break;
+                  }
+               }
+            }
+         }
+
+         this.a($$4, $$2, dfh.ct.o(), $$1);
+         if ($$4.c_($$2) instanceof drb $$34) {
+            $$34.a(this.a($$3), $$3);
+         } else {
+            a.error("Failed to fetch mob spawner entity at ({}, {}, {})", new Object[]{$$2.u(), $$2.v(), $$2.w()});
+         }
+
          return true;
       } else {
-         return $$1 >= 1.0F ? false : $$0.i() >= $$1;
+         return false;
       }
+   }
+
+   private bsj<?> a(aym $$0) {
+      return ac.a(b, $$0);
    }
 }

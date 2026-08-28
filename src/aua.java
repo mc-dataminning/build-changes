@@ -1,120 +1,88 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.Collection;
+import com.google.common.collect.Sets;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+import java.util.concurrent.Executor;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class aua {
-   private final Set<auc> a;
-   private Map<String, atx> b = ImmutableMap.of();
-   private List<atx> c = ImmutableList.of();
+public class aua<S> implements atq {
+   private static final int c = 2;
+   private static final int d = 2;
+   private static final int e = 1;
+   protected final CompletableFuture<azh> a = new CompletableFuture<>();
+   protected CompletableFuture<List<S>> b;
+   final Set<ato> f;
+   private final int g;
+   private int h;
+   private int i;
+   private final AtomicInteger j = new AtomicInteger();
+   private final AtomicInteger k = new AtomicInteger();
 
-   public aua(auc... $$0) {
-      this.a = ImmutableSet.copyOf($$0);
+   public static aua<Void> a(atu $$0, List<ato> $$1, Executor $$2, Executor $$3, CompletableFuture<azh> $$4) {
+      return new aua<>($$2, $$3, $$0, $$1, ($$1x, $$2x, $$3x, $$4x, $$5) -> $$3x.a($$1x, $$2x, bmo.a, bmo.a, $$2, $$5), $$4);
    }
 
-   public static String a(Collection<atx> $$0) {
-      return $$0.stream().map($$0x -> $$0x.g() + ($$0x.d().a() ? "" : " (incompatible)")).collect(Collectors.joining(", "));
-   }
+   protected aua(Executor $$0, final Executor $$1, atu $$2, List<ato> $$3, aua.a<S> $$4, CompletableFuture<azh> $$5) {
+      this.g = $$3.size();
+      this.j.incrementAndGet();
+      $$5.thenRun(this.k::incrementAndGet);
+      List<CompletableFuture<S>> $$6 = Lists.newArrayList();
+      CompletableFuture<?> $$7 = $$5;
+      this.f = Sets.newHashSet($$3);
 
-   public void a() {
-      List<String> $$0 = this.c.stream().map(atx::g).collect(ImmutableList.toImmutableList());
-      this.b = this.h();
-      this.c = this.c($$0);
-   }
-
-   private Map<String, atx> h() {
-      Map<String, atx> $$0 = Maps.newTreeMap();
-
-      for (auc $$1 : this.a) {
-         $$1.loadPacks($$1x -> $$0.put($$1x.g(), $$1x));
+      for (final ato $$8 : $$3) {
+         final CompletableFuture<?> $$9 = $$7;
+         CompletableFuture<S> $$10 = $$4.create(new ato.a() {
+            @Override
+            public <T> CompletableFuture<T> a(T $$0) {
+               $$1.execute(() -> {
+                  aua.this.f.remove($$8);
+                  if (aua.this.f.isEmpty()) {
+                     aua.this.a.complete(azh.a);
+                  }
+               });
+               return aua.this.a.thenCombine((CompletionStage<? extends T>)$$9, ($$1xx, $$2) -> $$0);
+            }
+         }, $$2, $$8, $$1x -> {
+            this.j.incrementAndGet();
+            $$0.execute(() -> {
+               $$1x.run();
+               this.k.incrementAndGet();
+            });
+         }, $$1x -> {
+            this.h++;
+            $$1.execute(() -> {
+               $$1x.run();
+               this.i++;
+            });
+         });
+         $$6.add($$10);
+         $$7 = $$10;
       }
 
-      return ImmutableMap.copyOf($$0);
+      this.b = ac.e($$6);
    }
 
-   public void b(Collection<String> $$0) {
-      this.c = this.c($$0);
+   @Override
+   public CompletableFuture<?> a() {
+      return this.b;
    }
 
-   public boolean a(String $$0) {
-      atx $$1 = this.b.get($$0);
-      if ($$1 != null && !this.c.contains($$1)) {
-         List<atx> $$2 = Lists.newArrayList(this.c);
-         $$2.add($$1);
-         this.c = $$2;
-         return true;
-      } else {
-         return false;
-      }
+   @Override
+   public float b() {
+      int $$0 = this.g - this.f.size();
+      float $$1 = (float)(this.k.get() * 2 + this.i * 2 + $$0 * 1);
+      float $$2 = (float)(this.j.get() * 2 + this.h * 2 + this.g * 1);
+      return $$1 / $$2;
    }
 
-   public boolean b(String $$0) {
-      atx $$1 = this.b.get($$0);
-      if ($$1 != null && this.c.contains($$1)) {
-         List<atx> $$2 = Lists.newArrayList(this.c);
-         $$2.remove($$1);
-         this.c = $$2;
-         return true;
-      } else {
-         return false;
-      }
+   public static atq a(atu $$0, List<ato> $$1, Executor $$2, Executor $$3, CompletableFuture<azh> $$4, boolean $$5) {
+      return (atq)($$5 ? new atp($$0, $$1, $$2, $$3, $$4) : a($$0, $$1, $$2, $$3, $$4));
    }
 
-   private List<atx> c(Collection<String> $$0) {
-      List<atx> $$1 = this.d($$0).collect(ac.b());
-
-      for (atx $$2 : this.b.values()) {
-         if ($$2.i() && !$$1.contains($$2)) {
-            $$2.k().a($$1, $$2, atx::h, false);
-         }
-      }
-
-      return ImmutableList.copyOf($$1);
-   }
-
-   private Stream<atx> d(Collection<String> $$0) {
-      return $$0.stream().map(this.b::get).filter(Objects::nonNull);
-   }
-
-   public Collection<String> b() {
-      return this.b.keySet();
-   }
-
-   public Collection<atx> c() {
-      return this.b.values();
-   }
-
-   public Collection<String> d() {
-      return this.c.stream().map(atx::g).collect(ImmutableSet.toImmutableSet());
-   }
-
-   public cpn e() {
-      return this.f().stream().map(atx::e).reduce(cpn::c).orElse(cpn.a());
-   }
-
-   public Collection<atx> f() {
-      return this.c;
-   }
-
-   @Nullable
-   public atx c(String $$0) {
-      return this.b.get($$0);
-   }
-
-   public boolean d(String $$0) {
-      return this.b.containsKey($$0);
-   }
-
-   public List<atb> g() {
-      return this.c.stream().map(atx::f).collect(ImmutableList.toImmutableList());
+   protected interface a<S> {
+      CompletableFuture<S> create(ato.a var1, atu var2, ato var3, Executor var4, Executor var5);
    }
 }

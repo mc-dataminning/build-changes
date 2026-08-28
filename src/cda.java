@@ -1,41 +1,24 @@
-public class cda extends cdd {
-   public cda(btt $$0, dca $$1) {
-      super($$0, $$1);
-   }
+import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+
+public class cda extends cdi<bta> {
+   private static final long c = 32L;
+   private static final long d = 16L;
+   public static final int a = 32;
 
    @Override
-   protected eon a(int $$0) {
-      this.o = new eog(false);
-      this.o.a(true);
-      return new eon(this.o, $$0);
+   public Set<ccc<?>> a() {
+      return ImmutableSet.of(ccc.L);
    }
 
-   @Override
-   protected boolean a() {
-      return true;
-   }
-
-   @Override
-   protected evt b() {
-      return new evt(this.a.du(), this.a.e(0.5), this.a.dA());
-   }
-
-   @Override
-   protected double a(evt $$0) {
-      return $$0.d;
-   }
-
-   @Override
-   protected boolean a(evt $$0, evt $$1) {
-      return this.a.bi() ? a(this.a, $$0, $$1, false) : false;
-   }
-
-   @Override
-   public boolean a(iz $$0) {
-      return !this.b.a_($$0.d()).i();
-   }
-
-   @Override
-   public void a(boolean $$0) {
+   protected void a(aqk $$0, bta $$1) {
+      bua<?> $$2 = $$1.dT();
+      List<cir> $$3 = $$0.a(cir.class, $$1.cK().c(32.0, 16.0, 32.0), $$0x -> true);
+      $$3.sort(Comparator.comparingDouble($$1::g));
+      Optional<cir> $$4 = $$3.stream().filter($$1x -> $$1.k($$1x.p())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::F).findFirst();
+      $$2.a(ccc.L, $$4);
    }
 }

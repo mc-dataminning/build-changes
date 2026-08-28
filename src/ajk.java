@@ -1,14 +1,8 @@
-public interface ajk extends acf, agx {
+public interface ajk extends agc, aje {
    @Override
-   default wl b() {
-      return wl.d;
+   default vq b() {
+      return vq.c;
    }
 
-   void a(ajm var1);
-
-   void a(ajn var1);
-
    void a(ajl var1);
-
-   void a(ajo var1);
 }

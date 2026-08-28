@@ -1,27 +1,54 @@
-import com.mojang.serialization.Codec;
+public class ebd extends ebe<edp> {
+   public static final int a = 4;
+   public static final int b = 4;
+   public static final int c = 1;
+   public static final float d = 0.5F;
+   private static final ja an = ja.c;
+   private final boolean ao;
 
-public class ebd extends eba<edi> {
-   public ebd(Codec<edi> $$0) {
-      super($$0);
+   public static ja a(ja $$0) {
+      return an.a((ke)$$0);
+   }
+
+   public ebd(boolean $$0) {
+      super(edp.a);
+      this.ao = $$0;
    }
 
    @Override
-   public boolean a(ebc<edi> $$0) {
-      iz $$1 = $$0.e();
-      edi $$2 = $$0.f();
-      dcv $$3 = $$0.b();
-      iz.a $$4 = new iz.a();
+   public boolean a(ebg<edp> $$0) {
+      ja $$1 = $$0.e();
+      dcz $$2 = $$0.b();
 
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$1.u() + $$5;
-            int $$8 = $$1.w() + $$6;
-            int $$9 = $$3.I_() + $$2.b;
-            $$4.d($$7, $$9, $$8);
-            if ($$3.a_($$4).i()) {
-               $$3.a($$4, $$2.c, 2);
+      for (ja $$3 : ja.c(new ja($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new ja($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
+         boolean $$4 = $$3.a($$1, 2.5);
+         if ($$4 || $$3.a($$1, 3.5)) {
+            if ($$3.v() < $$1.v()) {
+               if ($$4) {
+                  this.a($$2, $$3, dfh.F.o());
+               } else if ($$3.v() < $$1.v()) {
+                  this.a($$2, $$3, dfh.fz.o());
+               }
+            } else if ($$3.v() > $$1.v()) {
+               this.a($$2, $$3, dfh.a.o());
+            } else if (!$$4) {
+               this.a($$2, $$3, dfh.F.o());
+            } else if (this.ao) {
+               this.a($$2, new ja($$3), dfh.fx.o());
+            } else {
+               this.a($$2, new ja($$3), dfh.a.o());
             }
          }
+      }
+
+      for (int $$5 = 0; $$5 < 4; $$5++) {
+         this.a($$2, $$1.b($$5), dfh.F.o());
+      }
+
+      ja $$6 = $$1.b(2);
+
+      for (jf $$7 : jf.c.a) {
+         this.a($$2, $$6.a($$7), dfh.cq.o().a(doh.g, $$7));
       }
 
       return true;

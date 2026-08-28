@@ -1,25 +1,70 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public enum eji implements azu {
-   a("linear"),
-   b("triangular");
-
-   public static final Codec<eji> c = azu.a(eji::values);
-   private final String d;
-
-   private eji(final String $$0) {
-      this.d = $$0;
-   }
+public class eji implements eiv {
+   private final List<eiu> a = Lists.newArrayList();
 
    @Override
-   public String c() {
-      return this.d;
+   public void a(eiu $$0) {
+      this.a.add($$0);
    }
 
-   public int a(azh $$0, int $$1) {
-      return switch (this) {
-         case a -> $$0.a($$1);
-         case b -> ($$0.a($$1) + $$0.a($$1)) / 2;
-      };
+   @Nullable
+   @Override
+   public eiu a(eii $$0) {
+      return eiu.a(this.a, $$0);
+   }
+
+   @Deprecated
+   public void a(int $$0) {
+      for (eiu $$1 : this.a) {
+         $$1.a(0, $$0, 0);
+      }
+   }
+
+   @Deprecated
+   public int a(int $$0, int $$1, aym $$2, int $$3) {
+      int $$4 = $$0 - $$3;
+      eii $$5 = this.d();
+      int $$6 = $$5.e() + $$1 + 1;
+      if ($$6 < $$4) {
+         $$6 += $$2.a($$4 - $$6);
+      }
+
+      int $$7 = $$6 - $$5.l();
+      this.a($$7);
+      return $$7;
+   }
+
+   /** @deprecated */
+   public void a(aym $$0, int $$1, int $$2) {
+      eii $$3 = this.d();
+      int $$4 = $$2 - $$1 + 1 - $$3.e();
+      int $$5;
+      if ($$4 > 1) {
+         $$5 = $$1 + $$0.a($$4);
+      } else {
+         $$5 = $$1;
+      }
+
+      int $$7 = $$5 - $$3.i();
+      this.a($$7);
+   }
+
+   public ejf a() {
+      return new ejf(this.a);
+   }
+
+   public void b() {
+      this.a.clear();
+   }
+
+   public boolean c() {
+      return this.a.isEmpty();
+   }
+
+   public eii d() {
+      return eiu.a(this.a.stream());
    }
 }

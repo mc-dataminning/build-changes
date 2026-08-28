@@ -3,22 +3,22 @@ import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class bq extends dr<bq.a> {
+public class bq extends ds<bq.a> {
    @Override
    public Codec<bq.a> a() {
       return bq.a.a;
    }
 
-   public void a(arg $$0, dse $$1) {
+   public void a(aql $$0, dsh $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public static record a(Optional<bf> b, Optional<ji<dfb>> c, Optional<dx> d) implements dr.a {
+   public static record a(Optional<bf> b, Optional<jj<dff>> c, Optional<dy> d) implements ds.a {
       public static final Codec<bq.a> a = RecordCodecBuilder.create(
             $$0 -> $$0.group(
                      bu.b.optionalFieldOf("player").forGetter(bq.a::a),
-                     lp.e.r().optionalFieldOf("block").forGetter(bq.a::b),
-                     dx.a.optionalFieldOf("state").forGetter(bq.a::c)
+                     lq.e.s().optionalFieldOf("block").forGetter(bq.a::b),
+                     dy.a.optionalFieldOf("state").forGetter(bq.a::c)
                   )
                   .apply($$0, bq.a::new)
          )
@@ -27,16 +27,16 @@ public class bq extends dr<bq.a> {
       private static DataResult<bq.a> a(bq.a $$0) {
          return $$0.c
             .<DataResult<bq.a>>flatMap(
-               $$1 -> $$0.d.<String>flatMap($$1x -> $$1x.a(((dfb)$$1.a()).l())).map($$1x -> DataResult.error(() -> "Block" + $$1 + " has no property " + $$1x))
+               $$1 -> $$0.d.<String>flatMap($$1x -> $$1x.a(((dff)$$1.a()).l())).map($$1x -> DataResult.error(() -> "Block" + $$1 + " has no property " + $$1x))
             )
             .orElseGet(() -> DataResult.success($$0));
       }
 
-      public static an<bq.a> a(dfb $$0) {
+      public static an<bq.a> a(dff $$0) {
          return am.e.a(new bq.a(Optional.empty(), Optional.of($$0.s()), Optional.empty()));
       }
 
-      public boolean a(dse $$0) {
+      public boolean a(dsh $$0) {
          return this.c.isPresent() && !$$0.a(this.c.get()) ? false : !this.d.isPresent() || this.d.get().a($$0);
       }
 
@@ -45,11 +45,11 @@ public class bq extends dr<bq.a> {
          return this.b;
       }
 
-      public Optional<ji<dfb>> b() {
+      public Optional<jj<dff>> b() {
          return this.c;
       }
 
-      public Optional<dx> c() {
+      public Optional<dy> c() {
          return this.d;
       }
    }

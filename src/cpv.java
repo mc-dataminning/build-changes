@@ -1,8 +1,13 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cpv {
+public interface cpv extends bpw, crf {
+   int f();
+
+   int g();
+
+   List<cua> h();
+
+   default cxw aA_() {
+      return cxw.a(this.f(), this.g(), this.h());
+   }
 }

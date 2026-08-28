@@ -1,85 +1,60 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.stream.Stream;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public record etp(Map<String, eqj> b, eqk.b c) implements etu {
-   public static final MapCodec<etp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.unboundedMap(Codec.STRING, eqj.a).fieldOf("scores").forGetter(etp::c), eqk.b.e.fieldOf("entity").forGetter(etp::d))
-            .apply($$0, etp::new)
-   );
+public abstract class etp implements etz {
+   protected final List<etz> c;
+   private final Predicate<eqo> a;
 
-   @Override
-   public etv b() {
-      return etw.j;
+   protected etp(List<etz> $$0, Predicate<eqo> $$1) {
+      this.c = $$0;
+      this.a = $$1;
+   }
+
+   protected static <T extends etp> MapCodec<T> a(Function<List<etz>, T> $$0) {
+      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(etz.e.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
+   }
+
+   protected static <T extends etp> Codec<T> b(Function<List<etz>, T> $$0) {
+      return etz.e.listOf().xmap($$0, $$0x -> $$0x.c);
+   }
+
+   public final boolean a(eqo $$0) {
+      return this.a.test($$0);
    }
 
    @Override
-   public Set<etd<?>> a() {
-      return Stream.concat(Stream.of(this.c.a()), this.b.values().stream().flatMap($$0 -> $$0.a().stream())).collect(ImmutableSet.toImmutableSet());
+   public void a(equ $$0) {
+      etz.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
+      }
    }
 
-   public boolean a(eqk $$0) {
-      bsw $$1 = $$0.c(this.c.a());
-      if ($$1 == null) {
-         return false;
-      } else {
-         ewx $$2 = $$0.d().f();
+   public abstract static class a implements etz.a {
+      private final Builder<etz> a = ImmutableList.builder();
 
-         for (Entry<String, eqj> $$3 : this.b.entrySet()) {
-            if (!this.a($$0, $$1, $$2, $$3.getKey(), $$3.getValue())) {
-               return false;
-            }
+      protected a(etz.a... $$0) {
+         for (etz.a $$1 : $$0) {
+            this.a.add($$1.build());
          }
-
-         return true;
-      }
-   }
-
-   protected boolean a(eqk $$0, bsw $$1, ewx $$2, String $$3, eqj $$4) {
-      ewp $$5 = $$2.a($$3);
-      if ($$5 == null) {
-         return false;
-      } else {
-         ewt $$6 = $$2.d($$1, $$5);
-         return $$6 == null ? false : $$4.b($$0, $$6.a());
-      }
-   }
-
-   public static etp.a a(eqk.b $$0) {
-      return new etp.a($$0);
-   }
-
-   public Map<String, eqj> c() {
-      return this.b;
-   }
-
-   public eqk.b d() {
-      return this.c;
-   }
-
-   public static class a implements etu.a {
-      private final Builder<String, eqj> a = ImmutableMap.builder();
-      private final eqk.b b;
-
-      public a(eqk.b $$0) {
-         this.b = $$0;
       }
 
-      public etp.a a(String $$0, eqj $$1) {
-         this.a.put($$0, $$1);
-         return this;
+      public void a(etz.a $$0) {
+         this.a.add($$0.build());
       }
 
       @Override
-      public etu build() {
-         return new etp(this.a.build(), this.b);
+      public etz build() {
+         return this.a(this.a.build());
       }
+
+      protected abstract etz a(List<etz> var1);
    }
 }

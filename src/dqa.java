@@ -1,122 +1,82 @@
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class dqa {
-   private static final String b = "decorated_pot_base";
-   public static final ale<String> a = a("decorated_pot_base");
-   private static final String c = "decorated_pot_side";
-   private static final String d = "angler_pottery_pattern";
-   private static final String e = "archer_pottery_pattern";
-   private static final String f = "arms_up_pottery_pattern";
-   private static final String g = "blade_pottery_pattern";
-   private static final String h = "brewer_pottery_pattern";
-   private static final String i = "burn_pottery_pattern";
-   private static final String j = "danger_pottery_pattern";
-   private static final String k = "explorer_pottery_pattern";
-   private static final String l = "flow_pottery_pattern";
-   private static final String m = "friend_pottery_pattern";
-   private static final String n = "guster_pottery_pattern";
-   private static final String o = "heart_pottery_pattern";
-   private static final String p = "heartbreak_pottery_pattern";
-   private static final String q = "howl_pottery_pattern";
-   private static final String r = "miner_pottery_pattern";
-   private static final String s = "mourner_pottery_pattern";
-   private static final String t = "plenty_pottery_pattern";
-   private static final String u = "prize_pottery_pattern";
-   private static final String v = "scrape_pottery_pattern";
-   private static final String w = "sheaf_pottery_pattern";
-   private static final String x = "shelter_pottery_pattern";
-   private static final String y = "skull_pottery_pattern";
-   private static final String z = "snort_pottery_pattern";
-   private static final ale<String> A = a("decorated_pot_side");
-   private static final ale<String> B = a("angler_pottery_pattern");
-   private static final ale<String> C = a("archer_pottery_pattern");
-   private static final ale<String> D = a("arms_up_pottery_pattern");
-   private static final ale<String> E = a("blade_pottery_pattern");
-   private static final ale<String> F = a("brewer_pottery_pattern");
-   private static final ale<String> G = a("burn_pottery_pattern");
-   private static final ale<String> H = a("danger_pottery_pattern");
-   private static final ale<String> I = a("explorer_pottery_pattern");
-   private static final ale<String> J = a("flow_pottery_pattern");
-   private static final ale<String> K = a("friend_pottery_pattern");
-   private static final ale<String> L = a("guster_pottery_pattern");
-   private static final ale<String> M = a("heart_pottery_pattern");
-   private static final ale<String> N = a("heartbreak_pottery_pattern");
-   private static final ale<String> O = a("howl_pottery_pattern");
-   private static final ale<String> P = a("miner_pottery_pattern");
-   private static final ale<String> Q = a("mourner_pottery_pattern");
-   private static final ale<String> R = a("plenty_pottery_pattern");
-   private static final ale<String> S = a("prize_pottery_pattern");
-   private static final ale<String> T = a("scrape_pottery_pattern");
-   private static final ale<String> U = a("sheaf_pottery_pattern");
-   private static final ale<String> V = a("shelter_pottery_pattern");
-   private static final ale<String> W = a("skull_pottery_pattern");
-   private static final ale<String> X = a("snort_pottery_pattern");
-   private static final Map<cum, ale<String>> Y = Map.ofEntries(
-      Map.entry(cuu.qL, A),
-      Map.entry(cuu.xL, B),
-      Map.entry(cuu.xM, C),
-      Map.entry(cuu.xN, D),
-      Map.entry(cuu.xO, E),
-      Map.entry(cuu.xP, F),
-      Map.entry(cuu.xQ, G),
-      Map.entry(cuu.xR, H),
-      Map.entry(cuu.xS, I),
-      Map.entry(cuu.xT, J),
-      Map.entry(cuu.xU, K),
-      Map.entry(cuu.xV, L),
-      Map.entry(cuu.xW, M),
-      Map.entry(cuu.xX, N),
-      Map.entry(cuu.xY, O),
-      Map.entry(cuu.xZ, P),
-      Map.entry(cuu.ya, Q),
-      Map.entry(cuu.yb, R),
-      Map.entry(cuu.yc, S),
-      Map.entry(cuu.yd, T),
-      Map.entry(cuu.ye, U),
-      Map.entry(cuu.yf, V),
-      Map.entry(cuu.yg, W),
-      Map.entry(cuu.yh, X)
-   );
+public abstract class dqa {
+   private static final int a = 5;
+   private int b;
+   private double c;
 
-   private static ale<String> a(String $$0) {
-      return ale.a(lq.as, new alf($$0));
+   protected abstract void a(dcd var1, ja var2, dsh var3);
+
+   protected abstract void b(dcd var1, ja var2, dsh var3);
+
+   protected abstract void a(dcd var1, ja var2, dsh var3, int var4, int var5);
+
+   protected abstract boolean a(cmh var1);
+
+   public void a(cmh $$0, dcd $$1, ja $$2, dsh $$3) {
+      int $$4 = this.b++;
+      if ($$4 == 0) {
+         this.a($$1, $$2, $$3);
+         $$1.a($$0, dxa.k, $$2);
+         d($$1, $$2, $$3);
+      }
+
+      this.a($$1, $$2, $$3, $$4, this.b);
+      this.c = Math.max($$0.gy(), this.c);
    }
 
-   public static alf a(ale<String> $$0) {
-      return $$0.a().d("entity/decorated_pot/");
+   public void b(cmh $$0, dcd $$1, ja $$2, dsh $$3) {
+      int $$4 = this.b--;
+      if (this.b == 0) {
+         this.b($$1, $$2, $$3);
+         $$1.a($$0, dxa.j, $$2);
+         this.c = 0.0;
+      }
+
+      this.a($$1, $$2, $$3, $$4, this.b);
    }
 
-   @Nullable
-   public static ale<String> a(cum $$0) {
-      return Y.get($$0);
+   private List<cmh> a(dcd $$0, ja $$1) {
+      double $$2 = this.c + 4.0;
+      evu $$3 = new evu($$1).g($$2);
+      return $$0.a(dwo.a(cmh.class), $$3, this::a);
    }
 
-   public static String a(jv<String> $$0) {
-      jv.a($$0, A, "decorated_pot_side");
-      jv.a($$0, B, "angler_pottery_pattern");
-      jv.a($$0, C, "archer_pottery_pattern");
-      jv.a($$0, D, "arms_up_pottery_pattern");
-      jv.a($$0, E, "blade_pottery_pattern");
-      jv.a($$0, F, "brewer_pottery_pattern");
-      jv.a($$0, G, "burn_pottery_pattern");
-      jv.a($$0, H, "danger_pottery_pattern");
-      jv.a($$0, I, "explorer_pottery_pattern");
-      jv.a($$0, J, "flow_pottery_pattern");
-      jv.a($$0, K, "friend_pottery_pattern");
-      jv.a($$0, L, "guster_pottery_pattern");
-      jv.a($$0, M, "heart_pottery_pattern");
-      jv.a($$0, N, "heartbreak_pottery_pattern");
-      jv.a($$0, O, "howl_pottery_pattern");
-      jv.a($$0, P, "miner_pottery_pattern");
-      jv.a($$0, Q, "mourner_pottery_pattern");
-      jv.a($$0, R, "plenty_pottery_pattern");
-      jv.a($$0, S, "prize_pottery_pattern");
-      jv.a($$0, T, "scrape_pottery_pattern");
-      jv.a($$0, U, "sheaf_pottery_pattern");
-      jv.a($$0, V, "shelter_pottery_pattern");
-      jv.a($$0, W, "skull_pottery_pattern");
-      jv.a($$0, X, "snort_pottery_pattern");
-      return jv.a($$0, a, "decorated_pot_base");
+   public void c(dcd $$0, ja $$1, dsh $$2) {
+      List<cmh> $$3 = this.a($$0, $$1);
+      this.c = 0.0;
+
+      for (cmh $$4 : $$3) {
+         this.c = Math.max($$4.gy(), this.c);
+      }
+
+      int $$5 = $$3.size();
+      int $$6 = this.b;
+      if ($$6 != $$5) {
+         boolean $$7 = $$5 != 0;
+         boolean $$8 = $$6 != 0;
+         if ($$7 && !$$8) {
+            this.a($$0, $$1, $$2);
+            $$0.a(null, dxa.k, $$1);
+         } else if (!$$7) {
+            this.b($$0, $$1, $$2);
+            $$0.a(null, dxa.j, $$1);
+         }
+
+         this.b = $$5;
+      }
+
+      this.a($$0, $$1, $$2, $$6, $$5);
+      if ($$5 > 0) {
+         d($$0, $$1, $$2);
+      }
+   }
+
+   public int a() {
+      return this.b;
+   }
+
+   private static void d(dcd $$0, ja $$1, dsh $$2) {
+      $$0.a($$1, $$2.b(), 5);
    }
 }

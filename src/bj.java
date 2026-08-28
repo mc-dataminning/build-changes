@@ -5,22 +5,22 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Optional;
 
-public record bj(List<dz<brr>> b, Optional<bu> c, Optional<bu> d) {
+public record bj(List<ea<bqy>> b, Optional<bu> c, Optional<bu> d) {
    public static final Codec<bj> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dz.a(lq.s).listOf().optionalFieldOf("tags", List.of()).forGetter(bj::a),
+               ea.a(lr.s).listOf().optionalFieldOf("tags", List.of()).forGetter(bj::a),
                bu.a.optionalFieldOf("direct_entity").forGetter(bj::b),
                bu.a.optionalFieldOf("source_entity").forGetter(bj::c)
             )
             .apply($$0, bj::new)
    );
 
-   public boolean a(arg $$0, brp $$1) {
+   public boolean a(aql $$0, bqw $$1) {
       return this.a($$0.z(), $$0.dn(), $$1);
    }
 
-   public boolean a(arf $$0, evt $$1, brp $$2) {
-      for (dz<brr> $$3 : this.b) {
+   public boolean a(aqk $$0, evz $$1, bqw $$2) {
+      for (ea<bqy> $$3 : this.b) {
          if (!$$3.a($$2.k())) {
             return false;
          }
@@ -29,7 +29,7 @@ public record bj(List<dz<brr>> b, Optional<bu> c, Optional<bu> d) {
       return this.c.isPresent() && !this.c.get().a($$0, $$1, $$2.c()) ? false : !this.d.isPresent() || this.d.get().a($$0, $$1, $$2.d());
    }
 
-   public List<dz<brr>> a() {
+   public List<ea<bqy>> a() {
       return this.b;
    }
 
@@ -42,7 +42,7 @@ public record bj(List<dz<brr>> b, Optional<bu> c, Optional<bu> d) {
    }
 
    public static class a {
-      private final Builder<dz<brr>> a = ImmutableList.builder();
+      private final Builder<ea<bqy>> a = ImmutableList.builder();
       private Optional<bu> b = Optional.empty();
       private Optional<bu> c = Optional.empty();
 
@@ -50,7 +50,7 @@ public record bj(List<dz<brr>> b, Optional<bu> c, Optional<bu> d) {
          return new bj.a();
       }
 
-      public bj.a a(dz<brr> $$0) {
+      public bj.a a(ea<bqy> $$0) {
          this.a.add($$0);
          return this;
       }

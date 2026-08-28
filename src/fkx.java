@@ -1,111 +1,111 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Consumer;
 
-public class fkx implements fku {
-   private final fks a;
-   private final fkx.a b;
-   private int c = 0;
+public class fkx extends fku {
+   private final List<fkx.a> c = new ArrayList<>();
+   private int d;
+   private int e;
+   private final flc f = flc.i().a(0.5F, 0.5F);
 
-   private fkx(fkx.a $$0) {
-      this(0, 0, $$0);
+   public fkx() {
+      this(0, 0, 0, 0);
    }
 
-   public fkx(int $$0, int $$1, fkx.a $$2) {
-      this.a = new fks($$0, $$1);
-      this.b = $$2;
+   public fkx(int $$0, int $$1) {
+      this(0, 0, $$0, $$1);
+   }
+
+   public fkx(int $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a($$2, $$3);
+   }
+
+   public fkx a(int $$0, int $$1) {
+      return this.b($$0).a($$1);
    }
 
    public fkx a(int $$0) {
-      this.b.a(this.a, $$0);
+      this.e = $$0;
       return this;
    }
 
-   public fkw b() {
-      return this.a.b();
+   public fkx b(int $$0) {
+      this.d = $$0;
+      return this;
    }
 
-   public fkw c() {
-      return this.a.c();
+   public flc b() {
+      return this.f.g();
    }
 
-   public <T extends fkv> T a(T $$0, fkw $$1) {
-      return this.b.a(this.a, $$0, this.c++, $$1);
-   }
-
-   public <T extends fkv> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
-
-   public <T extends fkv> T a(T $$0, Consumer<fkw> $$1) {
-      return this.b.a(this.a, $$0, this.c++, ac.a(this.b(), $$1));
-   }
-
-   @Override
-   public void b(Consumer<fkv> $$0) {
-      this.a.b($$0);
+   public flc c() {
+      return this.f;
    }
 
    @Override
    public void a() {
-      this.a.a();
-   }
+      super.a();
+      int $$0 = this.d;
+      int $$1 = this.e;
 
-   @Override
-   public int x() {
-      return this.a.x();
-   }
-
-   @Override
-   public int v() {
-      return this.a.v();
-   }
-
-   @Override
-   public void m(int $$0) {
-      this.a.m($$0);
-   }
-
-   @Override
-   public void n(int $$0) {
-      this.a.n($$0);
-   }
-
-   @Override
-   public int C() {
-      return this.a.C();
-   }
-
-   @Override
-   public int D() {
-      return this.a.D();
-   }
-
-   public static fkx d() {
-      return new fkx(fkx.a.b);
-   }
-
-   public static fkx e() {
-      return new fkx(fkx.a.a);
-   }
-
-   public static enum a {
-      a,
-      b;
-
-      void a(fks $$0, int $$1) {
-         switch (this) {
-            case a:
-               $$0.a($$1);
-               break;
-            case b:
-               $$0.b($$1);
-         }
+      for (fkx.a $$2 : this.c) {
+         $$0 = Math.max($$0, $$2.b());
+         $$1 = Math.max($$1, $$2.a());
       }
 
-      public <T extends fkv> T a(fks $$0, T $$1, int $$2, fkw $$3) {
-         return (T)(switch (this) {
-            case a -> (fkv)$$0.a($$1, 0, $$2, $$3);
-            case b -> (fkv)$$0.a($$1, $$2, 0, $$3);
-         });
+      for (fkx.a $$3 : this.c) {
+         $$3.a(this.D(), $$0);
+         $$3.b(this.E(), $$1);
+      }
+
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public <T extends flb> T a(T $$0) {
+      return this.a($$0, this.b());
+   }
+
+   public <T extends flb> T a(T $$0, flc $$1) {
+      this.c.add(new fkx.a($$0, $$1));
+      return $$0;
+   }
+
+   public <T extends flb> T a(T $$0, Consumer<flc> $$1) {
+      return this.a($$0, ac.a(this.b(), $$1));
+   }
+
+   @Override
+   public void b(Consumer<flb> $$0) {
+      this.c.forEach($$1 -> $$0.accept($$1.a));
+   }
+
+   public static void a(flb $$0, int $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1, $$2, $$3, $$4, 0.5F, 0.5F);
+   }
+
+   public static void a(flb $$0, fls $$1) {
+      a($$0, $$1.f().a(), $$1.f().b(), $$1.g(), $$1.h());
+   }
+
+   public static void a(flb $$0, fls $$1, float $$2, float $$3) {
+      a($$0, $$1.d(), $$1.b(), $$1.g(), $$1.h(), $$2, $$3);
+   }
+
+   public static void a(flb $$0, int $$1, int $$2, int $$3, int $$4, float $$5, float $$6) {
+      a($$1, $$3, $$0.y(), $$0::m, $$5);
+      a($$2, $$4, $$0.w(), $$0::n, $$6);
+   }
+
+   public static void a(int $$0, int $$1, int $$2, Consumer<Integer> $$3, float $$4) {
+      int $$5 = (int)aye.i($$4, 0.0F, (float)($$1 - $$2));
+      $$3.accept($$0 + $$5);
+   }
+
+   static class a extends fku.a {
+      protected a(flb $$0, flc $$1) {
+         super($$0, $$1);
       }
    }
 }

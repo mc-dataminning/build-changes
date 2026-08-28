@@ -1,41 +1,35 @@
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Predicate;
 
-public class cdn extends ceb<btr> {
-   private static final int a = 200;
-   private static final int c = 599;
-
-   public cdn() {
-      this(200);
+public class cdn extends cdb<cll> {
+   @Override
+   public Set<ccc<?>> a() {
+      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(ccc.B)));
    }
 
-   public cdn(int $$0) {
-      super($$0);
+   protected void a(aqk $$0, cll $$1) {
+      super.a($$0, $$1);
+      a($$1, $$0x -> $$0x.ak() == bsj.by)
+         .or(() -> a($$1, $$0xx -> $$0xx.ak() != bsj.by))
+         .ifPresentOrElse($$1x -> $$1.dT().a(ccc.B, $$1x), () -> $$1.dT().b(ccc.B));
+   }
+
+   private static Optional<bsy> a(cll $$0, Predicate<bsy> $$1) {
+      return $$0.dT().c(ccc.g).stream().flatMap(Collection::stream).filter($$0::b).filter($$1).findFirst();
    }
 
    @Override
-   protected void a(arf $$0, btr $$1) {
-      a($$1);
+   protected int b() {
+      return 24;
    }
 
    @Override
-   public Set<ccv<?>> a() {
-      return ImmutableSet.of(ccv.g);
-   }
-
-   public static void a(btr $$0) {
-      Optional<List<btr>> $$1 = $$0.dS().c(ccv.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.ak().equals(btc.af));
-         if ($$2) {
-            b($$0);
-         }
-      }
-   }
-
-   public static void b(btr $$0) {
-      $$0.dS().a(ccv.F, true, 599L);
+   protected int c() {
+      return 24;
    }
 }

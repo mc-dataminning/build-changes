@@ -1,327 +1,735 @@
-import java.util.stream.Stream;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList.Builder;
+import it.unimi.dsi.fastutil.longs.Long2IntMap;
+import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dyd {
-   public static final float a = -0.50375F;
-   private static final float n = 0.08F;
-   private static final double o = 1.5;
-   private static final double p = 1.5;
-   private static final double q = 1.5625;
-   private static final double r = -0.703125;
-   public static final int b = 64;
-   public static final long c = 4096L;
-   private static final dxp s = dxq.a(10.0);
-   private static final dxp t = dxq.a();
-   private static final ale<dxp> u = a("zero");
-   private static final ale<dxp> v = a("y");
-   private static final ale<dxp> w = a("shift_x");
-   private static final ale<dxp> x = a("shift_z");
-   private static final ale<dxp> y = a("overworld/base_3d_noise");
-   private static final ale<dxp> z = a("nether/base_3d_noise");
-   private static final ale<dxp> A = a("end/base_3d_noise");
-   public static final ale<dxp> d = a("overworld/continents");
-   public static final ale<dxp> e = a("overworld/erosion");
-   public static final ale<dxp> f = a("overworld/ridges");
-   public static final ale<dxp> g = a("overworld/ridges_folded");
-   public static final ale<dxp> h = a("overworld/offset");
-   public static final ale<dxp> i = a("overworld/factor");
-   public static final ale<dxp> j = a("overworld/jaggedness");
-   public static final ale<dxp> k = a("overworld/depth");
-   private static final ale<dxp> B = a("overworld/sloped_cheese");
-   public static final ale<dxp> l = a("overworld_large_biomes/continents");
-   public static final ale<dxp> m = a("overworld_large_biomes/erosion");
-   private static final ale<dxp> C = a("overworld_large_biomes/offset");
-   private static final ale<dxp> D = a("overworld_large_biomes/factor");
-   private static final ale<dxp> E = a("overworld_large_biomes/jaggedness");
-   private static final ale<dxp> F = a("overworld_large_biomes/depth");
-   private static final ale<dxp> G = a("overworld_large_biomes/sloped_cheese");
-   private static final ale<dxp> H = a("overworld_amplified/offset");
-   private static final ale<dxp> I = a("overworld_amplified/factor");
-   private static final ale<dxp> J = a("overworld_amplified/jaggedness");
-   private static final ale<dxp> K = a("overworld_amplified/depth");
-   private static final ale<dxp> L = a("overworld_amplified/sloped_cheese");
-   private static final ale<dxp> M = a("end/sloped_cheese");
-   private static final ale<dxp> N = a("overworld/caves/spaghetti_roughness_function");
-   private static final ale<dxp> O = a("overworld/caves/entrances");
-   private static final ale<dxp> P = a("overworld/caves/noodle");
-   private static final ale<dxp> Q = a("overworld/caves/pillars");
-   private static final ale<dxp> R = a("overworld/caves/spaghetti_2d_thickness_modulator");
-   private static final ale<dxp> S = a("overworld/caves/spaghetti_2d");
+public class dyd implements dxs.a, dxs.b {
+   private final dyh a;
+   final int b;
+   final int c;
+   final int d;
+   private final int e;
+   private final int f;
+   final int g;
+   final int h;
+   final List<dyd.i> i;
+   final List<dyd.e> j;
+   private final Map<dxs, dxs> k = new HashMap<>();
+   private final Long2IntMap l = new Long2IntOpenHashMap();
+   private final dxl m;
+   private final dxs n;
+   private final dyd.c o;
+   private final dzb p;
+   private final dyd.g q;
+   private final dyd.g r;
+   private final dxt.c s;
+   private long t = dbk.a;
+   private dzb.a u = new dzb.a(1.0, 0.0);
+   final int v;
+   final int w;
+   final int x;
+   boolean y;
+   boolean z;
+   private int A;
+   int B;
+   private int C;
+   int D;
+   int E;
+   int F;
+   long G;
+   long H;
+   int I;
+   private final dxs.a J = new dxs.a() {
+      @Override
+      public dxs.b a(int $$0) {
+         dyd.this.B = ($$0 + dyd.this.d) * dyd.this.x;
+         dyd.this.G++;
+         dyd.this.E = 0;
+         dyd.this.I = $$0;
+         return dyd.this;
+      }
 
-   private static ale<dxp> a(String $$0) {
-      return ale.a(lq.aD, new alf($$0));
+      @Override
+      public void a(double[] $$0, dxs $$1) {
+         for (int $$2 = 0; $$2 < dyd.this.c + 1; $$2++) {
+            dyd.this.B = ($$2 + dyd.this.d) * dyd.this.x;
+            dyd.this.G++;
+            dyd.this.E = 0;
+            dyd.this.I = $$2;
+            $$0[$$2] = $$1.a(dyd.this);
+         }
+      }
+   };
+
+   public static dyd a(dud $$0, dyn $$1, dxt.c $$2, dye $$3, dxl.a $$4, dzb $$5) {
+      dyh $$6 = $$3.f().a($$0);
+      dbk $$7 = $$0.f();
+      int $$8 = 16 / $$6.b();
+      return new dyd($$8, $$1, $$7.d(), $$7.e(), $$6, $$2, $$3, $$4, $$5);
    }
 
-   public static ji<? extends dxp> a(rc<dxp> $$0) {
-      jj<ena.a> $$1 = $$0.a(lq.aH);
-      jj<dxp> $$2 = $$0.a(lq.aD);
-      $$0.a(u, dxq.a());
-      int $$3 = dvw.e * 2;
-      int $$4 = dvw.d * 2;
-      $$0.a(v, dxq.a($$3, $$4, (double)$$3, (double)$$4));
-      dxp $$5 = a($$0, w, dxq.b(dxq.c(dxq.b($$1.b(dyf.j)))));
-      dxp $$6 = a($$0, x, dxq.b(dxq.c(dxq.c($$1.b(dyf.j)))));
-      $$0.a(y, emx.a(0.25, 0.125, 80.0, 160.0, 8.0));
-      $$0.a(z, emx.a(0.25, 0.375, 80.0, 60.0, 8.0));
-      $$0.a(A, emx.a(0.25, 0.25, 80.0, 160.0, 4.0));
-      ji<dxp> $$7 = $$0.a(d, dxq.b(dxq.a($$5, $$6, 0.25, $$1.b(dyf.c))));
-      ji<dxp> $$8 = $$0.a(e, dxq.b(dxq.a($$5, $$6, 0.25, $$1.b(dyf.d))));
-      dxp $$9 = a($$0, f, dxq.b(dxq.a($$5, $$6, 0.25, $$1.b(dyf.i))));
-      $$0.a(g, a($$9));
-      dxp $$10 = dxq.b($$1.b(dyf.M), 1500.0, 0.0);
-      a($$0, $$2, $$10, $$7, $$8, h, i, j, k, B, false);
-      ji<dxp> $$11 = $$0.a(l, dxq.b(dxq.a($$5, $$6, 0.25, $$1.b(dyf.g))));
-      ji<dxp> $$12 = $$0.a(m, dxq.b(dxq.a($$5, $$6, 0.25, $$1.b(dyf.h))));
-      a($$0, $$2, $$10, $$11, $$12, C, D, E, F, G, false);
-      a($$0, $$2, $$10, $$7, $$8, H, I, J, K, L, true);
-      $$0.a(M, dxq.a(dxq.a(0L), a($$2, A)));
-      $$0.a(N, b($$1));
-      $$0.a(R, dxq.d(dxq.a($$1.b(dyf.u), 2.0, 1.0, -0.6, -1.3)));
-      $$0.a(S, f($$2, $$1));
-      $$0.a(O, d($$2, $$1));
-      $$0.a(P, e($$2, $$1));
-      return $$0.a(Q, c($$1));
-   }
+   public dyd(int $$0, dyn $$1, int $$2, int $$3, dyh $$4, dxt.c $$5, dye $$6, dxl.a $$7, dzb $$8) {
+      this.a = $$4;
+      this.w = $$4.b();
+      this.x = $$4.a();
+      this.b = $$0;
+      this.c = aye.a($$4.d(), this.x);
+      this.d = aye.a($$4.c(), this.x);
+      this.e = Math.floorDiv($$2, this.w);
+      this.f = Math.floorDiv($$3, this.w);
+      this.i = Lists.newArrayList();
+      this.j = Lists.newArrayList();
+      this.g = ju.a($$2);
+      this.h = ju.a($$3);
+      this.v = ju.a($$0 * this.w);
+      this.p = $$8;
+      this.s = $$5;
+      this.q = new dyd.g(new dyd.a(), false);
+      this.r = new dyd.g(new dyd.b(), false);
 
-   private static void a(
-      rc<dxp> $$0, jj<dxp> $$1, dxp $$2, ji<dxp> $$3, ji<dxp> $$4, ale<dxp> $$5, ale<dxp> $$6, ale<dxp> $$7, ale<dxp> $$8, ale<dxp> $$9, boolean $$10
-   ) {
-      dxq.w.a $$11 = new dxq.w.a($$3);
-      dxq.w.a $$12 = new dxq.w.a($$4);
-      dxq.w.a $$13 = new dxq.w.a($$1.b(f));
-      dxq.w.a $$14 = new dxq.w.a($$1.b(g));
-      dxp $$15 = a($$0, $$5, a(dxq.a(dxq.a(-0.50375F), dxq.a(rr.a($$11, $$12, $$14, $$10))), dxq.c()));
-      dxp $$16 = a($$0, $$6, a(dxq.a(rr.a($$11, $$12, $$13, $$14, $$10)), s));
-      dxp $$17 = a($$0, $$8, dxq.a(dxq.a(-64, 320, 1.5, -1.5), $$15));
-      dxp $$18 = a($$0, $$7, a(dxq.a(rr.b($$11, $$12, $$13, $$14, $$10)), t));
-      dxp $$19 = dxq.b($$18, $$2.g());
-      dxp $$20 = b($$16, dxq.a($$17, $$19));
-      $$0.a($$9, dxq.a($$20, a($$1, y)));
-   }
+      for (int $$9 = 0; $$9 <= this.v; $$9++) {
+         int $$10 = this.g + $$9;
+         int $$11 = ju.c($$10);
 
-   private static dxp a(rc<dxp> $$0, ale<dxp> $$1, dxp $$2) {
-      return new dxq.j($$0.a($$1, $$2));
-   }
-
-   private static dxp a(jj<dxp> $$0, ale<dxp> $$1) {
-      return new dxq.j($$0.b($$1));
-   }
-
-   private static dxp a(dxp $$0) {
-      return dxq.b(dxq.a(dxq.a($$0.d(), dxq.a(-0.6666666666666666)).d(), dxq.a(-0.3333333333333333)), dxq.a(-3.0));
-   }
-
-   public static float a(float $$0) {
-      return -(Math.abs(Math.abs($$0) - 0.6666667F) - 0.33333334F) * 3.0F;
-   }
-
-   private static dxp b(jj<ena.a> $$0) {
-      dxp $$1 = dxq.a($$0.b(dyf.z));
-      dxp $$2 = dxq.a($$0.b(dyf.A), 0.0, -0.1);
-      return dxq.d(dxq.b($$2, dxq.a($$1.d(), dxq.a(-0.4))));
-   }
-
-   private static dxp d(jj<dxp> $$0, jj<ena.a> $$1) {
-      dxp $$2 = dxq.d(dxq.b($$1.b(dyf.x), 2.0, 1.0));
-      dxp $$3 = dxq.a($$1.b(dyf.y), -0.065, -0.088);
-      dxp $$4 = dxq.a($$2, $$1.b(dyf.v), dxq.z.a.a);
-      dxp $$5 = dxq.a($$2, $$1.b(dyf.w), dxq.z.a.a);
-      dxp $$6 = dxq.a(dxq.d($$4, $$5), $$3).a(-1.0, 1.0);
-      dxp $$7 = a($$0, N);
-      dxp $$8 = dxq.b($$1.b(dyf.B), 0.75, 0.5);
-      dxp $$9 = dxq.a(dxq.a($$8, dxq.a(0.37)), dxq.a(-10, 30, 0.3, 0.0));
-      return dxq.d(dxq.c($$9, dxq.a($$7, $$6)));
-   }
-
-   private static dxp e(jj<dxp> $$0, jj<ena.a> $$1) {
-      dxp $$2 = a($$0, v);
-      int $$3 = -64;
-      int $$4 = -60;
-      int $$5 = 320;
-      dxp $$6 = a($$2, dxq.b($$1.b(dyf.I), 1.0, 1.0), -60, 320, -1);
-      dxp $$7 = a($$2, dxq.a($$1.b(dyf.J), 1.0, 1.0, -0.05, -0.1), -60, 320, 0);
-      double $$8 = 2.6666666666666665;
-      dxp $$9 = a($$2, dxq.b($$1.b(dyf.K), 2.6666666666666665, 2.6666666666666665), -60, 320, 0);
-      dxp $$10 = a($$2, dxq.b($$1.b(dyf.L), 2.6666666666666665, 2.6666666666666665), -60, 320, 0);
-      dxp $$11 = dxq.b(dxq.a(1.5), dxq.d($$9.d(), $$10.d()));
-      return dxq.a($$6, -1000000.0, 0.0, dxq.a(64.0), dxq.a($$7, $$11));
-   }
-
-   private static dxp c(jj<ena.a> $$0) {
-      double $$1 = 25.0;
-      double $$2 = 0.3;
-      dxp $$3 = dxq.b($$0.b(dyf.o), 25.0, 0.3);
-      dxp $$4 = dxq.a($$0.b(dyf.p), 0.0, -2.0);
-      dxp $$5 = dxq.a($$0.b(dyf.q), 0.0, 1.1);
-      dxp $$6 = dxq.a(dxq.b($$3, dxq.a(2.0)), $$4);
-      return dxq.d(dxq.b($$6, $$5.f()));
-   }
-
-   private static dxp f(jj<dxp> $$0, jj<ena.a> $$1) {
-      dxp $$2 = dxq.b($$1.b(dyf.t), 2.0, 1.0);
-      dxp $$3 = dxq.a($$2, $$1.b(dyf.r), dxq.z.a.b);
-      dxp $$4 = dxq.a($$1.b(dyf.s), 0.0, (double)Math.floorDiv(-64, 8), 8.0);
-      dxp $$5 = a($$0, R);
-      dxp $$6 = dxq.a($$4, dxq.a(-64, 320, 8.0, -40.0)).d();
-      dxp $$7 = dxq.a($$6, $$5).f();
-      double $$8 = 0.083;
-      dxp $$9 = dxq.a($$3, dxq.b(dxq.a(0.083), $$5));
-      return dxq.d($$9, $$7).a(-1.0, 1.0);
-   }
-
-   private static dxp a(jj<dxp> $$0, jj<ena.a> $$1, dxp $$2) {
-      dxp $$3 = a($$0, S);
-      dxp $$4 = a($$0, N);
-      dxp $$5 = dxq.a($$1.b(dyf.C), 8.0);
-      dxp $$6 = dxq.b(dxq.a(4.0), $$5.e());
-      dxp $$7 = dxq.a($$1.b(dyf.D), 0.6666666666666666);
-      dxp $$8 = dxq.a(dxq.a(dxq.a(0.27), $$7).a(-1.0, 1.0), dxq.a(dxq.a(1.5), dxq.b(dxq.a(-0.64), $$2)).a(0.0, 0.5));
-      dxp $$9 = dxq.a($$6, $$8);
-      dxp $$10 = dxq.c(dxq.c($$9, a($$0, O)), dxq.a($$3, $$4));
-      dxp $$11 = a($$0, Q);
-      dxp $$12 = dxq.a($$11, -1000000.0, 0.03, dxq.a(-1000000.0), $$11);
-      return dxq.d($$10, $$12);
-   }
-
-   private static dxp b(dxp $$0) {
-      dxp $$1 = dxq.f($$0);
-      return dxq.b(dxq.a($$1), dxq.a(0.64)).i();
-   }
-
-   protected static dyc a(jj<dxp> $$0, jj<ena.a> $$1, boolean $$2, boolean $$3) {
-      dxp $$4 = dxq.a($$1.b(dyf.k), 0.5);
-      dxp $$5 = dxq.a($$1.b(dyf.l), 0.67);
-      dxp $$6 = dxq.a($$1.b(dyf.n), 0.7142857142857143);
-      dxp $$7 = dxq.a($$1.b(dyf.m));
-      dxp $$8 = a($$0, w);
-      dxp $$9 = a($$0, x);
-      dxp $$10 = dxq.a($$8, $$9, 0.25, $$1.b($$2 ? dyf.e : dyf.a));
-      dxp $$11 = dxq.a($$8, $$9, 0.25, $$1.b($$2 ? dyf.f : dyf.b));
-      dxp $$12 = a($$0, $$2 ? D : ($$3 ? I : i));
-      dxp $$13 = a($$0, $$2 ? F : ($$3 ? K : k));
-      dxp $$14 = b(dxq.c($$12), $$13);
-      dxp $$15 = a($$0, $$2 ? G : ($$3 ? L : B));
-      dxp $$16 = dxq.c($$15, dxq.b(dxq.a(5.0), a($$0, O)));
-      dxp $$17 = dxq.a($$15, -1000000.0, 1.5625, $$16, a($$0, $$1, $$15));
-      dxp $$18 = dxq.c(b(a($$3, $$17)), a($$0, P));
-      dxp $$19 = a($$0, v);
-      int $$20 = Stream.of(dyg.a.values()).mapToInt($$0x -> $$0x.c).min().orElse(-dvw.e * 2);
-      int $$21 = Stream.of(dyg.a.values()).mapToInt($$0x -> $$0x.d).max().orElse(-dvw.e * 2);
-      dxp $$22 = a($$19, dxq.b($$1.b(dyf.E), 1.5, 1.5), $$20, $$21, 0);
-      float $$23 = 4.0F;
-      dxp $$24 = a($$19, dxq.b($$1.b(dyf.F), 4.0, 4.0), $$20, $$21, 0).d();
-      dxp $$25 = a($$19, dxq.b($$1.b(dyf.G), 4.0, 4.0), $$20, $$21, 0).d();
-      dxp $$26 = dxq.a(dxq.a(-0.08F), dxq.d($$24, $$25));
-      dxp $$27 = dxq.a($$1.b(dyf.H));
-      return new dyc(
-         $$4,
-         $$5,
-         $$6,
-         $$7,
-         $$10,
-         $$11,
-         a($$0, $$2 ? l : d),
-         a($$0, $$2 ? m : e),
-         $$13,
-         a($$0, f),
-         a($$3, dxq.a($$14, dxq.a(-0.703125)).a(-64.0, 64.0)),
-         $$18,
-         $$22,
-         $$26,
-         $$27
-      );
-   }
-
-   private static dyc b(jj<dxp> $$0, jj<ena.a> $$1, dxp $$2) {
-      dxp $$3 = a($$0, w);
-      dxp $$4 = a($$0, x);
-      dxp $$5 = dxq.a($$3, $$4, 0.25, $$1.b(dyf.a));
-      dxp $$6 = dxq.a($$3, $$4, 0.25, $$1.b(dyf.b));
-      dxp $$7 = b($$2);
-      return new dyc(dxq.a(), dxq.a(), dxq.a(), dxq.a(), $$5, $$6, dxq.a(), dxq.a(), dxq.a(), dxq.a(), dxq.a(), $$7, dxq.a(), dxq.a(), dxq.a());
-   }
-
-   private static dxp a(boolean $$0, dxp $$1) {
-      return a($$1, -64, 384, $$0 ? 16 : 80, $$0 ? 0 : 64, -0.078125, 0, 24, $$0 ? 0.4 : 0.1171875);
-   }
-
-   private static dxp a(jj<dxp> $$0, int $$1, int $$2) {
-      return a(a($$0, z), $$1, $$2, 24, 0, 0.9375, -8, 24, 2.5);
-   }
-
-   private static dxp a(dxp $$0, int $$1, int $$2) {
-      return a($$0, $$1, $$2, 72, -184, -23.4375, 4, 32, -0.234375);
-   }
-
-   protected static dyc a(jj<dxp> $$0, jj<ena.a> $$1) {
-      return b($$0, $$1, a($$0, 0, 128));
-   }
-
-   protected static dyc b(jj<dxp> $$0, jj<ena.a> $$1) {
-      return b($$0, $$1, a($$0, -64, 192));
-   }
-
-   protected static dyc c(jj<dxp> $$0, jj<ena.a> $$1) {
-      return b($$0, $$1, a(a($$0, A), 0, 256));
-   }
-
-   private static dxp c(dxp $$0) {
-      return a($$0, 0, 128);
-   }
-
-   protected static dyc a(jj<dxp> $$0) {
-      dxp $$1 = dxq.c(dxq.a(0L));
-      dxp $$2 = b(c(a($$0, M)));
-      return new dyc(
-         dxq.a(), dxq.a(), dxq.a(), dxq.a(), dxq.a(), dxq.a(), dxq.a(), $$1, dxq.a(), dxq.a(), c(dxq.a($$1, dxq.a(-0.703125))), $$2, dxq.a(), dxq.a(), dxq.a()
-      );
-   }
-
-   protected static dyc a() {
-      return new dyc(dxq.a(), dxq.a(), dxq.a(), dxq.a(), dxq.a(), dxq.a(), dxq.a(), dxq.a(), dxq.a(), dxq.a(), dxq.a(), dxq.a(), dxq.a(), dxq.a(), dxq.a());
-   }
-
-   private static dxp a(dxp $$0, dxp $$1) {
-      dxp $$2 = dxq.a(dxq.b(), $$1, $$0);
-      return dxq.b(dxq.c($$2));
-   }
-
-   private static dxp b(dxp $$0, dxp $$1) {
-      dxp $$2 = dxq.b($$1, $$0);
-      return dxq.b(dxq.a(4.0), $$2.h());
-   }
-
-   private static dxp a(dxp $$0, dxp $$1, int $$2, int $$3, int $$4) {
-      return dxq.a(dxq.a($$0, (double)$$2, (double)($$3 + 1), $$1, dxq.a((double)$$4)));
-   }
-
-   private static dxp a(dxp $$0, int $$1, int $$2, int $$3, int $$4, double $$5, int $$6, int $$7, double $$8) {
-      dxp $$10 = dxq.a($$1 + $$2 - $$3, $$1 + $$2 - $$4, 1.0, 0.0);
-      dxp $$9 = dxq.a($$10, $$5, $$0);
-      dxp $$11 = dxq.a($$1 + $$6, $$1 + $$7, 0.0, 1.0);
-      return dxq.a($$11, $$8, $$9);
-   }
-
-   protected static final class a {
-      protected static double a(double $$0) {
-         if ($$0 < -0.75) {
-            return 0.5;
-         } else if ($$0 < -0.5) {
-            return 0.75;
-         } else if ($$0 < 0.5) {
-            return 1.0;
-         } else {
-            return $$0 < 0.75 ? 2.0 : 3.0;
+         for (int $$12 = 0; $$12 <= this.v; $$12++) {
+            int $$13 = this.h + $$12;
+            int $$14 = ju.c($$13);
+            dzb.a $$15 = $$8.a($$11, $$14);
+            this.q.f[$$9][$$12] = $$15.a();
+            this.r.f[$$9][$$12] = $$15.b();
          }
       }
 
-      protected static double b(double $$0) {
-         if ($$0 < -0.5) {
-            return 0.75;
-         } else if ($$0 < 0.0) {
-            return 1.0;
-         } else {
-            return $$0 < 0.5 ? 1.5 : 2.0;
+      dyf $$16 = $$1.a();
+      dyf $$17 = $$16.a(this::a);
+      if (!$$6.b()) {
+         this.m = dxl.a($$7);
+      } else {
+         int $$18 = kc.a($$2);
+         int $$19 = kc.a($$3);
+         this.m = dxl.a(this, new dbk($$18, $$19), $$17, $$1.d(), $$4.c(), $$4.d(), $$7);
+      }
+
+      Builder<dyd.c> $$20 = ImmutableList.builder();
+      dxs $$21 = dxt.e(dxt.a($$17.l(), dxt.b.a)).a(this::a);
+      $$20.add((dyd.c)$$1x -> this.m.a($$1x, $$21.a($$1x)));
+      if ($$6.c()) {
+         $$20.add(dyj.a($$17.m(), $$17.n(), $$17.o(), $$1.e()));
+      }
+
+      this.o = new ehe($$20.build());
+      this.n = $$17.k();
+   }
+
+   protected ddm.f a(dyf $$0, List<ddm.d> $$1) {
+      return new ddm.f($$0.e().a(this::a), $$0.f().a(this::a), $$0.g().a(this::a), $$0.h().a(this::a), $$0.i().a(this::a), $$0.j().a(this::a), $$1);
+   }
+
+   @Nullable
+   protected dsh e() {
+      return this.o.calculate(this);
+   }
+
+   @Override
+   public int a() {
+      return this.A + this.D;
+   }
+
+   @Override
+   public int b() {
+      return this.B + this.E;
+   }
+
+   @Override
+   public int c() {
+      return this.C + this.F;
+   }
+
+   public int a(int $$0, int $$1) {
+      int $$2 = ju.c(ju.a($$0));
+      int $$3 = ju.c(ju.a($$1));
+      return this.l.computeIfAbsent(aqa.a($$2, $$3), this::a);
+   }
+
+   private int a(long $$0) {
+      int $$1 = aqa.a($$0);
+      int $$2 = aqa.b($$0);
+      int $$3 = this.a.c();
+
+      for (int $$4 = $$3 + this.a.d(); $$4 >= $$3; $$4 -= this.x) {
+         if (this.n.a(new dxs.e($$1, $$4, $$2)) > 0.390625) {
+            return $$4;
          }
+      }
+
+      return Integer.MAX_VALUE;
+   }
+
+   @Override
+   public dzb d() {
+      return this.p;
+   }
+
+   private void a(boolean $$0, int $$1) {
+      this.A = $$1 * this.w;
+      this.D = 0;
+
+      for (int $$2 = 0; $$2 < this.b + 1; $$2++) {
+         int $$3 = this.f + $$2;
+         this.C = $$3 * this.w;
+         this.F = 0;
+         this.H++;
+
+         for (dyd.i $$4 : this.i) {
+            double[] $$5 = ($$0 ? $$4.e : $$4.f)[$$2];
+            $$4.a($$5, this.J);
+         }
+      }
+
+      this.H++;
+   }
+
+   public void f() {
+      if (this.y) {
+         throw new IllegalStateException("Staring interpolation twice");
+      } else {
+         this.y = true;
+         this.G = 0L;
+         this.a(true, this.e);
+      }
+   }
+
+   public void b(int $$0) {
+      this.a(false, this.e + $$0 + 1);
+      this.A = (this.e + $$0) * this.w;
+   }
+
+   public dyd c(int $$0) {
+      int $$1 = Math.floorMod($$0, this.w);
+      int $$2 = Math.floorDiv($$0, this.w);
+      int $$3 = Math.floorMod($$2, this.w);
+      int $$4 = this.x - 1 - Math.floorDiv($$2, this.w);
+      this.D = $$3;
+      this.E = $$4;
+      this.F = $$1;
+      this.I = $$0;
+      return this;
+   }
+
+   @Override
+   public void a(double[] $$0, dxs $$1) {
+      this.I = 0;
+
+      for (int $$2 = this.x - 1; $$2 >= 0; $$2--) {
+         this.E = $$2;
+
+         for (int $$3 = 0; $$3 < this.w; $$3++) {
+            this.D = $$3;
+
+            for (int $$4 = 0; $$4 < this.w; $$4++) {
+               this.F = $$4;
+               $$0[this.I++] = $$1.a(this);
+            }
+         }
+      }
+   }
+
+   public void b(int $$0, int $$1) {
+      this.i.forEach($$2x -> $$2x.b($$0, $$1));
+      this.z = true;
+      this.B = ($$0 + this.d) * this.x;
+      this.C = (this.f + $$1) * this.w;
+      this.H++;
+
+      for (dyd.e $$2 : this.j) {
+         $$2.e.a($$2.f, this);
+      }
+
+      this.H++;
+      this.z = false;
+   }
+
+   public void a(int $$0, double $$1) {
+      this.E = $$0 - this.B;
+      this.i.forEach($$1x -> $$1x.a($$1));
+   }
+
+   public void b(int $$0, double $$1) {
+      this.D = $$0 - this.A;
+      this.i.forEach($$1x -> $$1x.b($$1));
+   }
+
+   public void c(int $$0, double $$1) {
+      this.F = $$0 - this.C;
+      this.G++;
+      this.i.forEach($$1x -> $$1x.c($$1));
+   }
+
+   public void g() {
+      if (!this.y) {
+         throw new IllegalStateException("Staring interpolation twice");
+      } else {
+         this.y = false;
+      }
+   }
+
+   public void h() {
+      this.i.forEach(dyd.i::l);
+   }
+
+   public dxl i() {
+      return this.m;
+   }
+
+   protected int j() {
+      return this.w;
+   }
+
+   protected int k() {
+      return this.x;
+   }
+
+   dzb.a c(int $$0, int $$1) {
+      long $$2 = dbk.c($$0, $$1);
+      if (this.t == $$2) {
+         return this.u;
+      } else {
+         this.t = $$2;
+         dzb.a $$3 = this.p.a($$0, $$1);
+         this.u = $$3;
+         return $$3;
+      }
+   }
+
+   protected dxs a(dxs $$0) {
+      return this.k.computeIfAbsent($$0, this::b);
+   }
+
+   private dxs b(dxs $$0) {
+      if ($$0 instanceof dxt.l $$1) {
+         return (dxs)(switch ($$1.j()) {
+            case a -> new dyd.i($$1.k());
+            case b -> new dyd.g($$1.k(), true);
+            case c -> new dyd.d($$1.k());
+            case d -> new dyd.f($$1.k());
+            case e -> new dyd.e($$1.k());
+         });
+      } else {
+         if (this.p != dzb.a()) {
+            if ($$0 == dxt.d.a) {
+               return this.q;
+            }
+
+            if ($$0 == dxt.f.a) {
+               return this.r;
+            }
+         }
+
+         if ($$0 == dxt.b.a) {
+            return this.s;
+         } else {
+            return $$0 instanceof dxt.j $$2 ? $$2.j().a() : $$0;
+         }
+      }
+   }
+
+   class a implements dyd.h {
+      @Override
+      public dxs k() {
+         return dxt.d.a;
+      }
+
+      @Override
+      public dxs a(dxs.f $$0) {
+         return this.k().a($$0);
+      }
+
+      @Override
+      public double a(dxs.b $$0) {
+         return dyd.this.c($$0.a(), $$0.c()).a();
+      }
+
+      @Override
+      public void a(double[] $$0, dxs.a $$1) {
+         $$1.a($$0, this);
+      }
+
+      @Override
+      public double a() {
+         return 0.0;
+      }
+
+      @Override
+      public double b() {
+         return 1.0;
+      }
+
+      @Override
+      public axx<? extends dxs> c() {
+         return dxt.d.e;
+      }
+   }
+
+   class b implements dyd.h {
+      @Override
+      public dxs k() {
+         return dxt.f.a;
+      }
+
+      @Override
+      public dxs a(dxs.f $$0) {
+         return this.k().a($$0);
+      }
+
+      @Override
+      public double a(dxs.b $$0) {
+         return dyd.this.c($$0.a(), $$0.c()).b();
+      }
+
+      @Override
+      public void a(double[] $$0, dxs.a $$1) {
+         $$1.a($$0, this);
+      }
+
+      @Override
+      public double a() {
+         return Double.NEGATIVE_INFINITY;
+      }
+
+      @Override
+      public double b() {
+         return Double.POSITIVE_INFINITY;
+      }
+
+      @Override
+      public axx<? extends dxs> c() {
+         return dxt.f.e;
+      }
+   }
+
+   @FunctionalInterface
+   public interface c {
+      @Nullable
+      dsh calculate(dxs.b var1);
+   }
+
+   static class d implements dxt.m, dyd.h {
+      private final dxs a;
+      private long e = dbk.a;
+      private double f;
+
+      d(dxs $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public double a(dxs.b $$0) {
+         int $$1 = $$0.a();
+         int $$2 = $$0.c();
+         long $$3 = dbk.c($$1, $$2);
+         if (this.e == $$3) {
+            return this.f;
+         } else {
+            this.e = $$3;
+            double $$4 = this.a.a($$0);
+            this.f = $$4;
+            return $$4;
+         }
+      }
+
+      @Override
+      public void a(double[] $$0, dxs.a $$1) {
+         this.a.a($$0, $$1);
+      }
+
+      @Override
+      public dxs k() {
+         return this.a;
+      }
+
+      @Override
+      public dxt.l.a j() {
+         return dxt.l.a.c;
+      }
+   }
+
+   class e implements dxt.m, dyd.h {
+      final dxs e;
+      final double[] f;
+
+      e(final dxs $$0) {
+         this.e = $$0;
+         this.f = new double[dyd.this.w * dyd.this.w * dyd.this.x];
+         dyd.this.j.add(this);
+      }
+
+      @Override
+      public double a(dxs.b $$0) {
+         if ($$0 != dyd.this) {
+            return this.e.a($$0);
+         } else if (!dyd.this.y) {
+            throw new IllegalStateException("Trying to sample interpolator outside the interpolation loop");
+         } else {
+            int $$1 = dyd.this.D;
+            int $$2 = dyd.this.E;
+            int $$3 = dyd.this.F;
+            return $$1 >= 0 && $$2 >= 0 && $$3 >= 0 && $$1 < dyd.this.w && $$2 < dyd.this.x && $$3 < dyd.this.w
+               ? this.f[((dyd.this.x - 1 - $$2) * dyd.this.w + $$1) * dyd.this.w + $$3]
+               : this.e.a($$0);
+         }
+      }
+
+      @Override
+      public void a(double[] $$0, dxs.a $$1) {
+         $$1.a($$0, this);
+      }
+
+      @Override
+      public dxs k() {
+         return this.e;
+      }
+
+      @Override
+      public dxt.l.a j() {
+         return dxt.l.a.e;
+      }
+   }
+
+   class f implements dxt.m, dyd.h {
+      private final dxs e;
+      private long f;
+      private long g;
+      private double h;
+      @Nullable
+      private double[] i;
+
+      f(final dxs $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public double a(dxs.b $$0) {
+         if ($$0 != dyd.this) {
+            return this.e.a($$0);
+         } else if (this.i != null && this.g == dyd.this.H) {
+            return this.i[dyd.this.I];
+         } else if (this.f == dyd.this.G) {
+            return this.h;
+         } else {
+            this.f = dyd.this.G;
+            double $$1 = this.e.a($$0);
+            this.h = $$1;
+            return $$1;
+         }
+      }
+
+      @Override
+      public void a(double[] $$0, dxs.a $$1) {
+         if (this.i != null && this.g == dyd.this.H) {
+            System.arraycopy(this.i, 0, $$0, 0, $$0.length);
+         } else {
+            this.k().a($$0, $$1);
+            if (this.i != null && this.i.length == $$0.length) {
+               System.arraycopy($$0, 0, this.i, 0, $$0.length);
+            } else {
+               this.i = (double[])$$0.clone();
+            }
+
+            this.g = dyd.this.H;
+         }
+      }
+
+      @Override
+      public dxs k() {
+         return this.e;
+      }
+
+      @Override
+      public dxt.l.a j() {
+         return dxt.l.a.d;
+      }
+   }
+
+   class g implements dxt.m, dyd.h {
+      private final dxs e;
+      final double[][] f;
+
+      g(final dxs $$0, final boolean $$1) {
+         this.e = $$0;
+         this.f = new double[dyd.this.v + 1][dyd.this.v + 1];
+         if ($$1) {
+            for (int $$2 = 0; $$2 <= dyd.this.v; $$2++) {
+               int $$3 = dyd.this.g + $$2;
+               int $$4 = ju.c($$3);
+
+               for (int $$5 = 0; $$5 <= dyd.this.v; $$5++) {
+                  int $$6 = dyd.this.h + $$5;
+                  int $$7 = ju.c($$6);
+                  this.f[$$2][$$5] = $$0.a(new dxs.e($$4, 0, $$7));
+               }
+            }
+         }
+      }
+
+      @Override
+      public double a(dxs.b $$0) {
+         int $$1 = ju.a($$0.a());
+         int $$2 = ju.a($$0.c());
+         int $$3 = $$1 - dyd.this.g;
+         int $$4 = $$2 - dyd.this.h;
+         int $$5 = this.f.length;
+         return $$3 >= 0 && $$4 >= 0 && $$3 < $$5 && $$4 < $$5 ? this.f[$$3][$$4] : this.e.a($$0);
+      }
+
+      @Override
+      public void a(double[] $$0, dxs.a $$1) {
+         $$1.a($$0, this);
+      }
+
+      @Override
+      public dxs k() {
+         return this.e;
+      }
+
+      @Override
+      public dxt.l.a j() {
+         return dxt.l.a.b;
+      }
+   }
+
+   interface h extends dxs {
+      dxs k();
+
+      @Override
+      default double a() {
+         return this.k().a();
+      }
+
+      @Override
+      default double b() {
+         return this.k().b();
+      }
+   }
+
+   public class i implements dxt.m, dyd.h {
+      double[][] e;
+      double[][] f;
+      private final dxs g;
+      private double h;
+      private double i;
+      private double j;
+      private double k;
+      private double l;
+      private double m;
+      private double n;
+      private double o;
+      private double p;
+      private double q;
+      private double r;
+      private double s;
+      private double t;
+      private double u;
+      private double v;
+
+      i(final dxs $$1) {
+         this.g = $$1;
+         this.e = this.a(dyd.this.c, dyd.this.b);
+         this.f = this.a(dyd.this.c, dyd.this.b);
+         dyd.this.i.add(this);
+      }
+
+      private double[][] a(int $$0, int $$1) {
+         int $$2 = $$1 + 1;
+         int $$3 = $$0 + 1;
+         double[][] $$4 = new double[$$2][$$3];
+
+         for (int $$5 = 0; $$5 < $$2; $$5++) {
+            $$4[$$5] = new double[$$3];
+         }
+
+         return $$4;
+      }
+
+      void b(int $$0, int $$1) {
+         this.h = this.e[$$1][$$0];
+         this.i = this.e[$$1 + 1][$$0];
+         this.j = this.f[$$1][$$0];
+         this.k = this.f[$$1 + 1][$$0];
+         this.l = this.e[$$1][$$0 + 1];
+         this.m = this.e[$$1 + 1][$$0 + 1];
+         this.n = this.f[$$1][$$0 + 1];
+         this.o = this.f[$$1 + 1][$$0 + 1];
+      }
+
+      void a(double $$0) {
+         this.p = aye.d($$0, this.h, this.l);
+         this.q = aye.d($$0, this.j, this.n);
+         this.r = aye.d($$0, this.i, this.m);
+         this.s = aye.d($$0, this.k, this.o);
+      }
+
+      void b(double $$0) {
+         this.t = aye.d($$0, this.p, this.q);
+         this.u = aye.d($$0, this.r, this.s);
+      }
+
+      void c(double $$0) {
+         this.v = aye.d($$0, this.t, this.u);
+      }
+
+      @Override
+      public double a(dxs.b $$0) {
+         if ($$0 != dyd.this) {
+            return this.g.a($$0);
+         } else if (!dyd.this.y) {
+            throw new IllegalStateException("Trying to sample interpolator outside the interpolation loop");
+         } else {
+            return dyd.this.z
+               ? aye.a(
+                  (double)dyd.this.D / (double)dyd.this.w,
+                  (double)dyd.this.E / (double)dyd.this.x,
+                  (double)dyd.this.F / (double)dyd.this.w,
+                  this.h,
+                  this.j,
+                  this.l,
+                  this.n,
+                  this.i,
+                  this.k,
+                  this.m,
+                  this.o
+               )
+               : this.v;
+         }
+      }
+
+      @Override
+      public void a(double[] $$0, dxs.a $$1) {
+         if (dyd.this.z) {
+            $$1.a($$0, this);
+         } else {
+            this.k().a($$0, $$1);
+         }
+      }
+
+      @Override
+      public dxs k() {
+         return this.g;
+      }
+
+      private void l() {
+         double[][] $$0 = this.e;
+         this.e = this.f;
+         this.f = $$0;
+      }
+
+      @Override
+      public dxt.l.a j() {
+         return dxt.l.a.a;
       }
    }
 }

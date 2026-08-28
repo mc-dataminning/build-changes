@@ -1,13 +1,24 @@
-public class gli extends glb<ckr> {
-   private static final alf a = new alf("textures/entity/skeleton/stray.png");
-   private static final alf i = new alf("textures/entity/skeleton/stray_overlay.png");
+public class gli<T extends civ> extends gjx<T, fwd<T>> {
+   private static final akk a = new akk("textures/entity/skeleton/skeleton.png");
 
-   public gli(giz.a $$0) {
-      super($$0, fxb.bz, fxb.bA, fxb.bB);
-      this.a(new gnp<>(this, $$0.f(), fxb.bC, i));
+   public gli(gjg.a $$0) {
+      this($$0, fxh.bn, fxh.bp, fxh.bq);
    }
 
-   public alf a(ckr $$0) {
+   public gli(gjg.a $$0, fxg $$1, fxg $$2, fxg $$3) {
+      this($$0, $$2, $$3, new fwd<>($$0.a($$1)));
+   }
+
+   public gli(gjg.a $$0, fxg $$1, fxg $$2, fwd<T> $$3) {
+      super($$0, $$3, 0.5F);
+      this.a(new gni<>(this, new fwd($$0.a($$1)), new fwd($$0.a($$2)), $$0.g()));
+   }
+
+   public akk a(T $$0) {
       return a;
+   }
+
+   protected boolean b(T $$0) {
+      return $$0.gp();
    }
 }

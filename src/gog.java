@@ -1,11 +1,24 @@
-import javax.annotation.Nullable;
+public class gog extends gnd<cie, fwy<cie>> {
+   private static final akk a = new akk("textures/entity/wither/wither_armor.png");
+   private final fwy<cie> b;
 
-public interface gog extends goj {
-   @Deprecated
-   @Override
-   default float call(cur $$0, @Nullable fxx $$1, @Nullable btr $$2, int $$3) {
-      return ayz.a(this.unclampedCall($$0, $$1, $$2, $$3), 0.0F, 1.0F);
+   public gog(glc<cie, fwy<cie>> $$0, fxe $$1) {
+      super($$0);
+      this.b = new fwy<>($$1.a(fxh.bW));
    }
 
-   float unclampedCall(cur var1, @Nullable fxx var2, @Nullable btr var3, int var4);
+   @Override
+   protected float a(float $$0) {
+      return aye.b($$0 * 0.02F) * 3.0F;
+   }
+
+   @Override
+   protected akk a() {
+      return a;
+   }
+
+   @Override
+   protected fui<cie> b() {
+      return this.b;
+   }
 }

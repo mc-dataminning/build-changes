@@ -1,45 +1,22 @@
-import java.util.List;
+public enum avg {
+   a("master"),
+   b("music"),
+   c("record"),
+   d("weather"),
+   e("block"),
+   f("hostile"),
+   g("neutral"),
+   h("player"),
+   i("ambient"),
+   j("voice");
 
-public class avg {
-   private int a;
-   private int b;
+   private final String k;
 
-   public boolean a(int $$0) {
-      return this.b >= this.b($$0);
+   private avg(final String $$0) {
+      this.k = $$0;
    }
 
-   public boolean a(int $$0, List<arg> $$1) {
-      int $$2 = (int)$$1.stream().filter(cmz::gf).count();
-      return $$2 >= this.b($$0);
-   }
-
-   public int b(int $$0) {
-      return Math.max(1, ayz.f((float)(this.a * $$0) / 100.0F));
-   }
-
-   public void a() {
-      this.b = 0;
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public boolean a(List<arg> $$0) {
-      int $$1 = this.a;
-      int $$2 = this.b;
-      this.a = 0;
-      this.b = 0;
-
-      for (arg $$3 : $$0) {
-         if (!$$3.N_()) {
-            this.a++;
-            if ($$3.fL()) {
-               this.b++;
-            }
-         }
-      }
-
-      return ($$2 > 0 || this.b > 0) && ($$1 != this.a || $$2 != this.b);
+   public String a() {
+      return this.k;
    }
 }

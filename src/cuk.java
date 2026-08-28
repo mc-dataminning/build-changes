@@ -1,77 +1,81 @@
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
+public class cuk extends ctv {
+   private static final ku a = new kt() {
+      private final kt c = new kt();
 
-public class cuk extends cum {
-   private final axf<cuj> a;
+      @Override
+      public cua a(kr $$0, cua $$1) {
+         jf $$2 = $$0.d().c(dhk.b);
+         aqk $$3 = $$0.b();
+         evz $$4 = $$0.a();
+         double $$5 = $$4.a() + (double)$$2.j() * 1.125;
+         double $$6 = Math.floor($$4.b()) + (double)$$2.k();
+         double $$7 = $$4.c() + (double)$$2.l() * 1.125;
+         ja $$8 = $$0.c().a($$2);
+         dsh $$9 = $$3.a_($$8);
+         dtl $$10 = $$9.b() instanceof deu ? $$9.c(((deu)$$9.b()).c()) : dtl.a;
+         double $$11;
+         if ($$9.a(avu.N)) {
+            if ($$10.b()) {
+               $$11 = 0.6;
+            } else {
+               $$11 = 0.1;
+            }
+         } else {
+            if (!$$9.i() || !$$3.a_($$8.d()).a(avu.N)) {
+               return this.c.dispense($$0, $$1);
+            }
 
-   public cuk(cum.a $$0, axf<cuj> $$1) {
-      super($$0);
-      this.a = $$1;
-   }
+            dsh $$13 = $$3.a_($$8.d());
+            dtl $$14 = $$13.b() instanceof deu ? $$13.c(((deu)$$13.b()).c()) : dtl.a;
+            if ($$2 != jf.a && $$14.b()) {
+               $$11 = -0.4;
+            } else {
+               $$11 = -0.9;
+            }
+         }
 
-   @Override
-   public void a(cur $$0, cum.b $$1, List<xp> $$2, cwk $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      Optional<ale<cuj>> $$4 = this.j($$0).flatMap(ji::e);
-      if ($$4.isPresent()) {
-         yd $$5 = xp.c(ac.a("instrument", $$4.get().a()));
-         $$2.add($$5.a(n.h));
+         coc $$18 = coc.a($$3, $$5, $$6 + $$11, $$7, ((cuk)$$1.g()).b, $$1, null);
+         $$3.b($$18);
+         $$1.h(1);
+         return $$1;
       }
-   }
 
-   public static cur a(cum $$0, ji<cuj> $$1) {
-      cur $$2 = new cur($$0);
-      $$2.b(km.P, $$1);
-      return $$2;
-   }
+      @Override
+      protected void a(kr $$0) {
+         $$0.b().c(1000, $$0.c(), 0);
+      }
+   };
+   final coc.a b;
 
-   public static void a(cur $$0, axf<cuj> $$1, azh $$2) {
-      Optional<ji<cuj>> $$3 = lp.am.a($$1, $$2);
-      $$3.ifPresent($$1x -> $$0.b(km.P, $$1x));
+   public cuk(coc.a $$0, ctv.a $$1) {
+      super($$1);
+      this.b = $$0;
+      dhk.a(this, a);
    }
 
    @Override
-   public bqx<cur> a(dca $$0, cmz $$1, bqv $$2) {
-      cur $$3 = $$1.b($$2);
-      Optional<? extends ji<cuj>> $$4 = this.j($$3);
-      if ($$4.isPresent()) {
-         cuj $$5 = $$4.get().a();
-         $$1.c($$2);
-         a($$0, $$1, $$5);
-         $$1.gx().a(this, $$5.b());
-         $$1.b(awk.c.b(this));
-         return bqx.b($$3);
+   public bqd a(cxm $$0) {
+      dcd $$1 = $$0.q();
+      ja $$2 = $$0.a();
+      dsh $$3 = $$1.a_($$2);
+      if (!$$3.a(avu.N)) {
+         return bqd.f;
       } else {
-         return bqx.d($$3);
+         cua $$4 = $$0.n();
+         if ($$1 instanceof aqk $$5) {
+            dtl $$6 = $$3.b() instanceof deu ? $$3.c(((deu)$$3.b()).c()) : dtl.a;
+            double $$7 = 0.0;
+            if ($$6.b()) {
+               $$7 = 0.5;
+            }
+
+            coc $$8 = coc.a($$5, (double)$$2.u() + 0.5, (double)$$2.v() + 0.0625 + $$7, (double)$$2.w() + 0.5, this.b, $$4, $$0.o());
+            $$5.b($$8);
+            $$5.a(dxa.t, $$2, dxa.a.a($$0.o(), $$5.a_($$2.d())));
+         }
+
+         $$4.h(1);
+         return bqd.a($$1.B);
       }
-   }
-
-   @Override
-   public int b(cur $$0) {
-      Optional<ji<cuj>> $$1 = this.j($$0);
-      return $$1.<Integer>map($$0x -> ((cuj)$$0x.a()).b()).orElse(0);
-   }
-
-   private Optional<ji<cuj>> j(cur $$0) {
-      ji<cuj> $$1 = $$0.a(km.P);
-      if ($$1 != null) {
-         return Optional.of($$1);
-      } else {
-         Iterator<ji<cuj>> $$2 = lp.am.c(this.a).iterator();
-         return $$2.hasNext() ? Optional.of($$2.next()) : Optional.empty();
-      }
-   }
-
-   @Override
-   public cwm c(cur $$0) {
-      return cwm.i;
-   }
-
-   private static void a(dca $$0, cmz $$1, cuj $$2) {
-      avz $$3 = $$2.a().a();
-      float $$4 = $$2.c() / 16.0F;
-      $$0.a($$1, $$1, $$3, awb.c, $$4, 1.0F);
-      $$0.a(dwx.B, $$1.dn(), dwx.a.a($$1));
    }
 }

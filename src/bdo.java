@@ -1,17 +1,10 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
-import java.util.List;
-import java.util.Objects;
+import com.mojang.serialization.Dynamic;
 import java.util.Optional;
 
 public class bdo extends DataFix {
@@ -19,69 +12,45 @@ public class bdo extends DataFix {
       super($$0, $$1);
    }
 
-   public TypeRewriteRule makeRule() {
-      Schema $$0 = this.getInputSchema();
-      Schema $$1 = this.getOutputSchema();
-      Type<?> $$2 = $$0.getTypeRaw(bgx.A);
-      Type<?> $$3 = $$1.getTypeRaw(bgx.A);
-      Type<?> $$4 = $$0.getTypeRaw(bgx.B);
-      return this.a($$0, $$1, $$2, $$3, $$4);
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bgd.c);
+      OpticFinder<?> $$1 = $$0.findField("Level");
+      return this.fixTypeEverywhereTyped("HeightmapRenamingFix", $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a)));
    }
 
-   private <OldEntityTree, NewEntityTree, Entity> TypeRewriteRule a(Schema $$0, Schema $$1, Type<OldEntityTree> $$2, Type<NewEntityTree> $$3, Type<Entity> $$4) {
-      Type<Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>> $$5 = DSL.named(bgx.A.typeName(), DSL.and(DSL.optional(DSL.field("Riding", $$2)), $$4));
-      Type<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> $$6 = DSL.named(
-         bgx.A.typeName(), DSL.and(DSL.optional(DSL.field("Passengers", DSL.list($$3))), $$4)
-      );
-      Type<?> $$7 = $$0.getType(bgx.A);
-      Type<?> $$8 = $$1.getType(bgx.A);
-      if (!Objects.equals($$7, $$5)) {
-         throw new IllegalStateException("Old entity type is not what was expected.");
-      } else if (!$$8.equals($$6, true, true)) {
-         throw new IllegalStateException("New entity type is not what was expected.");
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<? extends Dynamic<?>> $$1 = $$0.get("Heightmaps").result();
+      if ($$1.isEmpty()) {
+         return $$0;
       } else {
-         OpticFinder<Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>> $$9 = DSL.typeFinder($$5);
-         OpticFinder<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> $$10 = DSL.typeFinder($$6);
-         OpticFinder<NewEntityTree> $$11 = DSL.typeFinder($$3);
-         Type<?> $$12 = $$0.getType(bgx.b);
-         Type<?> $$13 = $$1.getType(bgx.b);
-         return TypeRewriteRule.seq(
-            this.fixTypeEverywhere(
-               "EntityRidingToPassengerFix",
-               $$5,
-               $$6,
-               $$5x -> $$6x -> {
-                     Optional<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> $$7x = Optional.empty();
-                     Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>> $$8x = $$6x;
+         Dynamic<?> $$2 = (Dynamic<?>)$$1.get();
+         Optional<? extends Dynamic<?>> $$3 = $$2.get("LIQUID").result();
+         if ($$3.isPresent()) {
+            $$2 = $$2.remove("LIQUID");
+            $$2 = $$2.set("WORLD_SURFACE_WG", $$3.get());
+         }
 
-                     while (true) {
-                        Either<List<NewEntityTree>, Unit> $$9x = (Either<List<NewEntityTree>, Unit>)DataFixUtils.orElse(
-                           $$7x.map(
-                              $$4xxx -> {
-                                 Typed<NewEntityTree> $$5xxx = (Typed<NewEntityTree>)$$3.pointTyped($$5x)
-                                    .orElseThrow(() -> new IllegalStateException("Could not create new entity tree"));
-                                 NewEntityTree $$6xx = (NewEntityTree)$$5xxx.set($$10, $$4xxx)
-                                    .getOptional($$11)
-                                    .orElseThrow(() -> new IllegalStateException("Should always have an entity tree here"));
-                                 return Either.left(ImmutableList.of($$6xx));
-                              }
-                           ),
-                           Either.right(DSL.unit())
-                        );
-                        $$7x = Optional.of(Pair.of(bgx.A.typeName(), Pair.of($$9x, ((Pair)$$8x.getSecond()).getSecond())));
-                        Optional<OldEntityTree> $$10x = ((Either)((Pair)$$8x.getSecond()).getFirst()).left();
-                        if ($$10x.isEmpty()) {
-                           return $$7x.orElseThrow(() -> new IllegalStateException("Should always have an entity tree here"));
-                        }
+         Optional<? extends Dynamic<?>> $$4 = $$2.get("SOLID").result();
+         if ($$4.isPresent()) {
+            $$2 = $$2.remove("SOLID");
+            $$2 = $$2.set("OCEAN_FLOOR_WG", $$4.get());
+            $$2 = $$2.set("OCEAN_FLOOR", $$4.get());
+         }
 
-                        $$8x = (Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>)new Typed($$2, $$5x, $$10x.get())
-                           .getOptional($$9)
-                           .orElseThrow(() -> new IllegalStateException("Should always have an entity here"));
-                     }
-                  }
-            ),
-            this.writeAndRead("player RootVehicle injecter", $$12, $$13)
-         );
+         Optional<? extends Dynamic<?>> $$5 = $$2.get("LIGHT").result();
+         if ($$5.isPresent()) {
+            $$2 = $$2.remove("LIGHT");
+            $$2 = $$2.set("LIGHT_BLOCKING", $$5.get());
+         }
+
+         Optional<? extends Dynamic<?>> $$6 = $$2.get("RAIN").result();
+         if ($$6.isPresent()) {
+            $$2 = $$2.remove("RAIN");
+            $$2 = $$2.set("MOTION_BLOCKING", $$6.get());
+            $$2 = $$2.set("MOTION_BLOCKING_NO_LEAVES", $$6.get());
+         }
+
+         return $$0.set("Heightmaps", $$2);
       }
    }
 }

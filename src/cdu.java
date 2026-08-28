@@ -1,29 +1,33 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
-
-public class cdu<T extends btr> extends ceb<T> {
-   @Override
-   protected void a(arf $$0, T $$1) {
-      evo $$2 = $$1.cK().c((double)this.b(), (double)this.c(), (double)this.b());
-      List<btr> $$3 = $$0.a(btr.class, $$2, $$1x -> $$1x != $$1 && $$1x.bD());
-      $$3.sort(Comparator.comparingDouble($$1::g));
-      but<?> $$4 = $$1.dS();
-      $$4.a(ccv.g, $$3);
-      $$4.a(ccv.h, new ccx($$1, $$3));
+public class cdu {
+   public static boolean a(bta $$0) {
+      return $$0.K() instanceof ccj;
    }
 
-   protected int b() {
-      return 16;
+   public static boolean a(bth $$0, int $$1) {
+      return $$0.fX() && $$0.fU().a($$0.dn(), (double)($$0.fV() + (float)$$1) + 1.0);
    }
 
-   protected int c() {
-      return 16;
+   public static boolean a(ja $$0, bth $$1) {
+      return $$0.v() < $$1.dP().I_() || $$0.v() > $$1.dP().am();
    }
 
-   @Override
-   public Set<ccv<?>> a() {
-      return ImmutableSet.of(ccv.g, ccv.h);
+   public static boolean a(boolean $$0, bth $$1, ja $$2) {
+      return $$0 && !$$1.a($$2);
+   }
+
+   public static boolean a(cck $$0, ja $$1) {
+      return !$$0.a($$1);
+   }
+
+   public static boolean a(bth $$0, ja $$1) {
+      return $$0.dP().b_($$1).a(awa.a);
+   }
+
+   public static boolean b(bth $$0, ja $$1) {
+      return $$0.a(eox.b($$0, $$1)) != 0.0F;
+   }
+
+   public static boolean c(bth $$0, ja $$1) {
+      return $$0.dP().a_($$1).e();
    }
 }

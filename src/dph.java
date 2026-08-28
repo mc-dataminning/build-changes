@@ -1,144 +1,147 @@
-import java.util.List;
-import org.apache.commons.lang3.mutable.MutableInt;
+import javax.annotation.Nullable;
 
-public class dph extends dpj {
-   private static final int d = 50;
-   private static final int e = 60;
-   private static final int f = 60;
-   private static final int g = 40;
-   private static final int h = 5;
-   private static final int i = 48;
-   private static final int j = 32;
-   private static final int k = 48;
-   private long l;
-   public int a;
-   public boolean b;
-   public je c;
-   private List<btr> m;
-   private boolean q;
-   private int r;
+public abstract class dph extends dpn implements bpw, bqh, bqi {
+   private bqg d = bqg.a;
+   @Nullable
+   private wu e;
 
-   public dph(iz $$0, dse $$1) {
-      super(dpl.E, $$0, $$1);
+   protected dph(dpp<?> $$0, ja $$1, dsh $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.b();
-         this.r = 0;
-         this.c = je.a($$1);
-         this.a = 0;
-         this.b = true;
+   protected void a(tx $$0, jl.a $$1) {
+      super.a($$0, $$1);
+      this.d = bqg.b($$0);
+      if ($$0.b("CustomName", 8)) {
+         this.e = a($$0.l("CustomName"), $$1);
+      }
+   }
+
+   @Override
+   protected void b(tx $$0, jl.a $$1) {
+      super.b($$0, $$1);
+      this.d.a($$0);
+      if (this.e != null) {
+         $$0.a("CustomName", wu.a.a(this.e, $$1));
+      }
+   }
+
+   @Override
+   public wu af() {
+      return this.e != null ? this.e : this.k();
+   }
+
+   @Override
+   public wu O_() {
+      return this.af();
+   }
+
+   @Nullable
+   @Override
+   public wu ah() {
+      return this.e;
+   }
+
+   protected abstract wu k();
+
+   public boolean d(cmh $$0) {
+      return a($$0, this.d, this.O_());
+   }
+
+   public static boolean a(cmh $$0, bqg $$1, wu $$2) {
+      if (!$$0.N_() && !$$1.a($$0.eT())) {
+         $$0.a(wu.a("container.isLocked", $$2), true);
+         $$0.a(avf.eP, avg.e, 1.0F, 1.0F);
+         return false;
+      } else {
          return true;
-      } else {
-         return super.a_($$0, $$1);
       }
    }
 
-   private static void a(dca $$0, iz $$1, dse $$2, dph $$3, dph.a $$4) {
-      if ($$3.b) {
-         $$3.a++;
-      }
+   protected abstract js<cua> j();
 
-      if ($$3.a >= 50) {
-         $$3.b = false;
-         $$3.a = 0;
-      }
+   protected abstract void a(js<cua> var1);
 
-      if ($$3.a >= 5 && $$3.r == 0 && a($$1, $$3.m)) {
-         $$3.q = true;
-         $$0.a(null, $$1, awa.ca, awb.e, 1.0F, 1.0F);
-      }
-
-      if ($$3.q) {
-         if ($$3.r < 40) {
-            $$3.r++;
-         } else {
-            $$4.run($$0, $$1, $$3.m);
-            $$3.q = false;
-         }
-      }
-   }
-
-   public static void a(dca $$0, iz $$1, dse $$2, dph $$3) {
-      a($$0, $$1, $$2, $$3, dph::b);
-   }
-
-   public static void b(dca $$0, iz $$1, dse $$2, dph $$3) {
-      a($$0, $$1, $$2, $$3, dph::a);
-   }
-
-   public void a(je $$0) {
-      iz $$1 = this.ay_();
-      this.c = $$0;
-      if (this.b) {
-         this.a = 0;
-      } else {
-         this.b = true;
-      }
-
-      this.n.a($$1, this.n().b(), 1, $$0.d());
-   }
-
-   private void b() {
-      iz $$0 = this.ay_();
-      if (this.n.Z() > this.l + 60L || this.m == null) {
-         this.l = this.n.Z();
-         evo $$1 = new evo($$0).g(48.0);
-         this.m = this.n.a(btr.class, $$1);
-      }
-
-      if (!this.n.B) {
-         for (btr $$2 : this.m) {
-            if ($$2.bD() && !$$2.dK() && $$0.a($$2.dn(), 32.0)) {
-               $$2.dS().a(ccv.D, this.n.Z());
-            }
-         }
-      }
-   }
-
-   private static boolean a(iz $$0, List<btr> $$1) {
-      for (btr $$2 : $$1) {
-         if ($$2.bD() && !$$2.dK() && $$0.a($$2.dn(), 32.0) && $$2.ak().a(awt.c)) {
-            return true;
+   @Override
+   public boolean c() {
+      for (cua $$0 : this.j()) {
+         if (!$$0.e()) {
+            return false;
          }
       }
 
-      return false;
+      return true;
    }
 
-   private static void a(dca $$0, iz $$1, List<btr> $$2) {
-      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach(dph::a);
+   @Override
+   public cua a(int $$0) {
+      return this.j().get($$0);
    }
 
-   private static void b(dca $$0, iz $$1, List<btr> $$2) {
-      MutableInt $$3 = new MutableInt(16700985);
-      int $$4 = (int)$$2.stream().filter($$1x -> $$1.a($$1x.dn(), 48.0)).count();
-      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach($$4x -> {
-         float $$5 = 1.0F;
-         double $$6 = Math.sqrt(($$4x.du() - (double)$$1.u()) * ($$4x.du() - (double)$$1.u()) + ($$4x.dA() - (double)$$1.w()) * ($$4x.dA() - (double)$$1.w()));
-         double $$7 = (double)((float)$$1.u() + 0.5F) + 1.0 / $$6 * ($$4x.du() - (double)$$1.u());
-         double $$8 = (double)((float)$$1.w() + 0.5F) + 1.0 / $$6 * ($$4x.dA() - (double)$$1.w());
-         int $$9 = ayz.a(($$4 - 21) / -2, 3, 15);
+   @Override
+   public cua a(int $$0, int $$1) {
+      cua $$2 = bpx.a(this.j(), $$0, $$1);
+      if (!$$2.e()) {
+         this.e();
+      }
 
-         for (int $$10 = 0; $$10 < $$9; $$10++) {
-            int $$11 = $$3.addAndGet(5);
-            $$0.a(lb.a(li.u, $$11), $$7, (double)((float)$$1.v() + 0.5F), $$8, 0.0, 0.0, 0.0);
-         }
-      });
+      return $$2;
    }
 
-   private static boolean a(iz $$0, btr $$1) {
-      return $$1.bD() && !$$1.dK() && $$0.a($$1.dn(), 48.0) && $$1.ak().a(awt.c);
+   @Override
+   public cua b(int $$0) {
+      return bpx.a(this.j(), $$0);
    }
 
-   private static void a(btr $$0) {
-      $$0.b(new bse(bsg.x, 60));
+   @Override
+   public void a(int $$0, cua $$1) {
+      this.j().set($$0, $$1);
+      $$1.f(this.e_($$1));
+      this.e();
    }
 
-   @FunctionalInterface
-   interface a {
-      void run(dca var1, iz var2, List<btr> var3);
+   @Override
+   public boolean a(cmh $$0) {
+      return bpw.a(this, $$0);
+   }
+
+   @Override
+   public void a() {
+      this.j().clear();
+   }
+
+   @Nullable
+   @Override
+   public cpe createMenu(int $$0, cmg $$1, cmh $$2) {
+      return this.d($$2) ? this.a($$0, $$1) : null;
+   }
+
+   protected abstract cpe a(int var1, cmg var2);
+
+   @Override
+   protected void a(dpn.b $$0) {
+      super.a($$0);
+      this.e = $$0.a(kn.g);
+      this.d = $$0.a(kn.ad, bqg.a);
+      $$0.a(kn.aa, cwv.a).a(this.j());
+   }
+
+   @Override
+   protected void a(kj.a $$0) {
+      super.a($$0);
+      $$0.a(kn.g, this.e);
+      if (!this.d.equals(bqg.a)) {
+         $$0.a(kn.ad, this.d);
+      }
+
+      $$0.a(kn.aa, cwv.a(this.j()));
+   }
+
+   @Override
+   public void a(tx $$0) {
+      $$0.r("CustomName");
+      $$0.r("Lock");
+      $$0.r("Items");
    }
 }

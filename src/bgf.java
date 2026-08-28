@@ -1,31 +1,21 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public class bgf extends DataFix {
+public class bgf extends bfb {
    public bgf(Schema $$0) {
-      super($$0, false);
+      super($$0, false, "RemoveEmptyItemInSuspiciousBlockFix", bgd.s, "minecraft:brushable_block");
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "OptionsAmbientOcclusionFix",
-         this.getInputSchema().getType(bgx.e),
-         $$0 -> $$0.update(
-               DSL.remainderFinder(),
-               $$0x -> (Dynamic)DataFixUtils.orElse($$0x.get("ao").asString().map($$1 -> $$0x.set("ao", $$0x.createString(a($$1)))).result(), $$0x)
-            )
-      );
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("item").result();
+      return $$1.isPresent() && b($$1.get()) ? $$0.remove("item") : $$0;
    }
 
-   private static String a(String $$0) {
-      return switch ($$0) {
-         case "0" -> "false";
-         case "1", "2" -> "true";
-         default -> $$0;
-      };
+   private static boolean b(Dynamic<?> $$0) {
+      String $$1 = bhp.a($$0.get("id").asString("minecraft:air"));
+      int $$2 = $$0.get("count").asInt(0);
+      return $$1.equals("minecraft:air") || $$2 == 0;
    }
 }

@@ -1,36 +1,49 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.stream.Stream;
+public class cxz extends cxy {
+   public cxz(cxv $$0) {
+      super($$0);
+   }
 
-public record cxz(List<arw<String>> g) implements cxd<String, cxz> {
-   public static final cxz a = new cxz(List.of());
-   public static final int b = 1024;
-   public static final int c = 100;
-   private static final Codec<arw<String>> h = arw.a(Codec.string(0, 1024));
-   public static final Codec<List<arw<String>>> d = h.sizeLimitedListOf(100);
-   public static final Codec<cxz> e = RecordCodecBuilder.create($$0 -> $$0.group(d.optionalFieldOf("pages", List.of()).forGetter(cxz::a)).apply($$0, cxz::new));
-   public static final zn<ByteBuf, cxz> f = arw.a(zl.b(1024)).a(zl.c(100)).a(cxz::new, cxz::a);
-
-   public cxz(List<arw<String>> g) {
-      if (g.size() > 100) {
-         throw new IllegalArgumentException("Got " + g.size() + " pages, but maximum is 100");
+   public boolean a(cxw $$0, dcd $$1) {
+      if (!this.a($$0.f(), $$0.g())) {
+         return false;
       } else {
-         this.g = g;
+         for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
+            cua $$3 = $$0.a($$2);
+            switch ($$2) {
+               case 1:
+               case 3:
+               case 5:
+               case 7:
+                  if (!$$3.a(awd.bq)) {
+                     return false;
+                  }
+                  break;
+               case 2:
+               case 4:
+               case 6:
+               default:
+                  if (!$$3.a(cud.a)) {
+                     return false;
+                  }
+            }
+         }
+
+         return true;
       }
    }
 
-   public Stream<String> a(boolean $$0) {
-      return this.g.stream().map($$1 -> $$1.a($$0));
-   }
-
-   public cxz b(List<arw<String>> $$0) {
-      return new cxz($$0);
+   public cua a(cxw $$0, jl.a $$1) {
+      dqr $$2 = new dqr($$0.a(1).g(), $$0.a(3).g(), $$0.a(5).g(), $$0.a(7).g());
+      return dqd.a($$2);
    }
 
    @Override
-   public List<arw<String>> a() {
-      return this.g;
+   public boolean a(int $$0, int $$1) {
+      return $$0 == 3 && $$1 == 3;
+   }
+
+   @Override
+   public cyl<?> ap_() {
+      return cyl.w;
    }
 }

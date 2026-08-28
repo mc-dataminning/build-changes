@@ -1,14 +1,24 @@
-import java.io.IOException;
-import java.util.concurrent.CompletableFuture;
+import java.util.UUID;
+import java.util.stream.Stream;
 
-public interface dwh<T> extends AutoCloseable {
-   CompletableFuture<dwc<T>> a(dbh var1);
+public interface dwh {
+   int al();
 
-   void a(dwc<T> var1);
+   UUID cz();
 
-   void a(boolean var1);
+   ja dp();
 
-   @Override
-   default void close() throws IOException {
-   }
+   evu cK();
+
+   void a(dwi var1);
+
+   Stream<? extends dwh> cU();
+
+   Stream<? extends dwh> cV();
+
+   void b(bsd.c var1);
+
+   boolean dN();
+
+   boolean dO();
 }

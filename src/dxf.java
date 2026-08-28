@@ -1,60 +1,14 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import org.apache.commons.lang3.tuple.Pair;
+import com.mojang.serialization.MapCodec;
 
-public class dxf {
-   public static final Codec<dxf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dxe.a.lenientOptionalFieldOf("event").forGetter($$0x -> $$0x.b.map(Pair::getLeft)),
-               Codec.LONG.fieldOf("tick").forGetter($$0x -> $$0x.b.<Long>map(Pair::getRight).orElse(-1L))
-            )
-            .apply($$0, dxf::new)
-   );
-   private Optional<Pair<dxe, Long>> b;
+public interface dxf<T extends dxe> {
+   dxf<dww> a = a("block", new dww.a());
+   dxf<dwy> b = a("entity", new dwy.a());
 
-   public dxf(Optional<dxe> $$0, long $$1) {
-      this.b = $$0.map($$1x -> Pair.of($$1x, $$1));
-   }
+   MapCodec<T> a();
 
-   public dxf() {
-      this.b = Optional.empty();
-   }
+   ys<? super wf, T> b();
 
-   public void a(dxe $$0, long $$1) {
-      if (this.b($$0, $$1)) {
-         this.b = Optional.of(Pair.of($$0, $$1));
-      }
-   }
-
-   private boolean b(dxe $$0, long $$1) {
-      if (this.b.isEmpty()) {
-         return true;
-      } else {
-         Pair<dxe, Long> $$2 = this.b.get();
-         long $$3 = (Long)$$2.getRight();
-         if ($$1 != $$3) {
-            return false;
-         } else {
-            dxe $$4 = (dxe)$$2.getLeft();
-            if ($$0.b() < $$4.b()) {
-               return true;
-            } else {
-               return $$0.b() > $$4.b() ? false : dxg.a_($$0.a()) > dxg.a_($$4.a());
-            }
-         }
-      }
-   }
-
-   public Optional<dxe> a(long $$0) {
-      if (this.b.isEmpty()) {
-         return Optional.empty();
-      } else {
-         return this.b.get().getRight() < $$0 ? Optional.of((dxe)this.b.get().getLeft()) : Optional.empty();
-      }
-   }
-
-   public void a() {
-      this.b = Optional.empty();
+   static <S extends dxf<T>, T extends dxe> S a(String $$0, S $$1) {
+      return jw.a(lq.t, $$0, $$1);
    }
 }

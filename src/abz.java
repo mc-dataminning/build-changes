@@ -1,23 +1,14 @@
-import io.netty.buffer.ByteBuf;
-
-public class abz implements zw<aby> {
-   public static final abz a = new abz();
-   public static final zn<ByteBuf, abz> b = zn.a(a);
-
-   private abz() {
+public class abz extends yz<abn> {
+   public abz(Iterable<zb<? super abn>> $$0) {
+      super($$0);
    }
 
    @Override
-   public zy<abz> a() {
-      return abw.f;
+   public zd<abz> a() {
+      return afz.a;
    }
 
-   public void a(aby $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
-   }
-
-   @Override
-   public boolean d() {
-      return true;
    }
 }

@@ -1,18 +1,19 @@
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.Dynamic;
 
-public class bcl extends DataFix {
-   private static final String a = "minecraft:decorated_pot";
-
+public class bcl extends bfa {
    public bcl(Schema $$0) {
-      super($$0, true);
+      super($$0, false, "EntityPaintingFieldsRenameFix", bgd.B, "minecraft:painting");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getChoiceType(bgx.s, "minecraft:decorated_pot");
-      Type<?> $$1 = this.getOutputSchema().getChoiceType(bgx.s, "minecraft:decorated_pot");
-      return this.convertUnchecked("DecoratedPotFieldRenameFix", $$0, $$1);
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.renameField("Motive", "variant").renameField("Facing", "facing");
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

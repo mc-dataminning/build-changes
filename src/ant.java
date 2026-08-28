@@ -1,28 +1,28 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.Collection;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class ant {
-   public static void a(CommandDispatcher<ep> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("kill").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((ep)$$0x.getSource(), ImmutableList.of(((ep)$$0x.getSource()).g()))))
-            .then(eq.a("targets", fc.b()).executes($$0x -> a((ep)$$0x.getSource(), fc.b($$0x, "targets"))))
-      );
-   }
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("commands.save.alreadyOff"));
 
-   private static int a(ep $$0, Collection<? extends bsw> $$1) {
-      for (bsw $$2 : $$1) {
-         $$2.an();
-      }
+   public static void a(CommandDispatcher<eq> $$0) {
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("save-off").requires($$0x -> $$0x.c(4))).executes($$0x -> {
+         eq $$1 = (eq)$$0x.getSource();
+         boolean $$2 = false;
 
-      if ($$1.size() == 1) {
-         $$0.a(() -> xp.a("commands.kill.success.single", $$1.iterator().next().O_()), true);
-      } else {
-         $$0.a(() -> xp.a("commands.kill.success.multiple", $$1.size()), true);
-      }
+         for (aqk $$3 : $$1.l().K()) {
+            if ($$3 != null && !$$3.e) {
+               $$3.e = true;
+               $$2 = true;
+            }
+         }
 
-      return $$1.size();
+         if (!$$2) {
+            throw a.create();
+         } else {
+            $$1.a(() -> wu.c("commands.save.disabled"), true);
+            return 1;
+         }
+      }));
    }
 }

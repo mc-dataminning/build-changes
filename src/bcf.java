@@ -1,29 +1,75 @@
+import com.google.common.collect.Sets;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
 
 public class bcf extends DataFix {
+   private static final Set<String> a = Sets.newHashSet(
+      new String[]{
+         "ArmorStand",
+         "Bat",
+         "Blaze",
+         "CaveSpider",
+         "Chicken",
+         "Cow",
+         "Creeper",
+         "EnderDragon",
+         "Enderman",
+         "Endermite",
+         "EntityHorse",
+         "Ghast",
+         "Giant",
+         "Guardian",
+         "LavaSlime",
+         "MushroomCow",
+         "Ozelot",
+         "Pig",
+         "PigZombie",
+         "Rabbit",
+         "Sheep",
+         "Shulker",
+         "Silverfish",
+         "Skeleton",
+         "Slime",
+         "SnowMan",
+         "Spider",
+         "Squid",
+         "Villager",
+         "VillagerGolem",
+         "Witch",
+         "WitherBoss",
+         "Wolf",
+         "Zombie"
+      }
+   );
+
    public bcf(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgx.c);
-      Type<?> $$1 = $$0.findFieldType("Level");
-      OpticFinder<?> $$2 = DSL.fieldFinder("Level", $$1);
-      return this.fixTypeEverywhereTyped("ChunkStatusFix", $$0, this.getOutputSchema().getType(bgx.c), $$1x -> $$1x.updateTyped($$2, $$0xx -> {
-            Dynamic<?> $$1xx = (Dynamic<?>)$$0xx.get(DSL.remainderFinder());
-            String $$2x = $$1xx.get("Status").asString("empty");
-            if (Objects.equals($$2x, "postprocessed")) {
-               $$1xx = $$1xx.set("Status", $$1xx.createString("fullchunk"));
-            }
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<Number> $$1 = $$0.get("HealF").asNumber().result();
+      Optional<Number> $$2 = $$0.get("Health").asNumber().result();
+      float $$3;
+      if ($$1.isPresent()) {
+         $$3 = $$1.get().floatValue();
+         $$0 = $$0.remove("HealF");
+      } else {
+         if (!$$2.isPresent()) {
+            return $$0;
+         }
 
-            return $$0xx.set(DSL.remainderFinder(), $$1xx);
-         }));
+         $$3 = $$2.get().floatValue();
+      }
+
+      return $$0.set("Health", $$0.createFloat($$3));
+   }
+
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped("EntityHealthFix", this.getInputSchema().getType(bgd.B), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
    }
 }

@@ -1,17 +1,23 @@
-public record aba(dxb c, int d) implements aax {
-   public static final zn<xa, aba> a = zn.a(dxb.d, aba::b, zl.g, aba::c, aba::new);
-   public static final aax.b<aba> b = aax.a("debug/game_event_listeners");
+import java.util.HashSet;
+import java.util.Set;
+
+public record aba(Set<akk> b) implements zb<aav> {
+   public static final ys<vr, aba> a = zb.a(aba::a, aba::new);
+
+   private aba(vr $$0) {
+      this($$0.a(HashSet::new, vr::q));
+   }
+
+   private void a(vr $$0) {
+      $$0.a(this.b, vr::a);
+   }
 
    @Override
-   public aax.b<aba> a() {
-      return b;
+   public zd<aba> a() {
+      return abb.c;
    }
 
-   public dxb b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
+   public void a(aav $$0) {
+      $$0.a(this);
    }
 }

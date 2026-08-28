@@ -1,45 +1,50 @@
-public class afp implements zw<aci> {
-   public static final zn<wm, afp> a = zw.a(afp::a, afp::new);
+public class afp implements zb<abn> {
+   public static final ys<vr, afp> a = zb.a(afp::a, afp::new);
    private final int b;
-   private final int c;
-   private final int d;
-   private final int e;
+   private final double c;
+   private final double d;
+   private final double e;
+   private final byte f;
+   private final byte g;
+   private final boolean h;
 
-   public afp(bsw $$0) {
-      this($$0.al(), $$0.ds());
+   public afp(bsd $$0) {
+      this.b = $$0.al();
+      evz $$1 = $$0.do();
+      this.c = $$1.c;
+      this.d = $$1.d;
+      this.e = $$1.e;
+      this.f = (byte)((int)($$0.dF() * 256.0F / 360.0F));
+      this.g = (byte)((int)($$0.dH() * 256.0F / 360.0F));
+      this.h = $$0.aE();
    }
 
-   public afp(int $$0, evt $$1) {
-      this.b = $$0;
-      double $$2 = 3.9;
-      double $$3 = ayz.a($$1.c, -3.9, 3.9);
-      double $$4 = ayz.a($$1.d, -3.9, 3.9);
-      double $$5 = ayz.a($$1.e, -3.9, 3.9);
-      this.c = (int)($$3 * 8000.0);
-      this.d = (int)($$4 * 8000.0);
-      this.e = (int)($$5 * 8000.0);
-   }
-
-   private afp(wm $$0) {
+   private afp(vr $$0) {
       this.b = $$0.l();
-      this.c = $$0.readShort();
-      this.d = $$0.readShort();
-      this.e = $$0.readShort();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readDouble();
+      this.f = $$0.readByte();
+      this.g = $$0.readByte();
+      this.h = $$0.readBoolean();
    }
 
-   private void a(wm $$0) {
+   private void a(vr $$0) {
       $$0.c(this.b);
-      $$0.l(this.c);
-      $$0.l(this.d);
-      $$0.l(this.e);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.k(this.f);
+      $$0.k(this.g);
+      $$0.a(this.h);
    }
 
    @Override
-   public zy<afp> a() {
-      return agu.aE;
+   public zd<afp> a() {
+      return afz.aZ;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
    }
 
@@ -47,15 +52,27 @@ public class afp implements zw<aci> {
       return this.b;
    }
 
-   public int e() {
+   public double e() {
       return this.c;
    }
 
-   public int f() {
+   public double f() {
       return this.d;
    }
 
-   public int g() {
+   public double g() {
       return this.e;
+   }
+
+   public byte h() {
+      return this.f;
+   }
+
+   public byte i() {
+      return this.g;
+   }
+
+   public boolean j() {
+      return this.h;
    }
 }

@@ -1,43 +1,57 @@
-public record bsz(float a, float b, float c, bsy d, boolean e) {
-   private bsz(float $$0, float $$1, boolean $$2) {
-      this($$0, $$1, c($$1), bsy.a($$0, $$1), $$2);
+public class bsz extends bsd {
+   private static final String b = "data";
+   private tx c = new tx();
+
+   public bsz(bsj<?> $$0, dcd $$1) {
+      super($$0, $$1);
+      this.ag = true;
    }
 
-   private static float c(float $$0) {
-      return $$0 * 0.85F;
+   @Override
+   public void l() {
    }
 
-   public evo a(evt $$0) {
-      return this.a($$0.c, $$0.d, $$0.e);
+   @Override
+   protected void a(ajt.a $$0) {
    }
 
-   public evo a(double $$0, double $$1, double $$2) {
-      float $$3 = this.a / 2.0F;
-      float $$4 = this.b;
-      return new evo($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)$$4, $$2 + (double)$$3);
+   @Override
+   protected void a(tx $$0) {
+      this.c = $$0.p("data");
    }
 
-   public bsz a(float $$0) {
-      return this.a($$0, $$0);
+   @Override
+   protected void b(tx $$0) {
+      $$0.a("data", this.c.i());
    }
 
-   public bsz a(float $$0, float $$1) {
-      return !this.e && ($$0 != 1.0F || $$1 != 1.0F) ? new bsz(this.a * $$0, this.b * $$1, this.c * $$1, this.d.a($$0, $$1, $$0), false) : this;
+   @Override
+   public zb<abn> dl() {
+      throw new IllegalStateException("Markers should never be sent");
    }
 
-   public static bsz b(float $$0, float $$1) {
-      return new bsz($$0, $$1, false);
+   @Override
+   protected boolean r(bsd $$0) {
+      return false;
    }
 
-   public static bsz c(float $$0, float $$1) {
-      return new bsz($$0, $$1, true);
+   @Override
+   protected boolean bJ() {
+      return false;
    }
 
-   public bsz b(float $$0) {
-      return new bsz(this.a, this.b, $$0, this.d, this.e);
+   @Override
+   protected void p(bsd $$0) {
+      throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
    }
 
-   public bsz a(bsy.a $$0) {
-      return new bsz(this.a, this.b, this.c, $$0.a(this.a, this.b), this.e);
+   @Override
+   public eog k_() {
+      return eog.d;
+   }
+
+   @Override
+   public boolean r_() {
+      return true;
    }
 }

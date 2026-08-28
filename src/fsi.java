@@ -1,22 +1,65 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import java.util.function.BiFunction;
+import java.util.function.UnaryOperator;
 
-public class fsi implements fsk {
-   private static final xp a = xp.c("spectatorMenu.root.prompt");
-   private final List<fsl> b = Lists.newArrayList();
-
-   public fsi() {
-      this.b.add(new fso());
-      this.b.add(new fsp());
+public record fsi(dyx a, jw<dwa> b, dyu c, jq<akt> d, akv e, dcy f) {
+   public fsi(dyv $$0, jq<akt> $$1, akv $$2, dcy $$3) {
+      this($$0.a(), $$0.b(), $$1, $$2, $$3);
    }
 
-   @Override
-   public List<fsl> a() {
+   public fsi(dyx $$0, dyu $$1, jq<akt> $$2, akv $$3, dcy $$4) {
+      this($$0, $$2.a(akt.c).d(lr.ba), $$1, $$2.a(akt.c), $$3, $$4);
+   }
+
+   public fsi a(dyx $$0, dyu $$1) {
+      return new fsi($$0, this.b, $$1, this.d, this.e, this.f);
+   }
+
+   public fsi a(fsi.b $$0) {
+      return new fsi($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f);
+   }
+
+   public fsi a(fsi.a $$0) {
+      return new fsi(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f);
+   }
+
+   public jx.b a() {
+      return this.d.a();
+   }
+
+   public void b() {
+      for (dwa $$0 : this.d()) {
+         $$0.b().a();
+      }
+   }
+
+   public dyx c() {
+      return this.a;
+   }
+
+   public jw<dwa> d() {
       return this.b;
    }
 
-   @Override
-   public xp b() {
-      return a;
+   public dyu e() {
+      return this.c;
+   }
+
+   public jq<akt> f() {
+      return this.d;
+   }
+
+   public akv g() {
+      return this.e;
+   }
+
+   public dcy h() {
+      return this.f;
+   }
+
+   @FunctionalInterface
+   public interface a extends BiFunction<jx.b, dyu, dyu> {
+   }
+
+   public interface b extends UnaryOperator<dyx> {
    }
 }

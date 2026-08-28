@@ -1,30 +1,14 @@
-public class ctn extends cum implements ctt {
-   public ctn(cum.a $$0) {
-      super($$0);
-      dhg.a(this, csg.a);
-   }
-
-   public static boolean j(cur $$0) {
-      return $$0.n() < $$0.o() - 1;
+public class ctn extends cvd {
+   public ctn(dff $$0, dff $$1, ctv.a $$2) {
+      super($$2, $$0, $$1, jf.b);
    }
 
    @Override
-   public boolean a(cur $$0, cur $$1) {
-      return $$1.a(cuu.vQ);
-   }
+   protected boolean a(dcg $$0, dsh $$1, ja $$2) {
+      if ($$1.b() instanceof doe $$3 && !$$3.b($$1, $$0, $$2)) {
+         return false;
+      }
 
-   @Override
-   public bqx<cur> a(dca $$0, cmz $$1, bqv $$2) {
-      return this.a(this, $$0, $$1, $$2);
-   }
-
-   @Override
-   public ji<avz> n() {
-      return awa.ar;
-   }
-
-   @Override
-   public btd m() {
-      return btd.e;
+      return super.a($$0, $$1, $$2);
    }
 }

@@ -1,29 +1,45 @@
-public class afe implements zw<aci> {
-   public static final zn<wm, afe> a = zw.a(afe::a, afe::new);
-   private final double b;
+public class afe implements zb<abn> {
+   public static final ys<vr, afe> a = zb.a(afe::a, afe::new);
+   private final long b;
+   private final long c;
 
-   public afe(dtv $$0) {
-      this.b = $$0.k();
+   public afe(long $$0, long $$1, boolean $$2) {
+      this.b = $$0;
+      long $$3 = $$1;
+      if (!$$2) {
+         $$3 = -$$1;
+         if ($$3 == 0L) {
+            $$3 = -1L;
+         }
+      }
+
+      this.c = $$3;
    }
 
-   private afe(wm $$0) {
-      this.b = $$0.readDouble();
+   private afe(vr $$0) {
+      this.b = $$0.readLong();
+      this.c = $$0.readLong();
    }
 
-   private void a(wm $$0) {
-      $$0.a(this.b);
+   private void a(vr $$0) {
+      $$0.b(this.b);
+      $$0.b(this.c);
    }
 
    @Override
-   public zy<afe> a() {
-      return agu.at;
+   public zd<afe> a() {
+      return afz.aO;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
    }
 
-   public double b() {
+   public long b() {
       return this.b;
+   }
+
+   public long e() {
+      return this.c;
    }
 }

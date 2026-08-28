@@ -1,21 +1,20 @@
-public record agg(xp b, boolean c) implements zw<aci> {
-   public static final zn<xa, agg> a = zn.a(xr.d, agg::b, zl.b, agg::e, agg::new);
+public record agg(int b) implements zb<agb> {
+   public static final ys<vr, agg> a = zb.a(agg::a, agg::new);
 
-   @Override
-   public zy<agg> a() {
-      return agu.aV;
+   private agg(vr $$0) {
+      this($$0.l());
    }
 
-   public void a(aci $$0) {
+   private void a(vr $$0) {
+      $$0.c(this.b);
+   }
+
+   @Override
+   public zd<agg> a() {
+      return afz.bi;
+   }
+
+   public void a(agb $$0) {
       $$0.a(this);
-   }
-
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   public boolean e() {
-      return this.c;
    }
 }

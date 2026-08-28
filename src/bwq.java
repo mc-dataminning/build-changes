@@ -1,19 +1,34 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bwq extends bvk<btt> {
-   public bwq(int $$0, int $$1) {
-      super(ImmutableMap.of(ccv.n, ccw.a), $$0, $$1);
+public class bwq {
+   public static bus<bsy> a(btb $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.ak().f()), $$1);
    }
 
-   protected boolean a(arf $$0, btt $$1, long $$2) {
-      return $$1.dS().c(ccv.n).filter($$1x -> $$1x.a($$1)).isPresent();
+   public static bwc<bsy> a(bsj<?> $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.ak()), $$1);
    }
 
-   protected void b(arf $$0, btt $$1, long $$2) {
-      $$1.dS().b(ccv.n);
+   public static bwc<bsy> a(float $$0) {
+      return a($$0x -> true, $$0);
    }
 
-   protected void c(arf $$0, btt $$1, long $$2) {
-      $$1.dS().c(ccv.n).ifPresent($$1x -> $$1.G().a($$1x.a()));
+   public static bwc<bsy> a(Predicate<bsy> $$0, float $$1) {
+      float $$2 = $$1 * $$1;
+      return bye.a(
+         (Function<bye.b<bsy>, ? extends App<bye.c<bsy>, byh<bsy>>>)($$2x -> $$2x.group($$2x.c(ccc.n), $$2x.b(ccc.h))
+               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
+                     Optional<bsy> $$8 = $$2x.<cce>b($$4).a($$0.and($$2xxxx -> $$2xxxx.g((bsd)$$6) <= (double)$$2 && !$$6.x($$2xxxx)));
+                     if ($$8.isEmpty()) {
+                        return false;
+                     } else {
+                        $$3.a(new bvc($$8.get(), true));
+                        return true;
+                     }
+                  }))
+      );
    }
 }

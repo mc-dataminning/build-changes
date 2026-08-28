@@ -1,127 +1,147 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import org.joml.Matrix4f;
 
-public abstract class fhc extends fhe {
-   private static final alf a = new alf("widget/slider");
-   private static final alf d = new alf("widget/slider_highlighted");
-   private static final alf e = new alf("widget/slider_handle");
-   private static final alf f = new alf("widget/slider_handle_highlighted");
-   protected static final int b = 2;
-   private static final int m = 8;
-   private static final int n = 4;
-   protected double c;
-   private boolean o;
+public class fhc implements AutoCloseable {
+   private static final int a = 128;
+   private static final int b = 128;
+   final gpj c;
+   final gqf d;
+   private final Int2ObjectMap<fhc.a> e = new Int2ObjectOpenHashMap();
 
-   public fhc(int $$0, int $$1, int $$2, int $$3, xp $$4, double $$5) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
+   public fhc(gpj $$0, gqf $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   private alf c() {
-      return this.aH_() && !this.o ? d : a;
+   public void a(epo $$0, epq $$1) {
+      this.b($$0, $$1).a();
    }
 
-   private alf e() {
-      return !this.i && !this.o ? e : f;
+   public void a(fag $$0, gdx $$1, epo $$2, epq $$3, boolean $$4, int $$5) {
+      this.b($$2, $$3).a($$0, $$1, $$4, $$5);
    }
 
-   @Override
-   protected yd aJ_() {
-      return xp.a("gui.narrate.slider", this.y());
-   }
-
-   @Override
-   public void a(flc $$0) {
-      $$0.a(flb.a, this.aJ_());
-      if (this.j) {
-         if (this.aH_()) {
-            $$0.a(flb.d, xp.c("narration.slider.usage.focused"));
+   private fhc.a b(epo $$0, epq $$1) {
+      return (fhc.a)this.e.compute($$0.b(), ($$1x, $$2) -> {
+         if ($$2 == null) {
+            return new fhc.a($$1x, $$1);
          } else {
-            $$0.a(flb.d, xp.c("narration.slider.usage.hovered"));
+            $$2.a($$1);
+            return $$2;
          }
+      });
+   }
+
+   public void a() {
+      ObjectIterator var1 = this.e.values().iterator();
+
+      while (var1.hasNext()) {
+         fhc.a $$0 = (fhc.a)var1.next();
+         $$0.close();
       }
+
+      this.e.clear();
    }
 
    @Override
-   public void b(fgt $$0, int $$1, int $$2, float $$3) {
-      ffh $$4 = ffh.Q();
-      $$0.a(1.0F, 1.0F, 1.0F, this.l);
-      RenderSystem.enableBlend();
-      RenderSystem.defaultBlendFunc();
-      RenderSystem.enableDepthTest();
-      $$0.a(this.c(), this.C(), this.D(), this.x(), this.v());
-      $$0.a(this.e(), this.C() + (int)(this.c * (double)(this.g - 8)), this.D(), 8, this.v());
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      int $$5 = this.j ? 16777215 : 10526880;
-      this.a($$0, $$4.h, 2, $$5 | ayz.f(this.l * 255.0F) << 24);
+   public void close() {
+      this.a();
    }
 
-   @Override
-   public void a(double $$0, double $$1) {
-      this.a($$0);
-   }
+   class a implements AutoCloseable {
+      private epq b;
+      private final gov c;
+      private final gef d;
+      private boolean e = true;
 
-   @Override
-   public void a(boolean $$0) {
-      super.a($$0);
-      if (!$$0) {
-         this.o = false;
-      } else {
-         ffe $$1 = ffh.Q().aW();
-         if ($$1 == ffe.b || $$1 == ffe.d) {
-            this.o = true;
-         }
+      a(final int $$0, final epq $$1) {
+         this.b = $$1;
+         this.c = new gov(128, 128, true);
+         akk $$2 = fhc.this.c.a("map/" + $$0, this.c);
+         this.d = gef.t($$2);
       }
-   }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (flh.a($$0)) {
-         this.o = !this.o;
-         return true;
-      } else {
-         if (this.o) {
-            boolean $$3 = $$0 == 263;
-            if ($$3 || $$0 == 262) {
-               float $$4 = $$3 ? -1.0F : 1.0F;
-               this.b(this.c + (double)($$4 / (float)(this.g - 8)));
-               return true;
+      void a(epq $$0) {
+         boolean $$1 = this.b != $$0;
+         this.b = $$0;
+         this.e |= $$1;
+      }
+
+      public void a() {
+         this.e = true;
+      }
+
+      private void b() {
+         for (int $$0 = 0; $$0 < 128; $$0++) {
+            for (int $$1 = 0; $$1 < 128; $$1++) {
+               int $$2 = $$1 + $$0 * 128;
+               this.c.e().a($$1, $$0, eof.b(this.b.g[$$2]));
             }
          }
 
-         return false;
-      }
-   }
-
-   private void a(double $$0) {
-      this.b(($$0 - (double)(this.C() + 4)) / (double)(this.g - 8));
-   }
-
-   private void b(double $$0) {
-      double $$1 = this.c;
-      this.c = ayz.a($$0, 0.0, 1.0);
-      if ($$1 != this.c) {
-         this.a();
+         this.c.d();
       }
 
-      this.b();
+      void a(fag $$0, gdx $$1, boolean $$2, int $$3) {
+         if (this.e) {
+            this.b();
+            this.e = false;
+         }
+
+         int $$4 = 0;
+         int $$5 = 0;
+         float $$6 = 0.0F;
+         Matrix4f $$7 = $$0.c().a();
+         fak $$8 = $$1.getBuffer(this.d);
+         $$8.a($$7, 0.0F, 128.0F, -0.01F).a(255, 255, 255, 255).a(0.0F, 1.0F).b($$3).e();
+         $$8.a($$7, 128.0F, 128.0F, -0.01F).a(255, 255, 255, 255).a(1.0F, 1.0F).b($$3).e();
+         $$8.a($$7, 128.0F, 0.0F, -0.01F).a(255, 255, 255, 255).a(1.0F, 0.0F).b($$3).e();
+         $$8.a($$7, 0.0F, 0.0F, -0.01F).a(255, 255, 255, 255).a(0.0F, 0.0F).b($$3).e();
+         int $$9 = 0;
+
+         for (epk $$10 : this.b.h()) {
+            if (!$$2 || $$10.b()) {
+               $$0.a();
+               $$0.a(0.0F + (float)$$10.d() / 2.0F + 64.0F, 0.0F + (float)$$10.e() / 2.0F + 64.0F, -0.02F);
+               $$0.a(a.f.rotationDegrees((float)($$10.f() * 360) / 16.0F));
+               $$0.b(4.0F, 4.0F, 3.0F);
+               $$0.a(-0.125F, 0.125F, 0.0F);
+               Matrix4f $$11 = $$0.c().a();
+               float $$12 = -0.001F;
+               gpi $$13 = fhc.this.d.a($$10);
+               float $$14 = $$13.c();
+               float $$15 = $$13.g();
+               float $$16 = $$13.d();
+               float $$17 = $$13.h();
+               fak $$18 = $$1.getBuffer(gef.t($$13.i()));
+               $$18.a($$11, -1.0F, 1.0F, (float)$$9 * -0.001F).a(255, 255, 255, 255).a($$14, $$15).b($$3).e();
+               $$18.a($$11, 1.0F, 1.0F, (float)$$9 * -0.001F).a(255, 255, 255, 255).a($$16, $$15).b($$3).e();
+               $$18.a($$11, 1.0F, -1.0F, (float)$$9 * -0.001F).a(255, 255, 255, 255).a($$16, $$17).b($$3).e();
+               $$18.a($$11, -1.0F, -1.0F, (float)$$9 * -0.001F).a(255, 255, 255, 255).a($$14, $$17).b($$3).e();
+               $$0.b();
+               if ($$10.g().isPresent()) {
+                  fgx $$19 = ffn.Q().h;
+                  wu $$20 = $$10.g().get();
+                  float $$21 = (float)$$19.a($$20);
+                  float $$22 = aye.a(25.0F / $$21, 0.0F, 6.0F / 9.0F);
+                  $$0.a();
+                  $$0.a(0.0F + (float)$$10.d() / 2.0F + 64.0F - $$21 * $$22 / 2.0F, 0.0F + (float)$$10.e() / 2.0F + 64.0F + 4.0F, -0.025F);
+                  $$0.b($$22, $$22, 1.0F);
+                  $$0.a(0.0F, 0.0F, -0.1F);
+                  $$19.a($$20, 0.0F, 0.0F, -1, false, $$0.c().a(), $$1, fgx.a.a, Integer.MIN_VALUE, $$3);
+                  $$0.b();
+               }
+
+               $$9++;
+            }
+         }
+      }
+
+      @Override
+      public void close() {
+         this.c.close();
+      }
    }
-
-   @Override
-   protected void b(double $$0, double $$1, double $$2, double $$3) {
-      this.a($$0);
-      super.b($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(gtx $$0) {
-   }
-
-   @Override
-   public void a_(double $$0, double $$1) {
-      super.a(ffh.Q().aj());
-   }
-
-   protected abstract void b();
-
-   protected abstract void a();
 }

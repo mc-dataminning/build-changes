@@ -1,124 +1,103 @@
-import javax.annotation.Nullable;
+import java.util.Objects;
+import java.util.function.Predicate;
+import org.apache.commons.lang3.Validate;
 
-public class cij extends cif {
-   private static final cei b = cei.a().d();
-   @Nullable
-   private eol c;
-   @Nullable
-   private evt d;
-   private boolean e;
+public abstract class cij extends cih {
+   protected static final Predicate<bsd> c = $$0 -> $$0 instanceof cij;
+   protected jf d;
 
-   public cij(cid $$0) {
-      super($$0);
+   protected cij(bsj<? extends cij> $$0, dcd $$1) {
+      super($$0, $$1);
+      this.d = jf.d;
+   }
+
+   protected cij(bsj<? extends cij> $$0, dcd $$1, ja $$2) {
+      this($$0, $$1);
+      this.b = $$2;
+   }
+
+   protected void a(jf $$0) {
+      Objects.requireNonNull($$0);
+      Validate.isTrue($$0.o().d());
+      this.d = $$0;
+      this.s((float)(this.d.e() * 90));
+      this.O = this.dF();
+      this.p();
    }
 
    @Override
-   public cit<cij> i() {
-      return cit.a;
-   }
-
-   @Override
-   public void c() {
-      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.du(), this.a.dw(), this.a.dA());
-      if ($$0 < 100.0 || $$0 > 22500.0 || this.a.Q || this.a.R) {
-         this.j();
+   protected final void p() {
+      if (this.d != null) {
+         evu $$0 = this.a(this.b, this.d);
+         evz $$1 = $$0.f();
+         this.p($$1.c, $$1.d, $$1.e);
+         this.a($$0);
       }
    }
 
+   protected abstract evu a(ja var1, jf var2);
+
    @Override
-   public void d() {
-      this.c = null;
-      this.d = null;
+   public boolean s() {
+      if (!this.dP().g(this)) {
+         return false;
+      } else {
+         boolean $$0 = ja.a(this.B()).allMatch($$0x -> {
+            dsh $$1 = this.dP().a_($$0x);
+            return $$1.e() || dhh.m($$1);
+         });
+         return !$$0 ? false : this.dP().a(this, this.cK(), c).isEmpty();
+      }
    }
 
-   @Nullable
+   protected evu B() {
+      return this.cK().a(this.d.m().mul(-0.5F)).h(1.0E-7);
+   }
+
    @Override
-   public evt g() {
+   public jf cH() {
       return this.d;
    }
 
-   private void j() {
-      if (this.c != null && this.c.c()) {
-         iz $$0 = this.a.dP().a(dxw.a.f, new iz(eaz.a(this.a.s())));
-         int $$1 = this.a.go() == null ? 0 : this.a.go().e();
-         if (this.a.el().a($$1 + 3) == 0) {
-            this.a.gn().a(cit.c);
-            return;
-         }
+   public abstract void C();
 
-         cmz $$2 = this.a.dP().a(b, this.a, (double)$$0.u(), (double)$$0.v(), (double)$$0.w());
-         double $$3;
-         if ($$2 != null) {
-            $$3 = $$0.b($$2.dn()) / 512.0;
-         } else {
-            $$3 = 64.0;
-         }
-
-         if ($$2 != null && (this.a.el().a((int)($$3 + 2.0)) == 0 || this.a.el().a($$1 + 2) == 0)) {
-            this.a($$2);
-            return;
-         }
-      }
-
-      if (this.c == null || this.c.c()) {
-         int $$5 = this.a.y();
-         int $$6 = $$5;
-         if (this.a.el().a(8) == 0) {
-            this.e = !this.e;
-            $$6 = $$5 + 6;
-         }
-
-         if (this.e) {
-            $$6++;
-         } else {
-            $$6--;
-         }
-
-         if (this.a.go() != null && this.a.go().e() >= 0) {
-            $$6 %= 12;
-            if ($$6 < 0) {
-               $$6 += 12;
-            }
-         } else {
-            $$6 -= 12;
-            $$6 &= 7;
-            $$6 += 12;
-         }
-
-         this.c = this.a.a($$5, $$6, null);
-         if (this.c != null) {
-            this.c.a();
-         }
-      }
-
-      this.k();
-   }
-
-   private void a(cmz $$0) {
-      this.a.gn().a(cit.b);
-      this.a.gn().b(cit.b).a($$0);
-   }
-
-   private void k() {
-      if (this.c != null && !this.c.c()) {
-         kd $$0 = this.c.g();
-         this.c.a();
-         double $$1 = (double)$$0.u();
-         double $$2 = (double)$$0.w();
-
-         double $$3;
-         do {
-            $$3 = (double)((float)$$0.v() + this.a.el().i() * 20.0F);
-         } while ($$3 < (double)$$0.v());
-
-         this.d = new evt($$1, $$3, $$2);
-      }
+   @Override
+   public cir a(cua $$0, float $$1) {
+      cir $$2 = new cir(
+         this.dP(), this.du() + (double)((float)this.d.j() * 0.15F), this.dw() + (double)$$1, this.dA() + (double)((float)this.d.l() * 0.15F), $$0
+      );
+      $$2.v();
+      this.dP().b($$2);
+      return $$2;
    }
 
    @Override
-   public void a(cic $$0, iz $$1, brp $$2, @Nullable cmz $$3) {
-      if ($$3 != null && this.a.c($$3)) {
-         this.a($$3);
+   public float a(dls $$0) {
+      if (this.d.o() != jf.a.b) {
+         switch ($$0) {
+            case c:
+               this.d = this.d.g();
+               break;
+            case d:
+               this.d = this.d.i();
+               break;
+            case b:
+               this.d = this.d.h();
+         }
       }
+
+      float $$1 = aye.g(this.dF());
+
+      return switch ($$0) {
+         case c -> $$1 + 180.0F;
+         case d -> $$1 + 90.0F;
+         case b -> $$1 + 270.0F;
+         default -> $$1;
+      };
+   }
+
+   @Override
+   public float a(dkc $$0) {
+      return this.a($$0.a(this.d));
    }
 }

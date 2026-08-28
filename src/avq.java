@@ -1,45 +1,28 @@
-import net.minecraft.server.MinecraftServer;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-public class avq implements eo {
-   private static final String b = "Rcon";
-   private static final xp c = xp.b("Rcon");
-   private final StringBuffer d = new StringBuffer();
-   private final MinecraftServer e;
+public class avq {
+   protected final Object2IntMap<avm<?>> a = Object2IntMaps.synchronize(new Object2IntOpenHashMap());
 
-   public avq(MinecraftServer $$0) {
-      this.e = $$0;
+   public avq() {
+      this.a.defaultReturnValue(0);
    }
 
-   public void e() {
-      this.d.setLength(0);
+   public void b(cmh $$0, avm<?> $$1, int $$2) {
+      int $$3 = (int)Math.min((long)this.a($$1) + (long)$$2, 2147483647L);
+      this.a($$0, $$1, $$3);
    }
 
-   public String f() {
-      return this.d.toString();
+   public void a(cmh $$0, avm<?> $$1, int $$2) {
+      this.a.put($$1, $$2);
    }
 
-   public ep g() {
-      arf $$0 = this.e.I();
-      return new ep(this, evt.a($$0.V()), evs.a, $$0, 4, "Rcon", c, this.e, null);
+   public <T> int a(avo<T> $$0, T $$1) {
+      return $$0.a($$1) ? this.a($$0.b($$1)) : 0;
    }
 
-   @Override
-   public void a(xp $$0) {
-      this.d.append($$0.getString());
-   }
-
-   @Override
-   public boolean l_() {
-      return true;
-   }
-
-   @Override
-   public boolean w_() {
-      return true;
-   }
-
-   @Override
-   public boolean U_() {
-      return this.e.m();
+   public int a(avm<?> $$0) {
+      return this.a.getInt($$0);
    }
 }

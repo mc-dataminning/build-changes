@@ -1,77 +1,43 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Set;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.DecoderException;
+import io.netty.handler.codec.MessageToMessageDecoder;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class vw extends vx {
-   private int a;
-   private final Set<vr<?>> b;
-   private final Deque<vz> c = new ArrayDeque<>();
+public class vw extends MessageToMessageDecoder<zb<?>> {
+   private final za a;
+   @Nullable
+   private za.a b;
 
-   public vw(vy... $$0) {
-      this.a = $$0.length;
-      Builder<vr<?>> $$1 = ImmutableSet.builder();
-      vz $$2 = vz.a();
-
-      for (vy $$3 : $$0) {
-         $$2.a($$3);
-         $$1.add($$3.b());
-      }
-
-      this.c.push($$2);
-      $$1.add(us.b);
-      this.b = $$1.build();
+   public vw(za $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public vm.b b(vr<?> $$0) {
-      return $$0 != us.b ? vm.b.c : super.b($$0);
-   }
-
-   @Override
-   public vm.a a(vr<?> $$0) {
-      vz $$1 = this.c.element();
-      if (this.e() > $$1.b()) {
-         return super.a($$0);
-      } else if (this.a <= 0) {
-         return vm.a.d;
+   protected void a(ChannelHandlerContext $$0, zb<?> $$1, List<Object> $$2) throws Exception {
+      if (this.b != null) {
+         a($$1);
+         zb<?> $$3 = this.b.a($$1);
+         if ($$3 != null) {
+            this.b = null;
+            $$2.add($$3);
+         }
       } else {
-         return !this.b.contains($$0) ? vm.a.b : super.a($$0);
-      }
-   }
-
-   @Override
-   public vm.a a(vr<?> $$0, String $$1) {
-      vz $$2 = this.c.element();
-      if (this.e() > $$2.b()) {
-         return super.a($$0, $$1);
-      } else if ($$2.c().remove($$1, $$0)) {
-         this.a--;
-         return super.a($$0, $$1);
-      } else {
-         if ($$0 == us.b) {
-            vz $$3 = $$2.d().get($$1);
-            if ($$3 != null) {
-               this.c.push($$3);
-               return super.a($$0, $$1);
+         za.a $$4 = this.a.a($$1);
+         if ($$4 != null) {
+            a($$1);
+            this.b = $$4;
+         } else {
+            $$2.add($$1);
+            if ($$1.d()) {
+               $$0.pipeline().remove($$0.name());
             }
          }
-
-         return vm.a.b;
       }
    }
 
-   @Override
-   public vm.b b() {
-      if (this.e() == this.c.element().b()) {
-         this.c.pop();
+   private static void a(zb<?> $$0) {
+      if ($$0.d()) {
+         throw new DecoderException("Terminal message received in bundle");
       }
-
-      return super.b();
-   }
-
-   public int c() {
-      return this.a;
    }
 }

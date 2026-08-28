@@ -1,138 +1,58 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+public abstract class cmt extends cmo implements cmw {
+   private static final ajp<cua> g = ajt.a(cmt.class, ajr.h);
 
-public class cmt implements dbn {
-   private static final int b = 1200;
-   public static final int a = 24000;
-   private static final int c = 25;
-   private static final int d = 75;
-   private static final int e = 25;
-   private static final int f = 10;
-   private static final int g = 10;
-   private final azh h = azh.a();
-   private final eqd i;
-   private int j;
-   private int k;
-   private int l;
+   public cmt(bsj<? extends cmt> $$0, dcd $$1) {
+      super($$0, $$1);
+   }
 
-   public cmt(eqd $$0) {
-      this.i = $$0;
-      this.j = 1200;
-      this.k = $$0.t();
-      this.l = $$0.u();
-      if (this.k == 0 && this.l == 0) {
-         this.k = 24000;
-         $$0.d(this.k);
-         this.l = 25;
-         $$0.e(this.l);
+   public cmt(bsj<? extends cmt> $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dcd $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   public cmt(bsj<? extends cmt> $$0, bsy $$1, double $$2, double $$3, double $$4, dcd $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public void a(cua $$0) {
+      if ($$0.e()) {
+         this.ap().a(g, this.y());
+      } else {
+         this.ap().a(g, $$0.c(1));
       }
    }
 
    @Override
-   public int a(arf $$0, boolean $$1, boolean $$2) {
-      if (!$$0.ab().b(dbw.L)) {
-         return 0;
-      } else if (--this.j > 0) {
-         return 0;
+   public cua p() {
+      return this.ap().a(g);
+   }
+
+   @Override
+   protected void a(ajt.a $$0) {
+      $$0.a(g, this.y());
+   }
+
+   @Override
+   public void b(tx $$0) {
+      super.b($$0);
+      $$0.a("Item", this.p().a(this.dR()));
+   }
+
+   @Override
+   public void a(tx $$0) {
+      super.a($$0);
+      if ($$0.b("Item", 10)) {
+         this.a(cua.a(this.dR(), (uu)$$0.p("Item")).orElse(this.y()));
       } else {
-         this.j = 1200;
-         this.k -= 1200;
-         this.i.d(this.k);
-         if (this.k > 0) {
-            return 0;
-         } else {
-            this.k = 24000;
-            if (!$$0.ab().b(dbw.e)) {
-               return 0;
-            } else {
-               int $$3 = this.l;
-               this.l = ayz.a(this.l + 25, 25, 75);
-               this.i.e(this.l);
-               if (this.h.a(100) > $$3) {
-                  return 0;
-               } else if (this.a($$0)) {
-                  this.l = 25;
-                  return 1;
-               } else {
-                  return 0;
-               }
-            }
-         }
+         this.a(this.y());
       }
    }
 
-   private boolean a(arf $$0) {
-      cmz $$1 = $$0.j();
-      if ($$1 == null) {
-         return true;
-      } else if (this.h.a(10) != 0) {
-         return false;
-      } else {
-         iz $$2 = $$1.dp();
-         int $$3 = 48;
-         cev $$4 = $$0.y();
-         Optional<iz> $$5 = $$4.d($$0x -> $$0x.a(cez.o), $$0x -> true, $$2, 48, cev.b.c);
-         iz $$6 = $$5.orElse($$2);
-         iz $$7 = this.a($$0, $$6, 48);
-         if ($$7 != null && this.a($$0, $$7)) {
-            if ($$0.t($$7).a(awo.ah)) {
-               return false;
-            }
-
-            cms $$8 = btc.bl.a($$0, $$7, btv.h);
-            if ($$8 != null) {
-               for (int $$9 = 0; $$9 < 2; $$9++) {
-                  this.a($$0, $$8, 4);
-               }
-
-               this.i.a($$8.cz());
-               $$8.v(48000);
-               $$8.i($$6);
-               $$8.a($$6, 16);
-               return true;
-            }
-         }
-
-         return false;
-      }
+   private cua y() {
+      return new cua(cud.tX);
    }
 
-   private void a(arf $$0, cms $$1, int $$2) {
-      iz $$3 = this.a($$0, $$1.dp(), $$2);
-      if ($$3 != null) {
-         cht $$4 = btc.be.a($$0, $$3, btv.h);
-         if ($$4 != null) {
-            $$4.b($$1, true);
-         }
-      }
-   }
-
-   @Nullable
-   private iz a(dcd $$0, iz $$1, int $$2) {
-      iz $$3 = null;
-      bul $$4 = bun.a(btc.bl);
-
-      for (int $$5 = 0; $$5 < 10; $$5++) {
-         int $$6 = $$1.u() + this.h.a($$2 * 2) - $$2;
-         int $$7 = $$1.w() + this.h.a($$2 * 2) - $$2;
-         int $$8 = $$0.a(dxw.a.b, $$6, $$7);
-         iz $$9 = new iz($$6, $$8, $$7);
-         if ($$4.isSpawnPositionOk($$0, $$9, btc.bl)) {
-            $$3 = $$9;
-            break;
-         }
-      }
-
-      return $$3;
-   }
-
-   private boolean a(dbg $$0, iz $$1) {
-      for (iz $$2 : iz.c($$1, $$1.b(1, 2, 1))) {
-         if (!$$0.a_($$2).k($$0, $$2).c()) {
-            return false;
-         }
-      }
-
-      return true;
+   @Override
+   public btq a_(int $$0) {
+      return $$0 == 0 ? btq.a(this::p, this::a) : super.a_($$0);
    }
 }

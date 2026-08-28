@@ -1,27 +1,45 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
 
-public class bgc extends bfb {
+public class bgc extends DataFix {
    public bgc(Schema $$0) {
-      super($$0, "OminousBannerRenameFix", $$0x -> $$0x.equals("minecraft:white_banner"));
+      super($$0, false);
    }
 
-   @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<? extends Dynamic<?>> $$1 = $$0.get("display").result();
-      if ($$1.isPresent()) {
-         Dynamic<?> $$2 = (Dynamic<?>)$$1.get();
-         Optional<String> $$3 = $$2.get("Name").asString().result();
-         if ($$3.isPresent()) {
-            String $$4 = $$3.get();
-            $$4 = $$4.replace("\"translate\":\"block.minecraft.illager_banner\"", "\"translate\":\"block.minecraft.ominous_banner\"");
-            $$2 = $$2.set("Name", $$2.createString($$4));
-         }
+   protected TypeRewriteRule makeRule() {
+      Schema $$0 = this.getInputSchema();
+      return this.fixTypeEverywhereTyped("RedstoneConnectionsFix", $$0.getType(bgd.u), $$0x -> $$0x.update(DSL.remainderFinder(), this::a));
+   }
 
-         return $$0.set("display", $$2);
-      } else {
-         return $$0;
-      }
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      boolean $$1 = $$0.get("Name").asString().result().filter("minecraft:redstone_wire"::equals).isPresent();
+      return !$$1
+         ? $$0
+         : $$0.update(
+            "Properties",
+            $$0x -> {
+               String $$1x = $$0x.get("east").asString("none");
+               String $$2 = $$0x.get("west").asString("none");
+               String $$3 = $$0x.get("north").asString("none");
+               String $$4 = $$0x.get("south").asString("none");
+               boolean $$5 = a($$1x) || a($$2);
+               boolean $$6 = a($$3) || a($$4);
+               String $$7 = !a($$1x) && !$$6 ? "side" : $$1x;
+               String $$8 = !a($$2) && !$$6 ? "side" : $$2;
+               String $$9 = !a($$3) && !$$5 ? "side" : $$3;
+               String $$10 = !a($$4) && !$$5 ? "side" : $$4;
+               return $$0x.update("east", $$1xx -> $$1xx.createString($$7))
+                  .update("west", $$1xx -> $$1xx.createString($$8))
+                  .update("north", $$1xx -> $$1xx.createString($$9))
+                  .update("south", $$1xx -> $$1xx.createString($$10));
+            }
+         );
+   }
+
+   private static boolean a(String $$0) {
+      return !"none".equals($$0);
    }
 }

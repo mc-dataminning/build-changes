@@ -1,75 +1,51 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
 
-public class diy extends dfb {
+public class diy extends dff implements dmg {
    public static final MapCodec<diy> a = b(diy::new);
-   public static final dsv b = dkp.b;
-   public static final dsv c = dkp.c;
-   public static final dsv d = dkp.d;
-   public static final dsv e = dkp.e;
-   public static final dsv f = dkp.f;
-   public static final dsv g = dkp.g;
-   private static final Map<je, dsv> h = dkp.h;
+   private static final ews b = dff.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
+
+   public diy(dsg.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(dsx.C, Boolean.valueOf(false)));
+   }
 
    @Override
    public MapCodec<diy> a() {
       return a;
    }
 
-   public diy(dsd.d $$0) {
-      super($$0);
-      this.k(
-         this.E
-            .b()
-            .a(b, Boolean.valueOf(true))
-            .a(c, Boolean.valueOf(true))
-            .a(d, Boolean.valueOf(true))
-            .a(e, Boolean.valueOf(true))
-            .a(f, Boolean.valueOf(true))
-            .a(g, Boolean.valueOf(true))
-      );
+   @Override
+   protected void a(dsi.a<dff, dsh> $$0) {
+      $$0.a(dsx.C);
    }
 
    @Override
-   public dse a(cyc $$0) {
-      dbg $$1 = $$0.q();
-      iz $$2 = $$0.a();
-      return this.o()
-         .a(g, Boolean.valueOf(!$$1.a_($$2.d()).a(this)))
-         .a(f, Boolean.valueOf(!$$1.a_($$2.c()).a(this)))
-         .a(b, Boolean.valueOf(!$$1.a_($$2.e()).a(this)))
-         .a(c, Boolean.valueOf(!$$1.a_($$2.h()).a(this)))
-         .a(d, Boolean.valueOf(!$$1.a_($$2.f()).a(this)))
-         .a(e, Boolean.valueOf(!$$1.a_($$2.g()).a(this)));
+   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
+      if ($$0.c(dsx.C)) {
+         $$3.a($$4, eoc.c, eoc.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected dse a(dse $$0, je $$1, dse $$2, dcb $$3, iz $$4, iz $$5) {
-      return $$2.a(this) ? $$0.a(h.get($$1), Boolean.valueOf(false)) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected eob b_(dsh $$0) {
+      return $$0.c(dsx.C) ? eoc.c.a(false) : super.b_($$0);
    }
 
    @Override
-   protected dse a(dse $$0, dlo $$1) {
-      return $$0.a(h.get($$1.a(je.c)), $$0.c(b))
-         .a(h.get($$1.a(je.d)), $$0.c(d))
-         .a(h.get($$1.a(je.f)), $$0.c(c))
-         .a(h.get($$1.a(je.e)), $$0.c(e))
-         .a(h.get($$1.a(je.b)), $$0.c(f))
-         .a(h.get($$1.a(je.a)), $$0.c(g));
+   public dsh a(cxk $$0) {
+      eob $$1 = $$0.q().b_($$0.a());
+      return this.o().a(dsx.C, Boolean.valueOf($$1.b(eoc.c)));
    }
 
    @Override
-   protected dse a(dse $$0, djy $$1) {
-      return $$0.a(h.get($$1.b(je.c)), $$0.c(b))
-         .a(h.get($$1.b(je.d)), $$0.c(d))
-         .a(h.get($$1.b(je.f)), $$0.c(c))
-         .a(h.get($$1.b(je.e)), $$0.c(e))
-         .a(h.get($$1.b(je.b)), $$0.c(f))
-         .a(h.get($$1.b(je.a)), $$0.c(g));
+   protected ews a(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
+      return b;
    }
 
    @Override
-   protected void a(dsf.a<dfb, dse> $$0) {
-      $$0.a(f, g, b, c, d, e);
+   protected boolean a(dsh $$0, eoq $$1) {
+      return false;
    }
 }

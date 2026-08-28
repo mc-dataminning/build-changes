@@ -1,48 +1,96 @@
-public class fol extends fod<cqb> {
-   private static final alf D = new alf("container/brewing_stand/fuel_length");
-   private static final alf E = new alf("container/brewing_stand/brew_progress");
-   private static final alf F = new alf("container/brewing_stand/bubbles");
-   private static final alf G = new alf("textures/gui/container/brewing_stand.png");
-   private static final int[] H = new int[]{29, 24, 20, 16, 11, 6, 0};
+public class fol {
+   private static final akk a = new akk("minecraft", "alt");
+   private static final xr b = xr.a.a(a);
+   private static final fol c = new fol();
+   private final aym d = aym.a();
+   private final String[] e = new String[]{
+      "the",
+      "elder",
+      "scrolls",
+      "klaatu",
+      "berata",
+      "niktu",
+      "xyzzy",
+      "bless",
+      "curse",
+      "light",
+      "darkness",
+      "fire",
+      "air",
+      "earth",
+      "water",
+      "hot",
+      "dry",
+      "cold",
+      "wet",
+      "ignite",
+      "snuff",
+      "embiggen",
+      "twist",
+      "shorten",
+      "stretch",
+      "fiddle",
+      "destroy",
+      "imbue",
+      "galvanize",
+      "enchant",
+      "free",
+      "limited",
+      "range",
+      "of",
+      "towards",
+      "inside",
+      "sphere",
+      "cube",
+      "self",
+      "other",
+      "ball",
+      "mental",
+      "physical",
+      "grow",
+      "shrink",
+      "demon",
+      "elemental",
+      "spirit",
+      "animal",
+      "creature",
+      "beast",
+      "humanoid",
+      "undead",
+      "fresh",
+      "stale",
+      "phnglui",
+      "mglwnafh",
+      "cthulhu",
+      "rlyeh",
+      "wgahnagl",
+      "fhtagn",
+      "baguette"
+   };
 
-   public fol(cqb $$0, cmy $$1, xp $$2) {
-      super($$0, $$1, $$2);
+   private fol() {
    }
 
-   @Override
-   protected void aM_() {
-      super.aM_();
-      this.r = (this.c - this.p.a(this.l)) / 2;
+   public static fol a() {
+      return c;
    }
 
-   @Override
-   public void a(fgt $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-   }
+   public wz a(fgx $$0, int $$1) {
+      StringBuilder $$2 = new StringBuilder();
+      int $$3 = this.d.a(2) + 3;
 
-   @Override
-   protected void a(fgt $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.c) / 2;
-      int $$5 = (this.o - this.d) / 2;
-      $$0.a(G, $$4, $$5, 0, 0, this.c, this.d);
-      int $$6 = this.w.l();
-      int $$7 = ayz.a((18 * $$6 + 20 - 1) / 20, 0, 18);
-      if ($$7 > 0) {
-         $$0.a(D, 18, 4, 0, 0, $$4 + 60, $$5 + 44, $$7, 4);
-      }
-
-      int $$8 = this.w.m();
-      if ($$8 > 0) {
-         int $$9 = (int)(28.0F * (1.0F - (float)$$8 / 400.0F));
-         if ($$9 > 0) {
-            $$0.a(E, 9, 28, 0, 0, $$4 + 97, $$5 + 16, 9, $$9);
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if ($$4 != 0) {
+            $$2.append(" ");
          }
 
-         $$9 = H[$$8 / 2 % 7];
-         if ($$9 > 0) {
-            $$0.a(F, 12, 29, 0, 29 - $$9, $$4 + 63, $$5 + 14 + 29 - $$9, 12, $$9);
-         }
+         $$2.append(ac.a(this.e, this.d));
       }
+
+      return $$0.b().a(wu.b($$2.toString()).c(b), $$1, xr.a);
+   }
+
+   public void a(long $$0) {
+      this.d.b($$0);
    }
 }

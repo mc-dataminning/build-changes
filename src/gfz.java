@@ -1,36 +1,51 @@
-public class gfz implements gfq<dqd> {
-   public static final grf a = new grf(gpa.e, new alf("entity/enchanting_table_book"));
-   private final ftk b;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
 
-   public gfz(gfr.a $$0) {
-      this.b = new ftk($$0.a(fxb.r));
+public class gfz {
+   private static final Map<dpp<?>, gfy<?>> a = Maps.newHashMap();
+
+   private static <T extends dpn> void a(dpp<? extends T> $$0, gfy<T> $$1) {
+      a.put($$0, $$1);
    }
 
-   public void a(dqd $$0, float $$1, faa $$2, gdq $$3, int $$4, int $$5) {
-      $$2.a();
-      $$2.a(0.5F, 0.75F, 0.5F);
-      float $$6 = (float)$$0.a + $$1;
-      $$2.a(0.0F, 0.1F + ayz.a($$6 * 0.1F) * 0.01F, 0.0F);
-      float $$7 = $$0.h - $$0.i;
+   public static Map<dpp<?>, gfx<?>> a(gfy.a $$0) {
+      Builder<dpp<?>, gfx<?>> $$1 = ImmutableMap.builder();
+      a.forEach(($$2, $$3) -> {
+         try {
+            $$1.put($$2, $$3.create($$0));
+         } catch (Exception var5) {
+            throw new IllegalStateException("Failed to create model for " + lq.j.b((dpp<?>)$$2), var5);
+         }
+      });
+      return $$1.build();
+   }
 
-      while ($$7 >= (float) Math.PI) {
-         $$7 -= (float) (Math.PI * 2);
-      }
-
-      while ($$7 < (float) -Math.PI) {
-         $$7 += (float) (Math.PI * 2);
-      }
-
-      float $$8 = $$0.i + $$7 * $$1;
-      $$2.a(a.d.rotation(-$$8));
-      $$2.a(a.f.rotationDegrees(80.0F));
-      float $$9 = ayz.i($$1, $$0.c, $$0.b);
-      float $$10 = ayz.h($$9 + 0.25F) * 1.6F - 0.3F;
-      float $$11 = ayz.h($$9 + 0.75F) * 1.6F - 0.3F;
-      float $$12 = ayz.i($$1, $$0.g, $$0.f);
-      this.b.a($$6, ayz.a($$10, 0.0F, 1.0F), ayz.a($$11, 0.0F, 1.0F), $$12);
-      fae $$13 = a.a($$3, gdy::c);
-      this.b.b($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$2.b();
+   static {
+      a(dpp.h, ggl::new);
+      a(dpp.i, ggh::new);
+      a(dpp.j, ggn::new);
+      a(dpp.k, ggj::new);
+      a(dpp.b, ggd::new);
+      a(dpp.d, ggd::new);
+      a(dpp.c, ggd::new);
+      a(dpp.m, ggg::new);
+      a(dpp.D, ggi::new);
+      a(dpp.n, ggq::new);
+      a(dpp.v, ggp::new);
+      a(dpp.o, gft::new);
+      a(dpp.p, ggm::new);
+      a(dpp.t, gfs::new);
+      a(dpp.u, ggo::new);
+      a(dpp.x, ggk::new);
+      a(dpp.y, gfu::new);
+      a(dpp.z, gge::new);
+      a(dpp.E, gfv::new);
+      a(dpp.G, ggc::new);
+      a(dpp.N, ggb::new);
+      a(dpp.O, ggf::new);
+      a(dpp.Q, ggr::new);
+      a(dpp.R, ggs::new);
    }
 }

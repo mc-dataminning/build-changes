@@ -1,28 +1,53 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.function.Function;
+import com.mojang.datafixers.kinds.Const;
+import com.mojang.datafixers.kinds.IdF;
+import com.mojang.datafixers.kinds.K1;
+import com.mojang.datafixers.kinds.OptionalBox;
+import com.mojang.datafixers.kinds.Const.Mu;
+import com.mojang.datafixers.util.Unit;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class byg {
-   public static <E extends btr> bwv<E> a(List<Pair<? extends bza<? super E>, Integer>> $$0) {
-      return a($$0, bvy.a.b, bvy.b.a);
+public interface byg<F extends K1, Value> {
+   ccc<Value> a();
+
+   ccd b();
+
+   @Nullable
+   byf<F, Value> a(bua<?> var1, Optional<Value> var2);
+
+   public static record a<Value>(ccc<Value> a) implements byg<Mu<Unit>, Value> {
+      @Override
+      public ccd b() {
+         return ccd.b;
+      }
+
+      @Override
+      public byf<Mu<Unit>, Value> a(bua<?> $$0, Optional<Value> $$1) {
+         return $$1.isPresent() ? null : new byf<>($$0, this.a, Const.create(Unit.INSTANCE));
+      }
    }
 
-   public static <E extends btr> bwv<E> a(List<Pair<? extends bza<? super E>, Integer>> $$0, bvy.a $$1, bvy.b $$2) {
-      bxt<bza<? super E>> $$3 = new bxt<>();
-      $$0.forEach($$1x -> $$3.a((bza<? super E>)$$1x.getFirst(), (Integer)$$1x.getSecond()));
-      return byx.a((Function<byx.b<E>, ? extends App<byx.c<E>, bza<E>>>)($$3x -> $$3x.a((bza<E>)(($$3xx, $$4, $$5) -> {
-            if ($$1 == bvy.a.b) {
-               $$3.a();
-            }
+   public static record b<Value>(ccc<Value> a) implements byg<com.mojang.datafixers.kinds.IdF.Mu, Value> {
+      @Override
+      public ccd b() {
+         return ccd.a;
+      }
 
-            for (bza<? super E> $$6 : $$3) {
-               if ($$6.trigger($$3xx, $$4, $$5) && $$2 == bvy.b.a) {
-                  break;
-               }
-            }
+      @Override
+      public byf<com.mojang.datafixers.kinds.IdF.Mu, Value> a(bua<?> $$0, Optional<Value> $$1) {
+         return $$1.isEmpty() ? null : new byf<>($$0, this.a, IdF.create($$1.get()));
+      }
+   }
 
-            return true;
-         }))));
+   public static record c<Value>(ccc<Value> a) implements byg<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
+      @Override
+      public ccd b() {
+         return ccd.c;
+      }
+
+      @Override
+      public byf<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> a(bua<?> $$0, Optional<Value> $$1) {
+         return new byf<>($$0, this.a, OptionalBox.create($$1));
+      }
    }
 }

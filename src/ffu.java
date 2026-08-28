@@ -1,26 +1,30 @@
-import java.util.function.BooleanSupplier;
+import java.util.function.IntFunction;
 
-public class ffu extends fff {
-   private final BooleanSupplier h;
+public enum ffu implements ayh {
+   a(0, "options.prioritizeChunkUpdates.none"),
+   b(1, "options.prioritizeChunkUpdates.byPlayer"),
+   c(2, "options.prioritizeChunkUpdates.nearby");
 
-   public ffu(String $$0, int $$1, String $$2, BooleanSupplier $$3) {
-      super($$0, eyv.b.a, $$1, $$2);
-      this.h = $$3;
+   private static final IntFunction<ffu> d = awu.a(ffu::a, values(), awu.a.b);
+   private final int e;
+   private final String f;
+
+   private ffu(final int $$0, final String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
-   public void a(boolean $$0) {
-      if (this.h.getAsBoolean()) {
-         if ($$0) {
-            super.a(!this.e());
-         }
-      } else {
-         super.a($$0);
-      }
+   public int a() {
+      return this.e;
    }
 
    @Override
-   protected void n() {
-      super.a(false);
+   public String b() {
+      return this.f;
+   }
+
+   public static ffu a(int $$0) {
+      return d.apply($$0);
    }
 }

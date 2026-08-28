@@ -1,58 +1,59 @@
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+public class fmv extends fnd {
+   private static final wu a = wu.c("symlink_warning.title.world").a(n.r);
+   private static final wu b = wu.a("symlink_warning.message.world", "https://aka.ms/MinecraftSymLinks");
+   private static final wu c = wu.c("symlink_warning.title.pack").a(n.r);
+   private static final wu q = wu.a("symlink_warning.message.pack", "https://aka.ms/MinecraftSymLinks");
+   private final wu r;
+   private final String s;
+   private final Runnable u;
+   private final fky v = new fky().b(10);
 
-public class fmv extends fnh {
-   private static final xp a = xp.c("options.online.title");
-   @Nullable
-   private final ffk<Unit> u;
-
-   public static fmv a(ffh $$0, fnf $$1, ffl $$2) {
-      List<ffk<?>> $$3 = new ArrayList<>();
-      $$3.add($$2.T());
-      $$3.add($$2.U());
-      ffk<Unit> $$4 = x.a(
-         $$0.r,
-         $$0x -> {
-            bqt $$1x = $$0x.al();
-            return new ffk<>(
-               "options.difficulty.online",
-               ffk.a(),
-               ($$1xx, $$2x) -> $$1x.b(),
-               new ffk.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
-               Unit.INSTANCE,
-               $$0xx -> {
-               }
-            );
-         }
-      );
-      if ($$4 != null) {
-         $$3.add($$4);
-      }
-
-      return new fmv($$1, $$2, $$3.toArray(new ffk[0]), $$4);
-   }
-
-   private fmv(fnf $$0, ffl $$1, ffk<?>[] $$2, @Nullable ffk<Unit> $$3) {
-      super($$0, $$1, a, $$2);
+   public fmv(wu $$0, wu $$1, String $$2, Runnable $$3) {
+      super($$0);
+      this.r = $$1;
+      this.s = $$2;
       this.u = $$3;
    }
 
-   @Override
-   protected void aM_() {
-      super.aM_();
-      if (this.u != null) {
-         fhe $$0 = this.s.b(this.u);
-         if ($$0 != null) {
-            $$0.j = false;
-         }
-      }
+   public static fnd a(Runnable $$0) {
+      return new fmv(a, b, "https://aka.ms/MinecraftSymLinks", $$0);
+   }
 
-      fhe $$1 = this.s.b(this.c.ai());
-      if ($$1 != null) {
-         $$1.j = this.m.D();
-      }
+   public static fnd b(Runnable $$0) {
+      return new fmv(c, q, "https://aka.ms/MinecraftSymLinks", $$0);
+   }
+
+   @Override
+   protected void aO_() {
+      super.aO_();
+      this.v.c().b();
+      fky.b $$0 = this.v.d(1);
+      $$0.a(new fit(this.k, this.o));
+      $$0.a(new fig(this.r, this.o).d(this.m - 50).b(true));
+      int $$1 = 120;
+      fky $$2 = new fky().a(5);
+      fky.b $$3 = $$2.d(3);
+      $$3.a(fhm.a(wt.n, $$0x -> ac.k().a(this.s)).b(120, 20).a());
+      $$3.a(fhm.a(wt.o, $$0x -> this.l.o.a(this.s)).b(120, 20).a());
+      $$3.a(fhm.a(wt.k, $$0x -> this.d()).b(120, 20).a());
+      $$0.a($$2);
+      this.c();
+      this.v.a(this::c);
+   }
+
+   @Override
+   protected void c() {
+      this.v.a();
+      fkx.a(this.v, this.H());
+   }
+
+   @Override
+   public wu i() {
+      return wt.a(super.i(), this.r);
+   }
+
+   @Override
+   public void d() {
+      this.u.run();
    }
 }

@@ -1,29 +1,17 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
+import java.util.Map;
+import java.util.Objects;
 
-public class bdf extends bdn {
+public class bdf extends bgp {
+   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:zombie_pigman_spawn_egg", "minecraft:zombified_piglin_spawn_egg").build();
+
    public bdf(Schema $$0) {
-      super("EntityMinecartIdentifiersFix", $$0, true);
+      super("EntityZombifiedPiglinRenameFix", $$0, true);
    }
 
    @Override
-   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
-      if (!$$0.equals("Minecart")) {
-         return Pair.of($$0, $$1);
-      } else {
-         int $$2 = ((Dynamic)$$1.getOrCreate(DSL.remainderFinder())).get("Type").asInt(0);
-
-         String $$3 = switch ($$2) {
-            case 1 -> "MinecartChest";
-            case 2 -> "MinecartFurnace";
-            default -> "MinecartRideable";
-         };
-         Type<?> $$4 = (Type<?>)this.getOutputSchema().findChoiceType(bgx.B).types().get($$3);
-         return Pair.of($$3, ac.a($$1, $$4, $$0x -> $$0x.remove("Type")));
-      }
+   protected String a(String $$0) {
+      return Objects.equals("minecraft:zombie_pigman", $$0) ? "minecraft:zombified_piglin" : $$0;
    }
 }

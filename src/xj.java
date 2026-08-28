@@ -1,22 +1,35 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelHandler.Sharable;
-import io.netty.handler.codec.EncoderException;
-import io.netty.handler.codec.MessageToByteEncoder;
+public interface xj {
+   wu a();
 
-@Sharable
-public class xj extends MessageToByteEncoder<ByteBuf> {
-   public static final int a = 3;
+   void a(aql var1, boolean var2, wq.a var3);
 
-   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) {
-      int $$3 = $$1.readableBytes();
-      int $$4 = xg.a($$3);
-      if ($$4 > 3) {
-         throw new EncoderException("Packet too large: size " + $$3 + " is over 8");
-      } else {
-         $$2.ensureWritable($$4 + $$3);
-         xg.a($$2, $$3);
-         $$2.writeBytes($$1, $$1.readerIndex(), $$3);
+   static xj a(xk $$0) {
+      return (xj)($$0.h() ? new xj.a($$0.d()) : new xj.b($$0));
+   }
+
+   public static record a(wu a) implements xj {
+      @Override
+      public void a(aql $$0, boolean $$1, wq.a $$2) {
+         $$0.c.a(this.a, $$2);
+      }
+   }
+
+   public static record b(xk a) implements xj {
+      @Override
+      public wu a() {
+         return this.a.d();
+      }
+
+      @Override
+      public void a(aql $$0, boolean $$1, wq.a $$2) {
+         xk $$3 = this.a.a($$1);
+         if (!$$3.j()) {
+            $$0.c.a($$3, $$2);
+         }
+      }
+
+      public xk b() {
+         return this.a;
       }
    }
 }

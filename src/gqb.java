@@ -1,37 +1,17 @@
-import javax.annotation.Nullable;
+import java.io.IOException;
 
-public record gqb(alf a, @Nullable String b, @Nullable alf c, @Nullable alf d, gqb.a e, boolean f) {
-   public static enum a {
-      a("slim"),
-      b("default");
+public class gqb extends atz<int[]> {
+   private static final akk a = new akk("textures/colormap/foliage.png");
 
-      private final String c;
-
-      private a(final String $$0) {
-         this.c = $$0;
+   protected int[] a(atu $$0, bmr $$1) {
+      try {
+         return gqe.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load foliage color texture", var4);
       }
+   }
 
-      public static gqb.a a(@Nullable String $$0) {
-         if ($$0 == null) {
-            return b;
-         } else {
-            byte var2 = -1;
-            switch ($$0.hashCode()) {
-               case 3533117:
-                  if ($$0.equals("slim")) {
-                     var2 = 0;
-                  }
-               default:
-                  return switch (var2) {
-                     case 0 -> a;
-                     default -> b;
-                  };
-            }
-         }
-      }
-
-      public String a() {
-         return this.c;
-      }
+   protected void a(int[] $$0, atu $$1, bmr $$2) {
+      dbx.a($$0);
    }
 }

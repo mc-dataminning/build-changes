@@ -1,17 +1,19 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+public class blf extends blb {
+   private final blc c;
+   private final ble d;
 
-public class blf extends bij {
-   public blf(int $$0, Schema $$1) {
-      super($$0, $$1);
+   public blf(int $$0, blc $$1, ble $$2) {
+      this($$0, $$1, $$2, new long[$$0]);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.register($$1, "minecraft:beehive", () -> DSL.optionalFields("bees", DSL.list(DSL.optionalFields("entity_data", bgx.A.in($$0)))));
-      return $$1;
+   public blf(int $$0, blc $$1, ble $$2, long[] $$3) {
+      super($$0, $$3);
+      this.c = $$1;
+      this.d = $$2;
+   }
+
+   @Override
+   protected void a() {
+      this.c.a(new aco((long[])this.b.clone(), this.d));
    }
 }

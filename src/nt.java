@@ -1,78 +1,47 @@
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import java.nio.file.Path;
+import com.google.gson.JsonObject;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.function.Supplier;
 
-public class nt implements lw {
-   private final ly.a d;
-   private final ly.a e;
+public class nt implements Supplier<JsonElement> {
+   private final Map<nv<?>, nv<?>.a> a = Maps.newLinkedHashMap();
 
-   public nt(ly $$0) {
-      this.d = $$0.a(ly.b.b, "blockstates");
-      this.e = $$0.a(ly.b.b, "models");
-   }
-
-   @Override
-   public CompletableFuture<?> a(lu $$0) {
-      Map<dfb, nu> $$1 = Maps.newHashMap();
-      Consumer<nu> $$2 = $$1x -> {
-         dfb $$2x = $$1x.a();
-         nu $$3x = $$1.put($$2x, $$1x);
-         if ($$3x != null) {
-            throw new IllegalStateException("Duplicate blockstate definition for " + $$2x);
-         }
-      };
-      Map<alf, Supplier<JsonElement>> $$3 = Maps.newHashMap();
-      Set<cum> $$4 = Sets.newHashSet();
-      BiConsumer<alf, Supplier<JsonElement>> $$5 = ($$1x, $$2x) -> {
-         Supplier<JsonElement> $$3x = $$3.put($$1x, $$2x);
-         if ($$3x != null) {
-            throw new IllegalStateException("Duplicate model definition for " + $$1x);
-         }
-      };
-      Consumer<cum> $$6 = $$4::add;
-      new nr($$2, $$5, $$6).a();
-      new ns($$5).a();
-      List<dfb> $$7 = lp.e.g().stream().filter($$0x -> true).map(Entry::getValue).filter($$1x -> !$$1.containsKey($$1x)).toList();
-      if (!$$7.isEmpty()) {
-         throw new IllegalStateException("Missing blockstate definitions for: " + $$7);
+   public <T> nt a(nv<T> $$0, T $$1) {
+      nv<?>.a $$2 = this.a.put($$0, $$0.a($$1));
+      if ($$2 != null) {
+         throw new IllegalStateException("Replacing value of " + $$2 + " with " + $$1);
       } else {
-         lp.e.forEach($$2x -> {
-            cum $$3x = cum.d.get($$2x);
-            if ($$3x != null) {
-               if ($$4.contains($$3x)) {
-                  return;
-               }
-
-               alf $$4x = of.a($$3x);
-               if (!$$3.containsKey($$4x)) {
-                  $$3.put($$4x, new oe(of.a($$2x)));
-               }
-            }
-         });
-         return CompletableFuture.allOf(this.a($$0, $$1, $$0x -> this.d.a($$0x.s().h().a())), this.a($$0, $$3, this.e::a));
+         return this;
       }
    }
 
-   private <T> CompletableFuture<?> a(lu $$0, Map<T, ? extends Supplier<JsonElement>> $$1, Function<T, Path> $$2) {
-      return CompletableFuture.allOf($$1.entrySet().stream().map($$2x -> {
-         Path $$3 = $$2.apply((T)$$2x.getKey());
-         JsonElement $$4 = (JsonElement)((Supplier)$$2x.getValue()).get();
-         return lw.a($$0, $$4, $$3);
-      }).toArray(CompletableFuture[]::new));
+   public static nt a() {
+      return new nt();
    }
 
-   @Override
-   public final String a() {
-      return "Model Definitions";
+   public static nt a(nt $$0, nt $$1) {
+      nt $$2 = new nt();
+      $$2.a.putAll($$0.a);
+      $$2.a.putAll($$1.a);
+      return $$2;
+   }
+
+   public JsonElement b() {
+      JsonObject $$0 = new JsonObject();
+      this.a.values().forEach($$1 -> $$1.a($$0));
+      return $$0;
+   }
+
+   public static JsonElement a(List<nt> $$0) {
+      if ($$0.size() == 1) {
+         return $$0.get(0).b();
+      } else {
+         JsonArray $$1 = new JsonArray();
+         $$0.forEach($$1x -> $$1.add($$1x.b()));
+         return $$1;
+      }
    }
 }

@@ -1,80 +1,91 @@
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+public class gbr extends gcl {
+   private final double a;
+   private final double b;
+   private final double F;
 
-public abstract class gbr extends gbe {
-   protected float D;
-   private final Quaternionf a = new Quaternionf();
-
-   protected gbr(fxx $$0, double $$1, double $$2, double $$3) {
+   protected gbr(fyd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
       super($$0, $$1, $$2, $$3);
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
-   }
-
-   protected gbr(fxx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
-   }
-
-   public gbr.a p() {
-      return gbr.a.a;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.g = $$1;
+      this.h = $$2;
+      this.i = $$3;
+      this.a = this.g;
+      this.b = this.h;
+      this.F = this.i;
+      this.D = 0.1F * (this.r.i() * 0.2F + 0.5F);
+      float $$7 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$7 * 0.9F;
+      this.w = $$7 * 0.3F;
+      this.x = $$7;
+      this.t = (int)(Math.random() * 10.0) + 40;
    }
 
    @Override
-   public void a(fae $$0, fes $$1, float $$2) {
-      evt $$3 = $$1.b();
-      float $$4 = (float)(ayz.d((double)$$2, this.d, this.g) - $$3.a());
-      float $$5 = (float)(ayz.d((double)$$2, this.e, this.h) - $$3.b());
-      float $$6 = (float)(ayz.d((double)$$2, this.f, this.i) - $$3.c());
-      this.p().setRotation(this.a, $$1, $$2);
-      if (this.z != 0.0F) {
-         this.a.rotateZ(ayz.i($$2, this.A, this.z));
-      }
-
-      Vector3f[] $$7 = new Vector3f[]{
-         new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
-      };
-      float $$8 = this.b($$2);
-
-      for (int $$9 = 0; $$9 < 4; $$9++) {
-         Vector3f $$10 = $$7[$$9];
-         $$10.rotate(this.a);
-         $$10.mul($$8);
-         $$10.add($$4, $$5, $$6);
-      }
-
-      float $$11 = this.c();
-      float $$12 = this.d();
-      float $$13 = this.e();
-      float $$14 = this.f();
-      int $$15 = this.a($$2);
-      $$0.a((double)$$7[0].x(), (double)$$7[0].y(), (double)$$7[0].z()).a($$12, $$14).a(this.v, this.w, this.x, this.y).b($$15).e();
-      $$0.a((double)$$7[1].x(), (double)$$7[1].y(), (double)$$7[1].z()).a($$12, $$13).a(this.v, this.w, this.x, this.y).b($$15).e();
-      $$0.a((double)$$7[2].x(), (double)$$7[2].y(), (double)$$7[2].z()).a($$11, $$13).a(this.v, this.w, this.x, this.y).b($$15).e();
-      $$0.a((double)$$7[3].x(), (double)$$7[3].y(), (double)$$7[3].z()).a($$11, $$14).a(this.v, this.w, this.x, this.y).b($$15).e();
+   public gbp b() {
+      return gbp.b;
    }
 
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
+   }
+
+   @Override
    public float b(float $$0) {
-      return this.D;
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      $$1 = 1.0F - $$1;
+      $$1 *= $$1;
+      $$1 = 1.0F - $$1;
+      return this.D * $$1;
    }
 
    @Override
-   public gbe d(float $$0) {
-      this.D *= $$0;
-      return super.d($$0);
+   public int a(float $$0) {
+      int $$1 = super.a($$0);
+      float $$2 = (float)this.s / (float)this.t;
+      $$2 *= $$2;
+      $$2 *= $$2;
+      int $$3 = $$1 & 0xFF;
+      int $$4 = $$1 >> 16 & 0xFF;
+      $$4 += (int)($$2 * 15.0F * 16.0F);
+      if ($$4 > 240) {
+         $$4 = 240;
+      }
+
+      return $$3 | $$4 << 16;
    }
 
-   protected abstract float c();
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = (float)this.s / (float)this.t;
+         float var3 = -$$0 + $$0 * $$0 * 2.0F;
+         float var4 = 1.0F - var3;
+         this.g = this.a + this.j * (double)var4;
+         this.h = this.b + this.k * (double)var4 + (double)(1.0F - $$0);
+         this.i = this.F + this.l * (double)var4;
+      }
+   }
 
-   protected abstract float d();
+   public static class a implements gbo<ln> {
+      private final gcg a;
 
-   protected abstract float e();
+      public a(gcg $$0) {
+         this.a = $$0;
+      }
 
-   protected abstract float f();
-
-   public interface a {
-      gbr.a a = ($$0, $$1, $$2) -> $$0.set($$1.f());
-      gbr.a b = ($$0, $$1, $$2) -> $$0.set(0.0F, $$1.f().y, 0.0F, $$1.f().w);
-
-      void setRotation(Quaternionf var1, fes var2, float var3);
+      public gbl a(ln $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gbr $$8 = new gbr($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

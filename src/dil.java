@@ -1,72 +1,55 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.ToIntFunction;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dil extends dkb implements dfe, dmc {
-   public static final MapCodec<dil> a = b(dil::new);
-   private static final dsv c = dsu.C;
-   private final dkc d = new dkc(this);
+public class dil extends dfo implements dfi {
+   public static final MapCodec<dil> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(akj.a(lr.aH).fieldOf("feature").forGetter($$0x -> $$0x.e), lq.e.r().fieldOf("grows_on").forGetter($$0x -> $$0x.d), u())
+            .apply($$0, dil::new)
+   );
+   protected static final ews b = dff.a(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
+   private static final double c = 0.4;
+   private final dff d;
+   private final akj<ear<?, ?>> e;
 
    @Override
    public MapCodec<dil> a() {
       return a;
    }
 
-   public dil(dsd.d $$0) {
-      super($$0);
-      this.k(this.o().a(c, Boolean.valueOf(false)));
-   }
-
-   public static ToIntFunction<dse> b(int $$0) {
-      return $$1 -> dkb.n($$1) ? $$0 : 0;
+   protected dil(akj<ear<?, ?>> $$0, dff $$1, dsg.d $$2) {
+      super($$2);
+      this.e = $$0;
+      this.d = $$1;
    }
 
    @Override
-   protected void a(dsf.a<dfb, dse> $$0) {
-      super.a($$0);
-      $$0.a(c);
+   protected ews a(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
+      return b;
    }
 
    @Override
-   protected dse a(dse $$0, je $$1, dse $$2, dcb $$3, iz $$4, iz $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, eny.c, eny.c.a($$3));
-      }
+   protected boolean b(dsh $$0, dbj $$1, ja $$2) {
+      return $$0.a(avu.aL) || $$0.a(dfh.fl) || $$0.a(dfh.dX) || super.b($$0, $$1, $$2);
+   }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   private Optional<? extends jj<ear<?, ?>>> a(dcg $$0) {
+      return $$0.H_().d(lr.aH).b(this.e);
    }
 
    @Override
-   protected boolean a(dse $$0, cyc $$1) {
-      return !$$1.n().a(cuu.fW) || super.a($$0, $$1);
+   public boolean b(dcg $$0, ja $$1, dsh $$2) {
+      dsh $$3 = $$0.a_($$1.d());
+      return $$3.a(this.d);
    }
 
    @Override
-   public boolean b(dcd $$0, iz $$1, dse $$2) {
-      return je.a().anyMatch($$3 -> this.d.a($$2, $$0, $$1, $$3.g()));
+   public boolean a(dcd $$0, aym $$1, ja $$2, dsh $$3) {
+      return (double)$$1.i() < 0.4;
    }
 
    @Override
-   public boolean a(dca $$0, azh $$1, iz $$2, dse $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arf $$0, azh $$1, iz $$2, dse $$3) {
-      this.d.a($$3, $$0, $$2, $$1);
-   }
-
-   @Override
-   protected enx b_(dse $$0) {
-      return $$0.c(c) ? eny.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean a_(dse $$0, dbg $$1, iz $$2) {
-      return $$0.u().c();
-   }
-
-   @Override
-   public dkc c() {
-      return this.d;
+   public void a(aqk $$0, aym $$1, ja $$2, dsh $$3) {
+      this.a($$0).ifPresent($$3x -> ((ear)$$3x.a()).a($$0, $$0.l().g(), $$1, $$2));
    }
 }

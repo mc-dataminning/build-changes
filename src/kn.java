@@ -1,239 +1,72 @@
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectMaps;
-import it.unimi.dsi.fastutil.objects.ReferenceArraySet;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.mojang.serialization.Codec;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.function.UnaryOperator;
 
-public final class kn implements ki {
-   private final ki c;
-   private Reference2ObjectMap<kl<?>, Optional<?>> d;
-   private boolean e;
+public class kn {
+   static final axk a = new axk(512);
+   public static final km<cwo> b = a("custom_data", $$0 -> $$0.a(cwo.b));
+   public static final km<Integer> c = a("max_stack_size", $$0 -> $$0.a(axm.a(1, 99)).a(yq.g));
+   public static final km<Integer> d = a("max_damage", $$0 -> $$0.a(axm.l).a(yq.g));
+   public static final km<Integer> e = a("damage", $$0 -> $$0.a(axm.k).a(yq.g));
+   public static final km<cxg> f = a("unbreakable", $$0 -> $$0.a(cxg.a).a(cxg.b));
+   public static final km<wu> g = a("custom_name", $$0 -> $$0.a(ww.g).a(ww.b).a());
+   public static final km<wu> h = a("item_name", $$0 -> $$0.a(ww.g).a(ww.b).a());
+   public static final km<cww> i = a("lore", $$0 -> $$0.a(cww.c).a(cww.d).a());
+   public static final km<cuu> j = a("rarity", $$0 -> $$0.a(cuu.e).a(cuu.g));
+   public static final km<czp> k = a("enchantments", $$0 -> $$0.a(czp.c).a(czp.d).a());
+   public static final km<crm> l = a("can_place_on", $$0 -> $$0.a(crm.a).a(crm.b).a());
+   public static final km<crm> m = a("can_break", $$0 -> $$0.a(crm.a).a(crm.b).a());
+   public static final km<cwu> n = a("attribute_modifiers", $$0 -> $$0.a(cwu.b).a(cwu.c).a());
+   public static final km<cwp> o = a("custom_model_data", $$0 -> $$0.a(cwp.b).a(cwp.c));
+   public static final km<azh> p = a("hide_additional_tooltip", $$0 -> $$0.a(azh.b).a(ys.a(azh.a)));
+   public static final km<azh> q = a("hide_tooltip", $$0 -> $$0.a(Codec.unit(azh.a)).a(ys.a(azh.a)));
+   public static final km<Integer> r = a("repair_cost", $$0 -> $$0.a(axm.k).a(yq.g));
+   public static final km<azh> s = a("creative_slot_lock", $$0 -> $$0.a(ys.a(azh.a)));
+   public static final km<Boolean> t = a("enchantment_glint_override", $$0 -> $$0.a(Codec.BOOL).a(yq.b));
+   public static final km<azh> u = a("intangible_projectile", $$0 -> $$0.a(azh.b));
+   public static final km<cpb> v = a("food", $$0 -> $$0.a(cpb.a).a(cpb.b).a());
+   public static final km<azh> w = a("fire_resistant", $$0 -> $$0.a(azh.b).a(ys.a(azh.a)));
+   public static final km<cxe> x = a("tool", $$0 -> $$0.a(cxe.a).a(cxe.b).a());
+   public static final km<czp> y = a("stored_enchantments", $$0 -> $$0.a(czp.c).a(czp.d).a());
+   public static final km<cwr> z = a("dyed_color", $$0 -> $$0.a(cwr.a).a(cwr.b));
+   public static final km<cwz> A = a("map_color", $$0 -> $$0.a(cwz.a).a(cwz.b));
+   public static final km<epo> B = a("map_id", $$0 -> $$0.a(epo.a).a(epo.b));
+   public static final km<cwy> C = a("map_decorations", $$0 -> $$0.a(cwy.b).a());
+   public static final km<cxa> D = a("map_post_processing", $$0 -> $$0.a(cxa.d));
+   public static final km<cwn> E = a("charged_projectiles", $$0 -> $$0.a(cwn.b).a(cwn.c).a());
+   public static final km<cwm> F = a("bundle_contents", $$0 -> $$0.a(cwm.b).a(cwm.c).a());
+   public static final km<cwb> G = a("potion_contents", $$0 -> $$0.a(cwb.b).a(cwb.c).a());
+   public static final km<cxd> H = a("suspicious_stew_effects", $$0 -> $$0.a(cxd.b).a(cxd.c).a());
+   public static final km<cxh> I = a("writable_book_content", $$0 -> $$0.a(cxh.e).a(cxh.f).a());
+   public static final km<cxi> J = a("written_book_content", $$0 -> $$0.a(cxi.i).a(cxi.j).a());
+   public static final km<cwe> K = a("trim", $$0 -> $$0.a(cwe.a).a(cwe.b).a());
+   public static final km<cwq> L = a("debug_stick_state", $$0 -> $$0.a(cwq.b).a());
+   public static final km<cwo> M = a("entity_data", $$0 -> $$0.a(cwo.c).a(cwo.d));
+   public static final km<cwo> N = a("bucket_entity_data", $$0 -> $$0.a(cwo.b).a(cwo.d));
+   public static final km<cwo> O = a("block_entity_data", $$0 -> $$0.a(cwo.c).a(cwo.d));
+   public static final km<jj<cts>> P = a("instrument", $$0 -> $$0.a(cts.c).a(cts.d).a());
+   public static final km<Integer> Q = a("ominous_bottle_amplifier", $$0 -> $$0.a(axm.a(0, 4)).a(yq.g));
+   public static final km<List<akk>> R = a("recipes", $$0 -> $$0.a(akk.a.listOf()).a());
+   public static final km<cwx> S = a("lodestone_tracker", $$0 -> $$0.a(cwx.a).a(cwx.b).a());
+   public static final km<cws> T = a("firework_explosion", $$0 -> $$0.a(cws.c).a(cws.d).a());
+   public static final km<cwt> U = a("fireworks", $$0 -> $$0.a(cwt.b).a(cwt.c).a());
+   public static final km<cxb> V = a("profile", $$0 -> $$0.a(cxb.a).a(cxb.b).a());
+   public static final km<akk> W = a("note_block_sound", $$0 -> $$0.a(akk.a).a(akk.b));
+   public static final km<dpe> X = a("banner_patterns", $$0 -> $$0.a(dpe.b).a(dpe.c).a());
+   public static final km<cst> Y = a("base_color", $$0 -> $$0.a(cst.q).a(cst.r));
+   public static final km<dqr> Z = a("pot_decorations", $$0 -> $$0.a(dqr.b).a(dqr.c).a());
+   public static final km<cwv> aa = a("container", $$0 -> $$0.a(cwv.b).a(cwv.c).a());
+   public static final km<cwk> ab = a("block_state", $$0 -> $$0.a(cwk.b).a(cwk.c).a());
+   public static final km<List<dpk.c>> ac = a("bees", $$0 -> $$0.a(dpk.c.b).a(dpk.c.c.a(yq.a())).a());
+   public static final km<bqg> ad = a("lock", $$0 -> $$0.a(bqg.b));
+   public static final km<cxc> ae = a("container_loot", $$0 -> $$0.a(cxc.a));
+   public static final kj af = kj.a().a(c, 64).a(i, cww.a).a(k, czp.a).a(r, 0).a(n, cwu.a).a(j, cuu.a).a();
 
-   public kn(ki $$0) {
-      this($$0, Reference2ObjectMaps.emptyMap(), true);
+   public static km<?> a(jw<km<?>> $$0) {
+      return b;
    }
 
-   private kn(ki $$0, Reference2ObjectMap<kl<?>, Optional<?>> $$1, boolean $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   public static kn a(ki $$0, kj $$1) {
-      if (a($$0, $$1.d)) {
-         return new kn($$0, $$1.d, true);
-      } else {
-         kn $$2 = new kn($$0);
-         $$2.a($$1);
-         return $$2;
-      }
-   }
-
-   private static boolean a(ki $$0, Reference2ObjectMap<kl<?>, Optional<?>> $$1) {
-      ObjectIterator var2 = Reference2ObjectMaps.fastIterable($$1).iterator();
-
-      while (var2.hasNext()) {
-         Entry<kl<?>, Optional<?>> $$2 = (Entry<kl<?>, Optional<?>>)var2.next();
-         Object $$3 = $$0.a($$2.getKey());
-         Optional<?> $$4 = $$2.getValue();
-         if ($$4.isPresent() && $$4.get().equals($$3)) {
-            return false;
-         }
-
-         if ($$4.isEmpty() && $$3 == null) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Nullable
-   @Override
-   public <T> T a(kl<? extends T> $$0) {
-      Optional<? extends T> $$1 = (Optional<? extends T>)this.d.get($$0);
-      return (T)($$1 != null ? $$1.orElse(null) : this.c.a($$0));
-   }
-
-   @Nullable
-   public <T> T b(kl<? super T> $$0, @Nullable T $$1) {
-      this.h();
-      T $$2 = this.c.a((kl<? extends T>)$$0);
-      Optional<T> $$3;
-      if (Objects.equals($$1, $$2)) {
-         $$3 = (Optional<T>)this.d.remove($$0);
-      } else {
-         $$3 = (Optional<T>)this.d.put($$0, Optional.ofNullable($$1));
-      }
-
-      return $$3 != null ? $$3.orElse($$2) : $$2;
-   }
-
-   @Nullable
-   public <T> T d(kl<? extends T> $$0) {
-      this.h();
-      T $$1 = this.c.a($$0);
-      Optional<? extends T> $$2;
-      if ($$1 != null) {
-         $$2 = (Optional<? extends T>)this.d.put($$0, Optional.empty());
-      } else {
-         $$2 = (Optional<? extends T>)this.d.remove($$0);
-      }
-
-      return (T)($$2 != null ? $$2.orElse(null) : $$1);
-   }
-
-   public void a(kj $$0) {
-      this.h();
-      ObjectIterator var2 = Reference2ObjectMaps.fastIterable($$0.d).iterator();
-
-      while (var2.hasNext()) {
-         Entry<kl<?>, Optional<?>> $$1 = (Entry<kl<?>, Optional<?>>)var2.next();
-         this.a($$1.getKey(), $$1.getValue());
-      }
-   }
-
-   private void a(kl<?> $$0, Optional<?> $$1) {
-      Object $$2 = this.c.a($$0);
-      if ($$1.isPresent()) {
-         if ($$1.get().equals($$2)) {
-            this.d.remove($$0);
-         } else {
-            this.d.put($$0, $$1);
-         }
-      } else if ($$2 != null) {
-         this.d.put($$0, Optional.empty());
-      } else {
-         this.d.remove($$0);
-      }
-   }
-
-   public void b(kj $$0) {
-      this.h();
-      this.d.clear();
-      this.d.putAll($$0.d);
-   }
-
-   public void a(ki $$0) {
-      for (ko<?> $$1 : $$0) {
-         $$1.a(this);
-      }
-   }
-
-   private void h() {
-      if (this.e) {
-         this.d = new Reference2ObjectArrayMap(this.d);
-         this.e = false;
-      }
-   }
-
-   @Override
-   public Set<kl<?>> b() {
-      if (this.d.isEmpty()) {
-         return this.c.b();
-      } else {
-         Set<kl<?>> $$0 = new ReferenceArraySet(this.c.b());
-         ObjectIterator var2 = Reference2ObjectMaps.fastIterable(this.d).iterator();
-
-         while (var2.hasNext()) {
-            it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<kl<?>, Optional<?>> $$1 = (it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<kl<?>, Optional<?>>)var2.next();
-            Optional<?> $$2 = (Optional<?>)$$1.getValue();
-            if ($$2.isPresent()) {
-               $$0.add((kl<?>)$$1.getKey());
-            } else {
-               $$0.remove($$1.getKey());
-            }
-         }
-
-         return $$0;
-      }
-   }
-
-   @Override
-   public Iterator<ko<?>> iterator() {
-      if (this.d.isEmpty()) {
-         return this.c.iterator();
-      } else {
-         List<ko<?>> $$0 = new ArrayList<>(this.d.size() + this.c.d());
-         ObjectIterator var2 = Reference2ObjectMaps.fastIterable(this.d).iterator();
-
-         while (var2.hasNext()) {
-            it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<kl<?>, Optional<?>> $$1 = (it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<kl<?>, Optional<?>>)var2.next();
-            if (((Optional)$$1.getValue()).isPresent()) {
-               $$0.add(ko.a((kl)$$1.getKey(), ((Optional)$$1.getValue()).get()));
-            }
-         }
-
-         for (ko<?> $$2 : this.c) {
-            if (!this.d.containsKey($$2.a())) {
-               $$0.add($$2);
-            }
-         }
-
-         return $$0.iterator();
-      }
-   }
-
-   @Override
-   public int d() {
-      int $$0 = this.c.d();
-      ObjectIterator var2 = Reference2ObjectMaps.fastIterable(this.d).iterator();
-
-      while (var2.hasNext()) {
-         it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<kl<?>, Optional<?>> $$1 = (it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<kl<?>, Optional<?>>)var2.next();
-         boolean $$2 = ((Optional)$$1.getValue()).isPresent();
-         boolean $$3 = this.c.b((kl<?>)$$1.getKey());
-         if ($$2 != $$3) {
-            $$0 += $$2 ? 1 : -1;
-         }
-      }
-
-      return $$0;
-   }
-
-   public kj f() {
-      if (this.d.isEmpty()) {
-         return kj.a;
-      } else {
-         this.e = true;
-         return new kj(this.d);
-      }
-   }
-
-   public kn g() {
-      this.e = true;
-      return new kn(this.c, this.d, true);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof kn $$1 && this.c.equals($$1.c) && this.d.equals($$1.d)) {
-            return true;
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.c.hashCode() + this.d.hashCode() * 31;
-   }
-
-   @Override
-   public String toString() {
-      return "{" + this.c().map(ko::toString).collect(Collectors.joining(", ")) + "}";
+   private static <T> km<T> a(String $$0, UnaryOperator<km.a<T>> $$1) {
+      return jw.a(lq.aq, $$0, $$1.apply(km.a()).b());
    }
 }

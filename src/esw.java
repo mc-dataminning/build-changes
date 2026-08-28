@@ -1,61 +1,59 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public class esw extends erw {
-   private static final Codec<List<esw.b>> b = esw.b.a.listOf().validate($$0 -> {
-      Set<ji<bsc>> $$1 = new ObjectOpenHashSet();
-
-      for (esw.b $$2 : $$0) {
-         if (!$$1.add($$2.a())) {
-            return DataResult.error(() -> "Encountered duplicate mob effect: '" + $$2.a() + "'");
-         }
-      }
-
-      return DataResult.success($$0);
-   });
+public class esw extends esb {
    public static final MapCodec<esw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(b.optionalFieldOf("effects", List.of()).forGetter($$0x -> $$0x.c)).apply($$0, esw::new)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  ww.a.sizeLimitedListOf(256).fieldOf("lore").forGetter($$0x -> $$0x.b),
+                  esa.a(256).forGetter($$0x -> $$0x.c),
+                  eqo.b.e.optionalFieldOf("entity").forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, esw::new)
    );
-   private final List<esw.b> c;
+   private final List<wu> b;
+   private final esa c;
+   private final Optional<eqo.b> d;
 
-   esw(List<etu> $$0, List<esw.b> $$1) {
+   public esw(List<etz> $$0, List<wu> $$1, esa $$2, Optional<eqo.b> $$3) {
       super($$0);
-      this.c = $$1;
+      this.b = List.copyOf($$1);
+      this.c = $$2;
+      this.d = $$3;
    }
 
    @Override
-   public ery<esw> b() {
-      return erz.r;
+   public esd<esw> b() {
+      return ese.A;
    }
 
    @Override
-   public Set<etd<?>> a() {
-      return this.c.stream().flatMap($$0 -> $$0.b().a().stream()).collect(ImmutableSet.toImmutableSet());
+   public Set<eth<?>> a() {
+      return this.d.<Set<eth<?>>>map($$0 -> Set.of($$0.a())).orElseGet(Set::of);
    }
 
    @Override
-   public cur a(cur $$0, eqk $$1) {
-      if ($$0.a(cuu.vU) && !this.c.isEmpty()) {
-         esw.b $$2 = ac.a(this.c, $$1.b());
-         ji<bsc> $$3 = $$2.a();
-         int $$4 = $$2.b().a($$1);
-         if (!$$3.a().a()) {
-            $$4 *= 20;
-         }
+   public cua a(cua $$0, eqo $$1) {
+      $$0.a(kn.i, cww.a, $$1x -> new cww(this.a($$1x, $$1)));
+      return $$0;
+   }
 
-         cxv.a $$5 = new cxv.a($$3, $$4);
-         $$0.a(km.H, cxv.a, $$5, cxv::a);
-         return $$0;
+   private List<wu> a(@Nullable cww $$0, eqo $$1) {
+      if ($$0 == null && this.b.isEmpty()) {
+         return List.of();
       } else {
-         return $$0;
+         UnaryOperator<wu> $$2 = esx.a($$1, this.d.orElse(null));
+         List<wu> $$3 = this.b.stream().map($$2).toList();
+         return this.c.a($$0.a(), $$3, 256);
       }
    }
 
@@ -63,35 +61,33 @@ public class esw extends erw {
       return new esw.a();
    }
 
-   public static class a extends erw.a<esw.a> {
-      private final Builder<esw.b> a = ImmutableList.builder();
+   public static class a extends esb.a<esw.a> {
+      private Optional<eqo.b> a = Optional.empty();
+      private final Builder<wu> b = ImmutableList.builder();
+      private esa c = esa.a.b;
+
+      public esw.a a(esa $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public esw.a a(eqo.b $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public esw.a a(wu $$0) {
+         this.b.add($$0);
+         return this;
+      }
 
       protected esw.a a() {
          return this;
       }
 
-      public esw.a a(ji<bsc> $$0, eup $$1) {
-         this.a.add(new esw.b($$0, $$1));
-         return this;
-      }
-
       @Override
-      public erx b() {
-         return new esw(this.g(), this.a.build());
-      }
-   }
-
-   static record b(ji<bsc> b, eup c) {
-      public static final Codec<esw.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(lp.d.r().fieldOf("type").forGetter(esw.b::a), euq.a.fieldOf("duration").forGetter(esw.b::b)).apply($$0, esw.b::new)
-      );
-
-      public ji<bsc> a() {
-         return this.b;
-      }
-
-      public eup b() {
-         return this.c;
+      public esc b() {
+         return new esw(this.g(), this.b.build(), this.c, this.a);
       }
    }
 }

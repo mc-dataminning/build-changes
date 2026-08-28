@@ -1,65 +1,56 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dis extends dfb implements dmc {
-   public static final MapCodec<dis> a = b(dis::new);
-   private static final dsv c = dsu.C;
-   protected static final ewm b = dfb.a(2.0, 10.0, 2.0, 14.0, 16.0, 14.0);
+public abstract class dis extends dff {
+   protected final jf a;
+   protected final boolean b;
+   protected final ews d;
 
-   @Override
-   public MapCodec<dis> a() {
-      return a;
-   }
-
-   protected dis(dsd.d $$0) {
+   protected dis(dsg.d $$0, jf $$1, ews $$2, boolean $$3) {
       super($$0);
-      this.k(this.E.b().a(c, Boolean.valueOf(false)));
+      this.a = $$1;
+      this.d = $$2;
+      this.b = $$3;
    }
 
    @Override
-   protected void a(dsf.a<dfb, dse> $$0) {
-      $$0.a(c);
-   }
-
-   @Override
-   protected enx b_(dse $$0) {
-      return $$0.c(c) ? eny.c.a(false) : super.b_($$0);
-   }
+   protected abstract MapCodec<? extends dis> a();
 
    @Nullable
    @Override
-   public dse a(cyc $$0) {
-      dse $$1 = super.a($$0);
-      if ($$1 != null) {
-         enx $$2 = $$0.q().b_($$0.a());
-         return $$1.a(c, Boolean.valueOf($$2.a() == eny.c));
-      } else {
-         return null;
+   public dsh a(cxk $$0) {
+      dsh $$1 = $$0.q().a_($$0.a().a(this.a));
+      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.a($$0.q()) : this.b().o();
+   }
+
+   public dsh a(dce $$0) {
+      return this.o();
+   }
+
+   @Override
+   protected boolean a(dsh $$0, dcg $$1, ja $$2) {
+      ja $$3 = $$2.a(this.a.g());
+      dsh $$4 = $$1.a_($$3);
+      return !this.m($$4) ? false : $$4.a(this.c()) || $$4.a(this.b()) || $$4.d($$1, $$3, this.a);
+   }
+
+   @Override
+   protected void a(dsh $$0, aqk $$1, ja $$2, aym $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
       }
    }
 
-   @Override
-   protected boolean a(dse $$0, dcd $$1, iz $$2) {
-      iz $$3 = $$2.c();
-      dse $$4 = $$1.a_($$3);
-      return $$4.d($$1, $$3, je.a);
+   protected boolean m(dsh $$0) {
+      return true;
    }
 
    @Override
-   protected ewm a(dse $$0, dbg $$1, iz $$2, evy $$3) {
-      return b;
+   protected ews a(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
+      return this.d;
    }
 
-   @Override
-   protected dse a(dse $$0, je $$1, dse $$2, dcb $$3, iz $$4, iz $$5) {
-      if ($$1 == je.b && !this.a($$0, $$3, $$4)) {
-         return dfd.a.o();
-      } else {
-         if ($$0.c(c)) {
-            $$3.a($$4, eny.c, eny.c.a($$3));
-         }
+   protected abstract diu c();
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
+   protected abstract dff b();
 }

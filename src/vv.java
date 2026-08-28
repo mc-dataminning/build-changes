@@ -1,8 +1,4 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import io.netty.channel.ChannelOutboundHandlerAdapter;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface vv {
+public class vv extends ChannelOutboundHandlerAdapter {
 }

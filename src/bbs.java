@@ -1,19 +1,10 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public class bbs extends bfv {
-   public bbs(Schema $$0, boolean $$1) {
-      super($$0, $$1, "CatTypeFix", bgx.B, "minecraft:cat");
-   }
-
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.get("CatType").asInt(0) == 9 ? $$0.set("CatType", $$0.createInt(10)) : $$0;
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
-   }
+public class bbs {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:cactus_green", "minecraft:green_dye")
+      .put("minecraft:rose_red", "minecraft:red_dye")
+      .put("minecraft:dandelion_yellow", "minecraft:yellow_dye")
+      .build();
 }

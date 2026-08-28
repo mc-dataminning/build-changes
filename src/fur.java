@@ -1,68 +1,45 @@
-public class fur<T extends cft> extends ful<T> {
-   private final fxc a;
-   private final fxc b;
-   private final fxc f;
-   private final fxc g;
-   private final fxc h;
-   private final fxc i;
+import java.util.Optional;
+import java.util.function.Function;
+import org.joml.Vector3f;
 
-   public fur(fxc $$0) {
-      this.a = $$0;
-      this.b = $$0.b("head");
-      this.f = $$0.b("right_arm");
-      this.g = $$0.b("left_arm");
-      this.h = $$0.b("right_leg");
-      this.i = $$0.b("left_leg");
+public abstract class fur<E extends bsd> extends fui<E> {
+   private static final Vector3f a = new Vector3f();
+
+   public fur() {
+      this(gef::e);
    }
 
-   public static fxi b() {
-      fxk $$0 = new fxk();
-      fxl $$1 = $$0.a();
-      $$1.a("head", fxh.c().a(0, 0).a(-4.0F, -12.0F, -5.5F, 8.0F, 10.0F, 8.0F).a(24, 0).a(-1.0F, -5.0F, -7.5F, 2.0F, 4.0F, 2.0F), fxe.a(0.0F, -7.0F, -2.0F));
-      $$1.a(
-         "body",
-         fxh.c().a(0, 40).a(-9.0F, -2.0F, -6.0F, 18.0F, 12.0F, 11.0F).a(0, 70).a(-4.5F, 10.0F, -3.0F, 9.0F, 5.0F, 6.0F, new fxg(0.5F)),
-         fxe.a(0.0F, -7.0F, 0.0F)
-      );
-      $$1.a("right_arm", fxh.c().a(60, 21).a(-13.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), fxe.a(0.0F, -7.0F, 0.0F));
-      $$1.a("left_arm", fxh.c().a(60, 58).a(9.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), fxe.a(0.0F, -7.0F, 0.0F));
-      $$1.a("right_leg", fxh.c().a(37, 0).a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), fxe.a(-4.0F, 11.0F, 0.0F));
-      $$1.a("left_leg", fxh.c().a(60, 0).a().a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), fxe.a(5.0F, 11.0F, 0.0F));
-      return fxi.a($$0, 128, 128);
+   public fur(Function<akk, gef> $$0) {
+      super($$0);
    }
 
    @Override
-   public fxc a() {
-      return this.a;
+   public void a(fag $$0, fak $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.f = $$4 * (float) (Math.PI / 180.0);
-      this.b.e = $$5 * (float) (Math.PI / 180.0);
-      this.h.e = -1.5F * ayz.e($$1, 13.0F) * $$2;
-      this.i.e = 1.5F * ayz.e($$1, 13.0F) * $$2;
-      this.h.f = 0.0F;
-      this.i.f = 0.0F;
+   public abstract fxi a();
+
+   public Optional<fxi> a(String $$0) {
+      return $$0.equals("root") ? Optional.of(this.a()) : this.a().e().filter($$1 -> $$1.a($$0)).findFirst().map($$1 -> $$1.b($$0));
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      int $$4 = $$0.y();
-      if ($$4 > 0) {
-         this.f.e = -2.0F + 1.5F * ayz.e((float)$$4 - $$3, 10.0F);
-         this.g.e = -2.0F + 1.5F * ayz.e((float)$$4 - $$3, 10.0F);
-      } else {
-         int $$5 = $$0.gq();
-         if ($$5 > 0) {
-            this.f.e = -0.8F + 0.025F * ayz.e((float)$$5, 70.0F);
-            this.g.e = 0.0F;
-         } else {
-            this.f.e = (-0.2F + 1.5F * ayz.e($$1, 13.0F)) * $$2;
-            this.g.e = (-0.2F - 1.5F * ayz.e($$1, 13.0F)) * $$2;
-         }
-      }
+   protected void a(bry $$0, fgd $$1, float $$2) {
+      this.a($$0, $$1, $$2, 1.0F);
    }
 
-   public fxc c() {
-      return this.f;
+   protected void a(fgd $$0, float $$1, float $$2, float $$3, float $$4) {
+      long $$5 = (long)($$1 * 50.0F * $$3);
+      float $$6 = Math.min($$2 * $$4, 1.0F);
+      fgf.a(this, $$0, $$5, $$6, a);
+   }
+
+   protected void a(bry $$0, fgd $$1, float $$2, float $$3) {
+      $$0.a($$2, $$3);
+      $$0.a($$1x -> fgf.a(this, $$1, $$1x.b(), 1.0F, a));
+   }
+
+   protected void a(fgd $$0) {
+      fgf.a(this, $$0, 0L, 1.0F, a);
    }
 }

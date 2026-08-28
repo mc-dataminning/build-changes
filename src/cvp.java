@@ -1,19 +1,19 @@
-public class cvp extends cun {
-   private final arg a;
+import java.util.List;
 
-   public cvp(arg $$0) {
-      this.a = $$0;
-   }
+public interface cvp {
+   int a();
 
-   @Override
-   protected void b(cum $$0, int $$1) {
-      super.b($$0, $$1);
-      this.a.c.b(new adg($$0, $$1));
-   }
+   float b();
 
-   @Override
-   protected void c(cum $$0) {
-      super.c($$0);
-      this.a.c.b(new adg($$0, 0));
+   float c();
+
+   awk<dff> d();
+
+   int e();
+
+   cyd f();
+
+   default cxe a(awk<dff> $$0) {
+      return new cxe(List.of(cxe.a.a(this.d()), cxe.a.a($$0, this.b())), 1.0F, 1);
    }
 }

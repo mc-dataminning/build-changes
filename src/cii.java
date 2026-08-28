@@ -1,59 +1,39 @@
-import javax.annotation.Nullable;
+public class cii extends cik {
+   public cii(bsj<? extends cik> $$0, dcd $$1) {
+      super($$0, $$1);
+   }
 
-public class cii extends cif {
-   @Nullable
-   private evt b;
-   private int c;
-
-   public cii(cid $$0) {
-      super($$0);
+   public cii(dcd $$0, ja $$1, jf $$2) {
+      super(bsj.V, $$0, $$1, $$2);
    }
 
    @Override
-   public void b() {
-      if (this.c++ % 10 == 0) {
-         float $$0 = (this.a.el().i() - 0.5F) * 8.0F;
-         float $$1 = (this.a.el().i() - 0.5F) * 4.0F;
-         float $$2 = (this.a.el().i() - 0.5F) * 8.0F;
-         this.a.dP().a(li.v, this.a.du() + (double)$$0, this.a.dw() + 2.0 + (double)$$1, this.a.dA() + (double)$$2, 0.0, 0.0, 0.0);
-      }
+   public ave v() {
+      return avf.kE;
    }
 
    @Override
-   public void c() {
-      this.c++;
-      if (this.b == null) {
-         iz $$0 = this.a.dP().a(dxw.a.e, eaz.a(this.a.s()));
-         this.b = evt.c($$0);
-      }
-
-      double $$1 = this.b.c(this.a.du(), this.a.dw(), this.a.dA());
-      if (!($$1 < 100.0) && !($$1 > 22500.0) && !this.a.Q && !this.a.R) {
-         this.a.t(1.0F);
-      } else {
-         this.a.t(0.0F);
-      }
+   public ave w() {
+      return avf.kC;
    }
 
    @Override
-   public void d() {
-      this.b = null;
-      this.c = 0;
+   public ave x() {
+      return avf.kD;
    }
 
    @Override
-   public float f() {
-      return 3.0F;
-   }
-
-   @Nullable
-   @Override
-   public evt g() {
-      return this.b;
+   public ave y() {
+      return avf.kB;
    }
 
    @Override
-   public cit<cii> i() {
-      return cit.j;
+   public ave z() {
+      return avf.kF;
+   }
+
+   @Override
+   protected cua A() {
+      return new cua(cud.ud);
    }
 }

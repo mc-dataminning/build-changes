@@ -1,37 +1,110 @@
+import com.google.common.base.MoreObjects;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import java.util.Collection;
 import java.util.Optional;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class dtk {
-   private static final azj a = new azj(4);
-   private static final int b = a.a();
-   private static final int c = 0;
-   private static final int d = 4;
-   private static final int e = 8;
-   private static final int f = 12;
+public abstract class dtk<T extends Comparable<T>> {
+   private final Class<T> a;
+   private final String b;
+   @Nullable
+   private Integer c;
+   private final Codec<T> d = Codec.STRING
+      .comapFlatMap(
+         $$0x -> this.b($$0x)
+               .<DataResult>map(DataResult::success)
+               .orElseGet(() -> DataResult.error(() -> "Unable to read property: " + this + " with value: " + $$0x)),
+         this::a
+      );
+   private final Codec<dtk.a<T>> e = this.d.xmap(this::b, dtk.a::b);
 
-   public static int a() {
-      return b;
+   protected dtk(String $$0, Class<T> $$1) {
+      this.a = $$1;
+      this.b = $$0;
    }
 
-   public static int a(je $$0) {
-      return a.a($$0);
+   public dtk.a<T> b(T $$0) {
+      return new dtk.a<>(this, $$0);
    }
 
-   public static int a(float $$0) {
-      return a.b($$0);
+   public dtk.a<T> a(dsj<?, ?> $$0) {
+      return new dtk.a<>(this, $$0.c(this));
    }
 
-   public static Optional<je> a(int $$0) {
-      je $$1 = switch ($$0) {
-         case 0 -> je.c;
-         case 4 -> je.f;
-         case 8 -> je.d;
-         case 12 -> je.e;
-         default -> null;
-      };
-      return Optional.ofNullable($$1);
+   public Stream<dtk.a<T>> c() {
+      return this.a().stream().map(this::b);
    }
 
-   public static float b(int $$0) {
-      return a.b($$0);
+   public Codec<T> d() {
+      return this.d;
+   }
+
+   public Codec<dtk.a<T>> e() {
+      return this.e;
+   }
+
+   public String f() {
+      return this.b;
+   }
+
+   public Class<T> g() {
+      return this.a;
+   }
+
+   public abstract Collection<T> a();
+
+   public abstract String a(T var1);
+
+   public abstract Optional<T> b(String var1);
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this).add("name", this.b).add("clazz", this.a).add("values", this.a()).toString();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof dtk<?> $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
+      }
+   }
+
+   @Override
+   public final int hashCode() {
+      if (this.c == null) {
+         this.c = this.b();
+      }
+
+      return this.c;
+   }
+
+   public int b() {
+      return 31 * this.a.hashCode() + this.b.hashCode();
+   }
+
+   public <U, S extends dsj<?, S>> DataResult<S> a(DynamicOps<U> $$0, S $$1, U $$2) {
+      DataResult<T> $$3 = this.d.parse($$0, $$2);
+      return $$3.map($$1x -> $$1.a(this, $$1x)).setPartial($$1);
+   }
+
+   public static record a<T extends Comparable<T>>(dtk<T> a, T b) {
+      public a(dtk<T> a, T b) {
+         if (!a.a().contains(b)) {
+            throw new IllegalArgumentException("Value " + b + " does not belong to property " + a);
+         } else {
+            this.a = a;
+            this.b = b;
+         }
+      }
+
+      @Override
+      public String toString() {
+         return this.a.f() + "=" + this.a.a(this.b);
+      }
    }
 }

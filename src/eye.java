@@ -1,35 +1,7 @@
-public interface eye {
-   int a();
+public record eye(evz b, evz c, evz d) {
+   public static final eye a = new eye(evz.b, new evz(0.0, 0.0, -1.0), new evz(0.0, 1.0, 0.0));
 
-   int b();
-
-   void a(int var1, int var2);
-
-   boolean c();
-
-   float d();
-
-   default float e() {
-      return this.i();
-   }
-
-   default float f() {
-      return this.e() + (float)this.a() / this.d();
-   }
-
-   default float g() {
-      return 7.0F - this.j();
-   }
-
-   default float h() {
-      return this.g() + (float)this.b() / this.d();
-   }
-
-   default float i() {
-      return 0.0F;
-   }
-
-   default float j() {
-      return 7.0F;
+   public evz a() {
+      return this.c.c(this.d);
    }
 }

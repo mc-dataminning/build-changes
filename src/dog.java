@@ -1,96 +1,78 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public interface dog extends dgc<dog.a> {
-   Supplier<BiMap<dfb, dfb>> t_ = Suppliers.memoize(
-      () -> ImmutableBiMap.builder()
-            .put(dfd.qW, dfd.qX)
-            .put(dfd.qX, dfd.qY)
-            .put(dfd.qY, dfd.qZ)
-            .put(dfd.rf, dfd.re)
-            .put(dfd.re, dfd.rd)
-            .put(dfd.rd, dfd.rc)
-            .put(dfd.rj, dfd.ri)
-            .put(dfd.ri, dfd.rh)
-            .put(dfd.rh, dfd.rg)
-            .put(dfd.rv, dfd.ru)
-            .put(dfd.ru, dfd.rt)
-            .put(dfd.rt, dfd.rs)
-            .put(dfd.rr, dfd.rq)
-            .put(dfd.rq, dfd.rp)
-            .put(dfd.rp, dfd.ro)
-            .put(dfd.rM, dfd.rN)
-            .put(dfd.rN, dfd.rP)
-            .put(dfd.rP, dfd.rO)
-            .put(dfd.rU, dfd.rV)
-            .put(dfd.rV, dfd.rX)
-            .put(dfd.rX, dfd.rW)
-            .put(dfd.sc, dfd.sd)
-            .put(dfd.sd, dfd.se)
-            .put(dfd.se, dfd.sf)
-            .put(dfd.sk, dfd.sl)
-            .put(dfd.sl, dfd.sm)
-            .put(dfd.sm, dfd.sn)
-            .build()
+public class dog extends deb {
+   public static final MapCodec<dog> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dmh.a.b.fieldOf("kind").forGetter(deb::b), u()).apply($$0, dog::new));
+   public static final dtb d = djb.aE;
+   private static final Map<jf, ews> b = Maps.newEnumMap(
+      ImmutableMap.of(
+         jf.c,
+         dff.a(4.0, 4.0, 8.0, 12.0, 12.0, 16.0),
+         jf.d,
+         dff.a(4.0, 4.0, 0.0, 12.0, 12.0, 8.0),
+         jf.f,
+         dff.a(0.0, 4.0, 4.0, 8.0, 12.0, 12.0),
+         jf.e,
+         dff.a(8.0, 4.0, 4.0, 16.0, 12.0, 12.0)
+      )
    );
-   Supplier<BiMap<dfb, dfb>> u_ = Suppliers.memoize(() -> t_.get().inverse());
 
-   static Optional<dfb> a(dfb $$0) {
-      return Optional.ofNullable((dfb)u_.get().get($$0));
+   @Override
+   public MapCodec<? extends dog> a() {
+      return c;
    }
 
-   static dfb b(dfb $$0) {
-      dfb $$1 = $$0;
-
-      for (dfb $$2 = (dfb)u_.get().get($$0); $$2 != null; $$2 = (dfb)u_.get().get($$2)) {
-         $$1 = $$2;
-      }
-
-      return $$1;
-   }
-
-   static Optional<dse> b(dse $$0) {
-      return a($$0.b()).map($$1 -> $$1.l($$0));
-   }
-
-   static Optional<dfb> c(dfb $$0) {
-      return Optional.ofNullable((dfb)t_.get().get($$0));
-   }
-
-   static dse c(dse $$0) {
-      return b($$0.b()).l($$0);
+   protected dog(dmh.a $$0, dsg.d $$1) {
+      super($$0, $$1);
+      this.k(this.o().a(d, jf.c));
    }
 
    @Override
-   default Optional<dse> i_(dse $$0) {
-      return c($$0.b()).map($$1 -> $$1.l($$0));
+   public String g() {
+      return this.r().a();
    }
 
    @Override
-   default float at_() {
-      return this.c() == dog.a.a ? 0.75F : 1.0F;
+   protected ews a(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
+      return b.get($$0.c(d));
    }
 
-   public static enum a implements azu {
-      a("unaffected"),
-      b("exposed"),
-      c("weathered"),
-      d("oxidized");
+   @Override
+   public dsh a(cxk $$0) {
+      dsh $$1 = super.a($$0);
+      dbj $$2 = $$0.q();
+      ja $$3 = $$0.a();
+      jf[] $$4 = $$0.f();
 
-      public static final Codec<dog.a> e = azu.a(dog.a::values);
-      private final String f;
-
-      private a(final String $$0) {
-         this.f = $$0;
+      for (jf $$5 : $$4) {
+         if ($$5.o().d()) {
+            jf $$6 = $$5.g();
+            $$1 = $$1.a(d, $$6);
+            if (!$$2.a_($$3.a($$5)).a($$0)) {
+               return $$1;
+            }
+         }
       }
 
-      @Override
-      public String c() {
-         return this.f;
-      }
+      return null;
+   }
+
+   @Override
+   protected dsh a(dsh $$0, dls $$1) {
+      return $$0.a(d, $$1.a($$0.c(d)));
+   }
+
+   @Override
+   protected dsh a(dsh $$0, dkc $$1) {
+      return $$0.a($$1.a($$0.c(d)));
+   }
+
+   @Override
+   protected void a(dsi.a<dff, dsh> $$0) {
+      super.a($$0);
+      $$0.a(d);
    }
 }

@@ -1,53 +1,55 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.util.Unit;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
 
 public class bba extends DataFix {
-   private final String a;
-   private static final Set<String> b = Set.of("minecraft:empty", "minecraft:structure_starts", "minecraft:structure_references", "minecraft:biomes");
-
    public bba(Schema $$0) {
       super($$0, false);
-      this.a = "Blending Data Fix v" + $$0.getVersionKey();
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getOutputSchema().getType(bgx.c);
-      return this.fixTypeEverywhereTyped(this.a, $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> a($$0xx, $$0xx.get("__context"))));
+      OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> $$0 = DSL.typeFinder(
+         this.getInputSchema().getType(bgd.t)
+      );
+      Type<?> $$1 = this.getInputSchema().getType(bgd.B);
+      return TypeRewriteRule.seq(
+         this.a($$0, $$1, "minecraft:llama"),
+         new TypeRewriteRule[]{this.a($$0, $$1, "minecraft:trader_llama"), this.a($$0, $$1, "minecraft:mule"), this.a($$0, $$1, "minecraft:donkey")}
+      );
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0, OptionalDynamic<?> $$1) {
-      $$0 = $$0.remove("blending_data");
-      boolean $$2 = "minecraft:overworld".equals($$1.get("dimension").asString().result().orElse(""));
-      Optional<? extends Dynamic<?>> $$3 = $$0.get("Status").result();
-      if ($$2 && $$3.isPresent()) {
-         String $$4 = bij.a($$3.get().asString("empty"));
-         Optional<? extends Dynamic<?>> $$5 = $$0.get("below_zero_retrogen").result();
-         if (!b.contains($$4)) {
-            $$0 = a($$0, 384, -64);
-         } else if ($$5.isPresent()) {
-            Dynamic<?> $$6 = (Dynamic<?>)$$5.get();
-            String $$7 = bij.a($$6.get("target_status").asString("empty"));
-            if (!b.contains($$7)) {
-               $$0 = a($$0, 256, 0);
-            }
-         }
-      }
-
-      return $$0;
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0, int $$1, int $$2) {
-      return $$0.set(
-         "blending_data",
-         $$0.createMap(Map.of($$0.createString("min_section"), $$0.createInt(kb.a($$2)), $$0.createString("max_section"), $$0.createInt(kb.a($$2 + $$1))))
+   private TypeRewriteRule a(
+      OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> $$0, Type<?> $$1, String $$2
+   ) {
+      Type<?> $$3 = this.getInputSchema().getChoiceType(bgd.B, $$2);
+      OpticFinder<?> $$4 = DSL.namedChoice($$2, $$3);
+      OpticFinder<?> $$5 = $$3.findField("Items");
+      return this.fixTypeEverywhereTyped(
+         "Fix non-zero indexing in chest horse type " + $$2,
+         $$1,
+         $$3x -> $$3x.updateTyped(
+               $$4,
+               $$2xx -> $$2xx.updateTyped(
+                     $$5,
+                     $$1xxx -> $$1xxx.update(
+                           $$0,
+                           $$0xxxx -> $$0xxxx.mapSecond(
+                                 $$0xxxxx -> $$0xxxxx.mapSecond(
+                                       $$0xxxxxx -> $$0xxxxxx.mapSecond(
+                                             $$0xxxxxxx -> $$0xxxxxxx.update("Slot", $$0xxxxxxxx -> $$0xxxxxxxx.createByte((byte)($$0xxxxxxxx.asInt(2) - 2)))
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
       );
    }
 }

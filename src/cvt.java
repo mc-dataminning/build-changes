@@ -1,7 +1,32 @@
 public interface cvt {
-   boolean a(dca var1, dqt var2, boolean var3, cmz var4);
+   cvt.a a = new cvt.a(false, false);
+   cvt.a b = new cvt.a(true, false);
 
-   default boolean a(dqu $$0, cmz $$1) {
-      return $$0.a($$1);
+   boolean a();
+
+   boolean b();
+
+   public static record a(boolean c, boolean d) implements cvt {
+      @Override
+      public boolean a() {
+         return this.c;
+      }
+
+      @Override
+      public boolean b() {
+         return this.d;
+      }
+
+      public cvt.a c() {
+         return new cvt.a(this.c, true);
+      }
+
+      public boolean d() {
+         return this.c;
+      }
+
+      public boolean e() {
+         return this.d;
+      }
    }
 }

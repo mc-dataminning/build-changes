@@ -1,15 +1,27 @@
-public class gjo extends gkf<clj, fum<clj>> {
-   private static final alf a = new alf("textures/entity/hoglin/hoglin.png");
+public class gjo extends gkm<cey, fuk<cey>> {
+   private static final akk a = new akk("textures/entity/fox/fox.png");
+   private static final akk i = new akk("textures/entity/fox/fox_sleep.png");
+   private static final akk j = new akk("textures/entity/fox/snow_fox.png");
+   private static final akk k = new akk("textures/entity/fox/snow_fox_sleep.png");
 
-   public gjo(giz.a $$0) {
-      super($$0, new fum<>($$0.a(fxb.an)), 0.7F);
+   public gjo(gjg.a $$0) {
+      super($$0, new fuk<>($$0.a(fxh.ad)), 0.4F);
+      this.a(new gnf(this, $$0.d()));
    }
 
-   public alf a(clj $$0) {
-      return a;
+   protected void a(cey $$0, fag $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if ($$0.gt() || $$0.gn()) {
+         float $$6 = -aye.i($$4, $$0.P, $$0.dH());
+         $$1.a(a.b.rotationDegrees($$6));
+      }
    }
 
-   protected boolean b(clj $$0) {
-      return super.a($$0) || $$0.y();
+   public akk a(cey $$0) {
+      if ($$0.u() == cey.v.a) {
+         return $$0.fH() ? i : a;
+      } else {
+         return $$0.fH() ? k : j;
+      }
    }
 }

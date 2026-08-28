@@ -1,132 +1,30 @@
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
-import org.lwjgl.system.MemoryStack;
+import com.google.common.collect.ImmutableMap;
 
-public interface fae {
-   fae a(double var1, double var3, double var5);
-
-   fae a(int var1, int var2, int var3, int var4);
-
-   fae a(float var1, float var2);
-
-   fae a(int var1, int var2);
-
-   fae b(int var1, int var2);
-
-   fae a(float var1, float var2, float var3);
-
-   void e();
-
-   default void a(
-      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
-   ) {
-      this.a((double)$$0, (double)$$1, (double)$$2);
-      this.a($$3, $$4, $$5, $$6);
-      this.a($$7, $$8);
-      this.c($$9);
-      this.b($$10);
-      this.a($$11, $$12, $$13);
-      this.e();
-   }
-
-   void b(int var1, int var2, int var3, int var4);
-
-   void l();
-
-   default fae a(float $$0, float $$1, float $$2, float $$3) {
-      return this.a((int)($$0 * 255.0F), (int)($$1 * 255.0F), (int)($$2 * 255.0F), (int)($$3 * 255.0F));
-   }
-
-   default fae a(int $$0) {
-      return this.a(ayj.b.b($$0), ayj.b.c($$0), ayj.b.d($$0), ayj.b.a($$0));
-   }
-
-   default fae b(int $$0) {
-      return this.b($$0 & 65535, $$0 >> 16 & 65535);
-   }
-
-   default fae c(int $$0) {
-      return this.a($$0 & 65535, $$0 >> 16 & 65535);
-   }
-
-   default void a(faa.a $$0, gen $$1, float $$2, float $$3, float $$4, float $$5, int $$6, int $$7) {
-      this.a($$0, $$1, new float[]{1.0F, 1.0F, 1.0F, 1.0F}, $$2, $$3, $$4, $$5, new int[]{$$6, $$6, $$6, $$6}, $$7, false);
-   }
-
-   default void a(faa.a $$0, gen $$1, float[] $$2, float $$3, float $$4, float $$5, float $$6, int[] $$7, int $$8, boolean $$9) {
-      float[] $$10 = new float[]{$$2[0], $$2[1], $$2[2], $$2[3]};
-      int[] $$11 = new int[]{$$7[0], $$7[1], $$7[2], $$7[3]};
-      int[] $$12 = $$1.b();
-      kd $$13 = $$1.e().q();
-      Matrix4f $$14 = $$0.a();
-      Vector3f $$15 = $$0.a((float)$$13.u(), (float)$$13.v(), (float)$$13.w(), new Vector3f());
-      int $$16 = 8;
-      int $$17 = $$12.length / 8;
-      MemoryStack $$18 = MemoryStack.stackPush();
-
-      try {
-         ByteBuffer $$19 = $$18.malloc(ezy.j.b());
-         IntBuffer $$20 = $$19.asIntBuffer();
-
-         for (int $$21 = 0; $$21 < $$17; $$21++) {
-            $$20.clear();
-            $$20.put($$12, $$21 * 8, 8);
-            float $$22 = $$19.getFloat(0);
-            float $$23 = $$19.getFloat(4);
-            float $$24 = $$19.getFloat(8);
-            float $$28;
-            float $$29;
-            float $$30;
-            if ($$9) {
-               float $$25 = (float)($$19.get(12) & 255) / 255.0F;
-               float $$26 = (float)($$19.get(13) & 255) / 255.0F;
-               float $$27 = (float)($$19.get(14) & 255) / 255.0F;
-               $$28 = $$25 * $$10[$$21] * $$3;
-               $$29 = $$26 * $$10[$$21] * $$4;
-               $$30 = $$27 * $$10[$$21] * $$5;
-            } else {
-               $$28 = $$10[$$21] * $$3;
-               $$29 = $$10[$$21] * $$4;
-               $$30 = $$10[$$21] * $$5;
-            }
-
-            int $$34 = $$11[$$21];
-            float $$35 = $$19.getFloat(16);
-            float $$36 = $$19.getFloat(20);
-            Vector4f $$37 = $$14.transform(new Vector4f($$22, $$23, $$24, 1.0F));
-            this.a($$37.x(), $$37.y(), $$37.z(), $$28, $$29, $$30, $$6, $$35, $$36, $$8, $$34, $$15.x(), $$15.y(), $$15.z());
-         }
-      } catch (Throwable var34) {
-         if ($$18 != null) {
-            try {
-               $$18.close();
-            } catch (Throwable var33) {
-               var34.addSuppressed(var33);
-            }
-         }
-
-         throw var34;
-      }
-
-      if ($$18 != null) {
-         $$18.close();
-      }
-   }
-
-   default fae a(faa.a $$0, float $$1, float $$2, float $$3) {
-      return this.a($$0.a(), $$1, $$2, $$3);
-   }
-
-   default fae a(Matrix4f $$0, float $$1, float $$2, float $$3) {
-      Vector3f $$4 = $$0.transformPosition($$1, $$2, $$3, new Vector3f());
-      return this.a((double)$$4.x(), (double)$$4.y(), (double)$$4.z());
-   }
-
-   default fae b(faa.a $$0, float $$1, float $$2, float $$3) {
-      Vector3f $$4 = $$0.a($$1, $$2, $$3, new Vector3f());
-      return this.a($$4.x(), $$4.y(), $$4.z());
-   }
+public class fae {
+   public static final fam a = new fam(0, fam.a.a, fam.b.a, 3);
+   public static final fam b = new fam(0, fam.a.b, fam.b.c, 4);
+   public static final fam c = new fam(0, fam.a.a, fam.b.d, 2);
+   public static final fam d = new fam(1, fam.a.e, fam.b.d, 2);
+   public static final fam e = new fam(2, fam.a.e, fam.b.d, 2);
+   public static final fam f = new fam(0, fam.a.c, fam.b.b, 3);
+   public static final fam g = new fam(0, fam.a.c, fam.b.e, 1);
+   public static final fam h = c;
+   public static final fal i = new fal(ImmutableMap.builder().put("Position", a).put("UV", h).put("Color", b).build());
+   public static final fal j = new fal(
+      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).put("Normal", f).put("Padding", g).build()
+   );
+   public static final fal k = new fal(
+      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV1", d).put("UV2", e).put("Normal", f).put("Padding", g).build()
+   );
+   public static final fal l = new fal(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("UV2", e).build());
+   public static final fal m = new fal(ImmutableMap.builder().put("Position", a).build());
+   public static final fal n = new fal(ImmutableMap.builder().put("Position", a).put("Color", b).build());
+   public static final fal o = new fal(ImmutableMap.builder().put("Position", a).put("Color", b).put("Normal", f).put("Padding", g).build());
+   public static final fal p = new fal(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV2", e).build());
+   public static final fal q = new fal(ImmutableMap.builder().put("Position", a).put("UV0", c).build());
+   public static final fal r = new fal(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).build());
+   public static final fal s = new fal(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).build());
+   public static final fal t = new fal(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).build());
+   public static final fal u = new fal(ImmutableMap.builder().put("Position", a).put("UV0", c).put("UV2", e).put("Color", b).build());
+   public static final fal v = new fal(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("Normal", f).put("Padding", g).build());
 }

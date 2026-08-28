@@ -1,94 +1,102 @@
 import java.util.EnumSet;
+import java.util.Iterator;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class cbo extends cap {
-   private final btt a;
-   private final ckj b;
+public class cbo extends cbw {
+   private static final cdp a = cdp.a().d().e();
+   private static final int b = 10;
+   private boolean c;
+   private int d;
+   private final Class<?>[] i;
    @Nullable
-   private btr c;
-   private int d = -1;
-   private final double e;
-   private int f;
-   private final int g;
-   private final int h;
-   private final float i;
-   private final float j;
+   private Class<?>[] j;
 
-   public cbo(ckj $$0, double $$1, int $$2, float $$3) {
-      this($$0, $$1, $$2, $$2, $$3);
-   }
-
-   public cbo(ckj $$0, double $$1, int $$2, int $$3, float $$4) {
-      if (!($$0 instanceof btr)) {
-         throw new IllegalArgumentException("ArrowAttackGoal requires Mob implements RangedAttackMob");
-      } else {
-         this.b = $$0;
-         this.a = (btt)$$0;
-         this.e = $$1;
-         this.g = $$2;
-         this.h = $$3;
-         this.i = $$4;
-         this.j = $$4 * $$4;
-         this.a(EnumSet.of(cap.a.a, cap.a.b));
-      }
+   public cbo(bth $$0, Class<?>... $$1) {
+      super($$0, true);
+      this.i = $$1;
+      this.a(EnumSet.of(bzw.a.d));
    }
 
    @Override
    public boolean a() {
-      btr $$0 = this.a.p();
-      if ($$0 != null && $$0.bD()) {
-         this.c = $$0;
-         return true;
+      int $$0 = this.e.ej();
+      bsy $$1 = this.e.ei();
+      if ($$0 != this.d && $$1 != null) {
+         if ($$1.ak() == bsj.by && this.e.dP().ab().b(dbz.O)) {
+            return false;
+         } else {
+            for (Class<?> $$2 : this.i) {
+               if ($$2.isAssignableFrom($$1.getClass())) {
+                  return false;
+               }
+            }
+
+            return this.a($$1, a);
+         }
       } else {
          return false;
       }
    }
 
-   @Override
-   public boolean b() {
-      return this.a() || this.c.bD() && !this.a.K().l();
+   public cbo a(Class<?>... $$0) {
+      this.c = true;
+      this.j = $$0;
+      return this;
    }
 
    @Override
-   public void d() {
-      this.c = null;
-      this.f = 0;
-      this.d = -1;
-   }
-
-   @Override
-   public boolean R_() {
-      return true;
-   }
-
-   @Override
-   public void e() {
-      double $$0 = this.a.i(this.c.du(), this.c.dw(), this.c.dA());
-      boolean $$1 = this.a.M().a(this.c);
-      if ($$1) {
-         this.f++;
-      } else {
-         this.f = 0;
+   public void c() {
+      this.e.h(this.e.ei());
+      this.g = this.e.p();
+      this.d = this.e.ej();
+      this.h = 300;
+      if (this.c) {
+         this.h();
       }
 
-      if (!($$0 > (double)this.j) && this.f >= 5) {
-         this.a.K().n();
-      } else {
-         this.a.K().a(this.c, this.e);
-      }
+      super.c();
+   }
 
-      this.a.G().a(this.c, 30.0F, 30.0F);
-      if (--this.d == 0) {
-         if (!$$1) {
-            return;
+   protected void h() {
+      double $$0 = this.l();
+      evu $$1 = evu.a(this.e.dn()).c($$0, 10.0, $$0);
+      List<? extends bta> $$2 = this.e.dP().a((Class<? extends bta>)this.e.getClass(), $$1, bsi.f);
+      Iterator var5 = $$2.iterator();
+
+      while (true) {
+         bta $$3;
+         while (true) {
+            if (!var5.hasNext()) {
+               return;
+            }
+
+            $$3 = (bta)var5.next();
+            if (this.e != $$3 && $$3.p() == null && (!(this.e instanceof btv) || ((btv)this.e).P_() == ((btv)$$3).P_()) && !$$3.s(this.e.ei())) {
+               if (this.j == null) {
+                  break;
+               }
+
+               boolean $$4 = false;
+
+               for (Class<?> $$5 : this.j) {
+                  if ($$3.getClass() == $$5) {
+                     $$4 = true;
+                     break;
+                  }
+               }
+
+               if (!$$4) {
+                  break;
+               }
+            }
          }
 
-         float $$2 = (float)Math.sqrt($$0) / this.i;
-         float $$3 = ayz.a($$2, 0.1F, 1.0F);
-         this.b.a(this.c, $$3);
-         this.d = ayz.d($$2 * (float)(this.h - this.g) + (float)this.g);
-      } else if (this.d < 0) {
-         this.d = ayz.a(ayz.d(Math.sqrt($$0) / (double)this.i, (double)this.g, (double)this.h));
+         this.a($$3, this.e.ei());
       }
+   }
+
+   protected void a(bta $$0, bsy $$1) {
+      $$0.h($$1);
    }
 }

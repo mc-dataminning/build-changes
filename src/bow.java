@@ -1,141 +1,151 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.nio.file.Path;
-import java.time.Instant;
-import java.util.Collection;
-import java.util.HashSet;
+import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.Int2BooleanFunction;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
-import java.util.function.LongSupplier;
-import javax.annotation.Nullable;
+import java.util.concurrent.RejectedExecutionException;
+import java.util.concurrent.atomic.AtomicInteger;
+import org.slf4j.Logger;
 
-public class bow implements boy {
-   public static final int a = 10;
-   @Nullable
-   private static Consumer<Path> b = null;
-   private final Map<bor, List<bpd>> c = new Object2ObjectOpenHashMap();
-   private final bne d;
-   private final Executor e;
-   private final bpc f;
-   private final Consumer<bnj> g;
-   private final Consumer<Path> h;
-   private final bot i;
-   private final LongSupplier j;
-   private final long k;
-   private int l;
-   private bni m;
-   private volatile boolean n;
-   private Set<bor> o = ImmutableSet.of();
+public class bow<T> implements bob, bov<T>, AutoCloseable, Runnable {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 1;
+   private static final int c = 2;
+   private final AtomicInteger d = new AtomicInteger(0);
+   private final boy<? super T, ? extends Runnable> e;
+   private final Executor f;
+   private final String g;
 
-   private bow(bot $$0, LongSupplier $$1, Executor $$2, bpc $$3, Consumer<bnj> $$4, Consumer<Path> $$5) {
-      this.i = $$0;
-      this.j = $$1;
-      this.d = new bne($$1, () -> this.l);
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = b == null ? $$5 : $$5.andThen(b);
-      this.k = $$1.getAsLong() + TimeUnit.NANOSECONDS.convert(10L, TimeUnit.SECONDS);
-      this.m = new bnd(this.j, () -> this.l, false);
-      this.d.c();
+   public static bow<Runnable> a(Executor $$0, String $$1) {
+      return new bow<>(new boy.c<>(new ConcurrentLinkedQueue<>()), $$0, $$1);
    }
 
-   public static bow a(bot $$0, LongSupplier $$1, Executor $$2, bpc $$3, Consumer<bnj> $$4, Consumer<Path> $$5) {
-      return new bow($$0, $$1, $$2, $$3, $$4, $$5);
+   public bow(boy<? super T, ? extends Runnable> $$0, Executor $$1, String $$2) {
+      this.f = $$1;
+      this.e = $$0;
+      this.g = $$2;
+      bnz.a.a(this);
+   }
+
+   private boolean d() {
+      int $$0;
+      do {
+         $$0 = this.d.get();
+         if (($$0 & 3) != 0) {
+            return false;
+         }
+      } while (!this.d.compareAndSet($$0, $$0 | 2));
+
+      return true;
+   }
+
+   private void e() {
+      int $$0;
+      do {
+         $$0 = this.d.get();
+      } while (!this.d.compareAndSet($$0, $$0 & -3));
+   }
+
+   private boolean f() {
+      return (this.d.get() & 1) != 0 ? false : !this.e.b();
    }
 
    @Override
-   public synchronized void a() {
-      if (this.e()) {
-         this.n = true;
+   public void close() {
+      int $$0;
+      do {
+         $$0 = this.d.get();
+      } while (!this.d.compareAndSet($$0, $$0 | 1));
+   }
+
+   private boolean g() {
+      return (this.d.get() & 2) != 0;
+   }
+
+   private boolean h() {
+      if (!this.g()) {
+         return false;
+      } else {
+         Runnable $$0 = this.e.a();
+         if ($$0 == null) {
+            return false;
+         } else {
+            ac.a(this.g, $$0).run();
+            return true;
+         }
       }
    }
 
    @Override
-   public synchronized void b() {
-      if (this.e()) {
-         this.m = bnh.a;
-         this.g.accept(bnf.a);
-         this.a(this.o);
+   public void run() {
+      try {
+         this.a($$0 -> $$0 == 0);
+      } finally {
+         this.e();
+         this.i();
+      }
+   }
+
+   public void a() {
+      try {
+         this.a($$0 -> true);
+      } finally {
+         this.e();
+         this.i();
       }
    }
 
    @Override
-   public void c() {
-      this.g();
-      this.o = this.i.a(() -> this.m);
-
-      for (bor $$0 : this.o) {
-         $$0.a();
-      }
-
-      this.l++;
+   public void a(T $$0) {
+      this.e.a($$0);
+      this.i();
    }
 
-   @Override
-   public void d() {
-      this.g();
-      if (this.l != 0) {
-         for (bor $$0 : this.o) {
-            $$0.a(this.l);
-            if ($$0.g()) {
-               bpd $$1 = new bpd(Instant.now(), this.l, this.m.d());
-               this.c.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
+   private void i() {
+      if (this.f() && this.d()) {
+         try {
+            this.f.execute(this);
+         } catch (RejectedExecutionException var4) {
+            try {
+               this.f.execute(this);
+            } catch (RejectedExecutionException var3) {
+               a.error("Cound not schedule mailbox", var3);
             }
          }
-
-         if (!this.n && this.j.getAsLong() <= this.k) {
-            this.m = new bnd(this.j, () -> this.l, false);
-         } else {
-            this.n = false;
-            bnj $$2 = this.d.e();
-            this.m = bnh.a;
-            this.g.accept($$2);
-            this.a($$2);
-         }
       }
+   }
+
+   private int a(Int2BooleanFunction $$0) {
+      int $$1 = 0;
+
+      while ($$0.get($$1) && this.h()) {
+         $$1++;
+      }
+
+      return $$1;
+   }
+
+   public int b() {
+      return this.e.c();
+   }
+
+   public boolean c() {
+      return this.g() && !this.e.b();
    }
 
    @Override
-   public boolean e() {
-      return this.d.a();
+   public String toString() {
+      return this.g + " " + this.d.get() + " " + this.e.b();
    }
 
    @Override
-   public bnk f() {
-      return bnk.a(this.d.d(), this.m);
+   public String by() {
+      return this.g;
    }
 
-   private void g() {
-      if (!this.e()) {
-         throw new IllegalStateException("Not started!");
-      }
-   }
-
-   private void a(bnj $$0) {
-      HashSet<bor> $$1 = new HashSet<>(this.o);
-      this.e.execute(() -> {
-         Path $$2 = this.f.a($$1, this.c, $$0);
-         this.a($$1);
-         this.h.accept($$2);
-      });
-   }
-
-   private void a(Collection<bor> $$0) {
-      for (bor $$1 : $$0) {
-         $$1.b();
-      }
-
-      this.c.clear();
-      this.d.b();
-   }
-
-   public static void a(Consumer<Path> $$0) {
-      b = $$0;
+   @Override
+   public List<bny> bv() {
+      return ImmutableList.of(bny.a(this.g + "-queue-size", bnx.c, this::b));
    }
 }

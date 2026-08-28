@@ -1,58 +1,46 @@
-import java.io.BufferedInputStream;
-import java.io.FilterInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.floats.FloatConsumer;
 import java.nio.ByteBuffer;
-import javax.sound.sampled.AudioFormat;
+import java.util.List;
+import org.lwjgl.BufferUtils;
 
-public class gtr implements gtl {
-   private final gtr.a a;
-   private gtl b;
-   private final BufferedInputStream c;
+public class gtr implements FloatConsumer {
+   private final List<ByteBuffer> a = Lists.newArrayList();
+   private final int b;
+   private int c;
+   private ByteBuffer d;
 
-   public gtr(gtr.a $$0, InputStream $$1) throws IOException {
-      this.a = $$0;
-      this.c = new BufferedInputStream($$1);
-      this.c.mark(Integer.MAX_VALUE);
-      this.b = $$0.create(new gtr.b(this.c));
+   public gtr(int $$0) {
+      this.b = $$0 + 1 & -2;
+      this.d = BufferUtils.createByteBuffer($$0);
    }
 
-   @Override
-   public AudioFormat a() {
-      return this.b.a();
-   }
-
-   @Override
-   public ByteBuffer a(int $$0) throws IOException {
-      ByteBuffer $$1 = this.b.a($$0);
-      if (!$$1.hasRemaining()) {
-         this.b.close();
-         this.c.reset();
-         this.b = this.a.create(new gtr.b(this.c));
-         $$1 = this.b.a($$0);
+   public void accept(float $$0) {
+      if (this.d.remaining() == 0) {
+         this.d.flip();
+         this.a.add(this.d);
+         this.d = BufferUtils.createByteBuffer(this.b);
       }
 
-      return $$1;
+      int $$1 = aye.a((int)($$0 * 32767.5F - 0.5F), -32768, 32767);
+      this.d.putShort((short)$$1);
+      this.c += 2;
    }
 
-   @Override
-   public void close() throws IOException {
-      this.b.close();
-      this.c.close();
-   }
-
-   @FunctionalInterface
-   public interface a {
-      gtl create(InputStream var1) throws IOException;
-   }
-
-   static class b extends FilterInputStream {
-      b(InputStream $$0) {
-         super($$0);
+   public ByteBuffer a() {
+      this.d.flip();
+      if (this.a.isEmpty()) {
+         return this.d;
+      } else {
+         ByteBuffer $$0 = BufferUtils.createByteBuffer(this.c);
+         this.a.forEach($$0::put);
+         $$0.put(this.d);
+         $$0.flip();
+         return $$0;
       }
+   }
 
-      @Override
-      public void close() {
-      }
+   public int b() {
+      return this.c;
    }
 }

@@ -1,46 +1,33 @@
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import org.slf4j.Logger;
+import java.nio.charset.StandardCharsets;
 
-public abstract class aut extends auu<Map<alf, JsonElement>> {
-   private static final Logger a = LogUtils.getLogger();
-   private final Gson b;
-   private final String c;
+public class aut {
+   public static final int a = 1460;
+   public static final char[] b = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
 
-   public aut(Gson $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+   public static String a(byte[] $$0, int $$1, int $$2) {
+      int $$3 = $$2 - 1;
+      int $$4 = $$1 > $$3 ? $$3 : $$1;
 
-   protected Map<alf, JsonElement> a(aup $$0, bnk $$1) {
-      Map<alf, JsonElement> $$2 = new HashMap<>();
-      a($$0, this.c, this.b, $$2);
-      return $$2;
-   }
-
-   public static void a(aup $$0, String $$1, Gson $$2, Map<alf, JsonElement> $$3) {
-      aky $$4 = aky.a($$1);
-
-      for (Entry<alf, aun> $$5 : $$4.a($$0).entrySet()) {
-         alf $$6 = $$5.getKey();
-         alf $$7 = $$4.b($$6);
-
-         try (Reader $$8 = $$5.getValue().e()) {
-            JsonElement $$9 = ayp.a($$2, $$8, JsonElement.class);
-            JsonElement $$10 = $$3.put($$7, $$9);
-            if ($$10 != null) {
-               throw new IllegalStateException("Duplicate data file ignored with ID " + $$7);
-            }
-         } catch (IllegalArgumentException | IOException | JsonParseException var14) {
-            a.error("Couldn't parse data file {} from {}", new Object[]{$$7, $$6, var14});
-         }
+      while (0 != $$0[$$4] && $$4 < $$3) {
+         $$4++;
       }
+
+      return new String($$0, $$1, $$4 - $$1, StandardCharsets.UTF_8);
+   }
+
+   public static int a(byte[] $$0, int $$1) {
+      return b($$0, $$1, $$0.length);
+   }
+
+   public static int b(byte[] $$0, int $$1, int $$2) {
+      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1 + 3] << 24 | ($$0[$$1 + 2] & 0xFF) << 16 | ($$0[$$1 + 1] & 0xFF) << 8 | $$0[$$1] & 0xFF;
+   }
+
+   public static int c(byte[] $$0, int $$1, int $$2) {
+      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1] << 24 | ($$0[$$1 + 1] & 0xFF) << 16 | ($$0[$$1 + 2] & 0xFF) << 8 | $$0[$$1 + 3] & 0xFF;
+   }
+
+   public static String a(byte $$0) {
+      return "" + b[($$0 & 240) >>> 4] + b[$$0 & 15];
    }
 }

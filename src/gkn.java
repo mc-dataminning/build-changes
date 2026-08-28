@@ -1,24 +1,18 @@
-public class gkn extends gkf<ckh, fvd<ckh>> {
-   private static final alf a = new alf("textures/entity/phantom.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gkn(giz.a $$0) {
-      super($$0, new fvd<>($$0.a(fxb.aH)), 0.75F);
-      this.a(new gnj<>(this));
+public class gkn extends gkm<cfb, fub<cfb>> {
+   private static final Map<cfb.a, akk> a = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(cfb.a.b, new akk("textures/entity/cow/brown_mooshroom.png"));
+      $$0.put(cfb.a.a, new akk("textures/entity/cow/red_mooshroom.png"));
+   });
+
+   public gkn(gjg.a $$0) {
+      super($$0, new fub<>($$0.a(fxh.aC)), 0.7F);
+      this.a(new gnn<>(this, $$0.c()));
    }
 
-   public alf a(ckh $$0) {
-      return a;
-   }
-
-   protected void a(ckh $$0, faa $$1, float $$2) {
-      int $$3 = $$0.s();
-      float $$4 = 1.0F + 0.15F * (float)$$3;
-      $$1.b($$4, $$4, $$4);
-      $$1.a(0.0F, 1.3125F, 0.1875F);
-   }
-
-   protected void a(ckh $$0, faa $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      $$1.a(a.b.rotationDegrees($$0.dH()));
+   public akk a(cfb $$0) {
+      return a.get($$0.u());
    }
 }

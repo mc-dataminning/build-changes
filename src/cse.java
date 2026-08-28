@@ -1,21 +1,15 @@
-import java.util.List;
-
-public class cse extends cum {
-   private final dfb a;
-
-   public cse(dfb $$0, cum.a $$1) {
-      super($$1);
-      this.a = $$0;
+public class cse extends ctv {
+   public cse(ctv.a $$0) {
+      super($$0);
    }
 
    @Override
-   public String a() {
-      return this.a.g();
-   }
+   public cua a(cua $$0, dcd $$1, bsy $$2) {
+      cua $$3 = super.a($$0, $$1, $$2);
+      if ($$2 instanceof cmh $$4 && $$4.fL()) {
+         return $$3;
+      }
 
-   @Override
-   public void a(cur $$0, cum.b $$1, List<xp> $$2, cwk $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a.a($$0, $$1, $$2, $$3);
+      return new cua(cud.pq);
    }
 }

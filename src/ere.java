@@ -1,64 +1,66 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.MapCodec;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
+import java.util.function.Predicate;
 
-public class ere extends eqt {
-   public static final MapCodec<ere> a = a(ere::new);
+public abstract class ere implements eqw {
+   protected final List<etz> e;
+   private final Predicate<eqo> a;
 
-   ere(List<era> $$0, List<etu> $$1) {
-      super($$0, $$1);
+   protected ere(List<etz> $$0) {
+      this.e = $$0;
+      this.a = ac.a($$0);
    }
 
-   @Override
-   public erb a() {
-      return eqy.h;
+   protected static <T extends ere> P1<Mu<T>, List<etz>> a(Instance<T> $$0) {
+      return $$0.group(etz.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.e));
    }
 
-   @Override
-   protected eqs a(List<? extends eqs> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (eqs)$$0.get(0);
-         case 2 -> $$0.get(0).and($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (eqs $$3 : $$0) {
-            if (!$$3.expand($$1, $$2)) {
-               return false;
-            }
-         }
-
-         return true;
-      };
-      };
+   public void a(equ $$0) {
+      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
+         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+      }
    }
 
-   public static ere.a a(era.a<?>... $$0) {
-      return new ere.a($$0);
+   protected final boolean a(eqo $$0) {
+      return this.a.test($$0);
    }
 
-   public static class a extends era.a<ere.a> {
-      private final Builder<era> a = ImmutableList.builder();
+   public abstract erf a();
 
-      public a(era.a<?>... $$0) {
-         for (era.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
+   public abstract static class a<T extends ere.a<T>> implements etr<T> {
+      private final Builder<etz> a = ImmutableList.builder();
+
+      protected abstract T aC_();
+
+      public T a(etz.a $$0) {
+         this.a.add($$0.build());
+         return this.aC_();
       }
 
-      protected ere.a a() {
-         return this;
+      public final T e() {
+         return this.aC_();
       }
 
-      @Override
-      public ere.a c(era.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
+      protected List<etz> f() {
+         return this.a.build();
       }
 
-      @Override
-      public era b() {
-         return new ere(this.a.build(), this.f());
+      public eqv.a a(ere.a<?> $$0) {
+         return new eqv.a(this, $$0);
       }
+
+      public era.a b(ere.a<?> $$0) {
+         return new era.a(this, $$0);
+      }
+
+      public eri.a c(ere.a<?> $$0) {
+         return new eri.a(this, $$0);
+      }
+
+      public abstract ere b();
    }
 }

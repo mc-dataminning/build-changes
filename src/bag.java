@@ -1,76 +1,25 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Set;
+import com.mojang.serialization.OptionalDynamic;
 
-public enum bag {
-   a(bgx.a),
-   b(bgx.b),
-   c(bgx.c),
-   d(bgx.d),
-   e(bgx.e),
-   f(bgx.f),
-   g(bgx.g),
-   h(bgx.h),
-   i(bgx.i),
-   j(bgx.j),
-   k(bgx.k),
-   l(bgx.l),
-   m(bgx.m),
-   n(bgx.o),
-   o(bgx.n),
-   p(bgx.p),
-   q(bgx.q),
-   r(bgx.M),
-   s(bgx.r);
-
-   public static final Set<TypeReference> t;
-   private final TypeReference u;
-
-   private bag(final TypeReference $$0) {
-      this.u = $$0;
+public class bag extends DataFix {
+   public bag(Schema $$0) {
+      super($$0, false);
    }
 
-   static int a() {
-      return aa.b().d().c();
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getOutputSchema().getType(bgd.c);
+      return this.fixTypeEverywhereTyped(
+         "BlendingDataRemoveFromNetherEndFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> a($$0xx, $$0xx.get("__context")))
+      );
    }
 
-   public <A> Codec<A> a(final Codec<A> $$0, final DataFixer $$1, final int $$2) {
-      return new Codec<A>() {
-         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1x, T $$2x) {
-            return $$0.encode($$0, $$1, $$2).flatMap($$1xxx -> $$1.mergeToMap($$1xxx, $$1.createString("DataVersion"), $$1.createInt(bag.a())));
-         }
-
-         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1x) {
-            int $$2 = $$0.get($$1, "DataVersion").flatMap($$0::getNumberValue).map(Number::intValue).result().orElse($$2);
-            Dynamic<T> $$3 = new Dynamic($$0, $$0.remove($$1, "DataVersion"));
-            Dynamic<T> $$4 = bag.this.a($$1, $$3, $$2);
-            return $$0.decode($$4);
-         }
-      };
-   }
-
-   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2, int $$3) {
-      return $$0.update(this.u, $$1, $$2, $$3);
-   }
-
-   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2) {
-      return this.a($$0, $$1, $$2, a());
-   }
-
-   public us a(DataFixer $$0, us $$1, int $$2, int $$3) {
-      return (us)this.a($$0, new Dynamic(vg.a, $$1), $$2, $$3).getValue();
-   }
-
-   public us a(DataFixer $$0, us $$1, int $$2) {
-      return this.a($$0, $$1, $$2, a());
-   }
-
-   static {
-      t = Set.of(a.u);
+   private static Dynamic<?> a(Dynamic<?> $$0, OptionalDynamic<?> $$1) {
+      boolean $$2 = "minecraft:overworld".equals($$1.get("dimension").asString().result().orElse(""));
+      return $$2 ? $$0 : $$0.remove("blending_data");
    }
 }

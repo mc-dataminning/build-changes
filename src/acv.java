@@ -1,37 +1,45 @@
-public class acv implements zw<aci> {
-   public static final zn<wm, acv> a = zw.a(acv::a, acv::new);
-   private final bqt b;
-   private final boolean c;
+public class acv implements zb<abn> {
+   public static final ys<vr, acv> a = zb.a(acv::a, acv::new);
+   private final int b;
+   private final int c;
+   private final int d;
 
-   public acv(bqt $$0, boolean $$1) {
+   public acv(int $$0, int $$1, int $$2) {
       this.b = $$0;
       this.c = $$1;
+      this.d = $$2;
    }
 
-   private acv(wm $$0) {
-      this.b = bqt.a($$0.readUnsignedByte());
-      this.c = $$0.readBoolean();
+   private acv(vr $$0) {
+      this.b = $$0.readUnsignedByte();
+      this.c = $$0.l();
+      this.d = $$0.readInt();
    }
 
-   private void a(wm $$0) {
-      $$0.k(this.b.a());
-      $$0.a(this.c);
+   private void a(vr $$0) {
+      $$0.k(this.b);
+      $$0.c(this.c);
+      $$0.p(this.d);
    }
 
    @Override
-   public zy<acv> a() {
-      return agu.m;
+   public zd<acv> a() {
+      return afz.H;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
+   public int b() {
+      return this.b;
+   }
+
+   public int e() {
       return this.c;
    }
 
-   public bqt e() {
-      return this.b;
+   public int f() {
+      return this.d;
    }
 }

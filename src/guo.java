@@ -1,60 +1,65 @@
+import java.time.Duration;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
 public class guo {
-   private boolean a;
-   @Nullable
-   private gui.b b;
-   @Nullable
-   private String c;
-   @Nullable
-   private final String d;
+   private final UUID a = UUID.randomUUID();
+   private final guj b;
+   private final gus c;
+   private final guu d = new guu();
+   private final gur e;
+   private final gut f;
 
-   public guo(@Nullable String $$0) {
-      this.d = $$0;
+   public guo(guj $$0, boolean $$1, @Nullable Duration $$2, @Nullable String $$3) {
+      this.c = new gus($$3);
+      this.e = new gur();
+      this.f = new gut($$1, $$2);
+      this.b = $$0.decorate($$0x -> {
+         this.c.a($$0x);
+         $$0x.a(gum.i, this.a);
+      });
    }
 
-   public void a(guj.a $$0) {
-      if (this.c != null) {
-         $$0.a(gui.j, !this.c.equals("vanilla"));
-      }
-
-      $$0.a(gui.k, this.a());
+   public void a() {
+      this.e.a(this.b);
    }
 
-   private gui.c a() {
-      fyl $$0 = ffh.Q().S();
-      if ($$0 != null && $$0.e()) {
-         return gui.c.a;
-      } else {
-         return ffh.Q().U() ? gui.c.b : gui.c.c;
-      }
-   }
-
-   public boolean a(guf $$0) {
-      if (!this.a && this.b != null && this.c != null) {
-         this.a = true;
-         $$0.send(gug.b, $$0x -> {
-            $$0x.a(gui.n, this.b);
-            if (this.d != null) {
-               $$0x.a(gui.o, this.d);
-            }
-         });
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public void a(dbx $$0, boolean $$1) {
-      this.b = switch ($$0) {
-         case a -> $$1 ? gui.b.e : gui.b.a;
-         case b -> gui.b.b;
-         case c -> gui.b.c;
-         case d -> gui.b.d;
-      };
+   public void a(dca $$0, boolean $$1) {
+      this.c.a($$0, $$1);
+      this.d.a();
+      this.b();
    }
 
    public void a(String $$0) {
-      this.c = $$0;
+      this.c.a($$0);
+      this.b();
+   }
+
+   public void a(long $$0) {
+      this.d.a($$0);
+   }
+
+   public void b() {
+      if (this.c.a(this.b)) {
+         this.f.a(this.b);
+         this.e.a();
+      }
+   }
+
+   public void c() {
+      this.c.a(this.b);
+      this.e.d();
+      this.d.a(this.b);
+   }
+
+   public void a(dcd $$0, af $$1) {
+      akk $$2 = $$1.a();
+      if ($$1.b().g() && "minecraft".equals($$2.b())) {
+         long $$3 = $$0.Z();
+         this.b.send(guk.f, $$2x -> {
+            $$2x.a(gum.D, $$2.toString());
+            $$2x.a(gum.E, $$3);
+         });
+      }
    }
 }

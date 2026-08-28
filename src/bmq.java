@@ -1,31 +1,32 @@
-import java.util.Optional;
+import java.nio.file.Path;
+import java.util.List;
 
-public interface bmq<S, T> {
-   Optional<T> a(bmp<S> var1);
+public interface bmq {
+   char d = '\u001e';
 
-   static <S, T> bmq<S, T> a(bmt<S> $$0, bmq.a<S, T> $$1) {
-      return new bmq.c<>($$1, $$0);
+   List<bmt> a(String var1);
+
+   boolean a(Path var1);
+
+   long a();
+
+   int b();
+
+   long c();
+
+   int d();
+
+   default long g() {
+      return this.c() - this.a();
    }
 
-   static <S, T> bmq<S, T> a(bmt<S> $$0, bmq.b<T> $$1) {
-      return new bmq.c<>(($$1x, $$2) -> Optional.of($$1.run($$2)), $$0);
+   default int f() {
+      return this.d() - this.b();
    }
 
-   @FunctionalInterface
-   public interface a<S, T> {
-      Optional<T> run(bmp<S> var1, bmr var2);
-   }
+   String e();
 
-   @FunctionalInterface
-   public interface b<T> {
-      T run(bmr var1);
-   }
-
-   public static record c<S, T>(bmq.a<S, T> a, bmt<S> b) implements bmq<S, T> {
-      @Override
-      public Optional<T> a(bmp<S> $$0) {
-         bmr $$1 = new bmr();
-         return this.b.a($$0, $$1, bml.a) ? this.a.run($$0, $$1) : Optional.empty();
-      }
+   static String b(String $$0) {
+      return $$0.replace('\u001e', '.');
    }
 }

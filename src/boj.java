@@ -1,56 +1,112 @@
-import com.mojang.datafixers.util.Pair;
-import java.time.Duration;
-import java.util.Comparator;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
-public final class boj<T> {
-   private final boj.a a;
-   private final List<Pair<T, boj.a>> b;
-   private final Duration c;
+public class boj {
+   public static final Path a = Paths.get("debug/profiling");
+   public static final String b = "metrics";
+   public static final String c = "deviations";
+   public static final String d = "profiling.txt";
+   private static final Logger e = LogUtils.getLogger();
+   private final String f;
 
-   public boj(Duration $$0, List<Pair<T, boj.a>> $$1) {
-      this.c = $$0;
-      this.a = $$1.stream().<boj.a>map(Pair::getSecond).reduce(new boj.a(0L, 0L), boj.a::a);
-      this.b = $$1.stream().sorted(Comparator.comparing(Pair::getSecond, boj.a.c)).limit(10L).toList();
+   public boj(String $$0) {
+      this.f = $$0;
    }
 
-   public double a() {
-      return (double)this.a.a / (double)this.c.getSeconds();
-   }
-
-   public double b() {
-      return (double)this.a.b / (double)this.c.getSeconds();
-   }
-
-   public long c() {
-      return this.a.a;
-   }
-
-   public long d() {
-      return this.a.b;
-   }
-
-   public List<Pair<T, boj.a>> e() {
-      return this.b;
-   }
-
-   public static record a(long a, long b) {
-      static final Comparator<boj.a> c = Comparator.comparing(boj.a::c).thenComparing(boj.a::b).reversed();
-
-      boj.a a(boj.a $$0) {
-         return new boj.a(this.a + $$0.a, this.b + $$0.b);
+   public Path a(Set<bny> $$0, Map<bny, List<bok>> $$1, bmq $$2) {
+      try {
+         Files.createDirectories(a);
+      } catch (IOException var8) {
+         throw new UncheckedIOException(var8);
       }
 
-      public float a() {
-         return (float)this.b / (float)this.a;
-      }
+      try {
+         Path $$4 = Files.createTempDirectory("minecraft-profiling");
+         $$4.toFile().deleteOnExit();
+         Files.createDirectories(a);
+         Path $$5 = $$4.resolve(this.f);
+         Path $$6 = $$5.resolve("metrics");
+         this.a($$0, $$6);
+         if (!$$1.isEmpty()) {
+            this.a($$1, $$5.resolve("deviations"));
+         }
 
-      public long b() {
-         return this.a;
+         this.a($$2, $$5);
+         return $$4;
+      } catch (IOException var7) {
+         throw new UncheckedIOException(var7);
       }
+   }
 
-      public long c() {
-         return this.b;
+   private void a(Set<bny> $$0, Path $$1) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Expected at least one sampler to persist");
+      } else {
+         Map<bnx, List<bny>> $$2 = $$0.stream().collect(Collectors.groupingBy(bny::e));
+         $$2.forEach(($$1x, $$2x) -> this.a($$1x, $$2x, $$1));
       }
+   }
+
+   private void a(bnx $$0, List<bny> $$1, Path $$2) {
+      Path $$3 = $$2.resolve(ac.a($$0.a(), akk::b) + ".csv");
+      Writer $$4 = null;
+
+      try {
+         Files.createDirectories($$3.getParent());
+         $$4 = Files.newBufferedWriter($$3, StandardCharsets.UTF_8);
+         axd.a $$5 = axd.a();
+         $$5.a("@tick");
+
+         for (bny $$6 : $$1) {
+            $$5.a($$6.d());
+         }
+
+         axd $$7 = $$5.a($$4);
+         List<bny.b> $$8 = $$1.stream().map(bny::f).collect(Collectors.toList());
+         int $$9 = $$8.stream().mapToInt(bny.b::a).summaryStatistics().getMin();
+         int $$10 = $$8.stream().mapToInt(bny.b::b).summaryStatistics().getMax();
+
+         for (int $$11 = $$9; $$11 <= $$10; $$11++) {
+            int $$12 = $$11;
+            Stream<String> $$13 = $$8.stream().map($$1x -> String.valueOf($$1x.a($$12)));
+            Object[] $$14 = Stream.concat(Stream.of(String.valueOf($$11)), $$13).toArray(String[]::new);
+            $$7.a($$14);
+         }
+
+         e.info("Flushed metrics to {}", $$3);
+      } catch (Exception var18) {
+         e.error("Could not save profiler results to {}", $$3, var18);
+      } finally {
+         IOUtils.closeQuietly($$4);
+      }
+   }
+
+   private void a(Map<bny, List<bok>> $$0, Path $$1) {
+      DateTimeFormatter $$2 = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH.mm.ss.SSS", Locale.UK).withZone(ZoneId.systemDefault());
+      $$0.forEach(($$2x, $$3) -> $$3.forEach($$3x -> {
+            String $$4 = $$2.format($$3x.a);
+            Path $$5 = $$1.resolve(ac.a($$2x.d(), akk::b)).resolve(String.format(Locale.ROOT, "%d@%s.txt", $$3x.b, $$4));
+            $$3x.c.a($$5);
+         }));
+   }
+
+   private void a(bmq $$0, Path $$1) {
+      $$0.a($$1.resolve("profiling.txt"));
    }
 }

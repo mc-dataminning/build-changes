@@ -1,51 +1,62 @@
-import com.google.common.base.Suppliers;
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.function.Supplier;
+import java.util.Objects;
+import java.util.Optional;
 
-public class bdy extends bdn {
-   private final Supplier<Type<?>> b = Suppliers.memoize(() -> this.getOutputSchema().getChoiceType(bgx.B, "ZombieVillager"));
+public class bdy extends DataFix {
+   public static final String[] a = new String[]{
+      "minecraft:white_shulker_box",
+      "minecraft:orange_shulker_box",
+      "minecraft:magenta_shulker_box",
+      "minecraft:light_blue_shulker_box",
+      "minecraft:yellow_shulker_box",
+      "minecraft:lime_shulker_box",
+      "minecraft:pink_shulker_box",
+      "minecraft:gray_shulker_box",
+      "minecraft:silver_shulker_box",
+      "minecraft:cyan_shulker_box",
+      "minecraft:purple_shulker_box",
+      "minecraft:blue_shulker_box",
+      "minecraft:brown_shulker_box",
+      "minecraft:green_shulker_box",
+      "minecraft:red_shulker_box",
+      "minecraft:black_shulker_box"
+   };
 
-   public bdy(Schema $$0) {
-      super("EntityZombieSplitFix", $$0, true);
+   public bdy(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
-      if (!$$0.equals("Zombie")) {
-         return Pair.of($$0, $$1);
-      } else {
-         Dynamic<?> $$2 = (Dynamic<?>)$$1.getOptional(DSL.remainderFinder()).orElseThrow();
-         int $$3 = $$2.get("ZombieType").asInt(0);
-         String $$4;
-         Typed<?> $$5;
-         switch ($$3) {
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-               $$4 = "ZombieVillager";
-               $$5 = this.a($$1, $$3 - 1);
-               break;
-            case 6:
-               $$4 = "Husk";
-               $$5 = $$1;
-               break;
-            default:
-               $$4 = "Zombie";
-               $$5 = $$1;
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bgd.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bgd.D.typeName(), bhp.a()));
+      OpticFinder<?> $$2 = $$0.findField("tag");
+      OpticFinder<?> $$3 = $$2.type().findField("BlockEntityTag");
+      return this.fixTypeEverywhereTyped("ItemShulkerBoxColorFix", $$0, $$3x -> {
+         Optional<Pair<String, String>> $$4 = $$3x.getOptional($$1);
+         if ($$4.isPresent() && Objects.equals($$4.get().getSecond(), "minecraft:shulker_box")) {
+            Optional<? extends Typed<?>> $$5 = $$3x.getOptionalTyped($$2);
+            if ($$5.isPresent()) {
+               Typed<?> $$6 = (Typed<?>)$$5.get();
+               Optional<? extends Typed<?>> $$7 = $$6.getOptionalTyped($$3);
+               if ($$7.isPresent()) {
+                  Typed<?> $$8 = (Typed<?>)$$7.get();
+                  Dynamic<?> $$9 = (Dynamic<?>)$$8.get(DSL.remainderFinder());
+                  int $$10 = $$9.get("Color").asInt(0);
+                  $$9.remove("Color");
+                  return $$3x.set($$2, $$6.set($$3, $$8.set(DSL.remainderFinder(), $$9))).set($$1, Pair.of(bgd.D.typeName(), a[$$10 % 16]));
+               }
+            }
          }
 
-         return Pair.of($$4, $$5.update(DSL.remainderFinder(), $$0x -> $$0x.remove("ZombieType")));
-      }
-   }
-
-   private Typed<?> a(Typed<?> $$0, int $$1) {
-      return ac.a($$0, this.b.get(), $$1x -> $$1x.set("Profession", $$1x.createInt($$1)));
+         return $$3x;
+      });
    }
 }

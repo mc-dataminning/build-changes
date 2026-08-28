@@ -1,59 +1,95 @@
-public class bzn implements bzo {
-   private final btt a;
-   private static final int b = 15;
-   private static final int c = 10;
-   private static final int d = 10;
-   private int e;
-   private float f;
+public abstract class bzn extends bzw {
+   protected bta d;
+   protected ja e = ja.c;
+   protected boolean f;
+   private boolean a;
+   private float b;
+   private float c;
 
-   public bzn(btt $$0) {
-      this.a = $$0;
+   public bzn(bta $$0) {
+      this.d = $$0;
+      if (!cdu.a($$0)) {
+         throw new IllegalArgumentException("Unsupported mob type for DoorInteractGoal");
+      }
    }
 
-   public void a() {
-      if (this.f()) {
-         this.a.aY = this.a.dF();
-         this.c();
-         this.f = this.a.ba;
-         this.e = 0;
+   protected boolean h() {
+      if (!this.f) {
+         return false;
       } else {
-         if (this.e()) {
-            if (Math.abs(this.a.ba - this.f) > 15.0F) {
-               this.e = 0;
-               this.f = this.a.ba;
-               this.b();
-            } else {
-               this.e++;
-               if (this.e > 10) {
-                  this.d();
-               }
-            }
+         dsh $$0 = this.d.dP().a_(this.e);
+         if (!($$0.b() instanceof dhl)) {
+            this.f = false;
+            return false;
+         } else {
+            return $$0.c(dhl.c);
          }
       }
    }
 
-   private void b() {
-      this.a.aY = ayz.c(this.a.aY, this.a.ba, (float)this.a.ab());
+   protected void a(boolean $$0) {
+      if (this.f) {
+         dsh $$1 = this.d.dP().a_(this.e);
+         if ($$1.b() instanceof dhl) {
+            ((dhl)$$1.b()).a(this.d, this.d.dP(), $$1, this.e, $$0);
+         }
+      }
    }
 
-   private void c() {
-      this.a.ba = ayz.c(this.a.ba, this.a.aY, (float)this.a.ab());
+   @Override
+   public boolean a() {
+      if (!cdu.a(this.d)) {
+         return false;
+      } else if (!this.d.Q) {
+         return false;
+      } else {
+         ccj $$0 = (ccj)this.d.K();
+         eop $$1 = $$0.j();
+         if ($$1 != null && !$$1.c() && $$0.f()) {
+            for (int $$2 = 0; $$2 < Math.min($$1.f() + 2, $$1.e()); $$2++) {
+               eon $$3 = $$1.a($$2);
+               this.e = new ja($$3.a, $$3.b + 1, $$3.c);
+               if (!(this.d.i((double)this.e.u(), this.d.dw(), (double)this.e.w()) > 2.25)) {
+                  this.f = dhl.a(this.d.dP(), this.e);
+                  if (this.f) {
+                     return true;
+                  }
+               }
+            }
+
+            this.e = this.d.dp().c();
+            this.f = dhl.a(this.d.dP(), this.e);
+            return this.f;
+         } else {
+            return false;
+         }
+      }
    }
 
-   private void d() {
-      int $$0 = this.e - 10;
-      float $$1 = ayz.a((float)$$0 / 10.0F, 0.0F, 1.0F);
-      float $$2 = (float)this.a.ab() * (1.0F - $$1);
-      this.a.aY = ayz.c(this.a.aY, this.a.ba, $$2);
+   @Override
+   public boolean b() {
+      return !this.a;
    }
 
-   private boolean e() {
-      return !(this.a.cT() instanceof btt);
+   @Override
+   public void c() {
+      this.a = false;
+      this.b = (float)((double)this.e.u() + 0.5 - this.d.du());
+      this.c = (float)((double)this.e.w() + 0.5 - this.d.dA());
    }
 
-   private boolean f() {
-      double $$0 = this.a.du() - this.a.L;
-      double $$1 = this.a.dA() - this.a.N;
-      return $$0 * $$0 + $$1 * $$1 > 2.5000003E-7F;
+   @Override
+   public boolean R_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      float $$0 = (float)((double)this.e.u() + 0.5 - this.d.du());
+      float $$1 = (float)((double)this.e.w() + 0.5 - this.d.dA());
+      float $$2 = this.b * $$0 + this.c * $$1;
+      if ($$2 < 0.0F) {
+         this.a = true;
+      }
    }
 }

@@ -1,4 +1,3 @@
-import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
@@ -6,70 +5,31 @@ import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.function.Function;
+import java.util.Objects;
+import java.util.Optional;
 
 public class bee extends DataFix {
-   private static final String a = "minecraft:empty";
-
-   public bee(Schema $$0) {
-      super($$0, true);
+   public bee(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgx.B);
-      Type<?> $$1 = this.getOutputSchema().getType(bgx.B);
-      return this.fixTypeEverywhereTyped(
-         "Fix AbstractArrow item type",
-         $$0,
-         $$1,
-         this.a(this.a("minecraft:trident", bee::c), this.a("minecraft:arrow", bee::a), this.a("minecraft:spectral_arrow", bee::b))
-      );
-   }
-
-   @SafeVarargs
-   private <T> Function<Typed<?>, Typed<?>> a(Function<Typed<?>, Typed<?>>... $$0) {
-      return $$1 -> {
-         for (Function<Typed<?>, Typed<?>> $$2 : $$0) {
-            $$1 = $$2.apply($$1);
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bgd.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bgd.D.typeName(), bhp.a()));
+      OpticFinder<?> $$2 = $$0.findField("tag");
+      return this.fixTypeEverywhereTyped("ItemInstanceMapIdFix", $$0, $$2x -> {
+         Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
+         if ($$3.isPresent() && Objects.equals($$3.get().getSecond(), "minecraft:filled_map")) {
+            Dynamic<?> $$4 = (Dynamic<?>)$$2x.get(DSL.remainderFinder());
+            Typed<?> $$5 = $$2x.getOrCreateTyped($$2);
+            Dynamic<?> $$6 = (Dynamic<?>)$$5.get(DSL.remainderFinder());
+            $$6 = $$6.set("map", $$6.createInt($$4.get("Damage").asInt(0)));
+            return $$2x.set($$2, $$5.set(DSL.remainderFinder(), $$6));
+         } else {
+            return $$2x;
          }
-
-         return $$1;
-      };
-   }
-
-   private Function<Typed<?>, Typed<?>> a(String $$0, bee.a<?> $$1) {
-      Type<?> $$2 = this.getInputSchema().getChoiceType(bgx.B, $$0);
-      Type<?> $$3 = this.getOutputSchema().getChoiceType(bgx.B, $$0);
-      return a($$0, $$1, $$2, $$3);
-   }
-
-   private static <T> Function<Typed<?>, Typed<?>> a(String $$0, bee.a<?> $$1, Type<?> $$2, Type<T> $$3) {
-      OpticFinder<?> $$4 = DSL.namedChoice($$0, $$2);
-      return $$3x -> $$3x.updateTyped($$4, $$3, $$2xx -> $$1.fix($$2xx, $$3));
-   }
-
-   private static <T> Typed<T> a(Typed<?> $$0, Type<T> $$1) {
-      return ac.a($$0, $$1, $$0x -> $$0x.set("item", a($$0x, a($$0x))));
-   }
-
-   private static String a(Dynamic<?> $$0) {
-      return $$0.get("Potion").asString("minecraft:empty").equals("minecraft:empty") ? "minecraft:arrow" : "minecraft:tipped_arrow";
-   }
-
-   private static <T> Typed<T> b(Typed<?> $$0, Type<T> $$1) {
-      return ac.a($$0, $$1, $$0x -> $$0x.set("item", a($$0x, "minecraft:spectral_arrow")));
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0, String $$1) {
-      return $$0.createMap(ImmutableMap.of($$0.createString("id"), $$0.createString($$1), $$0.createString("Count"), $$0.createInt(1)));
-   }
-
-   private static <T> Typed<T> c(Typed<?> $$0, Type<T> $$1) {
-      return new Typed($$1, $$0.getOps(), $$0.getValue());
-   }
-
-   interface a<F> {
-      Typed<F> fix(Typed<?> var1, Type<F> var2);
+      });
    }
 }

@@ -1,30 +1,62 @@
-public class gak extends fzw {
-   private static final int a = 12235202;
+public class gak extends gcl {
+   private static final float a = 0.0025F;
+   private static final int b = 300;
+   private static final int F = 300;
+   private static final float G = 0.25F;
+   private static final float H = 2.0F;
+   private float I;
+   private final float J;
+   private final float K;
 
-   protected gak(fxx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gbz $$8) {
-      super($$0, $$1, $$2, $$3, 0.7F, 0.6F, 0.7F, $$4, $$5 + 0.15F, $$6, $$7, $$8, 0.5F, 7, 0.5F, false);
-      float $$9 = (float)Math.random() * 0.2F;
-      this.v = (float)ayj.b.b(12235202) / 255.0F - $$9;
-      this.w = (float)ayj.b.c(12235202) / 255.0F - $$9;
-      this.x = (float)ayj.b.d(12235202) / 255.0F - $$9;
+   protected gak(fyd $$0, double $$1, double $$2, double $$3, gcg $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a($$4.a(this.r.a(12), 12));
+      this.I = (float)Math.toRadians(this.r.h() ? -30.0 : 30.0);
+      this.J = this.r.i();
+      this.K = (float)Math.toRadians(this.r.h() ? -5.0 : 5.0);
+      this.t = 300;
+      this.u = 7.5E-4F;
+      float $$5 = this.r.h() ? 0.05F : 0.075F;
+      this.D = $$5;
+      this.b($$5, $$5);
+      this.B = 1.0F;
+   }
+
+   @Override
+   public gbp b() {
+      return gbp.b;
    }
 
    @Override
    public void a() {
-      this.u = 0.88F * this.u;
-      this.B = 0.92F * this.B;
-      super.a();
-   }
-
-   public static class a implements gbh<lm> {
-      private final gbz a;
-
-      public a(gbz $$0) {
-         this.a = $$0;
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.t-- <= 0) {
+         this.k();
       }
 
-      public gbe a(lm $$0, fxx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gak($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
+      if (!this.o) {
+         float $$0 = (float)(300 - this.t);
+         float $$1 = Math.min($$0 / 300.0F, 1.0F);
+         double $$2 = Math.cos(Math.toRadians((double)(this.J * 60.0F))) * 2.0 * Math.pow((double)$$1, 1.25);
+         double $$3 = Math.sin(Math.toRadians((double)(this.J * 60.0F))) * 2.0 * Math.pow((double)$$1, 1.25);
+         this.j += $$2 * 0.0025F;
+         this.l += $$3 * 0.0025F;
+         this.k = this.k - (double)this.u;
+         this.I = this.I + this.K / 20.0F;
+         this.A = this.z;
+         this.z = this.z + this.I / 20.0F;
+         this.a(this.j, this.k, this.l);
+         if (this.m || this.t < 299 && (this.j == 0.0 || this.l == 0.0)) {
+            this.k();
+         }
+
+         if (!this.o) {
+            this.j = this.j * (double)this.B;
+            this.k = this.k * (double)this.B;
+            this.l = this.l * (double)this.B;
+         }
       }
    }
 }

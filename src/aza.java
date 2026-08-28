@@ -1,159 +1,93 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import com.sun.jna.Memory;
-import com.sun.jna.Native;
-import com.sun.jna.Platform;
-import com.sun.jna.Pointer;
-import com.sun.jna.platform.win32.Kernel32;
-import com.sun.jna.platform.win32.Kernel32Util;
-import com.sun.jna.platform.win32.Version;
-import com.sun.jna.platform.win32.Win32Exception;
-import com.sun.jna.platform.win32.Tlhelp32.MODULEENTRY32W;
-import com.sun.jna.ptr.IntByReference;
-import com.sun.jna.ptr.PointerByReference;
-import java.nio.charset.StandardCharsets;
-import java.util.Comparator;
-import java.util.List;
 import java.util.Locale;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
 public class aza {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 65535;
-   private static final int c = 1033;
-   private static final int d = -65536;
-   private static final int e = 78643200;
+   private static final Pattern a = Pattern.compile("(?i)\\u00A7[0-9A-FK-OR]");
+   private static final Pattern b = Pattern.compile("\\r\\n|\\v");
+   private static final Pattern c = Pattern.compile("(?:\\r\\n|\\v)$");
 
-   public static List<aza.a> a() {
-      if (!Platform.isWindows()) {
-         return ImmutableList.of();
+   public static String a(int $$0, float $$1) {
+      int $$2 = aye.d((float)$$0 / $$1);
+      int $$3 = $$2 / 60;
+      $$2 %= 60;
+      int $$4 = $$3 / 60;
+      $$3 %= 60;
+      return $$4 > 0 ? String.format(Locale.ROOT, "%02d:%02d:%02d", $$4, $$3, $$2) : String.format(Locale.ROOT, "%02d:%02d", $$3, $$2);
+   }
+
+   public static String a(String $$0) {
+      return a.matcher($$0).replaceAll("");
+   }
+
+   public static boolean b(@Nullable String $$0) {
+      return StringUtils.isEmpty($$0);
+   }
+
+   public static String a(String $$0, int $$1, boolean $$2) {
+      if ($$0.length() <= $$1) {
+         return $$0;
       } else {
-         int $$0 = Kernel32.INSTANCE.GetCurrentProcessId();
-         Builder<aza.a> $$1 = ImmutableList.builder();
-
-         for (MODULEENTRY32W $$3 : Kernel32Util.getModules($$0)) {
-            String $$4 = $$3.szModule();
-            Optional<aza.b> $$5 = a($$3.szExePath());
-            $$1.add(new aza.a($$4, $$5));
-         }
-
-         return $$1.build();
+         return $$2 && $$1 > 3 ? $$0.substring(0, $$1 - 3) + "..." : $$0.substring(0, $$1);
       }
    }
 
-   private static Optional<aza.b> a(String $$0) {
-      try {
-         IntByReference $$1 = new IntByReference();
-         int $$2 = Version.INSTANCE.GetFileVersionInfoSize($$0, $$1);
-         if ($$2 == 0) {
-            int $$3 = Native.getLastError();
-            if ($$3 != 1813 && $$3 != 1812) {
-               throw new Win32Exception($$3);
-            } else {
-               return Optional.empty();
-            }
-         } else {
-            Pointer $$4 = new Memory((long)$$2);
-            if (!Version.INSTANCE.GetFileVersionInfo($$0, 0, $$2, $$4)) {
-               throw new Win32Exception(Native.getLastError());
-            } else {
-               IntByReference $$5 = new IntByReference();
-               Pointer $$6 = a($$4, "\\VarFileInfo\\Translation", $$5);
-               int[] $$7 = $$6.getIntArray(0L, $$5.getValue() / 4);
-               OptionalInt $$8 = a($$7);
-               if ($$8.isEmpty()) {
-                  return Optional.empty();
-               } else {
-                  int $$9 = $$8.getAsInt();
-                  int $$10 = $$9 & 65535;
-                  int $$11 = ($$9 & -65536) >> 16;
-                  String $$12 = b($$4, a("FileDescription", $$10, $$11), $$5);
-                  String $$13 = b($$4, a("CompanyName", $$10, $$11), $$5);
-                  String $$14 = b($$4, a("FileVersion", $$10, $$11), $$5);
-                  return Optional.of(new aza.b($$12, $$14, $$13));
-               }
-            }
-         }
-      } catch (Exception var14) {
-         a.info("Failed to find module info for {}", $$0, var14);
-         return Optional.empty();
-      }
-   }
-
-   private static String a(String $$0, int $$1, int $$2) {
-      return String.format(Locale.ROOT, "\\StringFileInfo\\%04x%04x\\%s", $$1, $$2, $$0);
-   }
-
-   private static OptionalInt a(int[] $$0) {
-      OptionalInt $$1 = OptionalInt.empty();
-
-      for (int $$2 : $$0) {
-         if (($$2 & -65536) == 78643200 && ($$2 & 65535) == 1033) {
-            return OptionalInt.of($$2);
-         }
-
-         $$1 = OptionalInt.of($$2);
-      }
-
-      return $$1;
-   }
-
-   private static Pointer a(Pointer $$0, String $$1, IntByReference $$2) {
-      PointerByReference $$3 = new PointerByReference();
-      if (!Version.INSTANCE.VerQueryValue($$0, $$1, $$3, $$2)) {
-         throw new UnsupportedOperationException("Can't get version value " + $$1);
+   public static int c(String $$0) {
+      if ($$0.isEmpty()) {
+         return 0;
       } else {
-         return $$3.getValue();
+         Matcher $$1 = b.matcher($$0);
+         int $$2 = 1;
+
+         while ($$1.find()) {
+            $$2++;
+         }
+
+         return $$2;
       }
    }
 
-   private static String b(Pointer $$0, String $$1, IntByReference $$2) {
-      try {
-         Pointer $$3 = a($$0, $$1, $$2);
-         byte[] $$4 = $$3.getByteArray(0L, ($$2.getValue() - 1) * 2);
-         return new String($$4, StandardCharsets.UTF_16LE);
-      } catch (Exception var5) {
-         return "";
-      }
+   public static boolean d(String $$0) {
+      return c.matcher($$0).find();
    }
 
-   public static void a(p $$0) {
-      $$0.a("Modules", () -> a().stream().sorted(Comparator.comparing($$0x -> $$0x.a)).map($$0x -> "\n\t\t" + $$0x).collect(Collectors.joining()));
+   public static String e(String $$0) {
+      return a($$0, 256, false);
    }
 
-   public static class a {
-      public final String a;
-      public final Optional<aza.b> b;
-
-      public a(String $$0, Optional<aza.b> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public String toString() {
-         return this.b.<String>map($$0 -> this.a + ":" + $$0).orElse(this.a);
-      }
+   public static boolean a(char $$0) {
+      return $$0 != 167 && $$0 >= ' ' && $$0 != 127;
    }
 
-   public static class b {
-      public final String a;
-      public final String b;
-      public final String c;
+   public static boolean f(String $$0) {
+      return $$0.length() > 16 ? false : $$0.chars().filter($$0x -> $$0x <= 32 || $$0x >= 127).findAny().isEmpty();
+   }
 
-      public b(String $$0, String $$1, String $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+   public static String g(String $$0) {
+      return a($$0, false);
+   }
+
+   public static String a(String $$0, boolean $$1) {
+      StringBuilder $$2 = new StringBuilder();
+
+      for (char $$3 : $$0.toCharArray()) {
+         if (a($$3)) {
+            $$2.append($$3);
+         } else if ($$1 && $$3 == '\n') {
+            $$2.append($$3);
+         }
       }
 
-      @Override
-      public String toString() {
-         return this.a + ":" + this.b + ":" + this.c;
-      }
+      return $$2.toString();
+   }
+
+   public static boolean a(int $$0) {
+      return Character.isWhitespace($$0) || Character.isSpaceChar($$0);
+   }
+
+   public static boolean h(@Nullable String $$0) {
+      return $$0 != null && $$0.length() != 0 ? $$0.chars().allMatch(aza::a) : true;
    }
 }

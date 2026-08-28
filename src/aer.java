@@ -1,53 +1,45 @@
-public class aer implements zw<aci> {
-   public static final zn<wm, aer> a = zw.a(aer::a, aer::new);
-   private final int b;
-   private final double c;
-   private final double d;
-   private final double e;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   public aer(int $$0, double $$1, double $$2, double $$3) {
+public class aer implements zb<abn> {
+   public static final ys<vr, aer> a = zb.a(aer::a, aer::new);
+   private final ewu b;
+   private final String c;
+
+   public aer(ewu $$0, @Nullable ewv $$1) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+      if ($$1 == null) {
+         this.c = "";
+      } else {
+         this.c = $$1.b();
+      }
    }
 
-   private aer(wm $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readDouble();
+   private aer(vr $$0) {
+      this.b = $$0.a(ewu.u);
+      this.c = $$0.p();
    }
 
-   private void a(wm $$0) {
-      $$0.c(this.b);
+   private void a(vr $$0) {
+      $$0.a(ewu::a, this.b);
       $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
    }
 
    @Override
-   public zy<aer> a() {
-      return agu.be;
+   public zd<aer> a() {
+      return afz.aB;
    }
 
-   public void a(aci $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public ewu b() {
       return this.b;
    }
 
-   public double e() {
-      return this.c;
-   }
-
-   public double f() {
-      return this.d;
-   }
-
-   public double g() {
-      return this.e;
+   @Nullable
+   public String e() {
+      return Objects.equals(this.c, "") ? null : this.c;
    }
 }

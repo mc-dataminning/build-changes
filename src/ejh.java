@@ -1,72 +1,92 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.Locale;
 
-public class ejh extends ejj {
-   public static final MapCodec<ejh> a = RecordCodecBuilder.mapCodec(
-         $$0 -> a($$0)
-               .and(
-                  $$0.group(
-                     Codec.intRange(0, 4096).fieldOf("spacing").forGetter(ejh::a),
-                     Codec.intRange(0, 4096).fieldOf("separation").forGetter(ejh::b),
-                     eji.c.optionalFieldOf("spread_type", eji.a).forGetter(ejh::c)
-                  )
-               )
-               .apply($$0, ejh::new)
-      )
-      .validate(ejh::a);
-   private final int c;
-   private final int d;
-   private final eji e;
+public interface ejh {
+   ejh a = a(ekt.a::new, "MSCorridor");
+   ejh b = a(ekt.b::new, "MSCrossing");
+   ejh c = a(ekt.d::new, "MSRoom");
+   ejh d = a(ekt.e::new, "MSStairs");
+   ejh e = a(ekv.a::new, "NeBCr");
+   ejh f = a(ekv.b::new, "NeBEF");
+   ejh g = a(ekv.c::new, "NeBS");
+   ejh h = a(ekv.d::new, "NeCCS");
+   ejh i = a(ekv.e::new, "NeCTB");
+   ejh j = a(ekv.f::new, "NeCE");
+   ejh k = a(ekv.g::new, "NeSCSC");
+   ejh l = a(ekv.h::new, "NeSCLT");
+   ejh m = a(ekv.i::new, "NeSC");
+   ejh n = a(ekv.j::new, "NeSCRT");
+   ejh o = a(ekv.k::new, "NeCSR");
+   ejh p = a(ekv.l::new, "NeMT");
+   ejh q = a(ekv.o::new, "NeRC");
+   ejh r = a(ekv.p::new, "NeSR");
+   ejh s = a(ekv.q::new, "NeStart");
+   ejh t = a(elh.a::new, "SHCC");
+   ejh u = a(elh.b::new, "SHFC");
+   ejh v = a(elh.c::new, "SH5C");
+   ejh w = a(elh.d::new, "SHLT");
+   ejh x = a(elh.e::new, "SHLi");
+   ejh y = a(elh.g::new, "SHPR");
+   ejh z = a(elh.h::new, "SHPH");
+   ejh A = a(elh.i::new, "SHRT");
+   ejh B = a(elh.j::new, "SHRC");
+   ejh C = a(elh.l::new, "SHSD");
+   ejh D = a(elh.m::new, "SHStart");
+   ejh E = a(elh.n::new, "SHS");
+   ejh F = a(elh.o::new, "SHSSD");
+   ejh G = a(ekr::new, "TeJP");
+   ejh H = a(elb.a::a, "ORP");
+   ejh I = a(eko.a::new, "Iglu");
+   ejh J = a(eld::new, "RUPO");
+   ejh K = a(elj::new, "TeSH");
+   ejh L = a(ekk::new, "TeDP");
+   ejh M = a(ekz.h::new, "OMB");
+   ejh N = a(ekz.j::new, "OMCR");
+   ejh O = a(ekz.k::new, "OMDXR");
+   ejh P = a(ekz.l::new, "OMDXYR");
+   ejh Q = a(ekz.m::new, "OMDYR");
+   ejh R = a(ekz.n::new, "OMDYZR");
+   ejh S = a(ekz.o::new, "OMDZR");
+   ejh T = a(ekz.p::new, "OMEntry");
+   ejh U = a(ekz.q::new, "OMPenthouse");
+   ejh V = a(ekz.s::new, "OMSimple");
+   ejh W = a(ekz.t::new, "OMSimpleT");
+   ejh X = a(ekz.u::new, "OMWR");
+   ejh Y = a(ekm.a::new, "ECP");
+   ejh Z = a(ell.i::new, "WMP");
+   ejh aa = a(eki.a::new, "BTP");
+   ejh ab = a(elf.a::new, "Shipwreck");
+   ejh ac = a(ekx.a::new, "NeFos");
+   ejh ad = a(eim::new, "jigsaw");
 
-   private static DataResult<ejh> a(ejh $$0) {
-      return $$0.c <= $$0.d ? DataResult.error(() -> "Spacing has to be larger than separation") : DataResult.success($$0);
+   eiu load(ejg var1, tx var2);
+
+   private static ejh a(ejh $$0, String $$1) {
+      return jw.a(lq.Q, $$1.toLowerCase(Locale.ROOT), $$0);
    }
 
-   public ejh(kd $$0, ejj.c $$1, float $$2, int $$3, Optional<ejj.a> $$4, int $$5, int $$6, eji $$7) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.e = $$7;
+   private static ejh a(ejh.a $$0, String $$1) {
+      return a((ejh)$$0, $$1);
    }
 
-   public ejh(int $$0, int $$1, eji $$2, int $$3) {
-      this(kd.g, ejj.c.a, 1.0F, $$3, Optional.empty(), $$0, $$1, $$2);
+   private static ejh a(ejh.b $$0, String $$1) {
+      return a((ejh)$$0, $$1);
    }
 
-   public int a() {
-      return this.c;
+   public interface a extends ejh {
+      eiu load(tx var1);
+
+      @Override
+      default eiu load(ejg $$0, tx $$1) {
+         return this.load($$1);
+      }
    }
 
-   public int b() {
-      return this.d;
-   }
+   public interface b extends ejh {
+      eiu load(emr var1, tx var2);
 
-   public eji c() {
-      return this.e;
-   }
-
-   public dbh a(long $$0, int $$1, int $$2) {
-      int $$3 = Math.floorDiv($$1, this.c);
-      int $$4 = Math.floorDiv($$2, this.c);
-      dyv $$5 = new dyv(new dxx(0L));
-      $$5.a($$0, $$3, $$4, this.i());
-      int $$6 = this.c - this.d;
-      int $$7 = this.e.a($$5, $$6);
-      int $$8 = this.e.a($$5, $$6);
-      return new dbh($$3 * this.c + $$7, $$4 * this.c + $$8);
-   }
-
-   @Override
-   protected boolean a(duc $$0, int $$1, int $$2) {
-      dbh $$3 = this.a($$0.d(), $$1, $$2);
-      return $$3.e == $$1 && $$3.f == $$2;
-   }
-
-   @Override
-   public ejk<?> e() {
-      return ejk.a;
+      @Override
+      default eiu load(ejg $$0, tx $$1) {
+         return this.load($$0.c(), $$1);
+      }
    }
 }

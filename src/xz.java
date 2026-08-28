@@ -1,13 +1,10 @@
-public record xz(yb a, boolean b) {
-   public xz a() {
-      return this.b ? new xz(this.a, false) : this;
-   }
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-   public yb b() {
-      return this.a;
-   }
+public class xz {
+   static Function<String, Supplier<wu>> a = $$0 -> () -> wu.b($$0);
 
-   public boolean c() {
-      return this.b;
+   public static void a(Function<String, Supplier<wu>> $$0) {
+      a = $$0;
    }
 }

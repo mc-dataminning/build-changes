@@ -1,38 +1,29 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.function.UnaryOperator;
 
-public class bck extends DataFix {
-   private final String a;
-   private final String b;
-   private final UnaryOperator<String> c;
-
-   public bck(Schema $$0, String $$1, String $$2, UnaryOperator<String> $$3) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
+public class bck extends bcs {
+   public bck(Schema $$0) {
+      super("EntityMinecartIdentifiersFix", $$0, true);
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(this.a, this.getInputSchema().getType(bgx.p), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
-   }
+   @Override
+   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
+      if (!$$0.equals("Minecart")) {
+         return Pair.of($$0, $$1);
+      } else {
+         int $$2 = ((Dynamic)$$1.getOrCreate(DSL.remainderFinder())).get("Type").asInt(0);
 
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update(
-         this.b,
-         $$0x -> $$0x.update(
-               "criteria",
-               $$0xx -> $$0xx.updateMapValues(
-                     $$0xxx -> $$0xxx.mapFirst(
-                           $$0xxxx -> (Dynamic)DataFixUtils.orElse($$0xxxx.asString().map($$1 -> $$0xxxx.createString(this.c.apply($$1))).result(), $$0xxxx)
-                        )
-                  )
-            )
-      );
+         String $$3 = switch ($$2) {
+            case 1 -> "MinecartChest";
+            case 2 -> "MinecartFurnace";
+            default -> "MinecartRideable";
+         };
+         Type<?> $$4 = (Type<?>)this.getOutputSchema().findChoiceType(bgd.B).types().get($$3);
+         return Pair.of($$3, ac.a($$1, $$4, $$0x -> $$0x.remove("Type")));
+      }
    }
 }

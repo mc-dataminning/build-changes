@@ -1,10 +1,23 @@
-import java.io.Closeable;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import javax.sound.sampled.AudioFormat;
+public class gtl {
+   private final String a;
+   private final String b;
+   private long c;
 
-public interface gtl extends Closeable {
-   AudioFormat a();
+   public gtl(String $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = ac.c();
+   }
 
-   ByteBuffer a(int var1) throws IOException;
+   public String a() {
+      return this.a;
+   }
+
+   public String b() {
+      return this.b;
+   }
+
+   public void c() {
+      this.c = ac.c();
+   }
 }

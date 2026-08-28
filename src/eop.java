@@ -1,40 +1,201 @@
-import it.unimi.dsi.fastutil.HashCommon;
-import org.jetbrains.annotations.Nullable;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import javax.annotation.Nullable;
 
 public class eop {
-   private static final int a = 4096;
-   private static final int b = 4095;
-   private final long[] c = new long[4096];
-   private final eoo[] d = new eoo[4096];
+   private final List<eon> a;
+   @Nullable
+   private eop.a b;
+   private int c;
+   private final ja d;
+   private final float e;
+   private final boolean f;
 
-   public eoo a(dbg $$0, iz $$1) {
-      long $$2 = $$1.a();
-      int $$3 = a($$2);
-      eoo $$4 = this.a($$3, $$2);
-      return $$4 != null ? $$4 : this.a($$0, $$1, $$3, $$2);
+   public eop(List<eon> $$0, ja $$1, boolean $$2) {
+      this.a = $$0;
+      this.d = $$1;
+      this.e = $$0.isEmpty() ? Float.MAX_VALUE : this.a.get(this.a.size() - 1).c(this.d);
+      this.f = $$2;
+   }
+
+   public void a() {
+      this.c++;
+   }
+
+   public boolean b() {
+      return this.c <= 0;
+   }
+
+   public boolean c() {
+      return this.c >= this.a.size();
    }
 
    @Nullable
-   private eoo a(int $$0, long $$1) {
-      return this.c[$$0] == $$1 ? this.d[$$0] : null;
+   public eon d() {
+      return !this.a.isEmpty() ? this.a.get(this.a.size() - 1) : null;
    }
 
-   private eoo a(dbg $$0, iz $$1, int $$2, long $$3) {
-      eoo $$4 = eot.b($$0, $$1);
-      this.c[$$2] = $$3;
-      this.d[$$2] = $$4;
-      return $$4;
+   public eon a(int $$0) {
+      return this.a.get($$0);
    }
 
-   public void a(iz $$0) {
-      long $$1 = $$0.a();
-      int $$2 = a($$1);
-      if (this.c[$$2] == $$1) {
-         this.d[$$2] = null;
+   public void b(int $$0) {
+      if (this.a.size() > $$0) {
+         this.a.subList($$0, this.a.size()).clear();
       }
    }
 
-   private static int a(long $$0) {
-      return (int)HashCommon.mix($$0) & 4095;
+   public void a(int $$0, eon $$1) {
+      this.a.set($$0, $$1);
+   }
+
+   public int e() {
+      return this.a.size();
+   }
+
+   public int f() {
+      return this.c;
+   }
+
+   public void c(int $$0) {
+      this.c = $$0;
+   }
+
+   public evz a(bsd $$0, int $$1) {
+      eon $$2 = this.a.get($$1);
+      double $$3 = (double)$$2.a + (double)((int)($$0.dj() + 1.0F)) * 0.5;
+      double $$4 = (double)$$2.b;
+      double $$5 = (double)$$2.c + (double)((int)($$0.dj() + 1.0F)) * 0.5;
+      return new evz($$3, $$4, $$5);
+   }
+
+   public ja d(int $$0) {
+      return this.a.get($$0).a();
+   }
+
+   public evz a(bsd $$0) {
+      return this.a($$0, this.c);
+   }
+
+   public ja g() {
+      return this.a.get(this.c).a();
+   }
+
+   public eon h() {
+      return this.a.get(this.c);
+   }
+
+   @Nullable
+   public eon i() {
+      return this.c > 0 ? this.a.get(this.c - 1) : null;
+   }
+
+   public boolean a(@Nullable eop $$0) {
+      if ($$0 == null) {
+         return false;
+      } else if ($$0.a.size() != this.a.size()) {
+         return false;
+      } else {
+         for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+            eon $$2 = this.a.get($$1);
+            eon $$3 = $$0.a.get($$1);
+            if ($$2.a != $$3.a || $$2.b != $$3.b || $$2.c != $$3.c) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   public boolean j() {
+      return this.f;
+   }
+
+   @azi
+   void a(eon[] $$0, eon[] $$1, Set<eow> $$2) {
+      this.b = new eop.a($$0, $$1, $$2);
+   }
+
+   @Nullable
+   public eop.a k() {
+      return this.b;
+   }
+
+   public void a(vr $$0) {
+      if (this.b != null && !this.b.c.isEmpty()) {
+         $$0.a(this.f);
+         $$0.p(this.c);
+         $$0.a(this.d);
+         $$0.a(this.a, ($$0x, $$1) -> $$1.a($$0x));
+         this.b.a($$0);
+      }
+   }
+
+   public static eop b(vr $$0) {
+      boolean $$1 = $$0.readBoolean();
+      int $$2 = $$0.readInt();
+      ja $$3 = $$0.e();
+      List<eon> $$4 = $$0.a(eon::b);
+      eop.a $$5 = eop.a.b($$0);
+      eop $$6 = new eop($$4, $$3, $$1);
+      $$6.b = $$5;
+      $$6.c = $$2;
+      return $$6;
+   }
+
+   @Override
+   public String toString() {
+      return "Path(length=" + this.a.size() + ")";
+   }
+
+   public ja l() {
+      return this.d;
+   }
+
+   public float m() {
+      return this.e;
+   }
+
+   static eon[] c(vr $$0) {
+      eon[] $$1 = new eon[$$0.l()];
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         $$1[$$2] = eon.b($$0);
+      }
+
+      return $$1;
+   }
+
+   static void a(vr $$0, eon[] $$1) {
+      $$0.c($$1.length);
+
+      for (eon $$2 : $$1) {
+         $$2.a($$0);
+      }
+   }
+
+   public eop n() {
+      eop $$0 = new eop(this.a, this.d, this.f);
+      $$0.b = this.b;
+      $$0.c = this.c;
+      return $$0;
+   }
+
+   public static record a(eon[] a, eon[] b, Set<eow> c) {
+
+      public void a(vr $$0) {
+         $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
+         eop.a($$0, this.a);
+         eop.a($$0, this.b);
+      }
+
+      public static eop.a b(vr $$0) {
+         HashSet<eow> $$1 = $$0.a(HashSet::new, eow::c);
+         eon[] $$2 = eop.c($$0);
+         eon[] $$3 = eop.c($$0);
+         return new eop.a($$2, $$3, $$1);
+      }
    }
 }

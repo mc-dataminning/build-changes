@@ -1,52 +1,26 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.serialization.DataResult;
 
-public class bpg<E> extends bpk<bpi.b<E>> {
-   public static <E> Codec<bpg<E>> a(Codec<E> $$0) {
-      return bpi.b.a($$0).listOf().xmap(bpg::new, bpk::e);
+public abstract class bpg implements bpl {
+   private static final Codec<Either<Float, bpg>> a = Codec.either(Codec.FLOAT, lq.J.r().dispatch(bpg::c, bph::codec));
+   public static final Codec<bpg> c = a.xmap(
+      $$0 -> (bpg)$$0.map(bpe::a, $$0x -> $$0x), $$0 -> $$0.c() == bph.a ? Either.left(((bpe)$$0).d()) : Either.right($$0)
+   );
+
+   public static Codec<bpg> a(float $$0, float $$1) {
+      return c.validate($$2 -> {
+         if ($$2.a() < $$0) {
+            return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
+         } else {
+            return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
+         }
+      });
    }
 
-   public static <E> Codec<bpg<E>> b(Codec<E> $$0) {
-      return ayh.a(bpi.b.a($$0).listOf()).xmap(bpg::new, bpk::e);
-   }
+   public abstract float a();
 
-   bpg(List<? extends bpi.b<E>> $$0) {
-      super($$0);
-   }
+   public abstract float b();
 
-   public static <E> bpg.a<E> a() {
-      return new bpg.a<>();
-   }
-
-   public static <E> bpg<E> b() {
-      return new bpg<>(List.of());
-   }
-
-   public static <E> bpg<E> a(E $$0) {
-      return new bpg<>(List.of(bpi.a($$0, 1)));
-   }
-
-   public Optional<E> a(azh $$0) {
-      return this.b($$0).map(bpi.b::b);
-   }
-
-   public static class a<E> {
-      private final Builder<bpi.b<E>> a = ImmutableList.builder();
-
-      public bpg.a<E> a(E $$0) {
-         return this.a($$0, 1);
-      }
-
-      public bpg.a<E> a(E $$0, int $$1) {
-         this.a.add(bpi.a($$0, $$1));
-         return this;
-      }
-
-      public bpg<E> a() {
-         return new bpg<>(this.a.build());
-      }
-   }
+   public abstract bph<?> c();
 }

@@ -1,17 +1,94 @@
-import java.util.OptionalInt;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class eyr {
-   public final int a;
-   public final int b;
-   public final OptionalInt c;
-   public final OptionalInt d;
-   public final boolean e;
+   private final List<ConcurrentLinkedQueue<eyq>> a = ImmutableList.of(
+      new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue()
+   );
+   private volatile boolean b;
+   private volatile int c;
+   private volatile boolean d;
+   private volatile int e;
+   private volatile int f;
 
-   public eyr(int $$0, int $$1, OptionalInt $$2, OptionalInt $$3, boolean $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   public eyr() {
+      this.c = this.e = this.f + 1;
+   }
+
+   public boolean a() {
+      return !this.b && this.c == this.e;
+   }
+
+   public boolean b() {
+      if (this.b) {
+         throw new RuntimeException("ALREADY RECORDING !!!");
+      } else if (this.a()) {
+         this.c = (this.e + 1) % this.a.size();
+         this.b = true;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public void a(eyq $$0) {
+      if (!this.b) {
+         throw new RuntimeException("NOT RECORDING !!!");
+      } else {
+         ConcurrentLinkedQueue<eyq> $$1 = this.i();
+         $$1.add($$0);
+      }
+   }
+
+   public void c() {
+      if (this.b) {
+         this.b = false;
+      } else {
+         throw new RuntimeException("NOT RECORDING !!!");
+      }
+   }
+
+   public boolean d() {
+      return !this.d && this.c != this.e;
+   }
+
+   public boolean e() {
+      if (this.d) {
+         throw new RuntimeException("ALREADY PROCESSING !!!");
+      } else if (this.d()) {
+         this.d = true;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public void f() {
+      if (!this.d) {
+         throw new RuntimeException("NOT PROCESSING !!!");
+      }
+   }
+
+   public void g() {
+      if (this.d) {
+         this.d = false;
+         this.f = this.e;
+         this.e = this.c;
+      } else {
+         throw new RuntimeException("NOT PROCESSING !!!");
+      }
+   }
+
+   public ConcurrentLinkedQueue<eyq> h() {
+      return this.a.get(this.f);
+   }
+
+   public ConcurrentLinkedQueue<eyq> i() {
+      return this.a.get(this.c);
+   }
+
+   public ConcurrentLinkedQueue<eyq> j() {
+      return this.a.get(this.e);
    }
 }

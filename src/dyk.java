@@ -1,127 +1,95 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+public class dyk implements dbq {
+   private int a;
 
-public final class dyk {
-   final dyj a;
-   private final jj<ena.a> b;
-   private final dyc c;
-   private final ddi.f d;
-   private final dyo e;
-   private final dyj f;
-   private final dyj g;
-   private final Map<ale<ena.a>, ena> h;
-   private final Map<alf, dyj> i;
-
-   public static dyk a(jj.a $$0, ale<dyb> $$1, long $$2) {
-      return a($$0.b(lq.aG).b($$1).a(), $$0.b(lq.aH), $$2);
-   }
-
-   public static dyk a(dyb $$0, jj<ena.a> $$1, long $$2) {
-      return new dyk($$0, $$1, $$2);
-   }
-
-   private dyk(dyb $$0, jj<ena.a> $$1, final long $$2) {
-      this.a = $$0.d().a($$2).e();
-      this.b = $$1;
-      this.f = this.a.a(new alf("aquifer")).e();
-      this.g = this.a.a(new alf("ore")).e();
-      this.h = new ConcurrentHashMap<>();
-      this.i = new ConcurrentHashMap<>();
-      this.e = new dyo(this, $$0.g(), $$0.l(), this.a);
-      final boolean $$3 = $$0.n();
-
-      class a implements dxp.f {
-         private final Map<dxp, dxp> d = new HashMap<>();
-
-         private azh a(long $$0) {
-            return new dxx($$2 + $$0);
-         }
-
-         @Override
-         public dxp.c a(dxp.c $$0) {
-            ji<ena.a> $$1 = $$0.b();
-            if ($$3) {
-               if ($$1.a(dyf.a)) {
-                  ena $$2 = ena.a(this.a(0L), new ena.a(-7, 1.0, 1.0));
-                  return new dxp.c($$1, $$2);
-               }
-
-               if ($$1.a(dyf.b)) {
-                  ena $$3 = ena.a(this.a(1L), new ena.a(-7, 1.0, 1.0));
-                  return new dxp.c($$1, $$3);
-               }
-
-               if ($$1.a(dyf.j)) {
-                  ena $$4 = ena.b(dyk.this.a.a(dyf.j.a()), new ena.a(0, 0.0));
-                  return new dxp.c($$1, $$4);
-               }
-            }
-
-            ena $$5 = dyk.this.a($$1.e().orElseThrow());
-            return new dxp.c($$1, $$5);
-         }
-
-         private dxp a(dxp $$0) {
-            if ($$0 instanceof emx $$1) {
-               azh $$2 = $$3 ? this.a(0L) : dyk.this.a.a(new alf("terrain"));
-               return $$1.a($$2);
+   @Override
+   public int a(aqk $$0, boolean $$1, boolean $$2) {
+      if (!$$1) {
+         return 0;
+      } else if (!$$0.ab().b(dbz.K)) {
+         return 0;
+      } else {
+         aym $$3 = $$0.z;
+         this.a--;
+         if (this.a > 0) {
+            return 0;
+         } else {
+            this.a = this.a + 12000 + $$3.a(1200);
+            long $$4 = $$0.aa() / 24000L;
+            if ($$4 < 5L || !$$0.R()) {
+               return 0;
+            } else if ($$3.a(5) != 0) {
+               return 0;
             } else {
-               return (dxp)($$0 instanceof dxq.i ? new dxq.i($$2) : $$0);
-            }
-         }
+               int $$5 = $$0.x().size();
+               if ($$5 < 1) {
+                  return 0;
+               } else {
+                  cmh $$6 = $$0.x().get($$3.a($$5));
+                  if ($$6.N_()) {
+                     return 0;
+                  } else if ($$0.a($$6.dp(), 2)) {
+                     return 0;
+                  } else {
+                     int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                     int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                     ja.a $$9 = $$6.dp().j().e($$7, 0, $$8);
+                     int $$10 = 10;
+                     if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
+                        return 0;
+                     } else {
+                        jj<ddd> $$11 = $$0.t($$9);
+                        if ($$11.a(avt.ag)) {
+                           return 0;
+                        } else {
+                           int $$12 = 0;
+                           int $$13 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
 
-         @Override
-         public dxp apply(dxp $$0) {
-            return this.d.computeIfAbsent($$0, this::a);
+                           for (int $$14 = 0; $$14 < $$13; $$14++) {
+                              $$12++;
+                              $$9.q($$0.a(dxz.a.f, $$9).v());
+                              if ($$14 == 0) {
+                                 if (!this.a($$0, $$9, $$3, true)) {
+                                    break;
+                                 }
+                              } else {
+                                 this.a($$0, $$9, $$3, false);
+                              }
+
+                              $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
+                              $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
+                           }
+
+                           return $$12;
+                        }
+                     }
+                  }
+               }
+            }
          }
       }
+   }
 
-      this.c = $$0.i().a(new a());
-      dxp.f $$4 = new dxp.f() {
-         private final Map<dxp, dxp> a = new HashMap<>();
-
-         private dxp a(dxp $$0) {
-            if ($$0 instanceof dxq.j $$1) {
-               return $$1.j().a();
-            } else {
-               return $$0 instanceof dxq.l $$2 ? $$2.k() : $$0;
+   private boolean a(aqk $$0, ja $$1, aym $$2, boolean $$3) {
+      dsh $$4 = $$0.a_($$1);
+      if (!dco.a($$0, $$1, $$4, $$4.u(), bsj.aC)) {
+         return false;
+      } else if (!cjo.b(bsj.aC, $$0, btc.p, $$1, $$2)) {
+         return false;
+      } else {
+         cjo $$5 = bsj.aC.a((dcd)$$0);
+         if ($$5 != null) {
+            if ($$3) {
+               $$5.w(true);
+               $$5.gv();
             }
+
+            $$5.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+            $$5.a($$0, $$0.d_($$1), btc.p, null);
+            $$0.a_($$5);
+            return true;
+         } else {
+            return false;
          }
-
-         @Override
-         public dxp apply(dxp $$0) {
-            return this.a.computeIfAbsent($$0, this::a);
-         }
-      };
-      this.d = new ddi.f(this.c.e().a($$4), this.c.f().a($$4), this.c.g().a($$4), this.c.h().a($$4), this.c.i().a($$4), this.c.j().a($$4), $$0.k());
-   }
-
-   public ena a(ale<ena.a> $$0) {
-      return this.h.computeIfAbsent($$0, $$1 -> dyf.a(this.b, this.a, $$0));
-   }
-
-   public dyj a(alf $$0) {
-      return this.i.computeIfAbsent($$0, $$1 -> this.a.a($$0).e());
-   }
-
-   public dyc a() {
-      return this.c;
-   }
-
-   public ddi.f b() {
-      return this.d;
-   }
-
-   public dyo c() {
-      return this.e;
-   }
-
-   public dyj d() {
-      return this.f;
-   }
-
-   public dyj e() {
-      return this.g;
+      }
    }
 }

@@ -1,143 +1,208 @@
-import com.mojang.authlib.GameProfile;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Sets;
 import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.Locale;
+import java.util.Set;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 
-public class asd extends asc implements aby, xd {
-   private static final Logger f = LogUtils.getLogger();
-   private static final xp g = xp.c("multiplayer.disconnect.invalid_player_data");
-   private final GameProfile h;
-   private final Queue<arv> i = new ConcurrentLinkedQueue<>();
+public class asd extends arx {
+   static final Logger c = LogUtils.getLogger();
+   private final asd.b d;
+   private final String e;
+
+   asd(asf $$0, asd.b $$1, String $$2) {
+      super($$0);
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   private static String b(asi $$0, akk $$1) {
+      return String.format(Locale.ROOT, "%s/%s/%s", $$0.a(), $$1.b(), $$1.a());
+   }
+
    @Nullable
-   private arv j;
-   private aqu k;
+   @Override
+   public atm<InputStream> a(String... $$0) {
+      return this.b(String.join("/", $$0));
+   }
+
+   @Override
+   public atm<InputStream> a(asi $$0, akk $$1) {
+      return this.b(b($$0, $$1));
+   }
+
+   private String a(String $$0) {
+      return this.e.isEmpty() ? $$0 : this.e + "/" + $$0;
+   }
+
    @Nullable
-   private aso l;
-
-   public asd(MinecraftServer $$0, wk $$1, aru $$2) {
-      super($$0, $$1, $$2);
-      this.h = $$2.a();
-      this.k = $$2.c();
-   }
-
-   @Override
-   protected GameProfile i() {
-      return this.h;
-   }
-
-   @Override
-   public void a(xp $$0) {
-      f.info("{} lost connection: {}", this.h, $$0.getString());
-      super.a($$0);
-   }
-
-   @Override
-   public boolean c() {
-      return this.e.i();
-   }
-
-   @Override
-   public void l() {
-      this.b(new aad(new aav(this.d.getServerModName())));
-      jp<alo> $$0 = this.d.bd();
-      List<atw> $$1 = this.d.bg().b().flatMap($$0x -> $$0x.a().d().stream()).toList();
-      this.b(new abv(cpp.e.b(this.d.bb().K())));
-      this.l = new aso($$1, $$0);
-      this.i.add(this.l);
-      this.n();
-      this.i.add(new asm());
-      this.o();
-   }
-
-   public void m() {
-      this.i.add(new asm());
-      this.o();
-   }
-
-   private void n() {
-      this.d.X().ifPresent($$0 -> this.i.add(new asn($$0)));
-   }
-
-   @Override
-   public void a(aao $$0) {
-      this.k = $$0.b();
-   }
-
-   @Override
-   public void a(aas $$0) {
-      super.a($$0);
-      if ($$0.e().a()) {
-         this.a(asn.a);
-      }
-   }
-
-   @Override
-   public void a(aca $$0) {
-      zz.a($$0, this, this.d);
-      if (this.l == null) {
-         throw new IllegalStateException("Unexpected response from client: received pack selection, but no negotiation ongoing");
+   private atm<InputStream> b(String $$0) {
+      ZipFile $$1 = this.d.a();
+      if ($$1 == null) {
+         return null;
       } else {
-         this.l.a($$0.b(), this::b);
-         this.a(aso.a);
+         ZipEntry $$2 = $$1.getEntry(this.a($$0));
+         return $$2 == null ? null : atm.create($$1, $$2);
       }
    }
 
    @Override
-   public void a(abz $$0) {
-      zz.a($$0, this, this.d);
-      this.a(asm.a);
-      this.e.a(agv.b.bind(xa.a(this.d.bc())));
-
-      try {
-         avd $$1 = this.d.ah();
-         if ($$1.a(this.h.getId()) != null) {
-            this.b(avd.f);
-            return;
-         }
-
-         xp $$2 = $$1.a(this.e.d(), this.h);
-         if ($$2 != null) {
-            this.b($$2);
-            return;
-         }
-
-         arg $$3 = $$1.a(this.h, this.k);
-         $$1.a(this.e, $$3, this.a(this.k));
-      } catch (Exception var5) {
-         f.error("Couldn't place player in world", var5);
-         this.e.a(new aae(g));
-         this.e.a(g);
-      }
-   }
-
-   @Override
-   public void d() {
-      this.e();
-   }
-
-   private void o() {
-      if (this.j != null) {
-         throw new IllegalStateException("Task " + this.j.a().a() + " has not finished yet");
-      } else if (this.c()) {
-         arv $$0 = this.i.poll();
-         if ($$0 != null) {
-            this.j = $$0;
-            $$0.a(this::b);
-         }
-      }
-   }
-
-   private void a(arv.a $$0) {
-      arv.a $$1 = this.j != null ? this.j.a() : null;
-      if (!$$0.equals($$1)) {
-         throw new IllegalStateException("Unexpected request for task finish, current task: " + $$1 + ", requested: " + $$0);
+   public Set<String> a(asi $$0) {
+      ZipFile $$1 = this.d.a();
+      if ($$1 == null) {
+         return Set.of();
       } else {
-         this.j = null;
-         this.o();
+         Enumeration<? extends ZipEntry> $$2 = $$1.entries();
+         Set<String> $$3 = Sets.newHashSet();
+         String $$4 = this.a($$0.a() + "/");
+
+         while ($$2.hasMoreElements()) {
+            ZipEntry $$5 = $$2.nextElement();
+            String $$6 = $$5.getName();
+            String $$7 = a($$4, $$6);
+            if (!$$7.isEmpty()) {
+               if (akk.h($$7)) {
+                  $$3.add($$7);
+               } else {
+                  c.warn("Non [a-z0-9_.-] character in namespace {} in pack {}, ignoring", $$7, this.d.a);
+               }
+            }
+         }
+
+         return $$3;
+      }
+   }
+
+   @VisibleForTesting
+   public static String a(String $$0, String $$1) {
+      if (!$$1.startsWith($$0)) {
+         return "";
+      } else {
+         int $$2 = $$0.length();
+         int $$3 = $$1.indexOf(47, $$2);
+         return $$3 == -1 ? $$1.substring($$2) : $$1.substring($$2, $$3);
+      }
+   }
+
+   @Override
+   public void close() {
+      this.d.close();
+   }
+
+   @Override
+   public void a(asi $$0, String $$1, String $$2, asg.a $$3) {
+      ZipFile $$4 = this.d.a();
+      if ($$4 != null) {
+         Enumeration<? extends ZipEntry> $$5 = $$4.entries();
+         String $$6 = this.a($$0.a() + "/" + $$1 + "/");
+         String $$7 = $$6 + $$2 + "/";
+
+         while ($$5.hasMoreElements()) {
+            ZipEntry $$8 = $$5.nextElement();
+            if (!$$8.isDirectory()) {
+               String $$9 = $$8.getName();
+               if ($$9.startsWith($$7)) {
+                  String $$10 = $$9.substring($$6.length());
+                  akk $$11 = akk.a($$1, $$10);
+                  if ($$11 != null) {
+                     $$3.accept($$11, atm.create($$4, $$8));
+                  } else {
+                     c.warn("Invalid path in datapack: {}:{}, ignoring", $$1, $$10);
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   public static class a implements atc.c {
+      private final File a;
+
+      public a(Path $$0) {
+         this($$0.toFile());
+      }
+
+      public a(File $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public asg a(asf $$0) {
+         asd.b $$1 = new asd.b(this.a);
+         return new asd($$0, $$1, "");
+      }
+
+      @Override
+      public asg a(asf $$0, atc.a $$1) {
+         asd.b $$2 = new asd.b(this.a);
+         asg $$3 = new asd($$0, $$2, "");
+         List<String> $$4 = $$1.d();
+         if ($$4.isEmpty()) {
+            return $$3;
+         } else {
+            List<asg> $$5 = new ArrayList<>($$4.size());
+
+            for (String $$6 : $$4) {
+               $$5.add(new asd($$0, $$2, $$6));
+            }
+
+            return new arz($$3, $$5);
+         }
+      }
+   }
+
+   static class b implements AutoCloseable {
+      final File a;
+      @Nullable
+      private ZipFile b;
+      private boolean c;
+
+      b(File $$0) {
+         this.a = $$0;
+      }
+
+      @Nullable
+      ZipFile a() {
+         if (this.c) {
+            return null;
+         } else {
+            if (this.b == null) {
+               try {
+                  this.b = new ZipFile(this.a);
+               } catch (IOException var2) {
+                  asd.c.error("Failed to open pack {}", this.a, var2);
+                  this.c = true;
+                  return null;
+               }
+            }
+
+            return this.b;
+         }
+      }
+
+      @Override
+      public void close() {
+         if (this.b != null) {
+            IOUtils.closeQuietly(this.b);
+            this.b = null;
+         }
+      }
+
+      @Override
+      protected void finalize() throws Throwable {
+         this.close();
+         super.finalize();
       }
    }
 }

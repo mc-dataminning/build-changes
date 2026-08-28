@@ -1,90 +1,35 @@
-import java.util.Optional;
-
-public interface cfj {
-   boolean u();
-
-   void w(boolean var1);
-
-   void n(cur var1);
-
-   void c(us var1);
-
-   cur b();
-
-   avz y();
-
-   @Deprecated
-   static void a(btt $$0, cur $$1) {
-      $$1.b(km.g, $$0.ah());
-      cxg.a(km.N, $$1, $$1x -> {
-         if ($$0.gg()) {
-            $$1x.a("NoAI", $$0.gg());
-         }
-
-         if ($$0.aW()) {
-            $$1x.a("Silent", $$0.aW());
-         }
-
-         if ($$0.aX()) {
-            $$1x.a("NoGravity", $$0.aX());
-         }
-
-         if ($$0.cf()) {
-            $$1x.a("Glowing", $$0.cf());
-         }
-
-         if ($$0.cu()) {
-            $$1x.a("Invulnerable", $$0.cu());
-         }
-
-         $$1x.a("Health", $$0.eA());
-      });
+public class cfj extends cen {
+   public cfj(bsj<? extends cfj> $$0, dcd $$1) {
+      super($$0, $$1);
    }
 
-   @Deprecated
-   static void a(btt $$0, us $$1) {
-      if ($$1.e("NoAI")) {
-         $$0.t($$1.q("NoAI"));
-      }
-
-      if ($$1.e("Silent")) {
-         $$0.e($$1.q("Silent"));
-      }
-
-      if ($$1.e("NoGravity")) {
-         $$0.f($$1.q("NoGravity"));
-      }
-
-      if ($$1.e("Glowing")) {
-         $$0.j($$1.q("Glowing"));
-      }
-
-      if ($$1.e("Invulnerable")) {
-         $$0.n($$1.q("Invulnerable"));
-      }
-
-      if ($$1.b("Health", 99)) {
-         $$0.t($$1.j("Health"));
-      }
+   @Override
+   public int gp() {
+      return 5;
    }
 
-   static <T extends btr & cfj> Optional<bqw> a(cmz $$0, bqv $$1, T $$2) {
-      cur $$3 = $$0.b($$1);
-      if ($$3.g() == cuu.qz && $$2.bD()) {
-         $$2.a($$2.y(), 1.0F, 1.0F);
-         cur $$4 = $$2.b();
-         $$2.n($$4);
-         cur $$5 = cut.a($$3, $$0, $$4, false);
-         $$0.a($$1, $$5);
-         dca $$6 = $$2.dP();
-         if (!$$6.B) {
-            am.k.a((arg)$$0, $$4);
-         }
+   @Override
+   public cua b() {
+      return new cua(cud.qG);
+   }
 
-         $$2.ao();
-         return Optional.of(bqw.a($$6.B));
-      } else {
-         return Optional.empty();
-      }
+   @Override
+   protected ave v() {
+      return avf.vF;
+   }
+
+   @Override
+   protected ave o_() {
+      return avf.vG;
+   }
+
+   @Override
+   protected ave d(bqw $$0) {
+      return avf.vI;
+   }
+
+   @Override
+   protected ave go() {
+      return avf.vH;
    }
 }

@@ -1,19 +1,19 @@
-public final class brg implements bra {
-   private final xp a;
-   private final crc b;
-
-   public brg(crc $$0, xp $$1) {
-      this.b = $$0;
-      this.a = $$1;
+class brg extends brj {
+   protected brg(brk $$0, int $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public xp O_() {
-      return this.a;
+   public boolean a(bsy $$0, int $$1) {
+      if ($$0 instanceof cmh $$2) {
+         $$2.D(0.005F * (float)($$1 + 1));
+      }
+
+      return true;
    }
 
    @Override
-   public cpw createMenu(int $$0, cmy $$1, cmz $$2) {
-      return this.b.createMenu($$0, $$1, $$2);
+   public boolean a(int $$0, int $$1) {
+      return true;
    }
 }

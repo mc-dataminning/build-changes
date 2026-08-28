@@ -1,35 +1,28 @@
-public interface ye {
-   xp a();
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-   void a(arg var1, boolean var2, xl.a var3);
+public record ye(akk d) implements xw {
+   public static final MapCodec<ye> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(akk.a.fieldOf("storage").forGetter(ye::b)).apply($$0, ye::new));
+   public static final xw.a<ye> b = new xw.a<>(a, "storage");
 
-   static ye a(yf $$0) {
-      return (ye)($$0.h() ? new ye.a($$0.d()) : new ye.b($$0));
+   @Override
+   public Stream<tx> a(eq $$0) {
+      tx $$1 = $$0.l().aL().a(this.d);
+      return Stream.of($$1);
    }
 
-   public static record a(xp a) implements ye {
-      @Override
-      public void a(arg $$0, boolean $$1, xl.a $$2) {
-         $$0.c.a(this.a, $$2);
-      }
+   @Override
+   public xw.a<?> a() {
+      return b;
    }
 
-   public static record b(yf a) implements ye {
-      @Override
-      public xp a() {
-         return this.a.d();
-      }
+   @Override
+   public String toString() {
+      return "storage=" + this.d;
+   }
 
-      @Override
-      public void a(arg $$0, boolean $$1, xl.a $$2) {
-         yf $$3 = this.a.a($$1);
-         if (!$$3.j()) {
-            $$0.c.a($$3, $$2);
-         }
-      }
-
-      public yf b() {
-         return this.a;
-      }
+   public akk b() {
+      return this.d;
    }
 }

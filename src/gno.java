@@ -1,11 +1,25 @@
-public class gno extends gnl<ckl, fvv<ckl>> {
-   public gno(gkv<ckl, fvv<ckl>> $$0) {
+public class gno extends gns<cfd, fvh<cfd>> {
+   private final gdt a;
+
+   public gno(glc<cfd, fvh<cfd>> $$0, gdt $$1) {
       super($$0);
+      this.a = $$1;
    }
 
-   public void a(faa $$0, gdq $$1, int $$2, ckl $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      alf $$10 = gkz.a($$3.gr());
-      fae $$11 = $$1.getBuffer(gdy.c($$10));
-      this.c().c().a($$0, $$11, $$2, gka.c($$3, 0.0F));
+   public void a(fag $$0, gdx $$1, int $$2, cfd $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cua $$10 = $$3.a(bsk.a);
+      if ($$3.y() && !$$3.gF()) {
+         float $$11 = -0.6F;
+         float $$12 = 1.4F;
+         if ($$3.gt()) {
+            $$11 -= 0.2F * aye.a($$7 * 0.6F) + 0.2F;
+            $$12 -= 0.09F * aye.a($$7 * 0.6F);
+         }
+
+         $$0.a();
+         $$0.a(0.1F, $$12, $$11);
+         this.a.a($$3, $$10, ctx.h, false, $$0, $$1, $$2);
+         $$0.b();
+      }
    }
 }

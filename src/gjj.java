@@ -1,19 +1,18 @@
-public class gjj extends gkf<cjz, fug<cjz>> {
-   private static final alf a = new alf("textures/entity/ghast/ghast.png");
-   private static final alf i = new alf("textures/entity/ghast/ghast_shooting.png");
+public class gjj<T extends cjx> extends gjz<T> {
+   private static final akk a = new akk("textures/entity/illager/evoker.png");
 
-   public gjj(giz.a $$0) {
-      super($$0, new fug<>($$0.a(fxb.ag)), 1.5F);
+   public gjj(gjg.a $$0) {
+      super($$0, new fuw<>($$0.a(fxh.ab)), 0.5F);
+      this.a(new gnl<T, fuw<T>>(this, $$0.d()) {
+         public void a(fag $$0, gdx $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+            if ($$3.gx()) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+            }
+         }
+      });
    }
 
-   public alf a(cjz $$0) {
-      return $$0.s() ? i : a;
-   }
-
-   protected void a(cjz $$0, faa $$1, float $$2) {
-      float $$3 = 1.0F;
-      float $$4 = 4.5F;
-      float $$5 = 4.5F;
-      $$1.b(4.5F, 4.5F, 4.5F);
+   public akk a(T $$0) {
+      return a;
    }
 }

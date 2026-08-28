@@ -1,86 +1,42 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class cak extends cap {
-   private int a;
-   private final bua b;
-   @Nullable
-   private cmz c;
-   private bzy d;
+public class cak extends bzw {
+   private final bth a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
 
-   public cak(bua $$0) {
-      this.b = $$0;
+   public cak(bth $$0, double $$1) {
+      this.a = $$0;
+      this.e = $$1;
+      this.a(EnumSet.of(bzw.a.a));
    }
 
    @Override
    public boolean a() {
-      List<cox> $$0 = this.b.dP().a(cox.class, this.b.cK().g(5.0));
-      boolean $$1 = false;
-
-      for (cox $$2 : $$0) {
-         bsw $$3 = $$2.cQ();
-         if ($$3 instanceof cmz && (ayz.e(((cmz)$$3).bo) > 0.0F || ayz.e(((cmz)$$3).bq) > 0.0F)) {
-            $$1 = true;
-            break;
+      if (this.a.fT()) {
+         return false;
+      } else {
+         evz $$0 = cdt.a(this.a, 16, 7, evz.c(this.a.fU()), (float) (Math.PI / 2));
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.c;
+            this.c = $$0.d;
+            this.d = $$0.e;
+            return true;
          }
       }
-
-      return this.c != null && (ayz.e(this.c.bo) > 0.0F || ayz.e(this.c.bq) > 0.0F) || $$1;
-   }
-
-   @Override
-   public boolean Q_() {
-      return true;
    }
 
    @Override
    public boolean b() {
-      return this.c != null && this.c.bR() && (ayz.e(this.c.bo) > 0.0F || ayz.e(this.c.bq) > 0.0F);
+      return !this.a.K().l();
    }
 
    @Override
    public void c() {
-      for (cox $$1 : this.b.dP().a(cox.class, this.b.cK().g(5.0))) {
-         if ($$1.cQ() instanceof cmz $$2) {
-            this.c = $$2;
-            break;
-         }
-      }
-
-      this.a = 0;
-      this.d = bzy.a;
-   }
-
-   @Override
-   public void d() {
-      this.c = null;
-   }
-
-   @Override
-   public void e() {
-      boolean $$0 = ayz.e(this.c.bo) > 0.0F || ayz.e(this.c.bq) > 0.0F;
-      float $$1 = this.d == bzy.b ? ($$0 ? 0.01F : 0.0F) : 0.015F;
-      this.b.a($$1, new evt((double)this.b.bo, (double)this.b.bp, (double)this.b.bq));
-      this.b.a(btw.a, this.b.ds());
-      if (--this.a <= 0) {
-         this.a = this.a(10);
-         if (this.d == bzy.a) {
-            iz $$2 = this.c.dp().a(this.c.cH().g());
-            $$2 = $$2.b(0, -1, 0);
-            this.b.K().a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0);
-            if (this.b.f(this.c) < 4.0F) {
-               this.a = 0;
-               this.d = bzy.b;
-            }
-         } else if (this.d == bzy.b) {
-            je $$3 = this.c.cI();
-            iz $$4 = this.c.dp().a($$3, 10);
-            this.b.K().a((double)$$4.u(), (double)($$4.v() - 1), (double)$$4.w(), 1.0);
-            if (this.b.f(this.c) > 12.0F) {
-               this.a = 0;
-               this.d = bzy.a;
-            }
-         }
-      }
+      this.a.K().a(this.b, this.c, this.d, this.e);
    }
 }

@@ -1,63 +1,119 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayDeque;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
 import javax.annotation.Nullable;
-import org.jetbrains.annotations.VisibleForTesting;
+import net.minecraft.server.MinecraftServer;
 
-public class yc {
-   public static final int a = -1;
-   private static final int b = 128;
-   private final yb[] c;
+public class yc implements wv {
+   public static final MapCodec<yc> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(yc::b), Codec.STRING.fieldOf("objective").forGetter(yc::d)).apply($$0, yc::new)
+   );
+   public static final MapCodec<yc> b = a.fieldOf("score");
+   public static final wv.a<yc> c = new wv.a<>(b, "score");
+   private final String d;
+   @Nullable
+   private final hf e;
+   private final String f;
 
-   public yc(int $$0) {
-      this.c = new yb[$$0];
-   }
-
-   public static yc a() {
-      return new yc(128);
-   }
-
-   public int a(yb $$0) {
-      for (int $$1 = 0; $$1 < this.c.length; $$1++) {
-         if ($$0.equals(this.c[$$1])) {
-            return $$1;
-         }
+   @Nullable
+   private static hf a(String $$0) {
+      try {
+         return new hg(new StringReader($$0)).t();
+      } catch (CommandSyntaxException var2) {
+         return null;
       }
+   }
 
-      return -1;
+   public yc(String $$0, String $$1) {
+      this.d = $$0;
+      this.e = a($$0);
+      this.f = $$1;
+   }
+
+   @Override
+   public wv.a<?> a() {
+      return c;
+   }
+
+   public String b() {
+      return this.d;
    }
 
    @Nullable
-   public yb a(int $$0) {
-      return this.c[$$0];
+   public hf c() {
+      return this.e;
    }
 
-   public void a(yi $$0, @Nullable yb $$1) {
-      List<yb> $$2 = $$0.d().a();
-      ArrayDeque<yb> $$3 = new ArrayDeque<>($$2.size() + 1);
-      $$3.addAll($$2);
-      if ($$1 != null) {
-         $$3.add($$1);
-      }
-
-      this.a($$3);
+   public String d() {
+      return this.f;
    }
 
-   @VisibleForTesting
-   void a(List<yb> $$0) {
-      this.a(new ArrayDeque<>($$0));
-   }
+   private exc a(eq $$0) throws CommandSyntaxException {
+      if (this.e != null) {
+         List<? extends bsd> $$1 = this.e.b($$0);
+         if (!$$1.isEmpty()) {
+            if ($$1.size() != 1) {
+               throw fd.a.create();
+            }
 
-   private void a(ArrayDeque<yb> $$0) {
-      Set<yb> $$1 = new ObjectOpenHashSet($$0);
-
-      for (int $$2 = 0; !$$0.isEmpty() && $$2 < this.c.length; $$2++) {
-         yb $$3 = this.c[$$2];
-         this.c[$$2] = $$0.removeLast();
-         if ($$3 != null && !$$1.contains($$3)) {
-            $$0.addFirst($$3);
+            return $$1.get(0);
          }
       }
+
+      return exc.c(this.d);
+   }
+
+   private xi a(exc $$0, eq $$1) {
+      MinecraftServer $$2 = $$1.l();
+      if ($$2 != null) {
+         exd $$3 = $$2.aK();
+         ewv $$4 = $$3.a(this.f);
+         if ($$4 != null) {
+            ewz $$5 = $$3.d($$0, $$4);
+            if ($$5 != null) {
+               return $$5.a($$4.a(yn.b));
+            }
+         }
+      }
+
+      return wu.i();
+   }
+
+   @Override
+   public xi a(@Nullable eq $$0, @Nullable bsd $$1, int $$2) throws CommandSyntaxException {
+      if ($$0 == null) {
+         return wu.i();
+      } else {
+         exc $$3 = this.a($$0);
+         exc $$4 = (exc)($$1 != null && $$3.equals(exc.cA) ? $$1 : $$3);
+         return this.a($$4, $$0);
+      }
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof yc $$1 && this.d.equals($$1.d) && this.f.equals($$1.f)) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.d.hashCode();
+      return 31 * $$0 + this.f.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "score{name='" + this.d + "', objective='" + this.f + "'}";
    }
 }

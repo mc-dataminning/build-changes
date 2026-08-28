@@ -1,28 +1,29 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class gsn extends gsf {
+   private final bsd n;
 
-public class gsn {
-   private final List<gsm> a;
-   private final boolean b;
-   @Nullable
-   private final String c;
-
-   public gsn(List<gsm> $$0, boolean $$1, @Nullable String $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public gsn(ave $$0, avg $$1, float $$2, float $$3, bsd $$4, long $$5) {
+      super($$0, $$1, aym.a($$5));
+      this.d = $$2;
+      this.e = $$3;
+      this.n = $$4;
+      this.f = (double)((float)this.n.du());
+      this.g = (double)((float)this.n.dw());
+      this.h = (double)((float)this.n.dA());
    }
 
-   public List<gsm> a() {
-      return this.a;
+   @Override
+   public boolean s() {
+      return !this.n.aW();
    }
 
-   public boolean b() {
-      return this.b;
-   }
-
-   @Nullable
-   public String c() {
-      return this.c;
+   @Override
+   public void q() {
+      if (this.n.dK()) {
+         this.n();
+      } else {
+         this.f = (double)((float)this.n.du());
+         this.g = (double)((float)this.n.dw());
+         this.h = (double)((float)this.n.dA());
+      }
    }
 }

@@ -1,80 +1,123 @@
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class cil extends cif {
-   private static final cei b = cei.a().d();
-   @Nullable
-   private eol c;
-   @Nullable
-   private evt d;
+public class cil extends cih {
+   public static final double c = 0.375;
 
-   public cil(cid $$0) {
-      super($$0);
+   public cil(bsj<? extends cil> $$0, dcd $$1) {
+      super($$0, $$1);
+   }
+
+   public cil(dcd $$0, ja $$1) {
+      super(bsj.al, $$0, $$1);
+      this.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
    }
 
    @Override
-   public cit<cil> i() {
-      return cit.c;
+   protected void a(ajt.a $$0) {
    }
 
    @Override
-   public void d() {
-      this.c = null;
-      this.d = null;
+   protected void p() {
+      this.p((double)this.b.u() + 0.5, (double)this.b.v() + 0.375, (double)this.b.w() + 0.5);
+      double $$0 = (double)this.ak().l() / 2.0;
+      double $$1 = (double)this.ak().m();
+      this.a(new evu(this.du() - $$0, this.dw(), this.dA() - $$0, this.du() + $$0, this.dw() + $$1, this.dA() + $$0));
    }
 
    @Override
-   public void c() {
-      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.du(), this.a.dw(), this.a.dA());
-      if ($$0 < 100.0 || $$0 > 22500.0 || this.a.Q || this.a.R) {
-         this.j();
-      }
+   public boolean a(double $$0) {
+      return $$0 < 1024.0;
    }
 
-   @Nullable
    @Override
-   public evt g() {
-      return this.d;
+   public void b(@Nullable bsd $$0) {
+      this.a(avf.nS, 1.0F, 1.0F);
    }
 
-   private void j() {
-      if (this.c == null || this.c.c()) {
-         int $$0 = this.a.y();
-         iz $$1 = this.a.dP().a(dxw.a.f, eaz.a(this.a.s()));
-         cmz $$2 = this.a.dP().a(b, this.a, (double)$$1.u(), (double)$$1.v(), (double)$$1.w());
-         int $$4;
-         if ($$2 != null) {
-            evt $$3 = new evt($$2.du(), 0.0, $$2.dA()).d();
-            $$4 = this.a.r(-$$3.c * 40.0, 105.0, -$$3.e * 40.0);
-         } else {
-            $$4 = this.a.r(40.0, (double)$$1.v(), 0.0);
+   @Override
+   public void b(tx $$0) {
+   }
+
+   @Override
+   public void a(tx $$0) {
+   }
+
+   @Override
+   public bqd a(cmh $$0, bqc $$1) {
+      if (this.dP().B) {
+         return bqd.a;
+      } else {
+         boolean $$2 = false;
+         double $$3 = 7.0;
+         List<bta> $$4 = this.dP().a(bta.class, new evu(this.du() - 7.0, this.dw() - 7.0, this.dA() - 7.0, this.du() + 7.0, this.dw() + 7.0, this.dA() + 7.0));
+
+         for (bta $$5 : $$4) {
+            if ($$5.gb() == $$0) {
+               $$5.b(this, true);
+               $$2 = true;
+            }
          }
 
-         eoj $$6 = new eoj($$1.u(), $$1.v(), $$1.w());
-         this.c = this.a.a($$0, $$4, $$6);
-         if (this.c != null) {
-            this.c.a();
+         boolean $$6 = false;
+         if (!$$2) {
+            this.ao();
+            if ($$0.fZ().d) {
+               for (bta $$7 : $$4) {
+                  if ($$7.fZ() && $$7.gb() == this) {
+                     $$7.a(true, false);
+                     $$6 = true;
+                  }
+               }
+            }
          }
-      }
 
-      this.k();
-      if (this.c != null && this.c.c()) {
-         this.a.gn().a(cit.d);
+         if ($$2 || $$6) {
+            this.a(dxa.b, $$0);
+         }
+
+         return bqd.c;
       }
    }
 
-   private void k() {
-      if (this.c != null && !this.c.c()) {
-         kd $$0 = this.c.g();
-         this.c.a();
-         double $$1 = (double)$$0.u();
-         double $$2 = (double)$$0.w();
+   @Override
+   public boolean s() {
+      return this.dP().a_(this.b).a(avu.S);
+   }
 
-         double $$3;
-         do {
-            $$3 = (double)((float)$$0.v() + this.a.el().i() * 20.0F);
-         } while ($$3 < (double)$$0.v());
+   public static cil b(dcd $$0, ja $$1) {
+      int $$2 = $$1.u();
+      int $$3 = $$1.v();
+      int $$4 = $$1.w();
 
-         this.d = new evt($$1, $$3, $$2);
+      for (cil $$6 : $$0.a(cil.class, new evu((double)$$2 - 1.0, (double)$$3 - 1.0, (double)$$4 - 1.0, (double)$$2 + 1.0, (double)$$3 + 1.0, (double)$$4 + 1.0))) {
+         if ($$6.u().equals($$1)) {
+            return $$6;
+         }
       }
+
+      cil $$7 = new cil($$0, $$1);
+      $$0.b($$7);
+      return $$7;
+   }
+
+   @Override
+   public void v() {
+      this.a(avf.nT, 1.0F, 1.0F);
+   }
+
+   @Override
+   public zb<abn> dl() {
+      return new abo(this, 0, this.u());
+   }
+
+   @Override
+   public evz r(float $$0) {
+      return this.m($$0).b(0.0, 0.2, 0.0);
+   }
+
+   @Override
+   public cua dC() {
+      return new cua(cud.uK);
    }
 }

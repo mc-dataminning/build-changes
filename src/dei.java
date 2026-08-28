@@ -1,67 +1,76 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dei extends dfb implements dmc {
+public class dei extends dff implements dfi {
    public static final MapCodec<dei> a = b(dei::new);
-   public static final dsv b = dsu.C;
+   protected static final float b = 4.0F;
+   protected static final ews c = dff.a(4.0, 0.0, 4.0, 12.0, 12.0, 12.0);
 
    @Override
    public MapCodec<dei> a() {
       return a;
    }
 
-   protected dei(dsd.d $$0) {
+   public dei(dsg.d $$0) {
       super($$0);
-      this.k(this.o().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean a_(dse $$0, dbg $$1, iz $$2) {
-      return $$0.u().c();
+   protected ews a(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
+      evz $$4 = $$0.n($$1, $$2);
+      return c.a($$4.c, $$4.d, $$4.e);
    }
 
    @Override
-   protected dlh a_(dse $$0) {
-      return dlh.a;
-   }
-
-   @Override
-   protected float d(dse $$0, dbg $$1, iz $$2) {
-      return 1.0F;
-   }
-
-   @Override
-   protected dse a(dse $$0, je $$1, dse $$2, dcb $$3, iz $$4, iz $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, eny.c, eny.c.a($$3));
+   protected void b(dsh $$0, aqk $$1, ja $$2, aym $$3) {
+      if ($$3.a(3) == 0 && $$1.u($$2.c()) && $$1.b($$2.c(), 0) >= 9) {
+         this.a($$1, $$2);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected enx b_(dse $$0) {
-      return $$0.c(b) ? eny.c.a(false) : super.b_($$0);
-   }
-
-   @Nullable
-   @Override
-   public dse a(cyc $$0) {
-      return this.o().a(b, Boolean.valueOf($$0.q().b_($$0.a()).a() == eny.c));
+   protected boolean a(dsh $$0, dcg $$1, ja $$2) {
+      return $$1.a_($$2.d()).a(avu.au);
    }
 
    @Override
-   protected void a(dsf.a<dfb, dse> $$0) {
-      $$0.a(b);
+   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
+      if (!$$0.a($$3, $$4)) {
+         return dfh.a.o();
+      } else {
+         if ($$1 == jf.b && $$2.a(dfh.mZ)) {
+            $$3.a($$4, dfh.mZ.o(), 2);
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 
    @Override
-   public cur a(@Nullable cmz $$0, dcb $$1, iz $$2, dse $$3) {
-      return $$0 != null && $$0.f() ? dmc.super.a($$0, $$1, $$2, $$3) : cur.l;
+   public cua a(dcg $$0, ja $$1, dsh $$2) {
+      return new cua(cud.dR);
    }
 
    @Override
-   public boolean a(@Nullable cmz $$0, dbg $$1, iz $$2, dse $$3, enw $$4) {
-      return $$0 != null && $$0.f() ? dmc.super.a($$0, $$1, $$2, $$3, $$4) : false;
+   public boolean b(dcg $$0, ja $$1, dsh $$2) {
+      return $$0.a_($$1.c()).i();
+   }
+
+   @Override
+   public boolean a(dcd $$0, aym $$1, ja $$2, dsh $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqk $$0, aym $$1, ja $$2, dsh $$3) {
+      this.a($$0, $$2);
+   }
+
+   @Override
+   protected float a(dsh $$0, cmh $$1, dbj $$2, ja $$3) {
+      return $$1.eT().g() instanceof cvn ? 1.0F : super.a($$0, $$1, $$2, $$3);
+   }
+
+   protected void a(dcd $$0, ja $$1) {
+      $$0.a($$1.c(), dfh.mZ.o().a(dej.i, dst.b), 3);
    }
 }

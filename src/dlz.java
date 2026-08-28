@@ -1,80 +1,117 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dlz extends dfk implements dfe, djs {
+public class dlz extends der implements dmg {
    public static final MapCodec<dlz> a = b(dlz::new);
-   protected static final float b = 6.0F;
-   protected static final ewm c = dfb.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
+   public static final dsy b = dsx.F;
+   public static final dsy c = dsx.C;
+   public static final dsy d = dsx.G;
+   protected static final ews e = dff.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
+   public static final double f = e.c(jf.a.b);
 
    @Override
    public MapCodec<dlz> a() {
       return a;
    }
 
-   protected dlz(dsd.d $$0) {
+   public dlz(dsg.d $$0) {
       super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected ewm a(dse $$0, dbg $$1, iz $$2, evy $$3) {
-      return c;
+   protected void a(dsi.a<dff, dsh> $$0) {
+      $$0.a(b);
+      $$0.a(c);
+      $$0.a(d);
    }
 
    @Override
-   protected boolean b(dse $$0, dbg $$1, iz $$2) {
-      return $$0.d($$1, $$2, je.b) && !$$0.a(dfd.kJ);
+   public void a(dcd $$0, ja $$1, dsh $$2, bsd $$3) {
+      if ($$0 instanceof aqk $$4) {
+         aql $$5 = dqv.a($$3);
+         if ($$5 != null) {
+            $$4.a($$1, dpp.L).ifPresent($$2x -> $$2x.a($$4, $$5));
+         }
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected void a(dsh $$0, dcd $$1, ja $$2, dsh $$3, boolean $$4) {
+      if ($$1 instanceof aqk $$5 && $$0.c(b) && !$$0.a($$3.b())) {
+         $$5.a($$2, dpp.L).ifPresent($$1x -> $$1x.a($$5));
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   protected void a(dsh $$0, aqk $$1, ja $$2, aym $$3) {
+      if ($$0.c(b)) {
+         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
+         $$1.a($$2, dpp.L).ifPresent($$1x -> $$1x.a($$1));
+      }
+   }
+
+   @Override
+   protected dll a_(dsh $$0) {
+      return dll.c;
+   }
+
+   @Override
+   protected ews b(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
+      return e;
+   }
+
+   @Override
+   protected ews f(dsh $$0, dbj $$1, ja $$2) {
+      return e;
+   }
+
+   @Override
+   protected boolean f_(dsh $$0) {
+      return true;
    }
 
    @Nullable
    @Override
-   public dse a(cyc $$0) {
-      enx $$1 = $$0.q().b_($$0.a());
-      return $$1.a(awv.a) && $$1.e() == 8 ? super.a($$0) : null;
+   public dpn a(ja $$0, dsh $$1) {
+      return new dqv($$0, $$1);
    }
 
    @Override
-   protected dse a(dse $$0, je $$1, dse $$2, dcb $$3, iz $$4, iz $$5) {
-      dse $$6 = super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (!$$6.i()) {
-         $$3.a($$4, eny.c, eny.c.a($$3));
+   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, eoc.c, eoc.c.a($$3));
       }
 
-      return $$6;
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Nullable
+   @Override
+   public dsh a(cxk $$0) {
+      return this.o().a(c, Boolean.valueOf($$0.q().b_($$0.a()).a() == eoc.c));
    }
 
    @Override
-   public boolean b(dcd $$0, iz $$1, dse $$2) {
-      return true;
+   protected eob b_(dsh $$0) {
+      return $$0.c(c) ? eoc.c.a(false) : super.b_($$0);
    }
 
    @Override
-   public boolean a(dca $$0, azh $$1, iz $$2, dse $$3) {
-      return true;
-   }
-
-   @Override
-   protected enx b_(dse $$0) {
-      return eny.c.a(false);
-   }
-
-   @Override
-   public void a(arf $$0, azh $$1, iz $$2, dse $$3) {
-      dse $$4 = dfd.bx.o();
-      dse $$5 = $$4.a(dnh.d, dta.a);
-      iz $$6 = $$2.c();
-      if ($$0.a_($$6).a(dfd.G)) {
-         $$0.a($$2, $$4, 2);
-         $$0.a($$6, $$5, 2);
+   protected void a(dsh $$0, aqk $$1, ja $$2, cua $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         this.a($$1, $$2, $$3, bpf.a(5));
       }
    }
 
+   @Nullable
    @Override
-   public boolean a(@Nullable cmz $$0, dbg $$1, iz $$2, dse $$3, enw $$4) {
-      return false;
-   }
-
-   @Override
-   public boolean a(dcb $$0, iz $$1, dse $$2, enx $$3) {
-      return false;
+   public <T extends dpn> dpo<T> a(dcd $$0, dsh $$1, dpp<T> $$2) {
+      return !$$0.B ? der.a($$2, dpp.L, ($$0x, $$1x, $$2x, $$3) -> dxj.c.a($$0x, $$3.gp(), $$3.gq())) : null;
    }
 }

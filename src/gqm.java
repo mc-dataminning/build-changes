@@ -1,58 +1,69 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import org.slf4j.Logger;
 
-public class gqm {
-   public static final gqn a = new gqn();
-   public static final String b = "animation";
-   public static final int c = 1;
-   public static final int d = -1;
-   public static final gqm e = new gqm(Lists.newArrayList(), -1, -1, 1, false) {
-      @Override
-      public gqo a(int $$0, int $$1) {
-         return new gqo($$0, $$1);
+public class gqm extends ts {
+   private static final Logger b = LogUtils.getLogger();
+   private final Map<String, String> c;
+   private final boolean d;
+
+   private gqm(Map<String, String> $$0, boolean $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   public static gqm a(atu $$0, List<String> $$1, boolean $$2) {
+      Map<String, String> $$3 = Maps.newHashMap();
+
+      for (String $$4 : $$1) {
+         String $$5 = String.format(Locale.ROOT, "lang/%s.json", $$4);
+
+         for (String $$6 : $$0.a()) {
+            try {
+               akk $$7 = new akk($$6, $$5);
+               a($$4, $$0.a($$7), $$3);
+            } catch (Exception var10) {
+               b.warn("Skipped language file: {}:{} ({})", new Object[]{$$6, $$5, var10.toString()});
+            }
+         }
       }
-   };
-   private final List<gql> f;
-   private final int g;
-   private final int h;
-   private final int i;
-   private final boolean j;
 
-   public gqm(List<gql> $$0, int $$1, int $$2, int $$3, boolean $$4) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.j = $$4;
+      return new gqm(ImmutableMap.copyOf($$3), $$2);
    }
 
-   public gqo a(int $$0, int $$1) {
-      if (this.g != -1) {
-         return this.h != -1 ? new gqo(this.g, this.h) : new gqo(this.g, $$1);
-      } else if (this.h != -1) {
-         return new gqo($$0, this.h);
-      } else {
-         int $$2 = Math.min($$0, $$1);
-         return new gqo($$2, $$2);
+   private static void a(String $$0, List<ats> $$1, Map<String, String> $$2) {
+      for (ats $$3 : $$1) {
+         try (InputStream $$4 = $$3.d()) {
+            ts.a($$4, $$2::put);
+         } catch (IOException var10) {
+            b.warn("Failed to load translations for {} from pack {}", new Object[]{$$0, $$3.b(), var10});
+         }
       }
    }
 
-   public int a() {
-      return this.i;
+   @Override
+   public String a(String $$0, String $$1) {
+      return this.c.getOrDefault($$0, $$1);
    }
 
+   @Override
+   public boolean b(String $$0) {
+      return this.c.containsKey($$0);
+   }
+
+   @Override
    public boolean b() {
-      return this.j;
+      return this.d;
    }
 
-   public void a(gqm.a $$0) {
-      for (gql $$1 : this.f) {
-         $$0.accept($$1.a(), $$1.a(this.i));
-      }
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void accept(int var1, int var2);
+   @Override
+   public axq a(wz $$0) {
+      return gqn.a($$0, this.d);
    }
 }

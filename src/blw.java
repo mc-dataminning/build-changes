@@ -1,65 +1,67 @@
-public class blw extends blu implements bma {
-   public static final int c = 240;
-   private final long[][] d;
-   private int e;
-   private int f;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public blw(int $$0) {
-      this($$0, new long[$$0]);
+public abstract class blw<S> {
+   private final Map<blw.b<?>, blw.a<?>> a = new HashMap<>();
+   private final blt<S> b;
+   private final blu<S> c;
+
+   protected blw(blt<S> $$0, blu<S> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public blw(int $$0, long[] $$1) {
-      super($$0, $$1);
-      this.d = new long[240][$$0];
+   public blu<S> a() {
+      return this.c;
    }
 
-   @Override
-   protected void a() {
-      int $$0 = this.b(this.e + this.f);
-      System.arraycopy(this.b, 0, this.d[$$0], 0, this.b.length);
-      if (this.f < 240) {
-         this.f++;
-      } else {
-         this.e = this.b(this.e + 1);
+   public <T> Optional<T> a(blr<T> $$0) {
+      Optional<T> $$1 = this.b($$0);
+      if ($$1.isPresent()) {
+         this.c.a(this.c());
       }
+
+      return $$1;
    }
 
-   @Override
-   public int c() {
-      return this.d.length;
-   }
-
-   @Override
-   public int d() {
-      return this.f;
-   }
-
-   @Override
-   public long a(int $$0) {
-      return this.a($$0, 0);
-   }
-
-   @Override
-   public long a(int $$0, int $$1) {
-      if ($$0 >= 0 && $$0 < this.f) {
-         long[] $$2 = this.d[this.b(this.e + $$0)];
-         if ($$1 >= 0 && $$1 < $$2.length) {
-            return $$2[$$1];
+   public <T> Optional<T> b(blr<T> $$0) {
+      blw.b<T> $$1 = new blw.b<>($$0, this.c());
+      blw.a<T> $$2 = this.a($$1);
+      if ($$2 != null) {
+         this.a($$2.b());
+         return $$2.a;
+      } else {
+         blx<S, T> $$3 = this.b.a($$0);
+         if ($$3 == null) {
+            throw new IllegalStateException("No symbol " + $$0);
          } else {
-            throw new IndexOutOfBoundsException($$1 + " out of bounds for dimensions " + $$2.length);
+            Optional<T> $$4 = $$3.a(this);
+            this.a($$1, $$4);
+            return $$4;
          }
-      } else {
-         throw new IndexOutOfBoundsException($$0 + " out of bounds for length " + this.f);
       }
    }
 
-   private int b(int $$0) {
-      return $$0 % 240;
+   @Nullable
+   private <T> blw.a<T> a(blw.b<T> $$0) {
+      return (blw.a<T>)this.a.get($$0);
    }
 
-   @Override
-   public void e() {
-      this.e = 0;
-      this.f = 0;
+   private <T> void a(blw.b<T> $$0, Optional<T> $$1) {
+      this.a.put($$0, new blw.a<>($$1, this.c()));
+   }
+
+   public abstract S b();
+
+   public abstract int c();
+
+   public abstract void a(int var1);
+
+   static record a<T>(Optional<T> a, int b) {
+   }
+
+   static record b<T>(blr<T> a, int b) {
    }
 }

@@ -1,33 +1,28 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableInt;
+import com.google.common.collect.ImmutableMap;
 
-public class bxl {
-   private static final int a = 300;
+public class bxl extends bur<bta> {
+   private final float c;
 
-   public static bvl<btr> a(int $$0, int $$1) {
-      int $$2 = $$0 * 20;
-      MutableInt $$3 = new MutableInt(0);
-      return byx.a(
-         (Function<byx.b<btr>, ? extends App<byx.c<btr>, bza<btr>>>)($$3x -> $$3x.group($$3x.b(ccv.C), $$3x.b(ccv.D))
-               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                     long $$9 = $$3x.<Long>b($$5);
-                     boolean $$10 = $$9 + 300L <= $$8;
-                     if ($$3.getValue() <= $$2 && !$$10) {
-                        iz $$11 = $$3x.<jh>b($$4).b();
-                        if ($$11.a($$7.dp(), (double)$$1)) {
-                           $$3.increment();
-                        }
+   public bxl(float $$0) {
+      super(ImmutableMap.of());
+      this.c = $$0;
+   }
 
-                        return true;
-                     } else {
-                        $$5.b();
-                        $$4.b();
-                        $$7.dS().a($$6.aa(), $$6.Z());
-                        $$3.setValue(0);
-                        return true;
-                     }
-                  }))
-      );
+   public static boolean a(bta $$0) {
+      return $$0.be() && $$0.b(awa.a) > $$0.di() || $$0.bs();
+   }
+
+   protected boolean a(aqk $$0, bta $$1) {
+      return a($$1);
+   }
+
+   protected boolean a(aqk $$0, bta $$1, long $$2) {
+      return this.a($$0, $$1);
+   }
+
+   protected void b(aqk $$0, bta $$1, long $$2) {
+      if ($$1.dS().i() < this.c) {
+         $$1.I().a();
+      }
    }
 }

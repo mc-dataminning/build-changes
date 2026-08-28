@@ -1,82 +1,75 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Map;
 
-public class djc extends dgx {
-   public static final MapCodec<djc> i = b(djc::new);
+public class djc extends dff {
+   public static final MapCodec<djc> a = b(djc::new);
+   public static final dsy b = dkt.b;
+   public static final dsy c = dkt.c;
+   public static final dsy d = dkt.d;
+   public static final dsy e = dkt.e;
+   public static final dsy f = dkt.f;
+   public static final dsy g = dkt.g;
+   private static final Map<jf, dsy> h = dkt.h;
 
    @Override
-   public MapCodec<? extends djc> a() {
-      return i;
+   public MapCodec<djc> a() {
+      return a;
    }
 
-   protected djc(dsd.d $$0) {
-      super(1.0F, 1.0F, 16.0F, 16.0F, 16.0F, $$0);
+   public djc(dsg.d $$0) {
+      super($$0);
       this.k(
          this.E
             .b()
-            .a(a, Boolean.valueOf(false))
-            .a(b, Boolean.valueOf(false))
-            .a(c, Boolean.valueOf(false))
-            .a(d, Boolean.valueOf(false))
-            .a(e, Boolean.valueOf(false))
+            .a(b, Boolean.valueOf(true))
+            .a(c, Boolean.valueOf(true))
+            .a(d, Boolean.valueOf(true))
+            .a(e, Boolean.valueOf(true))
+            .a(f, Boolean.valueOf(true))
+            .a(g, Boolean.valueOf(true))
       );
    }
 
    @Override
-   public dse a(cyc $$0) {
-      dbg $$1 = $$0.q();
-      iz $$2 = $$0.a();
-      enx $$3 = $$0.q().b_($$0.a());
-      iz $$4 = $$2.e();
-      iz $$5 = $$2.f();
-      iz $$6 = $$2.g();
-      iz $$7 = $$2.h();
-      dse $$8 = $$1.a_($$4);
-      dse $$9 = $$1.a_($$5);
-      dse $$10 = $$1.a_($$6);
-      dse $$11 = $$1.a_($$7);
+   public dsh a(cxk $$0) {
+      dbj $$1 = $$0.q();
+      ja $$2 = $$0.a();
       return this.o()
-         .a(a, Boolean.valueOf(this.a($$8, $$8.d($$1, $$4, je.d))))
-         .a(c, Boolean.valueOf(this.a($$9, $$9.d($$1, $$5, je.c))))
-         .a(d, Boolean.valueOf(this.a($$10, $$10.d($$1, $$6, je.f))))
-         .a(b, Boolean.valueOf(this.a($$11, $$11.d($$1, $$7, je.e))))
-         .a(e, Boolean.valueOf($$3.a() == eny.c));
+         .a(g, Boolean.valueOf(!$$1.a_($$2.d()).a(this)))
+         .a(f, Boolean.valueOf(!$$1.a_($$2.c()).a(this)))
+         .a(b, Boolean.valueOf(!$$1.a_($$2.e()).a(this)))
+         .a(c, Boolean.valueOf(!$$1.a_($$2.h()).a(this)))
+         .a(d, Boolean.valueOf(!$$1.a_($$2.f()).a(this)))
+         .a(e, Boolean.valueOf(!$$1.a_($$2.g()).a(this)));
    }
 
    @Override
-   protected dse a(dse $$0, je $$1, dse $$2, dcb $$3, iz $$4, iz $$5) {
-      if ($$0.c(e)) {
-         $$3.a($$4, eny.c, eny.c.a($$3));
-      }
-
-      return $$1.o().d() ? $$0.a(f.get($$1), Boolean.valueOf(this.a($$2, $$2.d($$3, $$5, $$1.g())))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
+      return $$2.a(this) ? $$0.a(h.get($$1), Boolean.valueOf(false)) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected ewm c(dse $$0, dbg $$1, iz $$2, evy $$3) {
-      return ewj.a();
+   protected dsh a(dsh $$0, dls $$1) {
+      return $$0.a(h.get($$1.a(jf.c)), $$0.c(b))
+         .a(h.get($$1.a(jf.d)), $$0.c(d))
+         .a(h.get($$1.a(jf.f)), $$0.c(c))
+         .a(h.get($$1.a(jf.e)), $$0.c(e))
+         .a(h.get($$1.a(jf.b)), $$0.c(f))
+         .a(h.get($$1.a(jf.a)), $$0.c(g));
    }
 
    @Override
-   protected boolean a(dse $$0, dse $$1, je $$2) {
-      if ($$1.a(this)) {
-         if (!$$2.o().d()) {
-            return true;
-         }
-
-         if ($$0.c(f.get($$2)) && $$1.c(f.get($$2.g()))) {
-            return true;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   public final boolean a(dse $$0, boolean $$1) {
-      return !j($$0) && $$1 || $$0.b() instanceof djc || $$0.a(awp.L);
+   protected dsh a(dsh $$0, dkc $$1) {
+      return $$0.a(h.get($$1.b(jf.c)), $$0.c(b))
+         .a(h.get($$1.b(jf.d)), $$0.c(d))
+         .a(h.get($$1.b(jf.f)), $$0.c(c))
+         .a(h.get($$1.b(jf.e)), $$0.c(e))
+         .a(h.get($$1.b(jf.b)), $$0.c(f))
+         .a(h.get($$1.b(jf.a)), $$0.c(g));
    }
 
    @Override
-   protected void a(dsf.a<dfb, dse> $$0) {
-      $$0.a(a, b, d, c, e);
+   protected void a(dsi.a<dff, dsh> $$0) {
+      $$0.a(f, g, b, c, d, e);
    }
 }

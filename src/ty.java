@@ -1,20 +1,132 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
 
-public class ty implements ul {
-   private static final Logger a = LogUtils.getLogger();
-
-   @Override
-   public void a(to $$0) {
-      String $$1 = $$0.c().x();
-      if ($$0.q()) {
-         a.error("{} failed at {}! {}", new Object[]{$$0.b(), $$1, ac.c($$0.m())});
-      } else {
-         a.warn("(optional) {} failed at {}. {}", new Object[]{$$0.b(), $$1, ac.c($$0.m())});
+public class ty extends un {
+   private static final int c = 16;
+   public static final ty a = new ty(0.0);
+   public static final uw<ty> b = new uw.a<ty>() {
+      public ty a(DataInput $$0, ug $$1) throws IOException {
+         return ty.a(d($$0, $$1));
       }
+
+      @Override
+      public ur.b a(DataInput $$0, ur $$1, ug $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
+      }
+
+      private static double d(DataInput $$0, ug $$1) throws IOException {
+         $$1.b(16L);
+         return $$0.readDouble();
+      }
+
+      @Override
+      public int c() {
+         return 8;
+      }
+
+      @Override
+      public String a() {
+         return "DOUBLE";
+      }
+
+      @Override
+      public String b() {
+         return "TAG_Double";
+      }
+
+      @Override
+      public boolean d() {
+         return true;
+      }
+   };
+   private final double w;
+
+   private ty(double $$0) {
+      this.w = $$0;
+   }
+
+   public static ty a(double $$0) {
+      return $$0 == 0.0 ? a : new ty($$0);
    }
 
    @Override
-   public void b(to $$0) {
+   public void a(DataOutput $$0) throws IOException {
+      $$0.writeDouble(this.w);
+   }
+
+   @Override
+   public int a() {
+      return 16;
+   }
+
+   @Override
+   public byte b() {
+      return 6;
+   }
+
+   @Override
+   public uw<ty> c() {
+      return b;
+   }
+
+   public ty e() {
+      return this;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof ty && this.w == ((ty)$$0).w;
+   }
+
+   @Override
+   public int hashCode() {
+      long $$0 = Double.doubleToLongBits(this.w);
+      return (int)($$0 ^ $$0 >>> 32);
+   }
+
+   @Override
+   public void a(uy $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public long f() {
+      return (long)Math.floor(this.w);
+   }
+
+   @Override
+   public int g() {
+      return aye.a(this.w);
+   }
+
+   @Override
+   public short h() {
+      return (short)(aye.a(this.w) & 65535);
+   }
+
+   @Override
+   public byte i() {
+      return (byte)(aye.a(this.w) & 0xFF);
+   }
+
+   @Override
+   public double j() {
+      return this.w;
+   }
+
+   @Override
+   public float k() {
+      return (float)this.w;
+   }
+
+   @Override
+   public Number l() {
+      return this.w;
+   }
+
+   @Override
+   public ur.b a(ur $$0) {
+      return $$0.a(this.w);
    }
 }

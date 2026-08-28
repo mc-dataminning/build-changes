@@ -1,45 +1,37 @@
-public class ahy implements zw<agw> {
-   public static final zn<wm, ahy> a = zw.a(ahy::a, ahy::new);
-   private final int b;
-   private final alf c;
-   private final boolean d;
+public class ahy implements zb<agb> {
+   public static final ys<vr, ahy> a = zb.a(ahy::a, ahy::new);
+   private final bqc b;
+   private final int c;
 
-   public ahy(int $$0, cyz<?> $$1, boolean $$2) {
+   public ahy(bqc $$0, int $$1) {
       this.b = $$0;
-      this.c = $$1.a();
-      this.d = $$2;
+      this.c = $$1;
    }
 
-   private ahy(wm $$0) {
-      this.b = $$0.readByte();
-      this.c = $$0.q();
-      this.d = $$0.readBoolean();
+   private ahy(vr $$0) {
+      this.b = $$0.b(bqc.class);
+      this.c = $$0.l();
    }
 
-   private void a(wm $$0) {
-      $$0.k(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
+   private void a(vr $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public zy<ahy> a() {
-      return agu.bI;
+   public zd<ahy> a() {
+      return afz.cd;
    }
 
-   public void a(agw $$0) {
+   public void a(agb $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public bqc b() {
       return this.b;
    }
 
-   public alf e() {
+   public int e() {
       return this.c;
-   }
-
-   public boolean f() {
-      return this.d;
    }
 }

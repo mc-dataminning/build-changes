@@ -1,24 +1,16 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
 
-public class dzi extends dzo {
-   final axf<dfb> a;
-   public static final MapCodec<dzi> e = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(axf.a(lq.f).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, dzi::new)
-   );
+abstract class dzi implements dzg {
+   protected final List<dzg> e;
 
-   protected dzi(kd $$0, axf<dfb> $$1) {
-      super($$0);
-      this.a = $$1;
+   protected dzi(List<dzg> $$0) {
+      this.e = $$0;
    }
 
-   @Override
-   protected boolean a(dse $$0) {
-      return $$0.a(this.a);
-   }
-
-   @Override
-   public dze<?> a() {
-      return dze.b;
+   public static <T extends dzi> MapCodec<T> a(Function<List<dzg>, T> $$0) {
+      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(dzg.b.listOf().fieldOf("predicates").forGetter($$0xx -> $$0xx.e)).apply($$1, $$0));
    }
 }

@@ -1,197 +1,106 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.List;
+import java.util.Locale;
+import org.slf4j.Logger;
 
-public abstract class eim {
-   public static final Codec<eim> a = lp.T.q().dispatch(eim::e, eiv::codec);
-   public static final Codec<ji<eim>> b = alb.a(lq.aJ, a);
-   protected final eim.c c;
+public class eim extends eiu {
+   private static final Logger d = LogUtils.getLogger();
+   protected final ejx a;
+   protected ja b;
+   private final int h;
+   protected final dls c;
+   private final List<ejs> i = Lists.newArrayList();
+   private final emr j;
 
-   public static <S extends eim> RecordCodecBuilder<S, eim.c> a(Instance<S> $$0) {
-      return eim.c.a.forGetter($$0x -> $$0x.c);
+   public eim(emr $$0, ejx $$1, ja $$2, int $$3, dls $$4, eii $$5) {
+      super(ejh.ad, 0, $$5);
+      this.j = $$0;
+      this.a = $$1;
+      this.b = $$2;
+      this.h = $$3;
+      this.c = $$4;
    }
 
-   public static <S extends eim> MapCodec<S> a(Function<eim.c, S> $$0) {
-      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(a($$1)).apply($$1, $$0));
+   public eim(ejg $$0, tx $$1) {
+      super(ejh.ad, $$1);
+      this.j = $$0.c();
+      this.b = new ja($$1.h("PosX"), $$1.h("PosY"), $$1.h("PosZ"));
+      this.h = $$1.h("ground_level_delta");
+      DynamicOps<uu> $$2 = $$0.b().a(ul.a);
+      this.a = (ejx)ejx.e
+         .parse($$2, $$1.p("pool_element"))
+         .resultOrPartial(d::error)
+         .orElseThrow(() -> new IllegalStateException("Invalid pool element found"));
+      this.c = dls.valueOf($$1.l("rotation"));
+      this.f = this.a.a(this.j, this.b, this.c);
+      ud $$3 = $$1.c("junctions", 10);
+      this.i.clear();
+      $$3.forEach($$1x -> this.i.add(ejs.a(new Dynamic($$2, $$1x))));
    }
 
-   protected eim(eim.c $$0) {
-      this.c = $$0;
-   }
+   @Override
+   protected void a(ejg $$0, tx $$1) {
+      $$1.a("PosX", this.b.u());
+      $$1.a("PosY", this.b.v());
+      $$1.a("PosZ", this.b.w());
+      $$1.a("ground_level_delta", this.h);
+      DynamicOps<uu> $$2 = $$0.b().a(ul.a);
+      ejx.e.encodeStart($$2, this.a).resultOrPartial(d::error).ifPresent($$1x -> $$1.a("pool_element", $$1x));
+      $$1.a("rotation", this.c.name());
+      ud $$3 = new ud();
 
-   public jm<dcz> a() {
-      return this.c.b;
-   }
-
-   public Map<btu, eit> b() {
-      return this.c.c;
-   }
-
-   public dxs.b c() {
-      return this.c.d;
-   }
-
-   public eix d() {
-      return this.c.e;
-   }
-
-   public eie a(eie $$0) {
-      return this.d() != eix.a ? $$0.a(12) : $$0;
-   }
-
-   public eiu a(jw $$0, dub $$1, ddd $$2, dyk $$3, emn $$4, long $$5, dbh $$6, int $$7, dcc $$8, Predicate<ji<dcz>> $$9) {
-      eim.a $$10 = new eim.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$8, $$9);
-      Optional<eim.b> $$11 = this.b($$10);
-      if ($$11.isPresent()) {
-         eje $$12 = $$11.get().a();
-         eiu $$13 = new eiu(this, $$6, $$7, $$12.a());
-         if ($$13.b()) {
-            return $$13;
-         }
+      for (ejs $$4 : this.i) {
+         $$3.add((uu)$$4.a($$2).getValue());
       }
 
-      return eiu.b;
+      $$1.a("junctions", $$3);
    }
 
-   protected static Optional<eim.b> a(eim.a $$0, dxw.a $$1, Consumer<eje> $$2) {
-      dbh $$3 = $$0.h();
-      int $$4 = $$3.b();
-      int $$5 = $$3.c();
-      int $$6 = $$0.b().c($$4, $$5, $$1, $$0.i(), $$0.d());
-      return Optional.of(new eim.b(new iz($$4, $$6, $$5), $$2));
+   @Override
+   public void a(dcz $$0, dcx $$1, due $$2, aym $$3, eii $$4, dbk $$5, ja $$6) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$6, false);
    }
 
-   private static boolean a(eim.b $$0, eim.a $$1) {
-      iz $$2 = $$0.b();
-      return $$1.j.test($$1.b.d().getNoiseBiome(jt.a($$2.u()), jt.a($$2.v()), jt.a($$2.w()), $$1.d.b()));
+   public void a(dcz $$0, dcx $$1, due $$2, aym $$3, eii $$4, ja $$5, boolean $$6) {
+      this.a.a(this.j, $$0, $$1, $$2, this.b, $$5, this.c, $$4, $$3, $$6);
    }
 
-   public void a(dcv $$0, dct $$1, dub $$2, azh $$3, eie $$4, dbh $$5, ejb $$6) {
+   @Override
+   public void a(int $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.b = this.b.b($$0, $$1, $$2);
    }
 
-   private static int[] c(eim.a $$0, int $$1, int $$2, int $$3, int $$4) {
-      dub $$5 = $$0.b();
-      dcc $$6 = $$0.i();
-      dyk $$7 = $$0.d();
-      return new int[]{
-         $$5.c($$1, $$3, dxw.a.a, $$6, $$7),
-         $$5.c($$1, $$3 + $$4, dxw.a.a, $$6, $$7),
-         $$5.c($$1 + $$2, $$3, dxw.a.a, $$6, $$7),
-         $$5.c($$1 + $$2, $$3 + $$4, dxw.a.a, $$6, $$7)
-      };
+   @Override
+   public dls a() {
+      return this.c;
    }
 
-   public static int a(eim.a $$0, int $$1, int $$2, int $$3, int $$4) {
-      int[] $$5 = c($$0, $$1, $$2, $$3, $$4);
-      return ($$5[0] + $$5[1] + $$5[2] + $$5[3]) / 4;
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "<%s | %s | %s | %s>", this.getClass().getSimpleName(), this.b, this.c, this.a);
    }
 
-   protected static int a(eim.a $$0, int $$1, int $$2) {
-      dbh $$3 = $$0.h();
-      int $$4 = $$3.d();
-      int $$5 = $$3.e();
-      return b($$0, $$4, $$5, $$1, $$2);
+   public ejx b() {
+      return this.a;
    }
 
-   protected static int b(eim.a $$0, int $$1, int $$2, int $$3, int $$4) {
-      int[] $$5 = c($$0, $$1, $$3, $$2, $$4);
-      return Math.min(Math.min($$5[0], $$5[1]), Math.min($$5[2], $$5[3]));
+   public ja c() {
+      return this.b;
    }
 
-   @Deprecated
-   protected iz a(eim.a $$0, dlo $$1) {
-      int $$2 = 5;
-      int $$3 = 5;
-      if ($$1 == dlo.b) {
-         $$2 = -5;
-      } else if ($$1 == dlo.c) {
-         $$2 = -5;
-         $$3 = -5;
-      } else if ($$1 == dlo.d) {
-         $$3 = -5;
-      }
-
-      dbh $$4 = $$0.h();
-      int $$5 = $$4.a(7);
-      int $$6 = $$4.b(7);
-      return new iz($$5, b($$0, $$5, $$6, $$2, $$3), $$6);
+   public int d() {
+      return this.h;
    }
 
-   protected abstract Optional<eim.b> a(eim.a var1);
-
-   public Optional<eim.b> b(eim.a $$0) {
-      return this.a($$0).filter($$1 -> a($$1, $$0));
+   public void a(ejs $$0) {
+      this.i.add($$0);
    }
 
-   public abstract eiv<?> e();
-
-   public static record a(jw a, dub b, ddd c, dyk d, emn e, dyv f, long g, dbh h, dcc i, Predicate<ji<dcz>> j) {
-
-      public a(jw $$0, dub $$1, ddd $$2, dyk $$3, emn $$4, long $$5, dbh $$6, dcc $$7, Predicate<ji<dcz>> $$8) {
-         this($$0, $$1, $$2, $$3, $$4, a($$5, $$6), $$5, $$6, $$7, $$8);
-      }
-
-      private static dyv a(long $$0, dbh $$1) {
-         dyv $$2 = new dyv(new dxx(0L));
-         $$2.c($$0, $$1.e, $$1.f);
-         return $$2;
-      }
-   }
-
-   public static record b(iz a, Either<Consumer<eje>, eje> b) {
-      public b(iz $$0, Consumer<eje> $$1) {
-         this($$0, Either.left($$1));
-      }
-
-      public eje a() {
-         return (eje)this.b.map($$0 -> {
-            eje $$1 = new eje();
-            $$0.accept($$1);
-            return $$1;
-         }, $$0 -> $$0);
-      }
-
-      public iz b() {
-         return this.a;
-      }
-
-      public Either<Consumer<eje>, eje> c() {
-         return this.b;
-      }
-   }
-
-   public static record c(jm<dcz> b, Map<btu, eit> c, dxs.b d, eix e) {
-      public static final MapCodec<eim.c> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  jx.a(lq.az).fieldOf("biomes").forGetter(eim.c::a),
-                  Codec.simpleMap(btu.i, eit.a, azu.a(btu.values())).fieldOf("spawn_overrides").forGetter(eim.c::b),
-                  dxs.b.l.fieldOf("step").forGetter(eim.c::c),
-                  eix.f.optionalFieldOf("terrain_adaptation", eix.a).forGetter(eim.c::d)
-               )
-               .apply($$0, eim.c::new)
-      );
-
-      public jm<dcz> a() {
-         return this.b;
-      }
-
-      public Map<btu, eit> b() {
-         return this.c;
-      }
-
-      public dxs.b c() {
-         return this.d;
-      }
-
-      public eix d() {
-         return this.e;
-      }
+   public List<ejs> e() {
+      return this.i;
    }
 }

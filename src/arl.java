@@ -1,113 +1,68 @@
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.ArrayList;
-import java.util.List;
+import net.minecraft.server.MinecraftServer;
 
-public class arl extends aqs {
-   public static final int a = 33;
-   private static final int c = 4;
-   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
-   private final Long2ObjectOpenHashMap<azr<arj<?>>> d = new Long2ObjectOpenHashMap();
+public class arl implements aif {
+   private static final wu b = wu.c("disconnect.ignoring_status_request");
+   private final MinecraftServer c;
+   private final vp d;
 
-   public arl() {
-      super(34, 16, 256);
-      this.b.defaultReturnValue((byte)33);
+   public arl(MinecraftServer $$0, vp $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   private azr<arj<?>> g(long $$0) {
-      return (azr<arj<?>>)this.d.computeIfAbsent($$0, $$0x -> azr.a(4));
-   }
-
-   private int a(azr<arj<?>> $$0) {
-      return $$0.isEmpty() ? 34 : $$0.b().b();
-   }
-
-   public void a(long $$0, arj<?> $$1) {
-      azr<arj<?>> $$2 = this.g($$0);
-      int $$3 = this.a($$2);
-      $$2.add($$1);
-      if ($$1.b() < $$3) {
-         this.b($$0, $$1.b(), true);
-      }
-   }
-
-   public void b(long $$0, arj<?> $$1) {
-      azr<arj<?>> $$2 = this.g($$0);
-      $$2.remove($$1);
-      if ($$2.isEmpty()) {
-         this.d.remove($$0);
-      }
-
-      this.b($$0, this.a($$2), false);
-   }
-
-   public <T> void a(ark<T> $$0, dbh $$1, int $$2, T $$3) {
-      this.a($$1.a(), new arj<>($$0, $$2, $$3));
-   }
-
-   public <T> void b(ark<T> $$0, dbh $$1, int $$2, T $$3) {
-      arj<T> $$4 = new arj<>($$0, $$2, $$3);
-      this.b($$1.a(), $$4);
-   }
-
-   public void a(int $$0) {
-      List<Pair<arj<dbh>, Long>> $$1 = new ArrayList<>();
-      ObjectIterator var3 = this.d.long2ObjectEntrySet().iterator();
-
-      while (var3.hasNext()) {
-         Entry<azr<arj<?>>> $$2 = (Entry<azr<arj<?>>>)var3.next();
-
-         for (arj<?> $$3 : (azr)$$2.getValue()) {
-            if ($$3.a() == ark.c) {
-               $$1.add(Pair.of($$3, $$2.getLongKey()));
+   @Override
+   public void a(aic $$0) {
+      switch ($$0.g()) {
+         case b:
+            this.a($$0, false);
+            break;
+         case a:
+            ajj $$1 = this.c.av();
+            this.d.a(ajn.b);
+            if (this.c.an() && $$1 != null) {
+               this.d.a(ajn.a, new aro($$1, this.d));
+            } else {
+               this.d.a(b);
             }
+            break;
+         case c:
+            if (!this.c.bo()) {
+               this.d.a(aio.b);
+               wu $$2 = wu.c("multiplayer.disconnect.transfers_disabled");
+               this.d.a(new aim($$2));
+               this.d.a($$2);
+            } else {
+               this.a($$0, true);
+            }
+            break;
+         default:
+            throw new UnsupportedOperationException("Invalid intention " + $$0.g());
+      }
+   }
+
+   private void a(aic $$0, boolean $$1) {
+      this.d.a(aio.b);
+      if ($$0.b() != aa.b().e()) {
+         wu $$2;
+         if ($$0.b() < 754) {
+            $$2 = wu.a("multiplayer.disconnect.outdated_client", aa.b().c());
+         } else {
+            $$2 = wu.a("multiplayer.disconnect.incompatible", aa.b().c());
          }
-      }
 
-      for (Pair<arj<dbh>, Long> $$4 : $$1) {
-         Long $$5 = (Long)$$4.getSecond();
-         arj<dbh> $$6 = (arj<dbh>)$$4.getFirst();
-         this.b($$5, $$6);
-         dbh $$7 = new dbh($$5);
-         ark<dbh> $$8 = $$6.a();
-         this.a($$8, $$7, $$0, $$7);
-      }
-   }
-
-   @Override
-   protected int b(long $$0) {
-      azr<arj<?>> $$1 = (azr<arj<?>>)this.d.get($$0);
-      return $$1 != null && !$$1.isEmpty() ? $$1.b().b() : Integer.MAX_VALUE;
-   }
-
-   public int a(dbh $$0) {
-      return this.c($$0.a());
-   }
-
-   @Override
-   protected int c(long $$0) {
-      return this.b.get($$0);
-   }
-
-   @Override
-   protected void a(long $$0, int $$1) {
-      if ($$1 >= 33) {
-         this.b.remove($$0);
+         this.d.a(new aim($$2));
+         this.d.a($$2);
       } else {
-         this.b.put($$0, (byte)$$1);
+         this.d.a(aio.a, new arm(this.c, this.d, $$1));
       }
    }
 
-   public void a() {
-      this.b(Integer.MAX_VALUE);
+   @Override
+   public void a(wu $$0) {
    }
 
-   public String d(long $$0) {
-      azr<arj<?>> $$1 = (azr<arj<?>>)this.d.get($$0);
-      return $$1 != null && !$$1.isEmpty() ? $$1.b().toString() : "no_ticket";
+   @Override
+   public boolean c() {
+      return this.d.i();
    }
 }

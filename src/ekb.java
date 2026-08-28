@@ -1,25 +1,38 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.function.BiConsumer;
+import java.util.function.Function;
 import java.util.stream.Stream;
 
-record ekb(bpg<List<ejx>> c) implements ejx {
-   static MapCodec<ekb> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bpg.b(Codec.list(ejx.b)).fieldOf("groups").forGetter(ekb::c)).apply($$0, ekb::new));
+public interface ekb {
+   Codec<ekb> b = lq.ah.r().dispatch(ekb::b, Function.identity());
 
-   @Override
-   public void a(azh $$0, BiConsumer<ale<ejv>, ale<ejv>> $$1) {
-      this.c.b($$0).ifPresent($$2 -> $$2.b().forEach($$2x -> $$2x.a($$0, $$1)));
+   void a(aym var1, BiConsumer<akj<ejz>, akj<ejz>> var2);
+
+   Stream<akj<ejz>> a();
+
+   static eka a(String $$0, String $$1) {
+      return a(qt.a($$0), qt.a($$1));
    }
 
-   @Override
-   public Stream<ale<ejv>> a() {
-      return this.c.e().stream().flatMap($$0 -> $$0.b().stream()).flatMap(ejx::a);
+   static eka a(akj<ejz> $$0, akj<ejz> $$1) {
+      return new eka($$0, $$1);
    }
 
-   @Override
-   public MapCodec<ekb> b() {
-      return a;
+   static eke a(String $$0, bon<String> $$1) {
+      bon.a<akj<ejz>> $$2 = bon.a();
+      $$1.e().forEach($$1x -> $$2.a(qt.a((String)$$1x.b()), $$1x.a().a()));
+      return a(qt.a($$0), $$2.a());
    }
+
+   static eke a(akj<ejz> $$0, bon<akj<ejz>> $$1) {
+      return new eke($$0, $$1);
+   }
+
+   static ekf a(bon<List<ekb>> $$0) {
+      return new ekf($$0);
+   }
+
+   MapCodec<? extends ekb> b();
 }

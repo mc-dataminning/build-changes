@@ -1,98 +1,119 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
+import javax.annotation.Nullable;
 
-public class cdx extends ceb<btr> {
-   @Override
-   public Set<ccv<?>> a() {
-      return ImmutableSet.of(ccv.h, ccv.g, ccv.M, ccv.am, ccv.au, ccv.ak, new ccv[]{ccv.al, ccv.ao, ccv.an, ccv.as, ccv.at, ccv.aw});
+public class cdx {
+   private static final int a = 10;
+
+   public static ja a(aym $$0, int $$1, int $$2) {
+      int $$3 = $$0.a(2 * $$1 + 1) - $$1;
+      int $$4 = $$0.a(2 * $$2 + 1) - $$2;
+      int $$5 = $$0.a(2 * $$1 + 1) - $$1;
+      return new ja($$3, $$4, $$5);
    }
 
-   @Override
-   protected void a(arf $$0, btr $$1) {
-      but<?> $$2 = $$1.dS();
-      $$2.a(ccv.aw, c($$0, $$1));
-      Optional<btt> $$3 = Optional.empty();
-      Optional<clj> $$4 = Optional.empty();
-      Optional<clj> $$5 = Optional.empty();
-      Optional<clp> $$6 = Optional.empty();
-      Optional<btr> $$7 = Optional.empty();
-      Optional<cmz> $$8 = Optional.empty();
-      Optional<cmz> $$9 = Optional.empty();
-      int $$10 = 0;
-      List<clo> $$11 = Lists.newArrayList();
-      List<clo> $$12 = Lists.newArrayList();
-      ccx $$13 = $$2.c(ccv.h).orElse(ccx.a());
+   @Nullable
+   public static ja a(aym $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      double $$7 = aye.d($$5, $$4) - (float) (Math.PI / 2);
+      double $$8 = $$7 + (double)(2.0F * $$0.i() - 1.0F) * $$6;
+      double $$9 = Math.sqrt($$0.j()) * (double)aye.g * (double)$$1;
+      double $$10 = -$$9 * Math.sin($$8);
+      double $$11 = $$9 * Math.cos($$8);
+      if (!(Math.abs($$10) > (double)$$1) && !(Math.abs($$11) > (double)$$1)) {
+         int $$12 = $$0.a(2 * $$2 + 1) - $$2 + $$3;
+         return ja.a($$10, (double)$$12, $$11);
+      } else {
+         return null;
+      }
+   }
 
-      for (btr $$14 : $$13.b($$0x -> true)) {
-         if ($$14 instanceof clj) {
-            clj $$15 = (clj)$$14;
-            if ($$15.p_() && $$5.isEmpty()) {
-               $$5 = Optional.of($$15);
-            } else if ($$15.u()) {
-               $$10++;
-               if ($$4.isEmpty() && $$15.gw()) {
-                  $$4 = Optional.of($$15);
-               }
-            }
-         } else if ($$14 instanceof cls $$16) {
-            $$11.add($$16);
-         } else if ($$14 instanceof clp) {
-            clp $$17 = (clp)$$14;
-            if ($$17.p_() && $$6.isEmpty()) {
-               $$6 = Optional.of($$17);
-            } else if ($$17.gr()) {
-               $$11.add($$17);
-            }
-         } else if ($$14 instanceof cmz) {
-            cmz $$18 = (cmz)$$14;
-            if ($$8.isEmpty() && !clq.a($$18) && $$1.c($$14)) {
-               $$8 = Optional.of($$18);
+   @VisibleForTesting
+   public static ja a(ja $$0, int $$1, Predicate<ja> $$2) {
+      if (!$$2.test($$0)) {
+         return $$0;
+      } else {
+         ja $$3 = $$0.c();
+
+         while ($$3.v() < $$1 && $$2.test($$3)) {
+            $$3 = $$3.c();
+         }
+
+         return $$3;
+      }
+   }
+
+   @VisibleForTesting
+   public static ja a(ja $$0, int $$1, int $$2, Predicate<ja> $$3) {
+      if ($$1 < 0) {
+         throw new IllegalArgumentException("aboveSolidAmount was " + $$1 + ", expected >= 0");
+      } else if (!$$3.test($$0)) {
+         return $$0;
+      } else {
+         ja $$4 = $$0.c();
+
+         while ($$4.v() < $$2 && $$3.test($$4)) {
+            $$4 = $$4.c();
+         }
+
+         ja $$5 = $$4;
+
+         while ($$5.v() < $$2 && $$5.v() - $$4.v() < $$1) {
+            ja $$6 = $$5.c();
+            if ($$3.test($$6)) {
+               break;
             }
 
-            if ($$9.isEmpty() && !$$18.N_() && clq.b($$18)) {
-               $$9 = Optional.of($$18);
+            $$5 = $$6;
+         }
+
+         return $$5;
+      }
+   }
+
+   @Nullable
+   public static evz a(bth $$0, Supplier<ja> $$1) {
+      return a($$1, $$0::c);
+   }
+
+   @Nullable
+   public static evz a(Supplier<ja> $$0, ToDoubleFunction<ja> $$1) {
+      double $$2 = Double.NEGATIVE_INFINITY;
+      ja $$3 = null;
+
+      for (int $$4 = 0; $$4 < 10; $$4++) {
+         ja $$5 = $$0.get();
+         if ($$5 != null) {
+            double $$6 = $$1.applyAsDouble($$5);
+            if ($$6 > $$2) {
+               $$2 = $$6;
+               $$3 = $$5;
             }
-         } else if (!$$3.isEmpty() || !($$14 instanceof ckw) && !($$14 instanceof cix)) {
-            if ($$7.isEmpty() && clq.a($$14.ak())) {
-               $$7 = Optional.of($$14);
-            }
+         }
+      }
+
+      return $$3 != null ? evz.c($$3) : null;
+   }
+
+   public static ja a(bth $$0, int $$1, aym $$2, ja $$3) {
+      int $$4 = $$3.u();
+      int $$5 = $$3.w();
+      if ($$0.fX() && $$1 > 1) {
+         ja $$6 = $$0.fU();
+         if ($$0.du() > (double)$$6.u()) {
+            $$4 -= $$2.a($$1 / 2);
          } else {
-            $$3 = Optional.of((btt)$$14);
+            $$4 += $$2.a($$1 / 2);
+         }
+
+         if ($$0.dA() > (double)$$6.w()) {
+            $$5 -= $$2.a($$1 / 2);
+         } else {
+            $$5 += $$2.a($$1 / 2);
          }
       }
 
-      for (btr $$20 : $$2.c(ccv.g).orElse(ImmutableList.of())) {
-         if ($$20 instanceof clo) {
-            clo $$21 = (clo)$$20;
-            if ($$21.gr()) {
-               $$12.add($$21);
-            }
-         }
-      }
-
-      $$2.a(ccv.M, $$3);
-      $$2.a(ccv.ak, $$4);
-      $$2.a(ccv.al, $$5);
-      $$2.a(ccv.ar, $$7);
-      $$2.a(ccv.am, $$8);
-      $$2.a(ccv.au, $$9);
-      $$2.a(ccv.an, $$12);
-      $$2.a(ccv.ao, $$11);
-      $$2.a(ccv.as, $$11.size());
-      $$2.a(ccv.at, $$10);
-   }
-
-   private static Optional<iz> c(arf $$0, btr $$1) {
-      return iz.a($$1.dp(), 8, 4, $$1x -> a($$0, $$1x));
-   }
-
-   private static boolean a(arf $$0, iz $$1) {
-      dse $$2 = $$0.a_($$1);
-      boolean $$3 = $$2.a(awp.V);
-      return $$3 && $$2.a(dfd.oh) ? dfp.g($$2) : $$3;
+      return ja.a((double)$$4 + $$0.du(), (double)$$3.v() + $$0.dw(), (double)$$5 + $$0.dA());
    }
 }

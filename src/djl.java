@@ -1,124 +1,109 @@
 import com.mojang.serialization.MapCodec;
-import java.util.OptionalInt;
+import javax.annotation.Nullable;
 
-public class djl extends dfb implements dmc {
-   public static final MapCodec<djl> b = b(djl::new);
-   public static final int c = 7;
-   public static final dte d = dsu.aC;
-   public static final dsv e = dsu.v;
-   public static final dsv f = dsu.C;
-   private static final int a = 1;
+public class djl extends dff implements dmg {
+   public static final MapCodec<djl> a = b(djl::new);
+   public static final dtb b = djb.aE;
+   public static final dsy c = dsx.C;
+   protected static final float d = 3.0F;
+   protected static final ews e = dff.a(0.0, 0.0, 0.0, 3.0, 16.0, 16.0);
+   protected static final ews f = dff.a(13.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final ews g = dff.a(0.0, 0.0, 0.0, 16.0, 16.0, 3.0);
+   protected static final ews h = dff.a(0.0, 0.0, 13.0, 16.0, 16.0, 16.0);
 
    @Override
-   public MapCodec<? extends djl> a() {
-      return b;
+   public MapCodec<djl> a() {
+      return a;
    }
 
-   public djl(dsd.d $$0) {
+   protected djl(dsg.d $$0) {
       super($$0);
-      this.k(this.E.b().a(d, Integer.valueOf(7)).a(e, Boolean.valueOf(false)).a(f, Boolean.valueOf(false)));
+      this.k(this.E.b().a(b, jf.c).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected ewm b_(dse $$0, dbg $$1, iz $$2) {
-      return ewj.a();
-   }
-
-   @Override
-   protected boolean d_(dse $$0) {
-      return $$0.c(d) == 7 && !$$0.c(e);
-   }
-
-   @Override
-   protected void b(dse $$0, arf $$1, iz $$2, azh $$3) {
-      if (this.m($$0)) {
-         c($$0, $$1, $$2);
-         $$1.a($$2, false);
+   protected ews a(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
+      switch ((jf)$$0.c(b)) {
+         case c:
+            return h;
+         case d:
+            return g;
+         case e:
+            return f;
+         case f:
+         default:
+            return e;
       }
    }
 
-   protected boolean m(dse $$0) {
-      return !$$0.c(e) && $$0.c(d) == 7;
+   private boolean a(dbj $$0, ja $$1, jf $$2) {
+      dsh $$3 = $$0.a_($$1);
+      return $$3.d($$0, $$1, $$2);
    }
 
    @Override
-   protected void a(dse $$0, arf $$1, iz $$2, azh $$3) {
-      $$1.a($$2, a($$0, $$1, $$2), 3);
+   protected boolean a(dsh $$0, dcg $$1, ja $$2) {
+      jf $$3 = $$0.c(b);
+      return this.a($$1, $$2.a($$3.g()), $$3);
    }
 
    @Override
-   protected int g(dse $$0, dbg $$1, iz $$2) {
-      return 1;
-   }
+   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
+      if ($$1.g() == $$0.c(b) && !$$0.a($$3, $$4)) {
+         return dfh.a.o();
+      } else {
+         if ($$0.c(c)) {
+            $$3.a($$4, eoc.c, eoc.c.a($$3));
+         }
 
-   @Override
-   protected dse a(dse $$0, je $$1, dse $$2, dcb $$3, iz $$4, iz $$5) {
-      if ($$0.c(f)) {
-         $$3.a($$4, eny.c, eny.c.a($$3));
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
-
-      int $$6 = o($$2) + 1;
-      if ($$6 != 1 || $$0.c(d) != $$6) {
-         $$3.a($$4, this, 1);
-      }
-
-      return $$0;
    }
 
-   private static dse a(dse $$0, dcb $$1, iz $$2) {
-      int $$3 = 7;
-      iz.a $$4 = new iz.a();
-
-      for (je $$5 : je.values()) {
-         $$4.a($$2, $$5);
-         $$3 = Math.min($$3, o($$1.a_($$4)) + 1);
-         if ($$3 == 1) {
-            break;
+   @Nullable
+   @Override
+   public dsh a(cxk $$0) {
+      if (!$$0.c()) {
+         dsh $$1 = $$0.q().a_($$0.a().a($$0.k().g()));
+         if ($$1.a(this) && $$1.c(b) == $$0.k()) {
+            return null;
          }
       }
 
-      return $$0.a(d, Integer.valueOf($$3));
-   }
+      dsh $$2 = this.o();
+      dcg $$3 = $$0.q();
+      ja $$4 = $$0.a();
+      eob $$5 = $$0.q().b_($$0.a());
 
-   private static int o(dse $$0) {
-      return n($$0).orElse(7);
-   }
-
-   public static OptionalInt n(dse $$0) {
-      if ($$0.a(awp.t)) {
-         return OptionalInt.of(0);
-      } else {
-         return $$0.b(d) ? OptionalInt.of($$0.c(d)) : OptionalInt.empty();
-      }
-   }
-
-   @Override
-   protected enx b_(dse $$0) {
-      return $$0.c(f) ? eny.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   public void a(dse $$0, dca $$1, iz $$2, azh $$3) {
-      if ($$1.r($$2.c())) {
-         if ($$3.a(15) == 1) {
-            iz $$4 = $$2.d();
-            dse $$5 = $$1.a_($$4);
-            if (!$$5.p() || !$$5.d($$1, $$4, je.b)) {
-               azd.a($$1, $$2, $$3, li.l);
+      for (jf $$6 : $$0.f()) {
+         if ($$6.o().d()) {
+            $$2 = $$2.a(b, $$6.g());
+            if ($$2.a($$3, $$4)) {
+               return $$2.a(c, Boolean.valueOf($$5.a() == eoc.c));
             }
          }
       }
+
+      return null;
    }
 
    @Override
-   protected void a(dsf.a<dfb, dse> $$0) {
-      $$0.a(d, e, f);
+   protected dsh a(dsh $$0, dls $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   public dse a(cyc $$0) {
-      enx $$1 = $$0.q().b_($$0.a());
-      dse $$2 = this.o().a(e, Boolean.valueOf(true)).a(f, Boolean.valueOf($$1.a() == eny.c));
-      return a($$2, $$0.q(), $$0.a());
+   protected dsh a(dsh $$0, dkc $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dsi.a<dff, dsh> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   protected eob b_(dsh $$0) {
+      return $$0.c(c) ? eoc.c.a(false) : super.b_($$0);
    }
 }

@@ -1,49 +1,30 @@
-import java.util.EnumSet;
+public class cbg extends bzw {
+   private final bth a;
 
-public class cbg extends cap {
-   private static final cei b = cei.b().a(6.0);
-   public static final int a = 400;
-   private final cft c;
-   private cmm d;
-   private int e;
-
-   public cbg(cft $$0) {
-      this.c = $$0;
-      this.a(EnumSet.of(cap.a.a, cap.a.b));
+   public cbg(bth $$0) {
+      this.a = $$0;
    }
 
    @Override
    public boolean a() {
-      if (!this.c.dP().R()) {
-         return false;
-      } else if (this.c.el().a(8000) != 0) {
-         return false;
-      } else {
-         this.d = this.c.dP().a(cmm.class, b, this.c, this.c.du(), this.c.dw(), this.c.dA(), this.c.cK().c(6.0, 2.0, 6.0));
-         return this.d != null;
-      }
-   }
-
-   @Override
-   public boolean b() {
-      return this.e > 0;
+      return this.a.aE() && !this.a.dP().b_(this.a.dp()).a(awa.a);
    }
 
    @Override
    public void c() {
-      this.e = this.a(400);
-      this.c.w(true);
-   }
+      ja $$0 = null;
 
-   @Override
-   public void d() {
-      this.c.w(false);
-      this.d = null;
-   }
+      for (ja $$2 : ja.b(
+         aye.a(this.a.du() - 2.0), aye.a(this.a.dw() - 2.0), aye.a(this.a.dA() - 2.0), aye.a(this.a.du() + 2.0), this.a.dv(), aye.a(this.a.dA() + 2.0)
+      )) {
+         if (this.a.dP().b_($$2).a(awa.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
 
-   @Override
-   public void e() {
-      this.c.G().a(this.d, 30.0F, 30.0F);
-      this.e--;
+      if ($$0 != null) {
+         this.a.H().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
+      }
    }
 }

@@ -1,99 +1,52 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
+import java.util.Optional;
 
-public class eat extends eba<edl> {
-   private static final dsn a = dsn.a(dfd.I);
-   private final dse b = dfd.I.o();
-   private final dse c = dfd.jF.o();
-   private final dse d = dfd.aV.o();
-   private final dse an = dfd.G.o();
-
-   public eat(Codec<edl> $$0) {
+public abstract class eat extends ebe<edp> {
+   public eat(Codec<edp> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebc<edl> $$0) {
-      dcv $$1 = $$0.b();
-      iz $$2 = $$0.e();
-      $$2 = $$2.c();
-
-      while ($$1.u($$2) && $$2.v() > $$1.I_() + 2) {
-         $$2 = $$2.d();
-      }
-
-      if (!a.a($$1.a_($$2))) {
-         return false;
-      } else {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            for (int $$4 = -2; $$4 <= 2; $$4++) {
-               if ($$1.u($$2.b($$3, -1, $$4)) && $$1.u($$2.b($$3, -2, $$4))) {
-                  return false;
-               }
-            }
-         }
-
-         for (int $$5 = -2; $$5 <= 0; $$5++) {
-            for (int $$6 = -2; $$6 <= 2; $$6++) {
-               for (int $$7 = -2; $$7 <= 2; $$7++) {
-                  $$1.a($$2.b($$6, $$5, $$7), this.d, 2);
-               }
-            }
-         }
-
-         $$1.a($$2, this.an, 2);
-
-         for (je $$8 : je.c.a) {
-            $$1.a($$2.a($$8), this.an, 2);
-         }
-
-         iz $$9 = $$2.d();
-         $$1.a($$9, this.b, 2);
-
-         for (je $$10 : je.c.a) {
-            $$1.a($$9.a($$10), this.b, 2);
-         }
-
-         for (int $$11 = -2; $$11 <= 2; $$11++) {
-            for (int $$12 = -2; $$12 <= 2; $$12++) {
-               if ($$11 == -2 || $$11 == 2 || $$12 == -2 || $$12 == 2) {
-                  $$1.a($$2.b($$11, 1, $$12), this.d, 2);
-               }
-            }
-         }
-
-         $$1.a($$2.b(2, 1, 0), this.c, 2);
-         $$1.a($$2.b(-2, 1, 0), this.c, 2);
-         $$1.a($$2.b(0, 1, 2), this.c, 2);
-         $$1.a($$2.b(0, 1, -2), this.c, 2);
-
-         for (int $$13 = -1; $$13 <= 1; $$13++) {
-            for (int $$14 = -1; $$14 <= 1; $$14++) {
-               if ($$13 == 0 && $$14 == 0) {
-                  $$1.a($$2.b($$13, 4, $$14), this.d, 2);
-               } else {
-                  $$1.a($$2.b($$13, 4, $$14), this.c, 2);
-               }
-            }
-         }
-
-         for (int $$15 = 1; $$15 <= 3; $$15++) {
-            $$1.a($$2.b(-1, $$15, -1), this.d, 2);
-            $$1.a($$2.b(-1, $$15, 1), this.d, 2);
-            $$1.a($$2.b(1, $$15, -1), this.d, 2);
-            $$1.a($$2.b(1, $$15, 1), this.d, 2);
-         }
-
-         List<iz> $$17 = List.of($$2, $$2.h(), $$2.f(), $$2.g(), $$2.e());
-         azh $$18 = $$0.d();
-         b($$1, ac.a($$17, $$18).c(1));
-         b($$1, ac.a($$17, $$18).c(2));
-         return true;
-      }
+   public boolean a(ebg<edp> $$0) {
+      aym $$1 = $$0.d();
+      dcz $$2 = $$0.b();
+      ja $$3 = $$0.e();
+      Optional<dff> $$4 = lq.e.a(avu.aq, $$1).map(jj::a);
+      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().o());
    }
 
-   private static void b(dcv $$0, iz $$1) {
-      $$0.a($$1, dfd.J.o(), 3);
-      $$0.a($$1, dpl.N).ifPresent($$1x -> $$1x.a(eqg.bd, $$1.a()));
+   protected abstract boolean a(dce var1, aym var2, ja var3, dsh var4);
+
+   protected boolean b(dce $$0, aym $$1, ja $$2, dsh $$3) {
+      ja $$4 = $$2.c();
+      dsh $$5 = $$0.a_($$2);
+      if (($$5.a(dfh.G) || $$5.a(avu.at)) && $$0.a_($$4).a(dfh.G)) {
+         $$0.a($$2, $$3, 3);
+         if ($$1.i() < 0.25F) {
+            lq.e.a(avu.at, $$1).map(jj::a).ifPresent($$2x -> $$0.a($$4, $$2x.o(), 2));
+         } else if ($$1.i() < 0.05F) {
+            $$0.a($$4, dfh.mV.o().a(dmc.c, Integer.valueOf($$1.a(4) + 1)), 2);
+         }
+
+         for (jf $$6 : jf.c.a) {
+            if ($$1.i() < 0.2F) {
+               ja $$7 = $$2.a($$6);
+               if ($$0.a_($$7).a(dfh.G)) {
+                  lq.e.a(avu.ar, $$1).map(jj::a).ifPresent($$3x -> {
+                     dsh $$4x = $$3x.o();
+                     if ($$4x.b(deq.c)) {
+                        $$4x = $$4x.a(deq.c, $$6);
+                     }
+
+                     $$0.a($$7, $$4x, 2);
+                  });
+               }
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 }

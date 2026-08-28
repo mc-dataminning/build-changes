@@ -8,8 +8,9 @@ import java.util.Map;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import javax.annotation.Nullable;
+import org.jetbrains.annotations.Contract;
 
-public enum n implements azu {
+public enum n implements ayz {
    a("BLACK", '0', 0, 0),
    b("DARK_BLUE", '1', 1, 170),
    c("DARK_GREEN", '2', 2, 43520),
@@ -33,7 +34,7 @@ public enum n implements azu {
    u("ITALIC", 'o', true),
    v("RESET", 'r', -1, null);
 
-   public static final Codec<n> w = azu.a(n::values);
+   public static final Codec<n> w = ayz.a(n::values);
    public static final char x = '§';
    private static final Map<String, n> y = Arrays.stream(values()).collect(Collectors.toMap($$0 -> c($$0.A), $$0 -> (n)$$0));
    private static final Pattern z = Pattern.compile("(?i)§[0-9A-FK-OR]");
@@ -97,6 +98,7 @@ public enum n implements azu {
    }
 
    @Nullable
+   @Contract("!null->!null;_->_")
    public static String a(@Nullable String $$0) {
       return $$0 == null ? null : z.matcher($$0).replaceAll("");
    }

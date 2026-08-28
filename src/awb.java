@@ -1,22 +1,11 @@
-public enum awb {
-   a("master"),
-   b("music"),
-   c("record"),
-   d("weather"),
-   e("block"),
-   f("hostile"),
-   g("neutral"),
-   h("player"),
-   i("ambient"),
-   j("voice");
+public class awb {
+   public static final awk<dxa> a = a("vibrations");
+   public static final awk<dxa> b = a("warden_can_listen");
+   public static final awk<dxa> c = a("shrieker_can_listen");
+   public static final awk<dxa> d = a("ignore_vibrations_sneaking");
+   public static final awk<dxa> e = a("allay_can_listen");
 
-   private final String k;
-
-   private awb(final String $$0) {
-      this.k = $$0;
-   }
-
-   public String a() {
-      return this.k;
+   private static awk<dxa> a(String $$0) {
+      return awk.a(lr.G, new akk($$0));
    }
 }

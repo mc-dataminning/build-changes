@@ -1,28 +1,67 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Optional;
 
-public class dp extends dr<dp.a> {
+public class dp extends ds<dp.a> {
    @Override
    public Codec<dp.a> a() {
       return dp.a.a;
    }
 
-   public void a(arg $$0, cyz<?> $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
+   public void a(aql $$0, akk $$1, List<cua> $$2) {
+      this.a($$0, $$2x -> $$2x.b($$1, $$2));
    }
 
-   public static an<dp.a> a(alf $$0) {
-      return am.g.a(new dp.a(Optional.empty(), $$0));
-   }
-
-   public static record a(Optional<bf> b, alf c) implements dr.a {
+   public static record a(Optional<bf> b, akk c, List<cp> d) implements ds.a {
       public static final Codec<dp.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bu.b.optionalFieldOf("player").forGetter(dp.a::a), alf.a.fieldOf("recipe").forGetter(dp.a::b)).apply($$0, dp.a::new)
+         $$0 -> $$0.group(
+                  bu.b.optionalFieldOf("player").forGetter(dp.a::a),
+                  akk.a.fieldOf("recipe_id").forGetter(dp.a::b),
+                  cp.a.listOf().optionalFieldOf("ingredients", List.of()).forGetter(dp.a::c)
+               )
+               .apply($$0, dp.a::new)
       );
 
-      public boolean a(cyz<?> $$0) {
-         return this.c.equals($$0.a());
+      public static an<dp.a> a(akk $$0, List<cp.a> $$1) {
+         return am.ac.a(new dp.a(Optional.empty(), $$0, $$1.stream().map(cp.a::b).toList()));
+      }
+
+      public static an<dp.a> a(akk $$0) {
+         return am.ac.a(new dp.a(Optional.empty(), $$0, List.of()));
+      }
+
+      public static an<dp.a> b(akk $$0) {
+         return am.ad.a(new dp.a(Optional.empty(), $$0, List.of()));
+      }
+
+      boolean b(akk $$0, List<cua> $$1) {
+         if (!$$0.equals(this.c)) {
+            return false;
+         } else {
+            List<cua> $$2 = new ArrayList<>($$1);
+
+            for (cp $$3 : this.d) {
+               boolean $$4 = false;
+               Iterator<cua> $$5 = $$2.iterator();
+
+               while ($$5.hasNext()) {
+                  if ($$3.a($$5.next())) {
+                     $$5.remove();
+                     $$4 = true;
+                     break;
+                  }
+               }
+
+               if (!$$4) {
+                  return false;
+               }
+            }
+
+            return true;
+         }
       }
 
       @Override
@@ -30,8 +69,12 @@ public class dp extends dr<dp.a> {
          return this.b;
       }
 
-      public alf b() {
+      public akk b() {
          return this.c;
+      }
+
+      public List<cp> c() {
+         return this.d;
       }
    }
 }

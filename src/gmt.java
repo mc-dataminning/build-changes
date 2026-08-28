@@ -1,13 +1,24 @@
-public class gmt<T extends cjt> extends gnl<T, fty<T>> {
-   private static final alf a = new alf("textures/entity/zombie/drowned_outer_layer.png");
-   private final fty<T> b;
+public class gmt extends gns<cjd, fug<cjd>> {
+   private final ger a;
 
-   public gmt(gkv<T, fty<T>> $$0, fwy $$1) {
+   public gmt(glc<cjd, fug<cjd>> $$0, ger $$1) {
       super($$0);
-      this.b = new fty<>($$1.a(fxb.U));
+      this.a = $$1;
    }
 
-   public void a(faa $$0, gdq $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
+   public void a(fag $$0, gdx $$1, int $$2, cjd $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      dsh $$10 = $$3.gn();
+      if ($$10 != null) {
+         $$0.a();
+         $$0.a(0.0F, 0.6875F, -0.75F);
+         $$0.a(a.b.rotationDegrees(20.0F));
+         $$0.a(a.d.rotationDegrees(45.0F));
+         $$0.a(0.25F, 0.1875F, 0.25F);
+         float $$11 = 0.5F;
+         $$0.b(-0.5F, -0.5F, 0.5F);
+         $$0.a(a.d.rotationDegrees(90.0F));
+         this.a.a($$10, $$0, $$1, $$2, goz.d);
+         $$0.b();
+      }
    }
 }

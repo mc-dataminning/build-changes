@@ -1,38 +1,66 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
 public class eho extends ehx {
+   private final jf c;
+   private final dzg d;
+   private final dzg e;
+   private final int f;
    public static final MapCodec<eho> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
-               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
-               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
+               jf.h.fieldOf("direction_of_search").forGetter($$0x -> $$0x.c),
+               dzg.b.fieldOf("target_condition").forGetter($$0x -> $$0x.d),
+               dzg.b.optionalFieldOf("allowed_search_condition", dzg.e()).forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 32).fieldOf("max_steps").forGetter($$0x -> $$0x.f)
             )
             .apply($$0, eho::new)
    );
-   private final int c;
-   private final double d;
-   private final double e;
 
-   private eho(int $$0, double $$1, double $$2) {
+   private eho(jf $$0, dzg $$1, dzg $$2, int $$3) {
       this.c = $$0;
       this.d = $$1;
       this.e = $$2;
+      this.f = $$3;
    }
 
-   public static eho a(int $$0, double $$1, double $$2) {
-      return new eho($$0, $$1, $$2);
+   public static eho a(jf $$0, dzg $$1, dzg $$2, int $$3) {
+      return new eho($$0, $$1, $$2, $$3);
+   }
+
+   public static eho a(jf $$0, dzg $$1, int $$2) {
+      return a($$0, $$1, dzg.e(), $$2);
    }
 
    @Override
-   protected int a(azh $$0, iz $$1) {
-      double $$2 = dcz.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
-      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
+   public Stream<ja> a_(ehv $$0, aym $$1, ja $$2) {
+      ja.a $$3 = $$2.j();
+      dcz $$4 = $$0.d();
+      if (!this.e.test($$4, $$3)) {
+         return Stream.of();
+      } else {
+         for (int $$5 = 0; $$5 < this.f; $$5++) {
+            if (this.d.test($$4, $$3)) {
+               return Stream.of($$3);
+            }
+
+            $$3.c(this.c);
+            if ($$4.d($$3.v())) {
+               return Stream.of();
+            }
+
+            if (!this.e.test($$4, $$3)) {
+               break;
+            }
+         }
+
+         return this.d.test($$4, $$3) ? Stream.of($$3) : Stream.of();
+      }
    }
 
    @Override
-   public ehu<?> b() {
-      return ehu.g;
+   public ehy<?> b() {
+      return ehy.j;
    }
 }

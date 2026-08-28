@@ -1,10 +1,8 @@
-public enum aqy {
-   a,
-   b,
-   c,
-   d;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public boolean a(aqy $$0) {
-      return this.ordinal() >= $$0.ordinal();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aqy {
 }

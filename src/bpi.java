@@ -1,48 +1,36 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.DataResult;
 
-public interface bpi {
-   bph a();
+public abstract class bpi {
+   private static final Codec<Either<Integer, bpi>> a = Codec.either(Codec.INT, lq.K.r().dispatch(bpi::c, bpj::codec));
+   public static final Codec<bpi> c = a.xmap(
+      $$0 -> (bpi)$$0.map(bpf::a, $$0x -> $$0x), $$0 -> $$0.c() == bpj.a ? Either.left(((bpf)$$0).d()) : Either.right($$0)
+   );
+   public static final Codec<bpi> d = b(0, Integer.MAX_VALUE);
+   public static final Codec<bpi> e = b(1, Integer.MAX_VALUE);
 
-   static <T> bpi.b<T> a(T $$0, int $$1) {
-      return new bpi.b<>($$0, bph.a($$1));
+   public static Codec<bpi> b(int $$0, int $$1) {
+      return a($$0, $$1, c);
    }
 
-   public static class a implements bpi {
-      private final bph a;
+   public static <T extends bpi> Codec<T> a(int $$0, int $$1, Codec<T> $$2) {
+      return $$2.validate($$2x -> a($$0, $$1, $$2x));
+   }
 
-      public a(int $$0) {
-         this.a = bph.a($$0);
-      }
-
-      public a(bph $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public bph a() {
-         return this.a;
+   private static <T extends bpi> DataResult<T> a(int $$0, int $$1, T $$2) {
+      if ($$2.a() < $$0) {
+         return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
+      } else {
+         return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
       }
    }
 
-   public static record b<T>(T a, bph b) implements bpi {
-      @Override
-      public bph a() {
-         return this.b;
-      }
+   public abstract int a(aym var1);
 
-      public static <E> Codec<bpi.b<E>> a(Codec<E> $$0) {
-         return RecordCodecBuilder.create(
-            $$1 -> $$1.group($$0.fieldOf("data").forGetter(bpi.b::b), bph.a.fieldOf("weight").forGetter(bpi.b::c)).apply($$1, bpi.b::new)
-         );
-      }
+   public abstract int a();
 
-      public T b() {
-         return this.a;
-      }
+   public abstract int b();
 
-      public bph c() {
-         return this.b;
-      }
-   }
+   public abstract bpj<?> c();
 }

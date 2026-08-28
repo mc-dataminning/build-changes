@@ -1,40 +1,25 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehy extends ehs {
-   public static final MapCodec<ehy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               dxw.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
-               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
-               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, ehy::new)
-   );
-   private final dxw.a c;
-   private final int d;
-   private final int e;
+public interface ehy<P extends ehx> {
+   ehy<ehj> a = a("block_predicate_filter", ehj.a);
+   ehy<eia> b = a("rarity_filter", eia.a);
+   ehy<eic> c = a("surface_relative_threshold_filter", eic.a);
+   ehy<eid> d = a("surface_water_depth_filter", eid.a);
+   ehy<ehi> e = a("biome", ehi.a);
+   ehy<ehn> f = a("count", ehn.a);
+   ehy<ehs> g = a("noise_based_count", ehs.a);
+   ehy<eht> h = a("noise_threshold_count", eht.a);
+   ehy<ehm> i = a("count_on_every_layer", ehm.a);
+   ehy<eho> j = a("environment_scan", eho.a);
+   ehy<ehq> k = a("heightmap", ehq.a);
+   ehy<ehp> l = a("height_range", ehp.a);
+   ehy<ehr> m = a("in_square", ehr.a);
+   ehy<ehz> n = a("random_offset", ehz.a);
+   ehy<ehk> o = a("carving_mask", ehk.a);
 
-   private ehy(dxw.a $$0, int $$1, int $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
+   MapCodec<P> codec();
 
-   public static ehy a(dxw.a $$0, int $$1, int $$2) {
-      return new ehy($$0, $$1, $$2);
-   }
-
-   @Override
-   protected boolean a(ehr $$0, azh $$1, iz $$2) {
-      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
-      long $$4 = $$3 + (long)this.d;
-      long $$5 = $$3 + (long)this.e;
-      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
-   }
-
-   @Override
-   public ehu<?> b() {
-      return ehu.c;
+   private static <P extends ehx> ehy<P> a(String $$0, MapCodec<P> $$1) {
+      return jw.a(lq.S, $$0, () -> $$1);
    }
 }

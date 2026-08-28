@@ -4,36 +4,67 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.function.BiConsumer;
 
-public class egg extends egf {
-   public static final MapCodec<egg> b = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, egg::new));
+public class egg extends egm {
+   public static final MapCodec<egg> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, egg::new));
 
    public egg(int $$0, int $$1, int $$2) {
       super($$0, $$1, $$2);
    }
 
    @Override
-   protected egj<?> a() {
-      return egj.d;
+   protected egn<?> a() {
+      return egn.e;
    }
 
    @Override
-   public List<eeq.a> a(dcg $$0, BiConsumer<iz, dse> $$1, azh $$2, int $$3, iz $$4, eea $$5) {
-      List<eeq.a> $$6 = Lists.newArrayList();
-      $$6.addAll(super.a($$0, $$1, $$2, $$3, $$4, $$5));
+   public List<eeu.a> a(dcj $$0, BiConsumer<ja, dsh> $$1, aym $$2, int $$3, ja $$4, eee $$5) {
+      List<eeu.a> $$6 = Lists.newArrayList();
+      ja $$7 = $$4.d();
+      a($$0, $$1, $$2, $$7, $$5);
+      a($$0, $$1, $$2, $$7.h(), $$5);
+      a($$0, $$1, $$2, $$7.f(), $$5);
+      a($$0, $$1, $$2, $$7.f().h(), $$5);
+      jf $$8 = jf.c.a.a($$2);
+      int $$9 = $$3 - $$2.a(4);
+      int $$10 = 2 - $$2.a(3);
+      int $$11 = $$4.u();
+      int $$12 = $$4.v();
+      int $$13 = $$4.w();
+      int $$14 = $$11;
+      int $$15 = $$13;
+      int $$16 = $$12 + $$3 - 1;
 
-      for (int $$7 = $$3 - 2 - $$2.a(4); $$7 > $$3 / 2; $$7 -= 2 + $$2.a(4)) {
-         float $$8 = $$2.i() * (float) (Math.PI * 2);
-         int $$9 = 0;
-         int $$10 = 0;
-
-         for (int $$11 = 0; $$11 < 5; $$11++) {
-            $$9 = (int)(1.5F + ayz.b($$8) * (float)$$11);
-            $$10 = (int)(1.5F + ayz.a($$8) * (float)$$11);
-            iz $$12 = $$4.b($$9, $$7 - 3 + $$11 / 2, $$10);
-            this.b($$0, $$1, $$2, $$12, $$5);
+      for (int $$17 = 0; $$17 < $$3; $$17++) {
+         if ($$17 >= $$9 && $$10 > 0) {
+            $$14 += $$8.j();
+            $$15 += $$8.l();
+            $$10--;
          }
 
-         $$6.add(new eeq.a($$4.b($$9, $$7, $$10), -2, false));
+         int $$18 = $$12 + $$17;
+         ja $$19 = new ja($$14, $$18, $$15);
+         if (ecq.b($$0, $$19)) {
+            this.b($$0, $$1, $$2, $$19, $$5);
+            this.b($$0, $$1, $$2, $$19.h(), $$5);
+            this.b($$0, $$1, $$2, $$19.f(), $$5);
+            this.b($$0, $$1, $$2, $$19.h().f(), $$5);
+         }
+      }
+
+      $$6.add(new eeu.a(new ja($$14, $$16, $$15), 0, true));
+
+      for (int $$20 = -1; $$20 <= 2; $$20++) {
+         for (int $$21 = -1; $$21 <= 2; $$21++) {
+            if (($$20 < 0 || $$20 > 1 || $$21 < 0 || $$21 > 1) && $$2.a(3) <= 0) {
+               int $$22 = $$2.a(3) + 2;
+
+               for (int $$23 = 0; $$23 < $$22; $$23++) {
+                  this.b($$0, $$1, $$2, new ja($$11 + $$20, $$16 - $$23 - 1, $$13 + $$21), $$5);
+               }
+
+               $$6.add(new eeu.a(new ja($$14 + $$20, $$16, $$15 + $$21), 0, false));
+            }
+         }
       }
 
       return $$6;

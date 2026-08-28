@@ -1,41 +1,97 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
+import java.util.List;
 import java.util.function.Supplier;
 
-public class np implements lw {
-   private final ly d;
-   private final Map<String, Supplier<JsonElement>> e = new HashMap<>();
+public class np implements nn {
+   private final dff a;
+   private final List<np.b> b = Lists.newArrayList();
 
-   public np(ly $$0) {
-      this.d = $$0;
+   private np(dff $$0) {
+      this.a = $$0;
    }
 
-   public <T> np a(atp<T> $$0, T $$1) {
-      this.e.put($$0.a(), () -> $$0.a($$1));
+   @Override
+   public dff a() {
+      return this.a;
+   }
+
+   public static np a(dff $$0) {
+      return new np($$0);
+   }
+
+   public np a(List<nt> $$0) {
+      this.b.add(new np.b($$0));
       return this;
    }
 
-   @Override
-   public CompletableFuture<?> a(lu $$0) {
-      JsonObject $$1 = new JsonObject();
-      this.e.forEach(($$1x, $$2) -> $$1.add($$1x, $$2.get()));
-      return lw.a($$0, $$1, this.d.a().resolve("pack.mcmeta"));
+   public np a(nt $$0) {
+      return this.a(ImmutableList.of($$0));
    }
 
-   @Override
-   public final String a() {
-      return "Pack Metadata";
+   public np a(no $$0, List<nt> $$1) {
+      this.b.add(new np.a($$0, $$1));
+      return this;
    }
 
-   public static np a(ly $$0, xp $$1) {
-      return new np($$0).a(atq.b, new atq($$1, t.a.a(atd.b), Optional.empty()));
+   public np a(no $$0, nt... $$1) {
+      return this.a($$0, ImmutableList.copyOf($$1));
    }
 
-   public static np a(ly $$0, xp $$1, cpn $$2) {
-      return a($$0, $$1).a(asx.a, new asx($$2));
+   public np a(no $$0, nt $$1) {
+      return this.a($$0, ImmutableList.of($$1));
+   }
+
+   public JsonElement b() {
+      dsi<dff, dsh> $$0 = this.a.l();
+      this.b.forEach($$1x -> $$1x.a($$0));
+      JsonArray $$1 = new JsonArray();
+      this.b.stream().map(np.b::a).forEach($$1::add);
+      JsonObject $$2 = new JsonObject();
+      $$2.add("multipart", $$1);
+      return $$2;
+   }
+
+   static class a extends np.b {
+      private final no a;
+
+      a(no $$0, List<nt> $$1) {
+         super($$1);
+         this.a = $$0;
+      }
+
+      @Override
+      public void a(dsi<?, ?> $$0) {
+         this.a.a($$0);
+      }
+
+      @Override
+      public void a(JsonObject $$0) {
+         $$0.add("when", this.a.get());
+      }
+   }
+
+   static class b implements Supplier<JsonElement> {
+      private final List<nt> a;
+
+      b(List<nt> $$0) {
+         this.a = $$0;
+      }
+
+      public void a(dsi<?, ?> $$0) {
+      }
+
+      public void a(JsonObject $$0) {
+      }
+
+      public JsonElement a() {
+         JsonObject $$0 = new JsonObject();
+         this.a($$0);
+         $$0.add("apply", nt.a(this.a));
+         return $$0;
+      }
    }
 }

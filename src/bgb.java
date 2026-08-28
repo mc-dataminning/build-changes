@@ -1,27 +1,13 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public class bgb extends bfv {
-   public bgb(Schema $$0, boolean $$1) {
-      super($$0, $$1, "OminousBannerBlockEntityRenameFix", bgx.s, "minecraft:banner");
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.get("CustomName").asString().result();
-      if ($$1.isPresent()) {
-         String $$2 = $$1.get();
-         $$2 = $$2.replace("\"translate\":\"block.minecraft.illager_banner\"", "\"translate\":\"block.minecraft.ominous_banner\"");
-         return $$0.set("CustomName", $$0.createString($$2));
-      } else {
-         return $$0;
-      }
-   }
+public class bgb {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:acacia_bark", "minecraft:acacia_wood")
+      .put("minecraft:birch_bark", "minecraft:birch_wood")
+      .put("minecraft:dark_oak_bark", "minecraft:dark_oak_wood")
+      .put("minecraft:jungle_bark", "minecraft:jungle_wood")
+      .put("minecraft:oak_bark", "minecraft:oak_wood")
+      .put("minecraft:spruce_bark", "minecraft:spruce_wood")
+      .build();
 }

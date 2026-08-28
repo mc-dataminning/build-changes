@@ -2,28 +2,37 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import java.util.Arrays;
 import java.util.Collection;
 
-public class ez implements ArgumentType<us> {
-   private static final Collection<String> a = Arrays.asList("{}", "{foo=bar}");
+public class ez implements ArgumentType<wu> {
+   private static final Collection<String> b = Arrays.asList("\"hello world\"", "\"\"", "\"{\"text\":\"hello world\"}", "[\"\"]");
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wu.b("argument.component.invalid", $$0));
+   private final jl.a c;
 
-   private ez() {
+   private ez(jl.a $$0) {
+      this.c = $$0;
    }
 
-   public static ez a() {
-      return new ez();
+   public static wu a(CommandContext<eq> $$0, String $$1) {
+      return (wu)$$0.getArgument($$1, wu.class);
    }
 
-   public static <S> us a(CommandContext<S> $$0, String $$1) {
-      return (us)$$0.getArgument($$1, us.class);
+   public static ez a(em $$0) {
+      return new ez($$0);
    }
 
-   public us a(StringReader $$0) throws CommandSyntaxException {
-      return new vq($$0).f();
+   public wu a(StringReader $$0) throws CommandSyntaxException {
+      try {
+         return eu.a(this.c, $$0, ww.a);
+      } catch (Exception var4) {
+         String $$2 = var4.getCause() != null ? var4.getCause().getMessage() : var4.getMessage();
+         throw a.createWithContext($$0, $$2);
+      }
    }
 
    public Collection<String> getExamples() {
-      return a;
+      return b;
    }
 }

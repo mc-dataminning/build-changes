@@ -1,135 +1,69 @@
-import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class cht extends cho {
-   private int bZ = 47999;
+public class cht extends chm {
+   @Nullable
+   private evz b;
 
-   public cht(btc<? extends cht> $$0, dca $$1) {
-      super($$0, $$1);
+   public cht(chk $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean gz() {
-      return true;
+   public void b() {
+      evz $$0 = this.a.G(1.0F).d();
+      $$0.b((float) (-Math.PI / 4));
+      double $$1 = this.a.e.du();
+      double $$2 = this.a.e.e(0.5);
+      double $$3 = this.a.e.dA();
+
+      for (int $$4 = 0; $$4 < 8; $$4++) {
+         aym $$5 = this.a.dS();
+         double $$6 = $$1 + $$5.k() / 2.0;
+         double $$7 = $$2 + $$5.k() / 2.0;
+         double $$8 = $$3 + $$5.k() / 2.0;
+         evz $$9 = this.a.ds();
+         this.a.dP().a(lj.h, $$6, $$7, $$8, -$$0.c * 0.08F + $$9.c, -$$0.d * 0.3F + $$9.d, -$$0.e * 0.08F + $$9.e);
+         $$0.b((float) (Math.PI / 16));
+      }
+   }
+
+   @Override
+   public void c() {
+      if (this.b == null) {
+         this.b = evz.c(this.a.dP().a(dxz.a.f, ebd.a(this.a.s())));
+      }
+
+      if (this.b.c(this.a.du(), this.a.dw(), this.a.dA()) < 1.0) {
+         this.a.gk().b(cia.f).j();
+         this.a.gk().a(cia.g);
+      }
+   }
+
+   @Override
+   public float f() {
+      return 1.5F;
+   }
+
+   @Override
+   public float h() {
+      float $$0 = (float)this.a.ds().h() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return $$1 / $$0;
+   }
+
+   @Override
+   public void d() {
+      this.b = null;
    }
 
    @Nullable
    @Override
-   protected cho gE() {
-      return btc.be.a(this.dP());
+   public evz g() {
+      return this.b;
    }
 
    @Override
-   public void b(us $$0) {
-      super.b($$0);
-      $$0.a("DespawnDelay", this.bZ);
-   }
-
-   @Override
-   public void a(us $$0) {
-      super.a($$0);
-      if ($$0.b("DespawnDelay", 99)) {
-         this.bZ = $$0.h("DespawnDelay");
-      }
-   }
-
-   @Override
-   protected void z() {
-      super.z();
-      this.bS.a(1, new cbi(this, 2.0));
-      this.bT.a(1, new cht.a(this));
-   }
-
-   @Override
-   public void x(int $$0) {
-      this.bZ = $$0;
-   }
-
-   @Override
-   protected void f(cmz $$0) {
-      bsw $$1 = this.gf();
-      if (!($$1 instanceof cms)) {
-         super.f($$0);
-      }
-   }
-
-   @Override
-   public void n_() {
-      super.n_();
-      if (!this.dP().B) {
-         this.hf();
-      }
-   }
-
-   private void hf() {
-      if (this.hg()) {
-         this.bZ = this.hh() ? ((cms)this.gf()).gz() - 1 : this.bZ - 1;
-         if (this.bZ <= 0) {
-            this.a(true, false);
-            this.ao();
-         }
-      }
-   }
-
-   private boolean hg() {
-      return !this.gF() && !this.hi() && !this.cY();
-   }
-
-   private boolean hh() {
-      return this.gf() instanceof cms;
-   }
-
-   private boolean hi() {
-      return this.gd() && !this.hh();
-   }
-
-   @Nullable
-   @Override
-   public buk a(dcp $$0, bqu $$1, btv $$2, @Nullable buk $$3) {
-      if ($$2 == btv.h) {
-         this.c_(0);
-      }
-
-      if ($$3 == null) {
-         $$3 = new bsq.a(false);
-      }
-
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected static class a extends ccp {
-      private final cho a;
-      private btr b;
-      private int c;
-
-      public a(cho $$0) {
-         super($$0, false);
-         this.a = $$0;
-         this.a(EnumSet.of(cap.a.d));
-      }
-
-      @Override
-      public boolean a() {
-         if (!this.a.gd()) {
-            return false;
-         } else if (!(this.a.gf() instanceof cms $$1)) {
-            return false;
-         } else {
-            this.b = $$1.em();
-            int $$2 = $$1.en();
-            return $$2 != this.c && this.a(this.b, cei.a);
-         }
-      }
-
-      @Override
-      public void c() {
-         this.e.h(this.b);
-         bsw $$0 = this.a.gf();
-         if ($$0 instanceof cms) {
-            this.c = ((cms)$$0).en();
-         }
-
-         super.c();
-      }
+   public cia<cht> i() {
+      return cia.d;
    }
 }

@@ -1,7 +1,9 @@
-public interface blz {
-   void a(long[] var1);
+import java.util.stream.Stream;
 
-   void a(long var1);
+public interface blz<S> {
+   Stream<String> possibleValues(blw<S> var1);
 
-   void a(long var1, int var3);
+   static <S> blz<S> b() {
+      return $$0 -> Stream.empty();
+   }
 }

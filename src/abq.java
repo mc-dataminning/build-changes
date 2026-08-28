@@ -1,16 +1,42 @@
-public interface abq extends aac {
-   @Override
-   default wl b() {
-      return wl.e;
+public class abq implements zb<abn> {
+   public static final ys<vr, abq> a = zb.a(abq::a, abq::new);
+   public static final int b = 0;
+   public static final int c = 2;
+   public static final int d = 3;
+   public static final int e = 4;
+   public static final int f = 5;
+   private final int g;
+   private final int h;
+
+   public abq(bsd $$0, int $$1) {
+      this.g = $$0.al();
+      this.h = $$1;
    }
 
-   void a(abr var1);
+   private abq(vr $$0) {
+      this.g = $$0.l();
+      this.h = $$0.readUnsignedByte();
+   }
 
-   void a(abs var1);
+   private void a(vr $$0) {
+      $$0.c(this.g);
+      $$0.k(this.h);
+   }
 
-   void a(abv var1);
+   @Override
+   public zd<abq> a() {
+      return afz.e;
+   }
 
-   void a(abu var1);
+   public void a(abn $$0) {
+      $$0.a(this);
+   }
 
-   void a(abt var1);
+   public int b() {
+      return this.g;
+   }
+
+   public int e() {
+      return this.h;
+   }
 }

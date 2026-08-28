@@ -1,13 +1,20 @@
-public class dra extends dpj {
-   protected dra(dpl<?> $$0, iz $$1, dse $$2) {
-      super($$0, $$1, $$2);
+public class dra extends dpb {
+   public dra(ja $$0, dsh $$1) {
+      super(dpp.B, $$0, $$1, cym.d);
    }
 
-   public dra(iz $$0, dse $$1) {
-      this(dpl.n, $$0, $$1);
+   @Override
+   protected wu k() {
+      return wu.c("container.smoker");
    }
 
-   public boolean a(je $$0) {
-      return $$0.o() == je.a.b;
+   @Override
+   protected int b(cua $$0) {
+      return super.b($$0) / 2;
+   }
+
+   @Override
+   protected cpe a(int $$0, cmg $$1) {
+      return new cre($$0, $$1, this, this.m);
    }
 }

@@ -1,22 +1,19 @@
-public interface czn extends cyx<bqp> {
-   @Override
-   default czc<?> e() {
-      return czc.g;
+import com.mojang.serialization.Codec;
+
+public enum czn implements ayz {
+   a("attacker"),
+   b("damaging_entity"),
+   c("victim");
+
+   public static final Codec<czn> d = ayz.a(czn::values);
+   private final String e;
+
+   private czn(final String $$0) {
+      this.e = $$0;
    }
 
    @Override
-   default boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 1;
+   public String c() {
+      return this.e;
    }
-
-   @Override
-   default cur g() {
-      return new cur(dfd.ob);
-   }
-
-   boolean a(cur var1);
-
-   boolean b(cur var1);
-
-   boolean c(cur var1);
 }

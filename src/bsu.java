@@ -1,38 +1,61 @@
 public class bsu {
-   public static final bsu a = new bsu(0.75F, 0.5F, 0.25F);
-   public static final bsu b = new bsu(0.95F, 0.69F, 0.32F);
-   private final float c;
-   private final float d;
-   private final float e;
+   private static final int a = 140;
+   private static final int b = 700;
+   private final ajt c;
+   private final ajp<Integer> d;
+   private final ajp<Boolean> e;
+   private boolean f;
+   private int g;
 
-   private bsu(float $$0, float $$1, float $$2) {
+   public bsu(ajt $$0, ajp<Integer> $$1, ajp<Boolean> $$2) {
       this.c = $$0;
       this.d = $$1;
       this.e = $$2;
    }
 
-   public bsu.a a(float $$0) {
-      if ($$0 < this.e) {
-         return bsu.a.d;
-      } else if ($$0 < this.d) {
-         return bsu.a.c;
+   public void a() {
+      this.f = true;
+      this.g = 0;
+   }
+
+   public boolean a(aym $$0) {
+      if (this.f) {
+         return false;
       } else {
-         return $$0 < this.c ? bsu.a.b : bsu.a.a;
+         this.f = true;
+         this.g = 0;
+         this.c.a(this.d, $$0.a(841) + 140);
+         return true;
       }
    }
 
-   public bsu.a a(cur $$0) {
-      return !$$0.l() ? bsu.a.a : this.a($$0.n(), $$0.o());
+   public void b() {
+      if (this.f && this.g++ > this.e()) {
+         this.f = false;
+      }
    }
 
-   public bsu.a a(int $$0, int $$1) {
-      return this.a((float)($$1 - $$0) / (float)$$1);
+   public float c() {
+      return this.f ? 1.0F + 1.15F * aye.a((float)this.g / (float)this.e() * (float) Math.PI) : 1.0F;
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   private int e() {
+      return this.c.a(this.d);
+   }
+
+   public void a(tx $$0) {
+      $$0.a("Saddle", this.d());
+   }
+
+   public void b(tx $$0) {
+      this.a($$0.q("Saddle"));
+   }
+
+   public void a(boolean $$0) {
+      this.c.a(this.e, $$0);
+   }
+
+   public boolean d() {
+      return this.c.a(this.e);
    }
 }

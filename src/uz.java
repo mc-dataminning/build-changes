@@ -1,187 +1,257 @@
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.bytes.ByteCollection;
+import it.unimi.dsi.fastutil.bytes.ByteOpenHashSet;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
-import org.apache.commons.lang3.ArrayUtils;
+import java.util.regex.Pattern;
+import org.slf4j.Logger;
 
-public class uz extends ur<va> {
-   private static final int b = 24;
-   public static final vr<uz> a = new vr.b<uz>() {
-      public uz a(DataInput $$0, vb $$1) throws IOException {
-         return new uz(d($$0, $$1));
+public class uz implements uy {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 8;
+   private static final int c = 64;
+   private static final ByteCollection d = new ByteOpenHashSet(Arrays.asList((byte)1, (byte)2, (byte)3, (byte)4, (byte)5, (byte)6));
+   private static final n e = n.l;
+   private static final n f = n.k;
+   private static final n g = n.g;
+   private static final n h = n.m;
+   private static final Pattern i = Pattern.compile("[A-Za-z0-9._+-]+");
+   private static final String j = String.valueOf(':');
+   private static final String k = String.valueOf(',');
+   private static final String l = "[";
+   private static final String m = "]";
+   private static final String n = ";";
+   private static final String o = " ";
+   private static final String p = "{";
+   private static final String q = "}";
+   private static final String r = "\n";
+   private static final wu s = wu.b("<...>").a(n.h);
+   private final String t;
+   private final int u;
+   private final int v;
+   private wu w = wt.a;
+
+   public uz(String $$0) {
+      this($$0, 0, 0);
+   }
+
+   private uz(String $$0, int $$1, int $$2) {
+      this.t = $$0;
+      this.u = $$1;
+      this.v = $$2;
+   }
+
+   public wu a(uu $$0) {
+      $$0.a(this);
+      return this.w;
+   }
+
+   @Override
+   public void a(us $$0) {
+      String $$1 = us.b($$0.s_());
+      String $$2 = $$1.substring(0, 1);
+      wu $$3 = wu.b($$1.substring(1, $$1.length() - 1)).a(f);
+      this.w = wu.b($$2).b($$3).f($$2);
+   }
+
+   @Override
+   public void a(tv $$0) {
+      wu $$1 = wu.b("b").a(h);
+      this.w = wu.b(String.valueOf($$0.l())).b($$1).a(g);
+   }
+
+   @Override
+   public void a(up $$0) {
+      wu $$1 = wu.b("s").a(h);
+      this.w = wu.b(String.valueOf($$0.l())).b($$1).a(g);
+   }
+
+   @Override
+   public void a(uc $$0) {
+      this.w = wu.b(String.valueOf($$0.l())).a(g);
+   }
+
+   @Override
+   public void a(uf $$0) {
+      wu $$1 = wu.b("L").a(h);
+      this.w = wu.b(String.valueOf($$0.l())).b($$1).a(g);
+   }
+
+   @Override
+   public void a(ua $$0) {
+      wu $$1 = wu.b("f").a(h);
+      this.w = wu.b(String.valueOf($$0.k())).b($$1).a(g);
+   }
+
+   @Override
+   public void a(ty $$0) {
+      wu $$1 = wu.b("d").a(h);
+      this.w = wu.b(String.valueOf($$0.j())).b($$1).a(g);
+   }
+
+   @Override
+   public void a(tu $$0) {
+      wu $$1 = wu.b("B").a(h);
+      xi $$2 = wu.b("[").b($$1).f(";");
+      byte[] $$3 = $$0.e();
+
+      for (int $$4 = 0; $$4 < $$3.length; $$4++) {
+         xi $$5 = wu.b(String.valueOf($$3[$$4])).a(g);
+         $$2.f(" ").b($$5).b($$1);
+         if ($$4 != $$3.length - 1) {
+            $$2.f(k);
+         }
       }
 
-      @Override
-      public vm.b a(DataInput $$0, vm $$1, vb $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
+      $$2.f("]");
+      this.w = $$2;
+   }
+
+   @Override
+   public void a(ub $$0) {
+      wu $$1 = wu.b("I").a(h);
+      xi $$2 = wu.b("[").b($$1).f(";");
+      int[] $$3 = $$0.g();
+
+      for (int $$4 = 0; $$4 < $$3.length; $$4++) {
+         $$2.f(" ").b(wu.b(String.valueOf($$3[$$4])).a(g));
+         if ($$4 != $$3.length - 1) {
+            $$2.f(k);
+         }
       }
 
-      private static long[] d(DataInput $$0, vb $$1) throws IOException {
-         $$1.b(24L);
-         int $$2 = $$0.readInt();
-         $$1.a(8L, (long)$$2);
-         long[] $$3 = new long[$$2];
+      $$2.f("]");
+      this.w = $$2;
+   }
 
-         for (int $$4 = 0; $$4 < $$2; $$4++) {
-            $$3[$$4] = $$0.readLong();
+   @Override
+   public void a(ue $$0) {
+      wu $$1 = wu.b("L").a(h);
+      xi $$2 = wu.b("[").b($$1).f(";");
+      long[] $$3 = $$0.g();
+
+      for (int $$4 = 0; $$4 < $$3.length; $$4++) {
+         wu $$5 = wu.b(String.valueOf($$3[$$4])).a(g);
+         $$2.f(" ").b($$5).b($$1);
+         if ($$4 != $$3.length - 1) {
+            $$2.f(k);
+         }
+      }
+
+      $$2.f("]");
+      this.w = $$2;
+   }
+
+   @Override
+   public void a(ud $$0) {
+      if ($$0.isEmpty()) {
+         this.w = wu.b("[]");
+      } else if (this.v >= 64) {
+         this.w = wu.b("[").b(s).f("]");
+      } else if (d.contains($$0.f()) && $$0.size() <= 8) {
+         String $$1 = k + " ";
+         xi $$2 = wu.b("[");
+
+         for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+            if ($$3 != 0) {
+               $$2.f($$1);
+            }
+
+            $$2.b(this.a($$0.k($$3), false));
          }
 
-         return $$3;
-      }
-
-      @Override
-      public void b(DataInput $$0, vb $$1) throws IOException {
-         $$0.skipBytes($$0.readInt() * 8);
-      }
-
-      @Override
-      public String a() {
-         return "LONG[]";
-      }
-
-      @Override
-      public String b() {
-         return "TAG_Long_Array";
-      }
-   };
-   private long[] c;
-
-   public uz(long[] $$0) {
-      this.c = $$0;
-   }
-
-   public uz(LongSet $$0) {
-      this.c = $$0.toLongArray();
-   }
-
-   public uz(List<Long> $$0) {
-      this(a($$0));
-   }
-
-   private static long[] a(List<Long> $$0) {
-      long[] $$1 = new long[$$0.size()];
-
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         Long $$3 = $$0.get($$2);
-         $$1[$$2] = $$3 == null ? 0L : $$3;
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public void a(DataOutput $$0) throws IOException {
-      $$0.writeInt(this.c.length);
-
-      for (long $$1 : this.c) {
-         $$0.writeLong($$1);
-      }
-   }
-
-   @Override
-   public int a() {
-      return 24 + 8 * this.c.length;
-   }
-
-   @Override
-   public byte b() {
-      return 12;
-   }
-
-   @Override
-   public vr<uz> c() {
-      return a;
-   }
-
-   @Override
-   public String toString() {
-      return this.s_();
-   }
-
-   public uz e() {
-      long[] $$0 = new long[this.c.length];
-      System.arraycopy(this.c, 0, $$0, 0, this.c.length);
-      return new uz($$0);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof uz && Arrays.equals(this.c, ((uz)$$0).c);
-   }
-
-   @Override
-   public int hashCode() {
-      return Arrays.hashCode(this.c);
-   }
-
-   @Override
-   public void a(vt $$0) {
-      $$0.a(this);
-   }
-
-   public long[] g() {
-      return this.c;
-   }
-
-   @Override
-   public int size() {
-      return this.c.length;
-   }
-
-   public va a(int $$0) {
-      return va.a(this.c[$$0]);
-   }
-
-   public va a(int $$0, va $$1) {
-      long $$2 = this.c[$$0];
-      this.c[$$0] = $$1.f();
-      return va.a($$2);
-   }
-
-   public void b(int $$0, va $$1) {
-      this.c = ArrayUtils.add(this.c, $$0, $$1.f());
-   }
-
-   @Override
-   public boolean a(int $$0, vp $$1) {
-      if ($$1 instanceof vi) {
-         this.c[$$0] = ((vi)$$1).f();
-         return true;
+         $$2.f("]");
+         this.w = $$2;
       } else {
-         return false;
+         xi $$4 = wu.b("[");
+         if (!this.t.isEmpty()) {
+            $$4.f("\n");
+         }
+
+         String $$5 = Strings.repeat(this.t, this.u + 1);
+
+         for (int $$6 = 0; $$6 < $$0.size(); $$6++) {
+            xi $$7 = wu.b($$5);
+            $$7.b(this.a($$0.k($$6), true));
+            if ($$6 != $$0.size() - 1) {
+               $$7.f(k).f(this.t.isEmpty() ? " " : "\n");
+            }
+
+            $$4.b($$7);
+         }
+
+         if (!this.t.isEmpty()) {
+            $$4.f("\n").f(Strings.repeat(this.t, this.u));
+         }
+
+         $$4.f("]");
+         this.w = $$4;
       }
    }
 
    @Override
-   public boolean b(int $$0, vp $$1) {
-      if ($$1 instanceof vi) {
-         this.c = ArrayUtils.add(this.c, $$0, ((vi)$$1).f());
-         return true;
+   public void a(tx $$0) {
+      if ($$0.g()) {
+         this.w = wu.b("{}");
+      } else if (this.v >= 64) {
+         this.w = wu.b("{").b(s).f("}");
       } else {
-         return false;
+         xi $$1 = wu.b("{");
+         Collection<String> $$2 = $$0.e();
+         if (a.isDebugEnabled()) {
+            List<String> $$3 = Lists.newArrayList($$0.e());
+            Collections.sort($$3);
+            $$2 = $$3;
+         }
+
+         if (!this.t.isEmpty()) {
+            $$1.f("\n");
+         }
+
+         String $$4 = Strings.repeat(this.t, this.u + 1);
+         Iterator<String> $$5 = $$2.iterator();
+
+         while ($$5.hasNext()) {
+            String $$6 = $$5.next();
+            xi $$7 = wu.b($$4).b(a($$6)).f(j).f(" ").b(this.a($$0.c($$6), true));
+            if ($$5.hasNext()) {
+               $$7.f(k).f(this.t.isEmpty() ? " " : "\n");
+            }
+
+            $$1.b($$7);
+         }
+
+         if (!this.t.isEmpty()) {
+            $$1.f("\n").f(Strings.repeat(this.t, this.u));
+         }
+
+         $$1.f("}");
+         this.w = $$1;
       }
    }
 
-   public va b(int $$0) {
-      long $$1 = this.c[$$0];
-      this.c = ArrayUtils.remove(this.c, $$0);
-      return va.a($$1);
+   private wu a(uu $$0, boolean $$1) {
+      return new uz(this.t, $$1 ? this.u + 1 : this.u, this.v + 1).a($$0);
+   }
+
+   protected static wu a(String $$0) {
+      if (i.matcher($$0).matches()) {
+         return wu.b($$0).a(e);
+      } else {
+         String $$1 = us.b($$0);
+         String $$2 = $$1.substring(0, 1);
+         wu $$3 = wu.b($$1.substring(1, $$1.length() - 1)).a(e);
+         return wu.b($$2).b($$3).f($$2);
+      }
    }
 
    @Override
-   public byte f() {
-      return 4;
-   }
-
-   @Override
-   public void clear() {
-      this.c = new long[0];
-   }
-
-   @Override
-   public vm.b a(vm $$0) {
-      return $$0.a(this.c);
+   public void a(tz $$0) {
+      this.w = wt.a;
    }
 }

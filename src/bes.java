@@ -1,37 +1,53 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import java.util.Objects;
-import java.util.function.Function;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import org.slf4j.Logger;
 
-public abstract class bes extends DataFix {
-   private final String a;
+public class bes extends azs {
+   private static final Logger b = LogUtils.getLogger();
 
-   public bes(Schema $$0, String $$1) {
-      super($$0, false);
-      this.a = $$1;
+   public bes(Schema $$0) {
+      super($$0, bgd.a);
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<Pair<String, String>> $$0 = DSL.named(bgx.D.typeName(), bij.a());
-      if (!Objects.equals(this.getInputSchema().getType(bgx.D), $$0)) {
-         throw new IllegalStateException("item name type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
-      }
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "LevelUUIDFix",
+         this.getInputSchema().getType(this.a),
+         $$0 -> $$0.updateTyped(DSL.remainderFinder(), $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> {
+                  $$0xx = this.d($$0xx);
+                  $$0xx = this.c($$0xx);
+                  return this.b($$0xx);
+               }))
+      );
    }
 
-   protected abstract String a(String var1);
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      return a($$0, "WanderingTraderId", "WanderingTraderId").orElse($$0);
+   }
 
-   public static DataFix a(Schema $$0, String $$1, final Function<String, String> $$2) {
-      return new bes($$0, $$1) {
-         @Override
-         protected String a(String $$0) {
-            return $$2.apply($$0);
-         }
-      };
+   private Dynamic<?> c(Dynamic<?> $$0) {
+      return $$0.update(
+         "DimensionData",
+         $$0x -> $$0x.updateMapValues(
+               $$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.update("DragonFight", $$0xxxx -> c($$0xxxx, "DragonUUID", "Dragon").orElse($$0xxxx)))
+            )
+      );
+   }
+
+   private Dynamic<?> d(Dynamic<?> $$0) {
+      return $$0.update(
+         "CustomBossEvents",
+         $$0x -> $$0x.updateMapValues(
+               $$0xx -> $$0xx.mapSecond(
+                     $$0xxx -> $$0xxx.update("Players", $$1 -> $$0xxx.createList($$1.asStream().map($$0xxxxx -> (Dynamic)a($$0xxxxx).orElseGet(() -> {
+                                 b.warn("CustomBossEvents contains invalid UUIDs.");
+                                 return $$0xxxxx;
+                              }))))
+                  )
+            )
+      );
    }
 }

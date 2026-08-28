@@ -1,29 +1,58 @@
-import com.mojang.authlib.minecraft.TelemetryEvent;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public record guc(gug b, guj c) {
-   public static final Codec<guc> a = gug.a.dispatchStable(guc::a, gug::c);
+public class guc implements gud<gst> {
+   private final List<gud<gst>> a = Lists.newArrayList();
+   @Nullable
+   private final wu b;
 
-   public guc(gug b, guj c) {
-      c.b().forEach($$1x -> {
-         if (!$$0.a($$1x)) {
-            throw new IllegalArgumentException("Property '" + $$1x.b() + "' not expected for event: '" + $$0.a() + "'");
+   public guc(akk $$0, @Nullable String $$1) {
+      this.b = $$1 == null ? null : wu.c($$1);
+   }
+
+   @Override
+   public int e() {
+      int $$0 = 0;
+
+      for (gud<gst> $$1 : this.a) {
+         $$0 += $$1.e();
+      }
+
+      return $$0;
+   }
+
+   public gst a(aym $$0) {
+      int $$1 = this.e();
+      if (!this.a.isEmpty() && $$1 != 0) {
+         int $$2 = $$0.a($$1);
+
+         for (gud<gst> $$3 : this.a) {
+            $$2 -= $$3.e();
+            if ($$2 < 0) {
+               return $$3.b($$0);
+            }
          }
-      });
-      this.b = b;
-      this.c = c;
+
+         return gub.a;
+      } else {
+         return gub.a;
+      }
    }
 
-   public TelemetryEvent a(TelemetrySession $$0) {
-      return this.b.a($$0, this.c);
+   public void a(gud<gst> $$0) {
+      this.a.add($$0);
    }
 
-   public gug a() {
+   @Nullable
+   public wu a() {
       return this.b;
    }
 
-   public guj b() {
-      return this.c;
+   @Override
+   public void a(gty $$0) {
+      for (gud<gst> $$1 : this.a) {
+         $$1.a($$0);
+      }
    }
 }

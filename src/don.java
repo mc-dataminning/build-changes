@@ -1,33 +1,33 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class don extends dno implements dog {
-   public static final MapCodec<don> m = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dst.a.fieldOf("block_set_type").forGetter(dno::m), dog.a.e.fieldOf("weathering_state").forGetter(don::n), u()).apply($$0, don::new)
+public class don extends dff implements dok {
+   public static final MapCodec<don> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dok.a.e.fieldOf("weathering_state").forGetter(dgg::c), u()).apply($$0, don::new)
    );
-   private final dog.a n;
+   private final dok.a e;
 
    @Override
    public MapCodec<don> a() {
-      return m;
+      return d;
    }
 
-   protected don(dst $$0, dog.a $$1, dsd.d $$2) {
-      super($$0, $$2);
-      this.n = $$1;
+   public don(dok.a $$0, dsg.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   protected void b(dse $$0, arf $$1, iz $$2, azh $$3) {
+   protected void b(dsh $$0, aqk $$1, ja $$2, aym $$3) {
       this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected boolean d_(dse $$0) {
-      return dog.c($$0.b()).isPresent();
+   protected boolean d_(dsh $$0) {
+      return dok.c($$0.b()).isPresent();
    }
 
-   public dog.a n() {
-      return this.n;
+   public dok.a m() {
+      return this.e;
    }
 }

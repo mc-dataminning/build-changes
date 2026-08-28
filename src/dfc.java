@@ -1,250 +1,230 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dfc {
-   public static final MapCodec<dfb> a = lp.ag.q().dispatchMap(dfb::a, Function.identity());
+public class dfc extends djb implements dfi, dmg {
+   public static final MapCodec<dfc> a = b(dfc::new);
+   private static final dsy b = dsx.C;
+   private static final dtf<dts> c = dsx.bl;
+   private static final int d = -1;
+   private static final Object2IntMap<dts> e = ac.a(new Object2IntArrayMap(), $$0 -> {
+      $$0.defaultReturnValue(-1);
+      $$0.put(dts.b, 10);
+      $$0.put(dts.c, 10);
+      $$0.put(dts.d, 100);
+   });
+   private static final int f = 5;
+   private static final int g = 6;
+   private static final int h = 11;
+   private static final int i = 13;
+   private static final Map<dts, ews> j = ImmutableMap.of(
+      dts.a,
+      dff.a(0.0, 11.0, 0.0, 16.0, 15.0, 16.0),
+      dts.b,
+      dff.a(0.0, 11.0, 0.0, 16.0, 15.0, 16.0),
+      dts.c,
+      dff.a(0.0, 11.0, 0.0, 16.0, 13.0, 16.0),
+      dts.d,
+      ewp.a()
+   );
+   private static final ews k = dff.a(0.0, 13.0, 0.0, 16.0, 16.0, 16.0);
+   private static final Map<jf, ews> l = ImmutableMap.of(
+      jf.c, ewp.b(dfd.b, k, ewd.e), jf.d, ewp.b(dfd.c, k, ewd.e), jf.f, ewp.b(dfd.d, k, ewd.e), jf.e, ewp.b(dfd.e, k, ewd.e)
+   );
+   private final Map<dsh, ews> m;
 
-   public static MapCodec<? extends dfb> a(jv<MapCodec<? extends dfb>> $$0) {
-      jv.a($$0, "block", dfb.p);
-      jv.a($$0, "air", ddy.a);
-      jv.a($$0, "amethyst", ddz.a);
-      jv.a($$0, "amethyst_cluster", dea.b);
-      jv.a($$0, "anvil", deb.a);
-      jv.a($$0, "attached_stem", dec.a);
-      jv.a($$0, "azalea", ded.a);
-      jv.a($$0, "bamboo_sapling", dee.a);
-      jv.a($$0, "bamboo_stalk", def.a);
-      jv.a($$0, "banner", deg.a);
-      jv.a($$0, "barrel", deh.a);
-      jv.a($$0, "barrier", dei.a);
-      jv.a($$0, "base_coral_fan", dej.a);
-      jv.a($$0, "base_coral_plant", dek.a);
-      jv.a($$0, "base_coral_wall_fan", dem.b);
-      jv.a($$0, "beacon", det.a);
-      jv.a($$0, "bed", deu.a);
-      jv.a($$0, "beehive", dev.a);
-      jv.a($$0, "beetroot", dew.a);
-      jv.a($$0, "bell", dex.a);
-      jv.a($$0, "big_dripleaf", dey.a);
-      jv.a($$0, "big_dripleaf_stem", dez.a);
-      jv.a($$0, "blast_furnace", dfa.c);
-      jv.a($$0, "brewing_stand", dff.a);
-      jv.a($$0, "brushable", dfg.a);
-      jv.a($$0, "bubble_column", dfh.a);
-      jv.a($$0, "budding_amethyst", dfj.b);
-      jv.a($$0, "button", dfl.a);
-      jv.a($$0, "cactus", dfm.a);
-      jv.a($$0, "cake", dfn.a);
-      jv.a($$0, "calibrated_sculk_sensor", dfo.a);
-      jv.a($$0, "campfire", dfp.a);
-      jv.a($$0, "candle_cake", dfr.c);
-      jv.a($$0, "candle", dfq.c);
-      jv.a($$0, "carpet", dfs.a);
-      jv.a($$0, "carrot", dft.a);
-      jv.a($$0, "cartography_table", dfu.a);
-      jv.a($$0, "carved_pumpkin", dhu.c);
-      jv.a($$0, "cauldron", dfw.d);
-      jv.a($$0, "cave_vines", dfy.c);
-      jv.a($$0, "cave_vines_plant", dfz.c);
-      jv.a($$0, "ceiling_hanging_sign", dga.a);
-      jv.a($$0, "chain", dgb.a);
-      jv.a($$0, "cherry_leaves", dgd.a);
-      jv.a($$0, "chest", dge.b);
-      jv.a($$0, "chiseled_book_shelf", dgf.a);
-      jv.a($$0, "chorus_flower", dgg.a);
-      jv.a($$0, "chorus_plant", dgh.a);
-      jv.a($$0, "cocoa", dgi.a);
-      jv.a($$0, "colored_falling", dgj.a);
-      jv.a($$0, "command", dgk.a);
-      jv.a($$0, "comparator", dgl.a);
-      jv.a($$0, "composter", dgm.a);
-      jv.a($$0, "concrete_powder", dgn.a);
-      jv.a($$0, "conduit", dgo.a);
-      jv.a($$0, "copper_bulb_block", dgp.a);
-      jv.a($$0, "coral", dgq.b);
-      jv.a($$0, "coral_fan", dgr.b);
-      jv.a($$0, "coral_plant", dgs.a);
-      jv.a($$0, "coral_wall_fan", dgt.e);
-      jv.a($$0, "crafter", dgu.a);
-      jv.a($$0, "crafting_table", dgv.a);
-      jv.a($$0, "crop", dgw.d);
-      jv.a($$0, "crying_obsidian", dgy.a);
-      jv.a($$0, "daylight_detector", dgz.a);
-      jv.a($$0, "dead_bush", dha.a);
-      jv.a($$0, "decorated_pot", dhb.a);
-      jv.a($$0, "detector_rail", dhc.d);
-      jv.a($$0, "dirt_path", dhf.a);
-      jv.a($$0, "dispenser", dhg.a);
-      jv.a($$0, "door", dhh.a);
-      jv.a($$0, "double_plant", dhj.a);
-      jv.a($$0, "dragon_egg", dhk.a);
-      jv.a($$0, "drop_experience", dhl.a);
-      jv.a($$0, "dropper", dhm.e);
-      jv.a($$0, "enchantment_table", dhn.a);
-      jv.a($$0, "ender_chest", dhs.b);
-      jv.a($$0, "end_gateway", dho.a);
-      jv.a($$0, "end_portal", dhp.a);
-      jv.a($$0, "end_portal_frame", dhq.a);
-      jv.a($$0, "end_rod", dhr.b);
-      jv.a($$0, "farm", dhy.a);
-      jv.a($$0, "fence", dhz.i);
-      jv.a($$0, "fence_gate", dia.a);
-      jv.a($$0, "fire", dib.c);
-      jv.a($$0, "fletching_table", dic.b);
-      jv.a($$0, "flower", did.b);
-      jv.a($$0, "flower_pot", die.a);
-      jv.a($$0, "frogspawn", dif.a);
-      jv.a($$0, "frosted_ice", dig.a);
-      jv.a($$0, "fungus", dih.a);
-      jv.a($$0, "furnace", dii.c);
-      jv.a($$0, "glazed_terracotta", dik.a);
-      jv.a($$0, "glow_lichen", dil.a);
-      jv.a($$0, "grass", dim.a);
-      jv.a($$0, "grindstone", din.a);
-      jv.a($$0, "half_transparent", dir.d);
-      jv.a($$0, "hanging_roots", dis.a);
-      jv.a($$0, "hay", dit.a);
-      jv.a($$0, "heavy_core", diu.a);
-      jv.a($$0, "honey", div.a);
-      jv.a($$0, "hopper", diw.a);
-      jv.a($$0, "huge_mushroom", diy.a);
-      jv.a($$0, "ice", diz.e);
-      jv.a($$0, "infested", dja.a);
-      jv.a($$0, "infested_rotated_pillar", djb.b);
-      jv.a($$0, "iron_bars", djc.i);
-      jv.a($$0, "jack_o_lantern", dfv.a);
-      jv.a($$0, "jigsaw", djd.a);
-      jv.a($$0, "jukebox", dje.a);
-      jv.a($$0, "kelp", djf.c);
-      jv.a($$0, "kelp_plant", djg.c);
-      jv.a($$0, "ladder", djh.a);
-      jv.a($$0, "lantern", dji.a);
-      jv.a($$0, "lava_cauldron", djj.d);
-      jv.a($$0, "layered_cauldron", djk.d);
-      jv.a($$0, "leaves", djl.b);
-      jv.a($$0, "lectern", djm.a);
-      jv.a($$0, "lever", djo.a);
-      jv.a($$0, "light", djp.a);
-      jv.a($$0, "lightning_rod", djq.b);
-      jv.a($$0, "liquid", djr.a);
-      jv.a($$0, "loom", djt.a);
-      jv.a($$0, "magma", dju.a);
-      jv.a($$0, "mangrove_leaves", djv.a);
-      jv.a($$0, "mangrove_propagule", djw.a);
-      jv.a($$0, "mangrove_roots", djx.a);
-      jv.a($$0, "moss", djz.a);
-      jv.a($$0, "moving_piston", drw.a);
-      jv.a($$0, "mud", dka.a);
-      jv.a($$0, "mushroom", dkd.a);
-      jv.a($$0, "mycelium", dke.a);
-      jv.a($$0, "nether_portal", dkf.a);
-      jv.a($$0, "netherrack", dkj.a);
-      jv.a($$0, "nether_sprouts", dkg.a);
-      jv.a($$0, "nether_wart", dki.a);
-      jv.a($$0, "note", dkk.a);
-      jv.a($$0, "nylium", dkl.a);
-      jv.a($$0, "observer", dkm.b);
-      jv.a($$0, "piglinwallskull", dkn.b);
-      jv.a($$0, "pink_petals", dko.a);
-      jv.a($$0, "piston_base", drx.b);
-      jv.a($$0, "piston_head", dry.b);
-      jv.a($$0, "pitcher_crop", dkq.c);
-      jv.a($$0, "player_head", dkr.b);
-      jv.a($$0, "player_wall_head", dks.b);
-      jv.a($$0, "pointed_dripstone", dkt.a);
-      jv.a($$0, "potato", dku.a);
-      jv.a($$0, "powder_snow", dkv.a);
-      jv.a($$0, "powered", dkw.a);
-      jv.a($$0, "powered_rail", dkx.d);
-      jv.a($$0, "pressure_plate", dky.e);
-      jv.a($$0, "pumpkin", dkz.a);
-      jv.a($$0, "rail", dla.d);
-      jv.a($$0, "redstone_lamp", dle.a);
-      jv.a($$0, "redstone_ore", dlc.a);
-      jv.a($$0, "redstone_torch", dlf.c);
-      jv.a($$0, "redstone_wall_torch", dlg.h);
-      jv.a($$0, "redstone_wire", dld.a);
-      jv.a($$0, "repeater", dli.a);
-      jv.a($$0, "respawn_anchor", dlj.a);
-      jv.a($$0, "rooted_dirt", dll.a);
-      jv.a($$0, "roots", dlm.a);
-      jv.a($$0, "rotated_pillar", dln.h);
-      jv.a($$0, "sapling", dlp.e);
-      jv.a($$0, "scaffolding", dlq.a);
-      jv.a($$0, "sculk_catalyst", dlt.a);
-      jv.a($$0, "sculk", dls.b);
-      jv.a($$0, "sculk_sensor", dlu.c);
-      jv.a($$0, "sculk_shrieker", dlv.a);
-      jv.a($$0, "sculk_vein", dlx.c);
-      jv.a($$0, "seagrass", dlz.a);
-      jv.a($$0, "sea_pickle", dly.a);
-      jv.a($$0, "shulker_box", dma.a);
-      jv.a($$0, "skull", dmd.c);
-      jv.a($$0, "slab", dme.a);
-      jv.a($$0, "slime", dmf.a);
-      jv.a($$0, "small_dripleaf", dmg.c);
-      jv.a($$0, "smithing_table", dmh.b);
-      jv.a($$0, "smoker", dmi.c);
-      jv.a($$0, "sniffer_egg", dmj.a);
-      jv.a($$0, "snow_layer", dmk.a);
-      jv.a($$0, "snowy_dirt", dml.b);
-      jv.a($$0, "soul_fire", dmm.c);
-      jv.a($$0, "soul_sand", dmn.a);
-      jv.a($$0, "spawner", dmp.a);
-      jv.a($$0, "sponge", dmq.a);
-      jv.a($$0, "spore_blossom", dmr.a);
-      jv.a($$0, "stained_glass_pane", dmu.j);
-      jv.a($$0, "stained_glass", dmt.a);
-      jv.a($$0, "stair", dmv.a);
-      jv.a($$0, "standing_sign", dmw.a);
-      jv.a($$0, "stem", dmx.a);
-      jv.a($$0, "stonecutter", dmy.a);
-      jv.a($$0, "structure", dmz.a);
-      jv.a($$0, "structure_void", dna.a);
-      jv.a($$0, "sugar_cane", dnb.a);
-      jv.a($$0, "sweet_berry_bush", dne.a);
-      jv.a($$0, "tall_flower", dnf.c);
-      jv.a($$0, "tall_grass", dng.a);
-      jv.a($$0, "tall_seagrass", dnh.c);
-      jv.a($$0, "target", dni.a);
-      jv.a($$0, "tinted_glass", dnj.a);
-      jv.a($$0, "tnt", dnk.a);
-      jv.a($$0, "torchflower_crop", dnm.a);
-      jv.a($$0, "torch", dnl.d);
-      jv.a($$0, "transparent", dnn.b);
-      jv.a($$0, "trapdoor", dno.a);
-      jv.a($$0, "trapped_chest", dnp.n);
-      jv.a($$0, "trial_spawner", dnq.a);
-      jv.a($$0, "trip_wire_hook", dns.a);
-      jv.a($$0, "tripwire", dnr.a);
-      jv.a($$0, "turtle_egg", dnt.a);
-      jv.a($$0, "twisting_vines_plant", dnv.c);
-      jv.a($$0, "twisting_vines", dnu.c);
-      jv.a($$0, "vault", dnw.a);
-      jv.a($$0, "vine", dnx.a);
-      jv.a($$0, "wall_banner", dny.a);
-      jv.a($$0, "wall_hanging_sign", doa.a);
-      jv.a($$0, "wall_sign", dob.a);
-      jv.a($$0, "wall_skull", doc.c);
-      jv.a($$0, "wall_torch", dod.f);
-      jv.a($$0, "wall", dnz.a);
-      jv.a($$0, "waterlily", doe.a);
-      jv.a($$0, "waterlogged_transparent", dof.a);
-      jv.a($$0, "weathering_copper_bulb", doh.d);
-      jv.a($$0, "weathering_copper_door", doi.l);
-      jv.a($$0, "weathering_copper_full", doj.d);
-      jv.a($$0, "weathering_copper_grate", dok.e);
-      jv.a($$0, "weathering_copper_slab", dol.f);
-      jv.a($$0, "weathering_copper_stair", dom.I);
-      jv.a($$0, "weathering_copper_trap_door", don.m);
-      jv.a($$0, "web", doo.a);
-      jv.a($$0, "weeping_vines_plant", doq.c);
-      jv.a($$0, "weeping_vines", dop.c);
-      jv.a($$0, "weighted_pressure_plate", dor.e);
-      jv.a($$0, "wet_sponge", dos.a);
-      jv.a($$0, "wither_rose", dot.e);
-      jv.a($$0, "wither_skull", dou.b);
-      jv.a($$0, "wither_wall_skull", dov.b);
-      return jv.a($$0, "wool_carpet", dow.c);
+   @Override
+   public MapCodec<dfc> a() {
+      return a;
+   }
+
+   protected dfc(dsg.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(aE, jf.c).a(c, dts.a));
+      this.m = this.a(dfc::m);
+   }
+
+   private static ews m(dsh $$0) {
+      return ewp.a(j.get($$0.c(c)), l.get($$0.c(aE)));
+   }
+
+   public static void a(dce $$0, aym $$1, ja $$2, jf $$3) {
+      int $$4 = aye.a($$1, 2, 5);
+      ja.a $$5 = $$2.j();
+      int $$6 = 0;
+
+      while ($$6 < $$4 && a($$0, $$5, $$0.a_($$5))) {
+         $$6++;
+         $$5.c(jf.b);
+      }
+
+      int $$7 = $$2.v() + $$6 - 1;
+      $$5.q($$2.v());
+
+      while ($$5.v() < $$7) {
+         dfd.a($$0, $$5, $$0.b_($$5), $$3);
+         $$5.c(jf.b);
+      }
+
+      a($$0, $$5, $$0.b_($$5), $$3);
+   }
+
+   private static boolean n(dsh $$0) {
+      return $$0.i() || $$0.a(dfh.G) || $$0.a(dfh.sF);
+   }
+
+   protected static boolean a(dcf $$0, ja $$1, dsh $$2) {
+      return !$$0.s($$1) && n($$2);
+   }
+
+   protected static boolean a(dce $$0, ja $$1, eob $$2, jf $$3) {
+      dsh $$4 = dfh.sD.o().a(b, Boolean.valueOf($$2.a(eoc.c))).a(aE, $$3);
+      return $$0.a($$1, $$4, 3);
+   }
+
+   @Override
+   protected void a(dcd $$0, dsh $$1, evv $$2, cmz $$3) {
+      this.a($$1, $$0, $$2.a(), dts.d, avf.hB);
+   }
+
+   @Override
+   protected eob b_(dsh $$0) {
+      return $$0.c(b) ? eoc.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected boolean a(dsh $$0, dcg $$1, ja $$2) {
+      ja $$3 = $$2.d();
+      dsh $$4 = $$1.a_($$3);
+      return $$4.a(this) || $$4.a(dfh.sE) || $$4.a(avu.by);
+   }
+
+   @Override
+   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
+      if ($$1 == jf.a && !$$0.a($$3, $$4)) {
+         return dfh.a.o();
+      } else {
+         if ($$0.c(b)) {
+            $$3.a($$4, eoc.c, eoc.c.a($$3));
+         }
+
+         return $$1 == jf.b && $$2.a(this) ? dfh.sE.l($$0) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   @Override
+   public boolean b(dcg $$0, ja $$1, dsh $$2) {
+      dsh $$3 = $$0.a_($$1.c());
+      return n($$3);
+   }
+
+   @Override
+   public boolean a(dcd $$0, aym $$1, ja $$2, dsh $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqk $$0, aym $$1, ja $$2, dsh $$3) {
+      ja $$4 = $$2.c();
+      dsh $$5 = $$0.a_($$4);
+      if (a($$0, $$4, $$5)) {
+         jf $$6 = $$3.c(aE);
+         dfd.a($$0, $$2, $$3.u(), $$6);
+         a($$0, $$4, $$5.u(), $$6);
+      }
+   }
+
+   @Override
+   protected void a(dsh $$0, dcd $$1, ja $$2, bsd $$3) {
+      if (!$$1.B) {
+         if ($$0.c(c) == dts.a && a($$2, $$3) && !$$1.C($$2)) {
+            this.a($$0, $$1, $$2, dts.b, null);
+         }
+      }
+   }
+
+   @Override
+   protected void a(dsh $$0, aqk $$1, ja $$2, aym $$3) {
+      if ($$1.C($$2)) {
+         d($$0, $$1, $$2);
+      } else {
+         dts $$4 = $$0.c(c);
+         if ($$4 == dts.b) {
+            this.a($$0, $$1, $$2, dts.c, avf.hB);
+         } else if ($$4 == dts.c) {
+            this.a($$0, $$1, $$2, dts.d, avf.hB);
+         } else if ($$4 == dts.d) {
+            d($$0, $$1, $$2);
+         }
+      }
+   }
+
+   @Override
+   protected void a(dsh $$0, dcd $$1, ja $$2, dff $$3, ja $$4, boolean $$5) {
+      if ($$1.C($$2)) {
+         d($$0, $$1, $$2);
+      }
+   }
+
+   private static void a(dcd $$0, ja $$1, ave $$2) {
+      float $$3 = aye.b($$0.z, 0.8F, 1.2F);
+      $$0.a(null, $$1, $$2, avg.e, 1.0F, $$3);
+   }
+
+   private static boolean a(ja $$0, bsd $$1) {
+      return $$1.aE() && $$1.dn().d > (double)((float)$$0.v() + 0.6875F);
+   }
+
+   private void a(dsh $$0, dcd $$1, ja $$2, dts $$3, @Nullable ave $$4) {
+      a($$0, $$1, $$2, $$3);
+      if ($$4 != null) {
+         a($$1, $$2, $$4);
+      }
+
+      int $$5 = e.getInt($$3);
+      if ($$5 != -1) {
+         $$1.a($$2, this, $$5);
+      }
+   }
+
+   private static void d(dsh $$0, dcd $$1, ja $$2) {
+      a($$0, $$1, $$2, dts.a);
+      if ($$0.c(c) != dts.a) {
+         a($$1, $$2, avf.hC);
+      }
+   }
+
+   private static void a(dsh $$0, dcd $$1, ja $$2, dts $$3) {
+      dts $$4 = $$0.c(c);
+      $$1.a($$2, $$0.a(c, $$3), 2);
+      if ($$3.a() && $$3 != $$4) {
+         $$1.a(null, dxa.c, $$2);
+      }
+   }
+
+   @Override
+   protected ews b(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
+      return j.get($$0.c(c));
+   }
+
+   @Override
+   protected ews a(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
+      return this.m.get($$0);
+   }
+
+   @Override
+   public dsh a(cxk $$0) {
+      dsh $$1 = $$0.q().a_($$0.a().d());
+      eob $$2 = $$0.q().b_($$0.a());
+      boolean $$3 = $$1.a(dfh.sD) || $$1.a(dfh.sE);
+      return this.o().a(b, Boolean.valueOf($$2.a(eoc.c))).a(aE, $$3 ? $$1.c(aE) : $$0.g().g());
+   }
+
+   @Override
+   protected void a(dsi.a<dff, dsh> $$0) {
+      $$0.a(b, aE, c);
    }
 }

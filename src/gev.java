@@ -1,255 +1,174 @@
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Either;
-import java.util.List;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.Locale;
 import java.util.Map;
-import java.util.function.Function;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 import org.joml.Vector3f;
 
 public class gev {
-   public static final List<String> a = Lists.newArrayList(new String[]{"layer0", "layer1", "layer2", "layer3", "layer4"});
-   private static final float b = 7.5F;
-   private static final float c = 8.5F;
+   private static final boolean f = false;
+   private static final float g = -16.0F;
+   private static final float h = 32.0F;
+   public final Vector3f a;
+   public final Vector3f b;
+   public final Map<jf, gew> c;
+   public final gex d;
+   public final boolean e;
 
-   public ges a(Function<grf, gpb> $$0, ges $$1) {
-      Map<String, Either<grf, String>> $$2 = Maps.newHashMap();
-      List<geo> $$3 = Lists.newArrayList();
+   public gev(Vector3f $$0, Vector3f $$1, Map<jf, gew> $$2, @Nullable gex $$3, boolean $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.a();
+   }
 
-      for (int $$4 = 0; $$4 < a.size(); $$4++) {
-         String $$5 = a.get($$4);
-         if (!$$1.b($$5)) {
-            break;
-         }
-
-         grf $$6 = $$1.c($$5);
-         $$2.put($$5, Either.left($$6));
-         gov $$7 = $$0.apply($$6).e();
-         $$3.addAll(this.a($$4, $$5, $$7));
+   private void a() {
+      for (Entry<jf, gew> $$0 : this.c.entrySet()) {
+         float[] $$1 = this.a($$0.getKey());
+         $$0.getValue().e.a($$1);
       }
-
-      $$2.put("particle", $$1.b("particle") ? Either.left($$1.c("particle")) : $$2.get("layer0"));
-      ges $$8 = new ges(null, $$3, $$2, false, $$1.c(), $$1.h(), $$1.e());
-      $$8.c = $$1.c;
-      return $$8;
    }
 
-   private List<geo> a(int $$0, String $$1, gov $$2) {
-      Map<je, gep> $$3 = Maps.newHashMap();
-      $$3.put(je.d, new gep(null, $$0, $$1, new ger(new float[]{0.0F, 0.0F, 16.0F, 16.0F}, 0)));
-      $$3.put(je.c, new gep(null, $$0, $$1, new ger(new float[]{16.0F, 0.0F, 0.0F, 16.0F}, 0)));
-      List<geo> $$4 = Lists.newArrayList();
-      $$4.add(new geo(new Vector3f(0.0F, 0.0F, 7.5F), new Vector3f(16.0F, 16.0F, 8.5F), $$3, null, true));
-      $$4.addAll(this.a($$2, $$1, $$0));
-      return $$4;
+   private float[] a(jf $$0) {
+      switch ($$0) {
+         case a:
+            return new float[]{this.a.x(), 16.0F - this.b.z(), this.b.x(), 16.0F - this.a.z()};
+         case b:
+            return new float[]{this.a.x(), this.a.z(), this.b.x(), this.b.z()};
+         case c:
+         default:
+            return new float[]{16.0F - this.b.x(), 16.0F - this.b.y(), 16.0F - this.a.x(), 16.0F - this.a.y()};
+         case d:
+            return new float[]{this.a.x(), 16.0F - this.b.y(), this.b.x(), 16.0F - this.a.y()};
+         case e:
+            return new float[]{this.a.z(), 16.0F - this.b.y(), this.b.z(), 16.0F - this.a.y()};
+         case f:
+            return new float[]{16.0F - this.b.z(), 16.0F - this.b.y(), 16.0F - this.a.z(), 16.0F - this.a.y()};
+      }
    }
 
-   private List<geo> a(gov $$0, String $$1, int $$2) {
-      float $$3 = (float)$$0.a();
-      float $$4 = (float)$$0.b();
-      List<geo> $$5 = Lists.newArrayList();
+   protected static class a implements JsonDeserializer<gev> {
+      private static final boolean a = true;
 
-      for (gev.a $$6 : this.a($$0)) {
-         float $$7 = 0.0F;
-         float $$8 = 0.0F;
-         float $$9 = 0.0F;
-         float $$10 = 0.0F;
-         float $$11 = 0.0F;
-         float $$12 = 0.0F;
-         float $$13 = 0.0F;
-         float $$14 = 0.0F;
-         float $$15 = 16.0F / $$3;
-         float $$16 = 16.0F / $$4;
-         float $$17 = (float)$$6.b();
-         float $$18 = (float)$$6.c();
-         float $$19 = (float)$$6.d();
-         gev.b $$20 = $$6.a();
-         switch ($$20) {
-            case a:
-               $$11 = $$17;
-               $$7 = $$17;
-               $$9 = $$12 = $$18 + 1.0F;
-               $$13 = $$19;
-               $$8 = $$19;
-               $$10 = $$19;
-               $$14 = $$19 + 1.0F;
-               break;
-            case b:
-               $$13 = $$19;
-               $$14 = $$19 + 1.0F;
-               $$11 = $$17;
-               $$7 = $$17;
-               $$9 = $$12 = $$18 + 1.0F;
-               $$8 = $$19 + 1.0F;
-               $$10 = $$19 + 1.0F;
-               break;
-            case c:
-               $$11 = $$19;
-               $$7 = $$19;
-               $$9 = $$19;
-               $$12 = $$19 + 1.0F;
-               $$14 = $$17;
-               $$8 = $$17;
-               $$10 = $$13 = $$18 + 1.0F;
-               break;
-            case d:
-               $$11 = $$19;
-               $$12 = $$19 + 1.0F;
-               $$7 = $$19 + 1.0F;
-               $$9 = $$19 + 1.0F;
-               $$14 = $$17;
-               $$8 = $$17;
-               $$10 = $$13 = $$18 + 1.0F;
-         }
-
-         $$7 *= $$15;
-         $$9 *= $$15;
-         $$8 *= $$16;
-         $$10 *= $$16;
-         $$8 = 16.0F - $$8;
-         $$10 = 16.0F - $$10;
-         $$11 *= $$15;
-         $$12 *= $$15;
-         $$13 *= $$16;
-         $$14 *= $$16;
-         Map<je, gep> $$21 = Maps.newHashMap();
-         $$21.put($$20.a(), new gep(null, $$2, $$1, new ger(new float[]{$$11, $$13, $$12, $$14}, 0)));
-         switch ($$20) {
-            case a:
-               $$5.add(new geo(new Vector3f($$7, $$8, 7.5F), new Vector3f($$9, $$8, 8.5F), $$21, null, true));
-               break;
-            case b:
-               $$5.add(new geo(new Vector3f($$7, $$10, 7.5F), new Vector3f($$9, $$10, 8.5F), $$21, null, true));
-               break;
-            case c:
-               $$5.add(new geo(new Vector3f($$7, $$8, 7.5F), new Vector3f($$7, $$10, 8.5F), $$21, null, true));
-               break;
-            case d:
-               $$5.add(new geo(new Vector3f($$9, $$8, 7.5F), new Vector3f($$9, $$10, 8.5F), $$21, null, true));
+      public gev a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         Vector3f $$4 = this.e($$3);
+         Vector3f $$5 = this.d($$3);
+         gex $$6 = this.a($$3);
+         Map<jf, gew> $$7 = this.a($$2, $$3);
+         if ($$3.has("shade") && !axu.c($$3, "shade")) {
+            throw new JsonParseException("Expected shade to be a Boolean");
+         } else {
+            boolean $$8 = axu.a($$3, "shade", true);
+            return new gev($$4, $$5, $$7, $$6, $$8);
          }
       }
 
-      return $$5;
-   }
+      @Nullable
+      private gex a(JsonObject $$0) {
+         gex $$1 = null;
+         if ($$0.has("rotation")) {
+            JsonObject $$2 = axu.u($$0, "rotation");
+            Vector3f $$3 = this.a($$2, "origin");
+            $$3.mul(0.0625F);
+            jf.a $$4 = this.c($$2);
+            float $$5 = this.b($$2);
+            boolean $$6 = axu.a($$2, "rescale", false);
+            $$1 = new gex($$3, $$4, $$5, $$6);
+         }
 
-   private List<gev.a> a(gov $$0) {
-      int $$1 = $$0.a();
-      int $$2 = $$0.b();
-      List<gev.a> $$3 = Lists.newArrayList();
-      $$0.d().forEach($$4 -> {
-         for (int $$5 = 0; $$5 < $$2; $$5++) {
-            for (int $$6 = 0; $$6 < $$1; $$6++) {
-               boolean $$7 = !this.a($$0, $$4, $$6, $$5, $$1, $$2);
-               this.a(gev.b.a, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
-               this.a(gev.b.b, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
-               this.a(gev.b.c, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
-               this.a(gev.b.d, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
+         return $$1;
+      }
+
+      private float b(JsonObject $$0) {
+         float $$1 = axu.m($$0, "angle");
+         if ($$1 != 0.0F && aye.e($$1) != 22.5F && aye.e($$1) != 45.0F) {
+            throw new JsonParseException("Invalid rotation " + $$1 + " found, only -45/-22.5/0/22.5/45 allowed");
+         } else {
+            return $$1;
+         }
+      }
+
+      private jf.a c(JsonObject $$0) {
+         String $$1 = axu.i($$0, "axis");
+         jf.a $$2 = jf.a.a($$1.toLowerCase(Locale.ROOT));
+         if ($$2 == null) {
+            throw new JsonParseException("Invalid rotation axis: " + $$1);
+         } else {
+            return $$2;
+         }
+      }
+
+      private Map<jf, gew> a(JsonDeserializationContext $$0, JsonObject $$1) {
+         Map<jf, gew> $$2 = this.b($$0, $$1);
+         if ($$2.isEmpty()) {
+            throw new JsonParseException("Expected between 1 and 6 unique faces, got 0");
+         } else {
+            return $$2;
+         }
+      }
+
+      private Map<jf, gew> b(JsonDeserializationContext $$0, JsonObject $$1) {
+         Map<jf, gew> $$2 = Maps.newEnumMap(jf.class);
+         JsonObject $$3 = axu.u($$1, "faces");
+
+         for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
+            jf $$5 = this.a($$4.getKey());
+            $$2.put($$5, (gew)$$0.deserialize($$4.getValue(), gew.class));
+         }
+
+         return $$2;
+      }
+
+      private jf a(String $$0) {
+         jf $$1 = jf.a($$0);
+         if ($$1 == null) {
+            throw new JsonParseException("Unknown facing: " + $$0);
+         } else {
+            return $$1;
+         }
+      }
+
+      private Vector3f d(JsonObject $$0) {
+         Vector3f $$1 = this.a($$0, "to");
+         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
+            return $$1;
+         } else {
+            throw new JsonParseException("'to' specifier exceeds the allowed boundaries: " + $$1);
+         }
+      }
+
+      private Vector3f e(JsonObject $$0) {
+         Vector3f $$1 = this.a($$0, "from");
+         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
+            return $$1;
+         } else {
+            throw new JsonParseException("'from' specifier exceeds the allowed boundaries: " + $$1);
+         }
+      }
+
+      private Vector3f a(JsonObject $$0, String $$1) {
+         JsonArray $$2 = axu.v($$0, $$1);
+         if ($$2.size() != 3) {
+            throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$2.size());
+         } else {
+            float[] $$3 = new float[3];
+
+            for (int $$4 = 0; $$4 < $$3.length; $$4++) {
+               $$3[$$4] = axu.e($$2.get($$4), $$1 + "[" + $$4 + "]");
             }
+
+            return new Vector3f($$3[0], $$3[1], $$3[2]);
          }
-      });
-      return $$3;
-   }
-
-   private void a(gev.b $$0, List<gev.a> $$1, gov $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8) {
-      boolean $$9 = this.a($$2, $$3, $$4 + $$0.b(), $$5 + $$0.c(), $$6, $$7) && $$8;
-      if ($$9) {
-         this.a($$1, $$0, $$4, $$5);
-      }
-   }
-
-   private void a(List<gev.a> $$0, gev.b $$1, int $$2, int $$3) {
-      gev.a $$4 = null;
-
-      for (gev.a $$5 : $$0) {
-         if ($$5.a() == $$1) {
-            int $$6 = $$1.d() ? $$3 : $$2;
-            if ($$5.d() == $$6) {
-               $$4 = $$5;
-               break;
-            }
-         }
-      }
-
-      int $$7 = $$1.d() ? $$3 : $$2;
-      int $$8 = $$1.d() ? $$2 : $$3;
-      if ($$4 == null) {
-         $$0.add(new gev.a($$1, $$8, $$7));
-      } else {
-         $$4.a($$8);
-      }
-   }
-
-   private boolean a(gov $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      return $$2 >= 0 && $$3 >= 0 && $$2 < $$4 && $$3 < $$5 ? $$0.a($$1, $$2, $$3) : true;
-   }
-
-   static class a {
-      private final gev.b a;
-      private int b;
-      private int c;
-      private final int d;
-
-      public a(gev.b $$0, int $$1, int $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      public void a(int $$0) {
-         if ($$0 < this.b) {
-            this.b = $$0;
-         } else if ($$0 > this.c) {
-            this.c = $$0;
-         }
-      }
-
-      public gev.b a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.b;
-      }
-
-      public int c() {
-         return this.c;
-      }
-
-      public int d() {
-         return this.d;
-      }
-   }
-
-   static enum b {
-      a(je.b, 0, -1),
-      b(je.a, 0, 1),
-      c(je.f, -1, 0),
-      d(je.e, 1, 0);
-
-      private final je e;
-      private final int f;
-      private final int g;
-
-      private b(final je $$0, final int $$1, final int $$2) {
-         this.e = $$0;
-         this.f = $$1;
-         this.g = $$2;
-      }
-
-      public je a() {
-         return this.e;
-      }
-
-      public int b() {
-         return this.f;
-      }
-
-      public int c() {
-         return this.g;
-      }
-
-      boolean d() {
-         return this == b || this == a;
       }
    }
 }

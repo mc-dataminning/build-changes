@@ -1,53 +1,60 @@
 import com.mojang.serialization.MapCodec;
 
-public class dmr extends dfb {
+public class dmr extends dff {
    public static final MapCodec<dmr> a = b(dmr::new);
-   private static final ewm b = dfb.a(2.0, 13.0, 2.0, 14.0, 16.0, 14.0);
-   private static final int c = 14;
-   private static final int d = 10;
-   private static final int e = 10;
+   protected static final ews b = dff.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
+   private static final int c = 20;
 
    @Override
    public MapCodec<dmr> a() {
       return a;
    }
 
-   public dmr(dsd.d $$0) {
+   public dmr(dsg.d $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(dse $$0, dcd $$1, iz $$2) {
-      return dfb.a($$1, $$2.c(), je.a) && !$$1.z($$2);
-   }
-
-   @Override
-   protected dse a(dse $$0, je $$1, dse $$2, dcb $$3, iz $$4, iz $$5) {
-      return $$1 == je.b && !this.a($$0, $$3, $$4) ? dfd.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public void a(dse $$0, dca $$1, iz $$2, azh $$3) {
-      int $$4 = $$2.u();
-      int $$5 = $$2.v();
-      int $$6 = $$2.w();
-      double $$7 = (double)$$4 + $$3.j();
-      double $$8 = (double)$$5 + 0.7;
-      double $$9 = (double)$$6 + $$3.j();
-      $$1.a(li.az, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-      iz.a $$10 = new iz.a();
-
-      for (int $$11 = 0; $$11 < 14; $$11++) {
-         $$10.d($$4 + ayz.a($$3, -10, 10), $$5 - $$3.a(10), $$6 + ayz.a($$3, -10, 10));
-         dse $$12 = $$1.a_($$10);
-         if (!$$12.r($$1, $$10)) {
-            $$1.a(li.aD, (double)$$10.u() + $$3.j(), (double)$$10.v() + $$3.j(), (double)$$10.w() + $$3.j(), 0.0, 0.0, 0.0);
-         }
-      }
-   }
-
-   @Override
-   protected ewm a(dse $$0, dbg $$1, iz $$2, evy $$3) {
+   protected ews b(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
       return b;
+   }
+
+   @Override
+   protected ews b_(dsh $$0, dbj $$1, ja $$2) {
+      return ewp.b();
+   }
+
+   @Override
+   protected ews c(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
+      return ewp.b();
+   }
+
+   @Override
+   protected void a(dsh $$0, aqk $$1, ja $$2, aym $$3) {
+      dfl.b($$1, $$2.c(), $$0);
+   }
+
+   @Override
+   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
+      if ($$1 == jf.b && $$2.a(dfh.G)) {
+         $$3.a($$4, this, 20);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected void b(dsh $$0, dcd $$1, ja $$2, dsh $$3, boolean $$4) {
+      $$1.a($$2, this, 20);
+   }
+
+   @Override
+   protected boolean a(dsh $$0, eoq $$1) {
+      return false;
+   }
+
+   @Override
+   protected float d(dsh $$0, dbj $$1, ja $$2) {
+      return 0.2F;
    }
 }

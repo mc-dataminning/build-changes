@@ -1,42 +1,74 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.google.common.base.Joiner;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-public class eti extends etl {
-   public static final MapCodec<eti> a = a(eti::new);
-   public static final Codec<eti> b = b(eti::new);
+public class eti {
+   private final Set<eth<?>> a;
+   private final Set<eth<?>> b;
 
-   eti(List<etu> $$0) {
-      super($$0, ac.a($$0));
+   eti(Set<eth<?>> $$0, Set<eth<?>> $$1) {
+      this.a = ImmutableSet.copyOf($$0);
+      this.b = ImmutableSet.copyOf(Sets.union($$0, $$1));
    }
 
-   public static eti a(List<etu> $$0) {
-      return new eti(List.copyOf($$0));
+   public boolean a(eth<?> $$0) {
+      return this.b.contains($$0);
+   }
+
+   public Set<eth<?>> a() {
+      return this.a;
+   }
+
+   public Set<eth<?>> b() {
+      return this.b;
    }
 
    @Override
-   public etv b() {
-      return etw.e;
+   public String toString() {
+      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
    }
 
-   public static eti.a a(etu.a... $$0) {
-      return new eti.a($$0);
+   public void a(equ $$0, eqp $$1) {
+      this.a($$0.b(), $$1);
    }
 
-   public static class a extends etl.a {
-      public a(etu.a... $$0) {
-         super($$0);
+   public void a(ayk $$0, eqp $$1) {
+      Set<eth<?>> $$2 = $$1.a();
+      Set<eth<?>> $$3 = Sets.difference($$2, this.b);
+      if (!$$3.isEmpty()) {
+         $$0.b("Parameters " + $$3 + " are not provided in this context");
+      }
+   }
+
+   public static eti.a c() {
+      return new eti.a();
+   }
+
+   public static class a {
+      private final Set<eth<?>> a = Sets.newIdentityHashSet();
+      private final Set<eth<?>> b = Sets.newIdentityHashSet();
+
+      public eti.a a(eth<?> $$0) {
+         if (this.b.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
+         } else {
+            this.a.add($$0);
+            return this;
+         }
       }
 
-      @Override
-      public eti.a and(etu.a $$0) {
-         this.a($$0);
-         return this;
+      public eti.a b(eth<?> $$0) {
+         if (this.a.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
+         } else {
+            this.b.add($$0);
+            return this;
+         }
       }
 
-      @Override
-      protected etu a(List<etu> $$0) {
-         return new eti($$0);
+      public eti a() {
+         return new eti(this.a, this.b);
       }
    }
 }

@@ -1,13 +1,12 @@
-public class guz implements gvb {
-   private static final int a = 600;
-   private static final xp b = xp.c("tutorial.punch_tree.title");
-   private static final xp c = xp.a("tutorial.punch_tree.description", gva.a("attack"));
-   private final gva d;
-   private fjr e;
+public class guz implements gvf {
+   private static final int a = 1200;
+   private static final wu b = wu.c("tutorial.craft_planks.title");
+   private static final wu c = wu.c("tutorial.craft_planks.description");
+   private final gve d;
+   private fjx e;
    private int f;
-   private int g;
 
-   public guz(gva $$0) {
+   public guz(gve $$0) {
       this.d = $$0;
    }
 
@@ -15,25 +14,25 @@ public class guz implements gvb {
    public void a() {
       this.f++;
       if (!this.d.f()) {
-         this.d.a(gvc.f);
+         this.d.a(gvg.f);
       } else {
          if (this.f == 1) {
-            gcs $$0 = this.d.e().s;
+            gcz $$0 = this.d.e().s;
             if ($$0 != null) {
-               if ($$0.gc().a(awy.r)) {
-                  this.d.a(gvc.e);
+               if ($$0.fY().a(awd.b)) {
+                  this.d.a(gvg.f);
                   return;
                }
 
-               if (guw.a($$0)) {
-                  this.d.a(gvc.e);
+               if (a($$0, awd.b)) {
+                  this.d.a(gvg.f);
                   return;
                }
             }
          }
 
-         if ((this.f >= 600 || this.g > 3) && this.e == null) {
-            this.e = new fjr(fjr.a.c, b, c, true);
+         if (this.f >= 1200 && this.e == null) {
+            this.e = new fjx(fjx.a.e, b, c, false);
             this.d.e().ax().a(this.e);
          }
       }
@@ -48,27 +47,19 @@ public class guz implements gvb {
    }
 
    @Override
-   public void a(fxx $$0, iz $$1, dse $$2, float $$3) {
-      boolean $$4 = $$2.a(awp.t);
-      if ($$4 && $$3 > 0.0F) {
-         if (this.e != null) {
-            this.e.a($$3);
-         }
-
-         if ($$3 >= 1.0F) {
-            this.d.a(gvc.d);
-         }
-      } else if (this.e != null) {
-         this.e.a(0.0F);
-      } else if ($$4) {
-         this.g++;
+   public void a(cua $$0) {
+      if ($$0.a(awd.b)) {
+         this.d.a(gvg.f);
       }
    }
 
-   @Override
-   public void a(cur $$0) {
-      if ($$0.a(awy.r)) {
-         this.d.a(gvc.e);
+   public static boolean a(gcz $$0, awk<ctv> $$1) {
+      for (jj<ctv> $$2 : lq.g.c($$1)) {
+         if ($$0.j().a(avp.b.b($$2.a())) > 0) {
+            return true;
+         }
       }
+
+      return false;
    }
 }

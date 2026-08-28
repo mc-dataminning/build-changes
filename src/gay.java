@@ -1,76 +1,136 @@
-public class gay extends gbe {
-   private static final int a = 3;
-   private final gdw b;
-   private final bsw D;
-   private final bsw E;
-   private int F;
-   private final gix G;
-   private double H;
-   private double I;
-   private double J;
-   private double K;
-   private double L;
-   private double M;
+public class gay extends gcl {
+   private final double a;
+   private final double b;
+   private final double F;
+   private final boolean G;
+   private final gbl.a H;
 
-   public gay(gix $$0, gdw $$1, fxx $$2, bsw $$3, bsw $$4) {
-      this($$0, $$1, $$2, $$3, $$4, $$3.ds());
+   gay(fyd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, gbl.a.a);
    }
 
-   private gay(gix $$0, gdw $$1, fxx $$2, bsw $$3, bsw $$4, evt $$5) {
-      super($$2, $$3.du(), $$3.dw(), $$3.dA(), $$5.c, $$5.d, $$5.e);
-      this.b = $$1;
-      this.D = this.a($$3);
-      this.E = $$4;
-      this.G = $$0;
-      this.c();
-      this.d();
-   }
-
-   private bsw a(bsw $$0) {
-      return (bsw)(!($$0 instanceof cjj) ? $$0 : ((cjj)$$0).C());
+   gay(fyd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7, gbl.a $$8) {
+      super($$0, $$1, $$2, $$3);
+      this.G = $$7;
+      this.H = $$8;
+      this.e($$8.b());
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.a = $$1;
+      this.b = $$2;
+      this.F = $$3;
+      this.d = $$1 + $$4;
+      this.e = $$2 + $$5;
+      this.f = $$3 + $$6;
+      this.g = this.d;
+      this.h = this.e;
+      this.i = this.f;
+      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
+      float $$9 = this.r.i() * 0.6F + 0.4F;
+      this.v = 0.9F * $$9;
+      this.w = 0.9F * $$9;
+      this.x = $$9;
+      this.n = false;
+      this.t = (int)(Math.random() * 10.0) + 30;
    }
 
    @Override
-   public gbi b() {
-      return gbi.e;
+   public gbp b() {
+      return this.H.a() ? gbp.b : gbp.c;
    }
 
    @Override
-   public void a(fae $$0, fes $$1, float $$2) {
-      float $$3 = ((float)this.F + $$2) / 3.0F;
-      $$3 *= $$3;
-      double $$4 = ayz.d((double)$$2, this.K, this.H);
-      double $$5 = ayz.d((double)$$2, this.L, this.I);
-      double $$6 = ayz.d((double)$$2, this.M, this.J);
-      double $$7 = ayz.d((double)$$3, this.D.du(), $$4);
-      double $$8 = ayz.d((double)$$3, this.D.dw(), $$5);
-      double $$9 = ayz.d((double)$$3, this.D.dA(), $$6);
-      gdq.a $$10 = this.b.c();
-      evt $$11 = $$1.b();
-      this.G.a(this.D, $$7 - $$11.a(), $$8 - $$11.b(), $$9 - $$11.c(), this.D.dF(), $$2, new faa(), $$10, this.G.a(this.D, $$2));
-      $$10.b();
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
+   }
+
+   @Override
+   public int a(float $$0) {
+      if (this.G) {
+         return 240;
+      } else {
+         int $$1 = super.a($$0);
+         float $$2 = (float)this.s / (float)this.t;
+         $$2 *= $$2;
+         $$2 *= $$2;
+         int $$3 = $$1 & 0xFF;
+         int $$4 = $$1 >> 16 & 0xFF;
+         $$4 += (int)($$2 * 15.0F * 16.0F);
+         if ($$4 > 240) {
+            $$4 = 240;
+         }
+
+         return $$3 | $$4 << 16;
+      }
    }
 
    @Override
    public void a() {
-      this.F++;
-      if (this.F == 3) {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
          this.k();
+      } else {
+         float $$0 = (float)this.s / (float)this.t;
+         $$0 = 1.0F - $$0;
+         float $$1 = 1.0F - $$0;
+         $$1 *= $$1;
+         $$1 *= $$1;
+         this.g = this.a + this.j * (double)$$0;
+         this.h = this.b + this.k * (double)$$0 - (double)($$1 * 1.2F);
+         this.i = this.F + this.l * (double)$$0;
+      }
+   }
+
+   @Override
+   public void a(fak $$0, fey $$1, float $$2) {
+      this.e(this.H.a(this.s, this.t, $$2));
+      super.a($$0, $$1, $$2);
+   }
+
+   public static class a implements gbo<ln> {
+      private final gcg a;
+
+      public a(gcg $$0) {
+         this.a = $$0;
       }
 
-      this.d();
-      this.c();
+      public gbl a(ln $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gay $$8 = new gay($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 
-   private void c() {
-      this.H = this.E.du();
-      this.I = (this.E.dw() + this.E.dy()) / 2.0;
-      this.J = this.E.dA();
+   public static class b implements gbo<ln> {
+      private final gcg a;
+
+      public b(gcg $$0) {
+         this.a = $$0;
+      }
+
+      public gbl a(ln $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gay $$8 = new gay($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 
-   private void d() {
-      this.K = this.H;
-      this.L = this.I;
-      this.M = this.J;
+   public static class c implements gbo<ln> {
+      private final gcg a;
+
+      public c(gcg $$0) {
+         this.a = $$0;
+      }
+
+      public gbl a(ln $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gay $$8 = new gay($$1, $$2, $$3, $$4, $$5, $$6, $$7, true, new gbl.a(0.0F, 0.6F, 0.25F, 1.0F));
+         $$8.d(1.5F);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

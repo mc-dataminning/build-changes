@@ -1,17 +1,18 @@
-public interface fla extends fiq, fld {
-   fla.a t();
+import java.util.function.Consumer;
 
-   default boolean B() {
-      return true;
+public interface fla extends flb {
+   void b(Consumer<flb> var1);
+
+   @Override
+   default void a(Consumer<fhk> $$0) {
+      this.b($$1 -> $$1.a($$0));
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
-
-      public boolean a() {
-         return this == c;
-      }
+   default void a() {
+      this.b($$0 -> {
+         if ($$0 instanceof fla $$1) {
+            $$1.a();
+         }
+      });
    }
 }

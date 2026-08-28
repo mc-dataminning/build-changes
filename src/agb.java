@@ -1,45 +1,102 @@
-public class agb implements zw<aci> {
-   public static final zn<wm, agb> a = zw.a(agb::a, agb::new);
-   private final int b;
-   private final int c;
-   private final int d;
-
-   public agb(int $$0, int $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
-
-   private agb(wm $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
-      this.d = $$0.readInt();
-   }
-
-   private void a(wm $$0) {
-      $$0.p(this.b);
-      $$0.p(this.c);
-      $$0.p(this.d);
-   }
-
+public interface agb extends aje, zs {
    @Override
-   public zy<agb> a() {
-      return agu.aQ;
+   default vq b() {
+      return vq.b;
    }
 
-   public void a(aci $$0) {
-      $$0.a(this);
-   }
+   void a(ahv var1);
 
-   public int b() {
-      return this.b;
-   }
+   void a(agj var1);
 
-   public int e() {
-      return this.c;
-   }
+   void a(agh var1);
 
-   public int f() {
-      return this.d;
-   }
+   void a(agi var1);
+
+   void a(agg var1);
+
+   void a(agm var1);
+
+   void a(agp var1);
+
+   void a(agq var1);
+
+   void a(ahd var1);
+
+   void a(agr var1);
+
+   void a(agw var1);
+
+   void a(agz var1);
+
+   void a(ahe var1);
+
+   void a(ahf var1);
+
+   void a(ahg var1);
+
+   void a(ahh var1);
+
+   void a(aho var1);
+
+   void a(ahr var1);
+
+   void a(ahu var1);
+
+   void a(ahx var1);
+
+   void a(ahy var1);
+
+   void a(ahw var1);
+
+   void a(ahb var1);
+
+   void a(aha var1);
+
+   void a(agd var1);
+
+   void a(ahj var1);
+
+   void a(ahi var1);
+
+   void a(ahl var1);
+
+   void a(agn var1);
+
+   void a(ahp var1);
+
+   void a(ahq var1);
+
+   void a(ahc var1);
+
+   void a(ahk var1);
+
+   void a(ahn var1);
+
+   void a(aht var1);
+
+   void a(ahm var1);
+
+   void a(agu var1);
+
+   void a(agv var1);
+
+   void a(ags var1);
+
+   void a(age var1);
+
+   void a(ahs var1);
+
+   void a(agx var1);
+
+   void a(agf var1);
+
+   void a(agy var1);
+
+   void a(agk var1);
+
+   void a(ago var1);
+
+   void a(agl var1);
+
+   void a(agt var1);
 }

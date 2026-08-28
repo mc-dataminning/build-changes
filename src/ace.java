@@ -1,12 +1,29 @@
-public class ace {
-   public static final zy<acd> a = a("cookie_request");
-   public static final zy<acg> b = b("cookie_response");
+public class ace implements zb<abn> {
+   public static final ys<vr, ace> a = zb.a(ace::a, ace::new);
+   private final boolean b;
 
-   private static <T extends zw<acc>> zy<T> a(String $$0) {
-      return new zy<>(zx.b, new alf($$0));
+   public ace(boolean $$0) {
+      this.b = $$0;
    }
 
-   private static <T extends zw<acf>> zy<T> b(String $$0) {
-      return new zy<>(zx.a, new alf($$0));
+   private ace(vr $$0) {
+      this.b = $$0.readBoolean();
+   }
+
+   private void a(vr $$0) {
+      $$0.a(this.b);
+   }
+
+   @Override
+   public zd<ace> a() {
+      return afz.q;
+   }
+
+   public void a(abn $$0) {
+      $$0.a(this);
+   }
+
+   public boolean b() {
+      return this.b;
    }
 }

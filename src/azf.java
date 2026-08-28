@@ -1,49 +1,50 @@
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
+import java.util.function.Function;
 
-public interface azf {
-   azf a(String var1);
+public interface azf<C> {
+   azf<Float> a = a($$0 -> $$0);
 
-   void b(String var1);
+   float a(C var1);
 
-   public static class a implements azf {
-      private final Multimap<String, String> a;
-      private final Supplier<String> b;
-      @Nullable
-      private String c;
+   float b();
 
-      public a() {
-         this(HashMultimap.create(), () -> "");
-      }
+   float c();
 
-      private a(Multimap<String, String> $$0, Supplier<String> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      private String b() {
-         if (this.c == null) {
-            this.c = this.b.get();
+   static azf<Float> a(final Float2FloatFunction $$0) {
+      return new azf<Float>() {
+         public float a(Float $$0x) {
+            return (Float)$$0.apply($$0);
          }
 
-         return this.c;
-      }
+         @Override
+         public float b() {
+            return Float.NEGATIVE_INFINITY;
+         }
 
-      @Override
-      public azf a(String $$0) {
-         return new azf.a(this.a, () -> this.b() + $$0);
-      }
+         @Override
+         public float c() {
+            return Float.POSITIVE_INFINITY;
+         }
+      };
+   }
 
-      @Override
-      public void b(String $$0) {
-         this.a.put(this.b(), $$0);
-      }
+   default <C2> azf<C2> a(final Function<C2, C> $$0) {
+      final azf<C> $$1 = this;
+      return new azf<C2>() {
+         @Override
+         public float a(C2 $$0x) {
+            return $$1.a($$0.apply($$0));
+         }
 
-      public Multimap<String, String> a() {
-         return ImmutableMultimap.copyOf(this.a);
-      }
+         @Override
+         public float b() {
+            return $$1.b();
+         }
+
+         @Override
+         public float c() {
+            return $$1.c();
+         }
+      };
    }
 }

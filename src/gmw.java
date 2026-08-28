@@ -1,24 +1,17 @@
-public abstract class gmw<T extends bsw & bue, M extends fuc<T>> extends gnl<T, M> {
-   public gmw(gkv<T, M> $$0) {
+public class gmw<T extends bsy, M extends fui<T>> extends gns<T, M> {
+   private final gdt a;
+
+   public gmw(glc<T, M> $$0, gdt $$1) {
       super($$0);
+      this.a = $$1;
    }
 
-   @Override
-   public void a(faa $$0, gdq $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.a()) {
-         float $$10 = (float)$$3.ai + $$6;
-         fuc<T> $$11 = this.b();
-         $$11.a($$3, $$4, $$5, $$6);
-         this.c().a($$11);
-         fae $$12 = $$1.getBuffer(gdy.b(this.a(), this.a($$10) % 1.0F, $$10 * 0.01F % 1.0F));
-         $$11.a($$3, $$4, $$5, $$7, $$8, $$9);
-         $$11.a($$0, $$12, $$2, gos.d, 0.5F, 0.5F, 0.5F, 1.0F);
-      }
+   public void a(fag $$0, gdx $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      $$0.a();
+      $$0.a(0.0F, 0.4F, -0.4F);
+      $$0.a(a.b.rotationDegrees(180.0F));
+      cua $$10 = $$3.a(bsk.a);
+      this.a.a($$3, $$10, ctx.h, false, $$0, $$1, $$2);
+      $$0.b();
    }
-
-   protected abstract float a(float var1);
-
-   protected abstract alf a();
-
-   protected abstract fuc<T> b();
 }

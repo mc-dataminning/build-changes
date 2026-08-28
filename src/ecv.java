@@ -1,53 +1,43 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record ecv(List<ecv.a> b, je c, dzd d, boolean e) implements ede {
-   public static final Codec<ecv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ecv.a.a.listOf().fieldOf("layers").forGetter(ecv::a),
-               je.g.fieldOf("direction").forGetter(ecv::b),
-               dzd.b.fieldOf("allowed_placement").forGetter(ecv::c),
-               Codec.BOOL.fieldOf("prioritize_tip").forGetter(ecv::d)
-            )
-            .apply($$0, ecv::new)
-   );
+public class ecv extends ebe<edp> {
+   private static final ja a = new ja(8, 3, 8);
+   private static final dbk b = new dbk(a);
+   private static final int c = 16;
+   private static final int d = 1;
 
-   public static ecv.a a(bqb $$0, eff $$1) {
-      return new ecv.a($$0, $$1);
+   public ecv(Codec<edp> $$0) {
+      super($$0);
    }
 
-   public static ecv b(bqb $$0, eff $$1) {
-      return new ecv(List.of(a($$0, $$1)), je.b, dzd.c, false);
+   private static int a(int $$0, int $$1, int $$2, int $$3) {
+      return Math.max(Math.abs($$0 - $$2), Math.abs($$1 - $$3));
    }
 
-   public List<ecv.a> a() {
-      return this.b;
-   }
+   @Override
+   public boolean a(ebg<edp> $$0) {
+      dcz $$1 = $$0.b();
+      dbk $$2 = new dbk($$0.e());
+      if (a($$2.e, $$2.f, b.e, b.f) > 1) {
+         return true;
+      } else {
+         ja $$3 = a.h($$0.e().v() + a.v());
+         ja.a $$4 = new ja.a();
 
-   public je b() {
-      return this.c;
-   }
+         for (int $$5 = $$2.e(); $$5 <= $$2.g(); $$5++) {
+            for (int $$6 = $$2.d(); $$6 <= $$2.f(); $$6++) {
+               if (a($$3.u(), $$3.w(), $$6, $$5) <= 16) {
+                  $$4.d($$6, $$3.v(), $$5);
+                  if ($$4.equals($$3)) {
+                     $$1.a($$4, dfh.m.o(), 2);
+                  } else {
+                     $$1.a($$4, dfh.b.o(), 2);
+                  }
+               }
+            }
+         }
 
-   public dzd c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public static record a(bqb b, eff c) {
-      public static final Codec<ecv.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bqb.d.fieldOf("height").forGetter(ecv.a::a), eff.a.fieldOf("provider").forGetter(ecv.a::b)).apply($$0, ecv.a::new)
-      );
-
-      public bqb a() {
-         return this.b;
-      }
-
-      public eff b() {
-         return this.c;
+         return true;
       }
    }
 }

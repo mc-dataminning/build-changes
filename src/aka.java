@@ -1,29 +1,12 @@
-public class aka implements zw<ajz> {
-   public static final zn<wm, aka> a = zw.a(aka::a, aka::new);
-   private final long b;
+public class aka {
+   public static final akj<dff> a = a("pumpkin");
+   public static final akj<dff> b = a("pumpkin_stem");
+   public static final akj<dff> c = a("attached_pumpkin_stem");
+   public static final akj<dff> d = a("melon");
+   public static final akj<dff> e = a("melon_stem");
+   public static final akj<dff> f = a("attached_melon_stem");
 
-   public aka(long $$0) {
-      this.b = $$0;
-   }
-
-   private aka(wm $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(wm $$0) {
-      $$0.b(this.b);
-   }
-
-   @Override
-   public zy<aka> a() {
-      return ajy.b;
-   }
-
-   public void a(ajz $$0) {
-      $$0.a(this);
-   }
-
-   public long b() {
-      return this.b;
+   private static akj<dff> a(String $$0) {
+      return akj.a(lr.f, new akk($$0));
    }
 }

@@ -2,7 +2,7 @@ import com.mojang.serialization.Codec;
 import java.util.List;
 import java.util.function.Function;
 
-public abstract class cl implements ds<dah> {
+public abstract class cl implements dt<czp> {
    private final List<bp> a;
 
    protected cl(List<bp> $$0) {
@@ -17,7 +17,7 @@ public abstract class cl implements ds<dah> {
       return this.a;
    }
 
-   public boolean a(cur $$0, dah $$1) {
+   public boolean a(cua $$0, czp $$1) {
       for (bp $$2 : this.a) {
          if (!$$2.a($$1)) {
             return false;
@@ -43,8 +43,8 @@ public abstract class cl implements ds<dah> {
       }
 
       @Override
-      public kl<dah> a() {
-         return km.k;
+      public km<czp> a() {
+         return kn.k;
       }
    }
 
@@ -56,8 +56,8 @@ public abstract class cl implements ds<dah> {
       }
 
       @Override
-      public kl<dah> a() {
-         return km.y;
+      public km<czp> a() {
+         return kn.y;
       }
    }
 }

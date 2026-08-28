@@ -1,59 +1,33 @@
 import com.mojang.logging.LogUtils;
 import java.io.IOException;
 import java.nio.channels.FileChannel;
-import java.nio.file.Path;
-import java.time.LocalDate;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
+import java.util.concurrent.Executor;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 
 public class guh implements AutoCloseable {
    private static final Logger a = LogUtils.getLogger();
-   private static final String b = ".json";
-   private static final int c = 7;
-   private final bmc d;
-   @Nullable
-   private CompletableFuture<Optional<gud>> e;
+   private final blk<gug> b;
+   private final bow<Runnable> c;
 
-   private guh(bmc $$0) {
-      this.d = $$0;
+   public guh(FileChannel $$0, Executor $$1) {
+      this.b = new blk<>(gug.a, $$0);
+      this.c = bow.a($$1, "telemetry-event-log");
    }
 
-   public static CompletableFuture<Optional<guh>> a(Path $$0) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            bmc $$1 = bmc.a($$0, ".json");
-            $$1.a().a(LocalDate.now(), 7).a();
-            return Optional.of(new guh($$1));
-         } catch (Exception var2) {
-            a.error("Failed to create telemetry log manager", var2);
-            return Optional.empty();
-         }
-      }, ac.g());
-   }
-
-   public CompletableFuture<Optional<gue>> a() {
-      if (this.e == null) {
-         this.e = CompletableFuture.supplyAsync(() -> {
+   public gui a() {
+      return $$0 -> this.c.a(() -> {
             try {
-               bmc.e $$0 = this.d.a(LocalDate.now());
-               FileChannel $$1 = $$0.e();
-               return Optional.of(new gud($$1, ac.g()));
+               this.b.a($$0);
             } catch (IOException var3) {
-               a.error("Failed to open channel for telemetry event log", var3);
-               return Optional.empty();
+               a.error("Failed to write telemetry event to log", var3);
             }
-         }, ac.g());
-      }
-
-      return this.e.thenApply($$0 -> $$0.map(gud::a));
+         });
    }
 
    @Override
    public void close() {
-      if (this.e != null) {
-         this.e.thenAccept($$0 -> $$0.ifPresent(gud::close));
-      }
+      this.c.a(() -> IOUtils.closeQuietly(this.b));
+      this.c.close();
    }
 }

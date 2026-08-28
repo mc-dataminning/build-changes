@@ -1,33 +1,27 @@
 import java.util.UUID;
-import javax.annotation.Nullable;
 
-public class air implements zw<agw> {
-   public static final zn<wm, air> a = zw.a(air::a, air::new);
-   private final UUID b;
+public record air(String b, UUID c) implements zb<aip> {
+   public static final ys<vr, air> a = zb.a(air::a, air::new);
 
-   public air(UUID $$0) {
-      this.b = $$0;
+   private air(vr $$0) {
+      this($$0.d(16), $$0.n());
    }
 
-   private air(wm $$0) {
-      this.b = $$0.n();
-   }
-
-   private void a(wm $$0) {
-      $$0.a(this.b);
+   private void a(vr $$0) {
+      $$0.a(this.b, 16);
+      $$0.a(this.c);
    }
 
    @Override
-   public zy<air> a() {
-      return agu.cb;
+   public zd<air> a() {
+      return ain.g;
    }
 
-   public void a(agw $$0) {
+   public void a(aip $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bsw a(arf $$0) {
-      return $$0.a(this.b);
+   public UUID e() {
+      return this.c;
    }
 }

@@ -1,171 +1,38 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.EnumSet;
-import java.util.Set;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
 public class dxw {
-   private static final Logger a = LogUtils.getLogger();
-   static final Predicate<dse> b = $$0 -> !$$0.i();
-   static final Predicate<dse> c = dsd.a::d;
-   private final axn d;
-   private final Predicate<dse> e;
-   private final dua f;
+   public final efj a;
+   public final efj b;
+   public final efj c;
+   public final efj d;
+   public final efj e;
+   public final List<dsh> f;
+   public final awk<dff> g;
+   public final awk<dff> h;
+   public static final Codec<dxw> i = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               efj.a.fieldOf("filling_provider").forGetter($$0x -> $$0x.a),
+               efj.a.fieldOf("inner_layer_provider").forGetter($$0x -> $$0x.b),
+               efj.a.fieldOf("alternate_inner_layer_provider").forGetter($$0x -> $$0x.c),
+               efj.a.fieldOf("middle_layer_provider").forGetter($$0x -> $$0x.d),
+               efj.a.fieldOf("outer_layer_provider").forGetter($$0x -> $$0x.e),
+               axm.a(dsh.b.listOf()).fieldOf("inner_placements").forGetter($$0x -> $$0x.f),
+               awk.b(lr.f).fieldOf("cannot_replace").forGetter($$0x -> $$0x.g),
+               awk.b(lr.f).fieldOf("invalid_blocks").forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, dxw::new)
+   );
 
-   public dxw(dua $$0, dxw.a $$1) {
-      this.e = $$1.e();
-      this.f = $$0;
-      int $$2 = ayz.e($$0.J_() + 1);
-      this.d = new azo($$2, 256);
-   }
-
-   public static void a(dua $$0, Set<dxw.a> $$1) {
-      int $$2 = $$1.size();
-      ObjectList<dxw> $$3 = new ObjectArrayList($$2);
-      ObjectListIterator<dxw> $$4 = $$3.iterator();
-      int $$5 = $$0.b() + 16;
-      iz.a $$6 = new iz.a();
-
-      for (int $$7 = 0; $$7 < 16; $$7++) {
-         for (int $$8 = 0; $$8 < 16; $$8++) {
-            for (dxw.a $$9 : $$1) {
-               $$3.add($$0.a($$9));
-            }
-
-            for (int $$10 = $$5 - 1; $$10 >= $$0.I_(); $$10--) {
-               $$6.d($$7, $$10, $$8);
-               dse $$11 = $$0.a_($$6);
-               if (!$$11.a(dfd.a)) {
-                  while ($$4.hasNext()) {
-                     dxw $$12 = (dxw)$$4.next();
-                     if ($$12.e.test($$11)) {
-                        $$12.a($$7, $$8, $$10 + 1);
-                        $$4.remove();
-                     }
-                  }
-
-                  if ($$3.isEmpty()) {
-                     break;
-                  }
-
-                  $$4.back($$2);
-               }
-            }
-         }
-      }
-   }
-
-   public boolean a(int $$0, int $$1, int $$2, dse $$3) {
-      int $$4 = this.a($$0, $$2);
-      if ($$1 <= $$4 - 2) {
-         return false;
-      } else {
-         if (this.e.test($$3)) {
-            if ($$1 >= $$4) {
-               this.a($$0, $$2, $$1 + 1);
-               return true;
-            }
-         } else if ($$4 - 1 == $$1) {
-            iz.a $$5 = new iz.a();
-
-            for (int $$6 = $$1 - 1; $$6 >= this.f.I_(); $$6--) {
-               $$5.d($$0, $$6, $$2);
-               if (this.e.test(this.f.a_($$5))) {
-                  this.a($$0, $$2, $$6 + 1);
-                  return true;
-               }
-            }
-
-            this.a($$0, $$2, this.f.I_());
-            return true;
-         }
-
-         return false;
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      return this.a(c($$0, $$1));
-   }
-
-   public int b(int $$0, int $$1) {
-      return this.a(c($$0, $$1)) - 1;
-   }
-
-   private int a(int $$0) {
-      return this.d.a($$0) + this.f.I_();
-   }
-
-   private void a(int $$0, int $$1, int $$2) {
-      this.d.b(c($$0, $$1), $$2 - this.f.I_());
-   }
-
-   public void a(dua $$0, dxw.a $$1, long[] $$2) {
-      long[] $$3 = this.d.a();
-      if ($$3.length == $$2.length) {
-         System.arraycopy($$2, 0, $$3, 0, $$2.length);
-      } else {
-         a.warn("Ignoring heightmap data for chunk " + $$0.f() + ", size does not match; expected: " + $$3.length + ", got: " + $$2.length);
-         a($$0, EnumSet.of($$1));
-      }
-   }
-
-   public long[] a() {
-      return this.d.a();
-   }
-
-   private static int c(int $$0, int $$1) {
-      return $$0 + $$1 * 16;
-   }
-
-   public static enum a implements azu {
-      a("WORLD_SURFACE_WG", dxw.b.a, dxw.b),
-      b("WORLD_SURFACE", dxw.b.c, dxw.b),
-      c("OCEAN_FLOOR_WG", dxw.b.a, dxw.c),
-      d("OCEAN_FLOOR", dxw.b.b, dxw.c),
-      e("MOTION_BLOCKING", dxw.b.c, $$0 -> $$0.d() || !$$0.u().c()),
-      f("MOTION_BLOCKING_NO_LEAVES", dxw.b.b, $$0 -> ($$0.d() || !$$0.u().c()) && !($$0.b() instanceof djl));
-
-      public static final Codec<dxw.a> g = azu.a(dxw.a::values);
-      private final String h;
-      private final dxw.b i;
-      private final Predicate<dse> j;
-
-      private a(final String $$0, final dxw.b $$1, final Predicate<dse> $$2) {
-         this.h = $$0;
-         this.i = $$1;
-         this.j = $$2;
-      }
-
-      public String a() {
-         return this.h;
-      }
-
-      public boolean b() {
-         return this.i == dxw.b.c;
-      }
-
-      public boolean d() {
-         return this.i != dxw.b.a;
-      }
-
-      public Predicate<dse> e() {
-         return this.j;
-      }
-
-      @Override
-      public String c() {
-         return this.h;
-      }
-   }
-
-   public static enum b {
-      a,
-      b,
-      c;
+   public dxw(efj $$0, efj $$1, efj $$2, efj $$3, efj $$4, List<dsh> $$5, awk<dff> $$6, awk<dff> $$7) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
    }
 }

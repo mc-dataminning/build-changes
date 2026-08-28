@@ -1,14 +1,22 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class gqs {
+   public static final int a = -1;
+   private final int b;
+   private final int c;
 
-public record gqs(gqt d) {
-   public static final gqs a = new gqs(gqt.b);
-   public static final Codec<gqs> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(gqt.a.optionalFieldOf("scaling", gqt.b).forGetter(gqs::a)).apply($$0, gqs::new)
-   );
-   public static final atp<gqs> c = atp.a("gui", b);
+   public gqs(int $$0) {
+      this($$0, -1);
+   }
 
-   public gqt a() {
-      return this.d;
+   public gqs(int $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public int a(int $$0) {
+      return this.c == -1 ? $$0 : this.c;
+   }
+
+   public int a() {
+      return this.b;
    }
 }

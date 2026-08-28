@@ -1,59 +1,31 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class djf extends diq implements djs {
-   public static final MapCodec<djf> c = b(djf::new);
-   protected static final ewm g = dfb.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
-   private static final double h = 0.14;
+public class djf extends dje {
+   public static final MapCodec<djf> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(lq.e.r().fieldOf("host").forGetter(dje::b), u()).apply($$0, djf::new));
 
    @Override
    public MapCodec<djf> a() {
-      return c;
+      return b;
    }
 
-   protected djf(dsd.d $$0) {
-      super($$0, je.b, g, true, 0.14);
-   }
-
-   @Override
-   protected boolean g(dse $$0) {
-      return $$0.a(dfd.G);
+   public djf(dff $$0, dsg.d $$1) {
+      super($$0, $$1);
+      this.k(this.o().a(dlr.i, jf.a.b));
    }
 
    @Override
-   protected dfb b() {
-      return dfd.md;
+   protected dsh a(dsh $$0, dls $$1) {
+      return dlr.b($$0, $$1);
    }
 
    @Override
-   protected boolean m(dse $$0) {
-      return !$$0.a(dfd.kJ);
+   protected void a(dsi.a<dff, dsh> $$0) {
+      $$0.a(dlr.i);
    }
 
    @Override
-   public boolean a(@Nullable cmz $$0, dbg $$1, iz $$2, dse $$3, enw $$4) {
-      return false;
-   }
-
-   @Override
-   public boolean a(dcb $$0, iz $$1, dse $$2, enx $$3) {
-      return false;
-   }
-
-   @Override
-   protected int a(azh $$0) {
-      return 1;
-   }
-
-   @Nullable
-   @Override
-   public dse a(cyc $$0) {
-      enx $$1 = $$0.q().b_($$0.a());
-      return $$1.a(awv.a) && $$1.e() == 8 ? super.a($$0) : null;
-   }
-
-   @Override
-   protected enx b_(dse $$0) {
-      return eny.c.a(false);
+   public dsh a(cxk $$0) {
+      return this.o().a(dlr.i, $$0.k().o());
    }
 }

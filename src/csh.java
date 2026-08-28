@@ -1,73 +1,155 @@
-import com.mojang.serialization.Codec;
 import java.util.List;
-import java.util.Map;
-import java.util.function.Supplier;
-import java.util.function.UnaryOperator;
+import java.util.Optional;
+import org.apache.commons.lang3.math.Fraction;
 
-public record csh(Map<csg.a, Integer> b, int c, ji<avz> d, Supplier<cyu> e, List<csh.a> f, float g, float h) {
-   public static final Codec<ji<csh>> a = lp.ar.r();
+public class csh extends ctv {
+   private static final int a = aye.f(0.4F, 0.4F, 1.0F);
+   private static final int b = 64;
 
-   public int a(csg.a $$0) {
-      return this.b.getOrDefault($$0, 0);
+   public csh(ctv.a $$0) {
+      super($$0);
    }
 
-   public Map<csg.a, Integer> a() {
-      return this.b;
+   public static float c(cua $$0) {
+      cwm $$1 = $$0.a(kn.F, cwm.a);
+      return $$1.e().floatValue();
    }
 
-   public int b() {
-      return this.c;
-   }
+   @Override
+   public boolean a(cua $$0, cra $$1, cpn $$2, cmh $$3) {
+      if ($$2 != cpn.b) {
+         return false;
+      } else {
+         cwm $$4 = $$0.a(kn.F);
+         if ($$4 == null) {
+            return false;
+         } else {
+            cua $$5 = $$1.g();
+            cwm.a $$6 = new cwm.a($$4);
+            if ($$5.e()) {
+               this.a($$3);
+               cua $$7 = $$6.b();
+               if ($$7 != null) {
+                  cua $$8 = $$1.d($$7);
+                  $$6.a($$8);
+               }
+            } else if ($$5.g().an_()) {
+               int $$9 = $$6.a($$1, $$3);
+               if ($$9 > 0) {
+                  this.b($$3);
+               }
+            }
 
-   public ji<avz> c() {
-      return this.d;
-   }
-
-   public Supplier<cyu> d() {
-      return this.e;
-   }
-
-   public List<csh.a> e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
-   }
-
-   public float g() {
-      return this.h;
-   }
-
-   public static final class a {
-      private final alf a;
-      private final String b;
-      private final boolean c;
-      private final alf d;
-      private final alf e;
-
-      public a(alf $$0, String $$1, boolean $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = this.b(true);
-         this.e = this.b(false);
+            $$0.b(kn.F, $$6.d());
+            return true;
+         }
       }
+   }
 
-      public a(alf $$0) {
-         this($$0, "", false);
-      }
+   @Override
+   public boolean a(cua $$0, cua $$1, cra $$2, cpn $$3, cmh $$4, btq $$5) {
+      if ($$3 == cpn.b && $$2.b($$4)) {
+         cwm $$6 = $$0.a(kn.F);
+         if ($$6 == null) {
+            return false;
+         } else {
+            cwm.a $$7 = new cwm.a($$6);
+            if ($$1.e()) {
+               cua $$8 = $$7.b();
+               if ($$8 != null) {
+                  this.a($$4);
+                  $$5.a($$8);
+               }
+            } else {
+               int $$9 = $$7.a($$1);
+               if ($$9 > 0) {
+                  this.b($$4);
+               }
+            }
 
-      private alf b(boolean $$0) {
-         return this.a.a((UnaryOperator<String>)($$1 -> "textures/models/armor/" + this.a.a() + "_layer_" + ($$0 ? 2 : 1) + this.b + ".png"));
+            $$0.b(kn.F, $$7.d());
+            return true;
+         }
+      } else {
+         return false;
       }
+   }
 
-      public alf a(boolean $$0) {
-         return $$0 ? this.d : this.e;
+   @Override
+   public bqe<cua> a(dcd $$0, cmh $$1, bqc $$2) {
+      cua $$3 = $$1.b($$2);
+      if (a($$3, $$1)) {
+         this.c($$1);
+         $$1.b(avp.c.b(this));
+         return bqe.a($$3, $$0.x_());
+      } else {
+         return bqe.d($$3);
       }
+   }
 
-      public boolean a() {
-         return this.c;
+   @Override
+   public boolean d(cua $$0) {
+      cwm $$1 = $$0.a(kn.F, cwm.a);
+      return $$1.e().compareTo(Fraction.ZERO) > 0;
+   }
+
+   @Override
+   public int e(cua $$0) {
+      cwm $$1 = $$0.a(kn.F, cwm.a);
+      return Math.min(1 + aye.a($$1.e(), 12), 13);
+   }
+
+   @Override
+   public int f(cua $$0) {
+      return a;
+   }
+
+   private static boolean a(cua $$0, cmh $$1) {
+      cwm $$2 = $$0.a(kn.F);
+      if ($$2 != null && !$$2.f()) {
+         $$0.b(kn.F, cwm.a);
+         if ($$1 instanceof aql) {
+            $$2.c().forEach($$1x -> $$1.a($$1x, true));
+         }
+
+         return true;
+      } else {
+         return false;
       }
+   }
+
+   @Override
+   public Optional<crk> g(cua $$0) {
+      return !$$0.b(kn.q) && !$$0.b(kn.p) ? Optional.ofNullable($$0.a(kn.F)).map(crj::new) : Optional.empty();
+   }
+
+   @Override
+   public void a(cua $$0, ctv.b $$1, List<wu> $$2, cvt $$3) {
+      cwm $$4 = $$0.a(kn.F);
+      if ($$4 != null) {
+         int $$5 = aye.a($$4.e(), 64);
+         $$2.add(wu.a("item.minecraft.bundle.fullness", $$5, 64).a(n.h));
+      }
+   }
+
+   @Override
+   public void a(cir $$0) {
+      cwm $$1 = $$0.p().a(kn.F);
+      if ($$1 != null) {
+         $$0.p().b(kn.F, cwm.a);
+         cuc.a($$0, $$1.c());
+      }
+   }
+
+   private void a(bsd $$0) {
+      $$0.a(avf.dq, 0.8F, 0.8F + $$0.dP().E_().i() * 0.4F);
+   }
+
+   private void b(bsd $$0) {
+      $$0.a(avf.dp, 0.8F, 0.8F + $$0.dP().E_().i() * 0.4F);
+   }
+
+   private void c(bsd $$0) {
+      $$0.a(avf.do, 0.8F, 0.8F + $$0.dP().E_().i() * 0.4F);
    }
 }

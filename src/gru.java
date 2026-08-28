@@ -1,18 +1,12 @@
-import java.nio.file.Path;
-import java.util.List;
-import java.util.UUID;
+import java.util.Collection;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
 public interface gru {
-   void scheduleReload(gru.a var1);
+   Collection<akk> f();
 
-   public interface a {
-      void a();
+   void a(Function<akk, gru> var1);
 
-      void a(boolean var1);
-
-      List<gru.b> b();
-   }
-
-   public static record b(UUID a, Path b) {
-   }
+   @Nullable
+   grj a(grn var1, Function<grm, gpi> var2, grr var3, akk var4);
 }

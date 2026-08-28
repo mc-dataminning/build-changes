@@ -1,40 +1,18 @@
-public class dym implements dxl {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private long h;
-   private final dxy i = new dxy(this);
+import com.google.common.annotations.VisibleForTesting;
 
-   public dym(long $$0) {
-      this.b($$0);
+public interface dym {
+   default aym a(ja $$0) {
+      return this.a($$0.u(), $$0.v(), $$0.w());
    }
 
-   @Override
-   public azh d() {
-      return new dym(this.g());
+   default aym a(akk $$0) {
+      return this.a($$0.toString());
    }
 
-   @Override
-   public dyj e() {
-      return new dxx.a(this.g());
-   }
+   aym a(String var1);
 
-   @Override
-   public void b(long $$0) {
-      this.h = ($$0 ^ 25214903917L) & 281474976710655L;
-      this.i.a();
-   }
+   aym a(int var1, int var2, int var3);
 
-   @Override
-   public int c(int $$0) {
-      long $$1 = this.h * 25214903917L + 11L & 281474976710655L;
-      this.h = $$1;
-      return (int)($$1 >> 48 - $$0);
-   }
-
-   @Override
-   public double k() {
-      return this.i.b();
-   }
+   @VisibleForTesting
+   void a(StringBuilder var1);
 }

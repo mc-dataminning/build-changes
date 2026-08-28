@@ -1,108 +1,97 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
+import java.util.BitSet;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.LongStream;
+import javax.annotation.Nullable;
 
-public class dxn extends dub {
-   public static final MapCodec<dxn> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ald.d(ddg.b)).apply($$0, $$0.stable(dxn::new)));
-   private static final int h = 2;
-   private static final List<dse> i = StreamSupport.stream(lp.e.spliterator(), false).flatMap($$0 -> $$0.l().a().stream()).collect(Collectors.toList());
-   private static final int j = ayz.f(ayz.c((float)i.size()));
-   private static final int k = ayz.f((float)i.size() / (float)j);
-   protected static final dse d = dfd.a.o();
-   protected static final dse e = dfd.hW.o();
-   public static final int f = 70;
-   public static final int g = 60;
-
-   public dxn(ji.c<dcz> $$0) {
-      super(new ddk($$0));
-   }
-
-   @Override
-   protected MapCodec<? extends dub> b() {
-      return c;
-   }
-
-   @Override
-   public void a(arm $$0, dct $$1, dyk $$2, dua $$3) {
-   }
-
-   @Override
-   public void a(dcv $$0, dua $$1, dct $$2) {
-      iz.a $$3 = new iz.a();
-      dbh $$4 = $$1.f();
-      int $$5 = $$4.e;
-      int $$6 = $$4.f;
-
-      for (int $$7 = 0; $$7 < 16; $$7++) {
-         for (int $$8 = 0; $$8 < 16; $$8++) {
-            int $$9 = kb.a($$5, $$7);
-            int $$10 = kb.a($$6, $$8);
-            $$0.a($$3.d($$9, 60, $$10), e, 2);
-            dse $$11 = a($$9, $$10);
-            $$0.a($$3.d($$9, 70, $$10), $$11, 2);
-         }
+public final class dxn {
+   private static final BitSet c = new BitSet(0);
+   private static final Codec<BitSet> d = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> LongStream.of($$0.toLongArray()));
+   private static final Codec<dvc> e = lq.l
+      .r()
+      .comapFlatMap($$0 -> $$0 == dvc.c ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success($$0), Function.identity());
+   public static final Codec<dxn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               e.fieldOf("target_status").forGetter(dxn::a),
+               d.lenientOptionalFieldOf("missing_bedrock").forGetter($$0x -> $$0x.h.isEmpty() ? Optional.empty() : Optional.of($$0x.h))
+            )
+            .apply($$0, dxn::new)
+   );
+   private static final Set<akj<ddd>> f = Set.of(ddk.aa, ddk.Z, ddk.ab);
+   public static final dcf b = new dcf() {
+      @Override
+      public int J_() {
+         return 64;
       }
+
+      @Override
+      public int I_() {
+         return -64;
+      }
+   };
+   private final dvc g;
+   private final BitSet h;
+
+   private dxn(dvc $$0, Optional<BitSet> $$1) {
+      this.g = $$0;
+      this.h = $$1.orElse(c);
    }
 
-   @Override
-   public CompletableFuture<dua> a(Executor $$0, dyy $$1, dyk $$2, dct $$3, dua $$4) {
-      return CompletableFuture.completedFuture($$4);
+   @Nullable
+   public static dxn a(tx $$0) {
+      dvc $$1 = dvc.a($$0.l("target_status"));
+      return $$1 == dvc.c ? null : new dxn($$1, Optional.of(BitSet.valueOf($$0.o("missing_bedrock"))));
    }
 
-   @Override
-   public int a(int $$0, int $$1, dxw.a $$2, dcc $$3, dyk $$4) {
-      return 0;
+   public static void a(dux $$0) {
+      int $$1 = 4;
+      ja.b(0, 0, 0, 15, 4, 15).forEach($$1x -> {
+         if ($$0.a_($$1x).a(dfh.F)) {
+            $$0.a($$1x, dfh.sJ.o(), false);
+         }
+      });
    }
 
-   @Override
-   public dcm a(int $$0, int $$1, dcc $$2, dyk $$3) {
-      return new dcm(0, new dse[0]);
-   }
+   public void b(dux $$0) {
+      dcf $$1 = $$0.z();
+      int $$2 = $$1.I_();
+      int $$3 = $$1.am() - 1;
 
-   @Override
-   public void a(List<String> $$0, dyk $$1, iz $$2) {
-   }
-
-   public static dse a(int $$0, int $$1) {
-      dse $$2 = d;
-      if ($$0 > 0 && $$1 > 0 && $$0 % 2 != 0 && $$1 % 2 != 0) {
-         $$0 /= 2;
-         $$1 /= 2;
-         if ($$0 <= j && $$1 <= k) {
-            int $$3 = ayz.a($$0 * j + $$1);
-            if ($$3 < i.size()) {
-               $$2 = i.get($$3);
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            if (this.a($$4, $$5)) {
+               ja.b($$4, $$2, $$5, $$4, $$3, $$5).forEach($$1x -> $$0.a($$1x, dfh.a.o(), false));
             }
          }
       }
-
-      return $$2;
    }
 
-   @Override
-   public void a(arm $$0, long $$1, dyk $$2, ddb $$3, dct $$4, dua $$5, dxs.a $$6) {
+   public dvc a() {
+      return this.g;
    }
 
-   @Override
-   public void a(arm $$0) {
+   public boolean b() {
+      return !this.h.isEmpty();
    }
 
-   @Override
-   public int g() {
-      return 0;
+   public boolean a(int $$0, int $$1) {
+      return this.h.get(($$1 & 15) * 16 + ($$0 & 15));
    }
 
-   @Override
-   public int e() {
-      return 384;
-   }
-
-   @Override
-   public int f() {
-      return 63;
+   public static ddg a(ddg $$0, dud $$1) {
+      if (!$$1.y()) {
+         return $$0;
+      } else {
+         Predicate<akj<ddd>> $$2 = f::contains;
+         return ($$3, $$4, $$5, $$6) -> {
+            jj<ddd> $$7 = $$0.getNoiseBiome($$3, $$4, $$5, $$6);
+            return $$7.a($$2) ? $$7 : $$1.getNoiseBiome($$3, 0, $$5);
+         };
+      }
    }
 }

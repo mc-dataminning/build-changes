@@ -1,34 +1,26 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
 public class dxy {
-   public final azh a;
-   private double b;
-   private boolean c;
+   private static final Codec<Double> f = Codec.doubleRange(0.01, 50.0);
+   public static final Codec<dxy> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               f.fieldOf("filling").orElse(1.7).forGetter($$0x -> $$0x.b),
+               f.fieldOf("inner_layer").orElse(2.2).forGetter($$0x -> $$0x.c),
+               f.fieldOf("middle_layer").orElse(3.2).forGetter($$0x -> $$0x.d),
+               f.fieldOf("outer_layer").orElse(4.2).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, dxy::new)
+   );
+   public final double b;
+   public final double c;
+   public final double d;
+   public final double e;
 
-   public dxy(azh $$0) {
-      this.a = $$0;
-   }
-
-   public void a() {
-      this.c = false;
-   }
-
-   public double b() {
-      if (this.c) {
-         this.c = false;
-         return this.b;
-      } else {
-         double $$0;
-         double $$1;
-         double $$2;
-         do {
-            $$0 = 2.0 * this.a.j() - 1.0;
-            $$1 = 2.0 * this.a.j() - 1.0;
-            $$2 = ayz.k($$0) + ayz.k($$1);
-         } while ($$2 >= 1.0 || $$2 == 0.0);
-
-         double $$3 = Math.sqrt(-2.0 * Math.log($$2) / $$2);
-         this.b = $$1 * $$3;
-         this.c = true;
-         return $$0 * $$3;
-      }
+   public dxy(double $$0, double $$1, double $$2, double $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 }

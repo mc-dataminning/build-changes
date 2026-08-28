@@ -1,89 +1,18 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntLists;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class crt {
-   private static final List<crs> b = ac.a(new ArrayList<>(), $$0 -> {
-      a($$0, "contents", 0);
-      a($$0, "container.", 0, 54);
-      a($$0, "hotbar.", 0, 9);
-      a($$0, "inventory.", 9, 27);
-      a($$0, "enderchest.", 200, 27);
-      a($$0, "villager.", 300, 8);
-      a($$0, "horse.", 500, 15);
-      int $$1 = btd.a.a(98);
-      int $$2 = btd.b.a(98);
-      a($$0, "weapon", $$1);
-      a($$0, "weapon.mainhand", $$1);
-      a($$0, "weapon.offhand", $$2);
-      a($$0, "weapon.*", $$1, $$2);
-      $$1 = btd.f.a(100);
-      $$2 = btd.e.a(100);
-      int $$5 = btd.d.a(100);
-      int $$6 = btd.c.a(100);
-      int $$7 = btd.g.a(105);
-      a($$0, "armor.head", $$1);
-      a($$0, "armor.chest", $$2);
-      a($$0, "armor.legs", $$5);
-      a($$0, "armor.feet", $$6);
-      a($$0, "armor.body", $$7);
-      a($$0, "armor.*", $$1, $$2, $$5, $$6, $$7);
-      a($$0, "horse.saddle", 400);
-      a($$0, "horse.chest", 499);
-      a($$0, "player.cursor", 499);
-      a($$0, "player.crafting.", 500, 4);
-   });
-   public static final Codec<crs> a = azu.b(() -> b.toArray(new crs[0]));
-   private static final Function<String, crs> c = azu.a(b.toArray(new crs[0]), $$0 -> $$0);
-
-   private static crs a(String $$0, int $$1) {
-      return crs.a($$0, IntLists.singleton($$1));
+public class crt extends ctv implements cus {
+   public crt(ctv.a $$0) {
+      super($$0);
    }
 
-   private static crs a(String $$0, IntList $$1) {
-      return crs.a($$0, IntLists.unmodifiable($$1));
+   public cmn a(dcd $$0, cua $$1, bsy $$2, @Nullable cua $$3) {
+      return new cmp($$0, $$2, $$1.c(1), $$3);
    }
 
-   private static crs a(String $$0, int... $$1) {
-      return crs.a($$0, IntList.of($$1));
-   }
-
-   private static void a(List<crs> $$0, String $$1, int $$2) {
-      $$0.add(a($$1, $$2));
-   }
-
-   private static void a(List<crs> $$0, String $$1, int $$2, int $$3) {
-      IntList $$4 = new IntArrayList($$3);
-
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         int $$6 = $$2 + $$5;
-         $$0.add(a($$1 + $$5, $$6));
-         $$4.add($$6);
-      }
-
-      $$0.add(a($$1 + "*", $$4));
-   }
-
-   private static void a(List<crs> $$0, String $$1, int... $$2) {
-      $$0.add(a($$1, $$2));
-   }
-
-   @Nullable
-   public static crs a(String $$0) {
-      return c.apply($$0);
-   }
-
-   public static Stream<String> a() {
-      return b.stream().map(azu::c);
-   }
-
-   public static Stream<String> b() {
-      return b.stream().filter($$0 -> $$0.b() == 1).map(azu::c);
+   @Override
+   public cmz a(dcd $$0, jt $$1, cua $$2, jf $$3) {
+      cmp $$4 = new cmp($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1), null);
+      $$4.d = cmn.a.b;
+      return $$4;
    }
 }

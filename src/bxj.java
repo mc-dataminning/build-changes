@@ -1,34 +1,23 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
+import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bxj {
-   public static bvl<btr> a(btu $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.ak().f()), $$1);
-   }
-
-   public static bwv<btr> a(btc<?> $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.ak()), $$1);
-   }
-
-   public static bwv<btr> a(float $$0) {
-      return a($$0x -> true, $$0);
-   }
-
-   public static bwv<btr> a(Predicate<btr> $$0, float $$1) {
-      float $$2 = $$1 * $$1;
-      return byx.a(
-         (Function<byx.b<btr>, ? extends App<byx.c<btr>, bza<btr>>>)($$2x -> $$2x.group($$2x.c(ccv.n), $$2x.b(ccv.h))
-               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
-                     Optional<btr> $$8 = $$2x.<ccx>b($$4).a($$0.and($$2xxxx -> $$2xxxx.g((bsw)$$6) <= (double)$$2 && !$$6.x($$2xxxx)));
-                     if ($$8.isEmpty()) {
-                        return false;
-                     } else {
-                        $$3.a(new bvv($$8.get(), true));
-                        return true;
-                     }
-                  }))
+   public static bus<bth> a(ccc<ji> $$0, float $$1, int $$2, int $$3) {
+      MutableLong $$4 = new MutableLong(0L);
+      return bye.a(
+         (Function<bye.b<bth>, ? extends App<bye.c<bth>, byh<bth>>>)($$5 -> $$5.group($$5.a(ccc.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                  ji $$10 = $$5.b($$6);
+                  if ($$7.af() != $$10.a() || !$$10.b().a($$8.dn(), (double)$$3)) {
+                     return false;
+                  } else if ($$9 <= $$4.getValue()) {
+                     return true;
+                  } else {
+                     $$5x.a(new ccf($$10.b(), $$1, $$2));
+                     $$4.setValue($$9 + 80L);
+                     return true;
+                  }
+               }))
       );
    }
 }

@@ -1,37 +1,33 @@
-public class ahw implements zw<agw> {
-   public static final zn<wm, ahw> a = zw.a(ahw::a, ahw::new);
-   private final boolean b;
-   private final boolean c;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   public ahw(boolean $$0, boolean $$1) {
+public class ahw implements zb<agb> {
+   public static final ys<vr, ahw> a = zb.a(ahw::a, ahw::new);
+   private final UUID b;
+
+   public ahw(UUID $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
-   private ahw(wm $$0) {
-      this.b = $$0.readBoolean();
-      this.c = $$0.readBoolean();
+   private ahw(vr $$0) {
+      this.b = $$0.n();
    }
 
-   private void a(wm $$0) {
+   private void a(vr $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
-   }
-
-   public void a(agw $$0) {
-      $$0.a(this);
    }
 
    @Override
-   public zy<ahw> a() {
-      return agu.bG;
+   public zd<ahw> a() {
+      return afz.cb;
    }
 
-   public boolean b() {
-      return this.b;
+   public void a(agb $$0) {
+      $$0.a(this);
    }
 
-   public boolean e() {
-      return this.c;
+   @Nullable
+   public bsd a(aqk $$0) {
+      return $$0.a(this.b);
    }
 }

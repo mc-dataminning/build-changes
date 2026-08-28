@@ -1,21 +1,5 @@
-import java.util.concurrent.ConcurrentLinkedQueue;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.system.MemoryUtil;
+import java.util.function.Function;
 
-public class exr {
-   public static void a(eyl $$0, float $$1) {
-      ConcurrentLinkedQueue<eyk> $$2 = $$0.i();
-   }
-
-   public static void b(eyl $$0, float $$1) {
-      ConcurrentLinkedQueue<eyk> $$2 = $$0.j();
-   }
-
-   public static void a() {
-      MemoryUtil.memSet(0L, 0, 1L);
-   }
-
-   public static double b() {
-      return GLFW.glfwGetTime();
-   }
+public interface exr<T> {
+   uu b(long var1, Function<T, String> var3);
 }

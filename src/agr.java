@@ -1,24 +1,29 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class agr implements zb<agb> {
+   public static final ys<vr, agr> a = zb.a(agr::a, agr::new);
+   private final int b;
 
-public record agr(ji<dvw> a, ale<dca> b, long c, dbx d, @Nullable dbx e, boolean f, boolean g, Optional<jh> h, int i) {
-   private static final zn<xa, ji<dvw>> j = zl.b(lq.aE);
-
-   public agr(xa $$0) {
-      this(
-         j.decode($$0), $$0.a(lq.aS), $$0.readLong(), dbx.a($$0.readByte()), dbx.b($$0.readByte()), $$0.readBoolean(), $$0.readBoolean(), $$0.b(wm::h), $$0.l()
-      );
+   public agr(int $$0) {
+      this.b = $$0;
    }
 
-   public void a(xa $$0) {
-      j.encode($$0, this.a);
-      $$0.b(this.b);
-      $$0.b(this.c);
-      $$0.k(this.d.a());
-      $$0.k(dbx.a(this.e));
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h, wm::a);
-      $$0.c(this.i);
+   private agr(vr $$0) {
+      this.b = $$0.readByte();
+   }
+
+   private void a(vr $$0) {
+      $$0.k(this.b);
+   }
+
+   @Override
+   public zd<agr> a() {
+      return afz.bt;
+   }
+
+   public void a(agb $$0) {
+      $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
    }
 }

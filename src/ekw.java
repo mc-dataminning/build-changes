@@ -1,60 +1,42 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Objects;
+import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 
-public class ekw extends eim {
-   public static final MapCodec<ekw> d = a(ekw::new);
+public class ekw extends eiq {
+   public static final bor<ddp.c> d = bor.a(
+      new ddp.c(bsj.i, 10, 2, 3), new ddp.c(bsj.bx, 5, 4, 4), new ddp.c(bsj.bq, 8, 5, 5), new ddp.c(bsj.aN, 2, 5, 5), new ddp.c(bsj.ap, 3, 4, 4)
+   );
+   public static final MapCodec<ekw> e = a(ekw::new);
 
-   public ekw(eim.c $$0) {
+   public ekw(eiq.c $$0) {
       super($$0);
    }
 
    @Override
-   public Optional<eim.b> a(eim.a $$0) {
-      int $$1 = $$0.h().a(9);
-      int $$2 = $$0.h().b(9);
+   public Optional<eiq.b> a(eiq.a $$0) {
+      dbk $$1 = $$0.h();
+      ja $$2 = new ja($$1.d(), 64, $$1.e());
+      return Optional.of(new eiq.b($$2, (Consumer<eji>)($$1x -> a($$1x, $$0))));
+   }
 
-      for (ji<dcz> $$4 : $$0.c().a($$1, $$0.b().f(), $$2, 29, $$0.d().b())) {
-         if (!$$4.a(awo.X)) {
-            return Optional.empty();
-         }
+   private static void a(eji $$0, eiq.a $$1) {
+      ekv.q $$2 = new ekv.q($$1.f(), $$1.h().a(2), $$1.h().b(2));
+      $$0.a($$2);
+      $$2.a($$2, $$0, $$1.f());
+      List<eiu> $$3 = $$2.d;
+
+      while (!$$3.isEmpty()) {
+         int $$4 = $$1.f().a($$3.size());
+         eiu $$5 = $$3.remove($$4);
+         $$5.a($$2, $$0, $$1.f());
       }
 
-      return a($$0, dxw.a.c, $$1x -> a($$1x, $$0));
-   }
-
-   private static eiq a(dbh $$0, dyv $$1) {
-      int $$2 = $$0.d() - 29;
-      int $$3 = $$0.e() - 29;
-      je $$4 = je.c.a.a($$1);
-      return new ekv.h($$1, $$2, $$3, $$4);
-   }
-
-   private static void a(eje $$0, eim.a $$1) {
-      $$0.a(a($$1.h(), $$1.f()));
-   }
-
-   public static ejb a(dbh $$0, long $$1, ejb $$2) {
-      if ($$2.a()) {
-         return $$2;
-      } else {
-         dyv $$3 = new dyv(new dxx(dyl.a()));
-         $$3.c($$1, $$0.e, $$0.f);
-         eiq $$4 = $$2.c().get(0);
-         eie $$5 = $$4.f();
-         int $$6 = $$5.h();
-         int $$7 = $$5.j();
-         je $$8 = je.c.a.a($$3);
-         je $$9 = Objects.requireNonNullElse($$4.i(), $$8);
-         eiq $$10 = new ekv.h($$3, $$6, $$7, $$9);
-         eje $$11 = new eje();
-         $$11.a($$10);
-         return $$11.a();
-      }
+      $$0.a($$1.f(), 48, 70);
    }
 
    @Override
-   public eiv<?> e() {
-      return eiv.j;
+   public eiz<?> e() {
+      return eiz.d;
    }
 }

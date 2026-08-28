@@ -1,53 +1,34 @@
-import com.mojang.authlib.GameProfile;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public interface eww {
-   String a_ = "*";
-   eww cy = new eww() {
-      @Override
-      public String cB() {
-         return "*";
-      }
-   };
+public record eww(String a, int b, @Nullable wu c, @Nullable yk d) {
+   public boolean a() {
+      return this.a.startsWith("#");
+   }
 
-   String cB();
+   public wu b() {
+      return (wu)(this.c != null ? this.c : wu.b(this.c()));
+   }
+
+   public xi a(yk $$0) {
+      return Objects.requireNonNullElse(this.d, $$0).a(this.b);
+   }
+
+   public String c() {
+      return this.a;
+   }
+
+   public int d() {
+      return this.b;
+   }
 
    @Nullable
-   default xp O_() {
-      return null;
+   public wu e() {
+      return this.c;
    }
 
-   default xp he() {
-      xp $$0 = this.O_();
-      return $$0 != null ? $$0.f().a($$0x -> $$0x.a(new xv(xv.a.a, xp.b(this.cB())))) : xp.b(this.cB());
-   }
-
-   static eww c(final String $$0) {
-      if ($$0.equals("*")) {
-         return cy;
-      } else {
-         final xp $$1 = xp.b($$0);
-         return new eww() {
-            @Override
-            public String cB() {
-               return $$0;
-            }
-
-            @Override
-            public xp he() {
-               return $$1;
-            }
-         };
-      }
-   }
-
-   static eww a(GameProfile $$0) {
-      final String $$1 = $$0.getName();
-      return new eww() {
-         @Override
-         public String cB() {
-            return $$1;
-         }
-      };
+   @Nullable
+   public yk f() {
+      return this.d;
    }
 }

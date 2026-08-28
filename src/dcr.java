@@ -1,76 +1,41 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public record dcr(us d, Optional<dcr.a> e, Optional<btf> f) {
-   public static final String a = "entity";
-   public static final Codec<dcr> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               us.a.fieldOf("entity").forGetter($$0x -> $$0x.d),
-               dcr.a.a.optionalFieldOf("custom_spawn_rules").forGetter($$0x -> $$0x.e),
-               btf.b.optionalFieldOf("equipment").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dcr::new)
-   );
-   public static final Codec<bpg<dcr>> c = bpg.a(b);
+public class dcr {
+   private final List<dcr.a> a = Lists.newArrayList();
 
-   public dcr() {
-      this(new us(), Optional.empty(), Optional.empty());
+   public void a(ja $$0, double $$1) {
+      if ($$1 != 0.0) {
+         this.a.add(new dcr.a($$0, $$1));
+      }
    }
 
-   public dcr(us d, Optional<dcr.a> e, Optional<btf> f) {
-      if (d.e("id")) {
-         alf $$3 = alf.a(d.l("id"));
-         if ($$3 != null) {
-            d.a("id", $$3.toString());
-         } else {
-            d.r("id");
+   public double b(ja $$0, double $$1) {
+      if ($$1 == 0.0) {
+         return 0.0;
+      } else {
+         double $$2 = 0.0;
+
+         for (dcr.a $$3 : this.a) {
+            $$2 += $$3.a($$0);
          }
-      }
 
-      this.d = d;
-      this.e = e;
-      this.f = f;
+         return $$2 * $$1;
+      }
    }
 
-   public us a() {
-      return this.d;
-   }
+   static class a {
+      private final ja a;
+      private final double b;
 
-   public Optional<dcr.a> b() {
-      return this.e;
-   }
-
-   public Optional<btf> c() {
-      return this.f;
-   }
-
-   public static record a(ayr<Integer> b, ayr<Integer> c) {
-      private static final ayr<Integer> d = new ayr<>(0, 15);
-      public static final Codec<dcr.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(a("block_light_limit").forGetter($$0x -> $$0x.b), a("sky_light_limit").forGetter($$0x -> $$0x.c)).apply($$0, dcr.a::new)
-      );
-
-      private static DataResult<ayr<Integer>> a(ayr<Integer> $$0) {
-         return !d.a($$0) ? DataResult.error(() -> "Light values must be withing range " + d) : DataResult.success($$0);
+      public a(ja $$0, double $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      private static MapCodec<ayr<Integer>> a(String $$0) {
-         return ayr.a.lenientOptionalFieldOf($$0, d).validate(dcr.a::a);
-      }
-
-      public boolean a(iz $$0, arf $$1) {
-         return this.b.a($$1.a(dcj.b, $$0)) && this.c.a($$1.a(dcj.a, $$0));
-      }
-
-      public ayr<Integer> a() {
-         return this.b;
-      }
-
-      public ayr<Integer> b() {
-         return this.c;
+      public double a(ja $$0) {
+         double $$1 = this.a.j($$0);
+         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
       }
    }
 }

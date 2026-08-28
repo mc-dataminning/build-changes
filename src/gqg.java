@@ -1,31 +1,9 @@
-import com.google.common.collect.Lists;
-import com.ibm.icu.lang.UCharacter;
-import com.ibm.icu.text.ArabicShaping;
-import com.ibm.icu.text.Bidi;
-import com.ibm.icu.text.BidiRun;
-import java.util.List;
-
-public class gqg {
-   public static ayl a(xu $$0, boolean $$1) {
-      yn $$2 = yn.a($$0, UCharacter::getMirror, gqg::a);
-      Bidi $$3 = new Bidi($$2.a(), $$1 ? 127 : 126);
-      $$3.setReorderingMode(0);
-      List<ayl> $$4 = Lists.newArrayList();
-      int $$5 = $$3.countRuns();
-
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         BidiRun $$7 = $$3.getVisualRun($$6);
-         $$4.addAll($$2.a($$7.getStart(), $$7.getLength(), $$7.isOddRun()));
-      }
-
-      return ayl.composite($$4);
+public class gqg extends gql {
+   public gqg(gpj $$0) {
+      super($$0, new akk("textures/atlas/mob_effects.png"), new akk("mob_effects"));
    }
 
-   private static String a(String $$0) {
-      try {
-         return new ArabicShaping(8).shape($$0);
-      } catch (Exception var2) {
-         return $$0;
-      }
+   public gpi a(jj<brj> $$0) {
+      return this.a($$0.e().map(akj::a).orElseGet(goy::b));
    }
 }

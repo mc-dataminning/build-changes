@@ -1,43 +1,49 @@
-import org.joml.Vector3f;
-
-public class gah extends gaj<lc> {
-   private final Vector3f a;
-   private final Vector3f b;
-
-   protected gah(fxx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, lc $$7, gbz $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      float $$9 = this.r.i() * 0.4F + 0.6F;
-      this.a = this.a($$7.b(), $$9);
-      this.b = this.a($$7.c(), $$9);
-   }
-
-   private Vector3f a(Vector3f $$0, float $$1) {
-      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
-   }
-
-   private void f(float $$0) {
-      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
-      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
-      this.v = $$2.x();
-      this.w = $$2.y();
-      this.x = $$2.z();
+public class gah extends gcl {
+   gah(fyd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3);
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
-   public void a(fae $$0, fes $$1, float $$2) {
-      this.f($$2);
-      super.a($$0, $$1, $$2);
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.t-- <= 0) {
+         this.k();
+      } else {
+         this.k += 0.002;
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.85F;
+         this.k *= 0.85F;
+         this.l *= 0.85F;
+         if (!this.c.b_(ja.a(this.g, this.h, this.i)).a(awa.a)) {
+            this.k();
+         }
+      }
    }
 
-   public static class a implements gbh<lc> {
-      private final gbz a;
+   @Override
+   public gbp b() {
+      return gbp.b;
+   }
 
-      public a(gbz $$0) {
+   public static class a implements gbo<ln> {
+      private final gcg a;
+
+      public a(gcg $$0) {
          this.a = $$0;
       }
 
-      public gbe a(lc $$0, fxx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gah($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
+      public gbl a(ln $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gah $$8 = new gah($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

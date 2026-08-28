@@ -1,49 +1,41 @@
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
 
-public record efn(eff b, List<efn.a> c) {
-   public static final Codec<efn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eff.a.fieldOf("fallback").forGetter(efn::a), efn.a.a.listOf().fieldOf("rules").forGetter(efn::b)).apply($$0, efn::new)
-   );
+public class efn extends efm {
+   public static final MapCodec<efn> g = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, efn::new));
+   protected final List<dsh> h;
 
-   public static efn a(eff $$0) {
-      return new efn($$0, List.of());
+   protected static <P extends efn> P4<Mu<P>, Long, ene.a, Float, List<dsh>> b(Instance<P> $$0) {
+      return a($$0).and(Codec.list(dsh.b).fieldOf("states").forGetter($$0x -> $$0x.h));
    }
 
-   public static efn a(dfb $$0) {
-      return a(eff.a($$0));
+   public efn(long $$0, ene.a $$1, float $$2, List<dsh> $$3) {
+      super($$0, $$1, $$2);
+      this.h = $$3;
    }
 
-   public dse a(dcv $$0, azh $$1, iz $$2) {
-      for (efn.a $$3 : this.c) {
-         if ($$3.a().test($$0, $$2)) {
-            return $$3.b().a($$1, $$2);
-         }
-      }
-
-      return this.b.a($$1, $$2);
+   @Override
+   protected efk<?> a() {
+      return efk.d;
    }
 
-   public eff a() {
-      return this.b;
+   @Override
+   public dsh a(aym $$0, ja $$1) {
+      return this.a(this.h, $$1, (double)this.e);
    }
 
-   public List<efn.a> b() {
-      return this.c;
+   protected dsh a(List<dsh> $$0, ja $$1, double $$2) {
+      double $$3 = this.a($$1, $$2);
+      return this.a($$0, $$3);
    }
 
-   public static record a(dzd b, eff c) {
-      public static final Codec<efn.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(dzd.b.fieldOf("if_true").forGetter(efn.a::a), eff.a.fieldOf("then").forGetter(efn.a::b)).apply($$0, efn.a::new)
-      );
-
-      public dzd a() {
-         return this.b;
-      }
-
-      public eff b() {
-         return this.c;
-      }
+   protected dsh a(List<dsh> $$0, double $$1) {
+      double $$2 = aye.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
+      return $$0.get((int)($$2 * (double)$$0.size()));
    }
 }

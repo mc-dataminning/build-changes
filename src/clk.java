@@ -1,210 +1,192 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Streams;
 import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
 public class clk {
-   public static final int a = 8;
-   public static final int b = 4;
-   private static final bqh c = azz.a(5, 20);
-   private static final int d = 200;
-   private static final int e = 8;
-   private static final int f = 15;
-   private static final int g = 40;
-   private static final int h = 15;
-   private static final int i = 200;
-   private static final bqh j = bqh.a(5, 16);
-   private static final float k = 1.0F;
-   private static final float l = 1.3F;
-   private static final float m = 0.6F;
-   private static final float n = 0.4F;
-   private static final float o = 0.6F;
+   @VisibleForTesting
+   protected static final int a = 2;
+   @VisibleForTesting
+   protected static final int b = 150;
+   private static final int f = 1;
+   private int g = aye.b(aym.a(), 0, 2);
+   int h;
+   private static final Codec<Pair<UUID, Integer>> i = RecordCodecBuilder.create(
+      $$0 -> $$0.group(kd.a.fieldOf("uuid").forGetter(Pair::getFirst), axm.k.fieldOf("anger").forGetter(Pair::getSecond)).apply($$0, Pair::of)
+   );
+   private final Predicate<bsd> j;
+   @VisibleForTesting
+   protected final ArrayList<bsd> c;
+   private final clk.a k;
+   @VisibleForTesting
+   protected final Object2IntMap<bsd> d;
+   @VisibleForTesting
+   protected final Object2IntMap<UUID> e;
 
-   protected static but<?> a(but<clj> $$0) {
-      b($$0);
-      c($$0);
-      d($$0);
-      e($$0);
-      $$0.a(ImmutableSet.of(cop.a));
-      $$0.b(cop.b);
-      $$0.f();
-      return $$0;
+   public static Codec<clk> a(Predicate<bsd> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(i.listOf().fieldOf("suspects").orElse(Collections.emptyList()).forGetter(clk::b)).apply($$1, $$1x -> new clk($$0, $$1x))
+      );
    }
 
-   private static void b(but<clj> $$0) {
-      $$0.a(cop.a, 0, ImmutableList.of(new bwq(45, 90), new bwu()));
+   public clk(Predicate<bsd> $$0, List<Pair<UUID, Integer>> $$1) {
+      this.j = $$0;
+      this.c = new ArrayList<>();
+      this.k = new clk.a(this);
+      this.d = new Object2IntOpenHashMap();
+      this.e = new Object2IntOpenHashMap($$1.size());
+      $$1.forEach($$0x -> this.e.put((UUID)$$0x.getFirst(), (Integer)$$0x.getSecond()));
    }
 
-   private static void c(but<clj> $$0) {
-      $$0.a(
-         cop.b,
-         10,
-         ImmutableList.of(
-            bvj.a(ccv.aw, 200),
-            new bve(btc.Z, 0.6F, 2),
-            bxo.a(ccv.aw, 1.0F, 8, true),
-            bxw.a(clk::d),
-            byx.a(clj::u, bxo.b(ccv.aq, 0.4F, 8, false)),
-            bxk.a(8.0F, bqh.a(30, 60)),
-            bvh.a(j, 0.6F),
-            a()
+   private List<Pair<UUID, Integer>> b() {
+      return Streams.concat(
+            new Stream[]{
+               this.c.stream().map($$0 -> Pair.of($$0.cz(), this.d.getInt($$0))),
+               this.e.object2IntEntrySet().stream().map($$0 -> Pair.of((UUID)$$0.getKey(), $$0.getIntValue()))
+            }
          )
-      );
+         .collect(Collectors.toList());
    }
 
-   private static void d(but<clj> $$0) {
-      $$0.a(
-         cop.k,
-         10,
-         ImmutableList.of(
-            bvj.a(ccv.aw, 200), new bve(btc.Z, 0.6F, 2), bxp.a(1.0F), byx.a(clj::u, bwr.a(40)), byx.a(bsq::p_, bwr.a(15)), bxz.a(), bvw.a(clk::i, ccv.o)
-         ),
-         ccv.o
-      );
-   }
-
-   private static void e(but<clj> $$0) {
-      $$0.a(cop.n, 10, ImmutableList.of(bxo.b(ccv.z, 1.3F, 15, false), a(), bxk.a(8.0F, bqh.a(30, 60)), bvw.a(clk::e, ccv.z)), ccv.z);
-   }
-
-   private static bxh<clj> a() {
-      return new bxh<>(ImmutableList.of(Pair.of(bxc.a(0.4F), 2), Pair.of(bxr.a(0.4F, 3), 2), Pair.of(new bvu(30, 60), 1)));
-   }
-
-   protected static void a(clj $$0) {
-      but<clj> $$1 = $$0.dS();
-      cop $$2 = $$1.g().orElse(null);
-      $$1.a(ImmutableList.of(cop.k, cop.n, cop.b));
-      cop $$3 = $$1.g().orElse(null);
-      if ($$2 != $$3) {
-         b($$0).ifPresent($$0::b);
+   public void a(aqk $$0, Predicate<bsd> $$1) {
+      this.g--;
+      if (this.g <= 0) {
+         this.a($$0);
+         this.g = 2;
       }
 
-      $$0.v($$1.a(ccv.o));
-   }
+      ObjectIterator<Entry<UUID>> $$2 = this.e.object2IntEntrySet().iterator();
 
-   protected static void a(clj $$0, btr $$1) {
-      if (!$$0.p_()) {
-         if ($$1.ak() == btc.aA && f($$0)) {
-            e($$0, $$1);
-            c($$0, $$1);
+      while ($$2.hasNext()) {
+         Entry<UUID> $$3 = (Entry<UUID>)$$2.next();
+         int $$4 = $$3.getIntValue();
+         if ($$4 <= 1) {
+            $$2.remove();
          } else {
-            h($$0, $$1);
+            $$3.setValue($$4 - 1);
          }
       }
-   }
 
-   private static void c(clj $$0, btr $$1) {
-      g($$0).forEach($$1x -> d($$1x, $$1));
-   }
+      ObjectIterator<Entry<bsd>> $$5 = this.d.object2IntEntrySet().iterator();
 
-   private static void d(clj $$0, btr $$1) {
-      but<clj> $$3 = $$0.dS();
-      btr $$2 = bvm.a($$0, $$3.c(ccv.z), $$1);
-      $$2 = bvm.a($$0, $$3.c(ccv.o), $$2);
-      e($$0, $$2);
-   }
-
-   private static void e(clj $$0, btr $$1) {
-      $$0.dS().b(ccv.o);
-      $$0.dS().b(ccv.m);
-      $$0.dS().a(ccv.z, $$1, (long)c.a($$0.dP().z));
-   }
-
-   private static Optional<? extends btr> d(clj $$0) {
-      return !c($$0) && !i($$0) ? $$0.dS().c(ccv.l) : Optional.empty();
-   }
-
-   static boolean a(clj $$0, iz $$1) {
-      Optional<iz> $$2 = $$0.dS().c(ccv.aw);
-      return $$2.isPresent() && $$2.get().a($$1, 8.0);
-   }
-
-   private static boolean e(clj $$0) {
-      return $$0.u() && !f($$0);
-   }
-
-   private static boolean f(clj $$0) {
-      if ($$0.p_()) {
-         return false;
-      } else {
-         int $$1 = $$0.dS().c(ccv.as).orElse(0);
-         int $$2 = $$0.dS().c(ccv.at).orElse(0) + 1;
-         return $$1 > $$2;
-      }
-   }
-
-   protected static void b(clj $$0, btr $$1) {
-      but<clj> $$2 = $$0.dS();
-      $$2.b(ccv.ax);
-      $$2.b(ccv.r);
-      if ($$0.p_()) {
-         d($$0, $$1);
-      } else {
-         f($$0, $$1);
-      }
-   }
-
-   private static void f(clj $$0, btr $$1) {
-      if (!$$0.dS().c(cop.n) || $$1.ak() != btc.aA) {
-         if ($$1.ak() != btc.Z) {
-            if (!bvm.a($$0, $$1, 4.0)) {
-               if (ceb.c($$0, $$1)) {
-                  g($$0, $$1);
-                  h($$0, $$1);
+      while ($$5.hasNext()) {
+         Entry<bsd> $$6 = (Entry<bsd>)$$5.next();
+         int $$7 = $$6.getIntValue();
+         bsd $$8 = (bsd)$$6.getKey();
+         bsd.c $$9 = $$8.dL();
+         if ($$7 > 1 && $$1.test($$8) && $$9 == null) {
+            $$6.setValue($$7 - 1);
+         } else {
+            this.c.remove($$8);
+            $$5.remove();
+            if ($$7 > 1 && $$9 != null) {
+               switch ($$9) {
+                  case e:
+                  case c:
+                  case d:
+                     this.e.put($$8.cz(), $$7 - 1);
                }
             }
          }
       }
+
+      this.c();
    }
 
-   private static void g(clj $$0, btr $$1) {
-      but<clj> $$2 = $$0.dS();
-      $$2.b(ccv.E);
-      $$2.b(ccv.r);
-      $$2.a(ccv.o, $$1, 200L);
-   }
-
-   private static void h(clj $$0, btr $$1) {
-      g($$0).forEach($$1x -> i($$1x, $$1));
-   }
-
-   private static void i(clj $$0, btr $$1) {
-      if (!c($$0)) {
-         Optional<btr> $$2 = $$0.dS().c(ccv.o);
-         btr $$3 = bvm.a($$0, $$2, $$1);
-         g($$0, $$3);
+   private void c() {
+      this.h = 0;
+      this.c.sort(this.k);
+      if (this.c.size() == 1) {
+         this.h = this.d.getInt(this.c.get(0));
       }
    }
 
-   public static Optional<avz> b(clj $$0) {
-      return $$0.dS().g().map($$1 -> a($$0, $$1));
-   }
+   private void a(aqk $$0) {
+      ObjectIterator<Entry<UUID>> $$1 = this.e.object2IntEntrySet().iterator();
 
-   private static avz a(clj $$0, cop $$1) {
-      if ($$1 == cop.n || $$0.y()) {
-         return awa.mu;
-      } else if ($$1 == cop.k) {
-         return awa.mp;
-      } else {
-         return h($$0) ? awa.mu : awa.mo;
+      while ($$1.hasNext()) {
+         Entry<UUID> $$2 = (Entry<UUID>)$$1.next();
+         int $$3 = $$2.getIntValue();
+         bsd $$4 = $$0.a((UUID)$$2.getKey());
+         if ($$4 != null) {
+            this.d.put($$4, $$3);
+            this.c.add($$4);
+            $$1.remove();
+         }
       }
    }
 
-   private static List<clj> g(clj $$0) {
-      return $$0.dS().c(ccv.ap).orElse(ImmutableList.of());
+   public int a(bsd $$0, int $$1) {
+      boolean $$2 = !this.d.containsKey($$0);
+      int $$3 = this.d.computeInt($$0, ($$1x, $$2x) -> Math.min(150, ($$2x == null ? 0 : $$2x) + $$1));
+      if ($$2) {
+         int $$4 = this.e.removeInt($$0.cz());
+         $$3 += $$4;
+         this.d.put($$0, $$3);
+         this.c.add($$0);
+      }
+
+      this.c();
+      return $$3;
    }
 
-   private static boolean h(clj $$0) {
-      return $$0.dS().a(ccv.aw);
+   public void a(bsd $$0) {
+      this.d.removeInt($$0);
+      this.c.remove($$0);
+      this.c();
    }
 
-   private static boolean i(clj $$0) {
-      return $$0.dS().a(ccv.r);
+   @Nullable
+   private bsd d() {
+      return this.c.stream().filter(this.j).findFirst().orElse(null);
    }
 
-   protected static boolean c(clj $$0) {
-      return $$0.dS().a(ccv.ax);
+   public int b(@Nullable bsd $$0) {
+      return $$0 == null ? this.h : this.d.getInt($$0);
+   }
+
+   public Optional<bsy> a() {
+      return Optional.ofNullable(this.d()).filter($$0 -> $$0 instanceof bsy).map($$0 -> (bsy)$$0);
+   }
+
+   @VisibleForTesting
+   protected static record a(clk a) implements Comparator<bsd> {
+      public int a(bsd $$0, bsd $$1) {
+         if ($$0.equals($$1)) {
+            return 0;
+         } else {
+            int $$2 = this.a.d.getOrDefault($$0, 0);
+            int $$3 = this.a.d.getOrDefault($$1, 0);
+            this.a.h = Math.max(this.a.h, Math.max($$2, $$3));
+            boolean $$4 = clj.a($$2).d();
+            boolean $$5 = clj.a($$3).d();
+            if ($$4 != $$5) {
+               return $$4 ? -1 : 1;
+            } else {
+               boolean $$6 = $$0 instanceof cmh;
+               boolean $$7 = $$1 instanceof cmh;
+               if ($$6 != $$7) {
+                  return $$6 ? -1 : 1;
+               } else {
+                  return Integer.compare($$3, $$2);
+               }
+            }
+         }
+      }
    }
 }

@@ -1,13 +1,45 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import net.minecraft.server.MinecraftServer;
 
-public abstract class auu<T> implements auj {
-   @Override
-   public final CompletableFuture<Void> a(auj.a $$0, aup $$1, bnk $$2, bnk $$3, Executor $$4, Executor $$5) {
-      return CompletableFuture.<T>supplyAsync(() -> this.b($$1, $$2), $$4).thenCompose($$0::a).thenAcceptAsync($$2x -> this.a((T)$$2x, $$1, $$3), $$5);
+public class auu implements ep {
+   private static final String b = "Rcon";
+   private static final wu c = wu.b("Rcon");
+   private final StringBuffer d = new StringBuffer();
+   private final MinecraftServer e;
+
+   public auu(MinecraftServer $$0) {
+      this.e = $$0;
    }
 
-   protected abstract T b(aup var1, bnk var2);
+   public void e() {
+      this.d.setLength(0);
+   }
 
-   protected abstract void a(T var1, aup var2, bnk var3);
+   public String f() {
+      return this.d.toString();
+   }
+
+   public eq g() {
+      aqk $$0 = this.e.I();
+      return new eq(this, evz.a($$0.V()), evy.a, $$0, 4, "Rcon", c, this.e, null);
+   }
+
+   @Override
+   public void a(wu $$0) {
+      this.d.append($$0.getString());
+   }
+
+   @Override
+   public boolean l_() {
+      return true;
+   }
+
+   @Override
+   public boolean w_() {
+      return true;
+   }
+
+   @Override
+   public boolean U_() {
+      return this.e.m();
+   }
 }
